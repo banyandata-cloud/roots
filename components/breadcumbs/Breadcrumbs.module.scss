@@ -1,0 +1,20 @@
+@import '../../assets/styles';
+
+.container {
+	@include flex(row, flex-start, center);
+	width: auto;
+	.seperator {
+		width: 1.5rem;
+		height: 1.5rem;
+	}
+	.breadcrumb-item {
+		@include flex(row, flex-start, center);
+		font-weight: 400;
+		font-size: 0.875rem;
+		color: $info;
+	}
+	.breadcrumb-item-active {
+		@extend .breadcrumb-item;
+		color: $black;
+	}
+}

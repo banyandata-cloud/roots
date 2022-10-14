@@ -1,0 +1,98 @@
+@import '../../assets/styles';
+
+.root {
+	@include flex();
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	background-color: (0, 0, 0, 0.2);
+	.container {
+		padding: 0.938rem;
+		width: 500px;
+		@include flex(row, space-between, flex-start);
+		.left {
+			@include flex(row, flex-start, flex-start);
+			.icons {
+				@include flex(row, center, center);
+				padding: 0.313rem 0.938rem 0rem 0rem;
+				height: auto;
+				.icon {
+					width: 1.25rem;
+					height: 1.25rem;
+				}
+			}
+			.content {
+				padding: 0.188rem 0.938rem 0rem 0rem;
+				.title {
+					font-size: 0.875rem;
+					font-weight: 600;
+					padding-right: 2px;
+				}
+				.description {
+					word-wrap: break-word;
+					height: auto;
+					font-size: 0.875rem;
+					font-weight: 400;
+					margin-bottom: 0.5rem;
+				}
+			}
+		}
+		.actions {
+			@include flex(row, space-between, flex-start);
+			gap: 5px;
+			.button {
+				padding: 0.313rem 1rem;
+				font-weight: 400;
+			}
+			.close {
+				padding-top: 0.313rem;
+				.icon {
+					width: 1.25rem;
+					height: 1.25rem;
+					fill: $black;
+				}
+			}
+		}
+
+		&.border-default {
+			border-width: 0.063rem;
+		}
+		&.border-thick-left {
+			border-width: 0.063rem 0.063rem 0.063rem 0.25rem;
+		}
+		&.border-none {
+			border-width: 0rem 0rem 0rem 0.25rem;
+		}
+
+		&.info {
+			@include bordermixin($info, #edf5ff);
+			.icon {
+				fill: $info;
+			}
+		}
+		&.success {
+			@include bordermixin($success, $success-bg);
+			.icon {
+				fill: $success;
+			}
+		}
+		&.danger {
+			@include bordermixin($error, $error-bg);
+			.icon {
+				fill: $error;
+			}
+		}
+		&.warning {
+			@include bordermixin($warning, $warning-bg);
+			.icon {
+				fill: $warning;
+			}
+		}
+
+		&.shadow {
+			box-shadow: 0.125rem 0.5rem 1rem rgba(60, 60, 60, 0.12);
+		}
+	}
+}

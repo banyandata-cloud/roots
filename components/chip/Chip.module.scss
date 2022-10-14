@@ -1,0 +1,113 @@
+@import '../../assets/styles';
+
+.root[data-elem='base-cell'] {
+	position: relative;
+	[data-elem='component2'] {
+		[data-elem='title'] {
+			font-weight: 500;
+			font-size: 0.75rem;
+		}
+	}
+
+	&.sm {
+		height: 1.5rem;
+		padding: 0.188rem 0.5rem;
+	}
+
+	&.md {
+		height: 2.25rem;
+		padding: 0.563rem 1rem;
+	}
+
+	&.status {
+		&.success {
+			background-color: $success-bg;
+			color: $success;
+		}
+		&.info {
+			background-color: $info-bg;
+			color: $info;
+		}
+		&.danger {
+			background-color: $error-bg;
+			color: $error;
+		}
+		&.warning {
+			background-color: $warning-bg;
+			color: $warning;
+		}
+		&.default {
+			background-color: $grey5;
+			color: $grey;
+		}
+
+		&:hover {
+			@include boxShadow;
+		}
+	}
+
+	&.input {
+		border-width: 1px;
+		border-style: solid;
+		&.success {
+			background-color: $success-bg;
+			color: $success;
+			border-color: $success-outline;
+			&:hover {
+				background-color: $success-outline;
+			}
+		}
+		&.info {
+			background-color: $info-bg;
+			color: $info;
+			border-color: $info-outline;
+			&:hover {
+				background-color: $info-outline;
+			}
+		}
+		&.danger {
+			background-color: $error-bg;
+			color: $error;
+			border-color: $error-outline;
+			&:hover {
+				background-color: $error-outline;
+			}
+		}
+		&.warning {
+			background-color: $warning-bg;
+			color: $warning;
+			border-color: $warning-outline;
+			&:hover {
+				background-color: $warning-outline;
+			}
+		}
+		&.default {
+			background-color: $grey8;
+			color: $grey;
+			border-color: $grey6;
+			&:hover {
+				background-color: $grey6;
+			}
+		}
+	}
+
+	&:disabled {
+		&.status,
+		&.input {
+			filter: grayscale(1);
+			border-color: $grey4;
+			background-color: $grey5;
+			color: $grey2;
+
+			[data-elem='component1'],
+			[data-elem='component3'] {
+				opacity: 0.5;
+			}
+
+			&:hover {
+				box-shadow: none;
+				background-color: $grey5;
+			}
+		}
+	}
+}

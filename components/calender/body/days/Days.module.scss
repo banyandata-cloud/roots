@@ -1,0 +1,11 @@
+.days {
+	display: flex;
+	text-align: center;
+	span {
+		padding: 0.75rem 0.5rem;
+		font-weight: 500;
+		font-size: 0.8rem;
+		color: black;
+		flex-basis: 14.28%;
+	}
+}

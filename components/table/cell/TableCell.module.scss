@@ -1,0 +1,8 @@
+@import '../../../assets/styles/index';
+
+.root[data-elem='base-cell'] {
+	background: none;
+	> [data-elem*='component'] {
+		overflow: hidden;
+	}
+}

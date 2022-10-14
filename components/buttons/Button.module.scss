@@ -1,0 +1,85 @@
+@import '../../assets/styles';
+
+.root[data-elem='base-cell'] {
+	cursor: pointer;
+
+	[data-elem='component2'] {
+		[data-elem='title'] {
+			font-weight: 500;
+			font-size: 0.875rem;
+		}
+	}
+
+	&.primary {
+		&.contained {
+			background-color: $highlight;
+			color: $white;
+		}
+		&.outlined {
+			background-color: transparent;
+			border-color: $highlight;
+		}
+		&.outlined,
+		&.text {
+			color: $highlight;
+		}
+	}
+
+	&.success {
+		&.contained {
+			background-color: $success;
+			color: $white;
+		}
+		&.outlined {
+			background-color: transparent;
+			border-color: $success;
+		}
+		&.outlined,
+		&.text {
+			color: $success;
+		}
+	}
+	&.danger {
+		&.contained {
+			background-color: $error;
+			color: $white;
+		}
+		&.outlined {
+			background-color: transparent;
+			border-color: $error;
+		}
+		&.outlined,
+		&.text {
+			color: $error;
+		}
+	}
+	&.warning {
+		&.contained {
+			background-color: $warning;
+			color: $white;
+		}
+		&.outlined {
+			background-color: transparent;
+			border-color: $warning;
+		}
+		&.outlined,
+		&.text {
+			color: $warning;
+		}
+	}
+
+	&:disabled {
+		&.contained {
+			background-color: $grey4;
+			color: $grey;
+		}
+		&.outlined {
+			background-color: transparent;
+			border-color: $grey;
+		}
+		&.outlined,
+		&.text {
+			color: $grey;
+		}
+	}
+}

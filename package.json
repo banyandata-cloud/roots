@@ -1,0 +1,79 @@
+{
+	"name": "roots",
+	"version": "1.0.0",
+	"description": "Design System Library which drives the Banyan Cloud products",
+	"main": "index.js",
+	"dependencies": {
+		"@floating-ui/react-dom": "^1.0.0",
+		"@floating-ui/react-dom-interactions": "^0.10.1",
+		"date-fns": "^2.29.3",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"react-json-view": "latest"
+	},
+	"eslintConfig": {
+		"extends": [
+			"react-app",
+			"react-app/jest"
+		],
+		"overrides": [
+			{
+				"files": [
+					"**/*.stories.*"
+				],
+				"rules": {
+					"import/no-anonymous-default-export": "off"
+				}
+			}
+		]
+	},
+	"devDependencies": {
+		"@storybook/addon-a11y": "^6.5.12",
+		"@storybook/addon-actions": "^6.5.12",
+		"@storybook/addon-backgrounds": "^6.5.12",
+		"@storybook/addon-docs": "^6.5.12",
+		"@storybook/addon-essentials": "^6.5.12",
+		"@storybook/addon-interactions": "^6.5.12",
+		"@storybook/addon-links": "^6.5.12",
+		"@storybook/addons": "^6.5.12",
+		"@storybook/builder-webpack5": "^6.5.12",
+		"@storybook/manager-webpack5": "^6.5.12",
+		"@storybook/node-logger": "^6.5.12",
+		"@storybook/preset-create-react-app": "^4.1.2",
+		"@storybook/react": "^6.5.12",
+		"@storybook/testing-library": "^0.0.13",
+		"@storybook/theming": "^6.5.12",
+		"babel-plugin-named-exports-order": "^0.0.2",
+		"eslint": "^8.2.0",
+		"eslint-config-airbnb": "19.0.4",
+		"eslint-config-prettier": "^8.5.0",
+		"eslint-plugin-import": "^2.25.3",
+		"eslint-plugin-jsx-a11y": "^6.5.1",
+		"eslint-plugin-prettier": "^4.2.1",
+		"eslint-plugin-react": "^7.28.0",
+		"eslint-plugin-react-hooks": "^4.3.0",
+		"prettier": "^2.7.1",
+		"prop-types": "^15.8.1",
+		"storybook-addon-designs": "^6.3.1",
+		"storybook-dark-mode": "^1.1.2",
+		"webpack": "^5.74.0"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"storybook": "start-storybook -p 6006 -s ./components",
+		"build-storybook": "build-storybook -s ./components",
+		"lint": "eslint --ext js,jsx .",
+		"lint:fix": "eslint --ext js,jsx . --fix",
+		"format": "prettier --write './**/*.{js,jsx,ts,tsx,md,json}' --config ./.prettierrc"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/banyandata-cloud/roots.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/banyandata-cloud/roots/issues"
+	},
+	"homepage": "https://github.com/banyandata-cloud/roots#readme"
+}

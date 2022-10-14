@@ -1,0 +1,73 @@
+@import '../../../assets/styles/index';
+
+.root {
+	@include flex(column, flex-start, stretch);
+	flex: 1;
+
+	.header {
+		@include flex(row, flex-start);
+		gap: 0.25rem;
+		// border-radius: 4px;
+		padding: 0.25rem;
+		cursor: pointer;
+
+		.icon {
+			transform: rotate(-90deg);
+			width: 1.5rem;
+		}
+
+		.title {
+			flex: 1 1 auto;
+			user-select: none;
+		}
+
+		&:hover {
+			.icon,
+			.title,
+			.title svg {
+				color: $highlight;
+				fill: $highlight;
+			}
+
+			background: $background;
+		}
+	}
+
+	.body {
+		display: none;
+		flex: 1 0 auto;
+		padding: 0px 0rem 0px 0.25rem;
+
+		.tail {
+			@include flex(column, flex-start);
+			flex: 0 0 1.6rem;
+
+			&::after {
+				content: '';
+				display: block;
+				margin: auto;
+				width: 1px;
+				flex: 1;
+				background: $grey1;
+			}
+		}
+
+		.children {
+			flex: 1 0 auto;
+		}
+	}
+
+	&.open {
+		& > .header {
+			.icon {
+				transform: none;
+			}
+		}
+
+		& > .body {
+			@include flex(row, flex-start, stretch);
+			gap: 0.25rem;
+			height: auto;
+		}
+	}
+}

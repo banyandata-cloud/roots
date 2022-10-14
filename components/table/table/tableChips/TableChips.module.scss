@@ -1,0 +1,36 @@
+@import '../../../../assets/styles/index';
+
+.root[data-elem='base-cell'] {
+	padding: 0.5rem 1.5rem;
+	width: 100%;
+	background: $grey8;
+	border-radius: 0.25rem 0.25rem 0 0;
+	> [data-elem='component1'] {
+		.back {
+			height: 2rem;
+			width: 2rem;
+			[data-elem='component1'] {
+				.icon {
+					width: 1.5rem;
+					height: 1.5rem;
+					fill: $white;
+				}
+			}
+		}
+	}
+
+	> [data-elem='component2'] {
+		@include removeScrollbar;
+		@include flex(row, flex-start);
+		gap: 0.5rem;
+		overflow-x: auto;
+		flex: 1;
+
+		.chip {
+			.chip-icon {
+				width: 0.875rem;
+				height: 0.875rem;
+			}
+		}
+	}
+}

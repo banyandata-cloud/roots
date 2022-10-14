@@ -1,0 +1,316 @@
+:root {
+  --white: #ffffff;
+  --black: #000000;
+  --dark-grey: #333333;
+  --dark-grey-o-85: rgba(51, 51, 51, 0.85);
+  --grey: #737373;
+  --grey1: #888888;
+  --grey2: #a6a6a6;
+  --grey3: #bbbbbb;
+  --grey4: #c4c4c4;
+  --grey5: #dddddd;
+  --grey6: #e8e8e8;
+  --grey7: #eeeeee;
+  --grey8: #f2f2f2;
+  --grey9: #eff0f0;
+  --grey10: #f7f7f7;
+  --highlight: #0f62fe;
+  --dark-blue: #001833;
+  --background: #d0e2ff;
+  --banyan-blue: #00037c;
+  --banyan-orange: #ff892a;
+  --banyan-pink: #ff1597;
+  --banyan-gradient: linear-gradient(
+  	84.71deg,
+  	var(--banyan-pink) 0.48%,
+  	var(--banyan-orange) 99.57%
+  );
+  --error: #da1e28;
+  --error-bg: #fff1f1;
+  --error-outline: rgba(218, 30, 40, 0.08);
+  --success: #24a148;
+  --success-bg: #defbe6;
+  --success-outline: rgba(36, 161, 72, 0.08);
+  --warning: #f1c21b;
+  --warning-bg: #fff8e1;
+  --warning-outline: rgba(203, 160, 6, 0.08);
+  --info: #0043ce;
+  --info-bg: #edf5ff;
+  --info-outline: #2864db98;
+}
+:export {
+  white: var(--white);
+  black: var(--black);
+  dark-grey: var(--dark-grey);
+  dark-grey-o-85: var(--dark-grey-o-85);
+  grey: var(--grey);
+  grey1: var(--grey1);
+  grey2: var(--grey2);
+  grey3: var(--grey3);
+  grey4: var(--grey4);
+  grey5: var(--grey5);
+  grey6: var(--grey6);
+  grey7: var(--grey7);
+  grey8: var(--grey8);
+  grey9: var(--grey9);
+  grey10: var(--grey10);
+  highlight: var(--highlight);
+  dark-blue: var(--dark-blue);
+  background: var(--background);
+  banyan-blue: var(--banyan-blue);
+  banyan-orange: var(--banyan-orange);
+  banyan-pink: var(--banyan-pink);
+  banyan-gradient: var(--banyan-gradient);
+  error: var(--error);
+  error-bg: var(--error-bg);
+  error-outline: var(--error-outline);
+  success: var(--success);
+  success-bg: var(--success-bg);
+  success-outline: var(--success-outline);
+  warning: var(--warning);
+  warning-bg: var(--warning-bg);
+  warning-outline: var(--warning-outline);
+  info: var(--info);
+  info-bg: var(--info-bg);
+  info-outline: var(--info-outline);
+}
+
+.root {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  padding: 0.625rem 2.125rem;
+  background: var(--dark-grey);
+  margin-top: auto;
+  width: 100%;
+  height: 3.5rem;
+  overflow: auto;
+  transition-property: background-color, color, width, bottom;
+  transition-duration: 0.33s;
+  transition-timing-function: ease-out;
+}
+.root::-webkit-scrollbar {
+  display: none;
+}
+.root.floating {
+  background: var(--dark-grey-o-85);
+  position: fixed;
+  border-radius: 6.25rem;
+  width: 82%;
+  left: 50%;
+  bottom: 1rem;
+  transform: translateX(-50%);
+}
+.root .row-switcher,
+.root .pagination,
+.root .jump-to-page,
+.root .form {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+}
+.root .row-switcher {
+  display: none;
+  gap: 0.75rem;
+  background-color: var(--grey);
+  padding: 0;
+  border-radius: 0.3125rem;
+}
+@media (min-width: 992px) {
+  .root .row-switcher {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+.root .row-switcher > [data-elem*=component] {
+  overflow: hidden;
+}
+.root .row-switcher > [data-elem=component2] {
+  display: flex;
+  flex: 1 0 auto;
+}
+.root .row-switcher .text {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  height: 100%;
+  display: block;
+  padding: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--white);
+}
+.root .row-switcher .dropdown > [data-elem=header] > [data-elem=select] {
+  height: 2.375rem;
+  width: auto;
+  min-width: -webkit-fit-content;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+  padding: 0.625rem;
+  background-color: var(--grey);
+  border: none;
+}
+.root .row-switcher .dropdown > [data-elem=header] > [data-elem=select] > [data-elem=placeholder] {
+  color: var(--white);
+  font-size: 0.875rem;
+}
+.root .row-switcher .dropdown > [data-elem=header] > [data-elem=select] > svg {
+  fill: var(--white);
+  width: 0.813rem;
+  height: 0.813rem;
+}
+.root .page-numbers {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1.25rem;
+  flex: 1 1 100%;
+}
+@media (min-width: 992px) {
+  .root .page-numbers {
+    flex: 1 1 60%;
+  }
+}
+.root .page-numbers > .button.disable {
+  pointer-events: none;
+}
+.root .page-numbers > .button [data-elem=title] {
+  color: var(--white);
+}
+.root .page-numbers > .button .icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.root .page-numbers > .pageSelect {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.625rem;
+}
+.root .page-numbers > .pageSelect .number {
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: #e0e0e0;
+  color: var(--black);
+  width: 2.313rem;
+  line-height: 2.313rem;
+  text-align: center;
+  font-size: 1rem;
+  border: 1px solid transparent;
+}
+.root .page-numbers > .pageSelect .number:not([data-active=true]) {
+  display: none;
+}
+@media (min-width: 768px) {
+  .root .page-numbers > .pageSelect .number:not([data-active=true]) {
+    display: block;
+  }
+}
+.root .page-numbers > .pageSelect .number:hover {
+  border: 1px solid var(--highlight);
+  color: var(--highlight);
+  background: var(--background);
+}
+.root .page-numbers > .pageSelect .number.active {
+  background-color: var(--highlight);
+  color: var(--white);
+}
+.root .form {
+  display: none;
+  padding: 0;
+  flex: 0 1 20%;
+  background: transparent;
+}
+@media (min-width: 992px) {
+  .root .form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.root .form > [data-elem*=component] {
+  width: 100%;
+  height: 100%;
+}
+.root .form > [data-elem*=component] > * {
+  height: 100%;
+}
+.root .form .jump-to-page {
+  width: 100%;
+  background: transparent;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  gap: 0.75rem;
+  padding: 0;
+}
+.root .form .jump-to-page > [data-elem*=component] {
+  overflow: hidden;
+  height: 100%;
+}
+.root .form .jump-to-page .button {
+  background-color: var(--grey);
+  height: 100%;
+}
+.root .form .jump-to-page .button [data-elem=left] {
+  overflow: hidden;
+}
+.root .form .jump-to-page .button [data-elem=left] [data-elem=title] {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.root .form .jump-to-page .button .icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: var(--white);
+  flex-shrink: 0;
+}
+.root .form .jump-to-page .inputbox {
+  width: 5rem;
+  max-width: 100%;
+  height: 100%;
+}
+.root .form .jump-to-page .inputbox [data-elem=input-wrapper] {
+  border-radius: 0.313rem;
+  background-color: var(--grey);
+  color: var(--white);
+  border-color: var(--grey);
+  width: 4.875rem;
+}
+.root .form .jump-to-page .inputbox [data-elem=input-wrapper] [data-elem=input] {
+  text-align: center;
+  color: var(--white);
+  background-color: var(--grey);
+  border: none;
+  width: 100%;
+}
+
+.pagination-test {
+  height: 80%;
+  width: 100%;
+  overflow: scroll;
+  background-color: powderblue;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-popper {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  padding: 0.25rem;
+}
+.dropdown-popper::-webkit-scrollbar {
+  display: none;
+}/*# sourceMappingURL=Pagination.module.css.map */

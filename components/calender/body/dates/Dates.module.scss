@@ -1,0 +1,111 @@
+@import '../../../../assets/styles/index';
+
+.dates {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	div {
+		flex-basis: 14.28%;
+		@include flex(row, center, center);
+		margin-bottom: 0.25rem;
+		cursor: pointer;
+		align-self: center;
+		user-select: none;
+		.date {
+			@include flex(row, center, center);
+			text-align: center;
+			vertical-align: middle;
+			border-radius: 1.5rem;
+			height: 2.5rem;
+			width: 2.5rem;
+			font-weight: 400;
+			font-size: 0.8rem;
+			color: $black;
+		}
+		.selected {
+			background-color: $highlight;
+			color: $white;
+		}
+		.unSelected {
+			background-color: $white;
+			border-color: $highlight;
+			border-width: 0.125rem;
+			border-style: solid;
+			color: $black;
+		}
+		.disabled {
+			background: $grey5;
+			border-radius: 1.5rem;
+			color: $grey;
+		}
+		.diffMonth {
+			opacity: 0.6;
+		}
+
+		&:hover {
+			.date {
+				background: $background;
+				color: $highlight;
+				box-shadow: 0rem 0.0625rem 0.0625rem rgba(0, 14, 51, 0.05);
+			}
+			.selected {
+				background-color: $highlight;
+				color: $white;
+			}
+			.disabled {
+				background: $grey5;
+				border-radius: 1.5rem;
+				color: $grey;
+			}
+		}
+	}
+	.minInRange {
+		background-color: $highlight;
+		border-radius: 1.5rem 0rem 0rem 1.5rem;
+		.date {
+			color: $white;
+		}
+		&:hover {
+			.date {
+				background: $highlight;
+				color: $white;
+				box-shadow: 0rem 0.0625rem 0.0625rem rgba(0, 14, 51, 0.05);
+			}
+		}
+	}
+	.maxInRange {
+		background-color: $highlight;
+		border-radius: 0rem 1.5rem 1.5rem 0rem;
+		.date {
+			color: $white;
+		}
+		&:hover {
+			.date {
+				background: $highlight;
+				color: $white;
+				box-shadow: 0rem 0.0625rem 0.0625rem rgba(0, 14, 51, 0.05);
+			}
+		}
+	}
+	.midInRange {
+		background: $background;
+		border-radius: 0rem;
+		.date {
+			color: $highlight;
+		}
+	}
+	.first-hovered {
+		background: $background;
+		border-radius: 0rem 1.5rem 1.5rem 0rem;
+		.date {
+			color: $highlight;
+		}
+	}
+	.last-hovered {
+		background: $background;
+		border-radius: 1.5rem 0rem 0rem 1.5rem;
+		.date {
+			color: $highlight;
+		}
+	}
+}

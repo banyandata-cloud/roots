@@ -1,0 +1,11 @@
+@import '../../assets/styles/index';
+
+.backdrop {
+	position: fixed;
+	z-index: 100;
+	inset: 0;
+
+	&.hide-backdrop {
+		position: static;
+	}
+}

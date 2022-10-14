@@ -1,0 +1,6 @@
+@import '../../../assets/styles/index';
+
+.root {
+	padding: 0.5rem 0.5rem;
+	@include flex(column, space-between, stretch);
+}

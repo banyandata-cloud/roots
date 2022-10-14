@@ -1,0 +1,52 @@
+@import '../../../assets/styles/index';
+
+.root {
+	@include flex(column, space-between, stretch);
+	margin-inline: 1rem;
+	.apply {
+		margin-top: 0.5rem;
+		width: 100%;
+		user-select: none;
+	}
+}
+
+.selected-date {
+	@include flex(row, center, center);
+	gap: 1.125rem;
+	background: $white;
+	border: 0.0625rem solid $grey4;
+	border-radius: 0.25rem;
+	padding-block: 0.875rem;
+	.date {
+		font-weight: 500;
+		font-size: 0.875rem;
+		line-height: 1.3125rem;
+		.value {
+			font-weight: 400;
+		}
+	}
+}
+
+.date-ranges {
+	@include flex(column, space-between, stretch);
+	margin-top: 0.5rem;
+	.date-range {
+		display: flex;
+		align-items: center;
+		padding: 0.875rem 1rem;
+		gap: 1.125rem;
+		cursor: pointer;
+		&:hover {
+			background-color: $background;
+		}
+		span {
+			font-weight: 400;
+			font-size: 0.875rem;
+			line-height: 1.3125rem;
+			color: $black;
+		}
+	}
+	.selected {
+		background-color: $background;
+	}
+}

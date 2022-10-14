@@ -1,0 +1,6 @@
+@import '../../../assets/styles/index';
+
+.root {
+	@include flex(column, flex-start, stretch);
+	overflow: auto;
+}

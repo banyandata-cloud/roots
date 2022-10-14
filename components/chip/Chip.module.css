@@ -1,0 +1,174 @@
+:root {
+  --white: #ffffff;
+  --black: #000000;
+  --dark-grey: #333333;
+  --dark-grey-o-85: rgba(51, 51, 51, 0.85);
+  --grey: #737373;
+  --grey1: #888888;
+  --grey2: #a6a6a6;
+  --grey3: #bbbbbb;
+  --grey4: #c4c4c4;
+  --grey5: #dddddd;
+  --grey6: #e8e8e8;
+  --grey7: #eeeeee;
+  --grey8: #f2f2f2;
+  --grey9: #eff0f0;
+  --grey10: #f7f7f7;
+  --highlight: #0f62fe;
+  --dark-blue: #001833;
+  --background: #d0e2ff;
+  --banyan-blue: #00037c;
+  --banyan-orange: #ff892a;
+  --banyan-pink: #ff1597;
+  --banyan-gradient: linear-gradient(
+  	84.71deg,
+  	var(--banyan-pink) 0.48%,
+  	var(--banyan-orange) 99.57%
+  );
+  --error: #da1e28;
+  --error-bg: #fff1f1;
+  --error-outline: rgba(218, 30, 40, 0.08);
+  --success: #24a148;
+  --success-bg: #defbe6;
+  --success-outline: rgba(36, 161, 72, 0.08);
+  --warning: #f1c21b;
+  --warning-bg: #fff8e1;
+  --warning-outline: rgba(203, 160, 6, 0.08);
+  --info: #0043ce;
+  --info-bg: #edf5ff;
+  --info-outline: #2864db98;
+}
+:export {
+  white: var(--white);
+  black: var(--black);
+  dark-grey: var(--dark-grey);
+  dark-grey-o-85: var(--dark-grey-o-85);
+  grey: var(--grey);
+  grey1: var(--grey1);
+  grey2: var(--grey2);
+  grey3: var(--grey3);
+  grey4: var(--grey4);
+  grey5: var(--grey5);
+  grey6: var(--grey6);
+  grey7: var(--grey7);
+  grey8: var(--grey8);
+  grey9: var(--grey9);
+  grey10: var(--grey10);
+  highlight: var(--highlight);
+  dark-blue: var(--dark-blue);
+  background: var(--background);
+  banyan-blue: var(--banyan-blue);
+  banyan-orange: var(--banyan-orange);
+  banyan-pink: var(--banyan-pink);
+  banyan-gradient: var(--banyan-gradient);
+  error: var(--error);
+  error-bg: var(--error-bg);
+  error-outline: var(--error-outline);
+  success: var(--success);
+  success-bg: var(--success-bg);
+  success-outline: var(--success-outline);
+  warning: var(--warning);
+  warning-bg: var(--warning-bg);
+  warning-outline: var(--warning-outline);
+  info: var(--info);
+  info-bg: var(--info-bg);
+  info-outline: var(--info-outline);
+}
+
+.root[data-elem=base-cell] {
+  position: relative;
+}
+.root[data-elem=base-cell] [data-elem=component2] [data-elem=title] {
+  font-weight: 500;
+  font-size: 0.75rem;
+}
+.root[data-elem=base-cell].sm {
+  height: 1.5rem;
+  padding: 0.188rem 0.5rem;
+}
+.root[data-elem=base-cell].md {
+  height: 2.25rem;
+  padding: 0.563rem 1rem;
+}
+.root[data-elem=base-cell].status.success {
+  background-color: var(--success-bg);
+  color: var(--success);
+}
+.root[data-elem=base-cell].status.info {
+  background-color: var(--info-bg);
+  color: var(--info);
+}
+.root[data-elem=base-cell].status.danger {
+  background-color: var(--error-bg);
+  color: var(--error);
+}
+.root[data-elem=base-cell].status.warning {
+  background-color: var(--warning-bg);
+  color: var(--warning);
+}
+.root[data-elem=base-cell].status.default {
+  background-color: var(--grey5);
+  color: var(--grey);
+}
+.root[data-elem=base-cell].status:hover {
+  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);
+}
+.root[data-elem=base-cell].input {
+  border-width: 1px;
+  border-style: solid;
+}
+.root[data-elem=base-cell].input.success {
+  background-color: var(--success-bg);
+  color: var(--success);
+  border-color: var(--success-outline);
+}
+.root[data-elem=base-cell].input.success:hover {
+  background-color: var(--success-outline);
+}
+.root[data-elem=base-cell].input.info {
+  background-color: var(--info-bg);
+  color: var(--info);
+  border-color: var(--info-outline);
+}
+.root[data-elem=base-cell].input.info:hover {
+  background-color: var(--info-outline);
+}
+.root[data-elem=base-cell].input.danger {
+  background-color: var(--error-bg);
+  color: var(--error);
+  border-color: var(--error-outline);
+}
+.root[data-elem=base-cell].input.danger:hover {
+  background-color: var(--error-outline);
+}
+.root[data-elem=base-cell].input.warning {
+  background-color: var(--warning-bg);
+  color: var(--warning);
+  border-color: var(--warning-outline);
+}
+.root[data-elem=base-cell].input.warning:hover {
+  background-color: var(--warning-outline);
+}
+.root[data-elem=base-cell].input.default {
+  background-color: var(--grey8);
+  color: var(--grey);
+  border-color: var(--grey6);
+}
+.root[data-elem=base-cell].input.default:hover {
+  background-color: var(--grey6);
+}
+.root[data-elem=base-cell]:disabled.status, .root[data-elem=base-cell]:disabled.input {
+  filter: grayscale(1);
+  border-color: var(--grey4);
+  background-color: var(--grey5);
+  color: var(--grey2);
+}
+.root[data-elem=base-cell]:disabled.status [data-elem=component1],
+.root[data-elem=base-cell]:disabled.status [data-elem=component3], .root[data-elem=base-cell]:disabled.input [data-elem=component1],
+.root[data-elem=base-cell]:disabled.input [data-elem=component3] {
+  opacity: 0.5;
+}
+.root[data-elem=base-cell]:disabled.status:hover, .root[data-elem=base-cell]:disabled.input:hover {
+  box-shadow: none;
+  background-color: var(--grey5);
+}/*# sourceMappingURL=Chip.module.css.map */

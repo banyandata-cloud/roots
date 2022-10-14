@@ -1,0 +1,105 @@
+:export {
+  white: #ffffff;
+  black: #000000;
+  dark-grey: #333333;
+  grey: #737373;
+  grey1: #888888;
+  grey2: #a6a6a6;
+  grey3: #bbbbbb;
+  grey4: #c4c4c4;
+  grey5: #dddddd;
+  grey6: #e8e8e8;
+  grey7: #eeeeee;
+  grey8: #f2f2f2;
+  grey9: #eff0f0;
+  grey10: #f7f7f7;
+  highlight: #0f62fe;
+  dark-blue: #001833;
+  background: #d0e2ff;
+  banyan-blue: #00037c;
+  banyan-orange: #ff892a;
+  banyan-pink: #ff1597;
+  banyan-gradient: linear-gradient(84.71deg, #ff1597 0.48%, #ff892a 99.57%);
+  error: #da1e28;
+  error-bg: #fff1f1;
+  error-outline: rgba(218, 30, 40, 0.08);
+  success: #24a148;
+  success-bg: #defbe6;
+  success-outline: rgba(36, 161, 72, 0.08);
+  warning: #f1c21b;
+  warning-bg: #fff8e1;
+  warning-outline: rgba(203, 160, 6, 0.08);
+  info: #0043ce;
+  info-bg: #edf5ff;
+  infor-outline: rgba(40, 100, 219, 0.5960784314);
+}
+
+.root {
+  width: 90%;
+  padding: 50px;
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.modal {
+  position: fixed;
+  z-index: 20;
+  background: #fff;
+  width: 500px;
+  /* Center the modal */
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.modal__header {
+  background: orangered;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal__main {
+  padding: 20px;
+}
+
+.close-button {
+  border: none;
+  background: transparent;
+  padding: 10px;
+  cursor: pointer;
+  color: #fff;
+  font-size: 36px;
+}
+
+.close-button:hover {
+  color: yellow;
+}
+
+.button {
+  background: green;
+  border: none;
+  padding: 10px 20px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: orange;
+}
+
+.modal__footer {
+  background: orangered;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}/*# sourceMappingURL=ModalOld.module.css.map */

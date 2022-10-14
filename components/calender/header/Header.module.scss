@@ -1,0 +1,18 @@
+@import '../../../assets/styles/index';
+
+.container {
+	@include flex(row, space-between, center);
+	padding: 0rem 1.5625rem;
+	.title {
+		font-weight: 400;
+		font-size: 0.8rem;
+		color: $black;
+	}
+	.left-arrow {
+		cursor: pointer;
+		transform: rotate(180deg);
+	}
+	.right-arrow {
+		cursor: pointer;
+	}
+}

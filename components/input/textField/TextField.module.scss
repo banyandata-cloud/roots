@@ -1,0 +1,95 @@
+@import '../../../assets/styles';
+
+.root {
+	@include flex(column, center, flex-start);
+	gap: 0.5rem;
+	label {
+		width: 100%;
+		max-width: 100%;
+		font-weight: 400;
+		font-size: 0.75rem;
+		line-height: 1.125rem;
+		letter-spacing: 0.32px;
+		color: $grey;
+		font-family: 'Poppins';
+		height: 100%;
+		.input-wrapper {
+			@include flex(row, space-between, center);
+			gap: 0.5rem;
+			padding: 0rem 0.5rem;
+			max-width: 100%;
+			width: 100%;
+			border-color: $grey4;
+			border-style: solid;
+			border-radius: 0.25rem;
+			height: 100%;
+
+			.left {
+				@include flex(row, flex-start);
+				width: 100%;
+				gap: 0.5rem;
+				.icon {
+					@include flex;
+				}
+				.input {
+					@include removeArrows;
+					background-color: transparent;
+					border: none;
+					font-weight: 400;
+					font-size: 0.875rem;
+					line-height: 1.125rem;
+					letter-spacing: 0.16px;
+					color: $black;
+					font-family: inherit;
+					width: 100%;
+					&:focus {
+						outline: none;
+					}
+					&.sm {
+						padding: 0.5rem 0rem;
+					}
+					&.md {
+						padding: 0.688rem 0rem;
+					}
+					&.lg {
+						padding: 1rem 0rem;
+					}
+				}
+			}
+			&:focus-within {
+				border: 0.063rem solid $info;
+				background-color: $info-bg;
+			}
+
+			&.border-default {
+				border-width: 0.063rem;
+			}
+			&.border-bottom {
+				border-width: 0rem 0rem 0.063rem 0rem;
+			}
+			&.border-none {
+				border-width: 0rem;
+			}
+		}
+	}
+
+	.right {
+		@include flex(row, center, center);
+		gap: 0.313rem;
+		.icon {
+			font-size: 0.875rem;
+			color: $black;
+		}
+	}
+	.field {
+		@include flex(row, flex-start, center);
+		gap: 0.313rem;
+		color: $grey3;
+		font-size: 0.75rem;
+		font-weight: 400;
+		line-height: 1.125rem;
+		.icon {
+			@include flex(row, flex-start, center);
+		}
+	}
+}

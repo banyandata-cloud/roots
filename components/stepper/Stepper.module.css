@@ -1,0 +1,194 @@
+:root {
+  --white: #ffffff;
+  --black: #000000;
+  --dark-grey: #333333;
+  --dark-grey-o-85: rgba(51, 51, 51, 0.85);
+  --grey: #737373;
+  --grey1: #888888;
+  --grey2: #a6a6a6;
+  --grey3: #bbbbbb;
+  --grey4: #c4c4c4;
+  --grey5: #dddddd;
+  --grey6: #e8e8e8;
+  --grey7: #eeeeee;
+  --grey8: #f2f2f2;
+  --grey9: #eff0f0;
+  --grey10: #f7f7f7;
+  --highlight: #0f62fe;
+  --dark-blue: #001833;
+  --background: #d0e2ff;
+  --banyan-blue: #00037c;
+  --banyan-orange: #ff892a;
+  --banyan-pink: #ff1597;
+  --banyan-gradient: linear-gradient(
+  	84.71deg,
+  	var(--banyan-pink) 0.48%,
+  	var(--banyan-orange) 99.57%
+  );
+  --error: #da1e28;
+  --error-bg: #fff1f1;
+  --error-outline: rgba(218, 30, 40, 0.08);
+  --success: #24a148;
+  --success-bg: #defbe6;
+  --success-outline: rgba(36, 161, 72, 0.08);
+  --warning: #f1c21b;
+  --warning-bg: #fff8e1;
+  --warning-outline: rgba(203, 160, 6, 0.08);
+  --info: #0043ce;
+  --info-bg: #edf5ff;
+  --info-outline: #2864db98;
+}
+:export {
+  white: var(--white);
+  black: var(--black);
+  dark-grey: var(--dark-grey);
+  dark-grey-o-85: var(--dark-grey-o-85);
+  grey: var(--grey);
+  grey1: var(--grey1);
+  grey2: var(--grey2);
+  grey3: var(--grey3);
+  grey4: var(--grey4);
+  grey5: var(--grey5);
+  grey6: var(--grey6);
+  grey7: var(--grey7);
+  grey8: var(--grey8);
+  grey9: var(--grey9);
+  grey10: var(--grey10);
+  highlight: var(--highlight);
+  dark-blue: var(--dark-blue);
+  background: var(--background);
+  banyan-blue: var(--banyan-blue);
+  banyan-orange: var(--banyan-orange);
+  banyan-pink: var(--banyan-pink);
+  banyan-gradient: var(--banyan-gradient);
+  error: var(--error);
+  error-bg: var(--error-bg);
+  error-outline: var(--error-outline);
+  success: var(--success);
+  success-bg: var(--success-bg);
+  success-outline: var(--success-outline);
+  warning: var(--warning);
+  warning-bg: var(--warning-bg);
+  warning-outline: var(--warning-outline);
+  info: var(--info);
+  info-bg: var(--info-bg);
+  info-outline: var(--info-outline);
+}
+
+.root {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.root .step {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  position: relative;
+  z-index: 1;
+  gap: 0.5rem;
+  flex: 1;
+  cursor: default;
+}
+.root .step:last-child {
+  flex: 0 1 auto;
+}
+.root .step:last-child .title::after {
+  display: none;
+}
+.root .step .left {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: var(--white);
+  border: 0.063rem solid var(--grey2);
+  border-radius: 2rem;
+  font-size: 1rem;
+  color: var(--grey2);
+}
+.root .step .left .icon {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+.root .step .left .icon.error-icon {
+  fill: var(--error);
+}
+.root .step .left .icon.completion-icon {
+  fill: var(--highlight);
+}
+.root .step .left .progress {
+  position: absolute;
+  z-index: -1;
+  inset: -0.3rem;
+  border-radius: 2rem;
+}
+.root .step .left .progress::after {
+  position: absolute;
+  content: "";
+  inset: 0.15rem;
+  background: white;
+  border-radius: 2rem;
+}
+.root .step .right {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex: 1;
+}
+.root .step .right .title {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0.75rem;
+  width: 100%;
+  font-size: 1rem;
+  color: var(--grey2);
+}
+.root .step .right .title::after {
+  content: "";
+  flex: 1;
+  min-width: 1.5rem;
+  border-bottom: 0.063rem solid;
+  margin-top: 0.75rem;
+  border-bottom-color: var(--grey2);
+}
+.root .step .right .description {
+  font-size: 0.75rem;
+  color: var(--grey2);
+}
+.root .step.active .left {
+  background: var(--highlight);
+  color: var(--white);
+}
+.root .step.active .left, .root .step.completed .left {
+  border-color: var(--highlight);
+}
+.root .step.active .right .title, .root .step.completed .right .title {
+  color: var(--black);
+}
+.root .step.active .right .description, .root .step.completed .right .description {
+  color: var(--grey);
+}
+.root .step.completed .right .title::after {
+  border-bottom-color: var(--highlight);
+}
+.root .step.error .left {
+  background: var(--white);
+  border-color: var(--error);
+  color: var(--error);
+}
+.root .step.error .right .title {
+  color: var(--error);
+}
+.root .step.error .right .description {
+  color: rgba(var(--error), 0.6);
+}/*# sourceMappingURL=Stepper.module.css.map */

@@ -1,0 +1,42 @@
+@import '../../../assets/styles/index';
+
+.root {
+	@include flex(column, flex-start, stretch);
+	width: 20rem;
+	position: relative;
+
+	.header {
+		padding: 0.5rem;
+		background: $dark-grey;
+		color: $white;
+		user-select: none;
+	}
+
+	.body {
+		@include flex(column, flex-start, stretch);
+		overflow: auto;
+	}
+
+	.item {
+		@include flex(row, flex-start);
+		gap: 0.25rem;
+
+		.item-icon {
+			width: 1rem;
+		}
+	}
+
+	&::after {
+		position: absolute;
+		right: 0;
+		content: '';
+		width: 1px;
+		height: 100%;
+		background: $grey4;
+	}
+
+	&:hover::after {
+		width: 3px;
+		cursor: col-resize;
+	}
+}

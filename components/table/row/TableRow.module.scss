@@ -1,0 +1,53 @@
+@import '../../../assets/styles/index';
+
+.root {
+	@include flex(row, flex-start);
+	border-bottom: 1px solid $grey4;
+
+	&.header-row {
+		background: $grey6;
+	}
+
+	&.body-row {
+		background: $white;
+
+		&:hover {
+			background: $info-bg;
+		}
+
+		&.selected {
+			background: $background;
+		}
+	}
+
+	.cell {
+		> [data-elem*='component'] {
+			@include flex(row, flex-start);
+			flex: 1;
+			.cell-text {
+				@include ellipsis;
+				display: inline-block;
+				width: 100%;
+				font-size: 0.875rem;
+			}
+		}
+
+		&.header-cell {
+			.cell-text {
+				font-weight: 600;
+			}
+		}
+
+		&.body-cell {
+			.cell-text {
+				&.multi-line {
+					white-space: normal;
+					display: -webkit-box;
+					-webkit-box-orient: vertical;
+					-webkit-line-clamp: 2;
+					font-size: 0.75rem;
+				}
+			}
+		}
+	}
+}

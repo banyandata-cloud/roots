@@ -1,0 +1,41 @@
+@import '../../assets/styles/index';
+
+button.root[data-elem='base-cell'] {
+	@include flex;
+	display: inline-flex;
+	user-select: none;
+	outline: none;
+	border: none;
+	background: none;
+	padding: 0.5rem 0.75rem;
+
+	&:disabled {
+		cursor: not-allowed;
+	}
+
+	&.contained {
+		background: $black;
+		color: $white;
+	}
+
+	&.outlined {
+		color: $black;
+		border: 1px solid $black;
+	}
+
+	&.text {
+		color: $black;
+	}
+
+	[data-elem*='component'] {
+		@include flex;
+	}
+
+	[data-elem='component2'] {
+		min-width: 0;
+	}
+
+	[data-elem='title'] {
+		@include ellipsis;
+	}
+}

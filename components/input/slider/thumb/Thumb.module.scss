@@ -1,0 +1,10 @@
+@import '../../../../assets/styles';
+
+.root {
+	background: $highlight;
+	height: 1.5rem;
+	width: 1.5rem;
+	border-radius: 0.75rem;
+	position: absolute;
+	top: -100%;
+}
