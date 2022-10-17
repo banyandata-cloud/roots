@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import PropTypes from 'prop-types';
-import { useResize } from '../../../../hooks';
+import { useResize } from '../../../hooks';
 import { classes } from '../../../utils';
 import { Server } from '../../icons';
 import { HierarchyItem } from '../item';

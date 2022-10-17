@@ -1,0 +1,290 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title='Utils/Utils' parameters={{ options: { showToolbar: false } }} />
+
+# Shared Utility Functions
+
+This section contains **basic utility functions** that are being used across all the **pages, components and services**.
+
+## Sum Array of Objects
+
+This util function will take **array of objects** as the props and return the **single object** after doing `arithmetic` operation on objects' `values` with respect to thier `keys`.
+
+```js
+export const sumArrayOfObjects = (objects) => {
+	return objects.reduce((acc, cur) => {
+		const keysOfCurrentObject = Object.keys(cur);
+		keysOfCurrentObject.forEach((key) => {
+			if (Object.prototype.hasOwnProperty.call(cur, key)) {
+				acc[key] = (acc[key] || 0) + cur[key];
+			}
+		});
+		return acc;
+	}, {});
+};
+```
+
+### Usage
+
+```js
+const arrayOfObjects = [{ x: 10 }, { x: 15 }];
+return sumArrayOfObjects(arrayOfObjects);
+//returns {x: 25}
+```
+
+## Get Spaced Display name
+
+This util will take **hypened or Pascal-cased or Camel-cased string** as the input and return **Spaced normal** String.
+
+```js
+export const getSpacedDisplayName = (string) =>
+	string?.replace(/([A-Z])/g, ' $1')?.replace(/^./, (str) => str.toUpperCase());
+```
+
+### Usage
+
+```js
+getSpacedDisplayName('complianceData');
+// returns "Compliance Data"
+```
+
+## DoubleDigitted
+
+`doubleDigitted()` is a dependency util or can be an independent util function. It takes a `single digitted` number as the input and returns `double-digitted` number.
+
+```js
+export const doubleDigitted = (number) => {
+	return number?.toString().padStart(2, '0');
+};
+```
+
+### Usage
+
+```js
+doubleDigitted(1);
+//returns '01', used in Dates where date are single
+```
+
+## Date and Time From Epoch
+
+These util functions will take [**epoch(UNIX)**](https://www.epochconverter.com/) time string as the input and return the **custom formatted stringified** `date` and `time`.
+
+#### DateObject
+
+Return the entire date object **epoch(UNIX)**
+
+```js
+export const getJSDateFromEpoch = (epoch) => {
+	const date = new Date(0);
+	date.setUTCSeconds(epoch);
+	return date;
+};
+```
+
+### Usages
+
+```js
+getJSDateFromEpoch(1234567890);
+//returns Sat Feb 14 2009 05:01:30 GMT+0530 (India Standard Time)
+```
+
+#### Date
+
+```js
+export const getDateFromEpoch = (epoch) => {
+	const date = new Date(0);
+	date.setUTCSeconds(epoch);
+	const paddedDate = date.getDate().toString().padStart(2, '0');
+	const month = MONTHS[date.getMonth()];
+	const year = date.getFullYear();
+	return `${month} ${paddedDate}, ${year}`;
+};
+```
+
+### Usage
+
+Refer <a href="?path=/story/constants-constants--page">Constants</a> from **MONTH**
+
+```js
+//import MONTHS from constants in respective jsx file,
+
+getDateFromEpoch(1661403831);
+// returns 'August 25, 2022'
+```
+
+#### Time
+
+```js
+export const getTimeFromEpoch = (epoch) => {
+	const date = new Date(0);
+	date.setUTCSeconds(epoch);
+	const hours = doubleDigitted(date.getHours());
+	const minutes = doubleDigitted(date.getMinutes());
+	const seconds = doubleDigitted(date.getSeconds());
+	return `${hours}:${minutes}:${seconds}`;
+};
+```
+
+### Usage
+
+```js
+getTimeFromEpoch(1661403831);
+// returns '10:33:51'
+```
+
+## Unique Array
+
+This util takes array of **strings/booleans/integers** with _duplicates_ as the input and return the array **without duplicates**.
+
+```js
+export const uniqueArray = (array) => [...new Set(array)];
+```
+
+### Usage
+
+```js
+uniqueArray(['A', 'B', 'A', 'C', 'B']);
+//returns ['A', 'B', 'C']
+```
+
+## Unique Array of Object
+
+This util takes array of objects **strings/booleans/integers** with _duplicates_ as the input and return the array of objects **without duplicates**,
+
+It will remove the duplicates on the basis of _**key**_
+
+```js
+export const uniqueArrayOfObjects = (array = [], key = '') => {
+	return array.filter((value, index, self) => {
+		return (
+			index ===
+			self.findIndex((t) => {
+				return t[key] === value[key];
+			})
+		);
+	});
+};
+```
+
+### Usage
+
+```js
+uniqueArrayOfObjects(
+	[
+		{ name: 'Joe', age: 17 },
+		{ name: 'Bob', age: 17 },
+		{ name: 'Carl', age: 35 },
+	],
+	'age'
+);
+
+//returns [{ "name": "Bob", "age": 17 },{ "name": "Carl", "age": 35 } ]
+```
+
+## Initials of Name
+
+This util function takes a `String`, actually a **First and Last name** of the person as the input and returns the **Initals** of his Firt name and Last name.
+
+```js
+export const getInitialsOfName = (name = '') => {
+	const names = name.split(' ');
+	let initials = names[0].substring(0, 1).toUpperCase();
+	if (names.length > 1) {
+		initials += names[names.length - 1].substring(0, 1).toUpperCase();
+	}
+	return initials;
+};
+```
+
+### Usage
+
+```js
+getInitialsOfName('Banyan Cloud');
+// returns 'BC'
+```
+
+## Safe JSON Parse
+
+To make sure the JSON was parsed and it is a valid JSON and if it's not than NULL will be returned, Related [Article](https://ao.ms/how-to-safely-parse-json-in-javascript/)
+
+```js
+export default function safeJSONParse(object) {
+	try {
+		return JSON.parse(object);
+	} catch (error) {
+		return null;
+	}
+}
+```
+
+### Usage
+
+```js
+safeJSONParse('{"name":"Andrew","colour":"red"}');
+
+//returns {name: 'Andrew', colour: 'red'}
+
+safeJSONParse();
+
+//returns null
+```
+
+## Clone Deep
+
+Copy the object to another object, after copying if we are making some changes in the 2nd object it will not alter the value of 1st object. Related
+[Article](https://www.amitmerchant.com/deep-copy-objects-using-json-stringify-json-parse/)
+
+```js
+export function cloneDeep(object) {
+	return safeJSONParse(JSON.stringify(object));
+}
+```
+
+### Usage
+
+```js
+let user1 = {
+	name: 'Banyan Data Services',
+	employee: 30,
+	headquarter: {
+		name: 'Hyderabad',
+	},
+};
+
+let user2 = JSON.parse(JSON.stringify(user1));
+
+user2.name = 'Banyan Cloud';
+user2.school.name = 'Bangalore';
+
+console.log(user2);
+// { name: 'Banyan Cloud', employee: 30, headquarter: { name: 'Bangalore' } }
+
+console.log(user1);
+// { name: 'Banyan Data Services', employee: 30, headquarter: { name: 'Hydrabad' } }
+```
+
+## Classes
+
+`Concatenating` the Style Classes in the `.jsx` file
+
+```js
+export const classes = (...args) => {
+	return args.join(' ');
+};
+```
+
+### Usage
+
+```js
+import { classes } from '../../utils/utils';
+
+<div className={classes(styles['rows-count'], styles.differentClassName)}>
+	<span className={classes(styles.text)}>Rows per page</span>
+</div>;
+
+// Note: we can write the class name with dot Notation or [],
+// General Syntex which is complex to write: {`${styles.['rows-count']} ${styles.differentClassName}`},
+// Simplified Systex {classes(styles['rows-count'], styles.differentClassName)}, Here we need not to just define the class name saperated by comma no need of writting $ or individual {}"
+```
+
+For detail kinldy refer <a href='?path=/story/style-system-styles--page'>Here</a>

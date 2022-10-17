@@ -1,5 +1,5 @@
 import React from 'react';
-import { DropArrow, ViewIcon } from '../../assets/vectors/common';
+import { Copy, Arrow } from '../icons';
 import Button from './Button';
 
 export default {
@@ -38,7 +38,7 @@ export const WithLeftIcon = Template.bind({});
 WithLeftIcon.args = {
 	...Filled.args,
 	leftComponent: () => {
-		return <ViewIcon height='24' width='24' color='#ffffff' />;
+		return <Arrow height='24' width='24' color='#ffffff' />;
 	},
 };
 
@@ -46,7 +46,7 @@ export const WithRightIcon = Template.bind({});
 WithRightIcon.args = {
 	...Filled.args,
 	rightComponent: () => {
-		return <DropArrow active height='12' width='12' color='#ffffff' />;
+		return <Copy active height='12' width='12' color='#ffffff' />;
 	},
 };
 
@@ -54,10 +54,10 @@ export const WithBothSideIcon = Template.bind({});
 WithBothSideIcon.args = {
 	...Filled.args,
 	leftComponent: () => {
-		return <ViewIcon height='24' width='24' color='#ffffff' />;
+		return <Arrow height='24' width='24' color='#ffffff' />;
 	},
 	rightComponent: () => {
-		return <DropArrow active height='12' width='12' color='#ffffff' />;
+		return <Copy active height='12' width='12' color='#ffffff' />;
 	},
 };
 
@@ -65,7 +65,7 @@ export const WithOnlyIcon = Template.bind({});
 WithOnlyIcon.args = {
 	...Filled.args,
 	leftComponent: () => {
-		return <ViewIcon height='24' width='24' color='#ffffff' />;
+		return <Arrow height='24' width='24' color='#ffffff' />;
 	},
 	title: '',
 };

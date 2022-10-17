@@ -1,7 +1,5 @@
 import Modal from 'react-modal';
-import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import { toggleModal } from '../../../redux/drawer';
 import { classes } from '../../utils';
 import Cross from '../icons/Cross/Cross';
 import styles from './BaseModal.module.css';
@@ -9,20 +7,7 @@ import styles from './BaseModal.module.css';
 Modal.setAppElement('#root');
 
 const BaseModal = (props) => {
-	const { className, renderHeader, children, renderFooter } = props;
-
-	const { open } = useSelector((state) => {
-		return state.drawerReducer.modal;
-	});
-
-	const dispatch = useDispatch();
-	const toggle = () => {
-		dispatch(
-			toggleModal({
-				open: false,
-			})
-		);
-	};
+	const { className, renderHeader, children, renderFooter, toggle, open } = props;
 
 	if (open) {
 		return (
@@ -57,12 +42,14 @@ BaseModal.propTypes = {
 	className: PropTypes.string,
 	renderHeader: PropTypes.element,
 	renderFooter: PropTypes.element,
+	toggle: PropTypes.func,
 };
 
 BaseModal.defaultProps = {
 	className: '',
 	renderHeader: null,
 	renderFooter: null,
+	toggle: () => {},
 };
 
 export default BaseModal;

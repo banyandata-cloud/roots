@@ -1,7 +1,4 @@
-import React from 'react';
-import { Provider, useDispatch } from 'react-redux';
-import { toggleAlert } from '../../../redux/drawer/drawerActions';
-import store from '../../../redux/store';
+import React, { useState } from 'react';
 import { AlertIcon } from '../icons';
 import Alert from './Alert';
 
@@ -16,13 +13,11 @@ export default {
 };
 
 const TemplateAlert = (args) => {
-	const dispatch = useDispatch();
+	const [open, setOpen] = useState(false);
 	const toggle = () => {
-		dispatch(
-			toggleAlert({
-				open: true,
-			})
-		);
+		setOpen((prevState) => {
+			return !prevState;
+		});
 	};
 
 	return (
@@ -35,17 +30,13 @@ const TemplateAlert = (args) => {
 				}}>
 				Alert
 			</button>
-			<Alert {...args} />
+			<Alert {...args} toggle={toggle} open={open} />
 		</div>
 	);
 };
 
 const Template = (args) => {
-	return (
-		<Provider store={store}>
-			<TemplateAlert {...args} />
-		</Provider>
-	);
+	return <TemplateAlert {...args} />;
 };
 
 export const Info = Template.bind({});

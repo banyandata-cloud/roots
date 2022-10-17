@@ -1,0 +1,110 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title='Style System/Styles' parameters={{ options: { showToolbar: false } }} />
+
+# Style Guidelines
+
+We are using [CSS Modules](https://github.com/css-modules/css-modules) in which all class names and animation names are scoped locally by default.
+
+**Why we are using [CSS Modules](https://css-tricks.com/css-modules-part-1-need/)**
+
+-   ` No conflicts` as its Only apply to that component and nothing elsewhere, this approach is designed to fix the `problem of the global scope` in CSS and has `Explicit dependencies`
+
+-   React lets you split the UI into `independent` and `reusable components`, which allows you to update small parts of your UI without refreshing the page.
+
+As React applications grow, the amount of components and layers increases. Simple style changes can have unintended side effects on different parts of a complex page.
+
+CSS modules give you the ability to `control your element styles` in a more granular way. They allow you to build different layers of styles while building your application using a modular approach. CSS modules make it easy and fast to achieve tasks such as upgrading buttons, headings, grids, etc.
+
+## Naming
+
+For local class names `camelCase` naming is recommended, but not enforced. You can still work around `kebab-case` with bracket notation
+
+> eg. style['class-name']) or style.className
+
+## Steps for writing the styles
+
+1.  **Style File**
+
+    -   Create a Style file for any component in `componentName.module.scss` format
+    -   Inport global `style` eg. mixin etc
+
+        > @import '../../assets/styles/index';
+
+    -   Add Scss as per requirement
+
+    ```cli
+        @import '../../assets/styles/index';
+
+        .container {
+        @include flex(row, flex-start, center);
+        width: auto;
+        height: 3.5rem;
+            .breadcrumb-item-title {
+            @include flex(row, flex-start, center);
+            font-weight: 600;
+            font-size: 24px;
+            color: #001833;
+            }
+            .breadcrumb-item {
+            @include flex(row, flex-start, center);
+            font-weight: 500;
+            font-size: 20px;
+            color: #003ecb;
+            }
+        }
+    ```
+
+2.  **Jsx file**
+
+    -   Create a `.jsx` file for any component
+    -   Import styles from css modules
+
+        > import styles from './componentName.module.css';
+        >
+
+        Note we will write the styles in `.scss` file only but while importing we will import respective `.css` file,
+        because we will compile `.scss` file to `.css` file with the help of sass compiler
+
+    -   Import Global class function from `utils` file
+
+        > import { classes } from '../../utils';
+        >
+
+    -   In className, define style in any of these format
+        > _style['class-name'])_ or _style.className_.
+
+```cli
+import React from 'react';
+import { Breadcrumbs } from '@mui/material';
+import Link from '@mui/material/Link';
+import styles from './Breadcrumbs.module.css';
+import { BreadcrumbSeperatorIcon } from '../../assets/vectors/common';
+import { getSpacedDisplayName, classes } from '../../utils/utils';
+
+const BreadCrumbs = ({ crumbs }) => {
+	return (
+		<div className={classes(styles.container)}>
+			<Breadcrumbs
+				separator={<BreadcrumbSeperatorIcon width='7' height='9' color='#001833' />}
+				aria-label='breadcrumb'>
+				{crumbs.map((crumb, index) => {
+					return (
+						<Link href=' ' key={crumb} underline='none'>
+							<span
+								className={classes(
+									index === 0
+										? styles['breadcrumb-item-title']
+										: styles['breadcrumb-item']
+								)}>
+								{getSpacedDisplayName(crumb).replace(/-/g, ' ')}
+							</span>
+						</Link>
+					);
+				})}
+			</Breadcrumbs>
+		</div>
+	);
+};
+
+```

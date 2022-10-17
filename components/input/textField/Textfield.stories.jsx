@@ -1,5 +1,5 @@
 import React from 'react';
-import { DropArrow, ViewIcon } from '../../../assets/vectors/common';
+import { Arrow, Copy } from '../../icons';
 
 import TextField from './TextField';
 
@@ -57,7 +57,7 @@ export const WithRightIcon = Template.bind({});
 WithRightIcon.args = {
 	...Default.args,
 	RightComponent: () => {
-		return <DropArrow active height='12' width='12' color='#0aa6ee' />;
+		return <Arrow active height='12' width='12' color='#0aa6ee' />;
 	},
 };
 
@@ -65,7 +65,7 @@ export const WithLeftIcon = Template.bind({});
 WithLeftIcon.args = {
 	...Default.args,
 	LeftComponent: () => {
-		return <ViewIcon height='18' width='18' color='#0aa6ee' />;
+		return <Copy height='18' width='18' color='#0aa6ee' />;
 	},
 };
 
@@ -73,10 +73,10 @@ export const WithBothSideIcon = Template.bind({});
 WithBothSideIcon.args = {
 	...Default.args,
 	LeftComponent: () => {
-		return <ViewIcon height='18' width='18' color='#0aa6ee' />;
+		return <Copy height='18' width='18' color='#0aa6ee' />;
 	},
 	RightComponent: () => {
-		return <DropArrow active height='12' width='12' color='#0aa6ee' />;
+		return <Arrow active height='12' width='12' color='#0aa6ee' />;
 	},
 };
 
@@ -84,13 +84,13 @@ export const WithRightSideIconLabel = Template.bind({});
 WithRightSideIconLabel.args = {
 	...Default.args,
 	LeftComponent: () => {
-		return <ViewIcon height='18' width='18' color='#0aa6ee' />;
+		return <Copy height='18' width='18' color='#0aa6ee' />;
 	},
 	RightComponent: () => {
 		return (
 			<>
 				<span>Label</span>
-				<DropArrow active height='12' width='12' color='#0aa6ee' />
+				<Arrow active height='12' width='12' color='#0aa6ee' />
 			</>
 		);
 	},
@@ -100,14 +100,14 @@ export const WithInputIconFieldIcon = Template.bind({});
 WithInputIconFieldIcon.args = {
 	...Default.args,
 	LeftComponent: () => {
-		return <ViewIcon height='18' width='18' color='#0aa6ee' />;
+		return <Copy height='18' width='18' color='#0aa6ee' />;
 	},
 	RightComponent: () => {
-		return <DropArrow active height='12' width='12' color='#0aa6ee' />;
+		return <Arrow active height='12' width='12' color='#0aa6ee' />;
 	},
 	rightIconLabel: 'Label',
 	fieldIcon: () => {
-		return <DropArrow active height='12' width='12' color='#0aa6ee' />;
+		return <Arrow active height='12' width='12' color='#0aa6ee' />;
 	},
 	fieldInfo: 'Some Text',
 };

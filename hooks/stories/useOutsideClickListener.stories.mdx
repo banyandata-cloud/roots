@@ -1,0 +1,36 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title='Hooks/useOutsideClickListener' parameters={{ options: { showToolbar: false } }} />
+
+# useOutsideClickListener
+
+This hook is used to listen to the click outside the referred component. This will be helpful, if we are creating custom **Popup** or **Dropdown** components.
+
+```js
+import { useEffect } from 'react';
+
+const useOutsideClickListener = (ref, callback) => {
+	useEffect(() => {
+		const handleClickOutside = (event) => {
+			if (ref.current && !ref.current.contains(event.target)) {
+				callback();
+			}
+		};
+		document.addEventListener('mousedown', handleClickOutside);
+		return () => {
+			document.removeEventListener('mousedown', handleClickOutside);
+		};
+	}, [ref]);
+};
+
+export default useOutsideClickListener;
+```
+
+### Usage
+
+```jsx
+const customComponentRef = useRef();
+useOutsideClickListener(customComponentRef, () => {});
+
+return <CustomComponent ref={customComponentRef} />;
+```

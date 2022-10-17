@@ -15,6 +15,7 @@ const Table = (props) => {
 		tableData,
 		uniqueKey,
 		activeData,
+		setActiveData,
 		customCells,
 		chipsData,
 		filtersData,
@@ -31,25 +32,27 @@ const Table = (props) => {
 			const lastRow = tableElem.querySelector(
 				'[data-elem="table-body"] [data-elem="table-row"]:last-child'
 			);
-			const handleIntersect = (entries) => {
-				entries.forEach((entry) => {
-					// if the target is visibile
-					if (entry.isIntersecting && entry.intersectionRatio === 1) {
-						tableElem.style.padding = '0';
-						setFloating(false);
-					} else {
-						tableElem.style.paddingBottom = '3.25rem';
-						setFloating(true);
-					}
-				});
-			};
+			if (lastRow) {
+				const handleIntersect = (entries) => {
+					entries.forEach((entry) => {
+						// if the target is visibile
+						if (entry.isIntersecting && entry.intersectionRatio === 1) {
+							tableElem.style.padding = '0';
+							setFloating(false);
+						} else {
+							tableElem.style.paddingBottom = '3.25rem';
+							setFloating(true);
+						}
+					});
+				};
 
-			const options = {
-				threshold: 1.0,
-			};
+				const options = {
+					threshold: 1.0,
+				};
 
-			const observer = new IntersectionObserver(handleIntersect, options);
-			observer.observe(lastRow);
+				const observer = new IntersectionObserver(handleIntersect, options);
+				observer.observe(lastRow);
+			}
 		}
 	});
 
@@ -64,6 +67,7 @@ const Table = (props) => {
 					tableData,
 					uniqueKey,
 					activeData,
+					setActiveData,
 					customCells,
 				}}
 			/>
@@ -88,6 +92,7 @@ Table.propTypes = {
 	tableData: PropTypes.arrayOf(PropTypes.object),
 	uniqueKey: PropTypes.arrayOf(PropTypes.string),
 	activeData: PropTypes.object,
+	setActiveData: PropTypes.func,
 	customCells: PropTypes.shape({
 		header: PropTypes.object,
 		body: PropTypes.object,
@@ -109,6 +114,7 @@ Table.defaultProps = {
 	tableData: [],
 	uniqueKey: [],
 	activeData: {},
+	setActiveData: () => {},
 	customCells: {
 		header: null,
 		body: null,

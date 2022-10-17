@@ -6,7 +6,7 @@ import { TableCell } from '../cell';
 import styles from './TableRow.module.css';
 
 const TableRow = (props) => {
-	const { type, headerData, datum, selected, customCells, className } = props;
+	const { type, headerData, datum, selected, customCells, className, setActiveData } = props;
 
 	return (
 		<tr
@@ -21,9 +21,10 @@ const TableRow = (props) => {
 				const cellProps = {
 					...props,
 					...item,
+					setActiveData,
 					key: item.id,
 				};
-				const CustomCell = customCells?.[type]?.[item];
+				const CustomCell = customCells?.[type]?.[item.id];
 				if (CustomCell != null) {
 					// eslint-disable-next-line react/jsx-key
 					return <CustomCell {...cellProps} />;
@@ -86,6 +87,7 @@ TableRow.propTypes = {
 			multiLine: PropTypes.bool,
 		})
 	),
+	setActiveData: PropTypes.func,
 	selected: PropTypes.bool,
 };
 
@@ -98,6 +100,7 @@ TableRow.defaultProps = {
 		body: null,
 	},
 	headerData: [],
+	setActiveData: () => {},
 	selected: false,
 };
 

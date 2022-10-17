@@ -1,10 +1,8 @@
 import PropTypes from 'prop-types';
-import { useDispatch, useSelector } from 'react-redux';
 import { classes } from '../../utils/utils';
 import styles from './Alert.module.css';
 import { Cross, AlertIcon } from '../icons';
 import Button from '../buttons/Button';
-import { toggleAlert } from '../../../redux/drawer';
 
 const Alert = (props) => {
 	const {
@@ -17,20 +15,9 @@ const Alert = (props) => {
 		border,
 		color,
 		shadow,
+		open,
+		toggle,
 	} = props;
-
-	const { open } = useSelector((state) => {
-		return state.drawerReducer.alert;
-	});
-
-	const dispatch = useDispatch();
-	const toggle = () => {
-		dispatch(
-			toggleAlert({
-				open: false,
-			})
-		);
-	};
 
 	let Icon = null;
 	if (AlertTypeIcon != null) {
@@ -107,6 +94,8 @@ Alert.propTypes = {
 	border: PropTypes.oneOf(['default', 'thick-left', 'none']),
 	color: PropTypes.oneOf(['info', 'success', 'danger', 'warning']),
 	shadow: PropTypes.bool,
+	toggle: PropTypes.func,
+	open: PropTypes.bool,
 };
 
 Alert.defaultProps = {
@@ -119,6 +108,8 @@ Alert.defaultProps = {
 	border: 'default',
 	color: 'info',
 	shadow: false,
+	toggle: () => {},
+	open: true,
 };
 
 export default Alert;

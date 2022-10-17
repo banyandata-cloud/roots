@@ -5,7 +5,8 @@ import { TableRow } from '../row';
 import styles from './TableBody.module.css';
 
 const TableBody = (props) => {
-	const { tableData, uniqueKey, activeData, headerData, customCells, className } = props;
+	const { tableData, uniqueKey, activeData, setActiveData, headerData, customCells, className } =
+		props;
 
 	return (
 		<tbody data-elem='table-body' className={classes(styles.root, className)}>
@@ -27,6 +28,7 @@ const TableBody = (props) => {
 							selected,
 							headerData,
 							customCells,
+							setActiveData,
 						}}
 					/>
 				);
@@ -51,6 +53,7 @@ TableBody.propTypes = {
 	tableData: PropTypes.arrayOf(PropTypes.object),
 	uniqueKey: PropTypes.arrayOf(PropTypes.string),
 	activeData: PropTypes.object,
+	setActiveData: PropTypes.func,
 	customCells: PropTypes.shape({
 		header: PropTypes.object,
 		body: PropTypes.object,
@@ -63,6 +66,7 @@ TableBody.defaultProps = {
 	tableData: [],
 	uniqueKey: [],
 	activeData: {},
+	setActiveData: () => {},
 	customCells: {
 		header: null,
 		body: null,

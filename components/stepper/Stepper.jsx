@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { classes } from '../../utils';
 import { Cross, Tick } from '../icons';
 import styles from './Stepper.module.css';
-import colors from '../../assets/styles/_colors.scss';
+import colors from '../../styles/_colors.scss';
 
 const Step = (props) => {
 	const { title, description, active, completion, error, index } = props;

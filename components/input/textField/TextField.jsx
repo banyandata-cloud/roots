@@ -2,6 +2,7 @@ import React, { forwardRef, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './TextField.module.css';
 import { classes, inputHelper } from '../../../utils/utils';
+import { BaseCell } from '../../cell';
 
 // eslint-disable-next-line prefer-arrow-callback
 const TextField = forwardRef(function TextField(props, inputRef) {
@@ -13,6 +14,7 @@ const TextField = forwardRef(function TextField(props, inputRef) {
 		type,
 		value,
 		defaultValue,
+		onBlur,
 		onChange,
 		size,
 		fieldInfo,
@@ -47,22 +49,29 @@ const TextField = forwardRef(function TextField(props, inputRef) {
 				<div
 					data-elem='input-wrapper'
 					className={classes(styles['input-wrapper'], styles[`border-${border}`])}>
-					<div className={classes(styles.left)}>
-						{LeftComponent && <LeftComponent />}
-						<input
-							data-elem='input'
-							ref={inputRef}
-							disabled={disabled}
-							type={type}
-							defaultValue={defaultValue}
-							value={isControlled ? value ?? '' : uncontrolledValue}
-							onChange={handleChange}
-							placeholder={placeholder}
-							className={classes(styles[size], styles.input)}
-							{...inputProps}
-						/>
-					</div>
-					{RightComponent && <RightComponent />}
+					<BaseCell
+						component1={LeftComponent && <LeftComponent />}
+						component2={
+							<input
+								{...{
+									id,
+									name,
+									disabled,
+									type,
+									defaultValue,
+									placeholder,
+									onBlur,
+								}}
+								data-elem='input'
+								ref={inputRef}
+								value={isControlled ? value ?? '' : uncontrolledValue}
+								onChange={handleChange}
+								className={classes(styles[size], styles.input)}
+								{...inputProps}
+							/>
+						}
+						component3={RightComponent && <RightComponent />}
+					/>
 				</div>
 			</label>
 			{fieldInfo && (

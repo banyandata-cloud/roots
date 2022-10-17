@@ -1,7 +1,4 @@
-import React from 'react';
-import { Provider, useDispatch } from 'react-redux';
-import { toggleModal } from '../../../redux/drawer/drawerActions';
-import store from '../../../redux/store';
+import React, { useState } from 'react';
 import BaseModal from './BaseModal';
 
 export default {
@@ -15,13 +12,12 @@ export default {
 };
 
 const TemplateModal = (args) => {
-	const dispatch = useDispatch();
+	const [open, setOpen] = useState(false);
+
 	const toggle = () => {
-		dispatch(
-			toggleModal({
-				open: true,
-			})
-		);
+		setOpen((prevState) => {
+			return !prevState;
+		});
 	};
 
 	return (
@@ -34,7 +30,7 @@ const TemplateModal = (args) => {
 				}}>
 				Open Modal
 			</button>
-			<BaseModal {...args}>
+			<BaseModal {...args} open={open} toggle={toggle}>
 				<div>
 					<p>Modal description: Pass the header and footer as a Component</p>
 				</div>
@@ -44,11 +40,7 @@ const TemplateModal = (args) => {
 };
 
 const Template = (args) => {
-	return (
-		<Provider store={store}>
-			<TemplateModal {...args} />
-		</Provider>
-	);
+	return <TemplateModal {...args} />;
 };
 
 export const Default = Template.bind({});

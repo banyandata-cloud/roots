@@ -15,7 +15,7 @@ import {
 	FloatingFocusManager,
 } from '@floating-ui/react-dom-interactions';
 import PropTypes from 'prop-types';
-import useOutsideClickListener from '../../../hooks/useOutsideClickListener';
+import { useOutsideClickListener } from '../../hooks';
 import { classes, inputHelper } from '../../utils';
 import { Caret } from '../icons';
 import styles from './Dropdown.module.css';

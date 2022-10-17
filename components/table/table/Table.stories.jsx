@@ -1,6 +1,5 @@
 import React from 'react';
-import { AwsCloudIcon, GcpCloudIcon } from '../../../assets/vectors/cloud';
-import { DbTechIcon } from '../../../assets/vectors/common';
+import { Server, Copy } from '../../icons';
 import { usePagination } from '../../pagination';
 import { TableColumn } from '../BaseTable.class';
 import Table from './Table';
@@ -198,22 +197,20 @@ Default.args = {
 		chips: [
 			new TableChip({
 				key: 'something',
-				icon: DbTechIcon,
-				label: 'DB Tech',
+				iconArrowlabel: 'DB Tech',
 				value: 'PgSQL',
 				disabled: true,
 			}),
 			new TableChip({
 				key: 'something',
-				icon: DbTechIcon,
-				label: 'DB Tech',
+				iconArrowlabel: 'DB Tech',
 				value: 'MySQL',
 				disabled: true,
 			}),
 			new TableChip({
 				key: 'something',
 				icon: (iconProps) => {
-					return <GcpCloudIcon {...iconProps} />;
+					return <Copy {...iconProps} />;
 				},
 				label: 'Cloud',
 				value: 'Google',
@@ -222,7 +219,7 @@ Default.args = {
 			new TableChip({
 				key: 'something',
 				icon: (iconProps) => {
-					return <AwsCloudIcon {...iconProps} />;
+					return <Server {...iconProps} />;
 				},
 				label: 'Cloud',
 				value: 'Amazon',

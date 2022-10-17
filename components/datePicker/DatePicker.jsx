@@ -11,7 +11,7 @@ import {
 	useClick,
 } from '@floating-ui/react-dom-interactions';
 import { fromUnixTime } from 'date-fns';
-import useOutsideClickListener from '../../../hooks/useOutsideClickListener';
+import { useOutsideClickListener } from '../../hooks';
 import { classes } from '../../utils';
 import { Calender } from '../calender';
 import { Arrow } from '../icons';

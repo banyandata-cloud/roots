@@ -1,6 +1,5 @@
 import React from 'react';
-import '../src/index.scss';
-import 'react-toastify/dist/ReactToastify.css';
+import '../styles/index.scss';
 import { DocsContainer } from '@storybook/addon-docs';
 import { themes } from '@storybook/theming';
 import banyanTheme from './banyanTheme';

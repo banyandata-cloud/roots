@@ -1,0 +1,47 @@
+@mixin flex($flex-direction: row, $justify-content: center, $align-items: center) {
+	display: flex;
+	flex-direction: $flex-direction;
+	justify-content: $justify-content;
+	align-items: $align-items;
+}
+
+@mixin bordermixin($border-color, $background-color) {
+	border-style: solid;
+	border-color: $border-color;
+	background-color: $background-color;
+}
+
+@mixin debug {
+	border: 1px solid red;
+}
+
+@mixin ellipsis {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+@mixin removeArrows {
+	-moz-appearance: textfield;
+	&::-webkit-outer-spin-button,
+	&::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+}
+
+@mixin removeScrollbar() {
+	&::-webkit-scrollbar {
+		display: none;
+	}
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+@function derive-rgb-values-from-hex($hex) {
+	@return red($hex), green($hex), blue($hex);
+}
+
+@mixin boxShadow {
+	box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);
+}

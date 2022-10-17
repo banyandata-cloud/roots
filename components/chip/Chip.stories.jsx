@@ -1,6 +1,5 @@
 import React from 'react';
-import { GcpCloudIcon } from '../../assets/vectors/cloud';
-import { DropArrow, ViewIcon } from '../../assets/vectors/common';
+import { Arrow, Calender, Copy } from '../icons';
 import Chip from './Chip';
 
 export default {
@@ -43,7 +42,7 @@ export const WithLeftIcon = Template.bind({});
 WithLeftIcon.args = {
 	...Filled.args,
 	leftComponent: () => {
-		return <GcpCloudIcon width='1.5rem' />;
+		return <Copy width='1.5rem' />;
 	},
 };
 
@@ -51,7 +50,7 @@ export const WithRightIcon = Template.bind({});
 WithRightIcon.args = {
 	...Filled.args,
 	rightComponent: () => {
-		return <GcpCloudIcon width='1.5rem' />;
+		return <Copy width='1.5rem' />;
 	},
 };
 
@@ -59,10 +58,10 @@ export const WithBothSideIcon = Template.bind({});
 WithBothSideIcon.args = {
 	...Filled.args,
 	leftComponent: () => {
-		return <ViewIcon height='24' width='24' color='#ffffff' />;
+		return <Calender height='24' width='24' color='#ffffff' />;
 	},
 	rightComponent: () => {
-		return <DropArrow active height='12' width='12' color='#ffffff' />;
+		return <Arrow active height='12' width='12' color='#ffffff' />;
 	},
 };
 
@@ -70,7 +69,7 @@ export const WithOnlyIcon = Template.bind({});
 WithOnlyIcon.args = {
 	...Filled.args,
 	leftComponent: () => {
-		return <ViewIcon height='24' width='24' color='#ffffff' />;
+		return <Calender height='24' width='24' color='#ffffff' />;
 	},
 	title: '',
 };
@@ -85,6 +84,6 @@ Disabled.args = {
 	color: 'secondary',
 	disabled: true,
 	leftComponent: () => {
-		return <GcpCloudIcon width='1.5rem' />;
+		return <Copy width='1.5rem' />;
 	},
 };

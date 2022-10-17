@@ -1,6 +1,5 @@
 import React from 'react';
-import { AwsCloudIcon, GcpCloudIcon } from '../../../../assets/vectors/cloud';
-import { DbTechIcon } from '../../../../assets/vectors/common';
+import { Calender, Copy, Server } from '../../../icons';
 import { TableChip } from './TableChip.class';
 import TableChips from './TableChips';
 
@@ -29,14 +28,14 @@ Default.args = {
 	chips: [
 		new TableChip({
 			key: 'something',
-			icon: DbTechIcon,
+			icon: Server,
 			label: 'DB Tech',
 			value: 'PgSQL',
 			disabled: true,
 		}),
 		new TableChip({
 			key: 'something',
-			icon: DbTechIcon,
+			icon: Server,
 			label: 'DB Tech',
 			value: 'MySQL',
 			disabled: true,
@@ -44,7 +43,7 @@ Default.args = {
 		new TableChip({
 			key: 'something',
 			icon: (iconProps) => {
-				return <GcpCloudIcon {...iconProps} />;
+				return <Copy {...iconProps} />;
 			},
 			label: 'Cloud',
 			value: 'Google',
@@ -53,7 +52,7 @@ Default.args = {
 		new TableChip({
 			key: 'something',
 			icon: (iconProps) => {
-				return <AwsCloudIcon {...iconProps} />;
+				return <Calender {...iconProps} />;
 			},
 			label: 'Cloud',
 			value: 'Amazon',
