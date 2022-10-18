@@ -78,30 +78,28 @@
 .root {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: 0, 0, 0, 0.2;
-}
-.root .container {
-  padding: 0.938rem;
-  width: 500px;
-  display: flex;
-  flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
+  position: fixed;
+  padding: 0.938rem;
+  width: 500px;
 }
-.root .container .left {
+.root.position-bottom-center {
+  left: 50%;
+  bottom: 1rem;
+  transform: translate(-50%, 0);
+}
+.root.position-top-right {
+  right: 1rem;
+  top: 1rem;
+}
+.root .left {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: flex-start;
 }
-.root .container .left .icons {
+.root .left .icons {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -109,85 +107,85 @@
   padding: 0.313rem 0.938rem 0rem 0rem;
   height: auto;
 }
-.root .container .left .icons .icon {
+.root .left .icons .icon {
   width: 1.25rem;
   height: 1.25rem;
 }
-.root .container .left .content {
+.root .left .content {
   padding: 0.188rem 0.938rem 0rem 0rem;
 }
-.root .container .left .content .title {
+.root .left .content .title {
   font-size: 0.875rem;
   font-weight: 600;
   padding-right: 2px;
 }
-.root .container .left .content .description {
+.root .left .content .description {
   word-wrap: break-word;
   height: auto;
   font-size: 0.875rem;
   font-weight: 400;
   margin-bottom: 0.5rem;
 }
-.root .container .actions {
+.root .actions {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
   gap: 5px;
 }
-.root .container .actions .button {
+.root .actions .button {
   padding: 0.313rem 1rem;
   font-weight: 400;
 }
-.root .container .actions .close {
+.root .actions .close {
   padding-top: 0.313rem;
 }
-.root .container .actions .close .icon {
+.root .actions .close .icon {
   width: 1.25rem;
   height: 1.25rem;
   fill: var(--black);
 }
-.root .container.border-default {
+.root.border-default {
   border-width: 0.063rem;
 }
-.root .container.border-thick-left {
+.root.border-thick-left {
   border-width: 0.063rem 0.063rem 0.063rem 0.25rem;
 }
-.root .container.border-none {
+.root.border-none {
   border-width: 0rem 0rem 0rem 0.25rem;
 }
-.root .container.info {
+.root.info {
   border-style: solid;
   border-color: var(--info);
   background-color: #edf5ff;
 }
-.root .container.info .icon {
+.root.info .icon {
   fill: var(--info);
 }
-.root .container.success {
+.root.success {
   border-style: solid;
   border-color: var(--success);
   background-color: var(--success-bg);
 }
-.root .container.success .icon {
+.root.success .icon {
   fill: var(--success);
 }
-.root .container.danger {
+.root.danger {
   border-style: solid;
   border-color: var(--error);
   background-color: var(--error-bg);
 }
-.root .container.danger .icon {
+.root.danger .icon {
   fill: var(--error);
 }
-.root .container.warning {
+.root.warning {
   border-style: solid;
   border-color: var(--warning);
   background-color: var(--warning-bg);
 }
-.root .container.warning .icon {
+.root.warning .icon {
   fill: var(--warning);
 }
-.root .container.shadow {
+.root.shadow {
   box-shadow: 0.125rem 0.5rem 1rem rgba(60, 60, 60, 0.12);
 }/*# sourceMappingURL=Alert.module.css.map */

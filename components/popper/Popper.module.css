@@ -79,6 +79,10 @@
   position: fixed;
   z-index: 100;
   inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+.backdrop.transparent {
+  background: none;
 }
 .backdrop.hide-backdrop {
   position: static;

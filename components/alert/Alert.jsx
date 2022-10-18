@@ -1,8 +1,11 @@
 import PropTypes from 'prop-types';
+import { useRef } from 'react';
 import { classes } from '../../utils/utils';
 import styles from './Alert.module.css';
 import { Cross, AlertIcon } from '../icons';
 import Button from '../buttons/Button';
+import Popper from '../popper/Popper';
+import { useOutsideClickListener } from '../../hooks';
 
 const Alert = (props) => {
 	const {
@@ -17,6 +20,7 @@ const Alert = (props) => {
 		shadow,
 		open,
 		toggle,
+		position,
 	} = props;
 
 	let Icon = null;
@@ -42,46 +46,51 @@ const Alert = (props) => {
 		}
 	}
 
-	if (open) {
-		return (
-			<div className={styles.root}>
-				<div
-					className={classes(
-						styles.container,
-						styles[color],
-						styles[`border-${border}`],
-						shadow ? styles.shadow : ''
-					)}>
-					<div className={styles.left}>
-						<div className={styles.icons}>{showIcon && Icon}</div>
-						<div className={styles.content}>
-							<span className={styles.title}>{title}</span>
-							<span className={styles.description}>{description}</span>
-						</div>
+	const ref = useRef(null);
+
+	useOutsideClickListener(ref, () => {
+		return toggle(false);
+	});
+
+	return (
+		<Popper open={open} className={styles.popper} id='alert-popper' transparent={false}>
+			<div
+				ref={ref}
+				className={classes(
+					styles.root,
+					styles[color],
+					styles[`border-${border}`],
+					shadow ? styles.shadow : '',
+					styles[`position-${position}`]
+				)}>
+				<div className={styles.left}>
+					<div className={styles.icons}>{showIcon && Icon}</div>
+					<div className={styles.content}>
+						<span className={styles.title}>{title}</span>
+						<span className={styles.description}>{description}</span>
 					</div>
-					{(action || close) && (
-						<div className={styles.actions}>
-							{action && (
-								<Button
-									title={action}
-									size='small'
-									variant='text'
-									color='primary'
-									className={styles.button}
-								/>
-							)}
-							{close && (
-								<span onClick={toggle} className={styles.close}>
-									<Cross className={styles.icon} />
-								</span>
-							)}
-						</div>
-					)}
 				</div>
+				{(action || close) && (
+					<div className={styles.actions}>
+						{action && (
+							<Button
+								title={action}
+								size='small'
+								variant='text'
+								color='primary'
+								className={styles.button}
+							/>
+						)}
+						{close && (
+							<span onClick={toggle} className={styles.close}>
+								<Cross className={styles.icon} />
+							</span>
+						)}
+					</div>
+				)}
 			</div>
-		);
-	}
-	return null;
+		</Popper>
+	);
 };
 
 Alert.propTypes = {
@@ -96,6 +105,7 @@ Alert.propTypes = {
 	shadow: PropTypes.bool,
 	toggle: PropTypes.func,
 	open: PropTypes.bool,
+	position: PropTypes.oneOf(['bottom-center', 'top-right']),
 };
 
 Alert.defaultProps = {
@@ -110,6 +120,7 @@ Alert.defaultProps = {
 	shadow: false,
 	toggle: () => {},
 	open: true,
+	position: 'bottom-center',
 };
 
 export default Alert;
