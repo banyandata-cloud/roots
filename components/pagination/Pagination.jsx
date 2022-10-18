@@ -1,4 +1,4 @@
-import React, { useReducer, useRef } from 'react';
+import React, { forwardRef, useReducer, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { classes } from '../../utils';
 import Button from '../buttons/Button';
@@ -49,7 +49,7 @@ export const usePagination = (props) => {
 	return [paginationState, paginationDispatch];
 };
 
-function Pagination(props) {
+const Pagination = forwardRef((props, ref) => {
 	const { className, floating, paginationState, paginationDispatch } = props;
 
 	const { totalPages, currentPage, step } = paginationState;
@@ -68,7 +68,7 @@ function Pagination(props) {
 	};
 
 	return (
-		<div className={classes(styles.root, className, floating ? styles.floating : '')}>
+		<div ref={ref} className={classes(styles.root, className, floating ? styles.floating : '')}>
 			<BaseCell
 				flexible
 				className={styles['row-switcher']}
@@ -193,7 +193,7 @@ function Pagination(props) {
 			/>
 		</div>
 	);
-}
+});
 
 Pagination.propTypes = {
 	className: PropTypes.string,

@@ -1,6 +1,8 @@
 @import '../../../../styles/_index';
 
 .root[data-elem='base-cell'] {
+	@include removeScrollbar;
+	overflow-x: auto;
 	padding: 0.5rem;
 	gap: 1.25rem;
 	width: 100%;

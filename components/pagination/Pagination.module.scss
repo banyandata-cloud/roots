@@ -10,18 +10,18 @@
 	height: 3.5rem;
 	overflow: auto;
 
-	transition-property: background-color, color, width, bottom;
+	transition-property: background-color, color, bottom, max-width, width;
 	transition-duration: 0.33s;
 	transition-timing-function: ease-out;
 
 	&.floating {
 		background: $dark-grey-o-85;
-		position: fixed;
+		position: absolute;
 		border-radius: 6.25rem;
 		width: 82%;
 		left: 50%;
-		bottom: 1rem;
-		transform: translateX(-50%);
+		bottom: 2.5rem;
+		transform: translate(-50%);
 	}
 	.row-switcher,
 	.pagination,

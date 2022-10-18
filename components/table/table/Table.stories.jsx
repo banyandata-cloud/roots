@@ -27,15 +27,9 @@ const Template = (args) => {
 				background: '#777777',
 				padding: '1rem',
 				display: 'flex',
+				height: '100%',
+				// minHeight: '100%',
 			}}>
-			<div
-				style={{
-					background: 'red',
-					width: '20rem',
-					height: '20rem',
-					flex: 1,
-				}}
-			/>
 			<Table
 				{...args}
 				paginationData={{

@@ -6,4 +6,19 @@
 	border-width: 1px 1px 0px 1px;
 	border-radius: 0.25rem;
 	width: 100%;
+	max-width: 100%;
+	height: 100%;
+
+	.table {
+		position: relative;
+		height: calc(100% - (9.5rem));
+	}
+
+	.chips,
+	.filters,
+	.table > [data-elem='table-header'] {
+		position: sticky;
+		z-index: 1;
+		top: 0;
+	}
 }

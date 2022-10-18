@@ -8,12 +8,15 @@ import { Arrow } from '../../../icons';
 import styles from './TableChips.module.css';
 
 const TableChips = (props) => {
-	const { showBack, chips, className } = props;
+	const { showBack, chips, className, style } = props;
 
 	return (
 		<BaseCell
 			flexible
 			className={classes(className, styles.root)}
+			attrs={{
+				style,
+			}}
 			component1={
 				showBack && (
 					<Button
@@ -49,6 +52,9 @@ const TableChips = (props) => {
 };
 
 TableChips.propTypes = {
+	className: PropTypes.string,
+	// eslint-disable-next-line react/forbid-prop-types
+	style: PropTypes.object,
 	showBack: PropTypes.bool,
 	chips: PropTypes.arrayOf(
 		PropTypes.shape({
@@ -62,6 +68,8 @@ TableChips.propTypes = {
 };
 
 TableChips.defaultProps = {
+	className: '',
+	style: {},
 	showBack: false,
 	chips: [],
 };

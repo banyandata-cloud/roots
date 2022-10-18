@@ -8,7 +8,7 @@ import { TableFilters } from './tableFilters';
 import { Pagination } from '../../pagination';
 import styles from './Table.module.css';
 
-const INTERSECTION = 0.25;
+const INTERSECTION = 1;
 
 const Table = (props) => {
 	const {
@@ -25,12 +25,19 @@ const Table = (props) => {
 	} = props;
 
 	const ref = useRef(null);
+	const paginationRef = useRef(null);
 
 	const [floating, setFloating] = useState(false);
 
 	useEffect(() => {
 		const tableElem = ref.current;
+		const paginationElem = paginationRef.current;
 		if (tableElem) {
+			const tableRect = tableElem.getBoundingClientRect();
+			const { width: tableWidth, left: tableLeft } = tableRect;
+			if (paginationElem) {
+				paginationElem.style.left = `${tableLeft + tableWidth / 2}px`;
+			}
 			const lastRow = tableElem.querySelector(
 				'[data-elem="table-body"] [data-elem="table-row"]:last-child'
 			);
@@ -39,10 +46,18 @@ const Table = (props) => {
 					entries.forEach((entry) => {
 						// if the target is visibile
 						if (entry.isIntersecting && entry.intersectionRatio >= INTERSECTION) {
-							tableElem.style.padding = '0';
+							tableElem.style.height = 'calc(100% - 9.5rem)';
+							tableElem.style.paddingBottom = '0';
+							if (paginationElem) {
+								paginationElem.style.maxWidth = '100%';
+							}
 							setFloating(false);
 						} else {
-							tableElem.style.paddingBottom = '3.25rem';
+							tableElem.style.paddingBottom = '3.5rem';
+							tableElem.style.height = 'calc(100% - 6rem)';
+							if (paginationElem) {
+								paginationElem.style.maxWidth = `calc(${tableWidth}px - 2rem)`;
+							}
 							setFloating(true);
 						}
 					});
@@ -56,12 +71,12 @@ const Table = (props) => {
 				observer.observe(lastRow);
 			}
 		}
-	});
+	}, []);
 
 	return (
 		<div className={classes(styles.root, className)}>
-			{chipsData != null && <TableChips {...chipsData} />}
-			{filtersData != null && <TableFilters {...filtersData} />}
+			{chipsData != null && <TableChips className={styles.chips} {...chipsData} />}
+			{filtersData != null && <TableFilters className={styles.filters} {...filtersData} />}
 			<BaseTable
 				{...{
 					ref,
@@ -71,10 +86,18 @@ const Table = (props) => {
 					activeData,
 					setActiveData,
 					customCells,
+					className: styles.table,
 				}}
 			/>
 
-			{paginationData != null && <Pagination {...paginationData} floating={floating} />}
+			{paginationData != null && (
+				<Pagination
+					className={styles.pagination}
+					ref={paginationRef}
+					{...paginationData}
+					floating={floating}
+				/>
+			)}
 		</div>
 	);
 };

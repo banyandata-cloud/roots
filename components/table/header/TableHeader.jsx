@@ -7,7 +7,7 @@ const TableHeader = (props) => {
 	const { headerData, customCells } = props;
 
 	return (
-		<thead className={styles.root}>
+		<thead data-elem='table-header' className={styles.root}>
 			<TableRow type='header' headerData={headerData} customCells={customCells} />
 		</thead>
 	);

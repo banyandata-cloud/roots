@@ -76,9 +76,15 @@
 }
 
 .root[data-elem=base-cell] {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  overflow-x: auto;
   padding: 0.5rem;
   gap: 1.25rem;
   width: 100%;
+}
+.root[data-elem=base-cell]::-webkit-scrollbar {
+  display: none;
 }
 .root[data-elem=base-cell] .icon {
   width: 1.5rem;

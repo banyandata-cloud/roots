@@ -7,12 +7,15 @@ import { TextField } from '../../../input';
 import styles from './TableFilters.module.css';
 
 const TableFilters = (props) => {
-	const { className, onRefresh, onSearch, searchValue, filterValue } = props;
+	const { className, style, onRefresh, onSearch, searchValue, filterValue } = props;
 
 	return (
 		<BaseCell
 			flexible
 			className={classes(styles.root, className)}
+			attrs={{
+				style,
+			}}
 			component1={
 				<Button
 					className={styles.left}
@@ -85,6 +88,8 @@ const TableFilters = (props) => {
 
 TableFilters.propTypes = {
 	className: PropTypes.string,
+	// eslint-disable-next-line react/forbid-prop-types
+	style: PropTypes.object,
 	onRefresh: PropTypes.func,
 	onSearch: PropTypes.func,
 	searchValue: PropTypes.string,
@@ -95,6 +100,7 @@ TableFilters.propTypes = {
 
 TableFilters.defaultProps = {
 	className: '',
+	style: {},
 	onRefresh: () => {},
 	onSearch: () => {},
 	searchValue: null,
