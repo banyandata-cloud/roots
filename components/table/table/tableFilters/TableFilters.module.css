@@ -116,7 +116,7 @@
 .root[data-elem=base-cell] > [data-elem=component2] .center {
   width: 100%;
 }
-.root[data-elem=base-cell] > [data-elem=component2] .center [data-elem=input-wrapper] {
+.root[data-elem=base-cell] > [data-elem=component2] .center [data-elem=base-cell] {
   background: var(--grey5);
   border-color: var(--grey5);
 }

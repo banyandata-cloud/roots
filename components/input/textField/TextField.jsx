@@ -46,33 +46,30 @@ const TextField = forwardRef(function TextField(props, inputRef) {
 		<div className={classes(styles.root, className)}>
 			<label>
 				{label}
-				<div
-					data-elem='input-wrapper'
-					className={classes(styles['input-wrapper'], styles[`border-${border}`])}>
-					<BaseCell
-						component1={LeftComponent && <LeftComponent />}
-						component2={
-							<input
-								{...{
-									id,
-									name,
-									disabled,
-									type,
-									defaultValue,
-									placeholder,
-									onBlur,
-								}}
-								data-elem='input'
-								ref={inputRef}
-								value={isControlled ? value ?? '' : uncontrolledValue}
-								onChange={handleChange}
-								className={classes(styles[size], styles.input)}
-								{...inputProps}
-							/>
-						}
-						component3={RightComponent && <RightComponent />}
-					/>
-				</div>
+				<BaseCell
+					className={classes(styles['input-wrapper'], styles[`border-${border}`])}
+					component1={LeftComponent && <LeftComponent />}
+					component2={
+						<input
+							{...{
+								id,
+								name,
+								disabled,
+								type,
+								defaultValue,
+								placeholder,
+								onBlur,
+							}}
+							data-elem='input'
+							ref={inputRef}
+							value={isControlled ? value ?? '' : uncontrolledValue}
+							onChange={handleChange}
+							className={classes(styles[size], styles.input)}
+							{...inputProps}
+						/>
+					}
+					component3={RightComponent && <RightComponent />}
+				/>
 			</label>
 			{fieldInfo && (
 				<div className={classes(styles.field)}>

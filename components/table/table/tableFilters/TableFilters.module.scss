@@ -1,4 +1,4 @@
-@import '../../../../assets/styles/index';
+@import '../../../../styles/_index';
 
 .root[data-elem='base-cell'] {
 	padding: 0.5rem;
@@ -45,7 +45,7 @@
 		flex: 1;
 		.center {
 			width: 100%;
-			[data-elem='input-wrapper'] {
+			[data-elem='base-cell'] {
 				background: $grey5;
 				border-color: $grey5;
 			}

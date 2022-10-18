@@ -1,4 +1,4 @@
-@import '../../../assets/styles';
+@import '../../../styles/_index';
 
 .root {
 	@include flex(column, center, flex-start);
@@ -11,7 +11,6 @@
 		line-height: 1.125rem;
 		letter-spacing: 0.32px;
 		color: $grey;
-		font-family: 'Poppins';
 		height: 100%;
 		.input-wrapper {
 			@include flex(row, space-between, center);
@@ -24,15 +23,17 @@
 			border-radius: 0.25rem;
 			height: 100%;
 
-			.left {
-				@include flex(row, flex-start);
-				width: 100%;
-				gap: 0.5rem;
-				.icon {
-					@include flex;
-				}
+			.icon {
+				@include flex;
+			}
+			> [data-elem*='component'] {
+				@include flex;
+			}
+			> [data-elem='component2'] {
+				flex: 1;
 				.input {
 					@include removeArrows;
+					flex: 1;
 					background-color: transparent;
 					border: none;
 					font-weight: 400;
@@ -40,7 +41,6 @@
 					line-height: 1.125rem;
 					letter-spacing: 0.16px;
 					color: $black;
-					font-family: inherit;
 					width: 100%;
 					&:focus {
 						outline: none;
@@ -56,6 +56,7 @@
 					}
 				}
 			}
+
 			&:focus-within {
 				border: 0.063rem solid $info;
 				background-color: $info-bg;

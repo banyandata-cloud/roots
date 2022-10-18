@@ -282,14 +282,14 @@
   max-width: 100%;
   height: 100%;
 }
-.root .form .jump-to-page .inputbox [data-elem=input-wrapper] {
+.root .form .jump-to-page .inputbox [data-elem=base-cell] {
   border-radius: 0.313rem;
   background-color: var(--grey);
   color: var(--white);
   border-color: var(--grey);
   width: 4.875rem;
 }
-.root .form .jump-to-page .inputbox [data-elem=input-wrapper] [data-elem=input] {
+.root .form .jump-to-page .inputbox [data-elem=base-cell] [data-elem=input] {
   text-align: center;
   color: var(--white);
   background-color: var(--grey);

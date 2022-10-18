@@ -19,6 +19,8 @@ const Chip = (props) => {
 		color,
 	} = props;
 
+	console.log(LeftComponent && <LeftComponent />);
+
 	return (
 		<BaseButton
 			{...{

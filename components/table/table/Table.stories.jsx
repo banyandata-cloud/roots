@@ -1,5 +1,5 @@
 import React from 'react';
-import { Server, Copy } from '../../icons';
+import { Server, Copy, Arrow } from '../../icons';
 import { usePagination } from '../../pagination';
 import { TableColumn } from '../BaseTable.class';
 import Table from './Table';
@@ -197,13 +197,15 @@ Default.args = {
 		chips: [
 			new TableChip({
 				key: 'something',
-				iconArrowlabel: 'DB Tech',
+				icon: Arrow,
+				label: 'DB Tech',
 				value: 'PgSQL',
 				disabled: true,
 			}),
 			new TableChip({
 				key: 'something',
-				iconArrowlabel: 'DB Tech',
+				icon: Arrow,
+				label: 'DB Tech',
 				value: 'MySQL',
 				disabled: true,
 			}),

@@ -1,4 +1,4 @@
-@import '../../assets/styles';
+@import '../../styles/_index';
 
 .root {
 	@include flex(row, space-between, stretch);
@@ -188,7 +188,7 @@
 				width: 5rem;
 				max-width: 100%;
 				height: 100%;
-				[data-elem='input-wrapper'] {
+				[data-elem='base-cell'] {
 					border-radius: 0.313rem;
 					background-color: $grey;
 					color: $white;

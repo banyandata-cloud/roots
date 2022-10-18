@@ -119,15 +119,9 @@ Table.defaultProps = {
 		header: null,
 		body: null,
 	},
-	chipsData: {
-		...TableChips.defaultProps,
-	},
-	filtersData: {
-		...TableFilters.defaultProps,
-	},
-	paginationData: {
-		...Pagination.defaultProps,
-	},
+	chipsData: null,
+	filtersData: null,
+	paginationData: null,
 };
 
 export default Table;
