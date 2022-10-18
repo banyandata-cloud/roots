@@ -22,7 +22,20 @@ const Template = (args) => {
 	});
 
 	return (
-		<div>
+		<div
+			style={{
+				background: '#777777',
+				padding: '1rem',
+				display: 'flex',
+			}}>
+			<div
+				style={{
+					background: 'red',
+					width: '20rem',
+					height: '20rem',
+					flex: 1,
+				}}
+			/>
 			<Table
 				{...args}
 				paginationData={{
@@ -81,7 +94,7 @@ Default.args = {
 			designation: 'UI Engineer',
 			state: 'Delhi',
 		},
-		{
+		...[...Array(20).keys()].fill({
 			name: 'Pradeep Annadurai',
 			gender: 'M',
 			description:
@@ -90,107 +103,7 @@ Default.args = {
 			age: 24,
 			designation: 'UI Engineer',
 			state: 'Tamil Nadu',
-		},
-		{
-			name: 'Pradeep Annadurai',
-			gender: 'M',
-			description:
-				'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta nulla voluptatum consectetur libero, fuga amet earum ducimus quidem aliquam fugit id ipsum, cupiditate dignissimos facilis, repellendus possimus aspernatur tempore! Veniam saepe dolor reprehenderit sunt tenetur quam adipisci quis deleniti, maxime officiis dolorum, iure quia excepturi velit repellendus ad eius iste.',
-			age: 24,
-			designation: 'UI Engineer',
-			state: 'Tamil Nadu',
-		},
-		{
-			name: 'Pradeep Annadurai',
-			gender: 'M',
-			description:
-				'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta nulla voluptatum consectetur libero, fuga amet earum ducimus quidem aliquam fugit id ipsum, cupiditate dignissimos facilis, repellendus possimus aspernatur tempore! Veniam saepe dolor reprehenderit sunt tenetur quam adipisci quis deleniti, maxime officiis dolorum, iure quia excepturi velit repellendus ad eius iste.',
-			age: 24,
-			designation: 'UI Engineer',
-			state: 'Tamil Nadu',
-		},
-		{
-			name: 'Pradeep Annadurai',
-			gender: 'M',
-			description:
-				'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta nulla voluptatum consectetur libero, fuga amet earum ducimus quidem aliquam fugit id ipsum, cupiditate dignissimos facilis, repellendus possimus aspernatur tempore! Veniam saepe dolor reprehenderit sunt tenetur quam adipisci quis deleniti, maxime officiis dolorum, iure quia excepturi velit repellendus ad eius iste.',
-			age: 24,
-			designation: 'UI Engineer',
-			state: 'Tamil Nadu',
-		},
-		{
-			name: 'Pradeep Annadurai',
-			gender: 'M',
-			description:
-				'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta nulla voluptatum consectetur libero, fuga amet earum ducimus quidem aliquam fugit id ipsum, cupiditate dignissimos facilis, repellendus possimus aspernatur tempore! Veniam saepe dolor reprehenderit sunt tenetur quam adipisci quis deleniti, maxime officiis dolorum, iure quia excepturi velit repellendus ad eius iste.',
-			age: 24,
-			designation: 'UI Engineer',
-			state: 'Tamil Nadu',
-		},
-		{
-			name: 'Pradeep Annadurai',
-			gender: 'M',
-			description:
-				'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta nulla voluptatum consectetur libero, fuga amet earum ducimus quidem aliquam fugit id ipsum, cupiditate dignissimos facilis, repellendus possimus aspernatur tempore! Veniam saepe dolor reprehenderit sunt tenetur quam adipisci quis deleniti, maxime officiis dolorum, iure quia excepturi velit repellendus ad eius iste.',
-			age: 24,
-			designation: 'UI Engineer',
-			state: 'Tamil Nadu',
-		},
-		{
-			name: 'Pradeep Annadurai',
-			gender: 'M',
-			description:
-				'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta nulla voluptatum consectetur libero, fuga amet earum ducimus quidem aliquam fugit id ipsum, cupiditate dignissimos facilis, repellendus possimus aspernatur tempore! Veniam saepe dolor reprehenderit sunt tenetur quam adipisci quis deleniti, maxime officiis dolorum, iure quia excepturi velit repellendus ad eius iste.',
-			age: 24,
-			designation: 'UI Engineer',
-			state: 'Tamil Nadu',
-		},
-		{
-			name: 'Pradeep Annadurai',
-			gender: 'M',
-			description:
-				'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta nulla voluptatum consectetur libero, fuga amet earum ducimus quidem aliquam fugit id ipsum, cupiditate dignissimos facilis, repellendus possimus aspernatur tempore! Veniam saepe dolor reprehenderit sunt tenetur quam adipisci quis deleniti, maxime officiis dolorum, iure quia excepturi velit repellendus ad eius iste.',
-			age: 24,
-			designation: 'UI Engineer',
-			state: 'Tamil Nadu',
-		},
-		{
-			name: 'Pradeep Annadurai',
-			gender: 'M',
-			description:
-				'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta nulla voluptatum consectetur libero, fuga amet earum ducimus quidem aliquam fugit id ipsum, cupiditate dignissimos facilis, repellendus possimus aspernatur tempore! Veniam saepe dolor reprehenderit sunt tenetur quam adipisci quis deleniti, maxime officiis dolorum, iure quia excepturi velit repellendus ad eius iste.',
-			age: 24,
-			designation: 'UI Engineer',
-			state: 'Tamil Nadu',
-		},
-		{
-			name: 'Pradeep Annadurai',
-			gender: 'M',
-			age: 24,
-			designation: 'UI Engineer',
-			state: 'Tamil Nadu',
-		},
-		{
-			name: 'Pradeep Annadurai',
-			gender: 'M',
-			age: 24,
-			designation: 'UI Engineer',
-			state: 'Tamil Nadu',
-		},
-		{
-			name: 'Pradeep Annadurai',
-			gender: 'M',
-			age: 24,
-			designation: 'UI Engineer',
-			state: 'Tamil Nadu',
-		},
-		{
-			name: 'Pradeep Annadurai',
-			gender: 'M',
-			age: 24,
-			designation: 'UI Engineer',
-			state: 'Tamil Nadu',
-		},
+		}),
 	],
 	chipsData: {
 		showBack: true,

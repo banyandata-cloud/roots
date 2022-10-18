@@ -1,8 +1,9 @@
-@import '../../../assets/styles/index';
+@import '../../../styles/_index';
 
 .root {
 	border-style: solid;
 	border-color: $grey4;
 	border-width: 1px 1px 0px 1px;
 	border-radius: 0.25rem;
+	width: 100%;
 }

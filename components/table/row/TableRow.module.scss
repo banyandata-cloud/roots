@@ -1,8 +1,7 @@
-@import '../../../assets/styles/index';
+@import '../../../styles/_index';
 
 .root {
 	@include flex(row, flex-start);
-	border-bottom: 1px solid $grey4;
 
 	&.header-row {
 		background: $grey6;
@@ -12,15 +11,20 @@
 		background: $white;
 
 		&:hover {
-			background: $info-bg;
+			.cell {
+				background: $info-bg;
+			}
 		}
 
 		&.selected {
-			background: $background;
+			.cell {
+				background: $background;
+			}
 		}
 	}
 
 	.cell {
+		border-bottom: 1px solid $grey4;
 		> [data-elem*='component'] {
 			@include flex(row, flex-start);
 			flex: 1;
@@ -33,6 +37,7 @@
 		}
 
 		&.header-cell {
+			background: $grey7;
 			.cell-text {
 				font-weight: 600;
 			}

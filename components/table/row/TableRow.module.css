@@ -80,7 +80,6 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  border-bottom: 1px solid var(--grey4);
 }
 .root.header-row {
   background: var(--grey6);
@@ -88,11 +87,14 @@
 .root.body-row {
   background: var(--white);
 }
-.root.body-row:hover {
+.root.body-row:hover .cell {
   background: var(--info-bg);
 }
-.root.body-row.selected {
+.root.body-row.selected .cell {
   background: var(--background);
+}
+.root .cell {
+  border-bottom: 1px solid var(--grey4);
 }
 .root .cell > [data-elem*=component] {
   display: flex;
@@ -108,6 +110,9 @@
   display: inline-block;
   width: 100%;
   font-size: 0.875rem;
+}
+.root .cell.header-cell {
+  background: var(--grey7);
 }
 .root .cell.header-cell .cell-text {
   font-weight: 600;

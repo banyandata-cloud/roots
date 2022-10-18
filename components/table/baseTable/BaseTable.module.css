@@ -80,5 +80,6 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
+  background: var(--white);
   overflow: auto;
 }/*# sourceMappingURL=BaseTable.module.css.map */

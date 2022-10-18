@@ -8,6 +8,8 @@ import { TableFilters } from './tableFilters';
 import { Pagination } from '../../pagination';
 import styles from './Table.module.css';
 
+const INTERSECTION = 0.25;
+
 const Table = (props) => {
 	const {
 		className,
@@ -36,7 +38,7 @@ const Table = (props) => {
 				const handleIntersect = (entries) => {
 					entries.forEach((entry) => {
 						// if the target is visibile
-						if (entry.isIntersecting && entry.intersectionRatio === 1) {
+						if (entry.isIntersecting && entry.intersectionRatio >= INTERSECTION) {
 							tableElem.style.padding = '0';
 							setFloating(false);
 						} else {
@@ -47,7 +49,7 @@ const Table = (props) => {
 				};
 
 				const options = {
-					threshold: 1.0,
+					threshold: INTERSECTION,
 				};
 
 				const observer = new IntersectionObserver(handleIntersect, options);
@@ -71,6 +73,7 @@ const Table = (props) => {
 					customCells,
 				}}
 			/>
+
 			{paginationData != null && <Pagination {...paginationData} floating={floating} />}
 		</div>
 	);
