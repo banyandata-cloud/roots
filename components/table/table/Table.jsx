@@ -9,6 +9,12 @@ import { Pagination } from '../../pagination';
 import styles from './Table.module.css';
 
 const INTERSECTION = 1;
+const STEP = 0.1;
+const THRESHOLD = [];
+
+for (let i = 0; i < INTERSECTION; i += STEP) {
+	THRESHOLD.push(i);
+}
 
 const Table = (props) => {
 	const {
@@ -31,40 +37,28 @@ const Table = (props) => {
 
 	useEffect(() => {
 		const tableElem = ref.current;
-		const paginationElem = paginationRef.current;
 		if (tableElem) {
-			const tableRect = tableElem.getBoundingClientRect();
-			const { width: tableWidth, left: tableLeft } = tableRect;
-			if (paginationElem) {
-				paginationElem.style.left = `${tableLeft + tableWidth / 2}px`;
-			}
 			const lastRow = tableElem.querySelector(
 				'[data-elem="table-body"] [data-elem="table-row"]:last-child'
 			);
+			const lastRowHeight = parseInt(getComputedStyle(lastRow).height.slice(0, -2), 10);
 			if (lastRow) {
 				const handleIntersect = (entries) => {
 					entries.forEach((entry) => {
 						// if the target is visibile
-						if (entry.isIntersecting && entry.intersectionRatio >= INTERSECTION) {
-							tableElem.style.height = 'calc(100% - 9.5rem)';
-							tableElem.style.paddingBottom = '0';
-							if (paginationElem) {
-								paginationElem.style.maxWidth = '100%';
-							}
+						if (
+							(entry.isIntersecting && entry.intersectionRatio >= INTERSECTION) ||
+							entry?.intersectionRect?.height === lastRowHeight
+						) {
 							setFloating(false);
 						} else {
-							tableElem.style.paddingBottom = '3.5rem';
-							tableElem.style.height = 'calc(100% - 6rem)';
-							if (paginationElem) {
-								paginationElem.style.maxWidth = `calc(${tableWidth}px - 2rem)`;
-							}
 							setFloating(true);
 						}
 					});
 				};
 
 				const options = {
-					threshold: INTERSECTION,
+					threshold: THRESHOLD,
 				};
 
 				const observer = new IntersectionObserver(handleIntersect, options);
@@ -92,7 +86,7 @@ const Table = (props) => {
 
 			{paginationData != null && (
 				<Pagination
-					className={styles.pagination}
+					className={classes(styles.pagination, floating ? styles.floating : '')}
 					ref={paginationRef}
 					{...paginationData}
 					floating={floating}

@@ -1,6 +1,7 @@
 @import '../../../styles/_index';
 
 .root {
+	position: relative;
 	border-style: solid;
 	border-color: $grey4;
 	border-width: 1px 1px 0px 1px;
@@ -10,8 +11,19 @@
 	height: 100%;
 
 	.table {
-		position: relative;
-		height: calc(100% - (9.5rem));
+		height: calc(100% - (6rem));
+		padding-bottom: 3.5rem;
+	}
+
+	.pagination {
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		transform: translateX(-50%);
+
+		&.floating {
+			bottom: 1rem;
+		}
 	}
 
 	.chips,

@@ -10,7 +10,7 @@
 	height: 3.5rem;
 	overflow: auto;
 
-	transition-property: background-color, color, bottom, max-width, width;
+	transition-property: background-color, color, bottom, width;
 	transition-duration: 0.33s;
 	transition-timing-function: ease-out;
 
@@ -19,9 +19,7 @@
 		position: absolute;
 		border-radius: 6.25rem;
 		width: 82%;
-		left: 50%;
-		bottom: 2.5rem;
-		transform: translate(-50%);
+		bottom: 3rem;
 	}
 	.row-switcher,
 	.pagination,

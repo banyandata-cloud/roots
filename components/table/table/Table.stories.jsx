@@ -28,7 +28,6 @@ const Template = (args) => {
 				padding: '1rem',
 				display: 'flex',
 				height: '100%',
-				// minHeight: '100%',
 			}}>
 			<Table
 				{...args}
