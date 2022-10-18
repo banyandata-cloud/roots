@@ -75,7 +75,7 @@
   info-outline: var(--info-outline);
 }
 
-.content {
+.root {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -87,37 +87,30 @@
   transform: translate(-50%, -50%);
   max-height: 100%;
   width: 50%;
-  position: absolute;
+  position: fixed;
   background: #ffffff;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.13);
   border-radius: 5px;
   outline: none;
 }
-.content .body {
+.root .body {
   overflow-y: scroll;
   padding: 0 15px;
 }
-.content .header,
-.content .footer {
+.root .header,
+.root .footer {
   padding: 15px;
 }
-.content .footer {
+.root .footer {
   margin-top: auto;
 }
-.content .closeModal {
+.root .closeModal {
   position: absolute;
   right: 20px;
   top: 20px;
 }
-.content .closeModal .closeIcon {
+.root .closeModal .closeIcon {
   width: 1.5rem;
   height: 1.5rem;
   fill: var(--black);
-}
-
-.overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-  background-color: rgba(0, 0, 0, 0.228);
 }/*# sourceMappingURL=BaseModal.module.css.map */

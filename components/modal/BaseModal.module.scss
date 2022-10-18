@@ -1,6 +1,6 @@
-@import '../../assets/styles';
+@import '../../styles/_index';
 
-.content {
+.root {
 	@include flex(column, flex-start, stretch);
 	top: 50%;
 	left: 50%;
@@ -9,7 +9,7 @@
 	transform: translate(-50%, -50%);
 	max-height: 100%;
 	width: 50%;
-	position: absolute;
+	position: fixed;
 	background: #ffffff;
 	box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.13);
 	border-radius: 5px;
@@ -38,11 +38,4 @@
 			fill: $black;
 		}
 	}
-}
-
-.overlay {
-	position: fixed;
-	inset: 0;
-	z-index: 1000;
-	background-color: rgba(0, 0, 0, 0.228);
 }
