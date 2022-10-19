@@ -7,7 +7,7 @@ export class TableColumn {
 		flexible = false,
 		style = {},
 		multiLine = false,
-		fixed = null,
+		sticky = null,
 	}) {
 		this.title = title;
 		this.id = id;
@@ -16,6 +16,6 @@ export class TableColumn {
 		this.flexible = flexible;
 		this.style = style;
 		this.multiLine = multiLine;
-		this.fixed = fixed;
+		this.sticky = sticky;
 	}
 }

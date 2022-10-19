@@ -63,7 +63,7 @@ const TableRow = (props) => {
 						className={classes(
 							styles[`${type}-cell`],
 							styles.cell,
-							item.fixed ? styles[`fixed-${item.fixed}`] : ''
+							item.sticky ? styles[`sticky-${item.sticky}`] : ''
 						)}
 					/>
 				);

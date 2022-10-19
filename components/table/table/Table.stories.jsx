@@ -61,7 +61,7 @@ Default.args = {
 			title: 'Gender',
 			id: 'gender',
 			size: 'sm',
-			fixed: 'left',
+			sticky: 'left',
 		}),
 		new TableColumn({
 			title: 'Age',
@@ -76,7 +76,7 @@ Default.args = {
 			title: 'State',
 			id: 'state',
 			size: 'sm',
-			fixed: 'right',
+			sticky: 'right',
 		}),
 	],
 	tableData: [
