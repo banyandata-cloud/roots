@@ -25,6 +25,7 @@ const TextField = forwardRef(function TextField(props, inputRef) {
 		inputProps,
 		feedback,
 		count,
+		feedbackAndCount,
 	} = props;
 
 	const { current: isControlled } = useRef(value !== undefined);
@@ -76,25 +77,30 @@ const TextField = forwardRef(function TextField(props, inputRef) {
 					component3={RightComponent && <RightComponent />}
 				/>
 			</label>
-			<div className={styles.bottom}>
-				{feedback != null && (
-					<div
-						data-elem='feedback'
-						className={classes(styles.feedback, styles[`feedback-${feedback.type}`])}>
-						{feedback.text}
-					</div>
-				)}
-				{count?.limit != null && (
-					<div
-						data-elem='count'
-						className={classes(
-							styles.count,
-							inputValue?.length > count.limit ? styles.exceeded : ''
-						)}>
-						{inputValue.length ?? 0}/{count.limit}
-					</div>
-				)}
-			</div>
+			{feedbackAndCount && (
+				<div className={styles.bottom}>
+					{feedback != null && (
+						<div
+							data-elem='feedback'
+							className={classes(
+								styles.feedback,
+								styles[`feedback-${feedback.type}`]
+							)}>
+							{feedback.text}
+						</div>
+					)}
+					{count?.limit != null && (
+						<div
+							data-elem='count'
+							className={classes(
+								styles.count,
+								inputValue?.length > count.limit ? styles.exceeded : ''
+							)}>
+							{inputValue.length ?? 0}/{count.limit}
+						</div>
+					)}
+				</div>
+			)}
 		</div>
 	);
 });
@@ -122,6 +128,7 @@ TextField.propTypes = {
 		text: PropTypes.node,
 		type: PropTypes.oneOf(['error', 'success', 'default']),
 	}),
+	feedbackAndCount: PropTypes.bool,
 };
 
 TextField.defaultProps = {
@@ -141,6 +148,7 @@ TextField.defaultProps = {
 	inputProps: {},
 	count: null,
 	feedback: null,
+	feedbackAndCount: false,
 };
 
 export default TextField;
