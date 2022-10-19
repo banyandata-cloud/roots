@@ -1,4 +1,4 @@
-import React, { forwardRef, useReducer, useRef } from 'react';
+import React, { forwardRef, useEffect, useReducer, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { classes } from '../../utils';
 import Button from '../buttons/Button';
@@ -34,6 +34,11 @@ const reducer = (state, { type, payload }) => {
 				...state,
 				step: payload,
 			};
+		case 'SET_TOTAL_PAGES':
+			return {
+				...state,
+				totalPages: payload,
+			};
 		default:
 			return state;
 	}
@@ -46,6 +51,20 @@ export const usePagination = (props) => {
 		currentPage,
 		step,
 	});
+
+	useEffect(() => {
+		if (paginationState.currentPage > totalPages) {
+			paginationDispatch({
+				type: 'SET_PAGE',
+				payload: totalPages,
+			});
+		}
+		paginationDispatch({
+			type: 'SET_TOTAL_PAGES',
+			payload: totalPages,
+		});
+	}, [totalPages]);
+
 	return [paginationState, paginationDispatch];
 };
 
