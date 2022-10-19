@@ -67,6 +67,14 @@ const Table = (props) => {
 		}
 	}, []);
 
+	useEffect(() => {
+		const tableElem = ref.current;
+		if (tableElem) {
+			const totalAddons = [chipsData, filtersData].filter(Boolean).length;
+			tableElem.style.height = `calc(100% - ${totalAddons * 3}rem)`;
+		}
+	}, [chipsData, filtersData]);
+
 	return (
 		<div className={classes(styles.root, className)}>
 			{chipsData != null && <TableChips className={styles.chips} {...chipsData} />}

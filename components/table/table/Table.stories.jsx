@@ -98,6 +98,14 @@ Default.args = {
 			state: 'Tamil Nadu',
 		}),
 	],
+};
+
+Default.parameters = {};
+
+export const WithChips = Template.bind({});
+
+WithChips.args = {
+	...Default.args,
 	chipsData: {
 		showBack: true,
 		chips: [
@@ -135,6 +143,12 @@ Default.args = {
 			}),
 		],
 	},
+};
+
+export const WithFilters = Template.bind({});
+
+WithFilters.args = {
+	...Default.args,
 	filtersData: {
 		filterValue: {
 			applied: 4,
@@ -142,4 +156,9 @@ Default.args = {
 	},
 };
 
-Default.parameters = {};
+export const WithChipsAndFilters = Template.bind({});
+
+WithChipsAndFilters.args = {
+	...WithChips.args,
+	...WithFilters.args,
+};
