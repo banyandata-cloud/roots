@@ -41,8 +41,8 @@ const Table = (props) => {
 			const lastRow = tableElem.querySelector(
 				'[data-elem="table-body"] [data-elem="table-row"]:last-child'
 			);
-			const lastRowHeight = parseInt(getComputedStyle(lastRow).height.slice(0, -2), 10);
 			if (lastRow) {
+				const lastRowHeight = parseInt(getComputedStyle(lastRow).height.slice(0, -2), 10);
 				const handleIntersect = (entries) => {
 					entries.forEach((entry) => {
 						// if the target is visibile
