@@ -24,6 +24,7 @@
 	}
 
 	.cell {
+		background: $white;
 		border-bottom: 1px solid $grey4;
 		> [data-elem*='component'] {
 			@include flex(row, flex-start);
@@ -53,6 +54,16 @@
 					font-size: 0.75rem;
 				}
 			}
+		}
+
+		&.fixed-left {
+			position: sticky;
+			left: 0;
+		}
+
+		&.fixed-right {
+			position: sticky;
+			right: 0;
 		}
 	}
 }

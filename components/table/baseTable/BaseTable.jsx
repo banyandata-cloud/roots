@@ -2,6 +2,7 @@
 import PropTypes from 'prop-types';
 import { forwardRef } from 'react';
 import { classes } from '../../../utils';
+import { TableColumn } from '../BaseTable.class';
 import { TableBody } from '../body';
 import { TableHeader } from '../header';
 import styles from './BaseTable.module.css';
@@ -11,17 +12,28 @@ const BaseTable = forwardRef(function BaseTable(props, ref) {
 	const { headerData, customCells, tableData, uniqueKey, activeData, setActiveData, className } =
 		props;
 
+	const transformedHeaderData = headerData.map((header) => {
+		return new TableColumn(header);
+	});
+
 	return (
 		<table ref={ref} data-elem='table' className={classes(className, styles.root)}>
-			<TableHeader headerData={headerData} customCells={customCells} />
+			<TableHeader
+				{...{
+					headerData: transformedHeaderData,
+					customCells,
+				}}
+			/>
 			<TableBody
-				ref={ref}
-				headerData={headerData}
-				customCells={customCells}
-				tableData={tableData}
-				uniqueKey={uniqueKey}
-				activeData={activeData}
-				setActiveData={setActiveData}
+				{...{
+					ref,
+					headerData: transformedHeaderData,
+					customCells,
+					tableData,
+					uniqueKey,
+					activeData,
+					setActiveData,
+				}}
 			/>
 		</table>
 	);

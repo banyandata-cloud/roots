@@ -60,7 +60,11 @@ const TableRow = (props) => {
 					<TableCell
 						{...cellProps}
 						component1={component1}
-						className={classes(styles[`${type}-cell`], styles.cell)}
+						className={classes(
+							styles[`${type}-cell`],
+							styles.cell,
+							item.fixed ? styles[`fixed-${item.fixed}`] : ''
+						)}
 					/>
 				);
 			})}

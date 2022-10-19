@@ -94,6 +94,7 @@
   background: var(--background);
 }
 .root .cell {
+  background: var(--white);
   border-bottom: 1px solid var(--grey4);
 }
 .root .cell > [data-elem*=component] {
@@ -123,4 +124,14 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   font-size: 0.75rem;
+}
+.root .cell.fixed-left {
+  position: -webkit-sticky;
+  position: sticky;
+  left: 0;
+}
+.root .cell.fixed-right {
+  position: -webkit-sticky;
+  position: sticky;
+  right: 0;
 }/*# sourceMappingURL=TableRow.module.css.map */
