@@ -1,3 +1,9 @@
+const SIZE_MAP = {
+	sm: 9.063,
+	md: 15.625,
+	lg: 21.875,
+};
+
 export class TableColumn {
 	constructor({
 		title = '',
@@ -13,6 +19,7 @@ export class TableColumn {
 		this.id = id;
 		this.sort = sort;
 		this.size = size;
+		this.sizeInRem = SIZE_MAP[size];
 		this.flexible = flexible;
 		this.style = style;
 		this.multiLine = multiLine;

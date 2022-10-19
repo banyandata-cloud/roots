@@ -35,6 +35,7 @@ const Table = (props) => {
 
 	const [floating, setFloating] = useState(false);
 
+	// for pagination docking using intersection observer
 	useEffect(() => {
 		const tableElem = ref.current;
 		if (tableElem) {
@@ -67,6 +68,7 @@ const Table = (props) => {
 		}
 	}, []);
 
+	// for dynamically resizing table vertically acc to provided addons
 	useEffect(() => {
 		const tableElem = ref.current;
 		if (tableElem) {
@@ -74,6 +76,24 @@ const Table = (props) => {
 			tableElem.style.height = `calc(100% - ${totalAddons * 3}rem)`;
 		}
 	}, [chipsData, filtersData]);
+
+	// setting body and header min-width to allow horizontal sticky column beyond viewport width
+	useEffect(() => {
+		const tableElem = ref.current;
+		if (tableElem) {
+			const tableHeaderElem = tableElem.querySelector('[data-elem="table-header"]');
+			const tableBodyElem = tableElem.querySelector('[data-elem="table-body"]');
+
+			if (tableHeaderElem && tableBodyElem) {
+				let minWidth = 0;
+				headerData.forEach((header) => {
+					minWidth += header.sizeInRem;
+				});
+				tableHeaderElem.style.minWidth = `${minWidth}rem`;
+				tableBodyElem.style.minWidth = `${minWidth}rem`;
+			}
+		}
+	}, [headerData]);
 
 	return (
 		<div className={classes(styles.root, className)}>

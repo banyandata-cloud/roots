@@ -57,11 +57,13 @@
 		}
 
 		&.sticky-left {
+			@include boxShadow;
 			position: sticky;
 			left: 0;
 		}
 
 		&.sticky-right {
+			@include boxShadow;
 			position: sticky;
 			right: 0;
 		}

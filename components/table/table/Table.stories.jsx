@@ -47,8 +47,9 @@ Default.args = {
 		new TableColumn({
 			title: 'Name',
 			id: 'name',
-			size: 'lg',
-			flexible: true,
+			size: 'sm',
+			// flexible: true,
+			sticky: 'left',
 		}),
 		new TableColumn({
 			title: 'Description',
@@ -61,7 +62,6 @@ Default.args = {
 			title: 'Gender',
 			id: 'gender',
 			size: 'sm',
-			sticky: 'left',
 		}),
 		new TableColumn({
 			title: 'Age',
@@ -71,6 +71,26 @@ Default.args = {
 		new TableColumn({
 			title: 'Designation',
 			id: 'designation',
+		}),
+		new TableColumn({
+			title: 'A Column',
+			id: 'aColumn',
+			size: 'lg',
+		}),
+		new TableColumn({
+			title: 'Another Column',
+			id: 'anotherColumn',
+			size: 'lg',
+		}),
+		new TableColumn({
+			title: 'Another One',
+			id: 'anotherOne',
+			size: 'lg',
+		}),
+		new TableColumn({
+			title: 'And Another One',
+			id: 'andAnotherOne',
+			size: 'lg',
 		}),
 		new TableColumn({
 			title: 'State',
@@ -87,6 +107,14 @@ Default.args = {
 				'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta nulla voluptatum consectetur libero, fuga amet earum ducimus quidem aliquam fugit id ipsum, cupiditate dignissimos facilis, repellendus possimus aspernatur tempore! Veniam saepe dolor reprehenderit sunt tenetur quam adipisci quis deleniti, maxime officiis dolorum, iure quia excepturi velit repellendus ad eius iste.',
 			age: 23,
 			designation: 'UI Engineer',
+			aColumn:
+				'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+			anotherColumn:
+				'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+			anotherOne:
+				'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+			andAnotherOne:
+				'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
 			state: 'Delhi',
 		},
 		...[...Array(20).keys()].fill({
@@ -97,6 +125,14 @@ Default.args = {
 
 			age: 24,
 			designation: 'UI Engineer',
+			aColumn:
+				'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+			anotherColumn:
+				'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+			anotherOne:
+				'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+			andAnotherOne:
+				'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
 			state: 'Tamil Nadu',
 		}),
 	],

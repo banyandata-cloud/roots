@@ -126,11 +126,13 @@
   font-size: 0.75rem;
 }
 .root .cell.sticky-left {
+  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);
   position: -webkit-sticky;
   position: sticky;
   left: 0;
 }
 .root .cell.sticky-right {
+  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);
   position: -webkit-sticky;
   position: sticky;
   right: 0;
