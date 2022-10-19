@@ -87,53 +87,9 @@
 .root.body-row {
   background: var(--white);
 }
-.root.body-row:hover .cell {
+.root.body-row:hover > [data-elem=base-cell] {
   background: var(--info-bg);
 }
-.root.body-row.selected .cell {
+.root.body-row.selected > [data-elem=base-cell] {
   background: var(--background);
-}
-.root .cell {
-  background: var(--white);
-  border-bottom: 1px solid var(--grey4);
-}
-.root .cell > [data-elem*=component] {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  flex: 1;
-}
-.root .cell > [data-elem*=component] .cell-text {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-  display: inline-block;
-  width: 100%;
-  font-size: 0.875rem;
-}
-.root .cell.header-cell {
-  background: var(--grey7);
-}
-.root .cell.header-cell .cell-text {
-  font-weight: 600;
-}
-.root .cell.body-cell .cell-text.multi-line {
-  white-space: normal;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  font-size: 0.75rem;
-}
-.root .cell.sticky-left {
-  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);
-  position: -webkit-sticky;
-  position: sticky;
-  left: 0;
-}
-.root .cell.sticky-right {
-  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);
-  position: -webkit-sticky;
-  position: sticky;
-  right: 0;
 }/*# sourceMappingURL=TableRow.module.css.map */

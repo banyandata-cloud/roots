@@ -18,54 +18,32 @@ const TableRow = (props) => {
 				styles[`${type}-row`]
 			)}>
 			{headerData?.map?.((item) => {
+				let cellContent = null;
+				if (type === 'header') {
+					cellContent = item.title;
+				} else if (type === 'body') {
+					cellContent = datum?.[item.id];
+				}
+
 				const cellProps = {
 					...props,
 					...item,
 					setActiveData,
 					key: item.id,
+					datum,
+					cellContent,
+					type,
 				};
+
 				const CustomCell = customCells?.[type]?.[item.id];
 				if (CustomCell != null) {
 					// eslint-disable-next-line react/jsx-key
 					return <CustomCell {...cellProps} />;
 				}
 
-				let component1 = null;
-
-				if (type === 'header') {
-					component1 = (
-						<span
-							title={item.title}
-							className={classes(styles['cell-text'])}
-							style={item.style}>
-							{item.title}
-						</span>
-					);
-				} else if (type === 'body') {
-					component1 = (
-						<span
-							title={datum?.[item?.id]}
-							className={classes(
-								styles['cell-text'],
-								item.multiLine ? styles['multi-line'] : ''
-							)}
-							style={item.style}>
-							{datum?.[item?.id]}
-						</span>
-					);
-				}
-
 				return (
 					// eslint-disable-next-line react/jsx-key
-					<TableCell
-						{...cellProps}
-						component1={component1}
-						className={classes(
-							styles[`${type}-cell`],
-							styles.cell,
-							item.sticky ? styles[`sticky-${item.sticky}`] : ''
-						)}
-					/>
+					<TableCell {...cellProps} />
 				);
 			})}
 		</tr>

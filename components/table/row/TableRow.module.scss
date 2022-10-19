@@ -9,63 +9,16 @@
 
 	&.body-row {
 		background: $white;
-
 		&:hover {
-			.cell {
+			> [data-elem='base-cell'] {
 				background: $info-bg;
 			}
 		}
 
 		&.selected {
-			.cell {
+			> [data-elem='base-cell'] {
 				background: $background;
 			}
-		}
-	}
-
-	.cell {
-		background: $white;
-		border-bottom: 1px solid $grey4;
-		> [data-elem*='component'] {
-			@include flex(row, flex-start);
-			flex: 1;
-			.cell-text {
-				@include ellipsis;
-				display: inline-block;
-				width: 100%;
-				font-size: 0.875rem;
-			}
-		}
-
-		&.header-cell {
-			background: $grey7;
-			.cell-text {
-				font-weight: 600;
-			}
-		}
-
-		&.body-cell {
-			.cell-text {
-				&.multi-line {
-					white-space: normal;
-					display: -webkit-box;
-					-webkit-box-orient: vertical;
-					-webkit-line-clamp: 2;
-					font-size: 0.75rem;
-				}
-			}
-		}
-
-		&.sticky-left {
-			@include boxShadow;
-			position: sticky;
-			left: 0;
-		}
-
-		&.sticky-right {
-			@include boxShadow;
-			position: sticky;
-			right: 0;
 		}
 	}
 }

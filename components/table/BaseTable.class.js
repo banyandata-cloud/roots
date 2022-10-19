@@ -20,7 +20,11 @@ export class TableColumn {
 		this.sort = sort;
 		this.size = size;
 		this.sizeInRem = SIZE_MAP[size];
-		this.flexible = flexible;
+		if (flexible === 'true' || flexible === true) {
+			this.flexible = true;
+		} else {
+			this.flexible = false;
+		}
 		this.style = style;
 		this.multiLine = multiLine;
 		this.sticky = sticky;

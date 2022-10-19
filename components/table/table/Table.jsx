@@ -7,6 +7,7 @@ import { TableChips } from './tableChips';
 import { TableFilters } from './tableFilters';
 import { Pagination } from '../../pagination';
 import styles from './Table.module.css';
+import { TableColumn } from '../BaseTable.class';
 
 const INTERSECTION = 1;
 const STEP = 0.1;
@@ -87,7 +88,7 @@ const Table = (props) => {
 			if (tableHeaderElem && tableBodyElem) {
 				let minWidth = 0;
 				headerData.forEach((header) => {
-					minWidth += header.sizeInRem;
+					minWidth += new TableColumn(header).sizeInRem;
 				});
 				tableHeaderElem.style.minWidth = `${minWidth}rem`;
 				tableBodyElem.style.minWidth = `${minWidth}rem`;
