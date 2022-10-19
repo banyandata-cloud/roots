@@ -45,6 +45,10 @@
 					&:focus {
 						outline: none;
 					}
+					&:disabled {
+						background: $grey9;
+						color: $grey3;
+					}
 					&.sm {
 						padding: 0.5rem 0rem;
 					}
@@ -57,9 +61,30 @@
 				}
 			}
 
+			&.type-textarea {
+				padding: 0;
+
+				> [data-elem='component2'] {
+					.input {
+						resize: vertical;
+						&.md {
+							padding: 0.313rem 0.75rem;
+						}
+
+						&.lg {
+							padding: 0.5rem 1rem;
+							font-size: 1rem;
+						}
+					}
+				}
+			}
+
 			&:focus-within {
 				border: 0.063rem solid $info;
-				background-color: $info-bg;
+
+				&.feedback-error {
+					border-color: $error;
+				}
 			}
 
 			&.border-default {
@@ -74,23 +99,37 @@
 		}
 	}
 
-	.right {
-		@include flex(row, center, center);
-		gap: 0.313rem;
-		.icon {
-			font-size: 0.875rem;
-			color: $black;
-		}
-	}
-	.field {
-		@include flex(row, flex-start, center);
-		gap: 0.313rem;
+	.bottom {
+		@include flex(row, space-between, flex-start);
+		min-height: 2rem;
+		width: 100%;
+		gap: 1rem;
 		color: $grey3;
 		font-size: 0.75rem;
-		font-weight: 400;
-		line-height: 1.125rem;
-		.icon {
-			@include flex(row, flex-start, center);
+		user-select: none;
+
+		.feedback {
+			flex: 1;
+			margin-right: auto;
+
+			&.feedback-error {
+				color: $error;
+				fill: $error;
+			}
+
+			&.feedback-success {
+				color: $success;
+				fill: $success;
+			}
+		}
+
+		.count {
+			text-align: right;
+			margin-left: auto;
+
+			&.exceeded {
+				color: $error;
+			}
 		}
 	}
 }

@@ -1,4 +1,4 @@
-import React, { forwardRef, useRef, useState } from 'react';
+import React, { createElement, forwardRef, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './TextField.module.css';
 import { classes, inputHelper } from '../../../utils/utils';
@@ -17,14 +17,14 @@ const TextField = forwardRef(function TextField(props, inputRef) {
 		onBlur,
 		onChange,
 		size,
-		fieldInfo,
 		border,
 		LeftComponent,
 		RightComponent,
-		fieldIcon: FieldIcon,
 		className,
 		disabled,
 		inputProps,
+		feedback,
+		count,
 	} = props;
 
 	const { current: isControlled } = useRef(value !== undefined);
@@ -42,45 +42,59 @@ const TextField = forwardRef(function TextField(props, inputRef) {
 		}
 	};
 
+	const inputValue = isControlled ? value ?? '' : uncontrolledValue;
+
+	const Input = createElement(type === 'textarea' ? 'textarea' : 'input', {
+		id,
+		name,
+		disabled,
+		type,
+		defaultValue,
+		placeholder,
+		onBlur,
+		'data-elem': 'input',
+		ref: inputRef,
+		value: inputValue,
+		onChange: handleChange,
+		className: classes(styles[size], styles.input),
+		...inputProps,
+	});
+
 	return (
 		<div className={classes(styles.root, className)}>
 			<label>
 				{label}
 				<BaseCell
-					className={classes(styles['input-wrapper'], styles[`border-${border}`])}
+					className={classes(
+						styles['input-wrapper'],
+						styles[`border-${border}`],
+						styles[`type-${type}`],
+						feedback != null ? styles[`feedback-${feedback?.type}`] : ''
+					)}
 					component1={LeftComponent && <LeftComponent />}
-					component2={
-						<input
-							{...{
-								id,
-								name,
-								disabled,
-								type,
-								defaultValue,
-								placeholder,
-								onBlur,
-							}}
-							data-elem='input'
-							ref={inputRef}
-							value={isControlled ? value ?? '' : uncontrolledValue}
-							onChange={handleChange}
-							className={classes(styles[size], styles.input)}
-							{...inputProps}
-						/>
-					}
+					component2={Input}
 					component3={RightComponent && <RightComponent />}
 				/>
 			</label>
-			{fieldInfo && (
-				<div className={classes(styles.field)}>
-					<span>{fieldInfo}</span>
-					{FieldIcon && (
-						<span className={classes(styles.icon)}>
-							<FieldIcon />
-						</span>
-					)}
-				</div>
-			)}
+			<div className={styles.bottom}>
+				{feedback != null && (
+					<div
+						data-elem='feedback'
+						className={classes(styles.feedback, styles[`feedback-${feedback.type}`])}>
+						{feedback.text}
+					</div>
+				)}
+				{count?.limit != null && (
+					<div
+						data-elem='count'
+						className={classes(
+							styles.count,
+							inputValue?.length > count.limit ? styles.exceeded : ''
+						)}>
+						{inputValue.length ?? 0}/{count.limit}
+					</div>
+				)}
+			</div>
 		</div>
 	);
 });
@@ -91,16 +105,23 @@ TextField.propTypes = {
 	disabled: PropTypes.bool,
 	label: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	placeholder: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-	type: PropTypes.oneOf(['text', 'email', 'password', 'number']),
+	type: PropTypes.oneOf(['text', 'email', 'password', 'number', 'textarea']),
 	value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	defaultValue: PropTypes.string,
 	onChange: PropTypes.func,
 	size: PropTypes.oneOf(['sm', 'md', 'lg']),
 	border: PropTypes.oneOf(['default', 'bottom', 'none']),
-	fieldInfo: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	LeftComponent: PropTypes.node,
 	RightComponent: PropTypes.node,
-	fieldIcon: PropTypes.node,
+	// eslint-disable-next-line react/forbid-prop-types
+	inputProps: PropTypes.object,
+	count: PropTypes.shape({
+		limit: PropTypes.number,
+	}),
+	feedback: PropTypes.shape({
+		text: PropTypes.node,
+		type: PropTypes.oneOf(['error', 'success', 'default']),
+	}),
 };
 
 TextField.defaultProps = {
@@ -115,10 +136,11 @@ TextField.defaultProps = {
 	onChange: () => {},
 	size: 'md',
 	border: 'default',
-	fieldInfo: '',
 	LeftComponent: null,
 	RightComponent: null,
-	fieldIcon: null,
+	inputProps: {},
+	count: null,
+	feedback: null,
 };
 
 export default TextField;

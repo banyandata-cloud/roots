@@ -140,6 +140,10 @@
 .root label .input-wrapper > [data-elem=component2] .input:focus {
   outline: none;
 }
+.root label .input-wrapper > [data-elem=component2] .input:disabled {
+  background: var(--grey9);
+  color: var(--grey3);
+}
 .root label .input-wrapper > [data-elem=component2] .input.sm {
   padding: 0.5rem 0rem;
 }
@@ -149,9 +153,24 @@
 .root label .input-wrapper > [data-elem=component2] .input.lg {
   padding: 1rem 0rem;
 }
+.root label .input-wrapper.type-textarea {
+  padding: 0;
+}
+.root label .input-wrapper.type-textarea > [data-elem=component2] .input {
+  resize: vertical;
+}
+.root label .input-wrapper.type-textarea > [data-elem=component2] .input.md {
+  padding: 0.313rem 0.75rem;
+}
+.root label .input-wrapper.type-textarea > [data-elem=component2] .input.lg {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+}
 .root label .input-wrapper:focus-within {
   border: 0.063rem solid var(--info);
-  background-color: var(--info-bg);
+}
+.root label .input-wrapper:focus-within.feedback-error {
+  border-color: var(--error);
 }
 .root label .input-wrapper.border-default {
   border-width: 0.063rem;
@@ -162,31 +181,37 @@
 .root label .input-wrapper.border-none {
   border-width: 0rem;
 }
-.root .right {
+.root .bottom {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 0.313rem;
-}
-.root .right .icon {
-  font-size: 0.875rem;
-  color: var(--black);
-}
-.root .field {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 0.313rem;
+  justify-content: space-between;
+  align-items: flex-start;
+  min-height: 2rem;
+  width: 100%;
+  gap: 1rem;
   color: var(--grey3);
   font-size: 0.75rem;
-  font-weight: 400;
-  line-height: 1.125rem;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
-.root .field .icon {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
+.root .bottom .feedback {
+  flex: 1;
+  margin-right: auto;
+}
+.root .bottom .feedback.feedback-error {
+  color: var(--error);
+  fill: var(--error);
+}
+.root .bottom .feedback.feedback-success {
+  color: var(--success);
+  fill: var(--success);
+}
+.root .bottom .count {
+  text-align: right;
+  margin-left: auto;
+}
+.root .bottom .count.exceeded {
+  color: var(--error);
 }/*# sourceMappingURL=TextField.module.css.map */
