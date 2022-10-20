@@ -18,6 +18,7 @@ const TableCell = (props) => {
 		multiLine,
 		type,
 		cellContent,
+		cellTitle,
 		sticky,
 	} = props;
 
@@ -40,12 +41,18 @@ const TableCell = (props) => {
 				component1,
 				component2: (
 					<span
-						title={cellContent}
-						className={classes(
-							styles['cell-text'],
-							multiLine ? styles['multi-line'] : ''
-						)}
-						style={style}>
+						{...{
+							...(cellTitle != null
+								? {
+										title: cellTitle,
+								  }
+								: {}),
+							className: classes(
+								styles['cell-text'],
+								multiLine ? styles['multi-line'] : ''
+							),
+							style,
+						}}>
 						{cellContent}
 					</span>
 				),
@@ -68,10 +75,14 @@ TableCell.propTypes = {
 	style: PropTypes.object,
 	multiLine: PropTypes.bool,
 	sticky: PropTypes.oneOf(['left', 'right', 'none']),
+	cellContent: PropTypes.node,
+	cellTitle: PropTypes.string,
 };
 
 TableCell.defaultProps = {
 	...BaseCell.defaultProps,
+	cellContent: null,
+	cellTitle: null,
 };
 
 export default TableCell;

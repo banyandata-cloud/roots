@@ -32,6 +32,7 @@ const TableRow = (props) => {
 					key: item.id,
 					datum,
 					cellContent,
+					cellTitle: cellContent,
 					type,
 				};
 
