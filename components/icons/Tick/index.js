@@ -1,1 +1,1 @@
-export { default as Tick } from './Tick';
+export { default as TickIcon } from './Tick';

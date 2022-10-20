@@ -1,5 +1,5 @@
 import React from 'react';
-import { Calender, Copy, Server } from '../../../icons';
+import { CalenderIcon, CopyIcon, ServerIcon } from '../../../icons';
 import { TableChip } from './TableChip.class';
 import TableChips from './TableChips';
 
@@ -28,14 +28,14 @@ Default.args = {
 	chips: [
 		new TableChip({
 			key: 'something',
-			icon: Server,
+			icon: ServerIcon,
 			label: 'DB Tech',
 			value: 'PgSQL',
 			disabled: true,
 		}),
 		new TableChip({
 			key: 'something',
-			icon: Server,
+			icon: ServerIcon,
 			label: 'DB Tech',
 			value: 'MySQL',
 			disabled: true,
@@ -43,7 +43,7 @@ Default.args = {
 		new TableChip({
 			key: 'something',
 			icon: (iconProps) => {
-				return <Copy {...iconProps} />;
+				return <CopyIcon {...iconProps} />;
 			},
 			label: 'Cloud',
 			value: 'Google',
@@ -52,7 +52,7 @@ Default.args = {
 		new TableChip({
 			key: 'something',
 			icon: (iconProps) => {
-				return <Calender {...iconProps} />;
+				return <CalenderIcon {...iconProps} />;
 			},
 			label: 'Cloud',
 			value: 'Amazon',

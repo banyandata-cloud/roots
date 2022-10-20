@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { classes } from '../../utils/utils';
-import { Caret } from '../icons';
+import { CaretIcon } from '../icons';
 import styles from './Accordion.module.css';
 
 const Accordion = (props) => {
@@ -19,9 +19,9 @@ const Accordion = (props) => {
 						return !prevState;
 					});
 				}}>
-				{iconPlacement === 'left' && <Caret className={styles.icon} />}
+				{iconPlacement === 'left' && <CaretIcon className={styles.icon} />}
 				<span className={styles.title}>{title}</span>
-				{iconPlacement === 'right' && <Caret className={styles.icon} />}
+				{iconPlacement === 'right' && <CaretIcon className={styles.icon} />}
 			</div>
 			<div className={styles.body}>
 				{description && <p>{description}</p>}

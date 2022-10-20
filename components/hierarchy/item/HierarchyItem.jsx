@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { classes } from '../../../utils';
-import { Caret } from '../../icons';
+import { CaretIcon } from '../../icons';
 import styles from './HierarchyItem.module.css';
 
 const HierarchyItem = (props) => {
@@ -21,9 +21,9 @@ const HierarchyItem = (props) => {
 						return newState;
 					});
 				}}>
-				{iconPlacement === 'left' && <Caret className={styles.icon} />}
+				{iconPlacement === 'left' && <CaretIcon className={styles.icon} />}
 				<span className={styles.title}>{title}</span>
-				{iconPlacement === 'right' && <Caret className={styles.icon} />}
+				{iconPlacement === 'right' && <CaretIcon className={styles.icon} />}
 			</div>
 			<div className={styles.body}>
 				<div className={styles.tail} />

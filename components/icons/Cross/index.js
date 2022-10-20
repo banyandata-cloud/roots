@@ -1,1 +1,1 @@
-export { default as Cross } from './Cross';
+export { default as CrossIcon } from './Cross';

@@ -14,7 +14,7 @@ import { fromUnixTime } from 'date-fns';
 import { useOutsideClickListener } from '../../hooks';
 import { classes } from '../../utils';
 import { Calender } from '../calender';
-import { Arrow } from '../icons';
+import { ArrowIcon } from '../icons';
 import { Popper } from '../popper';
 import styles from './DatePicker.module.css';
 import { isMaxRangeExceeded } from './utils';
@@ -138,7 +138,7 @@ const DatePicker = (props) => {
 				)}
 
 				<input className={styles.input} value={displayValue} />
-				<Arrow className={classes(open ? styles['up-arrow'] : styles['down-arrow'])} />
+				<ArrowIcon className={classes(open ? styles['up-arrow'] : styles['down-arrow'])} />
 			</div>
 			{error && <div className={styles['error-text']}>{error}</div>}
 			<Popper open={open} wrapperid='datePicker-popper'>

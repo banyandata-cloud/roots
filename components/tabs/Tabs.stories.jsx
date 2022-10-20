@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Tabs from './Tabs';
-import { Caret } from '../icons/Caret';
+import { CaretIcon } from '../icons';
 
 export default {
 	title: 'ComponentsV2/Tabs',
@@ -67,28 +67,28 @@ WithOnlyLeftIcon.args = {
 			id: '1',
 			title: 'Tab1',
 			leftIcon: (props) => {
-				return <Caret {...props} />;
+				return <CaretIcon {...props} />;
 			},
 		},
 		{
 			id: '2',
 			title: 'Tab2',
 			leftIcon: (props) => {
-				return <Caret {...props} />;
+				return <CaretIcon {...props} />;
 			},
 		},
 		{
 			id: '3',
 			title: 'Tab3',
 			leftIcon: (props) => {
-				return <Caret {...props} />;
+				return <CaretIcon {...props} />;
 			},
 		},
 		{
 			id: '4',
 			title: 'Tab4',
 			leftIcon: (props) => {
-				return <Caret {...props} />;
+				return <CaretIcon {...props} />;
 			},
 		},
 	],
@@ -103,28 +103,28 @@ WithRightIcon.args = {
 			id: '1',
 			title: 'Tab1',
 			rightIcon: (props) => {
-				return <Caret {...props} />;
+				return <CaretIcon {...props} />;
 			},
 		},
 		{
 			id: '2',
 			title: 'Tab2',
 			rightIcon: (props) => {
-				return <Caret {...props} />;
+				return <CaretIcon {...props} />;
 			},
 		},
 		{
 			id: '3',
 			title: 'Tab3',
 			rightIcon: (props) => {
-				return <Caret {...props} />;
+				return <CaretIcon {...props} />;
 			},
 		},
 		{
 			id: '4',
 			title: 'Tab4',
 			rightIcon: (props) => {
-				return <Caret {...props} />;
+				return <CaretIcon {...props} />;
 			},
 		},
 	],
@@ -139,40 +139,40 @@ WithBothSideIcon.args = {
 			id: '1',
 			title: 'Tab1',
 			leftIcon: (props) => {
-				return <Caret {...props} />;
+				return <CaretIcon {...props} />;
 			},
 			rightIcon: (props) => {
-				return <Caret {...props} />;
+				return <CaretIcon {...props} />;
 			},
 		},
 		{
 			id: '2',
 			title: 'Tab2',
 			leftIcon: (props) => {
-				return <Caret {...props} />;
+				return <CaretIcon {...props} />;
 			},
 			rightIcon: (props) => {
-				return <Caret {...props} />;
+				return <CaretIcon {...props} />;
 			},
 		},
 		{
 			id: '3',
 			title: 'Tab3',
 			leftIcon: (props) => {
-				return <Caret {...props} />;
+				return <CaretIcon {...props} />;
 			},
 			rightIcon: (props) => {
-				return <Caret {...props} />;
+				return <CaretIcon {...props} />;
 			},
 		},
 		{
 			id: '4',
 			title: 'Tab4',
 			leftIcon: (props) => {
-				return <Caret {...props} />;
+				return <CaretIcon {...props} />;
 			},
 			rightIcon: (props) => {
-				return <Caret {...props} />;
+				return <CaretIcon {...props} />;
 			},
 		},
 	],

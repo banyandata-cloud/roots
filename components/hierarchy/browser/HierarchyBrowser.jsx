@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { useResize } from '../../../hooks';
 import { classes } from '../../../utils';
-import { Server } from '../../icons';
+import { ServerIcon } from '../../icons';
 import { HierarchyItem } from '../item';
 import styles from './HierarchyBrowser.module.css';
 
@@ -19,7 +19,7 @@ const Title = (props) => {
 		case 'database':
 		case 'schema':
 		case 'object':
-			Icon = Server;
+			Icon = ServerIcon;
 			break;
 		default:
 			break;

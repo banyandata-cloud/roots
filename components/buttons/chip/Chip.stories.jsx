@@ -1,5 +1,5 @@
 import React from 'react';
-import { Arrow, Calender, Copy } from '../icons';
+import { ArrowIcon, CalenderIcon, CopyIcon } from '../../icons';
 import Chip from './Chip';
 
 export default {
@@ -42,7 +42,7 @@ export const WithLeftIcon = Template.bind({});
 WithLeftIcon.args = {
 	...Filled.args,
 	leftComponent: () => {
-		return <Copy width='1.5rem' />;
+		return <CopyIcon width='1.5rem' />;
 	},
 };
 
@@ -50,7 +50,7 @@ export const WithRightIcon = Template.bind({});
 WithRightIcon.args = {
 	...Filled.args,
 	rightComponent: () => {
-		return <Copy width='1.5rem' />;
+		return <CopyIcon width='1.5rem' />;
 	},
 };
 
@@ -58,10 +58,10 @@ export const WithBothSideIcon = Template.bind({});
 WithBothSideIcon.args = {
 	...Filled.args,
 	leftComponent: () => {
-		return <Calender height='24' width='24' color='#ffffff' />;
+		return <CalenderIcon height='24' width='24' color='#ffffff' />;
 	},
 	rightComponent: () => {
-		return <Arrow active height='12' width='12' color='#ffffff' />;
+		return <ArrowIcon active height='12' width='12' color='#ffffff' />;
 	},
 };
 
@@ -69,7 +69,7 @@ export const WithOnlyIcon = Template.bind({});
 WithOnlyIcon.args = {
 	...Filled.args,
 	leftComponent: () => {
-		return <Calender height='24' width='24' color='#ffffff' />;
+		return <CalenderIcon height='24' width='24' color='#ffffff' />;
 	},
 	title: '',
 };
@@ -84,6 +84,6 @@ Disabled.args = {
 	color: 'secondary',
 	disabled: true,
 	leftComponent: () => {
-		return <Copy width='1.5rem' />;
+		return <CopyIcon width='1.5rem' />;
 	},
 };

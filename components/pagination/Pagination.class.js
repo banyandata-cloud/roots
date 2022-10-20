@@ -7,7 +7,7 @@ class Page {
 	}
 }
 
-export class Pagination {
+export class PaginationList {
 	constructor({ curr, total, limit = 7 }) {
 		this.pages = getPagination(curr, total, limit);
 	}

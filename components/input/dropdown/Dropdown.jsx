@@ -15,11 +15,11 @@ import {
 	FloatingFocusManager,
 } from '@floating-ui/react-dom-interactions';
 import PropTypes from 'prop-types';
-import { useOutsideClickListener } from '../../hooks';
-import { classes, inputHelper } from '../../utils';
-import { Caret } from '../icons';
+import { useOutsideClickListener } from '../../../hooks';
+import { classes, inputHelper } from '../../../utils';
+import { CaretIcon } from '../../icons';
 import styles from './Dropdown.module.css';
-import Popper from '../popper/Popper';
+import Popper from '../../popper/Popper';
 
 // eslint-disable-next-line prefer-arrow-callback
 const Dropdown = forwardRef(function Dropdown(props, inputRef) {
@@ -259,7 +259,10 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 							? `${selectedOptions.length} options selected`
 							: selectedOptions?.[0]?.title) ?? placeholder}
 					</span>
-					<Caret data-elem='icon' className={classes(styles.icon, styles['drop-icon'])} />
+					<CaretIcon
+						data-elem='icon'
+						className={classes(styles.icon, styles['drop-icon'])}
+					/>
 				</div>
 			</div>
 			<Popper open={open} wrapperId='dropdown-popper'>

@@ -1,6 +1,6 @@
 import React from 'react';
 import BaseButton from './BaseButton';
-import * as BaseCellStories from '../cell/stories/BaseCell.stories';
+import * as BaseCellStories from '../../cell/BaseCell.stories';
 
 export default {
 	title: 'ComponentsV2/Buttons/BaseButton',

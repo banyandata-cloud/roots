@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import styles from './PageHeader.module.css';
-import BreadCrumbs from '../breadcumbs/Breadcrumbs';
-import Chip from '../chip/Chip';
+import { BreadCrumbs } from '../breadcrumbs';
+import { Chip } from '../buttons/chip';
 import { classes } from '../../utils';
 
 const PageHeader = (props) => {

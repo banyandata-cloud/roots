@@ -1,1 +1,1 @@
-export { default as Delete } from './Delete';
+export { default as DeleteIcon } from './Delete';

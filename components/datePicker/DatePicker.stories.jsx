@@ -1,6 +1,5 @@
 import React from 'react';
-
-import DatePicker from '../DatePicker';
+import DatePicker from './DatePicker';
 
 export default {
 	title: 'ComponentsV2/DatePicker',

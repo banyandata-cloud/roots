@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
-import { classes } from '../../../utils';
-import { Checkbox } from '../../input/checkbox';
+import { classes } from '../../../../utils';
+import { Checkbox } from '../../checkbox';
 import styles from './DropdownItem.module.css';
 
 // eslint-disable-next-line prefer-arrow-callback

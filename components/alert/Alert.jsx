@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 import { useRef } from 'react';
 import { classes } from '../../utils/utils';
 import styles from './Alert.module.css';
-import { Cross, AlertIcon } from '../icons';
-import Button from '../buttons/Button';
+import { CrossIcon, AlertIcon } from '../icons';
+import { Button } from '../buttons';
 import Popper from '../popper/Popper';
 import { useOutsideClickListener } from '../../hooks';
 
@@ -83,7 +83,7 @@ const Alert = (props) => {
 						)}
 						{close && (
 							<span onClick={toggle} className={styles.close}>
-								<Cross className={styles.icon} />
+								<CrossIcon className={styles.icon} />
 							</span>
 						)}
 					</div>

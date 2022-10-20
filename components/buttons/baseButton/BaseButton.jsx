@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
-import { classes } from '../../utils';
-import { BaseCell } from '../cell';
+import { classes } from '../../../utils';
+import { BaseCell } from '../../cell';
 import styles from './BaseButton.module.css';
 
 const BaseButton = (props) => {

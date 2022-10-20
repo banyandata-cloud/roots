@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { classes } from '../../utils';
-import { Cross, Tick } from '../icons';
+import { CrossIcon, TickIcon } from '../icons';
 import styles from './Stepper.module.css';
 import colors from '../../styles/_colors.scss';
 
@@ -10,9 +10,9 @@ const Step = (props) => {
 	let display = <span className={styles.text}>{index + 1}</span>;
 
 	if (error === true) {
-		display = <Cross className={classes(styles.icon, styles['error-icon'])} />;
+		display = <CrossIcon className={classes(styles.icon, styles['error-icon'])} />;
 	} else if (completion === 1) {
-		display = <Tick className={classes(styles.icon, styles['completion-icon'])} />;
+		display = <TickIcon className={classes(styles.icon, styles['completion-icon'])} />;
 	}
 
 	return (

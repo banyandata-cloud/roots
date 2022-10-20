@@ -4,7 +4,7 @@ import Dropdown from './Dropdown';
 import DropdownItem from './dropdown-item/DropdownItem';
 
 export default {
-	title: 'ComponentsV2/Dropdown',
+	title: 'ComponentsV2/Input/Dropdown',
 	component: Dropdown,
 	parameters: {
 		options: {

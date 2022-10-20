@@ -1,1 +1,1 @@
-export { default as BreadcrumbSeperator } from './BreadcrumbSeperator';
+export { default as BreadcrumbSeperatorIcon } from './BreadcrumbSeperator';

@@ -1,10 +1,9 @@
 import React from 'react';
 import Tabs from '../tabs/Tabs';
 import PageHeader from './PageHeader';
-import Button from '../buttons/Button';
-import { Download } from '../icons/Download';
+import { Button } from '../buttons';
+import { DownloadIcon, CalenderIcon } from '../icons';
 import styles from './PageHeader.module.css';
-import { Calender } from '../icons/Calender';
 
 export default {
 	title: 'ComponentsV2/PageHeader',
@@ -42,7 +41,7 @@ Light.args = {
 				variant='outlined'
 				color='secondary'
 				leftIcon={() => {
-					return <Download className={styles.download} />;
+					return <DownloadIcon className={styles.download} />;
 				}}
 			/>
 			<Button
@@ -51,7 +50,7 @@ Light.args = {
 				variant='contained'
 				color='primary'
 				leftIcon={() => {
-					return <Calender className={styles.calender} />;
+					return <CalenderIcon className={styles.calender} />;
 				}}
 			/>
 		</>

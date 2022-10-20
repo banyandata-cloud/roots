@@ -1,8 +1,7 @@
 import React from 'react';
 import { classes } from '../../../utils';
 import { Button } from '../../buttons';
-import { Calender } from '../../icons';
-import HalfShade from '../../icons/HalfShade/HalfShade';
+import { CalenderIcon, HalfShadeIcon } from '../../icons';
 import styles from './Footer.module.css';
 import { dateRanges } from './utils';
 
@@ -25,7 +24,7 @@ const Footer = (props) => {
 		<div className={styles.root}>
 			{datesSelected && (
 				<div className={styles['selected-date']}>
-					<Calender />
+					<CalenderIcon />
 					<div className={styles.date}>
 						{dates.length > 0 && (
 							<span className={styles.value}>
@@ -54,7 +53,7 @@ const Footer = (props) => {
 									selectFixedDateRange(dateRange);
 								}}
 								key={title}>
-								<HalfShade />
+								<HalfShadeIcon />
 								<span>{title}</span>
 							</div>
 						);

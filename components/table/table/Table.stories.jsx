@@ -1,5 +1,5 @@
 import React from 'react';
-import { Server, Copy, Arrow } from '../../icons';
+import { ServerIcon, CopyIcon, ArrowIcon } from '../../icons';
 import { usePagination } from '../../pagination';
 import { TableColumn } from '../BaseTable.class';
 import { TableCell } from '../cell';
@@ -150,14 +150,14 @@ WithChips.args = {
 		chips: [
 			new TableChip({
 				key: 'something',
-				icon: Arrow,
+				icon: ArrowIcon,
 				label: 'DB Tech',
 				value: 'PgSQL',
 				disabled: true,
 			}),
 			new TableChip({
 				key: 'something',
-				icon: Arrow,
+				icon: ArrowIcon,
 				label: 'DB Tech',
 				value: 'MySQL',
 				disabled: true,
@@ -165,7 +165,7 @@ WithChips.args = {
 			new TableChip({
 				key: 'something',
 				icon: (iconProps) => {
-					return <Copy {...iconProps} />;
+					return <CopyIcon {...iconProps} />;
 				},
 				label: 'Cloud',
 				value: 'Google',
@@ -174,7 +174,7 @@ WithChips.args = {
 			new TableChip({
 				key: 'something',
 				icon: (iconProps) => {
-					return <Server {...iconProps} />;
+					return <ServerIcon {...iconProps} />;
 				},
 				label: 'Cloud',
 				value: 'Amazon',

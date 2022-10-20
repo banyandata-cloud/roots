@@ -1,10 +1,9 @@
-/* eslint-disable react/button-has-type */
 import PropTypes from 'prop-types';
-import styles from './Button.module.css';
-import { classes } from '../../utils/utils';
+import styles from './Chip.module.css';
+import { classes } from '../../../utils';
 import { BaseButton } from '../baseButton';
 
-const Button = (props) => {
+const Chip = (props) => {
 	const {
 		className,
 		type,
@@ -27,37 +26,42 @@ const Button = (props) => {
 				component1: LeftComponent && <LeftComponent />,
 				title,
 				component3: RightComponent && <RightComponent />,
-				size,
+				size: 'auto',
 				flexible,
 				radius,
 				disabled,
 				onClick,
-				variant,
+				variant: 'contained',
 			}}
 			className={classes(
 				styles.root,
 				styles[`radius-${radius}`],
 				styles[variant],
 				styles[color],
+				styles[size],
 				className
 			)}
 		/>
 	);
 };
 
-Button.propTypes = {
+Chip.propTypes = {
 	...BaseButton.propTypes,
-	color: PropTypes.oneOf(['primary', 'success', 'danger', 'warning']),
-	leftComponent: PropTypes.node,
-	rightComponent: PropTypes.node,
+	size: PropTypes.oneOf(['sm', 'md']),
+	variant: PropTypes.oneOf(['status', 'input']),
+	color: PropTypes.oneOf(['success', 'info', 'warning', 'danger', 'default']),
+	leftComponent: PropTypes.func,
+	rightComponent: PropTypes.func,
 };
 
-Button.defaultProps = {
+Chip.defaultProps = {
 	...BaseButton.defaultProps,
-	color: 'primary',
+	size: 'sm',
+	variant: 'status',
+	color: 'success',
 	leftComponent: null,
 	rightComponent: null,
 	radius: 'default',
 };
 
-export default Button;
+export default Chip;

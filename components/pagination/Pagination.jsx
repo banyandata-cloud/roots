@@ -1,14 +1,12 @@
 import React, { forwardRef, useEffect, useReducer, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { classes } from '../../utils';
-import Button from '../buttons/Button';
-import { Dropdown, DropdownItem } from '../dropdown';
-import styles from './Pagination.module.css';
-import { Arrow } from '../icons';
-import TextField from '../input/textField/TextField';
-import Chevron from '../icons/Chevron/Chevron';
-import { Pagination as PaginationList } from './Pagination.class';
+import { Button } from '../buttons';
+import { Dropdown, DropdownItem, TextField } from '../input';
+import { ArrowIcon, ChevronIcon } from '../icons';
 import { BaseCell } from '../cell';
+import { PaginationList } from './Pagination.class';
+import styles from './Pagination.module.css';
 
 const dropdownOptions = ['10', '25', '50', '100', '200', '250'];
 
@@ -68,7 +66,7 @@ export const usePagination = (props) => {
 	return [paginationState, paginationDispatch];
 };
 
-const Pagination = forwardRef((props, ref) => {
+export const Pagination = forwardRef((props, ref) => {
 	const { className, floating, paginationState, paginationDispatch } = props;
 
 	const { totalPages, currentPage, step } = paginationState;
@@ -81,10 +79,16 @@ const Pagination = forwardRef((props, ref) => {
 	const jumpPageRef = useRef(null);
 
 	const onChange = (action) => {
-		// eslint-disable-next-line react/destructuring-assignment
-		props.onChange();
 		paginationDispatch(action);
 	};
+
+	useEffect(() => {
+		props.onChange({
+			currentPage,
+			step,
+			totalPages,
+		});
+	}, [currentPage, step]);
 
 	return (
 		<div ref={ref} className={classes(styles.root, className, floating ? styles.floating : '')}>
@@ -127,7 +131,7 @@ const Pagination = forwardRef((props, ref) => {
 					}}
 					className={classes(styles.button)}
 					leftComponent={() => {
-						return <Chevron className={styles.icon} position='left' />;
+						return <ChevronIcon className={styles.icon} position='left' />;
 					}}
 					variant='text'
 				/>
@@ -163,7 +167,7 @@ const Pagination = forwardRef((props, ref) => {
 					}}
 					className={classes(styles.button)}
 					rightComponent={() => {
-						return <Chevron className={styles.icon} position='right' />;
+						return <ChevronIcon className={styles.icon} position='right' />;
 					}}
 					variant='text'
 				/>
@@ -202,7 +206,7 @@ const Pagination = forwardRef((props, ref) => {
 									variant='contained'
 									className={styles.button}
 									rightComponent={() => {
-										return <Arrow className={styles.icon} />;
+										return <ArrowIcon className={styles.icon} />;
 									}}
 								/>
 							}
@@ -237,5 +241,3 @@ Pagination.defaultProps = {
 	paginationDispatch: () => {},
 	onChange: () => {},
 };
-
-export default Pagination;

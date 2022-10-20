@@ -1,10 +1,9 @@
 import PropTypes from 'prop-types';
 import { isValidElement } from 'react';
 import { classes } from '../../../../utils';
-import { Button } from '../../../buttons';
+import { Button, Chip } from '../../../buttons';
 import { BaseCell } from '../../../cell';
-import Chip from '../../../chip/Chip';
-import { Arrow } from '../../../icons';
+import { ArrowIcon } from '../../../icons';
 import styles from './TableChips.module.css';
 
 const TableChips = (props) => {
@@ -24,7 +23,7 @@ const TableChips = (props) => {
 						radius='round'
 						className={styles.back}
 						leftComponent={() => {
-							return <Arrow className={styles.icon} position='left' />;
+							return <ArrowIcon className={styles.icon} position='left' />;
 						}}
 					/>
 				)

@@ -1,1 +1,1 @@
-export { default as Caret } from './Caret';
+export { default as CaretIcon } from './Caret';
