@@ -72,7 +72,7 @@ const Table = (props) => {
 				observer.observe(lastRow);
 			}
 		}
-	}, []);
+	}, [tableData]);
 
 	// for dynamically resizing table vertically acc to provided addons
 	useEffect(() => {

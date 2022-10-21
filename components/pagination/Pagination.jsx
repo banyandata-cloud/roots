@@ -51,7 +51,7 @@ export const usePagination = (props) => {
 	});
 
 	useEffect(() => {
-		if (paginationState.currentPage > totalPages) {
+		if (paginationState.currentPage > totalPages && totalPages != null) {
 			paginationDispatch({
 				type: 'SET_PAGE',
 				payload: totalPages,
