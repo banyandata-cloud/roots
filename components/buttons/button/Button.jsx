@@ -1,10 +1,12 @@
 /* eslint-disable react/button-has-type */
 import PropTypes from 'prop-types';
-import styles from './Button.module.css';
+import { forwardRef } from 'react';
 import { classes } from '../../../utils/utils';
 import { BaseButton } from '../baseButton';
+import styles from './Button.module.css';
 
-const Button = (props) => {
+// eslint-disable-next-line prefer-arrow-callback
+const Button = forwardRef(function Button(props, ref) {
 	const {
 		className,
 		type,
@@ -23,6 +25,7 @@ const Button = (props) => {
 	return (
 		<BaseButton
 			{...{
+				ref,
 				type,
 				component1: LeftComponent && <LeftComponent />,
 				title,
@@ -43,7 +46,7 @@ const Button = (props) => {
 			)}
 		/>
 	);
-};
+});
 
 Button.propTypes = {
 	...BaseButton.propTypes,

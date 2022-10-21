@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types';
+import { forwardRef } from 'react';
 import { classes } from '../../../utils';
 import { BaseCell } from '../../cell';
 import styles from './BaseButton.module.css';
 
-const BaseButton = (props) => {
+// eslint-disable-next-line prefer-arrow-callback
+const BaseButton = forwardRef(function BaseButton(props, ref) {
 	const {
 		className,
 		component1,
@@ -24,6 +26,7 @@ const BaseButton = (props) => {
 		<BaseCell
 			className={classes(className, styles.root, styles[variant])}
 			{...{
+				ref,
 				component1,
 				component2: Title,
 				component3,
@@ -39,7 +42,7 @@ const BaseButton = (props) => {
 			RootDOM='button'
 		/>
 	);
-};
+});
 
 BaseButton.propTypes = {
 	...BaseCell.propTypes,
