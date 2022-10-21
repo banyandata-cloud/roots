@@ -109,12 +109,12 @@ Alert.propTypes = {
 };
 
 Alert.defaultProps = {
-	action: 'Action',
+	action: '',
 	showIcon: true,
 	icon: null,
 	title: 'Alert Title',
 	close: true,
-	description: 'This is a alter Description in single line',
+	description: 'Alert Description in single line',
 	border: 'default',
 	color: 'info',
 	shadow: false,

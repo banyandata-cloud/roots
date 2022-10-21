@@ -42,16 +42,7 @@ const Template = (args) => {
 export const Info = Template.bind({});
 
 Info.args = {
-	trigger: false,
-	action: 'Action',
-	showIcon: true,
-	icon: null,
-	title: 'Alert Title',
-	close: true,
-	description: 'This is a alter Description in single line',
-	border: 'default',
-	color: 'info',
-	shadow: false,
+	title: 'Information',
 };
 
 Info.parameters = {
@@ -64,28 +55,27 @@ Info.parameters = {
 export const Warning = Template.bind({});
 
 Warning.args = {
-	...Info.args,
+	title: 'Warning',
 	color: 'warning',
 };
 
 export const Success = Template.bind({});
 
 Success.args = {
-	...Info.args,
+	title: 'Success',
 	color: 'success',
 };
 
 export const Danger = Template.bind({});
 
 Danger.args = {
-	...Info.args,
+	title: 'Danger',
 	color: 'danger',
 };
 
 export const CustomIcon = Template.bind({});
 
 CustomIcon.args = {
-	...Info.args,
 	color: 'danger',
 	icon: (props) => {
 		return <AlertIcon.Info {...props} />;
