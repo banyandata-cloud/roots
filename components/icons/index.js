@@ -21,3 +21,4 @@ export * from './Columns';
 export * from './Refresh';
 export * from './Nut';
 export * from './HalfShade';
+export * from './AngleDouble';

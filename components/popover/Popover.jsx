@@ -3,18 +3,19 @@ import {
 	autoUpdate,
 	flip,
 	offset,
+	shift,
 	size,
 	useDismiss,
 	useFloating,
 	useInteractions,
 } from '@floating-ui/react-dom-interactions';
-import { useLayoutEffect } from 'react';
+import { useEffect, useLayoutEffect } from 'react';
 import { Popper } from '../popper';
 import { classes } from '../../utils';
 import styles from './Popover.module.css';
 
 const Popover = (props) => {
-	const { children, anchorEl, open, setOpen, className } = props;
+	const { children, anchorEl, open, setOpen, className, transparent, onClose } = props;
 
 	const { x, y, reference, floating, strategy, context } = useFloating({
 		open,
@@ -22,6 +23,7 @@ const Popover = (props) => {
 		whileElementsMounted: autoUpdate,
 		middleware: [
 			offset(5),
+			shift(),
 			flip({
 				padding: 8,
 			}),
@@ -40,12 +42,18 @@ const Popover = (props) => {
 
 	const { getFloatingProps } = useInteractions([useDismiss(context)]);
 
+	useEffect(() => {
+		if (open === false) {
+			onClose();
+		}
+	}, [open]);
+
 	useLayoutEffect(() => {
 		reference(anchorEl);
 	}, [anchorEl]);
 
 	return (
-		<Popper open={open} wrapperId='popover' transparent={false}>
+		<Popper open={open} wrapperId='popover' transparent={transparent}>
 			<div
 				{...getFloatingProps({
 					ref: floating,
@@ -66,10 +74,14 @@ Popover.propTypes = {
 	anchorEl: PropTypes.element,
 	open: PropTypes.bool.isRequired,
 	setOpen: PropTypes.func.isRequired,
+	transparent: PropTypes.bool,
+	onClose: PropTypes.func,
 };
 
 Popover.defaultProps = {
 	anchorEl: null,
+	transparent: true,
+	onClose: () => {},
 };
 
 export default Popover;

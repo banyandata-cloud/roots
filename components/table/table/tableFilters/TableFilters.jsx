@@ -1,13 +1,28 @@
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 import { classes } from '../../../../utils';
 import { Button } from '../../../buttons';
 import { BaseCell } from '../../../cell';
 import { ColumnsIcon, FilterIcon, MagnifyingGlassIcon, NutIcon, RefreshIcon } from '../../../icons';
+import { Columns } from './Filters';
 import { TextField } from '../../../input';
 import styles from './TableFilters.module.css';
 
 const TableFilters = (props) => {
-	const { className, style, onRefresh, onSearch, searchValue, filterValue } = props;
+	const {
+		className,
+		style,
+		onRefresh,
+		onSearch,
+		searchValue,
+		filterValue,
+		headerData,
+		hiddenColumns,
+		setHiddenColumns,
+	} = props;
+
+	const [openColumns, setOpenColumns] = useState(false);
+	const [anchorEl, setAnchorEl] = useState(null);
 
 	return (
 		<BaseCell
@@ -50,14 +65,32 @@ const TableFilters = (props) => {
 					flexible
 					className={styles.right}
 					component1={
-						<Button
-							size='auto'
-							className={styles['icon-button']}
-							variant='text'
-							leftComponent={() => {
-								return <ColumnsIcon className={styles.icon} />;
-							}}
-						/>
+						<>
+							<Button
+								ref={(el) => {
+									setAnchorEl(el);
+								}}
+								size='auto'
+								className={styles['icon-button']}
+								variant='text'
+								leftComponent={() => {
+									return <ColumnsIcon className={styles.icon} />;
+								}}
+								onClick={() => {
+									setOpenColumns((prev) => {
+										return !prev;
+									});
+								}}
+							/>
+							<Columns
+								anchorEl={anchorEl}
+								open={openColumns}
+								setOpen={setOpenColumns}
+								columns={headerData}
+								hiddenColumns={hiddenColumns}
+								setHiddenColumns={setHiddenColumns}
+							/>
+						</>
 					}
 					component2={
 						<Button
