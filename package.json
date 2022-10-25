@@ -2,8 +2,13 @@
 	"name": "roots",
 	"version": "1.0.0",
 	"description": "Design System Library which drives the Banyan Cloud products",
-	"main": "index.js",
+	"main": "dist/cjs/index.js",
+	"module": "dist/esm/index.js",
+	"files": [
+		"dist"
+	],
 	"dependencies": {
+		"@babel/core": "^7.19.6",
 		"@babel/preset-env": "^7.19.4",
 		"@babel/preset-react": "^7.18.6",
 		"@emotion/react": "^11.10.4",
@@ -11,12 +16,20 @@
 		"@floating-ui/react-dom": "^1.0.0",
 		"@floating-ui/react-dom-interactions": "^0.10.1",
 		"@mui/material": "^5.10.9",
+		"@rollup/plugin-commonjs": "^23.0.2",
+		"@rollup/plugin-node-resolve": "^15.0.1",
+		"babel-plugin-syntax-dynamic-import": "^6.18.0",
 		"date-fns": "^2.29.3",
 		"html-webpack-plugin": "^5.5.0",
 		"path": "^0.12.7",
+		"postcss": "^8.4.18",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
-		"react-json-view": "latest"
+		"react-json-view": "latest",
+		"rollup": "^3.2.3",
+		"rollup-plugin-babel": "^4.4.0",
+		"rollup-plugin-postcss": "^4.0.2",
+		"webpack-cli": "^4.10.0"
 	},
 	"eslintConfig": {
 		"extends": [
@@ -73,7 +86,8 @@
 		"build-storybook": "build-storybook -s ./components",
 		"lint": "eslint --ext js,jsx .",
 		"lint:fix": "eslint --ext js,jsx . --fix",
-		"format": "prettier --write './**/*.{js,jsx,ts,tsx,md,json}' --config ./.prettierrc"
+		"format": "prettier --write './**/*.{js,jsx,ts,tsx,md,json}' --config ./.prettierrc",
+		"rollup": "rollup -c --bundleConfigAsCjs"
 	},
 	"repository": {
 		"type": "git",
