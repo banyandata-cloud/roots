@@ -1,11 +1,12 @@
-import React, { createElement, isValidElement } from 'react';
+import React, { createElement, forwardRef, isValidElement } from 'react';
 /* eslint-disable react/forbid-prop-types */
 import PropTypes from 'prop-types';
 // import { createElement, isValidElement } from 'react';
 import { classes } from '../../utils';
 import styles from './BaseCell.module.css';
 
-export const BaseCell = (props) => {
+// eslint-disable-next-line prefer-arrow-callback
+export const BaseCell = forwardRef(function BaseCell(props, ref) {
 	const {
 		className,
 		size,
@@ -23,6 +24,7 @@ export const BaseCell = (props) => {
 		RootDOM,
 		{
 			'data-elem': 'base-cell',
+			ref,
 			className: classes(
 				className,
 				styles.root,
@@ -44,7 +46,7 @@ export const BaseCell = (props) => {
 		return Component;
 	}
 	return null;
-};
+});
 
 BaseCell.propTypes = {
 	className: PropTypes.string,

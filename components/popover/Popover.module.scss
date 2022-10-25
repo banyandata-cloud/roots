@@ -1,0 +1,8 @@
+@import '../../styles/index';
+
+.root {
+	@include boxShadow;
+	background-color: $white;
+	padding: 1rem;
+	border-radius: 0.25rem;
+}

@@ -11,7 +11,7 @@ const TableBody = (props) => {
 	return (
 		<tbody data-elem='table-body' className={classes(styles.root, className)}>
 			{tableData?.map((datum) => {
-				let key = '';
+				let key = datum?.id;
 
 				const selected =
 					uniqueKey.length > 0 &&

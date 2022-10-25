@@ -35,6 +35,11 @@ const Table = (props) => {
 	const paginationRef = useRef(null);
 
 	const [floating, setFloating] = useState(false);
+	const [hiddenColumns, setHiddenColumns] = useState({});
+
+	const visibileColumns = headerData.filter((header) => {
+		return [null, false, undefined].includes(hiddenColumns?.[header?.id]);
+	});
 
 	// for pagination docking using intersection observer
 	useEffect(() => {
@@ -67,7 +72,7 @@ const Table = (props) => {
 				observer.observe(lastRow);
 			}
 		}
-	}, []);
+	}, [tableData]);
 
 	// for dynamically resizing table vertically acc to provided addons
 	useEffect(() => {
@@ -87,23 +92,38 @@ const Table = (props) => {
 
 			if (tableHeaderElem && tableBodyElem) {
 				let minWidth = 0;
-				headerData.forEach((header) => {
+				visibileColumns.forEach((header) => {
 					minWidth += new TableColumn(header).sizeInRem;
 				});
 				tableHeaderElem.style.minWidth = `${minWidth}rem`;
 				tableBodyElem.style.minWidth = `${minWidth}rem`;
 			}
 		}
+	}, [hiddenColumns, headerData]);
+
+	// set the hidden columns state
+	useEffect(() => {
+		setHiddenColumns({});
 	}, [headerData]);
 
 	return (
 		<div className={classes(styles.root, className)}>
 			{chipsData != null && <TableChips className={styles.chips} {...chipsData} />}
-			{filtersData != null && <TableFilters className={styles.filters} {...filtersData} />}
+			{filtersData != null && (
+				<TableFilters
+					className={styles.filters}
+					{...{
+						...filtersData,
+						headerData,
+						hiddenColumns,
+						setHiddenColumns,
+					}}
+				/>
+			)}
 			<BaseTable
 				{...{
 					ref,
-					headerData,
+					headerData: visibileColumns,
 					tableData,
 					uniqueKey,
 					activeData,
