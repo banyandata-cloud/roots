@@ -20,6 +20,7 @@ export default [
 				sourcemap: true,
 			},
 		],
+		external: ['react', 'react-dom'],
 		plugins: [
 			babel({
 				extensions: ['.jsx', '.js', '.tsx'],
@@ -41,5 +42,6 @@ export default [
 				format: 'esm',
 			},
 		],
+		external: ['react', 'react-dom'],
 	},
 ];
