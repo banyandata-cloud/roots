@@ -1,7 +1,8 @@
-import resolve from '@rollup/plugin-node-resolve';
-import commonjs from '@rollup/plugin-commonjs';
-import babel from 'rollup-plugin-babel';
-import postcss from 'rollup-plugin-postcss';
+import pluginResolve from '@rollup/plugin-node-resolve';
+import pluginCommonjs from '@rollup/plugin-commonjs';
+import { babel as pluginBabel } from '@rollup/plugin-babel';
+import pluginPostcss from 'rollup-plugin-postcss';
+import pluginPeerDepsExternal from 'rollup-plugin-peer-deps-external';
 
 const packageJson = require('./package.json');
 
@@ -22,16 +23,17 @@ export default [
 		],
 		external: ['react'],
 		plugins: [
-			babel({
+			pluginPeerDepsExternal(),
+			pluginBabel({
 				extensions: ['.jsx', '.js', '.tsx'],
 				exclude: 'node_modules/**',
 			}),
-			resolve({
+			pluginResolve({
 				extensions: ['.jsx', '.js', '.tsx'],
 				exclude: 'node_modules/**',
 			}),
-			postcss(),
-			commonjs(),
+			pluginPostcss(),
+			pluginCommonjs(),
 		],
 	},
 	{
