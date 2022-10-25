@@ -20,7 +20,7 @@ export default [
 				sourcemap: true,
 			},
 		],
-		external: ['react', 'react-dom'],
+		external: ['react'],
 		plugins: [
 			babel({
 				extensions: ['.jsx', '.js', '.tsx'],
@@ -40,8 +40,11 @@ export default [
 			{
 				file: 'dist/index.js',
 				format: 'esm',
+				globals: {
+					react: 'react',
+				},
 			},
 		],
-		external: ['react', 'react-dom'],
+		external: ['react'],
 	},
 ];
