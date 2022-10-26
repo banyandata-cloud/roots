@@ -1,5 +1,5 @@
 {
-	"name": "banyan-roots",
+	"name": "@banyan_cloud/roots",
 	"version": "1.0.0",
 	"description": "Design System Library which drives the Banyan Cloud products",
 	"main": "dist/cjs/index.js",
