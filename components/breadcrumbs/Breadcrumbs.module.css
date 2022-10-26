@@ -85,16 +85,17 @@
 .container .seperator {
   width: 1.5rem;
   height: 1.5rem;
+  stroke: var(--grey2);
 }
-.container .breadcrumb-item, .container .breadcrumb-item-active {
+.container .breadcrumb-item {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  font-weight: 400;
+  font-weight: 600;
   font-size: 0.875rem;
-  color: var(--info);
+  color: var(--grey2);
 }
-.container .breadcrumb-item-active {
+.container .breadcrumb-item.active {
   color: var(--black);
 }/*# sourceMappingURL=Breadcrumbs.module.css.map */

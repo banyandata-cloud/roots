@@ -76,28 +76,25 @@
 }
 
 .root {
-  width: 100%;
-  background-color: transparent;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+  width: 100%;
+  background-color: transparent;
   gap: 4px;
 }
-.root.dark {
-  color: red;
+.root.theme-dark {
+  color: var(--white);
 }
-.root.dark .description {
-  color: pink;
+.root.theme-dark .breadcrumb [data-elem=breadcrumb-item-active] {
+  color: var(--white);
 }
-.root.light {
+.root.theme-light {
   color: var(--dark-grey);
 }
-.root.light .description {
+.root .description {
   color: var(--grey);
-}
-.root .breadcrumb {
-  display: inline;
 }
 .root .contents {
   display: flex;
@@ -121,6 +118,8 @@
 }
 .root .contents .left .chip {
   font-weight: 500;
+  background: var(--highlight);
+  color: var(--white);
 }
 .root .description {
   font-size: 1rem;
