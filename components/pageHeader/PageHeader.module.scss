@@ -1,25 +1,27 @@
-@import '../../assets/styles';
+@import '../../styles/index';
 
 .root {
+	@include flex(column, center, flex-start);
 	width: 100%;
 	background-color: transparent;
-	@include flex(column, center, flex-start);
 	gap: 4px;
-	&.dark {
-		color: red;
-		.description {
-			color: pink;
+	&.theme-dark {
+		color: $white;
+
+		.breadcrumb {
+			[data-elem='breadcrumb-item-active'] {
+				color: $white;
+			}
 		}
 	}
-	&.light {
+	&.theme-light {
 		color: $dark-grey;
-		.description {
-			color: $grey;
-		}
 	}
-	.breadcrumb {
-		display: inline;
+
+	.description {
+		color: $grey;
 	}
+
 	.contents {
 		@include flex(row, space-between, center);
 		width: 100%;
@@ -36,6 +38,8 @@
 			}
 			.chip {
 				font-weight: 500;
+				background: $highlight;
+				color: $white;
 			}
 		}
 	}

@@ -1,4 +1,4 @@
-@import '../../assets/styles';
+@import '../../styles/index';
 
 .container {
 	@include flex(row, flex-start, center);
@@ -6,15 +6,16 @@
 	.seperator {
 		width: 1.5rem;
 		height: 1.5rem;
+		stroke: $grey2;
 	}
 	.breadcrumb-item {
 		@include flex(row, flex-start, center);
-		font-weight: 400;
+		font-weight: 600;
 		font-size: 0.875rem;
-		color: $info;
-	}
-	.breadcrumb-item-active {
-		@extend .breadcrumb-item;
-		color: $black;
+		color: $grey2;
+
+		&.active {
+			color: $black;
+		}
 	}
 }

@@ -19,13 +19,14 @@ const BreadCrumbs = (props) => {
 				separator={<BreadcrumbSeperator className={styles.seperator} />}
 				aria-label='breadcrumb'>
 				{crumbs.map((crumb, index) => {
+					const active = index === crumbs.length - 1;
 					return (
 						<Link href=' ' key={crumb} underline='hover'>
 							<span
+								data-elem={`breadcrumb-item${active ? '-active' : ''}`}
 								className={classes(
-									index === crumbs.length - 1
-										? styles['breadcrumb-item-active']
-										: styles['breadcrumb-item']
+									styles['breadcrumb-item'],
+									active ? styles.active : ''
 								)}>
 								{getSpacedDisplayName(crumb).replace(/-/g, ' ')}
 							</span>
@@ -45,7 +46,7 @@ BreadCrumbs.propTypes = {
 };
 
 BreadCrumbs.defaultProps = {
-	crumbs: ['Section1', 'Section2', 'Section3'],
+	crumbs: [],
 	maxItems: 4,
 	itemsBeforeCollapse: 2,
 	itemsAfterCollapse: 1,

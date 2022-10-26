@@ -33,28 +33,30 @@ Light.args = {
 	description: 'Resource and Regulation Complaince Details',
 	theme: 'light',
 	chipTitle: '4 Updates',
-	renderRightAction: (
-		<>
-			<Button
-				title='Save Changes'
-				size='medium'
-				variant='outlined'
-				color='secondary'
-				leftIcon={() => {
-					return <DownloadIcon className={styles.download} />;
-				}}
-			/>
-			<Button
-				title='Select Date'
-				size='medium'
-				variant='contained'
-				color='primary'
-				leftIcon={() => {
-					return <CalenderIcon className={styles.calender} />;
-				}}
-			/>
-		</>
-	),
+	rightAction: () => {
+		return (
+			<>
+				<Button
+					title='Save Changes'
+					size='medium'
+					variant='outlined'
+					color='secondary'
+					leftIcon={() => {
+						return <DownloadIcon className={styles.download} />;
+					}}
+				/>
+				<Button
+					title='Select Date'
+					size='medium'
+					variant='contained'
+					color='primary'
+					leftIcon={() => {
+						return <CalenderIcon className={styles.calender} />;
+					}}
+				/>
+			</>
+		);
+	},
 };
 
 Light.parameters = {

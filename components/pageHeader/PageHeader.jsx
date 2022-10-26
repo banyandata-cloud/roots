@@ -5,28 +5,44 @@ import { Chip } from '../buttons/chip';
 import { classes } from '../../utils';
 
 const PageHeader = (props) => {
-	const { theme, title, description, children, chipTitle, renderRightAction } = props;
+	const {
+		theme,
+		title,
+		description,
+		children,
+		chipTitle,
+		rightAction: RightAction,
+		crumbsProps,
+	} = props;
 
 	return (
-		<div className={classes(styles.root, styles[theme])}>
+		<div className={classes(styles.root, styles[`theme-${theme}`])}>
 			<div className={styles.breadcrumb}>
-				<BreadCrumbs {...props} />
+				<BreadCrumbs
+					{...{
+						...crumbsProps,
+						className: styles.breadcrumb,
+					}}
+				/>
 			</div>
 			<div className={styles.contents}>
 				<div className={styles.left}>
 					<div className={styles.title}>{title}</div>
 					{chipTitle && (
 						<Chip
-							variant='contained'
-							color='primary'
-							size='small'
+							className={styles.chip}
+							size='sm'
 							title={chipTitle}
-							radius='ellipsis'
-							customClass={styles.chip}
+							radius='ellipse'
+							variant='status'
 						/>
 					)}
 				</div>
-				{renderRightAction && <div className={styles.right}>{renderRightAction}</div>}
+				{RightAction && (
+					<div className={styles.right}>
+						<RightAction />
+					</div>
+				)}
 			</div>
 			<div className={styles.description}>{description}</div>
 			{children}
@@ -37,11 +53,19 @@ const PageHeader = (props) => {
 PageHeader.propTypes = {
 	title: PropTypes.string,
 	description: PropTypes.string,
+	theme: PropTypes.oneOf(['dark', 'light']),
+	chipTitle: PropTypes.string,
+	crumbsProps: PropTypes.shape(BreadCrumbs.propTypes),
+	rightAction: PropTypes.node,
 };
 
 PageHeader.defaultProps = {
 	title: 'Page Header',
 	description: '',
+	theme: 'light',
+	chipTitle: null,
+	crumbsProps: {},
+	rightAction: null,
 };
 
 export default PageHeader;
