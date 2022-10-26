@@ -15722,6 +15722,7 @@ exports.RefreshIcon = Refresh;
 exports.ServerIcon = Server;
 exports.Stepper = Stepper;
 exports.Table = Table;
+exports.TableCell = TableCell;
 exports.TableColumn = TableColumn;
 exports.Tabs = Tabs;
 exports.TextField = TextField;
