@@ -1679,12 +1679,12 @@ var BreadcrumbSeperator = function BreadcrumbSeperator(props) {
   var className = props.className;
   return /*#__PURE__*/jsxRuntime.jsx("svg", {
     className: className,
+    "data-elem": "breadcrumb-seperator-icon",
     viewBox: "0 0 24 24",
-    fill: "none",
+    stroke: "black",
     xmlns: "http://www.w3.org/2000/svg",
     children: /*#__PURE__*/jsxRuntime.jsx("path", {
       d: "M14.4809 3.88548L9.51916 20.1145",
-      stroke: "black",
       strokeLinecap: "round",
       strokeLinejoin: "round"
     })
@@ -9145,8 +9145,8 @@ const caseAllCaps = {
 };
 const defaultFontFamily = '"Roboto", "Helvetica", "Arial", sans-serif';
 /**
- * @see @link{https://material.io/design/typography/the-type-system.html}
- * @see @link{https://material.io/design/typography/understanding-typography.html}
+ * @see @link{https://m2.material.io/design/typography/the-type-system.html}
+ * @see @link{https://m2.material.io/design/typography/understanding-typography.html}
  */
 
 function createTypography(palette, typography) {
@@ -9248,7 +9248,7 @@ const easing = {
   easeIn: 'cubic-bezier(0.4, 0, 1, 1)',
   // The sharp curve is used by objects that may return to the screen at any time.
   sharp: 'cubic-bezier(0.4, 0, 0.6, 1)'
-}; // Follow https://material.io/guidelines/motion/duration-easing.html#duration-easing-common-durations
+}; // Follow https://m2.material.io/guidelines/motion/duration-easing.html#duration-easing-common-durations
 // to learn when use what timing
 
 const duration = {
@@ -11720,8 +11720,8 @@ process.env.NODE_ENV !== "production" ? Link.propTypes
 } : void 0;
 var Link$1 = Link;
 
-var css_248z$w = ":root {\n  --white: #ffffff;\n  --black: #000000;\n  --dark-grey: #333333;\n  --dark-grey-o-85: rgba(51, 51, 51, 0.85);\n  --grey: #737373;\n  --grey1: #888888;\n  --grey2: #a6a6a6;\n  --grey3: #bbbbbb;\n  --grey4: #c4c4c4;\n  --grey5: #dddddd;\n  --grey6: #e8e8e8;\n  --grey7: #eeeeee;\n  --grey8: #f2f2f2;\n  --grey9: #eff0f0;\n  --grey10: #f7f7f7;\n  --highlight: #0f62fe;\n  --dark-blue: #001833;\n  --background: #d0e2ff;\n  --banyan-blue: #00037c;\n  --banyan-orange: #ff892a;\n  --banyan-pink: #ff1597;\n  --banyan-gradient: linear-gradient(\n  \t84.71deg,\n  \tvar(--banyan-pink) 0.48%,\n  \tvar(--banyan-orange) 99.57%\n  );\n  --error: #da1e28;\n  --error-bg: #fff1f1;\n  --error-outline: rgba(218, 30, 40, 0.08);\n  --success: #24a148;\n  --success-bg: #defbe6;\n  --success-outline: rgba(36, 161, 72, 0.08);\n  --warning: #f1c21b;\n  --warning-bg: #fff8e1;\n  --warning-outline: rgba(203, 160, 6, 0.08);\n  --info: #0043ce;\n  --info-bg: #edf5ff;\n  --info-outline: #2864db98;\n}\n\n.Breadcrumbs-module_container__w5vWh {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  width: auto;\n}\n.Breadcrumbs-module_container__w5vWh .Breadcrumbs-module_seperator__sU40m {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.Breadcrumbs-module_container__w5vWh .Breadcrumbs-module_breadcrumb-item__YCE98, .Breadcrumbs-module_container__w5vWh .Breadcrumbs-module_breadcrumb-item-active__Tg9ma {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  font-weight: 400;\n  font-size: 0.875rem;\n  color: var(--info);\n}\n.Breadcrumbs-module_container__w5vWh .Breadcrumbs-module_breadcrumb-item-active__Tg9ma {\n  color: var(--black);\n}";
-var styles$v = {"white":"var(--white)","black":"var(--black)","dark-grey":"var(--dark-grey)","dark-grey-o-85":"var(--dark-grey-o-85)","grey":"var(--grey)","grey1":"var(--grey1)","grey2":"var(--grey2)","grey3":"var(--grey3)","grey4":"var(--grey4)","grey5":"var(--grey5)","grey6":"var(--grey6)","grey7":"var(--grey7)","grey8":"var(--grey8)","grey9":"var(--grey9)","grey10":"var(--grey10)","highlight":"var(--highlight)","dark-blue":"var(--dark-blue)","background":"var(--background)","banyan-blue":"var(--banyan-blue)","banyan-orange":"var(--banyan-orange)","banyan-pink":"var(--banyan-pink)","banyan-gradient":"var(--banyan-gradient)","error":"var(--error)","error-bg":"var(--error-bg)","error-outline":"var(--error-outline)","success":"var(--success)","success-bg":"var(--success-bg)","success-outline":"var(--success-outline)","warning":"var(--warning)","warning-bg":"var(--warning-bg)","warning-outline":"var(--warning-outline)","info":"var(--info)","info-bg":"var(--info-bg)","info-outline":"var(--info-outline)","container":"Breadcrumbs-module_container__w5vWh","seperator":"Breadcrumbs-module_seperator__sU40m","breadcrumb-item":"Breadcrumbs-module_breadcrumb-item__YCE98","breadcrumb-item-active":"Breadcrumbs-module_breadcrumb-item-active__Tg9ma"};
+var css_248z$w = ":root {\n  --white: #ffffff;\n  --black: #000000;\n  --dark-grey: #333333;\n  --dark-grey-o-85: rgba(51, 51, 51, 0.85);\n  --grey: #737373;\n  --grey1: #888888;\n  --grey2: #a6a6a6;\n  --grey3: #bbbbbb;\n  --grey4: #c4c4c4;\n  --grey5: #dddddd;\n  --grey6: #e8e8e8;\n  --grey7: #eeeeee;\n  --grey8: #f2f2f2;\n  --grey9: #eff0f0;\n  --grey10: #f7f7f7;\n  --highlight: #0f62fe;\n  --dark-blue: #001833;\n  --background: #d0e2ff;\n  --banyan-blue: #00037c;\n  --banyan-orange: #ff892a;\n  --banyan-pink: #ff1597;\n  --banyan-gradient: linear-gradient(\n  \t84.71deg,\n  \tvar(--banyan-pink) 0.48%,\n  \tvar(--banyan-orange) 99.57%\n  );\n  --error: #da1e28;\n  --error-bg: #fff1f1;\n  --error-outline: rgba(218, 30, 40, 0.08);\n  --success: #24a148;\n  --success-bg: #defbe6;\n  --success-outline: rgba(36, 161, 72, 0.08);\n  --warning: #f1c21b;\n  --warning-bg: #fff8e1;\n  --warning-outline: rgba(203, 160, 6, 0.08);\n  --info: #0043ce;\n  --info-bg: #edf5ff;\n  --info-outline: #2864db98;\n}\n\n.Breadcrumbs-module_container__w5vWh {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  width: auto;\n}\n.Breadcrumbs-module_container__w5vWh .Breadcrumbs-module_seperator__sU40m {\n  width: 1.5rem;\n  height: 1.5rem;\n  stroke: var(--grey2);\n}\n.Breadcrumbs-module_container__w5vWh .Breadcrumbs-module_breadcrumb-item__YCE98 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  font-weight: 600;\n  font-size: 0.875rem;\n  color: var(--grey2);\n}\n.Breadcrumbs-module_container__w5vWh .Breadcrumbs-module_breadcrumb-item__YCE98.Breadcrumbs-module_active__rs4zQ {\n  color: var(--black);\n}";
+var styles$v = {"white":"var(--white)","black":"var(--black)","dark-grey":"var(--dark-grey)","dark-grey-o-85":"var(--dark-grey-o-85)","grey":"var(--grey)","grey1":"var(--grey1)","grey2":"var(--grey2)","grey3":"var(--grey3)","grey4":"var(--grey4)","grey5":"var(--grey5)","grey6":"var(--grey6)","grey7":"var(--grey7)","grey8":"var(--grey8)","grey9":"var(--grey9)","grey10":"var(--grey10)","highlight":"var(--highlight)","dark-blue":"var(--dark-blue)","background":"var(--background)","banyan-blue":"var(--banyan-blue)","banyan-orange":"var(--banyan-orange)","banyan-pink":"var(--banyan-pink)","banyan-gradient":"var(--banyan-gradient)","error":"var(--error)","error-bg":"var(--error-bg)","error-outline":"var(--error-outline)","success":"var(--success)","success-bg":"var(--success-bg)","success-outline":"var(--success-outline)","warning":"var(--warning)","warning-bg":"var(--warning-bg)","warning-outline":"var(--warning-outline)","info":"var(--info)","info-bg":"var(--info-bg)","info-outline":"var(--info-outline)","container":"Breadcrumbs-module_container__w5vWh","seperator":"Breadcrumbs-module_seperator__sU40m","breadcrumb-item":"Breadcrumbs-module_breadcrumb-item__YCE98","active":"Breadcrumbs-module_active__rs4zQ"};
 styleInject(css_248z$w);
 
 var BreadCrumbs = function BreadCrumbs(props) {
@@ -11740,11 +11740,13 @@ var BreadCrumbs = function BreadCrumbs(props) {
       }),
       "aria-label": "breadcrumb",
       children: crumbs.map(function (crumb, index) {
+        var active = index === crumbs.length - 1;
         return /*#__PURE__*/jsxRuntime.jsx(Link$1, {
           href: " ",
           underline: "hover",
           children: /*#__PURE__*/jsxRuntime.jsx("span", {
-            className: classes(index === crumbs.length - 1 ? styles$v['breadcrumb-item-active'] : styles$v['breadcrumb-item']),
+            "data-elem": "breadcrumb-item".concat(active ? '-active' : ''),
+            className: classes(styles$v['breadcrumb-item'], active ? styles$v.active : ''),
             children: getSpacedDisplayName(crumb).replace(/-/g, ' ')
           })
         }, crumb);
@@ -11759,7 +11761,7 @@ BreadCrumbs.propTypes = {
   itemsAfterCollapse: propTypes$1.exports.number
 };
 BreadCrumbs.defaultProps = {
-  crumbs: ['Section1', 'Section2', 'Section3'],
+  crumbs: [],
   maxItems: 4,
   itemsBeforeCollapse: 2,
   itemsAfterCollapse: 1
@@ -14144,8 +14146,8 @@ BaseModal.defaultProps = {
   toggle: function toggle() {}
 };
 
-var css_248z$f = ":root {\n  --white: #ffffff;\n  --black: #000000;\n  --dark-grey: #333333;\n  --dark-grey-o-85: rgba(51, 51, 51, 0.85);\n  --grey: #737373;\n  --grey1: #888888;\n  --grey2: #a6a6a6;\n  --grey3: #bbbbbb;\n  --grey4: #c4c4c4;\n  --grey5: #dddddd;\n  --grey6: #e8e8e8;\n  --grey7: #eeeeee;\n  --grey8: #f2f2f2;\n  --grey9: #eff0f0;\n  --grey10: #f7f7f7;\n  --highlight: #0f62fe;\n  --dark-blue: #001833;\n  --background: #d0e2ff;\n  --banyan-blue: #00037c;\n  --banyan-orange: #ff892a;\n  --banyan-pink: #ff1597;\n  --banyan-gradient: linear-gradient(\n  \t84.71deg,\n  \tvar(--banyan-pink) 0.48%,\n  \tvar(--banyan-orange) 99.57%\n  );\n  --error: #da1e28;\n  --error-bg: #fff1f1;\n  --error-outline: rgba(218, 30, 40, 0.08);\n  --success: #24a148;\n  --success-bg: #defbe6;\n  --success-outline: rgba(36, 161, 72, 0.08);\n  --warning: #f1c21b;\n  --warning-bg: #fff8e1;\n  --warning-outline: rgba(203, 160, 6, 0.08);\n  --info: #0043ce;\n  --info-bg: #edf5ff;\n  --info-outline: #2864db98;\n}\n\n.PageHeader-module_root__RW2kD {\n  width: 100%;\n  background-color: transparent;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: flex-start;\n  gap: 4px;\n}\n.PageHeader-module_root__RW2kD.PageHeader-module_dark__Xe9bz {\n  color: red;\n}\n.PageHeader-module_root__RW2kD.PageHeader-module_dark__Xe9bz .PageHeader-module_description__G3-qZ {\n  color: pink;\n}\n.PageHeader-module_root__RW2kD.PageHeader-module_light__zutYi {\n  color: var(--dark-grey);\n}\n.PageHeader-module_root__RW2kD.PageHeader-module_light__zutYi .PageHeader-module_description__G3-qZ {\n  color: var(--grey);\n}\n.PageHeader-module_root__RW2kD .PageHeader-module_breadcrumb__v0tnM {\n  display: inline;\n}\n.PageHeader-module_root__RW2kD .PageHeader-module_contents__w0Y7e {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  width: 100%;\n}\n.PageHeader-module_root__RW2kD .PageHeader-module_contents__w0Y7e .PageHeader-module_left__fqL7M,\n.PageHeader-module_root__RW2kD .PageHeader-module_contents__w0Y7e .PageHeader-module_right__KgzBp {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 10px;\n}\n.PageHeader-module_root__RW2kD .PageHeader-module_contents__w0Y7e .PageHeader-module_left__fqL7M .PageHeader-module_title__sDcrr {\n  font-size: 2.25rem;\n  font-weight: 600;\n  line-height: 3.375rem;\n}\n.PageHeader-module_root__RW2kD .PageHeader-module_contents__w0Y7e .PageHeader-module_left__fqL7M .PageHeader-module_chip__pr-6S {\n  font-weight: 500;\n}\n.PageHeader-module_root__RW2kD .PageHeader-module_description__G3-qZ {\n  font-size: 1rem;\n  font-weight: 400;\n  line-height: 1.5rem;\n}\n\n.PageHeader-module_download__RCFoC,\n.PageHeader-module_calender__ecLCu {\n  width: 1.5rem;\n  height: 1.5rem;\n}";
-var styles$e = {"white":"var(--white)","black":"var(--black)","dark-grey":"var(--dark-grey)","dark-grey-o-85":"var(--dark-grey-o-85)","grey":"var(--grey)","grey1":"var(--grey1)","grey2":"var(--grey2)","grey3":"var(--grey3)","grey4":"var(--grey4)","grey5":"var(--grey5)","grey6":"var(--grey6)","grey7":"var(--grey7)","grey8":"var(--grey8)","grey9":"var(--grey9)","grey10":"var(--grey10)","highlight":"var(--highlight)","dark-blue":"var(--dark-blue)","background":"var(--background)","banyan-blue":"var(--banyan-blue)","banyan-orange":"var(--banyan-orange)","banyan-pink":"var(--banyan-pink)","banyan-gradient":"var(--banyan-gradient)","error":"var(--error)","error-bg":"var(--error-bg)","error-outline":"var(--error-outline)","success":"var(--success)","success-bg":"var(--success-bg)","success-outline":"var(--success-outline)","warning":"var(--warning)","warning-bg":"var(--warning-bg)","warning-outline":"var(--warning-outline)","info":"var(--info)","info-bg":"var(--info-bg)","info-outline":"var(--info-outline)","root":"PageHeader-module_root__RW2kD","dark":"PageHeader-module_dark__Xe9bz","description":"PageHeader-module_description__G3-qZ","light":"PageHeader-module_light__zutYi","breadcrumb":"PageHeader-module_breadcrumb__v0tnM","contents":"PageHeader-module_contents__w0Y7e","left":"PageHeader-module_left__fqL7M","right":"PageHeader-module_right__KgzBp","title":"PageHeader-module_title__sDcrr","chip":"PageHeader-module_chip__pr-6S","download":"PageHeader-module_download__RCFoC","calender":"PageHeader-module_calender__ecLCu"};
+var css_248z$f = ":root {\n  --white: #ffffff;\n  --black: #000000;\n  --dark-grey: #333333;\n  --dark-grey-o-85: rgba(51, 51, 51, 0.85);\n  --grey: #737373;\n  --grey1: #888888;\n  --grey2: #a6a6a6;\n  --grey3: #bbbbbb;\n  --grey4: #c4c4c4;\n  --grey5: #dddddd;\n  --grey6: #e8e8e8;\n  --grey7: #eeeeee;\n  --grey8: #f2f2f2;\n  --grey9: #eff0f0;\n  --grey10: #f7f7f7;\n  --highlight: #0f62fe;\n  --dark-blue: #001833;\n  --background: #d0e2ff;\n  --banyan-blue: #00037c;\n  --banyan-orange: #ff892a;\n  --banyan-pink: #ff1597;\n  --banyan-gradient: linear-gradient(\n  \t84.71deg,\n  \tvar(--banyan-pink) 0.48%,\n  \tvar(--banyan-orange) 99.57%\n  );\n  --error: #da1e28;\n  --error-bg: #fff1f1;\n  --error-outline: rgba(218, 30, 40, 0.08);\n  --success: #24a148;\n  --success-bg: #defbe6;\n  --success-outline: rgba(36, 161, 72, 0.08);\n  --warning: #f1c21b;\n  --warning-bg: #fff8e1;\n  --warning-outline: rgba(203, 160, 6, 0.08);\n  --info: #0043ce;\n  --info-bg: #edf5ff;\n  --info-outline: #2864db98;\n}\n\n.PageHeader-module_root__RW2kD {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: flex-start;\n  width: 100%;\n  background-color: transparent;\n  gap: 4px;\n}\n.PageHeader-module_root__RW2kD.PageHeader-module_theme-dark__X5zgh {\n  color: var(--white);\n}\n.PageHeader-module_root__RW2kD.PageHeader-module_theme-dark__X5zgh .PageHeader-module_breadcrumb__v0tnM [data-elem=breadcrumb-item-active] {\n  color: var(--white);\n}\n.PageHeader-module_root__RW2kD.PageHeader-module_theme-light__Tercn {\n  color: var(--dark-grey);\n}\n.PageHeader-module_root__RW2kD .PageHeader-module_description__G3-qZ {\n  color: var(--grey);\n}\n.PageHeader-module_root__RW2kD .PageHeader-module_contents__w0Y7e {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  width: 100%;\n}\n.PageHeader-module_root__RW2kD .PageHeader-module_contents__w0Y7e .PageHeader-module_left__fqL7M,\n.PageHeader-module_root__RW2kD .PageHeader-module_contents__w0Y7e .PageHeader-module_right__KgzBp {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 10px;\n}\n.PageHeader-module_root__RW2kD .PageHeader-module_contents__w0Y7e .PageHeader-module_left__fqL7M .PageHeader-module_title__sDcrr {\n  font-size: 2.25rem;\n  font-weight: 600;\n  line-height: 3.375rem;\n}\n.PageHeader-module_root__RW2kD .PageHeader-module_contents__w0Y7e .PageHeader-module_left__fqL7M .PageHeader-module_chip__pr-6S {\n  font-weight: 500;\n  background: var(--highlight);\n  color: var(--white);\n}\n.PageHeader-module_root__RW2kD .PageHeader-module_description__G3-qZ {\n  font-size: 1rem;\n  font-weight: 400;\n  line-height: 1.5rem;\n}\n\n.PageHeader-module_download__RCFoC,\n.PageHeader-module_calender__ecLCu {\n  width: 1.5rem;\n  height: 1.5rem;\n}";
+var styles$e = {"white":"var(--white)","black":"var(--black)","dark-grey":"var(--dark-grey)","dark-grey-o-85":"var(--dark-grey-o-85)","grey":"var(--grey)","grey1":"var(--grey1)","grey2":"var(--grey2)","grey3":"var(--grey3)","grey4":"var(--grey4)","grey5":"var(--grey5)","grey6":"var(--grey6)","grey7":"var(--grey7)","grey8":"var(--grey8)","grey9":"var(--grey9)","grey10":"var(--grey10)","highlight":"var(--highlight)","dark-blue":"var(--dark-blue)","background":"var(--background)","banyan-blue":"var(--banyan-blue)","banyan-orange":"var(--banyan-orange)","banyan-pink":"var(--banyan-pink)","banyan-gradient":"var(--banyan-gradient)","error":"var(--error)","error-bg":"var(--error-bg)","error-outline":"var(--error-outline)","success":"var(--success)","success-bg":"var(--success-bg)","success-outline":"var(--success-outline)","warning":"var(--warning)","warning-bg":"var(--warning-bg)","warning-outline":"var(--warning-outline)","info":"var(--info)","info-bg":"var(--info-bg)","info-outline":"var(--info-outline)","root":"PageHeader-module_root__RW2kD","theme-dark":"PageHeader-module_theme-dark__X5zgh","breadcrumb":"PageHeader-module_breadcrumb__v0tnM","theme-light":"PageHeader-module_theme-light__Tercn","description":"PageHeader-module_description__G3-qZ","contents":"PageHeader-module_contents__w0Y7e","left":"PageHeader-module_left__fqL7M","right":"PageHeader-module_right__KgzBp","title":"PageHeader-module_title__sDcrr","chip":"PageHeader-module_chip__pr-6S","download":"PageHeader-module_download__RCFoC","calender":"PageHeader-module_calender__ecLCu"};
 styleInject(css_248z$f);
 
 var PageHeader = function PageHeader(props) {
@@ -14154,12 +14156,15 @@ var PageHeader = function PageHeader(props) {
     description = props.description,
     children = props.children,
     chipTitle = props.chipTitle,
-    renderRightAction = props.renderRightAction;
+    RightAction = props.rightAction,
+    crumbsProps = props.crumbsProps;
   return /*#__PURE__*/jsxRuntime.jsxs("div", {
-    className: classes(styles$e.root, styles$e[theme]),
+    className: classes(styles$e.root, styles$e["theme-".concat(theme)]),
     children: [/*#__PURE__*/jsxRuntime.jsx("div", {
       className: styles$e.breadcrumb,
-      children: /*#__PURE__*/jsxRuntime.jsx(BreadCrumbs, _objectSpread2({}, props))
+      children: /*#__PURE__*/jsxRuntime.jsx(BreadCrumbs, _objectSpread2({}, _objectSpread2(_objectSpread2({}, crumbsProps), {}, {
+        className: styles$e.breadcrumb
+      })))
     }), /*#__PURE__*/jsxRuntime.jsxs("div", {
       className: styles$e.contents,
       children: [/*#__PURE__*/jsxRuntime.jsxs("div", {
@@ -14168,16 +14173,15 @@ var PageHeader = function PageHeader(props) {
           className: styles$e.title,
           children: title
         }), chipTitle && /*#__PURE__*/jsxRuntime.jsx(Chip, {
-          variant: "contained",
-          color: "primary",
-          size: "small",
+          className: styles$e.chip,
+          size: "sm",
           title: chipTitle,
-          radius: "ellipsis",
-          customClass: styles$e.chip
+          radius: "ellipse",
+          variant: "status"
         })]
-      }), renderRightAction && /*#__PURE__*/jsxRuntime.jsx("div", {
+      }), RightAction && /*#__PURE__*/jsxRuntime.jsx("div", {
         className: styles$e.right,
-        children: renderRightAction
+        children: /*#__PURE__*/jsxRuntime.jsx(RightAction, {})
       })]
     }), /*#__PURE__*/jsxRuntime.jsx("div", {
       className: styles$e.description,
@@ -14187,11 +14191,19 @@ var PageHeader = function PageHeader(props) {
 };
 PageHeader.propTypes = {
   title: propTypes$1.exports.string,
-  description: propTypes$1.exports.string
+  description: propTypes$1.exports.string,
+  theme: propTypes$1.exports.oneOf(['dark', 'light']),
+  chipTitle: propTypes$1.exports.string,
+  crumbsProps: propTypes$1.exports.shape(BreadCrumbs.propTypes),
+  rightAction: propTypes$1.exports.node
 };
 PageHeader.defaultProps = {
   title: 'Page Header',
-  description: ''
+  description: '',
+  theme: 'light',
+  chipTitle: null,
+  crumbsProps: {},
+  rightAction: null
 };
 
 /* eslint-disable max-classes-per-file */

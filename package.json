@@ -1,5 +1,4 @@
 {
-
 	"name": "@banyan_cloud/roots",
 	"version": "1.0.1",
 	"description": "Design System Library which drives the Banyan Cloud products",
@@ -8,6 +7,9 @@
 	"files": [
 		"dist"
 	],
+	"publishConfig": {
+		"registry": "https://npm.pkg.github.com"
+	},
 	"peerDependencies": {
 		"@emotion/react": "^11.10.4",
 		"@emotion/styled": "^11.10.4",
@@ -93,7 +95,7 @@
 		"lint": "eslint --ext js,jsx .",
 		"lint:fix": "eslint --ext js,jsx . --fix",
 		"format": "prettier --write './**/*.{js,jsx,ts,tsx,md,json}' --config ./.prettierrc",
-		"rollup": "rollup -c --bundleConfigAsCjs"
+		"build": "rollup -c --bundleConfigAsCjs"
 	},
 	"repository": {
 		"type": "git",
