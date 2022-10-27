@@ -712,12 +712,18 @@ WithCustomCells.args = {
 	}),
 	tableData: API_RESPONSE.data,
 	customCells: {
-		body: {
-			k8sClusterRolebindingMetadata: ({ cellContent, ...rest }) => {
-				return (
-					<TableCell {...rest} multiLine cellContent={JSON.stringify(cellContent, 4)} />
-				);
-			},
+		body: () => {
+			return {
+				k8sClusterRolebindingMetadata: ({ cellContent, ...rest }) => {
+					return (
+						<TableCell
+							{...rest}
+							multiLine
+							cellContent={JSON.stringify(cellContent, 4)}
+						/>
+					);
+				},
+			};
 		},
 	},
 };

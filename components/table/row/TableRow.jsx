@@ -36,7 +36,9 @@ const TableRow = (props) => {
 					type,
 				};
 
-				const CustomCell = customCells?.[type]?.[item.id];
+				const getCustomCell = customCells?.[type];
+				const CustomCell =
+					typeof getCustomCell === 'function' ? getCustomCell()?.[item.id] : null;
 				if (CustomCell != null) {
 					// eslint-disable-next-line react/jsx-key
 					return <CustomCell {...cellProps} />;
@@ -56,8 +58,8 @@ TableRow.propTypes = {
 	type: PropTypes.oneOf(['header', 'body']),
 	datum: PropTypes.object,
 	customCells: PropTypes.shape({
-		header: PropTypes.object,
-		body: PropTypes.object,
+		header: PropTypes.func,
+		body: PropTypes.func,
 	}),
 	headerData: PropTypes.arrayOf(
 		PropTypes.shape({

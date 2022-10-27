@@ -108,7 +108,9 @@ const Table = (props) => {
 
 	return (
 		<div className={classes(styles.root, className)}>
-			{chipsData != null && <TableChips className={styles.chips} {...chipsData} />}
+			{chipsData != null && (chipsData?.chips?.length > 0 || chipsData?.showBack != null) && (
+				<TableChips className={styles.chips} {...chipsData} />
+			)}
 			{filtersData != null && (
 				<TableFilters
 					className={styles.filters}
@@ -163,8 +165,8 @@ Table.propTypes = {
 	activeData: PropTypes.object,
 	setActiveData: PropTypes.func,
 	customCells: PropTypes.shape({
-		header: PropTypes.object,
-		body: PropTypes.object,
+		header: PropTypes.func,
+		body: PropTypes.func,
 	}),
 	chipsData: PropTypes.shape({
 		...TableChips.propTypes,

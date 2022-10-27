@@ -92,4 +92,10 @@
 }
 .root.body-row.selected > [data-elem=base-cell] {
   background: var(--background);
+}
+.root > [data-elem=base-cell]:first-child {
+  padding-left: 1rem;
+}
+.root > [data-elem=base-cell]:last-child {
+  padding-right: 1rem;
 }/*# sourceMappingURL=TableRow.module.css.map */

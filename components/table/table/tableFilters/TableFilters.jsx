@@ -138,7 +138,7 @@ TableFilters.defaultProps = {
 	onSearch: () => {},
 	searchValue: null,
 	filterValue: {
-		applied: 4,
+		applied: null,
 	},
 };
 

@@ -57,8 +57,8 @@ BaseTable.propTypes = {
 	activeData: PropTypes.object,
 	setActiveData: PropTypes.func,
 	customCells: PropTypes.shape({
-		header: PropTypes.object,
-		body: PropTypes.object,
+		header: PropTypes.func,
+		body: PropTypes.func,
 	}),
 };
 
