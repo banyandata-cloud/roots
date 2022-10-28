@@ -26,8 +26,8 @@ TableHeader.propTypes = {
 		})
 	),
 	customCells: PropTypes.shape({
-		header: PropTypes.object,
-		body: PropTypes.object,
+		header: PropTypes.func,
+		body: PropTypes.func,
 	}),
 };
 

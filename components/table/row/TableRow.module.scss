@@ -21,4 +21,13 @@
 			}
 		}
 	}
+
+	> [data-elem='base-cell'] {
+		&:first-child {
+			padding-left: 1rem;
+		}
+		&:last-child {
+			padding-right: 1rem;
+		}
+	}
 }
