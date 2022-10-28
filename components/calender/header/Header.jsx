@@ -1,5 +1,6 @@
 import React from 'react';
-import { ArrowIcon } from '../../icons';
+import { classes } from '../../../utils';
+import { ChevronIcon } from '../../icons';
 import styles from './Header.module.css';
 
 const Header = (props) => {
@@ -12,7 +13,7 @@ const Header = (props) => {
 					onMonthChange('prev');
 				}}
 				className={styles['left-arrow']}>
-				<ArrowIcon />
+				<ChevronIcon className={classes(styles.icon)} position='left' />
 			</div>
 
 			<span className={styles.title}>{`${selectedMonth.month} ${selectedMonth.year}`}</span>
@@ -21,7 +22,7 @@ const Header = (props) => {
 					onMonthChange('next');
 				}}
 				className={styles['right-arrow']}>
-				<ArrowIcon />
+				<ChevronIcon className={classes(styles.icon)} position='right' />
 			</div>
 		</div>
 	);

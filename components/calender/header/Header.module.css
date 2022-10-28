@@ -87,10 +87,9 @@
   font-size: 0.8rem;
   color: var(--black);
 }
-.container .left-arrow {
-  cursor: pointer;
-  transform: rotate(180deg);
-}
-.container .right-arrow {
+.container .icon {
+  width: 24px;
+  height: 24px;
+  stroke: #181818;
   cursor: pointer;
 }/*# sourceMappingURL=Header.module.css.map */

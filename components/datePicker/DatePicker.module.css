@@ -120,10 +120,15 @@
 .root .container .input {
   display: none;
 }
-.root .container .down-arrow {
+.root .container .icon {
+  width: 24px;
+  height: 24px;
+  stroke: #181818;
+}
+.root .container .down {
   transform: rotate(270deg);
 }
-.root .container .up-arrow {
+.root .container .up {
   transform: rotate(90deg);
 }
 .root .disabled {

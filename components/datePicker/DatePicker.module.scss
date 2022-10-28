@@ -1,4 +1,4 @@
-@import '../../styles/index';
+@import '../../assets/styles/index';
 
 .root {
 	@include flex(column, flex-start, stretch);
@@ -36,10 +36,15 @@
 		.input {
 			display: none;
 		}
-		.down-arrow {
+		.icon {
+			width: 24px;
+			height: 24px;
+			stroke: #181818;
+		}
+		.down {
 			transform: rotate(270deg);
 		}
-		.up-arrow {
+		.up {
 			transform: rotate(90deg);
 		}
 	}

@@ -11,10 +11,10 @@ import {
 	useClick,
 } from '@floating-ui/react-dom-interactions';
 import { fromUnixTime } from 'date-fns';
-import { useOutsideClickListener } from '../../hooks';
+import useOutsideClickListener from '../../hooks/useOutsideClickListener';
 import { classes } from '../../utils';
 import { Calender } from '../calender';
-import { ArrowIcon } from '../icons';
+import { ChevronIcon } from '../icons';
 import { Popper } from '../popper';
 import styles from './DatePicker.module.css';
 import { isMaxRangeExceeded } from './utils';
@@ -138,7 +138,7 @@ const DatePicker = (props) => {
 				)}
 
 				<input className={styles.input} value={displayValue} />
-				<ArrowIcon className={classes(open ? styles['up-arrow'] : styles['down-arrow'])} />
+				<ChevronIcon className={classes(styles.icon)} position={open ? 'top' : 'bottom'} />
 			</div>
 			{error && <div className={styles['error-text']}>{error}</div>}
 			<Popper open={open} wrapperid='datePicker-popper'>
