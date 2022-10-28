@@ -1,4 +1,4 @@
-@import '../../../assets/styles/index';
+@import '../../../styles';
 
 .container {
 	@include flex(row, space-between, center);
@@ -8,11 +8,10 @@
 		font-size: 0.8rem;
 		color: $black;
 	}
-	.left-arrow {
-		cursor: pointer;
-		transform: rotate(180deg);
-	}
-	.right-arrow {
+	.icon {
+		width: 1.5rem;
+		height: 1.5rem;
+		stroke: #181818;
 		cursor: pointer;
 	}
 }
