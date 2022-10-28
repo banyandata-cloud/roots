@@ -1,4 +1,4 @@
-@import '../../assets/styles/index';
+@import '../../styles';
 
 .root {
 	@include flex(column, flex-start, stretch);
