@@ -13747,8 +13747,8 @@ Radio.defaultProps = {
   onChange: function onChange() {}
 };
 
-var css_248z$i = ":root {\n  --white: #ffffff;\n  --black: #000000;\n  --dark-grey: #333333;\n  --dark-grey-o-85: rgba(51, 51, 51, 0.85);\n  --grey: #737373;\n  --grey1: #888888;\n  --grey2: #a6a6a6;\n  --grey3: #bbbbbb;\n  --grey4: #c4c4c4;\n  --grey5: #dddddd;\n  --grey6: #e8e8e8;\n  --grey7: #eeeeee;\n  --grey8: #f2f2f2;\n  --grey9: #eff0f0;\n  --grey10: #f7f7f7;\n  --highlight: #0f62fe;\n  --dark-blue: #001833;\n  --background: #d0e2ff;\n  --banyan-blue: #00037c;\n  --banyan-orange: #ff892a;\n  --banyan-pink: #ff1597;\n  --banyan-gradient: linear-gradient(\n  \t84.71deg,\n  \tvar(--banyan-pink) 0.48%,\n  \tvar(--banyan-orange) 99.57%\n  );\n  --error: #da1e28;\n  --error-bg: #fff1f1;\n  --error-outline: rgba(218, 30, 40, 0.08);\n  --success: #24a148;\n  --success-bg: #defbe6;\n  --success-outline: rgba(36, 161, 72, 0.08);\n  --warning: #f1c21b;\n  --warning-bg: #fff8e1;\n  --warning-outline: rgba(203, 160, 6, 0.08);\n  --info: #0043ce;\n  --info-bg: #edf5ff;\n  --info-outline: #2864db98;\n}\n\n.Dropdown-module_root__mkOMI {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  gap: 0.5rem;\n  position: relative;\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  max-width: 100%;\n}\n.Dropdown-module_root__mkOMI .Dropdown-module_label__YkFsR {\n  font-size: 0.75rem;\n  color: var(--grey);\n  width: auto;\n}\n.Dropdown-module_root__mkOMI .Dropdown-module_header__EOpC- {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  max-width: 100%;\n  position: relative;\n}\n.Dropdown-module_root__mkOMI .Dropdown-module_header__EOpC- .Dropdown-module_select__Thb6Y {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  width: 25rem;\n  max-width: 100%;\n  gap: 0.5rem;\n  background: var(--white);\n  outline: none;\n  border: 1px solid var(--grey5);\n  border-radius: 0.25rem;\n  padding: 0.75rem 0.75rem 0.75rem 1rem;\n  cursor: pointer;\n}\n.Dropdown-module_root__mkOMI .Dropdown-module_header__EOpC- .Dropdown-module_select__Thb6Y .Dropdown-module_placeholder__B2kmJ {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  color: var(--black);\n}\n.Dropdown-module_root__mkOMI .Dropdown-module_header__EOpC- .Dropdown-module_select__Thb6Y .Dropdown-module_icon__YsokN {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.Dropdown-module_root__mkOMI .Dropdown-module_header__EOpC- .Dropdown-module_input__LYIeG {\n  position: absolute;\n  opacity: 0;\n  width: 1px;\n  height: 1px;\n}\n.Dropdown-module_root__mkOMI .Dropdown-module_header__EOpC- .Dropdown-module_input__LYIeG:focus + .Dropdown-module_select__Thb6Y {\n  border-color: var(--highlight);\n}\n.Dropdown-module_root__mkOMI.Dropdown-module_open__dEH0H .Dropdown-module_header__EOpC- {\n  border-color: var(--highlight);\n}\n.Dropdown-module_root__mkOMI.Dropdown-module_disabled__eLZhs .Dropdown-module_select__Thb6Y {\n  background: var(--grey10);\n  cursor: not-allowed;\n}\n\n.Dropdown-module_body__BDZmr {\n  display: none;\n  position: absolute;\n  top: calc(100% + 0.5rem);\n  z-index: 999;\n  background: var(--white);\n  width: auto;\n  border: 0.063rem solid var(--grey5);\n  box-shadow: 0rem 0.5rem 1.25rem rgba(24, 24, 24, 0.08);\n  border-radius: 0.25rem;\n  padding: 1rem;\n  overflow-y: auto;\n  min-height: 4rem;\n  outline: none;\n}\n.Dropdown-module_body__BDZmr.Dropdown-module_open__dEH0H {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n}";
-var styles$h = {"white":"var(--white)","black":"var(--black)","dark-grey":"var(--dark-grey)","dark-grey-o-85":"var(--dark-grey-o-85)","grey":"var(--grey)","grey1":"var(--grey1)","grey2":"var(--grey2)","grey3":"var(--grey3)","grey4":"var(--grey4)","grey5":"var(--grey5)","grey6":"var(--grey6)","grey7":"var(--grey7)","grey8":"var(--grey8)","grey9":"var(--grey9)","grey10":"var(--grey10)","highlight":"var(--highlight)","dark-blue":"var(--dark-blue)","background":"var(--background)","banyan-blue":"var(--banyan-blue)","banyan-orange":"var(--banyan-orange)","banyan-pink":"var(--banyan-pink)","banyan-gradient":"var(--banyan-gradient)","error":"var(--error)","error-bg":"var(--error-bg)","error-outline":"var(--error-outline)","success":"var(--success)","success-bg":"var(--success-bg)","success-outline":"var(--success-outline)","warning":"var(--warning)","warning-bg":"var(--warning-bg)","warning-outline":"var(--warning-outline)","info":"var(--info)","info-bg":"var(--info-bg)","info-outline":"var(--info-outline)","root":"Dropdown-module_root__mkOMI","label":"Dropdown-module_label__YkFsR","header":"Dropdown-module_header__EOpC-","select":"Dropdown-module_select__Thb6Y","placeholder":"Dropdown-module_placeholder__B2kmJ","icon":"Dropdown-module_icon__YsokN","input":"Dropdown-module_input__LYIeG","open":"Dropdown-module_open__dEH0H","disabled":"Dropdown-module_disabled__eLZhs","body":"Dropdown-module_body__BDZmr"};
+var css_248z$i = ":root {\n  --white: #ffffff;\n  --black: #000000;\n  --dark-grey: #333333;\n  --dark-grey-o-85: rgba(51, 51, 51, 0.85);\n  --grey: #737373;\n  --grey1: #888888;\n  --grey2: #a6a6a6;\n  --grey3: #bbbbbb;\n  --grey4: #c4c4c4;\n  --grey5: #dddddd;\n  --grey6: #e8e8e8;\n  --grey7: #eeeeee;\n  --grey8: #f2f2f2;\n  --grey9: #eff0f0;\n  --grey10: #f7f7f7;\n  --highlight: #0f62fe;\n  --dark-blue: #001833;\n  --background: #d0e2ff;\n  --banyan-blue: #00037c;\n  --banyan-orange: #ff892a;\n  --banyan-pink: #ff1597;\n  --banyan-gradient: linear-gradient(\n  \t84.71deg,\n  \tvar(--banyan-pink) 0.48%,\n  \tvar(--banyan-orange) 99.57%\n  );\n  --error: #da1e28;\n  --error-bg: #fff1f1;\n  --error-outline: rgba(218, 30, 40, 0.08);\n  --success: #24a148;\n  --success-bg: #defbe6;\n  --success-outline: rgba(36, 161, 72, 0.08);\n  --warning: #f1c21b;\n  --warning-bg: #fff8e1;\n  --warning-outline: rgba(203, 160, 6, 0.08);\n  --info: #0043ce;\n  --info-bg: #edf5ff;\n  --info-outline: #2864db98;\n}\n\n.Dropdown-module_root__mkOMI {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  gap: 0.5rem;\n  position: relative;\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  max-width: 100%;\n}\n.Dropdown-module_root__mkOMI .Dropdown-module_label__YkFsR {\n  font-size: 0.75rem;\n  color: var(--grey);\n  width: auto;\n}\n.Dropdown-module_root__mkOMI .Dropdown-module_header__EOpC- {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  max-width: 100%;\n  position: relative;\n}\n.Dropdown-module_root__mkOMI .Dropdown-module_header__EOpC- .Dropdown-module_input__LYIeG {\n  position: absolute;\n  opacity: 0;\n  width: 1px;\n  height: 1px;\n}\n.Dropdown-module_root__mkOMI .Dropdown-module_header__EOpC- .Dropdown-module_input__LYIeG:focus + .Dropdown-module_select__Thb6Y {\n  border-color: var(--highlight);\n}\n.Dropdown-module_root__mkOMI .Dropdown-module_header__EOpC- .Dropdown-module_input__LYIeG:focus + .Dropdown-module_select__Thb6Y.Dropdown-module_feedback-error__FD-hZ {\n  border-color: var(--error);\n}\n.Dropdown-module_root__mkOMI .Dropdown-module_header__EOpC- .Dropdown-module_select__Thb6Y {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  width: 25rem;\n  max-width: 100%;\n  gap: 0.5rem;\n  background: var(--white);\n  outline: none;\n  border: 1px solid var(--grey5);\n  border-radius: 0.25rem;\n  padding: 0.75rem 0.75rem 0.75rem 1rem;\n  cursor: pointer;\n}\n.Dropdown-module_root__mkOMI .Dropdown-module_header__EOpC- .Dropdown-module_select__Thb6Y .Dropdown-module_placeholder__B2kmJ {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  color: var(--black);\n}\n.Dropdown-module_root__mkOMI .Dropdown-module_header__EOpC- .Dropdown-module_select__Thb6Y .Dropdown-module_icon__YsokN {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.Dropdown-module_root__mkOMI .Dropdown-module_header__EOpC- .Dropdown-module_select__Thb6Y.Dropdown-module_feedback-error__FD-hZ {\n  border-color: var(--error);\n}\n.Dropdown-module_root__mkOMI.Dropdown-module_open__dEH0H .Dropdown-module_header__EOpC- {\n  border-color: var(--highlight);\n}\n.Dropdown-module_root__mkOMI.Dropdown-module_disabled__eLZhs .Dropdown-module_select__Thb6Y {\n  background: var(--grey10);\n  cursor: not-allowed;\n}\n.Dropdown-module_root__mkOMI .Dropdown-module_bottom__InVTc {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: flex-start;\n  min-height: 2rem;\n  width: 100%;\n  gap: 1rem;\n  color: var(--grey3);\n  font-size: 0.75rem;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.Dropdown-module_root__mkOMI .Dropdown-module_bottom__InVTc .Dropdown-module_feedback__0VQS6 {\n  flex: 1;\n  margin-right: auto;\n}\n.Dropdown-module_root__mkOMI .Dropdown-module_bottom__InVTc .Dropdown-module_feedback__0VQS6.Dropdown-module_feedback-error__FD-hZ {\n  color: var(--error);\n  fill: var(--error);\n}\n.Dropdown-module_root__mkOMI .Dropdown-module_bottom__InVTc .Dropdown-module_feedback__0VQS6.Dropdown-module_feedback-success__3QnZd {\n  color: var(--success);\n  fill: var(--success);\n}\n.Dropdown-module_root__mkOMI .Dropdown-module_bottom__InVTc .Dropdown-module_count__tIbln {\n  text-align: right;\n  margin-left: auto;\n}\n.Dropdown-module_root__mkOMI .Dropdown-module_bottom__InVTc .Dropdown-module_count__tIbln.Dropdown-module_exceeded__n1R-W {\n  color: var(--error);\n}\n\n.Dropdown-module_body__BDZmr {\n  display: none;\n  position: absolute;\n  top: calc(100% + 0.5rem);\n  z-index: 999;\n  background: var(--white);\n  width: auto;\n  border: 0.063rem solid var(--grey5);\n  box-shadow: 0rem 0.5rem 1.25rem rgba(24, 24, 24, 0.08);\n  border-radius: 0.25rem;\n  padding: 1rem;\n  overflow-y: auto;\n  min-height: 4rem;\n  outline: none;\n}\n.Dropdown-module_body__BDZmr.Dropdown-module_open__dEH0H {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n}";
+var styles$h = {"white":"var(--white)","black":"var(--black)","dark-grey":"var(--dark-grey)","dark-grey-o-85":"var(--dark-grey-o-85)","grey":"var(--grey)","grey1":"var(--grey1)","grey2":"var(--grey2)","grey3":"var(--grey3)","grey4":"var(--grey4)","grey5":"var(--grey5)","grey6":"var(--grey6)","grey7":"var(--grey7)","grey8":"var(--grey8)","grey9":"var(--grey9)","grey10":"var(--grey10)","highlight":"var(--highlight)","dark-blue":"var(--dark-blue)","background":"var(--background)","banyan-blue":"var(--banyan-blue)","banyan-orange":"var(--banyan-orange)","banyan-pink":"var(--banyan-pink)","banyan-gradient":"var(--banyan-gradient)","error":"var(--error)","error-bg":"var(--error-bg)","error-outline":"var(--error-outline)","success":"var(--success)","success-bg":"var(--success-bg)","success-outline":"var(--success-outline)","warning":"var(--warning)","warning-bg":"var(--warning-bg)","warning-outline":"var(--warning-outline)","info":"var(--info)","info-bg":"var(--info-bg)","info-outline":"var(--info-outline)","root":"Dropdown-module_root__mkOMI","label":"Dropdown-module_label__YkFsR","header":"Dropdown-module_header__EOpC-","input":"Dropdown-module_input__LYIeG","select":"Dropdown-module_select__Thb6Y","feedback-error":"Dropdown-module_feedback-error__FD-hZ","placeholder":"Dropdown-module_placeholder__B2kmJ","icon":"Dropdown-module_icon__YsokN","open":"Dropdown-module_open__dEH0H","disabled":"Dropdown-module_disabled__eLZhs","bottom":"Dropdown-module_bottom__InVTc","feedback":"Dropdown-module_feedback__0VQS6","feedback-success":"Dropdown-module_feedback-success__3QnZd","count":"Dropdown-module_count__tIbln","exceeded":"Dropdown-module_exceeded__n1R-W","body":"Dropdown-module_body__BDZmr"};
 styleInject(css_248z$i);
 
 var Dropdown = /*#__PURE__*/React.forwardRef(function Dropdown(props, inputRef) {
@@ -13758,11 +13758,15 @@ var Dropdown = /*#__PURE__*/React.forwardRef(function Dropdown(props, inputRef) 
     popperClassName = props.popperClassName,
     value = props.value,
     onChange = props.onChange,
+    onBlur = props.onBlur,
     children = props.children,
     label = props.label,
     placeholder = props.placeholder,
     multi = props.multi,
-    disabled = props.disabled;
+    disabled = props.disabled,
+    id = props.id,
+    name = props.name,
+    feedback = props.feedback;
   var _useState = React.useState(false),
     _useState2 = _slicedToArray(_useState, 2),
     open = _useState2[0],
@@ -13841,16 +13845,27 @@ var Dropdown = /*#__PURE__*/React.forwardRef(function Dropdown(props, inputRef) 
       index = dataset.index,
       selected = dataset.selected,
       elem = dataset.elem;
+
+    // to support form libraries which require name and value on the event
+    var nativeEvent = event.nativeEvent || event;
+    var clonedEvent = new nativeEvent.constructor(nativeEvent.type, nativeEvent);
+    Object.defineProperty(clonedEvent, 'target', {
+      writable: true,
+      value: {
+        value: itemValue,
+        name: name
+      }
+    });
     if (elem === 'dropdown-item') {
       setSelectedIndex(parseInt(index, 10));
       if (multi) {
         if (isControlled) {
           if (selected === 'true') {
-            onChange === null || onChange === void 0 ? void 0 : onChange(event, value.filter(function (val) {
+            onChange === null || onChange === void 0 ? void 0 : onChange(clonedEvent, value.filter(function (val) {
               return val !== itemValue;
             }));
           } else {
-            onChange === null || onChange === void 0 ? void 0 : onChange(event, [].concat(_toConsumableArray(value !== null && value !== void 0 ? value : []), [itemValue]));
+            onChange === null || onChange === void 0 ? void 0 : onChange(clonedEvent, [].concat(_toConsumableArray(value !== null && value !== void 0 ? value : []), [itemValue]));
           }
         } else {
           // eslint-disable-next-line no-lonely-if
@@ -13864,7 +13879,7 @@ var Dropdown = /*#__PURE__*/React.forwardRef(function Dropdown(props, inputRef) 
         }
       } else {
         if (isControlled) {
-          onChange(event, itemValue.toString());
+          onChange(clonedEvent, itemValue.toString());
         } else {
           setUncontrolledValue(itemValue.toString());
         }
@@ -13951,6 +13966,8 @@ var Dropdown = /*#__PURE__*/React.forwardRef(function Dropdown(props, inputRef) 
       ref: reference
     }, getReferenceProps()), {}, {
       children: [/*#__PURE__*/jsxRuntime.jsx("input", {
+        id: id,
+        name: name,
         ref: inputRef,
         disabled: disabled,
         tabIndex: 0,
@@ -13961,13 +13978,14 @@ var Dropdown = /*#__PURE__*/React.forwardRef(function Dropdown(props, inputRef) 
             setOpen(true);
           }
         },
+        onBlur: onBlur,
         value: selectedOptions === null || selectedOptions === void 0 ? void 0 : (_selectedOptions$map = selectedOptions.map(function (option) {
           return option === null || option === void 0 ? void 0 : option.value;
         })) === null || _selectedOptions$map === void 0 ? void 0 : _selectedOptions$map.join(', ')
       }), /*#__PURE__*/jsxRuntime.jsxs("div", {
         "data-elem": "select",
         role: "button",
-        className: styles$h.select,
+        className: classes(styles$h.select, feedback != null ? styles$h["feedback-".concat(feedback === null || feedback === void 0 ? void 0 : feedback.type)] : ''),
         children: [/*#__PURE__*/jsxRuntime.jsx("span", {
           "data-elem": "placeholder",
           className: styles$h.placeholder,
@@ -14003,6 +14021,13 @@ var Dropdown = /*#__PURE__*/React.forwardRef(function Dropdown(props, inputRef) 
           children: items
         }))
       })
+    }), feedback != null && /*#__PURE__*/jsxRuntime.jsx("div", {
+      className: styles$h.bottom,
+      children: /*#__PURE__*/jsxRuntime.jsx("div", {
+        "data-elem": "feedback",
+        className: classes(styles$h.feedback, styles$h["feedback-".concat(feedback.type)]),
+        children: feedback.text
+      })
     })]
   });
 });
@@ -14016,7 +14041,12 @@ Dropdown.propTypes = {
   // search: PropTypes.bool,
   // max: PropTypes.number,
   multi: propTypes$1.exports.bool,
-  onChange: propTypes$1.exports.func
+  onChange: propTypes$1.exports.func,
+  onBlur: propTypes$1.exports.func,
+  feedback: propTypes$1.exports.shape({
+    text: propTypes$1.exports.node,
+    type: propTypes$1.exports.oneOf(['error', 'success', 'default'])
+  })
 };
 Dropdown.defaultProps = {
   popperClassName: '',
@@ -14028,7 +14058,9 @@ Dropdown.defaultProps = {
   // search: false,
   // max: null,
   multi: false,
-  onChange: null
+  onChange: null,
+  onBlur: null,
+  feedback: null
 };
 
 var css_248z$h = ":root {\n  --white: #ffffff;\n  --black: #000000;\n  --dark-grey: #333333;\n  --dark-grey-o-85: rgba(51, 51, 51, 0.85);\n  --grey: #737373;\n  --grey1: #888888;\n  --grey2: #a6a6a6;\n  --grey3: #bbbbbb;\n  --grey4: #c4c4c4;\n  --grey5: #dddddd;\n  --grey6: #e8e8e8;\n  --grey7: #eeeeee;\n  --grey8: #f2f2f2;\n  --grey9: #eff0f0;\n  --grey10: #f7f7f7;\n  --highlight: #0f62fe;\n  --dark-blue: #001833;\n  --background: #d0e2ff;\n  --banyan-blue: #00037c;\n  --banyan-orange: #ff892a;\n  --banyan-pink: #ff1597;\n  --banyan-gradient: linear-gradient(\n  \t84.71deg,\n  \tvar(--banyan-pink) 0.48%,\n  \tvar(--banyan-orange) 99.57%\n  );\n  --error: #da1e28;\n  --error-bg: #fff1f1;\n  --error-outline: rgba(218, 30, 40, 0.08);\n  --success: #24a148;\n  --success-bg: #defbe6;\n  --success-outline: rgba(36, 161, 72, 0.08);\n  --warning: #f1c21b;\n  --warning-bg: #fff8e1;\n  --warning-outline: rgba(203, 160, 6, 0.08);\n  --info: #0043ce;\n  --info-bg: #edf5ff;\n  --info-outline: #2864db98;\n}\n\n.DropdownItem-module_root__su9HU {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.75rem;\n  width: 100%;\n  padding: 0.75rem 1rem;\n  border-radius: 0.25rem;\n  cursor: pointer;\n  color: var(--grey);\n  outline: none;\n}\n.DropdownItem-module_root__su9HU:hover, .DropdownItem-module_root__su9HU:focus {\n  background: var(--grey6);\n}\n.DropdownItem-module_root__su9HU.DropdownItem-module_selected__Iwplc {\n  background: var(--info-bg);\n}";
@@ -14647,7 +14679,7 @@ var css_248z$b = ":root {\n  --white: #ffffff;\n  --black: #000000;\n  --dark-gr
 var styles$b = {"white":"var(--white)","black":"var(--black)","dark-grey":"var(--dark-grey)","dark-grey-o-85":"var(--dark-grey-o-85)","grey":"var(--grey)","grey1":"var(--grey1)","grey2":"var(--grey2)","grey3":"var(--grey3)","grey4":"var(--grey4)","grey5":"var(--grey5)","grey6":"var(--grey6)","grey7":"var(--grey7)","grey8":"var(--grey8)","grey9":"var(--grey9)","grey10":"var(--grey10)","highlight":"var(--highlight)","dark-blue":"var(--dark-blue)","background":"var(--background)","banyan-blue":"var(--banyan-blue)","banyan-orange":"var(--banyan-orange)","banyan-pink":"var(--banyan-pink)","banyan-gradient":"var(--banyan-gradient)","error":"var(--error)","error-bg":"var(--error-bg)","error-outline":"var(--error-outline)","success":"var(--success)","success-bg":"var(--success-bg)","success-outline":"var(--success-outline)","warning":"var(--warning)","warning-bg":"var(--warning-bg)","warning-outline":"var(--warning-outline)","info":"var(--info)","info-bg":"var(--info-bg)","info-outline":"var(--info-outline)","root":"TableCell-module_root__0-5fC","cell-text":"TableCell-module_cell-text__MqZRq","header-cell":"TableCell-module_header-cell__cDXlM","body-cell":"TableCell-module_body-cell__Z2M7H","multi-line":"TableCell-module_multi-line__8cWJW","sticky-left":"TableCell-module_sticky-left__clzyD","sticky-right":"TableCell-module_sticky-right__U9Kgq"};
 styleInject(css_248z$b);
 
-var TableCell = function TableCell(props) {
+var TableCell = /*#__PURE__*/React.forwardRef(function TableCell(props, ref) {
   var className = props.className,
     size = props.size,
     flexible = props.flexible,
@@ -14664,6 +14696,7 @@ var TableCell = function TableCell(props) {
     cellTitle = props.cellTitle,
     sticky = props.sticky;
   return /*#__PURE__*/jsxRuntime.jsx(BaseCell, {
+    ref: ref,
     className: classes(styles$b.root, className, styles$b["".concat(type, "-cell")], styles$b["sticky-".concat(sticky)]),
     attrs: _objectSpread2({
       style: style
@@ -14684,7 +14717,7 @@ var TableCell = function TableCell(props) {
     RootDOM: RootDOM,
     radius: radius
   });
-};
+});
 TableCell.propTypes = _objectSpread2(_objectSpread2({}, BaseCell.propTypes), {}, {
   title: propTypes$1.exports.string,
   id: propTypes$1.exports.string,
