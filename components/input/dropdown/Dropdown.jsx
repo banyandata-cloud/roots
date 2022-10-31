@@ -29,6 +29,7 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 		popperClassName,
 		value,
 		onChange,
+		onBlur,
 		children,
 		label,
 		placeholder,
@@ -101,6 +102,19 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 	const onSelect = (event) => {
 		const { dataset } = inputHelper(event);
 		const { value: itemValue, index, selected, elem } = dataset;
+
+		// to support form libraries which require name and value on the event
+		const nativeEvent = event.nativeEvent || event;
+		const clonedEvent = new nativeEvent.constructor(nativeEvent.type, nativeEvent);
+
+		Object.defineProperty(clonedEvent, 'target', {
+			writable: true,
+			value: {
+				value: itemValue,
+				name,
+			},
+		});
+
 		if (elem === 'dropdown-item') {
 			setSelectedIndex(parseInt(index, 10));
 
@@ -108,13 +122,13 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 				if (isControlled) {
 					if (selected === 'true') {
 						onChange?.(
-							event,
+							clonedEvent,
 							value.filter((val) => {
 								return val !== itemValue;
 							})
 						);
 					} else {
-						onChange?.(event, [...(value ?? []), itemValue]);
+						onChange?.(clonedEvent, [...(value ?? []), itemValue]);
 					}
 				} else {
 					// eslint-disable-next-line no-lonely-if
@@ -130,7 +144,7 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 				}
 			} else {
 				if (isControlled) {
-					onChange(event, itemValue.toString());
+					onChange(clonedEvent, itemValue.toString());
 				} else {
 					setUncontrolledValue(itemValue.toString());
 				}
@@ -252,6 +266,7 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 							setOpen(true);
 						}
 					}}
+					onBlur={onBlur}
 					value={selectedOptions
 						?.map((option) => {
 							return option?.value;
@@ -330,6 +345,7 @@ Dropdown.propTypes = {
 	// max: PropTypes.number,
 	multi: PropTypes.bool,
 	onChange: PropTypes.func,
+	onBlur: PropTypes.func,
 	feedback: PropTypes.shape({
 		text: PropTypes.node,
 		type: PropTypes.oneOf(['error', 'success', 'default']),
@@ -347,6 +363,7 @@ Dropdown.defaultProps = {
 	// max: null,
 	multi: false,
 	onChange: null,
+	onBlur: null,
 	feedback: null,
 };
 
