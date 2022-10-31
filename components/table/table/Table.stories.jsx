@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Button } from '../../buttons';
 import { ServerIcon, CopyIcon, ArrowIcon } from '../../icons';
 import { usePagination } from '../../pagination';
+import { Popover } from '../../popover';
 import { TableColumn } from '../BaseTable.class';
 import { TableCell } from '../cell';
 import Table from './Table';
@@ -721,6 +723,40 @@ WithCustomCells.args = {
 							multiLine
 							cellContent={JSON.stringify(cellContent, 4)}
 						/>
+					);
+				},
+				ecsCustomerId: ({ cellContent, ...rest }) => {
+					const [anchorEl, setAnchorEl] = useState(null);
+					const [open, setOpen] = useState(false);
+
+					return (
+						<>
+							<TableCell
+								{...rest}
+								ref={(el) => {
+									setAnchorEl(el);
+								}}
+								cellContent={
+									<Button
+										onClick={() => {
+											setOpen((prev) => {
+												return !prev;
+											});
+										}}
+										title='Click Me'
+									/>
+								}
+							/>
+							<Popover anchorEl={anchorEl} open={open} setOpen={setOpen}>
+								<div
+									style={{
+										backgroundColor: 'rgba(36, 161, 72, 0.08)',
+										color: '#24a148',
+									}}>
+									{cellContent}
+								</div>
+							</Popover>
+						</>
 					);
 				},
 			};
