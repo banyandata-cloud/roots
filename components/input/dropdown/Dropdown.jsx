@@ -34,6 +34,9 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 		placeholder,
 		multi,
 		disabled,
+		id,
+		name,
+		feedback,
 	} = props;
 	const [open, setOpen] = useState(false);
 	const [activeIndex, setActiveIndex] = useState(null);
@@ -237,6 +240,8 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 				ref={reference}
 				{...getReferenceProps()}>
 				<input
+					id={id}
+					name={name}
 					ref={inputRef}
 					disabled={disabled}
 					tabIndex={0}
@@ -253,7 +258,13 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 						})
 						?.join(', ')}
 				/>
-				<div data-elem='select' role='button' className={styles.select}>
+				<div
+					data-elem='select'
+					role='button'
+					className={classes(
+						styles.select,
+						feedback != null ? styles[`feedback-${feedback?.type}`] : ''
+					)}>
 					<span data-elem='placeholder' className={styles.placeholder}>
 						{(selectedOptions?.length > 1
 							? `${selectedOptions.length} options selected`
@@ -295,6 +306,15 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 					</FloatingFocusManager>
 				)}
 			</Popper>
+			{feedback != null && (
+				<div className={styles.bottom}>
+					<div
+						data-elem='feedback'
+						className={classes(styles.feedback, styles[`feedback-${feedback.type}`])}>
+						{feedback.text}
+					</div>
+				</div>
+			)}
 		</div>
 	);
 });
@@ -310,6 +330,10 @@ Dropdown.propTypes = {
 	// max: PropTypes.number,
 	multi: PropTypes.bool,
 	onChange: PropTypes.func,
+	feedback: PropTypes.shape({
+		text: PropTypes.node,
+		type: PropTypes.oneOf(['error', 'success', 'default']),
+	}),
 };
 
 Dropdown.defaultProps = {
@@ -323,6 +347,7 @@ Dropdown.defaultProps = {
 	// max: null,
 	multi: false,
 	onChange: null,
+	feedback: null,
 };
 
 export default Dropdown;
