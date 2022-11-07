@@ -73,23 +73,4 @@
   info: var(--info);
   info-bg: var(--info-bg);
   info-outline: var(--info-outline);
-}
-
-.container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0rem 1.5625rem;
-}
-.container .title {
-  font-weight: 400;
-  font-size: 0.8rem;
-  color: var(--black);
-}
-.container .icon {
-  width: 1.5rem;
-  height: 1.5rem;
-  stroke: #181818;
-  cursor: pointer;
-}/*# sourceMappingURL=Header.module.css.map */
+}/*# sourceMappingURL=BaseVerticalStackedChart.module.css.map */
