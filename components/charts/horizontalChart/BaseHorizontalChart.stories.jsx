@@ -12,9 +12,11 @@ export default {
 };
 
 const Template = (args) => {
-	return <div className=''>
-		<BaseHorizontalChart {...args} />
-        </div>;
+	return (
+		<div className=''>
+			<BaseHorizontalChart {...args} />
+		</div>
+	);
 };
 
 export const Default = Template.bind({});
@@ -24,13 +26,17 @@ Default.args = {
 	gridContainLabel: true,
 	height: '60%',
 	xAxisShow: false,
-	yAxisData: {
-		Settings: 20,
-		Authorization: 10,
-		'High Availability': 20,
-		Authentication: 40,
-		'Patches and Plugins': 10,
-	  },
+	yAxisData: [
+		{
+			Settings: 20,
+			Authorization: 10,
+			'High Availability': 20,
+			Authentication: 40,
+			'Patches and Plugins': 10,
+		},
+		100,
+		13566,
+	],
 	yAxisLabelShow: false,
 	ySplitLineShow: false,
 	yAxisLineShow: false,

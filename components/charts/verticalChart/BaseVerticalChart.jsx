@@ -1,7 +1,7 @@
 import PropTypes, { string } from 'prop-types';
 // import { classes } from '../../../../utils';
 import ReactEcharts from 'echarts-for-react';
-// import styles from '../BaseVerticalChart.module.css';
+// import styles from './BaseVerticalChart.module.css';
 
 const BaseVerticalChart = (props) => {
 	const {
