@@ -24,31 +24,56 @@ export const Default = Template.bind({});
 Default.args = {
 	title: 'Title',
 	gridContainLabel: true,
+	height: '80%',
 	xAxisShow: false,
-	yAxisId: 'yAxis',
-	yAxisLabelShow: true,
-	ySplitLineShow: true,
+	seriesData: {
+		chartData: {
+			MySQL: {
+				x1: 30,
+				x2: 20,
+				x3: 50,
+			},
+			PgSQL: {
+				x1: 20,
+				x2: 0,
+				x3: 80,
+			},
+			ORACLE: {
+				x1: 70,
+				x2: 30,
+				x3: 0,
+			},
+			Mongo: {
+				x1: 40,
+				x2: 30,
+				x3: 30,
+			},
+		},
+		metaData: {
+			toolTip: {
+				x1: 'red',
+				x2: 'green',
+			},
+		},
+	},
+	yAxisLabelShow: false,
+	ySplitLineShow: false,
 	yAxisLineShow: false,
 	yAxisTickShow: false,
-	yAxisType: 'value',
-	seriesData: [
+	barWidth: '50%',
+	cursor: 'default',
+	seriesOption: [
 		{
-			'Networking Services': 5,
-			'IAM&Admin': 20,
-			'Cloud SQL': 36,
-			VPC: 10,
-			'Compute Engine': 10,
-			'Cloud Storage': 7,
-			Networking: 17,
+			stackIndex: 1,
+			color: 'green',
+			label: {
+				show: true,
+				formatter(param) {
+					return param.name;
+				},
+			},
 		},
 	],
-	barWidth: '50%',
-	barColor: 'blue',
-	showBarBackground: true,
-	backgroudColor: 'whitesmoke',
-	showLabel: true,
-	labelColor: 'black',
-	cursor: 'default',
 };
 
 Default.parameters = {

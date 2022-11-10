@@ -1,43 +1,85 @@
-import PropTypes, { string } from 'prop-types';
+import PropTypes from 'prop-types';
 // import { classes } from '../../../../utils';
 import ReactEcharts from 'echarts-for-react';
-// import styles from './BaseVerticalChart.module.css';
+// import styles from '../BaseVerticalChart.module.css';
 
 const BaseVerticalChart = (props) => {
 	const {
 		title,
 		gridContainLabel,
+		height,
 		xAxisShow,
-		yAxisId,
+		seriesData,
 		yAxisLabelShow,
 		ySplitLineShow,
 		yAxisLineShow,
 		yAxisTickShow,
-		yAxisType,
-		seriesData,
 		barWidth,
-		barColor,
-		showBarBackground,
-		backgroudColor,
-		showLabel,
-		labelColor,
 		cursor,
+		seriesOption,
 	} = props;
+
+	const seriesOptionObject = {
+		type: 'bar',
+		barWidth,
+		cursor,
+		stack: 'total',
+		groupPadding: 3,
+		showBackground: true,
+		backgroundStyle: {
+			color: 'whitesmoke',
+		},
+		label: {
+			color: 'black',
+			position: 'insideBottomLeft',
+			offset: [0, -10],
+			rotate: 90,
+			formatter(param) {
+				return param.value;
+			},
+			show: true,
+		},
+		itemStyle: {
+			borderRadius: [0, 2, 2, 0],
+		},
+		data: Object.keys(seriesData.chartData).map((key) => {
+			return seriesData.chartData[key].x1;
+		}),
+	};
+
+	const generateSeries = () => {
+		return seriesOption.map((objectData, index) => {
+			return {
+				...seriesOptionObject,
+				...objectData,
+				label: {
+					...seriesOptionObject.label,
+					...objectData.label,
+				},
+				data: Object.keys(seriesData.chartData).map((key) => {
+					return seriesData.chartData[key][`x${index + 1}`];
+				}),
+			};
+		});
+	};
 	return (
 		<ReactEcharts
 			option={{
-				grid: {
-					containLabel: gridContainLabel,
-				},
 				title: {
 					text: title,
 				},
+
+				grid: {
+					containLabel: gridContainLabel,
+					height,
+				},
 				xAxis: {
+					data: Object.keys(seriesData.chartData),
 					show: xAxisShow,
-					data: Object.keys(seriesData[0]),
+					type: 'category',
 				},
 				yAxis: {
-					id: yAxisId,
+					type: 'value',
 					axisLabel: {
 						show: yAxisLabelShow,
 					},
@@ -50,35 +92,8 @@ const BaseVerticalChart = (props) => {
 					axisTick: {
 						show: yAxisTickShow,
 					},
-					data: [],
-					gridIndex: 0,
-					type: yAxisType,
 				},
-				color: barColor,
-				series: [
-					{
-						type: 'bar',
-						data: Object.keys(seriesData[0]).map((key) => {
-							return seriesData[0][key];
-						}),
-						barWidth,
-						cursor,
-						showBackground: showBarBackground,
-						backgroundStyle: {
-							color: backgroudColor,
-						},
-						label: {
-							show: showLabel,
-							color: labelColor,
-							position: 'insideBottomLeft',
-							offset: [0, -10],
-							rotate: 90,
-							formatter(params) {
-								return params.name;
-							},
-						},
-					},
-				],
+				series: generateSeries(),
 			}}
 			style={{
 				width: '100%',
@@ -91,41 +106,31 @@ const BaseVerticalChart = (props) => {
 BaseVerticalChart.propTypes = {
 	title: PropTypes.string,
 	gridContainLabel: PropTypes.bool,
+	height: PropTypes.string,
 	xAxisShow: PropTypes.bool,
-	yAxisId: PropTypes.string,
+	seriesData: PropTypes.objectOf(PropTypes.shape),
 	yAxisLabelShow: PropTypes.bool,
 	ySplitLineShow: PropTypes.bool,
 	yAxisLineShow: PropTypes.bool,
 	yAxisTickShow: PropTypes.bool,
-	yAxisType: PropTypes.string,
-	seriesData: PropTypes.arrayOf(string),
 	barWidth: PropTypes.string,
-	barColor: PropTypes.string,
-	showBarBackground: PropTypes.bool,
-	backgroudColor: PropTypes.string,
-	showLabel: PropTypes.bool,
-	labelColor: PropTypes.string,
 	cursor: PropTypes.string,
+	seriesOption: PropTypes.objectOf(PropTypes.shape),
 };
 
 BaseVerticalChart.defaultProps = {
 	title: '',
 	gridContainLabel: false,
+	height: '60%',
 	xAxisShow: false,
-	yAxisId: '',
+	seriesData: {},
 	yAxisLabelShow: false,
 	ySplitLineShow: false,
 	yAxisLineShow: false,
 	yAxisTickShow: false,
-	yAxisType: PropTypes.oneOf(['value', 'category', 'time', 'log']),
-	seriesData: [0],
 	barWidth: '50%',
-	barColor: 'green',
-	showBarBackground: true,
-	backgroudColor: 'red',
-	showLabel: true,
-	labelColor: 'black',
 	cursor: 'default',
+	seriesOption: [],
 };
 
 export default BaseVerticalChart;

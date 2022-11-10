@@ -23,30 +23,76 @@ export const Default = Template.bind({});
 
 Default.args = {
 	title: 'Title',
-	gridContainLabel: true,
+	gridContainLabel: false,
 	height: '60%',
 	xAxisShow: false,
-	yAxisData: [
-		{
-			Settings: 20,
-			Authorization: 10,
-			'High Availability': 20,
-			Authentication: 40,
-			'Patches and Plugins': 10,
+	seriesData: {
+		chartData: {
+			'Audit, Logging and Monitering': {
+				x1: 40,
+				x2: 60,
+				x3: 0,
+			},
+			Settings: {
+				x1: 20,
+				x2: 10,
+				x3: 70,
+			},
+			Authorization: {
+				x1: 20,
+				x2: 40,
+				x3: 40,
+			},
+			Authentication: {
+				x1: 40,
+				x2: 60,
+				x3: 0,
+			},
+			'Patches and Plugins': {
+				x1: 20,
+				x2: 0,
+				x3: 80,
+			},
+			'High Availability': {
+				x1: 30,
+				x2: 0,
+				x3: 70,
+			},
 		},
-		100,
-		13566,
-	],
+		metaData: {
+			toolTip: {
+				x1: 'red',
+				x2: 'green',
+				x3: 'gold',
+			},
+		},
+	},
 	yAxisLabelShow: false,
 	ySplitLineShow: false,
 	yAxisLineShow: false,
 	yAxisTickShow: false,
-	barWidth: '40%',
+	barWidth: '50%',
+	barLabel: true,
 	firstStackColor: 'green',
 	firstStackLabelColor: 'black',
-	secondStackColor: 'whitesmoke',
-	secondStackLabelColor: 'grey',
+	secondStackColor: 'red',
+	secondStackLabelColor: 'black',
+	thirdStackColor: 'gold',
 	thirdStackLabelColor: 'black',
+	cursor: 'default',
+	seriesOption: [
+		{
+			stackIndex: 1,
+			color: 'green',
+			label: {
+				show: true,
+				position: [0, -14],
+				formatter(param) {
+					return param.name;
+				},
+			},
+		},
+	],
 };
 
 Default.parameters = {

@@ -9,34 +9,76 @@ const BaseHorizontalChart = (props) => {
 		gridContainLabel,
 		height,
 		xAxisShow,
-		yAxisData,
+		seriesData,
 		yAxisLabelShow,
 		ySplitLineShow,
 		yAxisLineShow,
 		yAxisTickShow,
 		barWidth,
-		firstStackColor,
-		firstStackLabelColor,
-		secondStackColor,
-		secondStackLabelColor,
-		thirdStackLabelColor,
+		cursor,
+		seriesOption,
 	} = props;
-return <ReactEcharts
+
+	const seriesOptionObject = {
+		type: 'bar',
+		barWidth,
+		cursor,
+		stack: 'total',
+		groupPadding: 3,
+		showBackground: true,
+		backgroundStyle: {
+			color: 'whitesmoke',
+		},
+		label: {
+			color: 'black',
+			position: [0, -16],
+			formatter(param) {
+				return param.value;
+			},
+			show: true,
+		},
+		itemStyle: {
+			borderRadius: [0, 2, 2, 0],
+		},
+		data: Object.keys(seriesData.chartData).map((key) => {
+			return seriesData.chartData[key].x1;
+		}),
+	};
+
+	const generateSeries = () => {
+		return seriesOption.map((objectData, index) => {
+			return {
+				...seriesOptionObject,
+				...objectData,
+				label: {
+					...seriesOptionObject.label,
+					...objectData.label,
+				},
+				data: Object.keys(seriesData.chartData).map((key) => {
+					return seriesData.chartData[key][`x${index + 1}`];
+				}),
+			};
+		});
+	};
+	return (
+		<ReactEcharts
 			option={{
 				title: {
-				  text: title,
+					text: title,
 				},
+
 				grid: {
 					containLabel: gridContainLabel,
 					height,
 				},
 				xAxis: {
-				  show: xAxisShow,
-				  type: 'value',
+					show: xAxisShow,
+					type: 'value',
 				},
 				yAxis: {
-				   data: Object.keys(yAxisData[0]),
-				   axisLabel: {
+					data: Object.keys(seriesData.chartData),
+					type: 'category',
+					axisLabel: {
 						show: yAxisLabelShow,
 					},
 					splitLine: {
@@ -48,67 +90,16 @@ return <ReactEcharts
 					axisTick: {
 						show: yAxisTickShow,
 					},
+					inverse: true,
 				},
-				series: [
-					{
-						color: firstStackColor,
-						type: 'bar',
-						barWidth,
-						stack: 'total',
-						groupPadding: 3,
-						label: {
-						  color: firstStackLabelColor,
-						  position: [0, -15],
-						  formatter(param) { return param.name; },
-						  show: true,
-						},
-						itemStyle: {
-							borderRadius: [0, 2, 2, 0],
-						},
-						data: Object.keys(yAxisData[0]).map((key) => {
-							return yAxisData[0][key];
-						}),
-					},
-					{
-						type: 'bar',
-						barWidth,
-						stack: 'total',
-						color: secondStackColor,
-						groupPadding: 3,
-						label: {
-							show: true,
-							position: 'insideBottomRight',
-							offset: [-70, -15],
-							color: secondStackLabelColor,
-							formatter(params) { return `${yAxisData[1] - params.value}%`; },
-						},
-						data: Object.keys(yAxisData[0]).map((key) => {
-							return yAxisData[1] - yAxisData[0][key];
-						}),
-					},
-					{
-						type: 'bar',
-						stack: 'total',
-						barWidth,
-						groupPadding: 3,
-						avoidLabelOverlap: true,
-						label: {
-							show: true,
-							position: 'insideBottomRight',
-							offset: [0, -15],
-							color: thirdStackLabelColor,
-							formatter() { return yAxisData[2]; },
-						},
-						data: Object.keys(yAxisData[0]).map(() => {
-							return 0;
-						}),
-					},
-				],
+				series: generateSeries(),
 			}}
-		style={{
- 				width: '100%', height: '100vh',
+			style={{
+				width: '100%',
+				height: '100vh',
 			}}
-		/>;
+		/>
+	);
 };
 
 BaseHorizontalChart.propTypes = {
@@ -116,17 +107,14 @@ BaseHorizontalChart.propTypes = {
 	gridContainLabel: PropTypes.bool,
 	height: PropTypes.string,
 	xAxisShow: PropTypes.bool,
-	yAxisData: PropTypes.objectOf(PropTypes.shape),
+	seriesData: PropTypes.objectOf(PropTypes.shape),
 	yAxisLabelShow: PropTypes.bool,
 	ySplitLineShow: PropTypes.bool,
 	yAxisLineShow: PropTypes.bool,
 	yAxisTickShow: PropTypes.bool,
 	barWidth: PropTypes.string,
-	firstStackColor: PropTypes.string,
-	firstStackLabelColor: PropTypes.string,
-	secondStackColor: PropTypes.string,
-	secondStackLabelColor: PropTypes.string,
-	thirdStackLabelColor: PropTypes.string,
+	cursor: PropTypes.string,
+	seriesOption: PropTypes.objectOf(PropTypes.shape),
 };
 
 BaseHorizontalChart.defaultProps = {
@@ -134,17 +122,14 @@ BaseHorizontalChart.defaultProps = {
 	gridContainLabel: false,
 	height: '60%',
 	xAxisShow: false,
-	yAxisData: [],
+	seriesData: {},
 	yAxisLabelShow: false,
 	ySplitLineShow: false,
 	yAxisLineShow: false,
 	yAxisTickShow: false,
-	barWidth: '40%',
-	firstStackColor: 'green',
-	firstStackLabelColor: 'black',
-	secondStackColor: 'whitesmoke',
-	secondStackLabelColor: 'grey',
-	thirdStackLabelColor: 'black',
+	barWidth: '50%',
+	cursor: 'default',
+	seriesOption: [],
 };
 
 export default BaseHorizontalChart;
