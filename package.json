@@ -29,6 +29,7 @@
 		"@rollup/plugin-node-resolve": "^15.0.1",
 		"babel-plugin-syntax-dynamic-import": "^6.18.0",
 		"date-fns": "^2.29.3",
+		"echarts": "^5.4.0",
 		"echarts-for-react": "^3.0.2",
 		"html-webpack-plugin": "^5.5.0",
 		"path": "^0.12.7",
