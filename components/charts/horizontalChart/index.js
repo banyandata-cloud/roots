@@ -1,1 +1,1 @@
-export { default as horizontalChart } from './BaseHorizontalChart';
+export { default as horizontalStackedChart } from './BaseHorizontalChart';
