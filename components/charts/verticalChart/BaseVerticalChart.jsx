@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
-// import { classes } from '../../../../utils';
 import ReactEcharts from 'echarts-for-react';
-// import styles from '../BaseVerticalChart.module.css';
+import styles from './BaseVerticalChart.module.css';
+import { classes } from '../../../utils';
 
 const BaseVerticalChart = (props) => {
 	const {
@@ -17,6 +17,8 @@ const BaseVerticalChart = (props) => {
 		barWidth,
 		cursor,
 		seriesOption,
+		style,
+		className,
 	} = props;
 
 	const seriesOptionObject = {
@@ -95,10 +97,8 @@ const BaseVerticalChart = (props) => {
 				},
 				series: generateSeries(),
 			}}
-			style={{
-				width: '100%',
-				height: '100vh',
-			}}
+			className={classes(className, styles.root)}
+			style={style}
 		/>
 	);
 };
@@ -116,6 +116,8 @@ BaseVerticalChart.propTypes = {
 	barWidth: PropTypes.string,
 	cursor: PropTypes.string,
 	seriesOption: PropTypes.objectOf(PropTypes.shape),
+	style: PropTypes.objectOf(PropTypes.shape),
+	className: PropTypes.string,
 };
 
 BaseVerticalChart.defaultProps = {
@@ -131,6 +133,11 @@ BaseVerticalChart.defaultProps = {
 	barWidth: '50%',
 	cursor: 'default',
 	seriesOption: [],
+	style: {
+		width: '100%',
+		height: '100%',
+	},
+	className: '',
 };
 
 export default BaseVerticalChart;
