@@ -13,7 +13,10 @@ export default {
 
 const Template = (args) => {
 	return (
-		<div className=''>
+		<div
+			style={{
+				height: '100%',
+			}}>
 			<BaseHorizontalChart {...args} />
 		</div>
 	);

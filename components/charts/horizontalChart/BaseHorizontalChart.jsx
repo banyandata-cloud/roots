@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
-// import { classes } from '../../../../utils';
 import ReactEcharts from 'echarts-for-react';
-// import styles from '../BaseHorizontalChart.module.css';
+import styles from './BaseHorizontalChart.module.css';
+import { classes } from '../../../utils';
 
 const BaseHorizontalChart = (props) => {
 	const {
@@ -17,6 +17,8 @@ const BaseHorizontalChart = (props) => {
 		barWidth,
 		cursor,
 		seriesOption,
+		style,
+		className,
 	} = props;
 
 	const seriesOptionObject = {
@@ -94,10 +96,8 @@ const BaseHorizontalChart = (props) => {
 				},
 				series: generateSeries(),
 			}}
-			style={{
-				width: '100%',
-				height: '100vh',
-			}}
+			className={classes(className, styles.root)}
+			style={style}
 		/>
 	);
 };
@@ -115,6 +115,8 @@ BaseHorizontalChart.propTypes = {
 	barWidth: PropTypes.string,
 	cursor: PropTypes.string,
 	seriesOption: PropTypes.objectOf(PropTypes.shape),
+	style: PropTypes.objectOf(PropTypes.shape),
+	className: PropTypes.string,
 };
 
 BaseHorizontalChart.defaultProps = {
@@ -130,6 +132,11 @@ BaseHorizontalChart.defaultProps = {
 	barWidth: '50%',
 	cursor: 'default',
 	seriesOption: [],
+	style: {
+		width: '100%',
+		height: '100%',
+	},
+	className: '',
 };
 
 export default BaseHorizontalChart;

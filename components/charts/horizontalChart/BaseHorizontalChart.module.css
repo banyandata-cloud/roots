@@ -73,4 +73,8 @@
   info: var(--info);
   info-bg: var(--info-bg);
   info-outline: var(--info-outline);
+}
+
+.root {
+  width: "100%";
 }/*# sourceMappingURL=BaseHorizontalChart.module.css.map */
