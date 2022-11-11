@@ -6,10 +6,6 @@ import { ServerIcon } from '../../icons';
 import { HierarchyItem } from '../item';
 import styles from './HierarchyBrowser.module.css';
 
-const BORDER_SIZE = 4;
-const MIN_WIDTH = 220;
-const MAX_WIDTH = document.documentElement.getBoundingClientRect().width;
-
 const Title = (props) => {
 	const { item } = props;
 
@@ -29,23 +25,33 @@ const Title = (props) => {
 		<span className={styles.item}>
 			{Icon && <Icon className={styles['item-icon']} />}
 			<span className={styles['item-title']}>{item?.title}</span>
-			<span className={styles['item-count']}>({item?.count})</span>
+			{item?.count && <span className={styles['item-count']}>({item?.count})</span>}
 		</span>
 	);
 };
 
 const HierarchyBrowser = (props) => {
-	const { className, metadata, onItemClick } = props;
+	const {
+		className,
+		metadata,
+		onItemClick,
+		minWidth,
+		maxWidth,
+		borderSize,
+		resizable,
+		setItemProps,
+	} = props;
 
 	const browserRef = useRef(null);
 
 	useResize({
 		ref: browserRef,
 		styles: {
-			MIN_WIDTH,
-			MAX_WIDTH,
-			BORDER_SIZE,
+			minWidth,
+			maxWidth: maxWidth ?? document.documentElement.getBoundingClientRect().width,
+			borderSize,
 		},
+		enabled: resizable,
 	});
 
 	const handleItemClick = (item, pathString) => {
@@ -65,7 +71,8 @@ const HierarchyBrowser = (props) => {
 			<HierarchyItem
 				title={<Title item={data} />}
 				iconPlacement={hasChildren ? 'left' : 'none'}
-				onClick={handleItemClick(data, pathString)}>
+				onClick={handleItemClick(data, pathString)}
+				{...setItemProps(data, pathString)}>
 				{hasChildren &&
 					data.list.map((item, idx) => {
 						return renderTree(
@@ -78,7 +85,9 @@ const HierarchyBrowser = (props) => {
 	};
 
 	return (
-		<div ref={browserRef} className={classes(styles.root, className)}>
+		<div
+			ref={browserRef}
+			className={classes(styles.root, className, resizable ? styles.resizable : '')}>
 			<div className={styles.header}>Browser</div>
 			<div className={styles.body}>{renderTree(metadata)}</div>
 		</div>
@@ -94,12 +103,24 @@ HierarchyBrowser.propTypes = {
 		list: PropTypes.array,
 	}),
 	onItemClick: PropTypes.func,
+	borderSize: PropTypes.number,
+	minWidth: PropTypes.number,
+	maxWidth: PropTypes.number,
+	resizable: PropTypes.bool,
+	setItemProps: PropTypes.func,
 };
 
 HierarchyBrowser.defaultProps = {
 	className: '',
 	metadata: {},
 	onItemClick: () => {},
+	borderSize: 4,
+	minWidth: 220,
+	maxWidth: null,
+	resizable: false,
+	setItemProps: () => {
+		return {};
+	},
 };
 
 export default HierarchyBrowser;
