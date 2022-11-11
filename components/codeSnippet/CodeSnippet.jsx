@@ -1,37 +1,44 @@
+/* eslint-disable no-unused-vars */
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-import ReactJson from 'react-json-view';
+import { dracula, atomOneLight, CodeBlock } from 'react-code-blocks';
+import { classes } from '../../utils';
 import Copy from '../icons/Copy/Copy';
 import styles from './CodeSnippet.module.css';
 
 const CodeSnippet = (props) => {
-	const { showIcon, src } = props;
+	const { copy, code, language, showLineNumbers, theme } = props;
 
+	const themeVariant = theme === 'dark' ? dracula : atomOneLight;
 	const [copiedState, setCopiedState] = useState(false);
 
 	setTimeout(() => {
 		setCopiedState(false);
 	}, 2.0 * 1000);
 
+	const onCopy = () => {
+		navigator.clipboard.writeText(JSON.stringify(code));
+		setCopiedState(true);
+	};
+
 	return (
 		<div className={styles.root}>
-			<ReactJson
-				{...props}
-				theme='apathy:inverted'
-				name={null}
-				iconStyle='triangle'
-				indentWidth={4}
-				displayDataTypes={false}
-				src={src}
+			<CodeBlock
+				text={code}
+				language={language}
+				showLineNumbers={showLineNumbers}
+				theme={themeVariant}
+				codeBlock
+				wrapLines
 			/>
-			{showIcon && (
-				<div
-					className={styles.copy}
-					onClick={() => {
-						navigator.clipboard.writeText(JSON.stringify(src));
-						setCopiedState(true);
-					}}>
-					<Copy className={styles.icon} />
+			{copy && (
+				<div className={styles.copy} onClick={onCopy}>
+					<Copy
+						className={classes(
+							styles.icon,
+							theme === 'dark' ? styles.dark : styles.light
+						)}
+					/>
 					<div className={copiedState ? styles.copied : styles.notCopied}>
 						{copiedState ? 'Copied' : ''}
 					</div>
@@ -42,11 +49,19 @@ const CodeSnippet = (props) => {
 };
 
 CodeSnippet.propTypes = {
-	showIcon: PropTypes.bool,
+	copy: PropTypes.bool,
+	code: PropTypes.string,
+	language: PropTypes.string,
+	showLineNumbers: PropTypes.bool,
+	theme: PropTypes.string,
 };
 
 CodeSnippet.defaultProps = {
-	showIcon: true,
+	copy: true,
+	code: '{}',
+	language: 'json',
+	showLineNumbers: false,
+	theme: 'dark',
 };
 
 export default CodeSnippet;

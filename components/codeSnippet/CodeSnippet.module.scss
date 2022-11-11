@@ -1,16 +1,24 @@
-@import '../../assets/styles';
+@import '../../styles';
 
 .root {
 	padding: 0.5rem, 1rem;
+	position: relative;
 	.copy {
 		position: absolute;
-		right: 1.25rem;
-		top: 1.25rem;
+		right: 1rem;
+		top: 0.5rem;
 		cursor: pointer;
 		.icon {
 			width: 1.5rem;
 			height: 1.5rem;
+			&.dark {
+				fill: $white;
+			}
+			&.light {
+				fill: $black;
+			}
 		}
+
 		.notCopied {
 			display: none;
 		}
