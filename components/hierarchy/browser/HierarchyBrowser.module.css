@@ -117,7 +117,7 @@
   height: 100%;
   background: var(--grey4);
 }
-.root:hover::after {
+.root.resizable:hover::after {
   width: 3px;
   cursor: col-resize;
 }/*# sourceMappingURL=HierarchyBrowser.module.css.map */
