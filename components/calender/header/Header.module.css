@@ -88,8 +88,8 @@
   color: var(--black);
 }
 .container .icon {
-  width: 24px;
-  height: 24px;
+  width: 1.5rem;
+  height: 1.5rem;
   stroke: #181818;
   cursor: pointer;
 }/*# sourceMappingURL=Header.module.css.map */
