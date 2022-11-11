@@ -138,7 +138,7 @@ const DatePicker = (props) => {
 				)}
 
 				<input className={styles.input} value={displayValue} />
-				<ChevronIcon className={classes(styles.icon)} position={open ? 'top' : 'bottom'} />
+				<ChevronIcon className={classes(styles.icon)} position={open ? 'bottom' : 'top'} />
 			</div>
 			{error && <div className={styles['error-text']}>{error}</div>}
 			<Popper open={open} wrapperid='datePicker-popper'>

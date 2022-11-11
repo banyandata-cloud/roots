@@ -34,7 +34,7 @@
 		"html-webpack-plugin": "^5.5.0",
 		"path": "^0.12.7",
 		"postcss": "^8.4.18",
-		"react-json-view": "latest",
+		"react-code-blocks": "^0.0.9-0",
 		"rollup": "^3.2.3",
 		"rollup-plugin-peer-deps-external": "^2.2.4",
 		"rollup-plugin-postcss": "^4.0.2"
