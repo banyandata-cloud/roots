@@ -18,3 +18,4 @@ export * from './table';
 export * from './tabs';
 export * from './tooltip';
 export * from './popover';
+export * from './charts';
