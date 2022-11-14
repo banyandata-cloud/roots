@@ -55,6 +55,7 @@ const TableCell = forwardRef(function TableCell(props, ref) {
 								multiLine ? styles['multi-line'] : ''
 							),
 							style,
+							'data-elem': 'text',
 						}}>
 						{cellContent}
 					</span>
