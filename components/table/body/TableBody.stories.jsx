@@ -3,7 +3,7 @@ import { TableColumn } from '../BaseTable.class';
 import TableBody from './TableBody';
 
 export default {
-	title: 'ComponentsV2/Table/Body',
+	title: 'Components/Table/Body',
 	component: TableBody,
 	parameters: {
 		options: {

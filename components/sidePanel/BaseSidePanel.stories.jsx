@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import BaseSidePanel from './BaseSidePanel';
 
 export default {
-	title: 'ComponentsV2/SidePanel/BaseSidePanel',
+	title: 'Components/SidePanel/BaseSidePanel',
 	component: BaseSidePanel,
 	parameters: {
 		options: {

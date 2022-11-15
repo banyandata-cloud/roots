@@ -3,7 +3,7 @@ import Pagination, { usePagination } from './Pagination';
 import styles from './Pagination.module.css';
 
 export default {
-	title: 'ComponentsV2/Pagination',
+	title: 'Components/Pagination',
 	component: Pagination,
 	parameters: {
 		options: {
