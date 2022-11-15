@@ -59,6 +59,7 @@ BaseSidePanel.propTypes = {
 	renderFooter: PropTypes.element,
 	open: PropTypes.bool,
 	position: PropTypes.string,
+	parent: PropTypes.string,
 };
 
 BaseSidePanel.defaultProps = {
@@ -67,6 +68,7 @@ BaseSidePanel.defaultProps = {
 	renderFooter: null,
 	open: false,
 	position: 'right',
+	parent: '',
 };
 
 export default BaseSidePanel;
