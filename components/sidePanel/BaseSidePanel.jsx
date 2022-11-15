@@ -4,7 +4,7 @@ import styles from './BaseSidePanel.module.css';
 import { classes } from '../../utils';
 
 const BaseSidePanel = (props) => {
-	const { className, renderHeader, children, renderFooter, open, position } = props;
+	const { className, renderHeader, children, renderFooter, open, position, parent } = props;
 
 	const panelRef = useRef();
 
@@ -12,17 +12,21 @@ const BaseSidePanel = (props) => {
 		if (state) {
 			panelRef.current.style.width = '20rem';
 			if (position === 'left') {
-				document.getElementById('root').style.marginLeft = '20rem';
+				document.getElementById(parent).style.marginLeft = '20rem';
+				document.getElementById(parent).style.transition = '0.5s';
 			} else {
-				document.getElementById('root').style.marginRight = '20rem';
+				document.getElementById(parent).style.marginRight = '20rem';
+				document.getElementById(parent).style.transition = '0.5s';
 			}
 			return;
 		}
 		panelRef.current.style.width = '0rem';
 		if (position === 'left') {
-			document.getElementById('root').style.marginLeft = '0rem';
+			document.getElementById(parent).style.marginLeft = '0rem';
+			document.getElementById(parent).style.transition = '0.5s';
 		} else {
-			document.getElementById('root').style.marginRight = '0rem';
+			document.getElementById(parent).style.marginRight = '0rem';
+			document.getElementById(parent).style.transition = '0.5s';
 		}
 	};
 

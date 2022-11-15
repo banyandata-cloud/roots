@@ -117,6 +117,7 @@ Default.args = {
 	renderHeader: 'Header Component',
 	renderFooter: 'Footer Component',
 	position: 'right',
+	parent: 'docs-root',
 };
 
 Default.parameters = {
