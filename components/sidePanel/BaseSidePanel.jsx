@@ -8,25 +8,25 @@ const BaseSidePanel = (props) => {
 
 	const panelRef = useRef();
 
+	const parentNodeStyle = document.getElementById(parent).style;
+
 	const toggle = (state) => {
 		if (state) {
 			panelRef.current.style.width = '20rem';
+			parentNodeStyle.transition = '0.5s';
 			if (position === 'left') {
-				document.getElementById(parent).style.marginLeft = '20rem';
-				document.getElementById(parent).style.transition = '0.5s';
+				parentNodeStyle.marginLeft = '20rem';
 			} else {
-				document.getElementById(parent).style.marginRight = '20rem';
-				document.getElementById(parent).style.transition = '0.5s';
+				parentNodeStyle.marginRight = '20rem';
 			}
 			return;
 		}
 		panelRef.current.style.width = '0rem';
+		parentNodeStyle.transition = '0.5s';
 		if (position === 'left') {
-			document.getElementById(parent).style.marginLeft = '0rem';
-			document.getElementById(parent).style.transition = '0.5s';
+			parentNodeStyle.marginLeft = '0rem';
 		} else {
-			document.getElementById(parent).style.marginRight = '0rem';
-			document.getElementById(parent).style.transition = '0.5s';
+			parentNodeStyle.marginRight = '0rem';
 		}
 	};
 
