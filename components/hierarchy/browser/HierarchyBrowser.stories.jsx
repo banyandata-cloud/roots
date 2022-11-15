@@ -216,3 +216,18 @@ Dynamic.parameters = {
 		url: 'https://www.figma.com/file/e9opoAtQHBo4vFd6u0Co98/Component-Library?node-id=1%3A6',
 	},
 };
+
+export const WithCustomRenderer = Dynamic.bind({});
+
+WithCustomRenderer.args = {
+	...Dynamic.args,
+	setItemProps: (item) => {
+		if (item.id === 'schema') {
+			return {
+				iconPlacement: 'right',
+				title: item.title,
+			};
+		}
+		return {};
+	},
+};

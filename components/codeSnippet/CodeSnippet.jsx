@@ -7,7 +7,7 @@ import { CopyIcon } from '../icons';
 import styles from './CodeSnippet.module.css';
 
 const CodeSnippet = (props) => {
-	const { copy, code, language, showLineNumbers, theme } = props;
+	const { copy, code, language, showLineNumbers, theme, style } = props;
 
 	const themeVariant = theme === 'dark' ? dracula : atomOneLight;
 	const [copiedState, setCopiedState] = useState(false);
@@ -28,6 +28,7 @@ const CodeSnippet = (props) => {
 				language={language}
 				showLineNumbers={showLineNumbers}
 				theme={themeVariant}
+				customStyles={style}
 				codeBlock
 				wrapLines
 			/>
@@ -54,6 +55,8 @@ CodeSnippet.propTypes = {
 	language: PropTypes.string,
 	showLineNumbers: PropTypes.bool,
 	theme: PropTypes.string,
+	// eslint-disable-next-line react/forbid-prop-types
+	style: PropTypes.object,
 };
 
 CodeSnippet.defaultProps = {
@@ -62,6 +65,7 @@ CodeSnippet.defaultProps = {
 	language: 'json',
 	showLineNumbers: false,
 	theme: 'dark',
+	style: {},
 };
 
 export default CodeSnippet;

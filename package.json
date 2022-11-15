@@ -1,6 +1,6 @@
 {
 	"name": "@banyan_cloud/roots",
-	"version": "1.0.5",
+	"version": "1.0.7",
 	"description": "Design System Library which drives the Banyan Cloud products",
 	"main": "dist/cjs/index.js",
 	"module": "dist/esm/index.js",
@@ -26,6 +26,7 @@
 		"@mui/material": "^5.10.9",
 		"@rollup/plugin-babel": "^6.0.2",
 		"@rollup/plugin-commonjs": "^23.0.2",
+		"@rollup/plugin-json": "^5.0.1",
 		"@rollup/plugin-node-resolve": "^15.0.1",
 		"babel-plugin-syntax-dynamic-import": "^6.18.0",
 		"date-fns": "^2.29.3",

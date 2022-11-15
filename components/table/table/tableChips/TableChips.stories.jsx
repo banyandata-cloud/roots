@@ -47,7 +47,6 @@ Default.args = {
 			},
 			label: 'Cloud',
 			value: 'Google',
-			disabled: true,
 		}),
 		new TableChip({
 			key: 'something',
