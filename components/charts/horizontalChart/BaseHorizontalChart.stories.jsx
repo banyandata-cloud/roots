@@ -11,6 +11,48 @@ export default {
 	},
 };
 
+const sampleData = {
+	chartData: {
+		'Audit, Logging and Monitering': {
+			x1: 40,
+			x2: 60,
+			x3: 0,
+		},
+		Settings: {
+			x1: 20,
+			x2: 10,
+			x3: 70,
+		},
+		Authorization: {
+			x1: 20,
+			x2: 40,
+			x3: 40,
+		},
+		Authentication: {
+			x1: 40,
+			x2: 60,
+			x3: 0,
+		},
+		'Patches and Plugins': {
+			x1: 20,
+			x2: 0,
+			x3: 80,
+		},
+		'High Availability': {
+			x1: 30,
+			x2: 0,
+			x3: 70,
+		},
+	},
+	metaData: {
+		toolTip: {
+			x1: 'red',
+			x2: 'green',
+			x3: 'gold',
+		},
+	},
+};
+
 const Template = (args) => {
 	return (
 		<div
@@ -29,47 +71,7 @@ Default.args = {
 	gridContainLabel: false,
 	height: '60%',
 	xAxisShow: false,
-	seriesData: {
-		chartData: {
-			'Audit, Logging and Monitering': {
-				x1: 40,
-				x2: 60,
-				x3: 0,
-			},
-			Settings: {
-				x1: 20,
-				x2: 10,
-				x3: 70,
-			},
-			Authorization: {
-				x1: 20,
-				x2: 40,
-				x3: 40,
-			},
-			Authentication: {
-				x1: 40,
-				x2: 60,
-				x3: 0,
-			},
-			'Patches and Plugins': {
-				x1: 20,
-				x2: 0,
-				x3: 80,
-			},
-			'High Availability': {
-				x1: 30,
-				x2: 0,
-				x3: 70,
-			},
-		},
-		metaData: {
-			toolTip: {
-				x1: 'red',
-				x2: 'green',
-				x3: 'gold',
-			},
-		},
-	},
+	seriesData: sampleData,
 	yAxisLabelShow: false,
 	ySplitLineShow: false,
 	yAxisLineShow: false,

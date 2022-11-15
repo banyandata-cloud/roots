@@ -42,8 +42,8 @@ const BaseHorizontalChart = (props) => {
 		itemStyle: {
 			borderRadius: [0, 2, 2, 0],
 		},
-		data: Object.keys(seriesData.chartData).map((key) => {
-			return seriesData.chartData[key].x1;
+		data: Object.keys(seriesData?.chartData ?? {}).map((key) => {
+			return seriesData?.chartData?.[key]?.x1;
 		}),
 	};
 
@@ -56,8 +56,8 @@ const BaseHorizontalChart = (props) => {
 					...seriesOptionObject.label,
 					...objectData.label,
 				},
-				data: Object.keys(seriesData.chartData).map((key) => {
-					return seriesData.chartData[key][`x${index + 1}`];
+				data: Object.keys(seriesData?.chartData ?? {}).map((key) => {
+					return seriesData?.chartData?.[key]?.[`x${index + 1}`];
 				}),
 			};
 		});
@@ -78,7 +78,7 @@ const BaseHorizontalChart = (props) => {
 					type: 'value',
 				},
 				yAxis: {
-					data: Object.keys(seriesData.chartData),
+					data: Object.keys(seriesData?.chartData ?? {}),
 					type: 'category',
 					axisLabel: {
 						show: yAxisLabelShow,
