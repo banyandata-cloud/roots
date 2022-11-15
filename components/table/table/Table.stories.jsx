@@ -9,7 +9,7 @@ import Table from './Table';
 import { TableChip } from './tableChips';
 
 export default {
-	title: 'ComponentsV2/Table/Table',
+	title: 'Components/Table/Table',
 	component: Table,
 	parameters: {
 		options: {

@@ -3,7 +3,7 @@ import Tabs from './Tabs';
 import { CaretIcon } from '../icons';
 
 export default {
-	title: 'ComponentsV2/Tabs',
+	title: 'Components/Tabs',
 	component: Tabs,
 	parameters: {
 		options: {

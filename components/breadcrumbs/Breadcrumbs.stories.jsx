@@ -2,7 +2,7 @@ import React from 'react';
 import BreadCrumbs from './Breadcrumbs';
 
 export default {
-	title: 'ComponentsV2/Breadcumbs',
+	title: 'Components/Breadcumbs',
 	component: BreadCrumbs,
 	parameters: {
 		options: {

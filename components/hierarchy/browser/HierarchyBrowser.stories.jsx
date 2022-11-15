@@ -3,7 +3,7 @@ import { cloneDeep, get } from '../../../utils';
 import HierarchyBrowser from './HierarchyBrowser';
 
 export default {
-	title: 'ComponentsV2/Hierarchy/Browser',
+	title: 'Components/Hierarchy/Browser',
 	component: HierarchyBrowser,
 	parameters: {
 		options: {

@@ -3,7 +3,7 @@ import React from 'react';
 import CodeSnippet from './CodeSnippet';
 
 export default {
-	title: 'ComponentsV2/CodeSnippet',
+	title: 'Components/CodeSnippet',
 	component: CodeSnippet,
 	parameters: {
 		options: {

@@ -3,7 +3,7 @@ import { ArrowIcon, CalenderIcon, CopyIcon } from '../../icons';
 import Chip from './Chip';
 
 export default {
-	title: 'ComponentsV2/Buttons/Chip',
+	title: 'Components/Buttons/Chip',
 	component: Chip,
 	parameters: {
 		options: {

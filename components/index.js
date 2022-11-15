@@ -18,4 +18,5 @@ export * from './table';
 export * from './tabs';
 export * from './tooltip';
 export * from './popover';
+export * from './sidePanel';
 export * from './charts';
