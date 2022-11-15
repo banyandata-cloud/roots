@@ -17,7 +17,7 @@ const CodeSnippet = (props) => {
 	}, 2.0 * 1000);
 
 	const onCopy = () => {
-		navigator.clipboard.writeText(JSON.stringify(code));
+		navigator.clipboard.writeText(code);
 		setCopiedState(true);
 	};
 
