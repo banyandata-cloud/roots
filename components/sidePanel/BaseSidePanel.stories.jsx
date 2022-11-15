@@ -43,7 +43,13 @@ const BasePanel = (args) => {
 	};
 
 	return (
-		<div>
+		<div
+			style={{
+				display: 'flex',
+				alignItems: 'flex-start',
+				justifyContent: 'space-between',
+				height: '100%',
+			}}>
 			<button
 				type='button'
 				onClick={toggle}
@@ -63,44 +69,13 @@ const BasePanel = (args) => {
 						background: 'tomato',
 					}}>
 					<p>Body</p>
+					<p>Body</p> <p>Body</p> <p>Body</p> <p>Body</p> <p>Body</p> <p>Body</p>{' '}
+					<p>Body</p> <p>Body</p> <p>Body</p> <p>Body</p> <p>Body</p> <p>Body</p>{' '}
+					<p>Body</p> <p>Body</p> <p>Body</p> <p>Body</p> <p>Body</p> <p>Body</p>{' '}
+					<p>Body</p> <p>Body</p> <p>Body</p> <p>Body</p> <p>Body</p> <p>Body</p>{' '}
 					<p>Body</p>
 					<p>Body</p>
-					<p>Body</p>
-					<p>Body</p>
-					<p>Body</p>
-					<p>Body</p>
-					<p>Body</p>
-					<p>Body</p>
-					<p>Body</p>
-					<p>Body</p>
-					<p>Body</p>
-					<p>Body</p>
-					<p>Body</p>
-					<p>Body</p>
-					<p>Body</p>
-					<p>Body</p>
-					<p>Body</p>
-					<p>Body</p>
-					<p>Body</p>
-					<p>Body</p>
-					<p>Body</p>
-					<p>Body</p>
-					<p>Body</p>
-					<p>Body</p>
-					<p>Body</p>
-					<p>Body</p>
-					<p>Body</p>
-					<p>Body</p>
-					<p>Body</p>
-					<p>Body</p>
-					<p>Body</p>
-					<p>Body</p>
-					<p>Body</p>
-					<p>Body</p>
-					<p>Body</p>
-					<p>Body</p>
-					<p>Body</p>
-					<p>Body</p>
+					<p>Body</p> <p>Body</p>
 				</div>
 			</BaseSidePanel>
 		</div>

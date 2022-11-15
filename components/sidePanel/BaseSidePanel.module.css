@@ -76,35 +76,21 @@
 }
 
 .root {
+  max-height: 100%;
   height: 100%;
-  position: fixed;
   display: flex;
+  width: 30%;
   flex-direction: column;
-  z-index: 1;
   top: 0;
   background: #ffffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.12);
   overflow-x: hidden;
   transition: 0.5s;
 }
-.root.left {
-  left: 0;
-}
-.root.right {
-  right: 0;
+.root.open {
+  width: 0rem;
 }
 .root .body {
   flex: 1;
-  overflow-y: scroll;
-  height: "100%";
-}
-.root .header {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-}
-.root .footer {
-  position: -webkit-sticky;
-  position: sticky;
-  bottom: 0;
+  overflow-y: auto;
 }/*# sourceMappingURL=BaseSidePanel.module.css.map */
