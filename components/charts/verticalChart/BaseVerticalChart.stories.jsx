@@ -11,6 +11,35 @@ export default {
 	},
 };
 
+const sampleData = {
+	chartData: {
+		mysql: {
+			x1: 33.33,
+			x2: 22.22,
+			x3: 44.44,
+		},
+		pgsql: {
+			x1: 39.53,
+			x2: 46.51,
+			x3: 13.95,
+		},
+	},
+	metaData: {
+		controlsApplied: {
+			mysql: {
+				x1: 18,
+			},
+			pgsql: {
+				x1: 43,
+			},
+		},
+		keyData: "{x1: 'compliant',x2: 'nonCompliant',x3: 'validate'}",
+		totalControls: {
+			x1: 61,
+		},
+	},
+};
+
 const Template = (args) => {
 	return (
 		<div
@@ -29,36 +58,7 @@ Default.args = {
 	gridContainLabel: true,
 	height: '80%',
 	xAxisShow: false,
-	seriesData: {
-		chartData: {
-			MySQL: {
-				x1: 30,
-				x2: 20,
-				x3: 50,
-			},
-			PgSQL: {
-				x1: 20,
-				x2: 0,
-				x3: 80,
-			},
-			ORACLE: {
-				x1: 70,
-				x2: 30,
-				x3: 0,
-			},
-			Mongo: {
-				x1: 40,
-				x2: 30,
-				x3: 30,
-			},
-		},
-		metaData: {
-			toolTip: {
-				x1: 'red',
-				x2: 'green',
-			},
-		},
-	},
+	seriesData: sampleData,
 	yAxisLabelShow: false,
 	ySplitLineShow: false,
 	yAxisLineShow: false,
@@ -74,6 +74,20 @@ Default.args = {
 				formatter(param) {
 					return param.name;
 				},
+			},
+		},
+		{
+			stackIndex: 2,
+			color: 'red',
+			label: {
+				show: false,
+			},
+		},
+		{
+			stackIndex: 3,
+			color: 'gold',
+			label: {
+				show: false,
 			},
 		},
 	],
