@@ -77,13 +77,6 @@ Default.args = {
 	yAxisLineShow: false,
 	yAxisTickShow: false,
 	barWidth: '50%',
-	barLabel: true,
-	firstStackColor: 'green',
-	firstStackLabelColor: 'black',
-	secondStackColor: 'red',
-	secondStackLabelColor: 'black',
-	thirdStackColor: 'gold',
-	thirdStackLabelColor: 'black',
 	cursor: 'default',
 	seriesOption: [
 		{
