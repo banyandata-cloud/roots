@@ -115,7 +115,7 @@ BaseVerticalChart.propTypes = {
 	yAxisTickShow: PropTypes.bool,
 	barWidth: PropTypes.string,
 	cursor: PropTypes.string,
-	seriesOption: PropTypes.objectOf(PropTypes.shape),
+	seriesOption: PropTypes.arrayOf(PropTypes.shape),
 	style: PropTypes.objectOf(PropTypes.shape),
 	className: PropTypes.string,
 };
@@ -132,7 +132,11 @@ BaseVerticalChart.defaultProps = {
 	yAxisTickShow: false,
 	barWidth: '50%',
 	cursor: 'default',
-	seriesOption: [],
+	seriesOption: [
+		{
+			stackIndex: 1,
+		},
+	],
 	style: {
 		width: '100%',
 		height: '100%',
