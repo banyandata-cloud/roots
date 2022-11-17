@@ -14,6 +14,7 @@ const BaseVerticalChart = (props) => {
 		ySplitLineShow,
 		yAxisLineShow,
 		yAxisTickShow,
+		axisColor,
 		barWidth,
 		cursor,
 		seriesOption,
@@ -84,9 +85,14 @@ const BaseVerticalChart = (props) => {
 					type: 'value',
 					axisLabel: {
 						show: yAxisLabelShow,
+						color: axisColor,
 					},
 					splitLine: {
 						show: ySplitLineShow,
+						lineStyle: {
+							color: axisColor,
+							type: 'dashed',
+						},
 					},
 					axisLine: {
 						show: yAxisLineShow,
@@ -113,6 +119,7 @@ BaseVerticalChart.propTypes = {
 	ySplitLineShow: PropTypes.bool,
 	yAxisLineShow: PropTypes.bool,
 	yAxisTickShow: PropTypes.bool,
+	axisColor: PropTypes.string,
 	barWidth: PropTypes.string,
 	cursor: PropTypes.string,
 	seriesOption: PropTypes.arrayOf(PropTypes.shape),
@@ -130,6 +137,7 @@ BaseVerticalChart.defaultProps = {
 	ySplitLineShow: false,
 	yAxisLineShow: false,
 	yAxisTickShow: false,
+	axisColor: 'grey',
 	barWidth: '50%',
 	cursor: 'default',
 	seriesOption: [

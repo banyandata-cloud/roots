@@ -63,6 +63,7 @@ Default.args = {
 	ySplitLineShow: false,
 	yAxisLineShow: false,
 	yAxisTickShow: false,
+	axisColor: 'grey',
 	barWidth: '50%',
 	cursor: 'default',
 	seriesOption: [
