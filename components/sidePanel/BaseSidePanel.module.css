@@ -87,7 +87,7 @@
   overflow-x: hidden;
   transition: 0.5s;
 }
-.root.open {
+.root.close {
   width: 0rem;
 }
 .root .body {

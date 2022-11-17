@@ -92,6 +92,8 @@
 }
 .root .header .icon {
   transform: rotate(-90deg);
+  width: 1.5rem;
+  height: 1.5rem;
 }
 .root .header .title {
   flex: 1 1 auto;
