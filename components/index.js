@@ -2,7 +2,6 @@ export * from './accordion';
 export * from './alert';
 export * from './breadcrumbs';
 export * from './buttons';
-export * from './calender';
 export * from './cell';
 export * from './codeSnippet';
 export * from './datePicker';

@@ -10,6 +10,7 @@ import {
 	useTypeahead,
 	offset,
 	flip,
+	shift,
 	size,
 	autoUpdate,
 	FloatingFocusManager,
@@ -56,6 +57,9 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 		middleware: [
 			offset(5),
 			flip({
+				padding: 8,
+			}),
+			shift({
 				padding: 8,
 			}),
 			size({
