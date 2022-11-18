@@ -45,6 +45,7 @@ const TableChips = (props) => {
 							}
 							return null;
 						}}
+						rightComponent={chip.rightComponent}
 					/>
 				);
 			})}
@@ -65,6 +66,7 @@ TableChips.propTypes = {
 			label: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 			value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 			disabled: PropTypes.bool,
+			rightComponent: PropTypes.node,
 		})
 	),
 };

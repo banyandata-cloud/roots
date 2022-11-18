@@ -123,8 +123,8 @@
   width: 100%;
 }
 .root[data-elem=base-cell] > [data-elem=component2] .center [data-elem=base-cell] {
-  background: var(--grey5);
-  border-color: var(--grey5);
+  background: var(--grey7);
+  border-color: var(--grey3);
 }
 .root[data-elem=base-cell] > [data-elem=component2] .center .icon {
   width: 1.25rem;

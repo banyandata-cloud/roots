@@ -80,10 +80,10 @@
 }
 .root[data-elem=base-cell] [data-elem=component2] [data-elem=title] {
   font-weight: 500;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
 }
 .root[data-elem=base-cell].sm {
-  height: 1.5rem;
+  height: 2rem;
   padding: 0.188rem 0.5rem;
 }
 .root[data-elem=base-cell].md {
