@@ -1,4 +1,4 @@
-@import '../../assets/styles/index';
+@import '../../styles';
 
 .root {
 	@include flex(column, flex-start, stretch);
@@ -12,6 +12,8 @@
 
 		.icon {
 			transform: rotate(-90deg);
+			width: 1.5rem;
+			height: 1.5rem;
 		}
 
 		.title {
