@@ -6,12 +6,12 @@ import { CaretIcon } from '../icons';
 import styles from './Accordion.module.css';
 
 const Accordion = (props) => {
-	const { defaultOpen, iconPlacement, title, description, children, onClick } = props;
+	const { defaultOpen, iconPlacement, title, description, children, onClick, className } = props;
 
 	const [open, setOpen] = useState(defaultOpen);
 
 	return (
-		<div className={classes(styles.root, open ? styles.open : '')}>
+		<div className={classes(className, styles.root, open ? styles.open : '')}>
 			<BaseCell
 				flexible
 				size='auto'
@@ -30,7 +30,7 @@ const Accordion = (props) => {
 				component2={<span className={styles.title}>{title}</span>}
 				component3={iconPlacement === 'right' && <CaretIcon className={styles.icon} />}
 			/>
-			<div className={styles.body}>
+			<div data-elem='body' className={styles.body}>
 				{description && <p>{description}</p>}
 				{children}
 			</div>
@@ -44,6 +44,7 @@ Accordion.propTypes = {
 	description: PropTypes.string,
 	defaultOpen: PropTypes.bool,
 	onClick: PropTypes.func,
+	className: PropTypes.string,
 };
 
 Accordion.defaultProps = {
@@ -52,6 +53,7 @@ Accordion.defaultProps = {
 	description: null,
 	defaultOpen: false,
 	onClick: () => {},
+	className: '',
 };
 
 export default Accordion;
