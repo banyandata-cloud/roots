@@ -9,7 +9,7 @@ const BaseSidePanel = (props) => {
 	const panelRef = useRef();
 
 	return (
-		<div ref={panelRef} className={classes(styles.root, open ? styles.open : '', className)}>
+		<div ref={panelRef} className={classes(styles.root, open ? '' : styles.close, className)}>
 			{renderHeader && (
 				<div data-elem='header' className={styles.header}>
 					{renderHeader}

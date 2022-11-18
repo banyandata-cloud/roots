@@ -1,6 +1,6 @@
 import { fromUnixTime, getUnixTime, isAfter, isBefore } from 'date-fns';
-import { MONTHS } from '../../../../../constants';
-import { getDatesInAMonth } from '../../../../../utils';
+import { MONTHS } from '../../../../../../constants';
+import { getDatesInAMonth } from '../../../../../../utils';
 
 const getDatesOfLastWeekOfLastMonth = ({ monthAsNumber, year, remainingDaysInFirstWeek }) => {
 	if (remainingDaysInFirstWeek === 0) {

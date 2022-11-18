@@ -1,4 +1,4 @@
-import { DAYS } from '../../../../constants';
+import { DAYS } from '../../../../../constants';
 import styles from './Days.module.css';
 
 const Days = () => {
