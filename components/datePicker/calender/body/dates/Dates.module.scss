@@ -1,7 +1,8 @@
-@import '../../../../assets/styles/index';
+@import '../../../../../styles';
 
 .dates {
-	display: flex;
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
 	align-items: center;
 	flex-wrap: wrap;
 	div {
@@ -19,7 +20,7 @@
 			height: 2.5rem;
 			width: 2.5rem;
 			font-weight: 400;
-			font-size: 0.8rem;
+			font-size: 0.875rem;
 			color: $black;
 		}
 		.selected {
@@ -34,9 +35,8 @@
 			color: $black;
 		}
 		.disabled {
-			background: $grey5;
 			border-radius: 1.5rem;
-			color: $grey;
+			color: $grey2;
 		}
 		.diffMonth {
 			opacity: 0.6;
@@ -46,16 +46,17 @@
 			.date {
 				background: $background;
 				color: $highlight;
-				box-shadow: 0rem 0.0625rem 0.0625rem rgba(0, 14, 51, 0.05);
+				@include boxShadow;
 			}
 			.selected {
 				background-color: $highlight;
 				color: $white;
 			}
 			.disabled {
-				background: $grey5;
+				background: transparent;
+				box-shadow: none;
 				border-radius: 1.5rem;
-				color: $grey;
+				color: $grey2;
 			}
 		}
 	}
@@ -69,7 +70,7 @@
 			.date {
 				background: $highlight;
 				color: $white;
-				box-shadow: 0rem 0.0625rem 0.0625rem rgba(0, 14, 51, 0.05);
+				@include boxShadow;
 			}
 		}
 	}
@@ -83,7 +84,7 @@
 			.date {
 				background: $highlight;
 				color: $white;
-				box-shadow: 0rem 0.0625rem 0.0625rem rgba(0, 14, 51, 0.05);
+				@include boxShadow;
 			}
 		}
 	}

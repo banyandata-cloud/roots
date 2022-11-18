@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { getUnixTime, isAfter, isBefore } from 'date-fns';
 import { CalenderHeader } from './header';
 import styles from './Calender.module.css';
-import { getToday } from '../../utils';
-import { FULL_MONTHS } from '../../constants';
+import { getDayInfo } from '../../../utils';
+import { FULL_MONTHS } from '../../../constants';
 import { CalenderBody } from './body';
 import { CalenderFooter } from './footer';
 
@@ -15,15 +16,47 @@ const Calender = (props) => {
 		setSelectedRange,
 		onApply,
 		disabledDates,
+		disableDatesAfter,
+		disableDatesBefore,
 	} = props;
 
-	const { month, year, monthAsNumber, dayAsNumber } = getToday();
+	const { month, year, monthAsNumber, dayAsNumber } = getDayInfo(new Date());
 	const [selectedMonth, setSelectedMonth] = useState({
 		month,
 		monthAsNumber,
 		year,
 		dayAsNumber,
 	});
+
+	useEffect(() => {
+		const date = new Date();
+		if (!range && !isBefore(date, disableDatesBefore) && !isAfter(date, disableDatesAfter)) {
+			const dateAsNumber = date.getDate();
+			setSelectedDate({
+				...selectedDate,
+				month: selectedMonth.month,
+				year: selectedMonth.year,
+				date: dateAsNumber,
+				unix: getUnixTime(date.setHours(23, 59, 59, 59)),
+			});
+		}
+	}, []);
+
+	const goToDate = (unix) => {
+		const dayInfo = getDayInfo(new Date(unix * 1000));
+		setSelectedMonth({
+			month: dayInfo.month,
+			monthAsNumber: dayInfo.monthAsNumber,
+			year: dayInfo.year,
+		});
+		setSelectedDate({
+			...selectedDate,
+			month: dayInfo.month,
+			year: dayInfo.year,
+			date: dayInfo.dateAsNumber,
+			unix: getUnixTime(new Date(unix * 1000).setHours(23, 59, 59, 59)),
+		});
+	};
 
 	const onMonthChange = (switchSide) => {
 		if (switchSide === 'prev') {
@@ -76,13 +109,17 @@ const Calender = (props) => {
 				selectedRange={selectedRange}
 				setSelectedRange={setSelectedRange}
 				disabledDates={disabledDates}
+				disableDatesAfter={disableDatesAfter}
+				disableDatesBefore={disableDatesBefore}
 			/>
 			<CalenderFooter
 				range={range}
 				selectedDate={selectedDate}
+				setSelectedDate={setSelectedDate}
 				selectedRange={selectedRange}
 				setSelectedRange={setSelectedRange}
 				onApply={onApply}
+				goToDate={goToDate}
 			/>
 		</div>
 	);

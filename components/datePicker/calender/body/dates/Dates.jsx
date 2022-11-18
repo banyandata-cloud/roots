@@ -1,7 +1,7 @@
 /* eslint-disable no-nested-ternary */
 import { getUnixTime, fromUnixTime, isAfter, isBefore, isSameDay } from 'date-fns';
 import { useEffect, useState } from 'react';
-import { classes, getDatesInAMonth } from '../../../../utils';
+import { classes, getDatesInAMonth } from '../../../../../utils';
 import styles from './Dates.module.css';
 import { getDatesToDisplay, rangeSelection } from './utils';
 
@@ -14,6 +14,8 @@ const Dates = (props) => {
 		selectedRange,
 		setSelectedRange,
 		disabledDates,
+		disableDatesAfter,
+		disableDatesBefore,
 	} = props;
 
 	const { monthAsNumber, year } = selectedMonth;
@@ -96,6 +98,14 @@ const Dates = (props) => {
 		}
 	};
 
+	const disabledBeforeDate = (date) => {
+		return disableDatesBefore?.length > 0 && isBefore(date, fromUnixTime(disableDatesBefore));
+	};
+
+	const disabledAfterDate = (date) => {
+		return disableDatesAfter?.length > 0 && isAfter(date, fromUnixTime(disableDatesAfter));
+	};
+
 	return (
 		<div className={styles.dates}>
 			{datesToDisplay.map((date) => {
@@ -111,7 +121,13 @@ const Dates = (props) => {
 					hoveredEndingDate === getUnixTime(date);
 				const notSameMonth = date.getMonth() !== monthAsNumber;
 				const isUnSelected = unSelectedDate === date.toISOString();
-				const isDisabled = disabledDates.includes(date.toDateString());
+
+				const disabled =
+					disabledDates.includes(date.toDateString()) ||
+					disabledBeforeDate(date) ||
+					disabledAfterDate(date);
+
+				const isDisabled = disabled;
 				const isHoveringBeforeSelectedDate = isBefore(
 					fromUnixTime(hoveredEndingDate),
 					fromUnixTime(firstItem)
