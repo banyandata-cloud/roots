@@ -2,7 +2,7 @@ import React from 'react';
 import BaseVerticalChart from './BaseVerticalChart';
 
 export default {
-	title: 'ComponentsV2/Charts/VerticalChart/BaseVerticalChart',
+	title: 'Components/Charts/VerticalChart/BaseVerticalChart',
 	component: BaseVerticalChart,
 	parameters: {
 		options: {

@@ -1,6 +1,6 @@
 import React from 'react';
-import { classes } from '../../../utils';
-import { ChevronIcon } from '../../icons';
+import { classes } from '../../../../utils';
+import { ChevronIcon } from '../../../icons';
 import styles from './Header.module.css';
 
 const Header = (props) => {

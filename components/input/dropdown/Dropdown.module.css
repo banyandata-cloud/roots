@@ -100,6 +100,18 @@
   max-width: 100%;
   position: relative;
 }
+.root .header .input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+.root .header .input:focus + .select {
+  border-color: var(--highlight);
+}
+.root .header .input:focus + .select.feedback-error {
+  border-color: var(--error);
+}
 .root .header .select {
   display: flex;
   flex-direction: row;
@@ -125,14 +137,8 @@
   width: 1.5rem;
   height: 1.5rem;
 }
-.root .header .input {
-  position: absolute;
-  opacity: 0;
-  width: 1px;
-  height: 1px;
-}
-.root .header .input:focus + .select {
-  border-color: var(--highlight);
+.root .header .select.feedback-error {
+  border-color: var(--error);
 }
 .root.open .header {
   border-color: var(--highlight);
@@ -140,6 +146,40 @@
 .root.disabled .select {
   background: var(--grey10);
   cursor: not-allowed;
+}
+.root .bottom {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  min-height: 2rem;
+  width: 100%;
+  gap: 1rem;
+  color: var(--grey3);
+  font-size: 0.75rem;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.root .bottom .feedback {
+  flex: 1;
+  margin-right: auto;
+}
+.root .bottom .feedback.feedback-error {
+  color: var(--error);
+  fill: var(--error);
+}
+.root .bottom .feedback.feedback-success {
+  color: var(--success);
+  fill: var(--success);
+}
+.root .bottom .count {
+  text-align: right;
+  margin-left: auto;
+}
+.root .bottom .count.exceeded {
+  color: var(--error);
 }
 
 .body {

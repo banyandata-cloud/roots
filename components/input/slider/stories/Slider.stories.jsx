@@ -2,7 +2,7 @@ import React from 'react';
 import Slider from '../Slider';
 
 export default {
-	title: 'ComponentsV2/Slider',
+	title: 'Components/Slider',
 	component: Slider,
 	parameters: {
 		options: {

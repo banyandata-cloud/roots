@@ -3,7 +3,7 @@ import React from 'react';
 import Stepper from './Stepper';
 
 export default {
-	title: 'ComponentsV2/Stepper',
+	title: 'Components/Stepper',
 	component: Stepper,
 	parameters: {
 		options: {

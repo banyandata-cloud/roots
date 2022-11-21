@@ -9,12 +9,13 @@ import {
 	size,
 	autoUpdate,
 	useClick,
+	shift,
 } from '@floating-ui/react-dom-interactions';
 import { fromUnixTime } from 'date-fns';
 import { useOutsideClickListener } from '../../hooks';
 import { classes } from '../../utils';
-import { Calender } from '../calender';
-import { ChevronIcon } from '../icons';
+import { Calender } from './calender';
+import { CalenderIcon, ChevronIcon } from '../icons';
 import { Popper } from '../popper';
 import styles from './DatePicker.module.css';
 import { isMaxRangeExceeded } from './utils';
@@ -22,7 +23,19 @@ import { MONTHS } from '../../constants';
 
 const DatePicker = (props) => {
 	// eslint-disable-next-line object-curly-newline
-	const { placeholder, label, range, onApply, disabledDates, maxRange, value, disabled } = props;
+	const {
+		placeholder,
+		label,
+		range,
+		onApply,
+		disabledDates,
+		maxRange,
+		value,
+		disabled,
+		className,
+		disableDatesAfter,
+		disableDatesBefore,
+	} = props;
 
 	const [open, setOpen] = useState(false);
 
@@ -58,17 +71,21 @@ const DatePicker = (props) => {
 		onOpenChange: setOpen,
 		whileElementsMounted: autoUpdate,
 		middleware: [
-			offset(5),
-			flip({
-				padding: 8,
-			}),
 			size({
 				apply({ rects, availableHeight, elements }) {
 					Object.assign(elements.floating.style, {
 						width: `${rects.reference.width}px`,
+						minWidth: 'fit-content',
 						maxHeight: `${availableHeight}px`,
 					});
 				},
+				padding: 8,
+			}),
+			offset(5),
+			flip({
+				padding: 8,
+			}),
+			shift({
 				padding: 8,
 			}),
 		],
@@ -116,12 +133,15 @@ const DatePicker = (props) => {
 			apply();
 		},
 		disabledDates,
+		disableDatesAfter,
+		disableDatesBefore,
 	};
 
 	return (
-		<div className={styles.root} ref={datePickerRef}>
+		<div className={classes(styles.root, className)} ref={datePickerRef}>
 			{label && <span className={styles.label}>{label}</span>}
 			<div
+				data-elem='header'
 				ref={reference}
 				className={classes(
 					styles.container,
@@ -130,15 +150,18 @@ const DatePicker = (props) => {
 					error ? styles.error : ''
 				)}
 				{...getReferenceProps()}>
-				{!displayValue && <span className={styles.placeholder}>{placeholder}</span>}
-				{displayValue && (
-					<span className={styles.value}>
-						Selected Date: <span>{displayValue}</span>
-					</span>
-				)}
+				<div>
+					<CalenderIcon />
+					{!displayValue && <span className={styles.placeholder}>{placeholder}</span>}
+					{displayValue && (
+						<span className={styles.value}>
+							Selected Date: <span>{displayValue}</span>
+						</span>
+					)}
+				</div>
 
 				<input className={styles.input} value={displayValue} />
-				<ChevronIcon className={classes(styles.icon)} position={open ? 'top' : 'bottom'} />
+				<ChevronIcon className={classes(styles.icon)} position={open ? 'bottom' : 'top'} />
 			</div>
 			{error && <div className={styles['error-text']}>{error}</div>}
 			<Popper open={open} wrapperid='datePicker-popper'>
@@ -179,6 +202,9 @@ DatePicker.propTypes = {
 		value: PropTypes.number,
 		type: PropTypes.string,
 	}),
+	className: PropTypes.string,
+	disableDatesBefore: PropTypes.arrayOf(PropTypes.string),
+	disableDatesAfter: PropTypes.arrayOf(PropTypes.string),
 };
 
 DatePicker.defaultProps = {
@@ -190,6 +216,9 @@ DatePicker.defaultProps = {
 	disabledDates: [],
 	maxRange: null,
 	value: '',
+	className: '',
+	disableDatesBefore: [],
+	disableDatesAfter: [],
 };
 
 export default DatePicker;

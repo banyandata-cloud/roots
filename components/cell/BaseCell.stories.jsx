@@ -2,7 +2,7 @@ import React from 'react';
 import { BaseCell } from './BaseCell';
 
 export default {
-	title: 'ComponentsV2/BaseCell',
+	title: 'Components/BaseCell',
 	component: BaseCell,
 	parameters: {
 		options: {

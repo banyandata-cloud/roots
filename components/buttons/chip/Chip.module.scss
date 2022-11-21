@@ -1,16 +1,16 @@
-@import '../../assets/styles';
+@import '../../../styles';
 
 .root[data-elem='base-cell'] {
 	position: relative;
 	[data-elem='component2'] {
 		[data-elem='title'] {
 			font-weight: 500;
-			font-size: 0.75rem;
+			font-size: 0.875rem;
 		}
 	}
 
 	&.sm {
-		height: 1.5rem;
+		height: 2rem;
 		padding: 0.188rem 0.5rem;
 	}
 

@@ -2,7 +2,7 @@ import React from 'react';
 import HierarchyItem from './HierarchyItem';
 
 export default {
-	title: 'ComponentsV2/Hierarchy/Item',
+	title: 'Components/Hierarchy/Item',
 	component: HierarchyItem,
 	parameters: {
 		options: {

@@ -3,7 +3,7 @@ import TableRow from './TableRow';
 import { TableColumn } from '../BaseTable.class';
 
 export default {
-	title: 'ComponentsV2/Table/Row',
+	title: 'Components/Table/Row',
 	component: TableRow,
 	parameters: {
 		options: {

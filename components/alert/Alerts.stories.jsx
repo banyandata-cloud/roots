@@ -3,7 +3,7 @@ import { AlertIcon } from '../icons';
 import Alert from './Alert';
 
 export default {
-	title: 'ComponentsV2/Alert/Alert',
+	title: 'Components/Alert/Alert',
 	component: Alert,
 	parameters: {
 		options: {

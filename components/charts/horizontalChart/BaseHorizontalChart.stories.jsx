@@ -2,7 +2,7 @@ import React from 'react';
 import BaseHorizontalChart from './BaseHorizontalChart';
 
 export default {
-	title: 'ComponentsV2/Charts/HorizontalChart/BaseHorizontalChart',
+	title: 'Components/Charts/HorizontalChart/BaseHorizontalChart',
 	component: BaseHorizontalChart,
 	parameters: {
 		options: {

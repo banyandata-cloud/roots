@@ -3,7 +3,7 @@ import { Button } from '../buttons';
 import Popover from './Popover';
 
 export default {
-	title: 'ComponentsV2/Popover',
+	title: 'Components/Popover',
 	component: Popover,
 	parameters: {
 		options: {

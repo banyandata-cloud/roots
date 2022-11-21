@@ -2,9 +2,9 @@ const Copy = (props) => {
 	const { className } = props;
 	return (
 		<svg
+			fill='black'
 			className={className}
 			viewBox='0 0 16 17'
-			fill='#161616'
 			xmlns='http://www.w3.org/2000/svg'>
 			<path
 				fillRule='evenodd'
