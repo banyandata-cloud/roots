@@ -1,7 +1,32 @@
 import PropTypes from 'prop-types';
-import ReactEcharts from 'echarts-for-react';
+// ReactEcharts from 'echarts-for-react' would import the entire bundle
+import EChartsReactCore from 'echarts-for-react/lib/core';
+import * as echarts from 'echarts/core';
+import { BarChart } from 'echarts/charts';
+import {
+	GridComponent,
+	TooltipComponent,
+	TitleComponent,
+	DatasetComponent,
+} from 'echarts/components';
+// Import renderer, note that introducing the CanvasRenderer or SVGRenderer is a required step
+import {
+	CanvasRenderer,
+	// SVGRenderer,
+} from 'echarts/renderers';
+
 import styles from './BaseVerticalChart.module.css';
 import { classes } from '../../../utils';
+
+// Register the required components
+echarts.use([
+	TitleComponent,
+	TooltipComponent,
+	GridComponent,
+	DatasetComponent,
+	BarChart,
+	CanvasRenderer,
+]);
 
 const BaseVerticalChart = (props) => {
 	const {
@@ -14,8 +39,10 @@ const BaseVerticalChart = (props) => {
 		ySplitLineShow,
 		yAxisLineShow,
 		yAxisTickShow,
+		axisColor,
 		barWidth,
 		cursor,
+		stacked,
 		seriesOption,
 		style,
 		className,
@@ -23,9 +50,9 @@ const BaseVerticalChart = (props) => {
 
 	const seriesOptionObject = {
 		type: 'bar',
-		barWidth,
+		barWidth: stacked ? barWidth : barWidth / seriesOption.length,
 		cursor,
-		stack: 'total',
+		stack: stacked,
 		groupPadding: 3,
 		showBackground: true,
 		backgroundStyle: {
@@ -65,7 +92,7 @@ const BaseVerticalChart = (props) => {
 		});
 	};
 	return (
-		<ReactEcharts
+		<EChartsReactCore
 			option={{
 				title: {
 					text: title,
@@ -84,9 +111,14 @@ const BaseVerticalChart = (props) => {
 					type: 'value',
 					axisLabel: {
 						show: yAxisLabelShow,
+						color: axisColor,
 					},
 					splitLine: {
 						show: ySplitLineShow,
+						lineStyle: {
+							color: axisColor,
+							type: 'dashed',
+						},
 					},
 					axisLine: {
 						show: yAxisLineShow,
@@ -97,6 +129,9 @@ const BaseVerticalChart = (props) => {
 				},
 				series: generateSeries(),
 			}}
+			echarts={echarts}
+			notMerge
+			lazyUpdate
 			className={classes(className, styles.root)}
 			style={style}
 		/>
@@ -113,9 +148,11 @@ BaseVerticalChart.propTypes = {
 	ySplitLineShow: PropTypes.bool,
 	yAxisLineShow: PropTypes.bool,
 	yAxisTickShow: PropTypes.bool,
+	axisColor: PropTypes.string,
 	barWidth: PropTypes.string,
 	cursor: PropTypes.string,
-	seriesOption: PropTypes.objectOf(PropTypes.shape),
+	stacked: PropTypes.bool,
+	seriesOption: PropTypes.arrayOf(PropTypes.shape),
 	style: PropTypes.objectOf(PropTypes.shape),
 	className: PropTypes.string,
 };
@@ -130,9 +167,15 @@ BaseVerticalChart.defaultProps = {
 	ySplitLineShow: false,
 	yAxisLineShow: false,
 	yAxisTickShow: false,
+	axisColor: 'grey',
 	barWidth: '50%',
 	cursor: 'default',
-	seriesOption: [],
+	stacked: true,
+	seriesOption: [
+		{
+			stackIndex: 1,
+		},
+	],
 	style: {
 		width: '100%',
 		height: '100%',

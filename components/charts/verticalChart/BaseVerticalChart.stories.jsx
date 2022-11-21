@@ -13,12 +13,12 @@ export default {
 
 const sampleData = {
 	chartData: {
-		mysql: {
+		MySql: {
 			x1: 33.33,
 			x2: 22.22,
 			x3: 44.44,
 		},
-		pgsql: {
+		PgSql: {
 			x1: 39.53,
 			x2: 46.51,
 			x3: 13.95,
@@ -26,14 +26,18 @@ const sampleData = {
 	},
 	metaData: {
 		controlsApplied: {
-			mysql: {
+			MySql: {
 				x1: 18,
 			},
-			pgsql: {
+			PgSql: {
 				x1: 43,
 			},
 		},
-		keyData: "{x1: 'compliant',x2: 'nonCompliant',x3: 'validate'}",
+		keyData: {
+			x1: 'compliant',
+			x2: 'nonCompliant',
+			x3: 'validate',
+		},
 		totalControls: {
 			x1: 61,
 		},
@@ -63,8 +67,10 @@ Default.args = {
 	ySplitLineShow: false,
 	yAxisLineShow: false,
 	yAxisTickShow: false,
+	axisColor: 'grey',
 	barWidth: '50%',
 	cursor: 'default',
+	stacked: true,
 	seriesOption: [
 		{
 			stackIndex: 1,
