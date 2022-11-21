@@ -1,7 +1,30 @@
 import PropTypes from 'prop-types';
-import ReactEcharts from 'echarts-for-react';
+import EChartsReactCore from 'echarts-for-react/lib/core';
+import * as echarts from 'echarts/core';
+import { BarChart } from 'echarts/charts';
+import {
+	GridComponent,
+	TooltipComponent,
+	TitleComponent,
+	DatasetComponent,
+} from 'echarts/components';
+// Import renderer, note that introducing the CanvasRenderer or SVGRenderer is a required step
+import {
+	CanvasRenderer,
+	// SVGRenderer,
+} from 'echarts/renderers';
 import styles from './BaseHorizontalChart.module.css';
 import { classes } from '../../../utils';
+
+// Register the required components
+echarts.use([
+	TitleComponent,
+	TooltipComponent,
+	GridComponent,
+	DatasetComponent,
+	BarChart,
+	CanvasRenderer,
+]);
 
 const BaseHorizontalChart = (props) => {
 	const {
@@ -16,6 +39,7 @@ const BaseHorizontalChart = (props) => {
 		yAxisTickShow,
 		barWidth,
 		cursor,
+		stacked,
 		seriesOption,
 		style,
 		className,
@@ -23,9 +47,9 @@ const BaseHorizontalChart = (props) => {
 
 	const seriesOptionObject = {
 		type: 'bar',
-		barWidth,
+		barWidth: stacked ? barWidth : barWidth / seriesOption.length,
 		cursor,
-		stack: 'total',
+		stack: stacked,
 		groupPadding: 3,
 		showBackground: true,
 		backgroundStyle: {
@@ -63,7 +87,7 @@ const BaseHorizontalChart = (props) => {
 		});
 	};
 	return (
-		<ReactEcharts
+		<EChartsReactCore
 			option={{
 				title: {
 					text: title,
@@ -96,6 +120,9 @@ const BaseHorizontalChart = (props) => {
 				},
 				series: generateSeries(),
 			}}
+			echarts={echarts}
+			notMerge
+			lazyUpdate
 			className={classes(className, styles.root)}
 			style={style}
 		/>
@@ -114,6 +141,7 @@ BaseHorizontalChart.propTypes = {
 	yAxisTickShow: PropTypes.bool,
 	barWidth: PropTypes.string,
 	cursor: PropTypes.string,
+	stacked: PropTypes.bool,
 	seriesOption: PropTypes.objectOf(PropTypes.shape),
 	style: PropTypes.objectOf(PropTypes.shape),
 	className: PropTypes.string,
@@ -131,6 +159,7 @@ BaseHorizontalChart.defaultProps = {
 	yAxisTickShow: false,
 	barWidth: '50%',
 	cursor: 'default',
+	stacked: true,
 	seriesOption: [],
 	style: {
 		width: '100%',

@@ -78,6 +78,7 @@ Default.args = {
 	yAxisTickShow: false,
 	barWidth: '50%',
 	cursor: 'default',
+	stacked: true,
 	seriesOption: [
 		{
 			stackIndex: 1,
