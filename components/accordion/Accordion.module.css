@@ -80,8 +80,9 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
+  width: 100%;
 }
-.root .header[data-elem=base-cell] {
+.root > .header[data-elem=base-cell] {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -90,44 +91,42 @@
   padding: 0.5rem 1rem;
   cursor: pointer;
 }
- 
-.root .header[data-elem=base-cell] [data-elem=component1] {
+.root > .header[data-elem=base-cell] > [data-elem=component1] {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
-
-.root .header[data-elem=base-cell] [data-elem=component1] .icon {
-  transform: none;
+.root > .header[data-elem=base-cell] > [data-elem=component1] .icon {
+  transform: rotate(-90deg);
   width: 1rem;
   height: 1rem;
 }
-.root .header[data-elem=base-cell] .title {
+.root > .header[data-elem=base-cell] .title {
   flex: 1 1 auto;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
 }
-.root .header[data-elem=base-cell]:hover {
+.root > .header[data-elem=base-cell]:hover {
   background: var(--background);
 }
-.root .header[data-elem=base-cell]:hover .icon,
-.root .header[data-elem=base-cell]:hover .title {
+.root > .header[data-elem=base-cell]:hover .icon,
+.root > .header[data-elem=base-cell]:hover .title {
   color: var(--highlight);
   fill: var(--highlight);
 }
-.root .body {
+.root > .body {
   display: none;
-  padding: 0.5rem 1.5rem;
+  padding: 0.5rem 2.5rem;
 }
-.root.open .header[data-elem=base-cell] [data-elem=component1] .icon {
-  transform: rotate(180deg);
+.root.open > .header[data-elem=base-cell] [data-elem=component1] .icon {
+  transform: none;
 }
-.root.open .body {
+.root.open > .body {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
 }/*# sourceMappingURL=Accordion.module.css.map */
