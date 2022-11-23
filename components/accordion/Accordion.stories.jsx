@@ -41,3 +41,13 @@ Default.parameters = {
 		url: 'https://www.figma.com/file/e9opoAtQHBo4vFd6u0Co98/Component-Library?node-id=1%3A6',
 	},
 };
+
+export const Nested = () => {
+	return (
+		<div>
+			<Accordion title='Parent' description='This is the parent description'>
+				<Accordion title='Child' description='This is the child description' />
+			</Accordion>
+		</div>
+	);
+};

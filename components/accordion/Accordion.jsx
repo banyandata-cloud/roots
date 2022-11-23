@@ -11,7 +11,9 @@ const Accordion = (props) => {
 	const [open, setOpen] = useState(defaultOpen);
 
 	return (
-		<div className={classes(className, styles.root, open ? styles.open : '')}>
+		<div
+			className={classes(className, styles.root, open ? styles.open : '')}
+			data-state-open={open}>
 			<BaseCell
 				flexible
 				size='auto'
