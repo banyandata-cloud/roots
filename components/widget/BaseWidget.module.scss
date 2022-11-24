@@ -16,13 +16,13 @@
 				flex: 1;
 			}
 			.title {
-				white-space: 'nowrap';
-				color: white;
+				white-space: nowrap;
+				color: $white;
 			}
 
 			.value {
-				white-space: 'nowrap';
-				color: white;
+				white-space: nowrap;
+				color: $white;
 			}
 		}
 
@@ -54,6 +54,7 @@
 				.expand-icon {
 					height: 1.25rem;
 					width: 1.25rem;
+					fill: $white;
 				}
 			}
 		}
@@ -66,4 +67,21 @@
 
 .dropdown-popper {
 	padding: 0rem;
+	background: $grey1;
+
+	.dropdown-item {
+		height: 2.25rem;
+		color: $white;
+		background: $grey;
+
+		&:hover,
+		&:focus {
+			color: $dark-grey;
+			background: $grey2;
+			label > svg {
+				border: 1px solid $dark-grey;
+				border-radius: 0.25rem;
+			}
+		}
+	}
 }

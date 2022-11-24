@@ -24,33 +24,18 @@ const Template = (args) => {
 			}}>
 			<BaseWidget
 				{...args}
-				options={[
-					{
-						id: 'dropdown',
-						placeholder: 'Region',
-						selectOption: [
-							{
-								title: 'India',
-								value: '1',
-							},
-							{
-								title: 'USA',
-								value: '2',
-							},
-						],
-						value: dropValue,
-						onChange: (event) => {
-							setDropValue(event.target.value);
-						},
-					},
-					{
-						id: 'expand',
-						title: 'Expand',
-						onClick: () => {
-							alert('This will open the Modal or a new Page with Expanded chart');
-						},
-					},
-				]}>
+				// eslint-disable-next-line react/destructuring-assignment
+				options={args.options.map((option) => {
+					return option.id === 'dropdown'
+						? {
+								...option,
+								value: dropValue,
+								onChange: (event) => {
+									setDropValue(event.target.value);
+								},
+						  }
+						: option;
+				})}>
 				<BaseVerticalChart
 					yAxisLabelShow
 					ySplitLineShow
@@ -126,6 +111,14 @@ Default.args = {
 				{
 					title: 'USA',
 					value: '2',
+				},
+				{
+					title: 'UAE',
+					value: '3',
+				},
+				{
+					title: 'UK',
+					value: '4',
 				},
 			],
 			onChange: (cb, data) => {
