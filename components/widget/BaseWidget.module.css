@@ -101,12 +101,12 @@
   flex: 1;
 }
 .root .header .header-title .title {
-  white-space: "nowrap";
-  color: white;
+  white-space: nowrap;
+  color: var(--white);
 }
 .root .header .header-title .value {
-  white-space: "nowrap";
-  color: white;
+  white-space: nowrap;
+  color: var(--white);
 }
 .root .header .header-options {
   display: flex;
@@ -137,6 +137,7 @@
 .root .header .header-options .expand-button .expand-icon {
   height: 1.25rem;
   width: 1.25rem;
+  fill: var(--white);
 }
 .root .children {
   flex: 1 1;
@@ -144,4 +145,18 @@
 
 .dropdown-popper {
   padding: 0rem;
+  background: var(--grey1);
+}
+.dropdown-popper .dropdown-item {
+  height: 2.25rem;
+  color: var(--white);
+  background: var(--grey);
+}
+.dropdown-popper .dropdown-item:hover, .dropdown-popper .dropdown-item:focus {
+  color: var(--dark-grey);
+  background: var(--grey2);
+}
+.dropdown-popper .dropdown-item:hover label > svg, .dropdown-popper .dropdown-item:focus label > svg {
+  border: 1px solid var(--dark-grey);
+  border-radius: 0.25rem;
 }/*# sourceMappingURL=BaseWidget.module.css.map */

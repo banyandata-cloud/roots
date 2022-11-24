@@ -25,6 +25,7 @@ const BaseWidget = (props) => {
 								<DropdownItem
 									title={objectData.title}
 									key={objectData.value}
+									value={objectData.value}
 									variant='checkbox'
 									className={styles['dropdown-item']}
 								/>
