@@ -65,7 +65,7 @@ const HierarchyBrowser = (props) => {
 			return null;
 		}
 
-		const hasChildren = data?.list != null;
+		const hasChildren = data?.list === true || Array.isArray(data?.list);
 
 		return (
 			<HierarchyItem
@@ -74,12 +74,13 @@ const HierarchyBrowser = (props) => {
 				onClick={handleItemClick(data, pathString)}
 				{...setItemProps(data, pathString)}>
 				{hasChildren &&
-					data.list.map((item, idx) => {
+					(data.list?.map?.((item, idx) => {
 						return renderTree(
 							item,
 							`${pathString}${pathString.length > 0 ? '.' : ''}list[${idx}]`
 						);
-					})}
+					}) ??
+						[])}
 			</HierarchyItem>
 		);
 	};
