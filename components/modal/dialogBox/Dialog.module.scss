@@ -1,0 +1,36 @@
+@import '../../../styles/_index';
+
+.root {
+	padding: 0.25rem 0px;
+	max-height: 14rem;
+	background: #ffffff;
+	border-radius: 0.25rem;
+
+	&.sm {
+		width: 21.25rem;
+	}
+
+	&.md {
+		width: 35rem;
+	}
+
+	.header {
+		font-weight: 600;
+		font-size: 0.875rem;
+		color: $black;
+	}
+	.footer {
+		@include flex(row, flex-end);
+		gap: 1rem;
+		.cancel[data-elem='base-cell'] {
+			display: flex;
+			color: $grey1;
+			border-radius: 0.25rem;
+			border: 1px solid $grey4;
+		}
+	}
+	.description {
+		padding: 0.5rem 0px;
+		font-size: 0.75rem;
+	}
+}
