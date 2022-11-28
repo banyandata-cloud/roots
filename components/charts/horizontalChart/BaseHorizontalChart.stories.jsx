@@ -69,7 +69,6 @@ export const Default = Template.bind({});
 Default.args = {
 	title: 'Title',
 	gridContainLabel: false,
-	height: '60%',
 	xAxisShow: false,
 	seriesData: sampleData,
 	yAxisLabelShow: false,
