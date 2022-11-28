@@ -43,6 +43,7 @@ const generateOptions = (optionData) => {
 					}}
 				/>
 			);
+		case 'custom': return optionData.render();
 		default:
 			return null;
 	}
