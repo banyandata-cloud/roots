@@ -86,8 +86,8 @@ BaseWidget.propTypes = {
 };
 
 BaseWidget.defaultProps = {
-	title: 'Chart Title',
-	value: '140 Control',
+	title: '',
+	value: '',
 	options: [],
 };
 
