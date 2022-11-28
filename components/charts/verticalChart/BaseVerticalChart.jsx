@@ -84,7 +84,7 @@ const BaseVerticalChart = (props) => {
 				...objectData,
 				label: {
 					...seriesOptionObject.label,
-					...objectData.label,
+					...(objectData?.label ?? {}),
 				},
 				data: Object.keys(seriesData?.chartData ?? {}).map((key) => {
 					return seriesData?.chartData?.[key]?.[`x${index + 1}`];

@@ -9,23 +9,23 @@ const BaseWidget = (props) => {
 	const { title, value, options, children } = props;
 
 	const generateOptions = (optionData) => {
-		switch (optionData.id) {
+		switch (optionData?.id ?? '') {
 			case 'switch':
 				return <div>Switch</div>;
 			case 'dropdown':
 				return (
 					<Dropdown
-						placeholder={optionData.placeholder}
-						value={optionData.value}
-						onChange={optionData.onChange}
+						placeholder={optionData?.placeholder ?? ''}
+						value={optionData?.value ?? ''}
+						onChange={optionData?.onChange ?? ''}
 						className={styles['dropdown-header']}
 						popperClassName={styles['dropdown-popper']}>
-						{optionData.selectOption.map((objectData) => {
+						{(optionData?.selectOption ?? []).map((objectData) => {
 							return (
 								<DropdownItem
-									title={objectData.title}
-									key={objectData.value}
-									value={objectData.value}
+									title={objectData?.title ?? ''}
+									key={objectData?.value ?? ''}
+									value={objectData?.value ?? ''}
 									variant='checkbox'
 									className={styles['dropdown-item']}
 								/>
@@ -36,11 +36,11 @@ const BaseWidget = (props) => {
 			case 'expand':
 				return (
 					<Button
-						title={optionData.title}
+						title={optionData?.title ?? ''}
 						variant='outlined'
 						size='auto'
 						className={styles['expand-button']}
-						onClick={optionData.onClick}
+						onClick={optionData?.onClick ?? ''}
 						rightComponent={() => {
 							return <ExpandArrowAltIcon className={styles['expand-icon']} />;
 						}}
@@ -61,14 +61,14 @@ const BaseWidget = (props) => {
 					)}>
 					<span className={styles.title}>
 						{title}
-						{options.length > 0 ? ' - ' : ' '}
+						{(options?.length ?? 0) > 0 ? ' - ' : ' '}
 					</span>
 					<span className={styles.value}>{value}</span>
 				</div>
 
 				<div className={styles['header-options']}>
-					{options.length > 0 &&
-						options.map((objectData) => {
+					{(options?.length ?? 0) > 0 &&
+						options?.map((objectData) => {
 							return generateOptions(objectData);
 						})}
 				</div>
