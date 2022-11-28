@@ -1,3 +1,4 @@
+/* eslint-disable no-tabs */
 import PropTypes from 'prop-types';
 // ReactEcharts from 'echarts-for-react' would import the entire bundle
 import EChartsReactCore from 'echarts-for-react/lib/core';
@@ -32,9 +33,9 @@ const BaseVerticalChart = (props) => {
 	const {
 		title,
 		gridContainLabel,
-		height,
 		xAxisShow,
 		seriesData,
+		onEvents,
 		yAxisLabelShow,
 		ySplitLineShow,
 		yAxisLineShow,
@@ -91,6 +92,7 @@ const BaseVerticalChart = (props) => {
 			};
 		});
 	};
+
 	return (
 		<EChartsReactCore
 			option={{
@@ -100,7 +102,6 @@ const BaseVerticalChart = (props) => {
 
 				grid: {
 					containLabel: gridContainLabel,
-					height,
 				},
 				xAxis: {
 					data: Object.keys(seriesData?.chartData ?? {}),
@@ -129,6 +130,7 @@ const BaseVerticalChart = (props) => {
 				},
 				series: generateSeries(),
 			}}
+			onEvents={onEvents}
 			echarts={echarts}
 			notMerge
 			lazyUpdate
@@ -141,9 +143,15 @@ const BaseVerticalChart = (props) => {
 BaseVerticalChart.propTypes = {
 	title: PropTypes.string,
 	gridContainLabel: PropTypes.bool,
-	height: PropTypes.string,
 	xAxisShow: PropTypes.bool,
-	seriesData: PropTypes.objectOf(PropTypes.shape),
+	seriesData: PropTypes.shape({
+		// eslint-disable-next-line react/forbid-prop-types
+		chartData: PropTypes.object,
+		// eslint-disable-next-line react/forbid-prop-types
+		metaData: PropTypes.object,
+	}),
+	// eslint-disable-next-line react/forbid-prop-types
+	onEvents: PropTypes.object,
 	yAxisLabelShow: PropTypes.bool,
 	ySplitLineShow: PropTypes.bool,
 	yAxisLineShow: PropTypes.bool,
@@ -160,9 +168,9 @@ BaseVerticalChart.propTypes = {
 BaseVerticalChart.defaultProps = {
 	title: '',
 	gridContainLabel: false,
-	height: '60%',
 	xAxisShow: false,
 	seriesData: {},
+	onEvents: {},
 	yAxisLabelShow: false,
 	ySplitLineShow: false,
 	yAxisLineShow: false,
@@ -171,11 +179,7 @@ BaseVerticalChart.defaultProps = {
 	barWidth: '50%',
 	cursor: 'default',
 	stacked: true,
-	seriesOption: [
-		{
-			stackIndex: 1,
-		},
-	],
+	seriesOption: [],
 	style: {
 		width: '100%',
 		height: '100%',
