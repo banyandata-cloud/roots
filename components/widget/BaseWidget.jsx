@@ -5,51 +5,51 @@ import Button from '../buttons/button/Button';
 import { Dropdown, DropdownItem } from '../input';
 import { classes } from '../../utils';
 
+const generateOptions = (optionData) => {
+	switch (optionData?.id ?? '') {
+		case 'switch':
+			return <div>Switch</div>;
+		case 'dropdown':
+			return (
+				<Dropdown
+					placeholder={optionData?.placeholder ?? ''}
+					value={optionData?.value ?? ''}
+					onChange={optionData?.onChange ?? ''}
+					className={styles['dropdown-header']}
+					popperClassName={styles['dropdown-popper']}>
+					{(optionData?.selectOption ?? []).map((objectData) => {
+						return (
+							<DropdownItem
+								title={objectData?.title ?? ''}
+								key={objectData?.value ?? ''}
+								value={objectData?.value ?? ''}
+								variant='checkbox'
+								className={styles['dropdown-item']}
+							/>
+						);
+					})}
+				</Dropdown>
+			);
+		case 'expand':
+			return (
+				<Button
+					title={optionData?.title ?? ''}
+					variant='outlined'
+					size='auto'
+					className={styles['expand-button']}
+					onClick={optionData?.onClick ?? ''}
+					rightComponent={() => {
+						return <ExpandArrowAltIcon className={styles['expand-icon']} />;
+					}}
+				/>
+			);
+		default:
+			return null;
+	}
+};
+
 const BaseWidget = (props) => {
 	const { title, value, options, children } = props;
-
-	const generateOptions = (optionData) => {
-		switch (optionData?.id ?? '') {
-			case 'switch':
-				return <div>Switch</div>;
-			case 'dropdown':
-				return (
-					<Dropdown
-						placeholder={optionData?.placeholder ?? ''}
-						value={optionData?.value ?? ''}
-						onChange={optionData?.onChange ?? ''}
-						className={styles['dropdown-header']}
-						popperClassName={styles['dropdown-popper']}>
-						{(optionData?.selectOption ?? []).map((objectData) => {
-							return (
-								<DropdownItem
-									title={objectData?.title ?? ''}
-									key={objectData?.value ?? ''}
-									value={objectData?.value ?? ''}
-									variant='checkbox'
-									className={styles['dropdown-item']}
-								/>
-							);
-						})}
-					</Dropdown>
-				);
-			case 'expand':
-				return (
-					<Button
-						title={optionData?.title ?? ''}
-						variant='outlined'
-						size='auto'
-						className={styles['expand-button']}
-						onClick={optionData?.onClick ?? ''}
-						rightComponent={() => {
-							return <ExpandArrowAltIcon className={styles['expand-icon']} />;
-						}}
-					/>
-				);
-			default:
-				return null;
-		}
-	};
 
 	return (
 		<div className={styles.root}>
