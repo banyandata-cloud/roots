@@ -54,12 +54,20 @@ const sampleData = {
 };
 
 const Template = (args) => {
+	const onBarClick = (params) => {
+		alert(`Click Event on ${params.name}`);
+	};
 	return (
 		<div
 			style={{
 				height: '100%',
 			}}>
-			<BaseHorizontalChart {...args} />
+			<BaseHorizontalChart
+				{...args}
+				onEvents={{
+					click: onBarClick,
+				}}
+			/>
 		</div>
 	);
 };
