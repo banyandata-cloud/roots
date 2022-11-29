@@ -50,24 +50,25 @@ const generateOptions = (optionData) => {
 };
 
 const BaseWidget = (props) => {
-	const { title, value, options, children } = props;
+	const { title, value, options, className, children } = props;
 
 	return (
-		<div className={styles.root}>
-			<div className={styles.header}>
+		<div className={classes(styles.root, className)}>
+			<div className={styles.header} data-elem='header'>
 				<div
 					className={classes(
 						styles['header-title'],
 						(options?.length ?? 0) === 0 ? styles['no-options'] : ''
-					)}>
-					<span className={styles.title}>
+					)}
+					data-elem='header-title'>
+					<span className={styles.title} data-elem='title'>
 						{title}
 						{(options?.length ?? 0) > 0 ? ' - ' : ' '}
 					</span>
-					<span className={styles.value}>{value}</span>
+					<span className={styles.value} data-elem='value'>{value}</span>
 				</div>
 
-				<div className={styles['header-options']}>
+				<div className={styles['header-options']} data-elem='header-options'>
 					{(options?.length ?? 0) > 0 &&
 						options?.map((objectData) => {
 							return generateOptions(objectData);
@@ -75,7 +76,7 @@ const BaseWidget = (props) => {
 				</div>
 			</div>
 			<hr />
-			<div className={styles.children}>{children}</div>
+			<div className={styles.children} data-elem='children'>{children}</div>
 		</div>
 	);
 };
@@ -84,12 +85,14 @@ BaseWidget.propTypes = {
 	title: PropTypes.string,
 	value: PropTypes.string,
 	options: PropTypes.arrayOf(PropTypes.shape),
+	className: PropTypes.string,
 };
 
 BaseWidget.defaultProps = {
 	title: '',
 	value: '',
 	options: [],
+	className: '',
 };
 
 export default BaseWidget;
