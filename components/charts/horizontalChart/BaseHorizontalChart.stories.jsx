@@ -11,13 +11,63 @@ export default {
 	},
 };
 
+const sampleData = {
+	chartData: {
+		'Audit, Logging and Monitering': {
+			x1: 40,
+			x2: 60,
+			x3: 0,
+		},
+		Settings: {
+			x1: 20,
+			x2: 10,
+			x3: 70,
+		},
+		Authorization: {
+			x1: 20,
+			x2: 40,
+			x3: 40,
+		},
+		Authentication: {
+			x1: 40,
+			x2: 60,
+			x3: 0,
+		},
+		'Patches and Plugins': {
+			x1: 20,
+			x2: 0,
+			x3: 80,
+		},
+		'High Availability': {
+			x1: 30,
+			x2: 0,
+			x3: 70,
+		},
+	},
+	metaData: {
+		toolTip: {
+			x1: 'red',
+			x2: 'green',
+			x3: 'gold',
+		},
+	},
+};
+
 const Template = (args) => {
+	const onBarClick = (params) => {
+		alert(`Click Event on ${params.name}`);
+	};
 	return (
 		<div
 			style={{
 				height: '100%',
 			}}>
-			<BaseHorizontalChart {...args} />
+			<BaseHorizontalChart
+				{...args}
+				onEvents={{
+					click: onBarClick,
+				}}
+			/>
 		</div>
 	);
 };
@@ -27,62 +77,15 @@ export const Default = Template.bind({});
 Default.args = {
 	title: 'Title',
 	gridContainLabel: false,
-	height: '60%',
 	xAxisShow: false,
-	seriesData: {
-		chartData: {
-			'Audit, Logging and Monitering': {
-				x1: 40,
-				x2: 60,
-				x3: 0,
-			},
-			Settings: {
-				x1: 20,
-				x2: 10,
-				x3: 70,
-			},
-			Authorization: {
-				x1: 20,
-				x2: 40,
-				x3: 40,
-			},
-			Authentication: {
-				x1: 40,
-				x2: 60,
-				x3: 0,
-			},
-			'Patches and Plugins': {
-				x1: 20,
-				x2: 0,
-				x3: 80,
-			},
-			'High Availability': {
-				x1: 30,
-				x2: 0,
-				x3: 70,
-			},
-		},
-		metaData: {
-			toolTip: {
-				x1: 'red',
-				x2: 'green',
-				x3: 'gold',
-			},
-		},
-	},
+	seriesData: sampleData,
 	yAxisLabelShow: false,
 	ySplitLineShow: false,
 	yAxisLineShow: false,
 	yAxisTickShow: false,
 	barWidth: '50%',
-	barLabel: true,
-	firstStackColor: 'green',
-	firstStackLabelColor: 'black',
-	secondStackColor: 'red',
-	secondStackLabelColor: 'black',
-	thirdStackColor: 'gold',
-	thirdStackLabelColor: 'black',
 	cursor: 'default',
+	stacked: true,
 	seriesOption: [
 		{
 			stackIndex: 1,

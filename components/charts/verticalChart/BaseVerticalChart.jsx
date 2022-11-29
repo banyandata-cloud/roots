@@ -1,21 +1,49 @@
+/* eslint-disable no-tabs */
 import PropTypes from 'prop-types';
-import ReactEcharts from 'echarts-for-react';
+// ReactEcharts from 'echarts-for-react' would import the entire bundle
+import EChartsReactCore from 'echarts-for-react/lib/core';
+import * as echarts from 'echarts/core';
+import { BarChart } from 'echarts/charts';
+import {
+	GridComponent,
+	TooltipComponent,
+	TitleComponent,
+	DatasetComponent,
+} from 'echarts/components';
+// Import renderer, note that introducing the CanvasRenderer or SVGRenderer is a required step
+import {
+	CanvasRenderer,
+	// SVGRenderer,
+} from 'echarts/renderers';
+
 import styles from './BaseVerticalChart.module.css';
 import { classes } from '../../../utils';
+
+// Register the required components
+echarts.use([
+	TitleComponent,
+	TooltipComponent,
+	GridComponent,
+	DatasetComponent,
+	BarChart,
+	CanvasRenderer,
+]);
 
 const BaseVerticalChart = (props) => {
 	const {
 		title,
 		gridContainLabel,
-		height,
 		xAxisShow,
 		seriesData,
+		onEvents,
 		yAxisLabelShow,
 		ySplitLineShow,
 		yAxisLineShow,
 		yAxisTickShow,
+		axisColor,
 		barWidth,
 		cursor,
+		stacked,
 		seriesOption,
 		style,
 		className,
@@ -23,9 +51,9 @@ const BaseVerticalChart = (props) => {
 
 	const seriesOptionObject = {
 		type: 'bar',
-		barWidth,
+		barWidth: stacked ? barWidth : barWidth / seriesOption.length,
 		cursor,
-		stack: 'total',
+		stack: stacked,
 		groupPadding: 3,
 		showBackground: true,
 		backgroundStyle: {
@@ -44,8 +72,10 @@ const BaseVerticalChart = (props) => {
 		itemStyle: {
 			borderRadius: [0, 2, 2, 0],
 		},
-		data: Object.keys(seriesData.chartData).map((key) => {
-			return seriesData.chartData[key].x1;
+		data: Object.keys(seriesData?.chartData ?? {}).map((key) => {
+			return {
+				value: seriesData?.chartData?.[key]?.x1,
+			};
 		}),
 	};
 
@@ -56,16 +86,22 @@ const BaseVerticalChart = (props) => {
 				...objectData,
 				label: {
 					...seriesOptionObject.label,
-					...objectData.label,
+					...(objectData?.label ?? {}),
 				},
-				data: Object.keys(seriesData.chartData).map((key) => {
-					return seriesData.chartData[key][`x${index + 1}`];
+				data: Object.keys(seriesData?.chartData ?? {}).map((key, subIndex) => {
+					return {
+						value: seriesData?.chartData?.[key]?.[`x${index + 1}`],
+						itemStyle: {
+							color: objectData?.barColor?.[subIndex] || objectData?.color,
+						},
+					};
 				}),
 			};
 		});
 	};
+
 	return (
-		<ReactEcharts
+		<EChartsReactCore
 			option={{
 				title: {
 					text: title,
@@ -73,10 +109,9 @@ const BaseVerticalChart = (props) => {
 
 				grid: {
 					containLabel: gridContainLabel,
-					height,
 				},
 				xAxis: {
-					data: Object.keys(seriesData.chartData),
+					data: Object.keys(seriesData?.chartData ?? {}),
 					show: xAxisShow,
 					type: 'category',
 				},
@@ -84,9 +119,14 @@ const BaseVerticalChart = (props) => {
 					type: 'value',
 					axisLabel: {
 						show: yAxisLabelShow,
+						color: axisColor,
 					},
 					splitLine: {
 						show: ySplitLineShow,
+						lineStyle: {
+							color: axisColor,
+							type: 'dashed',
+						},
 					},
 					axisLine: {
 						show: yAxisLineShow,
@@ -97,6 +137,10 @@ const BaseVerticalChart = (props) => {
 				},
 				series: generateSeries(),
 			}}
+			onEvents={onEvents}
+			echarts={echarts}
+			notMerge
+			lazyUpdate
 			className={classes(className, styles.root)}
 			style={style}
 		/>
@@ -106,16 +150,24 @@ const BaseVerticalChart = (props) => {
 BaseVerticalChart.propTypes = {
 	title: PropTypes.string,
 	gridContainLabel: PropTypes.bool,
-	height: PropTypes.string,
 	xAxisShow: PropTypes.bool,
-	seriesData: PropTypes.objectOf(PropTypes.shape),
+	seriesData: PropTypes.shape({
+		// eslint-disable-next-line react/forbid-prop-types
+		chartData: PropTypes.object,
+		// eslint-disable-next-line react/forbid-prop-types
+		metaData: PropTypes.object,
+	}),
+	// eslint-disable-next-line react/forbid-prop-types
+	onEvents: PropTypes.object,
 	yAxisLabelShow: PropTypes.bool,
 	ySplitLineShow: PropTypes.bool,
 	yAxisLineShow: PropTypes.bool,
 	yAxisTickShow: PropTypes.bool,
+	axisColor: PropTypes.string,
 	barWidth: PropTypes.string,
 	cursor: PropTypes.string,
-	seriesOption: PropTypes.objectOf(PropTypes.shape),
+	stacked: PropTypes.bool,
+	seriesOption: PropTypes.arrayOf(PropTypes.shape),
 	style: PropTypes.objectOf(PropTypes.shape),
 	className: PropTypes.string,
 };
@@ -123,16 +175,22 @@ BaseVerticalChart.propTypes = {
 BaseVerticalChart.defaultProps = {
 	title: '',
 	gridContainLabel: false,
-	height: '60%',
 	xAxisShow: false,
 	seriesData: {},
+	onEvents: {},
 	yAxisLabelShow: false,
 	ySplitLineShow: false,
 	yAxisLineShow: false,
 	yAxisTickShow: false,
+	axisColor: 'grey',
 	barWidth: '50%',
 	cursor: 'default',
-	seriesOption: [],
+	stacked: true,
+	seriesOption: [
+		{
+			stackIndex: 1,
+		},
+	],
 	style: {
 		width: '100%',
 		height: '100%',
