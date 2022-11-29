@@ -78,7 +78,7 @@ const BaseHorizontalChart = (props) => {
 				...objectData,
 				label: {
 					...seriesOptionObject.label,
-					...objectData.label,
+					...(objectData?.label ?? {}),
 				},
 				data: Object.keys(seriesData?.chartData ?? {}).map((key) => {
 					return seriesData?.chartData?.[key]?.[`x${index + 1}`];
@@ -132,9 +132,13 @@ const BaseHorizontalChart = (props) => {
 BaseHorizontalChart.propTypes = {
 	title: PropTypes.string,
 	gridContainLabel: PropTypes.bool,
-	height: PropTypes.string,
 	xAxisShow: PropTypes.bool,
-	seriesData: PropTypes.objectOf(PropTypes.shape),
+	seriesData: PropTypes.shape({
+		// eslint-disable-next-line react/forbid-prop-types
+		chartData: PropTypes.object,
+		// eslint-disable-next-line react/forbid-prop-types
+		metaData: PropTypes.object,
+	}),
 	yAxisLabelShow: PropTypes.bool,
 	ySplitLineShow: PropTypes.bool,
 	yAxisLineShow: PropTypes.bool,
@@ -143,14 +147,14 @@ BaseHorizontalChart.propTypes = {
 	cursor: PropTypes.string,
 	stacked: PropTypes.bool,
 	seriesOption: PropTypes.objectOf(PropTypes.shape),
-	style: PropTypes.objectOf(PropTypes.shape),
+	// eslint-disable-next-line react/forbid-prop-types
+	style: PropTypes.object,
 	className: PropTypes.string,
 };
 
 BaseHorizontalChart.defaultProps = {
 	title: '',
 	gridContainLabel: false,
-	height: '60%',
 	xAxisShow: false,
 	seriesData: {},
 	yAxisLabelShow: false,
@@ -160,7 +164,11 @@ BaseHorizontalChart.defaultProps = {
 	barWidth: '50%',
 	cursor: 'default',
 	stacked: true,
-	seriesOption: [],
+	seriesOption: [
+		{
+			stackIndex: 1,
+		},
+	],
 	style: {
 		width: '100%',
 		height: '100%',
