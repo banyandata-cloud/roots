@@ -139,6 +139,7 @@ const InteractiveTemplate = (args) => {
 			{
 				stackIndex: 1,
 				color: 'violet',
+				barColor: ['green', 'red', 'gold'],
 				label: {
 					show: true,
 					formatter(param) {

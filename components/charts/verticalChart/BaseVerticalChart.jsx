@@ -73,7 +73,9 @@ const BaseVerticalChart = (props) => {
 			borderRadius: [0, 2, 2, 0],
 		},
 		data: Object.keys(seriesData?.chartData ?? {}).map((key) => {
-			return seriesData?.chartData?.[key]?.x1;
+			return {
+				value: seriesData?.chartData?.[key]?.x1,
+			};
 		}),
 	};
 
@@ -86,8 +88,13 @@ const BaseVerticalChart = (props) => {
 					...seriesOptionObject.label,
 					...(objectData?.label ?? {}),
 				},
-				data: Object.keys(seriesData?.chartData ?? {}).map((key) => {
-					return seriesData?.chartData?.[key]?.[`x${index + 1}`];
+				data: Object.keys(seriesData?.chartData ?? {}).map((key, subIndex) => {
+					return {
+						value: seriesData?.chartData?.[key]?.[`x${index + 1}`],
+						itemStyle: {
+							color: objectData?.barColor?.[subIndex] || objectData?.color,
+						},
+					};
 				}),
 			};
 		});
