@@ -33,6 +33,7 @@ const BaseHorizontalChart = (props) => {
 		height,
 		xAxisShow,
 		seriesData,
+		onEvents,
 		yAxisLabelShow,
 		ySplitLineShow,
 		yAxisLineShow,
@@ -120,6 +121,7 @@ const BaseHorizontalChart = (props) => {
 				},
 				series: generateSeries(),
 			}}
+			onEvents={onEvents}
 			echarts={echarts}
 			notMerge
 			lazyUpdate
@@ -139,6 +141,8 @@ BaseHorizontalChart.propTypes = {
 		// eslint-disable-next-line react/forbid-prop-types
 		metaData: PropTypes.object,
 	}),
+	// eslint-disable-next-line react/forbid-prop-types
+	onEvents: PropTypes.object,
 	yAxisLabelShow: PropTypes.bool,
 	ySplitLineShow: PropTypes.bool,
 	yAxisLineShow: PropTypes.bool,
@@ -157,6 +161,7 @@ BaseHorizontalChart.defaultProps = {
 	gridContainLabel: false,
 	xAxisShow: false,
 	seriesData: {},
+	onEvents: {},
 	yAxisLabelShow: false,
 	ySplitLineShow: false,
 	yAxisLineShow: false,
