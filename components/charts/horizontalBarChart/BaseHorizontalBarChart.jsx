@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 import PropTypes from 'prop-types';
 import EChartsReactCore from 'echarts-for-react/lib/core';
 import * as echarts from 'echarts/core';
@@ -13,7 +14,7 @@ import {
 	CanvasRenderer,
 	// SVGRenderer,
 } from 'echarts/renderers';
-import styles from './BaseHorizontalChart.module.css';
+import styles from './BaseHorizontalBarChart.module.css';
 import { classes } from '../../../utils';
 
 // Register the required components
@@ -26,11 +27,11 @@ echarts.use([
 	CanvasRenderer,
 ]);
 
-const BaseHorizontalChart = (props) => {
+const BaseHorizontalBarChart = (props) => {
 	const {
 		title,
 		gridContainLabel,
-		height,
+		gridOptions,
 		xAxisShow,
 		seriesData,
 		onEvents,
@@ -96,7 +97,7 @@ const BaseHorizontalChart = (props) => {
 
 				grid: {
 					containLabel: gridContainLabel,
-					height,
+					...gridOptions,
 				},
 				xAxis: {
 					show: xAxisShow,
@@ -131,17 +132,15 @@ const BaseHorizontalChart = (props) => {
 	);
 };
 
-BaseHorizontalChart.propTypes = {
+BaseHorizontalBarChart.propTypes = {
 	title: PropTypes.string,
 	gridContainLabel: PropTypes.bool,
+	gridOptions: PropTypes.object,
 	xAxisShow: PropTypes.bool,
 	seriesData: PropTypes.shape({
-		// eslint-disable-next-line react/forbid-prop-types
 		chartData: PropTypes.object,
-		// eslint-disable-next-line react/forbid-prop-types
 		metaData: PropTypes.object,
 	}),
-	// eslint-disable-next-line react/forbid-prop-types
 	onEvents: PropTypes.object,
 	yAxisLabelShow: PropTypes.bool,
 	ySplitLineShow: PropTypes.bool,
@@ -151,14 +150,19 @@ BaseHorizontalChart.propTypes = {
 	cursor: PropTypes.string,
 	stacked: PropTypes.bool,
 	seriesOption: PropTypes.objectOf(PropTypes.shape),
-	// eslint-disable-next-line react/forbid-prop-types
 	style: PropTypes.object,
 	className: PropTypes.string,
 };
 
-BaseHorizontalChart.defaultProps = {
+BaseHorizontalBarChart.defaultProps = {
 	title: '',
 	gridContainLabel: false,
+	gridOptions: {
+		left: 0,
+		right: 0,
+		bottom: 0,
+		top: 5,
+	},
 	xAxisShow: false,
 	seriesData: {},
 	onEvents: {},
@@ -181,4 +185,4 @@ BaseHorizontalChart.defaultProps = {
 	className: '',
 };
 
-export default BaseHorizontalChart;
+export default BaseHorizontalBarChart;

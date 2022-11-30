@@ -1,9 +1,9 @@
 import React from 'react';
-import BaseHorizontalChart from './BaseHorizontalChart';
+import BaseHorizontalBarChart from './BaseHorizontalBarChart';
 
 export default {
-	title: 'Components/Charts/HorizontalChart/BaseHorizontalChart',
-	component: BaseHorizontalChart,
+	title: 'Components/Charts/HorizontalBarChart/BaseHorizontalBarChart',
+	component: BaseHorizontalBarChart,
 	parameters: {
 		options: {
 			showToolbar: true,
@@ -62,7 +62,7 @@ const Template = (args) => {
 			style={{
 				height: '100%',
 			}}>
-			<BaseHorizontalChart
+			<BaseHorizontalBarChart
 				{...args}
 				onEvents={{
 					click: onBarClick,
@@ -77,6 +77,12 @@ export const Default = Template.bind({});
 Default.args = {
 	title: 'Title',
 	gridContainLabel: false,
+	gridOptions: {
+		left: 10,
+		right: 10,
+		bottom: 50,
+		top: 50,
+	},
 	xAxisShow: false,
 	seriesData: sampleData,
 	yAxisLabelShow: false,
