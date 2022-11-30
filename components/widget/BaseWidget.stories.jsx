@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import BaseVerticalChart from '../charts/verticalChart/BaseVerticalChart';
+import BaseVerticalBarChart from '../charts/verticalBarChart/BaseVerticalBarChart';
 import BaseWidget from './BaseWidget';
 import colors from '../../styles/_index.scss';
 
@@ -36,7 +36,7 @@ const Template = (args) => {
 						  }
 						: option;
 				})}>
-				<BaseVerticalChart
+				<BaseVerticalBarChart
 					yAxisLabelShow
 					ySplitLineShow
 					barWidth='15%'
