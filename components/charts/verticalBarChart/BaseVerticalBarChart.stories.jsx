@@ -1,10 +1,10 @@
 /* eslint-disable no-tabs */
 import React, { useState } from 'react';
-import BaseVerticalChart from './BaseVerticalChart';
+import BaseVerticalBarChart from './BaseVerticalBarChart';
 
 export default {
-	title: 'ComponentsV2/Charts/VerticalChart/BaseVerticalChart',
-	component: BaseVerticalChart,
+	title: 'ComponentsV2/Charts/VerticalBarChart/BaseVerticalBarChart',
+	component: BaseVerticalBarChart,
 	parameters: {
 		options: {
 			showToolbar: true,
@@ -55,7 +55,7 @@ const Template = (args) => {
 			style={{
 				height: '100%',
 			}}>
-			<BaseVerticalChart {...args} seriesData={sampleData} />
+			<BaseVerticalBarChart {...args} seriesData={sampleData} />
 		</div>
 	);
 };
@@ -154,7 +154,7 @@ const InteractiveTemplate = (args) => {
 			style={{
 				height: '100%',
 			}}>
-			<BaseVerticalChart
+			<BaseVerticalBarChart
 				{...args}
 				seriesData={sampleData}
 				seriesOption={seriesOptionData}
@@ -172,6 +172,12 @@ export const Interact = InteractiveTemplate.bind({});
 Default.args = {
 	title: 'Title',
 	gridContainLabel: true,
+	gridOptions: {
+		left: 0,
+		right: 0,
+		bottom: 0,
+		top: 5,
+	},
 	xAxisShow: false,
 	yAxisLabelShow: false,
 	ySplitLineShow: false,
@@ -212,6 +218,12 @@ Default.args = {
 Interact.args = {
 	title: 'Title',
 	gridContainLabel: true,
+	gridOptions: {
+		left: 0,
+		right: 0,
+		bottom: 0,
+		top: 5,
+	},
 	xAxisShow: false,
 	yAxisLabelShow: false,
 	ySplitLineShow: false,

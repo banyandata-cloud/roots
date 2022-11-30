@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 /* eslint-disable no-tabs */
 import PropTypes from 'prop-types';
 // ReactEcharts from 'echarts-for-react' would import the entire bundle
@@ -16,7 +17,7 @@ import {
 	// SVGRenderer,
 } from 'echarts/renderers';
 
-import styles from './BaseVerticalChart.module.css';
+import styles from './BaseVerticalBarChart.module.css';
 import { classes } from '../../../utils';
 
 // Register the required components
@@ -29,10 +30,11 @@ echarts.use([
 	CanvasRenderer,
 ]);
 
-const BaseVerticalChart = (props) => {
+const BaseVerticalBarChart = (props) => {
 	const {
 		title,
 		gridContainLabel,
+		gridOptions,
 		xAxisShow,
 		seriesData,
 		onEvents,
@@ -109,6 +111,7 @@ const BaseVerticalChart = (props) => {
 
 				grid: {
 					containLabel: gridContainLabel,
+					...gridOptions,
 				},
 				xAxis: {
 					data: Object.keys(seriesData?.chartData ?? {}),
@@ -147,17 +150,15 @@ const BaseVerticalChart = (props) => {
 	);
 };
 
-BaseVerticalChart.propTypes = {
+BaseVerticalBarChart.propTypes = {
 	title: PropTypes.string,
 	gridContainLabel: PropTypes.bool,
+	gridOptions: PropTypes.object,
 	xAxisShow: PropTypes.bool,
 	seriesData: PropTypes.shape({
-		// eslint-disable-next-line react/forbid-prop-types
 		chartData: PropTypes.object,
-		// eslint-disable-next-line react/forbid-prop-types
 		metaData: PropTypes.object,
 	}),
-	// eslint-disable-next-line react/forbid-prop-types
 	onEvents: PropTypes.object,
 	yAxisLabelShow: PropTypes.bool,
 	ySplitLineShow: PropTypes.bool,
@@ -172,9 +173,15 @@ BaseVerticalChart.propTypes = {
 	className: PropTypes.string,
 };
 
-BaseVerticalChart.defaultProps = {
+BaseVerticalBarChart.defaultProps = {
 	title: '',
 	gridContainLabel: false,
+	gridOptions: {
+		left: 0,
+		right: 0,
+		bottom: 0,
+		top: 5,
+	},
 	xAxisShow: false,
 	seriesData: {},
 	onEvents: {},
@@ -198,4 +205,4 @@ BaseVerticalChart.defaultProps = {
 	className: '',
 };
 
-export default BaseVerticalChart;
+export default BaseVerticalBarChart;
