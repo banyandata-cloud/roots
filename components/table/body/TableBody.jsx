@@ -10,7 +10,7 @@ const TableBody = (props) => {
 
 	return (
 		<tbody data-elem='table-body' className={classes(styles.root, className)}>
-			{tableData?.map((datum) => {
+			{tableData?.map((datum, _index) => {
 				let key = datum?.id;
 
 				const selected =
@@ -29,6 +29,7 @@ const TableBody = (props) => {
 							headerData,
 							customCells,
 							setActiveData,
+							_index,
 						}}
 					/>
 				);
