@@ -20,3 +20,4 @@ export * from './popover';
 export * from './sidePanel';
 export * from './charts';
 export * from './widget';
+export * from './displayPicture';
