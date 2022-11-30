@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import Dialog from './Dialog';
+import DialogBox from './DialogBox';
 
 export default {
 	title: 'Components/Modal/Dialog',
-	component: Dialog,
+	component: DialogBox,
 	parameters: {
 		options: {
 			showToolbar: true,
@@ -33,7 +33,7 @@ const TemplateDialog = (args) => {
 				}}>
 				Open Modal
 			</button>
-			<Dialog
+			<DialogBox
 				{...args}
 				open={open}
 				onCancel={() => {
@@ -42,7 +42,7 @@ const TemplateDialog = (args) => {
 				<div>
 					<p>Modal description: Pass the header and footer as a Component</p>
 				</div>
-			</Dialog>
+			</DialogBox>
 		</div>
 	);
 };
