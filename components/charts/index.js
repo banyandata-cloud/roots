@@ -1,2 +1,2 @@
-export * from './verticalChart';
-export * from './horizontalChart';
+export * from './verticalBarChart';
+export * from './horizontalBarChart';
