@@ -3,7 +3,7 @@ import { CopyIcon, ArrowIcon } from '../../icons';
 import Button from './Button';
 
 export default {
-	title: 'ComponentsV2/Buttons/Button',
+	title: 'Components/Buttons/Button',
 	component: Button,
 	parameters: {
 		options: {

@@ -3,6 +3,7 @@ import pluginCommonjs from '@rollup/plugin-commonjs';
 import { babel as pluginBabel } from '@rollup/plugin-babel';
 import pluginPostcss from 'rollup-plugin-postcss';
 import pluginPeerDepsExternal from 'rollup-plugin-peer-deps-external';
+import pluginJSON from '@rollup/plugin-json';
 
 const packageJson = require('./package.json');
 
@@ -14,11 +15,13 @@ export default [
 				file: packageJson.main,
 				format: 'cjs',
 				sourcemap: true,
+				inlineDynamicImports: true,
 			},
 			{
 				file: packageJson.module,
 				format: 'esm',
 				sourcemap: true,
+				inlineDynamicImports: true,
 			},
 		],
 		external: ['react'],
@@ -34,6 +37,7 @@ export default [
 			}),
 			pluginPostcss(),
 			pluginCommonjs(),
+			pluginJSON(),
 		],
 	},
 	{

@@ -3,7 +3,7 @@ import BaseButton from './BaseButton';
 import * as BaseCellStories from '../../cell/BaseCell.stories';
 
 export default {
-	title: 'ComponentsV2/Buttons/BaseButton',
+	title: 'Components/Buttons/BaseButton',
 	component: BaseButton,
 	argTypes: {
 		...BaseCellStories.default.argTypes,

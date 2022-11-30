@@ -23,3 +23,4 @@ export * from './Nut';
 export * from './HalfShade';
 export * from './AngleDouble';
 export * from './ExpandArrowAlt';
+export * from './Reset';

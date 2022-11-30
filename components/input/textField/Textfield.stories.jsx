@@ -4,7 +4,7 @@ import { ArrowIcon, CopyIcon } from '../../icons';
 import TextField from './TextField';
 
 export default {
-	title: 'ComponentsV2/Input/TextField',
+	title: 'Components/Input/TextField',
 	component: TextField,
 	parameters: {
 		options: {

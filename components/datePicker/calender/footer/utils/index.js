@@ -1,5 +1,5 @@
 import { getUnixTime, sub } from 'date-fns';
-import { MONTHS } from '../../../../constants';
+import { MONTHS } from '../../../../../constants';
 
 const getDateAndUnixRange = (duration) => {
 	const startingDate = sub(new Date(), duration);

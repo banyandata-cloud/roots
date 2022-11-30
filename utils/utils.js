@@ -160,8 +160,7 @@ export const get = (object, path, defaultValue = undefined) => {
 	return index && index === length && srcObject !== undefined ? srcObject : defaultValue;
 };
 
-export const getToday = () => {
-	const date = new Date();
+export const getDayInfo = (date) => {
 	const month = FULL_MONTHS[date.getMonth()];
 	const monthAsNumber = date.getMonth();
 	const year = date.getFullYear();

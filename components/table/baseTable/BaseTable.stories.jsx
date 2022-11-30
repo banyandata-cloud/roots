@@ -3,7 +3,7 @@ import { TableColumn } from '../BaseTable.class';
 import BaseTable from './BaseTable';
 
 export default {
-	title: 'ComponentsV2/Table/BaseTable',
+	title: 'Components/Table/BaseTable',
 	component: BaseTable,
 	parameters: {
 		options: {

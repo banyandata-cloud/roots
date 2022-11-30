@@ -3,7 +3,7 @@ import { TableColumn } from '../BaseTable.class';
 import TableHeader from './TableHeader';
 
 export default {
-	title: 'ComponentsV2/Table/Header',
+	title: 'Components/Table/Header',
 	component: TableHeader,
 	parameters: {
 		options: {

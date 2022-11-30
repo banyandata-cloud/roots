@@ -77,16 +77,23 @@
 
 .root {
   padding: 0.5rem, 1rem;
+  position: relative;
 }
 .root .copy {
   position: absolute;
-  right: 1.25rem;
-  top: 1.25rem;
+  right: 1rem;
+  top: 0.5rem;
   cursor: pointer;
 }
 .root .copy .icon {
   width: 1.5rem;
   height: 1.5rem;
+}
+.root .copy .icon.dark {
+  fill: var(--white);
+}
+.root .copy .icon.light {
+  fill: var(--black);
 }
 .root .copy .notCopied {
   display: none;

@@ -76,7 +76,8 @@
 }
 
 .dates {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
   align-items: center;
   flex-wrap: wrap;
 }
@@ -105,7 +106,7 @@
   height: 2.5rem;
   width: 2.5rem;
   font-weight: 400;
-  font-size: 0.8rem;
+  font-size: 0.875rem;
   color: var(--black);
 }
 .dates div .selected {
@@ -120,9 +121,8 @@
   color: var(--black);
 }
 .dates div .disabled {
-  background: var(--grey5);
   border-radius: 1.5rem;
-  color: var(--grey);
+  color: var(--grey2);
 }
 .dates div .diffMonth {
   opacity: 0.6;
@@ -130,16 +130,17 @@
 .dates div:hover .date {
   background: var(--background);
   color: var(--highlight);
-  box-shadow: 0rem 0.0625rem 0.0625rem rgba(0, 14, 51, 0.05);
+  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);
 }
 .dates div:hover .selected {
   background-color: var(--highlight);
   color: var(--white);
 }
 .dates div:hover .disabled {
-  background: var(--grey5);
+  background: transparent;
+  box-shadow: none;
   border-radius: 1.5rem;
-  color: var(--grey);
+  color: var(--grey2);
 }
 .dates .minInRange {
   background-color: var(--highlight);
@@ -151,7 +152,7 @@
 .dates .minInRange:hover .date {
   background: var(--highlight);
   color: var(--white);
-  box-shadow: 0rem 0.0625rem 0.0625rem rgba(0, 14, 51, 0.05);
+  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);
 }
 .dates .maxInRange {
   background-color: var(--highlight);
@@ -163,7 +164,7 @@
 .dates .maxInRange:hover .date {
   background: var(--highlight);
   color: var(--white);
-  box-shadow: 0rem 0.0625rem 0.0625rem rgba(0, 14, 51, 0.05);
+  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);
 }
 .dates .midInRange {
   background: var(--background);

@@ -2,7 +2,7 @@ import React from 'react';
 import TableFilters from './TableFilters';
 
 export default {
-	title: 'ComponentsV2/Table/TableTop/Filters',
+	title: 'Components/Table/TableTop/Filters',
 	component: TableFilters,
 	parameters: {
 		options: {

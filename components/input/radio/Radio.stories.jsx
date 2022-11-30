@@ -3,7 +3,7 @@ import React from 'react';
 import Radio from './Radio';
 
 export default {
-	title: 'ComponentsV2/Input/Radio',
+	title: 'Components/Input/Radio',
 	component: Radio,
 	parameters: {
 		options: {

@@ -7,7 +7,7 @@ import { ArrowIcon } from '../../../icons';
 import styles from './TableChips.module.css';
 
 const TableChips = (props) => {
-	const { showBack, chips, className, style } = props;
+	const { showBack, onBack, chips, className, style } = props;
 
 	return (
 		<BaseCell
@@ -25,6 +25,7 @@ const TableChips = (props) => {
 						leftComponent={() => {
 							return <ArrowIcon className={styles.icon} position='left' />;
 						}}
+						onClick={onBack}
 					/>
 				)
 			}
@@ -32,6 +33,7 @@ const TableChips = (props) => {
 				return (
 					<Chip
 						variant='input'
+						color='default'
 						disabled={chip.disabled}
 						className={styles.chip}
 						key={chip.key}
@@ -43,6 +45,7 @@ const TableChips = (props) => {
 							}
 							return null;
 						}}
+						rightComponent={chip.rightComponent}
 					/>
 				);
 			})}
@@ -55,6 +58,7 @@ TableChips.propTypes = {
 	// eslint-disable-next-line react/forbid-prop-types
 	style: PropTypes.object,
 	showBack: PropTypes.bool,
+	onBack: PropTypes.func,
 	chips: PropTypes.arrayOf(
 		PropTypes.shape({
 			key: PropTypes.string,
@@ -62,6 +66,7 @@ TableChips.propTypes = {
 			label: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 			value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 			disabled: PropTypes.bool,
+			rightComponent: PropTypes.node,
 		})
 	),
 };
@@ -70,6 +75,7 @@ TableChips.defaultProps = {
 	className: '',
 	style: {},
 	showBack: false,
+	onBack: () => {},
 	chips: [],
 };
 

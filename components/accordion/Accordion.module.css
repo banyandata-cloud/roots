@@ -81,30 +81,40 @@
   justify-content: flex-start;
   align-items: stretch;
 }
-.root .header {
+.root .header[data-elem=base-cell] {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  gap: 0.25rem;
-  padding: 0.25rem;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
   cursor: pointer;
 }
-.root .header .icon {
-  transform: rotate(-90deg);
+ 
+.root .header[data-elem=base-cell] [data-elem=component1] {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
-.root .header .title {
+
+.root .header[data-elem=base-cell] [data-elem=component1] .icon {
+  transform: none;
+  width: 1rem;
+  height: 1rem;
+}
+.root .header[data-elem=base-cell] .title {
   flex: 1 1 auto;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
 }
-.root .header:hover {
+.root .header[data-elem=base-cell]:hover {
   background: var(--background);
 }
-.root .header:hover .icon,
-.root .header:hover .title {
+.root .header[data-elem=base-cell]:hover .icon,
+.root .header[data-elem=base-cell]:hover .title {
   color: var(--highlight);
   fill: var(--highlight);
 }
@@ -112,8 +122,8 @@
   display: none;
   padding: 0.5rem 1.5rem;
 }
-.root.open .header .icon {
-  transform: none;
+.root.open .header[data-elem=base-cell] [data-elem=component1] .icon {
+  transform: rotate(180deg);
 }
 .root.open .body {
   display: flex;

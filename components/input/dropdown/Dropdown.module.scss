@@ -1,4 +1,4 @@
-@import '../../assets/styles/index';
+@import '../../../styles/index';
 
 .root {
 	@include flex(column, flex-start, flex-start);
@@ -17,6 +17,18 @@
 		@include flex(row, flex-start);
 		max-width: 100%;
 		position: relative;
+		.input {
+			position: absolute;
+			opacity: 0;
+			width: 1px;
+			height: 1px;
+			&:focus + .select {
+				border-color: $highlight;
+				&.feedback-error {
+					border-color: $error;
+				}
+			}
+		}
 
 		.select {
 			@include flex(row, space-between);
@@ -39,16 +51,9 @@
 				width: 1.5rem;
 				height: 1.5rem;
 			}
-		}
 
-		.input {
-			position: absolute;
-			opacity: 0;
-			width: 1px;
-			height: 1px;
-
-			&:focus + .select {
-				border-color: $highlight;
+			&.feedback-error {
+				border-color: $error;
 			}
 		}
 	}
@@ -63,6 +68,40 @@
 		.select {
 			background: $grey10;
 			cursor: not-allowed;
+		}
+	}
+
+	.bottom {
+		@include flex(row, space-between, flex-start);
+		min-height: 2rem;
+		width: 100%;
+		gap: 1rem;
+		color: $grey3;
+		font-size: 0.75rem;
+		user-select: none;
+
+		.feedback {
+			flex: 1;
+			margin-right: auto;
+
+			&.feedback-error {
+				color: $error;
+				fill: $error;
+			}
+
+			&.feedback-success {
+				color: $success;
+				fill: $success;
+			}
+		}
+
+		.count {
+			text-align: right;
+			margin-left: auto;
+
+			&.exceeded {
+				color: $error;
+			}
 		}
 	}
 }

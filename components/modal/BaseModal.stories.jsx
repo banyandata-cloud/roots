@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import BaseModal from './BaseModal';
 
 export default {
-	title: 'ComponentsV2/Modal/BaseModal',
+	title: 'Components/Modal/BaseModal',
 	component: BaseModal,
 	parameters: {
 		options: {

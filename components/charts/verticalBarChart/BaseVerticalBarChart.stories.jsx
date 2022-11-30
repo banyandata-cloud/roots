@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import BaseVerticalBarChart from './BaseVerticalBarChart';
 
 export default {
-	title: 'ComponentsV2/Charts/VerticalBarChart/BaseVerticalBarChart',
+	title: 'Components/Charts/VerticalBarChart/BaseVerticalBarChart',
 	component: BaseVerticalBarChart,
 	parameters: {
 		options: {

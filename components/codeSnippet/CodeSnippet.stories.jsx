@@ -3,7 +3,7 @@ import React from 'react';
 import CodeSnippet from './CodeSnippet';
 
 export default {
-	title: 'ComponentsV2/CodeSnippet',
+	title: 'Components/CodeSnippet',
 	component: CodeSnippet,
 	parameters: {
 		options: {
@@ -13,7 +13,8 @@ export default {
 		},
 		docs: {
 			description: {
-				component: 'A drop-down menu is a menu that offers a list of options.',
+				component:
+					'Code Block or Code Snippet to syntax highligh the code and prettify it inside the block.',
 			},
 		},
 	},
@@ -28,15 +29,25 @@ export const Default = (args) => {
 };
 
 Default.args = {
-	src: {
-		company: {
-			name: 'Banyan Cloud',
-			address:
-				'Brigade Irv Center, Unit 803, 8th Floor, Nallurahalli Main Rd, Bengaluru, Karnataka 560066',
-			sector: 'IT',
+	code: JSON.stringify(
+		{
+			id: 1,
+			title: 'iPhone 9',
+			description: 'An apple mobile which is nothing like apple',
+			price: 549,
+			discountPercentage: 12.96,
+			rating: 4.69,
+			stock: 94,
+			brand: 'Apple',
+			category: 'smartphones',
 		},
-	},
-	showIcon: true,
+		null,
+		4
+	),
+	language: 'json',
+	copy: true,
+	theme: 'dark',
+	showLineNumbers: false,
 };
 
 Default.parameters = {

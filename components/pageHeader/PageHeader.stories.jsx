@@ -6,7 +6,7 @@ import { DownloadIcon, CalenderIcon } from '../icons';
 import styles from './PageHeader.module.css';
 
 export default {
-	title: 'ComponentsV2/PageHeader',
+	title: 'Components/PageHeader',
 	component: PageHeader,
 	parameters: {
 		options: {

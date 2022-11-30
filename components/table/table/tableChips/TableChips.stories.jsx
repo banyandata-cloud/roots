@@ -4,7 +4,7 @@ import { TableChip } from './TableChip.class';
 import TableChips from './TableChips';
 
 export default {
-	title: 'ComponentsV2/Table/TableTop/Chips',
+	title: 'Components/Table/TableTop/Chips',
 	component: TableChips,
 	parameters: {
 		options: {
@@ -47,7 +47,6 @@ Default.args = {
 			},
 			label: 'Cloud',
 			value: 'Google',
-			disabled: true,
 		}),
 		new TableChip({
 			key: 'something',

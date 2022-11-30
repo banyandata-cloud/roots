@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types';
+import { forwardRef } from 'react';
 import { classes } from '../../../utils';
 import { BaseCell } from '../../cell';
 import styles from './TableCell.module.css';
 
-const TableCell = (props) => {
+// eslint-disable-next-line prefer-arrow-callback
+const TableCell = forwardRef(function TableCell(props, ref) {
 	const {
 		className,
 		size,
@@ -25,6 +27,7 @@ const TableCell = (props) => {
 	return (
 		<BaseCell
 			{...{
+				ref,
 				className: classes(
 					styles.root,
 					className,
@@ -52,6 +55,7 @@ const TableCell = (props) => {
 								multiLine ? styles['multi-line'] : ''
 							),
 							style,
+							'data-elem': 'text',
 						}}>
 						{cellContent}
 					</span>
@@ -62,7 +66,7 @@ const TableCell = (props) => {
 			}}
 		/>
 	);
-};
+});
 
 TableCell.propTypes = {
 	...BaseCell.propTypes,

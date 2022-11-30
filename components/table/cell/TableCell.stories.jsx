@@ -2,7 +2,7 @@ import React from 'react';
 import TableCell from './TableCell';
 
 export default {
-	title: 'ComponentsV2/Table/Cell',
+	title: 'Components/Table/Cell',
 	component: TableCell,
 	parameters: {
 		options: {

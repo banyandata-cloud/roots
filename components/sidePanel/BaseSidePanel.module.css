@@ -76,64 +76,21 @@
 }
 
 .root {
+  max-height: 100%;
+  height: 100%;
   display: flex;
+  width: 30%;
   flex-direction: column;
-  justify-content: space-between;
-  align-items: stretch;
-  margin-inline: 1rem;
+  top: 0;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.12);
+  overflow-x: hidden;
+  transition: 0.5s;
 }
-.root .apply {
-  margin-top: 0.5rem;
-  width: 100%;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
+.root.close {
+  width: 0rem;
 }
-
-.selected-date {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 1.125rem;
-  background: var(--white);
-  border: 0.0625rem solid var(--grey4);
-  border-radius: 0.25rem;
-  padding-block: 0.875rem;
-}
-.selected-date .date {
-  font-weight: 500;
-  font-size: 0.875rem;
-  line-height: 1.3125rem;
-}
-.selected-date .date .value {
-  font-weight: 400;
-}
-
-.date-ranges {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: stretch;
-  margin-top: 0.5rem;
-}
-.date-ranges .date-range {
-  display: flex;
-  align-items: center;
-  padding: 0.875rem 1rem;
-  gap: 1.125rem;
-  cursor: pointer;
-}
-.date-ranges .date-range:hover {
-  background-color: var(--background);
-}
-.date-ranges .date-range span {
-  font-weight: 400;
-  font-size: 0.875rem;
-  line-height: 1.3125rem;
-  color: var(--black);
-}
-.date-ranges .selected {
-  background-color: var(--background);
-}/*# sourceMappingURL=Footer.module.css.map */
+.root .body {
+  flex: 1;
+  overflow-y: auto;
+}/*# sourceMappingURL=BaseSidePanel.module.css.map */

@@ -3,7 +3,7 @@ import React from 'react';
 import DatePicker from '../DatePicker';
 
 export default {
-	title: 'ComponentsV2/DatePicker',
+	title: 'Components/DatePicker',
 	component: DatePicker,
 	parameters: {
 		options: {
@@ -20,14 +20,7 @@ export default {
 };
 
 export const SingleDatePicker = (args) => {
-	return (
-		<div
-			style={{
-				width: 300,
-			}}>
-			<DatePicker {...args} />
-		</div>
-	);
+	return <DatePicker {...args} />;
 };
 
 SingleDatePicker.args = {
@@ -44,10 +37,7 @@ SingleDatePicker.parameters = {
 
 export const RangeDatePicker = (args) => {
 	return (
-		<div
-			style={{
-				width: 300,
-			}}>
+		<div>
 			<DatePicker {...args} />
 		</div>
 	);
@@ -65,10 +55,7 @@ RangeDatePicker.args = {
 
 export const DatePickerWithDisabledDate = (args) => {
 	return (
-		<div
-			style={{
-				width: 400,
-			}}>
+		<div>
 			<DatePicker {...args} />
 		</div>
 	);
@@ -77,18 +64,12 @@ export const DatePickerWithDisabledDate = (args) => {
 DatePickerWithDisabledDate.args = {
 	placeholder: 'Select Date',
 	label: 'Date Picker With Disabled Date',
-	disabledDates: [new Date().toDateString()],
+	disableDatesBefore: '1666062682',
+	disableDatesAfter: (Date.now() / 1000).toString(),
 };
 
 export const DisabledDatePicker = (args) => {
-	return (
-		<div
-			style={{
-				width: 300,
-			}}>
-			<DatePicker {...args} />
-		</div>
-	);
+	return <DatePicker {...args} />;
 };
 
 DisabledDatePicker.args = {
