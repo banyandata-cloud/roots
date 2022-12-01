@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { classes } from '../../utils';
 import { CrossIcon, TickIcon } from '../icons';
 import styles from './Stepper.module.css';
-import colors from '../../styles/_colors.scss';
+import { COLORS } from '../../styles';
 
 const Step = (props) => {
 	const { title, description, active, completion, error, index } = props;
@@ -29,7 +29,7 @@ const Step = (props) => {
 					<div
 						className={styles.progress}
 						style={{
-							backgroundImage: `conic-gradient(${colors.highlight}, ${
+							backgroundImage: `conic-gradient(${COLORS.highlight}, ${
 								completion * 100
 							}%, transparent 0%)`,
 						}}
