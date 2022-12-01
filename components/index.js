@@ -9,7 +9,7 @@ export * from './hierarchy';
 export * from './icons';
 export * from './input';
 export * from './modal';
-export * from './modal/DialogBox';
+export * from './modal/dialogBox';
 export * from './pageHeader';
 export * from './pagination';
 export * from './popper';
