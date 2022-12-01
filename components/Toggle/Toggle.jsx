@@ -21,7 +21,10 @@ const Toggle = (props) => {
 				return (
 					<Button
 						key={title}
-						className={classes(styles['toggle-button'], isActive ? styles.active : '')}
+						className={classes(
+							styles['toggle-button'],
+							selectedToggle === value ? styles.active : ''
+						)}
 						onClick={() => {
 							return onButtonClick(value);
 						}}
