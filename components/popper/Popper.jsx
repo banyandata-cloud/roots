@@ -1,13 +1,28 @@
-import { FloatingPortal, FloatingOverlay } from '@floating-ui/react-dom-interactions';
+import { FloatingPortal, FloatingOverlay, useId } from '@floating-ui/react-dom-interactions';
 import PropTypes from 'prop-types';
+import { useEffect } from 'react';
 import { classes } from '../../utils';
 import styles from './Popper.module.css';
 
 const Popper = (props) => {
 	const { open, children, wrapperId, backdrop, className, transparent } = props;
 
+	const id = useId();
+
+	const portalId = `${wrapperId}${id}`;
+
+	useEffect(() => {
+		return () => {
+			const portalDOM = document.getElementById(portalId);
+
+			if (portalDOM) {
+				document.body.removeChild(portalDOM);
+			}
+		};
+	}, []);
+
 	return (
-		<FloatingPortal id={wrapperId}>
+		<FloatingPortal id={portalId}>
 			{open && (
 				<FloatingOverlay
 					lockScroll
