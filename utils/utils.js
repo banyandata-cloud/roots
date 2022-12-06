@@ -196,3 +196,7 @@ export const getDatesInAMonth = ({ month, year }) => {
 		days,
 	};
 };
+
+export const getCSSVariableValue = (variable) => {
+	return getComputedStyle(document.documentElement).getPropertyValue(variable);
+};

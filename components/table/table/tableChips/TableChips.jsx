@@ -9,48 +9,57 @@ import styles from './TableChips.module.css';
 const TableChips = (props) => {
 	const { showBack, onBack, chips, className, style } = props;
 
-	return (
-		<BaseCell
-			flexible
-			className={classes(className, styles.root)}
-			attrs={{
-				style,
-			}}
-			component1={
-				showBack && (
-					<Button
-						size='auto'
-						radius='round'
-						className={styles.back}
-						leftComponent={() => {
-							return <ArrowIcon className={styles.icon} position='left' />;
-						}}
-						onClick={onBack}
-					/>
-				)
-			}
-			component2={chips.map((chip) => {
-				return (
-					<Chip
-						variant='input'
-						color='default'
-						disabled={chip.disabled}
-						className={styles.chip}
-						key={chip.key}
-						title={`${chip.label} : ${chip.value}`}
-						leftComponent={(iconProps) => {
-							const Icon = chip.icon;
-							if (isValidElement(<Icon />)) {
-								return <Icon {...iconProps} className={styles['chip-icon']} />;
-							}
-							return null;
-						}}
-						rightComponent={chip.rightComponent}
-					/>
-				);
-			})}
-		/>
-	);
+	const chipsDOM = chips
+		?.filter((chip) => {
+			return chip?.value != null;
+		})
+		?.map((chip) => {
+			return (
+				<Chip
+					variant='input'
+					color='default'
+					disabled={chip.disabled}
+					className={styles.chip}
+					key={chip.key}
+					title={`${chip.label} : ${chip.value}`}
+					leftComponent={(iconProps) => {
+						const Icon = chip.icon;
+						if (isValidElement(<Icon />)) {
+							return <Icon {...iconProps} className={styles['chip-icon']} />;
+						}
+						return null;
+					}}
+					rightComponent={chip.rightComponent}
+				/>
+			);
+		});
+
+	if (chipsDOM?.length > 0 || showBack) {
+		return (
+			<BaseCell
+				flexible
+				className={classes(className, styles.root)}
+				attrs={{
+					style,
+				}}
+				component1={
+					showBack && (
+						<Button
+							size='auto'
+							radius='round'
+							className={styles.back}
+							leftComponent={() => {
+								return <ArrowIcon className={styles.icon} position='left' />;
+							}}
+							onClick={onBack}
+						/>
+					)
+				}
+				component2={chipsDOM?.length > 0 ? chipsDOM : null}
+			/>
+		);
+	}
+	return null;
 };
 
 TableChips.propTypes = {

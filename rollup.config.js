@@ -1,7 +1,7 @@
 import pluginResolve from '@rollup/plugin-node-resolve';
 import pluginCommonjs from '@rollup/plugin-commonjs';
 import { babel as pluginBabel } from '@rollup/plugin-babel';
-import pluginPostcss from 'rollup-plugin-postcss';
+import pluginStyles from 'rollup-plugin-styles';
 import pluginPeerDepsExternal from 'rollup-plugin-peer-deps-external';
 import pluginJSON from '@rollup/plugin-json';
 
@@ -35,7 +35,9 @@ export default [
 				extensions: ['.jsx', '.js', '.tsx'],
 				exclude: 'node_modules/**',
 			}),
-			pluginPostcss(),
+			pluginStyles({
+				modules: true,
+			}),
 			pluginCommonjs(),
 			pluginJSON(),
 		],

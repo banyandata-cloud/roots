@@ -32,7 +32,12 @@ const BaseModal = (props) => {
 							{renderFooter}
 						</div>
 					)}
-					<div className={styles.closeModal} onClick={toggle}>
+					<div
+						data-elem='close'
+						className={styles.closeModal}
+						onClick={() => {
+							toggle(false);
+						}}>
 						<Cross className={styles.closeIcon} />
 					</div>
 				</div>

@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-key */
 /* eslint-disable react/forbid-prop-types */
 import PropTypes from 'prop-types';
 import { classes } from '../../../utils';
@@ -6,7 +5,9 @@ import { TableCell } from '../cell';
 import styles from './TableRow.module.css';
 
 const TableRow = (props) => {
-	const { type, headerData, datum, selected, customCells, className, setActiveData } = props;
+	// eslint-disable-next-line object-curly-newline
+	const { type, headerData, datum, _index, selected, customCells, className, setActiveData } =
+		props;
 
 	return (
 		<tr
@@ -28,6 +29,7 @@ const TableRow = (props) => {
 				const cellProps = {
 					...props,
 					...item,
+					_index,
 					setActiveData,
 					key: item.id,
 					datum,
