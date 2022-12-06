@@ -1,0 +1,85 @@
+@import '../../styles/_index';
+
+div.root {
+	// @include flex(column, flex-start, stretch);
+	width: 27.5rem;
+	@include boxShadow;
+	background: $white;
+
+	.header {
+		padding: 0rem;
+		.firstrow {
+			@include flex(row, space-between, center);
+			padding: 0.5rem;
+			border-bottom: 1px solid $grey5;
+			gap: 5.313rem;
+			.notification {
+				font-weight: 600;
+				font-size: 1rem;
+				line-height: 1.5rem;
+				color: #1a1f36;
+			}
+			[data-elem='base-cell'].view-button {
+				font-weight: 500;
+				font-size: 0.875rem;
+				line-height: 21px;
+				background: $white;
+				color: #0f62fe;
+			}
+		}
+
+		.secondrow {
+			@include flex(row, space-between, center);
+			padding: 0.5rem;
+			gap: 5.315rem;
+			border-bottom: 1px solid $grey5;
+			[data-elem='base-cell'].mark-button {
+				padding: 0.25rem 1rem;
+				width: 7.813rem;
+				height: 2rem;
+				background: #d0e2ff;
+				color: $highlight;
+			}
+		}
+	}
+	.body {
+		border-bottom: 1px solid $grey5;
+
+		.content {
+			@include flex(column, flex-start);
+			font-weight: 600;
+			padding: 0.5rem;
+			font-size: 0.875;
+			color: #1a1f36;
+		}
+		.actions {
+			@include flex(row, flex-start);
+			gap: 0.5rem;
+		}
+		[data-elem='base-cell'].accept-button {
+			padding: 0.25rem 0.5rem;
+			width: fit-content;
+			height: 1.75rem;
+			border-radius: 0.25rem;
+			background: $error;
+			color: $white;
+		}
+		[data-elem='base-cell'].reject-button {
+			padding: 0.25rem 0.5rem;
+			width: fit-content;
+			height: 1.8rem;
+			border-radius: 0.25rem;
+			border: 1px solid #dddee1;
+			background: $white;
+			color: #3c4257;
+		}
+		.timer {
+			.timing {
+				font-weight: 400;
+				font-size: 0.75rem;
+				line-height: 4.125;
+				color: $grey2;
+			}
+		}
+	}
+}

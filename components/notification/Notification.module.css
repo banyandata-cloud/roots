@@ -76,28 +76,95 @@
 }
 
 div.root {
+  width: 27.5rem;
+  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);
+  background: var(--white);
+}
+div.root .header {
+  padding: 0rem;
+}
+div.root .header .firstrow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  border-bottom: 1px solid var(--grey5);
+  gap: 5.313rem;
+}
+div.root .header .firstrow .notification {
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: #1a1f36;
+}
+div.root .header .firstrow [data-elem=base-cell].view-button {
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 21px;
+  background: var(--white);
+  color: #0f62fe;
+}
+div.root .header .secondrow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  gap: 5.315rem;
+  border-bottom: 1px solid var(--grey5);
+}
+div.root .header .secondrow [data-elem=base-cell].mark-button {
+  padding: 0.25rem 1rem;
+  width: 7.813rem;
+  height: 2rem;
+  background: #d0e2ff;
+  color: var(--highlight);
+}
+div.root .body {
+  border-bottom: 1px solid var(--grey5);
+}
+div.root .body .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  font-weight: 600;
+  padding: 0.5rem;
+  font-size: 0.875;
+  color: #1a1f36;
+}
+div.root .body .actions {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  overflow: auto;
-  padding: 0.25rem;
-  background: var(--grey8);
+  gap: 0.5rem;
+}
+div.root .body [data-elem=base-cell].accept-button {
+  padding: 0.25rem 0.5rem;
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  border-radius: 0.4rem 0.4rem;
-  box-shadow: inset 0px 1px 2px rgba(97, 97, 97, 0.2), inset 0px 2px 4px rgba(97, 97, 97, 0.2);
-}
-div.root [data-elem=base-cell].toggle-button {
-  color: var(--grey);
-  padding: 0.25rem 0.75rem;
-  height: 2rem;
-  background: transparent;
-}
-div.root [data-elem=base-cell].toggle-button.active {
-  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);
-  background: var(--white);
+  height: 1.75rem;
   border-radius: 0.25rem;
-  color: var(--dark-grey);
-}/*# sourceMappingURL=Toggle.module.css.map */
+  background: var(--error);
+  color: var(--white);
+}
+div.root .body [data-elem=base-cell].reject-button {
+  padding: 0.25rem 0.5rem;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 1.8rem;
+  border-radius: 0.25rem;
+  border: 1px solid #dddee1;
+  background: var(--white);
+  color: #3c4257;
+}
+div.root .body .timer .timing {
+  font-weight: 400;
+  font-size: 0.75rem;
+  line-height: 4.125;
+  color: var(--grey2);
+}/*# sourceMappingURL=Notification.module.css.map */

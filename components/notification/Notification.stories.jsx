@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import Toggle from './Toggle';
+import Notification from './Notification';
 
 export default {
-	title: 'Components/Toggle',
-	component: Toggle,
+	title: 'Components/Notification',
+	component: Notification,
 	parameters: {
 		options: {
 			showToolbar: true,
@@ -17,17 +17,11 @@ const Template = (args) => {
 
 	return (
 		<div>
-			<Toggle
+			<Notification
 				{...args}
 				selectedToggle={selectedToggle}
 				setSelectedToggle={setSelectedToggle}
 			/>
-			<span
-				style={{
-					fontSize: '0.875rem',
-				}}>
-				You have selected {selectedToggle}
-			</span>
 		</div>
 	);
 };

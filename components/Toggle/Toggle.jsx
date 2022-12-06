@@ -2,7 +2,6 @@
 import PropTypes from 'prop-types';
 import { classes } from '../../utils';
 import { Button } from '../buttons';
-// import { classes } from '../../utils';
 import styles from './Toggle.module.css';
 
 const Toggle = (props) => {
@@ -32,7 +31,8 @@ const Toggle = (props) => {
 						value={value}
 						color={isActive ? color : 'default'}
 						leftComponent={leftComponent}
-						rightComponent={rightComponent}>
+						rightComponent={rightComponent}
+						size='auto'>
 						{value}
 					</Button>
 				);
