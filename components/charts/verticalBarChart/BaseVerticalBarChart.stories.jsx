@@ -39,6 +39,9 @@ const Template = (args) => {
 				PgSql: {
 					x1: 43,
 				},
+				Oracle: {
+					x1: 46.53,
+				},
 			},
 			keyData: {
 				x1: 'compliant',
@@ -55,7 +58,31 @@ const Template = (args) => {
 			style={{
 				height: '100%',
 			}}>
-			<BaseVerticalBarChart {...args} seriesData={sampleData} />
+			<BaseVerticalBarChart
+				{...args}
+				seriesData={sampleData}
+				tooltip={{
+					trigger: 'item',
+					formatter: (param) => {
+						return `${param.marker} ${param.name} ${sampleData.metaData.controlsApplied[param.name].x1}`;
+					},
+				}}
+				// legend={{
+				// 	show: true,
+				// 	top: '20',
+				// 	right: '30%',
+				// 	orient: 'vertical',
+				// 	selectedMode: true,
+				// 	itemGap: 20,
+				// 	icon: 'rect',
+				// 	data: Object.keys(sampleData.metaData.keyData).map((key) => {
+				// 		return sampleData?.metaData?.keyData?.[key];
+				// 	}),
+				// }}
+				// seriesName={(index) => {
+				// 	return sampleData?.metaData?.keyData?.[`x${index + 1}`];
+				// }}
+			/>
 		</div>
 	);
 };

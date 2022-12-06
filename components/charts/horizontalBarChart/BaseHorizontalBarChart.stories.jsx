@@ -1,3 +1,4 @@
+/* eslint-disable no-tabs */
 import React from 'react';
 import BaseHorizontalBarChart from './BaseHorizontalBarChart';
 
@@ -45,10 +46,30 @@ const sampleData = {
 		},
 	},
 	metaData: {
-		toolTip: {
-			x1: 'red',
-			x2: 'green',
-			x3: 'gold',
+		controlsApplied: {
+			'Audit, Logging and Monitering': {
+				x1: 40,
+			},
+			Settings: {
+				x1: 20,
+			},
+			Authorization: {
+				x1: 20,
+			},
+			Authentication: {
+				x1: 40,
+			},
+			'Patches and Plugins': {
+				x1: 20,
+			},
+			'High Availability': {
+				x1: 30,
+			},
+		},
+		keyData: {
+			x1: 'compliant',
+			x2: 'nonCompliant',
+			x3: 'validate',
 		},
 	},
 };
@@ -67,6 +88,30 @@ const Template = (args) => {
 				onEvents={{
 					click: onBarClick,
 				}}
+				tooltip={{
+					trigger: 'item',
+					formatter: (param) => {
+						// eslint-disable-next-line max-len
+						return `${param.marker} ${param.name} ${
+							sampleData.metaData.controlsApplied[param.name].x1
+						}`;
+					},
+				}}
+				// legend={{
+				// 	show: true,
+				// 	top: '20',
+				// 	right: '30%',
+				// 	orient: 'vertical',
+				// 	selectedMode: true,
+				// 	itemGap: 20,
+				// 	icon: 'rect',
+				// 	data: Object.keys(sampleData.metaData.keyData).map((key) => {
+				// 		return sampleData?.metaData?.keyData?.[key];
+				// 	}),
+				// }}
+				// seriesName={(index) => {
+				// 	return sampleData?.metaData?.keyData?.[`x${index + 1}`];
+				// }}
 			/>
 		</div>
 	);
@@ -102,6 +147,20 @@ Default.args = {
 				formatter(param) {
 					return param.name;
 				},
+			},
+		},
+		{
+			stackIndex: 2,
+			color: 'red',
+			label: {
+				show: false,
+			},
+		},
+		{
+			stackIndex: 3,
+			color: 'gold',
+			label: {
+				show: false,
 			},
 		},
 	],
