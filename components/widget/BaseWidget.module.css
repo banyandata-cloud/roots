@@ -1,0 +1,85 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  height: 100%;
+  width: 100%;
+  padding: 0.25rem;
+}
+.root .header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.25rem;
+}
+.root .header .header-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.root .header .header-title.no-options {
+  flex: 1;
+}
+.root .header .header-title .title {
+  white-space: nowrap;
+  color: var(--white);
+}
+.root .header .header-title .value {
+  white-space: nowrap;
+  color: var(--white);
+}
+.root .header .header-options {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.5rem;
+}
+.root .header .header-options .dropdown-header [data-elem=select] {
+  background-color: transparent;
+  width: 100%;
+  color: var(--white);
+  padding: 0.07rem 0.5rem;
+}
+.root .header .header-options .dropdown-header [data-elem=select] [data-elem=placeholder] {
+  font-size: 0.875rem;
+  color: var(--white);
+}
+.root .header .header-options .dropdown-header [data-elem=select] > svg {
+  fill: var(--white);
+  width: 0.875rem;
+}
+.root .header .header-options .expand-button {
+  height: 1.75rem;
+  color: var(--white);
+  border-color: var(--white);
+}
+.root .header .header-options .expand-button .expand-icon {
+  height: 1.25rem;
+  width: 1.25rem;
+  fill: var(--white);
+}
+.root .children {
+  flex: 1 1;
+}
+
+.dropdown-popper {
+  padding: 0rem;
+  background: var(--grey1);
+}
+.dropdown-popper .dropdown-item {
+  height: 2.25rem;
+  color: var(--white);
+  background: var(--grey);
+}
+.dropdown-popper .dropdown-item:hover, .dropdown-popper .dropdown-item:focus {
+  color: var(--dark-grey);
+  background: var(--grey2);
+}
+.dropdown-popper .dropdown-item:hover label > svg, .dropdown-popper .dropdown-item:focus label > svg {
+  border: 1px solid var(--dark-grey);
+  border-radius: 0.25rem;
+}/*# sourceMappingURL=BaseWidget.module.css.map */

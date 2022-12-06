@@ -709,13 +709,23 @@ export const WithCustomCells = Template.bind({});
 
 WithCustomCells.args = {
 	...WithChipsAndFilters.args,
-	headerData: API_RESPONSE.header.filter((header) => {
-		return header.title !== 'uuid';
-	}),
+	headerData: [
+		{
+			title: 'S No.',
+			id: 'serial',
+			size: 'sm',
+		},
+		...API_RESPONSE.header.filter((header) => {
+			return header.title !== 'uuid';
+		}),
+	],
 	tableData: API_RESPONSE.data,
 	customCells: {
 		body: () => {
 			return {
+				serial: ({ _index, ...rest }) => {
+					return <TableCell {...rest} cellContent={_index + 1} />;
+				},
 				k8sClusterRolebindingMetadata: ({ cellContent, ...rest }) => {
 					return (
 						<TableCell

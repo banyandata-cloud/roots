@@ -1,9 +1,35 @@
+/* eslint-disable no-tabs */
 import PropTypes from 'prop-types';
-import ReactEcharts from 'echarts-for-react';
-import styles from './BaseHorizontalChart.module.css';
+// ReactEcharts from 'echarts-for-react' would import the entire bundle
+import EChartsReactCore from 'echarts-for-react/lib/core';
+import * as echarts from 'echarts/core';
+import { BarChart } from 'echarts/charts';
+import {
+	GridComponent,
+	TooltipComponent,
+	TitleComponent,
+	DatasetComponent,
+} from 'echarts/components';
+// Import renderer, note that introducing the CanvasRenderer or SVGRenderer is a required step
+import {
+	CanvasRenderer,
+	// SVGRenderer,
+} from 'echarts/renderers';
+
+import styles from './BaseHybridChart.module.css';
 import { classes } from '../../../utils';
 
-const BaseHorizontalChart = (props) => {
+// Register the required components
+echarts.use([
+	TitleComponent,
+	TooltipComponent,
+	GridComponent,
+	DatasetComponent,
+	BarChart,
+	CanvasRenderer,
+]);
+
+const BaseHybridChart = (props) => {
 	const {
 		title,
 		gridContainLabel,
@@ -14,6 +40,7 @@ const BaseHorizontalChart = (props) => {
 		ySplitLineShow,
 		yAxisLineShow,
 		yAxisTickShow,
+		axisColor,
 		barWidth,
 		cursor,
 		seriesOption,
@@ -25,7 +52,7 @@ const BaseHorizontalChart = (props) => {
 		type: 'bar',
 		barWidth,
 		cursor,
-		stack: 'total',
+		stack: false,
 		groupPadding: 3,
 		showBackground: true,
 		backgroundStyle: {
@@ -33,7 +60,9 @@ const BaseHorizontalChart = (props) => {
 		},
 		label: {
 			color: 'black',
-			position: [0, -16],
+			position: 'insideBottomLeft',
+			offset: [0, -10],
+			rotate: 90,
 			formatter(param) {
 				return param.value;
 			},
@@ -42,28 +71,33 @@ const BaseHorizontalChart = (props) => {
 		itemStyle: {
 			borderRadius: [0, 2, 2, 0],
 		},
-		data: Object.keys(seriesData.chartData).map((key) => {
-			return seriesData.chartData[key].x1;
+		data: Object.keys(seriesData?.chartData ?? {}).map((key) => {
+			return seriesData?.chartData?.[key]?.x1;
 		}),
 	};
 
 	const generateSeries = () => {
-		return seriesOption.map((objectData, index) => {
+		return (seriesData?.chartData ?? {}).map((chart, index) => {
+			const { type } = chart;
 			return {
 				...seriesOptionObject,
-				...objectData,
+				...seriesOption[index],
+				type,
 				label: {
 					...seriesOptionObject.label,
-					...objectData.label,
+					...seriesOption[index].label,
 				},
-				data: Object.keys(seriesData.chartData).map((key) => {
-					return seriesData.chartData[key][`x${index + 1}`];
-				}),
+				data: Object.keys(chart.data ?? {})
+					.map((key) => {
+						return type === 'line' ? chart.data?.[key] ?? [] : chart.data?.[key]?.x1;
+					})
+					.flat(),
 			};
 		});
 	};
+
 	return (
-		<ReactEcharts
+		<EChartsReactCore
 			option={{
 				title: {
 					text: title,
@@ -74,17 +108,22 @@ const BaseHorizontalChart = (props) => {
 					height,
 				},
 				xAxis: {
+					data: Object.keys(seriesData?.chartData[0].data ?? {}),
 					show: xAxisShow,
-					type: 'value',
+					type: 'category',
 				},
 				yAxis: {
-					data: Object.keys(seriesData.chartData),
-					type: 'category',
+					type: 'value',
 					axisLabel: {
 						show: yAxisLabelShow,
+						color: axisColor,
 					},
 					splitLine: {
 						show: ySplitLineShow,
+						lineStyle: {
+							color: axisColor,
+							type: 'dashed',
+						},
 					},
 					axisLine: {
 						show: yAxisLineShow,
@@ -92,17 +131,19 @@ const BaseHorizontalChart = (props) => {
 					axisTick: {
 						show: yAxisTickShow,
 					},
-					inverse: true,
 				},
 				series: generateSeries(),
 			}}
+			echarts={echarts}
+			notMerge
+			lazyUpdate
 			className={classes(className, styles.root)}
 			style={style}
 		/>
 	);
 };
 
-BaseHorizontalChart.propTypes = {
+BaseHybridChart.propTypes = {
 	title: PropTypes.string,
 	gridContainLabel: PropTypes.bool,
 	height: PropTypes.string,
@@ -112,14 +153,15 @@ BaseHorizontalChart.propTypes = {
 	ySplitLineShow: PropTypes.bool,
 	yAxisLineShow: PropTypes.bool,
 	yAxisTickShow: PropTypes.bool,
+	axisColor: PropTypes.string,
 	barWidth: PropTypes.string,
 	cursor: PropTypes.string,
-	seriesOption: PropTypes.objectOf(PropTypes.shape),
+	seriesOption: PropTypes.arrayOf(PropTypes.shape),
 	style: PropTypes.objectOf(PropTypes.shape),
 	className: PropTypes.string,
 };
 
-BaseHorizontalChart.defaultProps = {
+BaseHybridChart.defaultProps = {
 	title: '',
 	gridContainLabel: false,
 	height: '60%',
@@ -129,9 +171,14 @@ BaseHorizontalChart.defaultProps = {
 	ySplitLineShow: false,
 	yAxisLineShow: false,
 	yAxisTickShow: false,
+	axisColor: 'grey',
 	barWidth: '50%',
 	cursor: 'default',
-	seriesOption: [],
+	seriesOption: [
+		{
+			stackIndex: 1,
+		},
+	],
 	style: {
 		width: '100%',
 		height: '100%',
@@ -139,4 +186,4 @@ BaseHorizontalChart.defaultProps = {
 	className: '',
 };
 
-export default BaseHorizontalChart;
+export default BaseHybridChart;

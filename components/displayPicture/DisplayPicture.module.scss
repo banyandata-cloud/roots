@@ -1,0 +1,42 @@
+@import '../../styles';
+
+.root {
+	&.sm {
+		img {
+			height: 1.5rem;
+			width: 1.5rem;
+			border-radius: 100%;
+		}
+		div {
+			height: 1.5rem;
+			width: 1.5rem;
+			border-radius: 100%;
+			background-color: $highlight;
+			@include flex;
+			span {
+				font-size: 1rem;
+				font-weight: 600;
+				color: $white;
+			}
+		}
+	}
+	&.md {
+		img {
+			height: 5.3125rem;
+			width: 5.3125rem;
+			border-radius: 100%;
+		}
+		div {
+			height: 5.3125rem;
+			width: 5.3125rem;
+			border-radius: 100%;
+			background-color: $highlight;
+			@include flex;
+			span {
+				font-size: 2rem;
+				font-weight: 600;
+				color: $white;
+			}
+		}
+	}
+}

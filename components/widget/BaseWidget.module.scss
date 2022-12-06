@@ -1,0 +1,87 @@
+@import '../../styles/index';
+
+.root {
+	@include flex(column, flex-start, stretch);
+	height: 100%;
+	width: 100%;
+	padding: 0.25rem;
+
+	.header {
+		@include flex(row, space-between);
+		padding: 0.25rem;
+
+		.header-title {
+			@include flex(row, space-between);
+			&.no-options {
+				flex: 1;
+			}
+			.title {
+				white-space: nowrap;
+				color: $white;
+			}
+
+			.value {
+				white-space: nowrap;
+				color: $white;
+			}
+		}
+
+		.header-options {
+			@include flex(row, flex-end);
+			gap: 0.5rem;
+
+			.dropdown-header {
+				[data-elem='select'] {
+					background-color: transparent;
+					width: 100%;
+					color: $white;
+					padding: 0.07rem 0.5rem;
+					[data-elem='placeholder'] {
+						font-size: 0.875rem;
+						color: $white;
+					}
+					> svg {
+						fill: $white;
+						width: 0.875rem;
+					}
+				}
+			}
+
+			.expand-button {
+				height: 1.75rem;
+				color: $white;
+				border-color: $white;
+				.expand-icon {
+					height: 1.25rem;
+					width: 1.25rem;
+					fill: $white;
+				}
+			}
+		}
+	}
+
+	.children {
+		flex: 1 1;
+	}
+}
+
+.dropdown-popper {
+	padding: 0rem;
+	background: $grey1;
+
+	.dropdown-item {
+		height: 2.25rem;
+		color: $white;
+		background: $grey;
+
+		&:hover,
+		&:focus {
+			color: $dark-grey;
+			background: $grey2;
+			label > svg {
+				border: 1px solid $dark-grey;
+				border-radius: 0.25rem;
+			}
+		}
+	}
+}
