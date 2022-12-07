@@ -17,12 +17,12 @@ const TableBody = (props) => {
 				const key = datum?.uuid;
 
 				const setActiveId = (reset = false) => {
-					// _setActi(veId(reset ? null : datum?.[uniqueKey]);
 					if (reset) {
-						// ref.current.blur();
 						listRef.current[_index].removeAttribute('data-active');
 					} else {
-						// listRef.current.focus();
+						listRef.current?.forEach((elem) => {
+							elem.removeAttribute('data-active');
+						});
 						listRef.current[_index].setAttribute('data-active', true);
 					}
 				};
