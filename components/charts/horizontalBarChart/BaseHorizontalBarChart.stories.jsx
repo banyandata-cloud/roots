@@ -1,3 +1,4 @@
+/* eslint-disable no-tabs */
 import React from 'react';
 import { COLORS } from '../../../styles';
 import BaseHorizontalBarChart from './BaseHorizontalBarChart';
@@ -32,11 +33,23 @@ const sampleData = {
 	},
 	metaData: {
 		controlsApplied: {
-			MySql: {
-				x1: 18,
+			'Audit, Logging and Monitering': {
+				x1: 40,
 			},
-			PgSql: {
-				x1: 43,
+			Settings: {
+				x1: 20,
+			},
+			Authorization: {
+				x1: 20,
+			},
+			Authentication: {
+				x1: 40,
+			},
+			'Patches and Plugins': {
+				x1: 20,
+			},
+			'High Availability': {
+				x1: 30,
 			},
 		},
 		keyData: {
@@ -64,6 +77,30 @@ const Template = (args) => {
 				onEvents={{
 					click: onBarClick,
 				}}
+				tooltip={{
+					trigger: 'item',
+					formatter: (param) => {
+						// eslint-disable-next-line max-len
+						return `${param.marker} ${param.name} ${
+							sampleData.metaData.controlsApplied[param.name].x1
+						}`;
+					},
+				}}
+				// legend={{
+				// 	show: true,
+				// 	top: '20',
+				// 	right: '30%',
+				// 	orient: 'vertical',
+				// 	selectedMode: true,
+				// 	itemGap: 20,
+				// 	icon: 'rect',
+				// 	data: Object.keys(sampleData.metaData.keyData).map((key) => {
+				// 		return sampleData?.metaData?.keyData?.[key];
+				// 	}),
+				// }}
+				// seriesName={(index) => {
+				// 	return sampleData?.metaData?.keyData?.[`x${index + 1}`];
+				// }}
 			/>
 		</div>
 	);
