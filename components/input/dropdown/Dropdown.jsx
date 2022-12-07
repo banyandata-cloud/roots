@@ -1,5 +1,12 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import React, { useMemo, useState, forwardRef, useImperativeHandle, useRef } from 'react';
+import React, {
+	useMemo,
+	useState,
+	forwardRef,
+	useImperativeHandle,
+	useRef,
+	useLayoutEffect,
+} from 'react';
 import {
 	useFloating,
 	useInteractions,
@@ -7,7 +14,6 @@ import {
 	useRole,
 	useClick,
 	useDismiss,
-	useTypeahead,
 	offset,
 	flip,
 	shift,
@@ -16,8 +22,7 @@ import {
 	FloatingFocusManager,
 } from '@floating-ui/react-dom-interactions';
 import PropTypes from 'prop-types';
-import { useOutsideClickListener } from '../../../hooks';
-import { classes, inputHelper } from '../../../utils';
+import { classes } from '../../../utils';
 import { CaretIcon } from '../../icons';
 import styles from './Dropdown.module.css';
 import Popper from '../../popper/Popper';
@@ -39,11 +44,12 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 		id,
 		name,
 		feedback,
+		formatter,
 	} = props;
 	const [open, setOpen] = useState(false);
 	const [activeIndex, setActiveIndex] = useState(null);
 	const [selectedIndex, setSelectedIndex] = useState(0);
-	const listRef = useRef([]);
+	const listItemsRef = useRef([]);
 
 	const isControlled = value !== undefined;
 
@@ -83,91 +89,84 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 			role: 'listbox',
 		}),
 		useListNavigation(context, {
-			listRef,
+			listRef: listItemsRef,
 			activeIndex,
 			selectedIndex,
 			onNavigate: setActiveIndex,
-			focusItemOnHover: true,
-		}),
-		useTypeahead(context, {
-			listRef,
-			onMatch: open ? setActiveIndex : setSelectedIndex,
-			activeIndex,
-			selectedIndex,
-			findMatch: (list, typedString) => {
-				return list.find((elem) => {
-					return elem?.textContent?.toLowerCase().indexOf(typedString) === 0;
-				});
-			},
 		}),
 		useDismiss(context),
 	]);
 
-	const onSelect = (event) => {
-		const { dataset } = inputHelper(event);
-		const { value: itemValue, index, selected, elem } = dataset;
+	const onSelect = (child, selected) => {
+		return (event) => {
+			if (event.currentTarget.getAttribute('data-elem') !== 'dropdown-item') {
+				return;
+			}
+			const { value: itemValue } = child.props;
+			const itemValueString = itemValue?.toString?.();
+			const index = event.currentTarget.getAttribute('data-index');
 
-		// to support form libraries which require name and value on the event
-		const nativeEvent = event.nativeEvent || event;
-		const clonedEvent = new nativeEvent.constructor(nativeEvent.type, nativeEvent);
+			// to support form libraries which require name and value on the event
+			const nativeEvent = event.nativeEvent || event;
+			const clonedEvent = new nativeEvent.constructor(nativeEvent.type, nativeEvent);
 
-		Object.defineProperty(clonedEvent, 'target', {
-			writable: true,
-			value: {
-				value: itemValue,
-				name,
-			},
-		});
+			Object.defineProperty(clonedEvent, 'target', {
+				writable: true,
+				value: {
+					value: itemValueString,
+					name,
+				},
+			});
 
-		if (elem === 'dropdown-item') {
+			// if (elem === 'dropdown-item') {
 			setSelectedIndex(parseInt(index, 10));
 
 			if (multi) {
 				if (isControlled) {
-					if (selected === 'true') {
+					if (selected === true) {
 						onChange?.(
 							clonedEvent,
 							value.filter((val) => {
-								return val !== itemValue;
+								return val !== itemValueString;
 							})
 						);
 					} else {
-						onChange?.(clonedEvent, [...(value ?? []), itemValue]);
+						onChange?.(clonedEvent, [...(value ?? []), itemValueString]);
 					}
 				} else {
 					// eslint-disable-next-line no-lonely-if
-					if (selected === 'true') {
+					if (selected === true) {
 						setUncontrolledValue(
 							uncontrolledValue.filter((val) => {
-								return val !== itemValue;
+								return val !== itemValueString;
 							})
 						);
 					} else {
-						setUncontrolledValue([...(uncontrolledValue ?? []), itemValue]);
+						setUncontrolledValue([...(uncontrolledValue ?? []), itemValueString]);
 					}
 				}
+				setActiveIndex(parseInt(index, 10));
 			} else {
 				if (isControlled) {
-					onChange(clonedEvent, itemValue.toString());
+					onChange(clonedEvent, itemValueString.toString());
 				} else {
-					setUncontrolledValue(itemValue.toString());
+					setUncontrolledValue(itemValueString.toString());
 				}
 				setActiveIndex(null);
 				setOpen(false);
 			}
-		}
+			// }
+		};
 	};
 
-	const onNavigate = (event) => {
-		const selectKey = [' ', 'Spacebar', 'Enter'].includes(event.key);
-		if (selectKey) {
-			event.stopPropagation();
-			onSelect(event);
-		}
-	};
-
-	const onClick = (event) => {
-		onSelect(event);
+	const onNavigate = (child, selected) => {
+		return (event) => {
+			const selectKey = [' ', 'Spacebar', 'Enter'].includes(event.key);
+			if (selectKey) {
+				event.stopPropagation();
+				onSelect(child, selected)(event);
+			}
+		};
 	};
 
 	useImperativeHandle(
@@ -186,9 +185,7 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 		[]
 	);
 
-	useOutsideClickListener(floating, () => {
-		return setOpen(false);
-	});
+	const childrenArray = React.Children.toArray(children);
 
 	const selectedOptions = useMemo(() => {
 		let inputValue = uncontrolledValue;
@@ -197,11 +194,10 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 		}
 		const options = [];
 		if (inputValue != null && inputValue !== '') {
-			children?.forEach((child) => {
+			childrenArray?.forEach((child) => {
 				if (
 					(multi &&
-						(inputValue?.toString?.()?.indexOf?.(child?.props?.value?.toString?.()) ??
-							-1) !== -1) ||
+						(inputValue?.indexOf?.(child?.props?.value?.toString?.()) ?? -1) !== -1) ||
 					(!multi && inputValue?.toString() === child?.props?.value?.toString?.())
 				) {
 					options.push({
@@ -214,30 +210,52 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 		return options;
 	}, [value, uncontrolledValue, multi]);
 
-	const items = children.map((child, index) => {
+	const items = childrenArray.map((child, index) => {
 		let selected = false;
 
 		if (
-			selectedOptions.find((option) => {
+			selectedOptions.findIndex((option) => {
 				return option.value === child?.props?.value?.toString?.();
-			})
+			}) !== -1
 		) {
 			selected = true;
 		}
 
 		return React.cloneElement(child, {
 			...getItemProps({
-				onKeyDown: onNavigate,
+				key: child?.props?.value,
+				onKeyDown: onNavigate(child, selected),
+				onClick: onSelect(child, selected),
+				onMouseEnter: () => {
+					setActiveIndex(index);
+				},
 				dataAttrs: {
 					'data-index': index,
 				},
 				selected,
+				tabIndex: activeIndex === index ? 0 : -1,
 				ref: (node) => {
-					listRef.current[index] = node;
+					listItemsRef.current[index] = node;
 				},
 			}),
 		});
 	});
+
+	const [pointer, setPointer] = useState(false);
+
+	if (!open && pointer) {
+		setPointer(false);
+	}
+
+	useLayoutEffect(() => {
+		if (open && activeIndex != null && !pointer) {
+			requestAnimationFrame(() => {
+				listItemsRef.current[activeIndex]?.scrollIntoView({
+					block: 'nearest',
+				});
+			});
+		}
+	}, [open, activeIndex, pointer]);
 
 	return (
 		<div
@@ -286,7 +304,7 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 					)}>
 					<span data-elem='placeholder' className={styles.placeholder}>
 						{(selectedOptions?.length > 1
-							? `${selectedOptions.length} options selected`
+							? formatter(selectedOptions.length)
 							: selectedOptions?.[0]?.title) ?? placeholder}
 					</span>
 					<CaretIcon
@@ -297,23 +315,26 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 			</div>
 			<Popper open={open} wrapperId='dropdown-popper'>
 				{open && (
-					<FloatingFocusManager context={context} initialFocus={selectedIndex}>
-						<div
+					<FloatingFocusManager context={context} initialFocus={-1} modal={false}>
+						<ul
 							{...getFloatingProps({
 								'data-elem': 'body',
 								role: 'group',
 								ref: floating,
 								onKeyDown(event) {
+									setPointer(false);
 									if (event.key === 'Tab') {
 										setOpen(false);
 									}
+								},
+								onPointerMove() {
+									setPointer(true);
 								},
 								style: {
 									position: strategy,
 									top: y ?? 0,
 									left: x ?? 0,
 								},
-								onClick,
 								className: classes(
 									styles.body,
 									popperClassName,
@@ -321,7 +342,7 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 								),
 							})}>
 							{items}
-						</div>
+						</ul>
 					</FloatingFocusManager>
 				)}
 			</Popper>
@@ -354,6 +375,7 @@ Dropdown.propTypes = {
 		text: PropTypes.node,
 		type: PropTypes.oneOf(['error', 'success', 'default']),
 	}),
+	formatter: PropTypes.func,
 };
 
 Dropdown.defaultProps = {
@@ -369,6 +391,9 @@ Dropdown.defaultProps = {
 	onChange: null,
 	onBlur: null,
 	feedback: null,
+	formatter: (totalSelected) => {
+		return `${totalSelected} options selected`;
+	},
 };
 
 export default Dropdown;

@@ -48,15 +48,23 @@ export const MultiCheckDropdown = (args) => {
 	return (
 		<div>
 			<Dropdown {...args}>
-				<DropdownItem title='J' value={1} variant='checkbox' />
-				<DropdownItem title='K' value={2} variant='checkbox' />
-				<DropdownItem title='L' value={3} variant='checkbox' />
+				{[...Array(20).keys()].map((option) => {
+					return (
+						<DropdownItem
+							key={option}
+							title={`Option ${option + 1}`}
+							value={option + 1}
+							variant='checkbox'
+						/>
+					);
+				})}
 			</Dropdown>
 		</div>
 	);
 };
 
 MultiCheckDropdown.args = {
+	multi: true,
 	label: 'Multi Select Checkbox Dropdown',
 	placeholder: 'Select an option',
 };
