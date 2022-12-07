@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button } from '../../buttons';
 import { ServerIcon, CopyIcon, ArrowIcon } from '../../icons';
 import { usePagination } from '../../pagination';
@@ -79,6 +79,7 @@ Default.args = {
 			title: 'A Column',
 			id: 'aColumn',
 			size: 'lg',
+			flexible: true,
 		}),
 		new TableColumn({
 			title: 'Another Column',
@@ -207,6 +208,7 @@ WithChipsAndFilters.args = {
 const API_RESPONSE = {
 	data: [
 		{
+			uuid: 1,
 			cloudAccountId: 'kubernetes-358811',
 			cloudOrganizationId: 'null',
 			ecsCustomerId: 'b16a72a2-4fb3-4ec1-978c-3fabc8a9b20f',
@@ -246,6 +248,7 @@ const API_RESPONSE = {
 			k8sTenantDetailsId: 'fb191101-5f8f-4bd3-8779-aa1cea4fa3cf',
 		},
 		{
+			uuid: 2,
 			cloudAccountId: 'kubernetes-358811',
 			cloudOrganizationId: 'null',
 			ecsCustomerId: 'b16a72a2-4fb3-4ec1-978c-3fabc8a9b20f',
@@ -288,6 +291,7 @@ const API_RESPONSE = {
 			k8sTenantDetailsId: 'fb191101-5f8f-4bd3-8779-aa1cea4fa3cf',
 		},
 		{
+			uuid: 3,
 			cloudAccountId: 'kubernetes-358811',
 			cloudOrganizationId: 'null',
 			ecsCustomerId: 'b16a72a2-4fb3-4ec1-978c-3fabc8a9b20f',
@@ -329,6 +333,7 @@ const API_RESPONSE = {
 			k8sTenantDetailsId: 'fb191101-5f8f-4bd3-8779-aa1cea4fa3cf',
 		},
 		{
+			uuid: 4,
 			cloudAccountId: 'kubernetes-358811',
 			cloudOrganizationId: 'null',
 			ecsCustomerId: 'b16a72a2-4fb3-4ec1-978c-3fabc8a9b20f',
@@ -371,6 +376,7 @@ const API_RESPONSE = {
 			k8sTenantDetailsId: 'fb191101-5f8f-4bd3-8779-aa1cea4fa3cf',
 		},
 		{
+			uuid: 5,
 			cloudAccountId: 'kubernetes-358811',
 			cloudOrganizationId: 'null',
 			ecsCustomerId: 'b16a72a2-4fb3-4ec1-978c-3fabc8a9b20f',
@@ -412,6 +418,7 @@ const API_RESPONSE = {
 			k8sTenantDetailsId: 'fb191101-5f8f-4bd3-8779-aa1cea4fa3cf',
 		},
 		{
+			uuid: 6,
 			cloudAccountId: 'kubernetes-358811',
 			cloudOrganizationId: 'null',
 			ecsCustomerId: 'b16a72a2-4fb3-4ec1-978c-3fabc8a9b20f',
@@ -453,6 +460,7 @@ const API_RESPONSE = {
 			k8sTenantDetailsId: 'fb191101-5f8f-4bd3-8779-aa1cea4fa3cf',
 		},
 		{
+			uuid: 7,
 			cloudAccountId: 'kubernetes-358811',
 			cloudOrganizationId: 'null',
 			ecsCustomerId: 'b16a72a2-4fb3-4ec1-978c-3fabc8a9b20f',
@@ -499,6 +507,7 @@ const API_RESPONSE = {
 			k8sTenantDetailsId: 'fb191101-5f8f-4bd3-8779-aa1cea4fa3cf',
 		},
 		{
+			uuid: 8,
 			cloudAccountId: 'kubernetes-358811',
 			cloudOrganizationId: 'null',
 			ecsCustomerId: 'b16a72a2-4fb3-4ec1-978c-3fabc8a9b20f',
@@ -540,6 +549,7 @@ const API_RESPONSE = {
 			k8sTenantDetailsId: 'fb191101-5f8f-4bd3-8779-aa1cea4fa3cf',
 		},
 		{
+			uuid: 9,
 			cloudAccountId: 'kubernetes-358811',
 			cloudOrganizationId: 'null',
 			ecsCustomerId: 'b16a72a2-4fb3-4ec1-978c-3fabc8a9b20f',
@@ -574,6 +584,7 @@ const API_RESPONSE = {
 			k8sTenantDetailsId: 'fb191101-5f8f-4bd3-8779-aa1cea4fa3cf',
 		},
 		{
+			uuid: 10,
 			cloudAccountId: 'kubernetes-358811',
 			cloudOrganizationId: 'null',
 			ecsCustomerId: 'b16a72a2-4fb3-4ec1-978c-3fabc8a9b20f',
@@ -652,7 +663,7 @@ const API_RESPONSE = {
 			title: 'Organization Id',
 		},
 		{
-			flexible: 'false',
+			flexible: true,
 			id: 'cloudAccountId',
 			size: 'md',
 			sort: 'false',
@@ -719,6 +730,7 @@ WithCustomCells.args = {
 			return header.title !== 'uuid';
 		}),
 	],
+	uniqueKey: 'uuid',
 	tableData: API_RESPONSE.data,
 	customCells: {
 		body: () => {
@@ -735,9 +747,13 @@ WithCustomCells.args = {
 						/>
 					);
 				},
-				ecsCustomerId: ({ cellContent, ...rest }) => {
+				ecsCustomerId: ({ cellContent, setActiveId, ...rest }) => {
 					const [anchorEl, setAnchorEl] = useState(null);
 					const [open, setOpen] = useState(false);
+
+					useEffect(() => {
+						setActiveId(!open);
+					}, [open]);
 
 					return (
 						<>
@@ -767,6 +783,22 @@ WithCustomCells.args = {
 								</div>
 							</Popover>
 						</>
+					);
+				},
+				ecsCustomerName: ({ cellContent, setActiveId, ...rest }) => {
+					return (
+						<TableCell
+							{...rest}
+							multiLine
+							cellContent={
+								<Button
+									onClick={() => {
+										setActiveId();
+									}}
+									title='Select'
+								/>
+							}
+						/>
 					);
 				},
 			};

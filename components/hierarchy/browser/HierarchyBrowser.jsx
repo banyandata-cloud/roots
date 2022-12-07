@@ -40,6 +40,7 @@ const HierarchyBrowser = (props) => {
 		borderSize,
 		resizable,
 		setItemProps,
+		title,
 	} = props;
 
 	const browserRef = useRef(null);
@@ -89,8 +90,12 @@ const HierarchyBrowser = (props) => {
 		<div
 			ref={browserRef}
 			className={classes(styles.root, className, resizable ? styles.resizable : '')}>
-			<div className={styles.header}>Browser</div>
-			<div className={styles.body}>{renderTree(metadata)}</div>
+			<div className={styles.header} data-elem='header'>
+				{title}
+			</div>
+			<div className={styles.body} data-elem='body'>
+				{renderTree(metadata)}
+			</div>
 		</div>
 	);
 };
@@ -109,6 +114,7 @@ HierarchyBrowser.propTypes = {
 	maxWidth: PropTypes.number,
 	resizable: PropTypes.bool,
 	setItemProps: PropTypes.func,
+	title: PropTypes.string,
 };
 
 HierarchyBrowser.defaultProps = {
@@ -122,6 +128,7 @@ HierarchyBrowser.defaultProps = {
 	setItemProps: () => {
 		return {};
 	},
+	title: 'Browser',
 };
 
 export default HierarchyBrowser;

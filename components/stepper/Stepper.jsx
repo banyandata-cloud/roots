@@ -12,7 +12,15 @@ const Step = (props) => {
 	if (error === true) {
 		display = <CrossIcon className={classes(styles.icon, styles['error-icon'])} />;
 	} else if (completion === 1) {
-		display = <TickIcon className={classes(styles.icon, styles['completion-icon'])} />;
+		display = (
+			<TickIcon
+				className={classes(
+					styles.icon,
+					styles['completion-icon'],
+					active ? styles.active : ''
+				)}
+			/>
+		);
 	}
 
 	return (
@@ -25,7 +33,7 @@ const Step = (props) => {
 			)}>
 			<div className={styles.left}>
 				{display}
-				{active === true && completion > 0 && completion < 1 && (
+				{active === true && completion > 0 && completion <= 1 && (
 					<div
 						className={styles.progress}
 						style={{
