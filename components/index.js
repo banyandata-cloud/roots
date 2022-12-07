@@ -16,6 +16,7 @@ export * from './popper';
 export * from './stepper';
 export * from './table';
 export * from './tabs';
+export * from './toggle';
 export * from './tooltip';
 export * from './popover';
 export * from './sidePanel';

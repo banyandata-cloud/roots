@@ -8,7 +8,7 @@ export default {
 		options: {
 			showToolbar: true,
 		},
-		componentSubtitle: 'Description of the  button',
+		componentSubtitle: 'Description of the  Notification component',
 	},
 };
 

@@ -1,13 +1,12 @@
 @import '../../styles/_index';
 
 div.root {
-	// @include flex(column, flex-start, stretch);
+	@include flex(column, flex-start, stretch);
 	width: 27.5rem;
 	@include boxShadow;
 	background: $white;
 
 	.header {
-		padding: 0rem;
 		.firstrow {
 			@include flex(row, space-between, center);
 			padding: 0.5rem;
@@ -44,17 +43,45 @@ div.root {
 	}
 	.body {
 		border-bottom: 1px solid $grey5;
-
-		.content {
-			@include flex(column, flex-start);
-			font-weight: 600;
-			padding: 0.5rem;
-			font-size: 0.875;
-			color: #1a1f36;
+		padding: 0.5rem;
+		.img {
+			float: left;
+			padding: 0.6rem;
+		}
+		.title {
+			.content {
+				font-weight: 400;
+				padding: 0.5rem;
+				font-size: 0.875rem;
+				color: #1a1f36;
+			}
+		}
+		.message {
+			padding-left: 2.6rem;
+			div.rectangle {
+				float: left;
+				width: 0.25rem;
+				height: 3.813rem;
+				background: $grey2;
+				border-radius: 0.125rem;
+			}
+			div.text {
+				padding-bottom: 2.6rem;
+				width: 21.75rem;
+				height: 3.813rem;
+			}
+			.text {
+				padding-left: 0.6rem;
+				font-size: 0.83rem;
+				font-weight: 400;
+				color: #1a1f36;
+				line-height: 1.25rem;
+			}
 		}
 		.actions {
 			@include flex(row, flex-start);
 			gap: 0.5rem;
+			padding-left: 2.4rem;
 		}
 		[data-elem='base-cell'].accept-button {
 			padding: 0.25rem 0.5rem;
@@ -74,6 +101,7 @@ div.root {
 			color: #3c4257;
 		}
 		.timer {
+			padding-left: 2.4rem;
 			.timing {
 				font-weight: 400;
 				font-size: 0.75rem;

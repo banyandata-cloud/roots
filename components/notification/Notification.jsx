@@ -2,8 +2,9 @@
 import PropTypes from 'prop-types';
 import styles from './Notification.module.css';
 import { Button } from '../buttons';
-import { Toggle } from '../Toggle';
+import { Toggle } from '../toggle';
 import { classes } from '../../utils';
+import { DisplayPicture } from '../displayPicture';
 
 const Notification = (props) => {
 	const {
@@ -46,26 +47,41 @@ const Notification = (props) => {
 			{messageOptions.map((option) => {
 				const {
 					title,
-					leftComponent,
-					rightComponent,
+					text,
 					time,
 					acceptTitle,
 					rejectTitle,
 					onAccept,
 					onReject,
 					actions,
+					message,
+					name,
+					className,
+					url,
+					size,
 				} = option;
 
 				return (
 					<div key={option} className={styles.body}>
-						<p
-							className={styles.content}
-							key={title}
-							title={title}
-							leftComponent={leftComponent}
-							rightComponent={rightComponent}>
-							{title}
-						</p>
+						<div className={styles.img}>
+							<DisplayPicture
+								name={name}
+								className={className}
+								url={url}
+								size={size}
+							/>
+						</div>
+						<div className={styles.title}>
+							<p className={styles.content} key={title} title={title}>
+								<strong>{title.user}</strong>&nbsp;
+								{title.action}&nbsp;
+								<strong>{title.items}</strong>
+							</p>
+						</div>
+						<div className={styles.message}>
+							{message === true ? <div className={styles.rectangle} /> : null}
+							<p className={styles.text}>{text}</p>
+						</div>
 						{actions === true ? (
 							<div className={styles.actions}>
 								<Button
@@ -94,7 +110,27 @@ const Notification = (props) => {
 
 Notification.propTypes = {
 	options: PropTypes.arrayOf(PropTypes.string),
-	messageOptions: PropTypes.arrayOf(PropTypes.string),
+	messageOptions: PropTypes.arrayOf(
+		PropTypes.shape({
+			title: PropTypes.shape({
+				user: PropTypes.string,
+				action: PropTypes.string,
+				items: PropTypes.string,
+			}),
+			text: PropTypes.string,
+			time: PropTypes.string,
+			acceptTitle: PropTypes.string,
+			rejectTitle: PropTypes.string,
+			actions: PropTypes.bool,
+			message: PropTypes.bool,
+			onAccept: PropTypes.func,
+			onReject: PropTypes.func,
+			name: PropTypes.string,
+			className: PropTypes.string,
+			url: '',
+			size: '',
+		})
+	),
 	selectedToggle: PropTypes.string,
 	Viewtitle: PropTypes.string,
 	Marktitle: PropTypes.string,
@@ -116,37 +152,78 @@ Notification.defaultProps = {
 	],
 	messageOptions: [
 		{
-			title: 'Alok has requested access to GCP Compliance Report',
+			title: {
+				user: 'Alok kumar',
+				action: 'requested access to',
+				items: 'GCP Compliance Report',
+			},
+			text: '',
 			time: 'Today at 9:42 AM',
-			rightComponent: '',
 			acceptTitle: 'Accept',
 			rejectTitle: 'Reject',
 			actions: true,
+			message: false,
 			onAccept: () => {},
 			onReject: () => {},
-			leftComponent: '',
+			name: '',
+			className: '',
+			url: 'https://pbs.twimg.com/profile_images/1525787669690990593/G2aafgTL_400x400.jpg',
+			size: 'sm',
 		},
 		{
-			title: 'Jaidev made 6 changes on the SOC2 Regulation Criteria',
-			rightComponent: '',
+			title: {
+				user: 'Jaidev',
+				action: 'made 6 changes on',
+				items: ' SOC2 Regulation Criteria',
+			},
+			text: '',
 			time: 'Yesterday at 11:42 AM',
 			acceptTitle: 'Accept',
 			rejectTitle: 'Reject',
 			actions: false,
+			message: false,
 			onAccept: () => {},
 			onReject: () => {},
-			leftComponent: '',
+			name: '',
+			className: '',
+			url: 'https://pbs.twimg.com/profile_images/1525787669690990593/G2aafgTL_400x400.jpg',
+			size: 'sm',
 		},
 		{
-			title: 'Pradeeep Commented on the BanyanCloud SOC2 compliance report',
-			rightComponent: '',
+			title: {
+				user: 'Pradeep A',
+				action: 'Commented on',
+				items: 'BanyanCloud SOC2 compliance report',
+			},
+			text: '"Everything seems fine for now, we will review it once again when other reports are checked. Please update Jaidev about it."',
 			time: 'Yesterday at 5:42 PM',
 			acceptTitle: 'Accept',
 			rejectTitle: 'Reject',
 			actions: false,
+			message: true,
 			onAccept: () => {},
 			onReject: () => {},
-			leftComponent: '',
+			className: '',
+			url: 'https://pbs.twimg.com/profile_images/1525787669690990593/G2aafgTL_400x400.jpg',
+			size: 'sm',
+		},
+		{
+			title: {
+				user: 'Chandrashekar K',
+				action: 'created',
+				items: 'Banyan Cloud SOC2 compliance report',
+			},
+			text: '',
+			time: 'Last Wednesday at 11:15AM',
+			acceptTitle: 'Accept',
+			rejectTitle: 'Reject',
+			actions: false,
+			message: false,
+			onAccept: () => {},
+			onReject: () => {},
+			className: '',
+			url: 'https://pbs.twimg.com/profile_images/1525787669690990593/G2aafgTL_400x400.jpg',
+			size: 'sm',
 		},
 	],
 	selectedToggle: '',
