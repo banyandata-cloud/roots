@@ -9,8 +9,7 @@ import styles from './BaseTable.module.css';
 
 // eslint-disable-next-line prefer-arrow-callback
 const BaseTable = forwardRef(function BaseTable(props, ref) {
-	const { headerData, customCells, tableData, uniqueKey, activeData, setActiveData, className } =
-		props;
+	const { headerData, customCells, tableData, className } = props;
 
 	const transformedHeaderData = headerData.map((header) => {
 		return new TableColumn(header);
@@ -30,9 +29,6 @@ const BaseTable = forwardRef(function BaseTable(props, ref) {
 					headerData: transformedHeaderData,
 					customCells,
 					tableData,
-					uniqueKey,
-					activeData,
-					setActiveData,
 				}}
 			/>
 		</table>
@@ -53,9 +49,6 @@ BaseTable.propTypes = {
 		})
 	),
 	tableData: PropTypes.arrayOf(PropTypes.object),
-	uniqueKey: PropTypes.arrayOf(PropTypes.string),
-	activeData: PropTypes.object,
-	setActiveData: PropTypes.func,
 	customCells: PropTypes.shape({
 		header: PropTypes.func,
 		body: PropTypes.func,
@@ -66,9 +59,6 @@ BaseTable.defaultProps = {
 	className: '',
 	headerData: [],
 	tableData: [],
-	uniqueKey: [],
-	activeData: {},
-	setActiveData: () => {},
 	customCells: {
 		header: null,
 		body: null,

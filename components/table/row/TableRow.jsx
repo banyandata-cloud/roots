@@ -1,23 +1,20 @@
 /* eslint-disable react/forbid-prop-types */
 import PropTypes from 'prop-types';
+import { forwardRef } from 'react';
 import { classes } from '../../../utils';
 import { TableCell } from '../cell';
 import styles from './TableRow.module.css';
 
-const TableRow = (props) => {
-	// eslint-disable-next-line object-curly-newline
-	const { type, headerData, datum, _index, selected, customCells, className, setActiveData } =
-		props;
+// eslint-disable-next-line prefer-arrow-callback
+const TableRow = forwardRef(function BaseTable(props, ref) {
+	const { type, headerData, datum, _index, customCells, className, setActiveId } = props;
 
 	return (
 		<tr
+			ref={ref}
+			tabIndex={-1}
 			data-elem='table-row'
-			className={classes(
-				className,
-				styles.root,
-				selected ? styles.selected : '',
-				styles[`${type}-row`]
-			)}>
+			className={classes(className, styles.root, styles[`${type}-row`])}>
 			{headerData?.map?.((item) => {
 				let cellContent = null;
 				if (type === 'header') {
@@ -30,7 +27,7 @@ const TableRow = (props) => {
 					...props,
 					...item,
 					_index,
-					setActiveData,
+					setActiveId,
 					key: item.id,
 					datum,
 					cellContent,
@@ -53,7 +50,7 @@ const TableRow = (props) => {
 			})}
 		</tr>
 	);
-};
+});
 
 TableRow.propTypes = {
 	className: PropTypes.string,
@@ -74,8 +71,7 @@ TableRow.propTypes = {
 			multiLine: PropTypes.bool,
 		})
 	),
-	setActiveData: PropTypes.func,
-	selected: PropTypes.bool,
+	setActiveId: PropTypes.func,
 };
 
 TableRow.defaultProps = {
@@ -87,8 +83,7 @@ TableRow.defaultProps = {
 		body: null,
 	},
 	headerData: [],
-	setActiveData: () => {},
-	selected: false,
+	setActiveId: () => {},
 };
 
 export default TableRow;

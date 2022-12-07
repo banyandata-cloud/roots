@@ -13,7 +13,7 @@
 .root.body-row:hover > [data-elem=base-cell] {
   background: var(--info-bg);
 }
-.root.body-row.selected > [data-elem=base-cell] {
+.root.body-row[data-active=true] > [data-elem=base-cell] {
   background: var(--background);
 }
 .root > [data-elem=base-cell]:first-child {
