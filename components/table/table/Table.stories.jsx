@@ -79,6 +79,7 @@ Default.args = {
 			title: 'A Column',
 			id: 'aColumn',
 			size: 'lg',
+			flexible: true,
 		}),
 		new TableColumn({
 			title: 'Another Column',
@@ -652,7 +653,7 @@ const API_RESPONSE = {
 			title: 'Organization Id',
 		},
 		{
-			flexible: 'false',
+			flexible: true,
 			id: 'cloudAccountId',
 			size: 'md',
 			sort: 'false',

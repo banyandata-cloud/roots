@@ -18,6 +18,7 @@ const Button = forwardRef(function Button(props, ref) {
 		radius,
 		disabled,
 		onClick,
+		blurOnClick,
 		variant,
 		color,
 	} = props;
@@ -35,6 +36,7 @@ const Button = forwardRef(function Button(props, ref) {
 				radius,
 				disabled,
 				onClick,
+				blurOnClick,
 				variant,
 			}}
 			className={classes(

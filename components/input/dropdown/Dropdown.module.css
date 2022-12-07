@@ -109,7 +109,6 @@
   display: none;
   position: absolute;
   top: calc(100% + 0.5rem);
-  z-index: 999;
   background: var(--white);
   width: auto;
   border: 0.063rem solid var(--grey5);
@@ -119,6 +118,17 @@
   overflow-y: auto;
   min-height: 4rem;
   outline: none;
+}
+.body .multi-options {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  list-style: none;
+}
+.body .multi-apply {
+  margin-top: 0.5rem;
 }
 .body.open {
   display: flex;

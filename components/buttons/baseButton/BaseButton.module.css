@@ -15,6 +15,9 @@ button.root[data-elem=base-cell] {
 button.root[data-elem=base-cell]:focus {
   outline: 1px solid var(--highlight);
 }
+button.root[data-elem=base-cell]:active {
+  outline: none;
+}
 button.root[data-elem=base-cell]:disabled {
   cursor: not-allowed;
 }

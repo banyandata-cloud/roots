@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Dropdown from './Dropdown';
 import DropdownItem from './dropdown-item/DropdownItem';
@@ -45,10 +45,17 @@ Default.parameters = {
 };
 
 export const MultiCheckDropdown = (args) => {
+	const [value, setValue] = useState([]);
+
 	return (
 		<div>
-			<Dropdown {...args}>
-				{[...Array(20).keys()].map((option) => {
+			<Dropdown
+				{...args}
+				value={value}
+				onChange={(event, newValue) => {
+					setValue(newValue);
+				}}>
+				{[...Array(4).keys()].map((option) => {
 					return (
 						<DropdownItem
 							key={option}

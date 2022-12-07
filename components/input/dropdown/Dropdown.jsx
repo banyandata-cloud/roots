@@ -2,6 +2,7 @@
 import React, {
 	useMemo,
 	useState,
+	useEffect,
 	forwardRef,
 	useImperativeHandle,
 	useRef,
@@ -26,6 +27,8 @@ import { classes } from '../../../utils';
 import { CaretIcon } from '../../icons';
 import styles from './Dropdown.module.css';
 import Popper from '../../popper/Popper';
+import { Checkbox } from '../checkbox';
+import Button from '../../buttons/button/Button';
 
 // eslint-disable-next-line prefer-arrow-callback
 const Dropdown = forwardRef(function Dropdown(props, inputRef) {
@@ -50,6 +53,7 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 	const [activeIndex, setActiveIndex] = useState(null);
 	const [selectedIndex, setSelectedIndex] = useState(0);
 	const listItemsRef = useRef([]);
+	const multiOptionsRef = useRef(null);
 
 	const isControlled = value !== undefined;
 
@@ -122,28 +126,15 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 			setSelectedIndex(parseInt(index, 10));
 
 			if (multi) {
-				if (isControlled) {
-					if (selected === true) {
-						onChange?.(
-							clonedEvent,
-							value.filter((val) => {
-								return val !== itemValueString;
-							})
-						);
-					} else {
-						onChange?.(clonedEvent, [...(value ?? []), itemValueString]);
-					}
+				// eslint-disable-next-line no-lonely-if
+				if (selected === true) {
+					setUncontrolledValue(
+						uncontrolledValue.filter((val) => {
+							return val !== itemValueString;
+						})
+					);
 				} else {
-					// eslint-disable-next-line no-lonely-if
-					if (selected === true) {
-						setUncontrolledValue(
-							uncontrolledValue.filter((val) => {
-								return val !== itemValueString;
-							})
-						);
-					} else {
-						setUncontrolledValue([...(uncontrolledValue ?? []), itemValueString]);
-					}
+					setUncontrolledValue([...(uncontrolledValue ?? []), itemValueString]);
 				}
 				setActiveIndex(parseInt(index, 10));
 			} else {
@@ -189,7 +180,7 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 
 	const selectedOptions = useMemo(() => {
 		let inputValue = uncontrolledValue;
-		if (isControlled) {
+		if (isControlled && !multi) {
 			inputValue = value;
 		}
 		const options = [];
@@ -257,6 +248,57 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 		}
 	}, [open, activeIndex, pointer]);
 
+	useEffect(() => {
+		if (multi) {
+			setUncontrolledValue(value);
+		}
+	}, [open, multi, value]);
+
+	const onSelectAll = (event, selected) => {
+		// to support form libraries which require name and value on the event
+		const nativeEvent = event.nativeEvent || event;
+		const clonedEvent = new nativeEvent.constructor(nativeEvent.type, nativeEvent);
+
+		let itemValue = [];
+
+		if (selected) {
+			itemValue = childrenArray.map((child) => {
+				return child?.props?.value?.toString?.();
+			});
+		}
+		Object.defineProperty(clonedEvent, 'target', {
+			writable: true,
+			value: {
+				value: itemValue,
+				name,
+			},
+		});
+
+		// eslint-disable-next-line no-lonely-if
+		if (selected === true) {
+			setUncontrolledValue(itemValue);
+		} else {
+			setUncontrolledValue(itemValue);
+		}
+
+		setActiveIndex(0);
+	};
+
+	const onApply = (event) => {
+		const nativeEvent = event.nativeEvent || event;
+		const clonedEvent = new nativeEvent.constructor(nativeEvent.type, nativeEvent);
+
+		Object.defineProperty(clonedEvent, 'target', {
+			writable: true,
+			value: {
+				value: uncontrolledValue,
+				name,
+			},
+		});
+
+		onChange(event, uncontrolledValue);
+	};
+
 	return (
 		<div
 			className={classes(
@@ -323,7 +365,7 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 								ref: floating,
 								onKeyDown(event) {
 									setPointer(false);
-									if (event.key === 'Tab') {
+									if (event.key === 'Tab' && !multi) {
 										setOpen(false);
 									}
 								},
@@ -341,7 +383,39 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 									open ? styles.open : ''
 								),
 							})}>
+							{multi && (
+								<li
+									ref={multiOptionsRef}
+									className={styles['multi-options']}
+									tabIndex={-1}>
+									<Checkbox
+										label='Select All'
+										position='left'
+										checked={selectedOptions.length === childrenArray.length}
+										onChange={onSelectAll}
+									/>{' '}
+									<Button
+										blurOnClick={false}
+										variant='text'
+										title='Clear'
+										size='auto'
+										color='danger'
+										onClick={(event) => {
+											multiOptionsRef?.current?.focus();
+											onSelectAll(event, false);
+										}}
+									/>
+								</li>
+							)}
 							{items}
+							{multi && (
+								<Button
+									className={styles['multi-apply']}
+									title='Apply'
+									size='auto'
+									onClick={onApply}
+								/>
+							)}
 						</ul>
 					</FloatingFocusManager>
 				)}

@@ -9,6 +9,10 @@ button.root[data-elem='base-cell'] {
 	background: none;
 	padding: 0.5rem 0.75rem;
 
+	&:active {
+		outline: none;
+	}
+
 	&:disabled {
 		cursor: not-allowed;
 	}
