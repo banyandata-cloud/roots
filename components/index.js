@@ -22,4 +22,4 @@ export * from './sidePanel';
 export * from './charts';
 export * from './widget';
 export * from './displayPicture';
-export * from './Toggle
+export * from './Toggle'
