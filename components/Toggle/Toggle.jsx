@@ -20,10 +20,7 @@ const Toggle = (props) => {
 				return (
 					<Button
 						key={title}
-						className={classes(
-							styles['toggle-button'],
-							selectedToggle === value ? styles.active : ''
-						)}
+						className={classes(styles['toggle-button'], isActive ? styles.active : '')}
 						onClick={() => {
 							return onButtonClick(value);
 						}}
@@ -42,7 +39,10 @@ const Toggle = (props) => {
 };
 
 Toggle.propTypes = {
-	options: PropTypes.arrayOf(PropTypes.string),
+	options: PropTypes.arrayOf({
+		title: PropTypes.string,
+		value: PropTypes.string,
+	}),
 	selectedToggle: PropTypes.string,
 	setSelectedToggle: PropTypes.string,
 };
