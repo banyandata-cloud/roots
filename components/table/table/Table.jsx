@@ -29,6 +29,7 @@ const Table = (props) => {
 		chipsData,
 		filtersData,
 		paginationData,
+		loading,
 	} = props;
 
 	const ref = useRef(null);
@@ -72,7 +73,7 @@ const Table = (props) => {
 				observer.observe(lastRow);
 			}
 		}
-	}, [tableData]);
+	}, [tableData, loading]);
 
 	// for dynamically resizing table vertically acc to provided addons
 	useEffect(() => {
@@ -81,7 +82,7 @@ const Table = (props) => {
 			const totalAddons = [chipsData, filtersData].filter(Boolean).length;
 			tableElem.style.height = `calc(100% - ${totalAddons * 3}rem)`;
 		}
-	}, [chipsData, filtersData]);
+	}, [chipsData, filtersData, loading]);
 
 	// setting body and header min-width to allow horizontal sticky column beyond viewport width
 	useEffect(() => {
@@ -99,7 +100,7 @@ const Table = (props) => {
 				tableBodyElem.style.minWidth = `${minWidth}rem`;
 			}
 		}
-	}, [hiddenColumns, headerData]);
+	}, [hiddenColumns, headerData, loading]);
 
 	// set the hidden columns state
 	useEffect(() => {
@@ -109,7 +110,7 @@ const Table = (props) => {
 	return (
 		<div className={classes(styles.root, className)}>
 			{chipsData != null && (chipsData?.chips?.length > 0 || chipsData?.showBack != null) && (
-				<TableChips className={styles.chips} {...chipsData} />
+				<TableChips className={styles.chips} {...chipsData} loading={loading} />
 			)}
 			{filtersData != null && (
 				<TableFilters
@@ -120,6 +121,7 @@ const Table = (props) => {
 						hiddenColumns,
 						setHiddenColumns,
 					}}
+					loading={loading}
 				/>
 			)}
 			<BaseTable
@@ -133,9 +135,10 @@ const Table = (props) => {
 					customCells,
 					className: styles.table,
 				}}
+				loading={loading}
 			/>
 
-			{paginationData != null && (
+			{paginationData != null && !loading && (
 				<Pagination
 					className={classes(styles.pagination, floating ? styles.floating : '')}
 					ref={paginationRef}
@@ -177,6 +180,7 @@ Table.propTypes = {
 	paginationData: PropTypes.shape({
 		...Pagination.propTypes,
 	}),
+	loading: PropTypes.bool,
 };
 
 Table.defaultProps = {
@@ -193,6 +197,7 @@ Table.defaultProps = {
 	chipsData: null,
 	filtersData: null,
 	paginationData: null,
+	loading: null,
 };
 
 export default Table;

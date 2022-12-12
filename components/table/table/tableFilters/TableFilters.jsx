@@ -7,6 +7,7 @@ import { ColumnsIcon, FilterIcon, MagnifyingGlassIcon, NutIcon, RefreshIcon } fr
 import { Columns } from './Filters';
 import { TextField } from '../../../input';
 import styles from './TableFilters.module.css';
+import { Skeleton } from './Skeleton';
 
 const TableFilters = (props) => {
 	const {
@@ -19,10 +20,15 @@ const TableFilters = (props) => {
 		headerData,
 		hiddenColumns,
 		setHiddenColumns,
+		loading,
 	} = props;
 
 	const [openColumns, setOpenColumns] = useState(false);
 	const [anchorEl, setAnchorEl] = useState(null);
+
+	if (loading) {
+		return <Skeleton />;
+	}
 
 	return (
 		<BaseCell
@@ -129,6 +135,7 @@ TableFilters.propTypes = {
 	filterValue: PropTypes.shape({
 		applied: PropTypes.number,
 	}),
+	loading: PropTypes.bool,
 };
 
 TableFilters.defaultProps = {
@@ -140,6 +147,7 @@ TableFilters.defaultProps = {
 	filterValue: {
 		applied: null,
 	},
+	loading: null,
 };
 
 export default TableFilters;

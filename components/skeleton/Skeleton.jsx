@@ -6,7 +6,8 @@ const Skeleton = (props) => {
 	const { height, width, variant, className } = props;
 
 	return (
-		<div
+		<span
+			data-elem='skeleton'
 			className={classes(className, styles.root, styles[variant])}
 			style={{
 				height,
@@ -25,9 +26,9 @@ Skeleton.propTypes = {
 
 Skeleton.defaultProps = {
 	className: '',
-	height: '3rem',
+	height: null,
 	width: '100%',
-	variant: 'rounded',
+	variant: 'text',
 };
 
 export default Skeleton;
