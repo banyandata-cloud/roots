@@ -6,10 +6,15 @@ import { TableColumn } from '../BaseTable.class';
 import { TableBody } from '../body';
 import { TableHeader } from '../header';
 import styles from './BaseTable.module.css';
+import { Skeleton } from './Skeleton';
 
 // eslint-disable-next-line prefer-arrow-callback
 const BaseTable = forwardRef(function BaseTable(props, ref) {
-	const { headerData, customCells, tableData, className } = props;
+	const { headerData, customCells, tableData, className, loading } = props;
+
+	if (loading) {
+		return <Skeleton />;
+	}
 
 	const transformedHeaderData = headerData.map((header) => {
 		return new TableColumn(header);
@@ -53,6 +58,7 @@ BaseTable.propTypes = {
 		header: PropTypes.func,
 		body: PropTypes.func,
 	}),
+	loading: PropTypes.bool,
 };
 
 BaseTable.defaultProps = {
@@ -63,6 +69,7 @@ BaseTable.defaultProps = {
 		header: null,
 		body: null,
 	},
+	loading: null,
 };
 
 export default BaseTable;

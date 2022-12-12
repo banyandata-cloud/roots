@@ -4,10 +4,15 @@ import { classes } from '../../../../utils';
 import { Button, Chip } from '../../../buttons';
 import { BaseCell } from '../../../cell';
 import { ArrowIcon } from '../../../icons';
+import { Skeleton } from './Skeleton';
 import styles from './TableChips.module.css';
 
 const TableChips = (props) => {
-	const { showBack, onBack, chips, className, style } = props;
+	const { showBack, onBack, chips, className, style, loading } = props;
+
+	if (loading) {
+		return <Skeleton />;
+	}
 
 	const chipsDOM = chips
 		?.filter((chip) => {
@@ -78,6 +83,7 @@ TableChips.propTypes = {
 			rightComponent: PropTypes.node,
 		})
 	),
+	loading: PropTypes.bool,
 };
 
 TableChips.defaultProps = {
@@ -86,6 +92,7 @@ TableChips.defaultProps = {
 	showBack: false,
 	onBack: () => {},
 	chips: [],
+	loading: null,
 };
 
 export default TableChips;
