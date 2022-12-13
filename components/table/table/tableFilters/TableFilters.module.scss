@@ -61,7 +61,9 @@
 	.right {
 		width: auto;
 		padding: 0;
+		min-width: 0rem;
 		gap: 2.5rem;
+		@include flex(row, flex-start, center);
 		> [data-elem*='component'] {
 			@include flex;
 		}
