@@ -87,13 +87,13 @@ const Notification = (props) => {
 								<Button
 									key={acceptTitle}
 									title={acceptTitle}
-									onAccept={onAccept}
+									onClick={onAccept}
 									className={classes(styles['accept-button'])}
 								/>
 								<Button
 									key={rejectTitle}
 									title={rejectTitle}
-									onReject={onReject}
+									onClick={onReject}
 									className={classes(styles['reject-button'])}
 								/>
 							</div>
