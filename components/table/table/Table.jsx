@@ -30,6 +30,7 @@ const Table = (props) => {
 		filtersData,
 		paginationData,
 		loading,
+		disabledFilterOptions,
 	} = props;
 
 	const ref = useRef(null);
@@ -117,6 +118,7 @@ const Table = (props) => {
 					className={styles.filters}
 					{...{
 						...filtersData,
+						disabledFilterOptions,
 						headerData,
 						hiddenColumns,
 						setHiddenColumns,
@@ -181,6 +183,12 @@ Table.propTypes = {
 		...Pagination.propTypes,
 	}),
 	loading: PropTypes.bool,
+	disabledFilterOptions: PropTypes.shape({
+		filterButton: PropTypes.bool,
+		refresh: PropTypes.bool,
+		columnFilter: PropTypes.bool,
+		settings: PropTypes.bool,
+	}),
 };
 
 Table.defaultProps = {
@@ -198,6 +206,12 @@ Table.defaultProps = {
 	filtersData: null,
 	paginationData: null,
 	loading: null,
+	disabledFilterOptions: {
+		filterButton: false,
+		refresh: false,
+		columnFilter: false,
+		settings: false,
+	},
 };
 
 export default Table;

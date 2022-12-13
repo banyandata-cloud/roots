@@ -21,10 +21,19 @@ const TableFilters = (props) => {
 		hiddenColumns,
 		setHiddenColumns,
 		loading,
+		disabledFilterOptions,
 	} = props;
 
 	const [openColumns, setOpenColumns] = useState(false);
 	const [anchorEl, setAnchorEl] = useState(null);
+	const {
+		filterButton: disabledFilterButton,
+		refresh: disabledRefresh,
+		columnFilter: disabledColumnFilter,
+		settings: disabledSettings,
+	} = disabledFilterOptions;
+
+	const hideRightOptions = disabledColumnFilter && disabledRefresh && disabledSettings;
 
 	if (loading) {
 		return <Skeleton />;
@@ -38,22 +47,26 @@ const TableFilters = (props) => {
 				style,
 			}}
 			component1={
-				<Button
-					className={styles.left}
-					title='Filter'
-					variant='outlined'
-					leftComponent={() => {
-						return <FilterIcon className={styles.icon} />;
-					}}
-					rightComponent={() => {
-						if (filterValue?.applied) {
-							return (
-								<div className={styles['filter-value']}>{filterValue?.applied}</div>
-							);
-						}
-						return null;
-					}}
-				/>
+				!disabledFilterButton && (
+					<Button
+						className={styles.left}
+						title='Filter'
+						variant='outlined'
+						leftComponent={() => {
+							return <FilterIcon className={styles.icon} />;
+						}}
+						rightComponent={() => {
+							if (filterValue?.applied) {
+								return (
+									<div className={styles['filter-value']}>
+										{filterValue?.applied}
+									</div>
+								);
+							}
+							return null;
+						}}
+					/>
+				)
 			}
 			component2={
 				<TextField
@@ -67,59 +80,67 @@ const TableFilters = (props) => {
 				/>
 			}
 			component3={
-				<BaseCell
-					flexible
-					className={styles.right}
-					component1={
-						<>
-							<Button
-								ref={(el) => {
-									setAnchorEl(el);
-								}}
-								size='auto'
-								className={styles['icon-button']}
-								variant='text'
-								leftComponent={() => {
-									return <ColumnsIcon className={styles.icon} />;
-								}}
-								onClick={() => {
-									setOpenColumns((prev) => {
-										return !prev;
-									});
-								}}
-							/>
-							<Columns
-								anchorEl={anchorEl}
-								open={openColumns}
-								setOpen={setOpenColumns}
-								columns={headerData}
-								hiddenColumns={hiddenColumns}
-								setHiddenColumns={setHiddenColumns}
-							/>
-						</>
-					}
-					component2={
-						<Button
-							size='auto'
-							className={styles['icon-button']}
-							variant='text'
-							onClick={onRefresh}
-							leftComponent={() => {
-								return <RefreshIcon className={styles.icon} />;
-							}}
-						/>
-					}
-					component3={
-						<Button
-							size='auto'
-							className={styles['icon-button']}
-							variant='text'
-							leftComponent={() => {
-								return <NutIcon className={styles.icon} />;
-							}}
-						/>
-					}
-				/>
+				!hideRightOptions && (
+					<BaseCell
+						flexible
+						className={styles.right}
+						component1={
+							!disabledColumnFilter && (
+								<>
+									<Button
+										ref={(el) => {
+											setAnchorEl(el);
+										}}
+										size='auto'
+										className={styles['icon-button']}
+										variant='text'
+										leftComponent={() => {
+											return <ColumnsIcon className={styles.icon} />;
+										}}
+										onClick={() => {
+											setOpenColumns((prev) => {
+												return !prev;
+											});
+										}}
+									/>
+									<Columns
+										anchorEl={anchorEl}
+										open={openColumns}
+										setOpen={setOpenColumns}
+										columns={headerData}
+										hiddenColumns={hiddenColumns}
+										setHiddenColumns={setHiddenColumns}
+									/>
+								</>
+							)
+						}
+						component2={
+							!disabledRefresh && (
+								<Button
+									size='auto'
+									className={styles['icon-button']}
+									variant='text'
+									onClick={onRefresh}
+									leftComponent={() => {
+										return <RefreshIcon className={styles.icon} />;
+									}}
+								/>
+							)
+						}
+						component3={
+							!disabledSettings && (
+								<Button
+									size='auto'
+									className={styles['icon-button']}
+									variant='text'
+									leftComponent={() => {
+										return <NutIcon className={styles.icon} />;
+									}}
+								/>
+							)
+						}
+					/>
+				)
 			}
 		/>
 	);
