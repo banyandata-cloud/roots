@@ -45,7 +45,7 @@ const Table = (props) => {
 	// for pagination docking using intersection observer
 	useEffect(() => {
 		const tableElem = ref.current;
-		if (tableElem) {
+		if (tableElem && !loading) {
 			const lastRow = tableElem.querySelector(
 				'[data-elem="table-body"] [data-elem="table-row"]:last-child'
 			);
@@ -78,7 +78,7 @@ const Table = (props) => {
 	// for dynamically resizing table vertically acc to provided addons
 	useEffect(() => {
 		const tableElem = ref.current;
-		if (tableElem) {
+		if (tableElem && !loading) {
 			const totalAddons = [chipsData, filtersData].filter(Boolean).length;
 			tableElem.style.height = `calc(100% - ${totalAddons * 3}rem)`;
 		}
@@ -87,7 +87,7 @@ const Table = (props) => {
 	// setting body and header min-width to allow horizontal sticky column beyond viewport width
 	useEffect(() => {
 		const tableElem = ref.current;
-		if (tableElem) {
+		if (tableElem && !loading) {
 			const tableHeaderElem = tableElem.querySelector('[data-elem="table-header"]');
 			const tableBodyElem = tableElem.querySelector('[data-elem="table-body"]');
 
