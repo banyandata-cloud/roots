@@ -8,5 +8,5 @@
   background: none;
 }
 .backdrop.hide-backdrop {
-  position: static;
+  position: static !important;
 }/*# sourceMappingURL=Popper.module.css.map */

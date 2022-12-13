@@ -55,7 +55,12 @@
 .root[data-elem=base-cell] .right {
   width: auto;
   padding: 0;
+  min-width: 0rem;
   gap: 2.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
 }
 .root[data-elem=base-cell] .right > [data-elem*=component] {
   display: flex;
