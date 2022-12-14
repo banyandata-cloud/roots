@@ -57,7 +57,7 @@ const getPositionStyles = ({ position, anchor, content }) => {
 };
 
 const Tooltip = (props) => {
-	const { children, position, content, variant } = props;
+	const { children, position, content, variant, className } = props;
 
 	const timeoutRef = useRef(null);
 	const tooltipRef = useRef(null);
@@ -86,7 +86,12 @@ const Tooltip = (props) => {
 			{children}
 			<Popper open={open} backdrop={false} anchorEl={tooltipRef} wrapperId='tooltip-popper'>
 				<div
-					className={classes(styles.tooltip, styles[position], styles[variant])}
+					className={classes(
+						styles.tooltip,
+						styles[position],
+						styles[variant],
+						className
+					)}
 					style={{
 						...getPositionStyles({
 							position,
@@ -105,12 +110,14 @@ Tooltip.propTypes = {
 	variant: PropTypes.oneOf(['light', 'dark']),
 	content: PropTypes.string,
 	position: PropTypes.oneOf(['right', 'top', 'bottom', 'left']),
+	className: PropTypes.string,
 };
 
 Tooltip.defaultProps = {
 	variant: 'light',
 	content: 'Tooltip Info',
 	position: 'top',
+	className: '',
 };
 
 export default Tooltip;
