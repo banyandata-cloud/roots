@@ -1580,9 +1580,9 @@ var getCSSVariableValue = function getCSSVariableValue(variable) {
 
 var e$1=[],t=[];function n(n,r){if(n&&"undefined"!=typeof document){var a,s=!0===r.prepend?"prepend":"append",d=!0===r.singleTag,i="string"==typeof r.container?document.querySelector(r.container):document.getElementsByTagName("head")[0];if(d){var u=e$1.indexOf(i);-1===u&&(u=e$1.push(i)-1,t[u]={}),a=t[u]&&t[u][s]?t[u][s]:t[u][s]=c();}else a=c();65279===n.charCodeAt(0)&&(n=n.substring(1)),a.styleSheet?a.styleSheet.cssText+=n:a.appendChild(document.createTextNode(n));}function c(){var e=document.createElement("style");if(e.setAttribute("type","text/css"),r.attributes)for(var t=Object.keys(r.attributes),n=0;n<t.length;n++)e.setAttribute(t[n],r.attributes[t[n]]);var a="prepend"===s?"afterbegin":"beforeend";return i.insertAdjacentElement(a,e),e}}
 
-var css$N = ".BaseCell_module_root__f940eb1b {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  padding: 0.5rem;\n  gap: 0.5rem;\n  flex: none;\n  height: 3rem;\n  background: var(--white);\n  max-width: 100%;\n  max-height: 100%;\n}\n.BaseCell_module_root__f940eb1b > [data-elem*=component] {\n  display: inline-block;\n  max-height: 100%;\n}\n.BaseCell_module_root__f940eb1b.BaseCell_module_sm__f940eb1b {\n  width: 9.063rem;\n}\n.BaseCell_module_root__f940eb1b.BaseCell_module_md__f940eb1b {\n  width: 15.625rem;\n}\n.BaseCell_module_root__f940eb1b.BaseCell_module_lg__f940eb1b {\n  width: 21.875rem;\n}\n.BaseCell_module_root__f940eb1b.BaseCell_module_auto__f940eb1b {\n  width: auto;\n}\n.BaseCell_module_root__f940eb1b.BaseCell_module_borderRadiusDefault__f940eb1b {\n  border-radius: 0.25rem;\n}\n.BaseCell_module_root__f940eb1b.BaseCell_module_borderRadiusRound__f940eb1b {\n  border-radius: 50%;\n}\n.BaseCell_module_root__f940eb1b.BaseCell_module_borderRadiusEllipse__f940eb1b {\n  border-radius: 1.563rem;\n}\n.BaseCell_module_root__f940eb1b.BaseCell_module_flexible__f940eb1b {\n  flex-grow: 1;\n  flex-shrink: 1;\n  min-width: 3rem;\n}";
-var modules_3af9b74c = {"root":"BaseCell_module_root__f940eb1b","sm":"BaseCell_module_sm__f940eb1b","md":"BaseCell_module_md__f940eb1b","lg":"BaseCell_module_lg__f940eb1b","auto":"BaseCell_module_auto__f940eb1b","border-radius-default":"BaseCell_module_borderRadiusDefault__f940eb1b","border-radius-round":"BaseCell_module_borderRadiusRound__f940eb1b","border-radius-ellipse":"BaseCell_module_borderRadiusEllipse__f940eb1b","flexible":"BaseCell_module_flexible__f940eb1b"};
-n(css$N,{});
+var css$U = ".BaseCell_module_root__81e07d2d {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  padding: 0.5rem;\n  gap: 0.5rem;\n  flex: none;\n  height: 3rem;\n  background: var(--white);\n  max-width: 100%;\n  max-height: 100%;\n}\n.BaseCell_module_root__81e07d2d > [data-elem*=component] {\n  display: inline-block;\n  max-height: 100%;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_sm__81e07d2d {\n  width: 9.063rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_md__81e07d2d {\n  width: 15.625rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_lg__81e07d2d {\n  width: 21.875rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_auto__81e07d2d {\n  width: auto;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_borderRadiusDefault__81e07d2d {\n  border-radius: 0.25rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_borderRadiusRound__81e07d2d {\n  border-radius: 50%;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_borderRadiusEllipse__81e07d2d {\n  border-radius: 1.563rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_flexible__81e07d2d {\n  flex-grow: 1;\n  flex-shrink: 1;\n  min-width: 3rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_flexible__81e07d2d.BaseCell_module_sm__81e07d2d {\n  min-width: 9.063rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_flexible__81e07d2d.BaseCell_module_md__81e07d2d {\n  min-width: 15.625rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_flexible__81e07d2d.BaseCell_module_lg__81e07d2d {\n  min-width: 21.875rem;\n}";
+var modules_3af9b74c = {"root":"BaseCell_module_root__81e07d2d","sm":"BaseCell_module_sm__81e07d2d","md":"BaseCell_module_md__81e07d2d","lg":"BaseCell_module_lg__81e07d2d","auto":"BaseCell_module_auto__81e07d2d","border-radius-default":"BaseCell_module_borderRadiusDefault__81e07d2d","border-radius-round":"BaseCell_module_borderRadiusRound__81e07d2d","border-radius-ellipse":"BaseCell_module_borderRadiusEllipse__81e07d2d","flexible":"BaseCell_module_flexible__81e07d2d"};
+n(css$U,{});
 
 var BaseCell = /*#__PURE__*/React.forwardRef(function BaseCell(props, ref) {
   var className = props.className,
@@ -1661,6 +1661,160 @@ var defaultProps$1 = {
   RootDOM: 'div',
   attrs: {}
 };
+
+var css$T = "button.BaseButton_module_root__39a3f3ec[data-elem=base-cell] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  display: inline-flex;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  border: none;\n  background: none;\n  padding: 0.5rem 0.75rem;\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell]:focus {\n  outline: 1px solid var(--highlight);\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell]:active {\n  outline: none;\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell]:disabled {\n  cursor: not-allowed;\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell].BaseButton_module_contained__39a3f3ec {\n  background: var(--black);\n  color: var(--white);\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell].BaseButton_module_outlined__39a3f3ec {\n  color: var(--black);\n  border: 1px solid var(--black);\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell].BaseButton_module_text__39a3f3ec {\n  color: var(--black);\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell] [data-elem*=component] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell] [data-elem=component2] {\n  min-width: 0;\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell] [data-elem=title] {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n}";
+var modules_ab72627b = {"root":"BaseButton_module_root__39a3f3ec","contained":"BaseButton_module_contained__39a3f3ec","outlined":"BaseButton_module_outlined__39a3f3ec","text":"BaseButton_module_text__39a3f3ec"};
+n(css$T,{});
+
+var BaseButton = /*#__PURE__*/React.forwardRef(function BaseButton(props, ref) {
+  var className = props.className,
+    component1 = props.component1,
+    title = props.title,
+    component3 = props.component3,
+    size = props.size,
+    flexible = props.flexible,
+    radius = props.radius,
+    disabled = props.disabled,
+    type = props.type,
+    _onClick = props.onClick,
+    blurOnClick = props.blurOnClick,
+    variant = props.variant;
+  var Title = title && /*#__PURE__*/jsxRuntime.jsx("span", {
+    "data-elem": "title",
+    children: title
+  });
+  return /*#__PURE__*/jsxRuntime.jsx(BaseCell, {
+    className: classes(className, modules_ab72627b.root, modules_ab72627b[variant]),
+    ref: ref,
+    component1: component1,
+    component2: Title,
+    component3: component3,
+    flexible: flexible,
+    radius: radius,
+    size: size,
+    attrs: {
+      disabled: disabled,
+      type: type,
+      onClick: function onClick(event) {
+        if (blurOnClick) {
+          var _event$currentTarget;
+          event === null || event === void 0 ? void 0 : (_event$currentTarget = event.currentTarget) === null || _event$currentTarget === void 0 ? void 0 : _event$currentTarget.blur();
+        }
+        _onClick(event);
+      }
+    },
+    RootDOM: "button"
+  });
+});
+BaseButton.propTypes = _objectSpread2(_objectSpread2({}, BaseCell.propTypes), {}, {
+  title: propTypes$1.exports.string,
+  disabled: propTypes$1.exports.bool,
+  type: propTypes$1.exports.oneOf(['button', 'submit', 'reset']),
+  onClick: propTypes$1.exports.func,
+  blurOnClick: propTypes$1.exports.bool,
+  variant: propTypes$1.exports.oneOf(['contained', 'outlined', 'text'])
+});
+BaseButton.defaultProps = _objectSpread2(_objectSpread2({}, BaseCell.defaultProps), {}, {
+  title: null,
+  disabled: false,
+  type: 'submit',
+  onClick: function onClick() {},
+  blurOnClick: true,
+  variant: 'contained'
+});
+
+var css$S = ".Button_module_root__0be1a26c[data-elem=base-cell] {\n  cursor: pointer;\n}\n.Button_module_root__0be1a26c[data-elem=base-cell] [data-elem=component2] [data-elem=title] {\n  font-weight: 500;\n  font-size: 0.875rem;\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_primary__0be1a26c.Button_module_contained__0be1a26c {\n  background-color: var(--highlight);\n  color: var(--white);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_primary__0be1a26c.Button_module_outlined__0be1a26c {\n  background-color: transparent;\n  border-color: var(--highlight);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_primary__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell].Button_module_primary__0be1a26c.Button_module_text__0be1a26c {\n  color: var(--highlight);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_success__0be1a26c.Button_module_contained__0be1a26c {\n  background-color: var(--success);\n  color: var(--white);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_success__0be1a26c.Button_module_outlined__0be1a26c {\n  background-color: transparent;\n  border-color: var(--success);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_success__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell].Button_module_success__0be1a26c.Button_module_text__0be1a26c {\n  color: var(--success);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_danger__0be1a26c.Button_module_contained__0be1a26c {\n  background-color: var(--error);\n  color: var(--white);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_danger__0be1a26c.Button_module_outlined__0be1a26c {\n  background-color: transparent;\n  border-color: var(--error);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_danger__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell].Button_module_danger__0be1a26c.Button_module_text__0be1a26c {\n  color: var(--error);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_warning__0be1a26c.Button_module_contained__0be1a26c {\n  background-color: var(--warning);\n  color: var(--white);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_warning__0be1a26c.Button_module_outlined__0be1a26c {\n  background-color: transparent;\n  border-color: var(--warning);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_warning__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell].Button_module_warning__0be1a26c.Button_module_text__0be1a26c {\n  color: var(--warning);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_primary__0be1a26c.Button_module_contained__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_success__0be1a26c.Button_module_contained__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_danger__0be1a26c.Button_module_contained__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_warning__0be1a26c.Button_module_contained__0be1a26c {\n  background-color: var(--grey4);\n  color: var(--grey);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_primary__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_success__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_danger__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_warning__0be1a26c.Button_module_outlined__0be1a26c {\n  background-color: transparent;\n  border-color: var(--grey);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_primary__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_primary__0be1a26c.Button_module_text__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_success__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_success__0be1a26c.Button_module_text__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_danger__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_danger__0be1a26c.Button_module_text__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_warning__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_warning__0be1a26c.Button_module_text__0be1a26c {\n  color: var(--grey);\n}";
+var modules_b0070f27 = {"root":"Button_module_root__0be1a26c","primary":"Button_module_primary__0be1a26c","contained":"Button_module_contained__0be1a26c","outlined":"Button_module_outlined__0be1a26c","text":"Button_module_text__0be1a26c","success":"Button_module_success__0be1a26c","danger":"Button_module_danger__0be1a26c","warning":"Button_module_warning__0be1a26c"};
+n(css$S,{});
+
+var Button = /*#__PURE__*/React.forwardRef(function Button(props, ref) {
+  var className = props.className,
+    type = props.type,
+    LeftComponent = props.leftComponent,
+    title = props.title,
+    RightComponent = props.rightComponent,
+    size = props.size,
+    flexible = props.flexible,
+    radius = props.radius,
+    disabled = props.disabled,
+    onClick = props.onClick,
+    blurOnClick = props.blurOnClick,
+    variant = props.variant,
+    color = props.color;
+  return /*#__PURE__*/jsxRuntime.jsx(BaseButton, {
+    ref: ref,
+    type: type,
+    component1: LeftComponent && /*#__PURE__*/jsxRuntime.jsx(LeftComponent, {}),
+    title: title,
+    component3: RightComponent && /*#__PURE__*/jsxRuntime.jsx(RightComponent, {}),
+    size: size,
+    flexible: flexible,
+    radius: radius,
+    disabled: disabled,
+    onClick: onClick,
+    blurOnClick: blurOnClick,
+    variant: variant,
+    className: classes(modules_b0070f27.root, modules_b0070f27["radius-".concat(radius)], modules_b0070f27[variant], modules_b0070f27[color], className)
+  });
+});
+Button.propTypes = _objectSpread2(_objectSpread2({}, BaseButton.propTypes), {}, {
+  color: propTypes$1.exports.oneOf(['primary', 'success', 'danger', 'warning']),
+  leftComponent: propTypes$1.exports.node,
+  rightComponent: propTypes$1.exports.node
+});
+Button.defaultProps = _objectSpread2(_objectSpread2({}, BaseButton.defaultProps), {}, {
+  color: 'primary',
+  leftComponent: null,
+  rightComponent: null,
+  radius: 'default'
+});
+
+var css$R = ".Chip_module_root__0aa07630[data-elem=base-cell] {\n  position: relative;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell] [data-elem=component2] [data-elem=title] {\n  font-weight: 500;\n  font-size: 0.875rem;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_sm__0aa07630 {\n  height: 2rem;\n  padding: 0.188rem 0.5rem;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_md__0aa07630 {\n  height: 2.25rem;\n  padding: 0.563rem 1rem;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630.Chip_module_success__0aa07630 {\n  background-color: var(--success-bg);\n  color: var(--success);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630.Chip_module_info__0aa07630 {\n  background-color: var(--info-bg);\n  color: var(--info);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630.Chip_module_danger__0aa07630 {\n  background-color: var(--error-bg);\n  color: var(--error);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630.Chip_module_warning__0aa07630 {\n  background-color: var(--warning-bg);\n  color: var(--warning);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630.Chip_module_default__0aa07630 {\n  background-color: var(--grey5);\n  color: var(--grey);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630:hover {\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630 {\n  border-width: 1px;\n  border-style: solid;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_success__0aa07630 {\n  background-color: var(--success-bg);\n  color: var(--success);\n  border-color: var(--success-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_success__0aa07630:hover {\n  background-color: var(--success-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_info__0aa07630 {\n  background-color: var(--info-bg);\n  color: var(--info);\n  border-color: var(--info-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_info__0aa07630:hover {\n  background-color: var(--info-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_danger__0aa07630 {\n  background-color: var(--error-bg);\n  color: var(--error);\n  border-color: var(--error-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_danger__0aa07630:hover {\n  background-color: var(--error-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_warning__0aa07630 {\n  background-color: var(--warning-bg);\n  color: var(--warning);\n  border-color: var(--warning-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_warning__0aa07630:hover {\n  background-color: var(--warning-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_default__0aa07630 {\n  background-color: var(--grey8);\n  color: var(--grey);\n  border-color: var(--grey6);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_default__0aa07630:hover {\n  background-color: var(--grey6);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_status__0aa07630, .Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_input__0aa07630 {\n  filter: grayscale(1);\n  border-color: var(--grey4);\n  background-color: var(--grey5);\n  color: var(--grey2);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_status__0aa07630 [data-elem=component1],\n.Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_status__0aa07630 [data-elem=component3], .Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_input__0aa07630 [data-elem=component1],\n.Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_input__0aa07630 [data-elem=component3] {\n  opacity: 0.5;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_status__0aa07630:hover, .Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_input__0aa07630:hover {\n  box-shadow: none;\n  background-color: var(--grey5);\n}";
+var modules_31aa5fd7 = {"root":"Chip_module_root__0aa07630","sm":"Chip_module_sm__0aa07630","md":"Chip_module_md__0aa07630","status":"Chip_module_status__0aa07630","success":"Chip_module_success__0aa07630","info":"Chip_module_info__0aa07630","danger":"Chip_module_danger__0aa07630","warning":"Chip_module_warning__0aa07630","default":"Chip_module_default__0aa07630","input":"Chip_module_input__0aa07630"};
+n(css$R,{});
+
+var Chip = function Chip(props) {
+  var className = props.className,
+    type = props.type,
+    LeftComponent = props.leftComponent,
+    title = props.title,
+    RightComponent = props.rightComponent,
+    size = props.size,
+    flexible = props.flexible,
+    radius = props.radius,
+    disabled = props.disabled,
+    onClick = props.onClick,
+    variant = props.variant,
+    color = props.color;
+  return /*#__PURE__*/jsxRuntime.jsx(BaseButton, {
+    type: type,
+    component1: LeftComponent && /*#__PURE__*/jsxRuntime.jsx(LeftComponent, {}),
+    title: title,
+    component3: RightComponent && /*#__PURE__*/jsxRuntime.jsx(RightComponent, {}),
+    size: 'auto',
+    flexible: flexible,
+    radius: radius,
+    disabled: disabled,
+    onClick: onClick,
+    variant: 'contained',
+    className: classes(modules_31aa5fd7.root, modules_31aa5fd7["radius-".concat(radius)], modules_31aa5fd7[variant], modules_31aa5fd7[color], modules_31aa5fd7[size], className)
+  });
+};
+Chip.propTypes = _objectSpread2(_objectSpread2({}, BaseButton.propTypes), {}, {
+  size: propTypes$1.exports.oneOf(['sm', 'md']),
+  variant: propTypes$1.exports.oneOf(['status', 'input']),
+  color: propTypes$1.exports.oneOf(['success', 'info', 'warning', 'danger', 'default']),
+  leftComponent: propTypes$1.exports.func,
+  rightComponent: propTypes$1.exports.func
+});
+Chip.defaultProps = _objectSpread2(_objectSpread2({}, BaseButton.defaultProps), {}, {
+  size: 'sm',
+  variant: 'status',
+  color: 'success',
+  leftComponent: null,
+  rightComponent: null,
+  radius: 'default'
+});
 
 var AlertIcon = {
   Info: function Info(props) {
@@ -1988,9 +2142,9 @@ Server.defaultProps = {
   className: ''
 };
 
-var css$M = ".Arrow_module_right__19f08663 {\n  transform: rotate(0deg);\n}\n\n.Arrow_module_left__19f08663 {\n  transform: rotate(180deg);\n}\n\n.Arrow_module_bottom__19f08663 {\n  transform: rotate(90deg);\n}\n\n.Arrow_module_top__19f08663 {\n  transform: rotate(270deg);\n}";
+var css$Q = ".Arrow_module_right__19f08663 {\n  transform: rotate(0deg);\n}\n\n.Arrow_module_left__19f08663 {\n  transform: rotate(180deg);\n}\n\n.Arrow_module_bottom__19f08663 {\n  transform: rotate(90deg);\n}\n\n.Arrow_module_top__19f08663 {\n  transform: rotate(270deg);\n}";
 var modules_e313d483 = {"right":"Arrow_module_right__19f08663","left":"Arrow_module_left__19f08663","bottom":"Arrow_module_bottom__19f08663","top":"Arrow_module_top__19f08663"};
-n(css$M,{});
+n(css$Q,{});
 
 var Arrow$1 = function Arrow(props) {
   var className = props.className,
@@ -2010,9 +2164,9 @@ Arrow$1.defaultProps = {
   position: 'right'
 };
 
-var css$L = ".Chevron_module_left__8b1808eb {\n  transform: rotate(0deg);\n}\n\n.Chevron_module_bottom__8b1808eb {\n  transform: rotate(90deg);\n}\n\n.Chevron_module_right__8b1808eb {\n  transform: rotate(180deg);\n}\n\n.Chevron_module_top__8b1808eb {\n  transform: rotate(270deg);\n}";
+var css$P = ".Chevron_module_left__8b1808eb {\n  transform: rotate(0deg);\n}\n\n.Chevron_module_bottom__8b1808eb {\n  transform: rotate(90deg);\n}\n\n.Chevron_module_right__8b1808eb {\n  transform: rotate(180deg);\n}\n\n.Chevron_module_top__8b1808eb {\n  transform: rotate(270deg);\n}";
 var modules_bf5b0b74 = {"left":"Chevron_module_left__8b1808eb","bottom":"Chevron_module_bottom__8b1808eb","right":"Chevron_module_right__8b1808eb","top":"Chevron_module_top__8b1808eb"};
-n(css$L,{});
+n(css$P,{});
 
 var Chevron = function Chevron(props) {
   var className = props.className,
@@ -2307,9 +2461,9 @@ Reset.defaultProps = {
   className: ''
 };
 
-var css$K = ".Accordion_module_root__43fdf130 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  width: 100%;\n}\n.Accordion_module_root__43fdf130 > .Accordion_module_header__43fdf130[data-elem=base-cell] {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.5rem;\n  padding: 0.5rem 1rem;\n  cursor: pointer;\n}\n.Accordion_module_root__43fdf130 > .Accordion_module_header__43fdf130[data-elem=base-cell] > [data-elem=component1] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.Accordion_module_root__43fdf130 > .Accordion_module_header__43fdf130[data-elem=base-cell] > [data-elem=component1] .Accordion_module_icon__43fdf130 {\n  transform: rotate(-90deg);\n  width: 1rem;\n  height: 1rem;\n}\n.Accordion_module_root__43fdf130 > .Accordion_module_header__43fdf130[data-elem=base-cell] .Accordion_module_title__43fdf130 {\n  flex: 1 1 auto;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.Accordion_module_root__43fdf130 > .Accordion_module_header__43fdf130[data-elem=base-cell]:hover {\n  background: var(--background);\n}\n.Accordion_module_root__43fdf130 > .Accordion_module_header__43fdf130[data-elem=base-cell]:hover .Accordion_module_icon__43fdf130,\n.Accordion_module_root__43fdf130 > .Accordion_module_header__43fdf130[data-elem=base-cell]:hover .Accordion_module_title__43fdf130 {\n  color: var(--highlight);\n  fill: var(--highlight);\n}\n.Accordion_module_root__43fdf130 > .Accordion_module_body__43fdf130 {\n  display: none;\n  padding: 0.5rem 2.5rem;\n}\n.Accordion_module_root__43fdf130.Accordion_module_open__43fdf130 > .Accordion_module_header__43fdf130[data-elem=base-cell] [data-elem=component1] .Accordion_module_icon__43fdf130 {\n  transform: none;\n}\n.Accordion_module_root__43fdf130.Accordion_module_open__43fdf130 > .Accordion_module_body__43fdf130 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n}";
-var modules_8207625f = {"root":"Accordion_module_root__43fdf130","header":"Accordion_module_header__43fdf130","icon":"Accordion_module_icon__43fdf130","title":"Accordion_module_title__43fdf130","body":"Accordion_module_body__43fdf130","open":"Accordion_module_open__43fdf130"};
-n(css$K,{});
+var css$O = ".Accordion_module_root__a63f6f55 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  width: 100%;\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell] {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.5rem;\n  padding: 0.5rem 1rem;\n  cursor: pointer;\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell] > [data-elem=component1] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell] > [data-elem=component1] .Accordion_module_icon__a63f6f55 {\n  transform: rotate(-90deg);\n  width: 1rem;\n  height: 1rem;\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell] .Accordion_module_title__a63f6f55 {\n  flex: 1 1 auto;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell]:hover {\n  background: var(--background);\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell]:hover .Accordion_module_icon__a63f6f55,\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell]:hover .Accordion_module_title__a63f6f55 {\n  color: var(--highlight);\n  fill: var(--highlight);\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_body__a63f6f55 {\n  display: none;\n  padding: 0.5rem 2.5rem;\n}\n.Accordion_module_root__a63f6f55.Accordion_module_open__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell] [data-elem=component1] .Accordion_module_icon__a63f6f55 {\n  transform: none;\n}\n.Accordion_module_root__a63f6f55.Accordion_module_open__a63f6f55 > .Accordion_module_body__a63f6f55 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n}\n.Accordion_module_root__a63f6f55.Accordion_module_open__a63f6f55 > .Accordion_module_body__a63f6f55 > button[data-elem=base-cell] {\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  align-self: flex-end;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-end;\n  align-items: center;\n}\n.Accordion_module_root__a63f6f55.Accordion_module_open__a63f6f55 > .Accordion_module_body__a63f6f55 > button[data-elem=base-cell] .Accordion_module_expand__a63f6f55 {\n  height: 1.5rem;\n  width: 1.5rem;\n}";
+var modules_8207625f = {"root":"Accordion_module_root__a63f6f55","header":"Accordion_module_header__a63f6f55","icon":"Accordion_module_icon__a63f6f55","title":"Accordion_module_title__a63f6f55","body":"Accordion_module_body__a63f6f55","open":"Accordion_module_open__a63f6f55","expand":"Accordion_module_expand__a63f6f55"};
+n(css$O,{});
 
 var Accordion = function Accordion(props) {
   var defaultOpen = props.defaultOpen,
@@ -2318,7 +2472,8 @@ var Accordion = function Accordion(props) {
     description = props.description,
     children = props.children,
     _onClick = props.onClick,
-    className = props.className;
+    className = props.className,
+    onExpand = props.onExpand;
   var _useState = React.useState(defaultOpen),
     _useState2 = _slicedToArray(_useState, 2),
     open = _useState2[0],
@@ -2355,7 +2510,18 @@ var Accordion = function Accordion(props) {
       className: modules_8207625f.body,
       children: [description && /*#__PURE__*/jsxRuntime.jsx("p", {
         children: description
-      }), children]
+      }), children, onExpand && /*#__PURE__*/jsxRuntime.jsx(Button, {
+        size: "auto",
+        variant: "text",
+        onClick: function onClick() {
+          onExpand();
+        },
+        rightComponent: function rightComponent() {
+          return /*#__PURE__*/jsxRuntime.jsx(ExpandArrowAlt, {
+            className: modules_8207625f.expand
+          });
+        }
+      })]
     })]
   });
 };
@@ -2365,7 +2531,8 @@ Accordion.propTypes = {
   description: propTypes$1.exports.string,
   defaultOpen: propTypes$1.exports.bool,
   onClick: propTypes$1.exports.func,
-  className: propTypes$1.exports.string
+  className: propTypes$1.exports.string,
+  onExpand: propTypes$1.exports.func
 };
 Accordion.defaultProps = {
   iconPlacement: 'left',
@@ -2373,155 +2540,13 @@ Accordion.defaultProps = {
   description: null,
   defaultOpen: false,
   onClick: function onClick() {},
-  className: ''
+  className: '',
+  onExpand: null
 };
 
-var css$J = ".Alert_module_root__b5fc9a1d {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: flex-start;\n  position: fixed;\n  padding: 0.938rem;\n  width: 500px;\n}\n.Alert_module_root__b5fc9a1d.Alert_module_positionBottomCenter__b5fc9a1d {\n  left: 50%;\n  bottom: 1rem;\n  transform: translate(-50%, 0);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_positionTopRight__b5fc9a1d {\n  right: 1rem;\n  top: 1rem;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_left__b5fc9a1d {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_left__b5fc9a1d .Alert_module_icons__b5fc9a1d {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  padding: 0.313rem 0.938rem 0rem 0rem;\n  height: auto;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_left__b5fc9a1d .Alert_module_icons__b5fc9a1d .Alert_module_icon__b5fc9a1d {\n  width: 1.25rem;\n  height: 1.25rem;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_left__b5fc9a1d .Alert_module_content__b5fc9a1d {\n  padding: 0.188rem 0.938rem 0rem 0rem;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_left__b5fc9a1d .Alert_module_content__b5fc9a1d .Alert_module_title__b5fc9a1d {\n  font-size: 0.875rem;\n  font-weight: 600;\n  padding-right: 2px;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_left__b5fc9a1d .Alert_module_content__b5fc9a1d .Alert_module_description__b5fc9a1d {\n  word-wrap: break-word;\n  height: auto;\n  font-size: 0.875rem;\n  font-weight: 400;\n  margin-bottom: 0.5rem;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_actions__b5fc9a1d {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: flex-start;\n  gap: 5px;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_actions__b5fc9a1d .Alert_module_button__b5fc9a1d {\n  padding: 0.313rem 1rem;\n  font-weight: 400;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_actions__b5fc9a1d .Alert_module_close__b5fc9a1d {\n  padding-top: 0.313rem;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_actions__b5fc9a1d .Alert_module_close__b5fc9a1d .Alert_module_icon__b5fc9a1d {\n  width: 1.25rem;\n  height: 1.25rem;\n  fill: var(--black);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_borderDefault__b5fc9a1d {\n  border-width: 0.063rem;\n}\n.Alert_module_root__b5fc9a1d.Alert_module_borderThickLeft__b5fc9a1d {\n  border-width: 0.063rem 0.063rem 0.063rem 0.25rem;\n}\n.Alert_module_root__b5fc9a1d.Alert_module_borderNone__b5fc9a1d {\n  border-width: 0rem 0rem 0rem 0.25rem;\n}\n.Alert_module_root__b5fc9a1d.Alert_module_info__b5fc9a1d {\n  border-style: solid;\n  border-color: var(--info);\n  background-color: #edf5ff;\n}\n.Alert_module_root__b5fc9a1d.Alert_module_info__b5fc9a1d .Alert_module_icon__b5fc9a1d {\n  fill: var(--info);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_success__b5fc9a1d {\n  border-style: solid;\n  border-color: var(--success);\n  background-color: var(--success-bg);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_success__b5fc9a1d .Alert_module_icon__b5fc9a1d {\n  fill: var(--success);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_danger__b5fc9a1d {\n  border-style: solid;\n  border-color: var(--error);\n  background-color: var(--error-bg);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_danger__b5fc9a1d .Alert_module_icon__b5fc9a1d {\n  fill: var(--error);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_warning__b5fc9a1d {\n  border-style: solid;\n  border-color: var(--warning);\n  background-color: var(--warning-bg);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_warning__b5fc9a1d .Alert_module_icon__b5fc9a1d {\n  fill: var(--warning);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_shadow__b5fc9a1d {\n  box-shadow: 0.125rem 0.5rem 1rem rgba(60, 60, 60, 0.12);\n}";
+var css$N = ".Alert_module_root__b5fc9a1d {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: flex-start;\n  position: fixed;\n  padding: 0.938rem;\n  width: 500px;\n}\n.Alert_module_root__b5fc9a1d.Alert_module_positionBottomCenter__b5fc9a1d {\n  left: 50%;\n  bottom: 1rem;\n  transform: translate(-50%, 0);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_positionTopRight__b5fc9a1d {\n  right: 1rem;\n  top: 1rem;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_left__b5fc9a1d {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_left__b5fc9a1d .Alert_module_icons__b5fc9a1d {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  padding: 0.313rem 0.938rem 0rem 0rem;\n  height: auto;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_left__b5fc9a1d .Alert_module_icons__b5fc9a1d .Alert_module_icon__b5fc9a1d {\n  width: 1.25rem;\n  height: 1.25rem;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_left__b5fc9a1d .Alert_module_content__b5fc9a1d {\n  padding: 0.188rem 0.938rem 0rem 0rem;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_left__b5fc9a1d .Alert_module_content__b5fc9a1d .Alert_module_title__b5fc9a1d {\n  font-size: 0.875rem;\n  font-weight: 600;\n  padding-right: 2px;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_left__b5fc9a1d .Alert_module_content__b5fc9a1d .Alert_module_description__b5fc9a1d {\n  word-wrap: break-word;\n  height: auto;\n  font-size: 0.875rem;\n  font-weight: 400;\n  margin-bottom: 0.5rem;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_actions__b5fc9a1d {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: flex-start;\n  gap: 5px;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_actions__b5fc9a1d .Alert_module_button__b5fc9a1d {\n  padding: 0.313rem 1rem;\n  font-weight: 400;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_actions__b5fc9a1d .Alert_module_close__b5fc9a1d {\n  padding-top: 0.313rem;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_actions__b5fc9a1d .Alert_module_close__b5fc9a1d .Alert_module_icon__b5fc9a1d {\n  width: 1.25rem;\n  height: 1.25rem;\n  fill: var(--black);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_borderDefault__b5fc9a1d {\n  border-width: 0.063rem;\n}\n.Alert_module_root__b5fc9a1d.Alert_module_borderThickLeft__b5fc9a1d {\n  border-width: 0.063rem 0.063rem 0.063rem 0.25rem;\n}\n.Alert_module_root__b5fc9a1d.Alert_module_borderNone__b5fc9a1d {\n  border-width: 0rem 0rem 0rem 0.25rem;\n}\n.Alert_module_root__b5fc9a1d.Alert_module_info__b5fc9a1d {\n  border-style: solid;\n  border-color: var(--info);\n  background-color: #edf5ff;\n}\n.Alert_module_root__b5fc9a1d.Alert_module_info__b5fc9a1d .Alert_module_icon__b5fc9a1d {\n  fill: var(--info);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_success__b5fc9a1d {\n  border-style: solid;\n  border-color: var(--success);\n  background-color: var(--success-bg);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_success__b5fc9a1d .Alert_module_icon__b5fc9a1d {\n  fill: var(--success);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_danger__b5fc9a1d {\n  border-style: solid;\n  border-color: var(--error);\n  background-color: var(--error-bg);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_danger__b5fc9a1d .Alert_module_icon__b5fc9a1d {\n  fill: var(--error);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_warning__b5fc9a1d {\n  border-style: solid;\n  border-color: var(--warning);\n  background-color: var(--warning-bg);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_warning__b5fc9a1d .Alert_module_icon__b5fc9a1d {\n  fill: var(--warning);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_shadow__b5fc9a1d {\n  box-shadow: 0.125rem 0.5rem 1rem rgba(60, 60, 60, 0.12);\n}";
 var modules_3a764ea3 = {"root":"Alert_module_root__b5fc9a1d","position-bottom-center":"Alert_module_positionBottomCenter__b5fc9a1d","position-top-right":"Alert_module_positionTopRight__b5fc9a1d","left":"Alert_module_left__b5fc9a1d","icons":"Alert_module_icons__b5fc9a1d","icon":"Alert_module_icon__b5fc9a1d","content":"Alert_module_content__b5fc9a1d","title":"Alert_module_title__b5fc9a1d","description":"Alert_module_description__b5fc9a1d","actions":"Alert_module_actions__b5fc9a1d","button":"Alert_module_button__b5fc9a1d","close":"Alert_module_close__b5fc9a1d","border-default":"Alert_module_borderDefault__b5fc9a1d","border-thick-left":"Alert_module_borderThickLeft__b5fc9a1d","border-none":"Alert_module_borderNone__b5fc9a1d","info":"Alert_module_info__b5fc9a1d","success":"Alert_module_success__b5fc9a1d","danger":"Alert_module_danger__b5fc9a1d","warning":"Alert_module_warning__b5fc9a1d","shadow":"Alert_module_shadow__b5fc9a1d"};
-n(css$J,{});
-
-var css$I = ":root {\n  --white: #ffffff;\n  --black: #000000;\n  --dark-grey: #333333;\n  --dark-grey-o-85: rgba(51, 51, 51, 0.85);\n  --grey: #737373;\n  --grey1: #888888;\n  --grey2: #a6a6a6;\n  --grey3: #bbbbbb;\n  --grey4: #c4c4c4;\n  --grey5: #dddddd;\n  --grey6: #e8e8e8;\n  --grey7: #eeeeee;\n  --grey8: #f2f2f2;\n  --grey9: #eff0f0;\n  --grey10: #f7f7f7;\n  --highlight: #0f62fe;\n  --dark-blue: #001833;\n  --background: #d0e2ff;\n  --banyan-blue: #00037c;\n  --banyan-orange: #ff892a;\n  --banyan-pink: #ff1597;\n  --banyan-gradient: linear-gradient(\n  \t84.71deg,\n  \tvar(--banyan-pink) 0.48%,\n  \tvar(--banyan-orange) 99.57%\n  );\n  --error: #da1e28;\n  --error-bg: #fff1f1;\n  --error-outline: rgba(218, 30, 40, 0.08);\n  --success: #24a148;\n  --success-bg: #defbe6;\n  --success-outline: rgba(36, 161, 72, 0.08);\n  --warning: #f1c21b;\n  --warning-bg: #fff8e1;\n  --warning-outline: rgba(203, 160, 6, 0.08);\n  --info: #0043ce;\n  --info-bg: #edf5ff;\n  --info-outline: #2864db98;\n}\n\nbutton.BaseButton_module_root__84c13925[data-elem=base-cell] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  display: inline-flex;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  outline: none;\n  border: none;\n  background: none;\n  padding: 0.5rem 0.75rem;\n}\nbutton.BaseButton_module_root__84c13925[data-elem=base-cell]:disabled {\n  cursor: not-allowed;\n}\nbutton.BaseButton_module_root__84c13925[data-elem=base-cell].BaseButton_module_contained__84c13925 {\n  background: var(--black);\n  color: var(--white);\n}\nbutton.BaseButton_module_root__84c13925[data-elem=base-cell].BaseButton_module_outlined__84c13925 {\n  color: var(--black);\n  border: 1px solid var(--black);\n}\nbutton.BaseButton_module_root__84c13925[data-elem=base-cell].BaseButton_module_text__84c13925 {\n  color: var(--black);\n}\nbutton.BaseButton_module_root__84c13925[data-elem=base-cell] [data-elem*=component] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\nbutton.BaseButton_module_root__84c13925[data-elem=base-cell] [data-elem=component2] {\n  min-width: 0;\n}\nbutton.BaseButton_module_root__84c13925[data-elem=base-cell] [data-elem=title] {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n}";
-var modules_ab72627b = {"white":"var(--white)","black":"var(--black)","dark-grey":"var(--dark-grey)","dark-grey-o-85":"var(--dark-grey-o-85)","grey":"var(--grey)","grey1":"var(--grey1)","grey2":"var(--grey2)","grey3":"var(--grey3)","grey4":"var(--grey4)","grey5":"var(--grey5)","grey6":"var(--grey6)","grey7":"var(--grey7)","grey8":"var(--grey8)","grey9":"var(--grey9)","grey10":"var(--grey10)","highlight":"var(--highlight)","dark-blue":"var(--dark-blue)","background":"var(--background)","banyan-blue":"var(--banyan-blue)","banyan-orange":"var(--banyan-orange)","banyan-pink":"var(--banyan-pink)","banyan-gradient":"var(--banyan-gradient)","error":"var(--error)","error-bg":"var(--error-bg)","error-outline":"var(--error-outline)","success":"var(--success)","success-bg":"var(--success-bg)","success-outline":"var(--success-outline)","warning":"var(--warning)","warning-bg":"var(--warning-bg)","warning-outline":"var(--warning-outline)","info":"var(--info)","info-bg":"var(--info-bg)","info-outline":"var(--info-outline)","root":"BaseButton_module_root__84c13925","contained":"BaseButton_module_contained__84c13925","outlined":"BaseButton_module_outlined__84c13925","text":"BaseButton_module_text__84c13925"};
-n(css$I,{});
-
-var BaseButton = /*#__PURE__*/React.forwardRef(function BaseButton(props, ref) {
-  var className = props.className,
-    component1 = props.component1,
-    title = props.title,
-    component3 = props.component3,
-    size = props.size,
-    flexible = props.flexible,
-    radius = props.radius,
-    disabled = props.disabled,
-    type = props.type,
-    onClick = props.onClick,
-    variant = props.variant;
-  var Title = title && /*#__PURE__*/jsxRuntime.jsx("span", {
-    "data-elem": "title",
-    children: title
-  });
-  return /*#__PURE__*/jsxRuntime.jsx(BaseCell, {
-    className: classes(className, modules_ab72627b.root, modules_ab72627b[variant]),
-    ref: ref,
-    component1: component1,
-    component2: Title,
-    component3: component3,
-    flexible: flexible,
-    radius: radius,
-    size: size,
-    attrs: {
-      disabled: disabled,
-      type: type,
-      onClick: onClick
-    },
-    RootDOM: "button"
-  });
-});
-BaseButton.propTypes = _objectSpread2(_objectSpread2({}, BaseCell.propTypes), {}, {
-  title: propTypes$1.exports.string,
-  disabled: propTypes$1.exports.bool,
-  type: propTypes$1.exports.oneOf(['button', 'submit', 'reset']),
-  onClick: propTypes$1.exports.func,
-  variant: propTypes$1.exports.oneOf(['contained', 'outlined', 'text'])
-});
-BaseButton.defaultProps = _objectSpread2(_objectSpread2({}, BaseCell.defaultProps), {}, {
-  title: null,
-  disabled: false,
-  type: 'submit',
-  onClick: function onClick() {},
-  variant: 'contained'
-});
-
-var css$H = ".Button_module_root__fe35a4dc[data-elem=base-cell] {\n  cursor: pointer;\n}\n.Button_module_root__fe35a4dc[data-elem=base-cell] [data-elem=component2] [data-elem=title] {\n  font-weight: 500;\n  font-size: 0.875rem;\n}\n.Button_module_root__fe35a4dc[data-elem=base-cell].Button_module_primary__fe35a4dc.Button_module_contained__fe35a4dc {\n  background-color: var(--highlight);\n  color: var(--white);\n}\n.Button_module_root__fe35a4dc[data-elem=base-cell].Button_module_primary__fe35a4dc.Button_module_outlined__fe35a4dc {\n  background-color: transparent;\n  border-color: var(--highlight);\n}\n.Button_module_root__fe35a4dc[data-elem=base-cell].Button_module_primary__fe35a4dc.Button_module_outlined__fe35a4dc, .Button_module_root__fe35a4dc[data-elem=base-cell].Button_module_primary__fe35a4dc.Button_module_text__fe35a4dc {\n  color: var(--highlight);\n}\n.Button_module_root__fe35a4dc[data-elem=base-cell].Button_module_success__fe35a4dc.Button_module_contained__fe35a4dc {\n  background-color: var(--success);\n  color: var(--white);\n}\n.Button_module_root__fe35a4dc[data-elem=base-cell].Button_module_success__fe35a4dc.Button_module_outlined__fe35a4dc {\n  background-color: transparent;\n  border-color: var(--success);\n}\n.Button_module_root__fe35a4dc[data-elem=base-cell].Button_module_success__fe35a4dc.Button_module_outlined__fe35a4dc, .Button_module_root__fe35a4dc[data-elem=base-cell].Button_module_success__fe35a4dc.Button_module_text__fe35a4dc {\n  color: var(--success);\n}\n.Button_module_root__fe35a4dc[data-elem=base-cell].Button_module_danger__fe35a4dc.Button_module_contained__fe35a4dc {\n  background-color: var(--error);\n  color: var(--white);\n}\n.Button_module_root__fe35a4dc[data-elem=base-cell].Button_module_danger__fe35a4dc.Button_module_outlined__fe35a4dc {\n  background-color: transparent;\n  border-color: var(--error);\n}\n.Button_module_root__fe35a4dc[data-elem=base-cell].Button_module_danger__fe35a4dc.Button_module_outlined__fe35a4dc, .Button_module_root__fe35a4dc[data-elem=base-cell].Button_module_danger__fe35a4dc.Button_module_text__fe35a4dc {\n  color: var(--error);\n}\n.Button_module_root__fe35a4dc[data-elem=base-cell].Button_module_warning__fe35a4dc.Button_module_contained__fe35a4dc {\n  background-color: var(--warning);\n  color: var(--white);\n}\n.Button_module_root__fe35a4dc[data-elem=base-cell].Button_module_warning__fe35a4dc.Button_module_outlined__fe35a4dc {\n  background-color: transparent;\n  border-color: var(--warning);\n}\n.Button_module_root__fe35a4dc[data-elem=base-cell].Button_module_warning__fe35a4dc.Button_module_outlined__fe35a4dc, .Button_module_root__fe35a4dc[data-elem=base-cell].Button_module_warning__fe35a4dc.Button_module_text__fe35a4dc {\n  color: var(--warning);\n}\n.Button_module_root__fe35a4dc[data-elem=base-cell]:disabled.Button_module_contained__fe35a4dc {\n  background-color: var(--grey4);\n  color: var(--grey);\n}\n.Button_module_root__fe35a4dc[data-elem=base-cell]:disabled.Button_module_outlined__fe35a4dc {\n  background-color: transparent;\n  border-color: var(--grey);\n}\n.Button_module_root__fe35a4dc[data-elem=base-cell]:disabled.Button_module_outlined__fe35a4dc, .Button_module_root__fe35a4dc[data-elem=base-cell]:disabled.Button_module_text__fe35a4dc {\n  color: var(--grey);\n}";
-var modules_b0070f27 = {"root":"Button_module_root__fe35a4dc","primary":"Button_module_primary__fe35a4dc","contained":"Button_module_contained__fe35a4dc","outlined":"Button_module_outlined__fe35a4dc","text":"Button_module_text__fe35a4dc","success":"Button_module_success__fe35a4dc","danger":"Button_module_danger__fe35a4dc","warning":"Button_module_warning__fe35a4dc"};
-n(css$H,{});
-
-var Button = /*#__PURE__*/React.forwardRef(function Button(props, ref) {
-  var className = props.className,
-    type = props.type,
-    LeftComponent = props.leftComponent,
-    title = props.title,
-    RightComponent = props.rightComponent,
-    size = props.size,
-    flexible = props.flexible,
-    radius = props.radius,
-    disabled = props.disabled,
-    onClick = props.onClick,
-    variant = props.variant,
-    color = props.color;
-  return /*#__PURE__*/jsxRuntime.jsx(BaseButton, {
-    ref: ref,
-    type: type,
-    component1: LeftComponent && /*#__PURE__*/jsxRuntime.jsx(LeftComponent, {}),
-    title: title,
-    component3: RightComponent && /*#__PURE__*/jsxRuntime.jsx(RightComponent, {}),
-    size: size,
-    flexible: flexible,
-    radius: radius,
-    disabled: disabled,
-    onClick: onClick,
-    variant: variant,
-    className: classes(modules_b0070f27.root, modules_b0070f27["radius-".concat(radius)], modules_b0070f27[variant], modules_b0070f27[color], className)
-  });
-});
-Button.propTypes = _objectSpread2(_objectSpread2({}, BaseButton.propTypes), {}, {
-  color: propTypes$1.exports.oneOf(['primary', 'success', 'danger', 'warning']),
-  leftComponent: propTypes$1.exports.node,
-  rightComponent: propTypes$1.exports.node
-});
-Button.defaultProps = _objectSpread2(_objectSpread2({}, BaseButton.defaultProps), {}, {
-  color: 'primary',
-  leftComponent: null,
-  rightComponent: null,
-  radius: 'default'
-});
-
-var css$G = ".Chip_module_root__0aa07630[data-elem=base-cell] {\n  position: relative;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell] [data-elem=component2] [data-elem=title] {\n  font-weight: 500;\n  font-size: 0.875rem;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_sm__0aa07630 {\n  height: 2rem;\n  padding: 0.188rem 0.5rem;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_md__0aa07630 {\n  height: 2.25rem;\n  padding: 0.563rem 1rem;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630.Chip_module_success__0aa07630 {\n  background-color: var(--success-bg);\n  color: var(--success);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630.Chip_module_info__0aa07630 {\n  background-color: var(--info-bg);\n  color: var(--info);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630.Chip_module_danger__0aa07630 {\n  background-color: var(--error-bg);\n  color: var(--error);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630.Chip_module_warning__0aa07630 {\n  background-color: var(--warning-bg);\n  color: var(--warning);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630.Chip_module_default__0aa07630 {\n  background-color: var(--grey5);\n  color: var(--grey);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630:hover {\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630 {\n  border-width: 1px;\n  border-style: solid;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_success__0aa07630 {\n  background-color: var(--success-bg);\n  color: var(--success);\n  border-color: var(--success-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_success__0aa07630:hover {\n  background-color: var(--success-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_info__0aa07630 {\n  background-color: var(--info-bg);\n  color: var(--info);\n  border-color: var(--info-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_info__0aa07630:hover {\n  background-color: var(--info-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_danger__0aa07630 {\n  background-color: var(--error-bg);\n  color: var(--error);\n  border-color: var(--error-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_danger__0aa07630:hover {\n  background-color: var(--error-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_warning__0aa07630 {\n  background-color: var(--warning-bg);\n  color: var(--warning);\n  border-color: var(--warning-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_warning__0aa07630:hover {\n  background-color: var(--warning-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_default__0aa07630 {\n  background-color: var(--grey8);\n  color: var(--grey);\n  border-color: var(--grey6);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_default__0aa07630:hover {\n  background-color: var(--grey6);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_status__0aa07630, .Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_input__0aa07630 {\n  filter: grayscale(1);\n  border-color: var(--grey4);\n  background-color: var(--grey5);\n  color: var(--grey2);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_status__0aa07630 [data-elem=component1],\n.Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_status__0aa07630 [data-elem=component3], .Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_input__0aa07630 [data-elem=component1],\n.Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_input__0aa07630 [data-elem=component3] {\n  opacity: 0.5;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_status__0aa07630:hover, .Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_input__0aa07630:hover {\n  box-shadow: none;\n  background-color: var(--grey5);\n}";
-var modules_31aa5fd7 = {"root":"Chip_module_root__0aa07630","sm":"Chip_module_sm__0aa07630","md":"Chip_module_md__0aa07630","status":"Chip_module_status__0aa07630","success":"Chip_module_success__0aa07630","info":"Chip_module_info__0aa07630","danger":"Chip_module_danger__0aa07630","warning":"Chip_module_warning__0aa07630","default":"Chip_module_default__0aa07630","input":"Chip_module_input__0aa07630"};
-n(css$G,{});
-
-var Chip = function Chip(props) {
-  var className = props.className,
-    type = props.type,
-    LeftComponent = props.leftComponent,
-    title = props.title,
-    RightComponent = props.rightComponent,
-    size = props.size,
-    flexible = props.flexible,
-    radius = props.radius,
-    disabled = props.disabled,
-    onClick = props.onClick,
-    variant = props.variant,
-    color = props.color;
-  return /*#__PURE__*/jsxRuntime.jsx(BaseButton, {
-    type: type,
-    component1: LeftComponent && /*#__PURE__*/jsxRuntime.jsx(LeftComponent, {}),
-    title: title,
-    component3: RightComponent && /*#__PURE__*/jsxRuntime.jsx(RightComponent, {}),
-    size: 'auto',
-    flexible: flexible,
-    radius: radius,
-    disabled: disabled,
-    onClick: onClick,
-    variant: 'contained',
-    className: classes(modules_31aa5fd7.root, modules_31aa5fd7["radius-".concat(radius)], modules_31aa5fd7[variant], modules_31aa5fd7[color], modules_31aa5fd7[size], className)
-  });
-};
-Chip.propTypes = _objectSpread2(_objectSpread2({}, BaseButton.propTypes), {}, {
-  size: propTypes$1.exports.oneOf(['sm', 'md']),
-  variant: propTypes$1.exports.oneOf(['status', 'input']),
-  color: propTypes$1.exports.oneOf(['success', 'info', 'warning', 'danger', 'default']),
-  leftComponent: propTypes$1.exports.func,
-  rightComponent: propTypes$1.exports.func
-});
-Chip.defaultProps = _objectSpread2(_objectSpread2({}, BaseButton.defaultProps), {}, {
-  size: 'sm',
-  variant: 'status',
-  color: 'success',
-  leftComponent: null,
-  rightComponent: null,
-  radius: 'default'
-});
+n(css$N,{});
 
 function getSide(placement) {
   return placement.split('-')[0];
@@ -5818,128 +5843,9 @@ const useListNavigation = function (_ref, _temp2) {
   };
 };
 
-/**
- * Provides a matching callback that can be used to focus an item as the user
- * types, often used in tandem with `useListNavigation()`.
- * @see https://floating-ui.com/docs/useTypeahead
- */
-const useTypeahead = function (_ref, _temp) {
-  var _ref2;
-
-  let {
-    open,
-    dataRef
-  } = _ref;
-  let {
-    listRef,
-    activeIndex,
-    onMatch = () => {},
-    enabled = true,
-    findMatch = null,
-    resetMs = 1000,
-    ignoreKeys = [],
-    selectedIndex = null
-  } = _temp === void 0 ? {
-    listRef: {
-      current: []
-    },
-    activeIndex: null
-  } : _temp;
-  const timeoutIdRef = React__namespace.useRef();
-  const stringRef = React__namespace.useRef('');
-  const prevIndexRef = React__namespace.useRef((_ref2 = selectedIndex != null ? selectedIndex : activeIndex) != null ? _ref2 : -1);
-  const matchIndexRef = React__namespace.useRef(null);
-  index(() => {
-    if (open) {
-      clearTimeout(timeoutIdRef.current);
-      matchIndexRef.current = null;
-      stringRef.current = '';
-    }
-  }, [open]);
-  index(() => {
-    // Sync arrow key navigation but not typeahead navigation
-    if (open && stringRef.current === '') {
-      var _ref3;
-
-      prevIndexRef.current = (_ref3 = selectedIndex != null ? selectedIndex : activeIndex) != null ? _ref3 : -1;
-    }
-  }, [open, selectedIndex, activeIndex]);
-
-  function onKeyDown(event) {
-    // Correctly scope nested non-portalled floating elements. Since the nested
-    // floating element is inside of the another, we find the closest role
-    // that indicates the floating element scope.
-    const target = getTarget(event.nativeEvent);
-
-    if (isElement(target) && (activeElement(getDocument(target)) !== event.currentTarget ? target.closest('[role="dialog"],[role="menu"],[role="listbox"],[role="tree"],[role="grid"]') !== event.currentTarget : false)) {
-      return;
-    }
-
-    if (stringRef.current.length > 0 && stringRef.current[0] !== ' ') {
-      dataRef.current.typing = true;
-
-      if (event.key === ' ') {
-        stopEvent$1(event);
-      }
-    }
-
-    const listContent = listRef.current;
-
-    if (listContent == null || ignoreKeys.includes(event.key) || // Character key
-    event.key.length !== 1 || // Modifier key
-    event.ctrlKey || event.metaKey || event.altKey) {
-      return;
-    } // Bail out if the list contains a word like "llama" or "aaron". TODO:
-    // allow it in this case, too.
-
-
-    const allowRapidSuccessionOfFirstLetter = listContent.every(text => {
-      var _text$, _text$2;
-
-      return text ? ((_text$ = text[0]) == null ? void 0 : _text$.toLocaleLowerCase()) !== ((_text$2 = text[1]) == null ? void 0 : _text$2.toLocaleLowerCase()) : true;
-    }); // Allows the user to cycle through items that start with the same letter
-    // in rapid succession
-
-    if (allowRapidSuccessionOfFirstLetter && stringRef.current === event.key) {
-      stringRef.current = '';
-      prevIndexRef.current = matchIndexRef.current;
-    }
-
-    stringRef.current += event.key;
-    clearTimeout(timeoutIdRef.current);
-    timeoutIdRef.current = setTimeout(() => {
-      stringRef.current = '';
-      prevIndexRef.current = matchIndexRef.current;
-      dataRef.current.typing = false;
-    }, resetMs);
-    const prevIndex = prevIndexRef.current;
-    const orderedList = [...listContent.slice((prevIndex != null ? prevIndex : 0) + 1), ...listContent.slice(0, (prevIndex != null ? prevIndex : 0) + 1)];
-    const str = findMatch ? findMatch(orderedList, stringRef.current) : orderedList.find(text => (text == null ? void 0 : text.toLocaleLowerCase().indexOf(stringRef.current.toLocaleLowerCase())) === 0);
-    const index = str ? listContent.indexOf(str) : -1;
-
-    if (index !== -1) {
-      onMatch(index);
-      matchIndexRef.current = index;
-    }
-  }
-
-  if (!enabled) {
-    return {};
-  }
-
-  return {
-    reference: {
-      onKeyDown
-    },
-    floating: {
-      onKeyDown
-    }
-  };
-};
-
-var css$F = ".Popper_module_backdrop__c7f1e48a {\n  position: fixed;\n  z-index: 100;\n  inset: 0;\n  background: rgba(0, 0, 0, 0.4);\n}\n.Popper_module_backdrop__c7f1e48a.Popper_module_transparent__c7f1e48a {\n  background: none;\n}\n.Popper_module_backdrop__c7f1e48a.Popper_module_hideBackdrop__c7f1e48a {\n  position: static;\n}";
-var modules_fe46b225 = {"backdrop":"Popper_module_backdrop__c7f1e48a","transparent":"Popper_module_transparent__c7f1e48a","hide-backdrop":"Popper_module_hideBackdrop__c7f1e48a"};
-n(css$F,{});
+var css$M = ".Popper_module_backdrop__0c794282 {\n  position: fixed;\n  z-index: 100;\n  inset: 0;\n  background: rgba(0, 0, 0, 0.4);\n}\n.Popper_module_backdrop__0c794282.Popper_module_transparent__0c794282 {\n  background: none;\n}\n.Popper_module_backdrop__0c794282.Popper_module_hideBackdrop__0c794282 {\n  position: static !important;\n}";
+var modules_fe46b225 = {"backdrop":"Popper_module_backdrop__0c794282","transparent":"Popper_module_transparent__0c794282","hide-backdrop":"Popper_module_hideBackdrop__0c794282"};
+n(css$M,{});
 
 var Popper = function Popper(props) {
   var open = props.open,
@@ -5948,8 +5854,18 @@ var Popper = function Popper(props) {
     backdrop = props.backdrop,
     className = props.className,
     transparent = props.transparent;
+  var id = useId();
+  var portalId = "".concat(wrapperId).concat(id);
+  React.useEffect(function () {
+    return function () {
+      var portalDOM = document.getElementById(portalId);
+      if (portalDOM) {
+        document.body.removeChild(portalDOM);
+      }
+    };
+  }, []);
   return /*#__PURE__*/jsxRuntime.jsx(FloatingPortal, {
-    id: wrapperId,
+    id: portalId,
     children: open && /*#__PURE__*/jsxRuntime.jsx(FloatingOverlay, {
       lockScroll: true,
       className: classes(className, modules_fe46b225.backdrop, transparent ? modules_fe46b225.transparent : '', backdrop ? '' : modules_fe46b225['hide-backdrop']),
@@ -11791,9 +11707,9 @@ process.env.NODE_ENV !== "production" ? Link.propTypes
 } : void 0;
 var Link$1 = Link;
 
-var css$E = ".Breadcrumbs_module_container__7d7f9279 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  width: auto;\n}\n.Breadcrumbs_module_container__7d7f9279 .Breadcrumbs_module_seperator__7d7f9279 {\n  width: 1.5rem;\n  height: 1.5rem;\n  stroke: var(--grey2);\n}\n.Breadcrumbs_module_container__7d7f9279 .Breadcrumbs_module_breadcrumbItem__7d7f9279 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  font-weight: 600;\n  font-size: 0.875rem;\n  color: var(--grey2);\n}\n.Breadcrumbs_module_container__7d7f9279 .Breadcrumbs_module_breadcrumbItem__7d7f9279.Breadcrumbs_module_active__7d7f9279 {\n  color: var(--black);\n}";
+var css$L = ".Breadcrumbs_module_container__7d7f9279 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  width: auto;\n}\n.Breadcrumbs_module_container__7d7f9279 .Breadcrumbs_module_seperator__7d7f9279 {\n  width: 1.5rem;\n  height: 1.5rem;\n  stroke: var(--grey2);\n}\n.Breadcrumbs_module_container__7d7f9279 .Breadcrumbs_module_breadcrumbItem__7d7f9279 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  font-weight: 600;\n  font-size: 0.875rem;\n  color: var(--grey2);\n}\n.Breadcrumbs_module_container__7d7f9279 .Breadcrumbs_module_breadcrumbItem__7d7f9279.Breadcrumbs_module_active__7d7f9279 {\n  color: var(--black);\n}";
 var modules_651f50a9 = {"container":"Breadcrumbs_module_container__7d7f9279","seperator":"Breadcrumbs_module_seperator__7d7f9279","breadcrumb-item":"Breadcrumbs_module_breadcrumbItem__7d7f9279","active":"Breadcrumbs_module_active__7d7f9279"};
-n(css$E,{});
+n(css$L,{});
 
 var BreadCrumbs = function BreadCrumbs(props) {
   var crumbs = props.crumbs,
@@ -14034,7 +13950,7 @@ var languageLoaders = {
     return Promise.resolve().then(function () { return cssExtras; });
   }),
   css: createLanguageAsyncLoader("css", function () {
-    return Promise.resolve().then(function () { return css$D; });
+    return Promise.resolve().then(function () { return css$K; });
   }),
   d: createLanguageAsyncLoader("d", function () {
     return Promise.resolve().then(function () { return d; });
@@ -21317,10 +21233,10 @@ var markup$2 = /*#__PURE__*/_mergeNamespaces({
   default: markup_1
 }, [markup_1]);
 
-var css_1 = css$C;
-css$C.displayName = 'css';
-css$C.aliases = [];
-function css$C(Prism) {
+var css_1 = css$J;
+css$J.displayName = 'css';
+css$J.aliases = [];
+function css$J(Prism) {
 (function(Prism) {
     var string = /("|')(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/;
     Prism.languages.css = {
@@ -21380,7 +21296,7 @@ function css$C(Prism) {
   })(Prism);
 }
 
-var css$D = /*#__PURE__*/_mergeNamespaces({
+var css$K = /*#__PURE__*/_mergeNamespaces({
   __proto__: null,
   default: css_1
 }, [css_1]);
@@ -21546,7 +21462,7 @@ var h = hastscript.exports;
 var decode$1 = parseEntities_1;
 var Prism = prismCore.exports;
 var markup = markup_1;
-var css$B = css_1;
+var css$I = css_1;
 var clike = clike_1;
 var js = javascript_1;
 
@@ -21574,7 +21490,7 @@ refract.listLanguages = listLanguages;
 
 // Register bundled grammars.
 register$1(markup);
-register$1(css$B);
+register$1(css$I);
 register$1(clike);
 register$1(js);
 
@@ -32616,9 +32532,9 @@ var dracula = {
   numberColor: "#bd93f9"
 };
 
-var css$A = ".CodeSnippet_module_root__cea57b34 {\n  padding: 0.5rem, 1rem;\n  position: relative;\n}\n.CodeSnippet_module_root__cea57b34 .CodeSnippet_module_copy__cea57b34 {\n  position: absolute;\n  right: 1rem;\n  top: 0.5rem;\n  cursor: pointer;\n}\n.CodeSnippet_module_root__cea57b34 .CodeSnippet_module_copy__cea57b34 .CodeSnippet_module_icon__cea57b34 {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.CodeSnippet_module_root__cea57b34 .CodeSnippet_module_copy__cea57b34 .CodeSnippet_module_icon__cea57b34.CodeSnippet_module_dark__cea57b34 {\n  fill: var(--white);\n}\n.CodeSnippet_module_root__cea57b34 .CodeSnippet_module_copy__cea57b34 .CodeSnippet_module_icon__cea57b34.CodeSnippet_module_light__cea57b34 {\n  fill: var(--black);\n}\n.CodeSnippet_module_root__cea57b34 .CodeSnippet_module_copy__cea57b34 .CodeSnippet_module_notCopied__cea57b34 {\n  display: none;\n}\n.CodeSnippet_module_root__cea57b34 .CodeSnippet_module_copy__cea57b34 .CodeSnippet_module_copied__cea57b34 {\n  position: absolute;\n  right: 1.375rem;\n  top: 2.188rem;\n  padding: 0.5rem;\n  border-radius: 0.25rem;\n  background-color: var(--highlight);\n  color: var(--grey10);\n}";
+var css$H = ".CodeSnippet_module_root__cea57b34 {\n  padding: 0.5rem, 1rem;\n  position: relative;\n}\n.CodeSnippet_module_root__cea57b34 .CodeSnippet_module_copy__cea57b34 {\n  position: absolute;\n  right: 1rem;\n  top: 0.5rem;\n  cursor: pointer;\n}\n.CodeSnippet_module_root__cea57b34 .CodeSnippet_module_copy__cea57b34 .CodeSnippet_module_icon__cea57b34 {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.CodeSnippet_module_root__cea57b34 .CodeSnippet_module_copy__cea57b34 .CodeSnippet_module_icon__cea57b34.CodeSnippet_module_dark__cea57b34 {\n  fill: var(--white);\n}\n.CodeSnippet_module_root__cea57b34 .CodeSnippet_module_copy__cea57b34 .CodeSnippet_module_icon__cea57b34.CodeSnippet_module_light__cea57b34 {\n  fill: var(--black);\n}\n.CodeSnippet_module_root__cea57b34 .CodeSnippet_module_copy__cea57b34 .CodeSnippet_module_notCopied__cea57b34 {\n  display: none;\n}\n.CodeSnippet_module_root__cea57b34 .CodeSnippet_module_copy__cea57b34 .CodeSnippet_module_copied__cea57b34 {\n  position: absolute;\n  right: 1.375rem;\n  top: 2.188rem;\n  padding: 0.5rem;\n  border-radius: 0.25rem;\n  background-color: var(--highlight);\n  color: var(--grey10);\n}";
 var modules_c548043f = {"root":"CodeSnippet_module_root__cea57b34","copy":"CodeSnippet_module_copy__cea57b34","icon":"CodeSnippet_module_icon__cea57b34","dark":"CodeSnippet_module_dark__cea57b34","light":"CodeSnippet_module_light__cea57b34","notCopied":"CodeSnippet_module_notCopied__cea57b34","copied":"CodeSnippet_module_copied__cea57b34"};
-n(css$A,{});
+n(css$H,{});
 
 var CodeSnippet = function CodeSnippet(props) {
   var copy = props.copy,
@@ -33502,9 +33418,9 @@ function sub$1(date, duration) {
   return finalDate;
 }
 
-var css$z = ".Header_module_container__26bf5a9c {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  padding: 0rem 1.5625rem;\n}\n.Header_module_container__26bf5a9c .Header_module_title__26bf5a9c {\n  font-weight: 400;\n  font-size: 0.8rem;\n  color: var(--black);\n}\n.Header_module_container__26bf5a9c .Header_module_icon__26bf5a9c {\n  width: 1.5rem;\n  height: 1.5rem;\n  stroke: #181818;\n  cursor: pointer;\n}";
+var css$G = ".Header_module_container__26bf5a9c {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  padding: 0rem 1.5625rem;\n}\n.Header_module_container__26bf5a9c .Header_module_title__26bf5a9c {\n  font-weight: 400;\n  font-size: 0.8rem;\n  color: var(--black);\n}\n.Header_module_container__26bf5a9c .Header_module_icon__26bf5a9c {\n  width: 1.5rem;\n  height: 1.5rem;\n  stroke: #181818;\n  cursor: pointer;\n}";
 var modules_cf337dc1 = {"container":"Header_module_container__26bf5a9c","title":"Header_module_title__26bf5a9c","icon":"Header_module_icon__26bf5a9c"};
-n(css$z,{});
+n(css$G,{});
 
 var Header = function Header(props) {
   var selectedMonth = props.selectedMonth,
@@ -33536,17 +33452,17 @@ var Header = function Header(props) {
   });
 };
 
-var css$y = ".Calender_module_root__5221cce4 {\n  padding: 1rem 0rem;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}";
+var css$F = ".Calender_module_root__5221cce4 {\n  padding: 1rem 0rem;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}";
 var modules_3722b5cd = {"root":"Calender_module_root__5221cce4"};
-n(css$y,{});
+n(css$F,{});
 
-var css$x = ".Body_module_root__85b1b679 {\n  padding: 0.5rem 0.5rem;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-items: stretch;\n}";
+var css$E = ".Body_module_root__85b1b679 {\n  padding: 0.5rem 0.5rem;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-items: stretch;\n}";
 var modules_e6b80d99 = {"root":"Body_module_root__85b1b679"};
-n(css$x,{});
+n(css$E,{});
 
-var css$w = ".Dates_module_dates__e3e1fc43 {\n  display: grid;\n  grid-template-columns: repeat(7, 1fr);\n  align-items: center;\n  flex-wrap: wrap;\n}\n.Dates_module_dates__e3e1fc43 div {\n  flex-basis: 14.28%;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  margin-bottom: 0.25rem;\n  cursor: pointer;\n  align-self: center;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.Dates_module_dates__e3e1fc43 div .Dates_module_date__e3e1fc43 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  text-align: center;\n  vertical-align: middle;\n  border-radius: 1.5rem;\n  height: 2.5rem;\n  width: 2.5rem;\n  font-weight: 400;\n  font-size: 0.875rem;\n  color: var(--black);\n}\n.Dates_module_dates__e3e1fc43 div .Dates_module_selected__e3e1fc43 {\n  background-color: var(--highlight);\n  color: var(--white);\n}\n.Dates_module_dates__e3e1fc43 div .Dates_module_unSelected__e3e1fc43 {\n  background-color: var(--white);\n  border-color: var(--highlight);\n  border-width: 0.125rem;\n  border-style: solid;\n  color: var(--black);\n}\n.Dates_module_dates__e3e1fc43 div .Dates_module_disabled__e3e1fc43 {\n  border-radius: 1.5rem;\n  color: var(--grey2);\n}\n.Dates_module_dates__e3e1fc43 div .Dates_module_diffMonth__e3e1fc43 {\n  opacity: 0.6;\n}\n.Dates_module_dates__e3e1fc43 div:hover .Dates_module_date__e3e1fc43 {\n  background: var(--background);\n  color: var(--highlight);\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n}\n.Dates_module_dates__e3e1fc43 div:hover .Dates_module_selected__e3e1fc43 {\n  background-color: var(--highlight);\n  color: var(--white);\n}\n.Dates_module_dates__e3e1fc43 div:hover .Dates_module_disabled__e3e1fc43 {\n  background: transparent;\n  box-shadow: none;\n  border-radius: 1.5rem;\n  color: var(--grey2);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_minInRange__e3e1fc43 {\n  background-color: var(--highlight);\n  border-radius: 1.5rem 0rem 0rem 1.5rem;\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_minInRange__e3e1fc43 .Dates_module_date__e3e1fc43 {\n  color: var(--white);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_minInRange__e3e1fc43:hover .Dates_module_date__e3e1fc43 {\n  background: var(--highlight);\n  color: var(--white);\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_maxInRange__e3e1fc43 {\n  background-color: var(--highlight);\n  border-radius: 0rem 1.5rem 1.5rem 0rem;\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_maxInRange__e3e1fc43 .Dates_module_date__e3e1fc43 {\n  color: var(--white);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_maxInRange__e3e1fc43:hover .Dates_module_date__e3e1fc43 {\n  background: var(--highlight);\n  color: var(--white);\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_midInRange__e3e1fc43 {\n  background: var(--background);\n  border-radius: 0rem;\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_midInRange__e3e1fc43 .Dates_module_date__e3e1fc43 {\n  color: var(--highlight);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_firstHovered__e3e1fc43 {\n  background: var(--background);\n  border-radius: 0rem 1.5rem 1.5rem 0rem;\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_firstHovered__e3e1fc43 .Dates_module_date__e3e1fc43 {\n  color: var(--highlight);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_lastHovered__e3e1fc43 {\n  background: var(--background);\n  border-radius: 1.5rem 0rem 0rem 1.5rem;\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_lastHovered__e3e1fc43 .Dates_module_date__e3e1fc43 {\n  color: var(--highlight);\n}";
+var css$D = ".Dates_module_dates__e3e1fc43 {\n  display: grid;\n  grid-template-columns: repeat(7, 1fr);\n  align-items: center;\n  flex-wrap: wrap;\n}\n.Dates_module_dates__e3e1fc43 div {\n  flex-basis: 14.28%;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  margin-bottom: 0.25rem;\n  cursor: pointer;\n  align-self: center;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.Dates_module_dates__e3e1fc43 div .Dates_module_date__e3e1fc43 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  text-align: center;\n  vertical-align: middle;\n  border-radius: 1.5rem;\n  height: 2.5rem;\n  width: 2.5rem;\n  font-weight: 400;\n  font-size: 0.875rem;\n  color: var(--black);\n}\n.Dates_module_dates__e3e1fc43 div .Dates_module_selected__e3e1fc43 {\n  background-color: var(--highlight);\n  color: var(--white);\n}\n.Dates_module_dates__e3e1fc43 div .Dates_module_unSelected__e3e1fc43 {\n  background-color: var(--white);\n  border-color: var(--highlight);\n  border-width: 0.125rem;\n  border-style: solid;\n  color: var(--black);\n}\n.Dates_module_dates__e3e1fc43 div .Dates_module_disabled__e3e1fc43 {\n  border-radius: 1.5rem;\n  color: var(--grey2);\n}\n.Dates_module_dates__e3e1fc43 div .Dates_module_diffMonth__e3e1fc43 {\n  opacity: 0.6;\n}\n.Dates_module_dates__e3e1fc43 div:hover .Dates_module_date__e3e1fc43 {\n  background: var(--background);\n  color: var(--highlight);\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n}\n.Dates_module_dates__e3e1fc43 div:hover .Dates_module_selected__e3e1fc43 {\n  background-color: var(--highlight);\n  color: var(--white);\n}\n.Dates_module_dates__e3e1fc43 div:hover .Dates_module_disabled__e3e1fc43 {\n  background: transparent;\n  box-shadow: none;\n  border-radius: 1.5rem;\n  color: var(--grey2);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_minInRange__e3e1fc43 {\n  background-color: var(--highlight);\n  border-radius: 1.5rem 0rem 0rem 1.5rem;\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_minInRange__e3e1fc43 .Dates_module_date__e3e1fc43 {\n  color: var(--white);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_minInRange__e3e1fc43:hover .Dates_module_date__e3e1fc43 {\n  background: var(--highlight);\n  color: var(--white);\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_maxInRange__e3e1fc43 {\n  background-color: var(--highlight);\n  border-radius: 0rem 1.5rem 1.5rem 0rem;\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_maxInRange__e3e1fc43 .Dates_module_date__e3e1fc43 {\n  color: var(--white);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_maxInRange__e3e1fc43:hover .Dates_module_date__e3e1fc43 {\n  background: var(--highlight);\n  color: var(--white);\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_midInRange__e3e1fc43 {\n  background: var(--background);\n  border-radius: 0rem;\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_midInRange__e3e1fc43 .Dates_module_date__e3e1fc43 {\n  color: var(--highlight);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_firstHovered__e3e1fc43 {\n  background: var(--background);\n  border-radius: 0rem 1.5rem 1.5rem 0rem;\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_firstHovered__e3e1fc43 .Dates_module_date__e3e1fc43 {\n  color: var(--highlight);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_lastHovered__e3e1fc43 {\n  background: var(--background);\n  border-radius: 1.5rem 0rem 0rem 1.5rem;\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_lastHovered__e3e1fc43 .Dates_module_date__e3e1fc43 {\n  color: var(--highlight);\n}";
 var modules_b02dadcc = {"dates":"Dates_module_dates__e3e1fc43","date":"Dates_module_date__e3e1fc43","selected":"Dates_module_selected__e3e1fc43","unSelected":"Dates_module_unSelected__e3e1fc43","disabled":"Dates_module_disabled__e3e1fc43","diffMonth":"Dates_module_diffMonth__e3e1fc43","minInRange":"Dates_module_minInRange__e3e1fc43","maxInRange":"Dates_module_maxInRange__e3e1fc43","midInRange":"Dates_module_midInRange__e3e1fc43","first-hovered":"Dates_module_firstHovered__e3e1fc43","last-hovered":"Dates_module_lastHovered__e3e1fc43"};
-n(css$w,{});
+n(css$D,{});
 
 var getDatesOfLastWeekOfLastMonth = function getDatesOfLastWeekOfLastMonth(_ref) {
   var monthAsNumber = _ref.monthAsNumber,
@@ -33663,7 +33579,6 @@ var Dates = function Dates(props) {
     selectedRange = props.selectedRange,
     setSelectedRange = props.setSelectedRange,
     disabledDates = props.disabledDates,
-    disableDatesAfter = props.disableDatesAfter,
     disableDatesBefore = props.disableDatesBefore;
   var monthAsNumber = selectedMonth.monthAsNumber,
     year = selectedMonth.year;
@@ -33745,7 +33660,10 @@ var Dates = function Dates(props) {
     return (disableDatesBefore === null || disableDatesBefore === void 0 ? void 0 : disableDatesBefore.length) > 0 && isBefore(date, fromUnixTime(disableDatesBefore));
   };
   var disabledAfterDate = function disabledAfterDate(date) {
-    return (disableDatesAfter === null || disableDatesAfter === void 0 ? void 0 : disableDatesAfter.length) > 0 && isAfter(date, fromUnixTime(disableDatesAfter));
+    var dObj = new Date();
+    dObj.setDate(dObj.getDate() + 1);
+    dObj.setHours(0, 0, 0, 0);
+    return isAfter(date, dObj);
   };
   return /*#__PURE__*/jsxRuntime.jsx("div", {
     className: modules_b02dadcc.dates,
@@ -33793,9 +33711,9 @@ var Dates = function Dates(props) {
   });
 };
 
-var css$v = ".Days_module_days__0d7923fd {\n  display: grid;\n  grid-template-columns: repeat(7, 1fr);\n  text-align: center;\n}\n.Days_module_days__0d7923fd span {\n  padding: 0.75rem 0.5rem;\n  font-weight: 500;\n  font-size: 0.875rem;\n  color: black;\n  flex-basis: 14.28%;\n}";
+var css$C = ".Days_module_days__0d7923fd {\n  display: grid;\n  grid-template-columns: repeat(7, 1fr);\n  text-align: center;\n}\n.Days_module_days__0d7923fd span {\n  padding: 0.75rem 0.5rem;\n  font-weight: 500;\n  font-size: 0.875rem;\n  color: black;\n  flex-basis: 14.28%;\n}";
 var modules_82c45006 = {"days":"Days_module_days__0d7923fd"};
-n(css$v,{});
+n(css$C,{});
 
 var Days = function Days() {
   var daysInWeek = DAYS;
@@ -33816,9 +33734,9 @@ var Body = function Body(props) {
   });
 };
 
-var css$u = ".Footer_module_root__a02ecfd8 {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-items: stretch;\n  margin-inline: 1rem;\n}\n.Footer_module_root__a02ecfd8 .Footer_module_apply__a02ecfd8 {\n  margin-top: 0.5rem;\n  width: 100%;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n\n.Footer_module_selectedDate__a02ecfd8 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  gap: 1.125rem;\n  background: var(--white);\n  border: 0.0625rem solid var(--grey4);\n  border-radius: 0.25rem;\n  padding: 0.3rem 0rem 0.3rem 1rem;\n}\n.Footer_module_selectedDate__a02ecfd8 .Footer_module_date__a02ecfd8 {\n  font-weight: 500;\n  font-size: 0.875rem;\n  line-height: 1.3125rem;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.Footer_module_selectedDate__a02ecfd8 .Footer_module_date__a02ecfd8 .Footer_module_cross__a02ecfd8 {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.Footer_module_selectedDate__a02ecfd8 .Footer_module_date__a02ecfd8 .Footer_module_value__a02ecfd8 {\n  font-weight: 400;\n  padding-right: 0.7rem;\n  border-right: 1px var(--grey3) solid;\n}\n\n.Footer_module_dateRanges__a02ecfd8 {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-items: stretch;\n  margin-top: 0.5rem;\n}\n.Footer_module_dateRanges__a02ecfd8 .Footer_module_dateRange__a02ecfd8 {\n  display: flex;\n  align-items: center;\n  padding: 0.875rem 1rem;\n  gap: 1.125rem;\n  cursor: pointer;\n}\n.Footer_module_dateRanges__a02ecfd8 .Footer_module_dateRange__a02ecfd8:hover {\n  background-color: var(--background);\n}\n.Footer_module_dateRanges__a02ecfd8 .Footer_module_dateRange__a02ecfd8 span {\n  font-weight: 400;\n  font-size: 0.875rem;\n  line-height: 1.3125rem;\n  color: var(--black);\n}\n.Footer_module_dateRanges__a02ecfd8 .Footer_module_selected__a02ecfd8 {\n  background-color: var(--background);\n}";
+var css$B = ".Footer_module_root__a02ecfd8 {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-items: stretch;\n  margin-inline: 1rem;\n}\n.Footer_module_root__a02ecfd8 .Footer_module_apply__a02ecfd8 {\n  margin-top: 0.5rem;\n  width: 100%;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n\n.Footer_module_selectedDate__a02ecfd8 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  gap: 1.125rem;\n  background: var(--white);\n  border: 0.0625rem solid var(--grey4);\n  border-radius: 0.25rem;\n  padding: 0.3rem 0rem 0.3rem 1rem;\n}\n.Footer_module_selectedDate__a02ecfd8 .Footer_module_date__a02ecfd8 {\n  font-weight: 500;\n  font-size: 0.875rem;\n  line-height: 1.3125rem;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.Footer_module_selectedDate__a02ecfd8 .Footer_module_date__a02ecfd8 .Footer_module_cross__a02ecfd8 {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.Footer_module_selectedDate__a02ecfd8 .Footer_module_date__a02ecfd8 .Footer_module_value__a02ecfd8 {\n  font-weight: 400;\n  padding-right: 0.7rem;\n  border-right: 1px var(--grey3) solid;\n}\n\n.Footer_module_dateRanges__a02ecfd8 {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-items: stretch;\n  margin-top: 0.5rem;\n}\n.Footer_module_dateRanges__a02ecfd8 .Footer_module_dateRange__a02ecfd8 {\n  display: flex;\n  align-items: center;\n  padding: 0.875rem 1rem;\n  gap: 1.125rem;\n  cursor: pointer;\n}\n.Footer_module_dateRanges__a02ecfd8 .Footer_module_dateRange__a02ecfd8:hover {\n  background-color: var(--background);\n}\n.Footer_module_dateRanges__a02ecfd8 .Footer_module_dateRange__a02ecfd8 span {\n  font-weight: 400;\n  font-size: 0.875rem;\n  line-height: 1.3125rem;\n  color: var(--black);\n}\n.Footer_module_dateRanges__a02ecfd8 .Footer_module_selected__a02ecfd8 {\n  background-color: var(--background);\n}";
 var modules_b490bd5d = {"root":"Footer_module_root__a02ecfd8","apply":"Footer_module_apply__a02ecfd8","selected-date":"Footer_module_selectedDate__a02ecfd8","date":"Footer_module_date__a02ecfd8","cross":"Footer_module_cross__a02ecfd8","value":"Footer_module_value__a02ecfd8","date-ranges":"Footer_module_dateRanges__a02ecfd8","date-range":"Footer_module_dateRange__a02ecfd8","selected":"Footer_module_selected__a02ecfd8"};
-n(css$u,{});
+n(css$B,{});
 
 var getDateAndUnixRange = function getDateAndUnixRange(duration) {
   var startingDate = sub$1(new Date(), duration);
@@ -33944,8 +33862,8 @@ var Calender = function Calender(props) {
     setSelectedRange = props.setSelectedRange,
     onApply = props.onApply,
     disabledDates = props.disabledDates,
-    disableDatesAfter = props.disableDatesAfter,
-    disableDatesBefore = props.disableDatesBefore;
+    disableDatesBefore = props.disableDatesBefore,
+    value = props.value;
   var _getDayInfo = getDayInfo(new Date()),
     month = _getDayInfo.month,
     year = _getDayInfo.year,
@@ -33961,13 +33879,36 @@ var Calender = function Calender(props) {
     selectedMonth = _useState2[0],
     setSelectedMonth = _useState2[1];
   React.useEffect(function () {
+    if (value) {
+      var _date = fromUnixTime(value);
+      var dateAsNumber = _date.getDate();
+      var selectedDayInfo = getDayInfo(_date);
+      var selectedDateMonth = {
+        month: selectedDayInfo.month,
+        monthAsNumber: selectedDayInfo.monthAsNumber,
+        year: selectedDayInfo.year,
+        dayAsNumber: selectedDayInfo.dayAsNumber
+      };
+      setSelectedMonth({
+        month: selectedDayInfo.month,
+        monthAsNumber: selectedDayInfo.monthAsNumber,
+        year: selectedDayInfo.year
+      });
+      setSelectedDate(_objectSpread2(_objectSpread2({}, selectedDate), {}, {
+        month: selectedDateMonth.month,
+        year: selectedDateMonth.year,
+        date: dateAsNumber,
+        unix: getUnixTime(_date.setHours(23, 59, 59, 59))
+      }));
+      return;
+    }
     var date = new Date();
-    if (!range && !isBefore(date, disableDatesBefore) && !isAfter(date, disableDatesAfter)) {
-      var dateAsNumber = date.getDate();
+    if (!range && !isBefore(date, disableDatesBefore)) {
+      var _dateAsNumber = date.getDate();
       setSelectedDate(_objectSpread2(_objectSpread2({}, selectedDate), {}, {
         month: selectedMonth.month,
         year: selectedMonth.year,
-        date: dateAsNumber,
+        date: _dateAsNumber,
         unix: getUnixTime(date.setHours(23, 59, 59, 59))
       }));
     }
@@ -34038,7 +33979,6 @@ var Calender = function Calender(props) {
       selectedRange: selectedRange,
       setSelectedRange: setSelectedRange,
       disabledDates: disabledDates,
-      disableDatesAfter: disableDatesAfter,
       disableDatesBefore: disableDatesBefore
     }), /*#__PURE__*/jsxRuntime.jsx(Footer, {
       range: range,
@@ -34052,9 +33992,9 @@ var Calender = function Calender(props) {
   });
 };
 
-var css$t = ".DatePicker_module_root__a549d7a9 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  gap: 0.5rem;\n  max-width: 100%;\n  width: 25%;\n  overflow: visible;\n}\n.DatePicker_module_root__a549d7a9 .DatePicker_module_label__a549d7a9 {\n  font-weight: 400;\n  font-size: 0.75rem;\n  color: var(--black);\n}\n.DatePicker_module_root__a549d7a9 .DatePicker_module_container__a549d7a9 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  position: relative;\n  background: transparent;\n  border: 0.0625rem solid #d9d9d9;\n  border-radius: 0.25rem;\n  width: auto;\n  border: 0.0625rem solid var(--grey5);\n  padding: 0.75rem 1rem;\n  cursor: pointer;\n}\n.DatePicker_module_root__a549d7a9 .DatePicker_module_container__a549d7a9 > div {\n  display: flex;\n  align-items: center;\n}\n.DatePicker_module_root__a549d7a9 .DatePicker_module_container__a549d7a9 .DatePicker_module_placeholder__a549d7a9 {\n  font-weight: 400;\n  font-size: 1rem;\n  color: var(--grey1);\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  margin-left: 0.9375rem;\n}\n.DatePicker_module_root__a549d7a9 .DatePicker_module_container__a549d7a9 .DatePicker_module_value__a549d7a9 {\n  font-weight: 400;\n  font-size: 1rem;\n  color: var(--black);\n  margin-left: 0.9375rem;\n}\n.DatePicker_module_root__a549d7a9 .DatePicker_module_container__a549d7a9 .DatePicker_module_value__a549d7a9 span {\n  font-weight: 500;\n}\n.DatePicker_module_root__a549d7a9 .DatePicker_module_container__a549d7a9 .DatePicker_module_input__a549d7a9 {\n  display: none;\n}\n.DatePicker_module_root__a549d7a9 .DatePicker_module_container__a549d7a9 .DatePicker_module_icon__a549d7a9 {\n  width: 1.5rem;\n  height: 1.5rem;\n  stroke: #181818;\n}\n.DatePicker_module_root__a549d7a9 .DatePicker_module_container__a549d7a9 .DatePicker_module_down__a549d7a9 {\n  transform: rotate(270deg);\n}\n.DatePicker_module_root__a549d7a9 .DatePicker_module_container__a549d7a9 .DatePicker_module_up__a549d7a9 {\n  transform: rotate(90deg);\n}\n.DatePicker_module_root__a549d7a9 .DatePicker_module_disabled__a549d7a9 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  position: relative;\n  background: var(--grey10);\n  border: 0.0625rem solid #d9d9d9;\n  border-radius: 0.25rem;\n  border: 0.0625rem solid var(--grey5);\n  padding: 0.75rem 1rem;\n  cursor: pointer;\n}\n.DatePicker_module_root__a549d7a9 .DatePicker_module_disabled__a549d7a9 .DatePicker_module_downArrow__a549d7a9 {\n  transform: rotate(270deg);\n  fill: var(--grey3);\n}\n.DatePicker_module_root__a549d7a9 .DatePicker_module_disabled__a549d7a9 .DatePicker_module_placeholder__a549d7a9 {\n  font-weight: 400;\n  font-size: 1rem;\n  color: var(--grey3);\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.DatePicker_module_root__a549d7a9.DatePicker_module_open__a549d7a9 {\n  border-color: var(--highlight);\n}\n.DatePicker_module_root__a549d7a9 .DatePicker_module_error__a549d7a9 {\n  border: 0.0938rem solid var(--error);\n}\n.DatePicker_module_root__a549d7a9 .DatePicker_module_errorText__a549d7a9 {\n  font-weight: 400;\n  font-size: 0.75rem;\n  line-height: 0.9375rem;\n  color: var(--error);\n}\n\n.DatePicker_module_popper__a549d7a9 {\n  display: none;\n  background: var(--white);\n  border: 0.0625rem solid #d9d9d9;\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n  border-radius: 0.25rem;\n  overflow: auto;\n}\n.DatePicker_module_popper__a549d7a9.DatePicker_module_open__a549d7a9 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  position: absolute;\n}";
-var modules_5b831cd1 = {"root":"DatePicker_module_root__a549d7a9","label":"DatePicker_module_label__a549d7a9","container":"DatePicker_module_container__a549d7a9","placeholder":"DatePicker_module_placeholder__a549d7a9","value":"DatePicker_module_value__a549d7a9","input":"DatePicker_module_input__a549d7a9","icon":"DatePicker_module_icon__a549d7a9","down":"DatePicker_module_down__a549d7a9","up":"DatePicker_module_up__a549d7a9","disabled":"DatePicker_module_disabled__a549d7a9","down-arrow":"DatePicker_module_downArrow__a549d7a9","open":"DatePicker_module_open__a549d7a9","error":"DatePicker_module_error__a549d7a9","error-text":"DatePicker_module_errorText__a549d7a9","popper":"DatePicker_module_popper__a549d7a9"};
-n(css$t,{});
+var css$A = ".DatePicker_module_root__eb13bcdd {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  gap: 0.5rem;\n  max-width: 100%;\n  overflow: visible;\n}\n.DatePicker_module_root__eb13bcdd .DatePicker_module_label__eb13bcdd {\n  font-weight: 400;\n  font-size: 0.75rem;\n}\n.DatePicker_module_root__eb13bcdd .DatePicker_module_label__eb13bcdd.DatePicker_module_light__eb13bcdd {\n  color: var(--black);\n}\n.DatePicker_module_root__eb13bcdd .DatePicker_module_label__eb13bcdd.DatePicker_module_dark__eb13bcdd {\n  color: var(--white);\n}\n.DatePicker_module_root__eb13bcdd .DatePicker_module_container__eb13bcdd {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  position: relative;\n  background: transparent;\n  border: 0.0625rem solid #d9d9d9;\n  border-radius: 0.25rem;\n  width: auto;\n  border: 0.0625rem solid var(--grey5);\n  padding: 0.75rem 1rem;\n  cursor: pointer;\n}\n.DatePicker_module_root__eb13bcdd .DatePicker_module_container__eb13bcdd > div {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  font-size: 0px;\n  letter-spacing: 0px;\n  word-spacing: 0px;\n}\n.DatePicker_module_root__eb13bcdd .DatePicker_module_container__eb13bcdd .DatePicker_module_placeholder__eb13bcdd {\n  font-weight: 400;\n  font-size: 1rem;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  margin-left: 0.9375rem;\n  color: var(--grey1);\n}\n.DatePicker_module_root__eb13bcdd .DatePicker_module_container__eb13bcdd .DatePicker_module_value__eb13bcdd {\n  font-weight: 400;\n  font-size: 1rem;\n  margin-left: 0.9375rem;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.DatePicker_module_root__eb13bcdd .DatePicker_module_container__eb13bcdd .DatePicker_module_value__eb13bcdd.DatePicker_module_light__eb13bcdd {\n  color: var(--black);\n}\n.DatePicker_module_root__eb13bcdd .DatePicker_module_container__eb13bcdd .DatePicker_module_value__eb13bcdd.DatePicker_module_dark__eb13bcdd {\n  color: var(--white);\n}\n.DatePicker_module_root__eb13bcdd .DatePicker_module_container__eb13bcdd .DatePicker_module_value__eb13bcdd span {\n  max-width: 150px;\n  display: inline-block;\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  font-weight: 500;\n}\n.DatePicker_module_root__eb13bcdd .DatePicker_module_container__eb13bcdd .DatePicker_module_input__eb13bcdd {\n  display: none;\n}\n.DatePicker_module_root__eb13bcdd .DatePicker_module_container__eb13bcdd .DatePicker_module_icon__eb13bcdd {\n  width: 1.25rem;\n  height: 1.25rem;\n}\n.DatePicker_module_root__eb13bcdd .DatePicker_module_container__eb13bcdd .DatePicker_module_icon__eb13bcdd.DatePicker_module_light__eb13bcdd > path {\n  fill: var(--dark-grey);\n}\n.DatePicker_module_root__eb13bcdd .DatePicker_module_container__eb13bcdd .DatePicker_module_icon__eb13bcdd.DatePicker_module_dark__eb13bcdd > path {\n  fill: var(--white);\n}\n.DatePicker_module_root__eb13bcdd .DatePicker_module_container__eb13bcdd .DatePicker_module_down__eb13bcdd {\n  transform: rotate(270deg);\n}\n.DatePicker_module_root__eb13bcdd .DatePicker_module_container__eb13bcdd .DatePicker_module_up__eb13bcdd {\n  transform: rotate(90deg);\n}\n.DatePicker_module_root__eb13bcdd .DatePicker_module_disabled__eb13bcdd {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  position: relative;\n  background: var(--grey10);\n  border: 0.0625rem solid #d9d9d9;\n  border-radius: 0.25rem;\n  border: 0.0625rem solid var(--grey5);\n  padding: 0.75rem 1rem;\n  cursor: pointer;\n}\n.DatePicker_module_root__eb13bcdd .DatePicker_module_disabled__eb13bcdd .DatePicker_module_downArrow__eb13bcdd {\n  transform: rotate(270deg);\n  fill: var(--grey3);\n}\n.DatePicker_module_root__eb13bcdd .DatePicker_module_disabled__eb13bcdd .DatePicker_module_placeholder__eb13bcdd {\n  font-weight: 400;\n  font-size: 1rem;\n  color: var(--grey3);\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.DatePicker_module_root__eb13bcdd.DatePicker_module_open__eb13bcdd {\n  border-color: var(--highlight);\n}\n.DatePicker_module_root__eb13bcdd .DatePicker_module_error__eb13bcdd {\n  border: 0.0938rem solid var(--error);\n}\n.DatePicker_module_root__eb13bcdd .DatePicker_module_errorText__eb13bcdd {\n  font-weight: 400;\n  font-size: 0.75rem;\n  line-height: 0.9375rem;\n  color: var(--error);\n}\n\n.DatePicker_module_popper__eb13bcdd {\n  display: none;\n  background: var(--white);\n  border: 0.0625rem solid #d9d9d9;\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n  border-radius: 0.25rem;\n  overflow: auto;\n}\n.DatePicker_module_popper__eb13bcdd.DatePicker_module_open__eb13bcdd {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  position: absolute;\n}";
+var modules_5b831cd1 = {"root":"DatePicker_module_root__eb13bcdd","label":"DatePicker_module_label__eb13bcdd","light":"DatePicker_module_light__eb13bcdd","dark":"DatePicker_module_dark__eb13bcdd","container":"DatePicker_module_container__eb13bcdd","placeholder":"DatePicker_module_placeholder__eb13bcdd","value":"DatePicker_module_value__eb13bcdd","input":"DatePicker_module_input__eb13bcdd","icon":"DatePicker_module_icon__eb13bcdd","down":"DatePicker_module_down__eb13bcdd","up":"DatePicker_module_up__eb13bcdd","disabled":"DatePicker_module_disabled__eb13bcdd","down-arrow":"DatePicker_module_downArrow__eb13bcdd","open":"DatePicker_module_open__eb13bcdd","error":"DatePicker_module_error__eb13bcdd","error-text":"DatePicker_module_errorText__eb13bcdd","popper":"DatePicker_module_popper__eb13bcdd"};
+n(css$A,{});
 
 var isMaxRangeExceeded = function isMaxRangeExceeded(_ref) {
   var maxRange = _ref.maxRange,
@@ -34080,7 +34020,6 @@ var isMaxRangeExceeded = function isMaxRangeExceeded(_ref) {
 };
 
 var DatePicker = function DatePicker(props) {
-  // eslint-disable-next-line object-curly-newline
   var placeholder = props.placeholder,
     label = props.label,
     range = props.range,
@@ -34090,8 +34029,9 @@ var DatePicker = function DatePicker(props) {
     value = props.value,
     disabled = props.disabled,
     className = props.className,
-    disableDatesAfter = props.disableDatesAfter,
-    disableDatesBefore = props.disableDatesBefore;
+    disableDatesBefore = props.disableDatesBefore,
+    theme = props.theme,
+    onClear = props.onClear;
   var _useState = React.useState(false),
     _useState2 = _slicedToArray(_useState, 2),
     open = _useState2[0],
@@ -34188,35 +34128,45 @@ var DatePicker = function DatePicker(props) {
       apply();
     },
     disabledDates: disabledDates,
-    disableDatesAfter: disableDatesAfter,
-    disableDatesBefore: disableDatesBefore
+    disableDatesBefore: disableDatesBefore,
+    value: value
   };
   return /*#__PURE__*/jsxRuntime.jsxs("div", {
     className: classes(modules_5b831cd1.root, className),
     ref: datePickerRef,
     children: [label && /*#__PURE__*/jsxRuntime.jsx("span", {
-      className: modules_5b831cd1.label,
+      className: classes(modules_5b831cd1.label, modules_5b831cd1[theme]),
       children: label
     }), /*#__PURE__*/jsxRuntime.jsxs("div", _objectSpread2(_objectSpread2({
       "data-elem": "header",
       ref: reference,
-      className: classes(modules_5b831cd1.container, disabled ? modules_5b831cd1.disabled : '', open ? modules_5b831cd1.open : '', error ? modules_5b831cd1.error : '')
+      className: classes(modules_5b831cd1.container, disabled ? modules_5b831cd1.disabled : '', open ? modules_5b831cd1.open : '', error ? modules_5b831cd1.error : '', modules_5b831cd1[theme])
     }, getReferenceProps()), {}, {
       children: [/*#__PURE__*/jsxRuntime.jsxs("div", {
-        children: [/*#__PURE__*/jsxRuntime.jsx(Calender$1, {}), !displayValue && /*#__PURE__*/jsxRuntime.jsx("span", {
-          className: modules_5b831cd1.placeholder,
+        children: [/*#__PURE__*/jsxRuntime.jsx(Calender$1, {
+          className: classes(modules_5b831cd1.icon, modules_5b831cd1[theme])
+        }), !displayValue && /*#__PURE__*/jsxRuntime.jsx("span", {
+          className: classes(modules_5b831cd1.placeholder, modules_5b831cd1[theme]),
           children: placeholder
-        }), displayValue && /*#__PURE__*/jsxRuntime.jsxs("span", {
-          className: modules_5b831cd1.value,
-          children: ["Selected Date: ", /*#__PURE__*/jsxRuntime.jsx("span", {
+        }), displayValue && /*#__PURE__*/jsxRuntime.jsx("div", {
+          className: classes(modules_5b831cd1.value, modules_5b831cd1[theme]),
+          children: /*#__PURE__*/jsxRuntime.jsx("span", {
             children: displayValue
-          })]
+          })
         })]
       }), /*#__PURE__*/jsxRuntime.jsx("input", {
         className: modules_5b831cd1.input,
         value: displayValue
-      }), /*#__PURE__*/jsxRuntime.jsx(Chevron, {
-        className: classes(modules_5b831cd1.icon),
+      }), value ? /*#__PURE__*/jsxRuntime.jsx("div", {
+        onClick: function onClick(event) {
+          event.stopPropagation();
+          onClear();
+        },
+        children: /*#__PURE__*/jsxRuntime.jsx(Cross$1, {
+          className: classes(modules_5b831cd1.icon, modules_5b831cd1[theme])
+        })
+      }) : /*#__PURE__*/jsxRuntime.jsx(Chevron, {
+        className: classes(modules_5b831cd1.icon, modules_5b831cd1[theme]),
         position: open ? 'bottom' : 'top'
       })]
     })), error && /*#__PURE__*/jsxRuntime.jsx("div", {
@@ -34250,6 +34200,7 @@ DatePicker.propTypes = {
   label: propTypes$1.exports.string,
   range: propTypes$1.exports.bool,
   onApply: propTypes$1.exports.func,
+  onClear: propTypes$1.exports.func,
   value: propTypes$1.exports.string,
   disabled: propTypes$1.exports.bool,
   disabledDates: propTypes$1.exports.arrayOf(propTypes$1.exports.string),
@@ -34259,7 +34210,7 @@ DatePicker.propTypes = {
   }),
   className: propTypes$1.exports.string,
   disableDatesBefore: propTypes$1.exports.arrayOf(propTypes$1.exports.string),
-  disableDatesAfter: propTypes$1.exports.arrayOf(propTypes$1.exports.string)
+  theme: propTypes$1.exports.string
 };
 DatePicker.defaultProps = {
   placeholder: '',
@@ -34272,12 +34223,13 @@ DatePicker.defaultProps = {
   value: '',
   className: '',
   disableDatesBefore: [],
-  disableDatesAfter: []
+  theme: 'dark',
+  onClear: function onClear() {}
 };
 
-var css$s = ".HierarchyItem_module_root__d7b2e7cd {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  flex: 1;\n}\n.HierarchyItem_module_root__d7b2e7cd .HierarchyItem_module_header__d7b2e7cd {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.25rem;\n  min-height: 2rem;\n  height: auto;\n  padding: 0.25rem;\n  cursor: pointer;\n}\n.HierarchyItem_module_root__d7b2e7cd .HierarchyItem_module_header__d7b2e7cd > [data-elem=component1], .HierarchyItem_module_root__d7b2e7cd .HierarchyItem_module_header__d7b2e7cd > [data-elem=component3] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.HierarchyItem_module_root__d7b2e7cd .HierarchyItem_module_header__d7b2e7cd > [data-elem=component1] .HierarchyItem_module_icon__d7b2e7cd, .HierarchyItem_module_root__d7b2e7cd .HierarchyItem_module_header__d7b2e7cd > [data-elem=component3] .HierarchyItem_module_icon__d7b2e7cd {\n  transform: rotate(-90deg);\n  width: 1rem;\n  height: 1rem;\n}\n.HierarchyItem_module_root__d7b2e7cd .HierarchyItem_module_header__d7b2e7cd > [data-elem=component2] {\n  flex: 1 1 auto;\n}\n.HierarchyItem_module_root__d7b2e7cd .HierarchyItem_module_header__d7b2e7cd > [data-elem=component2] .HierarchyItem_module_title__d7b2e7cd {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.HierarchyItem_module_root__d7b2e7cd .HierarchyItem_module_header__d7b2e7cd:hover {\n  background: var(--background);\n}\n.HierarchyItem_module_root__d7b2e7cd .HierarchyItem_module_header__d7b2e7cd:hover .HierarchyItem_module_icon__d7b2e7cd,\n.HierarchyItem_module_root__d7b2e7cd .HierarchyItem_module_header__d7b2e7cd:hover .HierarchyItem_module_title__d7b2e7cd,\n.HierarchyItem_module_root__d7b2e7cd .HierarchyItem_module_header__d7b2e7cd:hover .HierarchyItem_module_title__d7b2e7cd svg {\n  color: var(--highlight);\n  fill: var(--highlight);\n}\n.HierarchyItem_module_root__d7b2e7cd .HierarchyItem_module_body__d7b2e7cd {\n  display: none;\n  flex: 1 0 auto;\n  padding: 0px 0rem 0px 0.25rem;\n}\n.HierarchyItem_module_root__d7b2e7cd .HierarchyItem_module_body__d7b2e7cd > [data-elem=component1] {\n  flex: 0 0 1.6rem;\n}\n.HierarchyItem_module_root__d7b2e7cd .HierarchyItem_module_body__d7b2e7cd > [data-elem=component1] .HierarchyItem_module_tail__d7b2e7cd {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: center;\n  width: 1.6rem;\n  height: 100%;\n}\n.HierarchyItem_module_root__d7b2e7cd .HierarchyItem_module_body__d7b2e7cd > [data-elem=component1] .HierarchyItem_module_tail__d7b2e7cd::after {\n  content: \"\";\n  display: block;\n  margin: auto;\n  width: 1px;\n  flex: 1;\n  background: var(--grey1);\n}\n.HierarchyItem_module_root__d7b2e7cd .HierarchyItem_module_body__d7b2e7cd > [data-elem=component2] {\n  flex: 1 0 auto;\n}\n.HierarchyItem_module_root__d7b2e7cd .HierarchyItem_module_body__d7b2e7cd > [data-elem=component2] .HierarchyItem_module_children__d7b2e7cd {\n  flex: 1 0 auto;\n}\n.HierarchyItem_module_root__d7b2e7cd.HierarchyItem_module_open__d7b2e7cd > .HierarchyItem_module_header__d7b2e7cd .HierarchyItem_module_icon__d7b2e7cd {\n  transform: none;\n}\n.HierarchyItem_module_root__d7b2e7cd.HierarchyItem_module_open__d7b2e7cd > .HierarchyItem_module_body__d7b2e7cd {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: stretch;\n  gap: 0.25rem;\n  height: auto;\n}";
+var css$z = ".HierarchyItem_module_root__d7b2e7cd {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  flex: 1;\n}\n.HierarchyItem_module_root__d7b2e7cd .HierarchyItem_module_header__d7b2e7cd {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.25rem;\n  min-height: 2rem;\n  height: auto;\n  padding: 0.25rem;\n  cursor: pointer;\n}\n.HierarchyItem_module_root__d7b2e7cd .HierarchyItem_module_header__d7b2e7cd > [data-elem=component1], .HierarchyItem_module_root__d7b2e7cd .HierarchyItem_module_header__d7b2e7cd > [data-elem=component3] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.HierarchyItem_module_root__d7b2e7cd .HierarchyItem_module_header__d7b2e7cd > [data-elem=component1] .HierarchyItem_module_icon__d7b2e7cd, .HierarchyItem_module_root__d7b2e7cd .HierarchyItem_module_header__d7b2e7cd > [data-elem=component3] .HierarchyItem_module_icon__d7b2e7cd {\n  transform: rotate(-90deg);\n  width: 1rem;\n  height: 1rem;\n}\n.HierarchyItem_module_root__d7b2e7cd .HierarchyItem_module_header__d7b2e7cd > [data-elem=component2] {\n  flex: 1 1 auto;\n}\n.HierarchyItem_module_root__d7b2e7cd .HierarchyItem_module_header__d7b2e7cd > [data-elem=component2] .HierarchyItem_module_title__d7b2e7cd {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.HierarchyItem_module_root__d7b2e7cd .HierarchyItem_module_header__d7b2e7cd:hover {\n  background: var(--background);\n}\n.HierarchyItem_module_root__d7b2e7cd .HierarchyItem_module_header__d7b2e7cd:hover .HierarchyItem_module_icon__d7b2e7cd,\n.HierarchyItem_module_root__d7b2e7cd .HierarchyItem_module_header__d7b2e7cd:hover .HierarchyItem_module_title__d7b2e7cd,\n.HierarchyItem_module_root__d7b2e7cd .HierarchyItem_module_header__d7b2e7cd:hover .HierarchyItem_module_title__d7b2e7cd svg {\n  color: var(--highlight);\n  fill: var(--highlight);\n}\n.HierarchyItem_module_root__d7b2e7cd .HierarchyItem_module_body__d7b2e7cd {\n  display: none;\n  flex: 1 0 auto;\n  padding: 0px 0rem 0px 0.25rem;\n}\n.HierarchyItem_module_root__d7b2e7cd .HierarchyItem_module_body__d7b2e7cd > [data-elem=component1] {\n  flex: 0 0 1.6rem;\n}\n.HierarchyItem_module_root__d7b2e7cd .HierarchyItem_module_body__d7b2e7cd > [data-elem=component1] .HierarchyItem_module_tail__d7b2e7cd {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: center;\n  width: 1.6rem;\n  height: 100%;\n}\n.HierarchyItem_module_root__d7b2e7cd .HierarchyItem_module_body__d7b2e7cd > [data-elem=component1] .HierarchyItem_module_tail__d7b2e7cd::after {\n  content: \"\";\n  display: block;\n  margin: auto;\n  width: 1px;\n  flex: 1;\n  background: var(--grey1);\n}\n.HierarchyItem_module_root__d7b2e7cd .HierarchyItem_module_body__d7b2e7cd > [data-elem=component2] {\n  flex: 1 0 auto;\n}\n.HierarchyItem_module_root__d7b2e7cd .HierarchyItem_module_body__d7b2e7cd > [data-elem=component2] .HierarchyItem_module_children__d7b2e7cd {\n  flex: 1 0 auto;\n}\n.HierarchyItem_module_root__d7b2e7cd.HierarchyItem_module_open__d7b2e7cd > .HierarchyItem_module_header__d7b2e7cd .HierarchyItem_module_icon__d7b2e7cd {\n  transform: none;\n}\n.HierarchyItem_module_root__d7b2e7cd.HierarchyItem_module_open__d7b2e7cd > .HierarchyItem_module_body__d7b2e7cd {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: stretch;\n  gap: 0.25rem;\n  height: auto;\n}";
 var modules_6d03d164 = {"root":"HierarchyItem_module_root__d7b2e7cd","header":"HierarchyItem_module_header__d7b2e7cd","icon":"HierarchyItem_module_icon__d7b2e7cd","title":"HierarchyItem_module_title__d7b2e7cd","body":"HierarchyItem_module_body__d7b2e7cd","tail":"HierarchyItem_module_tail__d7b2e7cd","children":"HierarchyItem_module_children__d7b2e7cd","open":"HierarchyItem_module_open__d7b2e7cd"};
-n(css$s,{});
+n(css$z,{});
 
 var HierarchyItem = function HierarchyItem(props) {
   var defaultOpen = props.defaultOpen,
@@ -34341,9 +34293,9 @@ HierarchyItem.defaultProps = {
   onClick: function onClick() {}
 };
 
-var css$r = ".HierarchyBrowser_module_root__649d3da2 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  width: 20rem;\n  position: relative;\n}\n.HierarchyBrowser_module_root__649d3da2 .HierarchyBrowser_module_header__649d3da2 {\n  padding: 0.5rem;\n  background: var(--dark-grey);\n  color: var(--white);\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.HierarchyBrowser_module_root__649d3da2 .HierarchyBrowser_module_body__649d3da2 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  overflow: auto;\n}\n.HierarchyBrowser_module_root__649d3da2 .HierarchyBrowser_module_item__649d3da2 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.25rem;\n}\n.HierarchyBrowser_module_root__649d3da2 .HierarchyBrowser_module_item__649d3da2 .HierarchyBrowser_module_itemIcon__649d3da2 {\n  width: 1rem;\n}\n.HierarchyBrowser_module_root__649d3da2::after {\n  position: absolute;\n  right: 0;\n  content: \"\";\n  width: 1px;\n  height: 100%;\n  background: var(--grey4);\n}\n.HierarchyBrowser_module_root__649d3da2.HierarchyBrowser_module_resizable__649d3da2:hover::after {\n  width: 3px;\n  cursor: col-resize;\n}";
+var css$y = ".HierarchyBrowser_module_root__649d3da2 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  width: 20rem;\n  position: relative;\n}\n.HierarchyBrowser_module_root__649d3da2 .HierarchyBrowser_module_header__649d3da2 {\n  padding: 0.5rem;\n  background: var(--dark-grey);\n  color: var(--white);\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.HierarchyBrowser_module_root__649d3da2 .HierarchyBrowser_module_body__649d3da2 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  overflow: auto;\n}\n.HierarchyBrowser_module_root__649d3da2 .HierarchyBrowser_module_item__649d3da2 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.25rem;\n}\n.HierarchyBrowser_module_root__649d3da2 .HierarchyBrowser_module_item__649d3da2 .HierarchyBrowser_module_itemIcon__649d3da2 {\n  width: 1rem;\n}\n.HierarchyBrowser_module_root__649d3da2::after {\n  position: absolute;\n  right: 0;\n  content: \"\";\n  width: 1px;\n  height: 100%;\n  background: var(--grey4);\n}\n.HierarchyBrowser_module_root__649d3da2.HierarchyBrowser_module_resizable__649d3da2:hover::after {\n  width: 3px;\n  cursor: col-resize;\n}";
 var modules_5e29d515 = {"root":"HierarchyBrowser_module_root__649d3da2","header":"HierarchyBrowser_module_header__649d3da2","body":"HierarchyBrowser_module_body__649d3da2","item":"HierarchyBrowser_module_item__649d3da2","item-icon":"HierarchyBrowser_module_itemIcon__649d3da2","resizable":"HierarchyBrowser_module_resizable__649d3da2"};
-n(css$r,{});
+n(css$y,{});
 
 var Title = function Title(props) {
   var item = props.item;
@@ -34376,7 +34328,8 @@ var HierarchyBrowser = function HierarchyBrowser(props) {
     maxWidth = props.maxWidth,
     borderSize = props.borderSize,
     resizable = props.resizable,
-    setItemProps = props.setItemProps;
+    setItemProps = props.setItemProps,
+    title = props.title;
   var browserRef = React.useRef(null);
   useResize({
     ref: browserRef,
@@ -34416,9 +34369,11 @@ var HierarchyBrowser = function HierarchyBrowser(props) {
     className: classes(modules_5e29d515.root, className, resizable ? modules_5e29d515.resizable : ''),
     children: [/*#__PURE__*/jsxRuntime.jsx("div", {
       className: modules_5e29d515.header,
-      children: "Browser"
+      "data-elem": "header",
+      children: title
     }), /*#__PURE__*/jsxRuntime.jsx("div", {
       className: modules_5e29d515.body,
+      "data-elem": "body",
       children: renderTree(metadata)
     })]
   });
@@ -34436,7 +34391,8 @@ HierarchyBrowser.propTypes = {
   minWidth: propTypes$1.exports.number,
   maxWidth: propTypes$1.exports.number,
   resizable: propTypes$1.exports.bool,
-  setItemProps: propTypes$1.exports.func
+  setItemProps: propTypes$1.exports.func,
+  title: propTypes$1.exports.string
 };
 HierarchyBrowser.defaultProps = {
   className: '',
@@ -34448,12 +34404,13 @@ HierarchyBrowser.defaultProps = {
   resizable: false,
   setItemProps: function setItemProps() {
     return {};
-  }
+  },
+  title: 'Browser'
 };
 
-var css$q = ".TextField_module_root__9cc1db47 {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: flex-start;\n  gap: 0.5rem;\n}\n.TextField_module_root__9cc1db47 label {\n  width: 100%;\n  max-width: 100%;\n  font-weight: 400;\n  font-size: 0.75rem;\n  line-height: 1.125rem;\n  letter-spacing: 0.32px;\n  color: var(--grey);\n  height: 100%;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  gap: 0.5rem;\n  padding: 0rem 0.5rem;\n  max-width: 100%;\n  width: 100%;\n  border-color: var(--grey4);\n  border-style: solid;\n  border-radius: 0.25rem;\n  height: 100%;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 .TextField_module_icon__9cc1db47 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem*=component] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] {\n  flex: 1;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47 {\n  -moz-appearance: textfield;\n  flex: 1;\n  background-color: transparent;\n  border: none;\n  font-weight: 400;\n  font-size: 0.875rem;\n  line-height: 1.125rem;\n  letter-spacing: 0.16px;\n  color: var(--black);\n  width: 100%;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47::-webkit-outer-spin-button, .TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47::-webkit-inner-spin-button {\n  -webkit-appearance: none;\n  margin: 0;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47:focus {\n  outline: none;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47:disabled {\n  background: var(--grey9);\n  color: var(--grey3);\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47.TextField_module_sm__9cc1db47 {\n  padding: 0.5rem 0rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47.TextField_module_md__9cc1db47 {\n  padding: 0.688rem 0rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47.TextField_module_lg__9cc1db47 {\n  padding: 1rem 0rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_typeTextarea__9cc1db47 {\n  padding: 0;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_typeTextarea__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47 {\n  resize: vertical;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_typeTextarea__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47.TextField_module_md__9cc1db47 {\n  padding: 0.313rem 0.75rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_typeTextarea__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47.TextField_module_lg__9cc1db47 {\n  padding: 0.5rem 1rem;\n  font-size: 1rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47:focus-within {\n  border: 0.063rem solid var(--info);\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47:focus-within.TextField_module_feedbackError__9cc1db47 {\n  border-color: var(--error);\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_borderDefault__9cc1db47 {\n  border-width: 0.063rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_borderBottom__9cc1db47 {\n  border-width: 0rem 0rem 0.063rem 0rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_borderNone__9cc1db47 {\n  border-width: 0rem;\n}\n.TextField_module_root__9cc1db47 .TextField_module_bottom__9cc1db47 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: flex-start;\n  min-height: 2rem;\n  width: 100%;\n  gap: 1rem;\n  color: var(--grey3);\n  font-size: 0.75rem;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.TextField_module_root__9cc1db47 .TextField_module_bottom__9cc1db47 .TextField_module_feedback__9cc1db47 {\n  flex: 1;\n  margin-right: auto;\n}\n.TextField_module_root__9cc1db47 .TextField_module_bottom__9cc1db47 .TextField_module_feedback__9cc1db47.TextField_module_feedbackError__9cc1db47 {\n  color: var(--error);\n  fill: var(--error);\n}\n.TextField_module_root__9cc1db47 .TextField_module_bottom__9cc1db47 .TextField_module_feedback__9cc1db47.TextField_module_feedbackSuccess__9cc1db47 {\n  color: var(--success);\n  fill: var(--success);\n}\n.TextField_module_root__9cc1db47 .TextField_module_bottom__9cc1db47 .TextField_module_count__9cc1db47 {\n  text-align: right;\n  margin-left: auto;\n}\n.TextField_module_root__9cc1db47 .TextField_module_bottom__9cc1db47 .TextField_module_count__9cc1db47.TextField_module_exceeded__9cc1db47 {\n  color: var(--error);\n}";
+var css$x = ".TextField_module_root__9cc1db47 {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: flex-start;\n  gap: 0.5rem;\n}\n.TextField_module_root__9cc1db47 label {\n  width: 100%;\n  max-width: 100%;\n  font-weight: 400;\n  font-size: 0.75rem;\n  line-height: 1.125rem;\n  letter-spacing: 0.32px;\n  color: var(--grey);\n  height: 100%;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  gap: 0.5rem;\n  padding: 0rem 0.5rem;\n  max-width: 100%;\n  width: 100%;\n  border-color: var(--grey4);\n  border-style: solid;\n  border-radius: 0.25rem;\n  height: 100%;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 .TextField_module_icon__9cc1db47 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem*=component] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] {\n  flex: 1;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47 {\n  -moz-appearance: textfield;\n  flex: 1;\n  background-color: transparent;\n  border: none;\n  font-weight: 400;\n  font-size: 0.875rem;\n  line-height: 1.125rem;\n  letter-spacing: 0.16px;\n  color: var(--black);\n  width: 100%;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47::-webkit-outer-spin-button, .TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47::-webkit-inner-spin-button {\n  -webkit-appearance: none;\n  margin: 0;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47:focus {\n  outline: none;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47:disabled {\n  background: var(--grey9);\n  color: var(--grey3);\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47.TextField_module_sm__9cc1db47 {\n  padding: 0.5rem 0rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47.TextField_module_md__9cc1db47 {\n  padding: 0.688rem 0rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47.TextField_module_lg__9cc1db47 {\n  padding: 1rem 0rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_typeTextarea__9cc1db47 {\n  padding: 0;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_typeTextarea__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47 {\n  resize: vertical;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_typeTextarea__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47.TextField_module_md__9cc1db47 {\n  padding: 0.313rem 0.75rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_typeTextarea__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47.TextField_module_lg__9cc1db47 {\n  padding: 0.5rem 1rem;\n  font-size: 1rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47:focus-within {\n  border: 0.063rem solid var(--info);\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47:focus-within.TextField_module_feedbackError__9cc1db47 {\n  border-color: var(--error);\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_borderDefault__9cc1db47 {\n  border-width: 0.063rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_borderBottom__9cc1db47 {\n  border-width: 0rem 0rem 0.063rem 0rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_borderNone__9cc1db47 {\n  border-width: 0rem;\n}\n.TextField_module_root__9cc1db47 .TextField_module_bottom__9cc1db47 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: flex-start;\n  min-height: 2rem;\n  width: 100%;\n  gap: 1rem;\n  color: var(--grey3);\n  font-size: 0.75rem;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.TextField_module_root__9cc1db47 .TextField_module_bottom__9cc1db47 .TextField_module_feedback__9cc1db47 {\n  flex: 1;\n  margin-right: auto;\n}\n.TextField_module_root__9cc1db47 .TextField_module_bottom__9cc1db47 .TextField_module_feedback__9cc1db47.TextField_module_feedbackError__9cc1db47 {\n  color: var(--error);\n  fill: var(--error);\n}\n.TextField_module_root__9cc1db47 .TextField_module_bottom__9cc1db47 .TextField_module_feedback__9cc1db47.TextField_module_feedbackSuccess__9cc1db47 {\n  color: var(--success);\n  fill: var(--success);\n}\n.TextField_module_root__9cc1db47 .TextField_module_bottom__9cc1db47 .TextField_module_count__9cc1db47 {\n  text-align: right;\n  margin-left: auto;\n}\n.TextField_module_root__9cc1db47 .TextField_module_bottom__9cc1db47 .TextField_module_count__9cc1db47.TextField_module_exceeded__9cc1db47 {\n  color: var(--error);\n}";
 var modules_c1d23762 = {"root":"TextField_module_root__9cc1db47","input-wrapper":"TextField_module_inputWrapper__9cc1db47","icon":"TextField_module_icon__9cc1db47","input":"TextField_module_input__9cc1db47","sm":"TextField_module_sm__9cc1db47","md":"TextField_module_md__9cc1db47","lg":"TextField_module_lg__9cc1db47","type-textarea":"TextField_module_typeTextarea__9cc1db47","feedback-error":"TextField_module_feedbackError__9cc1db47","border-default":"TextField_module_borderDefault__9cc1db47","border-bottom":"TextField_module_borderBottom__9cc1db47","border-none":"TextField_module_borderNone__9cc1db47","bottom":"TextField_module_bottom__9cc1db47","feedback":"TextField_module_feedback__9cc1db47","feedback-success":"TextField_module_feedbackSuccess__9cc1db47","count":"TextField_module_count__9cc1db47","exceeded":"TextField_module_exceeded__9cc1db47"};
-n(css$q,{});
+n(css$x,{});
 
 var TextField = /*#__PURE__*/React.forwardRef(function TextField(props, inputRef) {
   var _inputValue$length;
@@ -34576,9 +34533,9 @@ TextField.defaultProps = {
   feedbackAndCount: false
 };
 
-var css$p = ":root {\n  --white: #ffffff;\n  --black: #000000;\n  --dark-grey: #333333;\n  --dark-grey-o-85: rgba(51, 51, 51, 0.85);\n  --grey: #737373;\n  --grey1: #888888;\n  --grey2: #a6a6a6;\n  --grey3: #bbbbbb;\n  --grey4: #c4c4c4;\n  --grey5: #dddddd;\n  --grey6: #e8e8e8;\n  --grey7: #eeeeee;\n  --grey8: #f2f2f2;\n  --grey9: #eff0f0;\n  --grey10: #f7f7f7;\n  --highlight: #0f62fe;\n  --dark-blue: #001833;\n  --background: #d0e2ff;\n  --banyan-blue: #00037c;\n  --banyan-orange: #ff892a;\n  --banyan-pink: #ff1597;\n  --banyan-gradient: linear-gradient(\n  \t84.71deg,\n  \tvar(--banyan-pink) 0.48%,\n  \tvar(--banyan-orange) 99.57%\n  );\n  --error: #da1e28;\n  --error-bg: #fff1f1;\n  --error-outline: rgba(218, 30, 40, 0.08);\n  --success: #24a148;\n  --success-bg: #defbe6;\n  --success-outline: rgba(36, 161, 72, 0.08);\n  --warning: #f1c21b;\n  --warning-bg: #fff8e1;\n  --warning-outline: rgba(203, 160, 6, 0.08);\n  --info: #0043ce;\n  --info-bg: #edf5ff;\n  --info-outline: #2864db98;\n}\n\n.CheckBox_module_root__d1bdcb36 {\n  cursor: pointer;\n  gap: 10px;\n}\n.CheckBox_module_root__d1bdcb36.CheckBox_module_positionLeft__d1bdcb36 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.CheckBox_module_root__d1bdcb36.CheckBox_module_positionRight__d1bdcb36 {\n  display: flex;\n  flex-direction: row-reverse;\n  justify-content: flex-end;\n  align-items: center;\n}\n.CheckBox_module_root__d1bdcb36 input[type=checkbox] {\n  opacity: 0;\n  z-index: 1;\n  position: absolute;\n  width: 1px;\n  height: 1px;\n}\n.CheckBox_module_root__d1bdcb36.CheckBox_module_disabled__d1bdcb36 {\n  cursor: default;\n}\n.CheckBox_module_root__d1bdcb36 .CheckBox_module_icon__d1bdcb36 {\n  display: inline-block;\n}\n.CheckBox_module_root__d1bdcb36 .CheckBox_module_icon__d1bdcb36.CheckBox_module_iconSm__d1bdcb36 {\n  width: 1rem;\n  height: 1rem;\n}\n.CheckBox_module_root__d1bdcb36 .CheckBox_module_icon__d1bdcb36.CheckBox_module_iconMd__d1bdcb36 {\n  width: 1.25rem;\n  height: 1.25rem;\n}\n.CheckBox_module_root__d1bdcb36 .CheckBox_module_icon__d1bdcb36.CheckBox_module_iconLg__d1bdcb36 {\n  width: 1.5rem;\n  height: 2rem;\n}\n.CheckBox_module_root__d1bdcb36 [data-elem=label] {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}";
+var css$w = ":root {\n  --white: #ffffff;\n  --black: #000000;\n  --dark-grey: #333333;\n  --dark-grey-o-85: rgba(51, 51, 51, 0.85);\n  --grey: #737373;\n  --grey1: #888888;\n  --grey2: #a6a6a6;\n  --grey3: #bbbbbb;\n  --grey4: #c4c4c4;\n  --grey5: #dddddd;\n  --grey6: #e8e8e8;\n  --grey7: #eeeeee;\n  --grey8: #f2f2f2;\n  --grey9: #eff0f0;\n  --grey10: #f7f7f7;\n  --highlight: #0f62fe;\n  --dark-blue: #001833;\n  --background: #d0e2ff;\n  --banyan-blue: #00037c;\n  --banyan-orange: #ff892a;\n  --banyan-pink: #ff1597;\n  --banyan-gradient: linear-gradient(\n  \t84.71deg,\n  \tvar(--banyan-pink) 0.48%,\n  \tvar(--banyan-orange) 99.57%\n  );\n  --error: #da1e28;\n  --error-bg: #fff1f1;\n  --error-outline: rgba(218, 30, 40, 0.08);\n  --success: #24a148;\n  --success-bg: #defbe6;\n  --success-outline: rgba(36, 161, 72, 0.08);\n  --warning: #f1c21b;\n  --warning-bg: #fff8e1;\n  --warning-outline: rgba(203, 160, 6, 0.08);\n  --info: #0043ce;\n  --info-bg: #edf5ff;\n  --info-outline: #2864db98;\n}\n\n.CheckBox_module_root__d1bdcb36 {\n  cursor: pointer;\n  gap: 10px;\n}\n.CheckBox_module_root__d1bdcb36.CheckBox_module_positionLeft__d1bdcb36 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.CheckBox_module_root__d1bdcb36.CheckBox_module_positionRight__d1bdcb36 {\n  display: flex;\n  flex-direction: row-reverse;\n  justify-content: flex-end;\n  align-items: center;\n}\n.CheckBox_module_root__d1bdcb36 input[type=checkbox] {\n  opacity: 0;\n  z-index: 1;\n  position: absolute;\n  width: 1px;\n  height: 1px;\n}\n.CheckBox_module_root__d1bdcb36.CheckBox_module_disabled__d1bdcb36 {\n  cursor: default;\n}\n.CheckBox_module_root__d1bdcb36 .CheckBox_module_icon__d1bdcb36 {\n  display: inline-block;\n}\n.CheckBox_module_root__d1bdcb36 .CheckBox_module_icon__d1bdcb36.CheckBox_module_iconSm__d1bdcb36 {\n  width: 1rem;\n  height: 1rem;\n}\n.CheckBox_module_root__d1bdcb36 .CheckBox_module_icon__d1bdcb36.CheckBox_module_iconMd__d1bdcb36 {\n  width: 1.25rem;\n  height: 1.25rem;\n}\n.CheckBox_module_root__d1bdcb36 .CheckBox_module_icon__d1bdcb36.CheckBox_module_iconLg__d1bdcb36 {\n  width: 1.5rem;\n  height: 2rem;\n}\n.CheckBox_module_root__d1bdcb36 [data-elem=label] {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}";
 var modules_066398a2 = {"white":"var(--white)","black":"var(--black)","dark-grey":"var(--dark-grey)","dark-grey-o-85":"var(--dark-grey-o-85)","grey":"var(--grey)","grey1":"var(--grey1)","grey2":"var(--grey2)","grey3":"var(--grey3)","grey4":"var(--grey4)","grey5":"var(--grey5)","grey6":"var(--grey6)","grey7":"var(--grey7)","grey8":"var(--grey8)","grey9":"var(--grey9)","grey10":"var(--grey10)","highlight":"var(--highlight)","dark-blue":"var(--dark-blue)","background":"var(--background)","banyan-blue":"var(--banyan-blue)","banyan-orange":"var(--banyan-orange)","banyan-pink":"var(--banyan-pink)","banyan-gradient":"var(--banyan-gradient)","error":"var(--error)","error-bg":"var(--error-bg)","error-outline":"var(--error-outline)","success":"var(--success)","success-bg":"var(--success-bg)","success-outline":"var(--success-outline)","warning":"var(--warning)","warning-bg":"var(--warning-bg)","warning-outline":"var(--warning-outline)","info":"var(--info)","info-bg":"var(--info-bg)","info-outline":"var(--info-outline)","root":"CheckBox_module_root__d1bdcb36","position-left":"CheckBox_module_positionLeft__d1bdcb36","position-right":"CheckBox_module_positionRight__d1bdcb36","disabled":"CheckBox_module_disabled__d1bdcb36","icon":"CheckBox_module_icon__d1bdcb36","icon-sm":"CheckBox_module_iconSm__d1bdcb36","icon-md":"CheckBox_module_iconMd__d1bdcb36","icon-lg":"CheckBox_module_iconLg__d1bdcb36"};
-n(css$p,{});
+n(css$w,{});
 
 var Checkbox = function Checkbox(props) {
   // eslint-disable-next-line object-curly-newline
@@ -34649,9 +34606,9 @@ Checkbox.defaultProps = {
   onChange: function onChange() {}
 };
 
-var css$o = ":root {\n  --white: #ffffff;\n  --black: #000000;\n  --dark-grey: #333333;\n  --dark-grey-o-85: rgba(51, 51, 51, 0.85);\n  --grey: #737373;\n  --grey1: #888888;\n  --grey2: #a6a6a6;\n  --grey3: #bbbbbb;\n  --grey4: #c4c4c4;\n  --grey5: #dddddd;\n  --grey6: #e8e8e8;\n  --grey7: #eeeeee;\n  --grey8: #f2f2f2;\n  --grey9: #eff0f0;\n  --grey10: #f7f7f7;\n  --highlight: #0f62fe;\n  --dark-blue: #001833;\n  --background: #d0e2ff;\n  --banyan-blue: #00037c;\n  --banyan-orange: #ff892a;\n  --banyan-pink: #ff1597;\n  --banyan-gradient: linear-gradient(\n  \t84.71deg,\n  \tvar(--banyan-pink) 0.48%,\n  \tvar(--banyan-orange) 99.57%\n  );\n  --error: #da1e28;\n  --error-bg: #fff1f1;\n  --error-outline: rgba(218, 30, 40, 0.08);\n  --success: #24a148;\n  --success-bg: #defbe6;\n  --success-outline: rgba(36, 161, 72, 0.08);\n  --warning: #f1c21b;\n  --warning-bg: #fff8e1;\n  --warning-outline: rgba(203, 160, 6, 0.08);\n  --info: #0043ce;\n  --info-bg: #edf5ff;\n  --info-outline: #2864db98;\n}\n\n.Radio_module_root__dc9ececa {\n  cursor: pointer;\n  gap: 10px;\n}\n.Radio_module_root__dc9ececa.Radio_module_positionLeft__dc9ececa {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.Radio_module_root__dc9ececa.Radio_module_positionRight__dc9ececa {\n  display: flex;\n  flex-direction: row-reverse;\n  justify-content: flex-end;\n  align-items: center;\n}\n.Radio_module_root__dc9ececa.Radio_module_disabled__dc9ececa {\n  cursor: default;\n}\n.Radio_module_root__dc9ececa input[type=radio] {\n  opacity: 0;\n  z-index: 1;\n  position: absolute;\n  width: 1px;\n  height: 1px;\n}\n.Radio_module_root__dc9ececa .Radio_module_icon__dc9ececa {\n  display: inline-block;\n}\n.Radio_module_root__dc9ececa .Radio_module_icon__dc9ececa.Radio_module_iconSm__dc9ececa {\n  width: 1rem;\n  height: 1rem;\n}\n.Radio_module_root__dc9ececa .Radio_module_icon__dc9ececa.Radio_module_iconMd__dc9ececa {\n  width: 1.25rem;\n  height: 1.25rem;\n}\n.Radio_module_root__dc9ececa .Radio_module_icon__dc9ececa.Radio_module_iconLg__dc9ececa {\n  width: 1.5rem;\n  height: 2rem;\n}\n.Radio_module_root__dc9ececa [data-elem=label] {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}";
+var css$v = ":root {\n  --white: #ffffff;\n  --black: #000000;\n  --dark-grey: #333333;\n  --dark-grey-o-85: rgba(51, 51, 51, 0.85);\n  --grey: #737373;\n  --grey1: #888888;\n  --grey2: #a6a6a6;\n  --grey3: #bbbbbb;\n  --grey4: #c4c4c4;\n  --grey5: #dddddd;\n  --grey6: #e8e8e8;\n  --grey7: #eeeeee;\n  --grey8: #f2f2f2;\n  --grey9: #eff0f0;\n  --grey10: #f7f7f7;\n  --highlight: #0f62fe;\n  --dark-blue: #001833;\n  --background: #d0e2ff;\n  --banyan-blue: #00037c;\n  --banyan-orange: #ff892a;\n  --banyan-pink: #ff1597;\n  --banyan-gradient: linear-gradient(\n  \t84.71deg,\n  \tvar(--banyan-pink) 0.48%,\n  \tvar(--banyan-orange) 99.57%\n  );\n  --error: #da1e28;\n  --error-bg: #fff1f1;\n  --error-outline: rgba(218, 30, 40, 0.08);\n  --success: #24a148;\n  --success-bg: #defbe6;\n  --success-outline: rgba(36, 161, 72, 0.08);\n  --warning: #f1c21b;\n  --warning-bg: #fff8e1;\n  --warning-outline: rgba(203, 160, 6, 0.08);\n  --info: #0043ce;\n  --info-bg: #edf5ff;\n  --info-outline: #2864db98;\n}\n\n.Radio_module_root__dc9ececa {\n  cursor: pointer;\n  gap: 10px;\n}\n.Radio_module_root__dc9ececa.Radio_module_positionLeft__dc9ececa {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.Radio_module_root__dc9ececa.Radio_module_positionRight__dc9ececa {\n  display: flex;\n  flex-direction: row-reverse;\n  justify-content: flex-end;\n  align-items: center;\n}\n.Radio_module_root__dc9ececa.Radio_module_disabled__dc9ececa {\n  cursor: default;\n}\n.Radio_module_root__dc9ececa input[type=radio] {\n  opacity: 0;\n  z-index: 1;\n  position: absolute;\n  width: 1px;\n  height: 1px;\n}\n.Radio_module_root__dc9ececa .Radio_module_icon__dc9ececa {\n  display: inline-block;\n}\n.Radio_module_root__dc9ececa .Radio_module_icon__dc9ececa.Radio_module_iconSm__dc9ececa {\n  width: 1rem;\n  height: 1rem;\n}\n.Radio_module_root__dc9ececa .Radio_module_icon__dc9ececa.Radio_module_iconMd__dc9ececa {\n  width: 1.25rem;\n  height: 1.25rem;\n}\n.Radio_module_root__dc9ececa .Radio_module_icon__dc9ececa.Radio_module_iconLg__dc9ececa {\n  width: 1.5rem;\n  height: 2rem;\n}\n.Radio_module_root__dc9ececa [data-elem=label] {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}";
 var modules_3705961f = {"white":"var(--white)","black":"var(--black)","dark-grey":"var(--dark-grey)","dark-grey-o-85":"var(--dark-grey-o-85)","grey":"var(--grey)","grey1":"var(--grey1)","grey2":"var(--grey2)","grey3":"var(--grey3)","grey4":"var(--grey4)","grey5":"var(--grey5)","grey6":"var(--grey6)","grey7":"var(--grey7)","grey8":"var(--grey8)","grey9":"var(--grey9)","grey10":"var(--grey10)","highlight":"var(--highlight)","dark-blue":"var(--dark-blue)","background":"var(--background)","banyan-blue":"var(--banyan-blue)","banyan-orange":"var(--banyan-orange)","banyan-pink":"var(--banyan-pink)","banyan-gradient":"var(--banyan-gradient)","error":"var(--error)","error-bg":"var(--error-bg)","error-outline":"var(--error-outline)","success":"var(--success)","success-bg":"var(--success-bg)","success-outline":"var(--success-outline)","warning":"var(--warning)","warning-bg":"var(--warning-bg)","warning-outline":"var(--warning-outline)","info":"var(--info)","info-bg":"var(--info-bg)","info-outline":"var(--info-outline)","root":"Radio_module_root__dc9ececa","position-left":"Radio_module_positionLeft__dc9ececa","position-right":"Radio_module_positionRight__dc9ececa","disabled":"Radio_module_disabled__dc9ececa","icon":"Radio_module_icon__dc9ececa","icon-sm":"Radio_module_iconSm__dc9ececa","icon-md":"Radio_module_iconMd__dc9ececa","icon-lg":"Radio_module_iconLg__dc9ececa"};
-n(css$o,{});
+n(css$v,{});
 
 var Radio = function Radio(props) {
   // eslint-disable-next-line object-curly-newline
@@ -34719,9 +34676,9 @@ Radio.defaultProps = {
   onChange: function onChange() {}
 };
 
-var css$n = ".Dropdown_module_root__713eaa75 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  gap: 0.5rem;\n  position: relative;\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  max-width: 100%;\n}\n.Dropdown_module_root__713eaa75 .Dropdown_module_label__713eaa75 {\n  font-size: 0.75rem;\n  color: var(--grey);\n  width: auto;\n}\n.Dropdown_module_root__713eaa75 .Dropdown_module_header__713eaa75 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  max-width: 100%;\n  position: relative;\n}\n.Dropdown_module_root__713eaa75 .Dropdown_module_header__713eaa75 .Dropdown_module_input__713eaa75 {\n  position: absolute;\n  opacity: 0;\n  width: 1px;\n  height: 1px;\n}\n.Dropdown_module_root__713eaa75 .Dropdown_module_header__713eaa75 .Dropdown_module_input__713eaa75:focus + .Dropdown_module_select__713eaa75 {\n  border-color: var(--highlight);\n}\n.Dropdown_module_root__713eaa75 .Dropdown_module_header__713eaa75 .Dropdown_module_input__713eaa75:focus + .Dropdown_module_select__713eaa75.Dropdown_module_feedbackError__713eaa75 {\n  border-color: var(--error);\n}\n.Dropdown_module_root__713eaa75 .Dropdown_module_header__713eaa75 .Dropdown_module_select__713eaa75 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  width: 25rem;\n  max-width: 100%;\n  gap: 0.5rem;\n  background: var(--white);\n  outline: none;\n  border: 1px solid var(--grey5);\n  border-radius: 0.25rem;\n  padding: 0.75rem 0.75rem 0.75rem 1rem;\n  cursor: pointer;\n}\n.Dropdown_module_root__713eaa75 .Dropdown_module_header__713eaa75 .Dropdown_module_select__713eaa75 .Dropdown_module_placeholder__713eaa75 {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  color: var(--black);\n}\n.Dropdown_module_root__713eaa75 .Dropdown_module_header__713eaa75 .Dropdown_module_select__713eaa75 .Dropdown_module_icon__713eaa75 {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.Dropdown_module_root__713eaa75 .Dropdown_module_header__713eaa75 .Dropdown_module_select__713eaa75.Dropdown_module_feedbackError__713eaa75 {\n  border-color: var(--error);\n}\n.Dropdown_module_root__713eaa75.Dropdown_module_open__713eaa75 .Dropdown_module_header__713eaa75 {\n  border-color: var(--highlight);\n}\n.Dropdown_module_root__713eaa75.Dropdown_module_disabled__713eaa75 .Dropdown_module_select__713eaa75 {\n  background: var(--grey10);\n  cursor: not-allowed;\n}\n.Dropdown_module_root__713eaa75 .Dropdown_module_bottom__713eaa75 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: flex-start;\n  min-height: 2rem;\n  width: 100%;\n  gap: 1rem;\n  color: var(--grey3);\n  font-size: 0.75rem;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.Dropdown_module_root__713eaa75 .Dropdown_module_bottom__713eaa75 .Dropdown_module_feedback__713eaa75 {\n  flex: 1;\n  margin-right: auto;\n}\n.Dropdown_module_root__713eaa75 .Dropdown_module_bottom__713eaa75 .Dropdown_module_feedback__713eaa75.Dropdown_module_feedbackError__713eaa75 {\n  color: var(--error);\n  fill: var(--error);\n}\n.Dropdown_module_root__713eaa75 .Dropdown_module_bottom__713eaa75 .Dropdown_module_feedback__713eaa75.Dropdown_module_feedbackSuccess__713eaa75 {\n  color: var(--success);\n  fill: var(--success);\n}\n.Dropdown_module_root__713eaa75 .Dropdown_module_bottom__713eaa75 .Dropdown_module_count__713eaa75 {\n  text-align: right;\n  margin-left: auto;\n}\n.Dropdown_module_root__713eaa75 .Dropdown_module_bottom__713eaa75 .Dropdown_module_count__713eaa75.Dropdown_module_exceeded__713eaa75 {\n  color: var(--error);\n}\n\n.Dropdown_module_body__713eaa75 {\n  display: none;\n  position: absolute;\n  top: calc(100% + 0.5rem);\n  z-index: 999;\n  background: var(--white);\n  width: auto;\n  border: 0.063rem solid var(--grey5);\n  box-shadow: 0rem 0.5rem 1.25rem rgba(24, 24, 24, 0.08);\n  border-radius: 0.25rem;\n  padding: 1rem;\n  overflow-y: auto;\n  min-height: 4rem;\n  outline: none;\n}\n.Dropdown_module_body__713eaa75.Dropdown_module_open__713eaa75 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n}";
-var modules_1b90f5ea = {"root":"Dropdown_module_root__713eaa75","label":"Dropdown_module_label__713eaa75","header":"Dropdown_module_header__713eaa75","input":"Dropdown_module_input__713eaa75","select":"Dropdown_module_select__713eaa75","feedback-error":"Dropdown_module_feedbackError__713eaa75","placeholder":"Dropdown_module_placeholder__713eaa75","icon":"Dropdown_module_icon__713eaa75","open":"Dropdown_module_open__713eaa75","disabled":"Dropdown_module_disabled__713eaa75","bottom":"Dropdown_module_bottom__713eaa75","feedback":"Dropdown_module_feedback__713eaa75","feedback-success":"Dropdown_module_feedbackSuccess__713eaa75","count":"Dropdown_module_count__713eaa75","exceeded":"Dropdown_module_exceeded__713eaa75","body":"Dropdown_module_body__713eaa75"};
-n(css$n,{});
+var css$u = ".Dropdown_module_root__1ad8038e {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  gap: 0.5rem;\n  position: relative;\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  max-width: 100%;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_label__1ad8038e {\n  font-size: 0.75rem;\n  color: var(--grey);\n  width: auto;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  max-width: 100%;\n  position: relative;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e .Dropdown_module_input__1ad8038e {\n  position: absolute;\n  opacity: 0;\n  width: 1px;\n  height: 1px;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e .Dropdown_module_input__1ad8038e:focus + .Dropdown_module_select__1ad8038e {\n  border-color: var(--highlight);\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e .Dropdown_module_input__1ad8038e:focus + .Dropdown_module_select__1ad8038e.Dropdown_module_feedbackError__1ad8038e {\n  border-color: var(--error);\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e .Dropdown_module_select__1ad8038e {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  width: 25rem;\n  max-width: 100%;\n  gap: 0.5rem;\n  background: var(--white);\n  outline: none;\n  border: 1px solid var(--grey5);\n  border-radius: 0.25rem;\n  padding: 0.75rem 0.75rem 0.75rem 1rem;\n  cursor: pointer;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e .Dropdown_module_select__1ad8038e .Dropdown_module_placeholder__1ad8038e {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  color: var(--black);\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e .Dropdown_module_select__1ad8038e .Dropdown_module_icon__1ad8038e {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e .Dropdown_module_select__1ad8038e.Dropdown_module_feedbackError__1ad8038e {\n  border-color: var(--error);\n}\n.Dropdown_module_root__1ad8038e.Dropdown_module_open__1ad8038e .Dropdown_module_header__1ad8038e {\n  border-color: var(--highlight);\n}\n.Dropdown_module_root__1ad8038e.Dropdown_module_disabled__1ad8038e .Dropdown_module_select__1ad8038e {\n  background: var(--grey10);\n  cursor: not-allowed;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_bottom__1ad8038e {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: flex-start;\n  min-height: 2rem;\n  width: 100%;\n  gap: 1rem;\n  color: var(--grey3);\n  font-size: 0.75rem;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_bottom__1ad8038e .Dropdown_module_feedback__1ad8038e {\n  flex: 1;\n  margin-right: auto;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_bottom__1ad8038e .Dropdown_module_feedback__1ad8038e.Dropdown_module_feedbackError__1ad8038e {\n  color: var(--error);\n  fill: var(--error);\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_bottom__1ad8038e .Dropdown_module_feedback__1ad8038e.Dropdown_module_feedbackSuccess__1ad8038e {\n  color: var(--success);\n  fill: var(--success);\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_bottom__1ad8038e .Dropdown_module_count__1ad8038e {\n  text-align: right;\n  margin-left: auto;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_bottom__1ad8038e .Dropdown_module_count__1ad8038e.Dropdown_module_exceeded__1ad8038e {\n  color: var(--error);\n}\n\n.Dropdown_module_body__1ad8038e {\n  display: none;\n  position: absolute;\n  top: calc(100% + 0.5rem);\n  background: var(--white);\n  width: auto;\n  border: 0.063rem solid var(--grey5);\n  box-shadow: 0rem 0.5rem 1.25rem rgba(24, 24, 24, 0.08);\n  border-radius: 0.25rem;\n  padding: 1rem;\n  overflow-y: auto;\n  min-height: 4rem;\n  outline: none;\n}\n.Dropdown_module_body__1ad8038e .Dropdown_module_multiOptions__1ad8038e {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: 0.5rem;\n  list-style: none;\n}\n.Dropdown_module_body__1ad8038e .Dropdown_module_multiApply__1ad8038e {\n  margin-top: 0.5rem;\n}\n.Dropdown_module_body__1ad8038e.Dropdown_module_open__1ad8038e {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n}";
+var modules_1b90f5ea = {"root":"Dropdown_module_root__1ad8038e","label":"Dropdown_module_label__1ad8038e","header":"Dropdown_module_header__1ad8038e","input":"Dropdown_module_input__1ad8038e","select":"Dropdown_module_select__1ad8038e","feedback-error":"Dropdown_module_feedbackError__1ad8038e","placeholder":"Dropdown_module_placeholder__1ad8038e","icon":"Dropdown_module_icon__1ad8038e","open":"Dropdown_module_open__1ad8038e","disabled":"Dropdown_module_disabled__1ad8038e","bottom":"Dropdown_module_bottom__1ad8038e","feedback":"Dropdown_module_feedback__1ad8038e","feedback-success":"Dropdown_module_feedbackSuccess__1ad8038e","count":"Dropdown_module_count__1ad8038e","exceeded":"Dropdown_module_exceeded__1ad8038e","body":"Dropdown_module_body__1ad8038e","multi-options":"Dropdown_module_multiOptions__1ad8038e","multi-apply":"Dropdown_module_multiApply__1ad8038e"};
+n(css$u,{});
 
 var Dropdown = /*#__PURE__*/React.forwardRef(function Dropdown(props, inputRef) {
   var _selectedOptions$map, _ref2, _selectedOptions$;
@@ -34738,7 +34695,8 @@ var Dropdown = /*#__PURE__*/React.forwardRef(function Dropdown(props, inputRef) 
     disabled = props.disabled,
     id = props.id,
     name = props.name,
-    feedback = props.feedback;
+    feedback = props.feedback,
+    formatter = props.formatter;
   var _useState = React.useState(false),
     _useState2 = _slicedToArray(_useState, 2),
     open = _useState2[0],
@@ -34751,7 +34709,8 @@ var Dropdown = /*#__PURE__*/React.forwardRef(function Dropdown(props, inputRef) 
     _useState6 = _slicedToArray(_useState5, 2),
     selectedIndex = _useState6[0],
     setSelectedIndex = _useState6[1];
-  var listRef = React.useRef([]);
+  var listItemsRef = React.useRef([]);
+  var multiOptionsRef = React.useRef(null);
   var isControlled = value !== undefined;
 
   // for uncontrolled input
@@ -34792,85 +34751,68 @@ var Dropdown = /*#__PURE__*/React.forwardRef(function Dropdown(props, inputRef) 
     }), useRole(context, {
       role: 'listbox'
     }), useListNavigation(context, {
-      listRef: listRef,
+      listRef: listItemsRef,
       activeIndex: activeIndex,
       selectedIndex: selectedIndex,
-      onNavigate: setActiveIndex,
-      focusItemOnHover: true
-    }), useTypeahead(context, {
-      listRef: listRef,
-      onMatch: open ? setActiveIndex : setSelectedIndex,
-      activeIndex: activeIndex,
-      selectedIndex: selectedIndex,
-      findMatch: function findMatch(list, typedString) {
-        return list.find(function (elem) {
-          var _elem$textContent;
-          return (elem === null || elem === void 0 ? void 0 : (_elem$textContent = elem.textContent) === null || _elem$textContent === void 0 ? void 0 : _elem$textContent.toLowerCase().indexOf(typedString)) === 0;
-        });
-      }
+      onNavigate: setActiveIndex
     }), useDismiss(context)]),
     getReferenceProps = _useInteractions.getReferenceProps,
     getFloatingProps = _useInteractions.getFloatingProps,
     getItemProps = _useInteractions.getItemProps;
-  var onSelect = function onSelect(event) {
-    var _inputHelper = inputHelper(event),
-      dataset = _inputHelper.dataset;
-    var itemValue = dataset.value,
-      index = dataset.index,
-      selected = dataset.selected,
-      elem = dataset.elem;
-
-    // to support form libraries which require name and value on the event
-    var nativeEvent = event.nativeEvent || event;
-    var clonedEvent = new nativeEvent.constructor(nativeEvent.type, nativeEvent);
-    Object.defineProperty(clonedEvent, 'target', {
-      writable: true,
-      value: {
-        value: itemValue,
-        name: name
+  var onSelect = function onSelect(child, selected) {
+    return function (event) {
+      var _itemValue$toString;
+      if (event.currentTarget.getAttribute('data-elem') !== 'dropdown-item') {
+        return;
       }
-    });
-    if (elem === 'dropdown-item') {
+      var itemValue = child.props.value;
+      var itemValueString = itemValue === null || itemValue === void 0 ? void 0 : (_itemValue$toString = itemValue.toString) === null || _itemValue$toString === void 0 ? void 0 : _itemValue$toString.call(itemValue);
+      var index = event.currentTarget.getAttribute('data-index');
+
+      // to support form libraries which require name and value on the event
+      var nativeEvent = event.nativeEvent || event;
+      var clonedEvent = new nativeEvent.constructor(nativeEvent.type, nativeEvent);
+      Object.defineProperty(clonedEvent, 'target', {
+        writable: true,
+        value: {
+          value: itemValueString,
+          name: name
+        }
+      });
+
+      // if (elem === 'dropdown-item') {
       setSelectedIndex(parseInt(index, 10));
       if (multi) {
-        if (isControlled) {
-          if (selected === 'true') {
-            onChange === null || onChange === void 0 ? void 0 : onChange(clonedEvent, value.filter(function (val) {
-              return val !== itemValue;
-            }));
-          } else {
-            onChange === null || onChange === void 0 ? void 0 : onChange(clonedEvent, [].concat(_toConsumableArray(value !== null && value !== void 0 ? value : []), [itemValue]));
-          }
+        // eslint-disable-next-line no-lonely-if
+        if (selected === true) {
+          setUncontrolledValue(uncontrolledValue.filter(function (val) {
+            return val !== itemValueString;
+          }));
         } else {
-          // eslint-disable-next-line no-lonely-if
-          if (selected === 'true') {
-            setUncontrolledValue(uncontrolledValue.filter(function (val) {
-              return val !== itemValue;
-            }));
-          } else {
-            setUncontrolledValue([].concat(_toConsumableArray(uncontrolledValue !== null && uncontrolledValue !== void 0 ? uncontrolledValue : []), [itemValue]));
-          }
+          setUncontrolledValue([].concat(_toConsumableArray(uncontrolledValue !== null && uncontrolledValue !== void 0 ? uncontrolledValue : []), [itemValueString]));
         }
+        setActiveIndex(parseInt(index, 10));
       } else {
         if (isControlled) {
-          onChange(clonedEvent, itemValue.toString());
+          onChange(clonedEvent, itemValueString.toString());
         } else {
-          setUncontrolledValue(itemValue.toString());
+          setUncontrolledValue(itemValueString.toString());
         }
         setActiveIndex(null);
         setOpen(false);
       }
-    }
+      // }
+    };
   };
-  var onNavigate = function onNavigate(event) {
-    var selectKey = [' ', 'Spacebar', 'Enter'].includes(event.key);
-    if (selectKey) {
-      event.stopPropagation();
-      onSelect(event);
-    }
-  };
-  var onClick = function onClick(event) {
-    onSelect(event);
+
+  var onNavigate = function onNavigate(child, selected) {
+    return function (event) {
+      var selectKey = [' ', 'Spacebar', 'Enter'].includes(event.key);
+      if (selectKey) {
+        event.stopPropagation();
+        onSelect(child, selected)(event);
+      }
+    };
   };
   React.useImperativeHandle(inputRef, function () {
     return {
@@ -34884,19 +34826,17 @@ var Dropdown = /*#__PURE__*/React.forwardRef(function Dropdown(props, inputRef) 
       }
     };
   }, []);
-  useOutsideClickListener(floating, function () {
-    return setOpen(false);
-  });
+  var childrenArray = React.Children.toArray(children);
   var selectedOptions = React.useMemo(function () {
     var inputValue = uncontrolledValue;
-    if (isControlled) {
+    if (isControlled && !multi) {
       inputValue = value;
     }
     var options = [];
     if (inputValue != null && inputValue !== '') {
-      children === null || children === void 0 ? void 0 : children.forEach(function (child) {
-        var _inputValue$toString$, _inputValue, _inputValue$toString, _inputValue$toString$2, _inputValue$toString$3, _child$props, _child$props$value, _child$props$value$to, _inputValue2, _child$props2, _child$props2$value, _child$props2$value$t;
-        if (multi && ((_inputValue$toString$ = (_inputValue = inputValue) === null || _inputValue === void 0 ? void 0 : (_inputValue$toString = _inputValue.toString) === null || _inputValue$toString === void 0 ? void 0 : (_inputValue$toString$2 = _inputValue$toString.call(_inputValue)) === null || _inputValue$toString$2 === void 0 ? void 0 : (_inputValue$toString$3 = _inputValue$toString$2.indexOf) === null || _inputValue$toString$3 === void 0 ? void 0 : _inputValue$toString$3.call(_inputValue$toString$2, child === null || child === void 0 ? void 0 : (_child$props = child.props) === null || _child$props === void 0 ? void 0 : (_child$props$value = _child$props.value) === null || _child$props$value === void 0 ? void 0 : (_child$props$value$to = _child$props$value.toString) === null || _child$props$value$to === void 0 ? void 0 : _child$props$value$to.call(_child$props$value))) !== null && _inputValue$toString$ !== void 0 ? _inputValue$toString$ : -1) !== -1 || !multi && ((_inputValue2 = inputValue) === null || _inputValue2 === void 0 ? void 0 : _inputValue2.toString()) === (child === null || child === void 0 ? void 0 : (_child$props2 = child.props) === null || _child$props2 === void 0 ? void 0 : (_child$props2$value = _child$props2.value) === null || _child$props2$value === void 0 ? void 0 : (_child$props2$value$t = _child$props2$value.toString) === null || _child$props2$value$t === void 0 ? void 0 : _child$props2$value$t.call(_child$props2$value))) {
+      childrenArray === null || childrenArray === void 0 ? void 0 : childrenArray.forEach(function (child) {
+        var _inputValue$indexOf, _inputValue, _inputValue$indexOf2, _child$props, _child$props$value, _child$props$value$to, _inputValue2, _child$props2, _child$props2$value, _child$props2$value$t;
+        if (multi && ((_inputValue$indexOf = (_inputValue = inputValue) === null || _inputValue === void 0 ? void 0 : (_inputValue$indexOf2 = _inputValue.indexOf) === null || _inputValue$indexOf2 === void 0 ? void 0 : _inputValue$indexOf2.call(_inputValue, child === null || child === void 0 ? void 0 : (_child$props = child.props) === null || _child$props === void 0 ? void 0 : (_child$props$value = _child$props.value) === null || _child$props$value === void 0 ? void 0 : (_child$props$value$to = _child$props$value.toString) === null || _child$props$value$to === void 0 ? void 0 : _child$props$value$to.call(_child$props$value))) !== null && _inputValue$indexOf !== void 0 ? _inputValue$indexOf : -1) !== -1 || !multi && ((_inputValue2 = inputValue) === null || _inputValue2 === void 0 ? void 0 : _inputValue2.toString()) === (child === null || child === void 0 ? void 0 : (_child$props2 = child.props) === null || _child$props2 === void 0 ? void 0 : (_child$props2$value = _child$props2.value) === null || _child$props2$value === void 0 ? void 0 : (_child$props2$value$t = _child$props2$value.toString) === null || _child$props2$value$t === void 0 ? void 0 : _child$props2$value$t.call(_child$props2$value))) {
           var _child$props3, _child$props4, _child$props4$value, _child$props4$value$t;
           options.push({
             title: child === null || child === void 0 ? void 0 : (_child$props3 = child.props) === null || _child$props3 === void 0 ? void 0 : _child$props3.title,
@@ -34907,25 +34847,93 @@ var Dropdown = /*#__PURE__*/React.forwardRef(function Dropdown(props, inputRef) 
     }
     return options;
   }, [value, uncontrolledValue, multi]);
-  var items = children.map(function (child, index) {
+  var items = childrenArray.map(function (child, index) {
+    var _child$props6;
     var selected = false;
-    if (selectedOptions.find(function (option) {
+    if (selectedOptions.findIndex(function (option) {
       var _child$props5, _child$props5$value, _child$props5$value$t;
       return option.value === (child === null || child === void 0 ? void 0 : (_child$props5 = child.props) === null || _child$props5 === void 0 ? void 0 : (_child$props5$value = _child$props5.value) === null || _child$props5$value === void 0 ? void 0 : (_child$props5$value$t = _child$props5$value.toString) === null || _child$props5$value$t === void 0 ? void 0 : _child$props5$value$t.call(_child$props5$value));
-    })) {
+    }) !== -1) {
       selected = true;
     }
     return /*#__PURE__*/React.cloneElement(child, _objectSpread2({}, getItemProps({
-      onKeyDown: onNavigate,
+      key: child === null || child === void 0 ? void 0 : (_child$props6 = child.props) === null || _child$props6 === void 0 ? void 0 : _child$props6.value,
+      onKeyDown: onNavigate(child, selected),
+      onClick: onSelect(child, selected),
+      onMouseEnter: function onMouseEnter() {
+        setActiveIndex(index);
+      },
       dataAttrs: {
         'data-index': index
       },
       selected: selected,
+      tabIndex: activeIndex === index ? 0 : -1,
       ref: function ref(node) {
-        listRef.current[index] = node;
+        listItemsRef.current[index] = node;
       }
     })));
   });
+  var _useState9 = React.useState(false),
+    _useState10 = _slicedToArray(_useState9, 2),
+    pointer = _useState10[0],
+    setPointer = _useState10[1];
+  if (!open && pointer) {
+    setPointer(false);
+  }
+  React.useLayoutEffect(function () {
+    if (open && activeIndex != null && !pointer) {
+      requestAnimationFrame(function () {
+        var _listItemsRef$current;
+        (_listItemsRef$current = listItemsRef.current[activeIndex]) === null || _listItemsRef$current === void 0 ? void 0 : _listItemsRef$current.scrollIntoView({
+          block: 'nearest'
+        });
+      });
+    }
+  }, [open, activeIndex, pointer]);
+  React.useEffect(function () {
+    if (multi) {
+      setUncontrolledValue(value);
+    }
+  }, [open, multi, value]);
+  var onSelectAll = function onSelectAll(event, selected) {
+    // to support form libraries which require name and value on the event
+    var nativeEvent = event.nativeEvent || event;
+    var clonedEvent = new nativeEvent.constructor(nativeEvent.type, nativeEvent);
+    var itemValue = [];
+    if (selected) {
+      itemValue = childrenArray.map(function (child) {
+        var _child$props7, _child$props7$value, _child$props7$value$t;
+        return child === null || child === void 0 ? void 0 : (_child$props7 = child.props) === null || _child$props7 === void 0 ? void 0 : (_child$props7$value = _child$props7.value) === null || _child$props7$value === void 0 ? void 0 : (_child$props7$value$t = _child$props7$value.toString) === null || _child$props7$value$t === void 0 ? void 0 : _child$props7$value$t.call(_child$props7$value);
+      });
+    }
+    Object.defineProperty(clonedEvent, 'target', {
+      writable: true,
+      value: {
+        value: itemValue,
+        name: name
+      }
+    });
+
+    // eslint-disable-next-line no-lonely-if
+    if (selected === true) {
+      setUncontrolledValue(itemValue);
+    } else {
+      setUncontrolledValue(itemValue);
+    }
+    setActiveIndex(0);
+  };
+  var onApply = function onApply(event) {
+    var nativeEvent = event.nativeEvent || event;
+    var clonedEvent = new nativeEvent.constructor(nativeEvent.type, nativeEvent);
+    Object.defineProperty(clonedEvent, 'target', {
+      writable: true,
+      value: {
+        value: uncontrolledValue,
+        name: name
+      }
+    });
+    onChange(event, uncontrolledValue);
+  };
   return /*#__PURE__*/jsxRuntime.jsxs("div", {
     className: classes(className, modules_1b90f5ea.root, open ? modules_1b90f5ea.open : '', disabled ? modules_1b90f5ea.disabled : ''),
     children: [label && /*#__PURE__*/jsxRuntime.jsx("div", {
@@ -34963,7 +34971,7 @@ var Dropdown = /*#__PURE__*/React.forwardRef(function Dropdown(props, inputRef) 
         children: [/*#__PURE__*/jsxRuntime.jsx("span", {
           "data-elem": "placeholder",
           className: modules_1b90f5ea.placeholder,
-          children: (_ref2 = (selectedOptions === null || selectedOptions === void 0 ? void 0 : selectedOptions.length) > 1 ? "".concat(selectedOptions.length, " options selected") : selectedOptions === null || selectedOptions === void 0 ? void 0 : (_selectedOptions$ = selectedOptions[0]) === null || _selectedOptions$ === void 0 ? void 0 : _selectedOptions$.title) !== null && _ref2 !== void 0 ? _ref2 : placeholder
+          children: (_ref2 = (selectedOptions === null || selectedOptions === void 0 ? void 0 : selectedOptions.length) > 1 ? formatter(selectedOptions.length) : selectedOptions === null || selectedOptions === void 0 ? void 0 : (_selectedOptions$ = selectedOptions[0]) === null || _selectedOptions$ === void 0 ? void 0 : _selectedOptions$.title) !== null && _ref2 !== void 0 ? _ref2 : placeholder
         }), /*#__PURE__*/jsxRuntime.jsx(Caret, {
           "data-elem": "icon",
           className: classes(modules_1b90f5ea.icon, modules_1b90f5ea['drop-icon'])
@@ -34974,25 +34982,55 @@ var Dropdown = /*#__PURE__*/React.forwardRef(function Dropdown(props, inputRef) 
       wrapperId: "dropdown-popper",
       children: open && /*#__PURE__*/jsxRuntime.jsx(FloatingFocusManager, {
         context: context,
-        initialFocus: selectedIndex,
-        children: /*#__PURE__*/jsxRuntime.jsx("div", _objectSpread2(_objectSpread2({}, getFloatingProps({
+        initialFocus: -1,
+        modal: false,
+        children: /*#__PURE__*/jsxRuntime.jsxs("ul", _objectSpread2(_objectSpread2({}, getFloatingProps({
           'data-elem': 'body',
           role: 'group',
           ref: floating,
           onKeyDown: function onKeyDown(event) {
-            if (event.key === 'Tab') {
+            setPointer(false);
+            if (event.key === 'Tab' && !multi) {
               setOpen(false);
             }
+          },
+          onPointerMove: function onPointerMove() {
+            setPointer(true);
           },
           style: {
             position: strategy,
             top: y !== null && y !== void 0 ? y : 0,
             left: x !== null && x !== void 0 ? x : 0
           },
-          onClick: onClick,
           className: classes(modules_1b90f5ea.body, popperClassName, open ? modules_1b90f5ea.open : '')
         })), {}, {
-          children: items
+          children: [multi && /*#__PURE__*/jsxRuntime.jsxs("li", {
+            ref: multiOptionsRef,
+            className: modules_1b90f5ea['multi-options'],
+            tabIndex: -1,
+            children: [/*#__PURE__*/jsxRuntime.jsx(Checkbox, {
+              label: "Select All",
+              position: "left",
+              checked: selectedOptions.length === childrenArray.length,
+              onChange: onSelectAll
+            }), ' ', /*#__PURE__*/jsxRuntime.jsx(Button, {
+              blurOnClick: false,
+              variant: "text",
+              title: "Clear",
+              size: "auto",
+              color: "danger",
+              onClick: function onClick(event) {
+                var _multiOptionsRef$curr;
+                multiOptionsRef === null || multiOptionsRef === void 0 ? void 0 : (_multiOptionsRef$curr = multiOptionsRef.current) === null || _multiOptionsRef$curr === void 0 ? void 0 : _multiOptionsRef$curr.focus();
+                onSelectAll(event, false);
+              }
+            })]
+          }), items, multi && /*#__PURE__*/jsxRuntime.jsx(Button, {
+            className: modules_1b90f5ea['multi-apply'],
+            title: "Apply",
+            size: "auto",
+            onClick: onApply
+          })]
         }))
       })
     }), feedback != null && /*#__PURE__*/jsxRuntime.jsx("div", {
@@ -35020,7 +35058,8 @@ Dropdown.propTypes = {
   feedback: propTypes$1.exports.shape({
     text: propTypes$1.exports.node,
     type: propTypes$1.exports.oneOf(['error', 'success', 'default'])
-  })
+  }),
+  formatter: propTypes$1.exports.func
 };
 Dropdown.defaultProps = {
   popperClassName: '',
@@ -35034,12 +35073,15 @@ Dropdown.defaultProps = {
   multi: false,
   onChange: null,
   onBlur: null,
-  feedback: null
+  feedback: null,
+  formatter: function formatter(totalSelected) {
+    return "".concat(totalSelected, " options selected");
+  }
 };
 
-var css$m = ":root {\n  --white: #ffffff;\n  --black: #000000;\n  --dark-grey: #333333;\n  --dark-grey-o-85: rgba(51, 51, 51, 0.85);\n  --grey: #737373;\n  --grey1: #888888;\n  --grey2: #a6a6a6;\n  --grey3: #bbbbbb;\n  --grey4: #c4c4c4;\n  --grey5: #dddddd;\n  --grey6: #e8e8e8;\n  --grey7: #eeeeee;\n  --grey8: #f2f2f2;\n  --grey9: #eff0f0;\n  --grey10: #f7f7f7;\n  --highlight: #0f62fe;\n  --dark-blue: #001833;\n  --background: #d0e2ff;\n  --banyan-blue: #00037c;\n  --banyan-orange: #ff892a;\n  --banyan-pink: #ff1597;\n  --banyan-gradient: linear-gradient(\n  \t84.71deg,\n  \tvar(--banyan-pink) 0.48%,\n  \tvar(--banyan-orange) 99.57%\n  );\n  --error: #da1e28;\n  --error-bg: #fff1f1;\n  --error-outline: rgba(218, 30, 40, 0.08);\n  --success: #24a148;\n  --success-bg: #defbe6;\n  --success-outline: rgba(36, 161, 72, 0.08);\n  --warning: #f1c21b;\n  --warning-bg: #fff8e1;\n  --warning-outline: rgba(203, 160, 6, 0.08);\n  --info: #0043ce;\n  --info-bg: #edf5ff;\n  --info-outline: #2864db98;\n}\n\n.DropdownItem_module_root__dfb85e48 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.75rem;\n  width: 100%;\n  padding: 0.75rem 1rem;\n  border-radius: 0.25rem;\n  cursor: pointer;\n  color: var(--grey);\n  outline: none;\n}\n.DropdownItem_module_root__dfb85e48:hover, .DropdownItem_module_root__dfb85e48:focus {\n  background: var(--grey6);\n}\n.DropdownItem_module_root__dfb85e48.DropdownItem_module_selected__dfb85e48 {\n  background: var(--info-bg);\n}";
-var modules_bf949acd = {"white":"var(--white)","black":"var(--black)","dark-grey":"var(--dark-grey)","dark-grey-o-85":"var(--dark-grey-o-85)","grey":"var(--grey)","grey1":"var(--grey1)","grey2":"var(--grey2)","grey3":"var(--grey3)","grey4":"var(--grey4)","grey5":"var(--grey5)","grey6":"var(--grey6)","grey7":"var(--grey7)","grey8":"var(--grey8)","grey9":"var(--grey9)","grey10":"var(--grey10)","highlight":"var(--highlight)","dark-blue":"var(--dark-blue)","background":"var(--background)","banyan-blue":"var(--banyan-blue)","banyan-orange":"var(--banyan-orange)","banyan-pink":"var(--banyan-pink)","banyan-gradient":"var(--banyan-gradient)","error":"var(--error)","error-bg":"var(--error-bg)","error-outline":"var(--error-outline)","success":"var(--success)","success-bg":"var(--success-bg)","success-outline":"var(--success-outline)","warning":"var(--warning)","warning-bg":"var(--warning-bg)","warning-outline":"var(--warning-outline)","info":"var(--info)","info-bg":"var(--info-bg)","info-outline":"var(--info-outline)","root":"DropdownItem_module_root__dfb85e48","selected":"DropdownItem_module_selected__dfb85e48"};
-n(css$m,{});
+var css$t = ".DropdownItem_module_root__61492174 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.75rem;\n  width: 100%;\n  padding: 0.75rem 1rem;\n  border-radius: 0.25rem;\n  cursor: pointer;\n  color: var(--grey);\n  outline: none;\n}\n.DropdownItem_module_root__61492174 > .DropdownItem_module_input__61492174 {\n  cursor: pointer;\n}\n.DropdownItem_module_root__61492174:focus {\n  background: var(--grey6);\n}\n.DropdownItem_module_root__61492174.DropdownItem_module_selected__61492174 {\n  background: var(--info-bg);\n}";
+var modules_bf949acd = {"root":"DropdownItem_module_root__61492174","input":"DropdownItem_module_input__61492174","selected":"DropdownItem_module_selected__61492174"};
+n(css$t,{});
 
 var DropdownItem = /*#__PURE__*/React.forwardRef(function DropdownItem(props, ref) {
   // eslint-disable-next-line object-curly-newline
@@ -35048,32 +35090,39 @@ var DropdownItem = /*#__PURE__*/React.forwardRef(function DropdownItem(props, re
     variant = props.variant,
     selected = props.selected,
     onKeyDown = props.onKeyDown,
+    onMouseEnter = props.onMouseEnter,
     onClick = props.onClick,
     dataAttrs = props.dataAttrs,
-    className = props.className;
+    className = props.className,
+    tabIndex = props.tabIndex;
   var action = null;
   switch (variant) {
     case 'checkbox':
       action = /*#__PURE__*/jsxRuntime.jsx(Checkbox, {
-        checked: selected
+        className: modules_bf949acd.input,
+        checked: selected,
+        disabled: true
       });
       break;
     case 'radio':
-      action = /*#__PURE__*/jsxRuntime.jsx("input", {
-        type: "radio"
+      action = /*#__PURE__*/jsxRuntime.jsx(Radio, {
+        className: modules_bf949acd.input,
+        checked: selected,
+        disabled: true
       });
       break;
   }
-  return /*#__PURE__*/jsxRuntime.jsxs("div", _objectSpread2(_objectSpread2({
+  return /*#__PURE__*/jsxRuntime.jsxs("li", _objectSpread2(_objectSpread2({
     ref: ref,
     className: classes(className, modules_bf949acd.root, selected ? modules_bf949acd.selected : ''),
     "data-elem": "dropdown-item",
     "data-variant": variant,
     "data-value": value,
     "data-selected": selected,
-    onClick: onClick
+    onClick: onClick,
+    onMouseEnter: onMouseEnter
   }, _objectSpread2({}, dataAttrs)), {}, {
-    tabIndex: 0,
+    tabIndex: tabIndex,
     role: "option",
     "aria-selected": selected,
     onKeyDown: onKeyDown,
@@ -35099,9 +35148,9 @@ DropdownItem.defaultProps = {
   selected: false
 };
 
-var css$l = ".BaseModal_module_root__5f71597f {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  top: 50%;\n  left: 50%;\n  right: auto;\n  bottom: auto;\n  transform: translate(-50%, -50%);\n  max-height: 100%;\n  width: 50%;\n  position: fixed;\n  background: #ffffff;\n  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.13);\n  border-radius: 5px;\n  outline: none;\n}\n.BaseModal_module_root__5f71597f .BaseModal_module_body__5f71597f {\n  overflow-y: scroll;\n  padding: 0 15px;\n}\n.BaseModal_module_root__5f71597f .BaseModal_module_header__5f71597f,\n.BaseModal_module_root__5f71597f .BaseModal_module_footer__5f71597f {\n  padding: 15px;\n}\n.BaseModal_module_root__5f71597f .BaseModal_module_footer__5f71597f {\n  margin-top: auto;\n}\n.BaseModal_module_root__5f71597f .BaseModal_module_closeModal__5f71597f {\n  position: absolute;\n  right: 20px;\n  top: 20px;\n}\n.BaseModal_module_root__5f71597f .BaseModal_module_closeModal__5f71597f .BaseModal_module_closeIcon__5f71597f {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--black);\n}";
-var modules_f23ae002 = {"root":"BaseModal_module_root__5f71597f","body":"BaseModal_module_body__5f71597f","header":"BaseModal_module_header__5f71597f","footer":"BaseModal_module_footer__5f71597f","closeModal":"BaseModal_module_closeModal__5f71597f","closeIcon":"BaseModal_module_closeIcon__5f71597f"};
-n(css$l,{});
+var css$s = ".BaseModal_module_root__2dd7477e {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  top: 50%;\n  left: 50%;\n  right: auto;\n  bottom: auto;\n  transform: translate(-50%, -50%);\n  max-height: 100%;\n  width: 50%;\n  position: fixed;\n  background: #ffffff;\n  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.13);\n  border-radius: 5px;\n  outline: none;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_body__2dd7477e {\n  overflow-y: scroll;\n  padding: 0 15px;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_header__2dd7477e,\n.BaseModal_module_root__2dd7477e .BaseModal_module_footer__2dd7477e {\n  padding: 1rem;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_header__2dd7477e {\n  font-weight: 500;\n  font-size: 1.375rem;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_footer__2dd7477e {\n  margin-top: auto;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_close__2dd7477e {\n  position: absolute;\n  right: 0.5rem;\n  top: 0.5rem;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_close__2dd7477e .BaseModal_module_icon__2dd7477e {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--black);\n}";
+var modules_f23ae002 = {"root":"BaseModal_module_root__2dd7477e","body":"BaseModal_module_body__2dd7477e","header":"BaseModal_module_header__2dd7477e","footer":"BaseModal_module_footer__2dd7477e","close":"BaseModal_module_close__2dd7477e","icon":"BaseModal_module_icon__2dd7477e"};
+n(css$s,{});
 
 var BaseModal = function BaseModal(props) {
   var className = props.className,
@@ -35110,18 +35159,24 @@ var BaseModal = function BaseModal(props) {
     renderFooter = props.renderFooter,
     toggle = props.toggle,
     open = props.open;
-  var ref = React.useRef(null);
-  useOutsideClickListener(ref, function () {
-    return toggle(false);
-  });
-  if (open) {
-    return /*#__PURE__*/jsxRuntime.jsx(Popper, {
+  var _useFloating = useFloating({
       open: open,
-      transparent: false,
-      id: "base-modal-popper",
-      children: /*#__PURE__*/jsxRuntime.jsxs("div", {
+      onOpenChange: toggle
+    }),
+    floating = _useFloating.floating,
+    context = _useFloating.context;
+  var _useInteractions = useInteractions([useDismiss(context)]),
+    getFloatingProps = _useInteractions.getFloatingProps;
+  return /*#__PURE__*/jsxRuntime.jsx(Popper, {
+    open: open,
+    transparent: false,
+    wrapperId: "base-modal-popper",
+    children: open && /*#__PURE__*/jsxRuntime.jsx(FloatingFocusManager, {
+      context: context,
+      children: /*#__PURE__*/jsxRuntime.jsxs("div", _objectSpread2(_objectSpread2({}, getFloatingProps({
         className: classes(modules_f23ae002.root, className),
-        ref: ref,
+        ref: floating
+      })), {}, {
         children: [renderHeader && /*#__PURE__*/jsxRuntime.jsx("div", {
           "data-elem": "header",
           className: modules_f23ae002.header,
@@ -35134,20 +35189,23 @@ var BaseModal = function BaseModal(props) {
           "data-elem": "footer",
           className: modules_f23ae002.footer,
           children: renderFooter
-        }), /*#__PURE__*/jsxRuntime.jsx("div", {
+        }), /*#__PURE__*/jsxRuntime.jsx(Button, {
+          size: "auto",
+          variant: "text",
           "data-elem": "close",
-          className: modules_f23ae002.closeModal,
+          className: modules_f23ae002.close,
           onClick: function onClick() {
             toggle(false);
           },
-          children: /*#__PURE__*/jsxRuntime.jsx(Cross$1, {
-            className: modules_f23ae002.closeIcon
-          })
+          rightComponent: function rightComponent() {
+            return /*#__PURE__*/jsxRuntime.jsx(Cross$1, {
+              className: modules_f23ae002.icon
+            });
+          }
         })]
-      })
-    });
-  }
-  return null;
+      }))
+    })
+  });
 };
 BaseModal.propTypes = {
   className: propTypes$1.exports.string,
@@ -35162,9 +35220,75 @@ BaseModal.defaultProps = {
   toggle: function toggle() {}
 };
 
-var css$k = ".PageHeader_module_root__2aae78e0 {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: flex-start;\n  width: 100%;\n  background-color: transparent;\n  gap: 4px;\n}\n.PageHeader_module_root__2aae78e0.PageHeader_module_themeDark__2aae78e0 {\n  color: var(--white);\n}\n.PageHeader_module_root__2aae78e0.PageHeader_module_themeDark__2aae78e0 .PageHeader_module_breadcrumb__2aae78e0 [data-elem=breadcrumb-item-active] {\n  color: var(--white);\n}\n.PageHeader_module_root__2aae78e0.PageHeader_module_themeLight__2aae78e0 {\n  color: var(--dark-grey);\n}\n.PageHeader_module_root__2aae78e0 .PageHeader_module_description__2aae78e0 {\n  color: var(--grey);\n}\n.PageHeader_module_root__2aae78e0 .PageHeader_module_contents__2aae78e0 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  width: 100%;\n}\n.PageHeader_module_root__2aae78e0 .PageHeader_module_contents__2aae78e0 .PageHeader_module_left__2aae78e0,\n.PageHeader_module_root__2aae78e0 .PageHeader_module_contents__2aae78e0 .PageHeader_module_right__2aae78e0 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 10px;\n}\n.PageHeader_module_root__2aae78e0 .PageHeader_module_contents__2aae78e0 .PageHeader_module_left__2aae78e0 .PageHeader_module_title__2aae78e0 {\n  font-size: 2.25rem;\n  font-weight: 600;\n  line-height: 3.375rem;\n}\n.PageHeader_module_root__2aae78e0 .PageHeader_module_contents__2aae78e0 .PageHeader_module_left__2aae78e0 .PageHeader_module_chip__2aae78e0 {\n  font-weight: 500;\n  background: var(--highlight);\n  color: var(--white);\n}\n.PageHeader_module_root__2aae78e0 .PageHeader_module_description__2aae78e0 {\n  font-size: 1rem;\n  font-weight: 400;\n  line-height: 1.5rem;\n}\n\n.PageHeader_module_download__2aae78e0,\n.PageHeader_module_calender__2aae78e0 {\n  width: 1.5rem;\n  height: 1.5rem;\n}";
+var css$r = ".Dialog_module_root__2974a020 {\n  padding: 0.25rem 0px;\n  max-height: 14rem;\n  background: #ffffff;\n  border-radius: 0.25rem;\n}\n.Dialog_module_root__2974a020.Dialog_module_sm__2974a020 {\n  width: 21.25rem;\n}\n.Dialog_module_root__2974a020.Dialog_module_md__2974a020 {\n  width: 35rem;\n}\n.Dialog_module_root__2974a020 .Dialog_module_header__2974a020 {\n  font-weight: 600;\n  font-size: 0.875rem;\n  color: var(--black);\n}\n.Dialog_module_root__2974a020 .Dialog_module_footer__2974a020 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-end;\n  align-items: center;\n  gap: 1rem;\n}\n.Dialog_module_root__2974a020 .Dialog_module_footer__2974a020 .Dialog_module_cancel__2974a020[data-elem=base-cell] {\n  display: flex;\n  color: var(--grey1);\n  border-radius: 0.25rem;\n  border: 1px solid var(--grey4);\n}\n.Dialog_module_root__2974a020 .Dialog_module_description__2974a020 {\n  padding: 0.5rem 0px;\n  font-size: 0.75rem;\n}";
+var modules_ca1540aa = {"root":"Dialog_module_root__2974a020","sm":"Dialog_module_sm__2974a020","md":"Dialog_module_md__2974a020","header":"Dialog_module_header__2974a020","footer":"Dialog_module_footer__2974a020","cancel":"Dialog_module_cancel__2974a020","description":"Dialog_module_description__2974a020"};
+n(css$r,{});
+
+/* eslint-disable object-curly-newline */
+var DialogBox = function DialogBox(props) {
+  var open = props.open,
+    heading = props.heading,
+    description = props.description,
+    action = props.action,
+    variant = props.variant,
+    onCancel = props.onCancel,
+    onAction = props.onAction,
+    size = props.size,
+    className = props.className;
+  return /*#__PURE__*/jsxRuntime.jsx(BaseModal, {
+    open: open,
+    toggle: onCancel,
+    className: classes(className, modules_ca1540aa.root, modules_ca1540aa[size]),
+    renderHeader: /*#__PURE__*/jsxRuntime.jsx("div", {
+      className: modules_ca1540aa.header,
+      children: /*#__PURE__*/jsxRuntime.jsx("p", {
+        children: heading
+      })
+    }),
+    renderFooter: /*#__PURE__*/jsxRuntime.jsxs("div", {
+      className: modules_ca1540aa.footer,
+      children: [/*#__PURE__*/jsxRuntime.jsx(Button, {
+        color: "default",
+        variant: "outlined",
+        className: modules_ca1540aa.cancel,
+        onClick: onCancel,
+        title: "Cancel"
+      }), /*#__PURE__*/jsxRuntime.jsx(Button, {
+        onClick: onAction,
+        title: action,
+        color: variant
+      })]
+    }),
+    children: /*#__PURE__*/jsxRuntime.jsx("div", {
+      className: modules_ca1540aa.description,
+      children: description
+    })
+  });
+};
+DialogBox.propTypes = {
+  className: propTypes$1.exports.string,
+  heading: propTypes$1.exports.string,
+  action: propTypes$1.exports.string,
+  description: propTypes$1.exports.string,
+  onCancel: propTypes$1.exports.func,
+  onAction: propTypes$1.exports.func,
+  variant: propTypes$1.exports.oneOf(['primary', 'success', 'danger', 'warning']),
+  size: propTypes$1.exports.oneOf(['sm', 'md'])
+};
+DialogBox.defaultProps = {
+  className: '',
+  heading: 'selected row',
+  action: '',
+  description: 'description selected page',
+  variant: 'danger',
+  onCancel: function onCancel() {},
+  onAction: function onAction() {},
+  size: 'sm'
+};
+
+var css$q = ".PageHeader_module_root__2aae78e0 {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: flex-start;\n  width: 100%;\n  background-color: transparent;\n  gap: 4px;\n}\n.PageHeader_module_root__2aae78e0.PageHeader_module_themeDark__2aae78e0 {\n  color: var(--white);\n}\n.PageHeader_module_root__2aae78e0.PageHeader_module_themeDark__2aae78e0 .PageHeader_module_breadcrumb__2aae78e0 [data-elem=breadcrumb-item-active] {\n  color: var(--white);\n}\n.PageHeader_module_root__2aae78e0.PageHeader_module_themeLight__2aae78e0 {\n  color: var(--dark-grey);\n}\n.PageHeader_module_root__2aae78e0 .PageHeader_module_description__2aae78e0 {\n  color: var(--grey);\n}\n.PageHeader_module_root__2aae78e0 .PageHeader_module_contents__2aae78e0 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  width: 100%;\n}\n.PageHeader_module_root__2aae78e0 .PageHeader_module_contents__2aae78e0 .PageHeader_module_left__2aae78e0,\n.PageHeader_module_root__2aae78e0 .PageHeader_module_contents__2aae78e0 .PageHeader_module_right__2aae78e0 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 10px;\n}\n.PageHeader_module_root__2aae78e0 .PageHeader_module_contents__2aae78e0 .PageHeader_module_left__2aae78e0 .PageHeader_module_title__2aae78e0 {\n  font-size: 2.25rem;\n  font-weight: 600;\n  line-height: 3.375rem;\n}\n.PageHeader_module_root__2aae78e0 .PageHeader_module_contents__2aae78e0 .PageHeader_module_left__2aae78e0 .PageHeader_module_chip__2aae78e0 {\n  font-weight: 500;\n  background: var(--highlight);\n  color: var(--white);\n}\n.PageHeader_module_root__2aae78e0 .PageHeader_module_description__2aae78e0 {\n  font-size: 1rem;\n  font-weight: 400;\n  line-height: 1.5rem;\n}\n\n.PageHeader_module_download__2aae78e0,\n.PageHeader_module_calender__2aae78e0 {\n  width: 1.5rem;\n  height: 1.5rem;\n}";
 var modules_bdcbeaa5 = {"root":"PageHeader_module_root__2aae78e0","theme-dark":"PageHeader_module_themeDark__2aae78e0","breadcrumb":"PageHeader_module_breadcrumb__2aae78e0","theme-light":"PageHeader_module_themeLight__2aae78e0","description":"PageHeader_module_description__2aae78e0","contents":"PageHeader_module_contents__2aae78e0","left":"PageHeader_module_left__2aae78e0","right":"PageHeader_module_right__2aae78e0","title":"PageHeader_module_title__2aae78e0","chip":"PageHeader_module_chip__2aae78e0","download":"PageHeader_module_download__2aae78e0","calender":"PageHeader_module_calender__2aae78e0"};
-n(css$k,{});
+n(css$q,{});
 
 var PageHeader = function PageHeader(props) {
   var theme = props.theme,
@@ -35306,9 +35430,9 @@ function getPagination(curr, total, limit) {
   return pages;
 }
 
-var css$j = ".Pagination_module_root__4c778f02 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: stretch;\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n  padding: 0.625rem 2.125rem;\n  background: var(--dark-grey);\n  margin-top: auto;\n  width: 100%;\n  height: 3.5rem;\n  overflow: auto;\n  transition-property: background-color, color, bottom, width;\n  transition-duration: 0.33s;\n  transition-timing-function: ease-out;\n}\n.Pagination_module_root__4c778f02::-webkit-scrollbar {\n  display: none;\n}\n.Pagination_module_root__4c778f02.Pagination_module_floating__4c778f02 {\n  background: var(--dark-grey-o-85);\n  position: absolute;\n  border-radius: 6.25rem;\n  width: 82%;\n  bottom: 3rem;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_rowSwitcher__4c778f02,\n.Pagination_module_root__4c778f02 .Pagination_module_pagination__4c778f02,\n.Pagination_module_root__4c778f02 .Pagination_module_jumpToPage__4c778f02,\n.Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  height: 100%;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_rowSwitcher__4c778f02 {\n  display: none;\n  gap: 0.75rem;\n  background-color: var(--grey);\n  padding: 0;\n  border-radius: 0.3125rem;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__4c778f02 .Pagination_module_rowSwitcher__4c778f02 {\n    display: flex;\n    flex-direction: row;\n    justify-content: space-between;\n    align-items: center;\n  }\n}\n.Pagination_module_root__4c778f02 .Pagination_module_rowSwitcher__4c778f02 > [data-elem*=component] {\n  overflow: hidden;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_rowSwitcher__4c778f02 > [data-elem=component2] {\n  display: flex;\n  flex: 1 0 auto;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_rowSwitcher__4c778f02 .Pagination_module_text__4c778f02 {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  height: 100%;\n  display: block;\n  padding: 0.5rem;\n  font-size: 0.875rem;\n  font-weight: 500;\n  color: var(--white);\n}\n.Pagination_module_root__4c778f02 .Pagination_module_rowSwitcher__4c778f02 .Pagination_module_dropdown__4c778f02 > [data-elem=header] > [data-elem=select] {\n  height: 2.375rem;\n  width: auto;\n  min-width: -webkit-fit-content;\n  min-width: -moz-fit-content;\n  min-width: fit-content;\n  padding: 0.625rem;\n  background-color: var(--grey);\n  border: none;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_rowSwitcher__4c778f02 .Pagination_module_dropdown__4c778f02 > [data-elem=header] > [data-elem=select] > [data-elem=placeholder] {\n  color: var(--white);\n  font-size: 0.875rem;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_rowSwitcher__4c778f02 .Pagination_module_dropdown__4c778f02 > [data-elem=header] > [data-elem=select] > svg {\n  fill: var(--white);\n  width: 0.813rem;\n  height: 0.813rem;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_pageNumbers__4c778f02 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  gap: 1.25rem;\n  flex: 1 1 100%;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__4c778f02 .Pagination_module_pageNumbers__4c778f02 {\n    flex: 1 1 60%;\n  }\n}\n.Pagination_module_root__4c778f02 .Pagination_module_pageNumbers__4c778f02 > .Pagination_module_button__4c778f02.Pagination_module_disable__4c778f02 {\n  pointer-events: none;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_pageNumbers__4c778f02 > .Pagination_module_button__4c778f02 [data-elem=title] {\n  color: var(--white);\n}\n.Pagination_module_root__4c778f02 .Pagination_module_pageNumbers__4c778f02 > .Pagination_module_button__4c778f02 .Pagination_module_icon__4c778f02 {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_pageNumbers__4c778f02 > .Pagination_module_pageSelect__4c778f02 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  gap: 0.625rem;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_pageNumbers__4c778f02 > .Pagination_module_pageSelect__4c778f02 .Pagination_module_number__4c778f02 {\n  cursor: pointer;\n  border-radius: 50%;\n  background-color: #e0e0e0;\n  color: var(--black);\n  width: 2.313rem;\n  line-height: 2.313rem;\n  text-align: center;\n  font-size: 1rem;\n  border: 1px solid transparent;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_pageNumbers__4c778f02 > .Pagination_module_pageSelect__4c778f02 .Pagination_module_number__4c778f02:not([data-active=true]) {\n  display: none;\n}\n@media (min-width: 768px) {\n  .Pagination_module_root__4c778f02 .Pagination_module_pageNumbers__4c778f02 > .Pagination_module_pageSelect__4c778f02 .Pagination_module_number__4c778f02:not([data-active=true]) {\n    display: block;\n  }\n}\n.Pagination_module_root__4c778f02 .Pagination_module_pageNumbers__4c778f02 > .Pagination_module_pageSelect__4c778f02 .Pagination_module_number__4c778f02:hover {\n  border: 1px solid var(--highlight);\n  color: var(--highlight);\n  background: var(--background);\n}\n.Pagination_module_root__4c778f02 .Pagination_module_pageNumbers__4c778f02 > .Pagination_module_pageSelect__4c778f02 .Pagination_module_number__4c778f02.Pagination_module_active__4c778f02 {\n  background-color: var(--highlight);\n  color: var(--white);\n}\n.Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 {\n  display: none;\n  padding: 0;\n  flex: 0 1 20%;\n  background: transparent;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 {\n    display: flex;\n    flex-direction: row;\n    justify-content: center;\n    align-items: center;\n  }\n}\n.Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 > [data-elem*=component] {\n  width: 100%;\n  height: 100%;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 > [data-elem*=component] > * {\n  height: 100%;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 .Pagination_module_jumpToPage__4c778f02 {\n  width: 100%;\n  background: transparent;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: stretch;\n  gap: 0.75rem;\n  padding: 0;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 .Pagination_module_jumpToPage__4c778f02 > [data-elem*=component] {\n  overflow: hidden;\n  height: 100%;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 .Pagination_module_jumpToPage__4c778f02 .Pagination_module_button__4c778f02 {\n  background-color: var(--grey);\n  height: 100%;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 .Pagination_module_jumpToPage__4c778f02 .Pagination_module_button__4c778f02 [data-elem=left] {\n  overflow: hidden;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 .Pagination_module_jumpToPage__4c778f02 .Pagination_module_button__4c778f02 [data-elem=left] [data-elem=title] {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 .Pagination_module_jumpToPage__4c778f02 .Pagination_module_button__4c778f02 .Pagination_module_icon__4c778f02 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--white);\n  flex-shrink: 0;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 .Pagination_module_jumpToPage__4c778f02 .Pagination_module_inputbox__4c778f02 {\n  width: 5rem;\n  max-width: 100%;\n  height: 100%;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 .Pagination_module_jumpToPage__4c778f02 .Pagination_module_inputbox__4c778f02 [data-elem=base-cell] {\n  border-radius: 0.313rem;\n  background-color: var(--grey);\n  color: var(--white);\n  border-color: var(--grey);\n  width: 4.875rem;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 .Pagination_module_jumpToPage__4c778f02 .Pagination_module_inputbox__4c778f02 [data-elem=base-cell] [data-elem=input] {\n  text-align: center;\n  color: var(--white);\n  background-color: var(--grey);\n  border: none;\n  width: 100%;\n}\n\n.Pagination_module_paginationTest__4c778f02 {\n  height: 80%;\n  width: 100%;\n  overflow: scroll;\n  background-color: powderblue;\n  display: flex;\n  flex-direction: column;\n}\n\n.Pagination_module_dropdownPopper__4c778f02 {\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n  padding: 0.25rem;\n}\n.Pagination_module_dropdownPopper__4c778f02::-webkit-scrollbar {\n  display: none;\n}";
+var css$p = ".Pagination_module_root__4c778f02 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: stretch;\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n  padding: 0.625rem 2.125rem;\n  background: var(--dark-grey);\n  margin-top: auto;\n  width: 100%;\n  height: 3.5rem;\n  overflow: auto;\n  transition-property: background-color, color, bottom, width;\n  transition-duration: 0.33s;\n  transition-timing-function: ease-out;\n}\n.Pagination_module_root__4c778f02::-webkit-scrollbar {\n  display: none;\n}\n.Pagination_module_root__4c778f02.Pagination_module_floating__4c778f02 {\n  background: var(--dark-grey-o-85);\n  position: absolute;\n  border-radius: 6.25rem;\n  width: 82%;\n  bottom: 3rem;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_rowSwitcher__4c778f02,\n.Pagination_module_root__4c778f02 .Pagination_module_pagination__4c778f02,\n.Pagination_module_root__4c778f02 .Pagination_module_jumpToPage__4c778f02,\n.Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  height: 100%;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_rowSwitcher__4c778f02 {\n  display: none;\n  gap: 0.75rem;\n  background-color: var(--grey);\n  padding: 0;\n  border-radius: 0.3125rem;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__4c778f02 .Pagination_module_rowSwitcher__4c778f02 {\n    display: flex;\n    flex-direction: row;\n    justify-content: space-between;\n    align-items: center;\n  }\n}\n.Pagination_module_root__4c778f02 .Pagination_module_rowSwitcher__4c778f02 > [data-elem*=component] {\n  overflow: hidden;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_rowSwitcher__4c778f02 > [data-elem=component2] {\n  display: flex;\n  flex: 1 0 auto;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_rowSwitcher__4c778f02 .Pagination_module_text__4c778f02 {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  height: 100%;\n  display: block;\n  padding: 0.5rem;\n  font-size: 0.875rem;\n  font-weight: 500;\n  color: var(--white);\n}\n.Pagination_module_root__4c778f02 .Pagination_module_rowSwitcher__4c778f02 .Pagination_module_dropdown__4c778f02 > [data-elem=header] > [data-elem=select] {\n  height: 2.375rem;\n  width: auto;\n  min-width: -webkit-fit-content;\n  min-width: -moz-fit-content;\n  min-width: fit-content;\n  padding: 0.625rem;\n  background-color: var(--grey);\n  border: none;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_rowSwitcher__4c778f02 .Pagination_module_dropdown__4c778f02 > [data-elem=header] > [data-elem=select] > [data-elem=placeholder] {\n  color: var(--white);\n  font-size: 0.875rem;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_rowSwitcher__4c778f02 .Pagination_module_dropdown__4c778f02 > [data-elem=header] > [data-elem=select] > svg {\n  fill: var(--white);\n  width: 0.813rem;\n  height: 0.813rem;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_pageNumbers__4c778f02 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  gap: 1.25rem;\n  flex: 1 1 100%;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__4c778f02 .Pagination_module_pageNumbers__4c778f02 {\n    flex: 1 1 60%;\n  }\n}\n.Pagination_module_root__4c778f02 .Pagination_module_pageNumbers__4c778f02 > .Pagination_module_button__4c778f02.Pagination_module_disable__4c778f02 {\n  pointer-events: none;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_pageNumbers__4c778f02 > .Pagination_module_button__4c778f02 [data-elem=title] {\n  color: var(--white);\n}\n.Pagination_module_root__4c778f02 .Pagination_module_pageNumbers__4c778f02 > .Pagination_module_button__4c778f02 .Pagination_module_icon__4c778f02 {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_pageNumbers__4c778f02 > .Pagination_module_pageSelect__4c778f02 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  gap: 0.625rem;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_pageNumbers__4c778f02 > .Pagination_module_pageSelect__4c778f02 .Pagination_module_number__4c778f02 {\n  cursor: pointer;\n  border-radius: 50%;\n  background-color: #e0e0e0;\n  color: var(--black);\n  width: 2.313rem;\n  line-height: 2.313rem;\n  text-align: center;\n  font-size: 1rem;\n  border: 1px solid transparent;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_pageNumbers__4c778f02 > .Pagination_module_pageSelect__4c778f02 .Pagination_module_number__4c778f02:not([data-active=true]) {\n  display: none;\n}\n@media (min-width: 768px) {\n  .Pagination_module_root__4c778f02 .Pagination_module_pageNumbers__4c778f02 > .Pagination_module_pageSelect__4c778f02 .Pagination_module_number__4c778f02:not([data-active=true]) {\n    display: block;\n  }\n}\n.Pagination_module_root__4c778f02 .Pagination_module_pageNumbers__4c778f02 > .Pagination_module_pageSelect__4c778f02 .Pagination_module_number__4c778f02:hover {\n  border: 1px solid var(--highlight);\n  color: var(--highlight);\n  background: var(--background);\n}\n.Pagination_module_root__4c778f02 .Pagination_module_pageNumbers__4c778f02 > .Pagination_module_pageSelect__4c778f02 .Pagination_module_number__4c778f02.Pagination_module_active__4c778f02 {\n  background-color: var(--highlight);\n  color: var(--white);\n}\n.Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 {\n  display: none;\n  padding: 0;\n  flex: 0 1 20%;\n  background: transparent;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 {\n    display: flex;\n    flex-direction: row;\n    justify-content: center;\n    align-items: center;\n  }\n}\n.Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 > [data-elem*=component] {\n  width: 100%;\n  height: 100%;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 > [data-elem*=component] > * {\n  height: 100%;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 .Pagination_module_jumpToPage__4c778f02 {\n  width: 100%;\n  background: transparent;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: stretch;\n  gap: 0.75rem;\n  padding: 0;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 .Pagination_module_jumpToPage__4c778f02 > [data-elem*=component] {\n  overflow: hidden;\n  height: 100%;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 .Pagination_module_jumpToPage__4c778f02 .Pagination_module_button__4c778f02 {\n  background-color: var(--grey);\n  height: 100%;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 .Pagination_module_jumpToPage__4c778f02 .Pagination_module_button__4c778f02 [data-elem=left] {\n  overflow: hidden;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 .Pagination_module_jumpToPage__4c778f02 .Pagination_module_button__4c778f02 [data-elem=left] [data-elem=title] {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 .Pagination_module_jumpToPage__4c778f02 .Pagination_module_button__4c778f02 .Pagination_module_icon__4c778f02 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--white);\n  flex-shrink: 0;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 .Pagination_module_jumpToPage__4c778f02 .Pagination_module_inputbox__4c778f02 {\n  width: 5rem;\n  max-width: 100%;\n  height: 100%;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 .Pagination_module_jumpToPage__4c778f02 .Pagination_module_inputbox__4c778f02 [data-elem=base-cell] {\n  border-radius: 0.313rem;\n  background-color: var(--grey);\n  color: var(--white);\n  border-color: var(--grey);\n  width: 4.875rem;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 .Pagination_module_jumpToPage__4c778f02 .Pagination_module_inputbox__4c778f02 [data-elem=base-cell] [data-elem=input] {\n  text-align: center;\n  color: var(--white);\n  background-color: var(--grey);\n  border: none;\n  width: 100%;\n}\n\n.Pagination_module_paginationTest__4c778f02 {\n  height: 80%;\n  width: 100%;\n  overflow: scroll;\n  background-color: powderblue;\n  display: flex;\n  flex-direction: column;\n}\n\n.Pagination_module_dropdownPopper__4c778f02 {\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n  padding: 0.25rem;\n}\n.Pagination_module_dropdownPopper__4c778f02::-webkit-scrollbar {\n  display: none;\n}";
 var modules_a3d40e77 = {"root":"Pagination_module_root__4c778f02","floating":"Pagination_module_floating__4c778f02","row-switcher":"Pagination_module_rowSwitcher__4c778f02","pagination":"Pagination_module_pagination__4c778f02","jump-to-page":"Pagination_module_jumpToPage__4c778f02","form":"Pagination_module_form__4c778f02","text":"Pagination_module_text__4c778f02","dropdown":"Pagination_module_dropdown__4c778f02","page-numbers":"Pagination_module_pageNumbers__4c778f02","button":"Pagination_module_button__4c778f02","disable":"Pagination_module_disable__4c778f02","icon":"Pagination_module_icon__4c778f02","pageSelect":"Pagination_module_pageSelect__4c778f02","number":"Pagination_module_number__4c778f02","active":"Pagination_module_active__4c778f02","inputbox":"Pagination_module_inputbox__4c778f02","pagination-test":"Pagination_module_paginationTest__4c778f02","dropdown-popper":"Pagination_module_dropdownPopper__4c778f02"};
-n(css$j,{});
+n(css$p,{});
 
 var dropdownOptions = ['10', '25', '50', '100', '200', '250'];
 var reducer = function reducer(state, _ref) {
@@ -35540,13 +35664,13 @@ Pagination.defaultProps = {
   onChange: function onChange() {}
 };
 
-var css$i = ".Stepper_module_root__7eff5dc6 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n  gap: 1rem;\n}\n.Stepper_module_root__7eff5dc6 .Stepper_module_step__7eff5dc6 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n  position: relative;\n  z-index: 1;\n  gap: 0.5rem;\n  flex: 1;\n  cursor: default;\n}\n.Stepper_module_root__7eff5dc6 .Stepper_module_step__7eff5dc6:last-child {\n  flex: 0 1 auto;\n}\n.Stepper_module_root__7eff5dc6 .Stepper_module_step__7eff5dc6:last-child .Stepper_module_title__7eff5dc6::after {\n  display: none;\n}\n.Stepper_module_root__7eff5dc6 .Stepper_module_step__7eff5dc6 .Stepper_module_left__7eff5dc6 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  position: relative;\n  width: 1.5rem;\n  height: 1.5rem;\n  background: var(--white);\n  border: 0.063rem solid var(--grey2);\n  border-radius: 2rem;\n  font-size: 1rem;\n  color: var(--grey2);\n}\n.Stepper_module_root__7eff5dc6 .Stepper_module_step__7eff5dc6 .Stepper_module_left__7eff5dc6 .Stepper_module_icon__7eff5dc6 {\n  width: 0.75rem;\n  height: 0.75rem;\n}\n.Stepper_module_root__7eff5dc6 .Stepper_module_step__7eff5dc6 .Stepper_module_left__7eff5dc6 .Stepper_module_icon__7eff5dc6.Stepper_module_errorIcon__7eff5dc6 {\n  fill: var(--error);\n}\n.Stepper_module_root__7eff5dc6 .Stepper_module_step__7eff5dc6 .Stepper_module_left__7eff5dc6 .Stepper_module_icon__7eff5dc6.Stepper_module_completionIcon__7eff5dc6 {\n  fill: var(--highlight);\n}\n.Stepper_module_root__7eff5dc6 .Stepper_module_step__7eff5dc6 .Stepper_module_left__7eff5dc6 .Stepper_module_progress__7eff5dc6 {\n  position: absolute;\n  z-index: -1;\n  inset: -0.3rem;\n  border-radius: 2rem;\n}\n.Stepper_module_root__7eff5dc6 .Stepper_module_step__7eff5dc6 .Stepper_module_left__7eff5dc6 .Stepper_module_progress__7eff5dc6::after {\n  position: absolute;\n  content: \"\";\n  inset: 0.15rem;\n  background: white;\n  border-radius: 2rem;\n}\n.Stepper_module_root__7eff5dc6 .Stepper_module_step__7eff5dc6 .Stepper_module_right__7eff5dc6 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  flex: 1;\n}\n.Stepper_module_root__7eff5dc6 .Stepper_module_step__7eff5dc6 .Stepper_module_right__7eff5dc6 .Stepper_module_title__7eff5dc6 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n  gap: 0.75rem;\n  width: 100%;\n  font-size: 1rem;\n  color: var(--grey2);\n}\n.Stepper_module_root__7eff5dc6 .Stepper_module_step__7eff5dc6 .Stepper_module_right__7eff5dc6 .Stepper_module_title__7eff5dc6::after {\n  content: \"\";\n  flex: 1;\n  min-width: 1.5rem;\n  border-bottom: 0.063rem solid;\n  margin-top: 0.75rem;\n  border-bottom-color: var(--grey2);\n}\n.Stepper_module_root__7eff5dc6 .Stepper_module_step__7eff5dc6 .Stepper_module_right__7eff5dc6 .Stepper_module_description__7eff5dc6 {\n  font-size: 0.75rem;\n  color: var(--grey2);\n}\n.Stepper_module_root__7eff5dc6 .Stepper_module_step__7eff5dc6.Stepper_module_active__7eff5dc6 .Stepper_module_left__7eff5dc6 {\n  background: var(--highlight);\n  color: var(--white);\n}\n.Stepper_module_root__7eff5dc6 .Stepper_module_step__7eff5dc6.Stepper_module_active__7eff5dc6 .Stepper_module_left__7eff5dc6, .Stepper_module_root__7eff5dc6 .Stepper_module_step__7eff5dc6.Stepper_module_completed__7eff5dc6 .Stepper_module_left__7eff5dc6 {\n  border-color: var(--highlight);\n}\n.Stepper_module_root__7eff5dc6 .Stepper_module_step__7eff5dc6.Stepper_module_active__7eff5dc6 .Stepper_module_right__7eff5dc6 .Stepper_module_title__7eff5dc6, .Stepper_module_root__7eff5dc6 .Stepper_module_step__7eff5dc6.Stepper_module_completed__7eff5dc6 .Stepper_module_right__7eff5dc6 .Stepper_module_title__7eff5dc6 {\n  color: var(--black);\n}\n.Stepper_module_root__7eff5dc6 .Stepper_module_step__7eff5dc6.Stepper_module_active__7eff5dc6 .Stepper_module_right__7eff5dc6 .Stepper_module_description__7eff5dc6, .Stepper_module_root__7eff5dc6 .Stepper_module_step__7eff5dc6.Stepper_module_completed__7eff5dc6 .Stepper_module_right__7eff5dc6 .Stepper_module_description__7eff5dc6 {\n  color: var(--grey);\n}\n.Stepper_module_root__7eff5dc6 .Stepper_module_step__7eff5dc6.Stepper_module_completed__7eff5dc6 .Stepper_module_right__7eff5dc6 .Stepper_module_title__7eff5dc6::after {\n  border-bottom-color: var(--highlight);\n}\n.Stepper_module_root__7eff5dc6 .Stepper_module_step__7eff5dc6.Stepper_module_error__7eff5dc6 .Stepper_module_left__7eff5dc6 {\n  background: var(--white);\n  border-color: var(--error);\n  color: var(--error);\n}\n.Stepper_module_root__7eff5dc6 .Stepper_module_step__7eff5dc6.Stepper_module_error__7eff5dc6 .Stepper_module_right__7eff5dc6 .Stepper_module_title__7eff5dc6 {\n  color: var(--error);\n}\n.Stepper_module_root__7eff5dc6 .Stepper_module_step__7eff5dc6.Stepper_module_error__7eff5dc6 .Stepper_module_right__7eff5dc6 .Stepper_module_description__7eff5dc6 {\n  color: rgba(var(--error), 0.6);\n}";
-var modules_bbfded44 = {"root":"Stepper_module_root__7eff5dc6","step":"Stepper_module_step__7eff5dc6","title":"Stepper_module_title__7eff5dc6","left":"Stepper_module_left__7eff5dc6","icon":"Stepper_module_icon__7eff5dc6","error-icon":"Stepper_module_errorIcon__7eff5dc6","completion-icon":"Stepper_module_completionIcon__7eff5dc6","progress":"Stepper_module_progress__7eff5dc6","right":"Stepper_module_right__7eff5dc6","description":"Stepper_module_description__7eff5dc6","active":"Stepper_module_active__7eff5dc6","completed":"Stepper_module_completed__7eff5dc6","error":"Stepper_module_error__7eff5dc6"};
-n(css$i,{});
+var css$o = ".Stepper_module_root__781d3116 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n  gap: 1rem;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n  position: relative;\n  z-index: 1;\n  gap: 0.5rem;\n  flex: 1;\n  cursor: default;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116:last-child {\n  flex: 0 1 auto;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116:last-child .Stepper_module_title__781d3116::after {\n  display: none;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_left__781d3116 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  position: relative;\n  width: 1.5rem;\n  height: 1.5rem;\n  background: var(--white);\n  border: 0.063rem solid var(--grey2);\n  border-radius: 2rem;\n  font-size: 1rem;\n  color: var(--grey2);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_left__781d3116 .Stepper_module_icon__781d3116 {\n  width: 0.75rem;\n  height: 0.75rem;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_left__781d3116 .Stepper_module_icon__781d3116.Stepper_module_errorIcon__781d3116 {\n  fill: var(--error);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_left__781d3116 .Stepper_module_icon__781d3116.Stepper_module_completionIcon__781d3116 {\n  fill: var(--highlight);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_left__781d3116 .Stepper_module_icon__781d3116.Stepper_module_completionIcon__781d3116.Stepper_module_active__781d3116 {\n  fill: var(--white);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_left__781d3116 .Stepper_module_progress__781d3116 {\n  position: absolute;\n  z-index: -1;\n  inset: -0.3rem;\n  border-radius: 2rem;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_left__781d3116 .Stepper_module_progress__781d3116::after {\n  position: absolute;\n  content: \"\";\n  inset: 0.15rem;\n  background: white;\n  border-radius: 2rem;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_right__781d3116 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  flex: 1;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_right__781d3116 .Stepper_module_title__781d3116 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n  gap: 0.75rem;\n  width: 100%;\n  font-size: 1rem;\n  color: var(--grey2);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_right__781d3116 .Stepper_module_title__781d3116::after {\n  content: \"\";\n  flex: 1;\n  min-width: 1.5rem;\n  border-bottom: 0.063rem solid;\n  margin-top: 0.75rem;\n  border-bottom-color: var(--grey2);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_right__781d3116 .Stepper_module_description__781d3116 {\n  font-size: 0.75rem;\n  color: var(--grey2);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_active__781d3116 .Stepper_module_left__781d3116 {\n  background: var(--highlight);\n  color: var(--white);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_active__781d3116 .Stepper_module_left__781d3116, .Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_completed__781d3116 .Stepper_module_left__781d3116 {\n  border-color: var(--highlight);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_active__781d3116 .Stepper_module_right__781d3116 .Stepper_module_title__781d3116, .Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_completed__781d3116 .Stepper_module_right__781d3116 .Stepper_module_title__781d3116 {\n  color: var(--black);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_active__781d3116 .Stepper_module_right__781d3116 .Stepper_module_description__781d3116, .Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_completed__781d3116 .Stepper_module_right__781d3116 .Stepper_module_description__781d3116 {\n  color: var(--grey);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_completed__781d3116 .Stepper_module_right__781d3116 .Stepper_module_title__781d3116::after {\n  border-bottom-color: var(--highlight);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_error__781d3116 .Stepper_module_left__781d3116 {\n  background: var(--white);\n  border-color: var(--error);\n  color: var(--error);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_error__781d3116 .Stepper_module_right__781d3116 .Stepper_module_title__781d3116 {\n  color: var(--error);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_error__781d3116 .Stepper_module_right__781d3116 .Stepper_module_description__781d3116 {\n  color: rgba(var(--error), 0.6);\n}";
+var modules_bbfded44 = {"root":"Stepper_module_root__781d3116","step":"Stepper_module_step__781d3116","title":"Stepper_module_title__781d3116","left":"Stepper_module_left__781d3116","icon":"Stepper_module_icon__781d3116","error-icon":"Stepper_module_errorIcon__781d3116","completion-icon":"Stepper_module_completionIcon__781d3116","active":"Stepper_module_active__781d3116","progress":"Stepper_module_progress__781d3116","right":"Stepper_module_right__781d3116","description":"Stepper_module_description__781d3116","completed":"Stepper_module_completed__781d3116","error":"Stepper_module_error__781d3116"};
+n(css$o,{});
 
-var css$h = ":root {\n  --white: #ffffff;\n  --black: #000000;\n  --dark-grey: #333333;\n  --dark-grey-o-85: rgba(51, 51, 51, 0.85);\n  --grey: #737373;\n  --grey1: #888888;\n  --grey2: #a6a6a6;\n  --grey3: #bbbbbb;\n  --grey4: #c4c4c4;\n  --grey5: #dddddd;\n  --grey6: #e8e8e8;\n  --grey7: #eeeeee;\n  --grey8: #f2f2f2;\n  --grey9: #eff0f0;\n  --grey10: #f7f7f7;\n  --highlight: #0f62fe;\n  --dark-blue: #001833;\n  --background: #d0e2ff;\n  --banyan-blue: #00037c;\n  --banyan-orange: #ff892a;\n  --banyan-pink: #ff1597;\n  --banyan-gradient: linear-gradient(\n  \t84.71deg,\n  \tvar(--banyan-pink) 0.48%,\n  \tvar(--banyan-orange) 99.57%\n  );\n  --error: #da1e28;\n  --error-bg: #fff1f1;\n  --error-outline: rgba(218, 30, 40, 0.08);\n  --success: #24a148;\n  --success-bg: #defbe6;\n  --success-outline: rgba(36, 161, 72, 0.08);\n  --warning: #f1c21b;\n  --warning-bg: #fff8e1;\n  --warning-outline: rgba(203, 160, 6, 0.08);\n  --info: #0043ce;\n  --info-bg: #edf5ff;\n  --info-outline: #2864db98;\n}";
+var css$n = ":root {\n  --white: #ffffff;\n  --black: #000000;\n  --dark-grey: #333333;\n  --dark-grey-o-85: rgba(51, 51, 51, 0.85);\n  --grey: #737373;\n  --grey1: #888888;\n  --grey2: #a6a6a6;\n  --grey3: #bbbbbb;\n  --grey4: #c4c4c4;\n  --grey5: #dddddd;\n  --grey6: #e8e8e8;\n  --grey7: #eeeeee;\n  --grey8: #f2f2f2;\n  --grey9: #eff0f0;\n  --grey10: #f7f7f7;\n  --highlight: #0f62fe;\n  --dark-blue: #001833;\n  --background: #d0e2ff;\n  --banyan-blue: #00037c;\n  --banyan-orange: #ff892a;\n  --banyan-pink: #ff1597;\n  --banyan-gradient: linear-gradient(\n  \t84.71deg,\n  \tvar(--banyan-pink) 0.48%,\n  \tvar(--banyan-orange) 99.57%\n  );\n  --error: #da1e28;\n  --error-bg: #fff1f1;\n  --error-outline: rgba(218, 30, 40, 0.08);\n  --success: #24a148;\n  --success-bg: #defbe6;\n  --success-outline: rgba(36, 161, 72, 0.08);\n  --warning: #f1c21b;\n  --warning-bg: #fff8e1;\n  --warning-outline: rgba(203, 160, 6, 0.08);\n  --info: #0043ce;\n  --info-bg: #edf5ff;\n  --info-outline: #2864db98;\n}";
 var modules_dd21d9e9 = {"white":"--white","black":"--black","dark-grey":"--dark-grey","dark-grey-o-85":"--dark-grey-o-85","grey":"--grey","grey1":"--grey1","grey2":"--grey2","grey3":"--grey3","grey4":"--grey4","grey5":"--grey5","grey6":"--grey6","grey7":"--grey7","grey8":"--grey8","grey9":"--grey9","grey10":"--grey10","highlight":"--highlight","dark-blue":"--dark-blue","background":"--background","banyan-blue":"--banyan-blue","banyan-orange":"--banyan-orange","banyan-pink":"--banyan-pink","banyan-gradient":"--banyan-gradient","error":"--error","error-bg":"--error-bg","error-outline":"--error-outline","success":"--success","success-bg":"--success-bg","success-outline":"--success-outline","warning":"--warning","warning-bg":"--warning-bg","warning-outline":"--warning-outline","info":"--info","info-bg":"--info-bg","info-outline":"--info-outline"};
-n(css$h,{});
+n(css$n,{});
 
 var COLORS = Object.keys(modules_dd21d9e9).reduce(function (acc, curr) {
   acc[curr] = getCSSVariableValue(modules_dd21d9e9[curr]);
@@ -35570,14 +35694,14 @@ var Step = function Step(props) {
     });
   } else if (completion === 1) {
     display = /*#__PURE__*/jsxRuntime.jsx(Tick, {
-      className: classes(modules_bbfded44.icon, modules_bbfded44['completion-icon'])
+      className: classes(modules_bbfded44.icon, modules_bbfded44['completion-icon'], active ? modules_bbfded44.active : '')
     });
   }
   return /*#__PURE__*/jsxRuntime.jsxs("div", {
     className: classes(modules_bbfded44.step, active ? modules_bbfded44.active : '', completion === 1 ? modules_bbfded44.completed : '', error ? modules_bbfded44.error : ''),
     children: [/*#__PURE__*/jsxRuntime.jsxs("div", {
       className: modules_bbfded44.left,
-      children: [display, active === true && completion > 0 && completion < 1 && /*#__PURE__*/jsxRuntime.jsx("div", {
+      children: [display, active === true && completion > 0 && completion <= 1 && /*#__PURE__*/jsxRuntime.jsx("div", {
         className: modules_bbfded44.progress,
         style: {
           backgroundImage: "conic-gradient(".concat(COLORS.highlight, ", ").concat(completion * 100, "%, transparent 0%)")
@@ -35658,9 +35782,9 @@ var TableColumn = /*#__PURE__*/_createClass$1(function TableColumn(_ref) {
   this.sticky = sticky;
 });
 
-var css$g = ".TableCell_module_root__b998b6b2[data-elem=base-cell] {\n  background: var(--white);\n  border-bottom: 1px solid var(--grey4);\n}\n.TableCell_module_root__b998b6b2[data-elem=base-cell] > [data-elem*=component] {\n  overflow: hidden;\n}\n.TableCell_module_root__b998b6b2[data-elem=base-cell] > [data-elem*=component] {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  flex: 1;\n}\n.TableCell_module_root__b998b6b2[data-elem=base-cell] > [data-elem*=component] .TableCell_module_cellText__b998b6b2 {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  display: inline-block;\n  width: 100%;\n  font-size: 0.875rem;\n}\n.TableCell_module_root__b998b6b2[data-elem=base-cell].TableCell_module_headerCell__b998b6b2 {\n  background: var(--grey7);\n}\n.TableCell_module_root__b998b6b2[data-elem=base-cell].TableCell_module_headerCell__b998b6b2 .TableCell_module_cellText__b998b6b2 {\n  font-weight: 600;\n}\n.TableCell_module_root__b998b6b2[data-elem=base-cell].TableCell_module_bodyCell__b998b6b2 .TableCell_module_cellText__b998b6b2.TableCell_module_multiLine__b998b6b2 {\n  white-space: normal;\n  display: -webkit-box;\n  -webkit-box-orient: vertical;\n  -webkit-line-clamp: 2;\n  font-size: 0.75rem;\n}\n.TableCell_module_root__b998b6b2[data-elem=base-cell].TableCell_module_stickyLeft__b998b6b2 {\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n  position: -webkit-sticky;\n  position: sticky;\n  left: 0;\n}\n.TableCell_module_root__b998b6b2[data-elem=base-cell].TableCell_module_stickyRight__b998b6b2 {\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n  position: -webkit-sticky;\n  position: sticky;\n  right: 0;\n}";
+var css$m = ".TableCell_module_root__b998b6b2[data-elem=base-cell] {\n  background: var(--white);\n  border-bottom: 1px solid var(--grey4);\n}\n.TableCell_module_root__b998b6b2[data-elem=base-cell] > [data-elem*=component] {\n  overflow: hidden;\n}\n.TableCell_module_root__b998b6b2[data-elem=base-cell] > [data-elem*=component] {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  flex: 1;\n}\n.TableCell_module_root__b998b6b2[data-elem=base-cell] > [data-elem*=component] .TableCell_module_cellText__b998b6b2 {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  display: inline-block;\n  width: 100%;\n  font-size: 0.875rem;\n}\n.TableCell_module_root__b998b6b2[data-elem=base-cell].TableCell_module_headerCell__b998b6b2 {\n  background: var(--grey7);\n}\n.TableCell_module_root__b998b6b2[data-elem=base-cell].TableCell_module_headerCell__b998b6b2 .TableCell_module_cellText__b998b6b2 {\n  font-weight: 600;\n}\n.TableCell_module_root__b998b6b2[data-elem=base-cell].TableCell_module_bodyCell__b998b6b2 .TableCell_module_cellText__b998b6b2.TableCell_module_multiLine__b998b6b2 {\n  white-space: normal;\n  display: -webkit-box;\n  -webkit-box-orient: vertical;\n  -webkit-line-clamp: 2;\n  font-size: 0.75rem;\n}\n.TableCell_module_root__b998b6b2[data-elem=base-cell].TableCell_module_stickyLeft__b998b6b2 {\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n  position: -webkit-sticky;\n  position: sticky;\n  left: 0;\n}\n.TableCell_module_root__b998b6b2[data-elem=base-cell].TableCell_module_stickyRight__b998b6b2 {\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n  position: -webkit-sticky;\n  position: sticky;\n  right: 0;\n}";
 var modules_7ba8d001 = {"root":"TableCell_module_root__b998b6b2","cell-text":"TableCell_module_cellText__b998b6b2","header-cell":"TableCell_module_headerCell__b998b6b2","body-cell":"TableCell_module_bodyCell__b998b6b2","multi-line":"TableCell_module_multiLine__b998b6b2","sticky-left":"TableCell_module_stickyLeft__b998b6b2","sticky-right":"TableCell_module_stickyRight__b998b6b2"};
-n(css$g,{});
+n(css$m,{});
 
 var TableCell = /*#__PURE__*/React.forwardRef(function TableCell(props, ref) {
   var className = props.className,
@@ -35695,7 +35819,7 @@ var TableCell = /*#__PURE__*/React.forwardRef(function TableCell(props, ref) {
       style: style,
       'data-elem': 'text'
     })), {}, {
-      children: cellContent
+      children: [null, false, true].includes(cellContent) ? JSON.stringify(cellContent) : cellContent
     })),
     component3: component3,
     RootDOM: RootDOM,
@@ -35720,24 +35844,24 @@ TableCell.defaultProps = _objectSpread2(_objectSpread2({}, BaseCell.defaultProps
   cellTitle: null
 });
 
-var css$f = ".TableRow_module_root__ede287e6 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.TableRow_module_root__ede287e6.TableRow_module_headerRow__ede287e6 {\n  background: var(--grey6);\n}\n.TableRow_module_root__ede287e6.TableRow_module_bodyRow__ede287e6 {\n  background: var(--white);\n}\n.TableRow_module_root__ede287e6.TableRow_module_bodyRow__ede287e6:hover > [data-elem=base-cell] {\n  background: var(--info-bg);\n}\n.TableRow_module_root__ede287e6.TableRow_module_bodyRow__ede287e6.TableRow_module_selected__ede287e6 > [data-elem=base-cell] {\n  background: var(--background);\n}\n.TableRow_module_root__ede287e6 > [data-elem=base-cell]:first-child {\n  padding-left: 1rem;\n}\n.TableRow_module_root__ede287e6 > [data-elem=base-cell]:last-child {\n  padding-right: 1rem;\n}";
-var modules_f6618a87 = {"root":"TableRow_module_root__ede287e6","header-row":"TableRow_module_headerRow__ede287e6","body-row":"TableRow_module_bodyRow__ede287e6","selected":"TableRow_module_selected__ede287e6"};
-n(css$f,{});
+var css$l = ".TableRow_module_root__b76a6936 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.TableRow_module_root__b76a6936.TableRow_module_headerRow__b76a6936 {\n  background: var(--grey6);\n}\n.TableRow_module_root__b76a6936.TableRow_module_bodyRow__b76a6936 {\n  background: var(--white);\n}\n.TableRow_module_root__b76a6936.TableRow_module_bodyRow__b76a6936:hover > [data-elem=base-cell] {\n  background: var(--info-bg);\n}\n.TableRow_module_root__b76a6936.TableRow_module_bodyRow__b76a6936[data-active=true] > [data-elem=base-cell] {\n  background: var(--background);\n}\n.TableRow_module_root__b76a6936 > [data-elem=base-cell]:first-child {\n  padding-left: 1rem;\n}\n.TableRow_module_root__b76a6936 > [data-elem=base-cell]:last-child {\n  padding-right: 1rem;\n}";
+var modules_f6618a87 = {"root":"TableRow_module_root__b76a6936","header-row":"TableRow_module_headerRow__b76a6936","body-row":"TableRow_module_bodyRow__b76a6936"};
+n(css$l,{});
 
-var TableRow = function TableRow(props) {
+var TableRow = /*#__PURE__*/React.forwardRef(function BaseTable(props, ref) {
   var _headerData$map;
-  // eslint-disable-next-line object-curly-newline
   var type = props.type,
     headerData = props.headerData,
     datum = props.datum,
     _index = props._index,
-    selected = props.selected,
     customCells = props.customCells,
     className = props.className,
-    setActiveData = props.setActiveData;
+    setActiveId = props.setActiveId;
   return /*#__PURE__*/jsxRuntime.jsx("tr", {
+    ref: ref,
+    tabIndex: -1,
     "data-elem": "table-row",
-    className: classes(className, modules_f6618a87.root, selected ? modules_f6618a87.selected : '', modules_f6618a87["".concat(type, "-row")]),
+    className: classes(className, modules_f6618a87.root, modules_f6618a87["".concat(type, "-row")]),
     children: headerData === null || headerData === void 0 ? void 0 : (_headerData$map = headerData.map) === null || _headerData$map === void 0 ? void 0 : _headerData$map.call(headerData, function (item) {
       var _getCustomCell;
       var cellContent = null;
@@ -35748,7 +35872,7 @@ var TableRow = function TableRow(props) {
       }
       var cellProps = _objectSpread2(_objectSpread2(_objectSpread2({}, props), item), {}, {
         _index: _index,
-        setActiveData: setActiveData,
+        setActiveId: setActiveId,
         key: item.id,
         datum: datum,
         cellContent: cellContent,
@@ -35768,7 +35892,7 @@ var TableRow = function TableRow(props) {
       );
     })
   });
-};
+});
 TableRow.propTypes = {
   className: propTypes$1.exports.string,
   type: propTypes$1.exports.oneOf(['header', 'body']),
@@ -35786,8 +35910,7 @@ TableRow.propTypes = {
     style: propTypes$1.exports.object,
     multiLine: propTypes$1.exports.bool
   })),
-  setActiveData: propTypes$1.exports.func,
-  selected: propTypes$1.exports.bool
+  setActiveId: propTypes$1.exports.func
 };
 TableRow.defaultProps = {
   className: '',
@@ -35798,39 +35921,46 @@ TableRow.defaultProps = {
     body: null
   },
   headerData: [],
-  setActiveData: function setActiveData() {},
-  selected: false
+  setActiveId: function setActiveId() {}
 };
 
-var css$e = ".TableBody_module_root__77e2990d {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n}";
+var css$k = ".TableBody_module_root__77e2990d {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n}";
 var modules_82c0c387 = {"root":"TableBody_module_root__77e2990d"};
-n(css$e,{});
+n(css$k,{});
 
-/* eslint-disable react/forbid-prop-types */
+/* eslint-disable no-underscore-dangle */
 var TableBody = function TableBody(props) {
   var tableData = props.tableData,
-    uniqueKey = props.uniqueKey,
-    activeData = props.activeData,
-    setActiveData = props.setActiveData,
     headerData = props.headerData,
     customCells = props.customCells,
     className = props.className;
+  var listRef = React.useRef([]);
   return /*#__PURE__*/jsxRuntime.jsx("tbody", {
     "data-elem": "table-body",
     className: classes(modules_82c0c387.root, className),
     children: tableData === null || tableData === void 0 ? void 0 : tableData.map(function (datum, _index) {
-      var key = datum === null || datum === void 0 ? void 0 : datum.id;
-      var selected = uniqueKey.length > 0 && (uniqueKey === null || uniqueKey === void 0 ? void 0 : uniqueKey.each(function (e) {
-        key += "".concat(datum === null || datum === void 0 ? void 0 : datum[e], "-");
-        return (datum === null || datum === void 0 ? void 0 : datum[e]) === (activeData === null || activeData === void 0 ? void 0 : activeData[e]);
-      }));
+      var key = datum === null || datum === void 0 ? void 0 : datum.uuid;
+      var setActiveId = function setActiveId() {
+        var reset = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+        if (reset) {
+          listRef.current[_index].removeAttribute('data-active');
+        } else {
+          var _listRef$current;
+          (_listRef$current = listRef.current) === null || _listRef$current === void 0 ? void 0 : _listRef$current.forEach(function (elem) {
+            elem.removeAttribute('data-active');
+          });
+          listRef.current[_index].setAttribute('data-active', true);
+        }
+      };
       return /*#__PURE__*/jsxRuntime.jsx(TableRow, {
+        ref: function ref(node) {
+          listRef.current[_index] = node;
+        },
         datum: datum,
-        selected: selected,
         headerData: headerData,
         customCells: customCells,
-        setActiveData: setActiveData,
-        _index: _index
+        _index: _index,
+        setActiveId: setActiveId
       }, key);
     })
   });
@@ -35847,9 +35977,6 @@ TableBody.propTypes = {
     multiLine: propTypes$1.exports.bool
   })),
   tableData: propTypes$1.exports.arrayOf(propTypes$1.exports.object),
-  uniqueKey: propTypes$1.exports.arrayOf(propTypes$1.exports.string),
-  activeData: propTypes$1.exports.object,
-  setActiveData: propTypes$1.exports.func,
   customCells: propTypes$1.exports.shape({
     header: propTypes$1.exports.object,
     body: propTypes$1.exports.object
@@ -35859,18 +35986,15 @@ TableBody.defaultProps = {
   className: '',
   headerData: [],
   tableData: [],
-  uniqueKey: [],
-  activeData: {},
-  setActiveData: function setActiveData() {},
   customCells: {
     header: null,
     body: null
   }
 };
 
-var css$d = ".TableHeader_module_root__daf69a14 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n}";
+var css$j = ".TableHeader_module_root__daf69a14 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n}";
 var modules_3be98c28 = {"root":"TableHeader_module_root__daf69a14"};
-n(css$d,{});
+n(css$j,{});
 
 /* eslint-disable react/forbid-prop-types */
 var TableHeader = function TableHeader(props) {
@@ -35909,19 +36033,77 @@ TableHeader.defaultProps = {
   }
 };
 
-var css$c = ".BaseTable_module_root__7a8d241c {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  background: var(--white);\n  overflow: auto;\n}";
+var css$i = ".BaseTable_module_root__7a8d241c {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  background: var(--white);\n  overflow: auto;\n}";
 var modules_f1817c60 = {"root":"BaseTable_module_root__7a8d241c"};
-n(css$c,{});
+n(css$i,{});
+
+var css$h = ".Skeleton_module_root__4aec4b28 {\n  width: 100%;\n  height: 100%;\n  background: var(--grey6);\n  background-image: linear-gradient(to right, var(--grey6) 0%, var(--grey8) 20%, var(--grey6) 40%, var(--grey6) 100%);\n  background-repeat: no-repeat;\n  background-size: cover;\n  display: inline-block;\n  -webkit-animation-duration: 1.25s;\n          animation-duration: 1.25s;\n  animation-fill-mode: forwards;\n  animation-iteration-count: infinite;\n  animation-name: Skeleton_module_shimmer__4aec4b28;\n  animation-timing-function: linear;\n  animation-fill-mode: forwards;\n  animation-iteration-count: infinite;\n  animation-name: Skeleton_module_shimmer__4aec4b28;\n  animation-timing-function: linear;\n  -webkit-animation-fill-mode: forwards;\n  -webkit-animation-iteration-count: infinite;\n  -webkit-animation-name: Skeleton_module_shimmer__4aec4b28;\n  -webkit-animation-timing-function: linear;\n  -webkit-animation-fill-mode: forwards;\n  -webkit-animation-iteration-count: infinite;\n  -webkit-animation-name: Skeleton_module_shimmer__4aec4b28;\n  -webkit-animation-timing-function: linear;\n}\n.Skeleton_module_root__4aec4b28.Skeleton_module_text__4aec4b28 {\n  height: 1.5rem;\n}\n.Skeleton_module_root__4aec4b28.Skeleton_module_circle__4aec4b28 {\n  border-radius: 1.5rem;\n}\n.Skeleton_module_root__4aec4b28.Skeleton_module_rounded__4aec4b28 {\n  border-radius: 0.25rem;\n}\n\n@keyframes Skeleton_module_shimmer__4aec4b28 {\n  0% {\n    background-position: -50rem 0;\n  }\n  100% {\n    background-position: 50rem 0;\n  }\n}\n@-webkit-keyframes Skeleton_module_shimmer__4aec4b28 {\n  0% {\n    background-position: -50rem 0;\n  }\n  100% {\n    background-position: 50rem 0;\n  }\n}";
+var modules_37a5ff73$3 = {"root":"Skeleton_module_root__4aec4b28","shimmer":"Skeleton_module_shimmer__4aec4b28","text":"Skeleton_module_text__4aec4b28","circle":"Skeleton_module_circle__4aec4b28","rounded":"Skeleton_module_rounded__4aec4b28"};
+n(css$h,{});
+
+var Skeleton = function Skeleton(props) {
+  var height = props.height,
+    width = props.width,
+    variant = props.variant,
+    className = props.className;
+  return /*#__PURE__*/jsxRuntime.jsx("span", {
+    "data-elem": "skeleton",
+    className: classes(className, modules_37a5ff73$3.root, modules_37a5ff73$3[variant]),
+    style: {
+      height: height,
+      width: width
+    }
+  });
+};
+Skeleton.propTypes = {
+  className: propTypes$1.exports.string,
+  height: propTypes$1.exports.oneOfType([propTypes$1.exports.string, propTypes$1.exports.number]),
+  width: propTypes$1.exports.oneOfType([propTypes$1.exports.string, propTypes$1.exports.number]),
+  variant: propTypes$1.exports.oneOf(['circle', 'text', 'rounded', 'rectangle'])
+};
+Skeleton.defaultProps = {
+  className: '',
+  height: null,
+  width: '100%',
+  variant: 'text'
+};
+
+var css$g = ".Skeleton_module_row__f53f20f3 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  gap: 1rem;\n  margin-bottom: 1rem;\n  padding: 0rem 0.5rem;\n}\n.Skeleton_module_row__f53f20f3.Skeleton_module_header__f53f20f3 {\n  height: 2rem;\n  background: var(--grey4);\n  border-radius: 0.25rem;\n}\n.Skeleton_module_row__f53f20f3.Skeleton_module_header__f53f20f3 .Skeleton_module_th__f53f20f3 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.Skeleton_module_row__f53f20f3.Skeleton_module_header__f53f20f3 .Skeleton_module_th__f53f20f3 .Skeleton_module_skeleton__f53f20f3 {\n  background: var(--grey8);\n}\n.Skeleton_module_row__f53f20f3 > .Skeleton_module_column__f53f20f3 {\n  width: 100%;\n}\n.Skeleton_module_row__f53f20f3 > .Skeleton_module_column__f53f20f3 .Skeleton_module_skeleton__f53f20f3 {\n  height: 1.5rem;\n}";
+var modules_37a5ff73$2 = {"row":"Skeleton_module_row__f53f20f3","header":"Skeleton_module_header__f53f20f3","th":"Skeleton_module_th__f53f20f3","skeleton":"Skeleton_module_skeleton__f53f20f3","column":"Skeleton_module_column__f53f20f3"};
+n(css$g,{});
+
+var COLUMNS = _toConsumableArray(Array(4).keys()).map(function () {
+  return Math.floor(Math.random() * 80 + 20);
+});
+var ROWS = _toConsumableArray(Array(10).keys());
+var BaseTableSkeleton = function BaseTableSkeleton() {
+  return ROWS.map(function (row, rowIndex) {
+    return /*#__PURE__*/jsxRuntime.jsx("div", {
+      className: classes(modules_37a5ff73$2.row, rowIndex === 0 ? modules_37a5ff73$2.header : ''),
+      children: COLUMNS.map(function (column, colIndex) {
+        return /*#__PURE__*/jsxRuntime.jsx("div", {
+          className: classes(modules_37a5ff73$2.column, rowIndex === 0 ? modules_37a5ff73$2.th : '', colIndex === 0 ? modules_37a5ff73$2.col1 : ''),
+          children: /*#__PURE__*/jsxRuntime.jsx(Skeleton, {
+            width: rowIndex === 0 ? '60%' : '100%',
+            variant: "rounded",
+            className: modules_37a5ff73$2.skeleton
+          })
+        }, column);
+      })
+    }, row);
+  });
+};
 
 /* eslint-disable react/forbid-prop-types */
 var BaseTable = /*#__PURE__*/React.forwardRef(function BaseTable(props, ref) {
   var headerData = props.headerData,
     customCells = props.customCells,
     tableData = props.tableData,
-    uniqueKey = props.uniqueKey,
-    activeData = props.activeData,
-    setActiveData = props.setActiveData,
-    className = props.className;
+    className = props.className,
+    loading = props.loading;
+  if (loading) {
+    return /*#__PURE__*/jsxRuntime.jsx(BaseTableSkeleton, {});
+  }
   var transformedHeaderData = headerData.map(function (header) {
     return new TableColumn(header);
   });
@@ -35936,10 +36118,7 @@ var BaseTable = /*#__PURE__*/React.forwardRef(function BaseTable(props, ref) {
       ref: ref,
       headerData: transformedHeaderData,
       customCells: customCells,
-      tableData: tableData,
-      uniqueKey: uniqueKey,
-      activeData: activeData,
-      setActiveData: setActiveData
+      tableData: tableData
     })]
   });
 });
@@ -35955,30 +36134,46 @@ BaseTable.propTypes = {
     multiLine: propTypes$1.exports.bool
   })),
   tableData: propTypes$1.exports.arrayOf(propTypes$1.exports.object),
-  uniqueKey: propTypes$1.exports.arrayOf(propTypes$1.exports.string),
-  activeData: propTypes$1.exports.object,
-  setActiveData: propTypes$1.exports.func,
   customCells: propTypes$1.exports.shape({
     header: propTypes$1.exports.func,
     body: propTypes$1.exports.func
-  })
+  }),
+  loading: propTypes$1.exports.bool
 };
 BaseTable.defaultProps = {
   className: '',
   headerData: [],
   tableData: [],
-  uniqueKey: [],
-  activeData: {},
-  setActiveData: function setActiveData() {},
   customCells: {
     header: null,
     body: null
-  }
+  },
+  loading: null
 };
 
-var css$b = ".TableChips_module_root__ed8402e9[data-elem=base-cell] {\n  padding: 0.5rem 1.5rem;\n  width: 100%;\n  background: var(--grey8);\n  border-radius: 0.25rem 0.25rem 0 0;\n}\n.TableChips_module_root__ed8402e9[data-elem=base-cell] > [data-elem=component1] .TableChips_module_back__ed8402e9 {\n  height: 2rem;\n  width: 2rem;\n}\n.TableChips_module_root__ed8402e9[data-elem=base-cell] > [data-elem=component1] .TableChips_module_back__ed8402e9 [data-elem=component1] .TableChips_module_icon__ed8402e9 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--white);\n}\n.TableChips_module_root__ed8402e9[data-elem=base-cell] > [data-elem=component2] {\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.5rem;\n  overflow-x: auto;\n  flex: 1;\n}\n.TableChips_module_root__ed8402e9[data-elem=base-cell] > [data-elem=component2]::-webkit-scrollbar {\n  display: none;\n}\n.TableChips_module_root__ed8402e9[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chip__ed8402e9 .TableChips_module_chipIcon__ed8402e9 {\n  width: 1rem;\n  height: 1rem;\n}";
+var css$f = ".Skeleton_module_root__15c10a9b[data-elem=base-cell] {\n  align-items: flex-start;\n  width: 100%;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component1] {\n  width: auto;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component1] > [data-elem=skeleton] {\n  height: 1.5rem;\n  width: 1.5rem !important;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component2] {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 1rem;\n  flex: 8;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component2] > [data-elem=skeleton] {\n  max-width: 9rem;\n  height: 1.5rem;\n}";
+var modules_37a5ff73$1 = {"root":"Skeleton_module_root__15c10a9b"};
+n(css$f,{});
+
+var CHIPS = _toConsumableArray(Array(5).keys());
+var TableChipsSkeleton = function TableChipsSkeleton() {
+  return /*#__PURE__*/jsxRuntime.jsx(BaseCell, {
+    flexible: true,
+    className: modules_37a5ff73$1.root,
+    component1: /*#__PURE__*/jsxRuntime.jsx(Skeleton, {
+      variant: "circle"
+    }),
+    component2: CHIPS.map(function (chip) {
+      return /*#__PURE__*/jsxRuntime.jsx(Skeleton, {
+        variant: "circle"
+      }, chip);
+    })
+  });
+};
+
+var css$e = ".TableChips_module_root__ed8402e9[data-elem=base-cell] {\n  padding: 0.5rem 1.5rem;\n  width: 100%;\n  background: var(--grey8);\n  border-radius: 0.25rem 0.25rem 0 0;\n}\n.TableChips_module_root__ed8402e9[data-elem=base-cell] > [data-elem=component1] .TableChips_module_back__ed8402e9 {\n  height: 2rem;\n  width: 2rem;\n}\n.TableChips_module_root__ed8402e9[data-elem=base-cell] > [data-elem=component1] .TableChips_module_back__ed8402e9 [data-elem=component1] .TableChips_module_icon__ed8402e9 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--white);\n}\n.TableChips_module_root__ed8402e9[data-elem=base-cell] > [data-elem=component2] {\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.5rem;\n  overflow-x: auto;\n  flex: 1;\n}\n.TableChips_module_root__ed8402e9[data-elem=base-cell] > [data-elem=component2]::-webkit-scrollbar {\n  display: none;\n}\n.TableChips_module_root__ed8402e9[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chip__ed8402e9 .TableChips_module_chipIcon__ed8402e9 {\n  width: 1rem;\n  height: 1rem;\n}";
 var modules_016d9b3e = {"root":"TableChips_module_root__ed8402e9","back":"TableChips_module_back__ed8402e9","icon":"TableChips_module_icon__ed8402e9","chip":"TableChips_module_chip__ed8402e9","chip-icon":"TableChips_module_chipIcon__ed8402e9"};
-n(css$b,{});
+n(css$e,{});
 
 var TableChips = function TableChips(props) {
   var _chips$filter;
@@ -35986,7 +36181,11 @@ var TableChips = function TableChips(props) {
     onBack = props.onBack,
     chips = props.chips,
     className = props.className,
-    style = props.style;
+    style = props.style,
+    loading = props.loading;
+  if (loading) {
+    return /*#__PURE__*/jsxRuntime.jsx(TableChipsSkeleton, {});
+  }
   var chipsDOM = chips === null || chips === void 0 ? void 0 : (_chips$filter = chips.filter(function (chip) {
     return (chip === null || chip === void 0 ? void 0 : chip.value) != null;
   })) === null || _chips$filter === void 0 ? void 0 : _chips$filter.map(function (chip) {
@@ -36045,14 +36244,16 @@ TableChips.propTypes = {
     value: propTypes$1.exports.oneOfType([propTypes$1.exports.number, propTypes$1.exports.string]),
     disabled: propTypes$1.exports.bool,
     rightComponent: propTypes$1.exports.node
-  }))
+  })),
+  loading: propTypes$1.exports.bool
 };
 TableChips.defaultProps = {
   className: '',
   style: {},
   showBack: false,
   onBack: function onBack() {},
-  chips: []
+  chips: [],
+  loading: null
 };
 
 var TableChip = /*#__PURE__*/_createClass$1(function TableChip(_ref) {
@@ -36074,9 +36275,9 @@ var TableChip = /*#__PURE__*/_createClass$1(function TableChip(_ref) {
   this.disabled = disabled;
 });
 
-var css$a = ".Popover_module_root__265e51dc {\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n  background-color: var(--white);\n  padding: 1rem;\n  border-radius: 0.25rem;\n}";
+var css$d = ".Popover_module_root__265e51dc {\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n  background-color: var(--white);\n  padding: 1rem;\n  border-radius: 0.25rem;\n}";
 var modules_dfc4608f = {"root":"Popover_module_root__265e51dc"};
-n(css$a,{});
+n(css$d,{});
 
 var Popover = function Popover(props) {
   var children = props.children,
@@ -36152,9 +36353,9 @@ Popover.defaultProps = {
   onClose: function onClose() {}
 };
 
-var css$9 = ".Columns_module_popover__680b100e {\n  height: 100%;\n}\n\n.Columns_module_root__680b100e {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  gap: 1rem;\n  position: relative;\n  height: 100%;\n  max-width: 100%;\n}\n.Columns_module_root__680b100e .Columns_module_header__680b100e {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  gap: 1.5rem;\n  width: 100%;\n  padding: 0;\n  height: auto;\n}\n.Columns_module_root__680b100e .Columns_module_header__680b100e > [data-elem=component1] {\n  font-weight: 500;\n}\n.Columns_module_root__680b100e .Columns_module_header__680b100e > [data-elem=component2] .Columns_module_search__680b100e {\n  width: 100%;\n}\n.Columns_module_root__680b100e .Columns_module_close__680b100e {\n  position: absolute;\n  top: -1rem;\n  right: -1rem;\n}\n.Columns_module_root__680b100e .Columns_module_close__680b100e .Columns_module_icon__680b100e {\n  width: 1rem;\n  height: 1rem;\n}\n.Columns_module_root__680b100e .Columns_module_body__680b100e {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  gap: 0.5rem;\n  overflow-y: auto;\n  flex: 1 1 auto;\n}\n.Columns_module_root__680b100e .Columns_module_body__680b100e .Columns_module_item__680b100e {\n  height: 3rem;\n}\n.Columns_module_root__680b100e .Columns_module_body__680b100e .Columns_module_item__680b100e > [data-elem=title] {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n}\n.Columns_module_root__680b100e .Columns_module_footer__680b100e .Columns_module_expand__680b100e .Columns_module_icon__680b100e {\n  width: 1.5rem;\n  height: 1.5rem;\n  transform: rotate(180deg);\n}\n.Columns_module_root__680b100e.Columns_module_expanded__680b100e .Columns_module_header__680b100e {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  padding-right: 2rem;\n}\n.Columns_module_root__680b100e.Columns_module_expanded__680b100e .Columns_module_header__680b100e > [data-elem=component2] {\n  flex: 1;\n}\n.Columns_module_root__680b100e.Columns_module_expanded__680b100e .Columns_module_close__680b100e {\n  top: -0.25rem;\n}\n.Columns_module_root__680b100e.Columns_module_expanded__680b100e .Columns_module_body__680b100e {\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  flex: 0 1 auto;\n}\n.Columns_module_root__680b100e.Columns_module_expanded__680b100e .Columns_module_body__680b100e .Columns_module_item__680b100e {\n  overflow: hidden;\n}\n.Columns_module_root__680b100e.Columns_module_expanded__680b100e .Columns_module_footer__680b100e {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  margin-top: auto;\n}\n.Columns_module_root__680b100e.Columns_module_expanded__680b100e .Columns_module_footer__680b100e .Columns_module_expand__680b100e .Columns_module_icon__680b100e {\n  transform: rotate(0deg);\n}";
+var css$c = ".Columns_module_popover__680b100e {\n  height: 100%;\n}\n\n.Columns_module_root__680b100e {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  gap: 1rem;\n  position: relative;\n  height: 100%;\n  max-width: 100%;\n}\n.Columns_module_root__680b100e .Columns_module_header__680b100e {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  gap: 1.5rem;\n  width: 100%;\n  padding: 0;\n  height: auto;\n}\n.Columns_module_root__680b100e .Columns_module_header__680b100e > [data-elem=component1] {\n  font-weight: 500;\n}\n.Columns_module_root__680b100e .Columns_module_header__680b100e > [data-elem=component2] .Columns_module_search__680b100e {\n  width: 100%;\n}\n.Columns_module_root__680b100e .Columns_module_close__680b100e {\n  position: absolute;\n  top: -1rem;\n  right: -1rem;\n}\n.Columns_module_root__680b100e .Columns_module_close__680b100e .Columns_module_icon__680b100e {\n  width: 1rem;\n  height: 1rem;\n}\n.Columns_module_root__680b100e .Columns_module_body__680b100e {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  gap: 0.5rem;\n  overflow-y: auto;\n  flex: 1 1 auto;\n}\n.Columns_module_root__680b100e .Columns_module_body__680b100e .Columns_module_item__680b100e {\n  height: 3rem;\n}\n.Columns_module_root__680b100e .Columns_module_body__680b100e .Columns_module_item__680b100e > [data-elem=title] {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n}\n.Columns_module_root__680b100e .Columns_module_footer__680b100e .Columns_module_expand__680b100e .Columns_module_icon__680b100e {\n  width: 1.5rem;\n  height: 1.5rem;\n  transform: rotate(180deg);\n}\n.Columns_module_root__680b100e.Columns_module_expanded__680b100e .Columns_module_header__680b100e {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  padding-right: 2rem;\n}\n.Columns_module_root__680b100e.Columns_module_expanded__680b100e .Columns_module_header__680b100e > [data-elem=component2] {\n  flex: 1;\n}\n.Columns_module_root__680b100e.Columns_module_expanded__680b100e .Columns_module_close__680b100e {\n  top: -0.25rem;\n}\n.Columns_module_root__680b100e.Columns_module_expanded__680b100e .Columns_module_body__680b100e {\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n  flex: 0 1 auto;\n}\n.Columns_module_root__680b100e.Columns_module_expanded__680b100e .Columns_module_body__680b100e .Columns_module_item__680b100e {\n  overflow: hidden;\n}\n.Columns_module_root__680b100e.Columns_module_expanded__680b100e .Columns_module_footer__680b100e {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  margin-top: auto;\n}\n.Columns_module_root__680b100e.Columns_module_expanded__680b100e .Columns_module_footer__680b100e .Columns_module_expand__680b100e .Columns_module_icon__680b100e {\n  transform: rotate(0deg);\n}";
 var modules_48c02c99 = {"popover":"Columns_module_popover__680b100e","root":"Columns_module_root__680b100e","header":"Columns_module_header__680b100e","search":"Columns_module_search__680b100e","close":"Columns_module_close__680b100e","icon":"Columns_module_icon__680b100e","body":"Columns_module_body__680b100e","item":"Columns_module_item__680b100e","footer":"Columns_module_footer__680b100e","expand":"Columns_module_expand__680b100e","expanded":"Columns_module_expanded__680b100e"};
-n(css$9,{});
+n(css$c,{});
 
 var Columns = function Columns(props) {
   var open = props.open,
@@ -36252,9 +36453,40 @@ var Columns = function Columns(props) {
   });
 };
 
-var css$8 = ".TableFilters_module_root__0ffd53bf[data-elem=base-cell] {\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n  overflow-x: auto;\n  padding: 0.5rem;\n  gap: 1.25rem;\n  width: 100%;\n}\n.TableFilters_module_root__0ffd53bf[data-elem=base-cell]::-webkit-scrollbar {\n  display: none;\n}\n.TableFilters_module_root__0ffd53bf[data-elem=base-cell] .TableFilters_module_icon__0ffd53bf {\n  width: 1.5rem;\n  height: 1.5rem;\n  flex-shrink: 0;\n}\n.TableFilters_module_root__0ffd53bf[data-elem=base-cell] .TableFilters_module_iconButton__0ffd53bf {\n  padding: 0rem;\n  height: 100%;\n}\n.TableFilters_module_root__0ffd53bf[data-elem=base-cell] > [data-elem*=component] {\n  height: 100%;\n}\n.TableFilters_module_root__0ffd53bf[data-elem=base-cell] .TableFilters_module_left__0ffd53bf,\n.TableFilters_module_root__0ffd53bf[data-elem=base-cell] .TableFilters_module_center__0ffd53bf,\n.TableFilters_module_root__0ffd53bf[data-elem=base-cell] .TableFilters_module_right__0ffd53bf {\n  height: 100%;\n}\n.TableFilters_module_root__0ffd53bf[data-elem=base-cell] > [data-elem=component1] .TableFilters_module_left__0ffd53bf {\n  gap: 1rem;\n}\n.TableFilters_module_root__0ffd53bf[data-elem=base-cell] > [data-elem=component1] .TableFilters_module_left__0ffd53bf [data-elem=left] {\n  gap: 1rem;\n}\n.TableFilters_module_root__0ffd53bf[data-elem=base-cell] > [data-elem=component1] .TableFilters_module_left__0ffd53bf .TableFilters_module_filterValue__0ffd53bf {\n  color: var(--white);\n  background: var(--highlight);\n  padding: 0.125rem 0.5rem;\n  border-radius: 50%;\n  font-size: 0.813rem;\n}\n.TableFilters_module_root__0ffd53bf[data-elem=base-cell] > [data-elem=component2] {\n  flex: 1;\n}\n.TableFilters_module_root__0ffd53bf[data-elem=base-cell] > [data-elem=component2] .TableFilters_module_center__0ffd53bf {\n  width: 100%;\n}\n.TableFilters_module_root__0ffd53bf[data-elem=base-cell] > [data-elem=component2] .TableFilters_module_center__0ffd53bf [data-elem=base-cell] {\n  background: var(--grey7);\n  border-color: var(--grey3);\n}\n.TableFilters_module_root__0ffd53bf[data-elem=base-cell] > [data-elem=component2] .TableFilters_module_center__0ffd53bf .TableFilters_module_icon__0ffd53bf {\n  width: 1.25rem;\n}\n.TableFilters_module_root__0ffd53bf[data-elem=base-cell] .TableFilters_module_right__0ffd53bf {\n  width: auto;\n  padding: 0;\n  gap: 2.5rem;\n}\n.TableFilters_module_root__0ffd53bf[data-elem=base-cell] .TableFilters_module_right__0ffd53bf > [data-elem*=component] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}";
-var modules_a0fe63f9 = {"root":"TableFilters_module_root__0ffd53bf","icon":"TableFilters_module_icon__0ffd53bf","icon-button":"TableFilters_module_iconButton__0ffd53bf","left":"TableFilters_module_left__0ffd53bf","center":"TableFilters_module_center__0ffd53bf","right":"TableFilters_module_right__0ffd53bf","filter-value":"TableFilters_module_filterValue__0ffd53bf"};
-n(css$8,{});
+var css$b = ".TableFilters_module_root__8fb9adbb[data-elem=base-cell] {\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n  overflow-x: auto;\n  padding: 0.5rem;\n  gap: 1.25rem;\n  width: 100%;\n}\n.TableFilters_module_root__8fb9adbb[data-elem=base-cell]::-webkit-scrollbar {\n  display: none;\n}\n.TableFilters_module_root__8fb9adbb[data-elem=base-cell] .TableFilters_module_icon__8fb9adbb {\n  width: 1.5rem;\n  height: 1.5rem;\n  flex-shrink: 0;\n}\n.TableFilters_module_root__8fb9adbb[data-elem=base-cell] .TableFilters_module_iconButton__8fb9adbb {\n  padding: 0rem;\n  height: 100%;\n}\n.TableFilters_module_root__8fb9adbb[data-elem=base-cell] > [data-elem*=component] {\n  height: 100%;\n}\n.TableFilters_module_root__8fb9adbb[data-elem=base-cell] .TableFilters_module_left__8fb9adbb,\n.TableFilters_module_root__8fb9adbb[data-elem=base-cell] .TableFilters_module_center__8fb9adbb,\n.TableFilters_module_root__8fb9adbb[data-elem=base-cell] .TableFilters_module_right__8fb9adbb {\n  height: 100%;\n}\n.TableFilters_module_root__8fb9adbb[data-elem=base-cell] > [data-elem=component1] .TableFilters_module_left__8fb9adbb {\n  gap: 1rem;\n}\n.TableFilters_module_root__8fb9adbb[data-elem=base-cell] > [data-elem=component1] .TableFilters_module_left__8fb9adbb [data-elem=left] {\n  gap: 1rem;\n}\n.TableFilters_module_root__8fb9adbb[data-elem=base-cell] > [data-elem=component1] .TableFilters_module_left__8fb9adbb .TableFilters_module_filterValue__8fb9adbb {\n  color: var(--white);\n  background: var(--highlight);\n  padding: 0.125rem 0.5rem;\n  border-radius: 50%;\n  font-size: 0.813rem;\n}\n.TableFilters_module_root__8fb9adbb[data-elem=base-cell] > [data-elem=component2] {\n  flex: 1;\n}\n.TableFilters_module_root__8fb9adbb[data-elem=base-cell] > [data-elem=component2] .TableFilters_module_center__8fb9adbb {\n  width: 100%;\n}\n.TableFilters_module_root__8fb9adbb[data-elem=base-cell] > [data-elem=component2] .TableFilters_module_center__8fb9adbb [data-elem=base-cell] {\n  background: var(--grey7);\n  border-color: var(--grey3);\n}\n.TableFilters_module_root__8fb9adbb[data-elem=base-cell] > [data-elem=component2] .TableFilters_module_center__8fb9adbb .TableFilters_module_icon__8fb9adbb {\n  width: 1.25rem;\n}\n.TableFilters_module_root__8fb9adbb[data-elem=base-cell] .TableFilters_module_right__8fb9adbb {\n  width: auto;\n  padding: 0;\n  min-width: 0rem;\n  gap: 2.5rem;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.TableFilters_module_root__8fb9adbb[data-elem=base-cell] .TableFilters_module_right__8fb9adbb > [data-elem*=component] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}";
+var modules_a0fe63f9 = {"root":"TableFilters_module_root__8fb9adbb","icon":"TableFilters_module_icon__8fb9adbb","icon-button":"TableFilters_module_iconButton__8fb9adbb","left":"TableFilters_module_left__8fb9adbb","center":"TableFilters_module_center__8fb9adbb","right":"TableFilters_module_right__8fb9adbb","filter-value":"TableFilters_module_filterValue__8fb9adbb"};
+n(css$b,{});
+
+var css$a = ".Skeleton_module_root__d0937f9d[data-elem=base-cell] {\n  width: 100%;\n  gap: 1.25rem;\n}\n.Skeleton_module_root__d0937f9d[data-elem=base-cell] > [data-elem=component1] {\n  flex: 1;\n}\n.Skeleton_module_root__d0937f9d[data-elem=base-cell] > [data-elem=component2] {\n  flex: 6;\n}\n.Skeleton_module_root__d0937f9d[data-elem=base-cell] > [data-elem=component3] {\n  flex: 1;\n}\n.Skeleton_module_root__d0937f9d[data-elem=base-cell] > [data-elem=component3] > [data-elem=base-cell] {\n  padding: 0;\n  align-items: flex-start;\n  height: auto;\n}\n.Skeleton_module_root__d0937f9d[data-elem=base-cell] > [data-elem=component3] > [data-elem=base-cell] > [data-elem*=component] {\n  flex: 1;\n}\n.Skeleton_module_root__d0937f9d[data-elem=base-cell] > [data-elem=component3] > [data-elem=base-cell] > [data-elem*=component] > [data-elem=skeleton] {\n  height: 1.5rem;\n}";
+var modules_37a5ff73 = {"root":"Skeleton_module_root__d0937f9d"};
+n(css$a,{});
+
+var TableFiltersSkeleton = function TableFiltersSkeleton() {
+  return /*#__PURE__*/jsxRuntime.jsx(BaseCell, {
+    className: modules_37a5ff73.root,
+    flexible: true,
+    component1: /*#__PURE__*/jsxRuntime.jsx(Skeleton, {
+      className: modules_37a5ff73.filter
+    }),
+    component2: /*#__PURE__*/jsxRuntime.jsx(Skeleton, {
+      className: modules_37a5ff73.search
+    }),
+    component3: /*#__PURE__*/jsxRuntime.jsx(BaseCell, {
+      component1: /*#__PURE__*/jsxRuntime.jsx(Skeleton, {
+        variant: "circle",
+        className: modules_37a5ff73.columns
+      }),
+      component2: /*#__PURE__*/jsxRuntime.jsx(Skeleton, {
+        variant: "circle",
+        className: modules_37a5ff73.refresh
+      }),
+      component3: /*#__PURE__*/jsxRuntime.jsx(Skeleton, {
+        variant: "circle",
+        className: modules_37a5ff73.settings
+      })
+    })
+  });
+};
 
 var TableFilters = function TableFilters(props) {
   var className = props.className,
@@ -36265,7 +36497,9 @@ var TableFilters = function TableFilters(props) {
     filterValue = props.filterValue,
     headerData = props.headerData,
     hiddenColumns = props.hiddenColumns,
-    setHiddenColumns = props.setHiddenColumns;
+    setHiddenColumns = props.setHiddenColumns,
+    loading = props.loading,
+    disabledFilterOptions = props.disabledFilterOptions;
   var _useState = React.useState(false),
     _useState2 = _slicedToArray(_useState, 2),
     openColumns = _useState2[0],
@@ -36274,13 +36508,21 @@ var TableFilters = function TableFilters(props) {
     _useState4 = _slicedToArray(_useState3, 2),
     anchorEl = _useState4[0],
     setAnchorEl = _useState4[1];
+  var disabledFilterButton = disabledFilterOptions.filterButton,
+    disabledRefresh = disabledFilterOptions.refresh,
+    disabledColumnFilter = disabledFilterOptions.columnFilter,
+    disabledSettings = disabledFilterOptions.settings;
+  var hideRightOptions = disabledColumnFilter && disabledRefresh && disabledSettings;
+  if (loading) {
+    return /*#__PURE__*/jsxRuntime.jsx(TableFiltersSkeleton, {});
+  }
   return /*#__PURE__*/jsxRuntime.jsx(BaseCell, {
     flexible: true,
     className: classes(modules_a0fe63f9.root, className),
     attrs: {
       style: style
     },
-    component1: /*#__PURE__*/jsxRuntime.jsx(Button, {
+    component1: !disabledFilterButton && /*#__PURE__*/jsxRuntime.jsx(Button, {
       className: modules_a0fe63f9.left,
       title: "Filter",
       variant: "outlined",
@@ -36310,10 +36552,10 @@ var TableFilters = function TableFilters(props) {
       },
       placeholder: "Search"
     }),
-    component3: /*#__PURE__*/jsxRuntime.jsx(BaseCell, {
+    component3: !hideRightOptions && /*#__PURE__*/jsxRuntime.jsx(BaseCell, {
       flexible: true,
       className: modules_a0fe63f9.right,
-      component1: /*#__PURE__*/jsxRuntime.jsxs(jsxRuntime.Fragment, {
+      component1: !disabledColumnFilter && /*#__PURE__*/jsxRuntime.jsxs(jsxRuntime.Fragment, {
         children: [/*#__PURE__*/jsxRuntime.jsx(Button, {
           ref: function ref(el) {
             setAnchorEl(el);
@@ -36340,7 +36582,7 @@ var TableFilters = function TableFilters(props) {
           setHiddenColumns: setHiddenColumns
         })]
       }),
-      component2: /*#__PURE__*/jsxRuntime.jsx(Button, {
+      component2: !disabledRefresh && /*#__PURE__*/jsxRuntime.jsx(Button, {
         size: "auto",
         className: modules_a0fe63f9['icon-button'],
         variant: "text",
@@ -36351,7 +36593,7 @@ var TableFilters = function TableFilters(props) {
           });
         }
       }),
-      component3: /*#__PURE__*/jsxRuntime.jsx(Button, {
+      component3: !disabledSettings && /*#__PURE__*/jsxRuntime.jsx(Button, {
         size: "auto",
         className: modules_a0fe63f9['icon-button'],
         variant: "text",
@@ -36373,7 +36615,8 @@ TableFilters.propTypes = {
   searchValue: propTypes$1.exports.string,
   filterValue: propTypes$1.exports.shape({
     applied: propTypes$1.exports.number
-  })
+  }),
+  loading: propTypes$1.exports.bool
 };
 TableFilters.defaultProps = {
   className: '',
@@ -36383,12 +36626,13 @@ TableFilters.defaultProps = {
   searchValue: null,
   filterValue: {
     applied: null
-  }
+  },
+  loading: null
 };
 
-var css$7 = ".Table_module_root__d17cb64f {\n  position: relative;\n  border-style: solid;\n  border-color: var(--grey4);\n  border-width: 1px 1px 0px 1px;\n  border-radius: 0.25rem;\n  width: 100%;\n  max-width: 100%;\n  height: 100%;\n  overflow: hidden;\n}\n.Table_module_root__d17cb64f .Table_module_table__d17cb64f {\n  height: calc(100% - 6rem);\n  padding-bottom: 3.5rem;\n}\n.Table_module_root__d17cb64f .Table_module_pagination__d17cb64f {\n  position: absolute;\n  bottom: 0;\n  left: 50%;\n  transform: translateX(-50%);\n}\n.Table_module_root__d17cb64f .Table_module_pagination__d17cb64f.Table_module_floating__d17cb64f {\n  bottom: 1rem;\n}\n.Table_module_root__d17cb64f .Table_module_chips__d17cb64f,\n.Table_module_root__d17cb64f .Table_module_filters__d17cb64f,\n.Table_module_root__d17cb64f .Table_module_table__d17cb64f > [data-elem=table-header] {\n  position: -webkit-sticky;\n  position: sticky;\n  z-index: 1;\n  top: 0;\n}";
+var css$9 = ".Table_module_root__d17cb64f {\n  position: relative;\n  border-style: solid;\n  border-color: var(--grey4);\n  border-width: 1px 1px 0px 1px;\n  border-radius: 0.25rem;\n  width: 100%;\n  max-width: 100%;\n  height: 100%;\n  overflow: hidden;\n}\n.Table_module_root__d17cb64f .Table_module_table__d17cb64f {\n  height: calc(100% - 6rem);\n  padding-bottom: 3.5rem;\n}\n.Table_module_root__d17cb64f .Table_module_pagination__d17cb64f {\n  position: absolute;\n  bottom: 0;\n  left: 50%;\n  transform: translateX(-50%);\n}\n.Table_module_root__d17cb64f .Table_module_pagination__d17cb64f.Table_module_floating__d17cb64f {\n  bottom: 1rem;\n}\n.Table_module_root__d17cb64f .Table_module_chips__d17cb64f,\n.Table_module_root__d17cb64f .Table_module_filters__d17cb64f,\n.Table_module_root__d17cb64f .Table_module_table__d17cb64f > [data-elem=table-header] {\n  position: -webkit-sticky;\n  position: sticky;\n  z-index: 1;\n  top: 0;\n}";
 var modules_2e8406c7 = {"root":"Table_module_root__d17cb64f","table":"Table_module_table__d17cb64f","pagination":"Table_module_pagination__d17cb64f","floating":"Table_module_floating__d17cb64f","chips":"Table_module_chips__d17cb64f","filters":"Table_module_filters__d17cb64f"};
-n(css$7,{});
+n(css$9,{});
 
 var INTERSECTION = 1;
 var STEP = 0.1;
@@ -36407,7 +36651,9 @@ var Table = function Table(props) {
     customCells = props.customCells,
     chipsData = props.chipsData,
     filtersData = props.filtersData,
-    paginationData = props.paginationData;
+    paginationData = props.paginationData,
+    loading = props.loading,
+    disabledFilterOptions = props.disabledFilterOptions;
   var ref = React.useRef(null);
   var paginationRef = React.useRef(null);
   var _useState = React.useState(false),
@@ -36425,7 +36671,7 @@ var Table = function Table(props) {
   // for pagination docking using intersection observer
   React.useEffect(function () {
     var tableElem = ref.current;
-    if (tableElem) {
+    if (tableElem && !loading) {
       var lastRow = tableElem.querySelector('[data-elem="table-body"] [data-elem="table-row"]:last-child');
       if (lastRow) {
         var lastRowHeight = parseInt(getComputedStyle(lastRow).height.slice(0, -2), 10);
@@ -36447,21 +36693,21 @@ var Table = function Table(props) {
         observer.observe(lastRow);
       }
     }
-  }, [tableData]);
+  }, [tableData, loading]);
 
   // for dynamically resizing table vertically acc to provided addons
   React.useEffect(function () {
     var tableElem = ref.current;
-    if (tableElem) {
+    if (tableElem && !loading) {
       var totalAddons = [chipsData, filtersData].filter(Boolean).length;
       tableElem.style.height = "calc(100% - ".concat(totalAddons * 3, "rem)");
     }
-  }, [chipsData, filtersData]);
+  }, [chipsData, filtersData, loading]);
 
   // setting body and header min-width to allow horizontal sticky column beyond viewport width
   React.useEffect(function () {
     var tableElem = ref.current;
-    if (tableElem) {
+    if (tableElem && !loading) {
       var tableHeaderElem = tableElem.querySelector('[data-elem="table-header"]');
       var tableBodyElem = tableElem.querySelector('[data-elem="table-body"]');
       if (tableHeaderElem && tableBodyElem) {
@@ -36473,7 +36719,7 @@ var Table = function Table(props) {
         tableBodyElem.style.minWidth = "".concat(minWidth, "rem");
       }
     }
-  }, [hiddenColumns, headerData]);
+  }, [hiddenColumns, headerData, loading]);
 
   // set the hidden columns state
   React.useEffect(function () {
@@ -36481,15 +36727,20 @@ var Table = function Table(props) {
   }, [headerData]);
   return /*#__PURE__*/jsxRuntime.jsxs("div", {
     className: classes(modules_2e8406c7.root, className),
-    children: [chipsData != null && ((chipsData === null || chipsData === void 0 ? void 0 : (_chipsData$chips = chipsData.chips) === null || _chipsData$chips === void 0 ? void 0 : _chipsData$chips.length) > 0 || (chipsData === null || chipsData === void 0 ? void 0 : chipsData.showBack) != null) && /*#__PURE__*/jsxRuntime.jsx(TableChips, _objectSpread2({
+    children: [chipsData != null && ((chipsData === null || chipsData === void 0 ? void 0 : (_chipsData$chips = chipsData.chips) === null || _chipsData$chips === void 0 ? void 0 : _chipsData$chips.length) > 0 || (chipsData === null || chipsData === void 0 ? void 0 : chipsData.showBack) != null) && /*#__PURE__*/jsxRuntime.jsx(TableChips, _objectSpread2(_objectSpread2({
       className: modules_2e8406c7.chips
-    }, chipsData)), filtersData != null && /*#__PURE__*/jsxRuntime.jsx(TableFilters, _objectSpread2({
+    }, chipsData), {}, {
+      loading: loading
+    })), filtersData != null && /*#__PURE__*/jsxRuntime.jsx(TableFilters, _objectSpread2(_objectSpread2({
       className: modules_2e8406c7.filters
     }, _objectSpread2(_objectSpread2({}, filtersData), {}, {
+      disabledFilterOptions: disabledFilterOptions,
       headerData: headerData,
       hiddenColumns: hiddenColumns,
       setHiddenColumns: setHiddenColumns
-    }))), /*#__PURE__*/jsxRuntime.jsx(BaseTable, {
+    })), {}, {
+      loading: loading
+    })), /*#__PURE__*/jsxRuntime.jsx(BaseTable, {
       ref: ref,
       headerData: visibileColumns,
       tableData: tableData,
@@ -36497,8 +36748,9 @@ var Table = function Table(props) {
       activeData: activeData,
       setActiveData: setActiveData,
       customCells: customCells,
-      className: modules_2e8406c7.table
-    }), paginationData != null && /*#__PURE__*/jsxRuntime.jsx(Pagination, _objectSpread2(_objectSpread2({
+      className: modules_2e8406c7.table,
+      loading: loading
+    }), paginationData != null && !loading && /*#__PURE__*/jsxRuntime.jsx(Pagination, _objectSpread2(_objectSpread2({
       className: classes(modules_2e8406c7.pagination, floating ? modules_2e8406c7.floating : ''),
       ref: paginationRef
     }, paginationData), {}, {
@@ -36527,7 +36779,14 @@ Table.propTypes = {
   }),
   chipsData: propTypes$1.exports.shape(_objectSpread2({}, TableChips.propTypes)),
   filtersData: propTypes$1.exports.shape(_objectSpread2({}, TableFilters.propTypes)),
-  paginationData: propTypes$1.exports.shape(_objectSpread2({}, Pagination.propTypes))
+  paginationData: propTypes$1.exports.shape(_objectSpread2({}, Pagination.propTypes)),
+  loading: propTypes$1.exports.bool,
+  disabledFilterOptions: propTypes$1.exports.shape({
+    filterButton: propTypes$1.exports.bool,
+    refresh: propTypes$1.exports.bool,
+    columnFilter: propTypes$1.exports.bool,
+    settings: propTypes$1.exports.bool
+  })
 };
 Table.defaultProps = {
   className: '',
@@ -36542,12 +36801,19 @@ Table.defaultProps = {
   },
   chipsData: null,
   filtersData: null,
-  paginationData: null
+  paginationData: null,
+  loading: null,
+  disabledFilterOptions: {
+    filterButton: false,
+    refresh: false,
+    columnFilter: false,
+    settings: false
+  }
 };
 
-var css$6 = ".Tabs_module_root__df3be7a0 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n\n.Tabs_module_tabView__df3be7a0, .Tabs_module_tabViewSelected__df3be7a0 {\n  cursor: pointer;\n  margin-right: 0.25rem;\n  padding: 0.5rem 0rem 0.5rem 0.5rem;\n  text-align: left;\n  font-size: 1rem;\n  font-weight: 500;\n  color: var(--dark-grey);\n}\n.Tabs_module_tabView__df3be7a0 .Tabs_module_content__df3be7a0, .Tabs_module_tabViewSelected__df3be7a0 .Tabs_module_content__df3be7a0 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n}\n.Tabs_module_tabView__df3be7a0 .Tabs_module_content__df3be7a0 .Tabs_module_left__df3be7a0, .Tabs_module_tabViewSelected__df3be7a0 .Tabs_module_content__df3be7a0 .Tabs_module_left__df3be7a0 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.Tabs_module_tabView__df3be7a0 .Tabs_module_content__df3be7a0 .Tabs_module_left__df3be7a0 .Tabs_module_iconContainer__df3be7a0, .Tabs_module_tabViewSelected__df3be7a0 .Tabs_module_content__df3be7a0 .Tabs_module_left__df3be7a0 .Tabs_module_iconContainer__df3be7a0 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.Tabs_module_tabView__df3be7a0 .Tabs_module_content__df3be7a0 .Tabs_module_left__df3be7a0 .Tabs_module_iconContainer__df3be7a0 .Tabs_module_icon__df3be7a0, .Tabs_module_tabViewSelected__df3be7a0 .Tabs_module_content__df3be7a0 .Tabs_module_left__df3be7a0 .Tabs_module_iconContainer__df3be7a0 .Tabs_module_icon__df3be7a0 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--dark-grey);\n}\n.Tabs_module_tabView__df3be7a0 .Tabs_module_content__df3be7a0 .Tabs_module_right__df3be7a0, .Tabs_module_tabViewSelected__df3be7a0 .Tabs_module_content__df3be7a0 .Tabs_module_right__df3be7a0 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.Tabs_module_tabView__df3be7a0 .Tabs_module_content__df3be7a0 .Tabs_module_right__df3be7a0 .Tabs_module_saperator__df3be7a0, .Tabs_module_tabViewSelected__df3be7a0 .Tabs_module_content__df3be7a0 .Tabs_module_right__df3be7a0 .Tabs_module_saperator__df3be7a0 {\n  border-right: 0.031rem solid var(--grey3);\n  border-radius: 0.625rem;\n  height: 1.438rem;\n  margin: 0rem 0rem 0rem 1rem;\n}\n.Tabs_module_tabView__df3be7a0 .Tabs_module_content__df3be7a0 .Tabs_module_right__df3be7a0 .Tabs_module_iconContainer__df3be7a0, .Tabs_module_tabViewSelected__df3be7a0 .Tabs_module_content__df3be7a0 .Tabs_module_right__df3be7a0 .Tabs_module_iconContainer__df3be7a0 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.Tabs_module_tabView__df3be7a0 .Tabs_module_content__df3be7a0 .Tabs_module_right__df3be7a0 .Tabs_module_iconContainer__df3be7a0 .Tabs_module_icon__df3be7a0, .Tabs_module_tabViewSelected__df3be7a0 .Tabs_module_content__df3be7a0 .Tabs_module_right__df3be7a0 .Tabs_module_iconContainer__df3be7a0 .Tabs_module_icon__df3be7a0 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--dark-grey);\n}\n.Tabs_module_tabView__df3be7a0:hover, .Tabs_module_tabViewSelected__df3be7a0:hover {\n  background-color: var(--background);\n  border-radius: 0.25rem;\n  color: var(--highlight);\n}\n.Tabs_module_tabView__df3be7a0:hover .Tabs_module_content__df3be7a0 .Tabs_module_left__df3be7a0 .Tabs_module_iconContainer__df3be7a0 .Tabs_module_icon__df3be7a0, .Tabs_module_tabViewSelected__df3be7a0:hover .Tabs_module_content__df3be7a0 .Tabs_module_left__df3be7a0 .Tabs_module_iconContainer__df3be7a0 .Tabs_module_icon__df3be7a0 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--highlight);\n}\n.Tabs_module_tabView__df3be7a0:hover .Tabs_module_content__df3be7a0 .Tabs_module_right__df3be7a0 .Tabs_module_saperator__df3be7a0, .Tabs_module_tabViewSelected__df3be7a0:hover .Tabs_module_content__df3be7a0 .Tabs_module_right__df3be7a0 .Tabs_module_saperator__df3be7a0 {\n  border-right: 0.031rem solid var(--highlight);\n  border-radius: 0.625rem;\n  height: 1.438rem;\n  margin: 0rem 0rem 0rem 1rem;\n}\n.Tabs_module_tabView__df3be7a0:hover .Tabs_module_content__df3be7a0 .Tabs_module_right__df3be7a0 .Tabs_module_iconContainer__df3be7a0 .Tabs_module_icon__df3be7a0, .Tabs_module_tabViewSelected__df3be7a0:hover .Tabs_module_content__df3be7a0 .Tabs_module_right__df3be7a0 .Tabs_module_iconContainer__df3be7a0 .Tabs_module_icon__df3be7a0 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--highlight);\n}\n\n.Tabs_module_tabViewSelected__df3be7a0 {\n  color: var(--highlight);\n  border-bottom: 0.125rem solid var(--highlight);\n}\n.Tabs_module_tabViewSelected__df3be7a0 .Tabs_module_content__df3be7a0 .Tabs_module_left__df3be7a0 .Tabs_module_iconContainer__df3be7a0 .Tabs_module_icon__df3be7a0 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--highlight);\n}\n.Tabs_module_tabViewSelected__df3be7a0 .Tabs_module_content__df3be7a0 .Tabs_module_right__df3be7a0 .Tabs_module_saperator__df3be7a0 {\n  border-right: 0.031rem solid var(--highlight);\n  border-radius: 0.625rem;\n  height: 1.438rem;\n  margin: 0rem 0rem 0rem 1rem;\n}\n.Tabs_module_tabViewSelected__df3be7a0 .Tabs_module_content__df3be7a0 .Tabs_module_right__df3be7a0 .Tabs_module_iconContainer__df3be7a0 .Tabs_module_icon__df3be7a0 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--highlight);\n}";
+var css$8 = ".Tabs_module_root__df3be7a0 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n\n.Tabs_module_tabView__df3be7a0, .Tabs_module_tabViewSelected__df3be7a0 {\n  cursor: pointer;\n  margin-right: 0.25rem;\n  padding: 0.5rem 0rem 0.5rem 0.5rem;\n  text-align: left;\n  font-size: 1rem;\n  font-weight: 500;\n  color: var(--dark-grey);\n}\n.Tabs_module_tabView__df3be7a0 .Tabs_module_content__df3be7a0, .Tabs_module_tabViewSelected__df3be7a0 .Tabs_module_content__df3be7a0 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n}\n.Tabs_module_tabView__df3be7a0 .Tabs_module_content__df3be7a0 .Tabs_module_left__df3be7a0, .Tabs_module_tabViewSelected__df3be7a0 .Tabs_module_content__df3be7a0 .Tabs_module_left__df3be7a0 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.Tabs_module_tabView__df3be7a0 .Tabs_module_content__df3be7a0 .Tabs_module_left__df3be7a0 .Tabs_module_iconContainer__df3be7a0, .Tabs_module_tabViewSelected__df3be7a0 .Tabs_module_content__df3be7a0 .Tabs_module_left__df3be7a0 .Tabs_module_iconContainer__df3be7a0 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.Tabs_module_tabView__df3be7a0 .Tabs_module_content__df3be7a0 .Tabs_module_left__df3be7a0 .Tabs_module_iconContainer__df3be7a0 .Tabs_module_icon__df3be7a0, .Tabs_module_tabViewSelected__df3be7a0 .Tabs_module_content__df3be7a0 .Tabs_module_left__df3be7a0 .Tabs_module_iconContainer__df3be7a0 .Tabs_module_icon__df3be7a0 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--dark-grey);\n}\n.Tabs_module_tabView__df3be7a0 .Tabs_module_content__df3be7a0 .Tabs_module_right__df3be7a0, .Tabs_module_tabViewSelected__df3be7a0 .Tabs_module_content__df3be7a0 .Tabs_module_right__df3be7a0 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.Tabs_module_tabView__df3be7a0 .Tabs_module_content__df3be7a0 .Tabs_module_right__df3be7a0 .Tabs_module_saperator__df3be7a0, .Tabs_module_tabViewSelected__df3be7a0 .Tabs_module_content__df3be7a0 .Tabs_module_right__df3be7a0 .Tabs_module_saperator__df3be7a0 {\n  border-right: 0.031rem solid var(--grey3);\n  border-radius: 0.625rem;\n  height: 1.438rem;\n  margin: 0rem 0rem 0rem 1rem;\n}\n.Tabs_module_tabView__df3be7a0 .Tabs_module_content__df3be7a0 .Tabs_module_right__df3be7a0 .Tabs_module_iconContainer__df3be7a0, .Tabs_module_tabViewSelected__df3be7a0 .Tabs_module_content__df3be7a0 .Tabs_module_right__df3be7a0 .Tabs_module_iconContainer__df3be7a0 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.Tabs_module_tabView__df3be7a0 .Tabs_module_content__df3be7a0 .Tabs_module_right__df3be7a0 .Tabs_module_iconContainer__df3be7a0 .Tabs_module_icon__df3be7a0, .Tabs_module_tabViewSelected__df3be7a0 .Tabs_module_content__df3be7a0 .Tabs_module_right__df3be7a0 .Tabs_module_iconContainer__df3be7a0 .Tabs_module_icon__df3be7a0 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--dark-grey);\n}\n.Tabs_module_tabView__df3be7a0:hover, .Tabs_module_tabViewSelected__df3be7a0:hover {\n  background-color: var(--background);\n  border-radius: 0.25rem;\n  color: var(--highlight);\n}\n.Tabs_module_tabView__df3be7a0:hover .Tabs_module_content__df3be7a0 .Tabs_module_left__df3be7a0 .Tabs_module_iconContainer__df3be7a0 .Tabs_module_icon__df3be7a0, .Tabs_module_tabViewSelected__df3be7a0:hover .Tabs_module_content__df3be7a0 .Tabs_module_left__df3be7a0 .Tabs_module_iconContainer__df3be7a0 .Tabs_module_icon__df3be7a0 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--highlight);\n}\n.Tabs_module_tabView__df3be7a0:hover .Tabs_module_content__df3be7a0 .Tabs_module_right__df3be7a0 .Tabs_module_saperator__df3be7a0, .Tabs_module_tabViewSelected__df3be7a0:hover .Tabs_module_content__df3be7a0 .Tabs_module_right__df3be7a0 .Tabs_module_saperator__df3be7a0 {\n  border-right: 0.031rem solid var(--highlight);\n  border-radius: 0.625rem;\n  height: 1.438rem;\n  margin: 0rem 0rem 0rem 1rem;\n}\n.Tabs_module_tabView__df3be7a0:hover .Tabs_module_content__df3be7a0 .Tabs_module_right__df3be7a0 .Tabs_module_iconContainer__df3be7a0 .Tabs_module_icon__df3be7a0, .Tabs_module_tabViewSelected__df3be7a0:hover .Tabs_module_content__df3be7a0 .Tabs_module_right__df3be7a0 .Tabs_module_iconContainer__df3be7a0 .Tabs_module_icon__df3be7a0 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--highlight);\n}\n\n.Tabs_module_tabViewSelected__df3be7a0 {\n  color: var(--highlight);\n  border-bottom: 0.125rem solid var(--highlight);\n}\n.Tabs_module_tabViewSelected__df3be7a0 .Tabs_module_content__df3be7a0 .Tabs_module_left__df3be7a0 .Tabs_module_iconContainer__df3be7a0 .Tabs_module_icon__df3be7a0 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--highlight);\n}\n.Tabs_module_tabViewSelected__df3be7a0 .Tabs_module_content__df3be7a0 .Tabs_module_right__df3be7a0 .Tabs_module_saperator__df3be7a0 {\n  border-right: 0.031rem solid var(--highlight);\n  border-radius: 0.625rem;\n  height: 1.438rem;\n  margin: 0rem 0rem 0rem 1rem;\n}\n.Tabs_module_tabViewSelected__df3be7a0 .Tabs_module_content__df3be7a0 .Tabs_module_right__df3be7a0 .Tabs_module_iconContainer__df3be7a0 .Tabs_module_icon__df3be7a0 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--highlight);\n}";
 var modules_78ab5066 = {"root":"Tabs_module_root__df3be7a0","tab-view":"Tabs_module_tabView__df3be7a0","tab-view-selected":"Tabs_module_tabViewSelected__df3be7a0","content":"Tabs_module_content__df3be7a0","left":"Tabs_module_left__df3be7a0","icon-container":"Tabs_module_iconContainer__df3be7a0","icon":"Tabs_module_icon__df3be7a0","right":"Tabs_module_right__df3be7a0","saperator":"Tabs_module_saperator__df3be7a0"};
-n(css$6,{});
+n(css$8,{});
 
 var Tabs = function Tabs(props) {
   var tabs = props.tabs,
@@ -36638,9 +36904,9 @@ Tabs.defaultProps = {
   setSelectedTab: 'None'
 };
 
-var css$5 = ".Tooltip_module_root__c909817e {\n  display: inline-block;\n  position: relative;\n}\n.Tooltip_module_tooltip__c909817e {\n  text-align: center;\n  position: fixed;\n  border-radius: 0.25rem;\n  min-width: auto;\n  max-width: 12rem;\n  padding: 0.375rem;\n  font-size: 0.875rem;\n  font-family: sans-serif;\n  line-height: 1;\n}\n.Tooltip_module_tooltip__c909817e.Tooltip_module_light__c909817e {\n  color: var(--black);\n  background: var(--grey7);\n  border-color: var(--black);\n}\n.Tooltip_module_tooltip__c909817e.Tooltip_module_dark__c909817e {\n  color: var(--white);\n  background: var(--black);\n  border-color: var(--white);\n}\n.Tooltip_module_tooltip__c909817e::before {\n  content: \"\";\n  border: solid transparent;\n  height: 0;\n  width: 0;\n  position: absolute;\n  pointer-events: none;\n  border-width: 0.375rem;\n}\n.Tooltip_module_tooltip__c909817e.Tooltip_module_top__c909817e::before {\n  top: 100%;\n  left: 50%;\n  transform: translate(-50%, 0%);\n  border-top-style: solid;\n}\n.Tooltip_module_tooltip__c909817e.Tooltip_module_top__c909817e.Tooltip_module_light__c909817e::before {\n  border-top-color: var(--grey7);\n}\n.Tooltip_module_tooltip__c909817e.Tooltip_module_top__c909817e.Tooltip_module_dark__c909817e::before {\n  border-top-color: var(--black);\n}\n.Tooltip_module_tooltip__c909817e.Tooltip_module_bottom__c909817e::before {\n  top: 0%;\n  left: 50%;\n  transform: translate(-50%, -100%);\n  border-bottom-style: solid;\n}\n.Tooltip_module_tooltip__c909817e.Tooltip_module_bottom__c909817e.Tooltip_module_light__c909817e::before {\n  border-bottom-color: var(--grey7);\n}\n.Tooltip_module_tooltip__c909817e.Tooltip_module_bottom__c909817e.Tooltip_module_dark__c909817e::before {\n  border-bottom-color: var(--black);\n}\n.Tooltip_module_tooltip__c909817e.Tooltip_module_left__c909817e::before {\n  top: 50%;\n  left: 100%;\n  transform: translate(0%, -50%);\n  border-left-style: solid;\n}\n.Tooltip_module_tooltip__c909817e.Tooltip_module_left__c909817e.Tooltip_module_light__c909817e::before {\n  border-left-color: var(--grey7);\n}\n.Tooltip_module_tooltip__c909817e.Tooltip_module_left__c909817e.Tooltip_module_dark__c909817e::before {\n  border-left-color: var(--black);\n}\n.Tooltip_module_tooltip__c909817e.Tooltip_module_right__c909817e::before {\n  top: 50%;\n  left: 0%;\n  transform: translate(-100%, -50%);\n  border-right-style: solid;\n}\n.Tooltip_module_tooltip__c909817e.Tooltip_module_right__c909817e.Tooltip_module_light__c909817e::before {\n  border-right-color: var(--grey7);\n}\n.Tooltip_module_tooltip__c909817e.Tooltip_module_right__c909817e.Tooltip_module_dark__c909817e::before {\n  border-right-color: var(--black);\n}";
+var css$7 = ".Tooltip_module_root__c909817e {\n  display: inline-block;\n  position: relative;\n}\n.Tooltip_module_tooltip__c909817e {\n  text-align: center;\n  position: fixed;\n  border-radius: 0.25rem;\n  min-width: auto;\n  max-width: 12rem;\n  padding: 0.375rem;\n  font-size: 0.875rem;\n  font-family: sans-serif;\n  line-height: 1;\n}\n.Tooltip_module_tooltip__c909817e.Tooltip_module_light__c909817e {\n  color: var(--black);\n  background: var(--grey7);\n  border-color: var(--black);\n}\n.Tooltip_module_tooltip__c909817e.Tooltip_module_dark__c909817e {\n  color: var(--white);\n  background: var(--black);\n  border-color: var(--white);\n}\n.Tooltip_module_tooltip__c909817e::before {\n  content: \"\";\n  border: solid transparent;\n  height: 0;\n  width: 0;\n  position: absolute;\n  pointer-events: none;\n  border-width: 0.375rem;\n}\n.Tooltip_module_tooltip__c909817e.Tooltip_module_top__c909817e::before {\n  top: 100%;\n  left: 50%;\n  transform: translate(-50%, 0%);\n  border-top-style: solid;\n}\n.Tooltip_module_tooltip__c909817e.Tooltip_module_top__c909817e.Tooltip_module_light__c909817e::before {\n  border-top-color: var(--grey7);\n}\n.Tooltip_module_tooltip__c909817e.Tooltip_module_top__c909817e.Tooltip_module_dark__c909817e::before {\n  border-top-color: var(--black);\n}\n.Tooltip_module_tooltip__c909817e.Tooltip_module_bottom__c909817e::before {\n  top: 0%;\n  left: 50%;\n  transform: translate(-50%, -100%);\n  border-bottom-style: solid;\n}\n.Tooltip_module_tooltip__c909817e.Tooltip_module_bottom__c909817e.Tooltip_module_light__c909817e::before {\n  border-bottom-color: var(--grey7);\n}\n.Tooltip_module_tooltip__c909817e.Tooltip_module_bottom__c909817e.Tooltip_module_dark__c909817e::before {\n  border-bottom-color: var(--black);\n}\n.Tooltip_module_tooltip__c909817e.Tooltip_module_left__c909817e::before {\n  top: 50%;\n  left: 100%;\n  transform: translate(0%, -50%);\n  border-left-style: solid;\n}\n.Tooltip_module_tooltip__c909817e.Tooltip_module_left__c909817e.Tooltip_module_light__c909817e::before {\n  border-left-color: var(--grey7);\n}\n.Tooltip_module_tooltip__c909817e.Tooltip_module_left__c909817e.Tooltip_module_dark__c909817e::before {\n  border-left-color: var(--black);\n}\n.Tooltip_module_tooltip__c909817e.Tooltip_module_right__c909817e::before {\n  top: 50%;\n  left: 0%;\n  transform: translate(-100%, -50%);\n  border-right-style: solid;\n}\n.Tooltip_module_tooltip__c909817e.Tooltip_module_right__c909817e.Tooltip_module_light__c909817e::before {\n  border-right-color: var(--grey7);\n}\n.Tooltip_module_tooltip__c909817e.Tooltip_module_right__c909817e.Tooltip_module_dark__c909817e::before {\n  border-right-color: var(--black);\n}";
 var modules_e4619b04 = {"root":"Tooltip_module_root__c909817e","tooltip":"Tooltip_module_tooltip__c909817e","light":"Tooltip_module_light__c909817e","dark":"Tooltip_module_dark__c909817e","top":"Tooltip_module_top__c909817e","bottom":"Tooltip_module_bottom__c909817e","left":"Tooltip_module_left__c909817e","right":"Tooltip_module_right__c909817e"};
-n(css$5,{});
+n(css$7,{});
 
 var getPositionStyles = function getPositionStyles(_ref) {
   var _anchor$current$getBo, _anchor$current, _anchor$current$getBo2, _anchor$current$getBo3, _anchor$current$getBo4, _anchor$current2, _anchor$current2$getB, _anchor$current2$getB2, _anchor$current$getBo5, _anchor$current3, _anchor$current3$getB, _anchor$current3$getB2, _anchor$current$getBo6, _anchor$current4, _anchor$current4$getB, _anchor$current4$getB2, _anchor$current$getBo7, _anchor$current5, _anchor$current5$getB, _anchor$current5$getB2, _anchor$current$getBo8, _anchor$current6, _anchor$current6$getB, _anchor$current6$getB2, _anchor$current$getBo9, _anchor$current7, _anchor$current7$getB, _anchor$current7$getB2, _anchor$current$getBo10, _anchor$current8, _anchor$current8$getB, _anchor$current8$getB2, _anchor$current$getBo11, _anchor$current9, _anchor$current9$getB, _anchor$current9$getB2, _anchor$current$getBo12, _anchor$current10, _anchor$current10$get, _anchor$current10$get2, _anchor$current$getBo13, _anchor$current11, _anchor$current11$get, _anchor$current11$get2, _anchor$current$getBo14, _anchor$current12, _anchor$current12$get, _anchor$current12$get2;
@@ -36683,7 +36949,8 @@ var Tooltip = function Tooltip(props) {
   var children = props.children,
     position = props.position,
     content = props.content,
-    variant = props.variant;
+    variant = props.variant,
+    className = props.className;
   var timeoutRef = React.useRef(null);
   var tooltipRef = React.useRef(null);
   var _useState = React.useState(false),
@@ -36712,7 +36979,7 @@ var Tooltip = function Tooltip(props) {
       anchorEl: tooltipRef,
       wrapperId: "tooltip-popper",
       children: /*#__PURE__*/jsxRuntime.jsx("div", {
-        className: classes(modules_e4619b04.tooltip, modules_e4619b04[position], modules_e4619b04[variant]),
+        className: classes(modules_e4619b04.tooltip, modules_e4619b04[position], modules_e4619b04[variant], className),
         style: _objectSpread2({}, getPositionStyles({
           position: position,
           anchor: tooltipRef,
@@ -36726,17 +36993,19 @@ var Tooltip = function Tooltip(props) {
 Tooltip.propTypes = {
   variant: propTypes$1.exports.oneOf(['light', 'dark']),
   content: propTypes$1.exports.string,
-  position: propTypes$1.exports.oneOf(['right', 'top', 'bottom', 'left'])
+  position: propTypes$1.exports.oneOf(['right', 'top', 'bottom', 'left']),
+  className: propTypes$1.exports.string
 };
 Tooltip.defaultProps = {
   variant: 'light',
   content: 'Tooltip Info',
-  position: 'top'
+  position: 'top',
+  className: ''
 };
 
-var css$4 = ".BaseSidePanel_module_root__c7817916 {\n  max-height: 100%;\n  height: 100%;\n  display: flex;\n  width: 30%;\n  flex-direction: column;\n  top: 0;\n  background: #ffffff;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.12);\n  overflow-x: hidden;\n  transition: 0.5s;\n}\n.BaseSidePanel_module_root__c7817916.BaseSidePanel_module_close__c7817916 {\n  width: 0rem;\n}\n.BaseSidePanel_module_root__c7817916 .BaseSidePanel_module_body__c7817916 {\n  flex: 1;\n  overflow-y: auto;\n}";
+var css$6 = ".BaseSidePanel_module_root__c7817916 {\n  max-height: 100%;\n  height: 100%;\n  display: flex;\n  width: 30%;\n  flex-direction: column;\n  top: 0;\n  background: #ffffff;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.12);\n  overflow-x: hidden;\n  transition: 0.5s;\n}\n.BaseSidePanel_module_root__c7817916.BaseSidePanel_module_close__c7817916 {\n  width: 0rem;\n}\n.BaseSidePanel_module_root__c7817916 .BaseSidePanel_module_body__c7817916 {\n  flex: 1;\n  overflow-y: auto;\n}";
 var modules_c7321921 = {"root":"BaseSidePanel_module_root__c7817916","close":"BaseSidePanel_module_close__c7817916","body":"BaseSidePanel_module_body__c7817916"};
-n(css$4,{});
+n(css$6,{});
 
 var BaseSidePanel = function BaseSidePanel(props) {
   var className = props.className,
@@ -47360,7 +47629,7 @@ var mathMin$4 = Math.min;
 var mathMax$4 = Math.max;
 var mathSin$3 = Math.sin;
 var mathCos$3 = Math.cos;
-var PI2$5 = Math.PI * 2;
+var PI2$6 = Math.PI * 2;
 var start = create$1();
 var end = create$1();
 var extremity = create$1();
@@ -47416,7 +47685,7 @@ function fromArc(x, y, rx, ry, startAngle, endAngle, anticlockwise, min, max) {
     var vec2Min = min$1;
     var vec2Max = max$1;
     var diff = Math.abs(startAngle - endAngle);
-    if (diff % PI2$5 < 1e-4 && diff > 1e-4) {
+    if (diff % PI2$6 < 1e-4 && diff > 1e-4) {
         min[0] = x - rx;
         min[1] = y - ry;
         max[0] = x + rx;
@@ -47429,19 +47698,19 @@ function fromArc(x, y, rx, ry, startAngle, endAngle, anticlockwise, min, max) {
     end[1] = mathSin$3(endAngle) * ry + y;
     vec2Min(min, start, end);
     vec2Max(max, start, end);
-    startAngle = startAngle % (PI2$5);
+    startAngle = startAngle % (PI2$6);
     if (startAngle < 0) {
-        startAngle = startAngle + PI2$5;
+        startAngle = startAngle + PI2$6;
     }
-    endAngle = endAngle % (PI2$5);
+    endAngle = endAngle % (PI2$6);
     if (endAngle < 0) {
-        endAngle = endAngle + PI2$5;
+        endAngle = endAngle + PI2$6;
     }
     if (startAngle > endAngle && !anticlockwise) {
-        endAngle += PI2$5;
+        endAngle += PI2$6;
     }
     else if (startAngle < endAngle && anticlockwise) {
-        startAngle += PI2$5;
+        startAngle += PI2$6;
     }
     if (anticlockwise) {
         var tmp = endAngle;
@@ -47479,7 +47748,7 @@ var mathCos$2 = Math.cos;
 var mathSin$2 = Math.sin;
 var mathAbs$1 = Math.abs;
 var PI$4 = Math.PI;
-var PI2$4 = PI$4 * 2;
+var PI2$5 = PI$4 * 2;
 var hasTypedArray = typeof Float32Array !== 'undefined';
 var tmpAngles = [];
 function modPI2(radian) {
@@ -47489,22 +47758,22 @@ function modPI2(radian) {
 function normalizeArcAngles(angles, anticlockwise) {
     var newStartAngle = modPI2(angles[0]);
     if (newStartAngle < 0) {
-        newStartAngle += PI2$4;
+        newStartAngle += PI2$5;
     }
     var delta = newStartAngle - angles[0];
     var newEndAngle = angles[1];
     newEndAngle += delta;
-    if (!anticlockwise && newEndAngle - newStartAngle >= PI2$4) {
-        newEndAngle = newStartAngle + PI2$4;
+    if (!anticlockwise && newEndAngle - newStartAngle >= PI2$5) {
+        newEndAngle = newStartAngle + PI2$5;
     }
-    else if (anticlockwise && newStartAngle - newEndAngle >= PI2$4) {
-        newEndAngle = newStartAngle - PI2$4;
+    else if (anticlockwise && newStartAngle - newEndAngle >= PI2$5) {
+        newEndAngle = newStartAngle - PI2$5;
     }
     else if (!anticlockwise && newStartAngle > newEndAngle) {
-        newEndAngle = newStartAngle + (PI2$4 - modPI2(newStartAngle - newEndAngle));
+        newEndAngle = newStartAngle + (PI2$5 - modPI2(newStartAngle - newEndAngle));
     }
     else if (anticlockwise && newStartAngle < newEndAngle) {
-        newEndAngle = newStartAngle - (PI2$4 - modPI2(newEndAngle - newStartAngle));
+        newEndAngle = newStartAngle - (PI2$5 - modPI2(newEndAngle - newStartAngle));
     }
     angles[0] = newStartAngle;
     angles[1] = newEndAngle;
@@ -47894,7 +48163,7 @@ var PathProxy = (function () {
                         x0 = mathCos$2(startAngle) * rx + cx;
                         y0 = mathSin$2(startAngle) * ry + cy;
                     }
-                    l = mathMax$3(rx, ry) * mathMin$3(PI2$4, Math.abs(delta));
+                    l = mathMax$3(rx, ry) * mathMin$3(PI2$5, Math.abs(delta));
                     xi = mathCos$2(endAngle) * rx + cx;
                     yi = mathSin$2(endAngle) * ry + cy;
                     break;
@@ -48207,16 +48476,16 @@ function containStroke$2(x0, y0, x1, y1, x2, y2, lineWidth, x, y) {
     return d <= _l / 2;
 }
 
-var PI2$3 = Math.PI * 2;
+var PI2$4 = Math.PI * 2;
 function normalizeRadian(angle) {
-    angle %= PI2$3;
+    angle %= PI2$4;
     if (angle < 0) {
-        angle += PI2$3;
+        angle += PI2$4;
     }
     return angle;
 }
 
-var PI2$2 = Math.PI * 2;
+var PI2$3 = Math.PI * 2;
 function containStroke$1(cx, cy, r, startAngle, endAngle, anticlockwise, lineWidth, x, y) {
     if (lineWidth === 0) {
         return false;
@@ -48228,7 +48497,7 @@ function containStroke$1(cx, cy, r, startAngle, endAngle, anticlockwise, lineWid
     if ((d - _l > r) || (d + _l < r)) {
         return false;
     }
-    if (Math.abs(startAngle - endAngle) % PI2$2 < 1e-4) {
+    if (Math.abs(startAngle - endAngle) % PI2$3 < 1e-4) {
         return true;
     }
     if (anticlockwise) {
@@ -48241,14 +48510,14 @@ function containStroke$1(cx, cy, r, startAngle, endAngle, anticlockwise, lineWid
         endAngle = normalizeRadian(endAngle);
     }
     if (startAngle > endAngle) {
-        endAngle += PI2$2;
+        endAngle += PI2$3;
     }
     var angle = Math.atan2(y, x);
     if (angle < 0) {
-        angle += PI2$2;
+        angle += PI2$3;
     }
     return (angle >= startAngle && angle <= endAngle)
-        || (angle + PI2$2 >= startAngle && angle + PI2$2 <= endAngle);
+        || (angle + PI2$3 >= startAngle && angle + PI2$3 <= endAngle);
 }
 
 function windingLine(x0, y0, x1, y1, x, y) {
@@ -48268,7 +48537,7 @@ function windingLine(x0, y0, x1, y1, x, y) {
 }
 
 var CMD$1 = PathProxy$1.CMD;
-var PI2$1 = Math.PI * 2;
+var PI2$2 = Math.PI * 2;
 var EPSILON$1 = 1e-4;
 function isAroundEqual$1(a, b) {
     return Math.abs(a - b) < EPSILON$1;
@@ -48385,9 +48654,9 @@ function windingArc(cx, cy, r, startAngle, endAngle, anticlockwise, x, y) {
     if (dTheta < 1e-4) {
         return 0;
     }
-    if (dTheta >= PI2$1 - 1e-4) {
+    if (dTheta >= PI2$2 - 1e-4) {
         startAngle = 0;
-        endAngle = PI2$1;
+        endAngle = PI2$2;
         var dir = anticlockwise ? 1 : -1;
         if (x >= roots[0] + cx && x <= roots[1] + cx) {
             return dir;
@@ -48402,8 +48671,8 @@ function windingArc(cx, cy, r, startAngle, endAngle, anticlockwise, x, y) {
         endAngle = tmp_1;
     }
     if (startAngle < 0) {
-        startAngle += PI2$1;
-        endAngle += PI2$1;
+        startAngle += PI2$2;
+        endAngle += PI2$2;
     }
     var w = 0;
     for (var i = 0; i < 2; i++) {
@@ -48412,10 +48681,10 @@ function windingArc(cx, cy, r, startAngle, endAngle, anticlockwise, x, y) {
             var angle = Math.atan2(y, x_);
             var dir = anticlockwise ? 1 : -1;
             if (angle < 0) {
-                angle = PI2$1 + angle;
+                angle = PI2$2 + angle;
             }
             if ((angle >= startAngle && angle <= endAngle)
-                || (angle + PI2$1 >= startAngle && angle + PI2$1 <= endAngle)) {
+                || (angle + PI2$2 >= startAngle && angle + PI2$2 <= endAngle)) {
                 if (angle > Math.PI / 2 && angle < Math.PI * 1.5) {
                     dir = -dir;
                 }
@@ -51038,7 +51307,7 @@ Ellipse.prototype.type = 'ellipse';
 var Ellipse$1 = Ellipse;
 
 var PI$2 = Math.PI;
-var PI2 = PI$2 * 2;
+var PI2$1 = PI$2 * 2;
 var mathSin = Math.sin;
 var mathCos = Math.cos;
 var mathACos = Math.acos;
@@ -51149,12 +51418,12 @@ function buildPath$1(ctx, shape) {
     var cx = shape.cx, cy = shape.cy;
     var clockwise = !!shape.clockwise;
     var arc = mathAbs(endAngle - startAngle);
-    var mod = arc > PI2 && arc % PI2;
+    var mod = arc > PI2$1 && arc % PI2$1;
     mod > e && (arc = mod);
     if (!(radius > e)) {
         ctx.moveTo(cx, cy);
     }
-    else if (arc > PI2 - e) {
+    else if (arc > PI2$1 - e) {
         ctx.moveTo(cx + radius * mathCos(startAngle), cy + radius * mathSin(startAngle));
         ctx.arc(cx, cy, radius, startAngle, endAngle, !clockwise);
         if (innerRadius > e) {
@@ -55259,6 +55528,92 @@ function makeSeriesEncodeForAxisCoordSys(coordDimensions, seriesModel, source) {
 
   encodeItemName.length && (encode.itemName = encodeItemName);
   encodeSeriesName.length && (encode.seriesName = encodeSeriesName);
+  return encode;
+}
+/**
+ * Work for data like [{name: ..., value: ...}, ...].
+ *
+ * @return encode Never be `null/undefined`.
+ */
+
+function makeSeriesEncodeForNameBased(seriesModel, source, dimCount) {
+  var encode = {};
+  var datasetModel = querySeriesUpstreamDatasetModel(seriesModel); // Currently only make default when using dataset, util more reqirements occur.
+
+  if (!datasetModel) {
+    return encode;
+  }
+
+  var sourceFormat = source.sourceFormat;
+  var dimensionsDefine = source.dimensionsDefine;
+  var potentialNameDimIndex;
+
+  if (sourceFormat === SOURCE_FORMAT_OBJECT_ROWS || sourceFormat === SOURCE_FORMAT_KEYED_COLUMNS) {
+    each$3(dimensionsDefine, function (dim, idx) {
+      if ((isObject$2(dim) ? dim.name : dim) === 'name') {
+        potentialNameDimIndex = idx;
+      }
+    });
+  }
+
+  var idxResult = function () {
+    var idxRes0 = {};
+    var idxRes1 = {};
+    var guessRecords = []; // 5 is an experience value.
+
+    for (var i = 0, len = Math.min(5, dimCount); i < len; i++) {
+      var guessResult = doGuessOrdinal(source.data, sourceFormat, source.seriesLayoutBy, dimensionsDefine, source.startIndex, i);
+      guessRecords.push(guessResult);
+      var isPureNumber = guessResult === BE_ORDINAL.Not; // [Strategy of idxRes0]: find the first BE_ORDINAL.Not as the value dim,
+      // and then find a name dim with the priority:
+      // "BE_ORDINAL.Might|BE_ORDINAL.Must" > "other dim" > "the value dim itself".
+
+      if (isPureNumber && idxRes0.v == null && i !== potentialNameDimIndex) {
+        idxRes0.v = i;
+      }
+
+      if (idxRes0.n == null || idxRes0.n === idxRes0.v || !isPureNumber && guessRecords[idxRes0.n] === BE_ORDINAL.Not) {
+        idxRes0.n = i;
+      }
+
+      if (fulfilled(idxRes0) && guessRecords[idxRes0.n] !== BE_ORDINAL.Not) {
+        return idxRes0;
+      } // [Strategy of idxRes1]: if idxRes0 not satisfied (that is, no BE_ORDINAL.Not),
+      // find the first BE_ORDINAL.Might as the value dim,
+      // and then find a name dim with the priority:
+      // "other dim" > "the value dim itself".
+      // That is for backward compat: number-like (e.g., `'3'`, `'55'`) can be
+      // treated as number.
+
+
+      if (!isPureNumber) {
+        if (guessResult === BE_ORDINAL.Might && idxRes1.v == null && i !== potentialNameDimIndex) {
+          idxRes1.v = i;
+        }
+
+        if (idxRes1.n == null || idxRes1.n === idxRes1.v) {
+          idxRes1.n = i;
+        }
+      }
+    }
+
+    function fulfilled(idxResult) {
+      return idxResult.v != null && idxResult.n != null;
+    }
+
+    return fulfilled(idxRes0) ? idxRes0 : fulfilled(idxRes1) ? idxRes1 : null;
+  }();
+
+  if (idxResult) {
+    encode.value = [idxResult.v]; // `potentialNameDimIndex` has highest priority.
+
+    var nameDimIndex = potentialNameDimIndex != null ? potentialNameDimIndex : idxResult.n; // By default, label use itemName in charts.
+    // So we dont set encodeLabel here.
+
+    encode.itemName = [nameDimIndex];
+    encode.seriesName = [nameDimIndex];
+  }
+
   return encode;
 }
 /**
@@ -63641,6 +63996,37 @@ function getVisualFromData(data, key) {
       }
 
   }
+}
+
+// Inlucdes: pieSelect, pieUnSelect, pieToggleSelect, mapSelect, mapUnSelect, mapToggleSelect
+
+function createLegacyDataSelectAction(seriesType, ecRegisterAction) {
+  function getSeriesIndices(ecModel, payload) {
+    var seriesIndices = [];
+    ecModel.eachComponent({
+      mainType: 'series',
+      subType: seriesType,
+      query: payload
+    }, function (seriesModel) {
+      seriesIndices.push(seriesModel.seriesIndex);
+    });
+    return seriesIndices;
+  }
+
+  each$3([[seriesType + 'ToggleSelect', 'toggleSelect'], [seriesType + 'Select', 'select'], [seriesType + 'UnSelect', 'unselect']], function (eventsMap) {
+    ecRegisterAction(eventsMap[0], function (payload, ecModel, api) {
+      payload = extend({}, payload);
+
+      if (process.env.NODE_ENV !== 'production') {
+        deprecateReplaceLog(payload.type, eventsMap[1]);
+      }
+
+      api.dispatchAction(extend(payload, {
+        type: eventsMap[1],
+        seriesIndex: getSeriesIndices(ecModel, payload)
+      }));
+    });
+  });
 }
 
 function handleSeriesLegacySelectEvents(type, eventPostfix, ecIns, ecModel, payload) {
@@ -74087,6 +74473,297 @@ function extendChartView(proto) {
   return View;
 }
 
+PathProxy$1.CMD;
+
+function projectPointToLine(x1, y1, x2, y2, x, y, out, limitToEnds) {
+  var dx = x - x1;
+  var dy = y - y1;
+  var dx1 = x2 - x1;
+  var dy1 = y2 - y1;
+  var lineLen = Math.sqrt(dx1 * dx1 + dy1 * dy1);
+  dx1 /= lineLen;
+  dy1 /= lineLen; // dot product
+
+  var projectedLen = dx * dx1 + dy * dy1;
+  var t = projectedLen / lineLen;
+
+  if (limitToEnds) {
+    t = Math.min(Math.max(t, 0), 1);
+  }
+
+  t *= lineLen;
+  var ox = out[0] = x1 + t * dx1;
+  var oy = out[1] = y1 + t * dy1;
+  return Math.sqrt((ox - x) * (ox - x) + (oy - y) * (oy - y));
+}
+
+
+var pt0 = new Point$1();
+var pt1 = new Point$1();
+var pt2 = new Point$1();
+var dir = new Point$1();
+var dir2 = new Point$1();
+
+var tmpArr = [];
+var tmpProjPoint = new Point$1();
+/**
+ * Reduce the line segment attached to the label to limit the turn angle between two segments.
+ * @param linePoints
+ * @param minTurnAngle Radian of minimum turn angle. 0 - 180
+ */
+
+function limitTurnAngle(linePoints, minTurnAngle) {
+  if (!(minTurnAngle <= 180 && minTurnAngle > 0)) {
+    return;
+  }
+
+  minTurnAngle = minTurnAngle / 180 * Math.PI; // The line points can be
+  //      /pt1----pt2 (label)
+  //     /
+  // pt0/
+
+  pt0.fromArray(linePoints[0]);
+  pt1.fromArray(linePoints[1]);
+  pt2.fromArray(linePoints[2]);
+  Point$1.sub(dir, pt0, pt1);
+  Point$1.sub(dir2, pt2, pt1);
+  var len1 = dir.len();
+  var len2 = dir2.len();
+
+  if (len1 < 1e-3 || len2 < 1e-3) {
+    return;
+  }
+
+  dir.scale(1 / len1);
+  dir2.scale(1 / len2);
+  var angleCos = dir.dot(dir2);
+  var minTurnAngleCos = Math.cos(minTurnAngle);
+
+  if (minTurnAngleCos < angleCos) {
+    // Smaller than minTurnAngle
+    // Calculate project point of pt0 on pt1-pt2
+    var d = projectPointToLine(pt1.x, pt1.y, pt2.x, pt2.y, pt0.x, pt0.y, tmpArr, false);
+    tmpProjPoint.fromArray(tmpArr); // Calculate new projected length with limited minTurnAngle and get the new connect point
+
+    tmpProjPoint.scaleAndAdd(dir2, d / Math.tan(Math.PI - minTurnAngle)); // Limit the new calculated connect point between pt1 and pt2.
+
+    var t = pt2.x !== pt1.x ? (tmpProjPoint.x - pt1.x) / (pt2.x - pt1.x) : (tmpProjPoint.y - pt1.y) / (pt2.y - pt1.y);
+
+    if (isNaN(t)) {
+      return;
+    }
+
+    if (t < 0) {
+      Point$1.copy(tmpProjPoint, pt1);
+    } else if (t > 1) {
+      Point$1.copy(tmpProjPoint, pt2);
+    }
+
+    tmpProjPoint.toArray(linePoints[1]);
+  }
+}
+/**
+ * Limit the angle of line and the surface
+ * @param maxSurfaceAngle Radian of minimum turn angle. 0 - 180. 0 is same direction to normal. 180 is opposite
+ */
+
+function limitSurfaceAngle(linePoints, surfaceNormal, maxSurfaceAngle) {
+  if (!(maxSurfaceAngle <= 180 && maxSurfaceAngle > 0)) {
+    return;
+  }
+
+  maxSurfaceAngle = maxSurfaceAngle / 180 * Math.PI;
+  pt0.fromArray(linePoints[0]);
+  pt1.fromArray(linePoints[1]);
+  pt2.fromArray(linePoints[2]);
+  Point$1.sub(dir, pt1, pt0);
+  Point$1.sub(dir2, pt2, pt1);
+  var len1 = dir.len();
+  var len2 = dir2.len();
+
+  if (len1 < 1e-3 || len2 < 1e-3) {
+    return;
+  }
+
+  dir.scale(1 / len1);
+  dir2.scale(1 / len2);
+  var angleCos = dir.dot(surfaceNormal);
+  var maxSurfaceAngleCos = Math.cos(maxSurfaceAngle);
+
+  if (angleCos < maxSurfaceAngleCos) {
+    // Calculate project point of pt0 on pt1-pt2
+    var d = projectPointToLine(pt1.x, pt1.y, pt2.x, pt2.y, pt0.x, pt0.y, tmpArr, false);
+    tmpProjPoint.fromArray(tmpArr);
+    var HALF_PI = Math.PI / 2;
+    var angle2 = Math.acos(dir2.dot(surfaceNormal));
+    var newAngle = HALF_PI + angle2 - maxSurfaceAngle;
+
+    if (newAngle >= HALF_PI) {
+      // parallel
+      Point$1.copy(tmpProjPoint, pt2);
+    } else {
+      // Calculate new projected length with limited minTurnAngle and get the new connect point
+      tmpProjPoint.scaleAndAdd(dir2, d / Math.tan(Math.PI / 2 - newAngle)); // Limit the new calculated connect point between pt1 and pt2.
+
+      var t = pt2.x !== pt1.x ? (tmpProjPoint.x - pt1.x) / (pt2.x - pt1.x) : (tmpProjPoint.y - pt1.y) / (pt2.y - pt1.y);
+
+      if (isNaN(t)) {
+        return;
+      }
+
+      if (t < 0) {
+        Point$1.copy(tmpProjPoint, pt1);
+      } else if (t > 1) {
+        Point$1.copy(tmpProjPoint, pt2);
+      }
+    }
+
+    tmpProjPoint.toArray(linePoints[1]);
+  }
+}
+
+function setLabelLineState(labelLine, ignore, stateName, stateModel) {
+  var isNormal = stateName === 'normal';
+  var stateObj = isNormal ? labelLine : labelLine.ensureState(stateName); // Make sure display.
+
+  stateObj.ignore = ignore; // Set smooth
+
+  var smooth = stateModel.get('smooth');
+
+  if (smooth && smooth === true) {
+    smooth = 0.3;
+  }
+
+  stateObj.shape = stateObj.shape || {};
+
+  if (smooth > 0) {
+    stateObj.shape.smooth = smooth;
+  }
+
+  var styleObj = stateModel.getModel('lineStyle').getLineStyle();
+  isNormal ? labelLine.useStyle(styleObj) : stateObj.style = styleObj;
+}
+
+function buildLabelLinePath(path, shape) {
+  var smooth = shape.smooth;
+  var points = shape.points;
+
+  if (!points) {
+    return;
+  }
+
+  path.moveTo(points[0][0], points[0][1]);
+
+  if (smooth > 0 && points.length >= 3) {
+    var len1 = dist$1(points[0], points[1]);
+    var len2 = dist$1(points[1], points[2]);
+
+    if (!len1 || !len2) {
+      path.lineTo(points[1][0], points[1][1]);
+      path.lineTo(points[2][0], points[2][1]);
+      return;
+    }
+
+    var moveLen = Math.min(len1, len2) * smooth;
+    var midPoint0 = lerp$1([], points[1], points[0], moveLen / len1);
+    var midPoint2 = lerp$1([], points[1], points[2], moveLen / len2);
+    var midPoint1 = lerp$1([], midPoint0, midPoint2, 0.5);
+    path.bezierCurveTo(midPoint0[0], midPoint0[1], midPoint0[0], midPoint0[1], midPoint1[0], midPoint1[1]);
+    path.bezierCurveTo(midPoint2[0], midPoint2[1], midPoint2[0], midPoint2[1], points[2][0], points[2][1]);
+  } else {
+    for (var i = 1; i < points.length; i++) {
+      path.lineTo(points[i][0], points[i][1]);
+    }
+  }
+}
+/**
+ * Create a label line if necessary and set it's style.
+ */
+
+
+function setLabelLineStyle(targetEl, statesModels, defaultStyle) {
+  var labelLine = targetEl.getTextGuideLine();
+  var label = targetEl.getTextContent();
+
+  if (!label) {
+    // Not show label line if there is no label.
+    if (labelLine) {
+      targetEl.removeTextGuideLine();
+    }
+
+    return;
+  }
+
+  var normalModel = statesModels.normal;
+  var showNormal = normalModel.get('show');
+  var labelIgnoreNormal = label.ignore;
+
+  for (var i = 0; i < DISPLAY_STATES.length; i++) {
+    var stateName = DISPLAY_STATES[i];
+    var stateModel = statesModels[stateName];
+    var isNormal = stateName === 'normal';
+
+    if (stateModel) {
+      var stateShow = stateModel.get('show');
+      var isLabelIgnored = isNormal ? labelIgnoreNormal : retrieve2(label.states[stateName] && label.states[stateName].ignore, labelIgnoreNormal);
+
+      if (isLabelIgnored // Not show when label is not shown in this state.
+      || !retrieve2(stateShow, showNormal) // Use normal state by default if not set.
+      ) {
+          var stateObj = isNormal ? labelLine : labelLine && labelLine.states[stateName];
+
+          if (stateObj) {
+            stateObj.ignore = true;
+          }
+
+          continue;
+        } // Create labelLine if not exists
+
+
+      if (!labelLine) {
+        labelLine = new Polyline$1();
+        targetEl.setTextGuideLine(labelLine); // Reset state of normal because it's new created.
+        // NOTE: NORMAL should always been the first!
+
+        if (!isNormal && (labelIgnoreNormal || !showNormal)) {
+          setLabelLineState(labelLine, true, 'normal', statesModels.normal);
+        } // Use same state proxy.
+
+
+        if (targetEl.stateProxy) {
+          labelLine.stateProxy = targetEl.stateProxy;
+        }
+      }
+
+      setLabelLineState(labelLine, false, stateName, stateModel);
+    }
+  }
+
+  if (labelLine) {
+    defaults(labelLine.style, defaultStyle); // Not fill.
+
+    labelLine.style.fill = null;
+    var showAbove = normalModel.get('showAbove');
+    var labelLineConfig = targetEl.textGuideLineConfig = targetEl.textGuideLineConfig || {};
+    labelLineConfig.showAbove = showAbove || false; // Custom the buildPath.
+
+    labelLine.buildPath = buildLabelLinePath;
+  }
+}
+function getLabelLineStatesModels(itemModel, labelLineName) {
+  labelLineName = labelLineName || 'labelLine';
+  var statesModels = {
+    normal: itemModel.getModel(labelLineName)
+  };
+
+  for (var i = 0; i < SPECIAL_STATES.length; i++) {
+    var stateName = SPECIAL_STATES[i];
+    statesModels[stateName] = itemModel.getModel([stateName, labelLineName]);
+  }
+
+  return statesModels;
+}
+
 function prepareLayoutList(input) {
   var list = [];
 
@@ -74125,6 +74802,175 @@ function prepareLayoutList(input) {
   }
 
   return list;
+}
+
+function shiftLayout(list, xyDim, sizeDim, minBound, maxBound, balanceShift) {
+  var len = list.length;
+
+  if (len < 2) {
+    return;
+  }
+
+  list.sort(function (a, b) {
+    return a.rect[xyDim] - b.rect[xyDim];
+  });
+  var lastPos = 0;
+  var delta;
+  var adjusted = false;
+  var totalShifts = 0;
+
+  for (var i = 0; i < len; i++) {
+    var item = list[i];
+    var rect = item.rect;
+    delta = rect[xyDim] - lastPos;
+
+    if (delta < 0) {
+      // shiftForward(i, len, -delta);
+      rect[xyDim] -= delta;
+      item.label[xyDim] -= delta;
+      adjusted = true;
+    }
+
+    var shift = Math.max(-delta, 0);
+    totalShifts += shift;
+    lastPos = rect[xyDim] + rect[sizeDim];
+  }
+
+  if (totalShifts > 0 && balanceShift) {
+    // Shift back to make the distribution more equally.
+    shiftList(-totalShifts / len, 0, len);
+  } // TODO bleedMargin?
+
+
+  var first = list[0];
+  var last = list[len - 1];
+  var minGap;
+  var maxGap;
+  updateMinMaxGap(); // If ends exceed two bounds, squeeze at most 80%, then take the gap of two bounds.
+
+  minGap < 0 && squeezeGaps(-minGap, 0.8);
+  maxGap < 0 && squeezeGaps(maxGap, 0.8);
+  updateMinMaxGap();
+  takeBoundsGap(minGap, maxGap, 1);
+  takeBoundsGap(maxGap, minGap, -1); // Handle bailout when there is not enough space.
+
+  updateMinMaxGap();
+
+  if (minGap < 0) {
+    squeezeWhenBailout(-minGap);
+  }
+
+  if (maxGap < 0) {
+    squeezeWhenBailout(maxGap);
+  }
+
+  function updateMinMaxGap() {
+    minGap = first.rect[xyDim] - minBound;
+    maxGap = maxBound - last.rect[xyDim] - last.rect[sizeDim];
+  }
+
+  function takeBoundsGap(gapThisBound, gapOtherBound, moveDir) {
+    if (gapThisBound < 0) {
+      // Move from other gap if can.
+      var moveFromMaxGap = Math.min(gapOtherBound, -gapThisBound);
+
+      if (moveFromMaxGap > 0) {
+        shiftList(moveFromMaxGap * moveDir, 0, len);
+        var remained = moveFromMaxGap + gapThisBound;
+
+        if (remained < 0) {
+          squeezeGaps(-remained * moveDir, 1);
+        }
+      } else {
+        squeezeGaps(-gapThisBound * moveDir, 1);
+      }
+    }
+  }
+
+  function shiftList(delta, start, end) {
+    if (delta !== 0) {
+      adjusted = true;
+    }
+
+    for (var i = start; i < end; i++) {
+      var item = list[i];
+      var rect = item.rect;
+      rect[xyDim] += delta;
+      item.label[xyDim] += delta;
+    }
+  } // Squeeze gaps if the labels exceed margin.
+
+
+  function squeezeGaps(delta, maxSqeezePercent) {
+    var gaps = [];
+    var totalGaps = 0;
+
+    for (var i = 1; i < len; i++) {
+      var prevItemRect = list[i - 1].rect;
+      var gap = Math.max(list[i].rect[xyDim] - prevItemRect[xyDim] - prevItemRect[sizeDim], 0);
+      gaps.push(gap);
+      totalGaps += gap;
+    }
+
+    if (!totalGaps) {
+      return;
+    }
+
+    var squeezePercent = Math.min(Math.abs(delta) / totalGaps, maxSqeezePercent);
+
+    if (delta > 0) {
+      for (var i = 0; i < len - 1; i++) {
+        // Distribute the shift delta to all gaps.
+        var movement = gaps[i] * squeezePercent; // Forward
+
+        shiftList(movement, 0, i + 1);
+      }
+    } else {
+      // Backward
+      for (var i = len - 1; i > 0; i--) {
+        // Distribute the shift delta to all gaps.
+        var movement = gaps[i - 1] * squeezePercent;
+        shiftList(-movement, i, len);
+      }
+    }
+  }
+  /**
+   * Squeeze to allow overlap if there is no more space available.
+   * Let other overlapping strategy like hideOverlap do the job instead of keep exceeding the bounds.
+   */
+
+
+  function squeezeWhenBailout(delta) {
+    var dir = delta < 0 ? -1 : 1;
+    delta = Math.abs(delta);
+    var moveForEachLabel = Math.ceil(delta / (len - 1));
+
+    for (var i = 0; i < len - 1; i++) {
+      if (dir > 0) {
+        // Forward
+        shiftList(moveForEachLabel, 0, i + 1);
+      } else {
+        // Backward
+        shiftList(-moveForEachLabel, len - i - 1, len);
+      }
+
+      delta -= moveForEachLabel;
+
+      if (delta <= 0) {
+        return;
+      }
+    }
+  }
+
+  return adjusted;
+}
+/**
+ * Adjust labels on y direction to avoid overlap.
+ */
+
+function shiftLayoutOnY(list, topBound, bottomBound, // If average the shifts on all labels and add them to 0
+balanceShift) {
+  return shiftLayout(list, 'y', 'height', topBound, bottomBound, balanceShift);
 }
 function hideOverlap(labelList) {
   var displayedLabels = []; // TODO, render overflow visible first, put in the displayedLabels.
@@ -75949,7 +76795,7 @@ function createBackgroundEl(coord, isHorizontalOrRadial, layout) {
 
 var BarView$1 = BarView;
 
-function install$7(registers) {
+function install$8(registers) {
   registers.registerChartView(BarView$1);
   registers.registerSeriesModel(BarSeries);
   registers.registerLayout(registers.PRIORITY.VISUAL.LAYOUT, curry(layout$1, 'bar')); // Do layout after other overall layout, which can preapre some informations.
@@ -75982,6 +76828,1323 @@ function install$7(registers) {
       }
     });
   });
+}
+
+var PI2 = Math.PI * 2;
+var RADIAN$1 = Math.PI / 180;
+
+function getViewRect(seriesModel, api) {
+  return getLayoutRect(seriesModel.getBoxLayoutParams(), {
+    width: api.getWidth(),
+    height: api.getHeight()
+  });
+}
+
+function getBasicPieLayout(seriesModel, api) {
+  var viewRect = getViewRect(seriesModel, api);
+  var center = seriesModel.get('center');
+  var radius = seriesModel.get('radius');
+
+  if (!isArray(radius)) {
+    radius = [0, radius];
+  }
+
+  if (!isArray(center)) {
+    center = [center, center];
+  }
+
+  var width = parsePercent(viewRect.width, api.getWidth());
+  var height = parsePercent(viewRect.height, api.getHeight());
+  var size = Math.min(width, height);
+  var r0 = parsePercent(radius[0], size / 2);
+  var r = parsePercent(radius[1], size / 2);
+  var cx;
+  var cy;
+  var coordSys = seriesModel.coordinateSystem;
+
+  if (coordSys) {
+    // percentage is not allowed when coordinate system is specified
+    var point = coordSys.dataToPoint(center);
+    cx = point[0] || 0;
+    cy = point[1] || 0;
+  } else {
+    cx = parsePercent(center[0], width) + viewRect.x;
+    cy = parsePercent(center[1], height) + viewRect.y;
+  }
+
+  return {
+    cx: cx,
+    cy: cy,
+    r0: r0,
+    r: r
+  };
+}
+function pieLayout(seriesType, ecModel, api) {
+  ecModel.eachSeriesByType(seriesType, function (seriesModel) {
+    var data = seriesModel.getData();
+    var valueDim = data.mapDimension('value');
+    var viewRect = getViewRect(seriesModel, api);
+
+    var _a = getBasicPieLayout(seriesModel, api),
+        cx = _a.cx,
+        cy = _a.cy,
+        r = _a.r,
+        r0 = _a.r0;
+
+    var startAngle = -seriesModel.get('startAngle') * RADIAN$1;
+    var minAngle = seriesModel.get('minAngle') * RADIAN$1;
+    var validDataCount = 0;
+    data.each(valueDim, function (value) {
+      !isNaN(value) && validDataCount++;
+    });
+    var sum = data.getSum(valueDim); // Sum may be 0
+
+    var unitRadian = Math.PI / (sum || validDataCount) * 2;
+    var clockwise = seriesModel.get('clockwise');
+    var roseType = seriesModel.get('roseType');
+    var stillShowZeroSum = seriesModel.get('stillShowZeroSum'); // [0...max]
+
+    var extent = data.getDataExtent(valueDim);
+    extent[0] = 0; // In the case some sector angle is smaller than minAngle
+
+    var restAngle = PI2;
+    var valueSumLargerThanMinAngle = 0;
+    var currentAngle = startAngle;
+    var dir = clockwise ? 1 : -1;
+    data.setLayout({
+      viewRect: viewRect,
+      r: r
+    });
+    data.each(valueDim, function (value, idx) {
+      var angle;
+
+      if (isNaN(value)) {
+        data.setItemLayout(idx, {
+          angle: NaN,
+          startAngle: NaN,
+          endAngle: NaN,
+          clockwise: clockwise,
+          cx: cx,
+          cy: cy,
+          r0: r0,
+          r: roseType ? NaN : r
+        });
+        return;
+      } // FIXME 兼容 2.0 但是 roseType 是 area 的时候才是这样？
+
+
+      if (roseType !== 'area') {
+        angle = sum === 0 && stillShowZeroSum ? unitRadian : value * unitRadian;
+      } else {
+        angle = PI2 / validDataCount;
+      }
+
+      if (angle < minAngle) {
+        angle = minAngle;
+        restAngle -= minAngle;
+      } else {
+        valueSumLargerThanMinAngle += value;
+      }
+
+      var endAngle = currentAngle + dir * angle;
+      data.setItemLayout(idx, {
+        angle: angle,
+        startAngle: currentAngle,
+        endAngle: endAngle,
+        clockwise: clockwise,
+        cx: cx,
+        cy: cy,
+        r0: r0,
+        r: roseType ? linearMap(value, extent, [r0, r]) : r
+      });
+      currentAngle = endAngle;
+    }); // Some sector is constrained by minAngle
+    // Rest sectors needs recalculate angle
+
+    if (restAngle < PI2 && validDataCount) {
+      // Average the angle if rest angle is not enough after all angles is
+      // Constrained by minAngle
+      if (restAngle <= 1e-3) {
+        var angle_1 = PI2 / validDataCount;
+        data.each(valueDim, function (value, idx) {
+          if (!isNaN(value)) {
+            var layout_1 = data.getItemLayout(idx);
+            layout_1.angle = angle_1;
+            layout_1.startAngle = startAngle + dir * idx * angle_1;
+            layout_1.endAngle = startAngle + dir * (idx + 1) * angle_1;
+          }
+        });
+      } else {
+        unitRadian = restAngle / valueSumLargerThanMinAngle;
+        currentAngle = startAngle;
+        data.each(valueDim, function (value, idx) {
+          if (!isNaN(value)) {
+            var layout_2 = data.getItemLayout(idx);
+            var angle = layout_2.angle === minAngle ? minAngle : value * unitRadian;
+            layout_2.startAngle = currentAngle;
+            layout_2.endAngle = currentAngle + dir * angle;
+            currentAngle += dir * angle;
+          }
+        });
+      }
+    }
+  });
+}
+
+/*
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing,
+* software distributed under the License is distributed on an
+* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+* KIND, either express or implied.  See the License for the
+* specific language governing permissions and limitations
+* under the License.
+*/
+
+
+/**
+ * AUTO-GENERATED FILE. DO NOT MODIFY.
+ */
+
+/*
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing,
+* software distributed under the License is distributed on an
+* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+* KIND, either express or implied.  See the License for the
+* specific language governing permissions and limitations
+* under the License.
+*/
+function dataFilter(seriesType) {
+  return {
+    seriesType: seriesType,
+    reset: function (seriesModel, ecModel) {
+      var legendModels = ecModel.findComponents({
+        mainType: 'legend'
+      });
+
+      if (!legendModels || !legendModels.length) {
+        return;
+      }
+
+      var data = seriesModel.getData();
+      data.filterSelf(function (idx) {
+        var name = data.getName(idx); // If in any legend component the status is not selected.
+
+        for (var i = 0; i < legendModels.length; i++) {
+          // @ts-ignore FIXME: LegendModel
+          if (!legendModels[i].isSelected(name)) {
+            return false;
+          }
+        }
+
+        return true;
+      });
+    }
+  };
+}
+
+var RADIAN = Math.PI / 180;
+
+function adjustSingleSide(list, cx, cy, r, dir, viewWidth, viewHeight, viewLeft, viewTop, farthestX) {
+  if (list.length < 2) {
+    return;
+  }
+
+  function recalculateXOnSemiToAlignOnEllipseCurve(semi) {
+    var rB = semi.rB;
+    var rB2 = rB * rB;
+
+    for (var i = 0; i < semi.list.length; i++) {
+      var item = semi.list[i];
+      var dy = Math.abs(item.label.y - cy); // horizontal r is always same with original r because x is not changed.
+
+      var rA = r + item.len;
+      var rA2 = rA * rA; // Use ellipse implicit function to calculate x
+
+      var dx = Math.sqrt((1 - Math.abs(dy * dy / rB2)) * rA2);
+      var newX = cx + (dx + item.len2) * dir;
+      var deltaX = newX - item.label.x;
+      var newTargetWidth = item.targetTextWidth - deltaX * dir; // text x is changed, so need to recalculate width.
+
+      constrainTextWidth(item, newTargetWidth, true);
+      item.label.x = newX;
+    }
+  } // Adjust X based on the shifted y. Make tight labels aligned on an ellipse curve.
+
+
+  function recalculateX(items) {
+    // Extremes of
+    var topSemi = {
+      list: [],
+      maxY: 0
+    };
+    var bottomSemi = {
+      list: [],
+      maxY: 0
+    };
+
+    for (var i = 0; i < items.length; i++) {
+      if (items[i].labelAlignTo !== 'none') {
+        continue;
+      }
+
+      var item = items[i];
+      var semi = item.label.y > cy ? bottomSemi : topSemi;
+      var dy = Math.abs(item.label.y - cy);
+
+      if (dy >= semi.maxY) {
+        var dx = item.label.x - cx - item.len2 * dir; // horizontal r is always same with original r because x is not changed.
+
+        var rA = r + item.len; // Canculate rB based on the topest / bottemest label.
+
+        var rB = Math.abs(dx) < rA ? Math.sqrt(dy * dy / (1 - dx * dx / rA / rA)) : rA;
+        semi.rB = rB;
+        semi.maxY = dy;
+      }
+
+      semi.list.push(item);
+    }
+
+    recalculateXOnSemiToAlignOnEllipseCurve(topSemi);
+    recalculateXOnSemiToAlignOnEllipseCurve(bottomSemi);
+  }
+
+  var len = list.length;
+
+  for (var i = 0; i < len; i++) {
+    if (list[i].position === 'outer' && list[i].labelAlignTo === 'labelLine') {
+      var dx = list[i].label.x - farthestX;
+      list[i].linePoints[1][0] += dx;
+      list[i].label.x = farthestX;
+    }
+  }
+
+  if (shiftLayoutOnY(list, viewTop, viewTop + viewHeight)) {
+    recalculateX(list);
+  }
+}
+
+function avoidOverlap(labelLayoutList, cx, cy, r, viewWidth, viewHeight, viewLeft, viewTop) {
+  var leftList = [];
+  var rightList = [];
+  var leftmostX = Number.MAX_VALUE;
+  var rightmostX = -Number.MAX_VALUE;
+
+  for (var i = 0; i < labelLayoutList.length; i++) {
+    var label = labelLayoutList[i].label;
+
+    if (isPositionCenter(labelLayoutList[i])) {
+      continue;
+    }
+
+    if (label.x < cx) {
+      leftmostX = Math.min(leftmostX, label.x);
+      leftList.push(labelLayoutList[i]);
+    } else {
+      rightmostX = Math.max(rightmostX, label.x);
+      rightList.push(labelLayoutList[i]);
+    }
+  }
+
+  for (var i = 0; i < labelLayoutList.length; i++) {
+    var layout = labelLayoutList[i];
+
+    if (!isPositionCenter(layout) && layout.linePoints) {
+      if (layout.labelStyleWidth != null) {
+        continue;
+      }
+
+      var label = layout.label;
+      var linePoints = layout.linePoints;
+      var targetTextWidth = void 0;
+
+      if (layout.labelAlignTo === 'edge') {
+        if (label.x < cx) {
+          targetTextWidth = linePoints[2][0] - layout.labelDistance - viewLeft - layout.edgeDistance;
+        } else {
+          targetTextWidth = viewLeft + viewWidth - layout.edgeDistance - linePoints[2][0] - layout.labelDistance;
+        }
+      } else if (layout.labelAlignTo === 'labelLine') {
+        if (label.x < cx) {
+          targetTextWidth = leftmostX - viewLeft - layout.bleedMargin;
+        } else {
+          targetTextWidth = viewLeft + viewWidth - rightmostX - layout.bleedMargin;
+        }
+      } else {
+        if (label.x < cx) {
+          targetTextWidth = label.x - viewLeft - layout.bleedMargin;
+        } else {
+          targetTextWidth = viewLeft + viewWidth - label.x - layout.bleedMargin;
+        }
+      }
+
+      layout.targetTextWidth = targetTextWidth;
+      constrainTextWidth(layout, targetTextWidth);
+    }
+  }
+
+  adjustSingleSide(rightList, cx, cy, r, 1, viewWidth, viewHeight, viewLeft, viewTop, rightmostX);
+  adjustSingleSide(leftList, cx, cy, r, -1, viewWidth, viewHeight, viewLeft, viewTop, leftmostX);
+
+  for (var i = 0; i < labelLayoutList.length; i++) {
+    var layout = labelLayoutList[i];
+
+    if (!isPositionCenter(layout) && layout.linePoints) {
+      var label = layout.label;
+      var linePoints = layout.linePoints;
+      var isAlignToEdge = layout.labelAlignTo === 'edge';
+      var padding = label.style.padding;
+      var paddingH = padding ? padding[1] + padding[3] : 0; // textRect.width already contains paddingH if bgColor is set
+
+      var extraPaddingH = label.style.backgroundColor ? 0 : paddingH;
+      var realTextWidth = layout.rect.width + extraPaddingH;
+      var dist = linePoints[1][0] - linePoints[2][0];
+
+      if (isAlignToEdge) {
+        if (label.x < cx) {
+          linePoints[2][0] = viewLeft + layout.edgeDistance + realTextWidth + layout.labelDistance;
+        } else {
+          linePoints[2][0] = viewLeft + viewWidth - layout.edgeDistance - realTextWidth - layout.labelDistance;
+        }
+      } else {
+        if (label.x < cx) {
+          linePoints[2][0] = label.x + layout.labelDistance;
+        } else {
+          linePoints[2][0] = label.x - layout.labelDistance;
+        }
+
+        linePoints[1][0] = linePoints[2][0] + dist;
+      }
+
+      linePoints[1][1] = linePoints[2][1] = label.y;
+    }
+  }
+}
+/**
+ * Set max width of each label, and then wrap each label to the max width.
+ *
+ * @param layout label layout
+ * @param availableWidth max width for the label to display
+ * @param forceRecalculate recaculate the text layout even if the current width
+ * is smaller than `availableWidth`. This is useful when the text was previously
+ * wrapped by calling `constrainTextWidth` but now `availableWidth` changed, in
+ * which case, previous wrapping should be redo.
+ */
+
+
+function constrainTextWidth(layout, availableWidth, forceRecalculate) {
+  if (forceRecalculate === void 0) {
+    forceRecalculate = false;
+  }
+
+  if (layout.labelStyleWidth != null) {
+    // User-defined style.width has the highest priority.
+    return;
+  }
+
+  var label = layout.label;
+  var style = label.style;
+  var textRect = layout.rect;
+  var bgColor = style.backgroundColor;
+  var padding = style.padding;
+  var paddingH = padding ? padding[1] + padding[3] : 0;
+  var overflow = style.overflow; // textRect.width already contains paddingH if bgColor is set
+
+  var oldOuterWidth = textRect.width + (bgColor ? 0 : paddingH);
+
+  if (availableWidth < oldOuterWidth || forceRecalculate) {
+    var oldHeight = textRect.height;
+
+    if (overflow && overflow.match('break')) {
+      // Temporarily set background to be null to calculate
+      // the bounding box without backgroud.
+      label.setStyle('backgroundColor', null); // Set constraining width
+
+      label.setStyle('width', availableWidth - paddingH); // This is the real bounding box of the text without padding
+
+      var innerRect = label.getBoundingRect();
+      label.setStyle('width', Math.ceil(innerRect.width));
+      label.setStyle('backgroundColor', bgColor);
+    } else {
+      var availableInnerWidth = availableWidth - paddingH;
+      var newWidth = availableWidth < oldOuterWidth // Current text is too wide, use `availableWidth` as max width.
+      ? availableInnerWidth : // Current available width is enough, but the text may have
+      // already been wrapped with a smaller available width.
+      forceRecalculate ? availableInnerWidth > layout.unconstrainedWidth // Current available is larger than text width,
+      // so don't constrain width (otherwise it may have
+      // empty space in the background).
+      ? null // Current available is smaller than text width, so
+      // use the current available width as constraining
+      // width.
+      : availableInnerWidth : // Current available width is enough, so no need to
+      // constrain.
+      null;
+      label.setStyle('width', newWidth);
+    }
+
+    var newRect = label.getBoundingRect();
+    textRect.width = newRect.width;
+    var margin = (label.style.margin || 0) + 2.1;
+    textRect.height = newRect.height + margin;
+    textRect.y -= (textRect.height - oldHeight) / 2;
+  }
+}
+
+function isPositionCenter(sectorShape) {
+  // Not change x for center label
+  return sectorShape.position === 'center';
+}
+
+function pieLabelLayout(seriesModel) {
+  var data = seriesModel.getData();
+  var labelLayoutList = [];
+  var cx;
+  var cy;
+  var hasLabelRotate = false;
+  var minShowLabelRadian = (seriesModel.get('minShowLabelAngle') || 0) * RADIAN;
+  var viewRect = data.getLayout('viewRect');
+  var r = data.getLayout('r');
+  var viewWidth = viewRect.width;
+  var viewLeft = viewRect.x;
+  var viewTop = viewRect.y;
+  var viewHeight = viewRect.height;
+
+  function setNotShow(el) {
+    el.ignore = true;
+  }
+
+  function isLabelShown(label) {
+    if (!label.ignore) {
+      return true;
+    }
+
+    for (var key in label.states) {
+      if (label.states[key].ignore === false) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  data.each(function (idx) {
+    var sector = data.getItemGraphicEl(idx);
+    var sectorShape = sector.shape;
+    var label = sector.getTextContent();
+    var labelLine = sector.getTextGuideLine();
+    var itemModel = data.getItemModel(idx);
+    var labelModel = itemModel.getModel('label'); // Use position in normal or emphasis
+
+    var labelPosition = labelModel.get('position') || itemModel.get(['emphasis', 'label', 'position']);
+    var labelDistance = labelModel.get('distanceToLabelLine');
+    var labelAlignTo = labelModel.get('alignTo');
+    var edgeDistance = parsePercent(labelModel.get('edgeDistance'), viewWidth);
+    var bleedMargin = labelModel.get('bleedMargin');
+    var labelLineModel = itemModel.getModel('labelLine');
+    var labelLineLen = labelLineModel.get('length');
+    labelLineLen = parsePercent(labelLineLen, viewWidth);
+    var labelLineLen2 = labelLineModel.get('length2');
+    labelLineLen2 = parsePercent(labelLineLen2, viewWidth);
+
+    if (Math.abs(sectorShape.endAngle - sectorShape.startAngle) < minShowLabelRadian) {
+      each$3(label.states, setNotShow);
+      each$3(labelLine.states, setNotShow);
+      label.ignore = labelLine.ignore = true;
+      return;
+    }
+
+    if (!isLabelShown(label)) {
+      return;
+    }
+
+    var midAngle = (sectorShape.startAngle + sectorShape.endAngle) / 2;
+    var nx = Math.cos(midAngle);
+    var ny = Math.sin(midAngle);
+    var textX;
+    var textY;
+    var linePoints;
+    var textAlign;
+    cx = sectorShape.cx;
+    cy = sectorShape.cy;
+    var isLabelInside = labelPosition === 'inside' || labelPosition === 'inner';
+
+    if (labelPosition === 'center') {
+      textX = sectorShape.cx;
+      textY = sectorShape.cy;
+      textAlign = 'center';
+    } else {
+      var x1 = (isLabelInside ? (sectorShape.r + sectorShape.r0) / 2 * nx : sectorShape.r * nx) + cx;
+      var y1 = (isLabelInside ? (sectorShape.r + sectorShape.r0) / 2 * ny : sectorShape.r * ny) + cy;
+      textX = x1 + nx * 3;
+      textY = y1 + ny * 3;
+
+      if (!isLabelInside) {
+        // For roseType
+        var x2 = x1 + nx * (labelLineLen + r - sectorShape.r);
+        var y2 = y1 + ny * (labelLineLen + r - sectorShape.r);
+        var x3 = x2 + (nx < 0 ? -1 : 1) * labelLineLen2;
+        var y3 = y2;
+
+        if (labelAlignTo === 'edge') {
+          // Adjust textX because text align of edge is opposite
+          textX = nx < 0 ? viewLeft + edgeDistance : viewLeft + viewWidth - edgeDistance;
+        } else {
+          textX = x3 + (nx < 0 ? -labelDistance : labelDistance);
+        }
+
+        textY = y3;
+        linePoints = [[x1, y1], [x2, y2], [x3, y3]];
+      }
+
+      textAlign = isLabelInside ? 'center' : labelAlignTo === 'edge' ? nx > 0 ? 'right' : 'left' : nx > 0 ? 'left' : 'right';
+    }
+
+    var PI = Math.PI;
+    var labelRotate = 0;
+    var rotate = labelModel.get('rotate');
+
+    if (isNumber(rotate)) {
+      labelRotate = rotate * (PI / 180);
+    } else if (labelPosition === 'center') {
+      labelRotate = 0;
+    } else if (rotate === 'radial' || rotate === true) {
+      var radialAngle = nx < 0 ? -midAngle + PI : -midAngle;
+      labelRotate = radialAngle;
+    } else if (rotate === 'tangential' && labelPosition !== 'outside' && labelPosition !== 'outer') {
+      var rad = Math.atan2(nx, ny);
+
+      if (rad < 0) {
+        rad = PI * 2 + rad;
+      }
+
+      var isDown = ny > 0;
+
+      if (isDown) {
+        rad = PI + rad;
+      }
+
+      labelRotate = rad - PI;
+    }
+
+    hasLabelRotate = !!labelRotate;
+    label.x = textX;
+    label.y = textY;
+    label.rotation = labelRotate;
+    label.setStyle({
+      verticalAlign: 'middle'
+    }); // Not sectorShape the inside label
+
+    if (!isLabelInside) {
+      var textRect = label.getBoundingRect().clone();
+      textRect.applyTransform(label.getComputedTransform()); // Text has a default 1px stroke. Exclude this.
+
+      var margin = (label.style.margin || 0) + 2.1;
+      textRect.y -= margin / 2;
+      textRect.height += margin;
+      labelLayoutList.push({
+        label: label,
+        labelLine: labelLine,
+        position: labelPosition,
+        len: labelLineLen,
+        len2: labelLineLen2,
+        minTurnAngle: labelLineModel.get('minTurnAngle'),
+        maxSurfaceAngle: labelLineModel.get('maxSurfaceAngle'),
+        surfaceNormal: new Point$1(nx, ny),
+        linePoints: linePoints,
+        textAlign: textAlign,
+        labelDistance: labelDistance,
+        labelAlignTo: labelAlignTo,
+        edgeDistance: edgeDistance,
+        bleedMargin: bleedMargin,
+        rect: textRect,
+        unconstrainedWidth: textRect.width,
+        labelStyleWidth: label.style.width
+      });
+    } else {
+      label.setStyle({
+        align: textAlign
+      });
+      var selectState = label.states.select;
+
+      if (selectState) {
+        selectState.x += label.x;
+        selectState.y += label.y;
+      }
+    }
+
+    sector.setTextConfig({
+      inside: isLabelInside
+    });
+  });
+
+  if (!hasLabelRotate && seriesModel.get('avoidLabelOverlap')) {
+    avoidOverlap(labelLayoutList, cx, cy, r, viewWidth, viewHeight, viewLeft, viewTop);
+  }
+
+  for (var i = 0; i < labelLayoutList.length; i++) {
+    var layout = labelLayoutList[i];
+    var label = layout.label;
+    var labelLine = layout.labelLine;
+    var notShowLabel = isNaN(label.x) || isNaN(label.y);
+
+    if (label) {
+      label.setStyle({
+        align: layout.textAlign
+      });
+
+      if (notShowLabel) {
+        each$3(label.states, setNotShow);
+        label.ignore = true;
+      }
+
+      var selectState = label.states.select;
+
+      if (selectState) {
+        selectState.x += label.x;
+        selectState.y += label.y;
+      }
+    }
+
+    if (labelLine) {
+      var linePoints = layout.linePoints;
+
+      if (notShowLabel || !linePoints) {
+        each$3(labelLine.states, setNotShow);
+        labelLine.ignore = true;
+      } else {
+        limitTurnAngle(linePoints, layout.minTurnAngle);
+        limitSurfaceAngle(linePoints, layout.surfaceNormal, layout.maxSurfaceAngle);
+        labelLine.setShape({
+          points: linePoints
+        }); // Set the anchor to the midpoint of sector
+
+        label.__hostTarget.textGuideLineConfig = {
+          anchor: new Point$1(linePoints[0][0], linePoints[0][1])
+        };
+      }
+    }
+  }
+}
+
+function getSectorCornerRadius(model, shape, zeroIfNull) {
+  var cornerRadius = model.get('borderRadius');
+
+  if (cornerRadius == null) {
+    return zeroIfNull ? {
+      cornerRadius: 0
+    } : null;
+  }
+
+  if (!isArray(cornerRadius)) {
+    cornerRadius = [cornerRadius, cornerRadius, cornerRadius, cornerRadius];
+  }
+
+  var dr = Math.abs(shape.r || 0 - shape.r0 || 0);
+  return {
+    cornerRadius: map$1(cornerRadius, function (cr) {
+      return parsePercent$1(cr, dr);
+    })
+  };
+}
+
+/**
+ * Piece of pie including Sector, Label, LabelLine
+ */
+
+var PiePiece =
+/** @class */
+function (_super) {
+  __extends$1(PiePiece, _super);
+
+  function PiePiece(data, idx, startAngle) {
+    var _this = _super.call(this) || this;
+
+    _this.z2 = 2;
+    var text = new ZRText$1();
+
+    _this.setTextContent(text);
+
+    _this.updateData(data, idx, startAngle, true);
+
+    return _this;
+  }
+
+  PiePiece.prototype.updateData = function (data, idx, startAngle, firstCreate) {
+    var sector = this;
+    var seriesModel = data.hostModel;
+    var itemModel = data.getItemModel(idx);
+    var emphasisModel = itemModel.getModel('emphasis');
+    var layout = data.getItemLayout(idx); // cornerRadius & innerCornerRadius doesn't exist in the item layout. Use `0` if null value is specified.
+    // see `setItemLayout` in `pieLayout.ts`.
+
+    var sectorShape = extend(getSectorCornerRadius(itemModel.getModel('itemStyle'), layout, true), layout); // Ignore NaN data.
+
+    if (isNaN(sectorShape.startAngle)) {
+      // Use NaN shape to avoid drawing shape.
+      sector.setShape(sectorShape);
+      return;
+    }
+
+    if (firstCreate) {
+      sector.setShape(sectorShape);
+      var animationType = seriesModel.getShallow('animationType');
+
+      if (seriesModel.ecModel.ssr) {
+        // Use scale animation in SSR mode(opacity?)
+        // Because CSS SVG animation doesn't support very customized shape animation.
+        initProps(sector, {
+          scaleX: 0,
+          scaleY: 0
+        }, seriesModel, {
+          dataIndex: idx,
+          isFrom: true
+        });
+        sector.originX = sectorShape.cx;
+        sector.originY = sectorShape.cy;
+      } else if (animationType === 'scale') {
+        sector.shape.r = layout.r0;
+        initProps(sector, {
+          shape: {
+            r: layout.r
+          }
+        }, seriesModel, idx);
+      } // Expansion
+      else {
+          if (startAngle != null) {
+            sector.setShape({
+              startAngle: startAngle,
+              endAngle: startAngle
+            });
+            initProps(sector, {
+              shape: {
+                startAngle: layout.startAngle,
+                endAngle: layout.endAngle
+              }
+            }, seriesModel, idx);
+          } else {
+            sector.shape.endAngle = layout.startAngle;
+            updateProps$1(sector, {
+              shape: {
+                endAngle: layout.endAngle
+              }
+            }, seriesModel, idx);
+          }
+        }
+    } else {
+      saveOldStyle(sector); // Transition animation from the old shape
+
+      updateProps$1(sector, {
+        shape: sectorShape
+      }, seriesModel, idx);
+    }
+
+    sector.useStyle(data.getItemVisual(idx, 'style'));
+    setStatesStylesFromModel(sector, itemModel);
+    var midAngle = (layout.startAngle + layout.endAngle) / 2;
+    var offset = seriesModel.get('selectedOffset');
+    var dx = Math.cos(midAngle) * offset;
+    var dy = Math.sin(midAngle) * offset;
+    var cursorStyle = itemModel.getShallow('cursor');
+    cursorStyle && sector.attr('cursor', cursorStyle);
+
+    this._updateLabel(seriesModel, data, idx);
+
+    sector.ensureState('emphasis').shape = extend({
+      r: layout.r + (emphasisModel.get('scale') ? emphasisModel.get('scaleSize') || 0 : 0)
+    }, getSectorCornerRadius(emphasisModel.getModel('itemStyle'), layout));
+    extend(sector.ensureState('select'), {
+      x: dx,
+      y: dy,
+      shape: getSectorCornerRadius(itemModel.getModel(['select', 'itemStyle']), layout)
+    });
+    extend(sector.ensureState('blur'), {
+      shape: getSectorCornerRadius(itemModel.getModel(['blur', 'itemStyle']), layout)
+    });
+    var labelLine = sector.getTextGuideLine();
+    var labelText = sector.getTextContent();
+    labelLine && extend(labelLine.ensureState('select'), {
+      x: dx,
+      y: dy
+    }); // TODO: needs dx, dy in zrender?
+
+    extend(labelText.ensureState('select'), {
+      x: dx,
+      y: dy
+    });
+    toggleHoverEmphasis(this, emphasisModel.get('focus'), emphasisModel.get('blurScope'), emphasisModel.get('disabled'));
+  };
+
+  PiePiece.prototype._updateLabel = function (seriesModel, data, idx) {
+    var sector = this;
+    var itemModel = data.getItemModel(idx);
+    var labelLineModel = itemModel.getModel('labelLine');
+    var style = data.getItemVisual(idx, 'style');
+    var visualColor = style && style.fill;
+    var visualOpacity = style && style.opacity;
+    setLabelStyle(sector, getLabelStatesModels(itemModel), {
+      labelFetcher: data.hostModel,
+      labelDataIndex: idx,
+      inheritColor: visualColor,
+      defaultOpacity: visualOpacity,
+      defaultText: seriesModel.getFormattedLabel(idx, 'normal') || data.getName(idx)
+    });
+    var labelText = sector.getTextContent(); // Set textConfig on sector.
+
+    sector.setTextConfig({
+      // reset position, rotation
+      position: null,
+      rotation: null
+    }); // Make sure update style on labelText after setLabelStyle.
+    // Because setLabelStyle will replace a new style on it.
+
+    labelText.attr({
+      z2: 10
+    });
+    var labelPosition = seriesModel.get(['label', 'position']);
+
+    if (labelPosition !== 'outside' && labelPosition !== 'outer') {
+      sector.removeTextGuideLine();
+    } else {
+      var polyline = this.getTextGuideLine();
+
+      if (!polyline) {
+        polyline = new Polyline$1();
+        this.setTextGuideLine(polyline);
+      } // Default use item visual color
+
+
+      setLabelLineStyle(this, getLabelLineStatesModels(itemModel), {
+        stroke: visualColor,
+        opacity: retrieve3(labelLineModel.get(['lineStyle', 'opacity']), visualOpacity, 1)
+      });
+    }
+  };
+
+  return PiePiece;
+}(Sector$1); // Pie view
+
+
+var PieView =
+/** @class */
+function (_super) {
+  __extends$1(PieView, _super);
+
+  function PieView() {
+    var _this = _super !== null && _super.apply(this, arguments) || this;
+
+    _this.ignoreLabelLineUpdate = true;
+    return _this;
+  }
+
+  PieView.prototype.render = function (seriesModel, ecModel, api, payload) {
+    var data = seriesModel.getData();
+    var oldData = this._data;
+    var group = this.group;
+    var startAngle; // First render
+
+    if (!oldData && data.count() > 0) {
+      var shape = data.getItemLayout(0);
+
+      for (var s = 1; isNaN(shape && shape.startAngle) && s < data.count(); ++s) {
+        shape = data.getItemLayout(s);
+      }
+
+      if (shape) {
+        startAngle = shape.startAngle;
+      }
+    } // remove empty-circle if it exists
+
+
+    if (this._emptyCircleSector) {
+      group.remove(this._emptyCircleSector);
+    } // when all data are filtered, show lightgray empty circle
+
+
+    if (data.count() === 0 && seriesModel.get('showEmptyCircle')) {
+      var sector = new Sector$1({
+        shape: getBasicPieLayout(seriesModel, api)
+      });
+      sector.useStyle(seriesModel.getModel('emptyCircleStyle').getItemStyle());
+      this._emptyCircleSector = sector;
+      group.add(sector);
+    }
+
+    data.diff(oldData).add(function (idx) {
+      var piePiece = new PiePiece(data, idx, startAngle);
+      data.setItemGraphicEl(idx, piePiece);
+      group.add(piePiece);
+    }).update(function (newIdx, oldIdx) {
+      var piePiece = oldData.getItemGraphicEl(oldIdx);
+      piePiece.updateData(data, newIdx, startAngle);
+      piePiece.off('click');
+      group.add(piePiece);
+      data.setItemGraphicEl(newIdx, piePiece);
+    }).remove(function (idx) {
+      var piePiece = oldData.getItemGraphicEl(idx);
+      removeElementWithFadeOut(piePiece, seriesModel, idx);
+    }).execute();
+    pieLabelLayout(seriesModel); // Always use initial animation.
+
+    if (seriesModel.get('animationTypeUpdate') !== 'expansion') {
+      this._data = data;
+    }
+  };
+
+  PieView.prototype.dispose = function () {};
+
+  PieView.prototype.containPoint = function (point, seriesModel) {
+    var data = seriesModel.getData();
+    var itemLayout = data.getItemLayout(0);
+
+    if (itemLayout) {
+      var dx = point[0] - itemLayout.cx;
+      var dy = point[1] - itemLayout.cy;
+      var radius = Math.sqrt(dx * dx + dy * dy);
+      return radius <= itemLayout.r && radius >= itemLayout.r0;
+    }
+  };
+
+  PieView.type = 'pie';
+  return PieView;
+}(ChartView$1);
+
+var PieView$1 = PieView;
+
+/**
+ * [Usage]:
+ * (1)
+ * createListSimply(seriesModel, ['value']);
+ * (2)
+ * createListSimply(seriesModel, {
+ *     coordDimensions: ['value'],
+ *     dimensionsCount: 5
+ * });
+ */
+
+function createSeriesDataSimply(seriesModel, opt, nameList) {
+  opt = isArray(opt) && {
+    coordDimensions: opt
+  } || extend({
+    encodeDefine: seriesModel.getEncode()
+  }, opt);
+  var source = seriesModel.getSource();
+  var dimensions = prepareSeriesDataSchema(source, opt).dimensions;
+  var list = new SeriesData$1(dimensions, seriesModel);
+  list.initData(source, nameList);
+  return list;
+}
+
+/*
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing,
+* software distributed under the License is distributed on an
+* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+* KIND, either express or implied.  See the License for the
+* specific language governing permissions and limitations
+* under the License.
+*/
+
+
+/**
+ * AUTO-GENERATED FILE. DO NOT MODIFY.
+ */
+
+/*
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing,
+* software distributed under the License is distributed on an
+* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+* KIND, either express or implied.  See the License for the
+* specific language governing permissions and limitations
+* under the License.
+*/
+
+/**
+ * LegendVisualProvider is an bridge that pick encoded color from data and
+ * provide to the legend component.
+ */
+var LegendVisualProvider =
+/** @class */
+function () {
+  function LegendVisualProvider( // Function to get data after filtered. It stores all the encoding info
+  getDataWithEncodedVisual, // Function to get raw data before filtered.
+  getRawData) {
+    this._getDataWithEncodedVisual = getDataWithEncodedVisual;
+    this._getRawData = getRawData;
+  }
+
+  LegendVisualProvider.prototype.getAllNames = function () {
+    var rawData = this._getRawData(); // We find the name from the raw data. In case it's filtered by the legend component.
+    // Normally, the name can be found in rawData, but can't be found in filtered data will display as gray.
+
+
+    return rawData.mapArray(rawData.getName);
+  };
+
+  LegendVisualProvider.prototype.containName = function (name) {
+    var rawData = this._getRawData();
+
+    return rawData.indexOfName(name) >= 0;
+  };
+
+  LegendVisualProvider.prototype.indexOfName = function (name) {
+    // Only get data when necessary.
+    // Because LegendVisualProvider constructor may be new in the stage that data is not prepared yet.
+    // Invoking Series#getData immediately will throw an error.
+    var dataWithEncodedVisual = this._getDataWithEncodedVisual();
+
+    return dataWithEncodedVisual.indexOfName(name);
+  };
+
+  LegendVisualProvider.prototype.getItemVisual = function (dataIndex, key) {
+    // Get encoded visual properties from final filtered data.
+    var dataWithEncodedVisual = this._getDataWithEncodedVisual();
+
+    return dataWithEncodedVisual.getItemVisual(dataIndex, key);
+  };
+
+  return LegendVisualProvider;
+}();
+
+var LegendVisualProvider$1 = LegendVisualProvider;
+
+var PieSeriesModel =
+/** @class */
+function (_super) {
+  __extends$1(PieSeriesModel, _super);
+
+  function PieSeriesModel() {
+    return _super !== null && _super.apply(this, arguments) || this;
+  }
+  /**
+   * @overwrite
+   */
+
+
+  PieSeriesModel.prototype.init = function (option) {
+    _super.prototype.init.apply(this, arguments); // Enable legend selection for each data item
+    // Use a function instead of direct access because data reference may changed
+
+
+    this.legendVisualProvider = new LegendVisualProvider$1(bind$1(this.getData, this), bind$1(this.getRawData, this));
+
+    this._defaultLabelLine(option);
+  };
+  /**
+   * @overwrite
+   */
+
+
+  PieSeriesModel.prototype.mergeOption = function () {
+    _super.prototype.mergeOption.apply(this, arguments);
+  };
+  /**
+   * @overwrite
+   */
+
+
+  PieSeriesModel.prototype.getInitialData = function () {
+    var data = createSeriesDataSimply(this, {
+      coordDimensions: ['value'],
+      encodeDefaulter: curry(makeSeriesEncodeForNameBased, this)
+    });
+    var valueList = [];
+    data.each(data.mapDimension('value'), function (value) {
+      valueList.push(value);
+    });
+    this.seats = getPercentSeats(valueList, data.hostModel.get('percentPrecision'));
+    return data;
+  };
+  /**
+   * @overwrite
+   */
+
+
+  PieSeriesModel.prototype.getDataParams = function (dataIndex) {
+    var params = _super.prototype.getDataParams.call(this, dataIndex);
+
+    params.percent = this.seats[dataIndex];
+    params.$vars.push('percent');
+    return params;
+  };
+
+  PieSeriesModel.prototype._defaultLabelLine = function (option) {
+    // Extend labelLine emphasis
+    defaultEmphasis(option, 'labelLine', ['show']);
+    var labelLineNormalOpt = option.labelLine;
+    var labelLineEmphasisOpt = option.emphasis.labelLine; // Not show label line if `label.normal.show = false`
+
+    labelLineNormalOpt.show = labelLineNormalOpt.show && option.label.show;
+    labelLineEmphasisOpt.show = labelLineEmphasisOpt.show && option.emphasis.label.show;
+  };
+
+  PieSeriesModel.type = 'series.pie';
+  PieSeriesModel.defaultOption = {
+    // zlevel: 0,
+    z: 2,
+    legendHoverLink: true,
+    colorBy: 'data',
+    // 默认全局居中
+    center: ['50%', '50%'],
+    radius: [0, '75%'],
+    // 默认顺时针
+    clockwise: true,
+    startAngle: 90,
+    // 最小角度改为0
+    minAngle: 0,
+    // If the angle of a sector less than `minShowLabelAngle`,
+    // the label will not be displayed.
+    minShowLabelAngle: 0,
+    // 选中时扇区偏移量
+    selectedOffset: 10,
+    // 选择模式，默认关闭，可选single，multiple
+    // selectedMode: false,
+    // 南丁格尔玫瑰图模式，'radius'（半径） | 'area'（面积）
+    // roseType: null,
+    percentPrecision: 2,
+    // If still show when all data zero.
+    stillShowZeroSum: true,
+    // cursor: null,
+    left: 0,
+    top: 0,
+    right: 0,
+    bottom: 0,
+    width: null,
+    height: null,
+    label: {
+      // color: 'inherit',
+      // If rotate around circle
+      rotate: 0,
+      show: true,
+      overflow: 'truncate',
+      // 'outer', 'inside', 'center'
+      position: 'outer',
+      // 'none', 'labelLine', 'edge'. Works only when position is 'outer'
+      alignTo: 'none',
+      // Closest distance between label and chart edge.
+      // Works only position is 'outer' and alignTo is 'edge'.
+      edgeDistance: '25%',
+      // Works only position is 'outer' and alignTo is not 'edge'.
+      bleedMargin: 10,
+      // Distance between text and label line.
+      distanceToLabelLine: 5 // formatter: 标签文本格式器，同Tooltip.formatter，不支持异步回调
+      // 默认使用全局文本样式，详见TEXTSTYLE
+      // distance: 当position为inner时有效，为label位置到圆心的距离与圆半径(环状图为内外半径和)的比例系数
+
+    },
+    // Enabled when label.normal.position is 'outer'
+    labelLine: {
+      show: true,
+      // 引导线两段中的第一段长度
+      length: 15,
+      // 引导线两段中的第二段长度
+      length2: 15,
+      smooth: false,
+      minTurnAngle: 90,
+      maxSurfaceAngle: 90,
+      lineStyle: {
+        // color: 各异,
+        width: 1,
+        type: 'solid'
+      }
+    },
+    itemStyle: {
+      borderWidth: 1,
+      borderJoin: 'round'
+    },
+    showEmptyCircle: true,
+    emptyCircleStyle: {
+      color: 'lightgray',
+      opacity: 1
+    },
+    labelLayout: {
+      // Hide the overlapped label.
+      hideOverlap: true
+    },
+    emphasis: {
+      scale: true,
+      scaleSize: 5
+    },
+    // If use strategy to avoid label overlapping
+    avoidLabelOverlap: true,
+    // Animation type. Valid values: expansion, scale
+    animationType: 'expansion',
+    animationDuration: 1000,
+    // Animation type when update. Valid values: transition, expansion
+    animationTypeUpdate: 'transition',
+    animationEasingUpdate: 'cubicInOut',
+    animationDurationUpdate: 500,
+    animationEasing: 'cubicInOut'
+  };
+  return PieSeriesModel;
+}(SeriesModel$1);
+
+var PieSeriesModel$1 = PieSeriesModel;
+
+function negativeDataFilter(seriesType) {
+  return {
+    seriesType: seriesType,
+    reset: function (seriesModel, ecModel) {
+      var data = seriesModel.getData();
+      data.filterSelf(function (idx) {
+        // handle negative value condition
+        var valueDim = data.mapDimension('value');
+        var curValue = data.get(valueDim, idx);
+
+        if (isNumber(curValue) && !isNaN(curValue) && curValue < 0) {
+          return false;
+        }
+
+        return true;
+      });
+    }
+  };
+}
+
+function install$7(registers) {
+  registers.registerChartView(PieView$1);
+  registers.registerSeriesModel(PieSeriesModel$1);
+  createLegacyDataSelectAction('pie', registers.registerAction);
+  registers.registerLayout(curry(pieLayout, 'pie'));
+  registers.registerProcessor(dataFilter('pie'));
+  registers.registerProcessor(negativeDataFilter('pie'));
 }
 
 var GridModel =
@@ -82764,13 +84927,13 @@ function install(registers) {
   registers.registerPainter('canvas', CanvasPainter$1);
 }
 
-var css$3 = ".BaseVerticalBarChart_module_root__db36f9d1 {\n  width: \"100%\";\n}";
+var css$5 = ".BaseVerticalBarChart_module_root__db36f9d1 {\n  width: \"100%\";\n}";
 var modules_8757388c = {"root":"BaseVerticalBarChart_module_root__db36f9d1"};
-n(css$3,{});
+n(css$5,{});
 
-use([install$2, install$3, install$4, install$1, install$7, install]);
+use([install$2, install$3, install$4, install$1, install$8, install]);
 var BaseVerticalBarChart = function BaseVerticalBarChart(props) {
-  var _seriesData$chartData, _seriesData$chartData7;
+  var _seriesOption$length, _seriesData$metaData$, _seriesData$metaData, _seriesData$metaData$2, _seriesData$chartData, _seriesData$chartData9;
   var title = props.title,
     gridContainLabel = props.gridContainLabel,
     gridOptions = props.gridOptions,
@@ -82784,13 +84947,16 @@ var BaseVerticalBarChart = function BaseVerticalBarChart(props) {
     axisColor = props.axisColor,
     barWidth = props.barWidth,
     cursor = props.cursor,
+    legend = props.legend,
+    tooltip = props.tooltip,
+    seriesName = props.seriesName,
     stacked = props.stacked,
     seriesOption = props.seriesOption,
     style = props.style,
     className = props.className;
   var seriesOptionObject = {
     type: 'bar',
-    barWidth: stacked ? barWidth : barWidth / seriesOption.length,
+    barWidth: stacked ? barWidth : barWidth / ((_seriesOption$length = seriesOption === null || seriesOption === void 0 ? void 0 : seriesOption.length) !== null && _seriesOption$length !== void 0 ? _seriesOption$length : 1),
     cursor: cursor,
     stack: stacked,
     groupPadding: 3,
@@ -82811,25 +84977,28 @@ var BaseVerticalBarChart = function BaseVerticalBarChart(props) {
     itemStyle: {
       borderRadius: [0, 2, 2, 0]
     },
+    name: (_seriesData$metaData$ = seriesData === null || seriesData === void 0 ? void 0 : (_seriesData$metaData = seriesData.metaData) === null || _seriesData$metaData === void 0 ? void 0 : (_seriesData$metaData$2 = _seriesData$metaData.keyData) === null || _seriesData$metaData$2 === void 0 ? void 0 : _seriesData$metaData$2.x1) !== null && _seriesData$metaData$ !== void 0 ? _seriesData$metaData$ : '',
     data: Object.keys((_seriesData$chartData = seriesData === null || seriesData === void 0 ? void 0 : seriesData.chartData) !== null && _seriesData$chartData !== void 0 ? _seriesData$chartData : {}).map(function (key) {
-      var _seriesData$chartData2, _seriesData$chartData3;
+      var _seriesData$chartData2, _seriesData$chartData3, _seriesData$chartData4;
       return {
-        value: seriesData === null || seriesData === void 0 ? void 0 : (_seriesData$chartData2 = seriesData.chartData) === null || _seriesData$chartData2 === void 0 ? void 0 : (_seriesData$chartData3 = _seriesData$chartData2[key]) === null || _seriesData$chartData3 === void 0 ? void 0 : _seriesData$chartData3.x1
+        value: (_seriesData$chartData2 = seriesData === null || seriesData === void 0 ? void 0 : (_seriesData$chartData3 = seriesData.chartData) === null || _seriesData$chartData3 === void 0 ? void 0 : (_seriesData$chartData4 = _seriesData$chartData3[key]) === null || _seriesData$chartData4 === void 0 ? void 0 : _seriesData$chartData4.x1) !== null && _seriesData$chartData2 !== void 0 ? _seriesData$chartData2 : ''
       };
     })
   };
   var generateSeries = function generateSeries() {
     return seriesOption.map(function (objectData, index) {
-      var _objectData$label, _seriesData$chartData4;
+      var _seriesOptionObject$l, _objectData$label, _seriesData$chartData5;
       return _objectSpread2(_objectSpread2(_objectSpread2({}, seriesOptionObject), objectData), {}, {
-        label: _objectSpread2(_objectSpread2({}, seriesOptionObject.label), (_objectData$label = objectData === null || objectData === void 0 ? void 0 : objectData.label) !== null && _objectData$label !== void 0 ? _objectData$label : {}),
-        data: Object.keys((_seriesData$chartData4 = seriesData === null || seriesData === void 0 ? void 0 : seriesData.chartData) !== null && _seriesData$chartData4 !== void 0 ? _seriesData$chartData4 : {}).map(function (key, subIndex) {
-          var _seriesData$chartData5, _seriesData$chartData6, _objectData$barColor;
+        label: _objectSpread2(_objectSpread2({}, (_seriesOptionObject$l = seriesOptionObject === null || seriesOptionObject === void 0 ? void 0 : seriesOptionObject.label) !== null && _seriesOptionObject$l !== void 0 ? _seriesOptionObject$l : {}), (_objectData$label = objectData === null || objectData === void 0 ? void 0 : objectData.label) !== null && _objectData$label !== void 0 ? _objectData$label : {}),
+        name: seriesName(index),
+        data: Object.keys((_seriesData$chartData5 = seriesData === null || seriesData === void 0 ? void 0 : seriesData.chartData) !== null && _seriesData$chartData5 !== void 0 ? _seriesData$chartData5 : {}).map(function (key, subIndex) {
+          var _seriesData$chartData6, _seriesData$chartData7, _seriesData$chartData8, _objectData$barColor$, _objectData$barColor, _objectData$color, _seriesOption$subInde, _seriesOption$subInde2;
           return {
-            value: seriesData === null || seriesData === void 0 ? void 0 : (_seriesData$chartData5 = seriesData.chartData) === null || _seriesData$chartData5 === void 0 ? void 0 : (_seriesData$chartData6 = _seriesData$chartData5[key]) === null || _seriesData$chartData6 === void 0 ? void 0 : _seriesData$chartData6["x".concat(index + 1)],
+            value: (_seriesData$chartData6 = seriesData === null || seriesData === void 0 ? void 0 : (_seriesData$chartData7 = seriesData.chartData) === null || _seriesData$chartData7 === void 0 ? void 0 : (_seriesData$chartData8 = _seriesData$chartData7[key]) === null || _seriesData$chartData8 === void 0 ? void 0 : _seriesData$chartData8["x".concat(index + 1)]) !== null && _seriesData$chartData6 !== void 0 ? _seriesData$chartData6 : '',
             itemStyle: {
-              color: (objectData === null || objectData === void 0 ? void 0 : (_objectData$barColor = objectData.barColor) === null || _objectData$barColor === void 0 ? void 0 : _objectData$barColor[subIndex]) || (objectData === null || objectData === void 0 ? void 0 : objectData.color)
-            }
+              color: ((_objectData$barColor$ = objectData === null || objectData === void 0 ? void 0 : (_objectData$barColor = objectData.barColor) === null || _objectData$barColor === void 0 ? void 0 : _objectData$barColor[subIndex]) !== null && _objectData$barColor$ !== void 0 ? _objectData$barColor$ : '') || ((_objectData$color = objectData === null || objectData === void 0 ? void 0 : objectData.color) !== null && _objectData$color !== void 0 ? _objectData$color : '')
+            },
+            tooltip: _objectSpread2({}, (_seriesOption$subInde = (_seriesOption$subInde2 = seriesOption[subIndex]) === null || _seriesOption$subInde2 === void 0 ? void 0 : _seriesOption$subInde2.tooltip) !== null && _seriesOption$subInde !== void 0 ? _seriesOption$subInde : {})
           };
         })
       });
@@ -82844,10 +85013,12 @@ var BaseVerticalBarChart = function BaseVerticalBarChart(props) {
         containLabel: gridContainLabel
       }, gridOptions),
       xAxis: {
-        data: Object.keys((_seriesData$chartData7 = seriesData === null || seriesData === void 0 ? void 0 : seriesData.chartData) !== null && _seriesData$chartData7 !== void 0 ? _seriesData$chartData7 : {}),
+        data: Object.keys((_seriesData$chartData9 = seriesData === null || seriesData === void 0 ? void 0 : seriesData.chartData) !== null && _seriesData$chartData9 !== void 0 ? _seriesData$chartData9 : {}),
         show: xAxisShow,
         type: 'category'
       },
+      legend: _objectSpread2({}, legend),
+      tooltip: _objectSpread2({}, tooltip),
       yAxis: {
         type: 'value',
         axisLabel: {
@@ -82883,17 +85054,20 @@ BaseVerticalBarChart.propTypes = {
   gridContainLabel: propTypes$1.exports.bool,
   gridOptions: propTypes$1.exports.object,
   xAxisShow: propTypes$1.exports.bool,
+  tooltip: propTypes$1.exports.object,
   seriesData: propTypes$1.exports.shape({
     chartData: propTypes$1.exports.object,
     metaData: propTypes$1.exports.object
   }),
-  onEvents: propTypes$1.exports.object,
+  onEvents: propTypes$1.exports.func,
   yAxisLabelShow: propTypes$1.exports.bool,
   ySplitLineShow: propTypes$1.exports.bool,
   yAxisLineShow: propTypes$1.exports.bool,
   yAxisTickShow: propTypes$1.exports.bool,
   axisColor: propTypes$1.exports.string,
   barWidth: propTypes$1.exports.string,
+  legend: propTypes$1.exports.object,
+  seriesName: propTypes$1.exports.func,
   cursor: propTypes$1.exports.string,
   stacked: propTypes$1.exports.bool,
   seriesOption: propTypes$1.exports.arrayOf(propTypes$1.exports.shape),
@@ -82910,14 +85084,21 @@ BaseVerticalBarChart.defaultProps = {
     top: 5
   },
   xAxisShow: false,
+  tooltip: {
+    trigger: 'item'
+  },
   seriesData: {},
-  onEvents: {},
+  onEvents: function onEvents() {},
   yAxisLabelShow: false,
   ySplitLineShow: false,
   yAxisLineShow: false,
   yAxisTickShow: false,
   axisColor: 'grey',
   barWidth: '50%',
+  seriesName: function seriesName() {},
+  legend: {
+    show: true
+  },
   cursor: 'default',
   stacked: true,
   seriesOption: [{
@@ -82930,13 +85111,13 @@ BaseVerticalBarChart.defaultProps = {
   className: ''
 };
 
-var css$2 = ".BaseHorizontalBarChart_module_root__75f8867a {\n  width: \"100%\";\n}";
+var css$4 = ".BaseHorizontalBarChart_module_root__75f8867a {\n  width: \"100%\";\n}";
 var modules_8904c6a0 = {"root":"BaseHorizontalBarChart_module_root__75f8867a"};
-n(css$2,{});
+n(css$4,{});
 
-use([install$2, install$3, install$4, install$1, install$7, install]);
+use([install$2, install$3, install$4, install$1, install$8, install]);
 var BaseHorizontalBarChart = function BaseHorizontalBarChart(props) {
-  var _seriesData$chartData, _seriesData$chartData7;
+  var _seriesOption$length, _seriesData$metaData$, _seriesData$metaData, _seriesData$metaData$2, _seriesData$chartData, _seriesData$chartData9;
   var title = props.title,
     gridContainLabel = props.gridContainLabel,
     gridOptions = props.gridOptions,
@@ -82949,13 +85130,16 @@ var BaseHorizontalBarChart = function BaseHorizontalBarChart(props) {
     yAxisTickShow = props.yAxisTickShow,
     barWidth = props.barWidth,
     cursor = props.cursor,
+    legend = props.legend,
+    tooltip = props.tooltip,
+    seriesName = props.seriesName,
     stacked = props.stacked,
     seriesOption = props.seriesOption,
     style = props.style,
     className = props.className;
   var seriesOptionObject = {
     type: 'bar',
-    barWidth: stacked ? barWidth : barWidth / seriesOption.length,
+    barWidth: stacked ? barWidth : barWidth / ((_seriesOption$length = seriesOption === null || seriesOption === void 0 ? void 0 : seriesOption.length) !== null && _seriesOption$length !== void 0 ? _seriesOption$length : 1),
     cursor: cursor,
     stack: stacked,
     groupPadding: 3,
@@ -82974,19 +85158,27 @@ var BaseHorizontalBarChart = function BaseHorizontalBarChart(props) {
     itemStyle: {
       borderRadius: [0, 2, 2, 0]
     },
+    name: (_seriesData$metaData$ = seriesData === null || seriesData === void 0 ? void 0 : (_seriesData$metaData = seriesData.metaData) === null || _seriesData$metaData === void 0 ? void 0 : (_seriesData$metaData$2 = _seriesData$metaData.keyData) === null || _seriesData$metaData$2 === void 0 ? void 0 : _seriesData$metaData$2.x1) !== null && _seriesData$metaData$ !== void 0 ? _seriesData$metaData$ : '',
     data: Object.keys((_seriesData$chartData = seriesData === null || seriesData === void 0 ? void 0 : seriesData.chartData) !== null && _seriesData$chartData !== void 0 ? _seriesData$chartData : {}).map(function (key) {
-      var _seriesData$chartData2, _seriesData$chartData3;
-      return seriesData === null || seriesData === void 0 ? void 0 : (_seriesData$chartData2 = seriesData.chartData) === null || _seriesData$chartData2 === void 0 ? void 0 : (_seriesData$chartData3 = _seriesData$chartData2[key]) === null || _seriesData$chartData3 === void 0 ? void 0 : _seriesData$chartData3.x1;
+      var _seriesData$chartData2, _seriesData$chartData3, _seriesData$chartData4;
+      return (_seriesData$chartData2 = seriesData === null || seriesData === void 0 ? void 0 : (_seriesData$chartData3 = seriesData.chartData) === null || _seriesData$chartData3 === void 0 ? void 0 : (_seriesData$chartData4 = _seriesData$chartData3[key]) === null || _seriesData$chartData4 === void 0 ? void 0 : _seriesData$chartData4.x1) !== null && _seriesData$chartData2 !== void 0 ? _seriesData$chartData2 : '';
     })
   };
   var generateSeries = function generateSeries() {
     return seriesOption.map(function (objectData, index) {
-      var _objectData$label, _seriesData$chartData4;
+      var _seriesOptionObject$l, _objectData$label, _seriesData$chartData5;
       return _objectSpread2(_objectSpread2(_objectSpread2({}, seriesOptionObject), objectData), {}, {
-        label: _objectSpread2(_objectSpread2({}, seriesOptionObject.label), (_objectData$label = objectData === null || objectData === void 0 ? void 0 : objectData.label) !== null && _objectData$label !== void 0 ? _objectData$label : {}),
-        data: Object.keys((_seriesData$chartData4 = seriesData === null || seriesData === void 0 ? void 0 : seriesData.chartData) !== null && _seriesData$chartData4 !== void 0 ? _seriesData$chartData4 : {}).map(function (key) {
-          var _seriesData$chartData5, _seriesData$chartData6;
-          return seriesData === null || seriesData === void 0 ? void 0 : (_seriesData$chartData5 = seriesData.chartData) === null || _seriesData$chartData5 === void 0 ? void 0 : (_seriesData$chartData6 = _seriesData$chartData5[key]) === null || _seriesData$chartData6 === void 0 ? void 0 : _seriesData$chartData6["x".concat(index + 1)];
+        label: _objectSpread2(_objectSpread2({}, (_seriesOptionObject$l = seriesOptionObject === null || seriesOptionObject === void 0 ? void 0 : seriesOptionObject.label) !== null && _seriesOptionObject$l !== void 0 ? _seriesOptionObject$l : {}), (_objectData$label = objectData === null || objectData === void 0 ? void 0 : objectData.label) !== null && _objectData$label !== void 0 ? _objectData$label : {}),
+        name: seriesName(index),
+        data: Object.keys((_seriesData$chartData5 = seriesData === null || seriesData === void 0 ? void 0 : seriesData.chartData) !== null && _seriesData$chartData5 !== void 0 ? _seriesData$chartData5 : {}).map(function (key, subIndex) {
+          var _seriesData$chartData6, _seriesData$chartData7, _seriesData$chartData8, _objectData$barColor$, _objectData$barColor, _objectData$color, _seriesOption$subInde, _seriesOption$subInde2;
+          return {
+            value: (_seriesData$chartData6 = seriesData === null || seriesData === void 0 ? void 0 : (_seriesData$chartData7 = seriesData.chartData) === null || _seriesData$chartData7 === void 0 ? void 0 : (_seriesData$chartData8 = _seriesData$chartData7[key]) === null || _seriesData$chartData8 === void 0 ? void 0 : _seriesData$chartData8["x".concat(index + 1)]) !== null && _seriesData$chartData6 !== void 0 ? _seriesData$chartData6 : '',
+            itemStyle: {
+              color: ((_objectData$barColor$ = objectData === null || objectData === void 0 ? void 0 : (_objectData$barColor = objectData.barColor) === null || _objectData$barColor === void 0 ? void 0 : _objectData$barColor[subIndex]) !== null && _objectData$barColor$ !== void 0 ? _objectData$barColor$ : '') || ((_objectData$color = objectData === null || objectData === void 0 ? void 0 : objectData.color) !== null && _objectData$color !== void 0 ? _objectData$color : '')
+            },
+            tooltip: _objectSpread2({}, (_seriesOption$subInde = (_seriesOption$subInde2 = seriesOption[subIndex]) === null || _seriesOption$subInde2 === void 0 ? void 0 : _seriesOption$subInde2.tooltip) !== null && _seriesOption$subInde !== void 0 ? _seriesOption$subInde : {})
+          };
         })
       });
     });
@@ -83003,8 +85195,10 @@ var BaseHorizontalBarChart = function BaseHorizontalBarChart(props) {
         show: xAxisShow,
         type: 'value'
       },
+      legend: _objectSpread2({}, legend),
+      tooltip: _objectSpread2({}, tooltip),
       yAxis: {
-        data: Object.keys((_seriesData$chartData7 = seriesData === null || seriesData === void 0 ? void 0 : seriesData.chartData) !== null && _seriesData$chartData7 !== void 0 ? _seriesData$chartData7 : {}),
+        data: Object.keys((_seriesData$chartData9 = seriesData === null || seriesData === void 0 ? void 0 : seriesData.chartData) !== null && _seriesData$chartData9 !== void 0 ? _seriesData$chartData9 : {}),
         type: 'category',
         axisLabel: {
           show: yAxisLabelShow
@@ -83034,17 +85228,20 @@ BaseHorizontalBarChart.propTypes = {
   title: propTypes$1.exports.string,
   gridContainLabel: propTypes$1.exports.bool,
   gridOptions: propTypes$1.exports.object,
+  tooltip: propTypes$1.exports.object,
   xAxisShow: propTypes$1.exports.bool,
   seriesData: propTypes$1.exports.shape({
     chartData: propTypes$1.exports.object,
     metaData: propTypes$1.exports.object
   }),
-  onEvents: propTypes$1.exports.object,
+  onEvents: propTypes$1.exports.func,
   yAxisLabelShow: propTypes$1.exports.bool,
   ySplitLineShow: propTypes$1.exports.bool,
   yAxisLineShow: propTypes$1.exports.bool,
   yAxisTickShow: propTypes$1.exports.bool,
   barWidth: propTypes$1.exports.string,
+  legend: propTypes$1.exports.object,
+  seriesName: propTypes$1.exports.func,
   cursor: propTypes$1.exports.string,
   stacked: propTypes$1.exports.bool,
   seriesOption: propTypes$1.exports.objectOf(propTypes$1.exports.shape),
@@ -83061,13 +85258,20 @@ BaseHorizontalBarChart.defaultProps = {
     top: 5
   },
   xAxisShow: false,
+  tooltip: {
+    trigger: 'item'
+  },
   seriesData: {},
-  onEvents: {},
+  onEvents: function onEvents() {},
   yAxisLabelShow: false,
   ySplitLineShow: false,
   yAxisLineShow: false,
   yAxisTickShow: false,
   barWidth: '50%',
+  seriesName: function seriesName() {},
+  legend: {
+    show: false
+  },
   cursor: 'default',
   stacked: true,
   seriesOption: [{
@@ -83080,9 +85284,155 @@ BaseHorizontalBarChart.defaultProps = {
   className: ''
 };
 
-var css$1 = ".BaseWidget_module_root__57853874 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  height: 100%;\n  width: 100%;\n  padding: 0.25rem;\n}\n.BaseWidget_module_root__57853874 .BaseWidget_module_header__57853874 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  padding: 0.25rem;\n}\n.BaseWidget_module_root__57853874 .BaseWidget_module_header__57853874 .BaseWidget_module_headerTitle__57853874 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n}\n.BaseWidget_module_root__57853874 .BaseWidget_module_header__57853874 .BaseWidget_module_headerTitle__57853874.BaseWidget_module_noOptions__57853874 {\n  flex: 1;\n}\n.BaseWidget_module_root__57853874 .BaseWidget_module_header__57853874 .BaseWidget_module_headerTitle__57853874 .BaseWidget_module_title__57853874 {\n  white-space: nowrap;\n  color: var(--white);\n}\n.BaseWidget_module_root__57853874 .BaseWidget_module_header__57853874 .BaseWidget_module_headerTitle__57853874 .BaseWidget_module_value__57853874 {\n  white-space: nowrap;\n  color: var(--white);\n}\n.BaseWidget_module_root__57853874 .BaseWidget_module_header__57853874 .BaseWidget_module_headerOptions__57853874 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-end;\n  align-items: center;\n  gap: 0.5rem;\n}\n.BaseWidget_module_root__57853874 .BaseWidget_module_header__57853874 .BaseWidget_module_headerOptions__57853874 .BaseWidget_module_dropdownHeader__57853874 [data-elem=select] {\n  background-color: transparent;\n  width: 100%;\n  color: var(--white);\n  padding: 0.07rem 0.5rem;\n}\n.BaseWidget_module_root__57853874 .BaseWidget_module_header__57853874 .BaseWidget_module_headerOptions__57853874 .BaseWidget_module_dropdownHeader__57853874 [data-elem=select] [data-elem=placeholder] {\n  font-size: 0.875rem;\n  color: var(--white);\n}\n.BaseWidget_module_root__57853874 .BaseWidget_module_header__57853874 .BaseWidget_module_headerOptions__57853874 .BaseWidget_module_dropdownHeader__57853874 [data-elem=select] > svg {\n  fill: var(--white);\n  width: 0.875rem;\n}\n.BaseWidget_module_root__57853874 .BaseWidget_module_header__57853874 .BaseWidget_module_headerOptions__57853874 .BaseWidget_module_expandButton__57853874 {\n  height: 1.75rem;\n  color: var(--white);\n  border-color: var(--white);\n}\n.BaseWidget_module_root__57853874 .BaseWidget_module_header__57853874 .BaseWidget_module_headerOptions__57853874 .BaseWidget_module_expandButton__57853874 .BaseWidget_module_expandIcon__57853874 {\n  height: 1.25rem;\n  width: 1.25rem;\n  fill: var(--white);\n}\n.BaseWidget_module_root__57853874 .BaseWidget_module_children__57853874 {\n  flex: 1 1;\n}\n\n.BaseWidget_module_dropdownPopper__57853874 {\n  padding: 0rem;\n  background: var(--grey1);\n}\n.BaseWidget_module_dropdownPopper__57853874 .BaseWidget_module_dropdownItem__57853874 {\n  height: 2.25rem;\n  color: var(--white);\n  background: var(--grey);\n}\n.BaseWidget_module_dropdownPopper__57853874 .BaseWidget_module_dropdownItem__57853874:hover, .BaseWidget_module_dropdownPopper__57853874 .BaseWidget_module_dropdownItem__57853874:focus {\n  color: var(--dark-grey);\n  background: var(--grey2);\n}\n.BaseWidget_module_dropdownPopper__57853874 .BaseWidget_module_dropdownItem__57853874:hover label > svg, .BaseWidget_module_dropdownPopper__57853874 .BaseWidget_module_dropdownItem__57853874:focus label > svg {\n  border: 1px solid var(--dark-grey);\n  border-radius: 0.25rem;\n}";
+var css$3 = ".BasePieChart_module_root__45f70e28 {\n  width: \"100%\";\n}";
+var modules_c20882aa = {"root":"BasePieChart_module_root__45f70e28"};
+n(css$3,{});
+
+use([install$2, install$3, install$4, install$1, install$7, install]);
+var BasePieChart = function BasePieChart(props) {
+  var _seriesData$chartData;
+  var title = props.title,
+    gridOptions = props.gridOptions,
+    tooltip = props.tooltip,
+    seriesData = props.seriesData,
+    semiDoughnut = props.semiDoughnut,
+    radius = props.radius,
+    cursor = props.cursor,
+    showLabelLine = props.showLabelLine,
+    itemStyle = props.itemStyle,
+    legend = props.legend,
+    seriesOption = props.seriesOption,
+    style = props.style,
+    className = props.className;
+  var seriesOptionObject = {
+    type: 'pie',
+    radius: radius,
+    legendHoverLink: false,
+    avoidLabelOverlap: false,
+    cursor: cursor,
+    labelLine: {
+      show: showLabelLine
+    },
+    itemStyle: _objectSpread2({}, itemStyle),
+    data: Object.keys((_seriesData$chartData = seriesData === null || seriesData === void 0 ? void 0 : seriesData.chartData) !== null && _seriesData$chartData !== void 0 ? _seriesData$chartData : {}).map(function (key) {
+      var _seriesData$chartData2;
+      var temp = [];
+      temp.push({
+        value: seriesData === null || seriesData === void 0 ? void 0 : (_seriesData$chartData2 = seriesData.chartData) === null || _seriesData$chartData2 === void 0 ? void 0 : _seriesData$chartData2[key]
+      });
+      return temp;
+    })
+  };
+  var generateSeries = function generateSeries() {
+    var _seriesData$chartData3, _seriesData$chartData7;
+    var semiDoughnutValue = 0;
+    return _objectSpread2(_objectSpread2(_objectSpread2({}, seriesOptionObject), seriesOption), {}, {
+      startAngle: semiDoughnut ? 180 : 90,
+      data: semiDoughnut ? [].concat(_toConsumableArray(Object.keys((_seriesData$chartData3 = seriesData === null || seriesData === void 0 ? void 0 : seriesData.chartData) !== null && _seriesData$chartData3 !== void 0 ? _seriesData$chartData3 : {}).map(function (key, subIndex) {
+        var _seriesData$chartData4, _seriesData$chartData5, _seriesData$chartData6, _seriesData$metaData, _seriesOption$subInde, _seriesOption$subInde2, _seriesOption$subInde3, _seriesOption$subInde4;
+        semiDoughnutValue += (_seriesData$chartData4 = seriesData === null || seriesData === void 0 ? void 0 : (_seriesData$chartData5 = seriesData.chartData) === null || _seriesData$chartData5 === void 0 ? void 0 : _seriesData$chartData5[key]) !== null && _seriesData$chartData4 !== void 0 ? _seriesData$chartData4 : 0;
+        return {
+          value: seriesData === null || seriesData === void 0 ? void 0 : (_seriesData$chartData6 = seriesData.chartData) === null || _seriesData$chartData6 === void 0 ? void 0 : _seriesData$chartData6[key],
+          name: seriesData === null || seriesData === void 0 ? void 0 : (_seriesData$metaData = seriesData.metaData) === null || _seriesData$metaData === void 0 ? void 0 : _seriesData$metaData.keyData[key],
+          itemStyle: _objectSpread2({}, (_seriesOption$subInde = seriesOption === null || seriesOption === void 0 ? void 0 : (_seriesOption$subInde2 = seriesOption[subIndex]) === null || _seriesOption$subInde2 === void 0 ? void 0 : _seriesOption$subInde2.itemStyle) !== null && _seriesOption$subInde !== void 0 ? _seriesOption$subInde : {}),
+          label: _objectSpread2({}, seriesOption === null || seriesOption === void 0 ? void 0 : (_seriesOption$subInde3 = seriesOption[subIndex]) === null || _seriesOption$subInde3 === void 0 ? void 0 : _seriesOption$subInde3.label),
+          tooltip: _objectSpread2({}, seriesOption === null || seriesOption === void 0 ? void 0 : (_seriesOption$subInde4 = seriesOption[subIndex]) === null || _seriesOption$subInde4 === void 0 ? void 0 : _seriesOption$subInde4.tooltip)
+        };
+      })), [{
+        value: semiDoughnutValue,
+        name: '',
+        itemStyle: {
+          opacity: 0
+        },
+        tooltip: {
+          show: false
+        }
+      }]) : Object.keys((_seriesData$chartData7 = seriesData === null || seriesData === void 0 ? void 0 : seriesData.chartData) !== null && _seriesData$chartData7 !== void 0 ? _seriesData$chartData7 : {}).map(function (key, subIndex) {
+        var _seriesData$chartData8, _seriesData$metaData2, _seriesData$metaData3, _seriesOption$subInde5, _seriesOption$subInde6, _seriesOption$subInde7;
+        return {
+          value: seriesData === null || seriesData === void 0 ? void 0 : (_seriesData$chartData8 = seriesData.chartData) === null || _seriesData$chartData8 === void 0 ? void 0 : _seriesData$chartData8[key],
+          name: seriesData === null || seriesData === void 0 ? void 0 : (_seriesData$metaData2 = seriesData.metaData) === null || _seriesData$metaData2 === void 0 ? void 0 : (_seriesData$metaData3 = _seriesData$metaData2.keyData) === null || _seriesData$metaData3 === void 0 ? void 0 : _seriesData$metaData3[key],
+          itemStyle: _objectSpread2({}, seriesOption === null || seriesOption === void 0 ? void 0 : (_seriesOption$subInde5 = seriesOption[subIndex]) === null || _seriesOption$subInde5 === void 0 ? void 0 : _seriesOption$subInde5.itemStyle),
+          label: _objectSpread2({}, seriesOption === null || seriesOption === void 0 ? void 0 : (_seriesOption$subInde6 = seriesOption[subIndex]) === null || _seriesOption$subInde6 === void 0 ? void 0 : _seriesOption$subInde6.label),
+          tooltip: _objectSpread2({}, seriesOption === null || seriesOption === void 0 ? void 0 : (_seriesOption$subInde7 = seriesOption[subIndex]) === null || _seriesOption$subInde7 === void 0 ? void 0 : _seriesOption$subInde7.tooltip)
+        };
+      })
+    });
+  };
+  return /*#__PURE__*/jsxRuntime.jsx(_default, {
+    option: _objectSpread2(_objectSpread2({
+      title: {
+        text: title
+      }
+    }, gridOptions), {}, {
+      tooltip: _objectSpread2({}, tooltip),
+      legend: _objectSpread2({}, legend),
+      series: generateSeries()
+    }),
+    echarts: echarts,
+    notMerge: true,
+    lazyUpdate: true,
+    className: classes(className, modules_c20882aa.root),
+    style: style
+  });
+};
+BasePieChart.propTypes = {
+  title: propTypes$1.exports.string,
+  gridOptions: propTypes$1.exports.object,
+  tooltip: propTypes$1.exports.object,
+  seriesData: propTypes$1.exports.shape({
+    chartData: propTypes$1.exports.object,
+    metaData: propTypes$1.exports.object
+  }),
+  semiDoughnut: propTypes$1.exports.bool,
+  cursor: propTypes$1.exports.string,
+  radius: propTypes$1.exports.arrayOf(propTypes$1.exports.string),
+  showLabelLine: propTypes$1.exports.bool,
+  itemStyle: propTypes$1.exports.object,
+  legend: propTypes$1.exports.object,
+  seriesOption: propTypes$1.exports.arrayOf(propTypes$1.exports.shape),
+  style: propTypes$1.exports.objectOf(propTypes$1.exports.shape),
+  className: propTypes$1.exports.string
+};
+BasePieChart.defaultProps = {
+  title: '',
+  gridOptions: {
+    left: 0,
+    right: 0,
+    bottom: 20,
+    top: 10
+  },
+  tooltip: {
+    trigger: 'item'
+  },
+  seriesData: {},
+  semiDoughnut: true,
+  cursor: 'default',
+  radius: ['30%', '60%'],
+  showLabelLine: false,
+  itemStyle: {
+    borderWidth: 5,
+    borderColor: 'white',
+    borderType: 'solid'
+  },
+  legend: {
+    top: '80%',
+    left: '30%',
+    orient: 'vertical'
+  },
+  seriesOption: [{
+    stackIndex: 1
+  }],
+  style: {
+    width: '100%',
+    height: '100%'
+  },
+  className: ''
+};
+
+var css$2 = ".BaseWidget_module_root__57853874 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  height: 100%;\n  width: 100%;\n  padding: 0.25rem;\n}\n.BaseWidget_module_root__57853874 .BaseWidget_module_header__57853874 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  padding: 0.25rem;\n}\n.BaseWidget_module_root__57853874 .BaseWidget_module_header__57853874 .BaseWidget_module_headerTitle__57853874 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n}\n.BaseWidget_module_root__57853874 .BaseWidget_module_header__57853874 .BaseWidget_module_headerTitle__57853874.BaseWidget_module_noOptions__57853874 {\n  flex: 1;\n}\n.BaseWidget_module_root__57853874 .BaseWidget_module_header__57853874 .BaseWidget_module_headerTitle__57853874 .BaseWidget_module_title__57853874 {\n  white-space: nowrap;\n  color: var(--white);\n}\n.BaseWidget_module_root__57853874 .BaseWidget_module_header__57853874 .BaseWidget_module_headerTitle__57853874 .BaseWidget_module_value__57853874 {\n  white-space: nowrap;\n  color: var(--white);\n}\n.BaseWidget_module_root__57853874 .BaseWidget_module_header__57853874 .BaseWidget_module_headerOptions__57853874 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-end;\n  align-items: center;\n  gap: 0.5rem;\n}\n.BaseWidget_module_root__57853874 .BaseWidget_module_header__57853874 .BaseWidget_module_headerOptions__57853874 .BaseWidget_module_dropdownHeader__57853874 [data-elem=select] {\n  background-color: transparent;\n  width: 100%;\n  color: var(--white);\n  padding: 0.07rem 0.5rem;\n}\n.BaseWidget_module_root__57853874 .BaseWidget_module_header__57853874 .BaseWidget_module_headerOptions__57853874 .BaseWidget_module_dropdownHeader__57853874 [data-elem=select] [data-elem=placeholder] {\n  font-size: 0.875rem;\n  color: var(--white);\n}\n.BaseWidget_module_root__57853874 .BaseWidget_module_header__57853874 .BaseWidget_module_headerOptions__57853874 .BaseWidget_module_dropdownHeader__57853874 [data-elem=select] > svg {\n  fill: var(--white);\n  width: 0.875rem;\n}\n.BaseWidget_module_root__57853874 .BaseWidget_module_header__57853874 .BaseWidget_module_headerOptions__57853874 .BaseWidget_module_expandButton__57853874 {\n  height: 1.75rem;\n  color: var(--white);\n  border-color: var(--white);\n}\n.BaseWidget_module_root__57853874 .BaseWidget_module_header__57853874 .BaseWidget_module_headerOptions__57853874 .BaseWidget_module_expandButton__57853874 .BaseWidget_module_expandIcon__57853874 {\n  height: 1.25rem;\n  width: 1.25rem;\n  fill: var(--white);\n}\n.BaseWidget_module_root__57853874 .BaseWidget_module_children__57853874 {\n  flex: 1 1;\n}\n\n.BaseWidget_module_dropdownPopper__57853874 {\n  padding: 0rem;\n  background: var(--grey1);\n}\n.BaseWidget_module_dropdownPopper__57853874 .BaseWidget_module_dropdownItem__57853874 {\n  height: 2.25rem;\n  color: var(--white);\n  background: var(--grey);\n}\n.BaseWidget_module_dropdownPopper__57853874 .BaseWidget_module_dropdownItem__57853874:hover, .BaseWidget_module_dropdownPopper__57853874 .BaseWidget_module_dropdownItem__57853874:focus {\n  color: var(--dark-grey);\n  background: var(--grey2);\n}\n.BaseWidget_module_dropdownPopper__57853874 .BaseWidget_module_dropdownItem__57853874:hover label > svg, .BaseWidget_module_dropdownPopper__57853874 .BaseWidget_module_dropdownItem__57853874:focus label > svg {\n  border: 1px solid var(--dark-grey);\n  border-radius: 0.25rem;\n}";
 var modules_6a0e74b6 = {"root":"BaseWidget_module_root__57853874","header":"BaseWidget_module_header__57853874","header-title":"BaseWidget_module_headerTitle__57853874","no-options":"BaseWidget_module_noOptions__57853874","title":"BaseWidget_module_title__57853874","value":"BaseWidget_module_value__57853874","header-options":"BaseWidget_module_headerOptions__57853874","dropdown-header":"BaseWidget_module_dropdownHeader__57853874","expand-button":"BaseWidget_module_expandButton__57853874","expand-icon":"BaseWidget_module_expandIcon__57853874","children":"BaseWidget_module_children__57853874","dropdown-popper":"BaseWidget_module_dropdownPopper__57853874","dropdown-item":"BaseWidget_module_dropdownItem__57853874"};
-n(css$1,{});
+n(css$2,{});
 
 var generateOptions = function generateOptions(optionData) {
   var _optionData$id, _optionData$placehold, _optionData$value, _optionData$onChange, _optionData$selectOpt, _optionData$title, _optionData$onClick;
@@ -83178,9 +85528,9 @@ BaseWidget.defaultProps = {
   className: ''
 };
 
-var css = ".DisplayPicture_module_root__a7ba07d1.DisplayPicture_module_sm__a7ba07d1 img {\n  height: 1.5rem;\n  width: 1.5rem;\n  border-radius: 100%;\n}\n.DisplayPicture_module_root__a7ba07d1.DisplayPicture_module_sm__a7ba07d1 div {\n  height: 1.5rem;\n  width: 1.5rem;\n  border-radius: 100%;\n  background-color: var(--highlight);\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.DisplayPicture_module_root__a7ba07d1.DisplayPicture_module_sm__a7ba07d1 div span {\n  font-size: 1rem;\n  font-weight: 600;\n  color: var(--white);\n}\n.DisplayPicture_module_root__a7ba07d1.DisplayPicture_module_md__a7ba07d1 img {\n  height: 5.3125rem;\n  width: 5.3125rem;\n  border-radius: 100%;\n}\n.DisplayPicture_module_root__a7ba07d1.DisplayPicture_module_md__a7ba07d1 div {\n  height: 5.3125rem;\n  width: 5.3125rem;\n  border-radius: 100%;\n  background-color: var(--highlight);\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.DisplayPicture_module_root__a7ba07d1.DisplayPicture_module_md__a7ba07d1 div span {\n  font-size: 2rem;\n  font-weight: 600;\n  color: var(--white);\n}";
+var css$1 = ".DisplayPicture_module_root__a7ba07d1.DisplayPicture_module_sm__a7ba07d1 img {\n  height: 1.5rem;\n  width: 1.5rem;\n  border-radius: 100%;\n}\n.DisplayPicture_module_root__a7ba07d1.DisplayPicture_module_sm__a7ba07d1 div {\n  height: 1.5rem;\n  width: 1.5rem;\n  border-radius: 100%;\n  background-color: var(--highlight);\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.DisplayPicture_module_root__a7ba07d1.DisplayPicture_module_sm__a7ba07d1 div span {\n  font-size: 1rem;\n  font-weight: 600;\n  color: var(--white);\n}\n.DisplayPicture_module_root__a7ba07d1.DisplayPicture_module_md__a7ba07d1 img {\n  height: 5.3125rem;\n  width: 5.3125rem;\n  border-radius: 100%;\n}\n.DisplayPicture_module_root__a7ba07d1.DisplayPicture_module_md__a7ba07d1 div {\n  height: 5.3125rem;\n  width: 5.3125rem;\n  border-radius: 100%;\n  background-color: var(--highlight);\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.DisplayPicture_module_root__a7ba07d1.DisplayPicture_module_md__a7ba07d1 div span {\n  font-size: 2rem;\n  font-weight: 600;\n  color: var(--white);\n}";
 var modules_49a16e28 = {"root":"DisplayPicture_module_root__a7ba07d1","sm":"DisplayPicture_module_sm__a7ba07d1","md":"DisplayPicture_module_md__a7ba07d1"};
-n(css,{});
+n(css$1,{});
 
 var DisplayPicture = function DisplayPicture(props) {
   var name = props.name,
@@ -83212,6 +85562,75 @@ DisplayPicture.defaultProps = {
   url: '',
   className: '',
   size: 'sm'
+};
+
+var css = "div.Toggle_module_root__54079f3e {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  overflow: auto;\n  padding: 0.25rem;\n  background: var(--grey8);\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  border-radius: 0.4rem 0.4rem;\n  box-shadow: inset 0px 1px 2px rgba(97, 97, 97, 0.2), inset 0px 2px 4px rgba(97, 97, 97, 0.2);\n}\ndiv.Toggle_module_root__54079f3e [data-elem=base-cell].Toggle_module_toggleButton__54079f3e {\n  color: var(--grey);\n  padding: 0.2rem;\n  height: 2rem;\n  background: transparent;\n}\ndiv.Toggle_module_root__54079f3e [data-elem=base-cell].Toggle_module_toggleButton__54079f3e.Toggle_module_active__54079f3e {\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n  background: var(--white);\n  border-radius: 0.25rem;\n  color: var(--dark-grey);\n}";
+var modules_a2cdc77c = {"root":"Toggle_module_root__54079f3e","toggle-button":"Toggle_module_toggleButton__54079f3e","active":"Toggle_module_active__54079f3e"};
+n(css,{});
+
+/* eslint-disable no-unused-vars */
+var Toggle = function Toggle(props) {
+  var options = props.options,
+    selectedToggle = props.selectedToggle,
+    setSelectedToggle = props.setSelectedToggle,
+    onChange = props.onChange;
+  var onButtonClick = function onButtonClick(value) {
+    setSelectedToggle(value);
+    onChange(value);
+  };
+  return /*#__PURE__*/jsxRuntime.jsx("div", {
+    className: modules_a2cdc77c.root,
+    children: options.map(function (item) {
+      var title = item.title,
+        value = item.value,
+        leftComponent = item.leftComponent,
+        rightComponent = item.rightComponent,
+        color = item.color;
+      var isActive = selectedToggle === value;
+      return /*#__PURE__*/jsxRuntime.jsx(Button, {
+        className: classes(modules_a2cdc77c['toggle-button'], selectedToggle === value ? modules_a2cdc77c.active : ''),
+        onClick: function onClick() {
+          return onButtonClick(value);
+        },
+        title: value,
+        value: value,
+        color: isActive ? color : 'default',
+        leftComponent: leftComponent,
+        rightComponent: rightComponent,
+        children: value
+      }, title);
+    })
+  });
+};
+Toggle.propTypes = {
+  options: propTypes$1.exports.arrayOf(propTypes$1.exports.string),
+  selectedToggle: propTypes$1.exports.string,
+  setSelectedToggle: propTypes$1.exports.string
+};
+Toggle.defaultProps = {
+  options: [{
+    title: 'First',
+    value: 'First',
+    rightCompoenent: '',
+    leftCompoenent: ''
+  }, {
+    title: 'Second',
+    value: 'Second',
+    rightCompoenent: '',
+    leftCompoenent: ''
+  }, {
+    title: 'Third',
+    value: 'Third',
+    rightCompoenent: '',
+    leftCompoenent: ''
+  }, {
+    title: 'Fourth',
+    value: 'Fourth',
+    rightCompoenent: '',
+    leftCompoenent: ''
+  }],
+  selectedToggle: 'First',
+  setSelectedToggle: 'None'
 };
 
 var abapExports = requireAbap();
@@ -84253,6 +86672,7 @@ exports.BaseButton = BaseButton;
 exports.BaseCell = BaseCell;
 exports.BaseHorizontalBarChart = BaseHorizontalBarChart;
 exports.BaseModal = BaseModal;
+exports.BasePieChart = BasePieChart;
 exports.BaseSidePanel = BaseSidePanel;
 exports.BaseTable = BaseTable;
 exports.BaseVerticalBarChart = BaseVerticalBarChart;
@@ -84274,6 +86694,7 @@ exports.CrossIcon = Cross$1;
 exports.DAYS = DAYS;
 exports.DatePicker = DatePicker;
 exports.DeleteIcon = Delete;
+exports.DialogBox = DialogBox;
 exports.DisplayPicture = DisplayPicture;
 exports.DownloadIcon = Download;
 exports.Dropdown = Dropdown;
@@ -84309,6 +86730,7 @@ exports.TableFilters = TableFilters;
 exports.Tabs = Tabs;
 exports.TextField = TextField;
 exports.TickIcon = Tick;
+exports.Toggle = Toggle;
 exports.Tooltip = Tooltip;
 exports.ViewIcon = View;
 exports.classes = classes;
