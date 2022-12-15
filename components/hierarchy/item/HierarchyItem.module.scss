@@ -9,22 +9,32 @@
 		gap: 0.25rem;
 		min-height: 2rem;
 		height: auto;
-		padding: 0.25rem;
+		padding: 0rem 0.5rem;
 		cursor: pointer;
 
 		& > [data-elem='component1'],
 		& > [data-elem='component3'] {
 			@include flex;
-			.icon {
-				transform: rotate(-90deg);
+			.expand {
+				padding: 0;
+				height: auto;
 				width: 1rem;
 				height: 1rem;
+				.icon {
+					transform: rotate(-90deg);
+					width: 1rem;
+					height: 1rem;
+				}
 			}
 		}
 
 		& > [data-elem='component2'] {
 			flex: 1 1 auto;
 			.title {
+				@include flex(row, flex-start);
+				width: 100%;
+				height: auto;
+				padding: 0.25rem 0rem;
 				user-select: none;
 			}
 		}
@@ -73,8 +83,10 @@
 
 	&.open {
 		& > .header {
-			.icon {
-				transform: none;
+			.expand {
+				.icon {
+					transform: none;
+				}
 			}
 		}
 
