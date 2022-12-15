@@ -35,6 +35,7 @@ const HierarchyBrowser = (props) => {
 		className,
 		metadata,
 		onItemClick,
+		onItemDoubleClick,
 		minWidth,
 		maxWidth,
 		borderSize,
@@ -61,6 +62,12 @@ const HierarchyBrowser = (props) => {
 		};
 	};
 
+	const handleItemDoubleClick = (item, pathString) => {
+		return (open) => {
+			onItemDoubleClick(item, pathString, open);
+		};
+	};
+
 	const renderTree = (data, pathString = '') => {
 		if (data == null) {
 			return null;
@@ -73,6 +80,7 @@ const HierarchyBrowser = (props) => {
 				title={<Title item={data} />}
 				iconPlacement={hasChildren ? 'left' : 'none'}
 				onClick={handleItemClick(data, pathString)}
+				onDoubleClick={handleItemDoubleClick(data, pathString)}
 				{...setItemProps(data, pathString)}>
 				{hasChildren &&
 					(data.list?.map?.((item, idx) => {
@@ -109,6 +117,7 @@ HierarchyBrowser.propTypes = {
 		list: PropTypes.array,
 	}),
 	onItemClick: PropTypes.func,
+	onItemDoubleClick: PropTypes.func,
 	borderSize: PropTypes.number,
 	minWidth: PropTypes.number,
 	maxWidth: PropTypes.number,
@@ -121,6 +130,7 @@ HierarchyBrowser.defaultProps = {
 	className: '',
 	metadata: {},
 	onItemClick: () => {},
+	onItemDoubleClick: () => {},
 	borderSize: 4,
 	minWidth: 220,
 	maxWidth: null,
