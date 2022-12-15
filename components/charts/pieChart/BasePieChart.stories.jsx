@@ -1,5 +1,7 @@
 /* eslint-disable no-tabs */
 import React from 'react';
+import ReactDOMServer from 'react-dom/server';
+import { BaseChartTooltip } from '../chartTooltip';
 import BasePieChart from './BasePieChart';
 
 export default {
@@ -72,7 +74,16 @@ Default.args = {
 			const index = Object.keys(sampleData.metaData.keyData).find((key) => {
 				return sampleData.metaData.keyData[key] === param.name;
 			});
-			return `${param.marker} ${param.name} ${sampleData.metaData.controlsApplied[index].comp}/${sampleData.metaData.controlsApplied[index].count}`;
+			return ReactDOMServer.renderToString(
+				<BaseChartTooltip
+					title={param.name}
+					params={param}
+					body={{
+						[param.name]: `${sampleData.metaData.controlsApplied[index].comp} /
+							${sampleData.metaData.controlsApplied[index].count}`,
+					}}
+				/>
+			);
 		},
 	},
 	itemStyle: {

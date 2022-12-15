@@ -1,5 +1,7 @@
 /* eslint-disable no-tabs */
 import React from 'react';
+import ReactDOMServer from 'react-dom/server';
+import { BaseChartTooltip } from '../chartTooltip';
 import BaseHorizontalBarChart from './BaseHorizontalBarChart';
 
 export default {
@@ -91,10 +93,15 @@ const Template = (args) => {
 				tooltip={{
 					trigger: 'item',
 					formatter: (param) => {
-						// eslint-disable-next-line max-len
-						return `${param.marker} ${param.name} ${
-							sampleData.metaData.controlsApplied[param.name].x1
-						}`;
+						return ReactDOMServer.renderToString(
+							<BaseChartTooltip
+								params={param}
+								body={{
+									[param.name]:
+									sampleData.metaData.controlsApplied[param.name].x1,
+								}}
+							/>
+						);
 					},
 				}}
 				// legend={{
