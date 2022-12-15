@@ -67,7 +67,7 @@ export const usePagination = (props) => {
 };
 
 export const Pagination = forwardRef((props, ref) => {
-	const { className, floating, paginationState, paginationDispatch } = props;
+	const { className, floating, paginationState, paginationDispatch, loading } = props;
 
 	const { totalPages, currentPage, step } = paginationState;
 
@@ -89,6 +89,10 @@ export const Pagination = forwardRef((props, ref) => {
 			totalPages,
 		});
 	}, [currentPage, step]);
+
+	if (loading) {
+		return null;
+	}
 
 	return (
 		<div ref={ref} className={classes(styles.root, className, floating ? styles.floating : '')}>
