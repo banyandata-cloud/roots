@@ -46,7 +46,11 @@ export const Nested = () => {
 	return (
 		<div>
 			<Accordion title='Parent' description='This is the parent description'>
-				<Accordion title='Child' description='This is the child description' />
+				<Accordion
+					title='Child'
+					description='This is the child description'
+					onExpand={() => {}}
+				/>
 			</Accordion>
 		</div>
 	);

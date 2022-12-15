@@ -51,6 +51,15 @@
 
 		& > .body {
 			@include flex(column, flex-start, stretch);
+			> button[data-elem='base-cell'] {
+				width: fit-content;
+				align-self: flex-end;
+				@include flex(row, flex-end);
+				.expand {
+					height: 1.5rem;
+					width: 1.5rem;
+				}
+			}
 		}
 	}
 }

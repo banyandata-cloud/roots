@@ -1,12 +1,22 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { classes } from '../../utils/utils';
+import { Button } from '../buttons';
 import { BaseCell } from '../cell';
-import { CaretIcon } from '../icons';
+import { CaretIcon, ExpandArrowAltIcon } from '../icons';
 import styles from './Accordion.module.css';
 
 const Accordion = (props) => {
-	const { defaultOpen, iconPlacement, title, description, children, onClick, className } = props;
+	const {
+		defaultOpen,
+		iconPlacement,
+		title,
+		description,
+		children,
+		onClick,
+		className,
+		onExpand,
+	} = props;
 
 	const [open, setOpen] = useState(defaultOpen);
 
@@ -35,6 +45,18 @@ const Accordion = (props) => {
 			<div data-elem='body' className={styles.body}>
 				{description && <p>{description}</p>}
 				{children}
+				{onExpand && (
+					<Button
+						size='auto'
+						variant='text'
+						onClick={() => {
+							onExpand();
+						}}
+						rightComponent={() => {
+							return <ExpandArrowAltIcon className={styles.expand} />;
+						}}
+					/>
+				)}
 			</div>
 		</div>
 	);
@@ -47,6 +69,7 @@ Accordion.propTypes = {
 	defaultOpen: PropTypes.bool,
 	onClick: PropTypes.func,
 	className: PropTypes.string,
+	onExpand: PropTypes.func,
 };
 
 Accordion.defaultProps = {
@@ -56,6 +79,7 @@ Accordion.defaultProps = {
 	defaultOpen: false,
 	onClick: () => {},
 	className: '',
+	onExpand: null,
 };
 
 export default Accordion;
