@@ -805,3 +805,54 @@ WithCustomCells.args = {
 		},
 	},
 };
+
+const LoaderTemplate = (args) => {
+	const [tableData, setTableData] = useState({});
+
+	const [paginationState, paginationDispatch] = usePagination({
+		currentPage: 1,
+		totalPages: tableData.total_pages,
+	});
+
+	const [loading, setLoading] = useState(false);
+
+	const fetchAPI = () => {
+		setLoading(true);
+		setTimeout(() => {
+			setTableData(API_RESPONSE);
+			setLoading(false);
+		}, 1000);
+	};
+
+	useEffect(() => {
+		fetchAPI();
+	}, []);
+
+	return (
+		<div
+			style={{
+				background: '#777777',
+				padding: '1rem',
+				display: 'flex',
+				height: '100%',
+			}}>
+			<Table
+				{...args}
+				loading={loading}
+				headerData={tableData?.header}
+				tableData={tableData?.data}
+				paginationData={{
+					paginationState,
+					paginationDispatch,
+					onChange: fetchAPI,
+				}}
+			/>
+		</div>
+	);
+};
+
+export const WithLoader = LoaderTemplate.bind({});
+
+WithLoader.args = {
+	...WithCustomCells.args,
+};

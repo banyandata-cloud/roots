@@ -138,12 +138,13 @@ const Table = (props) => {
 				loading={loading}
 			/>
 
-			{paginationData != null && !loading && (
+			{paginationData != null && (
 				<Pagination
 					className={classes(styles.pagination, floating ? styles.floating : '')}
 					ref={paginationRef}
 					{...paginationData}
 					floating={floating}
+					loading={loading}
 				/>
 			)}
 		</div>
