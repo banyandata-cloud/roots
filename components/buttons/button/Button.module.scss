@@ -1,4 +1,4 @@
-@import '../../assets/styles';
+@import '../../../styles/';
 
 .root[data-elem='base-cell'] {
 	cursor: pointer;
@@ -69,17 +69,22 @@
 	}
 
 	&:disabled {
-		&.contained {
-			background-color: $grey4;
-			color: $grey;
-		}
-		&.outlined {
-			background-color: transparent;
-			border-color: $grey;
-		}
-		&.outlined,
-		&.text {
-			color: $grey;
+		&.primary,
+		&.success,
+		&.danger,
+		&.warning {
+			&.contained {
+				background-color: $grey4;
+				color: $grey;
+			}
+			&.outlined {
+				background-color: transparent;
+				border-color: $grey;
+			}
+			&.outlined,
+			&.text {
+				color: $grey;
+			}
 		}
 	}
 }

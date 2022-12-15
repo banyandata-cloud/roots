@@ -1,4 +1,4 @@
-@import '../../../styles/_index';
+@import '../../../styles';
 
 .root {
 	@include flex(row, flex-start);
@@ -15,7 +15,7 @@
 			}
 		}
 
-		&.selected {
+		&[data-active='true'] {
 			> [data-elem='base-cell'] {
 				background: $background;
 			}

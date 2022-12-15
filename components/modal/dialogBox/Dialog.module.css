@@ -1,0 +1,34 @@
+.root {
+  padding: 0.25rem 0px;
+  max-height: 14rem;
+  background: #ffffff;
+  border-radius: 0.25rem;
+}
+.root.sm {
+  width: 21.25rem;
+}
+.root.md {
+  width: 35rem;
+}
+.root .header {
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: var(--black);
+}
+.root .footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+}
+.root .footer .cancel[data-elem=base-cell] {
+  display: flex;
+  color: var(--grey1);
+  border-radius: 0.25rem;
+  border: 1px solid var(--grey4);
+}
+.root .description {
+  padding: 0.5rem 0px;
+  font-size: 0.75rem;
+}/*# sourceMappingURL=Dialog.module.css.map */

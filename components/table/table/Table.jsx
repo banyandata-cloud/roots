@@ -29,6 +29,8 @@ const Table = (props) => {
 		chipsData,
 		filtersData,
 		paginationData,
+		loading,
+		disabledFilterOptions,
 	} = props;
 
 	const ref = useRef(null);
@@ -44,7 +46,7 @@ const Table = (props) => {
 	// for pagination docking using intersection observer
 	useEffect(() => {
 		const tableElem = ref.current;
-		if (tableElem) {
+		if (tableElem && !loading) {
 			const lastRow = tableElem.querySelector(
 				'[data-elem="table-body"] [data-elem="table-row"]:last-child'
 			);
@@ -72,21 +74,21 @@ const Table = (props) => {
 				observer.observe(lastRow);
 			}
 		}
-	}, [tableData]);
+	}, [tableData, loading]);
 
 	// for dynamically resizing table vertically acc to provided addons
 	useEffect(() => {
 		const tableElem = ref.current;
-		if (tableElem) {
+		if (tableElem && !loading) {
 			const totalAddons = [chipsData, filtersData].filter(Boolean).length;
 			tableElem.style.height = `calc(100% - ${totalAddons * 3}rem)`;
 		}
-	}, [chipsData, filtersData]);
+	}, [chipsData, filtersData, loading]);
 
 	// setting body and header min-width to allow horizontal sticky column beyond viewport width
 	useEffect(() => {
 		const tableElem = ref.current;
-		if (tableElem) {
+		if (tableElem && !loading) {
 			const tableHeaderElem = tableElem.querySelector('[data-elem="table-header"]');
 			const tableBodyElem = tableElem.querySelector('[data-elem="table-body"]');
 
@@ -99,7 +101,7 @@ const Table = (props) => {
 				tableBodyElem.style.minWidth = `${minWidth}rem`;
 			}
 		}
-	}, [hiddenColumns, headerData]);
+	}, [hiddenColumns, headerData, loading]);
 
 	// set the hidden columns state
 	useEffect(() => {
@@ -109,17 +111,19 @@ const Table = (props) => {
 	return (
 		<div className={classes(styles.root, className)}>
 			{chipsData != null && (chipsData?.chips?.length > 0 || chipsData?.showBack != null) && (
-				<TableChips className={styles.chips} {...chipsData} />
+				<TableChips className={styles.chips} {...chipsData} loading={loading} />
 			)}
 			{filtersData != null && (
 				<TableFilters
 					className={styles.filters}
 					{...{
 						...filtersData,
+						disabledFilterOptions,
 						headerData,
 						hiddenColumns,
 						setHiddenColumns,
 					}}
+					loading={loading}
 				/>
 			)}
 			<BaseTable
@@ -133,6 +137,7 @@ const Table = (props) => {
 					customCells,
 					className: styles.table,
 				}}
+				loading={loading}
 			/>
 
 			{paginationData != null && (
@@ -141,6 +146,7 @@ const Table = (props) => {
 					ref={paginationRef}
 					{...paginationData}
 					floating={floating}
+					loading={loading}
 				/>
 			)}
 		</div>
@@ -177,6 +183,13 @@ Table.propTypes = {
 	paginationData: PropTypes.shape({
 		...Pagination.propTypes,
 	}),
+	loading: PropTypes.bool,
+	disabledFilterOptions: PropTypes.shape({
+		filterButton: PropTypes.bool,
+		refresh: PropTypes.bool,
+		columnFilter: PropTypes.bool,
+		settings: PropTypes.bool,
+	}),
 };
 
 Table.defaultProps = {
@@ -193,6 +206,13 @@ Table.defaultProps = {
 	chipsData: null,
 	filtersData: null,
 	paginationData: null,
+	loading: null,
+	disabledFilterOptions: {
+		filterButton: false,
+		refresh: false,
+		columnFilter: false,
+		settings: false,
+	},
 };
 
 export default Table;

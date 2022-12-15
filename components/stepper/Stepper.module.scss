@@ -1,4 +1,4 @@
-@import '../../assets/styles/index';
+@import '../../styles';
 
 .root {
 	@include flex(row, flex-start, flex-start);
@@ -41,6 +41,9 @@
 
 				&.completion-icon {
 					fill: $highlight;
+					&.active {
+						fill: $white;
+					}
 				}
 			}
 

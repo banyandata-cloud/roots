@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Dropdown from './Dropdown';
 import DropdownItem from './dropdown-item/DropdownItem';
@@ -45,18 +45,33 @@ Default.parameters = {
 };
 
 export const MultiCheckDropdown = (args) => {
+	const [value, setValue] = useState([]);
+
 	return (
 		<div>
-			<Dropdown {...args}>
-				<DropdownItem title='J' value={1} variant='checkbox' />
-				<DropdownItem title='K' value={2} variant='checkbox' />
-				<DropdownItem title='L' value={3} variant='checkbox' />
+			<Dropdown
+				{...args}
+				value={value}
+				onChange={(event, newValue) => {
+					setValue(newValue);
+				}}>
+				{[...Array(4).keys()].map((option) => {
+					return (
+						<DropdownItem
+							key={option}
+							title={`Option ${option + 1}`}
+							value={option + 1}
+							variant='checkbox'
+						/>
+					);
+				})}
 			</Dropdown>
 		</div>
 	);
 };
 
 MultiCheckDropdown.args = {
+	multi: true,
 	label: 'Multi Select Checkbox Dropdown',
 	placeholder: 'Select an option',
 };

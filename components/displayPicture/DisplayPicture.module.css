@@ -1,0 +1,40 @@
+.root.sm img {
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 100%;
+}
+.root.sm div {
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 100%;
+  background-color: var(--highlight);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.root.sm div span {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--white);
+}
+.root.md img {
+  height: 5.3125rem;
+  width: 5.3125rem;
+  border-radius: 100%;
+}
+.root.md div {
+  height: 5.3125rem;
+  width: 5.3125rem;
+  border-radius: 100%;
+  background-color: var(--highlight);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.root.md div span {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--white);
+}/*# sourceMappingURL=DisplayPicture.module.css.map */

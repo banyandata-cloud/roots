@@ -57,7 +57,28 @@ Default.args = {
 			value: 'Amazon',
 			disabled: true,
 		}),
+		new TableChip({
+			key: 'something',
+			icon: (iconProps) => {
+				return <CalenderIcon {...iconProps} />;
+			},
+			label: 'Hidden',
+			value: null,
+			disabled: true,
+		}),
 	],
 };
 
 Default.parameters = {};
+
+export const HiddenOnNull = Template.bind({});
+
+HiddenOnNull.args = {
+	showBack: true,
+	chips: Default.args.chips.map((chip) => {
+		return {
+			...chip,
+			value: null,
+		};
+	}),
+};

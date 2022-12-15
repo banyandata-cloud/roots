@@ -1,0 +1,25 @@
+@import '../../../../../styles/';
+
+.root[data-elem='base-cell'] {
+	align-items: flex-start;
+	width: 100%;
+
+	> [data-elem='component1'] {
+		width: auto;
+		> [data-elem='skeleton'] {
+			height: 1.5rem;
+			width: 1.5rem !important;
+		}
+	}
+
+	> [data-elem='component2'] {
+		@include flex(row, flex-start);
+		gap: 1rem;
+		flex: 8;
+
+		> [data-elem='skeleton'] {
+			max-width: 9rem;
+			height: 1.5rem;
+		}
+	}
+}

@@ -1,45 +1,65 @@
-import { useRef } from 'react';
+import {
+	FloatingFocusManager,
+	useDismiss,
+	useFloating,
+	useInteractions,
+} from '@floating-ui/react-dom-interactions';
 import PropTypes from 'prop-types';
 import { classes } from '../../utils';
-import Cross from '../icons/Cross/Cross';
-import styles from './BaseModal.module.css';
+import { CrossIcon } from '../icons';
 import { Popper } from '../popper';
-import { useOutsideClickListener } from '../../hooks';
+import { Button } from '../buttons';
+import styles from './BaseModal.module.css';
 
 const BaseModal = (props) => {
 	const { className, renderHeader, children, renderFooter, toggle, open } = props;
 
-	const ref = useRef(null);
-
-	useOutsideClickListener(ref, () => {
-		return toggle(false);
+	const { floating, context } = useFloating({
+		open,
+		onOpenChange: toggle,
 	});
 
-	if (open) {
-		return (
-			<Popper open={open} transparent={false} id='base-modal-popper'>
-				<div className={classes(styles.root, className)} ref={ref}>
-					{renderHeader && (
-						<div data-elem='header' className={styles.header}>
-							{renderHeader}
+	const { getFloatingProps } = useInteractions([useDismiss(context)]);
+
+	return (
+		<Popper open={open} transparent={false} wrapperId='base-modal-popper'>
+			{open && (
+				<FloatingFocusManager context={context}>
+					<div
+						{...getFloatingProps({
+							className: classes(styles.root, className),
+							ref: floating,
+						})}>
+						{renderHeader && (
+							<div data-elem='header' className={styles.header}>
+								{renderHeader}
+							</div>
+						)}
+						<div data-elem='body' className={styles.body}>
+							{children}
 						</div>
-					)}
-					<div data-elem='body' className={styles.body}>
-						{children}
+						{renderFooter && (
+							<div data-elem='footer' className={styles.footer}>
+								{renderFooter}
+							</div>
+						)}
+						<Button
+							size='auto'
+							variant='text'
+							data-elem='close'
+							className={styles.close}
+							onClick={() => {
+								toggle(false);
+							}}
+							rightComponent={() => {
+								return <CrossIcon className={styles.icon} />;
+							}}
+						/>
 					</div>
-					{renderFooter && (
-						<div data-elem='footer' className={styles.footer}>
-							{renderFooter}
-						</div>
-					)}
-					<div className={styles.closeModal} onClick={toggle}>
-						<Cross className={styles.closeIcon} />
-					</div>
-				</div>
-			</Popper>
-		);
-	}
-	return null;
+				</FloatingFocusManager>
+			)}
+		</Popper>
+	);
 };
 
 BaseModal.propTypes = {

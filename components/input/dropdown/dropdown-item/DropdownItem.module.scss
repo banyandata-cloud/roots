@@ -1,4 +1,4 @@
-@import '../../../assets/styles/index';
+@import '../../../../styles/index';
 
 .root {
 	@include flex(row, flex-start);
@@ -10,7 +10,11 @@
 	color: $grey;
 	outline: none;
 
-	&:hover,
+	& > .input {
+		cursor: pointer;
+	}
+
+	// &:hover,
 	&:focus {
 		background: $grey6;
 	}

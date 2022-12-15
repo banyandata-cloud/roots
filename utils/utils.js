@@ -206,3 +206,7 @@ export const getDatesInAMonth = ({ month, year }) => {
 	template.innerHTML = html.trim();
 	return template.content.firstChild;
 };
+
+export const getCSSVariableValue = (variable) => {
+	return getComputedStyle(document.documentElement).getPropertyValue(variable);
+};

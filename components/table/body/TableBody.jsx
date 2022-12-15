@@ -1,34 +1,44 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable react/forbid-prop-types */
 import PropTypes from 'prop-types';
+import { useRef } from 'react';
 import { classes } from '../../../utils';
 import { TableRow } from '../row';
 import styles from './TableBody.module.css';
 
 const TableBody = (props) => {
-	const { tableData, uniqueKey, activeData, setActiveData, headerData, customCells, className } =
-		props;
+	const { tableData, headerData, customCells, className } = props;
+
+	const listRef = useRef([]);
 
 	return (
 		<tbody data-elem='table-body' className={classes(styles.root, className)}>
-			{tableData?.map((datum) => {
-				let key = datum?.id;
+			{tableData?.map((datum, _index) => {
+				const key = datum?.uuid;
 
-				const selected =
-					uniqueKey.length > 0 &&
-					uniqueKey?.each((e) => {
-						key += `${datum?.[e]}-`;
-						return datum?.[e] === activeData?.[e];
-					});
+				const setActiveId = (reset = false) => {
+					if (reset) {
+						listRef.current[_index].removeAttribute('data-active');
+					} else {
+						listRef.current?.forEach((elem) => {
+							elem.removeAttribute('data-active');
+						});
+						listRef.current[_index].setAttribute('data-active', true);
+					}
+				};
 
 				return (
 					<TableRow
 						key={key}
 						{...{
+							ref: (node) => {
+								listRef.current[_index] = node;
+							},
 							datum,
-							selected,
 							headerData,
 							customCells,
-							setActiveData,
+							_index,
+							setActiveId,
 						}}
 					/>
 				);
@@ -51,9 +61,6 @@ TableBody.propTypes = {
 		})
 	),
 	tableData: PropTypes.arrayOf(PropTypes.object),
-	uniqueKey: PropTypes.arrayOf(PropTypes.string),
-	activeData: PropTypes.object,
-	setActiveData: PropTypes.func,
 	customCells: PropTypes.shape({
 		header: PropTypes.object,
 		body: PropTypes.object,
@@ -64,9 +71,6 @@ TableBody.defaultProps = {
 	className: '',
 	headerData: [],
 	tableData: [],
-	uniqueKey: [],
-	activeData: {},
-	setActiveData: () => {},
 	customCells: {
 		header: null,
 		body: null,

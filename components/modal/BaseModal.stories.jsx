@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Button } from '../buttons';
+import { Dropdown, DropdownItem } from '../input';
 import BaseModal from './BaseModal';
 
 export default {
@@ -22,18 +24,14 @@ const TemplateModal = (args) => {
 
 	return (
 		<div>
-			<button
-				type='button'
-				onClick={toggle}
-				style={{
-					padding: 10,
-				}}>
-				Open Modal
-			</button>
+			<Button onClick={toggle} title='Open Modal' />
 			<BaseModal {...args} open={open} toggle={toggle}>
-				<div>
-					<p>Modal description: Pass the header and footer as a Component</p>
-				</div>
+				<p>Modal description: Pass the header and footer as a Component</p>
+				<Dropdown label='Select Type 1'>
+					<DropdownItem title='Item 1' value={1} />
+					<DropdownItem title='Item 2' value={2} />
+					<DropdownItem title='Item 3' value={3} />
+				</Dropdown>
 			</BaseModal>
 		</div>
 	);
@@ -47,7 +45,7 @@ export const Default = Template.bind({});
 
 Default.args = {
 	renderHeader: 'Header',
-	renderFooter: 'Footer',
+	renderFooter: <Button title='Footer Button' />,
 };
 
 Default.parameters = {

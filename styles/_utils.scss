@@ -15,6 +15,12 @@
 	border: 1px solid red;
 }
 
+@mixin outline {
+	&:focus {
+		outline: 1px solid $highlight;
+	}
+}
+
 @mixin ellipsis {
 	text-overflow: ellipsis;
 	overflow: hidden;

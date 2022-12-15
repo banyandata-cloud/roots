@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { BaseChartTooltip } from '../chartTooltip';
 import BaseVerticalBarChart from './BaseVerticalBarChart';
+import { COLORS } from '../../../styles';
 
 export default {
 	title: 'Components/Charts/VerticalBarChart/BaseVerticalBarChart',
@@ -250,7 +251,7 @@ Default.args = {
 	seriesOption: [
 		{
 			stackIndex: 1,
-			color: 'green',
+			color: COLORS.success,
 			label: {
 				show: true,
 				formatter(param) {
@@ -260,14 +261,14 @@ Default.args = {
 		},
 		{
 			stackIndex: 2,
-			color: 'red',
+			color: COLORS.error,
 			label: {
 				show: false,
 			},
 		},
 		{
 			stackIndex: 3,
-			color: 'gold',
+			color: COLORS.warning,
 			label: {
 				show: false,
 			},
