@@ -191,6 +191,12 @@ export const WithFilters = Template.bind({});
 
 WithFilters.args = {
 	...Default.args,
+	disabledFilterOptions: {
+		filterButton: true,
+		settings: true,
+		columnFilter: true,
+		refresh: true,
+	},
 	filtersData: {
 		filterValue: {
 			applied: 4,
@@ -213,7 +219,7 @@ const API_RESPONSE = {
 			cloudOrganizationId: 'null',
 			ecsCustomerId: 'b16a72a2-4fb3-4ec1-978c-3fabc8a9b20f',
 			ecsCustomerName: 'Titan',
-			encsTags: 'null',
+			encsTags: null,
 			environmentMetadata: 'null',
 			k8sClusterDetailsId: '0b0a1bf9-2d77-4997-a263-178cde79c8eb',
 			k8sClusterRolebindingChecksum: '1edadbf46b547bc677b1006d963e1776',
@@ -253,7 +259,7 @@ const API_RESPONSE = {
 			cloudOrganizationId: 'null',
 			ecsCustomerId: 'b16a72a2-4fb3-4ec1-978c-3fabc8a9b20f',
 			ecsCustomerName: 'Titan',
-			encsTags: 'null',
+			encsTags: false,
 			environmentMetadata: 'null',
 			k8sClusterDetailsId: '0b0a1bf9-2d77-4997-a263-178cde79c8eb',
 			k8sClusterRolebindingChecksum: '37aa1cb53653648c3df558e473b7cb5e',
@@ -296,7 +302,7 @@ const API_RESPONSE = {
 			cloudOrganizationId: 'null',
 			ecsCustomerId: 'b16a72a2-4fb3-4ec1-978c-3fabc8a9b20f',
 			ecsCustomerName: 'Titan',
-			encsTags: 'null',
+			encsTags: true,
 			environmentMetadata: 'null',
 			k8sClusterDetailsId: '0b0a1bf9-2d77-4997-a263-178cde79c8eb',
 			k8sClusterRolebindingChecksum: 'f3817cbae8f112b2de33ae87ee71d4ba',
@@ -804,4 +810,55 @@ WithCustomCells.args = {
 			};
 		},
 	},
+};
+
+const LoaderTemplate = (args) => {
+	const [tableData, setTableData] = useState({});
+
+	const [paginationState, paginationDispatch] = usePagination({
+		currentPage: 1,
+		totalPages: tableData.total_pages,
+	});
+
+	const [loading, setLoading] = useState(false);
+
+	const fetchAPI = () => {
+		setLoading(true);
+		setTimeout(() => {
+			setTableData(API_RESPONSE);
+			setLoading(false);
+		}, 1000);
+	};
+
+	useEffect(() => {
+		fetchAPI();
+	}, []);
+
+	return (
+		<div
+			style={{
+				background: '#777777',
+				padding: '1rem',
+				display: 'flex',
+				height: '100%',
+			}}>
+			<Table
+				{...args}
+				loading={loading}
+				headerData={tableData?.header}
+				tableData={tableData?.data}
+				paginationData={{
+					paginationState,
+					paginationDispatch,
+					onChange: fetchAPI,
+				}}
+			/>
+		</div>
+	);
+};
+
+export const WithLoader = LoaderTemplate.bind({});
+
+WithLoader.args = {
+	...WithCustomCells.args,
 };

@@ -4,12 +4,16 @@
 	@include flex(column, flex-start, stretch);
 	gap: 0.5rem;
 	max-width: 100%;
-	width: 25%;
 	overflow: visible;
 	.label {
 		font-weight: 400;
 		font-size: 0.75rem;
-		color: $black;
+		&.light {
+			color: $black;
+		}
+		&.dark {
+			color: $white;
+		}
 	}
 
 	.container {
@@ -21,25 +25,39 @@
 		width: auto;
 		border: 0.0625rem solid $grey5;
 		padding: 0.75rem 1rem;
+
 		cursor: pointer;
+
 		> div {
-			display: flex;
-			align-items: center;
+			@include flex(row, space-between, center);
+
+			font-size: 0px;
+			letter-spacing: 0px;
+			word-spacing: 0px;
 		}
 
 		.placeholder {
 			font-weight: 400;
 			font-size: 1rem;
-			color: $grey1;
 			user-select: none;
 			margin-left: 0.9375rem;
+			color: $grey1;
 		}
 		.value {
 			font-weight: 400;
 			font-size: 1rem;
-			color: $black;
 			margin-left: 0.9375rem;
+			@include flex;
+			&.light {
+				color: $black;
+			}
+			&.dark {
+				color: $white;
+			}
 			span {
+				max-width: 150px;
+				display: inline-block;
+				@include ellipsis;
 				font-weight: 500;
 			}
 		}
@@ -47,9 +65,19 @@
 			display: none;
 		}
 		.icon {
-			width: 1.5rem;
-			height: 1.5rem;
-			stroke: #181818;
+			width: 1.25rem;
+			height: 1.25rem;
+
+			&.light {
+				> path {
+					fill: $dark-grey;
+				}
+			}
+			&.dark {
+				> path {
+					fill: $white;
+				}
+			}
 		}
 		.down {
 			transform: rotate(270deg);

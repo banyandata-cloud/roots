@@ -57,7 +57,9 @@ const TableCell = forwardRef(function TableCell(props, ref) {
 							style,
 							'data-elem': 'text',
 						}}>
-						{cellContent}
+						{[null, false, true].includes(cellContent)
+							? JSON.stringify(cellContent)
+							: cellContent}
 					</span>
 				),
 				component3,

@@ -1,0 +1,24 @@
+.root[data-elem=base-cell] {
+  width: 100%;
+  gap: 1.25rem;
+}
+.root[data-elem=base-cell] > [data-elem=component1] {
+  flex: 1;
+}
+.root[data-elem=base-cell] > [data-elem=component2] {
+  flex: 6;
+}
+.root[data-elem=base-cell] > [data-elem=component3] {
+  flex: 1;
+}
+.root[data-elem=base-cell] > [data-elem=component3] > [data-elem=base-cell] {
+  padding: 0;
+  align-items: flex-start;
+  height: auto;
+}
+.root[data-elem=base-cell] > [data-elem=component3] > [data-elem=base-cell] > [data-elem*=component] {
+  flex: 1;
+}
+.root[data-elem=base-cell] > [data-elem=component3] > [data-elem=base-cell] > [data-elem*=component] > [data-elem=skeleton] {
+  height: 1.5rem;
+}/*# sourceMappingURL=Skeleton.module.css.map */

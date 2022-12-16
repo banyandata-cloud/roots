@@ -13,7 +13,7 @@
   gap: 0.25rem;
   min-height: 2rem;
   height: auto;
-  padding: 0.25rem;
+  padding: 0rem 0.5rem;
   cursor: pointer;
 }
 .root .header > [data-elem=component1], .root .header > [data-elem=component3] {
@@ -22,7 +22,13 @@
   justify-content: center;
   align-items: center;
 }
-.root .header > [data-elem=component1] .icon, .root .header > [data-elem=component3] .icon {
+.root .header > [data-elem=component1] .expand, .root .header > [data-elem=component3] .expand {
+  padding: 0;
+  height: auto;
+  width: 1rem;
+  height: 1rem;
+}
+.root .header > [data-elem=component1] .expand .icon, .root .header > [data-elem=component3] .expand .icon {
   transform: rotate(-90deg);
   width: 1rem;
   height: 1rem;
@@ -31,6 +37,13 @@
   flex: 1 1 auto;
 }
 .root .header > [data-elem=component2] .title {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  padding: 0.25rem 0rem;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -75,7 +88,7 @@
 .root .body > [data-elem=component2] .children {
   flex: 1 0 auto;
 }
-.root.open > .header .icon {
+.root.open > .header .expand .icon {
   transform: none;
 }
 .root.open > .body {
