@@ -11,9 +11,11 @@ const TableFiltersSkeleton = () => {
 			component2={<Skeleton className={styles.search} />}
 			component3={
 				<BaseCell
-					component1={<Skeleton variant='circle' className={styles.columns} />}
-					component2={<Skeleton variant='circle' className={styles.refresh} />}
-					component3={<Skeleton variant='circle' className={styles.settings} />}
+					flexible
+					size='auto'
+					component1={<Skeleton className={styles.columns} />}
+					component2={<Skeleton className={styles.refresh} />}
+					component3={<Skeleton className={styles.settings} />}
 				/>
 			}
 		/>

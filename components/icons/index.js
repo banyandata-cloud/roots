@@ -24,3 +24,4 @@ export * from './HalfShade';
 export * from './AngleDouble';
 export * from './ExpandArrowAlt';
 export * from './Reset';
+export * from './Settings';

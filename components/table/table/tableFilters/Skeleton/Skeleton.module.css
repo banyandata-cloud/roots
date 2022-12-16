@@ -9,7 +9,7 @@
   flex: 6;
 }
 .root[data-elem=base-cell] > [data-elem=component3] {
-  flex: 1;
+  flex: 3;
 }
 .root[data-elem=base-cell] > [data-elem=component3] > [data-elem=base-cell] {
   padding: 0;

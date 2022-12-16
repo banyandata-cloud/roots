@@ -3,7 +3,13 @@ import { useState } from 'react';
 import { classes } from '../../../../utils';
 import { Button } from '../../../buttons';
 import { BaseCell } from '../../../cell';
-import { ColumnsIcon, FilterIcon, MagnifyingGlassIcon, NutIcon, RefreshIcon } from '../../../icons';
+import {
+	ColumnsIcon,
+	FilterIcon,
+	MagnifyingGlassIcon,
+	SettingsIcon,
+	RefreshIcon,
+} from '../../../icons';
 import { Columns } from './Filters';
 import { TextField } from '../../../input';
 import styles from './TableFilters.module.css';
@@ -93,10 +99,11 @@ const TableFilters = (props) => {
 										}}
 										size='auto'
 										className={styles['icon-button']}
-										variant='text'
+										color='default'
 										leftComponent={() => {
 											return <ColumnsIcon className={styles.icon} />;
 										}}
+										title='Columns'
 										onClick={() => {
 											setOpenColumns((prev) => {
 												return !prev;
@@ -119,7 +126,8 @@ const TableFilters = (props) => {
 								<Button
 									size='auto'
 									className={styles['icon-button']}
-									variant='text'
+									color='default'
+									title='Refresh'
 									onClick={onRefresh}
 									leftComponent={() => {
 										return <RefreshIcon className={styles.icon} />;
@@ -132,9 +140,10 @@ const TableFilters = (props) => {
 								<Button
 									size='auto'
 									className={styles['icon-button']}
-									variant='text'
+									color='default'
+									title='Settings'
 									leftComponent={() => {
-										return <NutIcon className={styles.icon} />;
+										return <SettingsIcon className={styles.icon} />;
 									}}
 								/>
 							)
@@ -157,6 +166,12 @@ TableFilters.propTypes = {
 		applied: PropTypes.number,
 	}),
 	loading: PropTypes.bool,
+	disabledFilterOptions: PropTypes.shape({
+		filterButton: PropTypes.bool,
+		refresh: PropTypes.bool,
+		columnFilter: PropTypes.bool,
+		settings: PropTypes.bool,
+	}),
 };
 
 TableFilters.defaultProps = {
@@ -169,6 +184,12 @@ TableFilters.defaultProps = {
 		applied: null,
 	},
 	loading: null,
+	disabledFilterOptions: {
+		filterButton: false,
+		refresh: false,
+		columnFilter: false,
+		settings: false,
+	},
 };
 
 export default TableFilters;
