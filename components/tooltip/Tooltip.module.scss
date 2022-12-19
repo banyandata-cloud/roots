@@ -1,22 +1,5 @@
 @import '../../styles';
 
-$tooltip-text-color: #000000;
-$tooltip-arrow-size: 0.375rem;
-$tooltip-background-color: $white;
-
-.root {
-	display: inline-block;
-	position: relative;
-
-	&.light {
-		$tooltip-background-color: $white;
-	}
-
-	&.dark {
-		$tooltip-background-color: $black;
-	}
-}
-
 .tooltip {
 	text-align: center;
 	position: fixed;
@@ -32,86 +15,28 @@ $tooltip-background-color: $white;
 		color: $black;
 		background: $grey7;
 		border-color: $black;
+
+		.arrow {
+			background: $grey7;
+		}
 	}
 
 	&.dark {
 		color: $white;
 		background: $black;
 		border-color: $white;
+
+		.arrow {
+			background: $black;
+		}
 	}
 
-	&::before {
-		content: '';
-		border: solid transparent;
-		height: 0;
-		width: 0;
+	.arrow {
 		position: absolute;
+		width: 1rem;
+		height: 1rem;
+		z-index: -1;
 		pointer-events: none;
-		border-width: $tooltip-arrow-size;
-	}
-
-	&.top {
-		&::before {
-			top: 100%;
-			left: 50%;
-			transform: translate(-50%, 0%);
-			border-top-style: solid;
-		}
-
-		&.light::before {
-			border-top-color: $grey7;
-		}
-
-		&.dark::before {
-			border-top-color: $black;
-		}
-	}
-
-	&.bottom {
-		&::before {
-			top: 0%;
-			left: 50%;
-			transform: translate(-50%, -100%);
-			border-bottom-style: solid;
-		}
-		&.light::before {
-			border-bottom-color: $grey7;
-		}
-
-		&.dark::before {
-			border-bottom-color: $black;
-		}
-	}
-
-	&.left {
-		&::before {
-			top: 50%;
-			left: 100%;
-			transform: translate(0%, -50%);
-			border-left-style: solid;
-		}
-		&.light::before {
-			border-left-color: $grey7;
-		}
-
-		&.dark::before {
-			border-left-color: $black;
-		}
-	}
-
-	&.right {
-		&::before {
-			top: 50%;
-			left: 0%;
-			transform: translate(-100%, -50%);
-			border-right-style: solid;
-		}
-		&.light::before {
-			border-right-color: $grey7;
-		}
-
-		&.dark::before {
-			border-right-color: $black;
-		}
+		transform: rotate(45deg);
 	}
 }

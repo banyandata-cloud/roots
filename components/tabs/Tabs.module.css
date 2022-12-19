@@ -4,101 +4,36 @@
   justify-content: flex-start;
   align-items: center;
 }
-
-.tab-view, .tab-view-selected {
-  cursor: pointer;
-  margin-right: 0.25rem;
-  padding: 0.5rem 0rem 0.5rem 0.5rem;
-  text-align: left;
-  font-size: 1rem;
-  font-weight: 500;
-  color: var(--dark-grey);
+.root > .tab {
+  padding: 0.75rem;
+  gap: 0.75rem;
 }
-.tab-view .content, .tab-view-selected .content {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-.tab-view .content .left, .tab-view-selected .content .left {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-}
-.tab-view .content .left .icon-container, .tab-view-selected .content .left .icon-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-}
-.tab-view .content .left .icon-container .icon, .tab-view-selected .content .left .icon-container .icon {
+.root > .tab > [data-elem=component1] > .icon,
+.root > .tab > [data-elem=component3] > .icon {
   width: 1.5rem;
   height: 1.5rem;
-  fill: var(--dark-grey);
+  fill: var(--black);
 }
-.tab-view .content .right, .tab-view-selected .content .right {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
+.root > .tab > [data-elem=component2] {
+  color: var(--black);
 }
-.tab-view .content .right .saperator, .tab-view-selected .content .right .saperator {
-  border-right: 0.031rem solid var(--grey3);
-  border-radius: 0.625rem;
-  height: 1.438rem;
-  margin: 0rem 0rem 0rem 1rem;
+.root > .tab.active {
+  border-bottom: 2px solid var(--highlight);
 }
-.tab-view .content .right .icon-container, .tab-view-selected .content .right .icon-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+.root > .tab.active > [data-elem=component1] > .icon,
+.root > .tab.active > [data-elem=component3] > .icon {
+  fill: var(--highlight);
 }
-.tab-view .content .right .icon-container .icon, .tab-view-selected .content .right .icon-container .icon {
-  width: 1.5rem;
-  height: 1.5rem;
-  fill: var(--dark-grey);
-}
-.tab-view:hover, .tab-view-selected:hover {
-  background-color: var(--background);
-  border-radius: 0.25rem;
+.root > .tab.active > [data-elem=component2] {
   color: var(--highlight);
 }
-.tab-view:hover .content .left .icon-container .icon, .tab-view-selected:hover .content .left .icon-container .icon {
-  width: 1.5rem;
-  height: 1.5rem;
+.root > .tab:hover {
+  background: var(--info-bg);
+}
+.root > .tab:hover > [data-elem=component1] > .icon,
+.root > .tab:hover > [data-elem=component3] > .icon {
   fill: var(--highlight);
 }
-.tab-view:hover .content .right .saperator, .tab-view-selected:hover .content .right .saperator {
-  border-right: 0.031rem solid var(--highlight);
-  border-radius: 0.625rem;
-  height: 1.438rem;
-  margin: 0rem 0rem 0rem 1rem;
-}
-.tab-view:hover .content .right .icon-container .icon, .tab-view-selected:hover .content .right .icon-container .icon {
-  width: 1.5rem;
-  height: 1.5rem;
-  fill: var(--highlight);
-}
-
-.tab-view-selected {
+.root > .tab:hover > [data-elem=component2] {
   color: var(--highlight);
-  border-bottom: 0.125rem solid var(--highlight);
-}
-.tab-view-selected .content .left .icon-container .icon {
-  width: 1.5rem;
-  height: 1.5rem;
-  fill: var(--highlight);
-}
-.tab-view-selected .content .right .saperator {
-  border-right: 0.031rem solid var(--highlight);
-  border-radius: 0.625rem;
-  height: 1.438rem;
-  margin: 0rem 0rem 0rem 1rem;
-}
-.tab-view-selected .content .right .icon-container .icon {
-  width: 1.5rem;
-  height: 1.5rem;
-  fill: var(--highlight);
 }/*# sourceMappingURL=Tabs.module.css.map */

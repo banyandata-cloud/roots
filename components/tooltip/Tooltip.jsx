@@ -1,110 +1,115 @@
-import React, { useRef, useState } from 'react';
+import React, { cloneElement, useRef, useState, forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import styles from './Tooltip.module.css';
+import { arrow, autoUpdate, flip, offset, shift } from '@floating-ui/react-dom';
+import {
+	useFloating,
+	useDismiss,
+	useFocus,
+	useHover,
+	useInteractions,
+	useRole,
+} from '@floating-ui/react-dom-interactions';
+import { mergeRefs } from 'react-merge-refs';
 import { Popper } from '../popper';
 import { classes } from '../../utils';
+import styles from './Tooltip.module.css';
 
-const getPositionStyles = ({ position, anchor, content }) => {
-	const style = {
-		width: `calc(${content.length / 2}rem + 0.75rem)`,
-	};
-	switch (position) {
-		case 'top':
-			return {
-				...style,
-				top: `calc(${anchor?.current?.getBoundingClientRect?.()?.top ?? 0}px - 0.375rem)`,
-				left: `calc(${
-					(anchor?.current?.getBoundingClientRect?.()?.left ?? 0) +
-					(anchor?.current?.getBoundingClientRect?.()?.width ?? 0) / 2
-				}px`,
-				transform: 'translate(-50%, -100%)',
-			};
-		case 'bottom':
-			return {
-				...style,
-				top: `calc(${
-					anchor?.current?.getBoundingClientRect?.()?.bottom ?? 0
-				}px + 0.375rem)`,
-				left: `calc(${
-					(anchor?.current?.getBoundingClientRect?.()?.left ?? 0) +
-					(anchor?.current?.getBoundingClientRect?.()?.width ?? 0) / 2
-				}px`,
-				transform: 'translate(-50%, 0%)',
-			};
-		case 'left':
-			return {
-				...style,
-				top: `calc(${
-					(anchor?.current?.getBoundingClientRect?.()?.top ?? 0) +
-					(anchor?.current?.getBoundingClientRect?.()?.height ?? 0) / 2
-				}px)`,
-				left: `calc(${anchor?.current?.getBoundingClientRect?.()?.left ?? 0}px - 0.375rem`,
-				transform: 'translate(-100%, -50%)',
-			};
-		case 'right':
-			return {
-				...style,
-				top: `calc(${
-					(anchor?.current?.getBoundingClientRect?.()?.top ?? 0) +
-					(anchor?.current?.getBoundingClientRect?.()?.height ?? 0) / 2
-				}px)`,
-				left: `calc(${anchor?.current?.getBoundingClientRect?.()?.right ?? 0}px + 0.375rem`,
-				transform: 'translate(0%, -50%)',
-			};
-		default:
-			return {};
-	}
-};
-
-const Tooltip = (props) => {
+// eslint-disable-next-line prefer-arrow-callback
+const Tooltip = forwardRef(function Tooltip(props, propRef) {
 	const { children, position, content, variant, className } = props;
 
-	const timeoutRef = useRef(null);
-	const tooltipRef = useRef(null);
+	const arrowEl = useRef(null);
 
 	const [open, setOpen] = useState(false);
 
-	const showTip = () => {
-		timeoutRef.current = setTimeout(() => {
-			setOpen(true);
-		}, 0);
-	};
+	// eslint-disable-next-line object-curly-newline
+	const { x, y, reference, floating, strategy, context, middlewareData, placement } = useFloating(
+		{
+			open,
+			onOpenChange: setOpen,
+			placement: position,
+			// Make sure the tooltip stays on the screen
+			whileElementsMounted: autoUpdate,
+			middleware: [
+				offset(12),
+				flip(),
+				shift(),
+				arrow({
+					element: arrowEl,
+				}),
+			],
+		}
+	);
 
-	const hideTip = () => {
-		clearTimeout(timeoutRef.current);
-		setOpen(false);
-	};
+	// Event listeners to change the open state
+	const hover = useHover(context, {
+		move: true,
+	});
+	const focus = useFocus(context);
+	const dismiss = useDismiss(context);
+	// Role props for screen readers
+	const role = useRole(context, {
+		role: 'tooltip',
+	});
+
+	// Merge all the interactions into prop getters
+	const { getReferenceProps, getFloatingProps } = useInteractions([hover, focus, dismiss, role]);
+
+	const childrenRef = children.ref;
+
+	const ref = React.useMemo(() => {
+		return mergeRefs([reference, childrenRef, propRef]);
+	}, [reference, childrenRef]);
+
+	const clonedChildren = cloneElement(
+		children,
+		getReferenceProps({
+			ref,
+			...children.props,
+		})
+	);
+
+	const side = placement.split('-')[0];
+
+	const staticSide = {
+		top: 'bottom',
+		right: 'left',
+		bottom: 'top',
+		left: 'right',
+	}[side];
 
 	return (
-		<div
-			ref={tooltipRef}
-			className={classes(styles.root, styles[variant])}
-			// When to show the tooltip
-			onMouseEnter={showTip}
-			onMouseLeave={hideTip}>
+		<>
 			{/* Wrapping */}
-			{children}
-			<Popper open={open} backdrop={false} anchorEl={tooltipRef} wrapperId='tooltip-popper'>
+			{clonedChildren}
+			<Popper open={open} backdrop={false} wrapperId='tooltip'>
 				<div
-					className={classes(
-						styles.tooltip,
-						styles[position],
-						styles[variant],
-						className
-					)}
-					style={{
-						...getPositionStyles({
-							position,
-							anchor: tooltipRef,
-							content,
-						}),
-					}}>
+					{...getFloatingProps({
+						ref: floating,
+						className: classes(styles.tooltip, styles[variant], className),
+						style: {
+							position: strategy,
+							top: y ?? 0,
+							left: x ?? 0,
+						},
+					})}>
 					{content}
+					<div
+						className={styles.arrow}
+						ref={arrowEl}
+						style={{
+							left: middlewareData?.arrow?.x ?? '',
+							top: middlewareData?.arrow?.y ?? '',
+							right: '',
+							bottom: '',
+							[staticSide]: '-0.5rem',
+						}}
+					/>
 				</div>
 			</Popper>
-		</div>
+		</>
 	);
-};
+});
 
 Tooltip.propTypes = {
 	variant: PropTypes.oneOf(['light', 'dark']),
