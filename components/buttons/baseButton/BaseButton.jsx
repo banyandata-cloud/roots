@@ -17,6 +17,7 @@ const BaseButton = forwardRef(function BaseButton(props, ref) {
 		disabled,
 		type,
 		onClick,
+		blurOnClick,
 		variant,
 	} = props;
 
@@ -37,7 +38,12 @@ const BaseButton = forwardRef(function BaseButton(props, ref) {
 			attrs={{
 				disabled,
 				type,
-				onClick,
+				onClick: (event) => {
+					if (blurOnClick) {
+						event?.currentTarget?.blur();
+					}
+					onClick(event);
+				},
 			}}
 			RootDOM='button'
 		/>
@@ -50,6 +56,7 @@ BaseButton.propTypes = {
 	disabled: PropTypes.bool,
 	type: PropTypes.oneOf(['button', 'submit', 'reset']),
 	onClick: PropTypes.func,
+	blurOnClick: PropTypes.bool,
 	variant: PropTypes.oneOf(['contained', 'outlined', 'text']),
 };
 
@@ -59,6 +66,7 @@ BaseButton.defaultProps = {
 	disabled: false,
 	type: 'submit',
 	onClick: () => {},
+	blurOnClick: true,
 	variant: 'contained',
 };
 

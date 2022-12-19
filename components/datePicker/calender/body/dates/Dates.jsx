@@ -14,7 +14,6 @@ const Dates = (props) => {
 		selectedRange,
 		setSelectedRange,
 		disabledDates,
-		disableDatesAfter,
 		disableDatesBefore,
 	} = props;
 
@@ -103,7 +102,10 @@ const Dates = (props) => {
 	};
 
 	const disabledAfterDate = (date) => {
-		return disableDatesAfter?.length > 0 && isAfter(date, fromUnixTime(disableDatesAfter));
+		const dObj = new Date();
+		dObj.setDate(dObj.getDate() + 1);
+		dObj.setHours(0, 0, 0, 0);
+		return isAfter(date, dObj);
 	};
 
 	return (

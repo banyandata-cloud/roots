@@ -2,6 +2,7 @@
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { BaseChartTooltip } from '../chartTooltip';
+import { COLORS } from '../../../styles';
 import BaseHorizontalBarChart from './BaseHorizontalBarChart';
 
 export default {
@@ -16,35 +17,20 @@ export default {
 
 const sampleData = {
 	chartData: {
-		'Audit, Logging and Monitering': {
-			x1: 40,
-			x2: 60,
-			x3: 0,
+		MySql: {
+			x1: 313.33,
+			x2: 22.22,
+			x3: 44.44,
 		},
-		Settings: {
-			x1: 20,
-			x2: 10,
-			x3: 70,
+		PgSql: {
+			x1: 39.53,
+			x2: 46.51,
+			x3: 13.95,
 		},
-		Authorization: {
-			x1: 20,
-			x2: 40,
-			x3: 40,
-		},
-		Authentication: {
-			x1: 40,
-			x2: 60,
-			x3: 0,
-		},
-		'Patches and Plugins': {
-			x1: 20,
-			x2: 0,
-			x3: 80,
-		},
-		'High Availability': {
-			x1: 30,
-			x2: 0,
-			x3: 70,
+		Oracle: {
+			x1: 6.53,
+			x2: 13.51,
+			x3: 39.95,
 		},
 	},
 	metaData: {
@@ -72,6 +58,9 @@ const sampleData = {
 			x1: 'compliant',
 			x2: 'nonCompliant',
 			x3: 'validate',
+		},
+		totalControls: {
+			x1: 61,
 		},
 	},
 };
@@ -147,10 +136,12 @@ Default.args = {
 	seriesOption: [
 		{
 			stackIndex: 1,
-			color: 'green',
+			color: COLORS.success,
+			backgroundStyle: {
+				color: 'transparent',
+			},
 			label: {
 				show: true,
-				position: [0, -14],
 				formatter(param) {
 					return param.name;
 				},
@@ -158,14 +149,20 @@ Default.args = {
 		},
 		{
 			stackIndex: 2,
-			color: 'red',
+			color: COLORS.error,
+			backgroundStyle: {
+				color: 'transparent',
+			},
 			label: {
 				show: false,
 			},
 		},
 		{
 			stackIndex: 3,
-			color: 'gold',
+			color: COLORS.warning,
+			backgroundStyle: {
+				color: 'transparent',
+			},
 			label: {
 				show: false,
 			},

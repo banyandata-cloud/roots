@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button } from '../../buttons';
 import { ServerIcon, CopyIcon, ArrowIcon } from '../../icons';
 import { usePagination } from '../../pagination';
@@ -79,6 +79,7 @@ Default.args = {
 			title: 'A Column',
 			id: 'aColumn',
 			size: 'lg',
+			flexible: true,
 		}),
 		new TableColumn({
 			title: 'Another Column',
@@ -190,6 +191,12 @@ export const WithFilters = Template.bind({});
 
 WithFilters.args = {
 	...Default.args,
+	disabledFilterOptions: {
+		filterButton: true,
+		settings: true,
+		columnFilter: true,
+		refresh: true,
+	},
 	filtersData: {
 		filterValue: {
 			applied: 4,
@@ -207,11 +214,12 @@ WithChipsAndFilters.args = {
 const API_RESPONSE = {
 	data: [
 		{
+			uuid: 1,
 			cloudAccountId: 'kubernetes-358811',
 			cloudOrganizationId: 'null',
 			ecsCustomerId: 'b16a72a2-4fb3-4ec1-978c-3fabc8a9b20f',
 			ecsCustomerName: 'Titan',
-			encsTags: 'null',
+			encsTags: null,
 			environmentMetadata: 'null',
 			k8sClusterDetailsId: '0b0a1bf9-2d77-4997-a263-178cde79c8eb',
 			k8sClusterRolebindingChecksum: '1edadbf46b547bc677b1006d963e1776',
@@ -246,11 +254,12 @@ const API_RESPONSE = {
 			k8sTenantDetailsId: 'fb191101-5f8f-4bd3-8779-aa1cea4fa3cf',
 		},
 		{
+			uuid: 2,
 			cloudAccountId: 'kubernetes-358811',
 			cloudOrganizationId: 'null',
 			ecsCustomerId: 'b16a72a2-4fb3-4ec1-978c-3fabc8a9b20f',
 			ecsCustomerName: 'Titan',
-			encsTags: 'null',
+			encsTags: false,
 			environmentMetadata: 'null',
 			k8sClusterDetailsId: '0b0a1bf9-2d77-4997-a263-178cde79c8eb',
 			k8sClusterRolebindingChecksum: '37aa1cb53653648c3df558e473b7cb5e',
@@ -288,11 +297,12 @@ const API_RESPONSE = {
 			k8sTenantDetailsId: 'fb191101-5f8f-4bd3-8779-aa1cea4fa3cf',
 		},
 		{
+			uuid: 3,
 			cloudAccountId: 'kubernetes-358811',
 			cloudOrganizationId: 'null',
 			ecsCustomerId: 'b16a72a2-4fb3-4ec1-978c-3fabc8a9b20f',
 			ecsCustomerName: 'Titan',
-			encsTags: 'null',
+			encsTags: true,
 			environmentMetadata: 'null',
 			k8sClusterDetailsId: '0b0a1bf9-2d77-4997-a263-178cde79c8eb',
 			k8sClusterRolebindingChecksum: 'f3817cbae8f112b2de33ae87ee71d4ba',
@@ -329,6 +339,7 @@ const API_RESPONSE = {
 			k8sTenantDetailsId: 'fb191101-5f8f-4bd3-8779-aa1cea4fa3cf',
 		},
 		{
+			uuid: 4,
 			cloudAccountId: 'kubernetes-358811',
 			cloudOrganizationId: 'null',
 			ecsCustomerId: 'b16a72a2-4fb3-4ec1-978c-3fabc8a9b20f',
@@ -371,6 +382,7 @@ const API_RESPONSE = {
 			k8sTenantDetailsId: 'fb191101-5f8f-4bd3-8779-aa1cea4fa3cf',
 		},
 		{
+			uuid: 5,
 			cloudAccountId: 'kubernetes-358811',
 			cloudOrganizationId: 'null',
 			ecsCustomerId: 'b16a72a2-4fb3-4ec1-978c-3fabc8a9b20f',
@@ -412,6 +424,7 @@ const API_RESPONSE = {
 			k8sTenantDetailsId: 'fb191101-5f8f-4bd3-8779-aa1cea4fa3cf',
 		},
 		{
+			uuid: 6,
 			cloudAccountId: 'kubernetes-358811',
 			cloudOrganizationId: 'null',
 			ecsCustomerId: 'b16a72a2-4fb3-4ec1-978c-3fabc8a9b20f',
@@ -453,6 +466,7 @@ const API_RESPONSE = {
 			k8sTenantDetailsId: 'fb191101-5f8f-4bd3-8779-aa1cea4fa3cf',
 		},
 		{
+			uuid: 7,
 			cloudAccountId: 'kubernetes-358811',
 			cloudOrganizationId: 'null',
 			ecsCustomerId: 'b16a72a2-4fb3-4ec1-978c-3fabc8a9b20f',
@@ -499,6 +513,7 @@ const API_RESPONSE = {
 			k8sTenantDetailsId: 'fb191101-5f8f-4bd3-8779-aa1cea4fa3cf',
 		},
 		{
+			uuid: 8,
 			cloudAccountId: 'kubernetes-358811',
 			cloudOrganizationId: 'null',
 			ecsCustomerId: 'b16a72a2-4fb3-4ec1-978c-3fabc8a9b20f',
@@ -540,6 +555,7 @@ const API_RESPONSE = {
 			k8sTenantDetailsId: 'fb191101-5f8f-4bd3-8779-aa1cea4fa3cf',
 		},
 		{
+			uuid: 9,
 			cloudAccountId: 'kubernetes-358811',
 			cloudOrganizationId: 'null',
 			ecsCustomerId: 'b16a72a2-4fb3-4ec1-978c-3fabc8a9b20f',
@@ -574,6 +590,7 @@ const API_RESPONSE = {
 			k8sTenantDetailsId: 'fb191101-5f8f-4bd3-8779-aa1cea4fa3cf',
 		},
 		{
+			uuid: 10,
 			cloudAccountId: 'kubernetes-358811',
 			cloudOrganizationId: 'null',
 			ecsCustomerId: 'b16a72a2-4fb3-4ec1-978c-3fabc8a9b20f',
@@ -652,7 +669,7 @@ const API_RESPONSE = {
 			title: 'Organization Id',
 		},
 		{
-			flexible: 'false',
+			flexible: true,
 			id: 'cloudAccountId',
 			size: 'md',
 			sort: 'false',
@@ -709,13 +726,24 @@ export const WithCustomCells = Template.bind({});
 
 WithCustomCells.args = {
 	...WithChipsAndFilters.args,
-	headerData: API_RESPONSE.header.filter((header) => {
-		return header.title !== 'uuid';
-	}),
+	headerData: [
+		{
+			title: 'S No.',
+			id: 'serial',
+			size: 'sm',
+		},
+		...API_RESPONSE.header.filter((header) => {
+			return header.title !== 'uuid';
+		}),
+	],
+	uniqueKey: 'uuid',
 	tableData: API_RESPONSE.data,
 	customCells: {
 		body: () => {
 			return {
+				serial: ({ _index, ...rest }) => {
+					return <TableCell {...rest} cellContent={_index + 1} />;
+				},
 				k8sClusterRolebindingMetadata: ({ cellContent, ...rest }) => {
 					return (
 						<TableCell
@@ -725,9 +753,13 @@ WithCustomCells.args = {
 						/>
 					);
 				},
-				ecsCustomerId: ({ cellContent, ...rest }) => {
+				ecsCustomerId: ({ cellContent, setActiveId, ...rest }) => {
 					const [anchorEl, setAnchorEl] = useState(null);
 					const [open, setOpen] = useState(false);
+
+					useEffect(() => {
+						setActiveId(!open);
+					}, [open]);
 
 					return (
 						<>
@@ -759,7 +791,74 @@ WithCustomCells.args = {
 						</>
 					);
 				},
+				ecsCustomerName: ({ cellContent, setActiveId, ...rest }) => {
+					return (
+						<TableCell
+							{...rest}
+							multiLine
+							cellContent={
+								<Button
+									onClick={() => {
+										setActiveId();
+									}}
+									title='Select'
+								/>
+							}
+						/>
+					);
+				},
 			};
 		},
 	},
+};
+
+const LoaderTemplate = (args) => {
+	const [tableData, setTableData] = useState({});
+
+	const [paginationState, paginationDispatch] = usePagination({
+		currentPage: 1,
+		totalPages: tableData.total_pages,
+	});
+
+	const [loading, setLoading] = useState(false);
+
+	const fetchAPI = () => {
+		setLoading(true);
+		setTimeout(() => {
+			setTableData(API_RESPONSE);
+			setLoading(false);
+		}, 1000);
+	};
+
+	useEffect(() => {
+		fetchAPI();
+	}, []);
+
+	return (
+		<div
+			style={{
+				background: '#777777',
+				padding: '1rem',
+				display: 'flex',
+				height: '100%',
+			}}>
+			<Table
+				{...args}
+				loading={loading}
+				headerData={tableData?.header}
+				tableData={tableData?.data}
+				paginationData={{
+					paginationState,
+					paginationDispatch,
+					onChange: fetchAPI,
+				}}
+			/>
+		</div>
+	);
+};
+
+export const WithLoader = LoaderTemplate.bind({});
+
+WithLoader.args = {
+	...WithCustomCells.args,
 };

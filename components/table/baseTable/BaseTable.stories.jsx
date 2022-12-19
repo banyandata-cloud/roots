@@ -58,13 +58,15 @@ Default.args = {
 			designation: 'UI Engineer',
 			state: 'Delhi',
 		},
-		{
-			name: 'Pradeep Annadurai',
-			gender: 'M',
-			age: 24,
-			designation: 'UI Engineer',
-			state: 'Tamil Nadu',
-		},
+		...[...Array(30).keys()].map(() => {
+			return {
+				name: 'Pradeep Annadurai',
+				gender: 'M',
+				age: 24,
+				designation: 'UI Engineer',
+				state: 'Tamil Nadu',
+			};
+		}),
 	],
 };
 
