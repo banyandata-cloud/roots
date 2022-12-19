@@ -91,6 +91,9 @@ const BasePieChart = (props) => {
 								tooltip: {
 									...seriesOption?.[subIndex]?.tooltip,
 								},
+								emphasis: {
+									...seriesOption?.[subIndex]?.emphasis,
+								},
 							};
 						}),
 						{
