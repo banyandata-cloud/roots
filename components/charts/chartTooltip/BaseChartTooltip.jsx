@@ -73,9 +73,7 @@ BaseChartTooltip.defaultProps = {
 	body: {
 		key: 'value',
 	},
-	footer: {
-		total: '100',
-	},
+	footer: {},
 	params: {
 		color: 'blue',
 	},
