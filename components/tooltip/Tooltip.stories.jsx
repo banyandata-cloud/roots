@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import Tooltip from './Tooltip';
 
 export default {
@@ -13,18 +13,24 @@ export default {
 };
 
 const Template = (args) => {
+	const ref = useRef(null);
 	return (
 		<div
 			style={{
-				textAlign: 'center',
-				marginTop: 50,
+				display: 'flex',
+				justifyContent: 'center',
+				marginTop: 150,
 			}}>
 			<Tooltip {...args}>
 				<div
 					style={{
+						width: '70%',
 						backgroundColor: 'rgba(36, 161, 72, 0.08)',
 						color: '#24a148',
-					}}>
+						textAlign: 'center',
+						marginTop: -20,
+					}}
+					ref={ref}>
 					Children, Here child is Div, it can by anything
 				</div>
 			</Tooltip>
