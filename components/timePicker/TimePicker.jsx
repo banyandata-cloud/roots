@@ -4,7 +4,7 @@ import { useRef, useState, useEffect } from 'react';
 import { TextField } from '../input';
 import styles from './TimePicker.module.css';
 import { classes, doubleDigitted, getDayInfo } from '../../utils';
-import { focusInput, isValidHours, isValidMeridian, isValidMinutes, isValidSecond } from './utils';
+import { focusInput, isValidMeridian, isValidUnit } from './utils';
 
 const TimePicker = (props) => {
 	const { className } = props;
@@ -97,7 +97,12 @@ const TimePicker = (props) => {
 				onChange={(event) => {
 					const { target, nativeEvent } = event;
 					const { id, value } = target;
-					if (isValidHours(value)) {
+					if (
+						isValidUnit({
+							type: 'hours',
+							value,
+						})
+					) {
 						onChange(id, value, refs.minutes, nativeEvent.data);
 					}
 				}}
@@ -114,7 +119,12 @@ const TimePicker = (props) => {
 				onChange={(event) => {
 					const { target, nativeEvent } = event;
 					const { id, value } = target;
-					if (isValidMinutes(value)) {
+					if (
+						isValidUnit({
+							type: 'minutes',
+							value,
+						})
+					) {
 						onChange(id, value, refs.seconds, nativeEvent.data);
 					}
 				}}
@@ -131,7 +141,12 @@ const TimePicker = (props) => {
 				onChange={(event) => {
 					const { target, nativeEvent } = event;
 					const { id, value } = target;
-					if (isValidSecond(value)) {
+					if (
+						isValidUnit({
+							type: 'seconds',
+							value,
+						})
+					) {
 						onChange(id, value, refs.meridian, nativeEvent.data);
 					}
 				}}
