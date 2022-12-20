@@ -13,6 +13,9 @@
       -ms-user-select: none;
           user-select: none;
 }
+.root .time-picker {
+  margin-bottom: 1.25rem;
+}
 
 .selected-date {
   display: flex;
@@ -23,7 +26,6 @@
   background: var(--white);
   border: 0.0625rem solid var(--grey4);
   border-radius: 0.25rem;
-  padding: 0.3rem 0rem 0.3rem 1rem;
 }
 .selected-date .date {
   font-weight: 500;

@@ -1,0 +1,43 @@
+div .root {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid var(--grey5);
+  border-bottom: 1px solid var(--grey5);
+}
+div .root .input {
+  width: 5.125rem;
+}
+div .root .input > label [data-elem=base-cell] {
+  border: none;
+}
+div .root .input > label [data-elem=base-cell] [data-elem=component2] {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+div .root .input > label [data-elem=base-cell] [data-elem=component2] > input[data-elem=input] {
+  padding: 1rem 0rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+  color: var(--dark-grey);
+}
+div .root .colon {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: var(--dark-grey);
+}
+div .root .separator {
+  width: 0.0625rem;
+  height: 1.5625rem;
+  background-color: var(--grey5);
+}/*# sourceMappingURL=TimePicker.module.css.map */

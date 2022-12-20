@@ -26,6 +26,8 @@ const TextField = forwardRef(function TextField(props, inputRef) {
 		feedback,
 		count,
 		feedbackAndCount,
+		maxLength,
+		onKeyDown,
 	} = props;
 
 	const { current: isControlled } = useRef(value !== undefined);
@@ -52,7 +54,9 @@ const TextField = forwardRef(function TextField(props, inputRef) {
 		type,
 		defaultValue,
 		placeholder,
+		maxLength,
 		onBlur,
+		onKeyDown,
 		'data-elem': 'input',
 		ref: inputRef,
 		value: inputValue,
@@ -129,6 +133,8 @@ TextField.propTypes = {
 		type: PropTypes.oneOf(['error', 'success', 'default']),
 	}),
 	feedbackAndCount: PropTypes.bool,
+	maxLength: PropTypes.number,
+	onKeyDown: PropTypes.func,
 };
 
 TextField.defaultProps = {
@@ -149,6 +155,8 @@ TextField.defaultProps = {
 	count: null,
 	feedback: null,
 	feedbackAndCount: false,
+	maxLength: 100,
+	onKeyDown: () => {},
 };
 
 export default TextField;

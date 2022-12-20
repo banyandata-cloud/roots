@@ -109,3 +109,22 @@ ThemedDatePicker.args = {
 	placeholder: 'Select Date',
 	label: 'Single Date Picker',
 };
+
+export const SingleDatePickerWithTime = (args) => {
+	return (
+		<div
+			style={{
+				width: '50%',
+				padding: 20,
+			}}>
+			<DatePicker {...args} />
+		</div>
+	);
+};
+
+SingleDatePickerWithTime.args = {
+	placeholder: 'Select Date',
+	label: 'Single Date Picker',
+	theme: 'light',
+	showTimePicker: true,
+};
