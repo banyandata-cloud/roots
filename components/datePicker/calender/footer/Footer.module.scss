@@ -8,6 +8,9 @@
 		width: 100%;
 		user-select: none;
 	}
+	.time-picker {
+		margin-bottom: 1.25rem;
+	}
 }
 
 .selected-date {
@@ -16,7 +19,6 @@
 	background: $white;
 	border: 0.0625rem solid $grey4;
 	border-radius: 0.25rem;
-	padding: 0.3rem 0rem 0.3rem 1rem;
 	.date {
 		font-weight: 500;
 		font-size: 0.875rem;

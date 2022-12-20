@@ -19,7 +19,7 @@ export const getSpacedDisplayName = (string) => {
 };
 
 export const doubleDigitted = (number) => {
-	return number?.toString().padStart(2, '0');
+	return number?.toString().slice(-2)?.padStart(2, '0');
 };
 
 export const getJSDateFromEpoch = (epoch) => {
@@ -167,6 +167,11 @@ export const getDayInfo = (date) => {
 	const dateAsNumber = date.getDate();
 	const day = DAYS[date.getDay()];
 	const dayAsNumber = date.getDay();
+	const hoursIn12 = date.getHours();
+	const hours = ((date.getHours() + 11) % 12) + 1;
+	const minutes = date.getMinutes();
+	const seconds = date.getSeconds();
+	const meridian = hours >= 12 ? 'PM' : 'AM';
 	return {
 		month,
 		monthAsNumber,
@@ -174,6 +179,11 @@ export const getDayInfo = (date) => {
 		dateAsNumber,
 		day,
 		dayAsNumber,
+		hoursIn12,
+		hours,
+		minutes,
+		seconds,
+		meridian,
 	};
 };
 

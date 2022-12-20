@@ -1,7 +1,8 @@
-import { getUnixTime } from 'date-fns';
+import { fromUnixTime, getUnixTime } from 'date-fns';
 import { classes, doubleDigitted } from '../../../../utils';
 import { Button } from '../../../buttons';
 import { CalenderIcon, HalfShadeIcon, ResetIcon, CrossIcon } from '../../../icons';
+import { TimePicker } from '../../../timePicker';
 import styles from './Footer.module.css';
 import { dateRanges } from './utils';
 
@@ -23,6 +24,7 @@ const Footer = (props) => {
 	const {
 		selectedDate = {},
 		selectedRange = {},
+		setSelectedDate,
 		setSelectedRange,
 		range,
 		goToDate,
@@ -49,8 +51,28 @@ const Footer = (props) => {
 		setSelectedRange({});
 	};
 
+	const onTimeChange = (time) => {
+		const monthNumber = fromUnixTime(selectedDate.unix).getMonth();
+		const unix = getUnixTime(
+			new Date(
+				selectedDate.year,
+				monthNumber,
+				selectedDate.date,
+				time.hours,
+				time.minutes,
+				time.seconds
+			)
+		);
+		setSelectedDate({
+			...selectedDate,
+			unix,
+		});
+	};
+
 	return (
 		<div className={styles.root}>
+			<TimePicker onChange={onTimeChange} className={styles['time-picker']} />
+
 			{datesSelected && dates?.length === 2 ? (
 				<SelectedDateView
 					range
