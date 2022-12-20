@@ -155,7 +155,7 @@ TextField.defaultProps = {
 	count: null,
 	feedback: null,
 	feedbackAndCount: false,
-	maxLength: 100,
+	maxLength: null,
 	onKeyDown: () => {},
 };
 
