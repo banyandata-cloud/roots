@@ -1,5 +1,5 @@
 @import '../../styles';
-div .root {
+div.root {
 	width: 100%;
 	@include flex(row, center, center);
 	border-top: 1px solid $grey5;
