@@ -1,7 +1,7 @@
 @import '../../styles';
-div.root {
+.root {
 	width: 100%;
-	@include flex(row, center, center);
+	@include flex;
 	border-top: 1px solid $grey5;
 	border-bottom: 1px solid $grey5;
 	.input {
@@ -26,8 +26,8 @@ div.root {
 
 	.colon {
 		font-weight: 500;
-		font-size: 20px;
-		line-height: 24px;
+		font-size: 1.25rem;
+		line-height: 1.5rem;
 		display: flex;
 		align-items: center;
 		text-align: center;
