@@ -54,7 +54,9 @@ const TextField = forwardRef(function TextField(props, inputRef) {
 		type,
 		defaultValue,
 		placeholder,
-		maxLength,
+		...(maxLength !== null && {
+			maxLength,
+		}),
 		onBlur,
 		onKeyDown,
 		'data-elem': 'input',
