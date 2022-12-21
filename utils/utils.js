@@ -207,6 +207,16 @@ export const getDatesInAMonth = ({ month, year }) => {
 	};
 };
 
+/**
+ * @param {String} HTML representing a single element
+ * @return {Element}
+ */ export const htmlToElement = (html) => {
+	const template = document.createElement('template');
+	// Never return a text node of whitespace as the result
+	template.innerHTML = html.trim();
+	return template.content.firstChild;
+};
+
 export const getCSSVariableValue = (variable) => {
 	return getComputedStyle(document.documentElement).getPropertyValue(variable);
 };

@@ -1,5 +1,8 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable no-tabs */
 import React from 'react';
+import ReactDOMServer from 'react-dom/server';
+import { BaseChartTooltip } from '../chartTooltip';
 import BasePieChart from './BasePieChart';
 
 export default {
@@ -43,6 +46,13 @@ const sampleData = {
 	},
 };
 
+const iconData = {
+	chartData: {
+		x1: 30,
+		x2: 70,
+	},
+};
+
 const Template = (args) => {
 	return (
 		<div
@@ -55,6 +65,7 @@ const Template = (args) => {
 };
 
 export const Default = Template.bind({});
+export const PieIcon = Template.bind({});
 
 Default.args = {
 	title: 'Title',
@@ -72,7 +83,16 @@ Default.args = {
 			const index = Object.keys(sampleData.metaData.keyData).find((key) => {
 				return sampleData.metaData.keyData[key] === param.name;
 			});
-			return `${param.marker} ${param.name} ${sampleData.metaData.controlsApplied[index].comp}/${sampleData.metaData.controlsApplied[index].count}`;
+			return ReactDOMServer.renderToString(
+				<BaseChartTooltip
+					title={param.name}
+					params={param}
+					body={{
+						[param.name]: `${sampleData.metaData.controlsApplied[index].comp} /
+							${sampleData.metaData.controlsApplied[index].count}`,
+					}}
+				/>
+			);
 		},
 	},
 	itemStyle: {
@@ -137,6 +157,60 @@ Default.args = {
 			},
 			tooltip: {
 				trigger: 'none',
+			},
+		},
+	],
+};
+
+PieIcon.args = {
+	title: 'Title',
+	gridOptions: {
+		height: '100%',
+		width: '100%',
+	},
+	cursor: 'default',
+	radius: ['30%', '60%'],
+	seriesData: iconData,
+	semiDoughnut: true,
+	tooltip: {
+		trigger: 'none',
+	},
+	itemStyle: {
+		borderWidth: 5,
+		borderColor: 'black',
+		borderType: 'solid',
+	},
+	legend: {
+		show: false,
+	},
+	seriesOption: [
+		{
+			stackIndex: 1,
+			emphasis: {
+				disabled: true,
+			},
+			itemStyle: {
+				color:
+					iconData.chartData.x1 <= 30
+						? 'green'
+						: iconData.chartData.x1 < 70
+						? 'yellow'
+						: 'red',
+			},
+			label: {
+				show: false,
+			},
+		},
+		{
+			stackIndex: 2,
+			emphasis: {
+				disabled: true,
+			},
+			itemStyle: {
+				color: 'whitesmoke',
+			},
+			label: {
+				show: false,
 			},
 		},
 	],

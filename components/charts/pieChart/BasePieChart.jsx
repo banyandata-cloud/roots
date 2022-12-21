@@ -8,6 +8,7 @@ import { PieChart } from 'echarts/charts';
 import {
 	GridComponent,
 	TooltipComponent,
+	LegendComponent,
 	TitleComponent,
 	DatasetComponent,
 } from 'echarts/components';
@@ -23,6 +24,7 @@ import { classes } from '../../../utils';
 echarts.use([
 	TitleComponent,
 	TooltipComponent,
+	LegendComponent,
 	GridComponent,
 	DatasetComponent,
 	PieChart,
@@ -88,6 +90,9 @@ const BasePieChart = (props) => {
 								},
 								tooltip: {
 									...seriesOption?.[subIndex]?.tooltip,
+								},
+								emphasis: {
+									...seriesOption?.[subIndex]?.emphasis,
 								},
 							};
 						}),

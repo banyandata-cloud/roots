@@ -1,5 +1,7 @@
 /* eslint-disable no-tabs */
 import React from 'react';
+import ReactDOMServer from 'react-dom/server';
+import { BaseChartTooltip } from '../chartTooltip';
 import { COLORS } from '../../../styles';
 import BaseHorizontalBarChart from './BaseHorizontalBarChart';
 
@@ -15,20 +17,35 @@ export default {
 
 const sampleData = {
 	chartData: {
-		MySql: {
-			x1: 313.33,
-			x2: 22.22,
-			x3: 44.44,
+		'Audit, Logging and Monitering': {
+			x1: 40,
+			x2: 60,
+			x3: 0,
 		},
-		PgSql: {
-			x1: 39.53,
-			x2: 46.51,
-			x3: 13.95,
+		Settings: {
+			x1: 20,
+			x2: 10,
+			x3: 70,
 		},
-		Oracle: {
-			x1: 6.53,
-			x2: 13.51,
-			x3: 39.95,
+		Authorization: {
+			x1: 20,
+			x2: 40,
+			x3: 40,
+		},
+		Authentication: {
+			x1: 40,
+			x2: 60,
+			x3: 0,
+		},
+		'Patches and Plugins': {
+			x1: 20,
+			x2: 0,
+			x3: 80,
+		},
+		'High Availability': {
+			x1: 30,
+			x2: 0,
+			x3: 70,
 		},
 	},
 	metaData: {
@@ -80,10 +97,15 @@ const Template = (args) => {
 				tooltip={{
 					trigger: 'item',
 					formatter: (param) => {
-						// eslint-disable-next-line max-len
-						return `${param.marker} ${param.name} ${
-							sampleData.metaData.controlsApplied[param.name].x1
-						}`;
+						return ReactDOMServer.renderToString(
+							<BaseChartTooltip
+								params={param}
+								body={{
+									[param.name]:
+										sampleData.metaData.controlsApplied[param.name].x1,
+								}}
+							/>
+						);
 					},
 				}}
 				// legend={{

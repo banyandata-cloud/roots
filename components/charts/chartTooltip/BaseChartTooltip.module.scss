@@ -1,0 +1,29 @@
+@import '../../../styles/index';
+
+.root {
+	.content {
+		@include flex(row, flex-start, flex-start);
+		gap: 0.25rem;
+
+		.marker {
+			display: inline-block;
+			margin-top: 0.40rem;
+			border-radius: 100%;
+			width: 0.5rem;
+			height: 0.5rem;
+		}
+
+		.stats {
+			@include flex(column, flex-start, stretch);
+			flex: 1;
+			.stat {
+				@include flex(row, space-between, flex-start);
+			}
+		}
+	}
+
+	.footer {
+		@include flex(row, space-between);
+		flex: 1;
+	}
+}

@@ -1,5 +1,7 @@
 /* eslint-disable no-tabs */
 import React, { useState } from 'react';
+import ReactDOMServer from 'react-dom/server';
+import { BaseChartTooltip } from '../chartTooltip';
 import BaseVerticalBarChart from './BaseVerticalBarChart';
 import { COLORS } from '../../../styles';
 
@@ -63,9 +65,44 @@ const Template = (args) => {
 				{...args}
 				seriesData={sampleData}
 				tooltip={{
-					trigger: 'item',
-					formatter: (param) => {
-						return `${param.marker} ${param.name} ${sampleData.metaData.controlsApplied[param.name].x1}`;
+					trigger: 'axis',
+					formatter: (params) => {
+						const title = params[0].axisValue;
+						let footer = 0;
+						const tooltipData = Object.keys(sampleData.chartData[title]).map(
+							(element) => {
+								footer += sampleData.chartData[title][element];
+								return {
+									[sampleData.metaData.keyData[element]]:
+										sampleData.chartData[title][element],
+								};
+							}
+						);
+
+						return ReactDOMServer.renderToString(
+							<BaseChartTooltip
+								title={title}
+								footer={{
+									'Total Controls': footer,
+								}}
+								params={params}
+								body={tooltipData}
+							/>
+						);
+
+						// return ReactDOMServer.renderToString(
+						// 	<BaseChartTooltip
+						// 		title={params.name}
+						// 		footer={{
+						// 			'Total Controls': sampleData.metaData.totalControls.x1,
+						// 		}}
+						// 		params={params}
+						// 		body={{
+						// 			[sampleData.metaData.keyData[`x${params.componentIndex + 1}`]]:
+						// 				sampleData.metaData.controlsApplied[params.name].x1,
+						// 		}}
+						// 	/>
+						// );
 					},
 				}}
 				// legend={{
