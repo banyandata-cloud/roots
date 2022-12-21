@@ -130,7 +130,7 @@ export const stringToPath = (string) => {
 
 /**
  * Gets the value at `path` of `object`. If the resolved value is
- * `undefined`, the `defaultValue` is returned in its place.
+ * `undefined`, the `defaultValue` is returned in its place..
  *
  * @param {Object} object The object to query.
  * @param {Array|string} path The path of the property to get.
