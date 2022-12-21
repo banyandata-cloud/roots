@@ -49,7 +49,7 @@ const Calender = (props) => {
 				month: selectedDateMonth.month,
 				year: selectedDateMonth.year,
 				date: dateAsNumber,
-				unix: getUnixTime(date.setHours(23, 59, 59, 59)),
+				unix: getUnixTime(date),
 			});
 			return;
 		}
@@ -61,7 +61,7 @@ const Calender = (props) => {
 				month: selectedMonth.month,
 				year: selectedMonth.year,
 				date: dateAsNumber,
-				unix: getUnixTime(date.setHours(23, 59, 59, 59)),
+				unix: getUnixTime(date),
 			});
 		}
 	}, []);
@@ -78,7 +78,7 @@ const Calender = (props) => {
 			month: dayInfo.month,
 			year: dayInfo.year,
 			date: dayInfo.dateAsNumber,
-			unix: getUnixTime(new Date(unix * 1000).setHours(23, 59, 59, 59)),
+			unix: getUnixTime(new Date(unix * 1000)),
 		});
 	};
 
