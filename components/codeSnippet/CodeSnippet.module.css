@@ -1,6 +1,7 @@
 .root {
   padding: 0.5rem, 1rem;
   position: relative;
+  font-family: monospace;
 }
 .root .copy {
   position: absolute;
