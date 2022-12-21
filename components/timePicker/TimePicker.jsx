@@ -18,20 +18,16 @@ const TimePicker = (props) => {
 		meridian: useRef(),
 	};
 
-	const [timePickerValue, setTimePickerValue] = useState({
-		hours: doubleDigitted(today.hours),
-		minutes: doubleDigitted(today.minutes),
-		seconds: doubleDigitted(today.seconds),
-		meridian: today.meridian,
-	});
+	const [timePickerValue, setTimePickerValue] = useState(
+		props.value || {
+			hours: doubleDigitted(today.hours),
+			minutes: doubleDigitted(today.minutes),
+			seconds: doubleDigitted(today.seconds),
+			meridian: today.meridian,
+		}
+	);
 
 	const { hours, minutes, seconds, meridian } = timePickerValue;
-
-	useEffect(() => {
-		if (props.value) {
-			setTimePickerValue(props.value);
-		}
-	}, []);
 
 	useEffect(() => {
 		props.onChange(timePickerValue);
@@ -53,13 +49,6 @@ const TimePicker = (props) => {
 		const { target } = event;
 		const { id, value } = target;
 
-		if (id !== 'meridian' && !Number(value) > 0) {
-			setTimePickerValue({
-				...timePickerValue,
-				[id]: '01',
-			});
-			return;
-		}
 		if (id === 'meridian' && !['AM', 'PM'].includes(value)) {
 			setTimePickerValue({
 				...timePickerValue,
@@ -67,6 +56,15 @@ const TimePicker = (props) => {
 			});
 			return;
 		}
+
+		if (id === 'hours' && !Number(value) > 0) {
+			setTimePickerValue({
+				...timePickerValue,
+				[id]: '01',
+			});
+			return;
+		}
+
 		setTimePickerValue({
 			...timePickerValue,
 			[id]: doubleDigitted(value),

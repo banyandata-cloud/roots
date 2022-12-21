@@ -61,9 +61,13 @@ const DatePicker = (props) => {
 	let displayValue = '';
 
 	if (!range && value) {
+		const timeValue = `${((sDate.getHours() + 11) % 12) + 1}:${sDate.getMinutes()} ${
+			sDate.getHours() >= 12 ? 'PM' : 'AM'
+		}`;
+
 		displayValue = ` ${sDate.getDate()} ${
 			MONTHS[sDate.getMonth().toString()?.substring(0, 3)]
-		} ${sDate.getFullYear()}`;
+		} ${sDate.getFullYear()} ${timeValue}`;
 	}
 
 	const { x, y, reference, floating, strategy, context } = useFloating({

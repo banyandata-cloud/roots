@@ -3,6 +3,7 @@ export const isValidUnit = ({ type, value }) => {
 		if (value >= 0 && value < 13) {
 			return true;
 		}
+		return false;
 	}
 	if (value >= 0 && value < 60) {
 		return true;
