@@ -98,13 +98,13 @@ jobs:
       - name: Auto approve
         uses: juliangruber/approve-pull-request-action@v1
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.PDP_ACC }}
           number: ${{ steps.npm-publish.outputs.pull-request-number }}
       # auto merge PR
       - name: Auto merge PR
         uses: juliangruber/merge-pull-request-action@v1
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.PDP_ACC }}
           number: ${{ steps.npm-publish.outputs.pull-request-number }}
           method: squash
       # Read version changelog
