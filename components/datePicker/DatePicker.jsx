@@ -62,8 +62,8 @@ const DatePicker = (props) => {
 
 	if (!range && value) {
 		const timeValue = `${((sDate.getHours() + 11) % 12) + 1}:${sDate.getMinutes()} ${
-			sDate.hours() >= 12 ? 'PM' : 'AM'
-		}}`;
+			sDate.getHours() >= 12 ? 'PM' : 'AM'
+		}`;
 
 		displayValue = ` ${sDate.getDate()} ${
 			MONTHS[sDate.getMonth().toString()?.substring(0, 3)]

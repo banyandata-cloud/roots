@@ -66,7 +66,7 @@
   color: var(--white);
 }
 .root .container .value span {
-  max-width: 150px;
+  max-width: 200px;
   display: inline-block;
   text-overflow: ellipsis;
   overflow: hidden;
