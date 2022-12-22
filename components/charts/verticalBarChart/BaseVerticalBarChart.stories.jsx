@@ -13,47 +13,48 @@ export default {
 	},
 };
 
-const Template = (args) => {
-	const sampleData = {
-		chartData: {
+const sampleData = {
+	chartData: {
+		MySql: {
+			x1: 33.33,
+			x2: 22.22,
+			x3: 44.44,
+		},
+		PgSql: {
+			x1: 39.53,
+			x2: 46.51,
+			x3: 13.95,
+		},
+		Oracle: {
+			x1: 46.53,
+			x2: 13.51,
+			x3: 39.95,
+		},
+	},
+	metaData: {
+		controlsApplied: {
 			MySql: {
-				x1: 33.33,
-				x2: 22.22,
-				x3: 44.44,
+				x1: 18,
 			},
 			PgSql: {
-				x1: 39.53,
-				x2: 46.51,
-				x3: 13.95,
+				x1: 43,
 			},
 			Oracle: {
-				x1: 46.53,
-				x2: 13.51,
-				x3: 39.95,
+				x1: 46,
 			},
 		},
-		metaData: {
-			controlsApplied: {
-				MySql: {
-					x1: 18,
-				},
-				PgSql: {
-					x1: 43,
-				},
-				Oracle: {
-					x1: 46.53,
-				},
-			},
-			keyData: {
-				x1: 'compliant',
-				x2: 'nonCompliant',
-				x3: 'validate',
-			},
-			totalControls: {
-				x1: 61,
-			},
+		keyData: {
+			x1: 'compliant',
+			x2: 'nonCompliant',
+			x3: 'validate',
 		},
-	};
+		totalControls: {
+			x1: 61,
+		},
+	},
+};
+
+const Template = (args) => {
 	return (
 		<div
 			style={{
@@ -89,7 +90,7 @@ const Template = (args) => {
 };
 
 const InteractiveTemplate = (args) => {
-	const [sampleData, setSampleData] = useState({
+	const [interactData, setInteractData] = useState({
 		chartData: {
 			MySql: {
 				x1: 33.33,
@@ -131,10 +132,7 @@ const InteractiveTemplate = (args) => {
 			stackIndex: 1,
 			color: 'green',
 			label: {
-				show: true,
-				formatter(param) {
-					return param.name;
-				},
+				show: false,
 			},
 		},
 		{
@@ -148,21 +146,21 @@ const InteractiveTemplate = (args) => {
 			stackIndex: 3,
 			color: 'gold',
 			label: {
-				show: false,
+				show: true,
 			},
 		},
 	]);
 	const onBarClick = (params) => {
 		const newSample = {
-			...sampleData,
-			chartData: Object.keys(sampleData.chartData[params.name]).reduce((acc, key) => {
-				acc[sampleData.metaData.keyData[key]] = {
-					x1: sampleData.chartData[params.name][key],
+			...interactData,
+			chartData: Object.keys(interactData.chartData[params.name]).reduce((acc, key) => {
+				acc[interactData.metaData.keyData[key]] = {
+					x1: interactData.chartData[params.name][key],
 				};
 				return acc;
 			}, {}),
 		};
-		setSampleData(newSample);
+		setInteractData(newSample);
 		setSeriesOptionData([
 			{
 				stackIndex: 1,
@@ -170,9 +168,6 @@ const InteractiveTemplate = (args) => {
 				barColor: ['green', 'red', 'gold'],
 				label: {
 					show: true,
-					formatter(param) {
-						return param.name;
-					},
 				},
 			},
 		]);
@@ -184,7 +179,7 @@ const InteractiveTemplate = (args) => {
 			}}>
 			<BaseVerticalBarChart
 				{...args}
-				seriesData={sampleData}
+				seriesData={interactData}
 				seriesOption={seriesOptionData}
 				onEvents={{
 					click: onBarClick,
@@ -206,12 +201,20 @@ Default.args = {
 		bottom: 0,
 		top: 5,
 	},
-	xAxisShow: false,
+	xAxisShow: true,
+	xAxisLabel: {
+		show: true,
+		rotate: 90,
+		inside: true,
+		verticalAlign: 'bottom',
+		padding: [0, 0, 90, 0],
+	},
 	yAxisLabelShow: false,
 	ySplitLineShow: false,
 	yAxisLineShow: false,
 	yAxisTickShow: false,
 	axisColor: 'grey',
+	splitType: 'dashed',
 	barWidth: '50%',
 	cursor: 'default',
 	stacked: true,
@@ -220,10 +223,7 @@ Default.args = {
 			stackIndex: 1,
 			color: COLORS.success,
 			label: {
-				show: true,
-				formatter(param) {
-					return param.name;
-				},
+				show: false,
 			},
 		},
 		{
@@ -237,7 +237,10 @@ Default.args = {
 			stackIndex: 3,
 			color: COLORS.warning,
 			label: {
-				show: false,
+				show: true,
+				formatter(param) {
+					return sampleData.metaData.controlsApplied[param.name].x1;
+				},
 			},
 		},
 	],
@@ -252,7 +255,13 @@ Interact.args = {
 		bottom: 0,
 		top: 5,
 	},
-	xAxisShow: false,
+	xAxisShow: true,
+	xAxisLabel: {
+		rotate: 90,
+		inside: true,
+		verticalAlign: 'bottom',
+		padding: [0, 0, 90, 0],
+	},
 	yAxisLabelShow: false,
 	ySplitLineShow: false,
 	yAxisLineShow: false,
