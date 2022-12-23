@@ -66,7 +66,9 @@ const Template = (args) => {
 				tooltip={{
 					trigger: 'item',
 					formatter: (param) => {
-						return `${param.marker} ${param.name} ${sampleData.metaData.controlsApplied[param.name].x1}`;
+						return `${param.marker} ${param.name} ${
+							sampleData.metaData.controlsApplied[param.name].x1
+						}`;
 					},
 				}}
 				// legend={{
@@ -199,7 +201,7 @@ Default.args = {
 		left: 0,
 		right: 0,
 		bottom: 0,
-		top: 5,
+		top: 15,
 	},
 	xAxisShow: true,
 	xAxisLabel: {

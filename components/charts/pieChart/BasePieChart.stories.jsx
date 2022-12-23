@@ -75,6 +75,7 @@ Default.args = {
 	radius: ['30%', '60%'],
 	seriesData: sampleData,
 	semiDoughnut: false,
+	startAngle: 90,
 	tooltip: {
 		trigger: 'item',
 		formatter: (param) => {

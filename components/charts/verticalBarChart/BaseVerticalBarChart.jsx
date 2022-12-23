@@ -10,6 +10,7 @@ import {
 	TooltipComponent,
 	TitleComponent,
 	DatasetComponent,
+	LegendComponent,
 } from 'echarts/components';
 // Import renderer, note that introducing the CanvasRenderer or SVGRenderer is a required step
 import {
@@ -25,6 +26,7 @@ echarts.use([
 	TooltipComponent,
 	GridComponent,
 	DatasetComponent,
+	LegendComponent,
 	BarChart,
 	CanvasRenderer,
 ]);
