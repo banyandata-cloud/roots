@@ -1,0 +1,60 @@
+@import '../../styles';
+
+.root {
+	width: 100%;
+	height: 100%;
+	background: $grey6;
+	background-image: linear-gradient(to right, $grey6 0%, $grey8 20%, $grey6 40%, $grey6 100%);
+	background-repeat: no-repeat;
+	background-size: cover;
+	display: inline-block;
+	animation-duration: 1.25s;
+	animation-fill-mode: forwards;
+	animation-iteration-count: infinite;
+	animation-name: shimmer;
+	animation-timing-function: linear;
+	animation-fill-mode: forwards;
+	animation-iteration-count: infinite;
+	animation-name: shimmer;
+	animation-timing-function: linear;
+	-webkit-animation-fill-mode: forwards;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-name: shimmer;
+	-webkit-animation-timing-function: linear;
+	-webkit-animation-fill-mode: forwards;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-name: shimmer;
+	-webkit-animation-timing-function: linear;
+
+	&.text {
+		height: 1.5rem;
+	}
+
+	&.circle {
+		border-radius: 1.5rem;
+	}
+
+	&.rounded {
+		border-radius: 0.25rem;
+	}
+}
+
+@keyframes shimmer {
+	0% {
+		background-position: -50rem 0;
+	}
+
+	100% {
+		background-position: 50rem 0;
+	}
+}
+
+@-webkit-keyframes shimmer {
+	0% {
+		background-position: -50rem 0;
+	}
+
+	100% {
+		background-position: 50rem 0;
+	}
+}

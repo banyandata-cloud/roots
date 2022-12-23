@@ -33,4 +33,11 @@
 			}
 		}
 	}
+
+	> [data-elem='component3'] {
+		height: 100%;
+		.clear {
+			height: 100%;
+		}
+	}
 }

@@ -52,4 +52,18 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
+}
+.root.open > .body > button[data-elem=base-cell] {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  align-self: flex-end;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+.root.open > .body > button[data-elem=base-cell] .expand {
+  height: 1.5rem;
+  width: 1.5rem;
 }/*# sourceMappingURL=Accordion.module.css.map */

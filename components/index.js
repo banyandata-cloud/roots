@@ -24,3 +24,4 @@ export * from './charts';
 export * from './notification';
 export * from './widget';
 export * from './displayPicture';
+export * from './timePicker';

@@ -40,4 +40,13 @@
   flex-grow: 1;
   flex-shrink: 1;
   min-width: 3rem;
+}
+.root.flexible.sm {
+  min-width: 9.063rem;
+}
+.root.flexible.md {
+  min-width: 15.625rem;
+}
+.root.flexible.lg {
+  min-width: 21.875rem;
 }/*# sourceMappingURL=BaseCell.module.css.map */

@@ -53,5 +53,16 @@
 		flex-grow: 1;
 		flex-shrink: 1;
 		min-width: 3rem;
+		&.sm {
+			min-width: 9.063rem;
+		}
+
+		&.md {
+			min-width: 15.625rem;
+		}
+
+		&.lg {
+			min-width: 21.875rem;
+		}
 	}
 }

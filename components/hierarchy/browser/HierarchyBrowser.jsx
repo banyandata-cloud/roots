@@ -35,11 +35,13 @@ const HierarchyBrowser = (props) => {
 		className,
 		metadata,
 		onItemClick,
+		onItemDoubleClick,
 		minWidth,
 		maxWidth,
 		borderSize,
 		resizable,
 		setItemProps,
+		title,
 	} = props;
 
 	const browserRef = useRef(null);
@@ -60,6 +62,12 @@ const HierarchyBrowser = (props) => {
 		};
 	};
 
+	const handleItemDoubleClick = (item, pathString) => {
+		return (open) => {
+			onItemDoubleClick(item, pathString, open);
+		};
+	};
+
 	const renderTree = (data, pathString = '') => {
 		if (data == null) {
 			return null;
@@ -72,6 +80,7 @@ const HierarchyBrowser = (props) => {
 				title={<Title item={data} />}
 				iconPlacement={hasChildren ? 'left' : 'none'}
 				onClick={handleItemClick(data, pathString)}
+				onDoubleClick={handleItemDoubleClick(data, pathString)}
 				{...setItemProps(data, pathString)}>
 				{hasChildren &&
 					(data.list?.map?.((item, idx) => {
@@ -89,8 +98,12 @@ const HierarchyBrowser = (props) => {
 		<div
 			ref={browserRef}
 			className={classes(styles.root, className, resizable ? styles.resizable : '')}>
-			<div className={styles.header}>Browser</div>
-			<div className={styles.body}>{renderTree(metadata)}</div>
+			<div className={styles.header} data-elem='header'>
+				{title}
+			</div>
+			<div className={styles.body} data-elem='body'>
+				{renderTree(metadata)}
+			</div>
 		</div>
 	);
 };
@@ -104,17 +117,20 @@ HierarchyBrowser.propTypes = {
 		list: PropTypes.array,
 	}),
 	onItemClick: PropTypes.func,
+	onItemDoubleClick: PropTypes.func,
 	borderSize: PropTypes.number,
 	minWidth: PropTypes.number,
 	maxWidth: PropTypes.number,
 	resizable: PropTypes.bool,
 	setItemProps: PropTypes.func,
+	title: PropTypes.string,
 };
 
 HierarchyBrowser.defaultProps = {
 	className: '',
 	metadata: {},
 	onItemClick: () => {},
+	onItemDoubleClick: () => {},
 	borderSize: 4,
 	minWidth: 220,
 	maxWidth: null,
@@ -122,6 +138,7 @@ HierarchyBrowser.defaultProps = {
 	setItemProps: () => {
 		return {};
 	},
+	title: 'Browser',
 };
 
 export default HierarchyBrowser;

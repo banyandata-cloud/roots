@@ -2,28 +2,40 @@ import PropTypes from 'prop-types';
 import { forwardRef } from 'react';
 import { classes } from '../../../../utils';
 import { Checkbox } from '../../checkbox';
+import { Radio } from '../../radio';
 import styles from './DropdownItem.module.css';
 
 // eslint-disable-next-line prefer-arrow-callback
 const DropdownItem = forwardRef(function DropdownItem(props, ref) {
 	// eslint-disable-next-line object-curly-newline
-	const { title, value, variant, selected, onKeyDown, onClick, dataAttrs, className } = props;
+	const {
+		title,
+		value,
+		variant,
+		selected,
+		onKeyDown,
+		onMouseEnter,
+		onClick,
+		dataAttrs,
+		className,
+		tabIndex,
+	} = props;
 
 	let action = null;
 
 	switch (variant) {
 		case 'checkbox':
-			action = <Checkbox checked={selected} />;
+			action = <Checkbox className={styles.input} checked={selected} disabled />;
 			break;
 		case 'radio':
-			action = <input type='radio' />;
+			action = <Radio className={styles.input} checked={selected} disabled />;
 			break;
 		default:
 			break;
 	}
 
 	return (
-		<div
+		<li
 			ref={ref}
 			className={classes(className, styles.root, selected ? styles.selected : '')}
 			data-elem='dropdown-item'
@@ -31,16 +43,17 @@ const DropdownItem = forwardRef(function DropdownItem(props, ref) {
 			data-value={value}
 			data-selected={selected}
 			onClick={onClick}
+			onMouseEnter={onMouseEnter}
 			{...{
 				...dataAttrs,
 			}}
-			tabIndex={0}
+			tabIndex={tabIndex}
 			role='option'
 			aria-selected={selected}
 			onKeyDown={onKeyDown}>
 			{action}
 			<span data-elem='title'>{title}</span>
-		</div>
+		</li>
 	);
 });
 

@@ -1,13 +1,10 @@
 import PropTypes from 'prop-types';
 import { classes } from '../../utils';
+import { Button } from '../buttons';
 import styles from './Tabs.module.css';
 
 const Tabs = (props) => {
 	const { tabs, selectedTab, setSelectedTab } = props;
-
-	const tabViewClassName = (id) => {
-		return id === selectedTab ? `${styles['tab-view-selected']}` : `${styles['tab-view']}`;
-	};
 
 	const onTabClick = (id) => {
 		setSelectedTab(id);
@@ -19,39 +16,30 @@ const Tabs = (props) => {
 				const { id, title, leftIcon: LeftIcon, rightIcon: RightIcon } = tab;
 
 				return (
-					<div
-						key={tab}
+					<Button
+						size='auto'
+						color='default'
+						radius='none'
+						key={id}
+						variant='text'
 						onClick={() => {
-							return onTabClick(id);
+							onTabClick(id);
 						}}
-						className={tabViewClassName(id)}>
-						<div className={styles.content}>
-							<div className={styles.left}>
-								<div
-									style={{
-										paddingRight: LeftIcon ? 5 : 0,
-									}}>
-									<span className={styles['icon-container']}>
-										{LeftIcon && <LeftIcon className={classes(styles.icon)} />}
-									</span>
-								</div>
-								<span
-									style={{
-										paddingRight: !RightIcon ? 8 : 0,
-									}}>
-									{title}
-								</span>
-							</div>
-							{RightIcon && (
-								<div className={styles.right}>
-									<vl className={styles.saperator} />
-									<span className={styles['icon-container']}>
-										<RightIcon className={classes(styles.icon)} />
-									</span>
-								</div>
-							)}
-						</div>
-					</div>
+						title={title}
+						className={classes(styles.tab, selectedTab === id ? styles.active : '')}
+						leftComponent={
+							LeftIcon &&
+							(() => {
+								return <LeftIcon className={styles.icon} />;
+							})
+						}
+						rightComponent={
+							RightIcon &&
+							(() => {
+								return <RightIcon className={styles.icon} />;
+							})
+						}
+					/>
 				);
 			})}
 		</div>

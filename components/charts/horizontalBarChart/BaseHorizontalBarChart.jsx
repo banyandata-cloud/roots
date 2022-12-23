@@ -41,6 +41,9 @@ const BaseHorizontalBarChart = (props) => {
 		yAxisTickShow,
 		barWidth,
 		cursor,
+		legend,
+		tooltip,
+		seriesName,
 		stacked,
 		seriesOption,
 		style,
@@ -49,7 +52,7 @@ const BaseHorizontalBarChart = (props) => {
 
 	const seriesOptionObject = {
 		type: 'bar',
-		barWidth: stacked ? barWidth : barWidth / seriesOption.length,
+		barWidth: stacked ? barWidth : barWidth / (seriesOption?.length ?? 1),
 		cursor,
 		stack: stacked,
 		groupPadding: 3,
@@ -68,8 +71,9 @@ const BaseHorizontalBarChart = (props) => {
 		itemStyle: {
 			borderRadius: [0, 2, 2, 0],
 		},
+		name: seriesData?.metaData?.keyData?.x1 ?? '',
 		data: Object.keys(seriesData?.chartData ?? {}).map((key) => {
-			return seriesData?.chartData?.[key]?.x1;
+			return seriesData?.chartData?.[key]?.x1 ?? '';
 		}),
 	};
 
@@ -79,11 +83,21 @@ const BaseHorizontalBarChart = (props) => {
 				...seriesOptionObject,
 				...objectData,
 				label: {
-					...seriesOptionObject.label,
+					...(seriesOptionObject?.label ?? {}),
 					...(objectData?.label ?? {}),
 				},
-				data: Object.keys(seriesData?.chartData ?? {}).map((key) => {
-					return seriesData?.chartData?.[key]?.[`x${index + 1}`];
+
+				name: seriesName(index),
+				data: Object.keys(seriesData?.chartData ?? {}).map((key, subIndex) => {
+					return {
+						value: seriesData?.chartData?.[key]?.[`x${index + 1}`] ?? '',
+						itemStyle: {
+							color: (objectData?.barColor?.[subIndex] ?? '') || (objectData?.color ?? ''),
+						},
+						tooltip: {
+							...(seriesOption[subIndex]?.tooltip ?? {}),
+						},
+					};
 				}),
 			};
 		});
@@ -102,6 +116,12 @@ const BaseHorizontalBarChart = (props) => {
 				xAxis: {
 					show: xAxisShow,
 					type: 'value',
+				},
+				legend: {
+					...legend,
+				},
+				tooltip: {
+					...tooltip,
 				},
 				yAxis: {
 					data: Object.keys(seriesData?.chartData ?? {}),
@@ -136,17 +156,20 @@ BaseHorizontalBarChart.propTypes = {
 	title: PropTypes.string,
 	gridContainLabel: PropTypes.bool,
 	gridOptions: PropTypes.object,
+	tooltip: PropTypes.object,
 	xAxisShow: PropTypes.bool,
 	seriesData: PropTypes.shape({
 		chartData: PropTypes.object,
 		metaData: PropTypes.object,
 	}),
-	onEvents: PropTypes.object,
+	onEvents: PropTypes.func,
 	yAxisLabelShow: PropTypes.bool,
 	ySplitLineShow: PropTypes.bool,
 	yAxisLineShow: PropTypes.bool,
 	yAxisTickShow: PropTypes.bool,
 	barWidth: PropTypes.string,
+	legend: PropTypes.object,
+	seriesName: PropTypes.func,
 	cursor: PropTypes.string,
 	stacked: PropTypes.bool,
 	seriesOption: PropTypes.objectOf(PropTypes.shape),
@@ -164,13 +187,20 @@ BaseHorizontalBarChart.defaultProps = {
 		top: 5,
 	},
 	xAxisShow: false,
+	tooltip: {
+		trigger: 'item',
+	},
 	seriesData: {},
-	onEvents: {},
+	onEvents: () => {},
 	yAxisLabelShow: false,
 	ySplitLineShow: false,
 	yAxisLineShow: false,
 	yAxisTickShow: false,
 	barWidth: '50%',
+	seriesName: () => {},
+	legend: {
+		show: false,
+	},
 	cursor: 'default',
 	stacked: true,
 	seriesOption: [

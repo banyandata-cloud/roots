@@ -41,6 +41,9 @@
 
 				&.completion-icon {
 					fill: $highlight;
+					&.active {
+						fill: $white;
+					}
 				}
 			}
 

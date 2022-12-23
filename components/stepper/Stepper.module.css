@@ -46,6 +46,9 @@
 .root .step .left .icon.completion-icon {
   fill: var(--highlight);
 }
+.root .step .left .icon.completion-icon.active {
+  fill: var(--white);
+}
 .root .step .left .progress {
   position: absolute;
   z-index: -1;

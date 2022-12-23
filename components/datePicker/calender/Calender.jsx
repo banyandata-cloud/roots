@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getUnixTime, isAfter, isBefore } from 'date-fns';
+import { fromUnixTime, getUnixTime, isBefore } from 'date-fns';
 import { CalenderHeader } from './header';
 import styles from './Calender.module.css';
 import { getDayInfo } from '../../../utils';
@@ -16,8 +16,8 @@ const Calender = (props) => {
 		setSelectedRange,
 		onApply,
 		disabledDates,
-		disableDatesAfter,
 		disableDatesBefore,
+		value,
 	} = props;
 
 	const { month, year, monthAsNumber, dayAsNumber } = getDayInfo(new Date());
@@ -29,15 +29,39 @@ const Calender = (props) => {
 	});
 
 	useEffect(() => {
+		if (value) {
+			const date = fromUnixTime(value);
+			const dateAsNumber = date.getDate();
+			const selectedDayInfo = getDayInfo(date);
+			const selectedDateMonth = {
+				month: selectedDayInfo.month,
+				monthAsNumber: selectedDayInfo.monthAsNumber,
+				year: selectedDayInfo.year,
+				dayAsNumber: selectedDayInfo.dayAsNumber,
+			};
+			setSelectedMonth({
+				month: selectedDayInfo.month,
+				monthAsNumber: selectedDayInfo.monthAsNumber,
+				year: selectedDayInfo.year,
+			});
+			setSelectedDate({
+				...selectedDate,
+				month: selectedDateMonth.month,
+				year: selectedDateMonth.year,
+				date: dateAsNumber,
+				unix: getUnixTime(date),
+			});
+			return;
+		}
 		const date = new Date();
-		if (!range && !isBefore(date, disableDatesBefore) && !isAfter(date, disableDatesAfter)) {
+		if (!range && !isBefore(date, disableDatesBefore)) {
 			const dateAsNumber = date.getDate();
 			setSelectedDate({
 				...selectedDate,
 				month: selectedMonth.month,
 				year: selectedMonth.year,
 				date: dateAsNumber,
-				unix: getUnixTime(date.setHours(23, 59, 59, 59)),
+				unix: getUnixTime(date),
 			});
 		}
 	}, []);
@@ -54,7 +78,7 @@ const Calender = (props) => {
 			month: dayInfo.month,
 			year: dayInfo.year,
 			date: dayInfo.dateAsNumber,
-			unix: getUnixTime(new Date(unix * 1000).setHours(23, 59, 59, 59)),
+			unix: getUnixTime(new Date(unix * 1000)),
 		});
 	};
 
@@ -109,7 +133,6 @@ const Calender = (props) => {
 				selectedRange={selectedRange}
 				setSelectedRange={setSelectedRange}
 				disabledDates={disabledDates}
-				disableDatesAfter={disableDatesAfter}
 				disableDatesBefore={disableDatesBefore}
 			/>
 			<CalenderFooter

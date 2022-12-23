@@ -1,59 +1,106 @@
 /* eslint-disable react/forbid-prop-types */
 import PropTypes from 'prop-types';
+import { forwardRef, useState } from 'react';
 import { classes } from '../../../utils';
+import { Button } from '../../buttons';
+import { CaretIcon } from '../../icons';
 import { TableCell } from '../cell';
 import styles from './TableRow.module.css';
 
-const TableRow = (props) => {
-	// eslint-disable-next-line object-curly-newline
-	const { type, headerData, datum, _index, selected, customCells, className, setActiveData } =
-		props;
+// eslint-disable-next-line prefer-arrow-callback
+const TableRow = forwardRef(function BaseTable(props, ref) {
+	const {
+		type,
+		headerData,
+		datum,
+		_index,
+		customCells,
+		className,
+		setActiveId,
+		expandable: Expandable,
+	} = props;
+
+	const [expanded, setExpanded] = useState(false);
+
+	const tableCells = headerData?.map?.((item) => {
+		let cellContent = null;
+		if (type === 'header') {
+			cellContent = item.title;
+		} else if (type === 'body') {
+			cellContent = datum?.[item.id];
+		}
+
+		const cellProps = {
+			...props,
+			...item,
+			_index,
+			setActiveId,
+			key: item.id,
+			datum,
+			cellContent,
+			cellTitle: cellContent,
+			type,
+		};
+
+		const getCustomCell = customCells?.[type];
+		const CustomCell = typeof getCustomCell === 'function' ? getCustomCell()?.[item.id] : null;
+		if (CustomCell != null) {
+			// eslint-disable-next-line react/jsx-key
+			return <CustomCell {...cellProps} />;
+		}
+
+		return (
+			// eslint-disable-next-line react/jsx-key
+			<TableCell {...cellProps} />
+		);
+	});
 
 	return (
-		<tr
-			data-elem='table-row'
-			className={classes(
-				className,
-				styles.root,
-				selected ? styles.selected : '',
-				styles[`${type}-row`]
-			)}>
-			{headerData?.map?.((item) => {
-				let cellContent = null;
-				if (type === 'header') {
-					cellContent = item.title;
-				} else if (type === 'body') {
-					cellContent = datum?.[item.id];
-				}
-
-				const cellProps = {
-					...props,
-					...item,
-					_index,
-					setActiveData,
-					key: item.id,
-					datum,
-					cellContent,
-					cellTitle: cellContent,
-					type,
-				};
-
-				const getCustomCell = customCells?.[type];
-				const CustomCell =
-					typeof getCustomCell === 'function' ? getCustomCell()?.[item.id] : null;
-				if (CustomCell != null) {
-					// eslint-disable-next-line react/jsx-key
-					return <CustomCell {...cellProps} />;
-				}
-
-				return (
-					// eslint-disable-next-line react/jsx-key
-					<TableCell {...cellProps} />
-				);
-			})}
-		</tr>
+		<>
+			<tr
+				ref={ref}
+				tabIndex={-1}
+				data-elem='table-row'
+				className={classes(
+					className,
+					styles.root,
+					styles[`${type}-row`],
+					Expandable ? styles.expandable : ''
+				)}>
+				{Expandable && type === 'body' && (
+					<TableCell
+						className={classes(
+							styles['expandable-cell'],
+							expanded ? styles.expanded : ''
+						)}
+						size='auto'
+						cellContent={
+							<Button
+								className={styles.button}
+								size='auto'
+								variant='text'
+								onClick={() => {
+									setExpanded((prev) => {
+										return !prev;
+									});
+								}}
+								leftComponent={() => {
+									return <CaretIcon className={styles.icon} />;
+								}}
+							/>
+						}
+					/>
+				)}
+				{tableCells}
+			</tr>
+			{Expandable && expanded && (
+				<tr>
+					<Expandable datum={datum} index={_index} />
+				</tr>
+			)}
+		</>
 	);
-};
+});
 
 TableRow.propTypes = {
 	className: PropTypes.string,
@@ -74,8 +121,9 @@ TableRow.propTypes = {
 			multiLine: PropTypes.bool,
 		})
 	),
-	setActiveData: PropTypes.func,
-	selected: PropTypes.bool,
+	setActiveId: PropTypes.func,
+	expandable: PropTypes.func,
+	// expandableComponent:
 };
 
 TableRow.defaultProps = {
@@ -87,8 +135,8 @@ TableRow.defaultProps = {
 		body: null,
 	},
 	headerData: [],
-	setActiveData: () => {},
-	selected: false,
+	setActiveId: () => {},
+	expandable: null,
 };
 
 export default TableRow;

@@ -3,11 +3,16 @@ import { isValidElement } from 'react';
 import { classes } from '../../../../utils';
 import { Button, Chip } from '../../../buttons';
 import { BaseCell } from '../../../cell';
-import { ArrowIcon } from '../../../icons';
+import { ArrowIcon, TrashIcon } from '../../../icons';
+import { Skeleton } from './Skeleton';
 import styles from './TableChips.module.css';
 
 const TableChips = (props) => {
-	const { showBack, onBack, chips, className, style } = props;
+	const { showBack, onBack, onClear, chips, className, style, loading } = props;
+
+	if (loading) {
+		return <Skeleton />;
+	}
 
 	const chipsDOM = chips
 		?.filter((chip) => {
@@ -56,6 +61,23 @@ const TableChips = (props) => {
 					)
 				}
 				component2={chipsDOM?.length > 0 ? chipsDOM : null}
+				component3={
+					chipsDOM?.length > 0 ? (
+						<Button
+							size='auto'
+							variant='outlined'
+							color='danger'
+							title='Clear All'
+							className={styles.clear}
+							leftComponent={() => {
+								return <TrashIcon className={styles.icon} />;
+							}}
+							onClick={onClear}
+						/>
+					) : (
+						''
+					)
+				}
 			/>
 		);
 	}
@@ -68,6 +90,7 @@ TableChips.propTypes = {
 	style: PropTypes.object,
 	showBack: PropTypes.bool,
 	onBack: PropTypes.func,
+	onClear: PropTypes.func,
 	chips: PropTypes.arrayOf(
 		PropTypes.shape({
 			key: PropTypes.string,
@@ -78,6 +101,7 @@ TableChips.propTypes = {
 			rightComponent: PropTypes.node,
 		})
 	),
+	loading: PropTypes.bool,
 };
 
 TableChips.defaultProps = {
@@ -85,7 +109,9 @@ TableChips.defaultProps = {
 	style: {},
 	showBack: false,
 	onBack: () => {},
+	onClear: () => {},
 	chips: [],
+	loading: null,
 };
 
 export default TableChips;

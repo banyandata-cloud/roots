@@ -1,13 +1,17 @@
-@import '../../assets/styles/index';
+@import '../../../styles/index';
 
 button.root[data-elem='base-cell'] {
 	@include flex;
+	@include outline;
 	display: inline-flex;
 	user-select: none;
-	outline: none;
 	border: none;
 	background: none;
 	padding: 0.5rem 0.75rem;
+
+	&:active {
+		outline: none;
+	}
 
 	&:disabled {
 		cursor: not-allowed;

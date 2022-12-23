@@ -1,7 +1,9 @@
-import { getUnixTime } from 'date-fns';
-import { classes, doubleDigitted } from '../../../../utils';
+/* eslint-disable no-nested-ternary */
+import { fromUnixTime, getUnixTime } from 'date-fns';
+import { classes, doubleDigitted, getDayInfo } from '../../../../utils';
 import { Button } from '../../../buttons';
 import { CalenderIcon, HalfShadeIcon, ResetIcon, CrossIcon } from '../../../icons';
+import { TimePicker } from '../../../timePicker';
 import styles from './Footer.module.css';
 import { dateRanges } from './utils';
 
@@ -23,6 +25,7 @@ const Footer = (props) => {
 	const {
 		selectedDate = {},
 		selectedRange = {},
+		setSelectedDate,
 		setSelectedRange,
 		range,
 		goToDate,
@@ -49,8 +52,71 @@ const Footer = (props) => {
 		setSelectedRange({});
 	};
 
+	const datePassed = fromUnixTime(selectedDate.unix);
+
+	const onTimeChange = (time) => {
+		const monthNumber = datePassed.getMonth();
+		let hours = null;
+		hours = time.hours;
+		if (time.hours === '12') {
+			hours = '00';
+		}
+		if (time.meridian === 'PM') {
+			hours = 12 + parseInt(time.hours, 10);
+		}
+		const unix = getUnixTime(
+			new Date(
+				selectedDate.year || getDayInfo(new Date()).year,
+				monthNumber || getDayInfo(new Date()).monthAsNumber,
+				selectedDate.date || getDayInfo(new Date()).dateAsNumber,
+				Number(hours),
+				Number(time.minutes),
+				Number(time.seconds)
+			)
+		);
+		setSelectedDate({
+			...selectedDate,
+			unix,
+		});
+	};
+
+	const getTimePickerValue = () => {
+		if (datePassed.getDate()) {
+			const hours = (((datePassed.getHours() + 11) % 12) + 1).toString();
+			const minutes = datePassed.getMinutes().toString();
+			const seconds = datePassed.getSeconds().toString();
+			const meridian = datePassed.getHours() >= 12 ? 'PM' : 'AM';
+			return {
+				hours: doubleDigitted(hours),
+				minutes: doubleDigitted(minutes),
+				seconds: doubleDigitted(seconds),
+				meridian,
+			};
+		}
+		const { hours } = getDayInfo(new Date());
+		const { minutes } = getDayInfo(new Date());
+		const { seconds } = getDayInfo(new Date());
+		const meridian = getDayInfo(new Date()).hours >= 12 ? 'PM' : 'AM';
+		return {
+			hours: doubleDigitted(hours),
+			minutes: doubleDigitted(minutes),
+			seconds: doubleDigitted(seconds),
+			meridian,
+		};
+	};
+
+	const timeValue = `${getTimePickerValue().hours}:${getTimePickerValue().minutes} ${
+		getTimePickerValue().meridian
+	}`;
+
 	return (
 		<div className={styles.root}>
+			<TimePicker
+				value={getTimePickerValue()}
+				onChange={onTimeChange}
+				className={styles['time-picker']}
+			/>
+
 			{datesSelected && dates?.length === 2 ? (
 				<SelectedDateView
 					range
@@ -63,7 +129,7 @@ const Footer = (props) => {
 			) : (
 				datesSelected && (
 					<SelectedDateView
-						value={`${doubleDigitted(date)} ${monthInShort} ${year}`}
+						value={`${doubleDigitted(date)} ${monthInShort} ${year} - ${timeValue}`}
 						icon={() => {
 							return <ResetIcon />;
 						}}

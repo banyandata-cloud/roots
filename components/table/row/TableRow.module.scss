@@ -1,10 +1,18 @@
-@import '../../../styles/_index';
+@import '../../../styles';
 
 .root {
 	@include flex(row, flex-start);
 
 	&.header-row {
 		background: $grey6;
+
+		&.expandable {
+			> [data-elem='base-cell'] {
+				&:first-child {
+					padding-left: 4.5rem;
+				}
+			}
+		}
 	}
 
 	&.body-row {
@@ -15,7 +23,7 @@
 			}
 		}
 
-		&.selected {
+		&[data-active='true'] {
 			> [data-elem='base-cell'] {
 				background: $background;
 			}
@@ -28,6 +36,33 @@
 		}
 		&:last-child {
 			padding-right: 1rem;
+		}
+	}
+
+	> [data-elem='base-cell'].expandable-cell {
+		padding-left: 0.9rem;
+		padding-right: 0.1rem;
+		overflow: visible;
+		> [data-elem='component2'] {
+			overflow: visible;
+			> [data-elem='text'] {
+				overflow: visible;
+			}
+		}
+	}
+
+	.button {
+		.icon {
+			width: 1.5rem;
+			height: 1.5rem;
+		}
+	}
+
+	.expanded {
+		.button {
+			.icon {
+				transform: rotate(180deg);
+			}
 		}
 	}
 }

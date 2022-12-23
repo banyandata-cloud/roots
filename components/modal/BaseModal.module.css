@@ -22,17 +22,21 @@
 }
 .root .header,
 .root .footer {
-  padding: 15px;
+  padding: 1rem;
+}
+.root .header {
+  font-weight: 500;
+  font-size: 1.375rem;
 }
 .root .footer {
   margin-top: auto;
 }
-.root .closeModal {
+.root .close {
   position: absolute;
-  right: 20px;
-  top: 20px;
+  right: 0.5rem;
+  top: 0.5rem;
 }
-.root .closeModal .closeIcon {
+.root .close .icon {
   width: 1.5rem;
   height: 1.5rem;
   fill: var(--black);

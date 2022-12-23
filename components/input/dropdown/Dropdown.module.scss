@@ -110,7 +110,6 @@
 	display: none;
 	position: absolute;
 	top: calc(100% + 0.5rem);
-	z-index: 999;
 	background: $white;
 	width: auto;
 	border: 0.063rem solid $grey5;
@@ -120,6 +119,16 @@
 	overflow-y: auto;
 	min-height: 4rem;
 	outline: none;
+
+	.multi-options {
+		@include flex(row, space-between);
+		margin-bottom: 0.5rem;
+		list-style: none;
+	}
+
+	.multi-apply {
+		margin-top: 0.5rem;
+	}
 
 	&.open {
 		@include flex(column, flex-start, stretch);

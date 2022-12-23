@@ -1,0 +1,28 @@
+@import '../../../../../styles/';
+
+.root[data-elem='base-cell'] {
+	width: 100%;
+	gap: 1.25rem;
+	> [data-elem='component1'] {
+		flex: 1;
+	}
+
+	> [data-elem='component2'] {
+		flex: 6;
+	}
+
+	> [data-elem='component3'] {
+		flex: 3;
+		> [data-elem='base-cell'] {
+			padding: 0;
+			align-items: flex-start;
+			height: auto;
+			> [data-elem*='component'] {
+				flex: 1;
+				> [data-elem='skeleton'] {
+					height: 1.5rem;
+				}
+			}
+		}
+	}
+}

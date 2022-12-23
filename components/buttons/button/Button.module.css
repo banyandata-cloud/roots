@@ -49,14 +49,14 @@
 .root[data-elem=base-cell].warning.outlined, .root[data-elem=base-cell].warning.text {
   color: var(--warning);
 }
-.root[data-elem=base-cell]:disabled.contained {
+.root[data-elem=base-cell]:disabled.primary.contained, .root[data-elem=base-cell]:disabled.success.contained, .root[data-elem=base-cell]:disabled.danger.contained, .root[data-elem=base-cell]:disabled.warning.contained {
   background-color: var(--grey4);
   color: var(--grey);
 }
-.root[data-elem=base-cell]:disabled.outlined {
+.root[data-elem=base-cell]:disabled.primary.outlined, .root[data-elem=base-cell]:disabled.success.outlined, .root[data-elem=base-cell]:disabled.danger.outlined, .root[data-elem=base-cell]:disabled.warning.outlined {
   background-color: transparent;
   border-color: var(--grey);
 }
-.root[data-elem=base-cell]:disabled.outlined, .root[data-elem=base-cell]:disabled.text {
+.root[data-elem=base-cell]:disabled.primary.outlined, .root[data-elem=base-cell]:disabled.primary.text, .root[data-elem=base-cell]:disabled.success.outlined, .root[data-elem=base-cell]:disabled.success.text, .root[data-elem=base-cell]:disabled.danger.outlined, .root[data-elem=base-cell]:disabled.danger.text, .root[data-elem=base-cell]:disabled.warning.outlined, .root[data-elem=base-cell]:disabled.warning.text {
   color: var(--grey);
 }/*# sourceMappingURL=Button.module.css.map */

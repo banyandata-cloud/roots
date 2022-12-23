@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from '../../buttons';
 import { TableColumn } from '../BaseTable.class';
 import BaseTable from './BaseTable';
 
@@ -58,14 +59,27 @@ Default.args = {
 			designation: 'UI Engineer',
 			state: 'Delhi',
 		},
-		{
-			name: 'Pradeep Annadurai',
-			gender: 'M',
-			age: 24,
-			designation: 'UI Engineer',
-			state: 'Tamil Nadu',
-		},
+		...[...Array(30).keys()].map(() => {
+			return {
+				name: 'Pradeep Annadurai',
+				gender: 'M',
+				age: 24,
+				designation: 'UI Engineer',
+				state: 'Tamil Nadu',
+			};
+		}),
 	],
 };
 
 Default.parameters = {};
+
+export const Expandable = Template.bind({});
+
+Expandable.args = {
+	...Default.args,
+	expandable: () => {
+		return <BaseTable {...Default.args} />;
+	},
+};
+
+Expandable.parameters = {};

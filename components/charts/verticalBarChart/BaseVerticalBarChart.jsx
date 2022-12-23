@@ -16,7 +16,6 @@ import {
 	CanvasRenderer,
 	// SVGRenderer,
 } from 'echarts/renderers';
-
 import styles from './BaseVerticalBarChart.module.css';
 import { classes } from '../../../utils';
 
@@ -45,6 +44,9 @@ const BaseVerticalBarChart = (props) => {
 		axisColor,
 		barWidth,
 		cursor,
+		legend,
+		tooltip,
+		seriesName,
 		stacked,
 		seriesOption,
 		style,
@@ -53,7 +55,7 @@ const BaseVerticalBarChart = (props) => {
 
 	const seriesOptionObject = {
 		type: 'bar',
-		barWidth: stacked ? barWidth : barWidth / seriesOption.length,
+		barWidth: stacked ? barWidth : barWidth / (seriesOption?.length ?? 1),
 		cursor,
 		stack: stacked,
 		groupPadding: 3,
@@ -74,9 +76,10 @@ const BaseVerticalBarChart = (props) => {
 		itemStyle: {
 			borderRadius: [0, 2, 2, 0],
 		},
+		name: seriesData?.metaData?.keyData?.x1 ?? '',
 		data: Object.keys(seriesData?.chartData ?? {}).map((key) => {
 			return {
-				value: seriesData?.chartData?.[key]?.x1,
+				value: seriesData?.chartData?.[key]?.x1 ?? '',
 			};
 		}),
 	};
@@ -87,14 +90,19 @@ const BaseVerticalBarChart = (props) => {
 				...seriesOptionObject,
 				...objectData,
 				label: {
-					...seriesOptionObject.label,
+					...(seriesOptionObject?.label ?? {}),
 					...(objectData?.label ?? {}),
 				},
+
+				name: seriesName(index),
 				data: Object.keys(seriesData?.chartData ?? {}).map((key, subIndex) => {
 					return {
-						value: seriesData?.chartData?.[key]?.[`x${index + 1}`],
+						value: seriesData?.chartData?.[key]?.[`x${index + 1}`] ?? '',
 						itemStyle: {
-							color: objectData?.barColor?.[subIndex] || objectData?.color,
+							color: (objectData?.barColor?.[subIndex] ?? '') || (objectData?.color ?? ''),
+						},
+						tooltip: {
+							...(seriesOption[subIndex]?.tooltip ?? {}),
 						},
 					};
 				}),
@@ -108,7 +116,6 @@ const BaseVerticalBarChart = (props) => {
 				title: {
 					text: title,
 				},
-
 				grid: {
 					containLabel: gridContainLabel,
 					...gridOptions,
@@ -117,6 +124,12 @@ const BaseVerticalBarChart = (props) => {
 					data: Object.keys(seriesData?.chartData ?? {}),
 					show: xAxisShow,
 					type: 'category',
+				},
+				legend: {
+					...legend,
+				},
+				tooltip: {
+					...tooltip,
 				},
 				yAxis: {
 					type: 'value',
@@ -155,17 +168,20 @@ BaseVerticalBarChart.propTypes = {
 	gridContainLabel: PropTypes.bool,
 	gridOptions: PropTypes.object,
 	xAxisShow: PropTypes.bool,
+	tooltip: PropTypes.object,
 	seriesData: PropTypes.shape({
 		chartData: PropTypes.object,
 		metaData: PropTypes.object,
 	}),
-	onEvents: PropTypes.object,
+	onEvents: PropTypes.func,
 	yAxisLabelShow: PropTypes.bool,
 	ySplitLineShow: PropTypes.bool,
 	yAxisLineShow: PropTypes.bool,
 	yAxisTickShow: PropTypes.bool,
 	axisColor: PropTypes.string,
 	barWidth: PropTypes.string,
+	legend: PropTypes.object,
+	seriesName: PropTypes.func,
 	cursor: PropTypes.string,
 	stacked: PropTypes.bool,
 	seriesOption: PropTypes.arrayOf(PropTypes.shape),
@@ -183,14 +199,21 @@ BaseVerticalBarChart.defaultProps = {
 		top: 5,
 	},
 	xAxisShow: false,
+	tooltip: {
+		trigger: 'item',
+	},
 	seriesData: {},
-	onEvents: {},
+	onEvents: () => {},
 	yAxisLabelShow: false,
 	ySplitLineShow: false,
 	yAxisLineShow: false,
 	yAxisTickShow: false,
 	axisColor: 'grey',
 	barWidth: '50%',
+	seriesName: () => {},
+	legend: {
+		show: true,
+	},
 	cursor: 'default',
 	stacked: true,
 	seriesOption: [

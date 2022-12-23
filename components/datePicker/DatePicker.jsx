@@ -15,14 +15,13 @@ import { fromUnixTime } from 'date-fns';
 import { useOutsideClickListener } from '../../hooks';
 import { classes } from '../../utils';
 import { Calender } from './calender';
-import { CalenderIcon, ChevronIcon } from '../icons';
+import { CalenderIcon, ChevronIcon, CrossIcon } from '../icons';
 import { Popper } from '../popper';
 import styles from './DatePicker.module.css';
 import { isMaxRangeExceeded } from './utils';
 import { MONTHS } from '../../constants';
 
 const DatePicker = (props) => {
-	// eslint-disable-next-line object-curly-newline
 	const {
 		placeholder,
 		label,
@@ -33,8 +32,9 @@ const DatePicker = (props) => {
 		value,
 		disabled,
 		className,
-		disableDatesAfter,
 		disableDatesBefore,
+		theme,
+		onClear,
 	} = props;
 
 	const [open, setOpen] = useState(false);
@@ -61,9 +61,13 @@ const DatePicker = (props) => {
 	let displayValue = '';
 
 	if (!range && value) {
+		const timeValue = `${((sDate.getHours() + 11) % 12) + 1}:${sDate.getMinutes()} ${
+			sDate.getHours() >= 12 ? 'PM' : 'AM'
+		}`;
+
 		displayValue = ` ${sDate.getDate()} ${
 			MONTHS[sDate.getMonth().toString()?.substring(0, 3)]
-		} ${sDate.getFullYear()}`;
+		} ${sDate.getFullYear()} ${timeValue}`;
 	}
 
 	const { x, y, reference, floating, strategy, context } = useFloating({
@@ -133,13 +137,14 @@ const DatePicker = (props) => {
 			apply();
 		},
 		disabledDates,
-		disableDatesAfter,
+
 		disableDatesBefore,
+		value,
 	};
 
 	return (
 		<div className={classes(styles.root, className)} ref={datePickerRef}>
-			{label && <span className={styles.label}>{label}</span>}
+			{label && <span className={classes(styles.label, styles[theme])}>{label}</span>}
 			<div
 				data-elem='header'
 				ref={reference}
@@ -147,21 +152,39 @@ const DatePicker = (props) => {
 					styles.container,
 					disabled ? styles.disabled : '',
 					open ? styles.open : '',
-					error ? styles.error : ''
+					error ? styles.error : '',
+					styles[theme]
 				)}
 				{...getReferenceProps()}>
 				<div>
-					<CalenderIcon />
-					{!displayValue && <span className={styles.placeholder}>{placeholder}</span>}
-					{displayValue && (
-						<span className={styles.value}>
-							Selected Date: <span>{displayValue}</span>
+					<CalenderIcon className={classes(styles.icon, styles[theme])} />
+					{!displayValue && (
+						<span className={classes(styles.placeholder, styles[theme])}>
+							{placeholder}
 						</span>
+					)}
+					{displayValue && (
+						<div className={classes(styles.value, styles[theme])}>
+							<span>{displayValue}</span>
+						</div>
 					)}
 				</div>
 
 				<input className={styles.input} value={displayValue} />
-				<ChevronIcon className={classes(styles.icon)} position={open ? 'bottom' : 'top'} />
+				{value ? (
+					<div
+						onClick={(event) => {
+							event.stopPropagation();
+							onClear();
+						}}>
+						<CrossIcon className={classes(styles.icon, styles[theme])} />
+					</div>
+				) : (
+					<ChevronIcon
+						className={classes(styles.icon, styles[theme])}
+						position={open ? 'bottom' : 'top'}
+					/>
+				)}
 			</div>
 			{error && <div className={styles['error-text']}>{error}</div>}
 			<Popper open={open} wrapperid='datePicker-popper'>
@@ -195,6 +218,7 @@ DatePicker.propTypes = {
 	label: PropTypes.string,
 	range: PropTypes.bool,
 	onApply: PropTypes.func,
+	onClear: PropTypes.func,
 	value: PropTypes.string,
 	disabled: PropTypes.bool,
 	disabledDates: PropTypes.arrayOf(PropTypes.string),
@@ -204,7 +228,7 @@ DatePicker.propTypes = {
 	}),
 	className: PropTypes.string,
 	disableDatesBefore: PropTypes.arrayOf(PropTypes.string),
-	disableDatesAfter: PropTypes.arrayOf(PropTypes.string),
+	theme: PropTypes.string,
 };
 
 DatePicker.defaultProps = {
@@ -218,7 +242,8 @@ DatePicker.defaultProps = {
 	value: '',
 	className: '',
 	disableDatesBefore: [],
-	disableDatesAfter: [],
+	theme: 'dark',
+	onClear: () => {},
 };
 
 export default DatePicker;
