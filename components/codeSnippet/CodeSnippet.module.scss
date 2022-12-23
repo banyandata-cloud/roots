@@ -3,7 +3,10 @@
 .root {
 	padding: 0.5rem, 1rem;
 	position: relative;
-	font-family: monospace;
+	.code {
+		font-family: monospace;
+		font-size: 1rem;
+	}
 	.copy {
 		position: absolute;
 		right: 1rem;
