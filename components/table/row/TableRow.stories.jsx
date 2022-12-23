@@ -1,6 +1,7 @@
 import React from 'react';
 import TableRow from './TableRow';
 import { TableColumn } from '../BaseTable.class';
+import { Button } from '../../buttons';
 
 export default {
 	title: 'Components/Table/Row',
@@ -54,3 +55,14 @@ Default.args = {
 };
 
 Default.parameters = {};
+
+export const Expandable = Template.bind({});
+
+Expandable.args = {
+	...Default.args,
+	expandable: () => {
+		return <Button />;
+	},
+};
+
+Expandable.parameters = {};

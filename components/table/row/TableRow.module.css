@@ -7,6 +7,9 @@
 .root.header-row {
   background: var(--grey6);
 }
+.root.header-row.expandable > [data-elem=base-cell]:first-child {
+  padding-left: 4.5rem;
+}
 .root.body-row {
   background: var(--white);
 }
@@ -21,4 +24,22 @@
 }
 .root > [data-elem=base-cell]:last-child {
   padding-right: 1rem;
+}
+.root > [data-elem=base-cell].expandable-cell {
+  padding-left: 0.9rem;
+  padding-right: 0.1rem;
+  overflow: visible;
+}
+.root > [data-elem=base-cell].expandable-cell > [data-elem=component2] {
+  overflow: visible;
+}
+.root > [data-elem=base-cell].expandable-cell > [data-elem=component2] > [data-elem=text] {
+  overflow: visible;
+}
+.root .button .icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.root .expanded .button .icon {
+  transform: rotate(180deg);
 }/*# sourceMappingURL=TableRow.module.css.map */

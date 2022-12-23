@@ -56,7 +56,7 @@ BaseCell.propTypes = {
 	size: PropTypes.oneOf(['sm', 'md', 'lg', 'auto']),
 	flexible: PropTypes.bool,
 	radius: PropTypes.oneOf(['none', 'default', 'round', 'ellipse']),
-	RootDOM: PropTypes.oneOf(['div', 'span', 'button']),
+	RootDOM: PropTypes.oneOf(['div', 'span', 'button', 'td']),
 	attrs: PropTypes.object,
 };
 
