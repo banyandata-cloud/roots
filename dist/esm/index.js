@@ -1615,7 +1615,7 @@ BaseCell.propTypes = {
   size: propTypes$1.exports.oneOf(['sm', 'md', 'lg', 'auto']),
   flexible: propTypes$1.exports.bool,
   radius: propTypes$1.exports.oneOf(['none', 'default', 'round', 'ellipse']),
-  RootDOM: propTypes$1.exports.oneOf(['div', 'span', 'button']),
+  RootDOM: propTypes$1.exports.oneOf(['div', 'span', 'button', 'td']),
   attrs: propTypes$1.exports.object
 };
 BaseCell.defaultProps = {
@@ -36703,11 +36703,12 @@ TableCell.propTypes = _objectSpread2(_objectSpread2({}, BaseCell.propTypes), {},
 });
 TableCell.defaultProps = _objectSpread2(_objectSpread2({}, BaseCell.defaultProps), {}, {
   cellContent: null,
-  cellTitle: null
+  cellTitle: null,
+  RootDOM: 'td'
 });
 
-var css$l = ".TableRow_module_root__b76a6936 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.TableRow_module_root__b76a6936.TableRow_module_headerRow__b76a6936 {\n  background: var(--grey6);\n}\n.TableRow_module_root__b76a6936.TableRow_module_bodyRow__b76a6936 {\n  background: var(--white);\n}\n.TableRow_module_root__b76a6936.TableRow_module_bodyRow__b76a6936:hover > [data-elem=base-cell] {\n  background: var(--info-bg);\n}\n.TableRow_module_root__b76a6936.TableRow_module_bodyRow__b76a6936[data-active=true] > [data-elem=base-cell] {\n  background: var(--background);\n}\n.TableRow_module_root__b76a6936 > [data-elem=base-cell]:first-child {\n  padding-left: 1rem;\n}\n.TableRow_module_root__b76a6936 > [data-elem=base-cell]:last-child {\n  padding-right: 1rem;\n}";
-var modules_f6618a87 = {"root":"TableRow_module_root__b76a6936","header-row":"TableRow_module_headerRow__b76a6936","body-row":"TableRow_module_bodyRow__b76a6936"};
+var css$l = ".TableRow_module_root__a0ba90a7 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.TableRow_module_root__a0ba90a7.TableRow_module_headerRow__a0ba90a7 {\n  background: var(--grey6);\n}\n.TableRow_module_root__a0ba90a7.TableRow_module_headerRow__a0ba90a7.TableRow_module_expandable__a0ba90a7 > [data-elem=base-cell]:first-child {\n  padding-left: 4.5rem;\n}\n.TableRow_module_root__a0ba90a7.TableRow_module_bodyRow__a0ba90a7 {\n  background: var(--white);\n}\n.TableRow_module_root__a0ba90a7.TableRow_module_bodyRow__a0ba90a7:hover > [data-elem=base-cell] {\n  background: var(--info-bg);\n}\n.TableRow_module_root__a0ba90a7.TableRow_module_bodyRow__a0ba90a7[data-active=true] > [data-elem=base-cell] {\n  background: var(--background);\n}\n.TableRow_module_root__a0ba90a7 > [data-elem=base-cell]:first-child {\n  padding-left: 1rem;\n}\n.TableRow_module_root__a0ba90a7 > [data-elem=base-cell]:last-child {\n  padding-right: 1rem;\n}\n.TableRow_module_root__a0ba90a7 > [data-elem=base-cell].TableRow_module_expandableCell__a0ba90a7 {\n  padding-left: 0.9rem;\n  padding-right: 0.1rem;\n  overflow: visible;\n}\n.TableRow_module_root__a0ba90a7 > [data-elem=base-cell].TableRow_module_expandableCell__a0ba90a7 > [data-elem=component2] {\n  overflow: visible;\n}\n.TableRow_module_root__a0ba90a7 > [data-elem=base-cell].TableRow_module_expandableCell__a0ba90a7 > [data-elem=component2] > [data-elem=text] {\n  overflow: visible;\n}\n.TableRow_module_root__a0ba90a7 .TableRow_module_button__a0ba90a7 .TableRow_module_icon__a0ba90a7 {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.TableRow_module_root__a0ba90a7 .TableRow_module_expanded__a0ba90a7 .TableRow_module_button__a0ba90a7 .TableRow_module_icon__a0ba90a7 {\n  transform: rotate(180deg);\n}";
+var modules_f6618a87 = {"root":"TableRow_module_root__a0ba90a7","header-row":"TableRow_module_headerRow__a0ba90a7","expandable":"TableRow_module_expandable__a0ba90a7","body-row":"TableRow_module_bodyRow__a0ba90a7","expandable-cell":"TableRow_module_expandableCell__a0ba90a7","button":"TableRow_module_button__a0ba90a7","icon":"TableRow_module_icon__a0ba90a7","expanded":"TableRow_module_expanded__a0ba90a7"};
 n(css$l,{});
 
 var TableRow = /*#__PURE__*/forwardRef(function BaseTable(props, ref) {
@@ -36718,41 +36719,72 @@ var TableRow = /*#__PURE__*/forwardRef(function BaseTable(props, ref) {
     _index = props._index,
     customCells = props.customCells,
     className = props.className,
-    setActiveId = props.setActiveId;
-  return /*#__PURE__*/jsx$1("tr", {
-    ref: ref,
-    tabIndex: -1,
-    "data-elem": "table-row",
-    className: classes(className, modules_f6618a87.root, modules_f6618a87["".concat(type, "-row")]),
-    children: headerData === null || headerData === void 0 ? void 0 : (_headerData$map = headerData.map) === null || _headerData$map === void 0 ? void 0 : _headerData$map.call(headerData, function (item) {
-      var _getCustomCell;
-      var cellContent = null;
-      if (type === 'header') {
-        cellContent = item.title;
-      } else if (type === 'body') {
-        cellContent = datum === null || datum === void 0 ? void 0 : datum[item.id];
-      }
-      var cellProps = _objectSpread2(_objectSpread2(_objectSpread2({}, props), item), {}, {
-        _index: _index,
-        setActiveId: setActiveId,
-        key: item.id,
+    setActiveId = props.setActiveId,
+    Expandable = props.expandable;
+  var _useState = useState(false),
+    _useState2 = _slicedToArray(_useState, 2),
+    expanded = _useState2[0],
+    setExpanded = _useState2[1];
+  var tableCells = headerData === null || headerData === void 0 ? void 0 : (_headerData$map = headerData.map) === null || _headerData$map === void 0 ? void 0 : _headerData$map.call(headerData, function (item) {
+    var _getCustomCell;
+    var cellContent = null;
+    if (type === 'header') {
+      cellContent = item.title;
+    } else if (type === 'body') {
+      cellContent = datum === null || datum === void 0 ? void 0 : datum[item.id];
+    }
+    var cellProps = _objectSpread2(_objectSpread2(_objectSpread2({}, props), item), {}, {
+      _index: _index,
+      setActiveId: setActiveId,
+      key: item.id,
+      datum: datum,
+      cellContent: cellContent,
+      cellTitle: cellContent,
+      type: type
+    });
+    var getCustomCell = customCells === null || customCells === void 0 ? void 0 : customCells[type];
+    var CustomCell = typeof getCustomCell === 'function' ? (_getCustomCell = getCustomCell()) === null || _getCustomCell === void 0 ? void 0 : _getCustomCell[item.id] : null;
+    if (CustomCell != null) {
+      // eslint-disable-next-line react/jsx-key
+      return /*#__PURE__*/jsx$1(CustomCell, _objectSpread2({}, cellProps));
+    }
+    return (
+      /*#__PURE__*/
+      // eslint-disable-next-line react/jsx-key
+      jsx$1(TableCell, _objectSpread2({}, cellProps))
+    );
+  });
+  return /*#__PURE__*/jsxs(Fragment, {
+    children: [/*#__PURE__*/jsxs("tr", {
+      ref: ref,
+      tabIndex: -1,
+      "data-elem": "table-row",
+      className: classes(className, modules_f6618a87.root, modules_f6618a87["".concat(type, "-row")], Expandable ? modules_f6618a87.expandable : ''),
+      children: [Expandable && type === 'body' && /*#__PURE__*/jsx$1(TableCell, {
+        className: classes(modules_f6618a87['expandable-cell'], expanded ? modules_f6618a87.expanded : ''),
+        size: "auto",
+        cellContent: /*#__PURE__*/jsx$1(Button, {
+          className: modules_f6618a87.button,
+          size: "auto",
+          variant: "text",
+          onClick: function onClick() {
+            setExpanded(function (prev) {
+              return !prev;
+            });
+          },
+          leftComponent: function leftComponent() {
+            return /*#__PURE__*/jsx$1(Caret, {
+              className: modules_f6618a87.icon
+            });
+          }
+        })
+      }), tableCells]
+    }), Expandable && expanded && /*#__PURE__*/jsx$1("tr", {
+      children: /*#__PURE__*/jsx$1(Expandable, {
         datum: datum,
-        cellContent: cellContent,
-        cellTitle: cellContent,
-        type: type
-      });
-      var getCustomCell = customCells === null || customCells === void 0 ? void 0 : customCells[type];
-      var CustomCell = typeof getCustomCell === 'function' ? (_getCustomCell = getCustomCell()) === null || _getCustomCell === void 0 ? void 0 : _getCustomCell[item.id] : null;
-      if (CustomCell != null) {
-        // eslint-disable-next-line react/jsx-key
-        return /*#__PURE__*/jsx$1(CustomCell, _objectSpread2({}, cellProps));
-      }
-      return (
-        /*#__PURE__*/
-        // eslint-disable-next-line react/jsx-key
-        jsx$1(TableCell, _objectSpread2({}, cellProps))
-      );
-    })
+        index: _index
+      })
+    })]
   });
 });
 TableRow.propTypes = {
@@ -36772,8 +36804,11 @@ TableRow.propTypes = {
     style: propTypes$1.exports.object,
     multiLine: propTypes$1.exports.bool
   })),
-  setActiveId: propTypes$1.exports.func
+  setActiveId: propTypes$1.exports.func,
+  expandable: propTypes$1.exports.func
+  // expandableComponent:
 };
+
 TableRow.defaultProps = {
   className: '',
   type: 'body',
@@ -36783,7 +36818,8 @@ TableRow.defaultProps = {
     body: null
   },
   headerData: [],
-  setActiveId: function setActiveId() {}
+  setActiveId: function setActiveId() {},
+  expandable: null
 };
 
 var css$k = ".TableBody_module_root__77e2990d {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n}";
@@ -36795,7 +36831,8 @@ var TableBody = function TableBody(props) {
   var tableData = props.tableData,
     headerData = props.headerData,
     customCells = props.customCells,
-    className = props.className;
+    className = props.className,
+    expandable = props.expandable;
   var listRef = useRef([]);
   return /*#__PURE__*/jsx$1("tbody", {
     "data-elem": "table-body",
@@ -36822,7 +36859,8 @@ var TableBody = function TableBody(props) {
         headerData: headerData,
         customCells: customCells,
         _index: _index,
-        setActiveId: setActiveId
+        setActiveId: setActiveId,
+        expandable: expandable
       }, key);
     })
   });
@@ -36842,7 +36880,8 @@ TableBody.propTypes = {
   customCells: propTypes$1.exports.shape({
     header: propTypes$1.exports.object,
     body: propTypes$1.exports.object
-  })
+  }),
+  expandable: propTypes$1.exports.func
 };
 TableBody.defaultProps = {
   className: '',
@@ -36851,7 +36890,8 @@ TableBody.defaultProps = {
   customCells: {
     header: null,
     body: null
-  }
+  },
+  expandable: null
 };
 
 var css$j = ".TableHeader_module_root__daf69a14 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n}";
@@ -36861,14 +36901,16 @@ n(css$j,{});
 /* eslint-disable react/forbid-prop-types */
 var TableHeader = function TableHeader(props) {
   var headerData = props.headerData,
-    customCells = props.customCells;
+    customCells = props.customCells,
+    expandable = props.expandable;
   return /*#__PURE__*/jsx$1("thead", {
     "data-elem": "table-header",
     className: modules_3be98c28.root,
     children: /*#__PURE__*/jsx$1(TableRow, {
       type: "header",
       headerData: headerData,
-      customCells: customCells
+      customCells: customCells,
+      expandable: expandable
     })
   });
 };
@@ -36885,14 +36927,16 @@ TableHeader.propTypes = {
   customCells: propTypes$1.exports.shape({
     header: propTypes$1.exports.func,
     body: propTypes$1.exports.func
-  })
+  }),
+  expandable: propTypes$1.exports.func
 };
 TableHeader.defaultProps = {
   headerData: [],
   customCells: {
     header: null,
     body: null
-  }
+  },
+  expandable: null
 };
 
 var css$i = ".BaseTable_module_root__7a8d241c {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  background: var(--white);\n  overflow: auto;\n}";
@@ -36962,7 +37006,8 @@ var BaseTable = /*#__PURE__*/forwardRef(function BaseTable(props, ref) {
     customCells = props.customCells,
     tableData = props.tableData,
     className = props.className,
-    loading = props.loading;
+    loading = props.loading,
+    expandable = props.expandable;
   if (loading) {
     return /*#__PURE__*/jsx$1(BaseTableSkeleton, {});
   }
@@ -36975,12 +37020,14 @@ var BaseTable = /*#__PURE__*/forwardRef(function BaseTable(props, ref) {
     className: classes(className, modules_f1817c60.root),
     children: [/*#__PURE__*/jsx$1(TableHeader, {
       headerData: transformedHeaderData,
-      customCells: customCells
+      customCells: customCells,
+      expandable: expandable
     }), /*#__PURE__*/jsx$1(TableBody, {
       ref: ref,
       headerData: transformedHeaderData,
       customCells: customCells,
-      tableData: tableData
+      tableData: tableData,
+      expandable: expandable
     })]
   });
 });
@@ -37000,7 +37047,8 @@ BaseTable.propTypes = {
     header: propTypes$1.exports.func,
     body: propTypes$1.exports.func
   }),
-  loading: propTypes$1.exports.bool
+  loading: propTypes$1.exports.bool,
+  expandable: propTypes$1.exports.func
 };
 BaseTable.defaultProps = {
   className: '',
@@ -37010,7 +37058,8 @@ BaseTable.defaultProps = {
     header: null,
     body: null
   },
-  loading: null
+  loading: null,
+  expandable: null
 };
 
 var css$f = ".Skeleton_module_root__15c10a9b[data-elem=base-cell] {\n  align-items: flex-start;\n  width: 100%;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component1] {\n  width: auto;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component1] > [data-elem=skeleton] {\n  height: 1.5rem;\n  width: 1.5rem !important;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component2] {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 1rem;\n  flex: 8;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component2] > [data-elem=skeleton] {\n  max-width: 9rem;\n  height: 1.5rem;\n}";
