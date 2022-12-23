@@ -89,6 +89,7 @@ TableCell.defaultProps = {
 	...BaseCell.defaultProps,
 	cellContent: null,
 	cellTitle: null,
+	RootDOM: 'td',
 };
 
 export default TableCell;
