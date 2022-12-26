@@ -10,6 +10,7 @@ import {
 	TooltipComponent,
 	TitleComponent,
 	DatasetComponent,
+	LegendComponent,
 } from 'echarts/components';
 // Import renderer, note that introducing the CanvasRenderer or SVGRenderer is a required step
 import {
@@ -25,6 +26,7 @@ echarts.use([
 	TooltipComponent,
 	GridComponent,
 	DatasetComponent,
+	LegendComponent,
 	BarChart,
 	CanvasRenderer,
 ]);
@@ -35,6 +37,7 @@ const BaseVerticalBarChart = (props) => {
 		gridContainLabel,
 		gridOptions,
 		xAxisShow,
+		xAxisLabel,
 		seriesData,
 		onEvents,
 		yAxisLabelShow,
@@ -42,6 +45,7 @@ const BaseVerticalBarChart = (props) => {
 		yAxisLineShow,
 		yAxisTickShow,
 		axisColor,
+		splitType,
 		barWidth,
 		cursor,
 		legend,
@@ -65,9 +69,7 @@ const BaseVerticalBarChart = (props) => {
 		},
 		label: {
 			color: 'black',
-			position: 'insideBottomLeft',
-			offset: [0, -10],
-			rotate: 90,
+			position: 'outside',
 			formatter(param) {
 				return param.value;
 			},
@@ -99,7 +101,9 @@ const BaseVerticalBarChart = (props) => {
 					return {
 						value: seriesData?.chartData?.[key]?.[`x${index + 1}`] ?? '',
 						itemStyle: {
-							color: (objectData?.barColor?.[subIndex] ?? '') || (objectData?.color ?? ''),
+							color:
+								(objectData?.barColor?.[subIndex] ?? '') ||
+								(objectData?.color ?? ''),
 						},
 						tooltip: {
 							...(seriesOption[subIndex]?.tooltip ?? {}),
@@ -124,6 +128,12 @@ const BaseVerticalBarChart = (props) => {
 					data: Object.keys(seriesData?.chartData ?? {}),
 					show: xAxisShow,
 					type: 'category',
+					axisTick: {
+						show: false,
+					},
+					axisLabel: {
+						...xAxisLabel,
+					},
 				},
 				legend: {
 					...legend,
@@ -141,7 +151,7 @@ const BaseVerticalBarChart = (props) => {
 						show: ySplitLineShow,
 						lineStyle: {
 							color: axisColor,
-							type: 'dashed',
+							type: splitType,
 						},
 					},
 					axisLine: {
@@ -168,6 +178,7 @@ BaseVerticalBarChart.propTypes = {
 	gridContainLabel: PropTypes.bool,
 	gridOptions: PropTypes.object,
 	xAxisShow: PropTypes.bool,
+	xAxisLabel: PropTypes.object,
 	tooltip: PropTypes.object,
 	seriesData: PropTypes.shape({
 		chartData: PropTypes.object,
@@ -179,6 +190,7 @@ BaseVerticalBarChart.propTypes = {
 	yAxisLineShow: PropTypes.bool,
 	yAxisTickShow: PropTypes.bool,
 	axisColor: PropTypes.string,
+	splitType: PropTypes.string,
 	barWidth: PropTypes.string,
 	legend: PropTypes.object,
 	seriesName: PropTypes.func,
@@ -198,7 +210,14 @@ BaseVerticalBarChart.defaultProps = {
 		bottom: 0,
 		top: 5,
 	},
-	xAxisShow: false,
+	xAxisShow: true,
+	xAxisLabel: {
+		show: true,
+		rotate: 90,
+		inside: true,
+		verticalAlign: 'bottom',
+		padding: [0, 0, 90, 0],
+	},
 	tooltip: {
 		trigger: 'item',
 	},
@@ -209,6 +228,7 @@ BaseVerticalBarChart.defaultProps = {
 	yAxisLineShow: false,
 	yAxisTickShow: false,
 	axisColor: 'grey',
+	splitType: 'dashed',
 	barWidth: '50%',
 	seriesName: () => {},
 	legend: {
