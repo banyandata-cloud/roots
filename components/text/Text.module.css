@@ -21,15 +21,15 @@
   font-size: 0.75rem;
   line-height: 1.063rem;
 }
-.root.regular-weight {
+.root.regular-stroke {
   font-weight: 400;
 }
-.root.medium-weight {
+.root.medium-stroke {
   font-weight: 500;
 }
-.root.semibold-weight {
+.root.semibold-stroke {
   font-weight: 600;
 }
-.root.bold-weight {
+.root.bold-stroke {
   font-weight: 800;
 }/*# sourceMappingURL=Text.module.css.map */

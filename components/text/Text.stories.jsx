@@ -19,7 +19,7 @@ export const Heading = Template.bind({});
 
 Heading.args = {
 	variant: 'h1',
-	style: 'semibold',
+	stroke: 'semibold',
 };
 
 export const Body = Template.bind({});

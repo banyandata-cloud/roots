@@ -24,3 +24,5 @@ export * from './widget';
 export * from './displayPicture';
 export * from './Toggle';
 export * from './timePicker';
+export * from './text';
+export * from './link';

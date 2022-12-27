@@ -1,0 +1,13 @@
+.root {
+  color: var(--highlight);
+  text-decoration: none;
+}
+.root.underline-none {
+  text-decoration: none;
+}
+.root.underline-hover:hover {
+  text-decoration: underline;
+}
+.root.underline-always {
+  text-decoration: underline;
+}/*# sourceMappingURL=Link.module.css.map */
