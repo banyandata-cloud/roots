@@ -3,12 +3,21 @@ import styles from './BaseWidget.module.css';
 import { ExpandArrowAltIcon } from '../icons';
 import Button from '../buttons/button/Button';
 import { Dropdown, DropdownItem } from '../input';
+import { Toggle } from '../Toggle';
 import { classes } from '../../utils';
 
 const generateOptions = (optionData) => {
 	switch (optionData?.id ?? '') {
-		case 'switch':
-			return <div>Switch</div>;
+		case 'toggle':
+			return (
+				<Toggle
+					className={styles['toggle-body']}
+					theme='dark'
+					options={optionData?.toggleOption ?? []}
+					selectedToggle={optionData?.selectedToggle ?? ''}
+					setSelectedToggle={optionData?.setSelectedToggle ?? ''}
+				/>
+			);
 		case 'dropdown':
 			return (
 				<Dropdown
@@ -43,14 +52,15 @@ const generateOptions = (optionData) => {
 					}}
 				/>
 			);
-		case 'custom': return optionData.render();
+		case 'custom':
+			return optionData.render();
 		default:
 			return null;
 	}
 };
 
 const BaseWidget = (props) => {
-	const { title, value, options, className, children } = props;
+	const { title, options, className, children } = props;
 
 	return (
 		<div className={classes(styles.root, className)}>
@@ -63,9 +73,7 @@ const BaseWidget = (props) => {
 					data-elem='header-title'>
 					<span className={styles.title} data-elem='title'>
 						{title}
-						{(options?.length ?? 0) > 0 ? ' - ' : ' '}
 					</span>
-					<span className={styles.value} data-elem='value'>{value}</span>
 				</div>
 
 				<div className={styles['header-options']} data-elem='header-options'>
@@ -75,22 +83,21 @@ const BaseWidget = (props) => {
 						})}
 				</div>
 			</div>
-			<hr />
-			<div className={styles.children} data-elem='children'>{children}</div>
+			<div className={styles.children} data-elem='children'>
+				{children}
+			</div>
 		</div>
 	);
 };
 
 BaseWidget.propTypes = {
 	title: PropTypes.string,
-	value: PropTypes.string,
 	options: PropTypes.arrayOf(PropTypes.shape),
 	className: PropTypes.string,
 };
 
 BaseWidget.defaultProps = {
 	title: '',
-	value: '',
 	options: [],
 	className: '',
 };
