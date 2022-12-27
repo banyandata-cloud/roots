@@ -1,24 +1,35 @@
-.container {
+.root {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  gap: 0.5rem;
   width: auto;
 }
-.container .seperator {
+.root .seperator {
   width: 1.5rem;
   height: 1.5rem;
   stroke: var(--grey2);
 }
-.container .breadcrumb-item {
+.root button.expand[data-elem=base-cell] {
+  background: var(--grey6);
+  color: var(--dark-grey);
+  height: 0.75rem;
+  padding: 0.25rem;
+}
+.root button.expand[data-elem=base-cell] [data-elem=title] {
+  margin-bottom: 0.4rem;
+}
+.root .crumb {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  font-weight: 600;
-  font-size: 0.875rem;
   color: var(--grey2);
 }
-.container .breadcrumb-item.active {
+.root .crumb.active {
   color: var(--black);
+}
+.root .crumb:hover {
+  color: var(--info);
 }/*# sourceMappingURL=Breadcrumbs.module.css.map */

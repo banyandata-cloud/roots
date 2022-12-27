@@ -17,7 +17,23 @@ const Template = (args) => {
 
 export const Default = Template.bind({});
 Default.args = {
-	crumbs: ['Section1', 'section2', 'section3'],
+	crumbs: [
+		{
+			title: 'section-1',
+			path: 'section-1',
+			icon: null,
+		},
+		{
+			title: 'section-2',
+			path: 'section-2',
+			icon: null,
+		},
+		{
+			title: 'section-3',
+			path: 'section-3',
+			icon: null,
+		},
+	],
 };
 Default.parameters = {
 	design: {
@@ -28,5 +44,41 @@ Default.parameters = {
 
 export const CollapseBreadcrumb = Template.bind({});
 CollapseBreadcrumb.args = {
-	crumbs: ['Section1', 'section2', 'section3', 'section4', 'section5', 'Final Section'],
+	crumbs: [
+		{
+			title: 'section-1',
+			path: 'section-1',
+			icon: null,
+		},
+		{
+			title: 'section-2',
+			path: 'section-2',
+			icon: null,
+		},
+		{
+			title: 'section-3',
+			path: 'section-3',
+			icon: null,
+		},
+		{
+			title: 'section-4',
+			path: 'section-4',
+			icon: null,
+		},
+		{
+			title: 'section-5',
+			path: 'section-5',
+			icon: null,
+		},
+		{
+			title: 'section-6',
+			path: 'section-6',
+			icon: null,
+		},
+		{
+			title: 'final-section',
+			path: 'final-section',
+			icon: null,
+		},
+	],
 };

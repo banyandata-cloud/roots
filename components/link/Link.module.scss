@@ -1,0 +1,18 @@
+@import '../../styles/';
+
+.root {
+	color: $highlight;
+	text-decoration: none;
+
+	&.underline-none {
+		text-decoration: none;
+	}
+
+	&.underline-hover:hover {
+		text-decoration: underline;
+	}
+
+	&.underline-always {
+		text-decoration: underline;
+	}
+}
