@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import BaseVerticalBarChart from '../charts/verticalBarChart/BaseVerticalBarChart';
 import BaseWidget from './BaseWidget';
-import colors from '../../styles/_index.scss';
+import { COLORS } from '../../styles';
 
 export default {
 	title: 'ComponentsV2/Widget/BaseWidget',
@@ -15,10 +15,11 @@ export default {
 
 const Template = (args) => {
 	const [dropValue, setDropValue] = useState(0);
+	const [selectedValue, setSelectedValue] = useState('Option 1');
 	return (
 		<div
 			style={{
-				backgroundColor: colors['dark-grey'],
+				backgroundColor: COLORS['dark-grey'],
 				height: '100%',
 				width: '100%',
 			}}>
@@ -26,7 +27,16 @@ const Template = (args) => {
 				{...args}
 				// eslint-disable-next-line react/destructuring-assignment
 				options={args.options.map((option) => {
-					return option.id === 'dropdown'
+					// eslint-disable-next-line no-nested-ternary
+					return option.id === 'toggle'
+						? {
+								...option,
+								selectedToggle: selectedValue,
+								setSelectedToggle: (data) => {
+									setSelectedValue(data);
+								},
+						  }
+						: option.id === 'dropdown'
 						? {
 								...option,
 								value: dropValue,
@@ -39,34 +49,71 @@ const Template = (args) => {
 				<BaseVerticalBarChart
 					yAxisLabelShow
 					ySplitLineShow
+					xAxisShow
+					xAxisLabel={{
+						show: true,
+						rotate: 90,
+						inside: true,
+						color: 'white',
+						verticalAlign: 'bottom',
+						padding: [0, 0, 20, -5],
+					}}
 					barWidth='15%'
 					seriesData={{
-						chartData: {
-							'Networking Services': {
-								x1: 66.66,
-								x2: 33.33,
-							},
-							'IAM&Admin': {
-								x1: 66.66,
-								x2: 33.33,
-							},
-							'Cloud SQL': {
-								x1: 66.66,
-								x2: 33.33,
-							},
-							'VPC Network': {
-								x1: 66.66,
-								x2: 33.33,
-							},
-							'Compute Engine': {
-								x1: 66.66,
-								x2: 33.33,
-							},
-							'Cloud Storage': {
-								x1: 66.66,
-								x2: 33.33,
-							},
-						},
+						chartData:
+							selectedValue === 'Option 1'
+								? {
+										'Networking Services': {
+											x1: 66.66,
+											x2: 33.33,
+										},
+										'IAM&Admin': {
+											x1: 66.66,
+											x2: 33.33,
+										},
+										'Cloud SQL': {
+											x1: 66.66,
+											x2: 33.33,
+										},
+										'VPC Network': {
+											x1: 66.66,
+											x2: 33.33,
+										},
+										'Compute Engine': {
+											x1: 66.66,
+											x2: 33.33,
+										},
+										'Cloud Storage': {
+											x1: 66.66,
+											x2: 33.33,
+										},
+								  }
+								: {
+										'Networking Services': {
+											x1: 33.33,
+											x2: 66.66,
+										},
+										'IAM&Admin': {
+											x1: 33.33,
+											x2: 66.66,
+										},
+										'Cloud SQL': {
+											x1: 33.33,
+											x2: 66.66,
+										},
+										'VPC Network': {
+											x1: 33.33,
+											x2: 66.66,
+										},
+										'Compute Engine': {
+											x1: 33.33,
+											x2: 66.66,
+										},
+										'Cloud Storage': {
+											x1: 33.33,
+											x2: 66.66,
+										},
+								  },
 					}}
 					seriesOption={[
 						{
@@ -74,7 +121,7 @@ const Template = (args) => {
 							color: 'orange',
 							label: {
 								color: 'white',
-								show: true,
+								show: false,
 								formatter(param) {
 									return param.name;
 								},
@@ -97,9 +144,29 @@ const Template = (args) => {
 export const Default = Template.bind({});
 
 Default.args = {
-	title: 'Widget Title',
-	value: '7 Services',
+	title: 'Widget Title - 7 Services',
 	options: [
+		{
+			id: 'toggle',
+			toggleOption: [
+				{
+					id: '1',
+					leftCompoenent: '',
+					rightCompoenent: '',
+					value: 'Option 1',
+				},
+				{
+					id: '2',
+					leftCompoenent: '',
+					rightCompoenent: '',
+					value: 'Option 2',
+				},
+			],
+			selectedToggle: 'Option 1',
+			setSelectedToggle: (data) => {
+				console.log(data);
+			},
+		},
 		{
 			id: 'dropdown',
 			placeholder: 'Region',

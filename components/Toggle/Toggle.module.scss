@@ -8,6 +8,22 @@ div.root {
 	width: fit-content;
 	border-radius: 0.4rem 0.4rem;
 	box-shadow: inset 0px 1px 2px rgba(97, 97, 97, 0.2), inset 0px 2px 4px rgba(97, 97, 97, 0.2);
+	&.theme-dark {
+		background: $grey;
+
+		[data-elem='base-cell'].toggle-button {
+			color: $grey4;
+
+			&.active {
+				background: $dark-grey;
+				color: $white;
+			}
+		}
+	}
+
+	&.theme-light {
+		color: $dark-grey;
+	}
 	[data-elem='base-cell'].toggle-button {
 		color: $grey;
 		padding: 0.2rem;
