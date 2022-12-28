@@ -4,11 +4,16 @@ import { TableRow } from '../row';
 import styles from './TableHeader.module.css';
 
 const TableHeader = (props) => {
-	const { headerData, customCells } = props;
+	const { headerData, customCells, expandable } = props;
 
 	return (
 		<thead data-elem='table-header' className={styles.root}>
-			<TableRow type='header' headerData={headerData} customCells={customCells} />
+			<TableRow
+				type='header'
+				headerData={headerData}
+				customCells={customCells}
+				expandable={expandable}
+			/>
 		</thead>
 	);
 };
@@ -29,6 +34,7 @@ TableHeader.propTypes = {
 		header: PropTypes.func,
 		body: PropTypes.func,
 	}),
+	expandable: PropTypes.func,
 };
 
 TableHeader.defaultProps = {
@@ -37,6 +43,7 @@ TableHeader.defaultProps = {
 		header: null,
 		body: null,
 	},
+	expandable: null,
 };
 
 export default TableHeader;

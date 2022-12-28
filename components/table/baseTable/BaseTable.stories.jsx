@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from '../../buttons';
 import { TableColumn } from '../BaseTable.class';
 import BaseTable from './BaseTable';
 
@@ -71,3 +72,14 @@ Default.args = {
 };
 
 Default.parameters = {};
+
+export const Expandable = Template.bind({});
+
+Expandable.args = {
+	...Default.args,
+	expandable: () => {
+		return <BaseTable {...Default.args} />;
+	},
+};
+
+Expandable.parameters = {};

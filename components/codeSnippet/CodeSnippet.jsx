@@ -1,15 +1,15 @@
-/* eslint-disable no-unused-vars */
+/* eslint-disable react/forbid-prop-types */
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-import { dracula, atomOneLight, CodeBlock } from 'react-code-blocks';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { oneDark, oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { classes } from '../../utils';
 import { CopyIcon } from '../icons';
 import styles from './CodeSnippet.module.css';
 
 const CodeSnippet = (props) => {
-	const { copy, code, language, showLineNumbers, theme, style } = props;
+	const { copy, code, language, showLineNumbers, theme, className } = props;
 
-	const themeVariant = theme === 'dark' ? dracula : atomOneLight;
 	const [copiedState, setCopiedState] = useState(false);
 
 	setTimeout(() => {
@@ -21,17 +21,20 @@ const CodeSnippet = (props) => {
 		setCopiedState(true);
 	};
 
+	const syntaxHighlighterProps = {
+		showLineNumbers,
+		language,
+		wrapLines: true,
+		wrapLongLines: true,
+		codeTagProps: {
+			className: classes(styles.code, className),
+		},
+		style: theme === 'light' ? oneLight : oneDark,
+	};
+
 	return (
 		<div className={styles.root}>
-			<CodeBlock
-				text={code}
-				language={language}
-				showLineNumbers={showLineNumbers}
-				theme={themeVariant}
-				customStyles={style}
-				codeBlock
-				wrapLines
-			/>
+			<SyntaxHighlighter {...syntaxHighlighterProps}>{code}</SyntaxHighlighter>
 			{copy && (
 				<div className={styles.copy} onClick={onCopy}>
 					<CopyIcon
@@ -55,8 +58,7 @@ CodeSnippet.propTypes = {
 	language: PropTypes.string,
 	showLineNumbers: PropTypes.bool,
 	theme: PropTypes.string,
-	// eslint-disable-next-line react/forbid-prop-types
-	style: PropTypes.object,
+	className: PropTypes.string,
 };
 
 CodeSnippet.defaultProps = {
@@ -64,8 +66,8 @@ CodeSnippet.defaultProps = {
 	code: '{}',
 	language: 'json',
 	showLineNumbers: false,
-	theme: 'dark',
-	style: {},
+	theme: 'light',
+	className: '',
 };
 
 export default CodeSnippet;

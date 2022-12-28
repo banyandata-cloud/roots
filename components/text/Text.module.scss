@@ -1,0 +1,46 @@
+@import '../../styles/index';
+
+.root {
+	color: $dark-grey;
+
+	&.h1 {
+		font-size: 2.25rem;
+		line-height: 2.75rem;
+	}
+
+	&.h2 {
+		font-size: 1.375rem;
+		line-height: 1.688rem;
+	}
+
+	&.b1 {
+		font-size: 1rem;
+		line-height: 1.188rem;
+	}
+
+	&.b2 {
+		font-size: 0.875rem;
+		line-height: 1.188rem;
+	}
+
+	&.b3 {
+		font-size: 0.75rem;
+		line-height: 1.063rem;
+	}
+
+	&.regular-stroke {
+		font-weight: 400;
+	}
+
+	&.medium-stroke {
+		font-weight: 500;
+	}
+
+	&.semibold-stroke {
+		font-weight: 600;
+	}
+
+	&.bold-stroke {
+		font-weight: 800;
+	}
+}
