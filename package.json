@@ -1,6 +1,6 @@
 {
 	"name": "@banyan_cloud/roots",
-	"version": "1.0.43",
+	"version": "1.0.44",
 	"description": "Design System Library which drives the Banyan Cloud products",
 	"main": "dist/cjs/index.js",
 	"module": "dist/esm/index.js",

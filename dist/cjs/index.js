@@ -16586,134 +16586,126 @@ function c(Prism) {
   delete Prism.languages.c['boolean'];
 }
 
-var cpp_1;
-var hasRequiredCpp;
-
-function requireCpp () {
-	if (hasRequiredCpp) return cpp_1;
-	hasRequiredCpp = 1;
-	var refractorC = c_1;
-	cpp_1 = cpp;
-	cpp.displayName = 'cpp';
-	cpp.aliases = [];
-	function cpp(Prism) {
-	  Prism.register(refractorC)
-	  ;(function (Prism) {
-	    var keyword =
-	      /\b(?:alignas|alignof|asm|auto|bool|break|case|catch|char|char16_t|char32_t|char8_t|class|co_await|co_return|co_yield|compl|concept|const|const_cast|consteval|constexpr|constinit|continue|decltype|default|delete|do|double|dynamic_cast|else|enum|explicit|export|extern|final|float|for|friend|goto|if|import|inline|int|int16_t|int32_t|int64_t|int8_t|long|module|mutable|namespace|new|noexcept|nullptr|operator|override|private|protected|public|register|reinterpret_cast|requires|return|short|signed|sizeof|static|static_assert|static_cast|struct|switch|template|this|thread_local|throw|try|typedef|typeid|typename|uint16_t|uint32_t|uint64_t|uint8_t|union|unsigned|using|virtual|void|volatile|wchar_t|while)\b/;
-	    var modName = /\b(?!<keyword>)\w+(?:\s*\.\s*\w+)*\b/.source.replace(
-	      /<keyword>/g,
-	      function () {
-	        return keyword.source
-	      }
-	    );
-	    Prism.languages.cpp = Prism.languages.extend('c', {
-	      'class-name': [
-	        {
-	          pattern: RegExp(
-	            /(\b(?:class|concept|enum|struct|typename)\s+)(?!<keyword>)\w+/.source.replace(
-	              /<keyword>/g,
-	              function () {
-	                return keyword.source
-	              }
-	            )
-	          ),
-	          lookbehind: true
-	        }, // This is intended to capture the class name of method implementations like:
-	        //   void foo::bar() const {}
-	        // However! The `foo` in the above example could also be a namespace, so we only capture the class name if
-	        // it starts with an uppercase letter. This approximation should give decent results.
-	        /\b[A-Z]\w*(?=\s*::\s*\w+\s*\()/, // This will capture the class name before destructors like:
-	        //   Foo::~Foo() {}
-	        /\b[A-Z_]\w*(?=\s*::\s*~\w+\s*\()/i, // This also intends to capture the class name of method implementations but here the class has template
-	        // parameters, so it can't be a namespace (until C++ adds generic namespaces).
-	        /\b\w+(?=\s*<(?:[^<>]|<(?:[^<>]|<[^<>]*>)*>)*>\s*::\s*\w+\s*\()/
-	      ],
-	      keyword: keyword,
-	      number: {
-	        pattern:
-	          /(?:\b0b[01']+|\b0x(?:[\da-f']+(?:\.[\da-f']*)?|\.[\da-f']+)(?:p[+-]?[\d']+)?|(?:\b[\d']+(?:\.[\d']*)?|\B\.[\d']+)(?:e[+-]?[\d']+)?)[ful]{0,4}/i,
-	        greedy: true
-	      },
-	      operator:
-	        />>=?|<<=?|->|--|\+\+|&&|\|\||[?:~]|<=>|[-+*/%&|^!=<>]=?|\b(?:and|and_eq|bitand|bitor|not|not_eq|or|or_eq|xor|xor_eq)\b/,
-	      boolean: /\b(?:false|true)\b/
-	    });
-	    Prism.languages.insertBefore('cpp', 'string', {
-	      module: {
-	        // https://en.cppreference.com/w/cpp/language/modules
-	        pattern: RegExp(
-	          /(\b(?:import|module)\s+)/.source +
-	            '(?:' + // header-name
-	            /"(?:\\(?:\r\n|[\s\S])|[^"\\\r\n])*"|<[^<>\r\n]*>/.source +
-	            '|' + // module name or partition or both
-	            /<mod-name>(?:\s*:\s*<mod-name>)?|:\s*<mod-name>/.source.replace(
-	              /<mod-name>/g,
-	              function () {
-	                return modName
-	              }
-	            ) +
-	            ')'
-	        ),
-	        lookbehind: true,
-	        greedy: true,
-	        inside: {
-	          string: /^[<"][\s\S]+/,
-	          operator: /:/,
-	          punctuation: /\./
-	        }
-	      },
-	      'raw-string': {
-	        pattern: /R"([^()\\ ]{0,16})\([\s\S]*?\)\1"/,
-	        alias: 'string',
-	        greedy: true
-	      }
-	    });
-	    Prism.languages.insertBefore('cpp', 'keyword', {
-	      'generic-function': {
-	        pattern: /\b(?!operator\b)[a-z_]\w*\s*<(?:[^<>]|<[^<>]*>)*>(?=\s*\()/i,
-	        inside: {
-	          function: /^\w+/,
-	          generic: {
-	            pattern: /<[\s\S]+/,
-	            alias: 'class-name',
-	            inside: Prism.languages.cpp
-	          }
-	        }
-	      }
-	    });
-	    Prism.languages.insertBefore('cpp', 'operator', {
-	      'double-colon': {
-	        pattern: /::/,
-	        alias: 'punctuation'
-	      }
-	    });
-	    Prism.languages.insertBefore('cpp', 'class-name', {
-	      // the base clause is an optional list of parent classes
-	      // https://en.cppreference.com/w/cpp/language/class
-	      'base-clause': {
-	        pattern:
-	          /(\b(?:class|struct)\s+\w+\s*:\s*)[^;{}"'\s]+(?:\s+[^;{}"'\s]+)*(?=\s*[;{])/,
-	        lookbehind: true,
-	        greedy: true,
-	        inside: Prism.languages.extend('cpp', {})
-	      }
-	    });
-	    Prism.languages.insertBefore(
-	      'inside',
-	      'double-colon',
-	      {
-	        // All untokenized words that are not namespaces should be class names
-	        'class-name': /\b[a-z_]\w*\b(?!\s*::)/i
-	      },
-	      Prism.languages.cpp['base-clause']
-	    );
-	  })(Prism);
-	}
-	return cpp_1;
+var refractorC$1 = c_1;
+var cpp_1 = cpp;
+cpp.displayName = 'cpp';
+cpp.aliases = [];
+function cpp(Prism) {
+  Prism.register(refractorC$1)
+  ;(function (Prism) {
+    var keyword =
+      /\b(?:alignas|alignof|asm|auto|bool|break|case|catch|char|char16_t|char32_t|char8_t|class|co_await|co_return|co_yield|compl|concept|const|const_cast|consteval|constexpr|constinit|continue|decltype|default|delete|do|double|dynamic_cast|else|enum|explicit|export|extern|final|float|for|friend|goto|if|import|inline|int|int16_t|int32_t|int64_t|int8_t|long|module|mutable|namespace|new|noexcept|nullptr|operator|override|private|protected|public|register|reinterpret_cast|requires|return|short|signed|sizeof|static|static_assert|static_cast|struct|switch|template|this|thread_local|throw|try|typedef|typeid|typename|uint16_t|uint32_t|uint64_t|uint8_t|union|unsigned|using|virtual|void|volatile|wchar_t|while)\b/;
+    var modName = /\b(?!<keyword>)\w+(?:\s*\.\s*\w+)*\b/.source.replace(
+      /<keyword>/g,
+      function () {
+        return keyword.source
+      }
+    );
+    Prism.languages.cpp = Prism.languages.extend('c', {
+      'class-name': [
+        {
+          pattern: RegExp(
+            /(\b(?:class|concept|enum|struct|typename)\s+)(?!<keyword>)\w+/.source.replace(
+              /<keyword>/g,
+              function () {
+                return keyword.source
+              }
+            )
+          ),
+          lookbehind: true
+        }, // This is intended to capture the class name of method implementations like:
+        //   void foo::bar() const {}
+        // However! The `foo` in the above example could also be a namespace, so we only capture the class name if
+        // it starts with an uppercase letter. This approximation should give decent results.
+        /\b[A-Z]\w*(?=\s*::\s*\w+\s*\()/, // This will capture the class name before destructors like:
+        //   Foo::~Foo() {}
+        /\b[A-Z_]\w*(?=\s*::\s*~\w+\s*\()/i, // This also intends to capture the class name of method implementations but here the class has template
+        // parameters, so it can't be a namespace (until C++ adds generic namespaces).
+        /\b\w+(?=\s*<(?:[^<>]|<(?:[^<>]|<[^<>]*>)*>)*>\s*::\s*\w+\s*\()/
+      ],
+      keyword: keyword,
+      number: {
+        pattern:
+          /(?:\b0b[01']+|\b0x(?:[\da-f']+(?:\.[\da-f']*)?|\.[\da-f']+)(?:p[+-]?[\d']+)?|(?:\b[\d']+(?:\.[\d']*)?|\B\.[\d']+)(?:e[+-]?[\d']+)?)[ful]{0,4}/i,
+        greedy: true
+      },
+      operator:
+        />>=?|<<=?|->|--|\+\+|&&|\|\||[?:~]|<=>|[-+*/%&|^!=<>]=?|\b(?:and|and_eq|bitand|bitor|not|not_eq|or|or_eq|xor|xor_eq)\b/,
+      boolean: /\b(?:false|true)\b/
+    });
+    Prism.languages.insertBefore('cpp', 'string', {
+      module: {
+        // https://en.cppreference.com/w/cpp/language/modules
+        pattern: RegExp(
+          /(\b(?:import|module)\s+)/.source +
+            '(?:' + // header-name
+            /"(?:\\(?:\r\n|[\s\S])|[^"\\\r\n])*"|<[^<>\r\n]*>/.source +
+            '|' + // module name or partition or both
+            /<mod-name>(?:\s*:\s*<mod-name>)?|:\s*<mod-name>/.source.replace(
+              /<mod-name>/g,
+              function () {
+                return modName
+              }
+            ) +
+            ')'
+        ),
+        lookbehind: true,
+        greedy: true,
+        inside: {
+          string: /^[<"][\s\S]+/,
+          operator: /:/,
+          punctuation: /\./
+        }
+      },
+      'raw-string': {
+        pattern: /R"([^()\\ ]{0,16})\([\s\S]*?\)\1"/,
+        alias: 'string',
+        greedy: true
+      }
+    });
+    Prism.languages.insertBefore('cpp', 'keyword', {
+      'generic-function': {
+        pattern: /\b(?!operator\b)[a-z_]\w*\s*<(?:[^<>]|<[^<>]*>)*>(?=\s*\()/i,
+        inside: {
+          function: /^\w+/,
+          generic: {
+            pattern: /<[\s\S]+/,
+            alias: 'class-name',
+            inside: Prism.languages.cpp
+          }
+        }
+      }
+    });
+    Prism.languages.insertBefore('cpp', 'operator', {
+      'double-colon': {
+        pattern: /::/,
+        alias: 'punctuation'
+      }
+    });
+    Prism.languages.insertBefore('cpp', 'class-name', {
+      // the base clause is an optional list of parent classes
+      // https://en.cppreference.com/w/cpp/language/class
+      'base-clause': {
+        pattern:
+          /(\b(?:class|struct)\s+\w+\s*:\s*)[^;{}"'\s]+(?:\s+[^;{}"'\s]+)*(?=\s*[;{])/,
+        lookbehind: true,
+        greedy: true,
+        inside: Prism.languages.extend('cpp', {})
+      }
+    });
+    Prism.languages.insertBefore(
+      'inside',
+      'double-colon',
+      {
+        // All untokenized words that are not namespaces should be class names
+        'class-name': /\b[a-z_]\w*\b(?!\s*::)/i
+      },
+      Prism.languages.cpp['base-clause']
+    );
+  })(Prism);
 }
 
-var refractorCpp$1 = requireCpp();
+var refractorCpp$1 = cpp_1;
 var arduino_1 = arduino;
 arduino.displayName = 'arduino';
 arduino.aliases = ['ino'];
@@ -18723,7 +18715,7 @@ function cfscript(Prism) {
   Prism.languages.cfc = Prism.languages['cfscript'];
 }
 
-var refractorCpp = requireCpp();
+var refractorCpp = cpp_1;
 var chaiscript_1 = chaiscript;
 chaiscript.displayName = 'chaiscript';
 chaiscript.aliases = [];
@@ -38955,7 +38947,7 @@ refractor.register(requireCobol());
 refractor.register(requireCoffeescript());
 refractor.register(requireConcurnas());
 refractor.register(requireCoq());
-refractor.register(requireCpp());
+refractor.register(cpp_1);
 refractor.register(requireCrystal());
 refractor.register(requireCsharp());
 refractor.register(requireCshtml());
@@ -95012,16 +95004,96 @@ BasePieChart.defaultProps = {
   className: ''
 };
 
-var css$2 = ".BaseWidget_module_root__57853874 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  height: 100%;\n  width: 100%;\n  padding: 0.25rem;\n}\n.BaseWidget_module_root__57853874 .BaseWidget_module_header__57853874 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  padding: 0.25rem;\n}\n.BaseWidget_module_root__57853874 .BaseWidget_module_header__57853874 .BaseWidget_module_headerTitle__57853874 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n}\n.BaseWidget_module_root__57853874 .BaseWidget_module_header__57853874 .BaseWidget_module_headerTitle__57853874.BaseWidget_module_noOptions__57853874 {\n  flex: 1;\n}\n.BaseWidget_module_root__57853874 .BaseWidget_module_header__57853874 .BaseWidget_module_headerTitle__57853874 .BaseWidget_module_title__57853874 {\n  white-space: nowrap;\n  color: var(--white);\n}\n.BaseWidget_module_root__57853874 .BaseWidget_module_header__57853874 .BaseWidget_module_headerTitle__57853874 .BaseWidget_module_value__57853874 {\n  white-space: nowrap;\n  color: var(--white);\n}\n.BaseWidget_module_root__57853874 .BaseWidget_module_header__57853874 .BaseWidget_module_headerOptions__57853874 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-end;\n  align-items: center;\n  gap: 0.5rem;\n}\n.BaseWidget_module_root__57853874 .BaseWidget_module_header__57853874 .BaseWidget_module_headerOptions__57853874 .BaseWidget_module_dropdownHeader__57853874 [data-elem=select] {\n  background-color: transparent;\n  width: 100%;\n  color: var(--white);\n  padding: 0.07rem 0.5rem;\n}\n.BaseWidget_module_root__57853874 .BaseWidget_module_header__57853874 .BaseWidget_module_headerOptions__57853874 .BaseWidget_module_dropdownHeader__57853874 [data-elem=select] [data-elem=placeholder] {\n  font-size: 0.875rem;\n  color: var(--white);\n}\n.BaseWidget_module_root__57853874 .BaseWidget_module_header__57853874 .BaseWidget_module_headerOptions__57853874 .BaseWidget_module_dropdownHeader__57853874 [data-elem=select] > svg {\n  fill: var(--white);\n  width: 0.875rem;\n}\n.BaseWidget_module_root__57853874 .BaseWidget_module_header__57853874 .BaseWidget_module_headerOptions__57853874 .BaseWidget_module_expandButton__57853874 {\n  height: 1.75rem;\n  color: var(--white);\n  border-color: var(--white);\n}\n.BaseWidget_module_root__57853874 .BaseWidget_module_header__57853874 .BaseWidget_module_headerOptions__57853874 .BaseWidget_module_expandButton__57853874 .BaseWidget_module_expandIcon__57853874 {\n  height: 1.25rem;\n  width: 1.25rem;\n  fill: var(--white);\n}\n.BaseWidget_module_root__57853874 .BaseWidget_module_children__57853874 {\n  flex: 1 1;\n}\n\n.BaseWidget_module_dropdownPopper__57853874 {\n  padding: 0rem;\n  background: var(--grey1);\n}\n.BaseWidget_module_dropdownPopper__57853874 .BaseWidget_module_dropdownItem__57853874 {\n  height: 2.25rem;\n  color: var(--white);\n  background: var(--grey);\n}\n.BaseWidget_module_dropdownPopper__57853874 .BaseWidget_module_dropdownItem__57853874:hover, .BaseWidget_module_dropdownPopper__57853874 .BaseWidget_module_dropdownItem__57853874:focus {\n  color: var(--dark-grey);\n  background: var(--grey2);\n}\n.BaseWidget_module_dropdownPopper__57853874 .BaseWidget_module_dropdownItem__57853874:hover label > svg, .BaseWidget_module_dropdownPopper__57853874 .BaseWidget_module_dropdownItem__57853874:focus label > svg {\n  border: 1px solid var(--dark-grey);\n  border-radius: 0.25rem;\n}";
-var modules_6a0e74b6 = {"root":"BaseWidget_module_root__57853874","header":"BaseWidget_module_header__57853874","header-title":"BaseWidget_module_headerTitle__57853874","no-options":"BaseWidget_module_noOptions__57853874","title":"BaseWidget_module_title__57853874","value":"BaseWidget_module_value__57853874","header-options":"BaseWidget_module_headerOptions__57853874","dropdown-header":"BaseWidget_module_dropdownHeader__57853874","expand-button":"BaseWidget_module_expandButton__57853874","expand-icon":"BaseWidget_module_expandIcon__57853874","children":"BaseWidget_module_children__57853874","dropdown-popper":"BaseWidget_module_dropdownPopper__57853874","dropdown-item":"BaseWidget_module_dropdownItem__57853874"};
+var css$2 = ".BaseWidget_module_root__2fcc4af8 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  height: 100%;\n  width: 100%;\n  padding: 0.25rem;\n}\n.BaseWidget_module_root__2fcc4af8 .BaseWidget_module_header__2fcc4af8 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  padding: 0.25rem;\n}\n.BaseWidget_module_root__2fcc4af8 .BaseWidget_module_header__2fcc4af8 .BaseWidget_module_headerTitle__2fcc4af8 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n}\n.BaseWidget_module_root__2fcc4af8 .BaseWidget_module_header__2fcc4af8 .BaseWidget_module_headerTitle__2fcc4af8.BaseWidget_module_noOptions__2fcc4af8 {\n  flex: 1;\n}\n.BaseWidget_module_root__2fcc4af8 .BaseWidget_module_header__2fcc4af8 .BaseWidget_module_headerTitle__2fcc4af8 .BaseWidget_module_title__2fcc4af8 {\n  white-space: nowrap;\n  color: var(--white);\n}\n.BaseWidget_module_root__2fcc4af8 .BaseWidget_module_header__2fcc4af8 .BaseWidget_module_headerTitle__2fcc4af8 .BaseWidget_module_value__2fcc4af8 {\n  white-space: nowrap;\n  color: var(--white);\n}\n.BaseWidget_module_root__2fcc4af8 .BaseWidget_module_header__2fcc4af8 .BaseWidget_module_headerOptions__2fcc4af8 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-end;\n  align-items: center;\n  gap: 0.5rem;\n}\n.BaseWidget_module_root__2fcc4af8 .BaseWidget_module_header__2fcc4af8 .BaseWidget_module_headerOptions__2fcc4af8 .BaseWidget_module_toggleBody__2fcc4af8 {\n  padding: 0.125rem 0.25rem;\n  height: 1.75rem;\n}\n.BaseWidget_module_root__2fcc4af8 .BaseWidget_module_header__2fcc4af8 .BaseWidget_module_headerOptions__2fcc4af8 .BaseWidget_module_toggleBody__2fcc4af8 > [data-elem=base-cell] {\n  background-color: transparent;\n  color: var(--white);\n}\n.BaseWidget_module_root__2fcc4af8 .BaseWidget_module_header__2fcc4af8 .BaseWidget_module_headerOptions__2fcc4af8 .BaseWidget_module_dropdownHeader__2fcc4af8 {\n  height: 1.75rem;\n}\n.BaseWidget_module_root__2fcc4af8 .BaseWidget_module_header__2fcc4af8 .BaseWidget_module_headerOptions__2fcc4af8 .BaseWidget_module_dropdownHeader__2fcc4af8 [data-elem=select] {\n  background-color: transparent;\n  width: 100%;\n  color: var(--white);\n  border-color: var(--grey);\n  padding: 0.07rem 0.5rem;\n}\n.BaseWidget_module_root__2fcc4af8 .BaseWidget_module_header__2fcc4af8 .BaseWidget_module_headerOptions__2fcc4af8 .BaseWidget_module_dropdownHeader__2fcc4af8 [data-elem=select] [data-elem=placeholder] {\n  font-size: 0.875rem;\n  color: var(--white);\n}\n.BaseWidget_module_root__2fcc4af8 .BaseWidget_module_header__2fcc4af8 .BaseWidget_module_headerOptions__2fcc4af8 .BaseWidget_module_dropdownHeader__2fcc4af8 [data-elem=select] > svg {\n  fill: var(--white);\n  width: 0.875rem;\n}\n.BaseWidget_module_root__2fcc4af8 .BaseWidget_module_header__2fcc4af8 .BaseWidget_module_headerOptions__2fcc4af8 .BaseWidget_module_expandButton__2fcc4af8 {\n  height: 1.75rem;\n  color: var(--white);\n  border-color: var(--grey);\n}\n.BaseWidget_module_root__2fcc4af8 .BaseWidget_module_header__2fcc4af8 .BaseWidget_module_headerOptions__2fcc4af8 .BaseWidget_module_expandButton__2fcc4af8 .BaseWidget_module_expandIcon__2fcc4af8 {\n  height: 1.25rem;\n  width: 1.25rem;\n  fill: var(--white);\n}\n.BaseWidget_module_root__2fcc4af8 .BaseWidget_module_children__2fcc4af8 {\n  flex: 1 1;\n}\n\n.BaseWidget_module_dropdownPopper__2fcc4af8 {\n  padding: 0rem;\n  background: var(--grey1);\n}\n.BaseWidget_module_dropdownPopper__2fcc4af8 .BaseWidget_module_dropdownItem__2fcc4af8 {\n  height: 2.25rem;\n  color: var(--white);\n  background: var(--grey);\n}\n.BaseWidget_module_dropdownPopper__2fcc4af8 .BaseWidget_module_dropdownItem__2fcc4af8:hover, .BaseWidget_module_dropdownPopper__2fcc4af8 .BaseWidget_module_dropdownItem__2fcc4af8:focus {\n  color: var(--dark-grey);\n  background: var(--grey2);\n}\n.BaseWidget_module_dropdownPopper__2fcc4af8 .BaseWidget_module_dropdownItem__2fcc4af8:hover label > svg, .BaseWidget_module_dropdownPopper__2fcc4af8 .BaseWidget_module_dropdownItem__2fcc4af8:focus label > svg {\n  border: 1px solid var(--dark-grey);\n  border-radius: 0.25rem;\n}";
+var modules_6a0e74b6 = {"root":"BaseWidget_module_root__2fcc4af8","header":"BaseWidget_module_header__2fcc4af8","header-title":"BaseWidget_module_headerTitle__2fcc4af8","no-options":"BaseWidget_module_noOptions__2fcc4af8","title":"BaseWidget_module_title__2fcc4af8","value":"BaseWidget_module_value__2fcc4af8","header-options":"BaseWidget_module_headerOptions__2fcc4af8","toggle-body":"BaseWidget_module_toggleBody__2fcc4af8","dropdown-header":"BaseWidget_module_dropdownHeader__2fcc4af8","expand-button":"BaseWidget_module_expandButton__2fcc4af8","expand-icon":"BaseWidget_module_expandIcon__2fcc4af8","children":"BaseWidget_module_children__2fcc4af8","dropdown-popper":"BaseWidget_module_dropdownPopper__2fcc4af8","dropdown-item":"BaseWidget_module_dropdownItem__2fcc4af8"};
 n(css$2,{});
 
+var css$1 = "div.Toggle_module_root__71d12fea {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  overflow: auto;\n  padding: 0.25rem;\n  background: var(--grey8);\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  border-radius: 0.4rem 0.4rem;\n  box-shadow: inset 0px 1px 2px rgba(97, 97, 97, 0.2), inset 0px 2px 4px rgba(97, 97, 97, 0.2);\n}\ndiv.Toggle_module_root__71d12fea.Toggle_module_themeDark__71d12fea {\n  background: var(--grey);\n}\ndiv.Toggle_module_root__71d12fea.Toggle_module_themeDark__71d12fea [data-elem=base-cell].Toggle_module_toggleButton__71d12fea {\n  color: var(--grey4);\n}\ndiv.Toggle_module_root__71d12fea.Toggle_module_themeDark__71d12fea [data-elem=base-cell].Toggle_module_toggleButton__71d12fea.Toggle_module_active__71d12fea {\n  background: var(--dark-grey);\n  color: var(--white);\n}\ndiv.Toggle_module_root__71d12fea.Toggle_module_themeLight__71d12fea {\n  color: var(--dark-grey);\n}\ndiv.Toggle_module_root__71d12fea [data-elem=base-cell].Toggle_module_toggleButton__71d12fea {\n  color: var(--grey);\n  padding: 0.2rem;\n  height: 2rem;\n  background: transparent;\n}\ndiv.Toggle_module_root__71d12fea [data-elem=base-cell].Toggle_module_toggleButton__71d12fea.Toggle_module_active__71d12fea {\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n  background: var(--white);\n  border-radius: 0.25rem;\n  color: var(--dark-grey);\n}";
+var modules_a2cdc77c = {"root":"Toggle_module_root__71d12fea","theme-dark":"Toggle_module_themeDark__71d12fea","toggle-button":"Toggle_module_toggleButton__71d12fea","active":"Toggle_module_active__71d12fea","theme-light":"Toggle_module_themeLight__71d12fea"};
+n(css$1,{});
+
+/* eslint-disable no-unused-vars */
+var Toggle = function Toggle(props) {
+  var className = props.className,
+    theme = props.theme,
+    options = props.options,
+    selectedToggle = props.selectedToggle,
+    setSelectedToggle = props.setSelectedToggle,
+    onChange = props.onChange;
+  var onButtonClick = function onButtonClick(value) {
+    setSelectedToggle(value);
+    onChange(value);
+  };
+  return /*#__PURE__*/jsxRuntime.jsx("div", {
+    className: classes(className, modules_a2cdc77c.root, modules_a2cdc77c["theme-".concat(theme)]),
+    children: options.map(function (item) {
+      var title = item.title,
+        value = item.value,
+        leftComponent = item.leftComponent,
+        rightComponent = item.rightComponent,
+        color = item.color;
+      var isActive = selectedToggle === value;
+      return /*#__PURE__*/jsxRuntime.jsx(Button, {
+        "data-elem": "toggle",
+        className: classes(modules_a2cdc77c['toggle-button'], selectedToggle === value ? modules_a2cdc77c.active : ''),
+        onClick: function onClick() {
+          return onButtonClick(value);
+        },
+        title: value,
+        value: value,
+        color: isActive ? color : 'default',
+        leftComponent: leftComponent,
+        rightComponent: rightComponent,
+        children: value
+      }, title);
+    })
+  });
+};
+Toggle.propTypes = {
+  className: propTypes$1.exports.string,
+  theme: propTypes$1.exports.oneOf(['dark', 'light']),
+  options: propTypes$1.exports.arrayOf(propTypes$1.exports.string),
+  selectedToggle: propTypes$1.exports.string,
+  setSelectedToggle: propTypes$1.exports.string
+};
+Toggle.defaultProps = {
+  className: '',
+  theme: 'light',
+  options: [{
+    title: 'First',
+    value: 'First',
+    rightCompoenent: '',
+    leftCompoenent: ''
+  }, {
+    title: 'Second',
+    value: 'Second',
+    rightCompoenent: '',
+    leftCompoenent: ''
+  }, {
+    title: 'Third',
+    value: 'Third',
+    rightCompoenent: '',
+    leftCompoenent: ''
+  }, {
+    title: 'Fourth',
+    value: 'Fourth',
+    rightCompoenent: '',
+    leftCompoenent: ''
+  }],
+  selectedToggle: 'First',
+  setSelectedToggle: 'None'
+};
+
 var generateOptions = function generateOptions(optionData) {
-  var _optionData$id, _optionData$placehold, _optionData$value, _optionData$onChange, _optionData$selectOpt, _optionData$title, _optionData$onClick;
+  var _optionData$id, _optionData$toggleOpt, _optionData$selectedT, _optionData$setSelect, _optionData$placehold, _optionData$value, _optionData$onChange, _optionData$selectOpt, _optionData$title, _optionData$onClick;
   switch ((_optionData$id = optionData === null || optionData === void 0 ? void 0 : optionData.id) !== null && _optionData$id !== void 0 ? _optionData$id : '') {
-    case 'switch':
-      return /*#__PURE__*/jsxRuntime.jsx("div", {
-        children: "Switch"
+    case 'toggle':
+      return /*#__PURE__*/jsxRuntime.jsx(Toggle, {
+        className: modules_6a0e74b6['toggle-body'],
+        theme: "dark",
+        options: (_optionData$toggleOpt = optionData === null || optionData === void 0 ? void 0 : optionData.toggleOption) !== null && _optionData$toggleOpt !== void 0 ? _optionData$toggleOpt : [],
+        selectedToggle: (_optionData$selectedT = optionData === null || optionData === void 0 ? void 0 : optionData.selectedToggle) !== null && _optionData$selectedT !== void 0 ? _optionData$selectedT : '',
+        setSelectedToggle: (_optionData$setSelect = optionData === null || optionData === void 0 ? void 0 : optionData.setSelectedToggle) !== null && _optionData$setSelect !== void 0 ? _optionData$setSelect : ''
       });
     case 'dropdown':
       return /*#__PURE__*/jsxRuntime.jsx(Dropdown, {
@@ -95060,9 +95132,8 @@ var generateOptions = function generateOptions(optionData) {
   }
 };
 var BaseWidget = function BaseWidget(props) {
-  var _options$length, _options$length2, _options$length3;
+  var _options$length, _options$length2;
   var title = props.title,
-    value = props.value,
     options = props.options,
     className = props.className,
     children = props.children;
@@ -95071,26 +95142,22 @@ var BaseWidget = function BaseWidget(props) {
     children: [/*#__PURE__*/jsxRuntime.jsxs("div", {
       className: modules_6a0e74b6.header,
       "data-elem": "header",
-      children: [/*#__PURE__*/jsxRuntime.jsxs("div", {
+      children: [/*#__PURE__*/jsxRuntime.jsx("div", {
         className: classes(modules_6a0e74b6['header-title'], ((_options$length = options === null || options === void 0 ? void 0 : options.length) !== null && _options$length !== void 0 ? _options$length : 0) === 0 ? modules_6a0e74b6['no-options'] : ''),
         "data-elem": "header-title",
-        children: [/*#__PURE__*/jsxRuntime.jsxs("span", {
+        children: /*#__PURE__*/jsxRuntime.jsx("span", {
           className: modules_6a0e74b6.title,
           "data-elem": "title",
-          children: [title, ((_options$length2 = options === null || options === void 0 ? void 0 : options.length) !== null && _options$length2 !== void 0 ? _options$length2 : 0) > 0 ? ' - ' : ' ']
-        }), /*#__PURE__*/jsxRuntime.jsx("span", {
-          className: modules_6a0e74b6.value,
-          "data-elem": "value",
-          children: value
-        })]
+          children: title
+        })
       }), /*#__PURE__*/jsxRuntime.jsx("div", {
         className: modules_6a0e74b6['header-options'],
         "data-elem": "header-options",
-        children: ((_options$length3 = options === null || options === void 0 ? void 0 : options.length) !== null && _options$length3 !== void 0 ? _options$length3 : 0) > 0 && (options === null || options === void 0 ? void 0 : options.map(function (objectData) {
+        children: ((_options$length2 = options === null || options === void 0 ? void 0 : options.length) !== null && _options$length2 !== void 0 ? _options$length2 : 0) > 0 && (options === null || options === void 0 ? void 0 : options.map(function (objectData) {
           return generateOptions(objectData);
         }))
       })]
-    }), /*#__PURE__*/jsxRuntime.jsx("hr", {}), /*#__PURE__*/jsxRuntime.jsx("div", {
+    }), /*#__PURE__*/jsxRuntime.jsx("div", {
       className: modules_6a0e74b6.children,
       "data-elem": "children",
       children: children
@@ -95099,20 +95166,18 @@ var BaseWidget = function BaseWidget(props) {
 };
 BaseWidget.propTypes = {
   title: propTypes$1.exports.string,
-  value: propTypes$1.exports.string,
   options: propTypes$1.exports.arrayOf(propTypes$1.exports.shape),
   className: propTypes$1.exports.string
 };
 BaseWidget.defaultProps = {
   title: '',
-  value: '',
   options: [],
   className: ''
 };
 
-var css$1 = ".DisplayPicture_module_root__a7ba07d1.DisplayPicture_module_sm__a7ba07d1 img {\n  height: 1.5rem;\n  width: 1.5rem;\n  border-radius: 100%;\n}\n.DisplayPicture_module_root__a7ba07d1.DisplayPicture_module_sm__a7ba07d1 div {\n  height: 1.5rem;\n  width: 1.5rem;\n  border-radius: 100%;\n  background-color: var(--highlight);\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.DisplayPicture_module_root__a7ba07d1.DisplayPicture_module_sm__a7ba07d1 div span {\n  font-size: 1rem;\n  font-weight: 600;\n  color: var(--white);\n}\n.DisplayPicture_module_root__a7ba07d1.DisplayPicture_module_md__a7ba07d1 img {\n  height: 5.3125rem;\n  width: 5.3125rem;\n  border-radius: 100%;\n}\n.DisplayPicture_module_root__a7ba07d1.DisplayPicture_module_md__a7ba07d1 div {\n  height: 5.3125rem;\n  width: 5.3125rem;\n  border-radius: 100%;\n  background-color: var(--highlight);\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.DisplayPicture_module_root__a7ba07d1.DisplayPicture_module_md__a7ba07d1 div span {\n  font-size: 2rem;\n  font-weight: 600;\n  color: var(--white);\n}";
+var css = ".DisplayPicture_module_root__a7ba07d1.DisplayPicture_module_sm__a7ba07d1 img {\n  height: 1.5rem;\n  width: 1.5rem;\n  border-radius: 100%;\n}\n.DisplayPicture_module_root__a7ba07d1.DisplayPicture_module_sm__a7ba07d1 div {\n  height: 1.5rem;\n  width: 1.5rem;\n  border-radius: 100%;\n  background-color: var(--highlight);\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.DisplayPicture_module_root__a7ba07d1.DisplayPicture_module_sm__a7ba07d1 div span {\n  font-size: 1rem;\n  font-weight: 600;\n  color: var(--white);\n}\n.DisplayPicture_module_root__a7ba07d1.DisplayPicture_module_md__a7ba07d1 img {\n  height: 5.3125rem;\n  width: 5.3125rem;\n  border-radius: 100%;\n}\n.DisplayPicture_module_root__a7ba07d1.DisplayPicture_module_md__a7ba07d1 div {\n  height: 5.3125rem;\n  width: 5.3125rem;\n  border-radius: 100%;\n  background-color: var(--highlight);\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.DisplayPicture_module_root__a7ba07d1.DisplayPicture_module_md__a7ba07d1 div span {\n  font-size: 2rem;\n  font-weight: 600;\n  color: var(--white);\n}";
 var modules_49a16e28 = {"root":"DisplayPicture_module_root__a7ba07d1","sm":"DisplayPicture_module_sm__a7ba07d1","md":"DisplayPicture_module_md__a7ba07d1"};
-n(css$1,{});
+n(css,{});
 
 var DisplayPicture = function DisplayPicture(props) {
   var name = props.name,
@@ -95144,75 +95209,6 @@ DisplayPicture.defaultProps = {
   url: '',
   className: '',
   size: 'sm'
-};
-
-var css = "div.Toggle_module_root__54079f3e {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  overflow: auto;\n  padding: 0.25rem;\n  background: var(--grey8);\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  border-radius: 0.4rem 0.4rem;\n  box-shadow: inset 0px 1px 2px rgba(97, 97, 97, 0.2), inset 0px 2px 4px rgba(97, 97, 97, 0.2);\n}\ndiv.Toggle_module_root__54079f3e [data-elem=base-cell].Toggle_module_toggleButton__54079f3e {\n  color: var(--grey);\n  padding: 0.2rem;\n  height: 2rem;\n  background: transparent;\n}\ndiv.Toggle_module_root__54079f3e [data-elem=base-cell].Toggle_module_toggleButton__54079f3e.Toggle_module_active__54079f3e {\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n  background: var(--white);\n  border-radius: 0.25rem;\n  color: var(--dark-grey);\n}";
-var modules_a2cdc77c = {"root":"Toggle_module_root__54079f3e","toggle-button":"Toggle_module_toggleButton__54079f3e","active":"Toggle_module_active__54079f3e"};
-n(css,{});
-
-/* eslint-disable no-unused-vars */
-var Toggle = function Toggle(props) {
-  var options = props.options,
-    selectedToggle = props.selectedToggle,
-    setSelectedToggle = props.setSelectedToggle,
-    onChange = props.onChange;
-  var onButtonClick = function onButtonClick(value) {
-    setSelectedToggle(value);
-    onChange(value);
-  };
-  return /*#__PURE__*/jsxRuntime.jsx("div", {
-    className: modules_a2cdc77c.root,
-    children: options.map(function (item) {
-      var title = item.title,
-        value = item.value,
-        leftComponent = item.leftComponent,
-        rightComponent = item.rightComponent,
-        color = item.color;
-      var isActive = selectedToggle === value;
-      return /*#__PURE__*/jsxRuntime.jsx(Button, {
-        className: classes(modules_a2cdc77c['toggle-button'], selectedToggle === value ? modules_a2cdc77c.active : ''),
-        onClick: function onClick() {
-          return onButtonClick(value);
-        },
-        title: value,
-        value: value,
-        color: isActive ? color : 'default',
-        leftComponent: leftComponent,
-        rightComponent: rightComponent,
-        children: value
-      }, title);
-    })
-  });
-};
-Toggle.propTypes = {
-  options: propTypes$1.exports.arrayOf(propTypes$1.exports.string),
-  selectedToggle: propTypes$1.exports.string,
-  setSelectedToggle: propTypes$1.exports.string
-};
-Toggle.defaultProps = {
-  options: [{
-    title: 'First',
-    value: 'First',
-    rightCompoenent: '',
-    leftCompoenent: ''
-  }, {
-    title: 'Second',
-    value: 'Second',
-    rightCompoenent: '',
-    leftCompoenent: ''
-  }, {
-    title: 'Third',
-    value: 'Third',
-    rightCompoenent: '',
-    leftCompoenent: ''
-  }, {
-    title: 'Fourth',
-    value: 'Fourth',
-    rightCompoenent: '',
-    leftCompoenent: ''
-  }],
-  selectedToggle: 'First',
-  setSelectedToggle: 'None'
 };
 
 exports.Accordion = Accordion;
