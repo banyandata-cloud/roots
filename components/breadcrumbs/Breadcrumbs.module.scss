@@ -4,6 +4,7 @@
 	@include flex(row, flex-start, center);
 	gap: 0.5rem;
 	width: auto;
+
 	.seperator {
 		width: 1.5rem;
 		height: 1.5rem;
@@ -29,8 +30,38 @@
 			color: $black;
 		}
 
-		&:hover {
+		&:hover:not(.active) {
 			color: $info;
+		}
+	}
+
+	&.theme-light {
+		.crumb {
+			@include flex(row, flex-start, center);
+			color: $grey2;
+
+			&.active {
+				color: $black;
+			}
+
+			&:hover:not(.active) {
+				color: $info;
+			}
+		}
+	}
+
+	&.theme-dark {
+		.crumb {
+			@include flex(row, flex-start, center);
+			color: $grey2;
+
+			&.active {
+				color: $white;
+			}
+
+			&:hover:not(.active) {
+				color: $info;
+			}
 		}
 	}
 }

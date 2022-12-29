@@ -8,7 +8,8 @@ import { Link } from '../link';
 import Button from '../buttons/button/Button';
 
 const BreadCrumbs = (props) => {
-	const { crumbs, maxItems, itemsBeforeCollapse, itemsAfterCollapse, linkComponent } = props;
+	const { crumbs, maxItems, itemsBeforeCollapse, itemsAfterCollapse, linkComponent, theme } =
+		props;
 
 	const [expand, setExpand] = useState(false);
 
@@ -31,7 +32,8 @@ const BreadCrumbs = (props) => {
 					dataAttrs={{
 						'data-state': active,
 					}}
-					component={!active ? linkComponent : 'span'}>
+					component={!active ? linkComponent : 'span'}
+					stroke={!active ? 'regular' : 'medium'}>
 					{icon && icon}
 					{title && <span>{getSpacedDisplayName(title).replace(/-/g, ' ')}</span>}
 				</Link>
@@ -59,10 +61,11 @@ const BreadCrumbs = (props) => {
 		);
 	}
 
-	return <div className={classes(styles.root)}>{CrumbsDOM}</div>;
+	return <div className={classes(styles.root, styles[`theme-${theme}`])}>{CrumbsDOM}</div>;
 };
 
 BreadCrumbs.propTypes = {
+	theme: PropTypes.oneOf(['light', 'dark']),
 	crumbs: PropTypes.arrayOf(
 		PropTypes.shape({
 			title: PropTypes.string,
@@ -77,6 +80,7 @@ BreadCrumbs.propTypes = {
 };
 
 BreadCrumbs.defaultProps = {
+	theme: 'dark',
 	crumbs: [],
 	maxItems: 4,
 	itemsBeforeCollapse: 2,

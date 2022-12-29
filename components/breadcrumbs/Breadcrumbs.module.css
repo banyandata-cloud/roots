@@ -30,6 +30,32 @@
 .root .crumb.active {
   color: var(--black);
 }
-.root .crumb:hover {
+.root .crumb:hover:not(.active) {
+  color: var(--info);
+}
+.root.theme-light .crumb {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  color: var(--grey2);
+}
+.root.theme-light .crumb.active {
+  color: var(--black);
+}
+.root.theme-light .crumb:hover:not(.active) {
+  color: var(--info);
+}
+.root.theme-dark .crumb {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  color: var(--grey2);
+}
+.root.theme-dark .crumb.active {
+  color: var(--white);
+}
+.root.theme-dark .crumb:hover:not(.active) {
   color: var(--info);
 }/*# sourceMappingURL=Breadcrumbs.module.css.map */

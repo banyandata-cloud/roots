@@ -1,4 +1,5 @@
 import React from 'react';
+import { ThemedContainer } from '../helpers';
 import BreadCrumbs from './Breadcrumbs';
 
 export default {
@@ -12,7 +13,11 @@ export default {
 };
 
 const Template = (args) => {
-	return <BreadCrumbs {...args} />;
+	return (
+		<ThemedContainer {...args}>
+			<BreadCrumbs {...args} />
+		</ThemedContainer>
+	);
 };
 
 export const Default = Template.bind({});
