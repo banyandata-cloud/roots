@@ -2473,6 +2473,21 @@ var Trash = function Trash(props) {
   });
 };
 
+var SearchIcon = function SearchIcon(_ref) {
+  var className = _ref.className;
+  return /*#__PURE__*/jsx("svg", {
+    className: className,
+    width: "1.5rem",
+    height: "1.5rem",
+    viewBox: "0 0 17 16",
+    fill: "#9B9BA3",
+    xmlns: "http://www.w3.org/2000/svg",
+    children: /*#__PURE__*/jsx("path", {
+      d: "M14.4784 13.5267L12.0051 11.0733C12.9651 9.87629 13.4301 8.35688 13.3043 6.82755C13.1785 5.29821 12.4715 3.8752 11.3287 2.85111C10.186 1.82702 8.69427 1.27969 7.16035 1.32166C5.62642 1.36363 4.16688 1.99172 3.08182 3.07677C1.99677 4.16183 1.36868 5.62137 1.32671 7.15529C1.28474 8.68922 1.83207 10.1809 2.85616 11.3237C3.88025 12.4665 5.30326 13.1734 6.8326 13.2992C8.36193 13.425 9.88134 12.9601 11.0784 12L13.5317 14.4533C13.5937 14.5158 13.6674 14.5654 13.7487 14.5993C13.8299 14.6331 13.9171 14.6505 14.0051 14.6505C14.0931 14.6505 14.1802 14.6331 14.2614 14.5993C14.3427 14.5654 14.4164 14.5158 14.4784 14.4533C14.5986 14.329 14.6657 14.1629 14.6657 13.99C14.6657 13.8171 14.5986 13.651 14.4784 13.5267ZM7.3384 12C6.41542 12 5.51316 11.7263 4.74574 11.2135C3.97831 10.7008 3.38017 9.97192 3.02696 9.1192C2.67375 8.26648 2.58133 7.32817 2.7614 6.42292C2.94146 5.51768 3.38592 4.68616 4.03857 4.03351C4.69121 3.38087 5.52273 2.93641 6.42798 2.75635C7.33322 2.57628 8.27153 2.6687 9.12425 3.02191C9.97698 3.37512 10.7058 3.97326 11.2186 4.74068C11.7314 5.50811 12.0051 6.41037 12.0051 7.33335C12.0051 8.57102 11.5134 9.75801 10.6382 10.6332C9.76306 11.5083 8.57607 12 7.3384 12Z"
+    })
+  });
+};
+
 var css$Q = ".Accordion_module_root__a63f6f55 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  width: 100%;\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell] {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.5rem;\n  padding: 0.5rem 1rem;\n  cursor: pointer;\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell] > [data-elem=component1] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell] > [data-elem=component1] .Accordion_module_icon__a63f6f55 {\n  transform: rotate(-90deg);\n  width: 1rem;\n  height: 1rem;\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell] .Accordion_module_title__a63f6f55 {\n  flex: 1 1 auto;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell]:hover {\n  background: var(--background);\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell]:hover .Accordion_module_icon__a63f6f55,\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell]:hover .Accordion_module_title__a63f6f55 {\n  color: var(--highlight);\n  fill: var(--highlight);\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_body__a63f6f55 {\n  display: none;\n  padding: 0.5rem 2.5rem;\n}\n.Accordion_module_root__a63f6f55.Accordion_module_open__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell] [data-elem=component1] .Accordion_module_icon__a63f6f55 {\n  transform: none;\n}\n.Accordion_module_root__a63f6f55.Accordion_module_open__a63f6f55 > .Accordion_module_body__a63f6f55 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n}\n.Accordion_module_root__a63f6f55.Accordion_module_open__a63f6f55 > .Accordion_module_body__a63f6f55 > button[data-elem=base-cell] {\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  align-self: flex-end;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-end;\n  align-items: center;\n}\n.Accordion_module_root__a63f6f55.Accordion_module_open__a63f6f55 > .Accordion_module_body__a63f6f55 > button[data-elem=base-cell] .Accordion_module_expand__a63f6f55 {\n  height: 1.5rem;\n  width: 1.5rem;\n}";
 var modules_8207625f = {"root":"Accordion_module_root__a63f6f55","header":"Accordion_module_header__a63f6f55","icon":"Accordion_module_icon__a63f6f55","title":"Accordion_module_title__a63f6f55","body":"Accordion_module_body__a63f6f55","open":"Accordion_module_open__a63f6f55","expand":"Accordion_module_expand__a63f6f55"};
 n(css$Q,{});
@@ -6656,8 +6671,8 @@ Alert.defaultProps = {
   position: 'bottom-center'
 };
 
-var css$N = ".Breadcrumbs_module_root__b14355df {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.5rem;\n  width: auto;\n}\n.Breadcrumbs_module_root__b14355df .Breadcrumbs_module_seperator__b14355df {\n  width: 1.5rem;\n  height: 1.5rem;\n  stroke: var(--grey2);\n}\n.Breadcrumbs_module_root__b14355df button.Breadcrumbs_module_expand__b14355df[data-elem=base-cell] {\n  background: var(--grey6);\n  color: var(--dark-grey);\n  height: 0.75rem;\n  padding: 0.25rem;\n}\n.Breadcrumbs_module_root__b14355df button.Breadcrumbs_module_expand__b14355df[data-elem=base-cell] [data-elem=title] {\n  margin-bottom: 0.4rem;\n}\n.Breadcrumbs_module_root__b14355df .Breadcrumbs_module_crumb__b14355df {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  color: var(--grey2);\n}\n.Breadcrumbs_module_root__b14355df .Breadcrumbs_module_crumb__b14355df.Breadcrumbs_module_active__b14355df {\n  color: var(--black);\n}\n.Breadcrumbs_module_root__b14355df .Breadcrumbs_module_crumb__b14355df:hover {\n  color: var(--info);\n}";
-var modules_651f50a9 = {"root":"Breadcrumbs_module_root__b14355df","seperator":"Breadcrumbs_module_seperator__b14355df","expand":"Breadcrumbs_module_expand__b14355df","crumb":"Breadcrumbs_module_crumb__b14355df","active":"Breadcrumbs_module_active__b14355df"};
+var css$N = ".Breadcrumbs_module_root__f527a278 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.5rem;\n  width: auto;\n}\n.Breadcrumbs_module_root__f527a278 .Breadcrumbs_module_seperator__f527a278 {\n  width: 1.5rem;\n  height: 1.5rem;\n  stroke: var(--grey2);\n}\n.Breadcrumbs_module_root__f527a278 button.Breadcrumbs_module_expand__f527a278[data-elem=base-cell] {\n  background: var(--grey6);\n  color: var(--dark-grey);\n  height: 0.75rem;\n  padding: 0.25rem;\n}\n.Breadcrumbs_module_root__f527a278 button.Breadcrumbs_module_expand__f527a278[data-elem=base-cell] [data-elem=title] {\n  margin-bottom: 0.4rem;\n}\n.Breadcrumbs_module_root__f527a278 .Breadcrumbs_module_crumb__f527a278 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  color: var(--grey2);\n}\n.Breadcrumbs_module_root__f527a278 .Breadcrumbs_module_crumb__f527a278.Breadcrumbs_module_active__f527a278 {\n  color: var(--black);\n}\n.Breadcrumbs_module_root__f527a278 .Breadcrumbs_module_crumb__f527a278:hover:not(.Breadcrumbs_module_active__f527a278) {\n  color: var(--info);\n}\n.Breadcrumbs_module_root__f527a278.Breadcrumbs_module_themeLight__f527a278 .Breadcrumbs_module_crumb__f527a278 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  color: var(--grey2);\n}\n.Breadcrumbs_module_root__f527a278.Breadcrumbs_module_themeLight__f527a278 .Breadcrumbs_module_crumb__f527a278.Breadcrumbs_module_active__f527a278 {\n  color: var(--black);\n}\n.Breadcrumbs_module_root__f527a278.Breadcrumbs_module_themeLight__f527a278 .Breadcrumbs_module_crumb__f527a278:hover:not(.Breadcrumbs_module_active__f527a278) {\n  color: var(--info);\n}\n.Breadcrumbs_module_root__f527a278.Breadcrumbs_module_themeDark__f527a278 .Breadcrumbs_module_crumb__f527a278 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  color: var(--grey2);\n}\n.Breadcrumbs_module_root__f527a278.Breadcrumbs_module_themeDark__f527a278 .Breadcrumbs_module_crumb__f527a278.Breadcrumbs_module_active__f527a278 {\n  color: var(--white);\n}\n.Breadcrumbs_module_root__f527a278.Breadcrumbs_module_themeDark__f527a278 .Breadcrumbs_module_crumb__f527a278:hover:not(.Breadcrumbs_module_active__f527a278) {\n  color: var(--info);\n}";
+var modules_651f50a9 = {"root":"Breadcrumbs_module_root__f527a278","seperator":"Breadcrumbs_module_seperator__f527a278","expand":"Breadcrumbs_module_expand__f527a278","crumb":"Breadcrumbs_module_crumb__f527a278","active":"Breadcrumbs_module_active__f527a278","theme-light":"Breadcrumbs_module_themeLight__f527a278","theme-dark":"Breadcrumbs_module_themeDark__f527a278"};
 n(css$N,{});
 
 var css$M = ".Text_module_root__71f59b14 {\n  color: var(--dark-grey);\n}\n.Text_module_root__71f59b14.Text_module_h1__71f59b14 {\n  font-size: 2.25rem;\n  line-height: 2.75rem;\n}\n.Text_module_root__71f59b14.Text_module_h2__71f59b14 {\n  font-size: 1.375rem;\n  line-height: 1.688rem;\n}\n.Text_module_root__71f59b14.Text_module_b1__71f59b14 {\n  font-size: 1rem;\n  line-height: 1.188rem;\n}\n.Text_module_root__71f59b14.Text_module_b2__71f59b14 {\n  font-size: 0.875rem;\n  line-height: 1.188rem;\n}\n.Text_module_root__71f59b14.Text_module_b3__71f59b14 {\n  font-size: 0.75rem;\n  line-height: 1.063rem;\n}\n.Text_module_root__71f59b14.Text_module_regularStroke__71f59b14 {\n  font-weight: 400;\n}\n.Text_module_root__71f59b14.Text_module_mediumStroke__71f59b14 {\n  font-weight: 500;\n}\n.Text_module_root__71f59b14.Text_module_semiboldStroke__71f59b14 {\n  font-weight: 600;\n}\n.Text_module_root__71f59b14.Text_module_boldStroke__71f59b14 {\n  font-weight: 800;\n}";
@@ -6766,7 +6781,8 @@ var BreadCrumbs = function BreadCrumbs(props) {
     maxItems = props.maxItems,
     itemsBeforeCollapse = props.itemsBeforeCollapse,
     itemsAfterCollapse = props.itemsAfterCollapse,
-    linkComponent = props.linkComponent;
+    linkComponent = props.linkComponent,
+    theme = props.theme;
   var _useState = useState(false),
     _useState2 = _slicedToArray(_useState, 2),
     expand = _useState2[0],
@@ -6788,6 +6804,7 @@ var BreadCrumbs = function BreadCrumbs(props) {
           'data-state': active
         },
         component: !active ? linkComponent : 'span',
+        stroke: !active ? 'regular' : 'medium',
         children: [icon && icon, title && /*#__PURE__*/jsx("span", {
           children: getSpacedDisplayName(title).replace(/-/g, ' ')
         })]
@@ -6812,11 +6829,12 @@ var BreadCrumbs = function BreadCrumbs(props) {
     }, 'expand'));
   }
   return /*#__PURE__*/jsx("div", {
-    className: classes(modules_651f50a9.root),
+    className: classes(modules_651f50a9.root, modules_651f50a9["theme-".concat(theme)]),
     children: CrumbsDOM
   });
 };
 BreadCrumbs.propTypes = {
+  theme: propTypes$1.exports.oneOf(['light', 'dark']),
   crumbs: propTypes$1.exports.arrayOf(propTypes$1.exports.shape({
     title: propTypes$1.exports.string,
     path: propTypes$1.exports.string,
@@ -6828,6 +6846,7 @@ BreadCrumbs.propTypes = {
   linkComponent: propTypes$1.exports.oneOfType([propTypes$1.exports.string, propTypes$1.exports.element])
 };
 BreadCrumbs.defaultProps = {
+  theme: 'dark',
   crumbs: [],
   maxItems: 4,
   itemsBeforeCollapse: 2,
@@ -16566,126 +16585,134 @@ function c(Prism) {
   delete Prism.languages.c['boolean'];
 }
 
-var refractorC$1 = c_1;
-var cpp_1 = cpp;
-cpp.displayName = 'cpp';
-cpp.aliases = [];
-function cpp(Prism) {
-  Prism.register(refractorC$1)
-  ;(function (Prism) {
-    var keyword =
-      /\b(?:alignas|alignof|asm|auto|bool|break|case|catch|char|char16_t|char32_t|char8_t|class|co_await|co_return|co_yield|compl|concept|const|const_cast|consteval|constexpr|constinit|continue|decltype|default|delete|do|double|dynamic_cast|else|enum|explicit|export|extern|final|float|for|friend|goto|if|import|inline|int|int16_t|int32_t|int64_t|int8_t|long|module|mutable|namespace|new|noexcept|nullptr|operator|override|private|protected|public|register|reinterpret_cast|requires|return|short|signed|sizeof|static|static_assert|static_cast|struct|switch|template|this|thread_local|throw|try|typedef|typeid|typename|uint16_t|uint32_t|uint64_t|uint8_t|union|unsigned|using|virtual|void|volatile|wchar_t|while)\b/;
-    var modName = /\b(?!<keyword>)\w+(?:\s*\.\s*\w+)*\b/.source.replace(
-      /<keyword>/g,
-      function () {
-        return keyword.source
-      }
-    );
-    Prism.languages.cpp = Prism.languages.extend('c', {
-      'class-name': [
-        {
-          pattern: RegExp(
-            /(\b(?:class|concept|enum|struct|typename)\s+)(?!<keyword>)\w+/.source.replace(
-              /<keyword>/g,
-              function () {
-                return keyword.source
-              }
-            )
-          ),
-          lookbehind: true
-        }, // This is intended to capture the class name of method implementations like:
-        //   void foo::bar() const {}
-        // However! The `foo` in the above example could also be a namespace, so we only capture the class name if
-        // it starts with an uppercase letter. This approximation should give decent results.
-        /\b[A-Z]\w*(?=\s*::\s*\w+\s*\()/, // This will capture the class name before destructors like:
-        //   Foo::~Foo() {}
-        /\b[A-Z_]\w*(?=\s*::\s*~\w+\s*\()/i, // This also intends to capture the class name of method implementations but here the class has template
-        // parameters, so it can't be a namespace (until C++ adds generic namespaces).
-        /\b\w+(?=\s*<(?:[^<>]|<(?:[^<>]|<[^<>]*>)*>)*>\s*::\s*\w+\s*\()/
-      ],
-      keyword: keyword,
-      number: {
-        pattern:
-          /(?:\b0b[01']+|\b0x(?:[\da-f']+(?:\.[\da-f']*)?|\.[\da-f']+)(?:p[+-]?[\d']+)?|(?:\b[\d']+(?:\.[\d']*)?|\B\.[\d']+)(?:e[+-]?[\d']+)?)[ful]{0,4}/i,
-        greedy: true
-      },
-      operator:
-        />>=?|<<=?|->|--|\+\+|&&|\|\||[?:~]|<=>|[-+*/%&|^!=<>]=?|\b(?:and|and_eq|bitand|bitor|not|not_eq|or|or_eq|xor|xor_eq)\b/,
-      boolean: /\b(?:false|true)\b/
-    });
-    Prism.languages.insertBefore('cpp', 'string', {
-      module: {
-        // https://en.cppreference.com/w/cpp/language/modules
-        pattern: RegExp(
-          /(\b(?:import|module)\s+)/.source +
-            '(?:' + // header-name
-            /"(?:\\(?:\r\n|[\s\S])|[^"\\\r\n])*"|<[^<>\r\n]*>/.source +
-            '|' + // module name or partition or both
-            /<mod-name>(?:\s*:\s*<mod-name>)?|:\s*<mod-name>/.source.replace(
-              /<mod-name>/g,
-              function () {
-                return modName
-              }
-            ) +
-            ')'
-        ),
-        lookbehind: true,
-        greedy: true,
-        inside: {
-          string: /^[<"][\s\S]+/,
-          operator: /:/,
-          punctuation: /\./
-        }
-      },
-      'raw-string': {
-        pattern: /R"([^()\\ ]{0,16})\([\s\S]*?\)\1"/,
-        alias: 'string',
-        greedy: true
-      }
-    });
-    Prism.languages.insertBefore('cpp', 'keyword', {
-      'generic-function': {
-        pattern: /\b(?!operator\b)[a-z_]\w*\s*<(?:[^<>]|<[^<>]*>)*>(?=\s*\()/i,
-        inside: {
-          function: /^\w+/,
-          generic: {
-            pattern: /<[\s\S]+/,
-            alias: 'class-name',
-            inside: Prism.languages.cpp
-          }
-        }
-      }
-    });
-    Prism.languages.insertBefore('cpp', 'operator', {
-      'double-colon': {
-        pattern: /::/,
-        alias: 'punctuation'
-      }
-    });
-    Prism.languages.insertBefore('cpp', 'class-name', {
-      // the base clause is an optional list of parent classes
-      // https://en.cppreference.com/w/cpp/language/class
-      'base-clause': {
-        pattern:
-          /(\b(?:class|struct)\s+\w+\s*:\s*)[^;{}"'\s]+(?:\s+[^;{}"'\s]+)*(?=\s*[;{])/,
-        lookbehind: true,
-        greedy: true,
-        inside: Prism.languages.extend('cpp', {})
-      }
-    });
-    Prism.languages.insertBefore(
-      'inside',
-      'double-colon',
-      {
-        // All untokenized words that are not namespaces should be class names
-        'class-name': /\b[a-z_]\w*\b(?!\s*::)/i
-      },
-      Prism.languages.cpp['base-clause']
-    );
-  })(Prism);
+var cpp_1;
+var hasRequiredCpp;
+
+function requireCpp () {
+	if (hasRequiredCpp) return cpp_1;
+	hasRequiredCpp = 1;
+	var refractorC = c_1;
+	cpp_1 = cpp;
+	cpp.displayName = 'cpp';
+	cpp.aliases = [];
+	function cpp(Prism) {
+	  Prism.register(refractorC)
+	  ;(function (Prism) {
+	    var keyword =
+	      /\b(?:alignas|alignof|asm|auto|bool|break|case|catch|char|char16_t|char32_t|char8_t|class|co_await|co_return|co_yield|compl|concept|const|const_cast|consteval|constexpr|constinit|continue|decltype|default|delete|do|double|dynamic_cast|else|enum|explicit|export|extern|final|float|for|friend|goto|if|import|inline|int|int16_t|int32_t|int64_t|int8_t|long|module|mutable|namespace|new|noexcept|nullptr|operator|override|private|protected|public|register|reinterpret_cast|requires|return|short|signed|sizeof|static|static_assert|static_cast|struct|switch|template|this|thread_local|throw|try|typedef|typeid|typename|uint16_t|uint32_t|uint64_t|uint8_t|union|unsigned|using|virtual|void|volatile|wchar_t|while)\b/;
+	    var modName = /\b(?!<keyword>)\w+(?:\s*\.\s*\w+)*\b/.source.replace(
+	      /<keyword>/g,
+	      function () {
+	        return keyword.source
+	      }
+	    );
+	    Prism.languages.cpp = Prism.languages.extend('c', {
+	      'class-name': [
+	        {
+	          pattern: RegExp(
+	            /(\b(?:class|concept|enum|struct|typename)\s+)(?!<keyword>)\w+/.source.replace(
+	              /<keyword>/g,
+	              function () {
+	                return keyword.source
+	              }
+	            )
+	          ),
+	          lookbehind: true
+	        }, // This is intended to capture the class name of method implementations like:
+	        //   void foo::bar() const {}
+	        // However! The `foo` in the above example could also be a namespace, so we only capture the class name if
+	        // it starts with an uppercase letter. This approximation should give decent results.
+	        /\b[A-Z]\w*(?=\s*::\s*\w+\s*\()/, // This will capture the class name before destructors like:
+	        //   Foo::~Foo() {}
+	        /\b[A-Z_]\w*(?=\s*::\s*~\w+\s*\()/i, // This also intends to capture the class name of method implementations but here the class has template
+	        // parameters, so it can't be a namespace (until C++ adds generic namespaces).
+	        /\b\w+(?=\s*<(?:[^<>]|<(?:[^<>]|<[^<>]*>)*>)*>\s*::\s*\w+\s*\()/
+	      ],
+	      keyword: keyword,
+	      number: {
+	        pattern:
+	          /(?:\b0b[01']+|\b0x(?:[\da-f']+(?:\.[\da-f']*)?|\.[\da-f']+)(?:p[+-]?[\d']+)?|(?:\b[\d']+(?:\.[\d']*)?|\B\.[\d']+)(?:e[+-]?[\d']+)?)[ful]{0,4}/i,
+	        greedy: true
+	      },
+	      operator:
+	        />>=?|<<=?|->|--|\+\+|&&|\|\||[?:~]|<=>|[-+*/%&|^!=<>]=?|\b(?:and|and_eq|bitand|bitor|not|not_eq|or|or_eq|xor|xor_eq)\b/,
+	      boolean: /\b(?:false|true)\b/
+	    });
+	    Prism.languages.insertBefore('cpp', 'string', {
+	      module: {
+	        // https://en.cppreference.com/w/cpp/language/modules
+	        pattern: RegExp(
+	          /(\b(?:import|module)\s+)/.source +
+	            '(?:' + // header-name
+	            /"(?:\\(?:\r\n|[\s\S])|[^"\\\r\n])*"|<[^<>\r\n]*>/.source +
+	            '|' + // module name or partition or both
+	            /<mod-name>(?:\s*:\s*<mod-name>)?|:\s*<mod-name>/.source.replace(
+	              /<mod-name>/g,
+	              function () {
+	                return modName
+	              }
+	            ) +
+	            ')'
+	        ),
+	        lookbehind: true,
+	        greedy: true,
+	        inside: {
+	          string: /^[<"][\s\S]+/,
+	          operator: /:/,
+	          punctuation: /\./
+	        }
+	      },
+	      'raw-string': {
+	        pattern: /R"([^()\\ ]{0,16})\([\s\S]*?\)\1"/,
+	        alias: 'string',
+	        greedy: true
+	      }
+	    });
+	    Prism.languages.insertBefore('cpp', 'keyword', {
+	      'generic-function': {
+	        pattern: /\b(?!operator\b)[a-z_]\w*\s*<(?:[^<>]|<[^<>]*>)*>(?=\s*\()/i,
+	        inside: {
+	          function: /^\w+/,
+	          generic: {
+	            pattern: /<[\s\S]+/,
+	            alias: 'class-name',
+	            inside: Prism.languages.cpp
+	          }
+	        }
+	      }
+	    });
+	    Prism.languages.insertBefore('cpp', 'operator', {
+	      'double-colon': {
+	        pattern: /::/,
+	        alias: 'punctuation'
+	      }
+	    });
+	    Prism.languages.insertBefore('cpp', 'class-name', {
+	      // the base clause is an optional list of parent classes
+	      // https://en.cppreference.com/w/cpp/language/class
+	      'base-clause': {
+	        pattern:
+	          /(\b(?:class|struct)\s+\w+\s*:\s*)[^;{}"'\s]+(?:\s+[^;{}"'\s]+)*(?=\s*[;{])/,
+	        lookbehind: true,
+	        greedy: true,
+	        inside: Prism.languages.extend('cpp', {})
+	      }
+	    });
+	    Prism.languages.insertBefore(
+	      'inside',
+	      'double-colon',
+	      {
+	        // All untokenized words that are not namespaces should be class names
+	        'class-name': /\b[a-z_]\w*\b(?!\s*::)/i
+	      },
+	      Prism.languages.cpp['base-clause']
+	    );
+	  })(Prism);
+	}
+	return cpp_1;
 }
 
-var refractorCpp$1 = cpp_1;
+var refractorCpp$1 = requireCpp();
 var arduino_1 = arduino;
 arduino.displayName = 'arduino';
 arduino.aliases = ['ino'];
@@ -18695,7 +18722,7 @@ function cfscript(Prism) {
   Prism.languages.cfc = Prism.languages['cfscript'];
 }
 
-var refractorCpp = cpp_1;
+var refractorCpp = requireCpp();
 var chaiscript_1 = chaiscript;
 chaiscript.displayName = 'chaiscript';
 chaiscript.aliases = [];
@@ -38927,7 +38954,7 @@ refractor.register(requireCobol());
 refractor.register(requireCoffeescript());
 refractor.register(requireConcurnas());
 refractor.register(requireCoq());
-refractor.register(cpp_1);
+refractor.register(requireCpp());
 refractor.register(requireCrystal());
 refractor.register(requireCsharp());
 refractor.register(requireCshtml());
@@ -43341,8 +43368,8 @@ function getPagination(curr, total, limit) {
   return pages;
 }
 
-var css$p = ".Pagination_module_root__4c778f02 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: stretch;\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n  padding: 0.625rem 2.125rem;\n  background: var(--dark-grey);\n  margin-top: auto;\n  width: 100%;\n  height: 3.5rem;\n  overflow: auto;\n  transition-property: background-color, color, bottom, width;\n  transition-duration: 0.33s;\n  transition-timing-function: ease-out;\n}\n.Pagination_module_root__4c778f02::-webkit-scrollbar {\n  display: none;\n}\n.Pagination_module_root__4c778f02.Pagination_module_floating__4c778f02 {\n  background: var(--dark-grey-o-85);\n  position: absolute;\n  border-radius: 6.25rem;\n  width: 82%;\n  bottom: 3rem;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_rowSwitcher__4c778f02,\n.Pagination_module_root__4c778f02 .Pagination_module_pagination__4c778f02,\n.Pagination_module_root__4c778f02 .Pagination_module_jumpToPage__4c778f02,\n.Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  height: 100%;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_rowSwitcher__4c778f02 {\n  display: none;\n  gap: 0.75rem;\n  background-color: var(--grey);\n  padding: 0;\n  border-radius: 0.3125rem;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__4c778f02 .Pagination_module_rowSwitcher__4c778f02 {\n    display: flex;\n    flex-direction: row;\n    justify-content: space-between;\n    align-items: center;\n  }\n}\n.Pagination_module_root__4c778f02 .Pagination_module_rowSwitcher__4c778f02 > [data-elem*=component] {\n  overflow: hidden;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_rowSwitcher__4c778f02 > [data-elem=component2] {\n  display: flex;\n  flex: 1 0 auto;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_rowSwitcher__4c778f02 .Pagination_module_text__4c778f02 {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  height: 100%;\n  display: block;\n  padding: 0.5rem;\n  font-size: 0.875rem;\n  font-weight: 500;\n  color: var(--white);\n}\n.Pagination_module_root__4c778f02 .Pagination_module_rowSwitcher__4c778f02 .Pagination_module_dropdown__4c778f02 > [data-elem=header] > [data-elem=select] {\n  height: 2.375rem;\n  width: auto;\n  min-width: -webkit-fit-content;\n  min-width: -moz-fit-content;\n  min-width: fit-content;\n  padding: 0.625rem;\n  background-color: var(--grey);\n  border: none;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_rowSwitcher__4c778f02 .Pagination_module_dropdown__4c778f02 > [data-elem=header] > [data-elem=select] > [data-elem=placeholder] {\n  color: var(--white);\n  font-size: 0.875rem;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_rowSwitcher__4c778f02 .Pagination_module_dropdown__4c778f02 > [data-elem=header] > [data-elem=select] > svg {\n  fill: var(--white);\n  width: 0.813rem;\n  height: 0.813rem;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_pageNumbers__4c778f02 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  gap: 1.25rem;\n  flex: 1 1 100%;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__4c778f02 .Pagination_module_pageNumbers__4c778f02 {\n    flex: 1 1 60%;\n  }\n}\n.Pagination_module_root__4c778f02 .Pagination_module_pageNumbers__4c778f02 > .Pagination_module_button__4c778f02.Pagination_module_disable__4c778f02 {\n  pointer-events: none;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_pageNumbers__4c778f02 > .Pagination_module_button__4c778f02 [data-elem=title] {\n  color: var(--white);\n}\n.Pagination_module_root__4c778f02 .Pagination_module_pageNumbers__4c778f02 > .Pagination_module_button__4c778f02 .Pagination_module_icon__4c778f02 {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_pageNumbers__4c778f02 > .Pagination_module_pageSelect__4c778f02 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  gap: 0.625rem;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_pageNumbers__4c778f02 > .Pagination_module_pageSelect__4c778f02 .Pagination_module_number__4c778f02 {\n  cursor: pointer;\n  border-radius: 50%;\n  background-color: #e0e0e0;\n  color: var(--black);\n  width: 2.313rem;\n  line-height: 2.313rem;\n  text-align: center;\n  font-size: 1rem;\n  border: 1px solid transparent;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_pageNumbers__4c778f02 > .Pagination_module_pageSelect__4c778f02 .Pagination_module_number__4c778f02:not([data-active=true]) {\n  display: none;\n}\n@media (min-width: 768px) {\n  .Pagination_module_root__4c778f02 .Pagination_module_pageNumbers__4c778f02 > .Pagination_module_pageSelect__4c778f02 .Pagination_module_number__4c778f02:not([data-active=true]) {\n    display: block;\n  }\n}\n.Pagination_module_root__4c778f02 .Pagination_module_pageNumbers__4c778f02 > .Pagination_module_pageSelect__4c778f02 .Pagination_module_number__4c778f02:hover {\n  border: 1px solid var(--highlight);\n  color: var(--highlight);\n  background: var(--background);\n}\n.Pagination_module_root__4c778f02 .Pagination_module_pageNumbers__4c778f02 > .Pagination_module_pageSelect__4c778f02 .Pagination_module_number__4c778f02.Pagination_module_active__4c778f02 {\n  background-color: var(--highlight);\n  color: var(--white);\n}\n.Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 {\n  display: none;\n  padding: 0;\n  flex: 0 1 20%;\n  background: transparent;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 {\n    display: flex;\n    flex-direction: row;\n    justify-content: center;\n    align-items: center;\n  }\n}\n.Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 > [data-elem*=component] {\n  width: 100%;\n  height: 100%;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 > [data-elem*=component] > * {\n  height: 100%;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 .Pagination_module_jumpToPage__4c778f02 {\n  width: 100%;\n  background: transparent;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: stretch;\n  gap: 0.75rem;\n  padding: 0;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 .Pagination_module_jumpToPage__4c778f02 > [data-elem*=component] {\n  overflow: hidden;\n  height: 100%;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 .Pagination_module_jumpToPage__4c778f02 .Pagination_module_button__4c778f02 {\n  background-color: var(--grey);\n  height: 100%;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 .Pagination_module_jumpToPage__4c778f02 .Pagination_module_button__4c778f02 [data-elem=left] {\n  overflow: hidden;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 .Pagination_module_jumpToPage__4c778f02 .Pagination_module_button__4c778f02 [data-elem=left] [data-elem=title] {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 .Pagination_module_jumpToPage__4c778f02 .Pagination_module_button__4c778f02 .Pagination_module_icon__4c778f02 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--white);\n  flex-shrink: 0;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 .Pagination_module_jumpToPage__4c778f02 .Pagination_module_inputbox__4c778f02 {\n  width: 5rem;\n  max-width: 100%;\n  height: 100%;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 .Pagination_module_jumpToPage__4c778f02 .Pagination_module_inputbox__4c778f02 [data-elem=base-cell] {\n  border-radius: 0.313rem;\n  background-color: var(--grey);\n  color: var(--white);\n  border-color: var(--grey);\n  width: 4.875rem;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 .Pagination_module_jumpToPage__4c778f02 .Pagination_module_inputbox__4c778f02 [data-elem=base-cell] [data-elem=input] {\n  text-align: center;\n  color: var(--white);\n  background-color: var(--grey);\n  border: none;\n  width: 100%;\n}\n\n.Pagination_module_paginationTest__4c778f02 {\n  height: 80%;\n  width: 100%;\n  overflow: scroll;\n  background-color: powderblue;\n  display: flex;\n  flex-direction: column;\n}\n\n.Pagination_module_dropdownPopper__4c778f02 {\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n  padding: 0.25rem;\n}\n.Pagination_module_dropdownPopper__4c778f02::-webkit-scrollbar {\n  display: none;\n}";
-var modules_a3d40e77 = {"root":"Pagination_module_root__4c778f02","floating":"Pagination_module_floating__4c778f02","row-switcher":"Pagination_module_rowSwitcher__4c778f02","pagination":"Pagination_module_pagination__4c778f02","jump-to-page":"Pagination_module_jumpToPage__4c778f02","form":"Pagination_module_form__4c778f02","text":"Pagination_module_text__4c778f02","dropdown":"Pagination_module_dropdown__4c778f02","page-numbers":"Pagination_module_pageNumbers__4c778f02","button":"Pagination_module_button__4c778f02","disable":"Pagination_module_disable__4c778f02","icon":"Pagination_module_icon__4c778f02","pageSelect":"Pagination_module_pageSelect__4c778f02","number":"Pagination_module_number__4c778f02","active":"Pagination_module_active__4c778f02","inputbox":"Pagination_module_inputbox__4c778f02","pagination-test":"Pagination_module_paginationTest__4c778f02","dropdown-popper":"Pagination_module_dropdownPopper__4c778f02"};
+var css$p = ".Pagination_module_root__6d89f0eb {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: stretch;\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n  padding: 0.625rem 2.125rem;\n  background: var(--dark-grey);\n  margin-top: auto;\n  width: 100%;\n  height: 3.5rem;\n  overflow: auto;\n  transition-property: background-color, color, bottom, width;\n  transition-duration: 0.33s;\n  transition-timing-function: ease-out;\n}\n.Pagination_module_root__6d89f0eb::-webkit-scrollbar {\n  display: none;\n}\n.Pagination_module_root__6d89f0eb.Pagination_module_floating__6d89f0eb {\n  background: var(--dark-grey-o-85);\n  position: absolute;\n  border-radius: 6.25rem;\n  width: 82%;\n  bottom: 3rem;\n}\n.Pagination_module_root__6d89f0eb .Pagination_module_rowSwitcher__6d89f0eb,\n.Pagination_module_root__6d89f0eb .Pagination_module_pagination__6d89f0eb,\n.Pagination_module_root__6d89f0eb .Pagination_module_jumpToPage__6d89f0eb,\n.Pagination_module_root__6d89f0eb .Pagination_module_form__6d89f0eb {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  height: 100%;\n}\n.Pagination_module_root__6d89f0eb .Pagination_module_rowSwitcher__6d89f0eb {\n  display: none;\n  gap: 0.75rem;\n  background-color: var(--grey);\n  padding: 0;\n  border-radius: 0.25rem;\n  height: 100%;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__6d89f0eb .Pagination_module_rowSwitcher__6d89f0eb {\n    display: flex;\n    flex-direction: row;\n    justify-content: space-between;\n    align-items: center;\n  }\n}\n.Pagination_module_root__6d89f0eb .Pagination_module_rowSwitcher__6d89f0eb > [data-elem*=component] {\n  overflow: hidden;\n}\n.Pagination_module_root__6d89f0eb .Pagination_module_rowSwitcher__6d89f0eb > [data-elem=component2] {\n  display: flex;\n  flex: 0 1 auto;\n  height: 100%;\n}\n.Pagination_module_root__6d89f0eb .Pagination_module_rowSwitcher__6d89f0eb > [data-elem=component2]::before {\n  content: \"\";\n  margin: auto;\n  background: var(--white);\n  width: 0.5px;\n  height: 50%;\n}\n.Pagination_module_root__6d89f0eb .Pagination_module_rowSwitcher__6d89f0eb .Pagination_module_text__6d89f0eb {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  height: 100%;\n  display: block;\n  padding: 0.5rem;\n  font-size: 0.875rem;\n  font-weight: 500;\n  color: var(--white);\n}\n.Pagination_module_root__6d89f0eb .Pagination_module_rowSwitcher__6d89f0eb .Pagination_module_dropdown__6d89f0eb {\n  height: 100%;\n}\n.Pagination_module_root__6d89f0eb .Pagination_module_rowSwitcher__6d89f0eb .Pagination_module_dropdown__6d89f0eb > [data-elem=header] {\n  height: 100%;\n}\n.Pagination_module_root__6d89f0eb .Pagination_module_rowSwitcher__6d89f0eb .Pagination_module_dropdown__6d89f0eb > [data-elem=header] > [data-elem=select] {\n  height: 2.375rem;\n  max-height: 100%;\n  width: auto;\n  min-width: -webkit-fit-content;\n  min-width: -moz-fit-content;\n  min-width: fit-content;\n  padding: 0.625rem;\n  background-color: var(--grey);\n  border: none;\n}\n.Pagination_module_root__6d89f0eb .Pagination_module_rowSwitcher__6d89f0eb .Pagination_module_dropdown__6d89f0eb > [data-elem=header] > [data-elem=select] > [data-elem=placeholder] {\n  color: var(--white);\n  font-size: 0.875rem;\n}\n.Pagination_module_root__6d89f0eb .Pagination_module_rowSwitcher__6d89f0eb .Pagination_module_dropdown__6d89f0eb > [data-elem=header] > [data-elem=select] > svg {\n  fill: var(--white);\n  width: 0.813rem;\n  height: 0.813rem;\n}\n.Pagination_module_root__6d89f0eb .Pagination_module_pageNumbers__6d89f0eb {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  gap: 1.25rem;\n  flex: 1 1 100%;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__6d89f0eb .Pagination_module_pageNumbers__6d89f0eb {\n    flex: 1 1 60%;\n  }\n}\n.Pagination_module_root__6d89f0eb .Pagination_module_pageNumbers__6d89f0eb > .Pagination_module_button__6d89f0eb.Pagination_module_disable__6d89f0eb {\n  pointer-events: none;\n}\n.Pagination_module_root__6d89f0eb .Pagination_module_pageNumbers__6d89f0eb > .Pagination_module_button__6d89f0eb [data-elem=title] {\n  color: var(--white);\n}\n.Pagination_module_root__6d89f0eb .Pagination_module_pageNumbers__6d89f0eb > .Pagination_module_button__6d89f0eb .Pagination_module_icon__6d89f0eb {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.Pagination_module_root__6d89f0eb .Pagination_module_pageNumbers__6d89f0eb > .Pagination_module_pageSelect__6d89f0eb {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  gap: 0.625rem;\n}\n.Pagination_module_root__6d89f0eb .Pagination_module_pageNumbers__6d89f0eb > .Pagination_module_pageSelect__6d89f0eb .Pagination_module_number__6d89f0eb {\n  cursor: pointer;\n  border-radius: 50%;\n  background-color: #e0e0e0;\n  color: var(--black);\n  width: 2.313rem;\n  line-height: 2.313rem;\n  text-align: center;\n  font-size: 1rem;\n  border: 1px solid transparent;\n}\n.Pagination_module_root__6d89f0eb .Pagination_module_pageNumbers__6d89f0eb > .Pagination_module_pageSelect__6d89f0eb .Pagination_module_number__6d89f0eb:not([data-active=true]) {\n  display: none;\n}\n@media (min-width: 768px) {\n  .Pagination_module_root__6d89f0eb .Pagination_module_pageNumbers__6d89f0eb > .Pagination_module_pageSelect__6d89f0eb .Pagination_module_number__6d89f0eb:not([data-active=true]) {\n    display: block;\n  }\n}\n.Pagination_module_root__6d89f0eb .Pagination_module_pageNumbers__6d89f0eb > .Pagination_module_pageSelect__6d89f0eb .Pagination_module_number__6d89f0eb:hover {\n  border: 1px solid var(--highlight);\n  color: var(--highlight);\n  background: var(--background);\n}\n.Pagination_module_root__6d89f0eb .Pagination_module_pageNumbers__6d89f0eb > .Pagination_module_pageSelect__6d89f0eb .Pagination_module_number__6d89f0eb.Pagination_module_active__6d89f0eb {\n  background-color: var(--highlight);\n  color: var(--white);\n}\n.Pagination_module_root__6d89f0eb .Pagination_module_form__6d89f0eb {\n  display: none;\n  padding: 0;\n  flex: 0 1 20%;\n  background: transparent;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__6d89f0eb .Pagination_module_form__6d89f0eb {\n    display: flex;\n    flex-direction: row;\n    justify-content: center;\n    align-items: center;\n  }\n}\n.Pagination_module_root__6d89f0eb .Pagination_module_form__6d89f0eb > [data-elem*=component] {\n  width: 100%;\n  height: 100%;\n}\n.Pagination_module_root__6d89f0eb .Pagination_module_form__6d89f0eb > [data-elem*=component] > * {\n  height: 100%;\n}\n.Pagination_module_root__6d89f0eb .Pagination_module_form__6d89f0eb .Pagination_module_jumpToPage__6d89f0eb {\n  width: 100%;\n  background: transparent;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: stretch;\n  gap: 0rem;\n  padding: 0;\n  height: 100%;\n}\n.Pagination_module_root__6d89f0eb .Pagination_module_form__6d89f0eb .Pagination_module_jumpToPage__6d89f0eb > [data-elem*=component] {\n  overflow: hidden;\n  height: 100%;\n}\n.Pagination_module_root__6d89f0eb .Pagination_module_form__6d89f0eb .Pagination_module_jumpToPage__6d89f0eb .Pagination_module_inputbox__6d89f0eb {\n  max-width: 100%;\n  height: 100%;\n}\n.Pagination_module_root__6d89f0eb .Pagination_module_form__6d89f0eb .Pagination_module_jumpToPage__6d89f0eb .Pagination_module_inputbox__6d89f0eb > label {\n  height: 100%;\n}\n.Pagination_module_root__6d89f0eb .Pagination_module_form__6d89f0eb .Pagination_module_jumpToPage__6d89f0eb .Pagination_module_inputbox__6d89f0eb > label > [data-elem=base-cell] {\n  border-radius: 0.313rem;\n  background-color: transparent;\n  color: var(--white);\n  border-color: var(--grey1);\n  border-radius: 0.25rem 0 0 0.25rem;\n  height: 100%;\n  width: 10rem;\n  flex: 1;\n}\n.Pagination_module_root__6d89f0eb .Pagination_module_form__6d89f0eb .Pagination_module_jumpToPage__6d89f0eb .Pagination_module_inputbox__6d89f0eb > label > [data-elem=base-cell] .Pagination_module_icon__6d89f0eb {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--grey1);\n}\n.Pagination_module_root__6d89f0eb .Pagination_module_form__6d89f0eb .Pagination_module_jumpToPage__6d89f0eb .Pagination_module_inputbox__6d89f0eb > label > [data-elem=base-cell] > [data-elem=component2] {\n  height: 100%;\n}\n.Pagination_module_root__6d89f0eb .Pagination_module_form__6d89f0eb .Pagination_module_jumpToPage__6d89f0eb .Pagination_module_inputbox__6d89f0eb > label > [data-elem=base-cell] [data-elem=input] {\n  text-align: center;\n  color: var(--white);\n  background-color: transparent;\n  border: none;\n  height: 100%;\n  width: 100%;\n}\n.Pagination_module_root__6d89f0eb .Pagination_module_form__6d89f0eb .Pagination_module_jumpToPage__6d89f0eb .Pagination_module_button__6d89f0eb {\n  border-radius: 0rem 0.25rem 0.25rem 0rem;\n  background-color: var(--grey1);\n  padding: 0.75rem 0.5rem;\n  height: 100%;\n}\n.Pagination_module_root__6d89f0eb .Pagination_module_form__6d89f0eb .Pagination_module_jumpToPage__6d89f0eb .Pagination_module_button__6d89f0eb .Pagination_module_icon__6d89f0eb {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--white);\n  flex-shrink: 0;\n}";
+var modules_a3d40e77 = {"root":"Pagination_module_root__6d89f0eb","floating":"Pagination_module_floating__6d89f0eb","row-switcher":"Pagination_module_rowSwitcher__6d89f0eb","pagination":"Pagination_module_pagination__6d89f0eb","jump-to-page":"Pagination_module_jumpToPage__6d89f0eb","form":"Pagination_module_form__6d89f0eb","text":"Pagination_module_text__6d89f0eb","dropdown":"Pagination_module_dropdown__6d89f0eb","page-numbers":"Pagination_module_pageNumbers__6d89f0eb","button":"Pagination_module_button__6d89f0eb","disable":"Pagination_module_disable__6d89f0eb","icon":"Pagination_module_icon__6d89f0eb","pageSelect":"Pagination_module_pageSelect__6d89f0eb","number":"Pagination_module_number__6d89f0eb","active":"Pagination_module_active__6d89f0eb","inputbox":"Pagination_module_inputbox__6d89f0eb"};
 n(css$p,{});
 
 var dropdownOptions = ['10', '25', '50', '100', '200', '250'];
@@ -43463,7 +43490,6 @@ var Pagination = /*#__PURE__*/forwardRef(function (props, ref) {
       className: modules_a3d40e77['page-numbers'],
       children: [/*#__PURE__*/jsx(Button, {
         size: "auto",
-        flexible: true,
         disabled: currentPage === 1,
         title: "Prev",
         onClick: function onClick() {
@@ -43498,7 +43524,6 @@ var Pagination = /*#__PURE__*/forwardRef(function (props, ref) {
         })
       }), /*#__PURE__*/jsx(Button, {
         size: "auto",
-        flexible: true,
         disabled: currentPage === totalPages,
         title: "Next",
         onClick: function onClick() {
@@ -43534,15 +43559,20 @@ var Pagination = /*#__PURE__*/forwardRef(function (props, ref) {
             inputProps: {
               min: 1,
               max: totalPages,
-              required: true
+              required: true,
+              placeholder: 'Jump to Page'
             },
             ref: jumpPageRef,
             type: "number",
-            className: modules_a3d40e77.inputbox
+            className: modules_a3d40e77.inputbox,
+            LeftComponent: function LeftComponent() {
+              return /*#__PURE__*/jsx(SearchIcon, {
+                className: modules_a3d40e77.icon
+              });
+            }
           }),
           component2: /*#__PURE__*/jsx(Button, {
-            title: "Jump to page",
-            size: "medium",
+            size: "auto",
             variant: "contained",
             className: modules_a3d40e77.button,
             rightComponent: function rightComponent() {
@@ -44636,7 +44666,7 @@ var modules_2e8406c7 = {"root":"Table_module_root__d17cb64f","table":"Table_modu
 n(css$9,{});
 
 var INTERSECTION = 1;
-var STEP = 0.1;
+var STEP = 0.05;
 var THRESHOLD = [];
 for (var i = 0; i < INTERSECTION; i += STEP) {
   THRESHOLD.push(i);
@@ -44680,7 +44710,7 @@ var Table = function Table(props) {
           entries.forEach(function (entry) {
             var _entry$intersectionRe;
             // if the target is visibile
-            if (entry.isIntersecting && entry.intersectionRatio >= INTERSECTION || (entry === null || entry === void 0 ? void 0 : (_entry$intersectionRe = entry.intersectionRect) === null || _entry$intersectionRe === void 0 ? void 0 : _entry$intersectionRe.height) === lastRowHeight) {
+            if (entry.isIntersecting && entry.intersectionRatio >= INTERSECTION || (entry === null || entry === void 0 ? void 0 : (_entry$intersectionRe = entry.intersectionRect) === null || _entry$intersectionRe === void 0 ? void 0 : _entry$intersectionRe.height) >= lastRowHeight) {
               setFloating(false);
             } else {
               setFloating(true);
@@ -95191,5 +95221,5 @@ DisplayPicture.defaultProps = {
   size: 'sm'
 };
 
-export { Accordion, Alert, AlertIcon, AngleDouble as AngleDoubleIcon, Arrow$1 as ArrowIcon, BASE_URLS, BaseButton, BaseCell, BaseHorizontalBarChart, BaseModal, BasePieChart, BaseSidePanel, BaseTable, BaseVerticalBarChart, BaseWidget, BreadCrumbs, BreadcrumbSeperator as BreadcrumbSeperatorIcon, Button, COLORS, Calender$1 as CalenderIcon, Caret as CaretIcon, Checkbox, CheckboxIcon, Chevron as ChevronIcon, Chip, CodeSnippet, Columns$1 as ColumnsIcon, Copy as CopyIcon, Cross$1 as CrossIcon, DAYS, DatePicker, Delete as DeleteIcon, DialogBox, DisplayPicture, Download as DownloadIcon, Dropdown, DropdownItem, Edit as EditIcon, ExpandArrowAlt as ExpandArrowAltIcon, FULL_MONTHS, Filter as FilterIcon, HalfShade as HalfShadeIcon, HierarchyBrowser, HierarchyItem, Link, MONTHS, MagnifyingGlass as MagnifyingGlassIcon, Nut as NutIcon, PageHeader, Pagination, PaginationList, Plus as PlusIcon, Popover, Popper, Radio, RadioIcon, Refresh as RefreshIcon, Reset as ResetIcon, Server as ServerIcon, Settings as SettingsIcon, Stepper, Table, TableCell, TableChip, TableChips, TableColumn, TableFilters, Tabs, Text, TextField, Tick as TickIcon, TimePicker, Toggle, Tooltip, Trash as TrashIcon, View as ViewIcon, classes, cloneDeep, defaultProps, doubleDigitted, get$1 as get, getCSSVariableValue, getCurrentSearchParams, getDateFromEpoch, getDatesInAMonth, getDayInfo, getInitialsOfName, getJSDateFromEpoch, getPagination, getSpacedDisplayName, getTimeFromEpoch, inputHelper, propTypes, stringToPath, sumArrayOfObjects, uniqueArray, uniqueArrayOfObjects, useOutsideClickListener, usePagination, useResize, useRowFilter };
+export { Accordion, Alert, AlertIcon, AngleDouble as AngleDoubleIcon, Arrow$1 as ArrowIcon, BASE_URLS, BaseButton, BaseCell, BaseHorizontalBarChart, BaseModal, BasePieChart, BaseSidePanel, BaseTable, BaseVerticalBarChart, BaseWidget, BreadCrumbs, BreadcrumbSeperator as BreadcrumbSeperatorIcon, Button, COLORS, Calender$1 as CalenderIcon, Caret as CaretIcon, Checkbox, CheckboxIcon, Chevron as ChevronIcon, Chip, CodeSnippet, Columns$1 as ColumnsIcon, Copy as CopyIcon, Cross$1 as CrossIcon, DAYS, DatePicker, Delete as DeleteIcon, DialogBox, DisplayPicture, Download as DownloadIcon, Dropdown, DropdownItem, Edit as EditIcon, ExpandArrowAlt as ExpandArrowAltIcon, FULL_MONTHS, Filter as FilterIcon, HalfShade as HalfShadeIcon, HierarchyBrowser, HierarchyItem, Link, MONTHS, MagnifyingGlass as MagnifyingGlassIcon, Nut as NutIcon, PageHeader, Pagination, PaginationList, Plus as PlusIcon, Popover, Popper, Radio, RadioIcon, Refresh as RefreshIcon, Reset as ResetIcon, SearchIcon, Server as ServerIcon, Settings as SettingsIcon, Stepper, Table, TableCell, TableChip, TableChips, TableColumn, TableFilters, Tabs, Text, TextField, Tick as TickIcon, TimePicker, Toggle, Tooltip, Trash as TrashIcon, View as ViewIcon, classes, cloneDeep, defaultProps, doubleDigitted, get$1 as get, getCSSVariableValue, getCurrentSearchParams, getDateFromEpoch, getDatesInAMonth, getDayInfo, getInitialsOfName, getJSDateFromEpoch, getPagination, getSpacedDisplayName, getTimeFromEpoch, inputHelper, propTypes, stringToPath, sumArrayOfObjects, uniqueArray, uniqueArrayOfObjects, useOutsideClickListener, usePagination, useResize, useRowFilter };
 //# sourceMappingURL=index.js.map
