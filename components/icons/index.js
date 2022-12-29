@@ -26,3 +26,4 @@ export * from './ExpandArrowAlt';
 export * from './Reset';
 export * from './Settings';
 export * from './Trash';
+export * from './SearchIcon';

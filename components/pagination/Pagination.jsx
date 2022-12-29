@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { classes } from '../../utils';
 import { Button } from '../buttons';
 import { Dropdown, DropdownItem, TextField } from '../input';
-import { ArrowIcon, ChevronIcon } from '../icons';
+import { ArrowIcon, ChevronIcon, SearchIcon } from '../icons';
 import { BaseCell } from '../cell';
 import { PaginationList } from './Pagination.class';
 import styles from './Pagination.module.css';
@@ -125,7 +125,6 @@ export const Pagination = forwardRef((props, ref) => {
 			<div className={styles['page-numbers']}>
 				<Button
 					size='auto'
-					flexible
 					disabled={currentPage === 1}
 					title='Prev'
 					onClick={() => {
@@ -161,7 +160,6 @@ export const Pagination = forwardRef((props, ref) => {
 				</div>
 				<Button
 					size='auto'
-					flexible
 					disabled={currentPage === totalPages}
 					title='Next'
 					onClick={() => {
@@ -197,16 +195,19 @@ export const Pagination = forwardRef((props, ref) => {
 										min: 1,
 										max: totalPages,
 										required: true,
+										placeholder: 'Jump to Page',
 									}}
 									ref={jumpPageRef}
 									type='number'
 									className={styles.inputbox}
+									LeftComponent={() => {
+										return <SearchIcon className={styles.icon} />;
+									}}
 								/>
 							}
 							component2={
 								<Button
-									title='Jump to page'
-									size='medium'
+									size='auto'
 									variant='contained'
 									className={styles.button}
 									rightComponent={() => {
