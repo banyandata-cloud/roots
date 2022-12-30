@@ -19,9 +19,11 @@
 	}
 
 	&.header-cell {
-		background: $grey7;
+		background: $grey6;
 		.cell-text {
-			font-weight: 600;
+			font-weight: 500;
+			color: $grey;
+			font-size: 0.75rem;
 		}
 	}
 

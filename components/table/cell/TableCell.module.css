@@ -21,10 +21,12 @@
   font-size: 0.875rem;
 }
 .root[data-elem=base-cell].header-cell {
-  background: var(--grey7);
+  background: var(--grey6);
 }
 .root[data-elem=base-cell].header-cell .cell-text {
-  font-weight: 600;
+  font-weight: 500;
+  color: var(--grey);
+  font-size: 0.75rem;
 }
 .root[data-elem=base-cell].body-cell .cell-text.multi-line {
   white-space: normal;

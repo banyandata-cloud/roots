@@ -3,7 +3,7 @@
 .root[data-elem='base-cell'] {
 	padding: 0.5rem 1.5rem;
 	width: 100%;
-	background: $grey8;
+	background: $grey6;
 	border-radius: 0.25rem 0.25rem 0 0;
 	> [data-elem='component1'] {
 		.back {
@@ -29,7 +29,7 @@
 
 		.chip-parent {
 			background: $grey8;
-			border: 1px solid $grey3;
+			border: 1px solid $grey4;
 			padding: 0.344rem 0.25rem;
 			height: 100%;
 			cursor: default;

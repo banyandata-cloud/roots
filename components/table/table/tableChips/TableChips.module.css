@@ -1,7 +1,7 @@
 .root[data-elem=base-cell] {
   padding: 0.5rem 1.5rem;
   width: 100%;
-  background: var(--grey8);
+  background: var(--grey6);
   border-radius: 0.25rem 0.25rem 0 0;
 }
 .root[data-elem=base-cell] > [data-elem=component1] .back {
@@ -30,7 +30,7 @@
 }
 .root[data-elem=base-cell] > [data-elem=component2] .chip-parent {
   background: var(--grey8);
-  border: 1px solid var(--grey3);
+  border: 1px solid var(--grey4);
   padding: 0.344rem 0.25rem;
   height: 100%;
   cursor: default;
