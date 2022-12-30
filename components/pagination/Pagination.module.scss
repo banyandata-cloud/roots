@@ -164,6 +164,11 @@
 			> * {
 				height: 100%;
 			}
+
+			> form {
+				width: fit-content;
+				margin-left: auto;
+			}
 		}
 		padding: 0;
 		flex: 0 1 20%;

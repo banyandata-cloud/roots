@@ -182,6 +182,12 @@
 .root .form > [data-elem*=component] > * {
   height: 100%;
 }
+.root .form > [data-elem*=component] > form {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-left: auto;
+}
 .root .form .jump-to-page {
   width: 100%;
   background: transparent;

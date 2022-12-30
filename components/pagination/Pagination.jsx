@@ -187,7 +187,7 @@ export const Pagination = forwardRef((props, ref) => {
 							});
 						}}>
 						<BaseCell
-							flexible
+							size='auto'
 							className={styles['jump-to-page']}
 							component1={
 								<TextField
