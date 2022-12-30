@@ -31,6 +31,7 @@ const Table = (props) => {
 		paginationData,
 		loading,
 		disabledFilterOptions,
+		onSort,
 	} = props;
 
 	const ref = useRef(null);
@@ -136,6 +137,7 @@ const Table = (props) => {
 					setActiveData,
 					customCells,
 					className: styles.table,
+					onSort,
 				}}
 				loading={loading}
 			/>
@@ -190,6 +192,7 @@ Table.propTypes = {
 		columnFilter: PropTypes.bool,
 		settings: PropTypes.bool,
 	}),
+	onSort: PropTypes.func,
 };
 
 Table.defaultProps = {
@@ -213,6 +216,7 @@ Table.defaultProps = {
 		columnFilter: false,
 		settings: false,
 	},
+	onSort: () => {},
 };
 
 export default Table;

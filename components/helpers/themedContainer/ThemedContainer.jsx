@@ -14,4 +14,8 @@ const ThemedContainer = (props) => {
 	);
 };
 
+ThemedContainer.defaultProps = {
+	theme: 'dark',
+};
+
 export default ThemedContainer;

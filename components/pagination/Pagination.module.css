@@ -5,6 +5,7 @@
   align-items: stretch;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  gap: 0.75rem;
   padding: 0.625rem 2.125rem;
   background: var(--dark-grey);
   margin-top: auto;
@@ -26,7 +27,6 @@
   bottom: 3rem;
 }
 .root .row-switcher,
-.root .pagination,
 .root .jump-to-page,
 .root .form {
   display: flex;
@@ -37,10 +37,9 @@
 }
 .root .row-switcher {
   display: none;
-  gap: 0.75rem;
-  background-color: var(--grey);
+  flex: 0 1 15%;
+  background-color: transparent;
   padding: 0;
-  border-radius: 0.25rem;
   height: 100%;
 }
 @media (min-width: 992px) {
@@ -51,15 +50,27 @@
     align-items: center;
   }
 }
-.root .row-switcher > [data-elem*=component] {
-  overflow: hidden;
-}
 .root .row-switcher > [data-elem=component2] {
-  display: flex;
   flex: 0 1 auto;
   height: 100%;
 }
-.root .row-switcher > [data-elem=component2]::before {
+.root .row-switcher .row-switcher-handle {
+  gap: 0.75rem;
+  background-color: var(--grey);
+  padding: 0;
+  border-radius: 0.25rem;
+  height: 100%;
+  width: 100%;
+}
+.root .row-switcher .row-switcher-handle > [data-elem*=component] {
+  overflow: hidden;
+}
+.root .row-switcher .row-switcher-handle > [data-elem=component2] {
+  display: flex;
+  flex: 0 0 auto;
+  height: 100%;
+}
+.root .row-switcher .row-switcher-handle > [data-elem=component2]::before {
   content: "";
   margin: auto;
   background: var(--white);
@@ -113,7 +124,7 @@
 }
 @media (min-width: 992px) {
   .root .page-numbers {
-    flex: 1 1 60%;
+    flex: 1 1 40%;
   }
 }
 .root .page-numbers > .button.disable {
@@ -164,7 +175,7 @@
 .root .form {
   display: none;
   padding: 0;
-  flex: 0 1 20%;
+  flex: 0 1 30%;
   background: transparent;
 }
 @media (min-width: 992px) {
@@ -181,6 +192,12 @@
 }
 .root .form > [data-elem*=component] > * {
   height: 100%;
+}
+.root .form > [data-elem*=component] > form {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-left: auto;
 }
 .root .form .jump-to-page {
   width: 100%;
@@ -241,4 +258,27 @@
   height: 1.5rem;
   fill: var(--white);
   flex-shrink: 0;
+}
+.root .total-data {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  display: none;
+  margin: auto;
+  color: var(--white);
+  flex: 0 1 15%;
+}
+@media (min-width: 992px) {
+  .root .total-data {
+    display: inline;
+  }
+}
+.root.no-total-data .row-switcher {
+  flex: 0 1 20%;
+}
+.root.no-total-data .jump-to-page {
+  flex: 1 1 60%;
+}
+.root.no-total-data .form {
+  flex: 0 1 20%;
 }/*# sourceMappingURL=Pagination.module.css.map */

@@ -19,9 +19,66 @@
 	}
 
 	&.header-cell {
-		background: $grey7;
+		background: $grey6;
 		.cell-text {
-			font-weight: 600;
+			font-weight: 500;
+			color: $grey;
+			font-size: 0.75rem;
+		}
+
+		&.sortable {
+			> [data-elem='component2'] {
+				flex: 0 0 auto;
+				.cell-text {
+					width: auto;
+				}
+			}
+			> [data-elem='component3'] {
+				flex: 0 0 auto;
+				margin-right: auto;
+				overflow: visible;
+
+				button.sort {
+					height: auto;
+					background: transparent;
+					padding: 0;
+				}
+
+				.sort-icon {
+					width: 1rem;
+					height: 1rem;
+				}
+			}
+
+			&.sort-default {
+				> [data-elem='component3'] {
+					visibility: hidden;
+
+					.sort-icon {
+						width: 1rem;
+						height: 1rem;
+					}
+				}
+			}
+
+			&.sort-asc,
+			&.sort-desc {
+				> [data-elem='component3'] {
+					visibility: visible;
+
+					.sort-icon {
+						fill: $highlight;
+						width: 1rem;
+						height: 1rem;
+					}
+				}
+			}
+
+			&:hover {
+				> [data-elem='component3'] {
+					visibility: visible;
+				}
+			}
 		}
 	}
 

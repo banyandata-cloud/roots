@@ -637,46 +637,46 @@ const API_RESPONSE = {
 			flexible: 'false',
 			id: 'k8sClusterRolebindingDetailsId',
 			size: 'md',
-			sort: 'false',
+			sort: 'asc',
 			title: 'uuid',
 		},
 		{
 			flexible: 'false',
 			id: 'k8sTenantDetailsId',
 			size: 'md',
-			sort: 'false',
+			sort: 'desc',
 			title: 'Tenant Details Id',
 		},
 		{
 			flexible: 'false',
 			id: 'ecsCustomerId',
 			size: 'md',
-			sort: 'false',
+			sort: 'default',
 			title: 'Customer Id',
 		},
 		{
 			flexible: 'false',
 			id: 'ecsCustomerName',
 			size: 'md',
-			sort: 'false',
+			sort: null,
 			title: 'Customer Name',
 		},
 		{
 			flexible: 'false',
 			id: 'cloudOrganizationId',
 			size: 'md',
-			sort: 'false',
+			sort: 'default',
 			title: 'Organization Id',
 		},
 		{
 			flexible: true,
 			id: 'cloudAccountId',
 			size: 'md',
-			sort: 'false',
+			sort: 'default',
 			title: 'Account Id',
 		},
 		{
-			flexible: 'false',
+			flexible: 'default',
 			id: 'k8sClusterDetailsId',
 			size: 'md',
 			sort: 'false',
@@ -720,6 +720,7 @@ const API_RESPONSE = {
 	],
 	message: 'Resources fetched successfully',
 	total_pages: 33,
+	total_data: 325,
 };
 
 export const WithCustomCells = Template.bind({});
@@ -818,6 +819,7 @@ const LoaderTemplate = (args) => {
 	const [paginationState, paginationDispatch] = usePagination({
 		currentPage: 1,
 		totalPages: tableData.total_pages,
+		totalData: tableData.total_data,
 	});
 
 	const [loading, setLoading] = useState(false);
