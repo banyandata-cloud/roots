@@ -720,6 +720,7 @@ const API_RESPONSE = {
 	],
 	message: 'Resources fetched successfully',
 	total_pages: 33,
+	total_data: 325,
 };
 
 export const WithCustomCells = Template.bind({});
@@ -818,6 +819,7 @@ const LoaderTemplate = (args) => {
 	const [paginationState, paginationDispatch] = usePagination({
 		currentPage: 1,
 		totalPages: tableData.total_pages,
+		totalData: tableData.total_data,
 	});
 
 	const [loading, setLoading] = useState(false);

@@ -3,6 +3,7 @@
 .root {
 	@include flex(row, space-between, stretch);
 	@include removeScrollbar;
+	gap: 0.75rem;
 	padding: 0.625rem 2.125rem;
 	background: $dark-grey;
 	margin-top: auto;
@@ -23,7 +24,6 @@
 	}
 
 	.row-switcher,
-	.pagination,
 	.jump-to-page,
 	.form {
 		@include flex(row, flex-start, center);
@@ -36,26 +36,40 @@
 		@include lg {
 			@include flex(row, space-between, center);
 		}
-		> [data-elem*='component'] {
-			overflow: hidden;
-		}
 
 		> [data-elem='component2'] {
-			display: flex;
 			flex: 0 1 auto;
 			height: 100%;
-			&::before {
-				content: '';
-				margin: auto;
-				background: $white;
-				width: 0.5px;
-				height: 50%;
+		}
+
+		.row-switcher-handle {
+			gap: 0.75rem;
+			background-color: $grey;
+			padding: 0;
+			border-radius: 0.25rem;
+			height: 100%;
+			width: 100%;
+
+			> [data-elem*='component'] {
+				overflow: hidden;
+			}
+
+			> [data-elem='component2'] {
+				display: flex;
+				flex: 0 0 auto;
+				height: 100%;
+				&::before {
+					content: '';
+					margin: auto;
+					background: $white;
+					width: 0.5px;
+					height: 50%;
+				}
 			}
 		}
-		gap: 0.75rem;
-		background-color: $grey;
+		flex: 0 1 15%;
+		background-color: transparent;
 		padding: 0;
-		border-radius: 0.25rem;
 		height: 100%;
 
 		.text {
@@ -99,7 +113,7 @@
 		flex: 1 1 100%;
 
 		@include lg {
-			flex: 1 1 60%;
+			flex: 1 1 40%;
 		}
 
 		& > .button {
@@ -171,7 +185,7 @@
 			}
 		}
 		padding: 0;
-		flex: 0 1 20%;
+		flex: 0 1 30%;
 		background: transparent;
 		.jump-to-page {
 			width: 100%;
@@ -236,6 +250,31 @@
 					flex-shrink: 0;
 				}
 			}
+		}
+	}
+
+	.total-data {
+		@include ellipsis;
+		display: none;
+		@include lg {
+			display: inline;
+		}
+		margin: auto;
+		color: $white;
+		flex: 0 1 15%;
+	}
+
+	&.no-total-data {
+		.row-switcher {
+			flex: 0 1 20%;
+		}
+
+		.jump-to-page {
+			flex: 1 1 60%;
+		}
+
+		.form {
+			flex: 0 1 20%;
 		}
 	}
 }
