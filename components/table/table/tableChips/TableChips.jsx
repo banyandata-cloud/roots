@@ -1,14 +1,71 @@
 import PropTypes from 'prop-types';
-import { isValidElement } from 'react';
 import { classes } from '../../../../utils';
 import { Button, Chip } from '../../../buttons';
 import { BaseCell } from '../../../cell';
-import { ArrowIcon, TrashIcon } from '../../../icons';
+import { ArrowIcon, CloseIcon, TrashIcon } from '../../../icons';
+import { Text } from '../../../text';
 import { Skeleton } from './Skeleton';
 import styles from './TableChips.module.css';
 
+const TableChip = (props) => {
+	const { icon, rightComponent, label, value, onRemove } = props;
+
+	// component 1
+	let Icon = icon;
+
+	if (Icon) {
+		Icon = <Icon className={styles['chip-icon']} />;
+	} else {
+		Icon = null;
+	}
+
+	// component 2
+	const Title = (
+		<>
+			<Text className={styles.label} variant='b2' stroke='medium'>
+				{label} :
+			</Text>
+			{typeof value === 'string' && value.length > 0 && (
+				<Chip
+					className={styles['chip-child']}
+					title={value}
+					radius='ellipse'
+					color='info'
+					variant='input'
+					onClick={onRemove}
+					rightComponent={() => {
+						return <CloseIcon className={styles.icon} />;
+					}}
+				/>
+			)}
+		</>
+	);
+
+	// component 3
+	let RightComponent = rightComponent;
+
+	if (RightComponent) {
+		RightComponent = <RightComponent />;
+	} else {
+		RightComponent = null;
+	}
+
+	return (
+		<BaseCell
+			radius='default'
+			size='auto'
+			className={styles['chip-parent']}
+			component1={Icon}
+			component2={Title}
+			component3={RightComponent}
+			title={`${label} : ${value}`}
+		/>
+	);
+};
+
 const TableChips = (props) => {
-	const { showBack, onBack, onClear, chips, className, style, loading } = props;
+	// eslint-disable-next-line object-curly-newline
+	const { showBack, onBack, onClear, chips, className, style, loading, onRemove } = props;
 
 	if (loading) {
 		return <Skeleton />;
@@ -18,23 +75,14 @@ const TableChips = (props) => {
 		?.filter((chip) => {
 			return chip?.value != null;
 		})
-		?.map((chip) => {
+		?.map((chip, index) => {
 			return (
-				<Chip
-					variant='input'
-					color='default'
-					disabled={chip.disabled}
-					className={styles.chip}
+				<TableChip
 					key={chip.key}
-					title={`${chip.label} : ${chip.value}`}
-					leftComponent={(iconProps) => {
-						const Icon = chip.icon;
-						if (isValidElement(<Icon />)) {
-							return <Icon {...iconProps} className={styles['chip-icon']} />;
-						}
-						return null;
+					{...chip}
+					onRemove={() => {
+						onRemove(chip, index);
 					}}
-					rightComponent={chip.rightComponent}
 				/>
 			);
 		});
@@ -102,6 +150,7 @@ TableChips.propTypes = {
 		})
 	),
 	loading: PropTypes.bool,
+	onRemove: PropTypes.func,
 };
 
 TableChips.defaultProps = {
@@ -112,6 +161,7 @@ TableChips.defaultProps = {
 	onClear: () => {},
 	chips: [],
 	loading: null,
+	onRemove: () => {},
 };
 
 export default TableChips;

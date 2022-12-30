@@ -22,14 +22,70 @@
 	> [data-elem='component2'] {
 		@include removeScrollbar;
 		@include flex(row, flex-start);
+		height: 100%;
 		gap: 0.5rem;
-		overflow-x: auto;
+		overflow: auto hidden;
 		flex: 1;
 
-		.chip {
+		.chip-parent {
+			background: $grey8;
+			border: 1px solid $grey3;
+			padding: 0.344rem 0.25rem;
+			height: 100%;
+			cursor: default;
+
 			.chip-icon {
 				width: 1rem;
 				height: 1rem;
+			}
+
+			> [data-elem='component2'] {
+				@include flex;
+				gap: 0.25rem;
+				height: 100%;
+
+				.chip-child {
+					height: 100%;
+
+					> [data-elem='component2'] {
+						> [data-elem='title'] {
+							color: $dark-grey;
+						}
+					}
+
+					.icon {
+						width: 0.875rem;
+						height: 0.875rem;
+					}
+				}
+			}
+
+			> [data-elem='component3'] {
+				height: 100%;
+			}
+
+			&:hover {
+				border-color: $highlight;
+
+				> [data-elem='component2'] {
+					.label {
+						color: $highlight;
+					}
+
+					.chip-child {
+						background: $background;
+						> [data-elem='component2'] {
+							> [data-elem='title'] {
+								color: $highlight;
+							}
+						}
+
+						.icon {
+							width: 0.875rem;
+							height: 0.875rem;
+						}
+					}
+				}
 			}
 		}
 	}
