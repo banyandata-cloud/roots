@@ -1554,9 +1554,9 @@ var getCSSVariableValue = function getCSSVariableValue(variable) {
 
 var e$1=[],t=[];function n(n,r){if(n&&"undefined"!=typeof document){var a,s=!0===r.prepend?"prepend":"append",d=!0===r.singleTag,i="string"==typeof r.container?document.querySelector(r.container):document.getElementsByTagName("head")[0];if(d){var u=e$1.indexOf(i);-1===u&&(u=e$1.push(i)-1,t[u]={}),a=t[u]&&t[u][s]?t[u][s]:t[u][s]=c();}else a=c();65279===n.charCodeAt(0)&&(n=n.substring(1)),a.styleSheet?a.styleSheet.cssText+=n:a.appendChild(document.createTextNode(n));}function c(){var e=document.createElement("style");if(e.setAttribute("type","text/css"),r.attributes)for(var t=Object.keys(r.attributes),n=0;n<t.length;n++)e.setAttribute(t[n],r.attributes[t[n]]);var a="prepend"===s?"afterbegin":"beforeend";return i.insertAdjacentElement(a,e),e}}
 
-var css$W = ".BaseCell_module_root__81e07d2d {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  padding: 0.5rem;\n  gap: 0.5rem;\n  flex: none;\n  height: 3rem;\n  background: var(--white);\n  max-width: 100%;\n  max-height: 100%;\n}\n.BaseCell_module_root__81e07d2d > [data-elem*=component] {\n  display: inline-block;\n  max-height: 100%;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_sm__81e07d2d {\n  width: 9.063rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_md__81e07d2d {\n  width: 15.625rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_lg__81e07d2d {\n  width: 21.875rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_auto__81e07d2d {\n  width: auto;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_borderRadiusDefault__81e07d2d {\n  border-radius: 0.25rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_borderRadiusRound__81e07d2d {\n  border-radius: 50%;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_borderRadiusEllipse__81e07d2d {\n  border-radius: 1.563rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_flexible__81e07d2d {\n  flex-grow: 1;\n  flex-shrink: 1;\n  min-width: 3rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_flexible__81e07d2d.BaseCell_module_sm__81e07d2d {\n  min-width: 9.063rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_flexible__81e07d2d.BaseCell_module_md__81e07d2d {\n  min-width: 15.625rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_flexible__81e07d2d.BaseCell_module_lg__81e07d2d {\n  min-width: 21.875rem;\n}";
+var css$X = ".BaseCell_module_root__81e07d2d {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  padding: 0.5rem;\n  gap: 0.5rem;\n  flex: none;\n  height: 3rem;\n  background: var(--white);\n  max-width: 100%;\n  max-height: 100%;\n}\n.BaseCell_module_root__81e07d2d > [data-elem*=component] {\n  display: inline-block;\n  max-height: 100%;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_sm__81e07d2d {\n  width: 9.063rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_md__81e07d2d {\n  width: 15.625rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_lg__81e07d2d {\n  width: 21.875rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_auto__81e07d2d {\n  width: auto;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_borderRadiusDefault__81e07d2d {\n  border-radius: 0.25rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_borderRadiusRound__81e07d2d {\n  border-radius: 50%;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_borderRadiusEllipse__81e07d2d {\n  border-radius: 1.563rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_flexible__81e07d2d {\n  flex-grow: 1;\n  flex-shrink: 1;\n  min-width: 3rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_flexible__81e07d2d.BaseCell_module_sm__81e07d2d {\n  min-width: 9.063rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_flexible__81e07d2d.BaseCell_module_md__81e07d2d {\n  min-width: 15.625rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_flexible__81e07d2d.BaseCell_module_lg__81e07d2d {\n  min-width: 21.875rem;\n}";
 var modules_3af9b74c = {"root":"BaseCell_module_root__81e07d2d","sm":"BaseCell_module_sm__81e07d2d","md":"BaseCell_module_md__81e07d2d","lg":"BaseCell_module_lg__81e07d2d","auto":"BaseCell_module_auto__81e07d2d","border-radius-default":"BaseCell_module_borderRadiusDefault__81e07d2d","border-radius-round":"BaseCell_module_borderRadiusRound__81e07d2d","border-radius-ellipse":"BaseCell_module_borderRadiusEllipse__81e07d2d","flexible":"BaseCell_module_flexible__81e07d2d"};
-n(css$W,{});
+n(css$X,{});
 
 var BaseCell = /*#__PURE__*/forwardRef(function BaseCell(props, ref) {
   var className = props.className,
@@ -1636,9 +1636,9 @@ var defaultProps = {
   attrs: {}
 };
 
-var css$V = "button.BaseButton_module_root__39a3f3ec[data-elem=base-cell] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  display: inline-flex;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  border: none;\n  background: none;\n  padding: 0.5rem 0.75rem;\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell]:focus {\n  outline: 1px solid var(--highlight);\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell]:active {\n  outline: none;\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell]:disabled {\n  cursor: not-allowed;\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell].BaseButton_module_contained__39a3f3ec {\n  background: var(--black);\n  color: var(--white);\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell].BaseButton_module_outlined__39a3f3ec {\n  color: var(--black);\n  border: 1px solid var(--black);\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell].BaseButton_module_text__39a3f3ec {\n  color: var(--black);\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell] [data-elem*=component] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell] [data-elem=component2] {\n  min-width: 0;\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell] [data-elem=title] {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n}";
+var css$W = "button.BaseButton_module_root__39a3f3ec[data-elem=base-cell] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  display: inline-flex;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  border: none;\n  background: none;\n  padding: 0.5rem 0.75rem;\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell]:focus {\n  outline: 1px solid var(--highlight);\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell]:active {\n  outline: none;\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell]:disabled {\n  cursor: not-allowed;\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell].BaseButton_module_contained__39a3f3ec {\n  background: var(--black);\n  color: var(--white);\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell].BaseButton_module_outlined__39a3f3ec {\n  color: var(--black);\n  border: 1px solid var(--black);\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell].BaseButton_module_text__39a3f3ec {\n  color: var(--black);\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell] [data-elem*=component] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell] [data-elem=component2] {\n  min-width: 0;\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell] [data-elem=title] {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n}";
 var modules_ab72627b = {"root":"BaseButton_module_root__39a3f3ec","contained":"BaseButton_module_contained__39a3f3ec","outlined":"BaseButton_module_outlined__39a3f3ec","text":"BaseButton_module_text__39a3f3ec"};
-n(css$V,{});
+n(css$W,{});
 
 var BaseButton = /*#__PURE__*/forwardRef(function BaseButton(props, ref) {
   var className = props.className,
@@ -1697,9 +1697,9 @@ BaseButton.defaultProps = _objectSpread2(_objectSpread2({}, BaseCell.defaultProp
   variant: 'contained'
 });
 
-var css$U = ".Button_module_root__0be1a26c[data-elem=base-cell] {\n  cursor: pointer;\n}\n.Button_module_root__0be1a26c[data-elem=base-cell] [data-elem=component2] [data-elem=title] {\n  font-weight: 500;\n  font-size: 0.875rem;\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_primary__0be1a26c.Button_module_contained__0be1a26c {\n  background-color: var(--highlight);\n  color: var(--white);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_primary__0be1a26c.Button_module_outlined__0be1a26c {\n  background-color: transparent;\n  border-color: var(--highlight);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_primary__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell].Button_module_primary__0be1a26c.Button_module_text__0be1a26c {\n  color: var(--highlight);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_success__0be1a26c.Button_module_contained__0be1a26c {\n  background-color: var(--success);\n  color: var(--white);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_success__0be1a26c.Button_module_outlined__0be1a26c {\n  background-color: transparent;\n  border-color: var(--success);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_success__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell].Button_module_success__0be1a26c.Button_module_text__0be1a26c {\n  color: var(--success);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_danger__0be1a26c.Button_module_contained__0be1a26c {\n  background-color: var(--error);\n  color: var(--white);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_danger__0be1a26c.Button_module_outlined__0be1a26c {\n  background-color: transparent;\n  border-color: var(--error);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_danger__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell].Button_module_danger__0be1a26c.Button_module_text__0be1a26c {\n  color: var(--error);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_warning__0be1a26c.Button_module_contained__0be1a26c {\n  background-color: var(--warning);\n  color: var(--white);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_warning__0be1a26c.Button_module_outlined__0be1a26c {\n  background-color: transparent;\n  border-color: var(--warning);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_warning__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell].Button_module_warning__0be1a26c.Button_module_text__0be1a26c {\n  color: var(--warning);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_primary__0be1a26c.Button_module_contained__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_success__0be1a26c.Button_module_contained__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_danger__0be1a26c.Button_module_contained__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_warning__0be1a26c.Button_module_contained__0be1a26c {\n  background-color: var(--grey4);\n  color: var(--grey);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_primary__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_success__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_danger__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_warning__0be1a26c.Button_module_outlined__0be1a26c {\n  background-color: transparent;\n  border-color: var(--grey);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_primary__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_primary__0be1a26c.Button_module_text__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_success__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_success__0be1a26c.Button_module_text__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_danger__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_danger__0be1a26c.Button_module_text__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_warning__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_warning__0be1a26c.Button_module_text__0be1a26c {\n  color: var(--grey);\n}";
+var css$V = ".Button_module_root__0be1a26c[data-elem=base-cell] {\n  cursor: pointer;\n}\n.Button_module_root__0be1a26c[data-elem=base-cell] [data-elem=component2] [data-elem=title] {\n  font-weight: 500;\n  font-size: 0.875rem;\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_primary__0be1a26c.Button_module_contained__0be1a26c {\n  background-color: var(--highlight);\n  color: var(--white);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_primary__0be1a26c.Button_module_outlined__0be1a26c {\n  background-color: transparent;\n  border-color: var(--highlight);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_primary__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell].Button_module_primary__0be1a26c.Button_module_text__0be1a26c {\n  color: var(--highlight);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_success__0be1a26c.Button_module_contained__0be1a26c {\n  background-color: var(--success);\n  color: var(--white);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_success__0be1a26c.Button_module_outlined__0be1a26c {\n  background-color: transparent;\n  border-color: var(--success);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_success__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell].Button_module_success__0be1a26c.Button_module_text__0be1a26c {\n  color: var(--success);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_danger__0be1a26c.Button_module_contained__0be1a26c {\n  background-color: var(--error);\n  color: var(--white);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_danger__0be1a26c.Button_module_outlined__0be1a26c {\n  background-color: transparent;\n  border-color: var(--error);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_danger__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell].Button_module_danger__0be1a26c.Button_module_text__0be1a26c {\n  color: var(--error);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_warning__0be1a26c.Button_module_contained__0be1a26c {\n  background-color: var(--warning);\n  color: var(--white);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_warning__0be1a26c.Button_module_outlined__0be1a26c {\n  background-color: transparent;\n  border-color: var(--warning);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_warning__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell].Button_module_warning__0be1a26c.Button_module_text__0be1a26c {\n  color: var(--warning);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_primary__0be1a26c.Button_module_contained__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_success__0be1a26c.Button_module_contained__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_danger__0be1a26c.Button_module_contained__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_warning__0be1a26c.Button_module_contained__0be1a26c {\n  background-color: var(--grey4);\n  color: var(--grey);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_primary__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_success__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_danger__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_warning__0be1a26c.Button_module_outlined__0be1a26c {\n  background-color: transparent;\n  border-color: var(--grey);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_primary__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_primary__0be1a26c.Button_module_text__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_success__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_success__0be1a26c.Button_module_text__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_danger__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_danger__0be1a26c.Button_module_text__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_warning__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_warning__0be1a26c.Button_module_text__0be1a26c {\n  color: var(--grey);\n}";
 var modules_b0070f27 = {"root":"Button_module_root__0be1a26c","primary":"Button_module_primary__0be1a26c","contained":"Button_module_contained__0be1a26c","outlined":"Button_module_outlined__0be1a26c","text":"Button_module_text__0be1a26c","success":"Button_module_success__0be1a26c","danger":"Button_module_danger__0be1a26c","warning":"Button_module_warning__0be1a26c"};
-n(css$U,{});
+n(css$V,{});
 
 var Button = /*#__PURE__*/forwardRef(function Button(props, ref) {
   var className = props.className,
@@ -1743,9 +1743,9 @@ Button.defaultProps = _objectSpread2(_objectSpread2({}, BaseButton.defaultProps)
   radius: 'default'
 });
 
-var css$T = ".Chip_module_root__0aa07630[data-elem=base-cell] {\n  position: relative;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell] [data-elem=component2] [data-elem=title] {\n  font-weight: 500;\n  font-size: 0.875rem;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_sm__0aa07630 {\n  height: 2rem;\n  padding: 0.188rem 0.5rem;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_md__0aa07630 {\n  height: 2.25rem;\n  padding: 0.563rem 1rem;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630.Chip_module_success__0aa07630 {\n  background-color: var(--success-bg);\n  color: var(--success);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630.Chip_module_info__0aa07630 {\n  background-color: var(--info-bg);\n  color: var(--info);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630.Chip_module_danger__0aa07630 {\n  background-color: var(--error-bg);\n  color: var(--error);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630.Chip_module_warning__0aa07630 {\n  background-color: var(--warning-bg);\n  color: var(--warning);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630.Chip_module_default__0aa07630 {\n  background-color: var(--grey5);\n  color: var(--grey);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630:hover {\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630 {\n  border-width: 1px;\n  border-style: solid;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_success__0aa07630 {\n  background-color: var(--success-bg);\n  color: var(--success);\n  border-color: var(--success-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_success__0aa07630:hover {\n  background-color: var(--success-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_info__0aa07630 {\n  background-color: var(--info-bg);\n  color: var(--info);\n  border-color: var(--info-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_info__0aa07630:hover {\n  background-color: var(--info-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_danger__0aa07630 {\n  background-color: var(--error-bg);\n  color: var(--error);\n  border-color: var(--error-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_danger__0aa07630:hover {\n  background-color: var(--error-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_warning__0aa07630 {\n  background-color: var(--warning-bg);\n  color: var(--warning);\n  border-color: var(--warning-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_warning__0aa07630:hover {\n  background-color: var(--warning-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_default__0aa07630 {\n  background-color: var(--grey8);\n  color: var(--grey);\n  border-color: var(--grey6);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_default__0aa07630:hover {\n  background-color: var(--grey6);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_status__0aa07630, .Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_input__0aa07630 {\n  filter: grayscale(1);\n  border-color: var(--grey4);\n  background-color: var(--grey5);\n  color: var(--grey2);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_status__0aa07630 [data-elem=component1],\n.Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_status__0aa07630 [data-elem=component3], .Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_input__0aa07630 [data-elem=component1],\n.Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_input__0aa07630 [data-elem=component3] {\n  opacity: 0.5;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_status__0aa07630:hover, .Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_input__0aa07630:hover {\n  box-shadow: none;\n  background-color: var(--grey5);\n}";
+var css$U = ".Chip_module_root__0aa07630[data-elem=base-cell] {\n  position: relative;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell] [data-elem=component2] [data-elem=title] {\n  font-weight: 500;\n  font-size: 0.875rem;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_sm__0aa07630 {\n  height: 2rem;\n  padding: 0.188rem 0.5rem;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_md__0aa07630 {\n  height: 2.25rem;\n  padding: 0.563rem 1rem;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630.Chip_module_success__0aa07630 {\n  background-color: var(--success-bg);\n  color: var(--success);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630.Chip_module_info__0aa07630 {\n  background-color: var(--info-bg);\n  color: var(--info);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630.Chip_module_danger__0aa07630 {\n  background-color: var(--error-bg);\n  color: var(--error);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630.Chip_module_warning__0aa07630 {\n  background-color: var(--warning-bg);\n  color: var(--warning);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630.Chip_module_default__0aa07630 {\n  background-color: var(--grey5);\n  color: var(--grey);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630:hover {\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630 {\n  border-width: 1px;\n  border-style: solid;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_success__0aa07630 {\n  background-color: var(--success-bg);\n  color: var(--success);\n  border-color: var(--success-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_success__0aa07630:hover {\n  background-color: var(--success-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_info__0aa07630 {\n  background-color: var(--info-bg);\n  color: var(--info);\n  border-color: var(--info-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_info__0aa07630:hover {\n  background-color: var(--info-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_danger__0aa07630 {\n  background-color: var(--error-bg);\n  color: var(--error);\n  border-color: var(--error-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_danger__0aa07630:hover {\n  background-color: var(--error-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_warning__0aa07630 {\n  background-color: var(--warning-bg);\n  color: var(--warning);\n  border-color: var(--warning-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_warning__0aa07630:hover {\n  background-color: var(--warning-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_default__0aa07630 {\n  background-color: var(--grey8);\n  color: var(--grey);\n  border-color: var(--grey6);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_default__0aa07630:hover {\n  background-color: var(--grey6);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_status__0aa07630, .Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_input__0aa07630 {\n  filter: grayscale(1);\n  border-color: var(--grey4);\n  background-color: var(--grey5);\n  color: var(--grey2);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_status__0aa07630 [data-elem=component1],\n.Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_status__0aa07630 [data-elem=component3], .Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_input__0aa07630 [data-elem=component1],\n.Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_input__0aa07630 [data-elem=component3] {\n  opacity: 0.5;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_status__0aa07630:hover, .Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_input__0aa07630:hover {\n  box-shadow: none;\n  background-color: var(--grey5);\n}";
 var modules_31aa5fd7 = {"root":"Chip_module_root__0aa07630","sm":"Chip_module_sm__0aa07630","md":"Chip_module_md__0aa07630","status":"Chip_module_status__0aa07630","success":"Chip_module_success__0aa07630","info":"Chip_module_info__0aa07630","danger":"Chip_module_danger__0aa07630","warning":"Chip_module_warning__0aa07630","default":"Chip_module_default__0aa07630","input":"Chip_module_input__0aa07630"};
-n(css$T,{});
+n(css$U,{});
 
 var Chip = function Chip(props) {
   var className = props.className,
@@ -2116,9 +2116,9 @@ Server.defaultProps = {
   className: ''
 };
 
-var css$S = ".Arrow_module_right__19f08663 {\n  transform: rotate(0deg);\n}\n\n.Arrow_module_left__19f08663 {\n  transform: rotate(180deg);\n}\n\n.Arrow_module_bottom__19f08663 {\n  transform: rotate(90deg);\n}\n\n.Arrow_module_top__19f08663 {\n  transform: rotate(270deg);\n}";
+var css$T = ".Arrow_module_right__19f08663 {\n  transform: rotate(0deg);\n}\n\n.Arrow_module_left__19f08663 {\n  transform: rotate(180deg);\n}\n\n.Arrow_module_bottom__19f08663 {\n  transform: rotate(90deg);\n}\n\n.Arrow_module_top__19f08663 {\n  transform: rotate(270deg);\n}";
 var modules_e313d483 = {"right":"Arrow_module_right__19f08663","left":"Arrow_module_left__19f08663","bottom":"Arrow_module_bottom__19f08663","top":"Arrow_module_top__19f08663"};
-n(css$S,{});
+n(css$T,{});
 
 var Arrow$1 = function Arrow(props) {
   var className = props.className,
@@ -2138,9 +2138,9 @@ Arrow$1.defaultProps = {
   position: 'right'
 };
 
-var css$R = ".Chevron_module_left__8b1808eb {\n  transform: rotate(0deg);\n}\n\n.Chevron_module_bottom__8b1808eb {\n  transform: rotate(90deg);\n}\n\n.Chevron_module_right__8b1808eb {\n  transform: rotate(180deg);\n}\n\n.Chevron_module_top__8b1808eb {\n  transform: rotate(270deg);\n}";
+var css$S = ".Chevron_module_left__8b1808eb {\n  transform: rotate(0deg);\n}\n\n.Chevron_module_bottom__8b1808eb {\n  transform: rotate(90deg);\n}\n\n.Chevron_module_right__8b1808eb {\n  transform: rotate(180deg);\n}\n\n.Chevron_module_top__8b1808eb {\n  transform: rotate(270deg);\n}";
 var modules_bf5b0b74 = {"left":"Chevron_module_left__8b1808eb","bottom":"Chevron_module_bottom__8b1808eb","right":"Chevron_module_right__8b1808eb","top":"Chevron_module_top__8b1808eb"};
-n(css$R,{});
+n(css$S,{});
 
 var Chevron = function Chevron(props) {
   var className = props.className,
@@ -2471,6 +2471,63 @@ var Trash = function Trash(props) {
       })
     })]
   });
+};
+
+var SearchIcon = function SearchIcon(_ref) {
+  var className = _ref.className;
+  return /*#__PURE__*/jsx("svg", {
+    className: className,
+    width: "1.5rem",
+    height: "1.5rem",
+    viewBox: "0 0 17 16",
+    fill: "#9B9BA3",
+    xmlns: "http://www.w3.org/2000/svg",
+    children: /*#__PURE__*/jsx("path", {
+      d: "M14.4784 13.5267L12.0051 11.0733C12.9651 9.87629 13.4301 8.35688 13.3043 6.82755C13.1785 5.29821 12.4715 3.8752 11.3287 2.85111C10.186 1.82702 8.69427 1.27969 7.16035 1.32166C5.62642 1.36363 4.16688 1.99172 3.08182 3.07677C1.99677 4.16183 1.36868 5.62137 1.32671 7.15529C1.28474 8.68922 1.83207 10.1809 2.85616 11.3237C3.88025 12.4665 5.30326 13.1734 6.8326 13.2992C8.36193 13.425 9.88134 12.9601 11.0784 12L13.5317 14.4533C13.5937 14.5158 13.6674 14.5654 13.7487 14.5993C13.8299 14.6331 13.9171 14.6505 14.0051 14.6505C14.0931 14.6505 14.1802 14.6331 14.2614 14.5993C14.3427 14.5654 14.4164 14.5158 14.4784 14.4533C14.5986 14.329 14.6657 14.1629 14.6657 13.99C14.6657 13.8171 14.5986 13.651 14.4784 13.5267ZM7.3384 12C6.41542 12 5.51316 11.7263 4.74574 11.2135C3.97831 10.7008 3.38017 9.97192 3.02696 9.1192C2.67375 8.26648 2.58133 7.32817 2.7614 6.42292C2.94146 5.51768 3.38592 4.68616 4.03857 4.03351C4.69121 3.38087 5.52273 2.93641 6.42798 2.75635C7.33322 2.57628 8.27153 2.6687 9.12425 3.02191C9.97698 3.37512 10.7058 3.97326 11.2186 4.74068C11.7314 5.50811 12.0051 6.41037 12.0051 7.33335C12.0051 8.57102 11.5134 9.75801 10.6382 10.6332C9.76306 11.5083 8.57607 12 7.3384 12Z"
+    })
+  });
+};
+
+var Close = function Close(_ref) {
+  var className = _ref.className;
+  return /*#__PURE__*/jsx("svg", {
+    className: className,
+    width: "1.5rem",
+    height: "1.5rem",
+    viewBox: "0 0 14 15",
+    fill: "#333333",
+    xmlns: "http://www.w3.org/2000/svg",
+    children: /*#__PURE__*/jsx("path", {
+      d: "M11.0834 3.74416L10.2609 2.92166L7.00002 6.18249L3.73919 2.92166L2.91669 3.74416L6.17752 7.00499L2.91669 10.2658L3.73919 11.0883L7.00002 7.82749L10.2609 11.0883L11.0834 10.2658L7.82252 7.00499L11.0834 3.74416Z"
+    })
+  });
+};
+
+var css$R = ".Sort_module_root__5112e35d.Sort_module_orderAz__5112e35d {\n  transform: none;\n}\n.Sort_module_root__5112e35d.Sort_module_orderZa__5112e35d {\n  transform: rotate(180deg);\n}";
+var modules_501919d9 = {"root":"Sort_module_root__5112e35d","order-az":"Sort_module_orderAz__5112e35d","order-za":"Sort_module_orderZa__5112e35d"};
+n(css$R,{});
+
+var Sort = function Sort(_ref) {
+  var className = _ref.className,
+    position = _ref.position;
+  return /*#__PURE__*/jsxs("svg", {
+    className: classes(modules_501919d9.root, className, modules_501919d9["order-".concat(position)]),
+    width: "1.5rem",
+    height: "1.5rem",
+    viewBox: "0 0 16 16",
+    fill: "#737373",
+    xmlns: "http://www.w3.org/2000/svg",
+    children: [/*#__PURE__*/jsx("path", {
+      d: "M4 5.33333C4 4.96514 4.29848 4.66666 4.66667 4.66666H11.3333C11.7015 4.66666 12 4.96514 12 5.33333C12 5.70152 11.7015 6 11.3333 6H4.66667C4.29848 6 4 5.70152 4 5.33333Z"
+    }), /*#__PURE__*/jsx("path", {
+      d: "M5.33333 8C5.33333 7.63181 5.63181 7.33333 6 7.33333H10C10.3682 7.33333 10.6667 7.63181 10.6667 8C10.6667 8.36819 10.3682 8.66666 10 8.66666H6C5.63181 8.66666 5.33333 8.36819 5.33333 8Z"
+    }), /*#__PURE__*/jsx("path", {
+      d: "M7.33333 10C6.96514 10 6.66667 10.2985 6.66667 10.6667C6.66667 11.0349 6.96514 11.3333 7.33333 11.3333H8.66667C9.03486 11.3333 9.33333 11.0349 9.33333 10.6667C9.33333 10.2985 9.03486 10 8.66667 10H7.33333Z"
+    })]
+  });
+};
+Sort.defaultProps = {
+  position: 'az'
 };
 
 var css$Q = ".Accordion_module_root__a63f6f55 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  width: 100%;\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell] {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.5rem;\n  padding: 0.5rem 1rem;\n  cursor: pointer;\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell] > [data-elem=component1] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell] > [data-elem=component1] .Accordion_module_icon__a63f6f55 {\n  transform: rotate(-90deg);\n  width: 1rem;\n  height: 1rem;\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell] .Accordion_module_title__a63f6f55 {\n  flex: 1 1 auto;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell]:hover {\n  background: var(--background);\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell]:hover .Accordion_module_icon__a63f6f55,\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell]:hover .Accordion_module_title__a63f6f55 {\n  color: var(--highlight);\n  fill: var(--highlight);\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_body__a63f6f55 {\n  display: none;\n  padding: 0.5rem 2.5rem;\n}\n.Accordion_module_root__a63f6f55.Accordion_module_open__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell] [data-elem=component1] .Accordion_module_icon__a63f6f55 {\n  transform: none;\n}\n.Accordion_module_root__a63f6f55.Accordion_module_open__a63f6f55 > .Accordion_module_body__a63f6f55 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n}\n.Accordion_module_root__a63f6f55.Accordion_module_open__a63f6f55 > .Accordion_module_body__a63f6f55 > button[data-elem=base-cell] {\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  align-self: flex-end;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-end;\n  align-items: center;\n}\n.Accordion_module_root__a63f6f55.Accordion_module_open__a63f6f55 > .Accordion_module_body__a63f6f55 > button[data-elem=base-cell] .Accordion_module_expand__a63f6f55 {\n  height: 1.5rem;\n  width: 1.5rem;\n}";
@@ -6656,8 +6713,8 @@ Alert.defaultProps = {
   position: 'bottom-center'
 };
 
-var css$N = ".Breadcrumbs_module_root__b14355df {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.5rem;\n  width: auto;\n}\n.Breadcrumbs_module_root__b14355df .Breadcrumbs_module_seperator__b14355df {\n  width: 1.5rem;\n  height: 1.5rem;\n  stroke: var(--grey2);\n}\n.Breadcrumbs_module_root__b14355df button.Breadcrumbs_module_expand__b14355df[data-elem=base-cell] {\n  background: var(--grey6);\n  color: var(--dark-grey);\n  height: 0.75rem;\n  padding: 0.25rem;\n}\n.Breadcrumbs_module_root__b14355df button.Breadcrumbs_module_expand__b14355df[data-elem=base-cell] [data-elem=title] {\n  margin-bottom: 0.4rem;\n}\n.Breadcrumbs_module_root__b14355df .Breadcrumbs_module_crumb__b14355df {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  color: var(--grey2);\n}\n.Breadcrumbs_module_root__b14355df .Breadcrumbs_module_crumb__b14355df.Breadcrumbs_module_active__b14355df {\n  color: var(--black);\n}\n.Breadcrumbs_module_root__b14355df .Breadcrumbs_module_crumb__b14355df:hover {\n  color: var(--info);\n}";
-var modules_651f50a9 = {"root":"Breadcrumbs_module_root__b14355df","seperator":"Breadcrumbs_module_seperator__b14355df","expand":"Breadcrumbs_module_expand__b14355df","crumb":"Breadcrumbs_module_crumb__b14355df","active":"Breadcrumbs_module_active__b14355df"};
+var css$N = ".Breadcrumbs_module_root__f527a278 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.5rem;\n  width: auto;\n}\n.Breadcrumbs_module_root__f527a278 .Breadcrumbs_module_seperator__f527a278 {\n  width: 1.5rem;\n  height: 1.5rem;\n  stroke: var(--grey2);\n}\n.Breadcrumbs_module_root__f527a278 button.Breadcrumbs_module_expand__f527a278[data-elem=base-cell] {\n  background: var(--grey6);\n  color: var(--dark-grey);\n  height: 0.75rem;\n  padding: 0.25rem;\n}\n.Breadcrumbs_module_root__f527a278 button.Breadcrumbs_module_expand__f527a278[data-elem=base-cell] [data-elem=title] {\n  margin-bottom: 0.4rem;\n}\n.Breadcrumbs_module_root__f527a278 .Breadcrumbs_module_crumb__f527a278 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  color: var(--grey2);\n}\n.Breadcrumbs_module_root__f527a278 .Breadcrumbs_module_crumb__f527a278.Breadcrumbs_module_active__f527a278 {\n  color: var(--black);\n}\n.Breadcrumbs_module_root__f527a278 .Breadcrumbs_module_crumb__f527a278:hover:not(.Breadcrumbs_module_active__f527a278) {\n  color: var(--info);\n}\n.Breadcrumbs_module_root__f527a278.Breadcrumbs_module_themeLight__f527a278 .Breadcrumbs_module_crumb__f527a278 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  color: var(--grey2);\n}\n.Breadcrumbs_module_root__f527a278.Breadcrumbs_module_themeLight__f527a278 .Breadcrumbs_module_crumb__f527a278.Breadcrumbs_module_active__f527a278 {\n  color: var(--black);\n}\n.Breadcrumbs_module_root__f527a278.Breadcrumbs_module_themeLight__f527a278 .Breadcrumbs_module_crumb__f527a278:hover:not(.Breadcrumbs_module_active__f527a278) {\n  color: var(--info);\n}\n.Breadcrumbs_module_root__f527a278.Breadcrumbs_module_themeDark__f527a278 .Breadcrumbs_module_crumb__f527a278 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  color: var(--grey2);\n}\n.Breadcrumbs_module_root__f527a278.Breadcrumbs_module_themeDark__f527a278 .Breadcrumbs_module_crumb__f527a278.Breadcrumbs_module_active__f527a278 {\n  color: var(--white);\n}\n.Breadcrumbs_module_root__f527a278.Breadcrumbs_module_themeDark__f527a278 .Breadcrumbs_module_crumb__f527a278:hover:not(.Breadcrumbs_module_active__f527a278) {\n  color: var(--info);\n}";
+var modules_651f50a9 = {"root":"Breadcrumbs_module_root__f527a278","seperator":"Breadcrumbs_module_seperator__f527a278","expand":"Breadcrumbs_module_expand__f527a278","crumb":"Breadcrumbs_module_crumb__f527a278","active":"Breadcrumbs_module_active__f527a278","theme-light":"Breadcrumbs_module_themeLight__f527a278","theme-dark":"Breadcrumbs_module_themeDark__f527a278"};
 n(css$N,{});
 
 var css$M = ".Text_module_root__71f59b14 {\n  color: var(--dark-grey);\n}\n.Text_module_root__71f59b14.Text_module_h1__71f59b14 {\n  font-size: 2.25rem;\n  line-height: 2.75rem;\n}\n.Text_module_root__71f59b14.Text_module_h2__71f59b14 {\n  font-size: 1.375rem;\n  line-height: 1.688rem;\n}\n.Text_module_root__71f59b14.Text_module_b1__71f59b14 {\n  font-size: 1rem;\n  line-height: 1.188rem;\n}\n.Text_module_root__71f59b14.Text_module_b2__71f59b14 {\n  font-size: 0.875rem;\n  line-height: 1.188rem;\n}\n.Text_module_root__71f59b14.Text_module_b3__71f59b14 {\n  font-size: 0.75rem;\n  line-height: 1.063rem;\n}\n.Text_module_root__71f59b14.Text_module_regularStroke__71f59b14 {\n  font-weight: 400;\n}\n.Text_module_root__71f59b14.Text_module_mediumStroke__71f59b14 {\n  font-weight: 500;\n}\n.Text_module_root__71f59b14.Text_module_semiboldStroke__71f59b14 {\n  font-weight: 600;\n}\n.Text_module_root__71f59b14.Text_module_boldStroke__71f59b14 {\n  font-weight: 800;\n}";
@@ -6766,7 +6823,8 @@ var BreadCrumbs = function BreadCrumbs(props) {
     maxItems = props.maxItems,
     itemsBeforeCollapse = props.itemsBeforeCollapse,
     itemsAfterCollapse = props.itemsAfterCollapse,
-    linkComponent = props.linkComponent;
+    linkComponent = props.linkComponent,
+    theme = props.theme;
   var _useState = useState(false),
     _useState2 = _slicedToArray(_useState, 2),
     expand = _useState2[0],
@@ -6788,6 +6846,7 @@ var BreadCrumbs = function BreadCrumbs(props) {
           'data-state': active
         },
         component: !active ? linkComponent : 'span',
+        stroke: !active ? 'regular' : 'medium',
         children: [icon && icon, title && /*#__PURE__*/jsx("span", {
           children: getSpacedDisplayName(title).replace(/-/g, ' ')
         })]
@@ -6812,11 +6871,12 @@ var BreadCrumbs = function BreadCrumbs(props) {
     }, 'expand'));
   }
   return /*#__PURE__*/jsx("div", {
-    className: classes(modules_651f50a9.root),
+    className: classes(modules_651f50a9.root, modules_651f50a9["theme-".concat(theme)]),
     children: CrumbsDOM
   });
 };
 BreadCrumbs.propTypes = {
+  theme: propTypes$1.exports.oneOf(['light', 'dark']),
   crumbs: propTypes$1.exports.arrayOf(propTypes$1.exports.shape({
     title: propTypes$1.exports.string,
     path: propTypes$1.exports.string,
@@ -6828,6 +6888,7 @@ BreadCrumbs.propTypes = {
   linkComponent: propTypes$1.exports.oneOfType([propTypes$1.exports.string, propTypes$1.exports.element])
 };
 BreadCrumbs.defaultProps = {
+  theme: 'dark',
   crumbs: [],
   maxItems: 4,
   itemsBeforeCollapse: 2,
@@ -16566,126 +16627,134 @@ function c(Prism) {
   delete Prism.languages.c['boolean'];
 }
 
-var refractorC$1 = c_1;
-var cpp_1 = cpp;
-cpp.displayName = 'cpp';
-cpp.aliases = [];
-function cpp(Prism) {
-  Prism.register(refractorC$1)
-  ;(function (Prism) {
-    var keyword =
-      /\b(?:alignas|alignof|asm|auto|bool|break|case|catch|char|char16_t|char32_t|char8_t|class|co_await|co_return|co_yield|compl|concept|const|const_cast|consteval|constexpr|constinit|continue|decltype|default|delete|do|double|dynamic_cast|else|enum|explicit|export|extern|final|float|for|friend|goto|if|import|inline|int|int16_t|int32_t|int64_t|int8_t|long|module|mutable|namespace|new|noexcept|nullptr|operator|override|private|protected|public|register|reinterpret_cast|requires|return|short|signed|sizeof|static|static_assert|static_cast|struct|switch|template|this|thread_local|throw|try|typedef|typeid|typename|uint16_t|uint32_t|uint64_t|uint8_t|union|unsigned|using|virtual|void|volatile|wchar_t|while)\b/;
-    var modName = /\b(?!<keyword>)\w+(?:\s*\.\s*\w+)*\b/.source.replace(
-      /<keyword>/g,
-      function () {
-        return keyword.source
-      }
-    );
-    Prism.languages.cpp = Prism.languages.extend('c', {
-      'class-name': [
-        {
-          pattern: RegExp(
-            /(\b(?:class|concept|enum|struct|typename)\s+)(?!<keyword>)\w+/.source.replace(
-              /<keyword>/g,
-              function () {
-                return keyword.source
-              }
-            )
-          ),
-          lookbehind: true
-        }, // This is intended to capture the class name of method implementations like:
-        //   void foo::bar() const {}
-        // However! The `foo` in the above example could also be a namespace, so we only capture the class name if
-        // it starts with an uppercase letter. This approximation should give decent results.
-        /\b[A-Z]\w*(?=\s*::\s*\w+\s*\()/, // This will capture the class name before destructors like:
-        //   Foo::~Foo() {}
-        /\b[A-Z_]\w*(?=\s*::\s*~\w+\s*\()/i, // This also intends to capture the class name of method implementations but here the class has template
-        // parameters, so it can't be a namespace (until C++ adds generic namespaces).
-        /\b\w+(?=\s*<(?:[^<>]|<(?:[^<>]|<[^<>]*>)*>)*>\s*::\s*\w+\s*\()/
-      ],
-      keyword: keyword,
-      number: {
-        pattern:
-          /(?:\b0b[01']+|\b0x(?:[\da-f']+(?:\.[\da-f']*)?|\.[\da-f']+)(?:p[+-]?[\d']+)?|(?:\b[\d']+(?:\.[\d']*)?|\B\.[\d']+)(?:e[+-]?[\d']+)?)[ful]{0,4}/i,
-        greedy: true
-      },
-      operator:
-        />>=?|<<=?|->|--|\+\+|&&|\|\||[?:~]|<=>|[-+*/%&|^!=<>]=?|\b(?:and|and_eq|bitand|bitor|not|not_eq|or|or_eq|xor|xor_eq)\b/,
-      boolean: /\b(?:false|true)\b/
-    });
-    Prism.languages.insertBefore('cpp', 'string', {
-      module: {
-        // https://en.cppreference.com/w/cpp/language/modules
-        pattern: RegExp(
-          /(\b(?:import|module)\s+)/.source +
-            '(?:' + // header-name
-            /"(?:\\(?:\r\n|[\s\S])|[^"\\\r\n])*"|<[^<>\r\n]*>/.source +
-            '|' + // module name or partition or both
-            /<mod-name>(?:\s*:\s*<mod-name>)?|:\s*<mod-name>/.source.replace(
-              /<mod-name>/g,
-              function () {
-                return modName
-              }
-            ) +
-            ')'
-        ),
-        lookbehind: true,
-        greedy: true,
-        inside: {
-          string: /^[<"][\s\S]+/,
-          operator: /:/,
-          punctuation: /\./
-        }
-      },
-      'raw-string': {
-        pattern: /R"([^()\\ ]{0,16})\([\s\S]*?\)\1"/,
-        alias: 'string',
-        greedy: true
-      }
-    });
-    Prism.languages.insertBefore('cpp', 'keyword', {
-      'generic-function': {
-        pattern: /\b(?!operator\b)[a-z_]\w*\s*<(?:[^<>]|<[^<>]*>)*>(?=\s*\()/i,
-        inside: {
-          function: /^\w+/,
-          generic: {
-            pattern: /<[\s\S]+/,
-            alias: 'class-name',
-            inside: Prism.languages.cpp
-          }
-        }
-      }
-    });
-    Prism.languages.insertBefore('cpp', 'operator', {
-      'double-colon': {
-        pattern: /::/,
-        alias: 'punctuation'
-      }
-    });
-    Prism.languages.insertBefore('cpp', 'class-name', {
-      // the base clause is an optional list of parent classes
-      // https://en.cppreference.com/w/cpp/language/class
-      'base-clause': {
-        pattern:
-          /(\b(?:class|struct)\s+\w+\s*:\s*)[^;{}"'\s]+(?:\s+[^;{}"'\s]+)*(?=\s*[;{])/,
-        lookbehind: true,
-        greedy: true,
-        inside: Prism.languages.extend('cpp', {})
-      }
-    });
-    Prism.languages.insertBefore(
-      'inside',
-      'double-colon',
-      {
-        // All untokenized words that are not namespaces should be class names
-        'class-name': /\b[a-z_]\w*\b(?!\s*::)/i
-      },
-      Prism.languages.cpp['base-clause']
-    );
-  })(Prism);
+var cpp_1;
+var hasRequiredCpp;
+
+function requireCpp () {
+	if (hasRequiredCpp) return cpp_1;
+	hasRequiredCpp = 1;
+	var refractorC = c_1;
+	cpp_1 = cpp;
+	cpp.displayName = 'cpp';
+	cpp.aliases = [];
+	function cpp(Prism) {
+	  Prism.register(refractorC)
+	  ;(function (Prism) {
+	    var keyword =
+	      /\b(?:alignas|alignof|asm|auto|bool|break|case|catch|char|char16_t|char32_t|char8_t|class|co_await|co_return|co_yield|compl|concept|const|const_cast|consteval|constexpr|constinit|continue|decltype|default|delete|do|double|dynamic_cast|else|enum|explicit|export|extern|final|float|for|friend|goto|if|import|inline|int|int16_t|int32_t|int64_t|int8_t|long|module|mutable|namespace|new|noexcept|nullptr|operator|override|private|protected|public|register|reinterpret_cast|requires|return|short|signed|sizeof|static|static_assert|static_cast|struct|switch|template|this|thread_local|throw|try|typedef|typeid|typename|uint16_t|uint32_t|uint64_t|uint8_t|union|unsigned|using|virtual|void|volatile|wchar_t|while)\b/;
+	    var modName = /\b(?!<keyword>)\w+(?:\s*\.\s*\w+)*\b/.source.replace(
+	      /<keyword>/g,
+	      function () {
+	        return keyword.source
+	      }
+	    );
+	    Prism.languages.cpp = Prism.languages.extend('c', {
+	      'class-name': [
+	        {
+	          pattern: RegExp(
+	            /(\b(?:class|concept|enum|struct|typename)\s+)(?!<keyword>)\w+/.source.replace(
+	              /<keyword>/g,
+	              function () {
+	                return keyword.source
+	              }
+	            )
+	          ),
+	          lookbehind: true
+	        }, // This is intended to capture the class name of method implementations like:
+	        //   void foo::bar() const {}
+	        // However! The `foo` in the above example could also be a namespace, so we only capture the class name if
+	        // it starts with an uppercase letter. This approximation should give decent results.
+	        /\b[A-Z]\w*(?=\s*::\s*\w+\s*\()/, // This will capture the class name before destructors like:
+	        //   Foo::~Foo() {}
+	        /\b[A-Z_]\w*(?=\s*::\s*~\w+\s*\()/i, // This also intends to capture the class name of method implementations but here the class has template
+	        // parameters, so it can't be a namespace (until C++ adds generic namespaces).
+	        /\b\w+(?=\s*<(?:[^<>]|<(?:[^<>]|<[^<>]*>)*>)*>\s*::\s*\w+\s*\()/
+	      ],
+	      keyword: keyword,
+	      number: {
+	        pattern:
+	          /(?:\b0b[01']+|\b0x(?:[\da-f']+(?:\.[\da-f']*)?|\.[\da-f']+)(?:p[+-]?[\d']+)?|(?:\b[\d']+(?:\.[\d']*)?|\B\.[\d']+)(?:e[+-]?[\d']+)?)[ful]{0,4}/i,
+	        greedy: true
+	      },
+	      operator:
+	        />>=?|<<=?|->|--|\+\+|&&|\|\||[?:~]|<=>|[-+*/%&|^!=<>]=?|\b(?:and|and_eq|bitand|bitor|not|not_eq|or|or_eq|xor|xor_eq)\b/,
+	      boolean: /\b(?:false|true)\b/
+	    });
+	    Prism.languages.insertBefore('cpp', 'string', {
+	      module: {
+	        // https://en.cppreference.com/w/cpp/language/modules
+	        pattern: RegExp(
+	          /(\b(?:import|module)\s+)/.source +
+	            '(?:' + // header-name
+	            /"(?:\\(?:\r\n|[\s\S])|[^"\\\r\n])*"|<[^<>\r\n]*>/.source +
+	            '|' + // module name or partition or both
+	            /<mod-name>(?:\s*:\s*<mod-name>)?|:\s*<mod-name>/.source.replace(
+	              /<mod-name>/g,
+	              function () {
+	                return modName
+	              }
+	            ) +
+	            ')'
+	        ),
+	        lookbehind: true,
+	        greedy: true,
+	        inside: {
+	          string: /^[<"][\s\S]+/,
+	          operator: /:/,
+	          punctuation: /\./
+	        }
+	      },
+	      'raw-string': {
+	        pattern: /R"([^()\\ ]{0,16})\([\s\S]*?\)\1"/,
+	        alias: 'string',
+	        greedy: true
+	      }
+	    });
+	    Prism.languages.insertBefore('cpp', 'keyword', {
+	      'generic-function': {
+	        pattern: /\b(?!operator\b)[a-z_]\w*\s*<(?:[^<>]|<[^<>]*>)*>(?=\s*\()/i,
+	        inside: {
+	          function: /^\w+/,
+	          generic: {
+	            pattern: /<[\s\S]+/,
+	            alias: 'class-name',
+	            inside: Prism.languages.cpp
+	          }
+	        }
+	      }
+	    });
+	    Prism.languages.insertBefore('cpp', 'operator', {
+	      'double-colon': {
+	        pattern: /::/,
+	        alias: 'punctuation'
+	      }
+	    });
+	    Prism.languages.insertBefore('cpp', 'class-name', {
+	      // the base clause is an optional list of parent classes
+	      // https://en.cppreference.com/w/cpp/language/class
+	      'base-clause': {
+	        pattern:
+	          /(\b(?:class|struct)\s+\w+\s*:\s*)[^;{}"'\s]+(?:\s+[^;{}"'\s]+)*(?=\s*[;{])/,
+	        lookbehind: true,
+	        greedy: true,
+	        inside: Prism.languages.extend('cpp', {})
+	      }
+	    });
+	    Prism.languages.insertBefore(
+	      'inside',
+	      'double-colon',
+	      {
+	        // All untokenized words that are not namespaces should be class names
+	        'class-name': /\b[a-z_]\w*\b(?!\s*::)/i
+	      },
+	      Prism.languages.cpp['base-clause']
+	    );
+	  })(Prism);
+	}
+	return cpp_1;
 }
 
-var refractorCpp$1 = cpp_1;
+var refractorCpp$1 = requireCpp();
 var arduino_1 = arduino;
 arduino.displayName = 'arduino';
 arduino.aliases = ['ino'];
@@ -18695,7 +18764,7 @@ function cfscript(Prism) {
   Prism.languages.cfc = Prism.languages['cfscript'];
 }
 
-var refractorCpp = cpp_1;
+var refractorCpp = requireCpp();
 var chaiscript_1 = chaiscript;
 chaiscript.displayName = 'chaiscript';
 chaiscript.aliases = [];
@@ -38927,7 +38996,7 @@ refractor.register(requireCobol());
 refractor.register(requireCoffeescript());
 refractor.register(requireConcurnas());
 refractor.register(requireCoq());
-refractor.register(cpp_1);
+refractor.register(requireCpp());
 refractor.register(requireCrystal());
 refractor.register(requireCsharp());
 refractor.register(requireCshtml());
@@ -43341,8 +43410,8 @@ function getPagination(curr, total, limit) {
   return pages;
 }
 
-var css$p = ".Pagination_module_root__4c778f02 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: stretch;\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n  padding: 0.625rem 2.125rem;\n  background: var(--dark-grey);\n  margin-top: auto;\n  width: 100%;\n  height: 3.5rem;\n  overflow: auto;\n  transition-property: background-color, color, bottom, width;\n  transition-duration: 0.33s;\n  transition-timing-function: ease-out;\n}\n.Pagination_module_root__4c778f02::-webkit-scrollbar {\n  display: none;\n}\n.Pagination_module_root__4c778f02.Pagination_module_floating__4c778f02 {\n  background: var(--dark-grey-o-85);\n  position: absolute;\n  border-radius: 6.25rem;\n  width: 82%;\n  bottom: 3rem;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_rowSwitcher__4c778f02,\n.Pagination_module_root__4c778f02 .Pagination_module_pagination__4c778f02,\n.Pagination_module_root__4c778f02 .Pagination_module_jumpToPage__4c778f02,\n.Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  height: 100%;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_rowSwitcher__4c778f02 {\n  display: none;\n  gap: 0.75rem;\n  background-color: var(--grey);\n  padding: 0;\n  border-radius: 0.3125rem;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__4c778f02 .Pagination_module_rowSwitcher__4c778f02 {\n    display: flex;\n    flex-direction: row;\n    justify-content: space-between;\n    align-items: center;\n  }\n}\n.Pagination_module_root__4c778f02 .Pagination_module_rowSwitcher__4c778f02 > [data-elem*=component] {\n  overflow: hidden;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_rowSwitcher__4c778f02 > [data-elem=component2] {\n  display: flex;\n  flex: 1 0 auto;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_rowSwitcher__4c778f02 .Pagination_module_text__4c778f02 {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  height: 100%;\n  display: block;\n  padding: 0.5rem;\n  font-size: 0.875rem;\n  font-weight: 500;\n  color: var(--white);\n}\n.Pagination_module_root__4c778f02 .Pagination_module_rowSwitcher__4c778f02 .Pagination_module_dropdown__4c778f02 > [data-elem=header] > [data-elem=select] {\n  height: 2.375rem;\n  width: auto;\n  min-width: -webkit-fit-content;\n  min-width: -moz-fit-content;\n  min-width: fit-content;\n  padding: 0.625rem;\n  background-color: var(--grey);\n  border: none;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_rowSwitcher__4c778f02 .Pagination_module_dropdown__4c778f02 > [data-elem=header] > [data-elem=select] > [data-elem=placeholder] {\n  color: var(--white);\n  font-size: 0.875rem;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_rowSwitcher__4c778f02 .Pagination_module_dropdown__4c778f02 > [data-elem=header] > [data-elem=select] > svg {\n  fill: var(--white);\n  width: 0.813rem;\n  height: 0.813rem;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_pageNumbers__4c778f02 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  gap: 1.25rem;\n  flex: 1 1 100%;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__4c778f02 .Pagination_module_pageNumbers__4c778f02 {\n    flex: 1 1 60%;\n  }\n}\n.Pagination_module_root__4c778f02 .Pagination_module_pageNumbers__4c778f02 > .Pagination_module_button__4c778f02.Pagination_module_disable__4c778f02 {\n  pointer-events: none;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_pageNumbers__4c778f02 > .Pagination_module_button__4c778f02 [data-elem=title] {\n  color: var(--white);\n}\n.Pagination_module_root__4c778f02 .Pagination_module_pageNumbers__4c778f02 > .Pagination_module_button__4c778f02 .Pagination_module_icon__4c778f02 {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_pageNumbers__4c778f02 > .Pagination_module_pageSelect__4c778f02 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  gap: 0.625rem;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_pageNumbers__4c778f02 > .Pagination_module_pageSelect__4c778f02 .Pagination_module_number__4c778f02 {\n  cursor: pointer;\n  border-radius: 50%;\n  background-color: #e0e0e0;\n  color: var(--black);\n  width: 2.313rem;\n  line-height: 2.313rem;\n  text-align: center;\n  font-size: 1rem;\n  border: 1px solid transparent;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_pageNumbers__4c778f02 > .Pagination_module_pageSelect__4c778f02 .Pagination_module_number__4c778f02:not([data-active=true]) {\n  display: none;\n}\n@media (min-width: 768px) {\n  .Pagination_module_root__4c778f02 .Pagination_module_pageNumbers__4c778f02 > .Pagination_module_pageSelect__4c778f02 .Pagination_module_number__4c778f02:not([data-active=true]) {\n    display: block;\n  }\n}\n.Pagination_module_root__4c778f02 .Pagination_module_pageNumbers__4c778f02 > .Pagination_module_pageSelect__4c778f02 .Pagination_module_number__4c778f02:hover {\n  border: 1px solid var(--highlight);\n  color: var(--highlight);\n  background: var(--background);\n}\n.Pagination_module_root__4c778f02 .Pagination_module_pageNumbers__4c778f02 > .Pagination_module_pageSelect__4c778f02 .Pagination_module_number__4c778f02.Pagination_module_active__4c778f02 {\n  background-color: var(--highlight);\n  color: var(--white);\n}\n.Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 {\n  display: none;\n  padding: 0;\n  flex: 0 1 20%;\n  background: transparent;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 {\n    display: flex;\n    flex-direction: row;\n    justify-content: center;\n    align-items: center;\n  }\n}\n.Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 > [data-elem*=component] {\n  width: 100%;\n  height: 100%;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 > [data-elem*=component] > * {\n  height: 100%;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 .Pagination_module_jumpToPage__4c778f02 {\n  width: 100%;\n  background: transparent;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: stretch;\n  gap: 0.75rem;\n  padding: 0;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 .Pagination_module_jumpToPage__4c778f02 > [data-elem*=component] {\n  overflow: hidden;\n  height: 100%;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 .Pagination_module_jumpToPage__4c778f02 .Pagination_module_button__4c778f02 {\n  background-color: var(--grey);\n  height: 100%;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 .Pagination_module_jumpToPage__4c778f02 .Pagination_module_button__4c778f02 [data-elem=left] {\n  overflow: hidden;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 .Pagination_module_jumpToPage__4c778f02 .Pagination_module_button__4c778f02 [data-elem=left] [data-elem=title] {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 .Pagination_module_jumpToPage__4c778f02 .Pagination_module_button__4c778f02 .Pagination_module_icon__4c778f02 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--white);\n  flex-shrink: 0;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 .Pagination_module_jumpToPage__4c778f02 .Pagination_module_inputbox__4c778f02 {\n  width: 5rem;\n  max-width: 100%;\n  height: 100%;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 .Pagination_module_jumpToPage__4c778f02 .Pagination_module_inputbox__4c778f02 [data-elem=base-cell] {\n  border-radius: 0.313rem;\n  background-color: var(--grey);\n  color: var(--white);\n  border-color: var(--grey);\n  width: 4.875rem;\n}\n.Pagination_module_root__4c778f02 .Pagination_module_form__4c778f02 .Pagination_module_jumpToPage__4c778f02 .Pagination_module_inputbox__4c778f02 [data-elem=base-cell] [data-elem=input] {\n  text-align: center;\n  color: var(--white);\n  background-color: var(--grey);\n  border: none;\n  width: 100%;\n}\n\n.Pagination_module_paginationTest__4c778f02 {\n  height: 80%;\n  width: 100%;\n  overflow: scroll;\n  background-color: powderblue;\n  display: flex;\n  flex-direction: column;\n}\n\n.Pagination_module_dropdownPopper__4c778f02 {\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n  padding: 0.25rem;\n}\n.Pagination_module_dropdownPopper__4c778f02::-webkit-scrollbar {\n  display: none;\n}";
-var modules_a3d40e77 = {"root":"Pagination_module_root__4c778f02","floating":"Pagination_module_floating__4c778f02","row-switcher":"Pagination_module_rowSwitcher__4c778f02","pagination":"Pagination_module_pagination__4c778f02","jump-to-page":"Pagination_module_jumpToPage__4c778f02","form":"Pagination_module_form__4c778f02","text":"Pagination_module_text__4c778f02","dropdown":"Pagination_module_dropdown__4c778f02","page-numbers":"Pagination_module_pageNumbers__4c778f02","button":"Pagination_module_button__4c778f02","disable":"Pagination_module_disable__4c778f02","icon":"Pagination_module_icon__4c778f02","pageSelect":"Pagination_module_pageSelect__4c778f02","number":"Pagination_module_number__4c778f02","active":"Pagination_module_active__4c778f02","inputbox":"Pagination_module_inputbox__4c778f02","pagination-test":"Pagination_module_paginationTest__4c778f02","dropdown-popper":"Pagination_module_dropdownPopper__4c778f02"};
+var css$p = ".Pagination_module_root__8f7084b9 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: stretch;\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n  gap: 0.75rem;\n  padding: 0.625rem 2.125rem;\n  background: var(--dark-grey);\n  margin-top: auto;\n  width: 100%;\n  height: 3.5rem;\n  overflow: auto;\n  transition-property: background-color, color, bottom, width;\n  transition-duration: 0.33s;\n  transition-timing-function: ease-out;\n}\n.Pagination_module_root__8f7084b9::-webkit-scrollbar {\n  display: none;\n}\n.Pagination_module_root__8f7084b9.Pagination_module_floating__8f7084b9 {\n  background: var(--dark-grey-o-85);\n  position: absolute;\n  border-radius: 6.25rem;\n  width: 82%;\n  bottom: 3rem;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9,\n.Pagination_module_root__8f7084b9 .Pagination_module_jumpToPage__8f7084b9,\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 {\n  display: none;\n  flex: 0 1 15%;\n  background-color: transparent;\n  padding: 0;\n  height: 100%;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 {\n    display: flex;\n    flex-direction: row;\n    justify-content: space-between;\n    align-items: center;\n  }\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 > [data-elem=component2] {\n  flex: 0 1 auto;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_rowSwitcherHandle__8f7084b9 {\n  gap: 0.75rem;\n  background-color: var(--grey);\n  padding: 0;\n  border-radius: 0.25rem;\n  height: 100%;\n  width: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_rowSwitcherHandle__8f7084b9 > [data-elem*=component] {\n  overflow: hidden;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_rowSwitcherHandle__8f7084b9 > [data-elem=component2] {\n  display: flex;\n  flex: 0 0 auto;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_rowSwitcherHandle__8f7084b9 > [data-elem=component2]::before {\n  content: \"\";\n  margin: auto;\n  background: var(--white);\n  width: 0.5px;\n  height: 50%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_text__8f7084b9 {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  height: 100%;\n  display: block;\n  padding: 0.5rem;\n  font-size: 0.875rem;\n  font-weight: 500;\n  color: var(--white);\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_dropdown__8f7084b9 {\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_dropdown__8f7084b9 > [data-elem=header] {\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_dropdown__8f7084b9 > [data-elem=header] > [data-elem=select] {\n  height: 2.375rem;\n  max-height: 100%;\n  width: auto;\n  min-width: -webkit-fit-content;\n  min-width: -moz-fit-content;\n  min-width: fit-content;\n  padding: 0.625rem;\n  background-color: var(--grey);\n  border: none;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_dropdown__8f7084b9 > [data-elem=header] > [data-elem=select] > [data-elem=placeholder] {\n  color: var(--white);\n  font-size: 0.875rem;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_dropdown__8f7084b9 > [data-elem=header] > [data-elem=select] > svg {\n  fill: var(--white);\n  width: 0.813rem;\n  height: 0.813rem;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  gap: 1.25rem;\n  flex: 1 1 100%;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 {\n    flex: 1 1 40%;\n  }\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_button__8f7084b9.Pagination_module_disable__8f7084b9 {\n  pointer-events: none;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_button__8f7084b9 [data-elem=title] {\n  color: var(--white);\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_button__8f7084b9 .Pagination_module_icon__8f7084b9 {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_pageSelect__8f7084b9 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  gap: 0.625rem;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_pageSelect__8f7084b9 .Pagination_module_number__8f7084b9 {\n  cursor: pointer;\n  border-radius: 50%;\n  background-color: #e0e0e0;\n  color: var(--black);\n  width: 2.313rem;\n  line-height: 2.313rem;\n  text-align: center;\n  font-size: 1rem;\n  border: 1px solid transparent;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_pageSelect__8f7084b9 .Pagination_module_number__8f7084b9:not([data-active=true]) {\n  display: none;\n}\n@media (min-width: 768px) {\n  .Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_pageSelect__8f7084b9 .Pagination_module_number__8f7084b9:not([data-active=true]) {\n    display: block;\n  }\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_pageSelect__8f7084b9 .Pagination_module_number__8f7084b9:hover {\n  border: 1px solid var(--highlight);\n  color: var(--highlight);\n  background: var(--background);\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_pageSelect__8f7084b9 .Pagination_module_number__8f7084b9.Pagination_module_active__8f7084b9 {\n  background-color: var(--highlight);\n  color: var(--white);\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 {\n  display: none;\n  padding: 0;\n  flex: 0 1 30%;\n  background: transparent;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 {\n    display: flex;\n    flex-direction: row;\n    justify-content: center;\n    align-items: center;\n  }\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 > [data-elem*=component] {\n  width: 100%;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 > [data-elem*=component] > * {\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 > [data-elem*=component] > form {\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  margin-left: auto;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 {\n  width: 100%;\n  background: transparent;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: stretch;\n  gap: 0rem;\n  padding: 0;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 > [data-elem*=component] {\n  overflow: hidden;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_inputbox__8f7084b9 {\n  max-width: 100%;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_inputbox__8f7084b9 > label {\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_inputbox__8f7084b9 > label > [data-elem=base-cell] {\n  border-radius: 0.313rem;\n  background-color: transparent;\n  color: var(--white);\n  border-color: var(--grey1);\n  border-radius: 0.25rem 0 0 0.25rem;\n  height: 100%;\n  width: 10rem;\n  flex: 1;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_inputbox__8f7084b9 > label > [data-elem=base-cell] .Pagination_module_icon__8f7084b9 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--grey1);\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_inputbox__8f7084b9 > label > [data-elem=base-cell] > [data-elem=component2] {\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_inputbox__8f7084b9 > label > [data-elem=base-cell] [data-elem=input] {\n  text-align: center;\n  color: var(--white);\n  background-color: transparent;\n  border: none;\n  height: 100%;\n  width: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_button__8f7084b9 {\n  border-radius: 0rem 0.25rem 0.25rem 0rem;\n  background-color: var(--grey1);\n  padding: 0.75rem 0.5rem;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_button__8f7084b9 .Pagination_module_icon__8f7084b9 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--white);\n  flex-shrink: 0;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_totalData__8f7084b9 {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  display: none;\n  margin: auto;\n  color: var(--white);\n  flex: 0 1 15%;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__8f7084b9 .Pagination_module_totalData__8f7084b9 {\n    display: inline;\n  }\n}\n.Pagination_module_root__8f7084b9.Pagination_module_noTotalData__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 {\n  flex: 0 1 20%;\n}\n.Pagination_module_root__8f7084b9.Pagination_module_noTotalData__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 {\n  flex: 1 1 60%;\n}\n.Pagination_module_root__8f7084b9.Pagination_module_noTotalData__8f7084b9 .Pagination_module_form__8f7084b9 {\n  flex: 0 1 20%;\n}";
+var modules_a3d40e77 = {"root":"Pagination_module_root__8f7084b9","floating":"Pagination_module_floating__8f7084b9","row-switcher":"Pagination_module_rowSwitcher__8f7084b9","jump-to-page":"Pagination_module_jumpToPage__8f7084b9","form":"Pagination_module_form__8f7084b9","row-switcher-handle":"Pagination_module_rowSwitcherHandle__8f7084b9","text":"Pagination_module_text__8f7084b9","dropdown":"Pagination_module_dropdown__8f7084b9","page-numbers":"Pagination_module_pageNumbers__8f7084b9","button":"Pagination_module_button__8f7084b9","disable":"Pagination_module_disable__8f7084b9","icon":"Pagination_module_icon__8f7084b9","pageSelect":"Pagination_module_pageSelect__8f7084b9","number":"Pagination_module_number__8f7084b9","active":"Pagination_module_active__8f7084b9","inputbox":"Pagination_module_inputbox__8f7084b9","total-data":"Pagination_module_totalData__8f7084b9","no-total-data":"Pagination_module_noTotalData__8f7084b9"};
 n(css$p,{});
 
 var dropdownOptions = ['10', '25', '50', '100', '200', '250'];
@@ -43370,6 +43439,10 @@ var reducer = function reducer(state, _ref) {
       return _objectSpread2(_objectSpread2({}, state), {}, {
         totalPages: payload
       });
+    case 'SET_TOTAL_DATA':
+      return _objectSpread2(_objectSpread2({}, state), {}, {
+        totalData: payload
+      });
     default:
       return state;
   }
@@ -43380,11 +43453,14 @@ var usePagination = function usePagination(props) {
     _props$currentPage = props.currentPage,
     currentPage = _props$currentPage === void 0 ? null : _props$currentPage,
     _props$step = props.step,
-    step = _props$step === void 0 ? 10 : _props$step;
+    step = _props$step === void 0 ? 10 : _props$step,
+    _props$totalData = props.totalData,
+    totalData = _props$totalData === void 0 ? null : _props$totalData;
   var _useReducer = useReducer(reducer, {
       totalPages: totalPages,
       currentPage: currentPage,
-      step: step
+      step: step,
+      totalData: totalData
     }),
     _useReducer2 = _slicedToArray(_useReducer, 2),
     paginationState = _useReducer2[0],
@@ -43396,11 +43472,17 @@ var usePagination = function usePagination(props) {
         payload: totalPages
       });
     }
+    if (paginationState.totalData !== totalData) {
+      paginationDispatch({
+        type: 'SET_TOTAL_DATA',
+        payload: totalData
+      });
+    }
     paginationDispatch({
       type: 'SET_TOTAL_PAGES',
       payload: totalPages
     });
-  }, [totalPages]);
+  }, [totalPages, totalData]);
   return [paginationState, paginationDispatch];
 };
 var Pagination = /*#__PURE__*/forwardRef(function (props, ref) {
@@ -43411,7 +43493,8 @@ var Pagination = /*#__PURE__*/forwardRef(function (props, ref) {
     loading = props.loading;
   var totalPages = paginationState.totalPages,
     currentPage = paginationState.currentPage,
-    step = paginationState.step;
+    step = paginationState.step,
+    totalData = paginationState.totalData;
   var paginationList = new PaginationList({
     curr: currentPage,
     total: totalPages
@@ -43430,40 +43513,54 @@ var Pagination = /*#__PURE__*/forwardRef(function (props, ref) {
   if (loading) {
     return null;
   }
+  var showTotalData = totalData && (currentPage - 1) * step + 1 < totalData;
   return /*#__PURE__*/jsxs("div", {
     ref: ref,
-    className: classes(modules_a3d40e77.root, className, floating ? modules_a3d40e77.floating : ''),
+    className: classes(modules_a3d40e77.root, className, floating ? modules_a3d40e77.floating : '', showTotalData ? '' : modules_a3d40e77['no-total-data']),
     children: [/*#__PURE__*/jsx(BaseCell, {
+      size: "auto",
       flexible: true,
       className: modules_a3d40e77['row-switcher'],
-      component1: /*#__PURE__*/jsx("span", {
-        title: "Rows per page",
-        className: modules_a3d40e77.text,
-        children: "Rows per page"
-      }),
-      component2: /*#__PURE__*/jsx(Dropdown, {
-        className: modules_a3d40e77.dropdown,
-        popperClassName: modules_a3d40e77['dropdown-popper'],
-        value: step,
-        placeholder: null,
-        onChange: function onChange(e, newStep) {
-          _onChange({
-            type: 'SET_STEP',
-            payload: newStep
-          });
-        },
-        children: dropdownOptions.map(function (item) {
-          return /*#__PURE__*/jsx(DropdownItem, {
-            title: item,
-            value: item
-          }, item);
+      component2: /*#__PURE__*/jsx(BaseCell, {
+        size: "auto",
+        flexible: true,
+        className: modules_a3d40e77['row-switcher-handle'],
+        component1: /*#__PURE__*/jsx("span", {
+          title: "Rows per page",
+          className: modules_a3d40e77.text,
+          children: "Rows per page"
+        }),
+        component2: /*#__PURE__*/jsx(Dropdown, {
+          className: modules_a3d40e77.dropdown,
+          popperClassName: modules_a3d40e77['dropdown-popper'],
+          value: step,
+          placeholder: null,
+          onChange: function onChange(e, newStep) {
+            _onChange({
+              type: 'SET_STEP',
+              payload: newStep
+            });
+          },
+          children: dropdownOptions.map(function (item) {
+            return /*#__PURE__*/jsx(DropdownItem, {
+              title: item,
+              value: item
+            }, item);
+          })
         })
       })
+    }), showTotalData && /*#__PURE__*/jsxs(Text, {
+      variant: "b1",
+      stroke: "medium",
+      className: modules_a3d40e77['total-data'],
+      attrs: {
+        title: "".concat((currentPage - 1) * step + 1, "-").concat(currentPage * step, " of ").concat(totalData)
+      },
+      children: [(currentPage - 1) * step + 1, "-", currentPage === totalPages ? totalData : currentPage * step, " of ", totalData]
     }), /*#__PURE__*/jsxs("div", {
       className: modules_a3d40e77['page-numbers'],
       children: [/*#__PURE__*/jsx(Button, {
         size: "auto",
-        flexible: true,
         disabled: currentPage === 1,
         title: "Prev",
         onClick: function onClick() {
@@ -43498,7 +43595,6 @@ var Pagination = /*#__PURE__*/forwardRef(function (props, ref) {
         })
       }), /*#__PURE__*/jsx(Button, {
         size: "auto",
-        flexible: true,
         disabled: currentPage === totalPages,
         title: "Next",
         onClick: function onClick() {
@@ -43528,21 +43624,26 @@ var Pagination = /*#__PURE__*/forwardRef(function (props, ref) {
           });
         },
         children: /*#__PURE__*/jsx(BaseCell, {
-          flexible: true,
+          size: "auto",
           className: modules_a3d40e77['jump-to-page'],
           component1: /*#__PURE__*/jsx(TextField, {
             inputProps: {
               min: 1,
               max: totalPages,
-              required: true
+              required: true,
+              placeholder: 'Jump to Page'
             },
             ref: jumpPageRef,
             type: "number",
-            className: modules_a3d40e77.inputbox
+            className: modules_a3d40e77.inputbox,
+            LeftComponent: function LeftComponent() {
+              return /*#__PURE__*/jsx(SearchIcon, {
+                className: modules_a3d40e77.icon
+              });
+            }
           }),
           component2: /*#__PURE__*/jsx(Button, {
-            title: "Jump to page",
-            size: "medium",
+            size: "auto",
             variant: "contained",
             className: modules_a3d40e77.button,
             rightComponent: function rightComponent() {
@@ -43697,12 +43798,37 @@ var TableColumn = /*#__PURE__*/_createClass(function TableColumn(_ref) {
   this.sticky = sticky;
 });
 
-var css$m = ".TableCell_module_root__b998b6b2[data-elem=base-cell] {\n  background: var(--white);\n  border-bottom: 1px solid var(--grey4);\n}\n.TableCell_module_root__b998b6b2[data-elem=base-cell] > [data-elem*=component] {\n  overflow: hidden;\n}\n.TableCell_module_root__b998b6b2[data-elem=base-cell] > [data-elem*=component] {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  flex: 1;\n}\n.TableCell_module_root__b998b6b2[data-elem=base-cell] > [data-elem*=component] .TableCell_module_cellText__b998b6b2 {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  display: inline-block;\n  width: 100%;\n  font-size: 0.875rem;\n}\n.TableCell_module_root__b998b6b2[data-elem=base-cell].TableCell_module_headerCell__b998b6b2 {\n  background: var(--grey7);\n}\n.TableCell_module_root__b998b6b2[data-elem=base-cell].TableCell_module_headerCell__b998b6b2 .TableCell_module_cellText__b998b6b2 {\n  font-weight: 600;\n}\n.TableCell_module_root__b998b6b2[data-elem=base-cell].TableCell_module_bodyCell__b998b6b2 .TableCell_module_cellText__b998b6b2.TableCell_module_multiLine__b998b6b2 {\n  white-space: normal;\n  display: -webkit-box;\n  -webkit-box-orient: vertical;\n  -webkit-line-clamp: 2;\n  font-size: 0.75rem;\n}\n.TableCell_module_root__b998b6b2[data-elem=base-cell].TableCell_module_stickyLeft__b998b6b2 {\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n  position: -webkit-sticky;\n  position: sticky;\n  left: 0;\n}\n.TableCell_module_root__b998b6b2[data-elem=base-cell].TableCell_module_stickyRight__b998b6b2 {\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n  position: -webkit-sticky;\n  position: sticky;\n  right: 0;\n}";
-var modules_7ba8d001 = {"root":"TableCell_module_root__b998b6b2","cell-text":"TableCell_module_cellText__b998b6b2","header-cell":"TableCell_module_headerCell__b998b6b2","body-cell":"TableCell_module_bodyCell__b998b6b2","multi-line":"TableCell_module_multiLine__b998b6b2","sticky-left":"TableCell_module_stickyLeft__b998b6b2","sticky-right":"TableCell_module_stickyRight__b998b6b2"};
+var css$m = ".TableCell_module_root__ff5c86cb[data-elem=base-cell] {\n  background: var(--white);\n  border-bottom: 1px solid var(--grey4);\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell] > [data-elem*=component] {\n  overflow: hidden;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell] > [data-elem*=component] {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  flex: 1;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell] > [data-elem*=component] .TableCell_module_cellText__ff5c86cb {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  display: inline-block;\n  width: 100%;\n  font-size: 0.875rem;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb {\n  background: var(--grey6);\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb .TableCell_module_cellText__ff5c86cb {\n  font-weight: 500;\n  color: var(--grey);\n  font-size: 0.75rem;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb > [data-elem=component2] {\n  flex: 0 0 auto;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb > [data-elem=component2] .TableCell_module_cellText__ff5c86cb {\n  width: auto;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb > [data-elem=component3] {\n  flex: 0 0 auto;\n  margin-right: auto;\n  overflow: visible;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb > [data-elem=component3] button.TableCell_module_sort__ff5c86cb {\n  height: auto;\n  background: transparent;\n  padding: 0;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb > [data-elem=component3] .TableCell_module_sortIcon__ff5c86cb {\n  width: 1rem;\n  height: 1rem;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb.TableCell_module_sortDefault__ff5c86cb > [data-elem=component3] {\n  visibility: hidden;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb.TableCell_module_sortDefault__ff5c86cb > [data-elem=component3] .TableCell_module_sortIcon__ff5c86cb {\n  width: 1rem;\n  height: 1rem;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb.TableCell_module_sortAsc__ff5c86cb > [data-elem=component3], .TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb.TableCell_module_sortDesc__ff5c86cb > [data-elem=component3] {\n  visibility: visible;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb.TableCell_module_sortAsc__ff5c86cb > [data-elem=component3] .TableCell_module_sortIcon__ff5c86cb, .TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb.TableCell_module_sortDesc__ff5c86cb > [data-elem=component3] .TableCell_module_sortIcon__ff5c86cb {\n  fill: var(--highlight);\n  width: 1rem;\n  height: 1rem;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb:hover > [data-elem=component3] {\n  visibility: visible;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_bodyCell__ff5c86cb .TableCell_module_cellText__ff5c86cb.TableCell_module_multiLine__ff5c86cb {\n  white-space: normal;\n  display: -webkit-box;\n  -webkit-box-orient: vertical;\n  -webkit-line-clamp: 2;\n  font-size: 0.75rem;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_stickyLeft__ff5c86cb {\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n  position: -webkit-sticky;\n  position: sticky;\n  left: 0;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_stickyRight__ff5c86cb {\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n  position: -webkit-sticky;\n  position: sticky;\n  right: 0;\n}";
+var modules_7ba8d001 = {"root":"TableCell_module_root__ff5c86cb","cell-text":"TableCell_module_cellText__ff5c86cb","header-cell":"TableCell_module_headerCell__ff5c86cb","sortable":"TableCell_module_sortable__ff5c86cb","sort":"TableCell_module_sort__ff5c86cb","sort-icon":"TableCell_module_sortIcon__ff5c86cb","sort-default":"TableCell_module_sortDefault__ff5c86cb","sort-asc":"TableCell_module_sortAsc__ff5c86cb","sort-desc":"TableCell_module_sortDesc__ff5c86cb","body-cell":"TableCell_module_bodyCell__ff5c86cb","multi-line":"TableCell_module_multiLine__ff5c86cb","sticky-left":"TableCell_module_stickyLeft__ff5c86cb","sticky-right":"TableCell_module_stickyRight__ff5c86cb"};
 n(css$m,{});
 
+var SORT_ICONS = {
+  asc: /*#__PURE__*/jsx(Sort, {
+    className: modules_7ba8d001['sort-icon'],
+    position: "az"
+  }),
+  desc: /*#__PURE__*/jsx(Sort, {
+    className: modules_7ba8d001['sort-icon'],
+    position: "za"
+  }),
+  "default": /*#__PURE__*/jsx(Sort, {
+    className: modules_7ba8d001['sort-icon'],
+    position: "az"
+  })
+};
+var getNextSortState = function getNextSortState(currentSort) {
+  var _asc$desc$default;
+  return (_asc$desc$default = {
+    asc: 'desc',
+    desc: 'default',
+    "default": 'asc'
+  }) === null || _asc$desc$default === void 0 ? void 0 : _asc$desc$default[currentSort];
+};
+
+// eslint-disable-next-line prefer-arrow-callback
 var TableCell = /*#__PURE__*/forwardRef(function TableCell(props, ref) {
-  var className = props.className,
+  var id = props.id,
+    className = props.className,
     size = props.size,
     flexible = props.flexible,
     rounded = props.rounded,
@@ -43716,10 +43842,12 @@ var TableCell = /*#__PURE__*/forwardRef(function TableCell(props, ref) {
     type = props.type,
     cellContent = props.cellContent,
     cellTitle = props.cellTitle,
-    sticky = props.sticky;
+    sticky = props.sticky,
+    sort = props.sort,
+    onSort = props.onSort;
   return /*#__PURE__*/jsx(BaseCell, {
     ref: ref,
-    className: classes(modules_7ba8d001.root, className, modules_7ba8d001["".concat(type, "-cell")], modules_7ba8d001["sticky-".concat(sticky)]),
+    className: classes(modules_7ba8d001.root, className, modules_7ba8d001["".concat(type, "-cell")], modules_7ba8d001["sticky-".concat(sticky)], modules_7ba8d001["sort-".concat(sort)], sort != null ? modules_7ba8d001.sortable : ''),
     attrs: _objectSpread2({
       style: style
     }, attrs),
@@ -43736,7 +43864,16 @@ var TableCell = /*#__PURE__*/forwardRef(function TableCell(props, ref) {
     })), {}, {
       children: [null, false, true].includes(cellContent) ? JSON.stringify(cellContent) : cellContent
     })),
-    component3: component3,
+    component3: type === 'header' && sort ? /*#__PURE__*/jsx(Button, {
+      className: modules_7ba8d001.sort,
+      size: "auto",
+      onClick: function onClick() {
+        onSort(id, getNextSortState(sort));
+      },
+      leftComponent: function leftComponent() {
+        return SORT_ICONS[sort];
+      }
+    }) : component3,
     RootDOM: RootDOM,
     radius: radius
   });
@@ -43746,18 +43883,20 @@ TableCell.propTypes = _objectSpread2(_objectSpread2({}, BaseCell.propTypes), {},
   id: propTypes$1.exports.string,
   size: propTypes$1.exports.oneOf(['sm', 'md', 'lg']),
   flexible: propTypes$1.exports.bool,
-  sort: propTypes$1.exports.bool,
+  sort: propTypes$1.exports.oneOf(['default', 'asc', 'desc']),
   // eslint-disable-next-line react/forbid-prop-types
   style: propTypes$1.exports.object,
   multiLine: propTypes$1.exports.bool,
   sticky: propTypes$1.exports.oneOf(['left', 'right', 'none']),
   cellContent: propTypes$1.exports.node,
-  cellTitle: propTypes$1.exports.string
+  cellTitle: propTypes$1.exports.string,
+  onSort: propTypes$1.exports.func
 });
 TableCell.defaultProps = _objectSpread2(_objectSpread2({}, BaseCell.defaultProps), {}, {
   cellContent: null,
   cellTitle: null,
-  RootDOM: 'td'
+  RootDOM: 'td',
+  onSort: function onSort() {}
 });
 
 var css$l = ".TableRow_module_root__a0ba90a7 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.TableRow_module_root__a0ba90a7.TableRow_module_headerRow__a0ba90a7 {\n  background: var(--grey6);\n}\n.TableRow_module_root__a0ba90a7.TableRow_module_headerRow__a0ba90a7.TableRow_module_expandable__a0ba90a7 > [data-elem=base-cell]:first-child {\n  padding-left: 4.5rem;\n}\n.TableRow_module_root__a0ba90a7.TableRow_module_bodyRow__a0ba90a7 {\n  background: var(--white);\n}\n.TableRow_module_root__a0ba90a7.TableRow_module_bodyRow__a0ba90a7:hover > [data-elem=base-cell] {\n  background: var(--info-bg);\n}\n.TableRow_module_root__a0ba90a7.TableRow_module_bodyRow__a0ba90a7[data-active=true] > [data-elem=base-cell] {\n  background: var(--background);\n}\n.TableRow_module_root__a0ba90a7 > [data-elem=base-cell]:first-child {\n  padding-left: 1rem;\n}\n.TableRow_module_root__a0ba90a7 > [data-elem=base-cell]:last-child {\n  padding-right: 1rem;\n}\n.TableRow_module_root__a0ba90a7 > [data-elem=base-cell].TableRow_module_expandableCell__a0ba90a7 {\n  padding-left: 0.9rem;\n  padding-right: 0.1rem;\n  overflow: visible;\n}\n.TableRow_module_root__a0ba90a7 > [data-elem=base-cell].TableRow_module_expandableCell__a0ba90a7 > [data-elem=component2] {\n  overflow: visible;\n}\n.TableRow_module_root__a0ba90a7 > [data-elem=base-cell].TableRow_module_expandableCell__a0ba90a7 > [data-elem=component2] > [data-elem=text] {\n  overflow: visible;\n}\n.TableRow_module_root__a0ba90a7 .TableRow_module_button__a0ba90a7 .TableRow_module_icon__a0ba90a7 {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.TableRow_module_root__a0ba90a7 .TableRow_module_expanded__a0ba90a7 .TableRow_module_button__a0ba90a7 .TableRow_module_icon__a0ba90a7 {\n  transform: rotate(180deg);\n}";
@@ -43773,7 +43912,8 @@ var TableRow = /*#__PURE__*/forwardRef(function BaseTable(props, ref) {
     customCells = props.customCells,
     className = props.className,
     setActiveId = props.setActiveId,
-    Expandable = props.expandable;
+    Expandable = props.expandable,
+    onSort = props.onSort;
   var _useState = useState(false),
     _useState2 = _slicedToArray(_useState, 2),
     expanded = _useState2[0],
@@ -43793,7 +43933,8 @@ var TableRow = /*#__PURE__*/forwardRef(function BaseTable(props, ref) {
       datum: datum,
       cellContent: cellContent,
       cellTitle: cellContent,
-      type: type
+      type: type,
+      onSort: onSort
     });
     var getCustomCell = customCells === null || customCells === void 0 ? void 0 : customCells[type];
     var CustomCell = typeof getCustomCell === 'function' ? (_getCustomCell = getCustomCell()) === null || _getCustomCell === void 0 ? void 0 : _getCustomCell[item.id] : null;
@@ -43858,10 +43999,9 @@ TableRow.propTypes = {
     multiLine: propTypes$1.exports.bool
   })),
   setActiveId: propTypes$1.exports.func,
-  expandable: propTypes$1.exports.func
-  // expandableComponent:
+  expandable: propTypes$1.exports.func,
+  onSort: propTypes$1.exports.func
 };
-
 TableRow.defaultProps = {
   className: '',
   type: 'body',
@@ -43872,7 +44012,8 @@ TableRow.defaultProps = {
   },
   headerData: [],
   setActiveId: function setActiveId() {},
-  expandable: null
+  expandable: null,
+  onSort: function onSort() {}
 };
 
 var css$k = ".TableBody_module_root__77e2990d {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n}";
@@ -43955,7 +44096,8 @@ n(css$j,{});
 var TableHeader = function TableHeader(props) {
   var headerData = props.headerData,
     customCells = props.customCells,
-    expandable = props.expandable;
+    expandable = props.expandable,
+    onSort = props.onSort;
   return /*#__PURE__*/jsx("thead", {
     "data-elem": "table-header",
     className: modules_3be98c28.root,
@@ -43963,7 +44105,8 @@ var TableHeader = function TableHeader(props) {
       type: "header",
       headerData: headerData,
       customCells: customCells,
-      expandable: expandable
+      expandable: expandable,
+      onSort: onSort
     })
   });
 };
@@ -43981,7 +44124,8 @@ TableHeader.propTypes = {
     header: propTypes$1.exports.func,
     body: propTypes$1.exports.func
   }),
-  expandable: propTypes$1.exports.func
+  expandable: propTypes$1.exports.func,
+  onSort: propTypes$1.exports.func
 };
 TableHeader.defaultProps = {
   headerData: [],
@@ -43989,7 +44133,8 @@ TableHeader.defaultProps = {
     header: null,
     body: null
   },
-  expandable: null
+  expandable: null,
+  onSort: function onSort() {}
 };
 
 var css$i = ".BaseTable_module_root__7a8d241c {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  background: var(--white);\n  overflow: auto;\n}";
@@ -44060,7 +44205,8 @@ var BaseTable = /*#__PURE__*/forwardRef(function BaseTable(props, ref) {
     tableData = props.tableData,
     className = props.className,
     loading = props.loading,
-    expandable = props.expandable;
+    expandable = props.expandable,
+    onSort = props.onSort;
   if (loading) {
     return /*#__PURE__*/jsx(BaseTableSkeleton, {});
   }
@@ -44074,7 +44220,8 @@ var BaseTable = /*#__PURE__*/forwardRef(function BaseTable(props, ref) {
     children: [/*#__PURE__*/jsx(TableHeader, {
       headerData: transformedHeaderData,
       customCells: customCells,
-      expandable: expandable
+      expandable: expandable,
+      onSort: onSort
     }), /*#__PURE__*/jsx(TableBody, {
       ref: ref,
       headerData: transformedHeaderData,
@@ -44101,7 +44248,8 @@ BaseTable.propTypes = {
     body: propTypes$1.exports.func
   }),
   loading: propTypes$1.exports.bool,
-  expandable: propTypes$1.exports.func
+  expandable: propTypes$1.exports.func,
+  onSort: propTypes$1.exports.func
 };
 BaseTable.defaultProps = {
   className: '',
@@ -44112,7 +44260,8 @@ BaseTable.defaultProps = {
     body: null
   },
   loading: null,
-  expandable: null
+  expandable: null,
+  onSort: function onSort() {}
 };
 
 var css$f = ".Skeleton_module_root__15c10a9b[data-elem=base-cell] {\n  align-items: flex-start;\n  width: 100%;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component1] {\n  width: auto;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component1] > [data-elem=skeleton] {\n  height: 1.5rem;\n  width: 1.5rem !important;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component2] {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 1rem;\n  flex: 8;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component2] > [data-elem=skeleton] {\n  max-width: 9rem;\n  height: 1.5rem;\n}";
@@ -44135,42 +44284,88 @@ var TableChipsSkeleton = function TableChipsSkeleton() {
   });
 };
 
-var css$e = ".TableChips_module_root__dfc60d0e[data-elem=base-cell] {\n  padding: 0.5rem 1.5rem;\n  width: 100%;\n  background: var(--grey8);\n  border-radius: 0.25rem 0.25rem 0 0;\n}\n.TableChips_module_root__dfc60d0e[data-elem=base-cell] > [data-elem=component1] .TableChips_module_back__dfc60d0e {\n  height: 2rem;\n  width: 2rem;\n}\n.TableChips_module_root__dfc60d0e[data-elem=base-cell] > [data-elem=component1] .TableChips_module_back__dfc60d0e [data-elem=component1] .TableChips_module_icon__dfc60d0e {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--white);\n}\n.TableChips_module_root__dfc60d0e[data-elem=base-cell] > [data-elem=component2] {\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.5rem;\n  overflow-x: auto;\n  flex: 1;\n}\n.TableChips_module_root__dfc60d0e[data-elem=base-cell] > [data-elem=component2]::-webkit-scrollbar {\n  display: none;\n}\n.TableChips_module_root__dfc60d0e[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chip__dfc60d0e .TableChips_module_chipIcon__dfc60d0e {\n  width: 1rem;\n  height: 1rem;\n}\n.TableChips_module_root__dfc60d0e[data-elem=base-cell] > [data-elem=component3] {\n  height: 100%;\n}\n.TableChips_module_root__dfc60d0e[data-elem=base-cell] > [data-elem=component3] .TableChips_module_clear__dfc60d0e {\n  height: 100%;\n}";
-var modules_016d9b3e = {"root":"TableChips_module_root__dfc60d0e","back":"TableChips_module_back__dfc60d0e","icon":"TableChips_module_icon__dfc60d0e","chip":"TableChips_module_chip__dfc60d0e","chip-icon":"TableChips_module_chipIcon__dfc60d0e","clear":"TableChips_module_clear__dfc60d0e"};
+var css$e = ".TableChips_module_root__5d8107b3[data-elem=base-cell] {\n  padding: 0.5rem 1.5rem;\n  width: 100%;\n  background: var(--grey6);\n  border-radius: 0.25rem 0.25rem 0 0;\n}\n.TableChips_module_root__5d8107b3[data-elem=base-cell] > [data-elem=component1] .TableChips_module_back__5d8107b3 {\n  height: 2rem;\n  width: 2rem;\n}\n.TableChips_module_root__5d8107b3[data-elem=base-cell] > [data-elem=component1] .TableChips_module_back__5d8107b3 [data-elem=component1] .TableChips_module_icon__5d8107b3 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--white);\n}\n.TableChips_module_root__5d8107b3[data-elem=base-cell] > [data-elem=component2] {\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  height: 100%;\n  gap: 0.5rem;\n  overflow: auto hidden;\n  flex: 1;\n}\n.TableChips_module_root__5d8107b3[data-elem=base-cell] > [data-elem=component2]::-webkit-scrollbar {\n  display: none;\n}\n.TableChips_module_root__5d8107b3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__5d8107b3 {\n  background: var(--grey8);\n  border: 1px solid var(--grey4);\n  padding: 0.344rem 0.25rem;\n  height: 100%;\n  cursor: default;\n}\n.TableChips_module_root__5d8107b3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__5d8107b3 .TableChips_module_chipIcon__5d8107b3 {\n  width: 1rem;\n  height: 1rem;\n}\n.TableChips_module_root__5d8107b3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__5d8107b3 > [data-elem=component2] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  gap: 0.25rem;\n  height: 100%;\n}\n.TableChips_module_root__5d8107b3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__5d8107b3 > [data-elem=component2] .TableChips_module_chipChild__5d8107b3 {\n  height: 100%;\n}\n.TableChips_module_root__5d8107b3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__5d8107b3 > [data-elem=component2] .TableChips_module_chipChild__5d8107b3 > [data-elem=component2] > [data-elem=title] {\n  color: var(--dark-grey);\n}\n.TableChips_module_root__5d8107b3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__5d8107b3 > [data-elem=component2] .TableChips_module_chipChild__5d8107b3 .TableChips_module_icon__5d8107b3 {\n  width: 0.875rem;\n  height: 0.875rem;\n}\n.TableChips_module_root__5d8107b3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__5d8107b3 > [data-elem=component3] {\n  height: 100%;\n}\n.TableChips_module_root__5d8107b3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__5d8107b3:hover {\n  border-color: var(--highlight);\n}\n.TableChips_module_root__5d8107b3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__5d8107b3:hover > [data-elem=component2] .TableChips_module_label__5d8107b3 {\n  color: var(--highlight);\n}\n.TableChips_module_root__5d8107b3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__5d8107b3:hover > [data-elem=component2] .TableChips_module_chipChild__5d8107b3 {\n  background: var(--background);\n}\n.TableChips_module_root__5d8107b3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__5d8107b3:hover > [data-elem=component2] .TableChips_module_chipChild__5d8107b3 > [data-elem=component2] > [data-elem=title] {\n  color: var(--highlight);\n}\n.TableChips_module_root__5d8107b3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__5d8107b3:hover > [data-elem=component2] .TableChips_module_chipChild__5d8107b3 .TableChips_module_icon__5d8107b3 {\n  width: 0.875rem;\n  height: 0.875rem;\n}\n.TableChips_module_root__5d8107b3[data-elem=base-cell] > [data-elem=component3] {\n  height: 100%;\n}\n.TableChips_module_root__5d8107b3[data-elem=base-cell] > [data-elem=component3] .TableChips_module_clear__5d8107b3 {\n  height: 100%;\n}";
+var modules_016d9b3e = {"root":"TableChips_module_root__5d8107b3","back":"TableChips_module_back__5d8107b3","icon":"TableChips_module_icon__5d8107b3","chip-parent":"TableChips_module_chipParent__5d8107b3","chip-icon":"TableChips_module_chipIcon__5d8107b3","chip-child":"TableChips_module_chipChild__5d8107b3","label":"TableChips_module_label__5d8107b3","clear":"TableChips_module_clear__5d8107b3"};
 n(css$e,{});
 
+var TableChip$1 = function TableChip(props) {
+  var icon = props.icon,
+    rightComponent = props.rightComponent,
+    label = props.label,
+    value = props.value,
+    onRemove = props.onRemove;
+
+  // component 1
+  var Icon = icon;
+  if (Icon) {
+    Icon = /*#__PURE__*/jsx(Icon, {
+      className: modules_016d9b3e['chip-icon']
+    });
+  } else {
+    Icon = null;
+  }
+
+  // component 2
+  var Title = /*#__PURE__*/jsxs(Fragment, {
+    children: [/*#__PURE__*/jsxs(Text, {
+      className: modules_016d9b3e.label,
+      variant: "b2",
+      stroke: "medium",
+      children: [label, " :"]
+    }), typeof value === 'string' && value.length > 0 && /*#__PURE__*/jsx(Chip, {
+      className: modules_016d9b3e['chip-child'],
+      title: value,
+      radius: "ellipse",
+      color: "info",
+      variant: "input",
+      onClick: onRemove,
+      rightComponent: function rightComponent() {
+        return /*#__PURE__*/jsx(Close, {
+          className: modules_016d9b3e.icon
+        });
+      }
+    })]
+  });
+
+  // component 3
+  var RightComponent = rightComponent;
+  if (RightComponent) {
+    RightComponent = /*#__PURE__*/jsx(RightComponent, {});
+  } else {
+    RightComponent = null;
+  }
+  return /*#__PURE__*/jsx(BaseCell, {
+    radius: "default",
+    size: "auto",
+    className: modules_016d9b3e['chip-parent'],
+    component1: Icon,
+    component2: Title,
+    component3: RightComponent,
+    title: "".concat(label, " : ").concat(value)
+  });
+};
 var TableChips = function TableChips(props) {
   var _chips$filter;
+  // eslint-disable-next-line object-curly-newline
   var showBack = props.showBack,
     onBack = props.onBack,
     onClear = props.onClear,
     chips = props.chips,
     className = props.className,
     style = props.style,
-    loading = props.loading;
+    loading = props.loading,
+    _onRemove = props.onRemove;
   if (loading) {
     return /*#__PURE__*/jsx(TableChipsSkeleton, {});
   }
   var chipsDOM = chips === null || chips === void 0 ? void 0 : (_chips$filter = chips.filter(function (chip) {
     return (chip === null || chip === void 0 ? void 0 : chip.value) != null;
-  })) === null || _chips$filter === void 0 ? void 0 : _chips$filter.map(function (chip) {
-    return /*#__PURE__*/jsx(Chip, {
-      variant: "input",
-      color: "default",
-      disabled: chip.disabled,
-      className: modules_016d9b3e.chip,
-      title: "".concat(chip.label, " : ").concat(chip.value),
-      leftComponent: function leftComponent(iconProps) {
-        var Icon = chip.icon;
-        if ( /*#__PURE__*/isValidElement( /*#__PURE__*/jsx(Icon, {}))) {
-          return /*#__PURE__*/jsx(Icon, _objectSpread2(_objectSpread2({}, iconProps), {}, {
-            className: modules_016d9b3e['chip-icon']
-          }));
-        }
-        return null;
-      },
-      rightComponent: chip.rightComponent
-    }, chip.key);
+  })) === null || _chips$filter === void 0 ? void 0 : _chips$filter.map(function (chip, index) {
+    return /*#__PURE__*/jsx(TableChip$1, _objectSpread2(_objectSpread2({}, chip), {}, {
+      onRemove: function onRemove() {
+        _onRemove(chip, index);
+      }
+    }), chip.key);
   });
   if ((chipsDOM === null || chipsDOM === void 0 ? void 0 : chipsDOM.length) > 0 || showBack) {
     return /*#__PURE__*/jsx(BaseCell, {
@@ -44224,7 +44419,8 @@ TableChips.propTypes = {
     disabled: propTypes$1.exports.bool,
     rightComponent: propTypes$1.exports.node
   })),
-  loading: propTypes$1.exports.bool
+  loading: propTypes$1.exports.bool,
+  onRemove: propTypes$1.exports.func
 };
 TableChips.defaultProps = {
   className: '',
@@ -44233,7 +44429,8 @@ TableChips.defaultProps = {
   onBack: function onBack() {},
   onClear: function onClear() {},
   chips: [],
-  loading: null
+  loading: null,
+  onRemove: function onRemove() {}
 };
 
 var TableChip = /*#__PURE__*/_createClass(function TableChip(_ref) {
@@ -44246,13 +44443,16 @@ var TableChip = /*#__PURE__*/_createClass(function TableChip(_ref) {
     _ref$value = _ref.value,
     value = _ref$value === void 0 ? '' : _ref$value,
     _ref$disabled = _ref.disabled,
-    disabled = _ref$disabled === void 0 ? false : _ref$disabled;
+    disabled = _ref$disabled === void 0 ? false : _ref$disabled,
+    _ref$rightComponent = _ref.rightComponent,
+    rightComponent = _ref$rightComponent === void 0 ? null : _ref$rightComponent;
   _classCallCheck(this, TableChip);
   this.key = key;
   this.icon = icon;
   this.label = label;
   this.value = value;
   this.disabled = disabled;
+  this.rightComponent = rightComponent;
 });
 
 var css$d = ".Popover_module_root__265e51dc {\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n  background-color: var(--white);\n  padding: 1rem;\n  border-radius: 0.25rem;\n}";
@@ -44636,7 +44836,7 @@ var modules_2e8406c7 = {"root":"Table_module_root__d17cb64f","table":"Table_modu
 n(css$9,{});
 
 var INTERSECTION = 1;
-var STEP = 0.1;
+var STEP = 0.05;
 var THRESHOLD = [];
 for (var i = 0; i < INTERSECTION; i += STEP) {
   THRESHOLD.push(i);
@@ -44654,7 +44854,8 @@ var Table = function Table(props) {
     filtersData = props.filtersData,
     paginationData = props.paginationData,
     loading = props.loading,
-    disabledFilterOptions = props.disabledFilterOptions;
+    disabledFilterOptions = props.disabledFilterOptions,
+    onSort = props.onSort;
   var ref = useRef(null);
   var paginationRef = useRef(null);
   var _useState = useState(false),
@@ -44680,7 +44881,7 @@ var Table = function Table(props) {
           entries.forEach(function (entry) {
             var _entry$intersectionRe;
             // if the target is visibile
-            if (entry.isIntersecting && entry.intersectionRatio >= INTERSECTION || (entry === null || entry === void 0 ? void 0 : (_entry$intersectionRe = entry.intersectionRect) === null || _entry$intersectionRe === void 0 ? void 0 : _entry$intersectionRe.height) === lastRowHeight) {
+            if (entry.isIntersecting && entry.intersectionRatio >= INTERSECTION || (entry === null || entry === void 0 ? void 0 : (_entry$intersectionRe = entry.intersectionRect) === null || _entry$intersectionRe === void 0 ? void 0 : _entry$intersectionRe.height) >= lastRowHeight) {
               setFloating(false);
             } else {
               setFloating(true);
@@ -44750,6 +44951,7 @@ var Table = function Table(props) {
       setActiveData: setActiveData,
       customCells: customCells,
       className: modules_2e8406c7.table,
+      onSort: onSort,
       loading: loading
     }), paginationData != null && /*#__PURE__*/jsx(Pagination, _objectSpread2(_objectSpread2({
       className: classes(modules_2e8406c7.pagination, floating ? modules_2e8406c7.floating : ''),
@@ -44788,7 +44990,8 @@ Table.propTypes = {
     refresh: propTypes$1.exports.bool,
     columnFilter: propTypes$1.exports.bool,
     settings: propTypes$1.exports.bool
-  })
+  }),
+  onSort: propTypes$1.exports.func
 };
 Table.defaultProps = {
   className: '',
@@ -44810,7 +45013,8 @@ Table.defaultProps = {
     refresh: false,
     columnFilter: false,
     settings: false
-  }
+  },
+  onSort: function onSort() {}
 };
 
 var css$8 = ".Tabs_module_root__83feec3e {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e {\n  padding: 0.75rem;\n  gap: 0.75rem;\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e > [data-elem=component1] > .Tabs_module_icon__83feec3e,\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e > [data-elem=component3] > .Tabs_module_icon__83feec3e {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--black);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e > [data-elem=component2] {\n  color: var(--black);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e.Tabs_module_active__83feec3e {\n  border-bottom: 2px solid var(--highlight);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e.Tabs_module_active__83feec3e > [data-elem=component1] > .Tabs_module_icon__83feec3e,\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e.Tabs_module_active__83feec3e > [data-elem=component3] > .Tabs_module_icon__83feec3e {\n  fill: var(--highlight);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e.Tabs_module_active__83feec3e > [data-elem=component2] {\n  color: var(--highlight);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e:hover {\n  background: var(--info-bg);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e:hover > [data-elem=component1] > .Tabs_module_icon__83feec3e,\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e:hover > [data-elem=component3] > .Tabs_module_icon__83feec3e {\n  fill: var(--highlight);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e:hover > [data-elem=component2] {\n  color: var(--highlight);\n}";
@@ -95189,4 +95393,4 @@ DisplayPicture.defaultProps = {
   size: 'sm'
 };
 
-export { Accordion, Alert, AlertIcon, AngleDouble as AngleDoubleIcon, Arrow$1 as ArrowIcon, BASE_URLS, BaseButton, BaseCell, BaseHorizontalBarChart, BaseModal, BasePieChart, BaseSidePanel, BaseTable, BaseVerticalBarChart, BaseWidget, BreadCrumbs, BreadcrumbSeperator as BreadcrumbSeperatorIcon, Button, COLORS, Calender$1 as CalenderIcon, Caret as CaretIcon, Checkbox, CheckboxIcon, Chevron as ChevronIcon, Chip, CodeSnippet, Columns$1 as ColumnsIcon, Copy as CopyIcon, Cross$1 as CrossIcon, DAYS, DatePicker, Delete as DeleteIcon, DialogBox, DisplayPicture, Download as DownloadIcon, Dropdown, DropdownItem, Edit as EditIcon, ExpandArrowAlt as ExpandArrowAltIcon, FULL_MONTHS, Filter as FilterIcon, HalfShade as HalfShadeIcon, HierarchyBrowser, HierarchyItem, Link, MONTHS, MagnifyingGlass as MagnifyingGlassIcon, Nut as NutIcon, PageHeader, Pagination, PaginationList, Plus as PlusIcon, Popover, Popper, Radio, RadioIcon, Refresh as RefreshIcon, Reset as ResetIcon, Server as ServerIcon, Settings as SettingsIcon, Stepper, Table, TableCell, TableChip, TableChips, TableColumn, TableFilters, Tabs, Text, TextField, Tick as TickIcon, TimePicker, Toggle, Tooltip, Trash as TrashIcon, View as ViewIcon, classes, cloneDeep, defaultProps, doubleDigitted, get$1 as get, getCSSVariableValue, getCurrentSearchParams, getDateFromEpoch, getDatesInAMonth, getDayInfo, getInitialsOfName, getJSDateFromEpoch, getPagination, getSpacedDisplayName, getTimeFromEpoch, inputHelper, propTypes, stringToPath, sumArrayOfObjects, uniqueArray, uniqueArrayOfObjects, useOutsideClickListener, usePagination, useResize, useRowFilter };
+export { Accordion, Alert, AlertIcon, AngleDouble as AngleDoubleIcon, Arrow$1 as ArrowIcon, BASE_URLS, BaseButton, BaseCell, BaseHorizontalBarChart, BaseModal, BasePieChart, BaseSidePanel, BaseTable, BaseVerticalBarChart, BaseWidget, BreadCrumbs, BreadcrumbSeperator as BreadcrumbSeperatorIcon, Button, COLORS, Calender$1 as CalenderIcon, Caret as CaretIcon, Checkbox, CheckboxIcon, Chevron as ChevronIcon, Chip, Close as CloseIcon, CodeSnippet, Columns$1 as ColumnsIcon, Copy as CopyIcon, Cross$1 as CrossIcon, DAYS, DatePicker, Delete as DeleteIcon, DialogBox, DisplayPicture, Download as DownloadIcon, Dropdown, DropdownItem, Edit as EditIcon, ExpandArrowAlt as ExpandArrowAltIcon, FULL_MONTHS, Filter as FilterIcon, HalfShade as HalfShadeIcon, HierarchyBrowser, HierarchyItem, Link, MONTHS, MagnifyingGlass as MagnifyingGlassIcon, Nut as NutIcon, PageHeader, Pagination, PaginationList, Plus as PlusIcon, Popover, Popper, Radio, RadioIcon, Refresh as RefreshIcon, Reset as ResetIcon, SearchIcon, Server as ServerIcon, Settings as SettingsIcon, Sort as SortIcon, Stepper, Table, TableCell, TableChip, TableChips, TableColumn, TableFilters, Tabs, Text, TextField, Tick as TickIcon, TimePicker, Toggle, Tooltip, Trash as TrashIcon, View as ViewIcon, classes, cloneDeep, defaultProps, doubleDigitted, get$1 as get, getCSSVariableValue, getCurrentSearchParams, getDateFromEpoch, getDatesInAMonth, getDayInfo, getInitialsOfName, getJSDateFromEpoch, getPagination, getSpacedDisplayName, getTimeFromEpoch, inputHelper, propTypes, stringToPath, sumArrayOfObjects, uniqueArray, uniqueArrayOfObjects, useOutsideClickListener, usePagination, useResize, useRowFilter };
