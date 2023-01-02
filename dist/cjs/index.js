@@ -18878,43 +18878,52 @@ function cil(Prism) {
   };
 }
 
-var clojure_1 = clojure;
-clojure.displayName = 'clojure';
-clojure.aliases = [];
-function clojure(Prism) {
-  // Copied from https://github.com/jeluard/prism-clojure
-  Prism.languages.clojure = {
-    comment: {
-      pattern: /;.*/,
-      greedy: true
-    },
-    string: {
-      pattern: /"(?:[^"\\]|\\.)*"/,
-      greedy: true
-    },
-    char: /\\\w+/,
-    symbol: {
-      pattern: /(^|[\s()\[\]{},])::?[\w*+!?'<>=/.-]+/,
-      lookbehind: true
-    },
-    keyword: {
-      pattern:
-        /(\()(?:-|->|->>|\.|\.\.|\*|\/|\+|<|<=|=|==|>|>=|accessor|agent|agent-errors|aget|alength|all-ns|alter|and|append-child|apply|array-map|aset|aset-boolean|aset-byte|aset-char|aset-double|aset-float|aset-int|aset-long|aset-short|assert|assoc|await|await-for|bean|binding|bit-and|bit-not|bit-or|bit-shift-left|bit-shift-right|bit-xor|boolean|branch\?|butlast|byte|cast|char|children|class|clear-agent-errors|comment|commute|comp|comparator|complement|concat|cond|conj|cons|constantly|construct-proxy|contains\?|count|create-ns|create-struct|cycle|dec|declare|def|def-|definline|definterface|defmacro|defmethod|defmulti|defn|defn-|defonce|defproject|defprotocol|defrecord|defstruct|deftype|deref|difference|disj|dissoc|distinct|do|doall|doc|dorun|doseq|dosync|dotimes|doto|double|down|drop|drop-while|edit|end\?|ensure|eval|every\?|false\?|ffirst|file-seq|filter|find|find-doc|find-ns|find-var|first|float|flush|fn|fnseq|for|frest|gensym|get|get-proxy-class|hash-map|hash-set|identical\?|identity|if|if-let|if-not|import|in-ns|inc|index|insert-child|insert-left|insert-right|inspect-table|inspect-tree|instance\?|int|interleave|intersection|into|into-array|iterate|join|key|keys|keyword|keyword\?|last|lazy-cat|lazy-cons|left|lefts|let|line-seq|list|list\*|load|load-file|locking|long|loop|macroexpand|macroexpand-1|make-array|make-node|map|map-invert|map\?|mapcat|max|max-key|memfn|merge|merge-with|meta|min|min-key|monitor-enter|name|namespace|neg\?|new|newline|next|nil\?|node|not|not-any\?|not-every\?|not=|ns|ns-imports|ns-interns|ns-map|ns-name|ns-publics|ns-refers|ns-resolve|ns-unmap|nth|nthrest|or|parse|partial|path|peek|pop|pos\?|pr|pr-str|print|print-str|println|println-str|prn|prn-str|project|proxy|proxy-mappings|quot|quote|rand|rand-int|range|re-find|re-groups|re-matcher|re-matches|re-pattern|re-seq|read|read-line|recur|reduce|ref|ref-set|refer|rem|remove|remove-method|remove-ns|rename|rename-keys|repeat|replace|replicate|resolve|rest|resultset-seq|reverse|rfirst|right|rights|root|rrest|rseq|second|select|select-keys|send|send-off|seq|seq-zip|seq\?|set|set!|short|slurp|some|sort|sort-by|sorted-map|sorted-map-by|sorted-set|special-symbol\?|split-at|split-with|str|string\?|struct|struct-map|subs|subvec|symbol|symbol\?|sync|take|take-nth|take-while|test|throw|time|to-array|to-array-2d|tree-seq|true\?|try|union|up|update-proxy|val|vals|var|var-get|var-set|var\?|vector|vector-zip|vector\?|when|when-first|when-let|when-not|with-local-vars|with-meta|with-open|with-out-str|xml-seq|xml-zip|zero\?|zipmap|zipper)(?=[\s)]|$)/,
-      lookbehind: true
-    },
-    boolean: /\b(?:false|nil|true)\b/,
-    number: {
-      pattern:
-        /(^|[^\w$@])(?:\d+(?:[/.]\d+)?(?:e[+-]?\d+)?|0x[a-f0-9]+|[1-9]\d?r[a-z0-9]+)[lmn]?(?![\w$@])/i,
-      lookbehind: true
-    },
-    function: {
-      pattern: /((?:^|[^'])\()[\w*+!?'<>=/.-]+(?=[\s)]|$)/,
-      lookbehind: true
-    },
-    operator: /[#@^`~]/,
-    punctuation: /[{}\[\](),]/
-  };
+var clojure_1;
+var hasRequiredClojure;
+
+function requireClojure () {
+	if (hasRequiredClojure) return clojure_1;
+	hasRequiredClojure = 1;
+
+	clojure_1 = clojure;
+	clojure.displayName = 'clojure';
+	clojure.aliases = [];
+	function clojure(Prism) {
+	  // Copied from https://github.com/jeluard/prism-clojure
+	  Prism.languages.clojure = {
+	    comment: {
+	      pattern: /;.*/,
+	      greedy: true
+	    },
+	    string: {
+	      pattern: /"(?:[^"\\]|\\.)*"/,
+	      greedy: true
+	    },
+	    char: /\\\w+/,
+	    symbol: {
+	      pattern: /(^|[\s()\[\]{},])::?[\w*+!?'<>=/.-]+/,
+	      lookbehind: true
+	    },
+	    keyword: {
+	      pattern:
+	        /(\()(?:-|->|->>|\.|\.\.|\*|\/|\+|<|<=|=|==|>|>=|accessor|agent|agent-errors|aget|alength|all-ns|alter|and|append-child|apply|array-map|aset|aset-boolean|aset-byte|aset-char|aset-double|aset-float|aset-int|aset-long|aset-short|assert|assoc|await|await-for|bean|binding|bit-and|bit-not|bit-or|bit-shift-left|bit-shift-right|bit-xor|boolean|branch\?|butlast|byte|cast|char|children|class|clear-agent-errors|comment|commute|comp|comparator|complement|concat|cond|conj|cons|constantly|construct-proxy|contains\?|count|create-ns|create-struct|cycle|dec|declare|def|def-|definline|definterface|defmacro|defmethod|defmulti|defn|defn-|defonce|defproject|defprotocol|defrecord|defstruct|deftype|deref|difference|disj|dissoc|distinct|do|doall|doc|dorun|doseq|dosync|dotimes|doto|double|down|drop|drop-while|edit|end\?|ensure|eval|every\?|false\?|ffirst|file-seq|filter|find|find-doc|find-ns|find-var|first|float|flush|fn|fnseq|for|frest|gensym|get|get-proxy-class|hash-map|hash-set|identical\?|identity|if|if-let|if-not|import|in-ns|inc|index|insert-child|insert-left|insert-right|inspect-table|inspect-tree|instance\?|int|interleave|intersection|into|into-array|iterate|join|key|keys|keyword|keyword\?|last|lazy-cat|lazy-cons|left|lefts|let|line-seq|list|list\*|load|load-file|locking|long|loop|macroexpand|macroexpand-1|make-array|make-node|map|map-invert|map\?|mapcat|max|max-key|memfn|merge|merge-with|meta|min|min-key|monitor-enter|name|namespace|neg\?|new|newline|next|nil\?|node|not|not-any\?|not-every\?|not=|ns|ns-imports|ns-interns|ns-map|ns-name|ns-publics|ns-refers|ns-resolve|ns-unmap|nth|nthrest|or|parse|partial|path|peek|pop|pos\?|pr|pr-str|print|print-str|println|println-str|prn|prn-str|project|proxy|proxy-mappings|quot|quote|rand|rand-int|range|re-find|re-groups|re-matcher|re-matches|re-pattern|re-seq|read|read-line|recur|reduce|ref|ref-set|refer|rem|remove|remove-method|remove-ns|rename|rename-keys|repeat|replace|replicate|resolve|rest|resultset-seq|reverse|rfirst|right|rights|root|rrest|rseq|second|select|select-keys|send|send-off|seq|seq-zip|seq\?|set|set!|short|slurp|some|sort|sort-by|sorted-map|sorted-map-by|sorted-set|special-symbol\?|split-at|split-with|str|string\?|struct|struct-map|subs|subvec|symbol|symbol\?|sync|take|take-nth|take-while|test|throw|time|to-array|to-array-2d|tree-seq|true\?|try|union|up|update-proxy|val|vals|var|var-get|var-set|var\?|vector|vector-zip|vector\?|when|when-first|when-let|when-not|with-local-vars|with-meta|with-open|with-out-str|xml-seq|xml-zip|zero\?|zipmap|zipper)(?=[\s)]|$)/,
+	      lookbehind: true
+	    },
+	    boolean: /\b(?:false|nil|true)\b/,
+	    number: {
+	      pattern:
+	        /(^|[^\w$@])(?:\d+(?:[/.]\d+)?(?:e[+-]?\d+)?|0x[a-f0-9]+|[1-9]\d?r[a-z0-9]+)[lmn]?(?![\w$@])/i,
+	      lookbehind: true
+	    },
+	    function: {
+	      pattern: /((?:^|[^'])\()[\w*+!?'<>=/.-]+(?=[\s)]|$)/,
+	      lookbehind: true
+	    },
+	    operator: /[#@^`~]/,
+	    punctuation: /[{}\[\](),]/
+	  };
+	}
+	return clojure_1;
 }
 
 var cmake_1 = cmake;
@@ -18957,71 +18966,62 @@ function cmake(Prism) {
   };
 }
 
-var cobol_1;
-var hasRequiredCobol;
-
-function requireCobol () {
-	if (hasRequiredCobol) return cobol_1;
-	hasRequiredCobol = 1;
-
-	cobol_1 = cobol;
-	cobol.displayName = 'cobol';
-	cobol.aliases = [];
-	function cobol(Prism) {
-	  Prism.languages.cobol = {
-	    comment: {
-	      pattern: /\*>.*|(^[ \t]*)\*.*/m,
-	      lookbehind: true,
-	      greedy: true
-	    },
-	    string: {
-	      pattern: /[xzgn]?(?:"(?:[^\r\n"]|"")*"(?!")|'(?:[^\r\n']|'')*'(?!'))/i,
-	      greedy: true
-	    },
-	    level: {
-	      pattern: /(^[ \t]*)\d+\b/m,
-	      lookbehind: true,
-	      greedy: true,
-	      alias: 'number'
-	    },
-	    'class-name': {
-	      // https://github.com/antlr/grammars-v4/blob/42edd5b687d183b5fa679e858a82297bd27141e7/cobol85/Cobol85.g4#L1015
-	      pattern:
-	        /(\bpic(?:ture)?\s+)(?:(?:[-\w$/,:*+<>]|\.(?!\s|$))(?:\(\d+\))?)+/i,
-	      lookbehind: true,
-	      inside: {
-	        number: {
-	          pattern: /(\()\d+/,
-	          lookbehind: true
-	        },
-	        punctuation: /[()]/
-	      }
-	    },
-	    keyword: {
-	      pattern:
-	        /(^|[^\w-])(?:ABORT|ACCEPT|ACCESS|ADD|ADDRESS|ADVANCING|AFTER|ALIGNED|ALL|ALPHABET|ALPHABETIC|ALPHABETIC-LOWER|ALPHABETIC-UPPER|ALPHANUMERIC|ALPHANUMERIC-EDITED|ALSO|ALTER|ALTERNATE|ANY|ARE|AREA|AREAS|AS|ASCENDING|ASCII|ASSIGN|ASSOCIATED-DATA|ASSOCIATED-DATA-LENGTH|AT|ATTRIBUTE|AUTHOR|AUTO|AUTO-SKIP|BACKGROUND-COLOR|BACKGROUND-COLOUR|BASIS|BEEP|BEFORE|BEGINNING|BELL|BINARY|BIT|BLANK|BLINK|BLOCK|BOTTOM|BOUNDS|BY|BYFUNCTION|BYTITLE|CALL|CANCEL|CAPABLE|CCSVERSION|CD|CF|CH|CHAINING|CHANGED|CHANNEL|CHARACTER|CHARACTERS|CLASS|CLASS-ID|CLOCK-UNITS|CLOSE|CLOSE-DISPOSITION|COBOL|CODE|CODE-SET|COL|COLLATING|COLUMN|COM-REG|COMMA|COMMITMENT|COMMON|COMMUNICATION|COMP|COMP-1|COMP-2|COMP-3|COMP-4|COMP-5|COMPUTATIONAL|COMPUTATIONAL-1|COMPUTATIONAL-2|COMPUTATIONAL-3|COMPUTATIONAL-4|COMPUTATIONAL-5|COMPUTE|CONFIGURATION|CONTAINS|CONTENT|CONTINUE|CONTROL|CONTROL-POINT|CONTROLS|CONVENTION|CONVERTING|COPY|CORR|CORRESPONDING|COUNT|CRUNCH|CURRENCY|CURSOR|DATA|DATA-BASE|DATE|DATE-COMPILED|DATE-WRITTEN|DAY|DAY-OF-WEEK|DBCS|DE|DEBUG-CONTENTS|DEBUG-ITEM|DEBUG-LINE|DEBUG-NAME|DEBUG-SUB-1|DEBUG-SUB-2|DEBUG-SUB-3|DEBUGGING|DECIMAL-POINT|DECLARATIVES|DEFAULT|DEFAULT-DISPLAY|DEFINITION|DELETE|DELIMITED|DELIMITER|DEPENDING|DESCENDING|DESTINATION|DETAIL|DFHRESP|DFHVALUE|DISABLE|DISK|DISPLAY|DISPLAY-1|DIVIDE|DIVISION|DONTCARE|DOUBLE|DOWN|DUPLICATES|DYNAMIC|EBCDIC|EGCS|EGI|ELSE|EMI|EMPTY-CHECK|ENABLE|END|END-ACCEPT|END-ADD|END-CALL|END-COMPUTE|END-DELETE|END-DIVIDE|END-EVALUATE|END-IF|END-MULTIPLY|END-OF-PAGE|END-PERFORM|END-READ|END-RECEIVE|END-RETURN|END-REWRITE|END-SEARCH|END-START|END-STRING|END-SUBTRACT|END-UNSTRING|END-WRITE|ENDING|ENTER|ENTRY|ENTRY-PROCEDURE|ENVIRONMENT|EOL|EOP|EOS|ERASE|ERROR|ESCAPE|ESI|EVALUATE|EVENT|EVERY|EXCEPTION|EXCLUSIVE|EXHIBIT|EXIT|EXPORT|EXTEND|EXTENDED|EXTERNAL|FD|FILE|FILE-CONTROL|FILLER|FINAL|FIRST|FOOTING|FOR|FOREGROUND-COLOR|FOREGROUND-COLOUR|FROM|FULL|FUNCTION|FUNCTION-POINTER|FUNCTIONNAME|GENERATE|GIVING|GLOBAL|GO|GOBACK|GRID|GROUP|HEADING|HIGH-VALUE|HIGH-VALUES|HIGHLIGHT|I-O|I-O-CONTROL|ID|IDENTIFICATION|IF|IMPLICIT|IMPORT|IN|INDEX|INDEXED|INDICATE|INITIAL|INITIALIZE|INITIATE|INPUT|INPUT-OUTPUT|INSPECT|INSTALLATION|INTEGER|INTO|INVALID|INVOKE|IS|JUST|JUSTIFIED|KANJI|KEPT|KEY|KEYBOARD|LABEL|LANGUAGE|LAST|LB|LD|LEADING|LEFT|LEFTLINE|LENGTH|LENGTH-CHECK|LIBACCESS|LIBPARAMETER|LIBRARY|LIMIT|LIMITS|LINAGE|LINAGE-COUNTER|LINE|LINE-COUNTER|LINES|LINKAGE|LIST|LOCAL|LOCAL-STORAGE|LOCK|LONG-DATE|LONG-TIME|LOW-VALUE|LOW-VALUES|LOWER|LOWLIGHT|MEMORY|MERGE|MESSAGE|MMDDYYYY|MODE|MODULES|MORE-LABELS|MOVE|MULTIPLE|MULTIPLY|NAMED|NATIONAL|NATIONAL-EDITED|NATIVE|NEGATIVE|NETWORK|NEXT|NO|NO-ECHO|NULL|NULLS|NUMBER|NUMERIC|NUMERIC-DATE|NUMERIC-EDITED|NUMERIC-TIME|OBJECT-COMPUTER|OCCURS|ODT|OF|OFF|OMITTED|ON|OPEN|OPTIONAL|ORDER|ORDERLY|ORGANIZATION|OTHER|OUTPUT|OVERFLOW|OVERLINE|OWN|PACKED-DECIMAL|PADDING|PAGE|PAGE-COUNTER|PASSWORD|PERFORM|PF|PH|PIC|PICTURE|PLUS|POINTER|PORT|POSITION|POSITIVE|PRINTER|PRINTING|PRIVATE|PROCEDURE|PROCEDURE-POINTER|PROCEDURES|PROCEED|PROCESS|PROGRAM|PROGRAM-ID|PROGRAM-LIBRARY|PROMPT|PURGE|QUEUE|QUOTE|QUOTES|RANDOM|RD|READ|READER|REAL|RECEIVE|RECEIVED|RECORD|RECORDING|RECORDS|RECURSIVE|REDEFINES|REEL|REF|REFERENCE|REFERENCES|RELATIVE|RELEASE|REMAINDER|REMARKS|REMOTE|REMOVAL|REMOVE|RENAMES|REPLACE|REPLACING|REPORT|REPORTING|REPORTS|REQUIRED|RERUN|RESERVE|RESET|RETURN|RETURN-CODE|RETURNING|REVERSE-VIDEO|REVERSED|REWIND|REWRITE|RF|RH|RIGHT|ROUNDED|RUN|SAME|SAVE|SCREEN|SD|SEARCH|SECTION|SECURE|SECURITY|SEGMENT|SEGMENT-LIMIT|SELECT|SEND|SENTENCE|SEPARATE|SEQUENCE|SEQUENTIAL|SET|SHARED|SHAREDBYALL|SHAREDBYRUNUNIT|SHARING|SHIFT-IN|SHIFT-OUT|SHORT-DATE|SIGN|SIZE|SORT|SORT-CONTROL|SORT-CORE-SIZE|SORT-FILE-SIZE|SORT-MERGE|SORT-MESSAGE|SORT-MODE-SIZE|SORT-RETURN|SOURCE|SOURCE-COMPUTER|SPACE|SPACES|SPECIAL-NAMES|STANDARD|STANDARD-1|STANDARD-2|START|STATUS|STOP|STRING|SUB-QUEUE-1|SUB-QUEUE-2|SUB-QUEUE-3|SUBTRACT|SUM|SUPPRESS|SYMBOL|SYMBOLIC|SYNC|SYNCHRONIZED|TABLE|TALLY|TALLYING|TAPE|TASK|TERMINAL|TERMINATE|TEST|TEXT|THEN|THREAD|THREAD-LOCAL|THROUGH|THRU|TIME|TIMER|TIMES|TITLE|TO|TODAYS-DATE|TODAYS-NAME|TOP|TRAILING|TRUNCATED|TYPE|TYPEDEF|UNDERLINE|UNIT|UNSTRING|UNTIL|UP|UPON|USAGE|USE|USING|VALUE|VALUES|VARYING|VIRTUAL|WAIT|WHEN|WHEN-COMPILED|WITH|WORDS|WORKING-STORAGE|WRITE|YEAR|YYYYDDD|YYYYMMDD|ZERO-FILL|ZEROES|ZEROS)(?![\w-])/i,
-	      lookbehind: true
-	    },
-	    boolean: {
-	      pattern: /(^|[^\w-])(?:false|true)(?![\w-])/i,
-	      lookbehind: true
-	    },
-	    number: {
-	      pattern:
-	        /(^|[^\w-])(?:[+-]?(?:(?:\d+(?:[.,]\d+)?|[.,]\d+)(?:e[+-]?\d+)?|zero))(?![\w-])/i,
-	      lookbehind: true
-	    },
-	    operator: [
-	      /<>|[<>]=?|[=+*/&]/,
-	      {
-	        pattern: /(^|[^\w-])(?:-|and|equal|greater|less|not|or|than)(?![\w-])/i,
-	        lookbehind: true
-	      }
-	    ],
-	    punctuation: /[.:,()]/
-	  };
-	}
-	return cobol_1;
+var cobol_1 = cobol;
+cobol.displayName = 'cobol';
+cobol.aliases = [];
+function cobol(Prism) {
+  Prism.languages.cobol = {
+    comment: {
+      pattern: /\*>.*|(^[ \t]*)\*.*/m,
+      lookbehind: true,
+      greedy: true
+    },
+    string: {
+      pattern: /[xzgn]?(?:"(?:[^\r\n"]|"")*"(?!")|'(?:[^\r\n']|'')*'(?!'))/i,
+      greedy: true
+    },
+    level: {
+      pattern: /(^[ \t]*)\d+\b/m,
+      lookbehind: true,
+      greedy: true,
+      alias: 'number'
+    },
+    'class-name': {
+      // https://github.com/antlr/grammars-v4/blob/42edd5b687d183b5fa679e858a82297bd27141e7/cobol85/Cobol85.g4#L1015
+      pattern:
+        /(\bpic(?:ture)?\s+)(?:(?:[-\w$/,:*+<>]|\.(?!\s|$))(?:\(\d+\))?)+/i,
+      lookbehind: true,
+      inside: {
+        number: {
+          pattern: /(\()\d+/,
+          lookbehind: true
+        },
+        punctuation: /[()]/
+      }
+    },
+    keyword: {
+      pattern:
+        /(^|[^\w-])(?:ABORT|ACCEPT|ACCESS|ADD|ADDRESS|ADVANCING|AFTER|ALIGNED|ALL|ALPHABET|ALPHABETIC|ALPHABETIC-LOWER|ALPHABETIC-UPPER|ALPHANUMERIC|ALPHANUMERIC-EDITED|ALSO|ALTER|ALTERNATE|ANY|ARE|AREA|AREAS|AS|ASCENDING|ASCII|ASSIGN|ASSOCIATED-DATA|ASSOCIATED-DATA-LENGTH|AT|ATTRIBUTE|AUTHOR|AUTO|AUTO-SKIP|BACKGROUND-COLOR|BACKGROUND-COLOUR|BASIS|BEEP|BEFORE|BEGINNING|BELL|BINARY|BIT|BLANK|BLINK|BLOCK|BOTTOM|BOUNDS|BY|BYFUNCTION|BYTITLE|CALL|CANCEL|CAPABLE|CCSVERSION|CD|CF|CH|CHAINING|CHANGED|CHANNEL|CHARACTER|CHARACTERS|CLASS|CLASS-ID|CLOCK-UNITS|CLOSE|CLOSE-DISPOSITION|COBOL|CODE|CODE-SET|COL|COLLATING|COLUMN|COM-REG|COMMA|COMMITMENT|COMMON|COMMUNICATION|COMP|COMP-1|COMP-2|COMP-3|COMP-4|COMP-5|COMPUTATIONAL|COMPUTATIONAL-1|COMPUTATIONAL-2|COMPUTATIONAL-3|COMPUTATIONAL-4|COMPUTATIONAL-5|COMPUTE|CONFIGURATION|CONTAINS|CONTENT|CONTINUE|CONTROL|CONTROL-POINT|CONTROLS|CONVENTION|CONVERTING|COPY|CORR|CORRESPONDING|COUNT|CRUNCH|CURRENCY|CURSOR|DATA|DATA-BASE|DATE|DATE-COMPILED|DATE-WRITTEN|DAY|DAY-OF-WEEK|DBCS|DE|DEBUG-CONTENTS|DEBUG-ITEM|DEBUG-LINE|DEBUG-NAME|DEBUG-SUB-1|DEBUG-SUB-2|DEBUG-SUB-3|DEBUGGING|DECIMAL-POINT|DECLARATIVES|DEFAULT|DEFAULT-DISPLAY|DEFINITION|DELETE|DELIMITED|DELIMITER|DEPENDING|DESCENDING|DESTINATION|DETAIL|DFHRESP|DFHVALUE|DISABLE|DISK|DISPLAY|DISPLAY-1|DIVIDE|DIVISION|DONTCARE|DOUBLE|DOWN|DUPLICATES|DYNAMIC|EBCDIC|EGCS|EGI|ELSE|EMI|EMPTY-CHECK|ENABLE|END|END-ACCEPT|END-ADD|END-CALL|END-COMPUTE|END-DELETE|END-DIVIDE|END-EVALUATE|END-IF|END-MULTIPLY|END-OF-PAGE|END-PERFORM|END-READ|END-RECEIVE|END-RETURN|END-REWRITE|END-SEARCH|END-START|END-STRING|END-SUBTRACT|END-UNSTRING|END-WRITE|ENDING|ENTER|ENTRY|ENTRY-PROCEDURE|ENVIRONMENT|EOL|EOP|EOS|ERASE|ERROR|ESCAPE|ESI|EVALUATE|EVENT|EVERY|EXCEPTION|EXCLUSIVE|EXHIBIT|EXIT|EXPORT|EXTEND|EXTENDED|EXTERNAL|FD|FILE|FILE-CONTROL|FILLER|FINAL|FIRST|FOOTING|FOR|FOREGROUND-COLOR|FOREGROUND-COLOUR|FROM|FULL|FUNCTION|FUNCTION-POINTER|FUNCTIONNAME|GENERATE|GIVING|GLOBAL|GO|GOBACK|GRID|GROUP|HEADING|HIGH-VALUE|HIGH-VALUES|HIGHLIGHT|I-O|I-O-CONTROL|ID|IDENTIFICATION|IF|IMPLICIT|IMPORT|IN|INDEX|INDEXED|INDICATE|INITIAL|INITIALIZE|INITIATE|INPUT|INPUT-OUTPUT|INSPECT|INSTALLATION|INTEGER|INTO|INVALID|INVOKE|IS|JUST|JUSTIFIED|KANJI|KEPT|KEY|KEYBOARD|LABEL|LANGUAGE|LAST|LB|LD|LEADING|LEFT|LEFTLINE|LENGTH|LENGTH-CHECK|LIBACCESS|LIBPARAMETER|LIBRARY|LIMIT|LIMITS|LINAGE|LINAGE-COUNTER|LINE|LINE-COUNTER|LINES|LINKAGE|LIST|LOCAL|LOCAL-STORAGE|LOCK|LONG-DATE|LONG-TIME|LOW-VALUE|LOW-VALUES|LOWER|LOWLIGHT|MEMORY|MERGE|MESSAGE|MMDDYYYY|MODE|MODULES|MORE-LABELS|MOVE|MULTIPLE|MULTIPLY|NAMED|NATIONAL|NATIONAL-EDITED|NATIVE|NEGATIVE|NETWORK|NEXT|NO|NO-ECHO|NULL|NULLS|NUMBER|NUMERIC|NUMERIC-DATE|NUMERIC-EDITED|NUMERIC-TIME|OBJECT-COMPUTER|OCCURS|ODT|OF|OFF|OMITTED|ON|OPEN|OPTIONAL|ORDER|ORDERLY|ORGANIZATION|OTHER|OUTPUT|OVERFLOW|OVERLINE|OWN|PACKED-DECIMAL|PADDING|PAGE|PAGE-COUNTER|PASSWORD|PERFORM|PF|PH|PIC|PICTURE|PLUS|POINTER|PORT|POSITION|POSITIVE|PRINTER|PRINTING|PRIVATE|PROCEDURE|PROCEDURE-POINTER|PROCEDURES|PROCEED|PROCESS|PROGRAM|PROGRAM-ID|PROGRAM-LIBRARY|PROMPT|PURGE|QUEUE|QUOTE|QUOTES|RANDOM|RD|READ|READER|REAL|RECEIVE|RECEIVED|RECORD|RECORDING|RECORDS|RECURSIVE|REDEFINES|REEL|REF|REFERENCE|REFERENCES|RELATIVE|RELEASE|REMAINDER|REMARKS|REMOTE|REMOVAL|REMOVE|RENAMES|REPLACE|REPLACING|REPORT|REPORTING|REPORTS|REQUIRED|RERUN|RESERVE|RESET|RETURN|RETURN-CODE|RETURNING|REVERSE-VIDEO|REVERSED|REWIND|REWRITE|RF|RH|RIGHT|ROUNDED|RUN|SAME|SAVE|SCREEN|SD|SEARCH|SECTION|SECURE|SECURITY|SEGMENT|SEGMENT-LIMIT|SELECT|SEND|SENTENCE|SEPARATE|SEQUENCE|SEQUENTIAL|SET|SHARED|SHAREDBYALL|SHAREDBYRUNUNIT|SHARING|SHIFT-IN|SHIFT-OUT|SHORT-DATE|SIGN|SIZE|SORT|SORT-CONTROL|SORT-CORE-SIZE|SORT-FILE-SIZE|SORT-MERGE|SORT-MESSAGE|SORT-MODE-SIZE|SORT-RETURN|SOURCE|SOURCE-COMPUTER|SPACE|SPACES|SPECIAL-NAMES|STANDARD|STANDARD-1|STANDARD-2|START|STATUS|STOP|STRING|SUB-QUEUE-1|SUB-QUEUE-2|SUB-QUEUE-3|SUBTRACT|SUM|SUPPRESS|SYMBOL|SYMBOLIC|SYNC|SYNCHRONIZED|TABLE|TALLY|TALLYING|TAPE|TASK|TERMINAL|TERMINATE|TEST|TEXT|THEN|THREAD|THREAD-LOCAL|THROUGH|THRU|TIME|TIMER|TIMES|TITLE|TO|TODAYS-DATE|TODAYS-NAME|TOP|TRAILING|TRUNCATED|TYPE|TYPEDEF|UNDERLINE|UNIT|UNSTRING|UNTIL|UP|UPON|USAGE|USE|USING|VALUE|VALUES|VARYING|VIRTUAL|WAIT|WHEN|WHEN-COMPILED|WITH|WORDS|WORKING-STORAGE|WRITE|YEAR|YYYYDDD|YYYYMMDD|ZERO-FILL|ZEROES|ZEROS)(?![\w-])/i,
+      lookbehind: true
+    },
+    boolean: {
+      pattern: /(^|[^\w-])(?:false|true)(?![\w-])/i,
+      lookbehind: true
+    },
+    number: {
+      pattern:
+        /(^|[^\w-])(?:[+-]?(?:(?:\d+(?:[.,]\d+)?|[.,]\d+)(?:e[+-]?\d+)?|zero))(?![\w-])/i,
+      lookbehind: true
+    },
+    operator: [
+      /<>|[<>]=?|[=+*/&]/,
+      {
+        pattern: /(^|[^\w-])(?:-|and|equal|greater|less|not|or|than)(?![\w-])/i,
+        lookbehind: true
+      }
+    ],
+    punctuation: /[.:,()]/
+  };
 }
 
 var coffeescript_1;
@@ -39010,9 +39010,9 @@ refractor.register(c_1);
 refractor.register(cfscript_1);
 refractor.register(chaiscript_1);
 refractor.register(cil_1);
-refractor.register(clojure_1);
+refractor.register(requireClojure());
 refractor.register(cmake_1);
-refractor.register(requireCobol());
+refractor.register(cobol_1);
 refractor.register(requireCoffeescript());
 refractor.register(requireConcurnas());
 refractor.register(requireCoq());
@@ -44304,8 +44304,8 @@ var TableChipsSkeleton = function TableChipsSkeleton() {
   });
 };
 
-var css$e = ".TableChips_module_root__5d8107b3[data-elem=base-cell] {\n  padding: 0.5rem 1.5rem;\n  width: 100%;\n  background: var(--grey6);\n  border-radius: 0.25rem 0.25rem 0 0;\n}\n.TableChips_module_root__5d8107b3[data-elem=base-cell] > [data-elem=component1] .TableChips_module_back__5d8107b3 {\n  height: 2rem;\n  width: 2rem;\n}\n.TableChips_module_root__5d8107b3[data-elem=base-cell] > [data-elem=component1] .TableChips_module_back__5d8107b3 [data-elem=component1] .TableChips_module_icon__5d8107b3 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--white);\n}\n.TableChips_module_root__5d8107b3[data-elem=base-cell] > [data-elem=component2] {\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  height: 100%;\n  gap: 0.5rem;\n  overflow: auto hidden;\n  flex: 1;\n}\n.TableChips_module_root__5d8107b3[data-elem=base-cell] > [data-elem=component2]::-webkit-scrollbar {\n  display: none;\n}\n.TableChips_module_root__5d8107b3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__5d8107b3 {\n  background: var(--grey8);\n  border: 1px solid var(--grey4);\n  padding: 0.344rem 0.25rem;\n  height: 100%;\n  cursor: default;\n}\n.TableChips_module_root__5d8107b3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__5d8107b3 .TableChips_module_chipIcon__5d8107b3 {\n  width: 1rem;\n  height: 1rem;\n}\n.TableChips_module_root__5d8107b3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__5d8107b3 > [data-elem=component2] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  gap: 0.25rem;\n  height: 100%;\n}\n.TableChips_module_root__5d8107b3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__5d8107b3 > [data-elem=component2] .TableChips_module_chipChild__5d8107b3 {\n  height: 100%;\n}\n.TableChips_module_root__5d8107b3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__5d8107b3 > [data-elem=component2] .TableChips_module_chipChild__5d8107b3 > [data-elem=component2] > [data-elem=title] {\n  color: var(--dark-grey);\n}\n.TableChips_module_root__5d8107b3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__5d8107b3 > [data-elem=component2] .TableChips_module_chipChild__5d8107b3 .TableChips_module_icon__5d8107b3 {\n  width: 0.875rem;\n  height: 0.875rem;\n}\n.TableChips_module_root__5d8107b3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__5d8107b3 > [data-elem=component3] {\n  height: 100%;\n}\n.TableChips_module_root__5d8107b3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__5d8107b3:hover {\n  border-color: var(--highlight);\n}\n.TableChips_module_root__5d8107b3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__5d8107b3:hover > [data-elem=component2] .TableChips_module_label__5d8107b3 {\n  color: var(--highlight);\n}\n.TableChips_module_root__5d8107b3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__5d8107b3:hover > [data-elem=component2] .TableChips_module_chipChild__5d8107b3 {\n  background: var(--background);\n}\n.TableChips_module_root__5d8107b3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__5d8107b3:hover > [data-elem=component2] .TableChips_module_chipChild__5d8107b3 > [data-elem=component2] > [data-elem=title] {\n  color: var(--highlight);\n}\n.TableChips_module_root__5d8107b3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__5d8107b3:hover > [data-elem=component2] .TableChips_module_chipChild__5d8107b3 .TableChips_module_icon__5d8107b3 {\n  width: 0.875rem;\n  height: 0.875rem;\n}\n.TableChips_module_root__5d8107b3[data-elem=base-cell] > [data-elem=component3] {\n  height: 100%;\n}\n.TableChips_module_root__5d8107b3[data-elem=base-cell] > [data-elem=component3] .TableChips_module_clear__5d8107b3 {\n  height: 100%;\n}";
-var modules_016d9b3e = {"root":"TableChips_module_root__5d8107b3","back":"TableChips_module_back__5d8107b3","icon":"TableChips_module_icon__5d8107b3","chip-parent":"TableChips_module_chipParent__5d8107b3","chip-icon":"TableChips_module_chipIcon__5d8107b3","chip-child":"TableChips_module_chipChild__5d8107b3","label":"TableChips_module_label__5d8107b3","clear":"TableChips_module_clear__5d8107b3"};
+var css$e = ".TableChips_module_root__ecaf76f3[data-elem=base-cell] {\n  padding: 0.5rem 1.5rem;\n  width: 100%;\n  background: var(--grey6);\n  border-radius: 0.25rem 0.25rem 0 0;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component1] .TableChips_module_back__ecaf76f3 {\n  height: 2rem;\n  width: 2rem;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component1] .TableChips_module_back__ecaf76f3 [data-elem=component1] .TableChips_module_icon__ecaf76f3 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--white);\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] {\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  height: 100%;\n  gap: 0.5rem;\n  overflow: auto hidden;\n  flex: 1;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2]::-webkit-scrollbar {\n  display: none;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 {\n  background: var(--grey8);\n  border: 1px solid var(--grey4);\n  padding: 0.344rem 0.25rem;\n  height: 100%;\n  cursor: default;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 .TableChips_module_chipIcon__ecaf76f3 {\n  width: 1rem;\n  height: 1rem;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 > [data-elem=component2] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  gap: 0.25rem;\n  height: 100%;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3 {\n  height: 100%;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3:not(:disabled) {\n  cursor: pointer;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3:disabled {\n  cursor: default;\n  color: var(--info);\n  border-color: var(--info-outline);\n  background: var(--info-bg);\n  filter: none;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3 > [data-elem=component2] > [data-elem=title] {\n  color: var(--dark-grey);\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3 .TableChips_module_icon__ecaf76f3 {\n  width: 0.875rem;\n  height: 0.875rem;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 > [data-elem=component3] {\n  height: 100%;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3:hover {\n  border-color: var(--highlight);\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3:hover > [data-elem=component2] .TableChips_module_label__ecaf76f3 {\n  color: var(--highlight);\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3:hover > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3 {\n  background: var(--background);\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3:hover > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3 > [data-elem=component2] > [data-elem=title] {\n  color: var(--highlight);\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3:hover > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3 .TableChips_module_icon__ecaf76f3 {\n  width: 0.875rem;\n  height: 0.875rem;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component3] {\n  height: 100%;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component3] .TableChips_module_clear__ecaf76f3 {\n  height: 100%;\n}";
+var modules_016d9b3e = {"root":"TableChips_module_root__ecaf76f3","back":"TableChips_module_back__ecaf76f3","icon":"TableChips_module_icon__ecaf76f3","chip-parent":"TableChips_module_chipParent__ecaf76f3","chip-icon":"TableChips_module_chipIcon__ecaf76f3","chip-child":"TableChips_module_chipChild__ecaf76f3","label":"TableChips_module_label__ecaf76f3","clear":"TableChips_module_clear__ecaf76f3"};
 n(css$e,{});
 
 var TableChip$1 = function TableChip(props) {
@@ -44313,7 +44313,8 @@ var TableChip$1 = function TableChip(props) {
     rightComponent = props.rightComponent,
     label = props.label,
     value = props.value,
-    onRemove = props.onRemove;
+    onRemove = props.onRemove,
+    disabled = props.disabled;
 
   // component 1
   var Icon = icon;
@@ -44333,13 +44334,14 @@ var TableChip$1 = function TableChip(props) {
       stroke: "medium",
       children: [label, " :"]
     }), typeof value === 'string' && value.length > 0 && /*#__PURE__*/jsxRuntime.jsx(Chip, {
+      disabled: disabled,
       className: modules_016d9b3e['chip-child'],
       title: value,
       radius: "ellipse",
       color: "info",
       variant: "input",
       onClick: onRemove,
-      rightComponent: function rightComponent() {
+      rightComponent: !disabled && function () {
         return /*#__PURE__*/jsxRuntime.jsx(Close, {
           className: modules_016d9b3e.icon
         });
