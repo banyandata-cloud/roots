@@ -8,7 +8,7 @@ import { Skeleton } from './Skeleton';
 import styles from './TableChips.module.css';
 
 const TableChip = (props) => {
-	const { icon, rightComponent, label, value, onRemove } = props;
+	const { icon, rightComponent, label, value, onRemove, disabled } = props;
 
 	// component 1
 	let Icon = icon;
@@ -27,15 +27,19 @@ const TableChip = (props) => {
 			</Text>
 			{typeof value === 'string' && value.length > 0 && (
 				<Chip
+					disabled={disabled}
 					className={styles['chip-child']}
 					title={value}
 					radius='ellipse'
 					color='info'
 					variant='input'
 					onClick={onRemove}
-					rightComponent={() => {
-						return <CloseIcon className={styles.icon} />;
-					}}
+					rightComponent={
+						!disabled &&
+						(() => {
+							return <CloseIcon className={styles.icon} />;
+						})
+					}
 				/>
 			)}
 		</>

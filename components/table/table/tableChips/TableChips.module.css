@@ -50,6 +50,16 @@
 .root[data-elem=base-cell] > [data-elem=component2] .chip-parent > [data-elem=component2] .chip-child {
   height: 100%;
 }
+.root[data-elem=base-cell] > [data-elem=component2] .chip-parent > [data-elem=component2] .chip-child:not(:disabled) {
+  cursor: pointer;
+}
+.root[data-elem=base-cell] > [data-elem=component2] .chip-parent > [data-elem=component2] .chip-child:disabled {
+  cursor: default;
+  color: var(--info);
+  border-color: var(--info-outline);
+  background: var(--info-bg);
+  filter: none;
+}
 .root[data-elem=base-cell] > [data-elem=component2] .chip-parent > [data-elem=component2] .chip-child > [data-elem=component2] > [data-elem=title] {
   color: var(--dark-grey);
 }

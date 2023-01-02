@@ -45,6 +45,18 @@
 				height: 100%;
 
 				.chip-child {
+					&:not(:disabled) {
+						cursor: pointer;
+					}
+
+					&:disabled {
+						cursor: default;
+						color: $info;
+						border-color: $info-outline;
+						background: $info-bg;
+						filter: none;
+					}
+
 					height: 100%;
 
 					> [data-elem='component2'] {
