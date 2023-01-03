@@ -1,53 +1,48 @@
-/* eslint-disable react/no-unknown-property */
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 import styles from './Notification.module.css';
 import { Button } from '../buttons';
+import { Text } from '../text';
 import { Toggle } from '../toggle';
 import { classes } from '../../utils';
 import { DisplayPicture } from '../displayPicture';
 
 const Notification = (props) => {
-	const {
-		options,
-		selectedToggle,
-		setSelectedToggle,
-		messageOptions,
-		Viewtitle,
-		Marktitle,
-		onView,
-		onMark,
-	} = props;
+	const { options, messageOptions, onView, onMark } = props;
+
+	const [selectedToggle, setSelectedToggle] = useState('');
+
+	const onToggle = (value) => {
+		setSelectedToggle(value);
+	};
+
 	return (
 		<div className={styles.root}>
 			<div className={styles.header}>
 				<div className={styles.firstrow}>
-					<p className={styles.notification}>Notifications</p>
-					<Button
-						key={Viewtitle}
-						className={classes(styles['view-button'])}
-						onClick={onView}
-						title={Viewtitle}
-					/>
+					<Text variant='b1' weight='700' stroke='bold'>
+						Notifications
+					</Text>
+					<Button color='primary' variant='text' onClick={onView} title='View All' />
 				</div>
 				<div className={styles.secondrow}>
 					<Toggle
-						className={styles.toggle}
 						options={options}
 						selectedToggle={selectedToggle}
 						setSelectedToggle={setSelectedToggle}
+						onChange={onToggle}
 					/>
 					<Button
-						key={Marktitle}
 						className={classes(styles['mark-button'])}
 						onClick={onMark}
-						title={Marktitle}
+						title='Mark as read'
 					/>
 				</div>
 			</div>
 			{messageOptions.map((option) => {
 				const {
 					title,
-					text,
+					messageAction,
 					time,
 					acceptTitle,
 					rejectTitle,
@@ -56,42 +51,38 @@ const Notification = (props) => {
 					actions,
 					message,
 					name,
-					className,
 					url,
-					size,
 				} = option;
 
 				return (
-					<div key={option} className={styles.body}>
-						<div className={styles.img}>
-							<DisplayPicture
-								name={name}
-								className={className}
-								url={url}
-								size={size}
-							/>
-						</div>
-						<div className={styles.title}>
-							<p className={styles.content} key={title} title={title}>
-								<strong>{title.user}</strong>&nbsp;
+					<div key={option.name} className={styles.body}>
+						<div className={styles.container}>
+							<DisplayPicture name={name} url={url} />
+							<Text title={title}>
+								<Text variant='h3' weight='700' stroke='bold'>
+									{title.user}
+								</Text>
+								&nbsp;
 								{title.action}&nbsp;
-								<strong>{title.items}</strong>
-							</p>
+								<Text variant='h3' weight='700' stroke='bold'>
+									{title.items}
+								</Text>
+							</Text>
 						</div>
-						<div className={styles.message}>
-							{message === true ? <div className={styles.rectangle} /> : null}
-							<p className={styles.text}>{text}</p>
-						</div>
+						{messageAction === true ? (
+							<div className={styles.messageBox}>
+								<div className={styles.rectangle} />
+								<Text>{message}</Text>
+							</div>
+						) : null}
 						{actions === true ? (
 							<div className={styles.actions}>
 								<Button
-									key={acceptTitle}
 									title={acceptTitle}
 									onClick={onAccept}
 									className={classes(styles['accept-button'])}
 								/>
 								<Button
-									key={rejectTitle}
 									title={rejectTitle}
 									onClick={onReject}
 									className={classes(styles['reject-button'])}
@@ -99,7 +90,9 @@ const Notification = (props) => {
 							</div>
 						) : null}
 						<div className={styles.timer}>
-							<p className={styles.timing}>{time}</p>
+							<Text variant='b3' stroke='regular' weight='400'>
+								{time}
+							</Text>
 						</div>
 					</div>
 				);
@@ -117,24 +110,18 @@ Notification.propTypes = {
 				action: PropTypes.string,
 				items: PropTypes.string,
 			}),
-			text: PropTypes.string,
+			message: PropTypes.string,
 			time: PropTypes.string,
 			acceptTitle: PropTypes.string,
 			rejectTitle: PropTypes.string,
 			actions: PropTypes.bool,
-			message: PropTypes.bool,
+			messageAction: PropTypes.bool,
 			onAccept: PropTypes.func,
 			onReject: PropTypes.func,
 			name: PropTypes.string,
-			className: PropTypes.string,
 			url: '',
-			size: '',
 		})
 	),
-	selectedToggle: PropTypes.string,
-	Viewtitle: PropTypes.string,
-	Marktitle: PropTypes.string,
-	setSelectedToggle: PropTypes.string,
 	onView: PropTypes.func,
 	onMark: PropTypes.func,
 };
@@ -142,94 +129,33 @@ Notification.propTypes = {
 Notification.defaultProps = {
 	options: [
 		{
-			title: 'Unread',
-			value: 'Unread',
+			id: '1',
+			value: 'toggle1',
 		},
 		{
-			title: 'All',
-			value: 'All',
+			id: '2',
+			value: 'toggle2',
 		},
 	],
 	messageOptions: [
 		{
 			title: {
-				user: 'Alok kumar',
-				action: 'requested access to',
-				items: 'GCP Compliance Report',
+				user: '',
+				action: '',
+				items: '',
 			},
-			text: '',
-			time: 'Today at 9:42 AM',
-			acceptTitle: 'Accept',
-			rejectTitle: 'Reject',
-			actions: true,
-			message: false,
+			message: '',
+			time: '',
+			acceptTitle: '',
+			rejectTitle: '',
+			actions: false,
+			messageAction: false,
 			onAccept: () => {},
 			onReject: () => {},
 			name: '',
-			className: '',
-			url: 'https://pbs.twimg.com/profile_images/1525787669690990593/G2aafgTL_400x400.jpg',
-			size: 'sm',
-		},
-		{
-			title: {
-				user: 'Jaidev',
-				action: 'made 6 changes on',
-				items: ' SOC2 Regulation Criteria',
-			},
-			text: '',
-			time: 'Yesterday at 11:42 AM',
-			acceptTitle: 'Accept',
-			rejectTitle: 'Reject',
-			actions: false,
-			message: false,
-			onAccept: () => {},
-			onReject: () => {},
-			name: '',
-			className: '',
-			url: 'https://pbs.twimg.com/profile_images/1525787669690990593/G2aafgTL_400x400.jpg',
-			size: 'sm',
-		},
-		{
-			title: {
-				user: 'Pradeep A',
-				action: 'Commented on',
-				items: 'BanyanCloud SOC2 compliance report',
-			},
-			text: '"Everything seems fine for now, we will review it once again when other reports are checked. Please update Jaidev about it."',
-			time: 'Yesterday at 5:42 PM',
-			acceptTitle: 'Accept',
-			rejectTitle: 'Reject',
-			actions: false,
-			message: true,
-			onAccept: () => {},
-			onReject: () => {},
-			className: '',
-			url: 'https://pbs.twimg.com/profile_images/1525787669690990593/G2aafgTL_400x400.jpg',
-			size: 'sm',
-		},
-		{
-			title: {
-				user: 'Chandrashekar K',
-				action: 'created',
-				items: 'Banyan Cloud SOC2 compliance report',
-			},
-			text: '',
-			time: 'Last Wednesday at 11:15AM',
-			acceptTitle: 'Accept',
-			rejectTitle: 'Reject',
-			actions: false,
-			message: false,
-			onAccept: () => {},
-			onReject: () => {},
-			className: '',
-			url: 'https://pbs.twimg.com/profile_images/1525787669690990593/G2aafgTL_400x400.jpg',
-			size: 'sm',
+			url: 'url',
 		},
 	],
-	selectedToggle: '',
-	Viewtitle: 'View All',
-	Marktitle: 'Mark as read',
-	setSelectedToggle: '',
 	onView: () => {},
 	onMark: () => {},
 };

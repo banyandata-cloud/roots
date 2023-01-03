@@ -9,22 +9,9 @@ div.root {
 	.header {
 		.firstrow {
 			@include flex(row, space-between, center);
-			padding: 0.5rem;
 			border-bottom: 1px solid $grey5;
+			padding: 0.5rem;
 			gap: 5.313rem;
-			.notification {
-				font-weight: 600;
-				font-size: 1rem;
-				line-height: 1.5rem;
-				color: #1a1f36;
-			}
-			[data-elem='base-cell'].view-button {
-				font-weight: 500;
-				font-size: 0.875rem;
-				line-height: 21px;
-				background: $white;
-				color: #0f62fe;
-			}
 		}
 
 		.secondrow {
@@ -36,46 +23,28 @@ div.root {
 				padding: 0.25rem 1rem;
 				width: 7.813rem;
 				height: 2rem;
-				background: #d0e2ff;
+				background: $background;
 				color: $highlight;
 			}
 		}
 	}
 	.body {
 		border-bottom: 1px solid $grey5;
-		padding: 0.5rem;
-		.img {
-			float: left;
-			padding: 0.6rem;
+		padding: 1.2rem;
+		.container {
+			@include flex(row, flex-start);
+			padding: 0.3rem;
+			gap: 0.5rem;
 		}
-		.title {
-			.content {
-				font-weight: 400;
-				padding: 0.5rem;
-				font-size: 0.875rem;
-				color: #1a1f36;
-			}
-		}
-		.message {
+		.messageBox {
+			@include flex(row, flex-start);
 			padding-left: 2.6rem;
-			div.rectangle {
-				float: left;
-				width: 0.25rem;
+			gap: 1rem;
+			.rectangle {
+				width: 0.6rem;
 				height: 3.813rem;
-				background: $grey2;
-				border-radius: 0.125rem;
-			}
-			div.text {
-				padding-bottom: 2.6rem;
-				width: 21.75rem;
-				height: 3.813rem;
-			}
-			.text {
-				padding-left: 0.6rem;
-				font-size: 0.83rem;
-				font-weight: 400;
-				color: #1a1f36;
-				line-height: 1.25rem;
+				background: $grey4;
+				border-radius: 2rem;
 			}
 		}
 		.actions {
@@ -95,17 +64,17 @@ div.root {
 			padding: 0.25rem 0.5rem;
 			width: fit-content;
 			height: 1.8rem;
+			font-weight: 500;
 			border-radius: 0.25rem;
-			border: 1px solid #dddee1;
+			border: 1px solid $grey5;
 			background: $white;
-			color: #3c4257;
+			color: $dark-grey;
 		}
 		.timer {
 			padding-left: 2.4rem;
 			.timing {
 				font-weight: 400;
 				font-size: 0.75rem;
-				line-height: 4.125;
 				color: $grey2;
 			}
 		}
