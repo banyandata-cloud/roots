@@ -25,3 +25,5 @@ export * from './notification';
 export * from './widget';
 export * from './displayPicture';
 export * from './timePicker';
+export * from './text';
+export * from './link';

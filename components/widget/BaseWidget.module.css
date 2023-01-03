@@ -38,10 +38,22 @@
   align-items: center;
   gap: 0.5rem;
 }
+.root .header .header-options .toggle-body {
+  padding: 0.125rem 0.25rem;
+  height: 1.75rem;
+}
+.root .header .header-options .toggle-body > [data-elem=base-cell] {
+  background-color: transparent;
+  color: var(--white);
+}
+.root .header .header-options .dropdown-header {
+  height: 1.75rem;
+}
 .root .header .header-options .dropdown-header [data-elem=select] {
   background-color: transparent;
   width: 100%;
   color: var(--white);
+  border-color: var(--grey);
   padding: 0.07rem 0.5rem;
 }
 .root .header .header-options .dropdown-header [data-elem=select] [data-elem=placeholder] {
@@ -55,7 +67,7 @@
 .root .header .header-options .expand-button {
   height: 1.75rem;
   color: var(--white);
-  border-color: var(--white);
+  border-color: var(--grey);
 }
 .root .header .header-options .expand-button .expand-icon {
   height: 1.25rem;

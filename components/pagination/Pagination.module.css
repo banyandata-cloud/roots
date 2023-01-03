@@ -5,6 +5,7 @@
   align-items: stretch;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  gap: 0.75rem;
   padding: 0.625rem 2.125rem;
   background: var(--dark-grey);
   margin-top: auto;
@@ -26,7 +27,6 @@
   bottom: 3rem;
 }
 .root .row-switcher,
-.root .pagination,
 .root .jump-to-page,
 .root .form {
   display: flex;
@@ -37,10 +37,10 @@
 }
 .root .row-switcher {
   display: none;
-  gap: 0.75rem;
-  background-color: var(--grey);
+  flex: 0 1 15%;
+  background-color: transparent;
   padding: 0;
-  border-radius: 0.3125rem;
+  height: 100%;
 }
 @media (min-width: 992px) {
   .root .row-switcher {
@@ -50,12 +50,32 @@
     align-items: center;
   }
 }
-.root .row-switcher > [data-elem*=component] {
+.root .row-switcher > [data-elem=component2] {
+  flex: 0 1 auto;
+  height: 100%;
+}
+.root .row-switcher .row-switcher-handle {
+  gap: 0.75rem;
+  background-color: var(--grey);
+  padding: 0;
+  border-radius: 0.25rem;
+  height: 100%;
+  width: 100%;
+}
+.root .row-switcher .row-switcher-handle > [data-elem*=component] {
   overflow: hidden;
 }
-.root .row-switcher > [data-elem=component2] {
+.root .row-switcher .row-switcher-handle > [data-elem=component2] {
   display: flex;
-  flex: 1 0 auto;
+  flex: 0 0 auto;
+  height: 100%;
+}
+.root .row-switcher .row-switcher-handle > [data-elem=component2]::before {
+  content: "";
+  margin: auto;
+  background: var(--white);
+  width: 0.5px;
+  height: 50%;
 }
 .root .row-switcher .text {
   text-overflow: ellipsis;
@@ -68,8 +88,15 @@
   font-weight: 500;
   color: var(--white);
 }
+.root .row-switcher .dropdown {
+  height: 100%;
+}
+.root .row-switcher .dropdown > [data-elem=header] {
+  height: 100%;
+}
 .root .row-switcher .dropdown > [data-elem=header] > [data-elem=select] {
   height: 2.375rem;
+  max-height: 100%;
   width: auto;
   min-width: -webkit-fit-content;
   min-width: -moz-fit-content;
@@ -97,7 +124,7 @@
 }
 @media (min-width: 992px) {
   .root .page-numbers {
-    flex: 1 1 60%;
+    flex: 1 1 40%;
   }
 }
 .root .page-numbers > .button.disable {
@@ -148,7 +175,7 @@
 .root .form {
   display: none;
   padding: 0;
-  flex: 0 1 20%;
+  flex: 0 1 30%;
   background: transparent;
 }
 @media (min-width: 992px) {
@@ -166,6 +193,12 @@
 .root .form > [data-elem*=component] > * {
   height: 100%;
 }
+.root .form > [data-elem*=component] > form {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-left: auto;
+}
 .root .form .jump-to-page {
   width: 100%;
   background: transparent;
@@ -173,24 +206,52 @@
   flex-direction: row;
   justify-content: center;
   align-items: stretch;
-  gap: 0.75rem;
+  gap: 0rem;
   padding: 0;
+  height: 100%;
 }
 .root .form .jump-to-page > [data-elem*=component] {
   overflow: hidden;
   height: 100%;
 }
-.root .form .jump-to-page .button {
-  background-color: var(--grey);
+.root .form .jump-to-page .inputbox {
+  max-width: 100%;
   height: 100%;
 }
-.root .form .jump-to-page .button [data-elem=left] {
-  overflow: hidden;
+.root .form .jump-to-page .inputbox > label {
+  height: 100%;
 }
-.root .form .jump-to-page .button [data-elem=left] [data-elem=title] {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
+.root .form .jump-to-page .inputbox > label > [data-elem=base-cell] {
+  border-radius: 0.313rem;
+  background-color: transparent;
+  color: var(--white);
+  border-color: var(--grey1);
+  border-radius: 0.25rem 0 0 0.25rem;
+  height: 100%;
+  width: 10rem;
+  flex: 1;
+}
+.root .form .jump-to-page .inputbox > label > [data-elem=base-cell] .icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: var(--grey1);
+}
+.root .form .jump-to-page .inputbox > label > [data-elem=base-cell] > [data-elem=component2] {
+  height: 100%;
+}
+.root .form .jump-to-page .inputbox > label > [data-elem=base-cell] [data-elem=input] {
+  text-align: center;
+  color: var(--white);
+  background-color: transparent;
+  border: none;
+  height: 100%;
+  width: 100%;
+}
+.root .form .jump-to-page .button {
+  border-radius: 0rem 0.25rem 0.25rem 0rem;
+  background-color: var(--grey1);
+  padding: 0.75rem 0.5rem;
+  height: 100%;
 }
 .root .form .jump-to-page .button .icon {
   width: 1.5rem;
@@ -198,40 +259,26 @@
   fill: var(--white);
   flex-shrink: 0;
 }
-.root .form .jump-to-page .inputbox {
-  width: 5rem;
-  max-width: 100%;
-  height: 100%;
-}
-.root .form .jump-to-page .inputbox [data-elem=base-cell] {
-  border-radius: 0.313rem;
-  background-color: var(--grey);
-  color: var(--white);
-  border-color: var(--grey);
-  width: 4.875rem;
-}
-.root .form .jump-to-page .inputbox [data-elem=base-cell] [data-elem=input] {
-  text-align: center;
-  color: var(--white);
-  background-color: var(--grey);
-  border: none;
-  width: 100%;
-}
-
-.pagination-test {
-  height: 80%;
-  width: 100%;
-  overflow: scroll;
-  background-color: powderblue;
-  display: flex;
-  flex-direction: column;
-}
-
-.dropdown-popper {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-  padding: 0.25rem;
-}
-.dropdown-popper::-webkit-scrollbar {
+.root .total-data {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
   display: none;
+  margin: auto;
+  color: var(--white);
+  flex: 0 1 15%;
+}
+@media (min-width: 992px) {
+  .root .total-data {
+    display: inline;
+  }
+}
+.root.no-total-data .row-switcher {
+  flex: 0 1 20%;
+}
+.root.no-total-data .jump-to-page {
+  flex: 1 1 60%;
+}
+.root.no-total-data .form {
+  flex: 0 1 20%;
 }/*# sourceMappingURL=Pagination.module.css.map */

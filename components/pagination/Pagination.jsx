@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import { classes } from '../../utils';
 import { Button } from '../buttons';
 import { Dropdown, DropdownItem, TextField } from '../input';
-import { ArrowIcon, ChevronIcon } from '../icons';
+import { ArrowIcon, ChevronIcon, SearchIcon } from '../icons';
 import { BaseCell } from '../cell';
 import { PaginationList } from './Pagination.class';
 import styles from './Pagination.module.css';
+import { Text } from '../text';
 
 const dropdownOptions = ['10', '25', '50', '100', '200', '250'];
 
@@ -37,17 +38,23 @@ const reducer = (state, { type, payload }) => {
 				...state,
 				totalPages: payload,
 			};
+		case 'SET_TOTAL_DATA':
+			return {
+				...state,
+				totalData: payload,
+			};
 		default:
 			return state;
 	}
 };
 
 export const usePagination = (props) => {
-	const { totalPages = null, currentPage = null, step = 10 } = props;
+	const { totalPages = null, currentPage = null, step = 10, totalData = null } = props;
 	const [paginationState, paginationDispatch] = useReducer(reducer, {
 		totalPages,
 		currentPage,
 		step,
+		totalData,
 	});
 
 	useEffect(() => {
@@ -57,11 +64,19 @@ export const usePagination = (props) => {
 				payload: totalPages,
 			});
 		}
+
+		if (paginationState.totalData !== totalData) {
+			paginationDispatch({
+				type: 'SET_TOTAL_DATA',
+				payload: totalData,
+			});
+		}
+
 		paginationDispatch({
 			type: 'SET_TOTAL_PAGES',
 			payload: totalPages,
 		});
-	}, [totalPages]);
+	}, [totalPages, totalData]);
 
 	return [paginationState, paginationDispatch];
 };
@@ -69,7 +84,7 @@ export const usePagination = (props) => {
 export const Pagination = forwardRef((props, ref) => {
 	const { className, floating, paginationState, paginationDispatch, loading } = props;
 
-	const { totalPages, currentPage, step } = paginationState;
+	const { totalPages, currentPage, step, totalData } = paginationState;
 
 	const paginationList = new PaginationList({
 		curr: currentPage,
@@ -94,38 +109,68 @@ export const Pagination = forwardRef((props, ref) => {
 		return null;
 	}
 
+	const showTotalData = totalData && (currentPage - 1) * step + 1 < totalData;
+
 	return (
-		<div ref={ref} className={classes(styles.root, className, floating ? styles.floating : '')}>
+		<div
+			ref={ref}
+			className={classes(
+				styles.root,
+				className,
+				floating ? styles.floating : '',
+				showTotalData ? '' : styles['no-total-data']
+			)}>
 			<BaseCell
+				size='auto'
 				flexible
 				className={styles['row-switcher']}
-				component1={
-					<span title='Rows per page' className={styles.text}>
-						Rows per page
-					</span>
-				}
 				component2={
-					<Dropdown
-						className={styles.dropdown}
-						popperClassName={styles['dropdown-popper']}
-						value={step}
-						placeholder={null}
-						onChange={(e, newStep) => {
-							onChange({
-								type: 'SET_STEP',
-								payload: newStep,
-							});
-						}}>
-						{dropdownOptions.map((item) => {
-							return <DropdownItem title={item} value={item} key={item} />;
-						})}
-					</Dropdown>
+					<BaseCell
+						size='auto'
+						flexible
+						className={styles['row-switcher-handle']}
+						component1={
+							<span title='Rows per page' className={styles.text}>
+								Rows per page
+							</span>
+						}
+						component2={
+							<Dropdown
+								className={styles.dropdown}
+								popperClassName={styles['dropdown-popper']}
+								value={step}
+								placeholder={null}
+								onChange={(e, newStep) => {
+									onChange({
+										type: 'SET_STEP',
+										payload: newStep,
+									});
+								}}>
+								{dropdownOptions.map((item) => {
+									return <DropdownItem title={item} value={item} key={item} />;
+								})}
+							</Dropdown>
+						}
+					/>
 				}
 			/>
+			{showTotalData && (
+				<Text
+					variant='b1'
+					stroke='medium'
+					className={styles['total-data']}
+					attrs={{
+						title: `${(currentPage - 1) * step + 1}-${
+							currentPage * step
+						} of ${totalData}`,
+					}}>
+					{(currentPage - 1) * step + 1}-
+					{currentPage === totalPages ? totalData : currentPage * step} of {totalData}
+				</Text>
+			)}
 			<div className={styles['page-numbers']}>
 				<Button
 					size='auto'
-					flexible
 					disabled={currentPage === 1}
 					title='Prev'
 					onClick={() => {
@@ -161,7 +206,6 @@ export const Pagination = forwardRef((props, ref) => {
 				</div>
 				<Button
 					size='auto'
-					flexible
 					disabled={currentPage === totalPages}
 					title='Next'
 					onClick={() => {
@@ -189,7 +233,7 @@ export const Pagination = forwardRef((props, ref) => {
 							});
 						}}>
 						<BaseCell
-							flexible
+							size='auto'
 							className={styles['jump-to-page']}
 							component1={
 								<TextField
@@ -197,16 +241,19 @@ export const Pagination = forwardRef((props, ref) => {
 										min: 1,
 										max: totalPages,
 										required: true,
+										placeholder: 'Jump to Page',
 									}}
 									ref={jumpPageRef}
 									type='number'
 									className={styles.inputbox}
+									LeftComponent={() => {
+										return <SearchIcon className={styles.icon} />;
+									}}
 								/>
 							}
 							component2={
 								<Button
-									title='Jump to page'
-									size='medium'
+									size='auto'
 									variant='contained'
 									className={styles.button}
 									rightComponent={() => {

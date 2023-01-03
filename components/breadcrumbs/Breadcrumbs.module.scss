@@ -1,21 +1,67 @@
 @import '../../styles/index';
 
-.container {
+.root {
 	@include flex(row, flex-start, center);
+	gap: 0.5rem;
 	width: auto;
+
 	.seperator {
 		width: 1.5rem;
 		height: 1.5rem;
 		stroke: $grey2;
 	}
-	.breadcrumb-item {
+
+	button.expand[data-elem='base-cell'] {
+		background: $grey6;
+		color: $dark-grey;
+		height: 0.75rem;
+		padding: 0.25rem;
+
+		[data-elem='title'] {
+			margin-bottom: 0.4rem;
+		}
+	}
+
+	.crumb {
 		@include flex(row, flex-start, center);
-		font-weight: 600;
-		font-size: 0.875rem;
 		color: $grey2;
 
 		&.active {
 			color: $black;
+		}
+
+		&:hover:not(.active) {
+			color: $info;
+		}
+	}
+
+	&.theme-light {
+		.crumb {
+			@include flex(row, flex-start, center);
+			color: $grey2;
+
+			&.active {
+				color: $black;
+			}
+
+			&:hover:not(.active) {
+				color: $info;
+			}
+		}
+	}
+
+	&.theme-dark {
+		.crumb {
+			@include flex(row, flex-start, center);
+			color: $grey2;
+
+			&.active {
+				color: $white;
+			}
+
+			&:hover:not(.active) {
+				color: $info;
+			}
 		}
 	}
 }

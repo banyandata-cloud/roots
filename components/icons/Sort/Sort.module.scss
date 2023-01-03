@@ -1,0 +1,9 @@
+.root {
+	&.order-az {
+		transform: none;
+	}
+
+	&.order-za {
+		transform: rotate(180deg);
+	}
+}

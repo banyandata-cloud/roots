@@ -47,3 +47,37 @@ Default.args = {
 	selectedToggle: '',
 	setSelectedToggle: '',
 };
+
+export const Dark = Template.bind({});
+
+Dark.args = {
+	options: [
+		{
+			id: '1',
+			value: 'First',
+			rightCompoenent: '',
+			leftCompoenent: '',
+		},
+		{
+			id: '2',
+			value: 'Second',
+			rightCompoenent: '',
+			leftCompoenent: '',
+		},
+		{
+			id: '3',
+			value: 'Third',
+			rightCompoenent: '',
+			leftCompoenent: '',
+		},
+		{
+			id: '4',
+			value: 'Fourth',
+			rightCompoenent: '',
+			leftCompoenent: '',
+		},
+	],
+	selectedToggle: '',
+	setSelectedToggle: '',
+	theme: 'dark',
+};

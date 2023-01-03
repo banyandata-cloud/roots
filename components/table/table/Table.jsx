@@ -10,7 +10,7 @@ import styles from './Table.module.css';
 import { TableColumn } from '../BaseTable.class';
 
 const INTERSECTION = 1;
-const STEP = 0.1;
+const STEP = 0.05;
 const THRESHOLD = [];
 
 for (let i = 0; i < INTERSECTION; i += STEP) {
@@ -31,6 +31,7 @@ const Table = (props) => {
 		paginationData,
 		loading,
 		disabledFilterOptions,
+		onSort,
 	} = props;
 
 	const ref = useRef(null);
@@ -57,7 +58,7 @@ const Table = (props) => {
 						// if the target is visibile
 						if (
 							(entry.isIntersecting && entry.intersectionRatio >= INTERSECTION) ||
-							entry?.intersectionRect?.height === lastRowHeight
+							entry?.intersectionRect?.height >= lastRowHeight
 						) {
 							setFloating(false);
 						} else {
@@ -136,6 +137,7 @@ const Table = (props) => {
 					setActiveData,
 					customCells,
 					className: styles.table,
+					onSort,
 				}}
 				loading={loading}
 			/>
@@ -190,6 +192,7 @@ Table.propTypes = {
 		columnFilter: PropTypes.bool,
 		settings: PropTypes.bool,
 	}),
+	onSort: PropTypes.func,
 };
 
 Table.defaultProps = {
@@ -213,6 +216,7 @@ Table.defaultProps = {
 		columnFilter: false,
 		settings: false,
 	},
+	onSort: () => {},
 };
 
 export default Table;

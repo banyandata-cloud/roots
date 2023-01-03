@@ -1,5 +1,7 @@
 import React from 'react';
+import ThemedContainer from '../../../helpers/themedContainer/ThemedContainer';
 import { CalenderIcon, CopyIcon, ServerIcon } from '../../../icons';
+import ChipDropdown from './chipDropdown/ChipDropdown';
 import { TableChip } from './TableChip.class';
 import TableChips from './TableChips';
 
@@ -15,13 +17,15 @@ export default {
 
 const Template = (args) => {
 	return (
-		<div>
+		<ThemedContainer {...args}>
 			<TableChips {...args} />
-		</div>
+		</ThemedContainer>
 	);
 };
 
 export const Default = Template.bind({});
+
+const CHIP_OPTIONS = ['Option A', 'Option B'];
 
 Default.args = {
 	showBack: true,
@@ -31,7 +35,6 @@ Default.args = {
 			icon: ServerIcon,
 			label: 'DB Tech',
 			value: 'PgSQL',
-			disabled: true,
 		}),
 		new TableChip({
 			key: 'something',
@@ -49,13 +52,26 @@ Default.args = {
 			value: 'Google',
 		}),
 		new TableChip({
-			key: 'something',
-			icon: (iconProps) => {
-				return <CalenderIcon {...iconProps} />;
+			id: 'reg',
+			icon: CalenderIcon,
+			label: 'Regulations',
+			value: '',
+			rightComponent: () => {
+				return (
+					<ChipDropdown
+						options={CHIP_OPTIONS?.map((option) => {
+							return {
+								title: option,
+								value: option,
+							};
+						})}
+						value={' '}
+						formatter={() => {
+							return null;
+						}}
+					/>
+				);
 			},
-			label: 'Cloud',
-			value: 'Amazon',
-			disabled: true,
 		}),
 		new TableChip({
 			key: 'something',

@@ -4,6 +4,7 @@ import { babel as pluginBabel } from '@rollup/plugin-babel';
 import pluginStyles from 'rollup-plugin-styles';
 import pluginPeerDepsExternal from 'rollup-plugin-peer-deps-external';
 import pluginJSON from '@rollup/plugin-json';
+import pluginBundleSize from 'rollup-plugin-bundle-size';
 
 const packageJson = require('./package.json');
 
@@ -40,6 +41,7 @@ export default [
 			}),
 			pluginCommonjs(),
 			pluginJSON(),
+			pluginBundleSize(),
 		],
 	},
 	{

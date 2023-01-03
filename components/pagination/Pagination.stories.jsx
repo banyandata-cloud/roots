@@ -1,6 +1,6 @@
 import React from 'react';
-import Pagination, { usePagination } from './Pagination';
-import styles from './Pagination.module.css';
+import { ThemedContainer } from '../helpers';
+import { Pagination, usePagination } from './Pagination';
 
 export default {
 	title: 'Components/Pagination',
@@ -19,7 +19,7 @@ const Template = (args) => {
 	});
 
 	return (
-		<div className={styles['pagination-test']}>
+		<ThemedContainer>
 			<Pagination
 				{...args}
 				{...{
@@ -27,13 +27,13 @@ const Template = (args) => {
 					paginationDispatch,
 				}}
 			/>
-		</div>
+		</ThemedContainer>
 	);
 };
 
 export const Default = Template.bind({});
 Default.args = {
-	data: ['data1', 'data2', 'data3'],
+	loading: true,
 };
 Default.parameters = {
 	design: {

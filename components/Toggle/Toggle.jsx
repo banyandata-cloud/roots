@@ -5,7 +5,7 @@ import { Button } from '../buttons';
 import styles from './Toggle.module.css';
 
 const Toggle = (props) => {
-	const { options, selectedToggle, setSelectedToggle, onChange } = props;
+	const { className, theme, options, selectedToggle, setSelectedToggle, onChange } = props;
 
 	const onButtonClick = (value) => {
 		setSelectedToggle(value);
@@ -13,12 +13,13 @@ const Toggle = (props) => {
 	};
 
 	return (
-		<div className={styles.root}>
+		<div className={classes(className, styles.root, styles[`theme-${theme}`])}>
 			{options.map((item) => {
 				const { title, value, leftComponent, rightComponent, color } = item;
 				const isActive = selectedToggle === value;
 				return (
 					<Button
+						data-elem='toggle'
 						key={title}
 						className={classes(styles['toggle-button'], isActive ? styles.active : '')}
 						onClick={() => {
@@ -43,11 +44,15 @@ Toggle.propTypes = {
 		title: PropTypes.string,
 		value: PropTypes.string,
 	}),
+	className: PropTypes.string,
+	theme: PropTypes.oneOf(['dark', 'light']),
 	selectedToggle: PropTypes.string,
 	setSelectedToggle: PropTypes.string,
 };
 
 Toggle.defaultProps = {
+	className: '',
+	theme: 'light',
 	options: [
 		{
 			title: 'First',

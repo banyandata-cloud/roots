@@ -12,6 +12,19 @@ div.root {
   border-radius: 0.4rem 0.4rem;
   box-shadow: inset 0px 1px 2px rgba(97, 97, 97, 0.2), inset 0px 2px 4px rgba(97, 97, 97, 0.2);
 }
+div.root.theme-dark {
+  background: var(--grey);
+}
+div.root.theme-dark [data-elem=base-cell].toggle-button {
+  color: var(--grey4);
+}
+div.root.theme-dark [data-elem=base-cell].toggle-button.active {
+  background: var(--dark-grey);
+  color: var(--white);
+}
+div.root.theme-light {
+  color: var(--dark-grey);
+}
 div.root [data-elem=base-cell].toggle-button {
   color: var(--grey);
   padding: 0.25rem 0.75rem;

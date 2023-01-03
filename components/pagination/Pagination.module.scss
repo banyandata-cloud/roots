@@ -3,6 +3,7 @@
 .root {
 	@include flex(row, space-between, stretch);
 	@include removeScrollbar;
+	gap: 0.75rem;
 	padding: 0.625rem 2.125rem;
 	background: $dark-grey;
 	margin-top: auto;
@@ -21,8 +22,8 @@
 		width: 82%;
 		bottom: 3rem;
 	}
+
 	.row-switcher,
-	.pagination,
 	.jump-to-page,
 	.form {
 		@include flex(row, flex-start, center);
@@ -31,21 +32,45 @@
 
 	.row-switcher {
 		display: none;
+
 		@include lg {
 			@include flex(row, space-between, center);
 		}
-		> [data-elem*='component'] {
-			overflow: hidden;
-		}
 
 		> [data-elem='component2'] {
-			display: flex;
-			flex: 1 0 auto;
+			flex: 0 1 auto;
+			height: 100%;
 		}
-		gap: 0.75rem;
-		background-color: $grey;
+
+		.row-switcher-handle {
+			gap: 0.75rem;
+			background-color: $grey;
+			padding: 0;
+			border-radius: 0.25rem;
+			height: 100%;
+			width: 100%;
+
+			> [data-elem*='component'] {
+				overflow: hidden;
+			}
+
+			> [data-elem='component2'] {
+				display: flex;
+				flex: 0 0 auto;
+				height: 100%;
+				&::before {
+					content: '';
+					margin: auto;
+					background: $white;
+					width: 0.5px;
+					height: 50%;
+				}
+			}
+		}
+		flex: 0 1 15%;
+		background-color: transparent;
 		padding: 0;
-		border-radius: 0.3125rem;
+		height: 100%;
 
 		.text {
 			@include ellipsis;
@@ -57,9 +82,13 @@
 			color: $white;
 		}
 		.dropdown {
+			height: 100%;
+
 			& > [data-elem='header'] {
+				height: 100%;
 				& > [data-elem='select'] {
 					height: 2.375rem;
+					max-height: 100%;
 					width: auto;
 					min-width: fit-content;
 					padding: 0.625rem;
@@ -84,7 +113,7 @@
 		flex: 1 1 100%;
 
 		@include lg {
-			flex: 1 1 60%;
+			flex: 1 1 40%;
 		}
 
 		& > .button {
@@ -149,9 +178,14 @@
 			> * {
 				height: 100%;
 			}
+
+			> form {
+				width: fit-content;
+				margin-left: auto;
+			}
 		}
 		padding: 0;
-		flex: 0 1 20%;
+		flex: 0 1 30%;
 		background: transparent;
 		.jump-to-page {
 			width: 100%;
@@ -162,18 +196,52 @@
 				overflow: hidden;
 				height: 100%;
 			}
-			gap: 0.75rem;
+			gap: 0rem;
 			padding: 0;
-			.button {
-				background-color: $grey;
-				height: 100%;
+			height: 100%;
 
-				[data-elem='left'] {
-					overflow: hidden;
-					[data-elem='title'] {
-						@include ellipsis;
+			.inputbox {
+				max-width: 100%;
+				height: 100%;
+				> label {
+					height: 100%;
+					> [data-elem='base-cell'] {
+						border-radius: 0.313rem;
+						background-color: transparent;
+						color: $white;
+						border-color: $grey1;
+						border-radius: 0.25rem 0 0 0.25rem;
+						height: 100%;
+						width: 10rem;
+						flex: 1;
+
+						.icon {
+							width: 1.5rem;
+							height: 1.5rem;
+							fill: $grey1;
+						}
+
+						> [data-elem='component2'] {
+							height: 100%;
+						}
+
+						[data-elem='input'] {
+							text-align: center;
+							color: $white;
+							background-color: transparent;
+							border: none;
+							height: 100%;
+							width: 100%;
+						}
 					}
 				}
+			}
+
+			.button {
+				border-radius: 0rem 0.25rem 0.25rem 0rem;
+				background-color: $grey1;
+				padding: 0.75rem 0.5rem;
+				height: 100%;
 
 				.icon {
 					width: 1.5rem;
@@ -182,40 +250,31 @@
 					flex-shrink: 0;
 				}
 			}
-			.inputbox {
-				width: 5rem;
-				max-width: 100%;
-				height: 100%;
-				[data-elem='base-cell'] {
-					border-radius: 0.313rem;
-					background-color: $grey;
-					color: $white;
-					border-color: $grey;
-					width: 4.875rem;
-					[data-elem='input'] {
-						text-align: center;
-						color: $white;
-						background-color: $grey;
-						border: none;
-						width: 100%;
-					}
-				}
-			}
 		}
 	}
-}
 
-// Pagination stories
-.pagination-test {
-	height: 80%;
-	width: 100%;
-	overflow: scroll;
-	background-color: powderblue;
-	display: flex;
-	flex-direction: column;
-}
+	.total-data {
+		@include ellipsis;
+		display: none;
+		@include lg {
+			display: inline;
+		}
+		margin: auto;
+		color: $white;
+		flex: 0 1 15%;
+	}
 
-.dropdown-popper {
-	@include removeScrollbar;
-	padding: 0.25rem;
+	&.no-total-data {
+		.row-switcher {
+			flex: 0 1 20%;
+		}
+
+		.jump-to-page {
+			flex: 1 1 60%;
+		}
+
+		.form {
+			flex: 0 1 20%;
+		}
+	}
 }

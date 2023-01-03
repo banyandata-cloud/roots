@@ -30,11 +30,23 @@
 			@include flex(row, flex-end);
 			gap: 0.5rem;
 
+			.toggle-body {
+				padding: 0.125rem 0.25rem;
+				height: 1.75rem;
+				> [data-elem='base-cell'] {
+					background-color: transparent;
+					color: $white;
+				}
+			}
+
 			.dropdown-header {
+				height: 1.75rem;
+
 				[data-elem='select'] {
 					background-color: transparent;
 					width: 100%;
 					color: $white;
+					border-color: $grey;
 					padding: 0.07rem 0.5rem;
 					[data-elem='placeholder'] {
 						font-size: 0.875rem;
@@ -50,7 +62,7 @@
 			.expand-button {
 				height: 1.75rem;
 				color: $white;
-				border-color: $white;
+				border-color: $grey;
 				.expand-icon {
 					height: 1.25rem;
 					width: 1.25rem;
