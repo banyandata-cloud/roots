@@ -29,3 +29,5 @@ export * from './Trash';
 export * from './SearchIcon';
 export * from './Close';
 export * from './Sort';
+export * from './Clouds';
+export * from './Databases';
