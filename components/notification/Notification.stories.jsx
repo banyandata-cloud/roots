@@ -29,8 +29,6 @@ Default.parameters = {
 	},
 };
 
-export const Disabled = Template.bind({});
-
 Default.args = {
 	options: [
 		{
