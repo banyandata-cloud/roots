@@ -110,5 +110,5 @@
   fill: var(--warning);
 }
 .root.shadow {
-  box-shadow: 0.125rem 0.5rem 1rem rgba(60, 60, 60, 0.12);
+  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);
 }/*# sourceMappingURL=Alert.module.css.map */

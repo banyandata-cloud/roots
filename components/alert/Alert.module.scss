@@ -97,6 +97,6 @@
 	}
 
 	&.shadow {
-		box-shadow: 0.125rem 0.5rem 1rem rgba(60, 60, 60, 0.12);
+		@include boxShadow;
 	}
 }
