@@ -514,14 +514,14 @@ function requireReactPropTypesSecret () {
 	return ReactPropTypesSecret_1;
 }
 
-var has;
+var has$1;
 var hasRequiredHas;
 
 function requireHas () {
-	if (hasRequiredHas) return has;
+	if (hasRequiredHas) return has$1;
 	hasRequiredHas = 1;
-	has = Function.call.bind(Object.prototype.hasOwnProperty);
-	return has;
+	has$1 = Function.call.bind(Object.prototype.hasOwnProperty);
+	return has$1;
 }
 
 /**
@@ -1574,9 +1574,9 @@ var getCSSVariableValue = function getCSSVariableValue(variable) {
 
 var e$1=[],t=[];function n(n,r){if(n&&"undefined"!=typeof document){var a,s=!0===r.prepend?"prepend":"append",d=!0===r.singleTag,i="string"==typeof r.container?document.querySelector(r.container):document.getElementsByTagName("head")[0];if(d){var u=e$1.indexOf(i);-1===u&&(u=e$1.push(i)-1,t[u]={}),a=t[u]&&t[u][s]?t[u][s]:t[u][s]=c();}else a=c();65279===n.charCodeAt(0)&&(n=n.substring(1)),a.styleSheet?a.styleSheet.cssText+=n:a.appendChild(document.createTextNode(n));}function c(){var e=document.createElement("style");if(e.setAttribute("type","text/css"),r.attributes)for(var t=Object.keys(r.attributes),n=0;n<t.length;n++)e.setAttribute(t[n],r.attributes[t[n]]);var a="prepend"===s?"afterbegin":"beforeend";return i.insertAdjacentElement(a,e),e}}
 
-var css$X = ".BaseCell_module_root__81e07d2d {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  padding: 0.5rem;\n  gap: 0.5rem;\n  flex: none;\n  height: 3rem;\n  background: var(--white);\n  max-width: 100%;\n  max-height: 100%;\n}\n.BaseCell_module_root__81e07d2d > [data-elem*=component] {\n  display: inline-block;\n  max-height: 100%;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_sm__81e07d2d {\n  width: 9.063rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_md__81e07d2d {\n  width: 15.625rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_lg__81e07d2d {\n  width: 21.875rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_auto__81e07d2d {\n  width: auto;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_borderRadiusDefault__81e07d2d {\n  border-radius: 0.25rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_borderRadiusRound__81e07d2d {\n  border-radius: 50%;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_borderRadiusEllipse__81e07d2d {\n  border-radius: 1.563rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_flexible__81e07d2d {\n  flex-grow: 1;\n  flex-shrink: 1;\n  min-width: 3rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_flexible__81e07d2d.BaseCell_module_sm__81e07d2d {\n  min-width: 9.063rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_flexible__81e07d2d.BaseCell_module_md__81e07d2d {\n  min-width: 15.625rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_flexible__81e07d2d.BaseCell_module_lg__81e07d2d {\n  min-width: 21.875rem;\n}";
+var css$Y = ".BaseCell_module_root__81e07d2d {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  padding: 0.5rem;\n  gap: 0.5rem;\n  flex: none;\n  height: 3rem;\n  background: var(--white);\n  max-width: 100%;\n  max-height: 100%;\n}\n.BaseCell_module_root__81e07d2d > [data-elem*=component] {\n  display: inline-block;\n  max-height: 100%;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_sm__81e07d2d {\n  width: 9.063rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_md__81e07d2d {\n  width: 15.625rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_lg__81e07d2d {\n  width: 21.875rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_auto__81e07d2d {\n  width: auto;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_borderRadiusDefault__81e07d2d {\n  border-radius: 0.25rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_borderRadiusRound__81e07d2d {\n  border-radius: 50%;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_borderRadiusEllipse__81e07d2d {\n  border-radius: 1.563rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_flexible__81e07d2d {\n  flex-grow: 1;\n  flex-shrink: 1;\n  min-width: 3rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_flexible__81e07d2d.BaseCell_module_sm__81e07d2d {\n  min-width: 9.063rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_flexible__81e07d2d.BaseCell_module_md__81e07d2d {\n  min-width: 15.625rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_flexible__81e07d2d.BaseCell_module_lg__81e07d2d {\n  min-width: 21.875rem;\n}";
 var modules_3af9b74c = {"root":"BaseCell_module_root__81e07d2d","sm":"BaseCell_module_sm__81e07d2d","md":"BaseCell_module_md__81e07d2d","lg":"BaseCell_module_lg__81e07d2d","auto":"BaseCell_module_auto__81e07d2d","border-radius-default":"BaseCell_module_borderRadiusDefault__81e07d2d","border-radius-round":"BaseCell_module_borderRadiusRound__81e07d2d","border-radius-ellipse":"BaseCell_module_borderRadiusEllipse__81e07d2d","flexible":"BaseCell_module_flexible__81e07d2d"};
-n(css$X,{});
+n(css$Y,{});
 
 var BaseCell = /*#__PURE__*/React.forwardRef(function BaseCell(props, ref) {
   var className = props.className,
@@ -1656,9 +1656,9 @@ var defaultProps = {
   attrs: {}
 };
 
-var css$W = "button.BaseButton_module_root__39a3f3ec[data-elem=base-cell] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  display: inline-flex;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  border: none;\n  background: none;\n  padding: 0.5rem 0.75rem;\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell]:focus {\n  outline: 1px solid var(--highlight);\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell]:active {\n  outline: none;\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell]:disabled {\n  cursor: not-allowed;\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell].BaseButton_module_contained__39a3f3ec {\n  background: var(--black);\n  color: var(--white);\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell].BaseButton_module_outlined__39a3f3ec {\n  color: var(--black);\n  border: 1px solid var(--black);\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell].BaseButton_module_text__39a3f3ec {\n  color: var(--black);\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell] [data-elem*=component] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell] [data-elem=component2] {\n  min-width: 0;\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell] [data-elem=title] {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n}";
+var css$X = "button.BaseButton_module_root__39a3f3ec[data-elem=base-cell] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  display: inline-flex;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  border: none;\n  background: none;\n  padding: 0.5rem 0.75rem;\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell]:focus {\n  outline: 1px solid var(--highlight);\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell]:active {\n  outline: none;\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell]:disabled {\n  cursor: not-allowed;\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell].BaseButton_module_contained__39a3f3ec {\n  background: var(--black);\n  color: var(--white);\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell].BaseButton_module_outlined__39a3f3ec {\n  color: var(--black);\n  border: 1px solid var(--black);\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell].BaseButton_module_text__39a3f3ec {\n  color: var(--black);\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell] [data-elem*=component] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell] [data-elem=component2] {\n  min-width: 0;\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell] [data-elem=title] {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n}";
 var modules_ab72627b = {"root":"BaseButton_module_root__39a3f3ec","contained":"BaseButton_module_contained__39a3f3ec","outlined":"BaseButton_module_outlined__39a3f3ec","text":"BaseButton_module_text__39a3f3ec"};
-n(css$W,{});
+n(css$X,{});
 
 var BaseButton = /*#__PURE__*/React.forwardRef(function BaseButton(props, ref) {
   var className = props.className,
@@ -1717,9 +1717,9 @@ BaseButton.defaultProps = _objectSpread2(_objectSpread2({}, BaseCell.defaultProp
   variant: 'contained'
 });
 
-var css$V = ".Button_module_root__0be1a26c[data-elem=base-cell] {\n  cursor: pointer;\n}\n.Button_module_root__0be1a26c[data-elem=base-cell] [data-elem=component2] [data-elem=title] {\n  font-weight: 500;\n  font-size: 0.875rem;\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_primary__0be1a26c.Button_module_contained__0be1a26c {\n  background-color: var(--highlight);\n  color: var(--white);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_primary__0be1a26c.Button_module_outlined__0be1a26c {\n  background-color: transparent;\n  border-color: var(--highlight);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_primary__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell].Button_module_primary__0be1a26c.Button_module_text__0be1a26c {\n  color: var(--highlight);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_success__0be1a26c.Button_module_contained__0be1a26c {\n  background-color: var(--success);\n  color: var(--white);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_success__0be1a26c.Button_module_outlined__0be1a26c {\n  background-color: transparent;\n  border-color: var(--success);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_success__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell].Button_module_success__0be1a26c.Button_module_text__0be1a26c {\n  color: var(--success);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_danger__0be1a26c.Button_module_contained__0be1a26c {\n  background-color: var(--error);\n  color: var(--white);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_danger__0be1a26c.Button_module_outlined__0be1a26c {\n  background-color: transparent;\n  border-color: var(--error);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_danger__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell].Button_module_danger__0be1a26c.Button_module_text__0be1a26c {\n  color: var(--error);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_warning__0be1a26c.Button_module_contained__0be1a26c {\n  background-color: var(--warning);\n  color: var(--white);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_warning__0be1a26c.Button_module_outlined__0be1a26c {\n  background-color: transparent;\n  border-color: var(--warning);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_warning__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell].Button_module_warning__0be1a26c.Button_module_text__0be1a26c {\n  color: var(--warning);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_primary__0be1a26c.Button_module_contained__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_success__0be1a26c.Button_module_contained__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_danger__0be1a26c.Button_module_contained__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_warning__0be1a26c.Button_module_contained__0be1a26c {\n  background-color: var(--grey4);\n  color: var(--grey);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_primary__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_success__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_danger__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_warning__0be1a26c.Button_module_outlined__0be1a26c {\n  background-color: transparent;\n  border-color: var(--grey);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_primary__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_primary__0be1a26c.Button_module_text__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_success__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_success__0be1a26c.Button_module_text__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_danger__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_danger__0be1a26c.Button_module_text__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_warning__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_warning__0be1a26c.Button_module_text__0be1a26c {\n  color: var(--grey);\n}";
+var css$W = ".Button_module_root__0be1a26c[data-elem=base-cell] {\n  cursor: pointer;\n}\n.Button_module_root__0be1a26c[data-elem=base-cell] [data-elem=component2] [data-elem=title] {\n  font-weight: 500;\n  font-size: 0.875rem;\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_primary__0be1a26c.Button_module_contained__0be1a26c {\n  background-color: var(--highlight);\n  color: var(--white);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_primary__0be1a26c.Button_module_outlined__0be1a26c {\n  background-color: transparent;\n  border-color: var(--highlight);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_primary__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell].Button_module_primary__0be1a26c.Button_module_text__0be1a26c {\n  color: var(--highlight);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_success__0be1a26c.Button_module_contained__0be1a26c {\n  background-color: var(--success);\n  color: var(--white);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_success__0be1a26c.Button_module_outlined__0be1a26c {\n  background-color: transparent;\n  border-color: var(--success);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_success__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell].Button_module_success__0be1a26c.Button_module_text__0be1a26c {\n  color: var(--success);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_danger__0be1a26c.Button_module_contained__0be1a26c {\n  background-color: var(--error);\n  color: var(--white);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_danger__0be1a26c.Button_module_outlined__0be1a26c {\n  background-color: transparent;\n  border-color: var(--error);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_danger__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell].Button_module_danger__0be1a26c.Button_module_text__0be1a26c {\n  color: var(--error);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_warning__0be1a26c.Button_module_contained__0be1a26c {\n  background-color: var(--warning);\n  color: var(--white);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_warning__0be1a26c.Button_module_outlined__0be1a26c {\n  background-color: transparent;\n  border-color: var(--warning);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_warning__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell].Button_module_warning__0be1a26c.Button_module_text__0be1a26c {\n  color: var(--warning);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_primary__0be1a26c.Button_module_contained__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_success__0be1a26c.Button_module_contained__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_danger__0be1a26c.Button_module_contained__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_warning__0be1a26c.Button_module_contained__0be1a26c {\n  background-color: var(--grey4);\n  color: var(--grey);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_primary__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_success__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_danger__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_warning__0be1a26c.Button_module_outlined__0be1a26c {\n  background-color: transparent;\n  border-color: var(--grey);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_primary__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_primary__0be1a26c.Button_module_text__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_success__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_success__0be1a26c.Button_module_text__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_danger__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_danger__0be1a26c.Button_module_text__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_warning__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_warning__0be1a26c.Button_module_text__0be1a26c {\n  color: var(--grey);\n}";
 var modules_b0070f27 = {"root":"Button_module_root__0be1a26c","primary":"Button_module_primary__0be1a26c","contained":"Button_module_contained__0be1a26c","outlined":"Button_module_outlined__0be1a26c","text":"Button_module_text__0be1a26c","success":"Button_module_success__0be1a26c","danger":"Button_module_danger__0be1a26c","warning":"Button_module_warning__0be1a26c"};
-n(css$V,{});
+n(css$W,{});
 
 var Button = /*#__PURE__*/React.forwardRef(function Button(props, ref) {
   var className = props.className,
@@ -1763,9 +1763,9 @@ Button.defaultProps = _objectSpread2(_objectSpread2({}, BaseButton.defaultProps)
   radius: 'default'
 });
 
-var css$U = ".Chip_module_root__0aa07630[data-elem=base-cell] {\n  position: relative;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell] [data-elem=component2] [data-elem=title] {\n  font-weight: 500;\n  font-size: 0.875rem;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_sm__0aa07630 {\n  height: 2rem;\n  padding: 0.188rem 0.5rem;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_md__0aa07630 {\n  height: 2.25rem;\n  padding: 0.563rem 1rem;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630.Chip_module_success__0aa07630 {\n  background-color: var(--success-bg);\n  color: var(--success);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630.Chip_module_info__0aa07630 {\n  background-color: var(--info-bg);\n  color: var(--info);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630.Chip_module_danger__0aa07630 {\n  background-color: var(--error-bg);\n  color: var(--error);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630.Chip_module_warning__0aa07630 {\n  background-color: var(--warning-bg);\n  color: var(--warning);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630.Chip_module_default__0aa07630 {\n  background-color: var(--grey5);\n  color: var(--grey);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630:hover {\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630 {\n  border-width: 1px;\n  border-style: solid;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_success__0aa07630 {\n  background-color: var(--success-bg);\n  color: var(--success);\n  border-color: var(--success-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_success__0aa07630:hover {\n  background-color: var(--success-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_info__0aa07630 {\n  background-color: var(--info-bg);\n  color: var(--info);\n  border-color: var(--info-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_info__0aa07630:hover {\n  background-color: var(--info-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_danger__0aa07630 {\n  background-color: var(--error-bg);\n  color: var(--error);\n  border-color: var(--error-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_danger__0aa07630:hover {\n  background-color: var(--error-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_warning__0aa07630 {\n  background-color: var(--warning-bg);\n  color: var(--warning);\n  border-color: var(--warning-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_warning__0aa07630:hover {\n  background-color: var(--warning-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_default__0aa07630 {\n  background-color: var(--grey8);\n  color: var(--grey);\n  border-color: var(--grey6);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_default__0aa07630:hover {\n  background-color: var(--grey6);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_status__0aa07630, .Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_input__0aa07630 {\n  filter: grayscale(1);\n  border-color: var(--grey4);\n  background-color: var(--grey5);\n  color: var(--grey2);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_status__0aa07630 [data-elem=component1],\n.Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_status__0aa07630 [data-elem=component3], .Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_input__0aa07630 [data-elem=component1],\n.Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_input__0aa07630 [data-elem=component3] {\n  opacity: 0.5;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_status__0aa07630:hover, .Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_input__0aa07630:hover {\n  box-shadow: none;\n  background-color: var(--grey5);\n}";
+var css$V = ".Chip_module_root__0aa07630[data-elem=base-cell] {\n  position: relative;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell] [data-elem=component2] [data-elem=title] {\n  font-weight: 500;\n  font-size: 0.875rem;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_sm__0aa07630 {\n  height: 2rem;\n  padding: 0.188rem 0.5rem;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_md__0aa07630 {\n  height: 2.25rem;\n  padding: 0.563rem 1rem;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630.Chip_module_success__0aa07630 {\n  background-color: var(--success-bg);\n  color: var(--success);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630.Chip_module_info__0aa07630 {\n  background-color: var(--info-bg);\n  color: var(--info);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630.Chip_module_danger__0aa07630 {\n  background-color: var(--error-bg);\n  color: var(--error);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630.Chip_module_warning__0aa07630 {\n  background-color: var(--warning-bg);\n  color: var(--warning);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630.Chip_module_default__0aa07630 {\n  background-color: var(--grey5);\n  color: var(--grey);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630:hover {\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630 {\n  border-width: 1px;\n  border-style: solid;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_success__0aa07630 {\n  background-color: var(--success-bg);\n  color: var(--success);\n  border-color: var(--success-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_success__0aa07630:hover {\n  background-color: var(--success-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_info__0aa07630 {\n  background-color: var(--info-bg);\n  color: var(--info);\n  border-color: var(--info-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_info__0aa07630:hover {\n  background-color: var(--info-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_danger__0aa07630 {\n  background-color: var(--error-bg);\n  color: var(--error);\n  border-color: var(--error-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_danger__0aa07630:hover {\n  background-color: var(--error-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_warning__0aa07630 {\n  background-color: var(--warning-bg);\n  color: var(--warning);\n  border-color: var(--warning-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_warning__0aa07630:hover {\n  background-color: var(--warning-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_default__0aa07630 {\n  background-color: var(--grey8);\n  color: var(--grey);\n  border-color: var(--grey6);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_default__0aa07630:hover {\n  background-color: var(--grey6);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_status__0aa07630, .Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_input__0aa07630 {\n  filter: grayscale(1);\n  border-color: var(--grey4);\n  background-color: var(--grey5);\n  color: var(--grey2);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_status__0aa07630 [data-elem=component1],\n.Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_status__0aa07630 [data-elem=component3], .Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_input__0aa07630 [data-elem=component1],\n.Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_input__0aa07630 [data-elem=component3] {\n  opacity: 0.5;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_status__0aa07630:hover, .Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_input__0aa07630:hover {\n  box-shadow: none;\n  background-color: var(--grey5);\n}";
 var modules_31aa5fd7 = {"root":"Chip_module_root__0aa07630","sm":"Chip_module_sm__0aa07630","md":"Chip_module_md__0aa07630","status":"Chip_module_status__0aa07630","success":"Chip_module_success__0aa07630","info":"Chip_module_info__0aa07630","danger":"Chip_module_danger__0aa07630","warning":"Chip_module_warning__0aa07630","default":"Chip_module_default__0aa07630","input":"Chip_module_input__0aa07630"};
-n(css$U,{});
+n(css$V,{});
 
 var Chip = function Chip(props) {
   var className = props.className,
@@ -2136,9 +2136,9 @@ Server.defaultProps = {
   className: ''
 };
 
-var css$T = ".Arrow_module_right__19f08663 {\n  transform: rotate(0deg);\n}\n\n.Arrow_module_left__19f08663 {\n  transform: rotate(180deg);\n}\n\n.Arrow_module_bottom__19f08663 {\n  transform: rotate(90deg);\n}\n\n.Arrow_module_top__19f08663 {\n  transform: rotate(270deg);\n}";
+var css$U = ".Arrow_module_right__19f08663 {\n  transform: rotate(0deg);\n}\n\n.Arrow_module_left__19f08663 {\n  transform: rotate(180deg);\n}\n\n.Arrow_module_bottom__19f08663 {\n  transform: rotate(90deg);\n}\n\n.Arrow_module_top__19f08663 {\n  transform: rotate(270deg);\n}";
 var modules_e313d483 = {"right":"Arrow_module_right__19f08663","left":"Arrow_module_left__19f08663","bottom":"Arrow_module_bottom__19f08663","top":"Arrow_module_top__19f08663"};
-n(css$T,{});
+n(css$U,{});
 
 var Arrow$1 = function Arrow(props) {
   var className = props.className,
@@ -2158,9 +2158,9 @@ Arrow$1.defaultProps = {
   position: 'right'
 };
 
-var css$S = ".Chevron_module_left__8b1808eb {\n  transform: rotate(0deg);\n}\n\n.Chevron_module_bottom__8b1808eb {\n  transform: rotate(90deg);\n}\n\n.Chevron_module_right__8b1808eb {\n  transform: rotate(180deg);\n}\n\n.Chevron_module_top__8b1808eb {\n  transform: rotate(270deg);\n}";
+var css$T = ".Chevron_module_left__8b1808eb {\n  transform: rotate(0deg);\n}\n\n.Chevron_module_bottom__8b1808eb {\n  transform: rotate(90deg);\n}\n\n.Chevron_module_right__8b1808eb {\n  transform: rotate(180deg);\n}\n\n.Chevron_module_top__8b1808eb {\n  transform: rotate(270deg);\n}";
 var modules_bf5b0b74 = {"left":"Chevron_module_left__8b1808eb","bottom":"Chevron_module_bottom__8b1808eb","right":"Chevron_module_right__8b1808eb","top":"Chevron_module_top__8b1808eb"};
-n(css$S,{});
+n(css$T,{});
 
 var Chevron = function Chevron(props) {
   var className = props.className,
@@ -2258,7 +2258,7 @@ Edit.defaultProps = {
   className: ''
 };
 
-var View = function View(props) {
+var View$2 = function View(props) {
   var className = props.className;
   return /*#__PURE__*/jsxRuntime.jsx("svg", {
     className: className,
@@ -2271,7 +2271,7 @@ var View = function View(props) {
     })
   });
 };
-View.defaultProps = {
+View$2.defaultProps = {
   className: ''
 };
 
@@ -2523,9 +2523,9 @@ var Close = function Close(_ref) {
   });
 };
 
-var css$R = ".Sort_module_root__5112e35d.Sort_module_orderAz__5112e35d {\n  transform: none;\n}\n.Sort_module_root__5112e35d.Sort_module_orderZa__5112e35d {\n  transform: rotate(180deg);\n}";
+var css$S = ".Sort_module_root__5112e35d.Sort_module_orderAz__5112e35d {\n  transform: none;\n}\n.Sort_module_root__5112e35d.Sort_module_orderZa__5112e35d {\n  transform: rotate(180deg);\n}";
 var modules_501919d9 = {"root":"Sort_module_root__5112e35d","order-az":"Sort_module_orderAz__5112e35d","order-za":"Sort_module_orderZa__5112e35d"};
-n(css$R,{});
+n(css$S,{});
 
 var Sort = function Sort(_ref) {
   var className = _ref.className,
@@ -3213,9 +3213,9 @@ var Databases = {
   MySql: MySql
 };
 
-var css$Q = ".Accordion_module_root__a63f6f55 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  width: 100%;\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell] {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.5rem;\n  padding: 0.5rem 1rem;\n  cursor: pointer;\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell] > [data-elem=component1] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell] > [data-elem=component1] .Accordion_module_icon__a63f6f55 {\n  transform: rotate(-90deg);\n  width: 1rem;\n  height: 1rem;\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell] .Accordion_module_title__a63f6f55 {\n  flex: 1 1 auto;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell]:hover {\n  background: var(--background);\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell]:hover .Accordion_module_icon__a63f6f55,\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell]:hover .Accordion_module_title__a63f6f55 {\n  color: var(--highlight);\n  fill: var(--highlight);\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_body__a63f6f55 {\n  display: none;\n  padding: 0.5rem 2.5rem;\n}\n.Accordion_module_root__a63f6f55.Accordion_module_open__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell] [data-elem=component1] .Accordion_module_icon__a63f6f55 {\n  transform: none;\n}\n.Accordion_module_root__a63f6f55.Accordion_module_open__a63f6f55 > .Accordion_module_body__a63f6f55 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n}\n.Accordion_module_root__a63f6f55.Accordion_module_open__a63f6f55 > .Accordion_module_body__a63f6f55 > button[data-elem=base-cell] {\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  align-self: flex-end;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-end;\n  align-items: center;\n}\n.Accordion_module_root__a63f6f55.Accordion_module_open__a63f6f55 > .Accordion_module_body__a63f6f55 > button[data-elem=base-cell] .Accordion_module_expand__a63f6f55 {\n  height: 1.5rem;\n  width: 1.5rem;\n}";
+var css$R = ".Accordion_module_root__a63f6f55 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  width: 100%;\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell] {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.5rem;\n  padding: 0.5rem 1rem;\n  cursor: pointer;\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell] > [data-elem=component1] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell] > [data-elem=component1] .Accordion_module_icon__a63f6f55 {\n  transform: rotate(-90deg);\n  width: 1rem;\n  height: 1rem;\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell] .Accordion_module_title__a63f6f55 {\n  flex: 1 1 auto;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell]:hover {\n  background: var(--background);\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell]:hover .Accordion_module_icon__a63f6f55,\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell]:hover .Accordion_module_title__a63f6f55 {\n  color: var(--highlight);\n  fill: var(--highlight);\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_body__a63f6f55 {\n  display: none;\n  padding: 0.5rem 2.5rem;\n}\n.Accordion_module_root__a63f6f55.Accordion_module_open__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell] [data-elem=component1] .Accordion_module_icon__a63f6f55 {\n  transform: none;\n}\n.Accordion_module_root__a63f6f55.Accordion_module_open__a63f6f55 > .Accordion_module_body__a63f6f55 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n}\n.Accordion_module_root__a63f6f55.Accordion_module_open__a63f6f55 > .Accordion_module_body__a63f6f55 > button[data-elem=base-cell] {\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  align-self: flex-end;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-end;\n  align-items: center;\n}\n.Accordion_module_root__a63f6f55.Accordion_module_open__a63f6f55 > .Accordion_module_body__a63f6f55 > button[data-elem=base-cell] .Accordion_module_expand__a63f6f55 {\n  height: 1.5rem;\n  width: 1.5rem;\n}";
 var modules_8207625f = {"root":"Accordion_module_root__a63f6f55","header":"Accordion_module_header__a63f6f55","icon":"Accordion_module_icon__a63f6f55","title":"Accordion_module_title__a63f6f55","body":"Accordion_module_body__a63f6f55","open":"Accordion_module_open__a63f6f55","expand":"Accordion_module_expand__a63f6f55"};
-n(css$Q,{});
+n(css$R,{});
 
 var Accordion = function Accordion(props) {
   var defaultOpen = props.defaultOpen,
@@ -3296,9 +3296,9 @@ Accordion.defaultProps = {
   onExpand: null
 };
 
-var css$P = ".Alert_module_root__b5fc9a1d {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: flex-start;\n  position: fixed;\n  padding: 0.938rem;\n  width: 500px;\n}\n.Alert_module_root__b5fc9a1d.Alert_module_positionBottomCenter__b5fc9a1d {\n  left: 50%;\n  bottom: 1rem;\n  transform: translate(-50%, 0);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_positionTopRight__b5fc9a1d {\n  right: 1rem;\n  top: 1rem;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_left__b5fc9a1d {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_left__b5fc9a1d .Alert_module_icons__b5fc9a1d {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  padding: 0.313rem 0.938rem 0rem 0rem;\n  height: auto;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_left__b5fc9a1d .Alert_module_icons__b5fc9a1d .Alert_module_icon__b5fc9a1d {\n  width: 1.25rem;\n  height: 1.25rem;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_left__b5fc9a1d .Alert_module_content__b5fc9a1d {\n  padding: 0.188rem 0.938rem 0rem 0rem;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_left__b5fc9a1d .Alert_module_content__b5fc9a1d .Alert_module_title__b5fc9a1d {\n  font-size: 0.875rem;\n  font-weight: 600;\n  padding-right: 2px;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_left__b5fc9a1d .Alert_module_content__b5fc9a1d .Alert_module_description__b5fc9a1d {\n  word-wrap: break-word;\n  height: auto;\n  font-size: 0.875rem;\n  font-weight: 400;\n  margin-bottom: 0.5rem;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_actions__b5fc9a1d {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: flex-start;\n  gap: 5px;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_actions__b5fc9a1d .Alert_module_button__b5fc9a1d {\n  padding: 0.313rem 1rem;\n  font-weight: 400;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_actions__b5fc9a1d .Alert_module_close__b5fc9a1d {\n  padding-top: 0.313rem;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_actions__b5fc9a1d .Alert_module_close__b5fc9a1d .Alert_module_icon__b5fc9a1d {\n  width: 1.25rem;\n  height: 1.25rem;\n  fill: var(--black);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_borderDefault__b5fc9a1d {\n  border-width: 0.063rem;\n}\n.Alert_module_root__b5fc9a1d.Alert_module_borderThickLeft__b5fc9a1d {\n  border-width: 0.063rem 0.063rem 0.063rem 0.25rem;\n}\n.Alert_module_root__b5fc9a1d.Alert_module_borderNone__b5fc9a1d {\n  border-width: 0rem 0rem 0rem 0.25rem;\n}\n.Alert_module_root__b5fc9a1d.Alert_module_info__b5fc9a1d {\n  border-style: solid;\n  border-color: var(--info);\n  background-color: #edf5ff;\n}\n.Alert_module_root__b5fc9a1d.Alert_module_info__b5fc9a1d .Alert_module_icon__b5fc9a1d {\n  fill: var(--info);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_success__b5fc9a1d {\n  border-style: solid;\n  border-color: var(--success);\n  background-color: var(--success-bg);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_success__b5fc9a1d .Alert_module_icon__b5fc9a1d {\n  fill: var(--success);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_danger__b5fc9a1d {\n  border-style: solid;\n  border-color: var(--error);\n  background-color: var(--error-bg);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_danger__b5fc9a1d .Alert_module_icon__b5fc9a1d {\n  fill: var(--error);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_warning__b5fc9a1d {\n  border-style: solid;\n  border-color: var(--warning);\n  background-color: var(--warning-bg);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_warning__b5fc9a1d .Alert_module_icon__b5fc9a1d {\n  fill: var(--warning);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_shadow__b5fc9a1d {\n  box-shadow: 0.125rem 0.5rem 1rem rgba(60, 60, 60, 0.12);\n}";
+var css$Q = ".Alert_module_root__b5fc9a1d {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: flex-start;\n  position: fixed;\n  padding: 0.938rem;\n  width: 500px;\n}\n.Alert_module_root__b5fc9a1d.Alert_module_positionBottomCenter__b5fc9a1d {\n  left: 50%;\n  bottom: 1rem;\n  transform: translate(-50%, 0);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_positionTopRight__b5fc9a1d {\n  right: 1rem;\n  top: 1rem;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_left__b5fc9a1d {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_left__b5fc9a1d .Alert_module_icons__b5fc9a1d {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  padding: 0.313rem 0.938rem 0rem 0rem;\n  height: auto;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_left__b5fc9a1d .Alert_module_icons__b5fc9a1d .Alert_module_icon__b5fc9a1d {\n  width: 1.25rem;\n  height: 1.25rem;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_left__b5fc9a1d .Alert_module_content__b5fc9a1d {\n  padding: 0.188rem 0.938rem 0rem 0rem;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_left__b5fc9a1d .Alert_module_content__b5fc9a1d .Alert_module_title__b5fc9a1d {\n  font-size: 0.875rem;\n  font-weight: 600;\n  padding-right: 2px;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_left__b5fc9a1d .Alert_module_content__b5fc9a1d .Alert_module_description__b5fc9a1d {\n  word-wrap: break-word;\n  height: auto;\n  font-size: 0.875rem;\n  font-weight: 400;\n  margin-bottom: 0.5rem;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_actions__b5fc9a1d {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: flex-start;\n  gap: 5px;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_actions__b5fc9a1d .Alert_module_button__b5fc9a1d {\n  padding: 0.313rem 1rem;\n  font-weight: 400;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_actions__b5fc9a1d .Alert_module_close__b5fc9a1d {\n  padding-top: 0.313rem;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_actions__b5fc9a1d .Alert_module_close__b5fc9a1d .Alert_module_icon__b5fc9a1d {\n  width: 1.25rem;\n  height: 1.25rem;\n  fill: var(--black);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_borderDefault__b5fc9a1d {\n  border-width: 0.063rem;\n}\n.Alert_module_root__b5fc9a1d.Alert_module_borderThickLeft__b5fc9a1d {\n  border-width: 0.063rem 0.063rem 0.063rem 0.25rem;\n}\n.Alert_module_root__b5fc9a1d.Alert_module_borderNone__b5fc9a1d {\n  border-width: 0rem 0rem 0rem 0.25rem;\n}\n.Alert_module_root__b5fc9a1d.Alert_module_info__b5fc9a1d {\n  border-style: solid;\n  border-color: var(--info);\n  background-color: #edf5ff;\n}\n.Alert_module_root__b5fc9a1d.Alert_module_info__b5fc9a1d .Alert_module_icon__b5fc9a1d {\n  fill: var(--info);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_success__b5fc9a1d {\n  border-style: solid;\n  border-color: var(--success);\n  background-color: var(--success-bg);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_success__b5fc9a1d .Alert_module_icon__b5fc9a1d {\n  fill: var(--success);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_danger__b5fc9a1d {\n  border-style: solid;\n  border-color: var(--error);\n  background-color: var(--error-bg);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_danger__b5fc9a1d .Alert_module_icon__b5fc9a1d {\n  fill: var(--error);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_warning__b5fc9a1d {\n  border-style: solid;\n  border-color: var(--warning);\n  background-color: var(--warning-bg);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_warning__b5fc9a1d .Alert_module_icon__b5fc9a1d {\n  fill: var(--warning);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_shadow__b5fc9a1d {\n  box-shadow: 0.125rem 0.5rem 1rem rgba(60, 60, 60, 0.12);\n}";
 var modules_3a764ea3 = {"root":"Alert_module_root__b5fc9a1d","position-bottom-center":"Alert_module_positionBottomCenter__b5fc9a1d","position-top-right":"Alert_module_positionTopRight__b5fc9a1d","left":"Alert_module_left__b5fc9a1d","icons":"Alert_module_icons__b5fc9a1d","icon":"Alert_module_icon__b5fc9a1d","content":"Alert_module_content__b5fc9a1d","title":"Alert_module_title__b5fc9a1d","description":"Alert_module_description__b5fc9a1d","actions":"Alert_module_actions__b5fc9a1d","button":"Alert_module_button__b5fc9a1d","close":"Alert_module_close__b5fc9a1d","border-default":"Alert_module_borderDefault__b5fc9a1d","border-thick-left":"Alert_module_borderThickLeft__b5fc9a1d","border-none":"Alert_module_borderNone__b5fc9a1d","info":"Alert_module_info__b5fc9a1d","success":"Alert_module_success__b5fc9a1d","danger":"Alert_module_danger__b5fc9a1d","warning":"Alert_module_warning__b5fc9a1d","shadow":"Alert_module_shadow__b5fc9a1d"};
-n(css$P,{});
+n(css$Q,{});
 
 function getSide(placement) {
   return placement.split('-')[0];
@@ -7136,9 +7136,9 @@ const useListNavigation = function (_ref, _temp2) {
   };
 };
 
-var css$O = ".Popper_module_backdrop__0c794282 {\n  position: fixed;\n  z-index: 100;\n  inset: 0;\n  background: rgba(0, 0, 0, 0.4);\n}\n.Popper_module_backdrop__0c794282.Popper_module_transparent__0c794282 {\n  background: none;\n}\n.Popper_module_backdrop__0c794282.Popper_module_hideBackdrop__0c794282 {\n  position: static !important;\n}";
+var css$P = ".Popper_module_backdrop__0c794282 {\n  position: fixed;\n  z-index: 100;\n  inset: 0;\n  background: rgba(0, 0, 0, 0.4);\n}\n.Popper_module_backdrop__0c794282.Popper_module_transparent__0c794282 {\n  background: none;\n}\n.Popper_module_backdrop__0c794282.Popper_module_hideBackdrop__0c794282 {\n  position: static !important;\n}";
 var modules_fe46b225 = {"backdrop":"Popper_module_backdrop__0c794282","transparent":"Popper_module_transparent__0c794282","hide-backdrop":"Popper_module_hideBackdrop__0c794282"};
-n(css$O,{});
+n(css$P,{});
 
 var Popper = function Popper(props) {
   var open = props.open,
@@ -7396,13 +7396,13 @@ Alert.defaultProps = {
   position: 'bottom-center'
 };
 
-var css$N = ".Breadcrumbs_module_root__f527a278 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.5rem;\n  width: auto;\n}\n.Breadcrumbs_module_root__f527a278 .Breadcrumbs_module_seperator__f527a278 {\n  width: 1.5rem;\n  height: 1.5rem;\n  stroke: var(--grey2);\n}\n.Breadcrumbs_module_root__f527a278 button.Breadcrumbs_module_expand__f527a278[data-elem=base-cell] {\n  background: var(--grey6);\n  color: var(--dark-grey);\n  height: 0.75rem;\n  padding: 0.25rem;\n}\n.Breadcrumbs_module_root__f527a278 button.Breadcrumbs_module_expand__f527a278[data-elem=base-cell] [data-elem=title] {\n  margin-bottom: 0.4rem;\n}\n.Breadcrumbs_module_root__f527a278 .Breadcrumbs_module_crumb__f527a278 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  color: var(--grey2);\n}\n.Breadcrumbs_module_root__f527a278 .Breadcrumbs_module_crumb__f527a278.Breadcrumbs_module_active__f527a278 {\n  color: var(--black);\n}\n.Breadcrumbs_module_root__f527a278 .Breadcrumbs_module_crumb__f527a278:hover:not(.Breadcrumbs_module_active__f527a278) {\n  color: var(--info);\n}\n.Breadcrumbs_module_root__f527a278.Breadcrumbs_module_themeLight__f527a278 .Breadcrumbs_module_crumb__f527a278 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  color: var(--grey2);\n}\n.Breadcrumbs_module_root__f527a278.Breadcrumbs_module_themeLight__f527a278 .Breadcrumbs_module_crumb__f527a278.Breadcrumbs_module_active__f527a278 {\n  color: var(--black);\n}\n.Breadcrumbs_module_root__f527a278.Breadcrumbs_module_themeLight__f527a278 .Breadcrumbs_module_crumb__f527a278:hover:not(.Breadcrumbs_module_active__f527a278) {\n  color: var(--info);\n}\n.Breadcrumbs_module_root__f527a278.Breadcrumbs_module_themeDark__f527a278 .Breadcrumbs_module_crumb__f527a278 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  color: var(--grey2);\n}\n.Breadcrumbs_module_root__f527a278.Breadcrumbs_module_themeDark__f527a278 .Breadcrumbs_module_crumb__f527a278.Breadcrumbs_module_active__f527a278 {\n  color: var(--white);\n}\n.Breadcrumbs_module_root__f527a278.Breadcrumbs_module_themeDark__f527a278 .Breadcrumbs_module_crumb__f527a278:hover:not(.Breadcrumbs_module_active__f527a278) {\n  color: var(--info);\n}";
+var css$O = ".Breadcrumbs_module_root__f527a278 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.5rem;\n  width: auto;\n}\n.Breadcrumbs_module_root__f527a278 .Breadcrumbs_module_seperator__f527a278 {\n  width: 1.5rem;\n  height: 1.5rem;\n  stroke: var(--grey2);\n}\n.Breadcrumbs_module_root__f527a278 button.Breadcrumbs_module_expand__f527a278[data-elem=base-cell] {\n  background: var(--grey6);\n  color: var(--dark-grey);\n  height: 0.75rem;\n  padding: 0.25rem;\n}\n.Breadcrumbs_module_root__f527a278 button.Breadcrumbs_module_expand__f527a278[data-elem=base-cell] [data-elem=title] {\n  margin-bottom: 0.4rem;\n}\n.Breadcrumbs_module_root__f527a278 .Breadcrumbs_module_crumb__f527a278 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  color: var(--grey2);\n}\n.Breadcrumbs_module_root__f527a278 .Breadcrumbs_module_crumb__f527a278.Breadcrumbs_module_active__f527a278 {\n  color: var(--black);\n}\n.Breadcrumbs_module_root__f527a278 .Breadcrumbs_module_crumb__f527a278:hover:not(.Breadcrumbs_module_active__f527a278) {\n  color: var(--info);\n}\n.Breadcrumbs_module_root__f527a278.Breadcrumbs_module_themeLight__f527a278 .Breadcrumbs_module_crumb__f527a278 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  color: var(--grey2);\n}\n.Breadcrumbs_module_root__f527a278.Breadcrumbs_module_themeLight__f527a278 .Breadcrumbs_module_crumb__f527a278.Breadcrumbs_module_active__f527a278 {\n  color: var(--black);\n}\n.Breadcrumbs_module_root__f527a278.Breadcrumbs_module_themeLight__f527a278 .Breadcrumbs_module_crumb__f527a278:hover:not(.Breadcrumbs_module_active__f527a278) {\n  color: var(--info);\n}\n.Breadcrumbs_module_root__f527a278.Breadcrumbs_module_themeDark__f527a278 .Breadcrumbs_module_crumb__f527a278 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  color: var(--grey2);\n}\n.Breadcrumbs_module_root__f527a278.Breadcrumbs_module_themeDark__f527a278 .Breadcrumbs_module_crumb__f527a278.Breadcrumbs_module_active__f527a278 {\n  color: var(--white);\n}\n.Breadcrumbs_module_root__f527a278.Breadcrumbs_module_themeDark__f527a278 .Breadcrumbs_module_crumb__f527a278:hover:not(.Breadcrumbs_module_active__f527a278) {\n  color: var(--info);\n}";
 var modules_651f50a9 = {"root":"Breadcrumbs_module_root__f527a278","seperator":"Breadcrumbs_module_seperator__f527a278","expand":"Breadcrumbs_module_expand__f527a278","crumb":"Breadcrumbs_module_crumb__f527a278","active":"Breadcrumbs_module_active__f527a278","theme-light":"Breadcrumbs_module_themeLight__f527a278","theme-dark":"Breadcrumbs_module_themeDark__f527a278"};
-n(css$N,{});
+n(css$O,{});
 
-var css$M = ".Text_module_root__71f59b14 {\n  color: var(--dark-grey);\n}\n.Text_module_root__71f59b14.Text_module_h1__71f59b14 {\n  font-size: 2.25rem;\n  line-height: 2.75rem;\n}\n.Text_module_root__71f59b14.Text_module_h2__71f59b14 {\n  font-size: 1.375rem;\n  line-height: 1.688rem;\n}\n.Text_module_root__71f59b14.Text_module_b1__71f59b14 {\n  font-size: 1rem;\n  line-height: 1.188rem;\n}\n.Text_module_root__71f59b14.Text_module_b2__71f59b14 {\n  font-size: 0.875rem;\n  line-height: 1.188rem;\n}\n.Text_module_root__71f59b14.Text_module_b3__71f59b14 {\n  font-size: 0.75rem;\n  line-height: 1.063rem;\n}\n.Text_module_root__71f59b14.Text_module_regularStroke__71f59b14 {\n  font-weight: 400;\n}\n.Text_module_root__71f59b14.Text_module_mediumStroke__71f59b14 {\n  font-weight: 500;\n}\n.Text_module_root__71f59b14.Text_module_semiboldStroke__71f59b14 {\n  font-weight: 600;\n}\n.Text_module_root__71f59b14.Text_module_boldStroke__71f59b14 {\n  font-weight: 800;\n}";
+var css$N = ".Text_module_root__71f59b14 {\n  color: var(--dark-grey);\n}\n.Text_module_root__71f59b14.Text_module_h1__71f59b14 {\n  font-size: 2.25rem;\n  line-height: 2.75rem;\n}\n.Text_module_root__71f59b14.Text_module_h2__71f59b14 {\n  font-size: 1.375rem;\n  line-height: 1.688rem;\n}\n.Text_module_root__71f59b14.Text_module_b1__71f59b14 {\n  font-size: 1rem;\n  line-height: 1.188rem;\n}\n.Text_module_root__71f59b14.Text_module_b2__71f59b14 {\n  font-size: 0.875rem;\n  line-height: 1.188rem;\n}\n.Text_module_root__71f59b14.Text_module_b3__71f59b14 {\n  font-size: 0.75rem;\n  line-height: 1.063rem;\n}\n.Text_module_root__71f59b14.Text_module_regularStroke__71f59b14 {\n  font-weight: 400;\n}\n.Text_module_root__71f59b14.Text_module_mediumStroke__71f59b14 {\n  font-weight: 500;\n}\n.Text_module_root__71f59b14.Text_module_semiboldStroke__71f59b14 {\n  font-weight: 600;\n}\n.Text_module_root__71f59b14.Text_module_boldStroke__71f59b14 {\n  font-weight: 800;\n}";
 var modules_22fa3f10 = {"root":"Text_module_root__71f59b14","h1":"Text_module_h1__71f59b14","h2":"Text_module_h2__71f59b14","b1":"Text_module_b1__71f59b14","b2":"Text_module_b2__71f59b14","b3":"Text_module_b3__71f59b14","regular-stroke":"Text_module_regularStroke__71f59b14","medium-stroke":"Text_module_mediumStroke__71f59b14","semibold-stroke":"Text_module_semiboldStroke__71f59b14","bold-stroke":"Text_module_boldStroke__71f59b14"};
-n(css$M,{});
+n(css$N,{});
 
 // eslint-disable-next-line prefer-arrow-callback
 var Text = /*#__PURE__*/React.forwardRef(function Text(props, ref) {
@@ -7453,9 +7453,9 @@ Text.defaultProps = {
   attrs: {}
 };
 
-var css$L = ".Link_module_root__51df30d3 {\n  color: var(--highlight);\n  text-decoration: none;\n}\n.Link_module_root__51df30d3.Link_module_underlineNone__51df30d3 {\n  text-decoration: none;\n}\n.Link_module_root__51df30d3.Link_module_underlineHover__51df30d3:hover {\n  text-decoration: underline;\n}\n.Link_module_root__51df30d3.Link_module_underlineAlways__51df30d3 {\n  text-decoration: underline;\n}";
+var css$M = ".Link_module_root__51df30d3 {\n  color: var(--highlight);\n  text-decoration: none;\n}\n.Link_module_root__51df30d3.Link_module_underlineNone__51df30d3 {\n  text-decoration: none;\n}\n.Link_module_root__51df30d3.Link_module_underlineHover__51df30d3:hover {\n  text-decoration: underline;\n}\n.Link_module_root__51df30d3.Link_module_underlineAlways__51df30d3 {\n  text-decoration: underline;\n}";
 var modules_475441e2 = {"root":"Link_module_root__51df30d3","underline-none":"Link_module_underlineNone__51df30d3","underline-hover":"Link_module_underlineHover__51df30d3","underline-always":"Link_module_underlineAlways__51df30d3"};
-n(css$L,{});
+n(css$M,{});
 
 var Link = /*#__PURE__*/React.forwardRef(function Link(props, ref) {
   var variant = props.variant,
@@ -15904,10 +15904,10 @@ function markup$1(Prism) {
   Prism.languages.rss = Prism.languages.xml;
 }
 
-var css_1 = css$K;
-css$K.displayName = 'css';
-css$K.aliases = [];
-function css$K(Prism) {
+var css_1 = css$L;
+css$L.displayName = 'css';
+css$L.aliases = [];
+function css$L(Prism) {
 (function (Prism) {
     var string =
       /(?:"(?:\\(?:\r\n|[\s\S])|[^"\\\r\n])*"|'(?:\\(?:\r\n|[\s\S])|[^'\\\r\n])*')/;
@@ -16209,7 +16209,7 @@ var h = hastscript.exports;
 var decode$1 = parseEntities_1;
 var Prism = prismCore.exports;
 var markup = markup_1;
-var css$J = css_1;
+var css$K = css_1;
 var clike = clike_1;
 var js = javascript_1;
 
@@ -16237,7 +16237,7 @@ refract.listLanguages = listLanguages;
 
 // Register bundled grammars.
 register$1(markup);
-register$1(css$J);
+register$1(css$K);
 register$1(clike);
 register$1(js);
 
@@ -19620,62 +19620,71 @@ function cmake(Prism) {
   };
 }
 
-var cobol_1 = cobol;
-cobol.displayName = 'cobol';
-cobol.aliases = [];
-function cobol(Prism) {
-  Prism.languages.cobol = {
-    comment: {
-      pattern: /\*>.*|(^[ \t]*)\*.*/m,
-      lookbehind: true,
-      greedy: true
-    },
-    string: {
-      pattern: /[xzgn]?(?:"(?:[^\r\n"]|"")*"(?!")|'(?:[^\r\n']|'')*'(?!'))/i,
-      greedy: true
-    },
-    level: {
-      pattern: /(^[ \t]*)\d+\b/m,
-      lookbehind: true,
-      greedy: true,
-      alias: 'number'
-    },
-    'class-name': {
-      // https://github.com/antlr/grammars-v4/blob/42edd5b687d183b5fa679e858a82297bd27141e7/cobol85/Cobol85.g4#L1015
-      pattern:
-        /(\bpic(?:ture)?\s+)(?:(?:[-\w$/,:*+<>]|\.(?!\s|$))(?:\(\d+\))?)+/i,
-      lookbehind: true,
-      inside: {
-        number: {
-          pattern: /(\()\d+/,
-          lookbehind: true
-        },
-        punctuation: /[()]/
-      }
-    },
-    keyword: {
-      pattern:
-        /(^|[^\w-])(?:ABORT|ACCEPT|ACCESS|ADD|ADDRESS|ADVANCING|AFTER|ALIGNED|ALL|ALPHABET|ALPHABETIC|ALPHABETIC-LOWER|ALPHABETIC-UPPER|ALPHANUMERIC|ALPHANUMERIC-EDITED|ALSO|ALTER|ALTERNATE|ANY|ARE|AREA|AREAS|AS|ASCENDING|ASCII|ASSIGN|ASSOCIATED-DATA|ASSOCIATED-DATA-LENGTH|AT|ATTRIBUTE|AUTHOR|AUTO|AUTO-SKIP|BACKGROUND-COLOR|BACKGROUND-COLOUR|BASIS|BEEP|BEFORE|BEGINNING|BELL|BINARY|BIT|BLANK|BLINK|BLOCK|BOTTOM|BOUNDS|BY|BYFUNCTION|BYTITLE|CALL|CANCEL|CAPABLE|CCSVERSION|CD|CF|CH|CHAINING|CHANGED|CHANNEL|CHARACTER|CHARACTERS|CLASS|CLASS-ID|CLOCK-UNITS|CLOSE|CLOSE-DISPOSITION|COBOL|CODE|CODE-SET|COL|COLLATING|COLUMN|COM-REG|COMMA|COMMITMENT|COMMON|COMMUNICATION|COMP|COMP-1|COMP-2|COMP-3|COMP-4|COMP-5|COMPUTATIONAL|COMPUTATIONAL-1|COMPUTATIONAL-2|COMPUTATIONAL-3|COMPUTATIONAL-4|COMPUTATIONAL-5|COMPUTE|CONFIGURATION|CONTAINS|CONTENT|CONTINUE|CONTROL|CONTROL-POINT|CONTROLS|CONVENTION|CONVERTING|COPY|CORR|CORRESPONDING|COUNT|CRUNCH|CURRENCY|CURSOR|DATA|DATA-BASE|DATE|DATE-COMPILED|DATE-WRITTEN|DAY|DAY-OF-WEEK|DBCS|DE|DEBUG-CONTENTS|DEBUG-ITEM|DEBUG-LINE|DEBUG-NAME|DEBUG-SUB-1|DEBUG-SUB-2|DEBUG-SUB-3|DEBUGGING|DECIMAL-POINT|DECLARATIVES|DEFAULT|DEFAULT-DISPLAY|DEFINITION|DELETE|DELIMITED|DELIMITER|DEPENDING|DESCENDING|DESTINATION|DETAIL|DFHRESP|DFHVALUE|DISABLE|DISK|DISPLAY|DISPLAY-1|DIVIDE|DIVISION|DONTCARE|DOUBLE|DOWN|DUPLICATES|DYNAMIC|EBCDIC|EGCS|EGI|ELSE|EMI|EMPTY-CHECK|ENABLE|END|END-ACCEPT|END-ADD|END-CALL|END-COMPUTE|END-DELETE|END-DIVIDE|END-EVALUATE|END-IF|END-MULTIPLY|END-OF-PAGE|END-PERFORM|END-READ|END-RECEIVE|END-RETURN|END-REWRITE|END-SEARCH|END-START|END-STRING|END-SUBTRACT|END-UNSTRING|END-WRITE|ENDING|ENTER|ENTRY|ENTRY-PROCEDURE|ENVIRONMENT|EOL|EOP|EOS|ERASE|ERROR|ESCAPE|ESI|EVALUATE|EVENT|EVERY|EXCEPTION|EXCLUSIVE|EXHIBIT|EXIT|EXPORT|EXTEND|EXTENDED|EXTERNAL|FD|FILE|FILE-CONTROL|FILLER|FINAL|FIRST|FOOTING|FOR|FOREGROUND-COLOR|FOREGROUND-COLOUR|FROM|FULL|FUNCTION|FUNCTION-POINTER|FUNCTIONNAME|GENERATE|GIVING|GLOBAL|GO|GOBACK|GRID|GROUP|HEADING|HIGH-VALUE|HIGH-VALUES|HIGHLIGHT|I-O|I-O-CONTROL|ID|IDENTIFICATION|IF|IMPLICIT|IMPORT|IN|INDEX|INDEXED|INDICATE|INITIAL|INITIALIZE|INITIATE|INPUT|INPUT-OUTPUT|INSPECT|INSTALLATION|INTEGER|INTO|INVALID|INVOKE|IS|JUST|JUSTIFIED|KANJI|KEPT|KEY|KEYBOARD|LABEL|LANGUAGE|LAST|LB|LD|LEADING|LEFT|LEFTLINE|LENGTH|LENGTH-CHECK|LIBACCESS|LIBPARAMETER|LIBRARY|LIMIT|LIMITS|LINAGE|LINAGE-COUNTER|LINE|LINE-COUNTER|LINES|LINKAGE|LIST|LOCAL|LOCAL-STORAGE|LOCK|LONG-DATE|LONG-TIME|LOW-VALUE|LOW-VALUES|LOWER|LOWLIGHT|MEMORY|MERGE|MESSAGE|MMDDYYYY|MODE|MODULES|MORE-LABELS|MOVE|MULTIPLE|MULTIPLY|NAMED|NATIONAL|NATIONAL-EDITED|NATIVE|NEGATIVE|NETWORK|NEXT|NO|NO-ECHO|NULL|NULLS|NUMBER|NUMERIC|NUMERIC-DATE|NUMERIC-EDITED|NUMERIC-TIME|OBJECT-COMPUTER|OCCURS|ODT|OF|OFF|OMITTED|ON|OPEN|OPTIONAL|ORDER|ORDERLY|ORGANIZATION|OTHER|OUTPUT|OVERFLOW|OVERLINE|OWN|PACKED-DECIMAL|PADDING|PAGE|PAGE-COUNTER|PASSWORD|PERFORM|PF|PH|PIC|PICTURE|PLUS|POINTER|PORT|POSITION|POSITIVE|PRINTER|PRINTING|PRIVATE|PROCEDURE|PROCEDURE-POINTER|PROCEDURES|PROCEED|PROCESS|PROGRAM|PROGRAM-ID|PROGRAM-LIBRARY|PROMPT|PURGE|QUEUE|QUOTE|QUOTES|RANDOM|RD|READ|READER|REAL|RECEIVE|RECEIVED|RECORD|RECORDING|RECORDS|RECURSIVE|REDEFINES|REEL|REF|REFERENCE|REFERENCES|RELATIVE|RELEASE|REMAINDER|REMARKS|REMOTE|REMOVAL|REMOVE|RENAMES|REPLACE|REPLACING|REPORT|REPORTING|REPORTS|REQUIRED|RERUN|RESERVE|RESET|RETURN|RETURN-CODE|RETURNING|REVERSE-VIDEO|REVERSED|REWIND|REWRITE|RF|RH|RIGHT|ROUNDED|RUN|SAME|SAVE|SCREEN|SD|SEARCH|SECTION|SECURE|SECURITY|SEGMENT|SEGMENT-LIMIT|SELECT|SEND|SENTENCE|SEPARATE|SEQUENCE|SEQUENTIAL|SET|SHARED|SHAREDBYALL|SHAREDBYRUNUNIT|SHARING|SHIFT-IN|SHIFT-OUT|SHORT-DATE|SIGN|SIZE|SORT|SORT-CONTROL|SORT-CORE-SIZE|SORT-FILE-SIZE|SORT-MERGE|SORT-MESSAGE|SORT-MODE-SIZE|SORT-RETURN|SOURCE|SOURCE-COMPUTER|SPACE|SPACES|SPECIAL-NAMES|STANDARD|STANDARD-1|STANDARD-2|START|STATUS|STOP|STRING|SUB-QUEUE-1|SUB-QUEUE-2|SUB-QUEUE-3|SUBTRACT|SUM|SUPPRESS|SYMBOL|SYMBOLIC|SYNC|SYNCHRONIZED|TABLE|TALLY|TALLYING|TAPE|TASK|TERMINAL|TERMINATE|TEST|TEXT|THEN|THREAD|THREAD-LOCAL|THROUGH|THRU|TIME|TIMER|TIMES|TITLE|TO|TODAYS-DATE|TODAYS-NAME|TOP|TRAILING|TRUNCATED|TYPE|TYPEDEF|UNDERLINE|UNIT|UNSTRING|UNTIL|UP|UPON|USAGE|USE|USING|VALUE|VALUES|VARYING|VIRTUAL|WAIT|WHEN|WHEN-COMPILED|WITH|WORDS|WORKING-STORAGE|WRITE|YEAR|YYYYDDD|YYYYMMDD|ZERO-FILL|ZEROES|ZEROS)(?![\w-])/i,
-      lookbehind: true
-    },
-    boolean: {
-      pattern: /(^|[^\w-])(?:false|true)(?![\w-])/i,
-      lookbehind: true
-    },
-    number: {
-      pattern:
-        /(^|[^\w-])(?:[+-]?(?:(?:\d+(?:[.,]\d+)?|[.,]\d+)(?:e[+-]?\d+)?|zero))(?![\w-])/i,
-      lookbehind: true
-    },
-    operator: [
-      /<>|[<>]=?|[=+*/&]/,
-      {
-        pattern: /(^|[^\w-])(?:-|and|equal|greater|less|not|or|than)(?![\w-])/i,
-        lookbehind: true
-      }
-    ],
-    punctuation: /[.:,()]/
-  };
+var cobol_1;
+var hasRequiredCobol;
+
+function requireCobol () {
+	if (hasRequiredCobol) return cobol_1;
+	hasRequiredCobol = 1;
+
+	cobol_1 = cobol;
+	cobol.displayName = 'cobol';
+	cobol.aliases = [];
+	function cobol(Prism) {
+	  Prism.languages.cobol = {
+	    comment: {
+	      pattern: /\*>.*|(^[ \t]*)\*.*/m,
+	      lookbehind: true,
+	      greedy: true
+	    },
+	    string: {
+	      pattern: /[xzgn]?(?:"(?:[^\r\n"]|"")*"(?!")|'(?:[^\r\n']|'')*'(?!'))/i,
+	      greedy: true
+	    },
+	    level: {
+	      pattern: /(^[ \t]*)\d+\b/m,
+	      lookbehind: true,
+	      greedy: true,
+	      alias: 'number'
+	    },
+	    'class-name': {
+	      // https://github.com/antlr/grammars-v4/blob/42edd5b687d183b5fa679e858a82297bd27141e7/cobol85/Cobol85.g4#L1015
+	      pattern:
+	        /(\bpic(?:ture)?\s+)(?:(?:[-\w$/,:*+<>]|\.(?!\s|$))(?:\(\d+\))?)+/i,
+	      lookbehind: true,
+	      inside: {
+	        number: {
+	          pattern: /(\()\d+/,
+	          lookbehind: true
+	        },
+	        punctuation: /[()]/
+	      }
+	    },
+	    keyword: {
+	      pattern:
+	        /(^|[^\w-])(?:ABORT|ACCEPT|ACCESS|ADD|ADDRESS|ADVANCING|AFTER|ALIGNED|ALL|ALPHABET|ALPHABETIC|ALPHABETIC-LOWER|ALPHABETIC-UPPER|ALPHANUMERIC|ALPHANUMERIC-EDITED|ALSO|ALTER|ALTERNATE|ANY|ARE|AREA|AREAS|AS|ASCENDING|ASCII|ASSIGN|ASSOCIATED-DATA|ASSOCIATED-DATA-LENGTH|AT|ATTRIBUTE|AUTHOR|AUTO|AUTO-SKIP|BACKGROUND-COLOR|BACKGROUND-COLOUR|BASIS|BEEP|BEFORE|BEGINNING|BELL|BINARY|BIT|BLANK|BLINK|BLOCK|BOTTOM|BOUNDS|BY|BYFUNCTION|BYTITLE|CALL|CANCEL|CAPABLE|CCSVERSION|CD|CF|CH|CHAINING|CHANGED|CHANNEL|CHARACTER|CHARACTERS|CLASS|CLASS-ID|CLOCK-UNITS|CLOSE|CLOSE-DISPOSITION|COBOL|CODE|CODE-SET|COL|COLLATING|COLUMN|COM-REG|COMMA|COMMITMENT|COMMON|COMMUNICATION|COMP|COMP-1|COMP-2|COMP-3|COMP-4|COMP-5|COMPUTATIONAL|COMPUTATIONAL-1|COMPUTATIONAL-2|COMPUTATIONAL-3|COMPUTATIONAL-4|COMPUTATIONAL-5|COMPUTE|CONFIGURATION|CONTAINS|CONTENT|CONTINUE|CONTROL|CONTROL-POINT|CONTROLS|CONVENTION|CONVERTING|COPY|CORR|CORRESPONDING|COUNT|CRUNCH|CURRENCY|CURSOR|DATA|DATA-BASE|DATE|DATE-COMPILED|DATE-WRITTEN|DAY|DAY-OF-WEEK|DBCS|DE|DEBUG-CONTENTS|DEBUG-ITEM|DEBUG-LINE|DEBUG-NAME|DEBUG-SUB-1|DEBUG-SUB-2|DEBUG-SUB-3|DEBUGGING|DECIMAL-POINT|DECLARATIVES|DEFAULT|DEFAULT-DISPLAY|DEFINITION|DELETE|DELIMITED|DELIMITER|DEPENDING|DESCENDING|DESTINATION|DETAIL|DFHRESP|DFHVALUE|DISABLE|DISK|DISPLAY|DISPLAY-1|DIVIDE|DIVISION|DONTCARE|DOUBLE|DOWN|DUPLICATES|DYNAMIC|EBCDIC|EGCS|EGI|ELSE|EMI|EMPTY-CHECK|ENABLE|END|END-ACCEPT|END-ADD|END-CALL|END-COMPUTE|END-DELETE|END-DIVIDE|END-EVALUATE|END-IF|END-MULTIPLY|END-OF-PAGE|END-PERFORM|END-READ|END-RECEIVE|END-RETURN|END-REWRITE|END-SEARCH|END-START|END-STRING|END-SUBTRACT|END-UNSTRING|END-WRITE|ENDING|ENTER|ENTRY|ENTRY-PROCEDURE|ENVIRONMENT|EOL|EOP|EOS|ERASE|ERROR|ESCAPE|ESI|EVALUATE|EVENT|EVERY|EXCEPTION|EXCLUSIVE|EXHIBIT|EXIT|EXPORT|EXTEND|EXTENDED|EXTERNAL|FD|FILE|FILE-CONTROL|FILLER|FINAL|FIRST|FOOTING|FOR|FOREGROUND-COLOR|FOREGROUND-COLOUR|FROM|FULL|FUNCTION|FUNCTION-POINTER|FUNCTIONNAME|GENERATE|GIVING|GLOBAL|GO|GOBACK|GRID|GROUP|HEADING|HIGH-VALUE|HIGH-VALUES|HIGHLIGHT|I-O|I-O-CONTROL|ID|IDENTIFICATION|IF|IMPLICIT|IMPORT|IN|INDEX|INDEXED|INDICATE|INITIAL|INITIALIZE|INITIATE|INPUT|INPUT-OUTPUT|INSPECT|INSTALLATION|INTEGER|INTO|INVALID|INVOKE|IS|JUST|JUSTIFIED|KANJI|KEPT|KEY|KEYBOARD|LABEL|LANGUAGE|LAST|LB|LD|LEADING|LEFT|LEFTLINE|LENGTH|LENGTH-CHECK|LIBACCESS|LIBPARAMETER|LIBRARY|LIMIT|LIMITS|LINAGE|LINAGE-COUNTER|LINE|LINE-COUNTER|LINES|LINKAGE|LIST|LOCAL|LOCAL-STORAGE|LOCK|LONG-DATE|LONG-TIME|LOW-VALUE|LOW-VALUES|LOWER|LOWLIGHT|MEMORY|MERGE|MESSAGE|MMDDYYYY|MODE|MODULES|MORE-LABELS|MOVE|MULTIPLE|MULTIPLY|NAMED|NATIONAL|NATIONAL-EDITED|NATIVE|NEGATIVE|NETWORK|NEXT|NO|NO-ECHO|NULL|NULLS|NUMBER|NUMERIC|NUMERIC-DATE|NUMERIC-EDITED|NUMERIC-TIME|OBJECT-COMPUTER|OCCURS|ODT|OF|OFF|OMITTED|ON|OPEN|OPTIONAL|ORDER|ORDERLY|ORGANIZATION|OTHER|OUTPUT|OVERFLOW|OVERLINE|OWN|PACKED-DECIMAL|PADDING|PAGE|PAGE-COUNTER|PASSWORD|PERFORM|PF|PH|PIC|PICTURE|PLUS|POINTER|PORT|POSITION|POSITIVE|PRINTER|PRINTING|PRIVATE|PROCEDURE|PROCEDURE-POINTER|PROCEDURES|PROCEED|PROCESS|PROGRAM|PROGRAM-ID|PROGRAM-LIBRARY|PROMPT|PURGE|QUEUE|QUOTE|QUOTES|RANDOM|RD|READ|READER|REAL|RECEIVE|RECEIVED|RECORD|RECORDING|RECORDS|RECURSIVE|REDEFINES|REEL|REF|REFERENCE|REFERENCES|RELATIVE|RELEASE|REMAINDER|REMARKS|REMOTE|REMOVAL|REMOVE|RENAMES|REPLACE|REPLACING|REPORT|REPORTING|REPORTS|REQUIRED|RERUN|RESERVE|RESET|RETURN|RETURN-CODE|RETURNING|REVERSE-VIDEO|REVERSED|REWIND|REWRITE|RF|RH|RIGHT|ROUNDED|RUN|SAME|SAVE|SCREEN|SD|SEARCH|SECTION|SECURE|SECURITY|SEGMENT|SEGMENT-LIMIT|SELECT|SEND|SENTENCE|SEPARATE|SEQUENCE|SEQUENTIAL|SET|SHARED|SHAREDBYALL|SHAREDBYRUNUNIT|SHARING|SHIFT-IN|SHIFT-OUT|SHORT-DATE|SIGN|SIZE|SORT|SORT-CONTROL|SORT-CORE-SIZE|SORT-FILE-SIZE|SORT-MERGE|SORT-MESSAGE|SORT-MODE-SIZE|SORT-RETURN|SOURCE|SOURCE-COMPUTER|SPACE|SPACES|SPECIAL-NAMES|STANDARD|STANDARD-1|STANDARD-2|START|STATUS|STOP|STRING|SUB-QUEUE-1|SUB-QUEUE-2|SUB-QUEUE-3|SUBTRACT|SUM|SUPPRESS|SYMBOL|SYMBOLIC|SYNC|SYNCHRONIZED|TABLE|TALLY|TALLYING|TAPE|TASK|TERMINAL|TERMINATE|TEST|TEXT|THEN|THREAD|THREAD-LOCAL|THROUGH|THRU|TIME|TIMER|TIMES|TITLE|TO|TODAYS-DATE|TODAYS-NAME|TOP|TRAILING|TRUNCATED|TYPE|TYPEDEF|UNDERLINE|UNIT|UNSTRING|UNTIL|UP|UPON|USAGE|USE|USING|VALUE|VALUES|VARYING|VIRTUAL|WAIT|WHEN|WHEN-COMPILED|WITH|WORDS|WORKING-STORAGE|WRITE|YEAR|YYYYDDD|YYYYMMDD|ZERO-FILL|ZEROES|ZEROS)(?![\w-])/i,
+	      lookbehind: true
+	    },
+	    boolean: {
+	      pattern: /(^|[^\w-])(?:false|true)(?![\w-])/i,
+	      lookbehind: true
+	    },
+	    number: {
+	      pattern:
+	        /(^|[^\w-])(?:[+-]?(?:(?:\d+(?:[.,]\d+)?|[.,]\d+)(?:e[+-]?\d+)?|zero))(?![\w-])/i,
+	      lookbehind: true
+	    },
+	    operator: [
+	      /<>|[<>]=?|[=+*/&]/,
+	      {
+	        pattern: /(^|[^\w-])(?:-|and|equal|greater|less|not|or|than)(?![\w-])/i,
+	        lookbehind: true
+	      }
+	    ],
+	    punctuation: /[.:,()]/
+	  };
+	}
+	return cobol_1;
 }
 
 var coffeescript_1;
@@ -39666,7 +39675,7 @@ refractor.register(chaiscript_1);
 refractor.register(cil_1);
 refractor.register(clojure_1);
 refractor.register(cmake_1);
-refractor.register(cobol_1);
+refractor.register(requireCobol());
 refractor.register(requireCoffeescript());
 refractor.register(requireConcurnas());
 refractor.register(requireCoq());
@@ -40896,9 +40905,9 @@ var oneLight = {
   }
 };
 
-var css$I = ".CodeSnippet_module_root__96cf727a {\n  padding: 0.5rem, 1rem;\n  position: relative;\n}\n.CodeSnippet_module_root__96cf727a .CodeSnippet_module_code__96cf727a {\n  font-family: monospace;\n  font-size: 1rem;\n}\n.CodeSnippet_module_root__96cf727a .CodeSnippet_module_copy__96cf727a {\n  position: absolute;\n  right: 1rem;\n  top: 0.5rem;\n  cursor: pointer;\n}\n.CodeSnippet_module_root__96cf727a .CodeSnippet_module_copy__96cf727a .CodeSnippet_module_icon__96cf727a {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.CodeSnippet_module_root__96cf727a .CodeSnippet_module_copy__96cf727a .CodeSnippet_module_icon__96cf727a.CodeSnippet_module_dark__96cf727a {\n  fill: var(--white);\n}\n.CodeSnippet_module_root__96cf727a .CodeSnippet_module_copy__96cf727a .CodeSnippet_module_icon__96cf727a.CodeSnippet_module_light__96cf727a {\n  fill: var(--black);\n}\n.CodeSnippet_module_root__96cf727a .CodeSnippet_module_copy__96cf727a .CodeSnippet_module_notCopied__96cf727a {\n  display: none;\n}\n.CodeSnippet_module_root__96cf727a .CodeSnippet_module_copy__96cf727a .CodeSnippet_module_copied__96cf727a {\n  position: absolute;\n  right: 1.375rem;\n  top: 2.188rem;\n  padding: 0.5rem;\n  border-radius: 0.25rem;\n  background-color: var(--highlight);\n  color: var(--grey10);\n}";
+var css$J = ".CodeSnippet_module_root__96cf727a {\n  padding: 0.5rem, 1rem;\n  position: relative;\n}\n.CodeSnippet_module_root__96cf727a .CodeSnippet_module_code__96cf727a {\n  font-family: monospace;\n  font-size: 1rem;\n}\n.CodeSnippet_module_root__96cf727a .CodeSnippet_module_copy__96cf727a {\n  position: absolute;\n  right: 1rem;\n  top: 0.5rem;\n  cursor: pointer;\n}\n.CodeSnippet_module_root__96cf727a .CodeSnippet_module_copy__96cf727a .CodeSnippet_module_icon__96cf727a {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.CodeSnippet_module_root__96cf727a .CodeSnippet_module_copy__96cf727a .CodeSnippet_module_icon__96cf727a.CodeSnippet_module_dark__96cf727a {\n  fill: var(--white);\n}\n.CodeSnippet_module_root__96cf727a .CodeSnippet_module_copy__96cf727a .CodeSnippet_module_icon__96cf727a.CodeSnippet_module_light__96cf727a {\n  fill: var(--black);\n}\n.CodeSnippet_module_root__96cf727a .CodeSnippet_module_copy__96cf727a .CodeSnippet_module_notCopied__96cf727a {\n  display: none;\n}\n.CodeSnippet_module_root__96cf727a .CodeSnippet_module_copy__96cf727a .CodeSnippet_module_copied__96cf727a {\n  position: absolute;\n  right: 1.375rem;\n  top: 2.188rem;\n  padding: 0.5rem;\n  border-radius: 0.25rem;\n  background-color: var(--highlight);\n  color: var(--grey10);\n}";
 var modules_c548043f = {"root":"CodeSnippet_module_root__96cf727a","code":"CodeSnippet_module_code__96cf727a","copy":"CodeSnippet_module_copy__96cf727a","icon":"CodeSnippet_module_icon__96cf727a","dark":"CodeSnippet_module_dark__96cf727a","light":"CodeSnippet_module_light__96cf727a","notCopied":"CodeSnippet_module_notCopied__96cf727a","copied":"CodeSnippet_module_copied__96cf727a"};
-n(css$I,{});
+n(css$J,{});
 
 var CodeSnippet = function CodeSnippet(props) {
   var copy = props.copy,
@@ -41784,9 +41793,9 @@ function sub$1(date, duration) {
   return finalDate;
 }
 
-var css$H = ".Header_module_container__26bf5a9c {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  padding: 0rem 1.5625rem;\n}\n.Header_module_container__26bf5a9c .Header_module_title__26bf5a9c {\n  font-weight: 400;\n  font-size: 0.8rem;\n  color: var(--black);\n}\n.Header_module_container__26bf5a9c .Header_module_icon__26bf5a9c {\n  width: 1.5rem;\n  height: 1.5rem;\n  stroke: #181818;\n  cursor: pointer;\n}";
+var css$I = ".Header_module_container__26bf5a9c {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  padding: 0rem 1.5625rem;\n}\n.Header_module_container__26bf5a9c .Header_module_title__26bf5a9c {\n  font-weight: 400;\n  font-size: 0.8rem;\n  color: var(--black);\n}\n.Header_module_container__26bf5a9c .Header_module_icon__26bf5a9c {\n  width: 1.5rem;\n  height: 1.5rem;\n  stroke: #181818;\n  cursor: pointer;\n}";
 var modules_cf337dc1 = {"container":"Header_module_container__26bf5a9c","title":"Header_module_title__26bf5a9c","icon":"Header_module_icon__26bf5a9c"};
-n(css$H,{});
+n(css$I,{});
 
 var Header = function Header(props) {
   var selectedMonth = props.selectedMonth,
@@ -41818,17 +41827,17 @@ var Header = function Header(props) {
   });
 };
 
-var css$G = ".Calender_module_root__5221cce4 {\n  padding: 1rem 0rem;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}";
+var css$H = ".Calender_module_root__5221cce4 {\n  padding: 1rem 0rem;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}";
 var modules_3722b5cd = {"root":"Calender_module_root__5221cce4"};
+n(css$H,{});
+
+var css$G = ".Body_module_root__85b1b679 {\n  padding: 0.5rem 0.5rem;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-items: stretch;\n}";
+var modules_e6b80d99 = {"root":"Body_module_root__85b1b679"};
 n(css$G,{});
 
-var css$F = ".Body_module_root__85b1b679 {\n  padding: 0.5rem 0.5rem;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-items: stretch;\n}";
-var modules_e6b80d99 = {"root":"Body_module_root__85b1b679"};
-n(css$F,{});
-
-var css$E = ".Dates_module_dates__e3e1fc43 {\n  display: grid;\n  grid-template-columns: repeat(7, 1fr);\n  align-items: center;\n  flex-wrap: wrap;\n}\n.Dates_module_dates__e3e1fc43 div {\n  flex-basis: 14.28%;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  margin-bottom: 0.25rem;\n  cursor: pointer;\n  align-self: center;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.Dates_module_dates__e3e1fc43 div .Dates_module_date__e3e1fc43 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  text-align: center;\n  vertical-align: middle;\n  border-radius: 1.5rem;\n  height: 2.5rem;\n  width: 2.5rem;\n  font-weight: 400;\n  font-size: 0.875rem;\n  color: var(--black);\n}\n.Dates_module_dates__e3e1fc43 div .Dates_module_selected__e3e1fc43 {\n  background-color: var(--highlight);\n  color: var(--white);\n}\n.Dates_module_dates__e3e1fc43 div .Dates_module_unSelected__e3e1fc43 {\n  background-color: var(--white);\n  border-color: var(--highlight);\n  border-width: 0.125rem;\n  border-style: solid;\n  color: var(--black);\n}\n.Dates_module_dates__e3e1fc43 div .Dates_module_disabled__e3e1fc43 {\n  border-radius: 1.5rem;\n  color: var(--grey2);\n}\n.Dates_module_dates__e3e1fc43 div .Dates_module_diffMonth__e3e1fc43 {\n  opacity: 0.6;\n}\n.Dates_module_dates__e3e1fc43 div:hover .Dates_module_date__e3e1fc43 {\n  background: var(--background);\n  color: var(--highlight);\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n}\n.Dates_module_dates__e3e1fc43 div:hover .Dates_module_selected__e3e1fc43 {\n  background-color: var(--highlight);\n  color: var(--white);\n}\n.Dates_module_dates__e3e1fc43 div:hover .Dates_module_disabled__e3e1fc43 {\n  background: transparent;\n  box-shadow: none;\n  border-radius: 1.5rem;\n  color: var(--grey2);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_minInRange__e3e1fc43 {\n  background-color: var(--highlight);\n  border-radius: 1.5rem 0rem 0rem 1.5rem;\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_minInRange__e3e1fc43 .Dates_module_date__e3e1fc43 {\n  color: var(--white);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_minInRange__e3e1fc43:hover .Dates_module_date__e3e1fc43 {\n  background: var(--highlight);\n  color: var(--white);\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_maxInRange__e3e1fc43 {\n  background-color: var(--highlight);\n  border-radius: 0rem 1.5rem 1.5rem 0rem;\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_maxInRange__e3e1fc43 .Dates_module_date__e3e1fc43 {\n  color: var(--white);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_maxInRange__e3e1fc43:hover .Dates_module_date__e3e1fc43 {\n  background: var(--highlight);\n  color: var(--white);\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_midInRange__e3e1fc43 {\n  background: var(--background);\n  border-radius: 0rem;\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_midInRange__e3e1fc43 .Dates_module_date__e3e1fc43 {\n  color: var(--highlight);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_firstHovered__e3e1fc43 {\n  background: var(--background);\n  border-radius: 0rem 1.5rem 1.5rem 0rem;\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_firstHovered__e3e1fc43 .Dates_module_date__e3e1fc43 {\n  color: var(--highlight);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_lastHovered__e3e1fc43 {\n  background: var(--background);\n  border-radius: 1.5rem 0rem 0rem 1.5rem;\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_lastHovered__e3e1fc43 .Dates_module_date__e3e1fc43 {\n  color: var(--highlight);\n}";
+var css$F = ".Dates_module_dates__e3e1fc43 {\n  display: grid;\n  grid-template-columns: repeat(7, 1fr);\n  align-items: center;\n  flex-wrap: wrap;\n}\n.Dates_module_dates__e3e1fc43 div {\n  flex-basis: 14.28%;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  margin-bottom: 0.25rem;\n  cursor: pointer;\n  align-self: center;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.Dates_module_dates__e3e1fc43 div .Dates_module_date__e3e1fc43 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  text-align: center;\n  vertical-align: middle;\n  border-radius: 1.5rem;\n  height: 2.5rem;\n  width: 2.5rem;\n  font-weight: 400;\n  font-size: 0.875rem;\n  color: var(--black);\n}\n.Dates_module_dates__e3e1fc43 div .Dates_module_selected__e3e1fc43 {\n  background-color: var(--highlight);\n  color: var(--white);\n}\n.Dates_module_dates__e3e1fc43 div .Dates_module_unSelected__e3e1fc43 {\n  background-color: var(--white);\n  border-color: var(--highlight);\n  border-width: 0.125rem;\n  border-style: solid;\n  color: var(--black);\n}\n.Dates_module_dates__e3e1fc43 div .Dates_module_disabled__e3e1fc43 {\n  border-radius: 1.5rem;\n  color: var(--grey2);\n}\n.Dates_module_dates__e3e1fc43 div .Dates_module_diffMonth__e3e1fc43 {\n  opacity: 0.6;\n}\n.Dates_module_dates__e3e1fc43 div:hover .Dates_module_date__e3e1fc43 {\n  background: var(--background);\n  color: var(--highlight);\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n}\n.Dates_module_dates__e3e1fc43 div:hover .Dates_module_selected__e3e1fc43 {\n  background-color: var(--highlight);\n  color: var(--white);\n}\n.Dates_module_dates__e3e1fc43 div:hover .Dates_module_disabled__e3e1fc43 {\n  background: transparent;\n  box-shadow: none;\n  border-radius: 1.5rem;\n  color: var(--grey2);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_minInRange__e3e1fc43 {\n  background-color: var(--highlight);\n  border-radius: 1.5rem 0rem 0rem 1.5rem;\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_minInRange__e3e1fc43 .Dates_module_date__e3e1fc43 {\n  color: var(--white);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_minInRange__e3e1fc43:hover .Dates_module_date__e3e1fc43 {\n  background: var(--highlight);\n  color: var(--white);\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_maxInRange__e3e1fc43 {\n  background-color: var(--highlight);\n  border-radius: 0rem 1.5rem 1.5rem 0rem;\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_maxInRange__e3e1fc43 .Dates_module_date__e3e1fc43 {\n  color: var(--white);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_maxInRange__e3e1fc43:hover .Dates_module_date__e3e1fc43 {\n  background: var(--highlight);\n  color: var(--white);\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_midInRange__e3e1fc43 {\n  background: var(--background);\n  border-radius: 0rem;\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_midInRange__e3e1fc43 .Dates_module_date__e3e1fc43 {\n  color: var(--highlight);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_firstHovered__e3e1fc43 {\n  background: var(--background);\n  border-radius: 0rem 1.5rem 1.5rem 0rem;\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_firstHovered__e3e1fc43 .Dates_module_date__e3e1fc43 {\n  color: var(--highlight);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_lastHovered__e3e1fc43 {\n  background: var(--background);\n  border-radius: 1.5rem 0rem 0rem 1.5rem;\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_lastHovered__e3e1fc43 .Dates_module_date__e3e1fc43 {\n  color: var(--highlight);\n}";
 var modules_b02dadcc = {"dates":"Dates_module_dates__e3e1fc43","date":"Dates_module_date__e3e1fc43","selected":"Dates_module_selected__e3e1fc43","unSelected":"Dates_module_unSelected__e3e1fc43","disabled":"Dates_module_disabled__e3e1fc43","diffMonth":"Dates_module_diffMonth__e3e1fc43","minInRange":"Dates_module_minInRange__e3e1fc43","maxInRange":"Dates_module_maxInRange__e3e1fc43","midInRange":"Dates_module_midInRange__e3e1fc43","first-hovered":"Dates_module_firstHovered__e3e1fc43","last-hovered":"Dates_module_lastHovered__e3e1fc43"};
-n(css$E,{});
+n(css$F,{});
 
 var getDatesOfLastWeekOfLastMonth = function getDatesOfLastWeekOfLastMonth(_ref) {
   var monthAsNumber = _ref.monthAsNumber,
@@ -42077,9 +42086,9 @@ var Dates = function Dates(props) {
   });
 };
 
-var css$D = ".Days_module_days__0d7923fd {\n  display: grid;\n  grid-template-columns: repeat(7, 1fr);\n  text-align: center;\n}\n.Days_module_days__0d7923fd span {\n  padding: 0.75rem 0.5rem;\n  font-weight: 500;\n  font-size: 0.875rem;\n  color: black;\n  flex-basis: 14.28%;\n}";
+var css$E = ".Days_module_days__0d7923fd {\n  display: grid;\n  grid-template-columns: repeat(7, 1fr);\n  text-align: center;\n}\n.Days_module_days__0d7923fd span {\n  padding: 0.75rem 0.5rem;\n  font-weight: 500;\n  font-size: 0.875rem;\n  color: black;\n  flex-basis: 14.28%;\n}";
 var modules_82c45006 = {"days":"Days_module_days__0d7923fd"};
-n(css$D,{});
+n(css$E,{});
 
 var Days = function Days() {
   var daysInWeek = DAYS;
@@ -42100,9 +42109,9 @@ var Body = function Body(props) {
   });
 };
 
-var css$C = ".TextField_module_root__9cc1db47 {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: flex-start;\n  gap: 0.5rem;\n}\n.TextField_module_root__9cc1db47 label {\n  width: 100%;\n  max-width: 100%;\n  font-weight: 400;\n  font-size: 0.75rem;\n  line-height: 1.125rem;\n  letter-spacing: 0.32px;\n  color: var(--grey);\n  height: 100%;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  gap: 0.5rem;\n  padding: 0rem 0.5rem;\n  max-width: 100%;\n  width: 100%;\n  border-color: var(--grey4);\n  border-style: solid;\n  border-radius: 0.25rem;\n  height: 100%;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 .TextField_module_icon__9cc1db47 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem*=component] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] {\n  flex: 1;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47 {\n  -moz-appearance: textfield;\n  flex: 1;\n  background-color: transparent;\n  border: none;\n  font-weight: 400;\n  font-size: 0.875rem;\n  line-height: 1.125rem;\n  letter-spacing: 0.16px;\n  color: var(--black);\n  width: 100%;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47::-webkit-outer-spin-button, .TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47::-webkit-inner-spin-button {\n  -webkit-appearance: none;\n  margin: 0;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47:focus {\n  outline: none;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47:disabled {\n  background: var(--grey9);\n  color: var(--grey3);\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47.TextField_module_sm__9cc1db47 {\n  padding: 0.5rem 0rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47.TextField_module_md__9cc1db47 {\n  padding: 0.688rem 0rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47.TextField_module_lg__9cc1db47 {\n  padding: 1rem 0rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_typeTextarea__9cc1db47 {\n  padding: 0;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_typeTextarea__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47 {\n  resize: vertical;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_typeTextarea__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47.TextField_module_md__9cc1db47 {\n  padding: 0.313rem 0.75rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_typeTextarea__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47.TextField_module_lg__9cc1db47 {\n  padding: 0.5rem 1rem;\n  font-size: 1rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47:focus-within {\n  border: 0.063rem solid var(--info);\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47:focus-within.TextField_module_feedbackError__9cc1db47 {\n  border-color: var(--error);\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_borderDefault__9cc1db47 {\n  border-width: 0.063rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_borderBottom__9cc1db47 {\n  border-width: 0rem 0rem 0.063rem 0rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_borderNone__9cc1db47 {\n  border-width: 0rem;\n}\n.TextField_module_root__9cc1db47 .TextField_module_bottom__9cc1db47 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: flex-start;\n  min-height: 2rem;\n  width: 100%;\n  gap: 1rem;\n  color: var(--grey3);\n  font-size: 0.75rem;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.TextField_module_root__9cc1db47 .TextField_module_bottom__9cc1db47 .TextField_module_feedback__9cc1db47 {\n  flex: 1;\n  margin-right: auto;\n}\n.TextField_module_root__9cc1db47 .TextField_module_bottom__9cc1db47 .TextField_module_feedback__9cc1db47.TextField_module_feedbackError__9cc1db47 {\n  color: var(--error);\n  fill: var(--error);\n}\n.TextField_module_root__9cc1db47 .TextField_module_bottom__9cc1db47 .TextField_module_feedback__9cc1db47.TextField_module_feedbackSuccess__9cc1db47 {\n  color: var(--success);\n  fill: var(--success);\n}\n.TextField_module_root__9cc1db47 .TextField_module_bottom__9cc1db47 .TextField_module_count__9cc1db47 {\n  text-align: right;\n  margin-left: auto;\n}\n.TextField_module_root__9cc1db47 .TextField_module_bottom__9cc1db47 .TextField_module_count__9cc1db47.TextField_module_exceeded__9cc1db47 {\n  color: var(--error);\n}";
+var css$D = ".TextField_module_root__9cc1db47 {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: flex-start;\n  gap: 0.5rem;\n}\n.TextField_module_root__9cc1db47 label {\n  width: 100%;\n  max-width: 100%;\n  font-weight: 400;\n  font-size: 0.75rem;\n  line-height: 1.125rem;\n  letter-spacing: 0.32px;\n  color: var(--grey);\n  height: 100%;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  gap: 0.5rem;\n  padding: 0rem 0.5rem;\n  max-width: 100%;\n  width: 100%;\n  border-color: var(--grey4);\n  border-style: solid;\n  border-radius: 0.25rem;\n  height: 100%;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 .TextField_module_icon__9cc1db47 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem*=component] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] {\n  flex: 1;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47 {\n  -moz-appearance: textfield;\n  flex: 1;\n  background-color: transparent;\n  border: none;\n  font-weight: 400;\n  font-size: 0.875rem;\n  line-height: 1.125rem;\n  letter-spacing: 0.16px;\n  color: var(--black);\n  width: 100%;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47::-webkit-outer-spin-button, .TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47::-webkit-inner-spin-button {\n  -webkit-appearance: none;\n  margin: 0;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47:focus {\n  outline: none;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47:disabled {\n  background: var(--grey9);\n  color: var(--grey3);\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47.TextField_module_sm__9cc1db47 {\n  padding: 0.5rem 0rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47.TextField_module_md__9cc1db47 {\n  padding: 0.688rem 0rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47.TextField_module_lg__9cc1db47 {\n  padding: 1rem 0rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_typeTextarea__9cc1db47 {\n  padding: 0;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_typeTextarea__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47 {\n  resize: vertical;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_typeTextarea__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47.TextField_module_md__9cc1db47 {\n  padding: 0.313rem 0.75rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_typeTextarea__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47.TextField_module_lg__9cc1db47 {\n  padding: 0.5rem 1rem;\n  font-size: 1rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47:focus-within {\n  border: 0.063rem solid var(--info);\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47:focus-within.TextField_module_feedbackError__9cc1db47 {\n  border-color: var(--error);\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_borderDefault__9cc1db47 {\n  border-width: 0.063rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_borderBottom__9cc1db47 {\n  border-width: 0rem 0rem 0.063rem 0rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_borderNone__9cc1db47 {\n  border-width: 0rem;\n}\n.TextField_module_root__9cc1db47 .TextField_module_bottom__9cc1db47 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: flex-start;\n  min-height: 2rem;\n  width: 100%;\n  gap: 1rem;\n  color: var(--grey3);\n  font-size: 0.75rem;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.TextField_module_root__9cc1db47 .TextField_module_bottom__9cc1db47 .TextField_module_feedback__9cc1db47 {\n  flex: 1;\n  margin-right: auto;\n}\n.TextField_module_root__9cc1db47 .TextField_module_bottom__9cc1db47 .TextField_module_feedback__9cc1db47.TextField_module_feedbackError__9cc1db47 {\n  color: var(--error);\n  fill: var(--error);\n}\n.TextField_module_root__9cc1db47 .TextField_module_bottom__9cc1db47 .TextField_module_feedback__9cc1db47.TextField_module_feedbackSuccess__9cc1db47 {\n  color: var(--success);\n  fill: var(--success);\n}\n.TextField_module_root__9cc1db47 .TextField_module_bottom__9cc1db47 .TextField_module_count__9cc1db47 {\n  text-align: right;\n  margin-left: auto;\n}\n.TextField_module_root__9cc1db47 .TextField_module_bottom__9cc1db47 .TextField_module_count__9cc1db47.TextField_module_exceeded__9cc1db47 {\n  color: var(--error);\n}";
 var modules_c1d23762 = {"root":"TextField_module_root__9cc1db47","input-wrapper":"TextField_module_inputWrapper__9cc1db47","icon":"TextField_module_icon__9cc1db47","input":"TextField_module_input__9cc1db47","sm":"TextField_module_sm__9cc1db47","md":"TextField_module_md__9cc1db47","lg":"TextField_module_lg__9cc1db47","type-textarea":"TextField_module_typeTextarea__9cc1db47","feedback-error":"TextField_module_feedbackError__9cc1db47","border-default":"TextField_module_borderDefault__9cc1db47","border-bottom":"TextField_module_borderBottom__9cc1db47","border-none":"TextField_module_borderNone__9cc1db47","bottom":"TextField_module_bottom__9cc1db47","feedback":"TextField_module_feedback__9cc1db47","feedback-success":"TextField_module_feedbackSuccess__9cc1db47","count":"TextField_module_count__9cc1db47","exceeded":"TextField_module_exceeded__9cc1db47"};
-n(css$C,{});
+n(css$D,{});
 
 var TextField = /*#__PURE__*/React.forwardRef(function TextField(props, inputRef) {
   var _inputValue$length;
@@ -42235,9 +42244,9 @@ TextField.defaultProps = {
   onKeyDown: function onKeyDown() {}
 };
 
-var css$B = ":root {\n  --white: #ffffff;\n  --black: #000000;\n  --dark-grey: #333333;\n  --dark-grey-o-85: rgba(51, 51, 51, 0.85);\n  --grey: #737373;\n  --grey1: #888888;\n  --grey2: #a6a6a6;\n  --grey3: #bbbbbb;\n  --grey4: #c4c4c4;\n  --grey5: #dddddd;\n  --grey6: #e8e8e8;\n  --grey7: #eeeeee;\n  --grey8: #f2f2f2;\n  --grey9: #eff0f0;\n  --grey10: #f7f7f7;\n  --highlight: #0f62fe;\n  --dark-blue: #001833;\n  --background: #d0e2ff;\n  --banyan-blue: #00037c;\n  --banyan-orange: #ff892a;\n  --banyan-pink: #ff1597;\n  --banyan-gradient: linear-gradient(\n  \t84.71deg,\n  \tvar(--banyan-pink) 0.48%,\n  \tvar(--banyan-orange) 99.57%\n  );\n  --error: #da1e28;\n  --error-bg: #fff1f1;\n  --error-outline: rgba(218, 30, 40, 0.08);\n  --success: #24a148;\n  --success-bg: #defbe6;\n  --success-outline: rgba(36, 161, 72, 0.08);\n  --warning: #f1c21b;\n  --warning-bg: #fff8e1;\n  --warning-outline: rgba(203, 160, 6, 0.08);\n  --info: #0043ce;\n  --info-bg: #edf5ff;\n  --info-outline: #2864db98;\n}\n\n.CheckBox_module_root__d1bdcb36 {\n  cursor: pointer;\n  gap: 10px;\n}\n.CheckBox_module_root__d1bdcb36.CheckBox_module_positionLeft__d1bdcb36 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.CheckBox_module_root__d1bdcb36.CheckBox_module_positionRight__d1bdcb36 {\n  display: flex;\n  flex-direction: row-reverse;\n  justify-content: flex-end;\n  align-items: center;\n}\n.CheckBox_module_root__d1bdcb36 input[type=checkbox] {\n  opacity: 0;\n  z-index: 1;\n  position: absolute;\n  width: 1px;\n  height: 1px;\n}\n.CheckBox_module_root__d1bdcb36.CheckBox_module_disabled__d1bdcb36 {\n  cursor: default;\n}\n.CheckBox_module_root__d1bdcb36 .CheckBox_module_icon__d1bdcb36 {\n  display: inline-block;\n}\n.CheckBox_module_root__d1bdcb36 .CheckBox_module_icon__d1bdcb36.CheckBox_module_iconSm__d1bdcb36 {\n  width: 1rem;\n  height: 1rem;\n}\n.CheckBox_module_root__d1bdcb36 .CheckBox_module_icon__d1bdcb36.CheckBox_module_iconMd__d1bdcb36 {\n  width: 1.25rem;\n  height: 1.25rem;\n}\n.CheckBox_module_root__d1bdcb36 .CheckBox_module_icon__d1bdcb36.CheckBox_module_iconLg__d1bdcb36 {\n  width: 1.5rem;\n  height: 2rem;\n}\n.CheckBox_module_root__d1bdcb36 [data-elem=label] {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}";
+var css$C = ":root {\n  --white: #ffffff;\n  --black: #000000;\n  --dark-grey: #333333;\n  --dark-grey-o-85: rgba(51, 51, 51, 0.85);\n  --grey: #737373;\n  --grey1: #888888;\n  --grey2: #a6a6a6;\n  --grey3: #bbbbbb;\n  --grey4: #c4c4c4;\n  --grey5: #dddddd;\n  --grey6: #e8e8e8;\n  --grey7: #eeeeee;\n  --grey8: #f2f2f2;\n  --grey9: #eff0f0;\n  --grey10: #f7f7f7;\n  --highlight: #0f62fe;\n  --dark-blue: #001833;\n  --background: #d0e2ff;\n  --banyan-blue: #00037c;\n  --banyan-orange: #ff892a;\n  --banyan-pink: #ff1597;\n  --banyan-gradient: linear-gradient(\n  \t84.71deg,\n  \tvar(--banyan-pink) 0.48%,\n  \tvar(--banyan-orange) 99.57%\n  );\n  --error: #da1e28;\n  --error-bg: #fff1f1;\n  --error-outline: rgba(218, 30, 40, 0.08);\n  --success: #24a148;\n  --success-bg: #defbe6;\n  --success-outline: rgba(36, 161, 72, 0.08);\n  --warning: #f1c21b;\n  --warning-bg: #fff8e1;\n  --warning-outline: rgba(203, 160, 6, 0.08);\n  --info: #0043ce;\n  --info-bg: #edf5ff;\n  --info-outline: #2864db98;\n}\n\n.CheckBox_module_root__d1bdcb36 {\n  cursor: pointer;\n  gap: 10px;\n}\n.CheckBox_module_root__d1bdcb36.CheckBox_module_positionLeft__d1bdcb36 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.CheckBox_module_root__d1bdcb36.CheckBox_module_positionRight__d1bdcb36 {\n  display: flex;\n  flex-direction: row-reverse;\n  justify-content: flex-end;\n  align-items: center;\n}\n.CheckBox_module_root__d1bdcb36 input[type=checkbox] {\n  opacity: 0;\n  z-index: 1;\n  position: absolute;\n  width: 1px;\n  height: 1px;\n}\n.CheckBox_module_root__d1bdcb36.CheckBox_module_disabled__d1bdcb36 {\n  cursor: default;\n}\n.CheckBox_module_root__d1bdcb36 .CheckBox_module_icon__d1bdcb36 {\n  display: inline-block;\n}\n.CheckBox_module_root__d1bdcb36 .CheckBox_module_icon__d1bdcb36.CheckBox_module_iconSm__d1bdcb36 {\n  width: 1rem;\n  height: 1rem;\n}\n.CheckBox_module_root__d1bdcb36 .CheckBox_module_icon__d1bdcb36.CheckBox_module_iconMd__d1bdcb36 {\n  width: 1.25rem;\n  height: 1.25rem;\n}\n.CheckBox_module_root__d1bdcb36 .CheckBox_module_icon__d1bdcb36.CheckBox_module_iconLg__d1bdcb36 {\n  width: 1.5rem;\n  height: 2rem;\n}\n.CheckBox_module_root__d1bdcb36 [data-elem=label] {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}";
 var modules_066398a2 = {"white":"var(--white)","black":"var(--black)","dark-grey":"var(--dark-grey)","dark-grey-o-85":"var(--dark-grey-o-85)","grey":"var(--grey)","grey1":"var(--grey1)","grey2":"var(--grey2)","grey3":"var(--grey3)","grey4":"var(--grey4)","grey5":"var(--grey5)","grey6":"var(--grey6)","grey7":"var(--grey7)","grey8":"var(--grey8)","grey9":"var(--grey9)","grey10":"var(--grey10)","highlight":"var(--highlight)","dark-blue":"var(--dark-blue)","background":"var(--background)","banyan-blue":"var(--banyan-blue)","banyan-orange":"var(--banyan-orange)","banyan-pink":"var(--banyan-pink)","banyan-gradient":"var(--banyan-gradient)","error":"var(--error)","error-bg":"var(--error-bg)","error-outline":"var(--error-outline)","success":"var(--success)","success-bg":"var(--success-bg)","success-outline":"var(--success-outline)","warning":"var(--warning)","warning-bg":"var(--warning-bg)","warning-outline":"var(--warning-outline)","info":"var(--info)","info-bg":"var(--info-bg)","info-outline":"var(--info-outline)","root":"CheckBox_module_root__d1bdcb36","position-left":"CheckBox_module_positionLeft__d1bdcb36","position-right":"CheckBox_module_positionRight__d1bdcb36","disabled":"CheckBox_module_disabled__d1bdcb36","icon":"CheckBox_module_icon__d1bdcb36","icon-sm":"CheckBox_module_iconSm__d1bdcb36","icon-md":"CheckBox_module_iconMd__d1bdcb36","icon-lg":"CheckBox_module_iconLg__d1bdcb36"};
-n(css$B,{});
+n(css$C,{});
 
 var Checkbox = function Checkbox(props) {
   // eslint-disable-next-line object-curly-newline
@@ -42308,9 +42317,9 @@ Checkbox.defaultProps = {
   onChange: function onChange() {}
 };
 
-var css$A = ":root {\n  --white: #ffffff;\n  --black: #000000;\n  --dark-grey: #333333;\n  --dark-grey-o-85: rgba(51, 51, 51, 0.85);\n  --grey: #737373;\n  --grey1: #888888;\n  --grey2: #a6a6a6;\n  --grey3: #bbbbbb;\n  --grey4: #c4c4c4;\n  --grey5: #dddddd;\n  --grey6: #e8e8e8;\n  --grey7: #eeeeee;\n  --grey8: #f2f2f2;\n  --grey9: #eff0f0;\n  --grey10: #f7f7f7;\n  --highlight: #0f62fe;\n  --dark-blue: #001833;\n  --background: #d0e2ff;\n  --banyan-blue: #00037c;\n  --banyan-orange: #ff892a;\n  --banyan-pink: #ff1597;\n  --banyan-gradient: linear-gradient(\n  \t84.71deg,\n  \tvar(--banyan-pink) 0.48%,\n  \tvar(--banyan-orange) 99.57%\n  );\n  --error: #da1e28;\n  --error-bg: #fff1f1;\n  --error-outline: rgba(218, 30, 40, 0.08);\n  --success: #24a148;\n  --success-bg: #defbe6;\n  --success-outline: rgba(36, 161, 72, 0.08);\n  --warning: #f1c21b;\n  --warning-bg: #fff8e1;\n  --warning-outline: rgba(203, 160, 6, 0.08);\n  --info: #0043ce;\n  --info-bg: #edf5ff;\n  --info-outline: #2864db98;\n}\n\n.Radio_module_root__dc9ececa {\n  cursor: pointer;\n  gap: 10px;\n}\n.Radio_module_root__dc9ececa.Radio_module_positionLeft__dc9ececa {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.Radio_module_root__dc9ececa.Radio_module_positionRight__dc9ececa {\n  display: flex;\n  flex-direction: row-reverse;\n  justify-content: flex-end;\n  align-items: center;\n}\n.Radio_module_root__dc9ececa.Radio_module_disabled__dc9ececa {\n  cursor: default;\n}\n.Radio_module_root__dc9ececa input[type=radio] {\n  opacity: 0;\n  z-index: 1;\n  position: absolute;\n  width: 1px;\n  height: 1px;\n}\n.Radio_module_root__dc9ececa .Radio_module_icon__dc9ececa {\n  display: inline-block;\n}\n.Radio_module_root__dc9ececa .Radio_module_icon__dc9ececa.Radio_module_iconSm__dc9ececa {\n  width: 1rem;\n  height: 1rem;\n}\n.Radio_module_root__dc9ececa .Radio_module_icon__dc9ececa.Radio_module_iconMd__dc9ececa {\n  width: 1.25rem;\n  height: 1.25rem;\n}\n.Radio_module_root__dc9ececa .Radio_module_icon__dc9ececa.Radio_module_iconLg__dc9ececa {\n  width: 1.5rem;\n  height: 2rem;\n}\n.Radio_module_root__dc9ececa [data-elem=label] {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}";
+var css$B = ":root {\n  --white: #ffffff;\n  --black: #000000;\n  --dark-grey: #333333;\n  --dark-grey-o-85: rgba(51, 51, 51, 0.85);\n  --grey: #737373;\n  --grey1: #888888;\n  --grey2: #a6a6a6;\n  --grey3: #bbbbbb;\n  --grey4: #c4c4c4;\n  --grey5: #dddddd;\n  --grey6: #e8e8e8;\n  --grey7: #eeeeee;\n  --grey8: #f2f2f2;\n  --grey9: #eff0f0;\n  --grey10: #f7f7f7;\n  --highlight: #0f62fe;\n  --dark-blue: #001833;\n  --background: #d0e2ff;\n  --banyan-blue: #00037c;\n  --banyan-orange: #ff892a;\n  --banyan-pink: #ff1597;\n  --banyan-gradient: linear-gradient(\n  \t84.71deg,\n  \tvar(--banyan-pink) 0.48%,\n  \tvar(--banyan-orange) 99.57%\n  );\n  --error: #da1e28;\n  --error-bg: #fff1f1;\n  --error-outline: rgba(218, 30, 40, 0.08);\n  --success: #24a148;\n  --success-bg: #defbe6;\n  --success-outline: rgba(36, 161, 72, 0.08);\n  --warning: #f1c21b;\n  --warning-bg: #fff8e1;\n  --warning-outline: rgba(203, 160, 6, 0.08);\n  --info: #0043ce;\n  --info-bg: #edf5ff;\n  --info-outline: #2864db98;\n}\n\n.Radio_module_root__dc9ececa {\n  cursor: pointer;\n  gap: 10px;\n}\n.Radio_module_root__dc9ececa.Radio_module_positionLeft__dc9ececa {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.Radio_module_root__dc9ececa.Radio_module_positionRight__dc9ececa {\n  display: flex;\n  flex-direction: row-reverse;\n  justify-content: flex-end;\n  align-items: center;\n}\n.Radio_module_root__dc9ececa.Radio_module_disabled__dc9ececa {\n  cursor: default;\n}\n.Radio_module_root__dc9ececa input[type=radio] {\n  opacity: 0;\n  z-index: 1;\n  position: absolute;\n  width: 1px;\n  height: 1px;\n}\n.Radio_module_root__dc9ececa .Radio_module_icon__dc9ececa {\n  display: inline-block;\n}\n.Radio_module_root__dc9ececa .Radio_module_icon__dc9ececa.Radio_module_iconSm__dc9ececa {\n  width: 1rem;\n  height: 1rem;\n}\n.Radio_module_root__dc9ececa .Radio_module_icon__dc9ececa.Radio_module_iconMd__dc9ececa {\n  width: 1.25rem;\n  height: 1.25rem;\n}\n.Radio_module_root__dc9ececa .Radio_module_icon__dc9ececa.Radio_module_iconLg__dc9ececa {\n  width: 1.5rem;\n  height: 2rem;\n}\n.Radio_module_root__dc9ececa [data-elem=label] {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}";
 var modules_3705961f = {"white":"var(--white)","black":"var(--black)","dark-grey":"var(--dark-grey)","dark-grey-o-85":"var(--dark-grey-o-85)","grey":"var(--grey)","grey1":"var(--grey1)","grey2":"var(--grey2)","grey3":"var(--grey3)","grey4":"var(--grey4)","grey5":"var(--grey5)","grey6":"var(--grey6)","grey7":"var(--grey7)","grey8":"var(--grey8)","grey9":"var(--grey9)","grey10":"var(--grey10)","highlight":"var(--highlight)","dark-blue":"var(--dark-blue)","background":"var(--background)","banyan-blue":"var(--banyan-blue)","banyan-orange":"var(--banyan-orange)","banyan-pink":"var(--banyan-pink)","banyan-gradient":"var(--banyan-gradient)","error":"var(--error)","error-bg":"var(--error-bg)","error-outline":"var(--error-outline)","success":"var(--success)","success-bg":"var(--success-bg)","success-outline":"var(--success-outline)","warning":"var(--warning)","warning-bg":"var(--warning-bg)","warning-outline":"var(--warning-outline)","info":"var(--info)","info-bg":"var(--info-bg)","info-outline":"var(--info-outline)","root":"Radio_module_root__dc9ececa","position-left":"Radio_module_positionLeft__dc9ececa","position-right":"Radio_module_positionRight__dc9ececa","disabled":"Radio_module_disabled__dc9ececa","icon":"Radio_module_icon__dc9ececa","icon-sm":"Radio_module_iconSm__dc9ececa","icon-md":"Radio_module_iconMd__dc9ececa","icon-lg":"Radio_module_iconLg__dc9ececa"};
-n(css$A,{});
+n(css$B,{});
 
 var Radio = function Radio(props) {
   // eslint-disable-next-line object-curly-newline
@@ -42378,9 +42387,9 @@ Radio.defaultProps = {
   onChange: function onChange() {}
 };
 
-var css$z = ".Dropdown_module_root__1ad8038e {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  gap: 0.5rem;\n  position: relative;\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  max-width: 100%;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_label__1ad8038e {\n  font-size: 0.75rem;\n  color: var(--grey);\n  width: auto;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  max-width: 100%;\n  position: relative;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e .Dropdown_module_input__1ad8038e {\n  position: absolute;\n  opacity: 0;\n  width: 1px;\n  height: 1px;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e .Dropdown_module_input__1ad8038e:focus + .Dropdown_module_select__1ad8038e {\n  border-color: var(--highlight);\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e .Dropdown_module_input__1ad8038e:focus + .Dropdown_module_select__1ad8038e.Dropdown_module_feedbackError__1ad8038e {\n  border-color: var(--error);\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e .Dropdown_module_select__1ad8038e {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  width: 25rem;\n  max-width: 100%;\n  gap: 0.5rem;\n  background: var(--white);\n  outline: none;\n  border: 1px solid var(--grey5);\n  border-radius: 0.25rem;\n  padding: 0.75rem 0.75rem 0.75rem 1rem;\n  cursor: pointer;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e .Dropdown_module_select__1ad8038e .Dropdown_module_placeholder__1ad8038e {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  color: var(--black);\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e .Dropdown_module_select__1ad8038e .Dropdown_module_icon__1ad8038e {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e .Dropdown_module_select__1ad8038e.Dropdown_module_feedbackError__1ad8038e {\n  border-color: var(--error);\n}\n.Dropdown_module_root__1ad8038e.Dropdown_module_open__1ad8038e .Dropdown_module_header__1ad8038e {\n  border-color: var(--highlight);\n}\n.Dropdown_module_root__1ad8038e.Dropdown_module_disabled__1ad8038e .Dropdown_module_select__1ad8038e {\n  background: var(--grey10);\n  cursor: not-allowed;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_bottom__1ad8038e {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: flex-start;\n  min-height: 2rem;\n  width: 100%;\n  gap: 1rem;\n  color: var(--grey3);\n  font-size: 0.75rem;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_bottom__1ad8038e .Dropdown_module_feedback__1ad8038e {\n  flex: 1;\n  margin-right: auto;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_bottom__1ad8038e .Dropdown_module_feedback__1ad8038e.Dropdown_module_feedbackError__1ad8038e {\n  color: var(--error);\n  fill: var(--error);\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_bottom__1ad8038e .Dropdown_module_feedback__1ad8038e.Dropdown_module_feedbackSuccess__1ad8038e {\n  color: var(--success);\n  fill: var(--success);\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_bottom__1ad8038e .Dropdown_module_count__1ad8038e {\n  text-align: right;\n  margin-left: auto;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_bottom__1ad8038e .Dropdown_module_count__1ad8038e.Dropdown_module_exceeded__1ad8038e {\n  color: var(--error);\n}\n\n.Dropdown_module_body__1ad8038e {\n  display: none;\n  position: absolute;\n  top: calc(100% + 0.5rem);\n  background: var(--white);\n  width: auto;\n  border: 0.063rem solid var(--grey5);\n  box-shadow: 0rem 0.5rem 1.25rem rgba(24, 24, 24, 0.08);\n  border-radius: 0.25rem;\n  padding: 1rem;\n  overflow-y: auto;\n  min-height: 4rem;\n  outline: none;\n}\n.Dropdown_module_body__1ad8038e .Dropdown_module_multiOptions__1ad8038e {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: 0.5rem;\n  list-style: none;\n}\n.Dropdown_module_body__1ad8038e .Dropdown_module_multiApply__1ad8038e {\n  margin-top: 0.5rem;\n}\n.Dropdown_module_body__1ad8038e.Dropdown_module_open__1ad8038e {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n}";
+var css$A = ".Dropdown_module_root__1ad8038e {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  gap: 0.5rem;\n  position: relative;\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  max-width: 100%;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_label__1ad8038e {\n  font-size: 0.75rem;\n  color: var(--grey);\n  width: auto;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  max-width: 100%;\n  position: relative;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e .Dropdown_module_input__1ad8038e {\n  position: absolute;\n  opacity: 0;\n  width: 1px;\n  height: 1px;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e .Dropdown_module_input__1ad8038e:focus + .Dropdown_module_select__1ad8038e {\n  border-color: var(--highlight);\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e .Dropdown_module_input__1ad8038e:focus + .Dropdown_module_select__1ad8038e.Dropdown_module_feedbackError__1ad8038e {\n  border-color: var(--error);\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e .Dropdown_module_select__1ad8038e {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  width: 25rem;\n  max-width: 100%;\n  gap: 0.5rem;\n  background: var(--white);\n  outline: none;\n  border: 1px solid var(--grey5);\n  border-radius: 0.25rem;\n  padding: 0.75rem 0.75rem 0.75rem 1rem;\n  cursor: pointer;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e .Dropdown_module_select__1ad8038e .Dropdown_module_placeholder__1ad8038e {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  color: var(--black);\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e .Dropdown_module_select__1ad8038e .Dropdown_module_icon__1ad8038e {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e .Dropdown_module_select__1ad8038e.Dropdown_module_feedbackError__1ad8038e {\n  border-color: var(--error);\n}\n.Dropdown_module_root__1ad8038e.Dropdown_module_open__1ad8038e .Dropdown_module_header__1ad8038e {\n  border-color: var(--highlight);\n}\n.Dropdown_module_root__1ad8038e.Dropdown_module_disabled__1ad8038e .Dropdown_module_select__1ad8038e {\n  background: var(--grey10);\n  cursor: not-allowed;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_bottom__1ad8038e {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: flex-start;\n  min-height: 2rem;\n  width: 100%;\n  gap: 1rem;\n  color: var(--grey3);\n  font-size: 0.75rem;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_bottom__1ad8038e .Dropdown_module_feedback__1ad8038e {\n  flex: 1;\n  margin-right: auto;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_bottom__1ad8038e .Dropdown_module_feedback__1ad8038e.Dropdown_module_feedbackError__1ad8038e {\n  color: var(--error);\n  fill: var(--error);\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_bottom__1ad8038e .Dropdown_module_feedback__1ad8038e.Dropdown_module_feedbackSuccess__1ad8038e {\n  color: var(--success);\n  fill: var(--success);\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_bottom__1ad8038e .Dropdown_module_count__1ad8038e {\n  text-align: right;\n  margin-left: auto;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_bottom__1ad8038e .Dropdown_module_count__1ad8038e.Dropdown_module_exceeded__1ad8038e {\n  color: var(--error);\n}\n\n.Dropdown_module_body__1ad8038e {\n  display: none;\n  position: absolute;\n  top: calc(100% + 0.5rem);\n  background: var(--white);\n  width: auto;\n  border: 0.063rem solid var(--grey5);\n  box-shadow: 0rem 0.5rem 1.25rem rgba(24, 24, 24, 0.08);\n  border-radius: 0.25rem;\n  padding: 1rem;\n  overflow-y: auto;\n  min-height: 4rem;\n  outline: none;\n}\n.Dropdown_module_body__1ad8038e .Dropdown_module_multiOptions__1ad8038e {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: 0.5rem;\n  list-style: none;\n}\n.Dropdown_module_body__1ad8038e .Dropdown_module_multiApply__1ad8038e {\n  margin-top: 0.5rem;\n}\n.Dropdown_module_body__1ad8038e.Dropdown_module_open__1ad8038e {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n}";
 var modules_1b90f5ea = {"root":"Dropdown_module_root__1ad8038e","label":"Dropdown_module_label__1ad8038e","header":"Dropdown_module_header__1ad8038e","input":"Dropdown_module_input__1ad8038e","select":"Dropdown_module_select__1ad8038e","feedback-error":"Dropdown_module_feedbackError__1ad8038e","placeholder":"Dropdown_module_placeholder__1ad8038e","icon":"Dropdown_module_icon__1ad8038e","open":"Dropdown_module_open__1ad8038e","disabled":"Dropdown_module_disabled__1ad8038e","bottom":"Dropdown_module_bottom__1ad8038e","feedback":"Dropdown_module_feedback__1ad8038e","feedback-success":"Dropdown_module_feedbackSuccess__1ad8038e","count":"Dropdown_module_count__1ad8038e","exceeded":"Dropdown_module_exceeded__1ad8038e","body":"Dropdown_module_body__1ad8038e","multi-options":"Dropdown_module_multiOptions__1ad8038e","multi-apply":"Dropdown_module_multiApply__1ad8038e"};
-n(css$z,{});
+n(css$A,{});
 
 var Dropdown = /*#__PURE__*/React.forwardRef(function Dropdown(props, inputRef) {
   var _selectedOptions$map, _ref2, _selectedOptions$;
@@ -42781,9 +42790,9 @@ Dropdown.defaultProps = {
   }
 };
 
-var css$y = ".DropdownItem_module_root__61492174 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.75rem;\n  width: 100%;\n  padding: 0.75rem 1rem;\n  border-radius: 0.25rem;\n  cursor: pointer;\n  color: var(--grey);\n  outline: none;\n}\n.DropdownItem_module_root__61492174 > .DropdownItem_module_input__61492174 {\n  cursor: pointer;\n}\n.DropdownItem_module_root__61492174:focus {\n  background: var(--grey6);\n}\n.DropdownItem_module_root__61492174.DropdownItem_module_selected__61492174 {\n  background: var(--info-bg);\n}";
+var css$z = ".DropdownItem_module_root__61492174 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.75rem;\n  width: 100%;\n  padding: 0.75rem 1rem;\n  border-radius: 0.25rem;\n  cursor: pointer;\n  color: var(--grey);\n  outline: none;\n}\n.DropdownItem_module_root__61492174 > .DropdownItem_module_input__61492174 {\n  cursor: pointer;\n}\n.DropdownItem_module_root__61492174:focus {\n  background: var(--grey6);\n}\n.DropdownItem_module_root__61492174.DropdownItem_module_selected__61492174 {\n  background: var(--info-bg);\n}";
 var modules_bf949acd = {"root":"DropdownItem_module_root__61492174","input":"DropdownItem_module_input__61492174","selected":"DropdownItem_module_selected__61492174"};
-n(css$y,{});
+n(css$z,{});
 
 var DropdownItem = /*#__PURE__*/React.forwardRef(function DropdownItem(props, ref) {
   // eslint-disable-next-line object-curly-newline
@@ -42850,9 +42859,9 @@ DropdownItem.defaultProps = {
   selected: false
 };
 
-var css$x = ".TimePicker_module_root__2dd24d9e {\n  width: 100%;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  border-top: 1px solid var(--grey5);\n  border-bottom: 1px solid var(--grey5);\n}\n.TimePicker_module_root__2dd24d9e .TimePicker_module_input__2dd24d9e {\n  width: 5.125rem;\n}\n.TimePicker_module_root__2dd24d9e .TimePicker_module_input__2dd24d9e > label [data-elem=base-cell] {\n  border: none;\n}\n.TimePicker_module_root__2dd24d9e .TimePicker_module_input__2dd24d9e > label [data-elem=base-cell] [data-elem=component2] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.TimePicker_module_root__2dd24d9e .TimePicker_module_input__2dd24d9e > label [data-elem=base-cell] [data-elem=component2] > input[data-elem=input] {\n  padding: 1rem 0rem;\n  text-align: center;\n  font-weight: 600;\n  font-size: 1.25rem;\n  line-height: 1.5rem;\n  color: var(--dark-grey);\n}\n.TimePicker_module_root__2dd24d9e .TimePicker_module_colon__2dd24d9e {\n  font-weight: 500;\n  font-size: 1.25rem;\n  line-height: 1.5rem;\n  color: var(--dark-grey);\n}\n.TimePicker_module_root__2dd24d9e .TimePicker_module_separator__2dd24d9e {\n  width: 0.0625rem;\n  height: 1.5625rem;\n  background-color: var(--grey5);\n}";
+var css$y = ".TimePicker_module_root__2dd24d9e {\n  width: 100%;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  border-top: 1px solid var(--grey5);\n  border-bottom: 1px solid var(--grey5);\n}\n.TimePicker_module_root__2dd24d9e .TimePicker_module_input__2dd24d9e {\n  width: 5.125rem;\n}\n.TimePicker_module_root__2dd24d9e .TimePicker_module_input__2dd24d9e > label [data-elem=base-cell] {\n  border: none;\n}\n.TimePicker_module_root__2dd24d9e .TimePicker_module_input__2dd24d9e > label [data-elem=base-cell] [data-elem=component2] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.TimePicker_module_root__2dd24d9e .TimePicker_module_input__2dd24d9e > label [data-elem=base-cell] [data-elem=component2] > input[data-elem=input] {\n  padding: 1rem 0rem;\n  text-align: center;\n  font-weight: 600;\n  font-size: 1.25rem;\n  line-height: 1.5rem;\n  color: var(--dark-grey);\n}\n.TimePicker_module_root__2dd24d9e .TimePicker_module_colon__2dd24d9e {\n  font-weight: 500;\n  font-size: 1.25rem;\n  line-height: 1.5rem;\n  color: var(--dark-grey);\n}\n.TimePicker_module_root__2dd24d9e .TimePicker_module_separator__2dd24d9e {\n  width: 0.0625rem;\n  height: 1.5625rem;\n  background-color: var(--grey5);\n}";
 var modules_98a80317 = {"root":"TimePicker_module_root__2dd24d9e","input":"TimePicker_module_input__2dd24d9e","colon":"TimePicker_module_colon__2dd24d9e","separator":"TimePicker_module_separator__2dd24d9e"};
-n(css$x,{});
+n(css$y,{});
 
 var isValidUnit = function isValidUnit(_ref) {
   var type = _ref.type,
@@ -43042,9 +43051,9 @@ TimePicker.defaultProps = {
   value: null
 };
 
-var css$w = ".Footer_module_root__0e6d72de {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-items: stretch;\n  margin-inline: 1rem;\n}\n.Footer_module_root__0e6d72de .Footer_module_apply__0e6d72de {\n  margin-top: 0.5rem;\n  width: 100%;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.Footer_module_root__0e6d72de .Footer_module_timePicker__0e6d72de {\n  margin-bottom: 1.25rem;\n}\n\n.Footer_module_selectedDate__0e6d72de {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  gap: 1.125rem;\n  background: var(--white);\n  border: 0.0625rem solid var(--grey4);\n  border-radius: 0.25rem;\n}\n.Footer_module_selectedDate__0e6d72de .Footer_module_date__0e6d72de {\n  font-weight: 500;\n  font-size: 0.875rem;\n  line-height: 1.3125rem;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.Footer_module_selectedDate__0e6d72de .Footer_module_date__0e6d72de .Footer_module_cross__0e6d72de {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.Footer_module_selectedDate__0e6d72de .Footer_module_date__0e6d72de .Footer_module_value__0e6d72de {\n  font-weight: 400;\n  padding-right: 0.7rem;\n  border-right: 1px var(--grey3) solid;\n}\n\n.Footer_module_dateRanges__0e6d72de {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-items: stretch;\n  margin-top: 0.5rem;\n}\n.Footer_module_dateRanges__0e6d72de .Footer_module_dateRange__0e6d72de {\n  display: flex;\n  align-items: center;\n  padding: 0.875rem 1rem;\n  gap: 1.125rem;\n  cursor: pointer;\n}\n.Footer_module_dateRanges__0e6d72de .Footer_module_dateRange__0e6d72de:hover {\n  background-color: var(--background);\n}\n.Footer_module_dateRanges__0e6d72de .Footer_module_dateRange__0e6d72de span {\n  font-weight: 400;\n  font-size: 0.875rem;\n  line-height: 1.3125rem;\n  color: var(--black);\n}\n.Footer_module_dateRanges__0e6d72de .Footer_module_selected__0e6d72de {\n  background-color: var(--background);\n}";
+var css$x = ".Footer_module_root__0e6d72de {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-items: stretch;\n  margin-inline: 1rem;\n}\n.Footer_module_root__0e6d72de .Footer_module_apply__0e6d72de {\n  margin-top: 0.5rem;\n  width: 100%;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.Footer_module_root__0e6d72de .Footer_module_timePicker__0e6d72de {\n  margin-bottom: 1.25rem;\n}\n\n.Footer_module_selectedDate__0e6d72de {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  gap: 1.125rem;\n  background: var(--white);\n  border: 0.0625rem solid var(--grey4);\n  border-radius: 0.25rem;\n}\n.Footer_module_selectedDate__0e6d72de .Footer_module_date__0e6d72de {\n  font-weight: 500;\n  font-size: 0.875rem;\n  line-height: 1.3125rem;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.Footer_module_selectedDate__0e6d72de .Footer_module_date__0e6d72de .Footer_module_cross__0e6d72de {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.Footer_module_selectedDate__0e6d72de .Footer_module_date__0e6d72de .Footer_module_value__0e6d72de {\n  font-weight: 400;\n  padding-right: 0.7rem;\n  border-right: 1px var(--grey3) solid;\n}\n\n.Footer_module_dateRanges__0e6d72de {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-items: stretch;\n  margin-top: 0.5rem;\n}\n.Footer_module_dateRanges__0e6d72de .Footer_module_dateRange__0e6d72de {\n  display: flex;\n  align-items: center;\n  padding: 0.875rem 1rem;\n  gap: 1.125rem;\n  cursor: pointer;\n}\n.Footer_module_dateRanges__0e6d72de .Footer_module_dateRange__0e6d72de:hover {\n  background-color: var(--background);\n}\n.Footer_module_dateRanges__0e6d72de .Footer_module_dateRange__0e6d72de span {\n  font-weight: 400;\n  font-size: 0.875rem;\n  line-height: 1.3125rem;\n  color: var(--black);\n}\n.Footer_module_dateRanges__0e6d72de .Footer_module_selected__0e6d72de {\n  background-color: var(--background);\n}";
 var modules_b490bd5d = {"root":"Footer_module_root__0e6d72de","apply":"Footer_module_apply__0e6d72de","time-picker":"Footer_module_timePicker__0e6d72de","selected-date":"Footer_module_selectedDate__0e6d72de","date":"Footer_module_date__0e6d72de","cross":"Footer_module_cross__0e6d72de","value":"Footer_module_value__0e6d72de","date-ranges":"Footer_module_dateRanges__0e6d72de","date-range":"Footer_module_dateRange__0e6d72de","selected":"Footer_module_selected__0e6d72de"};
-n(css$w,{});
+n(css$x,{});
 
 var getDateAndUnixRange = function getDateAndUnixRange(duration) {
   var startingDate = sub$1(new Date(), duration);
@@ -43349,9 +43358,9 @@ var Calender = function Calender(props) {
   });
 };
 
-var css$v = ".DatePicker_module_root__cd4565ac {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  gap: 0.5rem;\n  max-width: 100%;\n  overflow: visible;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_label__cd4565ac {\n  font-weight: 400;\n  font-size: 0.75rem;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_label__cd4565ac.DatePicker_module_light__cd4565ac {\n  color: var(--black);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_label__cd4565ac.DatePicker_module_dark__cd4565ac {\n  color: var(--white);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  position: relative;\n  background: transparent;\n  border: 0.0625rem solid #d9d9d9;\n  border-radius: 0.25rem;\n  width: auto;\n  border: 0.0625rem solid var(--grey5);\n  padding: 0.75rem 1rem;\n  cursor: pointer;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac > div {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  font-size: 0px;\n  letter-spacing: 0px;\n  word-spacing: 0px;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_placeholder__cd4565ac {\n  font-weight: 400;\n  font-size: 1rem;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  margin-left: 0.9375rem;\n  color: var(--grey1);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_value__cd4565ac {\n  font-weight: 400;\n  font-size: 1rem;\n  margin-left: 0.9375rem;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_value__cd4565ac.DatePicker_module_light__cd4565ac {\n  color: var(--black);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_value__cd4565ac.DatePicker_module_dark__cd4565ac {\n  color: var(--white);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_value__cd4565ac span {\n  max-width: 200px;\n  display: inline-block;\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  font-weight: 500;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_input__cd4565ac {\n  display: none;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_icon__cd4565ac {\n  width: 1.25rem;\n  height: 1.25rem;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_icon__cd4565ac.DatePicker_module_light__cd4565ac > path {\n  fill: var(--dark-grey);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_icon__cd4565ac.DatePicker_module_dark__cd4565ac > path {\n  fill: var(--white);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_down__cd4565ac {\n  transform: rotate(270deg);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_up__cd4565ac {\n  transform: rotate(90deg);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_disabled__cd4565ac {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  position: relative;\n  background: var(--grey10);\n  border: 0.0625rem solid #d9d9d9;\n  border-radius: 0.25rem;\n  border: 0.0625rem solid var(--grey5);\n  padding: 0.75rem 1rem;\n  cursor: pointer;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_disabled__cd4565ac .DatePicker_module_downArrow__cd4565ac {\n  transform: rotate(270deg);\n  fill: var(--grey3);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_disabled__cd4565ac .DatePicker_module_placeholder__cd4565ac {\n  font-weight: 400;\n  font-size: 1rem;\n  color: var(--grey3);\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.DatePicker_module_root__cd4565ac.DatePicker_module_open__cd4565ac {\n  border-color: var(--highlight);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_error__cd4565ac {\n  border: 0.0938rem solid var(--error);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_errorText__cd4565ac {\n  font-weight: 400;\n  font-size: 0.75rem;\n  line-height: 0.9375rem;\n  color: var(--error);\n}\n\n.DatePicker_module_popper__cd4565ac {\n  display: none;\n  background: var(--white);\n  border: 0.0625rem solid #d9d9d9;\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n  border-radius: 0.25rem;\n  overflow: auto;\n}\n.DatePicker_module_popper__cd4565ac.DatePicker_module_open__cd4565ac {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  position: absolute;\n}";
+var css$w = ".DatePicker_module_root__cd4565ac {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  gap: 0.5rem;\n  max-width: 100%;\n  overflow: visible;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_label__cd4565ac {\n  font-weight: 400;\n  font-size: 0.75rem;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_label__cd4565ac.DatePicker_module_light__cd4565ac {\n  color: var(--black);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_label__cd4565ac.DatePicker_module_dark__cd4565ac {\n  color: var(--white);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  position: relative;\n  background: transparent;\n  border: 0.0625rem solid #d9d9d9;\n  border-radius: 0.25rem;\n  width: auto;\n  border: 0.0625rem solid var(--grey5);\n  padding: 0.75rem 1rem;\n  cursor: pointer;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac > div {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  font-size: 0px;\n  letter-spacing: 0px;\n  word-spacing: 0px;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_placeholder__cd4565ac {\n  font-weight: 400;\n  font-size: 1rem;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  margin-left: 0.9375rem;\n  color: var(--grey1);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_value__cd4565ac {\n  font-weight: 400;\n  font-size: 1rem;\n  margin-left: 0.9375rem;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_value__cd4565ac.DatePicker_module_light__cd4565ac {\n  color: var(--black);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_value__cd4565ac.DatePicker_module_dark__cd4565ac {\n  color: var(--white);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_value__cd4565ac span {\n  max-width: 200px;\n  display: inline-block;\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  font-weight: 500;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_input__cd4565ac {\n  display: none;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_icon__cd4565ac {\n  width: 1.25rem;\n  height: 1.25rem;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_icon__cd4565ac.DatePicker_module_light__cd4565ac > path {\n  fill: var(--dark-grey);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_icon__cd4565ac.DatePicker_module_dark__cd4565ac > path {\n  fill: var(--white);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_down__cd4565ac {\n  transform: rotate(270deg);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_up__cd4565ac {\n  transform: rotate(90deg);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_disabled__cd4565ac {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  position: relative;\n  background: var(--grey10);\n  border: 0.0625rem solid #d9d9d9;\n  border-radius: 0.25rem;\n  border: 0.0625rem solid var(--grey5);\n  padding: 0.75rem 1rem;\n  cursor: pointer;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_disabled__cd4565ac .DatePicker_module_downArrow__cd4565ac {\n  transform: rotate(270deg);\n  fill: var(--grey3);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_disabled__cd4565ac .DatePicker_module_placeholder__cd4565ac {\n  font-weight: 400;\n  font-size: 1rem;\n  color: var(--grey3);\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.DatePicker_module_root__cd4565ac.DatePicker_module_open__cd4565ac {\n  border-color: var(--highlight);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_error__cd4565ac {\n  border: 0.0938rem solid var(--error);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_errorText__cd4565ac {\n  font-weight: 400;\n  font-size: 0.75rem;\n  line-height: 0.9375rem;\n  color: var(--error);\n}\n\n.DatePicker_module_popper__cd4565ac {\n  display: none;\n  background: var(--white);\n  border: 0.0625rem solid #d9d9d9;\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n  border-radius: 0.25rem;\n  overflow: auto;\n}\n.DatePicker_module_popper__cd4565ac.DatePicker_module_open__cd4565ac {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  position: absolute;\n}";
 var modules_5b831cd1 = {"root":"DatePicker_module_root__cd4565ac","label":"DatePicker_module_label__cd4565ac","light":"DatePicker_module_light__cd4565ac","dark":"DatePicker_module_dark__cd4565ac","container":"DatePicker_module_container__cd4565ac","placeholder":"DatePicker_module_placeholder__cd4565ac","value":"DatePicker_module_value__cd4565ac","input":"DatePicker_module_input__cd4565ac","icon":"DatePicker_module_icon__cd4565ac","down":"DatePicker_module_down__cd4565ac","up":"DatePicker_module_up__cd4565ac","disabled":"DatePicker_module_disabled__cd4565ac","down-arrow":"DatePicker_module_downArrow__cd4565ac","open":"DatePicker_module_open__cd4565ac","error":"DatePicker_module_error__cd4565ac","error-text":"DatePicker_module_errorText__cd4565ac","popper":"DatePicker_module_popper__cd4565ac"};
-n(css$v,{});
+n(css$w,{});
 
 var isMaxRangeExceeded = function isMaxRangeExceeded(_ref) {
   var maxRange = _ref.maxRange,
@@ -43585,9 +43594,9 @@ DatePicker.defaultProps = {
   onClear: function onClear() {}
 };
 
-var css$u = ".HierarchyItem_module_root__c993ecd0 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  flex: 1;\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_header__c993ecd0 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.25rem;\n  min-height: 2rem;\n  height: auto;\n  padding: 0rem 0.5rem;\n  cursor: pointer;\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_header__c993ecd0 > [data-elem=component1], .HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_header__c993ecd0 > [data-elem=component3] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_header__c993ecd0 > [data-elem=component1] .HierarchyItem_module_expand__c993ecd0, .HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_header__c993ecd0 > [data-elem=component3] .HierarchyItem_module_expand__c993ecd0 {\n  padding: 0;\n  height: auto;\n  width: 1rem;\n  height: 1rem;\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_header__c993ecd0 > [data-elem=component1] .HierarchyItem_module_expand__c993ecd0 .HierarchyItem_module_icon__c993ecd0, .HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_header__c993ecd0 > [data-elem=component3] .HierarchyItem_module_expand__c993ecd0 .HierarchyItem_module_icon__c993ecd0 {\n  transform: rotate(-90deg);\n  width: 1rem;\n  height: 1rem;\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_header__c993ecd0 > [data-elem=component2] {\n  flex: 1 1 auto;\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_header__c993ecd0 > [data-elem=component2] .HierarchyItem_module_title__c993ecd0 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  width: 100%;\n  height: auto;\n  padding: 0.25rem 0rem;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_header__c993ecd0:hover {\n  background: var(--background);\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_header__c993ecd0:hover .HierarchyItem_module_icon__c993ecd0,\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_header__c993ecd0:hover .HierarchyItem_module_title__c993ecd0,\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_header__c993ecd0:hover .HierarchyItem_module_title__c993ecd0 svg {\n  color: var(--highlight);\n  fill: var(--highlight);\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_body__c993ecd0 {\n  display: none;\n  flex: 1 0 auto;\n  padding: 0px 0rem 0px 0.25rem;\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_body__c993ecd0 > [data-elem=component1] {\n  flex: 0 0 1.6rem;\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_body__c993ecd0 > [data-elem=component1] .HierarchyItem_module_tail__c993ecd0 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: center;\n  width: 1.6rem;\n  height: 100%;\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_body__c993ecd0 > [data-elem=component1] .HierarchyItem_module_tail__c993ecd0::after {\n  content: \"\";\n  display: block;\n  margin: auto;\n  width: 1px;\n  flex: 1;\n  background: var(--grey1);\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_body__c993ecd0 > [data-elem=component2] {\n  flex: 1 0 auto;\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_body__c993ecd0 > [data-elem=component2] .HierarchyItem_module_children__c993ecd0 {\n  flex: 1 0 auto;\n}\n.HierarchyItem_module_root__c993ecd0.HierarchyItem_module_open__c993ecd0 > .HierarchyItem_module_header__c993ecd0 .HierarchyItem_module_expand__c993ecd0 .HierarchyItem_module_icon__c993ecd0 {\n  transform: none;\n}\n.HierarchyItem_module_root__c993ecd0.HierarchyItem_module_open__c993ecd0 > .HierarchyItem_module_body__c993ecd0 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: stretch;\n  gap: 0.25rem;\n  height: auto;\n}";
+var css$v = ".HierarchyItem_module_root__c993ecd0 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  flex: 1;\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_header__c993ecd0 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.25rem;\n  min-height: 2rem;\n  height: auto;\n  padding: 0rem 0.5rem;\n  cursor: pointer;\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_header__c993ecd0 > [data-elem=component1], .HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_header__c993ecd0 > [data-elem=component3] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_header__c993ecd0 > [data-elem=component1] .HierarchyItem_module_expand__c993ecd0, .HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_header__c993ecd0 > [data-elem=component3] .HierarchyItem_module_expand__c993ecd0 {\n  padding: 0;\n  height: auto;\n  width: 1rem;\n  height: 1rem;\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_header__c993ecd0 > [data-elem=component1] .HierarchyItem_module_expand__c993ecd0 .HierarchyItem_module_icon__c993ecd0, .HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_header__c993ecd0 > [data-elem=component3] .HierarchyItem_module_expand__c993ecd0 .HierarchyItem_module_icon__c993ecd0 {\n  transform: rotate(-90deg);\n  width: 1rem;\n  height: 1rem;\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_header__c993ecd0 > [data-elem=component2] {\n  flex: 1 1 auto;\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_header__c993ecd0 > [data-elem=component2] .HierarchyItem_module_title__c993ecd0 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  width: 100%;\n  height: auto;\n  padding: 0.25rem 0rem;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_header__c993ecd0:hover {\n  background: var(--background);\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_header__c993ecd0:hover .HierarchyItem_module_icon__c993ecd0,\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_header__c993ecd0:hover .HierarchyItem_module_title__c993ecd0,\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_header__c993ecd0:hover .HierarchyItem_module_title__c993ecd0 svg {\n  color: var(--highlight);\n  fill: var(--highlight);\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_body__c993ecd0 {\n  display: none;\n  flex: 1 0 auto;\n  padding: 0px 0rem 0px 0.25rem;\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_body__c993ecd0 > [data-elem=component1] {\n  flex: 0 0 1.6rem;\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_body__c993ecd0 > [data-elem=component1] .HierarchyItem_module_tail__c993ecd0 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: center;\n  width: 1.6rem;\n  height: 100%;\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_body__c993ecd0 > [data-elem=component1] .HierarchyItem_module_tail__c993ecd0::after {\n  content: \"\";\n  display: block;\n  margin: auto;\n  width: 1px;\n  flex: 1;\n  background: var(--grey1);\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_body__c993ecd0 > [data-elem=component2] {\n  flex: 1 0 auto;\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_body__c993ecd0 > [data-elem=component2] .HierarchyItem_module_children__c993ecd0 {\n  flex: 1 0 auto;\n}\n.HierarchyItem_module_root__c993ecd0.HierarchyItem_module_open__c993ecd0 > .HierarchyItem_module_header__c993ecd0 .HierarchyItem_module_expand__c993ecd0 .HierarchyItem_module_icon__c993ecd0 {\n  transform: none;\n}\n.HierarchyItem_module_root__c993ecd0.HierarchyItem_module_open__c993ecd0 > .HierarchyItem_module_body__c993ecd0 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: stretch;\n  gap: 0.25rem;\n  height: auto;\n}";
 var modules_6d03d164 = {"root":"HierarchyItem_module_root__c993ecd0","header":"HierarchyItem_module_header__c993ecd0","expand":"HierarchyItem_module_expand__c993ecd0","icon":"HierarchyItem_module_icon__c993ecd0","title":"HierarchyItem_module_title__c993ecd0","body":"HierarchyItem_module_body__c993ecd0","tail":"HierarchyItem_module_tail__c993ecd0","children":"HierarchyItem_module_children__c993ecd0","open":"HierarchyItem_module_open__c993ecd0"};
-n(css$u,{});
+n(css$v,{});
 
 var HierarchyItem = function HierarchyItem(props) {
   var defaultOpen = props.defaultOpen,
@@ -43678,9 +43687,9 @@ HierarchyItem.defaultProps = {
   onClick: function onClick() {}
 };
 
-var css$t = ".HierarchyBrowser_module_root__649d3da2 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  width: 20rem;\n  position: relative;\n}\n.HierarchyBrowser_module_root__649d3da2 .HierarchyBrowser_module_header__649d3da2 {\n  padding: 0.5rem;\n  background: var(--dark-grey);\n  color: var(--white);\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.HierarchyBrowser_module_root__649d3da2 .HierarchyBrowser_module_body__649d3da2 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  overflow: auto;\n}\n.HierarchyBrowser_module_root__649d3da2 .HierarchyBrowser_module_item__649d3da2 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.25rem;\n}\n.HierarchyBrowser_module_root__649d3da2 .HierarchyBrowser_module_item__649d3da2 .HierarchyBrowser_module_itemIcon__649d3da2 {\n  width: 1rem;\n}\n.HierarchyBrowser_module_root__649d3da2::after {\n  position: absolute;\n  right: 0;\n  content: \"\";\n  width: 1px;\n  height: 100%;\n  background: var(--grey4);\n}\n.HierarchyBrowser_module_root__649d3da2.HierarchyBrowser_module_resizable__649d3da2:hover::after {\n  width: 3px;\n  cursor: col-resize;\n}";
+var css$u = ".HierarchyBrowser_module_root__649d3da2 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  width: 20rem;\n  position: relative;\n}\n.HierarchyBrowser_module_root__649d3da2 .HierarchyBrowser_module_header__649d3da2 {\n  padding: 0.5rem;\n  background: var(--dark-grey);\n  color: var(--white);\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.HierarchyBrowser_module_root__649d3da2 .HierarchyBrowser_module_body__649d3da2 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  overflow: auto;\n}\n.HierarchyBrowser_module_root__649d3da2 .HierarchyBrowser_module_item__649d3da2 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.25rem;\n}\n.HierarchyBrowser_module_root__649d3da2 .HierarchyBrowser_module_item__649d3da2 .HierarchyBrowser_module_itemIcon__649d3da2 {\n  width: 1rem;\n}\n.HierarchyBrowser_module_root__649d3da2::after {\n  position: absolute;\n  right: 0;\n  content: \"\";\n  width: 1px;\n  height: 100%;\n  background: var(--grey4);\n}\n.HierarchyBrowser_module_root__649d3da2.HierarchyBrowser_module_resizable__649d3da2:hover::after {\n  width: 3px;\n  cursor: col-resize;\n}";
 var modules_5e29d515 = {"root":"HierarchyBrowser_module_root__649d3da2","header":"HierarchyBrowser_module_header__649d3da2","body":"HierarchyBrowser_module_body__649d3da2","item":"HierarchyBrowser_module_item__649d3da2","item-icon":"HierarchyBrowser_module_itemIcon__649d3da2","resizable":"HierarchyBrowser_module_resizable__649d3da2"};
-n(css$t,{});
+n(css$u,{});
 
 var Title = function Title(props) {
   var item = props.item;
@@ -43802,9 +43811,9 @@ HierarchyBrowser.defaultProps = {
   title: 'Browser'
 };
 
-var css$s = ".BaseModal_module_root__2dd7477e {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  top: 50%;\n  left: 50%;\n  right: auto;\n  bottom: auto;\n  transform: translate(-50%, -50%);\n  max-height: 100%;\n  width: 50%;\n  position: fixed;\n  background: #ffffff;\n  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.13);\n  border-radius: 5px;\n  outline: none;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_body__2dd7477e {\n  overflow-y: scroll;\n  padding: 0 15px;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_header__2dd7477e,\n.BaseModal_module_root__2dd7477e .BaseModal_module_footer__2dd7477e {\n  padding: 1rem;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_header__2dd7477e {\n  font-weight: 500;\n  font-size: 1.375rem;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_footer__2dd7477e {\n  margin-top: auto;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_close__2dd7477e {\n  position: absolute;\n  right: 0.5rem;\n  top: 0.5rem;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_close__2dd7477e .BaseModal_module_icon__2dd7477e {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--black);\n}";
+var css$t = ".BaseModal_module_root__2dd7477e {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  top: 50%;\n  left: 50%;\n  right: auto;\n  bottom: auto;\n  transform: translate(-50%, -50%);\n  max-height: 100%;\n  width: 50%;\n  position: fixed;\n  background: #ffffff;\n  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.13);\n  border-radius: 5px;\n  outline: none;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_body__2dd7477e {\n  overflow-y: scroll;\n  padding: 0 15px;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_header__2dd7477e,\n.BaseModal_module_root__2dd7477e .BaseModal_module_footer__2dd7477e {\n  padding: 1rem;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_header__2dd7477e {\n  font-weight: 500;\n  font-size: 1.375rem;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_footer__2dd7477e {\n  margin-top: auto;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_close__2dd7477e {\n  position: absolute;\n  right: 0.5rem;\n  top: 0.5rem;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_close__2dd7477e .BaseModal_module_icon__2dd7477e {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--black);\n}";
 var modules_f23ae002 = {"root":"BaseModal_module_root__2dd7477e","body":"BaseModal_module_body__2dd7477e","header":"BaseModal_module_header__2dd7477e","footer":"BaseModal_module_footer__2dd7477e","close":"BaseModal_module_close__2dd7477e","icon":"BaseModal_module_icon__2dd7477e"};
-n(css$s,{});
+n(css$t,{});
 
 var BaseModal = function BaseModal(props) {
   var className = props.className,
@@ -43874,9 +43883,9 @@ BaseModal.defaultProps = {
   toggle: function toggle() {}
 };
 
-var css$r = ".Dialog_module_root__2974a020 {\n  padding: 0.25rem 0px;\n  max-height: 14rem;\n  background: #ffffff;\n  border-radius: 0.25rem;\n}\n.Dialog_module_root__2974a020.Dialog_module_sm__2974a020 {\n  width: 21.25rem;\n}\n.Dialog_module_root__2974a020.Dialog_module_md__2974a020 {\n  width: 35rem;\n}\n.Dialog_module_root__2974a020 .Dialog_module_header__2974a020 {\n  font-weight: 600;\n  font-size: 0.875rem;\n  color: var(--black);\n}\n.Dialog_module_root__2974a020 .Dialog_module_footer__2974a020 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-end;\n  align-items: center;\n  gap: 1rem;\n}\n.Dialog_module_root__2974a020 .Dialog_module_footer__2974a020 .Dialog_module_cancel__2974a020[data-elem=base-cell] {\n  display: flex;\n  color: var(--grey1);\n  border-radius: 0.25rem;\n  border: 1px solid var(--grey4);\n}\n.Dialog_module_root__2974a020 .Dialog_module_description__2974a020 {\n  padding: 0.5rem 0px;\n  font-size: 0.75rem;\n}";
+var css$s = ".Dialog_module_root__2974a020 {\n  padding: 0.25rem 0px;\n  max-height: 14rem;\n  background: #ffffff;\n  border-radius: 0.25rem;\n}\n.Dialog_module_root__2974a020.Dialog_module_sm__2974a020 {\n  width: 21.25rem;\n}\n.Dialog_module_root__2974a020.Dialog_module_md__2974a020 {\n  width: 35rem;\n}\n.Dialog_module_root__2974a020 .Dialog_module_header__2974a020 {\n  font-weight: 600;\n  font-size: 0.875rem;\n  color: var(--black);\n}\n.Dialog_module_root__2974a020 .Dialog_module_footer__2974a020 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-end;\n  align-items: center;\n  gap: 1rem;\n}\n.Dialog_module_root__2974a020 .Dialog_module_footer__2974a020 .Dialog_module_cancel__2974a020[data-elem=base-cell] {\n  display: flex;\n  color: var(--grey1);\n  border-radius: 0.25rem;\n  border: 1px solid var(--grey4);\n}\n.Dialog_module_root__2974a020 .Dialog_module_description__2974a020 {\n  padding: 0.5rem 0px;\n  font-size: 0.75rem;\n}";
 var modules_ca1540aa = {"root":"Dialog_module_root__2974a020","sm":"Dialog_module_sm__2974a020","md":"Dialog_module_md__2974a020","header":"Dialog_module_header__2974a020","footer":"Dialog_module_footer__2974a020","cancel":"Dialog_module_cancel__2974a020","description":"Dialog_module_description__2974a020"};
-n(css$r,{});
+n(css$s,{});
 
 /* eslint-disable object-curly-newline */
 var DialogBox = function DialogBox(props) {
@@ -43940,9 +43949,9 @@ DialogBox.defaultProps = {
   size: 'sm'
 };
 
-var css$q = ".PageHeader_module_root__2aae78e0 {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: flex-start;\n  width: 100%;\n  background-color: transparent;\n  gap: 4px;\n}\n.PageHeader_module_root__2aae78e0.PageHeader_module_themeDark__2aae78e0 {\n  color: var(--white);\n}\n.PageHeader_module_root__2aae78e0.PageHeader_module_themeDark__2aae78e0 .PageHeader_module_breadcrumb__2aae78e0 [data-elem=breadcrumb-item-active] {\n  color: var(--white);\n}\n.PageHeader_module_root__2aae78e0.PageHeader_module_themeLight__2aae78e0 {\n  color: var(--dark-grey);\n}\n.PageHeader_module_root__2aae78e0 .PageHeader_module_description__2aae78e0 {\n  color: var(--grey);\n}\n.PageHeader_module_root__2aae78e0 .PageHeader_module_contents__2aae78e0 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  width: 100%;\n}\n.PageHeader_module_root__2aae78e0 .PageHeader_module_contents__2aae78e0 .PageHeader_module_left__2aae78e0,\n.PageHeader_module_root__2aae78e0 .PageHeader_module_contents__2aae78e0 .PageHeader_module_right__2aae78e0 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 10px;\n}\n.PageHeader_module_root__2aae78e0 .PageHeader_module_contents__2aae78e0 .PageHeader_module_left__2aae78e0 .PageHeader_module_title__2aae78e0 {\n  font-size: 2.25rem;\n  font-weight: 600;\n  line-height: 3.375rem;\n}\n.PageHeader_module_root__2aae78e0 .PageHeader_module_contents__2aae78e0 .PageHeader_module_left__2aae78e0 .PageHeader_module_chip__2aae78e0 {\n  font-weight: 500;\n  background: var(--highlight);\n  color: var(--white);\n}\n.PageHeader_module_root__2aae78e0 .PageHeader_module_description__2aae78e0 {\n  font-size: 1rem;\n  font-weight: 400;\n  line-height: 1.5rem;\n}\n\n.PageHeader_module_download__2aae78e0,\n.PageHeader_module_calender__2aae78e0 {\n  width: 1.5rem;\n  height: 1.5rem;\n}";
+var css$r = ".PageHeader_module_root__2aae78e0 {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: flex-start;\n  width: 100%;\n  background-color: transparent;\n  gap: 4px;\n}\n.PageHeader_module_root__2aae78e0.PageHeader_module_themeDark__2aae78e0 {\n  color: var(--white);\n}\n.PageHeader_module_root__2aae78e0.PageHeader_module_themeDark__2aae78e0 .PageHeader_module_breadcrumb__2aae78e0 [data-elem=breadcrumb-item-active] {\n  color: var(--white);\n}\n.PageHeader_module_root__2aae78e0.PageHeader_module_themeLight__2aae78e0 {\n  color: var(--dark-grey);\n}\n.PageHeader_module_root__2aae78e0 .PageHeader_module_description__2aae78e0 {\n  color: var(--grey);\n}\n.PageHeader_module_root__2aae78e0 .PageHeader_module_contents__2aae78e0 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  width: 100%;\n}\n.PageHeader_module_root__2aae78e0 .PageHeader_module_contents__2aae78e0 .PageHeader_module_left__2aae78e0,\n.PageHeader_module_root__2aae78e0 .PageHeader_module_contents__2aae78e0 .PageHeader_module_right__2aae78e0 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 10px;\n}\n.PageHeader_module_root__2aae78e0 .PageHeader_module_contents__2aae78e0 .PageHeader_module_left__2aae78e0 .PageHeader_module_title__2aae78e0 {\n  font-size: 2.25rem;\n  font-weight: 600;\n  line-height: 3.375rem;\n}\n.PageHeader_module_root__2aae78e0 .PageHeader_module_contents__2aae78e0 .PageHeader_module_left__2aae78e0 .PageHeader_module_chip__2aae78e0 {\n  font-weight: 500;\n  background: var(--highlight);\n  color: var(--white);\n}\n.PageHeader_module_root__2aae78e0 .PageHeader_module_description__2aae78e0 {\n  font-size: 1rem;\n  font-weight: 400;\n  line-height: 1.5rem;\n}\n\n.PageHeader_module_download__2aae78e0,\n.PageHeader_module_calender__2aae78e0 {\n  width: 1.5rem;\n  height: 1.5rem;\n}";
 var modules_bdcbeaa5 = {"root":"PageHeader_module_root__2aae78e0","theme-dark":"PageHeader_module_themeDark__2aae78e0","breadcrumb":"PageHeader_module_breadcrumb__2aae78e0","theme-light":"PageHeader_module_themeLight__2aae78e0","description":"PageHeader_module_description__2aae78e0","contents":"PageHeader_module_contents__2aae78e0","left":"PageHeader_module_left__2aae78e0","right":"PageHeader_module_right__2aae78e0","title":"PageHeader_module_title__2aae78e0","chip":"PageHeader_module_chip__2aae78e0","download":"PageHeader_module_download__2aae78e0","calender":"PageHeader_module_calender__2aae78e0"};
-n(css$q,{});
+n(css$r,{});
 
 var PageHeader = function PageHeader(props) {
   var theme = props.theme,
@@ -44084,9 +44093,9 @@ function getPagination(curr, total, limit) {
   return pages;
 }
 
-var css$p = ".Pagination_module_root__8f7084b9 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: stretch;\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n  gap: 0.75rem;\n  padding: 0.625rem 2.125rem;\n  background: var(--dark-grey);\n  margin-top: auto;\n  width: 100%;\n  height: 3.5rem;\n  overflow: auto;\n  transition-property: background-color, color, bottom, width;\n  transition-duration: 0.33s;\n  transition-timing-function: ease-out;\n}\n.Pagination_module_root__8f7084b9::-webkit-scrollbar {\n  display: none;\n}\n.Pagination_module_root__8f7084b9.Pagination_module_floating__8f7084b9 {\n  background: var(--dark-grey-o-85);\n  position: absolute;\n  border-radius: 6.25rem;\n  width: 82%;\n  bottom: 3rem;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9,\n.Pagination_module_root__8f7084b9 .Pagination_module_jumpToPage__8f7084b9,\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 {\n  display: none;\n  flex: 0 1 15%;\n  background-color: transparent;\n  padding: 0;\n  height: 100%;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 {\n    display: flex;\n    flex-direction: row;\n    justify-content: space-between;\n    align-items: center;\n  }\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 > [data-elem=component2] {\n  flex: 0 1 auto;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_rowSwitcherHandle__8f7084b9 {\n  gap: 0.75rem;\n  background-color: var(--grey);\n  padding: 0;\n  border-radius: 0.25rem;\n  height: 100%;\n  width: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_rowSwitcherHandle__8f7084b9 > [data-elem*=component] {\n  overflow: hidden;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_rowSwitcherHandle__8f7084b9 > [data-elem=component2] {\n  display: flex;\n  flex: 0 0 auto;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_rowSwitcherHandle__8f7084b9 > [data-elem=component2]::before {\n  content: \"\";\n  margin: auto;\n  background: var(--white);\n  width: 0.5px;\n  height: 50%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_text__8f7084b9 {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  height: 100%;\n  display: block;\n  padding: 0.5rem;\n  font-size: 0.875rem;\n  font-weight: 500;\n  color: var(--white);\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_dropdown__8f7084b9 {\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_dropdown__8f7084b9 > [data-elem=header] {\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_dropdown__8f7084b9 > [data-elem=header] > [data-elem=select] {\n  height: 2.375rem;\n  max-height: 100%;\n  width: auto;\n  min-width: -webkit-fit-content;\n  min-width: -moz-fit-content;\n  min-width: fit-content;\n  padding: 0.625rem;\n  background-color: var(--grey);\n  border: none;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_dropdown__8f7084b9 > [data-elem=header] > [data-elem=select] > [data-elem=placeholder] {\n  color: var(--white);\n  font-size: 0.875rem;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_dropdown__8f7084b9 > [data-elem=header] > [data-elem=select] > svg {\n  fill: var(--white);\n  width: 0.813rem;\n  height: 0.813rem;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  gap: 1.25rem;\n  flex: 1 1 100%;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 {\n    flex: 1 1 40%;\n  }\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_button__8f7084b9.Pagination_module_disable__8f7084b9 {\n  pointer-events: none;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_button__8f7084b9 [data-elem=title] {\n  color: var(--white);\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_button__8f7084b9 .Pagination_module_icon__8f7084b9 {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_pageSelect__8f7084b9 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  gap: 0.625rem;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_pageSelect__8f7084b9 .Pagination_module_number__8f7084b9 {\n  cursor: pointer;\n  border-radius: 50%;\n  background-color: #e0e0e0;\n  color: var(--black);\n  width: 2.313rem;\n  line-height: 2.313rem;\n  text-align: center;\n  font-size: 1rem;\n  border: 1px solid transparent;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_pageSelect__8f7084b9 .Pagination_module_number__8f7084b9:not([data-active=true]) {\n  display: none;\n}\n@media (min-width: 768px) {\n  .Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_pageSelect__8f7084b9 .Pagination_module_number__8f7084b9:not([data-active=true]) {\n    display: block;\n  }\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_pageSelect__8f7084b9 .Pagination_module_number__8f7084b9:hover {\n  border: 1px solid var(--highlight);\n  color: var(--highlight);\n  background: var(--background);\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_pageSelect__8f7084b9 .Pagination_module_number__8f7084b9.Pagination_module_active__8f7084b9 {\n  background-color: var(--highlight);\n  color: var(--white);\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 {\n  display: none;\n  padding: 0;\n  flex: 0 1 30%;\n  background: transparent;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 {\n    display: flex;\n    flex-direction: row;\n    justify-content: center;\n    align-items: center;\n  }\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 > [data-elem*=component] {\n  width: 100%;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 > [data-elem*=component] > * {\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 > [data-elem*=component] > form {\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  margin-left: auto;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 {\n  width: 100%;\n  background: transparent;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: stretch;\n  gap: 0rem;\n  padding: 0;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 > [data-elem*=component] {\n  overflow: hidden;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_inputbox__8f7084b9 {\n  max-width: 100%;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_inputbox__8f7084b9 > label {\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_inputbox__8f7084b9 > label > [data-elem=base-cell] {\n  border-radius: 0.313rem;\n  background-color: transparent;\n  color: var(--white);\n  border-color: var(--grey1);\n  border-radius: 0.25rem 0 0 0.25rem;\n  height: 100%;\n  width: 10rem;\n  flex: 1;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_inputbox__8f7084b9 > label > [data-elem=base-cell] .Pagination_module_icon__8f7084b9 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--grey1);\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_inputbox__8f7084b9 > label > [data-elem=base-cell] > [data-elem=component2] {\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_inputbox__8f7084b9 > label > [data-elem=base-cell] [data-elem=input] {\n  text-align: center;\n  color: var(--white);\n  background-color: transparent;\n  border: none;\n  height: 100%;\n  width: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_button__8f7084b9 {\n  border-radius: 0rem 0.25rem 0.25rem 0rem;\n  background-color: var(--grey1);\n  padding: 0.75rem 0.5rem;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_button__8f7084b9 .Pagination_module_icon__8f7084b9 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--white);\n  flex-shrink: 0;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_totalData__8f7084b9 {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  display: none;\n  margin: auto;\n  color: var(--white);\n  flex: 0 1 15%;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__8f7084b9 .Pagination_module_totalData__8f7084b9 {\n    display: inline;\n  }\n}\n.Pagination_module_root__8f7084b9.Pagination_module_noTotalData__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 {\n  flex: 0 1 20%;\n}\n.Pagination_module_root__8f7084b9.Pagination_module_noTotalData__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 {\n  flex: 1 1 60%;\n}\n.Pagination_module_root__8f7084b9.Pagination_module_noTotalData__8f7084b9 .Pagination_module_form__8f7084b9 {\n  flex: 0 1 20%;\n}";
+var css$q = ".Pagination_module_root__8f7084b9 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: stretch;\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n  gap: 0.75rem;\n  padding: 0.625rem 2.125rem;\n  background: var(--dark-grey);\n  margin-top: auto;\n  width: 100%;\n  height: 3.5rem;\n  overflow: auto;\n  transition-property: background-color, color, bottom, width;\n  transition-duration: 0.33s;\n  transition-timing-function: ease-out;\n}\n.Pagination_module_root__8f7084b9::-webkit-scrollbar {\n  display: none;\n}\n.Pagination_module_root__8f7084b9.Pagination_module_floating__8f7084b9 {\n  background: var(--dark-grey-o-85);\n  position: absolute;\n  border-radius: 6.25rem;\n  width: 82%;\n  bottom: 3rem;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9,\n.Pagination_module_root__8f7084b9 .Pagination_module_jumpToPage__8f7084b9,\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 {\n  display: none;\n  flex: 0 1 15%;\n  background-color: transparent;\n  padding: 0;\n  height: 100%;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 {\n    display: flex;\n    flex-direction: row;\n    justify-content: space-between;\n    align-items: center;\n  }\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 > [data-elem=component2] {\n  flex: 0 1 auto;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_rowSwitcherHandle__8f7084b9 {\n  gap: 0.75rem;\n  background-color: var(--grey);\n  padding: 0;\n  border-radius: 0.25rem;\n  height: 100%;\n  width: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_rowSwitcherHandle__8f7084b9 > [data-elem*=component] {\n  overflow: hidden;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_rowSwitcherHandle__8f7084b9 > [data-elem=component2] {\n  display: flex;\n  flex: 0 0 auto;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_rowSwitcherHandle__8f7084b9 > [data-elem=component2]::before {\n  content: \"\";\n  margin: auto;\n  background: var(--white);\n  width: 0.5px;\n  height: 50%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_text__8f7084b9 {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  height: 100%;\n  display: block;\n  padding: 0.5rem;\n  font-size: 0.875rem;\n  font-weight: 500;\n  color: var(--white);\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_dropdown__8f7084b9 {\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_dropdown__8f7084b9 > [data-elem=header] {\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_dropdown__8f7084b9 > [data-elem=header] > [data-elem=select] {\n  height: 2.375rem;\n  max-height: 100%;\n  width: auto;\n  min-width: -webkit-fit-content;\n  min-width: -moz-fit-content;\n  min-width: fit-content;\n  padding: 0.625rem;\n  background-color: var(--grey);\n  border: none;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_dropdown__8f7084b9 > [data-elem=header] > [data-elem=select] > [data-elem=placeholder] {\n  color: var(--white);\n  font-size: 0.875rem;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_dropdown__8f7084b9 > [data-elem=header] > [data-elem=select] > svg {\n  fill: var(--white);\n  width: 0.813rem;\n  height: 0.813rem;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  gap: 1.25rem;\n  flex: 1 1 100%;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 {\n    flex: 1 1 40%;\n  }\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_button__8f7084b9.Pagination_module_disable__8f7084b9 {\n  pointer-events: none;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_button__8f7084b9 [data-elem=title] {\n  color: var(--white);\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_button__8f7084b9 .Pagination_module_icon__8f7084b9 {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_pageSelect__8f7084b9 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  gap: 0.625rem;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_pageSelect__8f7084b9 .Pagination_module_number__8f7084b9 {\n  cursor: pointer;\n  border-radius: 50%;\n  background-color: #e0e0e0;\n  color: var(--black);\n  width: 2.313rem;\n  line-height: 2.313rem;\n  text-align: center;\n  font-size: 1rem;\n  border: 1px solid transparent;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_pageSelect__8f7084b9 .Pagination_module_number__8f7084b9:not([data-active=true]) {\n  display: none;\n}\n@media (min-width: 768px) {\n  .Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_pageSelect__8f7084b9 .Pagination_module_number__8f7084b9:not([data-active=true]) {\n    display: block;\n  }\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_pageSelect__8f7084b9 .Pagination_module_number__8f7084b9:hover {\n  border: 1px solid var(--highlight);\n  color: var(--highlight);\n  background: var(--background);\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_pageSelect__8f7084b9 .Pagination_module_number__8f7084b9.Pagination_module_active__8f7084b9 {\n  background-color: var(--highlight);\n  color: var(--white);\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 {\n  display: none;\n  padding: 0;\n  flex: 0 1 30%;\n  background: transparent;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 {\n    display: flex;\n    flex-direction: row;\n    justify-content: center;\n    align-items: center;\n  }\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 > [data-elem*=component] {\n  width: 100%;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 > [data-elem*=component] > * {\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 > [data-elem*=component] > form {\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  margin-left: auto;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 {\n  width: 100%;\n  background: transparent;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: stretch;\n  gap: 0rem;\n  padding: 0;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 > [data-elem*=component] {\n  overflow: hidden;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_inputbox__8f7084b9 {\n  max-width: 100%;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_inputbox__8f7084b9 > label {\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_inputbox__8f7084b9 > label > [data-elem=base-cell] {\n  border-radius: 0.313rem;\n  background-color: transparent;\n  color: var(--white);\n  border-color: var(--grey1);\n  border-radius: 0.25rem 0 0 0.25rem;\n  height: 100%;\n  width: 10rem;\n  flex: 1;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_inputbox__8f7084b9 > label > [data-elem=base-cell] .Pagination_module_icon__8f7084b9 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--grey1);\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_inputbox__8f7084b9 > label > [data-elem=base-cell] > [data-elem=component2] {\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_inputbox__8f7084b9 > label > [data-elem=base-cell] [data-elem=input] {\n  text-align: center;\n  color: var(--white);\n  background-color: transparent;\n  border: none;\n  height: 100%;\n  width: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_button__8f7084b9 {\n  border-radius: 0rem 0.25rem 0.25rem 0rem;\n  background-color: var(--grey1);\n  padding: 0.75rem 0.5rem;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_button__8f7084b9 .Pagination_module_icon__8f7084b9 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--white);\n  flex-shrink: 0;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_totalData__8f7084b9 {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  display: none;\n  margin: auto;\n  color: var(--white);\n  flex: 0 1 15%;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__8f7084b9 .Pagination_module_totalData__8f7084b9 {\n    display: inline;\n  }\n}\n.Pagination_module_root__8f7084b9.Pagination_module_noTotalData__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 {\n  flex: 0 1 20%;\n}\n.Pagination_module_root__8f7084b9.Pagination_module_noTotalData__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 {\n  flex: 1 1 60%;\n}\n.Pagination_module_root__8f7084b9.Pagination_module_noTotalData__8f7084b9 .Pagination_module_form__8f7084b9 {\n  flex: 0 1 20%;\n}";
 var modules_a3d40e77 = {"root":"Pagination_module_root__8f7084b9","floating":"Pagination_module_floating__8f7084b9","row-switcher":"Pagination_module_rowSwitcher__8f7084b9","jump-to-page":"Pagination_module_jumpToPage__8f7084b9","form":"Pagination_module_form__8f7084b9","row-switcher-handle":"Pagination_module_rowSwitcherHandle__8f7084b9","text":"Pagination_module_text__8f7084b9","dropdown":"Pagination_module_dropdown__8f7084b9","page-numbers":"Pagination_module_pageNumbers__8f7084b9","button":"Pagination_module_button__8f7084b9","disable":"Pagination_module_disable__8f7084b9","icon":"Pagination_module_icon__8f7084b9","pageSelect":"Pagination_module_pageSelect__8f7084b9","number":"Pagination_module_number__8f7084b9","active":"Pagination_module_active__8f7084b9","inputbox":"Pagination_module_inputbox__8f7084b9","total-data":"Pagination_module_totalData__8f7084b9","no-total-data":"Pagination_module_noTotalData__8f7084b9"};
-n(css$p,{});
+n(css$q,{});
 
 var dropdownOptions = ['10', '25', '50', '100', '200', '250'];
 var reducer = function reducer(state, _ref) {
@@ -44354,13 +44363,13 @@ Pagination.defaultProps = {
   onChange: function onChange() {}
 };
 
-var css$o = ".Stepper_module_root__781d3116 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n  gap: 1rem;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n  position: relative;\n  z-index: 1;\n  gap: 0.5rem;\n  flex: 1;\n  cursor: default;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116:last-child {\n  flex: 0 1 auto;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116:last-child .Stepper_module_title__781d3116::after {\n  display: none;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_left__781d3116 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  position: relative;\n  width: 1.5rem;\n  height: 1.5rem;\n  background: var(--white);\n  border: 0.063rem solid var(--grey2);\n  border-radius: 2rem;\n  font-size: 1rem;\n  color: var(--grey2);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_left__781d3116 .Stepper_module_icon__781d3116 {\n  width: 0.75rem;\n  height: 0.75rem;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_left__781d3116 .Stepper_module_icon__781d3116.Stepper_module_errorIcon__781d3116 {\n  fill: var(--error);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_left__781d3116 .Stepper_module_icon__781d3116.Stepper_module_completionIcon__781d3116 {\n  fill: var(--highlight);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_left__781d3116 .Stepper_module_icon__781d3116.Stepper_module_completionIcon__781d3116.Stepper_module_active__781d3116 {\n  fill: var(--white);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_left__781d3116 .Stepper_module_progress__781d3116 {\n  position: absolute;\n  z-index: -1;\n  inset: -0.3rem;\n  border-radius: 2rem;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_left__781d3116 .Stepper_module_progress__781d3116::after {\n  position: absolute;\n  content: \"\";\n  inset: 0.15rem;\n  background: white;\n  border-radius: 2rem;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_right__781d3116 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  flex: 1;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_right__781d3116 .Stepper_module_title__781d3116 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n  gap: 0.75rem;\n  width: 100%;\n  font-size: 1rem;\n  color: var(--grey2);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_right__781d3116 .Stepper_module_title__781d3116::after {\n  content: \"\";\n  flex: 1;\n  min-width: 1.5rem;\n  border-bottom: 0.063rem solid;\n  margin-top: 0.75rem;\n  border-bottom-color: var(--grey2);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_right__781d3116 .Stepper_module_description__781d3116 {\n  font-size: 0.75rem;\n  color: var(--grey2);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_active__781d3116 .Stepper_module_left__781d3116 {\n  background: var(--highlight);\n  color: var(--white);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_active__781d3116 .Stepper_module_left__781d3116, .Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_completed__781d3116 .Stepper_module_left__781d3116 {\n  border-color: var(--highlight);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_active__781d3116 .Stepper_module_right__781d3116 .Stepper_module_title__781d3116, .Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_completed__781d3116 .Stepper_module_right__781d3116 .Stepper_module_title__781d3116 {\n  color: var(--black);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_active__781d3116 .Stepper_module_right__781d3116 .Stepper_module_description__781d3116, .Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_completed__781d3116 .Stepper_module_right__781d3116 .Stepper_module_description__781d3116 {\n  color: var(--grey);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_completed__781d3116 .Stepper_module_right__781d3116 .Stepper_module_title__781d3116::after {\n  border-bottom-color: var(--highlight);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_error__781d3116 .Stepper_module_left__781d3116 {\n  background: var(--white);\n  border-color: var(--error);\n  color: var(--error);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_error__781d3116 .Stepper_module_right__781d3116 .Stepper_module_title__781d3116 {\n  color: var(--error);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_error__781d3116 .Stepper_module_right__781d3116 .Stepper_module_description__781d3116 {\n  color: rgba(var(--error), 0.6);\n}";
+var css$p = ".Stepper_module_root__781d3116 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n  gap: 1rem;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n  position: relative;\n  z-index: 1;\n  gap: 0.5rem;\n  flex: 1;\n  cursor: default;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116:last-child {\n  flex: 0 1 auto;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116:last-child .Stepper_module_title__781d3116::after {\n  display: none;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_left__781d3116 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  position: relative;\n  width: 1.5rem;\n  height: 1.5rem;\n  background: var(--white);\n  border: 0.063rem solid var(--grey2);\n  border-radius: 2rem;\n  font-size: 1rem;\n  color: var(--grey2);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_left__781d3116 .Stepper_module_icon__781d3116 {\n  width: 0.75rem;\n  height: 0.75rem;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_left__781d3116 .Stepper_module_icon__781d3116.Stepper_module_errorIcon__781d3116 {\n  fill: var(--error);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_left__781d3116 .Stepper_module_icon__781d3116.Stepper_module_completionIcon__781d3116 {\n  fill: var(--highlight);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_left__781d3116 .Stepper_module_icon__781d3116.Stepper_module_completionIcon__781d3116.Stepper_module_active__781d3116 {\n  fill: var(--white);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_left__781d3116 .Stepper_module_progress__781d3116 {\n  position: absolute;\n  z-index: -1;\n  inset: -0.3rem;\n  border-radius: 2rem;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_left__781d3116 .Stepper_module_progress__781d3116::after {\n  position: absolute;\n  content: \"\";\n  inset: 0.15rem;\n  background: white;\n  border-radius: 2rem;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_right__781d3116 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  flex: 1;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_right__781d3116 .Stepper_module_title__781d3116 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n  gap: 0.75rem;\n  width: 100%;\n  font-size: 1rem;\n  color: var(--grey2);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_right__781d3116 .Stepper_module_title__781d3116::after {\n  content: \"\";\n  flex: 1;\n  min-width: 1.5rem;\n  border-bottom: 0.063rem solid;\n  margin-top: 0.75rem;\n  border-bottom-color: var(--grey2);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_right__781d3116 .Stepper_module_description__781d3116 {\n  font-size: 0.75rem;\n  color: var(--grey2);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_active__781d3116 .Stepper_module_left__781d3116 {\n  background: var(--highlight);\n  color: var(--white);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_active__781d3116 .Stepper_module_left__781d3116, .Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_completed__781d3116 .Stepper_module_left__781d3116 {\n  border-color: var(--highlight);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_active__781d3116 .Stepper_module_right__781d3116 .Stepper_module_title__781d3116, .Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_completed__781d3116 .Stepper_module_right__781d3116 .Stepper_module_title__781d3116 {\n  color: var(--black);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_active__781d3116 .Stepper_module_right__781d3116 .Stepper_module_description__781d3116, .Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_completed__781d3116 .Stepper_module_right__781d3116 .Stepper_module_description__781d3116 {\n  color: var(--grey);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_completed__781d3116 .Stepper_module_right__781d3116 .Stepper_module_title__781d3116::after {\n  border-bottom-color: var(--highlight);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_error__781d3116 .Stepper_module_left__781d3116 {\n  background: var(--white);\n  border-color: var(--error);\n  color: var(--error);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_error__781d3116 .Stepper_module_right__781d3116 .Stepper_module_title__781d3116 {\n  color: var(--error);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_error__781d3116 .Stepper_module_right__781d3116 .Stepper_module_description__781d3116 {\n  color: rgba(var(--error), 0.6);\n}";
 var modules_bbfded44 = {"root":"Stepper_module_root__781d3116","step":"Stepper_module_step__781d3116","title":"Stepper_module_title__781d3116","left":"Stepper_module_left__781d3116","icon":"Stepper_module_icon__781d3116","error-icon":"Stepper_module_errorIcon__781d3116","completion-icon":"Stepper_module_completionIcon__781d3116","active":"Stepper_module_active__781d3116","progress":"Stepper_module_progress__781d3116","right":"Stepper_module_right__781d3116","description":"Stepper_module_description__781d3116","completed":"Stepper_module_completed__781d3116","error":"Stepper_module_error__781d3116"};
-n(css$o,{});
+n(css$p,{});
 
-var css$n = ":root {\n  --white: #ffffff;\n  --black: #000000;\n  --dark-grey: #333333;\n  --dark-grey-o-85: rgba(51, 51, 51, 0.85);\n  --grey: #737373;\n  --grey1: #888888;\n  --grey2: #a6a6a6;\n  --grey3: #bbbbbb;\n  --grey4: #c4c4c4;\n  --grey5: #dddddd;\n  --grey6: #e8e8e8;\n  --grey7: #eeeeee;\n  --grey8: #f2f2f2;\n  --grey9: #eff0f0;\n  --grey10: #f7f7f7;\n  --highlight: #0f62fe;\n  --dark-blue: #001833;\n  --background: #d0e2ff;\n  --banyan-blue: #00037c;\n  --banyan-orange: #ff892a;\n  --banyan-pink: #ff1597;\n  --banyan-gradient: linear-gradient(\n  \t84.71deg,\n  \tvar(--banyan-pink) 0.48%,\n  \tvar(--banyan-orange) 99.57%\n  );\n  --error: #da1e28;\n  --error-bg: #fff1f1;\n  --error-outline: rgba(218, 30, 40, 0.08);\n  --success: #24a148;\n  --success-bg: #defbe6;\n  --success-outline: rgba(36, 161, 72, 0.08);\n  --warning: #f1c21b;\n  --warning-bg: #fff8e1;\n  --warning-outline: rgba(203, 160, 6, 0.08);\n  --info: #0043ce;\n  --info-bg: #edf5ff;\n  --info-outline: #2864db98;\n}";
+var css$o = ":root {\n  --white: #ffffff;\n  --black: #000000;\n  --dark-grey: #333333;\n  --dark-grey-o-85: rgba(51, 51, 51, 0.85);\n  --grey: #737373;\n  --grey1: #888888;\n  --grey2: #a6a6a6;\n  --grey3: #bbbbbb;\n  --grey4: #c4c4c4;\n  --grey5: #dddddd;\n  --grey6: #e8e8e8;\n  --grey7: #eeeeee;\n  --grey8: #f2f2f2;\n  --grey9: #eff0f0;\n  --grey10: #f7f7f7;\n  --highlight: #0f62fe;\n  --dark-blue: #001833;\n  --background: #d0e2ff;\n  --banyan-blue: #00037c;\n  --banyan-orange: #ff892a;\n  --banyan-pink: #ff1597;\n  --banyan-gradient: linear-gradient(\n  \t84.71deg,\n  \tvar(--banyan-pink) 0.48%,\n  \tvar(--banyan-orange) 99.57%\n  );\n  --error: #da1e28;\n  --error-bg: #fff1f1;\n  --error-outline: rgba(218, 30, 40, 0.08);\n  --success: #24a148;\n  --success-bg: #defbe6;\n  --success-outline: rgba(36, 161, 72, 0.08);\n  --warning: #f1c21b;\n  --warning-bg: #fff8e1;\n  --warning-outline: rgba(203, 160, 6, 0.08);\n  --info: #0043ce;\n  --info-bg: #edf5ff;\n  --info-outline: #2864db98;\n}";
 var modules_dd21d9e9 = {"white":"--white","black":"--black","dark-grey":"--dark-grey","dark-grey-o-85":"--dark-grey-o-85","grey":"--grey","grey1":"--grey1","grey2":"--grey2","grey3":"--grey3","grey4":"--grey4","grey5":"--grey5","grey6":"--grey6","grey7":"--grey7","grey8":"--grey8","grey9":"--grey9","grey10":"--grey10","highlight":"--highlight","dark-blue":"--dark-blue","background":"--background","banyan-blue":"--banyan-blue","banyan-orange":"--banyan-orange","banyan-pink":"--banyan-pink","banyan-gradient":"--banyan-gradient","error":"--error","error-bg":"--error-bg","error-outline":"--error-outline","success":"--success","success-bg":"--success-bg","success-outline":"--success-outline","warning":"--warning","warning-bg":"--warning-bg","warning-outline":"--warning-outline","info":"--info","info-bg":"--info-bg","info-outline":"--info-outline"};
-n(css$n,{});
+n(css$o,{});
 
 var COLORS = Object.keys(modules_dd21d9e9).reduce(function (acc, curr) {
   acc[curr] = getCSSVariableValue(modules_dd21d9e9[curr]);
@@ -44472,9 +44481,9 @@ var TableColumn = /*#__PURE__*/_createClass(function TableColumn(_ref) {
   this.sticky = sticky;
 });
 
-var css$m = ".TableCell_module_root__ff5c86cb[data-elem=base-cell] {\n  background: var(--white);\n  border-bottom: 1px solid var(--grey4);\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell] > [data-elem*=component] {\n  overflow: hidden;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell] > [data-elem*=component] {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  flex: 1;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell] > [data-elem*=component] .TableCell_module_cellText__ff5c86cb {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  display: inline-block;\n  width: 100%;\n  font-size: 0.875rem;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb {\n  background: var(--grey6);\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb .TableCell_module_cellText__ff5c86cb {\n  font-weight: 500;\n  color: var(--grey);\n  font-size: 0.75rem;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb > [data-elem=component2] {\n  flex: 0 0 auto;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb > [data-elem=component2] .TableCell_module_cellText__ff5c86cb {\n  width: auto;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb > [data-elem=component3] {\n  flex: 0 0 auto;\n  margin-right: auto;\n  overflow: visible;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb > [data-elem=component3] button.TableCell_module_sort__ff5c86cb {\n  height: auto;\n  background: transparent;\n  padding: 0;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb > [data-elem=component3] .TableCell_module_sortIcon__ff5c86cb {\n  width: 1rem;\n  height: 1rem;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb.TableCell_module_sortDefault__ff5c86cb > [data-elem=component3] {\n  visibility: hidden;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb.TableCell_module_sortDefault__ff5c86cb > [data-elem=component3] .TableCell_module_sortIcon__ff5c86cb {\n  width: 1rem;\n  height: 1rem;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb.TableCell_module_sortAsc__ff5c86cb > [data-elem=component3], .TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb.TableCell_module_sortDesc__ff5c86cb > [data-elem=component3] {\n  visibility: visible;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb.TableCell_module_sortAsc__ff5c86cb > [data-elem=component3] .TableCell_module_sortIcon__ff5c86cb, .TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb.TableCell_module_sortDesc__ff5c86cb > [data-elem=component3] .TableCell_module_sortIcon__ff5c86cb {\n  fill: var(--highlight);\n  width: 1rem;\n  height: 1rem;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb:hover > [data-elem=component3] {\n  visibility: visible;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_bodyCell__ff5c86cb .TableCell_module_cellText__ff5c86cb.TableCell_module_multiLine__ff5c86cb {\n  white-space: normal;\n  display: -webkit-box;\n  -webkit-box-orient: vertical;\n  -webkit-line-clamp: 2;\n  font-size: 0.75rem;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_stickyLeft__ff5c86cb {\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n  position: -webkit-sticky;\n  position: sticky;\n  left: 0;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_stickyRight__ff5c86cb {\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n  position: -webkit-sticky;\n  position: sticky;\n  right: 0;\n}";
+var css$n = ".TableCell_module_root__ff5c86cb[data-elem=base-cell] {\n  background: var(--white);\n  border-bottom: 1px solid var(--grey4);\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell] > [data-elem*=component] {\n  overflow: hidden;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell] > [data-elem*=component] {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  flex: 1;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell] > [data-elem*=component] .TableCell_module_cellText__ff5c86cb {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  display: inline-block;\n  width: 100%;\n  font-size: 0.875rem;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb {\n  background: var(--grey6);\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb .TableCell_module_cellText__ff5c86cb {\n  font-weight: 500;\n  color: var(--grey);\n  font-size: 0.75rem;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb > [data-elem=component2] {\n  flex: 0 0 auto;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb > [data-elem=component2] .TableCell_module_cellText__ff5c86cb {\n  width: auto;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb > [data-elem=component3] {\n  flex: 0 0 auto;\n  margin-right: auto;\n  overflow: visible;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb > [data-elem=component3] button.TableCell_module_sort__ff5c86cb {\n  height: auto;\n  background: transparent;\n  padding: 0;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb > [data-elem=component3] .TableCell_module_sortIcon__ff5c86cb {\n  width: 1rem;\n  height: 1rem;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb.TableCell_module_sortDefault__ff5c86cb > [data-elem=component3] {\n  visibility: hidden;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb.TableCell_module_sortDefault__ff5c86cb > [data-elem=component3] .TableCell_module_sortIcon__ff5c86cb {\n  width: 1rem;\n  height: 1rem;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb.TableCell_module_sortAsc__ff5c86cb > [data-elem=component3], .TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb.TableCell_module_sortDesc__ff5c86cb > [data-elem=component3] {\n  visibility: visible;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb.TableCell_module_sortAsc__ff5c86cb > [data-elem=component3] .TableCell_module_sortIcon__ff5c86cb, .TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb.TableCell_module_sortDesc__ff5c86cb > [data-elem=component3] .TableCell_module_sortIcon__ff5c86cb {\n  fill: var(--highlight);\n  width: 1rem;\n  height: 1rem;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb:hover > [data-elem=component3] {\n  visibility: visible;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_bodyCell__ff5c86cb .TableCell_module_cellText__ff5c86cb.TableCell_module_multiLine__ff5c86cb {\n  white-space: normal;\n  display: -webkit-box;\n  -webkit-box-orient: vertical;\n  -webkit-line-clamp: 2;\n  font-size: 0.75rem;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_stickyLeft__ff5c86cb {\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n  position: -webkit-sticky;\n  position: sticky;\n  left: 0;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_stickyRight__ff5c86cb {\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n  position: -webkit-sticky;\n  position: sticky;\n  right: 0;\n}";
 var modules_7ba8d001 = {"root":"TableCell_module_root__ff5c86cb","cell-text":"TableCell_module_cellText__ff5c86cb","header-cell":"TableCell_module_headerCell__ff5c86cb","sortable":"TableCell_module_sortable__ff5c86cb","sort":"TableCell_module_sort__ff5c86cb","sort-icon":"TableCell_module_sortIcon__ff5c86cb","sort-default":"TableCell_module_sortDefault__ff5c86cb","sort-asc":"TableCell_module_sortAsc__ff5c86cb","sort-desc":"TableCell_module_sortDesc__ff5c86cb","body-cell":"TableCell_module_bodyCell__ff5c86cb","multi-line":"TableCell_module_multiLine__ff5c86cb","sticky-left":"TableCell_module_stickyLeft__ff5c86cb","sticky-right":"TableCell_module_stickyRight__ff5c86cb"};
-n(css$m,{});
+n(css$n,{});
 
 var SORT_ICONS = {
   asc: /*#__PURE__*/jsxRuntime.jsx(Sort, {
@@ -44573,9 +44582,9 @@ TableCell.defaultProps = _objectSpread2(_objectSpread2({}, BaseCell.defaultProps
   onSort: function onSort() {}
 });
 
-var css$l = ".TableRow_module_root__a0ba90a7 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.TableRow_module_root__a0ba90a7.TableRow_module_headerRow__a0ba90a7 {\n  background: var(--grey6);\n}\n.TableRow_module_root__a0ba90a7.TableRow_module_headerRow__a0ba90a7.TableRow_module_expandable__a0ba90a7 > [data-elem=base-cell]:first-child {\n  padding-left: 4.5rem;\n}\n.TableRow_module_root__a0ba90a7.TableRow_module_bodyRow__a0ba90a7 {\n  background: var(--white);\n}\n.TableRow_module_root__a0ba90a7.TableRow_module_bodyRow__a0ba90a7:hover > [data-elem=base-cell] {\n  background: var(--info-bg);\n}\n.TableRow_module_root__a0ba90a7.TableRow_module_bodyRow__a0ba90a7[data-active=true] > [data-elem=base-cell] {\n  background: var(--background);\n}\n.TableRow_module_root__a0ba90a7 > [data-elem=base-cell]:first-child {\n  padding-left: 1rem;\n}\n.TableRow_module_root__a0ba90a7 > [data-elem=base-cell]:last-child {\n  padding-right: 1rem;\n}\n.TableRow_module_root__a0ba90a7 > [data-elem=base-cell].TableRow_module_expandableCell__a0ba90a7 {\n  padding-left: 0.9rem;\n  padding-right: 0.1rem;\n  overflow: visible;\n}\n.TableRow_module_root__a0ba90a7 > [data-elem=base-cell].TableRow_module_expandableCell__a0ba90a7 > [data-elem=component2] {\n  overflow: visible;\n}\n.TableRow_module_root__a0ba90a7 > [data-elem=base-cell].TableRow_module_expandableCell__a0ba90a7 > [data-elem=component2] > [data-elem=text] {\n  overflow: visible;\n}\n.TableRow_module_root__a0ba90a7 .TableRow_module_button__a0ba90a7 .TableRow_module_icon__a0ba90a7 {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.TableRow_module_root__a0ba90a7 .TableRow_module_expanded__a0ba90a7 .TableRow_module_button__a0ba90a7 .TableRow_module_icon__a0ba90a7 {\n  transform: rotate(180deg);\n}";
+var css$m = ".TableRow_module_root__a0ba90a7 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.TableRow_module_root__a0ba90a7.TableRow_module_headerRow__a0ba90a7 {\n  background: var(--grey6);\n}\n.TableRow_module_root__a0ba90a7.TableRow_module_headerRow__a0ba90a7.TableRow_module_expandable__a0ba90a7 > [data-elem=base-cell]:first-child {\n  padding-left: 4.5rem;\n}\n.TableRow_module_root__a0ba90a7.TableRow_module_bodyRow__a0ba90a7 {\n  background: var(--white);\n}\n.TableRow_module_root__a0ba90a7.TableRow_module_bodyRow__a0ba90a7:hover > [data-elem=base-cell] {\n  background: var(--info-bg);\n}\n.TableRow_module_root__a0ba90a7.TableRow_module_bodyRow__a0ba90a7[data-active=true] > [data-elem=base-cell] {\n  background: var(--background);\n}\n.TableRow_module_root__a0ba90a7 > [data-elem=base-cell]:first-child {\n  padding-left: 1rem;\n}\n.TableRow_module_root__a0ba90a7 > [data-elem=base-cell]:last-child {\n  padding-right: 1rem;\n}\n.TableRow_module_root__a0ba90a7 > [data-elem=base-cell].TableRow_module_expandableCell__a0ba90a7 {\n  padding-left: 0.9rem;\n  padding-right: 0.1rem;\n  overflow: visible;\n}\n.TableRow_module_root__a0ba90a7 > [data-elem=base-cell].TableRow_module_expandableCell__a0ba90a7 > [data-elem=component2] {\n  overflow: visible;\n}\n.TableRow_module_root__a0ba90a7 > [data-elem=base-cell].TableRow_module_expandableCell__a0ba90a7 > [data-elem=component2] > [data-elem=text] {\n  overflow: visible;\n}\n.TableRow_module_root__a0ba90a7 .TableRow_module_button__a0ba90a7 .TableRow_module_icon__a0ba90a7 {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.TableRow_module_root__a0ba90a7 .TableRow_module_expanded__a0ba90a7 .TableRow_module_button__a0ba90a7 .TableRow_module_icon__a0ba90a7 {\n  transform: rotate(180deg);\n}";
 var modules_f6618a87 = {"root":"TableRow_module_root__a0ba90a7","header-row":"TableRow_module_headerRow__a0ba90a7","expandable":"TableRow_module_expandable__a0ba90a7","body-row":"TableRow_module_bodyRow__a0ba90a7","expandable-cell":"TableRow_module_expandableCell__a0ba90a7","button":"TableRow_module_button__a0ba90a7","icon":"TableRow_module_icon__a0ba90a7","expanded":"TableRow_module_expanded__a0ba90a7"};
-n(css$l,{});
+n(css$m,{});
 
 var TableRow = /*#__PURE__*/React.forwardRef(function BaseTable(props, ref) {
   var _headerData$map;
@@ -44690,9 +44699,9 @@ TableRow.defaultProps = {
   onSort: function onSort() {}
 };
 
-var css$k = ".TableBody_module_root__77e2990d {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n}";
+var css$l = ".TableBody_module_root__77e2990d {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n}";
 var modules_82c0c387 = {"root":"TableBody_module_root__77e2990d"};
-n(css$k,{});
+n(css$l,{});
 
 /* eslint-disable no-underscore-dangle */
 var TableBody = function TableBody(props) {
@@ -44762,9 +44771,9 @@ TableBody.defaultProps = {
   expandable: null
 };
 
-var css$j = ".TableHeader_module_root__daf69a14 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n}";
+var css$k = ".TableHeader_module_root__daf69a14 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n}";
 var modules_3be98c28 = {"root":"TableHeader_module_root__daf69a14"};
-n(css$j,{});
+n(css$k,{});
 
 /* eslint-disable react/forbid-prop-types */
 var TableHeader = function TableHeader(props) {
@@ -44811,13 +44820,13 @@ TableHeader.defaultProps = {
   onSort: function onSort() {}
 };
 
-var css$i = ".BaseTable_module_root__7a8d241c {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  background: var(--white);\n  overflow: auto;\n}";
+var css$j = ".BaseTable_module_root__7a8d241c {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  background: var(--white);\n  overflow: auto;\n}";
 var modules_f1817c60 = {"root":"BaseTable_module_root__7a8d241c"};
-n(css$i,{});
+n(css$j,{});
 
-var css$h = ".Skeleton_module_root__4aec4b28 {\n  width: 100%;\n  height: 100%;\n  background: var(--grey6);\n  background-image: linear-gradient(to right, var(--grey6) 0%, var(--grey8) 20%, var(--grey6) 40%, var(--grey6) 100%);\n  background-repeat: no-repeat;\n  background-size: cover;\n  display: inline-block;\n  -webkit-animation-duration: 1.25s;\n          animation-duration: 1.25s;\n  animation-fill-mode: forwards;\n  animation-iteration-count: infinite;\n  animation-name: Skeleton_module_shimmer__4aec4b28;\n  animation-timing-function: linear;\n  animation-fill-mode: forwards;\n  animation-iteration-count: infinite;\n  animation-name: Skeleton_module_shimmer__4aec4b28;\n  animation-timing-function: linear;\n  -webkit-animation-fill-mode: forwards;\n  -webkit-animation-iteration-count: infinite;\n  -webkit-animation-name: Skeleton_module_shimmer__4aec4b28;\n  -webkit-animation-timing-function: linear;\n  -webkit-animation-fill-mode: forwards;\n  -webkit-animation-iteration-count: infinite;\n  -webkit-animation-name: Skeleton_module_shimmer__4aec4b28;\n  -webkit-animation-timing-function: linear;\n}\n.Skeleton_module_root__4aec4b28.Skeleton_module_text__4aec4b28 {\n  height: 1.5rem;\n}\n.Skeleton_module_root__4aec4b28.Skeleton_module_circle__4aec4b28 {\n  border-radius: 1.5rem;\n}\n.Skeleton_module_root__4aec4b28.Skeleton_module_rounded__4aec4b28 {\n  border-radius: 0.25rem;\n}\n\n@keyframes Skeleton_module_shimmer__4aec4b28 {\n  0% {\n    background-position: -50rem 0;\n  }\n  100% {\n    background-position: 50rem 0;\n  }\n}\n@-webkit-keyframes Skeleton_module_shimmer__4aec4b28 {\n  0% {\n    background-position: -50rem 0;\n  }\n  100% {\n    background-position: 50rem 0;\n  }\n}";
+var css$i = ".Skeleton_module_root__4aec4b28 {\n  width: 100%;\n  height: 100%;\n  background: var(--grey6);\n  background-image: linear-gradient(to right, var(--grey6) 0%, var(--grey8) 20%, var(--grey6) 40%, var(--grey6) 100%);\n  background-repeat: no-repeat;\n  background-size: cover;\n  display: inline-block;\n  -webkit-animation-duration: 1.25s;\n          animation-duration: 1.25s;\n  animation-fill-mode: forwards;\n  animation-iteration-count: infinite;\n  animation-name: Skeleton_module_shimmer__4aec4b28;\n  animation-timing-function: linear;\n  animation-fill-mode: forwards;\n  animation-iteration-count: infinite;\n  animation-name: Skeleton_module_shimmer__4aec4b28;\n  animation-timing-function: linear;\n  -webkit-animation-fill-mode: forwards;\n  -webkit-animation-iteration-count: infinite;\n  -webkit-animation-name: Skeleton_module_shimmer__4aec4b28;\n  -webkit-animation-timing-function: linear;\n  -webkit-animation-fill-mode: forwards;\n  -webkit-animation-iteration-count: infinite;\n  -webkit-animation-name: Skeleton_module_shimmer__4aec4b28;\n  -webkit-animation-timing-function: linear;\n}\n.Skeleton_module_root__4aec4b28.Skeleton_module_text__4aec4b28 {\n  height: 1.5rem;\n}\n.Skeleton_module_root__4aec4b28.Skeleton_module_circle__4aec4b28 {\n  border-radius: 1.5rem;\n}\n.Skeleton_module_root__4aec4b28.Skeleton_module_rounded__4aec4b28 {\n  border-radius: 0.25rem;\n}\n\n@keyframes Skeleton_module_shimmer__4aec4b28 {\n  0% {\n    background-position: -50rem 0;\n  }\n  100% {\n    background-position: 50rem 0;\n  }\n}\n@-webkit-keyframes Skeleton_module_shimmer__4aec4b28 {\n  0% {\n    background-position: -50rem 0;\n  }\n  100% {\n    background-position: 50rem 0;\n  }\n}";
 var modules_37a5ff73$3 = {"root":"Skeleton_module_root__4aec4b28","shimmer":"Skeleton_module_shimmer__4aec4b28","text":"Skeleton_module_text__4aec4b28","circle":"Skeleton_module_circle__4aec4b28","rounded":"Skeleton_module_rounded__4aec4b28"};
-n(css$h,{});
+n(css$i,{});
 
 var Skeleton = function Skeleton(props) {
   var height = props.height,
@@ -44846,9 +44855,9 @@ Skeleton.defaultProps = {
   variant: 'text'
 };
 
-var css$g = ".Skeleton_module_row__f53f20f3 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  gap: 1rem;\n  margin-bottom: 1rem;\n  padding: 0rem 0.5rem;\n}\n.Skeleton_module_row__f53f20f3.Skeleton_module_header__f53f20f3 {\n  height: 2rem;\n  background: var(--grey4);\n  border-radius: 0.25rem;\n}\n.Skeleton_module_row__f53f20f3.Skeleton_module_header__f53f20f3 .Skeleton_module_th__f53f20f3 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.Skeleton_module_row__f53f20f3.Skeleton_module_header__f53f20f3 .Skeleton_module_th__f53f20f3 .Skeleton_module_skeleton__f53f20f3 {\n  background: var(--grey8);\n}\n.Skeleton_module_row__f53f20f3 > .Skeleton_module_column__f53f20f3 {\n  width: 100%;\n}\n.Skeleton_module_row__f53f20f3 > .Skeleton_module_column__f53f20f3 .Skeleton_module_skeleton__f53f20f3 {\n  height: 1.5rem;\n}";
+var css$h = ".Skeleton_module_row__f53f20f3 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  gap: 1rem;\n  margin-bottom: 1rem;\n  padding: 0rem 0.5rem;\n}\n.Skeleton_module_row__f53f20f3.Skeleton_module_header__f53f20f3 {\n  height: 2rem;\n  background: var(--grey4);\n  border-radius: 0.25rem;\n}\n.Skeleton_module_row__f53f20f3.Skeleton_module_header__f53f20f3 .Skeleton_module_th__f53f20f3 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.Skeleton_module_row__f53f20f3.Skeleton_module_header__f53f20f3 .Skeleton_module_th__f53f20f3 .Skeleton_module_skeleton__f53f20f3 {\n  background: var(--grey8);\n}\n.Skeleton_module_row__f53f20f3 > .Skeleton_module_column__f53f20f3 {\n  width: 100%;\n}\n.Skeleton_module_row__f53f20f3 > .Skeleton_module_column__f53f20f3 .Skeleton_module_skeleton__f53f20f3 {\n  height: 1.5rem;\n}";
 var modules_37a5ff73$2 = {"row":"Skeleton_module_row__f53f20f3","header":"Skeleton_module_header__f53f20f3","th":"Skeleton_module_th__f53f20f3","skeleton":"Skeleton_module_skeleton__f53f20f3","column":"Skeleton_module_column__f53f20f3"};
-n(css$g,{});
+n(css$h,{});
 
 var COLUMNS = _toConsumableArray$1(Array(4).keys()).map(function () {
   return Math.floor(Math.random() * 80 + 20);
@@ -44938,9 +44947,9 @@ BaseTable.defaultProps = {
   onSort: function onSort() {}
 };
 
-var css$f = ".Skeleton_module_root__15c10a9b[data-elem=base-cell] {\n  align-items: flex-start;\n  width: 100%;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component1] {\n  width: auto;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component1] > [data-elem=skeleton] {\n  height: 1.5rem;\n  width: 1.5rem !important;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component2] {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 1rem;\n  flex: 8;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component2] > [data-elem=skeleton] {\n  max-width: 9rem;\n  height: 1.5rem;\n}";
+var css$g = ".Skeleton_module_root__15c10a9b[data-elem=base-cell] {\n  align-items: flex-start;\n  width: 100%;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component1] {\n  width: auto;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component1] > [data-elem=skeleton] {\n  height: 1.5rem;\n  width: 1.5rem !important;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component2] {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 1rem;\n  flex: 8;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component2] > [data-elem=skeleton] {\n  max-width: 9rem;\n  height: 1.5rem;\n}";
 var modules_37a5ff73$1 = {"root":"Skeleton_module_root__15c10a9b"};
-n(css$f,{});
+n(css$g,{});
 
 var CHIPS = _toConsumableArray$1(Array(5).keys());
 var TableChipsSkeleton = function TableChipsSkeleton() {
@@ -44958,9 +44967,9 @@ var TableChipsSkeleton = function TableChipsSkeleton() {
   });
 };
 
-var css$e = ".TableChips_module_root__ecaf76f3[data-elem=base-cell] {\n  padding: 0.5rem 1.5rem;\n  width: 100%;\n  background: var(--grey6);\n  border-radius: 0.25rem 0.25rem 0 0;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component1] .TableChips_module_back__ecaf76f3 {\n  height: 2rem;\n  width: 2rem;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component1] .TableChips_module_back__ecaf76f3 [data-elem=component1] .TableChips_module_icon__ecaf76f3 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--white);\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] {\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  height: 100%;\n  gap: 0.5rem;\n  overflow: auto hidden;\n  flex: 1;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2]::-webkit-scrollbar {\n  display: none;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 {\n  background: var(--grey8);\n  border: 1px solid var(--grey4);\n  padding: 0.344rem 0.25rem;\n  height: 100%;\n  cursor: default;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 .TableChips_module_chipIcon__ecaf76f3 {\n  width: 1rem;\n  height: 1rem;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 > [data-elem=component2] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  gap: 0.25rem;\n  height: 100%;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3 {\n  height: 100%;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3:not(:disabled) {\n  cursor: pointer;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3:disabled {\n  cursor: default;\n  color: var(--info);\n  border-color: var(--info-outline);\n  background: var(--info-bg);\n  filter: none;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3 > [data-elem=component2] > [data-elem=title] {\n  color: var(--dark-grey);\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3 .TableChips_module_icon__ecaf76f3 {\n  width: 0.875rem;\n  height: 0.875rem;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 > [data-elem=component3] {\n  height: 100%;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3:hover {\n  border-color: var(--highlight);\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3:hover > [data-elem=component2] .TableChips_module_label__ecaf76f3 {\n  color: var(--highlight);\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3:hover > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3 {\n  background: var(--background);\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3:hover > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3 > [data-elem=component2] > [data-elem=title] {\n  color: var(--highlight);\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3:hover > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3 .TableChips_module_icon__ecaf76f3 {\n  width: 0.875rem;\n  height: 0.875rem;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component3] {\n  height: 100%;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component3] .TableChips_module_clear__ecaf76f3 {\n  height: 100%;\n}";
+var css$f = ".TableChips_module_root__ecaf76f3[data-elem=base-cell] {\n  padding: 0.5rem 1.5rem;\n  width: 100%;\n  background: var(--grey6);\n  border-radius: 0.25rem 0.25rem 0 0;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component1] .TableChips_module_back__ecaf76f3 {\n  height: 2rem;\n  width: 2rem;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component1] .TableChips_module_back__ecaf76f3 [data-elem=component1] .TableChips_module_icon__ecaf76f3 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--white);\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] {\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  height: 100%;\n  gap: 0.5rem;\n  overflow: auto hidden;\n  flex: 1;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2]::-webkit-scrollbar {\n  display: none;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 {\n  background: var(--grey8);\n  border: 1px solid var(--grey4);\n  padding: 0.344rem 0.25rem;\n  height: 100%;\n  cursor: default;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 .TableChips_module_chipIcon__ecaf76f3 {\n  width: 1rem;\n  height: 1rem;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 > [data-elem=component2] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  gap: 0.25rem;\n  height: 100%;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3 {\n  height: 100%;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3:not(:disabled) {\n  cursor: pointer;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3:disabled {\n  cursor: default;\n  color: var(--info);\n  border-color: var(--info-outline);\n  background: var(--info-bg);\n  filter: none;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3 > [data-elem=component2] > [data-elem=title] {\n  color: var(--dark-grey);\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3 .TableChips_module_icon__ecaf76f3 {\n  width: 0.875rem;\n  height: 0.875rem;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 > [data-elem=component3] {\n  height: 100%;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3:hover {\n  border-color: var(--highlight);\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3:hover > [data-elem=component2] .TableChips_module_label__ecaf76f3 {\n  color: var(--highlight);\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3:hover > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3 {\n  background: var(--background);\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3:hover > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3 > [data-elem=component2] > [data-elem=title] {\n  color: var(--highlight);\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3:hover > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3 .TableChips_module_icon__ecaf76f3 {\n  width: 0.875rem;\n  height: 0.875rem;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component3] {\n  height: 100%;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component3] .TableChips_module_clear__ecaf76f3 {\n  height: 100%;\n}";
 var modules_016d9b3e = {"root":"TableChips_module_root__ecaf76f3","back":"TableChips_module_back__ecaf76f3","icon":"TableChips_module_icon__ecaf76f3","chip-parent":"TableChips_module_chipParent__ecaf76f3","chip-icon":"TableChips_module_chipIcon__ecaf76f3","chip-child":"TableChips_module_chipChild__ecaf76f3","label":"TableChips_module_label__ecaf76f3","clear":"TableChips_module_clear__ecaf76f3"};
-n(css$e,{});
+n(css$f,{});
 
 var TableChip$1 = function TableChip(props) {
   var icon = props.icon,
@@ -45131,9 +45140,9 @@ var TableChip = /*#__PURE__*/_createClass(function TableChip(_ref) {
   this.rightComponent = rightComponent;
 });
 
-var css$d = ".Popover_module_root__265e51dc {\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n  background-color: var(--white);\n  padding: 1rem;\n  border-radius: 0.25rem;\n}";
+var css$e = ".Popover_module_root__265e51dc {\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n  background-color: var(--white);\n  padding: 1rem;\n  border-radius: 0.25rem;\n}";
 var modules_dfc4608f = {"root":"Popover_module_root__265e51dc"};
-n(css$d,{});
+n(css$e,{});
 
 var Popover = function Popover(props) {
   var children = props.children,
@@ -45209,9 +45218,9 @@ Popover.defaultProps = {
   onClose: function onClose() {}
 };
 
-var css$c = ".Columns_module_popover__078e5868 {\n  height: 32rem;\n  padding: 0;\n  overflow: hidden;\n}\n\n.Columns_module_root__078e5868 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  position: relative;\n  height: 100%;\n  min-width: 18rem;\n  max-width: 100%;\n}\n.Columns_module_root__078e5868 .Columns_module_header__078e5868 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  border-bottom: 1px solid var(--grey4);\n  padding: 0.75rem 2.5rem;\n}\n.Columns_module_root__078e5868 .Columns_module_header__078e5868 > [data-elem=component1] {\n  font-weight: 500;\n}\n.Columns_module_root__078e5868 .Columns_module_header__078e5868 > [data-elem=component2] .Columns_module_close__078e5868 {\n  height: auto;\n  padding: 0;\n}\n.Columns_module_root__078e5868 .Columns_module_header__078e5868 > [data-elem=component2] .Columns_module_close__078e5868 .Columns_module_icon__078e5868 {\n  width: 1rem;\n  height: 1rem;\n}\n.Columns_module_root__078e5868 .Columns_module_body__078e5868 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  gap: 0.5rem;\n  padding: 0.75rem 2.5rem;\n  max-height: 28rem;\n  overflow-y: auto;\n  flex: 1 1 auto;\n}\n.Columns_module_root__078e5868 .Columns_module_body__078e5868 .Columns_module_search__078e5868 {\n  position: -webkit-sticky;\n  position: sticky;\n  top: 0;\n}\n.Columns_module_root__078e5868 .Columns_module_body__078e5868 .Columns_module_columns__078e5868 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  gap: 0.5rem;\n  overflow-y: auto;\n}\n.Columns_module_root__078e5868 .Columns_module_body__078e5868 .Columns_module_columns__078e5868 .Columns_module_item__078e5868 {\n  height: 3rem;\n}\n.Columns_module_root__078e5868 .Columns_module_body__078e5868 .Columns_module_columns__078e5868 .Columns_module_item__078e5868 > [data-elem=title] {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n}\n.Columns_module_root__078e5868 .Columns_module_footer__078e5868 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-end;\n  align-items: center;\n  height: auto;\n  margin-top: auto;\n  padding: 0.5rem 2.5rem;\n  border-top: 1px solid var(--grey4);\n}\n.Columns_module_root__078e5868 .Columns_module_footer__078e5868 button.Columns_module_expand__078e5868 {\n  height: auto;\n  background: var(--grey8);\n  border: 1px solid var(--grey4);\n  color: var(--black);\n}\n.Columns_module_root__078e5868 .Columns_module_footer__078e5868 button.Columns_module_expand__078e5868 .Columns_module_icon__078e5868 {\n  width: 1.5rem;\n  height: 1.5rem;\n  transform: rotate(180deg);\n}\n.Columns_module_root__078e5868.Columns_module_expanded__078e5868 .Columns_module_body__078e5868 {\n  flex: 0 1 auto;\n}\n.Columns_module_root__078e5868.Columns_module_expanded__078e5868 .Columns_module_body__078e5868 .Columns_module_columns__078e5868 {\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n}\n.Columns_module_root__078e5868.Columns_module_expanded__078e5868 .Columns_module_body__078e5868 .Columns_module_columns__078e5868 .Columns_module_item__078e5868 {\n  overflow: hidden;\n}\n.Columns_module_root__078e5868.Columns_module_expanded__078e5868 .Columns_module_footer__078e5868 button.Columns_module_expand__078e5868 .Columns_module_icon__078e5868 {\n  transform: none;\n}";
+var css$d = ".Columns_module_popover__078e5868 {\n  height: 32rem;\n  padding: 0;\n  overflow: hidden;\n}\n\n.Columns_module_root__078e5868 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  position: relative;\n  height: 100%;\n  min-width: 18rem;\n  max-width: 100%;\n}\n.Columns_module_root__078e5868 .Columns_module_header__078e5868 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  border-bottom: 1px solid var(--grey4);\n  padding: 0.75rem 2.5rem;\n}\n.Columns_module_root__078e5868 .Columns_module_header__078e5868 > [data-elem=component1] {\n  font-weight: 500;\n}\n.Columns_module_root__078e5868 .Columns_module_header__078e5868 > [data-elem=component2] .Columns_module_close__078e5868 {\n  height: auto;\n  padding: 0;\n}\n.Columns_module_root__078e5868 .Columns_module_header__078e5868 > [data-elem=component2] .Columns_module_close__078e5868 .Columns_module_icon__078e5868 {\n  width: 1rem;\n  height: 1rem;\n}\n.Columns_module_root__078e5868 .Columns_module_body__078e5868 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  gap: 0.5rem;\n  padding: 0.75rem 2.5rem;\n  max-height: 28rem;\n  overflow-y: auto;\n  flex: 1 1 auto;\n}\n.Columns_module_root__078e5868 .Columns_module_body__078e5868 .Columns_module_search__078e5868 {\n  position: -webkit-sticky;\n  position: sticky;\n  top: 0;\n}\n.Columns_module_root__078e5868 .Columns_module_body__078e5868 .Columns_module_columns__078e5868 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  gap: 0.5rem;\n  overflow-y: auto;\n}\n.Columns_module_root__078e5868 .Columns_module_body__078e5868 .Columns_module_columns__078e5868 .Columns_module_item__078e5868 {\n  height: 3rem;\n}\n.Columns_module_root__078e5868 .Columns_module_body__078e5868 .Columns_module_columns__078e5868 .Columns_module_item__078e5868 > [data-elem=title] {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n}\n.Columns_module_root__078e5868 .Columns_module_footer__078e5868 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-end;\n  align-items: center;\n  height: auto;\n  margin-top: auto;\n  padding: 0.5rem 2.5rem;\n  border-top: 1px solid var(--grey4);\n}\n.Columns_module_root__078e5868 .Columns_module_footer__078e5868 button.Columns_module_expand__078e5868 {\n  height: auto;\n  background: var(--grey8);\n  border: 1px solid var(--grey4);\n  color: var(--black);\n}\n.Columns_module_root__078e5868 .Columns_module_footer__078e5868 button.Columns_module_expand__078e5868 .Columns_module_icon__078e5868 {\n  width: 1.5rem;\n  height: 1.5rem;\n  transform: rotate(180deg);\n}\n.Columns_module_root__078e5868.Columns_module_expanded__078e5868 .Columns_module_body__078e5868 {\n  flex: 0 1 auto;\n}\n.Columns_module_root__078e5868.Columns_module_expanded__078e5868 .Columns_module_body__078e5868 .Columns_module_columns__078e5868 {\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n}\n.Columns_module_root__078e5868.Columns_module_expanded__078e5868 .Columns_module_body__078e5868 .Columns_module_columns__078e5868 .Columns_module_item__078e5868 {\n  overflow: hidden;\n}\n.Columns_module_root__078e5868.Columns_module_expanded__078e5868 .Columns_module_footer__078e5868 button.Columns_module_expand__078e5868 .Columns_module_icon__078e5868 {\n  transform: none;\n}";
 var modules_48c02c99 = {"popover":"Columns_module_popover__078e5868","root":"Columns_module_root__078e5868","header":"Columns_module_header__078e5868","close":"Columns_module_close__078e5868","icon":"Columns_module_icon__078e5868","body":"Columns_module_body__078e5868","search":"Columns_module_search__078e5868","columns":"Columns_module_columns__078e5868","item":"Columns_module_item__078e5868","footer":"Columns_module_footer__078e5868","expand":"Columns_module_expand__078e5868","expanded":"Columns_module_expanded__078e5868"};
-n(css$c,{});
+n(css$d,{});
 
 var Columns = function Columns(props) {
   var open = props.open,
@@ -45316,13 +45325,13 @@ var Columns = function Columns(props) {
   });
 };
 
-var css$b = ".TableFilters_module_root__3c1e35fb[data-elem=base-cell] {\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n  overflow-x: auto;\n  padding: 0.5rem;\n  gap: 1.25rem;\n  width: 100%;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell]::-webkit-scrollbar {\n  display: none;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] .TableFilters_module_icon__3c1e35fb {\n  width: 1.5rem;\n  height: 1.5rem;\n  flex-shrink: 0;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] button.TableFilters_module_iconButton__3c1e35fb {\n  height: 100%;\n  background: var(--grey8);\n  border: 1px solid var(--grey4);\n  color: var(--black);\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem*=component] {\n  height: 100%;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] .TableFilters_module_left__3c1e35fb,\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] .TableFilters_module_center__3c1e35fb,\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] .TableFilters_module_right__3c1e35fb {\n  height: 100%;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem=component1] .TableFilters_module_left__3c1e35fb {\n  gap: 1rem;\n  background: var(--grey8);\n  border: 1px solid var(--grey4);\n  color: var(--black);\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem=component1] .TableFilters_module_left__3c1e35fb [data-elem=left] {\n  gap: 1rem;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem=component1] .TableFilters_module_left__3c1e35fb .TableFilters_module_icon__3c1e35fb {\n  fill: var(--black);\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem=component1] .TableFilters_module_left__3c1e35fb .TableFilters_module_filterValue__3c1e35fb {\n  color: var(--white);\n  background: var(--highlight);\n  padding: 0.125rem 0.5rem;\n  border-radius: 50%;\n  font-size: 0.813rem;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem=component2] {\n  flex: 1;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem=component2] .TableFilters_module_center__3c1e35fb {\n  width: 100%;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem=component2] .TableFilters_module_center__3c1e35fb [data-elem=base-cell] {\n  border-color: var(--grey4);\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem=component2] .TableFilters_module_center__3c1e35fb .TableFilters_module_icon__3c1e35fb {\n  width: 1.25rem;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] .TableFilters_module_right__3c1e35fb {\n  width: auto;\n  padding: 0;\n  min-width: 0rem;\n  gap: 0.5rem;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] .TableFilters_module_right__3c1e35fb > [data-elem*=component] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  height: 100%;\n}";
+var css$c = ".TableFilters_module_root__3c1e35fb[data-elem=base-cell] {\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n  overflow-x: auto;\n  padding: 0.5rem;\n  gap: 1.25rem;\n  width: 100%;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell]::-webkit-scrollbar {\n  display: none;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] .TableFilters_module_icon__3c1e35fb {\n  width: 1.5rem;\n  height: 1.5rem;\n  flex-shrink: 0;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] button.TableFilters_module_iconButton__3c1e35fb {\n  height: 100%;\n  background: var(--grey8);\n  border: 1px solid var(--grey4);\n  color: var(--black);\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem*=component] {\n  height: 100%;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] .TableFilters_module_left__3c1e35fb,\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] .TableFilters_module_center__3c1e35fb,\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] .TableFilters_module_right__3c1e35fb {\n  height: 100%;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem=component1] .TableFilters_module_left__3c1e35fb {\n  gap: 1rem;\n  background: var(--grey8);\n  border: 1px solid var(--grey4);\n  color: var(--black);\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem=component1] .TableFilters_module_left__3c1e35fb [data-elem=left] {\n  gap: 1rem;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem=component1] .TableFilters_module_left__3c1e35fb .TableFilters_module_icon__3c1e35fb {\n  fill: var(--black);\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem=component1] .TableFilters_module_left__3c1e35fb .TableFilters_module_filterValue__3c1e35fb {\n  color: var(--white);\n  background: var(--highlight);\n  padding: 0.125rem 0.5rem;\n  border-radius: 50%;\n  font-size: 0.813rem;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem=component2] {\n  flex: 1;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem=component2] .TableFilters_module_center__3c1e35fb {\n  width: 100%;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem=component2] .TableFilters_module_center__3c1e35fb [data-elem=base-cell] {\n  border-color: var(--grey4);\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem=component2] .TableFilters_module_center__3c1e35fb .TableFilters_module_icon__3c1e35fb {\n  width: 1.25rem;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] .TableFilters_module_right__3c1e35fb {\n  width: auto;\n  padding: 0;\n  min-width: 0rem;\n  gap: 0.5rem;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] .TableFilters_module_right__3c1e35fb > [data-elem*=component] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  height: 100%;\n}";
 var modules_a0fe63f9 = {"root":"TableFilters_module_root__3c1e35fb","icon":"TableFilters_module_icon__3c1e35fb","icon-button":"TableFilters_module_iconButton__3c1e35fb","left":"TableFilters_module_left__3c1e35fb","center":"TableFilters_module_center__3c1e35fb","right":"TableFilters_module_right__3c1e35fb","filter-value":"TableFilters_module_filterValue__3c1e35fb"};
-n(css$b,{});
+n(css$c,{});
 
-var css$a = ".Skeleton_module_root__bdc934d4[data-elem=base-cell] {\n  width: 100%;\n  gap: 1.25rem;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component1] {\n  flex: 1;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component2] {\n  flex: 6;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component3] {\n  flex: 3;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component3] > [data-elem=base-cell] {\n  padding: 0;\n  align-items: flex-start;\n  height: auto;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component3] > [data-elem=base-cell] > [data-elem*=component] {\n  flex: 1;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component3] > [data-elem=base-cell] > [data-elem*=component] > [data-elem=skeleton] {\n  height: 1.5rem;\n}";
+var css$b = ".Skeleton_module_root__bdc934d4[data-elem=base-cell] {\n  width: 100%;\n  gap: 1.25rem;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component1] {\n  flex: 1;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component2] {\n  flex: 6;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component3] {\n  flex: 3;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component3] > [data-elem=base-cell] {\n  padding: 0;\n  align-items: flex-start;\n  height: auto;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component3] > [data-elem=base-cell] > [data-elem*=component] {\n  flex: 1;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component3] > [data-elem=base-cell] > [data-elem*=component] > [data-elem=skeleton] {\n  height: 1.5rem;\n}";
 var modules_37a5ff73 = {"root":"Skeleton_module_root__bdc934d4"};
-n(css$a,{});
+n(css$b,{});
 
 var TableFiltersSkeleton = function TableFiltersSkeleton() {
   return /*#__PURE__*/jsxRuntime.jsx(BaseCell, {
@@ -45507,15 +45516,15 @@ TableFilters.defaultProps = {
   }
 };
 
-var css$9 = ".Table_module_root__d17cb64f {\n  position: relative;\n  border-style: solid;\n  border-color: var(--grey4);\n  border-width: 1px 1px 0px 1px;\n  border-radius: 0.25rem;\n  width: 100%;\n  max-width: 100%;\n  height: 100%;\n  overflow: hidden;\n}\n.Table_module_root__d17cb64f .Table_module_table__d17cb64f {\n  height: calc(100% - 6rem);\n  padding-bottom: 3.5rem;\n}\n.Table_module_root__d17cb64f .Table_module_pagination__d17cb64f {\n  position: absolute;\n  bottom: 0;\n  left: 50%;\n  transform: translateX(-50%);\n}\n.Table_module_root__d17cb64f .Table_module_pagination__d17cb64f.Table_module_floating__d17cb64f {\n  bottom: 1rem;\n}\n.Table_module_root__d17cb64f .Table_module_chips__d17cb64f,\n.Table_module_root__d17cb64f .Table_module_filters__d17cb64f,\n.Table_module_root__d17cb64f .Table_module_table__d17cb64f > [data-elem=table-header] {\n  position: -webkit-sticky;\n  position: sticky;\n  z-index: 1;\n  top: 0;\n}";
+var css$a = ".Table_module_root__d17cb64f {\n  position: relative;\n  border-style: solid;\n  border-color: var(--grey4);\n  border-width: 1px 1px 0px 1px;\n  border-radius: 0.25rem;\n  width: 100%;\n  max-width: 100%;\n  height: 100%;\n  overflow: hidden;\n}\n.Table_module_root__d17cb64f .Table_module_table__d17cb64f {\n  height: calc(100% - 6rem);\n  padding-bottom: 3.5rem;\n}\n.Table_module_root__d17cb64f .Table_module_pagination__d17cb64f {\n  position: absolute;\n  bottom: 0;\n  left: 50%;\n  transform: translateX(-50%);\n}\n.Table_module_root__d17cb64f .Table_module_pagination__d17cb64f.Table_module_floating__d17cb64f {\n  bottom: 1rem;\n}\n.Table_module_root__d17cb64f .Table_module_chips__d17cb64f,\n.Table_module_root__d17cb64f .Table_module_filters__d17cb64f,\n.Table_module_root__d17cb64f .Table_module_table__d17cb64f > [data-elem=table-header] {\n  position: -webkit-sticky;\n  position: sticky;\n  z-index: 1;\n  top: 0;\n}";
 var modules_2e8406c7 = {"root":"Table_module_root__d17cb64f","table":"Table_module_table__d17cb64f","pagination":"Table_module_pagination__d17cb64f","floating":"Table_module_floating__d17cb64f","chips":"Table_module_chips__d17cb64f","filters":"Table_module_filters__d17cb64f"};
-n(css$9,{});
+n(css$a,{});
 
 var INTERSECTION = 1;
 var STEP = 0.05;
 var THRESHOLD = [];
-for (var i = 0; i < INTERSECTION; i += STEP) {
-  THRESHOLD.push(i);
+for (var i$1 = 0; i$1 < INTERSECTION; i$1 += STEP) {
+  THRESHOLD.push(i$1);
 }
 var Table = function Table(props) {
   var _chipsData$chips;
@@ -45693,9 +45702,9 @@ Table.defaultProps = {
   onSort: function onSort() {}
 };
 
-var css$8 = ".Tabs_module_root__83feec3e {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e {\n  padding: 0.75rem;\n  gap: 0.75rem;\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e > [data-elem=component1] > .Tabs_module_icon__83feec3e,\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e > [data-elem=component3] > .Tabs_module_icon__83feec3e {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--black);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e > [data-elem=component2] {\n  color: var(--black);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e.Tabs_module_active__83feec3e {\n  border-bottom: 2px solid var(--highlight);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e.Tabs_module_active__83feec3e > [data-elem=component1] > .Tabs_module_icon__83feec3e,\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e.Tabs_module_active__83feec3e > [data-elem=component3] > .Tabs_module_icon__83feec3e {\n  fill: var(--highlight);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e.Tabs_module_active__83feec3e > [data-elem=component2] {\n  color: var(--highlight);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e:hover {\n  background: var(--info-bg);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e:hover > [data-elem=component1] > .Tabs_module_icon__83feec3e,\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e:hover > [data-elem=component3] > .Tabs_module_icon__83feec3e {\n  fill: var(--highlight);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e:hover > [data-elem=component2] {\n  color: var(--highlight);\n}";
+var css$9 = ".Tabs_module_root__83feec3e {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e {\n  padding: 0.75rem;\n  gap: 0.75rem;\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e > [data-elem=component1] > .Tabs_module_icon__83feec3e,\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e > [data-elem=component3] > .Tabs_module_icon__83feec3e {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--black);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e > [data-elem=component2] {\n  color: var(--black);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e.Tabs_module_active__83feec3e {\n  border-bottom: 2px solid var(--highlight);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e.Tabs_module_active__83feec3e > [data-elem=component1] > .Tabs_module_icon__83feec3e,\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e.Tabs_module_active__83feec3e > [data-elem=component3] > .Tabs_module_icon__83feec3e {\n  fill: var(--highlight);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e.Tabs_module_active__83feec3e > [data-elem=component2] {\n  color: var(--highlight);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e:hover {\n  background: var(--info-bg);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e:hover > [data-elem=component1] > .Tabs_module_icon__83feec3e,\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e:hover > [data-elem=component3] > .Tabs_module_icon__83feec3e {\n  fill: var(--highlight);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e:hover > [data-elem=component2] {\n  color: var(--highlight);\n}";
 var modules_78ab5066 = {"root":"Tabs_module_root__83feec3e","tab":"Tabs_module_tab__83feec3e","icon":"Tabs_module_icon__83feec3e","active":"Tabs_module_active__83feec3e"};
-n(css$8,{});
+n(css$9,{});
 
 var Tabs = function Tabs(props) {
   var tabs = props.tabs,
@@ -45768,9 +45777,9 @@ Tabs.defaultProps = {
 
 function o(f){return r=>{f.forEach(n=>{typeof n=="function"?n(r):n!=null&&(n.current=r);});}}
 
-var css$7 = ".Tooltip_module_tooltip__1cb07177 {\n  text-align: center;\n  position: fixed;\n  border-radius: 0.25rem;\n  min-width: auto;\n  max-width: 12rem;\n  padding: 0.375rem;\n  font-size: 0.875rem;\n  font-family: sans-serif;\n  line-height: 1;\n}\n.Tooltip_module_tooltip__1cb07177.Tooltip_module_light__1cb07177 {\n  color: var(--black);\n  background: var(--grey7);\n  border-color: var(--black);\n}\n.Tooltip_module_tooltip__1cb07177.Tooltip_module_light__1cb07177 .Tooltip_module_arrow__1cb07177 {\n  background: var(--grey7);\n}\n.Tooltip_module_tooltip__1cb07177.Tooltip_module_dark__1cb07177 {\n  color: var(--white);\n  background: var(--black);\n  border-color: var(--white);\n}\n.Tooltip_module_tooltip__1cb07177.Tooltip_module_dark__1cb07177 .Tooltip_module_arrow__1cb07177 {\n  background: var(--black);\n}\n.Tooltip_module_tooltip__1cb07177 .Tooltip_module_arrow__1cb07177 {\n  position: absolute;\n  width: 1rem;\n  height: 1rem;\n  z-index: -1;\n  pointer-events: none;\n  transform: rotate(45deg);\n}";
+var css$8 = ".Tooltip_module_tooltip__1cb07177 {\n  text-align: center;\n  position: fixed;\n  border-radius: 0.25rem;\n  min-width: auto;\n  max-width: 12rem;\n  padding: 0.375rem;\n  font-size: 0.875rem;\n  font-family: sans-serif;\n  line-height: 1;\n}\n.Tooltip_module_tooltip__1cb07177.Tooltip_module_light__1cb07177 {\n  color: var(--black);\n  background: var(--grey7);\n  border-color: var(--black);\n}\n.Tooltip_module_tooltip__1cb07177.Tooltip_module_light__1cb07177 .Tooltip_module_arrow__1cb07177 {\n  background: var(--grey7);\n}\n.Tooltip_module_tooltip__1cb07177.Tooltip_module_dark__1cb07177 {\n  color: var(--white);\n  background: var(--black);\n  border-color: var(--white);\n}\n.Tooltip_module_tooltip__1cb07177.Tooltip_module_dark__1cb07177 .Tooltip_module_arrow__1cb07177 {\n  background: var(--black);\n}\n.Tooltip_module_tooltip__1cb07177 .Tooltip_module_arrow__1cb07177 {\n  position: absolute;\n  width: 1rem;\n  height: 1rem;\n  z-index: -1;\n  pointer-events: none;\n  transform: rotate(45deg);\n}";
 var modules_e4619b04 = {"tooltip":"Tooltip_module_tooltip__1cb07177","light":"Tooltip_module_light__1cb07177","arrow":"Tooltip_module_arrow__1cb07177","dark":"Tooltip_module_dark__1cb07177"};
-n(css$7,{});
+n(css$8,{});
 
 var Tooltip = /*#__PURE__*/React.forwardRef(function Tooltip(props, propRef) {
   var _middlewareData$arrow, _middlewareData$arrow2, _middlewareData$arrow3, _middlewareData$arrow4;
@@ -45875,9 +45884,9 @@ Tooltip.defaultProps = {
   className: ''
 };
 
-var css$6 = ".BaseSidePanel_module_root__c7817916 {\n  max-height: 100%;\n  height: 100%;\n  display: flex;\n  width: 30%;\n  flex-direction: column;\n  top: 0;\n  background: #ffffff;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.12);\n  overflow-x: hidden;\n  transition: 0.5s;\n}\n.BaseSidePanel_module_root__c7817916.BaseSidePanel_module_close__c7817916 {\n  width: 0rem;\n}\n.BaseSidePanel_module_root__c7817916 .BaseSidePanel_module_body__c7817916 {\n  flex: 1;\n  overflow-y: auto;\n}";
+var css$7 = ".BaseSidePanel_module_root__c7817916 {\n  max-height: 100%;\n  height: 100%;\n  display: flex;\n  width: 30%;\n  flex-direction: column;\n  top: 0;\n  background: #ffffff;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.12);\n  overflow-x: hidden;\n  transition: 0.5s;\n}\n.BaseSidePanel_module_root__c7817916.BaseSidePanel_module_close__c7817916 {\n  width: 0rem;\n}\n.BaseSidePanel_module_root__c7817916 .BaseSidePanel_module_body__c7817916 {\n  flex: 1;\n  overflow-y: auto;\n}";
 var modules_c7321921 = {"root":"BaseSidePanel_module_root__c7817916","close":"BaseSidePanel_module_close__c7817916","body":"BaseSidePanel_module_body__c7817916"};
-n(css$6,{});
+n(css$7,{});
 
 var BaseSidePanel = function BaseSidePanel(props) {
   var className = props.className,
@@ -47171,17 +47180,17 @@ function clone$3(source) {
     return result;
 }
 function merge(target, source, overwrite) {
-    if (!isObject$2(source) || !isObject$2(target)) {
+    if (!isObject$3(source) || !isObject$3(target)) {
         return overwrite ? clone$3(source) : target;
     }
     for (var key in source) {
         if (source.hasOwnProperty(key) && key !== protoKey) {
             var targetProp = target[key];
             var sourceProp = source[key];
-            if (isObject$2(sourceProp)
-                && isObject$2(targetProp)
-                && !isArray(sourceProp)
-                && !isArray(targetProp)
+            if (isObject$3(sourceProp)
+                && isObject$3(targetProp)
+                && !isArray$1(sourceProp)
+                && !isArray$1(targetProp)
                 && !isDom(sourceProp)
                 && !isDom(targetProp)
                 && !isBuiltInObject(sourceProp)
@@ -47281,7 +47290,7 @@ function isArrayLike(data) {
     }
     return typeof data.length === 'number';
 }
-function each$4(arr, cb, context) {
+function each$9(arr, cb, context) {
     if (!(arr && cb)) {
         return;
     }
@@ -47394,7 +47403,7 @@ function curry$1(func) {
         return func.apply(this, args.concat(nativeSlice.call(arguments)));
     };
 }
-function isArray(value) {
+function isArray$1(value) {
     if (Array.isArray) {
         return Array.isArray(value);
     }
@@ -47412,7 +47421,7 @@ function isStringSafe(value) {
 function isNumber(value) {
     return typeof value === 'number';
 }
-function isObject$2(value) {
+function isObject$3(value) {
     var type = typeof value;
     return type === 'function' || (!!value && type === 'object');
 }
@@ -47508,12 +47517,12 @@ function isPrimitive(obj) {
 var HashMap = (function () {
     function HashMap(obj) {
         this.data = {};
-        var isArr = isArray(obj);
+        var isArr = isArray$1(obj);
         this.data = {};
         var thisMap = this;
         (obj instanceof HashMap)
             ? obj.each(visit)
-            : (obj && each$4(obj, visit));
+            : (obj && each$9(obj, visit));
         function visit(value, key) {
             isArr ? thisMap.set(value, key) : thisMap.set(key, value);
         }
@@ -47595,7 +47604,7 @@ var util$1 = /*#__PURE__*/Object.freeze({
   inherits: inherits,
   mixin: mixin,
   isArrayLike: isArrayLike,
-  each: each$4,
+  each: each$9,
   map: map$1,
   reduce: reduce,
   filter: filter,
@@ -47603,12 +47612,12 @@ var util$1 = /*#__PURE__*/Object.freeze({
   keys: keys,
   bind: bind$1,
   curry: curry$1,
-  isArray: isArray,
+  isArray: isArray$1,
   isFunction: isFunction,
   isString: isString,
   isStringSafe: isStringSafe,
   isNumber: isNumber,
-  isObject: isObject$2,
+  isObject: isObject$3,
   isBuiltInObject: isBuiltInObject,
   isTypedArray: isTypedArray,
   isDom: isDom,
@@ -48291,6 +48300,9 @@ var stop = function (e) {
     e.stopPropagation();
     e.cancelBubble = true;
 };
+function isMiddleOrRightButtonOnMouseUpDown(e) {
+    return e.which === 2 || e.which === 3;
+}
 
 var GestureMgr = (function () {
     function GestureMgr() {
@@ -48615,8 +48627,8 @@ var Point = (function () {
 }());
 var Point$1 = Point;
 
-var mathMin$5 = Math.min;
-var mathMax$5 = Math.max;
+var mathMin$6 = Math.min;
+var mathMax$6 = Math.max;
 var lt = new Point$1();
 var rb = new Point$1();
 var lb = new Point$1();
@@ -48639,16 +48651,16 @@ var BoundingRect = (function () {
         this.height = height;
     }
     BoundingRect.prototype.union = function (other) {
-        var x = mathMin$5(other.x, this.x);
-        var y = mathMin$5(other.y, this.y);
+        var x = mathMin$6(other.x, this.x);
+        var y = mathMin$6(other.y, this.y);
         if (isFinite(this.x) && isFinite(this.width)) {
-            this.width = mathMax$5(other.x + other.width, this.x + this.width) - x;
+            this.width = mathMax$6(other.x + other.width, this.x + this.width) - x;
         }
         else {
             this.width = other.width;
         }
         if (isFinite(this.y) && isFinite(this.height)) {
-            this.height = mathMax$5(other.y + other.height, this.y + this.height) - y;
+            this.height = mathMax$6(other.y + other.height, this.y + this.height) - y;
         }
         else {
             this.height = other.height;
@@ -48818,10 +48830,10 @@ var BoundingRect = (function () {
         rt.transform(m);
         rb.transform(m);
         lb.transform(m);
-        target.x = mathMin$5(lt.x, rb.x, lb.x, rt.x);
-        target.y = mathMin$5(lt.y, rb.y, lb.y, rt.y);
-        var maxX = mathMax$5(lt.x, rb.x, lb.x, rt.x);
-        var maxY = mathMax$5(lt.y, rb.y, lb.y, rt.y);
+        target.x = mathMin$6(lt.x, rb.x, lb.x, rt.x);
+        target.y = mathMin$6(lt.y, rb.y, lb.y, rt.y);
+        var maxX = mathMax$6(lt.x, rb.x, lb.x, rt.x);
+        var maxY = mathMax$6(lt.y, rb.y, lb.y, rt.y);
         target.width = maxX - target.x;
         target.height = maxY - target.y;
     };
@@ -48895,7 +48907,7 @@ var Handler = (function (_super) {
             this.proxy.dispose();
         }
         if (proxy) {
-            each$4(handlerNames, function (name) {
+            each$9(handlerNames, function (name) {
                 proxy.on && proxy.on(name, this[name], this);
             }, this);
             proxy.handler = this;
@@ -49041,7 +49053,7 @@ var Handler = (function (_super) {
     };
     return Handler;
 }(Eventful$1));
-each$4(['click', 'mousedown', 'mouseup', 'mousewheel', 'dblclick', 'contextmenu'], function (name) {
+each$9(['click', 'mousedown', 'mouseup', 'mousewheel', 'dblclick', 'contextmenu'], function (name) {
     Handler.prototype[name] = function (event) {
         var x = event.zrX;
         var y = event.zrY;
@@ -52022,7 +52034,7 @@ var localDOMHandlers = {
         }
     }
 };
-each$4(['click', 'dblclick', 'contextmenu'], function (name) {
+each$9(['click', 'dblclick', 'contextmenu'], function (name) {
     localDOMHandlers[name] = function (event) {
         event = normalizeEvent(this.dom, event);
         this.trigger(name, event);
@@ -52053,7 +52065,7 @@ var globalDOMHandlers = {
 function mountLocalDOMEventListeners(instance, scope) {
     var domHandlers = scope.domHandlers;
     if (env$1.pointerEventsSupported) {
-        each$4(localNativeListenerNames.pointer, function (nativeEventName) {
+        each$9(localNativeListenerNames.pointer, function (nativeEventName) {
             mountSingleDOMEventListener(scope, nativeEventName, function (event) {
                 domHandlers[nativeEventName].call(instance, event);
             });
@@ -52061,14 +52073,14 @@ function mountLocalDOMEventListeners(instance, scope) {
     }
     else {
         if (env$1.touchEventsSupported) {
-            each$4(localNativeListenerNames.touch, function (nativeEventName) {
+            each$9(localNativeListenerNames.touch, function (nativeEventName) {
                 mountSingleDOMEventListener(scope, nativeEventName, function (event) {
                     domHandlers[nativeEventName].call(instance, event);
                     setTouchTimer(scope);
                 });
             });
         }
-        each$4(localNativeListenerNames.mouse, function (nativeEventName) {
+        each$9(localNativeListenerNames.mouse, function (nativeEventName) {
             mountSingleDOMEventListener(scope, nativeEventName, function (event) {
                 event = getNativeEvent(event);
                 if (!scope.touching) {
@@ -52080,10 +52092,10 @@ function mountLocalDOMEventListeners(instance, scope) {
 }
 function mountGlobalDOMEventListeners(instance, scope) {
     if (env$1.pointerEventsSupported) {
-        each$4(globalNativeListenerNames.pointer, mount);
+        each$9(globalNativeListenerNames.pointer, mount);
     }
     else if (!env$1.touchEventsSupported) {
-        each$4(globalNativeListenerNames.mouse, mount);
+        each$9(globalNativeListenerNames.mouse, mount);
     }
     function mount(nativeEventName) {
         function nativeEventListener(event) {
@@ -52789,7 +52801,7 @@ var Element = (function () {
         if (typeof keyOrObj === 'string') {
             this.attrKV(keyOrObj, value);
         }
-        else if (isObject$2(keyOrObj)) {
+        else if (isObject$3(keyOrObj)) {
             var obj = keyOrObj;
             var keysArr = keys(obj);
             for (var i = 0; i < keysArr.length; i++) {
@@ -53509,7 +53521,7 @@ function animateToShallow(animatable, topKey, animateObj, target, cfg, animation
     var delay = cfg.delay;
     var additive = cfg.additive;
     var setToFinal = cfg.setToFinal;
-    var animateAll = !isObject$2(animationProps);
+    var animateAll = !isObject$3(animationProps);
     var existsAnimators = animatable.animators;
     var animationKeys = [];
     for (var k = 0; k < targetKeys.length; k++) {
@@ -53517,7 +53529,7 @@ function animateToShallow(animatable, topKey, animateObj, target, cfg, animation
         var targetVal = target[innerKey];
         if (targetVal != null && animateObj[innerKey] != null
             && (animateAll || animationProps[innerKey])) {
-            if (isObject$2(targetVal)
+            if (isObject$3(targetVal)
                 && !isArrayLike(targetVal)
                 && !isGradientObject(targetVal)) {
                 if (topKey) {
@@ -54062,7 +54074,7 @@ function _trim(str) {
  */
 
 
-function linearMap(val, domain, range, clamp) {
+function linearMap$2(val, domain, range, clamp) {
   var d0 = domain[0];
   var d1 = domain[1];
   var r0 = range[0];
@@ -54154,7 +54166,7 @@ function round$1(x, precision, returnStr) {
  * The input arr will be modified.
  */
 
-function asc(arr) {
+function asc$1(arr) {
   arr.sort(function (a, b) {
     return a - b;
   });
@@ -54783,7 +54795,7 @@ var TEXT_STYLE_OPTIONS = ['fontStyle', 'fontWeight', 'fontSize', 'fontFamily', '
  */
 
 function getDataItemValue(dataItem) {
-  return isObject$2(dataItem) && !isArray(dataItem) && !(dataItem instanceof Date) ? dataItem.value : dataItem;
+  return isObject$3(dataItem) && !isArray$1(dataItem) && !(dataItem instanceof Date) ? dataItem.value : dataItem;
 }
 /**
  * data could be [12, 2323, {value: 223}, [1221, 23], {value: [2, 23]}]
@@ -54791,7 +54803,7 @@ function getDataItemValue(dataItem) {
  */
 
 function isDataItemOption(dataItem) {
-  return isObject$2(dataItem) && !(dataItem instanceof Array); // // markLine data can be array
+  return isObject$3(dataItem) && !(dataItem instanceof Array); // // markLine data can be array
   // && !(dataItem[0] && isObject(dataItem[0]) && !(dataItem[0] instanceof Array));
 }
 /**
@@ -54832,8 +54844,8 @@ function mappingToExists(existings, newCmptOptions, mode) {
   newCmptOptions = (newCmptOptions || []).slice();
   var existingIdIdxMap = createHashMap(); // Validate id and name on user input option.
 
-  each$4(newCmptOptions, function (cmptOption, index) {
-    if (!isObject$2(cmptOption)) {
+  each$9(newCmptOptions, function (cmptOption, index) {
+    if (!isObject$3(cmptOption)) {
       newCmptOptions[index] = null;
       return;
     }
@@ -54906,7 +54918,7 @@ function prepareResult(existings, existingIdIdxMap, mode) {
 
 function mappingById(result, existings, existingIdIdxMap, newCmptOptions) {
   // Mapping by id if specified.
-  each$4(newCmptOptions, function (cmptOption, index) {
+  each$9(newCmptOptions, function (cmptOption, index) {
     if (!cmptOption || cmptOption.id == null) {
       return;
     }
@@ -54928,7 +54940,7 @@ function mappingById(result, existings, existingIdIdxMap, newCmptOptions) {
 
 function mappingByName(result, newCmptOptions) {
   // Mapping by name if specified.
-  each$4(newCmptOptions, function (cmptOption, index) {
+  each$9(newCmptOptions, function (cmptOption, index) {
     if (!cmptOption || cmptOption.name == null) {
       return;
     }
@@ -54948,7 +54960,7 @@ function mappingByName(result, newCmptOptions) {
 }
 
 function mappingByIndex(result, newCmptOptions, brandNew) {
-  each$4(newCmptOptions, function (cmptOption) {
+  each$9(newCmptOptions, function (cmptOption) {
     if (!cmptOption) {
       return;
     } // Find the first place that not mapped by id and not internal component (consider the "hole").
@@ -54986,7 +54998,7 @@ function mappingByIndex(result, newCmptOptions, brandNew) {
 }
 
 function mappingInReplaceAllMode(result, newCmptOptions) {
-  each$4(newCmptOptions, function (cmptOption) {
+  each$9(newCmptOptions, function (cmptOption) {
     // The feature "reproduce" requires "hole" will also reproduced
     // in case that compoennt index referring are broken.
     result.push({
@@ -55014,11 +55026,11 @@ function makeIdAndName(mapResult) {
   // to specify multi components (like series) by one name.
   // Ensure that each id is distinct.
   var idMap = createHashMap();
-  each$4(mapResult, function (item) {
+  each$9(mapResult, function (item) {
     var existing = item.existing;
     existing && idMap.set(existing.id, item);
   });
-  each$4(mapResult, function (item) {
+  each$9(mapResult, function (item) {
     var opt = item.newOption; // Force ensure id not duplicated.
 
     assert(!opt || opt.id == null || !idMap.get(opt.id) || idMap.get(opt.id) === item, 'id duplicates: ' + (opt && opt.id));
@@ -55026,12 +55038,12 @@ function makeIdAndName(mapResult) {
     !item.keyInfo && (item.keyInfo = {});
   }); // Make name and id.
 
-  each$4(mapResult, function (item, index) {
+  each$9(mapResult, function (item, index) {
     var existing = item.existing;
     var opt = item.newOption;
     var keyInfo = item.keyInfo;
 
-    if (!isObject$2(opt)) {
+    if (!isObject$3(opt)) {
       return;
     } // name can be overwitten. Consider case: axis.name = '20km'.
     // But id generated by name will not be changed, which affect
@@ -55119,10 +55131,10 @@ function isComponentIdInternal(cmptOption) {
 }
 function setComponentTypeToKeyInfo(mappingResult, mainType, componentModelCtor) {
   // Set mainType and complete subType.
-  each$4(mappingResult, function (item) {
+  each$9(mappingResult, function (item) {
     var newOption = item.newOption;
 
-    if (isObject$2(newOption)) {
+    if (isObject$3(newOption)) {
       item.keyInfo.mainType = mainType;
       item.keyInfo.subType = determineSubType(mainType, newOption, item.existing, componentModelCtor);
     }
@@ -55136,6 +55148,66 @@ function determineSubType(mainType, newCmptOption, existComponent, componentMode
   return subType;
 }
 /**
+ * A helper for removing duplicate items between batchA and batchB,
+ * and in themselves, and categorize by series.
+ *
+ * @param batchA Like: [{seriesId: 2, dataIndex: [32, 4, 5]}, ...]
+ * @param batchB Like: [{seriesId: 2, dataIndex: [32, 4, 5]}, ...]
+ * @return result: [resultBatchA, resultBatchB]
+ */
+
+
+function compressBatches(batchA, batchB) {
+  var mapA = {};
+  var mapB = {};
+  makeMap(batchA || [], mapA);
+  makeMap(batchB || [], mapB, mapA);
+  return [mapToArray(mapA), mapToArray(mapB)];
+
+  function makeMap(sourceBatch, map, otherMap) {
+    for (var i = 0, len = sourceBatch.length; i < len; i++) {
+      var seriesId = convertOptionIdName(sourceBatch[i].seriesId, null);
+
+      if (seriesId == null) {
+        return;
+      }
+
+      var dataIndices = normalizeToArray(sourceBatch[i].dataIndex);
+      var otherDataIndices = otherMap && otherMap[seriesId];
+
+      for (var j = 0, lenj = dataIndices.length; j < lenj; j++) {
+        var dataIndex = dataIndices[j];
+
+        if (otherDataIndices && otherDataIndices[dataIndex]) {
+          otherDataIndices[dataIndex] = null;
+        } else {
+          (map[seriesId] || (map[seriesId] = {}))[dataIndex] = 1;
+        }
+      }
+    }
+  }
+
+  function mapToArray(map, isData) {
+    var result = [];
+
+    for (var i in map) {
+      if (map.hasOwnProperty(i) && map[i] != null) {
+        if (isData) {
+          result.push(+i);
+        } else {
+          var dataIndices = mapToArray(map[i], true);
+          dataIndices.length && result.push({
+            seriesId: i,
+            dataIndex: dataIndices
+          });
+        }
+      }
+    }
+
+    return result;
+  }
+}
+/**
  * @param payload Contains dataIndex (means rawIndex) / dataIndexInside / name
  *                         each of which can be Array or primary type.
  * @return dataIndex If not found, return undefined/null.
@@ -55145,11 +55217,11 @@ function queryDataIndex(data, payload) {
   if (payload.dataIndexInside != null) {
     return payload.dataIndexInside;
   } else if (payload.dataIndex != null) {
-    return isArray(payload.dataIndex) ? map$1(payload.dataIndex, function (value) {
+    return isArray$1(payload.dataIndex) ? map$1(payload.dataIndex, function (value) {
       return data.indexOfRawIndex(value);
     }) : data.indexOfRawIndex(payload.dataIndex);
   } else if (payload.name != null) {
-    return isArray(payload.name) ? map$1(payload.name, function (value) {
+    return isArray$1(payload.name) ? map$1(payload.name, function (value) {
       return data.indexOfName(value);
     }) : data.indexOfName(payload.name);
   }
@@ -55224,7 +55296,7 @@ function preParseFinder(finderInput, opt) {
   var queryOptionMap = createHashMap();
   var others = {};
   var mainTypeSpecified = false;
-  each$4(finder, function (value, key) {
+  each$9(finder, function (value, key) {
     // Exclude 'dataIndex' and other illgal keys.
     if (key === 'dataIndex' || key === 'dataIndexInside') {
       others[key] = value;
@@ -55356,7 +55428,7 @@ function enableClassExtend(rootClz, mandatoryMethods) {
 
   rootClz.extend = function (proto) {
     if (process.env.NODE_ENV !== 'production') {
-      each$4(mandatoryMethods, function (method) {
+      each$9(mandatoryMethods, function (method) {
         if (!proto[method]) {
           console.warn('Method `' + method + '` should be implemented' + (proto.type ? ' in ' + proto.type : '') + '.');
         }
@@ -55545,7 +55617,7 @@ function enableClassManagement(target) {
     var obj = storage[componentTypeInfo.main];
 
     if (obj && obj[IS_CONTAINER]) {
-      each$4(obj, function (o, type) {
+      each$9(obj, function (o, type) {
         type !== IS_CONTAINER && result.push(o);
       });
     } else {
@@ -55567,7 +55639,7 @@ function enableClassManagement(target) {
 
   target.getAllClassMainTypes = function () {
     var types = [];
-    each$4(storage, function (obj, type) {
+    each$9(storage, function (obj, type) {
       types.push(type);
     });
     return types;
@@ -56497,8 +56569,8 @@ function isDisplayableCulled(el, width, height) {
 }
 var Displayable$1 = Displayable;
 
-var mathMin$4 = Math.min;
-var mathMax$4 = Math.max;
+var mathMin$5 = Math.min;
+var mathMax$5 = Math.max;
 var mathSin$3 = Math.sin;
 var mathCos$3 = Math.cos;
 var PI2$6 = Math.PI * 2;
@@ -56506,10 +56578,10 @@ var start = create$1();
 var end = create$1();
 var extremity = create$1();
 function fromLine(x0, y0, x1, y1, min, max) {
-    min[0] = mathMin$4(x0, x1);
-    min[1] = mathMin$4(y0, y1);
-    max[0] = mathMax$4(x0, x1);
-    max[1] = mathMax$4(y0, y1);
+    min[0] = mathMin$5(x0, x1);
+    min[1] = mathMin$5(y0, y1);
+    max[0] = mathMax$5(x0, x1);
+    max[1] = mathMax$5(y0, y1);
 }
 var xDim = [];
 var yDim = [];
@@ -56523,35 +56595,35 @@ function fromCubic(x0, y0, x1, y1, x2, y2, x3, y3, min, max) {
     max[1] = -Infinity;
     for (var i = 0; i < n; i++) {
         var x = cubicAt$1(x0, x1, x2, x3, xDim[i]);
-        min[0] = mathMin$4(x, min[0]);
-        max[0] = mathMax$4(x, max[0]);
+        min[0] = mathMin$5(x, min[0]);
+        max[0] = mathMax$5(x, max[0]);
     }
     n = cubicExtrema$1(y0, y1, y2, y3, yDim);
     for (var i = 0; i < n; i++) {
         var y = cubicAt$1(y0, y1, y2, y3, yDim[i]);
-        min[1] = mathMin$4(y, min[1]);
-        max[1] = mathMax$4(y, max[1]);
+        min[1] = mathMin$5(y, min[1]);
+        max[1] = mathMax$5(y, max[1]);
     }
-    min[0] = mathMin$4(x0, min[0]);
-    max[0] = mathMax$4(x0, max[0]);
-    min[0] = mathMin$4(x3, min[0]);
-    max[0] = mathMax$4(x3, max[0]);
-    min[1] = mathMin$4(y0, min[1]);
-    max[1] = mathMax$4(y0, max[1]);
-    min[1] = mathMin$4(y3, min[1]);
-    max[1] = mathMax$4(y3, max[1]);
+    min[0] = mathMin$5(x0, min[0]);
+    max[0] = mathMax$5(x0, max[0]);
+    min[0] = mathMin$5(x3, min[0]);
+    max[0] = mathMax$5(x3, max[0]);
+    min[1] = mathMin$5(y0, min[1]);
+    max[1] = mathMax$5(y0, max[1]);
+    min[1] = mathMin$5(y3, min[1]);
+    max[1] = mathMax$5(y3, max[1]);
 }
 function fromQuadratic(x0, y0, x1, y1, x2, y2, min, max) {
     var quadraticExtremum$1 = quadraticExtremum;
     var quadraticAt$1 = quadraticAt;
-    var tx = mathMax$4(mathMin$4(quadraticExtremum$1(x0, x1, x2), 1), 0);
-    var ty = mathMax$4(mathMin$4(quadraticExtremum$1(y0, y1, y2), 1), 0);
+    var tx = mathMax$5(mathMin$5(quadraticExtremum$1(x0, x1, x2), 1), 0);
+    var ty = mathMax$5(mathMin$5(quadraticExtremum$1(y0, y1, y2), 1), 0);
     var x = quadraticAt$1(x0, x1, x2, tx);
     var y = quadraticAt$1(y0, y1, y2, ty);
-    min[0] = mathMin$4(x0, x2, x);
-    min[1] = mathMin$4(y0, y2, y);
-    max[0] = mathMax$4(x0, x2, x);
-    max[1] = mathMax$4(y0, y2, y);
+    min[0] = mathMin$5(x0, x2, x);
+    min[1] = mathMin$5(y0, y2, y);
+    max[0] = mathMax$5(x0, x2, x);
+    max[1] = mathMax$5(y0, y2, y);
 }
 function fromArc(x, y, rx, ry, startAngle, endAngle, anticlockwise, min, max) {
     var vec2Min = min$1;
@@ -56614,8 +56686,8 @@ var min = [];
 var max = [];
 var min2 = [];
 var max2 = [];
-var mathMin$3 = Math.min;
-var mathMax$3 = Math.max;
+var mathMin$4 = Math.min;
+var mathMax$4 = Math.max;
 var mathCos$2 = Math.cos;
 var mathSin$2 = Math.sin;
 var mathAbs$1 = Math.abs;
@@ -57035,7 +57107,7 @@ var PathProxy = (function () {
                         x0 = mathCos$2(startAngle) * rx + cx;
                         y0 = mathSin$2(startAngle) * ry + cy;
                     }
-                    l = mathMax$3(rx, ry) * mathMin$3(PI2$5, Math.abs(delta));
+                    l = mathMax$4(rx, ry) * mathMin$4(PI2$5, Math.abs(delta));
                     xi = mathCos$2(endAngle) * rx + cx;
                     yi = mathSin$2(endAngle) * ry + cy;
                     break;
@@ -57237,18 +57309,18 @@ var PathProxy = (function () {
                         if (accumLength + l > displayedLength) {
                             var d_1 = displayedLength - accumLength;
                             ctx.moveTo(x, y);
-                            ctx.lineTo(x + mathMin$3(d_1, width), y);
+                            ctx.lineTo(x + mathMin$4(d_1, width), y);
                             d_1 -= width;
                             if (d_1 > 0) {
-                                ctx.lineTo(x + width, y + mathMin$3(d_1, height));
+                                ctx.lineTo(x + width, y + mathMin$4(d_1, height));
                             }
                             d_1 -= height;
                             if (d_1 > 0) {
-                                ctx.lineTo(x + mathMax$3(width - d_1, 0), y + height);
+                                ctx.lineTo(x + mathMax$4(width - d_1, 0), y + height);
                             }
                             d_1 -= width;
                             if (d_1 > 0) {
-                                ctx.lineTo(x, y + mathMax$3(height - d_1, 0));
+                                ctx.lineTo(x, y + mathMax$4(height - d_1, 0));
                             }
                             break lo;
                         }
@@ -58902,7 +58974,7 @@ function hasSeparateFont(style) {
 }
 function normalizeTextStyle(style) {
     normalizeStyle(style);
-    each$4(style.rich, normalizeStyle);
+    each$9(style.rich, normalizeStyle);
     return style;
 }
 function normalizeStyle(style) {
@@ -59072,6 +59144,25 @@ function traverseUpdateState(el, updater, commonParam) {
   el.isGroup && el.traverse(function (child) {
     updateElementState(child, updater, commonParam);
   });
+}
+
+function setStatesFlag(el, stateName) {
+  switch (stateName) {
+    case 'emphasis':
+      el.hoverState = HOVER_STATE_EMPHASIS;
+      break;
+
+    case 'normal':
+      el.hoverState = HOVER_STATE_NORMAL;
+      break;
+
+    case 'blur':
+      el.hoverState = HOVER_STATE_BLUR;
+      break;
+
+    case 'select':
+      el.selected = true;
+  }
 }
 
 function getFromStateStyle(el, props, toStateName, defaultValue) {
@@ -59274,7 +59365,7 @@ function allLeaveBlur(api) {
 
     componentStates.isBlured = false;
   });
-  each$4(allComponentViews, function (view) {
+  each$9(allComponentViews, function (view) {
     if (view && view.toggleBlurSeries) {
       view.toggleBlurSeries(leaveBlurredSeries, false, model);
     }
@@ -59329,7 +59420,7 @@ function blurSeries(targetSeriesIndex, focus, blurScope, api) {
 
       if (isArrayLike(focus)) {
         leaveBlurOfIndices(seriesModel.getData(), focus);
-      } else if (isObject$2(focus)) {
+      } else if (isObject$3(focus)) {
         var dataTypes = keys(focus);
 
         for (var d = 0; d < dataTypes.length; d++) {
@@ -59389,7 +59480,7 @@ function blurSeriesFromHighlightPayload(seriesModel, payload, api) {
 
   var dataIndex = queryDataIndex(data, payload); // Pick the first one if there is multiple/none exists.
 
-  dataIndex = (isArray(dataIndex) ? dataIndex[0] : dataIndex) || 0;
+  dataIndex = (isArray$1(dataIndex) ? dataIndex[0] : dataIndex) || 0;
   var el = data.getItemGraphicEl(dataIndex);
 
   if (!el) {
@@ -59476,7 +59567,7 @@ function handleGlobalMouseOverForHighDown(dispatcher, e, api) {
       blurComponent(ecData.componentMainType, ecData.componentIndex, api);
     }
 
-    each$4(dispatchers, function (dispatcher) {
+    each$9(dispatchers, function (dispatcher) {
       return enterEmphasisWhenMouseOver(dispatcher, e);
     });
   } else {
@@ -59504,7 +59595,7 @@ function handleGlobalMouseOutForHighDown(dispatcher, e, api) {
   var dispatchers = findComponentHighDownDispatchers(ecData.componentMainType, ecData.componentIndex, ecData.componentHighDownName, api).dispatchers;
 
   if (dispatchers) {
-    each$4(dispatchers, function (dispatcher) {
+    each$9(dispatchers, function (dispatcher) {
       return leaveEmphasisWhenMouseOut(dispatcher, e);
     });
   } else {
@@ -59520,7 +59611,7 @@ function toggleSelectionFromPayload(seriesModel, payload, api) {
   var data = seriesModel.getData(dataType);
   var dataIndex = queryDataIndex(data, payload);
 
-  if (!isArray(dataIndex)) {
+  if (!isArray$1(dataIndex)) {
     dataIndex = [dataIndex];
   }
 
@@ -59528,7 +59619,7 @@ function toggleSelectionFromPayload(seriesModel, payload, api) {
 }
 function updateSeriesElementSelection(seriesModel) {
   var allData = seriesModel.getAllData();
-  each$4(allData, function (_a) {
+  each$9(allData, function (_a) {
     var data = _a.data,
         type = _a.type;
     data.eachItemGraphicEl(function (el, idx) {
@@ -59540,7 +59631,7 @@ function getAllSelectedIndices(ecModel) {
   var ret = [];
   ecModel.eachSeries(function (seriesModel) {
     var allData = seriesModel.getAllData();
-    each$4(allData, function (_a) {
+    each$9(allData, function (_a) {
       _a.data;
           var type = _a.type;
       var dataIndices = seriesModel.getSelectedDataIndices();
@@ -59662,6 +59753,18 @@ function isHighDownDispatcher(el) {
   return !!(el && el.__highDownDispatcher);
 }
 /**
+ * Enable component highlight/downplay features:
+ * + hover link (within the same name)
+ * + focus blur in component
+ */
+
+function enableComponentHighDownFeatures(el, componentModel, componentHighDownName) {
+  var ecData = getECData(el);
+  ecData.componentMainType = componentModel.mainType;
+  ecData.componentIndex = componentModel.componentIndex;
+  ecData.componentHighDownName = componentHighDownName;
+}
+/**
  * Support hightlight/downplay record on each elements.
  * For the case: hover highlight/downplay (legend, visualMap, ...) and
  * user triggerred hightlight/downplay should not conflict.
@@ -59697,7 +59800,7 @@ function savePathStates(el) {
 }
 
 var CMD = PathProxy$1.CMD;
-var points = [[], [], []];
+var points$2 = [[], [], []];
 var mathSqrt$2 = Math.sqrt;
 var mathAtan2 = Math.atan2;
 function transformPath(path, m) {
@@ -59765,7 +59868,7 @@ function transformPath(path, m) {
                 data[j++] = p[1];
         }
         for (k = 0; k < nPoint; k++) {
-            var p_1 = points[k];
+            var p_1 = points$2[k];
             p_1[0] = data[i++];
             p_1[1] = data[i++];
             applyTransform$1(p_1, p_1, m);
@@ -59831,7 +59934,7 @@ function processArc(x1, y1, x2, y2, fa, fs, rx, ry, psiDeg, cmd, path) {
     path.addData(cmd, cx, cy, rx, ry, theta, dTheta, psi, fs);
 }
 var commandReg = /([mlvhzcqtsa])([^mlvhzcqtsa]*)/ig;
-var numberReg = /-?([0-9]*\.)?[0-9]+([eE]-?[0-9]+)?/g;
+var numberReg$1 = /-?([0-9]*\.)?[0-9]+([eE]-?[0-9]+)?/g;
 function createPathProxyFromString(data) {
     var path = new PathProxy$1();
     if (!data) {
@@ -59851,7 +59954,7 @@ function createPathProxyFromString(data) {
         var cmdText = cmdList[l];
         var cmdStr = cmdText.charAt(0);
         var cmd = void 0;
-        var p = cmdText.match(numberReg) || [];
+        var p = cmdText.match(numberReg$1) || [];
         var pLen = p.length;
         for (var i = 0; i < pLen; i++) {
             p[i] = parseFloat(p[i]);
@@ -60186,8 +60289,8 @@ var mathACos = Math.acos;
 var mathATan2 = Math.atan2;
 var mathAbs = Math.abs;
 var mathSqrt = Math.sqrt;
-var mathMax$2 = Math.max;
-var mathMin$2 = Math.min;
+var mathMax$3 = Math.max;
+var mathMin$3 = Math.min;
 var e = 1e-4;
 function intersect(x0, y0, x1, y1, x2, y2, x3, y3) {
     var dx10 = x1 - x0;
@@ -60218,7 +60321,7 @@ function computeCornerTangents(x0, y0, x1, y1, radius, cr, clockwise) {
     var d2 = dx * dx + dy * dy;
     var r = radius - cr;
     var s = x11 * y10 - x10 * y11;
-    var d = (dy < 0 ? -1 : 1) * mathSqrt(mathMax$2(0, r * r * d2 - s * s));
+    var d = (dy < 0 ? -1 : 1) * mathSqrt(mathMax$3(0, r * r * d2 - s * s));
     var cx0 = (s * dy - dx * d) / d2;
     var cy0 = (-s * dx - dy * d) / d2;
     var cx1 = (s * dy + dx * d) / d2;
@@ -60242,7 +60345,7 @@ function computeCornerTangents(x0, y0, x1, y1, radius, cr, clockwise) {
 }
 function normalizeCornerRadius(cr) {
     var arr;
-    if (isArray(cr)) {
+    if (isArray$1(cr)) {
         var len = cr.length;
         if (!len) {
             return cr;
@@ -60267,8 +60370,8 @@ function normalizeCornerRadius(cr) {
 }
 function buildPath$1(ctx, shape) {
     var _a;
-    var radius = mathMax$2(shape.r, 0);
-    var innerRadius = mathMax$2(shape.r0 || 0, 0);
+    var radius = mathMax$3(shape.r, 0);
+    var innerRadius = mathMax$3(shape.r0 || 0, 0);
     var hasRadius = radius > 0;
     var hasInnerRadius = innerRadius > 0;
     if (!hasRadius && !hasInnerRadius) {
@@ -60331,12 +60434,12 @@ function buildPath$1(ctx, shape) {
                 _a = normalizeCornerRadius(cornerRadius), icrStart = _a[0], icrEnd = _a[1], ocrStart = _a[2], ocrEnd = _a[3];
             }
             var halfRd = mathAbs(radius - innerRadius) / 2;
-            ocrs = mathMin$2(halfRd, ocrStart);
-            ocre = mathMin$2(halfRd, ocrEnd);
-            icrs = mathMin$2(halfRd, icrStart);
-            icre = mathMin$2(halfRd, icrEnd);
-            limitedOcrMax = ocrMax = mathMax$2(ocrs, ocre);
-            limitedIcrMax = icrMax = mathMax$2(icrs, icre);
+            ocrs = mathMin$3(halfRd, ocrStart);
+            ocre = mathMin$3(halfRd, ocrEnd);
+            icrs = mathMin$3(halfRd, icrStart);
+            icre = mathMin$3(halfRd, icrEnd);
+            limitedOcrMax = ocrMax = mathMax$3(ocrs, ocre);
+            limitedIcrMax = icrMax = mathMax$3(icrs, icre);
             if (ocrMax > e || icrMax > e) {
                 xre = radius * mathCos(endAngle);
                 yre = radius * mathSin(endAngle);
@@ -60351,8 +60454,8 @@ function buildPath$1(ctx, shape) {
                         var y1 = yre - it_1[1];
                         var a = 1 / mathSin(mathACos((x0 * x1 + y0 * y1) / (mathSqrt(x0 * x0 + y0 * y0) * mathSqrt(x1 * x1 + y1 * y1))) / 2);
                         var b = mathSqrt(it_1[0] * it_1[0] + it_1[1] * it_1[1]);
-                        limitedOcrMax = mathMin$2(ocrMax, (radius - b) / (a + 1));
-                        limitedIcrMax = mathMin$2(icrMax, (innerRadius - b) / (a - 1));
+                        limitedOcrMax = mathMin$3(ocrMax, (radius - b) / (a + 1));
+                        limitedIcrMax = mathMin$3(icrMax, (innerRadius - b) / (a - 1));
                     }
                 }
             }
@@ -60361,8 +60464,8 @@ function buildPath$1(ctx, shape) {
             ctx.moveTo(cx + xrs, cy + yrs);
         }
         else if (limitedOcrMax > e) {
-            var crStart = mathMin$2(ocrStart, limitedOcrMax);
-            var crEnd = mathMin$2(ocrEnd, limitedOcrMax);
+            var crStart = mathMin$3(ocrStart, limitedOcrMax);
+            var crEnd = mathMin$3(ocrEnd, limitedOcrMax);
             var ct0 = computeCornerTangents(xirs, yirs, xrs, yrs, radius, crStart, clockwise);
             var ct1 = computeCornerTangents(xre, yre, xire, yire, radius, crEnd, clockwise);
             ctx.moveTo(cx + ct0.cx + ct0.x0, cy + ct0.cy + ct0.y0);
@@ -60383,8 +60486,8 @@ function buildPath$1(ctx, shape) {
             ctx.lineTo(cx + xire, cy + yire);
         }
         else if (limitedIcrMax > e) {
-            var crStart = mathMin$2(icrStart, limitedIcrMax);
-            var crEnd = mathMin$2(icrEnd, limitedIcrMax);
+            var crStart = mathMin$3(icrStart, limitedIcrMax);
+            var crEnd = mathMin$3(icrEnd, limitedIcrMax);
             var ct0 = computeCornerTangents(xire, yire, xre, yre, innerRadius, -crEnd, clockwise);
             var ct1 = computeCornerTangents(xrs, yrs, xirs, yirs, innerRadius, -crStart, clockwise);
             ctx.lineTo(cx + ct0.cx + ct0.x0, cy + ct0.cy + ct0.y0);
@@ -61206,7 +61309,7 @@ function animateOrSetProps(animationType, el, props, animatableModel, dataIndex,
     during = cb;
     cb = dataIndex;
     dataIndex = null;
-  } else if (isObject$2(dataIndex)) {
+  } else if (isObject$3(dataIndex)) {
     cb = dataIndex.cb;
     during = dataIndex.during;
     isFrom = dataIndex.isFrom;
@@ -61355,8 +61458,8 @@ function saveOldStyle(el) {
   transitionStore(el).oldStyle = el.style;
 }
 
-var mathMax$1 = Math.max;
-var mathMin$1 = Math.min;
+var mathMax$2 = Math.max;
+var mathMin$2 = Math.min;
 var _customShapeMap = {};
 /**
  * Extend shape with parameters
@@ -61661,11 +61764,11 @@ function clipPointsByRect(points, rect) {
   // and when element have border.
   return map$1(points, function (point) {
     var x = point[0];
-    x = mathMax$1(x, rect.x);
-    x = mathMin$1(x, rect.x + rect.width);
+    x = mathMax$2(x, rect.x);
+    x = mathMin$2(x, rect.x + rect.width);
     var y = point[1];
-    y = mathMax$1(y, rect.y);
-    y = mathMin$1(y, rect.y + rect.height);
+    y = mathMax$2(y, rect.y);
+    y = mathMin$2(y, rect.y + rect.height);
     return [x, y];
   });
 }
@@ -61674,10 +61777,10 @@ function clipPointsByRect(points, rect) {
  */
 
 function clipRectByRect(targetRect, rect) {
-  var x = mathMax$1(targetRect.x, rect.x);
-  var x2 = mathMin$1(targetRect.x + targetRect.width, rect.x + rect.width);
-  var y = mathMax$1(targetRect.y, rect.y);
-  var y2 = mathMin$1(targetRect.y + targetRect.height, rect.y + rect.height); // If the total rect is cliped, nothing, including the border,
+  var x = mathMax$2(targetRect.x, rect.x);
+  var x2 = mathMin$2(targetRect.x + targetRect.width, rect.x + rect.width);
+  var y = mathMax$2(targetRect.y, rect.y);
+  var y2 = mathMin$2(targetRect.y + targetRect.height, rect.y + rect.height); // If the total rect is cliped, nothing, including the border,
   // should be painted. So return undefined.
 
   if (x2 >= x && y2 >= y) {
@@ -61797,7 +61900,7 @@ function setTooltipConfig(opt) {
   var formatterParamsExtra = opt.formatterParamsExtra;
 
   if (formatterParamsExtra) {
-    each$4(keys(formatterParamsExtra), function (key) {
+    each$9(keys(formatterParamsExtra), function (key) {
       if (!hasOwn(formatterParams, key)) {
         formatterParams[key] = formatterParamsExtra[key];
         formatterParams.$vars.push(key);
@@ -61832,7 +61935,7 @@ function traverseElement(el, cb) {
 
 function traverseElements(els, cb) {
   if (els) {
-    if (isArray(els)) {
+    if (isArray$1(els)) {
       for (var i = 0; i < els.length; i++) {
         traverseElement(els[i], cb);
       }
@@ -62696,7 +62799,7 @@ function enableTopologicalTravel(entity, dependencyGetter) {
     var graph = result.graph;
     var noEntryList = result.noEntryList;
     var targetNameSet = {};
-    each$4(targetNameList, function (name) {
+    each$9(targetNameList, function (name) {
       targetNameSet[name] = true;
     });
 
@@ -62710,10 +62813,10 @@ function enableTopologicalTravel(entity, dependencyGetter) {
         delete targetNameSet[currComponentType];
       }
 
-      each$4(currVertex.successor, isInTargetNameSet ? removeEdgeAndAdd : removeEdge);
+      each$9(currVertex.successor, isInTargetNameSet ? removeEdgeAndAdd : removeEdge);
     }
 
-    each$4(targetNameSet, function () {
+    each$9(targetNameSet, function () {
       var errMsg = '';
 
       if (process.env.NODE_ENV !== 'production') {
@@ -62746,7 +62849,7 @@ function enableTopologicalTravel(entity, dependencyGetter) {
   function makeDepndencyGraph(fullNameList) {
     var graph = {};
     var noEntryList = [];
-    each$4(fullNameList, function (name) {
+    each$9(fullNameList, function (name) {
       var thisItem = createDependencyGraphItem(graph, name);
       var originalDeps = thisItem.originalDeps = dependencyGetter(name);
       var availableDeps = getAvailableDependencies(originalDeps, fullNameList);
@@ -62756,7 +62859,7 @@ function enableTopologicalTravel(entity, dependencyGetter) {
         noEntryList.push(name);
       }
 
-      each$4(availableDeps, function (dependentName) {
+      each$9(availableDeps, function (dependentName) {
         if (indexOf(thisItem.predecessor, dependentName) < 0) {
           thisItem.predecessor.push(dependentName);
         }
@@ -62787,7 +62890,7 @@ function enableTopologicalTravel(entity, dependencyGetter) {
 
   function getAvailableDependencies(originalDeps, fullNameList) {
     var availableDeps = [];
-    each$4(originalDeps, function (dep) {
+    each$9(originalDeps, function (dep) {
       indexOf(fullNameList, dep) >= 0 && availableDeps.push(dep);
     });
     return availableDeps;
@@ -63277,7 +63380,7 @@ function leveledFormat(tick, idx, formatter, lang, isUTC) {
       template = template || defaults$1.none;
     }
 
-    if (isArray(template)) {
+    if (isArray$1(template)) {
       var levelId = tick.level == null ? 0 : tick.level >= 0 ? tick.level : template.length + tick.level;
       levelId = Math.min(levelId, template.length - 1);
       template = template[levelId];
@@ -63489,7 +63592,7 @@ var wrapVar = function (varName, seriesIdx) {
 
 
 function formatTpl(tpl, paramsList, encode) {
-  if (!isArray(paramsList)) {
+  if (!isArray$1(paramsList)) {
     paramsList = [paramsList];
   }
 
@@ -63602,7 +63705,7 @@ function capitalFirst(str) {
 
 function convertToColorString(color, defaultColor) {
   defaultColor = defaultColor || 'transparent';
-  return isString(color) ? color : isObject$2(color) ? color.colorStops && (color.colorStops[0] || {}).color || defaultColor : defaultColor;
+  return isString(color) ? color : isObject$3(color) ? color.colorStops && (color.colorStops[0] || {}).color || defaultColor : defaultColor;
 }
 /**
  * open new tab
@@ -63621,7 +63724,7 @@ function windowOpen(link, target) {
   }
 }
 
-var each$3 = each$4;
+var each$8 = each$9;
 /**
  * @public
  */
@@ -63821,9 +63924,103 @@ function getLayoutRect(positionInfo, containerRect, margin) {
   rect.margin = margin;
   return rect;
 }
+/**
+ * Position a zr element in viewport
+ *  Group position is specified by either
+ *  {left, top}, {right, bottom}
+ *  If all properties exists, right and bottom will be igonred.
+ *
+ * Logic:
+ *     1. Scale (against origin point in parent coord)
+ *     2. Rotate (against origin point in parent coord)
+ *     3. Traslate (with el.position by this method)
+ * So this method only fixes the last step 'Traslate', which does not affect
+ * scaling and rotating.
+ *
+ * If be called repeatly with the same input el, the same result will be gotten.
+ *
+ * Return true if the layout happend.
+ *
+ * @param el Should have `getBoundingRect` method.
+ * @param positionInfo
+ * @param positionInfo.left
+ * @param positionInfo.top
+ * @param positionInfo.right
+ * @param positionInfo.bottom
+ * @param positionInfo.width Only for opt.boundingModel: 'raw'
+ * @param positionInfo.height Only for opt.boundingModel: 'raw'
+ * @param containerRect
+ * @param margin
+ * @param opt
+ * @param opt.hv Only horizontal or only vertical. Default to be [1, 1]
+ * @param opt.boundingMode
+ *        Specify how to calculate boundingRect when locating.
+ *        'all': Position the boundingRect that is transformed and uioned
+ *               both itself and its descendants.
+ *               This mode simplies confine the elements in the bounding
+ *               of their container (e.g., using 'right: 0').
+ *        'raw': Position the boundingRect that is not transformed and only itself.
+ *               This mode is useful when you want a element can overflow its
+ *               container. (Consider a rotated circle needs to be located in a corner.)
+ *               In this mode positionInfo.width/height can only be number.
+ */
+
+function positionElement(el, positionInfo, containerRect, margin, opt, out) {
+  var h = !opt || !opt.hv || opt.hv[0];
+  var v = !opt || !opt.hv || opt.hv[1];
+  var boundingMode = opt && opt.boundingMode || 'all';
+  out = out || el;
+  out.x = el.x;
+  out.y = el.y;
+
+  if (!h && !v) {
+    return false;
+  }
+
+  var rect;
+
+  if (boundingMode === 'raw') {
+    rect = el.type === 'group' ? new BoundingRect$1(0, 0, +positionInfo.width || 0, +positionInfo.height || 0) : el.getBoundingRect();
+  } else {
+    rect = el.getBoundingRect();
+
+    if (el.needLocalTransform()) {
+      var transform = el.getLocalTransform(); // Notice: raw rect may be inner object of el,
+      // which should not be modified.
+
+      rect = rect.clone();
+      rect.applyTransform(transform);
+    }
+  } // The real width and height can not be specified but calculated by the given el.
+
+
+  var layoutRect = getLayoutRect(defaults({
+    width: rect.width,
+    height: rect.height
+  }, positionInfo), containerRect, margin); // Because 'tranlate' is the last step in transform
+  // (see zrender/core/Transformable#getLocalTransform),
+  // we can just only modify el.position to get final result.
+
+  var dx = h ? layoutRect.x - rect.x : 0;
+  var dy = v ? layoutRect.y - rect.y : 0;
+
+  if (boundingMode === 'raw') {
+    out.x = dx;
+    out.y = dy;
+  } else {
+    out.x += dx;
+    out.y += dy;
+  }
+
+  if (out === el) {
+    el.markRedraw();
+  }
+
+  return true;
+}
 function fetchLayoutMode(ins) {
   var layoutMode = ins.layoutMode || ins.constructor.layoutMode;
-  return isObject$2(layoutMode) ? layoutMode : layoutMode ? {
+  return isObject$3(layoutMode) ? layoutMode : layoutMode ? {
     type: layoutMode
   } : null;
 }
@@ -63853,7 +64050,7 @@ function fetchLayoutMode(ins) {
 
 function mergeLayoutParam(targetOption, newOption, opt) {
   var ignoreSize = opt && opt.ignoreSize;
-  !isArray(ignoreSize) && (ignoreSize = [ignoreSize, ignoreSize]);
+  !isArray$1(ignoreSize) && (ignoreSize = [ignoreSize, ignoreSize]);
   var hResult = merge(HV_NAMES[0], 0);
   var vResult = merge(HV_NAMES[1], 1);
   copy(HV_NAMES[0], targetOption, hResult);
@@ -63865,10 +64062,10 @@ function mergeLayoutParam(targetOption, newOption, opt) {
     var merged = {};
     var mergedValueCount = 0;
     var enoughParamNumber = 2;
-    each$3(names, function (name) {
+    each$8(names, function (name) {
       merged[name] = targetOption[name];
     });
-    each$3(names, function (name) {
+    each$8(names, function (name) {
       // Consider case: newOption.width is null, which is
       // set by user for removing width setting.
       hasProp(newOption, name) && (newParams[name] = merged[name] = newOption[name]);
@@ -63922,7 +64119,7 @@ function mergeLayoutParam(targetOption, newOption, opt) {
   }
 
   function copy(names, target, source) {
-    each$3(names, function (name) {
+    each$8(names, function (name) {
       target[name] = source[name];
     });
   }
@@ -63941,7 +64138,7 @@ function getLayoutParams(source) {
  */
 
 function copyLayoutParams(target, source) {
-  source && target && each$3(LOCATION_PARAMS, function (name) {
+  source && target && each$8(LOCATION_PARAMS, function (name) {
     source.hasOwnProperty(name) && (target[name] = source[name]);
   });
   return target;
@@ -64147,7 +64344,7 @@ enableTopologicalTravel(ComponentModel, getDependencies);
 
 function getDependencies(componentType) {
   var deps = [];
-  each$4(ComponentModel.getClassesByMainType(componentType), function (clz) {
+  each$9(ComponentModel.getClassesByMainType(componentType), function (clz) {
     deps = deps.concat(clz.dependencies || clz.prototype.dependencies || []);
   }); // Ensure main type.
 
@@ -64353,8 +64550,8 @@ function makeSeriesEncodeForAxisCoordSys(coordDimensions, seriesModel, source) {
   var baseCategoryDimIndex;
   var categoryWayValueDimStart;
   coordDimensions = coordDimensions.slice();
-  each$4(coordDimensions, function (coordDimInfoLoose, coordDimIdx) {
-    var coordDimInfo = isObject$2(coordDimInfoLoose) ? coordDimInfoLoose : coordDimensions[coordDimIdx] = {
+  each$9(coordDimensions, function (coordDimInfoLoose, coordDimIdx) {
+    var coordDimInfo = isObject$3(coordDimInfoLoose) ? coordDimInfoLoose : coordDimensions[coordDimIdx] = {
       name: coordDimInfoLoose
     };
 
@@ -64371,7 +64568,7 @@ function makeSeriesEncodeForAxisCoordSys(coordDimensions, seriesModel, source) {
   }); // TODO
   // Auto detect first time axis and do arrangement.
 
-  each$4(coordDimensions, function (coordDimInfo, coordDimIdx) {
+  each$9(coordDimensions, function (coordDimInfo, coordDimIdx) {
     var coordDimName = coordDimInfo.name;
     var count = getDataDimCountOnCoordDim(coordDimInfo); // In value way.
 
@@ -64432,8 +64629,8 @@ function makeSeriesEncodeForNameBased(seriesModel, source, dimCount) {
   var potentialNameDimIndex;
 
   if (sourceFormat === SOURCE_FORMAT_OBJECT_ROWS || sourceFormat === SOURCE_FORMAT_KEYED_COLUMNS) {
-    each$4(dimensionsDefine, function (dim, idx) {
-      if ((isObject$2(dim) ? dim.name : dim) === 'name') {
+    each$9(dimensionsDefine, function (dim, idx) {
+      if ((isObject$3(dim) ? dim.name : dim) === 'name') {
         potentialNameDimIndex = idx;
       }
     });
@@ -64562,7 +64759,7 @@ function doGuessOrdinal(data, sourceFormat, seriesLayoutBy, dimensionsDefine, st
   if (dimensionsDefine) {
     var dimDefItem = dimensionsDefine[dimIndex];
 
-    if (isObject$2(dimDefItem)) {
+    if (isObject$3(dimDefItem)) {
       dimName = dimDefItem.name;
       dimType = dimDefItem.type;
     } else if (isString(dimDefItem)) {
@@ -64633,7 +64830,7 @@ function doGuessOrdinal(data, sourceFormat, seriesLayoutBy, dimensionsDefine, st
       var item = dataOriginal[i];
       var val = getDataItemValue(item);
 
-      if (!isArray(val)) {
+      if (!isArray$1(val)) {
         return BE_ORDINAL.Not;
       }
 
@@ -64816,7 +65013,7 @@ var BUILTIN_CHARTS_MAP = {
 var componetsMissingLogPrinted = {};
 
 function checkMissingComponents(option) {
-  each$4(option, function (componentOption, mainType) {
+  each$9(option, function (componentOption, mainType) {
     if (!ComponentModel$1.hasClass(mainType)) {
       var componentImportName = BUITIN_COMPONENTS_MAP[mainType];
 
@@ -64919,7 +65116,7 @@ function (_super) {
       var mediaOptions = optionManager.getMediaOption(this);
 
       if (mediaOptions.length) {
-        each$4(mediaOptions, function (mediaOption) {
+        each$9(mediaOptions, function (mediaOption) {
           optionChanged = true;
 
           this._mergeOption(mediaOption, opt);
@@ -64944,7 +65141,7 @@ function (_super) {
     resetSourceDefaulter(this); // If no component class, merge directly.
     // For example: color, animaiton options, etc.
 
-    each$4(newOption, function (componentOption, mainType) {
+    each$9(newOption, function (componentOption, mainType) {
       if (componentOption == null) {
         return;
       }
@@ -64992,7 +65189,7 @@ function (_super) {
       var cmptsCountByMainType = 0;
       var tooltipExists;
       var tooltipWarningLogged;
-      each$4(mappingResult, function (resultItem, index) {
+      each$9(mappingResult, function (resultItem, index) {
         var componentModel = resultItem.existing;
         var newCmptOption = resultItem.newOption;
 
@@ -65105,7 +65302,7 @@ function (_super) {
 
   GlobalModel.prototype.getOption = function () {
     var option = clone$3(this.option);
-    each$4(option, function (optInMainType, mainType) {
+    each$9(option, function (optInMainType, mainType) {
       if (ComponentModel$1.hasClass(mainType)) {
         var opts = normalizeToArray(optInMainType); // Inner cmpts need to be removed.
         // Inner cmpts might not be at last since ec5.0, but still
@@ -65195,7 +65392,7 @@ function (_super) {
 
     if (index != null) {
       result = [];
-      each$4(normalizeToArray(index), function (idx) {
+      each$9(normalizeToArray(index), function (idx) {
         cmpts[idx] && result.push(cmpts[idx]);
       });
     } else if (id != null) {
@@ -65271,7 +65468,7 @@ function (_super) {
         }
       });
     } else {
-      var cmpts = isString(mainType) ? componentsMap.get(mainType) : isObject$2(mainType) ? this.findComponents(mainType) : null;
+      var cmpts = isString(mainType) ? componentsMap.get(mainType) : isObject$3(mainType) ? this.findComponents(mainType) : null;
 
       for (var i = 0; cmpts && i < cmpts.length; i++) {
         var cmpt = cmpts[i];
@@ -65335,7 +65532,7 @@ function (_super) {
 
   GlobalModel.prototype.eachSeries = function (cb, context) {
     assertSeriesInitialized(this);
-    each$4(this._seriesIndices, function (rawSeriesIndex) {
+    each$9(this._seriesIndices, function (rawSeriesIndex) {
       var series = this._componentsMap.get('series')[rawSeriesIndex];
 
       cb.call(context, series, rawSeriesIndex);
@@ -65350,7 +65547,7 @@ function (_super) {
 
 
   GlobalModel.prototype.eachRawSeries = function (cb, context) {
-    each$4(this._componentsMap.get('series'), function (series) {
+    each$9(this._componentsMap.get('series'), function (series) {
       series && cb.call(context, series, series.componentIndex);
     });
   };
@@ -65362,7 +65559,7 @@ function (_super) {
 
   GlobalModel.prototype.eachSeriesByType = function (subType, cb, context) {
     assertSeriesInitialized(this);
-    each$4(this._seriesIndices, function (rawSeriesIndex) {
+    each$9(this._seriesIndices, function (rawSeriesIndex) {
       var series = this._componentsMap.get('series')[rawSeriesIndex];
 
       if (series.subType === subType) {
@@ -65376,7 +65573,7 @@ function (_super) {
 
 
   GlobalModel.prototype.eachRawSeriesByType = function (subType, cb, context) {
-    return each$4(this.getSeriesByType(subType), cb, context);
+    return each$9(this.getSeriesByType(subType), cb, context);
   };
 
   GlobalModel.prototype.isSeriesFiltered = function (seriesModel) {
@@ -65391,7 +65588,7 @@ function (_super) {
   GlobalModel.prototype.filterSeries = function (cb, context) {
     assertSeriesInitialized(this);
     var newSeriesIndices = [];
-    each$4(this._seriesIndices, function (seriesRawIdx) {
+    each$9(this._seriesIndices, function (seriesRawIdx) {
       var series = this._componentsMap.get('series')[seriesRawIdx];
 
       cb.call(context, series, seriesRawIdx) && newSeriesIndices.push(seriesRawIdx);
@@ -65410,7 +65607,7 @@ function (_super) {
       }
     });
     ComponentModel$1.topologicalTravel(componentTypes, ComponentModel$1.getAllClassMainTypes(), function (componentType) {
-      each$4(componentsMap.get(componentType), function (component) {
+      each$9(componentsMap.get(componentType), function (component) {
         if (component && (componentType !== 'series' || !isNotTargetSeries(component, payload))) {
           component.restoreData();
         }
@@ -65421,7 +65618,7 @@ function (_super) {
   GlobalModel.internalField = function () {
     reCreateSeriesIndices = function (ecModel) {
       var seriesIndices = ecModel._seriesIndices = [];
-      each$4(ecModel._componentsMap.get('series'), function (series) {
+      each$9(ecModel._componentsMap.get('series'), function (series) {
         // series may have been removed by `replaceMerge`.
         series && seriesIndices.push(series.componentIndex);
       });
@@ -65453,7 +65650,7 @@ function (_super) {
 
       var airaOption = baseOption.aria;
 
-      if (isObject$2(airaOption) && airaOption.enabled == null) {
+      if (isObject$3(airaOption) && airaOption.enabled == null) {
         airaOption.enabled = true;
       }
 
@@ -65481,7 +65678,7 @@ function mergeTheme(option, theme) {
   // PENDING
   // NOT use `colorLayer` in theme if option has `color`
   var notMergeColorLayer = option.color && !option.colorLayer;
-  each$4(theme, function (themeItem, name) {
+  each$9(theme, function (themeItem, name) {
     if (name === 'colorLayer' && notMergeColorLayer) {
       return;
     } // If it is component model mainType, the model handles that merge later.
@@ -65503,9 +65700,9 @@ function mergeTheme(option, theme) {
 function queryByIdOrName(attr, idOrName, cmpts) {
   // Here is a break from echarts4: string and number are
   // treated as equal.
-  if (isArray(idOrName)) {
+  if (isArray$1(idOrName)) {
     var keyMap_1 = createHashMap();
-    each$4(idOrName, function (idOrNameItem) {
+    each$9(idOrName, function (idOrNameItem) {
       if (idOrNameItem != null) {
         var idName = convertOptionIdName(idOrNameItem, null);
         idName != null && keyMap_1.set(idOrNameItem, true);
@@ -65532,7 +65729,7 @@ function filterBySubType(components, condition) {
 
 function normalizeSetOptionInput(opts) {
   var replaceMergeMainTypeMap = createHashMap();
-  opts && each$4(normalizeToArray(opts.replaceMerge), function (mainType) {
+  opts && each$9(normalizeToArray(opts.replaceMerge), function (mainType) {
     if (process.env.NODE_ENV !== 'production') {
       assert(ComponentModel$1.hasClass(mainType), '"' + mainType + '" is not valid component main type in "replaceMerge"');
     }
@@ -65556,7 +65753,7 @@ var ExtensionAPI =
 /** @class */
 function () {
   function ExtensionAPI(ecInstance) {
-    each$4(availableMethods, function (methodName) {
+    each$9(availableMethods, function (methodName) {
       this[methodName] = bind$1(ecInstance[methodName], ecInstance);
     }, this);
   }
@@ -65577,7 +65774,7 @@ function () {
 
   CoordinateSystemManager.prototype.create = function (ecModel, api) {
     var coordinateSystems = [];
-    each$4(coordinateSystemCreators, function (creater, type) {
+    each$9(coordinateSystemCreators, function (creater, type) {
       var list = creater.create(ecModel, api);
       coordinateSystems = coordinateSystems.concat(list || []);
     });
@@ -65585,7 +65782,7 @@ function () {
   };
 
   CoordinateSystemManager.prototype.update = function (ecModel, api) {
-    each$4(this._coordinateSystems, function (coordSys) {
+    each$9(this._coordinateSystems, function (coordSys) {
       coordSys.update && coordSys.update(ecModel, api);
     });
   };
@@ -65641,10 +65838,10 @@ function () {
   OptionManager.prototype.setOption = function (rawOption, optionPreprocessorFuncs, opt) {
     if (rawOption) {
       // That set dat primitive is dangerous if user reuse the data when setOption again.
-      each$4(normalizeToArray(rawOption.series), function (series) {
+      each$9(normalizeToArray(rawOption.series), function (series) {
         series && series.data && isTypedArray(series.data) && setAsPrimitive(series.data);
       });
-      each$4(normalizeToArray(rawOption.dataset), function (dataset) {
+      each$9(normalizeToArray(rawOption.dataset), function (dataset) {
         dataset && dataset.source && isTypedArray(dataset.source) && setAsPrimitive(dataset.source);
       });
     } // Caution: some series modify option data, if do not clone,
@@ -65859,11 +66056,11 @@ rawOption, optionPreprocessorFuncs, isNew) {
     }
 
   if (hasMedia) {
-    if (isArray(mediaOnRoot)) {
-      each$4(mediaOnRoot, function (singleMedia) {
+    if (isArray$1(mediaOnRoot)) {
+      each$9(mediaOnRoot, function (singleMedia) {
         if (process.env.NODE_ENV !== 'production') {
           // Real case of wrong config.
-          if (singleMedia && !singleMedia.option && isObject$2(singleMedia.query) && isObject$2(singleMedia.query.option)) {
+          if (singleMedia && !singleMedia.option && isObject$3(singleMedia.query) && isObject$3(singleMedia.query.option)) {
             error('Illegal media option. Must be like { media: [ { query: {}, option: {} } ] }');
           }
         }
@@ -65886,15 +66083,15 @@ rawOption, optionPreprocessorFuncs, isNew) {
   }
 
   doPreprocess(baseOption);
-  each$4(timelineOptionsOnRoot, function (option) {
+  each$9(timelineOptionsOnRoot, function (option) {
     return doPreprocess(option);
   });
-  each$4(mediaList, function (media) {
+  each$9(mediaList, function (media) {
     return doPreprocess(media.option);
   });
 
   function doPreprocess(option) {
-    each$4(optionPreprocessorFuncs, function (preProcess) {
+    each$9(optionPreprocessorFuncs, function (preProcess) {
       preProcess(option, isNew);
     });
   }
@@ -65921,7 +66118,7 @@ function applyMediaQuery(query, ecWidth, ecHeight) {
 
   };
   var applicatable = true;
-  each$4(query, function (value, attr) {
+  each$9(query, function (value, attr) {
     var matched = attr.match(QUERY_REG);
 
     if (!matched || !matched[1] || !matched[2]) {
@@ -66051,8 +66248,8 @@ function indicesEquals(indices1, indices2) {
 
 var OptionManager$1 = OptionManager;
 
-var each$2 = each$4;
-var isObject$1 = isObject$2;
+var each$7 = each$9;
+var isObject$2 = isObject$3;
 var POSSIBLE_STYLES = ['areaStyle', 'lineStyle', 'nodeStyle', 'linkStyle', 'chordStyle', 'label', 'labelLine'];
 
 function compatEC2ItemStyle(opt) {
@@ -66155,8 +66352,8 @@ function removeEC3NormalStatus(opt) {
 
 function compatTextStyle(opt, propName) {
   // Check whether is not object (string\null\undefined ...)
-  var labelOptSingle = isObject$1(opt) && opt[propName];
-  var textStyle = isObject$1(labelOptSingle) && labelOptSingle.textStyle;
+  var labelOptSingle = isObject$2(opt) && opt[propName];
+  var textStyle = isObject$2(labelOptSingle) && labelOptSingle.textStyle;
 
   if (textStyle) {
     if (process.env.NODE_ENV !== 'production') {
@@ -66183,7 +66380,7 @@ function compatEC3CommonStyles(opt) {
 }
 
 function processSeries(seriesOpt) {
-  if (!isObject$1(seriesOpt)) {
+  if (!isObject$2(seriesOpt)) {
     return;
   }
 
@@ -66236,7 +66433,7 @@ function processSeries(seriesOpt) {
       }
     }
 
-    each$4(seriesOpt.categories, function (opt) {
+    each$9(seriesOpt.categories, function (opt) {
       removeEC3NormalStatus(opt);
     });
   }
@@ -66265,7 +66462,7 @@ function processSeries(seriesOpt) {
     var mlData = markLine.data;
 
     for (var i = 0; i < mlData.length; i++) {
-      if (isArray(mlData[i])) {
+      if (isArray$1(mlData[i])) {
         compatEC3CommonStyles(mlData[i][0]);
         compatEC3CommonStyles(mlData[i][1]);
       } else {
@@ -66281,7 +66478,7 @@ function processSeries(seriesOpt) {
     compatTextStyle(seriesOpt, 'detail');
   } else if (seriesOpt.type === 'treemap') {
     convertNormalEmphasis(seriesOpt.breadcrumb, 'itemStyle');
-    each$4(seriesOpt.levels, function (opt) {
+    each$9(seriesOpt.levels, function (opt) {
       removeEC3NormalStatus(opt);
     });
   } else if (seriesOpt.type === 'tree') {
@@ -66291,40 +66488,40 @@ function processSeries(seriesOpt) {
 }
 
 function toArr(o) {
-  return isArray(o) ? o : o ? [o] : [];
+  return isArray$1(o) ? o : o ? [o] : [];
 }
 
 function toObj(o) {
-  return (isArray(o) ? o[0] : o) || {};
+  return (isArray$1(o) ? o[0] : o) || {};
 }
 
 function globalCompatStyle(option, isTheme) {
-  each$2(toArr(option.series), function (seriesOpt) {
-    isObject$1(seriesOpt) && processSeries(seriesOpt);
+  each$7(toArr(option.series), function (seriesOpt) {
+    isObject$2(seriesOpt) && processSeries(seriesOpt);
   });
   var axes = ['xAxis', 'yAxis', 'radiusAxis', 'angleAxis', 'singleAxis', 'parallelAxis', 'radar'];
   isTheme && axes.push('valueAxis', 'categoryAxis', 'logAxis', 'timeAxis');
-  each$2(axes, function (axisName) {
-    each$2(toArr(option[axisName]), function (axisOpt) {
+  each$7(axes, function (axisName) {
+    each$7(toArr(option[axisName]), function (axisOpt) {
       if (axisOpt) {
         compatTextStyle(axisOpt, 'axisLabel');
         compatTextStyle(axisOpt.axisPointer, 'label');
       }
     });
   });
-  each$2(toArr(option.parallel), function (parallelOpt) {
+  each$7(toArr(option.parallel), function (parallelOpt) {
     var parallelAxisDefault = parallelOpt && parallelOpt.parallelAxisDefault;
     compatTextStyle(parallelAxisDefault, 'axisLabel');
     compatTextStyle(parallelAxisDefault && parallelAxisDefault.axisPointer, 'label');
   });
-  each$2(toArr(option.calendar), function (calendarOpt) {
+  each$7(toArr(option.calendar), function (calendarOpt) {
     convertNormalEmphasis(calendarOpt, 'itemStyle');
     compatTextStyle(calendarOpt, 'dayLabel');
     compatTextStyle(calendarOpt, 'monthLabel');
     compatTextStyle(calendarOpt, 'yearLabel');
   }); // radar.name.textStyle
 
-  each$2(toArr(option.radar), function (radarOpt) {
+  each$7(toArr(option.radar), function (radarOpt) {
     compatTextStyle(radarOpt, 'name'); // Use axisName instead of name because component has name property
 
     if (radarOpt.name && radarOpt.axisName == null) {
@@ -66346,37 +66543,37 @@ function globalCompatStyle(option, isTheme) {
     }
 
     if (process.env.NODE_ENV !== 'production') {
-      each$2(radarOpt.indicator, function (indicatorOpt) {
+      each$7(radarOpt.indicator, function (indicatorOpt) {
         if (indicatorOpt.text) {
           deprecateReplaceLog('text', 'name', 'radar.indicator');
         }
       });
     }
   });
-  each$2(toArr(option.geo), function (geoOpt) {
-    if (isObject$1(geoOpt)) {
+  each$7(toArr(option.geo), function (geoOpt) {
+    if (isObject$2(geoOpt)) {
       compatEC3CommonStyles(geoOpt);
-      each$2(toArr(geoOpt.regions), function (regionObj) {
+      each$7(toArr(geoOpt.regions), function (regionObj) {
         compatEC3CommonStyles(regionObj);
       });
     }
   });
-  each$2(toArr(option.timeline), function (timelineOpt) {
+  each$7(toArr(option.timeline), function (timelineOpt) {
     compatEC3CommonStyles(timelineOpt);
     convertNormalEmphasis(timelineOpt, 'label');
     convertNormalEmphasis(timelineOpt, 'itemStyle');
     convertNormalEmphasis(timelineOpt, 'controlStyle', true);
     var data = timelineOpt.data;
-    isArray(data) && each$4(data, function (item) {
-      if (isObject$2(item)) {
+    isArray$1(data) && each$9(data, function (item) {
+      if (isObject$3(item)) {
         convertNormalEmphasis(item, 'label');
         convertNormalEmphasis(item, 'itemStyle');
       }
     });
   });
-  each$2(toArr(option.toolbox), function (toolboxOpt) {
+  each$7(toArr(option.toolbox), function (toolboxOpt) {
     convertNormalEmphasis(toolboxOpt, 'iconStyle');
-    each$2(toolboxOpt.feature, function (featureOpt) {
+    each$7(toolboxOpt.feature, function (featureOpt) {
       convertNormalEmphasis(featureOpt, 'iconStyle');
     });
   });
@@ -66422,7 +66619,7 @@ function set(opt, path, val, overwrite) {
 }
 
 function compatLayoutProperties(option) {
-  option && each$4(LAYOUT_PROPERTIES, function (prop) {
+  option && each$9(LAYOUT_PROPERTIES, function (prop) {
     if (prop[0] in option && !(prop[1] in option)) {
       option[prop[1]] = option[prop[0]];
     }
@@ -66511,8 +66708,8 @@ function globalBackwardCompat(option, isTheme) {
   globalCompatStyle(option, isTheme); // Make sure series array for model initialization.
 
   option.series = normalizeToArray(option.series);
-  each$4(option.series, function (seriesOpt) {
-    if (!isObject$2(seriesOpt)) {
+  each$9(option.series, function (seriesOpt) {
+    if (!isObject$3(seriesOpt)) {
       return;
     }
 
@@ -66628,15 +66825,15 @@ function globalBackwardCompat(option, isTheme) {
     option.visualMap = option.dataRange;
   }
 
-  each$4(COMPATITABLE_COMPONENTS, function (componentName) {
+  each$9(COMPATITABLE_COMPONENTS, function (componentName) {
     var options = option[componentName];
 
     if (options) {
-      if (!isArray(options)) {
+      if (!isArray$1(options)) {
         options = [options];
       }
 
-      each$4(options, function (option) {
+      each$9(options, function (option) {
         compatLayoutProperties(option);
       });
     }
@@ -66680,7 +66877,7 @@ function dataStack$1(ecModel) {
 }
 
 function calculateStack(stackInfoList) {
-  each$4(stackInfoList, function (targetStackInfo, idxInStack) {
+  each$9(stackInfoList, function (targetStackInfo, idxInStack) {
     var resultVal = [];
     var resultNaN = [NaN, NaN];
     var dims = [targetStackInfo.stackResultDimension, targetStackInfo.stackedOverDimension];
@@ -66826,7 +67023,7 @@ function detectSourceFormat(data) {
 
   if (isTypedArray(data)) {
     sourceFormat = SOURCE_FORMAT_TYPED_ARRAY;
-  } else if (isArray(data)) {
+  } else if (isArray$1(data)) {
     // FIXME Whether tolerate null in top level array?
     if (data.length === 0) {
       sourceFormat = SOURCE_FORMAT_ARRAY_ROWS;
@@ -66837,15 +67034,15 @@ function detectSourceFormat(data) {
 
       if (item == null) {
         continue;
-      } else if (isArray(item)) {
+      } else if (isArray$1(item)) {
         sourceFormat = SOURCE_FORMAT_ARRAY_ROWS;
         break;
-      } else if (isObject$2(item)) {
+      } else if (isObject$3(item)) {
         sourceFormat = SOURCE_FORMAT_OBJECT_ROWS;
         break;
       }
     }
-  } else if (isObject$2(data)) {
+  } else if (isObject$3(data)) {
     for (var key in data) {
       if (hasOwn(data, key) && isArrayLike(data[key])) {
         sourceFormat = SOURCE_FORMAT_KEYED_COLUMNS;
@@ -66918,13 +67115,13 @@ dimensionsDefine) {
   } else if (sourceFormat === SOURCE_FORMAT_KEYED_COLUMNS) {
     if (!dimensionsDefine) {
       dimensionsDefine = [];
-      each$4(data, function (colArr, key) {
+      each$9(data, function (colArr, key) {
         dimensionsDefine.push(key);
       });
     }
   } else if (sourceFormat === SOURCE_FORMAT_ORIGINAL) {
     var value0 = getDataItemValue(data[0]);
-    dimensionsDetectedCount = isArray(value0) && value0.length || 1;
+    dimensionsDetectedCount = isArray$1(value0) && value0.length || 1;
   } else if (sourceFormat === SOURCE_FORMAT_TYPED_ARRAY) {
     if (process.env.NODE_ENV !== 'production') {
       assert(!!dimensionsDefine, 'dimensions must be given if data is TypedArray.');
@@ -66947,7 +67144,7 @@ function objectRowsCollectDimensions(data) {
 
   if (obj) {
     var dimensions_1 = [];
-    each$4(obj, function (value, key) {
+    each$9(obj, function (value, key) {
       dimensions_1.push(key);
     });
     return dimensions_1;
@@ -66965,7 +67162,7 @@ function normalizeDimensionsOption(dimensionsDefine) {
 
   var nameMap = createHashMap();
   return map$1(dimensionsDefine, function (rawItem, index) {
-    rawItem = isObject$2(rawItem) ? rawItem : {
+    rawItem = isObject$3(rawItem) ? rawItem : {
       name: rawItem
     }; // Other fields will be discarded.
 
@@ -67209,7 +67406,7 @@ function () {
       pure: true,
       appendData: function (newData) {
         var data = this._data;
-        each$4(newData, function (newCol, key) {
+        each$9(newData, function (newCol, key) {
           var oldCol = data[key] || (data[key] = []);
 
           for (var i = 0; i < (newCol || []).length; i++) {
@@ -67453,7 +67650,7 @@ function () {
       params.value = extendParams.interpolatedValue;
     }
 
-    if (labelDimIndex != null && isArray(params.value)) {
+    if (labelDimIndex != null && isArray$1(params.value)) {
       params.value = params.value[labelDimIndex];
     }
 
@@ -67487,7 +67684,7 @@ function () {
 
         var val = retrieveRawValue(data, dataIndex, dimLoose);
 
-        if (extendParams && isArray(extendParams.interpolatedValue)) {
+        if (extendParams && isArray$1(extendParams.interpolatedValue)) {
           var dimIndex = data.getDimensionIndex(dimLoose);
 
           if (dimIndex >= 0) {
@@ -67541,7 +67738,7 @@ function normalizeTooltipFormatResult(result) {
 
   var markupFragment;
 
-  if (isObject$2(result)) {
+  if (isObject$3(result)) {
     if (result.type) {
       markupFragment = result;
     } else {
@@ -67669,7 +67866,7 @@ function () {
       if (!skip && (forceFirstProgress || start < end)) {
         var progress = this._progress;
 
-        if (isArray(progress)) {
+        if (isArray$1(progress)) {
           for (var i = 0; i < progress.length; i++) {
             this._doProgress(progress[i], start, end, modBy, modDataCount);
           }
@@ -67731,7 +67928,7 @@ function () {
       } // To simplify no progress checking, array must has item.
 
 
-      if (isArray(progress) && !progress.length) {
+      if (isArray$1(progress) && !progress.length) {
         progress = null;
       }
     }
@@ -68116,7 +68313,7 @@ function createExternalSource(internalSource, externalTransform) {
   var dimsDef = internalSource.dimensionsDefine;
 
   if (dimsDef) {
-    each$4(dimsDef, function (dimDef, idx) {
+    each$9(dimsDef, function (dimDef, idx) {
       var name = dimDef.name;
       var dimDefExt = {
         index: idx,
@@ -68336,7 +68533,7 @@ pipeIndex) {
     throwError(errMsg);
   }
 
-  if (!isObject$2(transOption)) {
+  if (!isObject$3(transOption)) {
     if (process.env.NODE_ENV !== 'production') {
       errMsg = 'transform declaration must be an object rather than ' + typeof transOption + '.';
     }
@@ -68378,7 +68575,7 @@ pipeIndex) {
   return map$1(resultList, function (result, resultIndex) {
     var errMsg = '';
 
-    if (!isObject$2(result)) {
+    if (!isObject$3(result)) {
       if (process.env.NODE_ENV !== 'production') {
         errMsg = 'A transform should not return some empty results.';
       }
@@ -69870,7 +70067,7 @@ function () {
     var sourceList;
     var upSourceList = [];
     var upstreamSignList = [];
-    each$4(upMgrList, function (upMgr) {
+    each$9(upMgrList, function (upMgr) {
       upMgr.prepareSource();
       var upSource = upMgr.getSource(fromTransformResult || 0);
       var errMsg = '';
@@ -70107,7 +70304,7 @@ function getBlockGapLevel(frag) {
     var gapLevel_1 = 0;
     var subBlockLen = frag.blocks.length;
     var hasInnerGap_1 = subBlockLen > 1 || subBlockLen > 0 && !frag.noHeader;
-    each$4(frag.blocks, function (subBlock) {
+    each$9(frag.blocks, function (subBlock) {
       var subGapLevel = getBlockGapLevel(subBlock); // If the some of the sub-blocks have some gaps (like 10px) inside, this block
       // should use a larger gap (like 20px) to distinguish those sub-blocks.
 
@@ -70129,7 +70326,7 @@ function buildSection(ctx, fragment, topMarginForOuterGap, toolTipTextStyle) {
   var gaps = getGap(getBlockGapLevel(fragment));
   var subMarkupTextList = [];
   var subBlocks = fragment.blocks || [];
-  assert(!subBlocks || isArray(subBlocks));
+  assert(!subBlocks || isArray$1(subBlocks));
   subBlocks = subBlocks || [];
   var orderMode = ctx.orderMode;
 
@@ -70151,7 +70348,7 @@ function buildSection(ctx, fragment, topMarginForOuterGap, toolTipTextStyle) {
       }
   }
 
-  each$4(subBlocks, function (subBlock, idx) {
+  each$9(subBlocks, function (subBlock, idx) {
     var valueFormatter = fragment.valueFormatter;
     var subMarkupText = getBuilder(subBlock)( // Inherit valueFormatter
     valueFormatter ? extend(extend({}, ctx), {
@@ -70184,9 +70381,9 @@ function buildNameValue(ctx, fragment, topMarginForOuterGap, toolTipTextStyle) {
   var useUTC = ctx.useUTC;
 
   var valueFormatter = fragment.valueFormatter || ctx.valueFormatter || function (value) {
-    value = isArray(value) ? value : [value];
+    value = isArray$1(value) ? value : [value];
     return map$1(value, function (val, idx) {
-      return makeValueReadable(val, isArray(valueTypeOption) ? valueTypeOption[idx] : valueTypeOption, useUTC);
+      return makeValueReadable(val, isArray$1(valueTypeOption) ? valueTypeOption[idx] : valueTypeOption, useUTC);
     });
   };
 
@@ -70252,7 +70449,7 @@ function wrapInlineValueHTML(valueList, alignRight, valueCloseToMarker, style) {
   // Do not too close to marker, considering there are multiple values separated by spaces.
   var paddingStr = valueCloseToMarker ? '10px' : '20px';
   var alignCSS = alignRight ? "float:right;margin-left:" + paddingStr : '';
-  valueList = isArray(valueList) ? valueList : [valueList];
+  valueList = isArray$1(valueList) ? valueList : [valueList];
   return "<span style=\"" + alignCSS + ";" + style + "\">" // Value has commas inside, so use '  ' as delimiter for multiple values.
   + map$1(valueList, function (value) {
     return encodeHTML(value);
@@ -70271,7 +70468,7 @@ function wrapInlineValueRichText(ctx, values, alignRight, valueCloseToMarker, st
     align: 'right'
   }); // Value has commas inside, so use '  ' as delimiter for multiple values.
 
-  return ctx.markupStyleCreator.wrapRichTextStyle(isArray(values) ? values.join('  ') : values, styles);
+  return ctx.markupStyleCreator.wrapRichTextStyle(isArray$1(values) ? values.join('  ') : values, styles);
 }
 
 function retrieveVisualColorForTooltipMarker(series, dataIndex) {
@@ -70345,8 +70542,8 @@ function () {
   TooltipMarkupStyleCreator.prototype.wrapRichTextStyle = function (text, styles) {
     var finalStl = {};
 
-    if (isArray(styles)) {
-      each$4(styles, function (stl) {
+    if (isArray$1(styles)) {
+      each$9(styles, function (stl) {
         return extend(finalStl, stl);
       });
     } else {
@@ -70370,7 +70567,7 @@ function defaultSeriesFormatTooltip(opt) {
   var tooltipDims = data.mapDimensionsAll('defaultedTooltip');
   var tooltipDimLen = tooltipDims.length;
   var value = series.getRawValue(dataIndex);
-  var isValueArr = isArray(value);
+  var isValueArr = isArray$1(value);
   var markerColor = retrieveVisualColorForTooltipMarker(series, dataIndex); // Complicated rule for pretty tooltip.
 
   var inlineValue;
@@ -70429,10 +70626,10 @@ function formatTooltipArrayValue(value, series, dataIndex, tooltipDims, colorStr
   var inlineValues = [];
   var inlineValueTypes = [];
   var blocks = [];
-  tooltipDims.length ? each$4(tooltipDims, function (dim) {
+  tooltipDims.length ? each$9(tooltipDims, function (dim) {
     setEachItem(retrieveRawValue(data, dataIndex, dim), dim);
   }) // By default, all dims is used on tooltip.
-  : each$4(value, setEachItem);
+  : each$9(value, setEachItem);
 
   function setEachItem(val, dim) {
     var dimInfo = data.getDimensionInfo(dim); // If `dimInfo.tooltip` is not set, show tooltip.
@@ -70904,7 +71101,7 @@ function (_super) {
     if (selectedMode === 'series') {
       option.selectedMap = 'all';
     } else if (selectedMode === 'multiple') {
-      if (!isObject$2(option.selectedMap)) {
+      if (!isObject$3(option.selectedMap)) {
         option.selectedMap = {};
       }
 
@@ -70995,7 +71192,7 @@ function getSeriesAutoName(seriesModel) {
   var data = seriesModel.getRawData();
   var dataDims = data.mapDimensionsAll('seriesName');
   var nameArr = [];
-  each$4(dataDims, function (dataDim) {
+  each$9(dataDims, function (dataDim) {
     var dimInfo = data.getDimensionInfo(dataDim);
     dimInfo.displayName && nameArr.push(dimInfo.displayName);
   });
@@ -71021,7 +71218,7 @@ function dataTaskProgress(param, context) {
 
 
 function wrapData(data, seriesModel) {
-  each$4(concatArray(data.CHANGABLE_METHODS, data.DOWNSAMPLE_METHODS), function (methodName) {
+  each$9(concatArray(data.CHANGABLE_METHODS, data.DOWNSAMPLE_METHODS), function (methodName) {
     data.wrapMethod(methodName, curry$1(onDataChange, seriesModel));
   });
 }
@@ -71259,7 +71456,7 @@ function toggleHighlight(data, payload, state) {
   var highlightDigit = payload && payload.highlightKey != null ? getHighlightDigit(payload.highlightKey) : null;
 
   if (dataIndex != null) {
-    each$4(normalizeToArray(dataIndex), function (dataIdx) {
+    each$9(normalizeToArray(dataIndex), function (dataIdx) {
       elSetState(data.getItemGraphicEl(dataIdx), state, highlightDigit);
     });
   } else {
@@ -71938,7 +72135,7 @@ function () {
     var stageTaskMap = this._stageTaskMap;
     var ecModel = this.api.getModel();
     var api = this.api;
-    each$4(this._allHandlers, function (handler) {
+    each$9(this._allHandlers, function (handler) {
       var record = stageTaskMap.get(handler.uid) || stageTaskMap.set(handler.uid, {});
       var errMsg = '';
 
@@ -71979,7 +72176,7 @@ function () {
     opt = opt || {};
     var unfinished = false;
     var scheduler = this;
-    each$4(stageHandlers, function (stageHandler, idx) {
+    each$9(stageHandlers, function (stageHandler, idx) {
       if (opt.visualType && opt.visualType !== stageHandler.visualType) {
         return;
       }
@@ -72160,7 +72357,7 @@ function () {
     // dirty info from upsteam.
     else {
         overallProgress = false;
-        each$4(ecModel.getSeries(), createStub);
+        each$9(ecModel.getSeries(), createStub);
       }
 
     function createStub(seriesModel) {
@@ -72630,7 +72827,7 @@ function () {
           dataIndex: 1,
           dataType: 1
         };
-        each$4(query, function (val, key) {
+        each$9(query, function (val, key) {
           var reserved = false;
 
           for (var i = 0; i < suffixes_1.length; i++) {
@@ -72880,6 +73077,33 @@ function getVisualFromData(data, key) {
 
   }
 }
+function setItemVisualFromData(data, dataIndex, key, value) {
+  switch (key) {
+    case 'color':
+      // Make sure not sharing style object.
+      var style = data.ensureUniqueItemVisual(dataIndex, 'style');
+      style[data.getVisual('drawType')] = value; // Mark the color has been changed, not from palette anymore
+
+      data.setItemVisual(dataIndex, 'colorFromPalette', false);
+      break;
+
+    case 'opacity':
+      data.ensureUniqueItemVisual(dataIndex, 'style').opacity = value;
+      break;
+
+    case 'symbol':
+    case 'symbolSize':
+    case 'liftZ':
+      data.setItemVisual(dataIndex, key, value);
+      break;
+
+    default:
+      if (process.env.NODE_ENV !== 'production') {
+        console.warn("Unknown visual type " + key);
+      }
+
+  }
+}
 
 // Inlucdes: pieSelect, pieUnSelect, pieToggleSelect, mapSelect, mapUnSelect, mapToggleSelect
 
@@ -72896,7 +73120,7 @@ function createLegacyDataSelectAction(seriesType, ecRegisterAction) {
     return seriesIndices;
   }
 
-  each$4([[seriesType + 'ToggleSelect', 'toggleSelect'], [seriesType + 'Select', 'select'], [seriesType + 'UnSelect', 'unselect']], function (eventsMap) {
+  each$9([[seriesType + 'ToggleSelect', 'toggleSelect'], [seriesType + 'Select', 'select'], [seriesType + 'UnSelect', 'unselect']], function (eventsMap) {
     ecRegisterAction(eventsMap[0], function (payload, ecModel, api) {
       payload = extend({}, payload);
 
@@ -72935,7 +73159,7 @@ function handleSeriesLegacySelectEvents(type, eventPostfix, ecIns, ecModel, payl
           ecIns.trigger(legacyEventName, {
             type: legacyEventName,
             seriesId: seriesModel.id,
-            name: isArray(dataIndex) ? data.getName(dataIndex[0]) : data.getName(dataIndex),
+            name: isArray$1(dataIndex) ? data.getName(dataIndex[0]) : data.getName(dataIndex),
             selected: isString(selectedMap) ? selectedMap : extend({}, selectedMap)
           });
         }
@@ -73253,7 +73477,7 @@ var symbolShapeMakers = {
   }
 };
 var symbolBuildProxies = {};
-each$4(symbolCtors, function (Ctor, name) {
+each$9(symbolCtors, function (Ctor, name) {
   symbolBuildProxies[name] = new Ctor();
 });
 var SymbolClz = Path$1.extend({
@@ -73358,7 +73582,7 @@ function normalizeSymbolOffset(symbolOffset, symbolSize) {
     return;
   }
 
-  if (!isArray(symbolOffset)) {
+  if (!isArray$1(symbolOffset)) {
     symbolOffset = [symbolOffset, symbolOffset];
   }
 
@@ -73454,7 +73678,7 @@ function normalizeLineDash(lineType, lineWidth) {
         : lineType === 'dotted'
             ? [lineWidth]
             : isNumber(lineType)
-                ? [lineType] : isArray(lineType) ? lineType : null;
+                ? [lineType] : isArray$1(lineType) ? lineType : null;
 }
 function getLineDash(el) {
     var style = el.style;
@@ -74083,7 +74307,7 @@ function createOrUpdatePatternFromDecal(decalObject, api) {
     for (var i = 0; i < decalKeys.length; ++i) {
       var value = decalOpt[decalKeys[i]];
 
-      if (value != null && !isArray(value) && !isString(value) && !isNumber(value) && typeof value !== 'boolean') {
+      if (value != null && !isArray$1(value) && !isString(value) && !isNumber(value) && typeof value !== 'boolean') {
         isValidKey = false;
         break;
       }
@@ -74811,7 +75035,7 @@ function (_super) {
     var replaceMerge;
     var transitionOpt;
 
-    if (isObject$2(notMerge)) {
+    if (isObject$3(notMerge)) {
       lazyUpdate = notMerge.lazyUpdate;
       silent = notMerge.silent;
       replaceMerge = notMerge.replaceMerge;
@@ -74959,7 +75183,7 @@ function (_super) {
     var zr = this._zr;
     var list = zr.storage.getDisplayList(); // Stop animations
 
-    each$4(list, function (el) {
+    each$9(list, function (el) {
       el.stopAnimation(null, true);
     });
     return zr.painter.toDataURL();
@@ -74976,7 +75200,7 @@ function (_super) {
     var ecModel = this._model;
     var excludesComponentViews = [];
     var self = this;
-    each$4(excludeComponents, function (componentType) {
+    each$9(excludeComponents, function (componentType) {
       ecModel.eachComponent({
         mainType: componentType
       }, function (component) {
@@ -74989,7 +75213,7 @@ function (_super) {
       });
     });
     var url = this._zr.painter.getType() === 'svg' ? this.getSvgDataURL() : this.renderToCanvas(opts).toDataURL('image/' + (opts && opts.type || 'png'));
-    each$4(excludesComponentViews, function (view) {
+    each$9(excludesComponentViews, function (view) {
       view.group.ignore = false;
     });
     return url;
@@ -75014,7 +75238,7 @@ function (_super) {
       var bottom_1 = -MAX_NUMBER;
       var canvasList_1 = [];
       var dpr_1 = opts && opts.pixelRatio || this.getDevicePixelRatio();
-      each$4(instances, function (chart, id) {
+      each$9(instances, function (chart, id) {
         if (chart.group === groupId) {
           var canvas = isSvg ? chart.getZr().painter.getSvgDom().innerHTML : chart.renderToCanvas(clone$3(opts));
           var boundingRect = chart.getDom().getBoundingClientRect();
@@ -75046,7 +75270,7 @@ function (_super) {
 
       if (isSvg) {
         var content_1 = '';
-        each$4(canvasList_1, function (item) {
+        each$9(canvasList_1, function (item) {
           var x = item.left - left_1;
           var y = item.top - top_1;
           content_1 += '<g transform="translate(' + x + ',' + y + ')">' + item.dom + '</g>';
@@ -75075,7 +75299,7 @@ function (_super) {
           }));
         }
 
-        each$4(canvasList_1, function (item) {
+        each$9(canvasList_1, function (item) {
           var img = new ZRImage$1({
             style: {
               x: item.left * dpr_1 - left_1,
@@ -75116,8 +75340,8 @@ function (_super) {
     var ecModel = this._model;
     var result;
     var findResult = parseFinder(ecModel, finder);
-    each$4(findResult, function (models, key) {
-      key.indexOf('Models') >= 0 && each$4(models, function (model) {
+    each$9(findResult, function (models, key) {
+      key.indexOf('Models') >= 0 && each$9(models, function (model) {
         var coordSys = model.coordinateSystem;
 
         if (coordSys && coordSys.containPoint) {
@@ -75195,7 +75419,7 @@ function (_super) {
   ECharts.prototype._initEvents = function () {
     var _this = this;
 
-    each$4(MOUSE_EVENT_NAMES, function (eveName) {
+    each$9(MOUSE_EVENT_NAMES, function (eveName) {
       var handler = function (e) {
         var ecModel = _this.getModel();
 
@@ -75275,14 +75499,14 @@ function (_super) {
 
       _this._zr.on(eveName, handler, _this);
     });
-    each$4(eventActionMap, function (actionType, eventType) {
+    each$9(eventActionMap, function (actionType, eventType) {
       _this._messageCenter.on(eventType, function (event) {
         this.trigger(eventType, event);
       }, _this);
     }); // Extra events
     // TODO register?
 
-    each$4(['selectchanged'], function (eventType) {
+    each$9(['selectchanged'], function (eventType) {
       _this._messageCenter.on(eventType, function (event) {
         this.trigger(eventType, event);
       }, _this);
@@ -75321,10 +75545,10 @@ function (_super) {
     var chart = this;
     var api = chart._api;
     var ecModel = chart._model;
-    each$4(chart._componentsViews, function (component) {
+    each$9(chart._componentsViews, function (component) {
       component.dispose(ecModel, api);
     });
-    each$4(chart._chartsViews, function (chart) {
+    each$9(chart._chartsViews, function (chart) {
       chart.dispose(ecModel, api);
     }); // Dispose after all views disposed
 
@@ -75405,7 +75629,7 @@ function (_super) {
       return;
     }
 
-    if (isObject$2(name)) {
+    if (isObject$3(name)) {
       cfg = name;
       name = '';
     }
@@ -75463,7 +75687,7 @@ function (_super) {
       return;
     }
 
-    if (!isObject$2(opt)) {
+    if (!isObject$3(opt)) {
       opt = {
         silent: !!opt
       };
@@ -75642,7 +75866,7 @@ function (_super) {
         // FIXME
         // Chart will not be update directly here, except set dirty.
         // But there is no such scenario now.
-        each$4([].concat(ecIns._componentsViews).concat(ecIns._chartsViews), callView);
+        each$9([].concat(ecIns._componentsViews).concat(ecIns._chartsViews), callView);
         return;
       }
 
@@ -75661,7 +75885,7 @@ function (_super) {
 
       if (excludeSeriesId != null) {
         excludeSeriesIdMap = createHashMap();
-        each$4(normalizeToArray(excludeSeriesId), function (id) {
+        each$9(normalizeToArray(excludeSeriesId), function (id) {
           var modelId = convertOptionIdName(id, null);
 
           if (modelId != null) {
@@ -75697,7 +75921,7 @@ function (_super) {
 
 
             if (dispatchers) {
-              each$4(dispatchers, function (dispatcher) {
+              each$9(dispatchers, function (dispatcher) {
                 payload.type === HIGHLIGHT_ACTION_TYPE ? enterEmphasis(dispatcher) : leaveEmphasis(dispatcher);
               });
             }
@@ -75959,7 +76183,7 @@ function (_super) {
         allLeaveBlur(this._api);
       }
 
-      each$4(payloads, function (batchItem) {
+      each$9(payloads, function (batchItem) {
         // Action can specify the event by return it.
         eventObj = actionWrap.action(batchItem, _this._model, _this._api); // Emit event outside
 
@@ -76150,7 +76374,7 @@ function (_super) {
 
           return a.zlevel - b.zlevel;
         });
-        each$4(zLevels, function (item) {
+        each$9(zLevels, function (item) {
           var componentModel = ecModel.getComponent(item.type, item.idx);
           var zlevel = item.zlevel;
           var key = item.key;
@@ -76182,12 +76406,12 @@ function (_super) {
     render = function (ecIns, ecModel, api, payload, updateParams) {
       allocateZlevels(ecModel);
       renderComponents(ecIns, ecModel, api, payload, updateParams);
-      each$4(ecIns._chartsViews, function (chart) {
+      each$9(ecIns._chartsViews, function (chart) {
         chart.__alive = false;
       });
       renderSeries(ecIns, ecModel, api, payload, updateParams); // Remove groups of unrendered charts
 
-      each$4(ecIns._chartsViews, function (chart) {
+      each$9(ecIns._chartsViews, function (chart) {
         if (!chart.__alive) {
           chart.remove(ecModel, api);
         }
@@ -76195,7 +76419,7 @@ function (_super) {
     };
 
     renderComponents = function (ecIns, ecModel, api, payload, updateParams, dirtyList) {
-      each$4(dirtyList || ecIns._componentsViews, function (componentView) {
+      each$9(dirtyList || ecIns._componentsViews, function (componentView) {
         var componentModel = componentView.__model;
         clearStates(componentModel, componentView);
         componentView.render(componentModel, ecModel, api, payload);
@@ -76570,7 +76794,7 @@ function (_super) {
         }
       }
 
-      each$4(eventActionMap, function (actionType, eventType) {
+      each$9(eventActionMap, function (actionType, eventType) {
         chart._messageCenter.on(eventType, function (event) {
           if (connectedGroups[chart.group] && chart[CONNECT_STATUS_KEY] !== CONNECT_STATUS_PENDING) {
             if (event && event.escapeConnect) {
@@ -76579,13 +76803,13 @@ function (_super) {
 
             var action_1 = chart.makeActionFromEvent(event);
             var otherCharts_1 = [];
-            each$4(instances, function (otherChart) {
+            each$9(instances, function (otherChart) {
               if (otherChart !== chart && otherChart.group === chart.group) {
                 otherCharts_1.push(otherChart);
               }
             });
             updateConnectedChartsStatus(otherCharts_1, CONNECT_STATUS_PENDING);
-            each$4(otherCharts_1, function (otherChart) {
+            each$9(otherCharts_1, function (otherChart) {
               if (otherChart[CONNECT_STATUS_KEY] !== CONNECT_STATUS_UPDATING) {
                 otherChart.dispatchAction(action_1);
               }
@@ -76717,17 +76941,17 @@ function init(dom, theme, opts) {
 
 function connect(groupId) {
   // Is array of charts
-  if (isArray(groupId)) {
+  if (isArray$1(groupId)) {
     var charts = groupId;
     groupId = null; // If any chart has group
 
-    each$4(charts, function (chart) {
+    each$9(charts, function (chart) {
       if (chart.group != null) {
         groupId = chart.group;
       }
     });
     groupId = groupId || 'g_' + groupIdBase++;
-    each$4(charts, function (chart) {
+    each$9(charts, function (chart) {
       chart.group = groupId;
     });
   }
@@ -76813,7 +77037,7 @@ function registerAction(actionInfo, eventName, action) {
     eventName = '';
   }
 
-  var actionType = isObject$2(actionInfo) ? actionInfo.type : [actionInfo, actionInfo = {
+  var actionType = isObject$3(actionInfo) ? actionInfo.type : [actionInfo, actionInfo = {
     event: eventName
   }][0]; // Event name is all lowercase
 
@@ -76864,7 +77088,7 @@ function registerVisual(priority, visualTask) {
 var registeredTasks = [];
 
 function normalizeRegister(targetList, priority, fn, defaultPriority, visualType) {
-  if (isFunction(priority) || isObject$2(priority)) {
+  if (isFunction(priority) || isObject$3(priority)) {
     fn = priority;
     priority = defaultPriority;
   }
@@ -76875,7 +77099,7 @@ function normalizeRegister(targetList, priority, fn, defaultPriority, visualType
     } // Check duplicate
 
 
-    each$4(targetList, function (wrap) {
+    each$9(targetList, function (wrap) {
       assert(wrap.__raw !== fn);
     });
   } // Already registered
@@ -76926,7 +77150,7 @@ function setCanvasCreator(creator) {
  * Compatible with previous `echarts.registerMap`.
  */
 
-function registerMap(mapName, geoJson, specialAreas) {
+function registerMap$1(mapName, geoJson, specialAreas) {
   var registerMap = getImpl('registerMap');
   registerMap && registerMap(mapName, geoJson, specialAreas);
 }
@@ -77326,7 +77550,7 @@ function summarizeDimensions(data, schema) {
   var defaultedLabel = [];
   var defaultedTooltip = [];
   var userOutputEncode = {};
-  each$4(data.dimensions, function (dimName) {
+  each$9(data.dimensions, function (dimName) {
     var dimItem = data.getDimensionInfo(dimName);
     var coordDim = dimItem.coordDim;
 
@@ -77673,7 +77897,7 @@ function createDimNameMap(dimsDef) {
 
   for (var i = 0; i < (dimsDef || []).length; i++) {
     var dimDefItemRaw = dimsDef[i];
-    var userDimName = isObject$2(dimDefItemRaw) ? dimDefItemRaw.name : dimDefItemRaw;
+    var userDimName = isObject$3(dimDefItemRaw) ? dimDefItemRaw.name : dimDefItemRaw;
 
     if (userDimName != null && dataDimNameMap.get(userDimName) == null) {
       dataDimNameMap.set(userDimName, i);
@@ -77690,7 +77914,7 @@ function shouldOmitUnusedDimensions(dimCount) {
   return dimCount > 30;
 }
 
-var isObject = isObject$2;
+var isObject$1 = isObject$3;
 var map = map$1;
 var CtorInt32Array = typeof Int32Array === 'undefined' ? Array : Int32Array; // Use prefix to avoid index to be the same as otherIdList[idx],
 // which will cause weird udpate animation.
@@ -77823,7 +78047,7 @@ function () {
 
     if (this._dimOmitted) {
       var dimIdxToName_1 = this._dimIdxToName = createHashMap();
-      each$4(dimensionNames, function (dimName) {
+      each$9(dimensionNames, function (dimName) {
         dimIdxToName_1.set(dimensionInfos[dimName].storeDimIndex, dimName);
       });
     }
@@ -78189,7 +78413,7 @@ function () {
   };
 
   SeriesData.prototype.setCalculationInfo = function (key, value) {
-    isObject(key) ? extend(this._calculationInfo, key) : this._calculationInfo[key] = value;
+    isObject$1(key) ? extend(this._calculationInfo, key) : this._calculationInfo[key] = value;
   };
   /**
    * @return Never be null/undefined. `number` will be converted to string. Becuase:
@@ -78289,7 +78513,7 @@ function () {
     var _this = this;
 
     var store = this._store;
-    return isArray(dimensions) ? store.getValues(map(dimensions, function (dim) {
+    return isArray$1(dimensions) ? store.getValues(map(dimensions, function (dim) {
       return _this._getStoreDimIndex(dim);
     }), idx) : store.getValues(dimensions);
   };
@@ -78416,7 +78640,7 @@ function () {
 
     var innerRange = {};
     var dims = keys(range);
-    each$4(dims, function (dim) {
+    each$9(dims, function (dim) {
       var dimIdx = _this._getStoreDimIndex(dim);
 
       innerRange[dimIdx] = range[dim];
@@ -78460,7 +78684,7 @@ function () {
     var fCtx = ctx || ctxCompat || this;
 
     if (process.env.NODE_ENV !== 'production') {
-      each$4(normalizeDimensions(dims), function (dim) {
+      each$9(normalizeDimensions(dims), function (dim) {
         var dimInfo = _this.getDimensionInfo(dim);
 
         if (!dimInfo.isCalculationCoord) {
@@ -78540,7 +78764,7 @@ function () {
   SeriesData.prototype.setVisual = function (kvObj, val) {
     this._visual = this._visual || {};
 
-    if (isObject(kvObj)) {
+    if (isObject$1(kvObj)) {
       extend(this._visual, kvObj);
     } else {
       this._visual[kvObj] = val;
@@ -78590,9 +78814,9 @@ function () {
     if (val == null) {
       val = this.getVisual(key); // TODO Performance?
 
-      if (isArray(val)) {
+      if (isArray$1(val)) {
         val = val.slice();
-      } else if (isObject(val)) {
+      } else if (isObject$1(val)) {
         val = extend({}, val);
       }
 
@@ -78607,7 +78831,7 @@ function () {
     var itemVisual = this._itemVisuals[idx] || {};
     this._itemVisuals[idx] = itemVisual;
 
-    if (isObject(key)) {
+    if (isObject$1(key)) {
       extend(itemVisual, key);
     } else {
       itemVisual[key] = value;
@@ -78624,7 +78848,7 @@ function () {
   };
 
   SeriesData.prototype.setLayout = function (key, val) {
-    isObject(key) ? extend(this._layout, key) : this._layout[key] = val;
+    isObject$1(key) ? extend(this._layout, key) : this._layout[key] = val;
   };
   /**
    * Get layout property.
@@ -78674,7 +78898,7 @@ function () {
   };
 
   SeriesData.prototype.eachItemGraphicEl = function (cb, context) {
-    each$4(this._graphicEls, function (el, idx) {
+    each$9(this._graphicEls, function (el, idx) {
       if (el) {
         cb && cb.call(context, el, idx);
       }
@@ -78723,7 +78947,7 @@ function () {
   SeriesData.internalField = function () {
     prepareInvertedIndex = function (data) {
       var invertedIndicesMap = data._invertedIndicesMap;
-      each$4(invertedIndicesMap, function (invertedIndices, dim) {
+      each$9(invertedIndicesMap, function (invertedIndices, dim) {
         var dimInfo = data._dimInfos[dim]; // Currently, only dimensions that has ordinalMeta can create inverted indices.
 
         var ordinalMeta = dimInfo.ordinalMeta;
@@ -78768,7 +78992,7 @@ function () {
     };
 
     normalizeDimensions = function (dimensions) {
-      if (!isArray(dimensions)) {
+      if (!isArray$1(dimensions)) {
         dimensions = dimensions != null ? [dimensions] : [];
       }
 
@@ -78787,13 +79011,13 @@ function () {
     };
 
     transferProperties = function (target, source) {
-      each$4(TRANSFERABLE_PROPERTIES.concat(source.__wrappedMethods || []), function (propName) {
+      each$9(TRANSFERABLE_PROPERTIES.concat(source.__wrappedMethods || []), function (propName) {
         if (source.hasOwnProperty(propName)) {
           target[propName] = source[propName];
         }
       });
       target.__wrappedMethods = source.__wrappedMethods;
-      each$4(CLONE_PROPERTIES, function (propName) {
+      each$9(CLONE_PROPERTIES, function (propName) {
         target[propName] = clone$3(source[propName]);
       });
       target._calculationInfo = extend({}, source._calculationInfo);
@@ -78889,7 +79113,7 @@ source, opt) {
 
     if (idx < 0) {
       var dimDefItemRaw = dimsDef[dimIdx];
-      var dimDefItem = isObject$2(dimDefItemRaw) ? dimDefItemRaw : {
+      var dimDefItem = isObject$3(dimDefItemRaw) ? dimDefItemRaw : {
         name: dimDefItemRaw
       };
       var resultItem = new SeriesDimensionDefine$1();
@@ -78932,7 +79156,7 @@ source, opt) {
     }
 
     var validDataDims = encodeDefMap.set(coordDim, []);
-    each$4(dataDims, function (resultDimIdxOrName, idx) {
+    each$9(dataDims, function (resultDimIdxOrName, idx) {
       // The input resultDimIdx can be dim name or index.
       var resultDimIdx = isString(resultDimIdxOrName) ? dataDimNameMap.get(resultDimIdxOrName) : resultDimIdxOrName;
 
@@ -78944,7 +79168,7 @@ source, opt) {
   }); // Apply templetes and default order from `sysDims`.
 
   var availDimIdx = 0;
-  each$4(sysDims, function (sysDimItemRaw) {
+  each$9(sysDims, function (sysDimItemRaw) {
     var coordDim;
     var sysDimItemDimsDef;
     var sysDimItemOtherDims;
@@ -78985,7 +79209,7 @@ source, opt) {
     } // Apply templates.
 
 
-    each$4(dataDims, function (resultDimIdx, coordDimIndex) {
+    each$9(dataDims, function (resultDimIdx, coordDimIndex) {
       var resultItem = getResultItem(resultDimIdx); // Coordinate system has a higher priority on dim type than source.
 
       if (isUsingSourceDimensionsDef && sysDimItem.type != null) {
@@ -78996,7 +79220,7 @@ source, opt) {
 
       if (resultItem.name == null && sysDimItemDimsDef) {
         var sysDimItemDimsDefItem = sysDimItemDimsDef[coordDimIndex];
-        !isObject$2(sysDimItemDimsDefItem) && (sysDimItemDimsDefItem = {
+        !isObject$3(sysDimItemDimsDefItem) && (sysDimItemDimsDefItem = {
           name: sysDimItemDimsDefItem
         });
         resultItem.name = resultItem.displayName = sysDimItemDimsDefItem.name;
@@ -79069,7 +79293,7 @@ source, opt) {
       }
     }
   } else {
-    each$4(resultList, function (resultItem) {
+    each$9(resultList, function (resultItem) {
       // PENDING: guessOrdinal or let user specify type: 'ordinal' manually?
       ifNoNameFillWithCoordName(resultItem);
     }); // Sort dimensions: there are some rule that use the last dim as label,
@@ -79121,10 +79345,10 @@ function getDimCount(source, sysDims, dimsDef, optDimCount) {
   // Note that the result dimCount should not small than columns count
   // of data, otherwise `dataDimNameMap` checking will be incorrect.
   var dimCount = Math.max(source.dimensionsDetectedCount || 1, sysDims.length, dimsDef.length, optDimCount || 0);
-  each$4(sysDims, function (sysDimItem) {
+  each$9(sysDims, function (sysDimItem) {
     var sysDimItemDimsDef;
 
-    if (isObject$2(sysDimItem) && (sysDimItemDimsDef = sysDimItem.dimsDef)) {
+    if (isObject$3(sysDimItem) && (sysDimItemDimsDef = sysDimItem.dimsDef)) {
       dimCount = Math.max(dimCount, sysDimItemDimsDef.length);
     }
   });
@@ -79274,7 +79498,7 @@ var fetchers = {
     var ecModel = seriesModel.ecModel;
     var parallelModel = ecModel.getComponent('parallel', seriesModel.get('parallelIndex'));
     var coordSysDims = result.coordSysDims = parallelModel.dimensions.slice();
-    each$4(parallelModel.parallelAxisIndex, function (axisIndex, index) {
+    each$9(parallelModel.parallelAxisIndex, function (axisIndex, index) {
       var axisModel = ecModel.getComponent('parallelAxis', axisIndex);
       var axisDim = coordSysDims[index];
       axisMap.set(axisDim, axisModel);
@@ -79337,7 +79561,7 @@ function enableDataStack(seriesModel, dimensionsInput, opt) {
   var stackedDimInfo;
   var stackResultDimension;
   var stackedOverDimension;
-  each$4(dimensionDefineList, function (dimensionInfo, index) {
+  each$9(dimensionDefineList, function (dimensionInfo, index) {
     if (isString(dimensionInfo)) {
       dimensionDefineList[index] = dimensionInfo = {
         name: dimensionInfo
@@ -79380,7 +79604,7 @@ function enableDataStack(seriesModel, dimensionsInput, opt) {
     var stackedDimCoordDim_1 = stackedDimInfo.coordDim;
     var stackedDimType = stackedDimInfo.type;
     var stackedDimCoordIndex_1 = 0;
-    each$4(dimensionDefineList, function (dimensionInfo) {
+    each$9(dimensionDefineList, function (dimensionInfo) {
       if (dimensionInfo.coordDim === stackedDimCoordDim_1) {
         stackedDimCoordIndex_1++;
       }
@@ -79474,7 +79698,7 @@ function getCoordSysDimDefs(seriesModel, coordSysInfo) {
 function injectOrdinalMeta(dimInfoList, createInvertedIndices, coordSysInfo) {
   var firstCategoryDimIndex;
   var hasNameEncode;
-  coordSysInfo && each$4(dimInfoList, function (dimInfo, dimIndex) {
+  coordSysInfo && each$9(dimInfoList, function (dimInfo, dimIndex) {
     var coordDim = dimInfo.coordDim;
     var categoryAxisModel = coordSysInfo.categoryAxisMap.get(coordDim);
 
@@ -79555,7 +79779,7 @@ function createSeriesData(sourceRaw, seriesModel, opt) {
 function isNeedCompleteOrdinalData(source) {
   if (source.sourceFormat === SOURCE_FORMAT_ORIGINAL) {
     var sampleItem = firstDataNotNull(source.data || []);
-    return !isArray(getDataItemValue(sampleItem));
+    return !isArray$1(getDataItemValue(sampleItem));
   }
 }
 
@@ -79745,7 +79969,7 @@ function () {
 }();
 
 function getName(obj) {
-  if (isObject$2(obj) && obj.value != null) {
+  if (isObject$3(obj) && obj.value != null) {
     return obj.value;
   } else {
     return obj + '';
@@ -79862,10 +80086,10 @@ function (_super) {
       ordinalMeta = new OrdinalMeta$1({});
     }
 
-    if (isArray(ordinalMeta)) {
+    if (isArray$1(ordinalMeta)) {
       ordinalMeta = new OrdinalMeta$1({
         categories: map$1(ordinalMeta, function (item) {
-          return isObject$2(item) ? item.value : item;
+          return isObject$3(item) ? item.value : item;
         })
       });
     }
@@ -80317,7 +80541,7 @@ var IntervalScale$1 = IntervalScale;
 var supportFloat32Array = typeof Float32Array !== 'undefined';
 var Float32ArrayCtor = !supportFloat32Array ? Array : Float32Array;
 function createFloat32Array(arg) {
-  if (isArray(arg)) {
+  if (isArray$1(arg)) {
     // Return self directly if don't support TypedArray.
     return supportFloat32Array ? new Float32Array(arg) : arg;
   } // Else is number
@@ -80363,7 +80587,7 @@ function getValueAxesMinGaps(barSeries) {
    * series.
    */
   var axisValues = {};
-  each$4(barSeries, function (seriesModel) {
+  each$9(barSeries, function (seriesModel) {
     var cartesian = seriesModel.coordinateSystem;
     var baseAxis = cartesian.getBaseAxis();
 
@@ -80423,7 +80647,7 @@ function getValueAxesMinGaps(barSeries) {
 function makeColumnLayout(barSeries) {
   var axisMinGaps = getValueAxesMinGaps(barSeries);
   var seriesInfoList = [];
-  each$4(barSeries, function (seriesModel) {
+  each$9(barSeries, function (seriesModel) {
     var cartesian = seriesModel.coordinateSystem;
     var baseAxis = cartesian.getBaseAxis();
     var axisExtent = baseAxis.getExtent();
@@ -80467,7 +80691,7 @@ function makeColumnLayout(barSeries) {
 function doCalBarWidthAndOffset(seriesInfoList) {
   // Columns info on each category axis. Key is cartesian name
   var columnsMap = {};
-  each$4(seriesInfoList, function (seriesInfo, idx) {
+  each$9(seriesInfoList, function (seriesInfo, idx) {
     var axisKey = seriesInfo.axisKey;
     var bandWidth = seriesInfo.bandWidth;
     var columnsOnAxis = columnsMap[axisKey] || {
@@ -80513,7 +80737,7 @@ function doCalBarWidthAndOffset(seriesInfoList) {
     barCategoryGap != null && (columnsOnAxis.categoryGap = barCategoryGap);
   });
   var result = {};
-  each$4(columnsMap, function (columnsOnAxis, coordSysName) {
+  each$9(columnsMap, function (columnsOnAxis, coordSysName) {
     result[coordSysName] = {};
     var stacks = columnsOnAxis.stacks;
     var bandWidth = columnsOnAxis.bandWidth;
@@ -80533,7 +80757,7 @@ function doCalBarWidthAndOffset(seriesInfoList) {
     var autoWidth = (remainedWidth - categoryGap) / (autoWidthCount + (autoWidthCount - 1) * barGapPercent);
     autoWidth = Math.max(autoWidth, 0); // Find if any auto calculated bar exceeded maxBarWidth
 
-    each$4(stacks, function (column) {
+    each$9(stacks, function (column) {
       var maxWidth = column.maxWidth;
       var minWidth = column.minWidth;
 
@@ -80583,7 +80807,7 @@ function doCalBarWidthAndOffset(seriesInfoList) {
     autoWidth = Math.max(autoWidth, 0);
     var widthSum = 0;
     var lastColumn;
-    each$4(stacks, function (column, idx) {
+    each$9(stacks, function (column, idx) {
       if (!column.width) {
         column.width = autoWidth;
       }
@@ -80597,7 +80821,7 @@ function doCalBarWidthAndOffset(seriesInfoList) {
     }
 
     var offset = -widthSum / 2;
-    each$4(stacks, function (column, stackId) {
+    each$9(stacks, function (column, stackId) {
       result[coordSysName][stackId] = result[coordSysName][stackId] || {
         bandWidth: bandWidth,
         offset: offset,
@@ -80623,7 +80847,7 @@ function retrieveColumnLayout(barWidthAndOffset, axis, seriesModel) {
 function layout$1(seriesType, ecModel) {
   var seriesModels = prepareLayoutBarSeries(seriesType, ecModel);
   var barWidthAndOffset = makeColumnLayout(seriesModels);
-  each$4(seriesModels, function (seriesModel) {
+  each$9(seriesModels, function (seriesModel) {
     var data = seriesModel.getData();
     var cartesian = seriesModel.coordinateSystem;
     var baseAxis = cartesian.getBaseAxis();
@@ -81526,7 +81750,7 @@ function () {
       this._axisDataLen = model.getCategories().length;
     } else {
       var boundaryGap = model.get('boundaryGap');
-      var boundaryGapArr = isArray(boundaryGap) ? boundaryGap : [boundaryGap || 0, boundaryGap || 0];
+      var boundaryGapArr = isArray$1(boundaryGap) ? boundaryGap : [boundaryGap || 0, boundaryGap || 0];
 
       if (typeof boundaryGapArr[0] === 'boolean' || typeof boundaryGapArr[1] === 'boolean') {
         if (process.env.NODE_ENV !== 'production') {
@@ -81723,7 +81947,7 @@ function getScaleExtent(scale, model) {
   ) {
     var barSeriesModels = prepareLayoutBarSeries('bar', ecModel);
     var isBaseAxisAndHasBarSeries_1 = false;
-    each$4(barSeriesModels, function (seriesModel) {
+    each$9(barSeriesModels, function (seriesModel) {
       isBaseAxisAndHasBarSeries_1 = isBaseAxisAndHasBarSeries_1 || seriesModel.getBaseAxis() === model.axis;
     });
 
@@ -81763,11 +81987,11 @@ barWidthAndOffset) {
   }
 
   var minOverflow = Infinity;
-  each$4(barsOnCurrentAxis, function (item) {
+  each$9(barsOnCurrentAxis, function (item) {
     minOverflow = Math.min(item.offset, minOverflow);
   });
   var maxOverflow = -Infinity;
-  each$4(barsOnCurrentAxis, function (item) {
+  each$9(barsOnCurrentAxis, function (item) {
     maxOverflow = Math.max(item.offset + item.width, maxOverflow);
   });
   minOverflow = Math.abs(minOverflow);
@@ -81995,7 +82219,7 @@ function getDataDimensionsOnAxis(data, axisDim) {
   // PENDING: is it reasonable? Do we need to remove the original dim from "coord dim" since
   // there has been stacked result dim?
 
-  each$4(data.mapDimensionsAll(axisDim), function (dataDim) {
+  each$9(data.mapDimensionsAll(axisDim), function (dataDim) {
     // For example, the extent of the original dimension
     // is [0.1, 0.5], the extent of the `stackResultDimension`
     // is [7, 9], the final extent should NOT include [0.1, 0.5],
@@ -82156,7 +82380,7 @@ var extensionRegisters = {
   registerVisual: registerVisual,
   registerTransform: registerTransform,
   registerLoading: registerLoading,
-  registerMap: registerMap,
+  registerMap: registerMap$1,
   registerImpl: registerImpl,
   PRIORITY: PRIORITY,
   ComponentModel: ComponentModel$1,
@@ -82184,9 +82408,9 @@ var extensionRegisters = {
   }
 };
 function use(ext) {
-  if (isArray(ext)) {
+  if (isArray$1(ext)) {
     // use([ChartLine, ChartBar]);
-    each$4(ext, function (singleExt) {
+    each$9(ext, function (singleExt) {
       use(singleExt);
     });
     return;
@@ -82381,12 +82605,12 @@ function (_super) {
     var min = [Infinity, Infinity];
     var max = [-Infinity, -Infinity];
     var geometries = this.geometries;
-    each$4(geometries, function (geo) {
+    each$9(geometries, function (geo) {
       if (geo.type === 'polygon') {
         // Doesn't consider hole
         updateBBoxFromPoints(geo.exterior, min, max, projection);
       } else {
-        each$4(geo.points, function (points) {
+        each$9(geo.points, function (points) {
           updateBBoxFromPoints(points, min, max, projection);
         });
       }
@@ -82465,11 +82689,11 @@ function (_super) {
 
       if (geo.type === 'polygon') {
         transformPoints(geo.exterior, transform);
-        each$4(geo.interiors, function (interior) {
+        each$9(geo.interiors, function (interior) {
           transformPoints(interior, transform);
         });
       } else {
-        each$4(geo.points, function (points) {
+        each$9(geo.points, function (points) {
           transformPoints(points, transform);
         });
       }
@@ -82493,8 +82717,9 @@ function (_super) {
   return GeoJSONRegion;
 }(Region);
 
+var GeoSVGRegion =
 /** @class */
-(function (_super) {
+function (_super) {
   __extends$1(GeoSVGRegion, _super);
 
   function GeoSVGRegion(name, elOnlyForCalculate) {
@@ -82523,7 +82748,7 @@ function (_super) {
   };
 
   return GeoSVGRegion;
-})(Region);
+}(Region);
 
 function decode(json) {
   if (!json.UTF8Encoding) {
@@ -82538,7 +82763,7 @@ function decode(json) {
   }
 
   var features = jsonCompressed.features;
-  each$4(features, function (feature) {
+  each$9(features, function (feature) {
     var geometry = feature.geometry;
     var encodeOffsets = geometry.encodeOffsets;
     var coordinates = geometry.coordinates; // Geometry may be appeded manually in the script after json loaded.
@@ -82562,7 +82787,7 @@ function decode(json) {
         break;
 
       case 'MultiPolygon':
-        each$4(coordinates, function (rings, idx) {
+        each$9(coordinates, function (rings, idx) {
           return decodeRings(rings, encodeOffsets[idx], encodeScale);
         });
     }
@@ -82620,7 +82845,7 @@ function parseGeoJSON(geoJson, nameProperty) {
         break;
 
       case 'MultiPolygon':
-        each$4(geo.coordinates, function (item) {
+        each$9(geo.coordinates, function (item) {
           if (item[0]) {
             geometries.push(new GeoJSONPolygonGeometry(item[0], item.slice(1)));
           }
@@ -82643,9 +82868,9 @@ function parseGeoJSON(geoJson, nameProperty) {
 
 var number = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  linearMap: linearMap,
+  linearMap: linearMap$2,
   round: round$1,
-  asc: asc,
+  asc: asc$1,
   getPrecision: getPrecision,
   getPrecisionSafe: getPrecisionSafe,
   getPixelPrecision: getPixelPrecision,
@@ -82722,16 +82947,16 @@ var format = /*#__PURE__*/Object.freeze({
 var util = /*#__PURE__*/Object.freeze({
   __proto__: null,
   map: map$1,
-  each: each$4,
+  each: each$9,
   indexOf: indexOf,
   inherits: inherits,
   reduce: reduce,
   filter: filter,
   bind: bind$1,
   curry: curry$1,
-  isArray: isArray,
+  isArray: isArray$1,
   isString: isString,
-  isObject: isObject$2,
+  isObject: isObject$3,
   isFunction: isFunction,
   extend: extend,
   defaults: defaults,
@@ -83032,7 +83257,7 @@ function makeLabelsByCustomizedCategoryInterval(axis, categoryInterval, onlyTick
   var ordinalScale = axis.scale;
   var labelFormatter = makeLabelFormatter(axis);
   var result = [];
-  each$4(ordinalScale.getTicks(), function (tick) {
+  each$9(ordinalScale.getTicks(), function (tick) {
     var rawLabel = ordinalScale.getLabel(tick);
     var tickValue = tick.value;
 
@@ -83122,7 +83347,7 @@ function () {
       fixExtentWithBands(extent, scale.count());
     }
 
-    return linearMap(data, NORMALIZED_EXTENT, extent, clamp);
+    return linearMap$2(data, NORMALIZED_EXTENT, extent, clamp);
   };
   /**
    * Convert coord to data. Data is the rank if it has an ordinal scale
@@ -83138,7 +83363,7 @@ function () {
       fixExtentWithBands(extent, scale.count());
     }
 
-    var t = linearMap(coord, extent, NORMALIZED_EXTENT, clamp);
+    var t = linearMap$2(coord, extent, NORMALIZED_EXTENT, clamp);
     return this.scale.scale(t);
   };
   /**
@@ -83285,7 +83510,7 @@ function fixOnBandTicksCoords(axis, ticksCoords, alignWithLabel, clamp) {
   } else {
     var crossLen = ticksCoords[ticksLen - 1].tickValue - ticksCoords[0].tickValue;
     var shift_1 = (ticksCoords[ticksLen - 1].coord - ticksCoords[0].coord) / crossLen;
-    each$4(ticksCoords, function (ticksItem) {
+    each$9(ticksCoords, function (ticksItem) {
       ticksItem.coord -= shift_1 / 2;
     });
     var dataExtent = axis.scale.getExtent();
@@ -83978,7 +84203,7 @@ var echarts = /*#__PURE__*/Object.freeze({
   registerVisual: registerVisual,
   registerLoading: registerLoading,
   setCanvasCreator: setCanvasCreator,
-  registerMap: registerMap,
+  registerMap: registerMap$1,
   getMap: getMap,
   registerTransform: registerTransform,
   dataTool: dataTool,
@@ -84037,7 +84262,7 @@ function getDefaultLabel(data, dataIndex) {
 function getDefaultInterpolatedLabel(data, interpolatedValue) {
   var labelDims = data.mapDimensionsAll('defaultedLabel');
 
-  if (!isArray(interpolatedValue)) {
+  if (!isArray$1(interpolatedValue)) {
     return interpolatedValue + '';
   }
 
@@ -84639,7 +84864,7 @@ function setSectorTextRotation(sector, textPosition, positionMapping, rotateType
       rotation: rotateType
     });
     return;
-  } else if (isArray(textPosition)) {
+  } else if (isArray$1(textPosition)) {
     // user-set position, use 0 as auto rotation
     sector.setTextConfig({
       rotation: 0
@@ -84706,8 +84931,8 @@ function adjustAngleDistanceY(angle, distance, isEnd) {
   return distance * Math.cos(angle) * (isEnd ? 1 : -1);
 }
 
-var mathMax = Math.max;
-var mathMin = Math.min;
+var mathMax$1 = Math.max;
+var mathMin$1 = Math.min;
 
 function getClipArea(coord, data) {
   var coordSysClipArea = coord.getArea && coord.getArea();
@@ -85219,10 +85444,10 @@ var clip = {
 
     var coordSysX2 = coordSysBoundingRect.x + coordSysBoundingRect.width;
     var coordSysY2 = coordSysBoundingRect.y + coordSysBoundingRect.height;
-    var x = mathMax(layout.x, coordSysBoundingRect.x);
-    var x2 = mathMin(layout.x + layout.width, coordSysX2);
-    var y = mathMax(layout.y, coordSysBoundingRect.y);
-    var y2 = mathMin(layout.y + layout.height, coordSysY2);
+    var x = mathMax$1(layout.x, coordSysBoundingRect.x);
+    var x2 = mathMin$1(layout.x + layout.width, coordSysX2);
+    var y = mathMax$1(layout.y, coordSysBoundingRect.y);
+    var y2 = mathMin$1(layout.y + layout.height, coordSysY2);
     var xClipped = x2 < x;
     var yClipped = y2 < y; // When xClipped or yClipped, the element will be marked as `ignore`.
     // But we should also place the element at the edge of the coord sys bounding rect.
@@ -85255,8 +85480,8 @@ var clip = {
       layout.r0 = tmp;
     }
 
-    var r = mathMin(layout.r, coordSysClipArea.r);
-    var r0 = mathMax(layout.r0, coordSysClipArea.r0);
+    var r = mathMin$1(layout.r, coordSysClipArea.r);
+    var r0 = mathMax$1(layout.r0, coordSysClipArea.r0);
     layout.r = r;
     layout.r0 = r0;
     var clipped = r - r0 < 0; // Reverse back
@@ -85487,7 +85712,7 @@ function updateStyle(el, data, dataIndex, itemModel, layout, seriesModel, isHori
   if (isZeroOnPolar(layout)) {
     el.style.fill = 'none';
     el.style.stroke = 'none';
-    each$4(el.states, function (state) {
+    each$9(el.states, function (state) {
       if (state.style) {
         state.style.fill = state.style.stroke = 'none';
       }
@@ -85678,7 +85903,7 @@ function createBackgroundEl(coord, isHorizontalOrRadial, layout) {
 
 var BarView$1 = BarView;
 
-function install$b(registers) {
+function install$g(registers) {
   registers.registerChartView(BarView$1);
   registers.registerSeriesModel(BarSeries);
   registers.registerLayout(registers.PRIORITY.VISUAL.LAYOUT, curry$1(layout$1, 'bar')); // Do layout after other overall layout, which can preapre some informations.
@@ -85728,11 +85953,11 @@ function getBasicPieLayout(seriesModel, api) {
   var center = seriesModel.get('center');
   var radius = seriesModel.get('radius');
 
-  if (!isArray(radius)) {
+  if (!isArray$1(radius)) {
     radius = [0, radius];
   }
 
-  if (!isArray(center)) {
+  if (!isArray$1(center)) {
     center = [center, center];
   }
 
@@ -85838,7 +86063,7 @@ function pieLayout(seriesType, ecModel, api) {
         cx: cx,
         cy: cy,
         r0: r0,
-        r: roseType ? linearMap(value, extent, [r0, r]) : r
+        r: roseType ? linearMap$2(value, extent, [r0, r]) : r
       });
       currentAngle = endAngle;
     }); // Some sector is constrained by minAngle
@@ -86249,8 +86474,8 @@ function pieLabelLayout(seriesModel) {
     labelLineLen2 = parsePercent(labelLineLen2, viewWidth);
 
     if (Math.abs(sectorShape.endAngle - sectorShape.startAngle) < minShowLabelRadian) {
-      each$4(label.states, setNotShow);
-      each$4(labelLine.states, setNotShow);
+      each$9(label.states, setNotShow);
+      each$9(labelLine.states, setNotShow);
       label.ignore = labelLine.ignore = true;
       return;
     }
@@ -86395,7 +86620,7 @@ function pieLabelLayout(seriesModel) {
       });
 
       if (notShowLabel) {
-        each$4(label.states, setNotShow);
+        each$9(label.states, setNotShow);
         label.ignore = true;
       }
 
@@ -86411,7 +86636,7 @@ function pieLabelLayout(seriesModel) {
       var linePoints = layout.linePoints;
 
       if (notShowLabel || !linePoints) {
-        each$4(labelLine.states, setNotShow);
+        each$9(labelLine.states, setNotShow);
         labelLine.ignore = true;
       } else {
         limitTurnAngle(linePoints, layout.minTurnAngle);
@@ -86437,7 +86662,7 @@ function getSectorCornerRadius(model, shape, zeroIfNull) {
     } : null;
   }
 
-  if (!isArray(cornerRadius)) {
+  if (!isArray$1(cornerRadius)) {
     cornerRadius = [cornerRadius, cornerRadius, cornerRadius, cornerRadius];
   }
 
@@ -86724,7 +86949,7 @@ var PieView$1 = PieView;
  */
 
 function createSeriesDataSimply(seriesModel, opt, nameList) {
-  opt = isArray(opt) && {
+  opt = isArray$1(opt) && {
     coordDimensions: opt
   } || extend({
     encodeDefine: seriesModel.getEncode()
@@ -87021,7 +87246,7 @@ function negativeDataFilter(seriesType) {
   };
 }
 
-function install$a(registers) {
+function install$f(registers) {
   registers.registerChartView(PieView$1);
   registers.registerSeriesModel(PieSeriesModel$1);
   createLegacyDataSelectAction('pie', registers.registerAction);
@@ -87081,7 +87306,7 @@ function (_super) {
 }(ComponentModel$1);
 mixin(CartesianAxisModel, AxisModelCommonMixin);
 
-var defaultOption = {
+var defaultOption$1 = {
   show: true,
   // zlevel: 0,
   z: 0,
@@ -87180,7 +87405,7 @@ var categoryAxis = merge({
   axisLabel: {
     interval: 'auto'
   }
-}, defaultOption);
+}, defaultOption$1);
 var valueAxis = merge({
   boundaryGap: [0, 0],
   axisLine: {
@@ -87212,7 +87437,7 @@ var valueAxis = merge({
       width: 1
     }
   }
-}, defaultOption);
+}, defaultOption$1);
 var timeAxis = merge({
   splitNumber: 6,
   axisLabel: {
@@ -87294,7 +87519,7 @@ var AXIS_TYPES = {
  */
 
 function axisModelCreator(registers, axisName, BaseAxisModelClass, extraDefaultOption) {
-  each$4(AXIS_TYPES, function (v, axisType) {
+  each$9(AXIS_TYPES, function (v, axisType) {
     var defaultOption = merge(merge({}, axisDefault[axisType], true), extraDefaultOption, true);
 
     var AxisModel =
@@ -87682,7 +87907,7 @@ function findAxisModels(seriesModel) {
     xAxisModel: null,
     yAxisModel: null
   };
-  each$4(axisModelMap, function (v, key) {
+  each$9(axisModelMap, function (v, key) {
     var axisType = key.replace(/Model$/, '');
     var axisModel = seriesModel.getReferringComponents(axisType, SINGLE_REFERRING).models[0];
 
@@ -87864,7 +88089,7 @@ function () {
           niceScaleExtent(alignTo.scale, alignTo.model);
         }
 
-        each$4(axisNeedsAlign, function (axis) {
+        each$9(axisNeedsAlign, function (axis) {
           alignScaleTicks(axis.scale, axis.model, alignTo.scale);
         });
       }
@@ -87874,10 +88099,10 @@ function () {
     updateAxisTicks(axesMap.y); // Key: axisDim_axisIndex, value: boolean, whether onZero target.
 
     var onZeroRecords = {};
-    each$4(axesMap.x, function (xAxis) {
+    each$9(axesMap.x, function (xAxis) {
       fixAxisOnZero(axesMap, 'y', xAxis, onZeroRecords);
     });
-    each$4(axesMap.y, function (yAxis) {
+    each$9(axesMap.y, function (yAxis) {
       fixAxisOnZero(axesMap, 'x', yAxis, onZeroRecords);
     }); // Resize again if containLabel is enabled
     // FIXME It may cause getting wrong grid size in data processing stage
@@ -87901,7 +88126,7 @@ function () {
     adjustAxes(); // Minus label size
 
     if (isContainLabel) {
-      each$4(axesList, function (axis) {
+      each$9(axesList, function (axis) {
         if (!axis.model.get(['axisLabel', 'inside'])) {
           var labelUnionRect = estimateLabelUnionRect(axis);
 
@@ -87921,14 +88146,14 @@ function () {
       adjustAxes();
     }
 
-    each$4(this._coordsList, function (coord) {
+    each$9(this._coordsList, function (coord) {
       // Calculate affine matrix to accelerate the data to point transform.
       // If all the axes scales are time or value.
       coord.calcAffineTransform();
     });
 
     function adjustAxes() {
-      each$4(axesList, function (axis) {
+      each$9(axesList, function (axis) {
         var isHorizontal = axis.isHorizontal();
         var extent = isHorizontal ? [0, gridRect.width] : [0, gridRect.height];
         var idx = axis.inverse ? 1 : 0;
@@ -87956,7 +88181,7 @@ function () {
       return this._coordsMap[key];
     }
 
-    if (isObject$2(xAxisIndex)) {
+    if (isObject$3(xAxisIndex)) {
       yAxisIndex = xAxisIndex.yAxisIndex;
       xAxisIndex = xAxisIndex.xAxisIndex;
     }
@@ -88072,8 +88297,8 @@ function () {
 
     this._axesMap = axesMap; /// Create cartesian2d
 
-    each$4(axesMap.x, function (xAxis, xAxisIndex) {
-      each$4(axesMap.y, function (yAxis, yAxisIndex) {
+    each$9(axesMap.x, function (xAxis, xAxisIndex) {
+      each$9(axesMap.y, function (yAxis, yAxisIndex) {
         var key = 'x' + xAxisIndex + 'y' + yAxisIndex;
         var cartesian = new Cartesian2D(key);
         cartesian.master = _this;
@@ -88137,7 +88362,7 @@ function () {
 
   Grid.prototype._updateScale = function (ecModel, gridModel) {
     // Reset scale
-    each$4(this._axesList, function (axis) {
+    each$9(this._axesList, function (axis) {
       axis.scale.setExtent(Infinity, -Infinity);
 
       if (axis.type === 'category') {
@@ -88165,7 +88390,7 @@ function () {
     }, this);
 
     function unionExtent(data, axis) {
-      each$4(getDataDimensionsOnAxis(data, axis.dim), function (dim) {
+      each$9(getDataDimensionsOnAxis(data, axis.dim), function (dim) {
         axis.scale.unionExtentFromData(data, dim);
       });
     }
@@ -88178,7 +88403,7 @@ function () {
   Grid.prototype.getTooltipAxes = function (dim) {
     var baseAxes = [];
     var otherAxes = [];
-    each$4(this.getCartesians(), function (cartesian) {
+    each$9(this.getCartesians(), function (cartesian) {
       var baseAxis = dim != null && dim !== 'auto' ? cartesian.getAxis(dim) : cartesian.getBaseAxis();
       var otherAxis = cartesian.getOtherAxis(baseAxis);
       indexOf(baseAxes, baseAxis) < 0 && baseAxes.push(baseAxis);
@@ -88481,7 +88706,7 @@ var builders = {
       var arrowOffset = normalizeSymbolOffset(axisModel.get(['axisLine', 'symbolOffset']) || 0, arrowSize);
       var symbolWidth_1 = arrowSize[0];
       var symbolHeight_1 = arrowSize[1];
-      each$4([{
+      each$9([{
         rotate: opt.rotation + Math.PI / 2,
         offset: arrowOffset[0],
         r: 0
@@ -88827,7 +89052,7 @@ function buildAxisLabel(group, transformGroup, axisModel, opt) {
   var labelEls = [];
   var silent = AxisBuilder.isLabelSilent(axisModel);
   var triggerEvent = axisModel.get('triggerEvent');
-  each$4(labels, function (labelItem, index) {
+  each$9(labels, function (labelItem, index) {
     var tickValue = axis.scale.type === 'ordinal' ? axis.scale.getRawOrdinalNumber(labelItem.tickValue) : labelItem.tickValue;
     var formattedLabel = labelItem.formattedLabel;
     var rawLabel = labelItem.rawLabel;
@@ -88836,7 +89061,7 @@ function buildAxisLabel(group, transformGroup, axisModel, opt) {
     if (rawCategoryData && rawCategoryData[tickValue]) {
       var rawCategoryItem = rawCategoryData[tickValue];
 
-      if (isObject$2(rawCategoryItem) && rawCategoryItem.textStyle) {
+      if (isObject$3(rawCategoryItem) && rawCategoryItem.textStyle) {
         itemLabelModel = new Model$1(rawCategoryItem.textStyle, labelModel, axisModel.ecModel);
       }
     }
@@ -88930,7 +89155,7 @@ function collectAxesInfo(result, ecModel, api) {
   var linksOption = globalAxisPointerModel.get('link', true) || [];
   var linkGroups = []; // Collect axes info.
 
-  each$4(api.getCoordinateSystems(), function (coordSys) {
+  each$9(api.getCoordinateSystems(), function (coordSys) {
     // Some coordinate system do not support axes, like geo.
     if (!coordSys.axisPointerEnabled) {
       return;
@@ -88943,7 +89168,7 @@ function collectAxesInfo(result, ecModel, api) {
 
     var coordSysModel = coordSys.model;
     var baseTooltipModel = coordSysModel.getModel('tooltip', globalTooltipModel);
-    each$4(coordSys.getAxes(), curry$1(saveTooltipAxisInfo, false, null)); // If axis tooltip used, choose tooltip axis for each coordSys.
+    each$9(coordSys.getAxes(), curry$1(saveTooltipAxisInfo, false, null)); // If axis tooltip used, choose tooltip axis for each coordSys.
     // Notice this case: coordSys is `grid` but not `cartesian2D` here.
 
     if (coordSys.getTooltipAxes && globalTooltipModel // If tooltip.showContent is set as false, tooltip will not
@@ -88956,11 +89181,11 @@ function collectAxesInfo(result, ecModel, api) {
       var tooltipAxes = coordSys.getTooltipAxes(baseTooltipModel.get(['axisPointer', 'axis']));
 
       if (triggerAxis || cross) {
-        each$4(tooltipAxes.baseAxes, curry$1(saveTooltipAxisInfo, cross ? 'cross' : true, triggerAxis));
+        each$9(tooltipAxes.baseAxes, curry$1(saveTooltipAxisInfo, cross ? 'cross' : true, triggerAxis));
       }
 
       if (cross) {
-        each$4(tooltipAxes.otherAxes, curry$1(saveTooltipAxisInfo, 'cross', false));
+        each$9(tooltipAxes.otherAxes, curry$1(saveTooltipAxisInfo, 'cross', false));
       }
     } // fromTooltip: true | false | 'cross'
     // triggerTooltip: true | false | null
@@ -89015,7 +89240,7 @@ function makeAxisPointerModel(axis, baseTooltipModel, globalAxisPointerModel, ec
   var tooltipAxisPointerModel = baseTooltipModel.getModel('axisPointer');
   var fields = ['type', 'snap', 'lineStyle', 'shadowStyle', 'label', 'animation', 'animationDurationUpdate', 'animationEasingUpdate', 'z'];
   var volatileOption = {};
-  each$4(fields, function (field) {
+  each$9(fields, function (field) {
     volatileOption[field] = clone$3(tooltipAxisPointerModel.get(field));
   }); // category axis do not auto snap, otherwise some tick that do not
   // has value can not be hovered. value/time/log axis default snap if
@@ -89059,7 +89284,7 @@ function collectSeriesInfo(result, ecModel) {
       return;
     }
 
-    each$4(result.coordSysAxesInfo[makeKey(coordSys.model)], function (axisInfo) {
+    each$9(result.coordSysAxesInfo[makeKey(coordSys.model)], function (axisInfo) {
       var axis = axisInfo.axis;
 
       if (coordSys.getAxis(axis.dim) === axis) {
@@ -89100,7 +89325,7 @@ function getLinkGroupIndex(linksOption, axis) {
 }
 
 function checkPropInLink(linkPropValue, axisPropValue) {
-  return linkPropValue === 'all' || isArray(linkPropValue) && indexOf(linkPropValue, axisPropValue) >= 0 || linkPropValue === axisPropValue;
+  return linkPropValue === 'all' || isArray$1(linkPropValue) && indexOf(linkPropValue, axisPropValue) >= 0 || linkPropValue === axisPropValue;
 }
 
 function fixValue(axisModel) {
@@ -89308,7 +89533,7 @@ function rectCoordAxisBuildSplitArea(axisView, axisGroup, axisModel, gridModel) 
 
   var prev = axis.toGlobalCoord(ticksCoords[0].coord);
   var areaStyle = areaStyleModel.getAreaStyle();
-  areaColors = isArray(areaColors) ? areaColors : [areaColors];
+  areaColors = isArray$1(areaColors) ? areaColors : [areaColors];
 
   for (var i = 1; i < ticksCoords.length; i++) {
     var tickCoord = axis.toGlobalCoord(ticksCoords[i].coord);
@@ -89403,11 +89628,11 @@ function (_super) {
         return false;
       }
     }, layout$1));
-    each$4(axisBuilderAttrs, axisBuilder.add, axisBuilder);
+    each$9(axisBuilderAttrs, axisBuilder.add, axisBuilder);
 
     this._axisGroup.add(axisBuilder.getGroup());
 
-    each$4(selfBuilderAttrs, function (name) {
+    each$9(selfBuilderAttrs, function (name) {
       if (axisModel.get([name, 'show'])) {
         axisElementBuilders[name](this, this._axisGroup, axisModel, gridModel);
       }
@@ -89443,7 +89668,7 @@ var axisElementBuilders = {
     var splitLineModel = axisModel.getModel('splitLine');
     var lineStyleModel = splitLineModel.getModel('lineStyle');
     var lineColors = lineStyleModel.get('color');
-    lineColors = isArray(lineColors) ? lineColors : [lineColors];
+    lineColors = isArray$1(lineColors) ? lineColors : [lineColors];
     var gridRect = gridModel.coordinateSystem.getRect();
     var isHorizontal = axis.isHorizontal();
     var lineCount = 0;
@@ -89611,7 +89836,7 @@ var extraOption = {
   // gridId: '',
   offset: 0
 };
-function install$9(registers) {
+function install$e(registers) {
   registers.registerComponentView(GridView);
   registers.registerComponentModel(GridModel$1);
   registers.registerCoordinateSystem('cartesian2d', Grid$1);
@@ -89625,6 +89850,4644 @@ function install$9(registers) {
       option.grid = {};
     }
   });
+}
+
+var ATTR = '\0_ec_interaction_mutex';
+function isTaken(zr, resourceKey) {
+  return !!getStore(zr)[resourceKey];
+}
+
+function getStore(zr) {
+  return zr[ATTR] || (zr[ATTR] = {});
+}
+/**
+ * payload: {
+ *     type: 'takeGlobalCursor',
+ *     key: 'dataZoomSelect', or 'brush', or ...,
+ *         If no userKey, release global cursor.
+ * }
+ */
+// TODO: SELF REGISTERED.
+
+
+registerAction({
+  type: 'takeGlobalCursor',
+  event: 'globalCursorTaken',
+  update: 'update'
+}, noop);
+
+var RoamController =
+/** @class */
+function (_super) {
+  __extends$1(RoamController, _super);
+
+  function RoamController(zr) {
+    var _this = _super.call(this) || this;
+
+    _this._zr = zr; // Avoid two roamController bind the same handler
+
+    var mousedownHandler = bind$1(_this._mousedownHandler, _this);
+    var mousemoveHandler = bind$1(_this._mousemoveHandler, _this);
+    var mouseupHandler = bind$1(_this._mouseupHandler, _this);
+    var mousewheelHandler = bind$1(_this._mousewheelHandler, _this);
+    var pinchHandler = bind$1(_this._pinchHandler, _this);
+    /**
+     * Notice: only enable needed types. For example, if 'zoom'
+     * is not needed, 'zoom' should not be enabled, otherwise
+     * default mousewheel behaviour (scroll page) will be disabled.
+     */
+
+    _this.enable = function (controlType, opt) {
+      // Disable previous first
+      this.disable();
+      this._opt = defaults(clone$3(opt) || {}, {
+        zoomOnMouseWheel: true,
+        moveOnMouseMove: true,
+        // By default, wheel do not trigger move.
+        moveOnMouseWheel: false,
+        preventDefaultMouseMove: true
+      });
+
+      if (controlType == null) {
+        controlType = true;
+      }
+
+      if (controlType === true || controlType === 'move' || controlType === 'pan') {
+        zr.on('mousedown', mousedownHandler);
+        zr.on('mousemove', mousemoveHandler);
+        zr.on('mouseup', mouseupHandler);
+      }
+
+      if (controlType === true || controlType === 'scale' || controlType === 'zoom') {
+        zr.on('mousewheel', mousewheelHandler);
+        zr.on('pinch', pinchHandler);
+      }
+    };
+
+    _this.disable = function () {
+      zr.off('mousedown', mousedownHandler);
+      zr.off('mousemove', mousemoveHandler);
+      zr.off('mouseup', mouseupHandler);
+      zr.off('mousewheel', mousewheelHandler);
+      zr.off('pinch', pinchHandler);
+    };
+
+    return _this;
+  }
+
+  RoamController.prototype.isDragging = function () {
+    return this._dragging;
+  };
+
+  RoamController.prototype.isPinching = function () {
+    return this._pinching;
+  };
+
+  RoamController.prototype.setPointerChecker = function (pointerChecker) {
+    this.pointerChecker = pointerChecker;
+  };
+
+  RoamController.prototype.dispose = function () {
+    this.disable();
+  };
+
+  RoamController.prototype._mousedownHandler = function (e) {
+    if (isMiddleOrRightButtonOnMouseUpDown(e)) {
+      return;
+    }
+
+    var el = e.target;
+
+    while (el) {
+      if (el.draggable) {
+        return;
+      } // check if host is draggable
+
+
+      el = el.__hostTarget || el.parent;
+    }
+
+    var x = e.offsetX;
+    var y = e.offsetY; // Only check on mosedown, but not mousemove.
+    // Mouse can be out of target when mouse moving.
+
+    if (this.pointerChecker && this.pointerChecker(e, x, y)) {
+      this._x = x;
+      this._y = y;
+      this._dragging = true;
+    }
+  };
+
+  RoamController.prototype._mousemoveHandler = function (e) {
+    if (!this._dragging || !isAvailableBehavior('moveOnMouseMove', e, this._opt) || e.gestureEvent === 'pinch' || isTaken(this._zr, 'globalPan')) {
+      return;
+    }
+
+    var x = e.offsetX;
+    var y = e.offsetY;
+    var oldX = this._x;
+    var oldY = this._y;
+    var dx = x - oldX;
+    var dy = y - oldY;
+    this._x = x;
+    this._y = y;
+    this._opt.preventDefaultMouseMove && stop(e.event);
+    trigger(this, 'pan', 'moveOnMouseMove', e, {
+      dx: dx,
+      dy: dy,
+      oldX: oldX,
+      oldY: oldY,
+      newX: x,
+      newY: y,
+      isAvailableBehavior: null
+    });
+  };
+
+  RoamController.prototype._mouseupHandler = function (e) {
+    if (!isMiddleOrRightButtonOnMouseUpDown(e)) {
+      this._dragging = false;
+    }
+  };
+
+  RoamController.prototype._mousewheelHandler = function (e) {
+    var shouldZoom = isAvailableBehavior('zoomOnMouseWheel', e, this._opt);
+    var shouldMove = isAvailableBehavior('moveOnMouseWheel', e, this._opt);
+    var wheelDelta = e.wheelDelta;
+    var absWheelDeltaDelta = Math.abs(wheelDelta);
+    var originX = e.offsetX;
+    var originY = e.offsetY; // wheelDelta maybe -0 in chrome mac.
+
+    if (wheelDelta === 0 || !shouldZoom && !shouldMove) {
+      return;
+    } // If both `shouldZoom` and `shouldMove` is true, trigger
+    // their event both, and the final behavior is determined
+    // by event listener themselves.
+
+
+    if (shouldZoom) {
+      // Convenience:
+      // Mac and VM Windows on Mac: scroll up: zoom out.
+      // Windows: scroll up: zoom in.
+      // FIXME: Should do more test in different environment.
+      // wheelDelta is too complicated in difference nvironment
+      // (https://developer.mozilla.org/en-US/docs/Web/Events/mousewheel),
+      // although it has been normallized by zrender.
+      // wheelDelta of mouse wheel is bigger than touch pad.
+      var factor = absWheelDeltaDelta > 3 ? 1.4 : absWheelDeltaDelta > 1 ? 1.2 : 1.1;
+      var scale = wheelDelta > 0 ? factor : 1 / factor;
+      checkPointerAndTrigger(this, 'zoom', 'zoomOnMouseWheel', e, {
+        scale: scale,
+        originX: originX,
+        originY: originY,
+        isAvailableBehavior: null
+      });
+    }
+
+    if (shouldMove) {
+      // FIXME: Should do more test in different environment.
+      var absDelta = Math.abs(wheelDelta); // wheelDelta of mouse wheel is bigger than touch pad.
+
+      var scrollDelta = (wheelDelta > 0 ? 1 : -1) * (absDelta > 3 ? 0.4 : absDelta > 1 ? 0.15 : 0.05);
+      checkPointerAndTrigger(this, 'scrollMove', 'moveOnMouseWheel', e, {
+        scrollDelta: scrollDelta,
+        originX: originX,
+        originY: originY,
+        isAvailableBehavior: null
+      });
+    }
+  };
+
+  RoamController.prototype._pinchHandler = function (e) {
+    if (isTaken(this._zr, 'globalPan')) {
+      return;
+    }
+
+    var scale = e.pinchScale > 1 ? 1.1 : 1 / 1.1;
+    checkPointerAndTrigger(this, 'zoom', null, e, {
+      scale: scale,
+      originX: e.pinchX,
+      originY: e.pinchY,
+      isAvailableBehavior: null
+    });
+  };
+
+  return RoamController;
+}(Eventful$1);
+
+function checkPointerAndTrigger(controller, eventName, behaviorToCheck, e, contollerEvent) {
+  if (controller.pointerChecker && controller.pointerChecker(e, contollerEvent.originX, contollerEvent.originY)) {
+    // When mouse is out of roamController rect,
+    // default befavoius should not be be disabled, otherwise
+    // page sliding is disabled, contrary to expectation.
+    stop(e.event);
+    trigger(controller, eventName, behaviorToCheck, e, contollerEvent);
+  }
+}
+
+function trigger(controller, eventName, behaviorToCheck, e, contollerEvent) {
+  // Also provide behavior checker for event listener, for some case that
+  // multiple components share one listener.
+  contollerEvent.isAvailableBehavior = bind$1(isAvailableBehavior, null, behaviorToCheck, e); // TODO should not have type issue.
+
+  controller.trigger(eventName, contollerEvent);
+} // settings: {
+//     zoomOnMouseWheel
+//     moveOnMouseMove
+//     moveOnMouseWheel
+// }
+// The value can be: true / false / 'shift' / 'ctrl' / 'alt'.
+
+
+function isAvailableBehavior(behaviorToCheck, e, settings) {
+  var setting = settings[behaviorToCheck];
+  return !behaviorToCheck || setting && (!isString(setting) || e.event[setting + 'Key']);
+}
+
+var RoamController$1 = RoamController;
+
+/*
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing,
+* software distributed under the License is distributed on an
+* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+* KIND, either express or implied.  See the License for the
+* specific language governing permissions and limitations
+* under the License.
+*/
+
+
+/**
+ * AUTO-GENERATED FILE. DO NOT MODIFY.
+ */
+
+/*
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing,
+* software distributed under the License is distributed on an
+* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+* KIND, either express or implied.  See the License for the
+* specific language governing permissions and limitations
+* under the License.
+*/
+
+/**
+ * For geo and graph.
+ */
+function updateViewOnPan(controllerHost, dx, dy) {
+  var target = controllerHost.target;
+  target.x += dx;
+  target.y += dy;
+  target.dirty();
+}
+/**
+ * For geo and graph.
+ */
+
+function updateViewOnZoom(controllerHost, zoomDelta, zoomX, zoomY) {
+  var target = controllerHost.target;
+  var zoomLimit = controllerHost.zoomLimit;
+  var newZoom = controllerHost.zoom = controllerHost.zoom || 1;
+  newZoom *= zoomDelta;
+
+  if (zoomLimit) {
+    var zoomMin = zoomLimit.min || 0;
+    var zoomMax = zoomLimit.max || Infinity;
+    newZoom = Math.max(Math.min(zoomMax, newZoom), zoomMin);
+  }
+
+  var zoomScale = newZoom / controllerHost.zoom;
+  controllerHost.zoom = newZoom; // Keep the mouse center when scaling
+
+  target.x -= (zoomX - target.x) * (zoomScale - 1);
+  target.y -= (zoomY - target.y) * (zoomScale - 1);
+  target.scaleX *= zoomScale;
+  target.scaleY *= zoomScale;
+  target.dirty();
+}
+
+/*
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing,
+* software distributed under the License is distributed on an
+* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+* KIND, either express or implied.  See the License for the
+* specific language governing permissions and limitations
+* under the License.
+*/
+
+
+/**
+ * AUTO-GENERATED FILE. DO NOT MODIFY.
+ */
+
+/*
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing,
+* software distributed under the License is distributed on an
+* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+* KIND, either express or implied.  See the License for the
+* specific language governing permissions and limitations
+* under the License.
+*/
+var IRRELEVANT_EXCLUDES = {
+  'axisPointer': 1,
+  'tooltip': 1,
+  'brush': 1
+};
+/**
+ * Avoid that: mouse click on a elements that is over geo or graph,
+ * but roam is triggered.
+ */
+
+function onIrrelevantElement(e, api, targetCoordSysModel) {
+  var model = api.getComponentByElement(e.topTarget); // If model is axisModel, it works only if it is injected with coordinateSystem.
+
+  var coordSys = model && model.coordinateSystem;
+  return model && model !== targetCoordSysModel && !IRRELEVANT_EXCLUDES.hasOwnProperty(model.mainType) && coordSys && coordSys.model !== targetCoordSysModel;
+}
+
+function parseXML(svg) {
+    if (isString(svg)) {
+        var parser = new DOMParser();
+        svg = parser.parseFromString(svg, 'text/xml');
+    }
+    var svgNode = svg;
+    if (svgNode.nodeType === 9) {
+        svgNode = svgNode.firstChild;
+    }
+    while (svgNode.nodeName.toLowerCase() !== 'svg' || svgNode.nodeType !== 1) {
+        svgNode = svgNode.nextSibling;
+    }
+    return svgNode;
+}
+
+var nodeParsers;
+var INHERITABLE_STYLE_ATTRIBUTES_MAP = {
+    'fill': 'fill',
+    'stroke': 'stroke',
+    'stroke-width': 'lineWidth',
+    'opacity': 'opacity',
+    'fill-opacity': 'fillOpacity',
+    'stroke-opacity': 'strokeOpacity',
+    'stroke-dasharray': 'lineDash',
+    'stroke-dashoffset': 'lineDashOffset',
+    'stroke-linecap': 'lineCap',
+    'stroke-linejoin': 'lineJoin',
+    'stroke-miterlimit': 'miterLimit',
+    'font-family': 'fontFamily',
+    'font-size': 'fontSize',
+    'font-style': 'fontStyle',
+    'font-weight': 'fontWeight',
+    'text-anchor': 'textAlign',
+    'visibility': 'visibility',
+    'display': 'display'
+};
+var INHERITABLE_STYLE_ATTRIBUTES_MAP_KEYS = keys(INHERITABLE_STYLE_ATTRIBUTES_MAP);
+var SELF_STYLE_ATTRIBUTES_MAP = {
+    'alignment-baseline': 'textBaseline',
+    'stop-color': 'stopColor'
+};
+var SELF_STYLE_ATTRIBUTES_MAP_KEYS = keys(SELF_STYLE_ATTRIBUTES_MAP);
+var SVGParser = (function () {
+    function SVGParser() {
+        this._defs = {};
+        this._root = null;
+    }
+    SVGParser.prototype.parse = function (xml, opt) {
+        opt = opt || {};
+        var svg = parseXML(xml);
+        if (process.env.NODE_ENV !== 'production') {
+            if (!svg) {
+                throw new Error('Illegal svg');
+            }
+        }
+        this._defsUsePending = [];
+        var root = new Group$3();
+        this._root = root;
+        var named = [];
+        var viewBox = svg.getAttribute('viewBox') || '';
+        var width = parseFloat((svg.getAttribute('width') || opt.width));
+        var height = parseFloat((svg.getAttribute('height') || opt.height));
+        isNaN(width) && (width = null);
+        isNaN(height) && (height = null);
+        parseAttributes(svg, root, null, true, false);
+        var child = svg.firstChild;
+        while (child) {
+            this._parseNode(child, root, named, null, false, false);
+            child = child.nextSibling;
+        }
+        applyDefs(this._defs, this._defsUsePending);
+        this._defsUsePending = [];
+        var viewBoxRect;
+        var viewBoxTransform;
+        if (viewBox) {
+            var viewBoxArr = splitNumberSequence(viewBox);
+            if (viewBoxArr.length >= 4) {
+                viewBoxRect = {
+                    x: parseFloat((viewBoxArr[0] || 0)),
+                    y: parseFloat((viewBoxArr[1] || 0)),
+                    width: parseFloat(viewBoxArr[2]),
+                    height: parseFloat(viewBoxArr[3])
+                };
+            }
+        }
+        if (viewBoxRect && width != null && height != null) {
+            viewBoxTransform = makeViewBoxTransform(viewBoxRect, { x: 0, y: 0, width: width, height: height });
+            if (!opt.ignoreViewBox) {
+                var elRoot = root;
+                root = new Group$3();
+                root.add(elRoot);
+                elRoot.scaleX = elRoot.scaleY = viewBoxTransform.scale;
+                elRoot.x = viewBoxTransform.x;
+                elRoot.y = viewBoxTransform.y;
+            }
+        }
+        if (!opt.ignoreRootClip && width != null && height != null) {
+            root.setClipPath(new Rect$1({
+                shape: { x: 0, y: 0, width: width, height: height }
+            }));
+        }
+        return {
+            root: root,
+            width: width,
+            height: height,
+            viewBoxRect: viewBoxRect,
+            viewBoxTransform: viewBoxTransform,
+            named: named
+        };
+    };
+    SVGParser.prototype._parseNode = function (xmlNode, parentGroup, named, namedFrom, isInDefs, isInText) {
+        var nodeName = xmlNode.nodeName.toLowerCase();
+        var el;
+        var namedFromForSub = namedFrom;
+        if (nodeName === 'defs') {
+            isInDefs = true;
+        }
+        if (nodeName === 'text') {
+            isInText = true;
+        }
+        if (nodeName === 'defs' || nodeName === 'switch') {
+            el = parentGroup;
+        }
+        else {
+            if (!isInDefs) {
+                var parser_1 = nodeParsers[nodeName];
+                if (parser_1 && hasOwn(nodeParsers, nodeName)) {
+                    el = parser_1.call(this, xmlNode, parentGroup);
+                    var nameAttr = xmlNode.getAttribute('name');
+                    if (nameAttr) {
+                        var newNamed = {
+                            name: nameAttr,
+                            namedFrom: null,
+                            svgNodeTagLower: nodeName,
+                            el: el
+                        };
+                        named.push(newNamed);
+                        if (nodeName === 'g') {
+                            namedFromForSub = newNamed;
+                        }
+                    }
+                    else if (namedFrom) {
+                        named.push({
+                            name: namedFrom.name,
+                            namedFrom: namedFrom,
+                            svgNodeTagLower: nodeName,
+                            el: el
+                        });
+                    }
+                    parentGroup.add(el);
+                }
+            }
+            var parser = paintServerParsers[nodeName];
+            if (parser && hasOwn(paintServerParsers, nodeName)) {
+                var def = parser.call(this, xmlNode);
+                var id = xmlNode.getAttribute('id');
+                if (id) {
+                    this._defs[id] = def;
+                }
+            }
+        }
+        if (el && el.isGroup) {
+            var child = xmlNode.firstChild;
+            while (child) {
+                if (child.nodeType === 1) {
+                    this._parseNode(child, el, named, namedFromForSub, isInDefs, isInText);
+                }
+                else if (child.nodeType === 3 && isInText) {
+                    this._parseText(child, el);
+                }
+                child = child.nextSibling;
+            }
+        }
+    };
+    SVGParser.prototype._parseText = function (xmlNode, parentGroup) {
+        var text = new TSpan$1({
+            style: {
+                text: xmlNode.textContent
+            },
+            silent: true,
+            x: this._textX || 0,
+            y: this._textY || 0
+        });
+        inheritStyle(parentGroup, text);
+        parseAttributes(xmlNode, text, this._defsUsePending, false, false);
+        applyTextAlignment(text, parentGroup);
+        var textStyle = text.style;
+        var fontSize = textStyle.fontSize;
+        if (fontSize && fontSize < 9) {
+            textStyle.fontSize = 9;
+            text.scaleX *= fontSize / 9;
+            text.scaleY *= fontSize / 9;
+        }
+        var font = (textStyle.fontSize || textStyle.fontFamily) && [
+            textStyle.fontStyle,
+            textStyle.fontWeight,
+            (textStyle.fontSize || 12) + 'px',
+            textStyle.fontFamily || 'sans-serif'
+        ].join(' ');
+        textStyle.font = font;
+        var rect = text.getBoundingRect();
+        this._textX += rect.width;
+        parentGroup.add(text);
+        return text;
+    };
+    SVGParser.internalField = (function () {
+        nodeParsers = {
+            'g': function (xmlNode, parentGroup) {
+                var g = new Group$3();
+                inheritStyle(parentGroup, g);
+                parseAttributes(xmlNode, g, this._defsUsePending, false, false);
+                return g;
+            },
+            'rect': function (xmlNode, parentGroup) {
+                var rect = new Rect$1();
+                inheritStyle(parentGroup, rect);
+                parseAttributes(xmlNode, rect, this._defsUsePending, false, false);
+                rect.setShape({
+                    x: parseFloat(xmlNode.getAttribute('x') || '0'),
+                    y: parseFloat(xmlNode.getAttribute('y') || '0'),
+                    width: parseFloat(xmlNode.getAttribute('width') || '0'),
+                    height: parseFloat(xmlNode.getAttribute('height') || '0')
+                });
+                rect.silent = true;
+                return rect;
+            },
+            'circle': function (xmlNode, parentGroup) {
+                var circle = new Circle$1();
+                inheritStyle(parentGroup, circle);
+                parseAttributes(xmlNode, circle, this._defsUsePending, false, false);
+                circle.setShape({
+                    cx: parseFloat(xmlNode.getAttribute('cx') || '0'),
+                    cy: parseFloat(xmlNode.getAttribute('cy') || '0'),
+                    r: parseFloat(xmlNode.getAttribute('r') || '0')
+                });
+                circle.silent = true;
+                return circle;
+            },
+            'line': function (xmlNode, parentGroup) {
+                var line = new Line$1();
+                inheritStyle(parentGroup, line);
+                parseAttributes(xmlNode, line, this._defsUsePending, false, false);
+                line.setShape({
+                    x1: parseFloat(xmlNode.getAttribute('x1') || '0'),
+                    y1: parseFloat(xmlNode.getAttribute('y1') || '0'),
+                    x2: parseFloat(xmlNode.getAttribute('x2') || '0'),
+                    y2: parseFloat(xmlNode.getAttribute('y2') || '0')
+                });
+                line.silent = true;
+                return line;
+            },
+            'ellipse': function (xmlNode, parentGroup) {
+                var ellipse = new Ellipse$1();
+                inheritStyle(parentGroup, ellipse);
+                parseAttributes(xmlNode, ellipse, this._defsUsePending, false, false);
+                ellipse.setShape({
+                    cx: parseFloat(xmlNode.getAttribute('cx') || '0'),
+                    cy: parseFloat(xmlNode.getAttribute('cy') || '0'),
+                    rx: parseFloat(xmlNode.getAttribute('rx') || '0'),
+                    ry: parseFloat(xmlNode.getAttribute('ry') || '0')
+                });
+                ellipse.silent = true;
+                return ellipse;
+            },
+            'polygon': function (xmlNode, parentGroup) {
+                var pointsStr = xmlNode.getAttribute('points');
+                var pointsArr;
+                if (pointsStr) {
+                    pointsArr = parsePoints(pointsStr);
+                }
+                var polygon = new Polygon$1({
+                    shape: {
+                        points: pointsArr || []
+                    },
+                    silent: true
+                });
+                inheritStyle(parentGroup, polygon);
+                parseAttributes(xmlNode, polygon, this._defsUsePending, false, false);
+                return polygon;
+            },
+            'polyline': function (xmlNode, parentGroup) {
+                var pointsStr = xmlNode.getAttribute('points');
+                var pointsArr;
+                if (pointsStr) {
+                    pointsArr = parsePoints(pointsStr);
+                }
+                var polyline = new Polyline$1({
+                    shape: {
+                        points: pointsArr || []
+                    },
+                    silent: true
+                });
+                inheritStyle(parentGroup, polyline);
+                parseAttributes(xmlNode, polyline, this._defsUsePending, false, false);
+                return polyline;
+            },
+            'image': function (xmlNode, parentGroup) {
+                var img = new ZRImage$1();
+                inheritStyle(parentGroup, img);
+                parseAttributes(xmlNode, img, this._defsUsePending, false, false);
+                img.setStyle({
+                    image: xmlNode.getAttribute('xlink:href') || xmlNode.getAttribute('href'),
+                    x: +xmlNode.getAttribute('x'),
+                    y: +xmlNode.getAttribute('y'),
+                    width: +xmlNode.getAttribute('width'),
+                    height: +xmlNode.getAttribute('height')
+                });
+                img.silent = true;
+                return img;
+            },
+            'text': function (xmlNode, parentGroup) {
+                var x = xmlNode.getAttribute('x') || '0';
+                var y = xmlNode.getAttribute('y') || '0';
+                var dx = xmlNode.getAttribute('dx') || '0';
+                var dy = xmlNode.getAttribute('dy') || '0';
+                this._textX = parseFloat(x) + parseFloat(dx);
+                this._textY = parseFloat(y) + parseFloat(dy);
+                var g = new Group$3();
+                inheritStyle(parentGroup, g);
+                parseAttributes(xmlNode, g, this._defsUsePending, false, true);
+                return g;
+            },
+            'tspan': function (xmlNode, parentGroup) {
+                var x = xmlNode.getAttribute('x');
+                var y = xmlNode.getAttribute('y');
+                if (x != null) {
+                    this._textX = parseFloat(x);
+                }
+                if (y != null) {
+                    this._textY = parseFloat(y);
+                }
+                var dx = xmlNode.getAttribute('dx') || '0';
+                var dy = xmlNode.getAttribute('dy') || '0';
+                var g = new Group$3();
+                inheritStyle(parentGroup, g);
+                parseAttributes(xmlNode, g, this._defsUsePending, false, true);
+                this._textX += parseFloat(dx);
+                this._textY += parseFloat(dy);
+                return g;
+            },
+            'path': function (xmlNode, parentGroup) {
+                var d = xmlNode.getAttribute('d') || '';
+                var path = createFromString(d);
+                inheritStyle(parentGroup, path);
+                parseAttributes(xmlNode, path, this._defsUsePending, false, false);
+                path.silent = true;
+                return path;
+            }
+        };
+    })();
+    return SVGParser;
+}());
+var paintServerParsers = {
+    'lineargradient': function (xmlNode) {
+        var x1 = parseInt(xmlNode.getAttribute('x1') || '0', 10);
+        var y1 = parseInt(xmlNode.getAttribute('y1') || '0', 10);
+        var x2 = parseInt(xmlNode.getAttribute('x2') || '10', 10);
+        var y2 = parseInt(xmlNode.getAttribute('y2') || '0', 10);
+        var gradient = new LinearGradient$1(x1, y1, x2, y2);
+        parsePaintServerUnit(xmlNode, gradient);
+        parseGradientColorStops(xmlNode, gradient);
+        return gradient;
+    },
+    'radialgradient': function (xmlNode) {
+        var cx = parseInt(xmlNode.getAttribute('cx') || '0', 10);
+        var cy = parseInt(xmlNode.getAttribute('cy') || '0', 10);
+        var r = parseInt(xmlNode.getAttribute('r') || '0', 10);
+        var gradient = new RadialGradient$1(cx, cy, r);
+        parsePaintServerUnit(xmlNode, gradient);
+        parseGradientColorStops(xmlNode, gradient);
+        return gradient;
+    }
+};
+function parsePaintServerUnit(xmlNode, gradient) {
+    var gradientUnits = xmlNode.getAttribute('gradientUnits');
+    if (gradientUnits === 'userSpaceOnUse') {
+        gradient.global = true;
+    }
+}
+function parseGradientColorStops(xmlNode, gradient) {
+    var stop = xmlNode.firstChild;
+    while (stop) {
+        if (stop.nodeType === 1
+            && stop.nodeName.toLocaleLowerCase() === 'stop') {
+            var offsetStr = stop.getAttribute('offset');
+            var offset = void 0;
+            if (offsetStr && offsetStr.indexOf('%') > 0) {
+                offset = parseInt(offsetStr, 10) / 100;
+            }
+            else if (offsetStr) {
+                offset = parseFloat(offsetStr);
+            }
+            else {
+                offset = 0;
+            }
+            var styleVals = {};
+            parseInlineStyle(stop, styleVals, styleVals);
+            var stopColor = styleVals.stopColor
+                || stop.getAttribute('stop-color')
+                || '#000000';
+            gradient.colorStops.push({
+                offset: offset,
+                color: stopColor
+            });
+        }
+        stop = stop.nextSibling;
+    }
+}
+function inheritStyle(parent, child) {
+    if (parent && parent.__inheritedStyle) {
+        if (!child.__inheritedStyle) {
+            child.__inheritedStyle = {};
+        }
+        defaults(child.__inheritedStyle, parent.__inheritedStyle);
+    }
+}
+function parsePoints(pointsString) {
+    var list = splitNumberSequence(pointsString);
+    var points = [];
+    for (var i = 0; i < list.length; i += 2) {
+        var x = parseFloat(list[i]);
+        var y = parseFloat(list[i + 1]);
+        points.push([x, y]);
+    }
+    return points;
+}
+function parseAttributes(xmlNode, el, defsUsePending, onlyInlineStyle, isTextGroup) {
+    var disp = el;
+    var inheritedStyle = disp.__inheritedStyle = disp.__inheritedStyle || {};
+    var selfStyle = {};
+    if (xmlNode.nodeType === 1) {
+        parseTransformAttribute(xmlNode, el);
+        parseInlineStyle(xmlNode, inheritedStyle, selfStyle);
+        if (!onlyInlineStyle) {
+            parseAttributeStyle(xmlNode, inheritedStyle, selfStyle);
+        }
+    }
+    disp.style = disp.style || {};
+    if (inheritedStyle.fill != null) {
+        disp.style.fill = getFillStrokeStyle(disp, 'fill', inheritedStyle.fill, defsUsePending);
+    }
+    if (inheritedStyle.stroke != null) {
+        disp.style.stroke = getFillStrokeStyle(disp, 'stroke', inheritedStyle.stroke, defsUsePending);
+    }
+    each$9([
+        'lineWidth', 'opacity', 'fillOpacity', 'strokeOpacity', 'miterLimit', 'fontSize'
+    ], function (propName) {
+        if (inheritedStyle[propName] != null) {
+            disp.style[propName] = parseFloat(inheritedStyle[propName]);
+        }
+    });
+    each$9([
+        'lineDashOffset', 'lineCap', 'lineJoin', 'fontWeight', 'fontFamily', 'fontStyle', 'textAlign'
+    ], function (propName) {
+        if (inheritedStyle[propName] != null) {
+            disp.style[propName] = inheritedStyle[propName];
+        }
+    });
+    if (isTextGroup) {
+        disp.__selfStyle = selfStyle;
+    }
+    if (inheritedStyle.lineDash) {
+        disp.style.lineDash = map$1(splitNumberSequence(inheritedStyle.lineDash), function (str) {
+            return parseFloat(str);
+        });
+    }
+    if (inheritedStyle.visibility === 'hidden' || inheritedStyle.visibility === 'collapse') {
+        disp.invisible = true;
+    }
+    if (inheritedStyle.display === 'none') {
+        disp.ignore = true;
+    }
+}
+function applyTextAlignment(text, parentGroup) {
+    var parentSelfStyle = parentGroup.__selfStyle;
+    if (parentSelfStyle) {
+        var textBaseline = parentSelfStyle.textBaseline;
+        var zrTextBaseline = textBaseline;
+        if (!textBaseline || textBaseline === 'auto') {
+            zrTextBaseline = 'alphabetic';
+        }
+        else if (textBaseline === 'baseline') {
+            zrTextBaseline = 'alphabetic';
+        }
+        else if (textBaseline === 'before-edge' || textBaseline === 'text-before-edge') {
+            zrTextBaseline = 'top';
+        }
+        else if (textBaseline === 'after-edge' || textBaseline === 'text-after-edge') {
+            zrTextBaseline = 'bottom';
+        }
+        else if (textBaseline === 'central' || textBaseline === 'mathematical') {
+            zrTextBaseline = 'middle';
+        }
+        text.style.textBaseline = zrTextBaseline;
+    }
+    var parentInheritedStyle = parentGroup.__inheritedStyle;
+    if (parentInheritedStyle) {
+        var textAlign = parentInheritedStyle.textAlign;
+        var zrTextAlign = textAlign;
+        if (textAlign) {
+            if (textAlign === 'middle') {
+                zrTextAlign = 'center';
+            }
+            text.style.textAlign = zrTextAlign;
+        }
+    }
+}
+var urlRegex = /^url\(\s*#(.*?)\)/;
+function getFillStrokeStyle(el, method, str, defsUsePending) {
+    var urlMatch = str && str.match(urlRegex);
+    if (urlMatch) {
+        var url = trim(urlMatch[1]);
+        defsUsePending.push([el, method, url]);
+        return;
+    }
+    if (str === 'none') {
+        str = null;
+    }
+    return str;
+}
+function applyDefs(defs, defsUsePending) {
+    for (var i = 0; i < defsUsePending.length; i++) {
+        var item = defsUsePending[i];
+        item[0].style[item[1]] = defs[item[2]];
+    }
+}
+var numberReg = /-?([0-9]*\.)?[0-9]+([eE]-?[0-9]+)?/g;
+function splitNumberSequence(rawStr) {
+    return rawStr.match(numberReg) || [];
+}
+var transformRegex = /(translate|scale|rotate|skewX|skewY|matrix)\(([\-\s0-9\.eE,]*)\)/g;
+var DEGREE_TO_ANGLE = Math.PI / 180;
+function parseTransformAttribute(xmlNode, node) {
+    var transform = xmlNode.getAttribute('transform');
+    if (transform) {
+        transform = transform.replace(/,/g, ' ');
+        var transformOps_1 = [];
+        var mt = null;
+        transform.replace(transformRegex, function (str, type, value) {
+            transformOps_1.push(type, value);
+            return '';
+        });
+        for (var i = transformOps_1.length - 1; i > 0; i -= 2) {
+            var value = transformOps_1[i];
+            var type = transformOps_1[i - 1];
+            var valueArr = splitNumberSequence(value);
+            mt = mt || create();
+            switch (type) {
+                case 'translate':
+                    translate(mt, mt, [parseFloat(valueArr[0]), parseFloat(valueArr[1] || '0')]);
+                    break;
+                case 'scale':
+                    scale$1(mt, mt, [parseFloat(valueArr[0]), parseFloat(valueArr[1] || valueArr[0])]);
+                    break;
+                case 'rotate':
+                    rotate(mt, mt, -parseFloat(valueArr[0]) * DEGREE_TO_ANGLE);
+                    break;
+                case 'skewX':
+                    var sx = Math.tan(parseFloat(valueArr[0]) * DEGREE_TO_ANGLE);
+                    mul(mt, [1, 0, sx, 1, 0, 0], mt);
+                    break;
+                case 'skewY':
+                    var sy = Math.tan(parseFloat(valueArr[0]) * DEGREE_TO_ANGLE);
+                    mul(mt, [1, sy, 0, 1, 0, 0], mt);
+                    break;
+                case 'matrix':
+                    mt[0] = parseFloat(valueArr[0]);
+                    mt[1] = parseFloat(valueArr[1]);
+                    mt[2] = parseFloat(valueArr[2]);
+                    mt[3] = parseFloat(valueArr[3]);
+                    mt[4] = parseFloat(valueArr[4]);
+                    mt[5] = parseFloat(valueArr[5]);
+                    break;
+            }
+        }
+        node.setLocalTransform(mt);
+    }
+}
+var styleRegex = /([^\s:;]+)\s*:\s*([^:;]+)/g;
+function parseInlineStyle(xmlNode, inheritableStyleResult, selfStyleResult) {
+    var style = xmlNode.getAttribute('style');
+    if (!style) {
+        return;
+    }
+    styleRegex.lastIndex = 0;
+    var styleRegResult;
+    while ((styleRegResult = styleRegex.exec(style)) != null) {
+        var svgStlAttr = styleRegResult[1];
+        var zrInheritableStlAttr = hasOwn(INHERITABLE_STYLE_ATTRIBUTES_MAP, svgStlAttr)
+            ? INHERITABLE_STYLE_ATTRIBUTES_MAP[svgStlAttr]
+            : null;
+        if (zrInheritableStlAttr) {
+            inheritableStyleResult[zrInheritableStlAttr] = styleRegResult[2];
+        }
+        var zrSelfStlAttr = hasOwn(SELF_STYLE_ATTRIBUTES_MAP, svgStlAttr)
+            ? SELF_STYLE_ATTRIBUTES_MAP[svgStlAttr]
+            : null;
+        if (zrSelfStlAttr) {
+            selfStyleResult[zrSelfStlAttr] = styleRegResult[2];
+        }
+    }
+}
+function parseAttributeStyle(xmlNode, inheritableStyleResult, selfStyleResult) {
+    for (var i = 0; i < INHERITABLE_STYLE_ATTRIBUTES_MAP_KEYS.length; i++) {
+        var svgAttrName = INHERITABLE_STYLE_ATTRIBUTES_MAP_KEYS[i];
+        var attrValue = xmlNode.getAttribute(svgAttrName);
+        if (attrValue != null) {
+            inheritableStyleResult[INHERITABLE_STYLE_ATTRIBUTES_MAP[svgAttrName]] = attrValue;
+        }
+    }
+    for (var i = 0; i < SELF_STYLE_ATTRIBUTES_MAP_KEYS.length; i++) {
+        var svgAttrName = SELF_STYLE_ATTRIBUTES_MAP_KEYS[i];
+        var attrValue = xmlNode.getAttribute(svgAttrName);
+        if (attrValue != null) {
+            selfStyleResult[SELF_STYLE_ATTRIBUTES_MAP[svgAttrName]] = attrValue;
+        }
+    }
+}
+function makeViewBoxTransform(viewBoxRect, boundingRect) {
+    var scaleX = boundingRect.width / viewBoxRect.width;
+    var scaleY = boundingRect.height / viewBoxRect.height;
+    var scale = Math.min(scaleX, scaleY);
+    return {
+        scale: scale,
+        x: -(viewBoxRect.x + viewBoxRect.width / 2) * scale + (boundingRect.x + boundingRect.width / 2),
+        y: -(viewBoxRect.y + viewBoxRect.height / 2) * scale + (boundingRect.y + boundingRect.height / 2)
+    };
+}
+function parseSVG(xml, opt) {
+    var parser = new SVGParser();
+    return parser.parse(xml, opt);
+}
+
+/**
+ * "region available" means that: enable users to set attribute `name="xxx"` on those tags
+ * to make it be a region.
+ * 1. region styles and its label styles can be defined in echarts opton:
+ * ```js
+ * geo: {
+ *     regions: [{
+ *         name: 'xxx',
+ *         itemStyle: { ... },
+ *         label: { ... }
+ *     }, {
+ *         ...
+ *     },
+ *     ...]
+ * };
+ * ```
+ * 2. name can be duplicated in different SVG tag. All of the tags with the same name share
+ * a region option. For exampel if there are two <path> representing two lung lobes. They have
+ * no common parents but both of them need to display label "lung" inside.
+ */
+
+var REGION_AVAILABLE_SVG_TAG_MAP = createHashMap(['rect', 'circle', 'line', 'ellipse', 'polygon', 'polyline', 'path', // <text> <tspan> are also enabled becuase some SVG might paint text itself,
+// but still need to trigger events or tooltip.
+'text', 'tspan', // <g> is also enabled because this case: if multiple tags share one name
+// and need label displayed, every tags will display the name, which is not
+// expected. So we can put them into a <g name="xxx">. Thereby only one label
+// displayed and located based on the bounding rect of the <g>.
+'g']);
+
+var GeoSVGResource =
+/** @class */
+function () {
+  function GeoSVGResource(mapName, svg) {
+    this.type = 'geoSVG'; // All used graphics. key: hostKey, value: root
+
+    this._usedGraphicMap = createHashMap(); // All unused graphics.
+
+    this._freedGraphics = [];
+    this._mapName = mapName; // Only perform parse to XML object here, which might be time
+    // consiming for large SVG.
+    // Although convert XML to zrender element is also time consiming,
+    // if we do it here, the clone of zrender elements has to be
+    // required. So we do it once for each geo instance, util real
+    // performance issues call for optimizing it.
+
+    this._parsedXML = parseXML(svg);
+  }
+
+  GeoSVGResource.prototype.load = function ()
+  /* nameMap: NameMap */
+  {
+    // In the "load" stage, graphic need to be built to
+    // get boundingRect for geo coordinate system.
+    var firstGraphic = this._firstGraphic; // Create the return data structure only when first graphic created.
+    // Because they will be used in geo coordinate system update stage,
+    // and `regions` will be mounted at `geo` coordinate system,
+    // in which there is no "view" info, so that it should better not to
+    // make references to graphic elements.
+
+    if (!firstGraphic) {
+      firstGraphic = this._firstGraphic = this._buildGraphic(this._parsedXML);
+
+      this._freedGraphics.push(firstGraphic);
+
+      this._boundingRect = this._firstGraphic.boundingRect.clone(); // PENDING: `nameMap` will not be supported until some real requirement come.
+      // if (nameMap) {
+      //     named = applyNameMap(named, nameMap);
+      // }
+
+      var _a = createRegions(firstGraphic.named),
+          regions = _a.regions,
+          regionsMap = _a.regionsMap;
+
+      this._regions = regions;
+      this._regionsMap = regionsMap;
+    }
+
+    return {
+      boundingRect: this._boundingRect,
+      regions: this._regions,
+      regionsMap: this._regionsMap
+    };
+  };
+
+  GeoSVGResource.prototype._buildGraphic = function (svgXML) {
+    var result;
+    var rootFromParse;
+
+    try {
+      result = svgXML && parseSVG(svgXML, {
+        ignoreViewBox: true,
+        ignoreRootClip: true
+      }) || {};
+      rootFromParse = result.root;
+      assert(rootFromParse != null);
+    } catch (e) {
+      throw new Error('Invalid svg format\n' + e.message);
+    } // Note: we keep the covenant that the root has no transform. So always add an extra root.
+
+
+    var root = new Group$3();
+    root.add(rootFromParse);
+    root.isGeoSVGGraphicRoot = true; // [THE_RULE_OF_VIEWPORT_AND_VIEWBOX]
+    //
+    // Consider: `<svg width="..." height="..." viewBox="...">`
+    // - the `width/height` we call it `svgWidth/svgHeight` for short.
+    // - `(0, 0, svgWidth, svgHeight)` defines the viewport of the SVG, or say,
+    //   "viewport boundingRect", or `boundingRect` for short.
+    // - `viewBox` defines the transform from the real content ot the viewport.
+    //   `viewBox` has the same unit as the content of SVG.
+    //   If `viewBox` exists, a transform is defined, so the unit of `svgWidth/svgHeight` become
+    //   different from the content of SVG. Otherwise, they are the same.
+    //
+    // If both `svgWidth/svgHeight/viewBox` are specified in a SVG file, the transform rule will be:
+    // 0. `boundingRect` is `(0, 0, svgWidth, svgHeight)`. Set it to Geo['_rect'] (View['_rect']).
+    // 1. Make a transform from `viewBox` to `boundingRect`.
+    //    Note: only suport `preserveAspectRatio 'xMidYMid'` here. That is, this transform will preserve
+    //    the aspect ratio.
+    // 2. Make a transform from boundingRect to Geo['_viewRect'] (View['_viewRect'])
+    //    (`Geo`/`View` will do this job).
+    //    Note: this transform might not preserve aspect radio, which depending on how users specify
+    //    viewRect in echarts option (e.g., `geo.left/top/width/height` will not preserve aspect ratio,
+    //    but `geo.layoutCenter/layoutSize` will preserve aspect ratio).
+    //
+    // If `svgWidth/svgHeight` not specified, we use `viewBox` as the `boundingRect` to make the SVG
+    // layout look good.
+    //
+    // If neither `svgWidth/svgHeight` nor `viewBox` are not specified, we calculate the boundingRect
+    // of the SVG content and use them to make SVG layout look good.
+
+    var svgWidth = result.width;
+    var svgHeight = result.height;
+    var viewBoxRect = result.viewBoxRect;
+    var boundingRect = this._boundingRect;
+
+    if (!boundingRect) {
+      var bRectX = void 0;
+      var bRectY = void 0;
+      var bRectWidth = void 0;
+      var bRectHeight = void 0;
+
+      if (svgWidth != null) {
+        bRectX = 0;
+        bRectWidth = svgWidth;
+      } else if (viewBoxRect) {
+        bRectX = viewBoxRect.x;
+        bRectWidth = viewBoxRect.width;
+      }
+
+      if (svgHeight != null) {
+        bRectY = 0;
+        bRectHeight = svgHeight;
+      } else if (viewBoxRect) {
+        bRectY = viewBoxRect.y;
+        bRectHeight = viewBoxRect.height;
+      } // If both viewBox and svgWidth/svgHeight not specified,
+      // we have to determine how to layout those element to make them look good.
+
+
+      if (bRectX == null || bRectY == null) {
+        var calculatedBoundingRect = rootFromParse.getBoundingRect();
+
+        if (bRectX == null) {
+          bRectX = calculatedBoundingRect.x;
+          bRectWidth = calculatedBoundingRect.width;
+        }
+
+        if (bRectY == null) {
+          bRectY = calculatedBoundingRect.y;
+          bRectHeight = calculatedBoundingRect.height;
+        }
+      }
+
+      boundingRect = this._boundingRect = new BoundingRect$1(bRectX, bRectY, bRectWidth, bRectHeight);
+    }
+
+    if (viewBoxRect) {
+      var viewBoxTransform = makeViewBoxTransform(viewBoxRect, boundingRect); // Only support `preserveAspectRatio 'xMidYMid'`
+
+      rootFromParse.scaleX = rootFromParse.scaleY = viewBoxTransform.scale;
+      rootFromParse.x = viewBoxTransform.x;
+      rootFromParse.y = viewBoxTransform.y;
+    } // SVG needs to clip based on `viewBox`. And some SVG files really rely on this feature.
+    // They do not strictly confine all of the content inside a display rect, but deliberately
+    // use a `viewBox` to define a displayable rect.
+    // PENDING:
+    // The drawback of the `setClipPath` here is: the region label (genereted by echarts) near the
+    // edge might also be clipped, because region labels are put as `textContent` of the SVG path.
+
+
+    root.setClipPath(new Rect$1({
+      shape: boundingRect.plain()
+    }));
+    var named = [];
+    each$9(result.named, function (namedItem) {
+      if (REGION_AVAILABLE_SVG_TAG_MAP.get(namedItem.svgNodeTagLower) != null) {
+        named.push(namedItem);
+        setSilent(namedItem.el);
+      }
+    });
+    return {
+      root: root,
+      boundingRect: boundingRect,
+      named: named
+    };
+  };
+  /**
+   * Consider:
+   * (1) One graphic element can not be shared by different `geoView` running simultaneously.
+   *     Notice, also need to consider multiple echarts instances share a `mapRecord`.
+   * (2) Converting SVG to graphic elements is time consuming.
+   * (3) In the current architecture, `load` should be called frequently to get boundingRect,
+   *     and it is called without view info.
+   * So we maintain graphic elements in this module, and enables `view` to use/return these
+   * graphics from/to the pool with it's uid.
+   */
+
+
+  GeoSVGResource.prototype.useGraphic = function (hostKey
+  /*, nameMap: NameMap */
+  ) {
+    var usedRootMap = this._usedGraphicMap;
+    var svgGraphic = usedRootMap.get(hostKey);
+
+    if (svgGraphic) {
+      return svgGraphic;
+    }
+
+    svgGraphic = this._freedGraphics.pop() // use the first boundingRect to avoid duplicated boundingRect calculation.
+    || this._buildGraphic(this._parsedXML);
+    usedRootMap.set(hostKey, svgGraphic); // PENDING: `nameMap` will not be supported until some real requirement come.
+    // `nameMap` can only be obtained from echarts option.
+    // The original `named` must not be modified.
+    // if (nameMap) {
+    //     svgGraphic = extend({}, svgGraphic);
+    //     svgGraphic.named = applyNameMap(svgGraphic.named, nameMap);
+    // }
+
+    return svgGraphic;
+  };
+
+  GeoSVGResource.prototype.freeGraphic = function (hostKey) {
+    var usedRootMap = this._usedGraphicMap;
+    var svgGraphic = usedRootMap.get(hostKey);
+
+    if (svgGraphic) {
+      usedRootMap.removeKey(hostKey);
+
+      this._freedGraphics.push(svgGraphic);
+    }
+  };
+
+  return GeoSVGResource;
+}();
+
+function setSilent(el) {
+  // Only named element has silent: false, other elements should
+  // act as background and has no user interaction.
+  el.silent = false; // text|tspan will be converted to group.
+
+  if (el.isGroup) {
+    el.traverse(function (child) {
+      child.silent = false;
+    });
+  }
+}
+
+function createRegions(named) {
+  var regions = [];
+  var regionsMap = createHashMap(); // Create resions only for the first graphic.
+
+  each$9(named, function (namedItem) {
+    // Region has feature to calculate center for tooltip or other features.
+    // If there is a <g name="xxx">, the center should be the center of the
+    // bounding rect of the g.
+    if (namedItem.namedFrom != null) {
+      return;
+    }
+
+    var region = new GeoSVGRegion(namedItem.name, namedItem.el); // PENDING: if `nameMap` supported, this region can not be mounted on
+    // `this`, but can only be created each time `load()` called.
+
+    regions.push(region); // PENDING: if multiple tag named with the same name, only one will be
+    // found by `_regionsMap`. `_regionsMap` is used to find a coordinate
+    // by name. We use `region.getCenter()` as the coordinate.
+
+    regionsMap.set(namedItem.name, region);
+  });
+  return {
+    regions: regions,
+    regionsMap: regionsMap
+  };
+} // PENDING: `nameMap` will not be supported until some real requirement come.
+// /**
+//  * Use the alias in geoNameMap.
+//  * The input `named` must not be modified.
+//  */
+// function applyNameMap(
+//     named: GeoSVGGraphicRecord['named'],
+//     nameMap: NameMap
+// ): GeoSVGGraphicRecord['named'] {
+//     const result = [] as GeoSVGGraphicRecord['named'];
+//     for (let i = 0; i < named.length; i++) {
+//         let regionGraphic = named[i];
+//         const name = regionGraphic.name;
+//         if (nameMap && nameMap.hasOwnProperty(name)) {
+//             regionGraphic = extend({}, regionGraphic);
+//             regionGraphic.name = name;
+//         }
+//         result.push(regionGraphic);
+//     }
+//     return result;
+// }
+
+var geoCoord = [126, 25];
+var nanhaiName = '南海诸岛';
+var points$1 = [[[0, 3.5], [7, 11.2], [15, 11.9], [30, 7], [42, 0.7], [52, 0.7], [56, 7.7], [59, 0.7], [64, 0.7], [64, 0], [5, 0], [0, 3.5]], [[13, 16.1], [19, 14.7], [16, 21.7], [11, 23.1], [13, 16.1]], [[12, 32.2], [14, 38.5], [15, 38.5], [13, 32.2], [12, 32.2]], [[16, 47.6], [12, 53.2], [13, 53.2], [18, 47.6], [16, 47.6]], [[6, 64.4], [8, 70], [9, 70], [8, 64.4], [6, 64.4]], [[23, 82.6], [29, 79.8], [30, 79.8], [25, 82.6], [23, 82.6]], [[37, 70.7], [43, 62.3], [44, 62.3], [39, 70.7], [37, 70.7]], [[48, 51.1], [51, 45.5], [53, 45.5], [50, 51.1], [48, 51.1]], [[51, 35], [51, 28.7], [53, 28.7], [53, 35], [51, 35]], [[52, 22.4], [55, 17.5], [56, 17.5], [53, 22.4], [52, 22.4]], [[58, 12.6], [62, 7], [63, 7], [60, 12.6], [58, 12.6]], [[0, 3.5], [0, 93.1], [64, 93.1], [64, 0], [63, 0], [63, 92.4], [1, 92.4], [1, 3.5], [0, 3.5]]];
+
+for (var i = 0; i < points$1.length; i++) {
+  for (var k = 0; k < points$1[i].length; k++) {
+    points$1[i][k][0] /= 10.5;
+    points$1[i][k][1] /= -10.5 / 0.75;
+    points$1[i][k][0] += geoCoord[0];
+    points$1[i][k][1] += geoCoord[1];
+  }
+}
+
+function fixNanhai(mapType, regions) {
+  if (mapType === 'china') {
+    for (var i = 0; i < regions.length; i++) {
+      // Already exists.
+      if (regions[i].name === nanhaiName) {
+        return;
+      }
+    }
+
+    regions.push(new GeoJSONRegion(nanhaiName, map$1(points$1, function (exterior) {
+      return {
+        type: 'polygon',
+        exterior: exterior
+      };
+    }), geoCoord));
+  }
+}
+
+/*
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing,
+* software distributed under the License is distributed on an
+* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+* KIND, either express or implied.  See the License for the
+* specific language governing permissions and limitations
+* under the License.
+*/
+
+
+/**
+ * AUTO-GENERATED FILE. DO NOT MODIFY.
+ */
+
+/*
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing,
+* software distributed under the License is distributed on an
+* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+* KIND, either express or implied.  See the License for the
+* specific language governing permissions and limitations
+* under the License.
+*/
+var coordsOffsetMap = {
+  '南海诸岛': [32, 80],
+  // 全国
+  '广东': [0, -10],
+  '香港': [10, 5],
+  '澳门': [-10, 10],
+  //'北京': [-10, 0],
+  '天津': [5, 5]
+};
+function fixTextCoords(mapType, region) {
+  if (mapType === 'china') {
+    var coordFix = coordsOffsetMap[region.name];
+
+    if (coordFix) {
+      var cp = region.getCenter();
+      cp[0] += coordFix[0] / 10.5;
+      cp[1] += -coordFix[1] / (10.5 / 0.75);
+      region.setCenter(cp);
+    }
+  }
+}
+
+/*
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing,
+* software distributed under the License is distributed on an
+* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+* KIND, either express or implied.  See the License for the
+* specific language governing permissions and limitations
+* under the License.
+*/
+
+
+/**
+ * AUTO-GENERATED FILE. DO NOT MODIFY.
+ */
+
+/*
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing,
+* software distributed under the License is distributed on an
+* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+* KIND, either express or implied.  See the License for the
+* specific language governing permissions and limitations
+* under the License.
+*/
+// Fix for 钓鱼岛
+// let Region = require('../Region');
+// let zrUtil = require('zrender/lib/core/util');
+// let geoCoord = [126, 25];
+var points = [[[123.45165252685547, 25.73527164402261], [123.49731445312499, 25.73527164402261], [123.49731445312499, 25.750734064600884], [123.45165252685547, 25.750734064600884], [123.45165252685547, 25.73527164402261]]];
+function fixDiaoyuIsland(mapType, region) {
+  if (mapType === 'china' && region.name === '台湾') {
+    region.geometries.push({
+      type: 'polygon',
+      exterior: points[0]
+    });
+  }
+}
+
+var DEFAULT_NAME_PROPERTY = 'name';
+
+var GeoJSONResource =
+/** @class */
+function () {
+  function GeoJSONResource(mapName, geoJSON, specialAreas) {
+    this.type = 'geoJSON';
+    this._parsedMap = createHashMap();
+    this._mapName = mapName;
+    this._specialAreas = specialAreas; // PENDING: delay the parse to the first usage to rapid up the FMP?
+
+    this._geoJSON = parseInput(geoJSON);
+  }
+  /**
+   * @param nameMap can be null/undefined
+   * @param nameProperty can be null/undefined
+   */
+
+
+  GeoJSONResource.prototype.load = function (nameMap, nameProperty) {
+    nameProperty = nameProperty || DEFAULT_NAME_PROPERTY;
+
+    var parsed = this._parsedMap.get(nameProperty);
+
+    if (!parsed) {
+      var rawRegions = this._parseToRegions(nameProperty);
+
+      parsed = this._parsedMap.set(nameProperty, {
+        regions: rawRegions,
+        boundingRect: calculateBoundingRect(rawRegions)
+      });
+    }
+
+    var regionsMap = createHashMap();
+    var finalRegions = [];
+    each$9(parsed.regions, function (region) {
+      var regionName = region.name; // Try use the alias in geoNameMap
+
+      if (nameMap && hasOwn(nameMap, regionName)) {
+        region = region.cloneShallow(regionName = nameMap[regionName]);
+      }
+
+      finalRegions.push(region);
+      regionsMap.set(regionName, region);
+    });
+    return {
+      regions: finalRegions,
+      boundingRect: parsed.boundingRect || new BoundingRect$1(0, 0, 0, 0),
+      regionsMap: regionsMap
+    };
+  };
+
+  GeoJSONResource.prototype._parseToRegions = function (nameProperty) {
+    var mapName = this._mapName;
+    var geoJSON = this._geoJSON;
+    var rawRegions; // https://jsperf.com/try-catch-performance-overhead
+
+    try {
+      rawRegions = geoJSON ? parseGeoJSON(geoJSON, nameProperty) : [];
+    } catch (e) {
+      throw new Error('Invalid geoJson format\n' + e.message);
+    }
+
+    fixNanhai(mapName, rawRegions);
+    each$9(rawRegions, function (region) {
+      var regionName = region.name;
+      fixTextCoords(mapName, region);
+      fixDiaoyuIsland(mapName, region); // Some area like Alaska in USA map needs to be tansformed
+      // to look better
+
+      var specialArea = this._specialAreas && this._specialAreas[regionName];
+
+      if (specialArea) {
+        region.transformTo(specialArea.left, specialArea.top, specialArea.width, specialArea.height);
+      }
+    }, this);
+    return rawRegions;
+  };
+  /**
+   * Only for exporting to users.
+   * **MUST NOT** used internally.
+   */
+
+
+  GeoJSONResource.prototype.getMapForUser = function () {
+    return {
+      // For backward compatibility, use geoJson
+      // PENDING: it has been returning them without clone.
+      // do we need to avoid outsite modification?
+      geoJson: this._geoJSON,
+      geoJSON: this._geoJSON,
+      specialAreas: this._specialAreas
+    };
+  };
+
+  return GeoJSONResource;
+}();
+
+function calculateBoundingRect(regions) {
+  var rect;
+
+  for (var i = 0; i < regions.length; i++) {
+    var regionRect = regions[i].getBoundingRect();
+    rect = rect || regionRect.clone();
+    rect.union(regionRect);
+  }
+
+  return rect;
+}
+
+function parseInput(source) {
+  return !isString(source) ? source : typeof JSON !== 'undefined' && JSON.parse ? JSON.parse(source) : new Function('return (' + source + ');')();
+}
+
+var storage = createHashMap();
+var geoSourceManager = {
+  /**
+   * Compatible with previous `echarts.registerMap`.
+   *
+   * @usage
+   * ```js
+   *
+   * echarts.registerMap('USA', geoJson, specialAreas);
+   *
+   * echarts.registerMap('USA', {
+   *     geoJson: geoJson,
+   *     specialAreas: {...}
+   * });
+   * echarts.registerMap('USA', {
+   *     geoJSON: geoJson,
+   *     specialAreas: {...}
+   * });
+   *
+   * echarts.registerMap('airport', {
+   *     svg: svg
+   * }
+   * ```
+   *
+   * Note:
+   * Do not support that register multiple geoJSON or SVG
+   * one map name. Because different geoJSON and SVG have
+   * different unit. It's not easy to make sure how those
+   * units are mapping/normalize.
+   * If intending to use multiple geoJSON or SVG, we can
+   * use multiple geo coordinate system.
+   */
+  registerMap: function (mapName, rawDef, rawSpecialAreas) {
+    if (rawDef.svg) {
+      var resource = new GeoSVGResource(mapName, rawDef.svg);
+      storage.set(mapName, resource);
+    } else {
+      // Recommend:
+      //     echarts.registerMap('eu', { geoJSON: xxx, specialAreas: xxx });
+      // Backward compatibility:
+      //     echarts.registerMap('eu', geoJSON, specialAreas);
+      //     echarts.registerMap('eu', { geoJson: xxx, specialAreas: xxx });
+      var geoJSON = rawDef.geoJson || rawDef.geoJSON;
+
+      if (geoJSON && !rawDef.features) {
+        rawSpecialAreas = rawDef.specialAreas;
+      } else {
+        geoJSON = rawDef;
+      }
+
+      var resource = new GeoJSONResource(mapName, geoJSON, rawSpecialAreas);
+      storage.set(mapName, resource);
+    }
+  },
+  getGeoResource: function (mapName) {
+    return storage.get(mapName);
+  },
+
+  /**
+   * Only for exporting to users.
+   * **MUST NOT** used internally.
+   */
+  getMapForUser: function (mapName) {
+    var resource = storage.get(mapName); // Do not support return SVG until some real requirement come.
+
+    return resource && resource.type === 'geoJSON' && resource.getMapForUser();
+  },
+  load: function (mapName, nameMap, nameProperty) {
+    var resource = storage.get(mapName);
+
+    if (!resource) {
+      if (process.env.NODE_ENV !== 'production') {
+        console.error('Map ' + mapName + ' not exists. The GeoJSON of the map must be provided.');
+      }
+
+      return;
+    }
+
+    return resource.load(nameMap, nameProperty);
+  }
+};
+
+/**
+ * Only these tags enable use `itemStyle` if they are named in SVG.
+ * Other tags like <text> <tspan> <image> might not suitable for `itemStyle`.
+ * They will not be considered to be styled until some requirements come.
+ */
+
+var OPTION_STYLE_ENABLED_TAGS = ['rect', 'circle', 'line', 'ellipse', 'polygon', 'polyline', 'path'];
+var OPTION_STYLE_ENABLED_TAG_MAP = createHashMap(OPTION_STYLE_ENABLED_TAGS);
+var STATE_TRIGGER_TAG_MAP = createHashMap(OPTION_STYLE_ENABLED_TAGS.concat(['g']));
+var LABEL_HOST_MAP = createHashMap(OPTION_STYLE_ENABLED_TAGS.concat(['g']));
+var mapLabelRaw = makeInner();
+
+function getFixedItemStyle(model) {
+  var itemStyle = model.getItemStyle();
+  var areaColor = model.get('areaColor'); // If user want the color not to be changed when hover,
+  // they should both set areaColor and color to be null.
+
+  if (areaColor != null) {
+    itemStyle.fill = areaColor;
+  }
+
+  return itemStyle;
+} // Only stroke can be used for line.
+// Using fill in style if stroke not exits.
+// TODO Not sure yet. Perhaps a separate `lineStyle`?
+
+
+function fixLineStyle(styleHost) {
+  var style = styleHost.style;
+
+  if (style) {
+    style.stroke = style.stroke || style.fill;
+    style.fill = null;
+  }
+}
+
+var MapDraw =
+/** @class */
+function () {
+  function MapDraw(api) {
+    var group = new Group$3();
+    this.uid = getUID('ec_map_draw');
+    this._controller = new RoamController$1(api.getZr());
+    this._controllerHost = {
+      target: group
+    };
+    this.group = group;
+    group.add(this._regionsGroup = new Group$3());
+    group.add(this._svgGroup = new Group$3());
+  }
+
+  MapDraw.prototype.draw = function (mapOrGeoModel, ecModel, api, fromView, payload) {
+    var isGeo = mapOrGeoModel.mainType === 'geo'; // Map series has data. GEO model that controlled by map series
+    // will be assigned with map data. Other GEO model has no data.
+
+    var data = mapOrGeoModel.getData && mapOrGeoModel.getData();
+    isGeo && ecModel.eachComponent({
+      mainType: 'series',
+      subType: 'map'
+    }, function (mapSeries) {
+      if (!data && mapSeries.getHostGeoModel() === mapOrGeoModel) {
+        data = mapSeries.getData();
+      }
+    });
+    var geo = mapOrGeoModel.coordinateSystem;
+    var regionsGroup = this._regionsGroup;
+    var group = this.group;
+    var transformInfo = geo.getTransformInfo();
+    var transformInfoRaw = transformInfo.raw;
+    var transformInfoRoam = transformInfo.roam; // No animation when first draw or in action
+
+    var isFirstDraw = !regionsGroup.childAt(0) || payload;
+
+    if (isFirstDraw) {
+      group.x = transformInfoRoam.x;
+      group.y = transformInfoRoam.y;
+      group.scaleX = transformInfoRoam.scaleX;
+      group.scaleY = transformInfoRoam.scaleY;
+      group.dirty();
+    } else {
+      updateProps$1(group, transformInfoRoam, mapOrGeoModel);
+    }
+
+    var isVisualEncodedByVisualMap = data && data.getVisual('visualMeta') && data.getVisual('visualMeta').length > 0;
+    var viewBuildCtx = {
+      api: api,
+      geo: geo,
+      mapOrGeoModel: mapOrGeoModel,
+      data: data,
+      isVisualEncodedByVisualMap: isVisualEncodedByVisualMap,
+      isGeo: isGeo,
+      transformInfoRaw: transformInfoRaw
+    };
+
+    if (geo.resourceType === 'geoJSON') {
+      this._buildGeoJSON(viewBuildCtx);
+    } else if (geo.resourceType === 'geoSVG') {
+      this._buildSVG(viewBuildCtx);
+    }
+
+    this._updateController(mapOrGeoModel, ecModel, api);
+
+    this._updateMapSelectHandler(mapOrGeoModel, regionsGroup, api, fromView);
+  };
+
+  MapDraw.prototype._buildGeoJSON = function (viewBuildCtx) {
+    var regionsGroupByName = this._regionsGroupByName = createHashMap();
+    var regionsInfoByName = createHashMap();
+    var regionsGroup = this._regionsGroup;
+    var transformInfoRaw = viewBuildCtx.transformInfoRaw;
+    var mapOrGeoModel = viewBuildCtx.mapOrGeoModel;
+    var data = viewBuildCtx.data;
+    var projection = viewBuildCtx.geo.projection;
+    var projectionStream = projection && projection.stream;
+
+    function transformPoint(point, project) {
+      if (project) {
+        // projection may return null point.
+        point = project(point);
+      }
+
+      return point && [point[0] * transformInfoRaw.scaleX + transformInfoRaw.x, point[1] * transformInfoRaw.scaleY + transformInfoRaw.y];
+    }
+
+    function transformPolygonPoints(inPoints) {
+      var outPoints = []; // If projectionStream is provided. Use it instead of single point project.
+
+      var project = !projectionStream && projection && projection.project;
+
+      for (var i = 0; i < inPoints.length; ++i) {
+        var newPt = transformPoint(inPoints[i], project);
+        newPt && outPoints.push(newPt);
+      }
+
+      return outPoints;
+    }
+
+    function getPolyShape(points) {
+      return {
+        shape: {
+          points: transformPolygonPoints(points)
+        }
+      };
+    }
+
+    regionsGroup.removeAll(); // Only when the resource is GeoJSON, there is `geo.regions`.
+
+    each$9(viewBuildCtx.geo.regions, function (region) {
+      var regionName = region.name; // Consider in GeoJson properties.name may be duplicated, for example,
+      // there is multiple region named "United Kindom" or "France" (so many
+      // colonies). And it is not appropriate to merge them in geo, which
+      // will make them share the same label and bring trouble in label
+      // location calculation.
+
+      var regionGroup = regionsGroupByName.get(regionName);
+
+      var _a = regionsInfoByName.get(regionName) || {},
+          dataIdx = _a.dataIdx,
+          regionModel = _a.regionModel;
+
+      if (!regionGroup) {
+        regionGroup = regionsGroupByName.set(regionName, new Group$3());
+        regionsGroup.add(regionGroup);
+        dataIdx = data ? data.indexOfName(regionName) : null;
+        regionModel = viewBuildCtx.isGeo ? mapOrGeoModel.getRegionModel(regionName) : data ? data.getItemModel(dataIdx) : null;
+        regionsInfoByName.set(regionName, {
+          dataIdx: dataIdx,
+          regionModel: regionModel
+        });
+      }
+
+      var polygonSubpaths = [];
+      var polylineSubpaths = [];
+      each$9(region.geometries, function (geometry) {
+        // Polygon and MultiPolygon
+        if (geometry.type === 'polygon') {
+          var polys = [geometry.exterior].concat(geometry.interiors || []);
+
+          if (projectionStream) {
+            polys = projectPolys(polys, projectionStream);
+          }
+
+          each$9(polys, function (poly) {
+            polygonSubpaths.push(new Polygon$1(getPolyShape(poly)));
+          });
+        } // LineString and MultiLineString
+        else {
+            var points = geometry.points;
+
+            if (projectionStream) {
+              points = projectPolys(points, projectionStream, true);
+            }
+
+            each$9(points, function (points) {
+              polylineSubpaths.push(new Polyline$1(getPolyShape(points)));
+            });
+          }
+      });
+      var centerPt = transformPoint(region.getCenter(), projection && projection.project);
+
+      function createCompoundPath(subpaths, isLine) {
+        if (!subpaths.length) {
+          return;
+        }
+
+        var compoundPath = new CompoundPath$1({
+          culling: true,
+          segmentIgnoreThreshold: 1,
+          shape: {
+            paths: subpaths
+          }
+        });
+        regionGroup.add(compoundPath);
+        applyOptionStyleForRegion(viewBuildCtx, compoundPath, dataIdx, regionModel);
+        resetLabelForRegion(viewBuildCtx, compoundPath, regionName, regionModel, mapOrGeoModel, dataIdx, centerPt);
+
+        if (isLine) {
+          fixLineStyle(compoundPath);
+          each$9(compoundPath.states, fixLineStyle);
+        }
+      }
+
+      createCompoundPath(polygonSubpaths);
+      createCompoundPath(polylineSubpaths, true);
+    }); // Ensure children have been added to `regionGroup` before calling them.
+
+    regionsGroupByName.each(function (regionGroup, regionName) {
+      var _a = regionsInfoByName.get(regionName),
+          dataIdx = _a.dataIdx,
+          regionModel = _a.regionModel;
+
+      resetEventTriggerForRegion(viewBuildCtx, regionGroup, regionName, regionModel, mapOrGeoModel, dataIdx);
+      resetTooltipForRegion(viewBuildCtx, regionGroup, regionName, regionModel, mapOrGeoModel);
+      resetStateTriggerForRegion(viewBuildCtx, regionGroup, regionName, regionModel, mapOrGeoModel);
+    }, this);
+  };
+
+  MapDraw.prototype._buildSVG = function (viewBuildCtx) {
+    var mapName = viewBuildCtx.geo.map;
+    var transformInfoRaw = viewBuildCtx.transformInfoRaw;
+    this._svgGroup.x = transformInfoRaw.x;
+    this._svgGroup.y = transformInfoRaw.y;
+    this._svgGroup.scaleX = transformInfoRaw.scaleX;
+    this._svgGroup.scaleY = transformInfoRaw.scaleY;
+
+    if (this._svgResourceChanged(mapName)) {
+      this._freeSVG();
+
+      this._useSVG(mapName);
+    }
+
+    var svgDispatcherMap = this._svgDispatcherMap = createHashMap();
+    var focusSelf = false;
+    each$9(this._svgGraphicRecord.named, function (namedItem) {
+      // Note that we also allow different elements have the same name.
+      // For example, a glyph of a city and the label of the city have
+      // the same name and their tooltip info can be defined in a single
+      // region option.
+      var regionName = namedItem.name;
+      var mapOrGeoModel = viewBuildCtx.mapOrGeoModel;
+      var data = viewBuildCtx.data;
+      var svgNodeTagLower = namedItem.svgNodeTagLower;
+      var el = namedItem.el;
+      var dataIdx = data ? data.indexOfName(regionName) : null;
+      var regionModel = mapOrGeoModel.getRegionModel(regionName);
+
+      if (OPTION_STYLE_ENABLED_TAG_MAP.get(svgNodeTagLower) != null && el instanceof Displayable$1) {
+        applyOptionStyleForRegion(viewBuildCtx, el, dataIdx, regionModel);
+      }
+
+      if (el instanceof Displayable$1) {
+        el.culling = true;
+      } // We do not know how the SVG like so we'd better not to change z2.
+      // Otherwise it might bring some unexpected result. For example,
+      // an area hovered that make some inner city can not be clicked.
+
+
+      el.z2EmphasisLift = 0; // If self named:
+
+      if (!namedItem.namedFrom) {
+        // label should batter to be displayed based on the center of <g>
+        // if it is named rather than displayed on each child.
+        if (LABEL_HOST_MAP.get(svgNodeTagLower) != null) {
+          resetLabelForRegion(viewBuildCtx, el, regionName, regionModel, mapOrGeoModel, dataIdx, null);
+        }
+
+        resetEventTriggerForRegion(viewBuildCtx, el, regionName, regionModel, mapOrGeoModel, dataIdx);
+        resetTooltipForRegion(viewBuildCtx, el, regionName, regionModel, mapOrGeoModel);
+
+        if (STATE_TRIGGER_TAG_MAP.get(svgNodeTagLower) != null) {
+          var focus_1 = resetStateTriggerForRegion(viewBuildCtx, el, regionName, regionModel, mapOrGeoModel);
+
+          if (focus_1 === 'self') {
+            focusSelf = true;
+          }
+
+          var els = svgDispatcherMap.get(regionName) || svgDispatcherMap.set(regionName, []);
+          els.push(el);
+        }
+      }
+    }, this);
+
+    this._enableBlurEntireSVG(focusSelf, viewBuildCtx);
+  };
+
+  MapDraw.prototype._enableBlurEntireSVG = function (focusSelf, viewBuildCtx) {
+    // It's a little complicated to support blurring the entire geoSVG in series-map.
+    // So do not suport it until some requirements come.
+    // At present, in series-map, only regions can be blurred.
+    if (focusSelf && viewBuildCtx.isGeo) {
+      var blurStyle = viewBuildCtx.mapOrGeoModel.getModel(['blur', 'itemStyle']).getItemStyle(); // Only suport `opacity` here. Because not sure that other props are suitable for
+      // all of the elements generated by SVG (especially for Text/TSpan/Image/... ).
+
+      var opacity_1 = blurStyle.opacity;
+
+      this._svgGraphicRecord.root.traverse(function (el) {
+        if (!el.isGroup) {
+          // PENDING: clear those settings to SVG elements when `_freeSVG`.
+          // (Currently it happen not to be needed.)
+          setDefaultStateProxy(el);
+          var style = el.ensureState('blur').style || {}; // Do not overwrite the region style that already set from region option.
+
+          if (style.opacity == null && opacity_1 != null) {
+            style.opacity = opacity_1;
+          } // If `ensureState('blur').style = {}`, there will be default opacity.
+          // Enable `stateTransition` (animation).
+
+
+          el.ensureState('emphasis');
+        }
+      });
+    }
+  };
+
+  MapDraw.prototype.remove = function () {
+    this._regionsGroup.removeAll();
+
+    this._regionsGroupByName = null;
+
+    this._svgGroup.removeAll();
+
+    this._freeSVG();
+
+    this._controller.dispose();
+
+    this._controllerHost = null;
+  };
+
+  MapDraw.prototype.findHighDownDispatchers = function (name, geoModel) {
+    if (name == null) {
+      return [];
+    }
+
+    var geo = geoModel.coordinateSystem;
+
+    if (geo.resourceType === 'geoJSON') {
+      var regionsGroupByName = this._regionsGroupByName;
+
+      if (regionsGroupByName) {
+        var regionGroup = regionsGroupByName.get(name);
+        return regionGroup ? [regionGroup] : [];
+      }
+    } else if (geo.resourceType === 'geoSVG') {
+      return this._svgDispatcherMap && this._svgDispatcherMap.get(name) || [];
+    }
+  };
+
+  MapDraw.prototype._svgResourceChanged = function (mapName) {
+    return this._svgMapName !== mapName;
+  };
+
+  MapDraw.prototype._useSVG = function (mapName) {
+    var resource = geoSourceManager.getGeoResource(mapName);
+
+    if (resource && resource.type === 'geoSVG') {
+      var svgGraphic = resource.useGraphic(this.uid);
+
+      this._svgGroup.add(svgGraphic.root);
+
+      this._svgGraphicRecord = svgGraphic;
+      this._svgMapName = mapName;
+    }
+  };
+
+  MapDraw.prototype._freeSVG = function () {
+    var mapName = this._svgMapName;
+
+    if (mapName == null) {
+      return;
+    }
+
+    var resource = geoSourceManager.getGeoResource(mapName);
+
+    if (resource && resource.type === 'geoSVG') {
+      resource.freeGraphic(this.uid);
+    }
+
+    this._svgGraphicRecord = null;
+    this._svgDispatcherMap = null;
+
+    this._svgGroup.removeAll();
+
+    this._svgMapName = null;
+  };
+
+  MapDraw.prototype._updateController = function (mapOrGeoModel, ecModel, api) {
+    var geo = mapOrGeoModel.coordinateSystem;
+    var controller = this._controller;
+    var controllerHost = this._controllerHost; // @ts-ignore FIXME:TS
+
+    controllerHost.zoomLimit = mapOrGeoModel.get('scaleLimit');
+    controllerHost.zoom = geo.getZoom(); // roamType is will be set default true if it is null
+    // @ts-ignore FIXME:TS
+
+    controller.enable(mapOrGeoModel.get('roam') || false);
+    var mainType = mapOrGeoModel.mainType;
+
+    function makeActionBase() {
+      var action = {
+        type: 'geoRoam',
+        componentType: mainType
+      };
+      action[mainType + 'Id'] = mapOrGeoModel.id;
+      return action;
+    }
+
+    controller.off('pan').on('pan', function (e) {
+      this._mouseDownFlag = false;
+      updateViewOnPan(controllerHost, e.dx, e.dy);
+      api.dispatchAction(extend(makeActionBase(), {
+        dx: e.dx,
+        dy: e.dy,
+        animation: {
+          duration: 0
+        }
+      }));
+    }, this);
+    controller.off('zoom').on('zoom', function (e) {
+      this._mouseDownFlag = false;
+      updateViewOnZoom(controllerHost, e.scale, e.originX, e.originY);
+      api.dispatchAction(extend(makeActionBase(), {
+        zoom: e.scale,
+        originX: e.originX,
+        originY: e.originY,
+        animation: {
+          duration: 0
+        }
+      }));
+    }, this);
+    controller.setPointerChecker(function (e, x, y) {
+      return geo.containPoint([x, y]) && !onIrrelevantElement(e, api, mapOrGeoModel);
+    });
+  };
+  /**
+   * FIXME: this is a temporarily workaround.
+   * When `geoRoam` the elements need to be reset in `MapView['render']`, because the props like
+   * `ignore` might have been modified by `LabelManager`, and `LabelManager#addLabelsOfSeries`
+   * will subsequently cache `defaultAttr` like `ignore`. If do not do this reset, the modified
+   * props will have no chance to be restored.
+   * Note: this reset should be after `clearStates` in `renderSeries` becuase `useStates` in
+   * `renderSeries` will cache the modified `ignore` to `el._normalState`.
+   * TODO:
+   * Use clone/immutable in `LabelManager`?
+   */
+
+
+  MapDraw.prototype.resetForLabelLayout = function () {
+    this.group.traverse(function (el) {
+      var label = el.getTextContent();
+
+      if (label) {
+        label.ignore = mapLabelRaw(label).ignore;
+      }
+    });
+  };
+
+  MapDraw.prototype._updateMapSelectHandler = function (mapOrGeoModel, regionsGroup, api, fromView) {
+    var mapDraw = this;
+    regionsGroup.off('mousedown');
+    regionsGroup.off('click'); // @ts-ignore FIXME:TS resolve type conflict
+
+    if (mapOrGeoModel.get('selectedMode')) {
+      regionsGroup.on('mousedown', function () {
+        mapDraw._mouseDownFlag = true;
+      });
+      regionsGroup.on('click', function (e) {
+        if (!mapDraw._mouseDownFlag) {
+          return;
+        }
+
+        mapDraw._mouseDownFlag = false;
+      });
+    }
+  };
+
+  return MapDraw;
+}();
+
+function applyOptionStyleForRegion(viewBuildCtx, el, dataIndex, regionModel) {
+  // All of the path are using `itemStyle`, becuase
+  // (1) Some SVG also use fill on polyline (The different between
+  // polyline and polygon is "open" or "close" but not fill or not).
+  // (2) For the common props like opacity, if some use itemStyle
+  // and some use `lineStyle`, it might confuse users.
+  // (3) Most SVG use <path>, where can not detect wether draw a "line"
+  // or a filled shape, so use `itemStyle` for <path>.
+  var normalStyleModel = regionModel.getModel('itemStyle');
+  var emphasisStyleModel = regionModel.getModel(['emphasis', 'itemStyle']);
+  var blurStyleModel = regionModel.getModel(['blur', 'itemStyle']);
+  var selectStyleModel = regionModel.getModel(['select', 'itemStyle']); // NOTE: DONT use 'style' in visual when drawing map.
+  // This component is used for drawing underlying map for both geo component and map series.
+
+  var normalStyle = getFixedItemStyle(normalStyleModel);
+  var emphasisStyle = getFixedItemStyle(emphasisStyleModel);
+  var selectStyle = getFixedItemStyle(selectStyleModel);
+  var blurStyle = getFixedItemStyle(blurStyleModel); // Update the itemStyle if has data visual
+
+  var data = viewBuildCtx.data;
+
+  if (data) {
+    // Only visual color of each item will be used. It can be encoded by visualMap
+    // But visual color of series is used in symbol drawing
+    // Visual color for each series is for the symbol draw
+    var style = data.getItemVisual(dataIndex, 'style');
+    var decal = data.getItemVisual(dataIndex, 'decal');
+
+    if (viewBuildCtx.isVisualEncodedByVisualMap && style.fill) {
+      normalStyle.fill = style.fill;
+    }
+
+    if (decal) {
+      normalStyle.decal = createOrUpdatePatternFromDecal(decal, viewBuildCtx.api);
+    }
+  } // SVG text, tspan and image can be named but not supporeted
+  // to be styled by region option yet.
+
+
+  el.setStyle(normalStyle);
+  el.style.strokeNoScale = true;
+  el.ensureState('emphasis').style = emphasisStyle;
+  el.ensureState('select').style = selectStyle;
+  el.ensureState('blur').style = blurStyle; // Enable blur
+
+  setDefaultStateProxy(el);
+}
+
+function resetLabelForRegion(viewBuildCtx, el, regionName, regionModel, mapOrGeoModel, // Exist only if `viewBuildCtx.data` exists.
+dataIdx, // If labelXY not provided, use `textConfig.position: 'inside'`
+labelXY) {
+  var data = viewBuildCtx.data;
+  var isGeo = viewBuildCtx.isGeo;
+  var isDataNaN = data && isNaN(data.get(data.mapDimension('value'), dataIdx));
+  var itemLayout = data && data.getItemLayout(dataIdx); // In the following cases label will be drawn
+  // 1. In map series and data value is NaN
+  // 2. In geo component
+  // 3. Region has no series legendIcon, which will be add a showLabel flag in mapSymbolLayout
+
+  if (isGeo || isDataNaN || itemLayout && itemLayout.showLabel) {
+    var query = !isGeo ? dataIdx : regionName;
+    var labelFetcher = void 0; // Consider dataIdx not found.
+
+    if (!data || dataIdx >= 0) {
+      labelFetcher = mapOrGeoModel;
+    }
+
+    var specifiedTextOpt = labelXY ? {
+      normal: {
+        align: 'center',
+        verticalAlign: 'middle'
+      }
+    } : null; // Caveat: must be called after `setDefaultStateProxy(el);` called.
+    // because textContent will be assign with `el.stateProxy` inside.
+
+    setLabelStyle(el, getLabelStatesModels(regionModel), {
+      labelFetcher: labelFetcher,
+      labelDataIndex: query,
+      defaultText: regionName
+    }, specifiedTextOpt);
+    var textEl = el.getTextContent();
+
+    if (textEl) {
+      mapLabelRaw(textEl).ignore = textEl.ignore;
+
+      if (el.textConfig && labelXY) {
+        // Compute a relative offset based on the el bounding rect.
+        var rect = el.getBoundingRect().clone(); // Need to make sure the percent position base on the same rect in normal and
+        // emphasis state. Otherwise if using boundingRect of el, but the emphasis state
+        // has borderWidth (even 0.5px), the text position will be changed obviously
+        // if the position is very big like ['1234%', '1345%'].
+
+        el.textConfig.layoutRect = rect;
+        el.textConfig.position = [(labelXY[0] - rect.x) / rect.width * 100 + '%', (labelXY[1] - rect.y) / rect.height * 100 + '%'];
+      }
+    } // PENDING:
+    // If labelLayout is enabled (test/label-layout.html), el.dataIndex should be specified.
+    // But el.dataIndex is also used to determine whether user event should be triggered,
+    // where el.seriesIndex or el.dataModel must be specified. At present for a single el
+    // there is not case that "only label layout enabled but user event disabled", so here
+    // we depends `resetEventTriggerForRegion` to do the job of setting `el.dataIndex`.
+
+
+    el.disableLabelAnimation = true;
+  } else {
+    el.removeTextContent();
+    el.removeTextConfig();
+    el.disableLabelAnimation = null;
+  }
+}
+
+function resetEventTriggerForRegion(viewBuildCtx, eventTrigger, regionName, regionModel, mapOrGeoModel, // Exist only if `viewBuildCtx.data` exists.
+dataIdx) {
+  // setItemGraphicEl, setHoverStyle after all polygons and labels
+  // are added to the regionGroup
+  if (viewBuildCtx.data) {
+    // FIXME: when series-map use a SVG map, and there are duplicated name specified
+    // on different SVG elements, after `data.setItemGraphicEl(...)`:
+    // (1) all of them will be mounted with `dataIndex`, `seriesIndex`, so that tooltip
+    // can be triggered only mouse hover. That's correct.
+    // (2) only the last element will be kept in `data`, so that if trigger tooltip
+    // by `dispatchAction`, only the last one can be found and triggered. That might be
+    // not correct. We will fix it in future if anyone demanding that.
+    viewBuildCtx.data.setItemGraphicEl(dataIdx, eventTrigger);
+  } // series-map will not trigger "geoselectchange" no matter it is
+  // based on a declared geo component. Because series-map will
+  // trigger "selectchange". If it trigger both the two events,
+  // If users call `chart.dispatchAction({type: 'toggleSelect'})`,
+  // it not easy to also fire event "geoselectchanged".
+  else {
+      // Package custom mouse event for geo component
+      getECData(eventTrigger).eventData = {
+        componentType: 'geo',
+        componentIndex: mapOrGeoModel.componentIndex,
+        geoIndex: mapOrGeoModel.componentIndex,
+        name: regionName,
+        region: regionModel && regionModel.option || {}
+      };
+    }
+}
+
+function resetTooltipForRegion(viewBuildCtx, el, regionName, regionModel, mapOrGeoModel) {
+  if (!viewBuildCtx.data) {
+    setTooltipConfig({
+      el: el,
+      componentModel: mapOrGeoModel,
+      itemName: regionName,
+      // @ts-ignore FIXME:TS fix the "compatible with each other"?
+      itemTooltipOption: regionModel.get('tooltip')
+    });
+  }
+}
+
+function resetStateTriggerForRegion(viewBuildCtx, el, regionName, regionModel, mapOrGeoModel) {
+  // @ts-ignore FIXME:TS fix the "compatible with each other"?
+  el.highDownSilentOnTouch = !!mapOrGeoModel.get('selectedMode'); // @ts-ignore FIXME:TS fix the "compatible with each other"?
+
+  var emphasisModel = regionModel.getModel('emphasis');
+  var focus = emphasisModel.get('focus');
+  toggleHoverEmphasis(el, focus, emphasisModel.get('blurScope'), emphasisModel.get('disabled'));
+
+  if (viewBuildCtx.isGeo) {
+    enableComponentHighDownFeatures(el, mapOrGeoModel, regionName);
+  }
+
+  return focus;
+}
+
+function projectPolys(rings, // Polygons include exterior and interiors. Or polylines.
+createStream, isLine) {
+  var polygons = [];
+  var curPoly;
+
+  function startPolygon() {
+    curPoly = [];
+  }
+
+  function endPolygon() {
+    if (curPoly.length) {
+      polygons.push(curPoly);
+      curPoly = [];
+    }
+  }
+
+  var stream = createStream({
+    polygonStart: startPolygon,
+    polygonEnd: endPolygon,
+    lineStart: startPolygon,
+    lineEnd: endPolygon,
+    point: function (x, y) {
+      // May have NaN values from stream.
+      if (isFinite(x) && isFinite(y)) {
+        curPoly.push([x, y]);
+      }
+    },
+    sphere: function () {}
+  });
+  !isLine && stream.polygonStart();
+  each$9(rings, function (ring) {
+    stream.lineStart();
+
+    for (var i = 0; i < ring.length; i++) {
+      stream.point(ring[i][0], ring[i][1]);
+    }
+
+    stream.lineEnd();
+  });
+  !isLine && stream.polygonEnd();
+  return polygons;
+}
+
+var MapDraw$1 = MapDraw; // @ts-ignore FIXME:TS fix the "compatible with each other"?
+
+var MapView =
+/** @class */
+function (_super) {
+  __extends$1(MapView, _super);
+
+  function MapView() {
+    var _this = _super !== null && _super.apply(this, arguments) || this;
+
+    _this.type = MapView.type;
+    return _this;
+  }
+
+  MapView.prototype.render = function (mapModel, ecModel, api, payload) {
+    // Not render if it is an toggleSelect action from self
+    if (payload && payload.type === 'mapToggleSelect' && payload.from === this.uid) {
+      return;
+    }
+
+    var group = this.group;
+    group.removeAll();
+
+    if (mapModel.getHostGeoModel()) {
+      return;
+    }
+
+    if (this._mapDraw && payload && payload.type === 'geoRoam') {
+      this._mapDraw.resetForLabelLayout();
+    } // Not update map if it is an roam action from self
+
+
+    if (!(payload && payload.type === 'geoRoam' && payload.componentType === 'series' && payload.seriesId === mapModel.id)) {
+      if (mapModel.needsDrawMap) {
+        var mapDraw = this._mapDraw || new MapDraw$1(api);
+        group.add(mapDraw.group);
+        mapDraw.draw(mapModel, ecModel, api, this, payload);
+        this._mapDraw = mapDraw;
+      } else {
+        // Remove drawed map
+        this._mapDraw && this._mapDraw.remove();
+        this._mapDraw = null;
+      }
+    } else {
+      var mapDraw = this._mapDraw;
+      mapDraw && group.add(mapDraw.group);
+    }
+
+    mapModel.get('showLegendSymbol') && ecModel.getComponent('legend') && this._renderSymbols(mapModel, ecModel, api);
+  };
+
+  MapView.prototype.remove = function () {
+    this._mapDraw && this._mapDraw.remove();
+    this._mapDraw = null;
+    this.group.removeAll();
+  };
+
+  MapView.prototype.dispose = function () {
+    this._mapDraw && this._mapDraw.remove();
+    this._mapDraw = null;
+  };
+
+  MapView.prototype._renderSymbols = function (mapModel, ecModel, api) {
+    var originalData = mapModel.originalData;
+    var group = this.group;
+    originalData.each(originalData.mapDimension('value'), function (value, originalDataIndex) {
+      if (isNaN(value)) {
+        return;
+      }
+
+      var layout = originalData.getItemLayout(originalDataIndex);
+
+      if (!layout || !layout.point) {
+        // Not exists in map
+        return;
+      }
+
+      var point = layout.point;
+      var offset = layout.offset;
+      var circle = new Circle$1({
+        style: {
+          // Because the special of map draw.
+          // Which needs statistic of multiple series and draw on one map.
+          // And each series also need a symbol with legend color
+          //
+          // Layout and visual are put one the different data
+          // TODO
+          fill: mapModel.getData().getVisual('style').fill
+        },
+        shape: {
+          cx: point[0] + offset * 9,
+          cy: point[1],
+          r: 3
+        },
+        silent: true,
+        // Do not overlap the first series, on which labels are displayed.
+        z2: 8 + (!offset ? Z2_EMPHASIS_LIFT + 1 : 0)
+      }); // Only the series that has the first value on the same region is in charge of rendering the label.
+      // But consider the case:
+      // series: [
+      //     {id: 'X', type: 'map', map: 'm', {data: [{name: 'A', value: 11}, {name: 'B', {value: 22}]},
+      //     {id: 'Y', type: 'map', map: 'm', {data: [{name: 'A', value: 21}, {name: 'C', {value: 33}]}
+      // ]
+      // The offset `0` of item `A` is at series `X`, but of item `C` is at series `Y`.
+      // For backward compatibility, we follow the rule that render label `A` by the
+      // settings on series `X` but render label `C` by the settings on series `Y`.
+
+      if (!offset) {
+        var fullData = mapModel.mainSeries.getData();
+        var name_1 = originalData.getName(originalDataIndex);
+        var fullIndex_1 = fullData.indexOfName(name_1);
+        var itemModel = originalData.getItemModel(originalDataIndex);
+        var labelModel = itemModel.getModel('label');
+        var regionGroup = fullData.getItemGraphicEl(fullIndex_1); // `getFormattedLabel` needs to use `getData` inside. Here
+        // `mapModel.getData()` is shallow cloned from `mainSeries.getData()`.
+        // FIXME
+        // If this is not the `mainSeries`, the item model (like label formatter)
+        // set on original data item will never get. But it has been working
+        // like that from the begining, and this scenario is rarely encountered.
+        // So it won't be fixed until have to.
+
+        setLabelStyle(circle, getLabelStatesModels(itemModel), {
+          labelFetcher: {
+            getFormattedLabel: function (idx, state) {
+              return mapModel.getFormattedLabel(fullIndex_1, state);
+            }
+          },
+          defaultText: name_1
+        });
+        circle.disableLabelAnimation = true;
+
+        if (!labelModel.get('position')) {
+          circle.setTextConfig({
+            position: 'bottom'
+          });
+        }
+
+        regionGroup.onHoverStateChange = function (toState) {
+          setStatesFlag(circle, toState);
+        };
+      }
+
+      group.add(circle);
+    });
+  };
+
+  MapView.type = 'map';
+  return MapView;
+}(ChartView$1);
+
+var MapView$1 = MapView;
+
+var MapSeries =
+/** @class */
+function (_super) {
+  __extends$1(MapSeries, _super);
+
+  function MapSeries() {
+    var _this = _super !== null && _super.apply(this, arguments) || this;
+
+    _this.type = MapSeries.type; // Only first map series of same mapType will drawMap.
+
+    _this.needsDrawMap = false; // Group of all map series with same mapType
+
+    _this.seriesGroup = [];
+
+    _this.getTooltipPosition = function (dataIndex) {
+      if (dataIndex != null) {
+        var name_1 = this.getData().getName(dataIndex);
+        var geo = this.coordinateSystem;
+        var region = geo.getRegion(name_1);
+        return region && geo.dataToPoint(region.getCenter());
+      }
+    };
+
+    return _this;
+  }
+
+  MapSeries.prototype.getInitialData = function (option) {
+    var data = createSeriesDataSimply(this, {
+      coordDimensions: ['value'],
+      encodeDefaulter: curry$1(makeSeriesEncodeForNameBased, this)
+    });
+    var dataNameMap = createHashMap();
+    var toAppendNames = [];
+
+    for (var i = 0, len = data.count(); i < len; i++) {
+      var name_2 = data.getName(i);
+      dataNameMap.set(name_2, true);
+    }
+
+    var geoSource = geoSourceManager.load(this.getMapType(), this.option.nameMap, this.option.nameProperty);
+    each$9(geoSource.regions, function (region) {
+      var name = region.name;
+
+      if (!dataNameMap.get(name)) {
+        toAppendNames.push(name);
+      }
+    }); // Complete data with missing regions. The consequent processes (like visual
+    // map and render) can not be performed without a "full data". For example,
+    // find `dataIndex` by name.
+
+    data.appendValues([], toAppendNames);
+    return data;
+  };
+  /**
+   * If no host geo model, return null, which means using a
+   * inner exclusive geo model.
+   */
+
+
+  MapSeries.prototype.getHostGeoModel = function () {
+    var geoIndex = this.option.geoIndex;
+    return geoIndex != null ? this.ecModel.getComponent('geo', geoIndex) : null;
+  };
+
+  MapSeries.prototype.getMapType = function () {
+    return (this.getHostGeoModel() || this).option.map;
+  }; // _fillOption(option, mapName) {
+  // Shallow clone
+  // option = zrUtil.extend({}, option);
+  // option.data = geoCreator.getFilledRegions(option.data, mapName, option.nameMap);
+  // return option;
+  // }
+
+
+  MapSeries.prototype.getRawValue = function (dataIndex) {
+    // Use value stored in data instead because it is calculated from multiple series
+    // FIXME Provide all value of multiple series ?
+    var data = this.getData();
+    return data.get(data.mapDimension('value'), dataIndex);
+  };
+  /**
+   * Get model of region
+   */
+
+
+  MapSeries.prototype.getRegionModel = function (regionName) {
+    var data = this.getData();
+    return data.getItemModel(data.indexOfName(regionName));
+  };
+  /**
+   * Map tooltip formatter
+   */
+
+
+  MapSeries.prototype.formatTooltip = function (dataIndex, multipleSeries, dataType) {
+    // FIXME orignalData and data is a bit confusing
+    var data = this.getData();
+    var value = this.getRawValue(dataIndex);
+    var name = data.getName(dataIndex);
+    var seriesGroup = this.seriesGroup;
+    var seriesNames = [];
+
+    for (var i = 0; i < seriesGroup.length; i++) {
+      var otherIndex = seriesGroup[i].originalData.indexOfName(name);
+      var valueDim = data.mapDimension('value');
+
+      if (!isNaN(seriesGroup[i].originalData.get(valueDim, otherIndex))) {
+        seriesNames.push(seriesGroup[i].name);
+      }
+    }
+
+    return createTooltipMarkup('section', {
+      header: seriesNames.join(', '),
+      noHeader: !seriesNames.length,
+      blocks: [createTooltipMarkup('nameValue', {
+        name: name,
+        value: value
+      })]
+    });
+  };
+
+  MapSeries.prototype.setZoom = function (zoom) {
+    this.option.zoom = zoom;
+  };
+
+  MapSeries.prototype.setCenter = function (center) {
+    this.option.center = center;
+  };
+
+  MapSeries.prototype.getLegendIcon = function (opt) {
+    var iconType = opt.icon || 'roundRect';
+    var icon = createSymbol(iconType, 0, 0, opt.itemWidth, opt.itemHeight, opt.itemStyle.fill);
+    icon.setStyle(opt.itemStyle); // Map do not use itemStyle.borderWidth as border width
+
+    icon.style.stroke = 'none'; // No rotation because no series visual symbol for map
+
+    if (iconType.indexOf('empty') > -1) {
+      icon.style.stroke = icon.style.fill;
+      icon.style.fill = '#fff';
+      icon.style.lineWidth = 2;
+    }
+
+    return icon;
+  };
+
+  MapSeries.type = 'series.map';
+  MapSeries.dependencies = ['geo'];
+  MapSeries.layoutMode = 'box';
+  MapSeries.defaultOption = {
+    // 一级层叠
+    // zlevel: 0,
+    // 二级层叠
+    z: 2,
+    coordinateSystem: 'geo',
+    // map should be explicitly specified since ec3.
+    map: '',
+    // If `geoIndex` is not specified, a exclusive geo will be
+    // created. Otherwise use the specified geo component, and
+    // `map` and `mapType` are ignored.
+    // geoIndex: 0,
+    // 'center' | 'left' | 'right' | 'x%' | {number}
+    left: 'center',
+    // 'center' | 'top' | 'bottom' | 'x%' | {number}
+    top: 'center',
+    // right
+    // bottom
+    // width:
+    // height
+    // Aspect is width / height. Inited to be geoJson bbox aspect
+    // This parameter is used for scale this aspect
+    // Default value:
+    // for geoSVG source: 1,
+    // for geoJSON source: 0.75.
+    aspectScale: null,
+    ///// Layout with center and size
+    // If you wan't to put map in a fixed size box with right aspect ratio
+    // This two properties may more conveninet
+    // layoutCenter: [50%, 50%]
+    // layoutSize: 100
+    showLegendSymbol: true,
+    // Define left-top, right-bottom coords to control view
+    // For example, [ [180, 90], [-180, -90] ],
+    // higher priority than center and zoom
+    boundingCoords: null,
+    // Default on center of map
+    center: null,
+    zoom: 1,
+    scaleLimit: null,
+    selectedMode: true,
+    label: {
+      show: false,
+      color: '#000'
+    },
+    // scaleLimit: null,
+    itemStyle: {
+      borderWidth: 0.5,
+      borderColor: '#444',
+      areaColor: '#eee'
+    },
+    emphasis: {
+      label: {
+        show: true,
+        color: 'rgb(100,0,0)'
+      },
+      itemStyle: {
+        areaColor: 'rgba(255,215,0,0.8)'
+      }
+    },
+    select: {
+      label: {
+        show: true,
+        color: 'rgb(100,0,0)'
+      },
+      itemStyle: {
+        color: 'rgba(255,215,0,0.8)'
+      }
+    },
+    nameProperty: 'name'
+  };
+  return MapSeries;
+}(SeriesModel$1);
+
+var MapSeries$1 = MapSeries;
+
+function dataStatistics(datas, statisticType) {
+  var dataNameMap = {};
+  each$9(datas, function (data) {
+    data.each(data.mapDimension('value'), function (value, idx) {
+      // Add prefix to avoid conflict with Object.prototype.
+      var mapKey = 'ec-' + data.getName(idx);
+      dataNameMap[mapKey] = dataNameMap[mapKey] || [];
+
+      if (!isNaN(value)) {
+        dataNameMap[mapKey].push(value);
+      }
+    });
+  });
+  return datas[0].map(datas[0].mapDimension('value'), function (value, idx) {
+    var mapKey = 'ec-' + datas[0].getName(idx);
+    var sum = 0;
+    var min = Infinity;
+    var max = -Infinity;
+    var len = dataNameMap[mapKey].length;
+
+    for (var i = 0; i < len; i++) {
+      min = Math.min(min, dataNameMap[mapKey][i]);
+      max = Math.max(max, dataNameMap[mapKey][i]);
+      sum += dataNameMap[mapKey][i];
+    }
+
+    var result;
+
+    if (statisticType === 'min') {
+      result = min;
+    } else if (statisticType === 'max') {
+      result = max;
+    } else if (statisticType === 'average') {
+      result = sum / len;
+    } else {
+      result = sum;
+    }
+
+    return len === 0 ? NaN : result;
+  });
+}
+
+function mapDataStatistic(ecModel) {
+  var seriesGroups = {};
+  ecModel.eachSeriesByType('map', function (seriesModel) {
+    var hostGeoModel = seriesModel.getHostGeoModel();
+    var key = hostGeoModel ? 'o' + hostGeoModel.id : 'i' + seriesModel.getMapType();
+    (seriesGroups[key] = seriesGroups[key] || []).push(seriesModel);
+  });
+  each$9(seriesGroups, function (seriesList, key) {
+    var data = dataStatistics(map$1(seriesList, function (seriesModel) {
+      return seriesModel.getData();
+    }), seriesList[0].get('mapValueCalculation'));
+
+    for (var i = 0; i < seriesList.length; i++) {
+      seriesList[i].originalData = seriesList[i].getData();
+    } // FIXME Put where?
+
+
+    for (var i = 0; i < seriesList.length; i++) {
+      seriesList[i].seriesGroup = seriesList;
+      seriesList[i].needsDrawMap = i === 0 && !seriesList[i].getHostGeoModel();
+      seriesList[i].setData(data.cloneShallow());
+      seriesList[i].mainSeries = seriesList[0];
+    }
+  });
+}
+
+function mapSymbolLayout(ecModel) {
+  var processedMapType = {};
+  ecModel.eachSeriesByType('map', function (mapSeries) {
+    var mapType = mapSeries.getMapType();
+
+    if (mapSeries.getHostGeoModel() || processedMapType[mapType]) {
+      return;
+    }
+
+    var mapSymbolOffsets = {};
+    each$9(mapSeries.seriesGroup, function (subMapSeries) {
+      var geo = subMapSeries.coordinateSystem;
+      var data = subMapSeries.originalData;
+
+      if (subMapSeries.get('showLegendSymbol') && ecModel.getComponent('legend')) {
+        data.each(data.mapDimension('value'), function (value, idx) {
+          var name = data.getName(idx);
+          var region = geo.getRegion(name); // If input series.data is [11, 22, '-'/null/undefined, 44],
+          // it will be filled with NaN: [11, 22, NaN, 44] and NaN will
+          // not be drawn. So here must validate if value is NaN.
+
+          if (!region || isNaN(value)) {
+            return;
+          }
+
+          var offset = mapSymbolOffsets[name] || 0;
+          var point = geo.dataToPoint(region.getCenter());
+          mapSymbolOffsets[name] = offset + 1;
+          data.setItemLayout(idx, {
+            point: point,
+            offset: offset
+          });
+        });
+      }
+    }); // Show label of those region not has legendIcon (which is offset 0)
+
+    var data = mapSeries.getData();
+    data.each(function (idx) {
+      var name = data.getName(idx);
+      var layout = data.getItemLayout(idx) || {};
+      layout.showLabel = !mapSymbolOffsets[name];
+      data.setItemLayout(idx, layout);
+    });
+    processedMapType[mapType] = true;
+  });
+}
+
+var v2ApplyTransform = applyTransform$1;
+
+var View =
+/** @class */
+function (_super) {
+  __extends$1(View, _super);
+
+  function View(name) {
+    var _this = _super.call(this) || this;
+
+    _this.type = 'view';
+    _this.dimensions = ['x', 'y'];
+    /**
+     * Represents the transform brought by roam/zoom.
+     * If `View['_viewRect']` applies roam transform,
+     * we can get the final displayed rect.
+     */
+
+    _this._roamTransformable = new Transformable$1();
+    /**
+     * Represents the transform from `View['_rect']` to `View['_viewRect']`.
+     */
+
+    _this._rawTransformable = new Transformable$1();
+    _this.name = name;
+    return _this;
+  }
+
+  View.prototype.setBoundingRect = function (x, y, width, height) {
+    this._rect = new BoundingRect$1(x, y, width, height);
+    return this._rect;
+  };
+  /**
+   * @return {module:zrender/core/BoundingRect}
+   */
+
+
+  View.prototype.getBoundingRect = function () {
+    return this._rect;
+  };
+
+  View.prototype.setViewRect = function (x, y, width, height) {
+    this._transformTo(x, y, width, height);
+
+    this._viewRect = new BoundingRect$1(x, y, width, height);
+  };
+  /**
+   * Transformed to particular position and size
+   */
+
+
+  View.prototype._transformTo = function (x, y, width, height) {
+    var rect = this.getBoundingRect();
+    var rawTransform = this._rawTransformable;
+    rawTransform.transform = rect.calculateTransform(new BoundingRect$1(x, y, width, height));
+    var rawParent = rawTransform.parent;
+    rawTransform.parent = null;
+    rawTransform.decomposeTransform();
+    rawTransform.parent = rawParent;
+
+    this._updateTransform();
+  };
+  /**
+   * Set center of view
+   */
+
+
+  View.prototype.setCenter = function (centerCoord, api) {
+    if (!centerCoord) {
+      return;
+    }
+
+    this._center = [parsePercent(centerCoord[0], api.getWidth()), parsePercent(centerCoord[1], api.getHeight())];
+
+    this._updateCenterAndZoom();
+  };
+
+  View.prototype.setZoom = function (zoom) {
+    zoom = zoom || 1;
+    var zoomLimit = this.zoomLimit;
+
+    if (zoomLimit) {
+      if (zoomLimit.max != null) {
+        zoom = Math.min(zoomLimit.max, zoom);
+      }
+
+      if (zoomLimit.min != null) {
+        zoom = Math.max(zoomLimit.min, zoom);
+      }
+    }
+
+    this._zoom = zoom;
+
+    this._updateCenterAndZoom();
+  };
+  /**
+   * Get default center without roam
+   */
+
+
+  View.prototype.getDefaultCenter = function () {
+    // Rect before any transform
+    var rawRect = this.getBoundingRect();
+    var cx = rawRect.x + rawRect.width / 2;
+    var cy = rawRect.y + rawRect.height / 2;
+    return [cx, cy];
+  };
+
+  View.prototype.getCenter = function () {
+    return this._center || this.getDefaultCenter();
+  };
+
+  View.prototype.getZoom = function () {
+    return this._zoom || 1;
+  };
+
+  View.prototype.getRoamTransform = function () {
+    return this._roamTransformable.getLocalTransform();
+  };
+  /**
+   * Remove roam
+   */
+
+
+  View.prototype._updateCenterAndZoom = function () {
+    // Must update after view transform updated
+    var rawTransformMatrix = this._rawTransformable.getLocalTransform();
+
+    var roamTransform = this._roamTransformable;
+    var defaultCenter = this.getDefaultCenter();
+    var center = this.getCenter();
+    var zoom = this.getZoom();
+    center = applyTransform$1([], center, rawTransformMatrix);
+    defaultCenter = applyTransform$1([], defaultCenter, rawTransformMatrix);
+    roamTransform.originX = center[0];
+    roamTransform.originY = center[1];
+    roamTransform.x = defaultCenter[0] - center[0];
+    roamTransform.y = defaultCenter[1] - center[1];
+    roamTransform.scaleX = roamTransform.scaleY = zoom;
+
+    this._updateTransform();
+  };
+  /**
+   * Update transform props on `this` based on the current
+   * `this._roamTransformable` and `this._rawTransformable`.
+   */
+
+
+  View.prototype._updateTransform = function () {
+    var roamTransformable = this._roamTransformable;
+    var rawTransformable = this._rawTransformable;
+    rawTransformable.parent = roamTransformable;
+    roamTransformable.updateTransform();
+    rawTransformable.updateTransform();
+    copy(this.transform || (this.transform = []), rawTransformable.transform || create());
+    this._rawTransform = rawTransformable.getLocalTransform();
+    this.invTransform = this.invTransform || [];
+    invert(this.invTransform, this.transform);
+    this.decomposeTransform();
+  };
+
+  View.prototype.getTransformInfo = function () {
+    var rawTransformable = this._rawTransformable;
+    var roamTransformable = this._roamTransformable; // Becuase roamTransformabel has `originX/originY` modified,
+    // but the caller of `getTransformInfo` can not handle `originX/originY`,
+    // so need to recalcualte them.
+
+    var dummyTransformable = new Transformable$1();
+    dummyTransformable.transform = roamTransformable.transform;
+    dummyTransformable.decomposeTransform();
+    return {
+      roam: {
+        x: dummyTransformable.x,
+        y: dummyTransformable.y,
+        scaleX: dummyTransformable.scaleX,
+        scaleY: dummyTransformable.scaleY
+      },
+      raw: {
+        x: rawTransformable.x,
+        y: rawTransformable.y,
+        scaleX: rawTransformable.scaleX,
+        scaleY: rawTransformable.scaleY
+      }
+    };
+  };
+
+  View.prototype.getViewRect = function () {
+    return this._viewRect;
+  };
+  /**
+   * Get view rect after roam transform
+   */
+
+
+  View.prototype.getViewRectAfterRoam = function () {
+    var rect = this.getBoundingRect().clone();
+    rect.applyTransform(this.transform);
+    return rect;
+  };
+  /**
+   * Convert a single (lon, lat) data item to (x, y) point.
+   */
+
+
+  View.prototype.dataToPoint = function (data, noRoam, out) {
+    var transform = noRoam ? this._rawTransform : this.transform;
+    out = out || [];
+    return transform ? v2ApplyTransform(out, data, transform) : copy$1(out, data);
+  };
+  /**
+   * Convert a (x, y) point to (lon, lat) data
+   */
+
+
+  View.prototype.pointToData = function (point) {
+    var invTransform = this.invTransform;
+    return invTransform ? v2ApplyTransform([], point, invTransform) : [point[0], point[1]];
+  };
+
+  View.prototype.convertToPixel = function (ecModel, finder, value) {
+    var coordSys = getCoordSys$1(finder);
+    return coordSys === this ? coordSys.dataToPoint(value) : null;
+  };
+
+  View.prototype.convertFromPixel = function (ecModel, finder, pixel) {
+    var coordSys = getCoordSys$1(finder);
+    return coordSys === this ? coordSys.pointToData(pixel) : null;
+  };
+  /**
+   * @implements
+   */
+
+
+  View.prototype.containPoint = function (point) {
+    return this.getViewRectAfterRoam().contain(point[0], point[1]);
+  };
+
+  View.dimensions = ['x', 'y'];
+  return View;
+}(Transformable$1);
+
+function getCoordSys$1(finder) {
+  var seriesModel = finder.seriesModel;
+  return seriesModel ? seriesModel.coordinateSystem : null; // e.g., graph.
+}
+
+var View$1 = View;
+
+var GEO_DEFAULT_PARAMS = {
+  'geoJSON': {
+    aspectScale: 0.75,
+    invertLongitute: true
+  },
+  'geoSVG': {
+    aspectScale: 1,
+    invertLongitute: false
+  }
+};
+var geo2DDimensions = ['lng', 'lat'];
+
+var Geo =
+/** @class */
+function (_super) {
+  __extends$1(Geo, _super);
+
+  function Geo(name, map, opt) {
+    var _this = _super.call(this, name) || this;
+
+    _this.dimensions = geo2DDimensions;
+    _this.type = 'geo'; // Only store specified name coord via `addGeoCoord`.
+
+    _this._nameCoordMap = createHashMap();
+    _this.map = map;
+    var projection = opt.projection;
+    var source = geoSourceManager.load(map, opt.nameMap, opt.nameProperty);
+    var resource = geoSourceManager.getGeoResource(map);
+    var resourceType = _this.resourceType = resource ? resource.type : null;
+    var regions = _this.regions = source.regions;
+    var defaultParams = GEO_DEFAULT_PARAMS[resource.type];
+    _this._regionsMap = source.regionsMap;
+    _this.regions = source.regions;
+
+    if (process.env.NODE_ENV !== 'production' && projection) {
+      // Do some check
+      if (resourceType === 'geoSVG') {
+        if (process.env.NODE_ENV !== 'production') {
+          warn("Map " + map + " with SVG source can't use projection. Only GeoJSON source supports projection.");
+        }
+
+        projection = null;
+      }
+
+      if (!(projection.project && projection.unproject)) {
+        if (process.env.NODE_ENV !== 'production') {
+          warn('project and unproject must be both provided in the projeciton.');
+        }
+
+        projection = null;
+      }
+    }
+
+    _this.projection = projection;
+    var boundingRect;
+
+    if (projection) {
+      // Can't reuse the raw bounding rect
+      for (var i = 0; i < regions.length; i++) {
+        var regionRect = regions[i].getBoundingRect(projection);
+        boundingRect = boundingRect || regionRect.clone();
+        boundingRect.union(regionRect);
+      }
+    } else {
+      boundingRect = source.boundingRect;
+    }
+
+    _this.setBoundingRect(boundingRect.x, boundingRect.y, boundingRect.width, boundingRect.height); // aspectScale and invertLongitute actually is the parameters default raw projection.
+    // So we ignore them if projection is given.
+    // Ignore default aspect scale if projection exits.
+
+
+    _this.aspectScale = projection ? 1 : retrieve2(opt.aspectScale, defaultParams.aspectScale); // Not invert longitute if projection exits.
+
+    _this._invertLongitute = projection ? false : defaultParams.invertLongitute;
+    return _this;
+  }
+
+  Geo.prototype._transformTo = function (x, y, width, height) {
+    var rect = this.getBoundingRect();
+    var invertLongitute = this._invertLongitute;
+    rect = rect.clone();
+
+    if (invertLongitute) {
+      // Longitute is inverted
+      rect.y = -rect.y - rect.height;
+    }
+
+    var rawTransformable = this._rawTransformable;
+    rawTransformable.transform = rect.calculateTransform(new BoundingRect$1(x, y, width, height));
+    var rawParent = rawTransformable.parent;
+    rawTransformable.parent = null;
+    rawTransformable.decomposeTransform();
+    rawTransformable.parent = rawParent;
+
+    if (invertLongitute) {
+      rawTransformable.scaleY = -rawTransformable.scaleY;
+    }
+
+    this._updateTransform();
+  };
+
+  Geo.prototype.getRegion = function (name) {
+    return this._regionsMap.get(name);
+  };
+
+  Geo.prototype.getRegionByCoord = function (coord) {
+    var regions = this.regions;
+
+    for (var i = 0; i < regions.length; i++) {
+      var region = regions[i];
+
+      if (region.type === 'geoJSON' && region.contain(coord)) {
+        return regions[i];
+      }
+    }
+  };
+  /**
+   * Add geoCoord for indexing by name
+   */
+
+
+  Geo.prototype.addGeoCoord = function (name, geoCoord) {
+    this._nameCoordMap.set(name, geoCoord);
+  };
+  /**
+   * Get geoCoord by name
+   */
+
+
+  Geo.prototype.getGeoCoord = function (name) {
+    var region = this._regionsMap.get(name); // calcualte center only on demand.
+
+
+    return this._nameCoordMap.get(name) || region && region.getCenter();
+  };
+
+  Geo.prototype.dataToPoint = function (data, noRoam, out) {
+    if (isString(data)) {
+      // Map area name to geoCoord
+      data = this.getGeoCoord(data);
+    }
+
+    if (data) {
+      var projection = this.projection;
+
+      if (projection) {
+        // projection may return null point.
+        data = projection.project(data);
+      }
+
+      return data && this.projectedToPoint(data, noRoam, out);
+    }
+  };
+
+  Geo.prototype.pointToData = function (point) {
+    var projection = this.projection;
+
+    if (projection) {
+      // projection may return null point.
+      point = projection.unproject(point);
+    }
+
+    return point && this.pointToProjected(point);
+  };
+  /**
+   * Point to projected data. Same with pointToData when projection is used.
+   */
+
+
+  Geo.prototype.pointToProjected = function (point) {
+    return _super.prototype.pointToData.call(this, point);
+  };
+
+  Geo.prototype.projectedToPoint = function (projected, noRoam, out) {
+    return _super.prototype.dataToPoint.call(this, projected, noRoam, out);
+  };
+
+  Geo.prototype.convertToPixel = function (ecModel, finder, value) {
+    var coordSys = getCoordSys(finder);
+    return coordSys === this ? coordSys.dataToPoint(value) : null;
+  };
+
+  Geo.prototype.convertFromPixel = function (ecModel, finder, pixel) {
+    var coordSys = getCoordSys(finder);
+    return coordSys === this ? coordSys.pointToData(pixel) : null;
+  };
+
+  return Geo;
+}(View$1);
+mixin(Geo, View$1);
+
+function getCoordSys(finder) {
+  var geoModel = finder.geoModel;
+  var seriesModel = finder.seriesModel;
+  return geoModel ? geoModel.coordinateSystem : seriesModel ? seriesModel.coordinateSystem // For map series.
+  || (seriesModel.getReferringComponents('geo', SINGLE_REFERRING).models[0] || {}).coordinateSystem : null;
+}
+
+var Geo$1 = Geo;
+
+/**
+ * Resize method bound to the geo
+ */
+
+function resizeGeo(geoModel, api) {
+  var boundingCoords = geoModel.get('boundingCoords');
+
+  if (boundingCoords != null) {
+    var leftTop_1 = boundingCoords[0];
+    var rightBottom_1 = boundingCoords[1];
+
+    if (!(isFinite(leftTop_1[0]) && isFinite(leftTop_1[1]) && isFinite(rightBottom_1[0]) && isFinite(rightBottom_1[1]))) {
+      if (process.env.NODE_ENV !== 'production') {
+        console.error('Invalid boundingCoords');
+      }
+    } else {
+      // Sample around the lng/lat rect and use projection to calculate actual bounding rect.
+      var projection_1 = this.projection;
+
+      if (projection_1) {
+        var xMin = leftTop_1[0];
+        var yMin = leftTop_1[1];
+        var xMax = rightBottom_1[0];
+        var yMax = rightBottom_1[1];
+        leftTop_1 = [Infinity, Infinity];
+        rightBottom_1 = [-Infinity, -Infinity]; // TODO better way?
+
+        var sampleLine = function (x0, y0, x1, y1) {
+          var dx = x1 - x0;
+          var dy = y1 - y0;
+
+          for (var i = 0; i <= 100; i++) {
+            var p = i / 100;
+            var pt = projection_1.project([x0 + dx * p, y0 + dy * p]);
+            min$1(leftTop_1, leftTop_1, pt);
+            max$1(rightBottom_1, rightBottom_1, pt);
+          }
+        }; // Top
+
+
+        sampleLine(xMin, yMin, xMax, yMin); // Right
+
+        sampleLine(xMax, yMin, xMax, yMax); // Bottom
+
+        sampleLine(xMax, yMax, xMin, yMax); // Left
+
+        sampleLine(xMin, yMax, xMax, yMin);
+      }
+
+      this.setBoundingRect(leftTop_1[0], leftTop_1[1], rightBottom_1[0] - leftTop_1[0], rightBottom_1[1] - leftTop_1[1]);
+    }
+  }
+
+  var rect = this.getBoundingRect();
+  var centerOption = geoModel.get('layoutCenter');
+  var sizeOption = geoModel.get('layoutSize');
+  var viewWidth = api.getWidth();
+  var viewHeight = api.getHeight();
+  var aspect = rect.width / rect.height * this.aspectScale;
+  var useCenterAndSize = false;
+  var center;
+  var size;
+
+  if (centerOption && sizeOption) {
+    center = [parsePercent(centerOption[0], viewWidth), parsePercent(centerOption[1], viewHeight)];
+    size = parsePercent(sizeOption, Math.min(viewWidth, viewHeight));
+
+    if (!isNaN(center[0]) && !isNaN(center[1]) && !isNaN(size)) {
+      useCenterAndSize = true;
+    } else {
+      if (process.env.NODE_ENV !== 'production') {
+        console.warn('Given layoutCenter or layoutSize data are invalid. Use left/top/width/height instead.');
+      }
+    }
+  }
+
+  var viewRect;
+
+  if (useCenterAndSize) {
+    viewRect = {};
+
+    if (aspect > 1) {
+      // Width is same with size
+      viewRect.width = size;
+      viewRect.height = size / aspect;
+    } else {
+      viewRect.height = size;
+      viewRect.width = size * aspect;
+    }
+
+    viewRect.y = center[1] - viewRect.height / 2;
+    viewRect.x = center[0] - viewRect.width / 2;
+  } else {
+    // Use left/top/width/height
+    var boxLayoutOption = geoModel.getBoxLayoutParams();
+    boxLayoutOption.aspect = aspect;
+    viewRect = getLayoutRect(boxLayoutOption, {
+      width: viewWidth,
+      height: viewHeight
+    });
+  }
+
+  this.setViewRect(viewRect.x, viewRect.y, viewRect.width, viewRect.height);
+  this.setCenter(geoModel.get('center'), api);
+  this.setZoom(geoModel.get('zoom'));
+} // Back compat for ECharts2, where the coord map is set on map series:
+// {type: 'map', geoCoord: {'cityA': [116.46,39.92], 'cityA': [119.12,24.61]}},
+
+
+function setGeoCoords(geo, model) {
+  each$9(model.get('geoCoord'), function (geoCoord, name) {
+    geo.addGeoCoord(name, geoCoord);
+  });
+}
+
+var GeoCreator =
+/** @class */
+function () {
+  function GeoCreator() {
+    // For deciding which dimensions to use when creating list data
+    this.dimensions = geo2DDimensions;
+  }
+
+  GeoCreator.prototype.create = function (ecModel, api) {
+    var geoList = [];
+
+    function getCommonGeoProperties(model) {
+      return {
+        nameProperty: model.get('nameProperty'),
+        aspectScale: model.get('aspectScale'),
+        projection: model.get('projection')
+      };
+    } // FIXME Create each time may be slow
+
+
+    ecModel.eachComponent('geo', function (geoModel, idx) {
+      var mapName = geoModel.get('map');
+      var geo = new Geo$1(mapName + idx, mapName, extend({
+        nameMap: geoModel.get('nameMap')
+      }, getCommonGeoProperties(geoModel)));
+      geo.zoomLimit = geoModel.get('scaleLimit');
+      geoList.push(geo); // setGeoCoords(geo, geoModel);
+
+      geoModel.coordinateSystem = geo;
+      geo.model = geoModel; // Inject resize method
+
+      geo.resize = resizeGeo;
+      geo.resize(geoModel, api);
+    });
+    ecModel.eachSeries(function (seriesModel) {
+      var coordSys = seriesModel.get('coordinateSystem');
+
+      if (coordSys === 'geo') {
+        var geoIndex = seriesModel.get('geoIndex') || 0;
+        seriesModel.coordinateSystem = geoList[geoIndex];
+      }
+    }); // If has map series
+
+    var mapModelGroupBySeries = {};
+    ecModel.eachSeriesByType('map', function (seriesModel) {
+      if (!seriesModel.getHostGeoModel()) {
+        var mapType = seriesModel.getMapType();
+        mapModelGroupBySeries[mapType] = mapModelGroupBySeries[mapType] || [];
+        mapModelGroupBySeries[mapType].push(seriesModel);
+      }
+    });
+    each$9(mapModelGroupBySeries, function (mapSeries, mapType) {
+      var nameMapList = map$1(mapSeries, function (singleMapSeries) {
+        return singleMapSeries.get('nameMap');
+      });
+      var geo = new Geo$1(mapType, mapType, extend({
+        nameMap: mergeAll(nameMapList)
+      }, getCommonGeoProperties(mapSeries[0])));
+      geo.zoomLimit = retrieve.apply(null, map$1(mapSeries, function (singleMapSeries) {
+        return singleMapSeries.get('scaleLimit');
+      }));
+      geoList.push(geo); // Inject resize method
+
+      geo.resize = resizeGeo;
+      geo.resize(mapSeries[0], api);
+      each$9(mapSeries, function (singleMapSeries) {
+        singleMapSeries.coordinateSystem = geo;
+        setGeoCoords(geo, singleMapSeries);
+      });
+    });
+    return geoList;
+  };
+  /**
+   * Fill given regions array
+   */
+
+
+  GeoCreator.prototype.getFilledRegions = function (originRegionArr, mapName, nameMap, nameProperty) {
+    // Not use the original
+    var regionsArr = (originRegionArr || []).slice();
+    var dataNameMap = createHashMap();
+
+    for (var i = 0; i < regionsArr.length; i++) {
+      dataNameMap.set(regionsArr[i].name, regionsArr[i]);
+    }
+
+    var source = geoSourceManager.load(mapName, nameMap, nameProperty);
+    each$9(source.regions, function (region) {
+      var name = region.name;
+      !dataNameMap.get(name) && regionsArr.push({
+        name: name
+      });
+    });
+    return regionsArr;
+  };
+
+  return GeoCreator;
+}();
+
+var geoCreator = new GeoCreator();
+var geoCreator$1 = geoCreator;
+
+var GeoModel =
+/** @class */
+function (_super) {
+  __extends$1(GeoModel, _super);
+
+  function GeoModel() {
+    var _this = _super !== null && _super.apply(this, arguments) || this;
+
+    _this.type = GeoModel.type;
+    return _this;
+  }
+
+  GeoModel.prototype.init = function (option, parentModel, ecModel) {
+    var source = geoSourceManager.getGeoResource(option.map);
+
+    if (source && source.type === 'geoJSON') {
+      var itemStyle = option.itemStyle = option.itemStyle || {};
+
+      if (!('color' in itemStyle)) {
+        itemStyle.color = '#eee';
+      }
+    }
+
+    this.mergeDefaultAndTheme(option, ecModel); // Default label emphasis `show`
+
+    defaultEmphasis(option, 'label', ['show']);
+  };
+
+  GeoModel.prototype.optionUpdated = function () {
+    var _this = this;
+
+    var option = this.option;
+    option.regions = geoCreator$1.getFilledRegions(option.regions, option.map, option.nameMap, option.nameProperty);
+    var selectedMap = {};
+    this._optionModelMap = reduce(option.regions || [], function (optionModelMap, regionOpt) {
+      var regionName = regionOpt.name;
+
+      if (regionName) {
+        optionModelMap.set(regionName, new Model$1(regionOpt, _this, _this.ecModel));
+
+        if (regionOpt.selected) {
+          selectedMap[regionName] = true;
+        }
+      }
+
+      return optionModelMap;
+    }, createHashMap());
+
+    if (!option.selectedMap) {
+      option.selectedMap = selectedMap;
+    }
+  };
+  /**
+   * Get model of region.
+   */
+
+
+  GeoModel.prototype.getRegionModel = function (name) {
+    return this._optionModelMap.get(name) || new Model$1(null, this, this.ecModel);
+  };
+  /**
+   * Format label
+   * @param name Region name
+   */
+
+
+  GeoModel.prototype.getFormattedLabel = function (name, status) {
+    var regionModel = this.getRegionModel(name);
+    var formatter = status === 'normal' ? regionModel.get(['label', 'formatter']) : regionModel.get(['emphasis', 'label', 'formatter']);
+    var params = {
+      name: name
+    };
+
+    if (isFunction(formatter)) {
+      params.status = status;
+      return formatter(params);
+    } else if (isString(formatter)) {
+      return formatter.replace('{a}', name != null ? name : '');
+    }
+  };
+
+  GeoModel.prototype.setZoom = function (zoom) {
+    this.option.zoom = zoom;
+  };
+
+  GeoModel.prototype.setCenter = function (center) {
+    this.option.center = center;
+  }; // PENGING If selectedMode is null ?
+
+
+  GeoModel.prototype.select = function (name) {
+    var option = this.option;
+    var selectedMode = option.selectedMode;
+
+    if (!selectedMode) {
+      return;
+    }
+
+    if (selectedMode !== 'multiple') {
+      option.selectedMap = null;
+    }
+
+    var selectedMap = option.selectedMap || (option.selectedMap = {});
+    selectedMap[name] = true;
+  };
+
+  GeoModel.prototype.unSelect = function (name) {
+    var selectedMap = this.option.selectedMap;
+
+    if (selectedMap) {
+      selectedMap[name] = false;
+    }
+  };
+
+  GeoModel.prototype.toggleSelected = function (name) {
+    this[this.isSelected(name) ? 'unSelect' : 'select'](name);
+  };
+
+  GeoModel.prototype.isSelected = function (name) {
+    var selectedMap = this.option.selectedMap;
+    return !!(selectedMap && selectedMap[name]);
+  };
+
+  GeoModel.type = 'geo';
+  GeoModel.layoutMode = 'box';
+  GeoModel.defaultOption = {
+    // zlevel: 0,
+    z: 0,
+    show: true,
+    left: 'center',
+    top: 'center',
+    // Default value:
+    // for geoSVG source: 1,
+    // for geoJSON source: 0.75.
+    aspectScale: null,
+    ///// Layout with center and size
+    // If you wan't to put map in a fixed size box with right aspect ratio
+    // This two properties may more conveninet
+    // layoutCenter: [50%, 50%]
+    // layoutSize: 100
+    silent: false,
+    // Map type
+    map: '',
+    // Define left-top, right-bottom coords to control view
+    // For example, [ [180, 90], [-180, -90] ]
+    boundingCoords: null,
+    // Default on center of map
+    center: null,
+    zoom: 1,
+    scaleLimit: null,
+    // selectedMode: false
+    label: {
+      show: false,
+      color: '#000'
+    },
+    itemStyle: {
+      borderWidth: 0.5,
+      borderColor: '#444' // Default color:
+      // + geoJSON: #eee
+      // + geoSVG: null (use SVG original `fill`)
+      // color: '#eee'
+
+    },
+    emphasis: {
+      label: {
+        show: true,
+        color: 'rgb(100,0,0)'
+      },
+      itemStyle: {
+        color: 'rgba(255,215,0,0.8)'
+      }
+    },
+    select: {
+      label: {
+        show: true,
+        color: 'rgb(100,0,0)'
+      },
+      itemStyle: {
+        color: 'rgba(255,215,0,0.8)'
+      }
+    },
+    regions: [] // tooltip: {
+    //     show: false
+    // }
+
+  };
+  return GeoModel;
+}(ComponentModel$1);
+
+var GeoModel$1 = GeoModel;
+
+/*
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing,
+* software distributed under the License is distributed on an
+* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+* KIND, either express or implied.  See the License for the
+* specific language governing permissions and limitations
+* under the License.
+*/
+
+
+/**
+ * AUTO-GENERATED FILE. DO NOT MODIFY.
+ */
+
+/*
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing,
+* software distributed under the License is distributed on an
+* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+* KIND, either express or implied.  See the License for the
+* specific language governing permissions and limitations
+* under the License.
+*/
+function getCenterCoord(view, point) {
+  // Use projected coord as center because it's linear.
+  return view.pointToProjected ? view.pointToProjected(point) : view.pointToData(point);
+}
+
+function updateCenterAndZoom(view, payload, zoomLimit, api) {
+  var previousZoom = view.getZoom();
+  var center = view.getCenter();
+  var zoom = payload.zoom;
+  var point = view.projectedToPoint ? view.projectedToPoint(center) : view.dataToPoint(center);
+
+  if (payload.dx != null && payload.dy != null) {
+    point[0] -= payload.dx;
+    point[1] -= payload.dy;
+    view.setCenter(getCenterCoord(view, point), api);
+  }
+
+  if (zoom != null) {
+    if (zoomLimit) {
+      var zoomMin = zoomLimit.min || 0;
+      var zoomMax = zoomLimit.max || Infinity;
+      zoom = Math.max(Math.min(previousZoom * zoom, zoomMax), zoomMin) / previousZoom;
+    } // Zoom on given point(originX, originY)
+
+
+    view.scaleX *= zoom;
+    view.scaleY *= zoom;
+    var fixX = (payload.originX - view.x) * (zoom - 1);
+    var fixY = (payload.originY - view.y) * (zoom - 1);
+    view.x -= fixX;
+    view.y -= fixY;
+    view.updateTransform(); // Get the new center
+
+    view.setCenter(getCenterCoord(view, point), api);
+    view.setZoom(zoom * previousZoom);
+  }
+
+  return {
+    center: view.getCenter(),
+    zoom: view.getZoom()
+  };
+}
+
+var GeoView =
+/** @class */
+function (_super) {
+  __extends$1(GeoView, _super);
+
+  function GeoView() {
+    var _this = _super !== null && _super.apply(this, arguments) || this;
+
+    _this.type = GeoView.type;
+    _this.focusBlurEnabled = true;
+    return _this;
+  }
+
+  GeoView.prototype.init = function (ecModel, api) {
+    this._api = api;
+  };
+
+  GeoView.prototype.render = function (geoModel, ecModel, api, payload) {
+    this._model = geoModel;
+
+    if (!geoModel.get('show')) {
+      this._mapDraw && this._mapDraw.remove();
+      this._mapDraw = null;
+      return;
+    }
+
+    if (!this._mapDraw) {
+      this._mapDraw = new MapDraw$1(api);
+    }
+
+    var mapDraw = this._mapDraw;
+    mapDraw.draw(geoModel, ecModel, api, this, payload);
+    mapDraw.group.on('click', this._handleRegionClick, this);
+    mapDraw.group.silent = geoModel.get('silent');
+    this.group.add(mapDraw.group);
+    this.updateSelectStatus(geoModel, ecModel, api);
+  };
+
+  GeoView.prototype._handleRegionClick = function (e) {
+    var eventData;
+    findEventDispatcher(e.target, function (current) {
+      return (eventData = getECData(current).eventData) != null;
+    }, true);
+
+    if (eventData) {
+      this._api.dispatchAction({
+        type: 'geoToggleSelect',
+        geoId: this._model.id,
+        name: eventData.name
+      });
+    }
+  };
+
+  GeoView.prototype.updateSelectStatus = function (model, ecModel, api) {
+    var _this = this;
+
+    this._mapDraw.group.traverse(function (node) {
+      var eventData = getECData(node).eventData;
+
+      if (eventData) {
+        _this._model.isSelected(eventData.name) ? api.enterSelect(node) : api.leaveSelect(node); // No need to traverse children.
+
+        return true;
+      }
+    });
+  };
+
+  GeoView.prototype.findHighDownDispatchers = function (name) {
+    return this._mapDraw && this._mapDraw.findHighDownDispatchers(name, this._model);
+  };
+
+  GeoView.prototype.dispose = function () {
+    this._mapDraw && this._mapDraw.remove();
+  };
+
+  GeoView.type = 'geo';
+  return GeoView;
+}(ComponentView$1);
+
+var GeoView$1 = GeoView;
+
+function registerMap(mapName, geoJson, specialAreas) {
+  geoSourceManager.registerMap(mapName, geoJson, specialAreas);
+}
+
+function install$d(registers) {
+  registers.registerCoordinateSystem('geo', geoCreator$1);
+  registers.registerComponentModel(GeoModel$1);
+  registers.registerComponentView(GeoView$1);
+  registers.registerImpl('registerMap', registerMap);
+  registers.registerImpl('getMap', function (mapName) {
+    return geoSourceManager.getMapForUser(mapName);
+  });
+
+  function makeAction(method, actionInfo) {
+    actionInfo.update = 'geo:updateSelectStatus';
+    registers.registerAction(actionInfo, function (payload, ecModel) {
+      var selected = {};
+      var allSelected = [];
+      ecModel.eachComponent({
+        mainType: 'geo',
+        query: payload
+      }, function (geoModel) {
+        geoModel[method](payload.name);
+        var geo = geoModel.coordinateSystem;
+        each$9(geo.regions, function (region) {
+          selected[region.name] = geoModel.isSelected(region.name) || false;
+        }); // Notice: there might be duplicated name in different regions.
+
+        var names = [];
+        each$9(selected, function (v, name) {
+          selected[name] && names.push(name);
+        });
+        allSelected.push({
+          geoIndex: geoModel.componentIndex,
+          // Use singular, the same naming convention as the event `selectchanged`.
+          name: names
+        });
+      });
+      return {
+        selected: selected,
+        allSelected: allSelected,
+        name: payload.name
+      };
+    });
+  }
+
+  makeAction('toggleSelected', {
+    type: 'geoToggleSelect',
+    event: 'geoselectchanged'
+  });
+  makeAction('select', {
+    type: 'geoSelect',
+    event: 'geoselected'
+  });
+  makeAction('unSelect', {
+    type: 'geoUnSelect',
+    event: 'geounselected'
+  });
+  /**
+   * @payload
+   * @property {string} [componentType=series]
+   * @property {number} [dx]
+   * @property {number} [dy]
+   * @property {number} [zoom]
+   * @property {number} [originX]
+   * @property {number} [originY]
+   */
+
+  registers.registerAction({
+    type: 'geoRoam',
+    event: 'geoRoam',
+    update: 'updateTransform'
+  }, function (payload, ecModel, api) {
+    var componentType = payload.componentType || 'series';
+    ecModel.eachComponent({
+      mainType: componentType,
+      query: payload
+    }, function (componentModel) {
+      var geo = componentModel.coordinateSystem;
+
+      if (geo.type !== 'geo') {
+        return;
+      }
+
+      var res = updateCenterAndZoom(geo, payload, componentModel.get('scaleLimit'), api);
+      componentModel.setCenter && componentModel.setCenter(res.center);
+      componentModel.setZoom && componentModel.setZoom(res.zoom); // All map series with same `map` use the same geo coordinate system
+      // So the center and zoom must be in sync. Include the series not selected by legend
+
+      if (componentType === 'series') {
+        each$9(componentModel.seriesGroup, function (seriesModel) {
+          seriesModel.setCenter(res.center);
+          seriesModel.setZoom(res.zoom);
+        });
+      }
+    });
+  });
+}
+
+function install$c(registers) {
+  use(install$d);
+  registers.registerChartView(MapView$1);
+  registers.registerSeriesModel(MapSeries$1);
+  registers.registerLayout(mapSymbolLayout);
+  registers.registerProcessor(registers.PRIORITY.PROCESSOR.STATISTIC, mapDataStatistic);
+  createLegacyDataSelectAction('map', registers.registerAction);
+}
+
+var each$6 = each$9;
+var isObject = isObject$3;
+var CATEGORY_DEFAULT_VISUAL_INDEX = -1;
+
+var VisualMapping =
+/** @class */
+function () {
+  function VisualMapping(option) {
+    var mappingMethod = option.mappingMethod;
+    var visualType = option.type;
+    var thisOption = this.option = clone$3(option);
+    this.type = visualType;
+    this.mappingMethod = mappingMethod;
+    this._normalizeData = normalizers[mappingMethod];
+    var visualHandler = VisualMapping.visualHandlers[visualType];
+    this.applyVisual = visualHandler.applyVisual;
+    this.getColorMapper = visualHandler.getColorMapper;
+    this._normalizedToVisual = visualHandler._normalizedToVisual[mappingMethod];
+
+    if (mappingMethod === 'piecewise') {
+      normalizeVisualRange(thisOption);
+      preprocessForPiecewise(thisOption);
+    } else if (mappingMethod === 'category') {
+      thisOption.categories ? preprocessForSpecifiedCategory(thisOption) // categories is ordinal when thisOption.categories not specified,
+      // which need no more preprocess except normalize visual.
+      : normalizeVisualRange(thisOption, true);
+    } else {
+      // mappingMethod === 'linear' or 'fixed'
+      assert(mappingMethod !== 'linear' || thisOption.dataExtent);
+      normalizeVisualRange(thisOption);
+    }
+  }
+
+  VisualMapping.prototype.mapValueToVisual = function (value) {
+    var normalized = this._normalizeData(value);
+
+    return this._normalizedToVisual(normalized, value);
+  };
+
+  VisualMapping.prototype.getNormalizer = function () {
+    return bind$1(this._normalizeData, this);
+  };
+  /**
+   * List available visual types.
+   *
+   * @public
+   * @return {Array.<string>}
+   */
+
+
+  VisualMapping.listVisualTypes = function () {
+    return keys(VisualMapping.visualHandlers);
+  }; // /**
+  //  * @public
+  //  */
+  // static addVisualHandler(name, handler) {
+  //     visualHandlers[name] = handler;
+  // }
+
+  /**
+   * @public
+   */
+
+
+  VisualMapping.isValidType = function (visualType) {
+    return VisualMapping.visualHandlers.hasOwnProperty(visualType);
+  };
+  /**
+   * Convinent method.
+   * Visual can be Object or Array or primary type.
+   */
+
+
+  VisualMapping.eachVisual = function (visual, callback, context) {
+    if (isObject$3(visual)) {
+      each$9(visual, callback, context);
+    } else {
+      callback.call(context, visual);
+    }
+  };
+
+  VisualMapping.mapVisual = function (visual, callback, context) {
+    var isPrimary;
+    var newVisual = isArray$1(visual) ? [] : isObject$3(visual) ? {} : (isPrimary = true, null);
+    VisualMapping.eachVisual(visual, function (v, key) {
+      var newVal = callback.call(context, v, key);
+      isPrimary ? newVisual = newVal : newVisual[key] = newVal;
+    });
+    return newVisual;
+  };
+  /**
+   * Retrieve visual properties from given object.
+   */
+
+
+  VisualMapping.retrieveVisuals = function (obj) {
+    var ret = {};
+    var hasVisual;
+    obj && each$6(VisualMapping.visualHandlers, function (h, visualType) {
+      if (obj.hasOwnProperty(visualType)) {
+        ret[visualType] = obj[visualType];
+        hasVisual = true;
+      }
+    });
+    return hasVisual ? ret : null;
+  };
+  /**
+   * Give order to visual types, considering colorSaturation, colorAlpha depends on color.
+   *
+   * @public
+   * @param {(Object|Array)} visualTypes If Object, like: {color: ..., colorSaturation: ...}
+   *                                     IF Array, like: ['color', 'symbol', 'colorSaturation']
+   * @return {Array.<string>} Sorted visual types.
+   */
+
+
+  VisualMapping.prepareVisualTypes = function (visualTypes) {
+    if (isArray$1(visualTypes)) {
+      visualTypes = visualTypes.slice();
+    } else if (isObject(visualTypes)) {
+      var types_1 = [];
+      each$6(visualTypes, function (item, type) {
+        types_1.push(type);
+      });
+      visualTypes = types_1;
+    } else {
+      return [];
+    }
+
+    visualTypes.sort(function (type1, type2) {
+      // color should be front of colorSaturation, colorAlpha, ...
+      // symbol and symbolSize do not matter.
+      return type2 === 'color' && type1 !== 'color' && type1.indexOf('color') === 0 ? 1 : -1;
+    });
+    return visualTypes;
+  };
+  /**
+   * 'color', 'colorSaturation', 'colorAlpha', ... are depends on 'color'.
+   * Other visuals are only depends on themself.
+   */
+
+
+  VisualMapping.dependsOn = function (visualType1, visualType2) {
+    return visualType2 === 'color' ? !!(visualType1 && visualType1.indexOf(visualType2) === 0) : visualType1 === visualType2;
+  };
+  /**
+   * @param value
+   * @param pieceList [{value: ..., interval: [min, max]}, ...]
+   *                         Always from small to big.
+   * @param findClosestWhenOutside Default to be false
+   * @return index
+   */
+
+
+  VisualMapping.findPieceIndex = function (value, pieceList, findClosestWhenOutside) {
+    var possibleI;
+    var abs = Infinity; // value has the higher priority.
+
+    for (var i = 0, len = pieceList.length; i < len; i++) {
+      var pieceValue = pieceList[i].value;
+
+      if (pieceValue != null) {
+        if (pieceValue === value // FIXME
+        // It is supposed to compare value according to value type of dimension,
+        // but currently value type can exactly be string or number.
+        // Compromise for numeric-like string (like '12'), especially
+        // in the case that visualMap.categories is ['22', '33'].
+        || isString(pieceValue) && pieceValue === value + '') {
+          return i;
+        }
+
+        findClosestWhenOutside && updatePossible(pieceValue, i);
+      }
+    }
+
+    for (var i = 0, len = pieceList.length; i < len; i++) {
+      var piece = pieceList[i];
+      var interval = piece.interval;
+      var close_1 = piece.close;
+
+      if (interval) {
+        if (interval[0] === -Infinity) {
+          if (littleThan(close_1[1], value, interval[1])) {
+            return i;
+          }
+        } else if (interval[1] === Infinity) {
+          if (littleThan(close_1[0], interval[0], value)) {
+            return i;
+          }
+        } else if (littleThan(close_1[0], interval[0], value) && littleThan(close_1[1], value, interval[1])) {
+          return i;
+        }
+
+        findClosestWhenOutside && updatePossible(interval[0], i);
+        findClosestWhenOutside && updatePossible(interval[1], i);
+      }
+    }
+
+    if (findClosestWhenOutside) {
+      return value === Infinity ? pieceList.length - 1 : value === -Infinity ? 0 : possibleI;
+    }
+
+    function updatePossible(val, index) {
+      var newAbs = Math.abs(val - value);
+
+      if (newAbs < abs) {
+        abs = newAbs;
+        possibleI = index;
+      }
+    }
+  };
+
+  VisualMapping.visualHandlers = {
+    color: {
+      applyVisual: makeApplyVisual('color'),
+      getColorMapper: function () {
+        var thisOption = this.option;
+        return bind$1(thisOption.mappingMethod === 'category' ? function (value, isNormalized) {
+          !isNormalized && (value = this._normalizeData(value));
+          return doMapCategory.call(this, value);
+        } : function (value, isNormalized, out) {
+          // If output rgb array
+          // which will be much faster and useful in pixel manipulation
+          var returnRGBArray = !!out;
+          !isNormalized && (value = this._normalizeData(value));
+          out = fastLerp(value, thisOption.parsedVisual, out);
+          return returnRGBArray ? out : stringify(out, 'rgba');
+        }, this);
+      },
+      _normalizedToVisual: {
+        linear: function (normalized) {
+          return stringify(fastLerp(normalized, this.option.parsedVisual), 'rgba');
+        },
+        category: doMapCategory,
+        piecewise: function (normalized, value) {
+          var result = getSpecifiedVisual.call(this, value);
+
+          if (result == null) {
+            result = stringify(fastLerp(normalized, this.option.parsedVisual), 'rgba');
+          }
+
+          return result;
+        },
+        fixed: doMapFixed
+      }
+    },
+    colorHue: makePartialColorVisualHandler(function (color$1, value) {
+      return modifyHSL(color$1, value);
+    }),
+    colorSaturation: makePartialColorVisualHandler(function (color$1, value) {
+      return modifyHSL(color$1, null, value);
+    }),
+    colorLightness: makePartialColorVisualHandler(function (color$1, value) {
+      return modifyHSL(color$1, null, null, value);
+    }),
+    colorAlpha: makePartialColorVisualHandler(function (color$1, value) {
+      return modifyAlpha(color$1, value);
+    }),
+    decal: {
+      applyVisual: makeApplyVisual('decal'),
+      _normalizedToVisual: {
+        linear: null,
+        category: doMapCategory,
+        piecewise: null,
+        fixed: null
+      }
+    },
+    opacity: {
+      applyVisual: makeApplyVisual('opacity'),
+      _normalizedToVisual: createNormalizedToNumericVisual([0, 1])
+    },
+    liftZ: {
+      applyVisual: makeApplyVisual('liftZ'),
+      _normalizedToVisual: {
+        linear: doMapFixed,
+        category: doMapFixed,
+        piecewise: doMapFixed,
+        fixed: doMapFixed
+      }
+    },
+    symbol: {
+      applyVisual: function (value, getter, setter) {
+        var symbolCfg = this.mapValueToVisual(value);
+        setter('symbol', symbolCfg);
+      },
+      _normalizedToVisual: {
+        linear: doMapToArray,
+        category: doMapCategory,
+        piecewise: function (normalized, value) {
+          var result = getSpecifiedVisual.call(this, value);
+
+          if (result == null) {
+            result = doMapToArray.call(this, normalized);
+          }
+
+          return result;
+        },
+        fixed: doMapFixed
+      }
+    },
+    symbolSize: {
+      applyVisual: makeApplyVisual('symbolSize'),
+      _normalizedToVisual: createNormalizedToNumericVisual([0, 1])
+    }
+  };
+  return VisualMapping;
+}();
+
+function preprocessForPiecewise(thisOption) {
+  var pieceList = thisOption.pieceList;
+  thisOption.hasSpecialVisual = false;
+  each$9(pieceList, function (piece, index) {
+    piece.originIndex = index; // piece.visual is "result visual value" but not
+    // a visual range, so it does not need to be normalized.
+
+    if (piece.visual != null) {
+      thisOption.hasSpecialVisual = true;
+    }
+  });
+}
+
+function preprocessForSpecifiedCategory(thisOption) {
+  // Hash categories.
+  var categories = thisOption.categories;
+  var categoryMap = thisOption.categoryMap = {};
+  var visual = thisOption.visual;
+  each$6(categories, function (cate, index) {
+    categoryMap[cate] = index;
+  }); // Process visual map input.
+
+  if (!isArray$1(visual)) {
+    var visualArr_1 = [];
+
+    if (isObject$3(visual)) {
+      each$6(visual, function (v, cate) {
+        var index = categoryMap[cate];
+        visualArr_1[index != null ? index : CATEGORY_DEFAULT_VISUAL_INDEX] = v;
+      });
+    } else {
+      // Is primary type, represents default visual.
+      visualArr_1[CATEGORY_DEFAULT_VISUAL_INDEX] = visual;
+    }
+
+    visual = setVisualToOption(thisOption, visualArr_1);
+  } // Remove categories that has no visual,
+  // then we can mapping them to CATEGORY_DEFAULT_VISUAL_INDEX.
+
+
+  for (var i = categories.length - 1; i >= 0; i--) {
+    if (visual[i] == null) {
+      delete categoryMap[categories[i]];
+      categories.pop();
+    }
+  }
+}
+
+function normalizeVisualRange(thisOption, isCategory) {
+  var visual = thisOption.visual;
+  var visualArr = [];
+
+  if (isObject$3(visual)) {
+    each$6(visual, function (v) {
+      visualArr.push(v);
+    });
+  } else if (visual != null) {
+    visualArr.push(visual);
+  }
+
+  var doNotNeedPair = {
+    color: 1,
+    symbol: 1
+  };
+
+  if (!isCategory && visualArr.length === 1 && !doNotNeedPair.hasOwnProperty(thisOption.type)) {
+    // Do not care visualArr.length === 0, which is illegal.
+    visualArr[1] = visualArr[0];
+  }
+
+  setVisualToOption(thisOption, visualArr);
+}
+
+function makePartialColorVisualHandler(applyValue) {
+  return {
+    applyVisual: function (value, getter, setter) {
+      // Only used in HSL
+      var colorChannel = this.mapValueToVisual(value); // Must not be array value
+
+      setter('color', applyValue(getter('color'), colorChannel));
+    },
+    _normalizedToVisual: createNormalizedToNumericVisual([0, 1])
+  };
+}
+
+function doMapToArray(normalized) {
+  var visual = this.option.visual;
+  return visual[Math.round(linearMap$2(normalized, [0, 1], [0, visual.length - 1], true))] || {}; // TODO {}?
+}
+
+function makeApplyVisual(visualType) {
+  return function (value, getter, setter) {
+    setter(visualType, this.mapValueToVisual(value));
+  };
+}
+
+function doMapCategory(normalized) {
+  var visual = this.option.visual;
+  return visual[this.option.loop && normalized !== CATEGORY_DEFAULT_VISUAL_INDEX ? normalized % visual.length : normalized];
+}
+
+function doMapFixed() {
+  // visual will be convert to array.
+  return this.option.visual[0];
+}
+/**
+ * Create mapped to numeric visual
+ */
+
+
+function createNormalizedToNumericVisual(sourceExtent) {
+  return {
+    linear: function (normalized) {
+      return linearMap$2(normalized, sourceExtent, this.option.visual, true);
+    },
+    category: doMapCategory,
+    piecewise: function (normalized, value) {
+      var result = getSpecifiedVisual.call(this, value);
+
+      if (result == null) {
+        result = linearMap$2(normalized, sourceExtent, this.option.visual, true);
+      }
+
+      return result;
+    },
+    fixed: doMapFixed
+  };
+}
+
+function getSpecifiedVisual(value) {
+  var thisOption = this.option;
+  var pieceList = thisOption.pieceList;
+
+  if (thisOption.hasSpecialVisual) {
+    var pieceIndex = VisualMapping.findPieceIndex(value, pieceList);
+    var piece = pieceList[pieceIndex];
+
+    if (piece && piece.visual) {
+      return piece.visual[this.type];
+    }
+  }
+}
+
+function setVisualToOption(thisOption, visualArr) {
+  thisOption.visual = visualArr;
+
+  if (thisOption.type === 'color') {
+    thisOption.parsedVisual = map$1(visualArr, function (item) {
+      var color$1 = parse(item);
+
+      if (!color$1 && process.env.NODE_ENV !== 'production') {
+        warn("'" + item + "' is an illegal color, fallback to '#000000'", true);
+      }
+
+      return color$1 || [0, 0, 0, 1];
+    });
+  }
+
+  return visualArr;
+}
+/**
+ * Normalizers by mapping methods.
+ */
+
+
+var normalizers = {
+  linear: function (value) {
+    return linearMap$2(value, this.option.dataExtent, [0, 1], true);
+  },
+  piecewise: function (value) {
+    var pieceList = this.option.pieceList;
+    var pieceIndex = VisualMapping.findPieceIndex(value, pieceList, true);
+
+    if (pieceIndex != null) {
+      return linearMap$2(pieceIndex, [0, pieceList.length - 1], [0, 1], true);
+    }
+  },
+  category: function (value) {
+    var index = this.option.categories ? this.option.categoryMap[value] : value; // ordinal value
+
+    return index == null ? CATEGORY_DEFAULT_VISUAL_INDEX : index;
+  },
+  fixed: noop
+};
+
+function littleThan(close, a, b) {
+  return close ? a <= b : a < b;
+}
+
+var VisualMapping$1 = VisualMapping;
+
+/*
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing,
+* software distributed under the License is distributed on an
+* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+* KIND, either express or implied.  See the License for the
+* specific language governing permissions and limitations
+* under the License.
+*/
+
+
+/**
+ * AUTO-GENERATED FILE. DO NOT MODIFY.
+ */
+
+/*
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing,
+* software distributed under the License is distributed on an
+* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+* KIND, either express or implied.  See the License for the
+* specific language governing permissions and limitations
+* under the License.
+*/
+
+/**
+ * Calculate slider move result.
+ * Usage:
+ * (1) If both handle0 and handle1 are needed to be moved, set minSpan the same as
+ * maxSpan and the same as `Math.abs(handleEnd[1] - handleEnds[0])`.
+ * (2) If handle0 is forbidden to cross handle1, set minSpan as `0`.
+ *
+ * @param delta Move length.
+ * @param handleEnds handleEnds[0] can be bigger then handleEnds[1].
+ *              handleEnds will be modified in this method.
+ * @param extent handleEnds is restricted by extent.
+ *              extent[0] should less or equals than extent[1].
+ * @param handleIndex Can be 'all', means that both move the two handleEnds.
+ * @param minSpan The range of dataZoom can not be smaller than that.
+ *              If not set, handle0 and cross handle1. If set as a non-negative
+ *              number (including `0`), handles will push each other when reaching
+ *              the minSpan.
+ * @param maxSpan The range of dataZoom can not be larger than that.
+ * @return The input handleEnds.
+ */
+function sliderMove(delta, handleEnds, extent, handleIndex, minSpan, maxSpan) {
+  delta = delta || 0;
+  var extentSpan = extent[1] - extent[0]; // Notice maxSpan and minSpan can be null/undefined.
+
+  if (minSpan != null) {
+    minSpan = restrict(minSpan, [0, extentSpan]);
+  }
+
+  if (maxSpan != null) {
+    maxSpan = Math.max(maxSpan, minSpan != null ? minSpan : 0);
+  }
+
+  if (handleIndex === 'all') {
+    var handleSpan = Math.abs(handleEnds[1] - handleEnds[0]);
+    handleSpan = restrict(handleSpan, [0, extentSpan]);
+    minSpan = maxSpan = restrict(handleSpan, [minSpan, maxSpan]);
+    handleIndex = 0;
+  }
+
+  handleEnds[0] = restrict(handleEnds[0], extent);
+  handleEnds[1] = restrict(handleEnds[1], extent);
+  var originalDistSign = getSpanSign(handleEnds, handleIndex);
+  handleEnds[handleIndex] += delta; // Restrict in extent.
+
+  var extentMinSpan = minSpan || 0;
+  var realExtent = extent.slice();
+  originalDistSign.sign < 0 ? realExtent[0] += extentMinSpan : realExtent[1] -= extentMinSpan;
+  handleEnds[handleIndex] = restrict(handleEnds[handleIndex], realExtent); // Expand span.
+
+  var currDistSign;
+  currDistSign = getSpanSign(handleEnds, handleIndex);
+
+  if (minSpan != null && (currDistSign.sign !== originalDistSign.sign || currDistSign.span < minSpan)) {
+    // If minSpan exists, 'cross' is forbidden.
+    handleEnds[1 - handleIndex] = handleEnds[handleIndex] + originalDistSign.sign * minSpan;
+  } // Shrink span.
+
+
+  currDistSign = getSpanSign(handleEnds, handleIndex);
+
+  if (maxSpan != null && currDistSign.span > maxSpan) {
+    handleEnds[1 - handleIndex] = handleEnds[handleIndex] + currDistSign.sign * maxSpan;
+  }
+
+  return handleEnds;
+}
+
+function getSpanSign(handleEnds, handleIndex) {
+  var dist = handleEnds[handleIndex] - handleEnds[1 - handleIndex]; // If `handleEnds[0] === handleEnds[1]`, always believe that handleEnd[0]
+  // is at left of handleEnds[1] for non-cross case.
+
+  return {
+    span: Math.abs(dist),
+    sign: dist > 0 ? -1 : dist < 0 ? 1 : handleIndex ? -1 : 1
+  };
+}
+
+function restrict(value, extend) {
+  return Math.min(extend[1] != null ? extend[1] : Infinity, Math.max(extend[0] != null ? extend[0] : -Infinity, value));
 }
 
 var inner$2 = makeInner();
@@ -89878,7 +94741,7 @@ function () {
 
     var handleSize = handleModel.get('size');
 
-    if (!isArray(handleSize)) {
+    if (!isArray$1(handleSize)) {
       handleSize = [handleSize, handleSize];
     }
 
@@ -90011,9 +94874,9 @@ function updateProps(animationModel, moveAnimation, el, props) {
 }
 
 function propsEqual(lastProps, newProps) {
-  if (isObject$2(lastProps) && isObject$2(newProps)) {
+  if (isObject$3(lastProps) && isObject$3(newProps)) {
     var equals_1 = true;
-    each$4(newProps, function (item, key) {
+    each$9(newProps, function (item, key) {
       equals_1 = equals_1 && propsEqual(lastProps[key], item);
     });
     return !!equals_1;
@@ -90140,7 +95003,7 @@ function getValueLabel(value, axis, ecModel, seriesDataIndices, opt) {
       axisIndex: axis.index,
       seriesData: []
     };
-    each$4(seriesDataIndices, function (idxItem) {
+    each$9(seriesDataIndices, function (idxItem) {
       var series = ecModel.getSeriesByIndex(idxItem.seriesIndex);
       var dataIndex = idxItem.dataIndexInside;
       var dataParams = series && series.getDataParams(dataIndex);
@@ -90382,7 +95245,7 @@ function (_super) {
 var AxisPointerModel$1 = AxisPointerModel;
 
 var inner$1 = makeInner();
-var each$1 = each$4;
+var each$5 = each$9;
 /**
  * @param {string} key
  * @param {module:echarts/ExtensionAPI} api
@@ -90417,7 +95280,7 @@ function initGlobalListeners(zr, api) {
   function useHandler(eventType, cb) {
     zr.on(eventType, function (e) {
       var dis = makeDispatchAction$1(api);
-      each$1(inner$1(zr).records, function (record) {
+      each$5(inner$1(zr).records, function (record) {
         record && cb(record, e, dis.dispatchAction);
       });
       dispatchTooltipFinally(dis.pendings, api);
@@ -90554,7 +95417,7 @@ function findPointFromSeries(finder, ecModel) {
   var data = seriesModel.getData();
   var dataIndex = queryDataIndex(data, finder);
 
-  if (dataIndex == null || dataIndex < 0 || isArray(dataIndex)) {
+  if (dataIndex == null || dataIndex < 0 || isArray$1(dataIndex)) {
     return {
       point: []
     };
@@ -90645,10 +95508,10 @@ function axisTrigger(payload, ecModel, api) {
     showTooltip: curry$1(showTooltip, dataByCoordSys)
   }; // Process for triggered axes.
 
-  each$4(coordSysAxesInfo.coordSysMap, function (coordSys, coordSysKey) {
+  each$9(coordSysAxesInfo.coordSysMap, function (coordSys, coordSysKey) {
     // If a point given, it must be contained by the coordinate system.
     var coordSysContainsPoint = isIllegalPoint || coordSys.containPoint(point);
-    each$4(coordSysAxesInfo.coordSysAxesInfo[coordSysKey], function (axisInfo, key) {
+    each$9(coordSysAxesInfo.coordSysAxesInfo[coordSysKey], function (axisInfo, key) {
       var axis = axisInfo.axis;
       var inputAxisInfo = findInputAxisInfo(inputAxesInfo, axisInfo); // If no inputAxesInfo, no axis is restricted.
 
@@ -90665,11 +95528,11 @@ function axisTrigger(payload, ecModel, api) {
   }); // Process for linked axes.
 
   var linkTriggers = {};
-  each$4(axesInfo, function (tarAxisInfo, tarKey) {
+  each$9(axesInfo, function (tarAxisInfo, tarKey) {
     var linkGroup = tarAxisInfo.linkGroup; // If axis has been triggered in the previous stage, it should not be triggered by link.
 
     if (linkGroup && !showValueMap[tarKey]) {
-      each$4(linkGroup.axesInfo, function (srcAxisInfo, srcKey) {
+      each$9(linkGroup.axesInfo, function (srcAxisInfo, srcKey) {
         var srcValItem = showValueMap[srcKey]; // If srcValItem exist, source axis is triggered, so link to target axis.
 
         if (srcAxisInfo !== tarAxisInfo && srcValItem) {
@@ -90680,7 +95543,7 @@ function axisTrigger(payload, ecModel, api) {
       });
     }
   });
-  each$4(linkTriggers, function (val, tarKey) {
+  each$9(linkTriggers, function (val, tarKey) {
     processOnAxis(axesInfo[tarKey], val, updaters, true, outputPayload);
   });
   updateModelActually(showValueMap, axesInfo, outputPayload);
@@ -90732,7 +95595,7 @@ function buildPayloadsBySeries(value, axisInfo) {
   var payloadBatch = [];
   var minDist = Number.MAX_VALUE;
   var minDiff = -1;
-  each$4(axisInfo.seriesModels, function (series, idx) {
+  each$9(axisInfo.seriesModels, function (series, idx) {
     var dataDim = series.getData().mapDimensionsAll(dim);
     var seriesNestestValue;
     var dataIndices;
@@ -90769,7 +95632,7 @@ function buildPayloadsBySeries(value, axisInfo) {
         payloadBatch.length = 0;
       }
 
-      each$4(dataIndices, function (dataIndex) {
+      each$9(dataIndices, function (dataIndex) {
         payloadBatch.push({
           seriesIndex: series.seriesIndex,
           dataIndexInside: dataIndex,
@@ -90838,7 +95701,7 @@ function showTooltip(dataByCoordSys, axisInfo, payloadInfo, value) {
 function updateModelActually(showValueMap, axesInfo, outputPayload) {
   var outputAxesInfo = outputPayload.axesInfo = []; // Basic logic: If no 'show' required, 'hide' this axisPointer.
 
-  each$4(axesInfo, function (axisInfo, key) {
+  each$9(axesInfo, function (axisInfo, key) {
     var option = axisInfo.axisPointerModel.option;
     var valItem = showValueMap[key];
 
@@ -90902,9 +95765,9 @@ function dispatchHighDownActually(axesInfo, dispatchAction, api) {
   var newHighlights = inner(zr)[highDownKey] = {}; // Update highlight/downplay status according to axisPointer model.
   // Build hash map and remove duplicate incidentally.
 
-  each$4(axesInfo, function (axisInfo, key) {
+  each$9(axesInfo, function (axisInfo, key) {
     var option = axisInfo.axisPointerModel.option;
-    option.status === 'show' && each$4(option.seriesDataIndices, function (batchItem) {
+    option.status === 'show' && each$9(option.seriesDataIndices, function (batchItem) {
       var key = batchItem.seriesIndex + ' | ' + batchItem.dataIndex;
       newHighlights[key] = batchItem;
     });
@@ -90912,10 +95775,10 @@ function dispatchHighDownActually(axesInfo, dispatchAction, api) {
 
   var toHighlight = [];
   var toDownplay = [];
-  each$4(lastHighlights, function (batchItem, key) {
+  each$9(lastHighlights, function (batchItem, key) {
     !newHighlights[key] && toDownplay.push(batchItem);
   });
-  each$4(newHighlights, function (batchItem, key) {
+  each$9(newHighlights, function (batchItem, key) {
     !lastHighlights[key] && toHighlight.push(batchItem);
   });
   toDownplay.length && api.dispatchAction({
@@ -90958,7 +95821,7 @@ function illegalPoint(point) {
   return !point || point[0] == null || isNaN(point[0]) || point[1] == null || isNaN(point[1]);
 }
 
-function install$8(registers) {
+function install$b(registers) {
   // CartesianAxisPointer is not supposed to be required here. But consider
   // echarts.simple.js and online build tooltip, which only require gridSimple,
   // CartesianAxisPointer should be able to required somewhere.
@@ -90973,7 +95836,7 @@ function install$8(registers) {
       // is not set, remain null/undefined, otherwise it will
       // override existent link setting.
 
-      if (link && !isArray(link)) {
+      if (link && !isArray$1(link)) {
         option.axisPointer.link = [link];
       }
     }
@@ -90993,9 +95856,9 @@ function install$8(registers) {
   }, axisTrigger);
 }
 
-function install$7(registers) {
-  use(install$9);
-  use(install$8);
+function install$a(registers) {
+  use(install$e);
+  use(install$b);
 }
 
 function makeBackground(rect, componentModel) {
@@ -91238,7 +96101,7 @@ function assembleFont(textStyleModel) {
   var shadowOffsetX = textStyleModel.get('textShadowOffsetX') || 0;
   var shadowOffsetY = textStyleModel.get('textShadowOffsetY') || 0;
   shadowColor && shadowBlur && cssText.push('text-shadow:' + shadowOffsetX + 'px ' + shadowOffsetY + 'px ' + shadowBlur + 'px ' + shadowColor);
-  each$4(['decoration', 'align'], function (name) {
+  each$9(['decoration', 'align'], function (name) {
     var val = textStyleModel.get(name);
     val && cssText.push('text-' + name + ':' + val);
   });
@@ -91265,7 +96128,7 @@ function assembleCssText(tooltipModel, enableTransition, onlyFade) {
   } // Border style
 
 
-  each$4(['width', 'color', 'radius'], function (name) {
+  each$9(['width', 'color', 'radius'], function (name) {
     var borderName = 'border-' + name;
     var camelCase = toCamelCase(borderName);
     var val = tooltipModel.get(camelCase);
@@ -91451,7 +96314,7 @@ function () {
       // Clear previous
       el.innerHTML = '';
 
-      if (!isArray(content)) {
+      if (!isArray$1(content)) {
         content = [content];
       }
 
@@ -91488,7 +96351,7 @@ function () {
     if (styleCoord[0] != null && styleCoord[1] != null) {
       var style_1 = this.el.style;
       var transforms = assembleTransform(styleCoord[0], styleCoord[1]);
-      each$4(transforms, function (transform) {
+      each$9(transforms, function (transform) {
         style_1[transform[0]] = transform[1];
       });
     }
@@ -91582,7 +96445,7 @@ function () {
   TooltipRichContent.prototype.setContent = function (content, markupStyleCreator, tooltipModel, borderColor, arrowPosition) {
     var _this = this;
 
-    if (isObject$2(content)) {
+    if (isObject$3(content)) {
       throwError(process.env.NODE_ENV !== 'production' ? 'Passing DOM nodes as content is not supported in richText tooltip!' : '');
     }
 
@@ -91606,10 +96469,10 @@ function () {
       },
       z: tooltipModel.get('z')
     });
-    each$4(['backgroundColor', 'borderRadius', 'shadowColor', 'shadowBlur', 'shadowOffsetX', 'shadowOffsetY'], function (propName) {
+    each$9(['backgroundColor', 'borderRadius', 'shadowColor', 'shadowBlur', 'shadowOffsetX', 'shadowOffsetY'], function (propName) {
       _this.el.style[propName] = tooltipModel.get(propName);
     });
-    each$4(['textShadowBlur', 'textShadowOffsetX', 'textShadowOffsetY'], function (propName) {
+    each$9(['textShadowBlur', 'textShadowOffsetX', 'textShadowOffsetY'], function (propName) {
       _this.el.style[propName] = textStyleModel.get(propName) || 0;
     });
 
@@ -92071,8 +96934,8 @@ function (_super) {
 
     var markupTextArrLegacy = [];
     var markupStyleCreator = new TooltipMarkupStyleCreator();
-    each$4(dataByCoordSys, function (itemCoordSys) {
-      each$4(itemCoordSys.dataByAxis, function (axisItem) {
+    each$9(dataByCoordSys, function (itemCoordSys) {
+      each$9(itemCoordSys.dataByAxis, function (axisItem) {
         var axisModel = ecModel.getComponent(axisItem.axisDim + 'Axis', axisItem.axisIndex);
         var axisValue = axisItem.value;
 
@@ -92088,7 +96951,7 @@ function (_super) {
           blocks: []
         });
         articleMarkup.blocks.push(axisSectionMarkup);
-        each$4(axisItem.seriesDataIndices, function (idxItem) {
+        each$9(axisItem.seriesDataIndices, function (idxItem) {
           var series = ecModel.getSeriesByIndex(idxItem.seriesIndex);
           var dataIndex = idxItem.dataIndexInside;
           var cbParams = series.getDataParams(dataIndex); // Can't find data.
@@ -92278,7 +97141,7 @@ function (_super) {
     if (formatter) {
       if (isString(formatter)) {
         var useUTC = tooltipModel.ecModel.get('useUTC');
-        var params0 = isArray(params) ? params[0] : params;
+        var params0 = isArray$1(params) ? params[0] : params;
         var isTimeAxis = params0 && params0.axisType && params0.axisType.indexOf('time') >= 0;
         html = formatter;
 
@@ -92309,13 +97172,13 @@ function (_super) {
   };
 
   TooltipView.prototype._getNearestPoint = function (point, tooltipDataParams, trigger, borderColor) {
-    if (trigger === 'axis' || isArray(tooltipDataParams)) {
+    if (trigger === 'axis' || isArray$1(tooltipDataParams)) {
       return {
         color: borderColor || (this._renderMode === 'html' ? '#fff' : 'none')
       };
     }
 
-    if (!isArray(tooltipDataParams)) {
+    if (!isArray$1(tooltipDataParams)) {
       return {
         color: borderColor || tooltipDataParams.color || tooltipDataParams.borderColor
       };
@@ -92344,10 +97207,10 @@ function (_super) {
       });
     }
 
-    if (isArray(positionExpr)) {
+    if (isArray$1(positionExpr)) {
       x = parsePercent(positionExpr[0], viewWidth);
       y = parsePercent(positionExpr[1], viewHeight);
-    } else if (isObject$2(positionExpr)) {
+    } else if (isObject$3(positionExpr)) {
       var boxLayoutPosition = positionExpr;
       boxLayoutPosition.width = contentSize[0];
       boxLayoutPosition.height = contentSize[1];
@@ -92390,22 +97253,22 @@ function (_super) {
     var lastCoordSys = this._lastDataByCoordSys;
     var lastCbParamsList = this._cbParamsList;
     var contentNotChanged = !!lastCoordSys && lastCoordSys.length === dataByCoordSys.length;
-    contentNotChanged && each$4(lastCoordSys, function (lastItemCoordSys, indexCoordSys) {
+    contentNotChanged && each$9(lastCoordSys, function (lastItemCoordSys, indexCoordSys) {
       var lastDataByAxis = lastItemCoordSys.dataByAxis || [];
       var thisItemCoordSys = dataByCoordSys[indexCoordSys] || {};
       var thisDataByAxis = thisItemCoordSys.dataByAxis || [];
       contentNotChanged = contentNotChanged && lastDataByAxis.length === thisDataByAxis.length;
-      contentNotChanged && each$4(lastDataByAxis, function (lastItem, indexAxis) {
+      contentNotChanged && each$9(lastDataByAxis, function (lastItem, indexAxis) {
         var thisItem = thisDataByAxis[indexAxis] || {};
         var lastIndices = lastItem.seriesDataIndices || [];
         var newIndices = thisItem.seriesDataIndices || [];
         contentNotChanged = contentNotChanged && lastItem.value === thisItem.value && lastItem.axisType === thisItem.axisType && lastItem.axisId === thisItem.axisId && lastIndices.length === newIndices.length;
-        contentNotChanged && each$4(lastIndices, function (lastIdxItem, j) {
+        contentNotChanged && each$9(lastIndices, function (lastIdxItem, j) {
           var newIdxItem = newIndices[j];
           contentNotChanged = contentNotChanged && lastIdxItem.seriesIndex === newIdxItem.seriesIndex && lastIdxItem.dataIndex === newIdxItem.dataIndex;
         }); // check is cbParams data value changed
 
-        lastCbParamsList && each$4(lastItem.seriesDataIndices, function (idxItem) {
+        lastCbParamsList && each$9(lastItem.seriesDataIndices, function (idxItem) {
           var seriesIdx = idxItem.seriesIndex;
           var cbParams = cbParamsList[seriesIdx];
           var lastCbParams = lastCbParamsList[seriesIdx];
@@ -92631,8 +97494,8 @@ function findComponentReference(payload, ecModel, api) {
 
 var TooltipView$1 = TooltipView;
 
-function install$6(registers) {
-  use(install$8);
+function install$9(registers) {
+  use(install$b);
   registers.registerComponentModel(TooltipModel$1);
   registers.registerComponentView(TooltipView$1);
   /**
@@ -92654,6 +97517,128 @@ function install$6(registers) {
     event: 'hideTip',
     update: 'tooltip:manuallyHideTip'
   }, noop);
+}
+
+var each$4 = each$9;
+
+function hasKeys(obj) {
+  if (obj) {
+    for (var name_1 in obj) {
+      if (obj.hasOwnProperty(name_1)) {
+        return true;
+      }
+    }
+  }
+}
+
+function createVisualMappings(option, stateList, supplementVisualOption) {
+  var visualMappings = {};
+  each$4(stateList, function (state) {
+    var mappings = visualMappings[state] = createMappings();
+    each$4(option[state], function (visualData, visualType) {
+      if (!VisualMapping$1.isValidType(visualType)) {
+        return;
+      }
+
+      var mappingOption = {
+        type: visualType,
+        visual: visualData
+      };
+      supplementVisualOption && supplementVisualOption(mappingOption, state);
+      mappings[visualType] = new VisualMapping$1(mappingOption); // Prepare a alpha for opacity, for some case that opacity
+      // is not supported, such as rendering using gradient color.
+
+      if (visualType === 'opacity') {
+        mappingOption = clone$3(mappingOption);
+        mappingOption.type = 'colorAlpha';
+        mappings.__hidden.__alphaForOpacity = new VisualMapping$1(mappingOption);
+      }
+    });
+  });
+  return visualMappings;
+
+  function createMappings() {
+    var Creater = function () {}; // Make sure hidden fields will not be visited by
+    // object iteration (with hasOwnProperty checking).
+
+
+    Creater.prototype.__hidden = Creater.prototype;
+    var obj = new Creater();
+    return obj;
+  }
+}
+function replaceVisualOption(thisOption, newOption, keys) {
+  // Visual attributes merge is not supported, otherwise it
+  // brings overcomplicated merge logic. See #2853. So if
+  // newOption has anyone of these keys, all of these keys
+  // will be reset. Otherwise, all keys remain.
+  var has;
+  each$9(keys, function (key) {
+    if (newOption.hasOwnProperty(key) && hasKeys(newOption[key])) {
+      has = true;
+    }
+  });
+  has && each$9(keys, function (key) {
+    if (newOption.hasOwnProperty(key) && hasKeys(newOption[key])) {
+      thisOption[key] = clone$3(newOption[key]);
+    } else {
+      delete thisOption[key];
+    }
+  });
+}
+/**
+ * @param data
+ * @param stateList
+ * @param visualMappings <state, Object.<visualType, module:echarts/visual/VisualMapping>>
+ * @param getValueState param: valueOrIndex, return: state.
+ * @param dim dimension or dimension index.
+ */
+
+function incrementalApplyVisual(stateList, visualMappings, getValueState, dim) {
+  var visualTypesMap = {};
+  each$9(stateList, function (state) {
+    var visualTypes = VisualMapping$1.prepareVisualTypes(visualMappings[state]);
+    visualTypesMap[state] = visualTypes;
+  });
+  return {
+    progress: function progress(params, data) {
+      var dimIndex;
+
+      if (dim != null) {
+        dimIndex = data.getDimensionIndex(dim);
+      }
+
+      function getVisual(key) {
+        return getItemVisualFromData(data, dataIndex, key);
+      }
+
+      function setVisual(key, value) {
+        setItemVisualFromData(data, dataIndex, key, value);
+      }
+
+      var dataIndex;
+      var store = data.getStore();
+
+      while ((dataIndex = params.next()) != null) {
+        var rawDataItem = data.getRawDataItem(dataIndex); // Consider performance
+        // @ts-ignore
+
+        if (rawDataItem && rawDataItem.visualMap === false) {
+          continue;
+        }
+
+        var value = dim != null ? store.get(dimIndex, dataIndex) : dataIndex;
+        var valueState = getValueState(value);
+        var mappings = visualMappings[valueState];
+        var visualTypes = visualTypesMap[valueState];
+
+        for (var i = 0, len = visualTypes.length; i < len; i++) {
+          var type = visualTypes[i];
+          mappings[type] && mappings[type].applyVisual(value, getVisual, setVisual);
+        }
+      }
+    }
+  };
 }
 
 var TitleModel =
@@ -92848,7 +97833,7 @@ function (_super) {
   return TitleView;
 }(ComponentView$1);
 
-function install$5(registers) {
+function install$8(registers) {
   registers.registerComponentModel(TitleModel);
   registers.registerComponentView(TitleView);
 }
@@ -92911,8 +97896,8 @@ function (_super) {
       selector = option.selector = ['all', 'inverse'];
     }
 
-    if (isArray(selector)) {
-      each$4(selector, function (item, index) {
+    if (isArray$1(selector)) {
+      each$9(selector, function (item, index) {
         isString(item) && (item = {
           type: item
         });
@@ -93011,7 +97996,7 @@ function (_super) {
 
     if (selectedMode === 'single') {
       var data = this._data;
-      each$4(data, function (dataItem) {
+      each$9(data, function (dataItem) {
         selected[dataItem.get('name')] = false;
       });
     }
@@ -93038,7 +98023,7 @@ function (_super) {
   LegendModel.prototype.allSelect = function () {
     var data = this._data;
     var selected = this.option.selected;
-    each$4(data, function (dataItem) {
+    each$9(data, function (dataItem) {
       selected[dataItem.get('name', true)] = true;
     });
   };
@@ -93046,7 +98031,7 @@ function (_super) {
   LegendModel.prototype.inverseSelect = function () {
     var data = this._data;
     var selected = this.option.selected;
-    each$4(data, function (dataItem) {
+    each$9(data, function (dataItem) {
       var name = dataItem.get('name', true); // Initially, default value is true
 
       if (!selected.hasOwnProperty(name)) {
@@ -93154,7 +98139,7 @@ function (_super) {
 var LegendModel$1 = LegendModel;
 
 var curry = curry$1;
-var each = each$4;
+var each$3 = each$9;
 var Group$1 = Group$3;
 
 var LegendView =
@@ -93256,7 +98241,7 @@ function (_super) {
     ecModel.eachRawSeries(function (seriesModel) {
       !seriesModel.get('legendHoverLink') && excludeSeriesId.push(seriesModel.id);
     });
-    each(legendModel.getData(), function (legendItemModel, dataIndex) {
+    each$3(legendModel.getData(), function (legendItemModel, dataIndex) {
       var name = legendItemModel.get('name'); // Use empty string or \n as a newline string
 
       if (!this.newlineDisabled && (name === '' || name === '\n')) {
@@ -93345,7 +98330,7 @@ function (_super) {
 
   LegendView.prototype._createSelector = function (selector, legendModel, api, orient, selectorPosition) {
     var selectorGroup = this.getSelectorGroup();
-    each(selector, function createSelectorButton(selectorItem) {
+    each$3(selector, function createSelectorButton(selectorItem) {
       var type = selectorItem.type;
       var labelText = new ZRText$1({
         style: {
@@ -93535,7 +98520,7 @@ function getLegendStyle(iconType, legendItemModel, lineVisualStyle, itemVisualSt
       style.lineWidth = visualStyle.lineWidth > 0 ? 2 : 0;
     }
 
-    each(style, function (propVal, propName) {
+    each$3(style, function (propVal, propName) {
       style[propName] === 'inherit' && (style[propName] = visualStyle[propName]);
     });
   } // itemStyle
@@ -93751,7 +98736,7 @@ function legendSelectActionHandler(methodName, payload, ecModel) {
     }
 
     var legendData = legendModel.getData();
-    each$4(legendData, function (model) {
+    each$9(legendData, function (model) {
       var name = model.get('name'); // Wrap element
 
       if (name === '\n' || name === '') {
@@ -93806,7 +98791,7 @@ function installLegendAction(registers) {
   registers.registerAction('legendUnSelect', 'legendunselected', curry$1(legendSelectActionHandler, 'unSelect'));
 }
 
-function install$4(registers) {
+function install$7(registers) {
   registers.registerComponentModel(LegendModel$1);
   registers.registerComponentView(LegendView$1);
   registers.registerProcessor(registers.PRIORITY.PROCESSOR.SERIES_FILTER, legendFilter);
@@ -93943,7 +98928,7 @@ function (_super) {
     // e.g., '3/12345' should not overlap with the control arrow button.
 
     var pageIconSize = legendModel.get('pageIconSize', true);
-    var pageIconSizeArr = isArray(pageIconSize) ? pageIconSize : [pageIconSize, pageIconSize];
+    var pageIconSizeArr = isArray$1(pageIconSize) ? pageIconSize : [pageIconSize, pageIconSize];
     createPageButton('pagePrev', 0);
     var pageTextStyleModel = legendModel.getModel('pageTextStyle');
     controllerGroup.add(new ZRText$1({
@@ -94124,7 +99109,7 @@ function (_super) {
 
   ScrollableLegendView.prototype._updatePageInfoView = function (legendModel, pageInfo) {
     var controllerGroup = this._controllerGroup;
-    each$4(['pagePrev', 'pageNext'], function (name) {
+    each$9(['pagePrev', 'pageNext'], function (name) {
       var key = name + 'DataIndex';
       var canJump = pageInfo[key] != null;
       var icon = controllerGroup.childOfName(name);
@@ -94351,16 +99336,2520 @@ function installScrollableLegendAction(registers) {
   });
 }
 
-function install$3(registers) {
-  use(install$4);
+function install$6(registers) {
+  use(install$7);
   registers.registerComponentModel(ScrollableLegendModel$1);
   registers.registerComponentView(ScrollableLegendView$1);
   installScrollableLegendAction(registers);
 }
 
+function install$5(registers) {
+  use(install$7);
+  use(install$6);
+}
+
+var visualDefault = {
+  /**
+   * @public
+   */
+  get: function (visualType, key, isCategory) {
+    var value = clone$3((defaultOption[visualType] || {})[key]);
+    return isCategory ? isArray$1(value) ? value[value.length - 1] : value : value;
+  }
+};
+var defaultOption = {
+  color: {
+    active: ['#006edd', '#e0ffff'],
+    inactive: ['rgba(0,0,0,0)']
+  },
+  colorHue: {
+    active: [0, 360],
+    inactive: [0, 0]
+  },
+  colorSaturation: {
+    active: [0.3, 1],
+    inactive: [0, 0]
+  },
+  colorLightness: {
+    active: [0.9, 0.5],
+    inactive: [0, 0]
+  },
+  colorAlpha: {
+    active: [0.3, 1],
+    inactive: [0, 0]
+  },
+  opacity: {
+    active: [0.3, 1],
+    inactive: [0, 0]
+  },
+  symbol: {
+    active: ['circle', 'roundRect', 'diamond'],
+    inactive: ['none']
+  },
+  symbolSize: {
+    active: [10, 50],
+    inactive: [0, 0]
+  }
+};
+var visualDefault$1 = visualDefault;
+
+var mapVisual = VisualMapping$1.mapVisual;
+var eachVisual = VisualMapping$1.eachVisual;
+var isArray = isArray$1;
+var each$2 = each$9;
+var asc = asc$1;
+var linearMap$1 = linearMap$2;
+
+var VisualMapModel =
+/** @class */
+function (_super) {
+  __extends$1(VisualMapModel, _super);
+
+  function VisualMapModel() {
+    var _this = _super !== null && _super.apply(this, arguments) || this;
+
+    _this.type = VisualMapModel.type;
+    _this.stateList = ['inRange', 'outOfRange'];
+    _this.replacableOptionKeys = ['inRange', 'outOfRange', 'target', 'controller', 'color'];
+    _this.layoutMode = {
+      type: 'box',
+      ignoreSize: true
+    };
+    /**
+     * [lowerBound, upperBound]
+     */
+
+    _this.dataBound = [-Infinity, Infinity];
+    _this.targetVisuals = {};
+    _this.controllerVisuals = {};
+    return _this;
+  }
+
+  VisualMapModel.prototype.init = function (option, parentModel, ecModel) {
+    this.mergeDefaultAndTheme(option, ecModel);
+  };
+  /**
+   * @protected
+   */
+
+
+  VisualMapModel.prototype.optionUpdated = function (newOption, isInit) {
+    var thisOption = this.option;
+    !isInit && replaceVisualOption(thisOption, newOption, this.replacableOptionKeys);
+    this.textStyleModel = this.getModel('textStyle');
+    this.resetItemSize();
+    this.completeVisualOption();
+  };
+  /**
+   * @protected
+   */
+
+
+  VisualMapModel.prototype.resetVisual = function (supplementVisualOption) {
+    var stateList = this.stateList;
+    supplementVisualOption = bind$1(supplementVisualOption, this);
+    this.controllerVisuals = createVisualMappings(this.option.controller, stateList, supplementVisualOption);
+    this.targetVisuals = createVisualMappings(this.option.target, stateList, supplementVisualOption);
+  };
+  /**
+   * @public
+   */
+
+
+  VisualMapModel.prototype.getItemSymbol = function () {
+    return null;
+  };
+  /**
+   * @protected
+   * @return {Array.<number>} An array of series indices.
+   */
+
+
+  VisualMapModel.prototype.getTargetSeriesIndices = function () {
+    var optionSeriesIndex = this.option.seriesIndex;
+    var seriesIndices = [];
+
+    if (optionSeriesIndex == null || optionSeriesIndex === 'all') {
+      this.ecModel.eachSeries(function (seriesModel, index) {
+        seriesIndices.push(index);
+      });
+    } else {
+      seriesIndices = normalizeToArray(optionSeriesIndex);
+    }
+
+    return seriesIndices;
+  };
+  /**
+   * @public
+   */
+
+
+  VisualMapModel.prototype.eachTargetSeries = function (callback, context) {
+    each$9(this.getTargetSeriesIndices(), function (seriesIndex) {
+      var seriesModel = this.ecModel.getSeriesByIndex(seriesIndex);
+
+      if (seriesModel) {
+        callback.call(context, seriesModel);
+      }
+    }, this);
+  };
+  /**
+   * @pubilc
+   */
+
+
+  VisualMapModel.prototype.isTargetSeries = function (seriesModel) {
+    var is = false;
+    this.eachTargetSeries(function (model) {
+      model === seriesModel && (is = true);
+    });
+    return is;
+  };
+  /**
+   * @example
+   * this.formatValueText(someVal); // format single numeric value to text.
+   * this.formatValueText(someVal, true); // format single category value to text.
+   * this.formatValueText([min, max]); // format numeric min-max to text.
+   * this.formatValueText([this.dataBound[0], max]); // using data lower bound.
+   * this.formatValueText([min, this.dataBound[1]]); // using data upper bound.
+   *
+   * @param value Real value, or this.dataBound[0 or 1].
+   * @param isCategory Only available when value is number.
+   * @param edgeSymbols Open-close symbol when value is interval.
+   * @protected
+   */
+
+
+  VisualMapModel.prototype.formatValueText = function (value, isCategory, edgeSymbols) {
+    var option = this.option;
+    var precision = option.precision;
+    var dataBound = this.dataBound;
+    var formatter = option.formatter;
+    var isMinMax;
+    edgeSymbols = edgeSymbols || ['<', '>'];
+
+    if (isArray$1(value)) {
+      value = value.slice();
+      isMinMax = true;
+    }
+
+    var textValue = isCategory ? value // Value is string when isCategory
+    : isMinMax ? [toFixed(value[0]), toFixed(value[1])] : toFixed(value);
+
+    if (isString(formatter)) {
+      return formatter.replace('{value}', isMinMax ? textValue[0] : textValue).replace('{value2}', isMinMax ? textValue[1] : textValue);
+    } else if (isFunction(formatter)) {
+      return isMinMax ? formatter(value[0], value[1]) : formatter(value);
+    }
+
+    if (isMinMax) {
+      if (value[0] === dataBound[0]) {
+        return edgeSymbols[0] + ' ' + textValue[1];
+      } else if (value[1] === dataBound[1]) {
+        return edgeSymbols[1] + ' ' + textValue[0];
+      } else {
+        return textValue[0] + ' - ' + textValue[1];
+      }
+    } else {
+      // Format single value (includes category case).
+      return textValue;
+    }
+
+    function toFixed(val) {
+      return val === dataBound[0] ? 'min' : val === dataBound[1] ? 'max' : (+val).toFixed(Math.min(precision, 20));
+    }
+  };
+  /**
+   * @protected
+   */
+
+
+  VisualMapModel.prototype.resetExtent = function () {
+    var thisOption = this.option; // Can not calculate data extent by data here.
+    // Because series and data may be modified in processing stage.
+    // So we do not support the feature "auto min/max".
+
+    var extent = asc([thisOption.min, thisOption.max]);
+    this._dataExtent = extent;
+  };
+  /**
+   * PENDING:
+   * delete this method if no outer usage.
+   *
+   * Return  Concrete dimention. If return null/undefined, no dimension used.
+   */
+  // getDataDimension(data: SeriesData) {
+  //     const optDim = this.option.dimension;
+  //     if (optDim != null) {
+  //         return data.getDimension(optDim);
+  //     }
+  //     const dimNames = data.dimensions;
+  //     for (let i = dimNames.length - 1; i >= 0; i--) {
+  //         const dimName = dimNames[i];
+  //         const dimInfo = data.getDimensionInfo(dimName);
+  //         if (!dimInfo.isCalculationCoord) {
+  //             return dimName;
+  //         }
+  //     }
+  // }
+
+
+  VisualMapModel.prototype.getDataDimensionIndex = function (data) {
+    var optDim = this.option.dimension;
+
+    if (optDim != null) {
+      return data.getDimensionIndex(optDim);
+    }
+
+    var dimNames = data.dimensions;
+
+    for (var i = dimNames.length - 1; i >= 0; i--) {
+      var dimName = dimNames[i];
+      var dimInfo = data.getDimensionInfo(dimName);
+
+      if (!dimInfo.isCalculationCoord) {
+        return dimInfo.storeDimIndex;
+      }
+    }
+  };
+
+  VisualMapModel.prototype.getExtent = function () {
+    return this._dataExtent.slice();
+  };
+
+  VisualMapModel.prototype.completeVisualOption = function () {
+    var ecModel = this.ecModel;
+    var thisOption = this.option;
+    var base = {
+      inRange: thisOption.inRange,
+      outOfRange: thisOption.outOfRange
+    };
+    var target = thisOption.target || (thisOption.target = {});
+    var controller = thisOption.controller || (thisOption.controller = {});
+    merge(target, base); // Do not override
+
+    merge(controller, base); // Do not override
+
+    var isCategory = this.isCategory();
+    completeSingle.call(this, target);
+    completeSingle.call(this, controller);
+    completeInactive.call(this, target, 'inRange', 'outOfRange'); // completeInactive.call(this, target, 'outOfRange', 'inRange');
+
+    completeController.call(this, controller);
+
+    function completeSingle(base) {
+      // Compatible with ec2 dataRange.color.
+      // The mapping order of dataRange.color is: [high value, ..., low value]
+      // whereas inRange.color and outOfRange.color is [low value, ..., high value]
+      // Notice: ec2 has no inverse.
+      if (isArray(thisOption.color) // If there has been inRange: {symbol: ...}, adding color is a mistake.
+      // So adding color only when no inRange defined.
+      && !base.inRange) {
+        base.inRange = {
+          color: thisOption.color.slice().reverse()
+        };
+      } // Compatible with previous logic, always give a defautl color, otherwise
+      // simple config with no inRange and outOfRange will not work.
+      // Originally we use visualMap.color as the default color, but setOption at
+      // the second time the default color will be erased. So we change to use
+      // constant DEFAULT_COLOR.
+      // If user do not want the default color, set inRange: {color: null}.
+
+
+      base.inRange = base.inRange || {
+        color: ecModel.get('gradientColor')
+      };
+    }
+
+    function completeInactive(base, stateExist, stateAbsent) {
+      var optExist = base[stateExist];
+      var optAbsent = base[stateAbsent];
+
+      if (optExist && !optAbsent) {
+        optAbsent = base[stateAbsent] = {};
+        each$2(optExist, function (visualData, visualType) {
+          if (!VisualMapping$1.isValidType(visualType)) {
+            return;
+          }
+
+          var defa = visualDefault$1.get(visualType, 'inactive', isCategory);
+
+          if (defa != null) {
+            optAbsent[visualType] = defa; // Compatibable with ec2:
+            // Only inactive color to rgba(0,0,0,0) can not
+            // make label transparent, so use opacity also.
+
+            if (visualType === 'color' && !optAbsent.hasOwnProperty('opacity') && !optAbsent.hasOwnProperty('colorAlpha')) {
+              optAbsent.opacity = [0, 0];
+            }
+          }
+        });
+      }
+    }
+
+    function completeController(controller) {
+      var symbolExists = (controller.inRange || {}).symbol || (controller.outOfRange || {}).symbol;
+      var symbolSizeExists = (controller.inRange || {}).symbolSize || (controller.outOfRange || {}).symbolSize;
+      var inactiveColor = this.get('inactiveColor');
+      var itemSymbol = this.getItemSymbol();
+      var defaultSymbol = itemSymbol || 'roundRect';
+      each$2(this.stateList, function (state) {
+        var itemSize = this.itemSize;
+        var visuals = controller[state]; // Set inactive color for controller if no other color
+        // attr (like colorAlpha) specified.
+
+        if (!visuals) {
+          visuals = controller[state] = {
+            color: isCategory ? inactiveColor : [inactiveColor]
+          };
+        } // Consistent symbol and symbolSize if not specified.
+
+
+        if (visuals.symbol == null) {
+          visuals.symbol = symbolExists && clone$3(symbolExists) || (isCategory ? defaultSymbol : [defaultSymbol]);
+        }
+
+        if (visuals.symbolSize == null) {
+          visuals.symbolSize = symbolSizeExists && clone$3(symbolSizeExists) || (isCategory ? itemSize[0] : [itemSize[0], itemSize[0]]);
+        } // Filter none
+
+
+        visuals.symbol = mapVisual(visuals.symbol, function (symbol) {
+          return symbol === 'none' ? defaultSymbol : symbol;
+        }); // Normalize symbolSize
+
+        var symbolSize = visuals.symbolSize;
+
+        if (symbolSize != null) {
+          var max_1 = -Infinity; // symbolSize can be object when categories defined.
+
+          eachVisual(symbolSize, function (value) {
+            value > max_1 && (max_1 = value);
+          });
+          visuals.symbolSize = mapVisual(symbolSize, function (value) {
+            return linearMap$1(value, [0, max_1], [0, itemSize[0]], true);
+          });
+        }
+      }, this);
+    }
+  };
+
+  VisualMapModel.prototype.resetItemSize = function () {
+    this.itemSize = [parseFloat(this.get('itemWidth')), parseFloat(this.get('itemHeight'))];
+  };
+
+  VisualMapModel.prototype.isCategory = function () {
+    return !!this.option.categories;
+  };
+  /**
+   * @public
+   * @abstract
+   */
+
+
+  VisualMapModel.prototype.setSelected = function (selected) {};
+
+  VisualMapModel.prototype.getSelected = function () {
+    return null;
+  };
+  /**
+   * @public
+   * @abstract
+   */
+
+
+  VisualMapModel.prototype.getValueState = function (value) {
+    return null;
+  };
+  /**
+   * FIXME
+   * Do not publish to thirt-part-dev temporarily
+   * util the interface is stable. (Should it return
+   * a function but not visual meta?)
+   *
+   * @pubilc
+   * @abstract
+   * @param getColorVisual
+   *        params: value, valueState
+   *        return: color
+   * @return {Object} visualMeta
+   *        should includes {stops, outerColors}
+   *        outerColor means [colorBeyondMinValue, colorBeyondMaxValue]
+   */
+
+
+  VisualMapModel.prototype.getVisualMeta = function (getColorVisual) {
+    return null;
+  };
+
+  VisualMapModel.type = 'visualMap';
+  VisualMapModel.dependencies = ['series'];
+  VisualMapModel.defaultOption = {
+    show: true,
+    // zlevel: 0,
+    z: 4,
+    seriesIndex: 'all',
+    min: 0,
+    max: 200,
+    left: 0,
+    right: null,
+    top: null,
+    bottom: 0,
+    itemWidth: null,
+    itemHeight: null,
+    inverse: false,
+    orient: 'vertical',
+    backgroundColor: 'rgba(0,0,0,0)',
+    borderColor: '#ccc',
+    contentColor: '#5793f3',
+    inactiveColor: '#aaa',
+    borderWidth: 0,
+    padding: 5,
+    // 接受数组分别设定上右下左边距，同css
+    textGap: 10,
+    precision: 0,
+    textStyle: {
+      color: '#333' // 值域文字颜色
+
+    }
+  };
+  return VisualMapModel;
+}(ComponentModel$1);
+
+var VisualMapModel$1 = VisualMapModel;
+
+var DEFAULT_BAR_BOUND = [20, 140];
+
+var ContinuousModel =
+/** @class */
+function (_super) {
+  __extends$1(ContinuousModel, _super);
+
+  function ContinuousModel() {
+    var _this = _super !== null && _super.apply(this, arguments) || this;
+
+    _this.type = ContinuousModel.type;
+    return _this;
+  }
+  /**
+   * @override
+   */
+
+
+  ContinuousModel.prototype.optionUpdated = function (newOption, isInit) {
+    _super.prototype.optionUpdated.apply(this, arguments);
+
+    this.resetExtent();
+    this.resetVisual(function (mappingOption) {
+      mappingOption.mappingMethod = 'linear';
+      mappingOption.dataExtent = this.getExtent();
+    });
+
+    this._resetRange();
+  };
+  /**
+   * @protected
+   * @override
+   */
+
+
+  ContinuousModel.prototype.resetItemSize = function () {
+    _super.prototype.resetItemSize.apply(this, arguments);
+
+    var itemSize = this.itemSize;
+    (itemSize[0] == null || isNaN(itemSize[0])) && (itemSize[0] = DEFAULT_BAR_BOUND[0]);
+    (itemSize[1] == null || isNaN(itemSize[1])) && (itemSize[1] = DEFAULT_BAR_BOUND[1]);
+  };
+  /**
+   * @private
+   */
+
+
+  ContinuousModel.prototype._resetRange = function () {
+    var dataExtent = this.getExtent();
+    var range = this.option.range;
+
+    if (!range || range.auto) {
+      // `range` should always be array (so we dont use other
+      // value like 'auto') for user-friend. (consider getOption).
+      dataExtent.auto = 1;
+      this.option.range = dataExtent;
+    } else if (isArray$1(range)) {
+      if (range[0] > range[1]) {
+        range.reverse();
+      }
+
+      range[0] = Math.max(range[0], dataExtent[0]);
+      range[1] = Math.min(range[1], dataExtent[1]);
+    }
+  };
+  /**
+   * @protected
+   * @override
+   */
+
+
+  ContinuousModel.prototype.completeVisualOption = function () {
+    _super.prototype.completeVisualOption.apply(this, arguments);
+
+    each$9(this.stateList, function (state) {
+      var symbolSize = this.option.controller[state].symbolSize;
+
+      if (symbolSize && symbolSize[0] !== symbolSize[1]) {
+        symbolSize[0] = symbolSize[1] / 3; // For good looking.
+      }
+    }, this);
+  };
+  /**
+   * @override
+   */
+
+
+  ContinuousModel.prototype.setSelected = function (selected) {
+    this.option.range = selected.slice();
+
+    this._resetRange();
+  };
+  /**
+   * @public
+   */
+
+
+  ContinuousModel.prototype.getSelected = function () {
+    var dataExtent = this.getExtent();
+    var dataInterval = asc$1((this.get('range') || []).slice()); // Clamp
+
+    dataInterval[0] > dataExtent[1] && (dataInterval[0] = dataExtent[1]);
+    dataInterval[1] > dataExtent[1] && (dataInterval[1] = dataExtent[1]);
+    dataInterval[0] < dataExtent[0] && (dataInterval[0] = dataExtent[0]);
+    dataInterval[1] < dataExtent[0] && (dataInterval[1] = dataExtent[0]);
+    return dataInterval;
+  };
+  /**
+   * @override
+   */
+
+
+  ContinuousModel.prototype.getValueState = function (value) {
+    var range = this.option.range;
+    var dataExtent = this.getExtent(); // When range[0] === dataExtent[0], any value larger than dataExtent[0] maps to 'inRange'.
+    // range[1] is processed likewise.
+
+    return (range[0] <= dataExtent[0] || range[0] <= value) && (range[1] >= dataExtent[1] || value <= range[1]) ? 'inRange' : 'outOfRange';
+  };
+
+  ContinuousModel.prototype.findTargetDataIndices = function (range) {
+    var result = [];
+    this.eachTargetSeries(function (seriesModel) {
+      var dataIndices = [];
+      var data = seriesModel.getData();
+      data.each(this.getDataDimensionIndex(data), function (value, dataIndex) {
+        range[0] <= value && value <= range[1] && dataIndices.push(dataIndex);
+      }, this);
+      result.push({
+        seriesId: seriesModel.id,
+        dataIndex: dataIndices
+      });
+    }, this);
+    return result;
+  };
+  /**
+   * @implement
+   */
+
+
+  ContinuousModel.prototype.getVisualMeta = function (getColorVisual) {
+    var oVals = getColorStopValues(this, 'outOfRange', this.getExtent());
+    var iVals = getColorStopValues(this, 'inRange', this.option.range.slice());
+    var stops = [];
+
+    function setStop(value, valueState) {
+      stops.push({
+        value: value,
+        color: getColorVisual(value, valueState)
+      });
+    } // Format to: outOfRange -- inRange -- outOfRange.
+
+
+    var iIdx = 0;
+    var oIdx = 0;
+    var iLen = iVals.length;
+    var oLen = oVals.length;
+
+    for (; oIdx < oLen && (!iVals.length || oVals[oIdx] <= iVals[0]); oIdx++) {
+      // If oVal[oIdx] === iVals[iIdx], oVal[oIdx] should be ignored.
+      if (oVals[oIdx] < iVals[iIdx]) {
+        setStop(oVals[oIdx], 'outOfRange');
+      }
+    }
+
+    for (var first = 1; iIdx < iLen; iIdx++, first = 0) {
+      // If range is full, value beyond min, max will be clamped.
+      // make a singularity
+      first && stops.length && setStop(iVals[iIdx], 'outOfRange');
+      setStop(iVals[iIdx], 'inRange');
+    }
+
+    for (var first = 1; oIdx < oLen; oIdx++) {
+      if (!iVals.length || iVals[iVals.length - 1] < oVals[oIdx]) {
+        // make a singularity
+        if (first) {
+          stops.length && setStop(stops[stops.length - 1].value, 'outOfRange');
+          first = 0;
+        }
+
+        setStop(oVals[oIdx], 'outOfRange');
+      }
+    }
+
+    var stopsLen = stops.length;
+    return {
+      stops: stops,
+      outerColors: [stopsLen ? stops[0].color : 'transparent', stopsLen ? stops[stopsLen - 1].color : 'transparent']
+    };
+  };
+
+  ContinuousModel.type = 'visualMap.continuous';
+  ContinuousModel.defaultOption = inheritDefaultOption(VisualMapModel$1.defaultOption, {
+    align: 'auto',
+    calculable: false,
+    hoverLink: true,
+    realtime: true,
+    handleIcon: 'path://M-11.39,9.77h0a3.5,3.5,0,0,1-3.5,3.5h-22a3.5,3.5,0,0,1-3.5-3.5h0a3.5,3.5,0,0,1,3.5-3.5h22A3.5,3.5,0,0,1-11.39,9.77Z',
+    handleSize: '120%',
+    handleStyle: {
+      borderColor: '#fff',
+      borderWidth: 1
+    },
+    indicatorIcon: 'circle',
+    indicatorSize: '50%',
+    indicatorStyle: {
+      borderColor: '#fff',
+      borderWidth: 2,
+      shadowBlur: 2,
+      shadowOffsetX: 1,
+      shadowOffsetY: 1,
+      shadowColor: 'rgba(0,0,0,0.2)'
+    } // emphasis: {
+    //     handleStyle: {
+    //         shadowBlur: 3,
+    //         shadowOffsetX: 1,
+    //         shadowOffsetY: 1,
+    //         shadowColor: 'rgba(0,0,0,0.2)'
+    //     }
+    // }
+
+  });
+  return ContinuousModel;
+}(VisualMapModel$1);
+
+function getColorStopValues(visualMapModel, valueState, dataExtent) {
+  if (dataExtent[0] === dataExtent[1]) {
+    return dataExtent.slice();
+  } // When using colorHue mapping, it is not linear color any more.
+  // Moreover, canvas gradient seems not to be accurate linear.
+  // FIXME
+  // Should be arbitrary value 100? or based on pixel size?
+
+
+  var count = 200;
+  var step = (dataExtent[1] - dataExtent[0]) / count;
+  var value = dataExtent[0];
+  var stopValues = [];
+
+  for (var i = 0; i <= count && value < dataExtent[1]; i++) {
+    stopValues.push(value);
+    value += step;
+  }
+
+  stopValues.push(dataExtent[1]);
+  return stopValues;
+}
+
+var ContinuousModel$1 = ContinuousModel;
+
+var VisualMapView =
+/** @class */
+function (_super) {
+  __extends$1(VisualMapView, _super);
+
+  function VisualMapView() {
+    var _this = _super !== null && _super.apply(this, arguments) || this;
+
+    _this.type = VisualMapView.type;
+    _this.autoPositionValues = {
+      left: 1,
+      right: 1,
+      top: 1,
+      bottom: 1
+    };
+    return _this;
+  }
+
+  VisualMapView.prototype.init = function (ecModel, api) {
+    this.ecModel = ecModel;
+    this.api = api;
+  };
+  /**
+   * @protected
+   */
+
+
+  VisualMapView.prototype.render = function (visualMapModel, ecModel, api, payload // TODO: TYPE
+  ) {
+    this.visualMapModel = visualMapModel;
+
+    if (visualMapModel.get('show') === false) {
+      this.group.removeAll();
+      return;
+    }
+
+    this.doRender(visualMapModel, ecModel, api, payload);
+  };
+  /**
+   * @protected
+   */
+
+
+  VisualMapView.prototype.renderBackground = function (group) {
+    var visualMapModel = this.visualMapModel;
+    var padding = normalizeCssArray(visualMapModel.get('padding') || 0);
+    var rect = group.getBoundingRect();
+    group.add(new Rect$1({
+      z2: -1,
+      silent: true,
+      shape: {
+        x: rect.x - padding[3],
+        y: rect.y - padding[0],
+        width: rect.width + padding[3] + padding[1],
+        height: rect.height + padding[0] + padding[2]
+      },
+      style: {
+        fill: visualMapModel.get('backgroundColor'),
+        stroke: visualMapModel.get('borderColor'),
+        lineWidth: visualMapModel.get('borderWidth')
+      }
+    }));
+  };
+  /**
+   * @protected
+   * @param targetValue can be Infinity or -Infinity
+   * @param visualCluster Only can be 'color' 'opacity' 'symbol' 'symbolSize'
+   * @param opts
+   * @param opts.forceState Specify state, instead of using getValueState method.
+   * @param opts.convertOpacityToAlpha For color gradient in controller widget.
+   * @return {*} Visual value.
+   */
+
+
+  VisualMapView.prototype.getControllerVisual = function (targetValue, visualCluster, opts) {
+    opts = opts || {};
+    var forceState = opts.forceState;
+    var visualMapModel = this.visualMapModel;
+    var visualObj = {}; // Default values.
+
+    if (visualCluster === 'color') {
+      var defaultColor = visualMapModel.get('contentColor');
+      visualObj.color = defaultColor;
+    }
+
+    function getter(key) {
+      return visualObj[key];
+    }
+
+    function setter(key, value) {
+      visualObj[key] = value;
+    }
+
+    var mappings = visualMapModel.controllerVisuals[forceState || visualMapModel.getValueState(targetValue)];
+    var visualTypes = VisualMapping$1.prepareVisualTypes(mappings);
+    each$9(visualTypes, function (type) {
+      var visualMapping = mappings[type];
+
+      if (opts.convertOpacityToAlpha && type === 'opacity') {
+        type = 'colorAlpha';
+        visualMapping = mappings.__alphaForOpacity;
+      }
+
+      if (VisualMapping$1.dependsOn(type, visualCluster)) {
+        visualMapping && visualMapping.applyVisual(targetValue, getter, setter);
+      }
+    });
+    return visualObj[visualCluster];
+  };
+
+  VisualMapView.prototype.positionGroup = function (group) {
+    var model = this.visualMapModel;
+    var api = this.api;
+    positionElement(group, model.getBoxLayoutParams(), {
+      width: api.getWidth(),
+      height: api.getHeight()
+    });
+  };
+
+  VisualMapView.prototype.doRender = function (visualMapModel, ecModel, api, payload) {};
+
+  VisualMapView.type = 'visualMap';
+  return VisualMapView;
+}(ComponentView$1);
+
+var VisualMapView$1 = VisualMapView;
+
+var paramsSet = [['left', 'right', 'width'], ['top', 'bottom', 'height']];
+/**
+ * @param visualMapModel
+ * @param api
+ * @param itemSize always [short, long]
+ * @return {string} 'left' or 'right' or 'top' or 'bottom'
+ */
+
+function getItemAlign(visualMapModel, api, itemSize) {
+  var modelOption = visualMapModel.option;
+  var itemAlign = modelOption.align;
+
+  if (itemAlign != null && itemAlign !== 'auto') {
+    return itemAlign;
+  } // Auto decision align.
+
+
+  var ecSize = {
+    width: api.getWidth(),
+    height: api.getHeight()
+  };
+  var realIndex = modelOption.orient === 'horizontal' ? 1 : 0;
+  var reals = paramsSet[realIndex];
+  var fakeValue = [0, null, 10];
+  var layoutInput = {};
+
+  for (var i = 0; i < 3; i++) {
+    layoutInput[paramsSet[1 - realIndex][i]] = fakeValue[i];
+    layoutInput[reals[i]] = i === 2 ? itemSize[0] : modelOption[reals[i]];
+  }
+
+  var rParam = [['x', 'width', 3], ['y', 'height', 0]][realIndex];
+  var rect = getLayoutRect(layoutInput, ecSize, modelOption.padding);
+  return reals[(rect.margin[rParam[2]] || 0) + rect[rParam[0]] + rect[rParam[1]] * 0.5 < ecSize[rParam[1]] * 0.5 ? 0 : 1];
+}
+/**
+ * Prepare dataIndex for outside usage, where dataIndex means rawIndex, and
+ * dataIndexInside means filtered index.
+ */
+// TODO: TYPE more specified payload types.
+
+function makeHighDownBatch(batch, visualMapModel) {
+  each$9(batch || [], function (batchItem) {
+    if (batchItem.dataIndex != null) {
+      batchItem.dataIndexInside = batchItem.dataIndex;
+      batchItem.dataIndex = null;
+    }
+
+    batchItem.highlightKey = 'visualMap' + (visualMapModel ? visualMapModel.componentIndex : '');
+  });
+  return batch;
+}
+
+var linearMap = linearMap$2;
+var each$1 = each$9;
+var mathMin = Math.min;
+var mathMax = Math.max; // Arbitrary value
+
+var HOVER_LINK_SIZE = 12;
+var HOVER_LINK_OUT = 6; // Notice:
+// Any "interval" should be by the order of [low, high].
+// "handle0" (handleIndex === 0) maps to
+// low data value: this._dataInterval[0] and has low coord.
+// "handle1" (handleIndex === 1) maps to
+// high data value: this._dataInterval[1] and has high coord.
+// The logic of transform is implemented in this._createBarGroup.
+
+var ContinuousView =
+/** @class */
+function (_super) {
+  __extends$1(ContinuousView, _super);
+
+  function ContinuousView() {
+    var _this = _super !== null && _super.apply(this, arguments) || this;
+
+    _this.type = ContinuousView.type;
+    _this._shapes = {};
+    _this._dataInterval = [];
+    _this._handleEnds = [];
+    _this._hoverLinkDataIndices = [];
+    return _this;
+  }
+
+  ContinuousView.prototype.doRender = function (visualMapModel, ecModel, api, payload) {
+    this._api = api;
+
+    if (!payload || payload.type !== 'selectDataRange' || payload.from !== this.uid) {
+      this._buildView();
+    }
+  };
+
+  ContinuousView.prototype._buildView = function () {
+    this.group.removeAll();
+    var visualMapModel = this.visualMapModel;
+    var thisGroup = this.group;
+    this._orient = visualMapModel.get('orient');
+    this._useHandle = visualMapModel.get('calculable');
+
+    this._resetInterval();
+
+    this._renderBar(thisGroup);
+
+    var dataRangeText = visualMapModel.get('text');
+
+    this._renderEndsText(thisGroup, dataRangeText, 0);
+
+    this._renderEndsText(thisGroup, dataRangeText, 1); // Do this for background size calculation.
+
+
+    this._updateView(true); // After updating view, inner shapes is built completely,
+    // and then background can be rendered.
+
+
+    this.renderBackground(thisGroup); // Real update view
+
+    this._updateView();
+
+    this._enableHoverLinkToSeries();
+
+    this._enableHoverLinkFromSeries();
+
+    this.positionGroup(thisGroup);
+  };
+
+  ContinuousView.prototype._renderEndsText = function (group, dataRangeText, endsIndex) {
+    if (!dataRangeText) {
+      return;
+    } // Compatible with ec2, text[0] map to high value, text[1] map low value.
+
+
+    var text = dataRangeText[1 - endsIndex];
+    text = text != null ? text + '' : '';
+    var visualMapModel = this.visualMapModel;
+    var textGap = visualMapModel.get('textGap');
+    var itemSize = visualMapModel.itemSize;
+    var barGroup = this._shapes.mainGroup;
+
+    var position = this._applyTransform([itemSize[0] / 2, endsIndex === 0 ? -textGap : itemSize[1] + textGap], barGroup);
+
+    var align = this._applyTransform(endsIndex === 0 ? 'bottom' : 'top', barGroup);
+
+    var orient = this._orient;
+    var textStyleModel = this.visualMapModel.textStyleModel;
+    this.group.add(new ZRText$1({
+      style: createTextStyle$1(textStyleModel, {
+        x: position[0],
+        y: position[1],
+        verticalAlign: orient === 'horizontal' ? 'middle' : align,
+        align: orient === 'horizontal' ? align : 'center',
+        text: text
+      })
+    }));
+  };
+
+  ContinuousView.prototype._renderBar = function (targetGroup) {
+    var visualMapModel = this.visualMapModel;
+    var shapes = this._shapes;
+    var itemSize = visualMapModel.itemSize;
+    var orient = this._orient;
+    var useHandle = this._useHandle;
+    var itemAlign = getItemAlign(visualMapModel, this.api, itemSize);
+
+    var mainGroup = shapes.mainGroup = this._createBarGroup(itemAlign);
+
+    var gradientBarGroup = new Group$3();
+    mainGroup.add(gradientBarGroup); // Bar
+
+    gradientBarGroup.add(shapes.outOfRange = createPolygon());
+    gradientBarGroup.add(shapes.inRange = createPolygon(null, useHandle ? getCursor(this._orient) : null, bind$1(this._dragHandle, this, 'all', false), bind$1(this._dragHandle, this, 'all', true))); // A border radius clip.
+
+    gradientBarGroup.setClipPath(new Rect$1({
+      shape: {
+        x: 0,
+        y: 0,
+        width: itemSize[0],
+        height: itemSize[1],
+        r: 3
+      }
+    }));
+    var textRect = visualMapModel.textStyleModel.getTextRect('国');
+    var textSize = mathMax(textRect.width, textRect.height); // Handle
+
+    if (useHandle) {
+      shapes.handleThumbs = [];
+      shapes.handleLabels = [];
+      shapes.handleLabelPoints = [];
+
+      this._createHandle(visualMapModel, mainGroup, 0, itemSize, textSize, orient);
+
+      this._createHandle(visualMapModel, mainGroup, 1, itemSize, textSize, orient);
+    }
+
+    this._createIndicator(visualMapModel, mainGroup, itemSize, textSize, orient);
+
+    targetGroup.add(mainGroup);
+  };
+
+  ContinuousView.prototype._createHandle = function (visualMapModel, mainGroup, handleIndex, itemSize, textSize, orient) {
+    var onDrift = bind$1(this._dragHandle, this, handleIndex, false);
+    var onDragEnd = bind$1(this._dragHandle, this, handleIndex, true);
+    var handleSize = parsePercent$1(visualMapModel.get('handleSize'), itemSize[0]);
+    var handleThumb = createSymbol(visualMapModel.get('handleIcon'), -handleSize / 2, -handleSize / 2, handleSize, handleSize, null, true);
+    var cursor = getCursor(this._orient);
+    handleThumb.attr({
+      cursor: cursor,
+      draggable: true,
+      drift: onDrift,
+      ondragend: onDragEnd,
+      onmousemove: function (e) {
+        stop(e.event);
+      }
+    });
+    handleThumb.x = itemSize[0] / 2;
+    handleThumb.useStyle(visualMapModel.getModel('handleStyle').getItemStyle());
+    handleThumb.setStyle({
+      strokeNoScale: true,
+      strokeFirst: true
+    });
+    handleThumb.style.lineWidth *= 2;
+    handleThumb.ensureState('emphasis').style = visualMapModel.getModel(['emphasis', 'handleStyle']).getItemStyle();
+    setAsHighDownDispatcher(handleThumb, true);
+    mainGroup.add(handleThumb); // Text is always horizontal layout but should not be effected by
+    // transform (orient/inverse). So label is built separately but not
+    // use zrender/graphic/helper/RectText, and is located based on view
+    // group (according to handleLabelPoint) but not barGroup.
+
+    var textStyleModel = this.visualMapModel.textStyleModel;
+    var handleLabel = new ZRText$1({
+      cursor: cursor,
+      draggable: true,
+      drift: onDrift,
+      onmousemove: function (e) {
+        // Fot mobile devicem, prevent screen slider on the button.
+        stop(e.event);
+      },
+      ondragend: onDragEnd,
+      style: createTextStyle$1(textStyleModel, {
+        x: 0,
+        y: 0,
+        text: ''
+      })
+    });
+    handleLabel.ensureState('blur').style = {
+      opacity: 0.1
+    };
+    handleLabel.stateTransition = {
+      duration: 200
+    };
+    this.group.add(handleLabel);
+    var handleLabelPoint = [handleSize, 0];
+    var shapes = this._shapes;
+    shapes.handleThumbs[handleIndex] = handleThumb;
+    shapes.handleLabelPoints[handleIndex] = handleLabelPoint;
+    shapes.handleLabels[handleIndex] = handleLabel;
+  };
+
+  ContinuousView.prototype._createIndicator = function (visualMapModel, mainGroup, itemSize, textSize, orient) {
+    var scale = parsePercent$1(visualMapModel.get('indicatorSize'), itemSize[0]);
+    var indicator = createSymbol(visualMapModel.get('indicatorIcon'), -scale / 2, -scale / 2, scale, scale, null, true);
+    indicator.attr({
+      cursor: 'move',
+      invisible: true,
+      silent: true,
+      x: itemSize[0] / 2
+    });
+    var indicatorStyle = visualMapModel.getModel('indicatorStyle').getItemStyle();
+
+    if (indicator instanceof ZRImage$1) {
+      var pathStyle = indicator.style;
+      indicator.useStyle(extend({
+        // TODO other properties like x, y ?
+        image: pathStyle.image,
+        x: pathStyle.x,
+        y: pathStyle.y,
+        width: pathStyle.width,
+        height: pathStyle.height
+      }, indicatorStyle));
+    } else {
+      indicator.useStyle(indicatorStyle);
+    }
+
+    mainGroup.add(indicator);
+    var textStyleModel = this.visualMapModel.textStyleModel;
+    var indicatorLabel = new ZRText$1({
+      silent: true,
+      invisible: true,
+      style: createTextStyle$1(textStyleModel, {
+        x: 0,
+        y: 0,
+        text: ''
+      })
+    });
+    this.group.add(indicatorLabel);
+    var indicatorLabelPoint = [(orient === 'horizontal' ? textSize / 2 : HOVER_LINK_OUT) + itemSize[0] / 2, 0];
+    var shapes = this._shapes;
+    shapes.indicator = indicator;
+    shapes.indicatorLabel = indicatorLabel;
+    shapes.indicatorLabelPoint = indicatorLabelPoint;
+    this._firstShowIndicator = true;
+  };
+
+  ContinuousView.prototype._dragHandle = function (handleIndex, isEnd, // dx is event from ondragend if isEnd is true. It's not used
+  dx, dy) {
+    if (!this._useHandle) {
+      return;
+    }
+
+    this._dragging = !isEnd;
+
+    if (!isEnd) {
+      // Transform dx, dy to bar coordination.
+      var vertex = this._applyTransform([dx, dy], this._shapes.mainGroup, true);
+
+      this._updateInterval(handleIndex, vertex[1]);
+
+      this._hideIndicator(); // Considering realtime, update view should be executed
+      // before dispatch action.
+
+
+      this._updateView();
+    } // dragEnd do not dispatch action when realtime.
+
+
+    if (isEnd === !this.visualMapModel.get('realtime')) {
+      // jshint ignore:line
+      this.api.dispatchAction({
+        type: 'selectDataRange',
+        from: this.uid,
+        visualMapId: this.visualMapModel.id,
+        selected: this._dataInterval.slice()
+      });
+    }
+
+    if (isEnd) {
+      !this._hovering && this._clearHoverLinkToSeries();
+    } else if (useHoverLinkOnHandle(this.visualMapModel)) {
+      this._doHoverLinkToSeries(this._handleEnds[handleIndex], false);
+    }
+  };
+
+  ContinuousView.prototype._resetInterval = function () {
+    var visualMapModel = this.visualMapModel;
+    var dataInterval = this._dataInterval = visualMapModel.getSelected();
+    var dataExtent = visualMapModel.getExtent();
+    var sizeExtent = [0, visualMapModel.itemSize[1]];
+    this._handleEnds = [linearMap(dataInterval[0], dataExtent, sizeExtent, true), linearMap(dataInterval[1], dataExtent, sizeExtent, true)];
+  };
+  /**
+   * @private
+   * @param {(number|string)} handleIndex 0 or 1 or 'all'
+   * @param {number} dx
+   * @param {number} dy
+   */
+
+
+  ContinuousView.prototype._updateInterval = function (handleIndex, delta) {
+    delta = delta || 0;
+    var visualMapModel = this.visualMapModel;
+    var handleEnds = this._handleEnds;
+    var sizeExtent = [0, visualMapModel.itemSize[1]];
+    sliderMove(delta, handleEnds, sizeExtent, handleIndex, // cross is forbiden
+    0);
+    var dataExtent = visualMapModel.getExtent(); // Update data interval.
+
+    this._dataInterval = [linearMap(handleEnds[0], sizeExtent, dataExtent, true), linearMap(handleEnds[1], sizeExtent, dataExtent, true)];
+  };
+
+  ContinuousView.prototype._updateView = function (forSketch) {
+    var visualMapModel = this.visualMapModel;
+    var dataExtent = visualMapModel.getExtent();
+    var shapes = this._shapes;
+    var outOfRangeHandleEnds = [0, visualMapModel.itemSize[1]];
+    var inRangeHandleEnds = forSketch ? outOfRangeHandleEnds : this._handleEnds;
+
+    var visualInRange = this._createBarVisual(this._dataInterval, dataExtent, inRangeHandleEnds, 'inRange');
+
+    var visualOutOfRange = this._createBarVisual(dataExtent, dataExtent, outOfRangeHandleEnds, 'outOfRange');
+
+    shapes.inRange.setStyle({
+      fill: visualInRange.barColor // opacity: visualInRange.opacity
+
+    }).setShape('points', visualInRange.barPoints);
+    shapes.outOfRange.setStyle({
+      fill: visualOutOfRange.barColor // opacity: visualOutOfRange.opacity
+
+    }).setShape('points', visualOutOfRange.barPoints);
+
+    this._updateHandle(inRangeHandleEnds, visualInRange);
+  };
+
+  ContinuousView.prototype._createBarVisual = function (dataInterval, dataExtent, handleEnds, forceState) {
+    var opts = {
+      forceState: forceState,
+      convertOpacityToAlpha: true
+    };
+
+    var colorStops = this._makeColorGradient(dataInterval, opts);
+
+    var symbolSizes = [this.getControllerVisual(dataInterval[0], 'symbolSize', opts), this.getControllerVisual(dataInterval[1], 'symbolSize', opts)];
+
+    var barPoints = this._createBarPoints(handleEnds, symbolSizes);
+
+    return {
+      barColor: new LinearGradient$1(0, 0, 0, 1, colorStops),
+      barPoints: barPoints,
+      handlesColor: [colorStops[0].color, colorStops[colorStops.length - 1].color]
+    };
+  };
+
+  ContinuousView.prototype._makeColorGradient = function (dataInterval, opts) {
+    // Considering colorHue, which is not linear, so we have to sample
+    // to calculate gradient color stops, but not only caculate head
+    // and tail.
+    var sampleNumber = 100; // Arbitrary value.
+
+    var colorStops = [];
+    var step = (dataInterval[1] - dataInterval[0]) / sampleNumber;
+    colorStops.push({
+      color: this.getControllerVisual(dataInterval[0], 'color', opts),
+      offset: 0
+    });
+
+    for (var i = 1; i < sampleNumber; i++) {
+      var currValue = dataInterval[0] + step * i;
+
+      if (currValue > dataInterval[1]) {
+        break;
+      }
+
+      colorStops.push({
+        color: this.getControllerVisual(currValue, 'color', opts),
+        offset: i / sampleNumber
+      });
+    }
+
+    colorStops.push({
+      color: this.getControllerVisual(dataInterval[1], 'color', opts),
+      offset: 1
+    });
+    return colorStops;
+  };
+
+  ContinuousView.prototype._createBarPoints = function (handleEnds, symbolSizes) {
+    var itemSize = this.visualMapModel.itemSize;
+    return [[itemSize[0] - symbolSizes[0], handleEnds[0]], [itemSize[0], handleEnds[0]], [itemSize[0], handleEnds[1]], [itemSize[0] - symbolSizes[1], handleEnds[1]]];
+  };
+
+  ContinuousView.prototype._createBarGroup = function (itemAlign) {
+    var orient = this._orient;
+    var inverse = this.visualMapModel.get('inverse');
+    return new Group$3(orient === 'horizontal' && !inverse ? {
+      scaleX: itemAlign === 'bottom' ? 1 : -1,
+      rotation: Math.PI / 2
+    } : orient === 'horizontal' && inverse ? {
+      scaleX: itemAlign === 'bottom' ? -1 : 1,
+      rotation: -Math.PI / 2
+    } : orient === 'vertical' && !inverse ? {
+      scaleX: itemAlign === 'left' ? 1 : -1,
+      scaleY: -1
+    } : {
+      scaleX: itemAlign === 'left' ? 1 : -1
+    });
+  };
+
+  ContinuousView.prototype._updateHandle = function (handleEnds, visualInRange) {
+    if (!this._useHandle) {
+      return;
+    }
+
+    var shapes = this._shapes;
+    var visualMapModel = this.visualMapModel;
+    var handleThumbs = shapes.handleThumbs;
+    var handleLabels = shapes.handleLabels;
+    var itemSize = visualMapModel.itemSize;
+    var dataExtent = visualMapModel.getExtent();
+    each$1([0, 1], function (handleIndex) {
+      var handleThumb = handleThumbs[handleIndex];
+      handleThumb.setStyle('fill', visualInRange.handlesColor[handleIndex]);
+      handleThumb.y = handleEnds[handleIndex];
+      var val = linearMap(handleEnds[handleIndex], [0, itemSize[1]], dataExtent, true);
+      var symbolSize = this.getControllerVisual(val, 'symbolSize');
+      handleThumb.scaleX = handleThumb.scaleY = symbolSize / itemSize[0];
+      handleThumb.x = itemSize[0] - symbolSize / 2; // Update handle label position.
+
+      var textPoint = applyTransform(shapes.handleLabelPoints[handleIndex], getTransform(handleThumb, this.group));
+      handleLabels[handleIndex].setStyle({
+        x: textPoint[0],
+        y: textPoint[1],
+        text: visualMapModel.formatValueText(this._dataInterval[handleIndex]),
+        verticalAlign: 'middle',
+        align: this._orient === 'vertical' ? this._applyTransform('left', shapes.mainGroup) : 'center'
+      });
+    }, this);
+  };
+
+  ContinuousView.prototype._showIndicator = function (cursorValue, textValue, rangeSymbol, halfHoverLinkSize) {
+    var visualMapModel = this.visualMapModel;
+    var dataExtent = visualMapModel.getExtent();
+    var itemSize = visualMapModel.itemSize;
+    var sizeExtent = [0, itemSize[1]];
+    var shapes = this._shapes;
+    var indicator = shapes.indicator;
+
+    if (!indicator) {
+      return;
+    }
+
+    indicator.attr('invisible', false);
+    var opts = {
+      convertOpacityToAlpha: true
+    };
+    var color = this.getControllerVisual(cursorValue, 'color', opts);
+    var symbolSize = this.getControllerVisual(cursorValue, 'symbolSize');
+    var y = linearMap(cursorValue, dataExtent, sizeExtent, true);
+    var x = itemSize[0] - symbolSize / 2;
+    var oldIndicatorPos = {
+      x: indicator.x,
+      y: indicator.y
+    }; // Update handle label position.
+
+    indicator.y = y;
+    indicator.x = x;
+    var textPoint = applyTransform(shapes.indicatorLabelPoint, getTransform(indicator, this.group));
+    var indicatorLabel = shapes.indicatorLabel;
+    indicatorLabel.attr('invisible', false);
+
+    var align = this._applyTransform('left', shapes.mainGroup);
+
+    var orient = this._orient;
+    var isHorizontal = orient === 'horizontal';
+    indicatorLabel.setStyle({
+      text: (rangeSymbol ? rangeSymbol : '') + visualMapModel.formatValueText(textValue),
+      verticalAlign: isHorizontal ? align : 'middle',
+      align: isHorizontal ? 'center' : align
+    });
+    var indicatorNewProps = {
+      x: x,
+      y: y,
+      style: {
+        fill: color
+      }
+    };
+    var labelNewProps = {
+      style: {
+        x: textPoint[0],
+        y: textPoint[1]
+      }
+    };
+
+    if (visualMapModel.ecModel.isAnimationEnabled() && !this._firstShowIndicator) {
+      var animationCfg = {
+        duration: 100,
+        easing: 'cubicInOut',
+        additive: true
+      };
+      indicator.x = oldIndicatorPos.x;
+      indicator.y = oldIndicatorPos.y;
+      indicator.animateTo(indicatorNewProps, animationCfg);
+      indicatorLabel.animateTo(labelNewProps, animationCfg);
+    } else {
+      indicator.attr(indicatorNewProps);
+      indicatorLabel.attr(labelNewProps);
+    }
+
+    this._firstShowIndicator = false;
+    var handleLabels = this._shapes.handleLabels;
+
+    if (handleLabels) {
+      for (var i = 0; i < handleLabels.length; i++) {
+        // Fade out handle labels.
+        // NOTE: Must use api enter/leave on emphasis/blur/select state. Or the global states manager will change it.
+        this._api.enterBlur(handleLabels[i]);
+      }
+    }
+  };
+
+  ContinuousView.prototype._enableHoverLinkToSeries = function () {
+    var self = this;
+
+    this._shapes.mainGroup.on('mousemove', function (e) {
+      self._hovering = true;
+
+      if (!self._dragging) {
+        var itemSize = self.visualMapModel.itemSize;
+
+        var pos = self._applyTransform([e.offsetX, e.offsetY], self._shapes.mainGroup, true, true); // For hover link show when hover handle, which might be
+        // below or upper than sizeExtent.
+
+
+        pos[1] = mathMin(mathMax(0, pos[1]), itemSize[1]);
+
+        self._doHoverLinkToSeries(pos[1], 0 <= pos[0] && pos[0] <= itemSize[0]);
+      }
+    }).on('mouseout', function () {
+      // When mouse is out of handle, hoverLink still need
+      // to be displayed when realtime is set as false.
+      self._hovering = false;
+      !self._dragging && self._clearHoverLinkToSeries();
+    });
+  };
+
+  ContinuousView.prototype._enableHoverLinkFromSeries = function () {
+    var zr = this.api.getZr();
+
+    if (this.visualMapModel.option.hoverLink) {
+      zr.on('mouseover', this._hoverLinkFromSeriesMouseOver, this);
+      zr.on('mouseout', this._hideIndicator, this);
+    } else {
+      this._clearHoverLinkFromSeries();
+    }
+  };
+
+  ContinuousView.prototype._doHoverLinkToSeries = function (cursorPos, hoverOnBar) {
+    var visualMapModel = this.visualMapModel;
+    var itemSize = visualMapModel.itemSize;
+
+    if (!visualMapModel.option.hoverLink) {
+      return;
+    }
+
+    var sizeExtent = [0, itemSize[1]];
+    var dataExtent = visualMapModel.getExtent(); // For hover link show when hover handle, which might be below or upper than sizeExtent.
+
+    cursorPos = mathMin(mathMax(sizeExtent[0], cursorPos), sizeExtent[1]);
+    var halfHoverLinkSize = getHalfHoverLinkSize(visualMapModel, dataExtent, sizeExtent);
+    var hoverRange = [cursorPos - halfHoverLinkSize, cursorPos + halfHoverLinkSize];
+    var cursorValue = linearMap(cursorPos, sizeExtent, dataExtent, true);
+    var valueRange = [linearMap(hoverRange[0], sizeExtent, dataExtent, true), linearMap(hoverRange[1], sizeExtent, dataExtent, true)]; // Consider data range is out of visualMap range, see test/visualMap-continuous.html,
+    // where china and india has very large population.
+
+    hoverRange[0] < sizeExtent[0] && (valueRange[0] = -Infinity);
+    hoverRange[1] > sizeExtent[1] && (valueRange[1] = Infinity); // Do not show indicator when mouse is over handle,
+    // otherwise labels overlap, especially when dragging.
+
+    if (hoverOnBar) {
+      if (valueRange[0] === -Infinity) {
+        this._showIndicator(cursorValue, valueRange[1], '< ', halfHoverLinkSize);
+      } else if (valueRange[1] === Infinity) {
+        this._showIndicator(cursorValue, valueRange[0], '> ', halfHoverLinkSize);
+      } else {
+        this._showIndicator(cursorValue, cursorValue, '≈ ', halfHoverLinkSize);
+      }
+    } // When realtime is set as false, handles, which are in barGroup,
+    // also trigger hoverLink, which help user to realize where they
+    // focus on when dragging. (see test/heatmap-large.html)
+    // When realtime is set as true, highlight will not show when hover
+    // handle, because the label on handle, which displays a exact value
+    // but not range, might mislead users.
+
+
+    var oldBatch = this._hoverLinkDataIndices;
+    var newBatch = [];
+
+    if (hoverOnBar || useHoverLinkOnHandle(visualMapModel)) {
+      newBatch = this._hoverLinkDataIndices = visualMapModel.findTargetDataIndices(valueRange);
+    }
+
+    var resultBatches = compressBatches(oldBatch, newBatch);
+
+    this._dispatchHighDown('downplay', makeHighDownBatch(resultBatches[0], visualMapModel));
+
+    this._dispatchHighDown('highlight', makeHighDownBatch(resultBatches[1], visualMapModel));
+  };
+
+  ContinuousView.prototype._hoverLinkFromSeriesMouseOver = function (e) {
+    var ecData;
+    findEventDispatcher(e.target, function (target) {
+      var currECData = getECData(target);
+
+      if (currECData.dataIndex != null) {
+        ecData = currECData;
+        return true;
+      }
+    }, true);
+
+    if (!ecData) {
+      return;
+    }
+
+    var dataModel = this.ecModel.getSeriesByIndex(ecData.seriesIndex);
+    var visualMapModel = this.visualMapModel;
+
+    if (!visualMapModel.isTargetSeries(dataModel)) {
+      return;
+    }
+
+    var data = dataModel.getData(ecData.dataType);
+    var value = data.getStore().get(visualMapModel.getDataDimensionIndex(data), ecData.dataIndex);
+
+    if (!isNaN(value)) {
+      this._showIndicator(value, value);
+    }
+  };
+
+  ContinuousView.prototype._hideIndicator = function () {
+    var shapes = this._shapes;
+    shapes.indicator && shapes.indicator.attr('invisible', true);
+    shapes.indicatorLabel && shapes.indicatorLabel.attr('invisible', true);
+    var handleLabels = this._shapes.handleLabels;
+
+    if (handleLabels) {
+      for (var i = 0; i < handleLabels.length; i++) {
+        // Fade out handle labels.
+        // NOTE: Must use api enter/leave on emphasis/blur/select state. Or the global states manager will change it.
+        this._api.leaveBlur(handleLabels[i]);
+      }
+    }
+  };
+
+  ContinuousView.prototype._clearHoverLinkToSeries = function () {
+    this._hideIndicator();
+
+    var indices = this._hoverLinkDataIndices;
+
+    this._dispatchHighDown('downplay', makeHighDownBatch(indices, this.visualMapModel));
+
+    indices.length = 0;
+  };
+
+  ContinuousView.prototype._clearHoverLinkFromSeries = function () {
+    this._hideIndicator();
+
+    var zr = this.api.getZr();
+    zr.off('mouseover', this._hoverLinkFromSeriesMouseOver);
+    zr.off('mouseout', this._hideIndicator);
+  };
+
+  ContinuousView.prototype._applyTransform = function (vertex, element, inverse, global) {
+    var transform = getTransform(element, global ? null : this.group);
+    return isArray$1(vertex) ? applyTransform(vertex, transform, inverse) : transformDirection(vertex, transform, inverse);
+  }; // TODO: TYPE more specified payload types.
+
+
+  ContinuousView.prototype._dispatchHighDown = function (type, batch) {
+    batch && batch.length && this.api.dispatchAction({
+      type: type,
+      batch: batch
+    });
+  };
+  /**
+   * @override
+   */
+
+
+  ContinuousView.prototype.dispose = function () {
+    this._clearHoverLinkFromSeries();
+
+    this._clearHoverLinkToSeries();
+  };
+  /**
+   * @override
+   */
+
+
+  ContinuousView.prototype.remove = function () {
+    this._clearHoverLinkFromSeries();
+
+    this._clearHoverLinkToSeries();
+  };
+
+  ContinuousView.type = 'visualMap.continuous';
+  return ContinuousView;
+}(VisualMapView$1);
+
+function createPolygon(points, cursor, onDrift, onDragEnd) {
+  return new Polygon$1({
+    shape: {
+      points: points
+    },
+    draggable: !!onDrift,
+    cursor: cursor,
+    drift: onDrift,
+    onmousemove: function (e) {
+      // Fot mobile devicem, prevent screen slider on the button.
+      stop(e.event);
+    },
+    ondragend: onDragEnd
+  });
+}
+
+function getHalfHoverLinkSize(visualMapModel, dataExtent, sizeExtent) {
+  var halfHoverLinkSize = HOVER_LINK_SIZE / 2;
+  var hoverLinkDataSize = visualMapModel.get('hoverLinkDataSize');
+
+  if (hoverLinkDataSize) {
+    halfHoverLinkSize = linearMap(hoverLinkDataSize, dataExtent, sizeExtent, true) / 2;
+  }
+
+  return halfHoverLinkSize;
+}
+
+function useHoverLinkOnHandle(visualMapModel) {
+  var hoverLinkOnHandle = visualMapModel.get('hoverLinkOnHandle');
+  return !!(hoverLinkOnHandle == null ? visualMapModel.get('realtime') : hoverLinkOnHandle);
+}
+
+function getCursor(orient) {
+  return orient === 'vertical' ? 'ns-resize' : 'ew-resize';
+}
+
+var ContinuousView$1 = ContinuousView;
+
+/*
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing,
+* software distributed under the License is distributed on an
+* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+* KIND, either express or implied.  See the License for the
+* specific language governing permissions and limitations
+* under the License.
+*/
+
+
+/**
+ * AUTO-GENERATED FILE. DO NOT MODIFY.
+ */
+
+/*
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing,
+* software distributed under the License is distributed on an
+* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+* KIND, either express or implied.  See the License for the
+* specific language governing permissions and limitations
+* under the License.
+*/
+var visualMapActionInfo = {
+  type: 'selectDataRange',
+  event: 'dataRangeSelected',
+  // FIXME use updateView appears wrong
+  update: 'update'
+};
+var visualMapActionHander = function (payload, ecModel) {
+  ecModel.eachComponent({
+    mainType: 'visualMap',
+    query: payload
+  }, function (model) {
+    model.setSelected(payload.selected);
+  });
+};
+
+var visualMapEncodingHandlers = [{
+  createOnAllSeries: true,
+  reset: function (seriesModel, ecModel) {
+    var resetDefines = [];
+    ecModel.eachComponent('visualMap', function (visualMapModel) {
+      var pipelineContext = seriesModel.pipelineContext;
+
+      if (!visualMapModel.isTargetSeries(seriesModel) || pipelineContext && pipelineContext.large) {
+        return;
+      }
+
+      resetDefines.push(incrementalApplyVisual(visualMapModel.stateList, visualMapModel.targetVisuals, bind$1(visualMapModel.getValueState, visualMapModel), visualMapModel.getDataDimensionIndex(seriesModel.getData())));
+    });
+    return resetDefines;
+  }
+}, // Only support color.
+{
+  createOnAllSeries: true,
+  reset: function (seriesModel, ecModel) {
+    var data = seriesModel.getData();
+    var visualMetaList = [];
+    ecModel.eachComponent('visualMap', function (visualMapModel) {
+      if (visualMapModel.isTargetSeries(seriesModel)) {
+        var visualMeta = visualMapModel.getVisualMeta(bind$1(getColorVisual, null, seriesModel, visualMapModel)) || {
+          stops: [],
+          outerColors: []
+        };
+        var dimIdx = visualMapModel.getDataDimensionIndex(data);
+
+        if (dimIdx >= 0) {
+          // visualMeta.dimension should be dimension index, but not concrete dimension.
+          visualMeta.dimension = dimIdx;
+          visualMetaList.push(visualMeta);
+        }
+      }
+    }); // console.log(JSON.stringify(visualMetaList.map(a => a.stops)));
+
+    seriesModel.getData().setVisual('visualMeta', visualMetaList);
+  }
+}]; // FIXME
+// performance and export for heatmap?
+// value can be Infinity or -Infinity
+
+function getColorVisual(seriesModel, visualMapModel, value, valueState) {
+  var mappings = visualMapModel.targetVisuals[valueState];
+  var visualTypes = VisualMapping$1.prepareVisualTypes(mappings);
+  var resultVisual = {
+    color: getVisualFromData(seriesModel.getData(), 'color') // default color.
+
+  };
+
+  for (var i = 0, len = visualTypes.length; i < len; i++) {
+    var type = visualTypes[i];
+    var mapping = mappings[type === 'opacity' ? '__alphaForOpacity' : type];
+    mapping && mapping.applyVisual(value, getVisual, setVisual);
+  }
+
+  return resultVisual.color;
+
+  function getVisual(key) {
+    return resultVisual[key];
+  }
+
+  function setVisual(key, value) {
+    resultVisual[key] = value;
+  }
+}
+
+var each = each$9;
+function visualMapPreprocessor(option) {
+  var visualMap = option && option.visualMap;
+
+  if (!isArray$1(visualMap)) {
+    visualMap = visualMap ? [visualMap] : [];
+  }
+
+  each(visualMap, function (opt) {
+    if (!opt) {
+      return;
+    } // rename splitList to pieces
+
+
+    if (has(opt, 'splitList') && !has(opt, 'pieces')) {
+      opt.pieces = opt.splitList;
+      delete opt.splitList;
+    }
+
+    var pieces = opt.pieces;
+
+    if (pieces && isArray$1(pieces)) {
+      each(pieces, function (piece) {
+        if (isObject$3(piece)) {
+          if (has(piece, 'start') && !has(piece, 'min')) {
+            piece.min = piece.start;
+          }
+
+          if (has(piece, 'end') && !has(piece, 'max')) {
+            piece.max = piece.end;
+          }
+        }
+      });
+    }
+  });
+}
+
+function has(obj, name) {
+  return obj && obj.hasOwnProperty && obj.hasOwnProperty(name);
+}
+
+var installed = false;
+function installCommon(registers) {
+  if (installed) {
+    return;
+  }
+
+  installed = true;
+  registers.registerSubTypeDefaulter('visualMap', function (option) {
+    // Compatible with ec2, when splitNumber === 0, continuous visualMap will be used.
+    return !option.categories && (!(option.pieces ? option.pieces.length > 0 : option.splitNumber > 0) || option.calculable) ? 'continuous' : 'piecewise';
+  });
+  registers.registerAction(visualMapActionInfo, visualMapActionHander);
+  each$9(visualMapEncodingHandlers, function (handler) {
+    registers.registerVisual(registers.PRIORITY.VISUAL.COMPONENT, handler);
+  });
+  registers.registerPreprocessor(visualMapPreprocessor);
+}
+
+function install$4(registers) {
+  registers.registerComponentModel(ContinuousModel$1);
+  registers.registerComponentView(ContinuousView$1);
+  installCommon(registers);
+}
+
+var PiecewiseModel =
+/** @class */
+function (_super) {
+  __extends$1(PiecewiseModel, _super);
+
+  function PiecewiseModel() {
+    var _this = _super !== null && _super.apply(this, arguments) || this;
+
+    _this.type = PiecewiseModel.type;
+    /**
+     * The order is always [low, ..., high].
+     * [{text: string, interval: Array.<number>}, ...]
+     */
+
+    _this._pieceList = [];
+    return _this;
+  }
+
+  PiecewiseModel.prototype.optionUpdated = function (newOption, isInit) {
+    _super.prototype.optionUpdated.apply(this, arguments);
+
+    this.resetExtent();
+
+    var mode = this._mode = this._determineMode();
+
+    this._pieceList = [];
+
+    resetMethods[this._mode].call(this, this._pieceList);
+
+    this._resetSelected(newOption, isInit);
+
+    var categories = this.option.categories;
+    this.resetVisual(function (mappingOption, state) {
+      if (mode === 'categories') {
+        mappingOption.mappingMethod = 'category';
+        mappingOption.categories = clone$3(categories);
+      } else {
+        mappingOption.dataExtent = this.getExtent();
+        mappingOption.mappingMethod = 'piecewise';
+        mappingOption.pieceList = map$1(this._pieceList, function (piece) {
+          piece = clone$3(piece);
+
+          if (state !== 'inRange') {
+            // FIXME
+            // outOfRange do not support special visual in pieces.
+            piece.visual = null;
+          }
+
+          return piece;
+        });
+      }
+    });
+  };
+  /**
+   * @protected
+   * @override
+   */
+
+
+  PiecewiseModel.prototype.completeVisualOption = function () {
+    // Consider this case:
+    // visualMap: {
+    //      pieces: [{symbol: 'circle', lt: 0}, {symbol: 'rect', gte: 0}]
+    // }
+    // where no inRange/outOfRange set but only pieces. So we should make
+    // default inRange/outOfRange for this case, otherwise visuals that only
+    // appear in `pieces` will not be taken into account in visual encoding.
+    var option = this.option;
+    var visualTypesInPieces = {};
+    var visualTypes = VisualMapping$1.listVisualTypes();
+    var isCategory = this.isCategory();
+    each$9(option.pieces, function (piece) {
+      each$9(visualTypes, function (visualType) {
+        if (piece.hasOwnProperty(visualType)) {
+          visualTypesInPieces[visualType] = 1;
+        }
+      });
+    });
+    each$9(visualTypesInPieces, function (v, visualType) {
+      var exists = false;
+      each$9(this.stateList, function (state) {
+        exists = exists || has(option, state, visualType) || has(option.target, state, visualType);
+      }, this);
+      !exists && each$9(this.stateList, function (state) {
+        (option[state] || (option[state] = {}))[visualType] = visualDefault$1.get(visualType, state === 'inRange' ? 'active' : 'inactive', isCategory);
+      });
+    }, this);
+
+    function has(obj, state, visualType) {
+      return obj && obj[state] && obj[state].hasOwnProperty(visualType);
+    }
+
+    _super.prototype.completeVisualOption.apply(this, arguments);
+  };
+
+  PiecewiseModel.prototype._resetSelected = function (newOption, isInit) {
+    var thisOption = this.option;
+    var pieceList = this._pieceList; // Selected do not merge but all override.
+
+    var selected = (isInit ? thisOption : newOption).selected || {};
+    thisOption.selected = selected; // Consider 'not specified' means true.
+
+    each$9(pieceList, function (piece, index) {
+      var key = this.getSelectedMapKey(piece);
+
+      if (!selected.hasOwnProperty(key)) {
+        selected[key] = true;
+      }
+    }, this);
+
+    if (thisOption.selectedMode === 'single') {
+      // Ensure there is only one selected.
+      var hasSel_1 = false;
+      each$9(pieceList, function (piece, index) {
+        var key = this.getSelectedMapKey(piece);
+
+        if (selected[key]) {
+          hasSel_1 ? selected[key] = false : hasSel_1 = true;
+        }
+      }, this);
+    } // thisOption.selectedMode === 'multiple', default: all selected.
+
+  };
+  /**
+   * @public
+   */
+
+
+  PiecewiseModel.prototype.getItemSymbol = function () {
+    return this.get('itemSymbol');
+  };
+  /**
+   * @public
+   */
+
+
+  PiecewiseModel.prototype.getSelectedMapKey = function (piece) {
+    return this._mode === 'categories' ? piece.value + '' : piece.index + '';
+  };
+  /**
+   * @public
+   */
+
+
+  PiecewiseModel.prototype.getPieceList = function () {
+    return this._pieceList;
+  };
+  /**
+   * @return {string}
+   */
+
+
+  PiecewiseModel.prototype._determineMode = function () {
+    var option = this.option;
+    return option.pieces && option.pieces.length > 0 ? 'pieces' : this.option.categories ? 'categories' : 'splitNumber';
+  };
+  /**
+   * @override
+   */
+
+
+  PiecewiseModel.prototype.setSelected = function (selected) {
+    this.option.selected = clone$3(selected);
+  };
+  /**
+   * @override
+   */
+
+
+  PiecewiseModel.prototype.getValueState = function (value) {
+    var index = VisualMapping$1.findPieceIndex(value, this._pieceList);
+    return index != null ? this.option.selected[this.getSelectedMapKey(this._pieceList[index])] ? 'inRange' : 'outOfRange' : 'outOfRange';
+  };
+  /**
+   * @public
+   * @param pieceIndex piece index in visualMapModel.getPieceList()
+   */
+
+
+  PiecewiseModel.prototype.findTargetDataIndices = function (pieceIndex) {
+    var result = [];
+    var pieceList = this._pieceList;
+    this.eachTargetSeries(function (seriesModel) {
+      var dataIndices = [];
+      var data = seriesModel.getData();
+      data.each(this.getDataDimensionIndex(data), function (value, dataIndex) {
+        // Should always base on model pieceList, because it is order sensitive.
+        var pIdx = VisualMapping$1.findPieceIndex(value, pieceList);
+        pIdx === pieceIndex && dataIndices.push(dataIndex);
+      }, this);
+      result.push({
+        seriesId: seriesModel.id,
+        dataIndex: dataIndices
+      });
+    }, this);
+    return result;
+  };
+  /**
+   * @private
+   * @param piece piece.value or piece.interval is required.
+   * @return  Can be Infinity or -Infinity
+   */
+
+
+  PiecewiseModel.prototype.getRepresentValue = function (piece) {
+    var representValue;
+
+    if (this.isCategory()) {
+      representValue = piece.value;
+    } else {
+      if (piece.value != null) {
+        representValue = piece.value;
+      } else {
+        var pieceInterval = piece.interval || [];
+        representValue = pieceInterval[0] === -Infinity && pieceInterval[1] === Infinity ? 0 : (pieceInterval[0] + pieceInterval[1]) / 2;
+      }
+    }
+
+    return representValue;
+  };
+
+  PiecewiseModel.prototype.getVisualMeta = function (getColorVisual) {
+    // Do not support category. (category axis is ordinal, numerical)
+    if (this.isCategory()) {
+      return;
+    }
+
+    var stops = [];
+    var outerColors = ['', ''];
+    var visualMapModel = this;
+
+    function setStop(interval, valueState) {
+      var representValue = visualMapModel.getRepresentValue({
+        interval: interval
+      }); // Not category
+
+      if (!valueState) {
+        valueState = visualMapModel.getValueState(representValue);
+      }
+
+      var color = getColorVisual(representValue, valueState);
+
+      if (interval[0] === -Infinity) {
+        outerColors[0] = color;
+      } else if (interval[1] === Infinity) {
+        outerColors[1] = color;
+      } else {
+        stops.push({
+          value: interval[0],
+          color: color
+        }, {
+          value: interval[1],
+          color: color
+        });
+      }
+    } // Suplement
+
+
+    var pieceList = this._pieceList.slice();
+
+    if (!pieceList.length) {
+      pieceList.push({
+        interval: [-Infinity, Infinity]
+      });
+    } else {
+      var edge = pieceList[0].interval[0];
+      edge !== -Infinity && pieceList.unshift({
+        interval: [-Infinity, edge]
+      });
+      edge = pieceList[pieceList.length - 1].interval[1];
+      edge !== Infinity && pieceList.push({
+        interval: [edge, Infinity]
+      });
+    }
+
+    var curr = -Infinity;
+    each$9(pieceList, function (piece) {
+      var interval = piece.interval;
+
+      if (interval) {
+        // Fulfill gap.
+        interval[0] > curr && setStop([curr, interval[0]], 'outOfRange');
+        setStop(interval.slice());
+        curr = interval[1];
+      }
+    }, this);
+    return {
+      stops: stops,
+      outerColors: outerColors
+    };
+  };
+
+  PiecewiseModel.type = 'visualMap.piecewise';
+  PiecewiseModel.defaultOption = inheritDefaultOption(VisualMapModel$1.defaultOption, {
+    selected: null,
+    minOpen: false,
+    maxOpen: false,
+    align: 'auto',
+    itemWidth: 20,
+    itemHeight: 14,
+    itemSymbol: 'roundRect',
+    pieces: null,
+    categories: null,
+    splitNumber: 5,
+    selectedMode: 'multiple',
+    itemGap: 10,
+    hoverLink: true // Enable hover highlight.
+
+  });
+  return PiecewiseModel;
+}(VisualMapModel$1);
+/**
+ * Key is this._mode
+ * @type {Object}
+ * @this {module:echarts/component/viusalMap/PiecewiseMode}
+ */
+
+var resetMethods = {
+  splitNumber: function (outPieceList) {
+    var thisOption = this.option;
+    var precision = Math.min(thisOption.precision, 20);
+    var dataExtent = this.getExtent();
+    var splitNumber = thisOption.splitNumber;
+    splitNumber = Math.max(parseInt(splitNumber, 10), 1);
+    thisOption.splitNumber = splitNumber;
+    var splitStep = (dataExtent[1] - dataExtent[0]) / splitNumber; // Precision auto-adaption
+
+    while (+splitStep.toFixed(precision) !== splitStep && precision < 5) {
+      precision++;
+    }
+
+    thisOption.precision = precision;
+    splitStep = +splitStep.toFixed(precision);
+
+    if (thisOption.minOpen) {
+      outPieceList.push({
+        interval: [-Infinity, dataExtent[0]],
+        close: [0, 0]
+      });
+    }
+
+    for (var index = 0, curr = dataExtent[0]; index < splitNumber; curr += splitStep, index++) {
+      var max = index === splitNumber - 1 ? dataExtent[1] : curr + splitStep;
+      outPieceList.push({
+        interval: [curr, max],
+        close: [1, 1]
+      });
+    }
+
+    if (thisOption.maxOpen) {
+      outPieceList.push({
+        interval: [dataExtent[1], Infinity],
+        close: [0, 0]
+      });
+    }
+
+    reformIntervals(outPieceList);
+    each$9(outPieceList, function (piece, index) {
+      piece.index = index;
+      piece.text = this.formatValueText(piece.interval);
+    }, this);
+  },
+  categories: function (outPieceList) {
+    var thisOption = this.option;
+    each$9(thisOption.categories, function (cate) {
+      // FIXME category模式也使用pieceList，但在visualMapping中不是使用pieceList。
+      // 是否改一致。
+      outPieceList.push({
+        text: this.formatValueText(cate, true),
+        value: cate
+      });
+    }, this); // See "Order Rule".
+
+    normalizeReverse(thisOption, outPieceList);
+  },
+  pieces: function (outPieceList) {
+    var thisOption = this.option;
+    each$9(thisOption.pieces, function (pieceListItem, index) {
+      if (!isObject$3(pieceListItem)) {
+        pieceListItem = {
+          value: pieceListItem
+        };
+      }
+
+      var item = {
+        text: '',
+        index: index
+      };
+
+      if (pieceListItem.label != null) {
+        item.text = pieceListItem.label;
+      }
+
+      if (pieceListItem.hasOwnProperty('value')) {
+        var value = item.value = pieceListItem.value;
+        item.interval = [value, value];
+        item.close = [1, 1];
+      } else {
+        // `min` `max` is legacy option.
+        // `lt` `gt` `lte` `gte` is recommanded.
+        var interval = item.interval = [];
+        var close_1 = item.close = [0, 0];
+        var closeList = [1, 0, 1];
+        var infinityList = [-Infinity, Infinity];
+        var useMinMax = [];
+
+        for (var lg = 0; lg < 2; lg++) {
+          var names = [['gte', 'gt', 'min'], ['lte', 'lt', 'max']][lg];
+
+          for (var i = 0; i < 3 && interval[lg] == null; i++) {
+            interval[lg] = pieceListItem[names[i]];
+            close_1[lg] = closeList[i];
+            useMinMax[lg] = i === 2;
+          }
+
+          interval[lg] == null && (interval[lg] = infinityList[lg]);
+        }
+
+        useMinMax[0] && interval[1] === Infinity && (close_1[0] = 0);
+        useMinMax[1] && interval[0] === -Infinity && (close_1[1] = 0);
+
+        if (process.env.NODE_ENV !== 'production') {
+          if (interval[0] > interval[1]) {
+            console.warn('Piece ' + index + 'is illegal: ' + interval + ' lower bound should not greater then uppper bound.');
+          }
+        }
+
+        if (interval[0] === interval[1] && close_1[0] && close_1[1]) {
+          // Consider: [{min: 5, max: 5, visual: {...}}, {min: 0, max: 5}],
+          // we use value to lift the priority when min === max
+          item.value = interval[0];
+        }
+      }
+
+      item.visual = VisualMapping$1.retrieveVisuals(pieceListItem);
+      outPieceList.push(item);
+    }, this); // See "Order Rule".
+
+    normalizeReverse(thisOption, outPieceList); // Only pieces
+
+    reformIntervals(outPieceList);
+    each$9(outPieceList, function (piece) {
+      var close = piece.close;
+      var edgeSymbols = [['<', '≤'][close[1]], ['>', '≥'][close[0]]];
+      piece.text = piece.text || this.formatValueText(piece.value != null ? piece.value : piece.interval, false, edgeSymbols);
+    }, this);
+  }
+};
+
+function normalizeReverse(thisOption, pieceList) {
+  var inverse = thisOption.inverse;
+
+  if (thisOption.orient === 'vertical' ? !inverse : inverse) {
+    pieceList.reverse();
+  }
+}
+
+var PiecewiseModel$1 = PiecewiseModel;
+
+var PiecewiseVisualMapView =
+/** @class */
+function (_super) {
+  __extends$1(PiecewiseVisualMapView, _super);
+
+  function PiecewiseVisualMapView() {
+    var _this = _super !== null && _super.apply(this, arguments) || this;
+
+    _this.type = PiecewiseVisualMapView.type;
+    return _this;
+  }
+
+  PiecewiseVisualMapView.prototype.doRender = function () {
+    var thisGroup = this.group;
+    thisGroup.removeAll();
+    var visualMapModel = this.visualMapModel;
+    var textGap = visualMapModel.get('textGap');
+    var textStyleModel = visualMapModel.textStyleModel;
+    var textFont = textStyleModel.getFont();
+    var textFill = textStyleModel.getTextColor();
+
+    var itemAlign = this._getItemAlign();
+
+    var itemSize = visualMapModel.itemSize;
+
+    var viewData = this._getViewData();
+
+    var endsText = viewData.endsText;
+    var showLabel = retrieve(visualMapModel.get('showLabel', true), !endsText);
+    endsText && this._renderEndsText(thisGroup, endsText[0], itemSize, showLabel, itemAlign);
+    each$9(viewData.viewPieceList, function (item) {
+      var piece = item.piece;
+      var itemGroup = new Group$3();
+      itemGroup.onclick = bind$1(this._onItemClick, this, piece);
+
+      this._enableHoverLink(itemGroup, item.indexInModelPieceList); // TODO Category
+
+
+      var representValue = visualMapModel.getRepresentValue(piece);
+
+      this._createItemSymbol(itemGroup, representValue, [0, 0, itemSize[0], itemSize[1]]);
+
+      if (showLabel) {
+        var visualState = this.visualMapModel.getValueState(representValue);
+        itemGroup.add(new ZRText$1({
+          style: {
+            x: itemAlign === 'right' ? -textGap : itemSize[0] + textGap,
+            y: itemSize[1] / 2,
+            text: piece.text,
+            verticalAlign: 'middle',
+            align: itemAlign,
+            font: textFont,
+            fill: textFill,
+            opacity: visualState === 'outOfRange' ? 0.5 : 1
+          }
+        }));
+      }
+
+      thisGroup.add(itemGroup);
+    }, this);
+    endsText && this._renderEndsText(thisGroup, endsText[1], itemSize, showLabel, itemAlign);
+    box(visualMapModel.get('orient'), thisGroup, visualMapModel.get('itemGap'));
+    this.renderBackground(thisGroup);
+    this.positionGroup(thisGroup);
+  };
+
+  PiecewiseVisualMapView.prototype._enableHoverLink = function (itemGroup, pieceIndex) {
+    var _this = this;
+
+    itemGroup.on('mouseover', function () {
+      return onHoverLink('highlight');
+    }).on('mouseout', function () {
+      return onHoverLink('downplay');
+    });
+
+    var onHoverLink = function (method) {
+      var visualMapModel = _this.visualMapModel; // TODO: TYPE More detailed action types
+
+      visualMapModel.option.hoverLink && _this.api.dispatchAction({
+        type: method,
+        batch: makeHighDownBatch(visualMapModel.findTargetDataIndices(pieceIndex), visualMapModel)
+      });
+    };
+  };
+
+  PiecewiseVisualMapView.prototype._getItemAlign = function () {
+    var visualMapModel = this.visualMapModel;
+    var modelOption = visualMapModel.option;
+
+    if (modelOption.orient === 'vertical') {
+      return getItemAlign(visualMapModel, this.api, visualMapModel.itemSize);
+    } else {
+      // horizontal, most case left unless specifying right.
+      var align = modelOption.align;
+
+      if (!align || align === 'auto') {
+        align = 'left';
+      }
+
+      return align;
+    }
+  };
+
+  PiecewiseVisualMapView.prototype._renderEndsText = function (group, text, itemSize, showLabel, itemAlign) {
+    if (!text) {
+      return;
+    }
+
+    var itemGroup = new Group$3();
+    var textStyleModel = this.visualMapModel.textStyleModel;
+    itemGroup.add(new ZRText$1({
+      style: createTextStyle$1(textStyleModel, {
+        x: showLabel ? itemAlign === 'right' ? itemSize[0] : 0 : itemSize[0] / 2,
+        y: itemSize[1] / 2,
+        verticalAlign: 'middle',
+        align: showLabel ? itemAlign : 'center',
+        text: text
+      })
+    }));
+    group.add(itemGroup);
+  };
+  /**
+   * @private
+   * @return {Object} {peiceList, endsText} The order is the same as screen pixel order.
+   */
+
+
+  PiecewiseVisualMapView.prototype._getViewData = function () {
+    var visualMapModel = this.visualMapModel;
+    var viewPieceList = map$1(visualMapModel.getPieceList(), function (piece, index) {
+      return {
+        piece: piece,
+        indexInModelPieceList: index
+      };
+    });
+    var endsText = visualMapModel.get('text'); // Consider orient and inverse.
+
+    var orient = visualMapModel.get('orient');
+    var inverse = visualMapModel.get('inverse'); // Order of model pieceList is always [low, ..., high]
+
+    if (orient === 'horizontal' ? inverse : !inverse) {
+      viewPieceList.reverse();
+    } // Origin order of endsText is [high, low]
+    else if (endsText) {
+        endsText = endsText.slice().reverse();
+      }
+
+    return {
+      viewPieceList: viewPieceList,
+      endsText: endsText
+    };
+  };
+
+  PiecewiseVisualMapView.prototype._createItemSymbol = function (group, representValue, shapeParam) {
+    group.add(createSymbol( // symbol will be string
+    this.getControllerVisual(representValue, 'symbol'), shapeParam[0], shapeParam[1], shapeParam[2], shapeParam[3], // color will be string
+    this.getControllerVisual(representValue, 'color')));
+  };
+
+  PiecewiseVisualMapView.prototype._onItemClick = function (piece) {
+    var visualMapModel = this.visualMapModel;
+    var option = visualMapModel.option;
+    var selectedMode = option.selectedMode;
+
+    if (!selectedMode) {
+      return;
+    }
+
+    var selected = clone$3(option.selected);
+    var newKey = visualMapModel.getSelectedMapKey(piece);
+
+    if (selectedMode === 'single' || selectedMode === true) {
+      selected[newKey] = true;
+      each$9(selected, function (o, key) {
+        selected[key] = key === newKey;
+      });
+    } else {
+      selected[newKey] = !selected[newKey];
+    }
+
+    this.api.dispatchAction({
+      type: 'selectDataRange',
+      from: this.uid,
+      visualMapId: this.visualMapModel.id,
+      selected: selected
+    });
+  };
+
+  PiecewiseVisualMapView.type = 'visualMap.piecewise';
+  return PiecewiseVisualMapView;
+}(VisualMapView$1);
+
+var PiecewiseView = PiecewiseVisualMapView;
+
+function install$3(registers) {
+  registers.registerComponentModel(PiecewiseModel$1);
+  registers.registerComponentView(PiecewiseView);
+  installCommon(registers);
+}
+
 function install$2(registers) {
   use(install$4);
-  use(install$3);
+  use(install$3); // Do not install './dataZoomSelect',
+  // since it only work for toolbox dataZoom.
 }
 
 var DatasetModel =
@@ -94466,7 +101955,7 @@ var Layer = (function (_super) {
         if (typeof id === 'string') {
             dom = createDom(id, painter, dpr);
         }
-        else if (isObject$2(id)) {
+        else if (isObject$3(id)) {
             dom = id;
             id = dom.id;
         }
@@ -94697,7 +102186,7 @@ var Layer = (function (_super) {
             doClear(0, 0, width, height);
         }
         else if (repaintRects.length) {
-            each$4(repaintRects, function (rect) {
+            each$9(repaintRects, function (rect) {
                 doClear(rect.x * dpr, rect.y * dpr, rect.width * dpr, rect.height * dpr);
             });
         }
@@ -94997,7 +102486,7 @@ var CanvasPainter = (function () {
             _loop_1(k);
         }
         if (env$1.wxa) {
-            each$4(this._layers, function (layer) {
+            each$9(this._layers, function (layer) {
                 if (layer && layer.ctx && layer.ctx.draw) {
                     layer.ctx.draw();
                 }
@@ -95211,7 +102700,7 @@ var CanvasPainter = (function () {
     };
     CanvasPainter.prototype.setBackgroundColor = function (backgroundColor) {
         this._backgroundColor = backgroundColor;
-        each$4(this._layers, function (layer) {
+        each$9(this._layers, function (layer) {
             layer.setUnpainted();
         });
     };
@@ -95343,11 +102832,11 @@ function install(registers) {
   registers.registerPainter('canvas', CanvasPainter$1);
 }
 
-var css$5 = ".BaseVerticalBarChart_module_root__db36f9d1 {\n  width: \"100%\";\n}";
+var css$6 = ".BaseVerticalBarChart_module_root__db36f9d1 {\n  width: \"100%\";\n}";
 var modules_8757388c = {"root":"BaseVerticalBarChart_module_root__db36f9d1"};
-n(css$5,{});
+n(css$6,{});
 
-use([install$5, install$6, install$7, install$1, install$2, install$b, install]);
+use([install$8, install$9, install$a, install$1, install$5, install$g, install]);
 var BaseVerticalBarChart = function BaseVerticalBarChart(props) {
   var _seriesOption$length, _seriesData$metaData$, _seriesData$metaData, _seriesData$metaData$2, _seriesData$chartData, _seriesData$chartData9;
   var title = props.title,
@@ -95541,11 +103030,11 @@ BaseVerticalBarChart.defaultProps = {
   className: ''
 };
 
-var css$4 = ".BaseHorizontalBarChart_module_root__75f8867a {\n  width: \"100%\";\n}";
+var css$5 = ".BaseHorizontalBarChart_module_root__75f8867a {\n  width: \"100%\";\n}";
 var modules_8904c6a0 = {"root":"BaseHorizontalBarChart_module_root__75f8867a"};
-n(css$4,{});
+n(css$5,{});
 
-use([install$5, install$6, install$7, install$1, install$b, install]);
+use([install$8, install$9, install$a, install$1, install$g, install]);
 var BaseHorizontalBarChart = function BaseHorizontalBarChart(props) {
   var _seriesOption$length, _seriesData$metaData$, _seriesData$metaData, _seriesData$metaData$2, _seriesData$chartData, _seriesData$chartData9;
   var title = props.title,
@@ -95714,11 +103203,11 @@ BaseHorizontalBarChart.defaultProps = {
   className: ''
 };
 
-var css$3 = ".BasePieChart_module_root__45f70e28 {\n  width: \"100%\";\n}";
+var css$4 = ".BasePieChart_module_root__45f70e28 {\n  width: \"100%\";\n}";
 var modules_c20882aa = {"root":"BasePieChart_module_root__45f70e28"};
-n(css$3,{});
+n(css$4,{});
 
-use([install$5, install$6, install$7, install$1, install$a, install, install$2]);
+use([install$8, install$9, install$a, install$1, install$f, install, install$5]);
 var BasePieChart = function BasePieChart(props) {
   var _seriesData$chartData;
   var title = props.title,
@@ -95728,6 +103217,7 @@ var BasePieChart = function BasePieChart(props) {
     startAngle = props.startAngle,
     semiDoughnut = props.semiDoughnut,
     radius = props.radius,
+    center = props.center,
     cursor = props.cursor,
     showLabelLine = props.showLabelLine,
     itemStyle = props.itemStyle,
@@ -95738,6 +103228,7 @@ var BasePieChart = function BasePieChart(props) {
   var seriesOptionObject = {
     type: 'pie',
     radius: radius,
+    center: center,
     legendHoverLink: false,
     avoidLabelOverlap: false,
     cursor: cursor,
@@ -95820,6 +103311,7 @@ BasePieChart.propTypes = {
   semiDoughnut: propTypes$1.exports.bool,
   cursor: propTypes$1.exports.string,
   radius: propTypes$1.exports.arrayOf(propTypes$1.exports.string),
+  center: propTypes$1.exports.arrayOf(propTypes$1.exports.string),
   showLabelLine: propTypes$1.exports.bool,
   itemStyle: propTypes$1.exports.object,
   legend: propTypes$1.exports.object,
@@ -95843,6 +103335,7 @@ BasePieChart.defaultProps = {
   semiDoughnut: true,
   cursor: 'default',
   radius: ['30%', '60%'],
+  center: ['50%', '50%'],
   showLabelLine: false,
   itemStyle: {
     borderWidth: 5,
@@ -95857,6 +103350,82 @@ BasePieChart.defaultProps = {
   seriesOption: [{
     stackIndex: 1
   }],
+  style: {
+    width: '100%',
+    height: '100%'
+  },
+  className: ''
+};
+
+var css$3 = ".BaseRegionChart_module_root__617af265 {\n  width: \"100%\";\n}";
+var modules_459dfe63 = {"root":"BaseRegionChart_module_root__617af265"};
+n(css$3,{});
+
+use([install$8, install$9, install$a, install$1, install$c, install$2, install$d, install$5, install]);
+var BaseRegionChart = function BaseRegionChart(props) {
+  var geoJson = props.geoJson,
+    specialAreas = props.specialAreas,
+    regionData = props.regionData,
+    visualMap = props.visualMap,
+    seriesOption = props.seriesOption,
+    cursor = props.cursor,
+    onEvents = props.onEvents,
+    style = props.style,
+    className = props.className;
+  registerMap$1('states', geoJson, specialAreas);
+  return /*#__PURE__*/jsxRuntime.jsx(_default, {
+    option: {
+      cursor: cursor,
+      visualMap: _objectSpread2({}, visualMap),
+      series: [_objectSpread2(_objectSpread2({}, seriesOption), {}, {
+        data: regionData
+      })]
+    },
+    onEvents: onEvents,
+    echarts: echarts,
+    notMerge: true,
+    lazyUpdate: true,
+    className: classes(className, modules_459dfe63.root),
+    style: style
+  });
+};
+BaseRegionChart.propTypes = {
+  geoJson: propTypes$1.exports.shape(),
+  specialAreas: propTypes$1.exports.shape(),
+  regionData: propTypes$1.exports.shape({
+    chartData: propTypes$1.exports.object,
+    metaData: propTypes$1.exports.object
+  }),
+  visualMap: propTypes$1.exports.shape(),
+  seriesOption: propTypes$1.exports.shape(),
+  onEvents: propTypes$1.exports.func,
+  style: propTypes$1.exports.objectOf(propTypes$1.exports.shape),
+  className: propTypes$1.exports.string
+};
+BaseRegionChart.defaultProps = {
+  geoJson: {},
+  specialAreas: {},
+  regionData: {},
+  visualMap: {
+    show: false,
+    min: 1,
+    max: 10,
+    inRange: {
+      color: ['#313695', '#74add1', '#abd9e9', '#e0f3f8', '#ffffbf', '#fee090', '#fdae61', '#f46d43', '#d73027', '#a50026']
+    }
+  },
+  seriesOption: {
+    name: 'USA',
+    type: 'map',
+    roam: false,
+    map: 'states',
+    scaleLimit: {
+      min: 1,
+      max: 10
+    },
+    aspectScale: '1:1'
+  },
+  onEvents: function onEvents() {},
   style: {
     width: '100%',
     height: '100%'
@@ -96082,6 +103651,7 @@ exports.BaseCell = BaseCell;
 exports.BaseHorizontalBarChart = BaseHorizontalBarChart;
 exports.BaseModal = BaseModal;
 exports.BasePieChart = BasePieChart;
+exports.BaseRegionChart = BaseRegionChart;
 exports.BaseSidePanel = BaseSidePanel;
 exports.BaseTable = BaseTable;
 exports.BaseVerticalBarChart = BaseVerticalBarChart;
@@ -96151,7 +103721,7 @@ exports.TimePicker = TimePicker;
 exports.Toggle = Toggle;
 exports.Tooltip = Tooltip;
 exports.TrashIcon = Trash;
-exports.ViewIcon = View;
+exports.ViewIcon = View$2;
 exports.classes = classes;
 exports.cloneDeep = cloneDeep;
 exports.defaultProps = defaultProps;
