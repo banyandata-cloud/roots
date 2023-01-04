@@ -1,7 +1,5 @@
 import PropTypes from 'prop-types';
 import { useRef } from 'react';
-import { useFloating } from '@floating-ui/react-dom';
-import { useInteractions, useRole } from '@floating-ui/react-dom-interactions';
 import { classes } from '../../utils/utils';
 import styles from './Alert.module.css';
 import { CrossIcon, AlertIcon } from '../icons';
@@ -55,37 +53,17 @@ const Alert = (props) => {
 		return toggle(false);
 	});
 
-	const { x, y, floating, strategy, context } = useFloating({
-		open,
-		onOpenChange: toggle,
-		placement: position,
-	});
-
-	const role = useRole(context, {
-		role: 'tooltip',
-	});
-
-	// Merge all the interactions into prop getters
-	const { getFloatingProps } = useInteractions([role]);
-
 	return (
 		<Popper open={open} className={styles.popper} id='alert-popper' transparent={!backdrop}>
 			<div
-				{...getFloatingProps({
-					ref: floating,
-					className: classes(
-						styles.root,
-						styles[color],
-						styles[`border-${border}`],
-						shadow ? styles.shadow : '',
-						styles[`position-${position}`]
-					),
-					style: {
-						position: strategy,
-						top: y ?? 0,
-						left: x ?? 0,
-					},
-				})}>
+				ref={ref}
+				className={classes(
+					styles.root,
+					styles[color],
+					styles[`border-${border}`],
+					shadow ? styles.shadow : '',
+					styles[`position-${position}`]
+				)}>
 				<div className={styles.left}>
 					<div className={styles.icons}>{showIcon && Icon}</div>
 					<div className={styles.content}>
