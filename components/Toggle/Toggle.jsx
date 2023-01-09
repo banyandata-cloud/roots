@@ -2,7 +2,6 @@
 import PropTypes from 'prop-types';
 import { classes } from '../../utils';
 import { Button } from '../buttons';
-// import { classes } from '../../utils';
 import styles from './Toggle.module.css';
 
 const Toggle = (props) => {
@@ -22,10 +21,7 @@ const Toggle = (props) => {
 					<Button
 						data-elem='toggle'
 						key={title}
-						className={classes(
-							styles['toggle-button'],
-							selectedToggle === value ? styles.active : ''
-						)}
+						className={classes(styles['toggle-button'], isActive ? styles.active : '')}
 						onClick={() => {
 							return onButtonClick(value);
 						}}
@@ -33,7 +29,8 @@ const Toggle = (props) => {
 						value={value}
 						color={isActive ? color : 'default'}
 						leftComponent={leftComponent}
-						rightComponent={rightComponent}>
+						rightComponent={rightComponent}
+						size='auto'>
 						{value}
 					</Button>
 				);
@@ -43,9 +40,12 @@ const Toggle = (props) => {
 };
 
 Toggle.propTypes = {
+	options: PropTypes.arrayOf({
+		title: PropTypes.string,
+		value: PropTypes.string,
+	}),
 	className: PropTypes.string,
 	theme: PropTypes.oneOf(['dark', 'light']),
-	options: PropTypes.arrayOf(PropTypes.string),
 	selectedToggle: PropTypes.string,
 	setSelectedToggle: PropTypes.string,
 };
