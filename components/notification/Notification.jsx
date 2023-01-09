@@ -137,25 +137,7 @@ Notification.defaultProps = {
 			value: 'toggle2',
 		},
 	],
-	messageOptions: [
-		{
-			title: {
-				user: '',
-				action: '',
-				items: '',
-			},
-			message: '',
-			time: '',
-			acceptTitle: '',
-			rejectTitle: '',
-			actions: false,
-			messageAction: false,
-			onAccept: () => {},
-			onReject: () => {},
-			name: '',
-			url: 'url',
-		},
-	],
+	messageOptions: [],
 	onView: () => {},
 	onMark: () => {},
 };

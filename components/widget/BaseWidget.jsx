@@ -3,7 +3,7 @@ import styles from './BaseWidget.module.css';
 import { ExpandArrowAltIcon } from '../icons';
 import Button from '../buttons/button/Button';
 import { Dropdown, DropdownItem } from '../input';
-import { Toggle } from '../Toggle';
+import { Toggle } from '../toggle';
 import { classes } from '../../utils';
 
 const generateOptions = (optionData) => {
