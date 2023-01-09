@@ -1,0 +1,123 @@
+.root {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: flex-start;
+	gap: 1rem;
+}
+.root .step {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: flex-start;
+	position: relative;
+	z-index: 1;
+	gap: 0.5rem;
+	flex: 1;
+	cursor: default;
+}
+.root .step:last-child {
+	flex: 0 1 auto;
+}
+.root .step:last-child .title::after {
+	display: none;
+}
+.root .step .left {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	width: 1.5rem;
+	height: 1.5rem;
+	background: var(--white);
+	border: 0.063rem solid var(--grey2);
+	border-radius: 2rem;
+	font-size: 1rem;
+	color: var(--grey2);
+}
+.root .step .left .icon {
+	width: 0.75rem;
+	height: 0.75rem;
+}
+.root .step .left .icon.error-icon {
+	fill: var(--error);
+}
+.root .step .left .icon.completion-icon {
+	fill: var(--highlight);
+}
+.root .step .left .icon.completion-icon.active {
+	fill: var(--white);
+}
+.root .step .left .progress {
+	position: absolute;
+	z-index: -1;
+	inset: -0.3rem;
+	border-radius: 2rem;
+}
+.root .step .left .progress::after {
+	position: absolute;
+	content: '';
+	inset: 0.15rem;
+	background: white;
+	border-radius: 2rem;
+}
+.root .step .right {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	flex: 1;
+}
+.root .step .right .title {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: flex-start;
+	gap: 0.75rem;
+	width: 100%;
+	font-size: 1rem;
+	color: var(--grey2);
+}
+.root .step .right .title::after {
+	content: '';
+	flex: 1;
+	min-width: 1.5rem;
+	border-bottom: 0.063rem solid;
+	margin-top: 0.75rem;
+	border-bottom-color: var(--grey2);
+}
+.root .step .right .description {
+	font-size: 0.75rem;
+	color: var(--grey2);
+}
+.root .step.active .left {
+	background: var(--highlight);
+	color: var(--white);
+}
+.root .step.active .left,
+.root .step.completed .left {
+	border-color: var(--highlight);
+}
+.root .step.active .right .title,
+.root .step.completed .right .title {
+	color: var(--black);
+}
+.root .step.active .right .description,
+.root .step.completed .right .description {
+	color: var(--grey);
+}
+.root .step.completed .right .title::after {
+	border-bottom-color: var(--highlight);
+}
+.root .step.error .left {
+	background: var(--white);
+	border-color: var(--error);
+	color: var(--error);
+}
+.root .step.error .right .title {
+	color: var(--error);
+}
+.root .step.error .right .description {
+	color: rgba(var(--error), 0.6);
+} /*# sourceMappingURL=Stepper.module.css.map */
