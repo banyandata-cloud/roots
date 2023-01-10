@@ -39,9 +39,9 @@ const BaseRegionChart = (props) => {
 		geoJson,
 		specialAreas,
 		regionData,
+		tooltip,
 		visualMap,
 		seriesOption,
-		cursor,
 		onEvents,
 		style,
 		className,
@@ -52,7 +52,9 @@ const BaseRegionChart = (props) => {
 	return (
 		<EChartsReactCore
 			option={{
-				cursor,
+				tooltip: {
+					...tooltip,
+				},
 				visualMap: {
 					...visualMap,
 				},
@@ -80,6 +82,7 @@ BaseRegionChart.propTypes = {
 		chartData: PropTypes.object,
 		metaData: PropTypes.object,
 	}),
+	tooltip: PropTypes.shape(),
 	visualMap: PropTypes.shape(),
 	seriesOption: PropTypes.shape(),
 	onEvents: PropTypes.func,
@@ -91,6 +94,20 @@ BaseRegionChart.defaultProps = {
 	geoJson: {},
 	specialAreas: {},
 	regionData: {},
+	tooltip: {
+		backgroundColor: 'rgba(255,255,255)',
+		textStyle: {
+			fontStyle: 'normal',
+			fontWeight: 'normal',
+			fontFamily: 'Fira Sans',
+			color: 'rgb(109,110,113)',
+			fontSize: 16,
+		},
+		trigger: 'item',
+		transitionDuration: 0.2,
+		extraCssText: 'box-shadow: rgb(174,174,174) 0px 0px 5px;border-radius:3px;',
+		formatter: '{b0}: {c}',
+	},
 	visualMap: {
 		show: false,
 		min: 1,
@@ -111,7 +128,7 @@ BaseRegionChart.defaultProps = {
 		},
 	},
 	seriesOption: {
-		name: 'USA',
+		name: 'USa',
 		type: 'map',
 		roam: false,
 		map: 'states',
