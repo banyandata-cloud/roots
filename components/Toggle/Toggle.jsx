@@ -20,6 +20,7 @@ const Toggle = (props) => {
 				const isActive = selectedToggle === value;
 				return (
 					<Button
+						size='auto'
 						data-elem='toggle'
 						key={title}
 						className={classes(

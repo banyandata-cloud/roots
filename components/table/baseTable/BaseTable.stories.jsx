@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button } from '../../buttons';
 import { TableColumn } from '../BaseTable.class';
 import BaseTable from './BaseTable';
 
@@ -83,3 +82,15 @@ Expandable.args = {
 };
 
 Expandable.parameters = {};
+
+export const ConditionalExpand = Template.bind({});
+
+ConditionalExpand.args = {
+	...Default.args,
+	expandable: ({ index }) => {
+		if (index < 3) {
+			return null;
+		}
+		return <BaseTable {...Default.args} />;
+	},
+};
