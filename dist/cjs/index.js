@@ -514,14 +514,14 @@ function requireReactPropTypesSecret () {
 	return ReactPropTypesSecret_1;
 }
 
-var has;
+var has$1;
 var hasRequiredHas;
 
 function requireHas () {
-	if (hasRequiredHas) return has;
+	if (hasRequiredHas) return has$1;
 	hasRequiredHas = 1;
-	has = Function.call.bind(Object.prototype.hasOwnProperty);
-	return has;
+	has$1 = Function.call.bind(Object.prototype.hasOwnProperty);
+	return has$1;
 }
 
 /**
@@ -1574,9 +1574,9 @@ var getCSSVariableValue = function getCSSVariableValue(variable) {
 
 var e$1=[],t=[];function n(n,r){if(n&&"undefined"!=typeof document){var a,s=!0===r.prepend?"prepend":"append",d=!0===r.singleTag,i="string"==typeof r.container?document.querySelector(r.container):document.getElementsByTagName("head")[0];if(d){var u=e$1.indexOf(i);-1===u&&(u=e$1.push(i)-1,t[u]={}),a=t[u]&&t[u][s]?t[u][s]:t[u][s]=c();}else a=c();65279===n.charCodeAt(0)&&(n=n.substring(1)),a.styleSheet?a.styleSheet.cssText+=n:a.appendChild(document.createTextNode(n));}function c(){var e=document.createElement("style");if(e.setAttribute("type","text/css"),r.attributes)for(var t=Object.keys(r.attributes),n=0;n<t.length;n++)e.setAttribute(t[n],r.attributes[t[n]]);var a="prepend"===s?"afterbegin":"beforeend";return i.insertAdjacentElement(a,e),e}}
 
-var css$X = ".BaseCell_module_root__81e07d2d {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  padding: 0.5rem;\n  gap: 0.5rem;\n  flex: none;\n  height: 3rem;\n  background: var(--white);\n  max-width: 100%;\n  max-height: 100%;\n}\n.BaseCell_module_root__81e07d2d > [data-elem*=component] {\n  display: inline-block;\n  max-height: 100%;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_sm__81e07d2d {\n  width: 9.063rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_md__81e07d2d {\n  width: 15.625rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_lg__81e07d2d {\n  width: 21.875rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_auto__81e07d2d {\n  width: auto;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_borderRadiusDefault__81e07d2d {\n  border-radius: 0.25rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_borderRadiusRound__81e07d2d {\n  border-radius: 50%;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_borderRadiusEllipse__81e07d2d {\n  border-radius: 1.563rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_flexible__81e07d2d {\n  flex-grow: 1;\n  flex-shrink: 1;\n  min-width: 3rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_flexible__81e07d2d.BaseCell_module_sm__81e07d2d {\n  min-width: 9.063rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_flexible__81e07d2d.BaseCell_module_md__81e07d2d {\n  min-width: 15.625rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_flexible__81e07d2d.BaseCell_module_lg__81e07d2d {\n  min-width: 21.875rem;\n}";
+var css$Y = ".BaseCell_module_root__81e07d2d {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  padding: 0.5rem;\n  gap: 0.5rem;\n  flex: none;\n  height: 3rem;\n  background: var(--white);\n  max-width: 100%;\n  max-height: 100%;\n}\n.BaseCell_module_root__81e07d2d > [data-elem*=component] {\n  display: inline-block;\n  max-height: 100%;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_sm__81e07d2d {\n  width: 9.063rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_md__81e07d2d {\n  width: 15.625rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_lg__81e07d2d {\n  width: 21.875rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_auto__81e07d2d {\n  width: auto;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_borderRadiusDefault__81e07d2d {\n  border-radius: 0.25rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_borderRadiusRound__81e07d2d {\n  border-radius: 50%;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_borderRadiusEllipse__81e07d2d {\n  border-radius: 1.563rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_flexible__81e07d2d {\n  flex-grow: 1;\n  flex-shrink: 1;\n  min-width: 3rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_flexible__81e07d2d.BaseCell_module_sm__81e07d2d {\n  min-width: 9.063rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_flexible__81e07d2d.BaseCell_module_md__81e07d2d {\n  min-width: 15.625rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_flexible__81e07d2d.BaseCell_module_lg__81e07d2d {\n  min-width: 21.875rem;\n}";
 var modules_3af9b74c = {"root":"BaseCell_module_root__81e07d2d","sm":"BaseCell_module_sm__81e07d2d","md":"BaseCell_module_md__81e07d2d","lg":"BaseCell_module_lg__81e07d2d","auto":"BaseCell_module_auto__81e07d2d","border-radius-default":"BaseCell_module_borderRadiusDefault__81e07d2d","border-radius-round":"BaseCell_module_borderRadiusRound__81e07d2d","border-radius-ellipse":"BaseCell_module_borderRadiusEllipse__81e07d2d","flexible":"BaseCell_module_flexible__81e07d2d"};
-n(css$X,{});
+n(css$Y,{});
 
 var BaseCell = /*#__PURE__*/React.forwardRef(function BaseCell(props, ref) {
   var className = props.className,
@@ -1656,9 +1656,9 @@ var defaultProps = {
   attrs: {}
 };
 
-var css$W = "button.BaseButton_module_root__39a3f3ec[data-elem=base-cell] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  display: inline-flex;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  border: none;\n  background: none;\n  padding: 0.5rem 0.75rem;\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell]:focus {\n  outline: 1px solid var(--highlight);\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell]:active {\n  outline: none;\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell]:disabled {\n  cursor: not-allowed;\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell].BaseButton_module_contained__39a3f3ec {\n  background: var(--black);\n  color: var(--white);\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell].BaseButton_module_outlined__39a3f3ec {\n  color: var(--black);\n  border: 1px solid var(--black);\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell].BaseButton_module_text__39a3f3ec {\n  color: var(--black);\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell] [data-elem*=component] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell] [data-elem=component2] {\n  min-width: 0;\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell] [data-elem=title] {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n}";
+var css$X = "button.BaseButton_module_root__39a3f3ec[data-elem=base-cell] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  display: inline-flex;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  border: none;\n  background: none;\n  padding: 0.5rem 0.75rem;\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell]:focus {\n  outline: 1px solid var(--highlight);\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell]:active {\n  outline: none;\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell]:disabled {\n  cursor: not-allowed;\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell].BaseButton_module_contained__39a3f3ec {\n  background: var(--black);\n  color: var(--white);\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell].BaseButton_module_outlined__39a3f3ec {\n  color: var(--black);\n  border: 1px solid var(--black);\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell].BaseButton_module_text__39a3f3ec {\n  color: var(--black);\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell] [data-elem*=component] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell] [data-elem=component2] {\n  min-width: 0;\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell] [data-elem=title] {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n}";
 var modules_ab72627b = {"root":"BaseButton_module_root__39a3f3ec","contained":"BaseButton_module_contained__39a3f3ec","outlined":"BaseButton_module_outlined__39a3f3ec","text":"BaseButton_module_text__39a3f3ec"};
-n(css$W,{});
+n(css$X,{});
 
 var BaseButton = /*#__PURE__*/React.forwardRef(function BaseButton(props, ref) {
   var className = props.className,
@@ -1717,9 +1717,9 @@ BaseButton.defaultProps = _objectSpread2(_objectSpread2({}, BaseCell.defaultProp
   variant: 'contained'
 });
 
-var css$V = ".Button_module_root__0be1a26c[data-elem=base-cell] {\n  cursor: pointer;\n}\n.Button_module_root__0be1a26c[data-elem=base-cell] [data-elem=component2] [data-elem=title] {\n  font-weight: 500;\n  font-size: 0.875rem;\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_primary__0be1a26c.Button_module_contained__0be1a26c {\n  background-color: var(--highlight);\n  color: var(--white);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_primary__0be1a26c.Button_module_outlined__0be1a26c {\n  background-color: transparent;\n  border-color: var(--highlight);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_primary__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell].Button_module_primary__0be1a26c.Button_module_text__0be1a26c {\n  color: var(--highlight);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_success__0be1a26c.Button_module_contained__0be1a26c {\n  background-color: var(--success);\n  color: var(--white);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_success__0be1a26c.Button_module_outlined__0be1a26c {\n  background-color: transparent;\n  border-color: var(--success);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_success__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell].Button_module_success__0be1a26c.Button_module_text__0be1a26c {\n  color: var(--success);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_danger__0be1a26c.Button_module_contained__0be1a26c {\n  background-color: var(--error);\n  color: var(--white);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_danger__0be1a26c.Button_module_outlined__0be1a26c {\n  background-color: transparent;\n  border-color: var(--error);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_danger__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell].Button_module_danger__0be1a26c.Button_module_text__0be1a26c {\n  color: var(--error);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_warning__0be1a26c.Button_module_contained__0be1a26c {\n  background-color: var(--warning);\n  color: var(--white);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_warning__0be1a26c.Button_module_outlined__0be1a26c {\n  background-color: transparent;\n  border-color: var(--warning);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_warning__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell].Button_module_warning__0be1a26c.Button_module_text__0be1a26c {\n  color: var(--warning);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_primary__0be1a26c.Button_module_contained__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_success__0be1a26c.Button_module_contained__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_danger__0be1a26c.Button_module_contained__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_warning__0be1a26c.Button_module_contained__0be1a26c {\n  background-color: var(--grey4);\n  color: var(--grey);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_primary__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_success__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_danger__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_warning__0be1a26c.Button_module_outlined__0be1a26c {\n  background-color: transparent;\n  border-color: var(--grey);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_primary__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_primary__0be1a26c.Button_module_text__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_success__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_success__0be1a26c.Button_module_text__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_danger__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_danger__0be1a26c.Button_module_text__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_warning__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_warning__0be1a26c.Button_module_text__0be1a26c {\n  color: var(--grey);\n}";
+var css$W = ".Button_module_root__0be1a26c[data-elem=base-cell] {\n  cursor: pointer;\n}\n.Button_module_root__0be1a26c[data-elem=base-cell] [data-elem=component2] [data-elem=title] {\n  font-weight: 500;\n  font-size: 0.875rem;\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_primary__0be1a26c.Button_module_contained__0be1a26c {\n  background-color: var(--highlight);\n  color: var(--white);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_primary__0be1a26c.Button_module_outlined__0be1a26c {\n  background-color: transparent;\n  border-color: var(--highlight);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_primary__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell].Button_module_primary__0be1a26c.Button_module_text__0be1a26c {\n  color: var(--highlight);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_success__0be1a26c.Button_module_contained__0be1a26c {\n  background-color: var(--success);\n  color: var(--white);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_success__0be1a26c.Button_module_outlined__0be1a26c {\n  background-color: transparent;\n  border-color: var(--success);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_success__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell].Button_module_success__0be1a26c.Button_module_text__0be1a26c {\n  color: var(--success);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_danger__0be1a26c.Button_module_contained__0be1a26c {\n  background-color: var(--error);\n  color: var(--white);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_danger__0be1a26c.Button_module_outlined__0be1a26c {\n  background-color: transparent;\n  border-color: var(--error);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_danger__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell].Button_module_danger__0be1a26c.Button_module_text__0be1a26c {\n  color: var(--error);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_warning__0be1a26c.Button_module_contained__0be1a26c {\n  background-color: var(--warning);\n  color: var(--white);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_warning__0be1a26c.Button_module_outlined__0be1a26c {\n  background-color: transparent;\n  border-color: var(--warning);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_warning__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell].Button_module_warning__0be1a26c.Button_module_text__0be1a26c {\n  color: var(--warning);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_primary__0be1a26c.Button_module_contained__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_success__0be1a26c.Button_module_contained__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_danger__0be1a26c.Button_module_contained__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_warning__0be1a26c.Button_module_contained__0be1a26c {\n  background-color: var(--grey4);\n  color: var(--grey);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_primary__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_success__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_danger__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_warning__0be1a26c.Button_module_outlined__0be1a26c {\n  background-color: transparent;\n  border-color: var(--grey);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_primary__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_primary__0be1a26c.Button_module_text__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_success__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_success__0be1a26c.Button_module_text__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_danger__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_danger__0be1a26c.Button_module_text__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_warning__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_warning__0be1a26c.Button_module_text__0be1a26c {\n  color: var(--grey);\n}";
 var modules_b0070f27 = {"root":"Button_module_root__0be1a26c","primary":"Button_module_primary__0be1a26c","contained":"Button_module_contained__0be1a26c","outlined":"Button_module_outlined__0be1a26c","text":"Button_module_text__0be1a26c","success":"Button_module_success__0be1a26c","danger":"Button_module_danger__0be1a26c","warning":"Button_module_warning__0be1a26c"};
-n(css$V,{});
+n(css$W,{});
 
 var Button = /*#__PURE__*/React.forwardRef(function Button(props, ref) {
   var className = props.className,
@@ -1763,9 +1763,9 @@ Button.defaultProps = _objectSpread2(_objectSpread2({}, BaseButton.defaultProps)
   radius: 'default'
 });
 
-var css$U = ".Chip_module_root__0aa07630[data-elem=base-cell] {\n  position: relative;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell] [data-elem=component2] [data-elem=title] {\n  font-weight: 500;\n  font-size: 0.875rem;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_sm__0aa07630 {\n  height: 2rem;\n  padding: 0.188rem 0.5rem;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_md__0aa07630 {\n  height: 2.25rem;\n  padding: 0.563rem 1rem;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630.Chip_module_success__0aa07630 {\n  background-color: var(--success-bg);\n  color: var(--success);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630.Chip_module_info__0aa07630 {\n  background-color: var(--info-bg);\n  color: var(--info);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630.Chip_module_danger__0aa07630 {\n  background-color: var(--error-bg);\n  color: var(--error);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630.Chip_module_warning__0aa07630 {\n  background-color: var(--warning-bg);\n  color: var(--warning);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630.Chip_module_default__0aa07630 {\n  background-color: var(--grey5);\n  color: var(--grey);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630:hover {\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630 {\n  border-width: 1px;\n  border-style: solid;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_success__0aa07630 {\n  background-color: var(--success-bg);\n  color: var(--success);\n  border-color: var(--success-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_success__0aa07630:hover {\n  background-color: var(--success-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_info__0aa07630 {\n  background-color: var(--info-bg);\n  color: var(--info);\n  border-color: var(--info-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_info__0aa07630:hover {\n  background-color: var(--info-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_danger__0aa07630 {\n  background-color: var(--error-bg);\n  color: var(--error);\n  border-color: var(--error-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_danger__0aa07630:hover {\n  background-color: var(--error-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_warning__0aa07630 {\n  background-color: var(--warning-bg);\n  color: var(--warning);\n  border-color: var(--warning-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_warning__0aa07630:hover {\n  background-color: var(--warning-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_default__0aa07630 {\n  background-color: var(--grey8);\n  color: var(--grey);\n  border-color: var(--grey6);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_default__0aa07630:hover {\n  background-color: var(--grey6);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_status__0aa07630, .Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_input__0aa07630 {\n  filter: grayscale(1);\n  border-color: var(--grey4);\n  background-color: var(--grey5);\n  color: var(--grey2);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_status__0aa07630 [data-elem=component1],\n.Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_status__0aa07630 [data-elem=component3], .Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_input__0aa07630 [data-elem=component1],\n.Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_input__0aa07630 [data-elem=component3] {\n  opacity: 0.5;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_status__0aa07630:hover, .Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_input__0aa07630:hover {\n  box-shadow: none;\n  background-color: var(--grey5);\n}";
+var css$V = ".Chip_module_root__0aa07630[data-elem=base-cell] {\n  position: relative;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell] [data-elem=component2] [data-elem=title] {\n  font-weight: 500;\n  font-size: 0.875rem;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_sm__0aa07630 {\n  height: 2rem;\n  padding: 0.188rem 0.5rem;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_md__0aa07630 {\n  height: 2.25rem;\n  padding: 0.563rem 1rem;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630.Chip_module_success__0aa07630 {\n  background-color: var(--success-bg);\n  color: var(--success);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630.Chip_module_info__0aa07630 {\n  background-color: var(--info-bg);\n  color: var(--info);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630.Chip_module_danger__0aa07630 {\n  background-color: var(--error-bg);\n  color: var(--error);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630.Chip_module_warning__0aa07630 {\n  background-color: var(--warning-bg);\n  color: var(--warning);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630.Chip_module_default__0aa07630 {\n  background-color: var(--grey5);\n  color: var(--grey);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630:hover {\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630 {\n  border-width: 1px;\n  border-style: solid;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_success__0aa07630 {\n  background-color: var(--success-bg);\n  color: var(--success);\n  border-color: var(--success-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_success__0aa07630:hover {\n  background-color: var(--success-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_info__0aa07630 {\n  background-color: var(--info-bg);\n  color: var(--info);\n  border-color: var(--info-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_info__0aa07630:hover {\n  background-color: var(--info-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_danger__0aa07630 {\n  background-color: var(--error-bg);\n  color: var(--error);\n  border-color: var(--error-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_danger__0aa07630:hover {\n  background-color: var(--error-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_warning__0aa07630 {\n  background-color: var(--warning-bg);\n  color: var(--warning);\n  border-color: var(--warning-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_warning__0aa07630:hover {\n  background-color: var(--warning-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_default__0aa07630 {\n  background-color: var(--grey8);\n  color: var(--grey);\n  border-color: var(--grey6);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_default__0aa07630:hover {\n  background-color: var(--grey6);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_status__0aa07630, .Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_input__0aa07630 {\n  filter: grayscale(1);\n  border-color: var(--grey4);\n  background-color: var(--grey5);\n  color: var(--grey2);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_status__0aa07630 [data-elem=component1],\n.Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_status__0aa07630 [data-elem=component3], .Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_input__0aa07630 [data-elem=component1],\n.Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_input__0aa07630 [data-elem=component3] {\n  opacity: 0.5;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_status__0aa07630:hover, .Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_input__0aa07630:hover {\n  box-shadow: none;\n  background-color: var(--grey5);\n}";
 var modules_31aa5fd7 = {"root":"Chip_module_root__0aa07630","sm":"Chip_module_sm__0aa07630","md":"Chip_module_md__0aa07630","status":"Chip_module_status__0aa07630","success":"Chip_module_success__0aa07630","info":"Chip_module_info__0aa07630","danger":"Chip_module_danger__0aa07630","warning":"Chip_module_warning__0aa07630","default":"Chip_module_default__0aa07630","input":"Chip_module_input__0aa07630"};
-n(css$U,{});
+n(css$V,{});
 
 var Chip = function Chip(props) {
   var className = props.className,
@@ -2136,9 +2136,9 @@ Server.defaultProps = {
   className: ''
 };
 
-var css$T = ".Arrow_module_right__19f08663 {\n  transform: rotate(0deg);\n}\n\n.Arrow_module_left__19f08663 {\n  transform: rotate(180deg);\n}\n\n.Arrow_module_bottom__19f08663 {\n  transform: rotate(90deg);\n}\n\n.Arrow_module_top__19f08663 {\n  transform: rotate(270deg);\n}";
+var css$U = ".Arrow_module_right__19f08663 {\n  transform: rotate(0deg);\n}\n\n.Arrow_module_left__19f08663 {\n  transform: rotate(180deg);\n}\n\n.Arrow_module_bottom__19f08663 {\n  transform: rotate(90deg);\n}\n\n.Arrow_module_top__19f08663 {\n  transform: rotate(270deg);\n}";
 var modules_e313d483 = {"right":"Arrow_module_right__19f08663","left":"Arrow_module_left__19f08663","bottom":"Arrow_module_bottom__19f08663","top":"Arrow_module_top__19f08663"};
-n(css$T,{});
+n(css$U,{});
 
 var Arrow$1 = function Arrow(props) {
   var className = props.className,
@@ -2158,9 +2158,9 @@ Arrow$1.defaultProps = {
   position: 'right'
 };
 
-var css$S = ".Chevron_module_left__8b1808eb {\n  transform: rotate(0deg);\n}\n\n.Chevron_module_bottom__8b1808eb {\n  transform: rotate(90deg);\n}\n\n.Chevron_module_right__8b1808eb {\n  transform: rotate(180deg);\n}\n\n.Chevron_module_top__8b1808eb {\n  transform: rotate(270deg);\n}";
+var css$T = ".Chevron_module_left__8b1808eb {\n  transform: rotate(0deg);\n}\n\n.Chevron_module_bottom__8b1808eb {\n  transform: rotate(90deg);\n}\n\n.Chevron_module_right__8b1808eb {\n  transform: rotate(180deg);\n}\n\n.Chevron_module_top__8b1808eb {\n  transform: rotate(270deg);\n}";
 var modules_bf5b0b74 = {"left":"Chevron_module_left__8b1808eb","bottom":"Chevron_module_bottom__8b1808eb","right":"Chevron_module_right__8b1808eb","top":"Chevron_module_top__8b1808eb"};
-n(css$S,{});
+n(css$T,{});
 
 var Chevron = function Chevron(props) {
   var className = props.className,
@@ -2258,7 +2258,7 @@ Edit.defaultProps = {
   className: ''
 };
 
-var View = function View(props) {
+var View$2 = function View(props) {
   var className = props.className;
   return /*#__PURE__*/jsxRuntime.jsx("svg", {
     className: className,
@@ -2271,7 +2271,7 @@ var View = function View(props) {
     })
   });
 };
-View.defaultProps = {
+View$2.defaultProps = {
   className: ''
 };
 
@@ -2523,9 +2523,9 @@ var Close = function Close(_ref) {
   });
 };
 
-var css$R = ".Sort_module_root__5112e35d.Sort_module_orderAz__5112e35d {\n  transform: none;\n}\n.Sort_module_root__5112e35d.Sort_module_orderZa__5112e35d {\n  transform: rotate(180deg);\n}";
+var css$S = ".Sort_module_root__5112e35d.Sort_module_orderAz__5112e35d {\n  transform: none;\n}\n.Sort_module_root__5112e35d.Sort_module_orderZa__5112e35d {\n  transform: rotate(180deg);\n}";
 var modules_501919d9 = {"root":"Sort_module_root__5112e35d","order-az":"Sort_module_orderAz__5112e35d","order-za":"Sort_module_orderZa__5112e35d"};
-n(css$R,{});
+n(css$S,{});
 
 var Sort = function Sort(_ref) {
   var className = _ref.className,
@@ -2550,9 +2550,672 @@ Sort.defaultProps = {
   position: 'az'
 };
 
-var css$Q = ".Accordion_module_root__a63f6f55 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  width: 100%;\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell] {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.5rem;\n  padding: 0.5rem 1rem;\n  cursor: pointer;\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell] > [data-elem=component1] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell] > [data-elem=component1] .Accordion_module_icon__a63f6f55 {\n  transform: rotate(-90deg);\n  width: 1rem;\n  height: 1rem;\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell] .Accordion_module_title__a63f6f55 {\n  flex: 1 1 auto;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell]:hover {\n  background: var(--background);\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell]:hover .Accordion_module_icon__a63f6f55,\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell]:hover .Accordion_module_title__a63f6f55 {\n  color: var(--highlight);\n  fill: var(--highlight);\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_body__a63f6f55 {\n  display: none;\n  padding: 0.5rem 2.5rem;\n}\n.Accordion_module_root__a63f6f55.Accordion_module_open__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell] [data-elem=component1] .Accordion_module_icon__a63f6f55 {\n  transform: none;\n}\n.Accordion_module_root__a63f6f55.Accordion_module_open__a63f6f55 > .Accordion_module_body__a63f6f55 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n}\n.Accordion_module_root__a63f6f55.Accordion_module_open__a63f6f55 > .Accordion_module_body__a63f6f55 > button[data-elem=base-cell] {\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  align-self: flex-end;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-end;\n  align-items: center;\n}\n.Accordion_module_root__a63f6f55.Accordion_module_open__a63f6f55 > .Accordion_module_body__a63f6f55 > button[data-elem=base-cell] .Accordion_module_expand__a63f6f55 {\n  height: 1.5rem;\n  width: 1.5rem;\n}";
+var Azure = function Azure(_ref) {
+  var className = _ref.className,
+    _ref$circular = _ref.circular,
+    circular = _ref$circular === void 0 ? false : _ref$circular;
+  if (circular) {
+    return /*#__PURE__*/jsxRuntime.jsxs("svg", {
+      className: className,
+      width: "1.5rem",
+      height: "1.5rem",
+      viewBox: "0 0 24 24",
+      fill: "none",
+      xmlns: "http://www.w3.org/2000/svg",
+      children: [/*#__PURE__*/jsxRuntime.jsx("rect", {
+        width: "24",
+        height: "24",
+        rx: "12",
+        fill: "#D6EDFF"
+      }), /*#__PURE__*/jsxRuntime.jsx("path", {
+        d: "M12.6955 6L8.27266 9.84464L4.5 16.6353H7.90223L12.6955 6ZM13.2837 6.89941L11.3964 12.2324L15.0148 16.7906L7.99414 18H19.5L13.2837 6.89941Z",
+        fill: "#0072C6"
+      })]
+    });
+  }
+  return /*#__PURE__*/jsxRuntime.jsxs("svg", {
+    className: className,
+    width: "1.5rem",
+    height: "1.5rem",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg",
+    children: [/*#__PURE__*/jsxRuntime.jsx("g", {
+      clipPath: "url(#clip0_848_49288)",
+      children: /*#__PURE__*/jsxRuntime.jsx("path", {
+        d: "M12.7603 5.49121L7.92669 9.66196L3.80371 17.0286H7.52186L12.7603 5.49121ZM13.4031 6.46691L11.3405 12.2523L15.2949 17.1971L7.62231 18.5091H20.1966L13.4031 6.46691Z",
+        fill: "#0072C6"
+      })
+    }), /*#__PURE__*/jsxRuntime.jsx("defs", {
+      children: /*#__PURE__*/jsxRuntime.jsx("clipPath", {
+        id: "clip0_848_49288",
+        children: /*#__PURE__*/jsxRuntime.jsx("rect", {
+          width: "16.3929",
+          height: "13.0179",
+          fill: "white",
+          transform: "translate(3.80371 5.49097)"
+        })
+      })
+    })]
+  });
+};
+var DigitalOcean = function DigitalOcean(_ref2) {
+  var className = _ref2.className,
+    _ref2$circular = _ref2.circular,
+    circular = _ref2$circular === void 0 ? false : _ref2$circular;
+  if (circular) {
+    return /*#__PURE__*/jsxRuntime.jsxs("svg", {
+      className: className,
+      width: "1.5rem",
+      height: "1.5rem",
+      viewBox: "0 0 24 24",
+      fill: "none",
+      xmlns: "http://www.w3.org/2000/svg",
+      children: [/*#__PURE__*/jsxRuntime.jsx("rect", {
+        width: "24",
+        height: "24",
+        rx: "12",
+        fill: "#D9ECFF"
+      }), /*#__PURE__*/jsxRuntime.jsx("path", {
+        d: "M12.0007 18.8384V16.1864C14.685 16.1864 16.7687 13.4025 15.738 10.448C15.3598 9.36238 14.5219 8.48612 13.4763 8.09064C10.6511 7.02052 7.98905 9.19178 7.98905 11.9989H5.46045C5.46045 7.52456 9.59816 4.03503 14.0844 5.50063C16.042 6.14426 17.6066 7.77271 18.2147 9.8199C19.6162 14.5114 16.2793 18.8384 12.0007 18.8384Z",
+        fill: "#0080FF"
+      }), /*#__PURE__*/jsxRuntime.jsx("path", {
+        fillRule: "evenodd",
+        clipRule: "evenodd",
+        d: "M12.0081 16.2017H9.47949V13.5574H12.0081V16.2017Z",
+        fill: "#0080FF"
+      }), /*#__PURE__*/jsxRuntime.jsx("path", {
+        fillRule: "evenodd",
+        clipRule: "evenodd",
+        d: "M9.47933 18.2256H7.54395V16.2017H9.47933V18.2256Z",
+        fill: "#0080FF"
+      }), /*#__PURE__*/jsxRuntime.jsx("path", {
+        fillRule: "evenodd",
+        clipRule: "evenodd",
+        d: "M7.54386 16.2017H5.91992V14.5034H7.54386V16.2017Z",
+        fill: "#0080FF"
+      })]
+    });
+  }
+  return /*#__PURE__*/jsxRuntime.jsxs("svg", {
+    className: className,
+    width: "1.5rem",
+    height: "1.5rem",
+    viewBox: "0 0 28 28",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg",
+    children: [/*#__PURE__*/jsxRuntime.jsx("path", {
+      d: "M13.7367 21.9525V18.7558C17.1203 18.7558 19.7468 15.4003 18.4475 11.8391C17.9709 10.5305 16.9146 9.4743 15.5967 8.99761C12.0355 7.70773 8.67999 10.3249 8.67999 13.7085H5.49268C5.49268 8.31528 10.7083 4.10915 16.3632 5.87572C18.8308 6.65152 20.803 8.61438 21.5694 11.082C23.336 16.7369 19.1299 21.9525 13.7367 21.9525Z",
+      fill: "#0080FF"
+    }), /*#__PURE__*/jsxRuntime.jsx("path", {
+      fillRule: "evenodd",
+      clipRule: "evenodd",
+      d: "M13.7459 18.7742H10.5586V15.5869H13.7459V18.7742Z",
+      fill: "#0080FF"
+    }), /*#__PURE__*/jsxRuntime.jsx("path", {
+      fillRule: "evenodd",
+      clipRule: "evenodd",
+      d: "M10.5587 21.2137H8.11914V18.7742H10.5587V21.2137Z",
+      fill: "#0080FF"
+    }), /*#__PURE__*/jsxRuntime.jsx("path", {
+      fillRule: "evenodd",
+      clipRule: "evenodd",
+      d: "M8.11925 18.7745H6.07227V16.7275H8.11925V18.7745Z",
+      fill: "#0080FF"
+    })]
+  });
+};
+var Oracle$1 = function Oracle(_ref3) {
+  var className = _ref3.className,
+    _ref3$circular = _ref3.circular,
+    circular = _ref3$circular === void 0 ? false : _ref3$circular;
+  if (circular) {
+    return /*#__PURE__*/jsxRuntime.jsxs("svg", {
+      className: className,
+      width: "1.5rem",
+      height: "1.5rem",
+      viewBox: "0 0 24 24",
+      fill: "none",
+      xmlns: "http://www.w3.org/2000/svg",
+      children: [/*#__PURE__*/jsxRuntime.jsx("rect", {
+        width: "24",
+        height: "24",
+        rx: "12",
+        fill: "#FFDAD5"
+      }), /*#__PURE__*/jsxRuntime.jsx("path", {
+        d: "M9.04459 17C6.24204 17 4 14.7778 4 12C4 9.22222 6.24204 7 9.04459 7H14.9554C17.758 7 20 9.22222 20 12C20 14.7778 17.758 17 14.9554 17H9.04459ZM14.8025 15.2323C16.6369 15.2323 18.0637 13.7677 18.0637 12C18.0637 10.1818 16.586 8.76768 14.8025 8.76768H9.19745C7.36306 8.76768 5.93631 10.2323 5.93631 12C5.93631 13.7677 7.41401 15.2323 9.19745 15.2323H14.8025Z",
+        fill: "#C74634"
+      })]
+    });
+  }
+  return /*#__PURE__*/jsxRuntime.jsxs("svg", {
+    className: className,
+    width: "1.5rem",
+    height: "1.5rem",
+    viewBox: "0 0 28 28",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg",
+    children: [/*#__PURE__*/jsxRuntime.jsx("g", {
+      clipPath: "url(#clip0_848_49303)",
+      children: /*#__PURE__*/jsxRuntime.jsx("path", {
+        d: "M10.3239 19.9035C7.00921 19.9035 4.35742 17.2517 4.35742 13.937C4.35742 10.6222 7.00921 7.97046 10.3239 7.97046H17.315C20.6297 7.97046 23.2815 10.6222 23.2815 13.937C23.2815 17.2517 20.6297 19.9035 17.315 19.9035H10.3239ZM17.1342 17.7941C19.3039 17.7941 20.9914 16.0463 20.9914 13.937C20.9914 11.7673 19.2436 10.0798 17.1342 10.0798H10.5047C8.3351 10.0798 6.6476 11.8276 6.6476 13.937C6.6476 16.0463 8.39537 17.7941 10.5047 17.7941H17.1342Z",
+        fill: "#C74634"
+      })
+    }), /*#__PURE__*/jsxRuntime.jsx("defs", {
+      children: /*#__PURE__*/jsxRuntime.jsx("clipPath", {
+        id: "clip0_848_49303",
+        children: /*#__PURE__*/jsxRuntime.jsx("rect", {
+          width: "19.2857",
+          height: "15.067",
+          fill: "white",
+          transform: "translate(4.35742 6.7146)"
+        })
+      })
+    })]
+  });
+};
+var AWS = function AWS(_ref4) {
+  var className = _ref4.className,
+    _ref4$circular = _ref4.circular,
+    circular = _ref4$circular === void 0 ? false : _ref4$circular;
+  if (circular) {
+    return /*#__PURE__*/jsxRuntime.jsxs("svg", {
+      className: className,
+      width: "1.5rem",
+      height: "1.5rem",
+      viewBox: "0 0 24 24",
+      fill: "none",
+      xmlns: "http://www.w3.org/2000/svg",
+      children: [/*#__PURE__*/jsxRuntime.jsx("rect", {
+        width: "24",
+        height: "24",
+        rx: "12",
+        fill: "#FFEFD8"
+      }), /*#__PURE__*/jsxRuntime.jsx("path", {
+        d: "M8.50897 10.3584C8.50484 10.559 8.52457 10.7592 8.56749 10.9524C8.61478 11.1177 8.67171 11.2784 8.73783 11.4331C8.76151 11.4789 8.77442 11.5321 8.77509 11.5867C8.77509 11.6534 8.74315 11.7202 8.67398 11.7869L8.33875 12.0672C8.2983 12.1037 8.25021 12.1246 8.20041 12.1273C8.1398 12.122 8.0829 12.0887 8.04077 12.0338C7.96905 11.9372 7.90488 11.8321 7.84914 11.7201C7.79594 11.6067 7.74268 11.4798 7.68419 11.3264C7.26912 11.9403 6.74762 12.2472 6.11967 12.2472C5.67253 12.2472 5.31615 12.087 5.05541 11.7665C4.79467 11.4461 4.66162 11.0192 4.66162 10.4852C4.66162 9.91795 4.82125 9.45743 5.14587 9.11038C5.47049 8.76332 5.90148 8.58977 6.44958 8.58977C6.63835 8.59171 6.8268 8.60955 7.01365 8.64318C7.21055 8.67657 7.41277 8.72994 7.6256 8.79003V8.3028C7.6256 7.7954 7.54043 7.44186 7.37551 7.23493C7.20517 7.02804 6.91787 6.92793 6.50811 6.92793C6.31446 6.92792 6.12151 6.95705 5.93339 7.01469C5.73777 7.07314 5.54572 7.14897 5.35868 7.24161C5.29816 7.27557 5.23595 7.30455 5.17243 7.32836C5.14487 7.33976 5.11623 7.34649 5.08726 7.34839C5.01277 7.34839 4.9755 7.28167 4.9755 7.1415V6.81447C4.9755 6.70765 4.98615 6.62754 5.01277 6.58088C5.05292 6.52004 5.104 6.47201 5.16181 6.44071C5.37525 6.30826 5.60027 6.20747 5.83231 6.14039C6.10347 6.05313 6.38252 6.0105 6.66245 6.01358C7.29581 6.01358 7.75865 6.19376 8.05665 6.55417C8.34933 6.91458 8.49832 7.46185 8.49832 8.19602V10.3584H8.50897ZM6.34851 11.3729C6.53519 11.3703 6.72029 11.3298 6.89661 11.2528C7.09192 11.168 7.26618 11.0207 7.40212 10.8255C7.4879 10.7025 7.54982 10.5562 7.58305 10.3982C7.61961 10.2081 7.63747 10.0131 7.63625 9.81754V9.53751C7.4749 9.48825 7.31149 9.45037 7.14676 9.42405C6.98083 9.39769 6.81374 9.38437 6.64648 9.38418C6.28995 9.38418 6.02921 9.47094 5.85361 9.65124C5.678 9.83154 5.59286 10.085 5.59286 10.4188C5.59286 10.7324 5.65674 10.966 5.78976 11.1262C5.91751 11.2931 6.10373 11.3732 6.34851 11.3732V11.3729ZM10.6216 12.0937C10.5258 12.0937 10.4619 12.0737 10.4193 12.027C10.3767 11.9869 10.3395 11.8935 10.3076 11.7667L9.05701 6.60758C9.03276 6.52122 9.0167 6.43159 9.00913 6.34053C9.00913 6.23371 9.05171 6.17366 9.13688 6.17366H9.65837C9.75948 6.17366 9.82871 6.19369 9.86591 6.24038C9.90849 6.28044 9.9404 6.37391 9.97237 6.50068L10.8664 10.9189L11.6965 6.5008C11.7231 6.36727 11.755 6.28056 11.7976 6.2405C11.8402 6.20044 11.9146 6.17377 12.0105 6.17377H12.4363C12.5375 6.17377 12.6067 6.1938 12.6493 6.2405C12.6919 6.28056 12.7291 6.37402 12.7504 6.5008L13.5912 10.9725L14.5115 6.5008C14.5434 6.36727 14.5806 6.28056 14.6179 6.2405C14.6605 6.20044 14.7297 6.17377 14.8255 6.17377H15.3204C15.4055 6.17377 15.4534 6.22718 15.4534 6.34064C15.4522 6.37655 15.4486 6.41228 15.4428 6.44746C15.4344 6.5044 15.4219 6.56025 15.4055 6.61434L14.123 11.7734C14.0911 11.9069 14.0539 11.9937 14.0113 12.0337C13.9511 12.082 13.8804 12.1054 13.8091 12.1005H13.3514C13.2503 12.1005 13.1811 12.0804 13.1385 12.0337C13.0959 11.987 13.0587 11.9002 13.0374 11.7667L12.2126 7.46185L11.3931 11.76C11.3665 11.8935 11.3346 11.9803 11.292 12.0271C11.2494 12.0739 11.1749 12.0938 11.0791 12.0938L10.6216 12.0937ZM17.4595 12.2739C17.1835 12.2743 16.9085 12.2339 16.64 12.1538C16.3739 12.0736 16.1664 11.9869 16.0281 11.8867C15.9429 11.8267 15.8844 11.7599 15.8631 11.6998C15.8424 11.6409 15.8315 11.5772 15.8312 11.5128V11.1727C15.8312 11.0325 15.8737 10.9658 15.9536 10.9658C15.9861 10.9659 16.0185 10.9727 16.0493 10.9858C16.0813 10.9992 16.1292 11.0259 16.1824 11.0525C16.3704 11.1562 16.5666 11.2345 16.7678 11.2861C16.9762 11.3392 17.1883 11.3661 17.401 11.3663C17.7362 11.3663 17.997 11.2929 18.1779 11.146C18.2646 11.0804 18.3359 10.9872 18.3845 10.8758C18.4331 10.7645 18.4574 10.6389 18.4547 10.512C18.4566 10.4261 18.4449 10.3405 18.4202 10.2603C18.3956 10.1802 18.3585 10.1069 18.3111 10.0448C18.2153 9.91799 18.0343 9.80445 17.7736 9.69763L17.0019 9.39735C16.6134 9.24387 16.326 9.01695 16.1505 8.71655C15.9791 8.43956 15.8856 8.09934 15.8844 7.74878C15.8801 7.49036 15.9296 7.235 16.0281 7.00793C16.1231 6.79322 16.2538 6.60659 16.4113 6.46066C16.5772 6.30318 16.7648 6.18548 16.9647 6.11349C17.1826 6.03485 17.4084 5.99669 17.6351 6.00022C17.7543 5.99914 17.8734 6.00806 17.9916 6.02693C18.114 6.04696 18.2258 6.07366 18.3375 6.10033C18.444 6.13371 18.545 6.16706 18.6408 6.20715C18.7185 6.23728 18.7934 6.27755 18.8643 6.32729C18.927 6.36692 18.9816 6.424 19.024 6.49416C19.0586 6.55911 19.0754 6.63642 19.0719 6.7144V7.02808C19.0719 7.16824 19.0293 7.24172 18.9495 7.24172C18.9069 7.24172 18.8377 7.21502 18.7472 7.16161C18.4439 6.98807 18.1033 6.9013 17.7255 6.9013C17.4222 6.9013 17.1828 6.96135 17.0178 7.08824C16.8528 7.21513 16.7677 7.40871 16.7677 7.68225C16.7662 7.77087 16.7797 7.85888 16.8072 7.94054C16.8347 8.02219 16.8757 8.09565 16.9273 8.15612C17.0338 8.28293 17.2307 8.40974 17.5127 8.5232L18.2683 8.82337C18.6516 8.97689 18.9282 9.19045 19.0931 9.46407C19.2556 9.73255 19.3417 10.0615 19.3379 10.3985C19.3407 10.6665 19.2933 10.9317 19.1996 11.1726C19.1052 11.4011 18.9727 11.6014 18.8111 11.76C18.6354 11.9315 18.4348 12.0585 18.2204 12.1339C17.9739 12.2289 17.7173 12.2762 17.4595 12.274L17.4595 12.2739Z",
+        fill: "#252F3E"
+      }), /*#__PURE__*/jsxRuntime.jsx("path", {
+        d: "M18.4651 15.5173C16.7144 17.1391 14.1708 18.0001 11.9837 18.0001C8.91858 18.0002 6.15678 16.5786 4.07088 14.216C3.90592 14.029 4.05491 13.7755 4.25181 13.9222C6.50805 15.5641 9.29113 16.5584 12.17 16.5584C14.1123 16.5584 16.2461 16.051 18.2097 15.01C18.5024 14.8431 18.7525 15.2504 18.4652 15.5174L18.4651 15.5173Z",
+        fill: "#FF9900"
+      }), /*#__PURE__*/jsxRuntime.jsx("path", {
+        d: "M19.1941 14.4764C18.9706 14.116 17.7148 14.3029 17.1454 14.3896C16.975 14.4163 16.9485 14.2294 17.1028 14.0893C18.1032 13.2083 19.7475 13.4619 19.9391 13.7556C20.1307 14.0559 19.8859 16.1182 18.9493 17.106C18.8057 17.2596 18.6673 17.1794 18.7311 16.9792C18.944 16.3185 19.4176 14.8301 19.1941 14.4764Z",
+        fill: "#FF9900"
+      })]
+    });
+  }
+  return /*#__PURE__*/jsxRuntime.jsxs("svg", {
+    className: className,
+    width: "1.5rem",
+    height: "1.5rem",
+    viewBox: "0 0 28 28",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg",
+    children: [/*#__PURE__*/jsxRuntime.jsx("path", {
+      d: "M9.7913 12.4941C9.78633 12.6869 9.8101 12.8793 9.86185 13.065C9.91884 13.2238 9.98747 13.3782 10.0672 13.527C10.0957 13.571 10.1113 13.6221 10.1121 13.6745C10.1121 13.7386 10.0736 13.8028 9.99021 13.8669L9.58612 14.1363C9.53737 14.1715 9.4794 14.1915 9.41937 14.1941C9.34631 14.189 9.27773 14.157 9.22695 14.1043C9.1405 14.0114 9.06315 13.9104 8.99597 13.8028C8.93184 13.6938 8.86764 13.5718 8.79713 13.4243C8.29683 14.0144 7.66822 14.3094 6.91131 14.3094C6.37233 14.3094 5.94277 14.1554 5.62847 13.8474C5.31418 13.5394 5.15381 13.1291 5.15381 12.616C5.15381 12.0708 5.34623 11.6282 5.73751 11.2947C6.1288 10.9611 6.64831 10.7943 7.30897 10.7943C7.53651 10.7962 7.76366 10.8133 7.98889 10.8457C8.22622 10.8778 8.46997 10.929 8.72651 10.9868V10.5185C8.72651 10.0309 8.62385 9.69113 8.42506 9.49226C8.21973 9.29342 7.87343 9.19722 7.37952 9.19722C7.1461 9.19721 6.91352 9.2252 6.68677 9.28059C6.45098 9.33677 6.21948 9.40965 5.99402 9.49867C5.92108 9.53131 5.84609 9.55916 5.76952 9.58205C5.73631 9.593 5.70179 9.59947 5.66686 9.6013C5.57707 9.6013 5.53215 9.53717 5.53215 9.40247V9.08817C5.53215 8.98551 5.54499 8.90852 5.57707 8.86368C5.62547 8.80521 5.68704 8.75904 5.75673 8.72897C6.014 8.60168 6.28523 8.50481 6.56493 8.44034C6.89177 8.35648 7.22814 8.31551 7.56556 8.31847C8.32899 8.31847 8.88689 8.49164 9.24609 8.83801C9.59888 9.18438 9.77847 9.71034 9.77847 10.4159V12.4941H9.7913ZM7.18714 13.4691C7.41216 13.4666 7.63528 13.4276 7.8478 13.3536C8.08323 13.2722 8.29328 13.1306 8.45714 12.943C8.56053 12.8247 8.63517 12.6842 8.67522 12.5323C8.71929 12.3496 8.74083 12.1622 8.73935 11.9743V11.7052C8.54487 11.6578 8.34789 11.6214 8.14934 11.5961C7.94932 11.5708 7.74792 11.558 7.54631 11.5578C7.11656 11.5578 6.80226 11.6412 6.5906 11.8145C6.37893 11.9877 6.27631 12.2314 6.27631 12.5521C6.27631 12.8535 6.3533 13.078 6.51364 13.232C6.66763 13.3924 6.89209 13.4693 7.18714 13.4693V13.4691ZM12.3378 14.1618C12.2223 14.1618 12.1453 14.1426 12.094 14.0977C12.0427 14.0592 11.9978 13.9694 11.9593 13.8475L10.4519 8.88934C10.4227 8.80634 10.4033 8.7202 10.3942 8.63269C10.3942 8.53002 10.4455 8.47231 10.5482 8.47231H11.1768C11.2986 8.47231 11.3821 8.49156 11.4269 8.53644C11.4783 8.57494 11.5167 8.66477 11.5553 8.78661L12.6328 13.0328L13.6334 8.78672C13.6655 8.65839 13.704 8.57505 13.7553 8.53655C13.8066 8.49805 13.8964 8.47242 14.012 8.47242H14.5253C14.6471 8.47242 14.7306 8.49167 14.7819 8.53655C14.8332 8.57505 14.8781 8.66488 14.9038 8.78672L15.9172 13.0842L17.0265 8.78672C17.065 8.65839 17.1099 8.57505 17.1549 8.53655C17.2062 8.49805 17.2896 8.47242 17.405 8.47242H18.0016C18.1042 8.47242 18.1619 8.52376 18.1619 8.6328C18.1604 8.66731 18.1562 8.70164 18.1491 8.73546C18.1391 8.79017 18.124 8.84385 18.1042 8.89583L16.5584 13.854C16.5199 13.9823 16.475 14.0657 16.4237 14.1042C16.3512 14.1506 16.2659 14.173 16.1799 14.1683H15.6283C15.5064 14.1683 15.4229 14.1491 15.3716 14.1042C15.3203 14.0593 15.2754 13.9759 15.2497 13.8475L14.2556 9.71034L13.2678 13.8411C13.2357 13.9694 13.1972 14.0528 13.1459 14.0978C13.0946 14.1428 13.0048 14.1619 12.8892 14.1619L12.3378 14.1618ZM20.58 14.335C20.2474 14.3353 19.9158 14.2966 19.5922 14.2195C19.2715 14.1425 19.0214 14.0592 18.8546 13.9629C18.752 13.9052 18.6815 13.841 18.6558 13.7832C18.6308 13.7266 18.6177 13.6655 18.6173 13.6036V13.2767C18.6173 13.142 18.6686 13.0778 18.7648 13.0778C18.8041 13.078 18.8431 13.0845 18.8803 13.0971C18.9188 13.1099 18.9765 13.1356 19.0407 13.1612C19.2672 13.2609 19.5037 13.3361 19.7462 13.3857C19.9975 13.4367 20.2532 13.4625 20.5095 13.4627C20.9136 13.4627 21.2279 13.3922 21.446 13.251C21.5505 13.188 21.6364 13.0984 21.695 12.9914C21.7536 12.8843 21.7828 12.7637 21.7797 12.6417C21.7819 12.5591 21.7678 12.4769 21.7381 12.3999C21.7083 12.3228 21.6636 12.2524 21.6065 12.1927C21.4911 12.0708 21.2729 11.9617 20.9587 11.8591L20.0284 11.5705C19.5602 11.423 19.2138 11.2049 19.0022 10.9162C18.7957 10.65 18.6829 10.323 18.6815 9.9861C18.6762 9.73774 18.7359 9.49232 18.8546 9.2741C18.9692 9.06774 19.1267 8.88839 19.3166 8.74814C19.5165 8.5968 19.7427 8.48368 19.9837 8.41449C20.2463 8.33892 20.5185 8.30224 20.7917 8.30564C20.9354 8.30459 21.0789 8.31317 21.2215 8.3313C21.369 8.35055 21.5038 8.37622 21.6384 8.40184C21.7667 8.43393 21.8885 8.46597 22.004 8.50451C22.0976 8.53346 22.1879 8.57216 22.2734 8.61996C22.3489 8.65805 22.4148 8.71291 22.4658 8.78034C22.5075 8.84275 22.5278 8.91705 22.5235 8.992V9.29346C22.5235 9.42817 22.4722 9.49878 22.376 9.49878C22.3247 9.49878 22.2413 9.47312 22.1322 9.42179C21.7666 9.25501 21.3561 9.17162 20.9007 9.17162C20.5351 9.17162 20.2465 9.22933 20.0476 9.35128C19.8488 9.47323 19.7462 9.65927 19.7462 9.92215C19.7444 10.0073 19.7606 10.0919 19.7938 10.1704C19.827 10.2489 19.8763 10.3195 19.9386 10.3776C20.0669 10.4994 20.3042 10.6213 20.6442 10.7304L21.555 11.0188C22.017 11.1664 22.3504 11.3716 22.5492 11.6346C22.745 11.8926 22.8488 12.2087 22.8442 12.5326C22.8476 12.7902 22.7904 13.045 22.6775 13.2766C22.5637 13.4962 22.404 13.6887 22.2092 13.8411C21.9975 14.0059 21.7556 14.128 21.4972 14.2004C21.2001 14.2918 20.8908 14.3372 20.58 14.3351L20.58 14.335Z",
+      fill: "#252F3E"
+    }), /*#__PURE__*/jsxRuntime.jsx("path", {
+      d: "M21.7928 17.452C19.6825 19.0107 16.6165 19.8381 13.9803 19.8381C10.2857 19.8382 6.95667 18.472 4.44237 16.2014C4.24354 16.0217 4.42312 15.778 4.66045 15.9191C7.38007 17.497 10.7347 18.4526 14.2048 18.4526C16.546 18.4526 19.1181 17.965 21.485 16.9645C21.8377 16.8041 22.1392 17.1955 21.7929 17.4521L21.7928 17.452Z",
+      fill: "#FF9900"
+    }), /*#__PURE__*/jsxRuntime.jsx("path", {
+      d: "M22.6719 16.4516C22.4025 16.1052 20.8887 16.2848 20.2024 16.3682C19.9971 16.3938 19.9651 16.2142 20.1511 16.0796C21.3569 15.2329 23.3389 15.4766 23.5698 15.7588C23.8008 16.0475 23.5057 18.0295 22.3768 18.9788C22.2036 19.1263 22.0368 19.0493 22.1138 18.8569C22.3704 18.2219 22.9413 16.7915 22.6719 16.4516Z",
+      fill: "#FF9900"
+    })]
+  });
+};
+var GCP = function GCP(_ref5) {
+  var className = _ref5.className,
+    _ref5$circular = _ref5.circular,
+    circular = _ref5$circular === void 0 ? false : _ref5$circular;
+  if (circular) {
+    return /*#__PURE__*/jsxRuntime.jsxs("svg", {
+      className: className,
+      width: "1.5rem",
+      height: "1.5rem",
+      viewBox: "0 0 24 24",
+      fill: "none",
+      xmlns: "http://www.w3.org/2000/svg",
+      children: [/*#__PURE__*/jsxRuntime.jsx("rect", {
+        width: "24",
+        height: "24",
+        rx: "12",
+        fill: "#CAFFD8"
+      }), /*#__PURE__*/jsxRuntime.jsx("path", {
+        d: "M14.3104 9.31285L15.5273 8.01524L15.6082 7.46916C13.3908 5.31898 9.86583 5.56301 7.86639 7.97781C7.3076 8.66208 6.90183 9.47272 6.67969 10.3486L7.11534 10.2828L9.54925 9.85563L9.73683 9.65085C10.2574 9.03715 10.9779 8.65823 11.7515 8.59135C12.525 8.52446 13.2934 8.77465 13.8999 9.29089L14.3104 9.31285Z",
+        fill: "#EA4335"
+      }), /*#__PURE__*/jsxRuntime.jsx("path", {
+        d: "M17.2611 10.3099C16.9814 9.21152 16.407 8.22406 15.6084 7.46875L13.9003 9.29003C14.2562 9.60011 14.5415 9.99231 14.7345 10.4371C14.9276 10.8818 15.0234 11.3675 15.0148 11.8575V12.1806C15.4157 12.1806 15.8002 12.3504 16.0836 12.6527C16.3671 12.9549 16.5264 13.3649 16.5264 13.7923C16.5264 14.2198 16.3671 14.6297 16.0836 14.932C15.8002 15.2342 15.4157 15.404 15.0148 15.404H11.9706L11.6719 15.7501V17.6945L11.9706 17.9998H15.0149C15.8629 18.0094 16.6912 17.7272 17.3769 17.1951C18.0626 16.663 18.5691 15.9093 18.8213 15.046C19.0735 14.1826 19.058 13.2556 18.7769 12.4025C18.4959 11.5493 17.9643 10.8155 17.2612 10.3099",
+        fill: "#4285F4"
+      }), /*#__PURE__*/jsxRuntime.jsx("path", {
+        d: "M8.93042 17.9995H11.9714V15.4044H8.93042C8.71526 15.4043 8.50266 15.3547 8.30709 15.259L7.8757 15.3999L6.65016 16.6974L6.54346 17.1389C7.22953 17.6962 8.06794 17.9985 8.93042 17.9995Z",
+        fill: "#34A853"
+      }), /*#__PURE__*/jsxRuntime.jsx("path", {
+        d: "M8.93042 9.58206C8.10662 9.5874 7.30496 9.86693 6.63738 10.3816C5.9698 10.8963 5.46965 11.6204 5.20676 12.4529C4.94387 13.2853 4.93137 14.1845 5.17101 15.0249C5.41066 15.8653 5.89047 16.6049 6.54345 17.1404L8.30719 15.2599C8.08307 15.1519 7.88687 14.9876 7.7354 14.781C7.58394 14.5745 7.48175 14.3318 7.43759 14.0738C7.39343 13.8159 7.40862 13.5504 7.48187 13.3001C7.55511 13.0497 7.68422 12.8221 7.85812 12.6367C8.03201 12.4513 8.2455 12.3136 8.48027 12.2355C8.71503 12.1574 8.96406 12.1412 9.20599 12.1883C9.44791 12.2354 9.67551 12.3444 9.86926 12.5059C10.063 12.6674 10.2171 12.8766 10.3184 13.1155L12.0821 11.235C11.7119 10.7189 11.2348 10.3012 10.688 10.0145C10.1413 9.72775 9.53973 9.57975 8.93042 9.58206Z",
+        fill: "#FBBC05"
+      })]
+    });
+  }
+  return /*#__PURE__*/jsxRuntime.jsxs("svg", {
+    className: className,
+    width: "1.5rem",
+    height: "1.5rem",
+    viewBox: "0 0 28 28",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg",
+    children: [/*#__PURE__*/jsxRuntime.jsx("path", {
+      d: "M17.1825 10.2428L18.8588 8.56628L18.9702 7.86076C15.9158 5.08279 11.0599 5.39807 8.30563 8.51792C7.53587 9.40199 6.97691 10.4493 6.6709 11.5809L7.27102 11.4959L10.6238 10.944L10.8822 10.6794C11.5994 9.88656 12.5919 9.39701 13.6575 9.3106C14.7231 9.22419 15.7815 9.54741 16.6171 10.2144L17.1825 10.2428Z",
+      fill: "#EA4335"
+    }), /*#__PURE__*/jsxRuntime.jsx("path", {
+      d: "M21.2473 11.5308C20.8619 10.1117 20.0707 8.83595 18.9706 7.86011L16.6176 10.2132C17.1079 10.6138 17.5009 11.1205 17.7668 11.6951C18.0327 12.2697 18.1647 12.8972 18.1528 13.5303V13.9477C18.7051 13.9477 19.2347 14.1671 19.6252 14.5576C20.0157 14.9481 20.2351 15.4777 20.2351 16.03C20.2351 16.5822 20.0157 17.1119 19.6252 17.5024C19.2347 17.8929 18.7051 18.1123 18.1528 18.1123H13.9594L13.5479 18.5594V21.0715L13.9594 21.466H18.153C19.3212 21.4783 20.4622 21.1137 21.4068 20.4263C22.3514 19.7388 23.0491 18.7651 23.3965 17.6497C23.744 16.5343 23.7225 15.3366 23.3353 14.2343C22.9482 13.1321 22.216 12.184 21.2474 11.5308",
+      fill: "#4285F4"
+    }), /*#__PURE__*/jsxRuntime.jsx("path", {
+      d: "M9.77106 21.4657H13.9601V18.1129H9.77106C9.47467 18.1127 9.1818 18.0486 8.91238 17.925L8.31813 18.107L6.62989 19.7834L6.48291 20.3538C7.42801 21.0738 8.58295 21.4643 9.77106 21.4657Z",
+      fill: "#34A853"
+    }), /*#__PURE__*/jsxRuntime.jsx("path", {
+      d: "M9.77125 10.5904C8.63644 10.5973 7.53211 10.9584 6.6125 11.6234C5.69288 12.2883 5.00389 13.2239 4.64175 14.2994C4.27961 15.3749 4.26239 16.5366 4.59251 17.6224C4.92263 18.7081 5.5836 19.6637 6.48311 20.3556L8.91273 17.926C8.604 17.7865 8.33371 17.5742 8.12507 17.3073C7.91642 17.0404 7.77564 16.7269 7.71481 16.3936C7.65398 16.0604 7.67491 15.7173 7.77581 15.3939C7.87671 15.0705 8.05457 14.7764 8.29411 14.5369C8.53366 14.2973 8.82775 14.1195 9.15115 14.0186C9.47454 13.9177 9.81759 13.8967 10.1509 13.9576C10.4841 14.0184 10.7977 14.1592 11.0645 14.3678C11.3314 14.5765 11.5437 14.8468 11.6832 15.1555L14.1128 12.7259C13.6029 12.0592 12.9456 11.5195 12.1924 11.1491C11.4393 10.7786 10.6106 10.5874 9.77125 10.5904Z",
+      fill: "#FBBC05"
+    })]
+  });
+};
+var Clouds = {
+  Azure: Azure,
+  DigitalOcean: DigitalOcean,
+  Oracle: Oracle$1,
+  AWS: AWS,
+  GCP: GCP
+};
+
+var Oracle = function Oracle(_ref) {
+  var className = _ref.className,
+    _ref$circular = _ref.circular,
+    circular = _ref$circular === void 0 ? false : _ref$circular;
+  if (circular) {
+    return /*#__PURE__*/jsxRuntime.jsxs("svg", {
+      className: className,
+      width: "1.5rem",
+      height: "1.5rem",
+      viewBox: "0 0 32 28",
+      fill: "none",
+      xmlns: "http://www.w3.org/2000/svg",
+      children: [/*#__PURE__*/jsxRuntime.jsx("rect", {
+        x: "4",
+        y: "2",
+        width: "24",
+        height: "24",
+        rx: "12",
+        fill: "#FFD2CC"
+      }), /*#__PURE__*/jsxRuntime.jsx("path", {
+        d: "M13.0446 19.091C10.242 19.091 8 16.8284 8 14.0001C8 11.1718 10.242 8.90918 13.0446 8.90918H18.9554C21.758 8.90918 24 11.1718 24 14.0001C24 16.8284 21.758 19.091 18.9554 19.091H13.0446ZM18.8025 17.2912C20.6369 17.2912 22.0637 15.7999 22.0637 14.0001C22.0637 12.1488 20.586 10.709 18.8025 10.709H13.1975C11.3631 10.709 9.93631 12.2003 9.93631 14.0001C9.93631 15.7999 11.414 17.2912 13.1975 17.2912H18.8025Z",
+        fill: "#C74634"
+      })]
+    });
+  }
+  return /*#__PURE__*/jsxRuntime.jsx("svg", {
+    className: className,
+    width: "1.5rem",
+    height: "1.5rem",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg",
+    children: /*#__PURE__*/jsxRuntime.jsx("path", {
+      d: "M7.93631 18.8726C4.0828 18.8726 1 15.7898 1 11.9363C1 8.0828 4.0828 5 7.93631 5H16.0637C19.9172 5 23 8.0828 23 11.9363C23 15.7898 19.9172 18.8726 16.0637 18.8726H7.93631ZM15.8535 16.4204C18.3758 16.4204 20.3376 14.3885 20.3376 11.9363C20.3376 9.41401 18.3057 7.45223 15.8535 7.45223H8.1465C5.6242 7.45223 3.66242 9.48408 3.66242 11.9363C3.66242 14.3885 5.69427 16.4204 8.1465 16.4204H15.8535Z",
+      fill: "#C74634"
+    })
+  });
+};
+var MySql = function MySql(_ref2) {
+  var className = _ref2.className,
+    _ref2$circular = _ref2.circular,
+    circular = _ref2$circular === void 0 ? false : _ref2$circular;
+  if (circular) {
+    return /*#__PURE__*/jsxRuntime.jsxs("svg", {
+      className: className,
+      width: "1.5rem",
+      height: "1.5rem",
+      viewBox: "0 0 24 24",
+      fill: "none",
+      xmlns: "http://www.w3.org/2000/svg",
+      children: [/*#__PURE__*/jsxRuntime.jsx("rect", {
+        width: "24",
+        height: "24",
+        rx: "12",
+        fill: "#CAFDFD"
+      }), /*#__PURE__*/jsxRuntime.jsxs("g", {
+        clipPath: "url(#clip0_849_49428)",
+        children: [/*#__PURE__*/jsxRuntime.jsx("path", {
+          d: "M17.4784 15.5262C16.77 15.5083 16.2211 15.5803 15.7606 15.7781C15.6278 15.832 15.4153 15.8321 15.3976 16.003C15.4684 16.075 15.4773 16.1919 15.5393 16.2908C15.6456 16.4707 15.8314 16.7136 15.9997 16.8395C16.1856 16.9834 16.3716 17.1273 16.5663 17.2532C16.9117 17.4691 17.3013 17.595 17.6378 17.8109C17.8326 17.9368 18.0273 18.0988 18.2221 18.2337C18.3195 18.3055 18.3815 18.4226 18.5055 18.4675V18.4406C18.4435 18.3596 18.4257 18.2427 18.3638 18.1527C18.2754 18.0628 18.1867 17.9818 18.0981 17.8918C17.8414 17.5411 17.5227 17.2353 17.1773 16.9834C16.894 16.7855 16.2741 16.5157 16.1591 16.1829C16.1591 16.1829 16.1502 16.1739 16.1414 16.1649C16.3361 16.1469 16.5663 16.075 16.7523 16.021C17.0534 15.94 17.3278 15.958 17.6378 15.8771C17.7794 15.8411 17.9211 15.7961 18.0627 15.7511V15.6702C17.9034 15.5083 17.7883 15.2924 17.6201 15.1395C17.1685 14.7437 16.6726 14.3569 16.1591 14.0332C15.8846 13.8532 15.5304 13.7363 15.2382 13.5834C15.132 13.5294 14.9549 13.5025 14.8929 13.4125C14.7335 13.2146 14.6449 12.9538 14.5298 12.7199C14.2731 12.2252 14.0251 11.6765 13.8038 11.1549C13.6445 10.8041 13.5471 10.4532 13.3522 10.1295C12.4402 8.60037 11.4485 7.67392 9.92562 6.76541C9.59797 6.57655 9.20839 6.49559 8.79224 6.39669C8.57096 6.38764 8.34952 6.3697 8.12819 6.36066C7.9865 6.29769 7.84482 6.12682 7.72084 6.04586C7.21624 5.72201 5.91455 5.0205 5.54268 5.94696C5.30358 6.53157 5.89689 7.10719 6.10046 7.4041C6.25111 7.61095 6.44582 7.84479 6.55209 8.07868C6.61407 8.2315 6.63173 8.39353 6.69372 8.5554C6.83546 8.95105 6.96819 9.39189 7.1542 9.76072C7.25161 9.94957 7.35782 10.1474 7.4818 10.3183C7.55264 10.4172 7.67656 10.4623 7.70318 10.6241C7.57926 10.8041 7.57035 11.0739 7.49946 11.2988C7.18072 12.3152 7.30474 13.5744 7.75626 14.321C7.8979 14.5458 8.2344 15.0406 8.68597 14.8517C9.08446 14.6898 8.99591 14.1771 9.11093 13.7274C9.1376 13.6193 9.11989 13.5474 9.17297 13.4755V13.4935C9.29694 13.7453 9.42087 13.9882 9.53599 14.2401C9.8105 14.6807 10.2886 15.1395 10.687 15.4454C10.8996 15.6072 11.0678 15.8861 11.3335 15.985V15.958H11.3157C11.2626 15.877 11.1829 15.8411 11.1121 15.7781C10.9527 15.6162 10.7756 15.4183 10.6517 15.2384C10.2798 14.7347 9.95214 14.177 9.65996 13.6014C9.51833 13.3226 9.3943 13.0167 9.27923 12.7379C9.22605 12.6299 9.22605 12.4681 9.13755 12.4141C9.00472 12.612 8.80995 12.7829 8.71254 13.0257C8.54439 13.4125 8.52663 13.8892 8.46464 14.3839C8.42922 14.393 8.44688 14.3839 8.42917 14.402C8.1459 14.3299 8.04849 14.0332 7.94217 13.7813C7.67651 13.1427 7.63224 12.1173 7.86253 11.3797C7.92451 11.1908 8.19018 10.5972 8.08391 10.4173C8.03078 10.2464 7.85362 10.1474 7.75626 10.0125C7.64119 9.84163 7.51717 9.62583 7.43752 9.43687C7.22499 8.93316 7.11873 8.37548 6.88854 7.87178C6.78228 7.63789 6.59641 7.39511 6.44582 7.17921C6.27762 6.93638 6.09166 6.76541 5.95883 6.4776C5.9146 6.3787 5.85256 6.21678 5.92341 6.10883C5.94112 6.03686 5.97649 6.00993 6.04738 5.99194C6.1625 5.89293 6.49015 6.01887 6.60517 6.07284C6.93282 6.20768 7.20728 6.33372 7.4818 6.52258C7.60572 6.61253 7.73855 6.78345 7.8979 6.82843H8.08386C8.36723 6.89135 8.68592 6.84642 8.95158 6.92733C9.42092 7.08021 9.84587 7.3051 10.2267 7.54798C11.3866 8.29452 12.3428 9.35591 12.9892 10.6241C13.0955 10.8309 13.1397 11.02 13.2371 11.2358C13.4231 11.6765 13.6533 12.1263 13.8392 12.558C14.0251 12.9807 14.2022 13.4125 14.4679 13.7633C14.6007 13.9521 15.1319 14.0511 15.371 14.1501C15.5481 14.231 15.8226 14.303 15.982 14.4019C16.283 14.5907 16.584 14.8067 16.8674 15.0135C17.0091 15.1215 17.4518 15.3464 17.4784 15.5262Z",
+          fill: "#00546B"
+        }), /*#__PURE__*/jsxRuntime.jsx("path", {
+          d: "M8.44646 7.70972C8.29597 7.70972 8.18976 7.72781 8.0835 7.75475V7.77274H8.10121C8.1721 7.91667 8.29597 8.01562 8.38448 8.14151C8.45537 8.28539 8.51731 8.42937 8.5882 8.5733C8.59701 8.56426 8.60586 8.55531 8.60586 8.55531C8.72989 8.4653 8.79182 8.32142 8.79182 8.10553C8.73869 8.04261 8.72984 7.97964 8.68556 7.91667C8.63248 7.82666 8.51731 7.78173 8.44646 7.70972Z",
+          fill: "#00546B"
+        })]
+      }), /*#__PURE__*/jsxRuntime.jsx("defs", {
+        children: /*#__PURE__*/jsxRuntime.jsx("clipPath", {
+          id: "clip0_849_49428",
+          children: /*#__PURE__*/jsxRuntime.jsx("rect", {
+            width: "13.0286",
+            height: "13.0286",
+            fill: "white",
+            transform: "translate(5.48584 5.4856)"
+          })
+        })
+      })]
+    });
+  }
+  return /*#__PURE__*/jsxRuntime.jsxs("svg", {
+    className: className,
+    width: "1.5rem",
+    height: "1.5rem",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg",
+    children: [/*#__PURE__*/jsxRuntime.jsxs("g", {
+      clipPath: "url(#clip0_849_49327)",
+      children: [/*#__PURE__*/jsxRuntime.jsx("path", {
+        d: "M20.4096 17.4133C19.3222 17.3857 18.4795 17.4962 17.7727 17.7999C17.5688 17.8827 17.2425 17.8828 17.2153 18.1451C17.3241 18.2556 17.3377 18.4351 17.4328 18.587C17.5961 18.8631 17.8814 19.2359 18.1396 19.4293C18.425 19.6502 18.7106 19.871 19.0095 20.0644C19.5396 20.3958 20.1378 20.589 20.6543 20.9205C20.9534 21.1136 21.2522 21.3624 21.5513 21.5694C21.7008 21.6797 21.7959 21.8594 21.9863 21.9284V21.887C21.891 21.7627 21.8639 21.5832 21.7688 21.4451C21.633 21.307 21.4969 21.1828 21.361 21.0447C20.9668 20.5063 20.4775 20.0368 19.9475 19.6502C19.5125 19.3464 18.561 18.9322 18.3843 18.4212C18.3843 18.4212 18.3707 18.4075 18.3571 18.3937C18.6561 18.3661 19.0095 18.2556 19.295 18.1728C19.7571 18.0484 20.1785 18.0761 20.6543 17.9518C20.8717 17.8966 21.0892 17.8275 21.3066 17.7585V17.6343C21.0621 17.3857 20.8853 17.0544 20.6271 16.8196C19.9339 16.2119 19.1726 15.6183 18.3843 15.1212C17.9629 14.8451 17.4192 14.6655 16.9707 14.4309C16.8077 14.3479 16.5357 14.3066 16.4407 14.1685C16.1959 13.8648 16.06 13.4644 15.8833 13.1053C15.4893 12.3458 15.1085 11.5036 14.7687 10.7029C14.5242 10.1643 14.3746 9.62575 14.0756 9.12878C12.6756 6.78146 11.1532 5.35927 8.81542 3.96463C8.31245 3.67471 7.71441 3.55043 7.07558 3.39861C6.73589 3.38472 6.39597 3.35718 6.0562 3.34329C5.8387 3.24663 5.6212 2.98433 5.43089 2.86005C4.65628 2.36292 2.65808 1.28604 2.08722 2.70823C1.72019 3.60567 2.63097 4.4893 2.94347 4.94508C3.17472 5.26261 3.47362 5.62157 3.63675 5.98061C3.73191 6.2152 3.75901 6.46393 3.85417 6.71241C4.07175 7.31978 4.2755 7.99651 4.56105 8.56268C4.71058 8.8526 4.87362 9.15632 5.06394 9.41869C5.17269 9.57052 5.36292 9.63964 5.40378 9.88813C5.21355 10.1643 5.19987 10.5786 5.09105 10.9237C4.60175 12.484 4.79214 14.4171 5.48526 15.5631C5.70269 15.9081 6.21925 16.6678 6.91245 16.3777C7.52417 16.1292 7.38823 15.3422 7.5648 14.6518C7.60573 14.4859 7.57855 14.3756 7.66003 14.2652V14.2929C7.85034 14.6794 8.04058 15.0523 8.2173 15.4389C8.6387 16.1153 9.37261 16.8196 9.98425 17.2891C10.3106 17.5375 10.5688 17.9656 10.9766 18.1175V18.076H10.9493C10.8678 17.9517 10.7454 17.8966 10.6367 17.7998C10.3921 17.5514 10.1202 17.2476 9.92995 16.9714C9.35917 16.1981 8.85612 15.3421 8.40761 14.4584C8.19019 14.0305 7.9998 13.561 7.82316 13.133C7.74151 12.9671 7.74152 12.7187 7.60566 12.6359C7.40175 12.9396 7.10277 13.202 6.95323 13.5748C6.69511 14.1685 6.66784 14.9003 6.57269 15.6596C6.51831 15.6736 6.54542 15.6596 6.51823 15.6874C6.08339 15.5768 5.93386 15.1212 5.77066 14.7346C5.36284 13.7543 5.29487 12.1802 5.64839 11.048C5.74355 10.758 6.15136 9.84678 5.98823 9.57059C5.90667 9.30822 5.63472 9.15632 5.48526 8.94926C5.30862 8.68689 5.11823 8.35563 4.99597 8.06555C4.66972 7.29232 4.50659 6.43623 4.15323 5.663C3.99011 5.30396 3.7048 4.93127 3.47362 4.59985C3.21542 4.22708 2.92995 3.96463 2.72605 3.52281C2.65816 3.37099 2.56292 3.12243 2.67167 2.95672C2.69886 2.84624 2.75315 2.80489 2.86198 2.77728C3.0387 2.6253 3.54167 2.81862 3.71823 2.90148C4.2212 3.10846 4.64253 3.30194 5.06394 3.59186C5.25417 3.72995 5.45808 3.99232 5.70269 4.06137H5.98816C6.42316 4.15795 6.91237 4.08899 7.32019 4.21319C8.04066 4.44787 8.693 4.7931 9.27753 5.16594C11.0582 6.31195 12.526 7.94127 13.5183 9.88813C13.6814 10.2056 13.7493 10.4957 13.8989 10.827C14.1844 11.5036 14.5378 12.194 14.8231 12.8568C15.1085 13.5057 15.3803 14.1685 15.7882 14.7071C15.9921 14.9969 16.8075 15.1489 17.1746 15.3008C17.4464 15.425 17.8678 15.5355 18.1125 15.6873C18.5746 15.9772 19.0367 16.3088 19.4717 16.6262C19.6892 16.7919 20.3687 17.1371 20.4096 17.4133Z",
+        fill: "#00546B"
+      }), /*#__PURE__*/jsxRuntime.jsx("path", {
+        d: "M6.54547 5.41406C6.31445 5.41406 6.15141 5.44184 5.98828 5.48319V5.51081H6.01547C6.1243 5.73175 6.31445 5.88365 6.45031 6.0769C6.55914 6.29777 6.65422 6.5188 6.76305 6.73974C6.77656 6.72585 6.79016 6.71212 6.79016 6.71212C6.98055 6.57395 7.07563 6.35309 7.07563 6.02167C6.99406 5.92508 6.98047 5.82842 6.9125 5.73175C6.83102 5.59358 6.65422 5.52462 6.54547 5.41406Z",
+        fill: "#00546B"
+      })]
+    }), /*#__PURE__*/jsxRuntime.jsx("defs", {
+      children: /*#__PURE__*/jsxRuntime.jsx("clipPath", {
+        id: "clip0_849_49327",
+        children: /*#__PURE__*/jsxRuntime.jsx("rect", {
+          width: "20",
+          height: "20",
+          fill: "white",
+          transform: "translate(2 2)"
+        })
+      })
+    })]
+  });
+};
+var PgSql = function PgSql(_ref3) {
+  var className = _ref3.className,
+    _ref3$circular = _ref3.circular,
+    circular = _ref3$circular === void 0 ? false : _ref3$circular;
+  if (circular) {
+    return /*#__PURE__*/jsxRuntime.jsxs("svg", {
+      className: className,
+      width: "1.5rem",
+      height: "1.5rem",
+      viewBox: "0 0 24 24",
+      fill: "none",
+      xmlns: "http://www.w3.org/2000/svg",
+      children: [/*#__PURE__*/jsxRuntime.jsx("rect", {
+        width: "24",
+        height: "24",
+        rx: "12",
+        fill: "#D0E2FF"
+      }), /*#__PURE__*/jsxRuntime.jsxs("g", {
+        clipPath: "url(#clip0_849_49430)",
+        children: [/*#__PURE__*/jsxRuntime.jsx("path", {
+          d: "M17.761 13.1469C17.6913 12.9424 17.5089 12.8 17.273 12.7658C17.1618 12.7497 17.0344 12.7566 16.8837 12.7867C16.6209 12.8393 16.426 12.8593 16.2838 12.8632C16.8207 11.9842 17.2573 10.9818 17.5087 10.0382C17.9152 8.51243 17.698 7.81735 17.4441 7.50295C16.7725 6.67078 15.7925 6.22373 14.6102 6.21005C13.9796 6.20257 13.4259 6.32331 13.1371 6.41013C12.8682 6.36412 12.579 6.33844 12.2756 6.33369C11.7069 6.32489 11.2044 6.4451 10.7751 6.69215C10.5374 6.61422 10.1559 6.50434 9.71531 6.43423C8.67913 6.26929 7.844 6.39781 7.23314 6.81623C6.49345 7.32284 6.15055 8.20304 6.21397 9.43239C6.23411 9.8227 6.45929 11.0103 6.81385 12.1365C7.01762 12.7839 7.23491 13.3214 7.45968 13.7344C7.77845 14.3201 8.11953 14.665 8.50244 14.7888C8.71705 14.8581 9.10699 14.9067 9.51712 14.5755C9.5691 14.6366 9.63846 14.6972 9.7305 14.7536C9.8474 14.825 9.99034 14.8834 10.1331 14.9181C10.6476 15.0427 11.1295 15.0116 11.5406 14.8368C11.5431 14.9077 11.5451 14.9754 11.5467 15.0339C11.5494 15.1288 11.5521 15.2218 11.5557 15.3088C11.5801 15.897 11.6214 16.3544 11.7437 16.6745C11.7504 16.6921 11.7594 16.7189 11.7689 16.7473C11.8299 16.9285 11.932 17.2317 12.1915 17.4692C12.4603 17.7152 12.7854 17.7906 13.0832 17.7906C13.2325 17.7906 13.375 17.7716 13.5 17.7456C13.9454 17.6531 14.4514 17.512 14.8174 17.0068C15.1634 16.5291 15.3316 15.8097 15.362 14.6761C15.366 14.644 15.3696 14.6134 15.3731 14.5842L15.3804 14.5243L15.4619 14.5313L15.4829 14.5326C15.9366 14.5527 16.4914 14.4594 16.8321 14.3059C17.1013 14.1848 17.9641 13.7432 17.761 13.1469Z",
+          fill: "black"
+        }), /*#__PURE__*/jsxRuntime.jsx("path", {
+          d: "M16.9853 13.263C15.6362 13.5328 15.5434 13.09 15.5434 13.09C16.9678 11.0406 17.5633 8.43927 17.0495 7.80261C15.6476 6.0659 13.2209 6.88726 13.1804 6.90855L13.1674 6.91083C12.9008 6.85717 12.6026 6.82524 12.2673 6.81992C11.6569 6.81024 11.1938 6.97509 10.8424 7.23346C10.8424 7.23346 6.51346 5.50427 6.71482 9.4082C6.75764 10.2387 7.94252 15.6923 9.35576 14.0451C9.87231 13.4427 10.3714 12.9334 10.3714 12.9334C10.6193 13.0931 10.9161 13.1745 11.2272 13.1453L11.2513 13.1254C11.2438 13.2002 11.2473 13.2733 11.261 13.3599C10.8969 13.7543 11.0039 13.8236 10.2761 13.9688C9.53966 14.116 9.97229 14.378 10.2548 14.4465C10.5972 14.5295 11.3894 14.6471 11.9247 13.9205L11.9034 14.0035C12.046 14.1143 12.1462 14.724 12.1294 15.2769C12.1126 15.8297 12.1014 16.2092 12.2138 16.5057C12.3262 16.8021 12.4382 17.4691 13.395 17.2704C14.1944 17.1042 14.6087 16.6738 14.6664 15.9557C14.7073 15.4452 14.7999 15.5207 14.8057 15.0643L14.8799 14.8482C14.9655 14.1562 14.8935 13.933 15.386 14.0368L15.5058 14.047C15.8682 14.063 16.3427 13.9904 16.6212 13.865C17.2208 13.5952 17.5765 13.1446 16.9852 13.263H16.9853Z",
+          fill: "#336791"
+        }), /*#__PURE__*/jsxRuntime.jsx("path", {
+          d: "M11.0961 9.77897C10.9745 9.76256 10.8644 9.77774 10.8087 9.81864C10.7774 9.84165 10.7677 9.8683 10.7651 9.88664C10.7581 9.93524 10.7932 9.98899 10.8148 10.0167C10.8758 10.0952 10.965 10.1491 11.0533 10.161C11.0661 10.1627 11.0788 10.1635 11.0915 10.1635C11.2387 10.1635 11.3726 10.0524 11.3844 9.97034C11.3991 9.8676 11.2453 9.79911 11.0961 9.77901V9.77897ZM15.1236 9.78222C15.112 9.70169 14.9642 9.67873 14.8239 9.69764C14.6838 9.71656 14.548 9.77787 14.5594 9.85858C14.5684 9.92134 14.6853 10.0285 14.8237 10.0285C14.8354 10.0285 14.8472 10.0277 14.8591 10.0261C14.9514 10.0137 15.0192 9.95684 15.0514 9.92407C15.1004 9.87411 15.1288 9.81842 15.1236 9.78222Z",
+          fill: "#D0E2FF"
+        }), /*#__PURE__*/jsxRuntime.jsx("path", {
+          d: "M17.4347 13.2321C17.3832 13.0812 17.2176 13.0327 16.9426 13.0878C16.1258 13.2512 15.8333 13.138 15.7373 13.0695C16.3721 12.1317 16.8944 10.9982 17.1761 9.94057C17.3096 9.4396 17.3833 8.97434 17.3893 8.59511C17.396 8.17889 17.3229 7.87302 17.1721 7.68618C16.5641 6.93296 15.6719 6.52892 14.5918 6.51784C13.8492 6.50974 13.2218 6.69399 13.1002 6.7458C12.8441 6.68405 12.5649 6.64614 12.2609 6.6413C11.7035 6.63255 11.2217 6.76195 10.8227 7.02572C10.6495 6.96317 10.2016 6.81411 9.65397 6.72856C8.70715 6.58078 7.95476 6.69276 7.41785 7.06157C6.77719 7.50167 6.48142 8.28836 6.53872 9.39975C6.55799 9.77365 6.77773 10.9239 7.12449 12.0255C7.58093 13.4754 8.07711 14.2962 8.59914 14.465C8.66025 14.4848 8.7307 14.4986 8.8084 14.4986C8.99884 14.4986 9.23232 14.4154 9.47524 14.1322C9.77153 13.7876 10.078 13.4513 10.3943 13.1238C10.5996 13.2306 10.825 13.2903 11.0556 13.2962C11.056 13.3021 11.0566 13.3079 11.0572 13.3137C11.0175 13.3596 10.9786 13.4062 10.9406 13.4534C10.7808 13.65 10.7476 13.691 10.2333 13.7936C10.087 13.8229 9.69847 13.9006 9.69275 14.1647C9.68658 14.4532 10.1521 14.5744 10.2051 14.5872C10.3899 14.6321 10.5679 14.6542 10.7377 14.6542C11.1507 14.6542 11.5141 14.5226 11.8045 14.268C11.7955 15.2966 11.8398 16.3101 11.9672 16.6189C12.0715 16.8718 12.3263 17.4896 13.1314 17.4896C13.2495 17.4896 13.3795 17.4762 13.5225 17.4465C14.3627 17.2719 14.7275 16.9118 14.8687 16.1181C14.9442 15.6938 15.0738 14.6808 15.1348 14.1375C15.2634 14.1764 15.429 14.1942 15.6081 14.1942C15.9815 14.1942 16.4124 14.1172 16.6826 13.9956C16.9862 13.8589 17.534 13.5235 17.4347 13.2321ZM15.4339 9.56029C15.4311 9.7207 15.4083 9.86633 15.3842 10.0183C15.3582 10.1818 15.3314 10.3509 15.3246 10.556C15.3179 10.7557 15.3437 10.9633 15.3685 11.1641C15.4188 11.5696 15.4704 11.9871 15.2707 12.3991C15.2375 12.3421 15.208 12.2832 15.1823 12.2228C15.1574 12.1644 15.1035 12.0708 15.0289 11.9411C14.7386 11.4363 14.0589 10.2543 14.4069 9.77198C14.5105 9.62842 14.7736 9.48081 15.4339 9.56029ZM14.6335 6.84266C15.6013 6.86337 16.3668 7.21441 16.9088 7.88595C17.3245 8.40105 16.8668 10.7448 15.5416 12.7668C15.5282 12.7504 15.5148 12.734 15.5014 12.7177L15.4846 12.6973C15.827 12.149 15.7601 11.6065 15.7005 11.1255C15.676 10.9281 15.6528 10.7416 15.6587 10.5665C15.6648 10.3809 15.6901 10.2216 15.7146 10.0677C15.7447 9.87798 15.7753 9.68168 15.7669 9.45028C15.7732 9.42601 15.7757 9.39733 15.7724 9.36328C15.7509 9.14139 15.4896 8.47727 14.957 7.87619C14.6657 7.54741 14.2409 7.17949 13.6608 6.93133C13.9103 6.88119 14.2515 6.83443 14.6335 6.84266ZM9.21817 13.9249C8.95052 14.237 8.76572 14.1771 8.70493 14.1575C8.30891 14.0294 7.84939 13.2179 7.44425 11.9309C7.09369 10.8173 6.88883 9.69752 6.87259 9.38352C6.82142 8.39045 7.06969 7.69836 7.61055 7.32644C8.49077 6.72122 9.93794 7.08347 10.5194 7.26719C10.5111 7.27519 10.5024 7.28267 10.4941 7.29081C9.53988 8.2252 9.56252 9.82164 9.56487 9.91924C9.56478 9.95689 9.56805 10.0102 9.57249 10.0835C9.58892 10.352 9.61949 10.8518 9.53784 11.4177C9.46199 11.9436 9.6292 12.4584 9.9965 12.83C10.0342 12.8681 10.0738 12.9043 10.1152 12.9386C9.95173 13.1083 9.5964 13.4838 9.21817 13.9249ZM10.2379 12.6057C9.94184 12.3062 9.80738 11.8896 9.86894 11.4626C9.95513 10.8648 9.92333 10.3441 9.90623 10.0643C9.90383 10.0252 9.90169 9.99089 9.90047 9.96384C10.0399 9.84398 10.6859 9.50839 11.1466 9.61074C11.3568 9.6574 11.4849 9.79622 11.5382 10.035C11.8138 11.271 11.5746 11.7862 11.3825 12.2002C11.3429 12.2855 11.3054 12.3662 11.2735 12.4495L11.2487 12.514C11.1861 12.677 11.1277 12.8286 11.0916 12.9725C10.7768 12.9716 10.4707 12.8413 10.2379 12.6057V12.6057ZM10.2862 14.2727C10.1943 14.2505 10.1116 14.2118 10.0631 14.1797C10.1036 14.1613 10.1757 14.1361 10.3008 14.1111C10.9058 13.9904 10.9992 13.9051 11.2032 13.654C11.25 13.5963 11.303 13.5311 11.3765 13.4515L11.3766 13.4515C11.4859 13.3327 11.536 13.3528 11.6267 13.3893C11.7002 13.4188 11.7719 13.5082 11.8009 13.6065C11.8146 13.653 11.8301 13.7411 11.7796 13.8097C11.3534 14.3884 10.7322 14.381 10.2862 14.2727ZM13.4525 17.1296C12.7123 17.2833 12.4503 16.9172 12.2776 16.4986C12.1661 16.2283 12.1113 15.0097 12.1502 13.6639C12.1507 13.646 12.1481 13.6288 12.143 13.6125C12.1384 13.5803 12.1315 13.5486 12.1223 13.5174C12.0645 13.3216 11.9237 13.1578 11.7547 13.0899C11.6875 13.0629 11.5643 13.0134 11.4163 13.0501C11.4478 12.924 11.5026 12.7815 11.562 12.6273L11.5869 12.5624C11.6149 12.4893 11.6501 12.4135 11.6873 12.3333C11.8884 11.9001 12.1638 11.3068 11.8649 9.96648C11.753 9.46445 11.3791 9.21928 10.8123 9.27624C10.4725 9.31033 10.1617 9.44325 10.0066 9.51947C9.97328 9.53583 9.94279 9.55167 9.9143 9.56706C9.95758 9.06125 10.1211 8.11595 10.7327 7.51785C11.1177 7.14135 11.6306 6.95539 12.2554 6.96542C13.4865 6.98495 14.276 7.59755 14.7216 8.10807C15.1055 8.54796 15.3134 8.99109 15.3964 9.2301C14.7724 9.16857 14.3481 9.28798 14.133 9.58619C13.665 10.2349 14.389 11.4939 14.737 12.0989C14.8008 12.2098 14.8559 12.3057 14.8732 12.3464C14.9865 12.6127 15.1332 12.7905 15.2403 12.9202C15.2732 12.96 15.305 12.9986 15.3292 13.0322C15.1402 13.0851 14.8008 13.2071 14.8317 13.8172C14.8068 14.1233 14.6294 15.5566 14.5392 16.063C14.4202 16.732 14.1663 16.9812 13.4525 17.1296V17.1296ZM16.5419 13.7016C16.3486 13.7886 16.0252 13.8538 15.718 13.8678C15.3787 13.8832 15.206 13.831 15.1653 13.7988C15.1463 13.4186 15.2922 13.3789 15.4467 13.3369C15.4709 13.3303 15.4946 13.3238 15.5175 13.3161C15.5317 13.3273 15.5472 13.3384 15.5643 13.3493C15.837 13.5238 16.3234 13.5427 17.0102 13.4052L17.0177 13.4038C16.9251 13.4877 16.7666 13.6004 16.5419 13.7016Z",
+          fill: "#D0E2FF"
+        })]
+      }), /*#__PURE__*/jsxRuntime.jsx("defs", {
+        children: /*#__PURE__*/jsxRuntime.jsx("clipPath", {
+          id: "clip0_849_49430",
+          children: /*#__PURE__*/jsxRuntime.jsx("rect", {
+            width: "11.6129",
+            height: "11.6129",
+            fill: "white",
+            transform: "translate(6.19336 6.1936)"
+          })
+        })
+      })]
+    });
+  }
+  return /*#__PURE__*/jsxRuntime.jsxs("svg", {
+    className: className,
+    width: "1.5rem",
+    height: "1.5rem",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg",
+    children: [/*#__PURE__*/jsxRuntime.jsxs("g", {
+      clipPath: "url(#clip0_849_49322)",
+      children: [/*#__PURE__*/jsxRuntime.jsx("path", {
+        d: "M21.7645 13.9443C21.6465 13.5977 21.3373 13.3564 20.9375 13.2984C20.749 13.2711 20.5331 13.2828 20.2776 13.3338C19.8322 13.4229 19.5018 13.4568 19.2607 13.4634C20.1708 11.9735 20.9109 10.2745 21.3369 8.67514C22.0258 6.08904 21.6577 4.91091 21.2275 4.37802C20.089 2.96752 18.428 2.20978 16.4241 2.1866C15.3552 2.17392 14.4167 2.37857 13.9272 2.52573C13.4714 2.44775 12.9813 2.40421 12.4671 2.39616C11.5031 2.38125 10.6514 2.585 9.92367 3.00375C9.52078 2.87165 8.87415 2.68542 8.1274 2.56658C6.37112 2.28702 4.9556 2.50485 3.92022 3.21406C2.66648 4.07274 2.08528 5.56465 2.19277 7.64835C2.2269 8.30992 2.60858 10.3228 3.20954 12.2317C3.55492 13.329 3.92322 14.2402 4.3042 14.9402C4.8445 15.9328 5.42262 16.5174 6.07164 16.7273C6.4354 16.8448 7.09633 16.9271 7.79148 16.3658C7.87959 16.4692 7.99716 16.572 8.15316 16.6675C8.3513 16.7887 8.59358 16.8877 8.83555 16.9464C9.70754 17.1577 10.5243 17.1049 11.2212 16.8086C11.2255 16.9288 11.2288 17.0436 11.2315 17.1427C11.2362 17.3035 11.2408 17.4612 11.2468 17.6087C11.2881 18.6057 11.3581 19.381 11.5654 19.9234C11.5768 19.9532 11.5921 19.9987 11.6082 20.0469C11.7116 20.3539 11.8846 20.8679 12.3245 21.2704C12.7801 21.6874 13.3311 21.8152 13.8358 21.8152C14.089 21.8152 14.3305 21.783 14.5423 21.739C15.2973 21.5821 16.1549 21.3431 16.7752 20.4866C17.3617 19.677 17.6468 18.4576 17.6984 16.5362C17.7051 16.4818 17.7112 16.4299 17.7172 16.3805L17.7295 16.279L17.8676 16.2908L17.9032 16.2931C18.6723 16.3271 19.6126 16.1689 20.1901 15.9088C20.6465 15.7035 22.1088 14.9549 21.7645 13.9443Z",
+        fill: "black"
+      }), /*#__PURE__*/jsxRuntime.jsx("path", {
+        d: "M20.4499 14.141C18.1633 14.5984 18.006 13.8477 18.006 13.8477C20.4203 10.3741 21.4296 5.96497 20.5587 4.88584C18.1826 1.94219 14.0694 3.33436 14.0007 3.37044L13.9787 3.37431C13.5269 3.28336 13.0213 3.22924 12.4531 3.22022C11.4184 3.20382 10.6336 3.48323 10.038 3.92115C10.038 3.92115 2.70051 0.990245 3.04182 7.60725C3.1144 9.01493 5.12273 18.2586 7.51812 15.4666C8.39365 14.4456 9.23965 13.5824 9.23965 13.5824C9.65977 13.853 10.1628 13.9911 10.6901 13.9415L10.7311 13.9078C10.7183 14.0345 10.7241 14.1585 10.7474 14.3053C10.1303 14.9738 10.3117 15.0911 9.07811 15.3374C7.82982 15.5868 8.56311 16.0309 9.0419 16.147C9.62233 16.2877 10.9651 16.487 11.8724 15.2555L11.8363 15.3961C12.078 15.5838 12.2478 16.6174 12.2193 17.5545C12.1909 18.4914 12.1719 19.1347 12.3623 19.6372C12.5529 20.1397 12.7428 21.2702 14.3645 20.9333C15.7195 20.6518 16.4217 19.9221 16.5195 18.705C16.5887 17.8398 16.7457 17.9677 16.7555 17.1941L16.8814 16.8279C17.0265 15.655 16.9044 15.2765 17.7392 15.4526L17.9422 15.4699C18.5565 15.4969 19.3608 15.374 19.8328 15.1613C20.8491 14.704 21.4519 13.9404 20.4498 14.141H20.4499Z",
+        fill: "#336791"
+      }), /*#__PURE__*/jsxRuntime.jsx("path", {
+        d: "M10.4683 8.23557C10.2623 8.20777 10.0757 8.23349 9.98126 8.30282C9.92821 8.34181 9.91175 8.38699 9.90729 8.41808C9.89545 8.50045 9.95497 8.59156 9.99156 8.63852C10.0951 8.77152 10.2462 8.86292 10.3958 8.88305C10.4175 8.88603 10.4391 8.88737 10.4606 8.88737C10.7101 8.88737 10.937 8.69898 10.957 8.55995C10.982 8.38579 10.7212 8.26972 10.4683 8.23565V8.23557ZM17.2948 8.24109C17.2751 8.10459 17.0246 8.06567 16.7869 8.09773C16.5495 8.12979 16.3193 8.23371 16.3385 8.37051C16.3539 8.4769 16.552 8.6585 16.7865 8.6585C16.8063 8.6585 16.8263 8.65724 16.8465 8.65448C17.003 8.63345 17.1179 8.53706 17.1725 8.48152C17.2555 8.39683 17.3037 8.30245 17.2948 8.24109Z",
+        fill: "white"
+      }), /*#__PURE__*/jsxRuntime.jsx("path", {
+        d: "M21.2115 14.0886C21.1243 13.8329 20.8437 13.7507 20.3774 13.844C18.993 14.1211 18.4973 13.9292 18.3345 13.813C19.4105 12.2235 20.2958 10.3022 20.7733 8.50962C20.9995 7.66048 21.1245 6.87188 21.1347 6.2291C21.146 5.52362 21.022 5.00519 20.7665 4.6885C19.736 3.41181 18.2236 2.72699 16.3929 2.7082C15.1343 2.69448 14.0709 3.00678 13.8648 3.0946C13.4307 2.98993 12.9574 2.92567 12.4422 2.91747C11.4974 2.90263 10.6807 3.12196 10.0045 3.56904C9.71083 3.46303 8.95178 3.21038 8.02351 3.06538C6.41869 2.81488 5.14342 3.00469 4.23337 3.6298C3.14747 4.37576 2.64616 5.70918 2.74327 7.59294C2.77595 8.22669 3.1484 10.1764 3.73613 12.0435C4.50978 14.501 5.35079 15.8922 6.23562 16.1784C6.33919 16.2119 6.4586 16.2353 6.59031 16.2353C6.91309 16.2353 7.30883 16.0942 7.72057 15.6143C8.22277 15.0301 8.74227 14.4602 9.27841 13.9051C9.62625 14.0861 10.0084 14.1872 10.3992 14.1973C10.4 14.2073 10.401 14.2172 10.4019 14.227C10.3346 14.3048 10.2687 14.3837 10.2043 14.4637C9.9335 14.797 9.87714 14.8664 9.00545 15.0404C8.75749 15.0901 8.09894 15.2217 8.08925 15.6693C8.07879 16.1583 8.86775 16.3637 8.95763 16.3855C9.27087 16.4615 9.57266 16.499 9.86045 16.499C10.5604 16.499 11.1763 16.276 11.6686 15.8444C11.6534 17.5878 11.7284 19.3058 11.9443 19.8292C12.1211 20.2577 12.5531 21.305 13.9175 21.3049C14.1178 21.3049 14.3381 21.2823 14.5806 21.2319C16.0046 20.9359 16.623 20.3257 16.8622 18.9802C16.9902 18.2612 17.2099 16.5442 17.3133 15.6232C17.5313 15.6892 17.812 15.7194 18.1155 15.7193C18.7485 15.7193 19.4788 15.5889 19.9368 15.3828C20.4514 15.1511 21.3799 14.5825 21.2115 14.0886ZM17.8203 7.86505C17.8156 8.13694 17.777 8.38377 17.7361 8.64142C17.692 8.91853 17.6465 9.20503 17.635 9.55281C17.6237 9.89127 17.6673 10.2432 17.7095 10.5835C17.7947 11.2708 17.8821 11.9785 17.5437 12.6767C17.4875 12.5802 17.4374 12.4803 17.3938 12.3778C17.3517 12.279 17.2604 12.1202 17.1339 11.9004C16.6419 11.0449 15.4897 9.04139 16.0795 8.22386C16.2552 7.98053 16.7011 7.73033 17.8203 7.86505ZM16.4636 3.25876C18.104 3.29387 19.4015 3.88887 20.3202 5.02711C21.0248 5.90018 20.2489 9.87278 18.0028 13.3C17.9802 13.2721 17.9575 13.2444 17.9347 13.2167L17.9062 13.1823C18.4866 12.2528 18.3732 11.3332 18.2721 10.5179C18.2306 10.1834 18.1914 9.86734 18.2014 9.57048C18.2117 9.25587 18.2546 8.986 18.2961 8.72507C18.3471 8.40353 18.399 8.07081 18.3847 7.6786C18.3954 7.63744 18.3997 7.58884 18.3941 7.53113C18.3576 7.15502 17.9147 6.02938 17.012 5.01056C16.5182 4.45329 15.7982 3.82967 14.815 3.40906C15.2379 3.32407 15.8162 3.24482 16.4636 3.25876ZM7.28484 15.263C6.8312 15.7918 6.51796 15.6904 6.41493 15.6572C5.74369 15.4401 4.96481 14.0645 4.27812 11.8831C3.68393 9.99564 3.3367 8.09765 3.30917 7.56543C3.22244 5.88221 3.64325 4.70915 4.55999 4.07875C6.05194 3.05293 8.50483 3.66693 9.49047 3.97833C9.47632 3.9919 9.46156 4.00457 9.44756 4.01836C7.83014 5.60212 7.8685 8.30803 7.8725 8.47346C7.87235 8.53727 7.87788 8.62763 7.88542 8.75191C7.91325 9.20704 7.96508 10.0541 7.82668 11.0133C7.69812 11.9047 7.98153 12.7772 8.60409 13.4071C8.66799 13.4716 8.73514 13.533 8.80531 13.5911C8.52821 13.8789 7.92594 14.5152 7.28484 15.263ZM9.01322 13.027C8.51144 12.5193 8.28355 11.8131 8.38788 11.0894C8.53397 10.0761 8.48007 9.19355 8.45109 8.7194C8.44701 8.65305 8.4434 8.5949 8.44132 8.54905C8.6776 8.3459 9.77257 7.77708 10.5534 7.95056C10.9097 8.02966 11.1269 8.26494 11.2171 8.6696C11.6843 10.7647 11.279 11.6379 10.9533 12.3397C10.8861 12.4842 10.8227 12.6209 10.7686 12.7622L10.7266 12.8715C10.6203 13.1478 10.5215 13.4047 10.4602 13.6486C9.92673 13.6472 9.40781 13.4262 9.01322 13.0269V13.027ZM9.09511 15.8524C8.93933 15.8147 8.79924 15.7492 8.71704 15.6948C8.78571 15.6635 8.90788 15.6209 9.11979 15.5785C10.1452 15.3739 10.3036 15.2294 10.6495 14.8037C10.7288 14.706 10.8186 14.5954 10.9431 14.4606L10.9433 14.4604C11.1287 14.2591 11.2135 14.2933 11.3672 14.3552C11.4919 14.4051 11.6133 14.5566 11.6625 14.7233C11.6858 14.802 11.7119 14.9514 11.6263 15.0677C10.9039 16.0485 9.85115 16.0359 9.09511 15.8524ZM14.4618 20.6947C13.2073 20.9553 12.7631 20.3347 12.4704 19.6252C12.2815 19.1671 12.1886 17.1016 12.2545 14.8206C12.2554 14.7902 12.2509 14.7609 12.2423 14.7334C12.2346 14.6789 12.2229 14.625 12.2072 14.5722C12.1093 14.2403 11.8705 13.9627 11.5841 13.8475C11.4703 13.8018 11.2615 13.718 11.0105 13.7802C11.0641 13.5664 11.1569 13.3249 11.2575 13.0635L11.2997 12.9535C11.3472 12.8296 11.4069 12.7011 11.47 12.5651C11.8108 11.8309 12.2776 10.8253 11.771 8.55353C11.5812 7.7026 10.9475 7.28705 9.98686 7.3836C9.41096 7.44137 8.88405 7.66667 8.62124 7.79586C8.56473 7.8236 8.51306 7.85044 8.46477 7.87653C8.53812 7.01919 8.81523 5.41694 9.85184 4.40319C10.5045 3.76504 11.3738 3.44984 12.4328 3.46683C14.5196 3.49993 15.8578 4.53828 16.613 5.4036C17.2637 6.14918 17.6161 6.90028 17.7567 7.30539C16.6991 7.2011 15.9799 7.4035 15.6152 7.90896C14.822 9.00844 16.0492 11.1424 16.639 12.168C16.7472 12.3559 16.8405 12.5184 16.8699 12.5874C17.062 13.0387 17.3106 13.3401 17.4922 13.56C17.5478 13.6274 17.6018 13.6928 17.6429 13.7499C17.3226 13.8394 16.7472 14.0463 16.7996 15.0804C16.7573 15.5993 16.4566 18.0286 16.3039 18.8869C16.1022 20.0208 15.6718 20.4432 14.4618 20.6948V20.6947ZM19.6983 14.8845C19.3707 15.0319 18.8226 15.1424 18.3019 15.1662C17.7268 15.1923 17.434 15.1037 17.3651 15.0492C17.3328 14.4048 17.5801 14.3375 17.8419 14.2662C17.8831 14.255 17.9232 14.2441 17.962 14.231C17.986 14.25 18.0124 14.2688 18.0413 14.2873C18.5036 14.5831 19.328 14.6151 20.4921 14.3821L20.5048 14.3796C20.3478 14.5219 20.0792 14.7129 19.6983 14.8845Z",
+        fill: "white"
+      })]
+    }), /*#__PURE__*/jsxRuntime.jsx("defs", {
+      children: /*#__PURE__*/jsxRuntime.jsx("clipPath", {
+        id: "clip0_849_49322",
+        children: /*#__PURE__*/jsxRuntime.jsx("rect", {
+          width: "19.6835",
+          height: "19.6835",
+          fill: "white",
+          transform: "translate(2.1582 2.1582)"
+        })
+      })
+    })]
+  });
+};
+var MSSql = function MSSql(_ref4) {
+  var className = _ref4.className,
+    _ref4$circular = _ref4.circular,
+    circular = _ref4$circular === void 0 ? false : _ref4$circular;
+  if (circular) {
+    return /*#__PURE__*/jsxRuntime.jsxs("svg", {
+      className: className,
+      width: "1.5rem",
+      height: "1.5rem",
+      viewBox: "0 0 24 24",
+      fill: "none",
+      xmlns: "http://www.w3.org/2000/svg",
+      children: [/*#__PURE__*/jsxRuntime.jsx("rect", {
+        width: "24",
+        height: "24",
+        rx: "12",
+        fill: "#FFF1F1"
+      }), /*#__PURE__*/jsxRuntime.jsx("path", {
+        d: "M12.8269 9.89575L11.4466 10.3836L10.2457 10.9572L9.9098 11.0532C9.82424 11.1413 9.73453 11.2306 9.6375 11.3209C9.53108 11.4203 9.43197 11.5106 9.3558 11.5761C9.2713 11.6484 9.1461 11.7839 9.08246 11.8697C8.98752 11.9984 8.9124 12.1351 8.88006 12.2401C8.82267 12.4298 8.85086 12.6218 8.96144 12.7991C9.10333 13.0249 9.38607 13.2553 9.71574 13.4123C9.88372 13.4924 10.1665 13.5952 10.3793 13.6528C10.7329 13.7499 11.4174 13.8549 11.794 13.8707C11.8701 13.8741 11.9724 13.8741 11.9766 13.8707C11.9849 13.8651 12.0433 13.7443 12.1112 13.5941C12.3428 13.0825 12.5097 12.6026 12.6005 12.1927C12.6547 11.9442 12.6975 11.6134 12.7256 11.2215C12.733 11.112 12.7361 10.745 12.7298 10.6208C12.7204 10.4175 12.7037 10.2526 12.6777 10.0911C12.6735 10.0674 12.6724 10.046 12.6745 10.0448C12.6787 10.0415 12.6912 10.0369 12.8613 9.98386L12.8268 9.89579V9.89576H12.8269V9.89575ZM12.5118 10.0956C12.5243 10.0956 12.5577 10.4423 12.566 10.6614C12.5681 10.7077 12.5671 10.7382 12.565 10.7382C12.5567 10.7382 12.3887 10.6309 12.2687 10.5496C12.1644 10.4785 11.9662 10.3362 11.9349 10.3091C11.9244 10.3012 11.9254 10.3001 12.011 10.2684C12.156 10.2153 12.5003 10.0956 12.5118 10.0956ZM11.8086 10.3463C11.818 10.3463 11.842 10.361 11.8994 10.3994C12.1143 10.5451 12.4064 10.7213 12.5316 10.78C12.5702 10.798 12.5744 10.7913 12.4857 10.8568C12.2958 10.9968 12.059 11.1346 11.7689 11.2735C11.7178 11.2983 11.6751 11.3175 11.674 11.3175C11.6719 11.3175 11.6782 11.2893 11.6865 11.2554C11.7564 10.9742 11.7961 10.6896 11.7982 10.4615C11.7992 10.3486 11.7992 10.3486 11.8086 10.3452C11.8065 10.3463 11.8075 10.3463 11.8086 10.3463ZM11.6636 10.4062C11.6698 10.413 11.6657 10.6659 11.6573 10.7348C11.6385 10.8997 11.6093 11.0532 11.5614 11.226C11.5499 11.2678 11.5394 11.3028 11.5374 11.3051C11.5332 11.3107 11.3902 11.1594 11.3433 11.1007C11.2619 10.999 11.1983 10.8974 11.1513 10.798C11.1273 10.7472 11.0898 10.6479 11.0929 10.6445C11.1096 10.632 11.6594 10.4017 11.6636 10.4062ZM10.9813 10.6964C10.9823 10.6964 10.9833 10.6964 10.9844 10.6975C10.9865 10.6998 10.9938 10.7179 11.0001 10.7382C11.0334 10.8364 11.1085 10.981 11.1732 11.0736C11.2442 11.1752 11.337 11.2836 11.4142 11.3548C11.4393 11.3773 11.4622 11.3988 11.4653 11.4022C11.4716 11.409 11.4737 11.4078 11.3036 11.4778C11.1065 11.5591 10.8915 11.6404 10.6453 11.7263C10.5865 11.7468 10.5277 11.7675 10.469 11.7884C10.4596 11.7918 10.4628 11.7861 10.4899 11.7398C10.6119 11.5332 10.7976 11.1278 10.902 10.8409C10.9197 10.7913 10.9374 10.7416 10.9406 10.7303C10.9448 10.7145 10.95 10.7088 10.9635 10.7009C10.9708 10.6987 10.9781 10.6964 10.9813 10.6964ZM10.7726 10.7901C10.7757 10.7924 10.7225 10.9132 10.6704 11.0239C10.5692 11.2373 10.4586 11.4474 10.3104 11.7026C10.2854 11.7466 10.2614 11.7873 10.2583 11.7918C10.2531 11.7997 10.251 11.7974 10.2343 11.7624C10.1988 11.6868 10.1696 11.5896 10.1539 11.5004C10.1383 11.4123 10.1414 11.2588 10.1592 11.1639C10.1727 11.0939 10.1717 11.095 10.203 11.0781C10.3365 11.0047 10.7684 10.7856 10.7726 10.7901ZM12.5723 10.8692V10.9166C12.5723 11.1684 12.5473 11.514 12.5107 11.7658C12.5045 11.8099 12.4992 11.846 12.4982 11.8471C12.4982 11.8471 12.468 11.8381 12.4325 11.8268C12.276 11.7737 12.1059 11.6958 11.9526 11.6043C11.8514 11.5445 11.7043 11.4462 11.7084 11.4417C11.7095 11.4406 11.7533 11.4157 11.8044 11.3864C12.0089 11.2712 12.205 11.147 12.3751 11.0239C12.4388 10.9776 12.5347 10.9031 12.5556 10.8827L12.5723 10.8692ZM9.98491 11.2034C9.98909 11.2034 9.98804 11.2125 9.98178 11.2531C9.97761 11.2825 9.9724 11.3367 9.97032 11.3739C9.96196 11.5388 9.98701 11.6608 10.0621 11.8279C10.083 11.8742 10.0997 11.9126 10.0986 11.9137C10.0913 11.9205 9.40068 12.1396 9.18366 12.2039C9.11898 12.2231 9.06265 12.2401 9.05846 12.2412C9.05117 12.2435 9.05012 12.2423 9.05325 12.2231C9.07724 12.0571 9.19409 11.8403 9.35684 11.6574C9.46535 11.5354 9.55195 11.4643 9.7001 11.3728C9.80651 11.3073 9.97031 11.2091 9.98283 11.2046C9.98284 11.2034 9.98387 11.2034 9.98491 11.2034ZM11.6125 11.5185C11.6135 11.5174 11.6385 11.5321 11.6688 11.5512C11.8921 11.6913 12.203 11.8211 12.4679 11.8878L12.492 11.8934L12.4586 11.9137C12.3198 11.9973 11.8639 12.2028 11.3975 12.3914C11.3297 12.4185 11.263 12.4456 11.2504 12.4512C11.2379 12.4569 11.2264 12.4603 11.2264 12.4592C11.2264 12.458 11.2452 12.4185 11.2692 12.3699C11.3996 12.1057 11.5311 11.7839 11.5978 11.5603C11.6062 11.5388 11.6114 11.5196 11.6125 11.5185ZM11.4466 11.5772C11.4476 11.5784 11.4393 11.6021 11.4288 11.6292C11.3381 11.8674 11.2191 12.1272 11.0668 12.4185C11.0282 12.4931 10.9959 12.5529 10.9948 12.5529C10.9938 12.5529 10.9625 12.5326 10.9249 12.5077C10.7037 12.3609 10.5076 12.1802 10.3793 12.0052L10.3605 11.9804L10.4554 11.9521C10.7956 11.8516 11.0845 11.7432 11.3715 11.61C11.4121 11.5919 11.4455 11.5772 11.4466 11.5772ZM12.4774 11.9668C12.4774 11.9668 12.4784 11.9679 12.4774 11.9668C12.4784 11.9928 12.4252 12.2254 12.3814 12.3937C12.3449 12.5348 12.3135 12.6455 12.2562 12.8408C12.2311 12.9267 12.2092 12.9978 12.2082 12.9978C12.2071 12.9978 12.2009 12.9967 12.1946 12.9944C11.8848 12.9334 11.6072 12.8487 11.3464 12.7358C11.2734 12.7042 11.1691 12.6534 11.1628 12.6477C11.1607 12.6455 11.2233 12.6139 11.3026 12.5766C11.7773 12.3519 12.2697 12.0967 12.4388 11.9871C12.4586 11.9736 12.4742 11.9668 12.4774 11.9668ZM10.0976 12.0549C10.0997 12.0571 9.96719 12.2638 9.78147 12.545C9.71679 12.6432 9.64168 12.7584 9.61351 12.8013C9.58534 12.8442 9.54257 12.912 9.51857 12.9526L9.47473 13.026L9.42778 12.9831C9.37248 12.9334 9.27651 12.8273 9.23374 12.7686C9.14401 12.6478 9.08351 12.5202 9.05951 12.4038C9.04803 12.3496 9.04803 12.3225 9.05845 12.3192C9.0741 12.3146 9.35266 12.2435 9.6135 12.178C9.75852 12.1419 9.92648 12.0989 9.98699 12.0831C10.0475 12.0673 10.0966 12.0549 10.0976 12.0549ZM10.2311 12.1102L10.2645 12.1509C10.4148 12.3327 10.5681 12.4671 10.7538 12.5845C10.7872 12.6048 10.8123 12.6229 10.8102 12.6241C10.8029 12.6297 10.1654 12.8747 9.87015 12.9854C9.70428 13.0486 9.56759 13.0994 9.56657 13.0994C9.56553 13.0994 9.55613 13.0927 9.54568 13.0848L9.52691 13.0701L9.55716 13.0227C9.65523 12.8691 9.77836 12.7008 10.0465 12.3508L10.2311 12.1102ZM11.0637 12.755C11.0647 12.7539 11.1106 12.772 11.167 12.7946C11.3026 12.8499 11.41 12.8849 11.554 12.9244C11.7314 12.973 11.988 13.0204 12.1393 13.034C12.1623 13.0362 12.1748 13.0385 12.1706 13.0419C12.1633 13.0464 12.01 13.1017 11.8973 13.1401C11.7178 13.2011 11.1701 13.3761 10.7236 13.515C10.6412 13.541 10.5702 13.5624 10.566 13.5636C10.5556 13.5658 10.5212 13.5557 10.5212 13.5511C10.5212 13.5489 10.5462 13.5139 10.5765 13.4755C10.7267 13.2813 10.8759 13.0644 11.0001 12.8589C11.0345 12.8024 11.0637 12.7562 11.0637 12.755ZM10.8801 12.7607C10.8811 12.7618 10.807 12.8905 10.6777 13.1119C10.6224 13.2056 10.5608 13.3117 10.5389 13.349C10.518 13.3851 10.4867 13.4416 10.469 13.4732L10.4387 13.5308L10.4231 13.5263C10.3855 13.515 10.1216 13.4145 10.0517 13.384C9.96508 13.3467 9.87536 13.3016 9.80858 13.2632C9.72513 13.2146 9.62081 13.1423 9.62915 13.1401C9.63123 13.139 9.77417 13.0972 9.9463 13.0464C10.4033 12.912 10.6568 12.8341 10.8227 12.7776C10.8529 12.7674 10.879 12.7595 10.8801 12.7607ZM12.179 13.0904H12.18C12.1842 13.1017 12.0152 13.6099 11.9536 13.7702C11.9401 13.8063 11.9349 13.8154 11.9275 13.8142C11.9098 13.8131 11.6646 13.7759 11.5154 13.7521C11.2557 13.7092 10.8196 13.6268 10.71 13.5997L10.685 13.5941L10.8404 13.5556C11.1743 13.4743 11.3349 13.4303 11.4977 13.3761C11.7032 13.3083 11.9067 13.2236 12.1122 13.1198C12.1445 13.104 12.1717 13.0915 12.179 13.0904Z",
+        fill: "url(#paint0_linear_849_49429)"
+      }), /*#__PURE__*/jsxRuntime.jsx("path", {
+        d: "M11.4035 6.4129C11.3805 6.40953 11.0102 6.55407 10.7713 6.65908C10.4489 6.80138 10.1985 6.9369 10.0441 7.05432C9.9867 7.09838 9.9147 7.17628 9.90324 7.20677C9.89907 7.21806 9.89697 7.23161 9.89697 7.24516L10.0368 7.38858L10.3696 7.50376L11.1615 7.65734L12.067 7.8256L12.0764 7.74091C12.0733 7.74091 12.0712 7.73979 12.0681 7.73979L11.9491 7.71945L11.9252 7.67316C11.802 7.43827 11.6664 7.14692 11.5871 6.95043C11.5256 6.79798 11.4671 6.62183 11.4348 6.49535C11.4171 6.41856 11.415 6.41405 11.4035 6.41292V6.41289H11.4035V6.4129ZM11.3868 6.47051H11.3879C11.3889 6.47162 11.3931 6.50326 11.3972 6.54051C11.415 6.69862 11.4473 6.85105 11.4984 7.01593C11.537 7.14015 11.537 7.13338 11.4922 7.11869C11.3858 7.08708 10.909 6.99787 10.5636 6.94592C10.5084 6.93801 10.4614 6.93011 10.4614 6.92899C10.4572 6.92447 10.7107 6.78105 10.8224 6.7246C10.9653 6.65344 11.3576 6.47615 11.3868 6.47051ZM10.381 6.97641L10.4218 6.99107C10.6429 7.07239 11.199 7.18758 11.5057 7.21468C11.5402 7.21807 11.5694 7.22146 11.5704 7.22146C11.5714 7.22259 11.5422 7.23953 11.5047 7.25872C11.3565 7.33889 11.1938 7.43714 11.0811 7.51281C11.0477 7.53538 11.0175 7.55346 11.0133 7.55346C11.0091 7.55346 10.9872 7.54894 10.9643 7.54555L10.9225 7.53877L10.8182 7.42809C10.6346 7.235 10.4906 7.08595 10.4353 7.02947L10.381 6.97641ZM10.3393 7.01141L10.4864 7.21016C10.5668 7.3197 10.6481 7.42697 10.6659 7.45068C10.6836 7.47441 10.6982 7.49361 10.6972 7.49474C10.693 7.49812 10.4844 7.45407 10.3738 7.42698C10.26 7.39874 10.2131 7.38519 10.1432 7.36149L10.0858 7.34115V7.32533C10.0868 7.24967 10.1755 7.13675 10.3258 7.02158L10.3393 7.01141ZM11.5892 7.28243C11.5934 7.28243 11.5986 7.29259 11.6111 7.32308C11.6466 7.40777 11.7572 7.63589 11.7843 7.67992C11.7927 7.69462 11.8072 7.69574 11.6601 7.66977C11.3065 7.60764 11.1927 7.58734 11.1927 7.58508C11.1927 7.58396 11.2032 7.57605 11.2167 7.56813C11.3263 7.50265 11.4369 7.41908 11.535 7.32987C11.559 7.30841 11.5809 7.28808 11.585 7.28469C11.5861 7.28243 11.5882 7.28131 11.5892 7.28243Z",
+        fill: "url(#paint1_linear_849_49429)"
+      }), /*#__PURE__*/jsxRuntime.jsx("path", {
+        d: "M9.91066 7.19092C9.91066 7.19092 9.88772 7.23046 9.90963 7.28918C9.9232 7.32531 9.96284 7.36934 10.0077 7.41452C10.0077 7.41452 10.472 7.90461 10.5283 7.97463C10.7849 8.29533 10.8966 8.61152 10.907 9.04742C10.9133 9.32747 10.8642 9.57365 10.7422 9.85935C10.5252 10.372 10.0671 10.9378 9.36084 11.5657L9.46414 11.5284C9.53091 11.4742 9.62168 11.4166 9.83451 11.2901C10.3259 10.9988 10.8788 10.7311 11.557 10.4556C12.5335 10.0581 14.1392 9.59283 15.0531 9.44152L15.148 9.4257L15.1334 9.40086C15.05 9.26083 14.9926 9.17389 14.9237 9.08129C14.7234 8.81252 14.4803 8.59459 14.183 8.4139C13.774 8.16661 13.245 7.97351 12.5752 7.83009C12.449 7.80297 12.1715 7.75104 11.9461 7.71377C11.4683 7.63361 11.1595 7.57827 10.8194 7.51503C10.6973 7.49244 10.5147 7.45857 10.3937 7.43034C10.3311 7.41565 10.2111 7.38516 10.1172 7.35016C10.0421 7.31853 9.93361 7.28691 9.91066 7.19092ZM10.1798 7.47324C10.1809 7.47213 10.1976 7.47888 10.2195 7.48679C10.2591 7.50146 10.3103 7.5184 10.3708 7.53648C10.4166 7.55011 10.4625 7.56329 10.5085 7.576C10.5711 7.59293 10.6232 7.60874 10.6243 7.60874C10.6316 7.61665 10.737 7.98138 10.7724 8.12141C10.786 8.1745 10.7964 8.21966 10.7954 8.21966C10.7943 8.2208 10.7829 8.20159 10.7693 8.17562C10.6472 7.94299 10.4542 7.70698 10.231 7.51726C10.2018 7.4947 10.1798 7.47437 10.1798 7.47324ZM10.6931 7.62682C10.6984 7.62682 10.7213 7.63021 10.7495 7.63698C10.9268 7.67989 11.2451 7.74539 11.4485 7.78266C11.4829 7.7883 11.5101 7.79509 11.5101 7.79733C11.5101 7.7996 11.4975 7.80749 11.4819 7.81653C11.4475 7.83572 11.3087 7.92493 11.2628 7.95881C11.147 8.04237 11.0427 8.13271 10.9675 8.21402C10.9373 8.24677 10.9112 8.27387 10.9112 8.27387C10.9112 8.27387 10.9049 8.25468 10.8997 8.23095C10.8622 8.07398 10.7839 7.84135 10.713 7.67762C10.7015 7.65166 10.6921 7.62794 10.6921 7.62569C10.6921 7.62794 10.6921 7.62682 10.6931 7.62682ZM11.5966 7.81314C11.6029 7.81539 11.6133 7.85379 11.6342 7.93848C11.6728 8.10223 11.6905 8.28517 11.6843 8.45569C11.6822 8.50311 11.6801 8.54715 11.678 8.55281L11.6749 8.56409L11.6206 8.5449C11.509 8.50651 11.3275 8.4489 11.172 8.40148C11.0833 8.37551 11.0114 8.35179 11.0114 8.34954C11.0114 8.34275 11.1407 8.20273 11.196 8.14966C11.3014 8.04914 11.5872 7.80975 11.5966 7.81314ZM11.6686 7.82442C11.6718 7.82105 12.1006 7.90121 12.2957 7.94187C12.4407 7.97236 12.6514 8.01979 12.6639 8.02545C12.6702 8.0277 12.6483 8.04124 12.5784 8.07512C12.3029 8.20951 12.0985 8.33032 11.895 8.47714C11.8418 8.51553 11.797 8.54715 11.7959 8.54715C11.7949 8.54715 11.7938 8.51441 11.7938 8.47488C11.7938 8.26033 11.7542 8.04351 11.6811 7.86057C11.6738 7.8425 11.6676 7.82557 11.6686 7.82442ZM12.7776 8.06158C12.7808 8.06496 12.7672 8.15644 12.7547 8.21064C12.7171 8.3789 12.6159 8.62848 12.4918 8.86335C12.4699 8.90513 12.4501 8.93901 12.448 8.94014C12.4459 8.94126 12.4177 8.92432 12.3854 8.90399C12.2644 8.8272 12.1266 8.75493 11.9764 8.68717C11.9347 8.66798 11.8982 8.65216 11.8971 8.64992C11.8898 8.64314 12.2257 8.40261 12.4031 8.28742C12.544 8.19483 12.7735 8.05705 12.7776 8.06158ZM12.8569 8.07512C12.8663 8.07512 13.0562 8.13159 13.1553 8.16321C13.4005 8.24227 13.6822 8.35405 13.8658 8.44439L13.9419 8.48167L13.8888 8.49521C13.4402 8.607 13.0562 8.73575 12.6858 8.89836C12.6556 8.91191 12.6284 8.9232 12.6264 8.9232C12.6243 8.9232 12.6347 8.89723 12.6483 8.8656C12.7599 8.60927 12.8319 8.34163 12.8496 8.11351C12.8507 8.09205 12.8538 8.07512 12.8569 8.07512ZM10.9665 8.5449C10.9696 8.5415 11.1146 8.57878 11.1929 8.60247C11.3118 8.63862 11.5643 8.73008 11.5643 8.73686C11.5643 8.73799 11.5361 8.76396 11.5028 8.79559C11.3661 8.91868 11.2346 9.04853 11.0771 9.2134C11.0301 9.26198 10.9905 9.3015 10.9884 9.3015C10.9863 9.3015 10.9853 9.29471 10.9863 9.28568C11.0103 9.09596 11.0051 8.85205 10.9717 8.60474C10.9686 8.57311 10.9654 8.54602 10.9665 8.5449ZM14.014 8.54829C14.016 8.55054 13.9472 8.66798 13.9034 8.7346C13.8408 8.83171 13.7489 8.96047 13.5413 9.24278C13.4318 9.39183 13.3087 9.5601 13.268 9.61656C13.2263 9.67301 13.1918 9.72043 13.1908 9.72043C13.1897 9.72043 13.1762 9.70012 13.1616 9.67528C13.0447 9.48556 12.9049 9.31956 12.739 9.1705C12.7077 9.14226 12.6733 9.11177 12.6618 9.10274C12.6504 9.09371 12.641 9.08467 12.641 9.08355C12.641 9.08017 12.8183 8.99771 12.9529 8.93901C13.1887 8.83511 13.51 8.7109 13.751 8.63071C13.8773 8.58781 14.0119 8.54602 14.014 8.54829ZM14.0943 8.57086C14.0985 8.56974 14.1235 8.58329 14.1538 8.60247C14.4073 8.75944 14.6556 8.96158 14.8517 9.16937C14.907 9.2281 15.0437 9.38168 15.0416 9.3828C15.0416 9.3828 14.9936 9.38732 14.9373 9.39183C14.498 9.42798 13.9357 9.52846 13.3953 9.66961C13.3588 9.67864 13.3264 9.68655 13.3243 9.68655C13.3223 9.68655 13.3629 9.64251 13.4141 9.58945C13.7312 9.25858 13.8763 9.04967 14.0473 8.67701C14.0713 8.62169 14.0922 8.57426 14.0943 8.57086C14.0932 8.57086 14.0932 8.57086 14.0943 8.57086ZM11.7709 8.82835C11.7855 8.83172 11.9211 8.90063 12.0233 8.95595C12.1172 9.00674 12.2581 9.08807 12.2654 9.09483C12.2664 9.09596 12.2163 9.12419 12.1548 9.15695C11.9587 9.26309 11.7907 9.36359 11.6154 9.47877C11.5653 9.51153 11.5236 9.53864 11.5226 9.53864C11.5184 9.53864 11.5194 9.5341 11.5476 9.47877C11.6415 9.29359 11.7166 9.07226 11.7594 8.85656C11.7636 8.83963 11.7677 8.82835 11.7709 8.82835ZM11.6352 8.85544C11.6384 8.85883 11.6029 8.99772 11.581 9.07338C11.5382 9.2168 11.4662 9.39635 11.3963 9.53186C11.3796 9.56346 11.3546 9.60977 11.341 9.63574L11.3149 9.6809L11.2565 9.61994C11.1887 9.54879 11.1334 9.50475 11.0625 9.46522C11.0343 9.44942 11.0124 9.43586 11.0124 9.43361C11.0124 9.42458 11.1908 9.24955 11.3275 9.12307C11.4255 9.0316 11.6321 8.85205 11.6352 8.85544ZM12.4647 9.22471L12.5158 9.26083C12.6326 9.34328 12.7703 9.45281 12.8757 9.54879C12.9352 9.60186 13.0499 9.71367 13.0729 9.74077L13.0854 9.75546L13.0009 9.78143C12.5231 9.92483 12.1538 10.0524 11.7229 10.2241C11.6749 10.2433 11.6342 10.2591 11.6311 10.2591C11.6248 10.2591 11.6196 10.2647 11.7271 10.1574C12.0025 9.88307 12.2466 9.58041 12.4281 9.28567L12.4647 9.22471ZM12.2466 9.28343C12.2487 9.28568 12.1058 9.50362 12.0202 9.62671C11.918 9.77352 11.7364 10.0197 11.6112 10.18C11.5591 10.2467 11.5142 10.302 11.5121 10.3031C11.509 10.3043 11.508 10.2873 11.508 10.2613C11.508 10.1247 11.4756 9.97902 11.4193 9.85482C11.3953 9.80287 11.3911 9.79045 11.3963 9.78481C11.4162 9.7656 11.7198 9.57815 11.9117 9.46636C12.0411 9.39183 12.2435 9.28117 12.2466 9.28343ZM10.9279 9.6335C10.931 9.6335 10.955 9.64704 10.9821 9.66286C11.0489 9.70237 11.1084 9.74641 11.1616 9.79385C11.1637 9.7961 11.1365 9.81983 11.1011 9.84804C11.002 9.92483 10.8517 10.0479 10.7641 10.1236C10.6723 10.2026 10.6692 10.2049 10.6796 10.188C10.7484 10.0739 10.7829 10.0095 10.8194 9.9271C10.8517 9.85371 10.8841 9.76675 10.907 9.69109C10.9154 9.65834 10.9258 9.6335 10.9279 9.6335ZM11.2795 9.93161C11.2847 9.93049 11.291 9.94064 11.3191 9.98582C11.3786 10.0818 11.4245 10.2105 11.436 10.3144L11.4381 10.337L11.2951 10.3969C11.0395 10.5041 10.8037 10.6103 10.6441 10.6893C10.5992 10.7119 10.521 10.7526 10.4699 10.7797C10.4188 10.8079 10.377 10.8294 10.377 10.8282C10.377 10.8271 10.4094 10.8011 10.449 10.7695C10.761 10.5245 11.0312 10.2557 11.2336 9.98695C11.2555 9.95871 11.2753 9.93274 11.2774 9.93161L11.2795 9.93161ZM11.1178 9.97453C11.1219 9.97904 11.003 10.1247 10.9216 10.2139C10.7203 10.4364 10.521 10.6103 10.2737 10.7797C10.2424 10.8011 10.2143 10.8203 10.2111 10.8226C10.2038 10.8271 10.2132 10.8158 10.3217 10.6882C10.3906 10.608 10.4428 10.5403 10.5022 10.4567C10.5419 10.4014 10.5492 10.3935 10.6066 10.3494C10.7599 10.2297 11.1136 9.97 11.1178 9.97453Z",
+        fill: "url(#paint2_radial_849_49429)"
+      }), /*#__PURE__*/jsxRuntime.jsx("path", {
+        d: "M7.99745 14.8872C7.9782 14.8872 7.95895 14.8892 7.93987 14.8892C7.55114 14.9116 7.28896 15.0968 7.13567 15.4584C7.00456 15.7854 7.01888 16.2129 7.13714 16.542C7.27466 16.8635 7.49689 17.0332 7.86781 17.0973C7.94629 17.1112 7.99892 17.1578 8.15092 17.3499L8.33795 17.5871H8.67716L8.4516 17.341C8.32692 17.206 8.22608 17.0885 8.22608 17.0782C8.22608 17.0679 8.27377 17.0453 8.3315 17.0262C8.52183 16.9639 8.67989 16.8047 8.79045 16.5608C8.87993 16.3649 8.89277 16.3044 8.9056 16.0607C8.93916 15.3353 8.58582 14.8818 7.99743 14.887L7.99745 14.8872ZM8.29484 16.7841C8.12982 16.8706 7.8902 16.8879 7.73379 16.8258C7.57206 16.7615 7.41548 16.5797 7.34505 16.3739C7.26677 16.1488 7.27795 15.7337 7.36743 15.5467C7.51136 15.249 7.7017 15.1121 7.97984 15.1121C8.39239 15.1121 8.62708 15.3856 8.65771 15.8996C8.68192 16.3286 8.54916 16.6505 8.29502 16.7839L8.29484 16.7841ZM14.1545 15.5068C14.0123 15.5068 13.9033 15.5691 13.83 15.692L13.7724 15.7892V15.5364H13.5262V17.0526H13.7723V16.568C13.7723 16.1248 13.7774 16.073 13.8346 15.9517C13.9134 15.7854 14.0491 15.7025 14.1802 15.7422L14.2682 15.77V15.5072H14.1545V15.5068ZM12.7079 15.4929C12.6596 15.4929 12.6085 15.4999 12.5575 15.512C12.228 15.6052 12.0423 15.9466 12.0536 16.2979C12.0536 16.592 12.1064 16.739 12.2376 16.8933C12.5062 17.1318 12.7491 17.1508 13.077 17.0229C13.1329 16.9971 13.1938 16.9673 13.1938 16.9673V16.7287L13.077 16.7942C12.8116 16.9193 12.6118 16.9193 12.4517 16.772C12.3496 16.6595 12.3047 16.5245 12.2839 16.3705H13.2768V16.1661C13.2768 15.7493 13.0451 15.4862 12.7077 15.4929H12.7079ZM12.3063 16.1578C12.3063 16.1578 12.343 15.8978 12.479 15.7958C12.5445 15.7457 12.6197 15.7215 12.6932 15.7215C12.7669 15.7215 12.8404 15.7473 12.9011 15.7976C13.0258 15.9013 13.0467 16.1558 13.0467 16.1558H12.3063V16.1578H12.3063ZM6.36978 15.8843C6.10283 15.7092 5.98438 15.583 5.99886 15.4342C6.04029 15.0224 6.51043 15.0793 6.77078 15.2351L6.77263 14.9581C6.77263 14.9581 6.62869 14.8906 6.42241 14.887C6.10594 14.8819 5.90131 14.9942 5.80543 15.2228C5.6646 15.5602 5.7893 15.8146 6.24 16.0984C6.49302 16.2578 6.60486 16.3961 6.60486 16.5469C6.60486 16.8585 6.25777 16.9673 5.89968 16.7718C5.82598 16.7321 5.76363 16.699 5.76034 16.699C5.74749 16.7873 5.75411 16.9986 5.75411 16.9986C5.75411 16.9986 5.86413 17.0487 6.02914 17.0832C6.43837 17.1715 6.81078 16.9637 6.84598 16.6263C6.87661 16.3096 6.77079 16.1435 6.3698 15.8841L6.36978 15.8843ZM16.3339 15.4893C16.2859 15.4893 16.2349 15.4965 16.1817 15.5086C15.8526 15.6019 15.6672 15.9432 15.6799 16.2945C15.6799 16.5882 15.7325 16.7339 15.8636 16.8879C16.1322 17.1267 16.3752 17.1459 16.7047 17.0177C16.7604 16.9919 16.8211 16.9626 16.8211 16.9626V16.7236L16.7045 16.7895C16.4386 16.9141 16.2387 16.9141 16.0792 16.7669C15.9766 16.6545 15.932 16.5212 15.9113 16.3654H16.9025V16.1609C16.9025 15.7462 16.6707 15.4828 16.3334 15.4898L16.3339 15.4893ZM15.9324 16.1542C15.9324 16.1542 15.9694 15.8946 16.1053 15.7906C16.1705 15.7404 16.2457 15.7162 16.3192 15.7162C16.3926 15.7162 16.4665 15.742 16.5272 15.7924C16.6519 15.8962 16.6728 16.1524 16.6728 16.1524H15.9326L15.9324 16.1542ZM11.4189 15.8877C11.1519 15.713 11.0338 15.5864 11.0481 15.4375C11.0895 15.0255 11.5597 15.0827 11.82 15.2385L11.8219 14.9614C11.8219 14.9614 11.678 14.894 11.4717 14.8908C11.1552 14.8856 10.9506 14.9979 10.8545 15.2266C10.7139 15.5639 10.8402 15.8184 11.2894 16.1022C11.5421 16.2614 11.6539 16.3979 11.6539 16.5487C11.6539 16.8603 11.307 16.9709 10.9489 16.7736C10.8756 16.7339 10.8133 16.7011 10.8096 16.7011C10.7967 16.7894 10.8034 17.0008 10.8034 17.0008C10.8034 17.0008 10.9121 17.049 11.0766 17.0853C11.4862 17.1739 11.8587 16.9663 11.8938 16.6289C11.9242 16.3137 11.8186 16.1476 11.4189 15.888V15.8877H11.4189ZM17.7808 15.5032C17.6385 15.5032 17.5283 15.5657 17.4562 15.6886L17.3987 15.7854V15.533H17.1524V17.0489H17.3985V16.5642C17.3985 16.1212 17.4034 16.0692 17.4608 15.9482C17.5397 15.7821 17.6753 15.6989 17.8064 15.7388L17.8944 15.7666V15.5032H17.7808V15.5032ZM9.46063 15.8789V14.9132H9.21237V17.0522H10.2564V16.7996H9.46064V15.8789H9.46063ZM15.2019 16.18L14.9972 16.7563L14.8005 16.1768L14.6006 15.5346H14.3465C14.5112 16.0399 14.6903 16.5539 14.8709 17.0522C14.9492 17.0542 15.0277 17.0522 15.106 17.0522L15.3823 16.3012L15.6637 15.5348H15.4208C15.4208 15.5348 15.3135 15.8392 15.2017 16.1802L15.2019 16.18ZM10.0327 14.3303C10.0727 14.3303 10.106 14.3164 10.1335 14.2867C10.1607 14.2573 10.175 14.2227 10.175 14.1795C10.175 14.1362 10.1607 14.1001 10.1335 14.0723C10.106 14.0445 10.0743 14.0306 10.0345 14.0306C9.9942 14.0306 9.96081 14.0445 9.93367 14.0739C9.90618 14.1033 9.89371 14.1394 9.89371 14.1811C9.89371 14.2247 9.90655 14.2608 9.93367 14.2883C9.95935 14.316 9.99273 14.3299 10.0327 14.3299V14.3303ZM9.94469 14.0842C9.96852 14.0584 9.99749 14.0465 10.0345 14.0465C10.0694 14.0465 10.0983 14.0584 10.1226 14.0842C10.1464 14.11 10.1592 14.1414 10.1592 14.1795C10.1592 14.2176 10.1464 14.2505 10.1226 14.2763C10.0984 14.3021 10.0694 14.3144 10.0345 14.3144C9.99914 14.3144 9.97035 14.3025 9.94653 14.2763C9.92269 14.2505 9.90986 14.2176 9.90986 14.1795C9.90986 14.1414 9.92086 14.11 9.94469 14.0842ZM10.0039 14.1934H10.02C10.0314 14.1934 10.0426 14.2053 10.0521 14.2279L10.0714 14.2747H10.1016L10.0778 14.2227C10.0681 14.2019 10.0586 14.1898 10.0474 14.1864C10.0615 14.1828 10.0727 14.1777 10.0807 14.1673C10.0888 14.1584 10.0917 14.1463 10.0917 14.1326C10.0917 14.1167 10.0872 14.1049 10.0774 14.0961C10.0664 14.0862 10.0488 14.0808 10.0261 14.0808H9.97514V14.2747H10.0008V14.1934L10.0039 14.1934ZM10.0039 14.1033H10.0263C10.0424 14.1033 10.0538 14.1068 10.06 14.112C10.0661 14.1172 10.0677 14.1239 10.0677 14.1362C10.0677 14.1586 10.0549 14.1692 10.0311 14.1692H10.0036V14.1033H10.0039ZM5.90295 14.1761C5.90295 14.1086 5.90113 14.0584 5.89965 14.0289H5.90113C5.90753 14.0638 5.91542 14.0898 5.92184 14.107L6.16019 14.6834H6.20017L6.43852 14.1019C6.44496 14.086 6.45138 14.0622 6.45926 14.029H6.46108C6.45632 14.0866 6.45467 14.1366 6.45467 14.1765V14.6852H6.53625V13.929H6.43394L6.21484 14.4549C6.20677 14.4758 6.19558 14.507 6.18128 14.5482H6.17797C6.17321 14.5278 6.16202 14.4966 6.14607 14.4585L5.9319 13.9272H5.82318V14.6834H5.90166V14.1765L5.90295 14.1761ZM6.71504 14.1775H6.78546V14.6485H6.71504V14.1775ZM6.75024 14.0048C6.76492 14.0048 6.77739 13.9995 6.78691 13.989C6.79664 13.9786 6.80306 13.9651 6.80306 13.9493C6.80306 13.9338 6.79829 13.9199 6.78711 13.9096C6.77721 13.8991 6.76455 13.8937 6.75007 13.8937C6.73578 13.8937 6.72294 13.8991 6.71339 13.9096C6.7037 13.9199 6.69726 13.9338 6.69726 13.9493C6.69726 13.9665 6.70222 13.9786 6.71339 13.989C6.72441 13.9995 6.73577 14.0048 6.75007 14.0048H6.75024ZM7.28749 14.6588V14.5758C7.24898 14.607 7.20754 14.6225 7.16464 14.6225C7.11331 14.6225 7.07167 14.6034 7.04123 14.5669C7.01099 14.5308 6.99486 14.4806 6.99486 14.4181C6.99486 14.3526 7.01099 14.3005 7.04435 14.2609C7.07644 14.2228 7.11807 14.2037 7.16905 14.2037C7.21067 14.2037 7.25062 14.2176 7.2875 14.2454V14.1571C7.25395 14.138 7.21563 14.1293 7.17235 14.1293C7.09239 14.1293 7.03007 14.1571 6.9835 14.2107C6.93728 14.2643 6.91345 14.3371 6.91345 14.425C6.91345 14.5032 6.93416 14.5689 6.97727 14.6191C7.02218 14.6707 7.07959 14.6969 7.14999 14.6969C7.20443 14.6953 7.24898 14.683 7.28749 14.6588ZM7.48899 14.4077C7.48899 14.3456 7.50182 14.2954 7.52566 14.2608C7.54804 14.2297 7.57516 14.214 7.60725 14.214C7.63439 14.214 7.65364 14.2194 7.66775 14.2315V14.1414C7.65676 14.1362 7.6408 14.1344 7.62009 14.1344C7.5913 14.1344 7.56564 14.1449 7.54309 14.1642C7.51925 14.1846 7.50018 14.2158 7.489 14.2555H7.48717V14.1449H7.40741V14.6848H7.48735V14.4077H7.48899ZM7.94793 14.6955C8.02312 14.6955 8.08362 14.6693 8.12854 14.6173C8.17326 14.5657 8.19564 14.4962 8.19564 14.4097C8.19564 14.3214 8.17512 14.2539 8.1333 14.2037C8.09187 14.1535 8.03429 14.1292 7.9591 14.1292C7.88392 14.1292 7.82341 14.1535 7.7785 14.2003C7.73046 14.2519 7.70516 14.3248 7.70516 14.4182C7.70516 14.4996 7.72569 14.5671 7.76898 14.6173C7.8137 14.6693 7.87293 14.6953 7.94793 14.6953V14.6955ZM7.83425 14.2557C7.86469 14.221 7.90467 14.2037 7.95416 14.2037C8.00552 14.2037 8.04402 14.221 8.07262 14.2557C8.1014 14.292 8.11572 14.3438 8.11572 14.4131C8.11572 14.479 8.10287 14.5308 8.07573 14.5655C8.04861 14.6018 8.00863 14.6211 7.95581 14.6211C7.90448 14.6211 7.86469 14.6018 7.83425 14.5655C7.80401 14.529 7.78951 14.479 7.78951 14.4131C7.7864 14.3476 7.80236 14.294 7.83425 14.2557ZM8.54568 14.6485C8.57611 14.6191 8.59226 14.583 8.59226 14.5377C8.59226 14.498 8.57941 14.4651 8.55559 14.4391C8.53614 14.4182 8.50609 14.3994 8.46263 14.3803C8.42411 14.3629 8.40028 14.3474 8.38744 14.3353C8.37461 14.3214 8.36672 14.3041 8.36672 14.2797C8.36672 14.2573 8.3748 14.24 8.39057 14.2261C8.40671 14.2122 8.42724 14.2055 8.45475 14.2055C8.49784 14.2055 8.53468 14.2178 8.56841 14.2438V14.1573C8.53615 14.1398 8.50113 14.1315 8.46115 14.1315C8.40982 14.1315 8.36654 14.1468 8.33462 14.1763C8.30107 14.2057 8.28513 14.2438 8.28513 14.2886C8.28513 14.3283 8.29612 14.3613 8.31701 14.3855C8.33462 14.4061 8.36471 14.4272 8.40649 14.446C8.44648 14.4651 8.47361 14.4823 8.48809 14.4962C8.50239 14.5101 8.5088 14.5274 8.5088 14.5478C8.5088 14.5982 8.47691 14.6243 8.41456 14.6243C8.36652 14.6243 8.32345 14.6072 8.28492 14.5727V14.6659C8.31976 14.6886 8.36157 14.6989 8.40777 14.6989C8.467 14.6955 8.51338 14.6798 8.54529 14.6487L8.54568 14.6485ZM8.92633 14.1293C8.85114 14.1293 8.79064 14.1535 8.74572 14.2003C8.69805 14.2519 8.67238 14.3248 8.67238 14.4183C8.67238 14.4996 8.69311 14.5671 8.73619 14.6173C8.78111 14.6693 8.84015 14.6953 8.91533 14.6953C8.99233 14.6953 9.05102 14.6691 9.09594 14.6171C9.14086 14.5655 9.16322 14.496 9.16322 14.4095C9.16322 14.3212 9.14232 14.2537 9.10087 14.2035C9.05762 14.1533 9.00003 14.1291 8.92669 14.1291L8.92633 14.1293ZM9.08144 14.4131C9.08144 14.479 9.06861 14.5308 9.04148 14.5655C9.01433 14.6018 8.97436 14.6211 8.92155 14.6211C8.87019 14.6211 8.83042 14.6018 8.79997 14.5655C8.76972 14.529 8.75524 14.479 8.75524 14.4131C8.75524 14.3436 8.7712 14.29 8.80329 14.2539C8.83353 14.2194 8.87352 14.2019 8.9232 14.2019C8.9727 14.2019 9.0125 14.2194 9.04127 14.2539C9.06695 14.292 9.08126 14.3438 9.08126 14.4131H9.08144ZM9.29745 14.6832H9.37721V14.2158H9.494V14.1432H9.3772V14.0598C9.3772 13.984 9.40432 13.9459 9.46044 13.9459C9.47933 13.9459 9.49858 13.9511 9.51289 13.9598V13.8818C9.49858 13.8749 9.47933 13.8733 9.45529 13.8733C9.41221 13.8733 9.37701 13.8872 9.34822 13.9166C9.31466 13.9511 9.29688 13.9959 9.29688 14.0567V14.1452H9.21252V14.2178H9.29688V14.6834L9.29745 14.6832ZM9.62509 14.5359C9.62509 14.6415 9.6682 14.6953 9.7562 14.6953C9.78811 14.6953 9.81212 14.6897 9.83137 14.6774V14.6032C9.81671 14.6151 9.79929 14.6207 9.78004 14.6207C9.75292 14.6207 9.73384 14.6137 9.72265 14.598C9.71128 14.5826 9.70487 14.5564 9.70487 14.5202V14.2156H9.83137V14.143H9.70487V13.9838C9.67736 13.9941 9.65041 14.0029 9.62491 14.0116V14.143H9.53874V14.2156H9.62491V14.5357L9.62509 14.5359ZM18.2062 15.531C18.179 15.5032 18.1469 15.4893 18.1072 15.4893C18.0668 15.4893 18.0334 15.5032 18.0063 15.533C17.9792 15.5622 17.9663 15.5985 17.9663 15.6402C17.9663 15.6834 17.9792 15.7196 18.0061 15.7473C18.0333 15.7751 18.0666 15.789 18.107 15.789C18.1467 15.789 18.1803 15.7751 18.2078 15.7457C18.2348 15.716 18.2491 15.6816 18.2491 15.6386C18.2476 15.5949 18.2331 15.5588 18.206 15.531L18.2062 15.531ZM18.1933 15.7354C18.1695 15.7612 18.1405 15.7731 18.1053 15.7731C18.0705 15.7731 18.0415 15.7612 18.0173 15.7354C17.9935 15.7092 17.9806 15.6765 17.9806 15.6382C17.9806 15.6005 17.9916 15.5691 18.0158 15.5429C18.0397 15.5171 18.0685 15.5052 18.1053 15.5052C18.1402 15.5052 18.1691 15.5171 18.1933 15.5429C18.2172 15.5691 18.23 15.6005 18.23 15.6382C18.23 15.6783 18.219 15.7092 18.1933 15.7354ZM18.1214 15.6471C18.1357 15.6435 18.1471 15.6366 18.155 15.6281C18.1631 15.6191 18.166 15.607 18.166 15.5932C18.166 15.5777 18.1614 15.5654 18.1517 15.5568C18.1407 15.5469 18.1229 15.5415 18.1004 15.5415H18.0494V15.7352H18.0751V15.6539H18.091C18.1021 15.6539 18.1131 15.6658 18.1229 15.6884L18.142 15.735H18.1725L18.1486 15.683C18.1404 15.6604 18.1308 15.6501 18.1211 15.6467L18.1214 15.6471ZM18.1038 15.6297H18.0763V15.5642H18.0989C18.1149 15.5642 18.126 15.5673 18.1325 15.5727C18.1389 15.5779 18.1403 15.5846 18.1403 15.5969C18.1403 15.6193 18.1275 15.6297 18.1037 15.6297L18.1038 15.6297ZM13.643 14.1207H13.6654V13.9268H13.7246V13.9026H13.5838V13.9268H13.643V14.1207H13.643ZM13.7787 13.9751C13.7787 13.9562 13.7787 13.9407 13.7774 13.932C13.7789 13.9423 13.7822 13.9493 13.7836 13.9544L13.8524 14.1207H13.8634L13.9323 13.9528C13.9342 13.9477 13.9356 13.9409 13.9387 13.932C13.9373 13.9493 13.9373 13.9631 13.9373 13.9737V14.1206H13.9611V13.9026H13.9323L13.87 14.0531C13.8685 14.0584 13.8636 14.0689 13.8604 14.0809H13.8586C13.8573 14.0739 13.854 14.067 13.8494 14.0551L13.7871 13.9026H13.7548V14.121H13.7774V13.9753L13.7787 13.9751Z",
+        fill: "#231F1F"
+      }), /*#__PURE__*/jsxRuntime.jsxs("defs", {
+        children: [/*#__PURE__*/jsxRuntime.jsxs("linearGradient", {
+          id: "paint0_linear_849_49429",
+          x1: "9.88952",
+          y1: "13.1353",
+          x2: "10.4083",
+          y2: "12.8521",
+          gradientUnits: "userSpaceOnUse",
+          children: [/*#__PURE__*/jsxRuntime.jsx("stop", {
+            stopColor: "#909CA9"
+          }), /*#__PURE__*/jsxRuntime.jsx("stop", {
+            offset: "1",
+            stopColor: "#EDEDEE"
+          })]
+        }), /*#__PURE__*/jsxRuntime.jsxs("linearGradient", {
+          id: "paint1_linear_849_49429",
+          x1: "9.90063",
+          y1: "7.11704",
+          x2: "10.3022",
+          y2: "7.11704",
+          gradientUnits: "userSpaceOnUse",
+          children: [/*#__PURE__*/jsxRuntime.jsx("stop", {
+            stopColor: "#939FAB"
+          }), /*#__PURE__*/jsxRuntime.jsx("stop", {
+            offset: "1",
+            stopColor: "#DCDEE1"
+          })]
+        }), /*#__PURE__*/jsxRuntime.jsxs("radialGradient", {
+          id: "paint2_radial_849_49429",
+          cx: "0",
+          cy: "0",
+          r: "1",
+          gradientUnits: "userSpaceOnUse",
+          gradientTransform: "translate(11.9272 9.11059) rotate(-170.765) scale(0.518749 1.11902)",
+          children: [/*#__PURE__*/jsxRuntime.jsx("stop", {
+            stopColor: "#EE352C"
+          }), /*#__PURE__*/jsxRuntime.jsx("stop", {
+            offset: "1",
+            stopColor: "#A91D22"
+          })]
+        })]
+      })]
+    });
+  }
+  return /*#__PURE__*/jsxRuntime.jsxs("svg", {
+    className: className,
+    width: "1.5rem",
+    height: "1.5rem",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg",
+    children: [/*#__PURE__*/jsxRuntime.jsxs("g", {
+      clipPath: "url(#clip0_849_49341)",
+      children: [/*#__PURE__*/jsxRuntime.jsx("path", {
+        d: "M15.58 8.77588L13.531 9.44493L11.7485 10.2317L11.2498 10.3633C11.1228 10.4841 10.9896 10.6065 10.8456 10.7304C10.6876 10.8666 10.5405 10.9906 10.4274 11.0804C10.302 11.1795 10.1162 11.3653 10.0217 11.483C9.88076 11.6595 9.76926 11.8469 9.72125 11.991C9.63606 12.2512 9.6779 12.5144 9.84205 12.7576C10.0527 13.0673 10.4724 13.3833 10.9618 13.5985C11.2111 13.7085 11.6308 13.8494 11.9467 13.9284C12.4717 14.0616 13.4877 14.2056 14.0467 14.2273C14.1598 14.232 14.3116 14.232 14.3177 14.2273C14.3301 14.2195 14.4169 14.0539 14.5176 13.8479C14.8614 13.1463 15.1091 12.4881 15.2439 11.926C15.3244 11.5853 15.3879 11.1315 15.4297 10.5941C15.4406 10.4439 15.4452 9.94055 15.4359 9.77018C15.4219 9.49142 15.3972 9.26532 15.3585 9.04385C15.3523 9.01132 15.3507 8.98189 15.3538 8.98035C15.36 8.97571 15.3786 8.96952 15.631 8.89671L15.5799 8.77593V8.77589H15.58V8.77588ZM15.1123 9.05002C15.1308 9.05002 15.1804 9.52545 15.1928 9.82592C15.1959 9.88941 15.1943 9.93123 15.1912 9.93123C15.1788 9.93123 14.9295 9.78412 14.7514 9.67261C14.5965 9.57504 14.3023 9.37989 14.2558 9.34273C14.2403 9.3319 14.2419 9.33035 14.3689 9.28697C14.5841 9.21417 15.0952 9.05002 15.1123 9.05002ZM14.0684 9.39383C14.0824 9.39383 14.118 9.41394 14.2032 9.46661C14.5222 9.66639 14.9558 9.908 15.1417 9.98854C15.199 10.0133 15.2051 10.004 15.0735 10.0939C14.7917 10.2859 14.4401 10.4748 14.0096 10.6653C13.9337 10.6994 13.8702 10.7257 13.8687 10.7257C13.8656 10.7257 13.8748 10.687 13.8872 10.6405C13.991 10.2549 14.0498 9.86462 14.0529 9.55178C14.0545 9.39691 14.0545 9.39691 14.0684 9.39228C14.0653 9.39383 14.0669 9.39383 14.0684 9.39383ZM13.8532 9.47591C13.8624 9.48518 13.8563 9.83211 13.8439 9.92657C13.816 10.1527 13.7726 10.3633 13.7014 10.6003C13.6844 10.6575 13.6689 10.7056 13.6658 10.7087C13.6596 10.7164 13.4474 10.5089 13.3777 10.4283C13.2569 10.289 13.1625 10.1496 13.0928 10.0133C13.0571 9.9436 13.0014 9.80733 13.006 9.80268C13.0308 9.78564 13.847 9.46972 13.8532 9.47591ZM12.8403 9.87391C12.8419 9.87391 12.8434 9.87391 12.845 9.87546C12.8481 9.87856 12.8589 9.90334 12.8682 9.93121C12.9177 10.066 13.0292 10.2642 13.1253 10.3912C13.2306 10.5306 13.3684 10.6792 13.483 10.7768C13.5202 10.8078 13.5542 10.8372 13.5589 10.8418C13.5682 10.8511 13.5713 10.8496 13.3188 10.9456C13.0262 11.0571 12.7071 11.1686 12.3416 11.2863C12.2543 11.3145 12.1671 11.3429 12.0799 11.3715C12.066 11.3761 12.0706 11.3684 12.1109 11.3049C12.2921 11.0215 12.5677 10.4655 12.7226 10.0721C12.7489 10.004 12.7753 9.93587 12.7799 9.92038C12.7861 9.89868 12.7939 9.89095 12.814 9.8801C12.8248 9.87703 12.8357 9.87391 12.8403 9.87391ZM12.5306 10.0025C12.5352 10.0056 12.4563 10.1713 12.3788 10.323C12.2286 10.6157 12.0644 10.9038 11.8445 11.2538C11.8074 11.3142 11.7717 11.37 11.7671 11.3762C11.7594 11.387 11.7562 11.3839 11.7315 11.3359C11.6788 11.2321 11.6354 11.0989 11.6122 10.9766C11.589 10.8558 11.5936 10.6452 11.62 10.5151C11.6401 10.4191 11.6385 10.4206 11.685 10.3974C11.8832 10.2967 12.5244 9.99626 12.5306 10.0025ZM15.2021 10.1109V10.1759C15.2021 10.5213 15.1649 10.9952 15.1107 11.3405C15.1014 11.4009 15.0936 11.4505 15.0921 11.4521C15.0921 11.4521 15.0472 11.4397 14.9945 11.4242C14.7623 11.3514 14.5098 11.2445 14.2821 11.1191C14.1319 11.037 13.9136 10.9022 13.9198 10.896C13.9213 10.8945 13.9863 10.8604 14.0622 10.8202C14.3658 10.6622 14.6569 10.4919 14.9094 10.323C15.0038 10.2595 15.1463 10.1573 15.1773 10.1295L15.2021 10.1109ZM11.3613 10.5693C11.3675 10.5693 11.366 10.5817 11.3567 10.6374C11.3505 10.6777 11.3427 10.752 11.3397 10.8031C11.3272 11.0292 11.3644 11.1965 11.4759 11.4257C11.5069 11.4892 11.5317 11.5418 11.5301 11.5434C11.5193 11.5527 10.4941 11.8532 10.1719 11.9414C10.0759 11.9677 9.99229 11.991 9.98607 11.9925C9.97525 11.9956 9.97369 11.9941 9.97833 11.9677C10.0139 11.7401 10.1874 11.4427 10.429 11.1918C10.5901 11.0246 10.7186 10.927 10.9385 10.8016C11.0965 10.7117 11.3396 10.577 11.3582 10.5708C11.3582 10.5693 11.3598 10.5693 11.3613 10.5693ZM13.7773 11.0014C13.7788 10.9998 13.816 11.02 13.8609 11.0463C14.1923 11.2383 14.6538 11.4164 15.0472 11.5078L15.0828 11.5155L15.0332 11.5434C14.8273 11.658 14.1505 11.9398 13.4583 12.1985C13.3576 12.2356 13.2585 12.2728 13.2399 12.2806C13.2213 12.2883 13.2042 12.293 13.2042 12.2914C13.2042 12.2898 13.2321 12.2356 13.2677 12.1691C13.4613 11.8067 13.6565 11.3653 13.7556 11.0587C13.768 11.0292 13.7757 11.0029 13.7773 11.0014ZM13.531 11.0819C13.5326 11.0835 13.5202 11.116 13.5047 11.1531C13.37 11.4799 13.1934 11.8361 12.9673 12.2357C12.91 12.3379 12.862 12.42 12.8604 12.42C12.8589 12.42 12.8124 12.3921 12.7567 12.358C12.4283 12.1567 12.1372 11.9089 11.9467 11.6689L11.9188 11.6348L12.0598 11.5961C12.5646 11.4582 12.9936 11.3096 13.4195 11.1268C13.4799 11.102 13.5295 11.0819 13.531 11.0819ZM15.0611 11.6162C15.0611 11.6162 15.0627 11.6177 15.0611 11.6162C15.0627 11.6518 14.9837 11.9709 14.9187 12.2016C14.8645 12.3952 14.818 12.547 14.7328 12.8149C14.6956 12.9326 14.6631 13.0301 14.6616 13.0301C14.66 13.0301 14.6507 13.0286 14.6415 13.0255C14.1815 12.9419 13.7695 12.8257 13.3824 12.6708C13.2739 12.6275 13.1191 12.5578 13.1098 12.55C13.1067 12.5469 13.1996 12.5036 13.3173 12.4525C14.022 12.1443 14.753 11.7943 15.0038 11.6441C15.0333 11.6255 15.0565 11.6162 15.0611 11.6162ZM11.5286 11.737C11.5317 11.7401 11.335 12.0235 11.0593 12.4091C10.9633 12.5439 10.8518 12.7018 10.81 12.7607C10.7682 12.8195 10.7047 12.9124 10.6691 12.9682L10.604 13.0689L10.5343 13.01C10.4522 12.9419 10.3098 12.7963 10.2463 12.7158C10.1131 12.5501 10.0233 12.3751 9.98763 12.2156C9.97059 12.1412 9.97059 12.104 9.98606 12.0994C10.0093 12.0932 10.4228 11.9956 10.81 11.9058C11.0253 11.8563 11.2746 11.7974 11.3644 11.7757C11.4542 11.754 11.527 11.737 11.5286 11.737ZM11.7268 11.8129L11.7763 11.8686C11.9994 12.118 12.227 12.3023 12.5027 12.4633C12.5523 12.4912 12.5894 12.516 12.5863 12.5176C12.5755 12.5253 11.6292 12.8613 11.191 13.0131C10.9447 13.0998 10.7418 13.1695 10.7403 13.1695C10.7388 13.1695 10.7248 13.1602 10.7093 13.1494L10.6814 13.1293L10.7264 13.0642C10.8719 12.8536 11.0547 12.6229 11.4527 12.1428L11.7268 11.8129ZM12.9627 12.6972C12.9642 12.6956 13.0323 12.7204 13.116 12.7514C13.3173 12.8273 13.4768 12.8753 13.6906 12.9295C13.9538 12.9961 14.3348 13.0611 14.5594 13.0797C14.5935 13.0828 14.612 13.0859 14.6058 13.0906C14.595 13.0968 14.3673 13.1726 14.2001 13.2253C13.9337 13.3089 13.1206 13.549 12.4578 13.7395C12.3355 13.7751 12.2301 13.8045 12.2239 13.806C12.2085 13.8092 12.1573 13.7952 12.1573 13.789C12.1573 13.7859 12.1945 13.7379 12.2394 13.6853C12.4624 13.4189 12.6839 13.1215 12.8682 12.8397C12.9193 12.7622 12.9627 12.6987 12.9627 12.6972ZM12.6901 12.7049C12.6916 12.7065 12.5817 12.883 12.3897 13.1866C12.3076 13.3151 12.2162 13.4607 12.1837 13.5118C12.1527 13.5613 12.1062 13.6388 12.0799 13.6821L12.035 13.7611L12.0118 13.7549C11.956 13.7394 11.5642 13.6016 11.4604 13.5598C11.3319 13.5087 11.1987 13.4467 11.0996 13.3941C10.9757 13.3275 10.8208 13.2284 10.8332 13.2253C10.8363 13.2237 11.0485 13.1664 11.304 13.0967C11.9823 12.9124 12.3587 12.8056 12.6049 12.7282C12.6498 12.7142 12.6885 12.7034 12.6901 12.7049ZM14.6182 13.1571H14.6198C14.626 13.1726 14.3751 13.8695 14.2837 14.0894C14.2636 14.139 14.2558 14.1514 14.245 14.1498C14.2187 14.1483 13.8547 14.0972 13.6332 14.0647C13.2476 14.0058 12.6003 13.8927 12.4377 13.8556L12.4005 13.8479L12.6312 13.7952C13.1268 13.6837 13.3653 13.6233 13.6069 13.5489C13.912 13.456 14.214 13.3399 14.5191 13.1974C14.5671 13.1757 14.6074 13.1587 14.6182 13.1571Z",
+        fill: "url(#paint0_linear_849_49341)"
+      }), /*#__PURE__*/jsxRuntime.jsx("path", {
+        d: "M13.4673 3.99935C13.4332 3.99473 12.8834 4.19296 12.5288 4.33697C12.0502 4.53212 11.6785 4.71798 11.4493 4.87901C11.3642 4.93943 11.2573 5.04628 11.2403 5.08808C11.2341 5.10357 11.231 5.12216 11.231 5.14074L11.4385 5.33743L11.9325 5.49539L13.108 5.70602L14.4522 5.93678L14.4662 5.82063C14.4615 5.82063 14.4584 5.81908 14.4538 5.81908L14.2772 5.79119L14.2416 5.72771C14.0589 5.40557 13.8575 5.006 13.7399 4.73653C13.6485 4.52745 13.5618 4.28588 13.5137 4.11242C13.4874 4.00711 13.4843 4.00092 13.4673 3.99938V3.99934H13.4673V3.99935ZM13.4425 4.07835H13.4441C13.4456 4.07988 13.4518 4.12328 13.458 4.17435C13.4843 4.3912 13.5323 4.60024 13.6082 4.82636C13.6655 4.99672 13.6655 4.98744 13.5989 4.96729C13.4409 4.92394 12.7332 4.80159 12.2206 4.73035C12.1385 4.71951 12.0688 4.70867 12.0688 4.70713C12.0626 4.70094 12.4389 4.50424 12.6046 4.42682C12.8168 4.32923 13.3991 4.08609 13.4425 4.07835ZM11.9495 4.77216L12.01 4.79227C12.3383 4.90379 13.1637 5.06177 13.619 5.09893C13.6701 5.10358 13.7135 5.10824 13.715 5.10824C13.7166 5.10978 13.6732 5.13301 13.6175 5.15933C13.3976 5.26929 13.156 5.40403 12.9887 5.50779C12.9392 5.53875 12.8942 5.56355 12.8881 5.56355C12.8819 5.56355 12.8493 5.55735 12.8153 5.5527L12.7533 5.5434L12.5985 5.39162C12.3259 5.12681 12.1122 4.92238 12.0301 4.84493L11.9495 4.77216ZM11.8876 4.82016L12.106 5.09274C12.2252 5.24296 12.346 5.39008 12.3724 5.42259C12.3987 5.45513 12.4204 5.48147 12.4188 5.48301C12.4126 5.48766 12.1029 5.42725 11.9387 5.39009C11.7699 5.35137 11.7002 5.33278 11.5965 5.30027L11.5113 5.27239V5.25069C11.5128 5.14692 11.6445 4.99206 11.8675 4.83411L11.8876 4.82016ZM13.7429 5.19185C13.7491 5.19185 13.7569 5.20578 13.7754 5.2476C13.8281 5.36374 13.9923 5.67659 14.0325 5.73698C14.0449 5.75714 14.0666 5.75868 13.8482 5.72306C13.3233 5.63786 13.1544 5.61001 13.1544 5.60691C13.1544 5.60537 13.1699 5.59452 13.19 5.58367C13.3527 5.49387 13.5168 5.37925 13.6624 5.2569C13.698 5.22747 13.7306 5.1996 13.7367 5.19494C13.7383 5.19185 13.7414 5.19031 13.7429 5.19185Z",
+        fill: "url(#paint1_linear_849_49341)"
+      }), /*#__PURE__*/jsxRuntime.jsx("path", {
+        d: "M11.2512 5.06616C11.2512 5.06616 11.2172 5.12039 11.2497 5.20092C11.2698 5.25047 11.3287 5.31085 11.3953 5.37282C11.3953 5.37282 12.0844 6.04494 12.1681 6.14097C12.549 6.58079 12.7147 7.01443 12.7302 7.61223C12.7395 7.9963 12.6667 8.33391 12.4855 8.72574C12.1634 9.42885 11.4835 10.2047 10.4351 11.0658L10.5884 11.0147C10.6875 10.9404 10.8223 10.8614 11.1382 10.6879C11.8676 10.2884 12.6884 9.92132 13.6951 9.54344C15.1446 8.99829 17.5281 8.36022 18.8847 8.15272L19.0257 8.13102L19.004 8.09695C18.8801 7.9049 18.7949 7.78567 18.6927 7.65868C18.3953 7.29008 18.0345 6.9912 17.5931 6.7434C16.986 6.40425 16.2008 6.13943 15.2066 5.94274C15.0192 5.90556 14.6072 5.83433 14.2727 5.78322C13.5634 5.67329 13.105 5.59739 12.6001 5.51066C12.419 5.47967 12.1479 5.43323 11.9683 5.39452C11.8753 5.37436 11.6973 5.33256 11.5579 5.28455C11.4464 5.24117 11.2853 5.1978 11.2512 5.06616ZM11.6508 5.45335C11.6523 5.45182 11.6771 5.46109 11.7097 5.47193C11.7685 5.49204 11.8444 5.51528 11.9342 5.54008C12.0022 5.55877 12.0703 5.57684 12.1387 5.59428C12.2316 5.61749 12.309 5.63918 12.3105 5.63918C12.3214 5.65003 12.4778 6.15022 12.5305 6.34227C12.5506 6.41507 12.5661 6.47701 12.5645 6.47701C12.563 6.47858 12.5459 6.45223 12.5258 6.41662C12.3446 6.09758 12.0581 5.77391 11.7267 5.51372C11.6833 5.48277 11.6508 5.45489 11.6508 5.45335ZM12.4128 5.66397C12.4205 5.66397 12.4546 5.66862 12.4964 5.6779C12.7597 5.73675 13.232 5.82658 13.534 5.87769C13.5851 5.88542 13.6254 5.89474 13.6254 5.89782C13.6254 5.90093 13.6068 5.91175 13.5835 5.92415C13.5325 5.95047 13.3265 6.07281 13.2583 6.11928C13.0864 6.23388 12.9316 6.35777 12.8201 6.46927C12.7752 6.51419 12.7364 6.55136 12.7364 6.55136C12.7364 6.55136 12.7272 6.52504 12.7194 6.4925C12.6637 6.27723 12.5475 5.95819 12.4422 5.73364C12.4251 5.69804 12.4112 5.66551 12.4112 5.66242C12.4112 5.66551 12.4112 5.66397 12.4128 5.66397ZM13.7539 5.9195C13.7632 5.92259 13.7787 5.97525 13.8097 6.0914C13.867 6.31597 13.8933 6.56685 13.884 6.80071C13.8809 6.86575 13.8778 6.92614 13.8747 6.9339L13.8701 6.94937L13.7895 6.92306C13.6238 6.8704 13.3544 6.7914 13.1236 6.72637C12.992 6.69075 12.8851 6.65822 12.8851 6.65513C12.8851 6.64583 13.0772 6.4538 13.1592 6.38102C13.3156 6.24316 13.74 5.91485 13.7539 5.9195ZM13.8608 5.93497C13.8654 5.93035 14.5019 6.04028 14.7915 6.09604C15.0068 6.13785 15.3197 6.2029 15.3382 6.21066C15.3475 6.21375 15.315 6.23233 15.2112 6.27878C14.8024 6.46309 14.4988 6.62878 14.1969 6.83013C14.1179 6.88278 14.0513 6.92614 14.0497 6.92614C14.0482 6.92614 14.0466 6.88124 14.0466 6.82703C14.0466 6.53279 13.9878 6.23543 13.8794 5.98455C13.8685 5.95977 13.8592 5.93654 13.8608 5.93497ZM15.507 6.26022C15.5117 6.26486 15.4915 6.39031 15.473 6.46464C15.4172 6.6954 15.267 7.03768 15.0827 7.35979C15.0502 7.41709 15.0208 7.46355 15.0176 7.4651C15.0146 7.46664 14.9727 7.4434 14.9247 7.41553C14.7451 7.31022 14.5407 7.21111 14.3176 7.11817C14.2557 7.09185 14.2015 7.07016 14.1999 7.06709C14.1891 7.05778 14.6878 6.72791 14.9511 6.56995C15.1601 6.44296 15.5008 6.25401 15.507 6.26022ZM15.6247 6.27879C15.6387 6.27879 15.9205 6.35623 16.0676 6.3996C16.4316 6.50801 16.8497 6.66132 17.1223 6.78522L17.2353 6.83634L17.1564 6.85491C16.4905 7.00822 15.9205 7.1848 15.3707 7.4078C15.3258 7.42638 15.2856 7.44187 15.2825 7.44187C15.2794 7.44187 15.2949 7.40626 15.315 7.36288C15.4807 7.01133 15.5876 6.64429 15.6139 6.33144C15.6155 6.30201 15.6201 6.27879 15.6247 6.27879ZM12.8185 6.92306C12.8232 6.9184 13.0384 6.96952 13.1546 7.00201C13.3311 7.05159 13.7059 7.17702 13.7059 7.18632C13.7059 7.18787 13.6641 7.22349 13.6146 7.26687C13.4117 7.43567 13.2165 7.61375 12.9827 7.83987C12.913 7.90648 12.8541 7.96068 12.851 7.96068C12.8479 7.96068 12.8464 7.95137 12.8479 7.93898C12.8835 7.67879 12.8758 7.34429 12.8263 7.00513C12.8216 6.96175 12.817 6.9246 12.8185 6.92306ZM17.3422 6.92771C17.3453 6.93079 17.2431 7.09186 17.1781 7.18322C17.0852 7.3164 16.9488 7.49298 16.6406 7.88015C16.4781 8.08456 16.2953 8.31533 16.2349 8.39276C16.1729 8.47019 16.1219 8.53522 16.1203 8.53522C16.1187 8.53522 16.0986 8.50736 16.0769 8.4733C15.9035 8.21311 15.696 7.98545 15.4497 7.78103C15.4033 7.7423 15.3522 7.70048 15.3351 7.68809C15.3181 7.67571 15.3041 7.66332 15.3041 7.66178C15.3041 7.65714 15.5674 7.54406 15.7672 7.46355C16.1172 7.32106 16.5942 7.15071 16.9519 7.04074C17.1393 6.9819 17.3391 6.9246 17.3422 6.92771ZM17.4615 6.95866C17.4677 6.95713 17.5048 6.97571 17.5498 7.00201C17.9261 7.21728 18.2947 7.49451 18.5858 7.77948C18.6679 7.86002 18.8708 8.07064 18.8677 8.07218C18.8677 8.07218 18.7964 8.07837 18.7128 8.08456C18.0608 8.13414 17.2261 8.27195 16.4239 8.46553C16.3697 8.4779 16.3217 8.48875 16.3185 8.48875C16.3155 8.48875 16.3759 8.42836 16.4518 8.35558C16.9226 7.90182 17.1378 7.61531 17.3918 7.10423C17.4274 7.02837 17.4584 6.96332 17.4615 6.95866C17.4599 6.95866 17.4599 6.95866 17.4615 6.95866ZM14.0125 7.31179C14.0342 7.31641 14.2356 7.41091 14.3873 7.48678C14.5267 7.55644 14.7358 7.66797 14.7466 7.67725C14.7482 7.67879 14.6738 7.71752 14.5825 7.76244C14.2913 7.90801 14.042 8.04583 13.7818 8.2038C13.7075 8.24872 13.6455 8.28591 13.644 8.28591C13.6378 8.28591 13.6393 8.27968 13.6811 8.2038C13.8205 7.94984 13.932 7.64629 13.9955 7.35048C14.0017 7.32726 14.0079 7.31179 14.0125 7.31179ZM13.8112 7.34894C13.8159 7.35359 13.7632 7.54407 13.7307 7.64784C13.6672 7.84452 13.5603 8.09076 13.4566 8.2766C13.4318 8.31995 13.3946 8.38345 13.3745 8.41906L13.3358 8.48101L13.249 8.3974C13.1484 8.29983 13.0663 8.23943 12.961 8.18521C12.9192 8.16355 12.8867 8.14495 12.8867 8.14187C12.8867 8.12948 13.1515 7.88944 13.3544 7.71598C13.4999 7.59053 13.8066 7.3443 13.8112 7.34894ZM15.0424 7.85537L15.1183 7.90491C15.2918 8.01798 15.4962 8.16819 15.6526 8.29983C15.7409 8.3726 15.9112 8.52594 15.9453 8.56311L15.9639 8.58326L15.8385 8.61887C15.1292 8.81554 14.5809 8.99054 13.9413 9.22596C13.8701 9.25227 13.8097 9.27396 13.805 9.27396C13.7957 9.27396 13.788 9.28169 13.9475 9.13456C14.3564 8.75826 14.7187 8.34318 14.9882 7.93898L15.0424 7.85537ZM14.7188 7.9359C14.7218 7.93898 14.5097 8.23787 14.3827 8.40669C14.2309 8.60802 13.9614 8.94563 13.7756 9.16553C13.6982 9.25692 13.6316 9.3328 13.6285 9.33435C13.6238 9.3359 13.6223 9.31267 13.6223 9.27705C13.6223 9.08964 13.5743 8.88986 13.4906 8.71952C13.455 8.64828 13.4488 8.63124 13.4566 8.62351C13.486 8.59717 13.9367 8.34009 14.2216 8.18678C14.4137 8.08457 14.7141 7.9328 14.7188 7.9359ZM12.7612 8.41599C12.7659 8.41599 12.8015 8.43456 12.8417 8.45626C12.9409 8.51046 13.0291 8.57085 13.1081 8.63591C13.1112 8.639 13.071 8.67153 13.0183 8.71023C12.8712 8.81554 12.6482 8.98436 12.5181 9.08812C12.3818 9.19653 12.3772 9.19963 12.3926 9.1764C12.4949 9.01998 12.5459 8.9317 12.6002 8.81866C12.6482 8.718 12.6962 8.59875 12.7302 8.49498C12.7426 8.45007 12.7581 8.41599 12.7612 8.41599ZM13.2831 8.82484C13.2908 8.82331 13.3002 8.83723 13.342 8.89919C13.4302 9.0308 13.4984 9.20738 13.5154 9.34985L13.5185 9.38084L13.3064 9.46292C12.9269 9.61003 12.5769 9.75562 12.34 9.86401C12.2734 9.895 12.1572 9.95074 12.0813 9.98793C12.0055 10.0266 11.9435 10.0561 11.9435 10.0545C11.9435 10.053 11.9915 10.0173 12.0504 9.97397C12.5134 9.63792 12.9145 9.26931 13.215 8.90074C13.2475 8.86201 13.2769 8.82638 13.28 8.82484L13.2831 8.82484ZM13.0431 8.8837C13.0493 8.88989 12.8727 9.08966 12.7519 9.212C12.453 9.51711 12.1572 9.75562 11.7902 9.98793C11.7437 10.0173 11.7019 10.0437 11.6973 10.0468C11.6864 10.053 11.7003 10.0375 11.8614 9.86247C11.9636 9.75251 12.0411 9.65959 12.1293 9.545C12.1882 9.46913 12.199 9.45828 12.2842 9.39786C12.5119 9.23369 13.0369 8.87749 13.0431 8.8837Z",
+        fill: "url(#paint2_radial_849_49341)"
+      }), /*#__PURE__*/jsxRuntime.jsx("path", {
+        d: "M6.33689 15.2973C6.30832 15.2973 6.27974 15.3 6.25143 15.3C5.67439 15.3307 5.2852 15.5847 5.05765 16.0806C4.86303 16.5291 4.88428 17.1154 5.05984 17.5666C5.26398 18.0076 5.59385 18.2403 6.14446 18.3282C6.26095 18.3473 6.33907 18.4112 6.56471 18.6747L6.84234 18.9999H7.34586L7.01105 18.6624C6.82597 18.4773 6.67627 18.3162 6.67627 18.302C6.67627 18.2879 6.74707 18.2569 6.83277 18.2308C7.1153 18.1453 7.34992 17.927 7.51404 17.5925C7.64686 17.3239 7.66593 17.2408 7.68497 16.9066C7.73479 15.9118 7.21029 15.2899 6.33686 15.297L6.33689 15.2973ZM6.77835 17.8987C6.53339 18.0174 6.17769 18.0411 5.94551 17.9559C5.70544 17.8677 5.47301 17.6184 5.36847 17.3361C5.25226 17.0275 5.26885 16.4581 5.40168 16.2017C5.61534 15.7934 5.89788 15.6056 6.31076 15.6056C6.92315 15.6056 7.27153 15.9807 7.317 16.6856C7.35293 17.2741 7.15586 17.7156 6.77861 17.8985L6.77835 17.8987ZM15.4766 16.147C15.2654 16.147 15.1037 16.2325 14.9948 16.4009L14.9094 16.5343V16.1875H14.5438V18.267H14.9091V17.6023C14.9091 16.9945 14.9167 16.9235 15.0016 16.7572C15.1187 16.5291 15.3201 16.4154 15.5147 16.4698L15.6454 16.5079V16.1475H15.4766V16.147ZM13.3291 16.1279C13.2575 16.1279 13.1816 16.1375 13.106 16.1541C12.6168 16.282 12.3411 16.7501 12.358 17.2319C12.358 17.6353 12.4364 17.8369 12.631 18.0484C13.0297 18.3756 13.3904 18.4017 13.877 18.2262C13.96 18.1908 14.0504 18.15 14.0504 18.15V17.8228L13.877 17.9126C13.4832 18.0841 13.1865 18.0841 12.9489 17.8821C12.7973 17.7278 12.7306 17.5427 12.6999 17.3315H14.1737V17.0511C14.1737 16.4796 13.8297 16.1187 13.3288 16.1279H13.3291ZM12.733 17.0397C12.733 17.0397 12.7875 16.6832 12.9894 16.5433C13.0866 16.4747 13.1982 16.4415 13.3073 16.4415C13.4168 16.4415 13.5259 16.4769 13.616 16.5457C13.8011 16.6881 13.8321 17.037 13.8321 17.037H12.7331V17.0397H12.733ZM3.92076 16.6647C3.52448 16.4246 3.34865 16.2515 3.37015 16.0474C3.43165 15.4826 4.12953 15.5607 4.51601 15.7744L4.51876 15.3944C4.51876 15.3944 4.30509 15.3019 3.99888 15.297C3.5291 15.2899 3.22535 15.444 3.08302 15.7575C2.87397 16.2202 3.05907 16.5691 3.7281 16.9584C4.10369 17.1769 4.2697 17.3666 4.2697 17.5735C4.2697 18.0008 3.75448 18.15 3.22293 17.8818C3.11353 17.8274 3.02098 17.782 3.01608 17.782C2.99702 17.9031 3.00685 18.1929 3.00685 18.1929C3.00685 18.1929 3.17016 18.2615 3.4151 18.3089C4.02257 18.43 4.57539 18.145 4.62764 17.6823C4.6731 17.2479 4.51602 17.0201 3.92078 16.6644L3.92076 16.6647ZM18.7117 16.123C18.6404 16.123 18.5647 16.1328 18.4858 16.1494C17.9972 16.2774 17.722 16.7455 17.7408 17.2273C17.7408 17.6301 17.8189 17.8299 18.0135 18.0411C18.4123 18.3685 18.7729 18.3949 19.262 18.2191C19.3448 18.1837 19.4349 18.1435 19.4349 18.1435V17.8158L19.2618 17.9061C18.8671 18.077 18.5704 18.077 18.3337 17.8751C18.1812 17.721 18.1151 17.5381 18.0843 17.3244H19.5557V17.0441C19.5557 16.4753 19.2117 16.1141 18.7109 16.1236L18.7117 16.123ZM18.1156 17.0348C18.1156 17.0348 18.1706 16.6788 18.3723 16.5362C18.4692 16.4673 18.5808 16.4341 18.6899 16.4341C18.7988 16.4341 18.9085 16.4695 18.9986 16.5386C19.1837 16.681 19.2147 17.0324 19.2147 17.0324H18.1159L18.1156 17.0348ZM11.4157 16.6693C11.0194 16.4298 10.8441 16.2561 10.8654 16.052C10.9269 15.4869 11.6248 15.5653 12.0112 15.779L12.014 15.3991C12.014 15.3991 11.8003 15.3065 11.4941 15.3021C11.0243 15.2951 10.7206 15.4491 10.578 15.7627C10.3692 16.2253 10.5567 16.5743 11.2236 16.9635C11.5986 17.1818 11.7647 17.3691 11.7647 17.5759C11.7647 18.0032 11.2497 18.1548 10.7181 17.8843C10.6093 17.8298 10.5167 17.7849 10.5113 17.7849C10.4922 17.906 10.502 18.1959 10.502 18.1959C10.502 18.1959 10.6634 18.2621 10.9076 18.3119C11.5156 18.4333 12.0687 18.1485 12.1207 17.6858C12.1659 17.2536 12.0091 17.0258 11.4157 16.6698V16.6693H11.4157ZM20.8594 16.1421C20.6482 16.1421 20.4847 16.2278 20.3777 16.3963L20.2922 16.5291V16.1829H19.9267V18.2618H20.2919V17.5972C20.2919 16.9897 20.2993 16.9183 20.3845 16.7523C20.5015 16.5245 20.7029 16.4105 20.8975 16.4652L21.0282 16.5033V16.1421H20.8594V16.1421ZM8.50886 16.6573V15.3329H8.14035V18.2664H9.69014V17.92H8.50888V16.6573H8.50886ZM17.0313 17.0702L16.7275 17.8606L16.4355 17.0658L16.1388 16.1851H15.7616C16.006 16.8781 16.2719 17.583 16.54 18.2664C16.6562 18.2691 16.7727 18.2664 16.8889 18.2664L17.2991 17.2365L17.7169 16.1854H17.3563C17.3563 16.1854 17.197 16.6029 17.031 17.0705L17.0313 17.0702ZM9.35805 14.5335C9.41739 14.5335 9.46692 14.5145 9.50775 14.4736C9.54801 14.4333 9.56925 14.386 9.56925 14.3267C9.56925 14.2673 9.54801 14.2178 9.50775 14.1797C9.46692 14.1416 9.41983 14.1225 9.36076 14.1225C9.3009 14.1225 9.25135 14.1416 9.21106 14.1818C9.17025 14.2221 9.15173 14.2717 9.15173 14.3288C9.15173 14.3887 9.1708 14.4382 9.21106 14.4758C9.24918 14.5139 9.29872 14.533 9.35805 14.533V14.5335ZM9.22742 14.196C9.26279 14.1606 9.3058 14.1443 9.36077 14.1443C9.4125 14.1443 9.45551 14.1606 9.49144 14.196C9.52682 14.2314 9.54588 14.2744 9.54588 14.3267C9.54588 14.3789 9.52682 14.4241 9.49144 14.4595C9.45552 14.4948 9.4125 14.5117 9.36077 14.5117C9.30825 14.5117 9.26551 14.4954 9.23014 14.4595C9.19476 14.4241 9.17571 14.3789 9.17571 14.3267C9.17571 14.2744 9.19203 14.2314 9.22742 14.196ZM9.31531 14.3457H9.33926C9.35615 14.3457 9.37275 14.362 9.38689 14.3931L9.4155 14.4573H9.46039L9.42502 14.386C9.4106 14.3574 9.39646 14.3408 9.37984 14.3361C9.4008 14.3313 9.41739 14.3242 9.42938 14.31C9.44133 14.2978 9.44569 14.2812 9.44569 14.2624C9.44569 14.2406 9.43889 14.2243 9.42448 14.2123C9.40814 14.1987 9.38201 14.1914 9.34825 14.1914H9.27261V14.4573H9.31071V14.3457L9.31531 14.3457ZM9.31531 14.2221H9.34854C9.37248 14.2221 9.38936 14.227 9.39861 14.2341C9.4076 14.2412 9.41005 14.2505 9.41005 14.2673C9.41005 14.2981 9.39097 14.3125 9.35561 14.3125H9.3148V14.2221H9.31531ZM3.22778 14.322C3.22778 14.2295 3.22507 14.1606 3.22289 14.1201H3.22507C3.23459 14.168 3.2463 14.2036 3.25582 14.2273L3.60964 15.0177H3.66898L4.0228 14.2202C4.03235 14.1985 4.04188 14.1658 4.05357 14.1203H4.05629C4.04922 14.1993 4.04677 14.2679 4.04677 14.3226V15.0202H4.16786V13.9832H4.016L3.69076 14.7044C3.67877 14.733 3.66217 14.7758 3.64094 14.8324H3.63602C3.62896 14.8043 3.61235 14.7616 3.58868 14.7093L3.27076 13.9807H3.10938V15.0177H3.22586V14.3225L3.22778 14.322ZM4.43326 14.324H4.5378V14.9698H4.43326V14.324ZM4.48552 14.0871C4.50731 14.0871 4.52581 14.0798 4.53996 14.0654C4.55439 14.0512 4.56393 14.0327 4.56393 14.011C4.56393 13.9897 4.55684 13.9706 4.54024 13.9565C4.52555 13.9421 4.50676 13.9347 4.48526 13.9347C4.46405 13.9347 4.44499 13.9421 4.43081 13.9565C4.41643 13.9706 4.40688 13.9897 4.40688 14.011C4.40688 14.0346 4.41423 14.0512 4.43081 14.0654C4.44718 14.0798 4.46403 14.0871 4.48526 14.0871H4.48552ZM5.28302 14.984V14.8702C5.22585 14.9129 5.16434 14.9342 5.10065 14.9342C5.02447 14.9342 4.96265 14.9081 4.91747 14.858C4.87257 14.8085 4.84863 14.7396 4.84863 14.6538C4.84863 14.564 4.87257 14.4927 4.9221 14.4383C4.96973 14.386 5.03153 14.3599 5.1072 14.3599C5.16898 14.3599 5.22829 14.3789 5.28303 14.4171V14.2959C5.23323 14.2698 5.17635 14.2578 5.1121 14.2578C4.99342 14.2578 4.9009 14.2959 4.83177 14.3695C4.76317 14.4429 4.72778 14.5428 4.72778 14.6634C4.72778 14.7706 4.75853 14.8607 4.82252 14.9296C4.88919 15.0004 4.97441 15.0363 5.07891 15.0363C5.15972 15.0341 5.22585 15.0172 5.28302 14.984ZM5.58213 14.6397C5.58213 14.5545 5.60118 14.4856 5.63656 14.4382C5.66978 14.3955 5.71005 14.374 5.75768 14.374C5.79797 14.374 5.82653 14.3814 5.84748 14.398V14.2744C5.83117 14.2673 5.80748 14.2649 5.77673 14.2649C5.734 14.2649 5.69592 14.2793 5.66243 14.3057C5.62705 14.3337 5.59874 14.3765 5.58214 14.4309H5.57943V14.2793H5.46103V15.0196H5.57969V14.6397H5.58213ZM6.26339 15.0343C6.37499 15.0343 6.46481 14.9984 6.53148 14.9271C6.59788 14.8563 6.63109 14.7611 6.63109 14.6424C6.63109 14.5213 6.60063 14.4287 6.53856 14.3598C6.47706 14.291 6.39158 14.2578 6.27997 14.2578C6.16837 14.2578 6.07855 14.291 6.01188 14.3552C5.94057 14.426 5.90301 14.5259 5.90301 14.6541C5.90301 14.7657 5.9335 14.8582 5.99775 14.9271C6.06414 14.9984 6.15206 15.034 6.26339 15.034V15.0343ZM6.09464 14.4312C6.13982 14.3835 6.19918 14.3598 6.27264 14.3598C6.34888 14.3598 6.40602 14.3835 6.44848 14.4312C6.49121 14.481 6.51245 14.552 6.51245 14.647C6.51245 14.7374 6.49339 14.8084 6.4531 14.856C6.41284 14.9059 6.35349 14.9322 6.27509 14.9322C6.19889 14.9322 6.13982 14.9058 6.09464 14.856C6.04974 14.806 6.02823 14.7374 6.02823 14.647C6.02361 14.5572 6.0473 14.4837 6.09464 14.4312ZM7.15071 14.9698C7.19588 14.9296 7.21985 14.88 7.21985 14.8179C7.21985 14.7635 7.20077 14.7183 7.1654 14.6827C7.13654 14.6541 7.09193 14.6282 7.02742 14.6021C6.97023 14.5782 6.93486 14.5569 6.9158 14.5403C6.89676 14.5213 6.88505 14.4976 6.88505 14.4641C6.88505 14.4334 6.89703 14.4097 6.92045 14.3906C6.9444 14.3716 6.97489 14.3623 7.01572 14.3623C7.07968 14.3623 7.13438 14.3792 7.18444 14.4149V14.2962C7.13655 14.2723 7.08456 14.2608 7.02522 14.2608C6.94902 14.2608 6.88478 14.2818 6.8374 14.3223C6.78759 14.3626 6.76393 14.4149 6.76393 14.4764C6.76393 14.5308 6.78025 14.576 6.81126 14.6092C6.83739 14.6375 6.88206 14.6664 6.94409 14.6922C7.00344 14.7183 7.04372 14.742 7.06521 14.761C7.08643 14.7801 7.09596 14.8038 7.09596 14.8318C7.09596 14.901 7.04861 14.9366 6.95606 14.9366C6.88475 14.9366 6.82081 14.9132 6.76362 14.8659V14.9938C6.81534 15.0248 6.8774 15.039 6.94598 15.039C7.0339 15.0343 7.10275 15.0128 7.15012 14.9701L7.15071 14.9698ZM7.71574 14.2578C7.60413 14.2578 7.51432 14.291 7.44764 14.3552C7.37688 14.426 7.33877 14.5259 7.33877 14.6541C7.33877 14.7657 7.36955 14.8583 7.4335 14.9271C7.50018 14.9984 7.58781 15.0341 7.69942 15.0341C7.81372 15.0341 7.90084 14.9982 7.96751 14.9268C8.03419 14.8561 8.06739 14.7608 8.06739 14.6421C8.06739 14.521 8.03636 14.4285 7.97484 14.3596C7.91064 14.2907 7.82514 14.2575 7.71627 14.2575L7.71574 14.2578ZM7.946 14.647C7.946 14.7374 7.92694 14.8084 7.88667 14.8561C7.84638 14.9059 7.78704 14.9323 7.70864 14.9323C7.63241 14.9323 7.57337 14.9058 7.52817 14.8561C7.48327 14.806 7.46177 14.7374 7.46177 14.647C7.46177 14.5518 7.48547 14.4783 7.5331 14.4287C7.57798 14.3814 7.63735 14.3574 7.7111 14.3574C7.78458 14.3574 7.84365 14.3813 7.88637 14.4287C7.92448 14.481 7.94572 14.552 7.94572 14.647H7.946ZM8.26664 15.0175H8.38503V14.3765H8.5584V14.2769H8.38502V14.1625C8.38502 14.0586 8.42529 14.0063 8.50859 14.0063C8.53663 14.0063 8.56521 14.0134 8.58644 14.0254V13.9184C8.56521 13.9089 8.53663 13.9067 8.50094 13.9067C8.437 13.9067 8.38475 13.9258 8.342 13.9661C8.29218 14.0134 8.2658 14.0749 8.2658 14.1583V14.2796H8.14056V14.3793H8.2658V15.0178L8.26664 15.0175ZM8.753 14.8155C8.753 14.9603 8.81698 15.0341 8.94761 15.0341C8.99498 15.0341 9.03063 15.0265 9.05921 15.0096V14.9078C9.03744 14.9241 9.01157 14.9318 8.98301 14.9318C8.94274 14.9318 8.91443 14.9222 8.89781 14.9007C8.88093 14.8795 8.87142 14.8435 8.87142 14.794V14.3762H9.05919V14.2766H8.87142V14.0583C8.83059 14.0725 8.79059 14.0844 8.75273 14.0964V14.2766H8.62481V14.3762H8.75273V14.8152L8.753 14.8155ZM21.4909 16.1802C21.4506 16.1421 21.403 16.123 21.3439 16.123C21.2841 16.123 21.2345 16.1421 21.1942 16.1829C21.1539 16.2229 21.1349 16.2727 21.1349 16.3299C21.1349 16.3892 21.1539 16.4388 21.1939 16.4769C21.2342 16.515 21.2837 16.534 21.3436 16.534C21.4027 16.534 21.4525 16.515 21.4933 16.4747C21.5334 16.4339 21.5546 16.3868 21.5546 16.3277C21.5524 16.2678 21.5309 16.2183 21.4906 16.1802L21.4909 16.1802ZM21.4719 16.4605C21.4365 16.4959 21.3935 16.5122 21.3412 16.5122C21.2895 16.5122 21.2465 16.4959 21.2106 16.4605C21.1752 16.4246 21.1561 16.3797 21.1561 16.3272C21.1561 16.2754 21.1724 16.2325 21.2084 16.1965C21.2437 16.1612 21.2865 16.1448 21.3412 16.1448C21.3929 16.1448 21.4359 16.1612 21.4719 16.1965C21.5072 16.2325 21.5263 16.2754 21.5263 16.3272C21.5263 16.3822 21.5099 16.4246 21.4719 16.4605ZM21.3651 16.3394C21.3864 16.3345 21.4033 16.325 21.415 16.3133C21.4269 16.301 21.4313 16.2844 21.4313 16.2654C21.4313 16.2442 21.4245 16.2273 21.4101 16.2156C21.3938 16.202 21.3674 16.1946 21.3339 16.1946H21.2582V16.4603H21.2964V16.3487H21.32C21.3364 16.3487 21.3527 16.365 21.3674 16.396L21.3957 16.46H21.4409L21.4055 16.3886C21.3932 16.3576 21.3791 16.3435 21.3647 16.3388L21.3651 16.3394ZM21.339 16.3155H21.2982V16.2257H21.3317C21.3554 16.2257 21.372 16.23 21.3815 16.2374C21.391 16.2444 21.3932 16.2537 21.3932 16.2706C21.3932 16.3013 21.3741 16.3155 21.3388 16.3155L21.339 16.3155ZM14.7172 14.2461H14.7504V13.9802H14.8383V13.947H14.6293V13.9802H14.7173V14.2461H14.7172ZM14.9186 14.0463C14.9186 14.0205 14.9186 13.9992 14.9167 13.9873C14.9189 14.0014 14.9238 14.011 14.926 14.018L15.0281 14.2461H15.0444L15.1467 14.0158C15.1495 14.0088 15.1517 13.9995 15.1563 13.9873C15.1541 14.011 15.1541 14.03 15.1541 14.0444V14.2458H15.1895V13.947H15.1467L15.0542 14.1533C15.052 14.1607 15.0446 14.1751 15.04 14.1914H15.0373C15.0354 14.1819 15.0305 14.1723 15.0237 14.156L14.9312 13.947H14.8833V14.2464H14.9167V14.0466L14.9186 14.0463Z",
+        fill: "#231F1F"
+      })]
+    }), /*#__PURE__*/jsxRuntime.jsxs("defs", {
+      children: [/*#__PURE__*/jsxRuntime.jsxs("linearGradient", {
+        id: "paint0_linear_849_49341",
+        x1: "11.2197",
+        y1: "13.2187",
+        x2: "11.9606",
+        y2: "12.781",
+        gradientUnits: "userSpaceOnUse",
+        children: [/*#__PURE__*/jsxRuntime.jsx("stop", {
+          stopColor: "#909CA9"
+        }), /*#__PURE__*/jsxRuntime.jsx("stop", {
+          offset: "1",
+          stopColor: "#EDEDEE"
+        })]
+      }), /*#__PURE__*/jsxRuntime.jsxs("linearGradient", {
+        id: "paint1_linear_849_49341",
+        x1: "11.2364",
+        y1: "4.96503",
+        x2: "11.8325",
+        y2: "4.96503",
+        gradientUnits: "userSpaceOnUse",
+        children: [/*#__PURE__*/jsxRuntime.jsx("stop", {
+          stopColor: "#939FAB"
+        }), /*#__PURE__*/jsxRuntime.jsx("stop", {
+          offset: "1",
+          stopColor: "#DCDEE1"
+        })]
+      }), /*#__PURE__*/jsxRuntime.jsxs("radialGradient", {
+        id: "paint2_radial_849_49341",
+        cx: "0",
+        cy: "0",
+        r: "1",
+        gradientUnits: "userSpaceOnUse",
+        gradientTransform: "translate(14.2447 7.69887) rotate(-171.457) scale(0.768587 1.53756)",
+        children: [/*#__PURE__*/jsxRuntime.jsx("stop", {
+          stopColor: "#EE352C"
+        }), /*#__PURE__*/jsxRuntime.jsx("stop", {
+          offset: "1",
+          stopColor: "#A91D22"
+        })]
+      }), /*#__PURE__*/jsxRuntime.jsx("clipPath", {
+        id: "clip0_849_49341",
+        children: /*#__PURE__*/jsxRuntime.jsx("rect", {
+          width: "18.5552",
+          height: "15",
+          fill: "white",
+          transform: "translate(3 4)"
+        })
+      })]
+    })]
+  });
+};
+var MongoDB = function MongoDB(_ref5) {
+  var className = _ref5.className,
+    _ref5$circular = _ref5.circular,
+    circular = _ref5$circular === void 0 ? false : _ref5$circular;
+  if (circular) {
+    return /*#__PURE__*/jsxRuntime.jsxs("svg", {
+      className: className,
+      width: "1.5rem",
+      height: "1.5rem",
+      viewBox: "0 0 24 24",
+      fill: "none",
+      xmlns: "http://www.w3.org/2000/svg",
+      children: [/*#__PURE__*/jsxRuntime.jsx("circle", {
+        cx: "12",
+        cy: "12",
+        r: "12",
+        fill: "#DEFBE6"
+      }), /*#__PURE__*/jsxRuntime.jsx("path", {
+        d: "M11.9864 3.04956L12.4667 3.95171C12.5747 4.11819 12.6917 4.26555 12.8295 4.40279C13.2335 4.80174 13.61 5.22754 13.9566 5.67727C14.7704 6.74591 15.3194 7.93265 15.7114 9.21614C15.9465 10.0002 16.0742 10.8045 16.0837 11.6178C16.1231 14.0492 15.2896 16.1369 13.609 17.8721C13.3356 18.1472 13.0403 18.3997 12.726 18.6269C12.5595 18.6269 12.4807 18.4992 12.4121 18.3816C12.2872 18.1637 12.204 17.9243 12.1669 17.6758C12.1079 17.3816 12.069 17.0875 12.0882 16.7838V16.6465C12.0747 16.6173 11.9279 3.11874 11.9864 3.04956Z",
+        fill: "#599636"
+      }), /*#__PURE__*/jsxRuntime.jsx("path", {
+        d: "M11.986 3.01935C11.9664 2.97998 11.9467 3.00979 11.927 3.02891C11.9366 3.22576 11.8679 3.40125 11.7605 3.56885C11.6424 3.73533 11.486 3.86301 11.3291 4.00024C10.4573 4.75504 9.77116 5.66675 9.22166 6.68645C8.49049 8.0588 8.11366 9.52958 8.00679 11.078C7.95786 11.6365 8.1834 13.6073 8.35944 14.1759C8.83976 15.6855 9.70255 16.9504 10.8201 18.0483C11.0946 18.3126 11.3882 18.5578 11.6919 18.7935C11.7802 18.7935 11.7898 18.7148 11.81 18.6563C11.8487 18.5311 11.8782 18.4033 11.8983 18.2738L12.0952 16.8036L11.986 3.01935Z",
+        fill: "#6CAC48"
+      }), /*#__PURE__*/jsxRuntime.jsx("path", {
+        d: "M12.4659 19.2243C12.4856 18.9993 12.5936 18.8126 12.7111 18.6264C12.593 18.5775 12.5053 18.4802 12.4366 18.3716C12.3775 18.2688 12.3285 18.1605 12.2904 18.0482C12.1532 17.6365 12.1239 17.2045 12.0846 16.7838V16.5291C12.0356 16.5684 12.0255 16.9014 12.0255 16.9509C11.9969 17.3955 11.9379 17.8377 11.8489 18.2743C11.8196 18.4509 11.8 18.6269 11.6914 18.7839C11.6914 18.8036 11.6914 18.8232 11.701 18.8525C11.8776 19.3722 11.9259 19.9014 11.9558 20.4408V20.6377C11.9558 20.8728 11.9462 20.8233 12.1414 20.902C12.2201 20.9313 12.3078 20.9414 12.3866 20.9999C12.4456 20.9999 12.4552 20.9509 12.4552 20.9116L12.426 20.5882V19.686C12.4164 19.5285 12.4456 19.3722 12.4653 19.2248L12.4659 19.2243Z",
+        fill: "#C2BFBF"
+      })]
+    });
+  }
+  return /*#__PURE__*/jsxRuntime.jsxs("svg", {
+    className: className,
+    width: "1.5rem",
+    height: "1.5rem",
+    viewBox: "0 0 24 24",
+    fill: "none",
+    xmlns: "http://www.w3.org/2000/svg",
+    children: [/*#__PURE__*/jsxRuntime.jsx("path", {
+      d: "M11.1249 3.8606L11.6017 4.75609C11.7089 4.92134 11.825 5.06761 11.9618 5.20384C12.3628 5.59984 12.7366 6.0225 13.0806 6.46892C13.8885 7.52966 14.4334 8.70765 14.8225 9.98166C15.0558 10.7599 15.1826 11.5583 15.1921 12.3656C15.2311 14.779 14.4038 16.8514 12.7356 18.5737C12.4643 18.8468 12.1711 19.0974 11.8591 19.3229C11.6938 19.3229 11.6157 19.1962 11.5476 19.0795C11.4235 18.8632 11.341 18.6255 11.3041 18.3789C11.2455 18.0869 11.207 17.7949 11.226 17.4934V17.3572C11.2126 17.3282 11.0669 3.92927 11.1249 3.8606Z",
+      fill: "#599636"
+    }), /*#__PURE__*/jsxRuntime.jsx("path", {
+      d: "M11.1246 3.83049C11.1051 3.79141 11.0855 3.821 11.066 3.83998C11.0755 4.03538 11.0074 4.20956 10.9007 4.37593C10.7835 4.54119 10.6283 4.66792 10.4725 4.80414C9.60717 5.55336 8.92606 6.45835 8.38061 7.47052C7.65484 8.83275 7.28079 10.2927 7.17471 11.8296C7.12614 12.384 7.35001 14.3403 7.52476 14.9047C8.00154 16.4031 8.85795 17.6587 9.96727 18.7485C10.2397 19.0109 10.5311 19.2543 10.8326 19.4882C10.9203 19.4882 10.9298 19.4101 10.9499 19.352C10.9883 19.2278 11.0176 19.1009 11.0375 18.9724L11.2329 17.513L11.1246 3.83049Z",
+      fill: "#6CAC48"
+    }), /*#__PURE__*/jsxRuntime.jsx("path", {
+      d: "M11.6013 19.916C11.6208 19.6927 11.728 19.5074 11.8447 19.3226C11.7275 19.274 11.6404 19.1774 11.5723 19.0697C11.5135 18.9677 11.4649 18.8601 11.4271 18.7487C11.2909 18.34 11.2618 17.9112 11.2228 17.4936V17.2407C11.1742 17.2798 11.1641 17.6103 11.1641 17.6594C11.1357 18.1008 11.0772 18.5397 10.9888 18.9731C10.9598 19.1484 10.9403 19.3231 10.8325 19.4789C10.8325 19.4984 10.8325 19.518 10.842 19.547C11.0173 20.0629 11.0653 20.5882 11.0949 21.1236V21.319C11.0949 21.5524 11.0854 21.5033 11.2791 21.5814C11.3573 21.6104 11.4444 21.6205 11.5226 21.6786C11.5812 21.6786 11.5907 21.63 11.5907 21.5909L11.5616 21.2699V20.3744C11.5522 20.2181 11.5812 20.0629 11.6007 19.9166L11.6013 19.916Z",
+      fill: "#C2BFBF"
+    })]
+  });
+};
+var Databases = {
+  Oracle: Oracle,
+  MSSql: MSSql,
+  MongoDB: MongoDB,
+  PgSql: PgSql,
+  MySql: MySql
+};
+
+var css$R = ".Accordion_module_root__a63f6f55 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  width: 100%;\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell] {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.5rem;\n  padding: 0.5rem 1rem;\n  cursor: pointer;\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell] > [data-elem=component1] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell] > [data-elem=component1] .Accordion_module_icon__a63f6f55 {\n  transform: rotate(-90deg);\n  width: 1rem;\n  height: 1rem;\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell] .Accordion_module_title__a63f6f55 {\n  flex: 1 1 auto;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell]:hover {\n  background: var(--background);\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell]:hover .Accordion_module_icon__a63f6f55,\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell]:hover .Accordion_module_title__a63f6f55 {\n  color: var(--highlight);\n  fill: var(--highlight);\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_body__a63f6f55 {\n  display: none;\n  padding: 0.5rem 2.5rem;\n}\n.Accordion_module_root__a63f6f55.Accordion_module_open__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell] [data-elem=component1] .Accordion_module_icon__a63f6f55 {\n  transform: none;\n}\n.Accordion_module_root__a63f6f55.Accordion_module_open__a63f6f55 > .Accordion_module_body__a63f6f55 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n}\n.Accordion_module_root__a63f6f55.Accordion_module_open__a63f6f55 > .Accordion_module_body__a63f6f55 > button[data-elem=base-cell] {\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  align-self: flex-end;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-end;\n  align-items: center;\n}\n.Accordion_module_root__a63f6f55.Accordion_module_open__a63f6f55 > .Accordion_module_body__a63f6f55 > button[data-elem=base-cell] .Accordion_module_expand__a63f6f55 {\n  height: 1.5rem;\n  width: 1.5rem;\n}";
 var modules_8207625f = {"root":"Accordion_module_root__a63f6f55","header":"Accordion_module_header__a63f6f55","icon":"Accordion_module_icon__a63f6f55","title":"Accordion_module_title__a63f6f55","body":"Accordion_module_body__a63f6f55","open":"Accordion_module_open__a63f6f55","expand":"Accordion_module_expand__a63f6f55"};
-n(css$Q,{});
+n(css$R,{});
 
 var Accordion = function Accordion(props) {
   var defaultOpen = props.defaultOpen,
@@ -2633,9 +3296,9 @@ Accordion.defaultProps = {
   onExpand: null
 };
 
-var css$P = ".Alert_module_root__b5fc9a1d {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: flex-start;\n  position: fixed;\n  padding: 0.938rem;\n  width: 500px;\n}\n.Alert_module_root__b5fc9a1d.Alert_module_positionBottomCenter__b5fc9a1d {\n  left: 50%;\n  bottom: 1rem;\n  transform: translate(-50%, 0);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_positionTopRight__b5fc9a1d {\n  right: 1rem;\n  top: 1rem;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_left__b5fc9a1d {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_left__b5fc9a1d .Alert_module_icons__b5fc9a1d {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  padding: 0.313rem 0.938rem 0rem 0rem;\n  height: auto;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_left__b5fc9a1d .Alert_module_icons__b5fc9a1d .Alert_module_icon__b5fc9a1d {\n  width: 1.25rem;\n  height: 1.25rem;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_left__b5fc9a1d .Alert_module_content__b5fc9a1d {\n  padding: 0.188rem 0.938rem 0rem 0rem;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_left__b5fc9a1d .Alert_module_content__b5fc9a1d .Alert_module_title__b5fc9a1d {\n  font-size: 0.875rem;\n  font-weight: 600;\n  padding-right: 2px;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_left__b5fc9a1d .Alert_module_content__b5fc9a1d .Alert_module_description__b5fc9a1d {\n  word-wrap: break-word;\n  height: auto;\n  font-size: 0.875rem;\n  font-weight: 400;\n  margin-bottom: 0.5rem;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_actions__b5fc9a1d {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: flex-start;\n  gap: 5px;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_actions__b5fc9a1d .Alert_module_button__b5fc9a1d {\n  padding: 0.313rem 1rem;\n  font-weight: 400;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_actions__b5fc9a1d .Alert_module_close__b5fc9a1d {\n  padding-top: 0.313rem;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_actions__b5fc9a1d .Alert_module_close__b5fc9a1d .Alert_module_icon__b5fc9a1d {\n  width: 1.25rem;\n  height: 1.25rem;\n  fill: var(--black);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_borderDefault__b5fc9a1d {\n  border-width: 0.063rem;\n}\n.Alert_module_root__b5fc9a1d.Alert_module_borderThickLeft__b5fc9a1d {\n  border-width: 0.063rem 0.063rem 0.063rem 0.25rem;\n}\n.Alert_module_root__b5fc9a1d.Alert_module_borderNone__b5fc9a1d {\n  border-width: 0rem 0rem 0rem 0.25rem;\n}\n.Alert_module_root__b5fc9a1d.Alert_module_info__b5fc9a1d {\n  border-style: solid;\n  border-color: var(--info);\n  background-color: #edf5ff;\n}\n.Alert_module_root__b5fc9a1d.Alert_module_info__b5fc9a1d .Alert_module_icon__b5fc9a1d {\n  fill: var(--info);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_success__b5fc9a1d {\n  border-style: solid;\n  border-color: var(--success);\n  background-color: var(--success-bg);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_success__b5fc9a1d .Alert_module_icon__b5fc9a1d {\n  fill: var(--success);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_danger__b5fc9a1d {\n  border-style: solid;\n  border-color: var(--error);\n  background-color: var(--error-bg);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_danger__b5fc9a1d .Alert_module_icon__b5fc9a1d {\n  fill: var(--error);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_warning__b5fc9a1d {\n  border-style: solid;\n  border-color: var(--warning);\n  background-color: var(--warning-bg);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_warning__b5fc9a1d .Alert_module_icon__b5fc9a1d {\n  fill: var(--warning);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_shadow__b5fc9a1d {\n  box-shadow: 0.125rem 0.5rem 1rem rgba(60, 60, 60, 0.12);\n}";
+var css$Q = ".Alert_module_root__b5fc9a1d {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: flex-start;\n  position: fixed;\n  padding: 0.938rem;\n  width: 500px;\n}\n.Alert_module_root__b5fc9a1d.Alert_module_positionBottomCenter__b5fc9a1d {\n  left: 50%;\n  bottom: 1rem;\n  transform: translate(-50%, 0);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_positionTopRight__b5fc9a1d {\n  right: 1rem;\n  top: 1rem;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_left__b5fc9a1d {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_left__b5fc9a1d .Alert_module_icons__b5fc9a1d {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  padding: 0.313rem 0.938rem 0rem 0rem;\n  height: auto;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_left__b5fc9a1d .Alert_module_icons__b5fc9a1d .Alert_module_icon__b5fc9a1d {\n  width: 1.25rem;\n  height: 1.25rem;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_left__b5fc9a1d .Alert_module_content__b5fc9a1d {\n  padding: 0.188rem 0.938rem 0rem 0rem;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_left__b5fc9a1d .Alert_module_content__b5fc9a1d .Alert_module_title__b5fc9a1d {\n  font-size: 0.875rem;\n  font-weight: 600;\n  padding-right: 2px;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_left__b5fc9a1d .Alert_module_content__b5fc9a1d .Alert_module_description__b5fc9a1d {\n  word-wrap: break-word;\n  height: auto;\n  font-size: 0.875rem;\n  font-weight: 400;\n  margin-bottom: 0.5rem;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_actions__b5fc9a1d {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: flex-start;\n  gap: 5px;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_actions__b5fc9a1d .Alert_module_button__b5fc9a1d {\n  padding: 0.313rem 1rem;\n  font-weight: 400;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_actions__b5fc9a1d .Alert_module_close__b5fc9a1d {\n  padding-top: 0.313rem;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_actions__b5fc9a1d .Alert_module_close__b5fc9a1d .Alert_module_icon__b5fc9a1d {\n  width: 1.25rem;\n  height: 1.25rem;\n  fill: var(--black);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_borderDefault__b5fc9a1d {\n  border-width: 0.063rem;\n}\n.Alert_module_root__b5fc9a1d.Alert_module_borderThickLeft__b5fc9a1d {\n  border-width: 0.063rem 0.063rem 0.063rem 0.25rem;\n}\n.Alert_module_root__b5fc9a1d.Alert_module_borderNone__b5fc9a1d {\n  border-width: 0rem 0rem 0rem 0.25rem;\n}\n.Alert_module_root__b5fc9a1d.Alert_module_info__b5fc9a1d {\n  border-style: solid;\n  border-color: var(--info);\n  background-color: #edf5ff;\n}\n.Alert_module_root__b5fc9a1d.Alert_module_info__b5fc9a1d .Alert_module_icon__b5fc9a1d {\n  fill: var(--info);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_success__b5fc9a1d {\n  border-style: solid;\n  border-color: var(--success);\n  background-color: var(--success-bg);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_success__b5fc9a1d .Alert_module_icon__b5fc9a1d {\n  fill: var(--success);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_danger__b5fc9a1d {\n  border-style: solid;\n  border-color: var(--error);\n  background-color: var(--error-bg);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_danger__b5fc9a1d .Alert_module_icon__b5fc9a1d {\n  fill: var(--error);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_warning__b5fc9a1d {\n  border-style: solid;\n  border-color: var(--warning);\n  background-color: var(--warning-bg);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_warning__b5fc9a1d .Alert_module_icon__b5fc9a1d {\n  fill: var(--warning);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_shadow__b5fc9a1d {\n  box-shadow: 0.125rem 0.5rem 1rem rgba(60, 60, 60, 0.12);\n}";
 var modules_3a764ea3 = {"root":"Alert_module_root__b5fc9a1d","position-bottom-center":"Alert_module_positionBottomCenter__b5fc9a1d","position-top-right":"Alert_module_positionTopRight__b5fc9a1d","left":"Alert_module_left__b5fc9a1d","icons":"Alert_module_icons__b5fc9a1d","icon":"Alert_module_icon__b5fc9a1d","content":"Alert_module_content__b5fc9a1d","title":"Alert_module_title__b5fc9a1d","description":"Alert_module_description__b5fc9a1d","actions":"Alert_module_actions__b5fc9a1d","button":"Alert_module_button__b5fc9a1d","close":"Alert_module_close__b5fc9a1d","border-default":"Alert_module_borderDefault__b5fc9a1d","border-thick-left":"Alert_module_borderThickLeft__b5fc9a1d","border-none":"Alert_module_borderNone__b5fc9a1d","info":"Alert_module_info__b5fc9a1d","success":"Alert_module_success__b5fc9a1d","danger":"Alert_module_danger__b5fc9a1d","warning":"Alert_module_warning__b5fc9a1d","shadow":"Alert_module_shadow__b5fc9a1d"};
-n(css$P,{});
+n(css$Q,{});
 
 function getSide(placement) {
   return placement.split('-')[0];
@@ -6473,9 +7136,9 @@ const useListNavigation = function (_ref, _temp2) {
   };
 };
 
-var css$O = ".Popper_module_backdrop__0c794282 {\n  position: fixed;\n  z-index: 100;\n  inset: 0;\n  background: rgba(0, 0, 0, 0.4);\n}\n.Popper_module_backdrop__0c794282.Popper_module_transparent__0c794282 {\n  background: none;\n}\n.Popper_module_backdrop__0c794282.Popper_module_hideBackdrop__0c794282 {\n  position: static !important;\n}";
+var css$P = ".Popper_module_backdrop__0c794282 {\n  position: fixed;\n  z-index: 100;\n  inset: 0;\n  background: rgba(0, 0, 0, 0.4);\n}\n.Popper_module_backdrop__0c794282.Popper_module_transparent__0c794282 {\n  background: none;\n}\n.Popper_module_backdrop__0c794282.Popper_module_hideBackdrop__0c794282 {\n  position: static !important;\n}";
 var modules_fe46b225 = {"backdrop":"Popper_module_backdrop__0c794282","transparent":"Popper_module_transparent__0c794282","hide-backdrop":"Popper_module_hideBackdrop__0c794282"};
-n(css$O,{});
+n(css$P,{});
 
 var Popper = function Popper(props) {
   var open = props.open,
@@ -6733,13 +7396,13 @@ Alert.defaultProps = {
   position: 'bottom-center'
 };
 
-var css$N = ".Breadcrumbs_module_root__f527a278 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.5rem;\n  width: auto;\n}\n.Breadcrumbs_module_root__f527a278 .Breadcrumbs_module_seperator__f527a278 {\n  width: 1.5rem;\n  height: 1.5rem;\n  stroke: var(--grey2);\n}\n.Breadcrumbs_module_root__f527a278 button.Breadcrumbs_module_expand__f527a278[data-elem=base-cell] {\n  background: var(--grey6);\n  color: var(--dark-grey);\n  height: 0.75rem;\n  padding: 0.25rem;\n}\n.Breadcrumbs_module_root__f527a278 button.Breadcrumbs_module_expand__f527a278[data-elem=base-cell] [data-elem=title] {\n  margin-bottom: 0.4rem;\n}\n.Breadcrumbs_module_root__f527a278 .Breadcrumbs_module_crumb__f527a278 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  color: var(--grey2);\n}\n.Breadcrumbs_module_root__f527a278 .Breadcrumbs_module_crumb__f527a278.Breadcrumbs_module_active__f527a278 {\n  color: var(--black);\n}\n.Breadcrumbs_module_root__f527a278 .Breadcrumbs_module_crumb__f527a278:hover:not(.Breadcrumbs_module_active__f527a278) {\n  color: var(--info);\n}\n.Breadcrumbs_module_root__f527a278.Breadcrumbs_module_themeLight__f527a278 .Breadcrumbs_module_crumb__f527a278 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  color: var(--grey2);\n}\n.Breadcrumbs_module_root__f527a278.Breadcrumbs_module_themeLight__f527a278 .Breadcrumbs_module_crumb__f527a278.Breadcrumbs_module_active__f527a278 {\n  color: var(--black);\n}\n.Breadcrumbs_module_root__f527a278.Breadcrumbs_module_themeLight__f527a278 .Breadcrumbs_module_crumb__f527a278:hover:not(.Breadcrumbs_module_active__f527a278) {\n  color: var(--info);\n}\n.Breadcrumbs_module_root__f527a278.Breadcrumbs_module_themeDark__f527a278 .Breadcrumbs_module_crumb__f527a278 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  color: var(--grey2);\n}\n.Breadcrumbs_module_root__f527a278.Breadcrumbs_module_themeDark__f527a278 .Breadcrumbs_module_crumb__f527a278.Breadcrumbs_module_active__f527a278 {\n  color: var(--white);\n}\n.Breadcrumbs_module_root__f527a278.Breadcrumbs_module_themeDark__f527a278 .Breadcrumbs_module_crumb__f527a278:hover:not(.Breadcrumbs_module_active__f527a278) {\n  color: var(--info);\n}";
+var css$O = ".Breadcrumbs_module_root__f527a278 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.5rem;\n  width: auto;\n}\n.Breadcrumbs_module_root__f527a278 .Breadcrumbs_module_seperator__f527a278 {\n  width: 1.5rem;\n  height: 1.5rem;\n  stroke: var(--grey2);\n}\n.Breadcrumbs_module_root__f527a278 button.Breadcrumbs_module_expand__f527a278[data-elem=base-cell] {\n  background: var(--grey6);\n  color: var(--dark-grey);\n  height: 0.75rem;\n  padding: 0.25rem;\n}\n.Breadcrumbs_module_root__f527a278 button.Breadcrumbs_module_expand__f527a278[data-elem=base-cell] [data-elem=title] {\n  margin-bottom: 0.4rem;\n}\n.Breadcrumbs_module_root__f527a278 .Breadcrumbs_module_crumb__f527a278 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  color: var(--grey2);\n}\n.Breadcrumbs_module_root__f527a278 .Breadcrumbs_module_crumb__f527a278.Breadcrumbs_module_active__f527a278 {\n  color: var(--black);\n}\n.Breadcrumbs_module_root__f527a278 .Breadcrumbs_module_crumb__f527a278:hover:not(.Breadcrumbs_module_active__f527a278) {\n  color: var(--info);\n}\n.Breadcrumbs_module_root__f527a278.Breadcrumbs_module_themeLight__f527a278 .Breadcrumbs_module_crumb__f527a278 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  color: var(--grey2);\n}\n.Breadcrumbs_module_root__f527a278.Breadcrumbs_module_themeLight__f527a278 .Breadcrumbs_module_crumb__f527a278.Breadcrumbs_module_active__f527a278 {\n  color: var(--black);\n}\n.Breadcrumbs_module_root__f527a278.Breadcrumbs_module_themeLight__f527a278 .Breadcrumbs_module_crumb__f527a278:hover:not(.Breadcrumbs_module_active__f527a278) {\n  color: var(--info);\n}\n.Breadcrumbs_module_root__f527a278.Breadcrumbs_module_themeDark__f527a278 .Breadcrumbs_module_crumb__f527a278 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  color: var(--grey2);\n}\n.Breadcrumbs_module_root__f527a278.Breadcrumbs_module_themeDark__f527a278 .Breadcrumbs_module_crumb__f527a278.Breadcrumbs_module_active__f527a278 {\n  color: var(--white);\n}\n.Breadcrumbs_module_root__f527a278.Breadcrumbs_module_themeDark__f527a278 .Breadcrumbs_module_crumb__f527a278:hover:not(.Breadcrumbs_module_active__f527a278) {\n  color: var(--info);\n}";
 var modules_651f50a9 = {"root":"Breadcrumbs_module_root__f527a278","seperator":"Breadcrumbs_module_seperator__f527a278","expand":"Breadcrumbs_module_expand__f527a278","crumb":"Breadcrumbs_module_crumb__f527a278","active":"Breadcrumbs_module_active__f527a278","theme-light":"Breadcrumbs_module_themeLight__f527a278","theme-dark":"Breadcrumbs_module_themeDark__f527a278"};
-n(css$N,{});
+n(css$O,{});
 
-var css$M = ".Text_module_root__71f59b14 {\n  color: var(--dark-grey);\n}\n.Text_module_root__71f59b14.Text_module_h1__71f59b14 {\n  font-size: 2.25rem;\n  line-height: 2.75rem;\n}\n.Text_module_root__71f59b14.Text_module_h2__71f59b14 {\n  font-size: 1.375rem;\n  line-height: 1.688rem;\n}\n.Text_module_root__71f59b14.Text_module_b1__71f59b14 {\n  font-size: 1rem;\n  line-height: 1.188rem;\n}\n.Text_module_root__71f59b14.Text_module_b2__71f59b14 {\n  font-size: 0.875rem;\n  line-height: 1.188rem;\n}\n.Text_module_root__71f59b14.Text_module_b3__71f59b14 {\n  font-size: 0.75rem;\n  line-height: 1.063rem;\n}\n.Text_module_root__71f59b14.Text_module_regularStroke__71f59b14 {\n  font-weight: 400;\n}\n.Text_module_root__71f59b14.Text_module_mediumStroke__71f59b14 {\n  font-weight: 500;\n}\n.Text_module_root__71f59b14.Text_module_semiboldStroke__71f59b14 {\n  font-weight: 600;\n}\n.Text_module_root__71f59b14.Text_module_boldStroke__71f59b14 {\n  font-weight: 800;\n}";
+var css$N = ".Text_module_root__71f59b14 {\n  color: var(--dark-grey);\n}\n.Text_module_root__71f59b14.Text_module_h1__71f59b14 {\n  font-size: 2.25rem;\n  line-height: 2.75rem;\n}\n.Text_module_root__71f59b14.Text_module_h2__71f59b14 {\n  font-size: 1.375rem;\n  line-height: 1.688rem;\n}\n.Text_module_root__71f59b14.Text_module_b1__71f59b14 {\n  font-size: 1rem;\n  line-height: 1.188rem;\n}\n.Text_module_root__71f59b14.Text_module_b2__71f59b14 {\n  font-size: 0.875rem;\n  line-height: 1.188rem;\n}\n.Text_module_root__71f59b14.Text_module_b3__71f59b14 {\n  font-size: 0.75rem;\n  line-height: 1.063rem;\n}\n.Text_module_root__71f59b14.Text_module_regularStroke__71f59b14 {\n  font-weight: 400;\n}\n.Text_module_root__71f59b14.Text_module_mediumStroke__71f59b14 {\n  font-weight: 500;\n}\n.Text_module_root__71f59b14.Text_module_semiboldStroke__71f59b14 {\n  font-weight: 600;\n}\n.Text_module_root__71f59b14.Text_module_boldStroke__71f59b14 {\n  font-weight: 800;\n}";
 var modules_22fa3f10 = {"root":"Text_module_root__71f59b14","h1":"Text_module_h1__71f59b14","h2":"Text_module_h2__71f59b14","b1":"Text_module_b1__71f59b14","b2":"Text_module_b2__71f59b14","b3":"Text_module_b3__71f59b14","regular-stroke":"Text_module_regularStroke__71f59b14","medium-stroke":"Text_module_mediumStroke__71f59b14","semibold-stroke":"Text_module_semiboldStroke__71f59b14","bold-stroke":"Text_module_boldStroke__71f59b14"};
-n(css$M,{});
+n(css$N,{});
 
 // eslint-disable-next-line prefer-arrow-callback
 var Text = /*#__PURE__*/React.forwardRef(function Text(props, ref) {
@@ -6790,9 +7453,9 @@ Text.defaultProps = {
   attrs: {}
 };
 
-var css$L = ".Link_module_root__51df30d3 {\n  color: var(--highlight);\n  text-decoration: none;\n}\n.Link_module_root__51df30d3.Link_module_underlineNone__51df30d3 {\n  text-decoration: none;\n}\n.Link_module_root__51df30d3.Link_module_underlineHover__51df30d3:hover {\n  text-decoration: underline;\n}\n.Link_module_root__51df30d3.Link_module_underlineAlways__51df30d3 {\n  text-decoration: underline;\n}";
+var css$M = ".Link_module_root__51df30d3 {\n  color: var(--highlight);\n  text-decoration: none;\n}\n.Link_module_root__51df30d3.Link_module_underlineNone__51df30d3 {\n  text-decoration: none;\n}\n.Link_module_root__51df30d3.Link_module_underlineHover__51df30d3:hover {\n  text-decoration: underline;\n}\n.Link_module_root__51df30d3.Link_module_underlineAlways__51df30d3 {\n  text-decoration: underline;\n}";
 var modules_475441e2 = {"root":"Link_module_root__51df30d3","underline-none":"Link_module_underlineNone__51df30d3","underline-hover":"Link_module_underlineHover__51df30d3","underline-always":"Link_module_underlineAlways__51df30d3"};
-n(css$L,{});
+n(css$M,{});
 
 var Link = /*#__PURE__*/React.forwardRef(function Link(props, ref) {
   var variant = props.variant,
@@ -15241,10 +15904,10 @@ function markup$1(Prism) {
   Prism.languages.rss = Prism.languages.xml;
 }
 
-var css_1 = css$K;
-css$K.displayName = 'css';
-css$K.aliases = [];
-function css$K(Prism) {
+var css_1 = css$L;
+css$L.displayName = 'css';
+css$L.aliases = [];
+function css$L(Prism) {
 (function (Prism) {
     var string =
       /(?:"(?:\\(?:\r\n|[\s\S])|[^"\\\r\n])*"|'(?:\\(?:\r\n|[\s\S])|[^'\\\r\n])*')/;
@@ -15546,7 +16209,7 @@ var h = hastscript.exports;
 var decode$1 = parseEntities_1;
 var Prism = prismCore.exports;
 var markup = markup_1;
-var css$J = css_1;
+var css$K = css_1;
 var clike = clike_1;
 var js = javascript_1;
 
@@ -15574,7 +16237,7 @@ refract.listLanguages = listLanguages;
 
 // Register bundled grammars.
 register$1(markup);
-register$1(css$J);
+register$1(css$K);
 register$1(clike);
 register$1(js);
 
@@ -18878,52 +19541,43 @@ function cil(Prism) {
   };
 }
 
-var clojure_1;
-var hasRequiredClojure;
-
-function requireClojure () {
-	if (hasRequiredClojure) return clojure_1;
-	hasRequiredClojure = 1;
-
-	clojure_1 = clojure;
-	clojure.displayName = 'clojure';
-	clojure.aliases = [];
-	function clojure(Prism) {
-	  // Copied from https://github.com/jeluard/prism-clojure
-	  Prism.languages.clojure = {
-	    comment: {
-	      pattern: /;.*/,
-	      greedy: true
-	    },
-	    string: {
-	      pattern: /"(?:[^"\\]|\\.)*"/,
-	      greedy: true
-	    },
-	    char: /\\\w+/,
-	    symbol: {
-	      pattern: /(^|[\s()\[\]{},])::?[\w*+!?'<>=/.-]+/,
-	      lookbehind: true
-	    },
-	    keyword: {
-	      pattern:
-	        /(\()(?:-|->|->>|\.|\.\.|\*|\/|\+|<|<=|=|==|>|>=|accessor|agent|agent-errors|aget|alength|all-ns|alter|and|append-child|apply|array-map|aset|aset-boolean|aset-byte|aset-char|aset-double|aset-float|aset-int|aset-long|aset-short|assert|assoc|await|await-for|bean|binding|bit-and|bit-not|bit-or|bit-shift-left|bit-shift-right|bit-xor|boolean|branch\?|butlast|byte|cast|char|children|class|clear-agent-errors|comment|commute|comp|comparator|complement|concat|cond|conj|cons|constantly|construct-proxy|contains\?|count|create-ns|create-struct|cycle|dec|declare|def|def-|definline|definterface|defmacro|defmethod|defmulti|defn|defn-|defonce|defproject|defprotocol|defrecord|defstruct|deftype|deref|difference|disj|dissoc|distinct|do|doall|doc|dorun|doseq|dosync|dotimes|doto|double|down|drop|drop-while|edit|end\?|ensure|eval|every\?|false\?|ffirst|file-seq|filter|find|find-doc|find-ns|find-var|first|float|flush|fn|fnseq|for|frest|gensym|get|get-proxy-class|hash-map|hash-set|identical\?|identity|if|if-let|if-not|import|in-ns|inc|index|insert-child|insert-left|insert-right|inspect-table|inspect-tree|instance\?|int|interleave|intersection|into|into-array|iterate|join|key|keys|keyword|keyword\?|last|lazy-cat|lazy-cons|left|lefts|let|line-seq|list|list\*|load|load-file|locking|long|loop|macroexpand|macroexpand-1|make-array|make-node|map|map-invert|map\?|mapcat|max|max-key|memfn|merge|merge-with|meta|min|min-key|monitor-enter|name|namespace|neg\?|new|newline|next|nil\?|node|not|not-any\?|not-every\?|not=|ns|ns-imports|ns-interns|ns-map|ns-name|ns-publics|ns-refers|ns-resolve|ns-unmap|nth|nthrest|or|parse|partial|path|peek|pop|pos\?|pr|pr-str|print|print-str|println|println-str|prn|prn-str|project|proxy|proxy-mappings|quot|quote|rand|rand-int|range|re-find|re-groups|re-matcher|re-matches|re-pattern|re-seq|read|read-line|recur|reduce|ref|ref-set|refer|rem|remove|remove-method|remove-ns|rename|rename-keys|repeat|replace|replicate|resolve|rest|resultset-seq|reverse|rfirst|right|rights|root|rrest|rseq|second|select|select-keys|send|send-off|seq|seq-zip|seq\?|set|set!|short|slurp|some|sort|sort-by|sorted-map|sorted-map-by|sorted-set|special-symbol\?|split-at|split-with|str|string\?|struct|struct-map|subs|subvec|symbol|symbol\?|sync|take|take-nth|take-while|test|throw|time|to-array|to-array-2d|tree-seq|true\?|try|union|up|update-proxy|val|vals|var|var-get|var-set|var\?|vector|vector-zip|vector\?|when|when-first|when-let|when-not|with-local-vars|with-meta|with-open|with-out-str|xml-seq|xml-zip|zero\?|zipmap|zipper)(?=[\s)]|$)/,
-	      lookbehind: true
-	    },
-	    boolean: /\b(?:false|nil|true)\b/,
-	    number: {
-	      pattern:
-	        /(^|[^\w$@])(?:\d+(?:[/.]\d+)?(?:e[+-]?\d+)?|0x[a-f0-9]+|[1-9]\d?r[a-z0-9]+)[lmn]?(?![\w$@])/i,
-	      lookbehind: true
-	    },
-	    function: {
-	      pattern: /((?:^|[^'])\()[\w*+!?'<>=/.-]+(?=[\s)]|$)/,
-	      lookbehind: true
-	    },
-	    operator: /[#@^`~]/,
-	    punctuation: /[{}\[\](),]/
-	  };
-	}
-	return clojure_1;
+var clojure_1 = clojure;
+clojure.displayName = 'clojure';
+clojure.aliases = [];
+function clojure(Prism) {
+  // Copied from https://github.com/jeluard/prism-clojure
+  Prism.languages.clojure = {
+    comment: {
+      pattern: /;.*/,
+      greedy: true
+    },
+    string: {
+      pattern: /"(?:[^"\\]|\\.)*"/,
+      greedy: true
+    },
+    char: /\\\w+/,
+    symbol: {
+      pattern: /(^|[\s()\[\]{},])::?[\w*+!?'<>=/.-]+/,
+      lookbehind: true
+    },
+    keyword: {
+      pattern:
+        /(\()(?:-|->|->>|\.|\.\.|\*|\/|\+|<|<=|=|==|>|>=|accessor|agent|agent-errors|aget|alength|all-ns|alter|and|append-child|apply|array-map|aset|aset-boolean|aset-byte|aset-char|aset-double|aset-float|aset-int|aset-long|aset-short|assert|assoc|await|await-for|bean|binding|bit-and|bit-not|bit-or|bit-shift-left|bit-shift-right|bit-xor|boolean|branch\?|butlast|byte|cast|char|children|class|clear-agent-errors|comment|commute|comp|comparator|complement|concat|cond|conj|cons|constantly|construct-proxy|contains\?|count|create-ns|create-struct|cycle|dec|declare|def|def-|definline|definterface|defmacro|defmethod|defmulti|defn|defn-|defonce|defproject|defprotocol|defrecord|defstruct|deftype|deref|difference|disj|dissoc|distinct|do|doall|doc|dorun|doseq|dosync|dotimes|doto|double|down|drop|drop-while|edit|end\?|ensure|eval|every\?|false\?|ffirst|file-seq|filter|find|find-doc|find-ns|find-var|first|float|flush|fn|fnseq|for|frest|gensym|get|get-proxy-class|hash-map|hash-set|identical\?|identity|if|if-let|if-not|import|in-ns|inc|index|insert-child|insert-left|insert-right|inspect-table|inspect-tree|instance\?|int|interleave|intersection|into|into-array|iterate|join|key|keys|keyword|keyword\?|last|lazy-cat|lazy-cons|left|lefts|let|line-seq|list|list\*|load|load-file|locking|long|loop|macroexpand|macroexpand-1|make-array|make-node|map|map-invert|map\?|mapcat|max|max-key|memfn|merge|merge-with|meta|min|min-key|monitor-enter|name|namespace|neg\?|new|newline|next|nil\?|node|not|not-any\?|not-every\?|not=|ns|ns-imports|ns-interns|ns-map|ns-name|ns-publics|ns-refers|ns-resolve|ns-unmap|nth|nthrest|or|parse|partial|path|peek|pop|pos\?|pr|pr-str|print|print-str|println|println-str|prn|prn-str|project|proxy|proxy-mappings|quot|quote|rand|rand-int|range|re-find|re-groups|re-matcher|re-matches|re-pattern|re-seq|read|read-line|recur|reduce|ref|ref-set|refer|rem|remove|remove-method|remove-ns|rename|rename-keys|repeat|replace|replicate|resolve|rest|resultset-seq|reverse|rfirst|right|rights|root|rrest|rseq|second|select|select-keys|send|send-off|seq|seq-zip|seq\?|set|set!|short|slurp|some|sort|sort-by|sorted-map|sorted-map-by|sorted-set|special-symbol\?|split-at|split-with|str|string\?|struct|struct-map|subs|subvec|symbol|symbol\?|sync|take|take-nth|take-while|test|throw|time|to-array|to-array-2d|tree-seq|true\?|try|union|up|update-proxy|val|vals|var|var-get|var-set|var\?|vector|vector-zip|vector\?|when|when-first|when-let|when-not|with-local-vars|with-meta|with-open|with-out-str|xml-seq|xml-zip|zero\?|zipmap|zipper)(?=[\s)]|$)/,
+      lookbehind: true
+    },
+    boolean: /\b(?:false|nil|true)\b/,
+    number: {
+      pattern:
+        /(^|[^\w$@])(?:\d+(?:[/.]\d+)?(?:e[+-]?\d+)?|0x[a-f0-9]+|[1-9]\d?r[a-z0-9]+)[lmn]?(?![\w$@])/i,
+      lookbehind: true
+    },
+    function: {
+      pattern: /((?:^|[^'])\()[\w*+!?'<>=/.-]+(?=[\s)]|$)/,
+      lookbehind: true
+    },
+    operator: /[#@^`~]/,
+    punctuation: /[{}\[\](),]/
+  };
 }
 
 var cmake_1 = cmake;
@@ -18966,62 +19620,71 @@ function cmake(Prism) {
   };
 }
 
-var cobol_1 = cobol;
-cobol.displayName = 'cobol';
-cobol.aliases = [];
-function cobol(Prism) {
-  Prism.languages.cobol = {
-    comment: {
-      pattern: /\*>.*|(^[ \t]*)\*.*/m,
-      lookbehind: true,
-      greedy: true
-    },
-    string: {
-      pattern: /[xzgn]?(?:"(?:[^\r\n"]|"")*"(?!")|'(?:[^\r\n']|'')*'(?!'))/i,
-      greedy: true
-    },
-    level: {
-      pattern: /(^[ \t]*)\d+\b/m,
-      lookbehind: true,
-      greedy: true,
-      alias: 'number'
-    },
-    'class-name': {
-      // https://github.com/antlr/grammars-v4/blob/42edd5b687d183b5fa679e858a82297bd27141e7/cobol85/Cobol85.g4#L1015
-      pattern:
-        /(\bpic(?:ture)?\s+)(?:(?:[-\w$/,:*+<>]|\.(?!\s|$))(?:\(\d+\))?)+/i,
-      lookbehind: true,
-      inside: {
-        number: {
-          pattern: /(\()\d+/,
-          lookbehind: true
-        },
-        punctuation: /[()]/
-      }
-    },
-    keyword: {
-      pattern:
-        /(^|[^\w-])(?:ABORT|ACCEPT|ACCESS|ADD|ADDRESS|ADVANCING|AFTER|ALIGNED|ALL|ALPHABET|ALPHABETIC|ALPHABETIC-LOWER|ALPHABETIC-UPPER|ALPHANUMERIC|ALPHANUMERIC-EDITED|ALSO|ALTER|ALTERNATE|ANY|ARE|AREA|AREAS|AS|ASCENDING|ASCII|ASSIGN|ASSOCIATED-DATA|ASSOCIATED-DATA-LENGTH|AT|ATTRIBUTE|AUTHOR|AUTO|AUTO-SKIP|BACKGROUND-COLOR|BACKGROUND-COLOUR|BASIS|BEEP|BEFORE|BEGINNING|BELL|BINARY|BIT|BLANK|BLINK|BLOCK|BOTTOM|BOUNDS|BY|BYFUNCTION|BYTITLE|CALL|CANCEL|CAPABLE|CCSVERSION|CD|CF|CH|CHAINING|CHANGED|CHANNEL|CHARACTER|CHARACTERS|CLASS|CLASS-ID|CLOCK-UNITS|CLOSE|CLOSE-DISPOSITION|COBOL|CODE|CODE-SET|COL|COLLATING|COLUMN|COM-REG|COMMA|COMMITMENT|COMMON|COMMUNICATION|COMP|COMP-1|COMP-2|COMP-3|COMP-4|COMP-5|COMPUTATIONAL|COMPUTATIONAL-1|COMPUTATIONAL-2|COMPUTATIONAL-3|COMPUTATIONAL-4|COMPUTATIONAL-5|COMPUTE|CONFIGURATION|CONTAINS|CONTENT|CONTINUE|CONTROL|CONTROL-POINT|CONTROLS|CONVENTION|CONVERTING|COPY|CORR|CORRESPONDING|COUNT|CRUNCH|CURRENCY|CURSOR|DATA|DATA-BASE|DATE|DATE-COMPILED|DATE-WRITTEN|DAY|DAY-OF-WEEK|DBCS|DE|DEBUG-CONTENTS|DEBUG-ITEM|DEBUG-LINE|DEBUG-NAME|DEBUG-SUB-1|DEBUG-SUB-2|DEBUG-SUB-3|DEBUGGING|DECIMAL-POINT|DECLARATIVES|DEFAULT|DEFAULT-DISPLAY|DEFINITION|DELETE|DELIMITED|DELIMITER|DEPENDING|DESCENDING|DESTINATION|DETAIL|DFHRESP|DFHVALUE|DISABLE|DISK|DISPLAY|DISPLAY-1|DIVIDE|DIVISION|DONTCARE|DOUBLE|DOWN|DUPLICATES|DYNAMIC|EBCDIC|EGCS|EGI|ELSE|EMI|EMPTY-CHECK|ENABLE|END|END-ACCEPT|END-ADD|END-CALL|END-COMPUTE|END-DELETE|END-DIVIDE|END-EVALUATE|END-IF|END-MULTIPLY|END-OF-PAGE|END-PERFORM|END-READ|END-RECEIVE|END-RETURN|END-REWRITE|END-SEARCH|END-START|END-STRING|END-SUBTRACT|END-UNSTRING|END-WRITE|ENDING|ENTER|ENTRY|ENTRY-PROCEDURE|ENVIRONMENT|EOL|EOP|EOS|ERASE|ERROR|ESCAPE|ESI|EVALUATE|EVENT|EVERY|EXCEPTION|EXCLUSIVE|EXHIBIT|EXIT|EXPORT|EXTEND|EXTENDED|EXTERNAL|FD|FILE|FILE-CONTROL|FILLER|FINAL|FIRST|FOOTING|FOR|FOREGROUND-COLOR|FOREGROUND-COLOUR|FROM|FULL|FUNCTION|FUNCTION-POINTER|FUNCTIONNAME|GENERATE|GIVING|GLOBAL|GO|GOBACK|GRID|GROUP|HEADING|HIGH-VALUE|HIGH-VALUES|HIGHLIGHT|I-O|I-O-CONTROL|ID|IDENTIFICATION|IF|IMPLICIT|IMPORT|IN|INDEX|INDEXED|INDICATE|INITIAL|INITIALIZE|INITIATE|INPUT|INPUT-OUTPUT|INSPECT|INSTALLATION|INTEGER|INTO|INVALID|INVOKE|IS|JUST|JUSTIFIED|KANJI|KEPT|KEY|KEYBOARD|LABEL|LANGUAGE|LAST|LB|LD|LEADING|LEFT|LEFTLINE|LENGTH|LENGTH-CHECK|LIBACCESS|LIBPARAMETER|LIBRARY|LIMIT|LIMITS|LINAGE|LINAGE-COUNTER|LINE|LINE-COUNTER|LINES|LINKAGE|LIST|LOCAL|LOCAL-STORAGE|LOCK|LONG-DATE|LONG-TIME|LOW-VALUE|LOW-VALUES|LOWER|LOWLIGHT|MEMORY|MERGE|MESSAGE|MMDDYYYY|MODE|MODULES|MORE-LABELS|MOVE|MULTIPLE|MULTIPLY|NAMED|NATIONAL|NATIONAL-EDITED|NATIVE|NEGATIVE|NETWORK|NEXT|NO|NO-ECHO|NULL|NULLS|NUMBER|NUMERIC|NUMERIC-DATE|NUMERIC-EDITED|NUMERIC-TIME|OBJECT-COMPUTER|OCCURS|ODT|OF|OFF|OMITTED|ON|OPEN|OPTIONAL|ORDER|ORDERLY|ORGANIZATION|OTHER|OUTPUT|OVERFLOW|OVERLINE|OWN|PACKED-DECIMAL|PADDING|PAGE|PAGE-COUNTER|PASSWORD|PERFORM|PF|PH|PIC|PICTURE|PLUS|POINTER|PORT|POSITION|POSITIVE|PRINTER|PRINTING|PRIVATE|PROCEDURE|PROCEDURE-POINTER|PROCEDURES|PROCEED|PROCESS|PROGRAM|PROGRAM-ID|PROGRAM-LIBRARY|PROMPT|PURGE|QUEUE|QUOTE|QUOTES|RANDOM|RD|READ|READER|REAL|RECEIVE|RECEIVED|RECORD|RECORDING|RECORDS|RECURSIVE|REDEFINES|REEL|REF|REFERENCE|REFERENCES|RELATIVE|RELEASE|REMAINDER|REMARKS|REMOTE|REMOVAL|REMOVE|RENAMES|REPLACE|REPLACING|REPORT|REPORTING|REPORTS|REQUIRED|RERUN|RESERVE|RESET|RETURN|RETURN-CODE|RETURNING|REVERSE-VIDEO|REVERSED|REWIND|REWRITE|RF|RH|RIGHT|ROUNDED|RUN|SAME|SAVE|SCREEN|SD|SEARCH|SECTION|SECURE|SECURITY|SEGMENT|SEGMENT-LIMIT|SELECT|SEND|SENTENCE|SEPARATE|SEQUENCE|SEQUENTIAL|SET|SHARED|SHAREDBYALL|SHAREDBYRUNUNIT|SHARING|SHIFT-IN|SHIFT-OUT|SHORT-DATE|SIGN|SIZE|SORT|SORT-CONTROL|SORT-CORE-SIZE|SORT-FILE-SIZE|SORT-MERGE|SORT-MESSAGE|SORT-MODE-SIZE|SORT-RETURN|SOURCE|SOURCE-COMPUTER|SPACE|SPACES|SPECIAL-NAMES|STANDARD|STANDARD-1|STANDARD-2|START|STATUS|STOP|STRING|SUB-QUEUE-1|SUB-QUEUE-2|SUB-QUEUE-3|SUBTRACT|SUM|SUPPRESS|SYMBOL|SYMBOLIC|SYNC|SYNCHRONIZED|TABLE|TALLY|TALLYING|TAPE|TASK|TERMINAL|TERMINATE|TEST|TEXT|THEN|THREAD|THREAD-LOCAL|THROUGH|THRU|TIME|TIMER|TIMES|TITLE|TO|TODAYS-DATE|TODAYS-NAME|TOP|TRAILING|TRUNCATED|TYPE|TYPEDEF|UNDERLINE|UNIT|UNSTRING|UNTIL|UP|UPON|USAGE|USE|USING|VALUE|VALUES|VARYING|VIRTUAL|WAIT|WHEN|WHEN-COMPILED|WITH|WORDS|WORKING-STORAGE|WRITE|YEAR|YYYYDDD|YYYYMMDD|ZERO-FILL|ZEROES|ZEROS)(?![\w-])/i,
-      lookbehind: true
-    },
-    boolean: {
-      pattern: /(^|[^\w-])(?:false|true)(?![\w-])/i,
-      lookbehind: true
-    },
-    number: {
-      pattern:
-        /(^|[^\w-])(?:[+-]?(?:(?:\d+(?:[.,]\d+)?|[.,]\d+)(?:e[+-]?\d+)?|zero))(?![\w-])/i,
-      lookbehind: true
-    },
-    operator: [
-      /<>|[<>]=?|[=+*/&]/,
-      {
-        pattern: /(^|[^\w-])(?:-|and|equal|greater|less|not|or|than)(?![\w-])/i,
-        lookbehind: true
-      }
-    ],
-    punctuation: /[.:,()]/
-  };
+var cobol_1;
+var hasRequiredCobol;
+
+function requireCobol () {
+	if (hasRequiredCobol) return cobol_1;
+	hasRequiredCobol = 1;
+
+	cobol_1 = cobol;
+	cobol.displayName = 'cobol';
+	cobol.aliases = [];
+	function cobol(Prism) {
+	  Prism.languages.cobol = {
+	    comment: {
+	      pattern: /\*>.*|(^[ \t]*)\*.*/m,
+	      lookbehind: true,
+	      greedy: true
+	    },
+	    string: {
+	      pattern: /[xzgn]?(?:"(?:[^\r\n"]|"")*"(?!")|'(?:[^\r\n']|'')*'(?!'))/i,
+	      greedy: true
+	    },
+	    level: {
+	      pattern: /(^[ \t]*)\d+\b/m,
+	      lookbehind: true,
+	      greedy: true,
+	      alias: 'number'
+	    },
+	    'class-name': {
+	      // https://github.com/antlr/grammars-v4/blob/42edd5b687d183b5fa679e858a82297bd27141e7/cobol85/Cobol85.g4#L1015
+	      pattern:
+	        /(\bpic(?:ture)?\s+)(?:(?:[-\w$/,:*+<>]|\.(?!\s|$))(?:\(\d+\))?)+/i,
+	      lookbehind: true,
+	      inside: {
+	        number: {
+	          pattern: /(\()\d+/,
+	          lookbehind: true
+	        },
+	        punctuation: /[()]/
+	      }
+	    },
+	    keyword: {
+	      pattern:
+	        /(^|[^\w-])(?:ABORT|ACCEPT|ACCESS|ADD|ADDRESS|ADVANCING|AFTER|ALIGNED|ALL|ALPHABET|ALPHABETIC|ALPHABETIC-LOWER|ALPHABETIC-UPPER|ALPHANUMERIC|ALPHANUMERIC-EDITED|ALSO|ALTER|ALTERNATE|ANY|ARE|AREA|AREAS|AS|ASCENDING|ASCII|ASSIGN|ASSOCIATED-DATA|ASSOCIATED-DATA-LENGTH|AT|ATTRIBUTE|AUTHOR|AUTO|AUTO-SKIP|BACKGROUND-COLOR|BACKGROUND-COLOUR|BASIS|BEEP|BEFORE|BEGINNING|BELL|BINARY|BIT|BLANK|BLINK|BLOCK|BOTTOM|BOUNDS|BY|BYFUNCTION|BYTITLE|CALL|CANCEL|CAPABLE|CCSVERSION|CD|CF|CH|CHAINING|CHANGED|CHANNEL|CHARACTER|CHARACTERS|CLASS|CLASS-ID|CLOCK-UNITS|CLOSE|CLOSE-DISPOSITION|COBOL|CODE|CODE-SET|COL|COLLATING|COLUMN|COM-REG|COMMA|COMMITMENT|COMMON|COMMUNICATION|COMP|COMP-1|COMP-2|COMP-3|COMP-4|COMP-5|COMPUTATIONAL|COMPUTATIONAL-1|COMPUTATIONAL-2|COMPUTATIONAL-3|COMPUTATIONAL-4|COMPUTATIONAL-5|COMPUTE|CONFIGURATION|CONTAINS|CONTENT|CONTINUE|CONTROL|CONTROL-POINT|CONTROLS|CONVENTION|CONVERTING|COPY|CORR|CORRESPONDING|COUNT|CRUNCH|CURRENCY|CURSOR|DATA|DATA-BASE|DATE|DATE-COMPILED|DATE-WRITTEN|DAY|DAY-OF-WEEK|DBCS|DE|DEBUG-CONTENTS|DEBUG-ITEM|DEBUG-LINE|DEBUG-NAME|DEBUG-SUB-1|DEBUG-SUB-2|DEBUG-SUB-3|DEBUGGING|DECIMAL-POINT|DECLARATIVES|DEFAULT|DEFAULT-DISPLAY|DEFINITION|DELETE|DELIMITED|DELIMITER|DEPENDING|DESCENDING|DESTINATION|DETAIL|DFHRESP|DFHVALUE|DISABLE|DISK|DISPLAY|DISPLAY-1|DIVIDE|DIVISION|DONTCARE|DOUBLE|DOWN|DUPLICATES|DYNAMIC|EBCDIC|EGCS|EGI|ELSE|EMI|EMPTY-CHECK|ENABLE|END|END-ACCEPT|END-ADD|END-CALL|END-COMPUTE|END-DELETE|END-DIVIDE|END-EVALUATE|END-IF|END-MULTIPLY|END-OF-PAGE|END-PERFORM|END-READ|END-RECEIVE|END-RETURN|END-REWRITE|END-SEARCH|END-START|END-STRING|END-SUBTRACT|END-UNSTRING|END-WRITE|ENDING|ENTER|ENTRY|ENTRY-PROCEDURE|ENVIRONMENT|EOL|EOP|EOS|ERASE|ERROR|ESCAPE|ESI|EVALUATE|EVENT|EVERY|EXCEPTION|EXCLUSIVE|EXHIBIT|EXIT|EXPORT|EXTEND|EXTENDED|EXTERNAL|FD|FILE|FILE-CONTROL|FILLER|FINAL|FIRST|FOOTING|FOR|FOREGROUND-COLOR|FOREGROUND-COLOUR|FROM|FULL|FUNCTION|FUNCTION-POINTER|FUNCTIONNAME|GENERATE|GIVING|GLOBAL|GO|GOBACK|GRID|GROUP|HEADING|HIGH-VALUE|HIGH-VALUES|HIGHLIGHT|I-O|I-O-CONTROL|ID|IDENTIFICATION|IF|IMPLICIT|IMPORT|IN|INDEX|INDEXED|INDICATE|INITIAL|INITIALIZE|INITIATE|INPUT|INPUT-OUTPUT|INSPECT|INSTALLATION|INTEGER|INTO|INVALID|INVOKE|IS|JUST|JUSTIFIED|KANJI|KEPT|KEY|KEYBOARD|LABEL|LANGUAGE|LAST|LB|LD|LEADING|LEFT|LEFTLINE|LENGTH|LENGTH-CHECK|LIBACCESS|LIBPARAMETER|LIBRARY|LIMIT|LIMITS|LINAGE|LINAGE-COUNTER|LINE|LINE-COUNTER|LINES|LINKAGE|LIST|LOCAL|LOCAL-STORAGE|LOCK|LONG-DATE|LONG-TIME|LOW-VALUE|LOW-VALUES|LOWER|LOWLIGHT|MEMORY|MERGE|MESSAGE|MMDDYYYY|MODE|MODULES|MORE-LABELS|MOVE|MULTIPLE|MULTIPLY|NAMED|NATIONAL|NATIONAL-EDITED|NATIVE|NEGATIVE|NETWORK|NEXT|NO|NO-ECHO|NULL|NULLS|NUMBER|NUMERIC|NUMERIC-DATE|NUMERIC-EDITED|NUMERIC-TIME|OBJECT-COMPUTER|OCCURS|ODT|OF|OFF|OMITTED|ON|OPEN|OPTIONAL|ORDER|ORDERLY|ORGANIZATION|OTHER|OUTPUT|OVERFLOW|OVERLINE|OWN|PACKED-DECIMAL|PADDING|PAGE|PAGE-COUNTER|PASSWORD|PERFORM|PF|PH|PIC|PICTURE|PLUS|POINTER|PORT|POSITION|POSITIVE|PRINTER|PRINTING|PRIVATE|PROCEDURE|PROCEDURE-POINTER|PROCEDURES|PROCEED|PROCESS|PROGRAM|PROGRAM-ID|PROGRAM-LIBRARY|PROMPT|PURGE|QUEUE|QUOTE|QUOTES|RANDOM|RD|READ|READER|REAL|RECEIVE|RECEIVED|RECORD|RECORDING|RECORDS|RECURSIVE|REDEFINES|REEL|REF|REFERENCE|REFERENCES|RELATIVE|RELEASE|REMAINDER|REMARKS|REMOTE|REMOVAL|REMOVE|RENAMES|REPLACE|REPLACING|REPORT|REPORTING|REPORTS|REQUIRED|RERUN|RESERVE|RESET|RETURN|RETURN-CODE|RETURNING|REVERSE-VIDEO|REVERSED|REWIND|REWRITE|RF|RH|RIGHT|ROUNDED|RUN|SAME|SAVE|SCREEN|SD|SEARCH|SECTION|SECURE|SECURITY|SEGMENT|SEGMENT-LIMIT|SELECT|SEND|SENTENCE|SEPARATE|SEQUENCE|SEQUENTIAL|SET|SHARED|SHAREDBYALL|SHAREDBYRUNUNIT|SHARING|SHIFT-IN|SHIFT-OUT|SHORT-DATE|SIGN|SIZE|SORT|SORT-CONTROL|SORT-CORE-SIZE|SORT-FILE-SIZE|SORT-MERGE|SORT-MESSAGE|SORT-MODE-SIZE|SORT-RETURN|SOURCE|SOURCE-COMPUTER|SPACE|SPACES|SPECIAL-NAMES|STANDARD|STANDARD-1|STANDARD-2|START|STATUS|STOP|STRING|SUB-QUEUE-1|SUB-QUEUE-2|SUB-QUEUE-3|SUBTRACT|SUM|SUPPRESS|SYMBOL|SYMBOLIC|SYNC|SYNCHRONIZED|TABLE|TALLY|TALLYING|TAPE|TASK|TERMINAL|TERMINATE|TEST|TEXT|THEN|THREAD|THREAD-LOCAL|THROUGH|THRU|TIME|TIMER|TIMES|TITLE|TO|TODAYS-DATE|TODAYS-NAME|TOP|TRAILING|TRUNCATED|TYPE|TYPEDEF|UNDERLINE|UNIT|UNSTRING|UNTIL|UP|UPON|USAGE|USE|USING|VALUE|VALUES|VARYING|VIRTUAL|WAIT|WHEN|WHEN-COMPILED|WITH|WORDS|WORKING-STORAGE|WRITE|YEAR|YYYYDDD|YYYYMMDD|ZERO-FILL|ZEROES|ZEROS)(?![\w-])/i,
+	      lookbehind: true
+	    },
+	    boolean: {
+	      pattern: /(^|[^\w-])(?:false|true)(?![\w-])/i,
+	      lookbehind: true
+	    },
+	    number: {
+	      pattern:
+	        /(^|[^\w-])(?:[+-]?(?:(?:\d+(?:[.,]\d+)?|[.,]\d+)(?:e[+-]?\d+)?|zero))(?![\w-])/i,
+	      lookbehind: true
+	    },
+	    operator: [
+	      /<>|[<>]=?|[=+*/&]/,
+	      {
+	        pattern: /(^|[^\w-])(?:-|and|equal|greater|less|not|or|than)(?![\w-])/i,
+	        lookbehind: true
+	      }
+	    ],
+	    punctuation: /[.:,()]/
+	  };
+	}
+	return cobol_1;
 }
 
 var coffeescript_1;
@@ -39010,9 +39673,9 @@ refractor.register(c_1);
 refractor.register(cfscript_1);
 refractor.register(chaiscript_1);
 refractor.register(cil_1);
-refractor.register(requireClojure());
+refractor.register(clojure_1);
 refractor.register(cmake_1);
-refractor.register(cobol_1);
+refractor.register(requireCobol());
 refractor.register(requireCoffeescript());
 refractor.register(requireConcurnas());
 refractor.register(requireCoq());
@@ -40242,9 +40905,9 @@ var oneLight = {
   }
 };
 
-var css$I = ".CodeSnippet_module_root__96cf727a {\n  padding: 0.5rem, 1rem;\n  position: relative;\n}\n.CodeSnippet_module_root__96cf727a .CodeSnippet_module_code__96cf727a {\n  font-family: monospace;\n  font-size: 1rem;\n}\n.CodeSnippet_module_root__96cf727a .CodeSnippet_module_copy__96cf727a {\n  position: absolute;\n  right: 1rem;\n  top: 0.5rem;\n  cursor: pointer;\n}\n.CodeSnippet_module_root__96cf727a .CodeSnippet_module_copy__96cf727a .CodeSnippet_module_icon__96cf727a {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.CodeSnippet_module_root__96cf727a .CodeSnippet_module_copy__96cf727a .CodeSnippet_module_icon__96cf727a.CodeSnippet_module_dark__96cf727a {\n  fill: var(--white);\n}\n.CodeSnippet_module_root__96cf727a .CodeSnippet_module_copy__96cf727a .CodeSnippet_module_icon__96cf727a.CodeSnippet_module_light__96cf727a {\n  fill: var(--black);\n}\n.CodeSnippet_module_root__96cf727a .CodeSnippet_module_copy__96cf727a .CodeSnippet_module_notCopied__96cf727a {\n  display: none;\n}\n.CodeSnippet_module_root__96cf727a .CodeSnippet_module_copy__96cf727a .CodeSnippet_module_copied__96cf727a {\n  position: absolute;\n  right: 1.375rem;\n  top: 2.188rem;\n  padding: 0.5rem;\n  border-radius: 0.25rem;\n  background-color: var(--highlight);\n  color: var(--grey10);\n}";
+var css$J = ".CodeSnippet_module_root__96cf727a {\n  padding: 0.5rem, 1rem;\n  position: relative;\n}\n.CodeSnippet_module_root__96cf727a .CodeSnippet_module_code__96cf727a {\n  font-family: monospace;\n  font-size: 1rem;\n}\n.CodeSnippet_module_root__96cf727a .CodeSnippet_module_copy__96cf727a {\n  position: absolute;\n  right: 1rem;\n  top: 0.5rem;\n  cursor: pointer;\n}\n.CodeSnippet_module_root__96cf727a .CodeSnippet_module_copy__96cf727a .CodeSnippet_module_icon__96cf727a {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.CodeSnippet_module_root__96cf727a .CodeSnippet_module_copy__96cf727a .CodeSnippet_module_icon__96cf727a.CodeSnippet_module_dark__96cf727a {\n  fill: var(--white);\n}\n.CodeSnippet_module_root__96cf727a .CodeSnippet_module_copy__96cf727a .CodeSnippet_module_icon__96cf727a.CodeSnippet_module_light__96cf727a {\n  fill: var(--black);\n}\n.CodeSnippet_module_root__96cf727a .CodeSnippet_module_copy__96cf727a .CodeSnippet_module_notCopied__96cf727a {\n  display: none;\n}\n.CodeSnippet_module_root__96cf727a .CodeSnippet_module_copy__96cf727a .CodeSnippet_module_copied__96cf727a {\n  position: absolute;\n  right: 1.375rem;\n  top: 2.188rem;\n  padding: 0.5rem;\n  border-radius: 0.25rem;\n  background-color: var(--highlight);\n  color: var(--grey10);\n}";
 var modules_c548043f = {"root":"CodeSnippet_module_root__96cf727a","code":"CodeSnippet_module_code__96cf727a","copy":"CodeSnippet_module_copy__96cf727a","icon":"CodeSnippet_module_icon__96cf727a","dark":"CodeSnippet_module_dark__96cf727a","light":"CodeSnippet_module_light__96cf727a","notCopied":"CodeSnippet_module_notCopied__96cf727a","copied":"CodeSnippet_module_copied__96cf727a"};
-n(css$I,{});
+n(css$J,{});
 
 var CodeSnippet = function CodeSnippet(props) {
   var copy = props.copy,
@@ -41130,9 +41793,9 @@ function sub$1(date, duration) {
   return finalDate;
 }
 
-var css$H = ".Header_module_container__26bf5a9c {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  padding: 0rem 1.5625rem;\n}\n.Header_module_container__26bf5a9c .Header_module_title__26bf5a9c {\n  font-weight: 400;\n  font-size: 0.8rem;\n  color: var(--black);\n}\n.Header_module_container__26bf5a9c .Header_module_icon__26bf5a9c {\n  width: 1.5rem;\n  height: 1.5rem;\n  stroke: #181818;\n  cursor: pointer;\n}";
+var css$I = ".Header_module_container__26bf5a9c {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  padding: 0rem 1.5625rem;\n}\n.Header_module_container__26bf5a9c .Header_module_title__26bf5a9c {\n  font-weight: 400;\n  font-size: 0.8rem;\n  color: var(--black);\n}\n.Header_module_container__26bf5a9c .Header_module_icon__26bf5a9c {\n  width: 1.5rem;\n  height: 1.5rem;\n  stroke: #181818;\n  cursor: pointer;\n}";
 var modules_cf337dc1 = {"container":"Header_module_container__26bf5a9c","title":"Header_module_title__26bf5a9c","icon":"Header_module_icon__26bf5a9c"};
-n(css$H,{});
+n(css$I,{});
 
 var Header = function Header(props) {
   var selectedMonth = props.selectedMonth,
@@ -41164,17 +41827,17 @@ var Header = function Header(props) {
   });
 };
 
-var css$G = ".Calender_module_root__5221cce4 {\n  padding: 1rem 0rem;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}";
+var css$H = ".Calender_module_root__5221cce4 {\n  padding: 1rem 0rem;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}";
 var modules_3722b5cd = {"root":"Calender_module_root__5221cce4"};
+n(css$H,{});
+
+var css$G = ".Body_module_root__85b1b679 {\n  padding: 0.5rem 0.5rem;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-items: stretch;\n}";
+var modules_e6b80d99 = {"root":"Body_module_root__85b1b679"};
 n(css$G,{});
 
-var css$F = ".Body_module_root__85b1b679 {\n  padding: 0.5rem 0.5rem;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-items: stretch;\n}";
-var modules_e6b80d99 = {"root":"Body_module_root__85b1b679"};
-n(css$F,{});
-
-var css$E = ".Dates_module_dates__e3e1fc43 {\n  display: grid;\n  grid-template-columns: repeat(7, 1fr);\n  align-items: center;\n  flex-wrap: wrap;\n}\n.Dates_module_dates__e3e1fc43 div {\n  flex-basis: 14.28%;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  margin-bottom: 0.25rem;\n  cursor: pointer;\n  align-self: center;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.Dates_module_dates__e3e1fc43 div .Dates_module_date__e3e1fc43 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  text-align: center;\n  vertical-align: middle;\n  border-radius: 1.5rem;\n  height: 2.5rem;\n  width: 2.5rem;\n  font-weight: 400;\n  font-size: 0.875rem;\n  color: var(--black);\n}\n.Dates_module_dates__e3e1fc43 div .Dates_module_selected__e3e1fc43 {\n  background-color: var(--highlight);\n  color: var(--white);\n}\n.Dates_module_dates__e3e1fc43 div .Dates_module_unSelected__e3e1fc43 {\n  background-color: var(--white);\n  border-color: var(--highlight);\n  border-width: 0.125rem;\n  border-style: solid;\n  color: var(--black);\n}\n.Dates_module_dates__e3e1fc43 div .Dates_module_disabled__e3e1fc43 {\n  border-radius: 1.5rem;\n  color: var(--grey2);\n}\n.Dates_module_dates__e3e1fc43 div .Dates_module_diffMonth__e3e1fc43 {\n  opacity: 0.6;\n}\n.Dates_module_dates__e3e1fc43 div:hover .Dates_module_date__e3e1fc43 {\n  background: var(--background);\n  color: var(--highlight);\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n}\n.Dates_module_dates__e3e1fc43 div:hover .Dates_module_selected__e3e1fc43 {\n  background-color: var(--highlight);\n  color: var(--white);\n}\n.Dates_module_dates__e3e1fc43 div:hover .Dates_module_disabled__e3e1fc43 {\n  background: transparent;\n  box-shadow: none;\n  border-radius: 1.5rem;\n  color: var(--grey2);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_minInRange__e3e1fc43 {\n  background-color: var(--highlight);\n  border-radius: 1.5rem 0rem 0rem 1.5rem;\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_minInRange__e3e1fc43 .Dates_module_date__e3e1fc43 {\n  color: var(--white);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_minInRange__e3e1fc43:hover .Dates_module_date__e3e1fc43 {\n  background: var(--highlight);\n  color: var(--white);\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_maxInRange__e3e1fc43 {\n  background-color: var(--highlight);\n  border-radius: 0rem 1.5rem 1.5rem 0rem;\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_maxInRange__e3e1fc43 .Dates_module_date__e3e1fc43 {\n  color: var(--white);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_maxInRange__e3e1fc43:hover .Dates_module_date__e3e1fc43 {\n  background: var(--highlight);\n  color: var(--white);\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_midInRange__e3e1fc43 {\n  background: var(--background);\n  border-radius: 0rem;\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_midInRange__e3e1fc43 .Dates_module_date__e3e1fc43 {\n  color: var(--highlight);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_firstHovered__e3e1fc43 {\n  background: var(--background);\n  border-radius: 0rem 1.5rem 1.5rem 0rem;\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_firstHovered__e3e1fc43 .Dates_module_date__e3e1fc43 {\n  color: var(--highlight);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_lastHovered__e3e1fc43 {\n  background: var(--background);\n  border-radius: 1.5rem 0rem 0rem 1.5rem;\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_lastHovered__e3e1fc43 .Dates_module_date__e3e1fc43 {\n  color: var(--highlight);\n}";
+var css$F = ".Dates_module_dates__e3e1fc43 {\n  display: grid;\n  grid-template-columns: repeat(7, 1fr);\n  align-items: center;\n  flex-wrap: wrap;\n}\n.Dates_module_dates__e3e1fc43 div {\n  flex-basis: 14.28%;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  margin-bottom: 0.25rem;\n  cursor: pointer;\n  align-self: center;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.Dates_module_dates__e3e1fc43 div .Dates_module_date__e3e1fc43 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  text-align: center;\n  vertical-align: middle;\n  border-radius: 1.5rem;\n  height: 2.5rem;\n  width: 2.5rem;\n  font-weight: 400;\n  font-size: 0.875rem;\n  color: var(--black);\n}\n.Dates_module_dates__e3e1fc43 div .Dates_module_selected__e3e1fc43 {\n  background-color: var(--highlight);\n  color: var(--white);\n}\n.Dates_module_dates__e3e1fc43 div .Dates_module_unSelected__e3e1fc43 {\n  background-color: var(--white);\n  border-color: var(--highlight);\n  border-width: 0.125rem;\n  border-style: solid;\n  color: var(--black);\n}\n.Dates_module_dates__e3e1fc43 div .Dates_module_disabled__e3e1fc43 {\n  border-radius: 1.5rem;\n  color: var(--grey2);\n}\n.Dates_module_dates__e3e1fc43 div .Dates_module_diffMonth__e3e1fc43 {\n  opacity: 0.6;\n}\n.Dates_module_dates__e3e1fc43 div:hover .Dates_module_date__e3e1fc43 {\n  background: var(--background);\n  color: var(--highlight);\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n}\n.Dates_module_dates__e3e1fc43 div:hover .Dates_module_selected__e3e1fc43 {\n  background-color: var(--highlight);\n  color: var(--white);\n}\n.Dates_module_dates__e3e1fc43 div:hover .Dates_module_disabled__e3e1fc43 {\n  background: transparent;\n  box-shadow: none;\n  border-radius: 1.5rem;\n  color: var(--grey2);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_minInRange__e3e1fc43 {\n  background-color: var(--highlight);\n  border-radius: 1.5rem 0rem 0rem 1.5rem;\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_minInRange__e3e1fc43 .Dates_module_date__e3e1fc43 {\n  color: var(--white);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_minInRange__e3e1fc43:hover .Dates_module_date__e3e1fc43 {\n  background: var(--highlight);\n  color: var(--white);\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_maxInRange__e3e1fc43 {\n  background-color: var(--highlight);\n  border-radius: 0rem 1.5rem 1.5rem 0rem;\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_maxInRange__e3e1fc43 .Dates_module_date__e3e1fc43 {\n  color: var(--white);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_maxInRange__e3e1fc43:hover .Dates_module_date__e3e1fc43 {\n  background: var(--highlight);\n  color: var(--white);\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_midInRange__e3e1fc43 {\n  background: var(--background);\n  border-radius: 0rem;\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_midInRange__e3e1fc43 .Dates_module_date__e3e1fc43 {\n  color: var(--highlight);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_firstHovered__e3e1fc43 {\n  background: var(--background);\n  border-radius: 0rem 1.5rem 1.5rem 0rem;\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_firstHovered__e3e1fc43 .Dates_module_date__e3e1fc43 {\n  color: var(--highlight);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_lastHovered__e3e1fc43 {\n  background: var(--background);\n  border-radius: 1.5rem 0rem 0rem 1.5rem;\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_lastHovered__e3e1fc43 .Dates_module_date__e3e1fc43 {\n  color: var(--highlight);\n}";
 var modules_b02dadcc = {"dates":"Dates_module_dates__e3e1fc43","date":"Dates_module_date__e3e1fc43","selected":"Dates_module_selected__e3e1fc43","unSelected":"Dates_module_unSelected__e3e1fc43","disabled":"Dates_module_disabled__e3e1fc43","diffMonth":"Dates_module_diffMonth__e3e1fc43","minInRange":"Dates_module_minInRange__e3e1fc43","maxInRange":"Dates_module_maxInRange__e3e1fc43","midInRange":"Dates_module_midInRange__e3e1fc43","first-hovered":"Dates_module_firstHovered__e3e1fc43","last-hovered":"Dates_module_lastHovered__e3e1fc43"};
-n(css$E,{});
+n(css$F,{});
 
 var getDatesOfLastWeekOfLastMonth = function getDatesOfLastWeekOfLastMonth(_ref) {
   var monthAsNumber = _ref.monthAsNumber,
@@ -41423,9 +42086,9 @@ var Dates = function Dates(props) {
   });
 };
 
-var css$D = ".Days_module_days__0d7923fd {\n  display: grid;\n  grid-template-columns: repeat(7, 1fr);\n  text-align: center;\n}\n.Days_module_days__0d7923fd span {\n  padding: 0.75rem 0.5rem;\n  font-weight: 500;\n  font-size: 0.875rem;\n  color: black;\n  flex-basis: 14.28%;\n}";
+var css$E = ".Days_module_days__0d7923fd {\n  display: grid;\n  grid-template-columns: repeat(7, 1fr);\n  text-align: center;\n}\n.Days_module_days__0d7923fd span {\n  padding: 0.75rem 0.5rem;\n  font-weight: 500;\n  font-size: 0.875rem;\n  color: black;\n  flex-basis: 14.28%;\n}";
 var modules_82c45006 = {"days":"Days_module_days__0d7923fd"};
-n(css$D,{});
+n(css$E,{});
 
 var Days = function Days() {
   var daysInWeek = DAYS;
@@ -41446,9 +42109,9 @@ var Body = function Body(props) {
   });
 };
 
-var css$C = ".TextField_module_root__9cc1db47 {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: flex-start;\n  gap: 0.5rem;\n}\n.TextField_module_root__9cc1db47 label {\n  width: 100%;\n  max-width: 100%;\n  font-weight: 400;\n  font-size: 0.75rem;\n  line-height: 1.125rem;\n  letter-spacing: 0.32px;\n  color: var(--grey);\n  height: 100%;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  gap: 0.5rem;\n  padding: 0rem 0.5rem;\n  max-width: 100%;\n  width: 100%;\n  border-color: var(--grey4);\n  border-style: solid;\n  border-radius: 0.25rem;\n  height: 100%;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 .TextField_module_icon__9cc1db47 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem*=component] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] {\n  flex: 1;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47 {\n  -moz-appearance: textfield;\n  flex: 1;\n  background-color: transparent;\n  border: none;\n  font-weight: 400;\n  font-size: 0.875rem;\n  line-height: 1.125rem;\n  letter-spacing: 0.16px;\n  color: var(--black);\n  width: 100%;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47::-webkit-outer-spin-button, .TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47::-webkit-inner-spin-button {\n  -webkit-appearance: none;\n  margin: 0;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47:focus {\n  outline: none;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47:disabled {\n  background: var(--grey9);\n  color: var(--grey3);\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47.TextField_module_sm__9cc1db47 {\n  padding: 0.5rem 0rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47.TextField_module_md__9cc1db47 {\n  padding: 0.688rem 0rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47.TextField_module_lg__9cc1db47 {\n  padding: 1rem 0rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_typeTextarea__9cc1db47 {\n  padding: 0;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_typeTextarea__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47 {\n  resize: vertical;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_typeTextarea__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47.TextField_module_md__9cc1db47 {\n  padding: 0.313rem 0.75rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_typeTextarea__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47.TextField_module_lg__9cc1db47 {\n  padding: 0.5rem 1rem;\n  font-size: 1rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47:focus-within {\n  border: 0.063rem solid var(--info);\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47:focus-within.TextField_module_feedbackError__9cc1db47 {\n  border-color: var(--error);\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_borderDefault__9cc1db47 {\n  border-width: 0.063rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_borderBottom__9cc1db47 {\n  border-width: 0rem 0rem 0.063rem 0rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_borderNone__9cc1db47 {\n  border-width: 0rem;\n}\n.TextField_module_root__9cc1db47 .TextField_module_bottom__9cc1db47 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: flex-start;\n  min-height: 2rem;\n  width: 100%;\n  gap: 1rem;\n  color: var(--grey3);\n  font-size: 0.75rem;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.TextField_module_root__9cc1db47 .TextField_module_bottom__9cc1db47 .TextField_module_feedback__9cc1db47 {\n  flex: 1;\n  margin-right: auto;\n}\n.TextField_module_root__9cc1db47 .TextField_module_bottom__9cc1db47 .TextField_module_feedback__9cc1db47.TextField_module_feedbackError__9cc1db47 {\n  color: var(--error);\n  fill: var(--error);\n}\n.TextField_module_root__9cc1db47 .TextField_module_bottom__9cc1db47 .TextField_module_feedback__9cc1db47.TextField_module_feedbackSuccess__9cc1db47 {\n  color: var(--success);\n  fill: var(--success);\n}\n.TextField_module_root__9cc1db47 .TextField_module_bottom__9cc1db47 .TextField_module_count__9cc1db47 {\n  text-align: right;\n  margin-left: auto;\n}\n.TextField_module_root__9cc1db47 .TextField_module_bottom__9cc1db47 .TextField_module_count__9cc1db47.TextField_module_exceeded__9cc1db47 {\n  color: var(--error);\n}";
+var css$D = ".TextField_module_root__9cc1db47 {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: flex-start;\n  gap: 0.5rem;\n}\n.TextField_module_root__9cc1db47 label {\n  width: 100%;\n  max-width: 100%;\n  font-weight: 400;\n  font-size: 0.75rem;\n  line-height: 1.125rem;\n  letter-spacing: 0.32px;\n  color: var(--grey);\n  height: 100%;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  gap: 0.5rem;\n  padding: 0rem 0.5rem;\n  max-width: 100%;\n  width: 100%;\n  border-color: var(--grey4);\n  border-style: solid;\n  border-radius: 0.25rem;\n  height: 100%;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 .TextField_module_icon__9cc1db47 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem*=component] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] {\n  flex: 1;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47 {\n  -moz-appearance: textfield;\n  flex: 1;\n  background-color: transparent;\n  border: none;\n  font-weight: 400;\n  font-size: 0.875rem;\n  line-height: 1.125rem;\n  letter-spacing: 0.16px;\n  color: var(--black);\n  width: 100%;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47::-webkit-outer-spin-button, .TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47::-webkit-inner-spin-button {\n  -webkit-appearance: none;\n  margin: 0;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47:focus {\n  outline: none;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47:disabled {\n  background: var(--grey9);\n  color: var(--grey3);\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47.TextField_module_sm__9cc1db47 {\n  padding: 0.5rem 0rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47.TextField_module_md__9cc1db47 {\n  padding: 0.688rem 0rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47.TextField_module_lg__9cc1db47 {\n  padding: 1rem 0rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_typeTextarea__9cc1db47 {\n  padding: 0;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_typeTextarea__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47 {\n  resize: vertical;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_typeTextarea__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47.TextField_module_md__9cc1db47 {\n  padding: 0.313rem 0.75rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_typeTextarea__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47.TextField_module_lg__9cc1db47 {\n  padding: 0.5rem 1rem;\n  font-size: 1rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47:focus-within {\n  border: 0.063rem solid var(--info);\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47:focus-within.TextField_module_feedbackError__9cc1db47 {\n  border-color: var(--error);\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_borderDefault__9cc1db47 {\n  border-width: 0.063rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_borderBottom__9cc1db47 {\n  border-width: 0rem 0rem 0.063rem 0rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_borderNone__9cc1db47 {\n  border-width: 0rem;\n}\n.TextField_module_root__9cc1db47 .TextField_module_bottom__9cc1db47 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: flex-start;\n  min-height: 2rem;\n  width: 100%;\n  gap: 1rem;\n  color: var(--grey3);\n  font-size: 0.75rem;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.TextField_module_root__9cc1db47 .TextField_module_bottom__9cc1db47 .TextField_module_feedback__9cc1db47 {\n  flex: 1;\n  margin-right: auto;\n}\n.TextField_module_root__9cc1db47 .TextField_module_bottom__9cc1db47 .TextField_module_feedback__9cc1db47.TextField_module_feedbackError__9cc1db47 {\n  color: var(--error);\n  fill: var(--error);\n}\n.TextField_module_root__9cc1db47 .TextField_module_bottom__9cc1db47 .TextField_module_feedback__9cc1db47.TextField_module_feedbackSuccess__9cc1db47 {\n  color: var(--success);\n  fill: var(--success);\n}\n.TextField_module_root__9cc1db47 .TextField_module_bottom__9cc1db47 .TextField_module_count__9cc1db47 {\n  text-align: right;\n  margin-left: auto;\n}\n.TextField_module_root__9cc1db47 .TextField_module_bottom__9cc1db47 .TextField_module_count__9cc1db47.TextField_module_exceeded__9cc1db47 {\n  color: var(--error);\n}";
 var modules_c1d23762 = {"root":"TextField_module_root__9cc1db47","input-wrapper":"TextField_module_inputWrapper__9cc1db47","icon":"TextField_module_icon__9cc1db47","input":"TextField_module_input__9cc1db47","sm":"TextField_module_sm__9cc1db47","md":"TextField_module_md__9cc1db47","lg":"TextField_module_lg__9cc1db47","type-textarea":"TextField_module_typeTextarea__9cc1db47","feedback-error":"TextField_module_feedbackError__9cc1db47","border-default":"TextField_module_borderDefault__9cc1db47","border-bottom":"TextField_module_borderBottom__9cc1db47","border-none":"TextField_module_borderNone__9cc1db47","bottom":"TextField_module_bottom__9cc1db47","feedback":"TextField_module_feedback__9cc1db47","feedback-success":"TextField_module_feedbackSuccess__9cc1db47","count":"TextField_module_count__9cc1db47","exceeded":"TextField_module_exceeded__9cc1db47"};
-n(css$C,{});
+n(css$D,{});
 
 var TextField = /*#__PURE__*/React.forwardRef(function TextField(props, inputRef) {
   var _inputValue$length;
@@ -41581,9 +42244,9 @@ TextField.defaultProps = {
   onKeyDown: function onKeyDown() {}
 };
 
-var css$B = ":root {\n  --white: #ffffff;\n  --black: #000000;\n  --dark-grey: #333333;\n  --dark-grey-o-85: rgba(51, 51, 51, 0.85);\n  --grey: #737373;\n  --grey1: #888888;\n  --grey2: #a6a6a6;\n  --grey3: #bbbbbb;\n  --grey4: #c4c4c4;\n  --grey5: #dddddd;\n  --grey6: #e8e8e8;\n  --grey7: #eeeeee;\n  --grey8: #f2f2f2;\n  --grey9: #eff0f0;\n  --grey10: #f7f7f7;\n  --highlight: #0f62fe;\n  --dark-blue: #001833;\n  --background: #d0e2ff;\n  --banyan-blue: #00037c;\n  --banyan-orange: #ff892a;\n  --banyan-pink: #ff1597;\n  --banyan-gradient: linear-gradient(\n  \t84.71deg,\n  \tvar(--banyan-pink) 0.48%,\n  \tvar(--banyan-orange) 99.57%\n  );\n  --error: #da1e28;\n  --error-bg: #fff1f1;\n  --error-outline: rgba(218, 30, 40, 0.08);\n  --success: #24a148;\n  --success-bg: #defbe6;\n  --success-outline: rgba(36, 161, 72, 0.08);\n  --warning: #f1c21b;\n  --warning-bg: #fff8e1;\n  --warning-outline: rgba(203, 160, 6, 0.08);\n  --info: #0043ce;\n  --info-bg: #edf5ff;\n  --info-outline: #2864db98;\n}\n\n.CheckBox_module_root__d1bdcb36 {\n  cursor: pointer;\n  gap: 10px;\n}\n.CheckBox_module_root__d1bdcb36.CheckBox_module_positionLeft__d1bdcb36 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.CheckBox_module_root__d1bdcb36.CheckBox_module_positionRight__d1bdcb36 {\n  display: flex;\n  flex-direction: row-reverse;\n  justify-content: flex-end;\n  align-items: center;\n}\n.CheckBox_module_root__d1bdcb36 input[type=checkbox] {\n  opacity: 0;\n  z-index: 1;\n  position: absolute;\n  width: 1px;\n  height: 1px;\n}\n.CheckBox_module_root__d1bdcb36.CheckBox_module_disabled__d1bdcb36 {\n  cursor: default;\n}\n.CheckBox_module_root__d1bdcb36 .CheckBox_module_icon__d1bdcb36 {\n  display: inline-block;\n}\n.CheckBox_module_root__d1bdcb36 .CheckBox_module_icon__d1bdcb36.CheckBox_module_iconSm__d1bdcb36 {\n  width: 1rem;\n  height: 1rem;\n}\n.CheckBox_module_root__d1bdcb36 .CheckBox_module_icon__d1bdcb36.CheckBox_module_iconMd__d1bdcb36 {\n  width: 1.25rem;\n  height: 1.25rem;\n}\n.CheckBox_module_root__d1bdcb36 .CheckBox_module_icon__d1bdcb36.CheckBox_module_iconLg__d1bdcb36 {\n  width: 1.5rem;\n  height: 2rem;\n}\n.CheckBox_module_root__d1bdcb36 [data-elem=label] {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}";
+var css$C = ":root {\n  --white: #ffffff;\n  --black: #000000;\n  --dark-grey: #333333;\n  --dark-grey-o-85: rgba(51, 51, 51, 0.85);\n  --grey: #737373;\n  --grey1: #888888;\n  --grey2: #a6a6a6;\n  --grey3: #bbbbbb;\n  --grey4: #c4c4c4;\n  --grey5: #dddddd;\n  --grey6: #e8e8e8;\n  --grey7: #eeeeee;\n  --grey8: #f2f2f2;\n  --grey9: #eff0f0;\n  --grey10: #f7f7f7;\n  --highlight: #0f62fe;\n  --dark-blue: #001833;\n  --background: #d0e2ff;\n  --banyan-blue: #00037c;\n  --banyan-orange: #ff892a;\n  --banyan-pink: #ff1597;\n  --banyan-gradient: linear-gradient(\n  \t84.71deg,\n  \tvar(--banyan-pink) 0.48%,\n  \tvar(--banyan-orange) 99.57%\n  );\n  --error: #da1e28;\n  --error-bg: #fff1f1;\n  --error-outline: rgba(218, 30, 40, 0.08);\n  --success: #24a148;\n  --success-bg: #defbe6;\n  --success-outline: rgba(36, 161, 72, 0.08);\n  --warning: #f1c21b;\n  --warning-bg: #fff8e1;\n  --warning-outline: rgba(203, 160, 6, 0.08);\n  --info: #0043ce;\n  --info-bg: #edf5ff;\n  --info-outline: #2864db98;\n}\n\n.CheckBox_module_root__d1bdcb36 {\n  cursor: pointer;\n  gap: 10px;\n}\n.CheckBox_module_root__d1bdcb36.CheckBox_module_positionLeft__d1bdcb36 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.CheckBox_module_root__d1bdcb36.CheckBox_module_positionRight__d1bdcb36 {\n  display: flex;\n  flex-direction: row-reverse;\n  justify-content: flex-end;\n  align-items: center;\n}\n.CheckBox_module_root__d1bdcb36 input[type=checkbox] {\n  opacity: 0;\n  z-index: 1;\n  position: absolute;\n  width: 1px;\n  height: 1px;\n}\n.CheckBox_module_root__d1bdcb36.CheckBox_module_disabled__d1bdcb36 {\n  cursor: default;\n}\n.CheckBox_module_root__d1bdcb36 .CheckBox_module_icon__d1bdcb36 {\n  display: inline-block;\n}\n.CheckBox_module_root__d1bdcb36 .CheckBox_module_icon__d1bdcb36.CheckBox_module_iconSm__d1bdcb36 {\n  width: 1rem;\n  height: 1rem;\n}\n.CheckBox_module_root__d1bdcb36 .CheckBox_module_icon__d1bdcb36.CheckBox_module_iconMd__d1bdcb36 {\n  width: 1.25rem;\n  height: 1.25rem;\n}\n.CheckBox_module_root__d1bdcb36 .CheckBox_module_icon__d1bdcb36.CheckBox_module_iconLg__d1bdcb36 {\n  width: 1.5rem;\n  height: 2rem;\n}\n.CheckBox_module_root__d1bdcb36 [data-elem=label] {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}";
 var modules_066398a2 = {"white":"var(--white)","black":"var(--black)","dark-grey":"var(--dark-grey)","dark-grey-o-85":"var(--dark-grey-o-85)","grey":"var(--grey)","grey1":"var(--grey1)","grey2":"var(--grey2)","grey3":"var(--grey3)","grey4":"var(--grey4)","grey5":"var(--grey5)","grey6":"var(--grey6)","grey7":"var(--grey7)","grey8":"var(--grey8)","grey9":"var(--grey9)","grey10":"var(--grey10)","highlight":"var(--highlight)","dark-blue":"var(--dark-blue)","background":"var(--background)","banyan-blue":"var(--banyan-blue)","banyan-orange":"var(--banyan-orange)","banyan-pink":"var(--banyan-pink)","banyan-gradient":"var(--banyan-gradient)","error":"var(--error)","error-bg":"var(--error-bg)","error-outline":"var(--error-outline)","success":"var(--success)","success-bg":"var(--success-bg)","success-outline":"var(--success-outline)","warning":"var(--warning)","warning-bg":"var(--warning-bg)","warning-outline":"var(--warning-outline)","info":"var(--info)","info-bg":"var(--info-bg)","info-outline":"var(--info-outline)","root":"CheckBox_module_root__d1bdcb36","position-left":"CheckBox_module_positionLeft__d1bdcb36","position-right":"CheckBox_module_positionRight__d1bdcb36","disabled":"CheckBox_module_disabled__d1bdcb36","icon":"CheckBox_module_icon__d1bdcb36","icon-sm":"CheckBox_module_iconSm__d1bdcb36","icon-md":"CheckBox_module_iconMd__d1bdcb36","icon-lg":"CheckBox_module_iconLg__d1bdcb36"};
-n(css$B,{});
+n(css$C,{});
 
 var Checkbox = function Checkbox(props) {
   // eslint-disable-next-line object-curly-newline
@@ -41654,9 +42317,9 @@ Checkbox.defaultProps = {
   onChange: function onChange() {}
 };
 
-var css$A = ":root {\n  --white: #ffffff;\n  --black: #000000;\n  --dark-grey: #333333;\n  --dark-grey-o-85: rgba(51, 51, 51, 0.85);\n  --grey: #737373;\n  --grey1: #888888;\n  --grey2: #a6a6a6;\n  --grey3: #bbbbbb;\n  --grey4: #c4c4c4;\n  --grey5: #dddddd;\n  --grey6: #e8e8e8;\n  --grey7: #eeeeee;\n  --grey8: #f2f2f2;\n  --grey9: #eff0f0;\n  --grey10: #f7f7f7;\n  --highlight: #0f62fe;\n  --dark-blue: #001833;\n  --background: #d0e2ff;\n  --banyan-blue: #00037c;\n  --banyan-orange: #ff892a;\n  --banyan-pink: #ff1597;\n  --banyan-gradient: linear-gradient(\n  \t84.71deg,\n  \tvar(--banyan-pink) 0.48%,\n  \tvar(--banyan-orange) 99.57%\n  );\n  --error: #da1e28;\n  --error-bg: #fff1f1;\n  --error-outline: rgba(218, 30, 40, 0.08);\n  --success: #24a148;\n  --success-bg: #defbe6;\n  --success-outline: rgba(36, 161, 72, 0.08);\n  --warning: #f1c21b;\n  --warning-bg: #fff8e1;\n  --warning-outline: rgba(203, 160, 6, 0.08);\n  --info: #0043ce;\n  --info-bg: #edf5ff;\n  --info-outline: #2864db98;\n}\n\n.Radio_module_root__dc9ececa {\n  cursor: pointer;\n  gap: 10px;\n}\n.Radio_module_root__dc9ececa.Radio_module_positionLeft__dc9ececa {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.Radio_module_root__dc9ececa.Radio_module_positionRight__dc9ececa {\n  display: flex;\n  flex-direction: row-reverse;\n  justify-content: flex-end;\n  align-items: center;\n}\n.Radio_module_root__dc9ececa.Radio_module_disabled__dc9ececa {\n  cursor: default;\n}\n.Radio_module_root__dc9ececa input[type=radio] {\n  opacity: 0;\n  z-index: 1;\n  position: absolute;\n  width: 1px;\n  height: 1px;\n}\n.Radio_module_root__dc9ececa .Radio_module_icon__dc9ececa {\n  display: inline-block;\n}\n.Radio_module_root__dc9ececa .Radio_module_icon__dc9ececa.Radio_module_iconSm__dc9ececa {\n  width: 1rem;\n  height: 1rem;\n}\n.Radio_module_root__dc9ececa .Radio_module_icon__dc9ececa.Radio_module_iconMd__dc9ececa {\n  width: 1.25rem;\n  height: 1.25rem;\n}\n.Radio_module_root__dc9ececa .Radio_module_icon__dc9ececa.Radio_module_iconLg__dc9ececa {\n  width: 1.5rem;\n  height: 2rem;\n}\n.Radio_module_root__dc9ececa [data-elem=label] {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}";
+var css$B = ":root {\n  --white: #ffffff;\n  --black: #000000;\n  --dark-grey: #333333;\n  --dark-grey-o-85: rgba(51, 51, 51, 0.85);\n  --grey: #737373;\n  --grey1: #888888;\n  --grey2: #a6a6a6;\n  --grey3: #bbbbbb;\n  --grey4: #c4c4c4;\n  --grey5: #dddddd;\n  --grey6: #e8e8e8;\n  --grey7: #eeeeee;\n  --grey8: #f2f2f2;\n  --grey9: #eff0f0;\n  --grey10: #f7f7f7;\n  --highlight: #0f62fe;\n  --dark-blue: #001833;\n  --background: #d0e2ff;\n  --banyan-blue: #00037c;\n  --banyan-orange: #ff892a;\n  --banyan-pink: #ff1597;\n  --banyan-gradient: linear-gradient(\n  \t84.71deg,\n  \tvar(--banyan-pink) 0.48%,\n  \tvar(--banyan-orange) 99.57%\n  );\n  --error: #da1e28;\n  --error-bg: #fff1f1;\n  --error-outline: rgba(218, 30, 40, 0.08);\n  --success: #24a148;\n  --success-bg: #defbe6;\n  --success-outline: rgba(36, 161, 72, 0.08);\n  --warning: #f1c21b;\n  --warning-bg: #fff8e1;\n  --warning-outline: rgba(203, 160, 6, 0.08);\n  --info: #0043ce;\n  --info-bg: #edf5ff;\n  --info-outline: #2864db98;\n}\n\n.Radio_module_root__dc9ececa {\n  cursor: pointer;\n  gap: 10px;\n}\n.Radio_module_root__dc9ececa.Radio_module_positionLeft__dc9ececa {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.Radio_module_root__dc9ececa.Radio_module_positionRight__dc9ececa {\n  display: flex;\n  flex-direction: row-reverse;\n  justify-content: flex-end;\n  align-items: center;\n}\n.Radio_module_root__dc9ececa.Radio_module_disabled__dc9ececa {\n  cursor: default;\n}\n.Radio_module_root__dc9ececa input[type=radio] {\n  opacity: 0;\n  z-index: 1;\n  position: absolute;\n  width: 1px;\n  height: 1px;\n}\n.Radio_module_root__dc9ececa .Radio_module_icon__dc9ececa {\n  display: inline-block;\n}\n.Radio_module_root__dc9ececa .Radio_module_icon__dc9ececa.Radio_module_iconSm__dc9ececa {\n  width: 1rem;\n  height: 1rem;\n}\n.Radio_module_root__dc9ececa .Radio_module_icon__dc9ececa.Radio_module_iconMd__dc9ececa {\n  width: 1.25rem;\n  height: 1.25rem;\n}\n.Radio_module_root__dc9ececa .Radio_module_icon__dc9ececa.Radio_module_iconLg__dc9ececa {\n  width: 1.5rem;\n  height: 2rem;\n}\n.Radio_module_root__dc9ececa [data-elem=label] {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}";
 var modules_3705961f = {"white":"var(--white)","black":"var(--black)","dark-grey":"var(--dark-grey)","dark-grey-o-85":"var(--dark-grey-o-85)","grey":"var(--grey)","grey1":"var(--grey1)","grey2":"var(--grey2)","grey3":"var(--grey3)","grey4":"var(--grey4)","grey5":"var(--grey5)","grey6":"var(--grey6)","grey7":"var(--grey7)","grey8":"var(--grey8)","grey9":"var(--grey9)","grey10":"var(--grey10)","highlight":"var(--highlight)","dark-blue":"var(--dark-blue)","background":"var(--background)","banyan-blue":"var(--banyan-blue)","banyan-orange":"var(--banyan-orange)","banyan-pink":"var(--banyan-pink)","banyan-gradient":"var(--banyan-gradient)","error":"var(--error)","error-bg":"var(--error-bg)","error-outline":"var(--error-outline)","success":"var(--success)","success-bg":"var(--success-bg)","success-outline":"var(--success-outline)","warning":"var(--warning)","warning-bg":"var(--warning-bg)","warning-outline":"var(--warning-outline)","info":"var(--info)","info-bg":"var(--info-bg)","info-outline":"var(--info-outline)","root":"Radio_module_root__dc9ececa","position-left":"Radio_module_positionLeft__dc9ececa","position-right":"Radio_module_positionRight__dc9ececa","disabled":"Radio_module_disabled__dc9ececa","icon":"Radio_module_icon__dc9ececa","icon-sm":"Radio_module_iconSm__dc9ececa","icon-md":"Radio_module_iconMd__dc9ececa","icon-lg":"Radio_module_iconLg__dc9ececa"};
-n(css$A,{});
+n(css$B,{});
 
 var Radio = function Radio(props) {
   // eslint-disable-next-line object-curly-newline
@@ -41724,9 +42387,9 @@ Radio.defaultProps = {
   onChange: function onChange() {}
 };
 
-var css$z = ".Dropdown_module_root__1ad8038e {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  gap: 0.5rem;\n  position: relative;\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  max-width: 100%;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_label__1ad8038e {\n  font-size: 0.75rem;\n  color: var(--grey);\n  width: auto;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  max-width: 100%;\n  position: relative;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e .Dropdown_module_input__1ad8038e {\n  position: absolute;\n  opacity: 0;\n  width: 1px;\n  height: 1px;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e .Dropdown_module_input__1ad8038e:focus + .Dropdown_module_select__1ad8038e {\n  border-color: var(--highlight);\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e .Dropdown_module_input__1ad8038e:focus + .Dropdown_module_select__1ad8038e.Dropdown_module_feedbackError__1ad8038e {\n  border-color: var(--error);\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e .Dropdown_module_select__1ad8038e {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  width: 25rem;\n  max-width: 100%;\n  gap: 0.5rem;\n  background: var(--white);\n  outline: none;\n  border: 1px solid var(--grey5);\n  border-radius: 0.25rem;\n  padding: 0.75rem 0.75rem 0.75rem 1rem;\n  cursor: pointer;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e .Dropdown_module_select__1ad8038e .Dropdown_module_placeholder__1ad8038e {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  color: var(--black);\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e .Dropdown_module_select__1ad8038e .Dropdown_module_icon__1ad8038e {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e .Dropdown_module_select__1ad8038e.Dropdown_module_feedbackError__1ad8038e {\n  border-color: var(--error);\n}\n.Dropdown_module_root__1ad8038e.Dropdown_module_open__1ad8038e .Dropdown_module_header__1ad8038e {\n  border-color: var(--highlight);\n}\n.Dropdown_module_root__1ad8038e.Dropdown_module_disabled__1ad8038e .Dropdown_module_select__1ad8038e {\n  background: var(--grey10);\n  cursor: not-allowed;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_bottom__1ad8038e {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: flex-start;\n  min-height: 2rem;\n  width: 100%;\n  gap: 1rem;\n  color: var(--grey3);\n  font-size: 0.75rem;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_bottom__1ad8038e .Dropdown_module_feedback__1ad8038e {\n  flex: 1;\n  margin-right: auto;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_bottom__1ad8038e .Dropdown_module_feedback__1ad8038e.Dropdown_module_feedbackError__1ad8038e {\n  color: var(--error);\n  fill: var(--error);\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_bottom__1ad8038e .Dropdown_module_feedback__1ad8038e.Dropdown_module_feedbackSuccess__1ad8038e {\n  color: var(--success);\n  fill: var(--success);\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_bottom__1ad8038e .Dropdown_module_count__1ad8038e {\n  text-align: right;\n  margin-left: auto;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_bottom__1ad8038e .Dropdown_module_count__1ad8038e.Dropdown_module_exceeded__1ad8038e {\n  color: var(--error);\n}\n\n.Dropdown_module_body__1ad8038e {\n  display: none;\n  position: absolute;\n  top: calc(100% + 0.5rem);\n  background: var(--white);\n  width: auto;\n  border: 0.063rem solid var(--grey5);\n  box-shadow: 0rem 0.5rem 1.25rem rgba(24, 24, 24, 0.08);\n  border-radius: 0.25rem;\n  padding: 1rem;\n  overflow-y: auto;\n  min-height: 4rem;\n  outline: none;\n}\n.Dropdown_module_body__1ad8038e .Dropdown_module_multiOptions__1ad8038e {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: 0.5rem;\n  list-style: none;\n}\n.Dropdown_module_body__1ad8038e .Dropdown_module_multiApply__1ad8038e {\n  margin-top: 0.5rem;\n}\n.Dropdown_module_body__1ad8038e.Dropdown_module_open__1ad8038e {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n}";
+var css$A = ".Dropdown_module_root__1ad8038e {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  gap: 0.5rem;\n  position: relative;\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  max-width: 100%;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_label__1ad8038e {\n  font-size: 0.75rem;\n  color: var(--grey);\n  width: auto;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  max-width: 100%;\n  position: relative;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e .Dropdown_module_input__1ad8038e {\n  position: absolute;\n  opacity: 0;\n  width: 1px;\n  height: 1px;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e .Dropdown_module_input__1ad8038e:focus + .Dropdown_module_select__1ad8038e {\n  border-color: var(--highlight);\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e .Dropdown_module_input__1ad8038e:focus + .Dropdown_module_select__1ad8038e.Dropdown_module_feedbackError__1ad8038e {\n  border-color: var(--error);\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e .Dropdown_module_select__1ad8038e {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  width: 25rem;\n  max-width: 100%;\n  gap: 0.5rem;\n  background: var(--white);\n  outline: none;\n  border: 1px solid var(--grey5);\n  border-radius: 0.25rem;\n  padding: 0.75rem 0.75rem 0.75rem 1rem;\n  cursor: pointer;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e .Dropdown_module_select__1ad8038e .Dropdown_module_placeholder__1ad8038e {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  color: var(--black);\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e .Dropdown_module_select__1ad8038e .Dropdown_module_icon__1ad8038e {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e .Dropdown_module_select__1ad8038e.Dropdown_module_feedbackError__1ad8038e {\n  border-color: var(--error);\n}\n.Dropdown_module_root__1ad8038e.Dropdown_module_open__1ad8038e .Dropdown_module_header__1ad8038e {\n  border-color: var(--highlight);\n}\n.Dropdown_module_root__1ad8038e.Dropdown_module_disabled__1ad8038e .Dropdown_module_select__1ad8038e {\n  background: var(--grey10);\n  cursor: not-allowed;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_bottom__1ad8038e {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: flex-start;\n  min-height: 2rem;\n  width: 100%;\n  gap: 1rem;\n  color: var(--grey3);\n  font-size: 0.75rem;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_bottom__1ad8038e .Dropdown_module_feedback__1ad8038e {\n  flex: 1;\n  margin-right: auto;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_bottom__1ad8038e .Dropdown_module_feedback__1ad8038e.Dropdown_module_feedbackError__1ad8038e {\n  color: var(--error);\n  fill: var(--error);\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_bottom__1ad8038e .Dropdown_module_feedback__1ad8038e.Dropdown_module_feedbackSuccess__1ad8038e {\n  color: var(--success);\n  fill: var(--success);\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_bottom__1ad8038e .Dropdown_module_count__1ad8038e {\n  text-align: right;\n  margin-left: auto;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_bottom__1ad8038e .Dropdown_module_count__1ad8038e.Dropdown_module_exceeded__1ad8038e {\n  color: var(--error);\n}\n\n.Dropdown_module_body__1ad8038e {\n  display: none;\n  position: absolute;\n  top: calc(100% + 0.5rem);\n  background: var(--white);\n  width: auto;\n  border: 0.063rem solid var(--grey5);\n  box-shadow: 0rem 0.5rem 1.25rem rgba(24, 24, 24, 0.08);\n  border-radius: 0.25rem;\n  padding: 1rem;\n  overflow-y: auto;\n  min-height: 4rem;\n  outline: none;\n}\n.Dropdown_module_body__1ad8038e .Dropdown_module_multiOptions__1ad8038e {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: 0.5rem;\n  list-style: none;\n}\n.Dropdown_module_body__1ad8038e .Dropdown_module_multiApply__1ad8038e {\n  margin-top: 0.5rem;\n}\n.Dropdown_module_body__1ad8038e.Dropdown_module_open__1ad8038e {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n}";
 var modules_1b90f5ea = {"root":"Dropdown_module_root__1ad8038e","label":"Dropdown_module_label__1ad8038e","header":"Dropdown_module_header__1ad8038e","input":"Dropdown_module_input__1ad8038e","select":"Dropdown_module_select__1ad8038e","feedback-error":"Dropdown_module_feedbackError__1ad8038e","placeholder":"Dropdown_module_placeholder__1ad8038e","icon":"Dropdown_module_icon__1ad8038e","open":"Dropdown_module_open__1ad8038e","disabled":"Dropdown_module_disabled__1ad8038e","bottom":"Dropdown_module_bottom__1ad8038e","feedback":"Dropdown_module_feedback__1ad8038e","feedback-success":"Dropdown_module_feedbackSuccess__1ad8038e","count":"Dropdown_module_count__1ad8038e","exceeded":"Dropdown_module_exceeded__1ad8038e","body":"Dropdown_module_body__1ad8038e","multi-options":"Dropdown_module_multiOptions__1ad8038e","multi-apply":"Dropdown_module_multiApply__1ad8038e"};
-n(css$z,{});
+n(css$A,{});
 
 var Dropdown = /*#__PURE__*/React.forwardRef(function Dropdown(props, inputRef) {
   var _selectedOptions$map, _ref2, _selectedOptions$;
@@ -42127,9 +42790,9 @@ Dropdown.defaultProps = {
   }
 };
 
-var css$y = ".DropdownItem_module_root__61492174 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.75rem;\n  width: 100%;\n  padding: 0.75rem 1rem;\n  border-radius: 0.25rem;\n  cursor: pointer;\n  color: var(--grey);\n  outline: none;\n}\n.DropdownItem_module_root__61492174 > .DropdownItem_module_input__61492174 {\n  cursor: pointer;\n}\n.DropdownItem_module_root__61492174:focus {\n  background: var(--grey6);\n}\n.DropdownItem_module_root__61492174.DropdownItem_module_selected__61492174 {\n  background: var(--info-bg);\n}";
+var css$z = ".DropdownItem_module_root__61492174 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.75rem;\n  width: 100%;\n  padding: 0.75rem 1rem;\n  border-radius: 0.25rem;\n  cursor: pointer;\n  color: var(--grey);\n  outline: none;\n}\n.DropdownItem_module_root__61492174 > .DropdownItem_module_input__61492174 {\n  cursor: pointer;\n}\n.DropdownItem_module_root__61492174:focus {\n  background: var(--grey6);\n}\n.DropdownItem_module_root__61492174.DropdownItem_module_selected__61492174 {\n  background: var(--info-bg);\n}";
 var modules_bf949acd = {"root":"DropdownItem_module_root__61492174","input":"DropdownItem_module_input__61492174","selected":"DropdownItem_module_selected__61492174"};
-n(css$y,{});
+n(css$z,{});
 
 var DropdownItem = /*#__PURE__*/React.forwardRef(function DropdownItem(props, ref) {
   // eslint-disable-next-line object-curly-newline
@@ -42196,9 +42859,9 @@ DropdownItem.defaultProps = {
   selected: false
 };
 
-var css$x = ".TimePicker_module_root__2dd24d9e {\n  width: 100%;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  border-top: 1px solid var(--grey5);\n  border-bottom: 1px solid var(--grey5);\n}\n.TimePicker_module_root__2dd24d9e .TimePicker_module_input__2dd24d9e {\n  width: 5.125rem;\n}\n.TimePicker_module_root__2dd24d9e .TimePicker_module_input__2dd24d9e > label [data-elem=base-cell] {\n  border: none;\n}\n.TimePicker_module_root__2dd24d9e .TimePicker_module_input__2dd24d9e > label [data-elem=base-cell] [data-elem=component2] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.TimePicker_module_root__2dd24d9e .TimePicker_module_input__2dd24d9e > label [data-elem=base-cell] [data-elem=component2] > input[data-elem=input] {\n  padding: 1rem 0rem;\n  text-align: center;\n  font-weight: 600;\n  font-size: 1.25rem;\n  line-height: 1.5rem;\n  color: var(--dark-grey);\n}\n.TimePicker_module_root__2dd24d9e .TimePicker_module_colon__2dd24d9e {\n  font-weight: 500;\n  font-size: 1.25rem;\n  line-height: 1.5rem;\n  color: var(--dark-grey);\n}\n.TimePicker_module_root__2dd24d9e .TimePicker_module_separator__2dd24d9e {\n  width: 0.0625rem;\n  height: 1.5625rem;\n  background-color: var(--grey5);\n}";
+var css$y = ".TimePicker_module_root__2dd24d9e {\n  width: 100%;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  border-top: 1px solid var(--grey5);\n  border-bottom: 1px solid var(--grey5);\n}\n.TimePicker_module_root__2dd24d9e .TimePicker_module_input__2dd24d9e {\n  width: 5.125rem;\n}\n.TimePicker_module_root__2dd24d9e .TimePicker_module_input__2dd24d9e > label [data-elem=base-cell] {\n  border: none;\n}\n.TimePicker_module_root__2dd24d9e .TimePicker_module_input__2dd24d9e > label [data-elem=base-cell] [data-elem=component2] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.TimePicker_module_root__2dd24d9e .TimePicker_module_input__2dd24d9e > label [data-elem=base-cell] [data-elem=component2] > input[data-elem=input] {\n  padding: 1rem 0rem;\n  text-align: center;\n  font-weight: 600;\n  font-size: 1.25rem;\n  line-height: 1.5rem;\n  color: var(--dark-grey);\n}\n.TimePicker_module_root__2dd24d9e .TimePicker_module_colon__2dd24d9e {\n  font-weight: 500;\n  font-size: 1.25rem;\n  line-height: 1.5rem;\n  color: var(--dark-grey);\n}\n.TimePicker_module_root__2dd24d9e .TimePicker_module_separator__2dd24d9e {\n  width: 0.0625rem;\n  height: 1.5625rem;\n  background-color: var(--grey5);\n}";
 var modules_98a80317 = {"root":"TimePicker_module_root__2dd24d9e","input":"TimePicker_module_input__2dd24d9e","colon":"TimePicker_module_colon__2dd24d9e","separator":"TimePicker_module_separator__2dd24d9e"};
-n(css$x,{});
+n(css$y,{});
 
 var isValidUnit = function isValidUnit(_ref) {
   var type = _ref.type,
@@ -42388,9 +43051,9 @@ TimePicker.defaultProps = {
   value: null
 };
 
-var css$w = ".Footer_module_root__0e6d72de {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-items: stretch;\n  margin-inline: 1rem;\n}\n.Footer_module_root__0e6d72de .Footer_module_apply__0e6d72de {\n  margin-top: 0.5rem;\n  width: 100%;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.Footer_module_root__0e6d72de .Footer_module_timePicker__0e6d72de {\n  margin-bottom: 1.25rem;\n}\n\n.Footer_module_selectedDate__0e6d72de {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  gap: 1.125rem;\n  background: var(--white);\n  border: 0.0625rem solid var(--grey4);\n  border-radius: 0.25rem;\n}\n.Footer_module_selectedDate__0e6d72de .Footer_module_date__0e6d72de {\n  font-weight: 500;\n  font-size: 0.875rem;\n  line-height: 1.3125rem;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.Footer_module_selectedDate__0e6d72de .Footer_module_date__0e6d72de .Footer_module_cross__0e6d72de {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.Footer_module_selectedDate__0e6d72de .Footer_module_date__0e6d72de .Footer_module_value__0e6d72de {\n  font-weight: 400;\n  padding-right: 0.7rem;\n  border-right: 1px var(--grey3) solid;\n}\n\n.Footer_module_dateRanges__0e6d72de {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-items: stretch;\n  margin-top: 0.5rem;\n}\n.Footer_module_dateRanges__0e6d72de .Footer_module_dateRange__0e6d72de {\n  display: flex;\n  align-items: center;\n  padding: 0.875rem 1rem;\n  gap: 1.125rem;\n  cursor: pointer;\n}\n.Footer_module_dateRanges__0e6d72de .Footer_module_dateRange__0e6d72de:hover {\n  background-color: var(--background);\n}\n.Footer_module_dateRanges__0e6d72de .Footer_module_dateRange__0e6d72de span {\n  font-weight: 400;\n  font-size: 0.875rem;\n  line-height: 1.3125rem;\n  color: var(--black);\n}\n.Footer_module_dateRanges__0e6d72de .Footer_module_selected__0e6d72de {\n  background-color: var(--background);\n}";
+var css$x = ".Footer_module_root__0e6d72de {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-items: stretch;\n  margin-inline: 1rem;\n}\n.Footer_module_root__0e6d72de .Footer_module_apply__0e6d72de {\n  margin-top: 0.5rem;\n  width: 100%;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.Footer_module_root__0e6d72de .Footer_module_timePicker__0e6d72de {\n  margin-bottom: 1.25rem;\n}\n\n.Footer_module_selectedDate__0e6d72de {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  gap: 1.125rem;\n  background: var(--white);\n  border: 0.0625rem solid var(--grey4);\n  border-radius: 0.25rem;\n}\n.Footer_module_selectedDate__0e6d72de .Footer_module_date__0e6d72de {\n  font-weight: 500;\n  font-size: 0.875rem;\n  line-height: 1.3125rem;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.Footer_module_selectedDate__0e6d72de .Footer_module_date__0e6d72de .Footer_module_cross__0e6d72de {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.Footer_module_selectedDate__0e6d72de .Footer_module_date__0e6d72de .Footer_module_value__0e6d72de {\n  font-weight: 400;\n  padding-right: 0.7rem;\n  border-right: 1px var(--grey3) solid;\n}\n\n.Footer_module_dateRanges__0e6d72de {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-items: stretch;\n  margin-top: 0.5rem;\n}\n.Footer_module_dateRanges__0e6d72de .Footer_module_dateRange__0e6d72de {\n  display: flex;\n  align-items: center;\n  padding: 0.875rem 1rem;\n  gap: 1.125rem;\n  cursor: pointer;\n}\n.Footer_module_dateRanges__0e6d72de .Footer_module_dateRange__0e6d72de:hover {\n  background-color: var(--background);\n}\n.Footer_module_dateRanges__0e6d72de .Footer_module_dateRange__0e6d72de span {\n  font-weight: 400;\n  font-size: 0.875rem;\n  line-height: 1.3125rem;\n  color: var(--black);\n}\n.Footer_module_dateRanges__0e6d72de .Footer_module_selected__0e6d72de {\n  background-color: var(--background);\n}";
 var modules_b490bd5d = {"root":"Footer_module_root__0e6d72de","apply":"Footer_module_apply__0e6d72de","time-picker":"Footer_module_timePicker__0e6d72de","selected-date":"Footer_module_selectedDate__0e6d72de","date":"Footer_module_date__0e6d72de","cross":"Footer_module_cross__0e6d72de","value":"Footer_module_value__0e6d72de","date-ranges":"Footer_module_dateRanges__0e6d72de","date-range":"Footer_module_dateRange__0e6d72de","selected":"Footer_module_selected__0e6d72de"};
-n(css$w,{});
+n(css$x,{});
 
 var getDateAndUnixRange = function getDateAndUnixRange(duration) {
   var startingDate = sub$1(new Date(), duration);
@@ -42695,9 +43358,9 @@ var Calender = function Calender(props) {
   });
 };
 
-var css$v = ".DatePicker_module_root__cd4565ac {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  gap: 0.5rem;\n  max-width: 100%;\n  overflow: visible;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_label__cd4565ac {\n  font-weight: 400;\n  font-size: 0.75rem;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_label__cd4565ac.DatePicker_module_light__cd4565ac {\n  color: var(--black);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_label__cd4565ac.DatePicker_module_dark__cd4565ac {\n  color: var(--white);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  position: relative;\n  background: transparent;\n  border: 0.0625rem solid #d9d9d9;\n  border-radius: 0.25rem;\n  width: auto;\n  border: 0.0625rem solid var(--grey5);\n  padding: 0.75rem 1rem;\n  cursor: pointer;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac > div {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  font-size: 0px;\n  letter-spacing: 0px;\n  word-spacing: 0px;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_placeholder__cd4565ac {\n  font-weight: 400;\n  font-size: 1rem;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  margin-left: 0.9375rem;\n  color: var(--grey1);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_value__cd4565ac {\n  font-weight: 400;\n  font-size: 1rem;\n  margin-left: 0.9375rem;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_value__cd4565ac.DatePicker_module_light__cd4565ac {\n  color: var(--black);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_value__cd4565ac.DatePicker_module_dark__cd4565ac {\n  color: var(--white);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_value__cd4565ac span {\n  max-width: 200px;\n  display: inline-block;\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  font-weight: 500;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_input__cd4565ac {\n  display: none;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_icon__cd4565ac {\n  width: 1.25rem;\n  height: 1.25rem;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_icon__cd4565ac.DatePicker_module_light__cd4565ac > path {\n  fill: var(--dark-grey);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_icon__cd4565ac.DatePicker_module_dark__cd4565ac > path {\n  fill: var(--white);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_down__cd4565ac {\n  transform: rotate(270deg);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_up__cd4565ac {\n  transform: rotate(90deg);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_disabled__cd4565ac {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  position: relative;\n  background: var(--grey10);\n  border: 0.0625rem solid #d9d9d9;\n  border-radius: 0.25rem;\n  border: 0.0625rem solid var(--grey5);\n  padding: 0.75rem 1rem;\n  cursor: pointer;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_disabled__cd4565ac .DatePicker_module_downArrow__cd4565ac {\n  transform: rotate(270deg);\n  fill: var(--grey3);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_disabled__cd4565ac .DatePicker_module_placeholder__cd4565ac {\n  font-weight: 400;\n  font-size: 1rem;\n  color: var(--grey3);\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.DatePicker_module_root__cd4565ac.DatePicker_module_open__cd4565ac {\n  border-color: var(--highlight);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_error__cd4565ac {\n  border: 0.0938rem solid var(--error);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_errorText__cd4565ac {\n  font-weight: 400;\n  font-size: 0.75rem;\n  line-height: 0.9375rem;\n  color: var(--error);\n}\n\n.DatePicker_module_popper__cd4565ac {\n  display: none;\n  background: var(--white);\n  border: 0.0625rem solid #d9d9d9;\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n  border-radius: 0.25rem;\n  overflow: auto;\n}\n.DatePicker_module_popper__cd4565ac.DatePicker_module_open__cd4565ac {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  position: absolute;\n}";
+var css$w = ".DatePicker_module_root__cd4565ac {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  gap: 0.5rem;\n  max-width: 100%;\n  overflow: visible;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_label__cd4565ac {\n  font-weight: 400;\n  font-size: 0.75rem;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_label__cd4565ac.DatePicker_module_light__cd4565ac {\n  color: var(--black);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_label__cd4565ac.DatePicker_module_dark__cd4565ac {\n  color: var(--white);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  position: relative;\n  background: transparent;\n  border: 0.0625rem solid #d9d9d9;\n  border-radius: 0.25rem;\n  width: auto;\n  border: 0.0625rem solid var(--grey5);\n  padding: 0.75rem 1rem;\n  cursor: pointer;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac > div {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  font-size: 0px;\n  letter-spacing: 0px;\n  word-spacing: 0px;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_placeholder__cd4565ac {\n  font-weight: 400;\n  font-size: 1rem;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  margin-left: 0.9375rem;\n  color: var(--grey1);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_value__cd4565ac {\n  font-weight: 400;\n  font-size: 1rem;\n  margin-left: 0.9375rem;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_value__cd4565ac.DatePicker_module_light__cd4565ac {\n  color: var(--black);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_value__cd4565ac.DatePicker_module_dark__cd4565ac {\n  color: var(--white);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_value__cd4565ac span {\n  max-width: 200px;\n  display: inline-block;\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  font-weight: 500;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_input__cd4565ac {\n  display: none;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_icon__cd4565ac {\n  width: 1.25rem;\n  height: 1.25rem;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_icon__cd4565ac.DatePicker_module_light__cd4565ac > path {\n  fill: var(--dark-grey);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_icon__cd4565ac.DatePicker_module_dark__cd4565ac > path {\n  fill: var(--white);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_down__cd4565ac {\n  transform: rotate(270deg);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_up__cd4565ac {\n  transform: rotate(90deg);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_disabled__cd4565ac {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  position: relative;\n  background: var(--grey10);\n  border: 0.0625rem solid #d9d9d9;\n  border-radius: 0.25rem;\n  border: 0.0625rem solid var(--grey5);\n  padding: 0.75rem 1rem;\n  cursor: pointer;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_disabled__cd4565ac .DatePicker_module_downArrow__cd4565ac {\n  transform: rotate(270deg);\n  fill: var(--grey3);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_disabled__cd4565ac .DatePicker_module_placeholder__cd4565ac {\n  font-weight: 400;\n  font-size: 1rem;\n  color: var(--grey3);\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.DatePicker_module_root__cd4565ac.DatePicker_module_open__cd4565ac {\n  border-color: var(--highlight);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_error__cd4565ac {\n  border: 0.0938rem solid var(--error);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_errorText__cd4565ac {\n  font-weight: 400;\n  font-size: 0.75rem;\n  line-height: 0.9375rem;\n  color: var(--error);\n}\n\n.DatePicker_module_popper__cd4565ac {\n  display: none;\n  background: var(--white);\n  border: 0.0625rem solid #d9d9d9;\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n  border-radius: 0.25rem;\n  overflow: auto;\n}\n.DatePicker_module_popper__cd4565ac.DatePicker_module_open__cd4565ac {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  position: absolute;\n}";
 var modules_5b831cd1 = {"root":"DatePicker_module_root__cd4565ac","label":"DatePicker_module_label__cd4565ac","light":"DatePicker_module_light__cd4565ac","dark":"DatePicker_module_dark__cd4565ac","container":"DatePicker_module_container__cd4565ac","placeholder":"DatePicker_module_placeholder__cd4565ac","value":"DatePicker_module_value__cd4565ac","input":"DatePicker_module_input__cd4565ac","icon":"DatePicker_module_icon__cd4565ac","down":"DatePicker_module_down__cd4565ac","up":"DatePicker_module_up__cd4565ac","disabled":"DatePicker_module_disabled__cd4565ac","down-arrow":"DatePicker_module_downArrow__cd4565ac","open":"DatePicker_module_open__cd4565ac","error":"DatePicker_module_error__cd4565ac","error-text":"DatePicker_module_errorText__cd4565ac","popper":"DatePicker_module_popper__cd4565ac"};
-n(css$v,{});
+n(css$w,{});
 
 var isMaxRangeExceeded = function isMaxRangeExceeded(_ref) {
   var maxRange = _ref.maxRange,
@@ -42931,9 +43594,9 @@ DatePicker.defaultProps = {
   onClear: function onClear() {}
 };
 
-var css$u = ".HierarchyItem_module_root__c993ecd0 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  flex: 1;\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_header__c993ecd0 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.25rem;\n  min-height: 2rem;\n  height: auto;\n  padding: 0rem 0.5rem;\n  cursor: pointer;\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_header__c993ecd0 > [data-elem=component1], .HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_header__c993ecd0 > [data-elem=component3] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_header__c993ecd0 > [data-elem=component1] .HierarchyItem_module_expand__c993ecd0, .HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_header__c993ecd0 > [data-elem=component3] .HierarchyItem_module_expand__c993ecd0 {\n  padding: 0;\n  height: auto;\n  width: 1rem;\n  height: 1rem;\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_header__c993ecd0 > [data-elem=component1] .HierarchyItem_module_expand__c993ecd0 .HierarchyItem_module_icon__c993ecd0, .HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_header__c993ecd0 > [data-elem=component3] .HierarchyItem_module_expand__c993ecd0 .HierarchyItem_module_icon__c993ecd0 {\n  transform: rotate(-90deg);\n  width: 1rem;\n  height: 1rem;\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_header__c993ecd0 > [data-elem=component2] {\n  flex: 1 1 auto;\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_header__c993ecd0 > [data-elem=component2] .HierarchyItem_module_title__c993ecd0 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  width: 100%;\n  height: auto;\n  padding: 0.25rem 0rem;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_header__c993ecd0:hover {\n  background: var(--background);\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_header__c993ecd0:hover .HierarchyItem_module_icon__c993ecd0,\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_header__c993ecd0:hover .HierarchyItem_module_title__c993ecd0,\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_header__c993ecd0:hover .HierarchyItem_module_title__c993ecd0 svg {\n  color: var(--highlight);\n  fill: var(--highlight);\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_body__c993ecd0 {\n  display: none;\n  flex: 1 0 auto;\n  padding: 0px 0rem 0px 0.25rem;\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_body__c993ecd0 > [data-elem=component1] {\n  flex: 0 0 1.6rem;\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_body__c993ecd0 > [data-elem=component1] .HierarchyItem_module_tail__c993ecd0 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: center;\n  width: 1.6rem;\n  height: 100%;\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_body__c993ecd0 > [data-elem=component1] .HierarchyItem_module_tail__c993ecd0::after {\n  content: \"\";\n  display: block;\n  margin: auto;\n  width: 1px;\n  flex: 1;\n  background: var(--grey1);\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_body__c993ecd0 > [data-elem=component2] {\n  flex: 1 0 auto;\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_body__c993ecd0 > [data-elem=component2] .HierarchyItem_module_children__c993ecd0 {\n  flex: 1 0 auto;\n}\n.HierarchyItem_module_root__c993ecd0.HierarchyItem_module_open__c993ecd0 > .HierarchyItem_module_header__c993ecd0 .HierarchyItem_module_expand__c993ecd0 .HierarchyItem_module_icon__c993ecd0 {\n  transform: none;\n}\n.HierarchyItem_module_root__c993ecd0.HierarchyItem_module_open__c993ecd0 > .HierarchyItem_module_body__c993ecd0 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: stretch;\n  gap: 0.25rem;\n  height: auto;\n}";
+var css$v = ".HierarchyItem_module_root__c993ecd0 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  flex: 1;\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_header__c993ecd0 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.25rem;\n  min-height: 2rem;\n  height: auto;\n  padding: 0rem 0.5rem;\n  cursor: pointer;\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_header__c993ecd0 > [data-elem=component1], .HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_header__c993ecd0 > [data-elem=component3] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_header__c993ecd0 > [data-elem=component1] .HierarchyItem_module_expand__c993ecd0, .HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_header__c993ecd0 > [data-elem=component3] .HierarchyItem_module_expand__c993ecd0 {\n  padding: 0;\n  height: auto;\n  width: 1rem;\n  height: 1rem;\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_header__c993ecd0 > [data-elem=component1] .HierarchyItem_module_expand__c993ecd0 .HierarchyItem_module_icon__c993ecd0, .HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_header__c993ecd0 > [data-elem=component3] .HierarchyItem_module_expand__c993ecd0 .HierarchyItem_module_icon__c993ecd0 {\n  transform: rotate(-90deg);\n  width: 1rem;\n  height: 1rem;\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_header__c993ecd0 > [data-elem=component2] {\n  flex: 1 1 auto;\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_header__c993ecd0 > [data-elem=component2] .HierarchyItem_module_title__c993ecd0 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  width: 100%;\n  height: auto;\n  padding: 0.25rem 0rem;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_header__c993ecd0:hover {\n  background: var(--background);\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_header__c993ecd0:hover .HierarchyItem_module_icon__c993ecd0,\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_header__c993ecd0:hover .HierarchyItem_module_title__c993ecd0,\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_header__c993ecd0:hover .HierarchyItem_module_title__c993ecd0 svg {\n  color: var(--highlight);\n  fill: var(--highlight);\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_body__c993ecd0 {\n  display: none;\n  flex: 1 0 auto;\n  padding: 0px 0rem 0px 0.25rem;\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_body__c993ecd0 > [data-elem=component1] {\n  flex: 0 0 1.6rem;\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_body__c993ecd0 > [data-elem=component1] .HierarchyItem_module_tail__c993ecd0 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: center;\n  width: 1.6rem;\n  height: 100%;\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_body__c993ecd0 > [data-elem=component1] .HierarchyItem_module_tail__c993ecd0::after {\n  content: \"\";\n  display: block;\n  margin: auto;\n  width: 1px;\n  flex: 1;\n  background: var(--grey1);\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_body__c993ecd0 > [data-elem=component2] {\n  flex: 1 0 auto;\n}\n.HierarchyItem_module_root__c993ecd0 .HierarchyItem_module_body__c993ecd0 > [data-elem=component2] .HierarchyItem_module_children__c993ecd0 {\n  flex: 1 0 auto;\n}\n.HierarchyItem_module_root__c993ecd0.HierarchyItem_module_open__c993ecd0 > .HierarchyItem_module_header__c993ecd0 .HierarchyItem_module_expand__c993ecd0 .HierarchyItem_module_icon__c993ecd0 {\n  transform: none;\n}\n.HierarchyItem_module_root__c993ecd0.HierarchyItem_module_open__c993ecd0 > .HierarchyItem_module_body__c993ecd0 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: stretch;\n  gap: 0.25rem;\n  height: auto;\n}";
 var modules_6d03d164 = {"root":"HierarchyItem_module_root__c993ecd0","header":"HierarchyItem_module_header__c993ecd0","expand":"HierarchyItem_module_expand__c993ecd0","icon":"HierarchyItem_module_icon__c993ecd0","title":"HierarchyItem_module_title__c993ecd0","body":"HierarchyItem_module_body__c993ecd0","tail":"HierarchyItem_module_tail__c993ecd0","children":"HierarchyItem_module_children__c993ecd0","open":"HierarchyItem_module_open__c993ecd0"};
-n(css$u,{});
+n(css$v,{});
 
 var HierarchyItem = function HierarchyItem(props) {
   var defaultOpen = props.defaultOpen,
@@ -43024,9 +43687,9 @@ HierarchyItem.defaultProps = {
   onClick: function onClick() {}
 };
 
-var css$t = ".HierarchyBrowser_module_root__649d3da2 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  width: 20rem;\n  position: relative;\n}\n.HierarchyBrowser_module_root__649d3da2 .HierarchyBrowser_module_header__649d3da2 {\n  padding: 0.5rem;\n  background: var(--dark-grey);\n  color: var(--white);\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.HierarchyBrowser_module_root__649d3da2 .HierarchyBrowser_module_body__649d3da2 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  overflow: auto;\n}\n.HierarchyBrowser_module_root__649d3da2 .HierarchyBrowser_module_item__649d3da2 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.25rem;\n}\n.HierarchyBrowser_module_root__649d3da2 .HierarchyBrowser_module_item__649d3da2 .HierarchyBrowser_module_itemIcon__649d3da2 {\n  width: 1rem;\n}\n.HierarchyBrowser_module_root__649d3da2::after {\n  position: absolute;\n  right: 0;\n  content: \"\";\n  width: 1px;\n  height: 100%;\n  background: var(--grey4);\n}\n.HierarchyBrowser_module_root__649d3da2.HierarchyBrowser_module_resizable__649d3da2:hover::after {\n  width: 3px;\n  cursor: col-resize;\n}";
+var css$u = ".HierarchyBrowser_module_root__649d3da2 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  width: 20rem;\n  position: relative;\n}\n.HierarchyBrowser_module_root__649d3da2 .HierarchyBrowser_module_header__649d3da2 {\n  padding: 0.5rem;\n  background: var(--dark-grey);\n  color: var(--white);\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.HierarchyBrowser_module_root__649d3da2 .HierarchyBrowser_module_body__649d3da2 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  overflow: auto;\n}\n.HierarchyBrowser_module_root__649d3da2 .HierarchyBrowser_module_item__649d3da2 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.25rem;\n}\n.HierarchyBrowser_module_root__649d3da2 .HierarchyBrowser_module_item__649d3da2 .HierarchyBrowser_module_itemIcon__649d3da2 {\n  width: 1rem;\n}\n.HierarchyBrowser_module_root__649d3da2::after {\n  position: absolute;\n  right: 0;\n  content: \"\";\n  width: 1px;\n  height: 100%;\n  background: var(--grey4);\n}\n.HierarchyBrowser_module_root__649d3da2.HierarchyBrowser_module_resizable__649d3da2:hover::after {\n  width: 3px;\n  cursor: col-resize;\n}";
 var modules_5e29d515 = {"root":"HierarchyBrowser_module_root__649d3da2","header":"HierarchyBrowser_module_header__649d3da2","body":"HierarchyBrowser_module_body__649d3da2","item":"HierarchyBrowser_module_item__649d3da2","item-icon":"HierarchyBrowser_module_itemIcon__649d3da2","resizable":"HierarchyBrowser_module_resizable__649d3da2"};
-n(css$t,{});
+n(css$u,{});
 
 var Title = function Title(props) {
   var item = props.item;
@@ -43148,9 +43811,9 @@ HierarchyBrowser.defaultProps = {
   title: 'Browser'
 };
 
-var css$s = ".BaseModal_module_root__2dd7477e {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  top: 50%;\n  left: 50%;\n  right: auto;\n  bottom: auto;\n  transform: translate(-50%, -50%);\n  max-height: 100%;\n  width: 50%;\n  position: fixed;\n  background: #ffffff;\n  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.13);\n  border-radius: 5px;\n  outline: none;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_body__2dd7477e {\n  overflow-y: scroll;\n  padding: 0 15px;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_header__2dd7477e,\n.BaseModal_module_root__2dd7477e .BaseModal_module_footer__2dd7477e {\n  padding: 1rem;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_header__2dd7477e {\n  font-weight: 500;\n  font-size: 1.375rem;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_footer__2dd7477e {\n  margin-top: auto;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_close__2dd7477e {\n  position: absolute;\n  right: 0.5rem;\n  top: 0.5rem;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_close__2dd7477e .BaseModal_module_icon__2dd7477e {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--black);\n}";
+var css$t = ".BaseModal_module_root__2dd7477e {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  top: 50%;\n  left: 50%;\n  right: auto;\n  bottom: auto;\n  transform: translate(-50%, -50%);\n  max-height: 100%;\n  width: 50%;\n  position: fixed;\n  background: #ffffff;\n  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.13);\n  border-radius: 5px;\n  outline: none;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_body__2dd7477e {\n  overflow-y: scroll;\n  padding: 0 15px;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_header__2dd7477e,\n.BaseModal_module_root__2dd7477e .BaseModal_module_footer__2dd7477e {\n  padding: 1rem;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_header__2dd7477e {\n  font-weight: 500;\n  font-size: 1.375rem;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_footer__2dd7477e {\n  margin-top: auto;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_close__2dd7477e {\n  position: absolute;\n  right: 0.5rem;\n  top: 0.5rem;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_close__2dd7477e .BaseModal_module_icon__2dd7477e {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--black);\n}";
 var modules_f23ae002 = {"root":"BaseModal_module_root__2dd7477e","body":"BaseModal_module_body__2dd7477e","header":"BaseModal_module_header__2dd7477e","footer":"BaseModal_module_footer__2dd7477e","close":"BaseModal_module_close__2dd7477e","icon":"BaseModal_module_icon__2dd7477e"};
-n(css$s,{});
+n(css$t,{});
 
 var BaseModal = function BaseModal(props) {
   var className = props.className,
@@ -43220,9 +43883,9 @@ BaseModal.defaultProps = {
   toggle: function toggle() {}
 };
 
-var css$r = ".Dialog_module_root__2974a020 {\n  padding: 0.25rem 0px;\n  max-height: 14rem;\n  background: #ffffff;\n  border-radius: 0.25rem;\n}\n.Dialog_module_root__2974a020.Dialog_module_sm__2974a020 {\n  width: 21.25rem;\n}\n.Dialog_module_root__2974a020.Dialog_module_md__2974a020 {\n  width: 35rem;\n}\n.Dialog_module_root__2974a020 .Dialog_module_header__2974a020 {\n  font-weight: 600;\n  font-size: 0.875rem;\n  color: var(--black);\n}\n.Dialog_module_root__2974a020 .Dialog_module_footer__2974a020 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-end;\n  align-items: center;\n  gap: 1rem;\n}\n.Dialog_module_root__2974a020 .Dialog_module_footer__2974a020 .Dialog_module_cancel__2974a020[data-elem=base-cell] {\n  display: flex;\n  color: var(--grey1);\n  border-radius: 0.25rem;\n  border: 1px solid var(--grey4);\n}\n.Dialog_module_root__2974a020 .Dialog_module_description__2974a020 {\n  padding: 0.5rem 0px;\n  font-size: 0.75rem;\n}";
+var css$s = ".Dialog_module_root__2974a020 {\n  padding: 0.25rem 0px;\n  max-height: 14rem;\n  background: #ffffff;\n  border-radius: 0.25rem;\n}\n.Dialog_module_root__2974a020.Dialog_module_sm__2974a020 {\n  width: 21.25rem;\n}\n.Dialog_module_root__2974a020.Dialog_module_md__2974a020 {\n  width: 35rem;\n}\n.Dialog_module_root__2974a020 .Dialog_module_header__2974a020 {\n  font-weight: 600;\n  font-size: 0.875rem;\n  color: var(--black);\n}\n.Dialog_module_root__2974a020 .Dialog_module_footer__2974a020 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-end;\n  align-items: center;\n  gap: 1rem;\n}\n.Dialog_module_root__2974a020 .Dialog_module_footer__2974a020 .Dialog_module_cancel__2974a020[data-elem=base-cell] {\n  display: flex;\n  color: var(--grey1);\n  border-radius: 0.25rem;\n  border: 1px solid var(--grey4);\n}\n.Dialog_module_root__2974a020 .Dialog_module_description__2974a020 {\n  padding: 0.5rem 0px;\n  font-size: 0.75rem;\n}";
 var modules_ca1540aa = {"root":"Dialog_module_root__2974a020","sm":"Dialog_module_sm__2974a020","md":"Dialog_module_md__2974a020","header":"Dialog_module_header__2974a020","footer":"Dialog_module_footer__2974a020","cancel":"Dialog_module_cancel__2974a020","description":"Dialog_module_description__2974a020"};
-n(css$r,{});
+n(css$s,{});
 
 /* eslint-disable object-curly-newline */
 var DialogBox = function DialogBox(props) {
@@ -43286,9 +43949,9 @@ DialogBox.defaultProps = {
   size: 'sm'
 };
 
-var css$q = ".PageHeader_module_root__2aae78e0 {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: flex-start;\n  width: 100%;\n  background-color: transparent;\n  gap: 4px;\n}\n.PageHeader_module_root__2aae78e0.PageHeader_module_themeDark__2aae78e0 {\n  color: var(--white);\n}\n.PageHeader_module_root__2aae78e0.PageHeader_module_themeDark__2aae78e0 .PageHeader_module_breadcrumb__2aae78e0 [data-elem=breadcrumb-item-active] {\n  color: var(--white);\n}\n.PageHeader_module_root__2aae78e0.PageHeader_module_themeLight__2aae78e0 {\n  color: var(--dark-grey);\n}\n.PageHeader_module_root__2aae78e0 .PageHeader_module_description__2aae78e0 {\n  color: var(--grey);\n}\n.PageHeader_module_root__2aae78e0 .PageHeader_module_contents__2aae78e0 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  width: 100%;\n}\n.PageHeader_module_root__2aae78e0 .PageHeader_module_contents__2aae78e0 .PageHeader_module_left__2aae78e0,\n.PageHeader_module_root__2aae78e0 .PageHeader_module_contents__2aae78e0 .PageHeader_module_right__2aae78e0 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 10px;\n}\n.PageHeader_module_root__2aae78e0 .PageHeader_module_contents__2aae78e0 .PageHeader_module_left__2aae78e0 .PageHeader_module_title__2aae78e0 {\n  font-size: 2.25rem;\n  font-weight: 600;\n  line-height: 3.375rem;\n}\n.PageHeader_module_root__2aae78e0 .PageHeader_module_contents__2aae78e0 .PageHeader_module_left__2aae78e0 .PageHeader_module_chip__2aae78e0 {\n  font-weight: 500;\n  background: var(--highlight);\n  color: var(--white);\n}\n.PageHeader_module_root__2aae78e0 .PageHeader_module_description__2aae78e0 {\n  font-size: 1rem;\n  font-weight: 400;\n  line-height: 1.5rem;\n}\n\n.PageHeader_module_download__2aae78e0,\n.PageHeader_module_calender__2aae78e0 {\n  width: 1.5rem;\n  height: 1.5rem;\n}";
+var css$r = ".PageHeader_module_root__2aae78e0 {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: flex-start;\n  width: 100%;\n  background-color: transparent;\n  gap: 4px;\n}\n.PageHeader_module_root__2aae78e0.PageHeader_module_themeDark__2aae78e0 {\n  color: var(--white);\n}\n.PageHeader_module_root__2aae78e0.PageHeader_module_themeDark__2aae78e0 .PageHeader_module_breadcrumb__2aae78e0 [data-elem=breadcrumb-item-active] {\n  color: var(--white);\n}\n.PageHeader_module_root__2aae78e0.PageHeader_module_themeLight__2aae78e0 {\n  color: var(--dark-grey);\n}\n.PageHeader_module_root__2aae78e0 .PageHeader_module_description__2aae78e0 {\n  color: var(--grey);\n}\n.PageHeader_module_root__2aae78e0 .PageHeader_module_contents__2aae78e0 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  width: 100%;\n}\n.PageHeader_module_root__2aae78e0 .PageHeader_module_contents__2aae78e0 .PageHeader_module_left__2aae78e0,\n.PageHeader_module_root__2aae78e0 .PageHeader_module_contents__2aae78e0 .PageHeader_module_right__2aae78e0 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 10px;\n}\n.PageHeader_module_root__2aae78e0 .PageHeader_module_contents__2aae78e0 .PageHeader_module_left__2aae78e0 .PageHeader_module_title__2aae78e0 {\n  font-size: 2.25rem;\n  font-weight: 600;\n  line-height: 3.375rem;\n}\n.PageHeader_module_root__2aae78e0 .PageHeader_module_contents__2aae78e0 .PageHeader_module_left__2aae78e0 .PageHeader_module_chip__2aae78e0 {\n  font-weight: 500;\n  background: var(--highlight);\n  color: var(--white);\n}\n.PageHeader_module_root__2aae78e0 .PageHeader_module_description__2aae78e0 {\n  font-size: 1rem;\n  font-weight: 400;\n  line-height: 1.5rem;\n}\n\n.PageHeader_module_download__2aae78e0,\n.PageHeader_module_calender__2aae78e0 {\n  width: 1.5rem;\n  height: 1.5rem;\n}";
 var modules_bdcbeaa5 = {"root":"PageHeader_module_root__2aae78e0","theme-dark":"PageHeader_module_themeDark__2aae78e0","breadcrumb":"PageHeader_module_breadcrumb__2aae78e0","theme-light":"PageHeader_module_themeLight__2aae78e0","description":"PageHeader_module_description__2aae78e0","contents":"PageHeader_module_contents__2aae78e0","left":"PageHeader_module_left__2aae78e0","right":"PageHeader_module_right__2aae78e0","title":"PageHeader_module_title__2aae78e0","chip":"PageHeader_module_chip__2aae78e0","download":"PageHeader_module_download__2aae78e0","calender":"PageHeader_module_calender__2aae78e0"};
-n(css$q,{});
+n(css$r,{});
 
 var PageHeader = function PageHeader(props) {
   var theme = props.theme,
@@ -43430,9 +44093,9 @@ function getPagination(curr, total, limit) {
   return pages;
 }
 
-var css$p = ".Pagination_module_root__8f7084b9 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: stretch;\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n  gap: 0.75rem;\n  padding: 0.625rem 2.125rem;\n  background: var(--dark-grey);\n  margin-top: auto;\n  width: 100%;\n  height: 3.5rem;\n  overflow: auto;\n  transition-property: background-color, color, bottom, width;\n  transition-duration: 0.33s;\n  transition-timing-function: ease-out;\n}\n.Pagination_module_root__8f7084b9::-webkit-scrollbar {\n  display: none;\n}\n.Pagination_module_root__8f7084b9.Pagination_module_floating__8f7084b9 {\n  background: var(--dark-grey-o-85);\n  position: absolute;\n  border-radius: 6.25rem;\n  width: 82%;\n  bottom: 3rem;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9,\n.Pagination_module_root__8f7084b9 .Pagination_module_jumpToPage__8f7084b9,\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 {\n  display: none;\n  flex: 0 1 15%;\n  background-color: transparent;\n  padding: 0;\n  height: 100%;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 {\n    display: flex;\n    flex-direction: row;\n    justify-content: space-between;\n    align-items: center;\n  }\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 > [data-elem=component2] {\n  flex: 0 1 auto;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_rowSwitcherHandle__8f7084b9 {\n  gap: 0.75rem;\n  background-color: var(--grey);\n  padding: 0;\n  border-radius: 0.25rem;\n  height: 100%;\n  width: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_rowSwitcherHandle__8f7084b9 > [data-elem*=component] {\n  overflow: hidden;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_rowSwitcherHandle__8f7084b9 > [data-elem=component2] {\n  display: flex;\n  flex: 0 0 auto;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_rowSwitcherHandle__8f7084b9 > [data-elem=component2]::before {\n  content: \"\";\n  margin: auto;\n  background: var(--white);\n  width: 0.5px;\n  height: 50%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_text__8f7084b9 {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  height: 100%;\n  display: block;\n  padding: 0.5rem;\n  font-size: 0.875rem;\n  font-weight: 500;\n  color: var(--white);\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_dropdown__8f7084b9 {\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_dropdown__8f7084b9 > [data-elem=header] {\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_dropdown__8f7084b9 > [data-elem=header] > [data-elem=select] {\n  height: 2.375rem;\n  max-height: 100%;\n  width: auto;\n  min-width: -webkit-fit-content;\n  min-width: -moz-fit-content;\n  min-width: fit-content;\n  padding: 0.625rem;\n  background-color: var(--grey);\n  border: none;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_dropdown__8f7084b9 > [data-elem=header] > [data-elem=select] > [data-elem=placeholder] {\n  color: var(--white);\n  font-size: 0.875rem;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_dropdown__8f7084b9 > [data-elem=header] > [data-elem=select] > svg {\n  fill: var(--white);\n  width: 0.813rem;\n  height: 0.813rem;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  gap: 1.25rem;\n  flex: 1 1 100%;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 {\n    flex: 1 1 40%;\n  }\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_button__8f7084b9.Pagination_module_disable__8f7084b9 {\n  pointer-events: none;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_button__8f7084b9 [data-elem=title] {\n  color: var(--white);\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_button__8f7084b9 .Pagination_module_icon__8f7084b9 {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_pageSelect__8f7084b9 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  gap: 0.625rem;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_pageSelect__8f7084b9 .Pagination_module_number__8f7084b9 {\n  cursor: pointer;\n  border-radius: 50%;\n  background-color: #e0e0e0;\n  color: var(--black);\n  width: 2.313rem;\n  line-height: 2.313rem;\n  text-align: center;\n  font-size: 1rem;\n  border: 1px solid transparent;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_pageSelect__8f7084b9 .Pagination_module_number__8f7084b9:not([data-active=true]) {\n  display: none;\n}\n@media (min-width: 768px) {\n  .Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_pageSelect__8f7084b9 .Pagination_module_number__8f7084b9:not([data-active=true]) {\n    display: block;\n  }\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_pageSelect__8f7084b9 .Pagination_module_number__8f7084b9:hover {\n  border: 1px solid var(--highlight);\n  color: var(--highlight);\n  background: var(--background);\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_pageSelect__8f7084b9 .Pagination_module_number__8f7084b9.Pagination_module_active__8f7084b9 {\n  background-color: var(--highlight);\n  color: var(--white);\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 {\n  display: none;\n  padding: 0;\n  flex: 0 1 30%;\n  background: transparent;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 {\n    display: flex;\n    flex-direction: row;\n    justify-content: center;\n    align-items: center;\n  }\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 > [data-elem*=component] {\n  width: 100%;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 > [data-elem*=component] > * {\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 > [data-elem*=component] > form {\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  margin-left: auto;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 {\n  width: 100%;\n  background: transparent;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: stretch;\n  gap: 0rem;\n  padding: 0;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 > [data-elem*=component] {\n  overflow: hidden;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_inputbox__8f7084b9 {\n  max-width: 100%;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_inputbox__8f7084b9 > label {\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_inputbox__8f7084b9 > label > [data-elem=base-cell] {\n  border-radius: 0.313rem;\n  background-color: transparent;\n  color: var(--white);\n  border-color: var(--grey1);\n  border-radius: 0.25rem 0 0 0.25rem;\n  height: 100%;\n  width: 10rem;\n  flex: 1;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_inputbox__8f7084b9 > label > [data-elem=base-cell] .Pagination_module_icon__8f7084b9 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--grey1);\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_inputbox__8f7084b9 > label > [data-elem=base-cell] > [data-elem=component2] {\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_inputbox__8f7084b9 > label > [data-elem=base-cell] [data-elem=input] {\n  text-align: center;\n  color: var(--white);\n  background-color: transparent;\n  border: none;\n  height: 100%;\n  width: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_button__8f7084b9 {\n  border-radius: 0rem 0.25rem 0.25rem 0rem;\n  background-color: var(--grey1);\n  padding: 0.75rem 0.5rem;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_button__8f7084b9 .Pagination_module_icon__8f7084b9 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--white);\n  flex-shrink: 0;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_totalData__8f7084b9 {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  display: none;\n  margin: auto;\n  color: var(--white);\n  flex: 0 1 15%;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__8f7084b9 .Pagination_module_totalData__8f7084b9 {\n    display: inline;\n  }\n}\n.Pagination_module_root__8f7084b9.Pagination_module_noTotalData__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 {\n  flex: 0 1 20%;\n}\n.Pagination_module_root__8f7084b9.Pagination_module_noTotalData__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 {\n  flex: 1 1 60%;\n}\n.Pagination_module_root__8f7084b9.Pagination_module_noTotalData__8f7084b9 .Pagination_module_form__8f7084b9 {\n  flex: 0 1 20%;\n}";
+var css$q = ".Pagination_module_root__8f7084b9 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: stretch;\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n  gap: 0.75rem;\n  padding: 0.625rem 2.125rem;\n  background: var(--dark-grey);\n  margin-top: auto;\n  width: 100%;\n  height: 3.5rem;\n  overflow: auto;\n  transition-property: background-color, color, bottom, width;\n  transition-duration: 0.33s;\n  transition-timing-function: ease-out;\n}\n.Pagination_module_root__8f7084b9::-webkit-scrollbar {\n  display: none;\n}\n.Pagination_module_root__8f7084b9.Pagination_module_floating__8f7084b9 {\n  background: var(--dark-grey-o-85);\n  position: absolute;\n  border-radius: 6.25rem;\n  width: 82%;\n  bottom: 3rem;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9,\n.Pagination_module_root__8f7084b9 .Pagination_module_jumpToPage__8f7084b9,\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 {\n  display: none;\n  flex: 0 1 15%;\n  background-color: transparent;\n  padding: 0;\n  height: 100%;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 {\n    display: flex;\n    flex-direction: row;\n    justify-content: space-between;\n    align-items: center;\n  }\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 > [data-elem=component2] {\n  flex: 0 1 auto;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_rowSwitcherHandle__8f7084b9 {\n  gap: 0.75rem;\n  background-color: var(--grey);\n  padding: 0;\n  border-radius: 0.25rem;\n  height: 100%;\n  width: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_rowSwitcherHandle__8f7084b9 > [data-elem*=component] {\n  overflow: hidden;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_rowSwitcherHandle__8f7084b9 > [data-elem=component2] {\n  display: flex;\n  flex: 0 0 auto;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_rowSwitcherHandle__8f7084b9 > [data-elem=component2]::before {\n  content: \"\";\n  margin: auto;\n  background: var(--white);\n  width: 0.5px;\n  height: 50%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_text__8f7084b9 {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  height: 100%;\n  display: block;\n  padding: 0.5rem;\n  font-size: 0.875rem;\n  font-weight: 500;\n  color: var(--white);\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_dropdown__8f7084b9 {\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_dropdown__8f7084b9 > [data-elem=header] {\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_dropdown__8f7084b9 > [data-elem=header] > [data-elem=select] {\n  height: 2.375rem;\n  max-height: 100%;\n  width: auto;\n  min-width: -webkit-fit-content;\n  min-width: -moz-fit-content;\n  min-width: fit-content;\n  padding: 0.625rem;\n  background-color: var(--grey);\n  border: none;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_dropdown__8f7084b9 > [data-elem=header] > [data-elem=select] > [data-elem=placeholder] {\n  color: var(--white);\n  font-size: 0.875rem;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_dropdown__8f7084b9 > [data-elem=header] > [data-elem=select] > svg {\n  fill: var(--white);\n  width: 0.813rem;\n  height: 0.813rem;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  gap: 1.25rem;\n  flex: 1 1 100%;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 {\n    flex: 1 1 40%;\n  }\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_button__8f7084b9.Pagination_module_disable__8f7084b9 {\n  pointer-events: none;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_button__8f7084b9 [data-elem=title] {\n  color: var(--white);\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_button__8f7084b9 .Pagination_module_icon__8f7084b9 {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_pageSelect__8f7084b9 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  gap: 0.625rem;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_pageSelect__8f7084b9 .Pagination_module_number__8f7084b9 {\n  cursor: pointer;\n  border-radius: 50%;\n  background-color: #e0e0e0;\n  color: var(--black);\n  width: 2.313rem;\n  line-height: 2.313rem;\n  text-align: center;\n  font-size: 1rem;\n  border: 1px solid transparent;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_pageSelect__8f7084b9 .Pagination_module_number__8f7084b9:not([data-active=true]) {\n  display: none;\n}\n@media (min-width: 768px) {\n  .Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_pageSelect__8f7084b9 .Pagination_module_number__8f7084b9:not([data-active=true]) {\n    display: block;\n  }\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_pageSelect__8f7084b9 .Pagination_module_number__8f7084b9:hover {\n  border: 1px solid var(--highlight);\n  color: var(--highlight);\n  background: var(--background);\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_pageSelect__8f7084b9 .Pagination_module_number__8f7084b9.Pagination_module_active__8f7084b9 {\n  background-color: var(--highlight);\n  color: var(--white);\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 {\n  display: none;\n  padding: 0;\n  flex: 0 1 30%;\n  background: transparent;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 {\n    display: flex;\n    flex-direction: row;\n    justify-content: center;\n    align-items: center;\n  }\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 > [data-elem*=component] {\n  width: 100%;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 > [data-elem*=component] > * {\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 > [data-elem*=component] > form {\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  margin-left: auto;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 {\n  width: 100%;\n  background: transparent;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: stretch;\n  gap: 0rem;\n  padding: 0;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 > [data-elem*=component] {\n  overflow: hidden;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_inputbox__8f7084b9 {\n  max-width: 100%;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_inputbox__8f7084b9 > label {\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_inputbox__8f7084b9 > label > [data-elem=base-cell] {\n  border-radius: 0.313rem;\n  background-color: transparent;\n  color: var(--white);\n  border-color: var(--grey1);\n  border-radius: 0.25rem 0 0 0.25rem;\n  height: 100%;\n  width: 10rem;\n  flex: 1;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_inputbox__8f7084b9 > label > [data-elem=base-cell] .Pagination_module_icon__8f7084b9 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--grey1);\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_inputbox__8f7084b9 > label > [data-elem=base-cell] > [data-elem=component2] {\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_inputbox__8f7084b9 > label > [data-elem=base-cell] [data-elem=input] {\n  text-align: center;\n  color: var(--white);\n  background-color: transparent;\n  border: none;\n  height: 100%;\n  width: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_button__8f7084b9 {\n  border-radius: 0rem 0.25rem 0.25rem 0rem;\n  background-color: var(--grey1);\n  padding: 0.75rem 0.5rem;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_button__8f7084b9 .Pagination_module_icon__8f7084b9 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--white);\n  flex-shrink: 0;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_totalData__8f7084b9 {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  display: none;\n  margin: auto;\n  color: var(--white);\n  flex: 0 1 15%;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__8f7084b9 .Pagination_module_totalData__8f7084b9 {\n    display: inline;\n  }\n}\n.Pagination_module_root__8f7084b9.Pagination_module_noTotalData__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 {\n  flex: 0 1 20%;\n}\n.Pagination_module_root__8f7084b9.Pagination_module_noTotalData__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 {\n  flex: 1 1 60%;\n}\n.Pagination_module_root__8f7084b9.Pagination_module_noTotalData__8f7084b9 .Pagination_module_form__8f7084b9 {\n  flex: 0 1 20%;\n}";
 var modules_a3d40e77 = {"root":"Pagination_module_root__8f7084b9","floating":"Pagination_module_floating__8f7084b9","row-switcher":"Pagination_module_rowSwitcher__8f7084b9","jump-to-page":"Pagination_module_jumpToPage__8f7084b9","form":"Pagination_module_form__8f7084b9","row-switcher-handle":"Pagination_module_rowSwitcherHandle__8f7084b9","text":"Pagination_module_text__8f7084b9","dropdown":"Pagination_module_dropdown__8f7084b9","page-numbers":"Pagination_module_pageNumbers__8f7084b9","button":"Pagination_module_button__8f7084b9","disable":"Pagination_module_disable__8f7084b9","icon":"Pagination_module_icon__8f7084b9","pageSelect":"Pagination_module_pageSelect__8f7084b9","number":"Pagination_module_number__8f7084b9","active":"Pagination_module_active__8f7084b9","inputbox":"Pagination_module_inputbox__8f7084b9","total-data":"Pagination_module_totalData__8f7084b9","no-total-data":"Pagination_module_noTotalData__8f7084b9"};
-n(css$p,{});
+n(css$q,{});
 
 var dropdownOptions = ['10', '25', '50', '100', '200', '250'];
 var reducer = function reducer(state, _ref) {
@@ -43700,13 +44363,13 @@ Pagination.defaultProps = {
   onChange: function onChange() {}
 };
 
-var css$o = ".Stepper_module_root__781d3116 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n  gap: 1rem;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n  position: relative;\n  z-index: 1;\n  gap: 0.5rem;\n  flex: 1;\n  cursor: default;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116:last-child {\n  flex: 0 1 auto;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116:last-child .Stepper_module_title__781d3116::after {\n  display: none;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_left__781d3116 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  position: relative;\n  width: 1.5rem;\n  height: 1.5rem;\n  background: var(--white);\n  border: 0.063rem solid var(--grey2);\n  border-radius: 2rem;\n  font-size: 1rem;\n  color: var(--grey2);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_left__781d3116 .Stepper_module_icon__781d3116 {\n  width: 0.75rem;\n  height: 0.75rem;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_left__781d3116 .Stepper_module_icon__781d3116.Stepper_module_errorIcon__781d3116 {\n  fill: var(--error);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_left__781d3116 .Stepper_module_icon__781d3116.Stepper_module_completionIcon__781d3116 {\n  fill: var(--highlight);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_left__781d3116 .Stepper_module_icon__781d3116.Stepper_module_completionIcon__781d3116.Stepper_module_active__781d3116 {\n  fill: var(--white);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_left__781d3116 .Stepper_module_progress__781d3116 {\n  position: absolute;\n  z-index: -1;\n  inset: -0.3rem;\n  border-radius: 2rem;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_left__781d3116 .Stepper_module_progress__781d3116::after {\n  position: absolute;\n  content: \"\";\n  inset: 0.15rem;\n  background: white;\n  border-radius: 2rem;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_right__781d3116 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  flex: 1;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_right__781d3116 .Stepper_module_title__781d3116 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n  gap: 0.75rem;\n  width: 100%;\n  font-size: 1rem;\n  color: var(--grey2);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_right__781d3116 .Stepper_module_title__781d3116::after {\n  content: \"\";\n  flex: 1;\n  min-width: 1.5rem;\n  border-bottom: 0.063rem solid;\n  margin-top: 0.75rem;\n  border-bottom-color: var(--grey2);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_right__781d3116 .Stepper_module_description__781d3116 {\n  font-size: 0.75rem;\n  color: var(--grey2);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_active__781d3116 .Stepper_module_left__781d3116 {\n  background: var(--highlight);\n  color: var(--white);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_active__781d3116 .Stepper_module_left__781d3116, .Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_completed__781d3116 .Stepper_module_left__781d3116 {\n  border-color: var(--highlight);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_active__781d3116 .Stepper_module_right__781d3116 .Stepper_module_title__781d3116, .Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_completed__781d3116 .Stepper_module_right__781d3116 .Stepper_module_title__781d3116 {\n  color: var(--black);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_active__781d3116 .Stepper_module_right__781d3116 .Stepper_module_description__781d3116, .Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_completed__781d3116 .Stepper_module_right__781d3116 .Stepper_module_description__781d3116 {\n  color: var(--grey);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_completed__781d3116 .Stepper_module_right__781d3116 .Stepper_module_title__781d3116::after {\n  border-bottom-color: var(--highlight);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_error__781d3116 .Stepper_module_left__781d3116 {\n  background: var(--white);\n  border-color: var(--error);\n  color: var(--error);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_error__781d3116 .Stepper_module_right__781d3116 .Stepper_module_title__781d3116 {\n  color: var(--error);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_error__781d3116 .Stepper_module_right__781d3116 .Stepper_module_description__781d3116 {\n  color: rgba(var(--error), 0.6);\n}";
+var css$p = ".Stepper_module_root__781d3116 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n  gap: 1rem;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n  position: relative;\n  z-index: 1;\n  gap: 0.5rem;\n  flex: 1;\n  cursor: default;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116:last-child {\n  flex: 0 1 auto;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116:last-child .Stepper_module_title__781d3116::after {\n  display: none;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_left__781d3116 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  position: relative;\n  width: 1.5rem;\n  height: 1.5rem;\n  background: var(--white);\n  border: 0.063rem solid var(--grey2);\n  border-radius: 2rem;\n  font-size: 1rem;\n  color: var(--grey2);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_left__781d3116 .Stepper_module_icon__781d3116 {\n  width: 0.75rem;\n  height: 0.75rem;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_left__781d3116 .Stepper_module_icon__781d3116.Stepper_module_errorIcon__781d3116 {\n  fill: var(--error);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_left__781d3116 .Stepper_module_icon__781d3116.Stepper_module_completionIcon__781d3116 {\n  fill: var(--highlight);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_left__781d3116 .Stepper_module_icon__781d3116.Stepper_module_completionIcon__781d3116.Stepper_module_active__781d3116 {\n  fill: var(--white);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_left__781d3116 .Stepper_module_progress__781d3116 {\n  position: absolute;\n  z-index: -1;\n  inset: -0.3rem;\n  border-radius: 2rem;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_left__781d3116 .Stepper_module_progress__781d3116::after {\n  position: absolute;\n  content: \"\";\n  inset: 0.15rem;\n  background: white;\n  border-radius: 2rem;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_right__781d3116 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  flex: 1;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_right__781d3116 .Stepper_module_title__781d3116 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n  gap: 0.75rem;\n  width: 100%;\n  font-size: 1rem;\n  color: var(--grey2);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_right__781d3116 .Stepper_module_title__781d3116::after {\n  content: \"\";\n  flex: 1;\n  min-width: 1.5rem;\n  border-bottom: 0.063rem solid;\n  margin-top: 0.75rem;\n  border-bottom-color: var(--grey2);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_right__781d3116 .Stepper_module_description__781d3116 {\n  font-size: 0.75rem;\n  color: var(--grey2);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_active__781d3116 .Stepper_module_left__781d3116 {\n  background: var(--highlight);\n  color: var(--white);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_active__781d3116 .Stepper_module_left__781d3116, .Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_completed__781d3116 .Stepper_module_left__781d3116 {\n  border-color: var(--highlight);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_active__781d3116 .Stepper_module_right__781d3116 .Stepper_module_title__781d3116, .Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_completed__781d3116 .Stepper_module_right__781d3116 .Stepper_module_title__781d3116 {\n  color: var(--black);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_active__781d3116 .Stepper_module_right__781d3116 .Stepper_module_description__781d3116, .Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_completed__781d3116 .Stepper_module_right__781d3116 .Stepper_module_description__781d3116 {\n  color: var(--grey);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_completed__781d3116 .Stepper_module_right__781d3116 .Stepper_module_title__781d3116::after {\n  border-bottom-color: var(--highlight);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_error__781d3116 .Stepper_module_left__781d3116 {\n  background: var(--white);\n  border-color: var(--error);\n  color: var(--error);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_error__781d3116 .Stepper_module_right__781d3116 .Stepper_module_title__781d3116 {\n  color: var(--error);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_error__781d3116 .Stepper_module_right__781d3116 .Stepper_module_description__781d3116 {\n  color: rgba(var(--error), 0.6);\n}";
 var modules_bbfded44 = {"root":"Stepper_module_root__781d3116","step":"Stepper_module_step__781d3116","title":"Stepper_module_title__781d3116","left":"Stepper_module_left__781d3116","icon":"Stepper_module_icon__781d3116","error-icon":"Stepper_module_errorIcon__781d3116","completion-icon":"Stepper_module_completionIcon__781d3116","active":"Stepper_module_active__781d3116","progress":"Stepper_module_progress__781d3116","right":"Stepper_module_right__781d3116","description":"Stepper_module_description__781d3116","completed":"Stepper_module_completed__781d3116","error":"Stepper_module_error__781d3116"};
-n(css$o,{});
+n(css$p,{});
 
-var css$n = ":root {\n  --white: #ffffff;\n  --black: #000000;\n  --dark-grey: #333333;\n  --dark-grey-o-85: rgba(51, 51, 51, 0.85);\n  --grey: #737373;\n  --grey1: #888888;\n  --grey2: #a6a6a6;\n  --grey3: #bbbbbb;\n  --grey4: #c4c4c4;\n  --grey5: #dddddd;\n  --grey6: #e8e8e8;\n  --grey7: #eeeeee;\n  --grey8: #f2f2f2;\n  --grey9: #eff0f0;\n  --grey10: #f7f7f7;\n  --highlight: #0f62fe;\n  --dark-blue: #001833;\n  --background: #d0e2ff;\n  --banyan-blue: #00037c;\n  --banyan-orange: #ff892a;\n  --banyan-pink: #ff1597;\n  --banyan-gradient: linear-gradient(\n  \t84.71deg,\n  \tvar(--banyan-pink) 0.48%,\n  \tvar(--banyan-orange) 99.57%\n  );\n  --error: #da1e28;\n  --error-bg: #fff1f1;\n  --error-outline: rgba(218, 30, 40, 0.08);\n  --success: #24a148;\n  --success-bg: #defbe6;\n  --success-outline: rgba(36, 161, 72, 0.08);\n  --warning: #f1c21b;\n  --warning-bg: #fff8e1;\n  --warning-outline: rgba(203, 160, 6, 0.08);\n  --info: #0043ce;\n  --info-bg: #edf5ff;\n  --info-outline: #2864db98;\n}";
+var css$o = ":root {\n  --white: #ffffff;\n  --black: #000000;\n  --dark-grey: #333333;\n  --dark-grey-o-85: rgba(51, 51, 51, 0.85);\n  --grey: #737373;\n  --grey1: #888888;\n  --grey2: #a6a6a6;\n  --grey3: #bbbbbb;\n  --grey4: #c4c4c4;\n  --grey5: #dddddd;\n  --grey6: #e8e8e8;\n  --grey7: #eeeeee;\n  --grey8: #f2f2f2;\n  --grey9: #eff0f0;\n  --grey10: #f7f7f7;\n  --highlight: #0f62fe;\n  --dark-blue: #001833;\n  --background: #d0e2ff;\n  --banyan-blue: #00037c;\n  --banyan-orange: #ff892a;\n  --banyan-pink: #ff1597;\n  --banyan-gradient: linear-gradient(\n  \t84.71deg,\n  \tvar(--banyan-pink) 0.48%,\n  \tvar(--banyan-orange) 99.57%\n  );\n  --error: #da1e28;\n  --error-bg: #fff1f1;\n  --error-outline: rgba(218, 30, 40, 0.08);\n  --success: #24a148;\n  --success-bg: #defbe6;\n  --success-outline: rgba(36, 161, 72, 0.08);\n  --warning: #f1c21b;\n  --warning-bg: #fff8e1;\n  --warning-outline: rgba(203, 160, 6, 0.08);\n  --info: #0043ce;\n  --info-bg: #edf5ff;\n  --info-outline: #2864db98;\n}";
 var modules_dd21d9e9 = {"white":"--white","black":"--black","dark-grey":"--dark-grey","dark-grey-o-85":"--dark-grey-o-85","grey":"--grey","grey1":"--grey1","grey2":"--grey2","grey3":"--grey3","grey4":"--grey4","grey5":"--grey5","grey6":"--grey6","grey7":"--grey7","grey8":"--grey8","grey9":"--grey9","grey10":"--grey10","highlight":"--highlight","dark-blue":"--dark-blue","background":"--background","banyan-blue":"--banyan-blue","banyan-orange":"--banyan-orange","banyan-pink":"--banyan-pink","banyan-gradient":"--banyan-gradient","error":"--error","error-bg":"--error-bg","error-outline":"--error-outline","success":"--success","success-bg":"--success-bg","success-outline":"--success-outline","warning":"--warning","warning-bg":"--warning-bg","warning-outline":"--warning-outline","info":"--info","info-bg":"--info-bg","info-outline":"--info-outline"};
-n(css$n,{});
+n(css$o,{});
 
 var COLORS = Object.keys(modules_dd21d9e9).reduce(function (acc, curr) {
   acc[curr] = getCSSVariableValue(modules_dd21d9e9[curr]);
@@ -43818,9 +44481,9 @@ var TableColumn = /*#__PURE__*/_createClass(function TableColumn(_ref) {
   this.sticky = sticky;
 });
 
-var css$m = ".TableCell_module_root__ff5c86cb[data-elem=base-cell] {\n  background: var(--white);\n  border-bottom: 1px solid var(--grey4);\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell] > [data-elem*=component] {\n  overflow: hidden;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell] > [data-elem*=component] {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  flex: 1;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell] > [data-elem*=component] .TableCell_module_cellText__ff5c86cb {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  display: inline-block;\n  width: 100%;\n  font-size: 0.875rem;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb {\n  background: var(--grey6);\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb .TableCell_module_cellText__ff5c86cb {\n  font-weight: 500;\n  color: var(--grey);\n  font-size: 0.75rem;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb > [data-elem=component2] {\n  flex: 0 0 auto;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb > [data-elem=component2] .TableCell_module_cellText__ff5c86cb {\n  width: auto;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb > [data-elem=component3] {\n  flex: 0 0 auto;\n  margin-right: auto;\n  overflow: visible;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb > [data-elem=component3] button.TableCell_module_sort__ff5c86cb {\n  height: auto;\n  background: transparent;\n  padding: 0;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb > [data-elem=component3] .TableCell_module_sortIcon__ff5c86cb {\n  width: 1rem;\n  height: 1rem;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb.TableCell_module_sortDefault__ff5c86cb > [data-elem=component3] {\n  visibility: hidden;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb.TableCell_module_sortDefault__ff5c86cb > [data-elem=component3] .TableCell_module_sortIcon__ff5c86cb {\n  width: 1rem;\n  height: 1rem;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb.TableCell_module_sortAsc__ff5c86cb > [data-elem=component3], .TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb.TableCell_module_sortDesc__ff5c86cb > [data-elem=component3] {\n  visibility: visible;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb.TableCell_module_sortAsc__ff5c86cb > [data-elem=component3] .TableCell_module_sortIcon__ff5c86cb, .TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb.TableCell_module_sortDesc__ff5c86cb > [data-elem=component3] .TableCell_module_sortIcon__ff5c86cb {\n  fill: var(--highlight);\n  width: 1rem;\n  height: 1rem;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb:hover > [data-elem=component3] {\n  visibility: visible;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_bodyCell__ff5c86cb .TableCell_module_cellText__ff5c86cb.TableCell_module_multiLine__ff5c86cb {\n  white-space: normal;\n  display: -webkit-box;\n  -webkit-box-orient: vertical;\n  -webkit-line-clamp: 2;\n  font-size: 0.75rem;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_stickyLeft__ff5c86cb {\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n  position: -webkit-sticky;\n  position: sticky;\n  left: 0;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_stickyRight__ff5c86cb {\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n  position: -webkit-sticky;\n  position: sticky;\n  right: 0;\n}";
+var css$n = ".TableCell_module_root__ff5c86cb[data-elem=base-cell] {\n  background: var(--white);\n  border-bottom: 1px solid var(--grey4);\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell] > [data-elem*=component] {\n  overflow: hidden;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell] > [data-elem*=component] {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  flex: 1;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell] > [data-elem*=component] .TableCell_module_cellText__ff5c86cb {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  display: inline-block;\n  width: 100%;\n  font-size: 0.875rem;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb {\n  background: var(--grey6);\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb .TableCell_module_cellText__ff5c86cb {\n  font-weight: 500;\n  color: var(--grey);\n  font-size: 0.75rem;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb > [data-elem=component2] {\n  flex: 0 0 auto;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb > [data-elem=component2] .TableCell_module_cellText__ff5c86cb {\n  width: auto;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb > [data-elem=component3] {\n  flex: 0 0 auto;\n  margin-right: auto;\n  overflow: visible;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb > [data-elem=component3] button.TableCell_module_sort__ff5c86cb {\n  height: auto;\n  background: transparent;\n  padding: 0;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb > [data-elem=component3] .TableCell_module_sortIcon__ff5c86cb {\n  width: 1rem;\n  height: 1rem;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb.TableCell_module_sortDefault__ff5c86cb > [data-elem=component3] {\n  visibility: hidden;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb.TableCell_module_sortDefault__ff5c86cb > [data-elem=component3] .TableCell_module_sortIcon__ff5c86cb {\n  width: 1rem;\n  height: 1rem;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb.TableCell_module_sortAsc__ff5c86cb > [data-elem=component3], .TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb.TableCell_module_sortDesc__ff5c86cb > [data-elem=component3] {\n  visibility: visible;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb.TableCell_module_sortAsc__ff5c86cb > [data-elem=component3] .TableCell_module_sortIcon__ff5c86cb, .TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb.TableCell_module_sortDesc__ff5c86cb > [data-elem=component3] .TableCell_module_sortIcon__ff5c86cb {\n  fill: var(--highlight);\n  width: 1rem;\n  height: 1rem;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb:hover > [data-elem=component3] {\n  visibility: visible;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_bodyCell__ff5c86cb .TableCell_module_cellText__ff5c86cb.TableCell_module_multiLine__ff5c86cb {\n  white-space: normal;\n  display: -webkit-box;\n  -webkit-box-orient: vertical;\n  -webkit-line-clamp: 2;\n  font-size: 0.75rem;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_stickyLeft__ff5c86cb {\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n  position: -webkit-sticky;\n  position: sticky;\n  left: 0;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_stickyRight__ff5c86cb {\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n  position: -webkit-sticky;\n  position: sticky;\n  right: 0;\n}";
 var modules_7ba8d001 = {"root":"TableCell_module_root__ff5c86cb","cell-text":"TableCell_module_cellText__ff5c86cb","header-cell":"TableCell_module_headerCell__ff5c86cb","sortable":"TableCell_module_sortable__ff5c86cb","sort":"TableCell_module_sort__ff5c86cb","sort-icon":"TableCell_module_sortIcon__ff5c86cb","sort-default":"TableCell_module_sortDefault__ff5c86cb","sort-asc":"TableCell_module_sortAsc__ff5c86cb","sort-desc":"TableCell_module_sortDesc__ff5c86cb","body-cell":"TableCell_module_bodyCell__ff5c86cb","multi-line":"TableCell_module_multiLine__ff5c86cb","sticky-left":"TableCell_module_stickyLeft__ff5c86cb","sticky-right":"TableCell_module_stickyRight__ff5c86cb"};
-n(css$m,{});
+n(css$n,{});
 
 var SORT_ICONS = {
   asc: /*#__PURE__*/jsxRuntime.jsx(Sort, {
@@ -43919,9 +44582,9 @@ TableCell.defaultProps = _objectSpread2(_objectSpread2({}, BaseCell.defaultProps
   onSort: function onSort() {}
 });
 
-var css$l = ".TableRow_module_root__a0ba90a7 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.TableRow_module_root__a0ba90a7.TableRow_module_headerRow__a0ba90a7 {\n  background: var(--grey6);\n}\n.TableRow_module_root__a0ba90a7.TableRow_module_headerRow__a0ba90a7.TableRow_module_expandable__a0ba90a7 > [data-elem=base-cell]:first-child {\n  padding-left: 4.5rem;\n}\n.TableRow_module_root__a0ba90a7.TableRow_module_bodyRow__a0ba90a7 {\n  background: var(--white);\n}\n.TableRow_module_root__a0ba90a7.TableRow_module_bodyRow__a0ba90a7:hover > [data-elem=base-cell] {\n  background: var(--info-bg);\n}\n.TableRow_module_root__a0ba90a7.TableRow_module_bodyRow__a0ba90a7[data-active=true] > [data-elem=base-cell] {\n  background: var(--background);\n}\n.TableRow_module_root__a0ba90a7 > [data-elem=base-cell]:first-child {\n  padding-left: 1rem;\n}\n.TableRow_module_root__a0ba90a7 > [data-elem=base-cell]:last-child {\n  padding-right: 1rem;\n}\n.TableRow_module_root__a0ba90a7 > [data-elem=base-cell].TableRow_module_expandableCell__a0ba90a7 {\n  padding-left: 0.9rem;\n  padding-right: 0.1rem;\n  overflow: visible;\n}\n.TableRow_module_root__a0ba90a7 > [data-elem=base-cell].TableRow_module_expandableCell__a0ba90a7 > [data-elem=component2] {\n  overflow: visible;\n}\n.TableRow_module_root__a0ba90a7 > [data-elem=base-cell].TableRow_module_expandableCell__a0ba90a7 > [data-elem=component2] > [data-elem=text] {\n  overflow: visible;\n}\n.TableRow_module_root__a0ba90a7 .TableRow_module_button__a0ba90a7 .TableRow_module_icon__a0ba90a7 {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.TableRow_module_root__a0ba90a7 .TableRow_module_expanded__a0ba90a7 .TableRow_module_button__a0ba90a7 .TableRow_module_icon__a0ba90a7 {\n  transform: rotate(180deg);\n}";
+var css$m = ".TableRow_module_root__a0ba90a7 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.TableRow_module_root__a0ba90a7.TableRow_module_headerRow__a0ba90a7 {\n  background: var(--grey6);\n}\n.TableRow_module_root__a0ba90a7.TableRow_module_headerRow__a0ba90a7.TableRow_module_expandable__a0ba90a7 > [data-elem=base-cell]:first-child {\n  padding-left: 4.5rem;\n}\n.TableRow_module_root__a0ba90a7.TableRow_module_bodyRow__a0ba90a7 {\n  background: var(--white);\n}\n.TableRow_module_root__a0ba90a7.TableRow_module_bodyRow__a0ba90a7:hover > [data-elem=base-cell] {\n  background: var(--info-bg);\n}\n.TableRow_module_root__a0ba90a7.TableRow_module_bodyRow__a0ba90a7[data-active=true] > [data-elem=base-cell] {\n  background: var(--background);\n}\n.TableRow_module_root__a0ba90a7 > [data-elem=base-cell]:first-child {\n  padding-left: 1rem;\n}\n.TableRow_module_root__a0ba90a7 > [data-elem=base-cell]:last-child {\n  padding-right: 1rem;\n}\n.TableRow_module_root__a0ba90a7 > [data-elem=base-cell].TableRow_module_expandableCell__a0ba90a7 {\n  padding-left: 0.9rem;\n  padding-right: 0.1rem;\n  overflow: visible;\n}\n.TableRow_module_root__a0ba90a7 > [data-elem=base-cell].TableRow_module_expandableCell__a0ba90a7 > [data-elem=component2] {\n  overflow: visible;\n}\n.TableRow_module_root__a0ba90a7 > [data-elem=base-cell].TableRow_module_expandableCell__a0ba90a7 > [data-elem=component2] > [data-elem=text] {\n  overflow: visible;\n}\n.TableRow_module_root__a0ba90a7 .TableRow_module_button__a0ba90a7 .TableRow_module_icon__a0ba90a7 {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.TableRow_module_root__a0ba90a7 .TableRow_module_expanded__a0ba90a7 .TableRow_module_button__a0ba90a7 .TableRow_module_icon__a0ba90a7 {\n  transform: rotate(180deg);\n}";
 var modules_f6618a87 = {"root":"TableRow_module_root__a0ba90a7","header-row":"TableRow_module_headerRow__a0ba90a7","expandable":"TableRow_module_expandable__a0ba90a7","body-row":"TableRow_module_bodyRow__a0ba90a7","expandable-cell":"TableRow_module_expandableCell__a0ba90a7","button":"TableRow_module_button__a0ba90a7","icon":"TableRow_module_icon__a0ba90a7","expanded":"TableRow_module_expanded__a0ba90a7"};
-n(css$l,{});
+n(css$m,{});
 
 var TableRow = /*#__PURE__*/React.forwardRef(function BaseTable(props, ref) {
   var _headerData$map;
@@ -44036,9 +44699,9 @@ TableRow.defaultProps = {
   onSort: function onSort() {}
 };
 
-var css$k = ".TableBody_module_root__77e2990d {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n}";
+var css$l = ".TableBody_module_root__77e2990d {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n}";
 var modules_82c0c387 = {"root":"TableBody_module_root__77e2990d"};
-n(css$k,{});
+n(css$l,{});
 
 /* eslint-disable no-underscore-dangle */
 var TableBody = function TableBody(props) {
@@ -44108,9 +44771,9 @@ TableBody.defaultProps = {
   expandable: null
 };
 
-var css$j = ".TableHeader_module_root__daf69a14 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n}";
+var css$k = ".TableHeader_module_root__daf69a14 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n}";
 var modules_3be98c28 = {"root":"TableHeader_module_root__daf69a14"};
-n(css$j,{});
+n(css$k,{});
 
 /* eslint-disable react/forbid-prop-types */
 var TableHeader = function TableHeader(props) {
@@ -44157,13 +44820,13 @@ TableHeader.defaultProps = {
   onSort: function onSort() {}
 };
 
-var css$i = ".BaseTable_module_root__7a8d241c {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  background: var(--white);\n  overflow: auto;\n}";
+var css$j = ".BaseTable_module_root__7a8d241c {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  background: var(--white);\n  overflow: auto;\n}";
 var modules_f1817c60 = {"root":"BaseTable_module_root__7a8d241c"};
-n(css$i,{});
+n(css$j,{});
 
-var css$h = ".Skeleton_module_root__4aec4b28 {\n  width: 100%;\n  height: 100%;\n  background: var(--grey6);\n  background-image: linear-gradient(to right, var(--grey6) 0%, var(--grey8) 20%, var(--grey6) 40%, var(--grey6) 100%);\n  background-repeat: no-repeat;\n  background-size: cover;\n  display: inline-block;\n  -webkit-animation-duration: 1.25s;\n          animation-duration: 1.25s;\n  animation-fill-mode: forwards;\n  animation-iteration-count: infinite;\n  animation-name: Skeleton_module_shimmer__4aec4b28;\n  animation-timing-function: linear;\n  animation-fill-mode: forwards;\n  animation-iteration-count: infinite;\n  animation-name: Skeleton_module_shimmer__4aec4b28;\n  animation-timing-function: linear;\n  -webkit-animation-fill-mode: forwards;\n  -webkit-animation-iteration-count: infinite;\n  -webkit-animation-name: Skeleton_module_shimmer__4aec4b28;\n  -webkit-animation-timing-function: linear;\n  -webkit-animation-fill-mode: forwards;\n  -webkit-animation-iteration-count: infinite;\n  -webkit-animation-name: Skeleton_module_shimmer__4aec4b28;\n  -webkit-animation-timing-function: linear;\n}\n.Skeleton_module_root__4aec4b28.Skeleton_module_text__4aec4b28 {\n  height: 1.5rem;\n}\n.Skeleton_module_root__4aec4b28.Skeleton_module_circle__4aec4b28 {\n  border-radius: 1.5rem;\n}\n.Skeleton_module_root__4aec4b28.Skeleton_module_rounded__4aec4b28 {\n  border-radius: 0.25rem;\n}\n\n@keyframes Skeleton_module_shimmer__4aec4b28 {\n  0% {\n    background-position: -50rem 0;\n  }\n  100% {\n    background-position: 50rem 0;\n  }\n}\n@-webkit-keyframes Skeleton_module_shimmer__4aec4b28 {\n  0% {\n    background-position: -50rem 0;\n  }\n  100% {\n    background-position: 50rem 0;\n  }\n}";
+var css$i = ".Skeleton_module_root__4aec4b28 {\n  width: 100%;\n  height: 100%;\n  background: var(--grey6);\n  background-image: linear-gradient(to right, var(--grey6) 0%, var(--grey8) 20%, var(--grey6) 40%, var(--grey6) 100%);\n  background-repeat: no-repeat;\n  background-size: cover;\n  display: inline-block;\n  -webkit-animation-duration: 1.25s;\n          animation-duration: 1.25s;\n  animation-fill-mode: forwards;\n  animation-iteration-count: infinite;\n  animation-name: Skeleton_module_shimmer__4aec4b28;\n  animation-timing-function: linear;\n  animation-fill-mode: forwards;\n  animation-iteration-count: infinite;\n  animation-name: Skeleton_module_shimmer__4aec4b28;\n  animation-timing-function: linear;\n  -webkit-animation-fill-mode: forwards;\n  -webkit-animation-iteration-count: infinite;\n  -webkit-animation-name: Skeleton_module_shimmer__4aec4b28;\n  -webkit-animation-timing-function: linear;\n  -webkit-animation-fill-mode: forwards;\n  -webkit-animation-iteration-count: infinite;\n  -webkit-animation-name: Skeleton_module_shimmer__4aec4b28;\n  -webkit-animation-timing-function: linear;\n}\n.Skeleton_module_root__4aec4b28.Skeleton_module_text__4aec4b28 {\n  height: 1.5rem;\n}\n.Skeleton_module_root__4aec4b28.Skeleton_module_circle__4aec4b28 {\n  border-radius: 1.5rem;\n}\n.Skeleton_module_root__4aec4b28.Skeleton_module_rounded__4aec4b28 {\n  border-radius: 0.25rem;\n}\n\n@keyframes Skeleton_module_shimmer__4aec4b28 {\n  0% {\n    background-position: -50rem 0;\n  }\n  100% {\n    background-position: 50rem 0;\n  }\n}\n@-webkit-keyframes Skeleton_module_shimmer__4aec4b28 {\n  0% {\n    background-position: -50rem 0;\n  }\n  100% {\n    background-position: 50rem 0;\n  }\n}";
 var modules_37a5ff73$3 = {"root":"Skeleton_module_root__4aec4b28","shimmer":"Skeleton_module_shimmer__4aec4b28","text":"Skeleton_module_text__4aec4b28","circle":"Skeleton_module_circle__4aec4b28","rounded":"Skeleton_module_rounded__4aec4b28"};
-n(css$h,{});
+n(css$i,{});
 
 var Skeleton = function Skeleton(props) {
   var height = props.height,
@@ -44192,9 +44855,9 @@ Skeleton.defaultProps = {
   variant: 'text'
 };
 
-var css$g = ".Skeleton_module_row__f53f20f3 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  gap: 1rem;\n  margin-bottom: 1rem;\n  padding: 0rem 0.5rem;\n}\n.Skeleton_module_row__f53f20f3.Skeleton_module_header__f53f20f3 {\n  height: 2rem;\n  background: var(--grey4);\n  border-radius: 0.25rem;\n}\n.Skeleton_module_row__f53f20f3.Skeleton_module_header__f53f20f3 .Skeleton_module_th__f53f20f3 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.Skeleton_module_row__f53f20f3.Skeleton_module_header__f53f20f3 .Skeleton_module_th__f53f20f3 .Skeleton_module_skeleton__f53f20f3 {\n  background: var(--grey8);\n}\n.Skeleton_module_row__f53f20f3 > .Skeleton_module_column__f53f20f3 {\n  width: 100%;\n}\n.Skeleton_module_row__f53f20f3 > .Skeleton_module_column__f53f20f3 .Skeleton_module_skeleton__f53f20f3 {\n  height: 1.5rem;\n}";
+var css$h = ".Skeleton_module_row__f53f20f3 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  gap: 1rem;\n  margin-bottom: 1rem;\n  padding: 0rem 0.5rem;\n}\n.Skeleton_module_row__f53f20f3.Skeleton_module_header__f53f20f3 {\n  height: 2rem;\n  background: var(--grey4);\n  border-radius: 0.25rem;\n}\n.Skeleton_module_row__f53f20f3.Skeleton_module_header__f53f20f3 .Skeleton_module_th__f53f20f3 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.Skeleton_module_row__f53f20f3.Skeleton_module_header__f53f20f3 .Skeleton_module_th__f53f20f3 .Skeleton_module_skeleton__f53f20f3 {\n  background: var(--grey8);\n}\n.Skeleton_module_row__f53f20f3 > .Skeleton_module_column__f53f20f3 {\n  width: 100%;\n}\n.Skeleton_module_row__f53f20f3 > .Skeleton_module_column__f53f20f3 .Skeleton_module_skeleton__f53f20f3 {\n  height: 1.5rem;\n}";
 var modules_37a5ff73$2 = {"row":"Skeleton_module_row__f53f20f3","header":"Skeleton_module_header__f53f20f3","th":"Skeleton_module_th__f53f20f3","skeleton":"Skeleton_module_skeleton__f53f20f3","column":"Skeleton_module_column__f53f20f3"};
-n(css$g,{});
+n(css$h,{});
 
 var COLUMNS = _toConsumableArray$1(Array(4).keys()).map(function () {
   return Math.floor(Math.random() * 80 + 20);
@@ -44284,9 +44947,9 @@ BaseTable.defaultProps = {
   onSort: function onSort() {}
 };
 
-var css$f = ".Skeleton_module_root__15c10a9b[data-elem=base-cell] {\n  align-items: flex-start;\n  width: 100%;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component1] {\n  width: auto;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component1] > [data-elem=skeleton] {\n  height: 1.5rem;\n  width: 1.5rem !important;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component2] {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 1rem;\n  flex: 8;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component2] > [data-elem=skeleton] {\n  max-width: 9rem;\n  height: 1.5rem;\n}";
+var css$g = ".Skeleton_module_root__15c10a9b[data-elem=base-cell] {\n  align-items: flex-start;\n  width: 100%;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component1] {\n  width: auto;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component1] > [data-elem=skeleton] {\n  height: 1.5rem;\n  width: 1.5rem !important;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component2] {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 1rem;\n  flex: 8;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component2] > [data-elem=skeleton] {\n  max-width: 9rem;\n  height: 1.5rem;\n}";
 var modules_37a5ff73$1 = {"root":"Skeleton_module_root__15c10a9b"};
-n(css$f,{});
+n(css$g,{});
 
 var CHIPS = _toConsumableArray$1(Array(5).keys());
 var TableChipsSkeleton = function TableChipsSkeleton() {
@@ -44304,9 +44967,9 @@ var TableChipsSkeleton = function TableChipsSkeleton() {
   });
 };
 
-var css$e = ".TableChips_module_root__ecaf76f3[data-elem=base-cell] {\n  padding: 0.5rem 1.5rem;\n  width: 100%;\n  background: var(--grey6);\n  border-radius: 0.25rem 0.25rem 0 0;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component1] .TableChips_module_back__ecaf76f3 {\n  height: 2rem;\n  width: 2rem;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component1] .TableChips_module_back__ecaf76f3 [data-elem=component1] .TableChips_module_icon__ecaf76f3 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--white);\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] {\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  height: 100%;\n  gap: 0.5rem;\n  overflow: auto hidden;\n  flex: 1;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2]::-webkit-scrollbar {\n  display: none;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 {\n  background: var(--grey8);\n  border: 1px solid var(--grey4);\n  padding: 0.344rem 0.25rem;\n  height: 100%;\n  cursor: default;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 .TableChips_module_chipIcon__ecaf76f3 {\n  width: 1rem;\n  height: 1rem;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 > [data-elem=component2] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  gap: 0.25rem;\n  height: 100%;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3 {\n  height: 100%;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3:not(:disabled) {\n  cursor: pointer;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3:disabled {\n  cursor: default;\n  color: var(--info);\n  border-color: var(--info-outline);\n  background: var(--info-bg);\n  filter: none;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3 > [data-elem=component2] > [data-elem=title] {\n  color: var(--dark-grey);\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3 .TableChips_module_icon__ecaf76f3 {\n  width: 0.875rem;\n  height: 0.875rem;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 > [data-elem=component3] {\n  height: 100%;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3:hover {\n  border-color: var(--highlight);\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3:hover > [data-elem=component2] .TableChips_module_label__ecaf76f3 {\n  color: var(--highlight);\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3:hover > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3 {\n  background: var(--background);\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3:hover > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3 > [data-elem=component2] > [data-elem=title] {\n  color: var(--highlight);\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3:hover > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3 .TableChips_module_icon__ecaf76f3 {\n  width: 0.875rem;\n  height: 0.875rem;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component3] {\n  height: 100%;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component3] .TableChips_module_clear__ecaf76f3 {\n  height: 100%;\n}";
+var css$f = ".TableChips_module_root__ecaf76f3[data-elem=base-cell] {\n  padding: 0.5rem 1.5rem;\n  width: 100%;\n  background: var(--grey6);\n  border-radius: 0.25rem 0.25rem 0 0;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component1] .TableChips_module_back__ecaf76f3 {\n  height: 2rem;\n  width: 2rem;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component1] .TableChips_module_back__ecaf76f3 [data-elem=component1] .TableChips_module_icon__ecaf76f3 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--white);\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] {\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  height: 100%;\n  gap: 0.5rem;\n  overflow: auto hidden;\n  flex: 1;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2]::-webkit-scrollbar {\n  display: none;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 {\n  background: var(--grey8);\n  border: 1px solid var(--grey4);\n  padding: 0.344rem 0.25rem;\n  height: 100%;\n  cursor: default;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 .TableChips_module_chipIcon__ecaf76f3 {\n  width: 1rem;\n  height: 1rem;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 > [data-elem=component2] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  gap: 0.25rem;\n  height: 100%;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3 {\n  height: 100%;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3:not(:disabled) {\n  cursor: pointer;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3:disabled {\n  cursor: default;\n  color: var(--info);\n  border-color: var(--info-outline);\n  background: var(--info-bg);\n  filter: none;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3 > [data-elem=component2] > [data-elem=title] {\n  color: var(--dark-grey);\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3 .TableChips_module_icon__ecaf76f3 {\n  width: 0.875rem;\n  height: 0.875rem;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 > [data-elem=component3] {\n  height: 100%;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3:hover {\n  border-color: var(--highlight);\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3:hover > [data-elem=component2] .TableChips_module_label__ecaf76f3 {\n  color: var(--highlight);\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3:hover > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3 {\n  background: var(--background);\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3:hover > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3 > [data-elem=component2] > [data-elem=title] {\n  color: var(--highlight);\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3:hover > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3 .TableChips_module_icon__ecaf76f3 {\n  width: 0.875rem;\n  height: 0.875rem;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component3] {\n  height: 100%;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component3] .TableChips_module_clear__ecaf76f3 {\n  height: 100%;\n}";
 var modules_016d9b3e = {"root":"TableChips_module_root__ecaf76f3","back":"TableChips_module_back__ecaf76f3","icon":"TableChips_module_icon__ecaf76f3","chip-parent":"TableChips_module_chipParent__ecaf76f3","chip-icon":"TableChips_module_chipIcon__ecaf76f3","chip-child":"TableChips_module_chipChild__ecaf76f3","label":"TableChips_module_label__ecaf76f3","clear":"TableChips_module_clear__ecaf76f3"};
-n(css$e,{});
+n(css$f,{});
 
 var TableChip$1 = function TableChip(props) {
   var icon = props.icon,
@@ -44477,9 +45140,9 @@ var TableChip = /*#__PURE__*/_createClass(function TableChip(_ref) {
   this.rightComponent = rightComponent;
 });
 
-var css$d = ".Popover_module_root__265e51dc {\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n  background-color: var(--white);\n  padding: 1rem;\n  border-radius: 0.25rem;\n}";
+var css$e = ".Popover_module_root__265e51dc {\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n  background-color: var(--white);\n  padding: 1rem;\n  border-radius: 0.25rem;\n}";
 var modules_dfc4608f = {"root":"Popover_module_root__265e51dc"};
-n(css$d,{});
+n(css$e,{});
 
 var Popover = function Popover(props) {
   var children = props.children,
@@ -44555,9 +45218,9 @@ Popover.defaultProps = {
   onClose: function onClose() {}
 };
 
-var css$c = ".Columns_module_popover__078e5868 {\n  height: 32rem;\n  padding: 0;\n  overflow: hidden;\n}\n\n.Columns_module_root__078e5868 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  position: relative;\n  height: 100%;\n  min-width: 18rem;\n  max-width: 100%;\n}\n.Columns_module_root__078e5868 .Columns_module_header__078e5868 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  border-bottom: 1px solid var(--grey4);\n  padding: 0.75rem 2.5rem;\n}\n.Columns_module_root__078e5868 .Columns_module_header__078e5868 > [data-elem=component1] {\n  font-weight: 500;\n}\n.Columns_module_root__078e5868 .Columns_module_header__078e5868 > [data-elem=component2] .Columns_module_close__078e5868 {\n  height: auto;\n  padding: 0;\n}\n.Columns_module_root__078e5868 .Columns_module_header__078e5868 > [data-elem=component2] .Columns_module_close__078e5868 .Columns_module_icon__078e5868 {\n  width: 1rem;\n  height: 1rem;\n}\n.Columns_module_root__078e5868 .Columns_module_body__078e5868 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  gap: 0.5rem;\n  padding: 0.75rem 2.5rem;\n  max-height: 28rem;\n  overflow-y: auto;\n  flex: 1 1 auto;\n}\n.Columns_module_root__078e5868 .Columns_module_body__078e5868 .Columns_module_search__078e5868 {\n  position: -webkit-sticky;\n  position: sticky;\n  top: 0;\n}\n.Columns_module_root__078e5868 .Columns_module_body__078e5868 .Columns_module_columns__078e5868 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  gap: 0.5rem;\n  overflow-y: auto;\n}\n.Columns_module_root__078e5868 .Columns_module_body__078e5868 .Columns_module_columns__078e5868 .Columns_module_item__078e5868 {\n  height: 3rem;\n}\n.Columns_module_root__078e5868 .Columns_module_body__078e5868 .Columns_module_columns__078e5868 .Columns_module_item__078e5868 > [data-elem=title] {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n}\n.Columns_module_root__078e5868 .Columns_module_footer__078e5868 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-end;\n  align-items: center;\n  height: auto;\n  margin-top: auto;\n  padding: 0.5rem 2.5rem;\n  border-top: 1px solid var(--grey4);\n}\n.Columns_module_root__078e5868 .Columns_module_footer__078e5868 button.Columns_module_expand__078e5868 {\n  height: auto;\n  background: var(--grey8);\n  border: 1px solid var(--grey4);\n  color: var(--black);\n}\n.Columns_module_root__078e5868 .Columns_module_footer__078e5868 button.Columns_module_expand__078e5868 .Columns_module_icon__078e5868 {\n  width: 1.5rem;\n  height: 1.5rem;\n  transform: rotate(180deg);\n}\n.Columns_module_root__078e5868.Columns_module_expanded__078e5868 .Columns_module_body__078e5868 {\n  flex: 0 1 auto;\n}\n.Columns_module_root__078e5868.Columns_module_expanded__078e5868 .Columns_module_body__078e5868 .Columns_module_columns__078e5868 {\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n}\n.Columns_module_root__078e5868.Columns_module_expanded__078e5868 .Columns_module_body__078e5868 .Columns_module_columns__078e5868 .Columns_module_item__078e5868 {\n  overflow: hidden;\n}\n.Columns_module_root__078e5868.Columns_module_expanded__078e5868 .Columns_module_footer__078e5868 button.Columns_module_expand__078e5868 .Columns_module_icon__078e5868 {\n  transform: none;\n}";
+var css$d = ".Columns_module_popover__078e5868 {\n  height: 32rem;\n  padding: 0;\n  overflow: hidden;\n}\n\n.Columns_module_root__078e5868 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  position: relative;\n  height: 100%;\n  min-width: 18rem;\n  max-width: 100%;\n}\n.Columns_module_root__078e5868 .Columns_module_header__078e5868 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  border-bottom: 1px solid var(--grey4);\n  padding: 0.75rem 2.5rem;\n}\n.Columns_module_root__078e5868 .Columns_module_header__078e5868 > [data-elem=component1] {\n  font-weight: 500;\n}\n.Columns_module_root__078e5868 .Columns_module_header__078e5868 > [data-elem=component2] .Columns_module_close__078e5868 {\n  height: auto;\n  padding: 0;\n}\n.Columns_module_root__078e5868 .Columns_module_header__078e5868 > [data-elem=component2] .Columns_module_close__078e5868 .Columns_module_icon__078e5868 {\n  width: 1rem;\n  height: 1rem;\n}\n.Columns_module_root__078e5868 .Columns_module_body__078e5868 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  gap: 0.5rem;\n  padding: 0.75rem 2.5rem;\n  max-height: 28rem;\n  overflow-y: auto;\n  flex: 1 1 auto;\n}\n.Columns_module_root__078e5868 .Columns_module_body__078e5868 .Columns_module_search__078e5868 {\n  position: -webkit-sticky;\n  position: sticky;\n  top: 0;\n}\n.Columns_module_root__078e5868 .Columns_module_body__078e5868 .Columns_module_columns__078e5868 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  gap: 0.5rem;\n  overflow-y: auto;\n}\n.Columns_module_root__078e5868 .Columns_module_body__078e5868 .Columns_module_columns__078e5868 .Columns_module_item__078e5868 {\n  height: 3rem;\n}\n.Columns_module_root__078e5868 .Columns_module_body__078e5868 .Columns_module_columns__078e5868 .Columns_module_item__078e5868 > [data-elem=title] {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n}\n.Columns_module_root__078e5868 .Columns_module_footer__078e5868 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-end;\n  align-items: center;\n  height: auto;\n  margin-top: auto;\n  padding: 0.5rem 2.5rem;\n  border-top: 1px solid var(--grey4);\n}\n.Columns_module_root__078e5868 .Columns_module_footer__078e5868 button.Columns_module_expand__078e5868 {\n  height: auto;\n  background: var(--grey8);\n  border: 1px solid var(--grey4);\n  color: var(--black);\n}\n.Columns_module_root__078e5868 .Columns_module_footer__078e5868 button.Columns_module_expand__078e5868 .Columns_module_icon__078e5868 {\n  width: 1.5rem;\n  height: 1.5rem;\n  transform: rotate(180deg);\n}\n.Columns_module_root__078e5868.Columns_module_expanded__078e5868 .Columns_module_body__078e5868 {\n  flex: 0 1 auto;\n}\n.Columns_module_root__078e5868.Columns_module_expanded__078e5868 .Columns_module_body__078e5868 .Columns_module_columns__078e5868 {\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n}\n.Columns_module_root__078e5868.Columns_module_expanded__078e5868 .Columns_module_body__078e5868 .Columns_module_columns__078e5868 .Columns_module_item__078e5868 {\n  overflow: hidden;\n}\n.Columns_module_root__078e5868.Columns_module_expanded__078e5868 .Columns_module_footer__078e5868 button.Columns_module_expand__078e5868 .Columns_module_icon__078e5868 {\n  transform: none;\n}";
 var modules_48c02c99 = {"popover":"Columns_module_popover__078e5868","root":"Columns_module_root__078e5868","header":"Columns_module_header__078e5868","close":"Columns_module_close__078e5868","icon":"Columns_module_icon__078e5868","body":"Columns_module_body__078e5868","search":"Columns_module_search__078e5868","columns":"Columns_module_columns__078e5868","item":"Columns_module_item__078e5868","footer":"Columns_module_footer__078e5868","expand":"Columns_module_expand__078e5868","expanded":"Columns_module_expanded__078e5868"};
-n(css$c,{});
+n(css$d,{});
 
 var Columns = function Columns(props) {
   var open = props.open,
@@ -44662,13 +45325,13 @@ var Columns = function Columns(props) {
   });
 };
 
-var css$b = ".TableFilters_module_root__3c1e35fb[data-elem=base-cell] {\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n  overflow-x: auto;\n  padding: 0.5rem;\n  gap: 1.25rem;\n  width: 100%;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell]::-webkit-scrollbar {\n  display: none;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] .TableFilters_module_icon__3c1e35fb {\n  width: 1.5rem;\n  height: 1.5rem;\n  flex-shrink: 0;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] button.TableFilters_module_iconButton__3c1e35fb {\n  height: 100%;\n  background: var(--grey8);\n  border: 1px solid var(--grey4);\n  color: var(--black);\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem*=component] {\n  height: 100%;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] .TableFilters_module_left__3c1e35fb,\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] .TableFilters_module_center__3c1e35fb,\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] .TableFilters_module_right__3c1e35fb {\n  height: 100%;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem=component1] .TableFilters_module_left__3c1e35fb {\n  gap: 1rem;\n  background: var(--grey8);\n  border: 1px solid var(--grey4);\n  color: var(--black);\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem=component1] .TableFilters_module_left__3c1e35fb [data-elem=left] {\n  gap: 1rem;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem=component1] .TableFilters_module_left__3c1e35fb .TableFilters_module_icon__3c1e35fb {\n  fill: var(--black);\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem=component1] .TableFilters_module_left__3c1e35fb .TableFilters_module_filterValue__3c1e35fb {\n  color: var(--white);\n  background: var(--highlight);\n  padding: 0.125rem 0.5rem;\n  border-radius: 50%;\n  font-size: 0.813rem;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem=component2] {\n  flex: 1;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem=component2] .TableFilters_module_center__3c1e35fb {\n  width: 100%;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem=component2] .TableFilters_module_center__3c1e35fb [data-elem=base-cell] {\n  border-color: var(--grey4);\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem=component2] .TableFilters_module_center__3c1e35fb .TableFilters_module_icon__3c1e35fb {\n  width: 1.25rem;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] .TableFilters_module_right__3c1e35fb {\n  width: auto;\n  padding: 0;\n  min-width: 0rem;\n  gap: 0.5rem;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] .TableFilters_module_right__3c1e35fb > [data-elem*=component] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  height: 100%;\n}";
+var css$c = ".TableFilters_module_root__3c1e35fb[data-elem=base-cell] {\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n  overflow-x: auto;\n  padding: 0.5rem;\n  gap: 1.25rem;\n  width: 100%;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell]::-webkit-scrollbar {\n  display: none;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] .TableFilters_module_icon__3c1e35fb {\n  width: 1.5rem;\n  height: 1.5rem;\n  flex-shrink: 0;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] button.TableFilters_module_iconButton__3c1e35fb {\n  height: 100%;\n  background: var(--grey8);\n  border: 1px solid var(--grey4);\n  color: var(--black);\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem*=component] {\n  height: 100%;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] .TableFilters_module_left__3c1e35fb,\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] .TableFilters_module_center__3c1e35fb,\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] .TableFilters_module_right__3c1e35fb {\n  height: 100%;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem=component1] .TableFilters_module_left__3c1e35fb {\n  gap: 1rem;\n  background: var(--grey8);\n  border: 1px solid var(--grey4);\n  color: var(--black);\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem=component1] .TableFilters_module_left__3c1e35fb [data-elem=left] {\n  gap: 1rem;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem=component1] .TableFilters_module_left__3c1e35fb .TableFilters_module_icon__3c1e35fb {\n  fill: var(--black);\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem=component1] .TableFilters_module_left__3c1e35fb .TableFilters_module_filterValue__3c1e35fb {\n  color: var(--white);\n  background: var(--highlight);\n  padding: 0.125rem 0.5rem;\n  border-radius: 50%;\n  font-size: 0.813rem;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem=component2] {\n  flex: 1;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem=component2] .TableFilters_module_center__3c1e35fb {\n  width: 100%;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem=component2] .TableFilters_module_center__3c1e35fb [data-elem=base-cell] {\n  border-color: var(--grey4);\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem=component2] .TableFilters_module_center__3c1e35fb .TableFilters_module_icon__3c1e35fb {\n  width: 1.25rem;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] .TableFilters_module_right__3c1e35fb {\n  width: auto;\n  padding: 0;\n  min-width: 0rem;\n  gap: 0.5rem;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] .TableFilters_module_right__3c1e35fb > [data-elem*=component] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  height: 100%;\n}";
 var modules_a0fe63f9 = {"root":"TableFilters_module_root__3c1e35fb","icon":"TableFilters_module_icon__3c1e35fb","icon-button":"TableFilters_module_iconButton__3c1e35fb","left":"TableFilters_module_left__3c1e35fb","center":"TableFilters_module_center__3c1e35fb","right":"TableFilters_module_right__3c1e35fb","filter-value":"TableFilters_module_filterValue__3c1e35fb"};
-n(css$b,{});
+n(css$c,{});
 
-var css$a = ".Skeleton_module_root__bdc934d4[data-elem=base-cell] {\n  width: 100%;\n  gap: 1.25rem;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component1] {\n  flex: 1;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component2] {\n  flex: 6;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component3] {\n  flex: 3;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component3] > [data-elem=base-cell] {\n  padding: 0;\n  align-items: flex-start;\n  height: auto;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component3] > [data-elem=base-cell] > [data-elem*=component] {\n  flex: 1;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component3] > [data-elem=base-cell] > [data-elem*=component] > [data-elem=skeleton] {\n  height: 1.5rem;\n}";
+var css$b = ".Skeleton_module_root__bdc934d4[data-elem=base-cell] {\n  width: 100%;\n  gap: 1.25rem;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component1] {\n  flex: 1;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component2] {\n  flex: 6;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component3] {\n  flex: 3;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component3] > [data-elem=base-cell] {\n  padding: 0;\n  align-items: flex-start;\n  height: auto;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component3] > [data-elem=base-cell] > [data-elem*=component] {\n  flex: 1;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component3] > [data-elem=base-cell] > [data-elem*=component] > [data-elem=skeleton] {\n  height: 1.5rem;\n}";
 var modules_37a5ff73 = {"root":"Skeleton_module_root__bdc934d4"};
-n(css$a,{});
+n(css$b,{});
 
 var TableFiltersSkeleton = function TableFiltersSkeleton() {
   return /*#__PURE__*/jsxRuntime.jsx(BaseCell, {
@@ -44853,15 +45516,15 @@ TableFilters.defaultProps = {
   }
 };
 
-var css$9 = ".Table_module_root__d17cb64f {\n  position: relative;\n  border-style: solid;\n  border-color: var(--grey4);\n  border-width: 1px 1px 0px 1px;\n  border-radius: 0.25rem;\n  width: 100%;\n  max-width: 100%;\n  height: 100%;\n  overflow: hidden;\n}\n.Table_module_root__d17cb64f .Table_module_table__d17cb64f {\n  height: calc(100% - 6rem);\n  padding-bottom: 3.5rem;\n}\n.Table_module_root__d17cb64f .Table_module_pagination__d17cb64f {\n  position: absolute;\n  bottom: 0;\n  left: 50%;\n  transform: translateX(-50%);\n}\n.Table_module_root__d17cb64f .Table_module_pagination__d17cb64f.Table_module_floating__d17cb64f {\n  bottom: 1rem;\n}\n.Table_module_root__d17cb64f .Table_module_chips__d17cb64f,\n.Table_module_root__d17cb64f .Table_module_filters__d17cb64f,\n.Table_module_root__d17cb64f .Table_module_table__d17cb64f > [data-elem=table-header] {\n  position: -webkit-sticky;\n  position: sticky;\n  z-index: 1;\n  top: 0;\n}";
+var css$a = ".Table_module_root__d17cb64f {\n  position: relative;\n  border-style: solid;\n  border-color: var(--grey4);\n  border-width: 1px 1px 0px 1px;\n  border-radius: 0.25rem;\n  width: 100%;\n  max-width: 100%;\n  height: 100%;\n  overflow: hidden;\n}\n.Table_module_root__d17cb64f .Table_module_table__d17cb64f {\n  height: calc(100% - 6rem);\n  padding-bottom: 3.5rem;\n}\n.Table_module_root__d17cb64f .Table_module_pagination__d17cb64f {\n  position: absolute;\n  bottom: 0;\n  left: 50%;\n  transform: translateX(-50%);\n}\n.Table_module_root__d17cb64f .Table_module_pagination__d17cb64f.Table_module_floating__d17cb64f {\n  bottom: 1rem;\n}\n.Table_module_root__d17cb64f .Table_module_chips__d17cb64f,\n.Table_module_root__d17cb64f .Table_module_filters__d17cb64f,\n.Table_module_root__d17cb64f .Table_module_table__d17cb64f > [data-elem=table-header] {\n  position: -webkit-sticky;\n  position: sticky;\n  z-index: 1;\n  top: 0;\n}";
 var modules_2e8406c7 = {"root":"Table_module_root__d17cb64f","table":"Table_module_table__d17cb64f","pagination":"Table_module_pagination__d17cb64f","floating":"Table_module_floating__d17cb64f","chips":"Table_module_chips__d17cb64f","filters":"Table_module_filters__d17cb64f"};
-n(css$9,{});
+n(css$a,{});
 
 var INTERSECTION = 1;
 var STEP = 0.05;
 var THRESHOLD = [];
-for (var i = 0; i < INTERSECTION; i += STEP) {
-  THRESHOLD.push(i);
+for (var i$1 = 0; i$1 < INTERSECTION; i$1 += STEP) {
+  THRESHOLD.push(i$1);
 }
 var Table = function Table(props) {
   var _chipsData$chips;
@@ -45039,9 +45702,9 @@ Table.defaultProps = {
   onSort: function onSort() {}
 };
 
-var css$8 = ".Tabs_module_root__83feec3e {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e {\n  padding: 0.75rem;\n  gap: 0.75rem;\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e > [data-elem=component1] > .Tabs_module_icon__83feec3e,\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e > [data-elem=component3] > .Tabs_module_icon__83feec3e {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--black);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e > [data-elem=component2] {\n  color: var(--black);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e.Tabs_module_active__83feec3e {\n  border-bottom: 2px solid var(--highlight);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e.Tabs_module_active__83feec3e > [data-elem=component1] > .Tabs_module_icon__83feec3e,\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e.Tabs_module_active__83feec3e > [data-elem=component3] > .Tabs_module_icon__83feec3e {\n  fill: var(--highlight);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e.Tabs_module_active__83feec3e > [data-elem=component2] {\n  color: var(--highlight);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e:hover {\n  background: var(--info-bg);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e:hover > [data-elem=component1] > .Tabs_module_icon__83feec3e,\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e:hover > [data-elem=component3] > .Tabs_module_icon__83feec3e {\n  fill: var(--highlight);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e:hover > [data-elem=component2] {\n  color: var(--highlight);\n}";
+var css$9 = ".Tabs_module_root__83feec3e {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e {\n  padding: 0.75rem;\n  gap: 0.75rem;\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e > [data-elem=component1] > .Tabs_module_icon__83feec3e,\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e > [data-elem=component3] > .Tabs_module_icon__83feec3e {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--black);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e > [data-elem=component2] {\n  color: var(--black);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e.Tabs_module_active__83feec3e {\n  border-bottom: 2px solid var(--highlight);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e.Tabs_module_active__83feec3e > [data-elem=component1] > .Tabs_module_icon__83feec3e,\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e.Tabs_module_active__83feec3e > [data-elem=component3] > .Tabs_module_icon__83feec3e {\n  fill: var(--highlight);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e.Tabs_module_active__83feec3e > [data-elem=component2] {\n  color: var(--highlight);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e:hover {\n  background: var(--info-bg);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e:hover > [data-elem=component1] > .Tabs_module_icon__83feec3e,\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e:hover > [data-elem=component3] > .Tabs_module_icon__83feec3e {\n  fill: var(--highlight);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e:hover > [data-elem=component2] {\n  color: var(--highlight);\n}";
 var modules_78ab5066 = {"root":"Tabs_module_root__83feec3e","tab":"Tabs_module_tab__83feec3e","icon":"Tabs_module_icon__83feec3e","active":"Tabs_module_active__83feec3e"};
-n(css$8,{});
+n(css$9,{});
 
 var Tabs = function Tabs(props) {
   var tabs = props.tabs,
@@ -45114,9 +45777,9 @@ Tabs.defaultProps = {
 
 function o(f){return r=>{f.forEach(n=>{typeof n=="function"?n(r):n!=null&&(n.current=r);});}}
 
-var css$7 = ".Tooltip_module_tooltip__1cb07177 {\n  text-align: center;\n  position: fixed;\n  border-radius: 0.25rem;\n  min-width: auto;\n  max-width: 12rem;\n  padding: 0.375rem;\n  font-size: 0.875rem;\n  font-family: sans-serif;\n  line-height: 1;\n}\n.Tooltip_module_tooltip__1cb07177.Tooltip_module_light__1cb07177 {\n  color: var(--black);\n  background: var(--grey7);\n  border-color: var(--black);\n}\n.Tooltip_module_tooltip__1cb07177.Tooltip_module_light__1cb07177 .Tooltip_module_arrow__1cb07177 {\n  background: var(--grey7);\n}\n.Tooltip_module_tooltip__1cb07177.Tooltip_module_dark__1cb07177 {\n  color: var(--white);\n  background: var(--black);\n  border-color: var(--white);\n}\n.Tooltip_module_tooltip__1cb07177.Tooltip_module_dark__1cb07177 .Tooltip_module_arrow__1cb07177 {\n  background: var(--black);\n}\n.Tooltip_module_tooltip__1cb07177 .Tooltip_module_arrow__1cb07177 {\n  position: absolute;\n  width: 1rem;\n  height: 1rem;\n  z-index: -1;\n  pointer-events: none;\n  transform: rotate(45deg);\n}";
+var css$8 = ".Tooltip_module_tooltip__1cb07177 {\n  text-align: center;\n  position: fixed;\n  border-radius: 0.25rem;\n  min-width: auto;\n  max-width: 12rem;\n  padding: 0.375rem;\n  font-size: 0.875rem;\n  font-family: sans-serif;\n  line-height: 1;\n}\n.Tooltip_module_tooltip__1cb07177.Tooltip_module_light__1cb07177 {\n  color: var(--black);\n  background: var(--grey7);\n  border-color: var(--black);\n}\n.Tooltip_module_tooltip__1cb07177.Tooltip_module_light__1cb07177 .Tooltip_module_arrow__1cb07177 {\n  background: var(--grey7);\n}\n.Tooltip_module_tooltip__1cb07177.Tooltip_module_dark__1cb07177 {\n  color: var(--white);\n  background: var(--black);\n  border-color: var(--white);\n}\n.Tooltip_module_tooltip__1cb07177.Tooltip_module_dark__1cb07177 .Tooltip_module_arrow__1cb07177 {\n  background: var(--black);\n}\n.Tooltip_module_tooltip__1cb07177 .Tooltip_module_arrow__1cb07177 {\n  position: absolute;\n  width: 1rem;\n  height: 1rem;\n  z-index: -1;\n  pointer-events: none;\n  transform: rotate(45deg);\n}";
 var modules_e4619b04 = {"tooltip":"Tooltip_module_tooltip__1cb07177","light":"Tooltip_module_light__1cb07177","arrow":"Tooltip_module_arrow__1cb07177","dark":"Tooltip_module_dark__1cb07177"};
-n(css$7,{});
+n(css$8,{});
 
 var Tooltip = /*#__PURE__*/React.forwardRef(function Tooltip(props, propRef) {
   var _middlewareData$arrow, _middlewareData$arrow2, _middlewareData$arrow3, _middlewareData$arrow4;
@@ -45221,9 +45884,9 @@ Tooltip.defaultProps = {
   className: ''
 };
 
-var css$6 = ".BaseSidePanel_module_root__c7817916 {\n  max-height: 100%;\n  height: 100%;\n  display: flex;\n  width: 30%;\n  flex-direction: column;\n  top: 0;\n  background: #ffffff;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.12);\n  overflow-x: hidden;\n  transition: 0.5s;\n}\n.BaseSidePanel_module_root__c7817916.BaseSidePanel_module_close__c7817916 {\n  width: 0rem;\n}\n.BaseSidePanel_module_root__c7817916 .BaseSidePanel_module_body__c7817916 {\n  flex: 1;\n  overflow-y: auto;\n}";
+var css$7 = ".BaseSidePanel_module_root__c7817916 {\n  max-height: 100%;\n  height: 100%;\n  display: flex;\n  width: 30%;\n  flex-direction: column;\n  top: 0;\n  background: #ffffff;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.12);\n  overflow-x: hidden;\n  transition: 0.5s;\n}\n.BaseSidePanel_module_root__c7817916.BaseSidePanel_module_close__c7817916 {\n  width: 0rem;\n}\n.BaseSidePanel_module_root__c7817916 .BaseSidePanel_module_body__c7817916 {\n  flex: 1;\n  overflow-y: auto;\n}";
 var modules_c7321921 = {"root":"BaseSidePanel_module_root__c7817916","close":"BaseSidePanel_module_close__c7817916","body":"BaseSidePanel_module_body__c7817916"};
-n(css$6,{});
+n(css$7,{});
 
 var BaseSidePanel = function BaseSidePanel(props) {
   var className = props.className,
@@ -46517,17 +47180,17 @@ function clone$3(source) {
     return result;
 }
 function merge(target, source, overwrite) {
-    if (!isObject$2(source) || !isObject$2(target)) {
+    if (!isObject$3(source) || !isObject$3(target)) {
         return overwrite ? clone$3(source) : target;
     }
     for (var key in source) {
         if (source.hasOwnProperty(key) && key !== protoKey) {
             var targetProp = target[key];
             var sourceProp = source[key];
-            if (isObject$2(sourceProp)
-                && isObject$2(targetProp)
-                && !isArray(sourceProp)
-                && !isArray(targetProp)
+            if (isObject$3(sourceProp)
+                && isObject$3(targetProp)
+                && !isArray$1(sourceProp)
+                && !isArray$1(targetProp)
                 && !isDom(sourceProp)
                 && !isDom(targetProp)
                 && !isBuiltInObject(sourceProp)
@@ -46627,7 +47290,7 @@ function isArrayLike(data) {
     }
     return typeof data.length === 'number';
 }
-function each$4(arr, cb, context) {
+function each$9(arr, cb, context) {
     if (!(arr && cb)) {
         return;
     }
@@ -46740,7 +47403,7 @@ function curry$1(func) {
         return func.apply(this, args.concat(nativeSlice.call(arguments)));
     };
 }
-function isArray(value) {
+function isArray$1(value) {
     if (Array.isArray) {
         return Array.isArray(value);
     }
@@ -46758,7 +47421,7 @@ function isStringSafe(value) {
 function isNumber(value) {
     return typeof value === 'number';
 }
-function isObject$2(value) {
+function isObject$3(value) {
     var type = typeof value;
     return type === 'function' || (!!value && type === 'object');
 }
@@ -46854,12 +47517,12 @@ function isPrimitive(obj) {
 var HashMap = (function () {
     function HashMap(obj) {
         this.data = {};
-        var isArr = isArray(obj);
+        var isArr = isArray$1(obj);
         this.data = {};
         var thisMap = this;
         (obj instanceof HashMap)
             ? obj.each(visit)
-            : (obj && each$4(obj, visit));
+            : (obj && each$9(obj, visit));
         function visit(value, key) {
             isArr ? thisMap.set(value, key) : thisMap.set(key, value);
         }
@@ -46941,7 +47604,7 @@ var util$1 = /*#__PURE__*/Object.freeze({
   inherits: inherits,
   mixin: mixin,
   isArrayLike: isArrayLike,
-  each: each$4,
+  each: each$9,
   map: map$1,
   reduce: reduce,
   filter: filter,
@@ -46949,12 +47612,12 @@ var util$1 = /*#__PURE__*/Object.freeze({
   keys: keys,
   bind: bind$1,
   curry: curry$1,
-  isArray: isArray,
+  isArray: isArray$1,
   isFunction: isFunction,
   isString: isString,
   isStringSafe: isStringSafe,
   isNumber: isNumber,
-  isObject: isObject$2,
+  isObject: isObject$3,
   isBuiltInObject: isBuiltInObject,
   isTypedArray: isTypedArray,
   isDom: isDom,
@@ -47637,6 +48300,9 @@ var stop = function (e) {
     e.stopPropagation();
     e.cancelBubble = true;
 };
+function isMiddleOrRightButtonOnMouseUpDown(e) {
+    return e.which === 2 || e.which === 3;
+}
 
 var GestureMgr = (function () {
     function GestureMgr() {
@@ -47961,8 +48627,8 @@ var Point = (function () {
 }());
 var Point$1 = Point;
 
-var mathMin$5 = Math.min;
-var mathMax$5 = Math.max;
+var mathMin$6 = Math.min;
+var mathMax$6 = Math.max;
 var lt = new Point$1();
 var rb = new Point$1();
 var lb = new Point$1();
@@ -47985,16 +48651,16 @@ var BoundingRect = (function () {
         this.height = height;
     }
     BoundingRect.prototype.union = function (other) {
-        var x = mathMin$5(other.x, this.x);
-        var y = mathMin$5(other.y, this.y);
+        var x = mathMin$6(other.x, this.x);
+        var y = mathMin$6(other.y, this.y);
         if (isFinite(this.x) && isFinite(this.width)) {
-            this.width = mathMax$5(other.x + other.width, this.x + this.width) - x;
+            this.width = mathMax$6(other.x + other.width, this.x + this.width) - x;
         }
         else {
             this.width = other.width;
         }
         if (isFinite(this.y) && isFinite(this.height)) {
-            this.height = mathMax$5(other.y + other.height, this.y + this.height) - y;
+            this.height = mathMax$6(other.y + other.height, this.y + this.height) - y;
         }
         else {
             this.height = other.height;
@@ -48164,10 +48830,10 @@ var BoundingRect = (function () {
         rt.transform(m);
         rb.transform(m);
         lb.transform(m);
-        target.x = mathMin$5(lt.x, rb.x, lb.x, rt.x);
-        target.y = mathMin$5(lt.y, rb.y, lb.y, rt.y);
-        var maxX = mathMax$5(lt.x, rb.x, lb.x, rt.x);
-        var maxY = mathMax$5(lt.y, rb.y, lb.y, rt.y);
+        target.x = mathMin$6(lt.x, rb.x, lb.x, rt.x);
+        target.y = mathMin$6(lt.y, rb.y, lb.y, rt.y);
+        var maxX = mathMax$6(lt.x, rb.x, lb.x, rt.x);
+        var maxY = mathMax$6(lt.y, rb.y, lb.y, rt.y);
         target.width = maxX - target.x;
         target.height = maxY - target.y;
     };
@@ -48241,7 +48907,7 @@ var Handler = (function (_super) {
             this.proxy.dispose();
         }
         if (proxy) {
-            each$4(handlerNames, function (name) {
+            each$9(handlerNames, function (name) {
                 proxy.on && proxy.on(name, this[name], this);
             }, this);
             proxy.handler = this;
@@ -48387,7 +49053,7 @@ var Handler = (function (_super) {
     };
     return Handler;
 }(Eventful$1));
-each$4(['click', 'mousedown', 'mouseup', 'mousewheel', 'dblclick', 'contextmenu'], function (name) {
+each$9(['click', 'mousedown', 'mouseup', 'mousewheel', 'dblclick', 'contextmenu'], function (name) {
     Handler.prototype[name] = function (event) {
         var x = event.zrX;
         var y = event.zrY;
@@ -51368,7 +52034,7 @@ var localDOMHandlers = {
         }
     }
 };
-each$4(['click', 'dblclick', 'contextmenu'], function (name) {
+each$9(['click', 'dblclick', 'contextmenu'], function (name) {
     localDOMHandlers[name] = function (event) {
         event = normalizeEvent(this.dom, event);
         this.trigger(name, event);
@@ -51399,7 +52065,7 @@ var globalDOMHandlers = {
 function mountLocalDOMEventListeners(instance, scope) {
     var domHandlers = scope.domHandlers;
     if (env$1.pointerEventsSupported) {
-        each$4(localNativeListenerNames.pointer, function (nativeEventName) {
+        each$9(localNativeListenerNames.pointer, function (nativeEventName) {
             mountSingleDOMEventListener(scope, nativeEventName, function (event) {
                 domHandlers[nativeEventName].call(instance, event);
             });
@@ -51407,14 +52073,14 @@ function mountLocalDOMEventListeners(instance, scope) {
     }
     else {
         if (env$1.touchEventsSupported) {
-            each$4(localNativeListenerNames.touch, function (nativeEventName) {
+            each$9(localNativeListenerNames.touch, function (nativeEventName) {
                 mountSingleDOMEventListener(scope, nativeEventName, function (event) {
                     domHandlers[nativeEventName].call(instance, event);
                     setTouchTimer(scope);
                 });
             });
         }
-        each$4(localNativeListenerNames.mouse, function (nativeEventName) {
+        each$9(localNativeListenerNames.mouse, function (nativeEventName) {
             mountSingleDOMEventListener(scope, nativeEventName, function (event) {
                 event = getNativeEvent(event);
                 if (!scope.touching) {
@@ -51426,10 +52092,10 @@ function mountLocalDOMEventListeners(instance, scope) {
 }
 function mountGlobalDOMEventListeners(instance, scope) {
     if (env$1.pointerEventsSupported) {
-        each$4(globalNativeListenerNames.pointer, mount);
+        each$9(globalNativeListenerNames.pointer, mount);
     }
     else if (!env$1.touchEventsSupported) {
-        each$4(globalNativeListenerNames.mouse, mount);
+        each$9(globalNativeListenerNames.mouse, mount);
     }
     function mount(nativeEventName) {
         function nativeEventListener(event) {
@@ -52135,7 +52801,7 @@ var Element = (function () {
         if (typeof keyOrObj === 'string') {
             this.attrKV(keyOrObj, value);
         }
-        else if (isObject$2(keyOrObj)) {
+        else if (isObject$3(keyOrObj)) {
             var obj = keyOrObj;
             var keysArr = keys(obj);
             for (var i = 0; i < keysArr.length; i++) {
@@ -52855,7 +53521,7 @@ function animateToShallow(animatable, topKey, animateObj, target, cfg, animation
     var delay = cfg.delay;
     var additive = cfg.additive;
     var setToFinal = cfg.setToFinal;
-    var animateAll = !isObject$2(animationProps);
+    var animateAll = !isObject$3(animationProps);
     var existsAnimators = animatable.animators;
     var animationKeys = [];
     for (var k = 0; k < targetKeys.length; k++) {
@@ -52863,7 +53529,7 @@ function animateToShallow(animatable, topKey, animateObj, target, cfg, animation
         var targetVal = target[innerKey];
         if (targetVal != null && animateObj[innerKey] != null
             && (animateAll || animationProps[innerKey])) {
-            if (isObject$2(targetVal)
+            if (isObject$3(targetVal)
                 && !isArrayLike(targetVal)
                 && !isGradientObject(targetVal)) {
                 if (topKey) {
@@ -53408,7 +54074,7 @@ function _trim(str) {
  */
 
 
-function linearMap(val, domain, range, clamp) {
+function linearMap$2(val, domain, range, clamp) {
   var d0 = domain[0];
   var d1 = domain[1];
   var r0 = range[0];
@@ -53500,7 +54166,7 @@ function round$1(x, precision, returnStr) {
  * The input arr will be modified.
  */
 
-function asc(arr) {
+function asc$1(arr) {
   arr.sort(function (a, b) {
     return a - b;
   });
@@ -54129,7 +54795,7 @@ var TEXT_STYLE_OPTIONS = ['fontStyle', 'fontWeight', 'fontSize', 'fontFamily', '
  */
 
 function getDataItemValue(dataItem) {
-  return isObject$2(dataItem) && !isArray(dataItem) && !(dataItem instanceof Date) ? dataItem.value : dataItem;
+  return isObject$3(dataItem) && !isArray$1(dataItem) && !(dataItem instanceof Date) ? dataItem.value : dataItem;
 }
 /**
  * data could be [12, 2323, {value: 223}, [1221, 23], {value: [2, 23]}]
@@ -54137,7 +54803,7 @@ function getDataItemValue(dataItem) {
  */
 
 function isDataItemOption(dataItem) {
-  return isObject$2(dataItem) && !(dataItem instanceof Array); // // markLine data can be array
+  return isObject$3(dataItem) && !(dataItem instanceof Array); // // markLine data can be array
   // && !(dataItem[0] && isObject(dataItem[0]) && !(dataItem[0] instanceof Array));
 }
 /**
@@ -54178,8 +54844,8 @@ function mappingToExists(existings, newCmptOptions, mode) {
   newCmptOptions = (newCmptOptions || []).slice();
   var existingIdIdxMap = createHashMap(); // Validate id and name on user input option.
 
-  each$4(newCmptOptions, function (cmptOption, index) {
-    if (!isObject$2(cmptOption)) {
+  each$9(newCmptOptions, function (cmptOption, index) {
+    if (!isObject$3(cmptOption)) {
       newCmptOptions[index] = null;
       return;
     }
@@ -54252,7 +54918,7 @@ function prepareResult(existings, existingIdIdxMap, mode) {
 
 function mappingById(result, existings, existingIdIdxMap, newCmptOptions) {
   // Mapping by id if specified.
-  each$4(newCmptOptions, function (cmptOption, index) {
+  each$9(newCmptOptions, function (cmptOption, index) {
     if (!cmptOption || cmptOption.id == null) {
       return;
     }
@@ -54274,7 +54940,7 @@ function mappingById(result, existings, existingIdIdxMap, newCmptOptions) {
 
 function mappingByName(result, newCmptOptions) {
   // Mapping by name if specified.
-  each$4(newCmptOptions, function (cmptOption, index) {
+  each$9(newCmptOptions, function (cmptOption, index) {
     if (!cmptOption || cmptOption.name == null) {
       return;
     }
@@ -54294,7 +54960,7 @@ function mappingByName(result, newCmptOptions) {
 }
 
 function mappingByIndex(result, newCmptOptions, brandNew) {
-  each$4(newCmptOptions, function (cmptOption) {
+  each$9(newCmptOptions, function (cmptOption) {
     if (!cmptOption) {
       return;
     } // Find the first place that not mapped by id and not internal component (consider the "hole").
@@ -54332,7 +54998,7 @@ function mappingByIndex(result, newCmptOptions, brandNew) {
 }
 
 function mappingInReplaceAllMode(result, newCmptOptions) {
-  each$4(newCmptOptions, function (cmptOption) {
+  each$9(newCmptOptions, function (cmptOption) {
     // The feature "reproduce" requires "hole" will also reproduced
     // in case that compoennt index referring are broken.
     result.push({
@@ -54360,11 +55026,11 @@ function makeIdAndName(mapResult) {
   // to specify multi components (like series) by one name.
   // Ensure that each id is distinct.
   var idMap = createHashMap();
-  each$4(mapResult, function (item) {
+  each$9(mapResult, function (item) {
     var existing = item.existing;
     existing && idMap.set(existing.id, item);
   });
-  each$4(mapResult, function (item) {
+  each$9(mapResult, function (item) {
     var opt = item.newOption; // Force ensure id not duplicated.
 
     assert(!opt || opt.id == null || !idMap.get(opt.id) || idMap.get(opt.id) === item, 'id duplicates: ' + (opt && opt.id));
@@ -54372,12 +55038,12 @@ function makeIdAndName(mapResult) {
     !item.keyInfo && (item.keyInfo = {});
   }); // Make name and id.
 
-  each$4(mapResult, function (item, index) {
+  each$9(mapResult, function (item, index) {
     var existing = item.existing;
     var opt = item.newOption;
     var keyInfo = item.keyInfo;
 
-    if (!isObject$2(opt)) {
+    if (!isObject$3(opt)) {
       return;
     } // name can be overwitten. Consider case: axis.name = '20km'.
     // But id generated by name will not be changed, which affect
@@ -54465,10 +55131,10 @@ function isComponentIdInternal(cmptOption) {
 }
 function setComponentTypeToKeyInfo(mappingResult, mainType, componentModelCtor) {
   // Set mainType and complete subType.
-  each$4(mappingResult, function (item) {
+  each$9(mappingResult, function (item) {
     var newOption = item.newOption;
 
-    if (isObject$2(newOption)) {
+    if (isObject$3(newOption)) {
       item.keyInfo.mainType = mainType;
       item.keyInfo.subType = determineSubType(mainType, newOption, item.existing, componentModelCtor);
     }
@@ -54482,6 +55148,66 @@ function determineSubType(mainType, newCmptOption, existComponent, componentMode
   return subType;
 }
 /**
+ * A helper for removing duplicate items between batchA and batchB,
+ * and in themselves, and categorize by series.
+ *
+ * @param batchA Like: [{seriesId: 2, dataIndex: [32, 4, 5]}, ...]
+ * @param batchB Like: [{seriesId: 2, dataIndex: [32, 4, 5]}, ...]
+ * @return result: [resultBatchA, resultBatchB]
+ */
+
+
+function compressBatches(batchA, batchB) {
+  var mapA = {};
+  var mapB = {};
+  makeMap(batchA || [], mapA);
+  makeMap(batchB || [], mapB, mapA);
+  return [mapToArray(mapA), mapToArray(mapB)];
+
+  function makeMap(sourceBatch, map, otherMap) {
+    for (var i = 0, len = sourceBatch.length; i < len; i++) {
+      var seriesId = convertOptionIdName(sourceBatch[i].seriesId, null);
+
+      if (seriesId == null) {
+        return;
+      }
+
+      var dataIndices = normalizeToArray(sourceBatch[i].dataIndex);
+      var otherDataIndices = otherMap && otherMap[seriesId];
+
+      for (var j = 0, lenj = dataIndices.length; j < lenj; j++) {
+        var dataIndex = dataIndices[j];
+
+        if (otherDataIndices && otherDataIndices[dataIndex]) {
+          otherDataIndices[dataIndex] = null;
+        } else {
+          (map[seriesId] || (map[seriesId] = {}))[dataIndex] = 1;
+        }
+      }
+    }
+  }
+
+  function mapToArray(map, isData) {
+    var result = [];
+
+    for (var i in map) {
+      if (map.hasOwnProperty(i) && map[i] != null) {
+        if (isData) {
+          result.push(+i);
+        } else {
+          var dataIndices = mapToArray(map[i], true);
+          dataIndices.length && result.push({
+            seriesId: i,
+            dataIndex: dataIndices
+          });
+        }
+      }
+    }
+
+    return result;
+  }
+}
+/**
  * @param payload Contains dataIndex (means rawIndex) / dataIndexInside / name
  *                         each of which can be Array or primary type.
  * @return dataIndex If not found, return undefined/null.
@@ -54491,11 +55217,11 @@ function queryDataIndex(data, payload) {
   if (payload.dataIndexInside != null) {
     return payload.dataIndexInside;
   } else if (payload.dataIndex != null) {
-    return isArray(payload.dataIndex) ? map$1(payload.dataIndex, function (value) {
+    return isArray$1(payload.dataIndex) ? map$1(payload.dataIndex, function (value) {
       return data.indexOfRawIndex(value);
     }) : data.indexOfRawIndex(payload.dataIndex);
   } else if (payload.name != null) {
-    return isArray(payload.name) ? map$1(payload.name, function (value) {
+    return isArray$1(payload.name) ? map$1(payload.name, function (value) {
       return data.indexOfName(value);
     }) : data.indexOfName(payload.name);
   }
@@ -54570,7 +55296,7 @@ function preParseFinder(finderInput, opt) {
   var queryOptionMap = createHashMap();
   var others = {};
   var mainTypeSpecified = false;
-  each$4(finder, function (value, key) {
+  each$9(finder, function (value, key) {
     // Exclude 'dataIndex' and other illgal keys.
     if (key === 'dataIndex' || key === 'dataIndexInside') {
       others[key] = value;
@@ -54702,7 +55428,7 @@ function enableClassExtend(rootClz, mandatoryMethods) {
 
   rootClz.extend = function (proto) {
     if (process.env.NODE_ENV !== 'production') {
-      each$4(mandatoryMethods, function (method) {
+      each$9(mandatoryMethods, function (method) {
         if (!proto[method]) {
           console.warn('Method `' + method + '` should be implemented' + (proto.type ? ' in ' + proto.type : '') + '.');
         }
@@ -54891,7 +55617,7 @@ function enableClassManagement(target) {
     var obj = storage[componentTypeInfo.main];
 
     if (obj && obj[IS_CONTAINER]) {
-      each$4(obj, function (o, type) {
+      each$9(obj, function (o, type) {
         type !== IS_CONTAINER && result.push(o);
       });
     } else {
@@ -54913,7 +55639,7 @@ function enableClassManagement(target) {
 
   target.getAllClassMainTypes = function () {
     var types = [];
-    each$4(storage, function (obj, type) {
+    each$9(storage, function (obj, type) {
       types.push(type);
     });
     return types;
@@ -55843,8 +56569,8 @@ function isDisplayableCulled(el, width, height) {
 }
 var Displayable$1 = Displayable;
 
-var mathMin$4 = Math.min;
-var mathMax$4 = Math.max;
+var mathMin$5 = Math.min;
+var mathMax$5 = Math.max;
 var mathSin$3 = Math.sin;
 var mathCos$3 = Math.cos;
 var PI2$6 = Math.PI * 2;
@@ -55852,10 +56578,10 @@ var start = create$1();
 var end = create$1();
 var extremity = create$1();
 function fromLine(x0, y0, x1, y1, min, max) {
-    min[0] = mathMin$4(x0, x1);
-    min[1] = mathMin$4(y0, y1);
-    max[0] = mathMax$4(x0, x1);
-    max[1] = mathMax$4(y0, y1);
+    min[0] = mathMin$5(x0, x1);
+    min[1] = mathMin$5(y0, y1);
+    max[0] = mathMax$5(x0, x1);
+    max[1] = mathMax$5(y0, y1);
 }
 var xDim = [];
 var yDim = [];
@@ -55869,35 +56595,35 @@ function fromCubic(x0, y0, x1, y1, x2, y2, x3, y3, min, max) {
     max[1] = -Infinity;
     for (var i = 0; i < n; i++) {
         var x = cubicAt$1(x0, x1, x2, x3, xDim[i]);
-        min[0] = mathMin$4(x, min[0]);
-        max[0] = mathMax$4(x, max[0]);
+        min[0] = mathMin$5(x, min[0]);
+        max[0] = mathMax$5(x, max[0]);
     }
     n = cubicExtrema$1(y0, y1, y2, y3, yDim);
     for (var i = 0; i < n; i++) {
         var y = cubicAt$1(y0, y1, y2, y3, yDim[i]);
-        min[1] = mathMin$4(y, min[1]);
-        max[1] = mathMax$4(y, max[1]);
+        min[1] = mathMin$5(y, min[1]);
+        max[1] = mathMax$5(y, max[1]);
     }
-    min[0] = mathMin$4(x0, min[0]);
-    max[0] = mathMax$4(x0, max[0]);
-    min[0] = mathMin$4(x3, min[0]);
-    max[0] = mathMax$4(x3, max[0]);
-    min[1] = mathMin$4(y0, min[1]);
-    max[1] = mathMax$4(y0, max[1]);
-    min[1] = mathMin$4(y3, min[1]);
-    max[1] = mathMax$4(y3, max[1]);
+    min[0] = mathMin$5(x0, min[0]);
+    max[0] = mathMax$5(x0, max[0]);
+    min[0] = mathMin$5(x3, min[0]);
+    max[0] = mathMax$5(x3, max[0]);
+    min[1] = mathMin$5(y0, min[1]);
+    max[1] = mathMax$5(y0, max[1]);
+    min[1] = mathMin$5(y3, min[1]);
+    max[1] = mathMax$5(y3, max[1]);
 }
 function fromQuadratic(x0, y0, x1, y1, x2, y2, min, max) {
     var quadraticExtremum$1 = quadraticExtremum;
     var quadraticAt$1 = quadraticAt;
-    var tx = mathMax$4(mathMin$4(quadraticExtremum$1(x0, x1, x2), 1), 0);
-    var ty = mathMax$4(mathMin$4(quadraticExtremum$1(y0, y1, y2), 1), 0);
+    var tx = mathMax$5(mathMin$5(quadraticExtremum$1(x0, x1, x2), 1), 0);
+    var ty = mathMax$5(mathMin$5(quadraticExtremum$1(y0, y1, y2), 1), 0);
     var x = quadraticAt$1(x0, x1, x2, tx);
     var y = quadraticAt$1(y0, y1, y2, ty);
-    min[0] = mathMin$4(x0, x2, x);
-    min[1] = mathMin$4(y0, y2, y);
-    max[0] = mathMax$4(x0, x2, x);
-    max[1] = mathMax$4(y0, y2, y);
+    min[0] = mathMin$5(x0, x2, x);
+    min[1] = mathMin$5(y0, y2, y);
+    max[0] = mathMax$5(x0, x2, x);
+    max[1] = mathMax$5(y0, y2, y);
 }
 function fromArc(x, y, rx, ry, startAngle, endAngle, anticlockwise, min, max) {
     var vec2Min = min$1;
@@ -55960,8 +56686,8 @@ var min = [];
 var max = [];
 var min2 = [];
 var max2 = [];
-var mathMin$3 = Math.min;
-var mathMax$3 = Math.max;
+var mathMin$4 = Math.min;
+var mathMax$4 = Math.max;
 var mathCos$2 = Math.cos;
 var mathSin$2 = Math.sin;
 var mathAbs$1 = Math.abs;
@@ -56381,7 +57107,7 @@ var PathProxy = (function () {
                         x0 = mathCos$2(startAngle) * rx + cx;
                         y0 = mathSin$2(startAngle) * ry + cy;
                     }
-                    l = mathMax$3(rx, ry) * mathMin$3(PI2$5, Math.abs(delta));
+                    l = mathMax$4(rx, ry) * mathMin$4(PI2$5, Math.abs(delta));
                     xi = mathCos$2(endAngle) * rx + cx;
                     yi = mathSin$2(endAngle) * ry + cy;
                     break;
@@ -56583,18 +57309,18 @@ var PathProxy = (function () {
                         if (accumLength + l > displayedLength) {
                             var d_1 = displayedLength - accumLength;
                             ctx.moveTo(x, y);
-                            ctx.lineTo(x + mathMin$3(d_1, width), y);
+                            ctx.lineTo(x + mathMin$4(d_1, width), y);
                             d_1 -= width;
                             if (d_1 > 0) {
-                                ctx.lineTo(x + width, y + mathMin$3(d_1, height));
+                                ctx.lineTo(x + width, y + mathMin$4(d_1, height));
                             }
                             d_1 -= height;
                             if (d_1 > 0) {
-                                ctx.lineTo(x + mathMax$3(width - d_1, 0), y + height);
+                                ctx.lineTo(x + mathMax$4(width - d_1, 0), y + height);
                             }
                             d_1 -= width;
                             if (d_1 > 0) {
-                                ctx.lineTo(x, y + mathMax$3(height - d_1, 0));
+                                ctx.lineTo(x, y + mathMax$4(height - d_1, 0));
                             }
                             break lo;
                         }
@@ -58248,7 +58974,7 @@ function hasSeparateFont(style) {
 }
 function normalizeTextStyle(style) {
     normalizeStyle(style);
-    each$4(style.rich, normalizeStyle);
+    each$9(style.rich, normalizeStyle);
     return style;
 }
 function normalizeStyle(style) {
@@ -58418,6 +59144,25 @@ function traverseUpdateState(el, updater, commonParam) {
   el.isGroup && el.traverse(function (child) {
     updateElementState(child, updater, commonParam);
   });
+}
+
+function setStatesFlag(el, stateName) {
+  switch (stateName) {
+    case 'emphasis':
+      el.hoverState = HOVER_STATE_EMPHASIS;
+      break;
+
+    case 'normal':
+      el.hoverState = HOVER_STATE_NORMAL;
+      break;
+
+    case 'blur':
+      el.hoverState = HOVER_STATE_BLUR;
+      break;
+
+    case 'select':
+      el.selected = true;
+  }
 }
 
 function getFromStateStyle(el, props, toStateName, defaultValue) {
@@ -58620,7 +59365,7 @@ function allLeaveBlur(api) {
 
     componentStates.isBlured = false;
   });
-  each$4(allComponentViews, function (view) {
+  each$9(allComponentViews, function (view) {
     if (view && view.toggleBlurSeries) {
       view.toggleBlurSeries(leaveBlurredSeries, false, model);
     }
@@ -58675,7 +59420,7 @@ function blurSeries(targetSeriesIndex, focus, blurScope, api) {
 
       if (isArrayLike(focus)) {
         leaveBlurOfIndices(seriesModel.getData(), focus);
-      } else if (isObject$2(focus)) {
+      } else if (isObject$3(focus)) {
         var dataTypes = keys(focus);
 
         for (var d = 0; d < dataTypes.length; d++) {
@@ -58735,7 +59480,7 @@ function blurSeriesFromHighlightPayload(seriesModel, payload, api) {
 
   var dataIndex = queryDataIndex(data, payload); // Pick the first one if there is multiple/none exists.
 
-  dataIndex = (isArray(dataIndex) ? dataIndex[0] : dataIndex) || 0;
+  dataIndex = (isArray$1(dataIndex) ? dataIndex[0] : dataIndex) || 0;
   var el = data.getItemGraphicEl(dataIndex);
 
   if (!el) {
@@ -58822,7 +59567,7 @@ function handleGlobalMouseOverForHighDown(dispatcher, e, api) {
       blurComponent(ecData.componentMainType, ecData.componentIndex, api);
     }
 
-    each$4(dispatchers, function (dispatcher) {
+    each$9(dispatchers, function (dispatcher) {
       return enterEmphasisWhenMouseOver(dispatcher, e);
     });
   } else {
@@ -58850,7 +59595,7 @@ function handleGlobalMouseOutForHighDown(dispatcher, e, api) {
   var dispatchers = findComponentHighDownDispatchers(ecData.componentMainType, ecData.componentIndex, ecData.componentHighDownName, api).dispatchers;
 
   if (dispatchers) {
-    each$4(dispatchers, function (dispatcher) {
+    each$9(dispatchers, function (dispatcher) {
       return leaveEmphasisWhenMouseOut(dispatcher, e);
     });
   } else {
@@ -58866,7 +59611,7 @@ function toggleSelectionFromPayload(seriesModel, payload, api) {
   var data = seriesModel.getData(dataType);
   var dataIndex = queryDataIndex(data, payload);
 
-  if (!isArray(dataIndex)) {
+  if (!isArray$1(dataIndex)) {
     dataIndex = [dataIndex];
   }
 
@@ -58874,7 +59619,7 @@ function toggleSelectionFromPayload(seriesModel, payload, api) {
 }
 function updateSeriesElementSelection(seriesModel) {
   var allData = seriesModel.getAllData();
-  each$4(allData, function (_a) {
+  each$9(allData, function (_a) {
     var data = _a.data,
         type = _a.type;
     data.eachItemGraphicEl(function (el, idx) {
@@ -58886,7 +59631,7 @@ function getAllSelectedIndices(ecModel) {
   var ret = [];
   ecModel.eachSeries(function (seriesModel) {
     var allData = seriesModel.getAllData();
-    each$4(allData, function (_a) {
+    each$9(allData, function (_a) {
       _a.data;
           var type = _a.type;
       var dataIndices = seriesModel.getSelectedDataIndices();
@@ -59008,6 +59753,18 @@ function isHighDownDispatcher(el) {
   return !!(el && el.__highDownDispatcher);
 }
 /**
+ * Enable component highlight/downplay features:
+ * + hover link (within the same name)
+ * + focus blur in component
+ */
+
+function enableComponentHighDownFeatures(el, componentModel, componentHighDownName) {
+  var ecData = getECData(el);
+  ecData.componentMainType = componentModel.mainType;
+  ecData.componentIndex = componentModel.componentIndex;
+  ecData.componentHighDownName = componentHighDownName;
+}
+/**
  * Support hightlight/downplay record on each elements.
  * For the case: hover highlight/downplay (legend, visualMap, ...) and
  * user triggerred hightlight/downplay should not conflict.
@@ -59043,7 +59800,7 @@ function savePathStates(el) {
 }
 
 var CMD = PathProxy$1.CMD;
-var points = [[], [], []];
+var points$2 = [[], [], []];
 var mathSqrt$2 = Math.sqrt;
 var mathAtan2 = Math.atan2;
 function transformPath(path, m) {
@@ -59111,7 +59868,7 @@ function transformPath(path, m) {
                 data[j++] = p[1];
         }
         for (k = 0; k < nPoint; k++) {
-            var p_1 = points[k];
+            var p_1 = points$2[k];
             p_1[0] = data[i++];
             p_1[1] = data[i++];
             applyTransform$1(p_1, p_1, m);
@@ -59177,7 +59934,7 @@ function processArc(x1, y1, x2, y2, fa, fs, rx, ry, psiDeg, cmd, path) {
     path.addData(cmd, cx, cy, rx, ry, theta, dTheta, psi, fs);
 }
 var commandReg = /([mlvhzcqtsa])([^mlvhzcqtsa]*)/ig;
-var numberReg = /-?([0-9]*\.)?[0-9]+([eE]-?[0-9]+)?/g;
+var numberReg$1 = /-?([0-9]*\.)?[0-9]+([eE]-?[0-9]+)?/g;
 function createPathProxyFromString(data) {
     var path = new PathProxy$1();
     if (!data) {
@@ -59197,7 +59954,7 @@ function createPathProxyFromString(data) {
         var cmdText = cmdList[l];
         var cmdStr = cmdText.charAt(0);
         var cmd = void 0;
-        var p = cmdText.match(numberReg) || [];
+        var p = cmdText.match(numberReg$1) || [];
         var pLen = p.length;
         for (var i = 0; i < pLen; i++) {
             p[i] = parseFloat(p[i]);
@@ -59532,8 +60289,8 @@ var mathACos = Math.acos;
 var mathATan2 = Math.atan2;
 var mathAbs = Math.abs;
 var mathSqrt = Math.sqrt;
-var mathMax$2 = Math.max;
-var mathMin$2 = Math.min;
+var mathMax$3 = Math.max;
+var mathMin$3 = Math.min;
 var e = 1e-4;
 function intersect(x0, y0, x1, y1, x2, y2, x3, y3) {
     var dx10 = x1 - x0;
@@ -59564,7 +60321,7 @@ function computeCornerTangents(x0, y0, x1, y1, radius, cr, clockwise) {
     var d2 = dx * dx + dy * dy;
     var r = radius - cr;
     var s = x11 * y10 - x10 * y11;
-    var d = (dy < 0 ? -1 : 1) * mathSqrt(mathMax$2(0, r * r * d2 - s * s));
+    var d = (dy < 0 ? -1 : 1) * mathSqrt(mathMax$3(0, r * r * d2 - s * s));
     var cx0 = (s * dy - dx * d) / d2;
     var cy0 = (-s * dx - dy * d) / d2;
     var cx1 = (s * dy + dx * d) / d2;
@@ -59588,7 +60345,7 @@ function computeCornerTangents(x0, y0, x1, y1, radius, cr, clockwise) {
 }
 function normalizeCornerRadius(cr) {
     var arr;
-    if (isArray(cr)) {
+    if (isArray$1(cr)) {
         var len = cr.length;
         if (!len) {
             return cr;
@@ -59613,8 +60370,8 @@ function normalizeCornerRadius(cr) {
 }
 function buildPath$1(ctx, shape) {
     var _a;
-    var radius = mathMax$2(shape.r, 0);
-    var innerRadius = mathMax$2(shape.r0 || 0, 0);
+    var radius = mathMax$3(shape.r, 0);
+    var innerRadius = mathMax$3(shape.r0 || 0, 0);
     var hasRadius = radius > 0;
     var hasInnerRadius = innerRadius > 0;
     if (!hasRadius && !hasInnerRadius) {
@@ -59677,12 +60434,12 @@ function buildPath$1(ctx, shape) {
                 _a = normalizeCornerRadius(cornerRadius), icrStart = _a[0], icrEnd = _a[1], ocrStart = _a[2], ocrEnd = _a[3];
             }
             var halfRd = mathAbs(radius - innerRadius) / 2;
-            ocrs = mathMin$2(halfRd, ocrStart);
-            ocre = mathMin$2(halfRd, ocrEnd);
-            icrs = mathMin$2(halfRd, icrStart);
-            icre = mathMin$2(halfRd, icrEnd);
-            limitedOcrMax = ocrMax = mathMax$2(ocrs, ocre);
-            limitedIcrMax = icrMax = mathMax$2(icrs, icre);
+            ocrs = mathMin$3(halfRd, ocrStart);
+            ocre = mathMin$3(halfRd, ocrEnd);
+            icrs = mathMin$3(halfRd, icrStart);
+            icre = mathMin$3(halfRd, icrEnd);
+            limitedOcrMax = ocrMax = mathMax$3(ocrs, ocre);
+            limitedIcrMax = icrMax = mathMax$3(icrs, icre);
             if (ocrMax > e || icrMax > e) {
                 xre = radius * mathCos(endAngle);
                 yre = radius * mathSin(endAngle);
@@ -59697,8 +60454,8 @@ function buildPath$1(ctx, shape) {
                         var y1 = yre - it_1[1];
                         var a = 1 / mathSin(mathACos((x0 * x1 + y0 * y1) / (mathSqrt(x0 * x0 + y0 * y0) * mathSqrt(x1 * x1 + y1 * y1))) / 2);
                         var b = mathSqrt(it_1[0] * it_1[0] + it_1[1] * it_1[1]);
-                        limitedOcrMax = mathMin$2(ocrMax, (radius - b) / (a + 1));
-                        limitedIcrMax = mathMin$2(icrMax, (innerRadius - b) / (a - 1));
+                        limitedOcrMax = mathMin$3(ocrMax, (radius - b) / (a + 1));
+                        limitedIcrMax = mathMin$3(icrMax, (innerRadius - b) / (a - 1));
                     }
                 }
             }
@@ -59707,8 +60464,8 @@ function buildPath$1(ctx, shape) {
             ctx.moveTo(cx + xrs, cy + yrs);
         }
         else if (limitedOcrMax > e) {
-            var crStart = mathMin$2(ocrStart, limitedOcrMax);
-            var crEnd = mathMin$2(ocrEnd, limitedOcrMax);
+            var crStart = mathMin$3(ocrStart, limitedOcrMax);
+            var crEnd = mathMin$3(ocrEnd, limitedOcrMax);
             var ct0 = computeCornerTangents(xirs, yirs, xrs, yrs, radius, crStart, clockwise);
             var ct1 = computeCornerTangents(xre, yre, xire, yire, radius, crEnd, clockwise);
             ctx.moveTo(cx + ct0.cx + ct0.x0, cy + ct0.cy + ct0.y0);
@@ -59729,8 +60486,8 @@ function buildPath$1(ctx, shape) {
             ctx.lineTo(cx + xire, cy + yire);
         }
         else if (limitedIcrMax > e) {
-            var crStart = mathMin$2(icrStart, limitedIcrMax);
-            var crEnd = mathMin$2(icrEnd, limitedIcrMax);
+            var crStart = mathMin$3(icrStart, limitedIcrMax);
+            var crEnd = mathMin$3(icrEnd, limitedIcrMax);
             var ct0 = computeCornerTangents(xire, yire, xre, yre, innerRadius, -crEnd, clockwise);
             var ct1 = computeCornerTangents(xrs, yrs, xirs, yirs, innerRadius, -crStart, clockwise);
             ctx.lineTo(cx + ct0.cx + ct0.x0, cy + ct0.cy + ct0.y0);
@@ -60552,7 +61309,7 @@ function animateOrSetProps(animationType, el, props, animatableModel, dataIndex,
     during = cb;
     cb = dataIndex;
     dataIndex = null;
-  } else if (isObject$2(dataIndex)) {
+  } else if (isObject$3(dataIndex)) {
     cb = dataIndex.cb;
     during = dataIndex.during;
     isFrom = dataIndex.isFrom;
@@ -60701,8 +61458,8 @@ function saveOldStyle(el) {
   transitionStore(el).oldStyle = el.style;
 }
 
-var mathMax$1 = Math.max;
-var mathMin$1 = Math.min;
+var mathMax$2 = Math.max;
+var mathMin$2 = Math.min;
 var _customShapeMap = {};
 /**
  * Extend shape with parameters
@@ -61007,11 +61764,11 @@ function clipPointsByRect(points, rect) {
   // and when element have border.
   return map$1(points, function (point) {
     var x = point[0];
-    x = mathMax$1(x, rect.x);
-    x = mathMin$1(x, rect.x + rect.width);
+    x = mathMax$2(x, rect.x);
+    x = mathMin$2(x, rect.x + rect.width);
     var y = point[1];
-    y = mathMax$1(y, rect.y);
-    y = mathMin$1(y, rect.y + rect.height);
+    y = mathMax$2(y, rect.y);
+    y = mathMin$2(y, rect.y + rect.height);
     return [x, y];
   });
 }
@@ -61020,10 +61777,10 @@ function clipPointsByRect(points, rect) {
  */
 
 function clipRectByRect(targetRect, rect) {
-  var x = mathMax$1(targetRect.x, rect.x);
-  var x2 = mathMin$1(targetRect.x + targetRect.width, rect.x + rect.width);
-  var y = mathMax$1(targetRect.y, rect.y);
-  var y2 = mathMin$1(targetRect.y + targetRect.height, rect.y + rect.height); // If the total rect is cliped, nothing, including the border,
+  var x = mathMax$2(targetRect.x, rect.x);
+  var x2 = mathMin$2(targetRect.x + targetRect.width, rect.x + rect.width);
+  var y = mathMax$2(targetRect.y, rect.y);
+  var y2 = mathMin$2(targetRect.y + targetRect.height, rect.y + rect.height); // If the total rect is cliped, nothing, including the border,
   // should be painted. So return undefined.
 
   if (x2 >= x && y2 >= y) {
@@ -61143,7 +61900,7 @@ function setTooltipConfig(opt) {
   var formatterParamsExtra = opt.formatterParamsExtra;
 
   if (formatterParamsExtra) {
-    each$4(keys(formatterParamsExtra), function (key) {
+    each$9(keys(formatterParamsExtra), function (key) {
       if (!hasOwn(formatterParams, key)) {
         formatterParams[key] = formatterParamsExtra[key];
         formatterParams.$vars.push(key);
@@ -61178,7 +61935,7 @@ function traverseElement(el, cb) {
 
 function traverseElements(els, cb) {
   if (els) {
-    if (isArray(els)) {
+    if (isArray$1(els)) {
       for (var i = 0; i < els.length; i++) {
         traverseElement(els[i], cb);
       }
@@ -62042,7 +62799,7 @@ function enableTopologicalTravel(entity, dependencyGetter) {
     var graph = result.graph;
     var noEntryList = result.noEntryList;
     var targetNameSet = {};
-    each$4(targetNameList, function (name) {
+    each$9(targetNameList, function (name) {
       targetNameSet[name] = true;
     });
 
@@ -62056,10 +62813,10 @@ function enableTopologicalTravel(entity, dependencyGetter) {
         delete targetNameSet[currComponentType];
       }
 
-      each$4(currVertex.successor, isInTargetNameSet ? removeEdgeAndAdd : removeEdge);
+      each$9(currVertex.successor, isInTargetNameSet ? removeEdgeAndAdd : removeEdge);
     }
 
-    each$4(targetNameSet, function () {
+    each$9(targetNameSet, function () {
       var errMsg = '';
 
       if (process.env.NODE_ENV !== 'production') {
@@ -62092,7 +62849,7 @@ function enableTopologicalTravel(entity, dependencyGetter) {
   function makeDepndencyGraph(fullNameList) {
     var graph = {};
     var noEntryList = [];
-    each$4(fullNameList, function (name) {
+    each$9(fullNameList, function (name) {
       var thisItem = createDependencyGraphItem(graph, name);
       var originalDeps = thisItem.originalDeps = dependencyGetter(name);
       var availableDeps = getAvailableDependencies(originalDeps, fullNameList);
@@ -62102,7 +62859,7 @@ function enableTopologicalTravel(entity, dependencyGetter) {
         noEntryList.push(name);
       }
 
-      each$4(availableDeps, function (dependentName) {
+      each$9(availableDeps, function (dependentName) {
         if (indexOf(thisItem.predecessor, dependentName) < 0) {
           thisItem.predecessor.push(dependentName);
         }
@@ -62133,7 +62890,7 @@ function enableTopologicalTravel(entity, dependencyGetter) {
 
   function getAvailableDependencies(originalDeps, fullNameList) {
     var availableDeps = [];
-    each$4(originalDeps, function (dep) {
+    each$9(originalDeps, function (dep) {
       indexOf(fullNameList, dep) >= 0 && availableDeps.push(dep);
     });
     return availableDeps;
@@ -62623,7 +63380,7 @@ function leveledFormat(tick, idx, formatter, lang, isUTC) {
       template = template || defaults$1.none;
     }
 
-    if (isArray(template)) {
+    if (isArray$1(template)) {
       var levelId = tick.level == null ? 0 : tick.level >= 0 ? tick.level : template.length + tick.level;
       levelId = Math.min(levelId, template.length - 1);
       template = template[levelId];
@@ -62835,7 +63592,7 @@ var wrapVar = function (varName, seriesIdx) {
 
 
 function formatTpl(tpl, paramsList, encode) {
-  if (!isArray(paramsList)) {
+  if (!isArray$1(paramsList)) {
     paramsList = [paramsList];
   }
 
@@ -62948,7 +63705,7 @@ function capitalFirst(str) {
 
 function convertToColorString(color, defaultColor) {
   defaultColor = defaultColor || 'transparent';
-  return isString(color) ? color : isObject$2(color) ? color.colorStops && (color.colorStops[0] || {}).color || defaultColor : defaultColor;
+  return isString(color) ? color : isObject$3(color) ? color.colorStops && (color.colorStops[0] || {}).color || defaultColor : defaultColor;
 }
 /**
  * open new tab
@@ -62967,7 +63724,7 @@ function windowOpen(link, target) {
   }
 }
 
-var each$3 = each$4;
+var each$8 = each$9;
 /**
  * @public
  */
@@ -63167,9 +63924,103 @@ function getLayoutRect(positionInfo, containerRect, margin) {
   rect.margin = margin;
   return rect;
 }
+/**
+ * Position a zr element in viewport
+ *  Group position is specified by either
+ *  {left, top}, {right, bottom}
+ *  If all properties exists, right and bottom will be igonred.
+ *
+ * Logic:
+ *     1. Scale (against origin point in parent coord)
+ *     2. Rotate (against origin point in parent coord)
+ *     3. Traslate (with el.position by this method)
+ * So this method only fixes the last step 'Traslate', which does not affect
+ * scaling and rotating.
+ *
+ * If be called repeatly with the same input el, the same result will be gotten.
+ *
+ * Return true if the layout happend.
+ *
+ * @param el Should have `getBoundingRect` method.
+ * @param positionInfo
+ * @param positionInfo.left
+ * @param positionInfo.top
+ * @param positionInfo.right
+ * @param positionInfo.bottom
+ * @param positionInfo.width Only for opt.boundingModel: 'raw'
+ * @param positionInfo.height Only for opt.boundingModel: 'raw'
+ * @param containerRect
+ * @param margin
+ * @param opt
+ * @param opt.hv Only horizontal or only vertical. Default to be [1, 1]
+ * @param opt.boundingMode
+ *        Specify how to calculate boundingRect when locating.
+ *        'all': Position the boundingRect that is transformed and uioned
+ *               both itself and its descendants.
+ *               This mode simplies confine the elements in the bounding
+ *               of their container (e.g., using 'right: 0').
+ *        'raw': Position the boundingRect that is not transformed and only itself.
+ *               This mode is useful when you want a element can overflow its
+ *               container. (Consider a rotated circle needs to be located in a corner.)
+ *               In this mode positionInfo.width/height can only be number.
+ */
+
+function positionElement(el, positionInfo, containerRect, margin, opt, out) {
+  var h = !opt || !opt.hv || opt.hv[0];
+  var v = !opt || !opt.hv || opt.hv[1];
+  var boundingMode = opt && opt.boundingMode || 'all';
+  out = out || el;
+  out.x = el.x;
+  out.y = el.y;
+
+  if (!h && !v) {
+    return false;
+  }
+
+  var rect;
+
+  if (boundingMode === 'raw') {
+    rect = el.type === 'group' ? new BoundingRect$1(0, 0, +positionInfo.width || 0, +positionInfo.height || 0) : el.getBoundingRect();
+  } else {
+    rect = el.getBoundingRect();
+
+    if (el.needLocalTransform()) {
+      var transform = el.getLocalTransform(); // Notice: raw rect may be inner object of el,
+      // which should not be modified.
+
+      rect = rect.clone();
+      rect.applyTransform(transform);
+    }
+  } // The real width and height can not be specified but calculated by the given el.
+
+
+  var layoutRect = getLayoutRect(defaults({
+    width: rect.width,
+    height: rect.height
+  }, positionInfo), containerRect, margin); // Because 'tranlate' is the last step in transform
+  // (see zrender/core/Transformable#getLocalTransform),
+  // we can just only modify el.position to get final result.
+
+  var dx = h ? layoutRect.x - rect.x : 0;
+  var dy = v ? layoutRect.y - rect.y : 0;
+
+  if (boundingMode === 'raw') {
+    out.x = dx;
+    out.y = dy;
+  } else {
+    out.x += dx;
+    out.y += dy;
+  }
+
+  if (out === el) {
+    el.markRedraw();
+  }
+
+  return true;
+}
 function fetchLayoutMode(ins) {
   var layoutMode = ins.layoutMode || ins.constructor.layoutMode;
-  return isObject$2(layoutMode) ? layoutMode : layoutMode ? {
+  return isObject$3(layoutMode) ? layoutMode : layoutMode ? {
     type: layoutMode
   } : null;
 }
@@ -63199,7 +64050,7 @@ function fetchLayoutMode(ins) {
 
 function mergeLayoutParam(targetOption, newOption, opt) {
   var ignoreSize = opt && opt.ignoreSize;
-  !isArray(ignoreSize) && (ignoreSize = [ignoreSize, ignoreSize]);
+  !isArray$1(ignoreSize) && (ignoreSize = [ignoreSize, ignoreSize]);
   var hResult = merge(HV_NAMES[0], 0);
   var vResult = merge(HV_NAMES[1], 1);
   copy(HV_NAMES[0], targetOption, hResult);
@@ -63211,10 +64062,10 @@ function mergeLayoutParam(targetOption, newOption, opt) {
     var merged = {};
     var mergedValueCount = 0;
     var enoughParamNumber = 2;
-    each$3(names, function (name) {
+    each$8(names, function (name) {
       merged[name] = targetOption[name];
     });
-    each$3(names, function (name) {
+    each$8(names, function (name) {
       // Consider case: newOption.width is null, which is
       // set by user for removing width setting.
       hasProp(newOption, name) && (newParams[name] = merged[name] = newOption[name]);
@@ -63268,7 +64119,7 @@ function mergeLayoutParam(targetOption, newOption, opt) {
   }
 
   function copy(names, target, source) {
-    each$3(names, function (name) {
+    each$8(names, function (name) {
       target[name] = source[name];
     });
   }
@@ -63287,7 +64138,7 @@ function getLayoutParams(source) {
  */
 
 function copyLayoutParams(target, source) {
-  source && target && each$3(LOCATION_PARAMS, function (name) {
+  source && target && each$8(LOCATION_PARAMS, function (name) {
     source.hasOwnProperty(name) && (target[name] = source[name]);
   });
   return target;
@@ -63493,7 +64344,7 @@ enableTopologicalTravel(ComponentModel, getDependencies);
 
 function getDependencies(componentType) {
   var deps = [];
-  each$4(ComponentModel.getClassesByMainType(componentType), function (clz) {
+  each$9(ComponentModel.getClassesByMainType(componentType), function (clz) {
     deps = deps.concat(clz.dependencies || clz.prototype.dependencies || []);
   }); // Ensure main type.
 
@@ -63699,8 +64550,8 @@ function makeSeriesEncodeForAxisCoordSys(coordDimensions, seriesModel, source) {
   var baseCategoryDimIndex;
   var categoryWayValueDimStart;
   coordDimensions = coordDimensions.slice();
-  each$4(coordDimensions, function (coordDimInfoLoose, coordDimIdx) {
-    var coordDimInfo = isObject$2(coordDimInfoLoose) ? coordDimInfoLoose : coordDimensions[coordDimIdx] = {
+  each$9(coordDimensions, function (coordDimInfoLoose, coordDimIdx) {
+    var coordDimInfo = isObject$3(coordDimInfoLoose) ? coordDimInfoLoose : coordDimensions[coordDimIdx] = {
       name: coordDimInfoLoose
     };
 
@@ -63717,7 +64568,7 @@ function makeSeriesEncodeForAxisCoordSys(coordDimensions, seriesModel, source) {
   }); // TODO
   // Auto detect first time axis and do arrangement.
 
-  each$4(coordDimensions, function (coordDimInfo, coordDimIdx) {
+  each$9(coordDimensions, function (coordDimInfo, coordDimIdx) {
     var coordDimName = coordDimInfo.name;
     var count = getDataDimCountOnCoordDim(coordDimInfo); // In value way.
 
@@ -63778,8 +64629,8 @@ function makeSeriesEncodeForNameBased(seriesModel, source, dimCount) {
   var potentialNameDimIndex;
 
   if (sourceFormat === SOURCE_FORMAT_OBJECT_ROWS || sourceFormat === SOURCE_FORMAT_KEYED_COLUMNS) {
-    each$4(dimensionsDefine, function (dim, idx) {
-      if ((isObject$2(dim) ? dim.name : dim) === 'name') {
+    each$9(dimensionsDefine, function (dim, idx) {
+      if ((isObject$3(dim) ? dim.name : dim) === 'name') {
         potentialNameDimIndex = idx;
       }
     });
@@ -63908,7 +64759,7 @@ function doGuessOrdinal(data, sourceFormat, seriesLayoutBy, dimensionsDefine, st
   if (dimensionsDefine) {
     var dimDefItem = dimensionsDefine[dimIndex];
 
-    if (isObject$2(dimDefItem)) {
+    if (isObject$3(dimDefItem)) {
       dimName = dimDefItem.name;
       dimType = dimDefItem.type;
     } else if (isString(dimDefItem)) {
@@ -63979,7 +64830,7 @@ function doGuessOrdinal(data, sourceFormat, seriesLayoutBy, dimensionsDefine, st
       var item = dataOriginal[i];
       var val = getDataItemValue(item);
 
-      if (!isArray(val)) {
+      if (!isArray$1(val)) {
         return BE_ORDINAL.Not;
       }
 
@@ -64162,7 +65013,7 @@ var BUILTIN_CHARTS_MAP = {
 var componetsMissingLogPrinted = {};
 
 function checkMissingComponents(option) {
-  each$4(option, function (componentOption, mainType) {
+  each$9(option, function (componentOption, mainType) {
     if (!ComponentModel$1.hasClass(mainType)) {
       var componentImportName = BUITIN_COMPONENTS_MAP[mainType];
 
@@ -64265,7 +65116,7 @@ function (_super) {
       var mediaOptions = optionManager.getMediaOption(this);
 
       if (mediaOptions.length) {
-        each$4(mediaOptions, function (mediaOption) {
+        each$9(mediaOptions, function (mediaOption) {
           optionChanged = true;
 
           this._mergeOption(mediaOption, opt);
@@ -64290,7 +65141,7 @@ function (_super) {
     resetSourceDefaulter(this); // If no component class, merge directly.
     // For example: color, animaiton options, etc.
 
-    each$4(newOption, function (componentOption, mainType) {
+    each$9(newOption, function (componentOption, mainType) {
       if (componentOption == null) {
         return;
       }
@@ -64338,7 +65189,7 @@ function (_super) {
       var cmptsCountByMainType = 0;
       var tooltipExists;
       var tooltipWarningLogged;
-      each$4(mappingResult, function (resultItem, index) {
+      each$9(mappingResult, function (resultItem, index) {
         var componentModel = resultItem.existing;
         var newCmptOption = resultItem.newOption;
 
@@ -64451,7 +65302,7 @@ function (_super) {
 
   GlobalModel.prototype.getOption = function () {
     var option = clone$3(this.option);
-    each$4(option, function (optInMainType, mainType) {
+    each$9(option, function (optInMainType, mainType) {
       if (ComponentModel$1.hasClass(mainType)) {
         var opts = normalizeToArray(optInMainType); // Inner cmpts need to be removed.
         // Inner cmpts might not be at last since ec5.0, but still
@@ -64541,7 +65392,7 @@ function (_super) {
 
     if (index != null) {
       result = [];
-      each$4(normalizeToArray(index), function (idx) {
+      each$9(normalizeToArray(index), function (idx) {
         cmpts[idx] && result.push(cmpts[idx]);
       });
     } else if (id != null) {
@@ -64617,7 +65468,7 @@ function (_super) {
         }
       });
     } else {
-      var cmpts = isString(mainType) ? componentsMap.get(mainType) : isObject$2(mainType) ? this.findComponents(mainType) : null;
+      var cmpts = isString(mainType) ? componentsMap.get(mainType) : isObject$3(mainType) ? this.findComponents(mainType) : null;
 
       for (var i = 0; cmpts && i < cmpts.length; i++) {
         var cmpt = cmpts[i];
@@ -64681,7 +65532,7 @@ function (_super) {
 
   GlobalModel.prototype.eachSeries = function (cb, context) {
     assertSeriesInitialized(this);
-    each$4(this._seriesIndices, function (rawSeriesIndex) {
+    each$9(this._seriesIndices, function (rawSeriesIndex) {
       var series = this._componentsMap.get('series')[rawSeriesIndex];
 
       cb.call(context, series, rawSeriesIndex);
@@ -64696,7 +65547,7 @@ function (_super) {
 
 
   GlobalModel.prototype.eachRawSeries = function (cb, context) {
-    each$4(this._componentsMap.get('series'), function (series) {
+    each$9(this._componentsMap.get('series'), function (series) {
       series && cb.call(context, series, series.componentIndex);
     });
   };
@@ -64708,7 +65559,7 @@ function (_super) {
 
   GlobalModel.prototype.eachSeriesByType = function (subType, cb, context) {
     assertSeriesInitialized(this);
-    each$4(this._seriesIndices, function (rawSeriesIndex) {
+    each$9(this._seriesIndices, function (rawSeriesIndex) {
       var series = this._componentsMap.get('series')[rawSeriesIndex];
 
       if (series.subType === subType) {
@@ -64722,7 +65573,7 @@ function (_super) {
 
 
   GlobalModel.prototype.eachRawSeriesByType = function (subType, cb, context) {
-    return each$4(this.getSeriesByType(subType), cb, context);
+    return each$9(this.getSeriesByType(subType), cb, context);
   };
 
   GlobalModel.prototype.isSeriesFiltered = function (seriesModel) {
@@ -64737,7 +65588,7 @@ function (_super) {
   GlobalModel.prototype.filterSeries = function (cb, context) {
     assertSeriesInitialized(this);
     var newSeriesIndices = [];
-    each$4(this._seriesIndices, function (seriesRawIdx) {
+    each$9(this._seriesIndices, function (seriesRawIdx) {
       var series = this._componentsMap.get('series')[seriesRawIdx];
 
       cb.call(context, series, seriesRawIdx) && newSeriesIndices.push(seriesRawIdx);
@@ -64756,7 +65607,7 @@ function (_super) {
       }
     });
     ComponentModel$1.topologicalTravel(componentTypes, ComponentModel$1.getAllClassMainTypes(), function (componentType) {
-      each$4(componentsMap.get(componentType), function (component) {
+      each$9(componentsMap.get(componentType), function (component) {
         if (component && (componentType !== 'series' || !isNotTargetSeries(component, payload))) {
           component.restoreData();
         }
@@ -64767,7 +65618,7 @@ function (_super) {
   GlobalModel.internalField = function () {
     reCreateSeriesIndices = function (ecModel) {
       var seriesIndices = ecModel._seriesIndices = [];
-      each$4(ecModel._componentsMap.get('series'), function (series) {
+      each$9(ecModel._componentsMap.get('series'), function (series) {
         // series may have been removed by `replaceMerge`.
         series && seriesIndices.push(series.componentIndex);
       });
@@ -64799,7 +65650,7 @@ function (_super) {
 
       var airaOption = baseOption.aria;
 
-      if (isObject$2(airaOption) && airaOption.enabled == null) {
+      if (isObject$3(airaOption) && airaOption.enabled == null) {
         airaOption.enabled = true;
       }
 
@@ -64827,7 +65678,7 @@ function mergeTheme(option, theme) {
   // PENDING
   // NOT use `colorLayer` in theme if option has `color`
   var notMergeColorLayer = option.color && !option.colorLayer;
-  each$4(theme, function (themeItem, name) {
+  each$9(theme, function (themeItem, name) {
     if (name === 'colorLayer' && notMergeColorLayer) {
       return;
     } // If it is component model mainType, the model handles that merge later.
@@ -64849,9 +65700,9 @@ function mergeTheme(option, theme) {
 function queryByIdOrName(attr, idOrName, cmpts) {
   // Here is a break from echarts4: string and number are
   // treated as equal.
-  if (isArray(idOrName)) {
+  if (isArray$1(idOrName)) {
     var keyMap_1 = createHashMap();
-    each$4(idOrName, function (idOrNameItem) {
+    each$9(idOrName, function (idOrNameItem) {
       if (idOrNameItem != null) {
         var idName = convertOptionIdName(idOrNameItem, null);
         idName != null && keyMap_1.set(idOrNameItem, true);
@@ -64878,7 +65729,7 @@ function filterBySubType(components, condition) {
 
 function normalizeSetOptionInput(opts) {
   var replaceMergeMainTypeMap = createHashMap();
-  opts && each$4(normalizeToArray(opts.replaceMerge), function (mainType) {
+  opts && each$9(normalizeToArray(opts.replaceMerge), function (mainType) {
     if (process.env.NODE_ENV !== 'production') {
       assert(ComponentModel$1.hasClass(mainType), '"' + mainType + '" is not valid component main type in "replaceMerge"');
     }
@@ -64902,7 +65753,7 @@ var ExtensionAPI =
 /** @class */
 function () {
   function ExtensionAPI(ecInstance) {
-    each$4(availableMethods, function (methodName) {
+    each$9(availableMethods, function (methodName) {
       this[methodName] = bind$1(ecInstance[methodName], ecInstance);
     }, this);
   }
@@ -64923,7 +65774,7 @@ function () {
 
   CoordinateSystemManager.prototype.create = function (ecModel, api) {
     var coordinateSystems = [];
-    each$4(coordinateSystemCreators, function (creater, type) {
+    each$9(coordinateSystemCreators, function (creater, type) {
       var list = creater.create(ecModel, api);
       coordinateSystems = coordinateSystems.concat(list || []);
     });
@@ -64931,7 +65782,7 @@ function () {
   };
 
   CoordinateSystemManager.prototype.update = function (ecModel, api) {
-    each$4(this._coordinateSystems, function (coordSys) {
+    each$9(this._coordinateSystems, function (coordSys) {
       coordSys.update && coordSys.update(ecModel, api);
     });
   };
@@ -64987,10 +65838,10 @@ function () {
   OptionManager.prototype.setOption = function (rawOption, optionPreprocessorFuncs, opt) {
     if (rawOption) {
       // That set dat primitive is dangerous if user reuse the data when setOption again.
-      each$4(normalizeToArray(rawOption.series), function (series) {
+      each$9(normalizeToArray(rawOption.series), function (series) {
         series && series.data && isTypedArray(series.data) && setAsPrimitive(series.data);
       });
-      each$4(normalizeToArray(rawOption.dataset), function (dataset) {
+      each$9(normalizeToArray(rawOption.dataset), function (dataset) {
         dataset && dataset.source && isTypedArray(dataset.source) && setAsPrimitive(dataset.source);
       });
     } // Caution: some series modify option data, if do not clone,
@@ -65205,11 +66056,11 @@ rawOption, optionPreprocessorFuncs, isNew) {
     }
 
   if (hasMedia) {
-    if (isArray(mediaOnRoot)) {
-      each$4(mediaOnRoot, function (singleMedia) {
+    if (isArray$1(mediaOnRoot)) {
+      each$9(mediaOnRoot, function (singleMedia) {
         if (process.env.NODE_ENV !== 'production') {
           // Real case of wrong config.
-          if (singleMedia && !singleMedia.option && isObject$2(singleMedia.query) && isObject$2(singleMedia.query.option)) {
+          if (singleMedia && !singleMedia.option && isObject$3(singleMedia.query) && isObject$3(singleMedia.query.option)) {
             error('Illegal media option. Must be like { media: [ { query: {}, option: {} } ] }');
           }
         }
@@ -65232,15 +66083,15 @@ rawOption, optionPreprocessorFuncs, isNew) {
   }
 
   doPreprocess(baseOption);
-  each$4(timelineOptionsOnRoot, function (option) {
+  each$9(timelineOptionsOnRoot, function (option) {
     return doPreprocess(option);
   });
-  each$4(mediaList, function (media) {
+  each$9(mediaList, function (media) {
     return doPreprocess(media.option);
   });
 
   function doPreprocess(option) {
-    each$4(optionPreprocessorFuncs, function (preProcess) {
+    each$9(optionPreprocessorFuncs, function (preProcess) {
       preProcess(option, isNew);
     });
   }
@@ -65267,7 +66118,7 @@ function applyMediaQuery(query, ecWidth, ecHeight) {
 
   };
   var applicatable = true;
-  each$4(query, function (value, attr) {
+  each$9(query, function (value, attr) {
     var matched = attr.match(QUERY_REG);
 
     if (!matched || !matched[1] || !matched[2]) {
@@ -65397,8 +66248,8 @@ function indicesEquals(indices1, indices2) {
 
 var OptionManager$1 = OptionManager;
 
-var each$2 = each$4;
-var isObject$1 = isObject$2;
+var each$7 = each$9;
+var isObject$2 = isObject$3;
 var POSSIBLE_STYLES = ['areaStyle', 'lineStyle', 'nodeStyle', 'linkStyle', 'chordStyle', 'label', 'labelLine'];
 
 function compatEC2ItemStyle(opt) {
@@ -65501,8 +66352,8 @@ function removeEC3NormalStatus(opt) {
 
 function compatTextStyle(opt, propName) {
   // Check whether is not object (string\null\undefined ...)
-  var labelOptSingle = isObject$1(opt) && opt[propName];
-  var textStyle = isObject$1(labelOptSingle) && labelOptSingle.textStyle;
+  var labelOptSingle = isObject$2(opt) && opt[propName];
+  var textStyle = isObject$2(labelOptSingle) && labelOptSingle.textStyle;
 
   if (textStyle) {
     if (process.env.NODE_ENV !== 'production') {
@@ -65529,7 +66380,7 @@ function compatEC3CommonStyles(opt) {
 }
 
 function processSeries(seriesOpt) {
-  if (!isObject$1(seriesOpt)) {
+  if (!isObject$2(seriesOpt)) {
     return;
   }
 
@@ -65582,7 +66433,7 @@ function processSeries(seriesOpt) {
       }
     }
 
-    each$4(seriesOpt.categories, function (opt) {
+    each$9(seriesOpt.categories, function (opt) {
       removeEC3NormalStatus(opt);
     });
   }
@@ -65611,7 +66462,7 @@ function processSeries(seriesOpt) {
     var mlData = markLine.data;
 
     for (var i = 0; i < mlData.length; i++) {
-      if (isArray(mlData[i])) {
+      if (isArray$1(mlData[i])) {
         compatEC3CommonStyles(mlData[i][0]);
         compatEC3CommonStyles(mlData[i][1]);
       } else {
@@ -65627,7 +66478,7 @@ function processSeries(seriesOpt) {
     compatTextStyle(seriesOpt, 'detail');
   } else if (seriesOpt.type === 'treemap') {
     convertNormalEmphasis(seriesOpt.breadcrumb, 'itemStyle');
-    each$4(seriesOpt.levels, function (opt) {
+    each$9(seriesOpt.levels, function (opt) {
       removeEC3NormalStatus(opt);
     });
   } else if (seriesOpt.type === 'tree') {
@@ -65637,40 +66488,40 @@ function processSeries(seriesOpt) {
 }
 
 function toArr(o) {
-  return isArray(o) ? o : o ? [o] : [];
+  return isArray$1(o) ? o : o ? [o] : [];
 }
 
 function toObj(o) {
-  return (isArray(o) ? o[0] : o) || {};
+  return (isArray$1(o) ? o[0] : o) || {};
 }
 
 function globalCompatStyle(option, isTheme) {
-  each$2(toArr(option.series), function (seriesOpt) {
-    isObject$1(seriesOpt) && processSeries(seriesOpt);
+  each$7(toArr(option.series), function (seriesOpt) {
+    isObject$2(seriesOpt) && processSeries(seriesOpt);
   });
   var axes = ['xAxis', 'yAxis', 'radiusAxis', 'angleAxis', 'singleAxis', 'parallelAxis', 'radar'];
   isTheme && axes.push('valueAxis', 'categoryAxis', 'logAxis', 'timeAxis');
-  each$2(axes, function (axisName) {
-    each$2(toArr(option[axisName]), function (axisOpt) {
+  each$7(axes, function (axisName) {
+    each$7(toArr(option[axisName]), function (axisOpt) {
       if (axisOpt) {
         compatTextStyle(axisOpt, 'axisLabel');
         compatTextStyle(axisOpt.axisPointer, 'label');
       }
     });
   });
-  each$2(toArr(option.parallel), function (parallelOpt) {
+  each$7(toArr(option.parallel), function (parallelOpt) {
     var parallelAxisDefault = parallelOpt && parallelOpt.parallelAxisDefault;
     compatTextStyle(parallelAxisDefault, 'axisLabel');
     compatTextStyle(parallelAxisDefault && parallelAxisDefault.axisPointer, 'label');
   });
-  each$2(toArr(option.calendar), function (calendarOpt) {
+  each$7(toArr(option.calendar), function (calendarOpt) {
     convertNormalEmphasis(calendarOpt, 'itemStyle');
     compatTextStyle(calendarOpt, 'dayLabel');
     compatTextStyle(calendarOpt, 'monthLabel');
     compatTextStyle(calendarOpt, 'yearLabel');
   }); // radar.name.textStyle
 
-  each$2(toArr(option.radar), function (radarOpt) {
+  each$7(toArr(option.radar), function (radarOpt) {
     compatTextStyle(radarOpt, 'name'); // Use axisName instead of name because component has name property
 
     if (radarOpt.name && radarOpt.axisName == null) {
@@ -65692,37 +66543,37 @@ function globalCompatStyle(option, isTheme) {
     }
 
     if (process.env.NODE_ENV !== 'production') {
-      each$2(radarOpt.indicator, function (indicatorOpt) {
+      each$7(radarOpt.indicator, function (indicatorOpt) {
         if (indicatorOpt.text) {
           deprecateReplaceLog('text', 'name', 'radar.indicator');
         }
       });
     }
   });
-  each$2(toArr(option.geo), function (geoOpt) {
-    if (isObject$1(geoOpt)) {
+  each$7(toArr(option.geo), function (geoOpt) {
+    if (isObject$2(geoOpt)) {
       compatEC3CommonStyles(geoOpt);
-      each$2(toArr(geoOpt.regions), function (regionObj) {
+      each$7(toArr(geoOpt.regions), function (regionObj) {
         compatEC3CommonStyles(regionObj);
       });
     }
   });
-  each$2(toArr(option.timeline), function (timelineOpt) {
+  each$7(toArr(option.timeline), function (timelineOpt) {
     compatEC3CommonStyles(timelineOpt);
     convertNormalEmphasis(timelineOpt, 'label');
     convertNormalEmphasis(timelineOpt, 'itemStyle');
     convertNormalEmphasis(timelineOpt, 'controlStyle', true);
     var data = timelineOpt.data;
-    isArray(data) && each$4(data, function (item) {
-      if (isObject$2(item)) {
+    isArray$1(data) && each$9(data, function (item) {
+      if (isObject$3(item)) {
         convertNormalEmphasis(item, 'label');
         convertNormalEmphasis(item, 'itemStyle');
       }
     });
   });
-  each$2(toArr(option.toolbox), function (toolboxOpt) {
+  each$7(toArr(option.toolbox), function (toolboxOpt) {
     convertNormalEmphasis(toolboxOpt, 'iconStyle');
-    each$2(toolboxOpt.feature, function (featureOpt) {
+    each$7(toolboxOpt.feature, function (featureOpt) {
       convertNormalEmphasis(featureOpt, 'iconStyle');
     });
   });
@@ -65768,7 +66619,7 @@ function set(opt, path, val, overwrite) {
 }
 
 function compatLayoutProperties(option) {
-  option && each$4(LAYOUT_PROPERTIES, function (prop) {
+  option && each$9(LAYOUT_PROPERTIES, function (prop) {
     if (prop[0] in option && !(prop[1] in option)) {
       option[prop[1]] = option[prop[0]];
     }
@@ -65857,8 +66708,8 @@ function globalBackwardCompat(option, isTheme) {
   globalCompatStyle(option, isTheme); // Make sure series array for model initialization.
 
   option.series = normalizeToArray(option.series);
-  each$4(option.series, function (seriesOpt) {
-    if (!isObject$2(seriesOpt)) {
+  each$9(option.series, function (seriesOpt) {
+    if (!isObject$3(seriesOpt)) {
       return;
     }
 
@@ -65974,15 +66825,15 @@ function globalBackwardCompat(option, isTheme) {
     option.visualMap = option.dataRange;
   }
 
-  each$4(COMPATITABLE_COMPONENTS, function (componentName) {
+  each$9(COMPATITABLE_COMPONENTS, function (componentName) {
     var options = option[componentName];
 
     if (options) {
-      if (!isArray(options)) {
+      if (!isArray$1(options)) {
         options = [options];
       }
 
-      each$4(options, function (option) {
+      each$9(options, function (option) {
         compatLayoutProperties(option);
       });
     }
@@ -66026,7 +66877,7 @@ function dataStack$1(ecModel) {
 }
 
 function calculateStack(stackInfoList) {
-  each$4(stackInfoList, function (targetStackInfo, idxInStack) {
+  each$9(stackInfoList, function (targetStackInfo, idxInStack) {
     var resultVal = [];
     var resultNaN = [NaN, NaN];
     var dims = [targetStackInfo.stackResultDimension, targetStackInfo.stackedOverDimension];
@@ -66172,7 +67023,7 @@ function detectSourceFormat(data) {
 
   if (isTypedArray(data)) {
     sourceFormat = SOURCE_FORMAT_TYPED_ARRAY;
-  } else if (isArray(data)) {
+  } else if (isArray$1(data)) {
     // FIXME Whether tolerate null in top level array?
     if (data.length === 0) {
       sourceFormat = SOURCE_FORMAT_ARRAY_ROWS;
@@ -66183,15 +67034,15 @@ function detectSourceFormat(data) {
 
       if (item == null) {
         continue;
-      } else if (isArray(item)) {
+      } else if (isArray$1(item)) {
         sourceFormat = SOURCE_FORMAT_ARRAY_ROWS;
         break;
-      } else if (isObject$2(item)) {
+      } else if (isObject$3(item)) {
         sourceFormat = SOURCE_FORMAT_OBJECT_ROWS;
         break;
       }
     }
-  } else if (isObject$2(data)) {
+  } else if (isObject$3(data)) {
     for (var key in data) {
       if (hasOwn(data, key) && isArrayLike(data[key])) {
         sourceFormat = SOURCE_FORMAT_KEYED_COLUMNS;
@@ -66264,13 +67115,13 @@ dimensionsDefine) {
   } else if (sourceFormat === SOURCE_FORMAT_KEYED_COLUMNS) {
     if (!dimensionsDefine) {
       dimensionsDefine = [];
-      each$4(data, function (colArr, key) {
+      each$9(data, function (colArr, key) {
         dimensionsDefine.push(key);
       });
     }
   } else if (sourceFormat === SOURCE_FORMAT_ORIGINAL) {
     var value0 = getDataItemValue(data[0]);
-    dimensionsDetectedCount = isArray(value0) && value0.length || 1;
+    dimensionsDetectedCount = isArray$1(value0) && value0.length || 1;
   } else if (sourceFormat === SOURCE_FORMAT_TYPED_ARRAY) {
     if (process.env.NODE_ENV !== 'production') {
       assert(!!dimensionsDefine, 'dimensions must be given if data is TypedArray.');
@@ -66293,7 +67144,7 @@ function objectRowsCollectDimensions(data) {
 
   if (obj) {
     var dimensions_1 = [];
-    each$4(obj, function (value, key) {
+    each$9(obj, function (value, key) {
       dimensions_1.push(key);
     });
     return dimensions_1;
@@ -66311,7 +67162,7 @@ function normalizeDimensionsOption(dimensionsDefine) {
 
   var nameMap = createHashMap();
   return map$1(dimensionsDefine, function (rawItem, index) {
-    rawItem = isObject$2(rawItem) ? rawItem : {
+    rawItem = isObject$3(rawItem) ? rawItem : {
       name: rawItem
     }; // Other fields will be discarded.
 
@@ -66555,7 +67406,7 @@ function () {
       pure: true,
       appendData: function (newData) {
         var data = this._data;
-        each$4(newData, function (newCol, key) {
+        each$9(newData, function (newCol, key) {
           var oldCol = data[key] || (data[key] = []);
 
           for (var i = 0; i < (newCol || []).length; i++) {
@@ -66799,7 +67650,7 @@ function () {
       params.value = extendParams.interpolatedValue;
     }
 
-    if (labelDimIndex != null && isArray(params.value)) {
+    if (labelDimIndex != null && isArray$1(params.value)) {
       params.value = params.value[labelDimIndex];
     }
 
@@ -66833,7 +67684,7 @@ function () {
 
         var val = retrieveRawValue(data, dataIndex, dimLoose);
 
-        if (extendParams && isArray(extendParams.interpolatedValue)) {
+        if (extendParams && isArray$1(extendParams.interpolatedValue)) {
           var dimIndex = data.getDimensionIndex(dimLoose);
 
           if (dimIndex >= 0) {
@@ -66887,7 +67738,7 @@ function normalizeTooltipFormatResult(result) {
 
   var markupFragment;
 
-  if (isObject$2(result)) {
+  if (isObject$3(result)) {
     if (result.type) {
       markupFragment = result;
     } else {
@@ -67015,7 +67866,7 @@ function () {
       if (!skip && (forceFirstProgress || start < end)) {
         var progress = this._progress;
 
-        if (isArray(progress)) {
+        if (isArray$1(progress)) {
           for (var i = 0; i < progress.length; i++) {
             this._doProgress(progress[i], start, end, modBy, modDataCount);
           }
@@ -67077,7 +67928,7 @@ function () {
       } // To simplify no progress checking, array must has item.
 
 
-      if (isArray(progress) && !progress.length) {
+      if (isArray$1(progress) && !progress.length) {
         progress = null;
       }
     }
@@ -67462,7 +68313,7 @@ function createExternalSource(internalSource, externalTransform) {
   var dimsDef = internalSource.dimensionsDefine;
 
   if (dimsDef) {
-    each$4(dimsDef, function (dimDef, idx) {
+    each$9(dimsDef, function (dimDef, idx) {
       var name = dimDef.name;
       var dimDefExt = {
         index: idx,
@@ -67682,7 +68533,7 @@ pipeIndex) {
     throwError(errMsg);
   }
 
-  if (!isObject$2(transOption)) {
+  if (!isObject$3(transOption)) {
     if (process.env.NODE_ENV !== 'production') {
       errMsg = 'transform declaration must be an object rather than ' + typeof transOption + '.';
     }
@@ -67724,7 +68575,7 @@ pipeIndex) {
   return map$1(resultList, function (result, resultIndex) {
     var errMsg = '';
 
-    if (!isObject$2(result)) {
+    if (!isObject$3(result)) {
       if (process.env.NODE_ENV !== 'production') {
         errMsg = 'A transform should not return some empty results.';
       }
@@ -69216,7 +70067,7 @@ function () {
     var sourceList;
     var upSourceList = [];
     var upstreamSignList = [];
-    each$4(upMgrList, function (upMgr) {
+    each$9(upMgrList, function (upMgr) {
       upMgr.prepareSource();
       var upSource = upMgr.getSource(fromTransformResult || 0);
       var errMsg = '';
@@ -69453,7 +70304,7 @@ function getBlockGapLevel(frag) {
     var gapLevel_1 = 0;
     var subBlockLen = frag.blocks.length;
     var hasInnerGap_1 = subBlockLen > 1 || subBlockLen > 0 && !frag.noHeader;
-    each$4(frag.blocks, function (subBlock) {
+    each$9(frag.blocks, function (subBlock) {
       var subGapLevel = getBlockGapLevel(subBlock); // If the some of the sub-blocks have some gaps (like 10px) inside, this block
       // should use a larger gap (like 20px) to distinguish those sub-blocks.
 
@@ -69475,7 +70326,7 @@ function buildSection(ctx, fragment, topMarginForOuterGap, toolTipTextStyle) {
   var gaps = getGap(getBlockGapLevel(fragment));
   var subMarkupTextList = [];
   var subBlocks = fragment.blocks || [];
-  assert(!subBlocks || isArray(subBlocks));
+  assert(!subBlocks || isArray$1(subBlocks));
   subBlocks = subBlocks || [];
   var orderMode = ctx.orderMode;
 
@@ -69497,7 +70348,7 @@ function buildSection(ctx, fragment, topMarginForOuterGap, toolTipTextStyle) {
       }
   }
 
-  each$4(subBlocks, function (subBlock, idx) {
+  each$9(subBlocks, function (subBlock, idx) {
     var valueFormatter = fragment.valueFormatter;
     var subMarkupText = getBuilder(subBlock)( // Inherit valueFormatter
     valueFormatter ? extend(extend({}, ctx), {
@@ -69530,9 +70381,9 @@ function buildNameValue(ctx, fragment, topMarginForOuterGap, toolTipTextStyle) {
   var useUTC = ctx.useUTC;
 
   var valueFormatter = fragment.valueFormatter || ctx.valueFormatter || function (value) {
-    value = isArray(value) ? value : [value];
+    value = isArray$1(value) ? value : [value];
     return map$1(value, function (val, idx) {
-      return makeValueReadable(val, isArray(valueTypeOption) ? valueTypeOption[idx] : valueTypeOption, useUTC);
+      return makeValueReadable(val, isArray$1(valueTypeOption) ? valueTypeOption[idx] : valueTypeOption, useUTC);
     });
   };
 
@@ -69598,7 +70449,7 @@ function wrapInlineValueHTML(valueList, alignRight, valueCloseToMarker, style) {
   // Do not too close to marker, considering there are multiple values separated by spaces.
   var paddingStr = valueCloseToMarker ? '10px' : '20px';
   var alignCSS = alignRight ? "float:right;margin-left:" + paddingStr : '';
-  valueList = isArray(valueList) ? valueList : [valueList];
+  valueList = isArray$1(valueList) ? valueList : [valueList];
   return "<span style=\"" + alignCSS + ";" + style + "\">" // Value has commas inside, so use '  ' as delimiter for multiple values.
   + map$1(valueList, function (value) {
     return encodeHTML(value);
@@ -69617,7 +70468,7 @@ function wrapInlineValueRichText(ctx, values, alignRight, valueCloseToMarker, st
     align: 'right'
   }); // Value has commas inside, so use '  ' as delimiter for multiple values.
 
-  return ctx.markupStyleCreator.wrapRichTextStyle(isArray(values) ? values.join('  ') : values, styles);
+  return ctx.markupStyleCreator.wrapRichTextStyle(isArray$1(values) ? values.join('  ') : values, styles);
 }
 
 function retrieveVisualColorForTooltipMarker(series, dataIndex) {
@@ -69691,8 +70542,8 @@ function () {
   TooltipMarkupStyleCreator.prototype.wrapRichTextStyle = function (text, styles) {
     var finalStl = {};
 
-    if (isArray(styles)) {
-      each$4(styles, function (stl) {
+    if (isArray$1(styles)) {
+      each$9(styles, function (stl) {
         return extend(finalStl, stl);
       });
     } else {
@@ -69716,7 +70567,7 @@ function defaultSeriesFormatTooltip(opt) {
   var tooltipDims = data.mapDimensionsAll('defaultedTooltip');
   var tooltipDimLen = tooltipDims.length;
   var value = series.getRawValue(dataIndex);
-  var isValueArr = isArray(value);
+  var isValueArr = isArray$1(value);
   var markerColor = retrieveVisualColorForTooltipMarker(series, dataIndex); // Complicated rule for pretty tooltip.
 
   var inlineValue;
@@ -69775,10 +70626,10 @@ function formatTooltipArrayValue(value, series, dataIndex, tooltipDims, colorStr
   var inlineValues = [];
   var inlineValueTypes = [];
   var blocks = [];
-  tooltipDims.length ? each$4(tooltipDims, function (dim) {
+  tooltipDims.length ? each$9(tooltipDims, function (dim) {
     setEachItem(retrieveRawValue(data, dataIndex, dim), dim);
   }) // By default, all dims is used on tooltip.
-  : each$4(value, setEachItem);
+  : each$9(value, setEachItem);
 
   function setEachItem(val, dim) {
     var dimInfo = data.getDimensionInfo(dim); // If `dimInfo.tooltip` is not set, show tooltip.
@@ -70250,7 +71101,7 @@ function (_super) {
     if (selectedMode === 'series') {
       option.selectedMap = 'all';
     } else if (selectedMode === 'multiple') {
-      if (!isObject$2(option.selectedMap)) {
+      if (!isObject$3(option.selectedMap)) {
         option.selectedMap = {};
       }
 
@@ -70341,7 +71192,7 @@ function getSeriesAutoName(seriesModel) {
   var data = seriesModel.getRawData();
   var dataDims = data.mapDimensionsAll('seriesName');
   var nameArr = [];
-  each$4(dataDims, function (dataDim) {
+  each$9(dataDims, function (dataDim) {
     var dimInfo = data.getDimensionInfo(dataDim);
     dimInfo.displayName && nameArr.push(dimInfo.displayName);
   });
@@ -70367,7 +71218,7 @@ function dataTaskProgress(param, context) {
 
 
 function wrapData(data, seriesModel) {
-  each$4(concatArray(data.CHANGABLE_METHODS, data.DOWNSAMPLE_METHODS), function (methodName) {
+  each$9(concatArray(data.CHANGABLE_METHODS, data.DOWNSAMPLE_METHODS), function (methodName) {
     data.wrapMethod(methodName, curry$1(onDataChange, seriesModel));
   });
 }
@@ -70605,7 +71456,7 @@ function toggleHighlight(data, payload, state) {
   var highlightDigit = payload && payload.highlightKey != null ? getHighlightDigit(payload.highlightKey) : null;
 
   if (dataIndex != null) {
-    each$4(normalizeToArray(dataIndex), function (dataIdx) {
+    each$9(normalizeToArray(dataIndex), function (dataIdx) {
       elSetState(data.getItemGraphicEl(dataIdx), state, highlightDigit);
     });
   } else {
@@ -71284,7 +72135,7 @@ function () {
     var stageTaskMap = this._stageTaskMap;
     var ecModel = this.api.getModel();
     var api = this.api;
-    each$4(this._allHandlers, function (handler) {
+    each$9(this._allHandlers, function (handler) {
       var record = stageTaskMap.get(handler.uid) || stageTaskMap.set(handler.uid, {});
       var errMsg = '';
 
@@ -71325,7 +72176,7 @@ function () {
     opt = opt || {};
     var unfinished = false;
     var scheduler = this;
-    each$4(stageHandlers, function (stageHandler, idx) {
+    each$9(stageHandlers, function (stageHandler, idx) {
       if (opt.visualType && opt.visualType !== stageHandler.visualType) {
         return;
       }
@@ -71506,7 +72357,7 @@ function () {
     // dirty info from upsteam.
     else {
         overallProgress = false;
-        each$4(ecModel.getSeries(), createStub);
+        each$9(ecModel.getSeries(), createStub);
       }
 
     function createStub(seriesModel) {
@@ -71976,7 +72827,7 @@ function () {
           dataIndex: 1,
           dataType: 1
         };
-        each$4(query, function (val, key) {
+        each$9(query, function (val, key) {
           var reserved = false;
 
           for (var i = 0; i < suffixes_1.length; i++) {
@@ -72226,6 +73077,33 @@ function getVisualFromData(data, key) {
 
   }
 }
+function setItemVisualFromData(data, dataIndex, key, value) {
+  switch (key) {
+    case 'color':
+      // Make sure not sharing style object.
+      var style = data.ensureUniqueItemVisual(dataIndex, 'style');
+      style[data.getVisual('drawType')] = value; // Mark the color has been changed, not from palette anymore
+
+      data.setItemVisual(dataIndex, 'colorFromPalette', false);
+      break;
+
+    case 'opacity':
+      data.ensureUniqueItemVisual(dataIndex, 'style').opacity = value;
+      break;
+
+    case 'symbol':
+    case 'symbolSize':
+    case 'liftZ':
+      data.setItemVisual(dataIndex, key, value);
+      break;
+
+    default:
+      if (process.env.NODE_ENV !== 'production') {
+        console.warn("Unknown visual type " + key);
+      }
+
+  }
+}
 
 // Inlucdes: pieSelect, pieUnSelect, pieToggleSelect, mapSelect, mapUnSelect, mapToggleSelect
 
@@ -72242,7 +73120,7 @@ function createLegacyDataSelectAction(seriesType, ecRegisterAction) {
     return seriesIndices;
   }
 
-  each$4([[seriesType + 'ToggleSelect', 'toggleSelect'], [seriesType + 'Select', 'select'], [seriesType + 'UnSelect', 'unselect']], function (eventsMap) {
+  each$9([[seriesType + 'ToggleSelect', 'toggleSelect'], [seriesType + 'Select', 'select'], [seriesType + 'UnSelect', 'unselect']], function (eventsMap) {
     ecRegisterAction(eventsMap[0], function (payload, ecModel, api) {
       payload = extend({}, payload);
 
@@ -72281,7 +73159,7 @@ function handleSeriesLegacySelectEvents(type, eventPostfix, ecIns, ecModel, payl
           ecIns.trigger(legacyEventName, {
             type: legacyEventName,
             seriesId: seriesModel.id,
-            name: isArray(dataIndex) ? data.getName(dataIndex[0]) : data.getName(dataIndex),
+            name: isArray$1(dataIndex) ? data.getName(dataIndex[0]) : data.getName(dataIndex),
             selected: isString(selectedMap) ? selectedMap : extend({}, selectedMap)
           });
         }
@@ -72599,7 +73477,7 @@ var symbolShapeMakers = {
   }
 };
 var symbolBuildProxies = {};
-each$4(symbolCtors, function (Ctor, name) {
+each$9(symbolCtors, function (Ctor, name) {
   symbolBuildProxies[name] = new Ctor();
 });
 var SymbolClz = Path$1.extend({
@@ -72704,7 +73582,7 @@ function normalizeSymbolOffset(symbolOffset, symbolSize) {
     return;
   }
 
-  if (!isArray(symbolOffset)) {
+  if (!isArray$1(symbolOffset)) {
     symbolOffset = [symbolOffset, symbolOffset];
   }
 
@@ -72800,7 +73678,7 @@ function normalizeLineDash(lineType, lineWidth) {
         : lineType === 'dotted'
             ? [lineWidth]
             : isNumber(lineType)
-                ? [lineType] : isArray(lineType) ? lineType : null;
+                ? [lineType] : isArray$1(lineType) ? lineType : null;
 }
 function getLineDash(el) {
     var style = el.style;
@@ -73429,7 +74307,7 @@ function createOrUpdatePatternFromDecal(decalObject, api) {
     for (var i = 0; i < decalKeys.length; ++i) {
       var value = decalOpt[decalKeys[i]];
 
-      if (value != null && !isArray(value) && !isString(value) && !isNumber(value) && typeof value !== 'boolean') {
+      if (value != null && !isArray$1(value) && !isString(value) && !isNumber(value) && typeof value !== 'boolean') {
         isValidKey = false;
         break;
       }
@@ -74157,7 +75035,7 @@ function (_super) {
     var replaceMerge;
     var transitionOpt;
 
-    if (isObject$2(notMerge)) {
+    if (isObject$3(notMerge)) {
       lazyUpdate = notMerge.lazyUpdate;
       silent = notMerge.silent;
       replaceMerge = notMerge.replaceMerge;
@@ -74305,7 +75183,7 @@ function (_super) {
     var zr = this._zr;
     var list = zr.storage.getDisplayList(); // Stop animations
 
-    each$4(list, function (el) {
+    each$9(list, function (el) {
       el.stopAnimation(null, true);
     });
     return zr.painter.toDataURL();
@@ -74322,7 +75200,7 @@ function (_super) {
     var ecModel = this._model;
     var excludesComponentViews = [];
     var self = this;
-    each$4(excludeComponents, function (componentType) {
+    each$9(excludeComponents, function (componentType) {
       ecModel.eachComponent({
         mainType: componentType
       }, function (component) {
@@ -74335,7 +75213,7 @@ function (_super) {
       });
     });
     var url = this._zr.painter.getType() === 'svg' ? this.getSvgDataURL() : this.renderToCanvas(opts).toDataURL('image/' + (opts && opts.type || 'png'));
-    each$4(excludesComponentViews, function (view) {
+    each$9(excludesComponentViews, function (view) {
       view.group.ignore = false;
     });
     return url;
@@ -74360,7 +75238,7 @@ function (_super) {
       var bottom_1 = -MAX_NUMBER;
       var canvasList_1 = [];
       var dpr_1 = opts && opts.pixelRatio || this.getDevicePixelRatio();
-      each$4(instances, function (chart, id) {
+      each$9(instances, function (chart, id) {
         if (chart.group === groupId) {
           var canvas = isSvg ? chart.getZr().painter.getSvgDom().innerHTML : chart.renderToCanvas(clone$3(opts));
           var boundingRect = chart.getDom().getBoundingClientRect();
@@ -74392,7 +75270,7 @@ function (_super) {
 
       if (isSvg) {
         var content_1 = '';
-        each$4(canvasList_1, function (item) {
+        each$9(canvasList_1, function (item) {
           var x = item.left - left_1;
           var y = item.top - top_1;
           content_1 += '<g transform="translate(' + x + ',' + y + ')">' + item.dom + '</g>';
@@ -74421,7 +75299,7 @@ function (_super) {
           }));
         }
 
-        each$4(canvasList_1, function (item) {
+        each$9(canvasList_1, function (item) {
           var img = new ZRImage$1({
             style: {
               x: item.left * dpr_1 - left_1,
@@ -74462,8 +75340,8 @@ function (_super) {
     var ecModel = this._model;
     var result;
     var findResult = parseFinder(ecModel, finder);
-    each$4(findResult, function (models, key) {
-      key.indexOf('Models') >= 0 && each$4(models, function (model) {
+    each$9(findResult, function (models, key) {
+      key.indexOf('Models') >= 0 && each$9(models, function (model) {
         var coordSys = model.coordinateSystem;
 
         if (coordSys && coordSys.containPoint) {
@@ -74541,7 +75419,7 @@ function (_super) {
   ECharts.prototype._initEvents = function () {
     var _this = this;
 
-    each$4(MOUSE_EVENT_NAMES, function (eveName) {
+    each$9(MOUSE_EVENT_NAMES, function (eveName) {
       var handler = function (e) {
         var ecModel = _this.getModel();
 
@@ -74621,14 +75499,14 @@ function (_super) {
 
       _this._zr.on(eveName, handler, _this);
     });
-    each$4(eventActionMap, function (actionType, eventType) {
+    each$9(eventActionMap, function (actionType, eventType) {
       _this._messageCenter.on(eventType, function (event) {
         this.trigger(eventType, event);
       }, _this);
     }); // Extra events
     // TODO register?
 
-    each$4(['selectchanged'], function (eventType) {
+    each$9(['selectchanged'], function (eventType) {
       _this._messageCenter.on(eventType, function (event) {
         this.trigger(eventType, event);
       }, _this);
@@ -74667,10 +75545,10 @@ function (_super) {
     var chart = this;
     var api = chart._api;
     var ecModel = chart._model;
-    each$4(chart._componentsViews, function (component) {
+    each$9(chart._componentsViews, function (component) {
       component.dispose(ecModel, api);
     });
-    each$4(chart._chartsViews, function (chart) {
+    each$9(chart._chartsViews, function (chart) {
       chart.dispose(ecModel, api);
     }); // Dispose after all views disposed
 
@@ -74751,7 +75629,7 @@ function (_super) {
       return;
     }
 
-    if (isObject$2(name)) {
+    if (isObject$3(name)) {
       cfg = name;
       name = '';
     }
@@ -74809,7 +75687,7 @@ function (_super) {
       return;
     }
 
-    if (!isObject$2(opt)) {
+    if (!isObject$3(opt)) {
       opt = {
         silent: !!opt
       };
@@ -74988,7 +75866,7 @@ function (_super) {
         // FIXME
         // Chart will not be update directly here, except set dirty.
         // But there is no such scenario now.
-        each$4([].concat(ecIns._componentsViews).concat(ecIns._chartsViews), callView);
+        each$9([].concat(ecIns._componentsViews).concat(ecIns._chartsViews), callView);
         return;
       }
 
@@ -75007,7 +75885,7 @@ function (_super) {
 
       if (excludeSeriesId != null) {
         excludeSeriesIdMap = createHashMap();
-        each$4(normalizeToArray(excludeSeriesId), function (id) {
+        each$9(normalizeToArray(excludeSeriesId), function (id) {
           var modelId = convertOptionIdName(id, null);
 
           if (modelId != null) {
@@ -75043,7 +75921,7 @@ function (_super) {
 
 
             if (dispatchers) {
-              each$4(dispatchers, function (dispatcher) {
+              each$9(dispatchers, function (dispatcher) {
                 payload.type === HIGHLIGHT_ACTION_TYPE ? enterEmphasis(dispatcher) : leaveEmphasis(dispatcher);
               });
             }
@@ -75305,7 +76183,7 @@ function (_super) {
         allLeaveBlur(this._api);
       }
 
-      each$4(payloads, function (batchItem) {
+      each$9(payloads, function (batchItem) {
         // Action can specify the event by return it.
         eventObj = actionWrap.action(batchItem, _this._model, _this._api); // Emit event outside
 
@@ -75496,7 +76374,7 @@ function (_super) {
 
           return a.zlevel - b.zlevel;
         });
-        each$4(zLevels, function (item) {
+        each$9(zLevels, function (item) {
           var componentModel = ecModel.getComponent(item.type, item.idx);
           var zlevel = item.zlevel;
           var key = item.key;
@@ -75528,12 +76406,12 @@ function (_super) {
     render = function (ecIns, ecModel, api, payload, updateParams) {
       allocateZlevels(ecModel);
       renderComponents(ecIns, ecModel, api, payload, updateParams);
-      each$4(ecIns._chartsViews, function (chart) {
+      each$9(ecIns._chartsViews, function (chart) {
         chart.__alive = false;
       });
       renderSeries(ecIns, ecModel, api, payload, updateParams); // Remove groups of unrendered charts
 
-      each$4(ecIns._chartsViews, function (chart) {
+      each$9(ecIns._chartsViews, function (chart) {
         if (!chart.__alive) {
           chart.remove(ecModel, api);
         }
@@ -75541,7 +76419,7 @@ function (_super) {
     };
 
     renderComponents = function (ecIns, ecModel, api, payload, updateParams, dirtyList) {
-      each$4(dirtyList || ecIns._componentsViews, function (componentView) {
+      each$9(dirtyList || ecIns._componentsViews, function (componentView) {
         var componentModel = componentView.__model;
         clearStates(componentModel, componentView);
         componentView.render(componentModel, ecModel, api, payload);
@@ -75916,7 +76794,7 @@ function (_super) {
         }
       }
 
-      each$4(eventActionMap, function (actionType, eventType) {
+      each$9(eventActionMap, function (actionType, eventType) {
         chart._messageCenter.on(eventType, function (event) {
           if (connectedGroups[chart.group] && chart[CONNECT_STATUS_KEY] !== CONNECT_STATUS_PENDING) {
             if (event && event.escapeConnect) {
@@ -75925,13 +76803,13 @@ function (_super) {
 
             var action_1 = chart.makeActionFromEvent(event);
             var otherCharts_1 = [];
-            each$4(instances, function (otherChart) {
+            each$9(instances, function (otherChart) {
               if (otherChart !== chart && otherChart.group === chart.group) {
                 otherCharts_1.push(otherChart);
               }
             });
             updateConnectedChartsStatus(otherCharts_1, CONNECT_STATUS_PENDING);
-            each$4(otherCharts_1, function (otherChart) {
+            each$9(otherCharts_1, function (otherChart) {
               if (otherChart[CONNECT_STATUS_KEY] !== CONNECT_STATUS_UPDATING) {
                 otherChart.dispatchAction(action_1);
               }
@@ -76063,17 +76941,17 @@ function init(dom, theme, opts) {
 
 function connect(groupId) {
   // Is array of charts
-  if (isArray(groupId)) {
+  if (isArray$1(groupId)) {
     var charts = groupId;
     groupId = null; // If any chart has group
 
-    each$4(charts, function (chart) {
+    each$9(charts, function (chart) {
       if (chart.group != null) {
         groupId = chart.group;
       }
     });
     groupId = groupId || 'g_' + groupIdBase++;
-    each$4(charts, function (chart) {
+    each$9(charts, function (chart) {
       chart.group = groupId;
     });
   }
@@ -76159,7 +77037,7 @@ function registerAction(actionInfo, eventName, action) {
     eventName = '';
   }
 
-  var actionType = isObject$2(actionInfo) ? actionInfo.type : [actionInfo, actionInfo = {
+  var actionType = isObject$3(actionInfo) ? actionInfo.type : [actionInfo, actionInfo = {
     event: eventName
   }][0]; // Event name is all lowercase
 
@@ -76210,7 +77088,7 @@ function registerVisual(priority, visualTask) {
 var registeredTasks = [];
 
 function normalizeRegister(targetList, priority, fn, defaultPriority, visualType) {
-  if (isFunction(priority) || isObject$2(priority)) {
+  if (isFunction(priority) || isObject$3(priority)) {
     fn = priority;
     priority = defaultPriority;
   }
@@ -76221,7 +77099,7 @@ function normalizeRegister(targetList, priority, fn, defaultPriority, visualType
     } // Check duplicate
 
 
-    each$4(targetList, function (wrap) {
+    each$9(targetList, function (wrap) {
       assert(wrap.__raw !== fn);
     });
   } // Already registered
@@ -76272,7 +77150,7 @@ function setCanvasCreator(creator) {
  * Compatible with previous `echarts.registerMap`.
  */
 
-function registerMap(mapName, geoJson, specialAreas) {
+function registerMap$1(mapName, geoJson, specialAreas) {
   var registerMap = getImpl('registerMap');
   registerMap && registerMap(mapName, geoJson, specialAreas);
 }
@@ -76672,7 +77550,7 @@ function summarizeDimensions(data, schema) {
   var defaultedLabel = [];
   var defaultedTooltip = [];
   var userOutputEncode = {};
-  each$4(data.dimensions, function (dimName) {
+  each$9(data.dimensions, function (dimName) {
     var dimItem = data.getDimensionInfo(dimName);
     var coordDim = dimItem.coordDim;
 
@@ -77019,7 +77897,7 @@ function createDimNameMap(dimsDef) {
 
   for (var i = 0; i < (dimsDef || []).length; i++) {
     var dimDefItemRaw = dimsDef[i];
-    var userDimName = isObject$2(dimDefItemRaw) ? dimDefItemRaw.name : dimDefItemRaw;
+    var userDimName = isObject$3(dimDefItemRaw) ? dimDefItemRaw.name : dimDefItemRaw;
 
     if (userDimName != null && dataDimNameMap.get(userDimName) == null) {
       dataDimNameMap.set(userDimName, i);
@@ -77036,7 +77914,7 @@ function shouldOmitUnusedDimensions(dimCount) {
   return dimCount > 30;
 }
 
-var isObject = isObject$2;
+var isObject$1 = isObject$3;
 var map = map$1;
 var CtorInt32Array = typeof Int32Array === 'undefined' ? Array : Int32Array; // Use prefix to avoid index to be the same as otherIdList[idx],
 // which will cause weird udpate animation.
@@ -77169,7 +78047,7 @@ function () {
 
     if (this._dimOmitted) {
       var dimIdxToName_1 = this._dimIdxToName = createHashMap();
-      each$4(dimensionNames, function (dimName) {
+      each$9(dimensionNames, function (dimName) {
         dimIdxToName_1.set(dimensionInfos[dimName].storeDimIndex, dimName);
       });
     }
@@ -77535,7 +78413,7 @@ function () {
   };
 
   SeriesData.prototype.setCalculationInfo = function (key, value) {
-    isObject(key) ? extend(this._calculationInfo, key) : this._calculationInfo[key] = value;
+    isObject$1(key) ? extend(this._calculationInfo, key) : this._calculationInfo[key] = value;
   };
   /**
    * @return Never be null/undefined. `number` will be converted to string. Becuase:
@@ -77635,7 +78513,7 @@ function () {
     var _this = this;
 
     var store = this._store;
-    return isArray(dimensions) ? store.getValues(map(dimensions, function (dim) {
+    return isArray$1(dimensions) ? store.getValues(map(dimensions, function (dim) {
       return _this._getStoreDimIndex(dim);
     }), idx) : store.getValues(dimensions);
   };
@@ -77762,7 +78640,7 @@ function () {
 
     var innerRange = {};
     var dims = keys(range);
-    each$4(dims, function (dim) {
+    each$9(dims, function (dim) {
       var dimIdx = _this._getStoreDimIndex(dim);
 
       innerRange[dimIdx] = range[dim];
@@ -77806,7 +78684,7 @@ function () {
     var fCtx = ctx || ctxCompat || this;
 
     if (process.env.NODE_ENV !== 'production') {
-      each$4(normalizeDimensions(dims), function (dim) {
+      each$9(normalizeDimensions(dims), function (dim) {
         var dimInfo = _this.getDimensionInfo(dim);
 
         if (!dimInfo.isCalculationCoord) {
@@ -77886,7 +78764,7 @@ function () {
   SeriesData.prototype.setVisual = function (kvObj, val) {
     this._visual = this._visual || {};
 
-    if (isObject(kvObj)) {
+    if (isObject$1(kvObj)) {
       extend(this._visual, kvObj);
     } else {
       this._visual[kvObj] = val;
@@ -77936,9 +78814,9 @@ function () {
     if (val == null) {
       val = this.getVisual(key); // TODO Performance?
 
-      if (isArray(val)) {
+      if (isArray$1(val)) {
         val = val.slice();
-      } else if (isObject(val)) {
+      } else if (isObject$1(val)) {
         val = extend({}, val);
       }
 
@@ -77953,7 +78831,7 @@ function () {
     var itemVisual = this._itemVisuals[idx] || {};
     this._itemVisuals[idx] = itemVisual;
 
-    if (isObject(key)) {
+    if (isObject$1(key)) {
       extend(itemVisual, key);
     } else {
       itemVisual[key] = value;
@@ -77970,7 +78848,7 @@ function () {
   };
 
   SeriesData.prototype.setLayout = function (key, val) {
-    isObject(key) ? extend(this._layout, key) : this._layout[key] = val;
+    isObject$1(key) ? extend(this._layout, key) : this._layout[key] = val;
   };
   /**
    * Get layout property.
@@ -78020,7 +78898,7 @@ function () {
   };
 
   SeriesData.prototype.eachItemGraphicEl = function (cb, context) {
-    each$4(this._graphicEls, function (el, idx) {
+    each$9(this._graphicEls, function (el, idx) {
       if (el) {
         cb && cb.call(context, el, idx);
       }
@@ -78069,7 +78947,7 @@ function () {
   SeriesData.internalField = function () {
     prepareInvertedIndex = function (data) {
       var invertedIndicesMap = data._invertedIndicesMap;
-      each$4(invertedIndicesMap, function (invertedIndices, dim) {
+      each$9(invertedIndicesMap, function (invertedIndices, dim) {
         var dimInfo = data._dimInfos[dim]; // Currently, only dimensions that has ordinalMeta can create inverted indices.
 
         var ordinalMeta = dimInfo.ordinalMeta;
@@ -78114,7 +78992,7 @@ function () {
     };
 
     normalizeDimensions = function (dimensions) {
-      if (!isArray(dimensions)) {
+      if (!isArray$1(dimensions)) {
         dimensions = dimensions != null ? [dimensions] : [];
       }
 
@@ -78133,13 +79011,13 @@ function () {
     };
 
     transferProperties = function (target, source) {
-      each$4(TRANSFERABLE_PROPERTIES.concat(source.__wrappedMethods || []), function (propName) {
+      each$9(TRANSFERABLE_PROPERTIES.concat(source.__wrappedMethods || []), function (propName) {
         if (source.hasOwnProperty(propName)) {
           target[propName] = source[propName];
         }
       });
       target.__wrappedMethods = source.__wrappedMethods;
-      each$4(CLONE_PROPERTIES, function (propName) {
+      each$9(CLONE_PROPERTIES, function (propName) {
         target[propName] = clone$3(source[propName]);
       });
       target._calculationInfo = extend({}, source._calculationInfo);
@@ -78235,7 +79113,7 @@ source, opt) {
 
     if (idx < 0) {
       var dimDefItemRaw = dimsDef[dimIdx];
-      var dimDefItem = isObject$2(dimDefItemRaw) ? dimDefItemRaw : {
+      var dimDefItem = isObject$3(dimDefItemRaw) ? dimDefItemRaw : {
         name: dimDefItemRaw
       };
       var resultItem = new SeriesDimensionDefine$1();
@@ -78278,7 +79156,7 @@ source, opt) {
     }
 
     var validDataDims = encodeDefMap.set(coordDim, []);
-    each$4(dataDims, function (resultDimIdxOrName, idx) {
+    each$9(dataDims, function (resultDimIdxOrName, idx) {
       // The input resultDimIdx can be dim name or index.
       var resultDimIdx = isString(resultDimIdxOrName) ? dataDimNameMap.get(resultDimIdxOrName) : resultDimIdxOrName;
 
@@ -78290,7 +79168,7 @@ source, opt) {
   }); // Apply templetes and default order from `sysDims`.
 
   var availDimIdx = 0;
-  each$4(sysDims, function (sysDimItemRaw) {
+  each$9(sysDims, function (sysDimItemRaw) {
     var coordDim;
     var sysDimItemDimsDef;
     var sysDimItemOtherDims;
@@ -78331,7 +79209,7 @@ source, opt) {
     } // Apply templates.
 
 
-    each$4(dataDims, function (resultDimIdx, coordDimIndex) {
+    each$9(dataDims, function (resultDimIdx, coordDimIndex) {
       var resultItem = getResultItem(resultDimIdx); // Coordinate system has a higher priority on dim type than source.
 
       if (isUsingSourceDimensionsDef && sysDimItem.type != null) {
@@ -78342,7 +79220,7 @@ source, opt) {
 
       if (resultItem.name == null && sysDimItemDimsDef) {
         var sysDimItemDimsDefItem = sysDimItemDimsDef[coordDimIndex];
-        !isObject$2(sysDimItemDimsDefItem) && (sysDimItemDimsDefItem = {
+        !isObject$3(sysDimItemDimsDefItem) && (sysDimItemDimsDefItem = {
           name: sysDimItemDimsDefItem
         });
         resultItem.name = resultItem.displayName = sysDimItemDimsDefItem.name;
@@ -78415,7 +79293,7 @@ source, opt) {
       }
     }
   } else {
-    each$4(resultList, function (resultItem) {
+    each$9(resultList, function (resultItem) {
       // PENDING: guessOrdinal or let user specify type: 'ordinal' manually?
       ifNoNameFillWithCoordName(resultItem);
     }); // Sort dimensions: there are some rule that use the last dim as label,
@@ -78467,10 +79345,10 @@ function getDimCount(source, sysDims, dimsDef, optDimCount) {
   // Note that the result dimCount should not small than columns count
   // of data, otherwise `dataDimNameMap` checking will be incorrect.
   var dimCount = Math.max(source.dimensionsDetectedCount || 1, sysDims.length, dimsDef.length, optDimCount || 0);
-  each$4(sysDims, function (sysDimItem) {
+  each$9(sysDims, function (sysDimItem) {
     var sysDimItemDimsDef;
 
-    if (isObject$2(sysDimItem) && (sysDimItemDimsDef = sysDimItem.dimsDef)) {
+    if (isObject$3(sysDimItem) && (sysDimItemDimsDef = sysDimItem.dimsDef)) {
       dimCount = Math.max(dimCount, sysDimItemDimsDef.length);
     }
   });
@@ -78620,7 +79498,7 @@ var fetchers = {
     var ecModel = seriesModel.ecModel;
     var parallelModel = ecModel.getComponent('parallel', seriesModel.get('parallelIndex'));
     var coordSysDims = result.coordSysDims = parallelModel.dimensions.slice();
-    each$4(parallelModel.parallelAxisIndex, function (axisIndex, index) {
+    each$9(parallelModel.parallelAxisIndex, function (axisIndex, index) {
       var axisModel = ecModel.getComponent('parallelAxis', axisIndex);
       var axisDim = coordSysDims[index];
       axisMap.set(axisDim, axisModel);
@@ -78683,7 +79561,7 @@ function enableDataStack(seriesModel, dimensionsInput, opt) {
   var stackedDimInfo;
   var stackResultDimension;
   var stackedOverDimension;
-  each$4(dimensionDefineList, function (dimensionInfo, index) {
+  each$9(dimensionDefineList, function (dimensionInfo, index) {
     if (isString(dimensionInfo)) {
       dimensionDefineList[index] = dimensionInfo = {
         name: dimensionInfo
@@ -78726,7 +79604,7 @@ function enableDataStack(seriesModel, dimensionsInput, opt) {
     var stackedDimCoordDim_1 = stackedDimInfo.coordDim;
     var stackedDimType = stackedDimInfo.type;
     var stackedDimCoordIndex_1 = 0;
-    each$4(dimensionDefineList, function (dimensionInfo) {
+    each$9(dimensionDefineList, function (dimensionInfo) {
       if (dimensionInfo.coordDim === stackedDimCoordDim_1) {
         stackedDimCoordIndex_1++;
       }
@@ -78820,7 +79698,7 @@ function getCoordSysDimDefs(seriesModel, coordSysInfo) {
 function injectOrdinalMeta(dimInfoList, createInvertedIndices, coordSysInfo) {
   var firstCategoryDimIndex;
   var hasNameEncode;
-  coordSysInfo && each$4(dimInfoList, function (dimInfo, dimIndex) {
+  coordSysInfo && each$9(dimInfoList, function (dimInfo, dimIndex) {
     var coordDim = dimInfo.coordDim;
     var categoryAxisModel = coordSysInfo.categoryAxisMap.get(coordDim);
 
@@ -78901,7 +79779,7 @@ function createSeriesData(sourceRaw, seriesModel, opt) {
 function isNeedCompleteOrdinalData(source) {
   if (source.sourceFormat === SOURCE_FORMAT_ORIGINAL) {
     var sampleItem = firstDataNotNull(source.data || []);
-    return !isArray(getDataItemValue(sampleItem));
+    return !isArray$1(getDataItemValue(sampleItem));
   }
 }
 
@@ -79091,7 +79969,7 @@ function () {
 }();
 
 function getName(obj) {
-  if (isObject$2(obj) && obj.value != null) {
+  if (isObject$3(obj) && obj.value != null) {
     return obj.value;
   } else {
     return obj + '';
@@ -79208,10 +80086,10 @@ function (_super) {
       ordinalMeta = new OrdinalMeta$1({});
     }
 
-    if (isArray(ordinalMeta)) {
+    if (isArray$1(ordinalMeta)) {
       ordinalMeta = new OrdinalMeta$1({
         categories: map$1(ordinalMeta, function (item) {
-          return isObject$2(item) ? item.value : item;
+          return isObject$3(item) ? item.value : item;
         })
       });
     }
@@ -79663,7 +80541,7 @@ var IntervalScale$1 = IntervalScale;
 var supportFloat32Array = typeof Float32Array !== 'undefined';
 var Float32ArrayCtor = !supportFloat32Array ? Array : Float32Array;
 function createFloat32Array(arg) {
-  if (isArray(arg)) {
+  if (isArray$1(arg)) {
     // Return self directly if don't support TypedArray.
     return supportFloat32Array ? new Float32Array(arg) : arg;
   } // Else is number
@@ -79709,7 +80587,7 @@ function getValueAxesMinGaps(barSeries) {
    * series.
    */
   var axisValues = {};
-  each$4(barSeries, function (seriesModel) {
+  each$9(barSeries, function (seriesModel) {
     var cartesian = seriesModel.coordinateSystem;
     var baseAxis = cartesian.getBaseAxis();
 
@@ -79769,7 +80647,7 @@ function getValueAxesMinGaps(barSeries) {
 function makeColumnLayout(barSeries) {
   var axisMinGaps = getValueAxesMinGaps(barSeries);
   var seriesInfoList = [];
-  each$4(barSeries, function (seriesModel) {
+  each$9(barSeries, function (seriesModel) {
     var cartesian = seriesModel.coordinateSystem;
     var baseAxis = cartesian.getBaseAxis();
     var axisExtent = baseAxis.getExtent();
@@ -79813,7 +80691,7 @@ function makeColumnLayout(barSeries) {
 function doCalBarWidthAndOffset(seriesInfoList) {
   // Columns info on each category axis. Key is cartesian name
   var columnsMap = {};
-  each$4(seriesInfoList, function (seriesInfo, idx) {
+  each$9(seriesInfoList, function (seriesInfo, idx) {
     var axisKey = seriesInfo.axisKey;
     var bandWidth = seriesInfo.bandWidth;
     var columnsOnAxis = columnsMap[axisKey] || {
@@ -79859,7 +80737,7 @@ function doCalBarWidthAndOffset(seriesInfoList) {
     barCategoryGap != null && (columnsOnAxis.categoryGap = barCategoryGap);
   });
   var result = {};
-  each$4(columnsMap, function (columnsOnAxis, coordSysName) {
+  each$9(columnsMap, function (columnsOnAxis, coordSysName) {
     result[coordSysName] = {};
     var stacks = columnsOnAxis.stacks;
     var bandWidth = columnsOnAxis.bandWidth;
@@ -79879,7 +80757,7 @@ function doCalBarWidthAndOffset(seriesInfoList) {
     var autoWidth = (remainedWidth - categoryGap) / (autoWidthCount + (autoWidthCount - 1) * barGapPercent);
     autoWidth = Math.max(autoWidth, 0); // Find if any auto calculated bar exceeded maxBarWidth
 
-    each$4(stacks, function (column) {
+    each$9(stacks, function (column) {
       var maxWidth = column.maxWidth;
       var minWidth = column.minWidth;
 
@@ -79929,7 +80807,7 @@ function doCalBarWidthAndOffset(seriesInfoList) {
     autoWidth = Math.max(autoWidth, 0);
     var widthSum = 0;
     var lastColumn;
-    each$4(stacks, function (column, idx) {
+    each$9(stacks, function (column, idx) {
       if (!column.width) {
         column.width = autoWidth;
       }
@@ -79943,7 +80821,7 @@ function doCalBarWidthAndOffset(seriesInfoList) {
     }
 
     var offset = -widthSum / 2;
-    each$4(stacks, function (column, stackId) {
+    each$9(stacks, function (column, stackId) {
       result[coordSysName][stackId] = result[coordSysName][stackId] || {
         bandWidth: bandWidth,
         offset: offset,
@@ -79969,7 +80847,7 @@ function retrieveColumnLayout(barWidthAndOffset, axis, seriesModel) {
 function layout$1(seriesType, ecModel) {
   var seriesModels = prepareLayoutBarSeries(seriesType, ecModel);
   var barWidthAndOffset = makeColumnLayout(seriesModels);
-  each$4(seriesModels, function (seriesModel) {
+  each$9(seriesModels, function (seriesModel) {
     var data = seriesModel.getData();
     var cartesian = seriesModel.coordinateSystem;
     var baseAxis = cartesian.getBaseAxis();
@@ -80872,7 +81750,7 @@ function () {
       this._axisDataLen = model.getCategories().length;
     } else {
       var boundaryGap = model.get('boundaryGap');
-      var boundaryGapArr = isArray(boundaryGap) ? boundaryGap : [boundaryGap || 0, boundaryGap || 0];
+      var boundaryGapArr = isArray$1(boundaryGap) ? boundaryGap : [boundaryGap || 0, boundaryGap || 0];
 
       if (typeof boundaryGapArr[0] === 'boolean' || typeof boundaryGapArr[1] === 'boolean') {
         if (process.env.NODE_ENV !== 'production') {
@@ -81069,7 +81947,7 @@ function getScaleExtent(scale, model) {
   ) {
     var barSeriesModels = prepareLayoutBarSeries('bar', ecModel);
     var isBaseAxisAndHasBarSeries_1 = false;
-    each$4(barSeriesModels, function (seriesModel) {
+    each$9(barSeriesModels, function (seriesModel) {
       isBaseAxisAndHasBarSeries_1 = isBaseAxisAndHasBarSeries_1 || seriesModel.getBaseAxis() === model.axis;
     });
 
@@ -81109,11 +81987,11 @@ barWidthAndOffset) {
   }
 
   var minOverflow = Infinity;
-  each$4(barsOnCurrentAxis, function (item) {
+  each$9(barsOnCurrentAxis, function (item) {
     minOverflow = Math.min(item.offset, minOverflow);
   });
   var maxOverflow = -Infinity;
-  each$4(barsOnCurrentAxis, function (item) {
+  each$9(barsOnCurrentAxis, function (item) {
     maxOverflow = Math.max(item.offset + item.width, maxOverflow);
   });
   minOverflow = Math.abs(minOverflow);
@@ -81341,7 +82219,7 @@ function getDataDimensionsOnAxis(data, axisDim) {
   // PENDING: is it reasonable? Do we need to remove the original dim from "coord dim" since
   // there has been stacked result dim?
 
-  each$4(data.mapDimensionsAll(axisDim), function (dataDim) {
+  each$9(data.mapDimensionsAll(axisDim), function (dataDim) {
     // For example, the extent of the original dimension
     // is [0.1, 0.5], the extent of the `stackResultDimension`
     // is [7, 9], the final extent should NOT include [0.1, 0.5],
@@ -81502,7 +82380,7 @@ var extensionRegisters = {
   registerVisual: registerVisual,
   registerTransform: registerTransform,
   registerLoading: registerLoading,
-  registerMap: registerMap,
+  registerMap: registerMap$1,
   registerImpl: registerImpl,
   PRIORITY: PRIORITY,
   ComponentModel: ComponentModel$1,
@@ -81530,9 +82408,9 @@ var extensionRegisters = {
   }
 };
 function use(ext) {
-  if (isArray(ext)) {
+  if (isArray$1(ext)) {
     // use([ChartLine, ChartBar]);
-    each$4(ext, function (singleExt) {
+    each$9(ext, function (singleExt) {
       use(singleExt);
     });
     return;
@@ -81727,12 +82605,12 @@ function (_super) {
     var min = [Infinity, Infinity];
     var max = [-Infinity, -Infinity];
     var geometries = this.geometries;
-    each$4(geometries, function (geo) {
+    each$9(geometries, function (geo) {
       if (geo.type === 'polygon') {
         // Doesn't consider hole
         updateBBoxFromPoints(geo.exterior, min, max, projection);
       } else {
-        each$4(geo.points, function (points) {
+        each$9(geo.points, function (points) {
           updateBBoxFromPoints(points, min, max, projection);
         });
       }
@@ -81811,11 +82689,11 @@ function (_super) {
 
       if (geo.type === 'polygon') {
         transformPoints(geo.exterior, transform);
-        each$4(geo.interiors, function (interior) {
+        each$9(geo.interiors, function (interior) {
           transformPoints(interior, transform);
         });
       } else {
-        each$4(geo.points, function (points) {
+        each$9(geo.points, function (points) {
           transformPoints(points, transform);
         });
       }
@@ -81839,8 +82717,9 @@ function (_super) {
   return GeoJSONRegion;
 }(Region);
 
+var GeoSVGRegion =
 /** @class */
-(function (_super) {
+function (_super) {
   __extends$1(GeoSVGRegion, _super);
 
   function GeoSVGRegion(name, elOnlyForCalculate) {
@@ -81869,7 +82748,7 @@ function (_super) {
   };
 
   return GeoSVGRegion;
-})(Region);
+}(Region);
 
 function decode(json) {
   if (!json.UTF8Encoding) {
@@ -81884,7 +82763,7 @@ function decode(json) {
   }
 
   var features = jsonCompressed.features;
-  each$4(features, function (feature) {
+  each$9(features, function (feature) {
     var geometry = feature.geometry;
     var encodeOffsets = geometry.encodeOffsets;
     var coordinates = geometry.coordinates; // Geometry may be appeded manually in the script after json loaded.
@@ -81908,7 +82787,7 @@ function decode(json) {
         break;
 
       case 'MultiPolygon':
-        each$4(coordinates, function (rings, idx) {
+        each$9(coordinates, function (rings, idx) {
           return decodeRings(rings, encodeOffsets[idx], encodeScale);
         });
     }
@@ -81966,7 +82845,7 @@ function parseGeoJSON(geoJson, nameProperty) {
         break;
 
       case 'MultiPolygon':
-        each$4(geo.coordinates, function (item) {
+        each$9(geo.coordinates, function (item) {
           if (item[0]) {
             geometries.push(new GeoJSONPolygonGeometry(item[0], item.slice(1)));
           }
@@ -81989,9 +82868,9 @@ function parseGeoJSON(geoJson, nameProperty) {
 
 var number = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  linearMap: linearMap,
+  linearMap: linearMap$2,
   round: round$1,
-  asc: asc,
+  asc: asc$1,
   getPrecision: getPrecision,
   getPrecisionSafe: getPrecisionSafe,
   getPixelPrecision: getPixelPrecision,
@@ -82068,16 +82947,16 @@ var format = /*#__PURE__*/Object.freeze({
 var util = /*#__PURE__*/Object.freeze({
   __proto__: null,
   map: map$1,
-  each: each$4,
+  each: each$9,
   indexOf: indexOf,
   inherits: inherits,
   reduce: reduce,
   filter: filter,
   bind: bind$1,
   curry: curry$1,
-  isArray: isArray,
+  isArray: isArray$1,
   isString: isString,
-  isObject: isObject$2,
+  isObject: isObject$3,
   isFunction: isFunction,
   extend: extend,
   defaults: defaults,
@@ -82378,7 +83257,7 @@ function makeLabelsByCustomizedCategoryInterval(axis, categoryInterval, onlyTick
   var ordinalScale = axis.scale;
   var labelFormatter = makeLabelFormatter(axis);
   var result = [];
-  each$4(ordinalScale.getTicks(), function (tick) {
+  each$9(ordinalScale.getTicks(), function (tick) {
     var rawLabel = ordinalScale.getLabel(tick);
     var tickValue = tick.value;
 
@@ -82468,7 +83347,7 @@ function () {
       fixExtentWithBands(extent, scale.count());
     }
 
-    return linearMap(data, NORMALIZED_EXTENT, extent, clamp);
+    return linearMap$2(data, NORMALIZED_EXTENT, extent, clamp);
   };
   /**
    * Convert coord to data. Data is the rank if it has an ordinal scale
@@ -82484,7 +83363,7 @@ function () {
       fixExtentWithBands(extent, scale.count());
     }
 
-    var t = linearMap(coord, extent, NORMALIZED_EXTENT, clamp);
+    var t = linearMap$2(coord, extent, NORMALIZED_EXTENT, clamp);
     return this.scale.scale(t);
   };
   /**
@@ -82631,7 +83510,7 @@ function fixOnBandTicksCoords(axis, ticksCoords, alignWithLabel, clamp) {
   } else {
     var crossLen = ticksCoords[ticksLen - 1].tickValue - ticksCoords[0].tickValue;
     var shift_1 = (ticksCoords[ticksLen - 1].coord - ticksCoords[0].coord) / crossLen;
-    each$4(ticksCoords, function (ticksItem) {
+    each$9(ticksCoords, function (ticksItem) {
       ticksItem.coord -= shift_1 / 2;
     });
     var dataExtent = axis.scale.getExtent();
@@ -83324,7 +84203,7 @@ var echarts = /*#__PURE__*/Object.freeze({
   registerVisual: registerVisual,
   registerLoading: registerLoading,
   setCanvasCreator: setCanvasCreator,
-  registerMap: registerMap,
+  registerMap: registerMap$1,
   getMap: getMap,
   registerTransform: registerTransform,
   dataTool: dataTool,
@@ -83383,7 +84262,7 @@ function getDefaultLabel(data, dataIndex) {
 function getDefaultInterpolatedLabel(data, interpolatedValue) {
   var labelDims = data.mapDimensionsAll('defaultedLabel');
 
-  if (!isArray(interpolatedValue)) {
+  if (!isArray$1(interpolatedValue)) {
     return interpolatedValue + '';
   }
 
@@ -83985,7 +84864,7 @@ function setSectorTextRotation(sector, textPosition, positionMapping, rotateType
       rotation: rotateType
     });
     return;
-  } else if (isArray(textPosition)) {
+  } else if (isArray$1(textPosition)) {
     // user-set position, use 0 as auto rotation
     sector.setTextConfig({
       rotation: 0
@@ -84052,8 +84931,8 @@ function adjustAngleDistanceY(angle, distance, isEnd) {
   return distance * Math.cos(angle) * (isEnd ? 1 : -1);
 }
 
-var mathMax = Math.max;
-var mathMin = Math.min;
+var mathMax$1 = Math.max;
+var mathMin$1 = Math.min;
 
 function getClipArea(coord, data) {
   var coordSysClipArea = coord.getArea && coord.getArea();
@@ -84565,10 +85444,10 @@ var clip = {
 
     var coordSysX2 = coordSysBoundingRect.x + coordSysBoundingRect.width;
     var coordSysY2 = coordSysBoundingRect.y + coordSysBoundingRect.height;
-    var x = mathMax(layout.x, coordSysBoundingRect.x);
-    var x2 = mathMin(layout.x + layout.width, coordSysX2);
-    var y = mathMax(layout.y, coordSysBoundingRect.y);
-    var y2 = mathMin(layout.y + layout.height, coordSysY2);
+    var x = mathMax$1(layout.x, coordSysBoundingRect.x);
+    var x2 = mathMin$1(layout.x + layout.width, coordSysX2);
+    var y = mathMax$1(layout.y, coordSysBoundingRect.y);
+    var y2 = mathMin$1(layout.y + layout.height, coordSysY2);
     var xClipped = x2 < x;
     var yClipped = y2 < y; // When xClipped or yClipped, the element will be marked as `ignore`.
     // But we should also place the element at the edge of the coord sys bounding rect.
@@ -84601,8 +85480,8 @@ var clip = {
       layout.r0 = tmp;
     }
 
-    var r = mathMin(layout.r, coordSysClipArea.r);
-    var r0 = mathMax(layout.r0, coordSysClipArea.r0);
+    var r = mathMin$1(layout.r, coordSysClipArea.r);
+    var r0 = mathMax$1(layout.r0, coordSysClipArea.r0);
     layout.r = r;
     layout.r0 = r0;
     var clipped = r - r0 < 0; // Reverse back
@@ -84833,7 +85712,7 @@ function updateStyle(el, data, dataIndex, itemModel, layout, seriesModel, isHori
   if (isZeroOnPolar(layout)) {
     el.style.fill = 'none';
     el.style.stroke = 'none';
-    each$4(el.states, function (state) {
+    each$9(el.states, function (state) {
       if (state.style) {
         state.style.fill = state.style.stroke = 'none';
       }
@@ -85024,7 +85903,7 @@ function createBackgroundEl(coord, isHorizontalOrRadial, layout) {
 
 var BarView$1 = BarView;
 
-function install$b(registers) {
+function install$g(registers) {
   registers.registerChartView(BarView$1);
   registers.registerSeriesModel(BarSeries);
   registers.registerLayout(registers.PRIORITY.VISUAL.LAYOUT, curry$1(layout$1, 'bar')); // Do layout after other overall layout, which can preapre some informations.
@@ -85074,11 +85953,11 @@ function getBasicPieLayout(seriesModel, api) {
   var center = seriesModel.get('center');
   var radius = seriesModel.get('radius');
 
-  if (!isArray(radius)) {
+  if (!isArray$1(radius)) {
     radius = [0, radius];
   }
 
-  if (!isArray(center)) {
+  if (!isArray$1(center)) {
     center = [center, center];
   }
 
@@ -85184,7 +86063,7 @@ function pieLayout(seriesType, ecModel, api) {
         cx: cx,
         cy: cy,
         r0: r0,
-        r: roseType ? linearMap(value, extent, [r0, r]) : r
+        r: roseType ? linearMap$2(value, extent, [r0, r]) : r
       });
       currentAngle = endAngle;
     }); // Some sector is constrained by minAngle
@@ -85595,8 +86474,8 @@ function pieLabelLayout(seriesModel) {
     labelLineLen2 = parsePercent(labelLineLen2, viewWidth);
 
     if (Math.abs(sectorShape.endAngle - sectorShape.startAngle) < minShowLabelRadian) {
-      each$4(label.states, setNotShow);
-      each$4(labelLine.states, setNotShow);
+      each$9(label.states, setNotShow);
+      each$9(labelLine.states, setNotShow);
       label.ignore = labelLine.ignore = true;
       return;
     }
@@ -85741,7 +86620,7 @@ function pieLabelLayout(seriesModel) {
       });
 
       if (notShowLabel) {
-        each$4(label.states, setNotShow);
+        each$9(label.states, setNotShow);
         label.ignore = true;
       }
 
@@ -85757,7 +86636,7 @@ function pieLabelLayout(seriesModel) {
       var linePoints = layout.linePoints;
 
       if (notShowLabel || !linePoints) {
-        each$4(labelLine.states, setNotShow);
+        each$9(labelLine.states, setNotShow);
         labelLine.ignore = true;
       } else {
         limitTurnAngle(linePoints, layout.minTurnAngle);
@@ -85783,7 +86662,7 @@ function getSectorCornerRadius(model, shape, zeroIfNull) {
     } : null;
   }
 
-  if (!isArray(cornerRadius)) {
+  if (!isArray$1(cornerRadius)) {
     cornerRadius = [cornerRadius, cornerRadius, cornerRadius, cornerRadius];
   }
 
@@ -86070,7 +86949,7 @@ var PieView$1 = PieView;
  */
 
 function createSeriesDataSimply(seriesModel, opt, nameList) {
-  opt = isArray(opt) && {
+  opt = isArray$1(opt) && {
     coordDimensions: opt
   } || extend({
     encodeDefine: seriesModel.getEncode()
@@ -86367,7 +87246,7 @@ function negativeDataFilter(seriesType) {
   };
 }
 
-function install$a(registers) {
+function install$f(registers) {
   registers.registerChartView(PieView$1);
   registers.registerSeriesModel(PieSeriesModel$1);
   createLegacyDataSelectAction('pie', registers.registerAction);
@@ -86427,7 +87306,7 @@ function (_super) {
 }(ComponentModel$1);
 mixin(CartesianAxisModel, AxisModelCommonMixin);
 
-var defaultOption = {
+var defaultOption$1 = {
   show: true,
   // zlevel: 0,
   z: 0,
@@ -86526,7 +87405,7 @@ var categoryAxis = merge({
   axisLabel: {
     interval: 'auto'
   }
-}, defaultOption);
+}, defaultOption$1);
 var valueAxis = merge({
   boundaryGap: [0, 0],
   axisLine: {
@@ -86558,7 +87437,7 @@ var valueAxis = merge({
       width: 1
     }
   }
-}, defaultOption);
+}, defaultOption$1);
 var timeAxis = merge({
   splitNumber: 6,
   axisLabel: {
@@ -86640,7 +87519,7 @@ var AXIS_TYPES = {
  */
 
 function axisModelCreator(registers, axisName, BaseAxisModelClass, extraDefaultOption) {
-  each$4(AXIS_TYPES, function (v, axisType) {
+  each$9(AXIS_TYPES, function (v, axisType) {
     var defaultOption = merge(merge({}, axisDefault[axisType], true), extraDefaultOption, true);
 
     var AxisModel =
@@ -87028,7 +87907,7 @@ function findAxisModels(seriesModel) {
     xAxisModel: null,
     yAxisModel: null
   };
-  each$4(axisModelMap, function (v, key) {
+  each$9(axisModelMap, function (v, key) {
     var axisType = key.replace(/Model$/, '');
     var axisModel = seriesModel.getReferringComponents(axisType, SINGLE_REFERRING).models[0];
 
@@ -87210,7 +88089,7 @@ function () {
           niceScaleExtent(alignTo.scale, alignTo.model);
         }
 
-        each$4(axisNeedsAlign, function (axis) {
+        each$9(axisNeedsAlign, function (axis) {
           alignScaleTicks(axis.scale, axis.model, alignTo.scale);
         });
       }
@@ -87220,10 +88099,10 @@ function () {
     updateAxisTicks(axesMap.y); // Key: axisDim_axisIndex, value: boolean, whether onZero target.
 
     var onZeroRecords = {};
-    each$4(axesMap.x, function (xAxis) {
+    each$9(axesMap.x, function (xAxis) {
       fixAxisOnZero(axesMap, 'y', xAxis, onZeroRecords);
     });
-    each$4(axesMap.y, function (yAxis) {
+    each$9(axesMap.y, function (yAxis) {
       fixAxisOnZero(axesMap, 'x', yAxis, onZeroRecords);
     }); // Resize again if containLabel is enabled
     // FIXME It may cause getting wrong grid size in data processing stage
@@ -87247,7 +88126,7 @@ function () {
     adjustAxes(); // Minus label size
 
     if (isContainLabel) {
-      each$4(axesList, function (axis) {
+      each$9(axesList, function (axis) {
         if (!axis.model.get(['axisLabel', 'inside'])) {
           var labelUnionRect = estimateLabelUnionRect(axis);
 
@@ -87267,14 +88146,14 @@ function () {
       adjustAxes();
     }
 
-    each$4(this._coordsList, function (coord) {
+    each$9(this._coordsList, function (coord) {
       // Calculate affine matrix to accelerate the data to point transform.
       // If all the axes scales are time or value.
       coord.calcAffineTransform();
     });
 
     function adjustAxes() {
-      each$4(axesList, function (axis) {
+      each$9(axesList, function (axis) {
         var isHorizontal = axis.isHorizontal();
         var extent = isHorizontal ? [0, gridRect.width] : [0, gridRect.height];
         var idx = axis.inverse ? 1 : 0;
@@ -87302,7 +88181,7 @@ function () {
       return this._coordsMap[key];
     }
 
-    if (isObject$2(xAxisIndex)) {
+    if (isObject$3(xAxisIndex)) {
       yAxisIndex = xAxisIndex.yAxisIndex;
       xAxisIndex = xAxisIndex.xAxisIndex;
     }
@@ -87418,8 +88297,8 @@ function () {
 
     this._axesMap = axesMap; /// Create cartesian2d
 
-    each$4(axesMap.x, function (xAxis, xAxisIndex) {
-      each$4(axesMap.y, function (yAxis, yAxisIndex) {
+    each$9(axesMap.x, function (xAxis, xAxisIndex) {
+      each$9(axesMap.y, function (yAxis, yAxisIndex) {
         var key = 'x' + xAxisIndex + 'y' + yAxisIndex;
         var cartesian = new Cartesian2D(key);
         cartesian.master = _this;
@@ -87483,7 +88362,7 @@ function () {
 
   Grid.prototype._updateScale = function (ecModel, gridModel) {
     // Reset scale
-    each$4(this._axesList, function (axis) {
+    each$9(this._axesList, function (axis) {
       axis.scale.setExtent(Infinity, -Infinity);
 
       if (axis.type === 'category') {
@@ -87511,7 +88390,7 @@ function () {
     }, this);
 
     function unionExtent(data, axis) {
-      each$4(getDataDimensionsOnAxis(data, axis.dim), function (dim) {
+      each$9(getDataDimensionsOnAxis(data, axis.dim), function (dim) {
         axis.scale.unionExtentFromData(data, dim);
       });
     }
@@ -87524,7 +88403,7 @@ function () {
   Grid.prototype.getTooltipAxes = function (dim) {
     var baseAxes = [];
     var otherAxes = [];
-    each$4(this.getCartesians(), function (cartesian) {
+    each$9(this.getCartesians(), function (cartesian) {
       var baseAxis = dim != null && dim !== 'auto' ? cartesian.getAxis(dim) : cartesian.getBaseAxis();
       var otherAxis = cartesian.getOtherAxis(baseAxis);
       indexOf(baseAxes, baseAxis) < 0 && baseAxes.push(baseAxis);
@@ -87827,7 +88706,7 @@ var builders = {
       var arrowOffset = normalizeSymbolOffset(axisModel.get(['axisLine', 'symbolOffset']) || 0, arrowSize);
       var symbolWidth_1 = arrowSize[0];
       var symbolHeight_1 = arrowSize[1];
-      each$4([{
+      each$9([{
         rotate: opt.rotation + Math.PI / 2,
         offset: arrowOffset[0],
         r: 0
@@ -88173,7 +89052,7 @@ function buildAxisLabel(group, transformGroup, axisModel, opt) {
   var labelEls = [];
   var silent = AxisBuilder.isLabelSilent(axisModel);
   var triggerEvent = axisModel.get('triggerEvent');
-  each$4(labels, function (labelItem, index) {
+  each$9(labels, function (labelItem, index) {
     var tickValue = axis.scale.type === 'ordinal' ? axis.scale.getRawOrdinalNumber(labelItem.tickValue) : labelItem.tickValue;
     var formattedLabel = labelItem.formattedLabel;
     var rawLabel = labelItem.rawLabel;
@@ -88182,7 +89061,7 @@ function buildAxisLabel(group, transformGroup, axisModel, opt) {
     if (rawCategoryData && rawCategoryData[tickValue]) {
       var rawCategoryItem = rawCategoryData[tickValue];
 
-      if (isObject$2(rawCategoryItem) && rawCategoryItem.textStyle) {
+      if (isObject$3(rawCategoryItem) && rawCategoryItem.textStyle) {
         itemLabelModel = new Model$1(rawCategoryItem.textStyle, labelModel, axisModel.ecModel);
       }
     }
@@ -88276,7 +89155,7 @@ function collectAxesInfo(result, ecModel, api) {
   var linksOption = globalAxisPointerModel.get('link', true) || [];
   var linkGroups = []; // Collect axes info.
 
-  each$4(api.getCoordinateSystems(), function (coordSys) {
+  each$9(api.getCoordinateSystems(), function (coordSys) {
     // Some coordinate system do not support axes, like geo.
     if (!coordSys.axisPointerEnabled) {
       return;
@@ -88289,7 +89168,7 @@ function collectAxesInfo(result, ecModel, api) {
 
     var coordSysModel = coordSys.model;
     var baseTooltipModel = coordSysModel.getModel('tooltip', globalTooltipModel);
-    each$4(coordSys.getAxes(), curry$1(saveTooltipAxisInfo, false, null)); // If axis tooltip used, choose tooltip axis for each coordSys.
+    each$9(coordSys.getAxes(), curry$1(saveTooltipAxisInfo, false, null)); // If axis tooltip used, choose tooltip axis for each coordSys.
     // Notice this case: coordSys is `grid` but not `cartesian2D` here.
 
     if (coordSys.getTooltipAxes && globalTooltipModel // If tooltip.showContent is set as false, tooltip will not
@@ -88302,11 +89181,11 @@ function collectAxesInfo(result, ecModel, api) {
       var tooltipAxes = coordSys.getTooltipAxes(baseTooltipModel.get(['axisPointer', 'axis']));
 
       if (triggerAxis || cross) {
-        each$4(tooltipAxes.baseAxes, curry$1(saveTooltipAxisInfo, cross ? 'cross' : true, triggerAxis));
+        each$9(tooltipAxes.baseAxes, curry$1(saveTooltipAxisInfo, cross ? 'cross' : true, triggerAxis));
       }
 
       if (cross) {
-        each$4(tooltipAxes.otherAxes, curry$1(saveTooltipAxisInfo, 'cross', false));
+        each$9(tooltipAxes.otherAxes, curry$1(saveTooltipAxisInfo, 'cross', false));
       }
     } // fromTooltip: true | false | 'cross'
     // triggerTooltip: true | false | null
@@ -88361,7 +89240,7 @@ function makeAxisPointerModel(axis, baseTooltipModel, globalAxisPointerModel, ec
   var tooltipAxisPointerModel = baseTooltipModel.getModel('axisPointer');
   var fields = ['type', 'snap', 'lineStyle', 'shadowStyle', 'label', 'animation', 'animationDurationUpdate', 'animationEasingUpdate', 'z'];
   var volatileOption = {};
-  each$4(fields, function (field) {
+  each$9(fields, function (field) {
     volatileOption[field] = clone$3(tooltipAxisPointerModel.get(field));
   }); // category axis do not auto snap, otherwise some tick that do not
   // has value can not be hovered. value/time/log axis default snap if
@@ -88405,7 +89284,7 @@ function collectSeriesInfo(result, ecModel) {
       return;
     }
 
-    each$4(result.coordSysAxesInfo[makeKey(coordSys.model)], function (axisInfo) {
+    each$9(result.coordSysAxesInfo[makeKey(coordSys.model)], function (axisInfo) {
       var axis = axisInfo.axis;
 
       if (coordSys.getAxis(axis.dim) === axis) {
@@ -88446,7 +89325,7 @@ function getLinkGroupIndex(linksOption, axis) {
 }
 
 function checkPropInLink(linkPropValue, axisPropValue) {
-  return linkPropValue === 'all' || isArray(linkPropValue) && indexOf(linkPropValue, axisPropValue) >= 0 || linkPropValue === axisPropValue;
+  return linkPropValue === 'all' || isArray$1(linkPropValue) && indexOf(linkPropValue, axisPropValue) >= 0 || linkPropValue === axisPropValue;
 }
 
 function fixValue(axisModel) {
@@ -88654,7 +89533,7 @@ function rectCoordAxisBuildSplitArea(axisView, axisGroup, axisModel, gridModel) 
 
   var prev = axis.toGlobalCoord(ticksCoords[0].coord);
   var areaStyle = areaStyleModel.getAreaStyle();
-  areaColors = isArray(areaColors) ? areaColors : [areaColors];
+  areaColors = isArray$1(areaColors) ? areaColors : [areaColors];
 
   for (var i = 1; i < ticksCoords.length; i++) {
     var tickCoord = axis.toGlobalCoord(ticksCoords[i].coord);
@@ -88749,11 +89628,11 @@ function (_super) {
         return false;
       }
     }, layout$1));
-    each$4(axisBuilderAttrs, axisBuilder.add, axisBuilder);
+    each$9(axisBuilderAttrs, axisBuilder.add, axisBuilder);
 
     this._axisGroup.add(axisBuilder.getGroup());
 
-    each$4(selfBuilderAttrs, function (name) {
+    each$9(selfBuilderAttrs, function (name) {
       if (axisModel.get([name, 'show'])) {
         axisElementBuilders[name](this, this._axisGroup, axisModel, gridModel);
       }
@@ -88789,7 +89668,7 @@ var axisElementBuilders = {
     var splitLineModel = axisModel.getModel('splitLine');
     var lineStyleModel = splitLineModel.getModel('lineStyle');
     var lineColors = lineStyleModel.get('color');
-    lineColors = isArray(lineColors) ? lineColors : [lineColors];
+    lineColors = isArray$1(lineColors) ? lineColors : [lineColors];
     var gridRect = gridModel.coordinateSystem.getRect();
     var isHorizontal = axis.isHorizontal();
     var lineCount = 0;
@@ -88957,7 +89836,7 @@ var extraOption = {
   // gridId: '',
   offset: 0
 };
-function install$9(registers) {
+function install$e(registers) {
   registers.registerComponentView(GridView);
   registers.registerComponentModel(GridModel$1);
   registers.registerCoordinateSystem('cartesian2d', Grid$1);
@@ -88971,6 +89850,4644 @@ function install$9(registers) {
       option.grid = {};
     }
   });
+}
+
+var ATTR = '\0_ec_interaction_mutex';
+function isTaken(zr, resourceKey) {
+  return !!getStore(zr)[resourceKey];
+}
+
+function getStore(zr) {
+  return zr[ATTR] || (zr[ATTR] = {});
+}
+/**
+ * payload: {
+ *     type: 'takeGlobalCursor',
+ *     key: 'dataZoomSelect', or 'brush', or ...,
+ *         If no userKey, release global cursor.
+ * }
+ */
+// TODO: SELF REGISTERED.
+
+
+registerAction({
+  type: 'takeGlobalCursor',
+  event: 'globalCursorTaken',
+  update: 'update'
+}, noop);
+
+var RoamController =
+/** @class */
+function (_super) {
+  __extends$1(RoamController, _super);
+
+  function RoamController(zr) {
+    var _this = _super.call(this) || this;
+
+    _this._zr = zr; // Avoid two roamController bind the same handler
+
+    var mousedownHandler = bind$1(_this._mousedownHandler, _this);
+    var mousemoveHandler = bind$1(_this._mousemoveHandler, _this);
+    var mouseupHandler = bind$1(_this._mouseupHandler, _this);
+    var mousewheelHandler = bind$1(_this._mousewheelHandler, _this);
+    var pinchHandler = bind$1(_this._pinchHandler, _this);
+    /**
+     * Notice: only enable needed types. For example, if 'zoom'
+     * is not needed, 'zoom' should not be enabled, otherwise
+     * default mousewheel behaviour (scroll page) will be disabled.
+     */
+
+    _this.enable = function (controlType, opt) {
+      // Disable previous first
+      this.disable();
+      this._opt = defaults(clone$3(opt) || {}, {
+        zoomOnMouseWheel: true,
+        moveOnMouseMove: true,
+        // By default, wheel do not trigger move.
+        moveOnMouseWheel: false,
+        preventDefaultMouseMove: true
+      });
+
+      if (controlType == null) {
+        controlType = true;
+      }
+
+      if (controlType === true || controlType === 'move' || controlType === 'pan') {
+        zr.on('mousedown', mousedownHandler);
+        zr.on('mousemove', mousemoveHandler);
+        zr.on('mouseup', mouseupHandler);
+      }
+
+      if (controlType === true || controlType === 'scale' || controlType === 'zoom') {
+        zr.on('mousewheel', mousewheelHandler);
+        zr.on('pinch', pinchHandler);
+      }
+    };
+
+    _this.disable = function () {
+      zr.off('mousedown', mousedownHandler);
+      zr.off('mousemove', mousemoveHandler);
+      zr.off('mouseup', mouseupHandler);
+      zr.off('mousewheel', mousewheelHandler);
+      zr.off('pinch', pinchHandler);
+    };
+
+    return _this;
+  }
+
+  RoamController.prototype.isDragging = function () {
+    return this._dragging;
+  };
+
+  RoamController.prototype.isPinching = function () {
+    return this._pinching;
+  };
+
+  RoamController.prototype.setPointerChecker = function (pointerChecker) {
+    this.pointerChecker = pointerChecker;
+  };
+
+  RoamController.prototype.dispose = function () {
+    this.disable();
+  };
+
+  RoamController.prototype._mousedownHandler = function (e) {
+    if (isMiddleOrRightButtonOnMouseUpDown(e)) {
+      return;
+    }
+
+    var el = e.target;
+
+    while (el) {
+      if (el.draggable) {
+        return;
+      } // check if host is draggable
+
+
+      el = el.__hostTarget || el.parent;
+    }
+
+    var x = e.offsetX;
+    var y = e.offsetY; // Only check on mosedown, but not mousemove.
+    // Mouse can be out of target when mouse moving.
+
+    if (this.pointerChecker && this.pointerChecker(e, x, y)) {
+      this._x = x;
+      this._y = y;
+      this._dragging = true;
+    }
+  };
+
+  RoamController.prototype._mousemoveHandler = function (e) {
+    if (!this._dragging || !isAvailableBehavior('moveOnMouseMove', e, this._opt) || e.gestureEvent === 'pinch' || isTaken(this._zr, 'globalPan')) {
+      return;
+    }
+
+    var x = e.offsetX;
+    var y = e.offsetY;
+    var oldX = this._x;
+    var oldY = this._y;
+    var dx = x - oldX;
+    var dy = y - oldY;
+    this._x = x;
+    this._y = y;
+    this._opt.preventDefaultMouseMove && stop(e.event);
+    trigger(this, 'pan', 'moveOnMouseMove', e, {
+      dx: dx,
+      dy: dy,
+      oldX: oldX,
+      oldY: oldY,
+      newX: x,
+      newY: y,
+      isAvailableBehavior: null
+    });
+  };
+
+  RoamController.prototype._mouseupHandler = function (e) {
+    if (!isMiddleOrRightButtonOnMouseUpDown(e)) {
+      this._dragging = false;
+    }
+  };
+
+  RoamController.prototype._mousewheelHandler = function (e) {
+    var shouldZoom = isAvailableBehavior('zoomOnMouseWheel', e, this._opt);
+    var shouldMove = isAvailableBehavior('moveOnMouseWheel', e, this._opt);
+    var wheelDelta = e.wheelDelta;
+    var absWheelDeltaDelta = Math.abs(wheelDelta);
+    var originX = e.offsetX;
+    var originY = e.offsetY; // wheelDelta maybe -0 in chrome mac.
+
+    if (wheelDelta === 0 || !shouldZoom && !shouldMove) {
+      return;
+    } // If both `shouldZoom` and `shouldMove` is true, trigger
+    // their event both, and the final behavior is determined
+    // by event listener themselves.
+
+
+    if (shouldZoom) {
+      // Convenience:
+      // Mac and VM Windows on Mac: scroll up: zoom out.
+      // Windows: scroll up: zoom in.
+      // FIXME: Should do more test in different environment.
+      // wheelDelta is too complicated in difference nvironment
+      // (https://developer.mozilla.org/en-US/docs/Web/Events/mousewheel),
+      // although it has been normallized by zrender.
+      // wheelDelta of mouse wheel is bigger than touch pad.
+      var factor = absWheelDeltaDelta > 3 ? 1.4 : absWheelDeltaDelta > 1 ? 1.2 : 1.1;
+      var scale = wheelDelta > 0 ? factor : 1 / factor;
+      checkPointerAndTrigger(this, 'zoom', 'zoomOnMouseWheel', e, {
+        scale: scale,
+        originX: originX,
+        originY: originY,
+        isAvailableBehavior: null
+      });
+    }
+
+    if (shouldMove) {
+      // FIXME: Should do more test in different environment.
+      var absDelta = Math.abs(wheelDelta); // wheelDelta of mouse wheel is bigger than touch pad.
+
+      var scrollDelta = (wheelDelta > 0 ? 1 : -1) * (absDelta > 3 ? 0.4 : absDelta > 1 ? 0.15 : 0.05);
+      checkPointerAndTrigger(this, 'scrollMove', 'moveOnMouseWheel', e, {
+        scrollDelta: scrollDelta,
+        originX: originX,
+        originY: originY,
+        isAvailableBehavior: null
+      });
+    }
+  };
+
+  RoamController.prototype._pinchHandler = function (e) {
+    if (isTaken(this._zr, 'globalPan')) {
+      return;
+    }
+
+    var scale = e.pinchScale > 1 ? 1.1 : 1 / 1.1;
+    checkPointerAndTrigger(this, 'zoom', null, e, {
+      scale: scale,
+      originX: e.pinchX,
+      originY: e.pinchY,
+      isAvailableBehavior: null
+    });
+  };
+
+  return RoamController;
+}(Eventful$1);
+
+function checkPointerAndTrigger(controller, eventName, behaviorToCheck, e, contollerEvent) {
+  if (controller.pointerChecker && controller.pointerChecker(e, contollerEvent.originX, contollerEvent.originY)) {
+    // When mouse is out of roamController rect,
+    // default befavoius should not be be disabled, otherwise
+    // page sliding is disabled, contrary to expectation.
+    stop(e.event);
+    trigger(controller, eventName, behaviorToCheck, e, contollerEvent);
+  }
+}
+
+function trigger(controller, eventName, behaviorToCheck, e, contollerEvent) {
+  // Also provide behavior checker for event listener, for some case that
+  // multiple components share one listener.
+  contollerEvent.isAvailableBehavior = bind$1(isAvailableBehavior, null, behaviorToCheck, e); // TODO should not have type issue.
+
+  controller.trigger(eventName, contollerEvent);
+} // settings: {
+//     zoomOnMouseWheel
+//     moveOnMouseMove
+//     moveOnMouseWheel
+// }
+// The value can be: true / false / 'shift' / 'ctrl' / 'alt'.
+
+
+function isAvailableBehavior(behaviorToCheck, e, settings) {
+  var setting = settings[behaviorToCheck];
+  return !behaviorToCheck || setting && (!isString(setting) || e.event[setting + 'Key']);
+}
+
+var RoamController$1 = RoamController;
+
+/*
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing,
+* software distributed under the License is distributed on an
+* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+* KIND, either express or implied.  See the License for the
+* specific language governing permissions and limitations
+* under the License.
+*/
+
+
+/**
+ * AUTO-GENERATED FILE. DO NOT MODIFY.
+ */
+
+/*
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing,
+* software distributed under the License is distributed on an
+* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+* KIND, either express or implied.  See the License for the
+* specific language governing permissions and limitations
+* under the License.
+*/
+
+/**
+ * For geo and graph.
+ */
+function updateViewOnPan(controllerHost, dx, dy) {
+  var target = controllerHost.target;
+  target.x += dx;
+  target.y += dy;
+  target.dirty();
+}
+/**
+ * For geo and graph.
+ */
+
+function updateViewOnZoom(controllerHost, zoomDelta, zoomX, zoomY) {
+  var target = controllerHost.target;
+  var zoomLimit = controllerHost.zoomLimit;
+  var newZoom = controllerHost.zoom = controllerHost.zoom || 1;
+  newZoom *= zoomDelta;
+
+  if (zoomLimit) {
+    var zoomMin = zoomLimit.min || 0;
+    var zoomMax = zoomLimit.max || Infinity;
+    newZoom = Math.max(Math.min(zoomMax, newZoom), zoomMin);
+  }
+
+  var zoomScale = newZoom / controllerHost.zoom;
+  controllerHost.zoom = newZoom; // Keep the mouse center when scaling
+
+  target.x -= (zoomX - target.x) * (zoomScale - 1);
+  target.y -= (zoomY - target.y) * (zoomScale - 1);
+  target.scaleX *= zoomScale;
+  target.scaleY *= zoomScale;
+  target.dirty();
+}
+
+/*
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing,
+* software distributed under the License is distributed on an
+* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+* KIND, either express or implied.  See the License for the
+* specific language governing permissions and limitations
+* under the License.
+*/
+
+
+/**
+ * AUTO-GENERATED FILE. DO NOT MODIFY.
+ */
+
+/*
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing,
+* software distributed under the License is distributed on an
+* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+* KIND, either express or implied.  See the License for the
+* specific language governing permissions and limitations
+* under the License.
+*/
+var IRRELEVANT_EXCLUDES = {
+  'axisPointer': 1,
+  'tooltip': 1,
+  'brush': 1
+};
+/**
+ * Avoid that: mouse click on a elements that is over geo or graph,
+ * but roam is triggered.
+ */
+
+function onIrrelevantElement(e, api, targetCoordSysModel) {
+  var model = api.getComponentByElement(e.topTarget); // If model is axisModel, it works only if it is injected with coordinateSystem.
+
+  var coordSys = model && model.coordinateSystem;
+  return model && model !== targetCoordSysModel && !IRRELEVANT_EXCLUDES.hasOwnProperty(model.mainType) && coordSys && coordSys.model !== targetCoordSysModel;
+}
+
+function parseXML(svg) {
+    if (isString(svg)) {
+        var parser = new DOMParser();
+        svg = parser.parseFromString(svg, 'text/xml');
+    }
+    var svgNode = svg;
+    if (svgNode.nodeType === 9) {
+        svgNode = svgNode.firstChild;
+    }
+    while (svgNode.nodeName.toLowerCase() !== 'svg' || svgNode.nodeType !== 1) {
+        svgNode = svgNode.nextSibling;
+    }
+    return svgNode;
+}
+
+var nodeParsers;
+var INHERITABLE_STYLE_ATTRIBUTES_MAP = {
+    'fill': 'fill',
+    'stroke': 'stroke',
+    'stroke-width': 'lineWidth',
+    'opacity': 'opacity',
+    'fill-opacity': 'fillOpacity',
+    'stroke-opacity': 'strokeOpacity',
+    'stroke-dasharray': 'lineDash',
+    'stroke-dashoffset': 'lineDashOffset',
+    'stroke-linecap': 'lineCap',
+    'stroke-linejoin': 'lineJoin',
+    'stroke-miterlimit': 'miterLimit',
+    'font-family': 'fontFamily',
+    'font-size': 'fontSize',
+    'font-style': 'fontStyle',
+    'font-weight': 'fontWeight',
+    'text-anchor': 'textAlign',
+    'visibility': 'visibility',
+    'display': 'display'
+};
+var INHERITABLE_STYLE_ATTRIBUTES_MAP_KEYS = keys(INHERITABLE_STYLE_ATTRIBUTES_MAP);
+var SELF_STYLE_ATTRIBUTES_MAP = {
+    'alignment-baseline': 'textBaseline',
+    'stop-color': 'stopColor'
+};
+var SELF_STYLE_ATTRIBUTES_MAP_KEYS = keys(SELF_STYLE_ATTRIBUTES_MAP);
+var SVGParser = (function () {
+    function SVGParser() {
+        this._defs = {};
+        this._root = null;
+    }
+    SVGParser.prototype.parse = function (xml, opt) {
+        opt = opt || {};
+        var svg = parseXML(xml);
+        if (process.env.NODE_ENV !== 'production') {
+            if (!svg) {
+                throw new Error('Illegal svg');
+            }
+        }
+        this._defsUsePending = [];
+        var root = new Group$3();
+        this._root = root;
+        var named = [];
+        var viewBox = svg.getAttribute('viewBox') || '';
+        var width = parseFloat((svg.getAttribute('width') || opt.width));
+        var height = parseFloat((svg.getAttribute('height') || opt.height));
+        isNaN(width) && (width = null);
+        isNaN(height) && (height = null);
+        parseAttributes(svg, root, null, true, false);
+        var child = svg.firstChild;
+        while (child) {
+            this._parseNode(child, root, named, null, false, false);
+            child = child.nextSibling;
+        }
+        applyDefs(this._defs, this._defsUsePending);
+        this._defsUsePending = [];
+        var viewBoxRect;
+        var viewBoxTransform;
+        if (viewBox) {
+            var viewBoxArr = splitNumberSequence(viewBox);
+            if (viewBoxArr.length >= 4) {
+                viewBoxRect = {
+                    x: parseFloat((viewBoxArr[0] || 0)),
+                    y: parseFloat((viewBoxArr[1] || 0)),
+                    width: parseFloat(viewBoxArr[2]),
+                    height: parseFloat(viewBoxArr[3])
+                };
+            }
+        }
+        if (viewBoxRect && width != null && height != null) {
+            viewBoxTransform = makeViewBoxTransform(viewBoxRect, { x: 0, y: 0, width: width, height: height });
+            if (!opt.ignoreViewBox) {
+                var elRoot = root;
+                root = new Group$3();
+                root.add(elRoot);
+                elRoot.scaleX = elRoot.scaleY = viewBoxTransform.scale;
+                elRoot.x = viewBoxTransform.x;
+                elRoot.y = viewBoxTransform.y;
+            }
+        }
+        if (!opt.ignoreRootClip && width != null && height != null) {
+            root.setClipPath(new Rect$1({
+                shape: { x: 0, y: 0, width: width, height: height }
+            }));
+        }
+        return {
+            root: root,
+            width: width,
+            height: height,
+            viewBoxRect: viewBoxRect,
+            viewBoxTransform: viewBoxTransform,
+            named: named
+        };
+    };
+    SVGParser.prototype._parseNode = function (xmlNode, parentGroup, named, namedFrom, isInDefs, isInText) {
+        var nodeName = xmlNode.nodeName.toLowerCase();
+        var el;
+        var namedFromForSub = namedFrom;
+        if (nodeName === 'defs') {
+            isInDefs = true;
+        }
+        if (nodeName === 'text') {
+            isInText = true;
+        }
+        if (nodeName === 'defs' || nodeName === 'switch') {
+            el = parentGroup;
+        }
+        else {
+            if (!isInDefs) {
+                var parser_1 = nodeParsers[nodeName];
+                if (parser_1 && hasOwn(nodeParsers, nodeName)) {
+                    el = parser_1.call(this, xmlNode, parentGroup);
+                    var nameAttr = xmlNode.getAttribute('name');
+                    if (nameAttr) {
+                        var newNamed = {
+                            name: nameAttr,
+                            namedFrom: null,
+                            svgNodeTagLower: nodeName,
+                            el: el
+                        };
+                        named.push(newNamed);
+                        if (nodeName === 'g') {
+                            namedFromForSub = newNamed;
+                        }
+                    }
+                    else if (namedFrom) {
+                        named.push({
+                            name: namedFrom.name,
+                            namedFrom: namedFrom,
+                            svgNodeTagLower: nodeName,
+                            el: el
+                        });
+                    }
+                    parentGroup.add(el);
+                }
+            }
+            var parser = paintServerParsers[nodeName];
+            if (parser && hasOwn(paintServerParsers, nodeName)) {
+                var def = parser.call(this, xmlNode);
+                var id = xmlNode.getAttribute('id');
+                if (id) {
+                    this._defs[id] = def;
+                }
+            }
+        }
+        if (el && el.isGroup) {
+            var child = xmlNode.firstChild;
+            while (child) {
+                if (child.nodeType === 1) {
+                    this._parseNode(child, el, named, namedFromForSub, isInDefs, isInText);
+                }
+                else if (child.nodeType === 3 && isInText) {
+                    this._parseText(child, el);
+                }
+                child = child.nextSibling;
+            }
+        }
+    };
+    SVGParser.prototype._parseText = function (xmlNode, parentGroup) {
+        var text = new TSpan$1({
+            style: {
+                text: xmlNode.textContent
+            },
+            silent: true,
+            x: this._textX || 0,
+            y: this._textY || 0
+        });
+        inheritStyle(parentGroup, text);
+        parseAttributes(xmlNode, text, this._defsUsePending, false, false);
+        applyTextAlignment(text, parentGroup);
+        var textStyle = text.style;
+        var fontSize = textStyle.fontSize;
+        if (fontSize && fontSize < 9) {
+            textStyle.fontSize = 9;
+            text.scaleX *= fontSize / 9;
+            text.scaleY *= fontSize / 9;
+        }
+        var font = (textStyle.fontSize || textStyle.fontFamily) && [
+            textStyle.fontStyle,
+            textStyle.fontWeight,
+            (textStyle.fontSize || 12) + 'px',
+            textStyle.fontFamily || 'sans-serif'
+        ].join(' ');
+        textStyle.font = font;
+        var rect = text.getBoundingRect();
+        this._textX += rect.width;
+        parentGroup.add(text);
+        return text;
+    };
+    SVGParser.internalField = (function () {
+        nodeParsers = {
+            'g': function (xmlNode, parentGroup) {
+                var g = new Group$3();
+                inheritStyle(parentGroup, g);
+                parseAttributes(xmlNode, g, this._defsUsePending, false, false);
+                return g;
+            },
+            'rect': function (xmlNode, parentGroup) {
+                var rect = new Rect$1();
+                inheritStyle(parentGroup, rect);
+                parseAttributes(xmlNode, rect, this._defsUsePending, false, false);
+                rect.setShape({
+                    x: parseFloat(xmlNode.getAttribute('x') || '0'),
+                    y: parseFloat(xmlNode.getAttribute('y') || '0'),
+                    width: parseFloat(xmlNode.getAttribute('width') || '0'),
+                    height: parseFloat(xmlNode.getAttribute('height') || '0')
+                });
+                rect.silent = true;
+                return rect;
+            },
+            'circle': function (xmlNode, parentGroup) {
+                var circle = new Circle$1();
+                inheritStyle(parentGroup, circle);
+                parseAttributes(xmlNode, circle, this._defsUsePending, false, false);
+                circle.setShape({
+                    cx: parseFloat(xmlNode.getAttribute('cx') || '0'),
+                    cy: parseFloat(xmlNode.getAttribute('cy') || '0'),
+                    r: parseFloat(xmlNode.getAttribute('r') || '0')
+                });
+                circle.silent = true;
+                return circle;
+            },
+            'line': function (xmlNode, parentGroup) {
+                var line = new Line$1();
+                inheritStyle(parentGroup, line);
+                parseAttributes(xmlNode, line, this._defsUsePending, false, false);
+                line.setShape({
+                    x1: parseFloat(xmlNode.getAttribute('x1') || '0'),
+                    y1: parseFloat(xmlNode.getAttribute('y1') || '0'),
+                    x2: parseFloat(xmlNode.getAttribute('x2') || '0'),
+                    y2: parseFloat(xmlNode.getAttribute('y2') || '0')
+                });
+                line.silent = true;
+                return line;
+            },
+            'ellipse': function (xmlNode, parentGroup) {
+                var ellipse = new Ellipse$1();
+                inheritStyle(parentGroup, ellipse);
+                parseAttributes(xmlNode, ellipse, this._defsUsePending, false, false);
+                ellipse.setShape({
+                    cx: parseFloat(xmlNode.getAttribute('cx') || '0'),
+                    cy: parseFloat(xmlNode.getAttribute('cy') || '0'),
+                    rx: parseFloat(xmlNode.getAttribute('rx') || '0'),
+                    ry: parseFloat(xmlNode.getAttribute('ry') || '0')
+                });
+                ellipse.silent = true;
+                return ellipse;
+            },
+            'polygon': function (xmlNode, parentGroup) {
+                var pointsStr = xmlNode.getAttribute('points');
+                var pointsArr;
+                if (pointsStr) {
+                    pointsArr = parsePoints(pointsStr);
+                }
+                var polygon = new Polygon$1({
+                    shape: {
+                        points: pointsArr || []
+                    },
+                    silent: true
+                });
+                inheritStyle(parentGroup, polygon);
+                parseAttributes(xmlNode, polygon, this._defsUsePending, false, false);
+                return polygon;
+            },
+            'polyline': function (xmlNode, parentGroup) {
+                var pointsStr = xmlNode.getAttribute('points');
+                var pointsArr;
+                if (pointsStr) {
+                    pointsArr = parsePoints(pointsStr);
+                }
+                var polyline = new Polyline$1({
+                    shape: {
+                        points: pointsArr || []
+                    },
+                    silent: true
+                });
+                inheritStyle(parentGroup, polyline);
+                parseAttributes(xmlNode, polyline, this._defsUsePending, false, false);
+                return polyline;
+            },
+            'image': function (xmlNode, parentGroup) {
+                var img = new ZRImage$1();
+                inheritStyle(parentGroup, img);
+                parseAttributes(xmlNode, img, this._defsUsePending, false, false);
+                img.setStyle({
+                    image: xmlNode.getAttribute('xlink:href') || xmlNode.getAttribute('href'),
+                    x: +xmlNode.getAttribute('x'),
+                    y: +xmlNode.getAttribute('y'),
+                    width: +xmlNode.getAttribute('width'),
+                    height: +xmlNode.getAttribute('height')
+                });
+                img.silent = true;
+                return img;
+            },
+            'text': function (xmlNode, parentGroup) {
+                var x = xmlNode.getAttribute('x') || '0';
+                var y = xmlNode.getAttribute('y') || '0';
+                var dx = xmlNode.getAttribute('dx') || '0';
+                var dy = xmlNode.getAttribute('dy') || '0';
+                this._textX = parseFloat(x) + parseFloat(dx);
+                this._textY = parseFloat(y) + parseFloat(dy);
+                var g = new Group$3();
+                inheritStyle(parentGroup, g);
+                parseAttributes(xmlNode, g, this._defsUsePending, false, true);
+                return g;
+            },
+            'tspan': function (xmlNode, parentGroup) {
+                var x = xmlNode.getAttribute('x');
+                var y = xmlNode.getAttribute('y');
+                if (x != null) {
+                    this._textX = parseFloat(x);
+                }
+                if (y != null) {
+                    this._textY = parseFloat(y);
+                }
+                var dx = xmlNode.getAttribute('dx') || '0';
+                var dy = xmlNode.getAttribute('dy') || '0';
+                var g = new Group$3();
+                inheritStyle(parentGroup, g);
+                parseAttributes(xmlNode, g, this._defsUsePending, false, true);
+                this._textX += parseFloat(dx);
+                this._textY += parseFloat(dy);
+                return g;
+            },
+            'path': function (xmlNode, parentGroup) {
+                var d = xmlNode.getAttribute('d') || '';
+                var path = createFromString(d);
+                inheritStyle(parentGroup, path);
+                parseAttributes(xmlNode, path, this._defsUsePending, false, false);
+                path.silent = true;
+                return path;
+            }
+        };
+    })();
+    return SVGParser;
+}());
+var paintServerParsers = {
+    'lineargradient': function (xmlNode) {
+        var x1 = parseInt(xmlNode.getAttribute('x1') || '0', 10);
+        var y1 = parseInt(xmlNode.getAttribute('y1') || '0', 10);
+        var x2 = parseInt(xmlNode.getAttribute('x2') || '10', 10);
+        var y2 = parseInt(xmlNode.getAttribute('y2') || '0', 10);
+        var gradient = new LinearGradient$1(x1, y1, x2, y2);
+        parsePaintServerUnit(xmlNode, gradient);
+        parseGradientColorStops(xmlNode, gradient);
+        return gradient;
+    },
+    'radialgradient': function (xmlNode) {
+        var cx = parseInt(xmlNode.getAttribute('cx') || '0', 10);
+        var cy = parseInt(xmlNode.getAttribute('cy') || '0', 10);
+        var r = parseInt(xmlNode.getAttribute('r') || '0', 10);
+        var gradient = new RadialGradient$1(cx, cy, r);
+        parsePaintServerUnit(xmlNode, gradient);
+        parseGradientColorStops(xmlNode, gradient);
+        return gradient;
+    }
+};
+function parsePaintServerUnit(xmlNode, gradient) {
+    var gradientUnits = xmlNode.getAttribute('gradientUnits');
+    if (gradientUnits === 'userSpaceOnUse') {
+        gradient.global = true;
+    }
+}
+function parseGradientColorStops(xmlNode, gradient) {
+    var stop = xmlNode.firstChild;
+    while (stop) {
+        if (stop.nodeType === 1
+            && stop.nodeName.toLocaleLowerCase() === 'stop') {
+            var offsetStr = stop.getAttribute('offset');
+            var offset = void 0;
+            if (offsetStr && offsetStr.indexOf('%') > 0) {
+                offset = parseInt(offsetStr, 10) / 100;
+            }
+            else if (offsetStr) {
+                offset = parseFloat(offsetStr);
+            }
+            else {
+                offset = 0;
+            }
+            var styleVals = {};
+            parseInlineStyle(stop, styleVals, styleVals);
+            var stopColor = styleVals.stopColor
+                || stop.getAttribute('stop-color')
+                || '#000000';
+            gradient.colorStops.push({
+                offset: offset,
+                color: stopColor
+            });
+        }
+        stop = stop.nextSibling;
+    }
+}
+function inheritStyle(parent, child) {
+    if (parent && parent.__inheritedStyle) {
+        if (!child.__inheritedStyle) {
+            child.__inheritedStyle = {};
+        }
+        defaults(child.__inheritedStyle, parent.__inheritedStyle);
+    }
+}
+function parsePoints(pointsString) {
+    var list = splitNumberSequence(pointsString);
+    var points = [];
+    for (var i = 0; i < list.length; i += 2) {
+        var x = parseFloat(list[i]);
+        var y = parseFloat(list[i + 1]);
+        points.push([x, y]);
+    }
+    return points;
+}
+function parseAttributes(xmlNode, el, defsUsePending, onlyInlineStyle, isTextGroup) {
+    var disp = el;
+    var inheritedStyle = disp.__inheritedStyle = disp.__inheritedStyle || {};
+    var selfStyle = {};
+    if (xmlNode.nodeType === 1) {
+        parseTransformAttribute(xmlNode, el);
+        parseInlineStyle(xmlNode, inheritedStyle, selfStyle);
+        if (!onlyInlineStyle) {
+            parseAttributeStyle(xmlNode, inheritedStyle, selfStyle);
+        }
+    }
+    disp.style = disp.style || {};
+    if (inheritedStyle.fill != null) {
+        disp.style.fill = getFillStrokeStyle(disp, 'fill', inheritedStyle.fill, defsUsePending);
+    }
+    if (inheritedStyle.stroke != null) {
+        disp.style.stroke = getFillStrokeStyle(disp, 'stroke', inheritedStyle.stroke, defsUsePending);
+    }
+    each$9([
+        'lineWidth', 'opacity', 'fillOpacity', 'strokeOpacity', 'miterLimit', 'fontSize'
+    ], function (propName) {
+        if (inheritedStyle[propName] != null) {
+            disp.style[propName] = parseFloat(inheritedStyle[propName]);
+        }
+    });
+    each$9([
+        'lineDashOffset', 'lineCap', 'lineJoin', 'fontWeight', 'fontFamily', 'fontStyle', 'textAlign'
+    ], function (propName) {
+        if (inheritedStyle[propName] != null) {
+            disp.style[propName] = inheritedStyle[propName];
+        }
+    });
+    if (isTextGroup) {
+        disp.__selfStyle = selfStyle;
+    }
+    if (inheritedStyle.lineDash) {
+        disp.style.lineDash = map$1(splitNumberSequence(inheritedStyle.lineDash), function (str) {
+            return parseFloat(str);
+        });
+    }
+    if (inheritedStyle.visibility === 'hidden' || inheritedStyle.visibility === 'collapse') {
+        disp.invisible = true;
+    }
+    if (inheritedStyle.display === 'none') {
+        disp.ignore = true;
+    }
+}
+function applyTextAlignment(text, parentGroup) {
+    var parentSelfStyle = parentGroup.__selfStyle;
+    if (parentSelfStyle) {
+        var textBaseline = parentSelfStyle.textBaseline;
+        var zrTextBaseline = textBaseline;
+        if (!textBaseline || textBaseline === 'auto') {
+            zrTextBaseline = 'alphabetic';
+        }
+        else if (textBaseline === 'baseline') {
+            zrTextBaseline = 'alphabetic';
+        }
+        else if (textBaseline === 'before-edge' || textBaseline === 'text-before-edge') {
+            zrTextBaseline = 'top';
+        }
+        else if (textBaseline === 'after-edge' || textBaseline === 'text-after-edge') {
+            zrTextBaseline = 'bottom';
+        }
+        else if (textBaseline === 'central' || textBaseline === 'mathematical') {
+            zrTextBaseline = 'middle';
+        }
+        text.style.textBaseline = zrTextBaseline;
+    }
+    var parentInheritedStyle = parentGroup.__inheritedStyle;
+    if (parentInheritedStyle) {
+        var textAlign = parentInheritedStyle.textAlign;
+        var zrTextAlign = textAlign;
+        if (textAlign) {
+            if (textAlign === 'middle') {
+                zrTextAlign = 'center';
+            }
+            text.style.textAlign = zrTextAlign;
+        }
+    }
+}
+var urlRegex = /^url\(\s*#(.*?)\)/;
+function getFillStrokeStyle(el, method, str, defsUsePending) {
+    var urlMatch = str && str.match(urlRegex);
+    if (urlMatch) {
+        var url = trim(urlMatch[1]);
+        defsUsePending.push([el, method, url]);
+        return;
+    }
+    if (str === 'none') {
+        str = null;
+    }
+    return str;
+}
+function applyDefs(defs, defsUsePending) {
+    for (var i = 0; i < defsUsePending.length; i++) {
+        var item = defsUsePending[i];
+        item[0].style[item[1]] = defs[item[2]];
+    }
+}
+var numberReg = /-?([0-9]*\.)?[0-9]+([eE]-?[0-9]+)?/g;
+function splitNumberSequence(rawStr) {
+    return rawStr.match(numberReg) || [];
+}
+var transformRegex = /(translate|scale|rotate|skewX|skewY|matrix)\(([\-\s0-9\.eE,]*)\)/g;
+var DEGREE_TO_ANGLE = Math.PI / 180;
+function parseTransformAttribute(xmlNode, node) {
+    var transform = xmlNode.getAttribute('transform');
+    if (transform) {
+        transform = transform.replace(/,/g, ' ');
+        var transformOps_1 = [];
+        var mt = null;
+        transform.replace(transformRegex, function (str, type, value) {
+            transformOps_1.push(type, value);
+            return '';
+        });
+        for (var i = transformOps_1.length - 1; i > 0; i -= 2) {
+            var value = transformOps_1[i];
+            var type = transformOps_1[i - 1];
+            var valueArr = splitNumberSequence(value);
+            mt = mt || create();
+            switch (type) {
+                case 'translate':
+                    translate(mt, mt, [parseFloat(valueArr[0]), parseFloat(valueArr[1] || '0')]);
+                    break;
+                case 'scale':
+                    scale$1(mt, mt, [parseFloat(valueArr[0]), parseFloat(valueArr[1] || valueArr[0])]);
+                    break;
+                case 'rotate':
+                    rotate(mt, mt, -parseFloat(valueArr[0]) * DEGREE_TO_ANGLE);
+                    break;
+                case 'skewX':
+                    var sx = Math.tan(parseFloat(valueArr[0]) * DEGREE_TO_ANGLE);
+                    mul(mt, [1, 0, sx, 1, 0, 0], mt);
+                    break;
+                case 'skewY':
+                    var sy = Math.tan(parseFloat(valueArr[0]) * DEGREE_TO_ANGLE);
+                    mul(mt, [1, sy, 0, 1, 0, 0], mt);
+                    break;
+                case 'matrix':
+                    mt[0] = parseFloat(valueArr[0]);
+                    mt[1] = parseFloat(valueArr[1]);
+                    mt[2] = parseFloat(valueArr[2]);
+                    mt[3] = parseFloat(valueArr[3]);
+                    mt[4] = parseFloat(valueArr[4]);
+                    mt[5] = parseFloat(valueArr[5]);
+                    break;
+            }
+        }
+        node.setLocalTransform(mt);
+    }
+}
+var styleRegex = /([^\s:;]+)\s*:\s*([^:;]+)/g;
+function parseInlineStyle(xmlNode, inheritableStyleResult, selfStyleResult) {
+    var style = xmlNode.getAttribute('style');
+    if (!style) {
+        return;
+    }
+    styleRegex.lastIndex = 0;
+    var styleRegResult;
+    while ((styleRegResult = styleRegex.exec(style)) != null) {
+        var svgStlAttr = styleRegResult[1];
+        var zrInheritableStlAttr = hasOwn(INHERITABLE_STYLE_ATTRIBUTES_MAP, svgStlAttr)
+            ? INHERITABLE_STYLE_ATTRIBUTES_MAP[svgStlAttr]
+            : null;
+        if (zrInheritableStlAttr) {
+            inheritableStyleResult[zrInheritableStlAttr] = styleRegResult[2];
+        }
+        var zrSelfStlAttr = hasOwn(SELF_STYLE_ATTRIBUTES_MAP, svgStlAttr)
+            ? SELF_STYLE_ATTRIBUTES_MAP[svgStlAttr]
+            : null;
+        if (zrSelfStlAttr) {
+            selfStyleResult[zrSelfStlAttr] = styleRegResult[2];
+        }
+    }
+}
+function parseAttributeStyle(xmlNode, inheritableStyleResult, selfStyleResult) {
+    for (var i = 0; i < INHERITABLE_STYLE_ATTRIBUTES_MAP_KEYS.length; i++) {
+        var svgAttrName = INHERITABLE_STYLE_ATTRIBUTES_MAP_KEYS[i];
+        var attrValue = xmlNode.getAttribute(svgAttrName);
+        if (attrValue != null) {
+            inheritableStyleResult[INHERITABLE_STYLE_ATTRIBUTES_MAP[svgAttrName]] = attrValue;
+        }
+    }
+    for (var i = 0; i < SELF_STYLE_ATTRIBUTES_MAP_KEYS.length; i++) {
+        var svgAttrName = SELF_STYLE_ATTRIBUTES_MAP_KEYS[i];
+        var attrValue = xmlNode.getAttribute(svgAttrName);
+        if (attrValue != null) {
+            selfStyleResult[SELF_STYLE_ATTRIBUTES_MAP[svgAttrName]] = attrValue;
+        }
+    }
+}
+function makeViewBoxTransform(viewBoxRect, boundingRect) {
+    var scaleX = boundingRect.width / viewBoxRect.width;
+    var scaleY = boundingRect.height / viewBoxRect.height;
+    var scale = Math.min(scaleX, scaleY);
+    return {
+        scale: scale,
+        x: -(viewBoxRect.x + viewBoxRect.width / 2) * scale + (boundingRect.x + boundingRect.width / 2),
+        y: -(viewBoxRect.y + viewBoxRect.height / 2) * scale + (boundingRect.y + boundingRect.height / 2)
+    };
+}
+function parseSVG(xml, opt) {
+    var parser = new SVGParser();
+    return parser.parse(xml, opt);
+}
+
+/**
+ * "region available" means that: enable users to set attribute `name="xxx"` on those tags
+ * to make it be a region.
+ * 1. region styles and its label styles can be defined in echarts opton:
+ * ```js
+ * geo: {
+ *     regions: [{
+ *         name: 'xxx',
+ *         itemStyle: { ... },
+ *         label: { ... }
+ *     }, {
+ *         ...
+ *     },
+ *     ...]
+ * };
+ * ```
+ * 2. name can be duplicated in different SVG tag. All of the tags with the same name share
+ * a region option. For exampel if there are two <path> representing two lung lobes. They have
+ * no common parents but both of them need to display label "lung" inside.
+ */
+
+var REGION_AVAILABLE_SVG_TAG_MAP = createHashMap(['rect', 'circle', 'line', 'ellipse', 'polygon', 'polyline', 'path', // <text> <tspan> are also enabled becuase some SVG might paint text itself,
+// but still need to trigger events or tooltip.
+'text', 'tspan', // <g> is also enabled because this case: if multiple tags share one name
+// and need label displayed, every tags will display the name, which is not
+// expected. So we can put them into a <g name="xxx">. Thereby only one label
+// displayed and located based on the bounding rect of the <g>.
+'g']);
+
+var GeoSVGResource =
+/** @class */
+function () {
+  function GeoSVGResource(mapName, svg) {
+    this.type = 'geoSVG'; // All used graphics. key: hostKey, value: root
+
+    this._usedGraphicMap = createHashMap(); // All unused graphics.
+
+    this._freedGraphics = [];
+    this._mapName = mapName; // Only perform parse to XML object here, which might be time
+    // consiming for large SVG.
+    // Although convert XML to zrender element is also time consiming,
+    // if we do it here, the clone of zrender elements has to be
+    // required. So we do it once for each geo instance, util real
+    // performance issues call for optimizing it.
+
+    this._parsedXML = parseXML(svg);
+  }
+
+  GeoSVGResource.prototype.load = function ()
+  /* nameMap: NameMap */
+  {
+    // In the "load" stage, graphic need to be built to
+    // get boundingRect for geo coordinate system.
+    var firstGraphic = this._firstGraphic; // Create the return data structure only when first graphic created.
+    // Because they will be used in geo coordinate system update stage,
+    // and `regions` will be mounted at `geo` coordinate system,
+    // in which there is no "view" info, so that it should better not to
+    // make references to graphic elements.
+
+    if (!firstGraphic) {
+      firstGraphic = this._firstGraphic = this._buildGraphic(this._parsedXML);
+
+      this._freedGraphics.push(firstGraphic);
+
+      this._boundingRect = this._firstGraphic.boundingRect.clone(); // PENDING: `nameMap` will not be supported until some real requirement come.
+      // if (nameMap) {
+      //     named = applyNameMap(named, nameMap);
+      // }
+
+      var _a = createRegions(firstGraphic.named),
+          regions = _a.regions,
+          regionsMap = _a.regionsMap;
+
+      this._regions = regions;
+      this._regionsMap = regionsMap;
+    }
+
+    return {
+      boundingRect: this._boundingRect,
+      regions: this._regions,
+      regionsMap: this._regionsMap
+    };
+  };
+
+  GeoSVGResource.prototype._buildGraphic = function (svgXML) {
+    var result;
+    var rootFromParse;
+
+    try {
+      result = svgXML && parseSVG(svgXML, {
+        ignoreViewBox: true,
+        ignoreRootClip: true
+      }) || {};
+      rootFromParse = result.root;
+      assert(rootFromParse != null);
+    } catch (e) {
+      throw new Error('Invalid svg format\n' + e.message);
+    } // Note: we keep the covenant that the root has no transform. So always add an extra root.
+
+
+    var root = new Group$3();
+    root.add(rootFromParse);
+    root.isGeoSVGGraphicRoot = true; // [THE_RULE_OF_VIEWPORT_AND_VIEWBOX]
+    //
+    // Consider: `<svg width="..." height="..." viewBox="...">`
+    // - the `width/height` we call it `svgWidth/svgHeight` for short.
+    // - `(0, 0, svgWidth, svgHeight)` defines the viewport of the SVG, or say,
+    //   "viewport boundingRect", or `boundingRect` for short.
+    // - `viewBox` defines the transform from the real content ot the viewport.
+    //   `viewBox` has the same unit as the content of SVG.
+    //   If `viewBox` exists, a transform is defined, so the unit of `svgWidth/svgHeight` become
+    //   different from the content of SVG. Otherwise, they are the same.
+    //
+    // If both `svgWidth/svgHeight/viewBox` are specified in a SVG file, the transform rule will be:
+    // 0. `boundingRect` is `(0, 0, svgWidth, svgHeight)`. Set it to Geo['_rect'] (View['_rect']).
+    // 1. Make a transform from `viewBox` to `boundingRect`.
+    //    Note: only suport `preserveAspectRatio 'xMidYMid'` here. That is, this transform will preserve
+    //    the aspect ratio.
+    // 2. Make a transform from boundingRect to Geo['_viewRect'] (View['_viewRect'])
+    //    (`Geo`/`View` will do this job).
+    //    Note: this transform might not preserve aspect radio, which depending on how users specify
+    //    viewRect in echarts option (e.g., `geo.left/top/width/height` will not preserve aspect ratio,
+    //    but `geo.layoutCenter/layoutSize` will preserve aspect ratio).
+    //
+    // If `svgWidth/svgHeight` not specified, we use `viewBox` as the `boundingRect` to make the SVG
+    // layout look good.
+    //
+    // If neither `svgWidth/svgHeight` nor `viewBox` are not specified, we calculate the boundingRect
+    // of the SVG content and use them to make SVG layout look good.
+
+    var svgWidth = result.width;
+    var svgHeight = result.height;
+    var viewBoxRect = result.viewBoxRect;
+    var boundingRect = this._boundingRect;
+
+    if (!boundingRect) {
+      var bRectX = void 0;
+      var bRectY = void 0;
+      var bRectWidth = void 0;
+      var bRectHeight = void 0;
+
+      if (svgWidth != null) {
+        bRectX = 0;
+        bRectWidth = svgWidth;
+      } else if (viewBoxRect) {
+        bRectX = viewBoxRect.x;
+        bRectWidth = viewBoxRect.width;
+      }
+
+      if (svgHeight != null) {
+        bRectY = 0;
+        bRectHeight = svgHeight;
+      } else if (viewBoxRect) {
+        bRectY = viewBoxRect.y;
+        bRectHeight = viewBoxRect.height;
+      } // If both viewBox and svgWidth/svgHeight not specified,
+      // we have to determine how to layout those element to make them look good.
+
+
+      if (bRectX == null || bRectY == null) {
+        var calculatedBoundingRect = rootFromParse.getBoundingRect();
+
+        if (bRectX == null) {
+          bRectX = calculatedBoundingRect.x;
+          bRectWidth = calculatedBoundingRect.width;
+        }
+
+        if (bRectY == null) {
+          bRectY = calculatedBoundingRect.y;
+          bRectHeight = calculatedBoundingRect.height;
+        }
+      }
+
+      boundingRect = this._boundingRect = new BoundingRect$1(bRectX, bRectY, bRectWidth, bRectHeight);
+    }
+
+    if (viewBoxRect) {
+      var viewBoxTransform = makeViewBoxTransform(viewBoxRect, boundingRect); // Only support `preserveAspectRatio 'xMidYMid'`
+
+      rootFromParse.scaleX = rootFromParse.scaleY = viewBoxTransform.scale;
+      rootFromParse.x = viewBoxTransform.x;
+      rootFromParse.y = viewBoxTransform.y;
+    } // SVG needs to clip based on `viewBox`. And some SVG files really rely on this feature.
+    // They do not strictly confine all of the content inside a display rect, but deliberately
+    // use a `viewBox` to define a displayable rect.
+    // PENDING:
+    // The drawback of the `setClipPath` here is: the region label (genereted by echarts) near the
+    // edge might also be clipped, because region labels are put as `textContent` of the SVG path.
+
+
+    root.setClipPath(new Rect$1({
+      shape: boundingRect.plain()
+    }));
+    var named = [];
+    each$9(result.named, function (namedItem) {
+      if (REGION_AVAILABLE_SVG_TAG_MAP.get(namedItem.svgNodeTagLower) != null) {
+        named.push(namedItem);
+        setSilent(namedItem.el);
+      }
+    });
+    return {
+      root: root,
+      boundingRect: boundingRect,
+      named: named
+    };
+  };
+  /**
+   * Consider:
+   * (1) One graphic element can not be shared by different `geoView` running simultaneously.
+   *     Notice, also need to consider multiple echarts instances share a `mapRecord`.
+   * (2) Converting SVG to graphic elements is time consuming.
+   * (3) In the current architecture, `load` should be called frequently to get boundingRect,
+   *     and it is called without view info.
+   * So we maintain graphic elements in this module, and enables `view` to use/return these
+   * graphics from/to the pool with it's uid.
+   */
+
+
+  GeoSVGResource.prototype.useGraphic = function (hostKey
+  /*, nameMap: NameMap */
+  ) {
+    var usedRootMap = this._usedGraphicMap;
+    var svgGraphic = usedRootMap.get(hostKey);
+
+    if (svgGraphic) {
+      return svgGraphic;
+    }
+
+    svgGraphic = this._freedGraphics.pop() // use the first boundingRect to avoid duplicated boundingRect calculation.
+    || this._buildGraphic(this._parsedXML);
+    usedRootMap.set(hostKey, svgGraphic); // PENDING: `nameMap` will not be supported until some real requirement come.
+    // `nameMap` can only be obtained from echarts option.
+    // The original `named` must not be modified.
+    // if (nameMap) {
+    //     svgGraphic = extend({}, svgGraphic);
+    //     svgGraphic.named = applyNameMap(svgGraphic.named, nameMap);
+    // }
+
+    return svgGraphic;
+  };
+
+  GeoSVGResource.prototype.freeGraphic = function (hostKey) {
+    var usedRootMap = this._usedGraphicMap;
+    var svgGraphic = usedRootMap.get(hostKey);
+
+    if (svgGraphic) {
+      usedRootMap.removeKey(hostKey);
+
+      this._freedGraphics.push(svgGraphic);
+    }
+  };
+
+  return GeoSVGResource;
+}();
+
+function setSilent(el) {
+  // Only named element has silent: false, other elements should
+  // act as background and has no user interaction.
+  el.silent = false; // text|tspan will be converted to group.
+
+  if (el.isGroup) {
+    el.traverse(function (child) {
+      child.silent = false;
+    });
+  }
+}
+
+function createRegions(named) {
+  var regions = [];
+  var regionsMap = createHashMap(); // Create resions only for the first graphic.
+
+  each$9(named, function (namedItem) {
+    // Region has feature to calculate center for tooltip or other features.
+    // If there is a <g name="xxx">, the center should be the center of the
+    // bounding rect of the g.
+    if (namedItem.namedFrom != null) {
+      return;
+    }
+
+    var region = new GeoSVGRegion(namedItem.name, namedItem.el); // PENDING: if `nameMap` supported, this region can not be mounted on
+    // `this`, but can only be created each time `load()` called.
+
+    regions.push(region); // PENDING: if multiple tag named with the same name, only one will be
+    // found by `_regionsMap`. `_regionsMap` is used to find a coordinate
+    // by name. We use `region.getCenter()` as the coordinate.
+
+    regionsMap.set(namedItem.name, region);
+  });
+  return {
+    regions: regions,
+    regionsMap: regionsMap
+  };
+} // PENDING: `nameMap` will not be supported until some real requirement come.
+// /**
+//  * Use the alias in geoNameMap.
+//  * The input `named` must not be modified.
+//  */
+// function applyNameMap(
+//     named: GeoSVGGraphicRecord['named'],
+//     nameMap: NameMap
+// ): GeoSVGGraphicRecord['named'] {
+//     const result = [] as GeoSVGGraphicRecord['named'];
+//     for (let i = 0; i < named.length; i++) {
+//         let regionGraphic = named[i];
+//         const name = regionGraphic.name;
+//         if (nameMap && nameMap.hasOwnProperty(name)) {
+//             regionGraphic = extend({}, regionGraphic);
+//             regionGraphic.name = name;
+//         }
+//         result.push(regionGraphic);
+//     }
+//     return result;
+// }
+
+var geoCoord = [126, 25];
+var nanhaiName = '南海诸岛';
+var points$1 = [[[0, 3.5], [7, 11.2], [15, 11.9], [30, 7], [42, 0.7], [52, 0.7], [56, 7.7], [59, 0.7], [64, 0.7], [64, 0], [5, 0], [0, 3.5]], [[13, 16.1], [19, 14.7], [16, 21.7], [11, 23.1], [13, 16.1]], [[12, 32.2], [14, 38.5], [15, 38.5], [13, 32.2], [12, 32.2]], [[16, 47.6], [12, 53.2], [13, 53.2], [18, 47.6], [16, 47.6]], [[6, 64.4], [8, 70], [9, 70], [8, 64.4], [6, 64.4]], [[23, 82.6], [29, 79.8], [30, 79.8], [25, 82.6], [23, 82.6]], [[37, 70.7], [43, 62.3], [44, 62.3], [39, 70.7], [37, 70.7]], [[48, 51.1], [51, 45.5], [53, 45.5], [50, 51.1], [48, 51.1]], [[51, 35], [51, 28.7], [53, 28.7], [53, 35], [51, 35]], [[52, 22.4], [55, 17.5], [56, 17.5], [53, 22.4], [52, 22.4]], [[58, 12.6], [62, 7], [63, 7], [60, 12.6], [58, 12.6]], [[0, 3.5], [0, 93.1], [64, 93.1], [64, 0], [63, 0], [63, 92.4], [1, 92.4], [1, 3.5], [0, 3.5]]];
+
+for (var i = 0; i < points$1.length; i++) {
+  for (var k = 0; k < points$1[i].length; k++) {
+    points$1[i][k][0] /= 10.5;
+    points$1[i][k][1] /= -10.5 / 0.75;
+    points$1[i][k][0] += geoCoord[0];
+    points$1[i][k][1] += geoCoord[1];
+  }
+}
+
+function fixNanhai(mapType, regions) {
+  if (mapType === 'china') {
+    for (var i = 0; i < regions.length; i++) {
+      // Already exists.
+      if (regions[i].name === nanhaiName) {
+        return;
+      }
+    }
+
+    regions.push(new GeoJSONRegion(nanhaiName, map$1(points$1, function (exterior) {
+      return {
+        type: 'polygon',
+        exterior: exterior
+      };
+    }), geoCoord));
+  }
+}
+
+/*
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing,
+* software distributed under the License is distributed on an
+* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+* KIND, either express or implied.  See the License for the
+* specific language governing permissions and limitations
+* under the License.
+*/
+
+
+/**
+ * AUTO-GENERATED FILE. DO NOT MODIFY.
+ */
+
+/*
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing,
+* software distributed under the License is distributed on an
+* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+* KIND, either express or implied.  See the License for the
+* specific language governing permissions and limitations
+* under the License.
+*/
+var coordsOffsetMap = {
+  '南海诸岛': [32, 80],
+  // 全国
+  '广东': [0, -10],
+  '香港': [10, 5],
+  '澳门': [-10, 10],
+  //'北京': [-10, 0],
+  '天津': [5, 5]
+};
+function fixTextCoords(mapType, region) {
+  if (mapType === 'china') {
+    var coordFix = coordsOffsetMap[region.name];
+
+    if (coordFix) {
+      var cp = region.getCenter();
+      cp[0] += coordFix[0] / 10.5;
+      cp[1] += -coordFix[1] / (10.5 / 0.75);
+      region.setCenter(cp);
+    }
+  }
+}
+
+/*
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing,
+* software distributed under the License is distributed on an
+* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+* KIND, either express or implied.  See the License for the
+* specific language governing permissions and limitations
+* under the License.
+*/
+
+
+/**
+ * AUTO-GENERATED FILE. DO NOT MODIFY.
+ */
+
+/*
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing,
+* software distributed under the License is distributed on an
+* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+* KIND, either express or implied.  See the License for the
+* specific language governing permissions and limitations
+* under the License.
+*/
+// Fix for 钓鱼岛
+// let Region = require('../Region');
+// let zrUtil = require('zrender/lib/core/util');
+// let geoCoord = [126, 25];
+var points = [[[123.45165252685547, 25.73527164402261], [123.49731445312499, 25.73527164402261], [123.49731445312499, 25.750734064600884], [123.45165252685547, 25.750734064600884], [123.45165252685547, 25.73527164402261]]];
+function fixDiaoyuIsland(mapType, region) {
+  if (mapType === 'china' && region.name === '台湾') {
+    region.geometries.push({
+      type: 'polygon',
+      exterior: points[0]
+    });
+  }
+}
+
+var DEFAULT_NAME_PROPERTY = 'name';
+
+var GeoJSONResource =
+/** @class */
+function () {
+  function GeoJSONResource(mapName, geoJSON, specialAreas) {
+    this.type = 'geoJSON';
+    this._parsedMap = createHashMap();
+    this._mapName = mapName;
+    this._specialAreas = specialAreas; // PENDING: delay the parse to the first usage to rapid up the FMP?
+
+    this._geoJSON = parseInput(geoJSON);
+  }
+  /**
+   * @param nameMap can be null/undefined
+   * @param nameProperty can be null/undefined
+   */
+
+
+  GeoJSONResource.prototype.load = function (nameMap, nameProperty) {
+    nameProperty = nameProperty || DEFAULT_NAME_PROPERTY;
+
+    var parsed = this._parsedMap.get(nameProperty);
+
+    if (!parsed) {
+      var rawRegions = this._parseToRegions(nameProperty);
+
+      parsed = this._parsedMap.set(nameProperty, {
+        regions: rawRegions,
+        boundingRect: calculateBoundingRect(rawRegions)
+      });
+    }
+
+    var regionsMap = createHashMap();
+    var finalRegions = [];
+    each$9(parsed.regions, function (region) {
+      var regionName = region.name; // Try use the alias in geoNameMap
+
+      if (nameMap && hasOwn(nameMap, regionName)) {
+        region = region.cloneShallow(regionName = nameMap[regionName]);
+      }
+
+      finalRegions.push(region);
+      regionsMap.set(regionName, region);
+    });
+    return {
+      regions: finalRegions,
+      boundingRect: parsed.boundingRect || new BoundingRect$1(0, 0, 0, 0),
+      regionsMap: regionsMap
+    };
+  };
+
+  GeoJSONResource.prototype._parseToRegions = function (nameProperty) {
+    var mapName = this._mapName;
+    var geoJSON = this._geoJSON;
+    var rawRegions; // https://jsperf.com/try-catch-performance-overhead
+
+    try {
+      rawRegions = geoJSON ? parseGeoJSON(geoJSON, nameProperty) : [];
+    } catch (e) {
+      throw new Error('Invalid geoJson format\n' + e.message);
+    }
+
+    fixNanhai(mapName, rawRegions);
+    each$9(rawRegions, function (region) {
+      var regionName = region.name;
+      fixTextCoords(mapName, region);
+      fixDiaoyuIsland(mapName, region); // Some area like Alaska in USA map needs to be tansformed
+      // to look better
+
+      var specialArea = this._specialAreas && this._specialAreas[regionName];
+
+      if (specialArea) {
+        region.transformTo(specialArea.left, specialArea.top, specialArea.width, specialArea.height);
+      }
+    }, this);
+    return rawRegions;
+  };
+  /**
+   * Only for exporting to users.
+   * **MUST NOT** used internally.
+   */
+
+
+  GeoJSONResource.prototype.getMapForUser = function () {
+    return {
+      // For backward compatibility, use geoJson
+      // PENDING: it has been returning them without clone.
+      // do we need to avoid outsite modification?
+      geoJson: this._geoJSON,
+      geoJSON: this._geoJSON,
+      specialAreas: this._specialAreas
+    };
+  };
+
+  return GeoJSONResource;
+}();
+
+function calculateBoundingRect(regions) {
+  var rect;
+
+  for (var i = 0; i < regions.length; i++) {
+    var regionRect = regions[i].getBoundingRect();
+    rect = rect || regionRect.clone();
+    rect.union(regionRect);
+  }
+
+  return rect;
+}
+
+function parseInput(source) {
+  return !isString(source) ? source : typeof JSON !== 'undefined' && JSON.parse ? JSON.parse(source) : new Function('return (' + source + ');')();
+}
+
+var storage = createHashMap();
+var geoSourceManager = {
+  /**
+   * Compatible with previous `echarts.registerMap`.
+   *
+   * @usage
+   * ```js
+   *
+   * echarts.registerMap('USA', geoJson, specialAreas);
+   *
+   * echarts.registerMap('USA', {
+   *     geoJson: geoJson,
+   *     specialAreas: {...}
+   * });
+   * echarts.registerMap('USA', {
+   *     geoJSON: geoJson,
+   *     specialAreas: {...}
+   * });
+   *
+   * echarts.registerMap('airport', {
+   *     svg: svg
+   * }
+   * ```
+   *
+   * Note:
+   * Do not support that register multiple geoJSON or SVG
+   * one map name. Because different geoJSON and SVG have
+   * different unit. It's not easy to make sure how those
+   * units are mapping/normalize.
+   * If intending to use multiple geoJSON or SVG, we can
+   * use multiple geo coordinate system.
+   */
+  registerMap: function (mapName, rawDef, rawSpecialAreas) {
+    if (rawDef.svg) {
+      var resource = new GeoSVGResource(mapName, rawDef.svg);
+      storage.set(mapName, resource);
+    } else {
+      // Recommend:
+      //     echarts.registerMap('eu', { geoJSON: xxx, specialAreas: xxx });
+      // Backward compatibility:
+      //     echarts.registerMap('eu', geoJSON, specialAreas);
+      //     echarts.registerMap('eu', { geoJson: xxx, specialAreas: xxx });
+      var geoJSON = rawDef.geoJson || rawDef.geoJSON;
+
+      if (geoJSON && !rawDef.features) {
+        rawSpecialAreas = rawDef.specialAreas;
+      } else {
+        geoJSON = rawDef;
+      }
+
+      var resource = new GeoJSONResource(mapName, geoJSON, rawSpecialAreas);
+      storage.set(mapName, resource);
+    }
+  },
+  getGeoResource: function (mapName) {
+    return storage.get(mapName);
+  },
+
+  /**
+   * Only for exporting to users.
+   * **MUST NOT** used internally.
+   */
+  getMapForUser: function (mapName) {
+    var resource = storage.get(mapName); // Do not support return SVG until some real requirement come.
+
+    return resource && resource.type === 'geoJSON' && resource.getMapForUser();
+  },
+  load: function (mapName, nameMap, nameProperty) {
+    var resource = storage.get(mapName);
+
+    if (!resource) {
+      if (process.env.NODE_ENV !== 'production') {
+        console.error('Map ' + mapName + ' not exists. The GeoJSON of the map must be provided.');
+      }
+
+      return;
+    }
+
+    return resource.load(nameMap, nameProperty);
+  }
+};
+
+/**
+ * Only these tags enable use `itemStyle` if they are named in SVG.
+ * Other tags like <text> <tspan> <image> might not suitable for `itemStyle`.
+ * They will not be considered to be styled until some requirements come.
+ */
+
+var OPTION_STYLE_ENABLED_TAGS = ['rect', 'circle', 'line', 'ellipse', 'polygon', 'polyline', 'path'];
+var OPTION_STYLE_ENABLED_TAG_MAP = createHashMap(OPTION_STYLE_ENABLED_TAGS);
+var STATE_TRIGGER_TAG_MAP = createHashMap(OPTION_STYLE_ENABLED_TAGS.concat(['g']));
+var LABEL_HOST_MAP = createHashMap(OPTION_STYLE_ENABLED_TAGS.concat(['g']));
+var mapLabelRaw = makeInner();
+
+function getFixedItemStyle(model) {
+  var itemStyle = model.getItemStyle();
+  var areaColor = model.get('areaColor'); // If user want the color not to be changed when hover,
+  // they should both set areaColor and color to be null.
+
+  if (areaColor != null) {
+    itemStyle.fill = areaColor;
+  }
+
+  return itemStyle;
+} // Only stroke can be used for line.
+// Using fill in style if stroke not exits.
+// TODO Not sure yet. Perhaps a separate `lineStyle`?
+
+
+function fixLineStyle(styleHost) {
+  var style = styleHost.style;
+
+  if (style) {
+    style.stroke = style.stroke || style.fill;
+    style.fill = null;
+  }
+}
+
+var MapDraw =
+/** @class */
+function () {
+  function MapDraw(api) {
+    var group = new Group$3();
+    this.uid = getUID('ec_map_draw');
+    this._controller = new RoamController$1(api.getZr());
+    this._controllerHost = {
+      target: group
+    };
+    this.group = group;
+    group.add(this._regionsGroup = new Group$3());
+    group.add(this._svgGroup = new Group$3());
+  }
+
+  MapDraw.prototype.draw = function (mapOrGeoModel, ecModel, api, fromView, payload) {
+    var isGeo = mapOrGeoModel.mainType === 'geo'; // Map series has data. GEO model that controlled by map series
+    // will be assigned with map data. Other GEO model has no data.
+
+    var data = mapOrGeoModel.getData && mapOrGeoModel.getData();
+    isGeo && ecModel.eachComponent({
+      mainType: 'series',
+      subType: 'map'
+    }, function (mapSeries) {
+      if (!data && mapSeries.getHostGeoModel() === mapOrGeoModel) {
+        data = mapSeries.getData();
+      }
+    });
+    var geo = mapOrGeoModel.coordinateSystem;
+    var regionsGroup = this._regionsGroup;
+    var group = this.group;
+    var transformInfo = geo.getTransformInfo();
+    var transformInfoRaw = transformInfo.raw;
+    var transformInfoRoam = transformInfo.roam; // No animation when first draw or in action
+
+    var isFirstDraw = !regionsGroup.childAt(0) || payload;
+
+    if (isFirstDraw) {
+      group.x = transformInfoRoam.x;
+      group.y = transformInfoRoam.y;
+      group.scaleX = transformInfoRoam.scaleX;
+      group.scaleY = transformInfoRoam.scaleY;
+      group.dirty();
+    } else {
+      updateProps$1(group, transformInfoRoam, mapOrGeoModel);
+    }
+
+    var isVisualEncodedByVisualMap = data && data.getVisual('visualMeta') && data.getVisual('visualMeta').length > 0;
+    var viewBuildCtx = {
+      api: api,
+      geo: geo,
+      mapOrGeoModel: mapOrGeoModel,
+      data: data,
+      isVisualEncodedByVisualMap: isVisualEncodedByVisualMap,
+      isGeo: isGeo,
+      transformInfoRaw: transformInfoRaw
+    };
+
+    if (geo.resourceType === 'geoJSON') {
+      this._buildGeoJSON(viewBuildCtx);
+    } else if (geo.resourceType === 'geoSVG') {
+      this._buildSVG(viewBuildCtx);
+    }
+
+    this._updateController(mapOrGeoModel, ecModel, api);
+
+    this._updateMapSelectHandler(mapOrGeoModel, regionsGroup, api, fromView);
+  };
+
+  MapDraw.prototype._buildGeoJSON = function (viewBuildCtx) {
+    var regionsGroupByName = this._regionsGroupByName = createHashMap();
+    var regionsInfoByName = createHashMap();
+    var regionsGroup = this._regionsGroup;
+    var transformInfoRaw = viewBuildCtx.transformInfoRaw;
+    var mapOrGeoModel = viewBuildCtx.mapOrGeoModel;
+    var data = viewBuildCtx.data;
+    var projection = viewBuildCtx.geo.projection;
+    var projectionStream = projection && projection.stream;
+
+    function transformPoint(point, project) {
+      if (project) {
+        // projection may return null point.
+        point = project(point);
+      }
+
+      return point && [point[0] * transformInfoRaw.scaleX + transformInfoRaw.x, point[1] * transformInfoRaw.scaleY + transformInfoRaw.y];
+    }
+
+    function transformPolygonPoints(inPoints) {
+      var outPoints = []; // If projectionStream is provided. Use it instead of single point project.
+
+      var project = !projectionStream && projection && projection.project;
+
+      for (var i = 0; i < inPoints.length; ++i) {
+        var newPt = transformPoint(inPoints[i], project);
+        newPt && outPoints.push(newPt);
+      }
+
+      return outPoints;
+    }
+
+    function getPolyShape(points) {
+      return {
+        shape: {
+          points: transformPolygonPoints(points)
+        }
+      };
+    }
+
+    regionsGroup.removeAll(); // Only when the resource is GeoJSON, there is `geo.regions`.
+
+    each$9(viewBuildCtx.geo.regions, function (region) {
+      var regionName = region.name; // Consider in GeoJson properties.name may be duplicated, for example,
+      // there is multiple region named "United Kindom" or "France" (so many
+      // colonies). And it is not appropriate to merge them in geo, which
+      // will make them share the same label and bring trouble in label
+      // location calculation.
+
+      var regionGroup = regionsGroupByName.get(regionName);
+
+      var _a = regionsInfoByName.get(regionName) || {},
+          dataIdx = _a.dataIdx,
+          regionModel = _a.regionModel;
+
+      if (!regionGroup) {
+        regionGroup = regionsGroupByName.set(regionName, new Group$3());
+        regionsGroup.add(regionGroup);
+        dataIdx = data ? data.indexOfName(regionName) : null;
+        regionModel = viewBuildCtx.isGeo ? mapOrGeoModel.getRegionModel(regionName) : data ? data.getItemModel(dataIdx) : null;
+        regionsInfoByName.set(regionName, {
+          dataIdx: dataIdx,
+          regionModel: regionModel
+        });
+      }
+
+      var polygonSubpaths = [];
+      var polylineSubpaths = [];
+      each$9(region.geometries, function (geometry) {
+        // Polygon and MultiPolygon
+        if (geometry.type === 'polygon') {
+          var polys = [geometry.exterior].concat(geometry.interiors || []);
+
+          if (projectionStream) {
+            polys = projectPolys(polys, projectionStream);
+          }
+
+          each$9(polys, function (poly) {
+            polygonSubpaths.push(new Polygon$1(getPolyShape(poly)));
+          });
+        } // LineString and MultiLineString
+        else {
+            var points = geometry.points;
+
+            if (projectionStream) {
+              points = projectPolys(points, projectionStream, true);
+            }
+
+            each$9(points, function (points) {
+              polylineSubpaths.push(new Polyline$1(getPolyShape(points)));
+            });
+          }
+      });
+      var centerPt = transformPoint(region.getCenter(), projection && projection.project);
+
+      function createCompoundPath(subpaths, isLine) {
+        if (!subpaths.length) {
+          return;
+        }
+
+        var compoundPath = new CompoundPath$1({
+          culling: true,
+          segmentIgnoreThreshold: 1,
+          shape: {
+            paths: subpaths
+          }
+        });
+        regionGroup.add(compoundPath);
+        applyOptionStyleForRegion(viewBuildCtx, compoundPath, dataIdx, regionModel);
+        resetLabelForRegion(viewBuildCtx, compoundPath, regionName, regionModel, mapOrGeoModel, dataIdx, centerPt);
+
+        if (isLine) {
+          fixLineStyle(compoundPath);
+          each$9(compoundPath.states, fixLineStyle);
+        }
+      }
+
+      createCompoundPath(polygonSubpaths);
+      createCompoundPath(polylineSubpaths, true);
+    }); // Ensure children have been added to `regionGroup` before calling them.
+
+    regionsGroupByName.each(function (regionGroup, regionName) {
+      var _a = regionsInfoByName.get(regionName),
+          dataIdx = _a.dataIdx,
+          regionModel = _a.regionModel;
+
+      resetEventTriggerForRegion(viewBuildCtx, regionGroup, regionName, regionModel, mapOrGeoModel, dataIdx);
+      resetTooltipForRegion(viewBuildCtx, regionGroup, regionName, regionModel, mapOrGeoModel);
+      resetStateTriggerForRegion(viewBuildCtx, regionGroup, regionName, regionModel, mapOrGeoModel);
+    }, this);
+  };
+
+  MapDraw.prototype._buildSVG = function (viewBuildCtx) {
+    var mapName = viewBuildCtx.geo.map;
+    var transformInfoRaw = viewBuildCtx.transformInfoRaw;
+    this._svgGroup.x = transformInfoRaw.x;
+    this._svgGroup.y = transformInfoRaw.y;
+    this._svgGroup.scaleX = transformInfoRaw.scaleX;
+    this._svgGroup.scaleY = transformInfoRaw.scaleY;
+
+    if (this._svgResourceChanged(mapName)) {
+      this._freeSVG();
+
+      this._useSVG(mapName);
+    }
+
+    var svgDispatcherMap = this._svgDispatcherMap = createHashMap();
+    var focusSelf = false;
+    each$9(this._svgGraphicRecord.named, function (namedItem) {
+      // Note that we also allow different elements have the same name.
+      // For example, a glyph of a city and the label of the city have
+      // the same name and their tooltip info can be defined in a single
+      // region option.
+      var regionName = namedItem.name;
+      var mapOrGeoModel = viewBuildCtx.mapOrGeoModel;
+      var data = viewBuildCtx.data;
+      var svgNodeTagLower = namedItem.svgNodeTagLower;
+      var el = namedItem.el;
+      var dataIdx = data ? data.indexOfName(regionName) : null;
+      var regionModel = mapOrGeoModel.getRegionModel(regionName);
+
+      if (OPTION_STYLE_ENABLED_TAG_MAP.get(svgNodeTagLower) != null && el instanceof Displayable$1) {
+        applyOptionStyleForRegion(viewBuildCtx, el, dataIdx, regionModel);
+      }
+
+      if (el instanceof Displayable$1) {
+        el.culling = true;
+      } // We do not know how the SVG like so we'd better not to change z2.
+      // Otherwise it might bring some unexpected result. For example,
+      // an area hovered that make some inner city can not be clicked.
+
+
+      el.z2EmphasisLift = 0; // If self named:
+
+      if (!namedItem.namedFrom) {
+        // label should batter to be displayed based on the center of <g>
+        // if it is named rather than displayed on each child.
+        if (LABEL_HOST_MAP.get(svgNodeTagLower) != null) {
+          resetLabelForRegion(viewBuildCtx, el, regionName, regionModel, mapOrGeoModel, dataIdx, null);
+        }
+
+        resetEventTriggerForRegion(viewBuildCtx, el, regionName, regionModel, mapOrGeoModel, dataIdx);
+        resetTooltipForRegion(viewBuildCtx, el, regionName, regionModel, mapOrGeoModel);
+
+        if (STATE_TRIGGER_TAG_MAP.get(svgNodeTagLower) != null) {
+          var focus_1 = resetStateTriggerForRegion(viewBuildCtx, el, regionName, regionModel, mapOrGeoModel);
+
+          if (focus_1 === 'self') {
+            focusSelf = true;
+          }
+
+          var els = svgDispatcherMap.get(regionName) || svgDispatcherMap.set(regionName, []);
+          els.push(el);
+        }
+      }
+    }, this);
+
+    this._enableBlurEntireSVG(focusSelf, viewBuildCtx);
+  };
+
+  MapDraw.prototype._enableBlurEntireSVG = function (focusSelf, viewBuildCtx) {
+    // It's a little complicated to support blurring the entire geoSVG in series-map.
+    // So do not suport it until some requirements come.
+    // At present, in series-map, only regions can be blurred.
+    if (focusSelf && viewBuildCtx.isGeo) {
+      var blurStyle = viewBuildCtx.mapOrGeoModel.getModel(['blur', 'itemStyle']).getItemStyle(); // Only suport `opacity` here. Because not sure that other props are suitable for
+      // all of the elements generated by SVG (especially for Text/TSpan/Image/... ).
+
+      var opacity_1 = blurStyle.opacity;
+
+      this._svgGraphicRecord.root.traverse(function (el) {
+        if (!el.isGroup) {
+          // PENDING: clear those settings to SVG elements when `_freeSVG`.
+          // (Currently it happen not to be needed.)
+          setDefaultStateProxy(el);
+          var style = el.ensureState('blur').style || {}; // Do not overwrite the region style that already set from region option.
+
+          if (style.opacity == null && opacity_1 != null) {
+            style.opacity = opacity_1;
+          } // If `ensureState('blur').style = {}`, there will be default opacity.
+          // Enable `stateTransition` (animation).
+
+
+          el.ensureState('emphasis');
+        }
+      });
+    }
+  };
+
+  MapDraw.prototype.remove = function () {
+    this._regionsGroup.removeAll();
+
+    this._regionsGroupByName = null;
+
+    this._svgGroup.removeAll();
+
+    this._freeSVG();
+
+    this._controller.dispose();
+
+    this._controllerHost = null;
+  };
+
+  MapDraw.prototype.findHighDownDispatchers = function (name, geoModel) {
+    if (name == null) {
+      return [];
+    }
+
+    var geo = geoModel.coordinateSystem;
+
+    if (geo.resourceType === 'geoJSON') {
+      var regionsGroupByName = this._regionsGroupByName;
+
+      if (regionsGroupByName) {
+        var regionGroup = regionsGroupByName.get(name);
+        return regionGroup ? [regionGroup] : [];
+      }
+    } else if (geo.resourceType === 'geoSVG') {
+      return this._svgDispatcherMap && this._svgDispatcherMap.get(name) || [];
+    }
+  };
+
+  MapDraw.prototype._svgResourceChanged = function (mapName) {
+    return this._svgMapName !== mapName;
+  };
+
+  MapDraw.prototype._useSVG = function (mapName) {
+    var resource = geoSourceManager.getGeoResource(mapName);
+
+    if (resource && resource.type === 'geoSVG') {
+      var svgGraphic = resource.useGraphic(this.uid);
+
+      this._svgGroup.add(svgGraphic.root);
+
+      this._svgGraphicRecord = svgGraphic;
+      this._svgMapName = mapName;
+    }
+  };
+
+  MapDraw.prototype._freeSVG = function () {
+    var mapName = this._svgMapName;
+
+    if (mapName == null) {
+      return;
+    }
+
+    var resource = geoSourceManager.getGeoResource(mapName);
+
+    if (resource && resource.type === 'geoSVG') {
+      resource.freeGraphic(this.uid);
+    }
+
+    this._svgGraphicRecord = null;
+    this._svgDispatcherMap = null;
+
+    this._svgGroup.removeAll();
+
+    this._svgMapName = null;
+  };
+
+  MapDraw.prototype._updateController = function (mapOrGeoModel, ecModel, api) {
+    var geo = mapOrGeoModel.coordinateSystem;
+    var controller = this._controller;
+    var controllerHost = this._controllerHost; // @ts-ignore FIXME:TS
+
+    controllerHost.zoomLimit = mapOrGeoModel.get('scaleLimit');
+    controllerHost.zoom = geo.getZoom(); // roamType is will be set default true if it is null
+    // @ts-ignore FIXME:TS
+
+    controller.enable(mapOrGeoModel.get('roam') || false);
+    var mainType = mapOrGeoModel.mainType;
+
+    function makeActionBase() {
+      var action = {
+        type: 'geoRoam',
+        componentType: mainType
+      };
+      action[mainType + 'Id'] = mapOrGeoModel.id;
+      return action;
+    }
+
+    controller.off('pan').on('pan', function (e) {
+      this._mouseDownFlag = false;
+      updateViewOnPan(controllerHost, e.dx, e.dy);
+      api.dispatchAction(extend(makeActionBase(), {
+        dx: e.dx,
+        dy: e.dy,
+        animation: {
+          duration: 0
+        }
+      }));
+    }, this);
+    controller.off('zoom').on('zoom', function (e) {
+      this._mouseDownFlag = false;
+      updateViewOnZoom(controllerHost, e.scale, e.originX, e.originY);
+      api.dispatchAction(extend(makeActionBase(), {
+        zoom: e.scale,
+        originX: e.originX,
+        originY: e.originY,
+        animation: {
+          duration: 0
+        }
+      }));
+    }, this);
+    controller.setPointerChecker(function (e, x, y) {
+      return geo.containPoint([x, y]) && !onIrrelevantElement(e, api, mapOrGeoModel);
+    });
+  };
+  /**
+   * FIXME: this is a temporarily workaround.
+   * When `geoRoam` the elements need to be reset in `MapView['render']`, because the props like
+   * `ignore` might have been modified by `LabelManager`, and `LabelManager#addLabelsOfSeries`
+   * will subsequently cache `defaultAttr` like `ignore`. If do not do this reset, the modified
+   * props will have no chance to be restored.
+   * Note: this reset should be after `clearStates` in `renderSeries` becuase `useStates` in
+   * `renderSeries` will cache the modified `ignore` to `el._normalState`.
+   * TODO:
+   * Use clone/immutable in `LabelManager`?
+   */
+
+
+  MapDraw.prototype.resetForLabelLayout = function () {
+    this.group.traverse(function (el) {
+      var label = el.getTextContent();
+
+      if (label) {
+        label.ignore = mapLabelRaw(label).ignore;
+      }
+    });
+  };
+
+  MapDraw.prototype._updateMapSelectHandler = function (mapOrGeoModel, regionsGroup, api, fromView) {
+    var mapDraw = this;
+    regionsGroup.off('mousedown');
+    regionsGroup.off('click'); // @ts-ignore FIXME:TS resolve type conflict
+
+    if (mapOrGeoModel.get('selectedMode')) {
+      regionsGroup.on('mousedown', function () {
+        mapDraw._mouseDownFlag = true;
+      });
+      regionsGroup.on('click', function (e) {
+        if (!mapDraw._mouseDownFlag) {
+          return;
+        }
+
+        mapDraw._mouseDownFlag = false;
+      });
+    }
+  };
+
+  return MapDraw;
+}();
+
+function applyOptionStyleForRegion(viewBuildCtx, el, dataIndex, regionModel) {
+  // All of the path are using `itemStyle`, becuase
+  // (1) Some SVG also use fill on polyline (The different between
+  // polyline and polygon is "open" or "close" but not fill or not).
+  // (2) For the common props like opacity, if some use itemStyle
+  // and some use `lineStyle`, it might confuse users.
+  // (3) Most SVG use <path>, where can not detect wether draw a "line"
+  // or a filled shape, so use `itemStyle` for <path>.
+  var normalStyleModel = regionModel.getModel('itemStyle');
+  var emphasisStyleModel = regionModel.getModel(['emphasis', 'itemStyle']);
+  var blurStyleModel = regionModel.getModel(['blur', 'itemStyle']);
+  var selectStyleModel = regionModel.getModel(['select', 'itemStyle']); // NOTE: DONT use 'style' in visual when drawing map.
+  // This component is used for drawing underlying map for both geo component and map series.
+
+  var normalStyle = getFixedItemStyle(normalStyleModel);
+  var emphasisStyle = getFixedItemStyle(emphasisStyleModel);
+  var selectStyle = getFixedItemStyle(selectStyleModel);
+  var blurStyle = getFixedItemStyle(blurStyleModel); // Update the itemStyle if has data visual
+
+  var data = viewBuildCtx.data;
+
+  if (data) {
+    // Only visual color of each item will be used. It can be encoded by visualMap
+    // But visual color of series is used in symbol drawing
+    // Visual color for each series is for the symbol draw
+    var style = data.getItemVisual(dataIndex, 'style');
+    var decal = data.getItemVisual(dataIndex, 'decal');
+
+    if (viewBuildCtx.isVisualEncodedByVisualMap && style.fill) {
+      normalStyle.fill = style.fill;
+    }
+
+    if (decal) {
+      normalStyle.decal = createOrUpdatePatternFromDecal(decal, viewBuildCtx.api);
+    }
+  } // SVG text, tspan and image can be named but not supporeted
+  // to be styled by region option yet.
+
+
+  el.setStyle(normalStyle);
+  el.style.strokeNoScale = true;
+  el.ensureState('emphasis').style = emphasisStyle;
+  el.ensureState('select').style = selectStyle;
+  el.ensureState('blur').style = blurStyle; // Enable blur
+
+  setDefaultStateProxy(el);
+}
+
+function resetLabelForRegion(viewBuildCtx, el, regionName, regionModel, mapOrGeoModel, // Exist only if `viewBuildCtx.data` exists.
+dataIdx, // If labelXY not provided, use `textConfig.position: 'inside'`
+labelXY) {
+  var data = viewBuildCtx.data;
+  var isGeo = viewBuildCtx.isGeo;
+  var isDataNaN = data && isNaN(data.get(data.mapDimension('value'), dataIdx));
+  var itemLayout = data && data.getItemLayout(dataIdx); // In the following cases label will be drawn
+  // 1. In map series and data value is NaN
+  // 2. In geo component
+  // 3. Region has no series legendIcon, which will be add a showLabel flag in mapSymbolLayout
+
+  if (isGeo || isDataNaN || itemLayout && itemLayout.showLabel) {
+    var query = !isGeo ? dataIdx : regionName;
+    var labelFetcher = void 0; // Consider dataIdx not found.
+
+    if (!data || dataIdx >= 0) {
+      labelFetcher = mapOrGeoModel;
+    }
+
+    var specifiedTextOpt = labelXY ? {
+      normal: {
+        align: 'center',
+        verticalAlign: 'middle'
+      }
+    } : null; // Caveat: must be called after `setDefaultStateProxy(el);` called.
+    // because textContent will be assign with `el.stateProxy` inside.
+
+    setLabelStyle(el, getLabelStatesModels(regionModel), {
+      labelFetcher: labelFetcher,
+      labelDataIndex: query,
+      defaultText: regionName
+    }, specifiedTextOpt);
+    var textEl = el.getTextContent();
+
+    if (textEl) {
+      mapLabelRaw(textEl).ignore = textEl.ignore;
+
+      if (el.textConfig && labelXY) {
+        // Compute a relative offset based on the el bounding rect.
+        var rect = el.getBoundingRect().clone(); // Need to make sure the percent position base on the same rect in normal and
+        // emphasis state. Otherwise if using boundingRect of el, but the emphasis state
+        // has borderWidth (even 0.5px), the text position will be changed obviously
+        // if the position is very big like ['1234%', '1345%'].
+
+        el.textConfig.layoutRect = rect;
+        el.textConfig.position = [(labelXY[0] - rect.x) / rect.width * 100 + '%', (labelXY[1] - rect.y) / rect.height * 100 + '%'];
+      }
+    } // PENDING:
+    // If labelLayout is enabled (test/label-layout.html), el.dataIndex should be specified.
+    // But el.dataIndex is also used to determine whether user event should be triggered,
+    // where el.seriesIndex or el.dataModel must be specified. At present for a single el
+    // there is not case that "only label layout enabled but user event disabled", so here
+    // we depends `resetEventTriggerForRegion` to do the job of setting `el.dataIndex`.
+
+
+    el.disableLabelAnimation = true;
+  } else {
+    el.removeTextContent();
+    el.removeTextConfig();
+    el.disableLabelAnimation = null;
+  }
+}
+
+function resetEventTriggerForRegion(viewBuildCtx, eventTrigger, regionName, regionModel, mapOrGeoModel, // Exist only if `viewBuildCtx.data` exists.
+dataIdx) {
+  // setItemGraphicEl, setHoverStyle after all polygons and labels
+  // are added to the regionGroup
+  if (viewBuildCtx.data) {
+    // FIXME: when series-map use a SVG map, and there are duplicated name specified
+    // on different SVG elements, after `data.setItemGraphicEl(...)`:
+    // (1) all of them will be mounted with `dataIndex`, `seriesIndex`, so that tooltip
+    // can be triggered only mouse hover. That's correct.
+    // (2) only the last element will be kept in `data`, so that if trigger tooltip
+    // by `dispatchAction`, only the last one can be found and triggered. That might be
+    // not correct. We will fix it in future if anyone demanding that.
+    viewBuildCtx.data.setItemGraphicEl(dataIdx, eventTrigger);
+  } // series-map will not trigger "geoselectchange" no matter it is
+  // based on a declared geo component. Because series-map will
+  // trigger "selectchange". If it trigger both the two events,
+  // If users call `chart.dispatchAction({type: 'toggleSelect'})`,
+  // it not easy to also fire event "geoselectchanged".
+  else {
+      // Package custom mouse event for geo component
+      getECData(eventTrigger).eventData = {
+        componentType: 'geo',
+        componentIndex: mapOrGeoModel.componentIndex,
+        geoIndex: mapOrGeoModel.componentIndex,
+        name: regionName,
+        region: regionModel && regionModel.option || {}
+      };
+    }
+}
+
+function resetTooltipForRegion(viewBuildCtx, el, regionName, regionModel, mapOrGeoModel) {
+  if (!viewBuildCtx.data) {
+    setTooltipConfig({
+      el: el,
+      componentModel: mapOrGeoModel,
+      itemName: regionName,
+      // @ts-ignore FIXME:TS fix the "compatible with each other"?
+      itemTooltipOption: regionModel.get('tooltip')
+    });
+  }
+}
+
+function resetStateTriggerForRegion(viewBuildCtx, el, regionName, regionModel, mapOrGeoModel) {
+  // @ts-ignore FIXME:TS fix the "compatible with each other"?
+  el.highDownSilentOnTouch = !!mapOrGeoModel.get('selectedMode'); // @ts-ignore FIXME:TS fix the "compatible with each other"?
+
+  var emphasisModel = regionModel.getModel('emphasis');
+  var focus = emphasisModel.get('focus');
+  toggleHoverEmphasis(el, focus, emphasisModel.get('blurScope'), emphasisModel.get('disabled'));
+
+  if (viewBuildCtx.isGeo) {
+    enableComponentHighDownFeatures(el, mapOrGeoModel, regionName);
+  }
+
+  return focus;
+}
+
+function projectPolys(rings, // Polygons include exterior and interiors. Or polylines.
+createStream, isLine) {
+  var polygons = [];
+  var curPoly;
+
+  function startPolygon() {
+    curPoly = [];
+  }
+
+  function endPolygon() {
+    if (curPoly.length) {
+      polygons.push(curPoly);
+      curPoly = [];
+    }
+  }
+
+  var stream = createStream({
+    polygonStart: startPolygon,
+    polygonEnd: endPolygon,
+    lineStart: startPolygon,
+    lineEnd: endPolygon,
+    point: function (x, y) {
+      // May have NaN values from stream.
+      if (isFinite(x) && isFinite(y)) {
+        curPoly.push([x, y]);
+      }
+    },
+    sphere: function () {}
+  });
+  !isLine && stream.polygonStart();
+  each$9(rings, function (ring) {
+    stream.lineStart();
+
+    for (var i = 0; i < ring.length; i++) {
+      stream.point(ring[i][0], ring[i][1]);
+    }
+
+    stream.lineEnd();
+  });
+  !isLine && stream.polygonEnd();
+  return polygons;
+}
+
+var MapDraw$1 = MapDraw; // @ts-ignore FIXME:TS fix the "compatible with each other"?
+
+var MapView =
+/** @class */
+function (_super) {
+  __extends$1(MapView, _super);
+
+  function MapView() {
+    var _this = _super !== null && _super.apply(this, arguments) || this;
+
+    _this.type = MapView.type;
+    return _this;
+  }
+
+  MapView.prototype.render = function (mapModel, ecModel, api, payload) {
+    // Not render if it is an toggleSelect action from self
+    if (payload && payload.type === 'mapToggleSelect' && payload.from === this.uid) {
+      return;
+    }
+
+    var group = this.group;
+    group.removeAll();
+
+    if (mapModel.getHostGeoModel()) {
+      return;
+    }
+
+    if (this._mapDraw && payload && payload.type === 'geoRoam') {
+      this._mapDraw.resetForLabelLayout();
+    } // Not update map if it is an roam action from self
+
+
+    if (!(payload && payload.type === 'geoRoam' && payload.componentType === 'series' && payload.seriesId === mapModel.id)) {
+      if (mapModel.needsDrawMap) {
+        var mapDraw = this._mapDraw || new MapDraw$1(api);
+        group.add(mapDraw.group);
+        mapDraw.draw(mapModel, ecModel, api, this, payload);
+        this._mapDraw = mapDraw;
+      } else {
+        // Remove drawed map
+        this._mapDraw && this._mapDraw.remove();
+        this._mapDraw = null;
+      }
+    } else {
+      var mapDraw = this._mapDraw;
+      mapDraw && group.add(mapDraw.group);
+    }
+
+    mapModel.get('showLegendSymbol') && ecModel.getComponent('legend') && this._renderSymbols(mapModel, ecModel, api);
+  };
+
+  MapView.prototype.remove = function () {
+    this._mapDraw && this._mapDraw.remove();
+    this._mapDraw = null;
+    this.group.removeAll();
+  };
+
+  MapView.prototype.dispose = function () {
+    this._mapDraw && this._mapDraw.remove();
+    this._mapDraw = null;
+  };
+
+  MapView.prototype._renderSymbols = function (mapModel, ecModel, api) {
+    var originalData = mapModel.originalData;
+    var group = this.group;
+    originalData.each(originalData.mapDimension('value'), function (value, originalDataIndex) {
+      if (isNaN(value)) {
+        return;
+      }
+
+      var layout = originalData.getItemLayout(originalDataIndex);
+
+      if (!layout || !layout.point) {
+        // Not exists in map
+        return;
+      }
+
+      var point = layout.point;
+      var offset = layout.offset;
+      var circle = new Circle$1({
+        style: {
+          // Because the special of map draw.
+          // Which needs statistic of multiple series and draw on one map.
+          // And each series also need a symbol with legend color
+          //
+          // Layout and visual are put one the different data
+          // TODO
+          fill: mapModel.getData().getVisual('style').fill
+        },
+        shape: {
+          cx: point[0] + offset * 9,
+          cy: point[1],
+          r: 3
+        },
+        silent: true,
+        // Do not overlap the first series, on which labels are displayed.
+        z2: 8 + (!offset ? Z2_EMPHASIS_LIFT + 1 : 0)
+      }); // Only the series that has the first value on the same region is in charge of rendering the label.
+      // But consider the case:
+      // series: [
+      //     {id: 'X', type: 'map', map: 'm', {data: [{name: 'A', value: 11}, {name: 'B', {value: 22}]},
+      //     {id: 'Y', type: 'map', map: 'm', {data: [{name: 'A', value: 21}, {name: 'C', {value: 33}]}
+      // ]
+      // The offset `0` of item `A` is at series `X`, but of item `C` is at series `Y`.
+      // For backward compatibility, we follow the rule that render label `A` by the
+      // settings on series `X` but render label `C` by the settings on series `Y`.
+
+      if (!offset) {
+        var fullData = mapModel.mainSeries.getData();
+        var name_1 = originalData.getName(originalDataIndex);
+        var fullIndex_1 = fullData.indexOfName(name_1);
+        var itemModel = originalData.getItemModel(originalDataIndex);
+        var labelModel = itemModel.getModel('label');
+        var regionGroup = fullData.getItemGraphicEl(fullIndex_1); // `getFormattedLabel` needs to use `getData` inside. Here
+        // `mapModel.getData()` is shallow cloned from `mainSeries.getData()`.
+        // FIXME
+        // If this is not the `mainSeries`, the item model (like label formatter)
+        // set on original data item will never get. But it has been working
+        // like that from the begining, and this scenario is rarely encountered.
+        // So it won't be fixed until have to.
+
+        setLabelStyle(circle, getLabelStatesModels(itemModel), {
+          labelFetcher: {
+            getFormattedLabel: function (idx, state) {
+              return mapModel.getFormattedLabel(fullIndex_1, state);
+            }
+          },
+          defaultText: name_1
+        });
+        circle.disableLabelAnimation = true;
+
+        if (!labelModel.get('position')) {
+          circle.setTextConfig({
+            position: 'bottom'
+          });
+        }
+
+        regionGroup.onHoverStateChange = function (toState) {
+          setStatesFlag(circle, toState);
+        };
+      }
+
+      group.add(circle);
+    });
+  };
+
+  MapView.type = 'map';
+  return MapView;
+}(ChartView$1);
+
+var MapView$1 = MapView;
+
+var MapSeries =
+/** @class */
+function (_super) {
+  __extends$1(MapSeries, _super);
+
+  function MapSeries() {
+    var _this = _super !== null && _super.apply(this, arguments) || this;
+
+    _this.type = MapSeries.type; // Only first map series of same mapType will drawMap.
+
+    _this.needsDrawMap = false; // Group of all map series with same mapType
+
+    _this.seriesGroup = [];
+
+    _this.getTooltipPosition = function (dataIndex) {
+      if (dataIndex != null) {
+        var name_1 = this.getData().getName(dataIndex);
+        var geo = this.coordinateSystem;
+        var region = geo.getRegion(name_1);
+        return region && geo.dataToPoint(region.getCenter());
+      }
+    };
+
+    return _this;
+  }
+
+  MapSeries.prototype.getInitialData = function (option) {
+    var data = createSeriesDataSimply(this, {
+      coordDimensions: ['value'],
+      encodeDefaulter: curry$1(makeSeriesEncodeForNameBased, this)
+    });
+    var dataNameMap = createHashMap();
+    var toAppendNames = [];
+
+    for (var i = 0, len = data.count(); i < len; i++) {
+      var name_2 = data.getName(i);
+      dataNameMap.set(name_2, true);
+    }
+
+    var geoSource = geoSourceManager.load(this.getMapType(), this.option.nameMap, this.option.nameProperty);
+    each$9(geoSource.regions, function (region) {
+      var name = region.name;
+
+      if (!dataNameMap.get(name)) {
+        toAppendNames.push(name);
+      }
+    }); // Complete data with missing regions. The consequent processes (like visual
+    // map and render) can not be performed without a "full data". For example,
+    // find `dataIndex` by name.
+
+    data.appendValues([], toAppendNames);
+    return data;
+  };
+  /**
+   * If no host geo model, return null, which means using a
+   * inner exclusive geo model.
+   */
+
+
+  MapSeries.prototype.getHostGeoModel = function () {
+    var geoIndex = this.option.geoIndex;
+    return geoIndex != null ? this.ecModel.getComponent('geo', geoIndex) : null;
+  };
+
+  MapSeries.prototype.getMapType = function () {
+    return (this.getHostGeoModel() || this).option.map;
+  }; // _fillOption(option, mapName) {
+  // Shallow clone
+  // option = zrUtil.extend({}, option);
+  // option.data = geoCreator.getFilledRegions(option.data, mapName, option.nameMap);
+  // return option;
+  // }
+
+
+  MapSeries.prototype.getRawValue = function (dataIndex) {
+    // Use value stored in data instead because it is calculated from multiple series
+    // FIXME Provide all value of multiple series ?
+    var data = this.getData();
+    return data.get(data.mapDimension('value'), dataIndex);
+  };
+  /**
+   * Get model of region
+   */
+
+
+  MapSeries.prototype.getRegionModel = function (regionName) {
+    var data = this.getData();
+    return data.getItemModel(data.indexOfName(regionName));
+  };
+  /**
+   * Map tooltip formatter
+   */
+
+
+  MapSeries.prototype.formatTooltip = function (dataIndex, multipleSeries, dataType) {
+    // FIXME orignalData and data is a bit confusing
+    var data = this.getData();
+    var value = this.getRawValue(dataIndex);
+    var name = data.getName(dataIndex);
+    var seriesGroup = this.seriesGroup;
+    var seriesNames = [];
+
+    for (var i = 0; i < seriesGroup.length; i++) {
+      var otherIndex = seriesGroup[i].originalData.indexOfName(name);
+      var valueDim = data.mapDimension('value');
+
+      if (!isNaN(seriesGroup[i].originalData.get(valueDim, otherIndex))) {
+        seriesNames.push(seriesGroup[i].name);
+      }
+    }
+
+    return createTooltipMarkup('section', {
+      header: seriesNames.join(', '),
+      noHeader: !seriesNames.length,
+      blocks: [createTooltipMarkup('nameValue', {
+        name: name,
+        value: value
+      })]
+    });
+  };
+
+  MapSeries.prototype.setZoom = function (zoom) {
+    this.option.zoom = zoom;
+  };
+
+  MapSeries.prototype.setCenter = function (center) {
+    this.option.center = center;
+  };
+
+  MapSeries.prototype.getLegendIcon = function (opt) {
+    var iconType = opt.icon || 'roundRect';
+    var icon = createSymbol(iconType, 0, 0, opt.itemWidth, opt.itemHeight, opt.itemStyle.fill);
+    icon.setStyle(opt.itemStyle); // Map do not use itemStyle.borderWidth as border width
+
+    icon.style.stroke = 'none'; // No rotation because no series visual symbol for map
+
+    if (iconType.indexOf('empty') > -1) {
+      icon.style.stroke = icon.style.fill;
+      icon.style.fill = '#fff';
+      icon.style.lineWidth = 2;
+    }
+
+    return icon;
+  };
+
+  MapSeries.type = 'series.map';
+  MapSeries.dependencies = ['geo'];
+  MapSeries.layoutMode = 'box';
+  MapSeries.defaultOption = {
+    // 一级层叠
+    // zlevel: 0,
+    // 二级层叠
+    z: 2,
+    coordinateSystem: 'geo',
+    // map should be explicitly specified since ec3.
+    map: '',
+    // If `geoIndex` is not specified, a exclusive geo will be
+    // created. Otherwise use the specified geo component, and
+    // `map` and `mapType` are ignored.
+    // geoIndex: 0,
+    // 'center' | 'left' | 'right' | 'x%' | {number}
+    left: 'center',
+    // 'center' | 'top' | 'bottom' | 'x%' | {number}
+    top: 'center',
+    // right
+    // bottom
+    // width:
+    // height
+    // Aspect is width / height. Inited to be geoJson bbox aspect
+    // This parameter is used for scale this aspect
+    // Default value:
+    // for geoSVG source: 1,
+    // for geoJSON source: 0.75.
+    aspectScale: null,
+    ///// Layout with center and size
+    // If you wan't to put map in a fixed size box with right aspect ratio
+    // This two properties may more conveninet
+    // layoutCenter: [50%, 50%]
+    // layoutSize: 100
+    showLegendSymbol: true,
+    // Define left-top, right-bottom coords to control view
+    // For example, [ [180, 90], [-180, -90] ],
+    // higher priority than center and zoom
+    boundingCoords: null,
+    // Default on center of map
+    center: null,
+    zoom: 1,
+    scaleLimit: null,
+    selectedMode: true,
+    label: {
+      show: false,
+      color: '#000'
+    },
+    // scaleLimit: null,
+    itemStyle: {
+      borderWidth: 0.5,
+      borderColor: '#444',
+      areaColor: '#eee'
+    },
+    emphasis: {
+      label: {
+        show: true,
+        color: 'rgb(100,0,0)'
+      },
+      itemStyle: {
+        areaColor: 'rgba(255,215,0,0.8)'
+      }
+    },
+    select: {
+      label: {
+        show: true,
+        color: 'rgb(100,0,0)'
+      },
+      itemStyle: {
+        color: 'rgba(255,215,0,0.8)'
+      }
+    },
+    nameProperty: 'name'
+  };
+  return MapSeries;
+}(SeriesModel$1);
+
+var MapSeries$1 = MapSeries;
+
+function dataStatistics(datas, statisticType) {
+  var dataNameMap = {};
+  each$9(datas, function (data) {
+    data.each(data.mapDimension('value'), function (value, idx) {
+      // Add prefix to avoid conflict with Object.prototype.
+      var mapKey = 'ec-' + data.getName(idx);
+      dataNameMap[mapKey] = dataNameMap[mapKey] || [];
+
+      if (!isNaN(value)) {
+        dataNameMap[mapKey].push(value);
+      }
+    });
+  });
+  return datas[0].map(datas[0].mapDimension('value'), function (value, idx) {
+    var mapKey = 'ec-' + datas[0].getName(idx);
+    var sum = 0;
+    var min = Infinity;
+    var max = -Infinity;
+    var len = dataNameMap[mapKey].length;
+
+    for (var i = 0; i < len; i++) {
+      min = Math.min(min, dataNameMap[mapKey][i]);
+      max = Math.max(max, dataNameMap[mapKey][i]);
+      sum += dataNameMap[mapKey][i];
+    }
+
+    var result;
+
+    if (statisticType === 'min') {
+      result = min;
+    } else if (statisticType === 'max') {
+      result = max;
+    } else if (statisticType === 'average') {
+      result = sum / len;
+    } else {
+      result = sum;
+    }
+
+    return len === 0 ? NaN : result;
+  });
+}
+
+function mapDataStatistic(ecModel) {
+  var seriesGroups = {};
+  ecModel.eachSeriesByType('map', function (seriesModel) {
+    var hostGeoModel = seriesModel.getHostGeoModel();
+    var key = hostGeoModel ? 'o' + hostGeoModel.id : 'i' + seriesModel.getMapType();
+    (seriesGroups[key] = seriesGroups[key] || []).push(seriesModel);
+  });
+  each$9(seriesGroups, function (seriesList, key) {
+    var data = dataStatistics(map$1(seriesList, function (seriesModel) {
+      return seriesModel.getData();
+    }), seriesList[0].get('mapValueCalculation'));
+
+    for (var i = 0; i < seriesList.length; i++) {
+      seriesList[i].originalData = seriesList[i].getData();
+    } // FIXME Put where?
+
+
+    for (var i = 0; i < seriesList.length; i++) {
+      seriesList[i].seriesGroup = seriesList;
+      seriesList[i].needsDrawMap = i === 0 && !seriesList[i].getHostGeoModel();
+      seriesList[i].setData(data.cloneShallow());
+      seriesList[i].mainSeries = seriesList[0];
+    }
+  });
+}
+
+function mapSymbolLayout(ecModel) {
+  var processedMapType = {};
+  ecModel.eachSeriesByType('map', function (mapSeries) {
+    var mapType = mapSeries.getMapType();
+
+    if (mapSeries.getHostGeoModel() || processedMapType[mapType]) {
+      return;
+    }
+
+    var mapSymbolOffsets = {};
+    each$9(mapSeries.seriesGroup, function (subMapSeries) {
+      var geo = subMapSeries.coordinateSystem;
+      var data = subMapSeries.originalData;
+
+      if (subMapSeries.get('showLegendSymbol') && ecModel.getComponent('legend')) {
+        data.each(data.mapDimension('value'), function (value, idx) {
+          var name = data.getName(idx);
+          var region = geo.getRegion(name); // If input series.data is [11, 22, '-'/null/undefined, 44],
+          // it will be filled with NaN: [11, 22, NaN, 44] and NaN will
+          // not be drawn. So here must validate if value is NaN.
+
+          if (!region || isNaN(value)) {
+            return;
+          }
+
+          var offset = mapSymbolOffsets[name] || 0;
+          var point = geo.dataToPoint(region.getCenter());
+          mapSymbolOffsets[name] = offset + 1;
+          data.setItemLayout(idx, {
+            point: point,
+            offset: offset
+          });
+        });
+      }
+    }); // Show label of those region not has legendIcon (which is offset 0)
+
+    var data = mapSeries.getData();
+    data.each(function (idx) {
+      var name = data.getName(idx);
+      var layout = data.getItemLayout(idx) || {};
+      layout.showLabel = !mapSymbolOffsets[name];
+      data.setItemLayout(idx, layout);
+    });
+    processedMapType[mapType] = true;
+  });
+}
+
+var v2ApplyTransform = applyTransform$1;
+
+var View =
+/** @class */
+function (_super) {
+  __extends$1(View, _super);
+
+  function View(name) {
+    var _this = _super.call(this) || this;
+
+    _this.type = 'view';
+    _this.dimensions = ['x', 'y'];
+    /**
+     * Represents the transform brought by roam/zoom.
+     * If `View['_viewRect']` applies roam transform,
+     * we can get the final displayed rect.
+     */
+
+    _this._roamTransformable = new Transformable$1();
+    /**
+     * Represents the transform from `View['_rect']` to `View['_viewRect']`.
+     */
+
+    _this._rawTransformable = new Transformable$1();
+    _this.name = name;
+    return _this;
+  }
+
+  View.prototype.setBoundingRect = function (x, y, width, height) {
+    this._rect = new BoundingRect$1(x, y, width, height);
+    return this._rect;
+  };
+  /**
+   * @return {module:zrender/core/BoundingRect}
+   */
+
+
+  View.prototype.getBoundingRect = function () {
+    return this._rect;
+  };
+
+  View.prototype.setViewRect = function (x, y, width, height) {
+    this._transformTo(x, y, width, height);
+
+    this._viewRect = new BoundingRect$1(x, y, width, height);
+  };
+  /**
+   * Transformed to particular position and size
+   */
+
+
+  View.prototype._transformTo = function (x, y, width, height) {
+    var rect = this.getBoundingRect();
+    var rawTransform = this._rawTransformable;
+    rawTransform.transform = rect.calculateTransform(new BoundingRect$1(x, y, width, height));
+    var rawParent = rawTransform.parent;
+    rawTransform.parent = null;
+    rawTransform.decomposeTransform();
+    rawTransform.parent = rawParent;
+
+    this._updateTransform();
+  };
+  /**
+   * Set center of view
+   */
+
+
+  View.prototype.setCenter = function (centerCoord, api) {
+    if (!centerCoord) {
+      return;
+    }
+
+    this._center = [parsePercent(centerCoord[0], api.getWidth()), parsePercent(centerCoord[1], api.getHeight())];
+
+    this._updateCenterAndZoom();
+  };
+
+  View.prototype.setZoom = function (zoom) {
+    zoom = zoom || 1;
+    var zoomLimit = this.zoomLimit;
+
+    if (zoomLimit) {
+      if (zoomLimit.max != null) {
+        zoom = Math.min(zoomLimit.max, zoom);
+      }
+
+      if (zoomLimit.min != null) {
+        zoom = Math.max(zoomLimit.min, zoom);
+      }
+    }
+
+    this._zoom = zoom;
+
+    this._updateCenterAndZoom();
+  };
+  /**
+   * Get default center without roam
+   */
+
+
+  View.prototype.getDefaultCenter = function () {
+    // Rect before any transform
+    var rawRect = this.getBoundingRect();
+    var cx = rawRect.x + rawRect.width / 2;
+    var cy = rawRect.y + rawRect.height / 2;
+    return [cx, cy];
+  };
+
+  View.prototype.getCenter = function () {
+    return this._center || this.getDefaultCenter();
+  };
+
+  View.prototype.getZoom = function () {
+    return this._zoom || 1;
+  };
+
+  View.prototype.getRoamTransform = function () {
+    return this._roamTransformable.getLocalTransform();
+  };
+  /**
+   * Remove roam
+   */
+
+
+  View.prototype._updateCenterAndZoom = function () {
+    // Must update after view transform updated
+    var rawTransformMatrix = this._rawTransformable.getLocalTransform();
+
+    var roamTransform = this._roamTransformable;
+    var defaultCenter = this.getDefaultCenter();
+    var center = this.getCenter();
+    var zoom = this.getZoom();
+    center = applyTransform$1([], center, rawTransformMatrix);
+    defaultCenter = applyTransform$1([], defaultCenter, rawTransformMatrix);
+    roamTransform.originX = center[0];
+    roamTransform.originY = center[1];
+    roamTransform.x = defaultCenter[0] - center[0];
+    roamTransform.y = defaultCenter[1] - center[1];
+    roamTransform.scaleX = roamTransform.scaleY = zoom;
+
+    this._updateTransform();
+  };
+  /**
+   * Update transform props on `this` based on the current
+   * `this._roamTransformable` and `this._rawTransformable`.
+   */
+
+
+  View.prototype._updateTransform = function () {
+    var roamTransformable = this._roamTransformable;
+    var rawTransformable = this._rawTransformable;
+    rawTransformable.parent = roamTransformable;
+    roamTransformable.updateTransform();
+    rawTransformable.updateTransform();
+    copy(this.transform || (this.transform = []), rawTransformable.transform || create());
+    this._rawTransform = rawTransformable.getLocalTransform();
+    this.invTransform = this.invTransform || [];
+    invert(this.invTransform, this.transform);
+    this.decomposeTransform();
+  };
+
+  View.prototype.getTransformInfo = function () {
+    var rawTransformable = this._rawTransformable;
+    var roamTransformable = this._roamTransformable; // Becuase roamTransformabel has `originX/originY` modified,
+    // but the caller of `getTransformInfo` can not handle `originX/originY`,
+    // so need to recalcualte them.
+
+    var dummyTransformable = new Transformable$1();
+    dummyTransformable.transform = roamTransformable.transform;
+    dummyTransformable.decomposeTransform();
+    return {
+      roam: {
+        x: dummyTransformable.x,
+        y: dummyTransformable.y,
+        scaleX: dummyTransformable.scaleX,
+        scaleY: dummyTransformable.scaleY
+      },
+      raw: {
+        x: rawTransformable.x,
+        y: rawTransformable.y,
+        scaleX: rawTransformable.scaleX,
+        scaleY: rawTransformable.scaleY
+      }
+    };
+  };
+
+  View.prototype.getViewRect = function () {
+    return this._viewRect;
+  };
+  /**
+   * Get view rect after roam transform
+   */
+
+
+  View.prototype.getViewRectAfterRoam = function () {
+    var rect = this.getBoundingRect().clone();
+    rect.applyTransform(this.transform);
+    return rect;
+  };
+  /**
+   * Convert a single (lon, lat) data item to (x, y) point.
+   */
+
+
+  View.prototype.dataToPoint = function (data, noRoam, out) {
+    var transform = noRoam ? this._rawTransform : this.transform;
+    out = out || [];
+    return transform ? v2ApplyTransform(out, data, transform) : copy$1(out, data);
+  };
+  /**
+   * Convert a (x, y) point to (lon, lat) data
+   */
+
+
+  View.prototype.pointToData = function (point) {
+    var invTransform = this.invTransform;
+    return invTransform ? v2ApplyTransform([], point, invTransform) : [point[0], point[1]];
+  };
+
+  View.prototype.convertToPixel = function (ecModel, finder, value) {
+    var coordSys = getCoordSys$1(finder);
+    return coordSys === this ? coordSys.dataToPoint(value) : null;
+  };
+
+  View.prototype.convertFromPixel = function (ecModel, finder, pixel) {
+    var coordSys = getCoordSys$1(finder);
+    return coordSys === this ? coordSys.pointToData(pixel) : null;
+  };
+  /**
+   * @implements
+   */
+
+
+  View.prototype.containPoint = function (point) {
+    return this.getViewRectAfterRoam().contain(point[0], point[1]);
+  };
+
+  View.dimensions = ['x', 'y'];
+  return View;
+}(Transformable$1);
+
+function getCoordSys$1(finder) {
+  var seriesModel = finder.seriesModel;
+  return seriesModel ? seriesModel.coordinateSystem : null; // e.g., graph.
+}
+
+var View$1 = View;
+
+var GEO_DEFAULT_PARAMS = {
+  'geoJSON': {
+    aspectScale: 0.75,
+    invertLongitute: true
+  },
+  'geoSVG': {
+    aspectScale: 1,
+    invertLongitute: false
+  }
+};
+var geo2DDimensions = ['lng', 'lat'];
+
+var Geo =
+/** @class */
+function (_super) {
+  __extends$1(Geo, _super);
+
+  function Geo(name, map, opt) {
+    var _this = _super.call(this, name) || this;
+
+    _this.dimensions = geo2DDimensions;
+    _this.type = 'geo'; // Only store specified name coord via `addGeoCoord`.
+
+    _this._nameCoordMap = createHashMap();
+    _this.map = map;
+    var projection = opt.projection;
+    var source = geoSourceManager.load(map, opt.nameMap, opt.nameProperty);
+    var resource = geoSourceManager.getGeoResource(map);
+    var resourceType = _this.resourceType = resource ? resource.type : null;
+    var regions = _this.regions = source.regions;
+    var defaultParams = GEO_DEFAULT_PARAMS[resource.type];
+    _this._regionsMap = source.regionsMap;
+    _this.regions = source.regions;
+
+    if (process.env.NODE_ENV !== 'production' && projection) {
+      // Do some check
+      if (resourceType === 'geoSVG') {
+        if (process.env.NODE_ENV !== 'production') {
+          warn("Map " + map + " with SVG source can't use projection. Only GeoJSON source supports projection.");
+        }
+
+        projection = null;
+      }
+
+      if (!(projection.project && projection.unproject)) {
+        if (process.env.NODE_ENV !== 'production') {
+          warn('project and unproject must be both provided in the projeciton.');
+        }
+
+        projection = null;
+      }
+    }
+
+    _this.projection = projection;
+    var boundingRect;
+
+    if (projection) {
+      // Can't reuse the raw bounding rect
+      for (var i = 0; i < regions.length; i++) {
+        var regionRect = regions[i].getBoundingRect(projection);
+        boundingRect = boundingRect || regionRect.clone();
+        boundingRect.union(regionRect);
+      }
+    } else {
+      boundingRect = source.boundingRect;
+    }
+
+    _this.setBoundingRect(boundingRect.x, boundingRect.y, boundingRect.width, boundingRect.height); // aspectScale and invertLongitute actually is the parameters default raw projection.
+    // So we ignore them if projection is given.
+    // Ignore default aspect scale if projection exits.
+
+
+    _this.aspectScale = projection ? 1 : retrieve2(opt.aspectScale, defaultParams.aspectScale); // Not invert longitute if projection exits.
+
+    _this._invertLongitute = projection ? false : defaultParams.invertLongitute;
+    return _this;
+  }
+
+  Geo.prototype._transformTo = function (x, y, width, height) {
+    var rect = this.getBoundingRect();
+    var invertLongitute = this._invertLongitute;
+    rect = rect.clone();
+
+    if (invertLongitute) {
+      // Longitute is inverted
+      rect.y = -rect.y - rect.height;
+    }
+
+    var rawTransformable = this._rawTransformable;
+    rawTransformable.transform = rect.calculateTransform(new BoundingRect$1(x, y, width, height));
+    var rawParent = rawTransformable.parent;
+    rawTransformable.parent = null;
+    rawTransformable.decomposeTransform();
+    rawTransformable.parent = rawParent;
+
+    if (invertLongitute) {
+      rawTransformable.scaleY = -rawTransformable.scaleY;
+    }
+
+    this._updateTransform();
+  };
+
+  Geo.prototype.getRegion = function (name) {
+    return this._regionsMap.get(name);
+  };
+
+  Geo.prototype.getRegionByCoord = function (coord) {
+    var regions = this.regions;
+
+    for (var i = 0; i < regions.length; i++) {
+      var region = regions[i];
+
+      if (region.type === 'geoJSON' && region.contain(coord)) {
+        return regions[i];
+      }
+    }
+  };
+  /**
+   * Add geoCoord for indexing by name
+   */
+
+
+  Geo.prototype.addGeoCoord = function (name, geoCoord) {
+    this._nameCoordMap.set(name, geoCoord);
+  };
+  /**
+   * Get geoCoord by name
+   */
+
+
+  Geo.prototype.getGeoCoord = function (name) {
+    var region = this._regionsMap.get(name); // calcualte center only on demand.
+
+
+    return this._nameCoordMap.get(name) || region && region.getCenter();
+  };
+
+  Geo.prototype.dataToPoint = function (data, noRoam, out) {
+    if (isString(data)) {
+      // Map area name to geoCoord
+      data = this.getGeoCoord(data);
+    }
+
+    if (data) {
+      var projection = this.projection;
+
+      if (projection) {
+        // projection may return null point.
+        data = projection.project(data);
+      }
+
+      return data && this.projectedToPoint(data, noRoam, out);
+    }
+  };
+
+  Geo.prototype.pointToData = function (point) {
+    var projection = this.projection;
+
+    if (projection) {
+      // projection may return null point.
+      point = projection.unproject(point);
+    }
+
+    return point && this.pointToProjected(point);
+  };
+  /**
+   * Point to projected data. Same with pointToData when projection is used.
+   */
+
+
+  Geo.prototype.pointToProjected = function (point) {
+    return _super.prototype.pointToData.call(this, point);
+  };
+
+  Geo.prototype.projectedToPoint = function (projected, noRoam, out) {
+    return _super.prototype.dataToPoint.call(this, projected, noRoam, out);
+  };
+
+  Geo.prototype.convertToPixel = function (ecModel, finder, value) {
+    var coordSys = getCoordSys(finder);
+    return coordSys === this ? coordSys.dataToPoint(value) : null;
+  };
+
+  Geo.prototype.convertFromPixel = function (ecModel, finder, pixel) {
+    var coordSys = getCoordSys(finder);
+    return coordSys === this ? coordSys.pointToData(pixel) : null;
+  };
+
+  return Geo;
+}(View$1);
+mixin(Geo, View$1);
+
+function getCoordSys(finder) {
+  var geoModel = finder.geoModel;
+  var seriesModel = finder.seriesModel;
+  return geoModel ? geoModel.coordinateSystem : seriesModel ? seriesModel.coordinateSystem // For map series.
+  || (seriesModel.getReferringComponents('geo', SINGLE_REFERRING).models[0] || {}).coordinateSystem : null;
+}
+
+var Geo$1 = Geo;
+
+/**
+ * Resize method bound to the geo
+ */
+
+function resizeGeo(geoModel, api) {
+  var boundingCoords = geoModel.get('boundingCoords');
+
+  if (boundingCoords != null) {
+    var leftTop_1 = boundingCoords[0];
+    var rightBottom_1 = boundingCoords[1];
+
+    if (!(isFinite(leftTop_1[0]) && isFinite(leftTop_1[1]) && isFinite(rightBottom_1[0]) && isFinite(rightBottom_1[1]))) {
+      if (process.env.NODE_ENV !== 'production') {
+        console.error('Invalid boundingCoords');
+      }
+    } else {
+      // Sample around the lng/lat rect and use projection to calculate actual bounding rect.
+      var projection_1 = this.projection;
+
+      if (projection_1) {
+        var xMin = leftTop_1[0];
+        var yMin = leftTop_1[1];
+        var xMax = rightBottom_1[0];
+        var yMax = rightBottom_1[1];
+        leftTop_1 = [Infinity, Infinity];
+        rightBottom_1 = [-Infinity, -Infinity]; // TODO better way?
+
+        var sampleLine = function (x0, y0, x1, y1) {
+          var dx = x1 - x0;
+          var dy = y1 - y0;
+
+          for (var i = 0; i <= 100; i++) {
+            var p = i / 100;
+            var pt = projection_1.project([x0 + dx * p, y0 + dy * p]);
+            min$1(leftTop_1, leftTop_1, pt);
+            max$1(rightBottom_1, rightBottom_1, pt);
+          }
+        }; // Top
+
+
+        sampleLine(xMin, yMin, xMax, yMin); // Right
+
+        sampleLine(xMax, yMin, xMax, yMax); // Bottom
+
+        sampleLine(xMax, yMax, xMin, yMax); // Left
+
+        sampleLine(xMin, yMax, xMax, yMin);
+      }
+
+      this.setBoundingRect(leftTop_1[0], leftTop_1[1], rightBottom_1[0] - leftTop_1[0], rightBottom_1[1] - leftTop_1[1]);
+    }
+  }
+
+  var rect = this.getBoundingRect();
+  var centerOption = geoModel.get('layoutCenter');
+  var sizeOption = geoModel.get('layoutSize');
+  var viewWidth = api.getWidth();
+  var viewHeight = api.getHeight();
+  var aspect = rect.width / rect.height * this.aspectScale;
+  var useCenterAndSize = false;
+  var center;
+  var size;
+
+  if (centerOption && sizeOption) {
+    center = [parsePercent(centerOption[0], viewWidth), parsePercent(centerOption[1], viewHeight)];
+    size = parsePercent(sizeOption, Math.min(viewWidth, viewHeight));
+
+    if (!isNaN(center[0]) && !isNaN(center[1]) && !isNaN(size)) {
+      useCenterAndSize = true;
+    } else {
+      if (process.env.NODE_ENV !== 'production') {
+        console.warn('Given layoutCenter or layoutSize data are invalid. Use left/top/width/height instead.');
+      }
+    }
+  }
+
+  var viewRect;
+
+  if (useCenterAndSize) {
+    viewRect = {};
+
+    if (aspect > 1) {
+      // Width is same with size
+      viewRect.width = size;
+      viewRect.height = size / aspect;
+    } else {
+      viewRect.height = size;
+      viewRect.width = size * aspect;
+    }
+
+    viewRect.y = center[1] - viewRect.height / 2;
+    viewRect.x = center[0] - viewRect.width / 2;
+  } else {
+    // Use left/top/width/height
+    var boxLayoutOption = geoModel.getBoxLayoutParams();
+    boxLayoutOption.aspect = aspect;
+    viewRect = getLayoutRect(boxLayoutOption, {
+      width: viewWidth,
+      height: viewHeight
+    });
+  }
+
+  this.setViewRect(viewRect.x, viewRect.y, viewRect.width, viewRect.height);
+  this.setCenter(geoModel.get('center'), api);
+  this.setZoom(geoModel.get('zoom'));
+} // Back compat for ECharts2, where the coord map is set on map series:
+// {type: 'map', geoCoord: {'cityA': [116.46,39.92], 'cityA': [119.12,24.61]}},
+
+
+function setGeoCoords(geo, model) {
+  each$9(model.get('geoCoord'), function (geoCoord, name) {
+    geo.addGeoCoord(name, geoCoord);
+  });
+}
+
+var GeoCreator =
+/** @class */
+function () {
+  function GeoCreator() {
+    // For deciding which dimensions to use when creating list data
+    this.dimensions = geo2DDimensions;
+  }
+
+  GeoCreator.prototype.create = function (ecModel, api) {
+    var geoList = [];
+
+    function getCommonGeoProperties(model) {
+      return {
+        nameProperty: model.get('nameProperty'),
+        aspectScale: model.get('aspectScale'),
+        projection: model.get('projection')
+      };
+    } // FIXME Create each time may be slow
+
+
+    ecModel.eachComponent('geo', function (geoModel, idx) {
+      var mapName = geoModel.get('map');
+      var geo = new Geo$1(mapName + idx, mapName, extend({
+        nameMap: geoModel.get('nameMap')
+      }, getCommonGeoProperties(geoModel)));
+      geo.zoomLimit = geoModel.get('scaleLimit');
+      geoList.push(geo); // setGeoCoords(geo, geoModel);
+
+      geoModel.coordinateSystem = geo;
+      geo.model = geoModel; // Inject resize method
+
+      geo.resize = resizeGeo;
+      geo.resize(geoModel, api);
+    });
+    ecModel.eachSeries(function (seriesModel) {
+      var coordSys = seriesModel.get('coordinateSystem');
+
+      if (coordSys === 'geo') {
+        var geoIndex = seriesModel.get('geoIndex') || 0;
+        seriesModel.coordinateSystem = geoList[geoIndex];
+      }
+    }); // If has map series
+
+    var mapModelGroupBySeries = {};
+    ecModel.eachSeriesByType('map', function (seriesModel) {
+      if (!seriesModel.getHostGeoModel()) {
+        var mapType = seriesModel.getMapType();
+        mapModelGroupBySeries[mapType] = mapModelGroupBySeries[mapType] || [];
+        mapModelGroupBySeries[mapType].push(seriesModel);
+      }
+    });
+    each$9(mapModelGroupBySeries, function (mapSeries, mapType) {
+      var nameMapList = map$1(mapSeries, function (singleMapSeries) {
+        return singleMapSeries.get('nameMap');
+      });
+      var geo = new Geo$1(mapType, mapType, extend({
+        nameMap: mergeAll(nameMapList)
+      }, getCommonGeoProperties(mapSeries[0])));
+      geo.zoomLimit = retrieve.apply(null, map$1(mapSeries, function (singleMapSeries) {
+        return singleMapSeries.get('scaleLimit');
+      }));
+      geoList.push(geo); // Inject resize method
+
+      geo.resize = resizeGeo;
+      geo.resize(mapSeries[0], api);
+      each$9(mapSeries, function (singleMapSeries) {
+        singleMapSeries.coordinateSystem = geo;
+        setGeoCoords(geo, singleMapSeries);
+      });
+    });
+    return geoList;
+  };
+  /**
+   * Fill given regions array
+   */
+
+
+  GeoCreator.prototype.getFilledRegions = function (originRegionArr, mapName, nameMap, nameProperty) {
+    // Not use the original
+    var regionsArr = (originRegionArr || []).slice();
+    var dataNameMap = createHashMap();
+
+    for (var i = 0; i < regionsArr.length; i++) {
+      dataNameMap.set(regionsArr[i].name, regionsArr[i]);
+    }
+
+    var source = geoSourceManager.load(mapName, nameMap, nameProperty);
+    each$9(source.regions, function (region) {
+      var name = region.name;
+      !dataNameMap.get(name) && regionsArr.push({
+        name: name
+      });
+    });
+    return regionsArr;
+  };
+
+  return GeoCreator;
+}();
+
+var geoCreator = new GeoCreator();
+var geoCreator$1 = geoCreator;
+
+var GeoModel =
+/** @class */
+function (_super) {
+  __extends$1(GeoModel, _super);
+
+  function GeoModel() {
+    var _this = _super !== null && _super.apply(this, arguments) || this;
+
+    _this.type = GeoModel.type;
+    return _this;
+  }
+
+  GeoModel.prototype.init = function (option, parentModel, ecModel) {
+    var source = geoSourceManager.getGeoResource(option.map);
+
+    if (source && source.type === 'geoJSON') {
+      var itemStyle = option.itemStyle = option.itemStyle || {};
+
+      if (!('color' in itemStyle)) {
+        itemStyle.color = '#eee';
+      }
+    }
+
+    this.mergeDefaultAndTheme(option, ecModel); // Default label emphasis `show`
+
+    defaultEmphasis(option, 'label', ['show']);
+  };
+
+  GeoModel.prototype.optionUpdated = function () {
+    var _this = this;
+
+    var option = this.option;
+    option.regions = geoCreator$1.getFilledRegions(option.regions, option.map, option.nameMap, option.nameProperty);
+    var selectedMap = {};
+    this._optionModelMap = reduce(option.regions || [], function (optionModelMap, regionOpt) {
+      var regionName = regionOpt.name;
+
+      if (regionName) {
+        optionModelMap.set(regionName, new Model$1(regionOpt, _this, _this.ecModel));
+
+        if (regionOpt.selected) {
+          selectedMap[regionName] = true;
+        }
+      }
+
+      return optionModelMap;
+    }, createHashMap());
+
+    if (!option.selectedMap) {
+      option.selectedMap = selectedMap;
+    }
+  };
+  /**
+   * Get model of region.
+   */
+
+
+  GeoModel.prototype.getRegionModel = function (name) {
+    return this._optionModelMap.get(name) || new Model$1(null, this, this.ecModel);
+  };
+  /**
+   * Format label
+   * @param name Region name
+   */
+
+
+  GeoModel.prototype.getFormattedLabel = function (name, status) {
+    var regionModel = this.getRegionModel(name);
+    var formatter = status === 'normal' ? regionModel.get(['label', 'formatter']) : regionModel.get(['emphasis', 'label', 'formatter']);
+    var params = {
+      name: name
+    };
+
+    if (isFunction(formatter)) {
+      params.status = status;
+      return formatter(params);
+    } else if (isString(formatter)) {
+      return formatter.replace('{a}', name != null ? name : '');
+    }
+  };
+
+  GeoModel.prototype.setZoom = function (zoom) {
+    this.option.zoom = zoom;
+  };
+
+  GeoModel.prototype.setCenter = function (center) {
+    this.option.center = center;
+  }; // PENGING If selectedMode is null ?
+
+
+  GeoModel.prototype.select = function (name) {
+    var option = this.option;
+    var selectedMode = option.selectedMode;
+
+    if (!selectedMode) {
+      return;
+    }
+
+    if (selectedMode !== 'multiple') {
+      option.selectedMap = null;
+    }
+
+    var selectedMap = option.selectedMap || (option.selectedMap = {});
+    selectedMap[name] = true;
+  };
+
+  GeoModel.prototype.unSelect = function (name) {
+    var selectedMap = this.option.selectedMap;
+
+    if (selectedMap) {
+      selectedMap[name] = false;
+    }
+  };
+
+  GeoModel.prototype.toggleSelected = function (name) {
+    this[this.isSelected(name) ? 'unSelect' : 'select'](name);
+  };
+
+  GeoModel.prototype.isSelected = function (name) {
+    var selectedMap = this.option.selectedMap;
+    return !!(selectedMap && selectedMap[name]);
+  };
+
+  GeoModel.type = 'geo';
+  GeoModel.layoutMode = 'box';
+  GeoModel.defaultOption = {
+    // zlevel: 0,
+    z: 0,
+    show: true,
+    left: 'center',
+    top: 'center',
+    // Default value:
+    // for geoSVG source: 1,
+    // for geoJSON source: 0.75.
+    aspectScale: null,
+    ///// Layout with center and size
+    // If you wan't to put map in a fixed size box with right aspect ratio
+    // This two properties may more conveninet
+    // layoutCenter: [50%, 50%]
+    // layoutSize: 100
+    silent: false,
+    // Map type
+    map: '',
+    // Define left-top, right-bottom coords to control view
+    // For example, [ [180, 90], [-180, -90] ]
+    boundingCoords: null,
+    // Default on center of map
+    center: null,
+    zoom: 1,
+    scaleLimit: null,
+    // selectedMode: false
+    label: {
+      show: false,
+      color: '#000'
+    },
+    itemStyle: {
+      borderWidth: 0.5,
+      borderColor: '#444' // Default color:
+      // + geoJSON: #eee
+      // + geoSVG: null (use SVG original `fill`)
+      // color: '#eee'
+
+    },
+    emphasis: {
+      label: {
+        show: true,
+        color: 'rgb(100,0,0)'
+      },
+      itemStyle: {
+        color: 'rgba(255,215,0,0.8)'
+      }
+    },
+    select: {
+      label: {
+        show: true,
+        color: 'rgb(100,0,0)'
+      },
+      itemStyle: {
+        color: 'rgba(255,215,0,0.8)'
+      }
+    },
+    regions: [] // tooltip: {
+    //     show: false
+    // }
+
+  };
+  return GeoModel;
+}(ComponentModel$1);
+
+var GeoModel$1 = GeoModel;
+
+/*
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing,
+* software distributed under the License is distributed on an
+* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+* KIND, either express or implied.  See the License for the
+* specific language governing permissions and limitations
+* under the License.
+*/
+
+
+/**
+ * AUTO-GENERATED FILE. DO NOT MODIFY.
+ */
+
+/*
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing,
+* software distributed under the License is distributed on an
+* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+* KIND, either express or implied.  See the License for the
+* specific language governing permissions and limitations
+* under the License.
+*/
+function getCenterCoord(view, point) {
+  // Use projected coord as center because it's linear.
+  return view.pointToProjected ? view.pointToProjected(point) : view.pointToData(point);
+}
+
+function updateCenterAndZoom(view, payload, zoomLimit, api) {
+  var previousZoom = view.getZoom();
+  var center = view.getCenter();
+  var zoom = payload.zoom;
+  var point = view.projectedToPoint ? view.projectedToPoint(center) : view.dataToPoint(center);
+
+  if (payload.dx != null && payload.dy != null) {
+    point[0] -= payload.dx;
+    point[1] -= payload.dy;
+    view.setCenter(getCenterCoord(view, point), api);
+  }
+
+  if (zoom != null) {
+    if (zoomLimit) {
+      var zoomMin = zoomLimit.min || 0;
+      var zoomMax = zoomLimit.max || Infinity;
+      zoom = Math.max(Math.min(previousZoom * zoom, zoomMax), zoomMin) / previousZoom;
+    } // Zoom on given point(originX, originY)
+
+
+    view.scaleX *= zoom;
+    view.scaleY *= zoom;
+    var fixX = (payload.originX - view.x) * (zoom - 1);
+    var fixY = (payload.originY - view.y) * (zoom - 1);
+    view.x -= fixX;
+    view.y -= fixY;
+    view.updateTransform(); // Get the new center
+
+    view.setCenter(getCenterCoord(view, point), api);
+    view.setZoom(zoom * previousZoom);
+  }
+
+  return {
+    center: view.getCenter(),
+    zoom: view.getZoom()
+  };
+}
+
+var GeoView =
+/** @class */
+function (_super) {
+  __extends$1(GeoView, _super);
+
+  function GeoView() {
+    var _this = _super !== null && _super.apply(this, arguments) || this;
+
+    _this.type = GeoView.type;
+    _this.focusBlurEnabled = true;
+    return _this;
+  }
+
+  GeoView.prototype.init = function (ecModel, api) {
+    this._api = api;
+  };
+
+  GeoView.prototype.render = function (geoModel, ecModel, api, payload) {
+    this._model = geoModel;
+
+    if (!geoModel.get('show')) {
+      this._mapDraw && this._mapDraw.remove();
+      this._mapDraw = null;
+      return;
+    }
+
+    if (!this._mapDraw) {
+      this._mapDraw = new MapDraw$1(api);
+    }
+
+    var mapDraw = this._mapDraw;
+    mapDraw.draw(geoModel, ecModel, api, this, payload);
+    mapDraw.group.on('click', this._handleRegionClick, this);
+    mapDraw.group.silent = geoModel.get('silent');
+    this.group.add(mapDraw.group);
+    this.updateSelectStatus(geoModel, ecModel, api);
+  };
+
+  GeoView.prototype._handleRegionClick = function (e) {
+    var eventData;
+    findEventDispatcher(e.target, function (current) {
+      return (eventData = getECData(current).eventData) != null;
+    }, true);
+
+    if (eventData) {
+      this._api.dispatchAction({
+        type: 'geoToggleSelect',
+        geoId: this._model.id,
+        name: eventData.name
+      });
+    }
+  };
+
+  GeoView.prototype.updateSelectStatus = function (model, ecModel, api) {
+    var _this = this;
+
+    this._mapDraw.group.traverse(function (node) {
+      var eventData = getECData(node).eventData;
+
+      if (eventData) {
+        _this._model.isSelected(eventData.name) ? api.enterSelect(node) : api.leaveSelect(node); // No need to traverse children.
+
+        return true;
+      }
+    });
+  };
+
+  GeoView.prototype.findHighDownDispatchers = function (name) {
+    return this._mapDraw && this._mapDraw.findHighDownDispatchers(name, this._model);
+  };
+
+  GeoView.prototype.dispose = function () {
+    this._mapDraw && this._mapDraw.remove();
+  };
+
+  GeoView.type = 'geo';
+  return GeoView;
+}(ComponentView$1);
+
+var GeoView$1 = GeoView;
+
+function registerMap(mapName, geoJson, specialAreas) {
+  geoSourceManager.registerMap(mapName, geoJson, specialAreas);
+}
+
+function install$d(registers) {
+  registers.registerCoordinateSystem('geo', geoCreator$1);
+  registers.registerComponentModel(GeoModel$1);
+  registers.registerComponentView(GeoView$1);
+  registers.registerImpl('registerMap', registerMap);
+  registers.registerImpl('getMap', function (mapName) {
+    return geoSourceManager.getMapForUser(mapName);
+  });
+
+  function makeAction(method, actionInfo) {
+    actionInfo.update = 'geo:updateSelectStatus';
+    registers.registerAction(actionInfo, function (payload, ecModel) {
+      var selected = {};
+      var allSelected = [];
+      ecModel.eachComponent({
+        mainType: 'geo',
+        query: payload
+      }, function (geoModel) {
+        geoModel[method](payload.name);
+        var geo = geoModel.coordinateSystem;
+        each$9(geo.regions, function (region) {
+          selected[region.name] = geoModel.isSelected(region.name) || false;
+        }); // Notice: there might be duplicated name in different regions.
+
+        var names = [];
+        each$9(selected, function (v, name) {
+          selected[name] && names.push(name);
+        });
+        allSelected.push({
+          geoIndex: geoModel.componentIndex,
+          // Use singular, the same naming convention as the event `selectchanged`.
+          name: names
+        });
+      });
+      return {
+        selected: selected,
+        allSelected: allSelected,
+        name: payload.name
+      };
+    });
+  }
+
+  makeAction('toggleSelected', {
+    type: 'geoToggleSelect',
+    event: 'geoselectchanged'
+  });
+  makeAction('select', {
+    type: 'geoSelect',
+    event: 'geoselected'
+  });
+  makeAction('unSelect', {
+    type: 'geoUnSelect',
+    event: 'geounselected'
+  });
+  /**
+   * @payload
+   * @property {string} [componentType=series]
+   * @property {number} [dx]
+   * @property {number} [dy]
+   * @property {number} [zoom]
+   * @property {number} [originX]
+   * @property {number} [originY]
+   */
+
+  registers.registerAction({
+    type: 'geoRoam',
+    event: 'geoRoam',
+    update: 'updateTransform'
+  }, function (payload, ecModel, api) {
+    var componentType = payload.componentType || 'series';
+    ecModel.eachComponent({
+      mainType: componentType,
+      query: payload
+    }, function (componentModel) {
+      var geo = componentModel.coordinateSystem;
+
+      if (geo.type !== 'geo') {
+        return;
+      }
+
+      var res = updateCenterAndZoom(geo, payload, componentModel.get('scaleLimit'), api);
+      componentModel.setCenter && componentModel.setCenter(res.center);
+      componentModel.setZoom && componentModel.setZoom(res.zoom); // All map series with same `map` use the same geo coordinate system
+      // So the center and zoom must be in sync. Include the series not selected by legend
+
+      if (componentType === 'series') {
+        each$9(componentModel.seriesGroup, function (seriesModel) {
+          seriesModel.setCenter(res.center);
+          seriesModel.setZoom(res.zoom);
+        });
+      }
+    });
+  });
+}
+
+function install$c(registers) {
+  use(install$d);
+  registers.registerChartView(MapView$1);
+  registers.registerSeriesModel(MapSeries$1);
+  registers.registerLayout(mapSymbolLayout);
+  registers.registerProcessor(registers.PRIORITY.PROCESSOR.STATISTIC, mapDataStatistic);
+  createLegacyDataSelectAction('map', registers.registerAction);
+}
+
+var each$6 = each$9;
+var isObject = isObject$3;
+var CATEGORY_DEFAULT_VISUAL_INDEX = -1;
+
+var VisualMapping =
+/** @class */
+function () {
+  function VisualMapping(option) {
+    var mappingMethod = option.mappingMethod;
+    var visualType = option.type;
+    var thisOption = this.option = clone$3(option);
+    this.type = visualType;
+    this.mappingMethod = mappingMethod;
+    this._normalizeData = normalizers[mappingMethod];
+    var visualHandler = VisualMapping.visualHandlers[visualType];
+    this.applyVisual = visualHandler.applyVisual;
+    this.getColorMapper = visualHandler.getColorMapper;
+    this._normalizedToVisual = visualHandler._normalizedToVisual[mappingMethod];
+
+    if (mappingMethod === 'piecewise') {
+      normalizeVisualRange(thisOption);
+      preprocessForPiecewise(thisOption);
+    } else if (mappingMethod === 'category') {
+      thisOption.categories ? preprocessForSpecifiedCategory(thisOption) // categories is ordinal when thisOption.categories not specified,
+      // which need no more preprocess except normalize visual.
+      : normalizeVisualRange(thisOption, true);
+    } else {
+      // mappingMethod === 'linear' or 'fixed'
+      assert(mappingMethod !== 'linear' || thisOption.dataExtent);
+      normalizeVisualRange(thisOption);
+    }
+  }
+
+  VisualMapping.prototype.mapValueToVisual = function (value) {
+    var normalized = this._normalizeData(value);
+
+    return this._normalizedToVisual(normalized, value);
+  };
+
+  VisualMapping.prototype.getNormalizer = function () {
+    return bind$1(this._normalizeData, this);
+  };
+  /**
+   * List available visual types.
+   *
+   * @public
+   * @return {Array.<string>}
+   */
+
+
+  VisualMapping.listVisualTypes = function () {
+    return keys(VisualMapping.visualHandlers);
+  }; // /**
+  //  * @public
+  //  */
+  // static addVisualHandler(name, handler) {
+  //     visualHandlers[name] = handler;
+  // }
+
+  /**
+   * @public
+   */
+
+
+  VisualMapping.isValidType = function (visualType) {
+    return VisualMapping.visualHandlers.hasOwnProperty(visualType);
+  };
+  /**
+   * Convinent method.
+   * Visual can be Object or Array or primary type.
+   */
+
+
+  VisualMapping.eachVisual = function (visual, callback, context) {
+    if (isObject$3(visual)) {
+      each$9(visual, callback, context);
+    } else {
+      callback.call(context, visual);
+    }
+  };
+
+  VisualMapping.mapVisual = function (visual, callback, context) {
+    var isPrimary;
+    var newVisual = isArray$1(visual) ? [] : isObject$3(visual) ? {} : (isPrimary = true, null);
+    VisualMapping.eachVisual(visual, function (v, key) {
+      var newVal = callback.call(context, v, key);
+      isPrimary ? newVisual = newVal : newVisual[key] = newVal;
+    });
+    return newVisual;
+  };
+  /**
+   * Retrieve visual properties from given object.
+   */
+
+
+  VisualMapping.retrieveVisuals = function (obj) {
+    var ret = {};
+    var hasVisual;
+    obj && each$6(VisualMapping.visualHandlers, function (h, visualType) {
+      if (obj.hasOwnProperty(visualType)) {
+        ret[visualType] = obj[visualType];
+        hasVisual = true;
+      }
+    });
+    return hasVisual ? ret : null;
+  };
+  /**
+   * Give order to visual types, considering colorSaturation, colorAlpha depends on color.
+   *
+   * @public
+   * @param {(Object|Array)} visualTypes If Object, like: {color: ..., colorSaturation: ...}
+   *                                     IF Array, like: ['color', 'symbol', 'colorSaturation']
+   * @return {Array.<string>} Sorted visual types.
+   */
+
+
+  VisualMapping.prepareVisualTypes = function (visualTypes) {
+    if (isArray$1(visualTypes)) {
+      visualTypes = visualTypes.slice();
+    } else if (isObject(visualTypes)) {
+      var types_1 = [];
+      each$6(visualTypes, function (item, type) {
+        types_1.push(type);
+      });
+      visualTypes = types_1;
+    } else {
+      return [];
+    }
+
+    visualTypes.sort(function (type1, type2) {
+      // color should be front of colorSaturation, colorAlpha, ...
+      // symbol and symbolSize do not matter.
+      return type2 === 'color' && type1 !== 'color' && type1.indexOf('color') === 0 ? 1 : -1;
+    });
+    return visualTypes;
+  };
+  /**
+   * 'color', 'colorSaturation', 'colorAlpha', ... are depends on 'color'.
+   * Other visuals are only depends on themself.
+   */
+
+
+  VisualMapping.dependsOn = function (visualType1, visualType2) {
+    return visualType2 === 'color' ? !!(visualType1 && visualType1.indexOf(visualType2) === 0) : visualType1 === visualType2;
+  };
+  /**
+   * @param value
+   * @param pieceList [{value: ..., interval: [min, max]}, ...]
+   *                         Always from small to big.
+   * @param findClosestWhenOutside Default to be false
+   * @return index
+   */
+
+
+  VisualMapping.findPieceIndex = function (value, pieceList, findClosestWhenOutside) {
+    var possibleI;
+    var abs = Infinity; // value has the higher priority.
+
+    for (var i = 0, len = pieceList.length; i < len; i++) {
+      var pieceValue = pieceList[i].value;
+
+      if (pieceValue != null) {
+        if (pieceValue === value // FIXME
+        // It is supposed to compare value according to value type of dimension,
+        // but currently value type can exactly be string or number.
+        // Compromise for numeric-like string (like '12'), especially
+        // in the case that visualMap.categories is ['22', '33'].
+        || isString(pieceValue) && pieceValue === value + '') {
+          return i;
+        }
+
+        findClosestWhenOutside && updatePossible(pieceValue, i);
+      }
+    }
+
+    for (var i = 0, len = pieceList.length; i < len; i++) {
+      var piece = pieceList[i];
+      var interval = piece.interval;
+      var close_1 = piece.close;
+
+      if (interval) {
+        if (interval[0] === -Infinity) {
+          if (littleThan(close_1[1], value, interval[1])) {
+            return i;
+          }
+        } else if (interval[1] === Infinity) {
+          if (littleThan(close_1[0], interval[0], value)) {
+            return i;
+          }
+        } else if (littleThan(close_1[0], interval[0], value) && littleThan(close_1[1], value, interval[1])) {
+          return i;
+        }
+
+        findClosestWhenOutside && updatePossible(interval[0], i);
+        findClosestWhenOutside && updatePossible(interval[1], i);
+      }
+    }
+
+    if (findClosestWhenOutside) {
+      return value === Infinity ? pieceList.length - 1 : value === -Infinity ? 0 : possibleI;
+    }
+
+    function updatePossible(val, index) {
+      var newAbs = Math.abs(val - value);
+
+      if (newAbs < abs) {
+        abs = newAbs;
+        possibleI = index;
+      }
+    }
+  };
+
+  VisualMapping.visualHandlers = {
+    color: {
+      applyVisual: makeApplyVisual('color'),
+      getColorMapper: function () {
+        var thisOption = this.option;
+        return bind$1(thisOption.mappingMethod === 'category' ? function (value, isNormalized) {
+          !isNormalized && (value = this._normalizeData(value));
+          return doMapCategory.call(this, value);
+        } : function (value, isNormalized, out) {
+          // If output rgb array
+          // which will be much faster and useful in pixel manipulation
+          var returnRGBArray = !!out;
+          !isNormalized && (value = this._normalizeData(value));
+          out = fastLerp(value, thisOption.parsedVisual, out);
+          return returnRGBArray ? out : stringify(out, 'rgba');
+        }, this);
+      },
+      _normalizedToVisual: {
+        linear: function (normalized) {
+          return stringify(fastLerp(normalized, this.option.parsedVisual), 'rgba');
+        },
+        category: doMapCategory,
+        piecewise: function (normalized, value) {
+          var result = getSpecifiedVisual.call(this, value);
+
+          if (result == null) {
+            result = stringify(fastLerp(normalized, this.option.parsedVisual), 'rgba');
+          }
+
+          return result;
+        },
+        fixed: doMapFixed
+      }
+    },
+    colorHue: makePartialColorVisualHandler(function (color$1, value) {
+      return modifyHSL(color$1, value);
+    }),
+    colorSaturation: makePartialColorVisualHandler(function (color$1, value) {
+      return modifyHSL(color$1, null, value);
+    }),
+    colorLightness: makePartialColorVisualHandler(function (color$1, value) {
+      return modifyHSL(color$1, null, null, value);
+    }),
+    colorAlpha: makePartialColorVisualHandler(function (color$1, value) {
+      return modifyAlpha(color$1, value);
+    }),
+    decal: {
+      applyVisual: makeApplyVisual('decal'),
+      _normalizedToVisual: {
+        linear: null,
+        category: doMapCategory,
+        piecewise: null,
+        fixed: null
+      }
+    },
+    opacity: {
+      applyVisual: makeApplyVisual('opacity'),
+      _normalizedToVisual: createNormalizedToNumericVisual([0, 1])
+    },
+    liftZ: {
+      applyVisual: makeApplyVisual('liftZ'),
+      _normalizedToVisual: {
+        linear: doMapFixed,
+        category: doMapFixed,
+        piecewise: doMapFixed,
+        fixed: doMapFixed
+      }
+    },
+    symbol: {
+      applyVisual: function (value, getter, setter) {
+        var symbolCfg = this.mapValueToVisual(value);
+        setter('symbol', symbolCfg);
+      },
+      _normalizedToVisual: {
+        linear: doMapToArray,
+        category: doMapCategory,
+        piecewise: function (normalized, value) {
+          var result = getSpecifiedVisual.call(this, value);
+
+          if (result == null) {
+            result = doMapToArray.call(this, normalized);
+          }
+
+          return result;
+        },
+        fixed: doMapFixed
+      }
+    },
+    symbolSize: {
+      applyVisual: makeApplyVisual('symbolSize'),
+      _normalizedToVisual: createNormalizedToNumericVisual([0, 1])
+    }
+  };
+  return VisualMapping;
+}();
+
+function preprocessForPiecewise(thisOption) {
+  var pieceList = thisOption.pieceList;
+  thisOption.hasSpecialVisual = false;
+  each$9(pieceList, function (piece, index) {
+    piece.originIndex = index; // piece.visual is "result visual value" but not
+    // a visual range, so it does not need to be normalized.
+
+    if (piece.visual != null) {
+      thisOption.hasSpecialVisual = true;
+    }
+  });
+}
+
+function preprocessForSpecifiedCategory(thisOption) {
+  // Hash categories.
+  var categories = thisOption.categories;
+  var categoryMap = thisOption.categoryMap = {};
+  var visual = thisOption.visual;
+  each$6(categories, function (cate, index) {
+    categoryMap[cate] = index;
+  }); // Process visual map input.
+
+  if (!isArray$1(visual)) {
+    var visualArr_1 = [];
+
+    if (isObject$3(visual)) {
+      each$6(visual, function (v, cate) {
+        var index = categoryMap[cate];
+        visualArr_1[index != null ? index : CATEGORY_DEFAULT_VISUAL_INDEX] = v;
+      });
+    } else {
+      // Is primary type, represents default visual.
+      visualArr_1[CATEGORY_DEFAULT_VISUAL_INDEX] = visual;
+    }
+
+    visual = setVisualToOption(thisOption, visualArr_1);
+  } // Remove categories that has no visual,
+  // then we can mapping them to CATEGORY_DEFAULT_VISUAL_INDEX.
+
+
+  for (var i = categories.length - 1; i >= 0; i--) {
+    if (visual[i] == null) {
+      delete categoryMap[categories[i]];
+      categories.pop();
+    }
+  }
+}
+
+function normalizeVisualRange(thisOption, isCategory) {
+  var visual = thisOption.visual;
+  var visualArr = [];
+
+  if (isObject$3(visual)) {
+    each$6(visual, function (v) {
+      visualArr.push(v);
+    });
+  } else if (visual != null) {
+    visualArr.push(visual);
+  }
+
+  var doNotNeedPair = {
+    color: 1,
+    symbol: 1
+  };
+
+  if (!isCategory && visualArr.length === 1 && !doNotNeedPair.hasOwnProperty(thisOption.type)) {
+    // Do not care visualArr.length === 0, which is illegal.
+    visualArr[1] = visualArr[0];
+  }
+
+  setVisualToOption(thisOption, visualArr);
+}
+
+function makePartialColorVisualHandler(applyValue) {
+  return {
+    applyVisual: function (value, getter, setter) {
+      // Only used in HSL
+      var colorChannel = this.mapValueToVisual(value); // Must not be array value
+
+      setter('color', applyValue(getter('color'), colorChannel));
+    },
+    _normalizedToVisual: createNormalizedToNumericVisual([0, 1])
+  };
+}
+
+function doMapToArray(normalized) {
+  var visual = this.option.visual;
+  return visual[Math.round(linearMap$2(normalized, [0, 1], [0, visual.length - 1], true))] || {}; // TODO {}?
+}
+
+function makeApplyVisual(visualType) {
+  return function (value, getter, setter) {
+    setter(visualType, this.mapValueToVisual(value));
+  };
+}
+
+function doMapCategory(normalized) {
+  var visual = this.option.visual;
+  return visual[this.option.loop && normalized !== CATEGORY_DEFAULT_VISUAL_INDEX ? normalized % visual.length : normalized];
+}
+
+function doMapFixed() {
+  // visual will be convert to array.
+  return this.option.visual[0];
+}
+/**
+ * Create mapped to numeric visual
+ */
+
+
+function createNormalizedToNumericVisual(sourceExtent) {
+  return {
+    linear: function (normalized) {
+      return linearMap$2(normalized, sourceExtent, this.option.visual, true);
+    },
+    category: doMapCategory,
+    piecewise: function (normalized, value) {
+      var result = getSpecifiedVisual.call(this, value);
+
+      if (result == null) {
+        result = linearMap$2(normalized, sourceExtent, this.option.visual, true);
+      }
+
+      return result;
+    },
+    fixed: doMapFixed
+  };
+}
+
+function getSpecifiedVisual(value) {
+  var thisOption = this.option;
+  var pieceList = thisOption.pieceList;
+
+  if (thisOption.hasSpecialVisual) {
+    var pieceIndex = VisualMapping.findPieceIndex(value, pieceList);
+    var piece = pieceList[pieceIndex];
+
+    if (piece && piece.visual) {
+      return piece.visual[this.type];
+    }
+  }
+}
+
+function setVisualToOption(thisOption, visualArr) {
+  thisOption.visual = visualArr;
+
+  if (thisOption.type === 'color') {
+    thisOption.parsedVisual = map$1(visualArr, function (item) {
+      var color$1 = parse(item);
+
+      if (!color$1 && process.env.NODE_ENV !== 'production') {
+        warn("'" + item + "' is an illegal color, fallback to '#000000'", true);
+      }
+
+      return color$1 || [0, 0, 0, 1];
+    });
+  }
+
+  return visualArr;
+}
+/**
+ * Normalizers by mapping methods.
+ */
+
+
+var normalizers = {
+  linear: function (value) {
+    return linearMap$2(value, this.option.dataExtent, [0, 1], true);
+  },
+  piecewise: function (value) {
+    var pieceList = this.option.pieceList;
+    var pieceIndex = VisualMapping.findPieceIndex(value, pieceList, true);
+
+    if (pieceIndex != null) {
+      return linearMap$2(pieceIndex, [0, pieceList.length - 1], [0, 1], true);
+    }
+  },
+  category: function (value) {
+    var index = this.option.categories ? this.option.categoryMap[value] : value; // ordinal value
+
+    return index == null ? CATEGORY_DEFAULT_VISUAL_INDEX : index;
+  },
+  fixed: noop
+};
+
+function littleThan(close, a, b) {
+  return close ? a <= b : a < b;
+}
+
+var VisualMapping$1 = VisualMapping;
+
+/*
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing,
+* software distributed under the License is distributed on an
+* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+* KIND, either express or implied.  See the License for the
+* specific language governing permissions and limitations
+* under the License.
+*/
+
+
+/**
+ * AUTO-GENERATED FILE. DO NOT MODIFY.
+ */
+
+/*
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing,
+* software distributed under the License is distributed on an
+* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+* KIND, either express or implied.  See the License for the
+* specific language governing permissions and limitations
+* under the License.
+*/
+
+/**
+ * Calculate slider move result.
+ * Usage:
+ * (1) If both handle0 and handle1 are needed to be moved, set minSpan the same as
+ * maxSpan and the same as `Math.abs(handleEnd[1] - handleEnds[0])`.
+ * (2) If handle0 is forbidden to cross handle1, set minSpan as `0`.
+ *
+ * @param delta Move length.
+ * @param handleEnds handleEnds[0] can be bigger then handleEnds[1].
+ *              handleEnds will be modified in this method.
+ * @param extent handleEnds is restricted by extent.
+ *              extent[0] should less or equals than extent[1].
+ * @param handleIndex Can be 'all', means that both move the two handleEnds.
+ * @param minSpan The range of dataZoom can not be smaller than that.
+ *              If not set, handle0 and cross handle1. If set as a non-negative
+ *              number (including `0`), handles will push each other when reaching
+ *              the minSpan.
+ * @param maxSpan The range of dataZoom can not be larger than that.
+ * @return The input handleEnds.
+ */
+function sliderMove(delta, handleEnds, extent, handleIndex, minSpan, maxSpan) {
+  delta = delta || 0;
+  var extentSpan = extent[1] - extent[0]; // Notice maxSpan and minSpan can be null/undefined.
+
+  if (minSpan != null) {
+    minSpan = restrict(minSpan, [0, extentSpan]);
+  }
+
+  if (maxSpan != null) {
+    maxSpan = Math.max(maxSpan, minSpan != null ? minSpan : 0);
+  }
+
+  if (handleIndex === 'all') {
+    var handleSpan = Math.abs(handleEnds[1] - handleEnds[0]);
+    handleSpan = restrict(handleSpan, [0, extentSpan]);
+    minSpan = maxSpan = restrict(handleSpan, [minSpan, maxSpan]);
+    handleIndex = 0;
+  }
+
+  handleEnds[0] = restrict(handleEnds[0], extent);
+  handleEnds[1] = restrict(handleEnds[1], extent);
+  var originalDistSign = getSpanSign(handleEnds, handleIndex);
+  handleEnds[handleIndex] += delta; // Restrict in extent.
+
+  var extentMinSpan = minSpan || 0;
+  var realExtent = extent.slice();
+  originalDistSign.sign < 0 ? realExtent[0] += extentMinSpan : realExtent[1] -= extentMinSpan;
+  handleEnds[handleIndex] = restrict(handleEnds[handleIndex], realExtent); // Expand span.
+
+  var currDistSign;
+  currDistSign = getSpanSign(handleEnds, handleIndex);
+
+  if (minSpan != null && (currDistSign.sign !== originalDistSign.sign || currDistSign.span < minSpan)) {
+    // If minSpan exists, 'cross' is forbidden.
+    handleEnds[1 - handleIndex] = handleEnds[handleIndex] + originalDistSign.sign * minSpan;
+  } // Shrink span.
+
+
+  currDistSign = getSpanSign(handleEnds, handleIndex);
+
+  if (maxSpan != null && currDistSign.span > maxSpan) {
+    handleEnds[1 - handleIndex] = handleEnds[handleIndex] + currDistSign.sign * maxSpan;
+  }
+
+  return handleEnds;
+}
+
+function getSpanSign(handleEnds, handleIndex) {
+  var dist = handleEnds[handleIndex] - handleEnds[1 - handleIndex]; // If `handleEnds[0] === handleEnds[1]`, always believe that handleEnd[0]
+  // is at left of handleEnds[1] for non-cross case.
+
+  return {
+    span: Math.abs(dist),
+    sign: dist > 0 ? -1 : dist < 0 ? 1 : handleIndex ? -1 : 1
+  };
+}
+
+function restrict(value, extend) {
+  return Math.min(extend[1] != null ? extend[1] : Infinity, Math.max(extend[0] != null ? extend[0] : -Infinity, value));
 }
 
 var inner$2 = makeInner();
@@ -89224,7 +94741,7 @@ function () {
 
     var handleSize = handleModel.get('size');
 
-    if (!isArray(handleSize)) {
+    if (!isArray$1(handleSize)) {
       handleSize = [handleSize, handleSize];
     }
 
@@ -89357,9 +94874,9 @@ function updateProps(animationModel, moveAnimation, el, props) {
 }
 
 function propsEqual(lastProps, newProps) {
-  if (isObject$2(lastProps) && isObject$2(newProps)) {
+  if (isObject$3(lastProps) && isObject$3(newProps)) {
     var equals_1 = true;
-    each$4(newProps, function (item, key) {
+    each$9(newProps, function (item, key) {
       equals_1 = equals_1 && propsEqual(lastProps[key], item);
     });
     return !!equals_1;
@@ -89486,7 +95003,7 @@ function getValueLabel(value, axis, ecModel, seriesDataIndices, opt) {
       axisIndex: axis.index,
       seriesData: []
     };
-    each$4(seriesDataIndices, function (idxItem) {
+    each$9(seriesDataIndices, function (idxItem) {
       var series = ecModel.getSeriesByIndex(idxItem.seriesIndex);
       var dataIndex = idxItem.dataIndexInside;
       var dataParams = series && series.getDataParams(dataIndex);
@@ -89728,7 +95245,7 @@ function (_super) {
 var AxisPointerModel$1 = AxisPointerModel;
 
 var inner$1 = makeInner();
-var each$1 = each$4;
+var each$5 = each$9;
 /**
  * @param {string} key
  * @param {module:echarts/ExtensionAPI} api
@@ -89763,7 +95280,7 @@ function initGlobalListeners(zr, api) {
   function useHandler(eventType, cb) {
     zr.on(eventType, function (e) {
       var dis = makeDispatchAction$1(api);
-      each$1(inner$1(zr).records, function (record) {
+      each$5(inner$1(zr).records, function (record) {
         record && cb(record, e, dis.dispatchAction);
       });
       dispatchTooltipFinally(dis.pendings, api);
@@ -89900,7 +95417,7 @@ function findPointFromSeries(finder, ecModel) {
   var data = seriesModel.getData();
   var dataIndex = queryDataIndex(data, finder);
 
-  if (dataIndex == null || dataIndex < 0 || isArray(dataIndex)) {
+  if (dataIndex == null || dataIndex < 0 || isArray$1(dataIndex)) {
     return {
       point: []
     };
@@ -89991,10 +95508,10 @@ function axisTrigger(payload, ecModel, api) {
     showTooltip: curry$1(showTooltip, dataByCoordSys)
   }; // Process for triggered axes.
 
-  each$4(coordSysAxesInfo.coordSysMap, function (coordSys, coordSysKey) {
+  each$9(coordSysAxesInfo.coordSysMap, function (coordSys, coordSysKey) {
     // If a point given, it must be contained by the coordinate system.
     var coordSysContainsPoint = isIllegalPoint || coordSys.containPoint(point);
-    each$4(coordSysAxesInfo.coordSysAxesInfo[coordSysKey], function (axisInfo, key) {
+    each$9(coordSysAxesInfo.coordSysAxesInfo[coordSysKey], function (axisInfo, key) {
       var axis = axisInfo.axis;
       var inputAxisInfo = findInputAxisInfo(inputAxesInfo, axisInfo); // If no inputAxesInfo, no axis is restricted.
 
@@ -90011,11 +95528,11 @@ function axisTrigger(payload, ecModel, api) {
   }); // Process for linked axes.
 
   var linkTriggers = {};
-  each$4(axesInfo, function (tarAxisInfo, tarKey) {
+  each$9(axesInfo, function (tarAxisInfo, tarKey) {
     var linkGroup = tarAxisInfo.linkGroup; // If axis has been triggered in the previous stage, it should not be triggered by link.
 
     if (linkGroup && !showValueMap[tarKey]) {
-      each$4(linkGroup.axesInfo, function (srcAxisInfo, srcKey) {
+      each$9(linkGroup.axesInfo, function (srcAxisInfo, srcKey) {
         var srcValItem = showValueMap[srcKey]; // If srcValItem exist, source axis is triggered, so link to target axis.
 
         if (srcAxisInfo !== tarAxisInfo && srcValItem) {
@@ -90026,7 +95543,7 @@ function axisTrigger(payload, ecModel, api) {
       });
     }
   });
-  each$4(linkTriggers, function (val, tarKey) {
+  each$9(linkTriggers, function (val, tarKey) {
     processOnAxis(axesInfo[tarKey], val, updaters, true, outputPayload);
   });
   updateModelActually(showValueMap, axesInfo, outputPayload);
@@ -90078,7 +95595,7 @@ function buildPayloadsBySeries(value, axisInfo) {
   var payloadBatch = [];
   var minDist = Number.MAX_VALUE;
   var minDiff = -1;
-  each$4(axisInfo.seriesModels, function (series, idx) {
+  each$9(axisInfo.seriesModels, function (series, idx) {
     var dataDim = series.getData().mapDimensionsAll(dim);
     var seriesNestestValue;
     var dataIndices;
@@ -90115,7 +95632,7 @@ function buildPayloadsBySeries(value, axisInfo) {
         payloadBatch.length = 0;
       }
 
-      each$4(dataIndices, function (dataIndex) {
+      each$9(dataIndices, function (dataIndex) {
         payloadBatch.push({
           seriesIndex: series.seriesIndex,
           dataIndexInside: dataIndex,
@@ -90184,7 +95701,7 @@ function showTooltip(dataByCoordSys, axisInfo, payloadInfo, value) {
 function updateModelActually(showValueMap, axesInfo, outputPayload) {
   var outputAxesInfo = outputPayload.axesInfo = []; // Basic logic: If no 'show' required, 'hide' this axisPointer.
 
-  each$4(axesInfo, function (axisInfo, key) {
+  each$9(axesInfo, function (axisInfo, key) {
     var option = axisInfo.axisPointerModel.option;
     var valItem = showValueMap[key];
 
@@ -90248,9 +95765,9 @@ function dispatchHighDownActually(axesInfo, dispatchAction, api) {
   var newHighlights = inner(zr)[highDownKey] = {}; // Update highlight/downplay status according to axisPointer model.
   // Build hash map and remove duplicate incidentally.
 
-  each$4(axesInfo, function (axisInfo, key) {
+  each$9(axesInfo, function (axisInfo, key) {
     var option = axisInfo.axisPointerModel.option;
-    option.status === 'show' && each$4(option.seriesDataIndices, function (batchItem) {
+    option.status === 'show' && each$9(option.seriesDataIndices, function (batchItem) {
       var key = batchItem.seriesIndex + ' | ' + batchItem.dataIndex;
       newHighlights[key] = batchItem;
     });
@@ -90258,10 +95775,10 @@ function dispatchHighDownActually(axesInfo, dispatchAction, api) {
 
   var toHighlight = [];
   var toDownplay = [];
-  each$4(lastHighlights, function (batchItem, key) {
+  each$9(lastHighlights, function (batchItem, key) {
     !newHighlights[key] && toDownplay.push(batchItem);
   });
-  each$4(newHighlights, function (batchItem, key) {
+  each$9(newHighlights, function (batchItem, key) {
     !lastHighlights[key] && toHighlight.push(batchItem);
   });
   toDownplay.length && api.dispatchAction({
@@ -90304,7 +95821,7 @@ function illegalPoint(point) {
   return !point || point[0] == null || isNaN(point[0]) || point[1] == null || isNaN(point[1]);
 }
 
-function install$8(registers) {
+function install$b(registers) {
   // CartesianAxisPointer is not supposed to be required here. But consider
   // echarts.simple.js and online build tooltip, which only require gridSimple,
   // CartesianAxisPointer should be able to required somewhere.
@@ -90319,7 +95836,7 @@ function install$8(registers) {
       // is not set, remain null/undefined, otherwise it will
       // override existent link setting.
 
-      if (link && !isArray(link)) {
+      if (link && !isArray$1(link)) {
         option.axisPointer.link = [link];
       }
     }
@@ -90339,9 +95856,9 @@ function install$8(registers) {
   }, axisTrigger);
 }
 
-function install$7(registers) {
-  use(install$9);
-  use(install$8);
+function install$a(registers) {
+  use(install$e);
+  use(install$b);
 }
 
 function makeBackground(rect, componentModel) {
@@ -90584,7 +96101,7 @@ function assembleFont(textStyleModel) {
   var shadowOffsetX = textStyleModel.get('textShadowOffsetX') || 0;
   var shadowOffsetY = textStyleModel.get('textShadowOffsetY') || 0;
   shadowColor && shadowBlur && cssText.push('text-shadow:' + shadowOffsetX + 'px ' + shadowOffsetY + 'px ' + shadowBlur + 'px ' + shadowColor);
-  each$4(['decoration', 'align'], function (name) {
+  each$9(['decoration', 'align'], function (name) {
     var val = textStyleModel.get(name);
     val && cssText.push('text-' + name + ':' + val);
   });
@@ -90611,7 +96128,7 @@ function assembleCssText(tooltipModel, enableTransition, onlyFade) {
   } // Border style
 
 
-  each$4(['width', 'color', 'radius'], function (name) {
+  each$9(['width', 'color', 'radius'], function (name) {
     var borderName = 'border-' + name;
     var camelCase = toCamelCase(borderName);
     var val = tooltipModel.get(camelCase);
@@ -90797,7 +96314,7 @@ function () {
       // Clear previous
       el.innerHTML = '';
 
-      if (!isArray(content)) {
+      if (!isArray$1(content)) {
         content = [content];
       }
 
@@ -90834,7 +96351,7 @@ function () {
     if (styleCoord[0] != null && styleCoord[1] != null) {
       var style_1 = this.el.style;
       var transforms = assembleTransform(styleCoord[0], styleCoord[1]);
-      each$4(transforms, function (transform) {
+      each$9(transforms, function (transform) {
         style_1[transform[0]] = transform[1];
       });
     }
@@ -90928,7 +96445,7 @@ function () {
   TooltipRichContent.prototype.setContent = function (content, markupStyleCreator, tooltipModel, borderColor, arrowPosition) {
     var _this = this;
 
-    if (isObject$2(content)) {
+    if (isObject$3(content)) {
       throwError(process.env.NODE_ENV !== 'production' ? 'Passing DOM nodes as content is not supported in richText tooltip!' : '');
     }
 
@@ -90952,10 +96469,10 @@ function () {
       },
       z: tooltipModel.get('z')
     });
-    each$4(['backgroundColor', 'borderRadius', 'shadowColor', 'shadowBlur', 'shadowOffsetX', 'shadowOffsetY'], function (propName) {
+    each$9(['backgroundColor', 'borderRadius', 'shadowColor', 'shadowBlur', 'shadowOffsetX', 'shadowOffsetY'], function (propName) {
       _this.el.style[propName] = tooltipModel.get(propName);
     });
-    each$4(['textShadowBlur', 'textShadowOffsetX', 'textShadowOffsetY'], function (propName) {
+    each$9(['textShadowBlur', 'textShadowOffsetX', 'textShadowOffsetY'], function (propName) {
       _this.el.style[propName] = textStyleModel.get(propName) || 0;
     });
 
@@ -91417,8 +96934,8 @@ function (_super) {
 
     var markupTextArrLegacy = [];
     var markupStyleCreator = new TooltipMarkupStyleCreator();
-    each$4(dataByCoordSys, function (itemCoordSys) {
-      each$4(itemCoordSys.dataByAxis, function (axisItem) {
+    each$9(dataByCoordSys, function (itemCoordSys) {
+      each$9(itemCoordSys.dataByAxis, function (axisItem) {
         var axisModel = ecModel.getComponent(axisItem.axisDim + 'Axis', axisItem.axisIndex);
         var axisValue = axisItem.value;
 
@@ -91434,7 +96951,7 @@ function (_super) {
           blocks: []
         });
         articleMarkup.blocks.push(axisSectionMarkup);
-        each$4(axisItem.seriesDataIndices, function (idxItem) {
+        each$9(axisItem.seriesDataIndices, function (idxItem) {
           var series = ecModel.getSeriesByIndex(idxItem.seriesIndex);
           var dataIndex = idxItem.dataIndexInside;
           var cbParams = series.getDataParams(dataIndex); // Can't find data.
@@ -91624,7 +97141,7 @@ function (_super) {
     if (formatter) {
       if (isString(formatter)) {
         var useUTC = tooltipModel.ecModel.get('useUTC');
-        var params0 = isArray(params) ? params[0] : params;
+        var params0 = isArray$1(params) ? params[0] : params;
         var isTimeAxis = params0 && params0.axisType && params0.axisType.indexOf('time') >= 0;
         html = formatter;
 
@@ -91655,13 +97172,13 @@ function (_super) {
   };
 
   TooltipView.prototype._getNearestPoint = function (point, tooltipDataParams, trigger, borderColor) {
-    if (trigger === 'axis' || isArray(tooltipDataParams)) {
+    if (trigger === 'axis' || isArray$1(tooltipDataParams)) {
       return {
         color: borderColor || (this._renderMode === 'html' ? '#fff' : 'none')
       };
     }
 
-    if (!isArray(tooltipDataParams)) {
+    if (!isArray$1(tooltipDataParams)) {
       return {
         color: borderColor || tooltipDataParams.color || tooltipDataParams.borderColor
       };
@@ -91690,10 +97207,10 @@ function (_super) {
       });
     }
 
-    if (isArray(positionExpr)) {
+    if (isArray$1(positionExpr)) {
       x = parsePercent(positionExpr[0], viewWidth);
       y = parsePercent(positionExpr[1], viewHeight);
-    } else if (isObject$2(positionExpr)) {
+    } else if (isObject$3(positionExpr)) {
       var boxLayoutPosition = positionExpr;
       boxLayoutPosition.width = contentSize[0];
       boxLayoutPosition.height = contentSize[1];
@@ -91736,22 +97253,22 @@ function (_super) {
     var lastCoordSys = this._lastDataByCoordSys;
     var lastCbParamsList = this._cbParamsList;
     var contentNotChanged = !!lastCoordSys && lastCoordSys.length === dataByCoordSys.length;
-    contentNotChanged && each$4(lastCoordSys, function (lastItemCoordSys, indexCoordSys) {
+    contentNotChanged && each$9(lastCoordSys, function (lastItemCoordSys, indexCoordSys) {
       var lastDataByAxis = lastItemCoordSys.dataByAxis || [];
       var thisItemCoordSys = dataByCoordSys[indexCoordSys] || {};
       var thisDataByAxis = thisItemCoordSys.dataByAxis || [];
       contentNotChanged = contentNotChanged && lastDataByAxis.length === thisDataByAxis.length;
-      contentNotChanged && each$4(lastDataByAxis, function (lastItem, indexAxis) {
+      contentNotChanged && each$9(lastDataByAxis, function (lastItem, indexAxis) {
         var thisItem = thisDataByAxis[indexAxis] || {};
         var lastIndices = lastItem.seriesDataIndices || [];
         var newIndices = thisItem.seriesDataIndices || [];
         contentNotChanged = contentNotChanged && lastItem.value === thisItem.value && lastItem.axisType === thisItem.axisType && lastItem.axisId === thisItem.axisId && lastIndices.length === newIndices.length;
-        contentNotChanged && each$4(lastIndices, function (lastIdxItem, j) {
+        contentNotChanged && each$9(lastIndices, function (lastIdxItem, j) {
           var newIdxItem = newIndices[j];
           contentNotChanged = contentNotChanged && lastIdxItem.seriesIndex === newIdxItem.seriesIndex && lastIdxItem.dataIndex === newIdxItem.dataIndex;
         }); // check is cbParams data value changed
 
-        lastCbParamsList && each$4(lastItem.seriesDataIndices, function (idxItem) {
+        lastCbParamsList && each$9(lastItem.seriesDataIndices, function (idxItem) {
           var seriesIdx = idxItem.seriesIndex;
           var cbParams = cbParamsList[seriesIdx];
           var lastCbParams = lastCbParamsList[seriesIdx];
@@ -91977,8 +97494,8 @@ function findComponentReference(payload, ecModel, api) {
 
 var TooltipView$1 = TooltipView;
 
-function install$6(registers) {
-  use(install$8);
+function install$9(registers) {
+  use(install$b);
   registers.registerComponentModel(TooltipModel$1);
   registers.registerComponentView(TooltipView$1);
   /**
@@ -92000,6 +97517,128 @@ function install$6(registers) {
     event: 'hideTip',
     update: 'tooltip:manuallyHideTip'
   }, noop);
+}
+
+var each$4 = each$9;
+
+function hasKeys(obj) {
+  if (obj) {
+    for (var name_1 in obj) {
+      if (obj.hasOwnProperty(name_1)) {
+        return true;
+      }
+    }
+  }
+}
+
+function createVisualMappings(option, stateList, supplementVisualOption) {
+  var visualMappings = {};
+  each$4(stateList, function (state) {
+    var mappings = visualMappings[state] = createMappings();
+    each$4(option[state], function (visualData, visualType) {
+      if (!VisualMapping$1.isValidType(visualType)) {
+        return;
+      }
+
+      var mappingOption = {
+        type: visualType,
+        visual: visualData
+      };
+      supplementVisualOption && supplementVisualOption(mappingOption, state);
+      mappings[visualType] = new VisualMapping$1(mappingOption); // Prepare a alpha for opacity, for some case that opacity
+      // is not supported, such as rendering using gradient color.
+
+      if (visualType === 'opacity') {
+        mappingOption = clone$3(mappingOption);
+        mappingOption.type = 'colorAlpha';
+        mappings.__hidden.__alphaForOpacity = new VisualMapping$1(mappingOption);
+      }
+    });
+  });
+  return visualMappings;
+
+  function createMappings() {
+    var Creater = function () {}; // Make sure hidden fields will not be visited by
+    // object iteration (with hasOwnProperty checking).
+
+
+    Creater.prototype.__hidden = Creater.prototype;
+    var obj = new Creater();
+    return obj;
+  }
+}
+function replaceVisualOption(thisOption, newOption, keys) {
+  // Visual attributes merge is not supported, otherwise it
+  // brings overcomplicated merge logic. See #2853. So if
+  // newOption has anyone of these keys, all of these keys
+  // will be reset. Otherwise, all keys remain.
+  var has;
+  each$9(keys, function (key) {
+    if (newOption.hasOwnProperty(key) && hasKeys(newOption[key])) {
+      has = true;
+    }
+  });
+  has && each$9(keys, function (key) {
+    if (newOption.hasOwnProperty(key) && hasKeys(newOption[key])) {
+      thisOption[key] = clone$3(newOption[key]);
+    } else {
+      delete thisOption[key];
+    }
+  });
+}
+/**
+ * @param data
+ * @param stateList
+ * @param visualMappings <state, Object.<visualType, module:echarts/visual/VisualMapping>>
+ * @param getValueState param: valueOrIndex, return: state.
+ * @param dim dimension or dimension index.
+ */
+
+function incrementalApplyVisual(stateList, visualMappings, getValueState, dim) {
+  var visualTypesMap = {};
+  each$9(stateList, function (state) {
+    var visualTypes = VisualMapping$1.prepareVisualTypes(visualMappings[state]);
+    visualTypesMap[state] = visualTypes;
+  });
+  return {
+    progress: function progress(params, data) {
+      var dimIndex;
+
+      if (dim != null) {
+        dimIndex = data.getDimensionIndex(dim);
+      }
+
+      function getVisual(key) {
+        return getItemVisualFromData(data, dataIndex, key);
+      }
+
+      function setVisual(key, value) {
+        setItemVisualFromData(data, dataIndex, key, value);
+      }
+
+      var dataIndex;
+      var store = data.getStore();
+
+      while ((dataIndex = params.next()) != null) {
+        var rawDataItem = data.getRawDataItem(dataIndex); // Consider performance
+        // @ts-ignore
+
+        if (rawDataItem && rawDataItem.visualMap === false) {
+          continue;
+        }
+
+        var value = dim != null ? store.get(dimIndex, dataIndex) : dataIndex;
+        var valueState = getValueState(value);
+        var mappings = visualMappings[valueState];
+        var visualTypes = visualTypesMap[valueState];
+
+        for (var i = 0, len = visualTypes.length; i < len; i++) {
+          var type = visualTypes[i];
+          mappings[type] && mappings[type].applyVisual(value, getVisual, setVisual);
+        }
+      }
+    }
+  };
 }
 
 var TitleModel =
@@ -92194,7 +97833,7 @@ function (_super) {
   return TitleView;
 }(ComponentView$1);
 
-function install$5(registers) {
+function install$8(registers) {
   registers.registerComponentModel(TitleModel);
   registers.registerComponentView(TitleView);
 }
@@ -92257,8 +97896,8 @@ function (_super) {
       selector = option.selector = ['all', 'inverse'];
     }
 
-    if (isArray(selector)) {
-      each$4(selector, function (item, index) {
+    if (isArray$1(selector)) {
+      each$9(selector, function (item, index) {
         isString(item) && (item = {
           type: item
         });
@@ -92357,7 +97996,7 @@ function (_super) {
 
     if (selectedMode === 'single') {
       var data = this._data;
-      each$4(data, function (dataItem) {
+      each$9(data, function (dataItem) {
         selected[dataItem.get('name')] = false;
       });
     }
@@ -92384,7 +98023,7 @@ function (_super) {
   LegendModel.prototype.allSelect = function () {
     var data = this._data;
     var selected = this.option.selected;
-    each$4(data, function (dataItem) {
+    each$9(data, function (dataItem) {
       selected[dataItem.get('name', true)] = true;
     });
   };
@@ -92392,7 +98031,7 @@ function (_super) {
   LegendModel.prototype.inverseSelect = function () {
     var data = this._data;
     var selected = this.option.selected;
-    each$4(data, function (dataItem) {
+    each$9(data, function (dataItem) {
       var name = dataItem.get('name', true); // Initially, default value is true
 
       if (!selected.hasOwnProperty(name)) {
@@ -92500,7 +98139,7 @@ function (_super) {
 var LegendModel$1 = LegendModel;
 
 var curry = curry$1;
-var each = each$4;
+var each$3 = each$9;
 var Group$1 = Group$3;
 
 var LegendView =
@@ -92602,7 +98241,7 @@ function (_super) {
     ecModel.eachRawSeries(function (seriesModel) {
       !seriesModel.get('legendHoverLink') && excludeSeriesId.push(seriesModel.id);
     });
-    each(legendModel.getData(), function (legendItemModel, dataIndex) {
+    each$3(legendModel.getData(), function (legendItemModel, dataIndex) {
       var name = legendItemModel.get('name'); // Use empty string or \n as a newline string
 
       if (!this.newlineDisabled && (name === '' || name === '\n')) {
@@ -92691,7 +98330,7 @@ function (_super) {
 
   LegendView.prototype._createSelector = function (selector, legendModel, api, orient, selectorPosition) {
     var selectorGroup = this.getSelectorGroup();
-    each(selector, function createSelectorButton(selectorItem) {
+    each$3(selector, function createSelectorButton(selectorItem) {
       var type = selectorItem.type;
       var labelText = new ZRText$1({
         style: {
@@ -92881,7 +98520,7 @@ function getLegendStyle(iconType, legendItemModel, lineVisualStyle, itemVisualSt
       style.lineWidth = visualStyle.lineWidth > 0 ? 2 : 0;
     }
 
-    each(style, function (propVal, propName) {
+    each$3(style, function (propVal, propName) {
       style[propName] === 'inherit' && (style[propName] = visualStyle[propName]);
     });
   } // itemStyle
@@ -93097,7 +98736,7 @@ function legendSelectActionHandler(methodName, payload, ecModel) {
     }
 
     var legendData = legendModel.getData();
-    each$4(legendData, function (model) {
+    each$9(legendData, function (model) {
       var name = model.get('name'); // Wrap element
 
       if (name === '\n' || name === '') {
@@ -93152,7 +98791,7 @@ function installLegendAction(registers) {
   registers.registerAction('legendUnSelect', 'legendunselected', curry$1(legendSelectActionHandler, 'unSelect'));
 }
 
-function install$4(registers) {
+function install$7(registers) {
   registers.registerComponentModel(LegendModel$1);
   registers.registerComponentView(LegendView$1);
   registers.registerProcessor(registers.PRIORITY.PROCESSOR.SERIES_FILTER, legendFilter);
@@ -93289,7 +98928,7 @@ function (_super) {
     // e.g., '3/12345' should not overlap with the control arrow button.
 
     var pageIconSize = legendModel.get('pageIconSize', true);
-    var pageIconSizeArr = isArray(pageIconSize) ? pageIconSize : [pageIconSize, pageIconSize];
+    var pageIconSizeArr = isArray$1(pageIconSize) ? pageIconSize : [pageIconSize, pageIconSize];
     createPageButton('pagePrev', 0);
     var pageTextStyleModel = legendModel.getModel('pageTextStyle');
     controllerGroup.add(new ZRText$1({
@@ -93470,7 +99109,7 @@ function (_super) {
 
   ScrollableLegendView.prototype._updatePageInfoView = function (legendModel, pageInfo) {
     var controllerGroup = this._controllerGroup;
-    each$4(['pagePrev', 'pageNext'], function (name) {
+    each$9(['pagePrev', 'pageNext'], function (name) {
       var key = name + 'DataIndex';
       var canJump = pageInfo[key] != null;
       var icon = controllerGroup.childOfName(name);
@@ -93697,16 +99336,2520 @@ function installScrollableLegendAction(registers) {
   });
 }
 
-function install$3(registers) {
-  use(install$4);
+function install$6(registers) {
+  use(install$7);
   registers.registerComponentModel(ScrollableLegendModel$1);
   registers.registerComponentView(ScrollableLegendView$1);
   installScrollableLegendAction(registers);
 }
 
+function install$5(registers) {
+  use(install$7);
+  use(install$6);
+}
+
+var visualDefault = {
+  /**
+   * @public
+   */
+  get: function (visualType, key, isCategory) {
+    var value = clone$3((defaultOption[visualType] || {})[key]);
+    return isCategory ? isArray$1(value) ? value[value.length - 1] : value : value;
+  }
+};
+var defaultOption = {
+  color: {
+    active: ['#006edd', '#e0ffff'],
+    inactive: ['rgba(0,0,0,0)']
+  },
+  colorHue: {
+    active: [0, 360],
+    inactive: [0, 0]
+  },
+  colorSaturation: {
+    active: [0.3, 1],
+    inactive: [0, 0]
+  },
+  colorLightness: {
+    active: [0.9, 0.5],
+    inactive: [0, 0]
+  },
+  colorAlpha: {
+    active: [0.3, 1],
+    inactive: [0, 0]
+  },
+  opacity: {
+    active: [0.3, 1],
+    inactive: [0, 0]
+  },
+  symbol: {
+    active: ['circle', 'roundRect', 'diamond'],
+    inactive: ['none']
+  },
+  symbolSize: {
+    active: [10, 50],
+    inactive: [0, 0]
+  }
+};
+var visualDefault$1 = visualDefault;
+
+var mapVisual = VisualMapping$1.mapVisual;
+var eachVisual = VisualMapping$1.eachVisual;
+var isArray = isArray$1;
+var each$2 = each$9;
+var asc = asc$1;
+var linearMap$1 = linearMap$2;
+
+var VisualMapModel =
+/** @class */
+function (_super) {
+  __extends$1(VisualMapModel, _super);
+
+  function VisualMapModel() {
+    var _this = _super !== null && _super.apply(this, arguments) || this;
+
+    _this.type = VisualMapModel.type;
+    _this.stateList = ['inRange', 'outOfRange'];
+    _this.replacableOptionKeys = ['inRange', 'outOfRange', 'target', 'controller', 'color'];
+    _this.layoutMode = {
+      type: 'box',
+      ignoreSize: true
+    };
+    /**
+     * [lowerBound, upperBound]
+     */
+
+    _this.dataBound = [-Infinity, Infinity];
+    _this.targetVisuals = {};
+    _this.controllerVisuals = {};
+    return _this;
+  }
+
+  VisualMapModel.prototype.init = function (option, parentModel, ecModel) {
+    this.mergeDefaultAndTheme(option, ecModel);
+  };
+  /**
+   * @protected
+   */
+
+
+  VisualMapModel.prototype.optionUpdated = function (newOption, isInit) {
+    var thisOption = this.option;
+    !isInit && replaceVisualOption(thisOption, newOption, this.replacableOptionKeys);
+    this.textStyleModel = this.getModel('textStyle');
+    this.resetItemSize();
+    this.completeVisualOption();
+  };
+  /**
+   * @protected
+   */
+
+
+  VisualMapModel.prototype.resetVisual = function (supplementVisualOption) {
+    var stateList = this.stateList;
+    supplementVisualOption = bind$1(supplementVisualOption, this);
+    this.controllerVisuals = createVisualMappings(this.option.controller, stateList, supplementVisualOption);
+    this.targetVisuals = createVisualMappings(this.option.target, stateList, supplementVisualOption);
+  };
+  /**
+   * @public
+   */
+
+
+  VisualMapModel.prototype.getItemSymbol = function () {
+    return null;
+  };
+  /**
+   * @protected
+   * @return {Array.<number>} An array of series indices.
+   */
+
+
+  VisualMapModel.prototype.getTargetSeriesIndices = function () {
+    var optionSeriesIndex = this.option.seriesIndex;
+    var seriesIndices = [];
+
+    if (optionSeriesIndex == null || optionSeriesIndex === 'all') {
+      this.ecModel.eachSeries(function (seriesModel, index) {
+        seriesIndices.push(index);
+      });
+    } else {
+      seriesIndices = normalizeToArray(optionSeriesIndex);
+    }
+
+    return seriesIndices;
+  };
+  /**
+   * @public
+   */
+
+
+  VisualMapModel.prototype.eachTargetSeries = function (callback, context) {
+    each$9(this.getTargetSeriesIndices(), function (seriesIndex) {
+      var seriesModel = this.ecModel.getSeriesByIndex(seriesIndex);
+
+      if (seriesModel) {
+        callback.call(context, seriesModel);
+      }
+    }, this);
+  };
+  /**
+   * @pubilc
+   */
+
+
+  VisualMapModel.prototype.isTargetSeries = function (seriesModel) {
+    var is = false;
+    this.eachTargetSeries(function (model) {
+      model === seriesModel && (is = true);
+    });
+    return is;
+  };
+  /**
+   * @example
+   * this.formatValueText(someVal); // format single numeric value to text.
+   * this.formatValueText(someVal, true); // format single category value to text.
+   * this.formatValueText([min, max]); // format numeric min-max to text.
+   * this.formatValueText([this.dataBound[0], max]); // using data lower bound.
+   * this.formatValueText([min, this.dataBound[1]]); // using data upper bound.
+   *
+   * @param value Real value, or this.dataBound[0 or 1].
+   * @param isCategory Only available when value is number.
+   * @param edgeSymbols Open-close symbol when value is interval.
+   * @protected
+   */
+
+
+  VisualMapModel.prototype.formatValueText = function (value, isCategory, edgeSymbols) {
+    var option = this.option;
+    var precision = option.precision;
+    var dataBound = this.dataBound;
+    var formatter = option.formatter;
+    var isMinMax;
+    edgeSymbols = edgeSymbols || ['<', '>'];
+
+    if (isArray$1(value)) {
+      value = value.slice();
+      isMinMax = true;
+    }
+
+    var textValue = isCategory ? value // Value is string when isCategory
+    : isMinMax ? [toFixed(value[0]), toFixed(value[1])] : toFixed(value);
+
+    if (isString(formatter)) {
+      return formatter.replace('{value}', isMinMax ? textValue[0] : textValue).replace('{value2}', isMinMax ? textValue[1] : textValue);
+    } else if (isFunction(formatter)) {
+      return isMinMax ? formatter(value[0], value[1]) : formatter(value);
+    }
+
+    if (isMinMax) {
+      if (value[0] === dataBound[0]) {
+        return edgeSymbols[0] + ' ' + textValue[1];
+      } else if (value[1] === dataBound[1]) {
+        return edgeSymbols[1] + ' ' + textValue[0];
+      } else {
+        return textValue[0] + ' - ' + textValue[1];
+      }
+    } else {
+      // Format single value (includes category case).
+      return textValue;
+    }
+
+    function toFixed(val) {
+      return val === dataBound[0] ? 'min' : val === dataBound[1] ? 'max' : (+val).toFixed(Math.min(precision, 20));
+    }
+  };
+  /**
+   * @protected
+   */
+
+
+  VisualMapModel.prototype.resetExtent = function () {
+    var thisOption = this.option; // Can not calculate data extent by data here.
+    // Because series and data may be modified in processing stage.
+    // So we do not support the feature "auto min/max".
+
+    var extent = asc([thisOption.min, thisOption.max]);
+    this._dataExtent = extent;
+  };
+  /**
+   * PENDING:
+   * delete this method if no outer usage.
+   *
+   * Return  Concrete dimention. If return null/undefined, no dimension used.
+   */
+  // getDataDimension(data: SeriesData) {
+  //     const optDim = this.option.dimension;
+  //     if (optDim != null) {
+  //         return data.getDimension(optDim);
+  //     }
+  //     const dimNames = data.dimensions;
+  //     for (let i = dimNames.length - 1; i >= 0; i--) {
+  //         const dimName = dimNames[i];
+  //         const dimInfo = data.getDimensionInfo(dimName);
+  //         if (!dimInfo.isCalculationCoord) {
+  //             return dimName;
+  //         }
+  //     }
+  // }
+
+
+  VisualMapModel.prototype.getDataDimensionIndex = function (data) {
+    var optDim = this.option.dimension;
+
+    if (optDim != null) {
+      return data.getDimensionIndex(optDim);
+    }
+
+    var dimNames = data.dimensions;
+
+    for (var i = dimNames.length - 1; i >= 0; i--) {
+      var dimName = dimNames[i];
+      var dimInfo = data.getDimensionInfo(dimName);
+
+      if (!dimInfo.isCalculationCoord) {
+        return dimInfo.storeDimIndex;
+      }
+    }
+  };
+
+  VisualMapModel.prototype.getExtent = function () {
+    return this._dataExtent.slice();
+  };
+
+  VisualMapModel.prototype.completeVisualOption = function () {
+    var ecModel = this.ecModel;
+    var thisOption = this.option;
+    var base = {
+      inRange: thisOption.inRange,
+      outOfRange: thisOption.outOfRange
+    };
+    var target = thisOption.target || (thisOption.target = {});
+    var controller = thisOption.controller || (thisOption.controller = {});
+    merge(target, base); // Do not override
+
+    merge(controller, base); // Do not override
+
+    var isCategory = this.isCategory();
+    completeSingle.call(this, target);
+    completeSingle.call(this, controller);
+    completeInactive.call(this, target, 'inRange', 'outOfRange'); // completeInactive.call(this, target, 'outOfRange', 'inRange');
+
+    completeController.call(this, controller);
+
+    function completeSingle(base) {
+      // Compatible with ec2 dataRange.color.
+      // The mapping order of dataRange.color is: [high value, ..., low value]
+      // whereas inRange.color and outOfRange.color is [low value, ..., high value]
+      // Notice: ec2 has no inverse.
+      if (isArray(thisOption.color) // If there has been inRange: {symbol: ...}, adding color is a mistake.
+      // So adding color only when no inRange defined.
+      && !base.inRange) {
+        base.inRange = {
+          color: thisOption.color.slice().reverse()
+        };
+      } // Compatible with previous logic, always give a defautl color, otherwise
+      // simple config with no inRange and outOfRange will not work.
+      // Originally we use visualMap.color as the default color, but setOption at
+      // the second time the default color will be erased. So we change to use
+      // constant DEFAULT_COLOR.
+      // If user do not want the default color, set inRange: {color: null}.
+
+
+      base.inRange = base.inRange || {
+        color: ecModel.get('gradientColor')
+      };
+    }
+
+    function completeInactive(base, stateExist, stateAbsent) {
+      var optExist = base[stateExist];
+      var optAbsent = base[stateAbsent];
+
+      if (optExist && !optAbsent) {
+        optAbsent = base[stateAbsent] = {};
+        each$2(optExist, function (visualData, visualType) {
+          if (!VisualMapping$1.isValidType(visualType)) {
+            return;
+          }
+
+          var defa = visualDefault$1.get(visualType, 'inactive', isCategory);
+
+          if (defa != null) {
+            optAbsent[visualType] = defa; // Compatibable with ec2:
+            // Only inactive color to rgba(0,0,0,0) can not
+            // make label transparent, so use opacity also.
+
+            if (visualType === 'color' && !optAbsent.hasOwnProperty('opacity') && !optAbsent.hasOwnProperty('colorAlpha')) {
+              optAbsent.opacity = [0, 0];
+            }
+          }
+        });
+      }
+    }
+
+    function completeController(controller) {
+      var symbolExists = (controller.inRange || {}).symbol || (controller.outOfRange || {}).symbol;
+      var symbolSizeExists = (controller.inRange || {}).symbolSize || (controller.outOfRange || {}).symbolSize;
+      var inactiveColor = this.get('inactiveColor');
+      var itemSymbol = this.getItemSymbol();
+      var defaultSymbol = itemSymbol || 'roundRect';
+      each$2(this.stateList, function (state) {
+        var itemSize = this.itemSize;
+        var visuals = controller[state]; // Set inactive color for controller if no other color
+        // attr (like colorAlpha) specified.
+
+        if (!visuals) {
+          visuals = controller[state] = {
+            color: isCategory ? inactiveColor : [inactiveColor]
+          };
+        } // Consistent symbol and symbolSize if not specified.
+
+
+        if (visuals.symbol == null) {
+          visuals.symbol = symbolExists && clone$3(symbolExists) || (isCategory ? defaultSymbol : [defaultSymbol]);
+        }
+
+        if (visuals.symbolSize == null) {
+          visuals.symbolSize = symbolSizeExists && clone$3(symbolSizeExists) || (isCategory ? itemSize[0] : [itemSize[0], itemSize[0]]);
+        } // Filter none
+
+
+        visuals.symbol = mapVisual(visuals.symbol, function (symbol) {
+          return symbol === 'none' ? defaultSymbol : symbol;
+        }); // Normalize symbolSize
+
+        var symbolSize = visuals.symbolSize;
+
+        if (symbolSize != null) {
+          var max_1 = -Infinity; // symbolSize can be object when categories defined.
+
+          eachVisual(symbolSize, function (value) {
+            value > max_1 && (max_1 = value);
+          });
+          visuals.symbolSize = mapVisual(symbolSize, function (value) {
+            return linearMap$1(value, [0, max_1], [0, itemSize[0]], true);
+          });
+        }
+      }, this);
+    }
+  };
+
+  VisualMapModel.prototype.resetItemSize = function () {
+    this.itemSize = [parseFloat(this.get('itemWidth')), parseFloat(this.get('itemHeight'))];
+  };
+
+  VisualMapModel.prototype.isCategory = function () {
+    return !!this.option.categories;
+  };
+  /**
+   * @public
+   * @abstract
+   */
+
+
+  VisualMapModel.prototype.setSelected = function (selected) {};
+
+  VisualMapModel.prototype.getSelected = function () {
+    return null;
+  };
+  /**
+   * @public
+   * @abstract
+   */
+
+
+  VisualMapModel.prototype.getValueState = function (value) {
+    return null;
+  };
+  /**
+   * FIXME
+   * Do not publish to thirt-part-dev temporarily
+   * util the interface is stable. (Should it return
+   * a function but not visual meta?)
+   *
+   * @pubilc
+   * @abstract
+   * @param getColorVisual
+   *        params: value, valueState
+   *        return: color
+   * @return {Object} visualMeta
+   *        should includes {stops, outerColors}
+   *        outerColor means [colorBeyondMinValue, colorBeyondMaxValue]
+   */
+
+
+  VisualMapModel.prototype.getVisualMeta = function (getColorVisual) {
+    return null;
+  };
+
+  VisualMapModel.type = 'visualMap';
+  VisualMapModel.dependencies = ['series'];
+  VisualMapModel.defaultOption = {
+    show: true,
+    // zlevel: 0,
+    z: 4,
+    seriesIndex: 'all',
+    min: 0,
+    max: 200,
+    left: 0,
+    right: null,
+    top: null,
+    bottom: 0,
+    itemWidth: null,
+    itemHeight: null,
+    inverse: false,
+    orient: 'vertical',
+    backgroundColor: 'rgba(0,0,0,0)',
+    borderColor: '#ccc',
+    contentColor: '#5793f3',
+    inactiveColor: '#aaa',
+    borderWidth: 0,
+    padding: 5,
+    // 接受数组分别设定上右下左边距，同css
+    textGap: 10,
+    precision: 0,
+    textStyle: {
+      color: '#333' // 值域文字颜色
+
+    }
+  };
+  return VisualMapModel;
+}(ComponentModel$1);
+
+var VisualMapModel$1 = VisualMapModel;
+
+var DEFAULT_BAR_BOUND = [20, 140];
+
+var ContinuousModel =
+/** @class */
+function (_super) {
+  __extends$1(ContinuousModel, _super);
+
+  function ContinuousModel() {
+    var _this = _super !== null && _super.apply(this, arguments) || this;
+
+    _this.type = ContinuousModel.type;
+    return _this;
+  }
+  /**
+   * @override
+   */
+
+
+  ContinuousModel.prototype.optionUpdated = function (newOption, isInit) {
+    _super.prototype.optionUpdated.apply(this, arguments);
+
+    this.resetExtent();
+    this.resetVisual(function (mappingOption) {
+      mappingOption.mappingMethod = 'linear';
+      mappingOption.dataExtent = this.getExtent();
+    });
+
+    this._resetRange();
+  };
+  /**
+   * @protected
+   * @override
+   */
+
+
+  ContinuousModel.prototype.resetItemSize = function () {
+    _super.prototype.resetItemSize.apply(this, arguments);
+
+    var itemSize = this.itemSize;
+    (itemSize[0] == null || isNaN(itemSize[0])) && (itemSize[0] = DEFAULT_BAR_BOUND[0]);
+    (itemSize[1] == null || isNaN(itemSize[1])) && (itemSize[1] = DEFAULT_BAR_BOUND[1]);
+  };
+  /**
+   * @private
+   */
+
+
+  ContinuousModel.prototype._resetRange = function () {
+    var dataExtent = this.getExtent();
+    var range = this.option.range;
+
+    if (!range || range.auto) {
+      // `range` should always be array (so we dont use other
+      // value like 'auto') for user-friend. (consider getOption).
+      dataExtent.auto = 1;
+      this.option.range = dataExtent;
+    } else if (isArray$1(range)) {
+      if (range[0] > range[1]) {
+        range.reverse();
+      }
+
+      range[0] = Math.max(range[0], dataExtent[0]);
+      range[1] = Math.min(range[1], dataExtent[1]);
+    }
+  };
+  /**
+   * @protected
+   * @override
+   */
+
+
+  ContinuousModel.prototype.completeVisualOption = function () {
+    _super.prototype.completeVisualOption.apply(this, arguments);
+
+    each$9(this.stateList, function (state) {
+      var symbolSize = this.option.controller[state].symbolSize;
+
+      if (symbolSize && symbolSize[0] !== symbolSize[1]) {
+        symbolSize[0] = symbolSize[1] / 3; // For good looking.
+      }
+    }, this);
+  };
+  /**
+   * @override
+   */
+
+
+  ContinuousModel.prototype.setSelected = function (selected) {
+    this.option.range = selected.slice();
+
+    this._resetRange();
+  };
+  /**
+   * @public
+   */
+
+
+  ContinuousModel.prototype.getSelected = function () {
+    var dataExtent = this.getExtent();
+    var dataInterval = asc$1((this.get('range') || []).slice()); // Clamp
+
+    dataInterval[0] > dataExtent[1] && (dataInterval[0] = dataExtent[1]);
+    dataInterval[1] > dataExtent[1] && (dataInterval[1] = dataExtent[1]);
+    dataInterval[0] < dataExtent[0] && (dataInterval[0] = dataExtent[0]);
+    dataInterval[1] < dataExtent[0] && (dataInterval[1] = dataExtent[0]);
+    return dataInterval;
+  };
+  /**
+   * @override
+   */
+
+
+  ContinuousModel.prototype.getValueState = function (value) {
+    var range = this.option.range;
+    var dataExtent = this.getExtent(); // When range[0] === dataExtent[0], any value larger than dataExtent[0] maps to 'inRange'.
+    // range[1] is processed likewise.
+
+    return (range[0] <= dataExtent[0] || range[0] <= value) && (range[1] >= dataExtent[1] || value <= range[1]) ? 'inRange' : 'outOfRange';
+  };
+
+  ContinuousModel.prototype.findTargetDataIndices = function (range) {
+    var result = [];
+    this.eachTargetSeries(function (seriesModel) {
+      var dataIndices = [];
+      var data = seriesModel.getData();
+      data.each(this.getDataDimensionIndex(data), function (value, dataIndex) {
+        range[0] <= value && value <= range[1] && dataIndices.push(dataIndex);
+      }, this);
+      result.push({
+        seriesId: seriesModel.id,
+        dataIndex: dataIndices
+      });
+    }, this);
+    return result;
+  };
+  /**
+   * @implement
+   */
+
+
+  ContinuousModel.prototype.getVisualMeta = function (getColorVisual) {
+    var oVals = getColorStopValues(this, 'outOfRange', this.getExtent());
+    var iVals = getColorStopValues(this, 'inRange', this.option.range.slice());
+    var stops = [];
+
+    function setStop(value, valueState) {
+      stops.push({
+        value: value,
+        color: getColorVisual(value, valueState)
+      });
+    } // Format to: outOfRange -- inRange -- outOfRange.
+
+
+    var iIdx = 0;
+    var oIdx = 0;
+    var iLen = iVals.length;
+    var oLen = oVals.length;
+
+    for (; oIdx < oLen && (!iVals.length || oVals[oIdx] <= iVals[0]); oIdx++) {
+      // If oVal[oIdx] === iVals[iIdx], oVal[oIdx] should be ignored.
+      if (oVals[oIdx] < iVals[iIdx]) {
+        setStop(oVals[oIdx], 'outOfRange');
+      }
+    }
+
+    for (var first = 1; iIdx < iLen; iIdx++, first = 0) {
+      // If range is full, value beyond min, max will be clamped.
+      // make a singularity
+      first && stops.length && setStop(iVals[iIdx], 'outOfRange');
+      setStop(iVals[iIdx], 'inRange');
+    }
+
+    for (var first = 1; oIdx < oLen; oIdx++) {
+      if (!iVals.length || iVals[iVals.length - 1] < oVals[oIdx]) {
+        // make a singularity
+        if (first) {
+          stops.length && setStop(stops[stops.length - 1].value, 'outOfRange');
+          first = 0;
+        }
+
+        setStop(oVals[oIdx], 'outOfRange');
+      }
+    }
+
+    var stopsLen = stops.length;
+    return {
+      stops: stops,
+      outerColors: [stopsLen ? stops[0].color : 'transparent', stopsLen ? stops[stopsLen - 1].color : 'transparent']
+    };
+  };
+
+  ContinuousModel.type = 'visualMap.continuous';
+  ContinuousModel.defaultOption = inheritDefaultOption(VisualMapModel$1.defaultOption, {
+    align: 'auto',
+    calculable: false,
+    hoverLink: true,
+    realtime: true,
+    handleIcon: 'path://M-11.39,9.77h0a3.5,3.5,0,0,1-3.5,3.5h-22a3.5,3.5,0,0,1-3.5-3.5h0a3.5,3.5,0,0,1,3.5-3.5h22A3.5,3.5,0,0,1-11.39,9.77Z',
+    handleSize: '120%',
+    handleStyle: {
+      borderColor: '#fff',
+      borderWidth: 1
+    },
+    indicatorIcon: 'circle',
+    indicatorSize: '50%',
+    indicatorStyle: {
+      borderColor: '#fff',
+      borderWidth: 2,
+      shadowBlur: 2,
+      shadowOffsetX: 1,
+      shadowOffsetY: 1,
+      shadowColor: 'rgba(0,0,0,0.2)'
+    } // emphasis: {
+    //     handleStyle: {
+    //         shadowBlur: 3,
+    //         shadowOffsetX: 1,
+    //         shadowOffsetY: 1,
+    //         shadowColor: 'rgba(0,0,0,0.2)'
+    //     }
+    // }
+
+  });
+  return ContinuousModel;
+}(VisualMapModel$1);
+
+function getColorStopValues(visualMapModel, valueState, dataExtent) {
+  if (dataExtent[0] === dataExtent[1]) {
+    return dataExtent.slice();
+  } // When using colorHue mapping, it is not linear color any more.
+  // Moreover, canvas gradient seems not to be accurate linear.
+  // FIXME
+  // Should be arbitrary value 100? or based on pixel size?
+
+
+  var count = 200;
+  var step = (dataExtent[1] - dataExtent[0]) / count;
+  var value = dataExtent[0];
+  var stopValues = [];
+
+  for (var i = 0; i <= count && value < dataExtent[1]; i++) {
+    stopValues.push(value);
+    value += step;
+  }
+
+  stopValues.push(dataExtent[1]);
+  return stopValues;
+}
+
+var ContinuousModel$1 = ContinuousModel;
+
+var VisualMapView =
+/** @class */
+function (_super) {
+  __extends$1(VisualMapView, _super);
+
+  function VisualMapView() {
+    var _this = _super !== null && _super.apply(this, arguments) || this;
+
+    _this.type = VisualMapView.type;
+    _this.autoPositionValues = {
+      left: 1,
+      right: 1,
+      top: 1,
+      bottom: 1
+    };
+    return _this;
+  }
+
+  VisualMapView.prototype.init = function (ecModel, api) {
+    this.ecModel = ecModel;
+    this.api = api;
+  };
+  /**
+   * @protected
+   */
+
+
+  VisualMapView.prototype.render = function (visualMapModel, ecModel, api, payload // TODO: TYPE
+  ) {
+    this.visualMapModel = visualMapModel;
+
+    if (visualMapModel.get('show') === false) {
+      this.group.removeAll();
+      return;
+    }
+
+    this.doRender(visualMapModel, ecModel, api, payload);
+  };
+  /**
+   * @protected
+   */
+
+
+  VisualMapView.prototype.renderBackground = function (group) {
+    var visualMapModel = this.visualMapModel;
+    var padding = normalizeCssArray(visualMapModel.get('padding') || 0);
+    var rect = group.getBoundingRect();
+    group.add(new Rect$1({
+      z2: -1,
+      silent: true,
+      shape: {
+        x: rect.x - padding[3],
+        y: rect.y - padding[0],
+        width: rect.width + padding[3] + padding[1],
+        height: rect.height + padding[0] + padding[2]
+      },
+      style: {
+        fill: visualMapModel.get('backgroundColor'),
+        stroke: visualMapModel.get('borderColor'),
+        lineWidth: visualMapModel.get('borderWidth')
+      }
+    }));
+  };
+  /**
+   * @protected
+   * @param targetValue can be Infinity or -Infinity
+   * @param visualCluster Only can be 'color' 'opacity' 'symbol' 'symbolSize'
+   * @param opts
+   * @param opts.forceState Specify state, instead of using getValueState method.
+   * @param opts.convertOpacityToAlpha For color gradient in controller widget.
+   * @return {*} Visual value.
+   */
+
+
+  VisualMapView.prototype.getControllerVisual = function (targetValue, visualCluster, opts) {
+    opts = opts || {};
+    var forceState = opts.forceState;
+    var visualMapModel = this.visualMapModel;
+    var visualObj = {}; // Default values.
+
+    if (visualCluster === 'color') {
+      var defaultColor = visualMapModel.get('contentColor');
+      visualObj.color = defaultColor;
+    }
+
+    function getter(key) {
+      return visualObj[key];
+    }
+
+    function setter(key, value) {
+      visualObj[key] = value;
+    }
+
+    var mappings = visualMapModel.controllerVisuals[forceState || visualMapModel.getValueState(targetValue)];
+    var visualTypes = VisualMapping$1.prepareVisualTypes(mappings);
+    each$9(visualTypes, function (type) {
+      var visualMapping = mappings[type];
+
+      if (opts.convertOpacityToAlpha && type === 'opacity') {
+        type = 'colorAlpha';
+        visualMapping = mappings.__alphaForOpacity;
+      }
+
+      if (VisualMapping$1.dependsOn(type, visualCluster)) {
+        visualMapping && visualMapping.applyVisual(targetValue, getter, setter);
+      }
+    });
+    return visualObj[visualCluster];
+  };
+
+  VisualMapView.prototype.positionGroup = function (group) {
+    var model = this.visualMapModel;
+    var api = this.api;
+    positionElement(group, model.getBoxLayoutParams(), {
+      width: api.getWidth(),
+      height: api.getHeight()
+    });
+  };
+
+  VisualMapView.prototype.doRender = function (visualMapModel, ecModel, api, payload) {};
+
+  VisualMapView.type = 'visualMap';
+  return VisualMapView;
+}(ComponentView$1);
+
+var VisualMapView$1 = VisualMapView;
+
+var paramsSet = [['left', 'right', 'width'], ['top', 'bottom', 'height']];
+/**
+ * @param visualMapModel
+ * @param api
+ * @param itemSize always [short, long]
+ * @return {string} 'left' or 'right' or 'top' or 'bottom'
+ */
+
+function getItemAlign(visualMapModel, api, itemSize) {
+  var modelOption = visualMapModel.option;
+  var itemAlign = modelOption.align;
+
+  if (itemAlign != null && itemAlign !== 'auto') {
+    return itemAlign;
+  } // Auto decision align.
+
+
+  var ecSize = {
+    width: api.getWidth(),
+    height: api.getHeight()
+  };
+  var realIndex = modelOption.orient === 'horizontal' ? 1 : 0;
+  var reals = paramsSet[realIndex];
+  var fakeValue = [0, null, 10];
+  var layoutInput = {};
+
+  for (var i = 0; i < 3; i++) {
+    layoutInput[paramsSet[1 - realIndex][i]] = fakeValue[i];
+    layoutInput[reals[i]] = i === 2 ? itemSize[0] : modelOption[reals[i]];
+  }
+
+  var rParam = [['x', 'width', 3], ['y', 'height', 0]][realIndex];
+  var rect = getLayoutRect(layoutInput, ecSize, modelOption.padding);
+  return reals[(rect.margin[rParam[2]] || 0) + rect[rParam[0]] + rect[rParam[1]] * 0.5 < ecSize[rParam[1]] * 0.5 ? 0 : 1];
+}
+/**
+ * Prepare dataIndex for outside usage, where dataIndex means rawIndex, and
+ * dataIndexInside means filtered index.
+ */
+// TODO: TYPE more specified payload types.
+
+function makeHighDownBatch(batch, visualMapModel) {
+  each$9(batch || [], function (batchItem) {
+    if (batchItem.dataIndex != null) {
+      batchItem.dataIndexInside = batchItem.dataIndex;
+      batchItem.dataIndex = null;
+    }
+
+    batchItem.highlightKey = 'visualMap' + (visualMapModel ? visualMapModel.componentIndex : '');
+  });
+  return batch;
+}
+
+var linearMap = linearMap$2;
+var each$1 = each$9;
+var mathMin = Math.min;
+var mathMax = Math.max; // Arbitrary value
+
+var HOVER_LINK_SIZE = 12;
+var HOVER_LINK_OUT = 6; // Notice:
+// Any "interval" should be by the order of [low, high].
+// "handle0" (handleIndex === 0) maps to
+// low data value: this._dataInterval[0] and has low coord.
+// "handle1" (handleIndex === 1) maps to
+// high data value: this._dataInterval[1] and has high coord.
+// The logic of transform is implemented in this._createBarGroup.
+
+var ContinuousView =
+/** @class */
+function (_super) {
+  __extends$1(ContinuousView, _super);
+
+  function ContinuousView() {
+    var _this = _super !== null && _super.apply(this, arguments) || this;
+
+    _this.type = ContinuousView.type;
+    _this._shapes = {};
+    _this._dataInterval = [];
+    _this._handleEnds = [];
+    _this._hoverLinkDataIndices = [];
+    return _this;
+  }
+
+  ContinuousView.prototype.doRender = function (visualMapModel, ecModel, api, payload) {
+    this._api = api;
+
+    if (!payload || payload.type !== 'selectDataRange' || payload.from !== this.uid) {
+      this._buildView();
+    }
+  };
+
+  ContinuousView.prototype._buildView = function () {
+    this.group.removeAll();
+    var visualMapModel = this.visualMapModel;
+    var thisGroup = this.group;
+    this._orient = visualMapModel.get('orient');
+    this._useHandle = visualMapModel.get('calculable');
+
+    this._resetInterval();
+
+    this._renderBar(thisGroup);
+
+    var dataRangeText = visualMapModel.get('text');
+
+    this._renderEndsText(thisGroup, dataRangeText, 0);
+
+    this._renderEndsText(thisGroup, dataRangeText, 1); // Do this for background size calculation.
+
+
+    this._updateView(true); // After updating view, inner shapes is built completely,
+    // and then background can be rendered.
+
+
+    this.renderBackground(thisGroup); // Real update view
+
+    this._updateView();
+
+    this._enableHoverLinkToSeries();
+
+    this._enableHoverLinkFromSeries();
+
+    this.positionGroup(thisGroup);
+  };
+
+  ContinuousView.prototype._renderEndsText = function (group, dataRangeText, endsIndex) {
+    if (!dataRangeText) {
+      return;
+    } // Compatible with ec2, text[0] map to high value, text[1] map low value.
+
+
+    var text = dataRangeText[1 - endsIndex];
+    text = text != null ? text + '' : '';
+    var visualMapModel = this.visualMapModel;
+    var textGap = visualMapModel.get('textGap');
+    var itemSize = visualMapModel.itemSize;
+    var barGroup = this._shapes.mainGroup;
+
+    var position = this._applyTransform([itemSize[0] / 2, endsIndex === 0 ? -textGap : itemSize[1] + textGap], barGroup);
+
+    var align = this._applyTransform(endsIndex === 0 ? 'bottom' : 'top', barGroup);
+
+    var orient = this._orient;
+    var textStyleModel = this.visualMapModel.textStyleModel;
+    this.group.add(new ZRText$1({
+      style: createTextStyle$1(textStyleModel, {
+        x: position[0],
+        y: position[1],
+        verticalAlign: orient === 'horizontal' ? 'middle' : align,
+        align: orient === 'horizontal' ? align : 'center',
+        text: text
+      })
+    }));
+  };
+
+  ContinuousView.prototype._renderBar = function (targetGroup) {
+    var visualMapModel = this.visualMapModel;
+    var shapes = this._shapes;
+    var itemSize = visualMapModel.itemSize;
+    var orient = this._orient;
+    var useHandle = this._useHandle;
+    var itemAlign = getItemAlign(visualMapModel, this.api, itemSize);
+
+    var mainGroup = shapes.mainGroup = this._createBarGroup(itemAlign);
+
+    var gradientBarGroup = new Group$3();
+    mainGroup.add(gradientBarGroup); // Bar
+
+    gradientBarGroup.add(shapes.outOfRange = createPolygon());
+    gradientBarGroup.add(shapes.inRange = createPolygon(null, useHandle ? getCursor(this._orient) : null, bind$1(this._dragHandle, this, 'all', false), bind$1(this._dragHandle, this, 'all', true))); // A border radius clip.
+
+    gradientBarGroup.setClipPath(new Rect$1({
+      shape: {
+        x: 0,
+        y: 0,
+        width: itemSize[0],
+        height: itemSize[1],
+        r: 3
+      }
+    }));
+    var textRect = visualMapModel.textStyleModel.getTextRect('国');
+    var textSize = mathMax(textRect.width, textRect.height); // Handle
+
+    if (useHandle) {
+      shapes.handleThumbs = [];
+      shapes.handleLabels = [];
+      shapes.handleLabelPoints = [];
+
+      this._createHandle(visualMapModel, mainGroup, 0, itemSize, textSize, orient);
+
+      this._createHandle(visualMapModel, mainGroup, 1, itemSize, textSize, orient);
+    }
+
+    this._createIndicator(visualMapModel, mainGroup, itemSize, textSize, orient);
+
+    targetGroup.add(mainGroup);
+  };
+
+  ContinuousView.prototype._createHandle = function (visualMapModel, mainGroup, handleIndex, itemSize, textSize, orient) {
+    var onDrift = bind$1(this._dragHandle, this, handleIndex, false);
+    var onDragEnd = bind$1(this._dragHandle, this, handleIndex, true);
+    var handleSize = parsePercent$1(visualMapModel.get('handleSize'), itemSize[0]);
+    var handleThumb = createSymbol(visualMapModel.get('handleIcon'), -handleSize / 2, -handleSize / 2, handleSize, handleSize, null, true);
+    var cursor = getCursor(this._orient);
+    handleThumb.attr({
+      cursor: cursor,
+      draggable: true,
+      drift: onDrift,
+      ondragend: onDragEnd,
+      onmousemove: function (e) {
+        stop(e.event);
+      }
+    });
+    handleThumb.x = itemSize[0] / 2;
+    handleThumb.useStyle(visualMapModel.getModel('handleStyle').getItemStyle());
+    handleThumb.setStyle({
+      strokeNoScale: true,
+      strokeFirst: true
+    });
+    handleThumb.style.lineWidth *= 2;
+    handleThumb.ensureState('emphasis').style = visualMapModel.getModel(['emphasis', 'handleStyle']).getItemStyle();
+    setAsHighDownDispatcher(handleThumb, true);
+    mainGroup.add(handleThumb); // Text is always horizontal layout but should not be effected by
+    // transform (orient/inverse). So label is built separately but not
+    // use zrender/graphic/helper/RectText, and is located based on view
+    // group (according to handleLabelPoint) but not barGroup.
+
+    var textStyleModel = this.visualMapModel.textStyleModel;
+    var handleLabel = new ZRText$1({
+      cursor: cursor,
+      draggable: true,
+      drift: onDrift,
+      onmousemove: function (e) {
+        // Fot mobile devicem, prevent screen slider on the button.
+        stop(e.event);
+      },
+      ondragend: onDragEnd,
+      style: createTextStyle$1(textStyleModel, {
+        x: 0,
+        y: 0,
+        text: ''
+      })
+    });
+    handleLabel.ensureState('blur').style = {
+      opacity: 0.1
+    };
+    handleLabel.stateTransition = {
+      duration: 200
+    };
+    this.group.add(handleLabel);
+    var handleLabelPoint = [handleSize, 0];
+    var shapes = this._shapes;
+    shapes.handleThumbs[handleIndex] = handleThumb;
+    shapes.handleLabelPoints[handleIndex] = handleLabelPoint;
+    shapes.handleLabels[handleIndex] = handleLabel;
+  };
+
+  ContinuousView.prototype._createIndicator = function (visualMapModel, mainGroup, itemSize, textSize, orient) {
+    var scale = parsePercent$1(visualMapModel.get('indicatorSize'), itemSize[0]);
+    var indicator = createSymbol(visualMapModel.get('indicatorIcon'), -scale / 2, -scale / 2, scale, scale, null, true);
+    indicator.attr({
+      cursor: 'move',
+      invisible: true,
+      silent: true,
+      x: itemSize[0] / 2
+    });
+    var indicatorStyle = visualMapModel.getModel('indicatorStyle').getItemStyle();
+
+    if (indicator instanceof ZRImage$1) {
+      var pathStyle = indicator.style;
+      indicator.useStyle(extend({
+        // TODO other properties like x, y ?
+        image: pathStyle.image,
+        x: pathStyle.x,
+        y: pathStyle.y,
+        width: pathStyle.width,
+        height: pathStyle.height
+      }, indicatorStyle));
+    } else {
+      indicator.useStyle(indicatorStyle);
+    }
+
+    mainGroup.add(indicator);
+    var textStyleModel = this.visualMapModel.textStyleModel;
+    var indicatorLabel = new ZRText$1({
+      silent: true,
+      invisible: true,
+      style: createTextStyle$1(textStyleModel, {
+        x: 0,
+        y: 0,
+        text: ''
+      })
+    });
+    this.group.add(indicatorLabel);
+    var indicatorLabelPoint = [(orient === 'horizontal' ? textSize / 2 : HOVER_LINK_OUT) + itemSize[0] / 2, 0];
+    var shapes = this._shapes;
+    shapes.indicator = indicator;
+    shapes.indicatorLabel = indicatorLabel;
+    shapes.indicatorLabelPoint = indicatorLabelPoint;
+    this._firstShowIndicator = true;
+  };
+
+  ContinuousView.prototype._dragHandle = function (handleIndex, isEnd, // dx is event from ondragend if isEnd is true. It's not used
+  dx, dy) {
+    if (!this._useHandle) {
+      return;
+    }
+
+    this._dragging = !isEnd;
+
+    if (!isEnd) {
+      // Transform dx, dy to bar coordination.
+      var vertex = this._applyTransform([dx, dy], this._shapes.mainGroup, true);
+
+      this._updateInterval(handleIndex, vertex[1]);
+
+      this._hideIndicator(); // Considering realtime, update view should be executed
+      // before dispatch action.
+
+
+      this._updateView();
+    } // dragEnd do not dispatch action when realtime.
+
+
+    if (isEnd === !this.visualMapModel.get('realtime')) {
+      // jshint ignore:line
+      this.api.dispatchAction({
+        type: 'selectDataRange',
+        from: this.uid,
+        visualMapId: this.visualMapModel.id,
+        selected: this._dataInterval.slice()
+      });
+    }
+
+    if (isEnd) {
+      !this._hovering && this._clearHoverLinkToSeries();
+    } else if (useHoverLinkOnHandle(this.visualMapModel)) {
+      this._doHoverLinkToSeries(this._handleEnds[handleIndex], false);
+    }
+  };
+
+  ContinuousView.prototype._resetInterval = function () {
+    var visualMapModel = this.visualMapModel;
+    var dataInterval = this._dataInterval = visualMapModel.getSelected();
+    var dataExtent = visualMapModel.getExtent();
+    var sizeExtent = [0, visualMapModel.itemSize[1]];
+    this._handleEnds = [linearMap(dataInterval[0], dataExtent, sizeExtent, true), linearMap(dataInterval[1], dataExtent, sizeExtent, true)];
+  };
+  /**
+   * @private
+   * @param {(number|string)} handleIndex 0 or 1 or 'all'
+   * @param {number} dx
+   * @param {number} dy
+   */
+
+
+  ContinuousView.prototype._updateInterval = function (handleIndex, delta) {
+    delta = delta || 0;
+    var visualMapModel = this.visualMapModel;
+    var handleEnds = this._handleEnds;
+    var sizeExtent = [0, visualMapModel.itemSize[1]];
+    sliderMove(delta, handleEnds, sizeExtent, handleIndex, // cross is forbiden
+    0);
+    var dataExtent = visualMapModel.getExtent(); // Update data interval.
+
+    this._dataInterval = [linearMap(handleEnds[0], sizeExtent, dataExtent, true), linearMap(handleEnds[1], sizeExtent, dataExtent, true)];
+  };
+
+  ContinuousView.prototype._updateView = function (forSketch) {
+    var visualMapModel = this.visualMapModel;
+    var dataExtent = visualMapModel.getExtent();
+    var shapes = this._shapes;
+    var outOfRangeHandleEnds = [0, visualMapModel.itemSize[1]];
+    var inRangeHandleEnds = forSketch ? outOfRangeHandleEnds : this._handleEnds;
+
+    var visualInRange = this._createBarVisual(this._dataInterval, dataExtent, inRangeHandleEnds, 'inRange');
+
+    var visualOutOfRange = this._createBarVisual(dataExtent, dataExtent, outOfRangeHandleEnds, 'outOfRange');
+
+    shapes.inRange.setStyle({
+      fill: visualInRange.barColor // opacity: visualInRange.opacity
+
+    }).setShape('points', visualInRange.barPoints);
+    shapes.outOfRange.setStyle({
+      fill: visualOutOfRange.barColor // opacity: visualOutOfRange.opacity
+
+    }).setShape('points', visualOutOfRange.barPoints);
+
+    this._updateHandle(inRangeHandleEnds, visualInRange);
+  };
+
+  ContinuousView.prototype._createBarVisual = function (dataInterval, dataExtent, handleEnds, forceState) {
+    var opts = {
+      forceState: forceState,
+      convertOpacityToAlpha: true
+    };
+
+    var colorStops = this._makeColorGradient(dataInterval, opts);
+
+    var symbolSizes = [this.getControllerVisual(dataInterval[0], 'symbolSize', opts), this.getControllerVisual(dataInterval[1], 'symbolSize', opts)];
+
+    var barPoints = this._createBarPoints(handleEnds, symbolSizes);
+
+    return {
+      barColor: new LinearGradient$1(0, 0, 0, 1, colorStops),
+      barPoints: barPoints,
+      handlesColor: [colorStops[0].color, colorStops[colorStops.length - 1].color]
+    };
+  };
+
+  ContinuousView.prototype._makeColorGradient = function (dataInterval, opts) {
+    // Considering colorHue, which is not linear, so we have to sample
+    // to calculate gradient color stops, but not only caculate head
+    // and tail.
+    var sampleNumber = 100; // Arbitrary value.
+
+    var colorStops = [];
+    var step = (dataInterval[1] - dataInterval[0]) / sampleNumber;
+    colorStops.push({
+      color: this.getControllerVisual(dataInterval[0], 'color', opts),
+      offset: 0
+    });
+
+    for (var i = 1; i < sampleNumber; i++) {
+      var currValue = dataInterval[0] + step * i;
+
+      if (currValue > dataInterval[1]) {
+        break;
+      }
+
+      colorStops.push({
+        color: this.getControllerVisual(currValue, 'color', opts),
+        offset: i / sampleNumber
+      });
+    }
+
+    colorStops.push({
+      color: this.getControllerVisual(dataInterval[1], 'color', opts),
+      offset: 1
+    });
+    return colorStops;
+  };
+
+  ContinuousView.prototype._createBarPoints = function (handleEnds, symbolSizes) {
+    var itemSize = this.visualMapModel.itemSize;
+    return [[itemSize[0] - symbolSizes[0], handleEnds[0]], [itemSize[0], handleEnds[0]], [itemSize[0], handleEnds[1]], [itemSize[0] - symbolSizes[1], handleEnds[1]]];
+  };
+
+  ContinuousView.prototype._createBarGroup = function (itemAlign) {
+    var orient = this._orient;
+    var inverse = this.visualMapModel.get('inverse');
+    return new Group$3(orient === 'horizontal' && !inverse ? {
+      scaleX: itemAlign === 'bottom' ? 1 : -1,
+      rotation: Math.PI / 2
+    } : orient === 'horizontal' && inverse ? {
+      scaleX: itemAlign === 'bottom' ? -1 : 1,
+      rotation: -Math.PI / 2
+    } : orient === 'vertical' && !inverse ? {
+      scaleX: itemAlign === 'left' ? 1 : -1,
+      scaleY: -1
+    } : {
+      scaleX: itemAlign === 'left' ? 1 : -1
+    });
+  };
+
+  ContinuousView.prototype._updateHandle = function (handleEnds, visualInRange) {
+    if (!this._useHandle) {
+      return;
+    }
+
+    var shapes = this._shapes;
+    var visualMapModel = this.visualMapModel;
+    var handleThumbs = shapes.handleThumbs;
+    var handleLabels = shapes.handleLabels;
+    var itemSize = visualMapModel.itemSize;
+    var dataExtent = visualMapModel.getExtent();
+    each$1([0, 1], function (handleIndex) {
+      var handleThumb = handleThumbs[handleIndex];
+      handleThumb.setStyle('fill', visualInRange.handlesColor[handleIndex]);
+      handleThumb.y = handleEnds[handleIndex];
+      var val = linearMap(handleEnds[handleIndex], [0, itemSize[1]], dataExtent, true);
+      var symbolSize = this.getControllerVisual(val, 'symbolSize');
+      handleThumb.scaleX = handleThumb.scaleY = symbolSize / itemSize[0];
+      handleThumb.x = itemSize[0] - symbolSize / 2; // Update handle label position.
+
+      var textPoint = applyTransform(shapes.handleLabelPoints[handleIndex], getTransform(handleThumb, this.group));
+      handleLabels[handleIndex].setStyle({
+        x: textPoint[0],
+        y: textPoint[1],
+        text: visualMapModel.formatValueText(this._dataInterval[handleIndex]),
+        verticalAlign: 'middle',
+        align: this._orient === 'vertical' ? this._applyTransform('left', shapes.mainGroup) : 'center'
+      });
+    }, this);
+  };
+
+  ContinuousView.prototype._showIndicator = function (cursorValue, textValue, rangeSymbol, halfHoverLinkSize) {
+    var visualMapModel = this.visualMapModel;
+    var dataExtent = visualMapModel.getExtent();
+    var itemSize = visualMapModel.itemSize;
+    var sizeExtent = [0, itemSize[1]];
+    var shapes = this._shapes;
+    var indicator = shapes.indicator;
+
+    if (!indicator) {
+      return;
+    }
+
+    indicator.attr('invisible', false);
+    var opts = {
+      convertOpacityToAlpha: true
+    };
+    var color = this.getControllerVisual(cursorValue, 'color', opts);
+    var symbolSize = this.getControllerVisual(cursorValue, 'symbolSize');
+    var y = linearMap(cursorValue, dataExtent, sizeExtent, true);
+    var x = itemSize[0] - symbolSize / 2;
+    var oldIndicatorPos = {
+      x: indicator.x,
+      y: indicator.y
+    }; // Update handle label position.
+
+    indicator.y = y;
+    indicator.x = x;
+    var textPoint = applyTransform(shapes.indicatorLabelPoint, getTransform(indicator, this.group));
+    var indicatorLabel = shapes.indicatorLabel;
+    indicatorLabel.attr('invisible', false);
+
+    var align = this._applyTransform('left', shapes.mainGroup);
+
+    var orient = this._orient;
+    var isHorizontal = orient === 'horizontal';
+    indicatorLabel.setStyle({
+      text: (rangeSymbol ? rangeSymbol : '') + visualMapModel.formatValueText(textValue),
+      verticalAlign: isHorizontal ? align : 'middle',
+      align: isHorizontal ? 'center' : align
+    });
+    var indicatorNewProps = {
+      x: x,
+      y: y,
+      style: {
+        fill: color
+      }
+    };
+    var labelNewProps = {
+      style: {
+        x: textPoint[0],
+        y: textPoint[1]
+      }
+    };
+
+    if (visualMapModel.ecModel.isAnimationEnabled() && !this._firstShowIndicator) {
+      var animationCfg = {
+        duration: 100,
+        easing: 'cubicInOut',
+        additive: true
+      };
+      indicator.x = oldIndicatorPos.x;
+      indicator.y = oldIndicatorPos.y;
+      indicator.animateTo(indicatorNewProps, animationCfg);
+      indicatorLabel.animateTo(labelNewProps, animationCfg);
+    } else {
+      indicator.attr(indicatorNewProps);
+      indicatorLabel.attr(labelNewProps);
+    }
+
+    this._firstShowIndicator = false;
+    var handleLabels = this._shapes.handleLabels;
+
+    if (handleLabels) {
+      for (var i = 0; i < handleLabels.length; i++) {
+        // Fade out handle labels.
+        // NOTE: Must use api enter/leave on emphasis/blur/select state. Or the global states manager will change it.
+        this._api.enterBlur(handleLabels[i]);
+      }
+    }
+  };
+
+  ContinuousView.prototype._enableHoverLinkToSeries = function () {
+    var self = this;
+
+    this._shapes.mainGroup.on('mousemove', function (e) {
+      self._hovering = true;
+
+      if (!self._dragging) {
+        var itemSize = self.visualMapModel.itemSize;
+
+        var pos = self._applyTransform([e.offsetX, e.offsetY], self._shapes.mainGroup, true, true); // For hover link show when hover handle, which might be
+        // below or upper than sizeExtent.
+
+
+        pos[1] = mathMin(mathMax(0, pos[1]), itemSize[1]);
+
+        self._doHoverLinkToSeries(pos[1], 0 <= pos[0] && pos[0] <= itemSize[0]);
+      }
+    }).on('mouseout', function () {
+      // When mouse is out of handle, hoverLink still need
+      // to be displayed when realtime is set as false.
+      self._hovering = false;
+      !self._dragging && self._clearHoverLinkToSeries();
+    });
+  };
+
+  ContinuousView.prototype._enableHoverLinkFromSeries = function () {
+    var zr = this.api.getZr();
+
+    if (this.visualMapModel.option.hoverLink) {
+      zr.on('mouseover', this._hoverLinkFromSeriesMouseOver, this);
+      zr.on('mouseout', this._hideIndicator, this);
+    } else {
+      this._clearHoverLinkFromSeries();
+    }
+  };
+
+  ContinuousView.prototype._doHoverLinkToSeries = function (cursorPos, hoverOnBar) {
+    var visualMapModel = this.visualMapModel;
+    var itemSize = visualMapModel.itemSize;
+
+    if (!visualMapModel.option.hoverLink) {
+      return;
+    }
+
+    var sizeExtent = [0, itemSize[1]];
+    var dataExtent = visualMapModel.getExtent(); // For hover link show when hover handle, which might be below or upper than sizeExtent.
+
+    cursorPos = mathMin(mathMax(sizeExtent[0], cursorPos), sizeExtent[1]);
+    var halfHoverLinkSize = getHalfHoverLinkSize(visualMapModel, dataExtent, sizeExtent);
+    var hoverRange = [cursorPos - halfHoverLinkSize, cursorPos + halfHoverLinkSize];
+    var cursorValue = linearMap(cursorPos, sizeExtent, dataExtent, true);
+    var valueRange = [linearMap(hoverRange[0], sizeExtent, dataExtent, true), linearMap(hoverRange[1], sizeExtent, dataExtent, true)]; // Consider data range is out of visualMap range, see test/visualMap-continuous.html,
+    // where china and india has very large population.
+
+    hoverRange[0] < sizeExtent[0] && (valueRange[0] = -Infinity);
+    hoverRange[1] > sizeExtent[1] && (valueRange[1] = Infinity); // Do not show indicator when mouse is over handle,
+    // otherwise labels overlap, especially when dragging.
+
+    if (hoverOnBar) {
+      if (valueRange[0] === -Infinity) {
+        this._showIndicator(cursorValue, valueRange[1], '< ', halfHoverLinkSize);
+      } else if (valueRange[1] === Infinity) {
+        this._showIndicator(cursorValue, valueRange[0], '> ', halfHoverLinkSize);
+      } else {
+        this._showIndicator(cursorValue, cursorValue, '≈ ', halfHoverLinkSize);
+      }
+    } // When realtime is set as false, handles, which are in barGroup,
+    // also trigger hoverLink, which help user to realize where they
+    // focus on when dragging. (see test/heatmap-large.html)
+    // When realtime is set as true, highlight will not show when hover
+    // handle, because the label on handle, which displays a exact value
+    // but not range, might mislead users.
+
+
+    var oldBatch = this._hoverLinkDataIndices;
+    var newBatch = [];
+
+    if (hoverOnBar || useHoverLinkOnHandle(visualMapModel)) {
+      newBatch = this._hoverLinkDataIndices = visualMapModel.findTargetDataIndices(valueRange);
+    }
+
+    var resultBatches = compressBatches(oldBatch, newBatch);
+
+    this._dispatchHighDown('downplay', makeHighDownBatch(resultBatches[0], visualMapModel));
+
+    this._dispatchHighDown('highlight', makeHighDownBatch(resultBatches[1], visualMapModel));
+  };
+
+  ContinuousView.prototype._hoverLinkFromSeriesMouseOver = function (e) {
+    var ecData;
+    findEventDispatcher(e.target, function (target) {
+      var currECData = getECData(target);
+
+      if (currECData.dataIndex != null) {
+        ecData = currECData;
+        return true;
+      }
+    }, true);
+
+    if (!ecData) {
+      return;
+    }
+
+    var dataModel = this.ecModel.getSeriesByIndex(ecData.seriesIndex);
+    var visualMapModel = this.visualMapModel;
+
+    if (!visualMapModel.isTargetSeries(dataModel)) {
+      return;
+    }
+
+    var data = dataModel.getData(ecData.dataType);
+    var value = data.getStore().get(visualMapModel.getDataDimensionIndex(data), ecData.dataIndex);
+
+    if (!isNaN(value)) {
+      this._showIndicator(value, value);
+    }
+  };
+
+  ContinuousView.prototype._hideIndicator = function () {
+    var shapes = this._shapes;
+    shapes.indicator && shapes.indicator.attr('invisible', true);
+    shapes.indicatorLabel && shapes.indicatorLabel.attr('invisible', true);
+    var handleLabels = this._shapes.handleLabels;
+
+    if (handleLabels) {
+      for (var i = 0; i < handleLabels.length; i++) {
+        // Fade out handle labels.
+        // NOTE: Must use api enter/leave on emphasis/blur/select state. Or the global states manager will change it.
+        this._api.leaveBlur(handleLabels[i]);
+      }
+    }
+  };
+
+  ContinuousView.prototype._clearHoverLinkToSeries = function () {
+    this._hideIndicator();
+
+    var indices = this._hoverLinkDataIndices;
+
+    this._dispatchHighDown('downplay', makeHighDownBatch(indices, this.visualMapModel));
+
+    indices.length = 0;
+  };
+
+  ContinuousView.prototype._clearHoverLinkFromSeries = function () {
+    this._hideIndicator();
+
+    var zr = this.api.getZr();
+    zr.off('mouseover', this._hoverLinkFromSeriesMouseOver);
+    zr.off('mouseout', this._hideIndicator);
+  };
+
+  ContinuousView.prototype._applyTransform = function (vertex, element, inverse, global) {
+    var transform = getTransform(element, global ? null : this.group);
+    return isArray$1(vertex) ? applyTransform(vertex, transform, inverse) : transformDirection(vertex, transform, inverse);
+  }; // TODO: TYPE more specified payload types.
+
+
+  ContinuousView.prototype._dispatchHighDown = function (type, batch) {
+    batch && batch.length && this.api.dispatchAction({
+      type: type,
+      batch: batch
+    });
+  };
+  /**
+   * @override
+   */
+
+
+  ContinuousView.prototype.dispose = function () {
+    this._clearHoverLinkFromSeries();
+
+    this._clearHoverLinkToSeries();
+  };
+  /**
+   * @override
+   */
+
+
+  ContinuousView.prototype.remove = function () {
+    this._clearHoverLinkFromSeries();
+
+    this._clearHoverLinkToSeries();
+  };
+
+  ContinuousView.type = 'visualMap.continuous';
+  return ContinuousView;
+}(VisualMapView$1);
+
+function createPolygon(points, cursor, onDrift, onDragEnd) {
+  return new Polygon$1({
+    shape: {
+      points: points
+    },
+    draggable: !!onDrift,
+    cursor: cursor,
+    drift: onDrift,
+    onmousemove: function (e) {
+      // Fot mobile devicem, prevent screen slider on the button.
+      stop(e.event);
+    },
+    ondragend: onDragEnd
+  });
+}
+
+function getHalfHoverLinkSize(visualMapModel, dataExtent, sizeExtent) {
+  var halfHoverLinkSize = HOVER_LINK_SIZE / 2;
+  var hoverLinkDataSize = visualMapModel.get('hoverLinkDataSize');
+
+  if (hoverLinkDataSize) {
+    halfHoverLinkSize = linearMap(hoverLinkDataSize, dataExtent, sizeExtent, true) / 2;
+  }
+
+  return halfHoverLinkSize;
+}
+
+function useHoverLinkOnHandle(visualMapModel) {
+  var hoverLinkOnHandle = visualMapModel.get('hoverLinkOnHandle');
+  return !!(hoverLinkOnHandle == null ? visualMapModel.get('realtime') : hoverLinkOnHandle);
+}
+
+function getCursor(orient) {
+  return orient === 'vertical' ? 'ns-resize' : 'ew-resize';
+}
+
+var ContinuousView$1 = ContinuousView;
+
+/*
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing,
+* software distributed under the License is distributed on an
+* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+* KIND, either express or implied.  See the License for the
+* specific language governing permissions and limitations
+* under the License.
+*/
+
+
+/**
+ * AUTO-GENERATED FILE. DO NOT MODIFY.
+ */
+
+/*
+* Licensed to the Apache Software Foundation (ASF) under one
+* or more contributor license agreements.  See the NOTICE file
+* distributed with this work for additional information
+* regarding copyright ownership.  The ASF licenses this file
+* to you under the Apache License, Version 2.0 (the
+* "License"); you may not use this file except in compliance
+* with the License.  You may obtain a copy of the License at
+*
+*   http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing,
+* software distributed under the License is distributed on an
+* "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+* KIND, either express or implied.  See the License for the
+* specific language governing permissions and limitations
+* under the License.
+*/
+var visualMapActionInfo = {
+  type: 'selectDataRange',
+  event: 'dataRangeSelected',
+  // FIXME use updateView appears wrong
+  update: 'update'
+};
+var visualMapActionHander = function (payload, ecModel) {
+  ecModel.eachComponent({
+    mainType: 'visualMap',
+    query: payload
+  }, function (model) {
+    model.setSelected(payload.selected);
+  });
+};
+
+var visualMapEncodingHandlers = [{
+  createOnAllSeries: true,
+  reset: function (seriesModel, ecModel) {
+    var resetDefines = [];
+    ecModel.eachComponent('visualMap', function (visualMapModel) {
+      var pipelineContext = seriesModel.pipelineContext;
+
+      if (!visualMapModel.isTargetSeries(seriesModel) || pipelineContext && pipelineContext.large) {
+        return;
+      }
+
+      resetDefines.push(incrementalApplyVisual(visualMapModel.stateList, visualMapModel.targetVisuals, bind$1(visualMapModel.getValueState, visualMapModel), visualMapModel.getDataDimensionIndex(seriesModel.getData())));
+    });
+    return resetDefines;
+  }
+}, // Only support color.
+{
+  createOnAllSeries: true,
+  reset: function (seriesModel, ecModel) {
+    var data = seriesModel.getData();
+    var visualMetaList = [];
+    ecModel.eachComponent('visualMap', function (visualMapModel) {
+      if (visualMapModel.isTargetSeries(seriesModel)) {
+        var visualMeta = visualMapModel.getVisualMeta(bind$1(getColorVisual, null, seriesModel, visualMapModel)) || {
+          stops: [],
+          outerColors: []
+        };
+        var dimIdx = visualMapModel.getDataDimensionIndex(data);
+
+        if (dimIdx >= 0) {
+          // visualMeta.dimension should be dimension index, but not concrete dimension.
+          visualMeta.dimension = dimIdx;
+          visualMetaList.push(visualMeta);
+        }
+      }
+    }); // console.log(JSON.stringify(visualMetaList.map(a => a.stops)));
+
+    seriesModel.getData().setVisual('visualMeta', visualMetaList);
+  }
+}]; // FIXME
+// performance and export for heatmap?
+// value can be Infinity or -Infinity
+
+function getColorVisual(seriesModel, visualMapModel, value, valueState) {
+  var mappings = visualMapModel.targetVisuals[valueState];
+  var visualTypes = VisualMapping$1.prepareVisualTypes(mappings);
+  var resultVisual = {
+    color: getVisualFromData(seriesModel.getData(), 'color') // default color.
+
+  };
+
+  for (var i = 0, len = visualTypes.length; i < len; i++) {
+    var type = visualTypes[i];
+    var mapping = mappings[type === 'opacity' ? '__alphaForOpacity' : type];
+    mapping && mapping.applyVisual(value, getVisual, setVisual);
+  }
+
+  return resultVisual.color;
+
+  function getVisual(key) {
+    return resultVisual[key];
+  }
+
+  function setVisual(key, value) {
+    resultVisual[key] = value;
+  }
+}
+
+var each = each$9;
+function visualMapPreprocessor(option) {
+  var visualMap = option && option.visualMap;
+
+  if (!isArray$1(visualMap)) {
+    visualMap = visualMap ? [visualMap] : [];
+  }
+
+  each(visualMap, function (opt) {
+    if (!opt) {
+      return;
+    } // rename splitList to pieces
+
+
+    if (has(opt, 'splitList') && !has(opt, 'pieces')) {
+      opt.pieces = opt.splitList;
+      delete opt.splitList;
+    }
+
+    var pieces = opt.pieces;
+
+    if (pieces && isArray$1(pieces)) {
+      each(pieces, function (piece) {
+        if (isObject$3(piece)) {
+          if (has(piece, 'start') && !has(piece, 'min')) {
+            piece.min = piece.start;
+          }
+
+          if (has(piece, 'end') && !has(piece, 'max')) {
+            piece.max = piece.end;
+          }
+        }
+      });
+    }
+  });
+}
+
+function has(obj, name) {
+  return obj && obj.hasOwnProperty && obj.hasOwnProperty(name);
+}
+
+var installed = false;
+function installCommon(registers) {
+  if (installed) {
+    return;
+  }
+
+  installed = true;
+  registers.registerSubTypeDefaulter('visualMap', function (option) {
+    // Compatible with ec2, when splitNumber === 0, continuous visualMap will be used.
+    return !option.categories && (!(option.pieces ? option.pieces.length > 0 : option.splitNumber > 0) || option.calculable) ? 'continuous' : 'piecewise';
+  });
+  registers.registerAction(visualMapActionInfo, visualMapActionHander);
+  each$9(visualMapEncodingHandlers, function (handler) {
+    registers.registerVisual(registers.PRIORITY.VISUAL.COMPONENT, handler);
+  });
+  registers.registerPreprocessor(visualMapPreprocessor);
+}
+
+function install$4(registers) {
+  registers.registerComponentModel(ContinuousModel$1);
+  registers.registerComponentView(ContinuousView$1);
+  installCommon(registers);
+}
+
+var PiecewiseModel =
+/** @class */
+function (_super) {
+  __extends$1(PiecewiseModel, _super);
+
+  function PiecewiseModel() {
+    var _this = _super !== null && _super.apply(this, arguments) || this;
+
+    _this.type = PiecewiseModel.type;
+    /**
+     * The order is always [low, ..., high].
+     * [{text: string, interval: Array.<number>}, ...]
+     */
+
+    _this._pieceList = [];
+    return _this;
+  }
+
+  PiecewiseModel.prototype.optionUpdated = function (newOption, isInit) {
+    _super.prototype.optionUpdated.apply(this, arguments);
+
+    this.resetExtent();
+
+    var mode = this._mode = this._determineMode();
+
+    this._pieceList = [];
+
+    resetMethods[this._mode].call(this, this._pieceList);
+
+    this._resetSelected(newOption, isInit);
+
+    var categories = this.option.categories;
+    this.resetVisual(function (mappingOption, state) {
+      if (mode === 'categories') {
+        mappingOption.mappingMethod = 'category';
+        mappingOption.categories = clone$3(categories);
+      } else {
+        mappingOption.dataExtent = this.getExtent();
+        mappingOption.mappingMethod = 'piecewise';
+        mappingOption.pieceList = map$1(this._pieceList, function (piece) {
+          piece = clone$3(piece);
+
+          if (state !== 'inRange') {
+            // FIXME
+            // outOfRange do not support special visual in pieces.
+            piece.visual = null;
+          }
+
+          return piece;
+        });
+      }
+    });
+  };
+  /**
+   * @protected
+   * @override
+   */
+
+
+  PiecewiseModel.prototype.completeVisualOption = function () {
+    // Consider this case:
+    // visualMap: {
+    //      pieces: [{symbol: 'circle', lt: 0}, {symbol: 'rect', gte: 0}]
+    // }
+    // where no inRange/outOfRange set but only pieces. So we should make
+    // default inRange/outOfRange for this case, otherwise visuals that only
+    // appear in `pieces` will not be taken into account in visual encoding.
+    var option = this.option;
+    var visualTypesInPieces = {};
+    var visualTypes = VisualMapping$1.listVisualTypes();
+    var isCategory = this.isCategory();
+    each$9(option.pieces, function (piece) {
+      each$9(visualTypes, function (visualType) {
+        if (piece.hasOwnProperty(visualType)) {
+          visualTypesInPieces[visualType] = 1;
+        }
+      });
+    });
+    each$9(visualTypesInPieces, function (v, visualType) {
+      var exists = false;
+      each$9(this.stateList, function (state) {
+        exists = exists || has(option, state, visualType) || has(option.target, state, visualType);
+      }, this);
+      !exists && each$9(this.stateList, function (state) {
+        (option[state] || (option[state] = {}))[visualType] = visualDefault$1.get(visualType, state === 'inRange' ? 'active' : 'inactive', isCategory);
+      });
+    }, this);
+
+    function has(obj, state, visualType) {
+      return obj && obj[state] && obj[state].hasOwnProperty(visualType);
+    }
+
+    _super.prototype.completeVisualOption.apply(this, arguments);
+  };
+
+  PiecewiseModel.prototype._resetSelected = function (newOption, isInit) {
+    var thisOption = this.option;
+    var pieceList = this._pieceList; // Selected do not merge but all override.
+
+    var selected = (isInit ? thisOption : newOption).selected || {};
+    thisOption.selected = selected; // Consider 'not specified' means true.
+
+    each$9(pieceList, function (piece, index) {
+      var key = this.getSelectedMapKey(piece);
+
+      if (!selected.hasOwnProperty(key)) {
+        selected[key] = true;
+      }
+    }, this);
+
+    if (thisOption.selectedMode === 'single') {
+      // Ensure there is only one selected.
+      var hasSel_1 = false;
+      each$9(pieceList, function (piece, index) {
+        var key = this.getSelectedMapKey(piece);
+
+        if (selected[key]) {
+          hasSel_1 ? selected[key] = false : hasSel_1 = true;
+        }
+      }, this);
+    } // thisOption.selectedMode === 'multiple', default: all selected.
+
+  };
+  /**
+   * @public
+   */
+
+
+  PiecewiseModel.prototype.getItemSymbol = function () {
+    return this.get('itemSymbol');
+  };
+  /**
+   * @public
+   */
+
+
+  PiecewiseModel.prototype.getSelectedMapKey = function (piece) {
+    return this._mode === 'categories' ? piece.value + '' : piece.index + '';
+  };
+  /**
+   * @public
+   */
+
+
+  PiecewiseModel.prototype.getPieceList = function () {
+    return this._pieceList;
+  };
+  /**
+   * @return {string}
+   */
+
+
+  PiecewiseModel.prototype._determineMode = function () {
+    var option = this.option;
+    return option.pieces && option.pieces.length > 0 ? 'pieces' : this.option.categories ? 'categories' : 'splitNumber';
+  };
+  /**
+   * @override
+   */
+
+
+  PiecewiseModel.prototype.setSelected = function (selected) {
+    this.option.selected = clone$3(selected);
+  };
+  /**
+   * @override
+   */
+
+
+  PiecewiseModel.prototype.getValueState = function (value) {
+    var index = VisualMapping$1.findPieceIndex(value, this._pieceList);
+    return index != null ? this.option.selected[this.getSelectedMapKey(this._pieceList[index])] ? 'inRange' : 'outOfRange' : 'outOfRange';
+  };
+  /**
+   * @public
+   * @param pieceIndex piece index in visualMapModel.getPieceList()
+   */
+
+
+  PiecewiseModel.prototype.findTargetDataIndices = function (pieceIndex) {
+    var result = [];
+    var pieceList = this._pieceList;
+    this.eachTargetSeries(function (seriesModel) {
+      var dataIndices = [];
+      var data = seriesModel.getData();
+      data.each(this.getDataDimensionIndex(data), function (value, dataIndex) {
+        // Should always base on model pieceList, because it is order sensitive.
+        var pIdx = VisualMapping$1.findPieceIndex(value, pieceList);
+        pIdx === pieceIndex && dataIndices.push(dataIndex);
+      }, this);
+      result.push({
+        seriesId: seriesModel.id,
+        dataIndex: dataIndices
+      });
+    }, this);
+    return result;
+  };
+  /**
+   * @private
+   * @param piece piece.value or piece.interval is required.
+   * @return  Can be Infinity or -Infinity
+   */
+
+
+  PiecewiseModel.prototype.getRepresentValue = function (piece) {
+    var representValue;
+
+    if (this.isCategory()) {
+      representValue = piece.value;
+    } else {
+      if (piece.value != null) {
+        representValue = piece.value;
+      } else {
+        var pieceInterval = piece.interval || [];
+        representValue = pieceInterval[0] === -Infinity && pieceInterval[1] === Infinity ? 0 : (pieceInterval[0] + pieceInterval[1]) / 2;
+      }
+    }
+
+    return representValue;
+  };
+
+  PiecewiseModel.prototype.getVisualMeta = function (getColorVisual) {
+    // Do not support category. (category axis is ordinal, numerical)
+    if (this.isCategory()) {
+      return;
+    }
+
+    var stops = [];
+    var outerColors = ['', ''];
+    var visualMapModel = this;
+
+    function setStop(interval, valueState) {
+      var representValue = visualMapModel.getRepresentValue({
+        interval: interval
+      }); // Not category
+
+      if (!valueState) {
+        valueState = visualMapModel.getValueState(representValue);
+      }
+
+      var color = getColorVisual(representValue, valueState);
+
+      if (interval[0] === -Infinity) {
+        outerColors[0] = color;
+      } else if (interval[1] === Infinity) {
+        outerColors[1] = color;
+      } else {
+        stops.push({
+          value: interval[0],
+          color: color
+        }, {
+          value: interval[1],
+          color: color
+        });
+      }
+    } // Suplement
+
+
+    var pieceList = this._pieceList.slice();
+
+    if (!pieceList.length) {
+      pieceList.push({
+        interval: [-Infinity, Infinity]
+      });
+    } else {
+      var edge = pieceList[0].interval[0];
+      edge !== -Infinity && pieceList.unshift({
+        interval: [-Infinity, edge]
+      });
+      edge = pieceList[pieceList.length - 1].interval[1];
+      edge !== Infinity && pieceList.push({
+        interval: [edge, Infinity]
+      });
+    }
+
+    var curr = -Infinity;
+    each$9(pieceList, function (piece) {
+      var interval = piece.interval;
+
+      if (interval) {
+        // Fulfill gap.
+        interval[0] > curr && setStop([curr, interval[0]], 'outOfRange');
+        setStop(interval.slice());
+        curr = interval[1];
+      }
+    }, this);
+    return {
+      stops: stops,
+      outerColors: outerColors
+    };
+  };
+
+  PiecewiseModel.type = 'visualMap.piecewise';
+  PiecewiseModel.defaultOption = inheritDefaultOption(VisualMapModel$1.defaultOption, {
+    selected: null,
+    minOpen: false,
+    maxOpen: false,
+    align: 'auto',
+    itemWidth: 20,
+    itemHeight: 14,
+    itemSymbol: 'roundRect',
+    pieces: null,
+    categories: null,
+    splitNumber: 5,
+    selectedMode: 'multiple',
+    itemGap: 10,
+    hoverLink: true // Enable hover highlight.
+
+  });
+  return PiecewiseModel;
+}(VisualMapModel$1);
+/**
+ * Key is this._mode
+ * @type {Object}
+ * @this {module:echarts/component/viusalMap/PiecewiseMode}
+ */
+
+var resetMethods = {
+  splitNumber: function (outPieceList) {
+    var thisOption = this.option;
+    var precision = Math.min(thisOption.precision, 20);
+    var dataExtent = this.getExtent();
+    var splitNumber = thisOption.splitNumber;
+    splitNumber = Math.max(parseInt(splitNumber, 10), 1);
+    thisOption.splitNumber = splitNumber;
+    var splitStep = (dataExtent[1] - dataExtent[0]) / splitNumber; // Precision auto-adaption
+
+    while (+splitStep.toFixed(precision) !== splitStep && precision < 5) {
+      precision++;
+    }
+
+    thisOption.precision = precision;
+    splitStep = +splitStep.toFixed(precision);
+
+    if (thisOption.minOpen) {
+      outPieceList.push({
+        interval: [-Infinity, dataExtent[0]],
+        close: [0, 0]
+      });
+    }
+
+    for (var index = 0, curr = dataExtent[0]; index < splitNumber; curr += splitStep, index++) {
+      var max = index === splitNumber - 1 ? dataExtent[1] : curr + splitStep;
+      outPieceList.push({
+        interval: [curr, max],
+        close: [1, 1]
+      });
+    }
+
+    if (thisOption.maxOpen) {
+      outPieceList.push({
+        interval: [dataExtent[1], Infinity],
+        close: [0, 0]
+      });
+    }
+
+    reformIntervals(outPieceList);
+    each$9(outPieceList, function (piece, index) {
+      piece.index = index;
+      piece.text = this.formatValueText(piece.interval);
+    }, this);
+  },
+  categories: function (outPieceList) {
+    var thisOption = this.option;
+    each$9(thisOption.categories, function (cate) {
+      // FIXME category模式也使用pieceList，但在visualMapping中不是使用pieceList。
+      // 是否改一致。
+      outPieceList.push({
+        text: this.formatValueText(cate, true),
+        value: cate
+      });
+    }, this); // See "Order Rule".
+
+    normalizeReverse(thisOption, outPieceList);
+  },
+  pieces: function (outPieceList) {
+    var thisOption = this.option;
+    each$9(thisOption.pieces, function (pieceListItem, index) {
+      if (!isObject$3(pieceListItem)) {
+        pieceListItem = {
+          value: pieceListItem
+        };
+      }
+
+      var item = {
+        text: '',
+        index: index
+      };
+
+      if (pieceListItem.label != null) {
+        item.text = pieceListItem.label;
+      }
+
+      if (pieceListItem.hasOwnProperty('value')) {
+        var value = item.value = pieceListItem.value;
+        item.interval = [value, value];
+        item.close = [1, 1];
+      } else {
+        // `min` `max` is legacy option.
+        // `lt` `gt` `lte` `gte` is recommanded.
+        var interval = item.interval = [];
+        var close_1 = item.close = [0, 0];
+        var closeList = [1, 0, 1];
+        var infinityList = [-Infinity, Infinity];
+        var useMinMax = [];
+
+        for (var lg = 0; lg < 2; lg++) {
+          var names = [['gte', 'gt', 'min'], ['lte', 'lt', 'max']][lg];
+
+          for (var i = 0; i < 3 && interval[lg] == null; i++) {
+            interval[lg] = pieceListItem[names[i]];
+            close_1[lg] = closeList[i];
+            useMinMax[lg] = i === 2;
+          }
+
+          interval[lg] == null && (interval[lg] = infinityList[lg]);
+        }
+
+        useMinMax[0] && interval[1] === Infinity && (close_1[0] = 0);
+        useMinMax[1] && interval[0] === -Infinity && (close_1[1] = 0);
+
+        if (process.env.NODE_ENV !== 'production') {
+          if (interval[0] > interval[1]) {
+            console.warn('Piece ' + index + 'is illegal: ' + interval + ' lower bound should not greater then uppper bound.');
+          }
+        }
+
+        if (interval[0] === interval[1] && close_1[0] && close_1[1]) {
+          // Consider: [{min: 5, max: 5, visual: {...}}, {min: 0, max: 5}],
+          // we use value to lift the priority when min === max
+          item.value = interval[0];
+        }
+      }
+
+      item.visual = VisualMapping$1.retrieveVisuals(pieceListItem);
+      outPieceList.push(item);
+    }, this); // See "Order Rule".
+
+    normalizeReverse(thisOption, outPieceList); // Only pieces
+
+    reformIntervals(outPieceList);
+    each$9(outPieceList, function (piece) {
+      var close = piece.close;
+      var edgeSymbols = [['<', '≤'][close[1]], ['>', '≥'][close[0]]];
+      piece.text = piece.text || this.formatValueText(piece.value != null ? piece.value : piece.interval, false, edgeSymbols);
+    }, this);
+  }
+};
+
+function normalizeReverse(thisOption, pieceList) {
+  var inverse = thisOption.inverse;
+
+  if (thisOption.orient === 'vertical' ? !inverse : inverse) {
+    pieceList.reverse();
+  }
+}
+
+var PiecewiseModel$1 = PiecewiseModel;
+
+var PiecewiseVisualMapView =
+/** @class */
+function (_super) {
+  __extends$1(PiecewiseVisualMapView, _super);
+
+  function PiecewiseVisualMapView() {
+    var _this = _super !== null && _super.apply(this, arguments) || this;
+
+    _this.type = PiecewiseVisualMapView.type;
+    return _this;
+  }
+
+  PiecewiseVisualMapView.prototype.doRender = function () {
+    var thisGroup = this.group;
+    thisGroup.removeAll();
+    var visualMapModel = this.visualMapModel;
+    var textGap = visualMapModel.get('textGap');
+    var textStyleModel = visualMapModel.textStyleModel;
+    var textFont = textStyleModel.getFont();
+    var textFill = textStyleModel.getTextColor();
+
+    var itemAlign = this._getItemAlign();
+
+    var itemSize = visualMapModel.itemSize;
+
+    var viewData = this._getViewData();
+
+    var endsText = viewData.endsText;
+    var showLabel = retrieve(visualMapModel.get('showLabel', true), !endsText);
+    endsText && this._renderEndsText(thisGroup, endsText[0], itemSize, showLabel, itemAlign);
+    each$9(viewData.viewPieceList, function (item) {
+      var piece = item.piece;
+      var itemGroup = new Group$3();
+      itemGroup.onclick = bind$1(this._onItemClick, this, piece);
+
+      this._enableHoverLink(itemGroup, item.indexInModelPieceList); // TODO Category
+
+
+      var representValue = visualMapModel.getRepresentValue(piece);
+
+      this._createItemSymbol(itemGroup, representValue, [0, 0, itemSize[0], itemSize[1]]);
+
+      if (showLabel) {
+        var visualState = this.visualMapModel.getValueState(representValue);
+        itemGroup.add(new ZRText$1({
+          style: {
+            x: itemAlign === 'right' ? -textGap : itemSize[0] + textGap,
+            y: itemSize[1] / 2,
+            text: piece.text,
+            verticalAlign: 'middle',
+            align: itemAlign,
+            font: textFont,
+            fill: textFill,
+            opacity: visualState === 'outOfRange' ? 0.5 : 1
+          }
+        }));
+      }
+
+      thisGroup.add(itemGroup);
+    }, this);
+    endsText && this._renderEndsText(thisGroup, endsText[1], itemSize, showLabel, itemAlign);
+    box(visualMapModel.get('orient'), thisGroup, visualMapModel.get('itemGap'));
+    this.renderBackground(thisGroup);
+    this.positionGroup(thisGroup);
+  };
+
+  PiecewiseVisualMapView.prototype._enableHoverLink = function (itemGroup, pieceIndex) {
+    var _this = this;
+
+    itemGroup.on('mouseover', function () {
+      return onHoverLink('highlight');
+    }).on('mouseout', function () {
+      return onHoverLink('downplay');
+    });
+
+    var onHoverLink = function (method) {
+      var visualMapModel = _this.visualMapModel; // TODO: TYPE More detailed action types
+
+      visualMapModel.option.hoverLink && _this.api.dispatchAction({
+        type: method,
+        batch: makeHighDownBatch(visualMapModel.findTargetDataIndices(pieceIndex), visualMapModel)
+      });
+    };
+  };
+
+  PiecewiseVisualMapView.prototype._getItemAlign = function () {
+    var visualMapModel = this.visualMapModel;
+    var modelOption = visualMapModel.option;
+
+    if (modelOption.orient === 'vertical') {
+      return getItemAlign(visualMapModel, this.api, visualMapModel.itemSize);
+    } else {
+      // horizontal, most case left unless specifying right.
+      var align = modelOption.align;
+
+      if (!align || align === 'auto') {
+        align = 'left';
+      }
+
+      return align;
+    }
+  };
+
+  PiecewiseVisualMapView.prototype._renderEndsText = function (group, text, itemSize, showLabel, itemAlign) {
+    if (!text) {
+      return;
+    }
+
+    var itemGroup = new Group$3();
+    var textStyleModel = this.visualMapModel.textStyleModel;
+    itemGroup.add(new ZRText$1({
+      style: createTextStyle$1(textStyleModel, {
+        x: showLabel ? itemAlign === 'right' ? itemSize[0] : 0 : itemSize[0] / 2,
+        y: itemSize[1] / 2,
+        verticalAlign: 'middle',
+        align: showLabel ? itemAlign : 'center',
+        text: text
+      })
+    }));
+    group.add(itemGroup);
+  };
+  /**
+   * @private
+   * @return {Object} {peiceList, endsText} The order is the same as screen pixel order.
+   */
+
+
+  PiecewiseVisualMapView.prototype._getViewData = function () {
+    var visualMapModel = this.visualMapModel;
+    var viewPieceList = map$1(visualMapModel.getPieceList(), function (piece, index) {
+      return {
+        piece: piece,
+        indexInModelPieceList: index
+      };
+    });
+    var endsText = visualMapModel.get('text'); // Consider orient and inverse.
+
+    var orient = visualMapModel.get('orient');
+    var inverse = visualMapModel.get('inverse'); // Order of model pieceList is always [low, ..., high]
+
+    if (orient === 'horizontal' ? inverse : !inverse) {
+      viewPieceList.reverse();
+    } // Origin order of endsText is [high, low]
+    else if (endsText) {
+        endsText = endsText.slice().reverse();
+      }
+
+    return {
+      viewPieceList: viewPieceList,
+      endsText: endsText
+    };
+  };
+
+  PiecewiseVisualMapView.prototype._createItemSymbol = function (group, representValue, shapeParam) {
+    group.add(createSymbol( // symbol will be string
+    this.getControllerVisual(representValue, 'symbol'), shapeParam[0], shapeParam[1], shapeParam[2], shapeParam[3], // color will be string
+    this.getControllerVisual(representValue, 'color')));
+  };
+
+  PiecewiseVisualMapView.prototype._onItemClick = function (piece) {
+    var visualMapModel = this.visualMapModel;
+    var option = visualMapModel.option;
+    var selectedMode = option.selectedMode;
+
+    if (!selectedMode) {
+      return;
+    }
+
+    var selected = clone$3(option.selected);
+    var newKey = visualMapModel.getSelectedMapKey(piece);
+
+    if (selectedMode === 'single' || selectedMode === true) {
+      selected[newKey] = true;
+      each$9(selected, function (o, key) {
+        selected[key] = key === newKey;
+      });
+    } else {
+      selected[newKey] = !selected[newKey];
+    }
+
+    this.api.dispatchAction({
+      type: 'selectDataRange',
+      from: this.uid,
+      visualMapId: this.visualMapModel.id,
+      selected: selected
+    });
+  };
+
+  PiecewiseVisualMapView.type = 'visualMap.piecewise';
+  return PiecewiseVisualMapView;
+}(VisualMapView$1);
+
+var PiecewiseView = PiecewiseVisualMapView;
+
+function install$3(registers) {
+  registers.registerComponentModel(PiecewiseModel$1);
+  registers.registerComponentView(PiecewiseView);
+  installCommon(registers);
+}
+
 function install$2(registers) {
   use(install$4);
-  use(install$3);
+  use(install$3); // Do not install './dataZoomSelect',
+  // since it only work for toolbox dataZoom.
 }
 
 var DatasetModel =
@@ -93812,7 +101955,7 @@ var Layer = (function (_super) {
         if (typeof id === 'string') {
             dom = createDom(id, painter, dpr);
         }
-        else if (isObject$2(id)) {
+        else if (isObject$3(id)) {
             dom = id;
             id = dom.id;
         }
@@ -94043,7 +102186,7 @@ var Layer = (function (_super) {
             doClear(0, 0, width, height);
         }
         else if (repaintRects.length) {
-            each$4(repaintRects, function (rect) {
+            each$9(repaintRects, function (rect) {
                 doClear(rect.x * dpr, rect.y * dpr, rect.width * dpr, rect.height * dpr);
             });
         }
@@ -94343,7 +102486,7 @@ var CanvasPainter = (function () {
             _loop_1(k);
         }
         if (env$1.wxa) {
-            each$4(this._layers, function (layer) {
+            each$9(this._layers, function (layer) {
                 if (layer && layer.ctx && layer.ctx.draw) {
                     layer.ctx.draw();
                 }
@@ -94557,7 +102700,7 @@ var CanvasPainter = (function () {
     };
     CanvasPainter.prototype.setBackgroundColor = function (backgroundColor) {
         this._backgroundColor = backgroundColor;
-        each$4(this._layers, function (layer) {
+        each$9(this._layers, function (layer) {
             layer.setUnpainted();
         });
     };
@@ -94689,11 +102832,11 @@ function install(registers) {
   registers.registerPainter('canvas', CanvasPainter$1);
 }
 
-var css$5 = ".BaseVerticalBarChart_module_root__db36f9d1 {\n  width: \"100%\";\n}";
+var css$6 = ".BaseVerticalBarChart_module_root__db36f9d1 {\n  width: \"100%\";\n}";
 var modules_8757388c = {"root":"BaseVerticalBarChart_module_root__db36f9d1"};
-n(css$5,{});
+n(css$6,{});
 
-use([install$5, install$6, install$7, install$1, install$2, install$b, install]);
+use([install$8, install$9, install$a, install$1, install$5, install$g, install]);
 var BaseVerticalBarChart = function BaseVerticalBarChart(props) {
   var _seriesOption$length, _seriesData$metaData$, _seriesData$metaData, _seriesData$metaData$2, _seriesData$chartData, _seriesData$chartData9;
   var title = props.title,
@@ -94887,11 +103030,11 @@ BaseVerticalBarChart.defaultProps = {
   className: ''
 };
 
-var css$4 = ".BaseHorizontalBarChart_module_root__75f8867a {\n  width: \"100%\";\n}";
+var css$5 = ".BaseHorizontalBarChart_module_root__75f8867a {\n  width: \"100%\";\n}";
 var modules_8904c6a0 = {"root":"BaseHorizontalBarChart_module_root__75f8867a"};
-n(css$4,{});
+n(css$5,{});
 
-use([install$5, install$6, install$7, install$1, install$b, install]);
+use([install$8, install$9, install$a, install$1, install$g, install]);
 var BaseHorizontalBarChart = function BaseHorizontalBarChart(props) {
   var _seriesOption$length, _seriesData$metaData$, _seriesData$metaData, _seriesData$metaData$2, _seriesData$chartData, _seriesData$chartData9;
   var title = props.title,
@@ -95060,11 +103203,11 @@ BaseHorizontalBarChart.defaultProps = {
   className: ''
 };
 
-var css$3 = ".BasePieChart_module_root__45f70e28 {\n  width: \"100%\";\n}";
+var css$4 = ".BasePieChart_module_root__45f70e28 {\n  width: \"100%\";\n}";
 var modules_c20882aa = {"root":"BasePieChart_module_root__45f70e28"};
-n(css$3,{});
+n(css$4,{});
 
-use([install$5, install$6, install$7, install$1, install$a, install, install$2]);
+use([install$8, install$9, install$a, install$1, install$f, install, install$5]);
 var BasePieChart = function BasePieChart(props) {
   var _seriesData$chartData;
   var title = props.title,
@@ -95074,6 +103217,7 @@ var BasePieChart = function BasePieChart(props) {
     startAngle = props.startAngle,
     semiDoughnut = props.semiDoughnut,
     radius = props.radius,
+    center = props.center,
     cursor = props.cursor,
     showLabelLine = props.showLabelLine,
     itemStyle = props.itemStyle,
@@ -95084,6 +103228,7 @@ var BasePieChart = function BasePieChart(props) {
   var seriesOptionObject = {
     type: 'pie',
     radius: radius,
+    center: center,
     legendHoverLink: false,
     avoidLabelOverlap: false,
     cursor: cursor,
@@ -95166,6 +103311,7 @@ BasePieChart.propTypes = {
   semiDoughnut: propTypes$1.exports.bool,
   cursor: propTypes$1.exports.string,
   radius: propTypes$1.exports.arrayOf(propTypes$1.exports.string),
+  center: propTypes$1.exports.arrayOf(propTypes$1.exports.string),
   showLabelLine: propTypes$1.exports.bool,
   itemStyle: propTypes$1.exports.object,
   legend: propTypes$1.exports.object,
@@ -95189,6 +103335,7 @@ BasePieChart.defaultProps = {
   semiDoughnut: true,
   cursor: 'default',
   radius: ['30%', '60%'],
+  center: ['50%', '50%'],
   showLabelLine: false,
   itemStyle: {
     borderWidth: 5,
@@ -95203,6 +103350,82 @@ BasePieChart.defaultProps = {
   seriesOption: [{
     stackIndex: 1
   }],
+  style: {
+    width: '100%',
+    height: '100%'
+  },
+  className: ''
+};
+
+var css$3 = ".BaseRegionChart_module_root__617af265 {\n  width: \"100%\";\n}";
+var modules_459dfe63 = {"root":"BaseRegionChart_module_root__617af265"};
+n(css$3,{});
+
+use([install$8, install$9, install$a, install$1, install$c, install$2, install$d, install$5, install]);
+var BaseRegionChart = function BaseRegionChart(props) {
+  var geoJson = props.geoJson,
+    specialAreas = props.specialAreas,
+    regionData = props.regionData,
+    visualMap = props.visualMap,
+    seriesOption = props.seriesOption,
+    cursor = props.cursor,
+    onEvents = props.onEvents,
+    style = props.style,
+    className = props.className;
+  registerMap$1('states', geoJson, specialAreas);
+  return /*#__PURE__*/jsxRuntime.jsx(_default, {
+    option: {
+      cursor: cursor,
+      visualMap: _objectSpread2({}, visualMap),
+      series: [_objectSpread2(_objectSpread2({}, seriesOption), {}, {
+        data: regionData
+      })]
+    },
+    onEvents: onEvents,
+    echarts: echarts,
+    notMerge: true,
+    lazyUpdate: true,
+    className: classes(className, modules_459dfe63.root),
+    style: style
+  });
+};
+BaseRegionChart.propTypes = {
+  geoJson: propTypes$1.exports.shape(),
+  specialAreas: propTypes$1.exports.shape(),
+  regionData: propTypes$1.exports.shape({
+    chartData: propTypes$1.exports.object,
+    metaData: propTypes$1.exports.object
+  }),
+  visualMap: propTypes$1.exports.shape(),
+  seriesOption: propTypes$1.exports.shape(),
+  onEvents: propTypes$1.exports.func,
+  style: propTypes$1.exports.objectOf(propTypes$1.exports.shape),
+  className: propTypes$1.exports.string
+};
+BaseRegionChart.defaultProps = {
+  geoJson: {},
+  specialAreas: {},
+  regionData: {},
+  visualMap: {
+    show: false,
+    min: 1,
+    max: 10,
+    inRange: {
+      color: ['#313695', '#74add1', '#abd9e9', '#e0f3f8', '#ffffbf', '#fee090', '#fdae61', '#f46d43', '#d73027', '#a50026']
+    }
+  },
+  seriesOption: {
+    name: 'USA',
+    type: 'map',
+    roam: false,
+    map: 'states',
+    scaleLimit: {
+      min: 1,
+      max: 10
+    },
+    aspectScale: '1:1'
+  },
+  onEvents: function onEvents() {},
   style: {
     width: '100%',
     height: '100%'
@@ -95428,6 +103651,7 @@ exports.BaseCell = BaseCell;
 exports.BaseHorizontalBarChart = BaseHorizontalBarChart;
 exports.BaseModal = BaseModal;
 exports.BasePieChart = BasePieChart;
+exports.BaseRegionChart = BaseRegionChart;
 exports.BaseSidePanel = BaseSidePanel;
 exports.BaseTable = BaseTable;
 exports.BaseVerticalBarChart = BaseVerticalBarChart;
@@ -95443,11 +103667,13 @@ exports.CheckboxIcon = CheckboxIcon;
 exports.ChevronIcon = Chevron;
 exports.Chip = Chip;
 exports.CloseIcon = Close;
+exports.CloudIcons = Clouds;
 exports.CodeSnippet = CodeSnippet;
 exports.ColumnsIcon = Columns$1;
 exports.CopyIcon = Copy;
 exports.CrossIcon = Cross$1;
 exports.DAYS = DAYS;
+exports.DatabaseIcons = Databases;
 exports.DatePicker = DatePicker;
 exports.DeleteIcon = Delete;
 exports.DialogBox = DialogBox;
@@ -95495,7 +103721,7 @@ exports.TimePicker = TimePicker;
 exports.Toggle = Toggle;
 exports.Tooltip = Tooltip;
 exports.TrashIcon = Trash;
-exports.ViewIcon = View;
+exports.ViewIcon = View$2;
 exports.classes = classes;
 exports.cloneDeep = cloneDeep;
 exports.defaultProps = defaultProps;
