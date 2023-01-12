@@ -103445,6 +103445,7 @@ var modules_a2cdc77c = {"root":"Toggle_module_root__c5dad2bc","theme-dark":"Togg
 n(css$1,{});
 
 var Toggle = /*#__PURE__*/forwardRef(function Toggle(props, ref) {
+  var _options$;
   // eslint-disable-next-line object-curly-newline
   var className = props.className,
     theme = props.theme,
@@ -103456,7 +103457,7 @@ var Toggle = /*#__PURE__*/forwardRef(function Toggle(props, ref) {
     color = props.color;
 
   // for uncontrolled input
-  var _useState = useState(defaultValue),
+  var _useState = useState(defaultValue !== null && defaultValue !== void 0 ? defaultValue : options === null || options === void 0 ? void 0 : (_options$ = options[0]) === null || _options$ === void 0 ? void 0 : _options$.value),
     _useState2 = _slicedToArray(_useState, 2),
     uncontrolledValue = _useState2[0],
     setUncontrolledValue = _useState2[1];
@@ -103576,16 +103577,13 @@ Toggle.defaultProps = {
 };
 
 var generateOptions = function generateOptions(optionData) {
-  var _optionData$id, _optionData$toggleOpt, _optionData$selectedT, _optionData$setSelect, _optionData$placehold, _optionData$value, _optionData$onChange, _optionData$selectOpt, _optionData$title, _optionData$onClick;
+  var _optionData$id, _optionData$placehold, _optionData$value, _optionData$onChange, _optionData$selectOpt, _optionData$title, _optionData$onClick;
   switch ((_optionData$id = optionData === null || optionData === void 0 ? void 0 : optionData.id) !== null && _optionData$id !== void 0 ? _optionData$id : '') {
     case 'toggle':
-      return /*#__PURE__*/jsx(Toggle, {
+      return /*#__PURE__*/jsx(Toggle, _objectSpread2({
         className: modules_6a0e74b6['toggle-body'],
-        theme: "dark",
-        options: (_optionData$toggleOpt = optionData === null || optionData === void 0 ? void 0 : optionData.toggleOption) !== null && _optionData$toggleOpt !== void 0 ? _optionData$toggleOpt : [],
-        selectedToggle: (_optionData$selectedT = optionData === null || optionData === void 0 ? void 0 : optionData.selectedToggle) !== null && _optionData$selectedT !== void 0 ? _optionData$selectedT : '',
-        setSelectedToggle: (_optionData$setSelect = optionData === null || optionData === void 0 ? void 0 : optionData.setSelectedToggle) !== null && _optionData$setSelect !== void 0 ? _optionData$setSelect : ''
-      });
+        theme: "dark"
+      }, optionData));
     case 'dropdown':
       return /*#__PURE__*/jsx(Dropdown, {
         placeholder: (_optionData$placehold = optionData === null || optionData === void 0 ? void 0 : optionData.placeholder) !== null && _optionData$placehold !== void 0 ? _optionData$placehold : '',
