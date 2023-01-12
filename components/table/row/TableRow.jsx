@@ -57,8 +57,6 @@ const TableRow = forwardRef(function BaseTable(props, ref) {
 		);
 	});
 
-	console.log(type);
-
 	return (
 		<>
 			<tr
