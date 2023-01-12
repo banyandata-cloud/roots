@@ -42511,7 +42511,7 @@ var Dropdown = /*#__PURE__*/forwardRef(function Dropdown(props, inputRef) {
         var _inputRef$current$val, _inputRef$current$val2, _inputRef$current$val3, _inputValue$;
         var inputValue = (_inputRef$current$val = (_inputRef$current$val2 = inputRef.current.value) === null || _inputRef$current$val2 === void 0 ? void 0 : (_inputRef$current$val3 = _inputRef$current$val2.split) === null || _inputRef$current$val3 === void 0 ? void 0 : _inputRef$current$val3.call(_inputRef$current$val2, ', ')) !== null && _inputRef$current$val !== void 0 ? _inputRef$current$val : [];
         if (multi) {
-          return inputRef;
+          return inputValue;
         }
         return (_inputValue$ = inputValue === null || inputValue === void 0 ? void 0 : inputValue[0]) !== null && _inputValue$ !== void 0 ? _inputValue$ : null;
       }
@@ -44562,8 +44562,8 @@ TableCell.defaultProps = _objectSpread2(_objectSpread2({}, BaseCell.defaultProps
   onSort: function onSort() {}
 });
 
-var css$m = ".TableRow_module_root__a0ba90a7 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.TableRow_module_root__a0ba90a7.TableRow_module_headerRow__a0ba90a7 {\n  background: var(--grey6);\n}\n.TableRow_module_root__a0ba90a7.TableRow_module_headerRow__a0ba90a7.TableRow_module_expandable__a0ba90a7 > [data-elem=base-cell]:first-child {\n  padding-left: 4.5rem;\n}\n.TableRow_module_root__a0ba90a7.TableRow_module_bodyRow__a0ba90a7 {\n  background: var(--white);\n}\n.TableRow_module_root__a0ba90a7.TableRow_module_bodyRow__a0ba90a7:hover > [data-elem=base-cell] {\n  background: var(--info-bg);\n}\n.TableRow_module_root__a0ba90a7.TableRow_module_bodyRow__a0ba90a7[data-active=true] > [data-elem=base-cell] {\n  background: var(--background);\n}\n.TableRow_module_root__a0ba90a7 > [data-elem=base-cell]:first-child {\n  padding-left: 1rem;\n}\n.TableRow_module_root__a0ba90a7 > [data-elem=base-cell]:last-child {\n  padding-right: 1rem;\n}\n.TableRow_module_root__a0ba90a7 > [data-elem=base-cell].TableRow_module_expandableCell__a0ba90a7 {\n  padding-left: 0.9rem;\n  padding-right: 0.1rem;\n  overflow: visible;\n}\n.TableRow_module_root__a0ba90a7 > [data-elem=base-cell].TableRow_module_expandableCell__a0ba90a7 > [data-elem=component2] {\n  overflow: visible;\n}\n.TableRow_module_root__a0ba90a7 > [data-elem=base-cell].TableRow_module_expandableCell__a0ba90a7 > [data-elem=component2] > [data-elem=text] {\n  overflow: visible;\n}\n.TableRow_module_root__a0ba90a7 .TableRow_module_button__a0ba90a7 .TableRow_module_icon__a0ba90a7 {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.TableRow_module_root__a0ba90a7 .TableRow_module_expanded__a0ba90a7 .TableRow_module_button__a0ba90a7 .TableRow_module_icon__a0ba90a7 {\n  transform: rotate(180deg);\n}";
-var modules_f6618a87 = {"root":"TableRow_module_root__a0ba90a7","header-row":"TableRow_module_headerRow__a0ba90a7","expandable":"TableRow_module_expandable__a0ba90a7","body-row":"TableRow_module_bodyRow__a0ba90a7","expandable-cell":"TableRow_module_expandableCell__a0ba90a7","button":"TableRow_module_button__a0ba90a7","icon":"TableRow_module_icon__a0ba90a7","expanded":"TableRow_module_expanded__a0ba90a7"};
+var css$m = ".TableRow_module_root__b606b560 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.TableRow_module_root__b606b560.TableRow_module_headerRow__b606b560 {\n  background: var(--grey6);\n}\n.TableRow_module_root__b606b560.TableRow_module_headerRow__b606b560 > [data-elem=base-cell].TableRow_module_expandableCell__b606b560 {\n  background: transparent;\n}\n.TableRow_module_root__b606b560.TableRow_module_headerRow__b606b560 > [data-elem=base-cell].TableRow_module_expandableCell__b606b560 > [data-elem=component2] {\n  width: 3rem;\n  visibility: hidden;\n}\n.TableRow_module_root__b606b560.TableRow_module_bodyRow__b606b560 {\n  background: var(--white);\n}\n.TableRow_module_root__b606b560.TableRow_module_bodyRow__b606b560:hover > [data-elem=base-cell] {\n  background: var(--info-bg);\n}\n.TableRow_module_root__b606b560.TableRow_module_bodyRow__b606b560[data-active=true] > [data-elem=base-cell] {\n  background: var(--background);\n}\n.TableRow_module_root__b606b560 > [data-elem=base-cell]:first-child {\n  padding-left: 1rem;\n}\n.TableRow_module_root__b606b560 > [data-elem=base-cell]:last-child {\n  padding-right: 1rem;\n}\n.TableRow_module_root__b606b560 > [data-elem=base-cell].TableRow_module_expandableCell__b606b560 {\n  padding-left: 0.9rem;\n  padding-right: 0.1rem;\n  overflow: visible;\n}\n.TableRow_module_root__b606b560 > [data-elem=base-cell].TableRow_module_expandableCell__b606b560 > [data-elem=component2] {\n  overflow: visible;\n}\n.TableRow_module_root__b606b560 > [data-elem=base-cell].TableRow_module_expandableCell__b606b560 > [data-elem=component2] > [data-elem=text] {\n  overflow: visible;\n}\n.TableRow_module_root__b606b560 button.TableRow_module_button__b606b560[data-elem=base-cell] .TableRow_module_icon__b606b560 {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.TableRow_module_root__b606b560 button.TableRow_module_button__b606b560[data-elem=base-cell]:disabled {\n  cursor: default;\n}\n.TableRow_module_root__b606b560 button.TableRow_module_button__b606b560[data-elem=base-cell]:disabled .TableRow_module_icon__b606b560 {\n  visibility: hidden;\n}\n.TableRow_module_root__b606b560 .TableRow_module_expanded__b606b560 .TableRow_module_button__b606b560 .TableRow_module_icon__b606b560 {\n  transform: rotate(180deg);\n}";
+var modules_f6618a87 = {"root":"TableRow_module_root__b606b560","header-row":"TableRow_module_headerRow__b606b560","expandable-cell":"TableRow_module_expandableCell__b606b560","body-row":"TableRow_module_bodyRow__b606b560","button":"TableRow_module_button__b606b560","icon":"TableRow_module_icon__b606b560","expanded":"TableRow_module_expanded__b606b560"};
 n(css$m,{});
 
 var TableRow = /*#__PURE__*/forwardRef(function BaseTable(props, ref) {
@@ -44617,13 +44617,21 @@ var TableRow = /*#__PURE__*/forwardRef(function BaseTable(props, ref) {
       tabIndex: -1,
       "data-elem": "table-row",
       className: classes(className, modules_f6618a87.root, modules_f6618a87["".concat(type, "-row")], Expandable ? modules_f6618a87.expandable : ''),
-      children: [Expandable && type === 'body' && /*#__PURE__*/jsx(TableCell, {
+      children: [Expandable && type === 'header' && /*#__PURE__*/jsx(TableCell, {
+        className: classes(modules_f6618a87['expandable-cell'], expanded ? modules_f6618a87.expanded : ''),
+        size: "auto",
+        cellContent: null
+      }), Expandable && type === 'body' && /*#__PURE__*/jsx(TableCell, {
         className: classes(modules_f6618a87['expandable-cell'], expanded ? modules_f6618a87.expanded : ''),
         size: "auto",
         cellContent: /*#__PURE__*/jsx(Button, {
           className: modules_f6618a87.button,
           size: "auto",
           variant: "text",
+          disabled: !Expandable({
+            datum: datum,
+            index: _index
+          }),
           onClick: function onClick() {
             setExpanded(function (prev) {
               return !prev;
@@ -103417,80 +103425,139 @@ var css$2 = ".BaseWidget_module_root__2fcc4af8 {\n  display: flex;\n  flex-direc
 var modules_6a0e74b6 = {"root":"BaseWidget_module_root__2fcc4af8","header":"BaseWidget_module_header__2fcc4af8","header-title":"BaseWidget_module_headerTitle__2fcc4af8","no-options":"BaseWidget_module_noOptions__2fcc4af8","title":"BaseWidget_module_title__2fcc4af8","value":"BaseWidget_module_value__2fcc4af8","header-options":"BaseWidget_module_headerOptions__2fcc4af8","toggle-body":"BaseWidget_module_toggleBody__2fcc4af8","dropdown-header":"BaseWidget_module_dropdownHeader__2fcc4af8","expand-button":"BaseWidget_module_expandButton__2fcc4af8","expand-icon":"BaseWidget_module_expandIcon__2fcc4af8","children":"BaseWidget_module_children__2fcc4af8","dropdown-popper":"BaseWidget_module_dropdownPopper__2fcc4af8","dropdown-item":"BaseWidget_module_dropdownItem__2fcc4af8"};
 n(css$2,{});
 
-var css$1 = "div.Toggle_module_root__71d12fea {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  overflow: auto;\n  padding: 0.25rem;\n  background: var(--grey8);\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  border-radius: 0.4rem 0.4rem;\n  box-shadow: inset 0px 1px 2px rgba(97, 97, 97, 0.2), inset 0px 2px 4px rgba(97, 97, 97, 0.2);\n}\ndiv.Toggle_module_root__71d12fea.Toggle_module_themeDark__71d12fea {\n  background: var(--grey);\n}\ndiv.Toggle_module_root__71d12fea.Toggle_module_themeDark__71d12fea [data-elem=base-cell].Toggle_module_toggleButton__71d12fea {\n  color: var(--grey4);\n}\ndiv.Toggle_module_root__71d12fea.Toggle_module_themeDark__71d12fea [data-elem=base-cell].Toggle_module_toggleButton__71d12fea.Toggle_module_active__71d12fea {\n  background: var(--dark-grey);\n  color: var(--white);\n}\ndiv.Toggle_module_root__71d12fea.Toggle_module_themeLight__71d12fea {\n  color: var(--dark-grey);\n}\ndiv.Toggle_module_root__71d12fea [data-elem=base-cell].Toggle_module_toggleButton__71d12fea {\n  color: var(--grey);\n  padding: 0.2rem;\n  height: 2rem;\n  background: transparent;\n}\ndiv.Toggle_module_root__71d12fea [data-elem=base-cell].Toggle_module_toggleButton__71d12fea.Toggle_module_active__71d12fea {\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n  background: var(--white);\n  border-radius: 0.25rem;\n  color: var(--dark-grey);\n}";
-var modules_a2cdc77c = {"root":"Toggle_module_root__71d12fea","theme-dark":"Toggle_module_themeDark__71d12fea","toggle-button":"Toggle_module_toggleButton__71d12fea","active":"Toggle_module_active__71d12fea","theme-light":"Toggle_module_themeLight__71d12fea"};
+var css$1 = "div.Toggle_module_root__c5dad2bc {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  overflow: auto;\n  gap: 0.25rem;\n  padding: 0.25rem;\n  background: var(--grey8);\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  border-radius: 0.4rem 0.4rem;\n  box-shadow: inset 0px 1px 2px rgba(97, 97, 97, 0.2), inset 0px 2px 4px rgba(97, 97, 97, 0.2);\n}\ndiv.Toggle_module_root__c5dad2bc.Toggle_module_themeDark__c5dad2bc {\n  background: var(--grey);\n}\ndiv.Toggle_module_root__c5dad2bc.Toggle_module_themeDark__c5dad2bc [data-elem=base-cell].Toggle_module_toggleButton__c5dad2bc {\n  color: var(--grey4);\n}\ndiv.Toggle_module_root__c5dad2bc.Toggle_module_themeDark__c5dad2bc [data-elem=base-cell].Toggle_module_toggleButton__c5dad2bc.Toggle_module_active__c5dad2bc {\n  background: var(--dark-grey);\n  color: var(--white);\n}\ndiv.Toggle_module_root__c5dad2bc.Toggle_module_themeLight__c5dad2bc {\n  color: var(--dark-grey);\n}\ndiv.Toggle_module_root__c5dad2bc [data-elem=base-cell].Toggle_module_toggleButton__c5dad2bc {\n  color: var(--grey);\n  padding: 0.344rem 0.75rem;\n  height: 2rem;\n  background: transparent;\n}\ndiv.Toggle_module_root__c5dad2bc [data-elem=base-cell].Toggle_module_toggleButton__c5dad2bc.Toggle_module_active__c5dad2bc {\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n  background: var(--white);\n  border-radius: 0.25rem;\n  color: var(--dark-grey);\n}\ndiv.Toggle_module_root__c5dad2bc .Toggle_module_input__c5dad2bc {\n  display: none;\n}";
+var modules_a2cdc77c = {"root":"Toggle_module_root__c5dad2bc","theme-dark":"Toggle_module_themeDark__c5dad2bc","toggle-button":"Toggle_module_toggleButton__c5dad2bc","active":"Toggle_module_active__c5dad2bc","theme-light":"Toggle_module_themeLight__c5dad2bc","input":"Toggle_module_input__c5dad2bc"};
 n(css$1,{});
 
-/* eslint-disable no-unused-vars */
-var Toggle = function Toggle(props) {
+var Toggle = /*#__PURE__*/forwardRef(function Toggle(props, ref) {
+  // eslint-disable-next-line object-curly-newline
   var className = props.className,
     theme = props.theme,
     options = props.options,
-    selectedToggle = props.selectedToggle,
-    setSelectedToggle = props.setSelectedToggle,
-    onChange = props.onChange;
-  var onButtonClick = function onButtonClick(value) {
-    setSelectedToggle(value);
-    onChange(value);
+    defaultValue = props.defaultValue,
+    value = props.value,
+    onChange = props.onChange,
+    multi = props.multi,
+    color = props.color;
+
+  // for uncontrolled input
+  var _useState = useState(defaultValue),
+    _useState2 = _slicedToArray(_useState, 2),
+    uncontrolledValue = _useState2[0],
+    setUncontrolledValue = _useState2[1];
+  var _useRef = useRef(value !== undefined),
+    isControlled = _useRef.current;
+
+  // eslint-disable-next-line no-nested-ternary
+  var inputValue = isControlled ? value !== null && value !== void 0 ? value : '' : uncontrolledValue;
+  var allSelected = multi ? options.length === inputValue.length : false;
+  var onSelectAll = function onSelectAll() {
+    var allValues = options.map(function (option) {
+      return option.value;
+    });
+    if (isControlled) {
+      onChange(allValues);
+    } else {
+      setUncontrolledValue(allValues);
+    }
   };
-  return /*#__PURE__*/jsx("div", {
+  var onButtonClick = function onButtonClick(newValue, selected) {
+    // if multi select
+    if (multi) {
+      // if it was already selected, remove it
+      if (selected) {
+        var newInputValue = inputValue.filter(function (val) {
+          return val !== newValue;
+        });
+
+        // if total selected after removal is greater than 0, set that
+        // else select all
+        if (newInputValue.length > 0) {
+          if (isControlled) {
+            onChange(newInputValue);
+          } else {
+            setUncontrolledValue(newInputValue);
+          }
+        } else {
+          onSelectAll();
+        }
+      } else {
+        // if all are selected, select only the one being clicked
+        if (allSelected) {
+          if (isControlled) {
+            onChange([newValue]);
+          } else {
+            setUncontrolledValue([newValue]);
+          }
+        } else {
+          if (isControlled) {
+            onChange([].concat(_toConsumableArray$1(inputValue), [newValue]));
+          } else {
+            setUncontrolledValue([].concat(_toConsumableArray$1(inputValue), [newValue]));
+          }
+        }
+      }
+    } else {
+      // if single select, just select that item
+      if (isControlled) {
+        onChange(newValue);
+      } else {
+        setUncontrolledValue(newValue);
+      }
+    }
+  };
+  return /*#__PURE__*/jsxs("div", {
     className: classes(className, modules_a2cdc77c.root, modules_a2cdc77c["theme-".concat(theme)]),
-    children: options.map(function (item) {
+    children: [multi && /*#__PURE__*/jsx(Button, {
+      size: "auto",
+      "data-elem": "toggle",
+      className: classes(modules_a2cdc77c['toggle-button'], allSelected ? modules_a2cdc77c.active : ''),
+      onClick: onSelectAll,
+      title: "All",
+      color: allSelected ? color : 'default',
+      children: value
+    }), options.map(function (item) {
       var title = item.title,
-        value = item.value,
+        itemValue = item.value,
         leftComponent = item.leftComponent,
-        rightComponent = item.rightComponent,
-        color = item.color;
-      var isActive = selectedToggle === value;
+        rightComponent = item.rightComponent;
+      var isActive = inputValue.indexOf(itemValue) !== -1 && !allSelected;
       return /*#__PURE__*/jsx(Button, {
+        size: "auto",
         "data-elem": "toggle",
-        className: classes(modules_a2cdc77c['toggle-button'], selectedToggle === value ? modules_a2cdc77c.active : ''),
+        className: classes(modules_a2cdc77c['toggle-button'], isActive ? modules_a2cdc77c.active : ''),
         onClick: function onClick() {
-          return onButtonClick(value);
+          onButtonClick(itemValue, isActive);
         },
-        title: value,
-        value: value,
+        title: title,
         color: isActive ? color : 'default',
         leftComponent: leftComponent,
         rightComponent: rightComponent,
         children: value
-      }, title);
-    })
+      }, itemValue);
+    }), /*#__PURE__*/jsx("input", {
+      type: "text",
+      ref: ref,
+      className: modules_a2cdc77c.input,
+      value: inputValue
+    })]
   });
-};
+});
 Toggle.propTypes = {
   className: propTypes$1.exports.string,
   theme: propTypes$1.exports.oneOf(['dark', 'light']),
   options: propTypes$1.exports.arrayOf(propTypes$1.exports.string),
-  selectedToggle: propTypes$1.exports.string,
-  setSelectedToggle: propTypes$1.exports.string
+  defaultValue: propTypes$1.exports.string,
+  value: propTypes$1.exports.string,
+  multi: propTypes$1.exports.bool
 };
 Toggle.defaultProps = {
   className: '',
   theme: 'light',
-  options: [{
-    title: 'First',
-    value: 'First',
-    rightCompoenent: '',
-    leftCompoenent: ''
-  }, {
-    title: 'Second',
-    value: 'Second',
-    rightCompoenent: '',
-    leftCompoenent: ''
-  }, {
-    title: 'Third',
-    value: 'Third',
-    rightCompoenent: '',
-    leftCompoenent: ''
-  }, {
-    title: 'Fourth',
-    value: 'Fourth',
-    rightCompoenent: '',
-    leftCompoenent: ''
-  }],
-  selectedToggle: 'First',
-  setSelectedToggle: 'None'
+  options: [],
+  defaultValue: null,
+  value: undefined,
+  multi: false
 };
 
 var generateOptions = function generateOptions(optionData) {
