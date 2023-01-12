@@ -102846,7 +102846,7 @@ n(css$6,{});
 
 use([install$8, install$9, install$a, install$1, install$5, install$g, install]);
 var BaseVerticalBarChart = function BaseVerticalBarChart(props) {
-  var _seriesOption$length, _seriesData$metaData$, _seriesData$metaData, _seriesData$metaData$2, _seriesData$chartData, _seriesData$chartData9;
+  var _seriesData$metaData$, _seriesData$metaData, _seriesData$metaData$2, _seriesData$chartData, _seriesData$chartData9;
   var title = props.title,
     gridContainLabel = props.gridContainLabel,
     gridOptions = props.gridOptions,
@@ -102865,15 +102865,15 @@ var BaseVerticalBarChart = function BaseVerticalBarChart(props) {
     legend = props.legend,
     tooltip = props.tooltip,
     seriesName = props.seriesName,
-    stacked = props.stacked,
+    stackCount = props.stackCount,
     seriesOption = props.seriesOption,
     style = props.style,
     className = props.className;
   var seriesOptionObject = {
     type: 'bar',
-    barWidth: stacked ? barWidth : barWidth / ((_seriesOption$length = seriesOption === null || seriesOption === void 0 ? void 0 : seriesOption.length) !== null && _seriesOption$length !== void 0 ? _seriesOption$length : 1),
+    barWidth: stackCount ? barWidth : barWidth / stackCount,
     cursor: cursor,
-    stack: stacked,
+    stack: stackCount,
     groupPadding: 3,
     showBackground: true,
     backgroundStyle: {
@@ -102988,7 +102988,7 @@ BaseVerticalBarChart.propTypes = {
   legend: propTypes$1.exports.object,
   seriesName: propTypes$1.exports.func,
   cursor: propTypes$1.exports.string,
-  stacked: propTypes$1.exports.bool,
+  stackCount: propTypes$1.exports.number,
   seriesOption: propTypes$1.exports.arrayOf(propTypes$1.exports.shape),
   style: propTypes$1.exports.objectOf(propTypes$1.exports.shape),
   className: propTypes$1.exports.string
@@ -103027,7 +103027,7 @@ BaseVerticalBarChart.defaultProps = {
     show: true
   },
   cursor: 'default',
-  stacked: true,
+  stackCount: 1,
   seriesOption: [{
     stackIndex: 1
   }],
@@ -103374,16 +103374,16 @@ var BaseRegionChart = function BaseRegionChart(props) {
   var geoJson = props.geoJson,
     specialAreas = props.specialAreas,
     regionData = props.regionData,
+    tooltip = props.tooltip,
     visualMap = props.visualMap,
     seriesOption = props.seriesOption,
-    cursor = props.cursor,
     onEvents = props.onEvents,
     style = props.style,
     className = props.className;
   registerMap$1('states', geoJson, specialAreas);
   return /*#__PURE__*/jsxRuntime.jsx(_default, {
     option: {
-      cursor: cursor,
+      tooltip: _objectSpread2({}, tooltip),
       visualMap: _objectSpread2({}, visualMap),
       series: [_objectSpread2(_objectSpread2({}, seriesOption), {}, {
         data: regionData
@@ -103404,6 +103404,7 @@ BaseRegionChart.propTypes = {
     chartData: propTypes$1.exports.object,
     metaData: propTypes$1.exports.object
   }),
+  tooltip: propTypes$1.exports.shape(),
   visualMap: propTypes$1.exports.shape(),
   seriesOption: propTypes$1.exports.shape(),
   onEvents: propTypes$1.exports.func,
@@ -103414,6 +103415,20 @@ BaseRegionChart.defaultProps = {
   geoJson: {},
   specialAreas: {},
   regionData: {},
+  tooltip: {
+    backgroundColor: 'rgba(255,255,255)',
+    textStyle: {
+      fontStyle: 'normal',
+      fontWeight: 'normal',
+      fontFamily: 'Fira Sans',
+      color: 'rgb(109,110,113)',
+      fontSize: 16
+    },
+    trigger: 'item',
+    transitionDuration: 0.2,
+    extraCssText: 'box-shadow: rgb(174,174,174) 0px 0px 5px;border-radius:3px;',
+    formatter: '{b0}: {c}'
+  },
   visualMap: {
     show: false,
     min: 1,
@@ -103423,7 +103438,7 @@ BaseRegionChart.defaultProps = {
     }
   },
   seriesOption: {
-    name: 'USA',
+    name: 'USa',
     type: 'map',
     roam: false,
     map: 'states',
