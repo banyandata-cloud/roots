@@ -3,6 +3,7 @@
 div.root {
 	@include flex(row, flex-start);
 	overflow: auto;
+	gap: 0.25rem;
 	padding: 0.25rem;
 	background: $grey8;
 	width: fit-content;
@@ -36,5 +37,9 @@ div.root {
 			border-radius: 0.25rem;
 			color: $dark-grey;
 		}
+	}
+
+	.input {
+		display: none;
 	}
 }

@@ -167,7 +167,7 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 				value: () => {
 					const inputValue = inputRef.current.value?.split?.(', ') ?? [];
 					if (multi) {
-						return inputRef;
+						return inputValue;
 					}
 					return inputValue?.[0] ?? null;
 				},

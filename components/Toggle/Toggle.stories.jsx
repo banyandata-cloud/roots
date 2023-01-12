@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import ThemedContainer from '../helpers/themedContainer/ThemedContainer';
+import { DatabaseIcons } from '../icons/Databases';
 import Toggle from './Toggle';
 
 export default {
@@ -8,102 +10,148 @@ export default {
 		options: {
 			showToolbar: true,
 		},
-		componentSubtitle: 'Description of the  button',
+		// componentSubtitle: '',
 	},
 };
 
 const Template = (args) => {
-	const [selectedToggle, setSelectedToggle] = useState('');
+	// eslint-disable-next-line react/destructuring-assignment
+	const [selectedToggle, setSelectedToggle] = useState(args.selectedToggle);
 
 	return (
-		<div>
+		<ThemedContainer {...args}>
 			<Toggle
 				{...args}
 				selectedToggle={selectedToggle}
 				setSelectedToggle={setSelectedToggle}
 			/>
-			<span
-				style={{
-					fontSize: '0.875rem',
-				}}>
-				You have selected {selectedToggle}
-			</span>
-		</div>
+		</ThemedContainer>
 	);
 };
 
-export const Default = Template.bind({});
+export const Uncontrolled = Template.bind({});
 
-Default.parameters = {
+Uncontrolled.parameters = {
 	design: {
 		type: 'figma',
 		url: 'https://www.figma.com/file/e9opoAtQHBo4vFd6u0Co98/Component-Library?node-id=120%3A8220',
 	},
 };
 
-export const Disabled = Template.bind({});
-
-Default.args = {
+Uncontrolled.args = {
 	options: [
 		{
-			id: '1',
 			value: 'First',
-			rightCompoenent: '',
-			leftCompoenent: '',
+			title: 'First',
+			rightComponent: null,
+			leftComponent: null,
 		},
 		{
-			id: '2',
 			value: 'Second',
-			rightCompoenent: '',
-			leftCompoenent: '',
+			title: 'Second',
+			rightComponent: null,
+			leftComponent: null,
 		},
 		{
-			id: '3',
 			value: 'Third',
-			rightCompoenent: '',
-			leftCompoenent: '',
+			title: 'Third',
+			rightComponent: null,
+			leftComponent: null,
 		},
 		{
-			id: '4',
 			value: 'Fourth',
-			rightCompoenent: '',
-			leftCompoenent: '',
+			title: 'Fourth',
+			rightComponent: null,
+			leftComponent: null,
 		},
 	],
-	selectedToggle: '',
-	setSelectedToggle: '',
+	selectedToggle: 'Second',
+	setSelectedToggle: null,
+	theme: 'light',
 };
 
 export const Dark = Template.bind({});
 
 Dark.args = {
+	...Uncontrolled.args,
+	theme: 'dark',
+};
+
+export const WithIcon = Template.bind({});
+
+WithIcon.args = {
 	options: [
 		{
-			id: '1',
-			value: 'First',
-			rightCompoenent: '',
-			leftCompoenent: '',
+			value: 'pgsql',
+			title: '',
+			rightComponent: () => {
+				return <DatabaseIcons.PgSql />;
+			},
+			leftComponent: null,
 		},
 		{
-			id: '2',
-			value: 'Second',
-			rightCompoenent: '',
-			leftCompoenent: '',
+			value: 'mysql',
+			title: '',
+			rightComponent: () => {
+				return <DatabaseIcons.MySql />;
+			},
+			leftComponent: null,
 		},
 		{
-			id: '3',
-			value: 'Third',
-			rightCompoenent: '',
-			leftCompoenent: '',
+			value: 'oracle',
+			title: '',
+			rightComponent: () => {
+				return <DatabaseIcons.Oracle />;
+			},
+			leftComponent: null,
 		},
 		{
-			id: '4',
-			value: 'Fourth',
-			rightCompoenent: '',
-			leftCompoenent: '',
+			value: 'mongodb',
+			title: '',
+			rightComponent: () => {
+				return <DatabaseIcons.MongoDB />;
+			},
+			leftComponent: null,
+		},
+		{
+			value: 'mssql',
+			title: '',
+			rightComponent: () => {
+				return <DatabaseIcons.MSSql />;
+			},
+			leftComponent: null,
 		},
 	],
-	selectedToggle: '',
-	setSelectedToggle: '',
-	theme: 'dark',
+	defaultValue: 'oracle',
+	theme: 'light',
+};
+
+const ControlledTemplate = (args) => {
+	// eslint-disable-next-line react/destructuring-assignment
+	const [selectedToggle, setSelectedToggle] = useState(args.defaultValue);
+
+	return (
+		<ThemedContainer {...args}>
+			<Toggle
+				{...args}
+				// eslint-disable-next-line react/destructuring-assignment
+				value={selectedToggle}
+				onChange={setSelectedToggle}
+			/>
+		</ThemedContainer>
+	);
+};
+
+export const Controlled = ControlledTemplate.bind({});
+
+Controlled.args = {
+	...WithIcon.args,
+};
+
+export const Multi = ControlledTemplate.bind({});
+
+Multi.args = {
+	...Controlled.args,
+	defaultValue: ['oracle'],
+	multi: true,
 };
