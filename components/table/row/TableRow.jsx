@@ -69,6 +69,16 @@ const TableRow = forwardRef(function BaseTable(props, ref) {
 					styles[`${type}-row`],
 					Expandable ? styles.expandable : ''
 				)}>
+				{Expandable && type === 'header' && (
+					<TableCell
+						className={classes(
+							styles['expandable-cell'],
+							expanded ? styles.expanded : ''
+						)}
+						size='auto'
+						cellContent={null}
+					/>
+				)}
 				{Expandable && type === 'body' && (
 					<TableCell
 						className={classes(
@@ -81,6 +91,12 @@ const TableRow = forwardRef(function BaseTable(props, ref) {
 								className={styles.button}
 								size='auto'
 								variant='text'
+								disabled={
+									!Expandable({
+										datum,
+										index: _index,
+									})
+								}
 								onClick={() => {
 									setExpanded((prev) => {
 										return !prev;

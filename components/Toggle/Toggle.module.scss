@@ -3,6 +3,7 @@
 div.root {
 	@include flex(row, flex-start);
 	overflow: auto;
+	gap: 0.25rem;
 	padding: 0.25rem;
 	background: $grey8;
 	width: fit-content;
@@ -26,7 +27,7 @@ div.root {
 	}
 	[data-elem='base-cell'].toggle-button {
 		color: $grey;
-		padding: 0.2rem;
+		padding: 0.344rem 0.75rem;
 		height: 2rem;
 		background: transparent;
 
@@ -36,5 +37,9 @@ div.root {
 			border-radius: 0.25rem;
 			color: $dark-grey;
 		}
+	}
+
+	.input {
+		display: none;
 	}
 }
