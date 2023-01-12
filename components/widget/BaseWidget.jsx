@@ -9,15 +9,7 @@ import { classes } from '../../utils';
 const generateOptions = (optionData) => {
 	switch (optionData?.id ?? '') {
 		case 'toggle':
-			return (
-				<Toggle
-					className={styles['toggle-body']}
-					theme='dark'
-					options={optionData?.toggleOption ?? []}
-					selectedToggle={optionData?.selectedToggle ?? ''}
-					setSelectedToggle={optionData?.setSelectedToggle ?? ''}
-				/>
-			);
+			return <Toggle className={styles['toggle-body']} theme='dark' {...optionData} />;
 		case 'dropdown':
 			return (
 				<Dropdown
