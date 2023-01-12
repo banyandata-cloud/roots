@@ -148,24 +148,22 @@ Default.args = {
 	options: [
 		{
 			id: 'toggle',
-			toggleOption: [
+			options: [
 				{
 					id: '1',
 					leftCompoenent: '',
 					rightCompoenent: '',
+					title: 'Option 1',
 					value: 'Option 1',
 				},
 				{
 					id: '2',
 					leftCompoenent: '',
 					rightCompoenent: '',
+					title: 'Option 2',
 					value: 'Option 2',
 				},
 			],
-			selectedToggle: 'Option 1',
-			setSelectedToggle: (data) => {
-				console.log(data);
-			},
 		},
 		{
 			id: 'dropdown',

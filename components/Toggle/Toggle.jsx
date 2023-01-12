@@ -12,7 +12,7 @@ const Toggle = forwardRef(function Toggle(props, ref) {
 	const { className, theme, options, defaultValue, value, onChange, multi, color } = props;
 
 	// for uncontrolled input
-	const [uncontrolledValue, setUncontrolledValue] = useState(defaultValue);
+	const [uncontrolledValue, setUncontrolledValue] = useState(defaultValue ?? options?.[0]?.value);
 
 	const { current: isControlled } = useRef(value !== undefined);
 
