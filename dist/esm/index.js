@@ -103445,7 +103445,6 @@ var modules_a2cdc77c = {"root":"Toggle_module_root__c5dad2bc","theme-dark":"Togg
 n(css$1,{});
 
 var Toggle = /*#__PURE__*/forwardRef(function Toggle(props, ref) {
-  var _options$;
   // eslint-disable-next-line object-curly-newline
   var className = props.className,
     theme = props.theme,
@@ -103457,7 +103456,14 @@ var Toggle = /*#__PURE__*/forwardRef(function Toggle(props, ref) {
     color = props.color;
 
   // for uncontrolled input
-  var _useState = useState(defaultValue !== null && defaultValue !== void 0 ? defaultValue : options === null || options === void 0 ? void 0 : (_options$ = options[0]) === null || _options$ === void 0 ? void 0 : _options$.value),
+  var _useState = useState(function () {
+      var _options$2;
+      if (multi) {
+        var _ref, _options$;
+        return (_ref = defaultValue !== null && defaultValue !== void 0 ? defaultValue : options === null || options === void 0 ? void 0 : (_options$ = options[0]) === null || _options$ === void 0 ? void 0 : _options$.value) !== null && _ref !== void 0 ? _ref : [];
+      }
+      return defaultValue !== null && defaultValue !== void 0 ? defaultValue : options === null || options === void 0 ? void 0 : (_options$2 = options[0]) === null || _options$2 === void 0 ? void 0 : _options$2.value;
+    }),
     _useState2 = _slicedToArray(_useState, 2),
     uncontrolledValue = _useState2[0],
     setUncontrolledValue = _useState2[1];
@@ -103500,16 +103506,18 @@ var Toggle = /*#__PURE__*/forwardRef(function Toggle(props, ref) {
       } else {
         // if all are selected, select only the one being clicked
         if (allSelected) {
+          var _newInputValue = [newValue];
           if (isControlled) {
-            onChange([newValue]);
+            onChange(_newInputValue);
           } else {
-            setUncontrolledValue([newValue]);
+            setUncontrolledValue(_newInputValue);
           }
         } else {
+          var _newInputValue2 = [].concat(_toConsumableArray$1(inputValue), [newValue]);
           if (isControlled) {
-            onChange([].concat(_toConsumableArray$1(inputValue), [newValue]));
+            onChange(_newInputValue2);
           } else {
-            setUncontrolledValue([].concat(_toConsumableArray$1(inputValue), [newValue]));
+            setUncontrolledValue(_newInputValue2);
           }
         }
       }
