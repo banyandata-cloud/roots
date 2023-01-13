@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { useRef, useState, forwardRef } from 'react';
 import { classes } from '../../utils';
 import { Button } from '../buttons';
-// import { classes } from '../../utils';
 import styles from './Toggle.module.css';
 
 // eslint-disable-next-line prefer-arrow-callback
@@ -12,7 +11,12 @@ const Toggle = forwardRef(function Toggle(props, ref) {
 	const { className, theme, options, defaultValue, value, onChange, multi, color } = props;
 
 	// for uncontrolled input
-	const [uncontrolledValue, setUncontrolledValue] = useState(defaultValue ?? options?.[0]?.value);
+	const [uncontrolledValue, setUncontrolledValue] = useState(() => {
+		if (multi) {
+			return defaultValue ?? options?.[0]?.value ?? [];
+		}
+		return defaultValue ?? options?.[0]?.value;
+	});
 
 	const { current: isControlled } = useRef(value !== undefined);
 
@@ -55,16 +59,18 @@ const Toggle = forwardRef(function Toggle(props, ref) {
 			} else {
 				// if all are selected, select only the one being clicked
 				if (allSelected) {
+					const newInputValue = [newValue];
 					if (isControlled) {
-						onChange([newValue]);
+						onChange(newInputValue);
 					} else {
-						setUncontrolledValue([newValue]);
+						setUncontrolledValue(newInputValue);
 					}
 				} else {
+					const newInputValue = [...inputValue, newValue];
 					if (isControlled) {
-						onChange([...inputValue, newValue]);
+						onChange(newInputValue);
 					} else {
-						setUncontrolledValue([...inputValue, newValue]);
+						setUncontrolledValue(newInputValue);
 					}
 				}
 			}
