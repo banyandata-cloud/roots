@@ -51,7 +51,7 @@ const BaseVerticalBarChart = (props) => {
 		legend,
 		tooltip,
 		seriesName,
-		stacked,
+		stackCount,
 		seriesOption,
 		style,
 		className,
@@ -59,9 +59,9 @@ const BaseVerticalBarChart = (props) => {
 
 	const seriesOptionObject = {
 		type: 'bar',
-		barWidth: stacked ? barWidth : barWidth / (seriesOption?.length ?? 1),
+		barWidth: stackCount ? barWidth : barWidth / stackCount,
 		cursor,
-		stack: stacked,
+		stack: stackCount,
 		groupPadding: 3,
 		showBackground: true,
 		backgroundStyle: {
@@ -195,7 +195,7 @@ BaseVerticalBarChart.propTypes = {
 	legend: PropTypes.object,
 	seriesName: PropTypes.func,
 	cursor: PropTypes.string,
-	stacked: PropTypes.bool,
+	stackCount: PropTypes.number,
 	seriesOption: PropTypes.arrayOf(PropTypes.shape),
 	style: PropTypes.objectOf(PropTypes.shape),
 	className: PropTypes.string,
@@ -235,7 +235,7 @@ BaseVerticalBarChart.defaultProps = {
 		show: true,
 	},
 	cursor: 'default',
-	stacked: true,
+	stackCount: 1,
 	seriesOption: [
 		{
 			stackIndex: 1,
