@@ -65,8 +65,6 @@ Uncontrolled.args = {
 			leftComponent: null,
 		},
 	],
-	selectedToggle: 'Second',
-	setSelectedToggle: null,
 	theme: 'light',
 };
 
