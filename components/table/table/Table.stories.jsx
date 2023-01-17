@@ -852,7 +852,9 @@ const LoaderTemplate = (args) => {
 				paginationData={{
 					paginationState,
 					paginationDispatch,
-					onChange: fetchAPI,
+					onChange: () => {
+						fetchAPI();
+					},
 				}}
 			/>
 		</div>
