@@ -40,6 +40,7 @@ const BasePieChart = (props) => {
 		startAngle,
 		semiDoughnut,
 		radius,
+		center,
 		cursor,
 		showLabelLine,
 		itemStyle,
@@ -52,6 +53,7 @@ const BasePieChart = (props) => {
 	const seriesOptionObject = {
 		type: 'pie',
 		radius,
+		center,
 		legendHoverLink: false,
 		avoidLabelOverlap: false,
 		cursor,
@@ -162,6 +164,7 @@ BasePieChart.propTypes = {
 	semiDoughnut: PropTypes.bool,
 	cursor: PropTypes.string,
 	radius: PropTypes.arrayOf(PropTypes.string),
+	center: PropTypes.arrayOf(PropTypes.string),
 	showLabelLine: PropTypes.bool,
 	itemStyle: PropTypes.object,
 	legend: PropTypes.object,
@@ -186,6 +189,7 @@ BasePieChart.defaultProps = {
 	semiDoughnut: true,
 	cursor: 'default',
 	radius: ['30%', '60%'],
+	center: ['50%', '50%'],
 	showLabelLine: false,
 	itemStyle: {
 		borderWidth: 5,
