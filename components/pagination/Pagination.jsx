@@ -92,18 +92,28 @@ export const Pagination = forwardRef((props, ref) => {
 	});
 
 	const jumpPageRef = useRef(null);
+	const mountedRef = useRef(false);
 
 	const onChange = (action) => {
 		paginationDispatch(action);
 	};
 
 	useEffect(() => {
-		props.onChange({
-			currentPage,
-			step,
-			totalPages,
-		});
+		if (mountedRef.current) {
+			props.onChange({
+				currentPage,
+				step,
+				totalPages,
+			});
+		}
 	}, [currentPage, step]);
+
+	useEffect(() => {
+		mountedRef.current = true;
+		return () => {
+			mountedRef.current = false;
+		};
+	}, []);
 
 	if (loading) {
 		return null;
