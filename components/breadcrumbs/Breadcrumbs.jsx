@@ -16,7 +16,7 @@ const BreadCrumbs = (props) => {
 	let href = '';
 
 	const CrumbsDOM = crumbs.map((crumb, index) => {
-		const { title, path, icon } = crumb;
+		const { title, path, search, icon } = crumb;
 
 		const active = index === crumbs.length - 1;
 		const showSeperator = index < crumbs.length - 1;
@@ -26,7 +26,7 @@ const BreadCrumbs = (props) => {
 		return (
 			<React.Fragment key={path}>
 				<Link
-					href={!active && href}
+					href={!active && `${href}${search ?? ''}`}
 					underline={!active ? 'hover' : 'none'}
 					className={classes(styles.crumb, active ? styles.active : '')}
 					dataAttrs={{
