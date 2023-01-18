@@ -31,6 +31,7 @@ const Link = forwardRef(function Link(props, ref) {
 			italic={italic}
 			className={classes(className, styles.root, styles[`underline-${underline}`])}
 			attrs={{
+				to: href,
 				href,
 				target,
 				...attrs,
