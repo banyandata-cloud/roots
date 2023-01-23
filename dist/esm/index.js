@@ -45144,16 +45144,19 @@ var modules_dfc4608f = {"root":"Popover_module_root__265e51dc"};
 n(css$e,{});
 
 var Popover = function Popover(props) {
+  // eslint-disable-next-line object-curly-newline
   var children = props.children,
     anchorEl = props.anchorEl,
     open = props.open,
     setOpen = props.setOpen,
     className = props.className,
     transparent = props.transparent,
-    onClose = props.onClose;
+    onClose = props.onClose,
+    placement = props.placement;
   var _useFloating = useFloating({
       open: open,
       onOpenChange: setOpen,
+      placement: placement,
       whileElementsMounted: autoUpdate,
       middleware: [offset(5), shift(), flip({
         padding: 8
@@ -45209,12 +45212,14 @@ Popover.propTypes = {
   open: propTypes$1.exports.bool.isRequired,
   setOpen: propTypes$1.exports.func.isRequired,
   transparent: propTypes$1.exports.bool,
-  onClose: propTypes$1.exports.func
+  onClose: propTypes$1.exports.func,
+  placement: propTypes$1.exports.oneOf(['top', 'top-start', 'top-end', 'right', 'right-start', 'right-end', 'bottom', 'bottom-start', 'bottom-end', 'left', 'left-start', 'left-end'])
 };
 Popover.defaultProps = {
   anchorEl: null,
   transparent: true,
-  onClose: function onClose() {}
+  onClose: function onClose() {},
+  placement: 'bottom'
 };
 
 var css$d = ".Columns_module_popover__078e5868 {\n  height: 32rem;\n  padding: 0;\n  overflow: hidden;\n}\n\n.Columns_module_root__078e5868 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  position: relative;\n  height: 100%;\n  min-width: 18rem;\n  max-width: 100%;\n}\n.Columns_module_root__078e5868 .Columns_module_header__078e5868 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  border-bottom: 1px solid var(--grey4);\n  padding: 0.75rem 2.5rem;\n}\n.Columns_module_root__078e5868 .Columns_module_header__078e5868 > [data-elem=component1] {\n  font-weight: 500;\n}\n.Columns_module_root__078e5868 .Columns_module_header__078e5868 > [data-elem=component2] .Columns_module_close__078e5868 {\n  height: auto;\n  padding: 0;\n}\n.Columns_module_root__078e5868 .Columns_module_header__078e5868 > [data-elem=component2] .Columns_module_close__078e5868 .Columns_module_icon__078e5868 {\n  width: 1rem;\n  height: 1rem;\n}\n.Columns_module_root__078e5868 .Columns_module_body__078e5868 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  gap: 0.5rem;\n  padding: 0.75rem 2.5rem;\n  max-height: 28rem;\n  overflow-y: auto;\n  flex: 1 1 auto;\n}\n.Columns_module_root__078e5868 .Columns_module_body__078e5868 .Columns_module_search__078e5868 {\n  position: -webkit-sticky;\n  position: sticky;\n  top: 0;\n}\n.Columns_module_root__078e5868 .Columns_module_body__078e5868 .Columns_module_columns__078e5868 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  gap: 0.5rem;\n  overflow-y: auto;\n}\n.Columns_module_root__078e5868 .Columns_module_body__078e5868 .Columns_module_columns__078e5868 .Columns_module_item__078e5868 {\n  height: 3rem;\n}\n.Columns_module_root__078e5868 .Columns_module_body__078e5868 .Columns_module_columns__078e5868 .Columns_module_item__078e5868 > [data-elem=title] {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n}\n.Columns_module_root__078e5868 .Columns_module_footer__078e5868 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-end;\n  align-items: center;\n  height: auto;\n  margin-top: auto;\n  padding: 0.5rem 2.5rem;\n  border-top: 1px solid var(--grey4);\n}\n.Columns_module_root__078e5868 .Columns_module_footer__078e5868 button.Columns_module_expand__078e5868 {\n  height: auto;\n  background: var(--grey8);\n  border: 1px solid var(--grey4);\n  color: var(--black);\n}\n.Columns_module_root__078e5868 .Columns_module_footer__078e5868 button.Columns_module_expand__078e5868 .Columns_module_icon__078e5868 {\n  width: 1.5rem;\n  height: 1.5rem;\n  transform: rotate(180deg);\n}\n.Columns_module_root__078e5868.Columns_module_expanded__078e5868 .Columns_module_body__078e5868 {\n  flex: 0 1 auto;\n}\n.Columns_module_root__078e5868.Columns_module_expanded__078e5868 .Columns_module_body__078e5868 .Columns_module_columns__078e5868 {\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n}\n.Columns_module_root__078e5868.Columns_module_expanded__078e5868 .Columns_module_body__078e5868 .Columns_module_columns__078e5868 .Columns_module_item__078e5868 {\n  overflow: hidden;\n}\n.Columns_module_root__078e5868.Columns_module_expanded__078e5868 .Columns_module_footer__078e5868 button.Columns_module_expand__078e5868 .Columns_module_icon__078e5868 {\n  transform: none;\n}";
@@ -45797,6 +45802,7 @@ var Tooltip = /*#__PURE__*/forwardRef(function Tooltip(props, propRef) {
   var _useFloating = useFloating({
       open: open,
       onOpenChange: setOpen,
+      strategy: 'fixed',
       placement: position,
       // Make sure the tooltip stays on the screen
       whileElementsMounted: autoUpdate,
@@ -45853,7 +45859,8 @@ var Tooltip = /*#__PURE__*/forwardRef(function Tooltip(props, propRef) {
         style: {
           position: strategy,
           top: y !== null && y !== void 0 ? y : 0,
-          left: x !== null && x !== void 0 ? x : 0
+          left: x !== null && x !== void 0 ? x : 0,
+          zIndex: 100
         }
       })), {}, {
         children: [content, /*#__PURE__*/jsx("div", {
@@ -103405,7 +103412,7 @@ BaseRegionChart.propTypes = {
 BaseRegionChart.defaultProps = {
   geoJson: {},
   specialAreas: {},
-  regionData: {},
+  regionData: [],
   tooltip: {
     backgroundColor: 'rgba(255,255,255)',
     textStyle: {
