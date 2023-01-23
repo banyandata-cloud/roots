@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from '../../buttons';
+import { ThemedContainer } from '../../helpers';
 import { ServerIcon, CopyIcon, ArrowIcon } from '../../icons';
 import { usePagination } from '../../pagination';
 import { Popover } from '../../popover';
+import { Tooltip } from '../../tooltip';
 import { TableColumn } from '../BaseTable.class';
 import { TableCell } from '../cell';
 import Table from './Table';
@@ -25,11 +27,8 @@ const Template = (args) => {
 	});
 
 	return (
-		<div
+		<ThemedContainer
 			style={{
-				background: '#777777',
-				padding: '1rem',
-				display: 'flex',
 				height: '100%',
 			}}>
 			<Table
@@ -39,7 +38,7 @@ const Template = (args) => {
 					paginationDispatch,
 				}}
 			/>
-		</div>
+		</ThemedContainer>
 	);
 };
 
@@ -732,6 +731,7 @@ WithCustomCells.args = {
 			title: 'S No.',
 			id: 'serial',
 			size: 'sm',
+			sticky: 'left',
 		},
 		...API_RESPONSE.header.filter((header) => {
 			return header.title !== 'uuid';
@@ -804,6 +804,23 @@ WithCustomCells.args = {
 									}}
 									title='Select'
 								/>
+							}
+						/>
+					);
+				},
+				cloudAccountId: ({ cellContent, ...rest }) => {
+					return (
+						<TableCell
+							{...rest}
+							// className={styles.root}
+							style={{
+								borderBottom: '1px dotted',
+							}}
+							cellTitle={null}
+							cellContent={
+								<Tooltip content={cellContent} variant='dark'>
+									<span>{cellContent}</span>
+								</Tooltip>
 							}
 						/>
 					);

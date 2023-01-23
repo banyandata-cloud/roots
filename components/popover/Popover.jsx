@@ -15,11 +15,13 @@ import { classes } from '../../utils';
 import styles from './Popover.module.css';
 
 const Popover = (props) => {
-	const { children, anchorEl, open, setOpen, className, transparent, onClose } = props;
+	// eslint-disable-next-line object-curly-newline
+	const { children, anchorEl, open, setOpen, className, transparent, onClose, placement } = props;
 
 	const { x, y, reference, floating, strategy, context } = useFloating({
 		open,
 		onOpenChange: setOpen,
+		placement,
 		whileElementsMounted: autoUpdate,
 		middleware: [
 			offset(5),
@@ -76,12 +78,27 @@ Popover.propTypes = {
 	setOpen: PropTypes.func.isRequired,
 	transparent: PropTypes.bool,
 	onClose: PropTypes.func,
+	placement: PropTypes.oneOf([
+		'top',
+		'top-start',
+		'top-end',
+		'right',
+		'right-start',
+		'right-end',
+		'bottom',
+		'bottom-start',
+		'bottom-end',
+		'left',
+		'left-start',
+		'left-end',
+	]),
 };
 
 Popover.defaultProps = {
 	anchorEl: null,
 	transparent: true,
 	onClose: () => {},
+	placement: 'bottom',
 };
 
 export default Popover;

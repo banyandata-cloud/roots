@@ -27,6 +27,7 @@ const Tooltip = forwardRef(function Tooltip(props, propRef) {
 		{
 			open,
 			onOpenChange: setOpen,
+			strategy: 'fixed',
 			placement: position,
 			// Make sure the tooltip stays on the screen
 			whileElementsMounted: autoUpdate,
@@ -91,6 +92,7 @@ const Tooltip = forwardRef(function Tooltip(props, propRef) {
 							position: strategy,
 							top: y ?? 0,
 							left: x ?? 0,
+							zIndex: 100,
 						},
 					})}>
 					{content}

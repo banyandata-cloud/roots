@@ -93,7 +93,7 @@ BaseRegionChart.propTypes = {
 BaseRegionChart.defaultProps = {
 	geoJson: {},
 	specialAreas: {},
-	regionData: {},
+	regionData: [],
 	tooltip: {
 		backgroundColor: 'rgba(255,255,255)',
 		textStyle: {

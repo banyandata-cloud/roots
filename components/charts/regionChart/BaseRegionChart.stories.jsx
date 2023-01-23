@@ -289,3 +289,21 @@ Default.args = {
 		aspectScale: '1:1',
 	},
 };
+
+export const USA = Template.bind({});
+
+const usaJSON = require('./USA.json');
+
+USA.args = {
+	geoJson: usaJSON,
+	regionData: [],
+};
+
+export const Belgium = Template.bind({});
+
+const belgiumJSON = require('./Belgium.json');
+
+Belgium.args = {
+	geoJson: belgiumJSON,
+	regionData: [],
+};
