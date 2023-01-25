@@ -3,7 +3,8 @@ import { MarkerClusterer } from '@googlemaps/markerclusterer';
 import { useDeepCompareEffectForMaps } from './utils';
 
 const BaseMap = (props) => {
-	const { onClick, onIdle, children, style, mapId, clustered, ...options } = props;
+	// eslint-disable-next-line object-curly-newline
+	const { onClick, onIdle, children, style, mapId, clustered, fitBounds, ...options } = props;
 
 	const ref = useRef(null);
 	const [map, setMap] = useState();
@@ -16,7 +17,7 @@ const BaseMap = (props) => {
 				})
 			);
 		}
-	}, [ref, map]);
+	}, [map]);
 
 	useEffect(() => {
 		if (clustered && map && Children.count(children) > 0) {
@@ -25,7 +26,6 @@ const BaseMap = (props) => {
 					position: child.props.position,
 				});
 			});
-			console.log(markers);
 			// eslint-disable-next-line no-new
 			new MarkerClusterer({
 				map,
@@ -33,6 +33,19 @@ const BaseMap = (props) => {
 			});
 		}
 	}, [clustered, children, map]);
+
+	useEffect(() => {
+		if (map && Children.count(children) > 0) {
+			const bounds = new google.maps.LatLngBounds();
+
+			Children.forEach(children, (child) => {
+				bounds.extend(
+					new google.maps.LatLng(child.props.position.lat, child.props.position.lng)
+				);
+			});
+			map.fitBounds(bounds);
+		}
+	}, [fitBounds, map]);
 
 	useDeepCompareEffectForMaps(() => {
 		if (map) {
@@ -93,6 +106,7 @@ const BaseMap = (props) => {
 
 BaseMap.defaultProps = {
 	clustered: false,
+	fitBounds: false,
 	zoom: 1,
 	center: {
 		lat: 0,
