@@ -80,6 +80,33 @@ function _defineProperty$1(obj, key, value) {
   }
   return obj;
 }
+function _objectWithoutPropertiesLoose$1(source, excluded) {
+  if (source == null) return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i;
+  for (i = 0; i < sourceKeys.length; i++) {
+    key = sourceKeys[i];
+    if (excluded.indexOf(key) >= 0) continue;
+    target[key] = source[key];
+  }
+  return target;
+}
+function _objectWithoutProperties$1(source, excluded) {
+  if (source == null) return {};
+  var target = _objectWithoutPropertiesLoose$1(source, excluded);
+  var key, i;
+  if (Object.getOwnPropertySymbols) {
+    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+    for (i = 0; i < sourceSymbolKeys.length; i++) {
+      key = sourceSymbolKeys[i];
+      if (excluded.indexOf(key) >= 0) continue;
+      if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+      target[key] = source[key];
+    }
+  }
+  return target;
+}
 function _slicedToArray(arr, i) {
   return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray$1(arr, i) || _nonIterableRest();
 }
@@ -3296,10 +3323,6 @@ Accordion.defaultProps = {
   onExpand: null
 };
 
-var css$Q = ".Alert_module_root__b5fc9a1d {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: flex-start;\n  position: fixed;\n  padding: 0.938rem;\n  width: 500px;\n}\n.Alert_module_root__b5fc9a1d.Alert_module_positionBottomCenter__b5fc9a1d {\n  left: 50%;\n  bottom: 1rem;\n  transform: translate(-50%, 0);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_positionTopRight__b5fc9a1d {\n  right: 1rem;\n  top: 1rem;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_left__b5fc9a1d {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_left__b5fc9a1d .Alert_module_icons__b5fc9a1d {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  padding: 0.313rem 0.938rem 0rem 0rem;\n  height: auto;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_left__b5fc9a1d .Alert_module_icons__b5fc9a1d .Alert_module_icon__b5fc9a1d {\n  width: 1.25rem;\n  height: 1.25rem;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_left__b5fc9a1d .Alert_module_content__b5fc9a1d {\n  padding: 0.188rem 0.938rem 0rem 0rem;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_left__b5fc9a1d .Alert_module_content__b5fc9a1d .Alert_module_title__b5fc9a1d {\n  font-size: 0.875rem;\n  font-weight: 600;\n  padding-right: 2px;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_left__b5fc9a1d .Alert_module_content__b5fc9a1d .Alert_module_description__b5fc9a1d {\n  word-wrap: break-word;\n  height: auto;\n  font-size: 0.875rem;\n  font-weight: 400;\n  margin-bottom: 0.5rem;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_actions__b5fc9a1d {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: flex-start;\n  gap: 5px;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_actions__b5fc9a1d .Alert_module_button__b5fc9a1d {\n  padding: 0.313rem 1rem;\n  font-weight: 400;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_actions__b5fc9a1d .Alert_module_close__b5fc9a1d {\n  padding-top: 0.313rem;\n}\n.Alert_module_root__b5fc9a1d .Alert_module_actions__b5fc9a1d .Alert_module_close__b5fc9a1d .Alert_module_icon__b5fc9a1d {\n  width: 1.25rem;\n  height: 1.25rem;\n  fill: var(--black);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_borderDefault__b5fc9a1d {\n  border-width: 0.063rem;\n}\n.Alert_module_root__b5fc9a1d.Alert_module_borderThickLeft__b5fc9a1d {\n  border-width: 0.063rem 0.063rem 0.063rem 0.25rem;\n}\n.Alert_module_root__b5fc9a1d.Alert_module_borderNone__b5fc9a1d {\n  border-width: 0rem 0rem 0rem 0.25rem;\n}\n.Alert_module_root__b5fc9a1d.Alert_module_info__b5fc9a1d {\n  border-style: solid;\n  border-color: var(--info);\n  background-color: #edf5ff;\n}\n.Alert_module_root__b5fc9a1d.Alert_module_info__b5fc9a1d .Alert_module_icon__b5fc9a1d {\n  fill: var(--info);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_success__b5fc9a1d {\n  border-style: solid;\n  border-color: var(--success);\n  background-color: var(--success-bg);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_success__b5fc9a1d .Alert_module_icon__b5fc9a1d {\n  fill: var(--success);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_danger__b5fc9a1d {\n  border-style: solid;\n  border-color: var(--error);\n  background-color: var(--error-bg);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_danger__b5fc9a1d .Alert_module_icon__b5fc9a1d {\n  fill: var(--error);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_warning__b5fc9a1d {\n  border-style: solid;\n  border-color: var(--warning);\n  background-color: var(--warning-bg);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_warning__b5fc9a1d .Alert_module_icon__b5fc9a1d {\n  fill: var(--warning);\n}\n.Alert_module_root__b5fc9a1d.Alert_module_shadow__b5fc9a1d {\n  box-shadow: 0.125rem 0.5rem 1rem rgba(60, 60, 60, 0.12);\n}";
-var modules_3a764ea3 = {"root":"Alert_module_root__b5fc9a1d","position-bottom-center":"Alert_module_positionBottomCenter__b5fc9a1d","position-top-right":"Alert_module_positionTopRight__b5fc9a1d","left":"Alert_module_left__b5fc9a1d","icons":"Alert_module_icons__b5fc9a1d","icon":"Alert_module_icon__b5fc9a1d","content":"Alert_module_content__b5fc9a1d","title":"Alert_module_title__b5fc9a1d","description":"Alert_module_description__b5fc9a1d","actions":"Alert_module_actions__b5fc9a1d","button":"Alert_module_button__b5fc9a1d","close":"Alert_module_close__b5fc9a1d","border-default":"Alert_module_borderDefault__b5fc9a1d","border-thick-left":"Alert_module_borderThickLeft__b5fc9a1d","border-none":"Alert_module_borderNone__b5fc9a1d","info":"Alert_module_info__b5fc9a1d","success":"Alert_module_success__b5fc9a1d","danger":"Alert_module_danger__b5fc9a1d","warning":"Alert_module_warning__b5fc9a1d","shadow":"Alert_module_shadow__b5fc9a1d"};
-n(css$Q,{});
-
 function getSide(placement) {
   return placement.split('-')[0];
 }
@@ -3584,7 +3607,7 @@ async function detectOverflow(middlewareArguments, options) {
 const min$3 = Math.min;
 const max$3 = Math.max;
 
-function within(min$1, value, max$1) {
+function within$1(min$1, value, max$1) {
   return max$3(min$1, min$3(value, max$1));
 }
 
@@ -3645,7 +3668,7 @@ const arrow$1 = options => ({
     const min = paddingObject[minProp];
     const max = clientSize - arrowDimensions[length] - paddingObject[maxProp];
     const center = clientSize / 2 - arrowDimensions[length] / 2 + centerToReference;
-    const offset = within(min, center, max); // Make sure that arrow points at the reference
+    const offset = within$1(min, center, max); // Make sure that arrow points at the reference
 
     const alignmentPadding = alignment === 'start' ? paddingObject[minProp] : paddingObject[maxProp];
     const shouldAddOffset = alignmentPadding > 0 && center !== offset && rects.reference[length] <= rects.floating[length];
@@ -3944,7 +3967,7 @@ const shift = function (options) {
         const maxSide = mainAxis === 'y' ? 'bottom' : 'right';
         const min = mainAxisCoord + overflow[minSide];
         const max = mainAxisCoord - overflow[maxSide];
-        mainAxisCoord = within(min, mainAxisCoord, max);
+        mainAxisCoord = within$1(min, mainAxisCoord, max);
       }
 
       if (checkCrossAxis) {
@@ -3952,7 +3975,7 @@ const shift = function (options) {
         const maxSide = crossAxis === 'y' ? 'bottom' : 'right';
         const min = crossAxisCoord + overflow[minSide];
         const max = crossAxisCoord - overflow[maxSide];
-        crossAxisCoord = within(min, crossAxisCoord, max);
+        crossAxisCoord = within$1(min, crossAxisCoord, max);
       }
 
       const limitedCoords = limiter.fn({ ...middlewareArguments,
@@ -5258,10 +5281,10 @@ function getChildren(nodes, id) {
   return allChildren;
 }
 
-const DEFAULT_ID = 'floating-ui-root';
+const DEFAULT_ID$1 = 'floating-ui-root';
 const useFloatingPortalNode = function (_temp) {
   let {
-    id = DEFAULT_ID,
+    id = DEFAULT_ID$1,
     enabled = true
   } = _temp === void 0 ? {} : _temp;
   const [portalEl, setPortalEl] = React__namespace.useState(null);
@@ -5294,7 +5317,7 @@ const useFloatingPortalNode = function (_temp) {
 const FloatingPortal = _ref => {
   let {
     children,
-    id = DEFAULT_ID,
+    id = DEFAULT_ID$1,
     root = null
   } = _ref;
   const portalNode = useFloatingPortalNode({
@@ -7136,6 +7159,10 @@ const useListNavigation = function (_ref, _temp2) {
   };
 };
 
+var css$Q = ".Alert_module_root__f2bc8467 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: flex-start;\n  position: fixed;\n  padding: 0.938rem;\n  width: 500px;\n}\n.Alert_module_root__f2bc8467.Alert_module_positionBottomCenter__f2bc8467 {\n  left: 50%;\n  bottom: 1rem;\n  transform: translate(-50%, 0);\n}\n.Alert_module_root__f2bc8467.Alert_module_positionTopRight__f2bc8467 {\n  right: 1rem;\n  top: 1rem;\n}\n.Alert_module_root__f2bc8467 .Alert_module_left__f2bc8467 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n}\n.Alert_module_root__f2bc8467 .Alert_module_left__f2bc8467 .Alert_module_icons__f2bc8467 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  padding: 0.313rem 0.938rem 0rem 0rem;\n  height: auto;\n}\n.Alert_module_root__f2bc8467 .Alert_module_left__f2bc8467 .Alert_module_icons__f2bc8467 .Alert_module_icon__f2bc8467 {\n  width: 1.25rem;\n  height: 1.25rem;\n}\n.Alert_module_root__f2bc8467 .Alert_module_left__f2bc8467 .Alert_module_content__f2bc8467 {\n  padding: 0.188rem 0.938rem 0rem 0rem;\n}\n.Alert_module_root__f2bc8467 .Alert_module_left__f2bc8467 .Alert_module_content__f2bc8467 .Alert_module_title__f2bc8467 {\n  font-size: 0.875rem;\n  font-weight: 600;\n  padding-right: 2px;\n}\n.Alert_module_root__f2bc8467 .Alert_module_left__f2bc8467 .Alert_module_content__f2bc8467 .Alert_module_description__f2bc8467 {\n  word-wrap: break-word;\n  height: auto;\n  font-size: 0.875rem;\n  font-weight: 400;\n  margin-bottom: 0.5rem;\n}\n.Alert_module_root__f2bc8467 .Alert_module_actions__f2bc8467 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: flex-start;\n  gap: 5px;\n}\n.Alert_module_root__f2bc8467 .Alert_module_actions__f2bc8467 .Alert_module_button__f2bc8467 {\n  padding: 0.313rem 1rem;\n  font-weight: 400;\n}\n.Alert_module_root__f2bc8467 .Alert_module_actions__f2bc8467 .Alert_module_close__f2bc8467 {\n  height: auto;\n}\n.Alert_module_root__f2bc8467 .Alert_module_actions__f2bc8467 .Alert_module_close__f2bc8467 .Alert_module_icon__f2bc8467 {\n  width: 1.25rem;\n  height: 1.25rem;\n  fill: var(--black);\n}\n.Alert_module_root__f2bc8467.Alert_module_borderDefault__f2bc8467 {\n  border-width: 0.063rem;\n}\n.Alert_module_root__f2bc8467.Alert_module_borderThickLeft__f2bc8467 {\n  border-width: 0.063rem 0.063rem 0.063rem 0.25rem;\n}\n.Alert_module_root__f2bc8467.Alert_module_borderNone__f2bc8467 {\n  border-width: 0rem 0rem 0rem 0.25rem;\n}\n.Alert_module_root__f2bc8467.Alert_module_info__f2bc8467 {\n  border-style: solid;\n  border-color: var(--info);\n  background-color: #edf5ff;\n}\n.Alert_module_root__f2bc8467.Alert_module_info__f2bc8467 .Alert_module_icon__f2bc8467 {\n  fill: var(--info);\n}\n.Alert_module_root__f2bc8467.Alert_module_success__f2bc8467 {\n  border-style: solid;\n  border-color: var(--success);\n  background-color: var(--success-bg);\n}\n.Alert_module_root__f2bc8467.Alert_module_success__f2bc8467 .Alert_module_icon__f2bc8467 {\n  fill: var(--success);\n}\n.Alert_module_root__f2bc8467.Alert_module_danger__f2bc8467 {\n  border-style: solid;\n  border-color: var(--error);\n  background-color: var(--error-bg);\n}\n.Alert_module_root__f2bc8467.Alert_module_danger__f2bc8467 .Alert_module_icon__f2bc8467 {\n  fill: var(--error);\n}\n.Alert_module_root__f2bc8467.Alert_module_warning__f2bc8467 {\n  border-style: solid;\n  border-color: var(--warning);\n  background-color: var(--warning-bg);\n}\n.Alert_module_root__f2bc8467.Alert_module_warning__f2bc8467 .Alert_module_icon__f2bc8467 {\n  fill: var(--warning);\n}\n.Alert_module_root__f2bc8467.Alert_module_shadow__f2bc8467 {\n  box-shadow: 0.125rem 0.5rem 1rem rgba(60, 60, 60, 0.12);\n}";
+var modules_3a764ea3 = {"root":"Alert_module_root__f2bc8467","position-bottom-center":"Alert_module_positionBottomCenter__f2bc8467","position-top-right":"Alert_module_positionTopRight__f2bc8467","left":"Alert_module_left__f2bc8467","icons":"Alert_module_icons__f2bc8467","icon":"Alert_module_icon__f2bc8467","content":"Alert_module_content__f2bc8467","title":"Alert_module_title__f2bc8467","description":"Alert_module_description__f2bc8467","actions":"Alert_module_actions__f2bc8467","button":"Alert_module_button__f2bc8467","close":"Alert_module_close__f2bc8467","border-default":"Alert_module_borderDefault__f2bc8467","border-thick-left":"Alert_module_borderThickLeft__f2bc8467","border-none":"Alert_module_borderNone__f2bc8467","info":"Alert_module_info__f2bc8467","success":"Alert_module_success__f2bc8467","danger":"Alert_module_danger__f2bc8467","warning":"Alert_module_warning__f2bc8467","shadow":"Alert_module_shadow__f2bc8467"};
+n(css$Q,{});
+
 var css$P = ".Popper_module_backdrop__0c794282 {\n  position: fixed;\n  z-index: 100;\n  inset: 0;\n  background: rgba(0, 0, 0, 0.4);\n}\n.Popper_module_backdrop__0c794282.Popper_module_transparent__0c794282 {\n  background: none;\n}\n.Popper_module_backdrop__0c794282.Popper_module_hideBackdrop__0c794282 {\n  position: static !important;\n}";
 var modules_fe46b225 = {"backdrop":"Popper_module_backdrop__0c794282","transparent":"Popper_module_transparent__0c794282","hide-backdrop":"Popper_module_hideBackdrop__0c794282"};
 n(css$P,{});
@@ -7179,101 +7206,6 @@ Popper.defaultProps = {
   backdrop: true,
   wrapperId: 'default-popper',
   transparent: true
-};
-
-var useRowFilter = function useRowFilter(props) {
-  var _props$initialState = props.initialState,
-    initialState = _props$initialState === void 0 ? {} : _props$initialState,
-    _props$length = props.length,
-    length = _props$length === void 0 ? 0 : _props$length,
-    tableData = props.tableData;
-  var _useState = React.useState(function () {
-      return _toConsumableArray$1(Array(length).keys()).fill(initialState);
-    }),
-    _useState2 = _slicedToArray(_useState, 2),
-    filters = _useState2[0],
-    setFilters = _useState2[1];
-  React.useEffect(function () {
-    setFilters(_toConsumableArray$1(Array(length).keys()).fill(initialState));
-  }, [initialState, length, tableData]);
-
-  /**
-   *
-   * @param {number} index - row index
-   * @param {string} name - filter name / column id
-   * @param {Array} value - filter value / checked items
-   */
-  var applyFilter = function applyFilter(index, name) {
-    var value = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
-    setFilters(function (prevFilters) {
-      var newFilters = cloneDeep(prevFilters);
-      newFilters.splice(index, 1, _objectSpread2(_objectSpread2({}, newFilters[index]), {}, _defineProperty$1({}, name, value)));
-      return newFilters;
-    });
-  };
-  return {
-    filters: filters,
-    applyFilter: applyFilter
-  };
-};
-
-var useOutsideClickListener = function useOutsideClickListener(ref, callback) {
-  React.useEffect(function () {
-    var handleClickOutside = function handleClickOutside(event) {
-      if (ref.current && !ref.current.contains(event.target)) {
-        callback();
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return function () {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [ref]);
-};
-
-var useResize = function useResize(props) {
-  var ref = props.ref,
-    _props$styles = props.styles,
-    styles = _props$styles === void 0 ? {} : _props$styles,
-    enabled = props.enabled;
-  var minWidth = styles.minWidth,
-    maxWidth = styles.maxWidth,
-    borderSize = styles.borderSize;
-  React.useEffect(function () {
-    if (enabled) {
-      var _ref$current, _ref$current$getBound, _ref$current3;
-      var mPos = null;
-      var itemRect = ref === null || ref === void 0 ? void 0 : (_ref$current = ref.current) === null || _ref$current === void 0 ? void 0 : (_ref$current$getBound = _ref$current.getBoundingClientRect) === null || _ref$current$getBound === void 0 ? void 0 : _ref$current$getBound.call(_ref$current);
-      var resize = function resize(event) {
-        var dX = event.x - mPos;
-        // eslint-disable-next-line no-param-reassign
-        var newWidth = parseInt(itemRect.width, 10) + dX;
-        if (newWidth > minWidth && newWidth < maxWidth && ref.current != null) {
-          ref.current.style.width = "".concat(newWidth, "px");
-        }
-      };
-      var onMouseDown = function onMouseDown(evt) {
-        if (itemRect.width - evt.offsetX < borderSize) {
-          mPos = evt.x;
-          document.addEventListener('mousemove', resize);
-        }
-      };
-      var onMouseUp = function onMouseUp(evt) {
-        var _ref$current2, _ref$current2$getBoun, _ref$current2$getBoun2;
-        mPos = evt.x;
-        itemRect.width = ref === null || ref === void 0 ? void 0 : (_ref$current2 = ref.current) === null || _ref$current2 === void 0 ? void 0 : (_ref$current2$getBoun = _ref$current2.getBoundingClientRect) === null || _ref$current2$getBoun === void 0 ? void 0 : (_ref$current2$getBoun2 = _ref$current2$getBoun.call(_ref$current2)) === null || _ref$current2$getBoun2 === void 0 ? void 0 : _ref$current2$getBoun2.width;
-        document.removeEventListener('mousemove', resize);
-      };
-      ref === null || ref === void 0 ? void 0 : (_ref$current3 = ref.current) === null || _ref$current3 === void 0 ? void 0 : _ref$current3.addEventListener('mousedown', onMouseDown, false);
-      document.documentElement.addEventListener('mouseup', onMouseUp, false);
-      return function () {
-        var _ref$current4, _ref$current4$removeE;
-        ref === null || ref === void 0 ? void 0 : (_ref$current4 = ref.current) === null || _ref$current4 === void 0 ? void 0 : (_ref$current4$removeE = _ref$current4.removeEventListener) === null || _ref$current4$removeE === void 0 ? void 0 : _ref$current4$removeE.call(_ref$current4, 'mousedown', onMouseDown, false);
-        document.documentElement.removeEventListener('mouseup', onMouseUp, false);
-      };
-    }
-    return function () {};
-  }, [enabled]);
 };
 
 var Alert = function Alert(props) {
@@ -7321,18 +7253,22 @@ var Alert = function Alert(props) {
         break;
     }
   }
-  var ref = React.useRef(null);
-  useOutsideClickListener(ref, function () {
-    return toggle(false);
-  });
+  var _useFloating = useFloating({
+      open: open,
+      onOpenChange: toggle
+    }),
+    floating = _useFloating.floating,
+    context = _useFloating.context;
+  var _useInteractions = useInteractions([useDismiss(context)]),
+    getFloatingProps = _useInteractions.getFloatingProps;
   return /*#__PURE__*/jsxRuntime.jsx(Popper, {
     open: open,
     className: modules_3a764ea3.popper,
     id: "alert-popper",
-    transparent: false,
-    children: /*#__PURE__*/jsxRuntime.jsxs("div", {
-      ref: ref,
-      className: classes(modules_3a764ea3.root, modules_3a764ea3[color], modules_3a764ea3["border-".concat(border)], shadow ? modules_3a764ea3.shadow : '', modules_3a764ea3["position-".concat(position)]),
+    children: /*#__PURE__*/jsxRuntime.jsxs("div", _objectSpread2(_objectSpread2({}, getFloatingProps({
+      ref: floating,
+      className: classes(modules_3a764ea3.root, modules_3a764ea3[color], modules_3a764ea3["border-".concat(border)], shadow ? modules_3a764ea3.shadow : '', modules_3a764ea3["position-".concat(position)])
+    })), {}, {
       children: [/*#__PURE__*/jsxRuntime.jsxs("div", {
         className: modules_3a764ea3.left,
         children: [/*#__PURE__*/jsxRuntime.jsx("div", {
@@ -7356,15 +7292,19 @@ var Alert = function Alert(props) {
           variant: "text",
           color: "primary",
           className: modules_3a764ea3.button
-        }), close && /*#__PURE__*/jsxRuntime.jsx("span", {
+        }), close && /*#__PURE__*/jsxRuntime.jsx(Button, {
+          size: "auto",
+          variant: "text",
           onClick: toggle,
           className: modules_3a764ea3.close,
-          children: /*#__PURE__*/jsxRuntime.jsx(Cross$1, {
-            className: modules_3a764ea3.icon
-          })
+          leftComponent: function leftComponent() {
+            return /*#__PURE__*/jsxRuntime.jsx(Cross$1, {
+              className: modules_3a764ea3.icon
+            });
+          }
         })]
       })]
-    })
+    }))
   });
 };
 Alert.propTypes = {
@@ -7792,7 +7732,7 @@ var checkForListedLanguage = (function (astGenerator, language) {
   return langs.indexOf(language) !== -1;
 });
 
-var _excluded = ["language", "children", "style", "customStyle", "codeTagProps", "useInlineStyles", "showLineNumbers", "showInlineLineNumbers", "startingLineNumber", "lineNumberContainerStyle", "lineNumberStyle", "wrapLines", "wrapLongLines", "lineProps", "renderer", "PreTag", "CodeTag", "code", "astGenerator"];
+var _excluded$1 = ["language", "children", "style", "customStyle", "codeTagProps", "useInlineStyles", "showLineNumbers", "showInlineLineNumbers", "startingLineNumber", "lineNumberContainerStyle", "lineNumberStyle", "wrapLines", "wrapLongLines", "lineProps", "renderer", "PreTag", "CodeTag", "code", "astGenerator"];
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -8137,7 +8077,7 @@ function highlight$1 (defaultAstGenerator, defaultStyle) {
         _ref7$code = _ref7.code,
         code = _ref7$code === void 0 ? (Array.isArray(children) ? children[0] : children) || '' : _ref7$code,
         astGenerator = _ref7.astGenerator,
-        rest = _objectWithoutProperties(_ref7, _excluded);
+        rest = _objectWithoutProperties(_ref7, _excluded$1);
 
     astGenerator = astGenerator || defaultAstGenerator;
     var allLineNumbers = showLineNumbers ? /*#__PURE__*/React.createElement(AllLineNumbers, {
@@ -8212,18 +8152,18 @@ var supportedLanguages = ['abap', 'abnf', 'actionscript', 'ada', 'agda', 'al', '
 
 var hastscript = {exports: {}};
 
-var immutable = extend$1;
+var immutable = extend$3;
 
-var hasOwnProperty = Object.prototype.hasOwnProperty;
+var hasOwnProperty$1 = Object.prototype.hasOwnProperty;
 
-function extend$1() {
+function extend$3() {
     var target = {};
 
     for (var i = 0; i < arguments.length; i++) {
         var source = arguments[i];
 
         for (var key in source) {
-            if (hasOwnProperty.call(source, key)) {
+            if (hasOwnProperty$1.call(source, key)) {
                 target[key] = source[key];
             }
         }
@@ -8252,9 +8192,9 @@ function Schema$2(property, normal, space) {
 var xtend = immutable;
 var Schema$1 = schema$1;
 
-var merge_1 = merge$2;
+var merge_1 = merge$3;
 
-function merge$2(definitions) {
+function merge$3(definitions) {
   var length = definitions.length;
   var property = [];
   var normal = [];
@@ -8836,14 +8776,14 @@ var html$2 = create$2({
   }
 });
 
-var merge$1 = merge_1;
+var merge$2 = merge_1;
 var xlink = xlink$1;
 var xml = xml$1;
 var xmlns = xmlns$1;
 var aria = aria$1;
 var html$1 = html$2;
 
-var html_1$1 = merge$1([xml, xlink, xmlns, aria, html$1]);
+var html_1$1 = merge$2([xml, xlink, xmlns, aria, html$1]);
 
 var normalize$3 = normalize_1;
 var DefinedInfo = definedInfo;
@@ -11298,7 +11238,7 @@ var radic = "√";
 var raemptyv = "⦳";
 var rang = "⟩";
 var rangd = "⦒";
-var range = "⦥";
+var range$1 = "⦥";
 var rangle = "⟩";
 var raqu = "»";
 var raquo = "»";
@@ -13521,7 +13461,7 @@ var require$$0$1 = {
 	raemptyv: raemptyv,
 	rang: rang,
 	rangd: rangd,
-	range: range,
+	range: range$1,
 	rangle: rangle,
 	raqu: raqu,
 	raquo: raquo,
@@ -14008,7 +13948,7 @@ var parseEntities_1 = parseEntities;
 
 var own$1 = {}.hasOwnProperty;
 var fromCharCode = String.fromCharCode;
-var noop$1 = Function.prototype;
+var noop$2 = Function.prototype;
 
 // Default settings.
 var defaults$1 = {
@@ -14155,7 +14095,7 @@ function parse$1(value, settings) {
   prev = now();
 
   // Wrap `handleWarning`.
-  warning = handleWarning ? parseError : noop$1;
+  warning = handleWarning ? parseError : noop$2;
 
   // Ensure the algorithm walks over the first character and the end
   // (inclusive).
@@ -17312,134 +17252,126 @@ function c(Prism) {
   delete Prism.languages.c['boolean'];
 }
 
-var cpp_1;
-var hasRequiredCpp;
-
-function requireCpp () {
-	if (hasRequiredCpp) return cpp_1;
-	hasRequiredCpp = 1;
-	var refractorC = c_1;
-	cpp_1 = cpp;
-	cpp.displayName = 'cpp';
-	cpp.aliases = [];
-	function cpp(Prism) {
-	  Prism.register(refractorC)
-	  ;(function (Prism) {
-	    var keyword =
-	      /\b(?:alignas|alignof|asm|auto|bool|break|case|catch|char|char16_t|char32_t|char8_t|class|co_await|co_return|co_yield|compl|concept|const|const_cast|consteval|constexpr|constinit|continue|decltype|default|delete|do|double|dynamic_cast|else|enum|explicit|export|extern|final|float|for|friend|goto|if|import|inline|int|int16_t|int32_t|int64_t|int8_t|long|module|mutable|namespace|new|noexcept|nullptr|operator|override|private|protected|public|register|reinterpret_cast|requires|return|short|signed|sizeof|static|static_assert|static_cast|struct|switch|template|this|thread_local|throw|try|typedef|typeid|typename|uint16_t|uint32_t|uint64_t|uint8_t|union|unsigned|using|virtual|void|volatile|wchar_t|while)\b/;
-	    var modName = /\b(?!<keyword>)\w+(?:\s*\.\s*\w+)*\b/.source.replace(
-	      /<keyword>/g,
-	      function () {
-	        return keyword.source
-	      }
-	    );
-	    Prism.languages.cpp = Prism.languages.extend('c', {
-	      'class-name': [
-	        {
-	          pattern: RegExp(
-	            /(\b(?:class|concept|enum|struct|typename)\s+)(?!<keyword>)\w+/.source.replace(
-	              /<keyword>/g,
-	              function () {
-	                return keyword.source
-	              }
-	            )
-	          ),
-	          lookbehind: true
-	        }, // This is intended to capture the class name of method implementations like:
-	        //   void foo::bar() const {}
-	        // However! The `foo` in the above example could also be a namespace, so we only capture the class name if
-	        // it starts with an uppercase letter. This approximation should give decent results.
-	        /\b[A-Z]\w*(?=\s*::\s*\w+\s*\()/, // This will capture the class name before destructors like:
-	        //   Foo::~Foo() {}
-	        /\b[A-Z_]\w*(?=\s*::\s*~\w+\s*\()/i, // This also intends to capture the class name of method implementations but here the class has template
-	        // parameters, so it can't be a namespace (until C++ adds generic namespaces).
-	        /\b\w+(?=\s*<(?:[^<>]|<(?:[^<>]|<[^<>]*>)*>)*>\s*::\s*\w+\s*\()/
-	      ],
-	      keyword: keyword,
-	      number: {
-	        pattern:
-	          /(?:\b0b[01']+|\b0x(?:[\da-f']+(?:\.[\da-f']*)?|\.[\da-f']+)(?:p[+-]?[\d']+)?|(?:\b[\d']+(?:\.[\d']*)?|\B\.[\d']+)(?:e[+-]?[\d']+)?)[ful]{0,4}/i,
-	        greedy: true
-	      },
-	      operator:
-	        />>=?|<<=?|->|--|\+\+|&&|\|\||[?:~]|<=>|[-+*/%&|^!=<>]=?|\b(?:and|and_eq|bitand|bitor|not|not_eq|or|or_eq|xor|xor_eq)\b/,
-	      boolean: /\b(?:false|true)\b/
-	    });
-	    Prism.languages.insertBefore('cpp', 'string', {
-	      module: {
-	        // https://en.cppreference.com/w/cpp/language/modules
-	        pattern: RegExp(
-	          /(\b(?:import|module)\s+)/.source +
-	            '(?:' + // header-name
-	            /"(?:\\(?:\r\n|[\s\S])|[^"\\\r\n])*"|<[^<>\r\n]*>/.source +
-	            '|' + // module name or partition or both
-	            /<mod-name>(?:\s*:\s*<mod-name>)?|:\s*<mod-name>/.source.replace(
-	              /<mod-name>/g,
-	              function () {
-	                return modName
-	              }
-	            ) +
-	            ')'
-	        ),
-	        lookbehind: true,
-	        greedy: true,
-	        inside: {
-	          string: /^[<"][\s\S]+/,
-	          operator: /:/,
-	          punctuation: /\./
-	        }
-	      },
-	      'raw-string': {
-	        pattern: /R"([^()\\ ]{0,16})\([\s\S]*?\)\1"/,
-	        alias: 'string',
-	        greedy: true
-	      }
-	    });
-	    Prism.languages.insertBefore('cpp', 'keyword', {
-	      'generic-function': {
-	        pattern: /\b(?!operator\b)[a-z_]\w*\s*<(?:[^<>]|<[^<>]*>)*>(?=\s*\()/i,
-	        inside: {
-	          function: /^\w+/,
-	          generic: {
-	            pattern: /<[\s\S]+/,
-	            alias: 'class-name',
-	            inside: Prism.languages.cpp
-	          }
-	        }
-	      }
-	    });
-	    Prism.languages.insertBefore('cpp', 'operator', {
-	      'double-colon': {
-	        pattern: /::/,
-	        alias: 'punctuation'
-	      }
-	    });
-	    Prism.languages.insertBefore('cpp', 'class-name', {
-	      // the base clause is an optional list of parent classes
-	      // https://en.cppreference.com/w/cpp/language/class
-	      'base-clause': {
-	        pattern:
-	          /(\b(?:class|struct)\s+\w+\s*:\s*)[^;{}"'\s]+(?:\s+[^;{}"'\s]+)*(?=\s*[;{])/,
-	        lookbehind: true,
-	        greedy: true,
-	        inside: Prism.languages.extend('cpp', {})
-	      }
-	    });
-	    Prism.languages.insertBefore(
-	      'inside',
-	      'double-colon',
-	      {
-	        // All untokenized words that are not namespaces should be class names
-	        'class-name': /\b[a-z_]\w*\b(?!\s*::)/i
-	      },
-	      Prism.languages.cpp['base-clause']
-	    );
-	  })(Prism);
-	}
-	return cpp_1;
+var refractorC$1 = c_1;
+var cpp_1 = cpp;
+cpp.displayName = 'cpp';
+cpp.aliases = [];
+function cpp(Prism) {
+  Prism.register(refractorC$1)
+  ;(function (Prism) {
+    var keyword =
+      /\b(?:alignas|alignof|asm|auto|bool|break|case|catch|char|char16_t|char32_t|char8_t|class|co_await|co_return|co_yield|compl|concept|const|const_cast|consteval|constexpr|constinit|continue|decltype|default|delete|do|double|dynamic_cast|else|enum|explicit|export|extern|final|float|for|friend|goto|if|import|inline|int|int16_t|int32_t|int64_t|int8_t|long|module|mutable|namespace|new|noexcept|nullptr|operator|override|private|protected|public|register|reinterpret_cast|requires|return|short|signed|sizeof|static|static_assert|static_cast|struct|switch|template|this|thread_local|throw|try|typedef|typeid|typename|uint16_t|uint32_t|uint64_t|uint8_t|union|unsigned|using|virtual|void|volatile|wchar_t|while)\b/;
+    var modName = /\b(?!<keyword>)\w+(?:\s*\.\s*\w+)*\b/.source.replace(
+      /<keyword>/g,
+      function () {
+        return keyword.source
+      }
+    );
+    Prism.languages.cpp = Prism.languages.extend('c', {
+      'class-name': [
+        {
+          pattern: RegExp(
+            /(\b(?:class|concept|enum|struct|typename)\s+)(?!<keyword>)\w+/.source.replace(
+              /<keyword>/g,
+              function () {
+                return keyword.source
+              }
+            )
+          ),
+          lookbehind: true
+        }, // This is intended to capture the class name of method implementations like:
+        //   void foo::bar() const {}
+        // However! The `foo` in the above example could also be a namespace, so we only capture the class name if
+        // it starts with an uppercase letter. This approximation should give decent results.
+        /\b[A-Z]\w*(?=\s*::\s*\w+\s*\()/, // This will capture the class name before destructors like:
+        //   Foo::~Foo() {}
+        /\b[A-Z_]\w*(?=\s*::\s*~\w+\s*\()/i, // This also intends to capture the class name of method implementations but here the class has template
+        // parameters, so it can't be a namespace (until C++ adds generic namespaces).
+        /\b\w+(?=\s*<(?:[^<>]|<(?:[^<>]|<[^<>]*>)*>)*>\s*::\s*\w+\s*\()/
+      ],
+      keyword: keyword,
+      number: {
+        pattern:
+          /(?:\b0b[01']+|\b0x(?:[\da-f']+(?:\.[\da-f']*)?|\.[\da-f']+)(?:p[+-]?[\d']+)?|(?:\b[\d']+(?:\.[\d']*)?|\B\.[\d']+)(?:e[+-]?[\d']+)?)[ful]{0,4}/i,
+        greedy: true
+      },
+      operator:
+        />>=?|<<=?|->|--|\+\+|&&|\|\||[?:~]|<=>|[-+*/%&|^!=<>]=?|\b(?:and|and_eq|bitand|bitor|not|not_eq|or|or_eq|xor|xor_eq)\b/,
+      boolean: /\b(?:false|true)\b/
+    });
+    Prism.languages.insertBefore('cpp', 'string', {
+      module: {
+        // https://en.cppreference.com/w/cpp/language/modules
+        pattern: RegExp(
+          /(\b(?:import|module)\s+)/.source +
+            '(?:' + // header-name
+            /"(?:\\(?:\r\n|[\s\S])|[^"\\\r\n])*"|<[^<>\r\n]*>/.source +
+            '|' + // module name or partition or both
+            /<mod-name>(?:\s*:\s*<mod-name>)?|:\s*<mod-name>/.source.replace(
+              /<mod-name>/g,
+              function () {
+                return modName
+              }
+            ) +
+            ')'
+        ),
+        lookbehind: true,
+        greedy: true,
+        inside: {
+          string: /^[<"][\s\S]+/,
+          operator: /:/,
+          punctuation: /\./
+        }
+      },
+      'raw-string': {
+        pattern: /R"([^()\\ ]{0,16})\([\s\S]*?\)\1"/,
+        alias: 'string',
+        greedy: true
+      }
+    });
+    Prism.languages.insertBefore('cpp', 'keyword', {
+      'generic-function': {
+        pattern: /\b(?!operator\b)[a-z_]\w*\s*<(?:[^<>]|<[^<>]*>)*>(?=\s*\()/i,
+        inside: {
+          function: /^\w+/,
+          generic: {
+            pattern: /<[\s\S]+/,
+            alias: 'class-name',
+            inside: Prism.languages.cpp
+          }
+        }
+      }
+    });
+    Prism.languages.insertBefore('cpp', 'operator', {
+      'double-colon': {
+        pattern: /::/,
+        alias: 'punctuation'
+      }
+    });
+    Prism.languages.insertBefore('cpp', 'class-name', {
+      // the base clause is an optional list of parent classes
+      // https://en.cppreference.com/w/cpp/language/class
+      'base-clause': {
+        pattern:
+          /(\b(?:class|struct)\s+\w+\s*:\s*)[^;{}"'\s]+(?:\s+[^;{}"'\s]+)*(?=\s*[;{])/,
+        lookbehind: true,
+        greedy: true,
+        inside: Prism.languages.extend('cpp', {})
+      }
+    });
+    Prism.languages.insertBefore(
+      'inside',
+      'double-colon',
+      {
+        // All untokenized words that are not namespaces should be class names
+        'class-name': /\b[a-z_]\w*\b(?!\s*::)/i
+      },
+      Prism.languages.cpp['base-clause']
+    );
+  })(Prism);
 }
 
-var refractorCpp$1 = requireCpp();
+var refractorCpp$1 = cpp_1;
 var arduino_1 = arduino;
 arduino.displayName = 'arduino';
 arduino.aliases = ['ino'];
@@ -19449,7 +19381,7 @@ function cfscript(Prism) {
   Prism.languages.cfc = Prism.languages['cfscript'];
 }
 
-var refractorCpp = requireCpp();
+var refractorCpp = cpp_1;
 var chaiscript_1 = chaiscript;
 chaiscript.displayName = 'chaiscript';
 chaiscript.aliases = [];
@@ -19622,594 +19554,541 @@ function cmake(Prism) {
   };
 }
 
-var cobol_1;
-var hasRequiredCobol;
-
-function requireCobol () {
-	if (hasRequiredCobol) return cobol_1;
-	hasRequiredCobol = 1;
-
-	cobol_1 = cobol;
-	cobol.displayName = 'cobol';
-	cobol.aliases = [];
-	function cobol(Prism) {
-	  Prism.languages.cobol = {
-	    comment: {
-	      pattern: /\*>.*|(^[ \t]*)\*.*/m,
-	      lookbehind: true,
-	      greedy: true
-	    },
-	    string: {
-	      pattern: /[xzgn]?(?:"(?:[^\r\n"]|"")*"(?!")|'(?:[^\r\n']|'')*'(?!'))/i,
-	      greedy: true
-	    },
-	    level: {
-	      pattern: /(^[ \t]*)\d+\b/m,
-	      lookbehind: true,
-	      greedy: true,
-	      alias: 'number'
-	    },
-	    'class-name': {
-	      // https://github.com/antlr/grammars-v4/blob/42edd5b687d183b5fa679e858a82297bd27141e7/cobol85/Cobol85.g4#L1015
-	      pattern:
-	        /(\bpic(?:ture)?\s+)(?:(?:[-\w$/,:*+<>]|\.(?!\s|$))(?:\(\d+\))?)+/i,
-	      lookbehind: true,
-	      inside: {
-	        number: {
-	          pattern: /(\()\d+/,
-	          lookbehind: true
-	        },
-	        punctuation: /[()]/
-	      }
-	    },
-	    keyword: {
-	      pattern:
-	        /(^|[^\w-])(?:ABORT|ACCEPT|ACCESS|ADD|ADDRESS|ADVANCING|AFTER|ALIGNED|ALL|ALPHABET|ALPHABETIC|ALPHABETIC-LOWER|ALPHABETIC-UPPER|ALPHANUMERIC|ALPHANUMERIC-EDITED|ALSO|ALTER|ALTERNATE|ANY|ARE|AREA|AREAS|AS|ASCENDING|ASCII|ASSIGN|ASSOCIATED-DATA|ASSOCIATED-DATA-LENGTH|AT|ATTRIBUTE|AUTHOR|AUTO|AUTO-SKIP|BACKGROUND-COLOR|BACKGROUND-COLOUR|BASIS|BEEP|BEFORE|BEGINNING|BELL|BINARY|BIT|BLANK|BLINK|BLOCK|BOTTOM|BOUNDS|BY|BYFUNCTION|BYTITLE|CALL|CANCEL|CAPABLE|CCSVERSION|CD|CF|CH|CHAINING|CHANGED|CHANNEL|CHARACTER|CHARACTERS|CLASS|CLASS-ID|CLOCK-UNITS|CLOSE|CLOSE-DISPOSITION|COBOL|CODE|CODE-SET|COL|COLLATING|COLUMN|COM-REG|COMMA|COMMITMENT|COMMON|COMMUNICATION|COMP|COMP-1|COMP-2|COMP-3|COMP-4|COMP-5|COMPUTATIONAL|COMPUTATIONAL-1|COMPUTATIONAL-2|COMPUTATIONAL-3|COMPUTATIONAL-4|COMPUTATIONAL-5|COMPUTE|CONFIGURATION|CONTAINS|CONTENT|CONTINUE|CONTROL|CONTROL-POINT|CONTROLS|CONVENTION|CONVERTING|COPY|CORR|CORRESPONDING|COUNT|CRUNCH|CURRENCY|CURSOR|DATA|DATA-BASE|DATE|DATE-COMPILED|DATE-WRITTEN|DAY|DAY-OF-WEEK|DBCS|DE|DEBUG-CONTENTS|DEBUG-ITEM|DEBUG-LINE|DEBUG-NAME|DEBUG-SUB-1|DEBUG-SUB-2|DEBUG-SUB-3|DEBUGGING|DECIMAL-POINT|DECLARATIVES|DEFAULT|DEFAULT-DISPLAY|DEFINITION|DELETE|DELIMITED|DELIMITER|DEPENDING|DESCENDING|DESTINATION|DETAIL|DFHRESP|DFHVALUE|DISABLE|DISK|DISPLAY|DISPLAY-1|DIVIDE|DIVISION|DONTCARE|DOUBLE|DOWN|DUPLICATES|DYNAMIC|EBCDIC|EGCS|EGI|ELSE|EMI|EMPTY-CHECK|ENABLE|END|END-ACCEPT|END-ADD|END-CALL|END-COMPUTE|END-DELETE|END-DIVIDE|END-EVALUATE|END-IF|END-MULTIPLY|END-OF-PAGE|END-PERFORM|END-READ|END-RECEIVE|END-RETURN|END-REWRITE|END-SEARCH|END-START|END-STRING|END-SUBTRACT|END-UNSTRING|END-WRITE|ENDING|ENTER|ENTRY|ENTRY-PROCEDURE|ENVIRONMENT|EOL|EOP|EOS|ERASE|ERROR|ESCAPE|ESI|EVALUATE|EVENT|EVERY|EXCEPTION|EXCLUSIVE|EXHIBIT|EXIT|EXPORT|EXTEND|EXTENDED|EXTERNAL|FD|FILE|FILE-CONTROL|FILLER|FINAL|FIRST|FOOTING|FOR|FOREGROUND-COLOR|FOREGROUND-COLOUR|FROM|FULL|FUNCTION|FUNCTION-POINTER|FUNCTIONNAME|GENERATE|GIVING|GLOBAL|GO|GOBACK|GRID|GROUP|HEADING|HIGH-VALUE|HIGH-VALUES|HIGHLIGHT|I-O|I-O-CONTROL|ID|IDENTIFICATION|IF|IMPLICIT|IMPORT|IN|INDEX|INDEXED|INDICATE|INITIAL|INITIALIZE|INITIATE|INPUT|INPUT-OUTPUT|INSPECT|INSTALLATION|INTEGER|INTO|INVALID|INVOKE|IS|JUST|JUSTIFIED|KANJI|KEPT|KEY|KEYBOARD|LABEL|LANGUAGE|LAST|LB|LD|LEADING|LEFT|LEFTLINE|LENGTH|LENGTH-CHECK|LIBACCESS|LIBPARAMETER|LIBRARY|LIMIT|LIMITS|LINAGE|LINAGE-COUNTER|LINE|LINE-COUNTER|LINES|LINKAGE|LIST|LOCAL|LOCAL-STORAGE|LOCK|LONG-DATE|LONG-TIME|LOW-VALUE|LOW-VALUES|LOWER|LOWLIGHT|MEMORY|MERGE|MESSAGE|MMDDYYYY|MODE|MODULES|MORE-LABELS|MOVE|MULTIPLE|MULTIPLY|NAMED|NATIONAL|NATIONAL-EDITED|NATIVE|NEGATIVE|NETWORK|NEXT|NO|NO-ECHO|NULL|NULLS|NUMBER|NUMERIC|NUMERIC-DATE|NUMERIC-EDITED|NUMERIC-TIME|OBJECT-COMPUTER|OCCURS|ODT|OF|OFF|OMITTED|ON|OPEN|OPTIONAL|ORDER|ORDERLY|ORGANIZATION|OTHER|OUTPUT|OVERFLOW|OVERLINE|OWN|PACKED-DECIMAL|PADDING|PAGE|PAGE-COUNTER|PASSWORD|PERFORM|PF|PH|PIC|PICTURE|PLUS|POINTER|PORT|POSITION|POSITIVE|PRINTER|PRINTING|PRIVATE|PROCEDURE|PROCEDURE-POINTER|PROCEDURES|PROCEED|PROCESS|PROGRAM|PROGRAM-ID|PROGRAM-LIBRARY|PROMPT|PURGE|QUEUE|QUOTE|QUOTES|RANDOM|RD|READ|READER|REAL|RECEIVE|RECEIVED|RECORD|RECORDING|RECORDS|RECURSIVE|REDEFINES|REEL|REF|REFERENCE|REFERENCES|RELATIVE|RELEASE|REMAINDER|REMARKS|REMOTE|REMOVAL|REMOVE|RENAMES|REPLACE|REPLACING|REPORT|REPORTING|REPORTS|REQUIRED|RERUN|RESERVE|RESET|RETURN|RETURN-CODE|RETURNING|REVERSE-VIDEO|REVERSED|REWIND|REWRITE|RF|RH|RIGHT|ROUNDED|RUN|SAME|SAVE|SCREEN|SD|SEARCH|SECTION|SECURE|SECURITY|SEGMENT|SEGMENT-LIMIT|SELECT|SEND|SENTENCE|SEPARATE|SEQUENCE|SEQUENTIAL|SET|SHARED|SHAREDBYALL|SHAREDBYRUNUNIT|SHARING|SHIFT-IN|SHIFT-OUT|SHORT-DATE|SIGN|SIZE|SORT|SORT-CONTROL|SORT-CORE-SIZE|SORT-FILE-SIZE|SORT-MERGE|SORT-MESSAGE|SORT-MODE-SIZE|SORT-RETURN|SOURCE|SOURCE-COMPUTER|SPACE|SPACES|SPECIAL-NAMES|STANDARD|STANDARD-1|STANDARD-2|START|STATUS|STOP|STRING|SUB-QUEUE-1|SUB-QUEUE-2|SUB-QUEUE-3|SUBTRACT|SUM|SUPPRESS|SYMBOL|SYMBOLIC|SYNC|SYNCHRONIZED|TABLE|TALLY|TALLYING|TAPE|TASK|TERMINAL|TERMINATE|TEST|TEXT|THEN|THREAD|THREAD-LOCAL|THROUGH|THRU|TIME|TIMER|TIMES|TITLE|TO|TODAYS-DATE|TODAYS-NAME|TOP|TRAILING|TRUNCATED|TYPE|TYPEDEF|UNDERLINE|UNIT|UNSTRING|UNTIL|UP|UPON|USAGE|USE|USING|VALUE|VALUES|VARYING|VIRTUAL|WAIT|WHEN|WHEN-COMPILED|WITH|WORDS|WORKING-STORAGE|WRITE|YEAR|YYYYDDD|YYYYMMDD|ZERO-FILL|ZEROES|ZEROS)(?![\w-])/i,
-	      lookbehind: true
-	    },
-	    boolean: {
-	      pattern: /(^|[^\w-])(?:false|true)(?![\w-])/i,
-	      lookbehind: true
-	    },
-	    number: {
-	      pattern:
-	        /(^|[^\w-])(?:[+-]?(?:(?:\d+(?:[.,]\d+)?|[.,]\d+)(?:e[+-]?\d+)?|zero))(?![\w-])/i,
-	      lookbehind: true
-	    },
-	    operator: [
-	      /<>|[<>]=?|[=+*/&]/,
-	      {
-	        pattern: /(^|[^\w-])(?:-|and|equal|greater|less|not|or|than)(?![\w-])/i,
-	        lookbehind: true
-	      }
-	    ],
-	    punctuation: /[.:,()]/
-	  };
-	}
-	return cobol_1;
+var cobol_1 = cobol;
+cobol.displayName = 'cobol';
+cobol.aliases = [];
+function cobol(Prism) {
+  Prism.languages.cobol = {
+    comment: {
+      pattern: /\*>.*|(^[ \t]*)\*.*/m,
+      lookbehind: true,
+      greedy: true
+    },
+    string: {
+      pattern: /[xzgn]?(?:"(?:[^\r\n"]|"")*"(?!")|'(?:[^\r\n']|'')*'(?!'))/i,
+      greedy: true
+    },
+    level: {
+      pattern: /(^[ \t]*)\d+\b/m,
+      lookbehind: true,
+      greedy: true,
+      alias: 'number'
+    },
+    'class-name': {
+      // https://github.com/antlr/grammars-v4/blob/42edd5b687d183b5fa679e858a82297bd27141e7/cobol85/Cobol85.g4#L1015
+      pattern:
+        /(\bpic(?:ture)?\s+)(?:(?:[-\w$/,:*+<>]|\.(?!\s|$))(?:\(\d+\))?)+/i,
+      lookbehind: true,
+      inside: {
+        number: {
+          pattern: /(\()\d+/,
+          lookbehind: true
+        },
+        punctuation: /[()]/
+      }
+    },
+    keyword: {
+      pattern:
+        /(^|[^\w-])(?:ABORT|ACCEPT|ACCESS|ADD|ADDRESS|ADVANCING|AFTER|ALIGNED|ALL|ALPHABET|ALPHABETIC|ALPHABETIC-LOWER|ALPHABETIC-UPPER|ALPHANUMERIC|ALPHANUMERIC-EDITED|ALSO|ALTER|ALTERNATE|ANY|ARE|AREA|AREAS|AS|ASCENDING|ASCII|ASSIGN|ASSOCIATED-DATA|ASSOCIATED-DATA-LENGTH|AT|ATTRIBUTE|AUTHOR|AUTO|AUTO-SKIP|BACKGROUND-COLOR|BACKGROUND-COLOUR|BASIS|BEEP|BEFORE|BEGINNING|BELL|BINARY|BIT|BLANK|BLINK|BLOCK|BOTTOM|BOUNDS|BY|BYFUNCTION|BYTITLE|CALL|CANCEL|CAPABLE|CCSVERSION|CD|CF|CH|CHAINING|CHANGED|CHANNEL|CHARACTER|CHARACTERS|CLASS|CLASS-ID|CLOCK-UNITS|CLOSE|CLOSE-DISPOSITION|COBOL|CODE|CODE-SET|COL|COLLATING|COLUMN|COM-REG|COMMA|COMMITMENT|COMMON|COMMUNICATION|COMP|COMP-1|COMP-2|COMP-3|COMP-4|COMP-5|COMPUTATIONAL|COMPUTATIONAL-1|COMPUTATIONAL-2|COMPUTATIONAL-3|COMPUTATIONAL-4|COMPUTATIONAL-5|COMPUTE|CONFIGURATION|CONTAINS|CONTENT|CONTINUE|CONTROL|CONTROL-POINT|CONTROLS|CONVENTION|CONVERTING|COPY|CORR|CORRESPONDING|COUNT|CRUNCH|CURRENCY|CURSOR|DATA|DATA-BASE|DATE|DATE-COMPILED|DATE-WRITTEN|DAY|DAY-OF-WEEK|DBCS|DE|DEBUG-CONTENTS|DEBUG-ITEM|DEBUG-LINE|DEBUG-NAME|DEBUG-SUB-1|DEBUG-SUB-2|DEBUG-SUB-3|DEBUGGING|DECIMAL-POINT|DECLARATIVES|DEFAULT|DEFAULT-DISPLAY|DEFINITION|DELETE|DELIMITED|DELIMITER|DEPENDING|DESCENDING|DESTINATION|DETAIL|DFHRESP|DFHVALUE|DISABLE|DISK|DISPLAY|DISPLAY-1|DIVIDE|DIVISION|DONTCARE|DOUBLE|DOWN|DUPLICATES|DYNAMIC|EBCDIC|EGCS|EGI|ELSE|EMI|EMPTY-CHECK|ENABLE|END|END-ACCEPT|END-ADD|END-CALL|END-COMPUTE|END-DELETE|END-DIVIDE|END-EVALUATE|END-IF|END-MULTIPLY|END-OF-PAGE|END-PERFORM|END-READ|END-RECEIVE|END-RETURN|END-REWRITE|END-SEARCH|END-START|END-STRING|END-SUBTRACT|END-UNSTRING|END-WRITE|ENDING|ENTER|ENTRY|ENTRY-PROCEDURE|ENVIRONMENT|EOL|EOP|EOS|ERASE|ERROR|ESCAPE|ESI|EVALUATE|EVENT|EVERY|EXCEPTION|EXCLUSIVE|EXHIBIT|EXIT|EXPORT|EXTEND|EXTENDED|EXTERNAL|FD|FILE|FILE-CONTROL|FILLER|FINAL|FIRST|FOOTING|FOR|FOREGROUND-COLOR|FOREGROUND-COLOUR|FROM|FULL|FUNCTION|FUNCTION-POINTER|FUNCTIONNAME|GENERATE|GIVING|GLOBAL|GO|GOBACK|GRID|GROUP|HEADING|HIGH-VALUE|HIGH-VALUES|HIGHLIGHT|I-O|I-O-CONTROL|ID|IDENTIFICATION|IF|IMPLICIT|IMPORT|IN|INDEX|INDEXED|INDICATE|INITIAL|INITIALIZE|INITIATE|INPUT|INPUT-OUTPUT|INSPECT|INSTALLATION|INTEGER|INTO|INVALID|INVOKE|IS|JUST|JUSTIFIED|KANJI|KEPT|KEY|KEYBOARD|LABEL|LANGUAGE|LAST|LB|LD|LEADING|LEFT|LEFTLINE|LENGTH|LENGTH-CHECK|LIBACCESS|LIBPARAMETER|LIBRARY|LIMIT|LIMITS|LINAGE|LINAGE-COUNTER|LINE|LINE-COUNTER|LINES|LINKAGE|LIST|LOCAL|LOCAL-STORAGE|LOCK|LONG-DATE|LONG-TIME|LOW-VALUE|LOW-VALUES|LOWER|LOWLIGHT|MEMORY|MERGE|MESSAGE|MMDDYYYY|MODE|MODULES|MORE-LABELS|MOVE|MULTIPLE|MULTIPLY|NAMED|NATIONAL|NATIONAL-EDITED|NATIVE|NEGATIVE|NETWORK|NEXT|NO|NO-ECHO|NULL|NULLS|NUMBER|NUMERIC|NUMERIC-DATE|NUMERIC-EDITED|NUMERIC-TIME|OBJECT-COMPUTER|OCCURS|ODT|OF|OFF|OMITTED|ON|OPEN|OPTIONAL|ORDER|ORDERLY|ORGANIZATION|OTHER|OUTPUT|OVERFLOW|OVERLINE|OWN|PACKED-DECIMAL|PADDING|PAGE|PAGE-COUNTER|PASSWORD|PERFORM|PF|PH|PIC|PICTURE|PLUS|POINTER|PORT|POSITION|POSITIVE|PRINTER|PRINTING|PRIVATE|PROCEDURE|PROCEDURE-POINTER|PROCEDURES|PROCEED|PROCESS|PROGRAM|PROGRAM-ID|PROGRAM-LIBRARY|PROMPT|PURGE|QUEUE|QUOTE|QUOTES|RANDOM|RD|READ|READER|REAL|RECEIVE|RECEIVED|RECORD|RECORDING|RECORDS|RECURSIVE|REDEFINES|REEL|REF|REFERENCE|REFERENCES|RELATIVE|RELEASE|REMAINDER|REMARKS|REMOTE|REMOVAL|REMOVE|RENAMES|REPLACE|REPLACING|REPORT|REPORTING|REPORTS|REQUIRED|RERUN|RESERVE|RESET|RETURN|RETURN-CODE|RETURNING|REVERSE-VIDEO|REVERSED|REWIND|REWRITE|RF|RH|RIGHT|ROUNDED|RUN|SAME|SAVE|SCREEN|SD|SEARCH|SECTION|SECURE|SECURITY|SEGMENT|SEGMENT-LIMIT|SELECT|SEND|SENTENCE|SEPARATE|SEQUENCE|SEQUENTIAL|SET|SHARED|SHAREDBYALL|SHAREDBYRUNUNIT|SHARING|SHIFT-IN|SHIFT-OUT|SHORT-DATE|SIGN|SIZE|SORT|SORT-CONTROL|SORT-CORE-SIZE|SORT-FILE-SIZE|SORT-MERGE|SORT-MESSAGE|SORT-MODE-SIZE|SORT-RETURN|SOURCE|SOURCE-COMPUTER|SPACE|SPACES|SPECIAL-NAMES|STANDARD|STANDARD-1|STANDARD-2|START|STATUS|STOP|STRING|SUB-QUEUE-1|SUB-QUEUE-2|SUB-QUEUE-3|SUBTRACT|SUM|SUPPRESS|SYMBOL|SYMBOLIC|SYNC|SYNCHRONIZED|TABLE|TALLY|TALLYING|TAPE|TASK|TERMINAL|TERMINATE|TEST|TEXT|THEN|THREAD|THREAD-LOCAL|THROUGH|THRU|TIME|TIMER|TIMES|TITLE|TO|TODAYS-DATE|TODAYS-NAME|TOP|TRAILING|TRUNCATED|TYPE|TYPEDEF|UNDERLINE|UNIT|UNSTRING|UNTIL|UP|UPON|USAGE|USE|USING|VALUE|VALUES|VARYING|VIRTUAL|WAIT|WHEN|WHEN-COMPILED|WITH|WORDS|WORKING-STORAGE|WRITE|YEAR|YYYYDDD|YYYYMMDD|ZERO-FILL|ZEROES|ZEROS)(?![\w-])/i,
+      lookbehind: true
+    },
+    boolean: {
+      pattern: /(^|[^\w-])(?:false|true)(?![\w-])/i,
+      lookbehind: true
+    },
+    number: {
+      pattern:
+        /(^|[^\w-])(?:[+-]?(?:(?:\d+(?:[.,]\d+)?|[.,]\d+)(?:e[+-]?\d+)?|zero))(?![\w-])/i,
+      lookbehind: true
+    },
+    operator: [
+      /<>|[<>]=?|[=+*/&]/,
+      {
+        pattern: /(^|[^\w-])(?:-|and|equal|greater|less|not|or|than)(?![\w-])/i,
+        lookbehind: true
+      }
+    ],
+    punctuation: /[.:,()]/
+  };
 }
 
-var coffeescript_1;
-var hasRequiredCoffeescript;
-
-function requireCoffeescript () {
-	if (hasRequiredCoffeescript) return coffeescript_1;
-	hasRequiredCoffeescript = 1;
-
-	coffeescript_1 = coffeescript;
-	coffeescript.displayName = 'coffeescript';
-	coffeescript.aliases = ['coffee'];
-	function coffeescript(Prism) {
+var coffeescript_1 = coffeescript;
+coffeescript.displayName = 'coffeescript';
+coffeescript.aliases = ['coffee'];
+function coffeescript(Prism) {
 (function (Prism) {
-	    // Ignore comments starting with { to privilege string interpolation highlighting
-	    var comment = /#(?!\{).+/;
-	    var interpolation = {
-	      pattern: /#\{[^}]+\}/,
-	      alias: 'variable'
-	    };
-	    Prism.languages.coffeescript = Prism.languages.extend('javascript', {
-	      comment: comment,
-	      string: [
-	        // Strings are multiline
-	        {
-	          pattern: /'(?:\\[\s\S]|[^\\'])*'/,
-	          greedy: true
-	        },
-	        {
-	          // Strings are multiline
-	          pattern: /"(?:\\[\s\S]|[^\\"])*"/,
-	          greedy: true,
-	          inside: {
-	            interpolation: interpolation
-	          }
-	        }
-	      ],
-	      keyword:
-	        /\b(?:and|break|by|catch|class|continue|debugger|delete|do|each|else|extend|extends|false|finally|for|if|in|instanceof|is|isnt|let|loop|namespace|new|no|not|null|of|off|on|or|own|return|super|switch|then|this|throw|true|try|typeof|undefined|unless|until|when|while|window|with|yes|yield)\b/,
-	      'class-member': {
-	        pattern: /@(?!\d)\w+/,
-	        alias: 'variable'
-	      }
-	    });
-	    Prism.languages.insertBefore('coffeescript', 'comment', {
-	      'multiline-comment': {
-	        pattern: /###[\s\S]+?###/,
-	        alias: 'comment'
-	      },
-	      // Block regexp can contain comments and interpolation
-	      'block-regex': {
-	        pattern: /\/{3}[\s\S]*?\/{3}/,
-	        alias: 'regex',
-	        inside: {
-	          comment: comment,
-	          interpolation: interpolation
-	        }
-	      }
-	    });
-	    Prism.languages.insertBefore('coffeescript', 'string', {
-	      'inline-javascript': {
-	        pattern: /`(?:\\[\s\S]|[^\\`])*`/,
-	        inside: {
-	          delimiter: {
-	            pattern: /^`|`$/,
-	            alias: 'punctuation'
-	          },
-	          script: {
-	            pattern: /[\s\S]+/,
-	            alias: 'language-javascript',
-	            inside: Prism.languages.javascript
-	          }
-	        }
-	      },
-	      // Block strings
-	      'multiline-string': [
-	        {
-	          pattern: /'''[\s\S]*?'''/,
-	          greedy: true,
-	          alias: 'string'
-	        },
-	        {
-	          pattern: /"""[\s\S]*?"""/,
-	          greedy: true,
-	          alias: 'string',
-	          inside: {
-	            interpolation: interpolation
-	          }
-	        }
-	      ]
-	    });
-	    Prism.languages.insertBefore('coffeescript', 'keyword', {
-	      // Object property
-	      property: /(?!\d)\w+(?=\s*:(?!:))/
-	    });
-	    delete Prism.languages.coffeescript['template-string'];
-	    Prism.languages.coffee = Prism.languages.coffeescript;
-	  })(Prism);
-	}
-	return coffeescript_1;
+    // Ignore comments starting with { to privilege string interpolation highlighting
+    var comment = /#(?!\{).+/;
+    var interpolation = {
+      pattern: /#\{[^}]+\}/,
+      alias: 'variable'
+    };
+    Prism.languages.coffeescript = Prism.languages.extend('javascript', {
+      comment: comment,
+      string: [
+        // Strings are multiline
+        {
+          pattern: /'(?:\\[\s\S]|[^\\'])*'/,
+          greedy: true
+        },
+        {
+          // Strings are multiline
+          pattern: /"(?:\\[\s\S]|[^\\"])*"/,
+          greedy: true,
+          inside: {
+            interpolation: interpolation
+          }
+        }
+      ],
+      keyword:
+        /\b(?:and|break|by|catch|class|continue|debugger|delete|do|each|else|extend|extends|false|finally|for|if|in|instanceof|is|isnt|let|loop|namespace|new|no|not|null|of|off|on|or|own|return|super|switch|then|this|throw|true|try|typeof|undefined|unless|until|when|while|window|with|yes|yield)\b/,
+      'class-member': {
+        pattern: /@(?!\d)\w+/,
+        alias: 'variable'
+      }
+    });
+    Prism.languages.insertBefore('coffeescript', 'comment', {
+      'multiline-comment': {
+        pattern: /###[\s\S]+?###/,
+        alias: 'comment'
+      },
+      // Block regexp can contain comments and interpolation
+      'block-regex': {
+        pattern: /\/{3}[\s\S]*?\/{3}/,
+        alias: 'regex',
+        inside: {
+          comment: comment,
+          interpolation: interpolation
+        }
+      }
+    });
+    Prism.languages.insertBefore('coffeescript', 'string', {
+      'inline-javascript': {
+        pattern: /`(?:\\[\s\S]|[^\\`])*`/,
+        inside: {
+          delimiter: {
+            pattern: /^`|`$/,
+            alias: 'punctuation'
+          },
+          script: {
+            pattern: /[\s\S]+/,
+            alias: 'language-javascript',
+            inside: Prism.languages.javascript
+          }
+        }
+      },
+      // Block strings
+      'multiline-string': [
+        {
+          pattern: /'''[\s\S]*?'''/,
+          greedy: true,
+          alias: 'string'
+        },
+        {
+          pattern: /"""[\s\S]*?"""/,
+          greedy: true,
+          alias: 'string',
+          inside: {
+            interpolation: interpolation
+          }
+        }
+      ]
+    });
+    Prism.languages.insertBefore('coffeescript', 'keyword', {
+      // Object property
+      property: /(?!\d)\w+(?=\s*:(?!:))/
+    });
+    delete Prism.languages.coffeescript['template-string'];
+    Prism.languages.coffee = Prism.languages.coffeescript;
+  })(Prism);
 }
 
-var concurnas_1;
-var hasRequiredConcurnas;
-
-function requireConcurnas () {
-	if (hasRequiredConcurnas) return concurnas_1;
-	hasRequiredConcurnas = 1;
-
-	concurnas_1 = concurnas;
-	concurnas.displayName = 'concurnas';
-	concurnas.aliases = ['conc'];
-	function concurnas(Prism) {
-	  Prism.languages.concurnas = {
-	    comment: {
-	      pattern: /(^|[^\\])(?:\/\*[\s\S]*?(?:\*\/|$)|\/\/.*)/,
-	      lookbehind: true,
-	      greedy: true
-	    },
-	    langext: {
-	      pattern: /\b\w+\s*\|\|[\s\S]+?\|\|/,
-	      greedy: true,
-	      inside: {
-	        'class-name': /^\w+/,
-	        string: {
-	          pattern: /(^\s*\|\|)[\s\S]+(?=\|\|$)/,
-	          lookbehind: true
-	        },
-	        punctuation: /\|\|/
-	      }
-	    },
-	    function: {
-	      pattern: /((?:^|\s)def[ \t]+)[a-zA-Z_]\w*(?=\s*\()/,
-	      lookbehind: true
-	    },
-	    keyword:
-	      /\b(?:abstract|actor|also|annotation|assert|async|await|bool|boolean|break|byte|case|catch|changed|char|class|closed|constant|continue|def|default|del|double|elif|else|enum|every|extends|false|finally|float|for|from|global|gpudef|gpukernel|if|import|in|init|inject|int|lambda|local|long|loop|match|new|nodefault|null|of|onchange|open|out|override|package|parfor|parforsync|post|pre|private|protected|provide|provider|public|return|shared|short|single|size_t|sizeof|super|sync|this|throw|trait|trans|transient|true|try|typedef|unchecked|using|val|var|void|while|with)\b/,
-	    boolean: /\b(?:false|true)\b/,
-	    number:
-	      /\b0b[01][01_]*L?\b|\b0x(?:[\da-f_]*\.)?[\da-f_p+-]+\b|(?:\b\d[\d_]*(?:\.[\d_]*)?|\B\.\d[\d_]*)(?:e[+-]?\d[\d_]*)?[dfls]?/i,
-	    punctuation: /[{}[\];(),.:]/,
-	    operator:
-	      /<==|>==|=>|->|<-|<>|&==|&<>|\?:?|\.\?|\+\+|--|[-+*/=<>]=?|[!^~]|\b(?:and|as|band|bor|bxor|comp|is|isnot|mod|or)\b=?/,
-	    annotation: {
-	      pattern: /@(?:\w+:)?(?:\w+|\[[^\]]+\])?/,
-	      alias: 'builtin'
-	    }
-	  };
-	  Prism.languages.insertBefore('concurnas', 'langext', {
-	    'regex-literal': {
-	      pattern: /\br("|')(?:\\.|(?!\1)[^\\\r\n])*\1/,
-	      greedy: true,
-	      inside: {
-	        interpolation: {
-	          pattern:
-	            /((?:^|[^\\])(?:\\{2})*)\{(?:[^{}]|\{(?:[^{}]|\{[^}]*\})*\})+\}/,
-	          lookbehind: true,
-	          inside: Prism.languages.concurnas
-	        },
-	        regex: /[\s\S]+/
-	      }
-	    },
-	    'string-literal': {
-	      pattern: /(?:\B|\bs)("|')(?:\\.|(?!\1)[^\\\r\n])*\1/,
-	      greedy: true,
-	      inside: {
-	        interpolation: {
-	          pattern:
-	            /((?:^|[^\\])(?:\\{2})*)\{(?:[^{}]|\{(?:[^{}]|\{[^}]*\})*\})+\}/,
-	          lookbehind: true,
-	          inside: Prism.languages.concurnas
-	        },
-	        string: /[\s\S]+/
-	      }
-	    }
-	  });
-	  Prism.languages.conc = Prism.languages.concurnas;
-	}
-	return concurnas_1;
+var concurnas_1 = concurnas;
+concurnas.displayName = 'concurnas';
+concurnas.aliases = ['conc'];
+function concurnas(Prism) {
+  Prism.languages.concurnas = {
+    comment: {
+      pattern: /(^|[^\\])(?:\/\*[\s\S]*?(?:\*\/|$)|\/\/.*)/,
+      lookbehind: true,
+      greedy: true
+    },
+    langext: {
+      pattern: /\b\w+\s*\|\|[\s\S]+?\|\|/,
+      greedy: true,
+      inside: {
+        'class-name': /^\w+/,
+        string: {
+          pattern: /(^\s*\|\|)[\s\S]+(?=\|\|$)/,
+          lookbehind: true
+        },
+        punctuation: /\|\|/
+      }
+    },
+    function: {
+      pattern: /((?:^|\s)def[ \t]+)[a-zA-Z_]\w*(?=\s*\()/,
+      lookbehind: true
+    },
+    keyword:
+      /\b(?:abstract|actor|also|annotation|assert|async|await|bool|boolean|break|byte|case|catch|changed|char|class|closed|constant|continue|def|default|del|double|elif|else|enum|every|extends|false|finally|float|for|from|global|gpudef|gpukernel|if|import|in|init|inject|int|lambda|local|long|loop|match|new|nodefault|null|of|onchange|open|out|override|package|parfor|parforsync|post|pre|private|protected|provide|provider|public|return|shared|short|single|size_t|sizeof|super|sync|this|throw|trait|trans|transient|true|try|typedef|unchecked|using|val|var|void|while|with)\b/,
+    boolean: /\b(?:false|true)\b/,
+    number:
+      /\b0b[01][01_]*L?\b|\b0x(?:[\da-f_]*\.)?[\da-f_p+-]+\b|(?:\b\d[\d_]*(?:\.[\d_]*)?|\B\.\d[\d_]*)(?:e[+-]?\d[\d_]*)?[dfls]?/i,
+    punctuation: /[{}[\];(),.:]/,
+    operator:
+      /<==|>==|=>|->|<-|<>|&==|&<>|\?:?|\.\?|\+\+|--|[-+*/=<>]=?|[!^~]|\b(?:and|as|band|bor|bxor|comp|is|isnot|mod|or)\b=?/,
+    annotation: {
+      pattern: /@(?:\w+:)?(?:\w+|\[[^\]]+\])?/,
+      alias: 'builtin'
+    }
+  };
+  Prism.languages.insertBefore('concurnas', 'langext', {
+    'regex-literal': {
+      pattern: /\br("|')(?:\\.|(?!\1)[^\\\r\n])*\1/,
+      greedy: true,
+      inside: {
+        interpolation: {
+          pattern:
+            /((?:^|[^\\])(?:\\{2})*)\{(?:[^{}]|\{(?:[^{}]|\{[^}]*\})*\})+\}/,
+          lookbehind: true,
+          inside: Prism.languages.concurnas
+        },
+        regex: /[\s\S]+/
+      }
+    },
+    'string-literal': {
+      pattern: /(?:\B|\bs)("|')(?:\\.|(?!\1)[^\\\r\n])*\1/,
+      greedy: true,
+      inside: {
+        interpolation: {
+          pattern:
+            /((?:^|[^\\])(?:\\{2})*)\{(?:[^{}]|\{(?:[^{}]|\{[^}]*\})*\})+\}/,
+          lookbehind: true,
+          inside: Prism.languages.concurnas
+        },
+        string: /[\s\S]+/
+      }
+    }
+  });
+  Prism.languages.conc = Prism.languages.concurnas;
 }
 
-var coq_1;
-var hasRequiredCoq;
-
-function requireCoq () {
-	if (hasRequiredCoq) return coq_1;
-	hasRequiredCoq = 1;
-
-	coq_1 = coq;
-	coq.displayName = 'coq';
-	coq.aliases = [];
-	function coq(Prism) {
+var coq_1 = coq;
+coq.displayName = 'coq';
+coq.aliases = [];
+function coq(Prism) {
 (function (Prism) {
-	    // https://github.com/coq/coq
-	    var commentSource = /\(\*(?:[^(*]|\((?!\*)|\*(?!\))|<self>)*\*\)/.source;
-	    for (var i = 0; i < 2; i++) {
-	      commentSource = commentSource.replace(/<self>/g, function () {
-	        return commentSource
-	      });
-	    }
-	    commentSource = commentSource.replace(/<self>/g, '[]');
-	    Prism.languages.coq = {
-	      comment: RegExp(commentSource),
-	      string: {
-	        pattern: /"(?:[^"]|"")*"(?!")/,
-	        greedy: true
-	      },
-	      attribute: [
-	        {
-	          pattern: RegExp(
-	            /#\[(?:[^\[\]("]|"(?:[^"]|"")*"(?!")|\((?!\*)|<comment>)*\]/.source.replace(
-	              /<comment>/g,
-	              function () {
-	                return commentSource
-	              }
-	            )
-	          ),
-	          greedy: true,
-	          alias: 'attr-name',
-	          inside: {
-	            comment: RegExp(commentSource),
-	            string: {
-	              pattern: /"(?:[^"]|"")*"(?!")/,
-	              greedy: true
-	            },
-	            operator: /=/,
-	            punctuation: /^#\[|\]$|[,()]/
-	          }
-	        },
-	        {
-	          pattern:
-	            /\b(?:Cumulative|Global|Local|Monomorphic|NonCumulative|Polymorphic|Private|Program)\b/,
-	          alias: 'attr-name'
-	        }
-	      ],
-	      keyword:
-	        /\b(?:Abort|About|Add|Admit|Admitted|All|Arguments|As|Assumptions|Axiom|Axioms|Back|BackTo|Backtrace|BinOp|BinOpSpec|BinRel|Bind|Blacklist|Canonical|Case|Cd|Check|Class|Classes|Close|CoFixpoint|CoInductive|Coercion|Coercions|Collection|Combined|Compute|Conjecture|Conjectures|Constant|Constants|Constraint|Constructors|Context|Corollary|Create|CstOp|Custom|Cut|Debug|Declare|Defined|Definition|Delimit|Dependencies|Dependent|Derive|Diffs|Drop|Elimination|End|Entry|Equality|Eval|Example|Existential|Existentials|Existing|Export|Extern|Extraction|Fact|Fail|Field|File|Firstorder|Fixpoint|Flags|Focus|From|Funclass|Function|Functional|GC|Generalizable|Goal|Grab|Grammar|Graph|Guarded|Haskell|Heap|Hide|Hint|HintDb|Hints|Hypotheses|Hypothesis|IF|Identity|Immediate|Implicit|Implicits|Import|Include|Induction|Inductive|Infix|Info|Initial|InjTyp|Inline|Inspect|Instance|Instances|Intro|Intros|Inversion|Inversion_clear|JSON|Language|Left|Lemma|Let|Lia|Libraries|Library|Load|LoadPath|Locate|Ltac|Ltac2|ML|Match|Method|Minimality|Module|Modules|Morphism|Next|NoInline|Notation|Number|OCaml|Obligation|Obligations|Opaque|Open|Optimize|Parameter|Parameters|Parametric|Path|Paths|Prenex|Preterm|Primitive|Print|Profile|Projections|Proof|Prop|PropBinOp|PropOp|PropUOp|Property|Proposition|Pwd|Qed|Quit|Rec|Record|Recursive|Redirect|Reduction|Register|Relation|Remark|Remove|Require|Reserved|Reset|Resolve|Restart|Rewrite|Right|Ring|Rings|SProp|Saturate|Save|Scheme|Scope|Scopes|Search|SearchHead|SearchPattern|SearchRewrite|Section|Separate|Set|Setoid|Show|Signatures|Solve|Solver|Sort|Sortclass|Sorted|Spec|Step|Strategies|Strategy|String|Structure|SubClass|Subgraph|SuchThat|Tactic|Term|TestCompile|Theorem|Time|Timeout|To|Transparent|Type|Typeclasses|Types|Typing|UnOp|UnOpSpec|Undelimit|Undo|Unfocus|Unfocused|Unfold|Universe|Universes|Unshelve|Variable|Variables|Variant|Verbose|View|Visibility|Zify|_|apply|as|at|by|cofix|else|end|exists|exists2|fix|for|forall|fun|if|in|let|match|measure|move|removed|return|struct|then|using|wf|where|with)\b/,
-	      number:
-	        /\b(?:0x[a-f0-9][a-f0-9_]*(?:\.[a-f0-9_]+)?(?:p[+-]?\d[\d_]*)?|\d[\d_]*(?:\.[\d_]+)?(?:e[+-]?\d[\d_]*)?)\b/i,
-	      punct: {
-	        pattern: /@\{|\{\||\[=|:>/,
-	        alias: 'punctuation'
-	      },
-	      operator:
-	        /\/\\|\\\/|\.{2,3}|:{1,2}=|\*\*|[-=]>|<(?:->?|[+:=>]|<:)|>(?:=|->)|\|[-|]?|[-!%&*+/<=>?@^~']/,
-	      punctuation: /\.\(|`\(|@\{|`\{|\{\||\[=|:>|[:.,;(){}\[\]]/
-	    };
-	  })(Prism);
-	}
-	return coq_1;
+    // https://github.com/coq/coq
+    var commentSource = /\(\*(?:[^(*]|\((?!\*)|\*(?!\))|<self>)*\*\)/.source;
+    for (var i = 0; i < 2; i++) {
+      commentSource = commentSource.replace(/<self>/g, function () {
+        return commentSource
+      });
+    }
+    commentSource = commentSource.replace(/<self>/g, '[]');
+    Prism.languages.coq = {
+      comment: RegExp(commentSource),
+      string: {
+        pattern: /"(?:[^"]|"")*"(?!")/,
+        greedy: true
+      },
+      attribute: [
+        {
+          pattern: RegExp(
+            /#\[(?:[^\[\]("]|"(?:[^"]|"")*"(?!")|\((?!\*)|<comment>)*\]/.source.replace(
+              /<comment>/g,
+              function () {
+                return commentSource
+              }
+            )
+          ),
+          greedy: true,
+          alias: 'attr-name',
+          inside: {
+            comment: RegExp(commentSource),
+            string: {
+              pattern: /"(?:[^"]|"")*"(?!")/,
+              greedy: true
+            },
+            operator: /=/,
+            punctuation: /^#\[|\]$|[,()]/
+          }
+        },
+        {
+          pattern:
+            /\b(?:Cumulative|Global|Local|Monomorphic|NonCumulative|Polymorphic|Private|Program)\b/,
+          alias: 'attr-name'
+        }
+      ],
+      keyword:
+        /\b(?:Abort|About|Add|Admit|Admitted|All|Arguments|As|Assumptions|Axiom|Axioms|Back|BackTo|Backtrace|BinOp|BinOpSpec|BinRel|Bind|Blacklist|Canonical|Case|Cd|Check|Class|Classes|Close|CoFixpoint|CoInductive|Coercion|Coercions|Collection|Combined|Compute|Conjecture|Conjectures|Constant|Constants|Constraint|Constructors|Context|Corollary|Create|CstOp|Custom|Cut|Debug|Declare|Defined|Definition|Delimit|Dependencies|Dependent|Derive|Diffs|Drop|Elimination|End|Entry|Equality|Eval|Example|Existential|Existentials|Existing|Export|Extern|Extraction|Fact|Fail|Field|File|Firstorder|Fixpoint|Flags|Focus|From|Funclass|Function|Functional|GC|Generalizable|Goal|Grab|Grammar|Graph|Guarded|Haskell|Heap|Hide|Hint|HintDb|Hints|Hypotheses|Hypothesis|IF|Identity|Immediate|Implicit|Implicits|Import|Include|Induction|Inductive|Infix|Info|Initial|InjTyp|Inline|Inspect|Instance|Instances|Intro|Intros|Inversion|Inversion_clear|JSON|Language|Left|Lemma|Let|Lia|Libraries|Library|Load|LoadPath|Locate|Ltac|Ltac2|ML|Match|Method|Minimality|Module|Modules|Morphism|Next|NoInline|Notation|Number|OCaml|Obligation|Obligations|Opaque|Open|Optimize|Parameter|Parameters|Parametric|Path|Paths|Prenex|Preterm|Primitive|Print|Profile|Projections|Proof|Prop|PropBinOp|PropOp|PropUOp|Property|Proposition|Pwd|Qed|Quit|Rec|Record|Recursive|Redirect|Reduction|Register|Relation|Remark|Remove|Require|Reserved|Reset|Resolve|Restart|Rewrite|Right|Ring|Rings|SProp|Saturate|Save|Scheme|Scope|Scopes|Search|SearchHead|SearchPattern|SearchRewrite|Section|Separate|Set|Setoid|Show|Signatures|Solve|Solver|Sort|Sortclass|Sorted|Spec|Step|Strategies|Strategy|String|Structure|SubClass|Subgraph|SuchThat|Tactic|Term|TestCompile|Theorem|Time|Timeout|To|Transparent|Type|Typeclasses|Types|Typing|UnOp|UnOpSpec|Undelimit|Undo|Unfocus|Unfocused|Unfold|Universe|Universes|Unshelve|Variable|Variables|Variant|Verbose|View|Visibility|Zify|_|apply|as|at|by|cofix|else|end|exists|exists2|fix|for|forall|fun|if|in|let|match|measure|move|removed|return|struct|then|using|wf|where|with)\b/,
+      number:
+        /\b(?:0x[a-f0-9][a-f0-9_]*(?:\.[a-f0-9_]+)?(?:p[+-]?\d[\d_]*)?|\d[\d_]*(?:\.[\d_]+)?(?:e[+-]?\d[\d_]*)?)\b/i,
+      punct: {
+        pattern: /@\{|\{\||\[=|:>/,
+        alias: 'punctuation'
+      },
+      operator:
+        /\/\\|\\\/|\.{2,3}|:{1,2}=|\*\*|[-=]>|<(?:->?|[+:=>]|<:)|>(?:=|->)|\|[-|]?|[-!%&*+/<=>?@^~']/,
+      punctuation: /\.\(|`\(|@\{|`\{|\{\||\[=|:>|[:.,;(){}\[\]]/
+    };
+  })(Prism);
 }
 
-var ruby_1;
-var hasRequiredRuby;
-
-function requireRuby () {
-	if (hasRequiredRuby) return ruby_1;
-	hasRequiredRuby = 1;
-
-	ruby_1 = ruby;
-	ruby.displayName = 'ruby';
-	ruby.aliases = ['rb'];
-	function ruby(Prism) {
+var ruby_1 = ruby;
+ruby.displayName = 'ruby';
+ruby.aliases = ['rb'];
+function ruby(Prism) {
 (function (Prism) {
-	    Prism.languages.ruby = Prism.languages.extend('clike', {
-	      comment: {
-	        pattern: /#.*|^=begin\s[\s\S]*?^=end/m,
-	        greedy: true
-	      },
-	      'class-name': {
-	        pattern:
-	          /(\b(?:class|module)\s+|\bcatch\s+\()[\w.\\]+|\b[A-Z_]\w*(?=\s*\.\s*new\b)/,
-	        lookbehind: true,
-	        inside: {
-	          punctuation: /[.\\]/
-	        }
-	      },
-	      keyword:
-	        /\b(?:BEGIN|END|alias|and|begin|break|case|class|def|define_method|defined|do|each|else|elsif|end|ensure|extend|for|if|in|include|module|new|next|nil|not|or|prepend|private|protected|public|raise|redo|require|rescue|retry|return|self|super|then|throw|undef|unless|until|when|while|yield)\b/,
-	      operator:
-	        /\.{2,3}|&\.|===|<?=>|[!=]?~|(?:&&|\|\||<<|>>|\*\*|[+\-*/%<>!^&|=])=?|[?:]/,
-	      punctuation: /[(){}[\].,;]/
-	    });
-	    Prism.languages.insertBefore('ruby', 'operator', {
-	      'double-colon': {
-	        pattern: /::/,
-	        alias: 'punctuation'
-	      }
-	    });
-	    var interpolation = {
-	      pattern: /((?:^|[^\\])(?:\\{2})*)#\{(?:[^{}]|\{[^{}]*\})*\}/,
-	      lookbehind: true,
-	      inside: {
-	        content: {
-	          pattern: /^(#\{)[\s\S]+(?=\}$)/,
-	          lookbehind: true,
-	          inside: Prism.languages.ruby
-	        },
-	        delimiter: {
-	          pattern: /^#\{|\}$/,
-	          alias: 'punctuation'
-	        }
-	      }
-	    };
-	    delete Prism.languages.ruby.function;
-	    var percentExpression =
-	      '(?:' +
-	      [
-	        /([^a-zA-Z0-9\s{(\[<=])(?:(?!\1)[^\\]|\\[\s\S])*\1/.source,
-	        /\((?:[^()\\]|\\[\s\S]|\((?:[^()\\]|\\[\s\S])*\))*\)/.source,
-	        /\{(?:[^{}\\]|\\[\s\S]|\{(?:[^{}\\]|\\[\s\S])*\})*\}/.source,
-	        /\[(?:[^\[\]\\]|\\[\s\S]|\[(?:[^\[\]\\]|\\[\s\S])*\])*\]/.source,
-	        /<(?:[^<>\\]|\\[\s\S]|<(?:[^<>\\]|\\[\s\S])*>)*>/.source
-	      ].join('|') +
-	      ')';
-	    var symbolName =
-	      /(?:"(?:\\.|[^"\\\r\n])*"|(?:\b[a-zA-Z_]\w*|[^\s\0-\x7F]+)[?!]?|\$.)/
-	        .source;
-	    Prism.languages.insertBefore('ruby', 'keyword', {
-	      'regex-literal': [
-	        {
-	          pattern: RegExp(
-	            /%r/.source + percentExpression + /[egimnosux]{0,6}/.source
-	          ),
-	          greedy: true,
-	          inside: {
-	            interpolation: interpolation,
-	            regex: /[\s\S]+/
-	          }
-	        },
-	        {
-	          pattern:
-	            /(^|[^/])\/(?!\/)(?:\[[^\r\n\]]+\]|\\.|[^[/\\\r\n])+\/[egimnosux]{0,6}(?=\s*(?:$|[\r\n,.;})#]))/,
-	          lookbehind: true,
-	          greedy: true,
-	          inside: {
-	            interpolation: interpolation,
-	            regex: /[\s\S]+/
-	          }
-	        }
-	      ],
-	      variable: /[@$]+[a-zA-Z_]\w*(?:[?!]|\b)/,
-	      symbol: [
-	        {
-	          pattern: RegExp(/(^|[^:]):/.source + symbolName),
-	          lookbehind: true,
-	          greedy: true
-	        },
-	        {
-	          pattern: RegExp(
-	            /([\r\n{(,][ \t]*)/.source + symbolName + /(?=:(?!:))/.source
-	          ),
-	          lookbehind: true,
-	          greedy: true
-	        }
-	      ],
-	      'method-definition': {
-	        pattern: /(\bdef\s+)\w+(?:\s*\.\s*\w+)?/,
-	        lookbehind: true,
-	        inside: {
-	          function: /\b\w+$/,
-	          keyword: /^self\b/,
-	          'class-name': /^\w+/,
-	          punctuation: /\./
-	        }
-	      }
-	    });
-	    Prism.languages.insertBefore('ruby', 'string', {
-	      'string-literal': [
-	        {
-	          pattern: RegExp(/%[qQiIwWs]?/.source + percentExpression),
-	          greedy: true,
-	          inside: {
-	            interpolation: interpolation,
-	            string: /[\s\S]+/
-	          }
-	        },
-	        {
-	          pattern:
-	            /("|')(?:#\{[^}]+\}|#(?!\{)|\\(?:\r\n|[\s\S])|(?!\1)[^\\#\r\n])*\1/,
-	          greedy: true,
-	          inside: {
-	            interpolation: interpolation,
-	            string: /[\s\S]+/
-	          }
-	        },
-	        {
-	          pattern: /<<[-~]?([a-z_]\w*)[\r\n](?:.*[\r\n])*?[\t ]*\1/i,
-	          alias: 'heredoc-string',
-	          greedy: true,
-	          inside: {
-	            delimiter: {
-	              pattern: /^<<[-~]?[a-z_]\w*|\b[a-z_]\w*$/i,
-	              inside: {
-	                symbol: /\b\w+/,
-	                punctuation: /^<<[-~]?/
-	              }
-	            },
-	            interpolation: interpolation,
-	            string: /[\s\S]+/
-	          }
-	        },
-	        {
-	          pattern: /<<[-~]?'([a-z_]\w*)'[\r\n](?:.*[\r\n])*?[\t ]*\1/i,
-	          alias: 'heredoc-string',
-	          greedy: true,
-	          inside: {
-	            delimiter: {
-	              pattern: /^<<[-~]?'[a-z_]\w*'|\b[a-z_]\w*$/i,
-	              inside: {
-	                symbol: /\b\w+/,
-	                punctuation: /^<<[-~]?'|'$/
-	              }
-	            },
-	            string: /[\s\S]+/
-	          }
-	        }
-	      ],
-	      'command-literal': [
-	        {
-	          pattern: RegExp(/%x/.source + percentExpression),
-	          greedy: true,
-	          inside: {
-	            interpolation: interpolation,
-	            command: {
-	              pattern: /[\s\S]+/,
-	              alias: 'string'
-	            }
-	          }
-	        },
-	        {
-	          pattern: /`(?:#\{[^}]+\}|#(?!\{)|\\(?:\r\n|[\s\S])|[^\\`#\r\n])*`/,
-	          greedy: true,
-	          inside: {
-	            interpolation: interpolation,
-	            command: {
-	              pattern: /[\s\S]+/,
-	              alias: 'string'
-	            }
-	          }
-	        }
-	      ]
-	    });
-	    delete Prism.languages.ruby.string;
-	    Prism.languages.insertBefore('ruby', 'number', {
-	      builtin:
-	        /\b(?:Array|Bignum|Binding|Class|Continuation|Dir|Exception|FalseClass|File|Fixnum|Float|Hash|IO|Integer|MatchData|Method|Module|NilClass|Numeric|Object|Proc|Range|Regexp|Stat|String|Struct|Symbol|TMS|Thread|ThreadGroup|Time|TrueClass)\b/,
-	      constant: /\b[A-Z][A-Z0-9_]*(?:[?!]|\b)/
-	    });
-	    Prism.languages.rb = Prism.languages.ruby;
-	  })(Prism);
-	}
-	return ruby_1;
+    Prism.languages.ruby = Prism.languages.extend('clike', {
+      comment: {
+        pattern: /#.*|^=begin\s[\s\S]*?^=end/m,
+        greedy: true
+      },
+      'class-name': {
+        pattern:
+          /(\b(?:class|module)\s+|\bcatch\s+\()[\w.\\]+|\b[A-Z_]\w*(?=\s*\.\s*new\b)/,
+        lookbehind: true,
+        inside: {
+          punctuation: /[.\\]/
+        }
+      },
+      keyword:
+        /\b(?:BEGIN|END|alias|and|begin|break|case|class|def|define_method|defined|do|each|else|elsif|end|ensure|extend|for|if|in|include|module|new|next|nil|not|or|prepend|private|protected|public|raise|redo|require|rescue|retry|return|self|super|then|throw|undef|unless|until|when|while|yield)\b/,
+      operator:
+        /\.{2,3}|&\.|===|<?=>|[!=]?~|(?:&&|\|\||<<|>>|\*\*|[+\-*/%<>!^&|=])=?|[?:]/,
+      punctuation: /[(){}[\].,;]/
+    });
+    Prism.languages.insertBefore('ruby', 'operator', {
+      'double-colon': {
+        pattern: /::/,
+        alias: 'punctuation'
+      }
+    });
+    var interpolation = {
+      pattern: /((?:^|[^\\])(?:\\{2})*)#\{(?:[^{}]|\{[^{}]*\})*\}/,
+      lookbehind: true,
+      inside: {
+        content: {
+          pattern: /^(#\{)[\s\S]+(?=\}$)/,
+          lookbehind: true,
+          inside: Prism.languages.ruby
+        },
+        delimiter: {
+          pattern: /^#\{|\}$/,
+          alias: 'punctuation'
+        }
+      }
+    };
+    delete Prism.languages.ruby.function;
+    var percentExpression =
+      '(?:' +
+      [
+        /([^a-zA-Z0-9\s{(\[<=])(?:(?!\1)[^\\]|\\[\s\S])*\1/.source,
+        /\((?:[^()\\]|\\[\s\S]|\((?:[^()\\]|\\[\s\S])*\))*\)/.source,
+        /\{(?:[^{}\\]|\\[\s\S]|\{(?:[^{}\\]|\\[\s\S])*\})*\}/.source,
+        /\[(?:[^\[\]\\]|\\[\s\S]|\[(?:[^\[\]\\]|\\[\s\S])*\])*\]/.source,
+        /<(?:[^<>\\]|\\[\s\S]|<(?:[^<>\\]|\\[\s\S])*>)*>/.source
+      ].join('|') +
+      ')';
+    var symbolName =
+      /(?:"(?:\\.|[^"\\\r\n])*"|(?:\b[a-zA-Z_]\w*|[^\s\0-\x7F]+)[?!]?|\$.)/
+        .source;
+    Prism.languages.insertBefore('ruby', 'keyword', {
+      'regex-literal': [
+        {
+          pattern: RegExp(
+            /%r/.source + percentExpression + /[egimnosux]{0,6}/.source
+          ),
+          greedy: true,
+          inside: {
+            interpolation: interpolation,
+            regex: /[\s\S]+/
+          }
+        },
+        {
+          pattern:
+            /(^|[^/])\/(?!\/)(?:\[[^\r\n\]]+\]|\\.|[^[/\\\r\n])+\/[egimnosux]{0,6}(?=\s*(?:$|[\r\n,.;})#]))/,
+          lookbehind: true,
+          greedy: true,
+          inside: {
+            interpolation: interpolation,
+            regex: /[\s\S]+/
+          }
+        }
+      ],
+      variable: /[@$]+[a-zA-Z_]\w*(?:[?!]|\b)/,
+      symbol: [
+        {
+          pattern: RegExp(/(^|[^:]):/.source + symbolName),
+          lookbehind: true,
+          greedy: true
+        },
+        {
+          pattern: RegExp(
+            /([\r\n{(,][ \t]*)/.source + symbolName + /(?=:(?!:))/.source
+          ),
+          lookbehind: true,
+          greedy: true
+        }
+      ],
+      'method-definition': {
+        pattern: /(\bdef\s+)\w+(?:\s*\.\s*\w+)?/,
+        lookbehind: true,
+        inside: {
+          function: /\b\w+$/,
+          keyword: /^self\b/,
+          'class-name': /^\w+/,
+          punctuation: /\./
+        }
+      }
+    });
+    Prism.languages.insertBefore('ruby', 'string', {
+      'string-literal': [
+        {
+          pattern: RegExp(/%[qQiIwWs]?/.source + percentExpression),
+          greedy: true,
+          inside: {
+            interpolation: interpolation,
+            string: /[\s\S]+/
+          }
+        },
+        {
+          pattern:
+            /("|')(?:#\{[^}]+\}|#(?!\{)|\\(?:\r\n|[\s\S])|(?!\1)[^\\#\r\n])*\1/,
+          greedy: true,
+          inside: {
+            interpolation: interpolation,
+            string: /[\s\S]+/
+          }
+        },
+        {
+          pattern: /<<[-~]?([a-z_]\w*)[\r\n](?:.*[\r\n])*?[\t ]*\1/i,
+          alias: 'heredoc-string',
+          greedy: true,
+          inside: {
+            delimiter: {
+              pattern: /^<<[-~]?[a-z_]\w*|\b[a-z_]\w*$/i,
+              inside: {
+                symbol: /\b\w+/,
+                punctuation: /^<<[-~]?/
+              }
+            },
+            interpolation: interpolation,
+            string: /[\s\S]+/
+          }
+        },
+        {
+          pattern: /<<[-~]?'([a-z_]\w*)'[\r\n](?:.*[\r\n])*?[\t ]*\1/i,
+          alias: 'heredoc-string',
+          greedy: true,
+          inside: {
+            delimiter: {
+              pattern: /^<<[-~]?'[a-z_]\w*'|\b[a-z_]\w*$/i,
+              inside: {
+                symbol: /\b\w+/,
+                punctuation: /^<<[-~]?'|'$/
+              }
+            },
+            string: /[\s\S]+/
+          }
+        }
+      ],
+      'command-literal': [
+        {
+          pattern: RegExp(/%x/.source + percentExpression),
+          greedy: true,
+          inside: {
+            interpolation: interpolation,
+            command: {
+              pattern: /[\s\S]+/,
+              alias: 'string'
+            }
+          }
+        },
+        {
+          pattern: /`(?:#\{[^}]+\}|#(?!\{)|\\(?:\r\n|[\s\S])|[^\\`#\r\n])*`/,
+          greedy: true,
+          inside: {
+            interpolation: interpolation,
+            command: {
+              pattern: /[\s\S]+/,
+              alias: 'string'
+            }
+          }
+        }
+      ]
+    });
+    delete Prism.languages.ruby.string;
+    Prism.languages.insertBefore('ruby', 'number', {
+      builtin:
+        /\b(?:Array|Bignum|Binding|Class|Continuation|Dir|Exception|FalseClass|File|Fixnum|Float|Hash|IO|Integer|MatchData|Method|Module|NilClass|Numeric|Object|Proc|Range|Regexp|Stat|String|Struct|Symbol|TMS|Thread|ThreadGroup|Time|TrueClass)\b/,
+      constant: /\b[A-Z][A-Z0-9_]*(?:[?!]|\b)/
+    });
+    Prism.languages.rb = Prism.languages.ruby;
+  })(Prism);
 }
 
-var crystal_1;
-var hasRequiredCrystal;
-
-function requireCrystal () {
-	if (hasRequiredCrystal) return crystal_1;
-	hasRequiredCrystal = 1;
-	var refractorRuby = requireRuby();
-	crystal_1 = crystal;
-	crystal.displayName = 'crystal';
-	crystal.aliases = [];
-	function crystal(Prism) {
-	  Prism.register(refractorRuby)
-	  ;(function (Prism) {
-	    Prism.languages.crystal = Prism.languages.extend('ruby', {
-	      keyword: [
-	        /\b(?:__DIR__|__END_LINE__|__FILE__|__LINE__|abstract|alias|annotation|as|asm|begin|break|case|class|def|do|else|elsif|end|ensure|enum|extend|for|fun|if|ifdef|include|instance_sizeof|lib|macro|module|next|of|out|pointerof|private|protected|ptr|require|rescue|return|select|self|sizeof|struct|super|then|type|typeof|undef|uninitialized|union|unless|until|when|while|with|yield)\b/,
-	        {
-	          pattern: /(\.\s*)(?:is_a|responds_to)\?/,
-	          lookbehind: true
-	        }
-	      ],
-	      number:
-	        /\b(?:0b[01_]*[01]|0o[0-7_]*[0-7]|0x[\da-fA-F_]*[\da-fA-F]|(?:\d(?:[\d_]*\d)?)(?:\.[\d_]*\d)?(?:[eE][+-]?[\d_]*\d)?)(?:_(?:[uif](?:8|16|32|64))?)?\b/,
-	      operator: [/->/, Prism.languages.ruby.operator],
-	      punctuation: /[(){}[\].,;\\]/
-	    });
-	    Prism.languages.insertBefore('crystal', 'string-literal', {
-	      attribute: {
-	        pattern: /@\[.*?\]/,
-	        inside: {
-	          delimiter: {
-	            pattern: /^@\[|\]$/,
-	            alias: 'punctuation'
-	          },
-	          attribute: {
-	            pattern: /^(\s*)\w+/,
-	            lookbehind: true,
-	            alias: 'class-name'
-	          },
-	          args: {
-	            pattern: /\S(?:[\s\S]*\S)?/,
-	            inside: Prism.languages.crystal
-	          }
-	        }
-	      },
-	      expansion: {
-	        pattern: /\{(?:\{.*?\}|%.*?%)\}/,
-	        inside: {
-	          content: {
-	            pattern: /^(\{.)[\s\S]+(?=.\}$)/,
-	            lookbehind: true,
-	            inside: Prism.languages.crystal
-	          },
-	          delimiter: {
-	            pattern: /^\{[\{%]|[\}%]\}$/,
-	            alias: 'operator'
-	          }
-	        }
-	      },
-	      char: {
-	        pattern:
-	          /'(?:[^\\\r\n]{1,2}|\\(?:.|u(?:[A-Fa-f0-9]{1,4}|\{[A-Fa-f0-9]{1,6}\})))'/,
-	        greedy: true
-	      }
-	    });
-	  })(Prism);
-	}
-	return crystal_1;
+var refractorRuby = ruby_1;
+var crystal_1 = crystal;
+crystal.displayName = 'crystal';
+crystal.aliases = [];
+function crystal(Prism) {
+  Prism.register(refractorRuby)
+  ;(function (Prism) {
+    Prism.languages.crystal = Prism.languages.extend('ruby', {
+      keyword: [
+        /\b(?:__DIR__|__END_LINE__|__FILE__|__LINE__|abstract|alias|annotation|as|asm|begin|break|case|class|def|do|else|elsif|end|ensure|enum|extend|for|fun|if|ifdef|include|instance_sizeof|lib|macro|module|next|of|out|pointerof|private|protected|ptr|require|rescue|return|select|self|sizeof|struct|super|then|type|typeof|undef|uninitialized|union|unless|until|when|while|with|yield)\b/,
+        {
+          pattern: /(\.\s*)(?:is_a|responds_to)\?/,
+          lookbehind: true
+        }
+      ],
+      number:
+        /\b(?:0b[01_]*[01]|0o[0-7_]*[0-7]|0x[\da-fA-F_]*[\da-fA-F]|(?:\d(?:[\d_]*\d)?)(?:\.[\d_]*\d)?(?:[eE][+-]?[\d_]*\d)?)(?:_(?:[uif](?:8|16|32|64))?)?\b/,
+      operator: [/->/, Prism.languages.ruby.operator],
+      punctuation: /[(){}[\].,;\\]/
+    });
+    Prism.languages.insertBefore('crystal', 'string-literal', {
+      attribute: {
+        pattern: /@\[.*?\]/,
+        inside: {
+          delimiter: {
+            pattern: /^@\[|\]$/,
+            alias: 'punctuation'
+          },
+          attribute: {
+            pattern: /^(\s*)\w+/,
+            lookbehind: true,
+            alias: 'class-name'
+          },
+          args: {
+            pattern: /\S(?:[\s\S]*\S)?/,
+            inside: Prism.languages.crystal
+          }
+        }
+      },
+      expansion: {
+        pattern: /\{(?:\{.*?\}|%.*?%)\}/,
+        inside: {
+          content: {
+            pattern: /^(\{.)[\s\S]+(?=.\}$)/,
+            lookbehind: true,
+            inside: Prism.languages.crystal
+          },
+          delimiter: {
+            pattern: /^\{[\{%]|[\}%]\}$/,
+            alias: 'operator'
+          }
+        }
+      },
+      char: {
+        pattern:
+          /'(?:[^\\\r\n]{1,2}|\\(?:.|u(?:[A-Fa-f0-9]{1,4}|\{[A-Fa-f0-9]{1,6}\})))'/,
+        greedy: true
+      }
+    });
+  })(Prism);
 }
 
 var cshtml_1;
@@ -21982,7 +21861,7 @@ var hasRequiredErb;
 function requireErb () {
 	if (hasRequiredErb) return erb_1;
 	hasRequiredErb = 1;
-	var refractorRuby = requireRuby();
+	var refractorRuby = ruby_1;
 	var refractorMarkupTemplating = requireMarkupTemplating();
 	erb_1 = erb;
 	erb.displayName = 'erb';
@@ -24464,7 +24343,7 @@ var hasRequiredHaml;
 function requireHaml () {
 	if (hasRequiredHaml) return haml_1;
 	hasRequiredHaml = 1;
-	var refractorRuby = requireRuby();
+	var refractorRuby = ruby_1;
 	haml_1 = haml;
 	haml.displayName = 'haml';
 	haml.aliases = [];
@@ -39677,12 +39556,12 @@ refractor.register(chaiscript_1);
 refractor.register(cil_1);
 refractor.register(clojure_1);
 refractor.register(cmake_1);
-refractor.register(requireCobol());
-refractor.register(requireCoffeescript());
-refractor.register(requireConcurnas());
-refractor.register(requireCoq());
-refractor.register(requireCpp());
-refractor.register(requireCrystal());
+refractor.register(cobol_1);
+refractor.register(coffeescript_1);
+refractor.register(concurnas_1);
+refractor.register(coq_1);
+refractor.register(cpp_1);
+refractor.register(crystal_1);
 refractor.register(requireCsharp());
 refractor.register(requireCshtml());
 refractor.register(requireCsp());
@@ -39848,7 +39727,7 @@ refractor.register(requireRest());
 refractor.register(requireRip());
 refractor.register(requireRoboconf());
 refractor.register(requireRobotframework());
-refractor.register(requireRuby());
+refractor.register(ruby_1);
 refractor.register(requireRust());
 refractor.register(requireSas());
 refractor.register(requireSass());
@@ -41794,6 +41673,101 @@ function sub$1(date, duration) {
   var finalDate = new Date(dateWithoutDays.getTime() - mstoSub);
   return finalDate;
 }
+
+var useRowFilter = function useRowFilter(props) {
+  var _props$initialState = props.initialState,
+    initialState = _props$initialState === void 0 ? {} : _props$initialState,
+    _props$length = props.length,
+    length = _props$length === void 0 ? 0 : _props$length,
+    tableData = props.tableData;
+  var _useState = React.useState(function () {
+      return _toConsumableArray$1(Array(length).keys()).fill(initialState);
+    }),
+    _useState2 = _slicedToArray(_useState, 2),
+    filters = _useState2[0],
+    setFilters = _useState2[1];
+  React.useEffect(function () {
+    setFilters(_toConsumableArray$1(Array(length).keys()).fill(initialState));
+  }, [initialState, length, tableData]);
+
+  /**
+   *
+   * @param {number} index - row index
+   * @param {string} name - filter name / column id
+   * @param {Array} value - filter value / checked items
+   */
+  var applyFilter = function applyFilter(index, name) {
+    var value = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : [];
+    setFilters(function (prevFilters) {
+      var newFilters = cloneDeep(prevFilters);
+      newFilters.splice(index, 1, _objectSpread2(_objectSpread2({}, newFilters[index]), {}, _defineProperty$1({}, name, value)));
+      return newFilters;
+    });
+  };
+  return {
+    filters: filters,
+    applyFilter: applyFilter
+  };
+};
+
+var useOutsideClickListener = function useOutsideClickListener(ref, callback) {
+  React.useEffect(function () {
+    var handleClickOutside = function handleClickOutside(event) {
+      if (ref.current && !ref.current.contains(event.target)) {
+        callback();
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return function () {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [ref]);
+};
+
+var useResize = function useResize(props) {
+  var ref = props.ref,
+    _props$styles = props.styles,
+    styles = _props$styles === void 0 ? {} : _props$styles,
+    enabled = props.enabled;
+  var minWidth = styles.minWidth,
+    maxWidth = styles.maxWidth,
+    borderSize = styles.borderSize;
+  React.useEffect(function () {
+    if (enabled) {
+      var _ref$current, _ref$current$getBound, _ref$current3;
+      var mPos = null;
+      var itemRect = ref === null || ref === void 0 ? void 0 : (_ref$current = ref.current) === null || _ref$current === void 0 ? void 0 : (_ref$current$getBound = _ref$current.getBoundingClientRect) === null || _ref$current$getBound === void 0 ? void 0 : _ref$current$getBound.call(_ref$current);
+      var resize = function resize(event) {
+        var dX = event.x - mPos;
+        // eslint-disable-next-line no-param-reassign
+        var newWidth = parseInt(itemRect.width, 10) + dX;
+        if (newWidth > minWidth && newWidth < maxWidth && ref.current != null) {
+          ref.current.style.width = "".concat(newWidth, "px");
+        }
+      };
+      var onMouseDown = function onMouseDown(evt) {
+        if (itemRect.width - evt.offsetX < borderSize) {
+          mPos = evt.x;
+          document.addEventListener('mousemove', resize);
+        }
+      };
+      var onMouseUp = function onMouseUp(evt) {
+        var _ref$current2, _ref$current2$getBoun, _ref$current2$getBoun2;
+        mPos = evt.x;
+        itemRect.width = ref === null || ref === void 0 ? void 0 : (_ref$current2 = ref.current) === null || _ref$current2 === void 0 ? void 0 : (_ref$current2$getBoun = _ref$current2.getBoundingClientRect) === null || _ref$current2$getBoun === void 0 ? void 0 : (_ref$current2$getBoun2 = _ref$current2$getBoun.call(_ref$current2)) === null || _ref$current2$getBoun2 === void 0 ? void 0 : _ref$current2$getBoun2.width;
+        document.removeEventListener('mousemove', resize);
+      };
+      ref === null || ref === void 0 ? void 0 : (_ref$current3 = ref.current) === null || _ref$current3 === void 0 ? void 0 : _ref$current3.addEventListener('mousedown', onMouseDown, false);
+      document.documentElement.addEventListener('mouseup', onMouseUp, false);
+      return function () {
+        var _ref$current4, _ref$current4$removeE;
+        ref === null || ref === void 0 ? void 0 : (_ref$current4 = ref.current) === null || _ref$current4 === void 0 ? void 0 : (_ref$current4$removeE = _ref$current4.removeEventListener) === null || _ref$current4$removeE === void 0 ? void 0 : _ref$current4$removeE.call(_ref$current4, 'mousedown', onMouseDown, false);
+        document.documentElement.removeEventListener('mouseup', onMouseUp, false);
+      };
+    }
+    return function () {};
+  }, [enabled]);
+};
 
 var css$I = ".Header_module_container__26bf5a9c {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  padding: 0rem 1.5625rem;\n}\n.Header_module_container__26bf5a9c .Header_module_title__26bf5a9c {\n  font-weight: 400;\n  font-size: 0.8rem;\n  color: var(--black);\n}\n.Header_module_container__26bf5a9c .Header_module_icon__26bf5a9c {\n  width: 1.5rem;\n  height: 1.5rem;\n  stroke: #181818;\n  cursor: pointer;\n}";
 var modules_cf337dc1 = {"container":"Header_module_container__26bf5a9c","title":"Header_module_title__26bf5a9c","icon":"Header_module_icon__26bf5a9c"};
@@ -44378,7 +44352,7 @@ var css$p = ".Stepper_module_root__781d3116 {\n  display: flex;\n  flex-directio
 var modules_bbfded44 = {"root":"Stepper_module_root__781d3116","step":"Stepper_module_step__781d3116","title":"Stepper_module_title__781d3116","left":"Stepper_module_left__781d3116","icon":"Stepper_module_icon__781d3116","error-icon":"Stepper_module_errorIcon__781d3116","completion-icon":"Stepper_module_completionIcon__781d3116","active":"Stepper_module_active__781d3116","progress":"Stepper_module_progress__781d3116","right":"Stepper_module_right__781d3116","description":"Stepper_module_description__781d3116","completed":"Stepper_module_completed__781d3116","error":"Stepper_module_error__781d3116"};
 n(css$p,{});
 
-var css$o = ":root {\n  --white: #ffffff;\n  --black: #000000;\n  --dark-grey: #333333;\n  --dark-grey-o-85: rgba(51, 51, 51, 0.85);\n  --grey: #737373;\n  --grey1: #888888;\n  --grey2: #a6a6a6;\n  --grey3: #bbbbbb;\n  --grey4: #c4c4c4;\n  --grey5: #dddddd;\n  --grey6: #e8e8e8;\n  --grey7: #eeeeee;\n  --grey8: #f2f2f2;\n  --grey9: #eff0f0;\n  --grey10: #f7f7f7;\n  --highlight: #0f62fe;\n  --dark-blue: #001833;\n  --background: #d0e2ff;\n  --banyan-blue: #00037c;\n  --banyan-orange: #ff892a;\n  --banyan-pink: #ff1597;\n  --banyan-gradient: linear-gradient(\n  \t84.71deg,\n  \tvar(--banyan-pink) 0.48%,\n  \tvar(--banyan-orange) 99.57%\n  );\n  --error: #da1e28;\n  --error-bg: #fff1f1;\n  --error-outline: rgba(218, 30, 40, 0.08);\n  --success: #24a148;\n  --success-bg: #defbe6;\n  --success-outline: rgba(36, 161, 72, 0.08);\n  --warning: #f1c21b;\n  --warning-bg: #fff8e1;\n  --warning-outline: rgba(203, 160, 6, 0.08);\n  --info: #0043ce;\n  --info-bg: #edf5ff;\n  --info-outline: #2864db98;\n}";
+var css$o = ":root {\n  --white: #ffffff;\n  --black: #000000;\n  --dark-grey: #333333;\n  --dark-grey-o-85: rgba(51, 51, 51, 0.85);\n  --grey: #737373;\n  --grey1: #888888;\n  --grey2: #a6a6a6;\n  --grey3: #bbbbbb;\n  --grey4: #c4c4c4;\n  --grey5: #dddddd;\n  --grey6: #e8e8e8;\n  --grey7: #eeeeee;\n  --grey8: #f2f2f2;\n  --grey9: #eff0f0;\n  --grey10: #f7f7f7;\n  --highlight: #0f62fe;\n  --dark-blue: #001833;\n  --background: #d0e2ff;\n  --banyan-blue: #00037c;\n  --banyan-orange: #ff892a;\n  --banyan-pink: #ff1597;\n  --banyan-gradient: linear-gradient(\n  \t84.71deg,\n  \tvar(--banyan-pink) 0.48%,\n  \tvar(--banyan-orange) 99.57%\n  );\n  --error: #ff626a;\n  --error-bg: #fff1f1;\n  --error-outline: rgba(218, 30, 40, 0.08);\n  --success: #24a148;\n  --success-bg: #defbe6;\n  --success-outline: rgba(36, 161, 72, 0.08);\n  --warning: #f1c21b;\n  --warning-bg: #fff8e1;\n  --warning-outline: rgba(203, 160, 6, 0.08);\n  --info: #0043ce;\n  --info-bg: #edf5ff;\n  --info-outline: #2864db98;\n}";
 var modules_dd21d9e9 = {"white":"--white","black":"--black","dark-grey":"--dark-grey","dark-grey-o-85":"--dark-grey-o-85","grey":"--grey","grey1":"--grey1","grey2":"--grey2","grey3":"--grey3","grey4":"--grey4","grey5":"--grey5","grey6":"--grey6","grey7":"--grey7","grey8":"--grey8","grey9":"--grey9","grey10":"--grey10","highlight":"--highlight","dark-blue":"--dark-blue","background":"--background","banyan-blue":"--banyan-blue","banyan-orange":"--banyan-orange","banyan-pink":"--banyan-pink","banyan-gradient":"--banyan-gradient","error":"--error","error-bg":"--error-bg","error-outline":"--error-outline","success":"--success","success-bg":"--success-bg","success-outline":"--success-outline","warning":"--warning","warning-bg":"--warning-bg","warning-outline":"--warning-outline","info":"--info","info-bg":"--info-bg","info-outline":"--info-outline"};
 n(css$o,{});
 
@@ -45996,7 +45970,7 @@ var __assign = function() {
     return __assign.apply(this, arguments);
 };
 
-function __rest(s, e) {
+function __rest$1(s, e) {
     var t = {};
     for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
         t[p] = s[p];
@@ -46206,7 +46180,7 @@ var tslib_es6 = /*#__PURE__*/Object.freeze({
   __proto__: null,
   __extends: __extends$2,
   get __assign () { return __assign; },
-  __rest: __rest,
+  __rest: __rest$1,
   __decorate: __decorate,
   __param: __param,
   __metadata: __metadata,
@@ -46719,7 +46693,7 @@ var isEqual = {};
 
 
 
-var fastDeepEqual = function equal(a, b) {
+var fastDeepEqual$1 = function equal(a, b) {
   if (a === b) return true;
 
   if (a && b && typeof a == 'object' && typeof b == 'object') {
@@ -46763,7 +46737,7 @@ var fastDeepEqual = function equal(a, b) {
 Object.defineProperty(isEqual, "__esModule", { value: true });
 isEqual.isEqual = void 0;
 var tslib_1$1 = require$$0;
-var fast_deep_equal_1 = (0, tslib_1$1.__importDefault)(fastDeepEqual);
+var fast_deep_equal_1 = (0, tslib_1$1.__importDefault)(fastDeepEqual$1);
 isEqual.isEqual = fast_deep_equal_1.default;
 
 Object.defineProperty(core, "__esModule", { value: true });
@@ -47205,7 +47179,7 @@ function clone$3(source) {
     }
     return result;
 }
-function merge(target, source, overwrite) {
+function merge$1(target, source, overwrite) {
     if (!isObject$3(source) || !isObject$3(target)) {
         return overwrite ? clone$3(source) : target;
     }
@@ -47223,7 +47197,7 @@ function merge(target, source, overwrite) {
                 && !isBuiltInObject(targetProp)
                 && !isPrimitive(sourceProp)
                 && !isPrimitive(targetProp)) {
-                merge(targetProp, sourceProp, overwrite);
+                merge$1(targetProp, sourceProp, overwrite);
             }
             else if (overwrite || !(key in target)) {
                 target[key] = clone$3(source[key]);
@@ -47235,11 +47209,11 @@ function merge(target, source, overwrite) {
 function mergeAll(targetAndSources, overwrite) {
     var result = targetAndSources[0];
     for (var i = 1, len = targetAndSources.length; i < len; i++) {
-        result = merge(result, targetAndSources[i], overwrite);
+        result = merge$1(result, targetAndSources[i], overwrite);
     }
     return result;
 }
-function extend(target, source) {
+function extend$2(target, source) {
     if (Object.assign) {
         Object.assign(target, source);
     }
@@ -47599,7 +47573,7 @@ function createObject(proto, properties) {
         obj = new StyleCtor();
     }
     if (properties) {
-        extend(obj, properties);
+        extend$2(obj, properties);
     }
     return obj;
 }
@@ -47613,7 +47587,7 @@ function disableUserSelect(dom) {
 function hasOwn(own, prop) {
     return own.hasOwnProperty(prop);
 }
-function noop() { }
+function noop$1() { }
 var RADIAN_TO_DEGREE = 180 / Math.PI;
 
 var util$1 = /*#__PURE__*/Object.freeze({
@@ -47621,9 +47595,9 @@ var util$1 = /*#__PURE__*/Object.freeze({
   guid: guid,
   logError: logError,
   clone: clone$3,
-  merge: merge,
+  merge: merge$1,
   mergeAll: mergeAll,
-  extend: extend,
+  extend: extend$2,
   defaults: defaults,
   createCanvas: createCanvas,
   indexOf: indexOf,
@@ -47666,7 +47640,7 @@ var util$1 = /*#__PURE__*/Object.freeze({
   createObject: createObject,
   disableUserSelect: disableUserSelect,
   hasOwn: hasOwn,
-  noop: noop,
+  noop: noop$1,
   RADIAN_TO_DEGREE: RADIAN_TO_DEGREE
 });
 
@@ -50421,9 +50395,9 @@ var Clip = (function () {
         this._life = opts.life || 1000;
         this._delay = opts.delay || 0;
         this.loop = opts.loop || false;
-        this.onframe = opts.onframe || noop;
-        this.ondestroy = opts.ondestroy || noop;
-        this.onrestart = opts.onrestart || noop;
+        this.onframe = opts.onframe || noop$1;
+        this.ondestroy = opts.ondestroy || noop$1;
+        this.onrestart = opts.onrestart || noop$1;
         opts.easing && this.setEasing(opts.easing);
     }
     Clip.prototype.step = function (globalTime, deltaTime) {
@@ -51219,7 +51193,7 @@ var Track = (function () {
                 }
             }
             else if (isGradientObject(rawValue)) {
-                var parsedGradient = extend({}, value);
+                var parsedGradient = extend$2({}, value);
                 parsedGradient.colorStops = map$1(rawValue.colorStops, function (colorStop) { return ({
                     offset: colorStop.offset,
                     color: parse(colorStop.color)
@@ -51968,9 +51942,9 @@ function isLocalEl(instance, el) {
 }
 var FakeGlobalEvent = (function () {
     function FakeGlobalEvent(instance, event) {
-        this.stopPropagation = noop;
-        this.stopImmediatePropagation = noop;
-        this.preventDefault = noop;
+        this.stopPropagation = noop$1;
+        this.stopImmediatePropagation = noop$1;
+        this.preventDefault = noop$1;
         this.type = event.type;
         this.target = this.currentTarget = instance.dom;
         this.pointerType = event.pointerType;
@@ -52809,7 +52783,7 @@ var Element = (function () {
         }
         else if (key === 'extra') {
             this.extra = this.extra || {};
-            extend(this.extra, value);
+            extend$2(this.extra, value);
         }
         else {
             this[key] = value;
@@ -53050,10 +53024,10 @@ var Element = (function () {
         var mergedTextConfig;
         for (var i = 0; i < states.length; i++) {
             var state = states[i];
-            extend(mergedState, state);
+            extend$2(mergedState, state);
             if (state.textConfig) {
                 mergedTextConfig = mergedTextConfig || {};
-                extend(mergedTextConfig, state.textConfig);
+                extend$2(mergedTextConfig, state.textConfig);
             }
         }
         if (mergedTextConfig) {
@@ -53064,8 +53038,8 @@ var Element = (function () {
     Element.prototype._applyStateObj = function (stateName, state, normalState, keepCurrentStates, transition, animationCfg) {
         var needsRestoreToNormal = !(state && keepCurrentStates);
         if (state && state.textConfig) {
-            this.textConfig = extend({}, keepCurrentStates ? this.textConfig : normalState.textConfig);
-            extend(this.textConfig, state.textConfig);
+            this.textConfig = extend$2({}, keepCurrentStates ? this.textConfig : normalState.textConfig);
+            extend$2(this.textConfig, state.textConfig);
         }
         else if (needsRestoreToNormal) {
             if (normalState.textConfig) {
@@ -53184,7 +53158,7 @@ var Element = (function () {
         if (!this.textConfig) {
             this.textConfig = {};
         }
-        extend(this.textConfig, cfg);
+        extend$2(this.textConfig, cfg);
         this.markRedraw();
     };
     Element.prototype.removeTextConfig = function () {
@@ -55491,7 +55465,7 @@ function enableClassExtend(rootClz, mandatoryMethods) {
       inherits(ExtendedClass, this);
     }
 
-    extend(ExtendedClass.prototype, proto);
+    extend$2(ExtendedClass.prototype, proto);
     ExtendedClass[IS_EXTENDED_CLASS] = true;
     ExtendedClass.extend = this.extend;
     ExtendedClass.superCall = superCall;
@@ -55826,7 +55800,7 @@ function truncateText(text, containerWidth, font, ellipsis, options) {
 }
 function prepareTruncateOptions(containerWidth, font, ellipsis, options) {
     options = options || {};
-    var preparedOpts = extend({}, options);
+    var preparedOpts = extend$2({}, options);
     preparedOpts.font = font;
     ellipsis = retrieve2(ellipsis, '...');
     preparedOpts.maxIterations = retrieve2(options.maxIterations, 2);
@@ -56432,7 +56406,7 @@ var Displayable = (function (_super) {
             this.style[keyOrObj] = value;
         }
         else {
-            extend(this.style, keyOrObj);
+            extend$2(this.style, keyOrObj);
         }
         this.dirtyStyle();
         return this;
@@ -56559,7 +56533,7 @@ var Displayable = (function (_super) {
         return mergedState;
     };
     Displayable.prototype._mergeStyle = function (targetStyle, sourceStyle) {
-        extend(targetStyle, sourceStyle);
+        extend$2(targetStyle, sourceStyle);
         return targetStyle;
     };
     Displayable.prototype.getAnimationStyleProps = function () {
@@ -57889,11 +57863,11 @@ var Path = (function (_super) {
                     this.useStyle(value);
                 }
                 else {
-                    extend(this.style, value);
+                    extend$2(this.style, value);
                 }
             }
             else if (key === 'shape') {
-                extend(this.shape, value);
+                extend$2(this.shape, value);
             }
             else {
                 _super.prototype.attrKV.call(this, key, value);
@@ -58076,7 +58050,7 @@ var Path = (function (_super) {
             shape[keyOrObj] = value;
         }
         else {
-            extend(shape, keyOrObj);
+            extend$2(shape, keyOrObj);
         }
         this.dirtyShape();
         return this;
@@ -58091,7 +58065,7 @@ var Path = (function (_super) {
         _super.prototype._innerSaveToNormal.call(this, toState);
         var normalState = this._normalState;
         if (toState.shape && !normalState.shape) {
-            normalState.shape = extend({}, this.shape);
+            normalState.shape = extend$2({}, this.shape);
         }
     };
     Path.prototype._applyStateObj = function (stateName, state, normalState, keepCurrentStates, transition, animationCfg) {
@@ -58104,13 +58078,13 @@ var Path = (function (_super) {
                     targetShape = state.shape;
                 }
                 else {
-                    targetShape = extend({}, normalState.shape);
-                    extend(targetShape, state.shape);
+                    targetShape = extend$2({}, normalState.shape);
+                    extend$2(targetShape, state.shape);
                 }
             }
             else {
-                targetShape = extend({}, keepCurrentStates ? this.shape : normalState.shape);
-                extend(targetShape, state.shape);
+                targetShape = extend$2({}, keepCurrentStates ? this.shape : normalState.shape);
+                extend$2(targetShape, state.shape);
             }
         }
         else if (needsRestoreToNormal) {
@@ -58118,7 +58092,7 @@ var Path = (function (_super) {
         }
         if (targetShape) {
             if (transition) {
-                this.shape = extend({}, this.shape);
+                this.shape = extend$2({}, this.shape);
                 var targetShapePrimaryProps = {};
                 var shapeKeys = keys(targetShape);
                 for (var i = 0; i < shapeKeys.length; i++) {
@@ -58653,7 +58627,7 @@ var ZRText = (function (_super) {
         }
         var sourceRich = sourceStyle.rich;
         var targetRich = targetStyle.rich || (sourceRich && {});
-        extend(targetStyle, sourceStyle);
+        extend$2(targetStyle, sourceStyle);
         if (sourceRich && targetRich) {
             this._mergeRich(targetRich, sourceRich);
             targetStyle.rich = targetRich;
@@ -58668,7 +58642,7 @@ var ZRText = (function (_super) {
         for (var i = 0; i < richNames.length; i++) {
             var richName = richNames[i];
             targetRich[richName] = targetRich[richName] || {};
-            extend(targetRich[richName], sourceRich[richName]);
+            extend$2(targetRich[richName], sourceRich[richName]);
         }
     };
     ZRText.prototype.getAnimationStyleProps = function () {
@@ -59107,7 +59081,7 @@ function liftColor(color$1) {
 
     return liftedColor;
   } else if (isGradientObject(color$1)) {
-    var ret = extend({}, color$1);
+    var ret = extend$2({}, color$1);
     ret.colorStops = map$1(color$1.colorStops, function (stop) {
       return {
         offset: stop.offset,
@@ -59228,22 +59202,22 @@ function createEmphasisDefaultState(el, stateName, targetStates, state) {
 
       if (emphasisStyle.fill === 'inherit') {
         cloned = true;
-        state = extend({}, state);
-        emphasisStyle = extend({}, emphasisStyle);
+        state = extend$2({}, state);
+        emphasisStyle = extend$2({}, emphasisStyle);
         emphasisStyle.fill = fromFill;
       } // Apply default color lift
       else if (!hasFillOrStroke(emphasisStyle.fill) && hasFillOrStroke(fromFill)) {
           cloned = true; // Not modify the original value.
 
-          state = extend({}, state);
-          emphasisStyle = extend({}, emphasisStyle); // Already being applied 'emphasis'. DON'T lift color multiple times.
+          state = extend$2({}, state);
+          emphasisStyle = extend$2({}, emphasisStyle); // Already being applied 'emphasis'. DON'T lift color multiple times.
 
           emphasisStyle.fill = liftColor(fromFill);
         } // Not highlight stroke if fill has been highlighted.
         else if (!hasFillOrStroke(emphasisStyle.stroke) && hasFillOrStroke(fromStroke)) {
             if (!cloned) {
-              state = extend({}, state);
-              emphasisStyle = extend({}, emphasisStyle);
+              state = extend$2({}, state);
+              emphasisStyle = extend$2({}, emphasisStyle);
             }
 
             emphasisStyle.stroke = liftColor(fromStroke);
@@ -59257,7 +59231,7 @@ function createEmphasisDefaultState(el, stateName, targetStates, state) {
     // TODO Share with textContent?
     if (state.z2 == null) {
       if (!cloned) {
-        state = extend({}, state);
+        state = extend$2({}, state);
       }
 
       var z2EmphasisLift = el.z2EmphasisLift;
@@ -59273,7 +59247,7 @@ function createSelectDefaultState(el, stateName, state) {
   if (state) {
     // TODO Share with textContent?
     if (state.z2 == null) {
-      state = extend({}, state);
+      state = extend$2({}, state);
       var z2SelectLift = el.z2SelectLift;
       state.z2 = el.z2 + (z2SelectLift != null ? z2SelectLift : Z2_SELECT_LIFT);
     }
@@ -59293,8 +59267,8 @@ function createBlurDefaultState(el, stateName, state) {
 
   if (blurStyle.opacity == null) {
     // clone state
-    state = extend({}, state);
-    blurStyle = extend({
+    state = extend$2({}, state);
+    blurStyle = extend$2({
       // Already being applied 'emphasis'. DON'T mul opacity multiple times.
       opacity: hasBlur ? currentOpacity : fromState.opacity * 0.1
     }, blurStyle);
@@ -60187,7 +60161,7 @@ function isPathProxy(path) {
 }
 function createPathOptions(str, opts) {
     var pathProxy = createPathProxyFromString(str);
-    var innerOpts = extend({}, opts);
+    var innerOpts = extend$2({}, opts);
     innerOpts.buildPath = function (path) {
         if (isPathProxy(path)) {
             path.setData(pathProxy.data);
@@ -61766,7 +61740,7 @@ function groupTransition(g1, g2, animatableModel) {
     };
 
     if (isPath(el)) {
-      obj.shape = extend({}, el.shape);
+      obj.shape = extend$2({}, el.shape);
     }
 
     return obj;
@@ -61820,7 +61794,7 @@ function clipRectByRect(targetRect, rect) {
 }
 function createIcon(iconStr, // Support 'image://' or 'path://' or direct svg path.
 opt, rect) {
-  var innerOpts = extend({
+  var innerOpts = extend$2({
     rectHover: true
   }, opt);
   var style = innerOpts.style = {
@@ -62200,7 +62174,7 @@ opt, isNotNormal, isAttached // If text is attached on an element. If so, auto c
 ) {
   var textStyle = {};
   setTextStyleCommon(textStyle, textStyleModel, opt, isNotNormal, isAttached);
-  specifiedTextStyle && extend(textStyle, specifiedTextStyle); // textStyle.host && textStyle.host.dirty && textStyle.host.dirty(false);
+  specifiedTextStyle && extend$2(textStyle, specifiedTextStyle); // textStyle.host && textStyle.host.dirty && textStyle.host.dirty(false);
 
   return textStyle;
 }
@@ -62635,7 +62609,7 @@ function () {
 
 
   Model.prototype.mergeOption = function (option, ecModel) {
-    merge(this.option, option, true);
+    merge$1(this.option, option, true);
   }; // `path` can be 'a.b.c', so the return value type have to be `ModelOption`
   // TODO: TYPE strict key check?
   // get(path: string | string[], ignoreParent?: boolean): ModelOption;
@@ -62924,7 +62898,7 @@ function enableTopologicalTravel(entity, dependencyGetter) {
 }
 function inheritDefaultOption(superOption, subOption) {
   // See also `model/Component.ts#getDefaultOption`
-  return merge(merge({}, superOption, true), subOption, true);
+  return merge$1(merge$1({}, superOption, true), subOption, true);
 }
 
 /*
@@ -63261,10 +63235,10 @@ function createLocaleObject(locale) {
     if (locale === LOCALE_ZH || locale === LOCALE_EN) {
       return clone$3(localeObj);
     } else {
-      return merge(clone$3(localeObj), clone$3(localeStorage[DEFAULT_LOCALE]), false);
+      return merge$1(clone$3(localeObj), clone$3(localeStorage[DEFAULT_LOCALE]), false);
     }
   } else {
-    return merge(clone$3(locale), clone$3(localeStorage[DEFAULT_LOCALE]), false);
+    return merge$1(clone$3(locale), clone$3(localeStorage[DEFAULT_LOCALE]), false);
   }
 }
 function getLocaleModel(lang) {
@@ -63378,7 +63352,7 @@ function leveledFormat(tick, idx, formatter, lang, isUTC) {
       level: tick.level
     });
   } else {
-    var defaults$1 = extend({}, defaultLeveledFormatter);
+    var defaults$1 = extend$2({}, defaultLeveledFormatter);
 
     if (tick.level > 0) {
       for (var i = 0; i < primaryTimeUnits.length; ++i) {
@@ -64192,8 +64166,8 @@ function (_super) {
     var layoutMode = fetchLayoutMode(this);
     var inputPositionParams = layoutMode ? getLayoutParams(option) : {};
     var themeModel = ecModel.getTheme();
-    merge(option, themeModel.get(this.mainType));
-    merge(option, this.getDefaultOption());
+    merge$1(option, themeModel.get(this.mainType));
+    merge$1(option, this.getDefaultOption());
 
     if (layoutMode) {
       mergeLayoutParam(option, inputPositionParams, layoutMode);
@@ -64201,7 +64175,7 @@ function (_super) {
   };
 
   ComponentModel.prototype.mergeOption = function (option, ecModel) {
-    merge(this.option, option, true);
+    merge$1(this.option, option, true);
     var layoutMode = fetchLayoutMode(this);
 
     if (layoutMode) {
@@ -64296,7 +64270,7 @@ function (_super) {
       var defaultOption = {};
 
       for (var i = optList.length - 1; i >= 0; i--) {
-        defaultOption = merge(defaultOption, optList[i], true);
+        defaultOption = merge$1(defaultOption, optList[i], true);
       }
 
       fields.defaultOption = defaultOption;
@@ -65174,7 +65148,7 @@ function (_super) {
 
       if (!ComponentModel$1.hasClass(mainType)) {
         // globalSettingTask.dirty();
-        option[mainType] = option[mainType] == null ? clone$3(componentOption) : merge(option[mainType], componentOption, true);
+        option[mainType] = option[mainType] == null ? clone$3(componentOption) : merge$1(option[mainType], componentOption, true);
       } else if (mainType) {
         newCmptTypes.push(mainType);
         newCmptTypeMap.set(mainType, true);
@@ -65277,12 +65251,12 @@ function (_super) {
             componentModel.optionUpdated(newCmptOption, false);
           } else {
             // PENDING Global as parent ?
-            var extraOpt = extend({
+            var extraOpt = extend$2({
               componentIndex: index
             }, resultItem.keyInfo);
             componentModel = new ComponentModelClass(newCmptOption, this, this, extraOpt); // Assign `keyInfo`
 
-            extend(componentModel, extraOpt);
+            extend$2(componentModel, extraOpt);
 
             if (resultItem.brandNew) {
               componentModel.__requireNewView = true;
@@ -65682,7 +65656,7 @@ function (_super) {
 
       mergeTheme(baseOption, ecModel._theme.option); // TODO Needs clone when merging to the unexisted property
 
-      merge(baseOption, globalDefault, false);
+      merge$1(baseOption, globalDefault, false);
 
       ecModel._mergeOption(baseOption, null);
     };
@@ -65713,7 +65687,7 @@ function mergeTheme(option, theme) {
 
     if (!ComponentModel$1.hasClass(name)) {
       if (typeof themeItem === 'object') {
-        option[name] = !option[name] ? clone$3(themeItem) : merge(option[name], themeItem, false);
+        option[name] = !option[name] ? clone$3(themeItem) : merge$1(option[name], themeItem, false);
       } else {
         if (option[name] == null) {
           option[name] = themeItem;
@@ -66300,7 +66274,7 @@ function compatEC2ItemStyle(opt) {
       if (!opt[styleName].normal) {
         opt[styleName].normal = normalItemStyleOpt[styleName];
       } else {
-        merge(opt[styleName].normal, normalItemStyleOpt[styleName]);
+        merge$1(opt[styleName].normal, normalItemStyleOpt[styleName]);
       }
 
       normalItemStyleOpt[styleName] = null;
@@ -66316,7 +66290,7 @@ function compatEC2ItemStyle(opt) {
       if (!opt[styleName].emphasis) {
         opt[styleName].emphasis = emphasisItemStyleOpt[styleName];
       } else {
-        merge(opt[styleName].emphasis, emphasisItemStyleOpt[styleName]);
+        merge$1(opt[styleName].emphasis, emphasisItemStyleOpt[styleName]);
       }
 
       emphasisItemStyleOpt[styleName] = null;
@@ -67361,7 +67335,7 @@ function () {
         assert(methods, 'Invalide sourceFormat: ' + sourceFormat);
       }
 
-      extend(provider, methods);
+      extend$2(provider, methods);
 
       if (sourceFormat === SOURCE_FORMAT_TYPED_ARRAY) {
         provider.getItem = getItemForTypedArray;
@@ -68460,7 +68434,7 @@ function cloneRawData(upstream) {
 
     for (var i = 0, len = data.length; i < len; i++) {
       // Not strictly clone for performance
-      result.push(extend({}, data[i]));
+      result.push(extend$2({}, data[i]));
     }
 
     return result;
@@ -70377,7 +70351,7 @@ function buildSection(ctx, fragment, topMarginForOuterGap, toolTipTextStyle) {
   each$9(subBlocks, function (subBlock, idx) {
     var valueFormatter = fragment.valueFormatter;
     var subMarkupText = getBuilder(subBlock)( // Inherit valueFormatter
-    valueFormatter ? extend(extend({}, ctx), {
+    valueFormatter ? extend$2(extend$2({}, ctx), {
       valueFormatter: valueFormatter
     }) : ctx, subBlock, idx > 0 ? gaps.html : 0, toolTipTextStyle);
     subMarkupText != null && subMarkupTextList.push(subMarkupText);
@@ -70570,10 +70544,10 @@ function () {
 
     if (isArray$1(styles)) {
       each$9(styles, function (stl) {
-        return extend(finalStl, stl);
+        return extend$2(finalStl, stl);
       });
     } else {
-      extend(finalStl, styles);
+      extend$2(finalStl, styles);
     }
 
     var styleName = this._generateStyleName();
@@ -70770,8 +70744,8 @@ function (_super) {
       themeSubType += 'Series';
     }
 
-    merge(option, ecModel.getTheme().get(this.subType));
-    merge(option, this.getDefaultOption()); // Default label emphasis `show`
+    merge$1(option, ecModel.getTheme().get(this.subType));
+    merge$1(option, this.getDefaultOption()); // Default label emphasis `show`
 
     defaultEmphasis(option, 'label', ['show']);
     this.fillDataTextStyle(option.data);
@@ -70783,7 +70757,7 @@ function (_super) {
 
   SeriesModel.prototype.mergeOption = function (newSeriesOption, ecModel) {
     // this.settingTask.dirty();
-    newSeriesOption = merge(this.option, newSeriesOption, true);
+    newSeriesOption = merge$1(this.option, newSeriesOption, true);
     this.fillDataTextStyle(newSeriesOption.data);
     var layoutMode = fetchLayoutMode(this);
 
@@ -71809,7 +71783,7 @@ var seriesStyleTask = {
       return {
         dataEach: function (data, idx) {
           var dataParams = seriesModel.getDataParams(idx);
-          var itemStyle = extend({}, globalStyle);
+          var itemStyle = extend$2({}, globalStyle);
           itemStyle[colorKey] = colorCallback(dataParams);
           data.setItemVisual(idx, 'style', itemStyle);
         }
@@ -71840,7 +71814,7 @@ var dataStyleTask = {
           sharedModel.option = rawItem[stylePath];
           var style = getStyle(sharedModel);
           var existsStyle = data.ensureUniqueItemVisual(idx, 'style');
-          extend(existsStyle, style);
+          extend$2(existsStyle, style);
 
           if (sharedModel.option.decal) {
             data.setItemVisual(idx, 'decal', sharedModel.option.decal);
@@ -72530,7 +72504,7 @@ function mockMethods(target, Clz) {
   /* eslint-disable */
   for (var name_1 in Clz.prototype) {
     // Do not use hasOwnProperty
-    target[name_1] = noop;
+    target[name_1] = noop$1;
   }
   /* eslint-enable */
 
@@ -72958,7 +72932,7 @@ var seriesSymbolTask = {
     }
 
     symbolOptions.symbol = symbolOptions.symbol || seriesModel.defaultSymbol;
-    data.setVisual(extend({
+    data.setVisual(extend$2({
       legendIcon: seriesModel.legendIcon || symbolOptions.symbol,
       symbolKeepAspect: seriesModel.get('symbolKeepAspect')
     }, symbolOptions)); // Only visible series has each data be visual encoded
@@ -73148,13 +73122,13 @@ function createLegacyDataSelectAction(seriesType, ecRegisterAction) {
 
   each$9([[seriesType + 'ToggleSelect', 'toggleSelect'], [seriesType + 'Select', 'select'], [seriesType + 'UnSelect', 'unselect']], function (eventsMap) {
     ecRegisterAction(eventsMap[0], function (payload, ecModel, api) {
-      payload = extend({}, payload);
+      payload = extend$2({}, payload);
 
       if (process.env.NODE_ENV !== 'production') {
         deprecateReplaceLog(payload.type, eventsMap[1]);
       }
 
-      api.dispatchAction(extend(payload, {
+      api.dispatchAction(extend$2(payload, {
         type: eventsMap[1],
         seriesIndex: getSeriesIndices(ecModel, payload)
       }));
@@ -73186,7 +73160,7 @@ function handleSeriesLegacySelectEvents(type, eventPostfix, ecIns, ecModel, payl
             type: legacyEventName,
             seriesId: seriesModel.id,
             name: isArray$1(dataIndex) ? data.getName(dataIndex[0]) : data.getName(dataIndex),
-            selected: isString(selectedMap) ? selectedMap : extend({}, selectedMap)
+            selected: isString(selectedMap) ? selectedMap : extend$2({}, selectedMap)
           });
         }
       }
@@ -75465,7 +75439,7 @@ function (_super) {
               return true;
             } // If element has custom eventData of components
             else if (ecData.eventData) {
-                params = extend({}, ecData.eventData);
+                params = extend$2({}, ecData.eventData);
                 return true;
               }
           }, true);
@@ -75634,7 +75608,7 @@ function (_super) {
       needPrepare && prepare(this);
       updateMethods.update.call(this, {
         type: 'resize',
-        animation: extend({
+        animation: extend$2({
           // Disable animation
           duration: 0
         }, opts && opts.animation)
@@ -75692,7 +75666,7 @@ function (_super) {
   };
 
   ECharts.prototype.makeActionFromEvent = function (eventObj) {
-    var payload = extend({}, eventObj);
+    var payload = extend$2({}, eventObj);
     payload.type = eventActionMap[eventObj.type];
     return payload;
   };
@@ -76194,7 +76168,7 @@ function (_super) {
       if (payload.batch) {
         batched = true;
         payloads = map$1(payload.batch, function (item) {
-          item = defaults(extend({}, item), payload);
+          item = defaults(extend$2({}, item), payload);
           item.batch = null;
           return item;
         });
@@ -76213,7 +76187,7 @@ function (_super) {
         // Action can specify the event by return it.
         eventObj = actionWrap.action(batchItem, _this._model, _this._api); // Emit event outside
 
-        eventObj = eventObj || extend({}, batchItem); // Convert type to eventType
+        eventObj = eventObj || extend$2({}, batchItem); // Convert type to eventType
 
         eventObj.type = actionInfo.event || eventObj.type;
         eventObjBatch.push(eventObj); // light update does not perform data process, layout and visual.
@@ -76461,7 +76435,7 @@ function (_super) {
     renderSeries = function (ecIns, ecModel, api, payload, updateParams, dirtyMap) {
       // Render all charts
       var scheduler = ecIns._scheduler;
-      updateParams = extend(updateParams || {}, {
+      updateParams = extend$2(updateParams || {}, {
         updatedSeries: ecModel.getSeries()
       }); // TODO progressive?
 
@@ -77214,27 +77188,27 @@ registerAction({
   type: HIGHLIGHT_ACTION_TYPE,
   event: HIGHLIGHT_ACTION_TYPE,
   update: HIGHLIGHT_ACTION_TYPE
-}, noop);
+}, noop$1);
 registerAction({
   type: DOWNPLAY_ACTION_TYPE,
   event: DOWNPLAY_ACTION_TYPE,
   update: DOWNPLAY_ACTION_TYPE
-}, noop);
+}, noop$1);
 registerAction({
   type: SELECT_ACTION_TYPE,
   event: SELECT_ACTION_TYPE,
   update: SELECT_ACTION_TYPE
-}, noop);
+}, noop$1);
 registerAction({
   type: UNSELECT_ACTION_TYPE,
   event: UNSELECT_ACTION_TYPE,
   update: UNSELECT_ACTION_TYPE
-}, noop);
+}, noop$1);
 registerAction({
   type: TOGGLE_SELECT_ACTION_TYPE,
   event: TOGGLE_SELECT_ACTION_TYPE,
   update: TOGGLE_SELECT_ACTION_TYPE
-}, noop); // Default theme
+}, noop$1); // Default theme
 
 registerTheme('light', lightTheme);
 registerTheme('dark', darkTheme); // For backward compatibility, where the namespace `dataTool` will
@@ -77725,7 +77699,7 @@ function () {
     this.otherDims = {};
 
     if (opt != null) {
-      extend(this, opt);
+      extend$2(this, opt);
     }
   }
 
@@ -78439,7 +78413,7 @@ function () {
   };
 
   SeriesData.prototype.setCalculationInfo = function (key, value) {
-    isObject$1(key) ? extend(this._calculationInfo, key) : this._calculationInfo[key] = value;
+    isObject$1(key) ? extend$2(this._calculationInfo, key) : this._calculationInfo[key] = value;
   };
   /**
    * @return Never be null/undefined. `number` will be converted to string. Becuase:
@@ -78791,7 +78765,7 @@ function () {
     this._visual = this._visual || {};
 
     if (isObject$1(kvObj)) {
-      extend(this._visual, kvObj);
+      extend$2(this._visual, kvObj);
     } else {
       this._visual[kvObj] = val;
     }
@@ -78843,7 +78817,7 @@ function () {
       if (isArray$1(val)) {
         val = val.slice();
       } else if (isObject$1(val)) {
-        val = extend({}, val);
+        val = extend$2({}, val);
       }
 
       itemVisual[key] = val;
@@ -78858,7 +78832,7 @@ function () {
     this._itemVisuals[idx] = itemVisual;
 
     if (isObject$1(key)) {
-      extend(itemVisual, key);
+      extend$2(itemVisual, key);
     } else {
       itemVisual[key] = value;
     }
@@ -78874,7 +78848,7 @@ function () {
   };
 
   SeriesData.prototype.setLayout = function (key, val) {
-    isObject$1(key) ? extend(this._layout, key) : this._layout[key] = val;
+    isObject$1(key) ? extend$2(this._layout, key) : this._layout[key] = val;
   };
   /**
    * Get layout property.
@@ -78898,7 +78872,7 @@ function () {
 
 
   SeriesData.prototype.setItemLayout = function (idx, layout, merge) {
-    this._itemLayouts[idx] = merge ? extend(this._itemLayouts[idx] || {}, layout) : layout;
+    this._itemLayouts[idx] = merge ? extend$2(this._itemLayouts[idx] || {}, layout) : layout;
   };
   /**
    * Clear all layout of single data item
@@ -79046,7 +79020,7 @@ function () {
       each$9(CLONE_PROPERTIES, function (propName) {
         target[propName] = clone$3(source[propName]);
       });
-      target._calculationInfo = extend({}, source._calculationInfo);
+      target._calculationInfo = extend$2({}, source._calculationInfo);
     };
 
     makeIdFromName = function (data, idx) {
@@ -79208,7 +79182,7 @@ source, opt) {
       coordDim = sysDimItem.name;
       var ordinalMeta = sysDimItem.ordinalMeta;
       sysDimItem.ordinalMeta = null;
-      sysDimItem = extend({}, sysDimItem);
+      sysDimItem = extend$2({}, sysDimItem);
       sysDimItem.ordinalMeta = ordinalMeta; // `coordDimIndex` should not be set directly.
 
       sysDimItemDimsDef = sysDimItem.dimsDef;
@@ -82984,10 +82958,10 @@ var util = /*#__PURE__*/Object.freeze({
   isString: isString,
   isObject: isObject$3,
   isFunction: isFunction,
-  extend: extend,
+  extend: extend$2,
   defaults: defaults,
   clone: clone$3,
-  merge: merge
+  merge: merge$1
 });
 
 var inner$4 = makeInner();
@@ -85524,7 +85498,7 @@ var clip = {
 var elementCreator = {
   cartesian2d: function (seriesModel, data, newIndex, layout, isHorizontal, animationModel, axisModel, isUpdate, roundCap) {
     var rect = new Rect$1({
-      shape: extend({}, layout),
+      shape: extend$2({}, layout),
       z2: 1
     });
     rect.__dataIndex = newIndex;
@@ -86730,7 +86704,7 @@ function (_super) {
     var layout = data.getItemLayout(idx); // cornerRadius & innerCornerRadius doesn't exist in the item layout. Use `0` if null value is specified.
     // see `setItemLayout` in `pieLayout.ts`.
 
-    var sectorShape = extend(getSectorCornerRadius(itemModel.getModel('itemStyle'), layout, true), layout); // Ignore NaN data.
+    var sectorShape = extend$2(getSectorCornerRadius(itemModel.getModel('itemStyle'), layout, true), layout); // Ignore NaN data.
 
     if (isNaN(sectorShape.startAngle)) {
       // Use NaN shape to avoid drawing shape.
@@ -86802,25 +86776,25 @@ function (_super) {
 
     this._updateLabel(seriesModel, data, idx);
 
-    sector.ensureState('emphasis').shape = extend({
+    sector.ensureState('emphasis').shape = extend$2({
       r: layout.r + (emphasisModel.get('scale') ? emphasisModel.get('scaleSize') || 0 : 0)
     }, getSectorCornerRadius(emphasisModel.getModel('itemStyle'), layout));
-    extend(sector.ensureState('select'), {
+    extend$2(sector.ensureState('select'), {
       x: dx,
       y: dy,
       shape: getSectorCornerRadius(itemModel.getModel(['select', 'itemStyle']), layout)
     });
-    extend(sector.ensureState('blur'), {
+    extend$2(sector.ensureState('blur'), {
       shape: getSectorCornerRadius(itemModel.getModel(['blur', 'itemStyle']), layout)
     });
     var labelLine = sector.getTextGuideLine();
     var labelText = sector.getTextContent();
-    labelLine && extend(labelLine.ensureState('select'), {
+    labelLine && extend$2(labelLine.ensureState('select'), {
       x: dx,
       y: dy
     }); // TODO: needs dx, dy in zrender?
 
-    extend(labelText.ensureState('select'), {
+    extend$2(labelText.ensureState('select'), {
       x: dx,
       y: dy
     });
@@ -86977,7 +86951,7 @@ var PieView$1 = PieView;
 function createSeriesDataSimply(seriesModel, opt, nameList) {
   opt = isArray$1(opt) && {
     coordDimensions: opt
-  } || extend({
+  } || extend$2({
     encodeDefine: seriesModel.getEncode()
   }, opt);
   var source = seriesModel.getSource();
@@ -87412,7 +87386,7 @@ var defaultOption$1 = {
     }
   }
 };
-var categoryAxis = merge({
+var categoryAxis = merge$1({
   // The gap at both ends of the axis. For categoryAxis, boolean.
   boundaryGap: true,
   // Set false to faster category collection.
@@ -87432,7 +87406,7 @@ var categoryAxis = merge({
     interval: 'auto'
   }
 }, defaultOption$1);
-var valueAxis = merge({
+var valueAxis = merge$1({
   boundaryGap: [0, 0],
   axisLine: {
     // Not shown when other axis is categoryAxis in cartesian
@@ -87464,7 +87438,7 @@ var valueAxis = merge({
     }
   }
 }, defaultOption$1);
-var timeAxis = merge({
+var timeAxis = merge$1({
   splitNumber: 6,
   axisLabel: {
     // To eliminate labels that are not nice
@@ -87546,7 +87520,7 @@ var AXIS_TYPES = {
 
 function axisModelCreator(registers, axisName, BaseAxisModelClass, extraDefaultOption) {
   each$9(AXIS_TYPES, function (v, axisType) {
-    var defaultOption = merge(merge({}, axisDefault[axisType], true), extraDefaultOption, true);
+    var defaultOption = merge$1(merge$1({}, axisDefault[axisType], true), extraDefaultOption, true);
 
     var AxisModel =
     /** @class */
@@ -87564,8 +87538,8 @@ function axisModelCreator(registers, axisName, BaseAxisModelClass, extraDefaultO
         var layoutMode = fetchLayoutMode(this);
         var inputPositionParams = layoutMode ? getLayoutParams(option) : {};
         var themeModel = ecModel.getTheme();
-        merge(option, themeModel.get(axisType + 'Axis'));
-        merge(option, this.getDefaultOption());
+        merge$1(option, themeModel.get(axisType + 'Axis'));
+        merge$1(option, this.getDefaultOption());
         option.type = getAxisType(option);
 
         if (layoutMode) {
@@ -88696,7 +88670,7 @@ var builders = {
       applyTransform$1(pt2, pt2, matrix);
     }
 
-    var lineStyle = extend({
+    var lineStyle = extend$2({
       lineCap: 'round'
     }, axisModel.getModel(['axisLine', 'lineStyle']).getLineStyle());
     var line = new Line$1({
@@ -89639,7 +89613,7 @@ function (_super) {
 
     var gridModel = axisModel.getCoordSysModel();
     var layout$1 = layout(gridModel, axisModel);
-    var axisBuilder = new AxisBuilder$1(axisModel, extend({
+    var axisBuilder = new AxisBuilder$1(axisModel, extend$2({
       handleAutoShown: function (elementType) {
         var cartesians = gridModel.coordinateSystem.getCartesians();
 
@@ -89900,7 +89874,7 @@ registerAction({
   type: 'takeGlobalCursor',
   event: 'globalCursorTaken',
   update: 'update'
-}, noop);
+}, noop$1);
 
 var RoamController =
 /** @class */
@@ -91991,7 +91965,7 @@ function () {
     controller.off('pan').on('pan', function (e) {
       this._mouseDownFlag = false;
       updateViewOnPan(controllerHost, e.dx, e.dy);
-      api.dispatchAction(extend(makeActionBase(), {
+      api.dispatchAction(extend$2(makeActionBase(), {
         dx: e.dx,
         dy: e.dy,
         animation: {
@@ -92002,7 +91976,7 @@ function () {
     controller.off('zoom').on('zoom', function (e) {
       this._mouseDownFlag = false;
       updateViewOnZoom(controllerHost, e.scale, e.originX, e.originY);
-      api.dispatchAction(extend(makeActionBase(), {
+      api.dispatchAction(extend$2(makeActionBase(), {
         zoom: e.scale,
         originX: e.originX,
         originY: e.originY,
@@ -93348,7 +93322,7 @@ function () {
 
     ecModel.eachComponent('geo', function (geoModel, idx) {
       var mapName = geoModel.get('map');
-      var geo = new Geo$1(mapName + idx, mapName, extend({
+      var geo = new Geo$1(mapName + idx, mapName, extend$2({
         nameMap: geoModel.get('nameMap')
       }, getCommonGeoProperties(geoModel)));
       geo.zoomLimit = geoModel.get('scaleLimit');
@@ -93381,7 +93355,7 @@ function () {
       var nameMapList = map$1(mapSeries, function (singleMapSeries) {
         return singleMapSeries.get('nameMap');
       });
-      var geo = new Geo$1(mapType, mapType, extend({
+      var geo = new Geo$1(mapType, mapType, extend$2({
         nameMap: mergeAll(nameMapList)
       }, getCommonGeoProperties(mapSeries[0])));
       geo.zoomLimit = retrieve.apply(null, map$1(mapSeries, function (singleMapSeries) {
@@ -94383,7 +94357,7 @@ var normalizers = {
 
     return index == null ? CATEGORY_DEFAULT_VISUAL_INDEX : index;
   },
-  fixed: noop
+  fixed: noop$1
 };
 
 function littleThan(close, a, b) {
@@ -95597,7 +95571,7 @@ function processOnAxis(axisInfo, newValue, updaters, noSnap, outputFinder) {
   // By default use the first involved series data as a sample to connect.
 
   if (payloadBatch[0] && outputFinder.seriesIndex == null) {
-    extend(outputFinder, payloadBatch[0]);
+    extend$2(outputFinder, payloadBatch[0]);
   } // If no linkSource input, this process is for collecting link
   // target, where snap should not be accepted.
 
@@ -97002,7 +96976,7 @@ function (_super) {
 
           if (frag) {
             var valueFormatter = buildTooltipModel([series], globalTooltipModel).get('valueFormatter');
-            axisSectionMarkup.blocks.push(valueFormatter ? extend({
+            axisSectionMarkup.blocks.push(valueFormatter ? extend$2({
               valueFormatter: valueFormatter
             }, frag) : frag);
           }
@@ -97070,7 +97044,7 @@ function (_super) {
     var orderMode = tooltipModel.get('order');
     var valueFormatter = tooltipModel.get('valueFormatter');
     var frag = seriesTooltipResult.frag;
-    var markupText = frag ? buildTooltipMarkup(valueFormatter ? extend({
+    var markupText = frag ? buildTooltipMarkup(valueFormatter ? extend$2({
       valueFormatter: valueFormatter
     }, frag) : frag, markupStyleCreator, renderMode, orderMode, ecModel.get('useUTC'), tooltipModel.get('textStyle')) : seriesTooltipResult.text;
     var asyncTicket = 'item_' + dataModel.name + '_' + dataIndex;
@@ -97537,12 +97511,12 @@ function install$9(registers) {
     type: 'showTip',
     event: 'showTip',
     update: 'tooltip:manuallyShowTip'
-  }, noop);
+  }, noop$1);
   registers.registerAction({
     type: 'hideTip',
     event: 'hideTip',
     update: 'tooltip:manuallyHideTip'
-  }, noop);
+  }, noop$1);
 }
 
 var each$4 = each$9;
@@ -97927,7 +97901,7 @@ function (_super) {
         isString(item) && (item = {
           type: item
         });
-        selector[index] = merge(item, getDefaultSelectorOptions(ecModel, item.type));
+        selector[index] = merge$1(item, getDefaultSelectorOptions(ecModel, item.type));
       });
     }
   };
@@ -98326,7 +98300,7 @@ function (_super) {
             if (colorArr && colorArr[3] === 0) {
               colorArr[3] = 0.2; // TODO color is set to 0, 0, 0, 0. Should show correct RGBA
 
-              style = extend(extend({}, style), {
+              style = extend$2(extend$2({}, style), {
                 fill: stringify(colorArr, 'rgba')
               });
             }
@@ -99652,9 +99626,9 @@ function (_super) {
     };
     var target = thisOption.target || (thisOption.target = {});
     var controller = thisOption.controller || (thisOption.controller = {});
-    merge(target, base); // Do not override
+    merge$1(target, base); // Do not override
 
-    merge(controller, base); // Do not override
+    merge$1(controller, base); // Do not override
 
     var isCategory = this.isCategory();
     completeSingle.call(this, target);
@@ -100490,7 +100464,7 @@ function (_super) {
 
     if (indicator instanceof ZRImage$1) {
       var pathStyle = indicator.style;
-      indicator.useStyle(extend({
+      indicator.useStyle(extend$2({
         // TODO other properties like x, y ?
         image: pathStyle.image,
         x: pathStyle.x,
@@ -102261,7 +102235,7 @@ var CanvasPainter = (function () {
         this.type = 'canvas';
         var singleCanvas = !root.nodeName
             || root.nodeName.toUpperCase() === 'CANVAS';
-        this._opts = opts = extend({}, opts || {});
+        this._opts = opts = extend$2({}, opts || {});
         this.dpr = opts.devicePixelRatio || devicePixelRatio;
         this._singleCanvas = singleCanvas;
         this.root = root;
@@ -102546,10 +102520,10 @@ var CanvasPainter = (function () {
             layer.zlevel = zlevel;
             layer.__builtin__ = true;
             if (this._layerConfig[zlevel]) {
-                merge(layer, this._layerConfig[zlevel], true);
+                merge$1(layer, this._layerConfig[zlevel], true);
             }
             else if (this._layerConfig[zlevel - EL_AFTER_INCREMENTAL_INC]) {
-                merge(layer, this._layerConfig[zlevel - EL_AFTER_INCREMENTAL_INC], true);
+                merge$1(layer, this._layerConfig[zlevel - EL_AFTER_INCREMENTAL_INC], true);
             }
             if (virtual) {
                 layer.virtual = virtual;
@@ -102737,13 +102711,13 @@ var CanvasPainter = (function () {
                 layerConfig[zlevel] = config;
             }
             else {
-                merge(layerConfig[zlevel], config, true);
+                merge$1(layerConfig[zlevel], config, true);
             }
             for (var i = 0; i < this._zlevelList.length; i++) {
                 var _zlevel = this._zlevelList[i];
                 if (_zlevel === zlevel || _zlevel === zlevel + EL_AFTER_INCREMENTAL_INC) {
                     var layer = this._layers[_zlevel];
-                    merge(layer, layerConfig[zlevel], true);
+                    merge$1(layer, layerConfig[zlevel], true);
                 }
             }
         }
@@ -103746,6 +103720,2048 @@ DisplayPicture.defaultProps = {
   size: 'sm'
 };
 
+// do not edit .js files directly - edit src/index.jst
+
+
+
+var fastDeepEqual = function equal(a, b) {
+  if (a === b) return true;
+
+  if (a && b && typeof a == 'object' && typeof b == 'object') {
+    if (a.constructor !== b.constructor) return false;
+
+    var length, i, keys;
+    if (Array.isArray(a)) {
+      length = a.length;
+      if (length != b.length) return false;
+      for (i = length; i-- !== 0;)
+        if (!equal(a[i], b[i])) return false;
+      return true;
+    }
+
+
+
+    if (a.constructor === RegExp) return a.source === b.source && a.flags === b.flags;
+    if (a.valueOf !== Object.prototype.valueOf) return a.valueOf() === b.valueOf();
+    if (a.toString !== Object.prototype.toString) return a.toString() === b.toString();
+
+    keys = Object.keys(a);
+    length = keys.length;
+    if (length !== Object.keys(b).length) return false;
+
+    for (i = length; i-- !== 0;)
+      if (!Object.prototype.hasOwnProperty.call(b, keys[i])) return false;
+
+    for (i = length; i-- !== 0;) {
+      var key = keys[i];
+
+      if (!equal(a[key], b[key])) return false;
+    }
+
+    return true;
+  }
+
+  // true if both NaN, false otherwise
+  return a!==a && b!==b;
+};
+
+/**
+ * Copyright 2019 Google LLC. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at.
+ *
+ *      Http://www.apache.org/licenses/LICENSE-2.0.
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+const DEFAULT_ID = "__googleMapsScriptId";
+/**
+ * The status of the [[Loader]].
+ */
+var LoaderStatus;
+(function (LoaderStatus) {
+    LoaderStatus[LoaderStatus["INITIALIZED"] = 0] = "INITIALIZED";
+    LoaderStatus[LoaderStatus["LOADING"] = 1] = "LOADING";
+    LoaderStatus[LoaderStatus["SUCCESS"] = 2] = "SUCCESS";
+    LoaderStatus[LoaderStatus["FAILURE"] = 3] = "FAILURE";
+})(LoaderStatus || (LoaderStatus = {}));
+/**
+ * [[Loader]] makes it easier to add Google Maps JavaScript API to your application
+ * dynamically using
+ * [Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
+ * It works by dynamically creating and appending a script node to the the
+ * document head and wrapping the callback function so as to return a promise.
+ *
+ * ```
+ * const loader = new Loader({
+ *   apiKey: "",
+ *   version: "weekly",
+ *   libraries: ["places"]
+ * });
+ *
+ * loader.load().then((google) => {
+ *   const map = new google.maps.Map(...)
+ * })
+ * ```
+ */
+class Loader {
+    /**
+     * Creates an instance of Loader using [[LoaderOptions]]. No defaults are set
+     * using this library, instead the defaults are set by the Google Maps
+     * JavaScript API server.
+     *
+     * ```
+     * const loader = Loader({apiKey, version: 'weekly', libraries: ['places']});
+     * ```
+     */
+    constructor({ apiKey, authReferrerPolicy, channel, client, id = DEFAULT_ID, language, libraries = [], mapIds, nonce, region, retries = 3, url = "https://maps.googleapis.com/maps/api/js", version, }) {
+        this.CALLBACK = "__googleMapsCallback";
+        this.callbacks = [];
+        this.done = false;
+        this.loading = false;
+        this.errors = [];
+        this.apiKey = apiKey;
+        this.authReferrerPolicy = authReferrerPolicy;
+        this.channel = channel;
+        this.client = client;
+        this.id = id || DEFAULT_ID; // Do not allow empty string
+        this.language = language;
+        this.libraries = libraries;
+        this.mapIds = mapIds;
+        this.nonce = nonce;
+        this.region = region;
+        this.retries = retries;
+        this.url = url;
+        this.version = version;
+        if (Loader.instance) {
+            if (!fastDeepEqual(this.options, Loader.instance.options)) {
+                throw new Error(`Loader must not be called again with different options. ${JSON.stringify(this.options)} !== ${JSON.stringify(Loader.instance.options)}`);
+            }
+            return Loader.instance;
+        }
+        Loader.instance = this;
+    }
+    get options() {
+        return {
+            version: this.version,
+            apiKey: this.apiKey,
+            channel: this.channel,
+            client: this.client,
+            id: this.id,
+            libraries: this.libraries,
+            language: this.language,
+            region: this.region,
+            mapIds: this.mapIds,
+            nonce: this.nonce,
+            url: this.url,
+            authReferrerPolicy: this.authReferrerPolicy,
+        };
+    }
+    get status() {
+        if (this.errors.length) {
+            return LoaderStatus.FAILURE;
+        }
+        if (this.done) {
+            return LoaderStatus.SUCCESS;
+        }
+        if (this.loading) {
+            return LoaderStatus.LOADING;
+        }
+        return LoaderStatus.INITIALIZED;
+    }
+    get failed() {
+        return this.done && !this.loading && this.errors.length >= this.retries + 1;
+    }
+    /**
+     * CreateUrl returns the Google Maps JavaScript API script url given the [[LoaderOptions]].
+     *
+     * @ignore
+     */
+    createUrl() {
+        let url = this.url;
+        url += `?callback=${this.CALLBACK}`;
+        if (this.apiKey) {
+            url += `&key=${this.apiKey}`;
+        }
+        if (this.channel) {
+            url += `&channel=${this.channel}`;
+        }
+        if (this.client) {
+            url += `&client=${this.client}`;
+        }
+        if (this.libraries.length > 0) {
+            url += `&libraries=${this.libraries.join(",")}`;
+        }
+        if (this.language) {
+            url += `&language=${this.language}`;
+        }
+        if (this.region) {
+            url += `&region=${this.region}`;
+        }
+        if (this.version) {
+            url += `&v=${this.version}`;
+        }
+        if (this.mapIds) {
+            url += `&map_ids=${this.mapIds.join(",")}`;
+        }
+        if (this.authReferrerPolicy) {
+            url += `&auth_referrer_policy=${this.authReferrerPolicy}`;
+        }
+        return url;
+    }
+    deleteScript() {
+        const script = document.getElementById(this.id);
+        if (script) {
+            script.remove();
+        }
+    }
+    /**
+     * Load the Google Maps JavaScript API script and return a Promise.
+     */
+    load() {
+        return this.loadPromise();
+    }
+    /**
+     * Load the Google Maps JavaScript API script and return a Promise.
+     *
+     * @ignore
+     */
+    loadPromise() {
+        return new Promise((resolve, reject) => {
+            this.loadCallback((err) => {
+                if (!err) {
+                    resolve(window.google);
+                }
+                else {
+                    reject(err.error);
+                }
+            });
+        });
+    }
+    /**
+     * Load the Google Maps JavaScript API script with a callback.
+     */
+    loadCallback(fn) {
+        this.callbacks.push(fn);
+        this.execute();
+    }
+    /**
+     * Set the script on document.
+     */
+    setScript() {
+        if (document.getElementById(this.id)) {
+            // TODO wrap onerror callback for cases where the script was loaded elsewhere
+            this.callback();
+            return;
+        }
+        const url = this.createUrl();
+        const script = document.createElement("script");
+        script.id = this.id;
+        script.type = "text/javascript";
+        script.src = url;
+        script.onerror = this.loadErrorCallback.bind(this);
+        script.defer = true;
+        script.async = true;
+        if (this.nonce) {
+            script.nonce = this.nonce;
+        }
+        document.head.appendChild(script);
+    }
+    /**
+     * Reset the loader state.
+     */
+    reset() {
+        this.deleteScript();
+        this.done = false;
+        this.loading = false;
+        this.errors = [];
+        this.onerrorEvent = null;
+    }
+    resetIfRetryingFailed() {
+        if (this.failed) {
+            this.reset();
+        }
+    }
+    loadErrorCallback(e) {
+        this.errors.push(e);
+        if (this.errors.length <= this.retries) {
+            const delay = this.errors.length * Math.pow(2, this.errors.length);
+            console.log(`Failed to load Google Maps script, retrying in ${delay} ms.`);
+            setTimeout(() => {
+                this.deleteScript();
+                this.setScript();
+            }, delay);
+        }
+        else {
+            this.onerrorEvent = e;
+            this.callback();
+        }
+    }
+    setCallback() {
+        window.__googleMapsCallback = this.callback.bind(this);
+    }
+    callback() {
+        this.done = true;
+        this.loading = false;
+        this.callbacks.forEach((cb) => {
+            cb(this.onerrorEvent);
+        });
+        this.callbacks = [];
+    }
+    execute() {
+        this.resetIfRetryingFailed();
+        if (this.done) {
+            this.callback();
+        }
+        else {
+            // short circuit and warn if google.maps is already loaded
+            if (window.google && window.google.maps && window.google.maps.version) {
+                console.warn("Google Maps already loaded outside @googlemaps/js-api-loader." +
+                    "This may result in undesirable behavior as options and script parameters may not match.");
+                this.callback();
+                return;
+            }
+            if (this.loading) ;
+            else {
+                this.loading = true;
+                this.setCallback();
+                this.setScript();
+            }
+        }
+    }
+}
+
+/**
+ * Copyright 2021 Google LLC. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at.
+ *
+ *      Http://www.apache.org/licenses/LICENSE-2.0.
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+var Status;
+(function (Status) {
+    Status["LOADING"] = "LOADING";
+    Status["FAILURE"] = "FAILURE";
+    Status["SUCCESS"] = "SUCCESS";
+})(Status || (Status = {}));
+/**
+ * A component to wrap the loading of the Google Maps JavaScript API.
+ *
+ * ```
+ * import { Wrapper } from '@googlemaps/react-wrapper';
+ *
+ * const MyApp = () => (
+ * 	<Wrapper apiKey={'YOUR_API_KEY'}>
+ * 		<MyMapComponent />
+ * 	</Wrapper>
+ * );
+ * ```
+ *
+ * @param props
+ */
+const Wrapper = ({ children, render, callback, ...options }) => {
+    const [status, setStatus] = React.useState(Status.LOADING);
+    React.useEffect(() => {
+        const loader = new Loader(options);
+        const setStatusAndExecuteCallback = (status) => {
+            if (callback)
+                callback(status, loader);
+            setStatus(status);
+        };
+        setStatusAndExecuteCallback(Status.LOADING);
+        loader.load().then(() => setStatusAndExecuteCallback(Status.SUCCESS), () => setStatusAndExecuteCallback(Status.FAILURE));
+    }, []);
+    if (status === Status.SUCCESS && children)
+        return React.createElement(React.Fragment, null, children);
+    if (render)
+        return render(status);
+    return React.createElement(React.Fragment, null);
+};
+
+function sortKD(ids, coords, nodeSize, left, right, depth) {
+    if (right - left <= nodeSize) return;
+
+    const m = (left + right) >> 1;
+
+    select(ids, coords, m, left, right, depth % 2);
+
+    sortKD(ids, coords, nodeSize, left, m - 1, depth + 1);
+    sortKD(ids, coords, nodeSize, m + 1, right, depth + 1);
+}
+
+function select(ids, coords, k, left, right, inc) {
+
+    while (right > left) {
+        if (right - left > 600) {
+            const n = right - left + 1;
+            const m = k - left + 1;
+            const z = Math.log(n);
+            const s = 0.5 * Math.exp(2 * z / 3);
+            const sd = 0.5 * Math.sqrt(z * s * (n - s) / n) * (m - n / 2 < 0 ? -1 : 1);
+            const newLeft = Math.max(left, Math.floor(k - m * s / n + sd));
+            const newRight = Math.min(right, Math.floor(k + (n - m) * s / n + sd));
+            select(ids, coords, k, newLeft, newRight, inc);
+        }
+
+        const t = coords[2 * k + inc];
+        let i = left;
+        let j = right;
+
+        swapItem(ids, coords, left, k);
+        if (coords[2 * right + inc] > t) swapItem(ids, coords, left, right);
+
+        while (i < j) {
+            swapItem(ids, coords, i, j);
+            i++;
+            j--;
+            while (coords[2 * i + inc] < t) i++;
+            while (coords[2 * j + inc] > t) j--;
+        }
+
+        if (coords[2 * left + inc] === t) swapItem(ids, coords, left, j);
+        else {
+            j++;
+            swapItem(ids, coords, j, right);
+        }
+
+        if (j <= k) left = j + 1;
+        if (k <= j) right = j - 1;
+    }
+}
+
+function swapItem(ids, coords, i, j) {
+    swap(ids, i, j);
+    swap(coords, 2 * i, 2 * j);
+    swap(coords, 2 * i + 1, 2 * j + 1);
+}
+
+function swap(arr, i, j) {
+    const tmp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = tmp;
+}
+
+function range(ids, coords, minX, minY, maxX, maxY, nodeSize) {
+    const stack = [0, ids.length - 1, 0];
+    const result = [];
+    let x, y;
+
+    while (stack.length) {
+        const axis = stack.pop();
+        const right = stack.pop();
+        const left = stack.pop();
+
+        if (right - left <= nodeSize) {
+            for (let i = left; i <= right; i++) {
+                x = coords[2 * i];
+                y = coords[2 * i + 1];
+                if (x >= minX && x <= maxX && y >= minY && y <= maxY) result.push(ids[i]);
+            }
+            continue;
+        }
+
+        const m = Math.floor((left + right) / 2);
+
+        x = coords[2 * m];
+        y = coords[2 * m + 1];
+
+        if (x >= minX && x <= maxX && y >= minY && y <= maxY) result.push(ids[m]);
+
+        const nextAxis = (axis + 1) % 2;
+
+        if (axis === 0 ? minX <= x : minY <= y) {
+            stack.push(left);
+            stack.push(m - 1);
+            stack.push(nextAxis);
+        }
+        if (axis === 0 ? maxX >= x : maxY >= y) {
+            stack.push(m + 1);
+            stack.push(right);
+            stack.push(nextAxis);
+        }
+    }
+
+    return result;
+}
+
+function within(ids, coords, qx, qy, r, nodeSize) {
+    const stack = [0, ids.length - 1, 0];
+    const result = [];
+    const r2 = r * r;
+
+    while (stack.length) {
+        const axis = stack.pop();
+        const right = stack.pop();
+        const left = stack.pop();
+
+        if (right - left <= nodeSize) {
+            for (let i = left; i <= right; i++) {
+                if (sqDist(coords[2 * i], coords[2 * i + 1], qx, qy) <= r2) result.push(ids[i]);
+            }
+            continue;
+        }
+
+        const m = Math.floor((left + right) / 2);
+
+        const x = coords[2 * m];
+        const y = coords[2 * m + 1];
+
+        if (sqDist(x, y, qx, qy) <= r2) result.push(ids[m]);
+
+        const nextAxis = (axis + 1) % 2;
+
+        if (axis === 0 ? qx - r <= x : qy - r <= y) {
+            stack.push(left);
+            stack.push(m - 1);
+            stack.push(nextAxis);
+        }
+        if (axis === 0 ? qx + r >= x : qy + r >= y) {
+            stack.push(m + 1);
+            stack.push(right);
+            stack.push(nextAxis);
+        }
+    }
+
+    return result;
+}
+
+function sqDist(ax, ay, bx, by) {
+    const dx = ax - bx;
+    const dy = ay - by;
+    return dx * dx + dy * dy;
+}
+
+const defaultGetX = p => p[0];
+const defaultGetY = p => p[1];
+
+class KDBush {
+    constructor(points, getX = defaultGetX, getY = defaultGetY, nodeSize = 64, ArrayType = Float64Array) {
+        this.nodeSize = nodeSize;
+        this.points = points;
+
+        const IndexArrayType = points.length < 65536 ? Uint16Array : Uint32Array;
+
+        const ids = this.ids = new IndexArrayType(points.length);
+        const coords = this.coords = new ArrayType(points.length * 2);
+
+        for (let i = 0; i < points.length; i++) {
+            ids[i] = i;
+            coords[2 * i] = getX(points[i]);
+            coords[2 * i + 1] = getY(points[i]);
+        }
+
+        sortKD(ids, coords, nodeSize, 0, ids.length - 1, 0);
+    }
+
+    range(minX, minY, maxX, maxY) {
+        return range(this.ids, this.coords, minX, minY, maxX, maxY, this.nodeSize);
+    }
+
+    within(x, y, r) {
+        return within(this.ids, this.coords, x, y, r, this.nodeSize);
+    }
+}
+
+const defaultOptions = {
+    minZoom: 0,   // min zoom to generate clusters on
+    maxZoom: 16,  // max zoom level to cluster the points on
+    minPoints: 2, // minimum points to form a cluster
+    radius: 40,   // cluster radius in pixels
+    extent: 512,  // tile extent (radius is calculated relative to it)
+    nodeSize: 64, // size of the KD-tree leaf node, affects performance
+    log: false,   // whether to log timing info
+
+    // whether to generate numeric ids for input features (in vector tiles)
+    generateId: false,
+
+    // a reduce function for calculating custom cluster properties
+    reduce: null, // (accumulated, props) => { accumulated.sum += props.sum; }
+
+    // properties to use for individual points when running the reducer
+    map: props => props // props => ({sum: props.my_value})
+};
+
+const fround = Math.fround || (tmp => ((x) => { tmp[0] = +x; return tmp[0]; }))(new Float32Array(1));
+
+class Supercluster {
+    constructor(options) {
+        this.options = extend$1(Object.create(defaultOptions), options);
+        this.trees = new Array(this.options.maxZoom + 1);
+    }
+
+    load(points) {
+        const {log, minZoom, maxZoom, nodeSize} = this.options;
+
+        if (log) console.time('total time');
+
+        const timerId = `prepare ${  points.length  } points`;
+        if (log) console.time(timerId);
+
+        this.points = points;
+
+        // generate a cluster object for each point and index input points into a KD-tree
+        let clusters = [];
+        for (let i = 0; i < points.length; i++) {
+            if (!points[i].geometry) continue;
+            clusters.push(createPointCluster(points[i], i));
+        }
+        this.trees[maxZoom + 1] = new KDBush(clusters, getX, getY, nodeSize, Float32Array);
+
+        if (log) console.timeEnd(timerId);
+
+        // cluster points on max zoom, then cluster the results on previous zoom, etc.;
+        // results in a cluster hierarchy across zoom levels
+        for (let z = maxZoom; z >= minZoom; z--) {
+            const now = +Date.now();
+
+            // create a new set of clusters for the zoom and index them with a KD-tree
+            clusters = this._cluster(clusters, z);
+            this.trees[z] = new KDBush(clusters, getX, getY, nodeSize, Float32Array);
+
+            if (log) console.log('z%d: %d clusters in %dms', z, clusters.length, +Date.now() - now);
+        }
+
+        if (log) console.timeEnd('total time');
+
+        return this;
+    }
+
+    getClusters(bbox, zoom) {
+        let minLng = ((bbox[0] + 180) % 360 + 360) % 360 - 180;
+        const minLat = Math.max(-90, Math.min(90, bbox[1]));
+        let maxLng = bbox[2] === 180 ? 180 : ((bbox[2] + 180) % 360 + 360) % 360 - 180;
+        const maxLat = Math.max(-90, Math.min(90, bbox[3]));
+
+        if (bbox[2] - bbox[0] >= 360) {
+            minLng = -180;
+            maxLng = 180;
+        } else if (minLng > maxLng) {
+            const easternHem = this.getClusters([minLng, minLat, 180, maxLat], zoom);
+            const westernHem = this.getClusters([-180, minLat, maxLng, maxLat], zoom);
+            return easternHem.concat(westernHem);
+        }
+
+        const tree = this.trees[this._limitZoom(zoom)];
+        const ids = tree.range(lngX(minLng), latY(maxLat), lngX(maxLng), latY(minLat));
+        const clusters = [];
+        for (const id of ids) {
+            const c = tree.points[id];
+            clusters.push(c.numPoints ? getClusterJSON(c) : this.points[c.index]);
+        }
+        return clusters;
+    }
+
+    getChildren(clusterId) {
+        const originId = this._getOriginId(clusterId);
+        const originZoom = this._getOriginZoom(clusterId);
+        const errorMsg = 'No cluster with the specified id.';
+
+        const index = this.trees[originZoom];
+        if (!index) throw new Error(errorMsg);
+
+        const origin = index.points[originId];
+        if (!origin) throw new Error(errorMsg);
+
+        const r = this.options.radius / (this.options.extent * Math.pow(2, originZoom - 1));
+        const ids = index.within(origin.x, origin.y, r);
+        const children = [];
+        for (const id of ids) {
+            const c = index.points[id];
+            if (c.parentId === clusterId) {
+                children.push(c.numPoints ? getClusterJSON(c) : this.points[c.index]);
+            }
+        }
+
+        if (children.length === 0) throw new Error(errorMsg);
+
+        return children;
+    }
+
+    getLeaves(clusterId, limit, offset) {
+        limit = limit || 10;
+        offset = offset || 0;
+
+        const leaves = [];
+        this._appendLeaves(leaves, clusterId, limit, offset, 0);
+
+        return leaves;
+    }
+
+    getTile(z, x, y) {
+        const tree = this.trees[this._limitZoom(z)];
+        const z2 = Math.pow(2, z);
+        const {extent, radius} = this.options;
+        const p = radius / extent;
+        const top = (y - p) / z2;
+        const bottom = (y + 1 + p) / z2;
+
+        const tile = {
+            features: []
+        };
+
+        this._addTileFeatures(
+            tree.range((x - p) / z2, top, (x + 1 + p) / z2, bottom),
+            tree.points, x, y, z2, tile);
+
+        if (x === 0) {
+            this._addTileFeatures(
+                tree.range(1 - p / z2, top, 1, bottom),
+                tree.points, z2, y, z2, tile);
+        }
+        if (x === z2 - 1) {
+            this._addTileFeatures(
+                tree.range(0, top, p / z2, bottom),
+                tree.points, -1, y, z2, tile);
+        }
+
+        return tile.features.length ? tile : null;
+    }
+
+    getClusterExpansionZoom(clusterId) {
+        let expansionZoom = this._getOriginZoom(clusterId) - 1;
+        while (expansionZoom <= this.options.maxZoom) {
+            const children = this.getChildren(clusterId);
+            expansionZoom++;
+            if (children.length !== 1) break;
+            clusterId = children[0].properties.cluster_id;
+        }
+        return expansionZoom;
+    }
+
+    _appendLeaves(result, clusterId, limit, offset, skipped) {
+        const children = this.getChildren(clusterId);
+
+        for (const child of children) {
+            const props = child.properties;
+
+            if (props && props.cluster) {
+                if (skipped + props.point_count <= offset) {
+                    // skip the whole cluster
+                    skipped += props.point_count;
+                } else {
+                    // enter the cluster
+                    skipped = this._appendLeaves(result, props.cluster_id, limit, offset, skipped);
+                    // exit the cluster
+                }
+            } else if (skipped < offset) {
+                // skip a single point
+                skipped++;
+            } else {
+                // add a single point
+                result.push(child);
+            }
+            if (result.length === limit) break;
+        }
+
+        return skipped;
+    }
+
+    _addTileFeatures(ids, points, x, y, z2, tile) {
+        for (const i of ids) {
+            const c = points[i];
+            const isCluster = c.numPoints;
+
+            let tags, px, py;
+            if (isCluster) {
+                tags = getClusterProperties(c);
+                px = c.x;
+                py = c.y;
+            } else {
+                const p = this.points[c.index];
+                tags = p.properties;
+                px = lngX(p.geometry.coordinates[0]);
+                py = latY(p.geometry.coordinates[1]);
+            }
+
+            const f = {
+                type: 1,
+                geometry: [[
+                    Math.round(this.options.extent * (px * z2 - x)),
+                    Math.round(this.options.extent * (py * z2 - y))
+                ]],
+                tags
+            };
+
+            // assign id
+            let id;
+            if (isCluster) {
+                id = c.id;
+            } else if (this.options.generateId) {
+                // optionally generate id
+                id = c.index;
+            } else if (this.points[c.index].id) {
+                // keep id if already assigned
+                id = this.points[c.index].id;
+            }
+
+            if (id !== undefined) f.id = id;
+
+            tile.features.push(f);
+        }
+    }
+
+    _limitZoom(z) {
+        return Math.max(this.options.minZoom, Math.min(Math.floor(+z), this.options.maxZoom + 1));
+    }
+
+    _cluster(points, zoom) {
+        const clusters = [];
+        const {radius, extent, reduce, minPoints} = this.options;
+        const r = radius / (extent * Math.pow(2, zoom));
+
+        // loop through each point
+        for (let i = 0; i < points.length; i++) {
+            const p = points[i];
+            // if we've already visited the point at this zoom level, skip it
+            if (p.zoom <= zoom) continue;
+            p.zoom = zoom;
+
+            // find all nearby points
+            const tree = this.trees[zoom + 1];
+            const neighborIds = tree.within(p.x, p.y, r);
+
+            const numPointsOrigin = p.numPoints || 1;
+            let numPoints = numPointsOrigin;
+
+            // count the number of points in a potential cluster
+            for (const neighborId of neighborIds) {
+                const b = tree.points[neighborId];
+                // filter out neighbors that are already processed
+                if (b.zoom > zoom) numPoints += b.numPoints || 1;
+            }
+
+            // if there were neighbors to merge, and there are enough points to form a cluster
+            if (numPoints > numPointsOrigin && numPoints >= minPoints) {
+                let wx = p.x * numPointsOrigin;
+                let wy = p.y * numPointsOrigin;
+
+                let clusterProperties = reduce && numPointsOrigin > 1 ? this._map(p, true) : null;
+
+                // encode both zoom and point index on which the cluster originated -- offset by total length of features
+                const id = (i << 5) + (zoom + 1) + this.points.length;
+
+                for (const neighborId of neighborIds) {
+                    const b = tree.points[neighborId];
+
+                    if (b.zoom <= zoom) continue;
+                    b.zoom = zoom; // save the zoom (so it doesn't get processed twice)
+
+                    const numPoints2 = b.numPoints || 1;
+                    wx += b.x * numPoints2; // accumulate coordinates for calculating weighted center
+                    wy += b.y * numPoints2;
+
+                    b.parentId = id;
+
+                    if (reduce) {
+                        if (!clusterProperties) clusterProperties = this._map(p, true);
+                        reduce(clusterProperties, this._map(b));
+                    }
+                }
+
+                p.parentId = id;
+                clusters.push(createCluster(wx / numPoints, wy / numPoints, id, numPoints, clusterProperties));
+
+            } else { // left points as unclustered
+                clusters.push(p);
+
+                if (numPoints > 1) {
+                    for (const neighborId of neighborIds) {
+                        const b = tree.points[neighborId];
+                        if (b.zoom <= zoom) continue;
+                        b.zoom = zoom;
+                        clusters.push(b);
+                    }
+                }
+            }
+        }
+
+        return clusters;
+    }
+
+    // get index of the point from which the cluster originated
+    _getOriginId(clusterId) {
+        return (clusterId - this.points.length) >> 5;
+    }
+
+    // get zoom of the point from which the cluster originated
+    _getOriginZoom(clusterId) {
+        return (clusterId - this.points.length) % 32;
+    }
+
+    _map(point, clone) {
+        if (point.numPoints) {
+            return clone ? extend$1({}, point.properties) : point.properties;
+        }
+        const original = this.points[point.index].properties;
+        const result = this.options.map(original);
+        return clone && result === original ? extend$1({}, result) : result;
+    }
+}
+
+function createCluster(x, y, id, numPoints, properties) {
+    return {
+        x: fround(x), // weighted cluster center; round for consistency with Float32Array index
+        y: fround(y),
+        zoom: Infinity, // the last zoom the cluster was processed at
+        id, // encodes index of the first child of the cluster and its zoom level
+        parentId: -1, // parent cluster id
+        numPoints,
+        properties
+    };
+}
+
+function createPointCluster(p, id) {
+    const [x, y] = p.geometry.coordinates;
+    return {
+        x: fround(lngX(x)), // projected point coordinates
+        y: fround(latY(y)),
+        zoom: Infinity, // the last zoom the point was processed at
+        index: id, // index of the source feature in the original input array,
+        parentId: -1 // parent cluster id
+    };
+}
+
+function getClusterJSON(cluster) {
+    return {
+        type: 'Feature',
+        id: cluster.id,
+        properties: getClusterProperties(cluster),
+        geometry: {
+            type: 'Point',
+            coordinates: [xLng(cluster.x), yLat(cluster.y)]
+        }
+    };
+}
+
+function getClusterProperties(cluster) {
+    const count = cluster.numPoints;
+    const abbrev =
+        count >= 10000 ? `${Math.round(count / 1000)  }k` :
+        count >= 1000 ? `${Math.round(count / 100) / 10  }k` : count;
+    return extend$1(extend$1({}, cluster.properties), {
+        cluster: true,
+        cluster_id: cluster.id,
+        point_count: count,
+        point_count_abbreviated: abbrev
+    });
+}
+
+// longitude/latitude to spherical mercator in [0..1] range
+function lngX(lng) {
+    return lng / 360 + 0.5;
+}
+function latY(lat) {
+    const sin = Math.sin(lat * Math.PI / 180);
+    const y = (0.5 - 0.25 * Math.log((1 + sin) / (1 - sin)) / Math.PI);
+    return y < 0 ? 0 : y > 1 ? 1 : y;
+}
+
+// spherical mercator to longitude/latitude
+function xLng(x) {
+    return (x - 0.5) * 360;
+}
+function yLat(y) {
+    const y2 = (180 - y * 360) * Math.PI / 180;
+    return 360 * Math.atan(Math.exp(y2)) / Math.PI - 90;
+}
+
+function extend$1(dest, src) {
+    for (const id in src) dest[id] = src[id];
+    return dest;
+}
+
+function getX(p) {
+    return p.x;
+}
+function getY(p) {
+    return p.y;
+}
+
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+***************************************************************************** */
+
+function __rest(s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+}
+
+/**
+ * Copyright 2021 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+class Cluster {
+    constructor({ markers, position }) {
+        this.markers = markers;
+        if (position) {
+            if (position instanceof google.maps.LatLng) {
+                this._position = position;
+            }
+            else {
+                this._position = new google.maps.LatLng(position);
+            }
+        }
+    }
+    get bounds() {
+        if (this.markers.length === 0 && !this._position) {
+            return undefined;
+        }
+        return this.markers.reduce((bounds, marker) => {
+            return bounds.extend(marker.getPosition());
+        }, new google.maps.LatLngBounds(this._position, this._position));
+    }
+    get position() {
+        return this._position || this.bounds.getCenter();
+    }
+    /**
+     * Get the count of **visible** markers.
+     */
+    get count() {
+        return this.markers.filter((m) => m.getVisible())
+            .length;
+    }
+    /**
+     * Add a marker to the cluster.
+     */
+    push(marker) {
+        this.markers.push(marker);
+    }
+    /**
+     * Cleanup references and remove marker from map.
+     */
+    delete() {
+        if (this.marker) {
+            this.marker.setMap(null);
+            delete this.marker;
+        }
+        this.markers.length = 0;
+    }
+}
+
+/**
+ * Copyright 2021 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/**
+ * @hidden
+ */
+class AbstractAlgorithm {
+    constructor({ maxZoom = 16 }) {
+        this.maxZoom = maxZoom;
+    }
+    /**
+     * Helper function to bypass clustering based upon some map state such as
+     * zoom, number of markers, etc.
+     *
+     * ```typescript
+     *  cluster({markers, map}: AlgorithmInput): Cluster[] {
+     *    if (shouldBypassClustering(map)) {
+     *      return this.noop({markers, map})
+     *    }
+     * }
+     * ```
+     */
+    noop({ markers }) {
+        return noop(markers);
+    }
+}
+/**
+ * @hidden
+ */
+const noop = (markers) => {
+    const clusters = markers.map((marker) => new Cluster({
+        position: marker.getPosition(),
+        markers: [marker],
+    }));
+    return clusters;
+};
+
+/**
+ * Copyright 2021 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/**
+ * A very fast JavaScript algorithm for geospatial point clustering using KD trees.
+ *
+ * @see https://www.npmjs.com/package/supercluster for more information on options.
+ */
+class SuperClusterAlgorithm extends AbstractAlgorithm {
+    constructor(_a) {
+        var { maxZoom, radius = 60 } = _a, options = __rest(_a, ["maxZoom", "radius"]);
+        super({ maxZoom });
+        this.superCluster = new Supercluster(Object.assign({ maxZoom: this.maxZoom, radius }, options));
+        this.state = { zoom: null };
+    }
+    calculate(input) {
+        let changed = false;
+        if (!fastDeepEqual$1(input.markers, this.markers)) {
+            changed = true;
+            // TODO use proxy to avoid copy?
+            this.markers = [...input.markers];
+            const points = this.markers.map((marker) => {
+                return {
+                    type: "Feature",
+                    geometry: {
+                        type: "Point",
+                        coordinates: [
+                            marker.getPosition().lng(),
+                            marker.getPosition().lat(),
+                        ],
+                    },
+                    properties: { marker },
+                };
+            });
+            this.superCluster.load(points);
+        }
+        const state = { zoom: input.map.getZoom() };
+        if (!changed) {
+            if (this.state.zoom > this.maxZoom && state.zoom > this.maxZoom) ;
+            else {
+                changed = changed || !fastDeepEqual$1(this.state, state);
+            }
+        }
+        this.state = state;
+        if (changed) {
+            this.clusters = this.cluster(input);
+        }
+        return { clusters: this.clusters, changed };
+    }
+    cluster({ map }) {
+        return this.superCluster
+            .getClusters([-180, -90, 180, 90], Math.round(map.getZoom()))
+            .map(this.transformCluster.bind(this));
+    }
+    transformCluster({ geometry: { coordinates: [lng, lat], }, properties, }) {
+        if (properties.cluster) {
+            return new Cluster({
+                markers: this.superCluster
+                    .getLeaves(properties.cluster_id, Infinity)
+                    .map((leaf) => leaf.properties.marker),
+                position: new google.maps.LatLng({ lat, lng }),
+            });
+        }
+        else {
+            const marker = properties.marker;
+            return new Cluster({
+                markers: [marker],
+                position: marker.getPosition(),
+            });
+        }
+    }
+}
+
+/**
+ * Copyright 2021 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/**
+ * Provides statistics on all clusters in the current render cycle for use in {@link Renderer.render}.
+ */
+class ClusterStats {
+    constructor(markers, clusters) {
+        this.markers = { sum: markers.length };
+        const clusterMarkerCounts = clusters.map((a) => a.count);
+        const clusterMarkerSum = clusterMarkerCounts.reduce((a, b) => a + b, 0);
+        this.clusters = {
+            count: clusters.length,
+            markers: {
+                mean: clusterMarkerSum / clusters.length,
+                sum: clusterMarkerSum,
+                min: Math.min(...clusterMarkerCounts),
+                max: Math.max(...clusterMarkerCounts),
+            },
+        };
+    }
+}
+class DefaultRenderer {
+    /**
+     * The default render function for the library used by {@link MarkerClusterer}.
+     *
+     * Currently set to use the following:
+     *
+     * ```typescript
+     * // change color if this cluster has more markers than the mean cluster
+     * const color =
+     *   count > Math.max(10, stats.clusters.markers.mean)
+     *     ? "#ff0000"
+     *     : "#0000ff";
+     *
+     * // create svg url with fill color
+     * const svg = window.btoa(`
+     * <svg fill="${color}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+     *   <circle cx="120" cy="120" opacity=".6" r="70" />
+     *   <circle cx="120" cy="120" opacity=".3" r="90" />
+     *   <circle cx="120" cy="120" opacity=".2" r="110" />
+     *   <circle cx="120" cy="120" opacity=".1" r="130" />
+     * </svg>`);
+     *
+     * // create marker using svg icon
+     * return new google.maps.Marker({
+     *   position,
+     *   icon: {
+     *     url: `data:image/svg+xml;base64,${svg}`,
+     *     scaledSize: new google.maps.Size(45, 45),
+     *   },
+     *   label: {
+     *     text: String(count),
+     *     color: "rgba(255,255,255,0.9)",
+     *     fontSize: "12px",
+     *   },
+     *   // adjust zIndex to be above other markers
+     *   zIndex: 1000 + count,
+     * });
+     * ```
+     */
+    render({ count, position }, stats) {
+        // change color if this cluster has more markers than the mean cluster
+        const color = count > Math.max(10, stats.clusters.markers.mean) ? "#ff0000" : "#0000ff";
+        // create svg url with fill color
+        const svg = window.btoa(`
+  <svg fill="${color}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240">
+    <circle cx="120" cy="120" opacity=".6" r="70" />
+    <circle cx="120" cy="120" opacity=".3" r="90" />
+    <circle cx="120" cy="120" opacity=".2" r="110" />
+  </svg>`);
+        // create marker using svg icon
+        return new google.maps.Marker({
+            position,
+            icon: {
+                url: `data:image/svg+xml;base64,${svg}`,
+                scaledSize: new google.maps.Size(45, 45),
+            },
+            label: {
+                text: String(count),
+                color: "rgba(255,255,255,0.9)",
+                fontSize: "12px",
+            },
+            title: `Cluster of ${count} markers`,
+            // adjust zIndex to be above other markers
+            zIndex: Number(google.maps.Marker.MAX_ZINDEX) + count,
+        });
+    }
+}
+
+/**
+ * Copyright 2019 Google LLC. All Rights Reserved.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/**
+ * Extends an object's prototype by another's.
+ *
+ * @param type1 The Type to be extended.
+ * @param type2 The Type to extend with.
+ * @ignore
+ */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function extend(type1, type2) {
+    /* istanbul ignore next */
+    // eslint-disable-next-line prefer-const
+    for (let property in type2.prototype) {
+        type1.prototype[property] = type2.prototype[property];
+    }
+}
+/**
+ * @ignore
+ */
+class OverlayViewSafe {
+    constructor() {
+        // MarkerClusterer implements google.maps.OverlayView interface. We use the
+        // extend function to extend MarkerClusterer with google.maps.OverlayView
+        // because it might not always be available when the code is defined so we
+        // look for it at the last possible moment. If it doesn't exist now then
+        // there is no point going ahead :)
+        extend(OverlayViewSafe, google.maps.OverlayView);
+    }
+}
+
+/**
+ * Copyright 2021 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+var MarkerClustererEvents;
+(function (MarkerClustererEvents) {
+    MarkerClustererEvents["CLUSTERING_BEGIN"] = "clusteringbegin";
+    MarkerClustererEvents["CLUSTERING_END"] = "clusteringend";
+    MarkerClustererEvents["CLUSTER_CLICK"] = "click";
+})(MarkerClustererEvents || (MarkerClustererEvents = {}));
+const defaultOnClusterClickHandler = (_, cluster, map) => {
+    map.fitBounds(cluster.bounds);
+};
+/**
+ * MarkerClusterer creates and manages per-zoom-level clusters for large amounts
+ * of markers. See {@link MarkerClustererOptions} for more details.
+ *
+ */
+class MarkerClusterer extends OverlayViewSafe {
+    constructor({ map, markers = [], algorithm = new SuperClusterAlgorithm({}), renderer = new DefaultRenderer(), onClusterClick = defaultOnClusterClickHandler, }) {
+        super();
+        this.markers = [...markers];
+        this.clusters = [];
+        this.algorithm = algorithm;
+        this.renderer = renderer;
+        this.onClusterClick = onClusterClick;
+        if (map) {
+            this.setMap(map);
+        }
+    }
+    addMarker(marker, noDraw) {
+        if (this.markers.includes(marker)) {
+            return;
+        }
+        this.markers.push(marker);
+        if (!noDraw) {
+            this.render();
+        }
+    }
+    addMarkers(markers, noDraw) {
+        markers.forEach((marker) => {
+            this.addMarker(marker, true);
+        });
+        if (!noDraw) {
+            this.render();
+        }
+    }
+    removeMarker(marker, noDraw) {
+        const index = this.markers.indexOf(marker);
+        if (index === -1) {
+            // Marker is not in our list of markers, so do nothing:
+            return false;
+        }
+        marker.setMap(null);
+        this.markers.splice(index, 1); // Remove the marker from the list of managed markers
+        if (!noDraw) {
+            this.render();
+        }
+        return true;
+    }
+    removeMarkers(markers, noDraw) {
+        let removed = false;
+        markers.forEach((marker) => {
+            removed = this.removeMarker(marker, true) || removed;
+        });
+        if (removed && !noDraw) {
+            this.render();
+        }
+        return removed;
+    }
+    clearMarkers(noDraw) {
+        this.markers.length = 0;
+        if (!noDraw) {
+            this.render();
+        }
+    }
+    /**
+     * Recalculates and draws all the marker clusters.
+     */
+    render() {
+        const map = this.getMap();
+        if (map instanceof google.maps.Map && this.getProjection()) {
+            google.maps.event.trigger(this, MarkerClustererEvents.CLUSTERING_BEGIN, this);
+            const { clusters, changed } = this.algorithm.calculate({
+                markers: this.markers,
+                map,
+                mapCanvasProjection: this.getProjection(),
+            });
+            // allow algorithms to return flag on whether the clusters/markers have changed
+            if (changed || changed == undefined) {
+                // reset visibility of markers and clusters
+                this.reset();
+                // store new clusters
+                this.clusters = clusters;
+                this.renderClusters();
+            }
+            google.maps.event.trigger(this, MarkerClustererEvents.CLUSTERING_END, this);
+        }
+    }
+    onAdd() {
+        this.idleListener = this.getMap().addListener("idle", this.render.bind(this));
+        this.render();
+    }
+    onRemove() {
+        google.maps.event.removeListener(this.idleListener);
+        this.reset();
+    }
+    reset() {
+        this.markers.forEach((marker) => marker.setMap(null));
+        this.clusters.forEach((cluster) => cluster.delete());
+        this.clusters = [];
+    }
+    renderClusters() {
+        // generate stats to pass to renderers
+        const stats = new ClusterStats(this.markers, this.clusters);
+        const map = this.getMap();
+        this.clusters.forEach((cluster) => {
+            if (cluster.markers.length === 1) {
+                cluster.marker = cluster.markers[0];
+            }
+            else {
+                cluster.marker = this.renderer.render(cluster, stats);
+                if (this.onClusterClick) {
+                    cluster.marker.addListener("click", 
+                    /* istanbul ignore next */
+                    (event) => {
+                        google.maps.event.trigger(this, MarkerClustererEvents.CLUSTER_CLICK, cluster);
+                        this.onClusterClick(event, cluster, map);
+                    });
+                }
+            }
+            cluster.marker.setMap(map);
+        });
+    }
+}
+
+/**
+ * Default equality comparator pass-through, used as the standard `isEqual` creator for
+ * use inside the built comparator.
+ */
+function createDefaultIsNestedEqual(comparator) {
+    return function isEqual(a, b, _indexOrKeyA, _indexOrKeyB, _parentA, _parentB, meta) {
+        return comparator(a, b, meta);
+    };
+}
+/**
+ * Wrap the provided `areItemsEqual` method to manage the circular cache, allowing
+ * for circular references to be safely included in the comparison without creating
+ * stack overflows.
+ */
+function createIsCircular(areItemsEqual) {
+    return function isCircular(a, b, isEqual, cache) {
+        if (!a || !b || typeof a !== 'object' || typeof b !== 'object') {
+            return areItemsEqual(a, b, isEqual, cache);
+        }
+        var cachedA = cache.get(a);
+        var cachedB = cache.get(b);
+        if (cachedA && cachedB) {
+            return cachedA === b && cachedB === a;
+        }
+        cache.set(a, b);
+        cache.set(b, a);
+        var result = areItemsEqual(a, b, isEqual, cache);
+        cache.delete(a);
+        cache.delete(b);
+        return result;
+    };
+}
+/**
+ * Targeted shallow merge of two objects.
+ *
+ * @NOTE
+ * This exists as a tinier compiled version of the `__assign` helper that
+ * `tsc` injects in case of `Object.assign` not being present.
+ */
+function merge(a, b) {
+    var merged = {};
+    for (var key in a) {
+        merged[key] = a[key];
+    }
+    for (var key in b) {
+        merged[key] = b[key];
+    }
+    return merged;
+}
+/**
+ * Whether the value is a plain object.
+ *
+ * @NOTE
+ * This is a same-realm compariosn only.
+ */
+function isPlainObject(value) {
+    return value.constructor === Object || value.constructor == null;
+}
+/**
+ * When the value is `Promise`-like, aka "then-able".
+ */
+function isPromiseLike(value) {
+    return typeof value.then === 'function';
+}
+/**
+ * Whether the values passed are strictly equal or both NaN.
+ */
+function sameValueZeroEqual(a, b) {
+    return a === b || (a !== a && b !== b);
+}
+
+var ARGUMENTS_TAG = '[object Arguments]';
+var BOOLEAN_TAG = '[object Boolean]';
+var DATE_TAG = '[object Date]';
+var REG_EXP_TAG = '[object RegExp]';
+var MAP_TAG = '[object Map]';
+var NUMBER_TAG = '[object Number]';
+var OBJECT_TAG = '[object Object]';
+var SET_TAG = '[object Set]';
+var STRING_TAG = '[object String]';
+var toString = Object.prototype.toString;
+function createComparator(_a) {
+    var areArraysEqual = _a.areArraysEqual, areDatesEqual = _a.areDatesEqual, areMapsEqual = _a.areMapsEqual, areObjectsEqual = _a.areObjectsEqual, areRegExpsEqual = _a.areRegExpsEqual, areSetsEqual = _a.areSetsEqual, createIsNestedEqual = _a.createIsNestedEqual;
+    var isEqual = createIsNestedEqual(comparator);
+    /**
+     * compare the value of the two objects and return true if they are equivalent in values
+     */
+    function comparator(a, b, meta) {
+        // If the items are strictly equal, no need to do a value comparison.
+        if (a === b) {
+            return true;
+        }
+        // If the items are not non-nullish objects, then the only possibility
+        // of them being equal but not strictly is if they are both `NaN`. Since
+        // `NaN` is uniquely not equal to itself, we can use self-comparison of
+        // both objects, which is faster than `isNaN()`.
+        if (!a || !b || typeof a !== 'object' || typeof b !== 'object') {
+            return a !== a && b !== b;
+        }
+        // Checks are listed in order of commonality of use-case:
+        //   1. Common complex object types (plain object, array)
+        //   2. Common data values (date, regexp)
+        //   3. Less-common complex object types (map, set)
+        //   4. Less-common data values (promise, primitive wrappers)
+        // Inherently this is both subjective and assumptive, however
+        // when reviewing comparable libraries in the wild this order
+        // appears to be generally consistent.
+        // `isPlainObject` only checks against the object's own realm. Cross-realm
+        // comparisons are rare, and will be handled in the ultimate fallback, so
+        // we can avoid the `toString.call()` cost unless necessary.
+        if (isPlainObject(a) && isPlainObject(b)) {
+            return areObjectsEqual(a, b, isEqual, meta);
+        }
+        // `isArray()` works on subclasses and is cross-realm, so we can again avoid
+        // the `toString.call()` cost unless necessary by just checking if either
+        // and then both are arrays.
+        var aArray = Array.isArray(a);
+        var bArray = Array.isArray(b);
+        if (aArray || bArray) {
+            return aArray === bArray && areArraysEqual(a, b, isEqual, meta);
+        }
+        // Since this is a custom object, use the classic `toString.call()` to get its
+        // type. This is reasonably performant in modern environments like v8 and
+        // SpiderMonkey, and allows for cross-realm comparison when other checks like
+        // `instanceof` do not.
+        var aTag = toString.call(a);
+        if (aTag !== toString.call(b)) {
+            return false;
+        }
+        if (aTag === DATE_TAG) {
+            // `getTime()` showed better results compared to alternatives like `valueOf()`
+            // or the unary `+` operator.
+            return areDatesEqual(a, b, isEqual, meta);
+        }
+        if (aTag === REG_EXP_TAG) {
+            return areRegExpsEqual(a, b, isEqual, meta);
+        }
+        if (aTag === MAP_TAG) {
+            return areMapsEqual(a, b, isEqual, meta);
+        }
+        if (aTag === SET_TAG) {
+            return areSetsEqual(a, b, isEqual, meta);
+        }
+        // If a simple object tag, then we can prioritize a simple object comparison because
+        // it is likely a custom class. If an arguments tag, it should be treated as a standard
+        // object.
+        if (aTag === OBJECT_TAG || aTag === ARGUMENTS_TAG) {
+            // The exception for value comparison is `Promise`-like contracts. These should be
+            // treated the same as standard `Promise` objects, which means strict equality.
+            return isPromiseLike(a) || isPromiseLike(b)
+                ? false
+                : areObjectsEqual(a, b, isEqual, meta);
+        }
+        // As the penultimate fallback, check if the values passed are primitive wrappers. This
+        // is very rare in modern JS, which is why it is deprioritized compared to all other object
+        // types.
+        if (aTag === BOOLEAN_TAG || aTag === NUMBER_TAG || aTag === STRING_TAG) {
+            return sameValueZeroEqual(a.valueOf(), b.valueOf());
+        }
+        // If not matching any tags that require a specific type of comparison, then we hard-code false because
+        // the only thing remaining is strict equality, which has already been compared. This is for a few reasons:
+        //   - Certain types that cannot be introspected (e.g., `WeakMap`). For these types, this is the only
+        //     comparison that can be made.
+        //   - For types that can be introspected, but rarely have requirements to be compared
+        //     (`ArrayBuffer`, `DataView`, etc.), the cost is avoided to prioritize the common
+        //     use-cases (may be included in a future release, if requested enough).
+        //   - For types that can be introspected but do not have an objective definition of what
+        //     equality is (`Error`, etc.), the subjective decision is to be conservative and strictly compare.
+        // In all cases, these decisions should be reevaluated based on changes to the language and
+        // common development practices.
+        return false;
+    }
+    return comparator;
+}
+
+/**
+ * Whether the arrays are equal in value.
+ */
+function areArraysEqual(a, b, isEqual, meta) {
+    var index = a.length;
+    if (b.length !== index) {
+        return false;
+    }
+    // Decrementing `while` showed faster results than either incrementing or
+    // decrementing `for` loop and than an incrementing `while` loop. Declarative
+    // methods like `some` / `every` were not used to avoid incurring the garbage
+    // cost of anonymous callbacks.
+    while (index-- > 0) {
+        if (!isEqual(a[index], b[index], index, index, a, b, meta)) {
+            return false;
+        }
+    }
+    return true;
+}
+/**
+ * Whether the arrays are equal in value, including circular references.
+ */
+var areArraysEqualCircular = createIsCircular(areArraysEqual);
+
+/**
+ * Whether the dates passed are equal in value.
+ *
+ * @NOTE
+ * This is a standalone function instead of done inline in the comparator
+ * to allow for overrides.
+ */
+function areDatesEqual(a, b) {
+    return sameValueZeroEqual(a.valueOf(), b.valueOf());
+}
+
+/**
+ * Whether the `Map`s are equal in value.
+ */
+function areMapsEqual(a, b, isEqual, meta) {
+    var isValueEqual = a.size === b.size;
+    if (!isValueEqual) {
+        return false;
+    }
+    if (!a.size) {
+        return true;
+    }
+    // The use of `forEach()` is to avoid the transpilation cost of `for...of` comparisons, and
+    // the inability to control the performance of the resulting code. It also avoids excessive
+    // iteration compared to doing comparisons of `keys()` and `values()`. As a result, though,
+    // we cannot short-circuit the iterations; bookkeeping must be done to short-circuit the
+    // equality checks themselves.
+    var matchedIndices = {};
+    var indexA = 0;
+    a.forEach(function (aValue, aKey) {
+        if (!isValueEqual) {
+            return;
+        }
+        var hasMatch = false;
+        var matchIndexB = 0;
+        b.forEach(function (bValue, bKey) {
+            if (!hasMatch &&
+                !matchedIndices[matchIndexB] &&
+                (hasMatch =
+                    isEqual(aKey, bKey, indexA, matchIndexB, a, b, meta) &&
+                        isEqual(aValue, bValue, aKey, bKey, a, b, meta))) {
+                matchedIndices[matchIndexB] = true;
+            }
+            matchIndexB++;
+        });
+        indexA++;
+        isValueEqual = hasMatch;
+    });
+    return isValueEqual;
+}
+/**
+ * Whether the `Map`s are equal in value, including circular references.
+ */
+var areMapsEqualCircular = createIsCircular(areMapsEqual);
+
+var OWNER = '_owner';
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+/**
+ * Whether the objects are equal in value.
+ */
+function areObjectsEqual(a, b, isEqual, meta) {
+    var keysA = Object.keys(a);
+    var index = keysA.length;
+    if (Object.keys(b).length !== index) {
+        return false;
+    }
+    var key;
+    // Decrementing `while` showed faster results than either incrementing or
+    // decrementing `for` loop and than an incrementing `while` loop. Declarative
+    // methods like `some` / `every` were not used to avoid incurring the garbage
+    // cost of anonymous callbacks.
+    while (index-- > 0) {
+        key = keysA[index];
+        if (key === OWNER) {
+            var reactElementA = !!a.$$typeof;
+            var reactElementB = !!b.$$typeof;
+            if ((reactElementA || reactElementB) && reactElementA !== reactElementB) {
+                return false;
+            }
+        }
+        if (!hasOwnProperty.call(b, key) ||
+            !isEqual(a[key], b[key], key, key, a, b, meta)) {
+            return false;
+        }
+    }
+    return true;
+}
+/**
+ * Whether the objects are equal in value, including circular references.
+ */
+var areObjectsEqualCircular = createIsCircular(areObjectsEqual);
+
+/**
+ * Whether the regexps passed are equal in value.
+ *
+ * @NOTE
+ * This is a standalone function instead of done inline in the comparator
+ * to allow for overrides. An example of this would be supporting a
+ * pre-ES2015 environment where the `flags` property is not available.
+ */
+function areRegExpsEqual(a, b) {
+    return a.source === b.source && a.flags === b.flags;
+}
+
+/**
+ * Whether the `Set`s are equal in value.
+ */
+function areSetsEqual(a, b, isEqual, meta) {
+    var isValueEqual = a.size === b.size;
+    if (!isValueEqual) {
+        return false;
+    }
+    if (!a.size) {
+        return true;
+    }
+    // The use of `forEach()` is to avoid the transpilation cost of `for...of` comparisons, and
+    // the inability to control the performance of the resulting code. It also avoids excessive
+    // iteration compared to doing comparisons of `keys()` and `values()`. As a result, though,
+    // we cannot short-circuit the iterations; bookkeeping must be done to short-circuit the
+    // equality checks themselves.
+    var matchedIndices = {};
+    a.forEach(function (aValue, aKey) {
+        if (!isValueEqual) {
+            return;
+        }
+        var hasMatch = false;
+        var matchIndex = 0;
+        b.forEach(function (bValue, bKey) {
+            if (!hasMatch &&
+                !matchedIndices[matchIndex] &&
+                (hasMatch = isEqual(aValue, bValue, aKey, bKey, a, b, meta))) {
+                matchedIndices[matchIndex] = true;
+            }
+            matchIndex++;
+        });
+        isValueEqual = hasMatch;
+    });
+    return isValueEqual;
+}
+/**
+ * Whether the `Set`s are equal in value, including circular references.
+ */
+var areSetsEqualCircular = createIsCircular(areSetsEqual);
+
+var DEFAULT_CONFIG = Object.freeze({
+    areArraysEqual: areArraysEqual,
+    areDatesEqual: areDatesEqual,
+    areMapsEqual: areMapsEqual,
+    areObjectsEqual: areObjectsEqual,
+    areRegExpsEqual: areRegExpsEqual,
+    areSetsEqual: areSetsEqual,
+    createIsNestedEqual: createDefaultIsNestedEqual,
+});
+var DEFAULT_CIRCULAR_CONFIG = Object.freeze({
+    areArraysEqual: areArraysEqualCircular,
+    areDatesEqual: areDatesEqual,
+    areMapsEqual: areMapsEqualCircular,
+    areObjectsEqual: areObjectsEqualCircular,
+    areRegExpsEqual: areRegExpsEqual,
+    areSetsEqual: areSetsEqualCircular,
+    createIsNestedEqual: createDefaultIsNestedEqual,
+});
+createComparator(DEFAULT_CONFIG);
+createComparator(merge(DEFAULT_CONFIG, { createIsNestedEqual: function () { return sameValueZeroEqual; } }));
+createComparator(DEFAULT_CIRCULAR_CONFIG);
+createComparator(merge(DEFAULT_CIRCULAR_CONFIG, {
+    createIsNestedEqual: function () { return sameValueZeroEqual; },
+}));
+/**
+ * Create a custom equality comparison method.
+ *
+ * This can be done to create very targeted comparisons in extreme hot-path scenarios
+ * where the standard methods are not performant enough, but can also be used to provide
+ * support for legacy environments that do not support expected features like
+ * `RegExp.prototype.flags` out of the box.
+ */
+function createCustomEqual(getComparatorOptions) {
+    return createComparator(merge(DEFAULT_CONFIG, getComparatorOptions(DEFAULT_CONFIG)));
+}
+
+var deepCompareEqualsForMaps = createCustomEqual(function (deepEqual) {
+  return function (a, b) {
+    if (a instanceof google.maps.LatLng || b instanceof google.maps.LatLng) {
+      return new google.maps.LatLng(a).equals(new google.maps.LatLng(b));
+    }
+
+    // TODO extend to other types
+
+    // use fast-equals for other objects
+    return deepEqual(a, b);
+  };
+});
+function useDeepCompareEffectForMaps(callback, dependencies) {
+  React.useEffect(callback, dependencies.map(useDeepCompareMemoize));
+}
+function useDeepCompareMemoize(value) {
+  var ref = React.useRef();
+  if (!deepCompareEqualsForMaps(value, ref.current)) {
+    ref.current = value;
+  }
+  return ref.current;
+}
+
+var _excluded = ["onClick", "onIdle", "children", "style", "mapId", "clustered", "fitBounds"];
+var BaseMap = function BaseMap(props) {
+  // eslint-disable-next-line object-curly-newline
+  var onClick = props.onClick,
+    onIdle = props.onIdle,
+    children = props.children,
+    style = props.style,
+    mapId = props.mapId,
+    clustered = props.clustered,
+    fitBounds = props.fitBounds,
+    options = _objectWithoutProperties$1(props, _excluded);
+  var ref = React.useRef(null);
+  var _useState = React.useState(),
+    _useState2 = _slicedToArray(_useState, 2),
+    map = _useState2[0],
+    setMap = _useState2[1];
+  React.useEffect(function () {
+    if (ref.current && !map) {
+      setMap(new window.google.maps.Map(ref.current, {
+        mapId: mapId
+      }));
+    }
+  }, [map]);
+  React.useEffect(function () {
+    if (clustered && map && React.Children.count(children) > 0) {
+      var markers = React.Children.map(children, function (child) {
+        return new google.maps.Marker({
+          position: child.props.position
+        });
+      });
+      // eslint-disable-next-line no-new
+      new MarkerClusterer({
+        map: map,
+        markers: markers
+      });
+    }
+  }, [clustered, children, map]);
+  React.useEffect(function () {
+    if (map && React.Children.count(children) > 0) {
+      var bounds = new google.maps.LatLngBounds();
+      React.Children.forEach(children, function (child) {
+        bounds.extend(new google.maps.LatLng(child.props.position.lat, child.props.position.lng));
+      });
+      map.fitBounds(bounds);
+    }
+  }, [fitBounds, map]);
+  useDeepCompareEffectForMaps(function () {
+    if (map) {
+      map.setOptions(options);
+    }
+  }, [map, options]);
+  React.useEffect(function () {
+    if (map) {
+      ['click', 'idle'].forEach(function (eventName) {
+        return google.maps.event.clearListeners(map, eventName);
+      });
+      if (onClick) {
+        map.addListener('click', onClick);
+      }
+      if (onIdle) {
+        map.addListener('idle', function () {
+          return onIdle(map);
+        });
+      }
+    }
+  }, [map, onClick, onIdle]);
+  React.useEffect(function () {
+    if (map) {
+      ['click', 'idle'].forEach(function (eventName) {
+        return google.maps.event.clearListeners(map, eventName);
+      });
+      if (onClick) {
+        map.addListener('click', onClick);
+      }
+      if (onIdle) {
+        map.addListener('idle', function () {
+          return onIdle(map);
+        });
+      }
+    }
+  }, [map, onClick, onIdle]);
+  return /*#__PURE__*/jsxRuntime.jsxs(jsxRuntime.Fragment, {
+    children: [/*#__PURE__*/jsxRuntime.jsx("div", {
+      ref: ref,
+      style: style
+    }), !clustered && React.Children.map(children, function (child) {
+      if ( /*#__PURE__*/React.isValidElement(child)) {
+        // set the map prop on the child component
+        return /*#__PURE__*/React.cloneElement(child, {
+          map: map
+        });
+      }
+      return null;
+    })]
+  });
+};
+BaseMap.defaultProps = {
+  clustered: false,
+  fitBounds: false,
+  zoom: 1,
+  center: {
+    lat: 0,
+    lng: 0
+  }
+};
+
+var Map$1 = function Map(props) {
+  var options = props.options,
+    apiKey = props.apiKey,
+    libraries = props.libraries,
+    children = props.children;
+  return /*#__PURE__*/jsxRuntime.jsx(Wrapper, {
+    apiKey: apiKey,
+    libraries: libraries,
+    children: /*#__PURE__*/jsxRuntime.jsx(BaseMap, _objectSpread2(_objectSpread2({}, options), {}, {
+      children: children
+    }))
+  });
+};
+Map$1.propTypes = {
+  apiKey: propTypes$1.exports.string.isRequired,
+  libraries: propTypes$1.exports.arrayOf(propTypes$1.exports.string)
+};
+Map$1.defaultProps = {
+  libraries: undefined
+};
+
+var Marker = function Marker(options) {
+  var _useState = React.useState(),
+    _useState2 = _slicedToArray(_useState, 2),
+    marker = _useState2[0],
+    setMarker = _useState2[1];
+  React.useEffect(function () {
+    if (!marker) {
+      setMarker(new google.maps.Marker());
+    }
+
+    // remove marker from map on unmount
+    return function () {
+      if (marker) {
+        marker.setMap(null);
+      }
+    };
+  }, [marker]);
+  React.useEffect(function () {
+    if (marker) {
+      marker.setOptions(options);
+    }
+  }, [marker, options]);
+  return null;
+};
+
 exports.Accordion = Accordion;
 exports.Alert = Alert;
 exports.AlertIcon = AlertIcon;
@@ -103755,6 +105771,7 @@ exports.BASE_URLS = BASE_URLS;
 exports.BaseButton = BaseButton;
 exports.BaseCell = BaseCell;
 exports.BaseHorizontalBarChart = BaseHorizontalBarChart;
+exports.BaseMap = BaseMap;
 exports.BaseModal = BaseModal;
 exports.BasePieChart = BasePieChart;
 exports.BaseRegionChart = BaseRegionChart;
@@ -103797,6 +105814,8 @@ exports.HierarchyItem = HierarchyItem;
 exports.Link = Link;
 exports.MONTHS = MONTHS;
 exports.MagnifyingGlassIcon = MagnifyingGlass;
+exports.Map = Map$1;
+exports.Marker = Marker;
 exports.NutIcon = Nut;
 exports.PageHeader = PageHeader;
 exports.Pagination = Pagination;
