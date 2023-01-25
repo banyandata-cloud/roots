@@ -1,11 +1,10 @@
 import PropTypes from 'prop-types';
-import { useRef } from 'react';
+import { useDismiss, useFloating, useInteractions } from '@floating-ui/react-dom-interactions';
 import { classes } from '../../utils/utils';
 import styles from './Alert.module.css';
 import { CrossIcon, AlertIcon } from '../icons';
 import { Button } from '../buttons';
 import Popper from '../popper/Popper';
-import { useOutsideClickListener } from '../../hooks';
 
 const Alert = (props) => {
 	const {
@@ -46,23 +45,26 @@ const Alert = (props) => {
 		}
 	}
 
-	const ref = useRef(null);
-
-	useOutsideClickListener(ref, () => {
-		return toggle(false);
+	const { floating, context } = useFloating({
+		open,
+		onOpenChange: toggle,
 	});
 
+	const { getFloatingProps } = useInteractions([useDismiss(context)]);
+
 	return (
-		<Popper open={open} className={styles.popper} id='alert-popper' transparent={false}>
+		<Popper open={open} className={styles.popper} id='alert-popper'>
 			<div
-				ref={ref}
-				className={classes(
-					styles.root,
-					styles[color],
-					styles[`border-${border}`],
-					shadow ? styles.shadow : '',
-					styles[`position-${position}`]
-				)}>
+				{...getFloatingProps({
+					ref: floating,
+					className: classes(
+						styles.root,
+						styles[color],
+						styles[`border-${border}`],
+						shadow ? styles.shadow : '',
+						styles[`position-${position}`]
+					),
+				})}>
 				<div className={styles.left}>
 					<div className={styles.icons}>{showIcon && Icon}</div>
 					<div className={styles.content}>
@@ -82,9 +84,15 @@ const Alert = (props) => {
 							/>
 						)}
 						{close && (
-							<span onClick={toggle} className={styles.close}>
-								<CrossIcon className={styles.icon} />
-							</span>
+							<Button
+								size='auto'
+								variant='text'
+								onClick={toggle}
+								className={styles.close}
+								leftComponent={() => {
+									return <CrossIcon className={styles.icon} />;
+								}}
+							/>
 						)}
 					</div>
 				)}

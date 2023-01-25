@@ -26,3 +26,4 @@ export * from './Toggle';
 export * from './timePicker';
 export * from './text';
 export * from './link';
+export * from './maps';

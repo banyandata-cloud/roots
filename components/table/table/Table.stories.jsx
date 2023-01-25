@@ -190,12 +190,12 @@ export const WithFilters = Template.bind({});
 
 WithFilters.args = {
 	...Default.args,
-	disabledFilterOptions: {
-		filterButton: true,
-		settings: true,
-		columnFilter: true,
-		refresh: true,
-	},
+	// disabledFilterOptions: {
+	// filterButton: true,
+	// settings: true,
+	// columnFilter: true,
+	// refresh: true,
+	// },
 	filtersData: {
 		filterValue: {
 			applied: 4,
