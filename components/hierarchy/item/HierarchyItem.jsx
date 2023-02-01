@@ -7,7 +7,7 @@ import { CaretIcon } from '../../icons';
 import styles from './HierarchyItem.module.css';
 
 const HierarchyItem = (props) => {
-	const { defaultOpen, iconPlacement, title, children, onClick, onDoubleClick } = props;
+	const { defaultOpen, iconPlacement, title, children, onClick, onDoubleClick, active } = props;
 
 	const [open, setOpen] = useState(defaultOpen);
 
@@ -32,7 +32,7 @@ const HierarchyItem = (props) => {
 	);
 
 	return (
-		<div className={classes(styles.root, open ? styles.open : '')}>
+		<div className={classes(styles.root, open ? styles.open : '', active ? styles.active : '')}>
 			<BaseCell
 				flexible
 				size='auto'
@@ -82,6 +82,7 @@ HierarchyItem.propTypes = {
 	title: PropTypes.node,
 	defaultOpen: PropTypes.bool,
 	onClick: PropTypes.func,
+	active: PropTypes.bool,
 };
 
 HierarchyItem.defaultProps = {
@@ -89,6 +90,7 @@ HierarchyItem.defaultProps = {
 	title: null,
 	defaultOpen: false,
 	onClick: () => {},
+	active: false,
 };
 
 export default HierarchyItem;

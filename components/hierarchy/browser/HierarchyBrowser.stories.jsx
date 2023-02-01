@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { cloneDeep, get } from '../../../utils';
+import ThemedContainer from '../../helpers/themedContainer/ThemedContainer';
 import HierarchyBrowser from './HierarchyBrowser';
 
 export default {
@@ -137,9 +138,9 @@ const METADATA = {
 
 export const Default = (args) => {
 	return (
-		<div>
+		<ThemedContainer theme='light'>
 			<HierarchyBrowser {...args} />
-		</div>
+		</ThemedContainer>
 	);
 };
 
@@ -226,6 +227,7 @@ WithCustomRenderer.args = {
 			return {
 				iconPlacement: 'right',
 				title: item.title,
+				active: true,
 			};
 		}
 		return {};

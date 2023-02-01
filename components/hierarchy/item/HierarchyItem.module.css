@@ -98,4 +98,13 @@
   align-items: stretch;
   gap: 0.25rem;
   height: auto;
+}
+.root.active > .header {
+  background: var(--background);
+}
+.root.active > .header .icon,
+.root.active > .header .title,
+.root.active > .header .title svg {
+  color: var(--highlight);
+  fill: var(--highlight);
 }/*# sourceMappingURL=HierarchyItem.module.css.map */
