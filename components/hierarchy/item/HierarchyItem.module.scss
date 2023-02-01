@@ -96,4 +96,17 @@
 			height: auto;
 		}
 	}
+
+	&.active {
+		> .header {
+			.icon,
+			.title,
+			.title svg {
+				color: $highlight;
+				fill: $highlight;
+			}
+
+			background: $background;
+		}
+	}
 }
