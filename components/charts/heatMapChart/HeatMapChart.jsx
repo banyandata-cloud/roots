@@ -1,0 +1,271 @@
+/* eslint-disable react/forbid-prop-types */
+/* eslint-disable no-tabs */
+import PropTypes from 'prop-types';
+// ReactEcharts from 'echarts-for-react' would import the entire bundle
+import EChartsReactCore from 'echarts-for-react/lib/core';
+import * as echarts from 'echarts/core';
+import { HeatmapChart } from 'echarts/charts';
+import {
+	GridComponent,
+	TooltipComponent,
+	TitleComponent,
+	DatasetComponent,
+	LegendComponent,
+} from 'echarts/components';
+// Import renderer, note that introducing the CanvasRenderer or SVGRenderer is a required step
+import {
+	CanvasRenderer,
+	// SVGRenderer,
+} from 'echarts/renderers';
+import styles from './HeatMapChart.module.css';
+import { classes } from '../../../utils';
+
+// Register the required components
+echarts.use([
+	TitleComponent,
+	TooltipComponent,
+	GridComponent,
+	DatasetComponent,
+	LegendComponent,
+	HeatmapChart,
+	CanvasRenderer,
+]);
+
+const HeatMapChart = (props) => {
+	const {
+		title,
+		gridContainLabel,
+		gridOptions,
+		xAxisLabel,
+		seriesData,
+		onEvents,
+		xSplitLineShow,
+		xAxisLineShow,
+		xAxisTickShow,
+		yAxisLabelShow,
+		ySplitLineShow,
+		yAxisLineShow,
+		yAxisTickShow,
+		axisColor,
+		tooltip,
+		seriesName,
+		seriesOption,
+		visualMap,
+		style,
+		className,
+	} = props;
+
+	const seriesOptionObject = {
+		type: 'heatmap',
+		label: {
+			show: true,
+		},
+		pointSize: 40,
+		emphasis: {
+			itemStyle: {
+				shadowBlur: 10,
+				shadowColor: 'rgba(0, 0, 0, 0.5)',
+			},
+		},
+		name: seriesData?.metaData?.seriesDetails?.id ?? '',
+		data: [
+			[0, 0, 1],
+			[1, 0, 2],
+		],
+	};
+	const generateXAxis = () => {
+		const row = Math.floor(Math.sqrt(seriesData.length));
+		const xAxis = [];
+		for (let i = 0; i < row; i++) {
+			xAxis.push(i);
+		}
+		return xAxis;
+	};
+
+	const generateYAxis = () => {
+		const col = Math.ceil(Math.sqrt(seriesData.length));
+		const yAxis = [];
+		for (let i = 0; i < col; i++) {
+			yAxis.push(i);
+		}
+		return yAxis;
+	};
+
+	const generateSeries = () => {
+		const newSeriesData = Object.keys(seriesData.chartData).map((ob) => {
+			return {
+				name: ob,
+				value: seriesData.chartData[ob].x1,
+			};
+		});
+		const row = Math.floor(Math.sqrt(newSeriesData.length));
+		const col = Math.ceil(Math.sqrt(newSeriesData.length));
+
+		const dataNew = [];
+
+		for (let i = 0, k = 0; i < row; i++) {
+			for (let j = 0; j < col; j++, k++) {
+				dataNew.push({
+					name: newSeriesData?.[k]?.name ?? '',
+					value: [j, i, newSeriesData?.[k]?.value ?? '-'],
+				});
+			}
+		}
+		return [
+			{
+				...seriesOptionObject,
+				...seriesOption,
+				label: {
+					...(seriesOptionObject?.label ?? {}),
+					...(seriesOption?.label ?? {}),
+				},
+
+				name: seriesName,
+				data: dataNew,
+			},
+		];
+	};
+
+	return (
+		<EChartsReactCore
+			option={{
+				title: {
+					text: title,
+				},
+				grid: {
+					containLabel: gridContainLabel,
+					...gridOptions,
+				},
+				xAxis: {
+					data: generateXAxis(),
+					type: 'category',
+					axisLabel: {
+						...xAxisLabel,
+					},
+					splitLine: {
+						show: xSplitLineShow,
+					},
+					axisLine: {
+						show: xAxisLineShow,
+					},
+					axisTick: {
+						show: xAxisTickShow,
+					},
+					splitArea: {
+						show: true,
+					},
+				},
+
+				tooltip: {
+					...tooltip,
+				},
+				yAxis: {
+					data: generateYAxis(),
+					type: 'category',
+					splitArea: {
+						show: true,
+					},
+					axisLabel: {
+						show: yAxisLabelShow,
+						color: axisColor,
+					},
+					splitLine: {
+						show: ySplitLineShow,
+					},
+					axisLine: {
+						show: yAxisLineShow,
+					},
+					axisTick: {
+						show: yAxisTickShow,
+					},
+				},
+				visualMap: {
+					...visualMap,
+				},
+				series: generateSeries(),
+			}}
+			onEvents={onEvents}
+			echarts={echarts}
+			notMerge
+			lazyUpdate
+			className={classes(className, styles.root)}
+			style={style}
+		/>
+	);
+};
+
+HeatMapChart.propTypes = {
+	title: PropTypes.string,
+	gridContainLabel: PropTypes.bool,
+	gridOptions: PropTypes.object,
+	xAxisLabel: PropTypes.object,
+	tooltip: PropTypes.object,
+	seriesData: PropTypes.object,
+	onEvents: PropTypes.func,
+	yAxisLabelShow: PropTypes.bool,
+	ySplitLineShow: PropTypes.bool,
+	yAxisLineShow: PropTypes.bool,
+	yAxisTickShow: PropTypes.bool,
+	axisColor: PropTypes.string,
+	seriesName: PropTypes.string,
+	visualMap: PropTypes.shape({}),
+	seriesOption: PropTypes.shape({}),
+	style: PropTypes.objectOf(PropTypes.shape),
+	className: PropTypes.string,
+};
+
+HeatMapChart.defaultProps = {
+	title: '',
+	gridContainLabel: false,
+	gridOptions: {
+		left: 0,
+		right: 0,
+		bottom: 0,
+		top: 5,
+	},
+	xAxisLabel: {
+		show: true,
+		rotate: 90,
+		inside: true,
+		verticalAlign: 'bottom',
+		padding: [0, 0, 90, 0],
+	},
+	tooltip: {
+		position: 'top',
+	},
+	seriesData: {
+		chartData: {
+			user: {
+				x1: 0,
+			},
+		},
+	},
+	onEvents: () => {},
+	yAxisLabelShow: false,
+	ySplitLineShow: false,
+	yAxisLineShow: false,
+	yAxisTickShow: false,
+	axisColor: 'grey',
+	visualMap: {
+		min: 0,
+		max: 10,
+		show: false,
+		calculable: true,
+		inRange: {
+			color: ['#313695', '#a50026'],
+		},
+	},
+	seriesName: '',
+	seriesOption: {
+		label: {
+			show: true,
+		},
+	},
+	style: {
+		width: '100%',
+		height: '100%',
+	},
+	className: '',
+};
+
+export default HeatMapChart;
