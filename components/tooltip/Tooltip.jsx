@@ -115,7 +115,7 @@ const Tooltip = forwardRef(function Tooltip(props, propRef) {
 
 Tooltip.propTypes = {
 	variant: PropTypes.oneOf(['light', 'dark']),
-	content: PropTypes.string,
+	content: PropTypes.node,
 	position: PropTypes.oneOf(['right', 'top', 'bottom', 'left']),
 	className: PropTypes.string,
 };
