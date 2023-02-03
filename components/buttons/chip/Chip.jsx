@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types';
+import { forwardRef } from 'react';
 import styles from './Chip.module.css';
 import { classes } from '../../../utils';
 import { BaseButton } from '../baseButton';
 
-const Chip = (props) => {
+// eslint-disable-next-line prefer-arrow-callback
+const Chip = forwardRef(function Chip(props, ref) {
 	const {
 		className,
 		type,
@@ -22,6 +24,7 @@ const Chip = (props) => {
 	return (
 		<BaseButton
 			{...{
+				ref,
 				type,
 				component1: LeftComponent && <LeftComponent />,
 				title,
@@ -43,7 +46,7 @@ const Chip = (props) => {
 			)}
 		/>
 	);
-};
+});
 
 Chip.propTypes = {
 	...BaseButton.propTypes,
