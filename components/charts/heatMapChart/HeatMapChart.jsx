@@ -60,7 +60,6 @@ const HeatMapChart = (props) => {
 		label: {
 			show: true,
 		},
-		pointSize: 40,
 		emphasis: {
 			itemStyle: {
 				shadowBlur: 10,
@@ -68,10 +67,7 @@ const HeatMapChart = (props) => {
 			},
 		},
 		name: seriesData?.metaData?.seriesDetails?.id ?? '',
-		data: [
-			[0, 0, 1],
-			[1, 0, 2],
-		],
+		data: [],
 	};
 	const generateXAxis = () => {
 		const row = Math.floor(Math.sqrt(seriesData.length));
@@ -92,7 +88,7 @@ const HeatMapChart = (props) => {
 	};
 
 	const generateSeries = () => {
-		const newSeriesData = Object.keys(seriesData.chartData).map((ob) => {
+		const newSeriesData = Object.keys(seriesData?.chartData ?? {}).map((ob) => {
 			return {
 				name: ob,
 				value: seriesData.chartData[ob].x1,
@@ -221,40 +217,20 @@ HeatMapChart.defaultProps = {
 		left: 0,
 		right: 0,
 		bottom: 0,
-		top: 5,
+		top: 0,
 	},
-	xAxisLabel: {
-		show: true,
-		rotate: 90,
-		inside: true,
-		verticalAlign: 'bottom',
-		padding: [0, 0, 90, 0],
-	},
+	xAxisLabel: {},
 	tooltip: {
 		position: 'top',
 	},
-	seriesData: {
-		chartData: {
-			user: {
-				x1: 0,
-			},
-		},
-	},
+	seriesData: {},
 	onEvents: () => {},
 	yAxisLabelShow: false,
 	ySplitLineShow: false,
 	yAxisLineShow: false,
 	yAxisTickShow: false,
-	axisColor: 'grey',
-	visualMap: {
-		min: 0,
-		max: 10,
-		show: false,
-		calculable: true,
-		inRange: {
-			color: ['#313695', '#a50026'],
-		},
-	},
+	axisColor: '',
+	visualMap: {},
 	seriesName: '',
 	seriesOption: {
 		label: {
