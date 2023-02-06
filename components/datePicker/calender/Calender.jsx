@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { fromUnixTime, getUnixTime, isBefore } from 'date-fns';
 import { CalenderHeader } from './header';
 import styles from './Calender.module.css';
-import { getDayInfo } from '../../../utils';
+import { getDatesInStringFormat, getDayInfo } from '../../../utils';
 import { FULL_MONTHS } from '../../../constants';
 import { CalenderBody } from './body';
 import { CalenderFooter } from './footer';
@@ -18,6 +18,8 @@ const Calender = (props) => {
 		disabledDates,
 		disableDatesBefore,
 		value,
+		setFixedRange,
+		customRanges,
 	} = props;
 
 	const { month, year, monthAsNumber, dayAsNumber } = getDayInfo(new Date());
@@ -29,6 +31,37 @@ const Calender = (props) => {
 	});
 
 	useEffect(() => {
+		if (range && value) {
+			setSelectedRange({
+				dates: getDatesInStringFormat({
+					startingDate: fromUnixTime(value[0]),
+					endingDate: fromUnixTime(value[1]),
+				}),
+				unix: [value[0], value[1]],
+			});
+			const dateAsNumber = fromUnixTime(value[0]).getDate();
+			const selectedDayInfo = getDayInfo(fromUnixTime(value[0]));
+			const selectedDateMonth = {
+				month: selectedDayInfo.month,
+				monthAsNumber: selectedDayInfo.monthAsNumber,
+				year: selectedDayInfo.year,
+				dayAsNumber: selectedDayInfo.dayAsNumber,
+			};
+			setSelectedMonth({
+				month: selectedDayInfo.month,
+				monthAsNumber: selectedDayInfo.monthAsNumber,
+				year: selectedDayInfo.year,
+			});
+			setSelectedDate({
+				...selectedDate,
+				month: selectedDateMonth.month,
+				year: selectedDateMonth.year,
+				date: dateAsNumber,
+				unix: getUnixTime(fromUnixTime(value[0])),
+			});
+			return;
+		}
+
 		if (value) {
 			const date = fromUnixTime(value);
 			const dateAsNumber = date.getDate();
@@ -143,6 +176,8 @@ const Calender = (props) => {
 				setSelectedRange={setSelectedRange}
 				onApply={onApply}
 				goToDate={goToDate}
+				customRanges={customRanges}
+				setFixedRange={setFixedRange}
 			/>
 		</div>
 	);

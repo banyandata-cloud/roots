@@ -187,6 +187,19 @@ export const getDayInfo = (date) => {
 	};
 };
 
+export const getDatesInStringFormat = ({ startingDate, endingDate }) => {
+	return [
+		`${startingDate.getDate()} ${MONTHS[startingDate.getMonth()].substring(
+			0,
+			3
+		)} ${startingDate.getFullYear()}`,
+		`${endingDate.getDate()} ${MONTHS[endingDate.getMonth()].substring(
+			0,
+			3
+		)} ${endingDate.getFullYear()}`,
+	];
+};
+
 export const getDatesInAMonth = ({ month, year }) => {
 	const date = new Date(Date.UTC(year, month, 1));
 	const dates = [];

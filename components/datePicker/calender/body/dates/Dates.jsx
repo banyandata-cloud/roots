@@ -117,6 +117,7 @@ const Dates = (props) => {
 
 				const isFirstItem = isSameDay(fromUnixTime(firstItem), date);
 				const isLastItem = isSameDay(fromUnixTime(lastItem), date);
+
 				const isLastItemHovered = hoveredEndingDate === getUnixTime(date);
 				const isFirstItemHovered =
 					isBefore(date, fromUnixTime(firstItem)) &&
@@ -144,12 +145,16 @@ const Dates = (props) => {
 							isBefore(date, fromUnixTime(firstItem)));
 				} else {
 					isMidItem =
-						isBefore(date, fromUnixTime(lastItem)) &&
+						isBefore(date, fromUnixTime(lastItem).setHours(0, 0, 0, 0)) &&
 						isAfter(date, fromUnixTime(firstItem).setHours(23, 59, 59, 59));
 				}
 
 				const parentClassNames = classes(
-					isMidItem ? styles.midInRange : '',
+					isMidItem
+						? selectedSingleDate
+							? styles.midInRangeSelected
+							: styles.midInRange
+						: '',
 					isFirstItem
 						? isHoveringBeforeSelectedDate
 							? styles.maxInRange
