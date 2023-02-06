@@ -18351,172 +18351,181 @@ function autoit(Prism) {
   };
 }
 
-var avisynth_1 = avisynth;
-avisynth.displayName = 'avisynth';
-avisynth.aliases = ['avs'];
-function avisynth(Prism) {
+var avisynth_1;
+var hasRequiredAvisynth;
+
+function requireAvisynth () {
+	if (hasRequiredAvisynth) return avisynth_1;
+	hasRequiredAvisynth = 1;
+
+	avisynth_1 = avisynth;
+	avisynth.displayName = 'avisynth';
+	avisynth.aliases = ['avs'];
+	function avisynth(Prism) {
 (function (Prism) {
-    function replace(pattern, replacements) {
-      return pattern.replace(/<<(\d+)>>/g, function (m, index) {
-        return replacements[+index]
-      })
-    }
-    function re(pattern, replacements, flags) {
-      return RegExp(replace(pattern, replacements), flags || '')
-    }
-    var types = /bool|clip|float|int|string|val/.source;
-    var internals = [
-      // bools
-      /is(?:bool|clip|float|int|string)|defined|(?:(?:internal)?function|var)?exists?/
-        .source, // control
-      /apply|assert|default|eval|import|nop|select|undefined/.source, // global
-      /opt_(?:allowfloataudio|avipadscanlines|dwchannelmask|enable_(?:b64a|planartopackedrgb|v210|y3_10_10|y3_10_16)|usewaveextensible|vdubplanarhack)|set(?:cachemode|maxcpu|memorymax|planarlegacyalignment|workingdir)/
-        .source, // conv
-      /hex(?:value)?|value/.source, // numeric
-      /abs|ceil|continued(?:denominator|numerator)?|exp|floor|fmod|frac|log(?:10)?|max|min|muldiv|pi|pow|rand|round|sign|spline|sqrt/
-        .source, // trig
-      /a?sinh?|a?cosh?|a?tan[2h]?/.source, // bit
-      /(?:bit(?:and|not|x?or|[lr]?shift[aslu]?|sh[lr]|sa[lr]|[lr]rotatel?|ro[rl]|te?st|set(?:count)?|cl(?:ea)?r|ch(?:an)?ge?))/
-        .source, // runtime
-      /average(?:[bgr]|chroma[uv]|luma)|(?:[rgb]|chroma[uv]|luma|rgb|[yuv](?=difference(?:fromprevious|tonext)))difference(?:fromprevious|tonext)?|[yuvrgb]plane(?:median|min|max|minmaxdifference)/
-        .source, // script
-      /getprocessinfo|logmsg|script(?:dir(?:utf8)?|file(?:utf8)?|name(?:utf8)?)|setlogparams/
-        .source, // string
-      /chr|(?:fill|find|left|mid|replace|rev|right)str|format|[lu]case|ord|str(?:cmpi?|fromutf8|len|toutf8)|time|trim(?:all|left|right)/
-        .source, // version
-      /isversionorgreater|version(?:number|string)/.source, // helper
-      /buildpixeltype|colorspacenametopixeltype/.source, // avsplus
-      /addautoloaddir|on(?:cpu|cuda)|prefetch|setfiltermtmode/.source
-    ].join('|');
-    var properties = [
-      // content
-      /has(?:audio|video)/.source, // resolution
-      /height|width/.source, // framerate
-      /frame(?:count|rate)|framerate(?:denominator|numerator)/.source, // interlacing
-      /getparity|is(?:field|frame)based/.source, // color format
-      /bitspercomponent|componentsize|hasalpha|is(?:planar(?:rgba?)?|interleaved|rgb(?:24|32|48|64)?|y(?:8|u(?:va?|y2))?|yv(?:12|16|24|411)|420|422|444|packedrgb)|numcomponents|pixeltype/
-        .source, // audio
-      /audio(?:bits|channels|duration|length(?:[fs]|hi|lo)?|rate)|isaudio(?:float|int)/
-        .source
-    ].join('|');
-    var filters = [
-      // source
-      /avi(?:file)?source|directshowsource|image(?:reader|source|sourceanim)|opendmlsource|segmented(?:avisource|directshowsource)|wavsource/
-        .source, // color
-      /coloryuv|convertbacktoyuy2|convertto(?:RGB(?:24|32|48|64)|(?:planar)?RGBA?|Y8?|YV(?:12|16|24|411)|YUVA?(?:411|420|422|444)|YUY2)|fixluminance|gr[ae]yscale|invert|levels|limiter|mergea?rgb|merge(?:chroma|luma)|rgbadjust|show(?:alpha|blue|green|red)|swapuv|tweak|[uv]toy8?|ytouv/
-        .source, // overlay
-      /(?:colorkey|reset)mask|layer|mask(?:hs)?|merge|overlay|subtract/.source, // geometry
-      /addborders|(?:bicubic|bilinear|blackman|gauss|lanczos4|lanczos|point|sinc|spline(?:16|36|64))resize|crop(?:bottom)?|flip(?:horizontal|vertical)|(?:horizontal|vertical)?reduceby2|letterbox|skewrows|turn(?:180|left|right)/
-        .source, // pixel
-      /blur|fixbrokenchromaupsampling|generalconvolution|(?:spatial|temporal)soften|sharpen/
-        .source, // timeline
-      /trim|(?:un)?alignedsplice|(?:assume|assumescaled|change|convert)FPS|(?:delete|duplicate)frame|dissolve|fade(?:in|io|out)[02]?|freezeframe|interleave|loop|reverse|select(?:even|odd|(?:range)?every)/
-        .source, // interlace
-      /assume[bt]ff|assume(?:field|frame)based|bob|complementparity|doubleweave|peculiarblend|pulldown|separate(?:columns|fields|rows)|swapfields|weave(?:columns|rows)?/
-        .source, // audio
-      /amplify(?:db)?|assumesamplerate|audiodub(?:ex)?|audiotrim|convertaudioto(?:(?:8|16|24|32)bit|float)|converttomono|delayaudio|ensurevbrmp3sync|get(?:left|right)?channel|kill(?:audio|video)|mergechannels|mixaudio|monotostereo|normalize|resampleaudio|ssrc|supereq|timestretch/
-        .source, // conditional
-      /animate|applyrange|conditional(?:filter|reader|select)|frameevaluate|scriptclip|tcp(?:server|source)|writefile(?:end|if|start)?/
-        .source, // export
-      /imagewriter/.source, // debug
-      /blackness|blankclip|colorbars(?:hd)?|compare|dumpfiltergraph|echo|histogram|info|messageclip|preroll|setgraphanalysis|show(?:framenumber|smpte|time)|showfiveversions|stack(?:horizontal|vertical)|subtitle|tone|version/
-        .source
-    ].join('|');
-    var allinternals = [internals, properties, filters].join('|');
-    Prism.languages.avisynth = {
-      comment: [
-        {
-          // Matches [* *] nestable block comments, but only supports 1 level of nested comments
-          // /\[\*(?:[^\[*]|\[(?!\*)|\*(?!\])|<self>)*\*\]/
-          pattern:
-            /(^|[^\\])\[\*(?:[^\[*]|\[(?!\*)|\*(?!\])|\[\*(?:[^\[*]|\[(?!\*)|\*(?!\]))*\*\])*\*\]/,
-          lookbehind: true,
-          greedy: true
-        },
-        {
-          // Matches /* */ block comments
-          pattern: /(^|[^\\])\/\*[\s\S]*?(?:\*\/|$)/,
-          lookbehind: true,
-          greedy: true
-        },
-        {
-          // Matches # comments
-          pattern: /(^|[^\\$])#.*/,
-          lookbehind: true,
-          greedy: true
-        }
-      ],
-      // Handle before strings because optional arguments are surrounded by double quotes
-      argument: {
-        pattern: re(/\b(?:<<0>>)\s+("?)\w+\1/.source, [types], 'i'),
-        inside: {
-          keyword: /^\w+/
-        }
-      },
-      // Optional argument assignment
-      'argument-label': {
-        pattern: /([,(][\s\\]*)\w+\s*=(?!=)/,
-        lookbehind: true,
-        inside: {
-          'argument-name': {
-            pattern: /^\w+/,
-            alias: 'punctuation'
-          },
-          punctuation: /=$/
-        }
-      },
-      string: [
-        {
-          // triple double-quoted
-          pattern: /"""[\s\S]*?"""/,
-          greedy: true
-        },
-        {
-          // single double-quoted
-          pattern: /"(?:\\(?:\r\n|[\s\S])|[^"\\\r\n])*"/,
-          greedy: true,
-          inside: {
-            constant: {
-              // These *are* case-sensitive!
-              pattern:
-                /\b(?:DEFAULT_MT_MODE|(?:MAINSCRIPT|PROGRAM|SCRIPT)DIR|(?:MACHINE|USER)_(?:CLASSIC|PLUS)_PLUGINS)\b/
-            }
-          }
-        }
-      ],
-      // The special "last" variable that takes the value of the last implicitly returned clip
-      variable: /\b(?:last)\b/i,
-      boolean: /\b(?:false|no|true|yes)\b/i,
-      keyword:
-        /\b(?:catch|else|for|function|global|if|return|try|while|__END__)\b/i,
-      constant: /\bMT_(?:MULTI_INSTANCE|NICE_FILTER|SERIALIZED|SPECIAL_MT)\b/,
-      // AviSynth's internal functions, filters, and properties
-      'builtin-function': {
-        pattern: re(/\b(?:<<0>>)\b/.source, [allinternals], 'i'),
-        alias: 'function'
-      },
-      'type-cast': {
-        pattern: re(/\b(?:<<0>>)(?=\s*\()/.source, [types], 'i'),
-        alias: 'keyword'
-      },
-      // External/user-defined filters
-      function: {
-        pattern: /\b[a-z_]\w*(?=\s*\()|(\.)[a-z_]\w*\b/i,
-        lookbehind: true
-      },
-      // Matches a \ as the first or last character on a line
-      'line-continuation': {
-        pattern: /(^[ \t]*)\\|\\(?=[ \t]*$)/m,
-        lookbehind: true,
-        alias: 'punctuation'
-      },
-      number:
-        /\B\$(?:[\da-f]{6}|[\da-f]{8})\b|(?:(?:\b|\B-)\d+(?:\.\d*)?\b|\B\.\d+\b)/i,
-      operator: /\+\+?|[!=<>]=?|&&|\|\||[?:*/%-]/,
-      punctuation: /[{}\[\]();,.]/
-    };
-    Prism.languages.avs = Prism.languages.avisynth;
-  })(Prism);
+	    function replace(pattern, replacements) {
+	      return pattern.replace(/<<(\d+)>>/g, function (m, index) {
+	        return replacements[+index]
+	      })
+	    }
+	    function re(pattern, replacements, flags) {
+	      return RegExp(replace(pattern, replacements), flags || '')
+	    }
+	    var types = /bool|clip|float|int|string|val/.source;
+	    var internals = [
+	      // bools
+	      /is(?:bool|clip|float|int|string)|defined|(?:(?:internal)?function|var)?exists?/
+	        .source, // control
+	      /apply|assert|default|eval|import|nop|select|undefined/.source, // global
+	      /opt_(?:allowfloataudio|avipadscanlines|dwchannelmask|enable_(?:b64a|planartopackedrgb|v210|y3_10_10|y3_10_16)|usewaveextensible|vdubplanarhack)|set(?:cachemode|maxcpu|memorymax|planarlegacyalignment|workingdir)/
+	        .source, // conv
+	      /hex(?:value)?|value/.source, // numeric
+	      /abs|ceil|continued(?:denominator|numerator)?|exp|floor|fmod|frac|log(?:10)?|max|min|muldiv|pi|pow|rand|round|sign|spline|sqrt/
+	        .source, // trig
+	      /a?sinh?|a?cosh?|a?tan[2h]?/.source, // bit
+	      /(?:bit(?:and|not|x?or|[lr]?shift[aslu]?|sh[lr]|sa[lr]|[lr]rotatel?|ro[rl]|te?st|set(?:count)?|cl(?:ea)?r|ch(?:an)?ge?))/
+	        .source, // runtime
+	      /average(?:[bgr]|chroma[uv]|luma)|(?:[rgb]|chroma[uv]|luma|rgb|[yuv](?=difference(?:fromprevious|tonext)))difference(?:fromprevious|tonext)?|[yuvrgb]plane(?:median|min|max|minmaxdifference)/
+	        .source, // script
+	      /getprocessinfo|logmsg|script(?:dir(?:utf8)?|file(?:utf8)?|name(?:utf8)?)|setlogparams/
+	        .source, // string
+	      /chr|(?:fill|find|left|mid|replace|rev|right)str|format|[lu]case|ord|str(?:cmpi?|fromutf8|len|toutf8)|time|trim(?:all|left|right)/
+	        .source, // version
+	      /isversionorgreater|version(?:number|string)/.source, // helper
+	      /buildpixeltype|colorspacenametopixeltype/.source, // avsplus
+	      /addautoloaddir|on(?:cpu|cuda)|prefetch|setfiltermtmode/.source
+	    ].join('|');
+	    var properties = [
+	      // content
+	      /has(?:audio|video)/.source, // resolution
+	      /height|width/.source, // framerate
+	      /frame(?:count|rate)|framerate(?:denominator|numerator)/.source, // interlacing
+	      /getparity|is(?:field|frame)based/.source, // color format
+	      /bitspercomponent|componentsize|hasalpha|is(?:planar(?:rgba?)?|interleaved|rgb(?:24|32|48|64)?|y(?:8|u(?:va?|y2))?|yv(?:12|16|24|411)|420|422|444|packedrgb)|numcomponents|pixeltype/
+	        .source, // audio
+	      /audio(?:bits|channels|duration|length(?:[fs]|hi|lo)?|rate)|isaudio(?:float|int)/
+	        .source
+	    ].join('|');
+	    var filters = [
+	      // source
+	      /avi(?:file)?source|directshowsource|image(?:reader|source|sourceanim)|opendmlsource|segmented(?:avisource|directshowsource)|wavsource/
+	        .source, // color
+	      /coloryuv|convertbacktoyuy2|convertto(?:RGB(?:24|32|48|64)|(?:planar)?RGBA?|Y8?|YV(?:12|16|24|411)|YUVA?(?:411|420|422|444)|YUY2)|fixluminance|gr[ae]yscale|invert|levels|limiter|mergea?rgb|merge(?:chroma|luma)|rgbadjust|show(?:alpha|blue|green|red)|swapuv|tweak|[uv]toy8?|ytouv/
+	        .source, // overlay
+	      /(?:colorkey|reset)mask|layer|mask(?:hs)?|merge|overlay|subtract/.source, // geometry
+	      /addborders|(?:bicubic|bilinear|blackman|gauss|lanczos4|lanczos|point|sinc|spline(?:16|36|64))resize|crop(?:bottom)?|flip(?:horizontal|vertical)|(?:horizontal|vertical)?reduceby2|letterbox|skewrows|turn(?:180|left|right)/
+	        .source, // pixel
+	      /blur|fixbrokenchromaupsampling|generalconvolution|(?:spatial|temporal)soften|sharpen/
+	        .source, // timeline
+	      /trim|(?:un)?alignedsplice|(?:assume|assumescaled|change|convert)FPS|(?:delete|duplicate)frame|dissolve|fade(?:in|io|out)[02]?|freezeframe|interleave|loop|reverse|select(?:even|odd|(?:range)?every)/
+	        .source, // interlace
+	      /assume[bt]ff|assume(?:field|frame)based|bob|complementparity|doubleweave|peculiarblend|pulldown|separate(?:columns|fields|rows)|swapfields|weave(?:columns|rows)?/
+	        .source, // audio
+	      /amplify(?:db)?|assumesamplerate|audiodub(?:ex)?|audiotrim|convertaudioto(?:(?:8|16|24|32)bit|float)|converttomono|delayaudio|ensurevbrmp3sync|get(?:left|right)?channel|kill(?:audio|video)|mergechannels|mixaudio|monotostereo|normalize|resampleaudio|ssrc|supereq|timestretch/
+	        .source, // conditional
+	      /animate|applyrange|conditional(?:filter|reader|select)|frameevaluate|scriptclip|tcp(?:server|source)|writefile(?:end|if|start)?/
+	        .source, // export
+	      /imagewriter/.source, // debug
+	      /blackness|blankclip|colorbars(?:hd)?|compare|dumpfiltergraph|echo|histogram|info|messageclip|preroll|setgraphanalysis|show(?:framenumber|smpte|time)|showfiveversions|stack(?:horizontal|vertical)|subtitle|tone|version/
+	        .source
+	    ].join('|');
+	    var allinternals = [internals, properties, filters].join('|');
+	    Prism.languages.avisynth = {
+	      comment: [
+	        {
+	          // Matches [* *] nestable block comments, but only supports 1 level of nested comments
+	          // /\[\*(?:[^\[*]|\[(?!\*)|\*(?!\])|<self>)*\*\]/
+	          pattern:
+	            /(^|[^\\])\[\*(?:[^\[*]|\[(?!\*)|\*(?!\])|\[\*(?:[^\[*]|\[(?!\*)|\*(?!\]))*\*\])*\*\]/,
+	          lookbehind: true,
+	          greedy: true
+	        },
+	        {
+	          // Matches /* */ block comments
+	          pattern: /(^|[^\\])\/\*[\s\S]*?(?:\*\/|$)/,
+	          lookbehind: true,
+	          greedy: true
+	        },
+	        {
+	          // Matches # comments
+	          pattern: /(^|[^\\$])#.*/,
+	          lookbehind: true,
+	          greedy: true
+	        }
+	      ],
+	      // Handle before strings because optional arguments are surrounded by double quotes
+	      argument: {
+	        pattern: re(/\b(?:<<0>>)\s+("?)\w+\1/.source, [types], 'i'),
+	        inside: {
+	          keyword: /^\w+/
+	        }
+	      },
+	      // Optional argument assignment
+	      'argument-label': {
+	        pattern: /([,(][\s\\]*)\w+\s*=(?!=)/,
+	        lookbehind: true,
+	        inside: {
+	          'argument-name': {
+	            pattern: /^\w+/,
+	            alias: 'punctuation'
+	          },
+	          punctuation: /=$/
+	        }
+	      },
+	      string: [
+	        {
+	          // triple double-quoted
+	          pattern: /"""[\s\S]*?"""/,
+	          greedy: true
+	        },
+	        {
+	          // single double-quoted
+	          pattern: /"(?:\\(?:\r\n|[\s\S])|[^"\\\r\n])*"/,
+	          greedy: true,
+	          inside: {
+	            constant: {
+	              // These *are* case-sensitive!
+	              pattern:
+	                /\b(?:DEFAULT_MT_MODE|(?:MAINSCRIPT|PROGRAM|SCRIPT)DIR|(?:MACHINE|USER)_(?:CLASSIC|PLUS)_PLUGINS)\b/
+	            }
+	          }
+	        }
+	      ],
+	      // The special "last" variable that takes the value of the last implicitly returned clip
+	      variable: /\b(?:last)\b/i,
+	      boolean: /\b(?:false|no|true|yes)\b/i,
+	      keyword:
+	        /\b(?:catch|else|for|function|global|if|return|try|while|__END__)\b/i,
+	      constant: /\bMT_(?:MULTI_INSTANCE|NICE_FILTER|SERIALIZED|SPECIAL_MT)\b/,
+	      // AviSynth's internal functions, filters, and properties
+	      'builtin-function': {
+	        pattern: re(/\b(?:<<0>>)\b/.source, [allinternals], 'i'),
+	        alias: 'function'
+	      },
+	      'type-cast': {
+	        pattern: re(/\b(?:<<0>>)(?=\s*\()/.source, [types], 'i'),
+	        alias: 'keyword'
+	      },
+	      // External/user-defined filters
+	      function: {
+	        pattern: /\b[a-z_]\w*(?=\s*\()|(\.)[a-z_]\w*\b/i,
+	        lookbehind: true
+	      },
+	      // Matches a \ as the first or last character on a line
+	      'line-continuation': {
+	        pattern: /(^[ \t]*)\\|\\(?=[ \t]*$)/m,
+	        lookbehind: true,
+	        alias: 'punctuation'
+	      },
+	      number:
+	        /\B\$(?:[\da-f]{6}|[\da-f]{8})\b|(?:(?:\b|\B-)\d+(?:\.\d*)?\b|\B\.\d+\b)/i,
+	      operator: /\+\+?|[!=<>]=?|&&|\|\||[?:*/%-]/,
+	      punctuation: /[{}\[\]();,.]/
+	    };
+	    Prism.languages.avs = Prism.languages.avisynth;
+	  })(Prism);
+	}
+	return avisynth_1;
 }
 
 var avroIdl_1 = avroIdl;
@@ -19568,71 +19577,62 @@ function cmake(Prism) {
   };
 }
 
-var cobol_1;
-var hasRequiredCobol;
-
-function requireCobol () {
-	if (hasRequiredCobol) return cobol_1;
-	hasRequiredCobol = 1;
-
-	cobol_1 = cobol;
-	cobol.displayName = 'cobol';
-	cobol.aliases = [];
-	function cobol(Prism) {
-	  Prism.languages.cobol = {
-	    comment: {
-	      pattern: /\*>.*|(^[ \t]*)\*.*/m,
-	      lookbehind: true,
-	      greedy: true
-	    },
-	    string: {
-	      pattern: /[xzgn]?(?:"(?:[^\r\n"]|"")*"(?!")|'(?:[^\r\n']|'')*'(?!'))/i,
-	      greedy: true
-	    },
-	    level: {
-	      pattern: /(^[ \t]*)\d+\b/m,
-	      lookbehind: true,
-	      greedy: true,
-	      alias: 'number'
-	    },
-	    'class-name': {
-	      // https://github.com/antlr/grammars-v4/blob/42edd5b687d183b5fa679e858a82297bd27141e7/cobol85/Cobol85.g4#L1015
-	      pattern:
-	        /(\bpic(?:ture)?\s+)(?:(?:[-\w$/,:*+<>]|\.(?!\s|$))(?:\(\d+\))?)+/i,
-	      lookbehind: true,
-	      inside: {
-	        number: {
-	          pattern: /(\()\d+/,
-	          lookbehind: true
-	        },
-	        punctuation: /[()]/
-	      }
-	    },
-	    keyword: {
-	      pattern:
-	        /(^|[^\w-])(?:ABORT|ACCEPT|ACCESS|ADD|ADDRESS|ADVANCING|AFTER|ALIGNED|ALL|ALPHABET|ALPHABETIC|ALPHABETIC-LOWER|ALPHABETIC-UPPER|ALPHANUMERIC|ALPHANUMERIC-EDITED|ALSO|ALTER|ALTERNATE|ANY|ARE|AREA|AREAS|AS|ASCENDING|ASCII|ASSIGN|ASSOCIATED-DATA|ASSOCIATED-DATA-LENGTH|AT|ATTRIBUTE|AUTHOR|AUTO|AUTO-SKIP|BACKGROUND-COLOR|BACKGROUND-COLOUR|BASIS|BEEP|BEFORE|BEGINNING|BELL|BINARY|BIT|BLANK|BLINK|BLOCK|BOTTOM|BOUNDS|BY|BYFUNCTION|BYTITLE|CALL|CANCEL|CAPABLE|CCSVERSION|CD|CF|CH|CHAINING|CHANGED|CHANNEL|CHARACTER|CHARACTERS|CLASS|CLASS-ID|CLOCK-UNITS|CLOSE|CLOSE-DISPOSITION|COBOL|CODE|CODE-SET|COL|COLLATING|COLUMN|COM-REG|COMMA|COMMITMENT|COMMON|COMMUNICATION|COMP|COMP-1|COMP-2|COMP-3|COMP-4|COMP-5|COMPUTATIONAL|COMPUTATIONAL-1|COMPUTATIONAL-2|COMPUTATIONAL-3|COMPUTATIONAL-4|COMPUTATIONAL-5|COMPUTE|CONFIGURATION|CONTAINS|CONTENT|CONTINUE|CONTROL|CONTROL-POINT|CONTROLS|CONVENTION|CONVERTING|COPY|CORR|CORRESPONDING|COUNT|CRUNCH|CURRENCY|CURSOR|DATA|DATA-BASE|DATE|DATE-COMPILED|DATE-WRITTEN|DAY|DAY-OF-WEEK|DBCS|DE|DEBUG-CONTENTS|DEBUG-ITEM|DEBUG-LINE|DEBUG-NAME|DEBUG-SUB-1|DEBUG-SUB-2|DEBUG-SUB-3|DEBUGGING|DECIMAL-POINT|DECLARATIVES|DEFAULT|DEFAULT-DISPLAY|DEFINITION|DELETE|DELIMITED|DELIMITER|DEPENDING|DESCENDING|DESTINATION|DETAIL|DFHRESP|DFHVALUE|DISABLE|DISK|DISPLAY|DISPLAY-1|DIVIDE|DIVISION|DONTCARE|DOUBLE|DOWN|DUPLICATES|DYNAMIC|EBCDIC|EGCS|EGI|ELSE|EMI|EMPTY-CHECK|ENABLE|END|END-ACCEPT|END-ADD|END-CALL|END-COMPUTE|END-DELETE|END-DIVIDE|END-EVALUATE|END-IF|END-MULTIPLY|END-OF-PAGE|END-PERFORM|END-READ|END-RECEIVE|END-RETURN|END-REWRITE|END-SEARCH|END-START|END-STRING|END-SUBTRACT|END-UNSTRING|END-WRITE|ENDING|ENTER|ENTRY|ENTRY-PROCEDURE|ENVIRONMENT|EOL|EOP|EOS|ERASE|ERROR|ESCAPE|ESI|EVALUATE|EVENT|EVERY|EXCEPTION|EXCLUSIVE|EXHIBIT|EXIT|EXPORT|EXTEND|EXTENDED|EXTERNAL|FD|FILE|FILE-CONTROL|FILLER|FINAL|FIRST|FOOTING|FOR|FOREGROUND-COLOR|FOREGROUND-COLOUR|FROM|FULL|FUNCTION|FUNCTION-POINTER|FUNCTIONNAME|GENERATE|GIVING|GLOBAL|GO|GOBACK|GRID|GROUP|HEADING|HIGH-VALUE|HIGH-VALUES|HIGHLIGHT|I-O|I-O-CONTROL|ID|IDENTIFICATION|IF|IMPLICIT|IMPORT|IN|INDEX|INDEXED|INDICATE|INITIAL|INITIALIZE|INITIATE|INPUT|INPUT-OUTPUT|INSPECT|INSTALLATION|INTEGER|INTO|INVALID|INVOKE|IS|JUST|JUSTIFIED|KANJI|KEPT|KEY|KEYBOARD|LABEL|LANGUAGE|LAST|LB|LD|LEADING|LEFT|LEFTLINE|LENGTH|LENGTH-CHECK|LIBACCESS|LIBPARAMETER|LIBRARY|LIMIT|LIMITS|LINAGE|LINAGE-COUNTER|LINE|LINE-COUNTER|LINES|LINKAGE|LIST|LOCAL|LOCAL-STORAGE|LOCK|LONG-DATE|LONG-TIME|LOW-VALUE|LOW-VALUES|LOWER|LOWLIGHT|MEMORY|MERGE|MESSAGE|MMDDYYYY|MODE|MODULES|MORE-LABELS|MOVE|MULTIPLE|MULTIPLY|NAMED|NATIONAL|NATIONAL-EDITED|NATIVE|NEGATIVE|NETWORK|NEXT|NO|NO-ECHO|NULL|NULLS|NUMBER|NUMERIC|NUMERIC-DATE|NUMERIC-EDITED|NUMERIC-TIME|OBJECT-COMPUTER|OCCURS|ODT|OF|OFF|OMITTED|ON|OPEN|OPTIONAL|ORDER|ORDERLY|ORGANIZATION|OTHER|OUTPUT|OVERFLOW|OVERLINE|OWN|PACKED-DECIMAL|PADDING|PAGE|PAGE-COUNTER|PASSWORD|PERFORM|PF|PH|PIC|PICTURE|PLUS|POINTER|PORT|POSITION|POSITIVE|PRINTER|PRINTING|PRIVATE|PROCEDURE|PROCEDURE-POINTER|PROCEDURES|PROCEED|PROCESS|PROGRAM|PROGRAM-ID|PROGRAM-LIBRARY|PROMPT|PURGE|QUEUE|QUOTE|QUOTES|RANDOM|RD|READ|READER|REAL|RECEIVE|RECEIVED|RECORD|RECORDING|RECORDS|RECURSIVE|REDEFINES|REEL|REF|REFERENCE|REFERENCES|RELATIVE|RELEASE|REMAINDER|REMARKS|REMOTE|REMOVAL|REMOVE|RENAMES|REPLACE|REPLACING|REPORT|REPORTING|REPORTS|REQUIRED|RERUN|RESERVE|RESET|RETURN|RETURN-CODE|RETURNING|REVERSE-VIDEO|REVERSED|REWIND|REWRITE|RF|RH|RIGHT|ROUNDED|RUN|SAME|SAVE|SCREEN|SD|SEARCH|SECTION|SECURE|SECURITY|SEGMENT|SEGMENT-LIMIT|SELECT|SEND|SENTENCE|SEPARATE|SEQUENCE|SEQUENTIAL|SET|SHARED|SHAREDBYALL|SHAREDBYRUNUNIT|SHARING|SHIFT-IN|SHIFT-OUT|SHORT-DATE|SIGN|SIZE|SORT|SORT-CONTROL|SORT-CORE-SIZE|SORT-FILE-SIZE|SORT-MERGE|SORT-MESSAGE|SORT-MODE-SIZE|SORT-RETURN|SOURCE|SOURCE-COMPUTER|SPACE|SPACES|SPECIAL-NAMES|STANDARD|STANDARD-1|STANDARD-2|START|STATUS|STOP|STRING|SUB-QUEUE-1|SUB-QUEUE-2|SUB-QUEUE-3|SUBTRACT|SUM|SUPPRESS|SYMBOL|SYMBOLIC|SYNC|SYNCHRONIZED|TABLE|TALLY|TALLYING|TAPE|TASK|TERMINAL|TERMINATE|TEST|TEXT|THEN|THREAD|THREAD-LOCAL|THROUGH|THRU|TIME|TIMER|TIMES|TITLE|TO|TODAYS-DATE|TODAYS-NAME|TOP|TRAILING|TRUNCATED|TYPE|TYPEDEF|UNDERLINE|UNIT|UNSTRING|UNTIL|UP|UPON|USAGE|USE|USING|VALUE|VALUES|VARYING|VIRTUAL|WAIT|WHEN|WHEN-COMPILED|WITH|WORDS|WORKING-STORAGE|WRITE|YEAR|YYYYDDD|YYYYMMDD|ZERO-FILL|ZEROES|ZEROS)(?![\w-])/i,
-	      lookbehind: true
-	    },
-	    boolean: {
-	      pattern: /(^|[^\w-])(?:false|true)(?![\w-])/i,
-	      lookbehind: true
-	    },
-	    number: {
-	      pattern:
-	        /(^|[^\w-])(?:[+-]?(?:(?:\d+(?:[.,]\d+)?|[.,]\d+)(?:e[+-]?\d+)?|zero))(?![\w-])/i,
-	      lookbehind: true
-	    },
-	    operator: [
-	      /<>|[<>]=?|[=+*/&]/,
-	      {
-	        pattern: /(^|[^\w-])(?:-|and|equal|greater|less|not|or|than)(?![\w-])/i,
-	        lookbehind: true
-	      }
-	    ],
-	    punctuation: /[.:,()]/
-	  };
-	}
-	return cobol_1;
+var cobol_1 = cobol;
+cobol.displayName = 'cobol';
+cobol.aliases = [];
+function cobol(Prism) {
+  Prism.languages.cobol = {
+    comment: {
+      pattern: /\*>.*|(^[ \t]*)\*.*/m,
+      lookbehind: true,
+      greedy: true
+    },
+    string: {
+      pattern: /[xzgn]?(?:"(?:[^\r\n"]|"")*"(?!")|'(?:[^\r\n']|'')*'(?!'))/i,
+      greedy: true
+    },
+    level: {
+      pattern: /(^[ \t]*)\d+\b/m,
+      lookbehind: true,
+      greedy: true,
+      alias: 'number'
+    },
+    'class-name': {
+      // https://github.com/antlr/grammars-v4/blob/42edd5b687d183b5fa679e858a82297bd27141e7/cobol85/Cobol85.g4#L1015
+      pattern:
+        /(\bpic(?:ture)?\s+)(?:(?:[-\w$/,:*+<>]|\.(?!\s|$))(?:\(\d+\))?)+/i,
+      lookbehind: true,
+      inside: {
+        number: {
+          pattern: /(\()\d+/,
+          lookbehind: true
+        },
+        punctuation: /[()]/
+      }
+    },
+    keyword: {
+      pattern:
+        /(^|[^\w-])(?:ABORT|ACCEPT|ACCESS|ADD|ADDRESS|ADVANCING|AFTER|ALIGNED|ALL|ALPHABET|ALPHABETIC|ALPHABETIC-LOWER|ALPHABETIC-UPPER|ALPHANUMERIC|ALPHANUMERIC-EDITED|ALSO|ALTER|ALTERNATE|ANY|ARE|AREA|AREAS|AS|ASCENDING|ASCII|ASSIGN|ASSOCIATED-DATA|ASSOCIATED-DATA-LENGTH|AT|ATTRIBUTE|AUTHOR|AUTO|AUTO-SKIP|BACKGROUND-COLOR|BACKGROUND-COLOUR|BASIS|BEEP|BEFORE|BEGINNING|BELL|BINARY|BIT|BLANK|BLINK|BLOCK|BOTTOM|BOUNDS|BY|BYFUNCTION|BYTITLE|CALL|CANCEL|CAPABLE|CCSVERSION|CD|CF|CH|CHAINING|CHANGED|CHANNEL|CHARACTER|CHARACTERS|CLASS|CLASS-ID|CLOCK-UNITS|CLOSE|CLOSE-DISPOSITION|COBOL|CODE|CODE-SET|COL|COLLATING|COLUMN|COM-REG|COMMA|COMMITMENT|COMMON|COMMUNICATION|COMP|COMP-1|COMP-2|COMP-3|COMP-4|COMP-5|COMPUTATIONAL|COMPUTATIONAL-1|COMPUTATIONAL-2|COMPUTATIONAL-3|COMPUTATIONAL-4|COMPUTATIONAL-5|COMPUTE|CONFIGURATION|CONTAINS|CONTENT|CONTINUE|CONTROL|CONTROL-POINT|CONTROLS|CONVENTION|CONVERTING|COPY|CORR|CORRESPONDING|COUNT|CRUNCH|CURRENCY|CURSOR|DATA|DATA-BASE|DATE|DATE-COMPILED|DATE-WRITTEN|DAY|DAY-OF-WEEK|DBCS|DE|DEBUG-CONTENTS|DEBUG-ITEM|DEBUG-LINE|DEBUG-NAME|DEBUG-SUB-1|DEBUG-SUB-2|DEBUG-SUB-3|DEBUGGING|DECIMAL-POINT|DECLARATIVES|DEFAULT|DEFAULT-DISPLAY|DEFINITION|DELETE|DELIMITED|DELIMITER|DEPENDING|DESCENDING|DESTINATION|DETAIL|DFHRESP|DFHVALUE|DISABLE|DISK|DISPLAY|DISPLAY-1|DIVIDE|DIVISION|DONTCARE|DOUBLE|DOWN|DUPLICATES|DYNAMIC|EBCDIC|EGCS|EGI|ELSE|EMI|EMPTY-CHECK|ENABLE|END|END-ACCEPT|END-ADD|END-CALL|END-COMPUTE|END-DELETE|END-DIVIDE|END-EVALUATE|END-IF|END-MULTIPLY|END-OF-PAGE|END-PERFORM|END-READ|END-RECEIVE|END-RETURN|END-REWRITE|END-SEARCH|END-START|END-STRING|END-SUBTRACT|END-UNSTRING|END-WRITE|ENDING|ENTER|ENTRY|ENTRY-PROCEDURE|ENVIRONMENT|EOL|EOP|EOS|ERASE|ERROR|ESCAPE|ESI|EVALUATE|EVENT|EVERY|EXCEPTION|EXCLUSIVE|EXHIBIT|EXIT|EXPORT|EXTEND|EXTENDED|EXTERNAL|FD|FILE|FILE-CONTROL|FILLER|FINAL|FIRST|FOOTING|FOR|FOREGROUND-COLOR|FOREGROUND-COLOUR|FROM|FULL|FUNCTION|FUNCTION-POINTER|FUNCTIONNAME|GENERATE|GIVING|GLOBAL|GO|GOBACK|GRID|GROUP|HEADING|HIGH-VALUE|HIGH-VALUES|HIGHLIGHT|I-O|I-O-CONTROL|ID|IDENTIFICATION|IF|IMPLICIT|IMPORT|IN|INDEX|INDEXED|INDICATE|INITIAL|INITIALIZE|INITIATE|INPUT|INPUT-OUTPUT|INSPECT|INSTALLATION|INTEGER|INTO|INVALID|INVOKE|IS|JUST|JUSTIFIED|KANJI|KEPT|KEY|KEYBOARD|LABEL|LANGUAGE|LAST|LB|LD|LEADING|LEFT|LEFTLINE|LENGTH|LENGTH-CHECK|LIBACCESS|LIBPARAMETER|LIBRARY|LIMIT|LIMITS|LINAGE|LINAGE-COUNTER|LINE|LINE-COUNTER|LINES|LINKAGE|LIST|LOCAL|LOCAL-STORAGE|LOCK|LONG-DATE|LONG-TIME|LOW-VALUE|LOW-VALUES|LOWER|LOWLIGHT|MEMORY|MERGE|MESSAGE|MMDDYYYY|MODE|MODULES|MORE-LABELS|MOVE|MULTIPLE|MULTIPLY|NAMED|NATIONAL|NATIONAL-EDITED|NATIVE|NEGATIVE|NETWORK|NEXT|NO|NO-ECHO|NULL|NULLS|NUMBER|NUMERIC|NUMERIC-DATE|NUMERIC-EDITED|NUMERIC-TIME|OBJECT-COMPUTER|OCCURS|ODT|OF|OFF|OMITTED|ON|OPEN|OPTIONAL|ORDER|ORDERLY|ORGANIZATION|OTHER|OUTPUT|OVERFLOW|OVERLINE|OWN|PACKED-DECIMAL|PADDING|PAGE|PAGE-COUNTER|PASSWORD|PERFORM|PF|PH|PIC|PICTURE|PLUS|POINTER|PORT|POSITION|POSITIVE|PRINTER|PRINTING|PRIVATE|PROCEDURE|PROCEDURE-POINTER|PROCEDURES|PROCEED|PROCESS|PROGRAM|PROGRAM-ID|PROGRAM-LIBRARY|PROMPT|PURGE|QUEUE|QUOTE|QUOTES|RANDOM|RD|READ|READER|REAL|RECEIVE|RECEIVED|RECORD|RECORDING|RECORDS|RECURSIVE|REDEFINES|REEL|REF|REFERENCE|REFERENCES|RELATIVE|RELEASE|REMAINDER|REMARKS|REMOTE|REMOVAL|REMOVE|RENAMES|REPLACE|REPLACING|REPORT|REPORTING|REPORTS|REQUIRED|RERUN|RESERVE|RESET|RETURN|RETURN-CODE|RETURNING|REVERSE-VIDEO|REVERSED|REWIND|REWRITE|RF|RH|RIGHT|ROUNDED|RUN|SAME|SAVE|SCREEN|SD|SEARCH|SECTION|SECURE|SECURITY|SEGMENT|SEGMENT-LIMIT|SELECT|SEND|SENTENCE|SEPARATE|SEQUENCE|SEQUENTIAL|SET|SHARED|SHAREDBYALL|SHAREDBYRUNUNIT|SHARING|SHIFT-IN|SHIFT-OUT|SHORT-DATE|SIGN|SIZE|SORT|SORT-CONTROL|SORT-CORE-SIZE|SORT-FILE-SIZE|SORT-MERGE|SORT-MESSAGE|SORT-MODE-SIZE|SORT-RETURN|SOURCE|SOURCE-COMPUTER|SPACE|SPACES|SPECIAL-NAMES|STANDARD|STANDARD-1|STANDARD-2|START|STATUS|STOP|STRING|SUB-QUEUE-1|SUB-QUEUE-2|SUB-QUEUE-3|SUBTRACT|SUM|SUPPRESS|SYMBOL|SYMBOLIC|SYNC|SYNCHRONIZED|TABLE|TALLY|TALLYING|TAPE|TASK|TERMINAL|TERMINATE|TEST|TEXT|THEN|THREAD|THREAD-LOCAL|THROUGH|THRU|TIME|TIMER|TIMES|TITLE|TO|TODAYS-DATE|TODAYS-NAME|TOP|TRAILING|TRUNCATED|TYPE|TYPEDEF|UNDERLINE|UNIT|UNSTRING|UNTIL|UP|UPON|USAGE|USE|USING|VALUE|VALUES|VARYING|VIRTUAL|WAIT|WHEN|WHEN-COMPILED|WITH|WORDS|WORKING-STORAGE|WRITE|YEAR|YYYYDDD|YYYYMMDD|ZERO-FILL|ZEROES|ZEROS)(?![\w-])/i,
+      lookbehind: true
+    },
+    boolean: {
+      pattern: /(^|[^\w-])(?:false|true)(?![\w-])/i,
+      lookbehind: true
+    },
+    number: {
+      pattern:
+        /(^|[^\w-])(?:[+-]?(?:(?:\d+(?:[.,]\d+)?|[.,]\d+)(?:e[+-]?\d+)?|zero))(?![\w-])/i,
+      lookbehind: true
+    },
+    operator: [
+      /<>|[<>]=?|[=+*/&]/,
+      {
+        pattern: /(^|[^\w-])(?:-|and|equal|greater|less|not|or|than)(?![\w-])/i,
+        lookbehind: true
+      }
+    ],
+    punctuation: /[.:,()]/
+  };
 }
 
 var coffeescript_1;
@@ -39603,7 +39603,7 @@ refractor.register(asmatmel_1);
 refractor.register(aspnet_1);
 refractor.register(autohotkey_1);
 refractor.register(autoit_1);
-refractor.register(avisynth_1);
+refractor.register(requireAvisynth());
 refractor.register(avroIdl_1);
 refractor.register(bash_1);
 refractor.register(basic_1);
@@ -39623,7 +39623,7 @@ refractor.register(chaiscript_1);
 refractor.register(cil_1);
 refractor.register(clojure_1);
 refractor.register(cmake_1);
-refractor.register(requireCobol());
+refractor.register(cobol_1);
 refractor.register(requireCoffeescript());
 refractor.register(requireConcurnas());
 refractor.register(requireCoq());
@@ -105770,6 +105770,7 @@ var BaseMap = function BaseMap(props) {
     fitBounds = props.fitBounds,
     options = _objectWithoutProperties$1(props, _excluded$1);
   var ref = React.useRef(null);
+  var markersRef = React.useRef([]);
   var _useState = React.useState(),
     _useState2 = _slicedToArray(_useState, 2),
     map = _useState2[0],
@@ -105782,12 +105783,13 @@ var BaseMap = function BaseMap(props) {
     }
   }, [map]);
   React.useEffect(function () {
-    if (clustered && map && React.Children.count(children) > 0) {
-      var markers = React.Children.map(children, function (child) {
-        return new google.maps.Marker({
-          position: child.props.position
-        });
+    var _markersRef$current;
+    if (clustered && map && React.Children.count(children) > 0 && (markersRef === null || markersRef === void 0 ? void 0 : (_markersRef$current = markersRef.current) === null || _markersRef$current === void 0 ? void 0 : _markersRef$current.length) > 0) {
+      var _markersRef$current2;
+      var markers = markersRef === null || markersRef === void 0 ? void 0 : (_markersRef$current2 = markersRef.current) === null || _markersRef$current2 === void 0 ? void 0 : _markersRef$current2.map(function (marker) {
+        return marker.current;
       });
+
       // eslint-disable-next-line no-new
       new MarkerClusterer({
         map: map,
@@ -105843,11 +105845,18 @@ var BaseMap = function BaseMap(props) {
     children: [/*#__PURE__*/jsxRuntime.jsx("div", {
       ref: ref,
       style: style
-    }), !clustered && React.Children.map(children, function (child) {
+    }), React.Children.map(children, function (child, index) {
+      if (index === 0) {
+        markersRef.current = [];
+      }
       if ( /*#__PURE__*/React.isValidElement(child)) {
+        var _markersRef$current3;
+        var childRef = /*#__PURE__*/React.createRef();
+        markersRef === null || markersRef === void 0 ? void 0 : (_markersRef$current3 = markersRef.current) === null || _markersRef$current3 === void 0 ? void 0 : _markersRef$current3.push(childRef);
         // set the map prop on the child component
         return /*#__PURE__*/React.cloneElement(child, {
-          map: map
+          map: map,
+          ref: childRef
         });
       }
       return null;
@@ -105886,7 +105895,9 @@ Map$1.defaultProps = {
 };
 
 var _excluded = ["children"];
-var Marker = function Marker(_ref) {
+
+// eslint-disable-next-line prefer-arrow-callback
+var Marker = /*#__PURE__*/React.forwardRef(function Marker(_ref, ref) {
   var children = _ref.children,
     options = _objectWithoutProperties$1(_ref, _excluded);
   var _useState = React.useState(),
@@ -105896,7 +105907,9 @@ var Marker = function Marker(_ref) {
   var infoWindowRef = React.useRef(null);
   React.useEffect(function () {
     if (!marker) {
-      setMarker(new google.maps.Marker());
+      var newMap = new google.maps.Marker();
+      setMarker(newMap);
+      ref.current = newMap;
     }
 
     // remove marker from map on unmount
@@ -105909,7 +105922,6 @@ var Marker = function Marker(_ref) {
   React.useEffect(function () {
     if (marker && React.Children.count(children) === 1 && infoWindowRef !== null && infoWindowRef !== void 0 && infoWindowRef.current) {
       var infoWindow = infoWindowRef === null || infoWindowRef === void 0 ? void 0 : infoWindowRef.current;
-      console.log(marker, infoWindow);
       marker.addListener('click', function () {
         infoWindow.open({
           anchor: marker,
@@ -105934,7 +105946,7 @@ var Marker = function Marker(_ref) {
     }
   }
   return null;
-};
+});
 
 // eslint-disable-next-line prefer-arrow-callback
 var InfoWindow = /*#__PURE__*/React.forwardRef(function InfoWindow(options, ref) {
@@ -105956,6 +105968,9 @@ var InfoWindow = /*#__PURE__*/React.forwardRef(function InfoWindow(options, ref)
   }, [infoWindow, options]);
   return null;
 });
+InfoWindow.defaultProps = {
+  disableAutoPan: true
+};
 
 exports.Accordion = Accordion;
 exports.Alert = Alert;
