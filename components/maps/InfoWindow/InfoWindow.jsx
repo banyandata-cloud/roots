@@ -21,4 +21,8 @@ const InfoWindow = forwardRef(function InfoWindow(options, ref) {
 	return null;
 });
 
+InfoWindow.defaultProps = {
+	disableAutoPan: true,
+};
+
 export default InfoWindow;

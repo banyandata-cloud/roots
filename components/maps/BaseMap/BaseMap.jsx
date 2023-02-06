@@ -1,4 +1,12 @@
-import { Children, cloneElement, isValidElement, useEffect, useRef, useState } from 'react';
+import {
+	Children,
+	cloneElement,
+	createRef,
+	isValidElement,
+	useEffect,
+	useRef,
+	useState,
+} from 'react';
 import { MarkerClusterer } from '@googlemaps/markerclusterer';
 import { useDeepCompareEffectForMaps } from './utils';
 
@@ -7,6 +15,7 @@ const BaseMap = (props) => {
 	const { onClick, onIdle, children, style, mapId, clustered, fitBounds, ...options } = props;
 
 	const ref = useRef(null);
+	const markersRef = useRef([]);
 	const [map, setMap] = useState();
 
 	useEffect(() => {
@@ -20,12 +29,11 @@ const BaseMap = (props) => {
 	}, [map]);
 
 	useEffect(() => {
-		if (clustered && map && Children.count(children) > 0) {
-			const markers = Children.map(children, (child) => {
-				return new google.maps.Marker({
-					position: child.props.position,
-				});
+		if (clustered && map && Children.count(children) > 0 && markersRef?.current?.length > 0) {
+			const markers = markersRef?.current?.map((marker) => {
+				return marker.current;
 			});
+
 			// eslint-disable-next-line no-new
 			new MarkerClusterer({
 				map,
@@ -90,16 +98,21 @@ const BaseMap = (props) => {
 	return (
 		<>
 			<div ref={ref} style={style} />
-			{!clustered &&
-				Children.map(children, (child) => {
-					if (isValidElement(child)) {
-						// set the map prop on the child component
-						return cloneElement(child, {
-							map,
-						});
-					}
-					return null;
-				})}
+			{Children.map(children, (child, index) => {
+				if (index === 0) {
+					markersRef.current = [];
+				}
+				if (isValidElement(child)) {
+					const childRef = createRef();
+					markersRef?.current?.push(childRef);
+					// set the map prop on the child component
+					return cloneElement(child, {
+						map,
+						ref: childRef,
+					});
+				}
+				return null;
+			})}
 		</>
 	);
 };
