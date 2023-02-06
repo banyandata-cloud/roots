@@ -59,10 +59,7 @@ const Calender = (props) => {
 				date: dateAsNumber,
 				unix: getUnixTime(fromUnixTime(value[0])),
 			});
-			return;
-		}
-
-		if (value) {
+		} else if (value) {
 			const date = fromUnixTime(value);
 			const dateAsNumber = date.getDate();
 			const selectedDayInfo = getDayInfo(date);
@@ -84,18 +81,18 @@ const Calender = (props) => {
 				date: dateAsNumber,
 				unix: getUnixTime(date),
 			});
-			return;
-		}
-		const date = new Date();
-		if (!range && !isBefore(date, disableDatesBefore)) {
-			const dateAsNumber = date.getDate();
-			setSelectedDate({
-				...selectedDate,
-				month: selectedMonth.month,
-				year: selectedMonth.year,
-				date: dateAsNumber,
-				unix: getUnixTime(date),
-			});
+		} else {
+			const date = new Date();
+			if (!range && !isBefore(date, disableDatesBefore)) {
+				const dateAsNumber = date.getDate();
+				setSelectedDate({
+					...selectedDate,
+					month: selectedMonth.month,
+					year: selectedMonth.year,
+					date: dateAsNumber,
+					unix: getUnixTime(date),
+				});
+			}
 		}
 	}, []);
 
