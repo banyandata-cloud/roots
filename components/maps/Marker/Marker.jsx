@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { Children, cloneElement, isValidElement, useEffect, useRef, useState } from 'react';
 
-const Marker = (options) => {
+const Marker = ({ children, ...options }) => {
 	const [marker, setMarker] = useState();
+	const infoWindowRef = useRef(null);
 
 	useEffect(() => {
 		if (!marker) {
@@ -15,11 +16,36 @@ const Marker = (options) => {
 			}
 		};
 	}, [marker]);
+
+	useEffect(() => {
+		if (marker && Children.count(children) === 1 && infoWindowRef?.current) {
+			const infoWindow = infoWindowRef?.current;
+			console.log(marker, infoWindow);
+			marker.addListener('click', () => {
+				infoWindow.open({
+					anchor: marker,
+					map: options.map,
+				});
+			});
+		}
+	}, [marker, children]);
+
 	useEffect(() => {
 		if (marker) {
 			marker.setOptions(options);
 		}
 	}, [marker, options]);
+
+	if (Children.count(children) === 1) {
+		const child = Children.toArray(children)?.[0];
+		if (isValidElement(child)) {
+			// set the map prop on the child component
+			return cloneElement(child, {
+				ref: infoWindowRef,
+			});
+		}
+	}
+
 	return null;
 };
 

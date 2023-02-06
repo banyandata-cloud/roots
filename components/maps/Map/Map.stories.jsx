@@ -1,3 +1,7 @@
+import ReactDOMServer from 'react-dom/server';
+import { Button } from '../../buttons';
+import Text from '../../text/Text';
+import { InfoWindow } from '../InfoWindow';
 import { Marker } from '../Marker';
 import Map from './Map';
 
@@ -42,8 +46,24 @@ const coords = [
 const Template = (args) => {
 	return (
 		<Map {...args}>
-			{coords.map((position) => {
-				return <Marker key={`${position.lat}-${position.lng}`} position={position} />;
+			{coords.map((position, index) => {
+				return (
+					<Marker
+						key={`${position.lat}-${position.lng}`}
+						position={position}
+						title={`Location ${index + 1}`}>
+						{index === 2 && (
+							<InfoWindow
+								content={ReactDOMServer.renderToString(
+									<>
+										<Button title='hey' />
+										<Text component='p'>Location {index + 1}</Text>
+									</>
+								)}
+							/>
+						)}
+					</Marker>
+				);
 			})}
 		</Map>
 	);
