@@ -57,13 +57,6 @@ RangeDatePicker.args = {
 	value: [1675228424, 1675660447],
 	range: true,
 	theme: 'light',
-	customRanges: [
-		{
-			title: 'Hi',
-			type: 'months',
-			value: 2,
-		},
-	],
 };
 
 export const DatePickerWithDisabledDate = (args) => {
