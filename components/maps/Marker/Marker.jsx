@@ -1,12 +1,23 @@
-import { Children, cloneElement, isValidElement, useEffect, useRef, useState } from 'react';
+import {
+	Children,
+	cloneElement,
+	forwardRef,
+	isValidElement,
+	useEffect,
+	useRef,
+	useState,
+} from 'react';
 
-const Marker = ({ children, ...options }) => {
+// eslint-disable-next-line prefer-arrow-callback
+const Marker = forwardRef(function Marker({ children, ...options }, ref) {
 	const [marker, setMarker] = useState();
 	const infoWindowRef = useRef(null);
 
 	useEffect(() => {
 		if (!marker) {
-			setMarker(new google.maps.Marker());
+			const newMap = new google.maps.Marker();
+			setMarker(newMap);
+			ref.current = newMap;
 		}
 
 		// remove marker from map on unmount
@@ -20,7 +31,6 @@ const Marker = ({ children, ...options }) => {
 	useEffect(() => {
 		if (marker && Children.count(children) === 1 && infoWindowRef?.current) {
 			const infoWindow = infoWindowRef?.current;
-			console.log(marker, infoWindow);
 			marker.addListener('click', () => {
 				infoWindow.open({
 					anchor: marker,
@@ -47,6 +57,6 @@ const Marker = ({ children, ...options }) => {
 	}
 
 	return null;
-};
+});
 
 export default Marker;
