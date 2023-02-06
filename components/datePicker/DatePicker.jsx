@@ -35,6 +35,8 @@ const DatePicker = (props) => {
 		disableDatesBefore,
 		theme,
 		onClear,
+		displayValue: displayDateSelectionValue,
+		customRanges,
 	} = props;
 
 	const [open, setOpen] = useState(false);
@@ -46,6 +48,8 @@ const DatePicker = (props) => {
 		};
 	});
 
+	const [fixedRange, setFixedRange] = useState(null);
+
 	const [selectedDate, setSelectedDate] = useState(() => {
 		return '';
 	});
@@ -56,11 +60,21 @@ const DatePicker = (props) => {
 
 	const datePickerRef = useRef();
 
-	const sDate = fromUnixTime(value);
+	let displayValue = displayDateSelectionValue;
 
-	let displayValue = '';
+	if (range) {
+		const sDate = fromUnixTime(value[0]);
+		const eDate = fromUnixTime(value[1]);
+		displayValue = ` ${sDate.getDate()} ${
+			MONTHS[sDate.getMonth().toString()?.substring(0, 3)]
+		} - ${eDate.getDate()} ${
+			MONTHS[eDate.getMonth().toString()?.substring(0, 3)]
+		} ${eDate.getFullYear()}`;
+	}
 
 	if (!range && value) {
+		const sDate = fromUnixTime(value);
+
 		const timeValue = `${((sDate.getHours() + 11) % 12) + 1}:${sDate.getMinutes()} ${
 			sDate.getHours() >= 12 ? 'PM' : 'AM'
 		}`;
@@ -68,6 +82,10 @@ const DatePicker = (props) => {
 		displayValue = ` ${sDate.getDate()} ${
 			MONTHS[sDate.getMonth().toString()?.substring(0, 3)]
 		} ${sDate.getFullYear()} ${timeValue}`;
+	}
+
+	if (fixedRange) {
+		displayValue = fixedRange;
 	}
 
 	const { x, y, reference, floating, strategy, context } = useFloating({
@@ -109,6 +127,7 @@ const DatePicker = (props) => {
 	const apply = () => {
 		if (selectedRange.dates.length === 2) {
 			if (
+				maxRange !== null &&
 				!isMaxRangeExceeded({
 					maxRange,
 					selectedRange,
@@ -119,7 +138,7 @@ const DatePicker = (props) => {
 				return;
 			}
 			setError('');
-			onApply(selectedRange.unix);
+			onApply(selectedRange.unix, fixedRange);
 			setOpen(false);
 		} else {
 			onApply(selectedDate.unix);
@@ -140,6 +159,8 @@ const DatePicker = (props) => {
 
 		disableDatesBefore,
 		value,
+		setFixedRange,
+		customRanges,
 	};
 
 	return (
@@ -229,6 +250,14 @@ DatePicker.propTypes = {
 	className: PropTypes.string,
 	disableDatesBefore: PropTypes.arrayOf(PropTypes.string),
 	theme: PropTypes.string,
+	displayValue: PropTypes.string,
+	customRanges: PropTypes.arrayOf(
+		PropTypes.shape({
+			title: PropTypes.string,
+			type: PropTypes.string,
+			value: PropTypes.string,
+		})
+	),
 };
 
 DatePicker.defaultProps = {
@@ -243,6 +272,8 @@ DatePicker.defaultProps = {
 	className: '',
 	disableDatesBefore: [],
 	theme: 'dark',
+	customRanges: null,
+	displayValue: '',
 	onClear: () => {},
 };
 
