@@ -35,6 +35,7 @@ const DatePicker = (props) => {
 		disableDatesBefore,
 		theme,
 		onClear,
+		displayValue: displayDateSelectionValue,
 		customRanges,
 	} = props;
 
@@ -59,7 +60,7 @@ const DatePicker = (props) => {
 
 	const datePickerRef = useRef();
 
-	let displayValue = '';
+	let displayValue = displayDateSelectionValue;
 
 	if (range) {
 		const sDate = fromUnixTime(value[0]);
@@ -249,6 +250,7 @@ DatePicker.propTypes = {
 	className: PropTypes.string,
 	disableDatesBefore: PropTypes.arrayOf(PropTypes.string),
 	theme: PropTypes.string,
+	displayValue: PropTypes.string,
 	customRanges: PropTypes.arrayOf(
 		PropTypes.shape({
 			title: PropTypes.string,
@@ -271,6 +273,7 @@ DatePicker.defaultProps = {
 	disableDatesBefore: [],
 	theme: 'dark',
 	customRanges: null,
+	displayValue: '',
 	onClear: () => {},
 };
 
