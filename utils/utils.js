@@ -70,13 +70,13 @@ export const getInitialsOfName = (name = '') => {
 	return initials;
 };
 
-export default function safeJSONParse(object) {
+export const safeJSONParse = (object) => {
 	try {
 		return JSON.parse(object);
 	} catch (error) {
 		return null;
 	}
-}
+};
 
 export function cloneDeep(object) {
 	return safeJSONParse(JSON.stringify(object));
