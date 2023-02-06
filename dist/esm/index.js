@@ -1442,13 +1442,13 @@ var getInitialsOfName = function getInitialsOfName() {
   }
   return initials;
 };
-function safeJSONParse(object) {
+var safeJSONParse = function safeJSONParse(object) {
   try {
     return JSON.parse(object);
   } catch (error) {
     return null;
   }
-}
+};
 function cloneDeep(object) {
   return safeJSONParse(JSON.stringify(object));
 }
@@ -1554,9 +1554,14 @@ var getDayInfo = function getDayInfo(date) {
     meridian: meridian
   };
 };
-var getDatesInAMonth = function getDatesInAMonth(_ref) {
-  var month = _ref.month,
-    year = _ref.year;
+var getDatesInStringFormat = function getDatesInStringFormat(_ref) {
+  var startingDate = _ref.startingDate,
+    endingDate = _ref.endingDate;
+  return ["".concat(startingDate.getDate(), " ").concat(MONTHS[startingDate.getMonth()].substring(0, 3), " ").concat(startingDate.getFullYear()), "".concat(endingDate.getDate(), " ").concat(MONTHS[endingDate.getMonth()].substring(0, 3), " ").concat(endingDate.getFullYear())];
+};
+var getDatesInAMonth = function getDatesInAMonth(_ref2) {
+  var month = _ref2.month,
+    year = _ref2.year;
   var date = new Date(Date.UTC(year, month, 1));
   var dates = [];
   var days = [];
@@ -7713,7 +7718,7 @@ var checkForListedLanguage = (function (astGenerator, language) {
   return langs.indexOf(language) !== -1;
 });
 
-var _excluded$1 = ["language", "children", "style", "customStyle", "codeTagProps", "useInlineStyles", "showLineNumbers", "showInlineLineNumbers", "startingLineNumber", "lineNumberContainerStyle", "lineNumberStyle", "wrapLines", "wrapLongLines", "lineProps", "renderer", "PreTag", "CodeTag", "code", "astGenerator"];
+var _excluded$2 = ["language", "children", "style", "customStyle", "codeTagProps", "useInlineStyles", "showLineNumbers", "showInlineLineNumbers", "startingLineNumber", "lineNumberContainerStyle", "lineNumberStyle", "wrapLines", "wrapLongLines", "lineProps", "renderer", "PreTag", "CodeTag", "code", "astGenerator"];
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -8058,7 +8063,7 @@ function highlight$1 (defaultAstGenerator, defaultStyle) {
         _ref7$code = _ref7.code,
         code = _ref7$code === void 0 ? (Array.isArray(children) ? children[0] : children) || '' : _ref7$code,
         astGenerator = _ref7.astGenerator,
-        rest = _objectWithoutProperties(_ref7, _excluded$1);
+        rest = _objectWithoutProperties(_ref7, _excluded$2);
 
     astGenerator = astGenerator || defaultAstGenerator;
     var allLineNumbers = showLineNumbers ? /*#__PURE__*/React__default.createElement(AllLineNumbers, {
@@ -16712,43 +16717,34 @@ function ada(Prism) {
   };
 }
 
-var agda_1;
-var hasRequiredAgda;
-
-function requireAgda () {
-	if (hasRequiredAgda) return agda_1;
-	hasRequiredAgda = 1;
-
-	agda_1 = agda;
-	agda.displayName = 'agda';
-	agda.aliases = [];
-	function agda(Prism) {
+var agda_1 = agda;
+agda.displayName = 'agda';
+agda.aliases = [];
+function agda(Prism) {
 (function (Prism) {
-	    Prism.languages.agda = {
-	      comment: /\{-[\s\S]*?(?:-\}|$)|--.*/,
-	      string: {
-	        pattern: /"(?:\\(?:\r\n|[\s\S])|[^\\\r\n"])*"/,
-	        greedy: true
-	      },
-	      punctuation: /[(){}⦃⦄.;@]/,
-	      'class-name': {
-	        pattern: /((?:data|record) +)\S+/,
-	        lookbehind: true
-	      },
-	      function: {
-	        pattern: /(^[ \t]*)(?!\s)[^:\r\n]+(?=:)/m,
-	        lookbehind: true
-	      },
-	      operator: {
-	        pattern: /(^\s*|\s)(?:[=|:∀→λ\\?_]|->)(?=\s)/,
-	        lookbehind: true
-	      },
-	      keyword:
-	        /\b(?:Set|abstract|constructor|data|eta-equality|field|forall|hiding|import|in|inductive|infix|infixl|infixr|instance|let|macro|module|mutual|no-eta-equality|open|overlap|pattern|postulate|primitive|private|public|quote|quoteContext|quoteGoal|quoteTerm|record|renaming|rewrite|syntax|tactic|unquote|unquoteDecl|unquoteDef|using|variable|where|with)\b/
-	    };
-	  })(Prism);
-	}
-	return agda_1;
+    Prism.languages.agda = {
+      comment: /\{-[\s\S]*?(?:-\}|$)|--.*/,
+      string: {
+        pattern: /"(?:\\(?:\r\n|[\s\S])|[^\\\r\n"])*"/,
+        greedy: true
+      },
+      punctuation: /[(){}⦃⦄.;@]/,
+      'class-name': {
+        pattern: /((?:data|record) +)\S+/,
+        lookbehind: true
+      },
+      function: {
+        pattern: /(^[ \t]*)(?!\s)[^:\r\n]+(?=:)/m,
+        lookbehind: true
+      },
+      operator: {
+        pattern: /(^\s*|\s)(?:[=|:∀→λ\\?_]|->)(?=\s)/,
+        lookbehind: true
+      },
+      keyword:
+        /\b(?:Set|abstract|constructor|data|eta-equality|field|forall|hiding|import|in|inductive|infix|infixl|infixr|instance|let|macro|module|mutual|no-eta-equality|open|overlap|pattern|postulate|primitive|private|public|quote|quoteContext|quoteGoal|quoteTerm|record|renaming|rewrite|syntax|tactic|unquote|unquoteDecl|unquoteDef|using|variable|where|with)\b/
+    };
+  })(Prism);
 }
 
 var al_1 = al;
@@ -19552,62 +19548,71 @@ function cmake(Prism) {
   };
 }
 
-var cobol_1 = cobol;
-cobol.displayName = 'cobol';
-cobol.aliases = [];
-function cobol(Prism) {
-  Prism.languages.cobol = {
-    comment: {
-      pattern: /\*>.*|(^[ \t]*)\*.*/m,
-      lookbehind: true,
-      greedy: true
-    },
-    string: {
-      pattern: /[xzgn]?(?:"(?:[^\r\n"]|"")*"(?!")|'(?:[^\r\n']|'')*'(?!'))/i,
-      greedy: true
-    },
-    level: {
-      pattern: /(^[ \t]*)\d+\b/m,
-      lookbehind: true,
-      greedy: true,
-      alias: 'number'
-    },
-    'class-name': {
-      // https://github.com/antlr/grammars-v4/blob/42edd5b687d183b5fa679e858a82297bd27141e7/cobol85/Cobol85.g4#L1015
-      pattern:
-        /(\bpic(?:ture)?\s+)(?:(?:[-\w$/,:*+<>]|\.(?!\s|$))(?:\(\d+\))?)+/i,
-      lookbehind: true,
-      inside: {
-        number: {
-          pattern: /(\()\d+/,
-          lookbehind: true
-        },
-        punctuation: /[()]/
-      }
-    },
-    keyword: {
-      pattern:
-        /(^|[^\w-])(?:ABORT|ACCEPT|ACCESS|ADD|ADDRESS|ADVANCING|AFTER|ALIGNED|ALL|ALPHABET|ALPHABETIC|ALPHABETIC-LOWER|ALPHABETIC-UPPER|ALPHANUMERIC|ALPHANUMERIC-EDITED|ALSO|ALTER|ALTERNATE|ANY|ARE|AREA|AREAS|AS|ASCENDING|ASCII|ASSIGN|ASSOCIATED-DATA|ASSOCIATED-DATA-LENGTH|AT|ATTRIBUTE|AUTHOR|AUTO|AUTO-SKIP|BACKGROUND-COLOR|BACKGROUND-COLOUR|BASIS|BEEP|BEFORE|BEGINNING|BELL|BINARY|BIT|BLANK|BLINK|BLOCK|BOTTOM|BOUNDS|BY|BYFUNCTION|BYTITLE|CALL|CANCEL|CAPABLE|CCSVERSION|CD|CF|CH|CHAINING|CHANGED|CHANNEL|CHARACTER|CHARACTERS|CLASS|CLASS-ID|CLOCK-UNITS|CLOSE|CLOSE-DISPOSITION|COBOL|CODE|CODE-SET|COL|COLLATING|COLUMN|COM-REG|COMMA|COMMITMENT|COMMON|COMMUNICATION|COMP|COMP-1|COMP-2|COMP-3|COMP-4|COMP-5|COMPUTATIONAL|COMPUTATIONAL-1|COMPUTATIONAL-2|COMPUTATIONAL-3|COMPUTATIONAL-4|COMPUTATIONAL-5|COMPUTE|CONFIGURATION|CONTAINS|CONTENT|CONTINUE|CONTROL|CONTROL-POINT|CONTROLS|CONVENTION|CONVERTING|COPY|CORR|CORRESPONDING|COUNT|CRUNCH|CURRENCY|CURSOR|DATA|DATA-BASE|DATE|DATE-COMPILED|DATE-WRITTEN|DAY|DAY-OF-WEEK|DBCS|DE|DEBUG-CONTENTS|DEBUG-ITEM|DEBUG-LINE|DEBUG-NAME|DEBUG-SUB-1|DEBUG-SUB-2|DEBUG-SUB-3|DEBUGGING|DECIMAL-POINT|DECLARATIVES|DEFAULT|DEFAULT-DISPLAY|DEFINITION|DELETE|DELIMITED|DELIMITER|DEPENDING|DESCENDING|DESTINATION|DETAIL|DFHRESP|DFHVALUE|DISABLE|DISK|DISPLAY|DISPLAY-1|DIVIDE|DIVISION|DONTCARE|DOUBLE|DOWN|DUPLICATES|DYNAMIC|EBCDIC|EGCS|EGI|ELSE|EMI|EMPTY-CHECK|ENABLE|END|END-ACCEPT|END-ADD|END-CALL|END-COMPUTE|END-DELETE|END-DIVIDE|END-EVALUATE|END-IF|END-MULTIPLY|END-OF-PAGE|END-PERFORM|END-READ|END-RECEIVE|END-RETURN|END-REWRITE|END-SEARCH|END-START|END-STRING|END-SUBTRACT|END-UNSTRING|END-WRITE|ENDING|ENTER|ENTRY|ENTRY-PROCEDURE|ENVIRONMENT|EOL|EOP|EOS|ERASE|ERROR|ESCAPE|ESI|EVALUATE|EVENT|EVERY|EXCEPTION|EXCLUSIVE|EXHIBIT|EXIT|EXPORT|EXTEND|EXTENDED|EXTERNAL|FD|FILE|FILE-CONTROL|FILLER|FINAL|FIRST|FOOTING|FOR|FOREGROUND-COLOR|FOREGROUND-COLOUR|FROM|FULL|FUNCTION|FUNCTION-POINTER|FUNCTIONNAME|GENERATE|GIVING|GLOBAL|GO|GOBACK|GRID|GROUP|HEADING|HIGH-VALUE|HIGH-VALUES|HIGHLIGHT|I-O|I-O-CONTROL|ID|IDENTIFICATION|IF|IMPLICIT|IMPORT|IN|INDEX|INDEXED|INDICATE|INITIAL|INITIALIZE|INITIATE|INPUT|INPUT-OUTPUT|INSPECT|INSTALLATION|INTEGER|INTO|INVALID|INVOKE|IS|JUST|JUSTIFIED|KANJI|KEPT|KEY|KEYBOARD|LABEL|LANGUAGE|LAST|LB|LD|LEADING|LEFT|LEFTLINE|LENGTH|LENGTH-CHECK|LIBACCESS|LIBPARAMETER|LIBRARY|LIMIT|LIMITS|LINAGE|LINAGE-COUNTER|LINE|LINE-COUNTER|LINES|LINKAGE|LIST|LOCAL|LOCAL-STORAGE|LOCK|LONG-DATE|LONG-TIME|LOW-VALUE|LOW-VALUES|LOWER|LOWLIGHT|MEMORY|MERGE|MESSAGE|MMDDYYYY|MODE|MODULES|MORE-LABELS|MOVE|MULTIPLE|MULTIPLY|NAMED|NATIONAL|NATIONAL-EDITED|NATIVE|NEGATIVE|NETWORK|NEXT|NO|NO-ECHO|NULL|NULLS|NUMBER|NUMERIC|NUMERIC-DATE|NUMERIC-EDITED|NUMERIC-TIME|OBJECT-COMPUTER|OCCURS|ODT|OF|OFF|OMITTED|ON|OPEN|OPTIONAL|ORDER|ORDERLY|ORGANIZATION|OTHER|OUTPUT|OVERFLOW|OVERLINE|OWN|PACKED-DECIMAL|PADDING|PAGE|PAGE-COUNTER|PASSWORD|PERFORM|PF|PH|PIC|PICTURE|PLUS|POINTER|PORT|POSITION|POSITIVE|PRINTER|PRINTING|PRIVATE|PROCEDURE|PROCEDURE-POINTER|PROCEDURES|PROCEED|PROCESS|PROGRAM|PROGRAM-ID|PROGRAM-LIBRARY|PROMPT|PURGE|QUEUE|QUOTE|QUOTES|RANDOM|RD|READ|READER|REAL|RECEIVE|RECEIVED|RECORD|RECORDING|RECORDS|RECURSIVE|REDEFINES|REEL|REF|REFERENCE|REFERENCES|RELATIVE|RELEASE|REMAINDER|REMARKS|REMOTE|REMOVAL|REMOVE|RENAMES|REPLACE|REPLACING|REPORT|REPORTING|REPORTS|REQUIRED|RERUN|RESERVE|RESET|RETURN|RETURN-CODE|RETURNING|REVERSE-VIDEO|REVERSED|REWIND|REWRITE|RF|RH|RIGHT|ROUNDED|RUN|SAME|SAVE|SCREEN|SD|SEARCH|SECTION|SECURE|SECURITY|SEGMENT|SEGMENT-LIMIT|SELECT|SEND|SENTENCE|SEPARATE|SEQUENCE|SEQUENTIAL|SET|SHARED|SHAREDBYALL|SHAREDBYRUNUNIT|SHARING|SHIFT-IN|SHIFT-OUT|SHORT-DATE|SIGN|SIZE|SORT|SORT-CONTROL|SORT-CORE-SIZE|SORT-FILE-SIZE|SORT-MERGE|SORT-MESSAGE|SORT-MODE-SIZE|SORT-RETURN|SOURCE|SOURCE-COMPUTER|SPACE|SPACES|SPECIAL-NAMES|STANDARD|STANDARD-1|STANDARD-2|START|STATUS|STOP|STRING|SUB-QUEUE-1|SUB-QUEUE-2|SUB-QUEUE-3|SUBTRACT|SUM|SUPPRESS|SYMBOL|SYMBOLIC|SYNC|SYNCHRONIZED|TABLE|TALLY|TALLYING|TAPE|TASK|TERMINAL|TERMINATE|TEST|TEXT|THEN|THREAD|THREAD-LOCAL|THROUGH|THRU|TIME|TIMER|TIMES|TITLE|TO|TODAYS-DATE|TODAYS-NAME|TOP|TRAILING|TRUNCATED|TYPE|TYPEDEF|UNDERLINE|UNIT|UNSTRING|UNTIL|UP|UPON|USAGE|USE|USING|VALUE|VALUES|VARYING|VIRTUAL|WAIT|WHEN|WHEN-COMPILED|WITH|WORDS|WORKING-STORAGE|WRITE|YEAR|YYYYDDD|YYYYMMDD|ZERO-FILL|ZEROES|ZEROS)(?![\w-])/i,
-      lookbehind: true
-    },
-    boolean: {
-      pattern: /(^|[^\w-])(?:false|true)(?![\w-])/i,
-      lookbehind: true
-    },
-    number: {
-      pattern:
-        /(^|[^\w-])(?:[+-]?(?:(?:\d+(?:[.,]\d+)?|[.,]\d+)(?:e[+-]?\d+)?|zero))(?![\w-])/i,
-      lookbehind: true
-    },
-    operator: [
-      /<>|[<>]=?|[=+*/&]/,
-      {
-        pattern: /(^|[^\w-])(?:-|and|equal|greater|less|not|or|than)(?![\w-])/i,
-        lookbehind: true
-      }
-    ],
-    punctuation: /[.:,()]/
-  };
+var cobol_1;
+var hasRequiredCobol;
+
+function requireCobol () {
+	if (hasRequiredCobol) return cobol_1;
+	hasRequiredCobol = 1;
+
+	cobol_1 = cobol;
+	cobol.displayName = 'cobol';
+	cobol.aliases = [];
+	function cobol(Prism) {
+	  Prism.languages.cobol = {
+	    comment: {
+	      pattern: /\*>.*|(^[ \t]*)\*.*/m,
+	      lookbehind: true,
+	      greedy: true
+	    },
+	    string: {
+	      pattern: /[xzgn]?(?:"(?:[^\r\n"]|"")*"(?!")|'(?:[^\r\n']|'')*'(?!'))/i,
+	      greedy: true
+	    },
+	    level: {
+	      pattern: /(^[ \t]*)\d+\b/m,
+	      lookbehind: true,
+	      greedy: true,
+	      alias: 'number'
+	    },
+	    'class-name': {
+	      // https://github.com/antlr/grammars-v4/blob/42edd5b687d183b5fa679e858a82297bd27141e7/cobol85/Cobol85.g4#L1015
+	      pattern:
+	        /(\bpic(?:ture)?\s+)(?:(?:[-\w$/,:*+<>]|\.(?!\s|$))(?:\(\d+\))?)+/i,
+	      lookbehind: true,
+	      inside: {
+	        number: {
+	          pattern: /(\()\d+/,
+	          lookbehind: true
+	        },
+	        punctuation: /[()]/
+	      }
+	    },
+	    keyword: {
+	      pattern:
+	        /(^|[^\w-])(?:ABORT|ACCEPT|ACCESS|ADD|ADDRESS|ADVANCING|AFTER|ALIGNED|ALL|ALPHABET|ALPHABETIC|ALPHABETIC-LOWER|ALPHABETIC-UPPER|ALPHANUMERIC|ALPHANUMERIC-EDITED|ALSO|ALTER|ALTERNATE|ANY|ARE|AREA|AREAS|AS|ASCENDING|ASCII|ASSIGN|ASSOCIATED-DATA|ASSOCIATED-DATA-LENGTH|AT|ATTRIBUTE|AUTHOR|AUTO|AUTO-SKIP|BACKGROUND-COLOR|BACKGROUND-COLOUR|BASIS|BEEP|BEFORE|BEGINNING|BELL|BINARY|BIT|BLANK|BLINK|BLOCK|BOTTOM|BOUNDS|BY|BYFUNCTION|BYTITLE|CALL|CANCEL|CAPABLE|CCSVERSION|CD|CF|CH|CHAINING|CHANGED|CHANNEL|CHARACTER|CHARACTERS|CLASS|CLASS-ID|CLOCK-UNITS|CLOSE|CLOSE-DISPOSITION|COBOL|CODE|CODE-SET|COL|COLLATING|COLUMN|COM-REG|COMMA|COMMITMENT|COMMON|COMMUNICATION|COMP|COMP-1|COMP-2|COMP-3|COMP-4|COMP-5|COMPUTATIONAL|COMPUTATIONAL-1|COMPUTATIONAL-2|COMPUTATIONAL-3|COMPUTATIONAL-4|COMPUTATIONAL-5|COMPUTE|CONFIGURATION|CONTAINS|CONTENT|CONTINUE|CONTROL|CONTROL-POINT|CONTROLS|CONVENTION|CONVERTING|COPY|CORR|CORRESPONDING|COUNT|CRUNCH|CURRENCY|CURSOR|DATA|DATA-BASE|DATE|DATE-COMPILED|DATE-WRITTEN|DAY|DAY-OF-WEEK|DBCS|DE|DEBUG-CONTENTS|DEBUG-ITEM|DEBUG-LINE|DEBUG-NAME|DEBUG-SUB-1|DEBUG-SUB-2|DEBUG-SUB-3|DEBUGGING|DECIMAL-POINT|DECLARATIVES|DEFAULT|DEFAULT-DISPLAY|DEFINITION|DELETE|DELIMITED|DELIMITER|DEPENDING|DESCENDING|DESTINATION|DETAIL|DFHRESP|DFHVALUE|DISABLE|DISK|DISPLAY|DISPLAY-1|DIVIDE|DIVISION|DONTCARE|DOUBLE|DOWN|DUPLICATES|DYNAMIC|EBCDIC|EGCS|EGI|ELSE|EMI|EMPTY-CHECK|ENABLE|END|END-ACCEPT|END-ADD|END-CALL|END-COMPUTE|END-DELETE|END-DIVIDE|END-EVALUATE|END-IF|END-MULTIPLY|END-OF-PAGE|END-PERFORM|END-READ|END-RECEIVE|END-RETURN|END-REWRITE|END-SEARCH|END-START|END-STRING|END-SUBTRACT|END-UNSTRING|END-WRITE|ENDING|ENTER|ENTRY|ENTRY-PROCEDURE|ENVIRONMENT|EOL|EOP|EOS|ERASE|ERROR|ESCAPE|ESI|EVALUATE|EVENT|EVERY|EXCEPTION|EXCLUSIVE|EXHIBIT|EXIT|EXPORT|EXTEND|EXTENDED|EXTERNAL|FD|FILE|FILE-CONTROL|FILLER|FINAL|FIRST|FOOTING|FOR|FOREGROUND-COLOR|FOREGROUND-COLOUR|FROM|FULL|FUNCTION|FUNCTION-POINTER|FUNCTIONNAME|GENERATE|GIVING|GLOBAL|GO|GOBACK|GRID|GROUP|HEADING|HIGH-VALUE|HIGH-VALUES|HIGHLIGHT|I-O|I-O-CONTROL|ID|IDENTIFICATION|IF|IMPLICIT|IMPORT|IN|INDEX|INDEXED|INDICATE|INITIAL|INITIALIZE|INITIATE|INPUT|INPUT-OUTPUT|INSPECT|INSTALLATION|INTEGER|INTO|INVALID|INVOKE|IS|JUST|JUSTIFIED|KANJI|KEPT|KEY|KEYBOARD|LABEL|LANGUAGE|LAST|LB|LD|LEADING|LEFT|LEFTLINE|LENGTH|LENGTH-CHECK|LIBACCESS|LIBPARAMETER|LIBRARY|LIMIT|LIMITS|LINAGE|LINAGE-COUNTER|LINE|LINE-COUNTER|LINES|LINKAGE|LIST|LOCAL|LOCAL-STORAGE|LOCK|LONG-DATE|LONG-TIME|LOW-VALUE|LOW-VALUES|LOWER|LOWLIGHT|MEMORY|MERGE|MESSAGE|MMDDYYYY|MODE|MODULES|MORE-LABELS|MOVE|MULTIPLE|MULTIPLY|NAMED|NATIONAL|NATIONAL-EDITED|NATIVE|NEGATIVE|NETWORK|NEXT|NO|NO-ECHO|NULL|NULLS|NUMBER|NUMERIC|NUMERIC-DATE|NUMERIC-EDITED|NUMERIC-TIME|OBJECT-COMPUTER|OCCURS|ODT|OF|OFF|OMITTED|ON|OPEN|OPTIONAL|ORDER|ORDERLY|ORGANIZATION|OTHER|OUTPUT|OVERFLOW|OVERLINE|OWN|PACKED-DECIMAL|PADDING|PAGE|PAGE-COUNTER|PASSWORD|PERFORM|PF|PH|PIC|PICTURE|PLUS|POINTER|PORT|POSITION|POSITIVE|PRINTER|PRINTING|PRIVATE|PROCEDURE|PROCEDURE-POINTER|PROCEDURES|PROCEED|PROCESS|PROGRAM|PROGRAM-ID|PROGRAM-LIBRARY|PROMPT|PURGE|QUEUE|QUOTE|QUOTES|RANDOM|RD|READ|READER|REAL|RECEIVE|RECEIVED|RECORD|RECORDING|RECORDS|RECURSIVE|REDEFINES|REEL|REF|REFERENCE|REFERENCES|RELATIVE|RELEASE|REMAINDER|REMARKS|REMOTE|REMOVAL|REMOVE|RENAMES|REPLACE|REPLACING|REPORT|REPORTING|REPORTS|REQUIRED|RERUN|RESERVE|RESET|RETURN|RETURN-CODE|RETURNING|REVERSE-VIDEO|REVERSED|REWIND|REWRITE|RF|RH|RIGHT|ROUNDED|RUN|SAME|SAVE|SCREEN|SD|SEARCH|SECTION|SECURE|SECURITY|SEGMENT|SEGMENT-LIMIT|SELECT|SEND|SENTENCE|SEPARATE|SEQUENCE|SEQUENTIAL|SET|SHARED|SHAREDBYALL|SHAREDBYRUNUNIT|SHARING|SHIFT-IN|SHIFT-OUT|SHORT-DATE|SIGN|SIZE|SORT|SORT-CONTROL|SORT-CORE-SIZE|SORT-FILE-SIZE|SORT-MERGE|SORT-MESSAGE|SORT-MODE-SIZE|SORT-RETURN|SOURCE|SOURCE-COMPUTER|SPACE|SPACES|SPECIAL-NAMES|STANDARD|STANDARD-1|STANDARD-2|START|STATUS|STOP|STRING|SUB-QUEUE-1|SUB-QUEUE-2|SUB-QUEUE-3|SUBTRACT|SUM|SUPPRESS|SYMBOL|SYMBOLIC|SYNC|SYNCHRONIZED|TABLE|TALLY|TALLYING|TAPE|TASK|TERMINAL|TERMINATE|TEST|TEXT|THEN|THREAD|THREAD-LOCAL|THROUGH|THRU|TIME|TIMER|TIMES|TITLE|TO|TODAYS-DATE|TODAYS-NAME|TOP|TRAILING|TRUNCATED|TYPE|TYPEDEF|UNDERLINE|UNIT|UNSTRING|UNTIL|UP|UPON|USAGE|USE|USING|VALUE|VALUES|VARYING|VIRTUAL|WAIT|WHEN|WHEN-COMPILED|WITH|WORDS|WORKING-STORAGE|WRITE|YEAR|YYYYDDD|YYYYMMDD|ZERO-FILL|ZEROES|ZEROS)(?![\w-])/i,
+	      lookbehind: true
+	    },
+	    boolean: {
+	      pattern: /(^|[^\w-])(?:false|true)(?![\w-])/i,
+	      lookbehind: true
+	    },
+	    number: {
+	      pattern:
+	        /(^|[^\w-])(?:[+-]?(?:(?:\d+(?:[.,]\d+)?|[.,]\d+)(?:e[+-]?\d+)?|zero))(?![\w-])/i,
+	      lookbehind: true
+	    },
+	    operator: [
+	      /<>|[<>]=?|[=+*/&]/,
+	      {
+	        pattern: /(^|[^\w-])(?:-|and|equal|greater|less|not|or|than)(?![\w-])/i,
+	        lookbehind: true
+	      }
+	    ],
+	    punctuation: /[.:,()]/
+	  };
+	}
+	return cobol_1;
 }
 
 var coffeescript_1;
@@ -39562,7 +39567,7 @@ refractor.register(abap_1);
 refractor.register(abnf_1);
 refractor.register(actionscript_1);
 refractor.register(ada_1);
-refractor.register(requireAgda());
+refractor.register(agda_1);
 refractor.register(al_1);
 refractor.register(antlr4_1);
 refractor.register(apacheconf_1);
@@ -39598,7 +39603,7 @@ refractor.register(chaiscript_1);
 refractor.register(cil_1);
 refractor.register(clojure_1);
 refractor.register(cmake_1);
-refractor.register(cobol_1);
+refractor.register(requireCobol());
 refractor.register(requireCoffeescript());
 refractor.register(requireConcurnas());
 refractor.register(requireCoq());
@@ -41853,8 +41858,8 @@ var css$G = ".Body_module_root__85b1b679 {\n  padding: 0.5rem 0.5rem;\n  display
 var modules_e6b80d99 = {"root":"Body_module_root__85b1b679"};
 n(css$G,{});
 
-var css$F = ".Dates_module_dates__e3e1fc43 {\n  display: grid;\n  grid-template-columns: repeat(7, 1fr);\n  align-items: center;\n  flex-wrap: wrap;\n}\n.Dates_module_dates__e3e1fc43 div {\n  flex-basis: 14.28%;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  margin-bottom: 0.25rem;\n  cursor: pointer;\n  align-self: center;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.Dates_module_dates__e3e1fc43 div .Dates_module_date__e3e1fc43 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  text-align: center;\n  vertical-align: middle;\n  border-radius: 1.5rem;\n  height: 2.5rem;\n  width: 2.5rem;\n  font-weight: 400;\n  font-size: 0.875rem;\n  color: var(--black);\n}\n.Dates_module_dates__e3e1fc43 div .Dates_module_selected__e3e1fc43 {\n  background-color: var(--highlight);\n  color: var(--white);\n}\n.Dates_module_dates__e3e1fc43 div .Dates_module_unSelected__e3e1fc43 {\n  background-color: var(--white);\n  border-color: var(--highlight);\n  border-width: 0.125rem;\n  border-style: solid;\n  color: var(--black);\n}\n.Dates_module_dates__e3e1fc43 div .Dates_module_disabled__e3e1fc43 {\n  border-radius: 1.5rem;\n  color: var(--grey2);\n}\n.Dates_module_dates__e3e1fc43 div .Dates_module_diffMonth__e3e1fc43 {\n  opacity: 0.6;\n}\n.Dates_module_dates__e3e1fc43 div:hover .Dates_module_date__e3e1fc43 {\n  background: var(--background);\n  color: var(--highlight);\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n}\n.Dates_module_dates__e3e1fc43 div:hover .Dates_module_selected__e3e1fc43 {\n  background-color: var(--highlight);\n  color: var(--white);\n}\n.Dates_module_dates__e3e1fc43 div:hover .Dates_module_disabled__e3e1fc43 {\n  background: transparent;\n  box-shadow: none;\n  border-radius: 1.5rem;\n  color: var(--grey2);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_minInRange__e3e1fc43 {\n  background-color: var(--highlight);\n  border-radius: 1.5rem 0rem 0rem 1.5rem;\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_minInRange__e3e1fc43 .Dates_module_date__e3e1fc43 {\n  color: var(--white);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_minInRange__e3e1fc43:hover .Dates_module_date__e3e1fc43 {\n  background: var(--highlight);\n  color: var(--white);\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_maxInRange__e3e1fc43 {\n  background-color: var(--highlight);\n  border-radius: 0rem 1.5rem 1.5rem 0rem;\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_maxInRange__e3e1fc43 .Dates_module_date__e3e1fc43 {\n  color: var(--white);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_maxInRange__e3e1fc43:hover .Dates_module_date__e3e1fc43 {\n  background: var(--highlight);\n  color: var(--white);\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_midInRange__e3e1fc43 {\n  background: var(--background);\n  border-radius: 0rem;\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_midInRange__e3e1fc43 .Dates_module_date__e3e1fc43 {\n  color: var(--highlight);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_firstHovered__e3e1fc43 {\n  background: var(--background);\n  border-radius: 0rem 1.5rem 1.5rem 0rem;\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_firstHovered__e3e1fc43 .Dates_module_date__e3e1fc43 {\n  color: var(--highlight);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_lastHovered__e3e1fc43 {\n  background: var(--background);\n  border-radius: 1.5rem 0rem 0rem 1.5rem;\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_lastHovered__e3e1fc43 .Dates_module_date__e3e1fc43 {\n  color: var(--highlight);\n}";
-var modules_b02dadcc = {"dates":"Dates_module_dates__e3e1fc43","date":"Dates_module_date__e3e1fc43","selected":"Dates_module_selected__e3e1fc43","unSelected":"Dates_module_unSelected__e3e1fc43","disabled":"Dates_module_disabled__e3e1fc43","diffMonth":"Dates_module_diffMonth__e3e1fc43","minInRange":"Dates_module_minInRange__e3e1fc43","maxInRange":"Dates_module_maxInRange__e3e1fc43","midInRange":"Dates_module_midInRange__e3e1fc43","first-hovered":"Dates_module_firstHovered__e3e1fc43","last-hovered":"Dates_module_lastHovered__e3e1fc43"};
+var css$F = ".Dates_module_dates__e964f6bf {\n  display: grid;\n  grid-template-columns: repeat(7, 1fr);\n  align-items: center;\n  flex-wrap: wrap;\n}\n.Dates_module_dates__e964f6bf div {\n  flex-basis: 14.28%;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  margin-bottom: 0.25rem;\n  cursor: pointer;\n  align-self: center;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.Dates_module_dates__e964f6bf div .Dates_module_date__e964f6bf {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  text-align: center;\n  vertical-align: middle;\n  border-radius: 1.5rem;\n  height: 2.5rem;\n  width: 2.5rem;\n  font-weight: 400;\n  font-size: 0.875rem;\n  color: var(--black);\n}\n.Dates_module_dates__e964f6bf div .Dates_module_selected__e964f6bf {\n  background-color: var(--highlight);\n  color: var(--white);\n}\n.Dates_module_dates__e964f6bf div .Dates_module_unSelected__e964f6bf {\n  background-color: var(--white);\n  border-color: var(--highlight);\n  border-width: 0.125rem;\n  border-style: solid;\n  color: var(--black);\n}\n.Dates_module_dates__e964f6bf div .Dates_module_disabled__e964f6bf {\n  border-radius: 1.5rem;\n  color: var(--grey2);\n}\n.Dates_module_dates__e964f6bf div .Dates_module_diffMonth__e964f6bf {\n  opacity: 0.6;\n}\n.Dates_module_dates__e964f6bf div:hover .Dates_module_date__e964f6bf {\n  background: var(--background);\n  color: var(--highlight);\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n}\n.Dates_module_dates__e964f6bf div:hover .Dates_module_selected__e964f6bf {\n  background-color: var(--highlight);\n  color: var(--white);\n}\n.Dates_module_dates__e964f6bf div:hover .Dates_module_disabled__e964f6bf {\n  background: transparent;\n  box-shadow: none;\n  border-radius: 1.5rem;\n  color: var(--grey2);\n}\n.Dates_module_dates__e964f6bf .Dates_module_minInRange__e964f6bf {\n  background-color: var(--highlight);\n  border-radius: 1.5rem 0rem 0rem 1.5rem;\n}\n.Dates_module_dates__e964f6bf .Dates_module_minInRange__e964f6bf .Dates_module_date__e964f6bf {\n  color: var(--white);\n}\n.Dates_module_dates__e964f6bf .Dates_module_minInRange__e964f6bf:hover .Dates_module_date__e964f6bf {\n  background: var(--highlight);\n  color: var(--white);\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n}\n.Dates_module_dates__e964f6bf .Dates_module_maxInRange__e964f6bf {\n  background-color: var(--highlight);\n  border-radius: 0rem 1.5rem 1.5rem 0rem;\n}\n.Dates_module_dates__e964f6bf .Dates_module_maxInRange__e964f6bf .Dates_module_date__e964f6bf {\n  color: var(--white);\n}\n.Dates_module_dates__e964f6bf .Dates_module_maxInRange__e964f6bf:hover .Dates_module_date__e964f6bf {\n  background: var(--highlight);\n  color: var(--white);\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n}\n.Dates_module_dates__e964f6bf .Dates_module_midInRange__e964f6bf {\n  background: var(--background);\n  border-radius: 0rem;\n}\n.Dates_module_dates__e964f6bf .Dates_module_midInRange__e964f6bf .Dates_module_date__e964f6bf {\n  color: var(--highlight);\n}\n.Dates_module_dates__e964f6bf .Dates_module_midInRangeSelected__e964f6bf {\n  background: var(--background);\n  border-radius: 0rem;\n}\n.Dates_module_dates__e964f6bf .Dates_module_midInRangeSelected__e964f6bf .Dates_module_date__e964f6bf {\n  color: var(--white);\n}\n.Dates_module_dates__e964f6bf .Dates_module_firstHovered__e964f6bf {\n  background: var(--background);\n  border-radius: 0rem 1.5rem 1.5rem 0rem;\n}\n.Dates_module_dates__e964f6bf .Dates_module_firstHovered__e964f6bf .Dates_module_date__e964f6bf {\n  color: var(--highlight);\n}\n.Dates_module_dates__e964f6bf .Dates_module_lastHovered__e964f6bf {\n  background: var(--background);\n  border-radius: 1.5rem 0rem 0rem 1.5rem;\n}\n.Dates_module_dates__e964f6bf .Dates_module_lastHovered__e964f6bf .Dates_module_date__e964f6bf {\n  color: var(--highlight);\n}";
+var modules_b02dadcc = {"dates":"Dates_module_dates__e964f6bf","date":"Dates_module_date__e964f6bf","selected":"Dates_module_selected__e964f6bf","unSelected":"Dates_module_unSelected__e964f6bf","disabled":"Dates_module_disabled__e964f6bf","diffMonth":"Dates_module_diffMonth__e964f6bf","minInRange":"Dates_module_minInRange__e964f6bf","maxInRange":"Dates_module_maxInRange__e964f6bf","midInRange":"Dates_module_midInRange__e964f6bf","midInRangeSelected":"Dates_module_midInRangeSelected__e964f6bf","first-hovered":"Dates_module_firstHovered__e964f6bf","last-hovered":"Dates_module_lastHovered__e964f6bf"};
 n(css$F,{});
 
 var getDatesOfLastWeekOfLastMonth = function getDatesOfLastWeekOfLastMonth(_ref) {
@@ -42081,9 +42086,9 @@ var Dates = function Dates(props) {
       if (hoveredEndingDate) {
         isMidItem = isBefore(date, fromUnixTime(hoveredEndingDate)) && isAfter(date, fromUnixTime(firstItem)) || isAfter(date, fromUnixTime(hoveredEndingDate)) && isBefore(date, fromUnixTime(firstItem));
       } else {
-        isMidItem = isBefore(date, fromUnixTime(lastItem)) && isAfter(date, fromUnixTime(firstItem).setHours(23, 59, 59, 59));
+        isMidItem = isBefore(date, fromUnixTime(lastItem).setHours(0, 0, 0, 0)) && isAfter(date, fromUnixTime(firstItem).setHours(23, 59, 59, 59));
       }
-      var parentClassNames = classes(isMidItem ? modules_b02dadcc.midInRange : '', isFirstItem ? isHoveringBeforeSelectedDate ? modules_b02dadcc.maxInRange : modules_b02dadcc.minInRange : '', isLastItem ? modules_b02dadcc.maxInRange : '', isLastItemHovered ? modules_b02dadcc['first-hovered'] : '', isFirstItemHovered ? modules_b02dadcc['last-hovered'] : '');
+      var parentClassNames = classes(isMidItem ? selectedSingleDate ? modules_b02dadcc.midInRangeSelected : modules_b02dadcc.midInRange : '', isFirstItem ? isHoveringBeforeSelectedDate ? modules_b02dadcc.maxInRange : modules_b02dadcc.minInRange : '', isLastItem ? modules_b02dadcc.maxInRange : '', isLastItemHovered ? modules_b02dadcc['first-hovered'] : '', isFirstItemHovered ? modules_b02dadcc['last-hovered'] : '');
       var childClassNames = classes(date ? modules_b02dadcc.date : '', selectedSingleDate ? modules_b02dadcc.selected : '', isUnSelected ? modules_b02dadcc.unSelected : '', notSameMonth ? modules_b02dadcc.diffMonth : '', isDisabled ? modules_b02dadcc.disabled : '');
       return /*#__PURE__*/jsx("div", {
         className: parentClassNames,
@@ -43078,29 +43083,48 @@ var getDateAndUnixRange = function getDateAndUnixRange(duration) {
   startingDate.setHours(0, 0, 0, 0);
   var endingDate = new Date();
   endingDate.setHours(0, 0, 0, 0);
-  var dates = ["".concat(startingDate.getDate(), " ").concat(MONTHS[startingDate.getMonth()].substring(0, 3), " ").concat(startingDate.getFullYear()), "".concat(endingDate.getDate(), " ").concat(MONTHS[endingDate.getMonth()].substring(0, 3), " ").concat(endingDate.getFullYear())];
+  var dates = getDatesInStringFormat({
+    startingDate: startingDate,
+    endingDate: endingDate
+  });
   var unix = [getUnixTime(startingDate), getUnixTime(endingDate)];
   return {
     dates: dates,
     unix: unix
   };
 };
-var dateRanges = [{
-  title: '7 Days',
-  dateRange: getDateAndUnixRange({
-    days: 7
-  })
-}, {
-  title: '15 Days',
-  dateRange: getDateAndUnixRange({
-    days: 15
-  })
-}, {
-  title: '1 Month',
-  dateRange: getDateAndUnixRange({
-    months: 1
-  })
-}];
+var dateRanges = function dateRanges() {
+  var customRanges = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  if ((customRanges === null || customRanges === void 0 ? void 0 : customRanges.length) > 0) {
+    return customRanges.map(function (range) {
+      return {
+        title: range.title,
+        dateRange: getDateAndUnixRange(_defineProperty$1({}, range.type, [range.value]))
+      };
+    });
+  }
+  return [{
+    title: 'Last 24 Hours',
+    dateRange: getDateAndUnixRange({
+      hours: 24
+    })
+  }, {
+    title: 'Last 7 Days',
+    dateRange: getDateAndUnixRange({
+      days: 7
+    })
+  }, {
+    title: 'Last 15 Days',
+    dateRange: getDateAndUnixRange({
+      days: 15
+    })
+  }, {
+    title: 'Last 1 Month',
+    dateRange: getDateAndUnixRange({
+      months: 1
+    })
+  }];
+};
 
 var SelectedDateView = function SelectedDateView(props) {
   var value = props.value,
@@ -43131,7 +43155,9 @@ var Footer = function Footer(props) {
     setSelectedRange = props.setSelectedRange,
     range = props.range,
     goToDate = props.goToDate,
-    onApply = props.onApply;
+    onApply = props.onApply,
+    setFixedRange = props.setFixedRange,
+    customRanges = props.customRanges;
   var date = selectedDate.date,
     month = selectedDate.month,
     year = selectedDate.year;
@@ -43139,8 +43165,9 @@ var Footer = function Footer(props) {
     dates = _selectedRange$dates === void 0 ? [] : _selectedRange$dates;
   var monthInShort = month === null || month === void 0 ? void 0 : month.substr(0, 3);
   var datesSelected = date || dates.length === 2;
-  var selectFixedDateRange = function selectFixedDateRange(dateRange) {
+  var selectFixedDateRange = function selectFixedDateRange(dateRange, title) {
     setSelectedRange(dateRange);
+    setFixedRange(title);
   };
   var resetDate = function resetDate() {
     goToDate(getUnixTime(new Date()));
@@ -43194,7 +43221,7 @@ var Footer = function Footer(props) {
   var timeValue = "".concat(getTimePickerValue().hours, ":").concat(getTimePickerValue().minutes, " ").concat(getTimePickerValue().meridian);
   return /*#__PURE__*/jsxs("div", {
     className: modules_b490bd5d.root,
-    children: [/*#__PURE__*/jsx(TimePicker, {
+    children: [!range && /*#__PURE__*/jsx(TimePicker, {
       value: getTimePickerValue(),
       onChange: onTimeChange,
       className: modules_b490bd5d['time-picker']
@@ -43215,7 +43242,7 @@ var Footer = function Footer(props) {
       action: resetDate
     }), range && /*#__PURE__*/jsx("div", {
       className: modules_b490bd5d['date-ranges'],
-      children: dateRanges.map(function (_ref) {
+      children: dateRanges(customRanges).map(function (_ref) {
         var _selectedRange$unix;
         var dateRange = _ref.dateRange,
           title = _ref.title;
@@ -43223,7 +43250,7 @@ var Footer = function Footer(props) {
         return /*#__PURE__*/jsxs("div", {
           className: classes(modules_b490bd5d['date-range'], selectedFixedDateRange ? modules_b490bd5d.selected : ''),
           onClick: function onClick() {
-            selectFixedDateRange(dateRange);
+            selectFixedDateRange(dateRange, title);
           },
           children: [/*#__PURE__*/jsx(HalfShade, {}), /*#__PURE__*/jsx("span", {
             children: title
@@ -43247,7 +43274,9 @@ var Calender = function Calender(props) {
     onApply = props.onApply,
     disabledDates = props.disabledDates,
     disableDatesBefore = props.disableDatesBefore,
-    value = props.value;
+    value = props.value,
+    setFixedRange = props.setFixedRange,
+    customRanges = props.customRanges;
   var _getDayInfo = getDayInfo(new Date()),
     month = _getDayInfo.month,
     year = _getDayInfo.year,
@@ -43263,10 +43292,16 @@ var Calender = function Calender(props) {
     selectedMonth = _useState2[0],
     setSelectedMonth = _useState2[1];
   useEffect(function () {
-    if (value) {
-      var _date = fromUnixTime(value);
-      var dateAsNumber = _date.getDate();
-      var selectedDayInfo = getDayInfo(_date);
+    if (range && value) {
+      setSelectedRange({
+        dates: getDatesInStringFormat({
+          startingDate: fromUnixTime(value[0]),
+          endingDate: fromUnixTime(value[1])
+        }),
+        unix: [value[0], value[1]]
+      });
+      var dateAsNumber = fromUnixTime(value[0]).getDate();
+      var selectedDayInfo = getDayInfo(fromUnixTime(value[0]));
       var selectedDateMonth = {
         month: selectedDayInfo.month,
         monthAsNumber: selectedDayInfo.monthAsNumber,
@@ -43282,19 +43317,40 @@ var Calender = function Calender(props) {
         month: selectedDateMonth.month,
         year: selectedDateMonth.year,
         date: dateAsNumber,
-        unix: getUnixTime(_date)
+        unix: getUnixTime(fromUnixTime(value[0]))
       }));
-      return;
-    }
-    var date = new Date();
-    if (!range && !isBefore(date, disableDatesBefore)) {
+    } else if (value) {
+      var date = fromUnixTime(value);
       var _dateAsNumber = date.getDate();
+      var _selectedDayInfo = getDayInfo(date);
+      var _selectedDateMonth = {
+        month: _selectedDayInfo.month,
+        monthAsNumber: _selectedDayInfo.monthAsNumber,
+        year: _selectedDayInfo.year,
+        dayAsNumber: _selectedDayInfo.dayAsNumber
+      };
+      setSelectedMonth({
+        month: _selectedDayInfo.month,
+        monthAsNumber: _selectedDayInfo.monthAsNumber,
+        year: _selectedDayInfo.year
+      });
       setSelectedDate(_objectSpread2(_objectSpread2({}, selectedDate), {}, {
-        month: selectedMonth.month,
-        year: selectedMonth.year,
+        month: _selectedDateMonth.month,
+        year: _selectedDateMonth.year,
         date: _dateAsNumber,
         unix: getUnixTime(date)
       }));
+    } else {
+      var _date = new Date();
+      if (!range && !isBefore(_date, disableDatesBefore)) {
+        var _dateAsNumber2 = _date.getDate();
+        setSelectedDate(_objectSpread2(_objectSpread2({}, selectedDate), {}, {
+          month: selectedMonth.month,
+          year: selectedMonth.year,
+          date: _dateAsNumber2,
+          unix: getUnixTime(_date)
+        }));
+      }
     }
   }, []);
   var goToDate = function goToDate(unix) {
@@ -43371,7 +43427,9 @@ var Calender = function Calender(props) {
       selectedRange: selectedRange,
       setSelectedRange: setSelectedRange,
       onApply: onApply,
-      goToDate: goToDate
+      goToDate: goToDate,
+      customRanges: customRanges,
+      setFixedRange: setFixedRange
     })]
   });
 };
@@ -43415,7 +43473,9 @@ var DatePicker = function DatePicker(props) {
     className = props.className,
     disableDatesBefore = props.disableDatesBefore,
     theme = props.theme,
-    onClear = props.onClear;
+    onClear = props.onClear,
+    displayDateSelectionValue = props.displayValue,
+    customRanges = props.customRanges;
   var _useState = useState(false),
     _useState2 = _slicedToArray(_useState, 2),
     open = _useState2[0],
@@ -43429,25 +43489,38 @@ var DatePicker = function DatePicker(props) {
     _useState4 = _slicedToArray(_useState3, 2),
     selectedRange = _useState4[0],
     setSelectedRange = _useState4[1];
-  var _useState5 = useState(function () {
-      return '';
-    }),
+  var _useState5 = useState(null),
     _useState6 = _slicedToArray(_useState5, 2),
-    selectedDate = _useState6[0],
-    setSelectedDate = _useState6[1];
+    fixedRange = _useState6[0],
+    setFixedRange = _useState6[1];
   var _useState7 = useState(function () {
       return '';
     }),
     _useState8 = _slicedToArray(_useState7, 2),
-    error = _useState8[0],
-    setError = _useState8[1];
+    selectedDate = _useState8[0],
+    setSelectedDate = _useState8[1];
+  var _useState9 = useState(function () {
+      return '';
+    }),
+    _useState10 = _slicedToArray(_useState9, 2),
+    error = _useState10[0],
+    setError = _useState10[1];
   var datePickerRef = useRef();
-  var sDate = fromUnixTime(value);
-  var displayValue = '';
+  var displayValue = displayDateSelectionValue;
+  if (range) {
+    var _sDate$getMonth$toStr, _eDate$getMonth$toStr;
+    var sDate = fromUnixTime(value[0]);
+    var eDate = fromUnixTime(value[1]);
+    displayValue = " ".concat(sDate.getDate(), " ").concat(MONTHS[(_sDate$getMonth$toStr = sDate.getMonth().toString()) === null || _sDate$getMonth$toStr === void 0 ? void 0 : _sDate$getMonth$toStr.substring(0, 3)], " - ").concat(eDate.getDate(), " ").concat(MONTHS[(_eDate$getMonth$toStr = eDate.getMonth().toString()) === null || _eDate$getMonth$toStr === void 0 ? void 0 : _eDate$getMonth$toStr.substring(0, 3)], " ").concat(eDate.getFullYear());
+  }
   if (!range && value) {
-    var _sDate$getMonth$toStr;
-    var timeValue = "".concat((sDate.getHours() + 11) % 12 + 1, ":").concat(sDate.getMinutes(), " ").concat(sDate.getHours() >= 12 ? 'PM' : 'AM');
-    displayValue = " ".concat(sDate.getDate(), " ").concat(MONTHS[(_sDate$getMonth$toStr = sDate.getMonth().toString()) === null || _sDate$getMonth$toStr === void 0 ? void 0 : _sDate$getMonth$toStr.substring(0, 3)], " ").concat(sDate.getFullYear(), " ").concat(timeValue);
+    var _sDate$getMonth$toStr2;
+    var _sDate = fromUnixTime(value);
+    var timeValue = "".concat((_sDate.getHours() + 11) % 12 + 1, ":").concat(_sDate.getMinutes(), " ").concat(_sDate.getHours() >= 12 ? 'PM' : 'AM');
+    displayValue = " ".concat(_sDate.getDate(), " ").concat(MONTHS[(_sDate$getMonth$toStr2 = _sDate.getMonth().toString()) === null || _sDate$getMonth$toStr2 === void 0 ? void 0 : _sDate$getMonth$toStr2.substring(0, 3)], " ").concat(_sDate.getFullYear(), " ").concat(timeValue);
+  }
+  if (fixedRange) {
+    displayValue = fixedRange;
   }
   var _useFloating = useFloating({
       open: open,
@@ -43487,7 +43560,7 @@ var DatePicker = function DatePicker(props) {
     getFloatingProps = _useInteractions.getFloatingProps;
   var apply = function apply() {
     if (selectedRange.dates.length === 2) {
-      if (!isMaxRangeExceeded({
+      if (maxRange !== null && !isMaxRangeExceeded({
         maxRange: maxRange,
         selectedRange: selectedRange
       })) {
@@ -43496,7 +43569,7 @@ var DatePicker = function DatePicker(props) {
         return;
       }
       setError('');
-      onApply(selectedRange.unix);
+      onApply(selectedRange.unix, fixedRange);
       setOpen(false);
     } else {
       onApply(selectedDate.unix);
@@ -43514,7 +43587,9 @@ var DatePicker = function DatePicker(props) {
     },
     disabledDates: disabledDates,
     disableDatesBefore: disableDatesBefore,
-    value: value
+    value: value,
+    setFixedRange: setFixedRange,
+    customRanges: customRanges
   };
   return /*#__PURE__*/jsxs("div", {
     className: classes(modules_5b831cd1.root, className),
@@ -43595,7 +43670,13 @@ DatePicker.propTypes = {
   }),
   className: propTypes$1.exports.string,
   disableDatesBefore: propTypes$1.exports.arrayOf(propTypes$1.exports.string),
-  theme: propTypes$1.exports.string
+  theme: propTypes$1.exports.string,
+  displayValue: propTypes$1.exports.string,
+  customRanges: propTypes$1.exports.arrayOf(propTypes$1.exports.shape({
+    title: propTypes$1.exports.string,
+    type: propTypes$1.exports.string,
+    value: propTypes$1.exports.string
+  }))
 };
 DatePicker.defaultProps = {
   placeholder: '',
@@ -43609,6 +43690,8 @@ DatePicker.defaultProps = {
   className: '',
   disableDatesBefore: [],
   theme: 'dark',
+  customRanges: null,
+  displayValue: '',
   onClear: function onClear() {}
 };
 
@@ -105655,7 +105738,7 @@ function useDeepCompareMemoize(value) {
   return ref.current;
 }
 
-var _excluded = ["onClick", "onIdle", "children", "style", "mapId", "clustered", "fitBounds"];
+var _excluded$1 = ["onClick", "onIdle", "children", "style", "mapId", "clustered", "fitBounds"];
 var BaseMap = function BaseMap(props) {
   // eslint-disable-next-line object-curly-newline
   var onClick = props.onClick,
@@ -105665,7 +105748,7 @@ var BaseMap = function BaseMap(props) {
     mapId = props.mapId,
     clustered = props.clustered,
     fitBounds = props.fitBounds,
-    options = _objectWithoutProperties$1(props, _excluded);
+    options = _objectWithoutProperties$1(props, _excluded$1);
   var ref = useRef(null);
   var _useState = useState(),
     _useState2 = _slicedToArray(_useState, 2),
@@ -105782,11 +105865,15 @@ Map$1.defaultProps = {
   libraries: undefined
 };
 
-var Marker = function Marker(options) {
+var _excluded = ["children"];
+var Marker = function Marker(_ref) {
+  var children = _ref.children,
+    options = _objectWithoutProperties$1(_ref, _excluded);
   var _useState = useState(),
     _useState2 = _slicedToArray(_useState, 2),
     marker = _useState2[0],
     setMarker = _useState2[1];
+  var infoWindowRef = useRef(null);
   useEffect(function () {
     if (!marker) {
       setMarker(new google.maps.Marker());
@@ -105800,12 +105887,55 @@ var Marker = function Marker(options) {
     };
   }, [marker]);
   useEffect(function () {
+    if (marker && Children.count(children) === 1 && infoWindowRef !== null && infoWindowRef !== void 0 && infoWindowRef.current) {
+      var infoWindow = infoWindowRef === null || infoWindowRef === void 0 ? void 0 : infoWindowRef.current;
+      console.log(marker, infoWindow);
+      marker.addListener('click', function () {
+        infoWindow.open({
+          anchor: marker,
+          map: options.map
+        });
+      });
+    }
+  }, [marker, children]);
+  useEffect(function () {
     if (marker) {
       marker.setOptions(options);
     }
   }, [marker, options]);
+  if (Children.count(children) === 1) {
+    var _Children$toArray;
+    var child = (_Children$toArray = Children.toArray(children)) === null || _Children$toArray === void 0 ? void 0 : _Children$toArray[0];
+    if ( /*#__PURE__*/isValidElement(child)) {
+      // set the map prop on the child component
+      return /*#__PURE__*/cloneElement(child, {
+        ref: infoWindowRef
+      });
+    }
+  }
   return null;
 };
 
-export { Accordion, Alert, AlertIcon, AngleDouble as AngleDoubleIcon, Arrow$1 as ArrowIcon, BASE_URLS, BaseButton, BaseCell, BaseHorizontalBarChart, BaseMap, BaseModal, BasePieChart, BaseRegionChart, BaseSidePanel, BaseTable, BaseVerticalBarChart, BaseWidget, BreadCrumbs, BreadcrumbSeperator as BreadcrumbSeperatorIcon, Button, COLORS, Calender$1 as CalenderIcon, Caret as CaretIcon, Checkbox, CheckboxIcon, Chevron as ChevronIcon, Chip, Close as CloseIcon, Clouds as CloudIcons, CodeSnippet, Columns$1 as ColumnsIcon, Copy as CopyIcon, Cross$1 as CrossIcon, DAYS, Databases as DatabaseIcons, DatePicker, Delete as DeleteIcon, DialogBox, DisplayPicture, Download as DownloadIcon, Dropdown, DropdownItem, Edit as EditIcon, ExpandArrowAlt as ExpandArrowAltIcon, FULL_MONTHS, Filter as FilterIcon, HalfShade as HalfShadeIcon, HierarchyBrowser, HierarchyItem, Link, MONTHS, MagnifyingGlass as MagnifyingGlassIcon, Map$1 as Map, Marker, Nut as NutIcon, PageHeader, Pagination, PaginationList, Plus as PlusIcon, Popover, Popper, Radio, RadioIcon, Refresh as RefreshIcon, Reset as ResetIcon, SearchIcon, Server as ServerIcon, Settings as SettingsIcon, Sort as SortIcon, Stepper, Table, TableCell, TableChip, TableChips, TableColumn, TableFilters, Tabs, Text, TextField, Tick as TickIcon, TimePicker, Toggle, Tooltip, Trash as TrashIcon, View$2 as ViewIcon, classes, cloneDeep, defaultProps, doubleDigitted, get$1 as get, getCSSVariableValue, getCurrentSearchParams, getDateFromEpoch, getDatesInAMonth, getDayInfo, getInitialsOfName, getJSDateFromEpoch, getPagination, getSpacedDisplayName, getTimeFromEpoch, inputHelper, propTypes, stringToPath, sumArrayOfObjects, uniqueArray, uniqueArrayOfObjects, useOutsideClickListener, usePagination, useResize, useRowFilter };
+// eslint-disable-next-line prefer-arrow-callback
+var InfoWindow = /*#__PURE__*/forwardRef(function InfoWindow(options, ref) {
+  var _useState = useState(),
+    _useState2 = _slicedToArray(_useState, 2),
+    infoWindow = _useState2[0],
+    setInfoWindow = _useState2[1];
+  useEffect(function () {
+    if (!infoWindow) {
+      var newInfoWindow = new google.maps.InfoWindow();
+      setInfoWindow(newInfoWindow);
+      ref.current = newInfoWindow;
+    }
+  }, [infoWindow]);
+  useEffect(function () {
+    if (infoWindow) {
+      infoWindow.setOptions(options);
+    }
+  }, [infoWindow, options]);
+  return null;
+});
+
+export { Accordion, Alert, AlertIcon, AngleDouble as AngleDoubleIcon, Arrow$1 as ArrowIcon, BASE_URLS, BaseButton, BaseCell, BaseHorizontalBarChart, BaseMap, BaseModal, BasePieChart, BaseRegionChart, BaseSidePanel, BaseTable, BaseVerticalBarChart, BaseWidget, BreadCrumbs, BreadcrumbSeperator as BreadcrumbSeperatorIcon, Button, COLORS, Calender$1 as CalenderIcon, Caret as CaretIcon, Checkbox, CheckboxIcon, Chevron as ChevronIcon, Chip, Close as CloseIcon, Clouds as CloudIcons, CodeSnippet, Columns$1 as ColumnsIcon, Copy as CopyIcon, Cross$1 as CrossIcon, DAYS, Databases as DatabaseIcons, DatePicker, Delete as DeleteIcon, DialogBox, DisplayPicture, Download as DownloadIcon, Dropdown, DropdownItem, Edit as EditIcon, ExpandArrowAlt as ExpandArrowAltIcon, FULL_MONTHS, Filter as FilterIcon, HalfShade as HalfShadeIcon, HierarchyBrowser, HierarchyItem, InfoWindow, Link, MONTHS, MagnifyingGlass as MagnifyingGlassIcon, Map$1 as Map, Marker, Nut as NutIcon, PageHeader, Pagination, PaginationList, Plus as PlusIcon, Popover, Popper, Radio, RadioIcon, Refresh as RefreshIcon, Reset as ResetIcon, SearchIcon, Server as ServerIcon, Settings as SettingsIcon, Sort as SortIcon, Stepper, Table, TableCell, TableChip, TableChips, TableColumn, TableFilters, Tabs, Text, TextField, Tick as TickIcon, TimePicker, Toggle, Tooltip, Trash as TrashIcon, View$2 as ViewIcon, classes, cloneDeep, defaultProps, doubleDigitted, get$1 as get, getCSSVariableValue, getCurrentSearchParams, getDateFromEpoch, getDatesInAMonth, getDatesInStringFormat, getDayInfo, getInitialsOfName, getJSDateFromEpoch, getPagination, getSpacedDisplayName, getTimeFromEpoch, inputHelper, propTypes, safeJSONParse, stringToPath, sumArrayOfObjects, uniqueArray, uniqueArrayOfObjects, useOutsideClickListener, usePagination, useResize, useRowFilter };
 //# sourceMappingURL=index.js.map
