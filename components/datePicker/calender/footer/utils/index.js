@@ -1,5 +1,5 @@
 import { getUnixTime, sub } from 'date-fns';
-import { MONTHS } from '../../../../../constants';
+import { getDatesInStringFormat } from '../../../../../utils';
 
 const getDateAndUnixRange = (duration) => {
 	const startingDate = sub(new Date(), duration);
@@ -8,16 +8,10 @@ const getDateAndUnixRange = (duration) => {
 	const endingDate = new Date();
 	endingDate.setHours(0, 0, 0, 0);
 
-	const dates = [
-		`${startingDate.getDate()} ${MONTHS[startingDate.getMonth()].substring(
-			0,
-			3
-		)} ${startingDate.getFullYear()}`,
-		`${endingDate.getDate()} ${MONTHS[endingDate.getMonth()].substring(
-			0,
-			3
-		)} ${endingDate.getFullYear()}`,
-	];
+	const dates = getDatesInStringFormat({
+		startingDate,
+		endingDate,
+	});
 
 	const unix = [getUnixTime(startingDate), getUnixTime(endingDate)];
 
@@ -27,23 +21,42 @@ const getDateAndUnixRange = (duration) => {
 	};
 };
 
-export const dateRanges = [
-	{
-		title: '7 Days',
-		dateRange: getDateAndUnixRange({
-			days: 7,
-		}),
-	},
-	{
-		title: '15 Days',
-		dateRange: getDateAndUnixRange({
-			days: 15,
-		}),
-	},
-	{
-		title: '1 Month',
-		dateRange: getDateAndUnixRange({
-			months: 1,
-		}),
-	},
-];
+export const dateRanges = (customRanges = []) => {
+	if (customRanges?.length > 0) {
+		return customRanges.map((range) => {
+			return {
+				title: range.title,
+				dateRange: getDateAndUnixRange({
+					[range.type]: [range.value],
+				}),
+			};
+		});
+	}
+
+	return [
+		{
+			title: 'Last 24 Hours',
+			dateRange: getDateAndUnixRange({
+				hours: 24,
+			}),
+		},
+		{
+			title: 'Last 7 Days',
+			dateRange: getDateAndUnixRange({
+				days: 7,
+			}),
+		},
+		{
+			title: 'Last 15 Days',
+			dateRange: getDateAndUnixRange({
+				days: 15,
+			}),
+		},
+		{
+			title: 'Last 1 Month',
+			dateRange: getDateAndUnixRange({
+				months: 1,
+			}),
+		},
+	];
+};

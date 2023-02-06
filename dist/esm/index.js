@@ -1774,7 +1774,7 @@ var css$V = ".Chip_module_root__0aa07630[data-elem=base-cell] {\n  position: rel
 var modules_31aa5fd7 = {"root":"Chip_module_root__0aa07630","sm":"Chip_module_sm__0aa07630","md":"Chip_module_md__0aa07630","status":"Chip_module_status__0aa07630","success":"Chip_module_success__0aa07630","info":"Chip_module_info__0aa07630","danger":"Chip_module_danger__0aa07630","warning":"Chip_module_warning__0aa07630","default":"Chip_module_default__0aa07630","input":"Chip_module_input__0aa07630"};
 n(css$V,{});
 
-var Chip = function Chip(props) {
+var Chip = /*#__PURE__*/forwardRef(function Chip(props, ref) {
   var className = props.className,
     type = props.type,
     LeftComponent = props.leftComponent,
@@ -1788,6 +1788,7 @@ var Chip = function Chip(props) {
     variant = props.variant,
     color = props.color;
   return /*#__PURE__*/jsx(BaseButton, {
+    ref: ref,
     type: type,
     component1: LeftComponent && /*#__PURE__*/jsx(LeftComponent, {}),
     title: title,
@@ -1800,7 +1801,7 @@ var Chip = function Chip(props) {
     variant: 'contained',
     className: classes(modules_31aa5fd7.root, modules_31aa5fd7["radius-".concat(radius)], modules_31aa5fd7[variant], modules_31aa5fd7[color], modules_31aa5fd7[size], className)
   });
-};
+});
 Chip.propTypes = _objectSpread2(_objectSpread2({}, BaseButton.propTypes), {}, {
   size: propTypes$1.exports.oneOf(['sm', 'md']),
   variant: propTypes$1.exports.oneOf(['status', 'input']),
@@ -16711,34 +16712,43 @@ function ada(Prism) {
   };
 }
 
-var agda_1 = agda;
-agda.displayName = 'agda';
-agda.aliases = [];
-function agda(Prism) {
+var agda_1;
+var hasRequiredAgda;
+
+function requireAgda () {
+	if (hasRequiredAgda) return agda_1;
+	hasRequiredAgda = 1;
+
+	agda_1 = agda;
+	agda.displayName = 'agda';
+	agda.aliases = [];
+	function agda(Prism) {
 (function (Prism) {
-    Prism.languages.agda = {
-      comment: /\{-[\s\S]*?(?:-\}|$)|--.*/,
-      string: {
-        pattern: /"(?:\\(?:\r\n|[\s\S])|[^\\\r\n"])*"/,
-        greedy: true
-      },
-      punctuation: /[(){}⦃⦄.;@]/,
-      'class-name': {
-        pattern: /((?:data|record) +)\S+/,
-        lookbehind: true
-      },
-      function: {
-        pattern: /(^[ \t]*)(?!\s)[^:\r\n]+(?=:)/m,
-        lookbehind: true
-      },
-      operator: {
-        pattern: /(^\s*|\s)(?:[=|:∀→λ\\?_]|->)(?=\s)/,
-        lookbehind: true
-      },
-      keyword:
-        /\b(?:Set|abstract|constructor|data|eta-equality|field|forall|hiding|import|in|inductive|infix|infixl|infixr|instance|let|macro|module|mutual|no-eta-equality|open|overlap|pattern|postulate|primitive|private|public|quote|quoteContext|quoteGoal|quoteTerm|record|renaming|rewrite|syntax|tactic|unquote|unquoteDecl|unquoteDef|using|variable|where|with)\b/
-    };
-  })(Prism);
+	    Prism.languages.agda = {
+	      comment: /\{-[\s\S]*?(?:-\}|$)|--.*/,
+	      string: {
+	        pattern: /"(?:\\(?:\r\n|[\s\S])|[^\\\r\n"])*"/,
+	        greedy: true
+	      },
+	      punctuation: /[(){}⦃⦄.;@]/,
+	      'class-name': {
+	        pattern: /((?:data|record) +)\S+/,
+	        lookbehind: true
+	      },
+	      function: {
+	        pattern: /(^[ \t]*)(?!\s)[^:\r\n]+(?=:)/m,
+	        lookbehind: true
+	      },
+	      operator: {
+	        pattern: /(^\s*|\s)(?:[=|:∀→λ\\?_]|->)(?=\s)/,
+	        lookbehind: true
+	      },
+	      keyword:
+	        /\b(?:Set|abstract|constructor|data|eta-equality|field|forall|hiding|import|in|inductive|infix|infixl|infixr|instance|let|macro|module|mutual|no-eta-equality|open|overlap|pattern|postulate|primitive|private|public|quote|quoteContext|quoteGoal|quoteTerm|record|renaming|rewrite|syntax|tactic|unquote|unquoteDecl|unquoteDef|using|variable|where|with)\b/
+	    };
+	  })(Prism);
+	}
+	return agda_1;
 }
 
 var al_1 = al;
@@ -17232,126 +17242,134 @@ function c(Prism) {
   delete Prism.languages.c['boolean'];
 }
 
-var refractorC$1 = c_1;
-var cpp_1 = cpp;
-cpp.displayName = 'cpp';
-cpp.aliases = [];
-function cpp(Prism) {
-  Prism.register(refractorC$1)
-  ;(function (Prism) {
-    var keyword =
-      /\b(?:alignas|alignof|asm|auto|bool|break|case|catch|char|char16_t|char32_t|char8_t|class|co_await|co_return|co_yield|compl|concept|const|const_cast|consteval|constexpr|constinit|continue|decltype|default|delete|do|double|dynamic_cast|else|enum|explicit|export|extern|final|float|for|friend|goto|if|import|inline|int|int16_t|int32_t|int64_t|int8_t|long|module|mutable|namespace|new|noexcept|nullptr|operator|override|private|protected|public|register|reinterpret_cast|requires|return|short|signed|sizeof|static|static_assert|static_cast|struct|switch|template|this|thread_local|throw|try|typedef|typeid|typename|uint16_t|uint32_t|uint64_t|uint8_t|union|unsigned|using|virtual|void|volatile|wchar_t|while)\b/;
-    var modName = /\b(?!<keyword>)\w+(?:\s*\.\s*\w+)*\b/.source.replace(
-      /<keyword>/g,
-      function () {
-        return keyword.source
-      }
-    );
-    Prism.languages.cpp = Prism.languages.extend('c', {
-      'class-name': [
-        {
-          pattern: RegExp(
-            /(\b(?:class|concept|enum|struct|typename)\s+)(?!<keyword>)\w+/.source.replace(
-              /<keyword>/g,
-              function () {
-                return keyword.source
-              }
-            )
-          ),
-          lookbehind: true
-        }, // This is intended to capture the class name of method implementations like:
-        //   void foo::bar() const {}
-        // However! The `foo` in the above example could also be a namespace, so we only capture the class name if
-        // it starts with an uppercase letter. This approximation should give decent results.
-        /\b[A-Z]\w*(?=\s*::\s*\w+\s*\()/, // This will capture the class name before destructors like:
-        //   Foo::~Foo() {}
-        /\b[A-Z_]\w*(?=\s*::\s*~\w+\s*\()/i, // This also intends to capture the class name of method implementations but here the class has template
-        // parameters, so it can't be a namespace (until C++ adds generic namespaces).
-        /\b\w+(?=\s*<(?:[^<>]|<(?:[^<>]|<[^<>]*>)*>)*>\s*::\s*\w+\s*\()/
-      ],
-      keyword: keyword,
-      number: {
-        pattern:
-          /(?:\b0b[01']+|\b0x(?:[\da-f']+(?:\.[\da-f']*)?|\.[\da-f']+)(?:p[+-]?[\d']+)?|(?:\b[\d']+(?:\.[\d']*)?|\B\.[\d']+)(?:e[+-]?[\d']+)?)[ful]{0,4}/i,
-        greedy: true
-      },
-      operator:
-        />>=?|<<=?|->|--|\+\+|&&|\|\||[?:~]|<=>|[-+*/%&|^!=<>]=?|\b(?:and|and_eq|bitand|bitor|not|not_eq|or|or_eq|xor|xor_eq)\b/,
-      boolean: /\b(?:false|true)\b/
-    });
-    Prism.languages.insertBefore('cpp', 'string', {
-      module: {
-        // https://en.cppreference.com/w/cpp/language/modules
-        pattern: RegExp(
-          /(\b(?:import|module)\s+)/.source +
-            '(?:' + // header-name
-            /"(?:\\(?:\r\n|[\s\S])|[^"\\\r\n])*"|<[^<>\r\n]*>/.source +
-            '|' + // module name or partition or both
-            /<mod-name>(?:\s*:\s*<mod-name>)?|:\s*<mod-name>/.source.replace(
-              /<mod-name>/g,
-              function () {
-                return modName
-              }
-            ) +
-            ')'
-        ),
-        lookbehind: true,
-        greedy: true,
-        inside: {
-          string: /^[<"][\s\S]+/,
-          operator: /:/,
-          punctuation: /\./
-        }
-      },
-      'raw-string': {
-        pattern: /R"([^()\\ ]{0,16})\([\s\S]*?\)\1"/,
-        alias: 'string',
-        greedy: true
-      }
-    });
-    Prism.languages.insertBefore('cpp', 'keyword', {
-      'generic-function': {
-        pattern: /\b(?!operator\b)[a-z_]\w*\s*<(?:[^<>]|<[^<>]*>)*>(?=\s*\()/i,
-        inside: {
-          function: /^\w+/,
-          generic: {
-            pattern: /<[\s\S]+/,
-            alias: 'class-name',
-            inside: Prism.languages.cpp
-          }
-        }
-      }
-    });
-    Prism.languages.insertBefore('cpp', 'operator', {
-      'double-colon': {
-        pattern: /::/,
-        alias: 'punctuation'
-      }
-    });
-    Prism.languages.insertBefore('cpp', 'class-name', {
-      // the base clause is an optional list of parent classes
-      // https://en.cppreference.com/w/cpp/language/class
-      'base-clause': {
-        pattern:
-          /(\b(?:class|struct)\s+\w+\s*:\s*)[^;{}"'\s]+(?:\s+[^;{}"'\s]+)*(?=\s*[;{])/,
-        lookbehind: true,
-        greedy: true,
-        inside: Prism.languages.extend('cpp', {})
-      }
-    });
-    Prism.languages.insertBefore(
-      'inside',
-      'double-colon',
-      {
-        // All untokenized words that are not namespaces should be class names
-        'class-name': /\b[a-z_]\w*\b(?!\s*::)/i
-      },
-      Prism.languages.cpp['base-clause']
-    );
-  })(Prism);
+var cpp_1;
+var hasRequiredCpp;
+
+function requireCpp () {
+	if (hasRequiredCpp) return cpp_1;
+	hasRequiredCpp = 1;
+	var refractorC = c_1;
+	cpp_1 = cpp;
+	cpp.displayName = 'cpp';
+	cpp.aliases = [];
+	function cpp(Prism) {
+	  Prism.register(refractorC)
+	  ;(function (Prism) {
+	    var keyword =
+	      /\b(?:alignas|alignof|asm|auto|bool|break|case|catch|char|char16_t|char32_t|char8_t|class|co_await|co_return|co_yield|compl|concept|const|const_cast|consteval|constexpr|constinit|continue|decltype|default|delete|do|double|dynamic_cast|else|enum|explicit|export|extern|final|float|for|friend|goto|if|import|inline|int|int16_t|int32_t|int64_t|int8_t|long|module|mutable|namespace|new|noexcept|nullptr|operator|override|private|protected|public|register|reinterpret_cast|requires|return|short|signed|sizeof|static|static_assert|static_cast|struct|switch|template|this|thread_local|throw|try|typedef|typeid|typename|uint16_t|uint32_t|uint64_t|uint8_t|union|unsigned|using|virtual|void|volatile|wchar_t|while)\b/;
+	    var modName = /\b(?!<keyword>)\w+(?:\s*\.\s*\w+)*\b/.source.replace(
+	      /<keyword>/g,
+	      function () {
+	        return keyword.source
+	      }
+	    );
+	    Prism.languages.cpp = Prism.languages.extend('c', {
+	      'class-name': [
+	        {
+	          pattern: RegExp(
+	            /(\b(?:class|concept|enum|struct|typename)\s+)(?!<keyword>)\w+/.source.replace(
+	              /<keyword>/g,
+	              function () {
+	                return keyword.source
+	              }
+	            )
+	          ),
+	          lookbehind: true
+	        }, // This is intended to capture the class name of method implementations like:
+	        //   void foo::bar() const {}
+	        // However! The `foo` in the above example could also be a namespace, so we only capture the class name if
+	        // it starts with an uppercase letter. This approximation should give decent results.
+	        /\b[A-Z]\w*(?=\s*::\s*\w+\s*\()/, // This will capture the class name before destructors like:
+	        //   Foo::~Foo() {}
+	        /\b[A-Z_]\w*(?=\s*::\s*~\w+\s*\()/i, // This also intends to capture the class name of method implementations but here the class has template
+	        // parameters, so it can't be a namespace (until C++ adds generic namespaces).
+	        /\b\w+(?=\s*<(?:[^<>]|<(?:[^<>]|<[^<>]*>)*>)*>\s*::\s*\w+\s*\()/
+	      ],
+	      keyword: keyword,
+	      number: {
+	        pattern:
+	          /(?:\b0b[01']+|\b0x(?:[\da-f']+(?:\.[\da-f']*)?|\.[\da-f']+)(?:p[+-]?[\d']+)?|(?:\b[\d']+(?:\.[\d']*)?|\B\.[\d']+)(?:e[+-]?[\d']+)?)[ful]{0,4}/i,
+	        greedy: true
+	      },
+	      operator:
+	        />>=?|<<=?|->|--|\+\+|&&|\|\||[?:~]|<=>|[-+*/%&|^!=<>]=?|\b(?:and|and_eq|bitand|bitor|not|not_eq|or|or_eq|xor|xor_eq)\b/,
+	      boolean: /\b(?:false|true)\b/
+	    });
+	    Prism.languages.insertBefore('cpp', 'string', {
+	      module: {
+	        // https://en.cppreference.com/w/cpp/language/modules
+	        pattern: RegExp(
+	          /(\b(?:import|module)\s+)/.source +
+	            '(?:' + // header-name
+	            /"(?:\\(?:\r\n|[\s\S])|[^"\\\r\n])*"|<[^<>\r\n]*>/.source +
+	            '|' + // module name or partition or both
+	            /<mod-name>(?:\s*:\s*<mod-name>)?|:\s*<mod-name>/.source.replace(
+	              /<mod-name>/g,
+	              function () {
+	                return modName
+	              }
+	            ) +
+	            ')'
+	        ),
+	        lookbehind: true,
+	        greedy: true,
+	        inside: {
+	          string: /^[<"][\s\S]+/,
+	          operator: /:/,
+	          punctuation: /\./
+	        }
+	      },
+	      'raw-string': {
+	        pattern: /R"([^()\\ ]{0,16})\([\s\S]*?\)\1"/,
+	        alias: 'string',
+	        greedy: true
+	      }
+	    });
+	    Prism.languages.insertBefore('cpp', 'keyword', {
+	      'generic-function': {
+	        pattern: /\b(?!operator\b)[a-z_]\w*\s*<(?:[^<>]|<[^<>]*>)*>(?=\s*\()/i,
+	        inside: {
+	          function: /^\w+/,
+	          generic: {
+	            pattern: /<[\s\S]+/,
+	            alias: 'class-name',
+	            inside: Prism.languages.cpp
+	          }
+	        }
+	      }
+	    });
+	    Prism.languages.insertBefore('cpp', 'operator', {
+	      'double-colon': {
+	        pattern: /::/,
+	        alias: 'punctuation'
+	      }
+	    });
+	    Prism.languages.insertBefore('cpp', 'class-name', {
+	      // the base clause is an optional list of parent classes
+	      // https://en.cppreference.com/w/cpp/language/class
+	      'base-clause': {
+	        pattern:
+	          /(\b(?:class|struct)\s+\w+\s*:\s*)[^;{}"'\s]+(?:\s+[^;{}"'\s]+)*(?=\s*[;{])/,
+	        lookbehind: true,
+	        greedy: true,
+	        inside: Prism.languages.extend('cpp', {})
+	      }
+	    });
+	    Prism.languages.insertBefore(
+	      'inside',
+	      'double-colon',
+	      {
+	        // All untokenized words that are not namespaces should be class names
+	        'class-name': /\b[a-z_]\w*\b(?!\s*::)/i
+	      },
+	      Prism.languages.cpp['base-clause']
+	    );
+	  })(Prism);
+	}
+	return cpp_1;
 }
 
-var refractorCpp$1 = cpp_1;
+var refractorCpp$1 = requireCpp();
 var arduino_1 = arduino;
 arduino.displayName = 'arduino';
 arduino.aliases = ['ino'];
@@ -17695,470 +17713,479 @@ function asmatmel(Prism) {
   };
 }
 
-var csharp_1 = csharp;
-csharp.displayName = 'csharp';
-csharp.aliases = ['dotnet', 'cs'];
-function csharp(Prism) {
+var csharp_1;
+var hasRequiredCsharp;
+
+function requireCsharp () {
+	if (hasRequiredCsharp) return csharp_1;
+	hasRequiredCsharp = 1;
+
+	csharp_1 = csharp;
+	csharp.displayName = 'csharp';
+	csharp.aliases = ['dotnet', 'cs'];
+	function csharp(Prism) {
 (function (Prism) {
-    /**
-     * Replaces all placeholders "<<n>>" of given pattern with the n-th replacement (zero based).
-     *
-     * Note: This is a simple text based replacement. Be careful when using backreferences!
-     *
-     * @param {string} pattern the given pattern.
-     * @param {string[]} replacements a list of replacement which can be inserted into the given pattern.
-     * @returns {string} the pattern with all placeholders replaced with their corresponding replacements.
-     * @example replace(/a<<0>>a/.source, [/b+/.source]) === /a(?:b+)a/.source
-     */
-    function replace(pattern, replacements) {
-      return pattern.replace(/<<(\d+)>>/g, function (m, index) {
-        return '(?:' + replacements[+index] + ')'
-      })
-    }
-    /**
-     * @param {string} pattern
-     * @param {string[]} replacements
-     * @param {string} [flags]
-     * @returns {RegExp}
-     */
-    function re(pattern, replacements, flags) {
-      return RegExp(replace(pattern, replacements), flags || '')
-    }
-    /**
-     * Creates a nested pattern where all occurrences of the string `<<self>>` are replaced with the pattern itself.
-     *
-     * @param {string} pattern
-     * @param {number} depthLog2
-     * @returns {string}
-     */
-    function nested(pattern, depthLog2) {
-      for (var i = 0; i < depthLog2; i++) {
-        pattern = pattern.replace(/<<self>>/g, function () {
-          return '(?:' + pattern + ')'
-        });
-      }
-      return pattern.replace(/<<self>>/g, '[^\\s\\S]')
-    } // https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/
-    var keywordKinds = {
-      // keywords which represent a return or variable type
-      type: 'bool byte char decimal double dynamic float int long object sbyte short string uint ulong ushort var void',
-      // keywords which are used to declare a type
-      typeDeclaration: 'class enum interface record struct',
-      // contextual keywords
-      // ("var" and "dynamic" are missing because they are used like types)
-      contextual:
-        'add alias and ascending async await by descending from(?=\\s*(?:\\w|$)) get global group into init(?=\\s*;) join let nameof not notnull on or orderby partial remove select set unmanaged value when where with(?=\\s*{)',
-      // all other keywords
-      other:
-        'abstract as base break case catch checked const continue default delegate do else event explicit extern finally fixed for foreach goto if implicit in internal is lock namespace new null operator out override params private protected public readonly ref return sealed sizeof stackalloc static switch this throw try typeof unchecked unsafe using virtual volatile while yield'
-    }; // keywords
-    function keywordsToPattern(words) {
-      return '\\b(?:' + words.trim().replace(/ /g, '|') + ')\\b'
-    }
-    var typeDeclarationKeywords = keywordsToPattern(
-      keywordKinds.typeDeclaration
-    );
-    var keywords = RegExp(
-      keywordsToPattern(
-        keywordKinds.type +
-          ' ' +
-          keywordKinds.typeDeclaration +
-          ' ' +
-          keywordKinds.contextual +
-          ' ' +
-          keywordKinds.other
-      )
-    );
-    var nonTypeKeywords = keywordsToPattern(
-      keywordKinds.typeDeclaration +
-        ' ' +
-        keywordKinds.contextual +
-        ' ' +
-        keywordKinds.other
-    );
-    var nonContextualKeywords = keywordsToPattern(
-      keywordKinds.type +
-        ' ' +
-        keywordKinds.typeDeclaration +
-        ' ' +
-        keywordKinds.other
-    ); // types
-    var generic = nested(/<(?:[^<>;=+\-*/%&|^]|<<self>>)*>/.source, 2); // the idea behind the other forbidden characters is to prevent false positives. Same for tupleElement.
-    var nestedRound = nested(/\((?:[^()]|<<self>>)*\)/.source, 2);
-    var name = /@?\b[A-Za-z_]\w*\b/.source;
-    var genericName = replace(/<<0>>(?:\s*<<1>>)?/.source, [name, generic]);
-    var identifier = replace(/(?!<<0>>)<<1>>(?:\s*\.\s*<<1>>)*/.source, [
-      nonTypeKeywords,
-      genericName
-    ]);
-    var array = /\[\s*(?:,\s*)*\]/.source;
-    var typeExpressionWithoutTuple = replace(
-      /<<0>>(?:\s*(?:\?\s*)?<<1>>)*(?:\s*\?)?/.source,
-      [identifier, array]
-    );
-    var tupleElement = replace(
-      /[^,()<>[\];=+\-*/%&|^]|<<0>>|<<1>>|<<2>>/.source,
-      [generic, nestedRound, array]
-    );
-    var tuple = replace(/\(<<0>>+(?:,<<0>>+)+\)/.source, [tupleElement]);
-    var typeExpression = replace(
-      /(?:<<0>>|<<1>>)(?:\s*(?:\?\s*)?<<2>>)*(?:\s*\?)?/.source,
-      [tuple, identifier, array]
-    );
-    var typeInside = {
-      keyword: keywords,
-      punctuation: /[<>()?,.:[\]]/
-    }; // strings & characters
-    // https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/lexical-structure#character-literals
-    // https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/lexical-structure#string-literals
-    var character = /'(?:[^\r\n'\\]|\\.|\\[Uux][\da-fA-F]{1,8})'/.source; // simplified pattern
-    var regularString = /"(?:\\.|[^\\"\r\n])*"/.source;
-    var verbatimString = /@"(?:""|\\[\s\S]|[^\\"])*"(?!")/.source;
-    Prism.languages.csharp = Prism.languages.extend('clike', {
-      string: [
-        {
-          pattern: re(/(^|[^$\\])<<0>>/.source, [verbatimString]),
-          lookbehind: true,
-          greedy: true
-        },
-        {
-          pattern: re(/(^|[^@$\\])<<0>>/.source, [regularString]),
-          lookbehind: true,
-          greedy: true
-        }
-      ],
-      'class-name': [
-        {
-          // Using static
-          // using static System.Math;
-          pattern: re(/(\busing\s+static\s+)<<0>>(?=\s*;)/.source, [
-            identifier
-          ]),
-          lookbehind: true,
-          inside: typeInside
-        },
-        {
-          // Using alias (type)
-          // using Project = PC.MyCompany.Project;
-          pattern: re(/(\busing\s+<<0>>\s*=\s*)<<1>>(?=\s*;)/.source, [
-            name,
-            typeExpression
-          ]),
-          lookbehind: true,
-          inside: typeInside
-        },
-        {
-          // Using alias (alias)
-          // using Project = PC.MyCompany.Project;
-          pattern: re(/(\busing\s+)<<0>>(?=\s*=)/.source, [name]),
-          lookbehind: true
-        },
-        {
-          // Type declarations
-          // class Foo<A, B>
-          // interface Foo<out A, B>
-          pattern: re(/(\b<<0>>\s+)<<1>>/.source, [
-            typeDeclarationKeywords,
-            genericName
-          ]),
-          lookbehind: true,
-          inside: typeInside
-        },
-        {
-          // Single catch exception declaration
-          // catch(Foo)
-          // (things like catch(Foo e) is covered by variable declaration)
-          pattern: re(/(\bcatch\s*\(\s*)<<0>>/.source, [identifier]),
-          lookbehind: true,
-          inside: typeInside
-        },
-        {
-          // Name of the type parameter of generic constraints
-          // where Foo : class
-          pattern: re(/(\bwhere\s+)<<0>>/.source, [name]),
-          lookbehind: true
-        },
-        {
-          // Casts and checks via as and is.
-          // as Foo<A>, is Bar<B>
-          // (things like if(a is Foo b) is covered by variable declaration)
-          pattern: re(/(\b(?:is(?:\s+not)?|as)\s+)<<0>>/.source, [
-            typeExpressionWithoutTuple
-          ]),
-          lookbehind: true,
-          inside: typeInside
-        },
-        {
-          // Variable, field and parameter declaration
-          // (Foo bar, Bar baz, Foo[,,] bay, Foo<Bar, FooBar<Bar>> bax)
-          pattern: re(
-            /\b<<0>>(?=\s+(?!<<1>>|with\s*\{)<<2>>(?:\s*[=,;:{)\]]|\s+(?:in|when)\b))/
-              .source,
-            [typeExpression, nonContextualKeywords, name]
-          ),
-          inside: typeInside
-        }
-      ],
-      keyword: keywords,
-      // https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/lexical-structure#literals
-      number:
-        /(?:\b0(?:x[\da-f_]*[\da-f]|b[01_]*[01])|(?:\B\.\d+(?:_+\d+)*|\b\d+(?:_+\d+)*(?:\.\d+(?:_+\d+)*)?)(?:e[-+]?\d+(?:_+\d+)*)?)(?:[dflmu]|lu|ul)?\b/i,
-      operator: />>=?|<<=?|[-=]>|([-+&|])\1|~|\?\?=?|[-+*/%&|^!=<>]=?/,
-      punctuation: /\?\.?|::|[{}[\];(),.:]/
-    });
-    Prism.languages.insertBefore('csharp', 'number', {
-      range: {
-        pattern: /\.\./,
-        alias: 'operator'
-      }
-    });
-    Prism.languages.insertBefore('csharp', 'punctuation', {
-      'named-parameter': {
-        pattern: re(/([(,]\s*)<<0>>(?=\s*:)/.source, [name]),
-        lookbehind: true,
-        alias: 'punctuation'
-      }
-    });
-    Prism.languages.insertBefore('csharp', 'class-name', {
-      namespace: {
-        // namespace Foo.Bar {}
-        // using Foo.Bar;
-        pattern: re(
-          /(\b(?:namespace|using)\s+)<<0>>(?:\s*\.\s*<<0>>)*(?=\s*[;{])/.source,
-          [name]
-        ),
-        lookbehind: true,
-        inside: {
-          punctuation: /\./
-        }
-      },
-      'type-expression': {
-        // default(Foo), typeof(Foo<Bar>), sizeof(int)
-        pattern: re(
-          /(\b(?:default|sizeof|typeof)\s*\(\s*(?!\s))(?:[^()\s]|\s(?!\s)|<<0>>)*(?=\s*\))/
-            .source,
-          [nestedRound]
-        ),
-        lookbehind: true,
-        alias: 'class-name',
-        inside: typeInside
-      },
-      'return-type': {
-        // Foo<Bar> ForBar(); Foo IFoo.Bar() => 0
-        // int this[int index] => 0; T IReadOnlyList<T>.this[int index] => this[index];
-        // int Foo => 0; int Foo { get; set } = 0;
-        pattern: re(
-          /<<0>>(?=\s+(?:<<1>>\s*(?:=>|[({]|\.\s*this\s*\[)|this\s*\[))/.source,
-          [typeExpression, identifier]
-        ),
-        inside: typeInside,
-        alias: 'class-name'
-      },
-      'constructor-invocation': {
-        // new List<Foo<Bar[]>> { }
-        pattern: re(/(\bnew\s+)<<0>>(?=\s*[[({])/.source, [typeExpression]),
-        lookbehind: true,
-        inside: typeInside,
-        alias: 'class-name'
-      },
-      /*'explicit-implementation': {
-// int IFoo<Foo>.Bar => 0; void IFoo<Foo<Foo>>.Foo<T>();
-pattern: replace(/\b<<0>>(?=\.<<1>>)/, className, methodOrPropertyDeclaration),
-inside: classNameInside,
-alias: 'class-name'
-},*/
-      'generic-method': {
-        // foo<Bar>()
-        pattern: re(/<<0>>\s*<<1>>(?=\s*\()/.source, [name, generic]),
-        inside: {
-          function: re(/^<<0>>/.source, [name]),
-          generic: {
-            pattern: RegExp(generic),
-            alias: 'class-name',
-            inside: typeInside
-          }
-        }
-      },
-      'type-list': {
-        // The list of types inherited or of generic constraints
-        // class Foo<F> : Bar, IList<FooBar>
-        // where F : Bar, IList<int>
-        pattern: re(
-          /\b((?:<<0>>\s+<<1>>|record\s+<<1>>\s*<<5>>|where\s+<<2>>)\s*:\s*)(?:<<3>>|<<4>>|<<1>>\s*<<5>>|<<6>>)(?:\s*,\s*(?:<<3>>|<<4>>|<<6>>))*(?=\s*(?:where|[{;]|=>|$))/
-            .source,
-          [
-            typeDeclarationKeywords,
-            genericName,
-            name,
-            typeExpression,
-            keywords.source,
-            nestedRound,
-            /\bnew\s*\(\s*\)/.source
-          ]
-        ),
-        lookbehind: true,
-        inside: {
-          'record-arguments': {
-            pattern: re(/(^(?!new\s*\()<<0>>\s*)<<1>>/.source, [
-              genericName,
-              nestedRound
-            ]),
-            lookbehind: true,
-            greedy: true,
-            inside: Prism.languages.csharp
-          },
-          keyword: keywords,
-          'class-name': {
-            pattern: RegExp(typeExpression),
-            greedy: true,
-            inside: typeInside
-          },
-          punctuation: /[,()]/
-        }
-      },
-      preprocessor: {
-        pattern: /(^[\t ]*)#.*/m,
-        lookbehind: true,
-        alias: 'property',
-        inside: {
-          // highlight preprocessor directives as keywords
-          directive: {
-            pattern:
-              /(#)\b(?:define|elif|else|endif|endregion|error|if|line|nullable|pragma|region|undef|warning)\b/,
-            lookbehind: true,
-            alias: 'keyword'
-          }
-        }
-      }
-    }); // attributes
-    var regularStringOrCharacter = regularString + '|' + character;
-    var regularStringCharacterOrComment = replace(
-      /\/(?![*/])|\/\/[^\r\n]*[\r\n]|\/\*(?:[^*]|\*(?!\/))*\*\/|<<0>>/.source,
-      [regularStringOrCharacter]
-    );
-    var roundExpression = nested(
-      replace(/[^"'/()]|<<0>>|\(<<self>>*\)/.source, [
-        regularStringCharacterOrComment
-      ]),
-      2
-    ); // https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/attributes/#attribute-targets
-    var attrTarget =
-      /\b(?:assembly|event|field|method|module|param|property|return|type)\b/
-        .source;
-    var attr = replace(/<<0>>(?:\s*\(<<1>>*\))?/.source, [
-      identifier,
-      roundExpression
-    ]);
-    Prism.languages.insertBefore('csharp', 'class-name', {
-      attribute: {
-        // Attributes
-        // [Foo], [Foo(1), Bar(2, Prop = "foo")], [return: Foo(1), Bar(2)], [assembly: Foo(Bar)]
-        pattern: re(
-          /((?:^|[^\s\w>)?])\s*\[\s*)(?:<<0>>\s*:\s*)?<<1>>(?:\s*,\s*<<1>>)*(?=\s*\])/
-            .source,
-          [attrTarget, attr]
-        ),
-        lookbehind: true,
-        greedy: true,
-        inside: {
-          target: {
-            pattern: re(/^<<0>>(?=\s*:)/.source, [attrTarget]),
-            alias: 'keyword'
-          },
-          'attribute-arguments': {
-            pattern: re(/\(<<0>>*\)/.source, [roundExpression]),
-            inside: Prism.languages.csharp
-          },
-          'class-name': {
-            pattern: RegExp(identifier),
-            inside: {
-              punctuation: /\./
-            }
-          },
-          punctuation: /[:,]/
-        }
-      }
-    }); // string interpolation
-    var formatString = /:[^}\r\n]+/.source; // multi line
-    var mInterpolationRound = nested(
-      replace(/[^"'/()]|<<0>>|\(<<self>>*\)/.source, [
-        regularStringCharacterOrComment
-      ]),
-      2
-    );
-    var mInterpolation = replace(/\{(?!\{)(?:(?![}:])<<0>>)*<<1>>?\}/.source, [
-      mInterpolationRound,
-      formatString
-    ]); // single line
-    var sInterpolationRound = nested(
-      replace(
-        /[^"'/()]|\/(?!\*)|\/\*(?:[^*]|\*(?!\/))*\*\/|<<0>>|\(<<self>>*\)/
-          .source,
-        [regularStringOrCharacter]
-      ),
-      2
-    );
-    var sInterpolation = replace(/\{(?!\{)(?:(?![}:])<<0>>)*<<1>>?\}/.source, [
-      sInterpolationRound,
-      formatString
-    ]);
-    function createInterpolationInside(interpolation, interpolationRound) {
-      return {
-        interpolation: {
-          pattern: re(/((?:^|[^{])(?:\{\{)*)<<0>>/.source, [interpolation]),
-          lookbehind: true,
-          inside: {
-            'format-string': {
-              pattern: re(/(^\{(?:(?![}:])<<0>>)*)<<1>>(?=\}$)/.source, [
-                interpolationRound,
-                formatString
-              ]),
-              lookbehind: true,
-              inside: {
-                punctuation: /^:/
-              }
-            },
-            punctuation: /^\{|\}$/,
-            expression: {
-              pattern: /[\s\S]+/,
-              alias: 'language-csharp',
-              inside: Prism.languages.csharp
-            }
-          }
-        },
-        string: /[\s\S]+/
-      }
-    }
-    Prism.languages.insertBefore('csharp', 'string', {
-      'interpolation-string': [
-        {
-          pattern: re(
-            /(^|[^\\])(?:\$@|@\$)"(?:""|\\[\s\S]|\{\{|<<0>>|[^\\{"])*"/.source,
-            [mInterpolation]
-          ),
-          lookbehind: true,
-          greedy: true,
-          inside: createInterpolationInside(mInterpolation, mInterpolationRound)
-        },
-        {
-          pattern: re(/(^|[^@\\])\$"(?:\\.|\{\{|<<0>>|[^\\"{])*"/.source, [
-            sInterpolation
-          ]),
-          lookbehind: true,
-          greedy: true,
-          inside: createInterpolationInside(sInterpolation, sInterpolationRound)
-        }
-      ],
-      char: {
-        pattern: RegExp(character),
-        greedy: true
-      }
-    });
-    Prism.languages.dotnet = Prism.languages.cs = Prism.languages.csharp;
-  })(Prism);
+	    /**
+	     * Replaces all placeholders "<<n>>" of given pattern with the n-th replacement (zero based).
+	     *
+	     * Note: This is a simple text based replacement. Be careful when using backreferences!
+	     *
+	     * @param {string} pattern the given pattern.
+	     * @param {string[]} replacements a list of replacement which can be inserted into the given pattern.
+	     * @returns {string} the pattern with all placeholders replaced with their corresponding replacements.
+	     * @example replace(/a<<0>>a/.source, [/b+/.source]) === /a(?:b+)a/.source
+	     */
+	    function replace(pattern, replacements) {
+	      return pattern.replace(/<<(\d+)>>/g, function (m, index) {
+	        return '(?:' + replacements[+index] + ')'
+	      })
+	    }
+	    /**
+	     * @param {string} pattern
+	     * @param {string[]} replacements
+	     * @param {string} [flags]
+	     * @returns {RegExp}
+	     */
+	    function re(pattern, replacements, flags) {
+	      return RegExp(replace(pattern, replacements), flags || '')
+	    }
+	    /**
+	     * Creates a nested pattern where all occurrences of the string `<<self>>` are replaced with the pattern itself.
+	     *
+	     * @param {string} pattern
+	     * @param {number} depthLog2
+	     * @returns {string}
+	     */
+	    function nested(pattern, depthLog2) {
+	      for (var i = 0; i < depthLog2; i++) {
+	        pattern = pattern.replace(/<<self>>/g, function () {
+	          return '(?:' + pattern + ')'
+	        });
+	      }
+	      return pattern.replace(/<<self>>/g, '[^\\s\\S]')
+	    } // https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/
+	    var keywordKinds = {
+	      // keywords which represent a return or variable type
+	      type: 'bool byte char decimal double dynamic float int long object sbyte short string uint ulong ushort var void',
+	      // keywords which are used to declare a type
+	      typeDeclaration: 'class enum interface record struct',
+	      // contextual keywords
+	      // ("var" and "dynamic" are missing because they are used like types)
+	      contextual:
+	        'add alias and ascending async await by descending from(?=\\s*(?:\\w|$)) get global group into init(?=\\s*;) join let nameof not notnull on or orderby partial remove select set unmanaged value when where with(?=\\s*{)',
+	      // all other keywords
+	      other:
+	        'abstract as base break case catch checked const continue default delegate do else event explicit extern finally fixed for foreach goto if implicit in internal is lock namespace new null operator out override params private protected public readonly ref return sealed sizeof stackalloc static switch this throw try typeof unchecked unsafe using virtual volatile while yield'
+	    }; // keywords
+	    function keywordsToPattern(words) {
+	      return '\\b(?:' + words.trim().replace(/ /g, '|') + ')\\b'
+	    }
+	    var typeDeclarationKeywords = keywordsToPattern(
+	      keywordKinds.typeDeclaration
+	    );
+	    var keywords = RegExp(
+	      keywordsToPattern(
+	        keywordKinds.type +
+	          ' ' +
+	          keywordKinds.typeDeclaration +
+	          ' ' +
+	          keywordKinds.contextual +
+	          ' ' +
+	          keywordKinds.other
+	      )
+	    );
+	    var nonTypeKeywords = keywordsToPattern(
+	      keywordKinds.typeDeclaration +
+	        ' ' +
+	        keywordKinds.contextual +
+	        ' ' +
+	        keywordKinds.other
+	    );
+	    var nonContextualKeywords = keywordsToPattern(
+	      keywordKinds.type +
+	        ' ' +
+	        keywordKinds.typeDeclaration +
+	        ' ' +
+	        keywordKinds.other
+	    ); // types
+	    var generic = nested(/<(?:[^<>;=+\-*/%&|^]|<<self>>)*>/.source, 2); // the idea behind the other forbidden characters is to prevent false positives. Same for tupleElement.
+	    var nestedRound = nested(/\((?:[^()]|<<self>>)*\)/.source, 2);
+	    var name = /@?\b[A-Za-z_]\w*\b/.source;
+	    var genericName = replace(/<<0>>(?:\s*<<1>>)?/.source, [name, generic]);
+	    var identifier = replace(/(?!<<0>>)<<1>>(?:\s*\.\s*<<1>>)*/.source, [
+	      nonTypeKeywords,
+	      genericName
+	    ]);
+	    var array = /\[\s*(?:,\s*)*\]/.source;
+	    var typeExpressionWithoutTuple = replace(
+	      /<<0>>(?:\s*(?:\?\s*)?<<1>>)*(?:\s*\?)?/.source,
+	      [identifier, array]
+	    );
+	    var tupleElement = replace(
+	      /[^,()<>[\];=+\-*/%&|^]|<<0>>|<<1>>|<<2>>/.source,
+	      [generic, nestedRound, array]
+	    );
+	    var tuple = replace(/\(<<0>>+(?:,<<0>>+)+\)/.source, [tupleElement]);
+	    var typeExpression = replace(
+	      /(?:<<0>>|<<1>>)(?:\s*(?:\?\s*)?<<2>>)*(?:\s*\?)?/.source,
+	      [tuple, identifier, array]
+	    );
+	    var typeInside = {
+	      keyword: keywords,
+	      punctuation: /[<>()?,.:[\]]/
+	    }; // strings & characters
+	    // https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/lexical-structure#character-literals
+	    // https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/lexical-structure#string-literals
+	    var character = /'(?:[^\r\n'\\]|\\.|\\[Uux][\da-fA-F]{1,8})'/.source; // simplified pattern
+	    var regularString = /"(?:\\.|[^\\"\r\n])*"/.source;
+	    var verbatimString = /@"(?:""|\\[\s\S]|[^\\"])*"(?!")/.source;
+	    Prism.languages.csharp = Prism.languages.extend('clike', {
+	      string: [
+	        {
+	          pattern: re(/(^|[^$\\])<<0>>/.source, [verbatimString]),
+	          lookbehind: true,
+	          greedy: true
+	        },
+	        {
+	          pattern: re(/(^|[^@$\\])<<0>>/.source, [regularString]),
+	          lookbehind: true,
+	          greedy: true
+	        }
+	      ],
+	      'class-name': [
+	        {
+	          // Using static
+	          // using static System.Math;
+	          pattern: re(/(\busing\s+static\s+)<<0>>(?=\s*;)/.source, [
+	            identifier
+	          ]),
+	          lookbehind: true,
+	          inside: typeInside
+	        },
+	        {
+	          // Using alias (type)
+	          // using Project = PC.MyCompany.Project;
+	          pattern: re(/(\busing\s+<<0>>\s*=\s*)<<1>>(?=\s*;)/.source, [
+	            name,
+	            typeExpression
+	          ]),
+	          lookbehind: true,
+	          inside: typeInside
+	        },
+	        {
+	          // Using alias (alias)
+	          // using Project = PC.MyCompany.Project;
+	          pattern: re(/(\busing\s+)<<0>>(?=\s*=)/.source, [name]),
+	          lookbehind: true
+	        },
+	        {
+	          // Type declarations
+	          // class Foo<A, B>
+	          // interface Foo<out A, B>
+	          pattern: re(/(\b<<0>>\s+)<<1>>/.source, [
+	            typeDeclarationKeywords,
+	            genericName
+	          ]),
+	          lookbehind: true,
+	          inside: typeInside
+	        },
+	        {
+	          // Single catch exception declaration
+	          // catch(Foo)
+	          // (things like catch(Foo e) is covered by variable declaration)
+	          pattern: re(/(\bcatch\s*\(\s*)<<0>>/.source, [identifier]),
+	          lookbehind: true,
+	          inside: typeInside
+	        },
+	        {
+	          // Name of the type parameter of generic constraints
+	          // where Foo : class
+	          pattern: re(/(\bwhere\s+)<<0>>/.source, [name]),
+	          lookbehind: true
+	        },
+	        {
+	          // Casts and checks via as and is.
+	          // as Foo<A>, is Bar<B>
+	          // (things like if(a is Foo b) is covered by variable declaration)
+	          pattern: re(/(\b(?:is(?:\s+not)?|as)\s+)<<0>>/.source, [
+	            typeExpressionWithoutTuple
+	          ]),
+	          lookbehind: true,
+	          inside: typeInside
+	        },
+	        {
+	          // Variable, field and parameter declaration
+	          // (Foo bar, Bar baz, Foo[,,] bay, Foo<Bar, FooBar<Bar>> bax)
+	          pattern: re(
+	            /\b<<0>>(?=\s+(?!<<1>>|with\s*\{)<<2>>(?:\s*[=,;:{)\]]|\s+(?:in|when)\b))/
+	              .source,
+	            [typeExpression, nonContextualKeywords, name]
+	          ),
+	          inside: typeInside
+	        }
+	      ],
+	      keyword: keywords,
+	      // https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/lexical-structure#literals
+	      number:
+	        /(?:\b0(?:x[\da-f_]*[\da-f]|b[01_]*[01])|(?:\B\.\d+(?:_+\d+)*|\b\d+(?:_+\d+)*(?:\.\d+(?:_+\d+)*)?)(?:e[-+]?\d+(?:_+\d+)*)?)(?:[dflmu]|lu|ul)?\b/i,
+	      operator: />>=?|<<=?|[-=]>|([-+&|])\1|~|\?\?=?|[-+*/%&|^!=<>]=?/,
+	      punctuation: /\?\.?|::|[{}[\];(),.:]/
+	    });
+	    Prism.languages.insertBefore('csharp', 'number', {
+	      range: {
+	        pattern: /\.\./,
+	        alias: 'operator'
+	      }
+	    });
+	    Prism.languages.insertBefore('csharp', 'punctuation', {
+	      'named-parameter': {
+	        pattern: re(/([(,]\s*)<<0>>(?=\s*:)/.source, [name]),
+	        lookbehind: true,
+	        alias: 'punctuation'
+	      }
+	    });
+	    Prism.languages.insertBefore('csharp', 'class-name', {
+	      namespace: {
+	        // namespace Foo.Bar {}
+	        // using Foo.Bar;
+	        pattern: re(
+	          /(\b(?:namespace|using)\s+)<<0>>(?:\s*\.\s*<<0>>)*(?=\s*[;{])/.source,
+	          [name]
+	        ),
+	        lookbehind: true,
+	        inside: {
+	          punctuation: /\./
+	        }
+	      },
+	      'type-expression': {
+	        // default(Foo), typeof(Foo<Bar>), sizeof(int)
+	        pattern: re(
+	          /(\b(?:default|sizeof|typeof)\s*\(\s*(?!\s))(?:[^()\s]|\s(?!\s)|<<0>>)*(?=\s*\))/
+	            .source,
+	          [nestedRound]
+	        ),
+	        lookbehind: true,
+	        alias: 'class-name',
+	        inside: typeInside
+	      },
+	      'return-type': {
+	        // Foo<Bar> ForBar(); Foo IFoo.Bar() => 0
+	        // int this[int index] => 0; T IReadOnlyList<T>.this[int index] => this[index];
+	        // int Foo => 0; int Foo { get; set } = 0;
+	        pattern: re(
+	          /<<0>>(?=\s+(?:<<1>>\s*(?:=>|[({]|\.\s*this\s*\[)|this\s*\[))/.source,
+	          [typeExpression, identifier]
+	        ),
+	        inside: typeInside,
+	        alias: 'class-name'
+	      },
+	      'constructor-invocation': {
+	        // new List<Foo<Bar[]>> { }
+	        pattern: re(/(\bnew\s+)<<0>>(?=\s*[[({])/.source, [typeExpression]),
+	        lookbehind: true,
+	        inside: typeInside,
+	        alias: 'class-name'
+	      },
+	      /*'explicit-implementation': {
+	// int IFoo<Foo>.Bar => 0; void IFoo<Foo<Foo>>.Foo<T>();
+	pattern: replace(/\b<<0>>(?=\.<<1>>)/, className, methodOrPropertyDeclaration),
+	inside: classNameInside,
+	alias: 'class-name'
+	},*/
+	      'generic-method': {
+	        // foo<Bar>()
+	        pattern: re(/<<0>>\s*<<1>>(?=\s*\()/.source, [name, generic]),
+	        inside: {
+	          function: re(/^<<0>>/.source, [name]),
+	          generic: {
+	            pattern: RegExp(generic),
+	            alias: 'class-name',
+	            inside: typeInside
+	          }
+	        }
+	      },
+	      'type-list': {
+	        // The list of types inherited or of generic constraints
+	        // class Foo<F> : Bar, IList<FooBar>
+	        // where F : Bar, IList<int>
+	        pattern: re(
+	          /\b((?:<<0>>\s+<<1>>|record\s+<<1>>\s*<<5>>|where\s+<<2>>)\s*:\s*)(?:<<3>>|<<4>>|<<1>>\s*<<5>>|<<6>>)(?:\s*,\s*(?:<<3>>|<<4>>|<<6>>))*(?=\s*(?:where|[{;]|=>|$))/
+	            .source,
+	          [
+	            typeDeclarationKeywords,
+	            genericName,
+	            name,
+	            typeExpression,
+	            keywords.source,
+	            nestedRound,
+	            /\bnew\s*\(\s*\)/.source
+	          ]
+	        ),
+	        lookbehind: true,
+	        inside: {
+	          'record-arguments': {
+	            pattern: re(/(^(?!new\s*\()<<0>>\s*)<<1>>/.source, [
+	              genericName,
+	              nestedRound
+	            ]),
+	            lookbehind: true,
+	            greedy: true,
+	            inside: Prism.languages.csharp
+	          },
+	          keyword: keywords,
+	          'class-name': {
+	            pattern: RegExp(typeExpression),
+	            greedy: true,
+	            inside: typeInside
+	          },
+	          punctuation: /[,()]/
+	        }
+	      },
+	      preprocessor: {
+	        pattern: /(^[\t ]*)#.*/m,
+	        lookbehind: true,
+	        alias: 'property',
+	        inside: {
+	          // highlight preprocessor directives as keywords
+	          directive: {
+	            pattern:
+	              /(#)\b(?:define|elif|else|endif|endregion|error|if|line|nullable|pragma|region|undef|warning)\b/,
+	            lookbehind: true,
+	            alias: 'keyword'
+	          }
+	        }
+	      }
+	    }); // attributes
+	    var regularStringOrCharacter = regularString + '|' + character;
+	    var regularStringCharacterOrComment = replace(
+	      /\/(?![*/])|\/\/[^\r\n]*[\r\n]|\/\*(?:[^*]|\*(?!\/))*\*\/|<<0>>/.source,
+	      [regularStringOrCharacter]
+	    );
+	    var roundExpression = nested(
+	      replace(/[^"'/()]|<<0>>|\(<<self>>*\)/.source, [
+	        regularStringCharacterOrComment
+	      ]),
+	      2
+	    ); // https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/attributes/#attribute-targets
+	    var attrTarget =
+	      /\b(?:assembly|event|field|method|module|param|property|return|type)\b/
+	        .source;
+	    var attr = replace(/<<0>>(?:\s*\(<<1>>*\))?/.source, [
+	      identifier,
+	      roundExpression
+	    ]);
+	    Prism.languages.insertBefore('csharp', 'class-name', {
+	      attribute: {
+	        // Attributes
+	        // [Foo], [Foo(1), Bar(2, Prop = "foo")], [return: Foo(1), Bar(2)], [assembly: Foo(Bar)]
+	        pattern: re(
+	          /((?:^|[^\s\w>)?])\s*\[\s*)(?:<<0>>\s*:\s*)?<<1>>(?:\s*,\s*<<1>>)*(?=\s*\])/
+	            .source,
+	          [attrTarget, attr]
+	        ),
+	        lookbehind: true,
+	        greedy: true,
+	        inside: {
+	          target: {
+	            pattern: re(/^<<0>>(?=\s*:)/.source, [attrTarget]),
+	            alias: 'keyword'
+	          },
+	          'attribute-arguments': {
+	            pattern: re(/\(<<0>>*\)/.source, [roundExpression]),
+	            inside: Prism.languages.csharp
+	          },
+	          'class-name': {
+	            pattern: RegExp(identifier),
+	            inside: {
+	              punctuation: /\./
+	            }
+	          },
+	          punctuation: /[:,]/
+	        }
+	      }
+	    }); // string interpolation
+	    var formatString = /:[^}\r\n]+/.source; // multi line
+	    var mInterpolationRound = nested(
+	      replace(/[^"'/()]|<<0>>|\(<<self>>*\)/.source, [
+	        regularStringCharacterOrComment
+	      ]),
+	      2
+	    );
+	    var mInterpolation = replace(/\{(?!\{)(?:(?![}:])<<0>>)*<<1>>?\}/.source, [
+	      mInterpolationRound,
+	      formatString
+	    ]); // single line
+	    var sInterpolationRound = nested(
+	      replace(
+	        /[^"'/()]|\/(?!\*)|\/\*(?:[^*]|\*(?!\/))*\*\/|<<0>>|\(<<self>>*\)/
+	          .source,
+	        [regularStringOrCharacter]
+	      ),
+	      2
+	    );
+	    var sInterpolation = replace(/\{(?!\{)(?:(?![}:])<<0>>)*<<1>>?\}/.source, [
+	      sInterpolationRound,
+	      formatString
+	    ]);
+	    function createInterpolationInside(interpolation, interpolationRound) {
+	      return {
+	        interpolation: {
+	          pattern: re(/((?:^|[^{])(?:\{\{)*)<<0>>/.source, [interpolation]),
+	          lookbehind: true,
+	          inside: {
+	            'format-string': {
+	              pattern: re(/(^\{(?:(?![}:])<<0>>)*)<<1>>(?=\}$)/.source, [
+	                interpolationRound,
+	                formatString
+	              ]),
+	              lookbehind: true,
+	              inside: {
+	                punctuation: /^:/
+	              }
+	            },
+	            punctuation: /^\{|\}$/,
+	            expression: {
+	              pattern: /[\s\S]+/,
+	              alias: 'language-csharp',
+	              inside: Prism.languages.csharp
+	            }
+	          }
+	        },
+	        string: /[\s\S]+/
+	      }
+	    }
+	    Prism.languages.insertBefore('csharp', 'string', {
+	      'interpolation-string': [
+	        {
+	          pattern: re(
+	            /(^|[^\\])(?:\$@|@\$)"(?:""|\\[\s\S]|\{\{|<<0>>|[^\\{"])*"/.source,
+	            [mInterpolation]
+	          ),
+	          lookbehind: true,
+	          greedy: true,
+	          inside: createInterpolationInside(mInterpolation, mInterpolationRound)
+	        },
+	        {
+	          pattern: re(/(^|[^@\\])\$"(?:\\.|\{\{|<<0>>|[^\\"{])*"/.source, [
+	            sInterpolation
+	          ]),
+	          lookbehind: true,
+	          greedy: true,
+	          inside: createInterpolationInside(sInterpolation, sInterpolationRound)
+	        }
+	      ],
+	      char: {
+	        pattern: RegExp(character),
+	        greedy: true
+	      }
+	    });
+	    Prism.languages.dotnet = Prism.languages.cs = Prism.languages.csharp;
+	  })(Prism);
+	}
+	return csharp_1;
 }
 
-var refractorCsharp = csharp_1;
+var refractorCsharp = requireCsharp();
 var aspnet_1 = aspnet;
 aspnet.displayName = 'aspnet';
 aspnet.aliases = [];
@@ -19352,7 +19379,7 @@ function cfscript(Prism) {
   Prism.languages.cfc = Prism.languages['cfscript'];
 }
 
-var refractorCpp = cpp_1;
+var refractorCpp = requireCpp();
 var chaiscript_1 = chaiscript;
 chaiscript.displayName = 'chaiscript';
 chaiscript.aliases = [];
@@ -19419,40 +19446,31 @@ function chaiscript(Prism) {
   });
 }
 
-var cil_1;
-var hasRequiredCil;
-
-function requireCil () {
-	if (hasRequiredCil) return cil_1;
-	hasRequiredCil = 1;
-
-	cil_1 = cil;
-	cil.displayName = 'cil';
-	cil.aliases = [];
-	function cil(Prism) {
-	  Prism.languages.cil = {
-	    comment: /\/\/.*/,
-	    string: {
-	      pattern: /(["'])(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/,
-	      greedy: true
-	    },
-	    directive: {
-	      pattern: /(^|\W)\.[a-z]+(?=\s)/,
-	      lookbehind: true,
-	      alias: 'class-name'
-	    },
-	    // Actually an assembly reference
-	    variable: /\[[\w\.]+\]/,
-	    keyword:
-	      /\b(?:abstract|ansi|assembly|auto|autochar|beforefieldinit|bool|bstr|byvalstr|catch|char|cil|class|currency|date|decimal|default|enum|error|explicit|extends|extern|famandassem|family|famorassem|final(?:ly)?|float32|float64|hidebysig|u?int(?:8|16|32|64)?|iant|idispatch|implements|import|initonly|instance|interface|iunknown|literal|lpstr|lpstruct|lptstr|lpwstr|managed|method|native(?:Type)?|nested|newslot|object(?:ref)?|pinvokeimpl|private|privatescope|public|reqsecobj|rtspecialname|runtime|sealed|sequential|serializable|specialname|static|string|struct|syschar|tbstr|unicode|unmanagedexp|unsigned|value(?:type)?|variant|virtual|void)\b/,
-	    function:
-	      /\b(?:(?:constrained|no|readonly|tail|unaligned|volatile)\.)?(?:conv\.(?:[iu][1248]?|ovf\.[iu][1248]?(?:\.un)?|r\.un|r4|r8)|ldc\.(?:i4(?:\.\d+|\.[mM]1|\.s)?|i8|r4|r8)|ldelem(?:\.[iu][1248]?|\.r[48]|\.ref|a)?|ldind\.(?:[iu][1248]?|r[48]|ref)|stelem\.?(?:i[1248]?|r[48]|ref)?|stind\.(?:i[1248]?|r[48]|ref)?|end(?:fault|filter|finally)|ldarg(?:\.[0-3s]|a(?:\.s)?)?|ldloc(?:\.\d+|\.s)?|sub(?:\.ovf(?:\.un)?)?|mul(?:\.ovf(?:\.un)?)?|add(?:\.ovf(?:\.un)?)?|stloc(?:\.[0-3s])?|refany(?:type|val)|blt(?:\.un)?(?:\.s)?|ble(?:\.un)?(?:\.s)?|bgt(?:\.un)?(?:\.s)?|bge(?:\.un)?(?:\.s)?|unbox(?:\.any)?|init(?:blk|obj)|call(?:i|virt)?|brfalse(?:\.s)?|bne\.un(?:\.s)?|ldloca(?:\.s)?|brzero(?:\.s)?|brtrue(?:\.s)?|brnull(?:\.s)?|brinst(?:\.s)?|starg(?:\.s)?|leave(?:\.s)?|shr(?:\.un)?|rem(?:\.un)?|div(?:\.un)?|clt(?:\.un)?|alignment|castclass|ldvirtftn|beq(?:\.s)?|ckfinite|ldsflda|ldtoken|localloc|mkrefany|rethrow|cgt\.un|arglist|switch|stsfld|sizeof|newobj|newarr|ldsfld|ldnull|ldflda|isinst|throw|stobj|stfld|ldstr|ldobj|ldlen|ldftn|ldfld|cpobj|cpblk|break|br\.s|xor|shl|ret|pop|not|nop|neg|jmp|dup|cgt|ceq|box|and|or|br)\b/,
-	    boolean: /\b(?:false|true)\b/,
-	    number: /\b-?(?:0x[0-9a-f]+|\d+)(?:\.[0-9a-f]+)?\b/i,
-	    punctuation: /[{}[\];(),:=]|IL_[0-9A-Za-z]+/
-	  };
-	}
-	return cil_1;
+var cil_1 = cil;
+cil.displayName = 'cil';
+cil.aliases = [];
+function cil(Prism) {
+  Prism.languages.cil = {
+    comment: /\/\/.*/,
+    string: {
+      pattern: /(["'])(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/,
+      greedy: true
+    },
+    directive: {
+      pattern: /(^|\W)\.[a-z]+(?=\s)/,
+      lookbehind: true,
+      alias: 'class-name'
+    },
+    // Actually an assembly reference
+    variable: /\[[\w\.]+\]/,
+    keyword:
+      /\b(?:abstract|ansi|assembly|auto|autochar|beforefieldinit|bool|bstr|byvalstr|catch|char|cil|class|currency|date|decimal|default|enum|error|explicit|extends|extern|famandassem|family|famorassem|final(?:ly)?|float32|float64|hidebysig|u?int(?:8|16|32|64)?|iant|idispatch|implements|import|initonly|instance|interface|iunknown|literal|lpstr|lpstruct|lptstr|lpwstr|managed|method|native(?:Type)?|nested|newslot|object(?:ref)?|pinvokeimpl|private|privatescope|public|reqsecobj|rtspecialname|runtime|sealed|sequential|serializable|specialname|static|string|struct|syschar|tbstr|unicode|unmanagedexp|unsigned|value(?:type)?|variant|virtual|void)\b/,
+    function:
+      /\b(?:(?:constrained|no|readonly|tail|unaligned|volatile)\.)?(?:conv\.(?:[iu][1248]?|ovf\.[iu][1248]?(?:\.un)?|r\.un|r4|r8)|ldc\.(?:i4(?:\.\d+|\.[mM]1|\.s)?|i8|r4|r8)|ldelem(?:\.[iu][1248]?|\.r[48]|\.ref|a)?|ldind\.(?:[iu][1248]?|r[48]|ref)|stelem\.?(?:i[1248]?|r[48]|ref)?|stind\.(?:i[1248]?|r[48]|ref)?|end(?:fault|filter|finally)|ldarg(?:\.[0-3s]|a(?:\.s)?)?|ldloc(?:\.\d+|\.s)?|sub(?:\.ovf(?:\.un)?)?|mul(?:\.ovf(?:\.un)?)?|add(?:\.ovf(?:\.un)?)?|stloc(?:\.[0-3s])?|refany(?:type|val)|blt(?:\.un)?(?:\.s)?|ble(?:\.un)?(?:\.s)?|bgt(?:\.un)?(?:\.s)?|bge(?:\.un)?(?:\.s)?|unbox(?:\.any)?|init(?:blk|obj)|call(?:i|virt)?|brfalse(?:\.s)?|bne\.un(?:\.s)?|ldloca(?:\.s)?|brzero(?:\.s)?|brtrue(?:\.s)?|brnull(?:\.s)?|brinst(?:\.s)?|starg(?:\.s)?|leave(?:\.s)?|shr(?:\.un)?|rem(?:\.un)?|div(?:\.un)?|clt(?:\.un)?|alignment|castclass|ldvirtftn|beq(?:\.s)?|ckfinite|ldsflda|ldtoken|localloc|mkrefany|rethrow|cgt\.un|arglist|switch|stsfld|sizeof|newobj|newarr|ldsfld|ldnull|ldflda|isinst|throw|stobj|stfld|ldstr|ldobj|ldlen|ldftn|ldfld|cpobj|cpblk|break|br\.s|xor|shl|ret|pop|not|nop|neg|jmp|dup|cgt|ceq|box|and|or|br)\b/,
+    boolean: /\b(?:false|true)\b/,
+    number: /\b-?(?:0x[0-9a-f]+|\d+)(?:\.[0-9a-f]+)?\b/i,
+    punctuation: /[{}[\];(),:=]|IL_[0-9A-Za-z]+/
+  };
 }
 
 var clojure_1 = clojure;
@@ -19592,483 +19610,527 @@ function cobol(Prism) {
   };
 }
 
-var coffeescript_1 = coffeescript;
-coffeescript.displayName = 'coffeescript';
-coffeescript.aliases = ['coffee'];
-function coffeescript(Prism) {
+var coffeescript_1;
+var hasRequiredCoffeescript;
+
+function requireCoffeescript () {
+	if (hasRequiredCoffeescript) return coffeescript_1;
+	hasRequiredCoffeescript = 1;
+
+	coffeescript_1 = coffeescript;
+	coffeescript.displayName = 'coffeescript';
+	coffeescript.aliases = ['coffee'];
+	function coffeescript(Prism) {
 (function (Prism) {
-    // Ignore comments starting with { to privilege string interpolation highlighting
-    var comment = /#(?!\{).+/;
-    var interpolation = {
-      pattern: /#\{[^}]+\}/,
-      alias: 'variable'
-    };
-    Prism.languages.coffeescript = Prism.languages.extend('javascript', {
-      comment: comment,
-      string: [
-        // Strings are multiline
-        {
-          pattern: /'(?:\\[\s\S]|[^\\'])*'/,
-          greedy: true
-        },
-        {
-          // Strings are multiline
-          pattern: /"(?:\\[\s\S]|[^\\"])*"/,
-          greedy: true,
-          inside: {
-            interpolation: interpolation
-          }
-        }
-      ],
-      keyword:
-        /\b(?:and|break|by|catch|class|continue|debugger|delete|do|each|else|extend|extends|false|finally|for|if|in|instanceof|is|isnt|let|loop|namespace|new|no|not|null|of|off|on|or|own|return|super|switch|then|this|throw|true|try|typeof|undefined|unless|until|when|while|window|with|yes|yield)\b/,
-      'class-member': {
-        pattern: /@(?!\d)\w+/,
-        alias: 'variable'
-      }
-    });
-    Prism.languages.insertBefore('coffeescript', 'comment', {
-      'multiline-comment': {
-        pattern: /###[\s\S]+?###/,
-        alias: 'comment'
-      },
-      // Block regexp can contain comments and interpolation
-      'block-regex': {
-        pattern: /\/{3}[\s\S]*?\/{3}/,
-        alias: 'regex',
-        inside: {
-          comment: comment,
-          interpolation: interpolation
-        }
-      }
-    });
-    Prism.languages.insertBefore('coffeescript', 'string', {
-      'inline-javascript': {
-        pattern: /`(?:\\[\s\S]|[^\\`])*`/,
-        inside: {
-          delimiter: {
-            pattern: /^`|`$/,
-            alias: 'punctuation'
-          },
-          script: {
-            pattern: /[\s\S]+/,
-            alias: 'language-javascript',
-            inside: Prism.languages.javascript
-          }
-        }
-      },
-      // Block strings
-      'multiline-string': [
-        {
-          pattern: /'''[\s\S]*?'''/,
-          greedy: true,
-          alias: 'string'
-        },
-        {
-          pattern: /"""[\s\S]*?"""/,
-          greedy: true,
-          alias: 'string',
-          inside: {
-            interpolation: interpolation
-          }
-        }
-      ]
-    });
-    Prism.languages.insertBefore('coffeescript', 'keyword', {
-      // Object property
-      property: /(?!\d)\w+(?=\s*:(?!:))/
-    });
-    delete Prism.languages.coffeescript['template-string'];
-    Prism.languages.coffee = Prism.languages.coffeescript;
-  })(Prism);
+	    // Ignore comments starting with { to privilege string interpolation highlighting
+	    var comment = /#(?!\{).+/;
+	    var interpolation = {
+	      pattern: /#\{[^}]+\}/,
+	      alias: 'variable'
+	    };
+	    Prism.languages.coffeescript = Prism.languages.extend('javascript', {
+	      comment: comment,
+	      string: [
+	        // Strings are multiline
+	        {
+	          pattern: /'(?:\\[\s\S]|[^\\'])*'/,
+	          greedy: true
+	        },
+	        {
+	          // Strings are multiline
+	          pattern: /"(?:\\[\s\S]|[^\\"])*"/,
+	          greedy: true,
+	          inside: {
+	            interpolation: interpolation
+	          }
+	        }
+	      ],
+	      keyword:
+	        /\b(?:and|break|by|catch|class|continue|debugger|delete|do|each|else|extend|extends|false|finally|for|if|in|instanceof|is|isnt|let|loop|namespace|new|no|not|null|of|off|on|or|own|return|super|switch|then|this|throw|true|try|typeof|undefined|unless|until|when|while|window|with|yes|yield)\b/,
+	      'class-member': {
+	        pattern: /@(?!\d)\w+/,
+	        alias: 'variable'
+	      }
+	    });
+	    Prism.languages.insertBefore('coffeescript', 'comment', {
+	      'multiline-comment': {
+	        pattern: /###[\s\S]+?###/,
+	        alias: 'comment'
+	      },
+	      // Block regexp can contain comments and interpolation
+	      'block-regex': {
+	        pattern: /\/{3}[\s\S]*?\/{3}/,
+	        alias: 'regex',
+	        inside: {
+	          comment: comment,
+	          interpolation: interpolation
+	        }
+	      }
+	    });
+	    Prism.languages.insertBefore('coffeescript', 'string', {
+	      'inline-javascript': {
+	        pattern: /`(?:\\[\s\S]|[^\\`])*`/,
+	        inside: {
+	          delimiter: {
+	            pattern: /^`|`$/,
+	            alias: 'punctuation'
+	          },
+	          script: {
+	            pattern: /[\s\S]+/,
+	            alias: 'language-javascript',
+	            inside: Prism.languages.javascript
+	          }
+	        }
+	      },
+	      // Block strings
+	      'multiline-string': [
+	        {
+	          pattern: /'''[\s\S]*?'''/,
+	          greedy: true,
+	          alias: 'string'
+	        },
+	        {
+	          pattern: /"""[\s\S]*?"""/,
+	          greedy: true,
+	          alias: 'string',
+	          inside: {
+	            interpolation: interpolation
+	          }
+	        }
+	      ]
+	    });
+	    Prism.languages.insertBefore('coffeescript', 'keyword', {
+	      // Object property
+	      property: /(?!\d)\w+(?=\s*:(?!:))/
+	    });
+	    delete Prism.languages.coffeescript['template-string'];
+	    Prism.languages.coffee = Prism.languages.coffeescript;
+	  })(Prism);
+	}
+	return coffeescript_1;
 }
 
-var concurnas_1 = concurnas;
-concurnas.displayName = 'concurnas';
-concurnas.aliases = ['conc'];
-function concurnas(Prism) {
-  Prism.languages.concurnas = {
-    comment: {
-      pattern: /(^|[^\\])(?:\/\*[\s\S]*?(?:\*\/|$)|\/\/.*)/,
-      lookbehind: true,
-      greedy: true
-    },
-    langext: {
-      pattern: /\b\w+\s*\|\|[\s\S]+?\|\|/,
-      greedy: true,
-      inside: {
-        'class-name': /^\w+/,
-        string: {
-          pattern: /(^\s*\|\|)[\s\S]+(?=\|\|$)/,
-          lookbehind: true
-        },
-        punctuation: /\|\|/
-      }
-    },
-    function: {
-      pattern: /((?:^|\s)def[ \t]+)[a-zA-Z_]\w*(?=\s*\()/,
-      lookbehind: true
-    },
-    keyword:
-      /\b(?:abstract|actor|also|annotation|assert|async|await|bool|boolean|break|byte|case|catch|changed|char|class|closed|constant|continue|def|default|del|double|elif|else|enum|every|extends|false|finally|float|for|from|global|gpudef|gpukernel|if|import|in|init|inject|int|lambda|local|long|loop|match|new|nodefault|null|of|onchange|open|out|override|package|parfor|parforsync|post|pre|private|protected|provide|provider|public|return|shared|short|single|size_t|sizeof|super|sync|this|throw|trait|trans|transient|true|try|typedef|unchecked|using|val|var|void|while|with)\b/,
-    boolean: /\b(?:false|true)\b/,
-    number:
-      /\b0b[01][01_]*L?\b|\b0x(?:[\da-f_]*\.)?[\da-f_p+-]+\b|(?:\b\d[\d_]*(?:\.[\d_]*)?|\B\.\d[\d_]*)(?:e[+-]?\d[\d_]*)?[dfls]?/i,
-    punctuation: /[{}[\];(),.:]/,
-    operator:
-      /<==|>==|=>|->|<-|<>|&==|&<>|\?:?|\.\?|\+\+|--|[-+*/=<>]=?|[!^~]|\b(?:and|as|band|bor|bxor|comp|is|isnot|mod|or)\b=?/,
-    annotation: {
-      pattern: /@(?:\w+:)?(?:\w+|\[[^\]]+\])?/,
-      alias: 'builtin'
-    }
-  };
-  Prism.languages.insertBefore('concurnas', 'langext', {
-    'regex-literal': {
-      pattern: /\br("|')(?:\\.|(?!\1)[^\\\r\n])*\1/,
-      greedy: true,
-      inside: {
-        interpolation: {
-          pattern:
-            /((?:^|[^\\])(?:\\{2})*)\{(?:[^{}]|\{(?:[^{}]|\{[^}]*\})*\})+\}/,
-          lookbehind: true,
-          inside: Prism.languages.concurnas
-        },
-        regex: /[\s\S]+/
-      }
-    },
-    'string-literal': {
-      pattern: /(?:\B|\bs)("|')(?:\\.|(?!\1)[^\\\r\n])*\1/,
-      greedy: true,
-      inside: {
-        interpolation: {
-          pattern:
-            /((?:^|[^\\])(?:\\{2})*)\{(?:[^{}]|\{(?:[^{}]|\{[^}]*\})*\})+\}/,
-          lookbehind: true,
-          inside: Prism.languages.concurnas
-        },
-        string: /[\s\S]+/
-      }
-    }
-  });
-  Prism.languages.conc = Prism.languages.concurnas;
+var concurnas_1;
+var hasRequiredConcurnas;
+
+function requireConcurnas () {
+	if (hasRequiredConcurnas) return concurnas_1;
+	hasRequiredConcurnas = 1;
+
+	concurnas_1 = concurnas;
+	concurnas.displayName = 'concurnas';
+	concurnas.aliases = ['conc'];
+	function concurnas(Prism) {
+	  Prism.languages.concurnas = {
+	    comment: {
+	      pattern: /(^|[^\\])(?:\/\*[\s\S]*?(?:\*\/|$)|\/\/.*)/,
+	      lookbehind: true,
+	      greedy: true
+	    },
+	    langext: {
+	      pattern: /\b\w+\s*\|\|[\s\S]+?\|\|/,
+	      greedy: true,
+	      inside: {
+	        'class-name': /^\w+/,
+	        string: {
+	          pattern: /(^\s*\|\|)[\s\S]+(?=\|\|$)/,
+	          lookbehind: true
+	        },
+	        punctuation: /\|\|/
+	      }
+	    },
+	    function: {
+	      pattern: /((?:^|\s)def[ \t]+)[a-zA-Z_]\w*(?=\s*\()/,
+	      lookbehind: true
+	    },
+	    keyword:
+	      /\b(?:abstract|actor|also|annotation|assert|async|await|bool|boolean|break|byte|case|catch|changed|char|class|closed|constant|continue|def|default|del|double|elif|else|enum|every|extends|false|finally|float|for|from|global|gpudef|gpukernel|if|import|in|init|inject|int|lambda|local|long|loop|match|new|nodefault|null|of|onchange|open|out|override|package|parfor|parforsync|post|pre|private|protected|provide|provider|public|return|shared|short|single|size_t|sizeof|super|sync|this|throw|trait|trans|transient|true|try|typedef|unchecked|using|val|var|void|while|with)\b/,
+	    boolean: /\b(?:false|true)\b/,
+	    number:
+	      /\b0b[01][01_]*L?\b|\b0x(?:[\da-f_]*\.)?[\da-f_p+-]+\b|(?:\b\d[\d_]*(?:\.[\d_]*)?|\B\.\d[\d_]*)(?:e[+-]?\d[\d_]*)?[dfls]?/i,
+	    punctuation: /[{}[\];(),.:]/,
+	    operator:
+	      /<==|>==|=>|->|<-|<>|&==|&<>|\?:?|\.\?|\+\+|--|[-+*/=<>]=?|[!^~]|\b(?:and|as|band|bor|bxor|comp|is|isnot|mod|or)\b=?/,
+	    annotation: {
+	      pattern: /@(?:\w+:)?(?:\w+|\[[^\]]+\])?/,
+	      alias: 'builtin'
+	    }
+	  };
+	  Prism.languages.insertBefore('concurnas', 'langext', {
+	    'regex-literal': {
+	      pattern: /\br("|')(?:\\.|(?!\1)[^\\\r\n])*\1/,
+	      greedy: true,
+	      inside: {
+	        interpolation: {
+	          pattern:
+	            /((?:^|[^\\])(?:\\{2})*)\{(?:[^{}]|\{(?:[^{}]|\{[^}]*\})*\})+\}/,
+	          lookbehind: true,
+	          inside: Prism.languages.concurnas
+	        },
+	        regex: /[\s\S]+/
+	      }
+	    },
+	    'string-literal': {
+	      pattern: /(?:\B|\bs)("|')(?:\\.|(?!\1)[^\\\r\n])*\1/,
+	      greedy: true,
+	      inside: {
+	        interpolation: {
+	          pattern:
+	            /((?:^|[^\\])(?:\\{2})*)\{(?:[^{}]|\{(?:[^{}]|\{[^}]*\})*\})+\}/,
+	          lookbehind: true,
+	          inside: Prism.languages.concurnas
+	        },
+	        string: /[\s\S]+/
+	      }
+	    }
+	  });
+	  Prism.languages.conc = Prism.languages.concurnas;
+	}
+	return concurnas_1;
 }
 
-var coq_1 = coq;
-coq.displayName = 'coq';
-coq.aliases = [];
-function coq(Prism) {
+var coq_1;
+var hasRequiredCoq;
+
+function requireCoq () {
+	if (hasRequiredCoq) return coq_1;
+	hasRequiredCoq = 1;
+
+	coq_1 = coq;
+	coq.displayName = 'coq';
+	coq.aliases = [];
+	function coq(Prism) {
 (function (Prism) {
-    // https://github.com/coq/coq
-    var commentSource = /\(\*(?:[^(*]|\((?!\*)|\*(?!\))|<self>)*\*\)/.source;
-    for (var i = 0; i < 2; i++) {
-      commentSource = commentSource.replace(/<self>/g, function () {
-        return commentSource
-      });
-    }
-    commentSource = commentSource.replace(/<self>/g, '[]');
-    Prism.languages.coq = {
-      comment: RegExp(commentSource),
-      string: {
-        pattern: /"(?:[^"]|"")*"(?!")/,
-        greedy: true
-      },
-      attribute: [
-        {
-          pattern: RegExp(
-            /#\[(?:[^\[\]("]|"(?:[^"]|"")*"(?!")|\((?!\*)|<comment>)*\]/.source.replace(
-              /<comment>/g,
-              function () {
-                return commentSource
-              }
-            )
-          ),
-          greedy: true,
-          alias: 'attr-name',
-          inside: {
-            comment: RegExp(commentSource),
-            string: {
-              pattern: /"(?:[^"]|"")*"(?!")/,
-              greedy: true
-            },
-            operator: /=/,
-            punctuation: /^#\[|\]$|[,()]/
-          }
-        },
-        {
-          pattern:
-            /\b(?:Cumulative|Global|Local|Monomorphic|NonCumulative|Polymorphic|Private|Program)\b/,
-          alias: 'attr-name'
-        }
-      ],
-      keyword:
-        /\b(?:Abort|About|Add|Admit|Admitted|All|Arguments|As|Assumptions|Axiom|Axioms|Back|BackTo|Backtrace|BinOp|BinOpSpec|BinRel|Bind|Blacklist|Canonical|Case|Cd|Check|Class|Classes|Close|CoFixpoint|CoInductive|Coercion|Coercions|Collection|Combined|Compute|Conjecture|Conjectures|Constant|Constants|Constraint|Constructors|Context|Corollary|Create|CstOp|Custom|Cut|Debug|Declare|Defined|Definition|Delimit|Dependencies|Dependent|Derive|Diffs|Drop|Elimination|End|Entry|Equality|Eval|Example|Existential|Existentials|Existing|Export|Extern|Extraction|Fact|Fail|Field|File|Firstorder|Fixpoint|Flags|Focus|From|Funclass|Function|Functional|GC|Generalizable|Goal|Grab|Grammar|Graph|Guarded|Haskell|Heap|Hide|Hint|HintDb|Hints|Hypotheses|Hypothesis|IF|Identity|Immediate|Implicit|Implicits|Import|Include|Induction|Inductive|Infix|Info|Initial|InjTyp|Inline|Inspect|Instance|Instances|Intro|Intros|Inversion|Inversion_clear|JSON|Language|Left|Lemma|Let|Lia|Libraries|Library|Load|LoadPath|Locate|Ltac|Ltac2|ML|Match|Method|Minimality|Module|Modules|Morphism|Next|NoInline|Notation|Number|OCaml|Obligation|Obligations|Opaque|Open|Optimize|Parameter|Parameters|Parametric|Path|Paths|Prenex|Preterm|Primitive|Print|Profile|Projections|Proof|Prop|PropBinOp|PropOp|PropUOp|Property|Proposition|Pwd|Qed|Quit|Rec|Record|Recursive|Redirect|Reduction|Register|Relation|Remark|Remove|Require|Reserved|Reset|Resolve|Restart|Rewrite|Right|Ring|Rings|SProp|Saturate|Save|Scheme|Scope|Scopes|Search|SearchHead|SearchPattern|SearchRewrite|Section|Separate|Set|Setoid|Show|Signatures|Solve|Solver|Sort|Sortclass|Sorted|Spec|Step|Strategies|Strategy|String|Structure|SubClass|Subgraph|SuchThat|Tactic|Term|TestCompile|Theorem|Time|Timeout|To|Transparent|Type|Typeclasses|Types|Typing|UnOp|UnOpSpec|Undelimit|Undo|Unfocus|Unfocused|Unfold|Universe|Universes|Unshelve|Variable|Variables|Variant|Verbose|View|Visibility|Zify|_|apply|as|at|by|cofix|else|end|exists|exists2|fix|for|forall|fun|if|in|let|match|measure|move|removed|return|struct|then|using|wf|where|with)\b/,
-      number:
-        /\b(?:0x[a-f0-9][a-f0-9_]*(?:\.[a-f0-9_]+)?(?:p[+-]?\d[\d_]*)?|\d[\d_]*(?:\.[\d_]+)?(?:e[+-]?\d[\d_]*)?)\b/i,
-      punct: {
-        pattern: /@\{|\{\||\[=|:>/,
-        alias: 'punctuation'
-      },
-      operator:
-        /\/\\|\\\/|\.{2,3}|:{1,2}=|\*\*|[-=]>|<(?:->?|[+:=>]|<:)|>(?:=|->)|\|[-|]?|[-!%&*+/<=>?@^~']/,
-      punctuation: /\.\(|`\(|@\{|`\{|\{\||\[=|:>|[:.,;(){}\[\]]/
-    };
-  })(Prism);
+	    // https://github.com/coq/coq
+	    var commentSource = /\(\*(?:[^(*]|\((?!\*)|\*(?!\))|<self>)*\*\)/.source;
+	    for (var i = 0; i < 2; i++) {
+	      commentSource = commentSource.replace(/<self>/g, function () {
+	        return commentSource
+	      });
+	    }
+	    commentSource = commentSource.replace(/<self>/g, '[]');
+	    Prism.languages.coq = {
+	      comment: RegExp(commentSource),
+	      string: {
+	        pattern: /"(?:[^"]|"")*"(?!")/,
+	        greedy: true
+	      },
+	      attribute: [
+	        {
+	          pattern: RegExp(
+	            /#\[(?:[^\[\]("]|"(?:[^"]|"")*"(?!")|\((?!\*)|<comment>)*\]/.source.replace(
+	              /<comment>/g,
+	              function () {
+	                return commentSource
+	              }
+	            )
+	          ),
+	          greedy: true,
+	          alias: 'attr-name',
+	          inside: {
+	            comment: RegExp(commentSource),
+	            string: {
+	              pattern: /"(?:[^"]|"")*"(?!")/,
+	              greedy: true
+	            },
+	            operator: /=/,
+	            punctuation: /^#\[|\]$|[,()]/
+	          }
+	        },
+	        {
+	          pattern:
+	            /\b(?:Cumulative|Global|Local|Monomorphic|NonCumulative|Polymorphic|Private|Program)\b/,
+	          alias: 'attr-name'
+	        }
+	      ],
+	      keyword:
+	        /\b(?:Abort|About|Add|Admit|Admitted|All|Arguments|As|Assumptions|Axiom|Axioms|Back|BackTo|Backtrace|BinOp|BinOpSpec|BinRel|Bind|Blacklist|Canonical|Case|Cd|Check|Class|Classes|Close|CoFixpoint|CoInductive|Coercion|Coercions|Collection|Combined|Compute|Conjecture|Conjectures|Constant|Constants|Constraint|Constructors|Context|Corollary|Create|CstOp|Custom|Cut|Debug|Declare|Defined|Definition|Delimit|Dependencies|Dependent|Derive|Diffs|Drop|Elimination|End|Entry|Equality|Eval|Example|Existential|Existentials|Existing|Export|Extern|Extraction|Fact|Fail|Field|File|Firstorder|Fixpoint|Flags|Focus|From|Funclass|Function|Functional|GC|Generalizable|Goal|Grab|Grammar|Graph|Guarded|Haskell|Heap|Hide|Hint|HintDb|Hints|Hypotheses|Hypothesis|IF|Identity|Immediate|Implicit|Implicits|Import|Include|Induction|Inductive|Infix|Info|Initial|InjTyp|Inline|Inspect|Instance|Instances|Intro|Intros|Inversion|Inversion_clear|JSON|Language|Left|Lemma|Let|Lia|Libraries|Library|Load|LoadPath|Locate|Ltac|Ltac2|ML|Match|Method|Minimality|Module|Modules|Morphism|Next|NoInline|Notation|Number|OCaml|Obligation|Obligations|Opaque|Open|Optimize|Parameter|Parameters|Parametric|Path|Paths|Prenex|Preterm|Primitive|Print|Profile|Projections|Proof|Prop|PropBinOp|PropOp|PropUOp|Property|Proposition|Pwd|Qed|Quit|Rec|Record|Recursive|Redirect|Reduction|Register|Relation|Remark|Remove|Require|Reserved|Reset|Resolve|Restart|Rewrite|Right|Ring|Rings|SProp|Saturate|Save|Scheme|Scope|Scopes|Search|SearchHead|SearchPattern|SearchRewrite|Section|Separate|Set|Setoid|Show|Signatures|Solve|Solver|Sort|Sortclass|Sorted|Spec|Step|Strategies|Strategy|String|Structure|SubClass|Subgraph|SuchThat|Tactic|Term|TestCompile|Theorem|Time|Timeout|To|Transparent|Type|Typeclasses|Types|Typing|UnOp|UnOpSpec|Undelimit|Undo|Unfocus|Unfocused|Unfold|Universe|Universes|Unshelve|Variable|Variables|Variant|Verbose|View|Visibility|Zify|_|apply|as|at|by|cofix|else|end|exists|exists2|fix|for|forall|fun|if|in|let|match|measure|move|removed|return|struct|then|using|wf|where|with)\b/,
+	      number:
+	        /\b(?:0x[a-f0-9][a-f0-9_]*(?:\.[a-f0-9_]+)?(?:p[+-]?\d[\d_]*)?|\d[\d_]*(?:\.[\d_]+)?(?:e[+-]?\d[\d_]*)?)\b/i,
+	      punct: {
+	        pattern: /@\{|\{\||\[=|:>/,
+	        alias: 'punctuation'
+	      },
+	      operator:
+	        /\/\\|\\\/|\.{2,3}|:{1,2}=|\*\*|[-=]>|<(?:->?|[+:=>]|<:)|>(?:=|->)|\|[-|]?|[-!%&*+/<=>?@^~']/,
+	      punctuation: /\.\(|`\(|@\{|`\{|\{\||\[=|:>|[:.,;(){}\[\]]/
+	    };
+	  })(Prism);
+	}
+	return coq_1;
 }
 
-var ruby_1 = ruby;
-ruby.displayName = 'ruby';
-ruby.aliases = ['rb'];
-function ruby(Prism) {
+var ruby_1;
+var hasRequiredRuby;
+
+function requireRuby () {
+	if (hasRequiredRuby) return ruby_1;
+	hasRequiredRuby = 1;
+
+	ruby_1 = ruby;
+	ruby.displayName = 'ruby';
+	ruby.aliases = ['rb'];
+	function ruby(Prism) {
 (function (Prism) {
-    Prism.languages.ruby = Prism.languages.extend('clike', {
-      comment: {
-        pattern: /#.*|^=begin\s[\s\S]*?^=end/m,
-        greedy: true
-      },
-      'class-name': {
-        pattern:
-          /(\b(?:class|module)\s+|\bcatch\s+\()[\w.\\]+|\b[A-Z_]\w*(?=\s*\.\s*new\b)/,
-        lookbehind: true,
-        inside: {
-          punctuation: /[.\\]/
-        }
-      },
-      keyword:
-        /\b(?:BEGIN|END|alias|and|begin|break|case|class|def|define_method|defined|do|each|else|elsif|end|ensure|extend|for|if|in|include|module|new|next|nil|not|or|prepend|private|protected|public|raise|redo|require|rescue|retry|return|self|super|then|throw|undef|unless|until|when|while|yield)\b/,
-      operator:
-        /\.{2,3}|&\.|===|<?=>|[!=]?~|(?:&&|\|\||<<|>>|\*\*|[+\-*/%<>!^&|=])=?|[?:]/,
-      punctuation: /[(){}[\].,;]/
-    });
-    Prism.languages.insertBefore('ruby', 'operator', {
-      'double-colon': {
-        pattern: /::/,
-        alias: 'punctuation'
-      }
-    });
-    var interpolation = {
-      pattern: /((?:^|[^\\])(?:\\{2})*)#\{(?:[^{}]|\{[^{}]*\})*\}/,
-      lookbehind: true,
-      inside: {
-        content: {
-          pattern: /^(#\{)[\s\S]+(?=\}$)/,
-          lookbehind: true,
-          inside: Prism.languages.ruby
-        },
-        delimiter: {
-          pattern: /^#\{|\}$/,
-          alias: 'punctuation'
-        }
-      }
-    };
-    delete Prism.languages.ruby.function;
-    var percentExpression =
-      '(?:' +
-      [
-        /([^a-zA-Z0-9\s{(\[<=])(?:(?!\1)[^\\]|\\[\s\S])*\1/.source,
-        /\((?:[^()\\]|\\[\s\S]|\((?:[^()\\]|\\[\s\S])*\))*\)/.source,
-        /\{(?:[^{}\\]|\\[\s\S]|\{(?:[^{}\\]|\\[\s\S])*\})*\}/.source,
-        /\[(?:[^\[\]\\]|\\[\s\S]|\[(?:[^\[\]\\]|\\[\s\S])*\])*\]/.source,
-        /<(?:[^<>\\]|\\[\s\S]|<(?:[^<>\\]|\\[\s\S])*>)*>/.source
-      ].join('|') +
-      ')';
-    var symbolName =
-      /(?:"(?:\\.|[^"\\\r\n])*"|(?:\b[a-zA-Z_]\w*|[^\s\0-\x7F]+)[?!]?|\$.)/
-        .source;
-    Prism.languages.insertBefore('ruby', 'keyword', {
-      'regex-literal': [
-        {
-          pattern: RegExp(
-            /%r/.source + percentExpression + /[egimnosux]{0,6}/.source
-          ),
-          greedy: true,
-          inside: {
-            interpolation: interpolation,
-            regex: /[\s\S]+/
-          }
-        },
-        {
-          pattern:
-            /(^|[^/])\/(?!\/)(?:\[[^\r\n\]]+\]|\\.|[^[/\\\r\n])+\/[egimnosux]{0,6}(?=\s*(?:$|[\r\n,.;})#]))/,
-          lookbehind: true,
-          greedy: true,
-          inside: {
-            interpolation: interpolation,
-            regex: /[\s\S]+/
-          }
-        }
-      ],
-      variable: /[@$]+[a-zA-Z_]\w*(?:[?!]|\b)/,
-      symbol: [
-        {
-          pattern: RegExp(/(^|[^:]):/.source + symbolName),
-          lookbehind: true,
-          greedy: true
-        },
-        {
-          pattern: RegExp(
-            /([\r\n{(,][ \t]*)/.source + symbolName + /(?=:(?!:))/.source
-          ),
-          lookbehind: true,
-          greedy: true
-        }
-      ],
-      'method-definition': {
-        pattern: /(\bdef\s+)\w+(?:\s*\.\s*\w+)?/,
-        lookbehind: true,
-        inside: {
-          function: /\b\w+$/,
-          keyword: /^self\b/,
-          'class-name': /^\w+/,
-          punctuation: /\./
-        }
-      }
-    });
-    Prism.languages.insertBefore('ruby', 'string', {
-      'string-literal': [
-        {
-          pattern: RegExp(/%[qQiIwWs]?/.source + percentExpression),
-          greedy: true,
-          inside: {
-            interpolation: interpolation,
-            string: /[\s\S]+/
-          }
-        },
-        {
-          pattern:
-            /("|')(?:#\{[^}]+\}|#(?!\{)|\\(?:\r\n|[\s\S])|(?!\1)[^\\#\r\n])*\1/,
-          greedy: true,
-          inside: {
-            interpolation: interpolation,
-            string: /[\s\S]+/
-          }
-        },
-        {
-          pattern: /<<[-~]?([a-z_]\w*)[\r\n](?:.*[\r\n])*?[\t ]*\1/i,
-          alias: 'heredoc-string',
-          greedy: true,
-          inside: {
-            delimiter: {
-              pattern: /^<<[-~]?[a-z_]\w*|\b[a-z_]\w*$/i,
-              inside: {
-                symbol: /\b\w+/,
-                punctuation: /^<<[-~]?/
-              }
-            },
-            interpolation: interpolation,
-            string: /[\s\S]+/
-          }
-        },
-        {
-          pattern: /<<[-~]?'([a-z_]\w*)'[\r\n](?:.*[\r\n])*?[\t ]*\1/i,
-          alias: 'heredoc-string',
-          greedy: true,
-          inside: {
-            delimiter: {
-              pattern: /^<<[-~]?'[a-z_]\w*'|\b[a-z_]\w*$/i,
-              inside: {
-                symbol: /\b\w+/,
-                punctuation: /^<<[-~]?'|'$/
-              }
-            },
-            string: /[\s\S]+/
-          }
-        }
-      ],
-      'command-literal': [
-        {
-          pattern: RegExp(/%x/.source + percentExpression),
-          greedy: true,
-          inside: {
-            interpolation: interpolation,
-            command: {
-              pattern: /[\s\S]+/,
-              alias: 'string'
-            }
-          }
-        },
-        {
-          pattern: /`(?:#\{[^}]+\}|#(?!\{)|\\(?:\r\n|[\s\S])|[^\\`#\r\n])*`/,
-          greedy: true,
-          inside: {
-            interpolation: interpolation,
-            command: {
-              pattern: /[\s\S]+/,
-              alias: 'string'
-            }
-          }
-        }
-      ]
-    });
-    delete Prism.languages.ruby.string;
-    Prism.languages.insertBefore('ruby', 'number', {
-      builtin:
-        /\b(?:Array|Bignum|Binding|Class|Continuation|Dir|Exception|FalseClass|File|Fixnum|Float|Hash|IO|Integer|MatchData|Method|Module|NilClass|Numeric|Object|Proc|Range|Regexp|Stat|String|Struct|Symbol|TMS|Thread|ThreadGroup|Time|TrueClass)\b/,
-      constant: /\b[A-Z][A-Z0-9_]*(?:[?!]|\b)/
-    });
-    Prism.languages.rb = Prism.languages.ruby;
-  })(Prism);
+	    Prism.languages.ruby = Prism.languages.extend('clike', {
+	      comment: {
+	        pattern: /#.*|^=begin\s[\s\S]*?^=end/m,
+	        greedy: true
+	      },
+	      'class-name': {
+	        pattern:
+	          /(\b(?:class|module)\s+|\bcatch\s+\()[\w.\\]+|\b[A-Z_]\w*(?=\s*\.\s*new\b)/,
+	        lookbehind: true,
+	        inside: {
+	          punctuation: /[.\\]/
+	        }
+	      },
+	      keyword:
+	        /\b(?:BEGIN|END|alias|and|begin|break|case|class|def|define_method|defined|do|each|else|elsif|end|ensure|extend|for|if|in|include|module|new|next|nil|not|or|prepend|private|protected|public|raise|redo|require|rescue|retry|return|self|super|then|throw|undef|unless|until|when|while|yield)\b/,
+	      operator:
+	        /\.{2,3}|&\.|===|<?=>|[!=]?~|(?:&&|\|\||<<|>>|\*\*|[+\-*/%<>!^&|=])=?|[?:]/,
+	      punctuation: /[(){}[\].,;]/
+	    });
+	    Prism.languages.insertBefore('ruby', 'operator', {
+	      'double-colon': {
+	        pattern: /::/,
+	        alias: 'punctuation'
+	      }
+	    });
+	    var interpolation = {
+	      pattern: /((?:^|[^\\])(?:\\{2})*)#\{(?:[^{}]|\{[^{}]*\})*\}/,
+	      lookbehind: true,
+	      inside: {
+	        content: {
+	          pattern: /^(#\{)[\s\S]+(?=\}$)/,
+	          lookbehind: true,
+	          inside: Prism.languages.ruby
+	        },
+	        delimiter: {
+	          pattern: /^#\{|\}$/,
+	          alias: 'punctuation'
+	        }
+	      }
+	    };
+	    delete Prism.languages.ruby.function;
+	    var percentExpression =
+	      '(?:' +
+	      [
+	        /([^a-zA-Z0-9\s{(\[<=])(?:(?!\1)[^\\]|\\[\s\S])*\1/.source,
+	        /\((?:[^()\\]|\\[\s\S]|\((?:[^()\\]|\\[\s\S])*\))*\)/.source,
+	        /\{(?:[^{}\\]|\\[\s\S]|\{(?:[^{}\\]|\\[\s\S])*\})*\}/.source,
+	        /\[(?:[^\[\]\\]|\\[\s\S]|\[(?:[^\[\]\\]|\\[\s\S])*\])*\]/.source,
+	        /<(?:[^<>\\]|\\[\s\S]|<(?:[^<>\\]|\\[\s\S])*>)*>/.source
+	      ].join('|') +
+	      ')';
+	    var symbolName =
+	      /(?:"(?:\\.|[^"\\\r\n])*"|(?:\b[a-zA-Z_]\w*|[^\s\0-\x7F]+)[?!]?|\$.)/
+	        .source;
+	    Prism.languages.insertBefore('ruby', 'keyword', {
+	      'regex-literal': [
+	        {
+	          pattern: RegExp(
+	            /%r/.source + percentExpression + /[egimnosux]{0,6}/.source
+	          ),
+	          greedy: true,
+	          inside: {
+	            interpolation: interpolation,
+	            regex: /[\s\S]+/
+	          }
+	        },
+	        {
+	          pattern:
+	            /(^|[^/])\/(?!\/)(?:\[[^\r\n\]]+\]|\\.|[^[/\\\r\n])+\/[egimnosux]{0,6}(?=\s*(?:$|[\r\n,.;})#]))/,
+	          lookbehind: true,
+	          greedy: true,
+	          inside: {
+	            interpolation: interpolation,
+	            regex: /[\s\S]+/
+	          }
+	        }
+	      ],
+	      variable: /[@$]+[a-zA-Z_]\w*(?:[?!]|\b)/,
+	      symbol: [
+	        {
+	          pattern: RegExp(/(^|[^:]):/.source + symbolName),
+	          lookbehind: true,
+	          greedy: true
+	        },
+	        {
+	          pattern: RegExp(
+	            /([\r\n{(,][ \t]*)/.source + symbolName + /(?=:(?!:))/.source
+	          ),
+	          lookbehind: true,
+	          greedy: true
+	        }
+	      ],
+	      'method-definition': {
+	        pattern: /(\bdef\s+)\w+(?:\s*\.\s*\w+)?/,
+	        lookbehind: true,
+	        inside: {
+	          function: /\b\w+$/,
+	          keyword: /^self\b/,
+	          'class-name': /^\w+/,
+	          punctuation: /\./
+	        }
+	      }
+	    });
+	    Prism.languages.insertBefore('ruby', 'string', {
+	      'string-literal': [
+	        {
+	          pattern: RegExp(/%[qQiIwWs]?/.source + percentExpression),
+	          greedy: true,
+	          inside: {
+	            interpolation: interpolation,
+	            string: /[\s\S]+/
+	          }
+	        },
+	        {
+	          pattern:
+	            /("|')(?:#\{[^}]+\}|#(?!\{)|\\(?:\r\n|[\s\S])|(?!\1)[^\\#\r\n])*\1/,
+	          greedy: true,
+	          inside: {
+	            interpolation: interpolation,
+	            string: /[\s\S]+/
+	          }
+	        },
+	        {
+	          pattern: /<<[-~]?([a-z_]\w*)[\r\n](?:.*[\r\n])*?[\t ]*\1/i,
+	          alias: 'heredoc-string',
+	          greedy: true,
+	          inside: {
+	            delimiter: {
+	              pattern: /^<<[-~]?[a-z_]\w*|\b[a-z_]\w*$/i,
+	              inside: {
+	                symbol: /\b\w+/,
+	                punctuation: /^<<[-~]?/
+	              }
+	            },
+	            interpolation: interpolation,
+	            string: /[\s\S]+/
+	          }
+	        },
+	        {
+	          pattern: /<<[-~]?'([a-z_]\w*)'[\r\n](?:.*[\r\n])*?[\t ]*\1/i,
+	          alias: 'heredoc-string',
+	          greedy: true,
+	          inside: {
+	            delimiter: {
+	              pattern: /^<<[-~]?'[a-z_]\w*'|\b[a-z_]\w*$/i,
+	              inside: {
+	                symbol: /\b\w+/,
+	                punctuation: /^<<[-~]?'|'$/
+	              }
+	            },
+	            string: /[\s\S]+/
+	          }
+	        }
+	      ],
+	      'command-literal': [
+	        {
+	          pattern: RegExp(/%x/.source + percentExpression),
+	          greedy: true,
+	          inside: {
+	            interpolation: interpolation,
+	            command: {
+	              pattern: /[\s\S]+/,
+	              alias: 'string'
+	            }
+	          }
+	        },
+	        {
+	          pattern: /`(?:#\{[^}]+\}|#(?!\{)|\\(?:\r\n|[\s\S])|[^\\`#\r\n])*`/,
+	          greedy: true,
+	          inside: {
+	            interpolation: interpolation,
+	            command: {
+	              pattern: /[\s\S]+/,
+	              alias: 'string'
+	            }
+	          }
+	        }
+	      ]
+	    });
+	    delete Prism.languages.ruby.string;
+	    Prism.languages.insertBefore('ruby', 'number', {
+	      builtin:
+	        /\b(?:Array|Bignum|Binding|Class|Continuation|Dir|Exception|FalseClass|File|Fixnum|Float|Hash|IO|Integer|MatchData|Method|Module|NilClass|Numeric|Object|Proc|Range|Regexp|Stat|String|Struct|Symbol|TMS|Thread|ThreadGroup|Time|TrueClass)\b/,
+	      constant: /\b[A-Z][A-Z0-9_]*(?:[?!]|\b)/
+	    });
+	    Prism.languages.rb = Prism.languages.ruby;
+	  })(Prism);
+	}
+	return ruby_1;
 }
 
-var refractorRuby = ruby_1;
-var crystal_1 = crystal;
-crystal.displayName = 'crystal';
-crystal.aliases = [];
-function crystal(Prism) {
-  Prism.register(refractorRuby)
-  ;(function (Prism) {
-    Prism.languages.crystal = Prism.languages.extend('ruby', {
-      keyword: [
-        /\b(?:__DIR__|__END_LINE__|__FILE__|__LINE__|abstract|alias|annotation|as|asm|begin|break|case|class|def|do|else|elsif|end|ensure|enum|extend|for|fun|if|ifdef|include|instance_sizeof|lib|macro|module|next|of|out|pointerof|private|protected|ptr|require|rescue|return|select|self|sizeof|struct|super|then|type|typeof|undef|uninitialized|union|unless|until|when|while|with|yield)\b/,
-        {
-          pattern: /(\.\s*)(?:is_a|responds_to)\?/,
-          lookbehind: true
-        }
-      ],
-      number:
-        /\b(?:0b[01_]*[01]|0o[0-7_]*[0-7]|0x[\da-fA-F_]*[\da-fA-F]|(?:\d(?:[\d_]*\d)?)(?:\.[\d_]*\d)?(?:[eE][+-]?[\d_]*\d)?)(?:_(?:[uif](?:8|16|32|64))?)?\b/,
-      operator: [/->/, Prism.languages.ruby.operator],
-      punctuation: /[(){}[\].,;\\]/
-    });
-    Prism.languages.insertBefore('crystal', 'string-literal', {
-      attribute: {
-        pattern: /@\[.*?\]/,
-        inside: {
-          delimiter: {
-            pattern: /^@\[|\]$/,
-            alias: 'punctuation'
-          },
-          attribute: {
-            pattern: /^(\s*)\w+/,
-            lookbehind: true,
-            alias: 'class-name'
-          },
-          args: {
-            pattern: /\S(?:[\s\S]*\S)?/,
-            inside: Prism.languages.crystal
-          }
-        }
-      },
-      expansion: {
-        pattern: /\{(?:\{.*?\}|%.*?%)\}/,
-        inside: {
-          content: {
-            pattern: /^(\{.)[\s\S]+(?=.\}$)/,
-            lookbehind: true,
-            inside: Prism.languages.crystal
-          },
-          delimiter: {
-            pattern: /^\{[\{%]|[\}%]\}$/,
-            alias: 'operator'
-          }
-        }
-      },
-      char: {
-        pattern:
-          /'(?:[^\\\r\n]{1,2}|\\(?:.|u(?:[A-Fa-f0-9]{1,4}|\{[A-Fa-f0-9]{1,6}\})))'/,
-        greedy: true
-      }
-    });
-  })(Prism);
+var crystal_1;
+var hasRequiredCrystal;
+
+function requireCrystal () {
+	if (hasRequiredCrystal) return crystal_1;
+	hasRequiredCrystal = 1;
+	var refractorRuby = requireRuby();
+	crystal_1 = crystal;
+	crystal.displayName = 'crystal';
+	crystal.aliases = [];
+	function crystal(Prism) {
+	  Prism.register(refractorRuby)
+	  ;(function (Prism) {
+	    Prism.languages.crystal = Prism.languages.extend('ruby', {
+	      keyword: [
+	        /\b(?:__DIR__|__END_LINE__|__FILE__|__LINE__|abstract|alias|annotation|as|asm|begin|break|case|class|def|do|else|elsif|end|ensure|enum|extend|for|fun|if|ifdef|include|instance_sizeof|lib|macro|module|next|of|out|pointerof|private|protected|ptr|require|rescue|return|select|self|sizeof|struct|super|then|type|typeof|undef|uninitialized|union|unless|until|when|while|with|yield)\b/,
+	        {
+	          pattern: /(\.\s*)(?:is_a|responds_to)\?/,
+	          lookbehind: true
+	        }
+	      ],
+	      number:
+	        /\b(?:0b[01_]*[01]|0o[0-7_]*[0-7]|0x[\da-fA-F_]*[\da-fA-F]|(?:\d(?:[\d_]*\d)?)(?:\.[\d_]*\d)?(?:[eE][+-]?[\d_]*\d)?)(?:_(?:[uif](?:8|16|32|64))?)?\b/,
+	      operator: [/->/, Prism.languages.ruby.operator],
+	      punctuation: /[(){}[\].,;\\]/
+	    });
+	    Prism.languages.insertBefore('crystal', 'string-literal', {
+	      attribute: {
+	        pattern: /@\[.*?\]/,
+	        inside: {
+	          delimiter: {
+	            pattern: /^@\[|\]$/,
+	            alias: 'punctuation'
+	          },
+	          attribute: {
+	            pattern: /^(\s*)\w+/,
+	            lookbehind: true,
+	            alias: 'class-name'
+	          },
+	          args: {
+	            pattern: /\S(?:[\s\S]*\S)?/,
+	            inside: Prism.languages.crystal
+	          }
+	        }
+	      },
+	      expansion: {
+	        pattern: /\{(?:\{.*?\}|%.*?%)\}/,
+	        inside: {
+	          content: {
+	            pattern: /^(\{.)[\s\S]+(?=.\}$)/,
+	            lookbehind: true,
+	            inside: Prism.languages.crystal
+	          },
+	          delimiter: {
+	            pattern: /^\{[\{%]|[\}%]\}$/,
+	            alias: 'operator'
+	          }
+	        }
+	      },
+	      char: {
+	        pattern:
+	          /'(?:[^\\\r\n]{1,2}|\\(?:.|u(?:[A-Fa-f0-9]{1,4}|\{[A-Fa-f0-9]{1,6}\})))'/,
+	        greedy: true
+	      }
+	    });
+	  })(Prism);
+	}
+	return crystal_1;
 }
 
 var cshtml_1;
@@ -20077,7 +20139,7 @@ var hasRequiredCshtml;
 function requireCshtml () {
 	if (hasRequiredCshtml) return cshtml_1;
 	hasRequiredCshtml = 1;
-	var refractorCsharp = csharp_1;
+	var refractorCsharp = requireCsharp();
 	cshtml_1 = cshtml;
 	cshtml.displayName = 'cshtml';
 	cshtml.aliases = ['razor'];
@@ -21841,7 +21903,7 @@ var hasRequiredErb;
 function requireErb () {
 	if (hasRequiredErb) return erb_1;
 	hasRequiredErb = 1;
-	var refractorRuby = ruby_1;
+	var refractorRuby = requireRuby();
 	var refractorMarkupTemplating = requireMarkupTemplating();
 	erb_1 = erb;
 	erb.displayName = 'erb';
@@ -24323,7 +24385,7 @@ var hasRequiredHaml;
 function requireHaml () {
 	if (hasRequiredHaml) return haml_1;
 	hasRequiredHaml = 1;
-	var refractorRuby = ruby_1;
+	var refractorRuby = requireRuby();
 	haml_1 = haml;
 	haml.displayName = 'haml';
 	haml.aliases = [];
@@ -36759,7 +36821,7 @@ function requireT4Cs () {
 	if (hasRequiredT4Cs) return t4Cs_1;
 	hasRequiredT4Cs = 1;
 	var refractorT4Templating = requireT4Templating();
-	var refractorCsharp = csharp_1;
+	var refractorCsharp = requireCsharp();
 	t4Cs_1 = t4Cs;
 	t4Cs.displayName = 't4Cs';
 	t4Cs.aliases = [];
@@ -39500,7 +39562,7 @@ refractor.register(abap_1);
 refractor.register(abnf_1);
 refractor.register(actionscript_1);
 refractor.register(ada_1);
-refractor.register(agda_1);
+refractor.register(requireAgda());
 refractor.register(al_1);
 refractor.register(antlr4_1);
 refractor.register(apacheconf_1);
@@ -39533,16 +39595,16 @@ refractor.register(bsl_1);
 refractor.register(c_1);
 refractor.register(cfscript_1);
 refractor.register(chaiscript_1);
-refractor.register(requireCil());
+refractor.register(cil_1);
 refractor.register(clojure_1);
 refractor.register(cmake_1);
 refractor.register(cobol_1);
-refractor.register(coffeescript_1);
-refractor.register(concurnas_1);
-refractor.register(coq_1);
-refractor.register(cpp_1);
-refractor.register(crystal_1);
-refractor.register(csharp_1);
+refractor.register(requireCoffeescript());
+refractor.register(requireConcurnas());
+refractor.register(requireCoq());
+refractor.register(requireCpp());
+refractor.register(requireCrystal());
+refractor.register(requireCsharp());
 refractor.register(requireCshtml());
 refractor.register(requireCsp());
 refractor.register(requireCssExtras());
@@ -39707,7 +39769,7 @@ refractor.register(requireRest());
 refractor.register(requireRip());
 refractor.register(requireRoboconf());
 refractor.register(requireRobotframework());
-refractor.register(ruby_1);
+refractor.register(requireRuby());
 refractor.register(requireRust());
 refractor.register(requireSas());
 refractor.register(requireSass());
@@ -45758,8 +45820,8 @@ Tabs.defaultProps = {
 
 function o(f){return r=>{f.forEach(n=>{typeof n=="function"?n(r):n!=null&&(n.current=r);});}}
 
-var css$8 = ".Tooltip_module_tooltip__1cb07177 {\n  text-align: center;\n  position: fixed;\n  border-radius: 0.25rem;\n  min-width: auto;\n  max-width: 12rem;\n  padding: 0.375rem;\n  font-size: 0.875rem;\n  font-family: sans-serif;\n  line-height: 1;\n}\n.Tooltip_module_tooltip__1cb07177.Tooltip_module_light__1cb07177 {\n  color: var(--black);\n  background: var(--grey7);\n  border-color: var(--black);\n}\n.Tooltip_module_tooltip__1cb07177.Tooltip_module_light__1cb07177 .Tooltip_module_arrow__1cb07177 {\n  background: var(--grey7);\n}\n.Tooltip_module_tooltip__1cb07177.Tooltip_module_dark__1cb07177 {\n  color: var(--white);\n  background: var(--black);\n  border-color: var(--white);\n}\n.Tooltip_module_tooltip__1cb07177.Tooltip_module_dark__1cb07177 .Tooltip_module_arrow__1cb07177 {\n  background: var(--black);\n}\n.Tooltip_module_tooltip__1cb07177 .Tooltip_module_arrow__1cb07177 {\n  position: absolute;\n  width: 1rem;\n  height: 1rem;\n  z-index: -1;\n  pointer-events: none;\n  transform: rotate(45deg);\n}";
-var modules_e4619b04 = {"tooltip":"Tooltip_module_tooltip__1cb07177","light":"Tooltip_module_light__1cb07177","arrow":"Tooltip_module_arrow__1cb07177","dark":"Tooltip_module_dark__1cb07177"};
+var css$8 = ".Tooltip_module_tooltip__04fbc763 {\n  text-align: center;\n  border-radius: 0.25rem;\n  min-width: auto;\n  max-width: 12rem;\n  padding: 0.375rem;\n  font-size: 0.875rem;\n  font-family: sans-serif;\n  line-height: 1;\n}\n.Tooltip_module_tooltip__04fbc763.Tooltip_module_light__04fbc763 {\n  color: var(--black);\n  background: var(--grey7);\n  border-color: var(--black);\n}\n.Tooltip_module_tooltip__04fbc763.Tooltip_module_light__04fbc763 .Tooltip_module_arrow__04fbc763 {\n  background: var(--grey7);\n}\n.Tooltip_module_tooltip__04fbc763.Tooltip_module_dark__04fbc763 {\n  color: var(--white);\n  background: var(--black);\n  border-color: var(--white);\n}\n.Tooltip_module_tooltip__04fbc763.Tooltip_module_dark__04fbc763 .Tooltip_module_arrow__04fbc763 {\n  background: var(--black);\n}\n.Tooltip_module_tooltip__04fbc763 .Tooltip_module_arrow__04fbc763 {\n  position: absolute;\n  width: 1rem;\n  height: 1rem;\n  z-index: -1;\n  pointer-events: none;\n  transform: rotate(45deg);\n}";
+var modules_e4619b04 = {"tooltip":"Tooltip_module_tooltip__04fbc763","light":"Tooltip_module_light__04fbc763","arrow":"Tooltip_module_arrow__04fbc763","dark":"Tooltip_module_dark__04fbc763"};
 n(css$8,{});
 
 var Tooltip = /*#__PURE__*/forwardRef(function Tooltip(props, propRef) {
@@ -45779,7 +45841,7 @@ var Tooltip = /*#__PURE__*/forwardRef(function Tooltip(props, propRef) {
   var _useFloating = useFloating({
       open: open,
       onOpenChange: setOpen,
-      strategy: 'fixed',
+      // strategy: 'fixed',
       placement: position,
       // Make sure the tooltip stays on the screen
       whileElementsMounted: autoUpdate,
@@ -45827,7 +45889,7 @@ var Tooltip = /*#__PURE__*/forwardRef(function Tooltip(props, propRef) {
   }[side];
   return /*#__PURE__*/jsxs(Fragment, {
     children: [clonedChildren, /*#__PURE__*/jsx(Popper, {
-      open: open,
+      open: open && content != null,
       backdrop: false,
       wrapperId: "tooltip",
       children: /*#__PURE__*/jsxs("div", _objectSpread2(_objectSpread2({}, getFloatingProps({
@@ -45840,7 +45902,7 @@ var Tooltip = /*#__PURE__*/forwardRef(function Tooltip(props, propRef) {
           zIndex: 100
         }
       })), {}, {
-        children: [content, /*#__PURE__*/jsx("div", {
+        children: [/*#__PURE__*/jsx("div", {
           className: modules_e4619b04.arrow,
           ref: arrowEl,
           style: _defineProperty$1({
@@ -45849,7 +45911,7 @@ var Tooltip = /*#__PURE__*/forwardRef(function Tooltip(props, propRef) {
             right: '',
             bottom: ''
           }, staticSide, '-0.5rem')
-        })]
+        }), content]
       }))
     })]
   });
@@ -45862,7 +45924,7 @@ Tooltip.propTypes = {
 };
 Tooltip.defaultProps = {
   variant: 'light',
-  content: 'Tooltip Info',
+  content: null,
   position: 'top',
   className: ''
 };
