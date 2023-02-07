@@ -54,7 +54,7 @@ export const RangeDatePicker = (args) => {
 RangeDatePicker.args = {
 	placeholder: 'Select Date',
 	label: 'Range Date Picker',
-	value: null,
+	value: [1675228424, 1675660447],
 	range: true,
 	theme: 'light',
 };
