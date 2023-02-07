@@ -20,6 +20,7 @@ import { Popper } from '../popper';
 import styles from './DatePicker.module.css';
 import { isMaxRangeExceeded } from './utils';
 import { MONTHS } from '../../constants';
+import { dateRanges } from './calender/footer/utils';
 
 const DatePicker = (props) => {
 	const {
@@ -35,7 +36,6 @@ const DatePicker = (props) => {
 		disableDatesBefore,
 		theme,
 		onClear,
-		displayValue: displayDateSelectionValue,
 		customRanges,
 	} = props;
 
@@ -60,16 +60,25 @@ const DatePicker = (props) => {
 
 	const datePickerRef = useRef();
 
-	let displayValue = displayDateSelectionValue;
+	let displayValue = '';
 
-	if (range && value) {
+	if (range && value?.filter(Boolean)?.length > 0) {
 		const sDate = fromUnixTime(value[0]);
 		const eDate = fromUnixTime(value[1]);
-		displayValue = ` ${sDate.getDate()} ${
-			MONTHS[sDate.getMonth().toString()?.substring(0, 3)]
-		} - ${eDate.getDate()} ${
-			MONTHS[eDate.getMonth().toString()?.substring(0, 3)]
-		} ${eDate.getFullYear()}`;
+
+		const selectedFixedRange = dateRanges().find((rg) => {
+			return rg.dateRange?.unix?.toString() === value.toString();
+		});
+
+		if (selectedFixedRange) {
+			displayValue = selectedFixedRange.title;
+		} else {
+			displayValue = ` ${sDate.getDate()} ${
+				MONTHS[sDate.getMonth().toString()?.substring(0, 3)]
+			} - ${eDate.getDate()} ${
+				MONTHS[eDate.getMonth().toString()?.substring(0, 3)]
+			} ${eDate.getFullYear()}`;
+		}
 	}
 
 	if (!range && value) {
@@ -250,7 +259,7 @@ DatePicker.propTypes = {
 	className: PropTypes.string,
 	disableDatesBefore: PropTypes.arrayOf(PropTypes.string),
 	theme: PropTypes.string,
-	displayValue: PropTypes.string,
+	defaultRangeSelection: PropTypes.arrayOf(PropTypes.number),
 	customRanges: PropTypes.arrayOf(
 		PropTypes.shape({
 			title: PropTypes.string,
@@ -268,12 +277,12 @@ DatePicker.defaultProps = {
 	disabled: false,
 	disabledDates: [],
 	maxRange: null,
-	value: '',
+	value: null,
 	className: '',
 	disableDatesBefore: [],
 	theme: 'dark',
 	customRanges: null,
-	displayValue: '',
+	defaultRangeSelection: null,
 	onClear: () => {},
 };
 

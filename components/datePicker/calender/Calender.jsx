@@ -31,7 +31,7 @@ const Calender = (props) => {
 	});
 
 	useEffect(() => {
-		if (range && value) {
+		if (range && value?.filter(Boolean)?.length > 0) {
 			setSelectedRange({
 				dates: getDatesInStringFormat({
 					startingDate: fromUnixTime(value[0]),
@@ -39,8 +39,9 @@ const Calender = (props) => {
 				}),
 				unix: [value[0], value[1]],
 			});
-			const dateAsNumber = fromUnixTime(value[0]).getDate();
-			const selectedDayInfo = getDayInfo(fromUnixTime(value[0]));
+			const date = new Date();
+			const dateAsNumber = date.getDate();
+			const selectedDayInfo = getDayInfo(date);
 			const selectedDateMonth = {
 				month: selectedDayInfo.month,
 				monthAsNumber: selectedDayInfo.monthAsNumber,
@@ -57,9 +58,9 @@ const Calender = (props) => {
 				month: selectedDateMonth.month,
 				year: selectedDateMonth.year,
 				date: dateAsNumber,
-				unix: getUnixTime(fromUnixTime(value[0])),
+				unix: getUnixTime(date),
 			});
-		} else if (value) {
+		} else if (!range) {
 			const date = fromUnixTime(value);
 			const dateAsNumber = date.getDate();
 			const selectedDayInfo = getDayInfo(date);
