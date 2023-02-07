@@ -96,6 +96,13 @@
 .dates .midInRange .date {
   color: var(--highlight);
 }
+.dates .midInRangeSelected {
+  background: var(--background);
+  border-radius: 0rem;
+}
+.dates .midInRangeSelected .date {
+  color: var(--white);
+}
 .dates .first-hovered {
   background: var(--background);
   border-radius: 0rem 1.5rem 1.5rem 0rem;
