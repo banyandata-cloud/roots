@@ -95,6 +95,13 @@
 			color: $highlight;
 		}
 	}
+	.midInRangeSelected {
+		background: $background;
+		border-radius: 0rem;
+		.date {
+			color: $white;
+		}
+	}
 	.first-hovered {
 		background: $background;
 		border-radius: 0rem 1.5rem 1.5rem 0rem;
