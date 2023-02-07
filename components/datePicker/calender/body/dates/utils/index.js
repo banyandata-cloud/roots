@@ -20,6 +20,7 @@ const getDatesOfLastWeekOfLastMonth = ({ monthAsNumber, year, remainingDaysInFir
 		month,
 		year: fullYear,
 	});
+
 	return dateObj.slice(-remainingDaysInFirstWeek);
 };
 
