@@ -62,7 +62,7 @@ const DatePicker = (props) => {
 
 	let displayValue = displayDateSelectionValue;
 
-	if (range) {
+	if (range && value) {
 		const sDate = fromUnixTime(value[0]);
 		const eDate = fromUnixTime(value[1]);
 		displayValue = ` ${sDate.getDate()} ${
