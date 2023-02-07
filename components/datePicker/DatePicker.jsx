@@ -249,7 +249,7 @@ DatePicker.propTypes = {
 	range: PropTypes.bool,
 	onApply: PropTypes.func,
 	onClear: PropTypes.func,
-	value: PropTypes.string,
+	value: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
 	disabled: PropTypes.bool,
 	disabledDates: PropTypes.arrayOf(PropTypes.string),
 	maxRange: PropTypes.shape({
