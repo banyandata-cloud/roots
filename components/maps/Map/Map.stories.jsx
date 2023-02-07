@@ -1,3 +1,8 @@
+import { useEffect, useState } from 'react';
+import ReactDOMServer from 'react-dom/server';
+import { Button } from '../../buttons';
+import Text from '../../text/Text';
+import { InfoWindow } from '../InfoWindow';
 import { Marker } from '../Marker';
 import Map from './Map';
 
@@ -42,8 +47,22 @@ const coords = [
 const Template = (args) => {
 	return (
 		<Map {...args}>
-			{coords.map((position) => {
-				return <Marker key={`${position.lat}-${position.lng}`} position={position} />;
+			{coords.map((position, index) => {
+				return (
+					<Marker
+						key={`${position.lat}-${position.lng}`}
+						position={position}
+						title={`Location ${index + 1}`}>
+						<InfoWindow
+							content={ReactDOMServer.renderToString(
+								<>
+									<Button title='hey' />
+									<Text component='p'>Location {index + 1}</Text>
+								</>
+							)}
+						/>
+					</Marker>
+				);
 			})}
 		</Map>
 	);
@@ -65,6 +84,48 @@ Default.args = {
 export const Clustered = Template.bind({});
 
 Clustered.args = {
+	...Default.args,
+	options: {
+		...Default.args.options,
+		clustered: true,
+	},
+};
+
+const WithNetworkCallTemplate = (args) => {
+	const [coordinates, setCoordinates] = useState([]);
+
+	useEffect(() => {
+		setTimeout(() => {
+			setCoordinates(coords);
+		}, 1000);
+	}, []);
+
+	return (
+		<Map {...args}>
+			{coordinates.map((position, index) => {
+				return (
+					<Marker
+						key={`${position.lat}-${position.lng}`}
+						position={position}
+						title={`Location ${index + 1}`}>
+						<InfoWindow
+							content={ReactDOMServer.renderToString(
+								<>
+									<Button title='hey' />
+									<Text component='p'>Location {index + 1}</Text>
+								</>
+							)}
+						/>
+					</Marker>
+				);
+			})}
+		</Map>
+	);
+};
+
+export const WithNetworkCall = WithNetworkCallTemplate.bind({});
+
+WithNetworkCall.args = {
 	...Default.args,
 	options: {
 		...Default.args.options,
