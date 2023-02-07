@@ -14,6 +14,9 @@ const Marker = forwardRef(function Marker({ children, ...options }, ref) {
 	const infoWindowRef = useRef(null);
 
 	useEffect(() => {
+		if (marker) {
+			ref.current = marker;
+		}
 		if (!marker) {
 			const newMap = new google.maps.Marker();
 			setMarker(newMap);
@@ -24,6 +27,7 @@ const Marker = forwardRef(function Marker({ children, ...options }, ref) {
 		return () => {
 			if (marker) {
 				marker.setMap(null);
+				ref.current = null;
 			}
 		};
 	}, [marker]);
