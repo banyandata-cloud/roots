@@ -53,16 +53,14 @@ const Template = (args) => {
 						key={`${position.lat}-${position.lng}`}
 						position={position}
 						title={`Location ${index + 1}`}>
-						{index === 2 && (
-							<InfoWindow
-								content={ReactDOMServer.renderToString(
-									<>
-										<Button title='hey' />
-										<Text component='p'>Location {index + 1}</Text>
-									</>
-								)}
-							/>
-						)}
+						<InfoWindow
+							content={ReactDOMServer.renderToString(
+								<>
+									<Button title='hey' />
+									<Text component='p'>Location {index + 1}</Text>
+								</>
+							)}
+						/>
 					</Marker>
 				);
 			})}
