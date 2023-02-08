@@ -86,6 +86,12 @@ export const LineStack = Template.bind({});
 
 Default.args = {
 	title: 'Title',
+	gridOptions: {
+		left: 50,
+		right: 50,
+		bottom: 50,
+		top: 100,
+	},
 	gridContainLabel: true,
 	legendShow: false,
 	xAxisShow: true,
@@ -100,7 +106,7 @@ Default.args = {
 		{
 			stackIndex: 1,
 			color: 'green',
-			symbol: 'circle',
+			symbol: 'none',
 			symbolSize: 10,
 			label: {
 				show: false,

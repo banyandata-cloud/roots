@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 import PropTypes from 'prop-types';
 import EChartsReactCore from 'echarts-for-react/lib/core';
 import * as echarts from 'echarts/core';
@@ -31,6 +32,7 @@ echarts.use([
 const BaseAreaChart = (props) => {
 	const {
 		title,
+		gridOptions,
 		gridContainLabel,
 		seriesData,
 		tooltip,
@@ -134,6 +136,7 @@ const BaseAreaChart = (props) => {
 				},
 				grid: {
 					containLabel: gridContainLabel,
+					...gridOptions,
 				},
 				tooltip: {
 					...tooltip,
@@ -180,8 +183,8 @@ const BaseAreaChart = (props) => {
 
 BaseAreaChart.propTypes = {
 	title: PropTypes.string,
+	gridOptions: PropTypes.object,
 	gridContainLabel: PropTypes.bool,
-	// eslint-disable-next-line react/forbid-prop-types
 	tooltip: PropTypes.object,
 	legendShow: PropTypes.bool,
 	xAxisShow: PropTypes.bool,
@@ -192,7 +195,6 @@ BaseAreaChart.propTypes = {
 	yAxisLineShow: PropTypes.bool,
 	yAxisTickShow: PropTypes.bool,
 	cursor: PropTypes.string,
-	// eslint-disable-next-line react/forbid-prop-types
 	seriesOption: PropTypes.arrayOf(PropTypes.object),
 	lineStyleWidth: PropTypes.number,
 	lineStyleType: PropTypes.oneOf(['dashed', 'solid', 'dotted']),
@@ -205,6 +207,12 @@ BaseAreaChart.propTypes = {
 
 BaseAreaChart.defaultProps = {
 	title: '',
+	gridOptions: {
+		left: 0,
+		right: 0,
+		bottom: 0,
+		top: 0,
+	},
 	gridContainLabel: false,
 	tooltip: {},
 	stacked: false,
