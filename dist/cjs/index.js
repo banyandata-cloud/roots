@@ -43341,7 +43341,7 @@ var Calender = function Calender(props) {
         date: dateAsNumber,
         unix: getUnixTime(date)
       }));
-    } else if (!range) {
+    } else if (!range && value) {
       var _date = fromUnixTime(value);
       var _dateAsNumber = _date.getDate();
       var _selectedDayInfo = getDayInfo(_date);
@@ -44100,6 +44100,7 @@ var PageHeader = function PageHeader(props) {
     children: [/*#__PURE__*/jsxRuntime.jsx("div", {
       className: modules_bdcbeaa5.breadcrumb,
       children: /*#__PURE__*/jsxRuntime.jsx(BreadCrumbs, _objectSpread2({}, _objectSpread2(_objectSpread2({}, crumbsProps), {}, {
+        theme: theme,
         className: modules_bdcbeaa5.breadcrumb
       })))
     }), /*#__PURE__*/jsxRuntime.jsxs("div", {
