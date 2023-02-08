@@ -106878,6 +106878,7 @@ use([install$8, install$5, install$9, install$a, install$1, install$i, install])
 var BaseAreaChart = function BaseAreaChart(props) {
   var _seriesData$chartData, _seriesData$chartData6, _seriesData$metaData$, _seriesData$metaData;
   var title = props.title,
+    gridOptions = props.gridOptions,
     gridContainLabel = props.gridContainLabel,
     seriesData = props.seriesData,
     tooltip = props.tooltip,
@@ -106963,9 +106964,9 @@ var BaseAreaChart = function BaseAreaChart(props) {
       title: {
         text: title
       },
-      grid: {
+      grid: _objectSpread2({
         containLabel: gridContainLabel
-      },
+      }, gridOptions),
       tooltip: _objectSpread2({}, tooltip),
       legend: {
         show: legendShow,
@@ -107003,8 +107004,8 @@ var BaseAreaChart = function BaseAreaChart(props) {
 };
 BaseAreaChart.propTypes = {
   title: propTypes$1.exports.string,
+  gridOptions: propTypes$1.exports.object,
   gridContainLabel: propTypes$1.exports.bool,
-  // eslint-disable-next-line react/forbid-prop-types
   tooltip: propTypes$1.exports.object,
   legendShow: propTypes$1.exports.bool,
   xAxisShow: propTypes$1.exports.bool,
@@ -107015,7 +107016,6 @@ BaseAreaChart.propTypes = {
   yAxisLineShow: propTypes$1.exports.bool,
   yAxisTickShow: propTypes$1.exports.bool,
   cursor: propTypes$1.exports.string,
-  // eslint-disable-next-line react/forbid-prop-types
   seriesOption: propTypes$1.exports.arrayOf(propTypes$1.exports.object),
   lineStyleWidth: propTypes$1.exports.number,
   lineStyleType: propTypes$1.exports.oneOf(['dashed', 'solid', 'dotted']),
@@ -107027,6 +107027,12 @@ BaseAreaChart.propTypes = {
 };
 BaseAreaChart.defaultProps = {
   title: '',
+  gridOptions: {
+    left: 0,
+    right: 0,
+    bottom: 0,
+    top: 0
+  },
   gridContainLabel: false,
   tooltip: {},
   stacked: false,
