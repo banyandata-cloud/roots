@@ -4,6 +4,7 @@ import PageHeader from './PageHeader';
 import { Button } from '../buttons';
 import { DownloadIcon, CalenderIcon } from '../icons';
 import styles from './PageHeader.module.css';
+import ThemedContainer from '../helpers/themedContainer/ThemedContainer';
 
 export default {
 	title: 'Components/PageHeader',
@@ -18,11 +19,11 @@ export default {
 
 const Template = (args) => {
 	return (
-		<div>
+		<ThemedContainer {...args}>
 			<PageHeader {...args}>
 				<Tabs />
 			</PageHeader>
-		</div>
+		</ThemedContainer>
 	);
 };
 
@@ -32,6 +33,25 @@ Light.args = {
 	title: 'Compliance Dashboard',
 	description: 'Resource and Regulation Complaince Details',
 	theme: 'light',
+	crumbsProps: {
+		crumbs: [
+			{
+				title: 'section-1',
+				path: 'section-1',
+				icon: null,
+			},
+			{
+				title: 'section-2',
+				path: 'section-2',
+				icon: null,
+			},
+			{
+				title: 'section-3',
+				path: 'section-3',
+				icon: null,
+			},
+		],
+	},
 	chipTitle: '4 Updates',
 	rightAction: () => {
 		return (
