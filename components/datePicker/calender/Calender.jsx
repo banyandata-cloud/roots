@@ -60,7 +60,7 @@ const Calender = (props) => {
 				date: dateAsNumber,
 				unix: getUnixTime(date),
 			});
-		} else if (!range) {
+		} else if (!range && value) {
 			const date = fromUnixTime(value);
 			const dateAsNumber = date.getDate();
 			const selectedDayInfo = getDayInfo(date);

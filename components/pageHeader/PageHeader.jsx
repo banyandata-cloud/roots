@@ -21,6 +21,7 @@ const PageHeader = (props) => {
 				<BreadCrumbs
 					{...{
 						...crumbsProps,
+						theme,
 						className: styles.breadcrumb,
 					}}
 				/>
