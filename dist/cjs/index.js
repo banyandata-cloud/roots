@@ -43312,7 +43312,8 @@ var Calender = function Calender(props) {
     selectedMonth = _useState2[0],
     setSelectedMonth = _useState2[1];
   React.useEffect(function () {
-    if (range && value) {
+    var _value$filter;
+    if (range && (value === null || value === void 0 ? void 0 : (_value$filter = value.filter(Boolean)) === null || _value$filter === void 0 ? void 0 : _value$filter.length) > 0) {
       setSelectedRange({
         dates: getDatesInStringFormat({
           startingDate: fromUnixTime(value[0]),
@@ -43320,8 +43321,9 @@ var Calender = function Calender(props) {
         }),
         unix: [value[0], value[1]]
       });
-      var dateAsNumber = fromUnixTime(value[0]).getDate();
-      var selectedDayInfo = getDayInfo(fromUnixTime(value[0]));
+      var date = new Date();
+      var dateAsNumber = date.getDate();
+      var selectedDayInfo = getDayInfo(date);
       var selectedDateMonth = {
         month: selectedDayInfo.month,
         monthAsNumber: selectedDayInfo.monthAsNumber,
@@ -43337,12 +43339,12 @@ var Calender = function Calender(props) {
         month: selectedDateMonth.month,
         year: selectedDateMonth.year,
         date: dateAsNumber,
-        unix: getUnixTime(fromUnixTime(value[0]))
+        unix: getUnixTime(date)
       }));
-    } else if (value) {
-      var date = fromUnixTime(value);
-      var _dateAsNumber = date.getDate();
-      var _selectedDayInfo = getDayInfo(date);
+    } else if (!range && value) {
+      var _date = fromUnixTime(value);
+      var _dateAsNumber = _date.getDate();
+      var _selectedDayInfo = getDayInfo(_date);
       var _selectedDateMonth = {
         month: _selectedDayInfo.month,
         monthAsNumber: _selectedDayInfo.monthAsNumber,
@@ -43358,17 +43360,17 @@ var Calender = function Calender(props) {
         month: _selectedDateMonth.month,
         year: _selectedDateMonth.year,
         date: _dateAsNumber,
-        unix: getUnixTime(date)
+        unix: getUnixTime(_date)
       }));
     } else {
-      var _date = new Date();
-      if (!range && !isBefore(_date, disableDatesBefore)) {
-        var _dateAsNumber2 = _date.getDate();
+      var _date2 = new Date();
+      if (!range && !isBefore(_date2, disableDatesBefore)) {
+        var _dateAsNumber2 = _date2.getDate();
         setSelectedDate(_objectSpread2(_objectSpread2({}, selectedDate), {}, {
           month: selectedMonth.month,
           year: selectedMonth.year,
           date: _dateAsNumber2,
-          unix: getUnixTime(_date)
+          unix: getUnixTime(_date2)
         }));
       }
     }
@@ -43482,6 +43484,7 @@ var isMaxRangeExceeded = function isMaxRangeExceeded(_ref) {
 };
 
 var DatePicker = function DatePicker(props) {
+  var _value$filter;
   var placeholder = props.placeholder,
     label = props.label,
     range = props.range,
@@ -43494,7 +43497,6 @@ var DatePicker = function DatePicker(props) {
     disableDatesBefore = props.disableDatesBefore,
     theme = props.theme,
     onClear = props.onClear,
-    displayDateSelectionValue = props.displayValue,
     customRanges = props.customRanges;
   var _useState = React.useState(false),
     _useState2 = _slicedToArray(_useState, 2),
@@ -43526,12 +43528,20 @@ var DatePicker = function DatePicker(props) {
     error = _useState10[0],
     setError = _useState10[1];
   var datePickerRef = React.useRef();
-  var displayValue = displayDateSelectionValue;
-  if (range && value) {
-    var _sDate$getMonth$toStr, _eDate$getMonth$toStr;
+  var displayValue = '';
+  if (range && (value === null || value === void 0 ? void 0 : (_value$filter = value.filter(Boolean)) === null || _value$filter === void 0 ? void 0 : _value$filter.length) > 0) {
     var sDate = fromUnixTime(value[0]);
     var eDate = fromUnixTime(value[1]);
-    displayValue = " ".concat(sDate.getDate(), " ").concat(MONTHS[(_sDate$getMonth$toStr = sDate.getMonth().toString()) === null || _sDate$getMonth$toStr === void 0 ? void 0 : _sDate$getMonth$toStr.substring(0, 3)], " - ").concat(eDate.getDate(), " ").concat(MONTHS[(_eDate$getMonth$toStr = eDate.getMonth().toString()) === null || _eDate$getMonth$toStr === void 0 ? void 0 : _eDate$getMonth$toStr.substring(0, 3)], " ").concat(eDate.getFullYear());
+    var selectedFixedRange = dateRanges().find(function (rg) {
+      var _rg$dateRange, _rg$dateRange$unix;
+      return ((_rg$dateRange = rg.dateRange) === null || _rg$dateRange === void 0 ? void 0 : (_rg$dateRange$unix = _rg$dateRange.unix) === null || _rg$dateRange$unix === void 0 ? void 0 : _rg$dateRange$unix.toString()) === value.toString();
+    });
+    if (selectedFixedRange) {
+      displayValue = selectedFixedRange.title;
+    } else {
+      var _sDate$getMonth$toStr, _eDate$getMonth$toStr;
+      displayValue = " ".concat(sDate.getDate(), " ").concat(MONTHS[(_sDate$getMonth$toStr = sDate.getMonth().toString()) === null || _sDate$getMonth$toStr === void 0 ? void 0 : _sDate$getMonth$toStr.substring(0, 3)], " - ").concat(eDate.getDate(), " ").concat(MONTHS[(_eDate$getMonth$toStr = eDate.getMonth().toString()) === null || _eDate$getMonth$toStr === void 0 ? void 0 : _eDate$getMonth$toStr.substring(0, 3)], " ").concat(eDate.getFullYear());
+    }
   }
   if (!range && value) {
     var _sDate$getMonth$toStr2;
@@ -43681,7 +43691,7 @@ DatePicker.propTypes = {
   range: propTypes$1.exports.bool,
   onApply: propTypes$1.exports.func,
   onClear: propTypes$1.exports.func,
-  value: propTypes$1.exports.string,
+  value: propTypes$1.exports.oneOfType([propTypes$1.exports.array, propTypes$1.exports.string]),
   disabled: propTypes$1.exports.bool,
   disabledDates: propTypes$1.exports.arrayOf(propTypes$1.exports.string),
   maxRange: propTypes$1.exports.shape({
@@ -43691,7 +43701,7 @@ DatePicker.propTypes = {
   className: propTypes$1.exports.string,
   disableDatesBefore: propTypes$1.exports.arrayOf(propTypes$1.exports.string),
   theme: propTypes$1.exports.string,
-  displayValue: propTypes$1.exports.string,
+  defaultRangeSelection: propTypes$1.exports.arrayOf(propTypes$1.exports.number),
   customRanges: propTypes$1.exports.arrayOf(propTypes$1.exports.shape({
     title: propTypes$1.exports.string,
     type: propTypes$1.exports.string,
@@ -43706,12 +43716,12 @@ DatePicker.defaultProps = {
   disabled: false,
   disabledDates: [],
   maxRange: null,
-  value: '',
+  value: null,
   className: '',
   disableDatesBefore: [],
   theme: 'dark',
   customRanges: null,
-  displayValue: '',
+  defaultRangeSelection: null,
   onClear: function onClear() {}
 };
 
@@ -44090,6 +44100,7 @@ var PageHeader = function PageHeader(props) {
     children: [/*#__PURE__*/jsxRuntime.jsx("div", {
       className: modules_bdcbeaa5.breadcrumb,
       children: /*#__PURE__*/jsxRuntime.jsx(BreadCrumbs, _objectSpread2({}, _objectSpread2(_objectSpread2({}, crumbsProps), {}, {
+        theme: theme,
         className: modules_bdcbeaa5.breadcrumb
       })))
     }), /*#__PURE__*/jsxRuntime.jsxs("div", {
@@ -106831,6 +106842,9 @@ HeatMapChart.propTypes = {
   tooltip: propTypes$1.exports.object,
   seriesData: propTypes$1.exports.object,
   onEvents: propTypes$1.exports.func,
+  xSplitLineShow: propTypes$1.exports.bool,
+  xAxisLineShow: propTypes$1.exports.bool,
+  xAxisTickShow: propTypes$1.exports.bool,
   yAxisLabelShow: propTypes$1.exports.bool,
   ySplitLineShow: propTypes$1.exports.bool,
   yAxisLineShow: propTypes$1.exports.bool,
@@ -106858,6 +106872,9 @@ HeatMapChart.defaultProps = {
   seriesData: {},
   onEvents: function onEvents() {},
   yAxisLabelShow: false,
+  xSplitLineShow: false,
+  xAxisLineShow: false,
+  xAxisTickShow: false,
   ySplitLineShow: false,
   yAxisLineShow: false,
   yAxisTickShow: false,
@@ -106884,21 +106901,23 @@ use([install$8, install$5, install$9, install$a, install$1, install$i, install])
 var BaseAreaChart = function BaseAreaChart(props) {
   var _seriesData$chartData, _seriesData$chartData6, _seriesData$metaData$, _seriesData$metaData;
   var title = props.title,
+    gridOptions = props.gridOptions,
     gridContainLabel = props.gridContainLabel,
+    seriesData = props.seriesData,
     tooltip = props.tooltip,
     legendShow = props.legendShow,
     xAxisShow = props.xAxisShow,
-    seriesData = props.seriesData,
     yAxisLabelShow = props.yAxisLabelShow,
     ySplitLineShow = props.ySplitLineShow,
     yAxisLineShow = props.yAxisLineShow,
     yAxisTickShow = props.yAxisTickShow,
-    cursor = props.cursor,
     seriesOption = props.seriesOption,
     lineStyleWidth = props.lineStyleWidth,
     lineStyleType = props.lineStyleType,
     lineStyleCap = props.lineStyleCap,
     lineStyleJoin = props.lineStyleJoin,
+    stacked = props.stacked,
+    cursor = props.cursor,
     smooth = props.smooth,
     style = props.style,
     className = props.className;
@@ -106906,7 +106925,7 @@ var BaseAreaChart = function BaseAreaChart(props) {
     type: 'line',
     color: 'blue',
     symbol: 'emptyCircle',
-    stack: 'Total',
+    stack: stacked,
     symbolSize: 4,
     smooth: smooth,
     name: 'SeriesName',
@@ -106968,9 +106987,9 @@ var BaseAreaChart = function BaseAreaChart(props) {
       title: {
         text: title
       },
-      grid: {
+      grid: _objectSpread2({
         containLabel: gridContainLabel
-      },
+      }, gridOptions),
       tooltip: _objectSpread2({}, tooltip),
       legend: {
         show: legendShow,
@@ -107008,18 +107027,18 @@ var BaseAreaChart = function BaseAreaChart(props) {
 };
 BaseAreaChart.propTypes = {
   title: propTypes$1.exports.string,
+  gridOptions: propTypes$1.exports.object,
   gridContainLabel: propTypes$1.exports.bool,
-  // eslint-disable-next-line react/forbid-prop-types
   tooltip: propTypes$1.exports.object,
   legendShow: propTypes$1.exports.bool,
   xAxisShow: propTypes$1.exports.bool,
   seriesData: propTypes$1.exports.objectOf(propTypes$1.exports.shape),
+  stacked: propTypes$1.exports.bool,
   yAxisLabelShow: propTypes$1.exports.bool,
   ySplitLineShow: propTypes$1.exports.bool,
   yAxisLineShow: propTypes$1.exports.bool,
   yAxisTickShow: propTypes$1.exports.bool,
   cursor: propTypes$1.exports.string,
-  // eslint-disable-next-line react/forbid-prop-types
   seriesOption: propTypes$1.exports.arrayOf(propTypes$1.exports.object),
   lineStyleWidth: propTypes$1.exports.number,
   lineStyleType: propTypes$1.exports.oneOf(['dashed', 'solid', 'dotted']),
@@ -107031,8 +107050,15 @@ BaseAreaChart.propTypes = {
 };
 BaseAreaChart.defaultProps = {
   title: '',
+  gridOptions: {
+    left: 0,
+    right: 0,
+    bottom: 0,
+    top: 0
+  },
   gridContainLabel: false,
   tooltip: {},
+  stacked: false,
   legendShow: false,
   xAxisShow: false,
   seriesData: {},

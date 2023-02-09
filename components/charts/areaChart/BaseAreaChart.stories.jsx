@@ -14,11 +14,11 @@ export default {
 
 const datum1 = {
 	chartData: {
-		IAM: [5, 5, 1, 1, 5, 5],
-		Networking: [4, 4, 1, 1, 4, 4],
-		Compute: [3, 3, 1, 1, 3, 3],
+		IAM: [5, 5, 3, 3, 5, 5],
+		Networking: [4, 4, 5, 3, 4, 4],
+		Compute: [3, 3, 4, 5, 3, 3],
 		RDS: [2, 2, 1, 1, 2, 2],
-		Storage: [1, 1, 1, 1, 1, 1],
+		Storage: [1, 1, 2, 2, 1, 1],
 	},
 	metaData: {
 		seriesData: {
@@ -49,16 +49,6 @@ const datum1 = {
 };
 
 const Template = (args) => {
-	const seriesData = {
-		...datum1,
-		metaData: {
-			...datum1.metaData,
-			xAxisData: datum1.metaData.xAxisData.map((key) => {
-				const d = new Date(key * 1000);
-				return `${d.getHours()}:${d.getMinutes()}`;
-			}),
-		},
-	};
 	return (
 		<div
 			style={{
@@ -66,7 +56,15 @@ const Template = (args) => {
 			}}>
 			<BaseAreaChart
 				{...args}
-				seriesData={seriesData}
+				seriesData={{
+					...datum1,
+					metaData: {
+						xAxisData: datum1.metaData.xAxisData.map((key) => {
+							const d = new Date(key * 1000);
+							return `${d.getHours()}:${d.getMinutes()}`;
+						}),
+					},
+				}}
 				tooltip={{
 					show: true,
 					trigger: 'item',
@@ -84,13 +82,21 @@ const Template = (args) => {
 };
 
 export const Default = Template.bind({});
+export const LineStack = Template.bind({});
 
 Default.args = {
 	title: 'Title',
+	gridOptions: {
+		left: 50,
+		right: 50,
+		bottom: 50,
+		top: 100,
+	},
 	gridContainLabel: true,
 	legendShow: false,
 	xAxisShow: true,
 	smooth: false,
+	stacked: true,
 	yAxisLabelShow: false,
 	ySplitLineShow: false,
 	yAxisLineShow: false,
@@ -100,7 +106,7 @@ Default.args = {
 		{
 			stackIndex: 1,
 			color: 'green',
-			symbol: 'circle',
+			symbol: 'none',
 			symbolSize: 10,
 			label: {
 				show: false,
@@ -228,6 +234,127 @@ Default.args = {
 				shadowOffsetX: 0,
 				shadowOffsetY: 0,
 				opacity: 0.9,
+			},
+			emphasis: {
+				focus: 'series',
+			},
+		},
+	],
+};
+
+LineStack.args = {
+	title: 'Title',
+	gridContainLabel: true,
+	legendShow: false,
+	xAxisShow: true,
+	smooth: false,
+	stacked: false,
+	yAxisLabelShow: false,
+	ySplitLineShow: false,
+	yAxisLineShow: false,
+	yAxisTickShow: false,
+	cursor: 'default',
+	seriesOption: [
+		{
+			stackIndex: 1,
+			color: 'green',
+			symbol: 'circle',
+			symbolSize: 10,
+			label: {
+				show: false,
+			},
+			lineStyle: {
+				width: 4,
+				type: 'solid',
+				cap: 'butt',
+				join: 'round',
+			},
+			areaStyle: {
+				opacity: 0,
+			},
+			emphasis: {
+				focus: 'none',
+			},
+		},
+		{
+			stackIndex: 2,
+			color: 'pink',
+			symbol: 'rect',
+			symbolSize: 10,
+			label: {
+				show: false,
+			},
+			lineStyle: {
+				width: 5,
+				type: 'dashed',
+				cap: 'round',
+				join: 'bevel',
+			},
+			areaStyle: {
+				opacity: 0,
+			},
+			emphasis: {
+				focus: 'self',
+			},
+		},
+		{
+			stackIndex: 3,
+			color: 'orange',
+			symbol: 'roundRect',
+			symbolSize: 10,
+			label: {
+				show: false,
+			},
+			lineStyle: {
+				width: 6,
+				type: 'dotted',
+				cap: 'square',
+				join: 'miter',
+			},
+			areaStyle: {
+				opacity: 0,
+			},
+			emphasis: {
+				focus: 'series',
+			},
+		},
+		{
+			stackIndex: 4,
+			color: 'red',
+			symbol: 'roundRect',
+			symbolSize: 10,
+			label: {
+				show: false,
+			},
+			lineStyle: {
+				width: 6,
+				type: 'dotted',
+				cap: 'square',
+				join: 'miter',
+			},
+			areaStyle: {
+				opacity: 0,
+			},
+			emphasis: {
+				focus: 'series',
+			},
+		},
+		{
+			stackIndex: 5,
+			color: 'blue',
+			symbol: 'roundRect',
+			symbolSize: 10,
+			label: {
+				show: false,
+			},
+			lineStyle: {
+				width: 6,
+				type: 'dotted',
+				cap: 'square',
+				join: 'miter',
+			},
+			areaStyle: {
+				opacity: 0,
 			},
 			emphasis: {
 				focus: 'series',
