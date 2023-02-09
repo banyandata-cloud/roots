@@ -43186,7 +43186,7 @@ var Footer = function Footer(props) {
     if (time.meridian === 'PM') {
       hours = 12 + parseInt(time.hours, 10);
     }
-    var unix = getUnixTime(new Date(selectedDate.year || getDayInfo(new Date()).year, monthNumber || getDayInfo(new Date()).monthAsNumber, selectedDate.date || getDayInfo(new Date()).dateAsNumber, Number(hours), Number(time.minutes), Number(time.seconds)));
+    var unix = getUnixTime(new Date(!Number.isNaN(selectedDate.year) ? selectedDate.year : getDayInfo(new Date()).year, !Number.isNaN(monthNumber) ? monthNumber : getDayInfo(new Date()).monthAsNumber, !Number.isNaN(selectedDate.date) ? selectedDate.date : getDayInfo(new Date()).dateAsNumber, Number(hours), Number(time.minutes), Number(time.seconds)));
     setSelectedDate(_objectSpread2(_objectSpread2({}, selectedDate), {}, {
       unix: unix
     }));
