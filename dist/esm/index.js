@@ -45210,11 +45210,6 @@ var TableChips = function TableChips(props) {
         color: "danger",
         title: "Clear All",
         className: modules_016d9b3e.clear,
-        leftComponent: function leftComponent() {
-          return /*#__PURE__*/jsx(Trash, {
-            className: modules_016d9b3e.icon
-          });
-        },
         onClick: onClear
       }) : ''
     });
