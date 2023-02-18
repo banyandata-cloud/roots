@@ -109232,6 +109232,10 @@ var BaseMap = function BaseMap(props) {
     _useState2 = _slicedToArray(_useState, 2),
     map = _useState2[0],
     setMap = _useState2[1];
+  var _useState3 = useState(null),
+    _useState4 = _slicedToArray(_useState3, 2),
+    activeInfoWindow = _useState4[0],
+    setActiveInfoWindow = _useState4[1];
   useEffect(function () {
     if (ref.current && !map) {
       setMap(new window.google.maps.Map(ref.current, {
@@ -109302,7 +109306,9 @@ var BaseMap = function BaseMap(props) {
     children: [/*#__PURE__*/jsx("div", {
       ref: ref,
       style: style
-    }), Children.map(children, function (child, index) {
+    }), Children.toArray(children).filter(function (child) {
+      return /*#__PURE__*/isValidElement(child);
+    }).map(function (child, index) {
       if (index === 0) {
         markersRef.current = [];
       }
@@ -109313,7 +109319,10 @@ var BaseMap = function BaseMap(props) {
         // set the map prop on the child component
         return /*#__PURE__*/cloneElement(child, {
           map: map,
-          ref: childRef
+          ref: childRef,
+          index: index,
+          activeInfoWindow: activeInfoWindow,
+          setActiveInfoWindow: setActiveInfoWindow
         });
       }
       return null;
@@ -109351,11 +109360,14 @@ Map$1.defaultProps = {
   libraries: undefined
 };
 
-var _excluded = ["children"];
+var _excluded = ["children", "activeInfoWindow", "setActiveInfoWindow", "index"];
 
 // eslint-disable-next-line prefer-arrow-callback
 var Marker = /*#__PURE__*/forwardRef(function Marker(_ref, ref) {
   var children = _ref.children,
+    activeInfoWindow = _ref.activeInfoWindow,
+    setActiveInfoWindow = _ref.setActiveInfoWindow,
+    index = _ref.index,
     options = _objectWithoutProperties$1(_ref, _excluded);
   var _useState = useState(),
     _useState2 = _slicedToArray(_useState, 2),
@@ -109384,6 +109396,7 @@ var Marker = /*#__PURE__*/forwardRef(function Marker(_ref, ref) {
     if (marker && Children.count(children) === 1 && infoWindowRef !== null && infoWindowRef !== void 0 && infoWindowRef.current) {
       var infoWindow = infoWindowRef === null || infoWindowRef === void 0 ? void 0 : infoWindowRef.current;
       marker.addListener('click', function () {
+        setActiveInfoWindow(index);
         infoWindow.open({
           anchor: marker,
           map: options.map
@@ -109396,6 +109409,12 @@ var Marker = /*#__PURE__*/forwardRef(function Marker(_ref, ref) {
       marker.setOptions(options);
     }
   }, [marker, options]);
+  useEffect(function () {
+    if (activeInfoWindow == null || activeInfoWindow !== index) {
+      var infoWindow = infoWindowRef === null || infoWindowRef === void 0 ? void 0 : infoWindowRef.current;
+      infoWindow.close();
+    }
+  }, [activeInfoWindow]);
   if (Children.count(children) === 1) {
     var _Children$toArray;
     var child = (_Children$toArray = Children.toArray(children)) === null || _Children$toArray === void 0 ? void 0 : _Children$toArray[0];
