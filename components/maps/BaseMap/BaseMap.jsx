@@ -17,6 +17,7 @@ const BaseMap = (props) => {
 	const ref = useRef(null);
 	const markersRef = useRef([]);
 	const [map, setMap] = useState();
+	const [activeInfoWindow, setActiveInfoWindow] = useState(null);
 
 	useEffect(() => {
 		if (ref.current && !map) {
@@ -98,21 +99,28 @@ const BaseMap = (props) => {
 	return (
 		<>
 			<div ref={ref} style={style} />
-			{Children.map(children, (child, index) => {
-				if (index === 0) {
-					markersRef.current = [];
-				}
-				if (isValidElement(child)) {
-					const childRef = createRef();
-					markersRef?.current?.push(childRef);
-					// set the map prop on the child component
-					return cloneElement(child, {
-						map,
-						ref: childRef,
-					});
-				}
-				return null;
-			})}
+			{Children.toArray(children)
+				.filter((child) => {
+					return isValidElement(child);
+				})
+				.map((child, index) => {
+					if (index === 0) {
+						markersRef.current = [];
+					}
+					if (isValidElement(child)) {
+						const childRef = createRef();
+						markersRef?.current?.push(childRef);
+						// set the map prop on the child component
+						return cloneElement(child, {
+							map,
+							ref: childRef,
+							index,
+							activeInfoWindow,
+							setActiveInfoWindow,
+						});
+					}
+					return null;
+				})}
 		</>
 	);
 };
