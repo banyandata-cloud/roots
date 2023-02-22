@@ -41227,6 +41227,25 @@ function compareAsc(dirtyDateLeft, dirtyDateRight) {
 }
 
 /**
+ * Days in 1 week.
+ *
+ * @name daysInWeek
+ * @constant
+ * @type {number}
+ * @default
+ */
+/**
+ * Milliseconds in 1 hour
+ *
+ * @name millisecondsInHour
+ * @constant
+ * @type {number}
+ * @default
+ */
+
+var millisecondsInHour = 3600000;
+
+/**
  * @name isSameDay
  * @category Day Helpers
  * @summary Are the given dates in the same day (and year and month)?
@@ -41372,6 +41391,78 @@ function differenceInDays(dirtyDateLeft, dirtyDateRight) {
   var result = sign * (difference - isLastDayNotFull); // Prevent negative zero
 
   return result === 0 ? 0 : result;
+}
+
+/**
+ * @name differenceInMilliseconds
+ * @category Millisecond Helpers
+ * @summary Get the number of milliseconds between the given dates.
+ *
+ * @description
+ * Get the number of milliseconds between the given dates.
+ *
+ * @param {Date|Number} dateLeft - the later date
+ * @param {Date|Number} dateRight - the earlier date
+ * @returns {Number} the number of milliseconds
+ * @throws {TypeError} 2 arguments required
+ *
+ * @example
+ * // How many milliseconds are between
+ * // 2 July 2014 12:30:20.600 and 2 July 2014 12:30:21.700?
+ * const result = differenceInMilliseconds(
+ *   new Date(2014, 6, 2, 12, 30, 21, 700),
+ *   new Date(2014, 6, 2, 12, 30, 20, 600)
+ * )
+ * //=> 1100
+ */
+
+function differenceInMilliseconds(dateLeft, dateRight) {
+  requiredArgs(2, arguments);
+  return toDate(dateLeft).getTime() - toDate(dateRight).getTime();
+}
+
+var roundingMap = {
+  ceil: Math.ceil,
+  round: Math.round,
+  floor: Math.floor,
+  trunc: function trunc(value) {
+    return value < 0 ? Math.ceil(value) : Math.floor(value);
+  } // Math.trunc is not supported by IE
+
+};
+var defaultRoundingMethod = 'trunc';
+function getRoundingMethod(method) {
+  return method ? roundingMap[method] : roundingMap[defaultRoundingMethod];
+}
+
+/**
+ * @name differenceInHours
+ * @category Hour Helpers
+ * @summary Get the number of hours between the given dates.
+ *
+ * @description
+ * Get the number of hours between the given dates.
+ *
+ * @param {Date|Number} dateLeft - the later date
+ * @param {Date|Number} dateRight - the earlier date
+ * @param {Object} [options] - an object with options.
+ * @param {String} [options.roundingMethod='trunc'] - a rounding method (`ceil`, `floor`, `round` or `trunc`)
+ * @returns {Number} the number of hours
+ * @throws {TypeError} 2 arguments required
+ *
+ * @example
+ * // How many hours are between 2 July 2014 06:50:00 and 2 July 2014 19:00:00?
+ * const result = differenceInHours(
+ *   new Date(2014, 6, 2, 19, 0),
+ *   new Date(2014, 6, 2, 6, 50)
+ * )
+ * //=> 12
+ */
+
+function differenceInHours(dateLeft, dateRight, options) {
+  requiredArgs(2, arguments);
+  var diff = differenceInMilliseconds(dateLeft, dateRight) / millisecondsInHour;
+  return getRoundingMethod(options === null || options === void 0 ? void 0 : options.roundingMethod)(diff);
 }
 
 /**
@@ -43428,31 +43519,28 @@ var Calender = function Calender(props) {
       });
     }
   };
+  var commonCalenderProps = {
+    selectedDate: selectedDate,
+    setSelectedDate: setSelectedDate,
+    selectedRange: selectedRange,
+    setSelectedRange: setSelectedRange,
+    range: range
+  };
   return /*#__PURE__*/jsxRuntime.jsxs("div", {
     className: modules_3722b5cd.root,
     children: [/*#__PURE__*/jsxRuntime.jsx(Header, {
       selectedMonth: selectedMonth,
       onMonthChange: onMonthChange
-    }), /*#__PURE__*/jsxRuntime.jsx(Body, {
+    }), /*#__PURE__*/jsxRuntime.jsx(Body, _objectSpread2(_objectSpread2({}, commonCalenderProps), {}, {
       selectedMonth: selectedMonth,
-      range: range,
-      selectedDate: selectedDate,
-      setSelectedDate: setSelectedDate,
-      selectedRange: selectedRange,
-      setSelectedRange: setSelectedRange,
       disabledDates: disabledDates,
       disableDatesBefore: disableDatesBefore
-    }), /*#__PURE__*/jsxRuntime.jsx(Footer, {
-      range: range,
-      selectedDate: selectedDate,
-      setSelectedDate: setSelectedDate,
-      selectedRange: selectedRange,
-      setSelectedRange: setSelectedRange,
+    })), /*#__PURE__*/jsxRuntime.jsx(Footer, _objectSpread2(_objectSpread2({}, commonCalenderProps), {}, {
       onApply: onApply,
       goToDate: goToDate,
       customRanges: customRanges,
       setFixedRange: setFixedRange
-    })]
+    }))]
   });
 };
 
@@ -43481,6 +43569,21 @@ var isMaxRangeExceeded = function isMaxRangeExceeded(_ref) {
     return diffInDays <= value;
   }
   return false;
+};
+var getDateRangeTag = function getDateRangeTag() {
+  var dates = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  var _dates = _slicedToArray(dates, 2),
+    startUnix = _dates[0],
+    endUnix = _dates[1];
+  var dayDifference = differenceInDays(fromUnixTime(endUnix), fromUnixTime(startUnix));
+  var hourDifference = differenceInHours(fromUnixTime(endUnix), fromUnixTime(startUnix));
+  if (hourDifference <= 24) {
+    return 'hours';
+  }
+  if (dayDifference >= 30) {
+    return 'month';
+  }
+  return 'day';
 };
 
 var DatePicker = function DatePicker(props) {
@@ -43589,7 +43692,8 @@ var DatePicker = function DatePicker(props) {
     getReferenceProps = _useInteractions.getReferenceProps,
     getFloatingProps = _useInteractions.getFloatingProps;
   var apply = function apply() {
-    if (selectedRange.dates.length === 2) {
+    var _selectedRange$dates;
+    if (((_selectedRange$dates = selectedRange.dates) === null || _selectedRange$dates === void 0 ? void 0 : _selectedRange$dates.length) === 2) {
       if (maxRange !== null && !isMaxRangeExceeded({
         maxRange: maxRange,
         selectedRange: selectedRange
@@ -43599,7 +43703,7 @@ var DatePicker = function DatePicker(props) {
         return;
       }
       setError('');
-      onApply(selectedRange.unix, fixedRange);
+      onApply(selectedRange.unix, fixedRange, getDateRangeTag(selectedRange.unix));
       setOpen(false);
     } else {
       onApply(selectedDate.unix);
