@@ -153,25 +153,26 @@ const Calender = (props) => {
 			});
 		}
 	};
+
+	const commonCalenderProps = {
+		selectedDate,
+		setSelectedDate,
+		selectedRange,
+		setSelectedRange,
+		range,
+	};
+
 	return (
 		<div className={styles.root}>
 			<CalenderHeader selectedMonth={selectedMonth} onMonthChange={onMonthChange} />
 			<CalenderBody
+				{...commonCalenderProps}
 				selectedMonth={selectedMonth}
-				range={range}
-				selectedDate={selectedDate}
-				setSelectedDate={setSelectedDate}
-				selectedRange={selectedRange}
-				setSelectedRange={setSelectedRange}
 				disabledDates={disabledDates}
 				disableDatesBefore={disableDatesBefore}
 			/>
 			<CalenderFooter
-				range={range}
-				selectedDate={selectedDate}
-				setSelectedDate={setSelectedDate}
-				selectedRange={selectedRange}
-				setSelectedRange={setSelectedRange}
+				{...commonCalenderProps}
 				onApply={onApply}
 				goToDate={goToDate}
 				customRanges={customRanges}
