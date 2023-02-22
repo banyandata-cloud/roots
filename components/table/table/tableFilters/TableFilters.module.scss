@@ -59,6 +59,10 @@
 			width: 100%;
 			[data-elem='base-cell'] {
 				border-color: $grey4;
+				&:focus-within {
+					border-color: $highlight;
+					border-width: 1px;
+				}
 			}
 
 			.icon {
