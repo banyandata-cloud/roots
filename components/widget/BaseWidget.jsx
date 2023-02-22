@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import styles from './BaseWidget.module.css';
-import { ExpandArrowAltIcon } from '../icons';
+import { ArrowIcon, ExpandArrowAltIcon } from '../icons';
 import Button from '../buttons/button/Button';
 import { Dropdown, DropdownItem } from '../input';
 import { Toggle } from '../Toggle';
@@ -52,7 +52,7 @@ const generateOptions = (optionData) => {
 };
 
 const BaseWidget = (props) => {
-	const { title, options, className, children } = props;
+	const { title, showBack, onBack, options, className, children } = props;
 
 	return (
 		<div className={classes(styles.root, className)}>
@@ -63,6 +63,19 @@ const BaseWidget = (props) => {
 						(options?.length ?? 0) === 0 ? styles['no-options'] : ''
 					)}
 					data-elem='header-title'>
+					{showBack && (
+						<div className={styles.button}>
+							<Button
+								size='auto'
+								radius='round'
+								className={styles.back}
+								leftComponent={() => {
+									return <ArrowIcon className={styles.icon} position='left' />;
+								}}
+								onClick={onBack}
+							/>
+						</div>
+					)}
 					<span className={styles.title} data-elem='title'>
 						{title}
 					</span>
@@ -84,12 +97,16 @@ const BaseWidget = (props) => {
 
 BaseWidget.propTypes = {
 	title: PropTypes.string,
+	showBack: PropTypes.bool,
+	onBack: PropTypes.func,
 	options: PropTypes.arrayOf(PropTypes.shape),
 	className: PropTypes.string,
 };
 
 BaseWidget.defaultProps = {
 	title: '',
+	showBack: false,
+	onBack: () => {},
 	options: [],
 	className: '',
 };

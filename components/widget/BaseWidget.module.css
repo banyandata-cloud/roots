@@ -20,6 +20,19 @@
   justify-content: space-between;
   align-items: center;
 }
+.root .header .header-title .button {
+  padding-top: 0.25rem;
+  padding-right: 0.5rem;
+}
+.root .header .header-title .button .back {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+.root .header .header-title .button .back [data-elem=component1] .icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: var(--white);
+}
 .root .header .header-title.no-options {
   flex: 1;
 }
