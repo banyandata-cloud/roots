@@ -70,13 +70,13 @@ export const getInitialsOfName = (name = '') => {
 	return initials;
 };
 
-export default function safeJSONParse(object) {
+export const safeJSONParse = (object) => {
 	try {
 		return JSON.parse(object);
 	} catch (error) {
 		return null;
 	}
-}
+};
 
 export function cloneDeep(object) {
 	return safeJSONParse(JSON.stringify(object));
@@ -185,6 +185,19 @@ export const getDayInfo = (date) => {
 		seconds,
 		meridian,
 	};
+};
+
+export const getDatesInStringFormat = ({ startingDate, endingDate }) => {
+	return [
+		`${startingDate.getDate()} ${MONTHS[startingDate.getMonth()].substring(
+			0,
+			3
+		)} ${startingDate.getFullYear()}`,
+		`${endingDate.getDate()} ${MONTHS[endingDate.getMonth()].substring(
+			0,
+			3
+		)} ${endingDate.getFullYear()}`,
+	];
 };
 
 export const getDatesInAMonth = ({ month, year }) => {

@@ -20,6 +20,7 @@ import { Popper } from '../popper';
 import styles from './DatePicker.module.css';
 import { isMaxRangeExceeded } from './utils';
 import { MONTHS } from '../../constants';
+import { dateRanges } from './calender/footer/utils';
 
 const DatePicker = (props) => {
 	const {
@@ -35,6 +36,7 @@ const DatePicker = (props) => {
 		disableDatesBefore,
 		theme,
 		onClear,
+		customRanges,
 	} = props;
 
 	const [open, setOpen] = useState(false);
@@ -46,6 +48,8 @@ const DatePicker = (props) => {
 		};
 	});
 
+	const [fixedRange, setFixedRange] = useState(null);
+
 	const [selectedDate, setSelectedDate] = useState(() => {
 		return '';
 	});
@@ -56,11 +60,30 @@ const DatePicker = (props) => {
 
 	const datePickerRef = useRef();
 
-	const sDate = fromUnixTime(value);
-
 	let displayValue = '';
 
+	if (range && value?.filter(Boolean)?.length > 0) {
+		const sDate = fromUnixTime(value[0]);
+		const eDate = fromUnixTime(value[1]);
+
+		const selectedFixedRange = dateRanges().find((rg) => {
+			return rg.dateRange?.unix?.toString() === value.toString();
+		});
+
+		if (selectedFixedRange) {
+			displayValue = selectedFixedRange.title;
+		} else {
+			displayValue = ` ${sDate.getDate()} ${
+				MONTHS[sDate.getMonth().toString()?.substring(0, 3)]
+			} - ${eDate.getDate()} ${
+				MONTHS[eDate.getMonth().toString()?.substring(0, 3)]
+			} ${eDate.getFullYear()}`;
+		}
+	}
+
 	if (!range && value) {
+		const sDate = fromUnixTime(value);
+
 		const timeValue = `${((sDate.getHours() + 11) % 12) + 1}:${sDate.getMinutes()} ${
 			sDate.getHours() >= 12 ? 'PM' : 'AM'
 		}`;
@@ -68,6 +91,10 @@ const DatePicker = (props) => {
 		displayValue = ` ${sDate.getDate()} ${
 			MONTHS[sDate.getMonth().toString()?.substring(0, 3)]
 		} ${sDate.getFullYear()} ${timeValue}`;
+	}
+
+	if (fixedRange) {
+		displayValue = fixedRange;
 	}
 
 	const { x, y, reference, floating, strategy, context } = useFloating({
@@ -109,6 +136,7 @@ const DatePicker = (props) => {
 	const apply = () => {
 		if (selectedRange.dates.length === 2) {
 			if (
+				maxRange !== null &&
 				!isMaxRangeExceeded({
 					maxRange,
 					selectedRange,
@@ -119,7 +147,7 @@ const DatePicker = (props) => {
 				return;
 			}
 			setError('');
-			onApply(selectedRange.unix);
+			onApply(selectedRange.unix, fixedRange);
 			setOpen(false);
 		} else {
 			onApply(selectedDate.unix);
@@ -140,6 +168,8 @@ const DatePicker = (props) => {
 
 		disableDatesBefore,
 		value,
+		setFixedRange,
+		customRanges,
 	};
 
 	return (
@@ -219,7 +249,7 @@ DatePicker.propTypes = {
 	range: PropTypes.bool,
 	onApply: PropTypes.func,
 	onClear: PropTypes.func,
-	value: PropTypes.string,
+	value: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
 	disabled: PropTypes.bool,
 	disabledDates: PropTypes.arrayOf(PropTypes.string),
 	maxRange: PropTypes.shape({
@@ -229,6 +259,14 @@ DatePicker.propTypes = {
 	className: PropTypes.string,
 	disableDatesBefore: PropTypes.arrayOf(PropTypes.string),
 	theme: PropTypes.string,
+	defaultRangeSelection: PropTypes.arrayOf(PropTypes.number),
+	customRanges: PropTypes.arrayOf(
+		PropTypes.shape({
+			title: PropTypes.string,
+			type: PropTypes.string,
+			value: PropTypes.string,
+		})
+	),
 };
 
 DatePicker.defaultProps = {
@@ -239,10 +277,12 @@ DatePicker.defaultProps = {
 	disabled: false,
 	disabledDates: [],
 	maxRange: null,
-	value: '',
+	value: null,
 	className: '',
 	disableDatesBefore: [],
 	theme: 'dark',
+	customRanges: null,
+	defaultRangeSelection: null,
 	onClear: () => {},
 };
 

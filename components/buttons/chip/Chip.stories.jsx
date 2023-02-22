@@ -1,5 +1,7 @@
 import React from 'react';
+import ThemedContainer from '../../helpers/themedContainer/ThemedContainer';
 import { ArrowIcon, CalenderIcon, CopyIcon } from '../../icons';
+import { Tooltip } from '../../tooltip';
 import Chip from './Chip';
 
 export default {
@@ -15,9 +17,11 @@ export default {
 
 const Template = (args) => {
 	return (
-		<div>
-			<Chip {...args} />
-		</div>
+		<ThemedContainer theme='light'>
+			<Tooltip content='hey' variant='dark'>
+				<Chip {...args} />
+			</Tooltip>
+		</ThemedContainer>
 	);
 };
 

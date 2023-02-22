@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { fromUnixTime, getUnixTime, isBefore } from 'date-fns';
 import { CalenderHeader } from './header';
 import styles from './Calender.module.css';
-import { getDayInfo } from '../../../utils';
+import { getDatesInStringFormat, getDayInfo } from '../../../utils';
 import { FULL_MONTHS } from '../../../constants';
 import { CalenderBody } from './body';
 import { CalenderFooter } from './footer';
@@ -18,6 +18,8 @@ const Calender = (props) => {
 		disabledDates,
 		disableDatesBefore,
 		value,
+		setFixedRange,
+		customRanges,
 	} = props;
 
 	const { month, year, monthAsNumber, dayAsNumber } = getDayInfo(new Date());
@@ -29,7 +31,36 @@ const Calender = (props) => {
 	});
 
 	useEffect(() => {
-		if (value) {
+		if (range && value?.filter(Boolean)?.length > 0) {
+			setSelectedRange({
+				dates: getDatesInStringFormat({
+					startingDate: fromUnixTime(value[0]),
+					endingDate: fromUnixTime(value[1]),
+				}),
+				unix: [value[0], value[1]],
+			});
+			const date = new Date();
+			const dateAsNumber = date.getDate();
+			const selectedDayInfo = getDayInfo(date);
+			const selectedDateMonth = {
+				month: selectedDayInfo.month,
+				monthAsNumber: selectedDayInfo.monthAsNumber,
+				year: selectedDayInfo.year,
+				dayAsNumber: selectedDayInfo.dayAsNumber,
+			};
+			setSelectedMonth({
+				month: selectedDayInfo.month,
+				monthAsNumber: selectedDayInfo.monthAsNumber,
+				year: selectedDayInfo.year,
+			});
+			setSelectedDate({
+				...selectedDate,
+				month: selectedDateMonth.month,
+				year: selectedDateMonth.year,
+				date: dateAsNumber,
+				unix: getUnixTime(date),
+			});
+		} else if (!range && value) {
 			const date = fromUnixTime(value);
 			const dateAsNumber = date.getDate();
 			const selectedDayInfo = getDayInfo(date);
@@ -51,18 +82,18 @@ const Calender = (props) => {
 				date: dateAsNumber,
 				unix: getUnixTime(date),
 			});
-			return;
-		}
-		const date = new Date();
-		if (!range && !isBefore(date, disableDatesBefore)) {
-			const dateAsNumber = date.getDate();
-			setSelectedDate({
-				...selectedDate,
-				month: selectedMonth.month,
-				year: selectedMonth.year,
-				date: dateAsNumber,
-				unix: getUnixTime(date),
-			});
+		} else {
+			const date = new Date();
+			if (!range && !isBefore(date, disableDatesBefore)) {
+				const dateAsNumber = date.getDate();
+				setSelectedDate({
+					...selectedDate,
+					month: selectedMonth.month,
+					year: selectedMonth.year,
+					date: dateAsNumber,
+					unix: getUnixTime(date),
+				});
+			}
 		}
 	}, []);
 
@@ -143,6 +174,8 @@ const Calender = (props) => {
 				setSelectedRange={setSelectedRange}
 				onApply={onApply}
 				goToDate={goToDate}
+				customRanges={customRanges}
+				setFixedRange={setFixedRange}
 			/>
 		</div>
 	);

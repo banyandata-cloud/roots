@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { classes } from '../../../../utils';
 import { Button, Chip } from '../../../buttons';
 import { BaseCell } from '../../../cell';
-import { ArrowIcon, CloseIcon, TrashIcon } from '../../../icons';
+import { ArrowIcon, CloseIcon } from '../../../icons';
 import { Text } from '../../../text';
 import { Skeleton } from './Skeleton';
 import styles from './TableChips.module.css';
@@ -121,9 +121,6 @@ const TableChips = (props) => {
 							color='danger'
 							title='Clear All'
 							className={styles.clear}
-							leftComponent={() => {
-								return <TrashIcon className={styles.icon} />;
-							}}
 							onClick={onClear}
 						/>
 					) : (

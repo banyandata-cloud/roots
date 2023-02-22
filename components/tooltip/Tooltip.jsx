@@ -27,7 +27,7 @@ const Tooltip = forwardRef(function Tooltip(props, propRef) {
 		{
 			open,
 			onOpenChange: setOpen,
-			strategy: 'fixed',
+			// strategy: 'fixed',
 			placement: position,
 			// Make sure the tooltip stays on the screen
 			whileElementsMounted: autoUpdate,
@@ -83,7 +83,7 @@ const Tooltip = forwardRef(function Tooltip(props, propRef) {
 		<>
 			{/* Wrapping */}
 			{clonedChildren}
-			<Popper open={open} backdrop={false} wrapperId='tooltip'>
+			<Popper open={open && content != null} backdrop={false} wrapperId='tooltip'>
 				<div
 					{...getFloatingProps({
 						ref: floating,
@@ -95,7 +95,6 @@ const Tooltip = forwardRef(function Tooltip(props, propRef) {
 							zIndex: 100,
 						},
 					})}>
-					{content}
 					<div
 						className={styles.arrow}
 						ref={arrowEl}
@@ -107,6 +106,7 @@ const Tooltip = forwardRef(function Tooltip(props, propRef) {
 							[staticSide]: '-0.5rem',
 						}}
 					/>
+					{content}
 				</div>
 			</Popper>
 		</>
@@ -122,7 +122,7 @@ Tooltip.propTypes = {
 
 Tooltip.defaultProps = {
 	variant: 'light',
-	content: 'Tooltip Info',
+	content: null,
 	position: 'top',
 	className: '',
 };

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import React__default, { forwardRef, createElement as createElement$1, isValidElement, useState, useLayoutEffect, useEffect, useRef, useImperativeHandle, useMemo, useReducer, cloneElement, Children } from 'react';
+import React__default, { forwardRef, createElement as createElement$1, isValidElement, useState, useLayoutEffect, useEffect, useRef, useImperativeHandle, useMemo, useReducer, cloneElement, Children, createRef } from 'react';
 import { jsxs, Fragment, jsx } from 'react/jsx-runtime';
 import * as ReactDOM from 'react-dom';
 import { createPortal } from 'react-dom';
@@ -1442,13 +1442,13 @@ var getInitialsOfName = function getInitialsOfName() {
   }
   return initials;
 };
-function safeJSONParse(object) {
+var safeJSONParse = function safeJSONParse(object) {
   try {
     return JSON.parse(object);
   } catch (error) {
     return null;
   }
-}
+};
 function cloneDeep(object) {
   return safeJSONParse(JSON.stringify(object));
 }
@@ -1554,9 +1554,14 @@ var getDayInfo = function getDayInfo(date) {
     meridian: meridian
   };
 };
-var getDatesInAMonth = function getDatesInAMonth(_ref) {
-  var month = _ref.month,
-    year = _ref.year;
+var getDatesInStringFormat = function getDatesInStringFormat(_ref) {
+  var startingDate = _ref.startingDate,
+    endingDate = _ref.endingDate;
+  return ["".concat(startingDate.getDate(), " ").concat(MONTHS[startingDate.getMonth()].substring(0, 3), " ").concat(startingDate.getFullYear()), "".concat(endingDate.getDate(), " ").concat(MONTHS[endingDate.getMonth()].substring(0, 3), " ").concat(endingDate.getFullYear())];
+};
+var getDatesInAMonth = function getDatesInAMonth(_ref2) {
+  var month = _ref2.month,
+    year = _ref2.year;
   var date = new Date(Date.UTC(year, month, 1));
   var dates = [];
   var days = [];
@@ -1581,9 +1586,9 @@ var getCSSVariableValue = function getCSSVariableValue(variable) {
 
 var e$1=[],t=[];function n(n,r){if(n&&"undefined"!=typeof document){var a,s=!0===r.prepend?"prepend":"append",d=!0===r.singleTag,i="string"==typeof r.container?document.querySelector(r.container):document.getElementsByTagName("head")[0];if(d){var u=e$1.indexOf(i);-1===u&&(u=e$1.push(i)-1,t[u]={}),a=t[u]&&t[u][s]?t[u][s]:t[u][s]=c();}else a=c();65279===n.charCodeAt(0)&&(n=n.substring(1)),a.styleSheet?a.styleSheet.cssText+=n:a.appendChild(document.createTextNode(n));}function c(){var e=document.createElement("style");if(e.setAttribute("type","text/css"),r.attributes)for(var t=Object.keys(r.attributes),n=0;n<t.length;n++)e.setAttribute(t[n],r.attributes[t[n]]);var a="prepend"===s?"afterbegin":"beforeend";return i.insertAdjacentElement(a,e),e}}
 
-var css$Y = ".BaseCell_module_root__81e07d2d {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  padding: 0.5rem;\n  gap: 0.5rem;\n  flex: none;\n  height: 3rem;\n  background: var(--white);\n  max-width: 100%;\n  max-height: 100%;\n}\n.BaseCell_module_root__81e07d2d > [data-elem*=component] {\n  display: inline-block;\n  max-height: 100%;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_sm__81e07d2d {\n  width: 9.063rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_md__81e07d2d {\n  width: 15.625rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_lg__81e07d2d {\n  width: 21.875rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_auto__81e07d2d {\n  width: auto;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_borderRadiusDefault__81e07d2d {\n  border-radius: 0.25rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_borderRadiusRound__81e07d2d {\n  border-radius: 50%;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_borderRadiusEllipse__81e07d2d {\n  border-radius: 1.563rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_flexible__81e07d2d {\n  flex-grow: 1;\n  flex-shrink: 1;\n  min-width: 3rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_flexible__81e07d2d.BaseCell_module_sm__81e07d2d {\n  min-width: 9.063rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_flexible__81e07d2d.BaseCell_module_md__81e07d2d {\n  min-width: 15.625rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_flexible__81e07d2d.BaseCell_module_lg__81e07d2d {\n  min-width: 21.875rem;\n}";
+var css$_ = ".BaseCell_module_root__81e07d2d {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  padding: 0.5rem;\n  gap: 0.5rem;\n  flex: none;\n  height: 3rem;\n  background: var(--white);\n  max-width: 100%;\n  max-height: 100%;\n}\n.BaseCell_module_root__81e07d2d > [data-elem*=component] {\n  display: inline-block;\n  max-height: 100%;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_sm__81e07d2d {\n  width: 9.063rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_md__81e07d2d {\n  width: 15.625rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_lg__81e07d2d {\n  width: 21.875rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_auto__81e07d2d {\n  width: auto;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_borderRadiusDefault__81e07d2d {\n  border-radius: 0.25rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_borderRadiusRound__81e07d2d {\n  border-radius: 50%;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_borderRadiusEllipse__81e07d2d {\n  border-radius: 1.563rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_flexible__81e07d2d {\n  flex-grow: 1;\n  flex-shrink: 1;\n  min-width: 3rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_flexible__81e07d2d.BaseCell_module_sm__81e07d2d {\n  min-width: 9.063rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_flexible__81e07d2d.BaseCell_module_md__81e07d2d {\n  min-width: 15.625rem;\n}\n.BaseCell_module_root__81e07d2d.BaseCell_module_flexible__81e07d2d.BaseCell_module_lg__81e07d2d {\n  min-width: 21.875rem;\n}";
 var modules_3af9b74c = {"root":"BaseCell_module_root__81e07d2d","sm":"BaseCell_module_sm__81e07d2d","md":"BaseCell_module_md__81e07d2d","lg":"BaseCell_module_lg__81e07d2d","auto":"BaseCell_module_auto__81e07d2d","border-radius-default":"BaseCell_module_borderRadiusDefault__81e07d2d","border-radius-round":"BaseCell_module_borderRadiusRound__81e07d2d","border-radius-ellipse":"BaseCell_module_borderRadiusEllipse__81e07d2d","flexible":"BaseCell_module_flexible__81e07d2d"};
-n(css$Y,{});
+n(css$_,{});
 
 var BaseCell = /*#__PURE__*/forwardRef(function BaseCell(props, ref) {
   var className = props.className,
@@ -1663,9 +1668,9 @@ var defaultProps = {
   attrs: {}
 };
 
-var css$X = "button.BaseButton_module_root__39a3f3ec[data-elem=base-cell] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  display: inline-flex;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  border: none;\n  background: none;\n  padding: 0.5rem 0.75rem;\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell]:focus {\n  outline: 1px solid var(--highlight);\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell]:active {\n  outline: none;\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell]:disabled {\n  cursor: not-allowed;\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell].BaseButton_module_contained__39a3f3ec {\n  background: var(--black);\n  color: var(--white);\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell].BaseButton_module_outlined__39a3f3ec {\n  color: var(--black);\n  border: 1px solid var(--black);\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell].BaseButton_module_text__39a3f3ec {\n  color: var(--black);\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell] [data-elem*=component] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell] [data-elem=component2] {\n  min-width: 0;\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell] [data-elem=title] {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n}";
+var css$Z = "button.BaseButton_module_root__39a3f3ec[data-elem=base-cell] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  display: inline-flex;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  border: none;\n  background: none;\n  padding: 0.5rem 0.75rem;\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell]:focus {\n  outline: 1px solid var(--highlight);\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell]:active {\n  outline: none;\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell]:disabled {\n  cursor: not-allowed;\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell].BaseButton_module_contained__39a3f3ec {\n  background: var(--black);\n  color: var(--white);\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell].BaseButton_module_outlined__39a3f3ec {\n  color: var(--black);\n  border: 1px solid var(--black);\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell].BaseButton_module_text__39a3f3ec {\n  color: var(--black);\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell] [data-elem*=component] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell] [data-elem=component2] {\n  min-width: 0;\n}\nbutton.BaseButton_module_root__39a3f3ec[data-elem=base-cell] [data-elem=title] {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n}";
 var modules_ab72627b = {"root":"BaseButton_module_root__39a3f3ec","contained":"BaseButton_module_contained__39a3f3ec","outlined":"BaseButton_module_outlined__39a3f3ec","text":"BaseButton_module_text__39a3f3ec"};
-n(css$X,{});
+n(css$Z,{});
 
 var BaseButton = /*#__PURE__*/forwardRef(function BaseButton(props, ref) {
   var className = props.className,
@@ -1724,9 +1729,9 @@ BaseButton.defaultProps = _objectSpread2(_objectSpread2({}, BaseCell.defaultProp
   variant: 'contained'
 });
 
-var css$W = ".Button_module_root__0be1a26c[data-elem=base-cell] {\n  cursor: pointer;\n}\n.Button_module_root__0be1a26c[data-elem=base-cell] [data-elem=component2] [data-elem=title] {\n  font-weight: 500;\n  font-size: 0.875rem;\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_primary__0be1a26c.Button_module_contained__0be1a26c {\n  background-color: var(--highlight);\n  color: var(--white);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_primary__0be1a26c.Button_module_outlined__0be1a26c {\n  background-color: transparent;\n  border-color: var(--highlight);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_primary__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell].Button_module_primary__0be1a26c.Button_module_text__0be1a26c {\n  color: var(--highlight);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_success__0be1a26c.Button_module_contained__0be1a26c {\n  background-color: var(--success);\n  color: var(--white);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_success__0be1a26c.Button_module_outlined__0be1a26c {\n  background-color: transparent;\n  border-color: var(--success);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_success__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell].Button_module_success__0be1a26c.Button_module_text__0be1a26c {\n  color: var(--success);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_danger__0be1a26c.Button_module_contained__0be1a26c {\n  background-color: var(--error);\n  color: var(--white);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_danger__0be1a26c.Button_module_outlined__0be1a26c {\n  background-color: transparent;\n  border-color: var(--error);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_danger__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell].Button_module_danger__0be1a26c.Button_module_text__0be1a26c {\n  color: var(--error);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_warning__0be1a26c.Button_module_contained__0be1a26c {\n  background-color: var(--warning);\n  color: var(--white);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_warning__0be1a26c.Button_module_outlined__0be1a26c {\n  background-color: transparent;\n  border-color: var(--warning);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_warning__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell].Button_module_warning__0be1a26c.Button_module_text__0be1a26c {\n  color: var(--warning);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_primary__0be1a26c.Button_module_contained__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_success__0be1a26c.Button_module_contained__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_danger__0be1a26c.Button_module_contained__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_warning__0be1a26c.Button_module_contained__0be1a26c {\n  background-color: var(--grey4);\n  color: var(--grey);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_primary__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_success__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_danger__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_warning__0be1a26c.Button_module_outlined__0be1a26c {\n  background-color: transparent;\n  border-color: var(--grey);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_primary__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_primary__0be1a26c.Button_module_text__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_success__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_success__0be1a26c.Button_module_text__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_danger__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_danger__0be1a26c.Button_module_text__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_warning__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_warning__0be1a26c.Button_module_text__0be1a26c {\n  color: var(--grey);\n}";
+var css$Y = ".Button_module_root__0be1a26c[data-elem=base-cell] {\n  cursor: pointer;\n}\n.Button_module_root__0be1a26c[data-elem=base-cell] [data-elem=component2] [data-elem=title] {\n  font-weight: 500;\n  font-size: 0.875rem;\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_primary__0be1a26c.Button_module_contained__0be1a26c {\n  background-color: var(--highlight);\n  color: var(--white);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_primary__0be1a26c.Button_module_outlined__0be1a26c {\n  background-color: transparent;\n  border-color: var(--highlight);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_primary__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell].Button_module_primary__0be1a26c.Button_module_text__0be1a26c {\n  color: var(--highlight);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_success__0be1a26c.Button_module_contained__0be1a26c {\n  background-color: var(--success);\n  color: var(--white);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_success__0be1a26c.Button_module_outlined__0be1a26c {\n  background-color: transparent;\n  border-color: var(--success);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_success__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell].Button_module_success__0be1a26c.Button_module_text__0be1a26c {\n  color: var(--success);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_danger__0be1a26c.Button_module_contained__0be1a26c {\n  background-color: var(--error);\n  color: var(--white);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_danger__0be1a26c.Button_module_outlined__0be1a26c {\n  background-color: transparent;\n  border-color: var(--error);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_danger__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell].Button_module_danger__0be1a26c.Button_module_text__0be1a26c {\n  color: var(--error);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_warning__0be1a26c.Button_module_contained__0be1a26c {\n  background-color: var(--warning);\n  color: var(--white);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_warning__0be1a26c.Button_module_outlined__0be1a26c {\n  background-color: transparent;\n  border-color: var(--warning);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell].Button_module_warning__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell].Button_module_warning__0be1a26c.Button_module_text__0be1a26c {\n  color: var(--warning);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_primary__0be1a26c.Button_module_contained__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_success__0be1a26c.Button_module_contained__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_danger__0be1a26c.Button_module_contained__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_warning__0be1a26c.Button_module_contained__0be1a26c {\n  background-color: var(--grey4);\n  color: var(--grey);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_primary__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_success__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_danger__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_warning__0be1a26c.Button_module_outlined__0be1a26c {\n  background-color: transparent;\n  border-color: var(--grey);\n}\n.Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_primary__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_primary__0be1a26c.Button_module_text__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_success__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_success__0be1a26c.Button_module_text__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_danger__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_danger__0be1a26c.Button_module_text__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_warning__0be1a26c.Button_module_outlined__0be1a26c, .Button_module_root__0be1a26c[data-elem=base-cell]:disabled.Button_module_warning__0be1a26c.Button_module_text__0be1a26c {\n  color: var(--grey);\n}";
 var modules_b0070f27 = {"root":"Button_module_root__0be1a26c","primary":"Button_module_primary__0be1a26c","contained":"Button_module_contained__0be1a26c","outlined":"Button_module_outlined__0be1a26c","text":"Button_module_text__0be1a26c","success":"Button_module_success__0be1a26c","danger":"Button_module_danger__0be1a26c","warning":"Button_module_warning__0be1a26c"};
-n(css$W,{});
+n(css$Y,{});
 
 var Button = /*#__PURE__*/forwardRef(function Button(props, ref) {
   var className = props.className,
@@ -1770,11 +1775,11 @@ Button.defaultProps = _objectSpread2(_objectSpread2({}, BaseButton.defaultProps)
   radius: 'default'
 });
 
-var css$V = ".Chip_module_root__0aa07630[data-elem=base-cell] {\n  position: relative;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell] [data-elem=component2] [data-elem=title] {\n  font-weight: 500;\n  font-size: 0.875rem;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_sm__0aa07630 {\n  height: 2rem;\n  padding: 0.188rem 0.5rem;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_md__0aa07630 {\n  height: 2.25rem;\n  padding: 0.563rem 1rem;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630.Chip_module_success__0aa07630 {\n  background-color: var(--success-bg);\n  color: var(--success);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630.Chip_module_info__0aa07630 {\n  background-color: var(--info-bg);\n  color: var(--info);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630.Chip_module_danger__0aa07630 {\n  background-color: var(--error-bg);\n  color: var(--error);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630.Chip_module_warning__0aa07630 {\n  background-color: var(--warning-bg);\n  color: var(--warning);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630.Chip_module_default__0aa07630 {\n  background-color: var(--grey5);\n  color: var(--grey);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630:hover {\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630 {\n  border-width: 1px;\n  border-style: solid;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_success__0aa07630 {\n  background-color: var(--success-bg);\n  color: var(--success);\n  border-color: var(--success-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_success__0aa07630:hover {\n  background-color: var(--success-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_info__0aa07630 {\n  background-color: var(--info-bg);\n  color: var(--info);\n  border-color: var(--info-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_info__0aa07630:hover {\n  background-color: var(--info-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_danger__0aa07630 {\n  background-color: var(--error-bg);\n  color: var(--error);\n  border-color: var(--error-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_danger__0aa07630:hover {\n  background-color: var(--error-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_warning__0aa07630 {\n  background-color: var(--warning-bg);\n  color: var(--warning);\n  border-color: var(--warning-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_warning__0aa07630:hover {\n  background-color: var(--warning-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_default__0aa07630 {\n  background-color: var(--grey8);\n  color: var(--grey);\n  border-color: var(--grey6);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_default__0aa07630:hover {\n  background-color: var(--grey6);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_status__0aa07630, .Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_input__0aa07630 {\n  filter: grayscale(1);\n  border-color: var(--grey4);\n  background-color: var(--grey5);\n  color: var(--grey2);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_status__0aa07630 [data-elem=component1],\n.Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_status__0aa07630 [data-elem=component3], .Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_input__0aa07630 [data-elem=component1],\n.Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_input__0aa07630 [data-elem=component3] {\n  opacity: 0.5;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_status__0aa07630:hover, .Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_input__0aa07630:hover {\n  box-shadow: none;\n  background-color: var(--grey5);\n}";
+var css$X = ".Chip_module_root__0aa07630[data-elem=base-cell] {\n  position: relative;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell] [data-elem=component2] [data-elem=title] {\n  font-weight: 500;\n  font-size: 0.875rem;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_sm__0aa07630 {\n  height: 2rem;\n  padding: 0.188rem 0.5rem;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_md__0aa07630 {\n  height: 2.25rem;\n  padding: 0.563rem 1rem;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630.Chip_module_success__0aa07630 {\n  background-color: var(--success-bg);\n  color: var(--success);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630.Chip_module_info__0aa07630 {\n  background-color: var(--info-bg);\n  color: var(--info);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630.Chip_module_danger__0aa07630 {\n  background-color: var(--error-bg);\n  color: var(--error);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630.Chip_module_warning__0aa07630 {\n  background-color: var(--warning-bg);\n  color: var(--warning);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630.Chip_module_default__0aa07630 {\n  background-color: var(--grey5);\n  color: var(--grey);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_status__0aa07630:hover {\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630 {\n  border-width: 1px;\n  border-style: solid;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_success__0aa07630 {\n  background-color: var(--success-bg);\n  color: var(--success);\n  border-color: var(--success-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_success__0aa07630:hover {\n  background-color: var(--success-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_info__0aa07630 {\n  background-color: var(--info-bg);\n  color: var(--info);\n  border-color: var(--info-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_info__0aa07630:hover {\n  background-color: var(--info-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_danger__0aa07630 {\n  background-color: var(--error-bg);\n  color: var(--error);\n  border-color: var(--error-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_danger__0aa07630:hover {\n  background-color: var(--error-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_warning__0aa07630 {\n  background-color: var(--warning-bg);\n  color: var(--warning);\n  border-color: var(--warning-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_warning__0aa07630:hover {\n  background-color: var(--warning-outline);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_default__0aa07630 {\n  background-color: var(--grey8);\n  color: var(--grey);\n  border-color: var(--grey6);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell].Chip_module_input__0aa07630.Chip_module_default__0aa07630:hover {\n  background-color: var(--grey6);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_status__0aa07630, .Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_input__0aa07630 {\n  filter: grayscale(1);\n  border-color: var(--grey4);\n  background-color: var(--grey5);\n  color: var(--grey2);\n}\n.Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_status__0aa07630 [data-elem=component1],\n.Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_status__0aa07630 [data-elem=component3], .Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_input__0aa07630 [data-elem=component1],\n.Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_input__0aa07630 [data-elem=component3] {\n  opacity: 0.5;\n}\n.Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_status__0aa07630:hover, .Chip_module_root__0aa07630[data-elem=base-cell]:disabled.Chip_module_input__0aa07630:hover {\n  box-shadow: none;\n  background-color: var(--grey5);\n}";
 var modules_31aa5fd7 = {"root":"Chip_module_root__0aa07630","sm":"Chip_module_sm__0aa07630","md":"Chip_module_md__0aa07630","status":"Chip_module_status__0aa07630","success":"Chip_module_success__0aa07630","info":"Chip_module_info__0aa07630","danger":"Chip_module_danger__0aa07630","warning":"Chip_module_warning__0aa07630","default":"Chip_module_default__0aa07630","input":"Chip_module_input__0aa07630"};
-n(css$V,{});
+n(css$X,{});
 
-var Chip = function Chip(props) {
+var Chip = /*#__PURE__*/forwardRef(function Chip(props, ref) {
   var className = props.className,
     type = props.type,
     LeftComponent = props.leftComponent,
@@ -1788,6 +1793,7 @@ var Chip = function Chip(props) {
     variant = props.variant,
     color = props.color;
   return /*#__PURE__*/jsx(BaseButton, {
+    ref: ref,
     type: type,
     component1: LeftComponent && /*#__PURE__*/jsx(LeftComponent, {}),
     title: title,
@@ -1800,7 +1806,7 @@ var Chip = function Chip(props) {
     variant: 'contained',
     className: classes(modules_31aa5fd7.root, modules_31aa5fd7["radius-".concat(radius)], modules_31aa5fd7[variant], modules_31aa5fd7[color], modules_31aa5fd7[size], className)
   });
-};
+});
 Chip.propTypes = _objectSpread2(_objectSpread2({}, BaseButton.propTypes), {}, {
   size: propTypes$1.exports.oneOf(['sm', 'md']),
   variant: propTypes$1.exports.oneOf(['status', 'input']),
@@ -2143,9 +2149,9 @@ Server.defaultProps = {
   className: ''
 };
 
-var css$U = ".Arrow_module_right__19f08663 {\n  transform: rotate(0deg);\n}\n\n.Arrow_module_left__19f08663 {\n  transform: rotate(180deg);\n}\n\n.Arrow_module_bottom__19f08663 {\n  transform: rotate(90deg);\n}\n\n.Arrow_module_top__19f08663 {\n  transform: rotate(270deg);\n}";
+var css$W = ".Arrow_module_right__19f08663 {\n  transform: rotate(0deg);\n}\n\n.Arrow_module_left__19f08663 {\n  transform: rotate(180deg);\n}\n\n.Arrow_module_bottom__19f08663 {\n  transform: rotate(90deg);\n}\n\n.Arrow_module_top__19f08663 {\n  transform: rotate(270deg);\n}";
 var modules_e313d483 = {"right":"Arrow_module_right__19f08663","left":"Arrow_module_left__19f08663","bottom":"Arrow_module_bottom__19f08663","top":"Arrow_module_top__19f08663"};
-n(css$U,{});
+n(css$W,{});
 
 var Arrow$1 = function Arrow(props) {
   var className = props.className,
@@ -2165,9 +2171,9 @@ Arrow$1.defaultProps = {
   position: 'right'
 };
 
-var css$T = ".Chevron_module_left__8b1808eb {\n  transform: rotate(0deg);\n}\n\n.Chevron_module_bottom__8b1808eb {\n  transform: rotate(90deg);\n}\n\n.Chevron_module_right__8b1808eb {\n  transform: rotate(180deg);\n}\n\n.Chevron_module_top__8b1808eb {\n  transform: rotate(270deg);\n}";
+var css$V = ".Chevron_module_left__8b1808eb {\n  transform: rotate(0deg);\n}\n\n.Chevron_module_bottom__8b1808eb {\n  transform: rotate(90deg);\n}\n\n.Chevron_module_right__8b1808eb {\n  transform: rotate(180deg);\n}\n\n.Chevron_module_top__8b1808eb {\n  transform: rotate(270deg);\n}";
 var modules_bf5b0b74 = {"left":"Chevron_module_left__8b1808eb","bottom":"Chevron_module_bottom__8b1808eb","right":"Chevron_module_right__8b1808eb","top":"Chevron_module_top__8b1808eb"};
-n(css$T,{});
+n(css$V,{});
 
 var Chevron = function Chevron(props) {
   var className = props.className,
@@ -2530,9 +2536,9 @@ var Close = function Close(_ref) {
   });
 };
 
-var css$S = ".Sort_module_root__5112e35d.Sort_module_orderAz__5112e35d {\n  transform: none;\n}\n.Sort_module_root__5112e35d.Sort_module_orderZa__5112e35d {\n  transform: rotate(180deg);\n}";
+var css$U = ".Sort_module_root__5112e35d.Sort_module_orderAz__5112e35d {\n  transform: none;\n}\n.Sort_module_root__5112e35d.Sort_module_orderZa__5112e35d {\n  transform: rotate(180deg);\n}";
 var modules_501919d9 = {"root":"Sort_module_root__5112e35d","order-az":"Sort_module_orderAz__5112e35d","order-za":"Sort_module_orderZa__5112e35d"};
-n(css$S,{});
+n(css$U,{});
 
 var Sort = function Sort(_ref) {
   var className = _ref.className,
@@ -3220,9 +3226,9 @@ var Databases = {
   MySql: MySql
 };
 
-var css$R = ".Accordion_module_root__a63f6f55 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  width: 100%;\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell] {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.5rem;\n  padding: 0.5rem 1rem;\n  cursor: pointer;\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell] > [data-elem=component1] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell] > [data-elem=component1] .Accordion_module_icon__a63f6f55 {\n  transform: rotate(-90deg);\n  width: 1rem;\n  height: 1rem;\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell] .Accordion_module_title__a63f6f55 {\n  flex: 1 1 auto;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell]:hover {\n  background: var(--background);\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell]:hover .Accordion_module_icon__a63f6f55,\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell]:hover .Accordion_module_title__a63f6f55 {\n  color: var(--highlight);\n  fill: var(--highlight);\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_body__a63f6f55 {\n  display: none;\n  padding: 0.5rem 2.5rem;\n}\n.Accordion_module_root__a63f6f55.Accordion_module_open__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell] [data-elem=component1] .Accordion_module_icon__a63f6f55 {\n  transform: none;\n}\n.Accordion_module_root__a63f6f55.Accordion_module_open__a63f6f55 > .Accordion_module_body__a63f6f55 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n}\n.Accordion_module_root__a63f6f55.Accordion_module_open__a63f6f55 > .Accordion_module_body__a63f6f55 > button[data-elem=base-cell] {\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  align-self: flex-end;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-end;\n  align-items: center;\n}\n.Accordion_module_root__a63f6f55.Accordion_module_open__a63f6f55 > .Accordion_module_body__a63f6f55 > button[data-elem=base-cell] .Accordion_module_expand__a63f6f55 {\n  height: 1.5rem;\n  width: 1.5rem;\n}";
+var css$T = ".Accordion_module_root__a63f6f55 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  width: 100%;\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell] {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.5rem;\n  padding: 0.5rem 1rem;\n  cursor: pointer;\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell] > [data-elem=component1] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell] > [data-elem=component1] .Accordion_module_icon__a63f6f55 {\n  transform: rotate(-90deg);\n  width: 1rem;\n  height: 1rem;\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell] .Accordion_module_title__a63f6f55 {\n  flex: 1 1 auto;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell]:hover {\n  background: var(--background);\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell]:hover .Accordion_module_icon__a63f6f55,\n.Accordion_module_root__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell]:hover .Accordion_module_title__a63f6f55 {\n  color: var(--highlight);\n  fill: var(--highlight);\n}\n.Accordion_module_root__a63f6f55 > .Accordion_module_body__a63f6f55 {\n  display: none;\n  padding: 0.5rem 2.5rem;\n}\n.Accordion_module_root__a63f6f55.Accordion_module_open__a63f6f55 > .Accordion_module_header__a63f6f55[data-elem=base-cell] [data-elem=component1] .Accordion_module_icon__a63f6f55 {\n  transform: none;\n}\n.Accordion_module_root__a63f6f55.Accordion_module_open__a63f6f55 > .Accordion_module_body__a63f6f55 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n}\n.Accordion_module_root__a63f6f55.Accordion_module_open__a63f6f55 > .Accordion_module_body__a63f6f55 > button[data-elem=base-cell] {\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  align-self: flex-end;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-end;\n  align-items: center;\n}\n.Accordion_module_root__a63f6f55.Accordion_module_open__a63f6f55 > .Accordion_module_body__a63f6f55 > button[data-elem=base-cell] .Accordion_module_expand__a63f6f55 {\n  height: 1.5rem;\n  width: 1.5rem;\n}";
 var modules_8207625f = {"root":"Accordion_module_root__a63f6f55","header":"Accordion_module_header__a63f6f55","icon":"Accordion_module_icon__a63f6f55","title":"Accordion_module_title__a63f6f55","body":"Accordion_module_body__a63f6f55","open":"Accordion_module_open__a63f6f55","expand":"Accordion_module_expand__a63f6f55"};
-n(css$R,{});
+n(css$T,{});
 
 var Accordion = function Accordion(props) {
   var defaultOpen = props.defaultOpen,
@@ -7139,13 +7145,13 @@ const useListNavigation = function (_ref, _temp2) {
   };
 };
 
-var css$Q = ".Alert_module_root__f2bc8467 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: flex-start;\n  position: fixed;\n  padding: 0.938rem;\n  width: 500px;\n}\n.Alert_module_root__f2bc8467.Alert_module_positionBottomCenter__f2bc8467 {\n  left: 50%;\n  bottom: 1rem;\n  transform: translate(-50%, 0);\n}\n.Alert_module_root__f2bc8467.Alert_module_positionTopRight__f2bc8467 {\n  right: 1rem;\n  top: 1rem;\n}\n.Alert_module_root__f2bc8467 .Alert_module_left__f2bc8467 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n}\n.Alert_module_root__f2bc8467 .Alert_module_left__f2bc8467 .Alert_module_icons__f2bc8467 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  padding: 0.313rem 0.938rem 0rem 0rem;\n  height: auto;\n}\n.Alert_module_root__f2bc8467 .Alert_module_left__f2bc8467 .Alert_module_icons__f2bc8467 .Alert_module_icon__f2bc8467 {\n  width: 1.25rem;\n  height: 1.25rem;\n}\n.Alert_module_root__f2bc8467 .Alert_module_left__f2bc8467 .Alert_module_content__f2bc8467 {\n  padding: 0.188rem 0.938rem 0rem 0rem;\n}\n.Alert_module_root__f2bc8467 .Alert_module_left__f2bc8467 .Alert_module_content__f2bc8467 .Alert_module_title__f2bc8467 {\n  font-size: 0.875rem;\n  font-weight: 600;\n  padding-right: 2px;\n}\n.Alert_module_root__f2bc8467 .Alert_module_left__f2bc8467 .Alert_module_content__f2bc8467 .Alert_module_description__f2bc8467 {\n  word-wrap: break-word;\n  height: auto;\n  font-size: 0.875rem;\n  font-weight: 400;\n  margin-bottom: 0.5rem;\n}\n.Alert_module_root__f2bc8467 .Alert_module_actions__f2bc8467 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: flex-start;\n  gap: 5px;\n}\n.Alert_module_root__f2bc8467 .Alert_module_actions__f2bc8467 .Alert_module_button__f2bc8467 {\n  padding: 0.313rem 1rem;\n  font-weight: 400;\n}\n.Alert_module_root__f2bc8467 .Alert_module_actions__f2bc8467 .Alert_module_close__f2bc8467 {\n  height: auto;\n}\n.Alert_module_root__f2bc8467 .Alert_module_actions__f2bc8467 .Alert_module_close__f2bc8467 .Alert_module_icon__f2bc8467 {\n  width: 1.25rem;\n  height: 1.25rem;\n  fill: var(--black);\n}\n.Alert_module_root__f2bc8467.Alert_module_borderDefault__f2bc8467 {\n  border-width: 0.063rem;\n}\n.Alert_module_root__f2bc8467.Alert_module_borderThickLeft__f2bc8467 {\n  border-width: 0.063rem 0.063rem 0.063rem 0.25rem;\n}\n.Alert_module_root__f2bc8467.Alert_module_borderNone__f2bc8467 {\n  border-width: 0rem 0rem 0rem 0.25rem;\n}\n.Alert_module_root__f2bc8467.Alert_module_info__f2bc8467 {\n  border-style: solid;\n  border-color: var(--info);\n  background-color: #edf5ff;\n}\n.Alert_module_root__f2bc8467.Alert_module_info__f2bc8467 .Alert_module_icon__f2bc8467 {\n  fill: var(--info);\n}\n.Alert_module_root__f2bc8467.Alert_module_success__f2bc8467 {\n  border-style: solid;\n  border-color: var(--success);\n  background-color: var(--success-bg);\n}\n.Alert_module_root__f2bc8467.Alert_module_success__f2bc8467 .Alert_module_icon__f2bc8467 {\n  fill: var(--success);\n}\n.Alert_module_root__f2bc8467.Alert_module_danger__f2bc8467 {\n  border-style: solid;\n  border-color: var(--error);\n  background-color: var(--error-bg);\n}\n.Alert_module_root__f2bc8467.Alert_module_danger__f2bc8467 .Alert_module_icon__f2bc8467 {\n  fill: var(--error);\n}\n.Alert_module_root__f2bc8467.Alert_module_warning__f2bc8467 {\n  border-style: solid;\n  border-color: var(--warning);\n  background-color: var(--warning-bg);\n}\n.Alert_module_root__f2bc8467.Alert_module_warning__f2bc8467 .Alert_module_icon__f2bc8467 {\n  fill: var(--warning);\n}\n.Alert_module_root__f2bc8467.Alert_module_shadow__f2bc8467 {\n  box-shadow: 0.125rem 0.5rem 1rem rgba(60, 60, 60, 0.12);\n}";
+var css$S = ".Alert_module_root__f2bc8467 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: flex-start;\n  position: fixed;\n  padding: 0.938rem;\n  width: 500px;\n}\n.Alert_module_root__f2bc8467.Alert_module_positionBottomCenter__f2bc8467 {\n  left: 50%;\n  bottom: 1rem;\n  transform: translate(-50%, 0);\n}\n.Alert_module_root__f2bc8467.Alert_module_positionTopRight__f2bc8467 {\n  right: 1rem;\n  top: 1rem;\n}\n.Alert_module_root__f2bc8467 .Alert_module_left__f2bc8467 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n}\n.Alert_module_root__f2bc8467 .Alert_module_left__f2bc8467 .Alert_module_icons__f2bc8467 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  padding: 0.313rem 0.938rem 0rem 0rem;\n  height: auto;\n}\n.Alert_module_root__f2bc8467 .Alert_module_left__f2bc8467 .Alert_module_icons__f2bc8467 .Alert_module_icon__f2bc8467 {\n  width: 1.25rem;\n  height: 1.25rem;\n}\n.Alert_module_root__f2bc8467 .Alert_module_left__f2bc8467 .Alert_module_content__f2bc8467 {\n  padding: 0.188rem 0.938rem 0rem 0rem;\n}\n.Alert_module_root__f2bc8467 .Alert_module_left__f2bc8467 .Alert_module_content__f2bc8467 .Alert_module_title__f2bc8467 {\n  font-size: 0.875rem;\n  font-weight: 600;\n  padding-right: 2px;\n}\n.Alert_module_root__f2bc8467 .Alert_module_left__f2bc8467 .Alert_module_content__f2bc8467 .Alert_module_description__f2bc8467 {\n  word-wrap: break-word;\n  height: auto;\n  font-size: 0.875rem;\n  font-weight: 400;\n  margin-bottom: 0.5rem;\n}\n.Alert_module_root__f2bc8467 .Alert_module_actions__f2bc8467 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: flex-start;\n  gap: 5px;\n}\n.Alert_module_root__f2bc8467 .Alert_module_actions__f2bc8467 .Alert_module_button__f2bc8467 {\n  padding: 0.313rem 1rem;\n  font-weight: 400;\n}\n.Alert_module_root__f2bc8467 .Alert_module_actions__f2bc8467 .Alert_module_close__f2bc8467 {\n  height: auto;\n}\n.Alert_module_root__f2bc8467 .Alert_module_actions__f2bc8467 .Alert_module_close__f2bc8467 .Alert_module_icon__f2bc8467 {\n  width: 1.25rem;\n  height: 1.25rem;\n  fill: var(--black);\n}\n.Alert_module_root__f2bc8467.Alert_module_borderDefault__f2bc8467 {\n  border-width: 0.063rem;\n}\n.Alert_module_root__f2bc8467.Alert_module_borderThickLeft__f2bc8467 {\n  border-width: 0.063rem 0.063rem 0.063rem 0.25rem;\n}\n.Alert_module_root__f2bc8467.Alert_module_borderNone__f2bc8467 {\n  border-width: 0rem 0rem 0rem 0.25rem;\n}\n.Alert_module_root__f2bc8467.Alert_module_info__f2bc8467 {\n  border-style: solid;\n  border-color: var(--info);\n  background-color: #edf5ff;\n}\n.Alert_module_root__f2bc8467.Alert_module_info__f2bc8467 .Alert_module_icon__f2bc8467 {\n  fill: var(--info);\n}\n.Alert_module_root__f2bc8467.Alert_module_success__f2bc8467 {\n  border-style: solid;\n  border-color: var(--success);\n  background-color: var(--success-bg);\n}\n.Alert_module_root__f2bc8467.Alert_module_success__f2bc8467 .Alert_module_icon__f2bc8467 {\n  fill: var(--success);\n}\n.Alert_module_root__f2bc8467.Alert_module_danger__f2bc8467 {\n  border-style: solid;\n  border-color: var(--error);\n  background-color: var(--error-bg);\n}\n.Alert_module_root__f2bc8467.Alert_module_danger__f2bc8467 .Alert_module_icon__f2bc8467 {\n  fill: var(--error);\n}\n.Alert_module_root__f2bc8467.Alert_module_warning__f2bc8467 {\n  border-style: solid;\n  border-color: var(--warning);\n  background-color: var(--warning-bg);\n}\n.Alert_module_root__f2bc8467.Alert_module_warning__f2bc8467 .Alert_module_icon__f2bc8467 {\n  fill: var(--warning);\n}\n.Alert_module_root__f2bc8467.Alert_module_shadow__f2bc8467 {\n  box-shadow: 0.125rem 0.5rem 1rem rgba(60, 60, 60, 0.12);\n}";
 var modules_3a764ea3 = {"root":"Alert_module_root__f2bc8467","position-bottom-center":"Alert_module_positionBottomCenter__f2bc8467","position-top-right":"Alert_module_positionTopRight__f2bc8467","left":"Alert_module_left__f2bc8467","icons":"Alert_module_icons__f2bc8467","icon":"Alert_module_icon__f2bc8467","content":"Alert_module_content__f2bc8467","title":"Alert_module_title__f2bc8467","description":"Alert_module_description__f2bc8467","actions":"Alert_module_actions__f2bc8467","button":"Alert_module_button__f2bc8467","close":"Alert_module_close__f2bc8467","border-default":"Alert_module_borderDefault__f2bc8467","border-thick-left":"Alert_module_borderThickLeft__f2bc8467","border-none":"Alert_module_borderNone__f2bc8467","info":"Alert_module_info__f2bc8467","success":"Alert_module_success__f2bc8467","danger":"Alert_module_danger__f2bc8467","warning":"Alert_module_warning__f2bc8467","shadow":"Alert_module_shadow__f2bc8467"};
-n(css$Q,{});
+n(css$S,{});
 
-var css$P = ".Popper_module_backdrop__0c794282 {\n  position: fixed;\n  z-index: 100;\n  inset: 0;\n  background: rgba(0, 0, 0, 0.4);\n}\n.Popper_module_backdrop__0c794282.Popper_module_transparent__0c794282 {\n  background: none;\n}\n.Popper_module_backdrop__0c794282.Popper_module_hideBackdrop__0c794282 {\n  position: static !important;\n}";
+var css$R = ".Popper_module_backdrop__0c794282 {\n  position: fixed;\n  z-index: 100;\n  inset: 0;\n  background: rgba(0, 0, 0, 0.4);\n}\n.Popper_module_backdrop__0c794282.Popper_module_transparent__0c794282 {\n  background: none;\n}\n.Popper_module_backdrop__0c794282.Popper_module_hideBackdrop__0c794282 {\n  position: static !important;\n}";
 var modules_fe46b225 = {"backdrop":"Popper_module_backdrop__0c794282","transparent":"Popper_module_transparent__0c794282","hide-backdrop":"Popper_module_hideBackdrop__0c794282"};
-n(css$P,{});
+n(css$R,{});
 
 var Popper = function Popper(props) {
   var open = props.open,
@@ -7316,13 +7322,13 @@ Alert.defaultProps = {
   position: 'bottom-center'
 };
 
-var css$O = ".Breadcrumbs_module_root__f527a278 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.5rem;\n  width: auto;\n}\n.Breadcrumbs_module_root__f527a278 .Breadcrumbs_module_seperator__f527a278 {\n  width: 1.5rem;\n  height: 1.5rem;\n  stroke: var(--grey2);\n}\n.Breadcrumbs_module_root__f527a278 button.Breadcrumbs_module_expand__f527a278[data-elem=base-cell] {\n  background: var(--grey6);\n  color: var(--dark-grey);\n  height: 0.75rem;\n  padding: 0.25rem;\n}\n.Breadcrumbs_module_root__f527a278 button.Breadcrumbs_module_expand__f527a278[data-elem=base-cell] [data-elem=title] {\n  margin-bottom: 0.4rem;\n}\n.Breadcrumbs_module_root__f527a278 .Breadcrumbs_module_crumb__f527a278 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  color: var(--grey2);\n}\n.Breadcrumbs_module_root__f527a278 .Breadcrumbs_module_crumb__f527a278.Breadcrumbs_module_active__f527a278 {\n  color: var(--black);\n}\n.Breadcrumbs_module_root__f527a278 .Breadcrumbs_module_crumb__f527a278:hover:not(.Breadcrumbs_module_active__f527a278) {\n  color: var(--info);\n}\n.Breadcrumbs_module_root__f527a278.Breadcrumbs_module_themeLight__f527a278 .Breadcrumbs_module_crumb__f527a278 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  color: var(--grey2);\n}\n.Breadcrumbs_module_root__f527a278.Breadcrumbs_module_themeLight__f527a278 .Breadcrumbs_module_crumb__f527a278.Breadcrumbs_module_active__f527a278 {\n  color: var(--black);\n}\n.Breadcrumbs_module_root__f527a278.Breadcrumbs_module_themeLight__f527a278 .Breadcrumbs_module_crumb__f527a278:hover:not(.Breadcrumbs_module_active__f527a278) {\n  color: var(--info);\n}\n.Breadcrumbs_module_root__f527a278.Breadcrumbs_module_themeDark__f527a278 .Breadcrumbs_module_crumb__f527a278 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  color: var(--grey2);\n}\n.Breadcrumbs_module_root__f527a278.Breadcrumbs_module_themeDark__f527a278 .Breadcrumbs_module_crumb__f527a278.Breadcrumbs_module_active__f527a278 {\n  color: var(--white);\n}\n.Breadcrumbs_module_root__f527a278.Breadcrumbs_module_themeDark__f527a278 .Breadcrumbs_module_crumb__f527a278:hover:not(.Breadcrumbs_module_active__f527a278) {\n  color: var(--info);\n}";
+var css$Q = ".Breadcrumbs_module_root__f527a278 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.5rem;\n  width: auto;\n}\n.Breadcrumbs_module_root__f527a278 .Breadcrumbs_module_seperator__f527a278 {\n  width: 1.5rem;\n  height: 1.5rem;\n  stroke: var(--grey2);\n}\n.Breadcrumbs_module_root__f527a278 button.Breadcrumbs_module_expand__f527a278[data-elem=base-cell] {\n  background: var(--grey6);\n  color: var(--dark-grey);\n  height: 0.75rem;\n  padding: 0.25rem;\n}\n.Breadcrumbs_module_root__f527a278 button.Breadcrumbs_module_expand__f527a278[data-elem=base-cell] [data-elem=title] {\n  margin-bottom: 0.4rem;\n}\n.Breadcrumbs_module_root__f527a278 .Breadcrumbs_module_crumb__f527a278 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  color: var(--grey2);\n}\n.Breadcrumbs_module_root__f527a278 .Breadcrumbs_module_crumb__f527a278.Breadcrumbs_module_active__f527a278 {\n  color: var(--black);\n}\n.Breadcrumbs_module_root__f527a278 .Breadcrumbs_module_crumb__f527a278:hover:not(.Breadcrumbs_module_active__f527a278) {\n  color: var(--info);\n}\n.Breadcrumbs_module_root__f527a278.Breadcrumbs_module_themeLight__f527a278 .Breadcrumbs_module_crumb__f527a278 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  color: var(--grey2);\n}\n.Breadcrumbs_module_root__f527a278.Breadcrumbs_module_themeLight__f527a278 .Breadcrumbs_module_crumb__f527a278.Breadcrumbs_module_active__f527a278 {\n  color: var(--black);\n}\n.Breadcrumbs_module_root__f527a278.Breadcrumbs_module_themeLight__f527a278 .Breadcrumbs_module_crumb__f527a278:hover:not(.Breadcrumbs_module_active__f527a278) {\n  color: var(--info);\n}\n.Breadcrumbs_module_root__f527a278.Breadcrumbs_module_themeDark__f527a278 .Breadcrumbs_module_crumb__f527a278 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  color: var(--grey2);\n}\n.Breadcrumbs_module_root__f527a278.Breadcrumbs_module_themeDark__f527a278 .Breadcrumbs_module_crumb__f527a278.Breadcrumbs_module_active__f527a278 {\n  color: var(--white);\n}\n.Breadcrumbs_module_root__f527a278.Breadcrumbs_module_themeDark__f527a278 .Breadcrumbs_module_crumb__f527a278:hover:not(.Breadcrumbs_module_active__f527a278) {\n  color: var(--info);\n}";
 var modules_651f50a9 = {"root":"Breadcrumbs_module_root__f527a278","seperator":"Breadcrumbs_module_seperator__f527a278","expand":"Breadcrumbs_module_expand__f527a278","crumb":"Breadcrumbs_module_crumb__f527a278","active":"Breadcrumbs_module_active__f527a278","theme-light":"Breadcrumbs_module_themeLight__f527a278","theme-dark":"Breadcrumbs_module_themeDark__f527a278"};
-n(css$O,{});
+n(css$Q,{});
 
-var css$N = ".Text_module_root__71f59b14 {\n  color: var(--dark-grey);\n}\n.Text_module_root__71f59b14.Text_module_h1__71f59b14 {\n  font-size: 2.25rem;\n  line-height: 2.75rem;\n}\n.Text_module_root__71f59b14.Text_module_h2__71f59b14 {\n  font-size: 1.375rem;\n  line-height: 1.688rem;\n}\n.Text_module_root__71f59b14.Text_module_b1__71f59b14 {\n  font-size: 1rem;\n  line-height: 1.188rem;\n}\n.Text_module_root__71f59b14.Text_module_b2__71f59b14 {\n  font-size: 0.875rem;\n  line-height: 1.188rem;\n}\n.Text_module_root__71f59b14.Text_module_b3__71f59b14 {\n  font-size: 0.75rem;\n  line-height: 1.063rem;\n}\n.Text_module_root__71f59b14.Text_module_regularStroke__71f59b14 {\n  font-weight: 400;\n}\n.Text_module_root__71f59b14.Text_module_mediumStroke__71f59b14 {\n  font-weight: 500;\n}\n.Text_module_root__71f59b14.Text_module_semiboldStroke__71f59b14 {\n  font-weight: 600;\n}\n.Text_module_root__71f59b14.Text_module_boldStroke__71f59b14 {\n  font-weight: 800;\n}";
+var css$P = ".Text_module_root__71f59b14 {\n  color: var(--dark-grey);\n}\n.Text_module_root__71f59b14.Text_module_h1__71f59b14 {\n  font-size: 2.25rem;\n  line-height: 2.75rem;\n}\n.Text_module_root__71f59b14.Text_module_h2__71f59b14 {\n  font-size: 1.375rem;\n  line-height: 1.688rem;\n}\n.Text_module_root__71f59b14.Text_module_b1__71f59b14 {\n  font-size: 1rem;\n  line-height: 1.188rem;\n}\n.Text_module_root__71f59b14.Text_module_b2__71f59b14 {\n  font-size: 0.875rem;\n  line-height: 1.188rem;\n}\n.Text_module_root__71f59b14.Text_module_b3__71f59b14 {\n  font-size: 0.75rem;\n  line-height: 1.063rem;\n}\n.Text_module_root__71f59b14.Text_module_regularStroke__71f59b14 {\n  font-weight: 400;\n}\n.Text_module_root__71f59b14.Text_module_mediumStroke__71f59b14 {\n  font-weight: 500;\n}\n.Text_module_root__71f59b14.Text_module_semiboldStroke__71f59b14 {\n  font-weight: 600;\n}\n.Text_module_root__71f59b14.Text_module_boldStroke__71f59b14 {\n  font-weight: 800;\n}";
 var modules_22fa3f10 = {"root":"Text_module_root__71f59b14","h1":"Text_module_h1__71f59b14","h2":"Text_module_h2__71f59b14","b1":"Text_module_b1__71f59b14","b2":"Text_module_b2__71f59b14","b3":"Text_module_b3__71f59b14","regular-stroke":"Text_module_regularStroke__71f59b14","medium-stroke":"Text_module_mediumStroke__71f59b14","semibold-stroke":"Text_module_semiboldStroke__71f59b14","bold-stroke":"Text_module_boldStroke__71f59b14"};
-n(css$N,{});
+n(css$P,{});
 
 // eslint-disable-next-line prefer-arrow-callback
 var Text = /*#__PURE__*/forwardRef(function Text(props, ref) {
@@ -7373,9 +7379,9 @@ Text.defaultProps = {
   attrs: {}
 };
 
-var css$M = ".Link_module_root__51df30d3 {\n  color: var(--highlight);\n  text-decoration: none;\n}\n.Link_module_root__51df30d3.Link_module_underlineNone__51df30d3 {\n  text-decoration: none;\n}\n.Link_module_root__51df30d3.Link_module_underlineHover__51df30d3:hover {\n  text-decoration: underline;\n}\n.Link_module_root__51df30d3.Link_module_underlineAlways__51df30d3 {\n  text-decoration: underline;\n}";
+var css$O = ".Link_module_root__51df30d3 {\n  color: var(--highlight);\n  text-decoration: none;\n}\n.Link_module_root__51df30d3.Link_module_underlineNone__51df30d3 {\n  text-decoration: none;\n}\n.Link_module_root__51df30d3.Link_module_underlineHover__51df30d3:hover {\n  text-decoration: underline;\n}\n.Link_module_root__51df30d3.Link_module_underlineAlways__51df30d3 {\n  text-decoration: underline;\n}";
 var modules_475441e2 = {"root":"Link_module_root__51df30d3","underline-none":"Link_module_underlineNone__51df30d3","underline-hover":"Link_module_underlineHover__51df30d3","underline-always":"Link_module_underlineAlways__51df30d3"};
-n(css$M,{});
+n(css$O,{});
 
 var Link = /*#__PURE__*/forwardRef(function Link(props, ref) {
   var variant = props.variant,
@@ -7712,7 +7718,7 @@ var checkForListedLanguage = (function (astGenerator, language) {
   return langs.indexOf(language) !== -1;
 });
 
-var _excluded$1 = ["language", "children", "style", "customStyle", "codeTagProps", "useInlineStyles", "showLineNumbers", "showInlineLineNumbers", "startingLineNumber", "lineNumberContainerStyle", "lineNumberStyle", "wrapLines", "wrapLongLines", "lineProps", "renderer", "PreTag", "CodeTag", "code", "astGenerator"];
+var _excluded$2 = ["language", "children", "style", "customStyle", "codeTagProps", "useInlineStyles", "showLineNumbers", "showInlineLineNumbers", "startingLineNumber", "lineNumberContainerStyle", "lineNumberStyle", "wrapLines", "wrapLongLines", "lineProps", "renderer", "PreTag", "CodeTag", "code", "astGenerator"];
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -8057,7 +8063,7 @@ function highlight$1 (defaultAstGenerator, defaultStyle) {
         _ref7$code = _ref7.code,
         code = _ref7$code === void 0 ? (Array.isArray(children) ? children[0] : children) || '' : _ref7$code,
         astGenerator = _ref7.astGenerator,
-        rest = _objectWithoutProperties(_ref7, _excluded$1);
+        rest = _objectWithoutProperties(_ref7, _excluded$2);
 
     astGenerator = astGenerator || defaultAstGenerator;
     var allLineNumbers = showLineNumbers ? /*#__PURE__*/React__default.createElement(AllLineNumbers, {
@@ -15826,10 +15832,10 @@ function markup$1(Prism) {
   Prism.languages.rss = Prism.languages.xml;
 }
 
-var css_1 = css$L;
-css$L.displayName = 'css';
-css$L.aliases = [];
-function css$L(Prism) {
+var css_1 = css$N;
+css$N.displayName = 'css';
+css$N.aliases = [];
+function css$N(Prism) {
 (function (Prism) {
     var string =
       /(?:"(?:\\(?:\r\n|[\s\S])|[^"\\\r\n])*"|'(?:\\(?:\r\n|[\s\S])|[^'\\\r\n])*')/;
@@ -16131,7 +16137,7 @@ var h = hastscript.exports;
 var decode$1 = parseEntities_1;
 var Prism = prismCore.exports;
 var markup = markup_1;
-var css$K = css_1;
+var css$M = css_1;
 var clike = clike_1;
 var js = javascript_1;
 
@@ -16159,7 +16165,7 @@ refract.listLanguages = listLanguages;
 
 // Register bundled grammars.
 register$1(markup);
-register$1(css$K);
+register$1(css$M);
 register$1(clike);
 register$1(js);
 
@@ -17232,126 +17238,134 @@ function c(Prism) {
   delete Prism.languages.c['boolean'];
 }
 
-var refractorC$1 = c_1;
-var cpp_1 = cpp;
-cpp.displayName = 'cpp';
-cpp.aliases = [];
-function cpp(Prism) {
-  Prism.register(refractorC$1)
-  ;(function (Prism) {
-    var keyword =
-      /\b(?:alignas|alignof|asm|auto|bool|break|case|catch|char|char16_t|char32_t|char8_t|class|co_await|co_return|co_yield|compl|concept|const|const_cast|consteval|constexpr|constinit|continue|decltype|default|delete|do|double|dynamic_cast|else|enum|explicit|export|extern|final|float|for|friend|goto|if|import|inline|int|int16_t|int32_t|int64_t|int8_t|long|module|mutable|namespace|new|noexcept|nullptr|operator|override|private|protected|public|register|reinterpret_cast|requires|return|short|signed|sizeof|static|static_assert|static_cast|struct|switch|template|this|thread_local|throw|try|typedef|typeid|typename|uint16_t|uint32_t|uint64_t|uint8_t|union|unsigned|using|virtual|void|volatile|wchar_t|while)\b/;
-    var modName = /\b(?!<keyword>)\w+(?:\s*\.\s*\w+)*\b/.source.replace(
-      /<keyword>/g,
-      function () {
-        return keyword.source
-      }
-    );
-    Prism.languages.cpp = Prism.languages.extend('c', {
-      'class-name': [
-        {
-          pattern: RegExp(
-            /(\b(?:class|concept|enum|struct|typename)\s+)(?!<keyword>)\w+/.source.replace(
-              /<keyword>/g,
-              function () {
-                return keyword.source
-              }
-            )
-          ),
-          lookbehind: true
-        }, // This is intended to capture the class name of method implementations like:
-        //   void foo::bar() const {}
-        // However! The `foo` in the above example could also be a namespace, so we only capture the class name if
-        // it starts with an uppercase letter. This approximation should give decent results.
-        /\b[A-Z]\w*(?=\s*::\s*\w+\s*\()/, // This will capture the class name before destructors like:
-        //   Foo::~Foo() {}
-        /\b[A-Z_]\w*(?=\s*::\s*~\w+\s*\()/i, // This also intends to capture the class name of method implementations but here the class has template
-        // parameters, so it can't be a namespace (until C++ adds generic namespaces).
-        /\b\w+(?=\s*<(?:[^<>]|<(?:[^<>]|<[^<>]*>)*>)*>\s*::\s*\w+\s*\()/
-      ],
-      keyword: keyword,
-      number: {
-        pattern:
-          /(?:\b0b[01']+|\b0x(?:[\da-f']+(?:\.[\da-f']*)?|\.[\da-f']+)(?:p[+-]?[\d']+)?|(?:\b[\d']+(?:\.[\d']*)?|\B\.[\d']+)(?:e[+-]?[\d']+)?)[ful]{0,4}/i,
-        greedy: true
-      },
-      operator:
-        />>=?|<<=?|->|--|\+\+|&&|\|\||[?:~]|<=>|[-+*/%&|^!=<>]=?|\b(?:and|and_eq|bitand|bitor|not|not_eq|or|or_eq|xor|xor_eq)\b/,
-      boolean: /\b(?:false|true)\b/
-    });
-    Prism.languages.insertBefore('cpp', 'string', {
-      module: {
-        // https://en.cppreference.com/w/cpp/language/modules
-        pattern: RegExp(
-          /(\b(?:import|module)\s+)/.source +
-            '(?:' + // header-name
-            /"(?:\\(?:\r\n|[\s\S])|[^"\\\r\n])*"|<[^<>\r\n]*>/.source +
-            '|' + // module name or partition or both
-            /<mod-name>(?:\s*:\s*<mod-name>)?|:\s*<mod-name>/.source.replace(
-              /<mod-name>/g,
-              function () {
-                return modName
-              }
-            ) +
-            ')'
-        ),
-        lookbehind: true,
-        greedy: true,
-        inside: {
-          string: /^[<"][\s\S]+/,
-          operator: /:/,
-          punctuation: /\./
-        }
-      },
-      'raw-string': {
-        pattern: /R"([^()\\ ]{0,16})\([\s\S]*?\)\1"/,
-        alias: 'string',
-        greedy: true
-      }
-    });
-    Prism.languages.insertBefore('cpp', 'keyword', {
-      'generic-function': {
-        pattern: /\b(?!operator\b)[a-z_]\w*\s*<(?:[^<>]|<[^<>]*>)*>(?=\s*\()/i,
-        inside: {
-          function: /^\w+/,
-          generic: {
-            pattern: /<[\s\S]+/,
-            alias: 'class-name',
-            inside: Prism.languages.cpp
-          }
-        }
-      }
-    });
-    Prism.languages.insertBefore('cpp', 'operator', {
-      'double-colon': {
-        pattern: /::/,
-        alias: 'punctuation'
-      }
-    });
-    Prism.languages.insertBefore('cpp', 'class-name', {
-      // the base clause is an optional list of parent classes
-      // https://en.cppreference.com/w/cpp/language/class
-      'base-clause': {
-        pattern:
-          /(\b(?:class|struct)\s+\w+\s*:\s*)[^;{}"'\s]+(?:\s+[^;{}"'\s]+)*(?=\s*[;{])/,
-        lookbehind: true,
-        greedy: true,
-        inside: Prism.languages.extend('cpp', {})
-      }
-    });
-    Prism.languages.insertBefore(
-      'inside',
-      'double-colon',
-      {
-        // All untokenized words that are not namespaces should be class names
-        'class-name': /\b[a-z_]\w*\b(?!\s*::)/i
-      },
-      Prism.languages.cpp['base-clause']
-    );
-  })(Prism);
+var cpp_1;
+var hasRequiredCpp;
+
+function requireCpp () {
+	if (hasRequiredCpp) return cpp_1;
+	hasRequiredCpp = 1;
+	var refractorC = c_1;
+	cpp_1 = cpp;
+	cpp.displayName = 'cpp';
+	cpp.aliases = [];
+	function cpp(Prism) {
+	  Prism.register(refractorC)
+	  ;(function (Prism) {
+	    var keyword =
+	      /\b(?:alignas|alignof|asm|auto|bool|break|case|catch|char|char16_t|char32_t|char8_t|class|co_await|co_return|co_yield|compl|concept|const|const_cast|consteval|constexpr|constinit|continue|decltype|default|delete|do|double|dynamic_cast|else|enum|explicit|export|extern|final|float|for|friend|goto|if|import|inline|int|int16_t|int32_t|int64_t|int8_t|long|module|mutable|namespace|new|noexcept|nullptr|operator|override|private|protected|public|register|reinterpret_cast|requires|return|short|signed|sizeof|static|static_assert|static_cast|struct|switch|template|this|thread_local|throw|try|typedef|typeid|typename|uint16_t|uint32_t|uint64_t|uint8_t|union|unsigned|using|virtual|void|volatile|wchar_t|while)\b/;
+	    var modName = /\b(?!<keyword>)\w+(?:\s*\.\s*\w+)*\b/.source.replace(
+	      /<keyword>/g,
+	      function () {
+	        return keyword.source
+	      }
+	    );
+	    Prism.languages.cpp = Prism.languages.extend('c', {
+	      'class-name': [
+	        {
+	          pattern: RegExp(
+	            /(\b(?:class|concept|enum|struct|typename)\s+)(?!<keyword>)\w+/.source.replace(
+	              /<keyword>/g,
+	              function () {
+	                return keyword.source
+	              }
+	            )
+	          ),
+	          lookbehind: true
+	        }, // This is intended to capture the class name of method implementations like:
+	        //   void foo::bar() const {}
+	        // However! The `foo` in the above example could also be a namespace, so we only capture the class name if
+	        // it starts with an uppercase letter. This approximation should give decent results.
+	        /\b[A-Z]\w*(?=\s*::\s*\w+\s*\()/, // This will capture the class name before destructors like:
+	        //   Foo::~Foo() {}
+	        /\b[A-Z_]\w*(?=\s*::\s*~\w+\s*\()/i, // This also intends to capture the class name of method implementations but here the class has template
+	        // parameters, so it can't be a namespace (until C++ adds generic namespaces).
+	        /\b\w+(?=\s*<(?:[^<>]|<(?:[^<>]|<[^<>]*>)*>)*>\s*::\s*\w+\s*\()/
+	      ],
+	      keyword: keyword,
+	      number: {
+	        pattern:
+	          /(?:\b0b[01']+|\b0x(?:[\da-f']+(?:\.[\da-f']*)?|\.[\da-f']+)(?:p[+-]?[\d']+)?|(?:\b[\d']+(?:\.[\d']*)?|\B\.[\d']+)(?:e[+-]?[\d']+)?)[ful]{0,4}/i,
+	        greedy: true
+	      },
+	      operator:
+	        />>=?|<<=?|->|--|\+\+|&&|\|\||[?:~]|<=>|[-+*/%&|^!=<>]=?|\b(?:and|and_eq|bitand|bitor|not|not_eq|or|or_eq|xor|xor_eq)\b/,
+	      boolean: /\b(?:false|true)\b/
+	    });
+	    Prism.languages.insertBefore('cpp', 'string', {
+	      module: {
+	        // https://en.cppreference.com/w/cpp/language/modules
+	        pattern: RegExp(
+	          /(\b(?:import|module)\s+)/.source +
+	            '(?:' + // header-name
+	            /"(?:\\(?:\r\n|[\s\S])|[^"\\\r\n])*"|<[^<>\r\n]*>/.source +
+	            '|' + // module name or partition or both
+	            /<mod-name>(?:\s*:\s*<mod-name>)?|:\s*<mod-name>/.source.replace(
+	              /<mod-name>/g,
+	              function () {
+	                return modName
+	              }
+	            ) +
+	            ')'
+	        ),
+	        lookbehind: true,
+	        greedy: true,
+	        inside: {
+	          string: /^[<"][\s\S]+/,
+	          operator: /:/,
+	          punctuation: /\./
+	        }
+	      },
+	      'raw-string': {
+	        pattern: /R"([^()\\ ]{0,16})\([\s\S]*?\)\1"/,
+	        alias: 'string',
+	        greedy: true
+	      }
+	    });
+	    Prism.languages.insertBefore('cpp', 'keyword', {
+	      'generic-function': {
+	        pattern: /\b(?!operator\b)[a-z_]\w*\s*<(?:[^<>]|<[^<>]*>)*>(?=\s*\()/i,
+	        inside: {
+	          function: /^\w+/,
+	          generic: {
+	            pattern: /<[\s\S]+/,
+	            alias: 'class-name',
+	            inside: Prism.languages.cpp
+	          }
+	        }
+	      }
+	    });
+	    Prism.languages.insertBefore('cpp', 'operator', {
+	      'double-colon': {
+	        pattern: /::/,
+	        alias: 'punctuation'
+	      }
+	    });
+	    Prism.languages.insertBefore('cpp', 'class-name', {
+	      // the base clause is an optional list of parent classes
+	      // https://en.cppreference.com/w/cpp/language/class
+	      'base-clause': {
+	        pattern:
+	          /(\b(?:class|struct)\s+\w+\s*:\s*)[^;{}"'\s]+(?:\s+[^;{}"'\s]+)*(?=\s*[;{])/,
+	        lookbehind: true,
+	        greedy: true,
+	        inside: Prism.languages.extend('cpp', {})
+	      }
+	    });
+	    Prism.languages.insertBefore(
+	      'inside',
+	      'double-colon',
+	      {
+	        // All untokenized words that are not namespaces should be class names
+	        'class-name': /\b[a-z_]\w*\b(?!\s*::)/i
+	      },
+	      Prism.languages.cpp['base-clause']
+	    );
+	  })(Prism);
+	}
+	return cpp_1;
 }
 
-var refractorCpp$1 = cpp_1;
+var refractorCpp$1 = requireCpp();
 var arduino_1 = arduino;
 arduino.displayName = 'arduino';
 arduino.aliases = ['ino'];
@@ -17695,470 +17709,479 @@ function asmatmel(Prism) {
   };
 }
 
-var csharp_1 = csharp;
-csharp.displayName = 'csharp';
-csharp.aliases = ['dotnet', 'cs'];
-function csharp(Prism) {
+var csharp_1;
+var hasRequiredCsharp;
+
+function requireCsharp () {
+	if (hasRequiredCsharp) return csharp_1;
+	hasRequiredCsharp = 1;
+
+	csharp_1 = csharp;
+	csharp.displayName = 'csharp';
+	csharp.aliases = ['dotnet', 'cs'];
+	function csharp(Prism) {
 (function (Prism) {
-    /**
-     * Replaces all placeholders "<<n>>" of given pattern with the n-th replacement (zero based).
-     *
-     * Note: This is a simple text based replacement. Be careful when using backreferences!
-     *
-     * @param {string} pattern the given pattern.
-     * @param {string[]} replacements a list of replacement which can be inserted into the given pattern.
-     * @returns {string} the pattern with all placeholders replaced with their corresponding replacements.
-     * @example replace(/a<<0>>a/.source, [/b+/.source]) === /a(?:b+)a/.source
-     */
-    function replace(pattern, replacements) {
-      return pattern.replace(/<<(\d+)>>/g, function (m, index) {
-        return '(?:' + replacements[+index] + ')'
-      })
-    }
-    /**
-     * @param {string} pattern
-     * @param {string[]} replacements
-     * @param {string} [flags]
-     * @returns {RegExp}
-     */
-    function re(pattern, replacements, flags) {
-      return RegExp(replace(pattern, replacements), flags || '')
-    }
-    /**
-     * Creates a nested pattern where all occurrences of the string `<<self>>` are replaced with the pattern itself.
-     *
-     * @param {string} pattern
-     * @param {number} depthLog2
-     * @returns {string}
-     */
-    function nested(pattern, depthLog2) {
-      for (var i = 0; i < depthLog2; i++) {
-        pattern = pattern.replace(/<<self>>/g, function () {
-          return '(?:' + pattern + ')'
-        });
-      }
-      return pattern.replace(/<<self>>/g, '[^\\s\\S]')
-    } // https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/
-    var keywordKinds = {
-      // keywords which represent a return or variable type
-      type: 'bool byte char decimal double dynamic float int long object sbyte short string uint ulong ushort var void',
-      // keywords which are used to declare a type
-      typeDeclaration: 'class enum interface record struct',
-      // contextual keywords
-      // ("var" and "dynamic" are missing because they are used like types)
-      contextual:
-        'add alias and ascending async await by descending from(?=\\s*(?:\\w|$)) get global group into init(?=\\s*;) join let nameof not notnull on or orderby partial remove select set unmanaged value when where with(?=\\s*{)',
-      // all other keywords
-      other:
-        'abstract as base break case catch checked const continue default delegate do else event explicit extern finally fixed for foreach goto if implicit in internal is lock namespace new null operator out override params private protected public readonly ref return sealed sizeof stackalloc static switch this throw try typeof unchecked unsafe using virtual volatile while yield'
-    }; // keywords
-    function keywordsToPattern(words) {
-      return '\\b(?:' + words.trim().replace(/ /g, '|') + ')\\b'
-    }
-    var typeDeclarationKeywords = keywordsToPattern(
-      keywordKinds.typeDeclaration
-    );
-    var keywords = RegExp(
-      keywordsToPattern(
-        keywordKinds.type +
-          ' ' +
-          keywordKinds.typeDeclaration +
-          ' ' +
-          keywordKinds.contextual +
-          ' ' +
-          keywordKinds.other
-      )
-    );
-    var nonTypeKeywords = keywordsToPattern(
-      keywordKinds.typeDeclaration +
-        ' ' +
-        keywordKinds.contextual +
-        ' ' +
-        keywordKinds.other
-    );
-    var nonContextualKeywords = keywordsToPattern(
-      keywordKinds.type +
-        ' ' +
-        keywordKinds.typeDeclaration +
-        ' ' +
-        keywordKinds.other
-    ); // types
-    var generic = nested(/<(?:[^<>;=+\-*/%&|^]|<<self>>)*>/.source, 2); // the idea behind the other forbidden characters is to prevent false positives. Same for tupleElement.
-    var nestedRound = nested(/\((?:[^()]|<<self>>)*\)/.source, 2);
-    var name = /@?\b[A-Za-z_]\w*\b/.source;
-    var genericName = replace(/<<0>>(?:\s*<<1>>)?/.source, [name, generic]);
-    var identifier = replace(/(?!<<0>>)<<1>>(?:\s*\.\s*<<1>>)*/.source, [
-      nonTypeKeywords,
-      genericName
-    ]);
-    var array = /\[\s*(?:,\s*)*\]/.source;
-    var typeExpressionWithoutTuple = replace(
-      /<<0>>(?:\s*(?:\?\s*)?<<1>>)*(?:\s*\?)?/.source,
-      [identifier, array]
-    );
-    var tupleElement = replace(
-      /[^,()<>[\];=+\-*/%&|^]|<<0>>|<<1>>|<<2>>/.source,
-      [generic, nestedRound, array]
-    );
-    var tuple = replace(/\(<<0>>+(?:,<<0>>+)+\)/.source, [tupleElement]);
-    var typeExpression = replace(
-      /(?:<<0>>|<<1>>)(?:\s*(?:\?\s*)?<<2>>)*(?:\s*\?)?/.source,
-      [tuple, identifier, array]
-    );
-    var typeInside = {
-      keyword: keywords,
-      punctuation: /[<>()?,.:[\]]/
-    }; // strings & characters
-    // https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/lexical-structure#character-literals
-    // https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/lexical-structure#string-literals
-    var character = /'(?:[^\r\n'\\]|\\.|\\[Uux][\da-fA-F]{1,8})'/.source; // simplified pattern
-    var regularString = /"(?:\\.|[^\\"\r\n])*"/.source;
-    var verbatimString = /@"(?:""|\\[\s\S]|[^\\"])*"(?!")/.source;
-    Prism.languages.csharp = Prism.languages.extend('clike', {
-      string: [
-        {
-          pattern: re(/(^|[^$\\])<<0>>/.source, [verbatimString]),
-          lookbehind: true,
-          greedy: true
-        },
-        {
-          pattern: re(/(^|[^@$\\])<<0>>/.source, [regularString]),
-          lookbehind: true,
-          greedy: true
-        }
-      ],
-      'class-name': [
-        {
-          // Using static
-          // using static System.Math;
-          pattern: re(/(\busing\s+static\s+)<<0>>(?=\s*;)/.source, [
-            identifier
-          ]),
-          lookbehind: true,
-          inside: typeInside
-        },
-        {
-          // Using alias (type)
-          // using Project = PC.MyCompany.Project;
-          pattern: re(/(\busing\s+<<0>>\s*=\s*)<<1>>(?=\s*;)/.source, [
-            name,
-            typeExpression
-          ]),
-          lookbehind: true,
-          inside: typeInside
-        },
-        {
-          // Using alias (alias)
-          // using Project = PC.MyCompany.Project;
-          pattern: re(/(\busing\s+)<<0>>(?=\s*=)/.source, [name]),
-          lookbehind: true
-        },
-        {
-          // Type declarations
-          // class Foo<A, B>
-          // interface Foo<out A, B>
-          pattern: re(/(\b<<0>>\s+)<<1>>/.source, [
-            typeDeclarationKeywords,
-            genericName
-          ]),
-          lookbehind: true,
-          inside: typeInside
-        },
-        {
-          // Single catch exception declaration
-          // catch(Foo)
-          // (things like catch(Foo e) is covered by variable declaration)
-          pattern: re(/(\bcatch\s*\(\s*)<<0>>/.source, [identifier]),
-          lookbehind: true,
-          inside: typeInside
-        },
-        {
-          // Name of the type parameter of generic constraints
-          // where Foo : class
-          pattern: re(/(\bwhere\s+)<<0>>/.source, [name]),
-          lookbehind: true
-        },
-        {
-          // Casts and checks via as and is.
-          // as Foo<A>, is Bar<B>
-          // (things like if(a is Foo b) is covered by variable declaration)
-          pattern: re(/(\b(?:is(?:\s+not)?|as)\s+)<<0>>/.source, [
-            typeExpressionWithoutTuple
-          ]),
-          lookbehind: true,
-          inside: typeInside
-        },
-        {
-          // Variable, field and parameter declaration
-          // (Foo bar, Bar baz, Foo[,,] bay, Foo<Bar, FooBar<Bar>> bax)
-          pattern: re(
-            /\b<<0>>(?=\s+(?!<<1>>|with\s*\{)<<2>>(?:\s*[=,;:{)\]]|\s+(?:in|when)\b))/
-              .source,
-            [typeExpression, nonContextualKeywords, name]
-          ),
-          inside: typeInside
-        }
-      ],
-      keyword: keywords,
-      // https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/lexical-structure#literals
-      number:
-        /(?:\b0(?:x[\da-f_]*[\da-f]|b[01_]*[01])|(?:\B\.\d+(?:_+\d+)*|\b\d+(?:_+\d+)*(?:\.\d+(?:_+\d+)*)?)(?:e[-+]?\d+(?:_+\d+)*)?)(?:[dflmu]|lu|ul)?\b/i,
-      operator: />>=?|<<=?|[-=]>|([-+&|])\1|~|\?\?=?|[-+*/%&|^!=<>]=?/,
-      punctuation: /\?\.?|::|[{}[\];(),.:]/
-    });
-    Prism.languages.insertBefore('csharp', 'number', {
-      range: {
-        pattern: /\.\./,
-        alias: 'operator'
-      }
-    });
-    Prism.languages.insertBefore('csharp', 'punctuation', {
-      'named-parameter': {
-        pattern: re(/([(,]\s*)<<0>>(?=\s*:)/.source, [name]),
-        lookbehind: true,
-        alias: 'punctuation'
-      }
-    });
-    Prism.languages.insertBefore('csharp', 'class-name', {
-      namespace: {
-        // namespace Foo.Bar {}
-        // using Foo.Bar;
-        pattern: re(
-          /(\b(?:namespace|using)\s+)<<0>>(?:\s*\.\s*<<0>>)*(?=\s*[;{])/.source,
-          [name]
-        ),
-        lookbehind: true,
-        inside: {
-          punctuation: /\./
-        }
-      },
-      'type-expression': {
-        // default(Foo), typeof(Foo<Bar>), sizeof(int)
-        pattern: re(
-          /(\b(?:default|sizeof|typeof)\s*\(\s*(?!\s))(?:[^()\s]|\s(?!\s)|<<0>>)*(?=\s*\))/
-            .source,
-          [nestedRound]
-        ),
-        lookbehind: true,
-        alias: 'class-name',
-        inside: typeInside
-      },
-      'return-type': {
-        // Foo<Bar> ForBar(); Foo IFoo.Bar() => 0
-        // int this[int index] => 0; T IReadOnlyList<T>.this[int index] => this[index];
-        // int Foo => 0; int Foo { get; set } = 0;
-        pattern: re(
-          /<<0>>(?=\s+(?:<<1>>\s*(?:=>|[({]|\.\s*this\s*\[)|this\s*\[))/.source,
-          [typeExpression, identifier]
-        ),
-        inside: typeInside,
-        alias: 'class-name'
-      },
-      'constructor-invocation': {
-        // new List<Foo<Bar[]>> { }
-        pattern: re(/(\bnew\s+)<<0>>(?=\s*[[({])/.source, [typeExpression]),
-        lookbehind: true,
-        inside: typeInside,
-        alias: 'class-name'
-      },
-      /*'explicit-implementation': {
-// int IFoo<Foo>.Bar => 0; void IFoo<Foo<Foo>>.Foo<T>();
-pattern: replace(/\b<<0>>(?=\.<<1>>)/, className, methodOrPropertyDeclaration),
-inside: classNameInside,
-alias: 'class-name'
-},*/
-      'generic-method': {
-        // foo<Bar>()
-        pattern: re(/<<0>>\s*<<1>>(?=\s*\()/.source, [name, generic]),
-        inside: {
-          function: re(/^<<0>>/.source, [name]),
-          generic: {
-            pattern: RegExp(generic),
-            alias: 'class-name',
-            inside: typeInside
-          }
-        }
-      },
-      'type-list': {
-        // The list of types inherited or of generic constraints
-        // class Foo<F> : Bar, IList<FooBar>
-        // where F : Bar, IList<int>
-        pattern: re(
-          /\b((?:<<0>>\s+<<1>>|record\s+<<1>>\s*<<5>>|where\s+<<2>>)\s*:\s*)(?:<<3>>|<<4>>|<<1>>\s*<<5>>|<<6>>)(?:\s*,\s*(?:<<3>>|<<4>>|<<6>>))*(?=\s*(?:where|[{;]|=>|$))/
-            .source,
-          [
-            typeDeclarationKeywords,
-            genericName,
-            name,
-            typeExpression,
-            keywords.source,
-            nestedRound,
-            /\bnew\s*\(\s*\)/.source
-          ]
-        ),
-        lookbehind: true,
-        inside: {
-          'record-arguments': {
-            pattern: re(/(^(?!new\s*\()<<0>>\s*)<<1>>/.source, [
-              genericName,
-              nestedRound
-            ]),
-            lookbehind: true,
-            greedy: true,
-            inside: Prism.languages.csharp
-          },
-          keyword: keywords,
-          'class-name': {
-            pattern: RegExp(typeExpression),
-            greedy: true,
-            inside: typeInside
-          },
-          punctuation: /[,()]/
-        }
-      },
-      preprocessor: {
-        pattern: /(^[\t ]*)#.*/m,
-        lookbehind: true,
-        alias: 'property',
-        inside: {
-          // highlight preprocessor directives as keywords
-          directive: {
-            pattern:
-              /(#)\b(?:define|elif|else|endif|endregion|error|if|line|nullable|pragma|region|undef|warning)\b/,
-            lookbehind: true,
-            alias: 'keyword'
-          }
-        }
-      }
-    }); // attributes
-    var regularStringOrCharacter = regularString + '|' + character;
-    var regularStringCharacterOrComment = replace(
-      /\/(?![*/])|\/\/[^\r\n]*[\r\n]|\/\*(?:[^*]|\*(?!\/))*\*\/|<<0>>/.source,
-      [regularStringOrCharacter]
-    );
-    var roundExpression = nested(
-      replace(/[^"'/()]|<<0>>|\(<<self>>*\)/.source, [
-        regularStringCharacterOrComment
-      ]),
-      2
-    ); // https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/attributes/#attribute-targets
-    var attrTarget =
-      /\b(?:assembly|event|field|method|module|param|property|return|type)\b/
-        .source;
-    var attr = replace(/<<0>>(?:\s*\(<<1>>*\))?/.source, [
-      identifier,
-      roundExpression
-    ]);
-    Prism.languages.insertBefore('csharp', 'class-name', {
-      attribute: {
-        // Attributes
-        // [Foo], [Foo(1), Bar(2, Prop = "foo")], [return: Foo(1), Bar(2)], [assembly: Foo(Bar)]
-        pattern: re(
-          /((?:^|[^\s\w>)?])\s*\[\s*)(?:<<0>>\s*:\s*)?<<1>>(?:\s*,\s*<<1>>)*(?=\s*\])/
-            .source,
-          [attrTarget, attr]
-        ),
-        lookbehind: true,
-        greedy: true,
-        inside: {
-          target: {
-            pattern: re(/^<<0>>(?=\s*:)/.source, [attrTarget]),
-            alias: 'keyword'
-          },
-          'attribute-arguments': {
-            pattern: re(/\(<<0>>*\)/.source, [roundExpression]),
-            inside: Prism.languages.csharp
-          },
-          'class-name': {
-            pattern: RegExp(identifier),
-            inside: {
-              punctuation: /\./
-            }
-          },
-          punctuation: /[:,]/
-        }
-      }
-    }); // string interpolation
-    var formatString = /:[^}\r\n]+/.source; // multi line
-    var mInterpolationRound = nested(
-      replace(/[^"'/()]|<<0>>|\(<<self>>*\)/.source, [
-        regularStringCharacterOrComment
-      ]),
-      2
-    );
-    var mInterpolation = replace(/\{(?!\{)(?:(?![}:])<<0>>)*<<1>>?\}/.source, [
-      mInterpolationRound,
-      formatString
-    ]); // single line
-    var sInterpolationRound = nested(
-      replace(
-        /[^"'/()]|\/(?!\*)|\/\*(?:[^*]|\*(?!\/))*\*\/|<<0>>|\(<<self>>*\)/
-          .source,
-        [regularStringOrCharacter]
-      ),
-      2
-    );
-    var sInterpolation = replace(/\{(?!\{)(?:(?![}:])<<0>>)*<<1>>?\}/.source, [
-      sInterpolationRound,
-      formatString
-    ]);
-    function createInterpolationInside(interpolation, interpolationRound) {
-      return {
-        interpolation: {
-          pattern: re(/((?:^|[^{])(?:\{\{)*)<<0>>/.source, [interpolation]),
-          lookbehind: true,
-          inside: {
-            'format-string': {
-              pattern: re(/(^\{(?:(?![}:])<<0>>)*)<<1>>(?=\}$)/.source, [
-                interpolationRound,
-                formatString
-              ]),
-              lookbehind: true,
-              inside: {
-                punctuation: /^:/
-              }
-            },
-            punctuation: /^\{|\}$/,
-            expression: {
-              pattern: /[\s\S]+/,
-              alias: 'language-csharp',
-              inside: Prism.languages.csharp
-            }
-          }
-        },
-        string: /[\s\S]+/
-      }
-    }
-    Prism.languages.insertBefore('csharp', 'string', {
-      'interpolation-string': [
-        {
-          pattern: re(
-            /(^|[^\\])(?:\$@|@\$)"(?:""|\\[\s\S]|\{\{|<<0>>|[^\\{"])*"/.source,
-            [mInterpolation]
-          ),
-          lookbehind: true,
-          greedy: true,
-          inside: createInterpolationInside(mInterpolation, mInterpolationRound)
-        },
-        {
-          pattern: re(/(^|[^@\\])\$"(?:\\.|\{\{|<<0>>|[^\\"{])*"/.source, [
-            sInterpolation
-          ]),
-          lookbehind: true,
-          greedy: true,
-          inside: createInterpolationInside(sInterpolation, sInterpolationRound)
-        }
-      ],
-      char: {
-        pattern: RegExp(character),
-        greedy: true
-      }
-    });
-    Prism.languages.dotnet = Prism.languages.cs = Prism.languages.csharp;
-  })(Prism);
+	    /**
+	     * Replaces all placeholders "<<n>>" of given pattern with the n-th replacement (zero based).
+	     *
+	     * Note: This is a simple text based replacement. Be careful when using backreferences!
+	     *
+	     * @param {string} pattern the given pattern.
+	     * @param {string[]} replacements a list of replacement which can be inserted into the given pattern.
+	     * @returns {string} the pattern with all placeholders replaced with their corresponding replacements.
+	     * @example replace(/a<<0>>a/.source, [/b+/.source]) === /a(?:b+)a/.source
+	     */
+	    function replace(pattern, replacements) {
+	      return pattern.replace(/<<(\d+)>>/g, function (m, index) {
+	        return '(?:' + replacements[+index] + ')'
+	      })
+	    }
+	    /**
+	     * @param {string} pattern
+	     * @param {string[]} replacements
+	     * @param {string} [flags]
+	     * @returns {RegExp}
+	     */
+	    function re(pattern, replacements, flags) {
+	      return RegExp(replace(pattern, replacements), flags || '')
+	    }
+	    /**
+	     * Creates a nested pattern where all occurrences of the string `<<self>>` are replaced with the pattern itself.
+	     *
+	     * @param {string} pattern
+	     * @param {number} depthLog2
+	     * @returns {string}
+	     */
+	    function nested(pattern, depthLog2) {
+	      for (var i = 0; i < depthLog2; i++) {
+	        pattern = pattern.replace(/<<self>>/g, function () {
+	          return '(?:' + pattern + ')'
+	        });
+	      }
+	      return pattern.replace(/<<self>>/g, '[^\\s\\S]')
+	    } // https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/
+	    var keywordKinds = {
+	      // keywords which represent a return or variable type
+	      type: 'bool byte char decimal double dynamic float int long object sbyte short string uint ulong ushort var void',
+	      // keywords which are used to declare a type
+	      typeDeclaration: 'class enum interface record struct',
+	      // contextual keywords
+	      // ("var" and "dynamic" are missing because they are used like types)
+	      contextual:
+	        'add alias and ascending async await by descending from(?=\\s*(?:\\w|$)) get global group into init(?=\\s*;) join let nameof not notnull on or orderby partial remove select set unmanaged value when where with(?=\\s*{)',
+	      // all other keywords
+	      other:
+	        'abstract as base break case catch checked const continue default delegate do else event explicit extern finally fixed for foreach goto if implicit in internal is lock namespace new null operator out override params private protected public readonly ref return sealed sizeof stackalloc static switch this throw try typeof unchecked unsafe using virtual volatile while yield'
+	    }; // keywords
+	    function keywordsToPattern(words) {
+	      return '\\b(?:' + words.trim().replace(/ /g, '|') + ')\\b'
+	    }
+	    var typeDeclarationKeywords = keywordsToPattern(
+	      keywordKinds.typeDeclaration
+	    );
+	    var keywords = RegExp(
+	      keywordsToPattern(
+	        keywordKinds.type +
+	          ' ' +
+	          keywordKinds.typeDeclaration +
+	          ' ' +
+	          keywordKinds.contextual +
+	          ' ' +
+	          keywordKinds.other
+	      )
+	    );
+	    var nonTypeKeywords = keywordsToPattern(
+	      keywordKinds.typeDeclaration +
+	        ' ' +
+	        keywordKinds.contextual +
+	        ' ' +
+	        keywordKinds.other
+	    );
+	    var nonContextualKeywords = keywordsToPattern(
+	      keywordKinds.type +
+	        ' ' +
+	        keywordKinds.typeDeclaration +
+	        ' ' +
+	        keywordKinds.other
+	    ); // types
+	    var generic = nested(/<(?:[^<>;=+\-*/%&|^]|<<self>>)*>/.source, 2); // the idea behind the other forbidden characters is to prevent false positives. Same for tupleElement.
+	    var nestedRound = nested(/\((?:[^()]|<<self>>)*\)/.source, 2);
+	    var name = /@?\b[A-Za-z_]\w*\b/.source;
+	    var genericName = replace(/<<0>>(?:\s*<<1>>)?/.source, [name, generic]);
+	    var identifier = replace(/(?!<<0>>)<<1>>(?:\s*\.\s*<<1>>)*/.source, [
+	      nonTypeKeywords,
+	      genericName
+	    ]);
+	    var array = /\[\s*(?:,\s*)*\]/.source;
+	    var typeExpressionWithoutTuple = replace(
+	      /<<0>>(?:\s*(?:\?\s*)?<<1>>)*(?:\s*\?)?/.source,
+	      [identifier, array]
+	    );
+	    var tupleElement = replace(
+	      /[^,()<>[\];=+\-*/%&|^]|<<0>>|<<1>>|<<2>>/.source,
+	      [generic, nestedRound, array]
+	    );
+	    var tuple = replace(/\(<<0>>+(?:,<<0>>+)+\)/.source, [tupleElement]);
+	    var typeExpression = replace(
+	      /(?:<<0>>|<<1>>)(?:\s*(?:\?\s*)?<<2>>)*(?:\s*\?)?/.source,
+	      [tuple, identifier, array]
+	    );
+	    var typeInside = {
+	      keyword: keywords,
+	      punctuation: /[<>()?,.:[\]]/
+	    }; // strings & characters
+	    // https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/lexical-structure#character-literals
+	    // https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/lexical-structure#string-literals
+	    var character = /'(?:[^\r\n'\\]|\\.|\\[Uux][\da-fA-F]{1,8})'/.source; // simplified pattern
+	    var regularString = /"(?:\\.|[^\\"\r\n])*"/.source;
+	    var verbatimString = /@"(?:""|\\[\s\S]|[^\\"])*"(?!")/.source;
+	    Prism.languages.csharp = Prism.languages.extend('clike', {
+	      string: [
+	        {
+	          pattern: re(/(^|[^$\\])<<0>>/.source, [verbatimString]),
+	          lookbehind: true,
+	          greedy: true
+	        },
+	        {
+	          pattern: re(/(^|[^@$\\])<<0>>/.source, [regularString]),
+	          lookbehind: true,
+	          greedy: true
+	        }
+	      ],
+	      'class-name': [
+	        {
+	          // Using static
+	          // using static System.Math;
+	          pattern: re(/(\busing\s+static\s+)<<0>>(?=\s*;)/.source, [
+	            identifier
+	          ]),
+	          lookbehind: true,
+	          inside: typeInside
+	        },
+	        {
+	          // Using alias (type)
+	          // using Project = PC.MyCompany.Project;
+	          pattern: re(/(\busing\s+<<0>>\s*=\s*)<<1>>(?=\s*;)/.source, [
+	            name,
+	            typeExpression
+	          ]),
+	          lookbehind: true,
+	          inside: typeInside
+	        },
+	        {
+	          // Using alias (alias)
+	          // using Project = PC.MyCompany.Project;
+	          pattern: re(/(\busing\s+)<<0>>(?=\s*=)/.source, [name]),
+	          lookbehind: true
+	        },
+	        {
+	          // Type declarations
+	          // class Foo<A, B>
+	          // interface Foo<out A, B>
+	          pattern: re(/(\b<<0>>\s+)<<1>>/.source, [
+	            typeDeclarationKeywords,
+	            genericName
+	          ]),
+	          lookbehind: true,
+	          inside: typeInside
+	        },
+	        {
+	          // Single catch exception declaration
+	          // catch(Foo)
+	          // (things like catch(Foo e) is covered by variable declaration)
+	          pattern: re(/(\bcatch\s*\(\s*)<<0>>/.source, [identifier]),
+	          lookbehind: true,
+	          inside: typeInside
+	        },
+	        {
+	          // Name of the type parameter of generic constraints
+	          // where Foo : class
+	          pattern: re(/(\bwhere\s+)<<0>>/.source, [name]),
+	          lookbehind: true
+	        },
+	        {
+	          // Casts and checks via as and is.
+	          // as Foo<A>, is Bar<B>
+	          // (things like if(a is Foo b) is covered by variable declaration)
+	          pattern: re(/(\b(?:is(?:\s+not)?|as)\s+)<<0>>/.source, [
+	            typeExpressionWithoutTuple
+	          ]),
+	          lookbehind: true,
+	          inside: typeInside
+	        },
+	        {
+	          // Variable, field and parameter declaration
+	          // (Foo bar, Bar baz, Foo[,,] bay, Foo<Bar, FooBar<Bar>> bax)
+	          pattern: re(
+	            /\b<<0>>(?=\s+(?!<<1>>|with\s*\{)<<2>>(?:\s*[=,;:{)\]]|\s+(?:in|when)\b))/
+	              .source,
+	            [typeExpression, nonContextualKeywords, name]
+	          ),
+	          inside: typeInside
+	        }
+	      ],
+	      keyword: keywords,
+	      // https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/lexical-structure#literals
+	      number:
+	        /(?:\b0(?:x[\da-f_]*[\da-f]|b[01_]*[01])|(?:\B\.\d+(?:_+\d+)*|\b\d+(?:_+\d+)*(?:\.\d+(?:_+\d+)*)?)(?:e[-+]?\d+(?:_+\d+)*)?)(?:[dflmu]|lu|ul)?\b/i,
+	      operator: />>=?|<<=?|[-=]>|([-+&|])\1|~|\?\?=?|[-+*/%&|^!=<>]=?/,
+	      punctuation: /\?\.?|::|[{}[\];(),.:]/
+	    });
+	    Prism.languages.insertBefore('csharp', 'number', {
+	      range: {
+	        pattern: /\.\./,
+	        alias: 'operator'
+	      }
+	    });
+	    Prism.languages.insertBefore('csharp', 'punctuation', {
+	      'named-parameter': {
+	        pattern: re(/([(,]\s*)<<0>>(?=\s*:)/.source, [name]),
+	        lookbehind: true,
+	        alias: 'punctuation'
+	      }
+	    });
+	    Prism.languages.insertBefore('csharp', 'class-name', {
+	      namespace: {
+	        // namespace Foo.Bar {}
+	        // using Foo.Bar;
+	        pattern: re(
+	          /(\b(?:namespace|using)\s+)<<0>>(?:\s*\.\s*<<0>>)*(?=\s*[;{])/.source,
+	          [name]
+	        ),
+	        lookbehind: true,
+	        inside: {
+	          punctuation: /\./
+	        }
+	      },
+	      'type-expression': {
+	        // default(Foo), typeof(Foo<Bar>), sizeof(int)
+	        pattern: re(
+	          /(\b(?:default|sizeof|typeof)\s*\(\s*(?!\s))(?:[^()\s]|\s(?!\s)|<<0>>)*(?=\s*\))/
+	            .source,
+	          [nestedRound]
+	        ),
+	        lookbehind: true,
+	        alias: 'class-name',
+	        inside: typeInside
+	      },
+	      'return-type': {
+	        // Foo<Bar> ForBar(); Foo IFoo.Bar() => 0
+	        // int this[int index] => 0; T IReadOnlyList<T>.this[int index] => this[index];
+	        // int Foo => 0; int Foo { get; set } = 0;
+	        pattern: re(
+	          /<<0>>(?=\s+(?:<<1>>\s*(?:=>|[({]|\.\s*this\s*\[)|this\s*\[))/.source,
+	          [typeExpression, identifier]
+	        ),
+	        inside: typeInside,
+	        alias: 'class-name'
+	      },
+	      'constructor-invocation': {
+	        // new List<Foo<Bar[]>> { }
+	        pattern: re(/(\bnew\s+)<<0>>(?=\s*[[({])/.source, [typeExpression]),
+	        lookbehind: true,
+	        inside: typeInside,
+	        alias: 'class-name'
+	      },
+	      /*'explicit-implementation': {
+	// int IFoo<Foo>.Bar => 0; void IFoo<Foo<Foo>>.Foo<T>();
+	pattern: replace(/\b<<0>>(?=\.<<1>>)/, className, methodOrPropertyDeclaration),
+	inside: classNameInside,
+	alias: 'class-name'
+	},*/
+	      'generic-method': {
+	        // foo<Bar>()
+	        pattern: re(/<<0>>\s*<<1>>(?=\s*\()/.source, [name, generic]),
+	        inside: {
+	          function: re(/^<<0>>/.source, [name]),
+	          generic: {
+	            pattern: RegExp(generic),
+	            alias: 'class-name',
+	            inside: typeInside
+	          }
+	        }
+	      },
+	      'type-list': {
+	        // The list of types inherited or of generic constraints
+	        // class Foo<F> : Bar, IList<FooBar>
+	        // where F : Bar, IList<int>
+	        pattern: re(
+	          /\b((?:<<0>>\s+<<1>>|record\s+<<1>>\s*<<5>>|where\s+<<2>>)\s*:\s*)(?:<<3>>|<<4>>|<<1>>\s*<<5>>|<<6>>)(?:\s*,\s*(?:<<3>>|<<4>>|<<6>>))*(?=\s*(?:where|[{;]|=>|$))/
+	            .source,
+	          [
+	            typeDeclarationKeywords,
+	            genericName,
+	            name,
+	            typeExpression,
+	            keywords.source,
+	            nestedRound,
+	            /\bnew\s*\(\s*\)/.source
+	          ]
+	        ),
+	        lookbehind: true,
+	        inside: {
+	          'record-arguments': {
+	            pattern: re(/(^(?!new\s*\()<<0>>\s*)<<1>>/.source, [
+	              genericName,
+	              nestedRound
+	            ]),
+	            lookbehind: true,
+	            greedy: true,
+	            inside: Prism.languages.csharp
+	          },
+	          keyword: keywords,
+	          'class-name': {
+	            pattern: RegExp(typeExpression),
+	            greedy: true,
+	            inside: typeInside
+	          },
+	          punctuation: /[,()]/
+	        }
+	      },
+	      preprocessor: {
+	        pattern: /(^[\t ]*)#.*/m,
+	        lookbehind: true,
+	        alias: 'property',
+	        inside: {
+	          // highlight preprocessor directives as keywords
+	          directive: {
+	            pattern:
+	              /(#)\b(?:define|elif|else|endif|endregion|error|if|line|nullable|pragma|region|undef|warning)\b/,
+	            lookbehind: true,
+	            alias: 'keyword'
+	          }
+	        }
+	      }
+	    }); // attributes
+	    var regularStringOrCharacter = regularString + '|' + character;
+	    var regularStringCharacterOrComment = replace(
+	      /\/(?![*/])|\/\/[^\r\n]*[\r\n]|\/\*(?:[^*]|\*(?!\/))*\*\/|<<0>>/.source,
+	      [regularStringOrCharacter]
+	    );
+	    var roundExpression = nested(
+	      replace(/[^"'/()]|<<0>>|\(<<self>>*\)/.source, [
+	        regularStringCharacterOrComment
+	      ]),
+	      2
+	    ); // https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/attributes/#attribute-targets
+	    var attrTarget =
+	      /\b(?:assembly|event|field|method|module|param|property|return|type)\b/
+	        .source;
+	    var attr = replace(/<<0>>(?:\s*\(<<1>>*\))?/.source, [
+	      identifier,
+	      roundExpression
+	    ]);
+	    Prism.languages.insertBefore('csharp', 'class-name', {
+	      attribute: {
+	        // Attributes
+	        // [Foo], [Foo(1), Bar(2, Prop = "foo")], [return: Foo(1), Bar(2)], [assembly: Foo(Bar)]
+	        pattern: re(
+	          /((?:^|[^\s\w>)?])\s*\[\s*)(?:<<0>>\s*:\s*)?<<1>>(?:\s*,\s*<<1>>)*(?=\s*\])/
+	            .source,
+	          [attrTarget, attr]
+	        ),
+	        lookbehind: true,
+	        greedy: true,
+	        inside: {
+	          target: {
+	            pattern: re(/^<<0>>(?=\s*:)/.source, [attrTarget]),
+	            alias: 'keyword'
+	          },
+	          'attribute-arguments': {
+	            pattern: re(/\(<<0>>*\)/.source, [roundExpression]),
+	            inside: Prism.languages.csharp
+	          },
+	          'class-name': {
+	            pattern: RegExp(identifier),
+	            inside: {
+	              punctuation: /\./
+	            }
+	          },
+	          punctuation: /[:,]/
+	        }
+	      }
+	    }); // string interpolation
+	    var formatString = /:[^}\r\n]+/.source; // multi line
+	    var mInterpolationRound = nested(
+	      replace(/[^"'/()]|<<0>>|\(<<self>>*\)/.source, [
+	        regularStringCharacterOrComment
+	      ]),
+	      2
+	    );
+	    var mInterpolation = replace(/\{(?!\{)(?:(?![}:])<<0>>)*<<1>>?\}/.source, [
+	      mInterpolationRound,
+	      formatString
+	    ]); // single line
+	    var sInterpolationRound = nested(
+	      replace(
+	        /[^"'/()]|\/(?!\*)|\/\*(?:[^*]|\*(?!\/))*\*\/|<<0>>|\(<<self>>*\)/
+	          .source,
+	        [regularStringOrCharacter]
+	      ),
+	      2
+	    );
+	    var sInterpolation = replace(/\{(?!\{)(?:(?![}:])<<0>>)*<<1>>?\}/.source, [
+	      sInterpolationRound,
+	      formatString
+	    ]);
+	    function createInterpolationInside(interpolation, interpolationRound) {
+	      return {
+	        interpolation: {
+	          pattern: re(/((?:^|[^{])(?:\{\{)*)<<0>>/.source, [interpolation]),
+	          lookbehind: true,
+	          inside: {
+	            'format-string': {
+	              pattern: re(/(^\{(?:(?![}:])<<0>>)*)<<1>>(?=\}$)/.source, [
+	                interpolationRound,
+	                formatString
+	              ]),
+	              lookbehind: true,
+	              inside: {
+	                punctuation: /^:/
+	              }
+	            },
+	            punctuation: /^\{|\}$/,
+	            expression: {
+	              pattern: /[\s\S]+/,
+	              alias: 'language-csharp',
+	              inside: Prism.languages.csharp
+	            }
+	          }
+	        },
+	        string: /[\s\S]+/
+	      }
+	    }
+	    Prism.languages.insertBefore('csharp', 'string', {
+	      'interpolation-string': [
+	        {
+	          pattern: re(
+	            /(^|[^\\])(?:\$@|@\$)"(?:""|\\[\s\S]|\{\{|<<0>>|[^\\{"])*"/.source,
+	            [mInterpolation]
+	          ),
+	          lookbehind: true,
+	          greedy: true,
+	          inside: createInterpolationInside(mInterpolation, mInterpolationRound)
+	        },
+	        {
+	          pattern: re(/(^|[^@\\])\$"(?:\\.|\{\{|<<0>>|[^\\"{])*"/.source, [
+	            sInterpolation
+	          ]),
+	          lookbehind: true,
+	          greedy: true,
+	          inside: createInterpolationInside(sInterpolation, sInterpolationRound)
+	        }
+	      ],
+	      char: {
+	        pattern: RegExp(character),
+	        greedy: true
+	      }
+	    });
+	    Prism.languages.dotnet = Prism.languages.cs = Prism.languages.csharp;
+	  })(Prism);
+	}
+	return csharp_1;
 }
 
-var refractorCsharp = csharp_1;
+var refractorCsharp = requireCsharp();
 var aspnet_1 = aspnet;
 aspnet.displayName = 'aspnet';
 aspnet.aliases = [];
@@ -19352,7 +19375,7 @@ function cfscript(Prism) {
   Prism.languages.cfc = Prism.languages['cfscript'];
 }
 
-var refractorCpp = cpp_1;
+var refractorCpp = requireCpp();
 var chaiscript_1 = chaiscript;
 chaiscript.displayName = 'chaiscript';
 chaiscript.aliases = [];
@@ -19419,40 +19442,31 @@ function chaiscript(Prism) {
   });
 }
 
-var cil_1;
-var hasRequiredCil;
-
-function requireCil () {
-	if (hasRequiredCil) return cil_1;
-	hasRequiredCil = 1;
-
-	cil_1 = cil;
-	cil.displayName = 'cil';
-	cil.aliases = [];
-	function cil(Prism) {
-	  Prism.languages.cil = {
-	    comment: /\/\/.*/,
-	    string: {
-	      pattern: /(["'])(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/,
-	      greedy: true
-	    },
-	    directive: {
-	      pattern: /(^|\W)\.[a-z]+(?=\s)/,
-	      lookbehind: true,
-	      alias: 'class-name'
-	    },
-	    // Actually an assembly reference
-	    variable: /\[[\w\.]+\]/,
-	    keyword:
-	      /\b(?:abstract|ansi|assembly|auto|autochar|beforefieldinit|bool|bstr|byvalstr|catch|char|cil|class|currency|date|decimal|default|enum|error|explicit|extends|extern|famandassem|family|famorassem|final(?:ly)?|float32|float64|hidebysig|u?int(?:8|16|32|64)?|iant|idispatch|implements|import|initonly|instance|interface|iunknown|literal|lpstr|lpstruct|lptstr|lpwstr|managed|method|native(?:Type)?|nested|newslot|object(?:ref)?|pinvokeimpl|private|privatescope|public|reqsecobj|rtspecialname|runtime|sealed|sequential|serializable|specialname|static|string|struct|syschar|tbstr|unicode|unmanagedexp|unsigned|value(?:type)?|variant|virtual|void)\b/,
-	    function:
-	      /\b(?:(?:constrained|no|readonly|tail|unaligned|volatile)\.)?(?:conv\.(?:[iu][1248]?|ovf\.[iu][1248]?(?:\.un)?|r\.un|r4|r8)|ldc\.(?:i4(?:\.\d+|\.[mM]1|\.s)?|i8|r4|r8)|ldelem(?:\.[iu][1248]?|\.r[48]|\.ref|a)?|ldind\.(?:[iu][1248]?|r[48]|ref)|stelem\.?(?:i[1248]?|r[48]|ref)?|stind\.(?:i[1248]?|r[48]|ref)?|end(?:fault|filter|finally)|ldarg(?:\.[0-3s]|a(?:\.s)?)?|ldloc(?:\.\d+|\.s)?|sub(?:\.ovf(?:\.un)?)?|mul(?:\.ovf(?:\.un)?)?|add(?:\.ovf(?:\.un)?)?|stloc(?:\.[0-3s])?|refany(?:type|val)|blt(?:\.un)?(?:\.s)?|ble(?:\.un)?(?:\.s)?|bgt(?:\.un)?(?:\.s)?|bge(?:\.un)?(?:\.s)?|unbox(?:\.any)?|init(?:blk|obj)|call(?:i|virt)?|brfalse(?:\.s)?|bne\.un(?:\.s)?|ldloca(?:\.s)?|brzero(?:\.s)?|brtrue(?:\.s)?|brnull(?:\.s)?|brinst(?:\.s)?|starg(?:\.s)?|leave(?:\.s)?|shr(?:\.un)?|rem(?:\.un)?|div(?:\.un)?|clt(?:\.un)?|alignment|castclass|ldvirtftn|beq(?:\.s)?|ckfinite|ldsflda|ldtoken|localloc|mkrefany|rethrow|cgt\.un|arglist|switch|stsfld|sizeof|newobj|newarr|ldsfld|ldnull|ldflda|isinst|throw|stobj|stfld|ldstr|ldobj|ldlen|ldftn|ldfld|cpobj|cpblk|break|br\.s|xor|shl|ret|pop|not|nop|neg|jmp|dup|cgt|ceq|box|and|or|br)\b/,
-	    boolean: /\b(?:false|true)\b/,
-	    number: /\b-?(?:0x[0-9a-f]+|\d+)(?:\.[0-9a-f]+)?\b/i,
-	    punctuation: /[{}[\];(),:=]|IL_[0-9A-Za-z]+/
-	  };
-	}
-	return cil_1;
+var cil_1 = cil;
+cil.displayName = 'cil';
+cil.aliases = [];
+function cil(Prism) {
+  Prism.languages.cil = {
+    comment: /\/\/.*/,
+    string: {
+      pattern: /(["'])(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/,
+      greedy: true
+    },
+    directive: {
+      pattern: /(^|\W)\.[a-z]+(?=\s)/,
+      lookbehind: true,
+      alias: 'class-name'
+    },
+    // Actually an assembly reference
+    variable: /\[[\w\.]+\]/,
+    keyword:
+      /\b(?:abstract|ansi|assembly|auto|autochar|beforefieldinit|bool|bstr|byvalstr|catch|char|cil|class|currency|date|decimal|default|enum|error|explicit|extends|extern|famandassem|family|famorassem|final(?:ly)?|float32|float64|hidebysig|u?int(?:8|16|32|64)?|iant|idispatch|implements|import|initonly|instance|interface|iunknown|literal|lpstr|lpstruct|lptstr|lpwstr|managed|method|native(?:Type)?|nested|newslot|object(?:ref)?|pinvokeimpl|private|privatescope|public|reqsecobj|rtspecialname|runtime|sealed|sequential|serializable|specialname|static|string|struct|syschar|tbstr|unicode|unmanagedexp|unsigned|value(?:type)?|variant|virtual|void)\b/,
+    function:
+      /\b(?:(?:constrained|no|readonly|tail|unaligned|volatile)\.)?(?:conv\.(?:[iu][1248]?|ovf\.[iu][1248]?(?:\.un)?|r\.un|r4|r8)|ldc\.(?:i4(?:\.\d+|\.[mM]1|\.s)?|i8|r4|r8)|ldelem(?:\.[iu][1248]?|\.r[48]|\.ref|a)?|ldind\.(?:[iu][1248]?|r[48]|ref)|stelem\.?(?:i[1248]?|r[48]|ref)?|stind\.(?:i[1248]?|r[48]|ref)?|end(?:fault|filter|finally)|ldarg(?:\.[0-3s]|a(?:\.s)?)?|ldloc(?:\.\d+|\.s)?|sub(?:\.ovf(?:\.un)?)?|mul(?:\.ovf(?:\.un)?)?|add(?:\.ovf(?:\.un)?)?|stloc(?:\.[0-3s])?|refany(?:type|val)|blt(?:\.un)?(?:\.s)?|ble(?:\.un)?(?:\.s)?|bgt(?:\.un)?(?:\.s)?|bge(?:\.un)?(?:\.s)?|unbox(?:\.any)?|init(?:blk|obj)|call(?:i|virt)?|brfalse(?:\.s)?|bne\.un(?:\.s)?|ldloca(?:\.s)?|brzero(?:\.s)?|brtrue(?:\.s)?|brnull(?:\.s)?|brinst(?:\.s)?|starg(?:\.s)?|leave(?:\.s)?|shr(?:\.un)?|rem(?:\.un)?|div(?:\.un)?|clt(?:\.un)?|alignment|castclass|ldvirtftn|beq(?:\.s)?|ckfinite|ldsflda|ldtoken|localloc|mkrefany|rethrow|cgt\.un|arglist|switch|stsfld|sizeof|newobj|newarr|ldsfld|ldnull|ldflda|isinst|throw|stobj|stfld|ldstr|ldobj|ldlen|ldftn|ldfld|cpobj|cpblk|break|br\.s|xor|shl|ret|pop|not|nop|neg|jmp|dup|cgt|ceq|box|and|or|br)\b/,
+    boolean: /\b(?:false|true)\b/,
+    number: /\b-?(?:0x[0-9a-f]+|\d+)(?:\.[0-9a-f]+)?\b/i,
+    punctuation: /[{}[\];(),:=]|IL_[0-9A-Za-z]+/
+  };
 }
 
 var clojure_1 = clojure;
@@ -19534,541 +19548,594 @@ function cmake(Prism) {
   };
 }
 
-var cobol_1 = cobol;
-cobol.displayName = 'cobol';
-cobol.aliases = [];
-function cobol(Prism) {
-  Prism.languages.cobol = {
-    comment: {
-      pattern: /\*>.*|(^[ \t]*)\*.*/m,
-      lookbehind: true,
-      greedy: true
-    },
-    string: {
-      pattern: /[xzgn]?(?:"(?:[^\r\n"]|"")*"(?!")|'(?:[^\r\n']|'')*'(?!'))/i,
-      greedy: true
-    },
-    level: {
-      pattern: /(^[ \t]*)\d+\b/m,
-      lookbehind: true,
-      greedy: true,
-      alias: 'number'
-    },
-    'class-name': {
-      // https://github.com/antlr/grammars-v4/blob/42edd5b687d183b5fa679e858a82297bd27141e7/cobol85/Cobol85.g4#L1015
-      pattern:
-        /(\bpic(?:ture)?\s+)(?:(?:[-\w$/,:*+<>]|\.(?!\s|$))(?:\(\d+\))?)+/i,
-      lookbehind: true,
-      inside: {
-        number: {
-          pattern: /(\()\d+/,
-          lookbehind: true
-        },
-        punctuation: /[()]/
-      }
-    },
-    keyword: {
-      pattern:
-        /(^|[^\w-])(?:ABORT|ACCEPT|ACCESS|ADD|ADDRESS|ADVANCING|AFTER|ALIGNED|ALL|ALPHABET|ALPHABETIC|ALPHABETIC-LOWER|ALPHABETIC-UPPER|ALPHANUMERIC|ALPHANUMERIC-EDITED|ALSO|ALTER|ALTERNATE|ANY|ARE|AREA|AREAS|AS|ASCENDING|ASCII|ASSIGN|ASSOCIATED-DATA|ASSOCIATED-DATA-LENGTH|AT|ATTRIBUTE|AUTHOR|AUTO|AUTO-SKIP|BACKGROUND-COLOR|BACKGROUND-COLOUR|BASIS|BEEP|BEFORE|BEGINNING|BELL|BINARY|BIT|BLANK|BLINK|BLOCK|BOTTOM|BOUNDS|BY|BYFUNCTION|BYTITLE|CALL|CANCEL|CAPABLE|CCSVERSION|CD|CF|CH|CHAINING|CHANGED|CHANNEL|CHARACTER|CHARACTERS|CLASS|CLASS-ID|CLOCK-UNITS|CLOSE|CLOSE-DISPOSITION|COBOL|CODE|CODE-SET|COL|COLLATING|COLUMN|COM-REG|COMMA|COMMITMENT|COMMON|COMMUNICATION|COMP|COMP-1|COMP-2|COMP-3|COMP-4|COMP-5|COMPUTATIONAL|COMPUTATIONAL-1|COMPUTATIONAL-2|COMPUTATIONAL-3|COMPUTATIONAL-4|COMPUTATIONAL-5|COMPUTE|CONFIGURATION|CONTAINS|CONTENT|CONTINUE|CONTROL|CONTROL-POINT|CONTROLS|CONVENTION|CONVERTING|COPY|CORR|CORRESPONDING|COUNT|CRUNCH|CURRENCY|CURSOR|DATA|DATA-BASE|DATE|DATE-COMPILED|DATE-WRITTEN|DAY|DAY-OF-WEEK|DBCS|DE|DEBUG-CONTENTS|DEBUG-ITEM|DEBUG-LINE|DEBUG-NAME|DEBUG-SUB-1|DEBUG-SUB-2|DEBUG-SUB-3|DEBUGGING|DECIMAL-POINT|DECLARATIVES|DEFAULT|DEFAULT-DISPLAY|DEFINITION|DELETE|DELIMITED|DELIMITER|DEPENDING|DESCENDING|DESTINATION|DETAIL|DFHRESP|DFHVALUE|DISABLE|DISK|DISPLAY|DISPLAY-1|DIVIDE|DIVISION|DONTCARE|DOUBLE|DOWN|DUPLICATES|DYNAMIC|EBCDIC|EGCS|EGI|ELSE|EMI|EMPTY-CHECK|ENABLE|END|END-ACCEPT|END-ADD|END-CALL|END-COMPUTE|END-DELETE|END-DIVIDE|END-EVALUATE|END-IF|END-MULTIPLY|END-OF-PAGE|END-PERFORM|END-READ|END-RECEIVE|END-RETURN|END-REWRITE|END-SEARCH|END-START|END-STRING|END-SUBTRACT|END-UNSTRING|END-WRITE|ENDING|ENTER|ENTRY|ENTRY-PROCEDURE|ENVIRONMENT|EOL|EOP|EOS|ERASE|ERROR|ESCAPE|ESI|EVALUATE|EVENT|EVERY|EXCEPTION|EXCLUSIVE|EXHIBIT|EXIT|EXPORT|EXTEND|EXTENDED|EXTERNAL|FD|FILE|FILE-CONTROL|FILLER|FINAL|FIRST|FOOTING|FOR|FOREGROUND-COLOR|FOREGROUND-COLOUR|FROM|FULL|FUNCTION|FUNCTION-POINTER|FUNCTIONNAME|GENERATE|GIVING|GLOBAL|GO|GOBACK|GRID|GROUP|HEADING|HIGH-VALUE|HIGH-VALUES|HIGHLIGHT|I-O|I-O-CONTROL|ID|IDENTIFICATION|IF|IMPLICIT|IMPORT|IN|INDEX|INDEXED|INDICATE|INITIAL|INITIALIZE|INITIATE|INPUT|INPUT-OUTPUT|INSPECT|INSTALLATION|INTEGER|INTO|INVALID|INVOKE|IS|JUST|JUSTIFIED|KANJI|KEPT|KEY|KEYBOARD|LABEL|LANGUAGE|LAST|LB|LD|LEADING|LEFT|LEFTLINE|LENGTH|LENGTH-CHECK|LIBACCESS|LIBPARAMETER|LIBRARY|LIMIT|LIMITS|LINAGE|LINAGE-COUNTER|LINE|LINE-COUNTER|LINES|LINKAGE|LIST|LOCAL|LOCAL-STORAGE|LOCK|LONG-DATE|LONG-TIME|LOW-VALUE|LOW-VALUES|LOWER|LOWLIGHT|MEMORY|MERGE|MESSAGE|MMDDYYYY|MODE|MODULES|MORE-LABELS|MOVE|MULTIPLE|MULTIPLY|NAMED|NATIONAL|NATIONAL-EDITED|NATIVE|NEGATIVE|NETWORK|NEXT|NO|NO-ECHO|NULL|NULLS|NUMBER|NUMERIC|NUMERIC-DATE|NUMERIC-EDITED|NUMERIC-TIME|OBJECT-COMPUTER|OCCURS|ODT|OF|OFF|OMITTED|ON|OPEN|OPTIONAL|ORDER|ORDERLY|ORGANIZATION|OTHER|OUTPUT|OVERFLOW|OVERLINE|OWN|PACKED-DECIMAL|PADDING|PAGE|PAGE-COUNTER|PASSWORD|PERFORM|PF|PH|PIC|PICTURE|PLUS|POINTER|PORT|POSITION|POSITIVE|PRINTER|PRINTING|PRIVATE|PROCEDURE|PROCEDURE-POINTER|PROCEDURES|PROCEED|PROCESS|PROGRAM|PROGRAM-ID|PROGRAM-LIBRARY|PROMPT|PURGE|QUEUE|QUOTE|QUOTES|RANDOM|RD|READ|READER|REAL|RECEIVE|RECEIVED|RECORD|RECORDING|RECORDS|RECURSIVE|REDEFINES|REEL|REF|REFERENCE|REFERENCES|RELATIVE|RELEASE|REMAINDER|REMARKS|REMOTE|REMOVAL|REMOVE|RENAMES|REPLACE|REPLACING|REPORT|REPORTING|REPORTS|REQUIRED|RERUN|RESERVE|RESET|RETURN|RETURN-CODE|RETURNING|REVERSE-VIDEO|REVERSED|REWIND|REWRITE|RF|RH|RIGHT|ROUNDED|RUN|SAME|SAVE|SCREEN|SD|SEARCH|SECTION|SECURE|SECURITY|SEGMENT|SEGMENT-LIMIT|SELECT|SEND|SENTENCE|SEPARATE|SEQUENCE|SEQUENTIAL|SET|SHARED|SHAREDBYALL|SHAREDBYRUNUNIT|SHARING|SHIFT-IN|SHIFT-OUT|SHORT-DATE|SIGN|SIZE|SORT|SORT-CONTROL|SORT-CORE-SIZE|SORT-FILE-SIZE|SORT-MERGE|SORT-MESSAGE|SORT-MODE-SIZE|SORT-RETURN|SOURCE|SOURCE-COMPUTER|SPACE|SPACES|SPECIAL-NAMES|STANDARD|STANDARD-1|STANDARD-2|START|STATUS|STOP|STRING|SUB-QUEUE-1|SUB-QUEUE-2|SUB-QUEUE-3|SUBTRACT|SUM|SUPPRESS|SYMBOL|SYMBOLIC|SYNC|SYNCHRONIZED|TABLE|TALLY|TALLYING|TAPE|TASK|TERMINAL|TERMINATE|TEST|TEXT|THEN|THREAD|THREAD-LOCAL|THROUGH|THRU|TIME|TIMER|TIMES|TITLE|TO|TODAYS-DATE|TODAYS-NAME|TOP|TRAILING|TRUNCATED|TYPE|TYPEDEF|UNDERLINE|UNIT|UNSTRING|UNTIL|UP|UPON|USAGE|USE|USING|VALUE|VALUES|VARYING|VIRTUAL|WAIT|WHEN|WHEN-COMPILED|WITH|WORDS|WORKING-STORAGE|WRITE|YEAR|YYYYDDD|YYYYMMDD|ZERO-FILL|ZEROES|ZEROS)(?![\w-])/i,
-      lookbehind: true
-    },
-    boolean: {
-      pattern: /(^|[^\w-])(?:false|true)(?![\w-])/i,
-      lookbehind: true
-    },
-    number: {
-      pattern:
-        /(^|[^\w-])(?:[+-]?(?:(?:\d+(?:[.,]\d+)?|[.,]\d+)(?:e[+-]?\d+)?|zero))(?![\w-])/i,
-      lookbehind: true
-    },
-    operator: [
-      /<>|[<>]=?|[=+*/&]/,
-      {
-        pattern: /(^|[^\w-])(?:-|and|equal|greater|less|not|or|than)(?![\w-])/i,
-        lookbehind: true
-      }
-    ],
-    punctuation: /[.:,()]/
-  };
+var cobol_1;
+var hasRequiredCobol;
+
+function requireCobol () {
+	if (hasRequiredCobol) return cobol_1;
+	hasRequiredCobol = 1;
+
+	cobol_1 = cobol;
+	cobol.displayName = 'cobol';
+	cobol.aliases = [];
+	function cobol(Prism) {
+	  Prism.languages.cobol = {
+	    comment: {
+	      pattern: /\*>.*|(^[ \t]*)\*.*/m,
+	      lookbehind: true,
+	      greedy: true
+	    },
+	    string: {
+	      pattern: /[xzgn]?(?:"(?:[^\r\n"]|"")*"(?!")|'(?:[^\r\n']|'')*'(?!'))/i,
+	      greedy: true
+	    },
+	    level: {
+	      pattern: /(^[ \t]*)\d+\b/m,
+	      lookbehind: true,
+	      greedy: true,
+	      alias: 'number'
+	    },
+	    'class-name': {
+	      // https://github.com/antlr/grammars-v4/blob/42edd5b687d183b5fa679e858a82297bd27141e7/cobol85/Cobol85.g4#L1015
+	      pattern:
+	        /(\bpic(?:ture)?\s+)(?:(?:[-\w$/,:*+<>]|\.(?!\s|$))(?:\(\d+\))?)+/i,
+	      lookbehind: true,
+	      inside: {
+	        number: {
+	          pattern: /(\()\d+/,
+	          lookbehind: true
+	        },
+	        punctuation: /[()]/
+	      }
+	    },
+	    keyword: {
+	      pattern:
+	        /(^|[^\w-])(?:ABORT|ACCEPT|ACCESS|ADD|ADDRESS|ADVANCING|AFTER|ALIGNED|ALL|ALPHABET|ALPHABETIC|ALPHABETIC-LOWER|ALPHABETIC-UPPER|ALPHANUMERIC|ALPHANUMERIC-EDITED|ALSO|ALTER|ALTERNATE|ANY|ARE|AREA|AREAS|AS|ASCENDING|ASCII|ASSIGN|ASSOCIATED-DATA|ASSOCIATED-DATA-LENGTH|AT|ATTRIBUTE|AUTHOR|AUTO|AUTO-SKIP|BACKGROUND-COLOR|BACKGROUND-COLOUR|BASIS|BEEP|BEFORE|BEGINNING|BELL|BINARY|BIT|BLANK|BLINK|BLOCK|BOTTOM|BOUNDS|BY|BYFUNCTION|BYTITLE|CALL|CANCEL|CAPABLE|CCSVERSION|CD|CF|CH|CHAINING|CHANGED|CHANNEL|CHARACTER|CHARACTERS|CLASS|CLASS-ID|CLOCK-UNITS|CLOSE|CLOSE-DISPOSITION|COBOL|CODE|CODE-SET|COL|COLLATING|COLUMN|COM-REG|COMMA|COMMITMENT|COMMON|COMMUNICATION|COMP|COMP-1|COMP-2|COMP-3|COMP-4|COMP-5|COMPUTATIONAL|COMPUTATIONAL-1|COMPUTATIONAL-2|COMPUTATIONAL-3|COMPUTATIONAL-4|COMPUTATIONAL-5|COMPUTE|CONFIGURATION|CONTAINS|CONTENT|CONTINUE|CONTROL|CONTROL-POINT|CONTROLS|CONVENTION|CONVERTING|COPY|CORR|CORRESPONDING|COUNT|CRUNCH|CURRENCY|CURSOR|DATA|DATA-BASE|DATE|DATE-COMPILED|DATE-WRITTEN|DAY|DAY-OF-WEEK|DBCS|DE|DEBUG-CONTENTS|DEBUG-ITEM|DEBUG-LINE|DEBUG-NAME|DEBUG-SUB-1|DEBUG-SUB-2|DEBUG-SUB-3|DEBUGGING|DECIMAL-POINT|DECLARATIVES|DEFAULT|DEFAULT-DISPLAY|DEFINITION|DELETE|DELIMITED|DELIMITER|DEPENDING|DESCENDING|DESTINATION|DETAIL|DFHRESP|DFHVALUE|DISABLE|DISK|DISPLAY|DISPLAY-1|DIVIDE|DIVISION|DONTCARE|DOUBLE|DOWN|DUPLICATES|DYNAMIC|EBCDIC|EGCS|EGI|ELSE|EMI|EMPTY-CHECK|ENABLE|END|END-ACCEPT|END-ADD|END-CALL|END-COMPUTE|END-DELETE|END-DIVIDE|END-EVALUATE|END-IF|END-MULTIPLY|END-OF-PAGE|END-PERFORM|END-READ|END-RECEIVE|END-RETURN|END-REWRITE|END-SEARCH|END-START|END-STRING|END-SUBTRACT|END-UNSTRING|END-WRITE|ENDING|ENTER|ENTRY|ENTRY-PROCEDURE|ENVIRONMENT|EOL|EOP|EOS|ERASE|ERROR|ESCAPE|ESI|EVALUATE|EVENT|EVERY|EXCEPTION|EXCLUSIVE|EXHIBIT|EXIT|EXPORT|EXTEND|EXTENDED|EXTERNAL|FD|FILE|FILE-CONTROL|FILLER|FINAL|FIRST|FOOTING|FOR|FOREGROUND-COLOR|FOREGROUND-COLOUR|FROM|FULL|FUNCTION|FUNCTION-POINTER|FUNCTIONNAME|GENERATE|GIVING|GLOBAL|GO|GOBACK|GRID|GROUP|HEADING|HIGH-VALUE|HIGH-VALUES|HIGHLIGHT|I-O|I-O-CONTROL|ID|IDENTIFICATION|IF|IMPLICIT|IMPORT|IN|INDEX|INDEXED|INDICATE|INITIAL|INITIALIZE|INITIATE|INPUT|INPUT-OUTPUT|INSPECT|INSTALLATION|INTEGER|INTO|INVALID|INVOKE|IS|JUST|JUSTIFIED|KANJI|KEPT|KEY|KEYBOARD|LABEL|LANGUAGE|LAST|LB|LD|LEADING|LEFT|LEFTLINE|LENGTH|LENGTH-CHECK|LIBACCESS|LIBPARAMETER|LIBRARY|LIMIT|LIMITS|LINAGE|LINAGE-COUNTER|LINE|LINE-COUNTER|LINES|LINKAGE|LIST|LOCAL|LOCAL-STORAGE|LOCK|LONG-DATE|LONG-TIME|LOW-VALUE|LOW-VALUES|LOWER|LOWLIGHT|MEMORY|MERGE|MESSAGE|MMDDYYYY|MODE|MODULES|MORE-LABELS|MOVE|MULTIPLE|MULTIPLY|NAMED|NATIONAL|NATIONAL-EDITED|NATIVE|NEGATIVE|NETWORK|NEXT|NO|NO-ECHO|NULL|NULLS|NUMBER|NUMERIC|NUMERIC-DATE|NUMERIC-EDITED|NUMERIC-TIME|OBJECT-COMPUTER|OCCURS|ODT|OF|OFF|OMITTED|ON|OPEN|OPTIONAL|ORDER|ORDERLY|ORGANIZATION|OTHER|OUTPUT|OVERFLOW|OVERLINE|OWN|PACKED-DECIMAL|PADDING|PAGE|PAGE-COUNTER|PASSWORD|PERFORM|PF|PH|PIC|PICTURE|PLUS|POINTER|PORT|POSITION|POSITIVE|PRINTER|PRINTING|PRIVATE|PROCEDURE|PROCEDURE-POINTER|PROCEDURES|PROCEED|PROCESS|PROGRAM|PROGRAM-ID|PROGRAM-LIBRARY|PROMPT|PURGE|QUEUE|QUOTE|QUOTES|RANDOM|RD|READ|READER|REAL|RECEIVE|RECEIVED|RECORD|RECORDING|RECORDS|RECURSIVE|REDEFINES|REEL|REF|REFERENCE|REFERENCES|RELATIVE|RELEASE|REMAINDER|REMARKS|REMOTE|REMOVAL|REMOVE|RENAMES|REPLACE|REPLACING|REPORT|REPORTING|REPORTS|REQUIRED|RERUN|RESERVE|RESET|RETURN|RETURN-CODE|RETURNING|REVERSE-VIDEO|REVERSED|REWIND|REWRITE|RF|RH|RIGHT|ROUNDED|RUN|SAME|SAVE|SCREEN|SD|SEARCH|SECTION|SECURE|SECURITY|SEGMENT|SEGMENT-LIMIT|SELECT|SEND|SENTENCE|SEPARATE|SEQUENCE|SEQUENTIAL|SET|SHARED|SHAREDBYALL|SHAREDBYRUNUNIT|SHARING|SHIFT-IN|SHIFT-OUT|SHORT-DATE|SIGN|SIZE|SORT|SORT-CONTROL|SORT-CORE-SIZE|SORT-FILE-SIZE|SORT-MERGE|SORT-MESSAGE|SORT-MODE-SIZE|SORT-RETURN|SOURCE|SOURCE-COMPUTER|SPACE|SPACES|SPECIAL-NAMES|STANDARD|STANDARD-1|STANDARD-2|START|STATUS|STOP|STRING|SUB-QUEUE-1|SUB-QUEUE-2|SUB-QUEUE-3|SUBTRACT|SUM|SUPPRESS|SYMBOL|SYMBOLIC|SYNC|SYNCHRONIZED|TABLE|TALLY|TALLYING|TAPE|TASK|TERMINAL|TERMINATE|TEST|TEXT|THEN|THREAD|THREAD-LOCAL|THROUGH|THRU|TIME|TIMER|TIMES|TITLE|TO|TODAYS-DATE|TODAYS-NAME|TOP|TRAILING|TRUNCATED|TYPE|TYPEDEF|UNDERLINE|UNIT|UNSTRING|UNTIL|UP|UPON|USAGE|USE|USING|VALUE|VALUES|VARYING|VIRTUAL|WAIT|WHEN|WHEN-COMPILED|WITH|WORDS|WORKING-STORAGE|WRITE|YEAR|YYYYDDD|YYYYMMDD|ZERO-FILL|ZEROES|ZEROS)(?![\w-])/i,
+	      lookbehind: true
+	    },
+	    boolean: {
+	      pattern: /(^|[^\w-])(?:false|true)(?![\w-])/i,
+	      lookbehind: true
+	    },
+	    number: {
+	      pattern:
+	        /(^|[^\w-])(?:[+-]?(?:(?:\d+(?:[.,]\d+)?|[.,]\d+)(?:e[+-]?\d+)?|zero))(?![\w-])/i,
+	      lookbehind: true
+	    },
+	    operator: [
+	      /<>|[<>]=?|[=+*/&]/,
+	      {
+	        pattern: /(^|[^\w-])(?:-|and|equal|greater|less|not|or|than)(?![\w-])/i,
+	        lookbehind: true
+	      }
+	    ],
+	    punctuation: /[.:,()]/
+	  };
+	}
+	return cobol_1;
 }
 
-var coffeescript_1 = coffeescript;
-coffeescript.displayName = 'coffeescript';
-coffeescript.aliases = ['coffee'];
-function coffeescript(Prism) {
+var coffeescript_1;
+var hasRequiredCoffeescript;
+
+function requireCoffeescript () {
+	if (hasRequiredCoffeescript) return coffeescript_1;
+	hasRequiredCoffeescript = 1;
+
+	coffeescript_1 = coffeescript;
+	coffeescript.displayName = 'coffeescript';
+	coffeescript.aliases = ['coffee'];
+	function coffeescript(Prism) {
 (function (Prism) {
-    // Ignore comments starting with { to privilege string interpolation highlighting
-    var comment = /#(?!\{).+/;
-    var interpolation = {
-      pattern: /#\{[^}]+\}/,
-      alias: 'variable'
-    };
-    Prism.languages.coffeescript = Prism.languages.extend('javascript', {
-      comment: comment,
-      string: [
-        // Strings are multiline
-        {
-          pattern: /'(?:\\[\s\S]|[^\\'])*'/,
-          greedy: true
-        },
-        {
-          // Strings are multiline
-          pattern: /"(?:\\[\s\S]|[^\\"])*"/,
-          greedy: true,
-          inside: {
-            interpolation: interpolation
-          }
-        }
-      ],
-      keyword:
-        /\b(?:and|break|by|catch|class|continue|debugger|delete|do|each|else|extend|extends|false|finally|for|if|in|instanceof|is|isnt|let|loop|namespace|new|no|not|null|of|off|on|or|own|return|super|switch|then|this|throw|true|try|typeof|undefined|unless|until|when|while|window|with|yes|yield)\b/,
-      'class-member': {
-        pattern: /@(?!\d)\w+/,
-        alias: 'variable'
-      }
-    });
-    Prism.languages.insertBefore('coffeescript', 'comment', {
-      'multiline-comment': {
-        pattern: /###[\s\S]+?###/,
-        alias: 'comment'
-      },
-      // Block regexp can contain comments and interpolation
-      'block-regex': {
-        pattern: /\/{3}[\s\S]*?\/{3}/,
-        alias: 'regex',
-        inside: {
-          comment: comment,
-          interpolation: interpolation
-        }
-      }
-    });
-    Prism.languages.insertBefore('coffeescript', 'string', {
-      'inline-javascript': {
-        pattern: /`(?:\\[\s\S]|[^\\`])*`/,
-        inside: {
-          delimiter: {
-            pattern: /^`|`$/,
-            alias: 'punctuation'
-          },
-          script: {
-            pattern: /[\s\S]+/,
-            alias: 'language-javascript',
-            inside: Prism.languages.javascript
-          }
-        }
-      },
-      // Block strings
-      'multiline-string': [
-        {
-          pattern: /'''[\s\S]*?'''/,
-          greedy: true,
-          alias: 'string'
-        },
-        {
-          pattern: /"""[\s\S]*?"""/,
-          greedy: true,
-          alias: 'string',
-          inside: {
-            interpolation: interpolation
-          }
-        }
-      ]
-    });
-    Prism.languages.insertBefore('coffeescript', 'keyword', {
-      // Object property
-      property: /(?!\d)\w+(?=\s*:(?!:))/
-    });
-    delete Prism.languages.coffeescript['template-string'];
-    Prism.languages.coffee = Prism.languages.coffeescript;
-  })(Prism);
+	    // Ignore comments starting with { to privilege string interpolation highlighting
+	    var comment = /#(?!\{).+/;
+	    var interpolation = {
+	      pattern: /#\{[^}]+\}/,
+	      alias: 'variable'
+	    };
+	    Prism.languages.coffeescript = Prism.languages.extend('javascript', {
+	      comment: comment,
+	      string: [
+	        // Strings are multiline
+	        {
+	          pattern: /'(?:\\[\s\S]|[^\\'])*'/,
+	          greedy: true
+	        },
+	        {
+	          // Strings are multiline
+	          pattern: /"(?:\\[\s\S]|[^\\"])*"/,
+	          greedy: true,
+	          inside: {
+	            interpolation: interpolation
+	          }
+	        }
+	      ],
+	      keyword:
+	        /\b(?:and|break|by|catch|class|continue|debugger|delete|do|each|else|extend|extends|false|finally|for|if|in|instanceof|is|isnt|let|loop|namespace|new|no|not|null|of|off|on|or|own|return|super|switch|then|this|throw|true|try|typeof|undefined|unless|until|when|while|window|with|yes|yield)\b/,
+	      'class-member': {
+	        pattern: /@(?!\d)\w+/,
+	        alias: 'variable'
+	      }
+	    });
+	    Prism.languages.insertBefore('coffeescript', 'comment', {
+	      'multiline-comment': {
+	        pattern: /###[\s\S]+?###/,
+	        alias: 'comment'
+	      },
+	      // Block regexp can contain comments and interpolation
+	      'block-regex': {
+	        pattern: /\/{3}[\s\S]*?\/{3}/,
+	        alias: 'regex',
+	        inside: {
+	          comment: comment,
+	          interpolation: interpolation
+	        }
+	      }
+	    });
+	    Prism.languages.insertBefore('coffeescript', 'string', {
+	      'inline-javascript': {
+	        pattern: /`(?:\\[\s\S]|[^\\`])*`/,
+	        inside: {
+	          delimiter: {
+	            pattern: /^`|`$/,
+	            alias: 'punctuation'
+	          },
+	          script: {
+	            pattern: /[\s\S]+/,
+	            alias: 'language-javascript',
+	            inside: Prism.languages.javascript
+	          }
+	        }
+	      },
+	      // Block strings
+	      'multiline-string': [
+	        {
+	          pattern: /'''[\s\S]*?'''/,
+	          greedy: true,
+	          alias: 'string'
+	        },
+	        {
+	          pattern: /"""[\s\S]*?"""/,
+	          greedy: true,
+	          alias: 'string',
+	          inside: {
+	            interpolation: interpolation
+	          }
+	        }
+	      ]
+	    });
+	    Prism.languages.insertBefore('coffeescript', 'keyword', {
+	      // Object property
+	      property: /(?!\d)\w+(?=\s*:(?!:))/
+	    });
+	    delete Prism.languages.coffeescript['template-string'];
+	    Prism.languages.coffee = Prism.languages.coffeescript;
+	  })(Prism);
+	}
+	return coffeescript_1;
 }
 
-var concurnas_1 = concurnas;
-concurnas.displayName = 'concurnas';
-concurnas.aliases = ['conc'];
-function concurnas(Prism) {
-  Prism.languages.concurnas = {
-    comment: {
-      pattern: /(^|[^\\])(?:\/\*[\s\S]*?(?:\*\/|$)|\/\/.*)/,
-      lookbehind: true,
-      greedy: true
-    },
-    langext: {
-      pattern: /\b\w+\s*\|\|[\s\S]+?\|\|/,
-      greedy: true,
-      inside: {
-        'class-name': /^\w+/,
-        string: {
-          pattern: /(^\s*\|\|)[\s\S]+(?=\|\|$)/,
-          lookbehind: true
-        },
-        punctuation: /\|\|/
-      }
-    },
-    function: {
-      pattern: /((?:^|\s)def[ \t]+)[a-zA-Z_]\w*(?=\s*\()/,
-      lookbehind: true
-    },
-    keyword:
-      /\b(?:abstract|actor|also|annotation|assert|async|await|bool|boolean|break|byte|case|catch|changed|char|class|closed|constant|continue|def|default|del|double|elif|else|enum|every|extends|false|finally|float|for|from|global|gpudef|gpukernel|if|import|in|init|inject|int|lambda|local|long|loop|match|new|nodefault|null|of|onchange|open|out|override|package|parfor|parforsync|post|pre|private|protected|provide|provider|public|return|shared|short|single|size_t|sizeof|super|sync|this|throw|trait|trans|transient|true|try|typedef|unchecked|using|val|var|void|while|with)\b/,
-    boolean: /\b(?:false|true)\b/,
-    number:
-      /\b0b[01][01_]*L?\b|\b0x(?:[\da-f_]*\.)?[\da-f_p+-]+\b|(?:\b\d[\d_]*(?:\.[\d_]*)?|\B\.\d[\d_]*)(?:e[+-]?\d[\d_]*)?[dfls]?/i,
-    punctuation: /[{}[\];(),.:]/,
-    operator:
-      /<==|>==|=>|->|<-|<>|&==|&<>|\?:?|\.\?|\+\+|--|[-+*/=<>]=?|[!^~]|\b(?:and|as|band|bor|bxor|comp|is|isnot|mod|or)\b=?/,
-    annotation: {
-      pattern: /@(?:\w+:)?(?:\w+|\[[^\]]+\])?/,
-      alias: 'builtin'
-    }
-  };
-  Prism.languages.insertBefore('concurnas', 'langext', {
-    'regex-literal': {
-      pattern: /\br("|')(?:\\.|(?!\1)[^\\\r\n])*\1/,
-      greedy: true,
-      inside: {
-        interpolation: {
-          pattern:
-            /((?:^|[^\\])(?:\\{2})*)\{(?:[^{}]|\{(?:[^{}]|\{[^}]*\})*\})+\}/,
-          lookbehind: true,
-          inside: Prism.languages.concurnas
-        },
-        regex: /[\s\S]+/
-      }
-    },
-    'string-literal': {
-      pattern: /(?:\B|\bs)("|')(?:\\.|(?!\1)[^\\\r\n])*\1/,
-      greedy: true,
-      inside: {
-        interpolation: {
-          pattern:
-            /((?:^|[^\\])(?:\\{2})*)\{(?:[^{}]|\{(?:[^{}]|\{[^}]*\})*\})+\}/,
-          lookbehind: true,
-          inside: Prism.languages.concurnas
-        },
-        string: /[\s\S]+/
-      }
-    }
-  });
-  Prism.languages.conc = Prism.languages.concurnas;
+var concurnas_1;
+var hasRequiredConcurnas;
+
+function requireConcurnas () {
+	if (hasRequiredConcurnas) return concurnas_1;
+	hasRequiredConcurnas = 1;
+
+	concurnas_1 = concurnas;
+	concurnas.displayName = 'concurnas';
+	concurnas.aliases = ['conc'];
+	function concurnas(Prism) {
+	  Prism.languages.concurnas = {
+	    comment: {
+	      pattern: /(^|[^\\])(?:\/\*[\s\S]*?(?:\*\/|$)|\/\/.*)/,
+	      lookbehind: true,
+	      greedy: true
+	    },
+	    langext: {
+	      pattern: /\b\w+\s*\|\|[\s\S]+?\|\|/,
+	      greedy: true,
+	      inside: {
+	        'class-name': /^\w+/,
+	        string: {
+	          pattern: /(^\s*\|\|)[\s\S]+(?=\|\|$)/,
+	          lookbehind: true
+	        },
+	        punctuation: /\|\|/
+	      }
+	    },
+	    function: {
+	      pattern: /((?:^|\s)def[ \t]+)[a-zA-Z_]\w*(?=\s*\()/,
+	      lookbehind: true
+	    },
+	    keyword:
+	      /\b(?:abstract|actor|also|annotation|assert|async|await|bool|boolean|break|byte|case|catch|changed|char|class|closed|constant|continue|def|default|del|double|elif|else|enum|every|extends|false|finally|float|for|from|global|gpudef|gpukernel|if|import|in|init|inject|int|lambda|local|long|loop|match|new|nodefault|null|of|onchange|open|out|override|package|parfor|parforsync|post|pre|private|protected|provide|provider|public|return|shared|short|single|size_t|sizeof|super|sync|this|throw|trait|trans|transient|true|try|typedef|unchecked|using|val|var|void|while|with)\b/,
+	    boolean: /\b(?:false|true)\b/,
+	    number:
+	      /\b0b[01][01_]*L?\b|\b0x(?:[\da-f_]*\.)?[\da-f_p+-]+\b|(?:\b\d[\d_]*(?:\.[\d_]*)?|\B\.\d[\d_]*)(?:e[+-]?\d[\d_]*)?[dfls]?/i,
+	    punctuation: /[{}[\];(),.:]/,
+	    operator:
+	      /<==|>==|=>|->|<-|<>|&==|&<>|\?:?|\.\?|\+\+|--|[-+*/=<>]=?|[!^~]|\b(?:and|as|band|bor|bxor|comp|is|isnot|mod|or)\b=?/,
+	    annotation: {
+	      pattern: /@(?:\w+:)?(?:\w+|\[[^\]]+\])?/,
+	      alias: 'builtin'
+	    }
+	  };
+	  Prism.languages.insertBefore('concurnas', 'langext', {
+	    'regex-literal': {
+	      pattern: /\br("|')(?:\\.|(?!\1)[^\\\r\n])*\1/,
+	      greedy: true,
+	      inside: {
+	        interpolation: {
+	          pattern:
+	            /((?:^|[^\\])(?:\\{2})*)\{(?:[^{}]|\{(?:[^{}]|\{[^}]*\})*\})+\}/,
+	          lookbehind: true,
+	          inside: Prism.languages.concurnas
+	        },
+	        regex: /[\s\S]+/
+	      }
+	    },
+	    'string-literal': {
+	      pattern: /(?:\B|\bs)("|')(?:\\.|(?!\1)[^\\\r\n])*\1/,
+	      greedy: true,
+	      inside: {
+	        interpolation: {
+	          pattern:
+	            /((?:^|[^\\])(?:\\{2})*)\{(?:[^{}]|\{(?:[^{}]|\{[^}]*\})*\})+\}/,
+	          lookbehind: true,
+	          inside: Prism.languages.concurnas
+	        },
+	        string: /[\s\S]+/
+	      }
+	    }
+	  });
+	  Prism.languages.conc = Prism.languages.concurnas;
+	}
+	return concurnas_1;
 }
 
-var coq_1 = coq;
-coq.displayName = 'coq';
-coq.aliases = [];
-function coq(Prism) {
+var coq_1;
+var hasRequiredCoq;
+
+function requireCoq () {
+	if (hasRequiredCoq) return coq_1;
+	hasRequiredCoq = 1;
+
+	coq_1 = coq;
+	coq.displayName = 'coq';
+	coq.aliases = [];
+	function coq(Prism) {
 (function (Prism) {
-    // https://github.com/coq/coq
-    var commentSource = /\(\*(?:[^(*]|\((?!\*)|\*(?!\))|<self>)*\*\)/.source;
-    for (var i = 0; i < 2; i++) {
-      commentSource = commentSource.replace(/<self>/g, function () {
-        return commentSource
-      });
-    }
-    commentSource = commentSource.replace(/<self>/g, '[]');
-    Prism.languages.coq = {
-      comment: RegExp(commentSource),
-      string: {
-        pattern: /"(?:[^"]|"")*"(?!")/,
-        greedy: true
-      },
-      attribute: [
-        {
-          pattern: RegExp(
-            /#\[(?:[^\[\]("]|"(?:[^"]|"")*"(?!")|\((?!\*)|<comment>)*\]/.source.replace(
-              /<comment>/g,
-              function () {
-                return commentSource
-              }
-            )
-          ),
-          greedy: true,
-          alias: 'attr-name',
-          inside: {
-            comment: RegExp(commentSource),
-            string: {
-              pattern: /"(?:[^"]|"")*"(?!")/,
-              greedy: true
-            },
-            operator: /=/,
-            punctuation: /^#\[|\]$|[,()]/
-          }
-        },
-        {
-          pattern:
-            /\b(?:Cumulative|Global|Local|Monomorphic|NonCumulative|Polymorphic|Private|Program)\b/,
-          alias: 'attr-name'
-        }
-      ],
-      keyword:
-        /\b(?:Abort|About|Add|Admit|Admitted|All|Arguments|As|Assumptions|Axiom|Axioms|Back|BackTo|Backtrace|BinOp|BinOpSpec|BinRel|Bind|Blacklist|Canonical|Case|Cd|Check|Class|Classes|Close|CoFixpoint|CoInductive|Coercion|Coercions|Collection|Combined|Compute|Conjecture|Conjectures|Constant|Constants|Constraint|Constructors|Context|Corollary|Create|CstOp|Custom|Cut|Debug|Declare|Defined|Definition|Delimit|Dependencies|Dependent|Derive|Diffs|Drop|Elimination|End|Entry|Equality|Eval|Example|Existential|Existentials|Existing|Export|Extern|Extraction|Fact|Fail|Field|File|Firstorder|Fixpoint|Flags|Focus|From|Funclass|Function|Functional|GC|Generalizable|Goal|Grab|Grammar|Graph|Guarded|Haskell|Heap|Hide|Hint|HintDb|Hints|Hypotheses|Hypothesis|IF|Identity|Immediate|Implicit|Implicits|Import|Include|Induction|Inductive|Infix|Info|Initial|InjTyp|Inline|Inspect|Instance|Instances|Intro|Intros|Inversion|Inversion_clear|JSON|Language|Left|Lemma|Let|Lia|Libraries|Library|Load|LoadPath|Locate|Ltac|Ltac2|ML|Match|Method|Minimality|Module|Modules|Morphism|Next|NoInline|Notation|Number|OCaml|Obligation|Obligations|Opaque|Open|Optimize|Parameter|Parameters|Parametric|Path|Paths|Prenex|Preterm|Primitive|Print|Profile|Projections|Proof|Prop|PropBinOp|PropOp|PropUOp|Property|Proposition|Pwd|Qed|Quit|Rec|Record|Recursive|Redirect|Reduction|Register|Relation|Remark|Remove|Require|Reserved|Reset|Resolve|Restart|Rewrite|Right|Ring|Rings|SProp|Saturate|Save|Scheme|Scope|Scopes|Search|SearchHead|SearchPattern|SearchRewrite|Section|Separate|Set|Setoid|Show|Signatures|Solve|Solver|Sort|Sortclass|Sorted|Spec|Step|Strategies|Strategy|String|Structure|SubClass|Subgraph|SuchThat|Tactic|Term|TestCompile|Theorem|Time|Timeout|To|Transparent|Type|Typeclasses|Types|Typing|UnOp|UnOpSpec|Undelimit|Undo|Unfocus|Unfocused|Unfold|Universe|Universes|Unshelve|Variable|Variables|Variant|Verbose|View|Visibility|Zify|_|apply|as|at|by|cofix|else|end|exists|exists2|fix|for|forall|fun|if|in|let|match|measure|move|removed|return|struct|then|using|wf|where|with)\b/,
-      number:
-        /\b(?:0x[a-f0-9][a-f0-9_]*(?:\.[a-f0-9_]+)?(?:p[+-]?\d[\d_]*)?|\d[\d_]*(?:\.[\d_]+)?(?:e[+-]?\d[\d_]*)?)\b/i,
-      punct: {
-        pattern: /@\{|\{\||\[=|:>/,
-        alias: 'punctuation'
-      },
-      operator:
-        /\/\\|\\\/|\.{2,3}|:{1,2}=|\*\*|[-=]>|<(?:->?|[+:=>]|<:)|>(?:=|->)|\|[-|]?|[-!%&*+/<=>?@^~']/,
-      punctuation: /\.\(|`\(|@\{|`\{|\{\||\[=|:>|[:.,;(){}\[\]]/
-    };
-  })(Prism);
+	    // https://github.com/coq/coq
+	    var commentSource = /\(\*(?:[^(*]|\((?!\*)|\*(?!\))|<self>)*\*\)/.source;
+	    for (var i = 0; i < 2; i++) {
+	      commentSource = commentSource.replace(/<self>/g, function () {
+	        return commentSource
+	      });
+	    }
+	    commentSource = commentSource.replace(/<self>/g, '[]');
+	    Prism.languages.coq = {
+	      comment: RegExp(commentSource),
+	      string: {
+	        pattern: /"(?:[^"]|"")*"(?!")/,
+	        greedy: true
+	      },
+	      attribute: [
+	        {
+	          pattern: RegExp(
+	            /#\[(?:[^\[\]("]|"(?:[^"]|"")*"(?!")|\((?!\*)|<comment>)*\]/.source.replace(
+	              /<comment>/g,
+	              function () {
+	                return commentSource
+	              }
+	            )
+	          ),
+	          greedy: true,
+	          alias: 'attr-name',
+	          inside: {
+	            comment: RegExp(commentSource),
+	            string: {
+	              pattern: /"(?:[^"]|"")*"(?!")/,
+	              greedy: true
+	            },
+	            operator: /=/,
+	            punctuation: /^#\[|\]$|[,()]/
+	          }
+	        },
+	        {
+	          pattern:
+	            /\b(?:Cumulative|Global|Local|Monomorphic|NonCumulative|Polymorphic|Private|Program)\b/,
+	          alias: 'attr-name'
+	        }
+	      ],
+	      keyword:
+	        /\b(?:Abort|About|Add|Admit|Admitted|All|Arguments|As|Assumptions|Axiom|Axioms|Back|BackTo|Backtrace|BinOp|BinOpSpec|BinRel|Bind|Blacklist|Canonical|Case|Cd|Check|Class|Classes|Close|CoFixpoint|CoInductive|Coercion|Coercions|Collection|Combined|Compute|Conjecture|Conjectures|Constant|Constants|Constraint|Constructors|Context|Corollary|Create|CstOp|Custom|Cut|Debug|Declare|Defined|Definition|Delimit|Dependencies|Dependent|Derive|Diffs|Drop|Elimination|End|Entry|Equality|Eval|Example|Existential|Existentials|Existing|Export|Extern|Extraction|Fact|Fail|Field|File|Firstorder|Fixpoint|Flags|Focus|From|Funclass|Function|Functional|GC|Generalizable|Goal|Grab|Grammar|Graph|Guarded|Haskell|Heap|Hide|Hint|HintDb|Hints|Hypotheses|Hypothesis|IF|Identity|Immediate|Implicit|Implicits|Import|Include|Induction|Inductive|Infix|Info|Initial|InjTyp|Inline|Inspect|Instance|Instances|Intro|Intros|Inversion|Inversion_clear|JSON|Language|Left|Lemma|Let|Lia|Libraries|Library|Load|LoadPath|Locate|Ltac|Ltac2|ML|Match|Method|Minimality|Module|Modules|Morphism|Next|NoInline|Notation|Number|OCaml|Obligation|Obligations|Opaque|Open|Optimize|Parameter|Parameters|Parametric|Path|Paths|Prenex|Preterm|Primitive|Print|Profile|Projections|Proof|Prop|PropBinOp|PropOp|PropUOp|Property|Proposition|Pwd|Qed|Quit|Rec|Record|Recursive|Redirect|Reduction|Register|Relation|Remark|Remove|Require|Reserved|Reset|Resolve|Restart|Rewrite|Right|Ring|Rings|SProp|Saturate|Save|Scheme|Scope|Scopes|Search|SearchHead|SearchPattern|SearchRewrite|Section|Separate|Set|Setoid|Show|Signatures|Solve|Solver|Sort|Sortclass|Sorted|Spec|Step|Strategies|Strategy|String|Structure|SubClass|Subgraph|SuchThat|Tactic|Term|TestCompile|Theorem|Time|Timeout|To|Transparent|Type|Typeclasses|Types|Typing|UnOp|UnOpSpec|Undelimit|Undo|Unfocus|Unfocused|Unfold|Universe|Universes|Unshelve|Variable|Variables|Variant|Verbose|View|Visibility|Zify|_|apply|as|at|by|cofix|else|end|exists|exists2|fix|for|forall|fun|if|in|let|match|measure|move|removed|return|struct|then|using|wf|where|with)\b/,
+	      number:
+	        /\b(?:0x[a-f0-9][a-f0-9_]*(?:\.[a-f0-9_]+)?(?:p[+-]?\d[\d_]*)?|\d[\d_]*(?:\.[\d_]+)?(?:e[+-]?\d[\d_]*)?)\b/i,
+	      punct: {
+	        pattern: /@\{|\{\||\[=|:>/,
+	        alias: 'punctuation'
+	      },
+	      operator:
+	        /\/\\|\\\/|\.{2,3}|:{1,2}=|\*\*|[-=]>|<(?:->?|[+:=>]|<:)|>(?:=|->)|\|[-|]?|[-!%&*+/<=>?@^~']/,
+	      punctuation: /\.\(|`\(|@\{|`\{|\{\||\[=|:>|[:.,;(){}\[\]]/
+	    };
+	  })(Prism);
+	}
+	return coq_1;
 }
 
-var ruby_1 = ruby;
-ruby.displayName = 'ruby';
-ruby.aliases = ['rb'];
-function ruby(Prism) {
+var ruby_1;
+var hasRequiredRuby;
+
+function requireRuby () {
+	if (hasRequiredRuby) return ruby_1;
+	hasRequiredRuby = 1;
+
+	ruby_1 = ruby;
+	ruby.displayName = 'ruby';
+	ruby.aliases = ['rb'];
+	function ruby(Prism) {
 (function (Prism) {
-    Prism.languages.ruby = Prism.languages.extend('clike', {
-      comment: {
-        pattern: /#.*|^=begin\s[\s\S]*?^=end/m,
-        greedy: true
-      },
-      'class-name': {
-        pattern:
-          /(\b(?:class|module)\s+|\bcatch\s+\()[\w.\\]+|\b[A-Z_]\w*(?=\s*\.\s*new\b)/,
-        lookbehind: true,
-        inside: {
-          punctuation: /[.\\]/
-        }
-      },
-      keyword:
-        /\b(?:BEGIN|END|alias|and|begin|break|case|class|def|define_method|defined|do|each|else|elsif|end|ensure|extend|for|if|in|include|module|new|next|nil|not|or|prepend|private|protected|public|raise|redo|require|rescue|retry|return|self|super|then|throw|undef|unless|until|when|while|yield)\b/,
-      operator:
-        /\.{2,3}|&\.|===|<?=>|[!=]?~|(?:&&|\|\||<<|>>|\*\*|[+\-*/%<>!^&|=])=?|[?:]/,
-      punctuation: /[(){}[\].,;]/
-    });
-    Prism.languages.insertBefore('ruby', 'operator', {
-      'double-colon': {
-        pattern: /::/,
-        alias: 'punctuation'
-      }
-    });
-    var interpolation = {
-      pattern: /((?:^|[^\\])(?:\\{2})*)#\{(?:[^{}]|\{[^{}]*\})*\}/,
-      lookbehind: true,
-      inside: {
-        content: {
-          pattern: /^(#\{)[\s\S]+(?=\}$)/,
-          lookbehind: true,
-          inside: Prism.languages.ruby
-        },
-        delimiter: {
-          pattern: /^#\{|\}$/,
-          alias: 'punctuation'
-        }
-      }
-    };
-    delete Prism.languages.ruby.function;
-    var percentExpression =
-      '(?:' +
-      [
-        /([^a-zA-Z0-9\s{(\[<=])(?:(?!\1)[^\\]|\\[\s\S])*\1/.source,
-        /\((?:[^()\\]|\\[\s\S]|\((?:[^()\\]|\\[\s\S])*\))*\)/.source,
-        /\{(?:[^{}\\]|\\[\s\S]|\{(?:[^{}\\]|\\[\s\S])*\})*\}/.source,
-        /\[(?:[^\[\]\\]|\\[\s\S]|\[(?:[^\[\]\\]|\\[\s\S])*\])*\]/.source,
-        /<(?:[^<>\\]|\\[\s\S]|<(?:[^<>\\]|\\[\s\S])*>)*>/.source
-      ].join('|') +
-      ')';
-    var symbolName =
-      /(?:"(?:\\.|[^"\\\r\n])*"|(?:\b[a-zA-Z_]\w*|[^\s\0-\x7F]+)[?!]?|\$.)/
-        .source;
-    Prism.languages.insertBefore('ruby', 'keyword', {
-      'regex-literal': [
-        {
-          pattern: RegExp(
-            /%r/.source + percentExpression + /[egimnosux]{0,6}/.source
-          ),
-          greedy: true,
-          inside: {
-            interpolation: interpolation,
-            regex: /[\s\S]+/
-          }
-        },
-        {
-          pattern:
-            /(^|[^/])\/(?!\/)(?:\[[^\r\n\]]+\]|\\.|[^[/\\\r\n])+\/[egimnosux]{0,6}(?=\s*(?:$|[\r\n,.;})#]))/,
-          lookbehind: true,
-          greedy: true,
-          inside: {
-            interpolation: interpolation,
-            regex: /[\s\S]+/
-          }
-        }
-      ],
-      variable: /[@$]+[a-zA-Z_]\w*(?:[?!]|\b)/,
-      symbol: [
-        {
-          pattern: RegExp(/(^|[^:]):/.source + symbolName),
-          lookbehind: true,
-          greedy: true
-        },
-        {
-          pattern: RegExp(
-            /([\r\n{(,][ \t]*)/.source + symbolName + /(?=:(?!:))/.source
-          ),
-          lookbehind: true,
-          greedy: true
-        }
-      ],
-      'method-definition': {
-        pattern: /(\bdef\s+)\w+(?:\s*\.\s*\w+)?/,
-        lookbehind: true,
-        inside: {
-          function: /\b\w+$/,
-          keyword: /^self\b/,
-          'class-name': /^\w+/,
-          punctuation: /\./
-        }
-      }
-    });
-    Prism.languages.insertBefore('ruby', 'string', {
-      'string-literal': [
-        {
-          pattern: RegExp(/%[qQiIwWs]?/.source + percentExpression),
-          greedy: true,
-          inside: {
-            interpolation: interpolation,
-            string: /[\s\S]+/
-          }
-        },
-        {
-          pattern:
-            /("|')(?:#\{[^}]+\}|#(?!\{)|\\(?:\r\n|[\s\S])|(?!\1)[^\\#\r\n])*\1/,
-          greedy: true,
-          inside: {
-            interpolation: interpolation,
-            string: /[\s\S]+/
-          }
-        },
-        {
-          pattern: /<<[-~]?([a-z_]\w*)[\r\n](?:.*[\r\n])*?[\t ]*\1/i,
-          alias: 'heredoc-string',
-          greedy: true,
-          inside: {
-            delimiter: {
-              pattern: /^<<[-~]?[a-z_]\w*|\b[a-z_]\w*$/i,
-              inside: {
-                symbol: /\b\w+/,
-                punctuation: /^<<[-~]?/
-              }
-            },
-            interpolation: interpolation,
-            string: /[\s\S]+/
-          }
-        },
-        {
-          pattern: /<<[-~]?'([a-z_]\w*)'[\r\n](?:.*[\r\n])*?[\t ]*\1/i,
-          alias: 'heredoc-string',
-          greedy: true,
-          inside: {
-            delimiter: {
-              pattern: /^<<[-~]?'[a-z_]\w*'|\b[a-z_]\w*$/i,
-              inside: {
-                symbol: /\b\w+/,
-                punctuation: /^<<[-~]?'|'$/
-              }
-            },
-            string: /[\s\S]+/
-          }
-        }
-      ],
-      'command-literal': [
-        {
-          pattern: RegExp(/%x/.source + percentExpression),
-          greedy: true,
-          inside: {
-            interpolation: interpolation,
-            command: {
-              pattern: /[\s\S]+/,
-              alias: 'string'
-            }
-          }
-        },
-        {
-          pattern: /`(?:#\{[^}]+\}|#(?!\{)|\\(?:\r\n|[\s\S])|[^\\`#\r\n])*`/,
-          greedy: true,
-          inside: {
-            interpolation: interpolation,
-            command: {
-              pattern: /[\s\S]+/,
-              alias: 'string'
-            }
-          }
-        }
-      ]
-    });
-    delete Prism.languages.ruby.string;
-    Prism.languages.insertBefore('ruby', 'number', {
-      builtin:
-        /\b(?:Array|Bignum|Binding|Class|Continuation|Dir|Exception|FalseClass|File|Fixnum|Float|Hash|IO|Integer|MatchData|Method|Module|NilClass|Numeric|Object|Proc|Range|Regexp|Stat|String|Struct|Symbol|TMS|Thread|ThreadGroup|Time|TrueClass)\b/,
-      constant: /\b[A-Z][A-Z0-9_]*(?:[?!]|\b)/
-    });
-    Prism.languages.rb = Prism.languages.ruby;
-  })(Prism);
+	    Prism.languages.ruby = Prism.languages.extend('clike', {
+	      comment: {
+	        pattern: /#.*|^=begin\s[\s\S]*?^=end/m,
+	        greedy: true
+	      },
+	      'class-name': {
+	        pattern:
+	          /(\b(?:class|module)\s+|\bcatch\s+\()[\w.\\]+|\b[A-Z_]\w*(?=\s*\.\s*new\b)/,
+	        lookbehind: true,
+	        inside: {
+	          punctuation: /[.\\]/
+	        }
+	      },
+	      keyword:
+	        /\b(?:BEGIN|END|alias|and|begin|break|case|class|def|define_method|defined|do|each|else|elsif|end|ensure|extend|for|if|in|include|module|new|next|nil|not|or|prepend|private|protected|public|raise|redo|require|rescue|retry|return|self|super|then|throw|undef|unless|until|when|while|yield)\b/,
+	      operator:
+	        /\.{2,3}|&\.|===|<?=>|[!=]?~|(?:&&|\|\||<<|>>|\*\*|[+\-*/%<>!^&|=])=?|[?:]/,
+	      punctuation: /[(){}[\].,;]/
+	    });
+	    Prism.languages.insertBefore('ruby', 'operator', {
+	      'double-colon': {
+	        pattern: /::/,
+	        alias: 'punctuation'
+	      }
+	    });
+	    var interpolation = {
+	      pattern: /((?:^|[^\\])(?:\\{2})*)#\{(?:[^{}]|\{[^{}]*\})*\}/,
+	      lookbehind: true,
+	      inside: {
+	        content: {
+	          pattern: /^(#\{)[\s\S]+(?=\}$)/,
+	          lookbehind: true,
+	          inside: Prism.languages.ruby
+	        },
+	        delimiter: {
+	          pattern: /^#\{|\}$/,
+	          alias: 'punctuation'
+	        }
+	      }
+	    };
+	    delete Prism.languages.ruby.function;
+	    var percentExpression =
+	      '(?:' +
+	      [
+	        /([^a-zA-Z0-9\s{(\[<=])(?:(?!\1)[^\\]|\\[\s\S])*\1/.source,
+	        /\((?:[^()\\]|\\[\s\S]|\((?:[^()\\]|\\[\s\S])*\))*\)/.source,
+	        /\{(?:[^{}\\]|\\[\s\S]|\{(?:[^{}\\]|\\[\s\S])*\})*\}/.source,
+	        /\[(?:[^\[\]\\]|\\[\s\S]|\[(?:[^\[\]\\]|\\[\s\S])*\])*\]/.source,
+	        /<(?:[^<>\\]|\\[\s\S]|<(?:[^<>\\]|\\[\s\S])*>)*>/.source
+	      ].join('|') +
+	      ')';
+	    var symbolName =
+	      /(?:"(?:\\.|[^"\\\r\n])*"|(?:\b[a-zA-Z_]\w*|[^\s\0-\x7F]+)[?!]?|\$.)/
+	        .source;
+	    Prism.languages.insertBefore('ruby', 'keyword', {
+	      'regex-literal': [
+	        {
+	          pattern: RegExp(
+	            /%r/.source + percentExpression + /[egimnosux]{0,6}/.source
+	          ),
+	          greedy: true,
+	          inside: {
+	            interpolation: interpolation,
+	            regex: /[\s\S]+/
+	          }
+	        },
+	        {
+	          pattern:
+	            /(^|[^/])\/(?!\/)(?:\[[^\r\n\]]+\]|\\.|[^[/\\\r\n])+\/[egimnosux]{0,6}(?=\s*(?:$|[\r\n,.;})#]))/,
+	          lookbehind: true,
+	          greedy: true,
+	          inside: {
+	            interpolation: interpolation,
+	            regex: /[\s\S]+/
+	          }
+	        }
+	      ],
+	      variable: /[@$]+[a-zA-Z_]\w*(?:[?!]|\b)/,
+	      symbol: [
+	        {
+	          pattern: RegExp(/(^|[^:]):/.source + symbolName),
+	          lookbehind: true,
+	          greedy: true
+	        },
+	        {
+	          pattern: RegExp(
+	            /([\r\n{(,][ \t]*)/.source + symbolName + /(?=:(?!:))/.source
+	          ),
+	          lookbehind: true,
+	          greedy: true
+	        }
+	      ],
+	      'method-definition': {
+	        pattern: /(\bdef\s+)\w+(?:\s*\.\s*\w+)?/,
+	        lookbehind: true,
+	        inside: {
+	          function: /\b\w+$/,
+	          keyword: /^self\b/,
+	          'class-name': /^\w+/,
+	          punctuation: /\./
+	        }
+	      }
+	    });
+	    Prism.languages.insertBefore('ruby', 'string', {
+	      'string-literal': [
+	        {
+	          pattern: RegExp(/%[qQiIwWs]?/.source + percentExpression),
+	          greedy: true,
+	          inside: {
+	            interpolation: interpolation,
+	            string: /[\s\S]+/
+	          }
+	        },
+	        {
+	          pattern:
+	            /("|')(?:#\{[^}]+\}|#(?!\{)|\\(?:\r\n|[\s\S])|(?!\1)[^\\#\r\n])*\1/,
+	          greedy: true,
+	          inside: {
+	            interpolation: interpolation,
+	            string: /[\s\S]+/
+	          }
+	        },
+	        {
+	          pattern: /<<[-~]?([a-z_]\w*)[\r\n](?:.*[\r\n])*?[\t ]*\1/i,
+	          alias: 'heredoc-string',
+	          greedy: true,
+	          inside: {
+	            delimiter: {
+	              pattern: /^<<[-~]?[a-z_]\w*|\b[a-z_]\w*$/i,
+	              inside: {
+	                symbol: /\b\w+/,
+	                punctuation: /^<<[-~]?/
+	              }
+	            },
+	            interpolation: interpolation,
+	            string: /[\s\S]+/
+	          }
+	        },
+	        {
+	          pattern: /<<[-~]?'([a-z_]\w*)'[\r\n](?:.*[\r\n])*?[\t ]*\1/i,
+	          alias: 'heredoc-string',
+	          greedy: true,
+	          inside: {
+	            delimiter: {
+	              pattern: /^<<[-~]?'[a-z_]\w*'|\b[a-z_]\w*$/i,
+	              inside: {
+	                symbol: /\b\w+/,
+	                punctuation: /^<<[-~]?'|'$/
+	              }
+	            },
+	            string: /[\s\S]+/
+	          }
+	        }
+	      ],
+	      'command-literal': [
+	        {
+	          pattern: RegExp(/%x/.source + percentExpression),
+	          greedy: true,
+	          inside: {
+	            interpolation: interpolation,
+	            command: {
+	              pattern: /[\s\S]+/,
+	              alias: 'string'
+	            }
+	          }
+	        },
+	        {
+	          pattern: /`(?:#\{[^}]+\}|#(?!\{)|\\(?:\r\n|[\s\S])|[^\\`#\r\n])*`/,
+	          greedy: true,
+	          inside: {
+	            interpolation: interpolation,
+	            command: {
+	              pattern: /[\s\S]+/,
+	              alias: 'string'
+	            }
+	          }
+	        }
+	      ]
+	    });
+	    delete Prism.languages.ruby.string;
+	    Prism.languages.insertBefore('ruby', 'number', {
+	      builtin:
+	        /\b(?:Array|Bignum|Binding|Class|Continuation|Dir|Exception|FalseClass|File|Fixnum|Float|Hash|IO|Integer|MatchData|Method|Module|NilClass|Numeric|Object|Proc|Range|Regexp|Stat|String|Struct|Symbol|TMS|Thread|ThreadGroup|Time|TrueClass)\b/,
+	      constant: /\b[A-Z][A-Z0-9_]*(?:[?!]|\b)/
+	    });
+	    Prism.languages.rb = Prism.languages.ruby;
+	  })(Prism);
+	}
+	return ruby_1;
 }
 
-var refractorRuby = ruby_1;
-var crystal_1 = crystal;
-crystal.displayName = 'crystal';
-crystal.aliases = [];
-function crystal(Prism) {
-  Prism.register(refractorRuby)
-  ;(function (Prism) {
-    Prism.languages.crystal = Prism.languages.extend('ruby', {
-      keyword: [
-        /\b(?:__DIR__|__END_LINE__|__FILE__|__LINE__|abstract|alias|annotation|as|asm|begin|break|case|class|def|do|else|elsif|end|ensure|enum|extend|for|fun|if|ifdef|include|instance_sizeof|lib|macro|module|next|of|out|pointerof|private|protected|ptr|require|rescue|return|select|self|sizeof|struct|super|then|type|typeof|undef|uninitialized|union|unless|until|when|while|with|yield)\b/,
-        {
-          pattern: /(\.\s*)(?:is_a|responds_to)\?/,
-          lookbehind: true
-        }
-      ],
-      number:
-        /\b(?:0b[01_]*[01]|0o[0-7_]*[0-7]|0x[\da-fA-F_]*[\da-fA-F]|(?:\d(?:[\d_]*\d)?)(?:\.[\d_]*\d)?(?:[eE][+-]?[\d_]*\d)?)(?:_(?:[uif](?:8|16|32|64))?)?\b/,
-      operator: [/->/, Prism.languages.ruby.operator],
-      punctuation: /[(){}[\].,;\\]/
-    });
-    Prism.languages.insertBefore('crystal', 'string-literal', {
-      attribute: {
-        pattern: /@\[.*?\]/,
-        inside: {
-          delimiter: {
-            pattern: /^@\[|\]$/,
-            alias: 'punctuation'
-          },
-          attribute: {
-            pattern: /^(\s*)\w+/,
-            lookbehind: true,
-            alias: 'class-name'
-          },
-          args: {
-            pattern: /\S(?:[\s\S]*\S)?/,
-            inside: Prism.languages.crystal
-          }
-        }
-      },
-      expansion: {
-        pattern: /\{(?:\{.*?\}|%.*?%)\}/,
-        inside: {
-          content: {
-            pattern: /^(\{.)[\s\S]+(?=.\}$)/,
-            lookbehind: true,
-            inside: Prism.languages.crystal
-          },
-          delimiter: {
-            pattern: /^\{[\{%]|[\}%]\}$/,
-            alias: 'operator'
-          }
-        }
-      },
-      char: {
-        pattern:
-          /'(?:[^\\\r\n]{1,2}|\\(?:.|u(?:[A-Fa-f0-9]{1,4}|\{[A-Fa-f0-9]{1,6}\})))'/,
-        greedy: true
-      }
-    });
-  })(Prism);
+var crystal_1;
+var hasRequiredCrystal;
+
+function requireCrystal () {
+	if (hasRequiredCrystal) return crystal_1;
+	hasRequiredCrystal = 1;
+	var refractorRuby = requireRuby();
+	crystal_1 = crystal;
+	crystal.displayName = 'crystal';
+	crystal.aliases = [];
+	function crystal(Prism) {
+	  Prism.register(refractorRuby)
+	  ;(function (Prism) {
+	    Prism.languages.crystal = Prism.languages.extend('ruby', {
+	      keyword: [
+	        /\b(?:__DIR__|__END_LINE__|__FILE__|__LINE__|abstract|alias|annotation|as|asm|begin|break|case|class|def|do|else|elsif|end|ensure|enum|extend|for|fun|if|ifdef|include|instance_sizeof|lib|macro|module|next|of|out|pointerof|private|protected|ptr|require|rescue|return|select|self|sizeof|struct|super|then|type|typeof|undef|uninitialized|union|unless|until|when|while|with|yield)\b/,
+	        {
+	          pattern: /(\.\s*)(?:is_a|responds_to)\?/,
+	          lookbehind: true
+	        }
+	      ],
+	      number:
+	        /\b(?:0b[01_]*[01]|0o[0-7_]*[0-7]|0x[\da-fA-F_]*[\da-fA-F]|(?:\d(?:[\d_]*\d)?)(?:\.[\d_]*\d)?(?:[eE][+-]?[\d_]*\d)?)(?:_(?:[uif](?:8|16|32|64))?)?\b/,
+	      operator: [/->/, Prism.languages.ruby.operator],
+	      punctuation: /[(){}[\].,;\\]/
+	    });
+	    Prism.languages.insertBefore('crystal', 'string-literal', {
+	      attribute: {
+	        pattern: /@\[.*?\]/,
+	        inside: {
+	          delimiter: {
+	            pattern: /^@\[|\]$/,
+	            alias: 'punctuation'
+	          },
+	          attribute: {
+	            pattern: /^(\s*)\w+/,
+	            lookbehind: true,
+	            alias: 'class-name'
+	          },
+	          args: {
+	            pattern: /\S(?:[\s\S]*\S)?/,
+	            inside: Prism.languages.crystal
+	          }
+	        }
+	      },
+	      expansion: {
+	        pattern: /\{(?:\{.*?\}|%.*?%)\}/,
+	        inside: {
+	          content: {
+	            pattern: /^(\{.)[\s\S]+(?=.\}$)/,
+	            lookbehind: true,
+	            inside: Prism.languages.crystal
+	          },
+	          delimiter: {
+	            pattern: /^\{[\{%]|[\}%]\}$/,
+	            alias: 'operator'
+	          }
+	        }
+	      },
+	      char: {
+	        pattern:
+	          /'(?:[^\\\r\n]{1,2}|\\(?:.|u(?:[A-Fa-f0-9]{1,4}|\{[A-Fa-f0-9]{1,6}\})))'/,
+	        greedy: true
+	      }
+	    });
+	  })(Prism);
+	}
+	return crystal_1;
 }
 
 var cshtml_1;
@@ -20077,7 +20144,7 @@ var hasRequiredCshtml;
 function requireCshtml () {
 	if (hasRequiredCshtml) return cshtml_1;
 	hasRequiredCshtml = 1;
-	var refractorCsharp = csharp_1;
+	var refractorCsharp = requireCsharp();
 	cshtml_1 = cshtml;
 	cshtml.displayName = 'cshtml';
 	cshtml.aliases = ['razor'];
@@ -21841,7 +21908,7 @@ var hasRequiredErb;
 function requireErb () {
 	if (hasRequiredErb) return erb_1;
 	hasRequiredErb = 1;
-	var refractorRuby = ruby_1;
+	var refractorRuby = requireRuby();
 	var refractorMarkupTemplating = requireMarkupTemplating();
 	erb_1 = erb;
 	erb.displayName = 'erb';
@@ -24323,7 +24390,7 @@ var hasRequiredHaml;
 function requireHaml () {
 	if (hasRequiredHaml) return haml_1;
 	hasRequiredHaml = 1;
-	var refractorRuby = ruby_1;
+	var refractorRuby = requireRuby();
 	haml_1 = haml;
 	haml.displayName = 'haml';
 	haml.aliases = [];
@@ -36759,7 +36826,7 @@ function requireT4Cs () {
 	if (hasRequiredT4Cs) return t4Cs_1;
 	hasRequiredT4Cs = 1;
 	var refractorT4Templating = requireT4Templating();
-	var refractorCsharp = csharp_1;
+	var refractorCsharp = requireCsharp();
 	t4Cs_1 = t4Cs;
 	t4Cs.displayName = 't4Cs';
 	t4Cs.aliases = [];
@@ -39533,16 +39600,16 @@ refractor.register(bsl_1);
 refractor.register(c_1);
 refractor.register(cfscript_1);
 refractor.register(chaiscript_1);
-refractor.register(requireCil());
+refractor.register(cil_1);
 refractor.register(clojure_1);
 refractor.register(cmake_1);
-refractor.register(cobol_1);
-refractor.register(coffeescript_1);
-refractor.register(concurnas_1);
-refractor.register(coq_1);
-refractor.register(cpp_1);
-refractor.register(crystal_1);
-refractor.register(csharp_1);
+refractor.register(requireCobol());
+refractor.register(requireCoffeescript());
+refractor.register(requireConcurnas());
+refractor.register(requireCoq());
+refractor.register(requireCpp());
+refractor.register(requireCrystal());
+refractor.register(requireCsharp());
 refractor.register(requireCshtml());
 refractor.register(requireCsp());
 refractor.register(requireCssExtras());
@@ -39707,7 +39774,7 @@ refractor.register(requireRest());
 refractor.register(requireRip());
 refractor.register(requireRoboconf());
 refractor.register(requireRobotframework());
-refractor.register(ruby_1);
+refractor.register(requireRuby());
 refractor.register(requireRust());
 refractor.register(requireSas());
 refractor.register(requireSass());
@@ -40766,9 +40833,9 @@ var oneLight = {
   }
 };
 
-var css$J = ".CodeSnippet_module_root__96cf727a {\n  padding: 0.5rem, 1rem;\n  position: relative;\n}\n.CodeSnippet_module_root__96cf727a .CodeSnippet_module_code__96cf727a {\n  font-family: monospace;\n  font-size: 1rem;\n}\n.CodeSnippet_module_root__96cf727a .CodeSnippet_module_copy__96cf727a {\n  position: absolute;\n  right: 1rem;\n  top: 0.5rem;\n  cursor: pointer;\n}\n.CodeSnippet_module_root__96cf727a .CodeSnippet_module_copy__96cf727a .CodeSnippet_module_icon__96cf727a {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.CodeSnippet_module_root__96cf727a .CodeSnippet_module_copy__96cf727a .CodeSnippet_module_icon__96cf727a.CodeSnippet_module_dark__96cf727a {\n  fill: var(--white);\n}\n.CodeSnippet_module_root__96cf727a .CodeSnippet_module_copy__96cf727a .CodeSnippet_module_icon__96cf727a.CodeSnippet_module_light__96cf727a {\n  fill: var(--black);\n}\n.CodeSnippet_module_root__96cf727a .CodeSnippet_module_copy__96cf727a .CodeSnippet_module_notCopied__96cf727a {\n  display: none;\n}\n.CodeSnippet_module_root__96cf727a .CodeSnippet_module_copy__96cf727a .CodeSnippet_module_copied__96cf727a {\n  position: absolute;\n  right: 1.375rem;\n  top: 2.188rem;\n  padding: 0.5rem;\n  border-radius: 0.25rem;\n  background-color: var(--highlight);\n  color: var(--grey10);\n}";
+var css$L = ".CodeSnippet_module_root__96cf727a {\n  padding: 0.5rem, 1rem;\n  position: relative;\n}\n.CodeSnippet_module_root__96cf727a .CodeSnippet_module_code__96cf727a {\n  font-family: monospace;\n  font-size: 1rem;\n}\n.CodeSnippet_module_root__96cf727a .CodeSnippet_module_copy__96cf727a {\n  position: absolute;\n  right: 1rem;\n  top: 0.5rem;\n  cursor: pointer;\n}\n.CodeSnippet_module_root__96cf727a .CodeSnippet_module_copy__96cf727a .CodeSnippet_module_icon__96cf727a {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.CodeSnippet_module_root__96cf727a .CodeSnippet_module_copy__96cf727a .CodeSnippet_module_icon__96cf727a.CodeSnippet_module_dark__96cf727a {\n  fill: var(--white);\n}\n.CodeSnippet_module_root__96cf727a .CodeSnippet_module_copy__96cf727a .CodeSnippet_module_icon__96cf727a.CodeSnippet_module_light__96cf727a {\n  fill: var(--black);\n}\n.CodeSnippet_module_root__96cf727a .CodeSnippet_module_copy__96cf727a .CodeSnippet_module_notCopied__96cf727a {\n  display: none;\n}\n.CodeSnippet_module_root__96cf727a .CodeSnippet_module_copy__96cf727a .CodeSnippet_module_copied__96cf727a {\n  position: absolute;\n  right: 1.375rem;\n  top: 2.188rem;\n  padding: 0.5rem;\n  border-radius: 0.25rem;\n  background-color: var(--highlight);\n  color: var(--grey10);\n}";
 var modules_c548043f = {"root":"CodeSnippet_module_root__96cf727a","code":"CodeSnippet_module_code__96cf727a","copy":"CodeSnippet_module_copy__96cf727a","icon":"CodeSnippet_module_icon__96cf727a","dark":"CodeSnippet_module_dark__96cf727a","light":"CodeSnippet_module_light__96cf727a","notCopied":"CodeSnippet_module_notCopied__96cf727a","copied":"CodeSnippet_module_copied__96cf727a"};
-n(css$J,{});
+n(css$L,{});
 
 var CodeSnippet = function CodeSnippet(props) {
   var copy = props.copy,
@@ -41749,9 +41816,9 @@ var useResize = function useResize(props) {
   }, [enabled]);
 };
 
-var css$I = ".Header_module_container__26bf5a9c {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  padding: 0rem 1.5625rem;\n}\n.Header_module_container__26bf5a9c .Header_module_title__26bf5a9c {\n  font-weight: 400;\n  font-size: 0.8rem;\n  color: var(--black);\n}\n.Header_module_container__26bf5a9c .Header_module_icon__26bf5a9c {\n  width: 1.5rem;\n  height: 1.5rem;\n  stroke: #181818;\n  cursor: pointer;\n}";
+var css$K = ".Header_module_container__26bf5a9c {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  padding: 0rem 1.5625rem;\n}\n.Header_module_container__26bf5a9c .Header_module_title__26bf5a9c {\n  font-weight: 400;\n  font-size: 0.8rem;\n  color: var(--black);\n}\n.Header_module_container__26bf5a9c .Header_module_icon__26bf5a9c {\n  width: 1.5rem;\n  height: 1.5rem;\n  stroke: #181818;\n  cursor: pointer;\n}";
 var modules_cf337dc1 = {"container":"Header_module_container__26bf5a9c","title":"Header_module_title__26bf5a9c","icon":"Header_module_icon__26bf5a9c"};
-n(css$I,{});
+n(css$K,{});
 
 var Header = function Header(props) {
   var selectedMonth = props.selectedMonth,
@@ -41783,17 +41850,17 @@ var Header = function Header(props) {
   });
 };
 
-var css$H = ".Calender_module_root__5221cce4 {\n  padding: 1rem 0rem;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}";
+var css$J = ".Calender_module_root__5221cce4 {\n  padding: 1rem 0rem;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}";
 var modules_3722b5cd = {"root":"Calender_module_root__5221cce4"};
-n(css$H,{});
+n(css$J,{});
 
-var css$G = ".Body_module_root__85b1b679 {\n  padding: 0.5rem 0.5rem;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-items: stretch;\n}";
+var css$I = ".Body_module_root__85b1b679 {\n  padding: 0.5rem 0.5rem;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-items: stretch;\n}";
 var modules_e6b80d99 = {"root":"Body_module_root__85b1b679"};
-n(css$G,{});
+n(css$I,{});
 
-var css$F = ".Dates_module_dates__e3e1fc43 {\n  display: grid;\n  grid-template-columns: repeat(7, 1fr);\n  align-items: center;\n  flex-wrap: wrap;\n}\n.Dates_module_dates__e3e1fc43 div {\n  flex-basis: 14.28%;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  margin-bottom: 0.25rem;\n  cursor: pointer;\n  align-self: center;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.Dates_module_dates__e3e1fc43 div .Dates_module_date__e3e1fc43 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  text-align: center;\n  vertical-align: middle;\n  border-radius: 1.5rem;\n  height: 2.5rem;\n  width: 2.5rem;\n  font-weight: 400;\n  font-size: 0.875rem;\n  color: var(--black);\n}\n.Dates_module_dates__e3e1fc43 div .Dates_module_selected__e3e1fc43 {\n  background-color: var(--highlight);\n  color: var(--white);\n}\n.Dates_module_dates__e3e1fc43 div .Dates_module_unSelected__e3e1fc43 {\n  background-color: var(--white);\n  border-color: var(--highlight);\n  border-width: 0.125rem;\n  border-style: solid;\n  color: var(--black);\n}\n.Dates_module_dates__e3e1fc43 div .Dates_module_disabled__e3e1fc43 {\n  border-radius: 1.5rem;\n  color: var(--grey2);\n}\n.Dates_module_dates__e3e1fc43 div .Dates_module_diffMonth__e3e1fc43 {\n  opacity: 0.6;\n}\n.Dates_module_dates__e3e1fc43 div:hover .Dates_module_date__e3e1fc43 {\n  background: var(--background);\n  color: var(--highlight);\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n}\n.Dates_module_dates__e3e1fc43 div:hover .Dates_module_selected__e3e1fc43 {\n  background-color: var(--highlight);\n  color: var(--white);\n}\n.Dates_module_dates__e3e1fc43 div:hover .Dates_module_disabled__e3e1fc43 {\n  background: transparent;\n  box-shadow: none;\n  border-radius: 1.5rem;\n  color: var(--grey2);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_minInRange__e3e1fc43 {\n  background-color: var(--highlight);\n  border-radius: 1.5rem 0rem 0rem 1.5rem;\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_minInRange__e3e1fc43 .Dates_module_date__e3e1fc43 {\n  color: var(--white);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_minInRange__e3e1fc43:hover .Dates_module_date__e3e1fc43 {\n  background: var(--highlight);\n  color: var(--white);\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_maxInRange__e3e1fc43 {\n  background-color: var(--highlight);\n  border-radius: 0rem 1.5rem 1.5rem 0rem;\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_maxInRange__e3e1fc43 .Dates_module_date__e3e1fc43 {\n  color: var(--white);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_maxInRange__e3e1fc43:hover .Dates_module_date__e3e1fc43 {\n  background: var(--highlight);\n  color: var(--white);\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_midInRange__e3e1fc43 {\n  background: var(--background);\n  border-radius: 0rem;\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_midInRange__e3e1fc43 .Dates_module_date__e3e1fc43 {\n  color: var(--highlight);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_firstHovered__e3e1fc43 {\n  background: var(--background);\n  border-radius: 0rem 1.5rem 1.5rem 0rem;\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_firstHovered__e3e1fc43 .Dates_module_date__e3e1fc43 {\n  color: var(--highlight);\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_lastHovered__e3e1fc43 {\n  background: var(--background);\n  border-radius: 1.5rem 0rem 0rem 1.5rem;\n}\n.Dates_module_dates__e3e1fc43 .Dates_module_lastHovered__e3e1fc43 .Dates_module_date__e3e1fc43 {\n  color: var(--highlight);\n}";
-var modules_b02dadcc = {"dates":"Dates_module_dates__e3e1fc43","date":"Dates_module_date__e3e1fc43","selected":"Dates_module_selected__e3e1fc43","unSelected":"Dates_module_unSelected__e3e1fc43","disabled":"Dates_module_disabled__e3e1fc43","diffMonth":"Dates_module_diffMonth__e3e1fc43","minInRange":"Dates_module_minInRange__e3e1fc43","maxInRange":"Dates_module_maxInRange__e3e1fc43","midInRange":"Dates_module_midInRange__e3e1fc43","first-hovered":"Dates_module_firstHovered__e3e1fc43","last-hovered":"Dates_module_lastHovered__e3e1fc43"};
-n(css$F,{});
+var css$H = ".Dates_module_dates__e964f6bf {\n  display: grid;\n  grid-template-columns: repeat(7, 1fr);\n  align-items: center;\n  flex-wrap: wrap;\n}\n.Dates_module_dates__e964f6bf div {\n  flex-basis: 14.28%;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  margin-bottom: 0.25rem;\n  cursor: pointer;\n  align-self: center;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.Dates_module_dates__e964f6bf div .Dates_module_date__e964f6bf {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  text-align: center;\n  vertical-align: middle;\n  border-radius: 1.5rem;\n  height: 2.5rem;\n  width: 2.5rem;\n  font-weight: 400;\n  font-size: 0.875rem;\n  color: var(--black);\n}\n.Dates_module_dates__e964f6bf div .Dates_module_selected__e964f6bf {\n  background-color: var(--highlight);\n  color: var(--white);\n}\n.Dates_module_dates__e964f6bf div .Dates_module_unSelected__e964f6bf {\n  background-color: var(--white);\n  border-color: var(--highlight);\n  border-width: 0.125rem;\n  border-style: solid;\n  color: var(--black);\n}\n.Dates_module_dates__e964f6bf div .Dates_module_disabled__e964f6bf {\n  border-radius: 1.5rem;\n  color: var(--grey2);\n}\n.Dates_module_dates__e964f6bf div .Dates_module_diffMonth__e964f6bf {\n  opacity: 0.6;\n}\n.Dates_module_dates__e964f6bf div:hover .Dates_module_date__e964f6bf {\n  background: var(--background);\n  color: var(--highlight);\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n}\n.Dates_module_dates__e964f6bf div:hover .Dates_module_selected__e964f6bf {\n  background-color: var(--highlight);\n  color: var(--white);\n}\n.Dates_module_dates__e964f6bf div:hover .Dates_module_disabled__e964f6bf {\n  background: transparent;\n  box-shadow: none;\n  border-radius: 1.5rem;\n  color: var(--grey2);\n}\n.Dates_module_dates__e964f6bf .Dates_module_minInRange__e964f6bf {\n  background-color: var(--highlight);\n  border-radius: 1.5rem 0rem 0rem 1.5rem;\n}\n.Dates_module_dates__e964f6bf .Dates_module_minInRange__e964f6bf .Dates_module_date__e964f6bf {\n  color: var(--white);\n}\n.Dates_module_dates__e964f6bf .Dates_module_minInRange__e964f6bf:hover .Dates_module_date__e964f6bf {\n  background: var(--highlight);\n  color: var(--white);\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n}\n.Dates_module_dates__e964f6bf .Dates_module_maxInRange__e964f6bf {\n  background-color: var(--highlight);\n  border-radius: 0rem 1.5rem 1.5rem 0rem;\n}\n.Dates_module_dates__e964f6bf .Dates_module_maxInRange__e964f6bf .Dates_module_date__e964f6bf {\n  color: var(--white);\n}\n.Dates_module_dates__e964f6bf .Dates_module_maxInRange__e964f6bf:hover .Dates_module_date__e964f6bf {\n  background: var(--highlight);\n  color: var(--white);\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n}\n.Dates_module_dates__e964f6bf .Dates_module_midInRange__e964f6bf {\n  background: var(--background);\n  border-radius: 0rem;\n}\n.Dates_module_dates__e964f6bf .Dates_module_midInRange__e964f6bf .Dates_module_date__e964f6bf {\n  color: var(--highlight);\n}\n.Dates_module_dates__e964f6bf .Dates_module_midInRangeSelected__e964f6bf {\n  background: var(--background);\n  border-radius: 0rem;\n}\n.Dates_module_dates__e964f6bf .Dates_module_midInRangeSelected__e964f6bf .Dates_module_date__e964f6bf {\n  color: var(--white);\n}\n.Dates_module_dates__e964f6bf .Dates_module_firstHovered__e964f6bf {\n  background: var(--background);\n  border-radius: 0rem 1.5rem 1.5rem 0rem;\n}\n.Dates_module_dates__e964f6bf .Dates_module_firstHovered__e964f6bf .Dates_module_date__e964f6bf {\n  color: var(--highlight);\n}\n.Dates_module_dates__e964f6bf .Dates_module_lastHovered__e964f6bf {\n  background: var(--background);\n  border-radius: 1.5rem 0rem 0rem 1.5rem;\n}\n.Dates_module_dates__e964f6bf .Dates_module_lastHovered__e964f6bf .Dates_module_date__e964f6bf {\n  color: var(--highlight);\n}";
+var modules_b02dadcc = {"dates":"Dates_module_dates__e964f6bf","date":"Dates_module_date__e964f6bf","selected":"Dates_module_selected__e964f6bf","unSelected":"Dates_module_unSelected__e964f6bf","disabled":"Dates_module_disabled__e964f6bf","diffMonth":"Dates_module_diffMonth__e964f6bf","minInRange":"Dates_module_minInRange__e964f6bf","maxInRange":"Dates_module_maxInRange__e964f6bf","midInRange":"Dates_module_midInRange__e964f6bf","midInRangeSelected":"Dates_module_midInRangeSelected__e964f6bf","first-hovered":"Dates_module_firstHovered__e964f6bf","last-hovered":"Dates_module_lastHovered__e964f6bf"};
+n(css$H,{});
 
 var getDatesOfLastWeekOfLastMonth = function getDatesOfLastWeekOfLastMonth(_ref) {
   var monthAsNumber = _ref.monthAsNumber,
@@ -42019,9 +42086,9 @@ var Dates = function Dates(props) {
       if (hoveredEndingDate) {
         isMidItem = isBefore(date, fromUnixTime(hoveredEndingDate)) && isAfter(date, fromUnixTime(firstItem)) || isAfter(date, fromUnixTime(hoveredEndingDate)) && isBefore(date, fromUnixTime(firstItem));
       } else {
-        isMidItem = isBefore(date, fromUnixTime(lastItem)) && isAfter(date, fromUnixTime(firstItem).setHours(23, 59, 59, 59));
+        isMidItem = isBefore(date, fromUnixTime(lastItem).setHours(0, 0, 0, 0)) && isAfter(date, fromUnixTime(firstItem).setHours(23, 59, 59, 59));
       }
-      var parentClassNames = classes(isMidItem ? modules_b02dadcc.midInRange : '', isFirstItem ? isHoveringBeforeSelectedDate ? modules_b02dadcc.maxInRange : modules_b02dadcc.minInRange : '', isLastItem ? modules_b02dadcc.maxInRange : '', isLastItemHovered ? modules_b02dadcc['first-hovered'] : '', isFirstItemHovered ? modules_b02dadcc['last-hovered'] : '');
+      var parentClassNames = classes(isMidItem ? selectedSingleDate ? modules_b02dadcc.midInRangeSelected : modules_b02dadcc.midInRange : '', isFirstItem ? isHoveringBeforeSelectedDate ? modules_b02dadcc.maxInRange : modules_b02dadcc.minInRange : '', isLastItem ? modules_b02dadcc.maxInRange : '', isLastItemHovered ? modules_b02dadcc['first-hovered'] : '', isFirstItemHovered ? modules_b02dadcc['last-hovered'] : '');
       var childClassNames = classes(date ? modules_b02dadcc.date : '', selectedSingleDate ? modules_b02dadcc.selected : '', isUnSelected ? modules_b02dadcc.unSelected : '', notSameMonth ? modules_b02dadcc.diffMonth : '', isDisabled ? modules_b02dadcc.disabled : '');
       return /*#__PURE__*/jsx("div", {
         className: parentClassNames,
@@ -42042,9 +42109,9 @@ var Dates = function Dates(props) {
   });
 };
 
-var css$E = ".Days_module_days__0d7923fd {\n  display: grid;\n  grid-template-columns: repeat(7, 1fr);\n  text-align: center;\n}\n.Days_module_days__0d7923fd span {\n  padding: 0.75rem 0.5rem;\n  font-weight: 500;\n  font-size: 0.875rem;\n  color: black;\n  flex-basis: 14.28%;\n}";
+var css$G = ".Days_module_days__0d7923fd {\n  display: grid;\n  grid-template-columns: repeat(7, 1fr);\n  text-align: center;\n}\n.Days_module_days__0d7923fd span {\n  padding: 0.75rem 0.5rem;\n  font-weight: 500;\n  font-size: 0.875rem;\n  color: black;\n  flex-basis: 14.28%;\n}";
 var modules_82c45006 = {"days":"Days_module_days__0d7923fd"};
-n(css$E,{});
+n(css$G,{});
 
 var Days = function Days() {
   var daysInWeek = DAYS;
@@ -42065,9 +42132,9 @@ var Body = function Body(props) {
   });
 };
 
-var css$D = ".TextField_module_root__9cc1db47 {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: flex-start;\n  gap: 0.5rem;\n}\n.TextField_module_root__9cc1db47 label {\n  width: 100%;\n  max-width: 100%;\n  font-weight: 400;\n  font-size: 0.75rem;\n  line-height: 1.125rem;\n  letter-spacing: 0.32px;\n  color: var(--grey);\n  height: 100%;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  gap: 0.5rem;\n  padding: 0rem 0.5rem;\n  max-width: 100%;\n  width: 100%;\n  border-color: var(--grey4);\n  border-style: solid;\n  border-radius: 0.25rem;\n  height: 100%;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 .TextField_module_icon__9cc1db47 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem*=component] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] {\n  flex: 1;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47 {\n  -moz-appearance: textfield;\n  flex: 1;\n  background-color: transparent;\n  border: none;\n  font-weight: 400;\n  font-size: 0.875rem;\n  line-height: 1.125rem;\n  letter-spacing: 0.16px;\n  color: var(--black);\n  width: 100%;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47::-webkit-outer-spin-button, .TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47::-webkit-inner-spin-button {\n  -webkit-appearance: none;\n  margin: 0;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47:focus {\n  outline: none;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47:disabled {\n  background: var(--grey9);\n  color: var(--grey3);\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47.TextField_module_sm__9cc1db47 {\n  padding: 0.5rem 0rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47.TextField_module_md__9cc1db47 {\n  padding: 0.688rem 0rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47.TextField_module_lg__9cc1db47 {\n  padding: 1rem 0rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_typeTextarea__9cc1db47 {\n  padding: 0;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_typeTextarea__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47 {\n  resize: vertical;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_typeTextarea__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47.TextField_module_md__9cc1db47 {\n  padding: 0.313rem 0.75rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_typeTextarea__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47.TextField_module_lg__9cc1db47 {\n  padding: 0.5rem 1rem;\n  font-size: 1rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47:focus-within {\n  border: 0.063rem solid var(--info);\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47:focus-within.TextField_module_feedbackError__9cc1db47 {\n  border-color: var(--error);\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_borderDefault__9cc1db47 {\n  border-width: 0.063rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_borderBottom__9cc1db47 {\n  border-width: 0rem 0rem 0.063rem 0rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_borderNone__9cc1db47 {\n  border-width: 0rem;\n}\n.TextField_module_root__9cc1db47 .TextField_module_bottom__9cc1db47 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: flex-start;\n  min-height: 2rem;\n  width: 100%;\n  gap: 1rem;\n  color: var(--grey3);\n  font-size: 0.75rem;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.TextField_module_root__9cc1db47 .TextField_module_bottom__9cc1db47 .TextField_module_feedback__9cc1db47 {\n  flex: 1;\n  margin-right: auto;\n}\n.TextField_module_root__9cc1db47 .TextField_module_bottom__9cc1db47 .TextField_module_feedback__9cc1db47.TextField_module_feedbackError__9cc1db47 {\n  color: var(--error);\n  fill: var(--error);\n}\n.TextField_module_root__9cc1db47 .TextField_module_bottom__9cc1db47 .TextField_module_feedback__9cc1db47.TextField_module_feedbackSuccess__9cc1db47 {\n  color: var(--success);\n  fill: var(--success);\n}\n.TextField_module_root__9cc1db47 .TextField_module_bottom__9cc1db47 .TextField_module_count__9cc1db47 {\n  text-align: right;\n  margin-left: auto;\n}\n.TextField_module_root__9cc1db47 .TextField_module_bottom__9cc1db47 .TextField_module_count__9cc1db47.TextField_module_exceeded__9cc1db47 {\n  color: var(--error);\n}";
+var css$F = ".TextField_module_root__9cc1db47 {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: flex-start;\n  gap: 0.5rem;\n}\n.TextField_module_root__9cc1db47 label {\n  width: 100%;\n  max-width: 100%;\n  font-weight: 400;\n  font-size: 0.75rem;\n  line-height: 1.125rem;\n  letter-spacing: 0.32px;\n  color: var(--grey);\n  height: 100%;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  gap: 0.5rem;\n  padding: 0rem 0.5rem;\n  max-width: 100%;\n  width: 100%;\n  border-color: var(--grey4);\n  border-style: solid;\n  border-radius: 0.25rem;\n  height: 100%;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 .TextField_module_icon__9cc1db47 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem*=component] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] {\n  flex: 1;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47 {\n  -moz-appearance: textfield;\n  flex: 1;\n  background-color: transparent;\n  border: none;\n  font-weight: 400;\n  font-size: 0.875rem;\n  line-height: 1.125rem;\n  letter-spacing: 0.16px;\n  color: var(--black);\n  width: 100%;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47::-webkit-outer-spin-button, .TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47::-webkit-inner-spin-button {\n  -webkit-appearance: none;\n  margin: 0;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47:focus {\n  outline: none;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47:disabled {\n  background: var(--grey9);\n  color: var(--grey3);\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47.TextField_module_sm__9cc1db47 {\n  padding: 0.5rem 0rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47.TextField_module_md__9cc1db47 {\n  padding: 0.688rem 0rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47.TextField_module_lg__9cc1db47 {\n  padding: 1rem 0rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_typeTextarea__9cc1db47 {\n  padding: 0;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_typeTextarea__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47 {\n  resize: vertical;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_typeTextarea__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47.TextField_module_md__9cc1db47 {\n  padding: 0.313rem 0.75rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_typeTextarea__9cc1db47 > [data-elem=component2] .TextField_module_input__9cc1db47.TextField_module_lg__9cc1db47 {\n  padding: 0.5rem 1rem;\n  font-size: 1rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47:focus-within {\n  border: 0.063rem solid var(--info);\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47:focus-within.TextField_module_feedbackError__9cc1db47 {\n  border-color: var(--error);\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_borderDefault__9cc1db47 {\n  border-width: 0.063rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_borderBottom__9cc1db47 {\n  border-width: 0rem 0rem 0.063rem 0rem;\n}\n.TextField_module_root__9cc1db47 label .TextField_module_inputWrapper__9cc1db47.TextField_module_borderNone__9cc1db47 {\n  border-width: 0rem;\n}\n.TextField_module_root__9cc1db47 .TextField_module_bottom__9cc1db47 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: flex-start;\n  min-height: 2rem;\n  width: 100%;\n  gap: 1rem;\n  color: var(--grey3);\n  font-size: 0.75rem;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.TextField_module_root__9cc1db47 .TextField_module_bottom__9cc1db47 .TextField_module_feedback__9cc1db47 {\n  flex: 1;\n  margin-right: auto;\n}\n.TextField_module_root__9cc1db47 .TextField_module_bottom__9cc1db47 .TextField_module_feedback__9cc1db47.TextField_module_feedbackError__9cc1db47 {\n  color: var(--error);\n  fill: var(--error);\n}\n.TextField_module_root__9cc1db47 .TextField_module_bottom__9cc1db47 .TextField_module_feedback__9cc1db47.TextField_module_feedbackSuccess__9cc1db47 {\n  color: var(--success);\n  fill: var(--success);\n}\n.TextField_module_root__9cc1db47 .TextField_module_bottom__9cc1db47 .TextField_module_count__9cc1db47 {\n  text-align: right;\n  margin-left: auto;\n}\n.TextField_module_root__9cc1db47 .TextField_module_bottom__9cc1db47 .TextField_module_count__9cc1db47.TextField_module_exceeded__9cc1db47 {\n  color: var(--error);\n}";
 var modules_c1d23762 = {"root":"TextField_module_root__9cc1db47","input-wrapper":"TextField_module_inputWrapper__9cc1db47","icon":"TextField_module_icon__9cc1db47","input":"TextField_module_input__9cc1db47","sm":"TextField_module_sm__9cc1db47","md":"TextField_module_md__9cc1db47","lg":"TextField_module_lg__9cc1db47","type-textarea":"TextField_module_typeTextarea__9cc1db47","feedback-error":"TextField_module_feedbackError__9cc1db47","border-default":"TextField_module_borderDefault__9cc1db47","border-bottom":"TextField_module_borderBottom__9cc1db47","border-none":"TextField_module_borderNone__9cc1db47","bottom":"TextField_module_bottom__9cc1db47","feedback":"TextField_module_feedback__9cc1db47","feedback-success":"TextField_module_feedbackSuccess__9cc1db47","count":"TextField_module_count__9cc1db47","exceeded":"TextField_module_exceeded__9cc1db47"};
-n(css$D,{});
+n(css$F,{});
 
 var TextField = /*#__PURE__*/forwardRef(function TextField(props, inputRef) {
   var _inputValue$length;
@@ -42200,9 +42267,9 @@ TextField.defaultProps = {
   onKeyDown: function onKeyDown() {}
 };
 
-var css$C = ":root {\n  --white: #ffffff;\n  --black: #000000;\n  --dark-grey: #333333;\n  --dark-grey-o-85: rgba(51, 51, 51, 0.85);\n  --grey: #737373;\n  --grey1: #888888;\n  --grey2: #a6a6a6;\n  --grey3: #bbbbbb;\n  --grey4: #c4c4c4;\n  --grey5: #dddddd;\n  --grey6: #e8e8e8;\n  --grey7: #eeeeee;\n  --grey8: #f2f2f2;\n  --grey9: #eff0f0;\n  --grey10: #f7f7f7;\n  --highlight: #0f62fe;\n  --dark-blue: #001833;\n  --background: #d0e2ff;\n  --banyan-blue: #00037c;\n  --banyan-orange: #ff892a;\n  --banyan-pink: #ff1597;\n  --banyan-gradient: linear-gradient(\n  \t84.71deg,\n  \tvar(--banyan-pink) 0.48%,\n  \tvar(--banyan-orange) 99.57%\n  );\n  --error: #da1e28;\n  --error-bg: #fff1f1;\n  --error-outline: rgba(218, 30, 40, 0.08);\n  --success: #24a148;\n  --success-bg: #defbe6;\n  --success-outline: rgba(36, 161, 72, 0.08);\n  --warning: #f1c21b;\n  --warning-bg: #fff8e1;\n  --warning-outline: rgba(203, 160, 6, 0.08);\n  --info: #0043ce;\n  --info-bg: #edf5ff;\n  --info-outline: #2864db98;\n}\n\n.CheckBox_module_root__d1bdcb36 {\n  cursor: pointer;\n  gap: 10px;\n}\n.CheckBox_module_root__d1bdcb36.CheckBox_module_positionLeft__d1bdcb36 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.CheckBox_module_root__d1bdcb36.CheckBox_module_positionRight__d1bdcb36 {\n  display: flex;\n  flex-direction: row-reverse;\n  justify-content: flex-end;\n  align-items: center;\n}\n.CheckBox_module_root__d1bdcb36 input[type=checkbox] {\n  opacity: 0;\n  z-index: 1;\n  position: absolute;\n  width: 1px;\n  height: 1px;\n}\n.CheckBox_module_root__d1bdcb36.CheckBox_module_disabled__d1bdcb36 {\n  cursor: default;\n}\n.CheckBox_module_root__d1bdcb36 .CheckBox_module_icon__d1bdcb36 {\n  display: inline-block;\n}\n.CheckBox_module_root__d1bdcb36 .CheckBox_module_icon__d1bdcb36.CheckBox_module_iconSm__d1bdcb36 {\n  width: 1rem;\n  height: 1rem;\n}\n.CheckBox_module_root__d1bdcb36 .CheckBox_module_icon__d1bdcb36.CheckBox_module_iconMd__d1bdcb36 {\n  width: 1.25rem;\n  height: 1.25rem;\n}\n.CheckBox_module_root__d1bdcb36 .CheckBox_module_icon__d1bdcb36.CheckBox_module_iconLg__d1bdcb36 {\n  width: 1.5rem;\n  height: 2rem;\n}\n.CheckBox_module_root__d1bdcb36 [data-elem=label] {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}";
+var css$E = ":root {\n  --white: #ffffff;\n  --black: #000000;\n  --dark-grey: #333333;\n  --dark-grey-o-85: rgba(51, 51, 51, 0.85);\n  --grey: #737373;\n  --grey1: #888888;\n  --grey2: #a6a6a6;\n  --grey3: #bbbbbb;\n  --grey4: #c4c4c4;\n  --grey5: #dddddd;\n  --grey6: #e8e8e8;\n  --grey7: #eeeeee;\n  --grey8: #f2f2f2;\n  --grey9: #eff0f0;\n  --grey10: #f7f7f7;\n  --highlight: #0f62fe;\n  --dark-blue: #001833;\n  --background: #d0e2ff;\n  --banyan-blue: #00037c;\n  --banyan-orange: #ff892a;\n  --banyan-pink: #ff1597;\n  --banyan-gradient: linear-gradient(\n  \t84.71deg,\n  \tvar(--banyan-pink) 0.48%,\n  \tvar(--banyan-orange) 99.57%\n  );\n  --error: #da1e28;\n  --error-bg: #fff1f1;\n  --error-outline: rgba(218, 30, 40, 0.08);\n  --success: #24a148;\n  --success-bg: #defbe6;\n  --success-outline: rgba(36, 161, 72, 0.08);\n  --warning: #f1c21b;\n  --warning-bg: #fff8e1;\n  --warning-outline: rgba(203, 160, 6, 0.08);\n  --info: #0043ce;\n  --info-bg: #edf5ff;\n  --info-outline: #2864db98;\n}\n\n.CheckBox_module_root__d1bdcb36 {\n  cursor: pointer;\n  gap: 10px;\n}\n.CheckBox_module_root__d1bdcb36.CheckBox_module_positionLeft__d1bdcb36 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.CheckBox_module_root__d1bdcb36.CheckBox_module_positionRight__d1bdcb36 {\n  display: flex;\n  flex-direction: row-reverse;\n  justify-content: flex-end;\n  align-items: center;\n}\n.CheckBox_module_root__d1bdcb36 input[type=checkbox] {\n  opacity: 0;\n  z-index: 1;\n  position: absolute;\n  width: 1px;\n  height: 1px;\n}\n.CheckBox_module_root__d1bdcb36.CheckBox_module_disabled__d1bdcb36 {\n  cursor: default;\n}\n.CheckBox_module_root__d1bdcb36 .CheckBox_module_icon__d1bdcb36 {\n  display: inline-block;\n}\n.CheckBox_module_root__d1bdcb36 .CheckBox_module_icon__d1bdcb36.CheckBox_module_iconSm__d1bdcb36 {\n  width: 1rem;\n  height: 1rem;\n}\n.CheckBox_module_root__d1bdcb36 .CheckBox_module_icon__d1bdcb36.CheckBox_module_iconMd__d1bdcb36 {\n  width: 1.25rem;\n  height: 1.25rem;\n}\n.CheckBox_module_root__d1bdcb36 .CheckBox_module_icon__d1bdcb36.CheckBox_module_iconLg__d1bdcb36 {\n  width: 1.5rem;\n  height: 2rem;\n}\n.CheckBox_module_root__d1bdcb36 [data-elem=label] {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}";
 var modules_066398a2 = {"white":"var(--white)","black":"var(--black)","dark-grey":"var(--dark-grey)","dark-grey-o-85":"var(--dark-grey-o-85)","grey":"var(--grey)","grey1":"var(--grey1)","grey2":"var(--grey2)","grey3":"var(--grey3)","grey4":"var(--grey4)","grey5":"var(--grey5)","grey6":"var(--grey6)","grey7":"var(--grey7)","grey8":"var(--grey8)","grey9":"var(--grey9)","grey10":"var(--grey10)","highlight":"var(--highlight)","dark-blue":"var(--dark-blue)","background":"var(--background)","banyan-blue":"var(--banyan-blue)","banyan-orange":"var(--banyan-orange)","banyan-pink":"var(--banyan-pink)","banyan-gradient":"var(--banyan-gradient)","error":"var(--error)","error-bg":"var(--error-bg)","error-outline":"var(--error-outline)","success":"var(--success)","success-bg":"var(--success-bg)","success-outline":"var(--success-outline)","warning":"var(--warning)","warning-bg":"var(--warning-bg)","warning-outline":"var(--warning-outline)","info":"var(--info)","info-bg":"var(--info-bg)","info-outline":"var(--info-outline)","root":"CheckBox_module_root__d1bdcb36","position-left":"CheckBox_module_positionLeft__d1bdcb36","position-right":"CheckBox_module_positionRight__d1bdcb36","disabled":"CheckBox_module_disabled__d1bdcb36","icon":"CheckBox_module_icon__d1bdcb36","icon-sm":"CheckBox_module_iconSm__d1bdcb36","icon-md":"CheckBox_module_iconMd__d1bdcb36","icon-lg":"CheckBox_module_iconLg__d1bdcb36"};
-n(css$C,{});
+n(css$E,{});
 
 var Checkbox = function Checkbox(props) {
   // eslint-disable-next-line object-curly-newline
@@ -42273,9 +42340,9 @@ Checkbox.defaultProps = {
   onChange: function onChange() {}
 };
 
-var css$B = ":root {\n  --white: #ffffff;\n  --black: #000000;\n  --dark-grey: #333333;\n  --dark-grey-o-85: rgba(51, 51, 51, 0.85);\n  --grey: #737373;\n  --grey1: #888888;\n  --grey2: #a6a6a6;\n  --grey3: #bbbbbb;\n  --grey4: #c4c4c4;\n  --grey5: #dddddd;\n  --grey6: #e8e8e8;\n  --grey7: #eeeeee;\n  --grey8: #f2f2f2;\n  --grey9: #eff0f0;\n  --grey10: #f7f7f7;\n  --highlight: #0f62fe;\n  --dark-blue: #001833;\n  --background: #d0e2ff;\n  --banyan-blue: #00037c;\n  --banyan-orange: #ff892a;\n  --banyan-pink: #ff1597;\n  --banyan-gradient: linear-gradient(\n  \t84.71deg,\n  \tvar(--banyan-pink) 0.48%,\n  \tvar(--banyan-orange) 99.57%\n  );\n  --error: #da1e28;\n  --error-bg: #fff1f1;\n  --error-outline: rgba(218, 30, 40, 0.08);\n  --success: #24a148;\n  --success-bg: #defbe6;\n  --success-outline: rgba(36, 161, 72, 0.08);\n  --warning: #f1c21b;\n  --warning-bg: #fff8e1;\n  --warning-outline: rgba(203, 160, 6, 0.08);\n  --info: #0043ce;\n  --info-bg: #edf5ff;\n  --info-outline: #2864db98;\n}\n\n.Radio_module_root__dc9ececa {\n  cursor: pointer;\n  gap: 10px;\n}\n.Radio_module_root__dc9ececa.Radio_module_positionLeft__dc9ececa {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.Radio_module_root__dc9ececa.Radio_module_positionRight__dc9ececa {\n  display: flex;\n  flex-direction: row-reverse;\n  justify-content: flex-end;\n  align-items: center;\n}\n.Radio_module_root__dc9ececa.Radio_module_disabled__dc9ececa {\n  cursor: default;\n}\n.Radio_module_root__dc9ececa input[type=radio] {\n  opacity: 0;\n  z-index: 1;\n  position: absolute;\n  width: 1px;\n  height: 1px;\n}\n.Radio_module_root__dc9ececa .Radio_module_icon__dc9ececa {\n  display: inline-block;\n}\n.Radio_module_root__dc9ececa .Radio_module_icon__dc9ececa.Radio_module_iconSm__dc9ececa {\n  width: 1rem;\n  height: 1rem;\n}\n.Radio_module_root__dc9ececa .Radio_module_icon__dc9ececa.Radio_module_iconMd__dc9ececa {\n  width: 1.25rem;\n  height: 1.25rem;\n}\n.Radio_module_root__dc9ececa .Radio_module_icon__dc9ececa.Radio_module_iconLg__dc9ececa {\n  width: 1.5rem;\n  height: 2rem;\n}\n.Radio_module_root__dc9ececa [data-elem=label] {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}";
+var css$D = ":root {\n  --white: #ffffff;\n  --black: #000000;\n  --dark-grey: #333333;\n  --dark-grey-o-85: rgba(51, 51, 51, 0.85);\n  --grey: #737373;\n  --grey1: #888888;\n  --grey2: #a6a6a6;\n  --grey3: #bbbbbb;\n  --grey4: #c4c4c4;\n  --grey5: #dddddd;\n  --grey6: #e8e8e8;\n  --grey7: #eeeeee;\n  --grey8: #f2f2f2;\n  --grey9: #eff0f0;\n  --grey10: #f7f7f7;\n  --highlight: #0f62fe;\n  --dark-blue: #001833;\n  --background: #d0e2ff;\n  --banyan-blue: #00037c;\n  --banyan-orange: #ff892a;\n  --banyan-pink: #ff1597;\n  --banyan-gradient: linear-gradient(\n  \t84.71deg,\n  \tvar(--banyan-pink) 0.48%,\n  \tvar(--banyan-orange) 99.57%\n  );\n  --error: #da1e28;\n  --error-bg: #fff1f1;\n  --error-outline: rgba(218, 30, 40, 0.08);\n  --success: #24a148;\n  --success-bg: #defbe6;\n  --success-outline: rgba(36, 161, 72, 0.08);\n  --warning: #f1c21b;\n  --warning-bg: #fff8e1;\n  --warning-outline: rgba(203, 160, 6, 0.08);\n  --info: #0043ce;\n  --info-bg: #edf5ff;\n  --info-outline: #2864db98;\n}\n\n.Radio_module_root__dc9ececa {\n  cursor: pointer;\n  gap: 10px;\n}\n.Radio_module_root__dc9ececa.Radio_module_positionLeft__dc9ececa {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.Radio_module_root__dc9ececa.Radio_module_positionRight__dc9ececa {\n  display: flex;\n  flex-direction: row-reverse;\n  justify-content: flex-end;\n  align-items: center;\n}\n.Radio_module_root__dc9ececa.Radio_module_disabled__dc9ececa {\n  cursor: default;\n}\n.Radio_module_root__dc9ececa input[type=radio] {\n  opacity: 0;\n  z-index: 1;\n  position: absolute;\n  width: 1px;\n  height: 1px;\n}\n.Radio_module_root__dc9ececa .Radio_module_icon__dc9ececa {\n  display: inline-block;\n}\n.Radio_module_root__dc9ececa .Radio_module_icon__dc9ececa.Radio_module_iconSm__dc9ececa {\n  width: 1rem;\n  height: 1rem;\n}\n.Radio_module_root__dc9ececa .Radio_module_icon__dc9ececa.Radio_module_iconMd__dc9ececa {\n  width: 1.25rem;\n  height: 1.25rem;\n}\n.Radio_module_root__dc9ececa .Radio_module_icon__dc9ececa.Radio_module_iconLg__dc9ececa {\n  width: 1.5rem;\n  height: 2rem;\n}\n.Radio_module_root__dc9ececa [data-elem=label] {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}";
 var modules_3705961f = {"white":"var(--white)","black":"var(--black)","dark-grey":"var(--dark-grey)","dark-grey-o-85":"var(--dark-grey-o-85)","grey":"var(--grey)","grey1":"var(--grey1)","grey2":"var(--grey2)","grey3":"var(--grey3)","grey4":"var(--grey4)","grey5":"var(--grey5)","grey6":"var(--grey6)","grey7":"var(--grey7)","grey8":"var(--grey8)","grey9":"var(--grey9)","grey10":"var(--grey10)","highlight":"var(--highlight)","dark-blue":"var(--dark-blue)","background":"var(--background)","banyan-blue":"var(--banyan-blue)","banyan-orange":"var(--banyan-orange)","banyan-pink":"var(--banyan-pink)","banyan-gradient":"var(--banyan-gradient)","error":"var(--error)","error-bg":"var(--error-bg)","error-outline":"var(--error-outline)","success":"var(--success)","success-bg":"var(--success-bg)","success-outline":"var(--success-outline)","warning":"var(--warning)","warning-bg":"var(--warning-bg)","warning-outline":"var(--warning-outline)","info":"var(--info)","info-bg":"var(--info-bg)","info-outline":"var(--info-outline)","root":"Radio_module_root__dc9ececa","position-left":"Radio_module_positionLeft__dc9ececa","position-right":"Radio_module_positionRight__dc9ececa","disabled":"Radio_module_disabled__dc9ececa","icon":"Radio_module_icon__dc9ececa","icon-sm":"Radio_module_iconSm__dc9ececa","icon-md":"Radio_module_iconMd__dc9ececa","icon-lg":"Radio_module_iconLg__dc9ececa"};
-n(css$B,{});
+n(css$D,{});
 
 var Radio = function Radio(props) {
   // eslint-disable-next-line object-curly-newline
@@ -42343,9 +42410,9 @@ Radio.defaultProps = {
   onChange: function onChange() {}
 };
 
-var css$A = ".Dropdown_module_root__1ad8038e {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  gap: 0.5rem;\n  position: relative;\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  max-width: 100%;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_label__1ad8038e {\n  font-size: 0.75rem;\n  color: var(--grey);\n  width: auto;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  max-width: 100%;\n  position: relative;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e .Dropdown_module_input__1ad8038e {\n  position: absolute;\n  opacity: 0;\n  width: 1px;\n  height: 1px;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e .Dropdown_module_input__1ad8038e:focus + .Dropdown_module_select__1ad8038e {\n  border-color: var(--highlight);\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e .Dropdown_module_input__1ad8038e:focus + .Dropdown_module_select__1ad8038e.Dropdown_module_feedbackError__1ad8038e {\n  border-color: var(--error);\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e .Dropdown_module_select__1ad8038e {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  width: 25rem;\n  max-width: 100%;\n  gap: 0.5rem;\n  background: var(--white);\n  outline: none;\n  border: 1px solid var(--grey5);\n  border-radius: 0.25rem;\n  padding: 0.75rem 0.75rem 0.75rem 1rem;\n  cursor: pointer;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e .Dropdown_module_select__1ad8038e .Dropdown_module_placeholder__1ad8038e {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  color: var(--black);\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e .Dropdown_module_select__1ad8038e .Dropdown_module_icon__1ad8038e {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e .Dropdown_module_select__1ad8038e.Dropdown_module_feedbackError__1ad8038e {\n  border-color: var(--error);\n}\n.Dropdown_module_root__1ad8038e.Dropdown_module_open__1ad8038e .Dropdown_module_header__1ad8038e {\n  border-color: var(--highlight);\n}\n.Dropdown_module_root__1ad8038e.Dropdown_module_disabled__1ad8038e .Dropdown_module_select__1ad8038e {\n  background: var(--grey10);\n  cursor: not-allowed;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_bottom__1ad8038e {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: flex-start;\n  min-height: 2rem;\n  width: 100%;\n  gap: 1rem;\n  color: var(--grey3);\n  font-size: 0.75rem;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_bottom__1ad8038e .Dropdown_module_feedback__1ad8038e {\n  flex: 1;\n  margin-right: auto;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_bottom__1ad8038e .Dropdown_module_feedback__1ad8038e.Dropdown_module_feedbackError__1ad8038e {\n  color: var(--error);\n  fill: var(--error);\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_bottom__1ad8038e .Dropdown_module_feedback__1ad8038e.Dropdown_module_feedbackSuccess__1ad8038e {\n  color: var(--success);\n  fill: var(--success);\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_bottom__1ad8038e .Dropdown_module_count__1ad8038e {\n  text-align: right;\n  margin-left: auto;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_bottom__1ad8038e .Dropdown_module_count__1ad8038e.Dropdown_module_exceeded__1ad8038e {\n  color: var(--error);\n}\n\n.Dropdown_module_body__1ad8038e {\n  display: none;\n  position: absolute;\n  top: calc(100% + 0.5rem);\n  background: var(--white);\n  width: auto;\n  border: 0.063rem solid var(--grey5);\n  box-shadow: 0rem 0.5rem 1.25rem rgba(24, 24, 24, 0.08);\n  border-radius: 0.25rem;\n  padding: 1rem;\n  overflow-y: auto;\n  min-height: 4rem;\n  outline: none;\n}\n.Dropdown_module_body__1ad8038e .Dropdown_module_multiOptions__1ad8038e {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: 0.5rem;\n  list-style: none;\n}\n.Dropdown_module_body__1ad8038e .Dropdown_module_multiApply__1ad8038e {\n  margin-top: 0.5rem;\n}\n.Dropdown_module_body__1ad8038e.Dropdown_module_open__1ad8038e {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n}";
+var css$C = ".Dropdown_module_root__1ad8038e {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  gap: 0.5rem;\n  position: relative;\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  max-width: 100%;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_label__1ad8038e {\n  font-size: 0.75rem;\n  color: var(--grey);\n  width: auto;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  max-width: 100%;\n  position: relative;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e .Dropdown_module_input__1ad8038e {\n  position: absolute;\n  opacity: 0;\n  width: 1px;\n  height: 1px;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e .Dropdown_module_input__1ad8038e:focus + .Dropdown_module_select__1ad8038e {\n  border-color: var(--highlight);\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e .Dropdown_module_input__1ad8038e:focus + .Dropdown_module_select__1ad8038e.Dropdown_module_feedbackError__1ad8038e {\n  border-color: var(--error);\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e .Dropdown_module_select__1ad8038e {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  width: 25rem;\n  max-width: 100%;\n  gap: 0.5rem;\n  background: var(--white);\n  outline: none;\n  border: 1px solid var(--grey5);\n  border-radius: 0.25rem;\n  padding: 0.75rem 0.75rem 0.75rem 1rem;\n  cursor: pointer;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e .Dropdown_module_select__1ad8038e .Dropdown_module_placeholder__1ad8038e {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  color: var(--black);\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e .Dropdown_module_select__1ad8038e .Dropdown_module_icon__1ad8038e {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_header__1ad8038e .Dropdown_module_select__1ad8038e.Dropdown_module_feedbackError__1ad8038e {\n  border-color: var(--error);\n}\n.Dropdown_module_root__1ad8038e.Dropdown_module_open__1ad8038e .Dropdown_module_header__1ad8038e {\n  border-color: var(--highlight);\n}\n.Dropdown_module_root__1ad8038e.Dropdown_module_disabled__1ad8038e .Dropdown_module_select__1ad8038e {\n  background: var(--grey10);\n  cursor: not-allowed;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_bottom__1ad8038e {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: flex-start;\n  min-height: 2rem;\n  width: 100%;\n  gap: 1rem;\n  color: var(--grey3);\n  font-size: 0.75rem;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_bottom__1ad8038e .Dropdown_module_feedback__1ad8038e {\n  flex: 1;\n  margin-right: auto;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_bottom__1ad8038e .Dropdown_module_feedback__1ad8038e.Dropdown_module_feedbackError__1ad8038e {\n  color: var(--error);\n  fill: var(--error);\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_bottom__1ad8038e .Dropdown_module_feedback__1ad8038e.Dropdown_module_feedbackSuccess__1ad8038e {\n  color: var(--success);\n  fill: var(--success);\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_bottom__1ad8038e .Dropdown_module_count__1ad8038e {\n  text-align: right;\n  margin-left: auto;\n}\n.Dropdown_module_root__1ad8038e .Dropdown_module_bottom__1ad8038e .Dropdown_module_count__1ad8038e.Dropdown_module_exceeded__1ad8038e {\n  color: var(--error);\n}\n\n.Dropdown_module_body__1ad8038e {\n  display: none;\n  position: absolute;\n  top: calc(100% + 0.5rem);\n  background: var(--white);\n  width: auto;\n  border: 0.063rem solid var(--grey5);\n  box-shadow: 0rem 0.5rem 1.25rem rgba(24, 24, 24, 0.08);\n  border-radius: 0.25rem;\n  padding: 1rem;\n  overflow-y: auto;\n  min-height: 4rem;\n  outline: none;\n}\n.Dropdown_module_body__1ad8038e .Dropdown_module_multiOptions__1ad8038e {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  margin-bottom: 0.5rem;\n  list-style: none;\n}\n.Dropdown_module_body__1ad8038e .Dropdown_module_multiApply__1ad8038e {\n  margin-top: 0.5rem;\n}\n.Dropdown_module_body__1ad8038e.Dropdown_module_open__1ad8038e {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n}";
 var modules_1b90f5ea = {"root":"Dropdown_module_root__1ad8038e","label":"Dropdown_module_label__1ad8038e","header":"Dropdown_module_header__1ad8038e","input":"Dropdown_module_input__1ad8038e","select":"Dropdown_module_select__1ad8038e","feedback-error":"Dropdown_module_feedbackError__1ad8038e","placeholder":"Dropdown_module_placeholder__1ad8038e","icon":"Dropdown_module_icon__1ad8038e","open":"Dropdown_module_open__1ad8038e","disabled":"Dropdown_module_disabled__1ad8038e","bottom":"Dropdown_module_bottom__1ad8038e","feedback":"Dropdown_module_feedback__1ad8038e","feedback-success":"Dropdown_module_feedbackSuccess__1ad8038e","count":"Dropdown_module_count__1ad8038e","exceeded":"Dropdown_module_exceeded__1ad8038e","body":"Dropdown_module_body__1ad8038e","multi-options":"Dropdown_module_multiOptions__1ad8038e","multi-apply":"Dropdown_module_multiApply__1ad8038e"};
-n(css$A,{});
+n(css$C,{});
 
 var Dropdown = /*#__PURE__*/forwardRef(function Dropdown(props, inputRef) {
   var _selectedOptions$map, _ref2, _selectedOptions$;
@@ -42746,9 +42813,9 @@ Dropdown.defaultProps = {
   }
 };
 
-var css$z = ".DropdownItem_module_root__61492174 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.75rem;\n  width: 100%;\n  padding: 0.75rem 1rem;\n  border-radius: 0.25rem;\n  cursor: pointer;\n  color: var(--grey);\n  outline: none;\n}\n.DropdownItem_module_root__61492174 > .DropdownItem_module_input__61492174 {\n  cursor: pointer;\n}\n.DropdownItem_module_root__61492174:focus {\n  background: var(--grey6);\n}\n.DropdownItem_module_root__61492174.DropdownItem_module_selected__61492174 {\n  background: var(--info-bg);\n}";
+var css$B = ".DropdownItem_module_root__61492174 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.75rem;\n  width: 100%;\n  padding: 0.75rem 1rem;\n  border-radius: 0.25rem;\n  cursor: pointer;\n  color: var(--grey);\n  outline: none;\n}\n.DropdownItem_module_root__61492174 > .DropdownItem_module_input__61492174 {\n  cursor: pointer;\n}\n.DropdownItem_module_root__61492174:focus {\n  background: var(--grey6);\n}\n.DropdownItem_module_root__61492174.DropdownItem_module_selected__61492174 {\n  background: var(--info-bg);\n}";
 var modules_bf949acd = {"root":"DropdownItem_module_root__61492174","input":"DropdownItem_module_input__61492174","selected":"DropdownItem_module_selected__61492174"};
-n(css$z,{});
+n(css$B,{});
 
 var DropdownItem = /*#__PURE__*/forwardRef(function DropdownItem(props, ref) {
   // eslint-disable-next-line object-curly-newline
@@ -42815,9 +42882,9 @@ DropdownItem.defaultProps = {
   selected: false
 };
 
-var css$y = ".TimePicker_module_root__2dd24d9e {\n  width: 100%;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  border-top: 1px solid var(--grey5);\n  border-bottom: 1px solid var(--grey5);\n}\n.TimePicker_module_root__2dd24d9e .TimePicker_module_input__2dd24d9e {\n  width: 5.125rem;\n}\n.TimePicker_module_root__2dd24d9e .TimePicker_module_input__2dd24d9e > label [data-elem=base-cell] {\n  border: none;\n}\n.TimePicker_module_root__2dd24d9e .TimePicker_module_input__2dd24d9e > label [data-elem=base-cell] [data-elem=component2] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.TimePicker_module_root__2dd24d9e .TimePicker_module_input__2dd24d9e > label [data-elem=base-cell] [data-elem=component2] > input[data-elem=input] {\n  padding: 1rem 0rem;\n  text-align: center;\n  font-weight: 600;\n  font-size: 1.25rem;\n  line-height: 1.5rem;\n  color: var(--dark-grey);\n}\n.TimePicker_module_root__2dd24d9e .TimePicker_module_colon__2dd24d9e {\n  font-weight: 500;\n  font-size: 1.25rem;\n  line-height: 1.5rem;\n  color: var(--dark-grey);\n}\n.TimePicker_module_root__2dd24d9e .TimePicker_module_separator__2dd24d9e {\n  width: 0.0625rem;\n  height: 1.5625rem;\n  background-color: var(--grey5);\n}";
+var css$A = ".TimePicker_module_root__2dd24d9e {\n  width: 100%;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  border-top: 1px solid var(--grey5);\n  border-bottom: 1px solid var(--grey5);\n}\n.TimePicker_module_root__2dd24d9e .TimePicker_module_input__2dd24d9e {\n  width: 5.125rem;\n}\n.TimePicker_module_root__2dd24d9e .TimePicker_module_input__2dd24d9e > label [data-elem=base-cell] {\n  border: none;\n}\n.TimePicker_module_root__2dd24d9e .TimePicker_module_input__2dd24d9e > label [data-elem=base-cell] [data-elem=component2] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.TimePicker_module_root__2dd24d9e .TimePicker_module_input__2dd24d9e > label [data-elem=base-cell] [data-elem=component2] > input[data-elem=input] {\n  padding: 1rem 0rem;\n  text-align: center;\n  font-weight: 600;\n  font-size: 1.25rem;\n  line-height: 1.5rem;\n  color: var(--dark-grey);\n}\n.TimePicker_module_root__2dd24d9e .TimePicker_module_colon__2dd24d9e {\n  font-weight: 500;\n  font-size: 1.25rem;\n  line-height: 1.5rem;\n  color: var(--dark-grey);\n}\n.TimePicker_module_root__2dd24d9e .TimePicker_module_separator__2dd24d9e {\n  width: 0.0625rem;\n  height: 1.5625rem;\n  background-color: var(--grey5);\n}";
 var modules_98a80317 = {"root":"TimePicker_module_root__2dd24d9e","input":"TimePicker_module_input__2dd24d9e","colon":"TimePicker_module_colon__2dd24d9e","separator":"TimePicker_module_separator__2dd24d9e"};
-n(css$y,{});
+n(css$A,{});
 
 var isValidUnit = function isValidUnit(_ref) {
   var type = _ref.type,
@@ -43007,38 +43074,57 @@ TimePicker.defaultProps = {
   value: null
 };
 
-var css$x = ".Footer_module_root__0e6d72de {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-items: stretch;\n  margin-inline: 1rem;\n}\n.Footer_module_root__0e6d72de .Footer_module_apply__0e6d72de {\n  margin-top: 0.5rem;\n  width: 100%;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.Footer_module_root__0e6d72de .Footer_module_timePicker__0e6d72de {\n  margin-bottom: 1.25rem;\n}\n\n.Footer_module_selectedDate__0e6d72de {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  gap: 1.125rem;\n  background: var(--white);\n  border: 0.0625rem solid var(--grey4);\n  border-radius: 0.25rem;\n}\n.Footer_module_selectedDate__0e6d72de .Footer_module_date__0e6d72de {\n  font-weight: 500;\n  font-size: 0.875rem;\n  line-height: 1.3125rem;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.Footer_module_selectedDate__0e6d72de .Footer_module_date__0e6d72de .Footer_module_cross__0e6d72de {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.Footer_module_selectedDate__0e6d72de .Footer_module_date__0e6d72de .Footer_module_value__0e6d72de {\n  font-weight: 400;\n  padding-right: 0.7rem;\n  border-right: 1px var(--grey3) solid;\n}\n\n.Footer_module_dateRanges__0e6d72de {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-items: stretch;\n  margin-top: 0.5rem;\n}\n.Footer_module_dateRanges__0e6d72de .Footer_module_dateRange__0e6d72de {\n  display: flex;\n  align-items: center;\n  padding: 0.875rem 1rem;\n  gap: 1.125rem;\n  cursor: pointer;\n}\n.Footer_module_dateRanges__0e6d72de .Footer_module_dateRange__0e6d72de:hover {\n  background-color: var(--background);\n}\n.Footer_module_dateRanges__0e6d72de .Footer_module_dateRange__0e6d72de span {\n  font-weight: 400;\n  font-size: 0.875rem;\n  line-height: 1.3125rem;\n  color: var(--black);\n}\n.Footer_module_dateRanges__0e6d72de .Footer_module_selected__0e6d72de {\n  background-color: var(--background);\n}";
+var css$z = ".Footer_module_root__0e6d72de {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-items: stretch;\n  margin-inline: 1rem;\n}\n.Footer_module_root__0e6d72de .Footer_module_apply__0e6d72de {\n  margin-top: 0.5rem;\n  width: 100%;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.Footer_module_root__0e6d72de .Footer_module_timePicker__0e6d72de {\n  margin-bottom: 1.25rem;\n}\n\n.Footer_module_selectedDate__0e6d72de {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  gap: 1.125rem;\n  background: var(--white);\n  border: 0.0625rem solid var(--grey4);\n  border-radius: 0.25rem;\n}\n.Footer_module_selectedDate__0e6d72de .Footer_module_date__0e6d72de {\n  font-weight: 500;\n  font-size: 0.875rem;\n  line-height: 1.3125rem;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.Footer_module_selectedDate__0e6d72de .Footer_module_date__0e6d72de .Footer_module_cross__0e6d72de {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.Footer_module_selectedDate__0e6d72de .Footer_module_date__0e6d72de .Footer_module_value__0e6d72de {\n  font-weight: 400;\n  padding-right: 0.7rem;\n  border-right: 1px var(--grey3) solid;\n}\n\n.Footer_module_dateRanges__0e6d72de {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-items: stretch;\n  margin-top: 0.5rem;\n}\n.Footer_module_dateRanges__0e6d72de .Footer_module_dateRange__0e6d72de {\n  display: flex;\n  align-items: center;\n  padding: 0.875rem 1rem;\n  gap: 1.125rem;\n  cursor: pointer;\n}\n.Footer_module_dateRanges__0e6d72de .Footer_module_dateRange__0e6d72de:hover {\n  background-color: var(--background);\n}\n.Footer_module_dateRanges__0e6d72de .Footer_module_dateRange__0e6d72de span {\n  font-weight: 400;\n  font-size: 0.875rem;\n  line-height: 1.3125rem;\n  color: var(--black);\n}\n.Footer_module_dateRanges__0e6d72de .Footer_module_selected__0e6d72de {\n  background-color: var(--background);\n}";
 var modules_b490bd5d = {"root":"Footer_module_root__0e6d72de","apply":"Footer_module_apply__0e6d72de","time-picker":"Footer_module_timePicker__0e6d72de","selected-date":"Footer_module_selectedDate__0e6d72de","date":"Footer_module_date__0e6d72de","cross":"Footer_module_cross__0e6d72de","value":"Footer_module_value__0e6d72de","date-ranges":"Footer_module_dateRanges__0e6d72de","date-range":"Footer_module_dateRange__0e6d72de","selected":"Footer_module_selected__0e6d72de"};
-n(css$x,{});
+n(css$z,{});
 
 var getDateAndUnixRange = function getDateAndUnixRange(duration) {
   var startingDate = sub$1(new Date(), duration);
   startingDate.setHours(0, 0, 0, 0);
   var endingDate = new Date();
   endingDate.setHours(0, 0, 0, 0);
-  var dates = ["".concat(startingDate.getDate(), " ").concat(MONTHS[startingDate.getMonth()].substring(0, 3), " ").concat(startingDate.getFullYear()), "".concat(endingDate.getDate(), " ").concat(MONTHS[endingDate.getMonth()].substring(0, 3), " ").concat(endingDate.getFullYear())];
+  var dates = getDatesInStringFormat({
+    startingDate: startingDate,
+    endingDate: endingDate
+  });
   var unix = [getUnixTime(startingDate), getUnixTime(endingDate)];
   return {
     dates: dates,
     unix: unix
   };
 };
-var dateRanges = [{
-  title: '7 Days',
-  dateRange: getDateAndUnixRange({
-    days: 7
-  })
-}, {
-  title: '15 Days',
-  dateRange: getDateAndUnixRange({
-    days: 15
-  })
-}, {
-  title: '1 Month',
-  dateRange: getDateAndUnixRange({
-    months: 1
-  })
-}];
+var dateRanges = function dateRanges() {
+  var customRanges = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+  if ((customRanges === null || customRanges === void 0 ? void 0 : customRanges.length) > 0) {
+    return customRanges.map(function (range) {
+      return {
+        title: range.title,
+        dateRange: getDateAndUnixRange(_defineProperty$1({}, range.type, [range.value]))
+      };
+    });
+  }
+  return [{
+    title: 'Last 24 Hours',
+    dateRange: getDateAndUnixRange({
+      hours: 24
+    })
+  }, {
+    title: 'Last 7 Days',
+    dateRange: getDateAndUnixRange({
+      days: 7
+    })
+  }, {
+    title: 'Last 15 Days',
+    dateRange: getDateAndUnixRange({
+      days: 15
+    })
+  }, {
+    title: 'Last 1 Month',
+    dateRange: getDateAndUnixRange({
+      months: 1
+    })
+  }];
+};
 
 var SelectedDateView = function SelectedDateView(props) {
   var value = props.value,
@@ -43069,7 +43155,9 @@ var Footer = function Footer(props) {
     setSelectedRange = props.setSelectedRange,
     range = props.range,
     goToDate = props.goToDate,
-    onApply = props.onApply;
+    onApply = props.onApply,
+    setFixedRange = props.setFixedRange,
+    customRanges = props.customRanges;
   var date = selectedDate.date,
     month = selectedDate.month,
     year = selectedDate.year;
@@ -43077,8 +43165,9 @@ var Footer = function Footer(props) {
     dates = _selectedRange$dates === void 0 ? [] : _selectedRange$dates;
   var monthInShort = month === null || month === void 0 ? void 0 : month.substr(0, 3);
   var datesSelected = date || dates.length === 2;
-  var selectFixedDateRange = function selectFixedDateRange(dateRange) {
+  var selectFixedDateRange = function selectFixedDateRange(dateRange, title) {
     setSelectedRange(dateRange);
+    setFixedRange(title);
   };
   var resetDate = function resetDate() {
     goToDate(getUnixTime(new Date()));
@@ -43097,7 +43186,7 @@ var Footer = function Footer(props) {
     if (time.meridian === 'PM') {
       hours = 12 + parseInt(time.hours, 10);
     }
-    var unix = getUnixTime(new Date(selectedDate.year || getDayInfo(new Date()).year, monthNumber || getDayInfo(new Date()).monthAsNumber, selectedDate.date || getDayInfo(new Date()).dateAsNumber, Number(hours), Number(time.minutes), Number(time.seconds)));
+    var unix = getUnixTime(new Date(!Number.isNaN(selectedDate.year) ? selectedDate.year : getDayInfo(new Date()).year, !Number.isNaN(monthNumber) ? monthNumber : getDayInfo(new Date()).monthAsNumber, !Number.isNaN(selectedDate.date) ? selectedDate.date : getDayInfo(new Date()).dateAsNumber, Number(hours), Number(time.minutes), Number(time.seconds)));
     setSelectedDate(_objectSpread2(_objectSpread2({}, selectedDate), {}, {
       unix: unix
     }));
@@ -43132,7 +43221,7 @@ var Footer = function Footer(props) {
   var timeValue = "".concat(getTimePickerValue().hours, ":").concat(getTimePickerValue().minutes, " ").concat(getTimePickerValue().meridian);
   return /*#__PURE__*/jsxs("div", {
     className: modules_b490bd5d.root,
-    children: [/*#__PURE__*/jsx(TimePicker, {
+    children: [!range && /*#__PURE__*/jsx(TimePicker, {
       value: getTimePickerValue(),
       onChange: onTimeChange,
       className: modules_b490bd5d['time-picker']
@@ -43153,7 +43242,7 @@ var Footer = function Footer(props) {
       action: resetDate
     }), range && /*#__PURE__*/jsx("div", {
       className: modules_b490bd5d['date-ranges'],
-      children: dateRanges.map(function (_ref) {
+      children: dateRanges(customRanges).map(function (_ref) {
         var _selectedRange$unix;
         var dateRange = _ref.dateRange,
           title = _ref.title;
@@ -43161,7 +43250,7 @@ var Footer = function Footer(props) {
         return /*#__PURE__*/jsxs("div", {
           className: classes(modules_b490bd5d['date-range'], selectedFixedDateRange ? modules_b490bd5d.selected : ''),
           onClick: function onClick() {
-            selectFixedDateRange(dateRange);
+            selectFixedDateRange(dateRange, title);
           },
           children: [/*#__PURE__*/jsx(HalfShade, {}), /*#__PURE__*/jsx("span", {
             children: title
@@ -43185,7 +43274,9 @@ var Calender = function Calender(props) {
     onApply = props.onApply,
     disabledDates = props.disabledDates,
     disableDatesBefore = props.disableDatesBefore,
-    value = props.value;
+    value = props.value,
+    setFixedRange = props.setFixedRange,
+    customRanges = props.customRanges;
   var _getDayInfo = getDayInfo(new Date()),
     month = _getDayInfo.month,
     year = _getDayInfo.year,
@@ -43201,10 +43292,18 @@ var Calender = function Calender(props) {
     selectedMonth = _useState2[0],
     setSelectedMonth = _useState2[1];
   useEffect(function () {
-    if (value) {
-      var _date = fromUnixTime(value);
-      var dateAsNumber = _date.getDate();
-      var selectedDayInfo = getDayInfo(_date);
+    var _value$filter;
+    if (range && (value === null || value === void 0 ? void 0 : (_value$filter = value.filter(Boolean)) === null || _value$filter === void 0 ? void 0 : _value$filter.length) > 0) {
+      setSelectedRange({
+        dates: getDatesInStringFormat({
+          startingDate: fromUnixTime(value[0]),
+          endingDate: fromUnixTime(value[1])
+        }),
+        unix: [value[0], value[1]]
+      });
+      var date = new Date();
+      var dateAsNumber = date.getDate();
+      var selectedDayInfo = getDayInfo(date);
       var selectedDateMonth = {
         month: selectedDayInfo.month,
         monthAsNumber: selectedDayInfo.monthAsNumber,
@@ -43220,19 +43319,40 @@ var Calender = function Calender(props) {
         month: selectedDateMonth.month,
         year: selectedDateMonth.year,
         date: dateAsNumber,
-        unix: getUnixTime(_date)
-      }));
-      return;
-    }
-    var date = new Date();
-    if (!range && !isBefore(date, disableDatesBefore)) {
-      var _dateAsNumber = date.getDate();
-      setSelectedDate(_objectSpread2(_objectSpread2({}, selectedDate), {}, {
-        month: selectedMonth.month,
-        year: selectedMonth.year,
-        date: _dateAsNumber,
         unix: getUnixTime(date)
       }));
+    } else if (!range && value) {
+      var _date = fromUnixTime(value);
+      var _dateAsNumber = _date.getDate();
+      var _selectedDayInfo = getDayInfo(_date);
+      var _selectedDateMonth = {
+        month: _selectedDayInfo.month,
+        monthAsNumber: _selectedDayInfo.monthAsNumber,
+        year: _selectedDayInfo.year,
+        dayAsNumber: _selectedDayInfo.dayAsNumber
+      };
+      setSelectedMonth({
+        month: _selectedDayInfo.month,
+        monthAsNumber: _selectedDayInfo.monthAsNumber,
+        year: _selectedDayInfo.year
+      });
+      setSelectedDate(_objectSpread2(_objectSpread2({}, selectedDate), {}, {
+        month: _selectedDateMonth.month,
+        year: _selectedDateMonth.year,
+        date: _dateAsNumber,
+        unix: getUnixTime(_date)
+      }));
+    } else {
+      var _date2 = new Date();
+      if (!range && !isBefore(_date2, disableDatesBefore)) {
+        var _dateAsNumber2 = _date2.getDate();
+        setSelectedDate(_objectSpread2(_objectSpread2({}, selectedDate), {}, {
+          month: selectedMonth.month,
+          year: selectedMonth.year,
+          date: _dateAsNumber2,
+          unix: getUnixTime(_date2)
+        }));
+      }
     }
   }, []);
   var goToDate = function goToDate(unix) {
@@ -43309,14 +43429,16 @@ var Calender = function Calender(props) {
       selectedRange: selectedRange,
       setSelectedRange: setSelectedRange,
       onApply: onApply,
-      goToDate: goToDate
+      goToDate: goToDate,
+      customRanges: customRanges,
+      setFixedRange: setFixedRange
     })]
   });
 };
 
-var css$w = ".DatePicker_module_root__cd4565ac {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  gap: 0.5rem;\n  max-width: 100%;\n  overflow: visible;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_label__cd4565ac {\n  font-weight: 400;\n  font-size: 0.75rem;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_label__cd4565ac.DatePicker_module_light__cd4565ac {\n  color: var(--black);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_label__cd4565ac.DatePicker_module_dark__cd4565ac {\n  color: var(--white);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  position: relative;\n  background: transparent;\n  border: 0.0625rem solid #d9d9d9;\n  border-radius: 0.25rem;\n  width: auto;\n  border: 0.0625rem solid var(--grey5);\n  padding: 0.75rem 1rem;\n  cursor: pointer;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac > div {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  font-size: 0px;\n  letter-spacing: 0px;\n  word-spacing: 0px;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_placeholder__cd4565ac {\n  font-weight: 400;\n  font-size: 1rem;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  margin-left: 0.9375rem;\n  color: var(--grey1);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_value__cd4565ac {\n  font-weight: 400;\n  font-size: 1rem;\n  margin-left: 0.9375rem;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_value__cd4565ac.DatePicker_module_light__cd4565ac {\n  color: var(--black);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_value__cd4565ac.DatePicker_module_dark__cd4565ac {\n  color: var(--white);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_value__cd4565ac span {\n  max-width: 200px;\n  display: inline-block;\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  font-weight: 500;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_input__cd4565ac {\n  display: none;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_icon__cd4565ac {\n  width: 1.25rem;\n  height: 1.25rem;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_icon__cd4565ac.DatePicker_module_light__cd4565ac > path {\n  fill: var(--dark-grey);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_icon__cd4565ac.DatePicker_module_dark__cd4565ac > path {\n  fill: var(--white);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_down__cd4565ac {\n  transform: rotate(270deg);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_up__cd4565ac {\n  transform: rotate(90deg);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_disabled__cd4565ac {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  position: relative;\n  background: var(--grey10);\n  border: 0.0625rem solid #d9d9d9;\n  border-radius: 0.25rem;\n  border: 0.0625rem solid var(--grey5);\n  padding: 0.75rem 1rem;\n  cursor: pointer;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_disabled__cd4565ac .DatePicker_module_downArrow__cd4565ac {\n  transform: rotate(270deg);\n  fill: var(--grey3);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_disabled__cd4565ac .DatePicker_module_placeholder__cd4565ac {\n  font-weight: 400;\n  font-size: 1rem;\n  color: var(--grey3);\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.DatePicker_module_root__cd4565ac.DatePicker_module_open__cd4565ac {\n  border-color: var(--highlight);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_error__cd4565ac {\n  border: 0.0938rem solid var(--error);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_errorText__cd4565ac {\n  font-weight: 400;\n  font-size: 0.75rem;\n  line-height: 0.9375rem;\n  color: var(--error);\n}\n\n.DatePicker_module_popper__cd4565ac {\n  display: none;\n  background: var(--white);\n  border: 0.0625rem solid #d9d9d9;\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n  border-radius: 0.25rem;\n  overflow: auto;\n}\n.DatePicker_module_popper__cd4565ac.DatePicker_module_open__cd4565ac {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  position: absolute;\n}";
+var css$y = ".DatePicker_module_root__cd4565ac {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  gap: 0.5rem;\n  max-width: 100%;\n  overflow: visible;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_label__cd4565ac {\n  font-weight: 400;\n  font-size: 0.75rem;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_label__cd4565ac.DatePicker_module_light__cd4565ac {\n  color: var(--black);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_label__cd4565ac.DatePicker_module_dark__cd4565ac {\n  color: var(--white);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  position: relative;\n  background: transparent;\n  border: 0.0625rem solid #d9d9d9;\n  border-radius: 0.25rem;\n  width: auto;\n  border: 0.0625rem solid var(--grey5);\n  padding: 0.75rem 1rem;\n  cursor: pointer;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac > div {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  font-size: 0px;\n  letter-spacing: 0px;\n  word-spacing: 0px;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_placeholder__cd4565ac {\n  font-weight: 400;\n  font-size: 1rem;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  margin-left: 0.9375rem;\n  color: var(--grey1);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_value__cd4565ac {\n  font-weight: 400;\n  font-size: 1rem;\n  margin-left: 0.9375rem;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_value__cd4565ac.DatePicker_module_light__cd4565ac {\n  color: var(--black);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_value__cd4565ac.DatePicker_module_dark__cd4565ac {\n  color: var(--white);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_value__cd4565ac span {\n  max-width: 200px;\n  display: inline-block;\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  font-weight: 500;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_input__cd4565ac {\n  display: none;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_icon__cd4565ac {\n  width: 1.25rem;\n  height: 1.25rem;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_icon__cd4565ac.DatePicker_module_light__cd4565ac > path {\n  fill: var(--dark-grey);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_icon__cd4565ac.DatePicker_module_dark__cd4565ac > path {\n  fill: var(--white);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_down__cd4565ac {\n  transform: rotate(270deg);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_container__cd4565ac .DatePicker_module_up__cd4565ac {\n  transform: rotate(90deg);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_disabled__cd4565ac {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  position: relative;\n  background: var(--grey10);\n  border: 0.0625rem solid #d9d9d9;\n  border-radius: 0.25rem;\n  border: 0.0625rem solid var(--grey5);\n  padding: 0.75rem 1rem;\n  cursor: pointer;\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_disabled__cd4565ac .DatePicker_module_downArrow__cd4565ac {\n  transform: rotate(270deg);\n  fill: var(--grey3);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_disabled__cd4565ac .DatePicker_module_placeholder__cd4565ac {\n  font-weight: 400;\n  font-size: 1rem;\n  color: var(--grey3);\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.DatePicker_module_root__cd4565ac.DatePicker_module_open__cd4565ac {\n  border-color: var(--highlight);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_error__cd4565ac {\n  border: 0.0938rem solid var(--error);\n}\n.DatePicker_module_root__cd4565ac .DatePicker_module_errorText__cd4565ac {\n  font-weight: 400;\n  font-size: 0.75rem;\n  line-height: 0.9375rem;\n  color: var(--error);\n}\n\n.DatePicker_module_popper__cd4565ac {\n  display: none;\n  background: var(--white);\n  border: 0.0625rem solid #d9d9d9;\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n  border-radius: 0.25rem;\n  overflow: auto;\n}\n.DatePicker_module_popper__cd4565ac.DatePicker_module_open__cd4565ac {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  position: absolute;\n}";
 var modules_5b831cd1 = {"root":"DatePicker_module_root__cd4565ac","label":"DatePicker_module_label__cd4565ac","light":"DatePicker_module_light__cd4565ac","dark":"DatePicker_module_dark__cd4565ac","container":"DatePicker_module_container__cd4565ac","placeholder":"DatePicker_module_placeholder__cd4565ac","value":"DatePicker_module_value__cd4565ac","input":"DatePicker_module_input__cd4565ac","icon":"DatePicker_module_icon__cd4565ac","down":"DatePicker_module_down__cd4565ac","up":"DatePicker_module_up__cd4565ac","disabled":"DatePicker_module_disabled__cd4565ac","down-arrow":"DatePicker_module_downArrow__cd4565ac","open":"DatePicker_module_open__cd4565ac","error":"DatePicker_module_error__cd4565ac","error-text":"DatePicker_module_errorText__cd4565ac","popper":"DatePicker_module_popper__cd4565ac"};
-n(css$w,{});
+n(css$y,{});
 
 var isMaxRangeExceeded = function isMaxRangeExceeded(_ref) {
   var maxRange = _ref.maxRange,
@@ -43342,6 +43464,7 @@ var isMaxRangeExceeded = function isMaxRangeExceeded(_ref) {
 };
 
 var DatePicker = function DatePicker(props) {
+  var _value$filter;
   var placeholder = props.placeholder,
     label = props.label,
     range = props.range,
@@ -43353,7 +43476,8 @@ var DatePicker = function DatePicker(props) {
     className = props.className,
     disableDatesBefore = props.disableDatesBefore,
     theme = props.theme,
-    onClear = props.onClear;
+    onClear = props.onClear,
+    customRanges = props.customRanges;
   var _useState = useState(false),
     _useState2 = _slicedToArray(_useState, 2),
     open = _useState2[0],
@@ -43367,25 +43491,46 @@ var DatePicker = function DatePicker(props) {
     _useState4 = _slicedToArray(_useState3, 2),
     selectedRange = _useState4[0],
     setSelectedRange = _useState4[1];
-  var _useState5 = useState(function () {
-      return '';
-    }),
+  var _useState5 = useState(null),
     _useState6 = _slicedToArray(_useState5, 2),
-    selectedDate = _useState6[0],
-    setSelectedDate = _useState6[1];
+    fixedRange = _useState6[0],
+    setFixedRange = _useState6[1];
   var _useState7 = useState(function () {
       return '';
     }),
     _useState8 = _slicedToArray(_useState7, 2),
-    error = _useState8[0],
-    setError = _useState8[1];
+    selectedDate = _useState8[0],
+    setSelectedDate = _useState8[1];
+  var _useState9 = useState(function () {
+      return '';
+    }),
+    _useState10 = _slicedToArray(_useState9, 2),
+    error = _useState10[0],
+    setError = _useState10[1];
   var datePickerRef = useRef();
-  var sDate = fromUnixTime(value);
   var displayValue = '';
+  if (range && (value === null || value === void 0 ? void 0 : (_value$filter = value.filter(Boolean)) === null || _value$filter === void 0 ? void 0 : _value$filter.length) > 0) {
+    var sDate = fromUnixTime(value[0]);
+    var eDate = fromUnixTime(value[1]);
+    var selectedFixedRange = dateRanges().find(function (rg) {
+      var _rg$dateRange, _rg$dateRange$unix;
+      return ((_rg$dateRange = rg.dateRange) === null || _rg$dateRange === void 0 ? void 0 : (_rg$dateRange$unix = _rg$dateRange.unix) === null || _rg$dateRange$unix === void 0 ? void 0 : _rg$dateRange$unix.toString()) === value.toString();
+    });
+    if (selectedFixedRange) {
+      displayValue = selectedFixedRange.title;
+    } else {
+      var _sDate$getMonth$toStr, _eDate$getMonth$toStr;
+      displayValue = " ".concat(sDate.getDate(), " ").concat(MONTHS[(_sDate$getMonth$toStr = sDate.getMonth().toString()) === null || _sDate$getMonth$toStr === void 0 ? void 0 : _sDate$getMonth$toStr.substring(0, 3)], " - ").concat(eDate.getDate(), " ").concat(MONTHS[(_eDate$getMonth$toStr = eDate.getMonth().toString()) === null || _eDate$getMonth$toStr === void 0 ? void 0 : _eDate$getMonth$toStr.substring(0, 3)], " ").concat(eDate.getFullYear());
+    }
+  }
   if (!range && value) {
-    var _sDate$getMonth$toStr;
-    var timeValue = "".concat((sDate.getHours() + 11) % 12 + 1, ":").concat(sDate.getMinutes(), " ").concat(sDate.getHours() >= 12 ? 'PM' : 'AM');
-    displayValue = " ".concat(sDate.getDate(), " ").concat(MONTHS[(_sDate$getMonth$toStr = sDate.getMonth().toString()) === null || _sDate$getMonth$toStr === void 0 ? void 0 : _sDate$getMonth$toStr.substring(0, 3)], " ").concat(sDate.getFullYear(), " ").concat(timeValue);
+    var _sDate$getMonth$toStr2;
+    var _sDate = fromUnixTime(value);
+    var timeValue = "".concat((_sDate.getHours() + 11) % 12 + 1, ":").concat(_sDate.getMinutes(), " ").concat(_sDate.getHours() >= 12 ? 'PM' : 'AM');
+    displayValue = " ".concat(_sDate.getDate(), " ").concat(MONTHS[(_sDate$getMonth$toStr2 = _sDate.getMonth().toString()) === null || _sDate$getMonth$toStr2 === void 0 ? void 0 : _sDate$getMonth$toStr2.substring(0, 3)], " ").concat(_sDate.getFullYear(), " ").concat(timeValue);
+  }
+  if (fixedRange) {
+    displayValue = fixedRange;
   }
   var _useFloating = useFloating({
       open: open,
@@ -43425,7 +43570,7 @@ var DatePicker = function DatePicker(props) {
     getFloatingProps = _useInteractions.getFloatingProps;
   var apply = function apply() {
     if (selectedRange.dates.length === 2) {
-      if (!isMaxRangeExceeded({
+      if (maxRange !== null && !isMaxRangeExceeded({
         maxRange: maxRange,
         selectedRange: selectedRange
       })) {
@@ -43434,7 +43579,7 @@ var DatePicker = function DatePicker(props) {
         return;
       }
       setError('');
-      onApply(selectedRange.unix);
+      onApply(selectedRange.unix, fixedRange);
       setOpen(false);
     } else {
       onApply(selectedDate.unix);
@@ -43452,7 +43597,9 @@ var DatePicker = function DatePicker(props) {
     },
     disabledDates: disabledDates,
     disableDatesBefore: disableDatesBefore,
-    value: value
+    value: value,
+    setFixedRange: setFixedRange,
+    customRanges: customRanges
   };
   return /*#__PURE__*/jsxs("div", {
     className: classes(modules_5b831cd1.root, className),
@@ -43524,7 +43671,7 @@ DatePicker.propTypes = {
   range: propTypes$1.exports.bool,
   onApply: propTypes$1.exports.func,
   onClear: propTypes$1.exports.func,
-  value: propTypes$1.exports.string,
+  value: propTypes$1.exports.oneOfType([propTypes$1.exports.array, propTypes$1.exports.string]),
   disabled: propTypes$1.exports.bool,
   disabledDates: propTypes$1.exports.arrayOf(propTypes$1.exports.string),
   maxRange: propTypes$1.exports.shape({
@@ -43533,7 +43680,13 @@ DatePicker.propTypes = {
   }),
   className: propTypes$1.exports.string,
   disableDatesBefore: propTypes$1.exports.arrayOf(propTypes$1.exports.string),
-  theme: propTypes$1.exports.string
+  theme: propTypes$1.exports.string,
+  defaultRangeSelection: propTypes$1.exports.arrayOf(propTypes$1.exports.number),
+  customRanges: propTypes$1.exports.arrayOf(propTypes$1.exports.shape({
+    title: propTypes$1.exports.string,
+    type: propTypes$1.exports.string,
+    value: propTypes$1.exports.string
+  }))
 };
 DatePicker.defaultProps = {
   placeholder: '',
@@ -43543,16 +43696,18 @@ DatePicker.defaultProps = {
   disabled: false,
   disabledDates: [],
   maxRange: null,
-  value: '',
+  value: null,
   className: '',
   disableDatesBefore: [],
   theme: 'dark',
+  customRanges: null,
+  defaultRangeSelection: null,
   onClear: function onClear() {}
 };
 
-var css$v = ".HierarchyItem_module_root__5ef1c91d {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  flex: 1;\n}\n.HierarchyItem_module_root__5ef1c91d .HierarchyItem_module_header__5ef1c91d {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.25rem;\n  min-height: 2rem;\n  height: auto;\n  padding: 0rem 0.5rem;\n  cursor: pointer;\n}\n.HierarchyItem_module_root__5ef1c91d .HierarchyItem_module_header__5ef1c91d > [data-elem=component1], .HierarchyItem_module_root__5ef1c91d .HierarchyItem_module_header__5ef1c91d > [data-elem=component3] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.HierarchyItem_module_root__5ef1c91d .HierarchyItem_module_header__5ef1c91d > [data-elem=component1] .HierarchyItem_module_expand__5ef1c91d, .HierarchyItem_module_root__5ef1c91d .HierarchyItem_module_header__5ef1c91d > [data-elem=component3] .HierarchyItem_module_expand__5ef1c91d {\n  padding: 0;\n  height: auto;\n  width: 1rem;\n  height: 1rem;\n}\n.HierarchyItem_module_root__5ef1c91d .HierarchyItem_module_header__5ef1c91d > [data-elem=component1] .HierarchyItem_module_expand__5ef1c91d .HierarchyItem_module_icon__5ef1c91d, .HierarchyItem_module_root__5ef1c91d .HierarchyItem_module_header__5ef1c91d > [data-elem=component3] .HierarchyItem_module_expand__5ef1c91d .HierarchyItem_module_icon__5ef1c91d {\n  transform: rotate(-90deg);\n  width: 1rem;\n  height: 1rem;\n}\n.HierarchyItem_module_root__5ef1c91d .HierarchyItem_module_header__5ef1c91d > [data-elem=component2] {\n  flex: 1 1 auto;\n}\n.HierarchyItem_module_root__5ef1c91d .HierarchyItem_module_header__5ef1c91d > [data-elem=component2] .HierarchyItem_module_title__5ef1c91d {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  width: 100%;\n  height: auto;\n  padding: 0.25rem 0rem;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.HierarchyItem_module_root__5ef1c91d .HierarchyItem_module_header__5ef1c91d:hover {\n  background: var(--background);\n}\n.HierarchyItem_module_root__5ef1c91d .HierarchyItem_module_header__5ef1c91d:hover .HierarchyItem_module_icon__5ef1c91d,\n.HierarchyItem_module_root__5ef1c91d .HierarchyItem_module_header__5ef1c91d:hover .HierarchyItem_module_title__5ef1c91d,\n.HierarchyItem_module_root__5ef1c91d .HierarchyItem_module_header__5ef1c91d:hover .HierarchyItem_module_title__5ef1c91d svg {\n  color: var(--highlight);\n  fill: var(--highlight);\n}\n.HierarchyItem_module_root__5ef1c91d .HierarchyItem_module_body__5ef1c91d {\n  display: none;\n  flex: 1 0 auto;\n  padding: 0px 0rem 0px 0.25rem;\n}\n.HierarchyItem_module_root__5ef1c91d .HierarchyItem_module_body__5ef1c91d > [data-elem=component1] {\n  flex: 0 0 1.6rem;\n}\n.HierarchyItem_module_root__5ef1c91d .HierarchyItem_module_body__5ef1c91d > [data-elem=component1] .HierarchyItem_module_tail__5ef1c91d {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: center;\n  width: 1.6rem;\n  height: 100%;\n}\n.HierarchyItem_module_root__5ef1c91d .HierarchyItem_module_body__5ef1c91d > [data-elem=component1] .HierarchyItem_module_tail__5ef1c91d::after {\n  content: \"\";\n  display: block;\n  margin: auto;\n  width: 1px;\n  flex: 1;\n  background: var(--grey1);\n}\n.HierarchyItem_module_root__5ef1c91d .HierarchyItem_module_body__5ef1c91d > [data-elem=component2] {\n  flex: 1 0 auto;\n}\n.HierarchyItem_module_root__5ef1c91d .HierarchyItem_module_body__5ef1c91d > [data-elem=component2] .HierarchyItem_module_children__5ef1c91d {\n  flex: 1 0 auto;\n}\n.HierarchyItem_module_root__5ef1c91d.HierarchyItem_module_open__5ef1c91d > .HierarchyItem_module_header__5ef1c91d .HierarchyItem_module_expand__5ef1c91d .HierarchyItem_module_icon__5ef1c91d {\n  transform: none;\n}\n.HierarchyItem_module_root__5ef1c91d.HierarchyItem_module_open__5ef1c91d > .HierarchyItem_module_body__5ef1c91d {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: stretch;\n  gap: 0.25rem;\n  height: auto;\n}\n.HierarchyItem_module_root__5ef1c91d.HierarchyItem_module_active__5ef1c91d > .HierarchyItem_module_header__5ef1c91d {\n  background: var(--background);\n}\n.HierarchyItem_module_root__5ef1c91d.HierarchyItem_module_active__5ef1c91d > .HierarchyItem_module_header__5ef1c91d .HierarchyItem_module_icon__5ef1c91d,\n.HierarchyItem_module_root__5ef1c91d.HierarchyItem_module_active__5ef1c91d > .HierarchyItem_module_header__5ef1c91d .HierarchyItem_module_title__5ef1c91d,\n.HierarchyItem_module_root__5ef1c91d.HierarchyItem_module_active__5ef1c91d > .HierarchyItem_module_header__5ef1c91d .HierarchyItem_module_title__5ef1c91d svg {\n  color: var(--highlight);\n  fill: var(--highlight);\n}";
+var css$x = ".HierarchyItem_module_root__5ef1c91d {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  flex: 1;\n}\n.HierarchyItem_module_root__5ef1c91d .HierarchyItem_module_header__5ef1c91d {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.25rem;\n  min-height: 2rem;\n  height: auto;\n  padding: 0rem 0.5rem;\n  cursor: pointer;\n}\n.HierarchyItem_module_root__5ef1c91d .HierarchyItem_module_header__5ef1c91d > [data-elem=component1], .HierarchyItem_module_root__5ef1c91d .HierarchyItem_module_header__5ef1c91d > [data-elem=component3] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.HierarchyItem_module_root__5ef1c91d .HierarchyItem_module_header__5ef1c91d > [data-elem=component1] .HierarchyItem_module_expand__5ef1c91d, .HierarchyItem_module_root__5ef1c91d .HierarchyItem_module_header__5ef1c91d > [data-elem=component3] .HierarchyItem_module_expand__5ef1c91d {\n  padding: 0;\n  height: auto;\n  width: 1rem;\n  height: 1rem;\n}\n.HierarchyItem_module_root__5ef1c91d .HierarchyItem_module_header__5ef1c91d > [data-elem=component1] .HierarchyItem_module_expand__5ef1c91d .HierarchyItem_module_icon__5ef1c91d, .HierarchyItem_module_root__5ef1c91d .HierarchyItem_module_header__5ef1c91d > [data-elem=component3] .HierarchyItem_module_expand__5ef1c91d .HierarchyItem_module_icon__5ef1c91d {\n  transform: rotate(-90deg);\n  width: 1rem;\n  height: 1rem;\n}\n.HierarchyItem_module_root__5ef1c91d .HierarchyItem_module_header__5ef1c91d > [data-elem=component2] {\n  flex: 1 1 auto;\n}\n.HierarchyItem_module_root__5ef1c91d .HierarchyItem_module_header__5ef1c91d > [data-elem=component2] .HierarchyItem_module_title__5ef1c91d {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  width: 100%;\n  height: auto;\n  padding: 0.25rem 0rem;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.HierarchyItem_module_root__5ef1c91d .HierarchyItem_module_header__5ef1c91d:hover {\n  background: var(--background);\n}\n.HierarchyItem_module_root__5ef1c91d .HierarchyItem_module_header__5ef1c91d:hover .HierarchyItem_module_icon__5ef1c91d,\n.HierarchyItem_module_root__5ef1c91d .HierarchyItem_module_header__5ef1c91d:hover .HierarchyItem_module_title__5ef1c91d,\n.HierarchyItem_module_root__5ef1c91d .HierarchyItem_module_header__5ef1c91d:hover .HierarchyItem_module_title__5ef1c91d svg {\n  color: var(--highlight);\n  fill: var(--highlight);\n}\n.HierarchyItem_module_root__5ef1c91d .HierarchyItem_module_body__5ef1c91d {\n  display: none;\n  flex: 1 0 auto;\n  padding: 0px 0rem 0px 0.25rem;\n}\n.HierarchyItem_module_root__5ef1c91d .HierarchyItem_module_body__5ef1c91d > [data-elem=component1] {\n  flex: 0 0 1.6rem;\n}\n.HierarchyItem_module_root__5ef1c91d .HierarchyItem_module_body__5ef1c91d > [data-elem=component1] .HierarchyItem_module_tail__5ef1c91d {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: center;\n  width: 1.6rem;\n  height: 100%;\n}\n.HierarchyItem_module_root__5ef1c91d .HierarchyItem_module_body__5ef1c91d > [data-elem=component1] .HierarchyItem_module_tail__5ef1c91d::after {\n  content: \"\";\n  display: block;\n  margin: auto;\n  width: 1px;\n  flex: 1;\n  background: var(--grey1);\n}\n.HierarchyItem_module_root__5ef1c91d .HierarchyItem_module_body__5ef1c91d > [data-elem=component2] {\n  flex: 1 0 auto;\n}\n.HierarchyItem_module_root__5ef1c91d .HierarchyItem_module_body__5ef1c91d > [data-elem=component2] .HierarchyItem_module_children__5ef1c91d {\n  flex: 1 0 auto;\n}\n.HierarchyItem_module_root__5ef1c91d.HierarchyItem_module_open__5ef1c91d > .HierarchyItem_module_header__5ef1c91d .HierarchyItem_module_expand__5ef1c91d .HierarchyItem_module_icon__5ef1c91d {\n  transform: none;\n}\n.HierarchyItem_module_root__5ef1c91d.HierarchyItem_module_open__5ef1c91d > .HierarchyItem_module_body__5ef1c91d {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: stretch;\n  gap: 0.25rem;\n  height: auto;\n}\n.HierarchyItem_module_root__5ef1c91d.HierarchyItem_module_active__5ef1c91d > .HierarchyItem_module_header__5ef1c91d {\n  background: var(--background);\n}\n.HierarchyItem_module_root__5ef1c91d.HierarchyItem_module_active__5ef1c91d > .HierarchyItem_module_header__5ef1c91d .HierarchyItem_module_icon__5ef1c91d,\n.HierarchyItem_module_root__5ef1c91d.HierarchyItem_module_active__5ef1c91d > .HierarchyItem_module_header__5ef1c91d .HierarchyItem_module_title__5ef1c91d,\n.HierarchyItem_module_root__5ef1c91d.HierarchyItem_module_active__5ef1c91d > .HierarchyItem_module_header__5ef1c91d .HierarchyItem_module_title__5ef1c91d svg {\n  color: var(--highlight);\n  fill: var(--highlight);\n}";
 var modules_6d03d164 = {"root":"HierarchyItem_module_root__5ef1c91d","header":"HierarchyItem_module_header__5ef1c91d","expand":"HierarchyItem_module_expand__5ef1c91d","icon":"HierarchyItem_module_icon__5ef1c91d","title":"HierarchyItem_module_title__5ef1c91d","body":"HierarchyItem_module_body__5ef1c91d","tail":"HierarchyItem_module_tail__5ef1c91d","children":"HierarchyItem_module_children__5ef1c91d","open":"HierarchyItem_module_open__5ef1c91d","active":"HierarchyItem_module_active__5ef1c91d"};
-n(css$v,{});
+n(css$x,{});
 
 var HierarchyItem = function HierarchyItem(props) {
   var defaultOpen = props.defaultOpen,
@@ -43646,9 +43801,9 @@ HierarchyItem.defaultProps = {
   active: false
 };
 
-var css$u = ".HierarchyBrowser_module_root__649d3da2 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  width: 20rem;\n  position: relative;\n}\n.HierarchyBrowser_module_root__649d3da2 .HierarchyBrowser_module_header__649d3da2 {\n  padding: 0.5rem;\n  background: var(--dark-grey);\n  color: var(--white);\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.HierarchyBrowser_module_root__649d3da2 .HierarchyBrowser_module_body__649d3da2 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  overflow: auto;\n}\n.HierarchyBrowser_module_root__649d3da2 .HierarchyBrowser_module_item__649d3da2 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.25rem;\n}\n.HierarchyBrowser_module_root__649d3da2 .HierarchyBrowser_module_item__649d3da2 .HierarchyBrowser_module_itemIcon__649d3da2 {\n  width: 1rem;\n}\n.HierarchyBrowser_module_root__649d3da2::after {\n  position: absolute;\n  right: 0;\n  content: \"\";\n  width: 1px;\n  height: 100%;\n  background: var(--grey4);\n}\n.HierarchyBrowser_module_root__649d3da2.HierarchyBrowser_module_resizable__649d3da2:hover::after {\n  width: 3px;\n  cursor: col-resize;\n}";
+var css$w = ".HierarchyBrowser_module_root__649d3da2 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  width: 20rem;\n  position: relative;\n}\n.HierarchyBrowser_module_root__649d3da2 .HierarchyBrowser_module_header__649d3da2 {\n  padding: 0.5rem;\n  background: var(--dark-grey);\n  color: var(--white);\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.HierarchyBrowser_module_root__649d3da2 .HierarchyBrowser_module_body__649d3da2 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  overflow: auto;\n}\n.HierarchyBrowser_module_root__649d3da2 .HierarchyBrowser_module_item__649d3da2 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.25rem;\n}\n.HierarchyBrowser_module_root__649d3da2 .HierarchyBrowser_module_item__649d3da2 .HierarchyBrowser_module_itemIcon__649d3da2 {\n  width: 1rem;\n}\n.HierarchyBrowser_module_root__649d3da2::after {\n  position: absolute;\n  right: 0;\n  content: \"\";\n  width: 1px;\n  height: 100%;\n  background: var(--grey4);\n}\n.HierarchyBrowser_module_root__649d3da2.HierarchyBrowser_module_resizable__649d3da2:hover::after {\n  width: 3px;\n  cursor: col-resize;\n}";
 var modules_5e29d515 = {"root":"HierarchyBrowser_module_root__649d3da2","header":"HierarchyBrowser_module_header__649d3da2","body":"HierarchyBrowser_module_body__649d3da2","item":"HierarchyBrowser_module_item__649d3da2","item-icon":"HierarchyBrowser_module_itemIcon__649d3da2","resizable":"HierarchyBrowser_module_resizable__649d3da2"};
-n(css$u,{});
+n(css$w,{});
 
 var Title = function Title(props) {
   var item = props.item;
@@ -43770,9 +43925,9 @@ HierarchyBrowser.defaultProps = {
   title: 'Browser'
 };
 
-var css$t = ".BaseModal_module_root__2dd7477e {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  top: 50%;\n  left: 50%;\n  right: auto;\n  bottom: auto;\n  transform: translate(-50%, -50%);\n  max-height: 100%;\n  width: 50%;\n  position: fixed;\n  background: #ffffff;\n  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.13);\n  border-radius: 5px;\n  outline: none;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_body__2dd7477e {\n  overflow-y: scroll;\n  padding: 0 15px;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_header__2dd7477e,\n.BaseModal_module_root__2dd7477e .BaseModal_module_footer__2dd7477e {\n  padding: 1rem;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_header__2dd7477e {\n  font-weight: 500;\n  font-size: 1.375rem;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_footer__2dd7477e {\n  margin-top: auto;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_close__2dd7477e {\n  position: absolute;\n  right: 0.5rem;\n  top: 0.5rem;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_close__2dd7477e .BaseModal_module_icon__2dd7477e {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--black);\n}";
+var css$v = ".BaseModal_module_root__2dd7477e {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  top: 50%;\n  left: 50%;\n  right: auto;\n  bottom: auto;\n  transform: translate(-50%, -50%);\n  max-height: 100%;\n  width: 50%;\n  position: fixed;\n  background: #ffffff;\n  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.13);\n  border-radius: 5px;\n  outline: none;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_body__2dd7477e {\n  overflow-y: scroll;\n  padding: 0 15px;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_header__2dd7477e,\n.BaseModal_module_root__2dd7477e .BaseModal_module_footer__2dd7477e {\n  padding: 1rem;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_header__2dd7477e {\n  font-weight: 500;\n  font-size: 1.375rem;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_footer__2dd7477e {\n  margin-top: auto;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_close__2dd7477e {\n  position: absolute;\n  right: 0.5rem;\n  top: 0.5rem;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_close__2dd7477e .BaseModal_module_icon__2dd7477e {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--black);\n}";
 var modules_f23ae002 = {"root":"BaseModal_module_root__2dd7477e","body":"BaseModal_module_body__2dd7477e","header":"BaseModal_module_header__2dd7477e","footer":"BaseModal_module_footer__2dd7477e","close":"BaseModal_module_close__2dd7477e","icon":"BaseModal_module_icon__2dd7477e"};
-n(css$t,{});
+n(css$v,{});
 
 var BaseModal = function BaseModal(props) {
   var className = props.className,
@@ -43842,9 +43997,9 @@ BaseModal.defaultProps = {
   toggle: function toggle() {}
 };
 
-var css$s = ".Dialog_module_root__2974a020 {\n  padding: 0.25rem 0px;\n  max-height: 14rem;\n  background: #ffffff;\n  border-radius: 0.25rem;\n}\n.Dialog_module_root__2974a020.Dialog_module_sm__2974a020 {\n  width: 21.25rem;\n}\n.Dialog_module_root__2974a020.Dialog_module_md__2974a020 {\n  width: 35rem;\n}\n.Dialog_module_root__2974a020 .Dialog_module_header__2974a020 {\n  font-weight: 600;\n  font-size: 0.875rem;\n  color: var(--black);\n}\n.Dialog_module_root__2974a020 .Dialog_module_footer__2974a020 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-end;\n  align-items: center;\n  gap: 1rem;\n}\n.Dialog_module_root__2974a020 .Dialog_module_footer__2974a020 .Dialog_module_cancel__2974a020[data-elem=base-cell] {\n  display: flex;\n  color: var(--grey1);\n  border-radius: 0.25rem;\n  border: 1px solid var(--grey4);\n}\n.Dialog_module_root__2974a020 .Dialog_module_description__2974a020 {\n  padding: 0.5rem 0px;\n  font-size: 0.75rem;\n}";
+var css$u = ".Dialog_module_root__2974a020 {\n  padding: 0.25rem 0px;\n  max-height: 14rem;\n  background: #ffffff;\n  border-radius: 0.25rem;\n}\n.Dialog_module_root__2974a020.Dialog_module_sm__2974a020 {\n  width: 21.25rem;\n}\n.Dialog_module_root__2974a020.Dialog_module_md__2974a020 {\n  width: 35rem;\n}\n.Dialog_module_root__2974a020 .Dialog_module_header__2974a020 {\n  font-weight: 600;\n  font-size: 0.875rem;\n  color: var(--black);\n}\n.Dialog_module_root__2974a020 .Dialog_module_footer__2974a020 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-end;\n  align-items: center;\n  gap: 1rem;\n}\n.Dialog_module_root__2974a020 .Dialog_module_footer__2974a020 .Dialog_module_cancel__2974a020[data-elem=base-cell] {\n  display: flex;\n  color: var(--grey1);\n  border-radius: 0.25rem;\n  border: 1px solid var(--grey4);\n}\n.Dialog_module_root__2974a020 .Dialog_module_description__2974a020 {\n  padding: 0.5rem 0px;\n  font-size: 0.75rem;\n}";
 var modules_ca1540aa = {"root":"Dialog_module_root__2974a020","sm":"Dialog_module_sm__2974a020","md":"Dialog_module_md__2974a020","header":"Dialog_module_header__2974a020","footer":"Dialog_module_footer__2974a020","cancel":"Dialog_module_cancel__2974a020","description":"Dialog_module_description__2974a020"};
-n(css$s,{});
+n(css$u,{});
 
 /* eslint-disable object-curly-newline */
 var DialogBox = function DialogBox(props) {
@@ -43908,9 +44063,9 @@ DialogBox.defaultProps = {
   size: 'sm'
 };
 
-var css$r = ".PageHeader_module_root__2aae78e0 {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: flex-start;\n  width: 100%;\n  background-color: transparent;\n  gap: 4px;\n}\n.PageHeader_module_root__2aae78e0.PageHeader_module_themeDark__2aae78e0 {\n  color: var(--white);\n}\n.PageHeader_module_root__2aae78e0.PageHeader_module_themeDark__2aae78e0 .PageHeader_module_breadcrumb__2aae78e0 [data-elem=breadcrumb-item-active] {\n  color: var(--white);\n}\n.PageHeader_module_root__2aae78e0.PageHeader_module_themeLight__2aae78e0 {\n  color: var(--dark-grey);\n}\n.PageHeader_module_root__2aae78e0 .PageHeader_module_description__2aae78e0 {\n  color: var(--grey);\n}\n.PageHeader_module_root__2aae78e0 .PageHeader_module_contents__2aae78e0 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  width: 100%;\n}\n.PageHeader_module_root__2aae78e0 .PageHeader_module_contents__2aae78e0 .PageHeader_module_left__2aae78e0,\n.PageHeader_module_root__2aae78e0 .PageHeader_module_contents__2aae78e0 .PageHeader_module_right__2aae78e0 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 10px;\n}\n.PageHeader_module_root__2aae78e0 .PageHeader_module_contents__2aae78e0 .PageHeader_module_left__2aae78e0 .PageHeader_module_title__2aae78e0 {\n  font-size: 2.25rem;\n  font-weight: 600;\n  line-height: 3.375rem;\n}\n.PageHeader_module_root__2aae78e0 .PageHeader_module_contents__2aae78e0 .PageHeader_module_left__2aae78e0 .PageHeader_module_chip__2aae78e0 {\n  font-weight: 500;\n  background: var(--highlight);\n  color: var(--white);\n}\n.PageHeader_module_root__2aae78e0 .PageHeader_module_description__2aae78e0 {\n  font-size: 1rem;\n  font-weight: 400;\n  line-height: 1.5rem;\n}\n\n.PageHeader_module_download__2aae78e0,\n.PageHeader_module_calender__2aae78e0 {\n  width: 1.5rem;\n  height: 1.5rem;\n}";
+var css$t = ".PageHeader_module_root__2aae78e0 {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  align-items: flex-start;\n  width: 100%;\n  background-color: transparent;\n  gap: 4px;\n}\n.PageHeader_module_root__2aae78e0.PageHeader_module_themeDark__2aae78e0 {\n  color: var(--white);\n}\n.PageHeader_module_root__2aae78e0.PageHeader_module_themeDark__2aae78e0 .PageHeader_module_breadcrumb__2aae78e0 [data-elem=breadcrumb-item-active] {\n  color: var(--white);\n}\n.PageHeader_module_root__2aae78e0.PageHeader_module_themeLight__2aae78e0 {\n  color: var(--dark-grey);\n}\n.PageHeader_module_root__2aae78e0 .PageHeader_module_description__2aae78e0 {\n  color: var(--grey);\n}\n.PageHeader_module_root__2aae78e0 .PageHeader_module_contents__2aae78e0 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  width: 100%;\n}\n.PageHeader_module_root__2aae78e0 .PageHeader_module_contents__2aae78e0 .PageHeader_module_left__2aae78e0,\n.PageHeader_module_root__2aae78e0 .PageHeader_module_contents__2aae78e0 .PageHeader_module_right__2aae78e0 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 10px;\n}\n.PageHeader_module_root__2aae78e0 .PageHeader_module_contents__2aae78e0 .PageHeader_module_left__2aae78e0 .PageHeader_module_title__2aae78e0 {\n  font-size: 2.25rem;\n  font-weight: 600;\n  line-height: 3.375rem;\n}\n.PageHeader_module_root__2aae78e0 .PageHeader_module_contents__2aae78e0 .PageHeader_module_left__2aae78e0 .PageHeader_module_chip__2aae78e0 {\n  font-weight: 500;\n  background: var(--highlight);\n  color: var(--white);\n}\n.PageHeader_module_root__2aae78e0 .PageHeader_module_description__2aae78e0 {\n  font-size: 1rem;\n  font-weight: 400;\n  line-height: 1.5rem;\n}\n\n.PageHeader_module_download__2aae78e0,\n.PageHeader_module_calender__2aae78e0 {\n  width: 1.5rem;\n  height: 1.5rem;\n}";
 var modules_bdcbeaa5 = {"root":"PageHeader_module_root__2aae78e0","theme-dark":"PageHeader_module_themeDark__2aae78e0","breadcrumb":"PageHeader_module_breadcrumb__2aae78e0","theme-light":"PageHeader_module_themeLight__2aae78e0","description":"PageHeader_module_description__2aae78e0","contents":"PageHeader_module_contents__2aae78e0","left":"PageHeader_module_left__2aae78e0","right":"PageHeader_module_right__2aae78e0","title":"PageHeader_module_title__2aae78e0","chip":"PageHeader_module_chip__2aae78e0","download":"PageHeader_module_download__2aae78e0","calender":"PageHeader_module_calender__2aae78e0"};
-n(css$r,{});
+n(css$t,{});
 
 var PageHeader = function PageHeader(props) {
   var theme = props.theme,
@@ -43925,6 +44080,7 @@ var PageHeader = function PageHeader(props) {
     children: [/*#__PURE__*/jsx("div", {
       className: modules_bdcbeaa5.breadcrumb,
       children: /*#__PURE__*/jsx(BreadCrumbs, _objectSpread2({}, _objectSpread2(_objectSpread2({}, crumbsProps), {}, {
+        theme: theme,
         className: modules_bdcbeaa5.breadcrumb
       })))
     }), /*#__PURE__*/jsxs("div", {
@@ -44052,9 +44208,9 @@ function getPagination(curr, total, limit) {
   return pages;
 }
 
-var css$q = ".Pagination_module_root__8f7084b9 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: stretch;\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n  gap: 0.75rem;\n  padding: 0.625rem 2.125rem;\n  background: var(--dark-grey);\n  margin-top: auto;\n  width: 100%;\n  height: 3.5rem;\n  overflow: auto;\n  transition-property: background-color, color, bottom, width;\n  transition-duration: 0.33s;\n  transition-timing-function: ease-out;\n}\n.Pagination_module_root__8f7084b9::-webkit-scrollbar {\n  display: none;\n}\n.Pagination_module_root__8f7084b9.Pagination_module_floating__8f7084b9 {\n  background: var(--dark-grey-o-85);\n  position: absolute;\n  border-radius: 6.25rem;\n  width: 82%;\n  bottom: 3rem;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9,\n.Pagination_module_root__8f7084b9 .Pagination_module_jumpToPage__8f7084b9,\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 {\n  display: none;\n  flex: 0 1 15%;\n  background-color: transparent;\n  padding: 0;\n  height: 100%;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 {\n    display: flex;\n    flex-direction: row;\n    justify-content: space-between;\n    align-items: center;\n  }\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 > [data-elem=component2] {\n  flex: 0 1 auto;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_rowSwitcherHandle__8f7084b9 {\n  gap: 0.75rem;\n  background-color: var(--grey);\n  padding: 0;\n  border-radius: 0.25rem;\n  height: 100%;\n  width: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_rowSwitcherHandle__8f7084b9 > [data-elem*=component] {\n  overflow: hidden;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_rowSwitcherHandle__8f7084b9 > [data-elem=component2] {\n  display: flex;\n  flex: 0 0 auto;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_rowSwitcherHandle__8f7084b9 > [data-elem=component2]::before {\n  content: \"\";\n  margin: auto;\n  background: var(--white);\n  width: 0.5px;\n  height: 50%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_text__8f7084b9 {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  height: 100%;\n  display: block;\n  padding: 0.5rem;\n  font-size: 0.875rem;\n  font-weight: 500;\n  color: var(--white);\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_dropdown__8f7084b9 {\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_dropdown__8f7084b9 > [data-elem=header] {\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_dropdown__8f7084b9 > [data-elem=header] > [data-elem=select] {\n  height: 2.375rem;\n  max-height: 100%;\n  width: auto;\n  min-width: -webkit-fit-content;\n  min-width: -moz-fit-content;\n  min-width: fit-content;\n  padding: 0.625rem;\n  background-color: var(--grey);\n  border: none;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_dropdown__8f7084b9 > [data-elem=header] > [data-elem=select] > [data-elem=placeholder] {\n  color: var(--white);\n  font-size: 0.875rem;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_dropdown__8f7084b9 > [data-elem=header] > [data-elem=select] > svg {\n  fill: var(--white);\n  width: 0.813rem;\n  height: 0.813rem;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  gap: 1.25rem;\n  flex: 1 1 100%;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 {\n    flex: 1 1 40%;\n  }\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_button__8f7084b9.Pagination_module_disable__8f7084b9 {\n  pointer-events: none;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_button__8f7084b9 [data-elem=title] {\n  color: var(--white);\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_button__8f7084b9 .Pagination_module_icon__8f7084b9 {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_pageSelect__8f7084b9 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  gap: 0.625rem;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_pageSelect__8f7084b9 .Pagination_module_number__8f7084b9 {\n  cursor: pointer;\n  border-radius: 50%;\n  background-color: #e0e0e0;\n  color: var(--black);\n  width: 2.313rem;\n  line-height: 2.313rem;\n  text-align: center;\n  font-size: 1rem;\n  border: 1px solid transparent;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_pageSelect__8f7084b9 .Pagination_module_number__8f7084b9:not([data-active=true]) {\n  display: none;\n}\n@media (min-width: 768px) {\n  .Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_pageSelect__8f7084b9 .Pagination_module_number__8f7084b9:not([data-active=true]) {\n    display: block;\n  }\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_pageSelect__8f7084b9 .Pagination_module_number__8f7084b9:hover {\n  border: 1px solid var(--highlight);\n  color: var(--highlight);\n  background: var(--background);\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_pageSelect__8f7084b9 .Pagination_module_number__8f7084b9.Pagination_module_active__8f7084b9 {\n  background-color: var(--highlight);\n  color: var(--white);\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 {\n  display: none;\n  padding: 0;\n  flex: 0 1 30%;\n  background: transparent;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 {\n    display: flex;\n    flex-direction: row;\n    justify-content: center;\n    align-items: center;\n  }\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 > [data-elem*=component] {\n  width: 100%;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 > [data-elem*=component] > * {\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 > [data-elem*=component] > form {\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  margin-left: auto;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 {\n  width: 100%;\n  background: transparent;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: stretch;\n  gap: 0rem;\n  padding: 0;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 > [data-elem*=component] {\n  overflow: hidden;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_inputbox__8f7084b9 {\n  max-width: 100%;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_inputbox__8f7084b9 > label {\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_inputbox__8f7084b9 > label > [data-elem=base-cell] {\n  border-radius: 0.313rem;\n  background-color: transparent;\n  color: var(--white);\n  border-color: var(--grey1);\n  border-radius: 0.25rem 0 0 0.25rem;\n  height: 100%;\n  width: 10rem;\n  flex: 1;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_inputbox__8f7084b9 > label > [data-elem=base-cell] .Pagination_module_icon__8f7084b9 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--grey1);\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_inputbox__8f7084b9 > label > [data-elem=base-cell] > [data-elem=component2] {\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_inputbox__8f7084b9 > label > [data-elem=base-cell] [data-elem=input] {\n  text-align: center;\n  color: var(--white);\n  background-color: transparent;\n  border: none;\n  height: 100%;\n  width: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_button__8f7084b9 {\n  border-radius: 0rem 0.25rem 0.25rem 0rem;\n  background-color: var(--grey1);\n  padding: 0.75rem 0.5rem;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_button__8f7084b9 .Pagination_module_icon__8f7084b9 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--white);\n  flex-shrink: 0;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_totalData__8f7084b9 {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  display: none;\n  margin: auto;\n  color: var(--white);\n  flex: 0 1 15%;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__8f7084b9 .Pagination_module_totalData__8f7084b9 {\n    display: inline;\n  }\n}\n.Pagination_module_root__8f7084b9.Pagination_module_noTotalData__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 {\n  flex: 0 1 20%;\n}\n.Pagination_module_root__8f7084b9.Pagination_module_noTotalData__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 {\n  flex: 1 1 60%;\n}\n.Pagination_module_root__8f7084b9.Pagination_module_noTotalData__8f7084b9 .Pagination_module_form__8f7084b9 {\n  flex: 0 1 20%;\n}";
+var css$s = ".Pagination_module_root__8f7084b9 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: stretch;\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n  gap: 0.75rem;\n  padding: 0.625rem 2.125rem;\n  background: var(--dark-grey);\n  margin-top: auto;\n  width: 100%;\n  height: 3.5rem;\n  overflow: auto;\n  transition-property: background-color, color, bottom, width;\n  transition-duration: 0.33s;\n  transition-timing-function: ease-out;\n}\n.Pagination_module_root__8f7084b9::-webkit-scrollbar {\n  display: none;\n}\n.Pagination_module_root__8f7084b9.Pagination_module_floating__8f7084b9 {\n  background: var(--dark-grey-o-85);\n  position: absolute;\n  border-radius: 6.25rem;\n  width: 82%;\n  bottom: 3rem;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9,\n.Pagination_module_root__8f7084b9 .Pagination_module_jumpToPage__8f7084b9,\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 {\n  display: none;\n  flex: 0 1 15%;\n  background-color: transparent;\n  padding: 0;\n  height: 100%;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 {\n    display: flex;\n    flex-direction: row;\n    justify-content: space-between;\n    align-items: center;\n  }\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 > [data-elem=component2] {\n  flex: 0 1 auto;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_rowSwitcherHandle__8f7084b9 {\n  gap: 0.75rem;\n  background-color: var(--grey);\n  padding: 0;\n  border-radius: 0.25rem;\n  height: 100%;\n  width: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_rowSwitcherHandle__8f7084b9 > [data-elem*=component] {\n  overflow: hidden;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_rowSwitcherHandle__8f7084b9 > [data-elem=component2] {\n  display: flex;\n  flex: 0 0 auto;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_rowSwitcherHandle__8f7084b9 > [data-elem=component2]::before {\n  content: \"\";\n  margin: auto;\n  background: var(--white);\n  width: 0.5px;\n  height: 50%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_text__8f7084b9 {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  height: 100%;\n  display: block;\n  padding: 0.5rem;\n  font-size: 0.875rem;\n  font-weight: 500;\n  color: var(--white);\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_dropdown__8f7084b9 {\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_dropdown__8f7084b9 > [data-elem=header] {\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_dropdown__8f7084b9 > [data-elem=header] > [data-elem=select] {\n  height: 2.375rem;\n  max-height: 100%;\n  width: auto;\n  min-width: -webkit-fit-content;\n  min-width: -moz-fit-content;\n  min-width: fit-content;\n  padding: 0.625rem;\n  background-color: var(--grey);\n  border: none;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_dropdown__8f7084b9 > [data-elem=header] > [data-elem=select] > [data-elem=placeholder] {\n  color: var(--white);\n  font-size: 0.875rem;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 .Pagination_module_dropdown__8f7084b9 > [data-elem=header] > [data-elem=select] > svg {\n  fill: var(--white);\n  width: 0.813rem;\n  height: 0.813rem;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  gap: 1.25rem;\n  flex: 1 1 100%;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 {\n    flex: 1 1 40%;\n  }\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_button__8f7084b9.Pagination_module_disable__8f7084b9 {\n  pointer-events: none;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_button__8f7084b9 [data-elem=title] {\n  color: var(--white);\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_button__8f7084b9 .Pagination_module_icon__8f7084b9 {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_pageSelect__8f7084b9 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  gap: 0.625rem;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_pageSelect__8f7084b9 .Pagination_module_number__8f7084b9 {\n  cursor: pointer;\n  border-radius: 50%;\n  background-color: #e0e0e0;\n  color: var(--black);\n  width: 2.313rem;\n  line-height: 2.313rem;\n  text-align: center;\n  font-size: 1rem;\n  border: 1px solid transparent;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_pageSelect__8f7084b9 .Pagination_module_number__8f7084b9:not([data-active=true]) {\n  display: none;\n}\n@media (min-width: 768px) {\n  .Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_pageSelect__8f7084b9 .Pagination_module_number__8f7084b9:not([data-active=true]) {\n    display: block;\n  }\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_pageSelect__8f7084b9 .Pagination_module_number__8f7084b9:hover {\n  border: 1px solid var(--highlight);\n  color: var(--highlight);\n  background: var(--background);\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_pageNumbers__8f7084b9 > .Pagination_module_pageSelect__8f7084b9 .Pagination_module_number__8f7084b9.Pagination_module_active__8f7084b9 {\n  background-color: var(--highlight);\n  color: var(--white);\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 {\n  display: none;\n  padding: 0;\n  flex: 0 1 30%;\n  background: transparent;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 {\n    display: flex;\n    flex-direction: row;\n    justify-content: center;\n    align-items: center;\n  }\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 > [data-elem*=component] {\n  width: 100%;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 > [data-elem*=component] > * {\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 > [data-elem*=component] > form {\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  margin-left: auto;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 {\n  width: 100%;\n  background: transparent;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: stretch;\n  gap: 0rem;\n  padding: 0;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 > [data-elem*=component] {\n  overflow: hidden;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_inputbox__8f7084b9 {\n  max-width: 100%;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_inputbox__8f7084b9 > label {\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_inputbox__8f7084b9 > label > [data-elem=base-cell] {\n  border-radius: 0.313rem;\n  background-color: transparent;\n  color: var(--white);\n  border-color: var(--grey1);\n  border-radius: 0.25rem 0 0 0.25rem;\n  height: 100%;\n  width: 10rem;\n  flex: 1;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_inputbox__8f7084b9 > label > [data-elem=base-cell] .Pagination_module_icon__8f7084b9 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--grey1);\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_inputbox__8f7084b9 > label > [data-elem=base-cell] > [data-elem=component2] {\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_inputbox__8f7084b9 > label > [data-elem=base-cell] [data-elem=input] {\n  text-align: center;\n  color: var(--white);\n  background-color: transparent;\n  border: none;\n  height: 100%;\n  width: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_button__8f7084b9 {\n  border-radius: 0rem 0.25rem 0.25rem 0rem;\n  background-color: var(--grey1);\n  padding: 0.75rem 0.5rem;\n  height: 100%;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_form__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 .Pagination_module_button__8f7084b9 .Pagination_module_icon__8f7084b9 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--white);\n  flex-shrink: 0;\n}\n.Pagination_module_root__8f7084b9 .Pagination_module_totalData__8f7084b9 {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  display: none;\n  margin: auto;\n  color: var(--white);\n  flex: 0 1 15%;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__8f7084b9 .Pagination_module_totalData__8f7084b9 {\n    display: inline;\n  }\n}\n.Pagination_module_root__8f7084b9.Pagination_module_noTotalData__8f7084b9 .Pagination_module_rowSwitcher__8f7084b9 {\n  flex: 0 1 20%;\n}\n.Pagination_module_root__8f7084b9.Pagination_module_noTotalData__8f7084b9 .Pagination_module_jumpToPage__8f7084b9 {\n  flex: 1 1 60%;\n}\n.Pagination_module_root__8f7084b9.Pagination_module_noTotalData__8f7084b9 .Pagination_module_form__8f7084b9 {\n  flex: 0 1 20%;\n}";
 var modules_a3d40e77 = {"root":"Pagination_module_root__8f7084b9","floating":"Pagination_module_floating__8f7084b9","row-switcher":"Pagination_module_rowSwitcher__8f7084b9","jump-to-page":"Pagination_module_jumpToPage__8f7084b9","form":"Pagination_module_form__8f7084b9","row-switcher-handle":"Pagination_module_rowSwitcherHandle__8f7084b9","text":"Pagination_module_text__8f7084b9","dropdown":"Pagination_module_dropdown__8f7084b9","page-numbers":"Pagination_module_pageNumbers__8f7084b9","button":"Pagination_module_button__8f7084b9","disable":"Pagination_module_disable__8f7084b9","icon":"Pagination_module_icon__8f7084b9","pageSelect":"Pagination_module_pageSelect__8f7084b9","number":"Pagination_module_number__8f7084b9","active":"Pagination_module_active__8f7084b9","inputbox":"Pagination_module_inputbox__8f7084b9","total-data":"Pagination_module_totalData__8f7084b9","no-total-data":"Pagination_module_noTotalData__8f7084b9"};
-n(css$q,{});
+n(css$s,{});
 
 var dropdownOptions = ['10', '25', '50', '100', '200', '250'];
 var reducer = function reducer(state, _ref) {
@@ -44331,13 +44487,13 @@ Pagination.defaultProps = {
   onChange: function onChange() {}
 };
 
-var css$p = ".Stepper_module_root__781d3116 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n  gap: 1rem;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n  position: relative;\n  z-index: 1;\n  gap: 0.5rem;\n  flex: 1;\n  cursor: default;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116:last-child {\n  flex: 0 1 auto;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116:last-child .Stepper_module_title__781d3116::after {\n  display: none;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_left__781d3116 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  position: relative;\n  width: 1.5rem;\n  height: 1.5rem;\n  background: var(--white);\n  border: 0.063rem solid var(--grey2);\n  border-radius: 2rem;\n  font-size: 1rem;\n  color: var(--grey2);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_left__781d3116 .Stepper_module_icon__781d3116 {\n  width: 0.75rem;\n  height: 0.75rem;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_left__781d3116 .Stepper_module_icon__781d3116.Stepper_module_errorIcon__781d3116 {\n  fill: var(--error);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_left__781d3116 .Stepper_module_icon__781d3116.Stepper_module_completionIcon__781d3116 {\n  fill: var(--highlight);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_left__781d3116 .Stepper_module_icon__781d3116.Stepper_module_completionIcon__781d3116.Stepper_module_active__781d3116 {\n  fill: var(--white);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_left__781d3116 .Stepper_module_progress__781d3116 {\n  position: absolute;\n  z-index: -1;\n  inset: -0.3rem;\n  border-radius: 2rem;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_left__781d3116 .Stepper_module_progress__781d3116::after {\n  position: absolute;\n  content: \"\";\n  inset: 0.15rem;\n  background: white;\n  border-radius: 2rem;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_right__781d3116 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  flex: 1;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_right__781d3116 .Stepper_module_title__781d3116 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n  gap: 0.75rem;\n  width: 100%;\n  font-size: 1rem;\n  color: var(--grey2);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_right__781d3116 .Stepper_module_title__781d3116::after {\n  content: \"\";\n  flex: 1;\n  min-width: 1.5rem;\n  border-bottom: 0.063rem solid;\n  margin-top: 0.75rem;\n  border-bottom-color: var(--grey2);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_right__781d3116 .Stepper_module_description__781d3116 {\n  font-size: 0.75rem;\n  color: var(--grey2);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_active__781d3116 .Stepper_module_left__781d3116 {\n  background: var(--highlight);\n  color: var(--white);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_active__781d3116 .Stepper_module_left__781d3116, .Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_completed__781d3116 .Stepper_module_left__781d3116 {\n  border-color: var(--highlight);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_active__781d3116 .Stepper_module_right__781d3116 .Stepper_module_title__781d3116, .Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_completed__781d3116 .Stepper_module_right__781d3116 .Stepper_module_title__781d3116 {\n  color: var(--black);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_active__781d3116 .Stepper_module_right__781d3116 .Stepper_module_description__781d3116, .Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_completed__781d3116 .Stepper_module_right__781d3116 .Stepper_module_description__781d3116 {\n  color: var(--grey);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_completed__781d3116 .Stepper_module_right__781d3116 .Stepper_module_title__781d3116::after {\n  border-bottom-color: var(--highlight);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_error__781d3116 .Stepper_module_left__781d3116 {\n  background: var(--white);\n  border-color: var(--error);\n  color: var(--error);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_error__781d3116 .Stepper_module_right__781d3116 .Stepper_module_title__781d3116 {\n  color: var(--error);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_error__781d3116 .Stepper_module_right__781d3116 .Stepper_module_description__781d3116 {\n  color: rgba(var(--error), 0.6);\n}";
+var css$r = ".Stepper_module_root__781d3116 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n  gap: 1rem;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n  position: relative;\n  z-index: 1;\n  gap: 0.5rem;\n  flex: 1;\n  cursor: default;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116:last-child {\n  flex: 0 1 auto;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116:last-child .Stepper_module_title__781d3116::after {\n  display: none;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_left__781d3116 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  position: relative;\n  width: 1.5rem;\n  height: 1.5rem;\n  background: var(--white);\n  border: 0.063rem solid var(--grey2);\n  border-radius: 2rem;\n  font-size: 1rem;\n  color: var(--grey2);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_left__781d3116 .Stepper_module_icon__781d3116 {\n  width: 0.75rem;\n  height: 0.75rem;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_left__781d3116 .Stepper_module_icon__781d3116.Stepper_module_errorIcon__781d3116 {\n  fill: var(--error);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_left__781d3116 .Stepper_module_icon__781d3116.Stepper_module_completionIcon__781d3116 {\n  fill: var(--highlight);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_left__781d3116 .Stepper_module_icon__781d3116.Stepper_module_completionIcon__781d3116.Stepper_module_active__781d3116 {\n  fill: var(--white);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_left__781d3116 .Stepper_module_progress__781d3116 {\n  position: absolute;\n  z-index: -1;\n  inset: -0.3rem;\n  border-radius: 2rem;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_left__781d3116 .Stepper_module_progress__781d3116::after {\n  position: absolute;\n  content: \"\";\n  inset: 0.15rem;\n  background: white;\n  border-radius: 2rem;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_right__781d3116 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  flex: 1;\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_right__781d3116 .Stepper_module_title__781d3116 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n  gap: 0.75rem;\n  width: 100%;\n  font-size: 1rem;\n  color: var(--grey2);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_right__781d3116 .Stepper_module_title__781d3116::after {\n  content: \"\";\n  flex: 1;\n  min-width: 1.5rem;\n  border-bottom: 0.063rem solid;\n  margin-top: 0.75rem;\n  border-bottom-color: var(--grey2);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116 .Stepper_module_right__781d3116 .Stepper_module_description__781d3116 {\n  font-size: 0.75rem;\n  color: var(--grey2);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_active__781d3116 .Stepper_module_left__781d3116 {\n  background: var(--highlight);\n  color: var(--white);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_active__781d3116 .Stepper_module_left__781d3116, .Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_completed__781d3116 .Stepper_module_left__781d3116 {\n  border-color: var(--highlight);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_active__781d3116 .Stepper_module_right__781d3116 .Stepper_module_title__781d3116, .Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_completed__781d3116 .Stepper_module_right__781d3116 .Stepper_module_title__781d3116 {\n  color: var(--black);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_active__781d3116 .Stepper_module_right__781d3116 .Stepper_module_description__781d3116, .Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_completed__781d3116 .Stepper_module_right__781d3116 .Stepper_module_description__781d3116 {\n  color: var(--grey);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_completed__781d3116 .Stepper_module_right__781d3116 .Stepper_module_title__781d3116::after {\n  border-bottom-color: var(--highlight);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_error__781d3116 .Stepper_module_left__781d3116 {\n  background: var(--white);\n  border-color: var(--error);\n  color: var(--error);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_error__781d3116 .Stepper_module_right__781d3116 .Stepper_module_title__781d3116 {\n  color: var(--error);\n}\n.Stepper_module_root__781d3116 .Stepper_module_step__781d3116.Stepper_module_error__781d3116 .Stepper_module_right__781d3116 .Stepper_module_description__781d3116 {\n  color: rgba(var(--error), 0.6);\n}";
 var modules_bbfded44 = {"root":"Stepper_module_root__781d3116","step":"Stepper_module_step__781d3116","title":"Stepper_module_title__781d3116","left":"Stepper_module_left__781d3116","icon":"Stepper_module_icon__781d3116","error-icon":"Stepper_module_errorIcon__781d3116","completion-icon":"Stepper_module_completionIcon__781d3116","active":"Stepper_module_active__781d3116","progress":"Stepper_module_progress__781d3116","right":"Stepper_module_right__781d3116","description":"Stepper_module_description__781d3116","completed":"Stepper_module_completed__781d3116","error":"Stepper_module_error__781d3116"};
-n(css$p,{});
+n(css$r,{});
 
-var css$o = ":root {\n  --white: #ffffff;\n  --black: #000000;\n  --dark-grey: #333333;\n  --dark-grey-o-85: rgba(51, 51, 51, 0.85);\n  --grey: #737373;\n  --grey1: #888888;\n  --grey2: #a6a6a6;\n  --grey3: #bbbbbb;\n  --grey4: #c4c4c4;\n  --grey5: #dddddd;\n  --grey6: #e8e8e8;\n  --grey7: #eeeeee;\n  --grey8: #f2f2f2;\n  --grey9: #eff0f0;\n  --grey10: #f7f7f7;\n  --highlight: #0f62fe;\n  --dark-blue: #001833;\n  --background: #d0e2ff;\n  --banyan-blue: #00037c;\n  --banyan-orange: #ff892a;\n  --banyan-pink: #ff1597;\n  --banyan-gradient: linear-gradient(\n  \t84.71deg,\n  \tvar(--banyan-pink) 0.48%,\n  \tvar(--banyan-orange) 99.57%\n  );\n  --error: #ff626a;\n  --error-bg: #fff1f1;\n  --error-outline: rgba(218, 30, 40, 0.08);\n  --success: #24a148;\n  --success-bg: #defbe6;\n  --success-outline: rgba(36, 161, 72, 0.08);\n  --warning: #f1c21b;\n  --warning-bg: #fff8e1;\n  --warning-outline: rgba(203, 160, 6, 0.08);\n  --info: #0043ce;\n  --info-bg: #edf5ff;\n  --info-outline: #2864db98;\n}";
+var css$q = ":root {\n  --white: #ffffff;\n  --black: #000000;\n  --dark-grey: #333333;\n  --dark-grey-o-85: rgba(51, 51, 51, 0.85);\n  --grey: #737373;\n  --grey1: #888888;\n  --grey2: #a6a6a6;\n  --grey3: #bbbbbb;\n  --grey4: #c4c4c4;\n  --grey5: #dddddd;\n  --grey6: #e8e8e8;\n  --grey7: #eeeeee;\n  --grey8: #f2f2f2;\n  --grey9: #eff0f0;\n  --grey10: #f7f7f7;\n  --highlight: #0f62fe;\n  --dark-blue: #001833;\n  --background: #d0e2ff;\n  --banyan-blue: #00037c;\n  --banyan-orange: #ff892a;\n  --banyan-pink: #ff1597;\n  --banyan-gradient: linear-gradient(\n  \t84.71deg,\n  \tvar(--banyan-pink) 0.48%,\n  \tvar(--banyan-orange) 99.57%\n  );\n  --error: #ff626a;\n  --error-bg: #fff1f1;\n  --error-outline: rgba(218, 30, 40, 0.08);\n  --success: #24a148;\n  --success-bg: #defbe6;\n  --success-outline: rgba(36, 161, 72, 0.08);\n  --warning: #f1c21b;\n  --warning-bg: #fff8e1;\n  --warning-outline: rgba(203, 160, 6, 0.08);\n  --info: #0043ce;\n  --info-bg: #edf5ff;\n  --info-outline: #2864db98;\n}";
 var modules_dd21d9e9 = {"white":"--white","black":"--black","dark-grey":"--dark-grey","dark-grey-o-85":"--dark-grey-o-85","grey":"--grey","grey1":"--grey1","grey2":"--grey2","grey3":"--grey3","grey4":"--grey4","grey5":"--grey5","grey6":"--grey6","grey7":"--grey7","grey8":"--grey8","grey9":"--grey9","grey10":"--grey10","highlight":"--highlight","dark-blue":"--dark-blue","background":"--background","banyan-blue":"--banyan-blue","banyan-orange":"--banyan-orange","banyan-pink":"--banyan-pink","banyan-gradient":"--banyan-gradient","error":"--error","error-bg":"--error-bg","error-outline":"--error-outline","success":"--success","success-bg":"--success-bg","success-outline":"--success-outline","warning":"--warning","warning-bg":"--warning-bg","warning-outline":"--warning-outline","info":"--info","info-bg":"--info-bg","info-outline":"--info-outline"};
-n(css$o,{});
+n(css$q,{});
 
 var COLORS = Object.keys(modules_dd21d9e9).reduce(function (acc, curr) {
   acc[curr] = getCSSVariableValue(modules_dd21d9e9[curr]);
@@ -44449,9 +44605,9 @@ var TableColumn = /*#__PURE__*/_createClass(function TableColumn(_ref) {
   this.sticky = sticky;
 });
 
-var css$n = ".TableCell_module_root__ff5c86cb[data-elem=base-cell] {\n  background: var(--white);\n  border-bottom: 1px solid var(--grey4);\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell] > [data-elem*=component] {\n  overflow: hidden;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell] > [data-elem*=component] {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  flex: 1;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell] > [data-elem*=component] .TableCell_module_cellText__ff5c86cb {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  display: inline-block;\n  width: 100%;\n  font-size: 0.875rem;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb {\n  background: var(--grey6);\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb .TableCell_module_cellText__ff5c86cb {\n  font-weight: 500;\n  color: var(--grey);\n  font-size: 0.75rem;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb > [data-elem=component2] {\n  flex: 0 0 auto;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb > [data-elem=component2] .TableCell_module_cellText__ff5c86cb {\n  width: auto;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb > [data-elem=component3] {\n  flex: 0 0 auto;\n  margin-right: auto;\n  overflow: visible;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb > [data-elem=component3] button.TableCell_module_sort__ff5c86cb {\n  height: auto;\n  background: transparent;\n  padding: 0;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb > [data-elem=component3] .TableCell_module_sortIcon__ff5c86cb {\n  width: 1rem;\n  height: 1rem;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb.TableCell_module_sortDefault__ff5c86cb > [data-elem=component3] {\n  visibility: hidden;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb.TableCell_module_sortDefault__ff5c86cb > [data-elem=component3] .TableCell_module_sortIcon__ff5c86cb {\n  width: 1rem;\n  height: 1rem;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb.TableCell_module_sortAsc__ff5c86cb > [data-elem=component3], .TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb.TableCell_module_sortDesc__ff5c86cb > [data-elem=component3] {\n  visibility: visible;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb.TableCell_module_sortAsc__ff5c86cb > [data-elem=component3] .TableCell_module_sortIcon__ff5c86cb, .TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb.TableCell_module_sortDesc__ff5c86cb > [data-elem=component3] .TableCell_module_sortIcon__ff5c86cb {\n  fill: var(--highlight);\n  width: 1rem;\n  height: 1rem;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb:hover > [data-elem=component3] {\n  visibility: visible;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_bodyCell__ff5c86cb .TableCell_module_cellText__ff5c86cb.TableCell_module_multiLine__ff5c86cb {\n  white-space: normal;\n  display: -webkit-box;\n  -webkit-box-orient: vertical;\n  -webkit-line-clamp: 2;\n  font-size: 0.75rem;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_stickyLeft__ff5c86cb {\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n  position: -webkit-sticky;\n  position: sticky;\n  left: 0;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_stickyRight__ff5c86cb {\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n  position: -webkit-sticky;\n  position: sticky;\n  right: 0;\n}";
+var css$p = ".TableCell_module_root__ff5c86cb[data-elem=base-cell] {\n  background: var(--white);\n  border-bottom: 1px solid var(--grey4);\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell] > [data-elem*=component] {\n  overflow: hidden;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell] > [data-elem*=component] {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  flex: 1;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell] > [data-elem*=component] .TableCell_module_cellText__ff5c86cb {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  display: inline-block;\n  width: 100%;\n  font-size: 0.875rem;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb {\n  background: var(--grey6);\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb .TableCell_module_cellText__ff5c86cb {\n  font-weight: 500;\n  color: var(--grey);\n  font-size: 0.75rem;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb > [data-elem=component2] {\n  flex: 0 0 auto;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb > [data-elem=component2] .TableCell_module_cellText__ff5c86cb {\n  width: auto;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb > [data-elem=component3] {\n  flex: 0 0 auto;\n  margin-right: auto;\n  overflow: visible;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb > [data-elem=component3] button.TableCell_module_sort__ff5c86cb {\n  height: auto;\n  background: transparent;\n  padding: 0;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb > [data-elem=component3] .TableCell_module_sortIcon__ff5c86cb {\n  width: 1rem;\n  height: 1rem;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb.TableCell_module_sortDefault__ff5c86cb > [data-elem=component3] {\n  visibility: hidden;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb.TableCell_module_sortDefault__ff5c86cb > [data-elem=component3] .TableCell_module_sortIcon__ff5c86cb {\n  width: 1rem;\n  height: 1rem;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb.TableCell_module_sortAsc__ff5c86cb > [data-elem=component3], .TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb.TableCell_module_sortDesc__ff5c86cb > [data-elem=component3] {\n  visibility: visible;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb.TableCell_module_sortAsc__ff5c86cb > [data-elem=component3] .TableCell_module_sortIcon__ff5c86cb, .TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb.TableCell_module_sortDesc__ff5c86cb > [data-elem=component3] .TableCell_module_sortIcon__ff5c86cb {\n  fill: var(--highlight);\n  width: 1rem;\n  height: 1rem;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_headerCell__ff5c86cb.TableCell_module_sortable__ff5c86cb:hover > [data-elem=component3] {\n  visibility: visible;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_bodyCell__ff5c86cb .TableCell_module_cellText__ff5c86cb.TableCell_module_multiLine__ff5c86cb {\n  white-space: normal;\n  display: -webkit-box;\n  -webkit-box-orient: vertical;\n  -webkit-line-clamp: 2;\n  font-size: 0.75rem;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_stickyLeft__ff5c86cb {\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n  position: -webkit-sticky;\n  position: sticky;\n  left: 0;\n}\n.TableCell_module_root__ff5c86cb[data-elem=base-cell].TableCell_module_stickyRight__ff5c86cb {\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n  position: -webkit-sticky;\n  position: sticky;\n  right: 0;\n}";
 var modules_7ba8d001 = {"root":"TableCell_module_root__ff5c86cb","cell-text":"TableCell_module_cellText__ff5c86cb","header-cell":"TableCell_module_headerCell__ff5c86cb","sortable":"TableCell_module_sortable__ff5c86cb","sort":"TableCell_module_sort__ff5c86cb","sort-icon":"TableCell_module_sortIcon__ff5c86cb","sort-default":"TableCell_module_sortDefault__ff5c86cb","sort-asc":"TableCell_module_sortAsc__ff5c86cb","sort-desc":"TableCell_module_sortDesc__ff5c86cb","body-cell":"TableCell_module_bodyCell__ff5c86cb","multi-line":"TableCell_module_multiLine__ff5c86cb","sticky-left":"TableCell_module_stickyLeft__ff5c86cb","sticky-right":"TableCell_module_stickyRight__ff5c86cb"};
-n(css$n,{});
+n(css$p,{});
 
 var SORT_ICONS = {
   asc: /*#__PURE__*/jsx(Sort, {
@@ -44550,9 +44706,9 @@ TableCell.defaultProps = _objectSpread2(_objectSpread2({}, BaseCell.defaultProps
   onSort: function onSort() {}
 });
 
-var css$m = ".TableRow_module_root__b606b560 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.TableRow_module_root__b606b560.TableRow_module_headerRow__b606b560 {\n  background: var(--grey6);\n}\n.TableRow_module_root__b606b560.TableRow_module_headerRow__b606b560 > [data-elem=base-cell].TableRow_module_expandableCell__b606b560 {\n  background: transparent;\n}\n.TableRow_module_root__b606b560.TableRow_module_headerRow__b606b560 > [data-elem=base-cell].TableRow_module_expandableCell__b606b560 > [data-elem=component2] {\n  width: 3rem;\n  visibility: hidden;\n}\n.TableRow_module_root__b606b560.TableRow_module_bodyRow__b606b560 {\n  background: var(--white);\n}\n.TableRow_module_root__b606b560.TableRow_module_bodyRow__b606b560:hover > [data-elem=base-cell] {\n  background: var(--info-bg);\n}\n.TableRow_module_root__b606b560.TableRow_module_bodyRow__b606b560[data-active=true] > [data-elem=base-cell] {\n  background: var(--background);\n}\n.TableRow_module_root__b606b560 > [data-elem=base-cell]:first-child {\n  padding-left: 1rem;\n}\n.TableRow_module_root__b606b560 > [data-elem=base-cell]:last-child {\n  padding-right: 1rem;\n}\n.TableRow_module_root__b606b560 > [data-elem=base-cell].TableRow_module_expandableCell__b606b560 {\n  padding-left: 0.9rem;\n  padding-right: 0.1rem;\n  overflow: visible;\n}\n.TableRow_module_root__b606b560 > [data-elem=base-cell].TableRow_module_expandableCell__b606b560 > [data-elem=component2] {\n  overflow: visible;\n}\n.TableRow_module_root__b606b560 > [data-elem=base-cell].TableRow_module_expandableCell__b606b560 > [data-elem=component2] > [data-elem=text] {\n  overflow: visible;\n}\n.TableRow_module_root__b606b560 button.TableRow_module_button__b606b560[data-elem=base-cell] .TableRow_module_icon__b606b560 {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.TableRow_module_root__b606b560 button.TableRow_module_button__b606b560[data-elem=base-cell]:disabled {\n  cursor: default;\n}\n.TableRow_module_root__b606b560 button.TableRow_module_button__b606b560[data-elem=base-cell]:disabled .TableRow_module_icon__b606b560 {\n  visibility: hidden;\n}\n.TableRow_module_root__b606b560 .TableRow_module_expanded__b606b560 .TableRow_module_button__b606b560 .TableRow_module_icon__b606b560 {\n  transform: rotate(180deg);\n}";
+var css$o = ".TableRow_module_root__b606b560 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.TableRow_module_root__b606b560.TableRow_module_headerRow__b606b560 {\n  background: var(--grey6);\n}\n.TableRow_module_root__b606b560.TableRow_module_headerRow__b606b560 > [data-elem=base-cell].TableRow_module_expandableCell__b606b560 {\n  background: transparent;\n}\n.TableRow_module_root__b606b560.TableRow_module_headerRow__b606b560 > [data-elem=base-cell].TableRow_module_expandableCell__b606b560 > [data-elem=component2] {\n  width: 3rem;\n  visibility: hidden;\n}\n.TableRow_module_root__b606b560.TableRow_module_bodyRow__b606b560 {\n  background: var(--white);\n}\n.TableRow_module_root__b606b560.TableRow_module_bodyRow__b606b560:hover > [data-elem=base-cell] {\n  background: var(--info-bg);\n}\n.TableRow_module_root__b606b560.TableRow_module_bodyRow__b606b560[data-active=true] > [data-elem=base-cell] {\n  background: var(--background);\n}\n.TableRow_module_root__b606b560 > [data-elem=base-cell]:first-child {\n  padding-left: 1rem;\n}\n.TableRow_module_root__b606b560 > [data-elem=base-cell]:last-child {\n  padding-right: 1rem;\n}\n.TableRow_module_root__b606b560 > [data-elem=base-cell].TableRow_module_expandableCell__b606b560 {\n  padding-left: 0.9rem;\n  padding-right: 0.1rem;\n  overflow: visible;\n}\n.TableRow_module_root__b606b560 > [data-elem=base-cell].TableRow_module_expandableCell__b606b560 > [data-elem=component2] {\n  overflow: visible;\n}\n.TableRow_module_root__b606b560 > [data-elem=base-cell].TableRow_module_expandableCell__b606b560 > [data-elem=component2] > [data-elem=text] {\n  overflow: visible;\n}\n.TableRow_module_root__b606b560 button.TableRow_module_button__b606b560[data-elem=base-cell] .TableRow_module_icon__b606b560 {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.TableRow_module_root__b606b560 button.TableRow_module_button__b606b560[data-elem=base-cell]:disabled {\n  cursor: default;\n}\n.TableRow_module_root__b606b560 button.TableRow_module_button__b606b560[data-elem=base-cell]:disabled .TableRow_module_icon__b606b560 {\n  visibility: hidden;\n}\n.TableRow_module_root__b606b560 .TableRow_module_expanded__b606b560 .TableRow_module_button__b606b560 .TableRow_module_icon__b606b560 {\n  transform: rotate(180deg);\n}";
 var modules_f6618a87 = {"root":"TableRow_module_root__b606b560","header-row":"TableRow_module_headerRow__b606b560","expandable-cell":"TableRow_module_expandableCell__b606b560","body-row":"TableRow_module_bodyRow__b606b560","button":"TableRow_module_button__b606b560","icon":"TableRow_module_icon__b606b560","expanded":"TableRow_module_expanded__b606b560"};
-n(css$m,{});
+n(css$o,{});
 
 var TableRow = /*#__PURE__*/forwardRef(function BaseTable(props, ref) {
   var _headerData$map;
@@ -44675,9 +44831,9 @@ TableRow.defaultProps = {
   onSort: function onSort() {}
 };
 
-var css$l = ".TableBody_module_root__77e2990d {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n}";
+var css$n = ".TableBody_module_root__77e2990d {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n}";
 var modules_82c0c387 = {"root":"TableBody_module_root__77e2990d"};
-n(css$l,{});
+n(css$n,{});
 
 /* eslint-disable no-underscore-dangle */
 var TableBody = function TableBody(props) {
@@ -44747,9 +44903,9 @@ TableBody.defaultProps = {
   expandable: null
 };
 
-var css$k = ".TableHeader_module_root__daf69a14 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n}";
+var css$m = ".TableHeader_module_root__daf69a14 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n}";
 var modules_3be98c28 = {"root":"TableHeader_module_root__daf69a14"};
-n(css$k,{});
+n(css$m,{});
 
 /* eslint-disable react/forbid-prop-types */
 var TableHeader = function TableHeader(props) {
@@ -44796,13 +44952,13 @@ TableHeader.defaultProps = {
   onSort: function onSort() {}
 };
 
-var css$j = ".BaseTable_module_root__7a8d241c {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  background: var(--white);\n  overflow: auto;\n}";
+var css$l = ".BaseTable_module_root__7a8d241c {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  background: var(--white);\n  overflow: auto;\n}";
 var modules_f1817c60 = {"root":"BaseTable_module_root__7a8d241c"};
-n(css$j,{});
+n(css$l,{});
 
-var css$i = ".Skeleton_module_root__4aec4b28 {\n  width: 100%;\n  height: 100%;\n  background: var(--grey6);\n  background-image: linear-gradient(to right, var(--grey6) 0%, var(--grey8) 20%, var(--grey6) 40%, var(--grey6) 100%);\n  background-repeat: no-repeat;\n  background-size: cover;\n  display: inline-block;\n  -webkit-animation-duration: 1.25s;\n          animation-duration: 1.25s;\n  animation-fill-mode: forwards;\n  animation-iteration-count: infinite;\n  animation-name: Skeleton_module_shimmer__4aec4b28;\n  animation-timing-function: linear;\n  animation-fill-mode: forwards;\n  animation-iteration-count: infinite;\n  animation-name: Skeleton_module_shimmer__4aec4b28;\n  animation-timing-function: linear;\n  -webkit-animation-fill-mode: forwards;\n  -webkit-animation-iteration-count: infinite;\n  -webkit-animation-name: Skeleton_module_shimmer__4aec4b28;\n  -webkit-animation-timing-function: linear;\n  -webkit-animation-fill-mode: forwards;\n  -webkit-animation-iteration-count: infinite;\n  -webkit-animation-name: Skeleton_module_shimmer__4aec4b28;\n  -webkit-animation-timing-function: linear;\n}\n.Skeleton_module_root__4aec4b28.Skeleton_module_text__4aec4b28 {\n  height: 1.5rem;\n}\n.Skeleton_module_root__4aec4b28.Skeleton_module_circle__4aec4b28 {\n  border-radius: 1.5rem;\n}\n.Skeleton_module_root__4aec4b28.Skeleton_module_rounded__4aec4b28 {\n  border-radius: 0.25rem;\n}\n\n@keyframes Skeleton_module_shimmer__4aec4b28 {\n  0% {\n    background-position: -50rem 0;\n  }\n  100% {\n    background-position: 50rem 0;\n  }\n}\n@-webkit-keyframes Skeleton_module_shimmer__4aec4b28 {\n  0% {\n    background-position: -50rem 0;\n  }\n  100% {\n    background-position: 50rem 0;\n  }\n}";
+var css$k = ".Skeleton_module_root__4aec4b28 {\n  width: 100%;\n  height: 100%;\n  background: var(--grey6);\n  background-image: linear-gradient(to right, var(--grey6) 0%, var(--grey8) 20%, var(--grey6) 40%, var(--grey6) 100%);\n  background-repeat: no-repeat;\n  background-size: cover;\n  display: inline-block;\n  -webkit-animation-duration: 1.25s;\n          animation-duration: 1.25s;\n  animation-fill-mode: forwards;\n  animation-iteration-count: infinite;\n  animation-name: Skeleton_module_shimmer__4aec4b28;\n  animation-timing-function: linear;\n  animation-fill-mode: forwards;\n  animation-iteration-count: infinite;\n  animation-name: Skeleton_module_shimmer__4aec4b28;\n  animation-timing-function: linear;\n  -webkit-animation-fill-mode: forwards;\n  -webkit-animation-iteration-count: infinite;\n  -webkit-animation-name: Skeleton_module_shimmer__4aec4b28;\n  -webkit-animation-timing-function: linear;\n  -webkit-animation-fill-mode: forwards;\n  -webkit-animation-iteration-count: infinite;\n  -webkit-animation-name: Skeleton_module_shimmer__4aec4b28;\n  -webkit-animation-timing-function: linear;\n}\n.Skeleton_module_root__4aec4b28.Skeleton_module_text__4aec4b28 {\n  height: 1.5rem;\n}\n.Skeleton_module_root__4aec4b28.Skeleton_module_circle__4aec4b28 {\n  border-radius: 1.5rem;\n}\n.Skeleton_module_root__4aec4b28.Skeleton_module_rounded__4aec4b28 {\n  border-radius: 0.25rem;\n}\n\n@keyframes Skeleton_module_shimmer__4aec4b28 {\n  0% {\n    background-position: -50rem 0;\n  }\n  100% {\n    background-position: 50rem 0;\n  }\n}\n@-webkit-keyframes Skeleton_module_shimmer__4aec4b28 {\n  0% {\n    background-position: -50rem 0;\n  }\n  100% {\n    background-position: 50rem 0;\n  }\n}";
 var modules_37a5ff73$3 = {"root":"Skeleton_module_root__4aec4b28","shimmer":"Skeleton_module_shimmer__4aec4b28","text":"Skeleton_module_text__4aec4b28","circle":"Skeleton_module_circle__4aec4b28","rounded":"Skeleton_module_rounded__4aec4b28"};
-n(css$i,{});
+n(css$k,{});
 
 var Skeleton = function Skeleton(props) {
   var height = props.height,
@@ -44831,9 +44987,9 @@ Skeleton.defaultProps = {
   variant: 'text'
 };
 
-var css$h = ".Skeleton_module_row__f53f20f3 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  gap: 1rem;\n  margin-bottom: 1rem;\n  padding: 0rem 0.5rem;\n}\n.Skeleton_module_row__f53f20f3.Skeleton_module_header__f53f20f3 {\n  height: 2rem;\n  background: var(--grey4);\n  border-radius: 0.25rem;\n}\n.Skeleton_module_row__f53f20f3.Skeleton_module_header__f53f20f3 .Skeleton_module_th__f53f20f3 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.Skeleton_module_row__f53f20f3.Skeleton_module_header__f53f20f3 .Skeleton_module_th__f53f20f3 .Skeleton_module_skeleton__f53f20f3 {\n  background: var(--grey8);\n}\n.Skeleton_module_row__f53f20f3 > .Skeleton_module_column__f53f20f3 {\n  width: 100%;\n}\n.Skeleton_module_row__f53f20f3 > .Skeleton_module_column__f53f20f3 .Skeleton_module_skeleton__f53f20f3 {\n  height: 1.5rem;\n}";
+var css$j = ".Skeleton_module_row__f53f20f3 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  gap: 1rem;\n  margin-bottom: 1rem;\n  padding: 0rem 0.5rem;\n}\n.Skeleton_module_row__f53f20f3.Skeleton_module_header__f53f20f3 {\n  height: 2rem;\n  background: var(--grey4);\n  border-radius: 0.25rem;\n}\n.Skeleton_module_row__f53f20f3.Skeleton_module_header__f53f20f3 .Skeleton_module_th__f53f20f3 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.Skeleton_module_row__f53f20f3.Skeleton_module_header__f53f20f3 .Skeleton_module_th__f53f20f3 .Skeleton_module_skeleton__f53f20f3 {\n  background: var(--grey8);\n}\n.Skeleton_module_row__f53f20f3 > .Skeleton_module_column__f53f20f3 {\n  width: 100%;\n}\n.Skeleton_module_row__f53f20f3 > .Skeleton_module_column__f53f20f3 .Skeleton_module_skeleton__f53f20f3 {\n  height: 1.5rem;\n}";
 var modules_37a5ff73$2 = {"row":"Skeleton_module_row__f53f20f3","header":"Skeleton_module_header__f53f20f3","th":"Skeleton_module_th__f53f20f3","skeleton":"Skeleton_module_skeleton__f53f20f3","column":"Skeleton_module_column__f53f20f3"};
-n(css$h,{});
+n(css$j,{});
 
 var COLUMNS = _toConsumableArray$1(Array(4).keys()).map(function () {
   return Math.floor(Math.random() * 80 + 20);
@@ -44923,9 +45079,9 @@ BaseTable.defaultProps = {
   onSort: function onSort() {}
 };
 
-var css$g = ".Skeleton_module_root__15c10a9b[data-elem=base-cell] {\n  align-items: flex-start;\n  width: 100%;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component1] {\n  width: auto;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component1] > [data-elem=skeleton] {\n  height: 1.5rem;\n  width: 1.5rem !important;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component2] {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 1rem;\n  flex: 8;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component2] > [data-elem=skeleton] {\n  max-width: 9rem;\n  height: 1.5rem;\n}";
+var css$i = ".Skeleton_module_root__15c10a9b[data-elem=base-cell] {\n  align-items: flex-start;\n  width: 100%;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component1] {\n  width: auto;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component1] > [data-elem=skeleton] {\n  height: 1.5rem;\n  width: 1.5rem !important;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component2] {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 1rem;\n  flex: 8;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component2] > [data-elem=skeleton] {\n  max-width: 9rem;\n  height: 1.5rem;\n}";
 var modules_37a5ff73$1 = {"root":"Skeleton_module_root__15c10a9b"};
-n(css$g,{});
+n(css$i,{});
 
 var CHIPS = _toConsumableArray$1(Array(5).keys());
 var TableChipsSkeleton = function TableChipsSkeleton() {
@@ -44943,9 +45099,9 @@ var TableChipsSkeleton = function TableChipsSkeleton() {
   });
 };
 
-var css$f = ".TableChips_module_root__ecaf76f3[data-elem=base-cell] {\n  padding: 0.5rem 1.5rem;\n  width: 100%;\n  background: var(--grey6);\n  border-radius: 0.25rem 0.25rem 0 0;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component1] .TableChips_module_back__ecaf76f3 {\n  height: 2rem;\n  width: 2rem;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component1] .TableChips_module_back__ecaf76f3 [data-elem=component1] .TableChips_module_icon__ecaf76f3 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--white);\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] {\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  height: 100%;\n  gap: 0.5rem;\n  overflow: auto hidden;\n  flex: 1;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2]::-webkit-scrollbar {\n  display: none;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 {\n  background: var(--grey8);\n  border: 1px solid var(--grey4);\n  padding: 0.344rem 0.25rem;\n  height: 100%;\n  cursor: default;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 .TableChips_module_chipIcon__ecaf76f3 {\n  width: 1rem;\n  height: 1rem;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 > [data-elem=component2] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  gap: 0.25rem;\n  height: 100%;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3 {\n  height: 100%;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3:not(:disabled) {\n  cursor: pointer;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3:disabled {\n  cursor: default;\n  color: var(--info);\n  border-color: var(--info-outline);\n  background: var(--info-bg);\n  filter: none;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3 > [data-elem=component2] > [data-elem=title] {\n  color: var(--dark-grey);\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3 .TableChips_module_icon__ecaf76f3 {\n  width: 0.875rem;\n  height: 0.875rem;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 > [data-elem=component3] {\n  height: 100%;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3:hover {\n  border-color: var(--highlight);\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3:hover > [data-elem=component2] .TableChips_module_label__ecaf76f3 {\n  color: var(--highlight);\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3:hover > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3 {\n  background: var(--background);\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3:hover > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3 > [data-elem=component2] > [data-elem=title] {\n  color: var(--highlight);\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3:hover > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3 .TableChips_module_icon__ecaf76f3 {\n  width: 0.875rem;\n  height: 0.875rem;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component3] {\n  height: 100%;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component3] .TableChips_module_clear__ecaf76f3 {\n  height: 100%;\n}";
+var css$h = ".TableChips_module_root__ecaf76f3[data-elem=base-cell] {\n  padding: 0.5rem 1.5rem;\n  width: 100%;\n  background: var(--grey6);\n  border-radius: 0.25rem 0.25rem 0 0;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component1] .TableChips_module_back__ecaf76f3 {\n  height: 2rem;\n  width: 2rem;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component1] .TableChips_module_back__ecaf76f3 [data-elem=component1] .TableChips_module_icon__ecaf76f3 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--white);\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] {\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  height: 100%;\n  gap: 0.5rem;\n  overflow: auto hidden;\n  flex: 1;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2]::-webkit-scrollbar {\n  display: none;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 {\n  background: var(--grey8);\n  border: 1px solid var(--grey4);\n  padding: 0.344rem 0.25rem;\n  height: 100%;\n  cursor: default;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 .TableChips_module_chipIcon__ecaf76f3 {\n  width: 1rem;\n  height: 1rem;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 > [data-elem=component2] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  gap: 0.25rem;\n  height: 100%;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3 {\n  height: 100%;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3:not(:disabled) {\n  cursor: pointer;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3:disabled {\n  cursor: default;\n  color: var(--info);\n  border-color: var(--info-outline);\n  background: var(--info-bg);\n  filter: none;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3 > [data-elem=component2] > [data-elem=title] {\n  color: var(--dark-grey);\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3 .TableChips_module_icon__ecaf76f3 {\n  width: 0.875rem;\n  height: 0.875rem;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3 > [data-elem=component3] {\n  height: 100%;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3:hover {\n  border-color: var(--highlight);\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3:hover > [data-elem=component2] .TableChips_module_label__ecaf76f3 {\n  color: var(--highlight);\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3:hover > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3 {\n  background: var(--background);\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3:hover > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3 > [data-elem=component2] > [data-elem=title] {\n  color: var(--highlight);\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component2] .TableChips_module_chipParent__ecaf76f3:hover > [data-elem=component2] .TableChips_module_chipChild__ecaf76f3 .TableChips_module_icon__ecaf76f3 {\n  width: 0.875rem;\n  height: 0.875rem;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component3] {\n  height: 100%;\n}\n.TableChips_module_root__ecaf76f3[data-elem=base-cell] > [data-elem=component3] .TableChips_module_clear__ecaf76f3 {\n  height: 100%;\n}";
 var modules_016d9b3e = {"root":"TableChips_module_root__ecaf76f3","back":"TableChips_module_back__ecaf76f3","icon":"TableChips_module_icon__ecaf76f3","chip-parent":"TableChips_module_chipParent__ecaf76f3","chip-icon":"TableChips_module_chipIcon__ecaf76f3","chip-child":"TableChips_module_chipChild__ecaf76f3","label":"TableChips_module_label__ecaf76f3","clear":"TableChips_module_clear__ecaf76f3"};
-n(css$f,{});
+n(css$h,{});
 
 var TableChip$1 = function TableChip(props) {
   var icon = props.icon,
@@ -45054,11 +45210,6 @@ var TableChips = function TableChips(props) {
         color: "danger",
         title: "Clear All",
         className: modules_016d9b3e.clear,
-        leftComponent: function leftComponent() {
-          return /*#__PURE__*/jsx(Trash, {
-            className: modules_016d9b3e.icon
-          });
-        },
         onClick: onClear
       }) : ''
     });
@@ -45116,9 +45267,9 @@ var TableChip = /*#__PURE__*/_createClass(function TableChip(_ref) {
   this.rightComponent = rightComponent;
 });
 
-var css$e = ".Popover_module_root__265e51dc {\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n  background-color: var(--white);\n  padding: 1rem;\n  border-radius: 0.25rem;\n}";
+var css$g = ".Popover_module_root__265e51dc {\n  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n  background-color: var(--white);\n  padding: 1rem;\n  border-radius: 0.25rem;\n}";
 var modules_dfc4608f = {"root":"Popover_module_root__265e51dc"};
-n(css$e,{});
+n(css$g,{});
 
 var Popover = function Popover(props) {
   // eslint-disable-next-line object-curly-newline
@@ -45199,9 +45350,9 @@ Popover.defaultProps = {
   placement: 'bottom'
 };
 
-var css$d = ".Columns_module_popover__078e5868 {\n  height: 32rem;\n  padding: 0;\n  overflow: hidden;\n}\n\n.Columns_module_root__078e5868 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  position: relative;\n  height: 100%;\n  min-width: 18rem;\n  max-width: 100%;\n}\n.Columns_module_root__078e5868 .Columns_module_header__078e5868 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  border-bottom: 1px solid var(--grey4);\n  padding: 0.75rem 2.5rem;\n}\n.Columns_module_root__078e5868 .Columns_module_header__078e5868 > [data-elem=component1] {\n  font-weight: 500;\n}\n.Columns_module_root__078e5868 .Columns_module_header__078e5868 > [data-elem=component2] .Columns_module_close__078e5868 {\n  height: auto;\n  padding: 0;\n}\n.Columns_module_root__078e5868 .Columns_module_header__078e5868 > [data-elem=component2] .Columns_module_close__078e5868 .Columns_module_icon__078e5868 {\n  width: 1rem;\n  height: 1rem;\n}\n.Columns_module_root__078e5868 .Columns_module_body__078e5868 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  gap: 0.5rem;\n  padding: 0.75rem 2.5rem;\n  max-height: 28rem;\n  overflow-y: auto;\n  flex: 1 1 auto;\n}\n.Columns_module_root__078e5868 .Columns_module_body__078e5868 .Columns_module_search__078e5868 {\n  position: -webkit-sticky;\n  position: sticky;\n  top: 0;\n}\n.Columns_module_root__078e5868 .Columns_module_body__078e5868 .Columns_module_columns__078e5868 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  gap: 0.5rem;\n  overflow-y: auto;\n}\n.Columns_module_root__078e5868 .Columns_module_body__078e5868 .Columns_module_columns__078e5868 .Columns_module_item__078e5868 {\n  height: 3rem;\n}\n.Columns_module_root__078e5868 .Columns_module_body__078e5868 .Columns_module_columns__078e5868 .Columns_module_item__078e5868 > [data-elem=title] {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n}\n.Columns_module_root__078e5868 .Columns_module_footer__078e5868 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-end;\n  align-items: center;\n  height: auto;\n  margin-top: auto;\n  padding: 0.5rem 2.5rem;\n  border-top: 1px solid var(--grey4);\n}\n.Columns_module_root__078e5868 .Columns_module_footer__078e5868 button.Columns_module_expand__078e5868 {\n  height: auto;\n  background: var(--grey8);\n  border: 1px solid var(--grey4);\n  color: var(--black);\n}\n.Columns_module_root__078e5868 .Columns_module_footer__078e5868 button.Columns_module_expand__078e5868 .Columns_module_icon__078e5868 {\n  width: 1.5rem;\n  height: 1.5rem;\n  transform: rotate(180deg);\n}\n.Columns_module_root__078e5868.Columns_module_expanded__078e5868 .Columns_module_body__078e5868 {\n  flex: 0 1 auto;\n}\n.Columns_module_root__078e5868.Columns_module_expanded__078e5868 .Columns_module_body__078e5868 .Columns_module_columns__078e5868 {\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n}\n.Columns_module_root__078e5868.Columns_module_expanded__078e5868 .Columns_module_body__078e5868 .Columns_module_columns__078e5868 .Columns_module_item__078e5868 {\n  overflow: hidden;\n}\n.Columns_module_root__078e5868.Columns_module_expanded__078e5868 .Columns_module_footer__078e5868 button.Columns_module_expand__078e5868 .Columns_module_icon__078e5868 {\n  transform: none;\n}";
+var css$f = ".Columns_module_popover__078e5868 {\n  height: 32rem;\n  padding: 0;\n  overflow: hidden;\n}\n\n.Columns_module_root__078e5868 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  position: relative;\n  height: 100%;\n  min-width: 18rem;\n  max-width: 100%;\n}\n.Columns_module_root__078e5868 .Columns_module_header__078e5868 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  border-bottom: 1px solid var(--grey4);\n  padding: 0.75rem 2.5rem;\n}\n.Columns_module_root__078e5868 .Columns_module_header__078e5868 > [data-elem=component1] {\n  font-weight: 500;\n}\n.Columns_module_root__078e5868 .Columns_module_header__078e5868 > [data-elem=component2] .Columns_module_close__078e5868 {\n  height: auto;\n  padding: 0;\n}\n.Columns_module_root__078e5868 .Columns_module_header__078e5868 > [data-elem=component2] .Columns_module_close__078e5868 .Columns_module_icon__078e5868 {\n  width: 1rem;\n  height: 1rem;\n}\n.Columns_module_root__078e5868 .Columns_module_body__078e5868 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  gap: 0.5rem;\n  padding: 0.75rem 2.5rem;\n  max-height: 28rem;\n  overflow-y: auto;\n  flex: 1 1 auto;\n}\n.Columns_module_root__078e5868 .Columns_module_body__078e5868 .Columns_module_search__078e5868 {\n  position: -webkit-sticky;\n  position: sticky;\n  top: 0;\n}\n.Columns_module_root__078e5868 .Columns_module_body__078e5868 .Columns_module_columns__078e5868 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  gap: 0.5rem;\n  overflow-y: auto;\n}\n.Columns_module_root__078e5868 .Columns_module_body__078e5868 .Columns_module_columns__078e5868 .Columns_module_item__078e5868 {\n  height: 3rem;\n}\n.Columns_module_root__078e5868 .Columns_module_body__078e5868 .Columns_module_columns__078e5868 .Columns_module_item__078e5868 > [data-elem=title] {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n}\n.Columns_module_root__078e5868 .Columns_module_footer__078e5868 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-end;\n  align-items: center;\n  height: auto;\n  margin-top: auto;\n  padding: 0.5rem 2.5rem;\n  border-top: 1px solid var(--grey4);\n}\n.Columns_module_root__078e5868 .Columns_module_footer__078e5868 button.Columns_module_expand__078e5868 {\n  height: auto;\n  background: var(--grey8);\n  border: 1px solid var(--grey4);\n  color: var(--black);\n}\n.Columns_module_root__078e5868 .Columns_module_footer__078e5868 button.Columns_module_expand__078e5868 .Columns_module_icon__078e5868 {\n  width: 1.5rem;\n  height: 1.5rem;\n  transform: rotate(180deg);\n}\n.Columns_module_root__078e5868.Columns_module_expanded__078e5868 .Columns_module_body__078e5868 {\n  flex: 0 1 auto;\n}\n.Columns_module_root__078e5868.Columns_module_expanded__078e5868 .Columns_module_body__078e5868 .Columns_module_columns__078e5868 {\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n}\n.Columns_module_root__078e5868.Columns_module_expanded__078e5868 .Columns_module_body__078e5868 .Columns_module_columns__078e5868 .Columns_module_item__078e5868 {\n  overflow: hidden;\n}\n.Columns_module_root__078e5868.Columns_module_expanded__078e5868 .Columns_module_footer__078e5868 button.Columns_module_expand__078e5868 .Columns_module_icon__078e5868 {\n  transform: none;\n}";
 var modules_48c02c99 = {"popover":"Columns_module_popover__078e5868","root":"Columns_module_root__078e5868","header":"Columns_module_header__078e5868","close":"Columns_module_close__078e5868","icon":"Columns_module_icon__078e5868","body":"Columns_module_body__078e5868","search":"Columns_module_search__078e5868","columns":"Columns_module_columns__078e5868","item":"Columns_module_item__078e5868","footer":"Columns_module_footer__078e5868","expand":"Columns_module_expand__078e5868","expanded":"Columns_module_expanded__078e5868"};
-n(css$d,{});
+n(css$f,{});
 
 var Columns = function Columns(props) {
   var open = props.open,
@@ -45306,13 +45457,13 @@ var Columns = function Columns(props) {
   });
 };
 
-var css$c = ".TableFilters_module_root__3c1e35fb[data-elem=base-cell] {\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n  overflow-x: auto;\n  padding: 0.5rem;\n  gap: 1.25rem;\n  width: 100%;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell]::-webkit-scrollbar {\n  display: none;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] .TableFilters_module_icon__3c1e35fb {\n  width: 1.5rem;\n  height: 1.5rem;\n  flex-shrink: 0;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] button.TableFilters_module_iconButton__3c1e35fb {\n  height: 100%;\n  background: var(--grey8);\n  border: 1px solid var(--grey4);\n  color: var(--black);\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem*=component] {\n  height: 100%;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] .TableFilters_module_left__3c1e35fb,\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] .TableFilters_module_center__3c1e35fb,\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] .TableFilters_module_right__3c1e35fb {\n  height: 100%;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem=component1] .TableFilters_module_left__3c1e35fb {\n  gap: 1rem;\n  background: var(--grey8);\n  border: 1px solid var(--grey4);\n  color: var(--black);\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem=component1] .TableFilters_module_left__3c1e35fb [data-elem=left] {\n  gap: 1rem;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem=component1] .TableFilters_module_left__3c1e35fb .TableFilters_module_icon__3c1e35fb {\n  fill: var(--black);\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem=component1] .TableFilters_module_left__3c1e35fb .TableFilters_module_filterValue__3c1e35fb {\n  color: var(--white);\n  background: var(--highlight);\n  padding: 0.125rem 0.5rem;\n  border-radius: 50%;\n  font-size: 0.813rem;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem=component2] {\n  flex: 1;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem=component2] .TableFilters_module_center__3c1e35fb {\n  width: 100%;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem=component2] .TableFilters_module_center__3c1e35fb [data-elem=base-cell] {\n  border-color: var(--grey4);\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem=component2] .TableFilters_module_center__3c1e35fb .TableFilters_module_icon__3c1e35fb {\n  width: 1.25rem;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] .TableFilters_module_right__3c1e35fb {\n  width: auto;\n  padding: 0;\n  min-width: 0rem;\n  gap: 0.5rem;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] .TableFilters_module_right__3c1e35fb > [data-elem*=component] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  height: 100%;\n}";
+var css$e = ".TableFilters_module_root__3c1e35fb[data-elem=base-cell] {\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n  overflow-x: auto;\n  padding: 0.5rem;\n  gap: 1.25rem;\n  width: 100%;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell]::-webkit-scrollbar {\n  display: none;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] .TableFilters_module_icon__3c1e35fb {\n  width: 1.5rem;\n  height: 1.5rem;\n  flex-shrink: 0;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] button.TableFilters_module_iconButton__3c1e35fb {\n  height: 100%;\n  background: var(--grey8);\n  border: 1px solid var(--grey4);\n  color: var(--black);\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem*=component] {\n  height: 100%;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] .TableFilters_module_left__3c1e35fb,\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] .TableFilters_module_center__3c1e35fb,\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] .TableFilters_module_right__3c1e35fb {\n  height: 100%;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem=component1] .TableFilters_module_left__3c1e35fb {\n  gap: 1rem;\n  background: var(--grey8);\n  border: 1px solid var(--grey4);\n  color: var(--black);\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem=component1] .TableFilters_module_left__3c1e35fb [data-elem=left] {\n  gap: 1rem;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem=component1] .TableFilters_module_left__3c1e35fb .TableFilters_module_icon__3c1e35fb {\n  fill: var(--black);\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem=component1] .TableFilters_module_left__3c1e35fb .TableFilters_module_filterValue__3c1e35fb {\n  color: var(--white);\n  background: var(--highlight);\n  padding: 0.125rem 0.5rem;\n  border-radius: 50%;\n  font-size: 0.813rem;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem=component2] {\n  flex: 1;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem=component2] .TableFilters_module_center__3c1e35fb {\n  width: 100%;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem=component2] .TableFilters_module_center__3c1e35fb [data-elem=base-cell] {\n  border-color: var(--grey4);\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] > [data-elem=component2] .TableFilters_module_center__3c1e35fb .TableFilters_module_icon__3c1e35fb {\n  width: 1.25rem;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] .TableFilters_module_right__3c1e35fb {\n  width: auto;\n  padding: 0;\n  min-width: 0rem;\n  gap: 0.5rem;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.TableFilters_module_root__3c1e35fb[data-elem=base-cell] .TableFilters_module_right__3c1e35fb > [data-elem*=component] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  height: 100%;\n}";
 var modules_a0fe63f9 = {"root":"TableFilters_module_root__3c1e35fb","icon":"TableFilters_module_icon__3c1e35fb","icon-button":"TableFilters_module_iconButton__3c1e35fb","left":"TableFilters_module_left__3c1e35fb","center":"TableFilters_module_center__3c1e35fb","right":"TableFilters_module_right__3c1e35fb","filter-value":"TableFilters_module_filterValue__3c1e35fb"};
-n(css$c,{});
+n(css$e,{});
 
-var css$b = ".Skeleton_module_root__bdc934d4[data-elem=base-cell] {\n  width: 100%;\n  gap: 1.25rem;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component1] {\n  flex: 1;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component2] {\n  flex: 6;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component3] {\n  flex: 3;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component3] > [data-elem=base-cell] {\n  padding: 0;\n  align-items: flex-start;\n  height: auto;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component3] > [data-elem=base-cell] > [data-elem*=component] {\n  flex: 1;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component3] > [data-elem=base-cell] > [data-elem*=component] > [data-elem=skeleton] {\n  height: 1.5rem;\n}";
+var css$d = ".Skeleton_module_root__bdc934d4[data-elem=base-cell] {\n  width: 100%;\n  gap: 1.25rem;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component1] {\n  flex: 1;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component2] {\n  flex: 6;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component3] {\n  flex: 3;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component3] > [data-elem=base-cell] {\n  padding: 0;\n  align-items: flex-start;\n  height: auto;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component3] > [data-elem=base-cell] > [data-elem*=component] {\n  flex: 1;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component3] > [data-elem=base-cell] > [data-elem*=component] > [data-elem=skeleton] {\n  height: 1.5rem;\n}";
 var modules_37a5ff73 = {"root":"Skeleton_module_root__bdc934d4"};
-n(css$b,{});
+n(css$d,{});
 
 var TableFiltersSkeleton = function TableFiltersSkeleton() {
   return /*#__PURE__*/jsx(BaseCell, {
@@ -45497,9 +45648,9 @@ TableFilters.defaultProps = {
   }
 };
 
-var css$a = ".Table_module_root__d17cb64f {\n  position: relative;\n  border-style: solid;\n  border-color: var(--grey4);\n  border-width: 1px 1px 0px 1px;\n  border-radius: 0.25rem;\n  width: 100%;\n  max-width: 100%;\n  height: 100%;\n  overflow: hidden;\n}\n.Table_module_root__d17cb64f .Table_module_table__d17cb64f {\n  height: calc(100% - 6rem);\n  padding-bottom: 3.5rem;\n}\n.Table_module_root__d17cb64f .Table_module_pagination__d17cb64f {\n  position: absolute;\n  bottom: 0;\n  left: 50%;\n  transform: translateX(-50%);\n}\n.Table_module_root__d17cb64f .Table_module_pagination__d17cb64f.Table_module_floating__d17cb64f {\n  bottom: 1rem;\n}\n.Table_module_root__d17cb64f .Table_module_chips__d17cb64f,\n.Table_module_root__d17cb64f .Table_module_filters__d17cb64f,\n.Table_module_root__d17cb64f .Table_module_table__d17cb64f > [data-elem=table-header] {\n  position: -webkit-sticky;\n  position: sticky;\n  z-index: 1;\n  top: 0;\n}";
+var css$c = ".Table_module_root__d17cb64f {\n  position: relative;\n  border-style: solid;\n  border-color: var(--grey4);\n  border-width: 1px 1px 0px 1px;\n  border-radius: 0.25rem;\n  width: 100%;\n  max-width: 100%;\n  height: 100%;\n  overflow: hidden;\n}\n.Table_module_root__d17cb64f .Table_module_table__d17cb64f {\n  height: calc(100% - 6rem);\n  padding-bottom: 3.5rem;\n}\n.Table_module_root__d17cb64f .Table_module_pagination__d17cb64f {\n  position: absolute;\n  bottom: 0;\n  left: 50%;\n  transform: translateX(-50%);\n}\n.Table_module_root__d17cb64f .Table_module_pagination__d17cb64f.Table_module_floating__d17cb64f {\n  bottom: 1rem;\n}\n.Table_module_root__d17cb64f .Table_module_chips__d17cb64f,\n.Table_module_root__d17cb64f .Table_module_filters__d17cb64f,\n.Table_module_root__d17cb64f .Table_module_table__d17cb64f > [data-elem=table-header] {\n  position: -webkit-sticky;\n  position: sticky;\n  z-index: 1;\n  top: 0;\n}";
 var modules_2e8406c7 = {"root":"Table_module_root__d17cb64f","table":"Table_module_table__d17cb64f","pagination":"Table_module_pagination__d17cb64f","floating":"Table_module_floating__d17cb64f","chips":"Table_module_chips__d17cb64f","filters":"Table_module_filters__d17cb64f"};
-n(css$a,{});
+n(css$c,{});
 
 var INTERSECTION = 1;
 var STEP = 0.05;
@@ -45683,9 +45834,9 @@ Table.defaultProps = {
   onSort: function onSort() {}
 };
 
-var css$9 = ".Tabs_module_root__83feec3e {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e {\n  padding: 0.75rem;\n  gap: 0.75rem;\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e > [data-elem=component1] > .Tabs_module_icon__83feec3e,\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e > [data-elem=component3] > .Tabs_module_icon__83feec3e {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--black);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e > [data-elem=component2] {\n  color: var(--black);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e.Tabs_module_active__83feec3e {\n  border-bottom: 2px solid var(--highlight);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e.Tabs_module_active__83feec3e > [data-elem=component1] > .Tabs_module_icon__83feec3e,\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e.Tabs_module_active__83feec3e > [data-elem=component3] > .Tabs_module_icon__83feec3e {\n  fill: var(--highlight);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e.Tabs_module_active__83feec3e > [data-elem=component2] {\n  color: var(--highlight);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e:hover {\n  background: var(--info-bg);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e:hover > [data-elem=component1] > .Tabs_module_icon__83feec3e,\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e:hover > [data-elem=component3] > .Tabs_module_icon__83feec3e {\n  fill: var(--highlight);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e:hover > [data-elem=component2] {\n  color: var(--highlight);\n}";
+var css$b = ".Tabs_module_root__83feec3e {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e {\n  padding: 0.75rem;\n  gap: 0.75rem;\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e > [data-elem=component1] > .Tabs_module_icon__83feec3e,\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e > [data-elem=component3] > .Tabs_module_icon__83feec3e {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--black);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e > [data-elem=component2] {\n  color: var(--black);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e.Tabs_module_active__83feec3e {\n  border-bottom: 2px solid var(--highlight);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e.Tabs_module_active__83feec3e > [data-elem=component1] > .Tabs_module_icon__83feec3e,\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e.Tabs_module_active__83feec3e > [data-elem=component3] > .Tabs_module_icon__83feec3e {\n  fill: var(--highlight);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e.Tabs_module_active__83feec3e > [data-elem=component2] {\n  color: var(--highlight);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e:hover {\n  background: var(--info-bg);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e:hover > [data-elem=component1] > .Tabs_module_icon__83feec3e,\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e:hover > [data-elem=component3] > .Tabs_module_icon__83feec3e {\n  fill: var(--highlight);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e:hover > [data-elem=component2] {\n  color: var(--highlight);\n}";
 var modules_78ab5066 = {"root":"Tabs_module_root__83feec3e","tab":"Tabs_module_tab__83feec3e","icon":"Tabs_module_icon__83feec3e","active":"Tabs_module_active__83feec3e"};
-n(css$9,{});
+n(css$b,{});
 
 var Tabs = function Tabs(props) {
   var tabs = props.tabs,
@@ -45758,9 +45909,9 @@ Tabs.defaultProps = {
 
 function o(f){return r=>{f.forEach(n=>{typeof n=="function"?n(r):n!=null&&(n.current=r);});}}
 
-var css$8 = ".Tooltip_module_tooltip__1cb07177 {\n  text-align: center;\n  position: fixed;\n  border-radius: 0.25rem;\n  min-width: auto;\n  max-width: 12rem;\n  padding: 0.375rem;\n  font-size: 0.875rem;\n  font-family: sans-serif;\n  line-height: 1;\n}\n.Tooltip_module_tooltip__1cb07177.Tooltip_module_light__1cb07177 {\n  color: var(--black);\n  background: var(--grey7);\n  border-color: var(--black);\n}\n.Tooltip_module_tooltip__1cb07177.Tooltip_module_light__1cb07177 .Tooltip_module_arrow__1cb07177 {\n  background: var(--grey7);\n}\n.Tooltip_module_tooltip__1cb07177.Tooltip_module_dark__1cb07177 {\n  color: var(--white);\n  background: var(--black);\n  border-color: var(--white);\n}\n.Tooltip_module_tooltip__1cb07177.Tooltip_module_dark__1cb07177 .Tooltip_module_arrow__1cb07177 {\n  background: var(--black);\n}\n.Tooltip_module_tooltip__1cb07177 .Tooltip_module_arrow__1cb07177 {\n  position: absolute;\n  width: 1rem;\n  height: 1rem;\n  z-index: -1;\n  pointer-events: none;\n  transform: rotate(45deg);\n}";
-var modules_e4619b04 = {"tooltip":"Tooltip_module_tooltip__1cb07177","light":"Tooltip_module_light__1cb07177","arrow":"Tooltip_module_arrow__1cb07177","dark":"Tooltip_module_dark__1cb07177"};
-n(css$8,{});
+var css$a = ".Tooltip_module_tooltip__04fbc763 {\n  text-align: center;\n  border-radius: 0.25rem;\n  min-width: auto;\n  max-width: 12rem;\n  padding: 0.375rem;\n  font-size: 0.875rem;\n  font-family: sans-serif;\n  line-height: 1;\n}\n.Tooltip_module_tooltip__04fbc763.Tooltip_module_light__04fbc763 {\n  color: var(--black);\n  background: var(--grey7);\n  border-color: var(--black);\n}\n.Tooltip_module_tooltip__04fbc763.Tooltip_module_light__04fbc763 .Tooltip_module_arrow__04fbc763 {\n  background: var(--grey7);\n}\n.Tooltip_module_tooltip__04fbc763.Tooltip_module_dark__04fbc763 {\n  color: var(--white);\n  background: var(--black);\n  border-color: var(--white);\n}\n.Tooltip_module_tooltip__04fbc763.Tooltip_module_dark__04fbc763 .Tooltip_module_arrow__04fbc763 {\n  background: var(--black);\n}\n.Tooltip_module_tooltip__04fbc763 .Tooltip_module_arrow__04fbc763 {\n  position: absolute;\n  width: 1rem;\n  height: 1rem;\n  z-index: -1;\n  pointer-events: none;\n  transform: rotate(45deg);\n}";
+var modules_e4619b04 = {"tooltip":"Tooltip_module_tooltip__04fbc763","light":"Tooltip_module_light__04fbc763","arrow":"Tooltip_module_arrow__04fbc763","dark":"Tooltip_module_dark__04fbc763"};
+n(css$a,{});
 
 var Tooltip = /*#__PURE__*/forwardRef(function Tooltip(props, propRef) {
   var _middlewareData$arrow, _middlewareData$arrow2, _middlewareData$arrow3, _middlewareData$arrow4;
@@ -45779,7 +45930,7 @@ var Tooltip = /*#__PURE__*/forwardRef(function Tooltip(props, propRef) {
   var _useFloating = useFloating({
       open: open,
       onOpenChange: setOpen,
-      strategy: 'fixed',
+      // strategy: 'fixed',
       placement: position,
       // Make sure the tooltip stays on the screen
       whileElementsMounted: autoUpdate,
@@ -45827,7 +45978,7 @@ var Tooltip = /*#__PURE__*/forwardRef(function Tooltip(props, propRef) {
   }[side];
   return /*#__PURE__*/jsxs(Fragment, {
     children: [clonedChildren, /*#__PURE__*/jsx(Popper, {
-      open: open,
+      open: open && content != null,
       backdrop: false,
       wrapperId: "tooltip",
       children: /*#__PURE__*/jsxs("div", _objectSpread2(_objectSpread2({}, getFloatingProps({
@@ -45840,7 +45991,7 @@ var Tooltip = /*#__PURE__*/forwardRef(function Tooltip(props, propRef) {
           zIndex: 100
         }
       })), {}, {
-        children: [content, /*#__PURE__*/jsx("div", {
+        children: [/*#__PURE__*/jsx("div", {
           className: modules_e4619b04.arrow,
           ref: arrowEl,
           style: _defineProperty$1({
@@ -45849,7 +46000,7 @@ var Tooltip = /*#__PURE__*/forwardRef(function Tooltip(props, propRef) {
             right: '',
             bottom: ''
           }, staticSide, '-0.5rem')
-        })]
+        }), content]
       }))
     })]
   });
@@ -45862,14 +46013,14 @@ Tooltip.propTypes = {
 };
 Tooltip.defaultProps = {
   variant: 'light',
-  content: 'Tooltip Info',
+  content: null,
   position: 'top',
   className: ''
 };
 
-var css$7 = ".BaseSidePanel_module_root__c7817916 {\n  max-height: 100%;\n  height: 100%;\n  display: flex;\n  width: 30%;\n  flex-direction: column;\n  top: 0;\n  background: #ffffff;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.12);\n  overflow-x: hidden;\n  transition: 0.5s;\n}\n.BaseSidePanel_module_root__c7817916.BaseSidePanel_module_close__c7817916 {\n  width: 0rem;\n}\n.BaseSidePanel_module_root__c7817916 .BaseSidePanel_module_body__c7817916 {\n  flex: 1;\n  overflow-y: auto;\n}";
+var css$9 = ".BaseSidePanel_module_root__c7817916 {\n  max-height: 100%;\n  height: 100%;\n  display: flex;\n  width: 30%;\n  flex-direction: column;\n  top: 0;\n  background: #ffffff;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.12);\n  overflow-x: hidden;\n  transition: 0.5s;\n}\n.BaseSidePanel_module_root__c7817916.BaseSidePanel_module_close__c7817916 {\n  width: 0rem;\n}\n.BaseSidePanel_module_root__c7817916 .BaseSidePanel_module_body__c7817916 {\n  flex: 1;\n  overflow-y: auto;\n}";
 var modules_c7321921 = {"root":"BaseSidePanel_module_root__c7817916","close":"BaseSidePanel_module_close__c7817916","body":"BaseSidePanel_module_body__c7817916"};
-n(css$7,{});
+n(css$9,{});
 
 var BaseSidePanel = function BaseSidePanel(props) {
   var className = props.className,
@@ -48610,8 +48761,8 @@ var Point = (function () {
 }());
 var Point$1 = Point;
 
-var mathMin$6 = Math.min;
-var mathMax$6 = Math.max;
+var mathMin$7 = Math.min;
+var mathMax$7 = Math.max;
 var lt = new Point$1();
 var rb = new Point$1();
 var lb = new Point$1();
@@ -48634,16 +48785,16 @@ var BoundingRect = (function () {
         this.height = height;
     }
     BoundingRect.prototype.union = function (other) {
-        var x = mathMin$6(other.x, this.x);
-        var y = mathMin$6(other.y, this.y);
+        var x = mathMin$7(other.x, this.x);
+        var y = mathMin$7(other.y, this.y);
         if (isFinite(this.x) && isFinite(this.width)) {
-            this.width = mathMax$6(other.x + other.width, this.x + this.width) - x;
+            this.width = mathMax$7(other.x + other.width, this.x + this.width) - x;
         }
         else {
             this.width = other.width;
         }
         if (isFinite(this.y) && isFinite(this.height)) {
-            this.height = mathMax$6(other.y + other.height, this.y + this.height) - y;
+            this.height = mathMax$7(other.y + other.height, this.y + this.height) - y;
         }
         else {
             this.height = other.height;
@@ -48813,10 +48964,10 @@ var BoundingRect = (function () {
         rt.transform(m);
         rb.transform(m);
         lb.transform(m);
-        target.x = mathMin$6(lt.x, rb.x, lb.x, rt.x);
-        target.y = mathMin$6(lt.y, rb.y, lb.y, rt.y);
-        var maxX = mathMax$6(lt.x, rb.x, lb.x, rt.x);
-        var maxY = mathMax$6(lt.y, rb.y, lb.y, rt.y);
+        target.x = mathMin$7(lt.x, rb.x, lb.x, rt.x);
+        target.y = mathMin$7(lt.y, rb.y, lb.y, rt.y);
+        var maxX = mathMax$7(lt.x, rb.x, lb.x, rt.x);
+        var maxY = mathMax$7(lt.y, rb.y, lb.y, rt.y);
         target.width = maxX - target.x;
         target.height = maxY - target.y;
     };
@@ -50990,13 +51141,13 @@ function isRadialGradient(val) {
 }))();
 
 var arraySlice = Array.prototype.slice;
-function interpolateNumber(p0, p1, percent) {
+function interpolateNumber$1(p0, p1, percent) {
     return (p1 - p0) * percent + p0;
 }
 function interpolate1DArray(out, p0, p1, percent) {
     var len = p0.length;
     for (var i = 0; i < len; i++) {
-        out[i] = interpolateNumber(p0[i], p1[i], percent);
+        out[i] = interpolateNumber$1(p0[i], p1[i], percent);
     }
     return out;
 }
@@ -51008,7 +51159,7 @@ function interpolate2DArray(out, p0, p1, percent) {
             out[i] = [];
         }
         for (var j = 0; j < len2; j++) {
-            out[i][j] = interpolateNumber(p0[i][j], p1[i][j], percent);
+            out[i][j] = interpolateNumber$1(p0[i][j], p1[i][j], percent);
         }
     }
     return out;
@@ -51339,23 +51490,23 @@ var Track = (function () {
             var isLinearGradient_1 = valType === VALUE_TYPE_LINEAR_GRADIENT;
             target[propName] = {
                 type: isLinearGradient_1 ? 'linear' : 'radial',
-                x: interpolateNumber(val.x, nextVal_1.x, w),
-                y: interpolateNumber(val.y, nextVal_1.y, w),
+                x: interpolateNumber$1(val.x, nextVal_1.x, w),
+                y: interpolateNumber$1(val.y, nextVal_1.y, w),
                 colorStops: map$1(val.colorStops, function (colorStop, idx) {
                     var nextColorStop = nextVal_1.colorStops[idx];
                     return {
-                        offset: interpolateNumber(colorStop.offset, nextColorStop.offset, w),
+                        offset: interpolateNumber$1(colorStop.offset, nextColorStop.offset, w),
                         color: rgba2String(interpolate1DArray([], colorStop.color, nextColorStop.color, w))
                     };
                 }),
                 global: nextVal_1.global
             };
             if (isLinearGradient_1) {
-                target[propName].x2 = interpolateNumber(val.x2, nextVal_1.x2, w);
-                target[propName].y2 = interpolateNumber(val.y2, nextVal_1.y2, w);
+                target[propName].x2 = interpolateNumber$1(val.x2, nextVal_1.x2, w);
+                target[propName].y2 = interpolateNumber$1(val.y2, nextVal_1.y2, w);
             }
             else {
-                target[propName].r = interpolateNumber(val.r, nextVal_1.r, w);
+                target[propName].r = interpolateNumber$1(val.r, nextVal_1.r, w);
             }
         }
         else if (isValueColor) {
@@ -51365,7 +51516,7 @@ var Track = (function () {
             }
         }
         else {
-            var value = interpolateNumber(frame[valueKey], nextFrame[valueKey], w);
+            var value = interpolateNumber$1(frame[valueKey], nextFrame[valueKey], w);
             if (isAdditive) {
                 this._additiveValue = value;
             }
@@ -54717,6 +54868,9 @@ function throwError(msg) {
   throw new Error(msg);
 }
 
+function interpolateNumber(p0, p1, percent) {
+  return (p1 - p0) * percent + p0;
+}
 /**
  * Make the name displayable. But we should
  * make sure it is not duplicated with user
@@ -55359,6 +55513,56 @@ function getTooltipRenderMode(renderModeOption) {
     return env$1.domSupported ? 'html' : 'richText';
   } else {
     return renderModeOption || 'html';
+  }
+}
+/**
+ * Interpolate raw values of a series with percent
+ *
+ * @param data         data
+ * @param labelModel   label model of the text element
+ * @param sourceValue  start value. May be null/undefined when init.
+ * @param targetValue  end value
+ * @param percent      0~1 percentage; 0 uses start value while 1 uses end value
+ * @return             interpolated values
+ *                     If `sourceValue` and `targetValue` are `number`, return `number`.
+ *                     If `sourceValue` and `targetValue` are `string`, return `string`.
+ *                     If `sourceValue` and `targetValue` are `(string | number)[]`, return `(string | number)[]`.
+ *                     Other cases do not supported.
+ */
+
+function interpolateRawValues(data, precision, sourceValue, targetValue, percent) {
+  var isAutoPrecision = precision == null || precision === 'auto';
+
+  if (targetValue == null) {
+    return targetValue;
+  }
+
+  if (isNumber(targetValue)) {
+    var value = interpolateNumber(sourceValue || 0, targetValue, percent);
+    return round$1(value, isAutoPrecision ? Math.max(getPrecision(sourceValue || 0), getPrecision(targetValue)) : precision);
+  } else if (isString(targetValue)) {
+    return percent < 1 ? sourceValue : targetValue;
+  } else {
+    var interpolated = [];
+    var leftArr = sourceValue;
+    var rightArr = targetValue;
+    var length_1 = Math.max(leftArr ? leftArr.length : 0, rightArr.length);
+
+    for (var i = 0; i < length_1; ++i) {
+      var info = data.getDimensionInfo(i); // Don't interpolate ordinal dims
+
+      if (info && info.type === 'ordinal') {
+        // In init, there is no `sourceValue`, but should better not to get undefined result.
+        interpolated[i] = (percent < 1 && leftArr ? leftArr : rightArr)[i];
+      } else {
+        var leftVal = leftArr && leftArr[i] ? leftArr[i] : 0;
+        var rightVal = rightArr[i];
+        var value = interpolateNumber(leftVal, rightVal, percent);
+        interpolated[i] = round$1(value, isAutoPrecision ? Math.max(getPrecision(leftVal), getPrecision(rightVal)) : precision);
+      }
+    }
+
+    return interpolated;
   }
 }
 
@@ -56552,8 +56756,8 @@ function isDisplayableCulled(el, width, height) {
 }
 var Displayable$1 = Displayable;
 
-var mathMin$5 = Math.min;
-var mathMax$5 = Math.max;
+var mathMin$6 = Math.min;
+var mathMax$6 = Math.max;
 var mathSin$3 = Math.sin;
 var mathCos$3 = Math.cos;
 var PI2$6 = Math.PI * 2;
@@ -56561,10 +56765,10 @@ var start = create$1();
 var end = create$1();
 var extremity = create$1();
 function fromLine(x0, y0, x1, y1, min, max) {
-    min[0] = mathMin$5(x0, x1);
-    min[1] = mathMin$5(y0, y1);
-    max[0] = mathMax$5(x0, x1);
-    max[1] = mathMax$5(y0, y1);
+    min[0] = mathMin$6(x0, x1);
+    min[1] = mathMin$6(y0, y1);
+    max[0] = mathMax$6(x0, x1);
+    max[1] = mathMax$6(y0, y1);
 }
 var xDim = [];
 var yDim = [];
@@ -56578,35 +56782,35 @@ function fromCubic(x0, y0, x1, y1, x2, y2, x3, y3, min, max) {
     max[1] = -Infinity;
     for (var i = 0; i < n; i++) {
         var x = cubicAt$1(x0, x1, x2, x3, xDim[i]);
-        min[0] = mathMin$5(x, min[0]);
-        max[0] = mathMax$5(x, max[0]);
+        min[0] = mathMin$6(x, min[0]);
+        max[0] = mathMax$6(x, max[0]);
     }
     n = cubicExtrema$1(y0, y1, y2, y3, yDim);
     for (var i = 0; i < n; i++) {
         var y = cubicAt$1(y0, y1, y2, y3, yDim[i]);
-        min[1] = mathMin$5(y, min[1]);
-        max[1] = mathMax$5(y, max[1]);
+        min[1] = mathMin$6(y, min[1]);
+        max[1] = mathMax$6(y, max[1]);
     }
-    min[0] = mathMin$5(x0, min[0]);
-    max[0] = mathMax$5(x0, max[0]);
-    min[0] = mathMin$5(x3, min[0]);
-    max[0] = mathMax$5(x3, max[0]);
-    min[1] = mathMin$5(y0, min[1]);
-    max[1] = mathMax$5(y0, max[1]);
-    min[1] = mathMin$5(y3, min[1]);
-    max[1] = mathMax$5(y3, max[1]);
+    min[0] = mathMin$6(x0, min[0]);
+    max[0] = mathMax$6(x0, max[0]);
+    min[0] = mathMin$6(x3, min[0]);
+    max[0] = mathMax$6(x3, max[0]);
+    min[1] = mathMin$6(y0, min[1]);
+    max[1] = mathMax$6(y0, max[1]);
+    min[1] = mathMin$6(y3, min[1]);
+    max[1] = mathMax$6(y3, max[1]);
 }
 function fromQuadratic(x0, y0, x1, y1, x2, y2, min, max) {
     var quadraticExtremum$1 = quadraticExtremum;
     var quadraticAt$1 = quadraticAt;
-    var tx = mathMax$5(mathMin$5(quadraticExtremum$1(x0, x1, x2), 1), 0);
-    var ty = mathMax$5(mathMin$5(quadraticExtremum$1(y0, y1, y2), 1), 0);
+    var tx = mathMax$6(mathMin$6(quadraticExtremum$1(x0, x1, x2), 1), 0);
+    var ty = mathMax$6(mathMin$6(quadraticExtremum$1(y0, y1, y2), 1), 0);
     var x = quadraticAt$1(x0, x1, x2, tx);
     var y = quadraticAt$1(y0, y1, y2, ty);
-    min[0] = mathMin$5(x0, x2, x);
-    min[1] = mathMin$5(y0, y2, y);
-    max[0] = mathMax$5(x0, x2, x);
-    max[1] = mathMax$5(y0, y2, y);
+    min[0] = mathMin$6(x0, x2, x);
+    min[1] = mathMin$6(y0, y2, y);
+    max[0] = mathMax$6(x0, x2, x);
+    max[1] = mathMax$6(y0, y2, y);
 }
 function fromArc(x, y, rx, ry, startAngle, endAngle, anticlockwise, min, max) {
     var vec2Min = min$1;
@@ -56669,8 +56873,8 @@ var min = [];
 var max = [];
 var min2 = [];
 var max2 = [];
-var mathMin$4 = Math.min;
-var mathMax$4 = Math.max;
+var mathMin$5 = Math.min;
+var mathMax$5 = Math.max;
 var mathCos$2 = Math.cos;
 var mathSin$2 = Math.sin;
 var mathAbs$1 = Math.abs;
@@ -57090,7 +57294,7 @@ var PathProxy = (function () {
                         x0 = mathCos$2(startAngle) * rx + cx;
                         y0 = mathSin$2(startAngle) * ry + cy;
                     }
-                    l = mathMax$4(rx, ry) * mathMin$4(PI2$5, Math.abs(delta));
+                    l = mathMax$5(rx, ry) * mathMin$5(PI2$5, Math.abs(delta));
                     xi = mathCos$2(endAngle) * rx + cx;
                     yi = mathSin$2(endAngle) * ry + cy;
                     break;
@@ -57292,18 +57496,18 @@ var PathProxy = (function () {
                         if (accumLength + l > displayedLength) {
                             var d_1 = displayedLength - accumLength;
                             ctx.moveTo(x, y);
-                            ctx.lineTo(x + mathMin$4(d_1, width), y);
+                            ctx.lineTo(x + mathMin$5(d_1, width), y);
                             d_1 -= width;
                             if (d_1 > 0) {
-                                ctx.lineTo(x + width, y + mathMin$4(d_1, height));
+                                ctx.lineTo(x + width, y + mathMin$5(d_1, height));
                             }
                             d_1 -= height;
                             if (d_1 > 0) {
-                                ctx.lineTo(x + mathMax$4(width - d_1, 0), y + height);
+                                ctx.lineTo(x + mathMax$5(width - d_1, 0), y + height);
                             }
                             d_1 -= width;
                             if (d_1 > 0) {
-                                ctx.lineTo(x, y + mathMax$4(height - d_1, 0));
+                                ctx.lineTo(x, y + mathMax$5(height - d_1, 0));
                             }
                             break lo;
                         }
@@ -60272,8 +60476,8 @@ var mathACos = Math.acos;
 var mathATan2 = Math.atan2;
 var mathAbs = Math.abs;
 var mathSqrt = Math.sqrt;
-var mathMax$3 = Math.max;
-var mathMin$3 = Math.min;
+var mathMax$4 = Math.max;
+var mathMin$4 = Math.min;
 var e = 1e-4;
 function intersect(x0, y0, x1, y1, x2, y2, x3, y3) {
     var dx10 = x1 - x0;
@@ -60304,7 +60508,7 @@ function computeCornerTangents(x0, y0, x1, y1, radius, cr, clockwise) {
     var d2 = dx * dx + dy * dy;
     var r = radius - cr;
     var s = x11 * y10 - x10 * y11;
-    var d = (dy < 0 ? -1 : 1) * mathSqrt(mathMax$3(0, r * r * d2 - s * s));
+    var d = (dy < 0 ? -1 : 1) * mathSqrt(mathMax$4(0, r * r * d2 - s * s));
     var cx0 = (s * dy - dx * d) / d2;
     var cy0 = (-s * dx - dy * d) / d2;
     var cx1 = (s * dy + dx * d) / d2;
@@ -60353,8 +60557,8 @@ function normalizeCornerRadius(cr) {
 }
 function buildPath$1(ctx, shape) {
     var _a;
-    var radius = mathMax$3(shape.r, 0);
-    var innerRadius = mathMax$3(shape.r0 || 0, 0);
+    var radius = mathMax$4(shape.r, 0);
+    var innerRadius = mathMax$4(shape.r0 || 0, 0);
     var hasRadius = radius > 0;
     var hasInnerRadius = innerRadius > 0;
     if (!hasRadius && !hasInnerRadius) {
@@ -60417,12 +60621,12 @@ function buildPath$1(ctx, shape) {
                 _a = normalizeCornerRadius(cornerRadius), icrStart = _a[0], icrEnd = _a[1], ocrStart = _a[2], ocrEnd = _a[3];
             }
             var halfRd = mathAbs(radius - innerRadius) / 2;
-            ocrs = mathMin$3(halfRd, ocrStart);
-            ocre = mathMin$3(halfRd, ocrEnd);
-            icrs = mathMin$3(halfRd, icrStart);
-            icre = mathMin$3(halfRd, icrEnd);
-            limitedOcrMax = ocrMax = mathMax$3(ocrs, ocre);
-            limitedIcrMax = icrMax = mathMax$3(icrs, icre);
+            ocrs = mathMin$4(halfRd, ocrStart);
+            ocre = mathMin$4(halfRd, ocrEnd);
+            icrs = mathMin$4(halfRd, icrStart);
+            icre = mathMin$4(halfRd, icrEnd);
+            limitedOcrMax = ocrMax = mathMax$4(ocrs, ocre);
+            limitedIcrMax = icrMax = mathMax$4(icrs, icre);
             if (ocrMax > e || icrMax > e) {
                 xre = radius * mathCos(endAngle);
                 yre = radius * mathSin(endAngle);
@@ -60437,8 +60641,8 @@ function buildPath$1(ctx, shape) {
                         var y1 = yre - it_1[1];
                         var a = 1 / mathSin(mathACos((x0 * x1 + y0 * y1) / (mathSqrt(x0 * x0 + y0 * y0) * mathSqrt(x1 * x1 + y1 * y1))) / 2);
                         var b = mathSqrt(it_1[0] * it_1[0] + it_1[1] * it_1[1]);
-                        limitedOcrMax = mathMin$3(ocrMax, (radius - b) / (a + 1));
-                        limitedIcrMax = mathMin$3(icrMax, (innerRadius - b) / (a - 1));
+                        limitedOcrMax = mathMin$4(ocrMax, (radius - b) / (a + 1));
+                        limitedIcrMax = mathMin$4(icrMax, (innerRadius - b) / (a - 1));
                     }
                 }
             }
@@ -60447,8 +60651,8 @@ function buildPath$1(ctx, shape) {
             ctx.moveTo(cx + xrs, cy + yrs);
         }
         else if (limitedOcrMax > e) {
-            var crStart = mathMin$3(ocrStart, limitedOcrMax);
-            var crEnd = mathMin$3(ocrEnd, limitedOcrMax);
+            var crStart = mathMin$4(ocrStart, limitedOcrMax);
+            var crEnd = mathMin$4(ocrEnd, limitedOcrMax);
             var ct0 = computeCornerTangents(xirs, yirs, xrs, yrs, radius, crStart, clockwise);
             var ct1 = computeCornerTangents(xre, yre, xire, yire, radius, crEnd, clockwise);
             ctx.moveTo(cx + ct0.cx + ct0.x0, cy + ct0.cy + ct0.y0);
@@ -60469,8 +60673,8 @@ function buildPath$1(ctx, shape) {
             ctx.lineTo(cx + xire, cy + yire);
         }
         else if (limitedIcrMax > e) {
-            var crStart = mathMin$3(icrStart, limitedIcrMax);
-            var crEnd = mathMin$3(icrEnd, limitedIcrMax);
+            var crStart = mathMin$4(icrStart, limitedIcrMax);
+            var crEnd = mathMin$4(icrEnd, limitedIcrMax);
             var ct0 = computeCornerTangents(xire, yire, xre, yre, innerRadius, -crEnd, clockwise);
             var ct1 = computeCornerTangents(xrs, yrs, xirs, yirs, innerRadius, -crStart, clockwise);
             ctx.lineTo(cx + ct0.cx + ct0.x0, cy + ct0.cy + ct0.y0);
@@ -61441,8 +61645,8 @@ function saveOldStyle(el) {
   transitionStore(el).oldStyle = el.style;
 }
 
-var mathMax$2 = Math.max;
-var mathMin$2 = Math.min;
+var mathMax$3 = Math.max;
+var mathMin$3 = Math.min;
 var _customShapeMap = {};
 /**
  * Extend shape with parameters
@@ -61747,11 +61951,11 @@ function clipPointsByRect(points, rect) {
   // and when element have border.
   return map$1(points, function (point) {
     var x = point[0];
-    x = mathMax$2(x, rect.x);
-    x = mathMin$2(x, rect.x + rect.width);
+    x = mathMax$3(x, rect.x);
+    x = mathMin$3(x, rect.x + rect.width);
     var y = point[1];
-    y = mathMax$2(y, rect.y);
-    y = mathMin$2(y, rect.y + rect.height);
+    y = mathMax$3(y, rect.y);
+    y = mathMin$3(y, rect.y + rect.height);
     return [x, y];
   });
 }
@@ -61760,10 +61964,10 @@ function clipPointsByRect(points, rect) {
  */
 
 function clipRectByRect(targetRect, rect) {
-  var x = mathMax$2(targetRect.x, rect.x);
-  var x2 = mathMin$2(targetRect.x + targetRect.width, rect.x + rect.width);
-  var y = mathMax$2(targetRect.y, rect.y);
-  var y2 = mathMin$2(targetRect.y + targetRect.height, rect.y + rect.height); // If the total rect is cliped, nothing, including the border,
+  var x = mathMax$3(targetRect.x, rect.x);
+  var x2 = mathMin$3(targetRect.x + targetRect.width, rect.x + rect.width);
+  var y = mathMax$3(targetRect.y, rect.y);
+  var y2 = mathMin$3(targetRect.y + targetRect.height, rect.y + rect.height); // If the total rect is cliped, nothing, including the border,
   // should be painted. So return undefined.
 
   if (x2 >= x && y2 >= y) {
@@ -73463,7 +73667,7 @@ var symbolBuildProxies = {};
 each$9(symbolCtors, function (Ctor, name) {
   symbolBuildProxies[name] = new Ctor();
 });
-var SymbolClz = Path$1.extend({
+var SymbolClz$1 = Path$1.extend({
   type: 'symbol',
   shape: {
     symbolType: '',
@@ -73539,7 +73743,7 @@ keepAspect) {
   } else if (symbolType.indexOf('path://') === 0) {
     symbolPath = makePath(symbolType.slice(7), {}, new BoundingRect$1(x, y, w, h), keepAspect ? 'center' : 'cover');
   } else {
-    symbolPath = new SymbolClz({
+    symbolPath = new SymbolClz$1({
       shape: {
         symbolType: symbolType,
         x: x,
@@ -73559,6 +73763,13 @@ keepAspect) {
   }
 
   return symbolPath;
+}
+function normalizeSymbolSize(symbolSize) {
+  if (!isArray$1(symbolSize)) {
+    symbolSize = [+symbolSize, +symbolSize];
+  }
+
+  return [symbolSize[0] || 0, symbolSize[1] || 0];
 }
 function normalizeSymbolOffset(symbolOffset, symbolSize) {
   if (symbolOffset == null) {
@@ -84221,6 +84432,123 @@ var echarts = /*#__PURE__*/Object.freeze({
   extendChartView: extendChartView
 });
 
+var LineSeriesModel =
+/** @class */
+function (_super) {
+  __extends$1(LineSeriesModel, _super);
+
+  function LineSeriesModel() {
+    var _this = _super !== null && _super.apply(this, arguments) || this;
+
+    _this.type = LineSeriesModel.type;
+    _this.hasSymbolVisual = true;
+    return _this;
+  }
+
+  LineSeriesModel.prototype.getInitialData = function (option) {
+    if (process.env.NODE_ENV !== 'production') {
+      var coordSys = option.coordinateSystem;
+
+      if (coordSys !== 'polar' && coordSys !== 'cartesian2d') {
+        throw new Error('Line not support coordinateSystem besides cartesian and polar');
+      }
+    }
+
+    return createSeriesData(null, this, {
+      useEncodeDefaulter: true
+    });
+  };
+
+  LineSeriesModel.prototype.getLegendIcon = function (opt) {
+    var group = new Group$3();
+    var line = createSymbol('line', 0, opt.itemHeight / 2, opt.itemWidth, 0, opt.lineStyle.stroke, false);
+    group.add(line);
+    line.setStyle(opt.lineStyle);
+    var visualType = this.getData().getVisual('symbol');
+    var visualRotate = this.getData().getVisual('symbolRotate');
+    var symbolType = visualType === 'none' ? 'circle' : visualType; // Symbol size is 80% when there is a line
+
+    var size = opt.itemHeight * 0.8;
+    var symbol = createSymbol(symbolType, (opt.itemWidth - size) / 2, (opt.itemHeight - size) / 2, size, size, opt.itemStyle.fill);
+    group.add(symbol);
+    symbol.setStyle(opt.itemStyle);
+    var symbolRotate = opt.iconRotate === 'inherit' ? visualRotate : opt.iconRotate || 0;
+    symbol.rotation = symbolRotate * Math.PI / 180;
+    symbol.setOrigin([opt.itemWidth / 2, opt.itemHeight / 2]);
+
+    if (symbolType.indexOf('empty') > -1) {
+      symbol.style.stroke = symbol.style.fill;
+      symbol.style.fill = '#fff';
+      symbol.style.lineWidth = 2;
+    }
+
+    return group;
+  };
+
+  LineSeriesModel.type = 'series.line';
+  LineSeriesModel.dependencies = ['grid', 'polar'];
+  LineSeriesModel.defaultOption = {
+    // zlevel: 0,
+    z: 3,
+    coordinateSystem: 'cartesian2d',
+    legendHoverLink: true,
+    clip: true,
+    label: {
+      position: 'top'
+    },
+    // itemStyle: {
+    // },
+    endLabel: {
+      show: false,
+      valueAnimation: true,
+      distance: 8
+    },
+    lineStyle: {
+      width: 2,
+      type: 'solid'
+    },
+    emphasis: {
+      scale: true
+    },
+    // areaStyle: {
+    // origin of areaStyle. Valid values:
+    // `'auto'/null/undefined`: from axisLine to data
+    // `'start'`: from min to data
+    // `'end'`: from data to max
+    // origin: 'auto'
+    // },
+    // false, 'start', 'end', 'middle'
+    step: false,
+    // Disabled if step is true
+    smooth: false,
+    smoothMonotone: null,
+    symbol: 'emptyCircle',
+    symbolSize: 4,
+    symbolRotate: null,
+    showSymbol: true,
+    // `false`: follow the label interval strategy.
+    // `true`: show all symbols.
+    // `'auto'`: If possible, show all symbols, otherwise
+    //           follow the label interval strategy.
+    showAllSymbol: 'auto',
+    // Whether to connect break point.
+    connectNulls: false,
+    // Sampling for large data. Can be: 'average', 'max', 'min', 'sum', 'lttb'.
+    sampling: 'none',
+    animationEasing: 'linear',
+    // Disable progressive
+    progressive: 0,
+    hoverLayerThreshold: Infinity,
+    universalTransition: {
+      divideShape: 'clone'
+    },
+    triggerLineEvent: false
+  };
+  return LineSeriesModel;
+}(SeriesModel$1);
+
+var LineSeries = LineSeriesModel;
+
 /**
  * @return label string. Not null/undefined
  */
@@ -84261,6 +84589,1105 @@ function getDefaultInterpolatedLabel(data, interpolatedValue) {
 
   return vals.join(' ');
 }
+
+var Symbol$1 =
+/** @class */
+function (_super) {
+  __extends$1(Symbol, _super);
+
+  function Symbol(data, idx, seriesScope, opts) {
+    var _this = _super.call(this) || this;
+
+    _this.updateData(data, idx, seriesScope, opts);
+
+    return _this;
+  }
+
+  Symbol.prototype._createSymbol = function (symbolType, data, idx, symbolSize, keepAspect) {
+    // Remove paths created before
+    this.removeAll(); // let symbolPath = createSymbol(
+    //     symbolType, -0.5, -0.5, 1, 1, color
+    // );
+    // If width/height are set too small (e.g., set to 1) on ios10
+    // and macOS Sierra, a circle stroke become a rect, no matter what
+    // the scale is set. So we set width/height as 2. See #4150.
+
+    var symbolPath = createSymbol(symbolType, -1, -1, 2, 2, null, keepAspect);
+    symbolPath.attr({
+      z2: 100,
+      culling: true,
+      scaleX: symbolSize[0] / 2,
+      scaleY: symbolSize[1] / 2
+    }); // Rewrite drift method
+
+    symbolPath.drift = driftSymbol;
+    this._symbolType = symbolType;
+    this.add(symbolPath);
+  };
+  /**
+   * Stop animation
+   * @param {boolean} toLastFrame
+   */
+
+
+  Symbol.prototype.stopSymbolAnimation = function (toLastFrame) {
+    this.childAt(0).stopAnimation(null, toLastFrame);
+  };
+
+  Symbol.prototype.getSymbolType = function () {
+    return this._symbolType;
+  };
+  /**
+   * FIXME:
+   * Caution: This method breaks the encapsulation of this module,
+   * but it indeed brings convenience. So do not use the method
+   * unless you detailedly know all the implements of `Symbol`,
+   * especially animation.
+   *
+   * Get symbol path element.
+   */
+
+
+  Symbol.prototype.getSymbolPath = function () {
+    return this.childAt(0);
+  };
+  /**
+   * Highlight symbol
+   */
+
+
+  Symbol.prototype.highlight = function () {
+    enterEmphasis(this.childAt(0));
+  };
+  /**
+   * Downplay symbol
+   */
+
+
+  Symbol.prototype.downplay = function () {
+    leaveEmphasis(this.childAt(0));
+  };
+  /**
+   * @param {number} zlevel
+   * @param {number} z
+   */
+
+
+  Symbol.prototype.setZ = function (zlevel, z) {
+    var symbolPath = this.childAt(0);
+    symbolPath.zlevel = zlevel;
+    symbolPath.z = z;
+  };
+
+  Symbol.prototype.setDraggable = function (draggable, hasCursorOption) {
+    var symbolPath = this.childAt(0);
+    symbolPath.draggable = draggable;
+    symbolPath.cursor = !hasCursorOption && draggable ? 'move' : symbolPath.cursor;
+  };
+  /**
+   * Update symbol properties
+   */
+
+
+  Symbol.prototype.updateData = function (data, idx, seriesScope, opts) {
+    this.silent = false;
+    var symbolType = data.getItemVisual(idx, 'symbol') || 'circle';
+    var seriesModel = data.hostModel;
+    var symbolSize = Symbol.getSymbolSize(data, idx);
+    var isInit = symbolType !== this._symbolType;
+    var disableAnimation = opts && opts.disableAnimation;
+
+    if (isInit) {
+      var keepAspect = data.getItemVisual(idx, 'symbolKeepAspect');
+
+      this._createSymbol(symbolType, data, idx, symbolSize, keepAspect);
+    } else {
+      var symbolPath = this.childAt(0);
+      symbolPath.silent = false;
+      var target = {
+        scaleX: symbolSize[0] / 2,
+        scaleY: symbolSize[1] / 2
+      };
+      disableAnimation ? symbolPath.attr(target) : updateProps$1(symbolPath, target, seriesModel, idx);
+      saveOldStyle(symbolPath);
+    }
+
+    this._updateCommon(data, idx, symbolSize, seriesScope, opts);
+
+    if (isInit) {
+      var symbolPath = this.childAt(0);
+
+      if (!disableAnimation) {
+        var target = {
+          scaleX: this._sizeX,
+          scaleY: this._sizeY,
+          style: {
+            // Always fadeIn. Because it has fadeOut animation when symbol is removed..
+            opacity: symbolPath.style.opacity
+          }
+        };
+        symbolPath.scaleX = symbolPath.scaleY = 0;
+        symbolPath.style.opacity = 0;
+        initProps(symbolPath, target, seriesModel, idx);
+      }
+    }
+
+    if (disableAnimation) {
+      // Must stop leave transition manually if don't call initProps or updateProps.
+      this.childAt(0).stopAnimation('leave');
+    }
+  };
+
+  Symbol.prototype._updateCommon = function (data, idx, symbolSize, seriesScope, opts) {
+    var symbolPath = this.childAt(0);
+    var seriesModel = data.hostModel;
+    var emphasisItemStyle;
+    var blurItemStyle;
+    var selectItemStyle;
+    var focus;
+    var blurScope;
+    var emphasisDisabled;
+    var labelStatesModels;
+    var hoverScale;
+    var cursorStyle;
+
+    if (seriesScope) {
+      emphasisItemStyle = seriesScope.emphasisItemStyle;
+      blurItemStyle = seriesScope.blurItemStyle;
+      selectItemStyle = seriesScope.selectItemStyle;
+      focus = seriesScope.focus;
+      blurScope = seriesScope.blurScope;
+      labelStatesModels = seriesScope.labelStatesModels;
+      hoverScale = seriesScope.hoverScale;
+      cursorStyle = seriesScope.cursorStyle;
+      emphasisDisabled = seriesScope.emphasisDisabled;
+    }
+
+    if (!seriesScope || data.hasItemOption) {
+      var itemModel = seriesScope && seriesScope.itemModel ? seriesScope.itemModel : data.getItemModel(idx);
+      var emphasisModel = itemModel.getModel('emphasis');
+      emphasisItemStyle = emphasisModel.getModel('itemStyle').getItemStyle();
+      selectItemStyle = itemModel.getModel(['select', 'itemStyle']).getItemStyle();
+      blurItemStyle = itemModel.getModel(['blur', 'itemStyle']).getItemStyle();
+      focus = emphasisModel.get('focus');
+      blurScope = emphasisModel.get('blurScope');
+      emphasisDisabled = emphasisModel.get('disabled');
+      labelStatesModels = getLabelStatesModels(itemModel);
+      hoverScale = emphasisModel.getShallow('scale');
+      cursorStyle = itemModel.getShallow('cursor');
+    }
+
+    var symbolRotate = data.getItemVisual(idx, 'symbolRotate');
+    symbolPath.attr('rotation', (symbolRotate || 0) * Math.PI / 180 || 0);
+    var symbolOffset = normalizeSymbolOffset(data.getItemVisual(idx, 'symbolOffset'), symbolSize);
+
+    if (symbolOffset) {
+      symbolPath.x = symbolOffset[0];
+      symbolPath.y = symbolOffset[1];
+    }
+
+    cursorStyle && symbolPath.attr('cursor', cursorStyle);
+    var symbolStyle = data.getItemVisual(idx, 'style');
+    var visualColor = symbolStyle.fill;
+
+    if (symbolPath instanceof ZRImage$1) {
+      var pathStyle = symbolPath.style;
+      symbolPath.useStyle(extend$2({
+        // TODO other properties like x, y ?
+        image: pathStyle.image,
+        x: pathStyle.x,
+        y: pathStyle.y,
+        width: pathStyle.width,
+        height: pathStyle.height
+      }, symbolStyle));
+    } else {
+      if (symbolPath.__isEmptyBrush) {
+        // fill and stroke will be swapped if it's empty.
+        // So we cloned a new style to avoid it affecting the original style in visual storage.
+        // TODO Better implementation. No empty logic!
+        symbolPath.useStyle(extend$2({}, symbolStyle));
+      } else {
+        symbolPath.useStyle(symbolStyle);
+      } // Disable decal because symbol scale will been applied on the decal.
+
+
+      symbolPath.style.decal = null;
+      symbolPath.setColor(visualColor, opts && opts.symbolInnerColor);
+      symbolPath.style.strokeNoScale = true;
+    }
+
+    var liftZ = data.getItemVisual(idx, 'liftZ');
+    var z2Origin = this._z2;
+
+    if (liftZ != null) {
+      if (z2Origin == null) {
+        this._z2 = symbolPath.z2;
+        symbolPath.z2 += liftZ;
+      }
+    } else if (z2Origin != null) {
+      symbolPath.z2 = z2Origin;
+      this._z2 = null;
+    }
+
+    var useNameLabel = opts && opts.useNameLabel;
+    setLabelStyle(symbolPath, labelStatesModels, {
+      labelFetcher: seriesModel,
+      labelDataIndex: idx,
+      defaultText: getLabelDefaultText,
+      inheritColor: visualColor,
+      defaultOpacity: symbolStyle.opacity
+    }); // Do not execute util needed.
+
+    function getLabelDefaultText(idx) {
+      return useNameLabel ? data.getName(idx) : getDefaultLabel(data, idx);
+    }
+
+    this._sizeX = symbolSize[0] / 2;
+    this._sizeY = symbolSize[1] / 2;
+    var emphasisState = symbolPath.ensureState('emphasis');
+    emphasisState.style = emphasisItemStyle;
+    symbolPath.ensureState('select').style = selectItemStyle;
+    symbolPath.ensureState('blur').style = blurItemStyle; // null / undefined / true means to use default strategy.
+    // 0 / false / negative number / NaN / Infinity means no scale.
+
+    var scaleRatio = hoverScale == null || hoverScale === true ? Math.max(1.1, 3 / this._sizeY) // PENDING: restrict hoverScale > 1? It seems unreasonable to scale down
+    : isFinite(hoverScale) && hoverScale > 0 ? +hoverScale : 1; // always set scale to allow resetting
+
+    emphasisState.scaleX = this._sizeX * scaleRatio;
+    emphasisState.scaleY = this._sizeY * scaleRatio;
+    this.setSymbolScale(1);
+    toggleHoverEmphasis(this, focus, blurScope, emphasisDisabled);
+  };
+
+  Symbol.prototype.setSymbolScale = function (scale) {
+    this.scaleX = this.scaleY = scale;
+  };
+
+  Symbol.prototype.fadeOut = function (cb, seriesModel, opt) {
+    var symbolPath = this.childAt(0);
+    var dataIndex = getECData(this).dataIndex;
+    var animationOpt = opt && opt.animation; // Avoid mistaken hover when fading out
+
+    this.silent = symbolPath.silent = true; // Not show text when animating
+
+    if (opt && opt.fadeLabel) {
+      var textContent = symbolPath.getTextContent();
+
+      if (textContent) {
+        removeElement(textContent, {
+          style: {
+            opacity: 0
+          }
+        }, seriesModel, {
+          dataIndex: dataIndex,
+          removeOpt: animationOpt,
+          cb: function () {
+            symbolPath.removeTextContent();
+          }
+        });
+      }
+    } else {
+      symbolPath.removeTextContent();
+    }
+
+    removeElement(symbolPath, {
+      style: {
+        opacity: 0
+      },
+      scaleX: 0,
+      scaleY: 0
+    }, seriesModel, {
+      dataIndex: dataIndex,
+      cb: cb,
+      removeOpt: animationOpt
+    });
+  };
+
+  Symbol.getSymbolSize = function (data, idx) {
+    return normalizeSymbolSize(data.getItemVisual(idx, 'symbolSize'));
+  };
+
+  return Symbol;
+}(Group$3);
+
+function driftSymbol(dx, dy) {
+  this.parent.drift(dx, dy);
+}
+
+var SymbolClz = Symbol$1;
+
+function symbolNeedsDraw(data, point, idx, opt) {
+  return point && !isNaN(point[0]) && !isNaN(point[1]) && !(opt.isIgnore && opt.isIgnore(idx)) // We do not set clipShape on group, because it will cut part of
+  // the symbol element shape. We use the same clip shape here as
+  // the line clip.
+  && !(opt.clipShape && !opt.clipShape.contain(point[0], point[1])) && data.getItemVisual(idx, 'symbol') !== 'none';
+}
+
+function normalizeUpdateOpt(opt) {
+  if (opt != null && !isObject$3(opt)) {
+    opt = {
+      isIgnore: opt
+    };
+  }
+
+  return opt || {};
+}
+
+function makeSeriesScope(data) {
+  var seriesModel = data.hostModel;
+  var emphasisModel = seriesModel.getModel('emphasis');
+  return {
+    emphasisItemStyle: emphasisModel.getModel('itemStyle').getItemStyle(),
+    blurItemStyle: seriesModel.getModel(['blur', 'itemStyle']).getItemStyle(),
+    selectItemStyle: seriesModel.getModel(['select', 'itemStyle']).getItemStyle(),
+    focus: emphasisModel.get('focus'),
+    blurScope: emphasisModel.get('blurScope'),
+    emphasisDisabled: emphasisModel.get('disabled'),
+    hoverScale: emphasisModel.get('scale'),
+    labelStatesModels: getLabelStatesModels(seriesModel),
+    cursorStyle: seriesModel.get('cursor')
+  };
+}
+
+var SymbolDraw =
+/** @class */
+function () {
+  function SymbolDraw(SymbolCtor) {
+    this.group = new Group$3();
+    this._SymbolCtor = SymbolCtor || SymbolClz;
+  }
+  /**
+   * Update symbols draw by new data
+   */
+
+
+  SymbolDraw.prototype.updateData = function (data, opt) {
+    // Remove progressive els.
+    this._progressiveEls = null;
+    opt = normalizeUpdateOpt(opt);
+    var group = this.group;
+    var seriesModel = data.hostModel;
+    var oldData = this._data;
+    var SymbolCtor = this._SymbolCtor;
+    var disableAnimation = opt.disableAnimation;
+    var seriesScope = makeSeriesScope(data);
+    var symbolUpdateOpt = {
+      disableAnimation: disableAnimation
+    };
+
+    var getSymbolPoint = opt.getSymbolPoint || function (idx) {
+      return data.getItemLayout(idx);
+    }; // There is no oldLineData only when first rendering or switching from
+    // stream mode to normal mode, where previous elements should be removed.
+
+
+    if (!oldData) {
+      group.removeAll();
+    }
+
+    data.diff(oldData).add(function (newIdx) {
+      var point = getSymbolPoint(newIdx);
+
+      if (symbolNeedsDraw(data, point, newIdx, opt)) {
+        var symbolEl = new SymbolCtor(data, newIdx, seriesScope, symbolUpdateOpt);
+        symbolEl.setPosition(point);
+        data.setItemGraphicEl(newIdx, symbolEl);
+        group.add(symbolEl);
+      }
+    }).update(function (newIdx, oldIdx) {
+      var symbolEl = oldData.getItemGraphicEl(oldIdx);
+      var point = getSymbolPoint(newIdx);
+
+      if (!symbolNeedsDraw(data, point, newIdx, opt)) {
+        group.remove(symbolEl);
+        return;
+      }
+
+      var newSymbolType = data.getItemVisual(newIdx, 'symbol') || 'circle';
+      var oldSymbolType = symbolEl && symbolEl.getSymbolType && symbolEl.getSymbolType();
+
+      if (!symbolEl // Create a new if symbol type changed.
+      || oldSymbolType && oldSymbolType !== newSymbolType) {
+        group.remove(symbolEl);
+        symbolEl = new SymbolCtor(data, newIdx, seriesScope, symbolUpdateOpt);
+        symbolEl.setPosition(point);
+      } else {
+        symbolEl.updateData(data, newIdx, seriesScope, symbolUpdateOpt);
+        var target = {
+          x: point[0],
+          y: point[1]
+        };
+        disableAnimation ? symbolEl.attr(target) : updateProps$1(symbolEl, target, seriesModel);
+      } // Add back
+
+
+      group.add(symbolEl);
+      data.setItemGraphicEl(newIdx, symbolEl);
+    }).remove(function (oldIdx) {
+      var el = oldData.getItemGraphicEl(oldIdx);
+      el && el.fadeOut(function () {
+        group.remove(el);
+      }, seriesModel);
+    }).execute();
+    this._getSymbolPoint = getSymbolPoint;
+    this._data = data;
+  };
+
+  SymbolDraw.prototype.updateLayout = function () {
+    var _this = this;
+
+    var data = this._data;
+
+    if (data) {
+      // Not use animation
+      data.eachItemGraphicEl(function (el, idx) {
+        var point = _this._getSymbolPoint(idx);
+
+        el.setPosition(point);
+        el.markRedraw();
+      });
+    }
+  };
+
+  SymbolDraw.prototype.incrementalPrepareUpdate = function (data) {
+    this._seriesScope = makeSeriesScope(data);
+    this._data = null;
+    this.group.removeAll();
+  };
+  /**
+   * Update symbols draw by new data
+   */
+
+  SymbolDraw.prototype.incrementalUpdate = function (taskParams, data, opt) {
+    // Clear
+    this._progressiveEls = [];
+    opt = normalizeUpdateOpt(opt);
+
+    function updateIncrementalAndHover(el) {
+      if (!el.isGroup) {
+        el.incremental = true;
+        el.ensureState('emphasis').hoverLayer = true;
+      }
+    }
+
+    for (var idx = taskParams.start; idx < taskParams.end; idx++) {
+      var point = data.getItemLayout(idx);
+
+      if (symbolNeedsDraw(data, point, idx, opt)) {
+        var el = new this._SymbolCtor(data, idx, this._seriesScope);
+        el.traverse(updateIncrementalAndHover);
+        el.setPosition(point);
+        this.group.add(el);
+        data.setItemGraphicEl(idx, el);
+
+        this._progressiveEls.push(el);
+      }
+    }
+  };
+
+  SymbolDraw.prototype.eachRendered = function (cb) {
+    traverseElements(this._progressiveEls || this.group, cb);
+  };
+
+  SymbolDraw.prototype.remove = function (enableAnimation) {
+    var group = this.group;
+    var data = this._data; // Incremental model do not have this._data.
+
+    if (data && enableAnimation) {
+      data.eachItemGraphicEl(function (el) {
+        el.fadeOut(function () {
+          group.remove(el);
+        }, data.hostModel);
+      });
+    } else {
+      group.removeAll();
+    }
+  };
+  return SymbolDraw;
+}();
+
+var SymbolDraw$1 = SymbolDraw;
+
+function prepareDataCoordInfo(coordSys, data, valueOrigin) {
+  var baseAxis = coordSys.getBaseAxis();
+  var valueAxis = coordSys.getOtherAxis(baseAxis);
+  var valueStart = getValueStart(valueAxis, valueOrigin);
+  var baseAxisDim = baseAxis.dim;
+  var valueAxisDim = valueAxis.dim;
+  var valueDim = data.mapDimension(valueAxisDim);
+  var baseDim = data.mapDimension(baseAxisDim);
+  var baseDataOffset = valueAxisDim === 'x' || valueAxisDim === 'radius' ? 1 : 0;
+  var dims = map$1(coordSys.dimensions, function (coordDim) {
+    return data.mapDimension(coordDim);
+  });
+  var stacked = false;
+  var stackResultDim = data.getCalculationInfo('stackResultDimension');
+
+  if (isDimensionStacked(data, dims[0]
+  /*, dims[1]*/
+  )) {
+    // jshint ignore:line
+    stacked = true;
+    dims[0] = stackResultDim;
+  }
+
+  if (isDimensionStacked(data, dims[1]
+  /*, dims[0]*/
+  )) {
+    // jshint ignore:line
+    stacked = true;
+    dims[1] = stackResultDim;
+  }
+
+  return {
+    dataDimsForPoint: dims,
+    valueStart: valueStart,
+    valueAxisDim: valueAxisDim,
+    baseAxisDim: baseAxisDim,
+    stacked: !!stacked,
+    valueDim: valueDim,
+    baseDim: baseDim,
+    baseDataOffset: baseDataOffset,
+    stackedOverDimension: data.getCalculationInfo('stackedOverDimension')
+  };
+}
+
+function getValueStart(valueAxis, valueOrigin) {
+  var valueStart = 0;
+  var extent = valueAxis.scale.getExtent();
+
+  if (valueOrigin === 'start') {
+    valueStart = extent[0];
+  } else if (valueOrigin === 'end') {
+    valueStart = extent[1];
+  } // If origin is specified as a number, use it as
+  // valueStart directly
+  else if (isNumber(valueOrigin) && !isNaN(valueOrigin)) {
+      valueStart = valueOrigin;
+    } // auto
+    else {
+        // Both positive
+        if (extent[0] > 0) {
+          valueStart = extent[0];
+        } // Both negative
+        else if (extent[1] < 0) {
+            valueStart = extent[1];
+          } // If is one positive, and one negative, onZero shall be true
+
+      }
+
+  return valueStart;
+}
+
+function getStackedOnPoint(dataCoordInfo, coordSys, data, idx) {
+  var value = NaN;
+
+  if (dataCoordInfo.stacked) {
+    value = data.get(data.getCalculationInfo('stackedOverDimension'), idx);
+  }
+
+  if (isNaN(value)) {
+    value = dataCoordInfo.valueStart;
+  }
+
+  var baseDataOffset = dataCoordInfo.baseDataOffset;
+  var stackedData = [];
+  stackedData[baseDataOffset] = data.get(dataCoordInfo.baseDim, idx);
+  stackedData[1 - baseDataOffset] = value;
+  return coordSys.dataToPoint(stackedData);
+}
+
+function diffData(oldData, newData) {
+  var diffResult = [];
+  newData.diff(oldData).add(function (idx) {
+    diffResult.push({
+      cmd: '+',
+      idx: idx
+    });
+  }).update(function (newIdx, oldIdx) {
+    diffResult.push({
+      cmd: '=',
+      idx: oldIdx,
+      idx1: newIdx
+    });
+  }).remove(function (idx) {
+    diffResult.push({
+      cmd: '-',
+      idx: idx
+    });
+  }).execute();
+  return diffResult;
+}
+
+function lineAnimationDiff(oldData, newData, oldStackedOnPoints, newStackedOnPoints, oldCoordSys, newCoordSys, oldValueOrigin, newValueOrigin) {
+  var diff = diffData(oldData, newData); // let newIdList = newData.mapArray(newData.getId);
+  // let oldIdList = oldData.mapArray(oldData.getId);
+  // convertToIntId(newIdList, oldIdList);
+  // // FIXME One data ?
+  // diff = arrayDiff(oldIdList, newIdList);
+
+  var currPoints = [];
+  var nextPoints = []; // Points for stacking base line
+
+  var currStackedPoints = [];
+  var nextStackedPoints = [];
+  var status = [];
+  var sortedIndices = [];
+  var rawIndices = [];
+  var newDataOldCoordInfo = prepareDataCoordInfo(oldCoordSys, newData, oldValueOrigin); // const oldDataNewCoordInfo = prepareDataCoordInfo(newCoordSys, oldData, newValueOrigin);
+
+  var oldPoints = oldData.getLayout('points') || [];
+  var newPoints = newData.getLayout('points') || [];
+
+  for (var i = 0; i < diff.length; i++) {
+    var diffItem = diff[i];
+    var pointAdded = true;
+    var oldIdx2 = void 0;
+    var newIdx2 = void 0; // FIXME, animation is not so perfect when dataZoom window moves fast
+    // Which is in case remvoing or add more than one data in the tail or head
+
+    switch (diffItem.cmd) {
+      case '=':
+        oldIdx2 = diffItem.idx * 2;
+        newIdx2 = diffItem.idx1 * 2;
+        var currentX = oldPoints[oldIdx2];
+        var currentY = oldPoints[oldIdx2 + 1];
+        var nextX = newPoints[newIdx2];
+        var nextY = newPoints[newIdx2 + 1]; // If previous data is NaN, use next point directly
+
+        if (isNaN(currentX) || isNaN(currentY)) {
+          currentX = nextX;
+          currentY = nextY;
+        }
+
+        currPoints.push(currentX, currentY);
+        nextPoints.push(nextX, nextY);
+        currStackedPoints.push(oldStackedOnPoints[oldIdx2], oldStackedOnPoints[oldIdx2 + 1]);
+        nextStackedPoints.push(newStackedOnPoints[newIdx2], newStackedOnPoints[newIdx2 + 1]);
+        rawIndices.push(newData.getRawIndex(diffItem.idx1));
+        break;
+
+      case '+':
+        var newIdx = diffItem.idx;
+        var newDataDimsForPoint = newDataOldCoordInfo.dataDimsForPoint;
+        var oldPt = oldCoordSys.dataToPoint([newData.get(newDataDimsForPoint[0], newIdx), newData.get(newDataDimsForPoint[1], newIdx)]);
+        newIdx2 = newIdx * 2;
+        currPoints.push(oldPt[0], oldPt[1]);
+        nextPoints.push(newPoints[newIdx2], newPoints[newIdx2 + 1]);
+        var stackedOnPoint = getStackedOnPoint(newDataOldCoordInfo, oldCoordSys, newData, newIdx);
+        currStackedPoints.push(stackedOnPoint[0], stackedOnPoint[1]);
+        nextStackedPoints.push(newStackedOnPoints[newIdx2], newStackedOnPoints[newIdx2 + 1]);
+        rawIndices.push(newData.getRawIndex(newIdx));
+        break;
+
+      case '-':
+        pointAdded = false;
+    } // Original indices
+
+
+    if (pointAdded) {
+      status.push(diffItem);
+      sortedIndices.push(sortedIndices.length);
+    }
+  } // Diff result may be crossed if all items are changed
+  // Sort by data index
+
+
+  sortedIndices.sort(function (a, b) {
+    return rawIndices[a] - rawIndices[b];
+  });
+  var len = currPoints.length;
+  var sortedCurrPoints = createFloat32Array(len);
+  var sortedNextPoints = createFloat32Array(len);
+  var sortedCurrStackedPoints = createFloat32Array(len);
+  var sortedNextStackedPoints = createFloat32Array(len);
+  var sortedStatus = [];
+
+  for (var i = 0; i < sortedIndices.length; i++) {
+    var idx = sortedIndices[i];
+    var i2 = i * 2;
+    var idx2 = idx * 2;
+    sortedCurrPoints[i2] = currPoints[idx2];
+    sortedCurrPoints[i2 + 1] = currPoints[idx2 + 1];
+    sortedNextPoints[i2] = nextPoints[idx2];
+    sortedNextPoints[i2 + 1] = nextPoints[idx2 + 1];
+    sortedCurrStackedPoints[i2] = currStackedPoints[idx2];
+    sortedCurrStackedPoints[i2 + 1] = currStackedPoints[idx2 + 1];
+    sortedNextStackedPoints[i2] = nextStackedPoints[idx2];
+    sortedNextStackedPoints[i2 + 1] = nextStackedPoints[idx2 + 1];
+    sortedStatus[i] = status[idx];
+  }
+
+  return {
+    current: sortedCurrPoints,
+    next: sortedNextPoints,
+    stackedOnCurrent: sortedCurrStackedPoints,
+    stackedOnNext: sortedNextStackedPoints,
+    status: sortedStatus
+  };
+}
+
+var mathMin$2 = Math.min;
+var mathMax$2 = Math.max;
+
+function isPointNull$1(x, y) {
+  return isNaN(x) || isNaN(y);
+}
+/**
+ * Draw smoothed line in non-monotone, in may cause undesired curve in extreme
+ * situations. This should be used when points are non-monotone neither in x or
+ * y dimension.
+ */
+
+
+function drawSegment(ctx, points, start, segLen, allLen, dir, smooth, smoothMonotone, connectNulls) {
+  var prevX;
+  var prevY;
+  var cpx0;
+  var cpy0;
+  var cpx1;
+  var cpy1;
+  var idx = start;
+  var k = 0;
+
+  for (; k < segLen; k++) {
+    var x = points[idx * 2];
+    var y = points[idx * 2 + 1];
+
+    if (idx >= allLen || idx < 0) {
+      break;
+    }
+
+    if (isPointNull$1(x, y)) {
+      if (connectNulls) {
+        idx += dir;
+        continue;
+      }
+
+      break;
+    }
+
+    if (idx === start) {
+      ctx[dir > 0 ? 'moveTo' : 'lineTo'](x, y);
+      cpx0 = x;
+      cpy0 = y;
+    } else {
+      var dx = x - prevX;
+      var dy = y - prevY; // Ignore tiny segment.
+
+      if (dx * dx + dy * dy < 0.5) {
+        idx += dir;
+        continue;
+      }
+
+      if (smooth > 0) {
+        var nextIdx = idx + dir;
+        var nextX = points[nextIdx * 2];
+        var nextY = points[nextIdx * 2 + 1]; // Ignore duplicate point
+
+        while (nextX === x && nextY === y && k < segLen) {
+          k++;
+          nextIdx += dir;
+          idx += dir;
+          nextX = points[nextIdx * 2];
+          nextY = points[nextIdx * 2 + 1];
+          x = points[idx * 2];
+          y = points[idx * 2 + 1];
+          dx = x - prevX;
+          dy = y - prevY;
+        }
+
+        var tmpK = k + 1;
+
+        if (connectNulls) {
+          // Find next point not null
+          while (isPointNull$1(nextX, nextY) && tmpK < segLen) {
+            tmpK++;
+            nextIdx += dir;
+            nextX = points[nextIdx * 2];
+            nextY = points[nextIdx * 2 + 1];
+          }
+        }
+
+        var ratioNextSeg = 0.5;
+        var vx = 0;
+        var vy = 0;
+        var nextCpx0 = void 0;
+        var nextCpy0 = void 0; // Is last point
+
+        if (tmpK >= segLen || isPointNull$1(nextX, nextY)) {
+          cpx1 = x;
+          cpy1 = y;
+        } else {
+          vx = nextX - prevX;
+          vy = nextY - prevY;
+          var dx0 = x - prevX;
+          var dx1 = nextX - x;
+          var dy0 = y - prevY;
+          var dy1 = nextY - y;
+          var lenPrevSeg = void 0;
+          var lenNextSeg = void 0;
+
+          if (smoothMonotone === 'x') {
+            lenPrevSeg = Math.abs(dx0);
+            lenNextSeg = Math.abs(dx1);
+            var dir_1 = vx > 0 ? 1 : -1;
+            cpx1 = x - dir_1 * lenPrevSeg * smooth;
+            cpy1 = y;
+            nextCpx0 = x + dir_1 * lenNextSeg * smooth;
+            nextCpy0 = y;
+          } else if (smoothMonotone === 'y') {
+            lenPrevSeg = Math.abs(dy0);
+            lenNextSeg = Math.abs(dy1);
+            var dir_2 = vy > 0 ? 1 : -1;
+            cpx1 = x;
+            cpy1 = y - dir_2 * lenPrevSeg * smooth;
+            nextCpx0 = x;
+            nextCpy0 = y + dir_2 * lenNextSeg * smooth;
+          } else {
+            lenPrevSeg = Math.sqrt(dx0 * dx0 + dy0 * dy0);
+            lenNextSeg = Math.sqrt(dx1 * dx1 + dy1 * dy1); // Use ratio of seg length
+
+            ratioNextSeg = lenNextSeg / (lenNextSeg + lenPrevSeg);
+            cpx1 = x - vx * smooth * (1 - ratioNextSeg);
+            cpy1 = y - vy * smooth * (1 - ratioNextSeg); // cp0 of next segment
+
+            nextCpx0 = x + vx * smooth * ratioNextSeg;
+            nextCpy0 = y + vy * smooth * ratioNextSeg; // Smooth constraint between point and next point.
+            // Avoid exceeding extreme after smoothing.
+
+            nextCpx0 = mathMin$2(nextCpx0, mathMax$2(nextX, x));
+            nextCpy0 = mathMin$2(nextCpy0, mathMax$2(nextY, y));
+            nextCpx0 = mathMax$2(nextCpx0, mathMin$2(nextX, x));
+            nextCpy0 = mathMax$2(nextCpy0, mathMin$2(nextY, y)); // Reclaculate cp1 based on the adjusted cp0 of next seg.
+
+            vx = nextCpx0 - x;
+            vy = nextCpy0 - y;
+            cpx1 = x - vx * lenPrevSeg / lenNextSeg;
+            cpy1 = y - vy * lenPrevSeg / lenNextSeg; // Smooth constraint between point and prev point.
+            // Avoid exceeding extreme after smoothing.
+
+            cpx1 = mathMin$2(cpx1, mathMax$2(prevX, x));
+            cpy1 = mathMin$2(cpy1, mathMax$2(prevY, y));
+            cpx1 = mathMax$2(cpx1, mathMin$2(prevX, x));
+            cpy1 = mathMax$2(cpy1, mathMin$2(prevY, y)); // Adjust next cp0 again.
+
+            vx = x - cpx1;
+            vy = y - cpy1;
+            nextCpx0 = x + vx * lenNextSeg / lenPrevSeg;
+            nextCpy0 = y + vy * lenNextSeg / lenPrevSeg;
+          }
+        }
+
+        ctx.bezierCurveTo(cpx0, cpy0, cpx1, cpy1, x, y);
+        cpx0 = nextCpx0;
+        cpy0 = nextCpy0;
+      } else {
+        ctx.lineTo(x, y);
+      }
+    }
+
+    prevX = x;
+    prevY = y;
+    idx += dir;
+  }
+
+  return k;
+}
+
+var ECPolylineShape =
+/** @class */
+function () {
+  function ECPolylineShape() {
+    this.smooth = 0;
+    this.smoothConstraint = true;
+  }
+
+  return ECPolylineShape;
+}();
+
+var ECPolyline =
+/** @class */
+function (_super) {
+  __extends$1(ECPolyline, _super);
+
+  function ECPolyline(opts) {
+    var _this = _super.call(this, opts) || this;
+
+    _this.type = 'ec-polyline';
+    return _this;
+  }
+
+  ECPolyline.prototype.getDefaultStyle = function () {
+    return {
+      stroke: '#000',
+      fill: null
+    };
+  };
+
+  ECPolyline.prototype.getDefaultShape = function () {
+    return new ECPolylineShape();
+  };
+
+  ECPolyline.prototype.buildPath = function (ctx, shape) {
+    var points = shape.points;
+    var i = 0;
+    var len = points.length / 2; // const result = getBoundingBox(points, shape.smoothConstraint);
+
+    if (shape.connectNulls) {
+      // Must remove first and last null values avoid draw error in polygon
+      for (; len > 0; len--) {
+        if (!isPointNull$1(points[len * 2 - 2], points[len * 2 - 1])) {
+          break;
+        }
+      }
+
+      for (; i < len; i++) {
+        if (!isPointNull$1(points[i * 2], points[i * 2 + 1])) {
+          break;
+        }
+      }
+    }
+
+    while (i < len) {
+      i += drawSegment(ctx, points, i, len, len, 1, shape.smooth, shape.smoothMonotone, shape.connectNulls) + 1;
+    }
+  };
+
+  ECPolyline.prototype.getPointOn = function (xOrY, dim) {
+    if (!this.path) {
+      this.createPathProxy();
+      this.buildPath(this.path, this.shape);
+    }
+
+    var path = this.path;
+    var data = path.data;
+    var CMD = PathProxy$1.CMD;
+    var x0;
+    var y0;
+    var isDimX = dim === 'x';
+    var roots = [];
+
+    for (var i = 0; i < data.length;) {
+      var cmd = data[i++];
+      var x = void 0;
+      var y = void 0;
+      var x2 = void 0;
+      var y2 = void 0;
+      var x3 = void 0;
+      var y3 = void 0;
+      var t = void 0;
+
+      switch (cmd) {
+        case CMD.M:
+          x0 = data[i++];
+          y0 = data[i++];
+          break;
+
+        case CMD.L:
+          x = data[i++];
+          y = data[i++];
+          t = isDimX ? (xOrY - x0) / (x - x0) : (xOrY - y0) / (y - y0);
+
+          if (t <= 1 && t >= 0) {
+            var val = isDimX ? (y - y0) * t + y0 : (x - x0) * t + x0;
+            return isDimX ? [xOrY, val] : [val, xOrY];
+          }
+
+          x0 = x;
+          y0 = y;
+          break;
+
+        case CMD.C:
+          x = data[i++];
+          y = data[i++];
+          x2 = data[i++];
+          y2 = data[i++];
+          x3 = data[i++];
+          y3 = data[i++];
+          var nRoot = isDimX ? cubicRootAt(x0, x, x2, x3, xOrY, roots) : cubicRootAt(y0, y, y2, y3, xOrY, roots);
+
+          if (nRoot > 0) {
+            for (var i_1 = 0; i_1 < nRoot; i_1++) {
+              var t_1 = roots[i_1];
+
+              if (t_1 <= 1 && t_1 >= 0) {
+                var val = isDimX ? cubicAt(y0, y, y2, y3, t_1) : cubicAt(x0, x, x2, x3, t_1);
+                return isDimX ? [xOrY, val] : [val, xOrY];
+              }
+            }
+          }
+
+          x0 = x3;
+          y0 = y3;
+          break;
+      }
+    }
+  };
+
+  return ECPolyline;
+}(Path$1);
+
+var ECPolygonShape =
+/** @class */
+function (_super) {
+  __extends$1(ECPolygonShape, _super);
+
+  function ECPolygonShape() {
+    return _super !== null && _super.apply(this, arguments) || this;
+  }
+
+  return ECPolygonShape;
+}(ECPolylineShape);
+
+var ECPolygon =
+/** @class */
+function (_super) {
+  __extends$1(ECPolygon, _super);
+
+  function ECPolygon(opts) {
+    var _this = _super.call(this, opts) || this;
+
+    _this.type = 'ec-polygon';
+    return _this;
+  }
+
+  ECPolygon.prototype.getDefaultShape = function () {
+    return new ECPolygonShape();
+  };
+
+  ECPolygon.prototype.buildPath = function (ctx, shape) {
+    var points = shape.points;
+    var stackedOnPoints = shape.stackedOnPoints;
+    var i = 0;
+    var len = points.length / 2;
+    var smoothMonotone = shape.smoothMonotone;
+
+    if (shape.connectNulls) {
+      // Must remove first and last null values avoid draw error in polygon
+      for (; len > 0; len--) {
+        if (!isPointNull$1(points[len * 2 - 2], points[len * 2 - 1])) {
+          break;
+        }
+      }
+
+      for (; i < len; i++) {
+        if (!isPointNull$1(points[i * 2], points[i * 2 + 1])) {
+          break;
+        }
+      }
+    }
+
+    while (i < len) {
+      var k = drawSegment(ctx, points, i, len, len, 1, shape.smooth, smoothMonotone, shape.connectNulls);
+      drawSegment(ctx, stackedOnPoints, i + k - 1, k, len, -1, shape.stackedOnSmooth, smoothMonotone, shape.connectNulls);
+      i += k + 1;
+      ctx.closePath();
+    }
+  };
+
+  return ECPolygon;
+}(Path$1);
 
 function createGridClipPath(cartesian, hasAnimation, seriesModel, done, during) {
   var rect = cartesian.getArea();
@@ -84416,6 +85843,1294 @@ function isCoordinateSystemType(coordSys, type) {
   return coordSys.type === type;
 }
 
+function isPointsSame(points1, points2) {
+  if (points1.length !== points2.length) {
+    return;
+  }
+
+  for (var i = 0; i < points1.length; i++) {
+    if (points1[i] !== points2[i]) {
+      return;
+    }
+  }
+
+  return true;
+}
+
+function bboxFromPoints(points) {
+  var minX = Infinity;
+  var minY = Infinity;
+  var maxX = -Infinity;
+  var maxY = -Infinity;
+
+  for (var i = 0; i < points.length;) {
+    var x = points[i++];
+    var y = points[i++];
+
+    if (!isNaN(x)) {
+      minX = Math.min(x, minX);
+      maxX = Math.max(x, maxX);
+    }
+
+    if (!isNaN(y)) {
+      minY = Math.min(y, minY);
+      maxY = Math.max(y, maxY);
+    }
+  }
+
+  return [[minX, minY], [maxX, maxY]];
+}
+
+function getBoundingDiff(points1, points2) {
+  var _a = bboxFromPoints(points1),
+      min1 = _a[0],
+      max1 = _a[1];
+
+  var _b = bboxFromPoints(points2),
+      min2 = _b[0],
+      max2 = _b[1]; // Get a max value from each corner of two boundings.
+
+
+  return Math.max(Math.abs(min1[0] - min2[0]), Math.abs(min1[1] - min2[1]), Math.abs(max1[0] - max2[0]), Math.abs(max1[1] - max2[1]));
+}
+
+function getSmooth(smooth) {
+  return isNumber(smooth) ? smooth : smooth ? 0.5 : 0;
+}
+
+function getStackedOnPoints(coordSys, data, dataCoordInfo) {
+  if (!dataCoordInfo.valueDim) {
+    return [];
+  }
+
+  var len = data.count();
+  var points = createFloat32Array(len * 2);
+
+  for (var idx = 0; idx < len; idx++) {
+    var pt = getStackedOnPoint(dataCoordInfo, coordSys, data, idx);
+    points[idx * 2] = pt[0];
+    points[idx * 2 + 1] = pt[1];
+  }
+
+  return points;
+}
+
+function turnPointsIntoStep(points, coordSys, stepTurnAt, connectNulls) {
+  var baseAxis = coordSys.getBaseAxis();
+  var baseIndex = baseAxis.dim === 'x' || baseAxis.dim === 'radius' ? 0 : 1;
+  var stepPoints = [];
+  var i = 0;
+  var stepPt = [];
+  var pt = [];
+  var nextPt = [];
+  var filteredPoints = [];
+
+  if (connectNulls) {
+    for (i = 0; i < points.length; i += 2) {
+      if (!isNaN(points[i]) && !isNaN(points[i + 1])) {
+        filteredPoints.push(points[i], points[i + 1]);
+      }
+    }
+
+    points = filteredPoints;
+  }
+
+  for (i = 0; i < points.length - 2; i += 2) {
+    nextPt[0] = points[i + 2];
+    nextPt[1] = points[i + 3];
+    pt[0] = points[i];
+    pt[1] = points[i + 1];
+    stepPoints.push(pt[0], pt[1]);
+
+    switch (stepTurnAt) {
+      case 'end':
+        stepPt[baseIndex] = nextPt[baseIndex];
+        stepPt[1 - baseIndex] = pt[1 - baseIndex];
+        stepPoints.push(stepPt[0], stepPt[1]);
+        break;
+
+      case 'middle':
+        var middle = (pt[baseIndex] + nextPt[baseIndex]) / 2;
+        var stepPt2 = [];
+        stepPt[baseIndex] = stepPt2[baseIndex] = middle;
+        stepPt[1 - baseIndex] = pt[1 - baseIndex];
+        stepPt2[1 - baseIndex] = nextPt[1 - baseIndex];
+        stepPoints.push(stepPt[0], stepPt[1]);
+        stepPoints.push(stepPt2[0], stepPt2[1]);
+        break;
+
+      default:
+        // default is start
+        stepPt[baseIndex] = pt[baseIndex];
+        stepPt[1 - baseIndex] = nextPt[1 - baseIndex];
+        stepPoints.push(stepPt[0], stepPt[1]);
+    }
+  } // Last points
+
+
+  stepPoints.push(points[i++], points[i++]);
+  return stepPoints;
+}
+/**
+ * Clip color stops to edge. Avoid creating too large gradients.
+ * Which may lead to blurry when GPU acceleration is enabled. See #15680
+ *
+ * The stops has been sorted from small to large.
+ */
+
+
+function clipColorStops(colorStops, maxSize) {
+  var newColorStops = [];
+  var len = colorStops.length; // coord will always < 0 in prevOutOfRangeColorStop.
+
+  var prevOutOfRangeColorStop;
+  var prevInRangeColorStop;
+
+  function lerpStop(stop0, stop1, clippedCoord) {
+    var coord0 = stop0.coord;
+    var p = (clippedCoord - coord0) / (stop1.coord - coord0);
+    var color = lerp(p, [stop0.color, stop1.color]);
+    return {
+      coord: clippedCoord,
+      color: color
+    };
+  }
+
+  for (var i = 0; i < len; i++) {
+    var stop_1 = colorStops[i];
+    var coord = stop_1.coord;
+
+    if (coord < 0) {
+      prevOutOfRangeColorStop = stop_1;
+    } else if (coord > maxSize) {
+      if (prevInRangeColorStop) {
+        newColorStops.push(lerpStop(prevInRangeColorStop, stop_1, maxSize));
+      } else if (prevOutOfRangeColorStop) {
+        // If there are two stops and coord range is between these two stops
+        newColorStops.push(lerpStop(prevOutOfRangeColorStop, stop_1, 0), lerpStop(prevOutOfRangeColorStop, stop_1, maxSize));
+      } // All following stop will be out of range. So just ignore them.
+
+
+      break;
+    } else {
+      if (prevOutOfRangeColorStop) {
+        newColorStops.push(lerpStop(prevOutOfRangeColorStop, stop_1, 0)); // Reset
+
+        prevOutOfRangeColorStop = null;
+      }
+
+      newColorStops.push(stop_1);
+      prevInRangeColorStop = stop_1;
+    }
+  }
+
+  return newColorStops;
+}
+
+function getVisualGradient(data, coordSys, api) {
+  var visualMetaList = data.getVisual('visualMeta');
+
+  if (!visualMetaList || !visualMetaList.length || !data.count()) {
+    // When data.count() is 0, gradient range can not be calculated.
+    return;
+  }
+
+  if (coordSys.type !== 'cartesian2d') {
+    if (process.env.NODE_ENV !== 'production') {
+      console.warn('Visual map on line style is only supported on cartesian2d.');
+    }
+
+    return;
+  }
+
+  var coordDim;
+  var visualMeta;
+
+  for (var i = visualMetaList.length - 1; i >= 0; i--) {
+    var dimInfo = data.getDimensionInfo(visualMetaList[i].dimension);
+    coordDim = dimInfo && dimInfo.coordDim; // Can only be x or y
+
+    if (coordDim === 'x' || coordDim === 'y') {
+      visualMeta = visualMetaList[i];
+      break;
+    }
+  }
+
+  if (!visualMeta) {
+    if (process.env.NODE_ENV !== 'production') {
+      console.warn('Visual map on line style only support x or y dimension.');
+    }
+
+    return;
+  } // If the area to be rendered is bigger than area defined by LinearGradient,
+  // the canvas spec prescribes that the color of the first stop and the last
+  // stop should be used. But if two stops are added at offset 0, in effect
+  // browsers use the color of the second stop to render area outside
+  // LinearGradient. So we can only infinitesimally extend area defined in
+  // LinearGradient to render `outerColors`.
+
+
+  var axis = coordSys.getAxis(coordDim); // dataToCoord mapping may not be linear, but must be monotonic.
+
+  var colorStops = map$1(visualMeta.stops, function (stop) {
+    // offset will be calculated later.
+    return {
+      coord: axis.toGlobalCoord(axis.dataToCoord(stop.value)),
+      color: stop.color
+    };
+  });
+  var stopLen = colorStops.length;
+  var outerColors = visualMeta.outerColors.slice();
+
+  if (stopLen && colorStops[0].coord > colorStops[stopLen - 1].coord) {
+    colorStops.reverse();
+    outerColors.reverse();
+  }
+
+  var colorStopsInRange = clipColorStops(colorStops, coordDim === 'x' ? api.getWidth() : api.getHeight());
+  var inRangeStopLen = colorStopsInRange.length;
+
+  if (!inRangeStopLen && stopLen) {
+    // All stops are out of range. All will be the same color.
+    return colorStops[0].coord < 0 ? outerColors[1] ? outerColors[1] : colorStops[stopLen - 1].color : outerColors[0] ? outerColors[0] : colorStops[0].color;
+  }
+
+  var tinyExtent = 10; // Arbitrary value: 10px
+
+  var minCoord = colorStopsInRange[0].coord - tinyExtent;
+  var maxCoord = colorStopsInRange[inRangeStopLen - 1].coord + tinyExtent;
+  var coordSpan = maxCoord - minCoord;
+
+  if (coordSpan < 1e-3) {
+    return 'transparent';
+  }
+
+  each$9(colorStopsInRange, function (stop) {
+    stop.offset = (stop.coord - minCoord) / coordSpan;
+  });
+  colorStopsInRange.push({
+    // NOTE: inRangeStopLen may still be 0 if stoplen is zero.
+    offset: inRangeStopLen ? colorStopsInRange[inRangeStopLen - 1].offset : 0.5,
+    color: outerColors[1] || 'transparent'
+  });
+  colorStopsInRange.unshift({
+    offset: inRangeStopLen ? colorStopsInRange[0].offset : 0.5,
+    color: outerColors[0] || 'transparent'
+  });
+  var gradient = new LinearGradient$1(0, 0, 0, 0, colorStopsInRange, true);
+  gradient[coordDim] = minCoord;
+  gradient[coordDim + '2'] = maxCoord;
+  return gradient;
+}
+
+function getIsIgnoreFunc(seriesModel, data, coordSys) {
+  var showAllSymbol = seriesModel.get('showAllSymbol');
+  var isAuto = showAllSymbol === 'auto';
+
+  if (showAllSymbol && !isAuto) {
+    return;
+  }
+
+  var categoryAxis = coordSys.getAxesByScale('ordinal')[0];
+
+  if (!categoryAxis) {
+    return;
+  } // Note that category label interval strategy might bring some weird effect
+  // in some scenario: users may wonder why some of the symbols are not
+  // displayed. So we show all symbols as possible as we can.
+
+
+  if (isAuto // Simplify the logic, do not determine label overlap here.
+  && canShowAllSymbolForCategory(categoryAxis, data)) {
+    return;
+  } // Otherwise follow the label interval strategy on category axis.
+
+
+  var categoryDataDim = data.mapDimension(categoryAxis.dim);
+  var labelMap = {};
+  each$9(categoryAxis.getViewLabels(), function (labelItem) {
+    var ordinalNumber = categoryAxis.scale.getRawOrdinalNumber(labelItem.tickValue);
+    labelMap[ordinalNumber] = 1;
+  });
+  return function (dataIndex) {
+    return !labelMap.hasOwnProperty(data.get(categoryDataDim, dataIndex));
+  };
+}
+
+function canShowAllSymbolForCategory(categoryAxis, data) {
+  // In mose cases, line is monotonous on category axis, and the label size
+  // is close with each other. So we check the symbol size and some of the
+  // label size alone with the category axis to estimate whether all symbol
+  // can be shown without overlap.
+  var axisExtent = categoryAxis.getExtent();
+  var availSize = Math.abs(axisExtent[1] - axisExtent[0]) / categoryAxis.scale.count();
+  isNaN(availSize) && (availSize = 0); // 0/0 is NaN.
+  // Sampling some points, max 5.
+
+  var dataLen = data.count();
+  var step = Math.max(1, Math.round(dataLen / 5));
+
+  for (var dataIndex = 0; dataIndex < dataLen; dataIndex += step) {
+    if (SymbolClz.getSymbolSize(data, dataIndex // Only for cartesian, where `isHorizontal` exists.
+    )[categoryAxis.isHorizontal() ? 1 : 0] // Empirical number
+    * 1.5 > availSize) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+function isPointNull(x, y) {
+  return isNaN(x) || isNaN(y);
+}
+
+function getLastIndexNotNull(points) {
+  var len = points.length / 2;
+
+  for (; len > 0; len--) {
+    if (!isPointNull(points[len * 2 - 2], points[len * 2 - 1])) {
+      break;
+    }
+  }
+
+  return len - 1;
+}
+
+function getPointAtIndex(points, idx) {
+  return [points[idx * 2], points[idx * 2 + 1]];
+}
+
+function getIndexRange(points, xOrY, dim) {
+  var len = points.length / 2;
+  var dimIdx = dim === 'x' ? 0 : 1;
+  var a;
+  var b;
+  var prevIndex = 0;
+  var nextIndex = -1;
+
+  for (var i = 0; i < len; i++) {
+    b = points[i * 2 + dimIdx];
+
+    if (isNaN(b) || isNaN(points[i * 2 + 1 - dimIdx])) {
+      continue;
+    }
+
+    if (i === 0) {
+      a = b;
+      continue;
+    }
+
+    if (a <= xOrY && b >= xOrY || a >= xOrY && b <= xOrY) {
+      nextIndex = i;
+      break;
+    }
+
+    prevIndex = i;
+    a = b;
+  }
+
+  return {
+    range: [prevIndex, nextIndex],
+    t: (xOrY - a) / (b - a)
+  };
+}
+
+function anyStateShowEndLabel(seriesModel) {
+  if (seriesModel.get(['endLabel', 'show'])) {
+    return true;
+  }
+
+  for (var i = 0; i < SPECIAL_STATES.length; i++) {
+    if (seriesModel.get([SPECIAL_STATES[i], 'endLabel', 'show'])) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+function createLineClipPath(lineView, coordSys, hasAnimation, seriesModel) {
+  if (isCoordinateSystemType(coordSys, 'cartesian2d')) {
+    var endLabelModel_1 = seriesModel.getModel('endLabel');
+    var valueAnimation_1 = endLabelModel_1.get('valueAnimation');
+    var data_1 = seriesModel.getData();
+    var labelAnimationRecord_1 = {
+      lastFrameIndex: 0
+    };
+    var during = anyStateShowEndLabel(seriesModel) ? function (percent, clipRect) {
+      lineView._endLabelOnDuring(percent, clipRect, data_1, labelAnimationRecord_1, valueAnimation_1, endLabelModel_1, coordSys);
+    } : null;
+    var isHorizontal = coordSys.getBaseAxis().isHorizontal();
+    var clipPath = createGridClipPath(coordSys, hasAnimation, seriesModel, function () {
+      var endLabel = lineView._endLabel;
+
+      if (endLabel && hasAnimation) {
+        if (labelAnimationRecord_1.originalX != null) {
+          endLabel.attr({
+            x: labelAnimationRecord_1.originalX,
+            y: labelAnimationRecord_1.originalY
+          });
+        }
+      }
+    }, during); // Expand clip shape to avoid clipping when line value exceeds axis
+
+    if (!seriesModel.get('clip', true)) {
+      var rectShape = clipPath.shape;
+      var expandSize = Math.max(rectShape.width, rectShape.height);
+
+      if (isHorizontal) {
+        rectShape.y -= expandSize;
+        rectShape.height += expandSize * 2;
+      } else {
+        rectShape.x -= expandSize;
+        rectShape.width += expandSize * 2;
+      }
+    } // Set to the final frame. To make sure label layout is right.
+
+
+    if (during) {
+      during(1, clipPath);
+    }
+
+    return clipPath;
+  } else {
+    if (process.env.NODE_ENV !== 'production') {
+      if (seriesModel.get(['endLabel', 'show'])) {
+        console.warn('endLabel is not supported for lines in polar systems.');
+      }
+    }
+
+    return createPolarClipPath(coordSys, hasAnimation, seriesModel);
+  }
+}
+
+function getEndLabelStateSpecified(endLabelModel, coordSys) {
+  var baseAxis = coordSys.getBaseAxis();
+  var isHorizontal = baseAxis.isHorizontal();
+  var isBaseInversed = baseAxis.inverse;
+  var align = isHorizontal ? isBaseInversed ? 'right' : 'left' : 'center';
+  var verticalAlign = isHorizontal ? 'middle' : isBaseInversed ? 'top' : 'bottom';
+  return {
+    normal: {
+      align: endLabelModel.get('align') || align,
+      verticalAlign: endLabelModel.get('verticalAlign') || verticalAlign
+    }
+  };
+}
+
+var LineView =
+/** @class */
+function (_super) {
+  __extends$1(LineView, _super);
+
+  function LineView() {
+    return _super !== null && _super.apply(this, arguments) || this;
+  }
+
+  LineView.prototype.init = function () {
+    var lineGroup = new Group$3();
+    var symbolDraw = new SymbolDraw$1();
+    this.group.add(symbolDraw.group);
+    this._symbolDraw = symbolDraw;
+    this._lineGroup = lineGroup;
+  };
+
+  LineView.prototype.render = function (seriesModel, ecModel, api) {
+    var _this = this;
+
+    var coordSys = seriesModel.coordinateSystem;
+    var group = this.group;
+    var data = seriesModel.getData();
+    var lineStyleModel = seriesModel.getModel('lineStyle');
+    var areaStyleModel = seriesModel.getModel('areaStyle');
+    var points = data.getLayout('points') || [];
+    var isCoordSysPolar = coordSys.type === 'polar';
+    var prevCoordSys = this._coordSys;
+    var symbolDraw = this._symbolDraw;
+    var polyline = this._polyline;
+    var polygon = this._polygon;
+    var lineGroup = this._lineGroup;
+    var hasAnimation = seriesModel.get('animation');
+    var isAreaChart = !areaStyleModel.isEmpty();
+    var valueOrigin = areaStyleModel.get('origin');
+    var dataCoordInfo = prepareDataCoordInfo(coordSys, data, valueOrigin);
+    var stackedOnPoints = isAreaChart && getStackedOnPoints(coordSys, data, dataCoordInfo);
+    var showSymbol = seriesModel.get('showSymbol');
+    var connectNulls = seriesModel.get('connectNulls');
+    var isIgnoreFunc = showSymbol && !isCoordSysPolar && getIsIgnoreFunc(seriesModel, data, coordSys); // Remove temporary symbols
+
+    var oldData = this._data;
+    oldData && oldData.eachItemGraphicEl(function (el, idx) {
+      if (el.__temp) {
+        group.remove(el);
+        oldData.setItemGraphicEl(idx, null);
+      }
+    }); // Remove previous created symbols if showSymbol changed to false
+
+    if (!showSymbol) {
+      symbolDraw.remove();
+    }
+
+    group.add(lineGroup); // FIXME step not support polar
+
+    var step = !isCoordSysPolar ? seriesModel.get('step') : false;
+    var clipShapeForSymbol;
+
+    if (coordSys && coordSys.getArea && seriesModel.get('clip', true)) {
+      clipShapeForSymbol = coordSys.getArea(); // Avoid float number rounding error for symbol on the edge of axis extent.
+      // See #7913 and `test/dataZoom-clip.html`.
+
+      if (clipShapeForSymbol.width != null) {
+        clipShapeForSymbol.x -= 0.1;
+        clipShapeForSymbol.y -= 0.1;
+        clipShapeForSymbol.width += 0.2;
+        clipShapeForSymbol.height += 0.2;
+      } else if (clipShapeForSymbol.r0) {
+        clipShapeForSymbol.r0 -= 0.5;
+        clipShapeForSymbol.r += 0.5;
+      }
+    }
+
+    this._clipShapeForSymbol = clipShapeForSymbol;
+    var visualColor = getVisualGradient(data, coordSys, api) || data.getVisual('style')[data.getVisual('drawType')]; // Initialization animation or coordinate system changed
+
+    if (!(polyline && prevCoordSys.type === coordSys.type && step === this._step)) {
+      showSymbol && symbolDraw.updateData(data, {
+        isIgnore: isIgnoreFunc,
+        clipShape: clipShapeForSymbol,
+        disableAnimation: true,
+        getSymbolPoint: function (idx) {
+          return [points[idx * 2], points[idx * 2 + 1]];
+        }
+      });
+      hasAnimation && this._initSymbolLabelAnimation(data, coordSys, clipShapeForSymbol);
+
+      if (step) {
+        // TODO If stacked series is not step
+        points = turnPointsIntoStep(points, coordSys, step, connectNulls);
+
+        if (stackedOnPoints) {
+          stackedOnPoints = turnPointsIntoStep(stackedOnPoints, coordSys, step, connectNulls);
+        }
+      }
+
+      polyline = this._newPolyline(points);
+
+      if (isAreaChart) {
+        polygon = this._newPolygon(points, stackedOnPoints);
+      } // If areaStyle is removed
+      else if (polygon) {
+          lineGroup.remove(polygon);
+          polygon = this._polygon = null;
+        } // NOTE: Must update _endLabel before setClipPath.
+
+
+      if (!isCoordSysPolar) {
+        this._initOrUpdateEndLabel(seriesModel, coordSys, convertToColorString(visualColor));
+      }
+
+      lineGroup.setClipPath(createLineClipPath(this, coordSys, true, seriesModel));
+    } else {
+      if (isAreaChart && !polygon) {
+        // If areaStyle is added
+        polygon = this._newPolygon(points, stackedOnPoints);
+      } else if (polygon && !isAreaChart) {
+        // If areaStyle is removed
+        lineGroup.remove(polygon);
+        polygon = this._polygon = null;
+      } // NOTE: Must update _endLabel before setClipPath.
+
+
+      if (!isCoordSysPolar) {
+        this._initOrUpdateEndLabel(seriesModel, coordSys, convertToColorString(visualColor));
+      } // Update clipPath
+
+
+      var oldClipPath = lineGroup.getClipPath();
+
+      if (oldClipPath) {
+        var newClipPath = createLineClipPath(this, coordSys, false, seriesModel);
+        initProps(oldClipPath, {
+          shape: newClipPath.shape
+        }, seriesModel);
+      } else {
+        lineGroup.setClipPath(createLineClipPath(this, coordSys, true, seriesModel));
+      } // Always update, or it is wrong in the case turning on legend
+      // because points are not changed
+
+
+      showSymbol && symbolDraw.updateData(data, {
+        isIgnore: isIgnoreFunc,
+        clipShape: clipShapeForSymbol,
+        disableAnimation: true,
+        getSymbolPoint: function (idx) {
+          return [points[idx * 2], points[idx * 2 + 1]];
+        }
+      }); // In the case data zoom triggerred refreshing frequently
+      // Data may not change if line has a category axis. So it should animate nothing
+
+      if (!isPointsSame(this._stackedOnPoints, stackedOnPoints) || !isPointsSame(this._points, points)) {
+        if (hasAnimation) {
+          this._doUpdateAnimation(data, stackedOnPoints, coordSys, api, step, valueOrigin, connectNulls);
+        } else {
+          // Not do it in update with animation
+          if (step) {
+            // TODO If stacked series is not step
+            points = turnPointsIntoStep(points, coordSys, step, connectNulls);
+
+            if (stackedOnPoints) {
+              stackedOnPoints = turnPointsIntoStep(stackedOnPoints, coordSys, step, connectNulls);
+            }
+          }
+
+          polyline.setShape({
+            points: points
+          });
+          polygon && polygon.setShape({
+            points: points,
+            stackedOnPoints: stackedOnPoints
+          });
+        }
+      }
+    }
+
+    var emphasisModel = seriesModel.getModel('emphasis');
+    var focus = emphasisModel.get('focus');
+    var blurScope = emphasisModel.get('blurScope');
+    var emphasisDisabled = emphasisModel.get('disabled');
+    polyline.useStyle(defaults( // Use color in lineStyle first
+    lineStyleModel.getLineStyle(), {
+      fill: 'none',
+      stroke: visualColor,
+      lineJoin: 'bevel'
+    }));
+    setStatesStylesFromModel(polyline, seriesModel, 'lineStyle');
+
+    if (polyline.style.lineWidth > 0 && seriesModel.get(['emphasis', 'lineStyle', 'width']) === 'bolder') {
+      var emphasisLineStyle = polyline.getState('emphasis').style;
+      emphasisLineStyle.lineWidth = +polyline.style.lineWidth + 1;
+    } // Needs seriesIndex for focus
+
+
+    getECData(polyline).seriesIndex = seriesModel.seriesIndex;
+    toggleHoverEmphasis(polyline, focus, blurScope, emphasisDisabled);
+    var smooth = getSmooth(seriesModel.get('smooth'));
+    var smoothMonotone = seriesModel.get('smoothMonotone');
+    polyline.setShape({
+      smooth: smooth,
+      smoothMonotone: smoothMonotone,
+      connectNulls: connectNulls
+    });
+
+    if (polygon) {
+      var stackedOnSeries = data.getCalculationInfo('stackedOnSeries');
+      var stackedOnSmooth = 0;
+      polygon.useStyle(defaults(areaStyleModel.getAreaStyle(), {
+        fill: visualColor,
+        opacity: 0.7,
+        lineJoin: 'bevel',
+        decal: data.getVisual('style').decal
+      }));
+
+      if (stackedOnSeries) {
+        stackedOnSmooth = getSmooth(stackedOnSeries.get('smooth'));
+      }
+
+      polygon.setShape({
+        smooth: smooth,
+        stackedOnSmooth: stackedOnSmooth,
+        smoothMonotone: smoothMonotone,
+        connectNulls: connectNulls
+      });
+      setStatesStylesFromModel(polygon, seriesModel, 'areaStyle'); // Needs seriesIndex for focus
+
+      getECData(polygon).seriesIndex = seriesModel.seriesIndex;
+      toggleHoverEmphasis(polygon, focus, blurScope, emphasisDisabled);
+    }
+
+    var changePolyState = function (toState) {
+      _this._changePolyState(toState);
+    };
+
+    data.eachItemGraphicEl(function (el) {
+      // Switch polyline / polygon state if element changed its state.
+      el && (el.onHoverStateChange = changePolyState);
+    });
+    this._polyline.onHoverStateChange = changePolyState;
+    this._data = data; // Save the coordinate system for transition animation when data changed
+
+    this._coordSys = coordSys;
+    this._stackedOnPoints = stackedOnPoints;
+    this._points = points;
+    this._step = step;
+    this._valueOrigin = valueOrigin;
+
+    if (seriesModel.get('triggerLineEvent')) {
+      this.packEventData(seriesModel, polyline);
+      polygon && this.packEventData(seriesModel, polygon);
+    }
+  };
+
+  LineView.prototype.packEventData = function (seriesModel, el) {
+    getECData(el).eventData = {
+      componentType: 'series',
+      componentSubType: 'line',
+      componentIndex: seriesModel.componentIndex,
+      seriesIndex: seriesModel.seriesIndex,
+      seriesName: seriesModel.name,
+      seriesType: 'line'
+    };
+  };
+
+  LineView.prototype.highlight = function (seriesModel, ecModel, api, payload) {
+    var data = seriesModel.getData();
+    var dataIndex = queryDataIndex(data, payload);
+
+    this._changePolyState('emphasis');
+
+    if (!(dataIndex instanceof Array) && dataIndex != null && dataIndex >= 0) {
+      var points = data.getLayout('points');
+      var symbol = data.getItemGraphicEl(dataIndex);
+
+      if (!symbol) {
+        // Create a temporary symbol if it is not exists
+        var x = points[dataIndex * 2];
+        var y = points[dataIndex * 2 + 1];
+
+        if (isNaN(x) || isNaN(y)) {
+          // Null data
+          return;
+        } // fix #11360: should't draw symbol outside clipShapeForSymbol
+
+
+        if (this._clipShapeForSymbol && !this._clipShapeForSymbol.contain(x, y)) {
+          return;
+        }
+
+        var zlevel = seriesModel.get('zlevel') || 0;
+        var z = seriesModel.get('z') || 0;
+        symbol = new SymbolClz(data, dataIndex);
+        symbol.x = x;
+        symbol.y = y;
+        symbol.setZ(zlevel, z); // ensure label text of the temporary symbol is in front of line and area polygon
+
+        var symbolLabel = symbol.getSymbolPath().getTextContent();
+
+        if (symbolLabel) {
+          symbolLabel.zlevel = zlevel;
+          symbolLabel.z = z;
+          symbolLabel.z2 = this._polyline.z2 + 1;
+        }
+
+        symbol.__temp = true;
+        data.setItemGraphicEl(dataIndex, symbol); // Stop scale animation
+
+        symbol.stopSymbolAnimation(true);
+        this.group.add(symbol);
+      }
+
+      symbol.highlight();
+    } else {
+      // Highlight whole series
+      ChartView$1.prototype.highlight.call(this, seriesModel, ecModel, api, payload);
+    }
+  };
+
+  LineView.prototype.downplay = function (seriesModel, ecModel, api, payload) {
+    var data = seriesModel.getData();
+    var dataIndex = queryDataIndex(data, payload);
+
+    this._changePolyState('normal');
+
+    if (dataIndex != null && dataIndex >= 0) {
+      var symbol = data.getItemGraphicEl(dataIndex);
+
+      if (symbol) {
+        if (symbol.__temp) {
+          data.setItemGraphicEl(dataIndex, null);
+          this.group.remove(symbol);
+        } else {
+          symbol.downplay();
+        }
+      }
+    } else {
+      // FIXME
+      // can not downplay completely.
+      // Downplay whole series
+      ChartView$1.prototype.downplay.call(this, seriesModel, ecModel, api, payload);
+    }
+  };
+
+  LineView.prototype._changePolyState = function (toState) {
+    var polygon = this._polygon;
+    setStatesFlag(this._polyline, toState);
+    polygon && setStatesFlag(polygon, toState);
+  };
+
+  LineView.prototype._newPolyline = function (points) {
+    var polyline = this._polyline; // Remove previous created polyline
+
+    if (polyline) {
+      this._lineGroup.remove(polyline);
+    }
+
+    polyline = new ECPolyline({
+      shape: {
+        points: points
+      },
+      segmentIgnoreThreshold: 2,
+      z2: 10
+    });
+
+    this._lineGroup.add(polyline);
+
+    this._polyline = polyline;
+    return polyline;
+  };
+
+  LineView.prototype._newPolygon = function (points, stackedOnPoints) {
+    var polygon = this._polygon; // Remove previous created polygon
+
+    if (polygon) {
+      this._lineGroup.remove(polygon);
+    }
+
+    polygon = new ECPolygon({
+      shape: {
+        points: points,
+        stackedOnPoints: stackedOnPoints
+      },
+      segmentIgnoreThreshold: 2
+    });
+
+    this._lineGroup.add(polygon);
+
+    this._polygon = polygon;
+    return polygon;
+  };
+
+  LineView.prototype._initSymbolLabelAnimation = function (data, coordSys, clipShape) {
+    var isHorizontalOrRadial;
+    var isCoordSysPolar;
+    var baseAxis = coordSys.getBaseAxis();
+    var isAxisInverse = baseAxis.inverse;
+
+    if (coordSys.type === 'cartesian2d') {
+      isHorizontalOrRadial = baseAxis.isHorizontal();
+      isCoordSysPolar = false;
+    } else if (coordSys.type === 'polar') {
+      isHorizontalOrRadial = baseAxis.dim === 'angle';
+      isCoordSysPolar = true;
+    }
+
+    var seriesModel = data.hostModel;
+    var seriesDuration = seriesModel.get('animationDuration');
+
+    if (isFunction(seriesDuration)) {
+      seriesDuration = seriesDuration(null);
+    }
+
+    var seriesDalay = seriesModel.get('animationDelay') || 0;
+    var seriesDalayValue = isFunction(seriesDalay) ? seriesDalay(null) : seriesDalay;
+    data.eachItemGraphicEl(function (symbol, idx) {
+      var el = symbol;
+
+      if (el) {
+        var point = [symbol.x, symbol.y];
+        var start = void 0;
+        var end = void 0;
+        var current = void 0;
+
+        if (clipShape) {
+          if (isCoordSysPolar) {
+            var polarClip = clipShape;
+            var coord = coordSys.pointToCoord(point);
+
+            if (isHorizontalOrRadial) {
+              start = polarClip.startAngle;
+              end = polarClip.endAngle;
+              current = -coord[1] / 180 * Math.PI;
+            } else {
+              start = polarClip.r0;
+              end = polarClip.r;
+              current = coord[0];
+            }
+          } else {
+            var gridClip = clipShape;
+
+            if (isHorizontalOrRadial) {
+              start = gridClip.x;
+              end = gridClip.x + gridClip.width;
+              current = symbol.x;
+            } else {
+              start = gridClip.y + gridClip.height;
+              end = gridClip.y;
+              current = symbol.y;
+            }
+          }
+        }
+
+        var ratio = end === start ? 0 : (current - start) / (end - start);
+
+        if (isAxisInverse) {
+          ratio = 1 - ratio;
+        }
+
+        var delay = isFunction(seriesDalay) ? seriesDalay(idx) : seriesDuration * ratio + seriesDalayValue;
+        var symbolPath = el.getSymbolPath();
+        var text = symbolPath.getTextContent();
+        el.attr({
+          scaleX: 0,
+          scaleY: 0
+        });
+        el.animateTo({
+          scaleX: 1,
+          scaleY: 1
+        }, {
+          duration: 200,
+          setToFinal: true,
+          delay: delay
+        });
+
+        if (text) {
+          text.animateFrom({
+            style: {
+              opacity: 0
+            }
+          }, {
+            duration: 300,
+            delay: delay
+          });
+        }
+
+        symbolPath.disableLabelAnimation = true;
+      }
+    });
+  };
+
+  LineView.prototype._initOrUpdateEndLabel = function (seriesModel, coordSys, inheritColor) {
+    var endLabelModel = seriesModel.getModel('endLabel');
+
+    if (anyStateShowEndLabel(seriesModel)) {
+      var data_2 = seriesModel.getData();
+      var polyline = this._polyline; // series may be filtered.
+
+      var points = data_2.getLayout('points');
+
+      if (!points) {
+        polyline.removeTextContent();
+        this._endLabel = null;
+        return;
+      }
+
+      var endLabel = this._endLabel;
+
+      if (!endLabel) {
+        endLabel = this._endLabel = new ZRText$1({
+          z2: 200 // should be higher than item symbol
+
+        });
+        endLabel.ignoreClip = true;
+        polyline.setTextContent(this._endLabel);
+        polyline.disableLabelAnimation = true;
+      } // Find last non-NaN data to display data
+
+
+      var dataIndex = getLastIndexNotNull(points);
+
+      if (dataIndex >= 0) {
+        setLabelStyle(polyline, getLabelStatesModels(seriesModel, 'endLabel'), {
+          inheritColor: inheritColor,
+          labelFetcher: seriesModel,
+          labelDataIndex: dataIndex,
+          defaultText: function (dataIndex, opt, interpolatedValue) {
+            return interpolatedValue != null ? getDefaultInterpolatedLabel(data_2, interpolatedValue) : getDefaultLabel(data_2, dataIndex);
+          },
+          enableTextSetter: true
+        }, getEndLabelStateSpecified(endLabelModel, coordSys));
+        polyline.textConfig.position = null;
+      }
+    } else if (this._endLabel) {
+      this._polyline.removeTextContent();
+
+      this._endLabel = null;
+    }
+  };
+
+  LineView.prototype._endLabelOnDuring = function (percent, clipRect, data, animationRecord, valueAnimation, endLabelModel, coordSys) {
+    var endLabel = this._endLabel;
+    var polyline = this._polyline;
+
+    if (endLabel) {
+      // NOTE: Don't remove percent < 1. percent === 1 means the first frame during render.
+      // The label is not prepared at this time.
+      if (percent < 1 && animationRecord.originalX == null) {
+        animationRecord.originalX = endLabel.x;
+        animationRecord.originalY = endLabel.y;
+      }
+
+      var points = data.getLayout('points');
+      var seriesModel = data.hostModel;
+      var connectNulls = seriesModel.get('connectNulls');
+      var precision = endLabelModel.get('precision');
+      var distance = endLabelModel.get('distance') || 0;
+      var baseAxis = coordSys.getBaseAxis();
+      var isHorizontal = baseAxis.isHorizontal();
+      var isBaseInversed = baseAxis.inverse;
+      var clipShape = clipRect.shape;
+      var xOrY = isBaseInversed ? isHorizontal ? clipShape.x : clipShape.y + clipShape.height : isHorizontal ? clipShape.x + clipShape.width : clipShape.y;
+      var distanceX = (isHorizontal ? distance : 0) * (isBaseInversed ? -1 : 1);
+      var distanceY = (isHorizontal ? 0 : -distance) * (isBaseInversed ? -1 : 1);
+      var dim = isHorizontal ? 'x' : 'y';
+      var dataIndexRange = getIndexRange(points, xOrY, dim);
+      var indices = dataIndexRange.range;
+      var diff = indices[1] - indices[0];
+      var value = void 0;
+
+      if (diff >= 1) {
+        // diff > 1 && connectNulls, which is on the null data.
+        if (diff > 1 && !connectNulls) {
+          var pt = getPointAtIndex(points, indices[0]);
+          endLabel.attr({
+            x: pt[0] + distanceX,
+            y: pt[1] + distanceY
+          });
+          valueAnimation && (value = seriesModel.getRawValue(indices[0]));
+        } else {
+          var pt = polyline.getPointOn(xOrY, dim);
+          pt && endLabel.attr({
+            x: pt[0] + distanceX,
+            y: pt[1] + distanceY
+          });
+          var startValue = seriesModel.getRawValue(indices[0]);
+          var endValue = seriesModel.getRawValue(indices[1]);
+          valueAnimation && (value = interpolateRawValues(data, precision, startValue, endValue, dataIndexRange.t));
+        }
+
+        animationRecord.lastFrameIndex = indices[0];
+      } else {
+        // If diff <= 0, which is the range is not found(Include NaN)
+        // Choose the first point or last point.
+        var idx = percent === 1 || animationRecord.lastFrameIndex > 0 ? indices[0] : 0;
+        var pt = getPointAtIndex(points, idx);
+        valueAnimation && (value = seriesModel.getRawValue(idx));
+        endLabel.attr({
+          x: pt[0] + distanceX,
+          y: pt[1] + distanceY
+        });
+      }
+
+      if (valueAnimation) {
+        labelInner(endLabel).setLabelText(value);
+      }
+    }
+  };
+  /**
+   * @private
+   */
+  // FIXME Two value axis
+
+
+  LineView.prototype._doUpdateAnimation = function (data, stackedOnPoints, coordSys, api, step, valueOrigin, connectNulls) {
+    var polyline = this._polyline;
+    var polygon = this._polygon;
+    var seriesModel = data.hostModel;
+    var diff = lineAnimationDiff(this._data, data, this._stackedOnPoints, stackedOnPoints, this._coordSys, coordSys, this._valueOrigin);
+    var current = diff.current;
+    var stackedOnCurrent = diff.stackedOnCurrent;
+    var next = diff.next;
+    var stackedOnNext = diff.stackedOnNext;
+
+    if (step) {
+      // TODO If stacked series is not step
+      current = turnPointsIntoStep(diff.current, coordSys, step, connectNulls);
+      stackedOnCurrent = turnPointsIntoStep(diff.stackedOnCurrent, coordSys, step, connectNulls);
+      next = turnPointsIntoStep(diff.next, coordSys, step, connectNulls);
+      stackedOnNext = turnPointsIntoStep(diff.stackedOnNext, coordSys, step, connectNulls);
+    } // Don't apply animation if diff is large.
+    // For better result and avoid memory explosion problems like
+    // https://github.com/apache/incubator-echarts/issues/12229
+
+
+    if (getBoundingDiff(current, next) > 3000 || polygon && getBoundingDiff(stackedOnCurrent, stackedOnNext) > 3000) {
+      polyline.stopAnimation();
+      polyline.setShape({
+        points: next
+      });
+
+      if (polygon) {
+        polygon.stopAnimation();
+        polygon.setShape({
+          points: next,
+          stackedOnPoints: stackedOnNext
+        });
+      }
+
+      return;
+    }
+
+    polyline.shape.__points = diff.current;
+    polyline.shape.points = current;
+    var target = {
+      shape: {
+        points: next
+      }
+    }; // Also animate the original points.
+    // If points reference is changed when turning into step line.
+
+    if (diff.current !== current) {
+      target.shape.__points = diff.next;
+    } // Stop previous animation.
+
+
+    polyline.stopAnimation();
+    updateProps$1(polyline, target, seriesModel);
+
+    if (polygon) {
+      polygon.setShape({
+        // Reuse the points with polyline.
+        points: current,
+        stackedOnPoints: stackedOnCurrent
+      });
+      polygon.stopAnimation();
+      updateProps$1(polygon, {
+        shape: {
+          stackedOnPoints: stackedOnNext
+        }
+      }, seriesModel); // If use attr directly in updateProps.
+
+      if (polyline.shape.points !== polygon.shape.points) {
+        polygon.shape.points = polyline.shape.points;
+      }
+    }
+
+    var updatedDataInfo = [];
+    var diffStatus = diff.status;
+
+    for (var i = 0; i < diffStatus.length; i++) {
+      var cmd = diffStatus[i].cmd;
+
+      if (cmd === '=') {
+        var el = data.getItemGraphicEl(diffStatus[i].idx1);
+
+        if (el) {
+          updatedDataInfo.push({
+            el: el,
+            ptIdx: i // Index of points
+
+          });
+        }
+      }
+    }
+
+    if (polyline.animators && polyline.animators.length) {
+      polyline.animators[0].during(function () {
+        polygon && polygon.dirtyShape();
+        var points = polyline.shape.__points;
+
+        for (var i = 0; i < updatedDataInfo.length; i++) {
+          var el = updatedDataInfo[i].el;
+          var offset = updatedDataInfo[i].ptIdx * 2;
+          el.x = points[offset];
+          el.y = points[offset + 1];
+          el.markRedraw();
+        }
+      });
+    }
+  };
+
+  LineView.prototype.remove = function (ecModel) {
+    var group = this.group;
+    var oldData = this._data;
+
+    this._lineGroup.removeAll();
+
+    this._symbolDraw.remove(true); // Remove temporary created elements when highlighting
+
+
+    oldData && oldData.eachItemGraphicEl(function (el, idx) {
+      if (el.__temp) {
+        group.remove(el);
+        oldData.setItemGraphicEl(idx, null);
+      }
+    });
+    this._polyline = this._polygon = this._coordSys = this._points = this._stackedOnPoints = this._endLabel = this._data = null;
+  };
+
+  LineView.type = 'line';
+  return LineView;
+}(ChartView$1);
+
+var LineView$1 = LineView;
+
+function pointsLayout(seriesType, forceStoreInTypedArray) {
+  return {
+    seriesType: seriesType,
+    plan: createRenderPlanner(),
+    reset: function (seriesModel) {
+      var data = seriesModel.getData();
+      var coordSys = seriesModel.coordinateSystem;
+      var pipelineContext = seriesModel.pipelineContext;
+      var useTypedArray = forceStoreInTypedArray || pipelineContext.large;
+
+      if (!coordSys) {
+        return;
+      }
+
+      var dims = map$1(coordSys.dimensions, function (dim) {
+        return data.mapDimension(dim);
+      }).slice(0, 2);
+      var dimLen = dims.length;
+      var stackResultDim = data.getCalculationInfo('stackResultDimension');
+
+      if (isDimensionStacked(data, dims[0])) {
+        dims[0] = stackResultDim;
+      }
+
+      if (isDimensionStacked(data, dims[1])) {
+        dims[1] = stackResultDim;
+      }
+
+      var store = data.getStore();
+      var dimIdx0 = data.getDimensionIndex(dims[0]);
+      var dimIdx1 = data.getDimensionIndex(dims[1]);
+      return dimLen && {
+        progress: function (params, data) {
+          var segCount = params.end - params.start;
+          var points = useTypedArray && createFloat32Array(segCount * dimLen);
+          var tmpIn = [];
+          var tmpOut = [];
+
+          for (var i = params.start, offset = 0; i < params.end; i++) {
+            var point = void 0;
+
+            if (dimLen === 1) {
+              var x = store.get(dimIdx0, i); // NOTE: Make sure the second parameter is null to use default strategy.
+
+              point = coordSys.dataToPoint(x, null, tmpOut);
+            } else {
+              tmpIn[0] = store.get(dimIdx0, i);
+              tmpIn[1] = store.get(dimIdx1, i); // Let coordinate system to handle the NaN data.
+
+              point = coordSys.dataToPoint(tmpIn, null, tmpOut);
+            }
+
+            if (useTypedArray) {
+              points[offset++] = point[0];
+              points[offset++] = point[1];
+            } else {
+              data.setItemLayout(i, point.slice());
+            }
+          }
+
+          useTypedArray && data.setLayout('points', points);
+        }
+      };
+    }
+  };
+}
+
 var samplers = {
   average: function (frame) {
     var sum = 0;
@@ -84513,6 +87228,30 @@ function dataSample(seriesType) {
       }
     }
   };
+}
+
+function install$i(registers) {
+  registers.registerChartView(LineView$1);
+  registers.registerSeriesModel(LineSeries);
+  registers.registerLayout(pointsLayout('line', true));
+  registers.registerVisual({
+    seriesType: 'line',
+    reset: function (seriesModel) {
+      var data = seriesModel.getData(); // Visual coding for legend
+
+      var lineStyle = seriesModel.getModel('lineStyle').getLineStyle();
+
+      if (lineStyle && !lineStyle.stroke) {
+        // Fill in visual should be palette color if
+        // has color callback
+        lineStyle.stroke = data.getVisual('style').fill;
+      }
+
+      data.setVisual('legendLineStyle', lineStyle);
+    }
+  }); // Down sample after filter
+
+  registers.registerProcessor(registers.PRIORITY.PROCESSOR.STATISTIC, dataSample('line'));
 }
 
 var BaseBarSeriesModel =
@@ -85886,7 +88625,7 @@ function createBackgroundEl(coord, isHorizontalOrRadial, layout) {
 
 var BarView$1 = BarView;
 
-function install$g(registers) {
+function install$h(registers) {
   registers.registerChartView(BarView$1);
   registers.registerSeriesModel(BarSeries);
   registers.registerLayout(registers.PRIORITY.VISUAL.LAYOUT, curry$1(layout$1, 'bar')); // Do layout after other overall layout, which can preapre some informations.
@@ -87229,7 +89968,7 @@ function negativeDataFilter(seriesType) {
   };
 }
 
-function install$f(registers) {
+function install$g(registers) {
   registers.registerChartView(PieView$1);
   registers.registerSeriesModel(PieSeriesModel$1);
   createLegacyDataSelectAction('pie', registers.registerAction);
@@ -89819,7 +92558,7 @@ var extraOption = {
   // gridId: '',
   offset: 0
 };
-function install$e(registers) {
+function install$f(registers) {
   registers.registerComponentView(GridView);
   registers.registerComponentModel(GridModel$1);
   registers.registerCoordinateSystem('cartesian2d', Grid$1);
@@ -93746,7 +96485,7 @@ function registerMap(mapName, geoJson, specialAreas) {
   geoSourceManager.registerMap(mapName, geoJson, specialAreas);
 }
 
-function install$d(registers) {
+function install$e(registers) {
   registers.registerCoordinateSystem('geo', geoCreator$1);
   registers.registerComponentModel(GeoModel$1);
   registers.registerComponentView(GeoView$1);
@@ -93841,8 +96580,8 @@ function install$d(registers) {
   });
 }
 
-function install$c(registers) {
-  use(install$d);
+function install$d(registers) {
+  use(install$e);
   registers.registerChartView(MapView$1);
   registers.registerSeriesModel(MapSeries$1);
   registers.registerLayout(mapSymbolLayout);
@@ -94471,6 +97210,505 @@ function getSpanSign(handleEnds, handleIndex) {
 
 function restrict(value, extend) {
   return Math.min(extend[1] != null ? extend[1] : Infinity, Math.max(extend[0] != null ? extend[0] : -Infinity, value));
+}
+
+var GRADIENT_LEVELS = 256;
+
+var HeatmapLayer =
+/** @class */
+function () {
+  function HeatmapLayer() {
+    this.blurSize = 30;
+    this.pointSize = 20;
+    this.maxOpacity = 1;
+    this.minOpacity = 0;
+    this._gradientPixels = {
+      inRange: null,
+      outOfRange: null
+    };
+    var canvas = platformApi.createCanvas();
+    this.canvas = canvas;
+  }
+  /**
+   * Renders Heatmap and returns the rendered canvas
+   * @param data array of data, each has x, y, value
+   * @param width canvas width
+   * @param height canvas height
+   */
+
+
+  HeatmapLayer.prototype.update = function (data, width, height, normalize, colorFunc, isInRange) {
+    var brush = this._getBrush();
+
+    var gradientInRange = this._getGradient(colorFunc, 'inRange');
+
+    var gradientOutOfRange = this._getGradient(colorFunc, 'outOfRange');
+
+    var r = this.pointSize + this.blurSize;
+    var canvas = this.canvas;
+    var ctx = canvas.getContext('2d');
+    var len = data.length;
+    canvas.width = width;
+    canvas.height = height;
+
+    for (var i = 0; i < len; ++i) {
+      var p = data[i];
+      var x = p[0];
+      var y = p[1];
+      var value = p[2]; // calculate alpha using value
+
+      var alpha = normalize(value); // draw with the circle brush with alpha
+
+      ctx.globalAlpha = alpha;
+      ctx.drawImage(brush, x - r, y - r);
+    }
+
+    if (!canvas.width || !canvas.height) {
+      // Avoid "Uncaught DOMException: Failed to execute 'getImageData' on
+      // 'CanvasRenderingContext2D': The source height is 0."
+      return canvas;
+    } // colorize the canvas using alpha value and set with gradient
+
+
+    var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    var pixels = imageData.data;
+    var offset = 0;
+    var pixelLen = pixels.length;
+    var minOpacity = this.minOpacity;
+    var maxOpacity = this.maxOpacity;
+    var diffOpacity = maxOpacity - minOpacity;
+
+    while (offset < pixelLen) {
+      var alpha = pixels[offset + 3] / 256;
+      var gradientOffset = Math.floor(alpha * (GRADIENT_LEVELS - 1)) * 4; // Simple optimize to ignore the empty data
+
+      if (alpha > 0) {
+        var gradient = isInRange(alpha) ? gradientInRange : gradientOutOfRange; // Any alpha > 0 will be mapped to [minOpacity, maxOpacity]
+
+        alpha > 0 && (alpha = alpha * diffOpacity + minOpacity);
+        pixels[offset++] = gradient[gradientOffset];
+        pixels[offset++] = gradient[gradientOffset + 1];
+        pixels[offset++] = gradient[gradientOffset + 2];
+        pixels[offset++] = gradient[gradientOffset + 3] * alpha * 256;
+      } else {
+        offset += 4;
+      }
+    }
+
+    ctx.putImageData(imageData, 0, 0);
+    return canvas;
+  };
+  /**
+   * get canvas of a black circle brush used for canvas to draw later
+   */
+
+
+  HeatmapLayer.prototype._getBrush = function () {
+    var brushCanvas = this._brushCanvas || (this._brushCanvas = platformApi.createCanvas()); // set brush size
+
+    var r = this.pointSize + this.blurSize;
+    var d = r * 2;
+    brushCanvas.width = d;
+    brushCanvas.height = d;
+    var ctx = brushCanvas.getContext('2d');
+    ctx.clearRect(0, 0, d, d); // in order to render shadow without the distinct circle,
+    // draw the distinct circle in an invisible place,
+    // and use shadowOffset to draw shadow in the center of the canvas
+
+    ctx.shadowOffsetX = d;
+    ctx.shadowBlur = this.blurSize; // draw the shadow in black, and use alpha and shadow blur to generate
+    // color in color map
+
+    ctx.shadowColor = '#000'; // draw circle in the left to the canvas
+
+    ctx.beginPath();
+    ctx.arc(-r, r, this.pointSize, 0, Math.PI * 2, true);
+    ctx.closePath();
+    ctx.fill();
+    return brushCanvas;
+  };
+  /**
+   * get gradient color map
+   * @private
+   */
+
+
+  HeatmapLayer.prototype._getGradient = function (colorFunc, state) {
+    var gradientPixels = this._gradientPixels;
+    var pixelsSingleState = gradientPixels[state] || (gradientPixels[state] = new Uint8ClampedArray(256 * 4));
+    var color = [0, 0, 0, 0];
+    var off = 0;
+
+    for (var i = 0; i < 256; i++) {
+      colorFunc[state](i / 255, true, color);
+      pixelsSingleState[off++] = color[0];
+      pixelsSingleState[off++] = color[1];
+      pixelsSingleState[off++] = color[2];
+      pixelsSingleState[off++] = color[3];
+    }
+
+    return pixelsSingleState;
+  };
+
+  return HeatmapLayer;
+}();
+
+var HeatmapLayer$1 = HeatmapLayer;
+
+function getIsInPiecewiseRange(dataExtent, pieceList, selected) {
+  var dataSpan = dataExtent[1] - dataExtent[0];
+  pieceList = map$1(pieceList, function (piece) {
+    return {
+      interval: [(piece.interval[0] - dataExtent[0]) / dataSpan, (piece.interval[1] - dataExtent[0]) / dataSpan]
+    };
+  });
+  var len = pieceList.length;
+  var lastIndex = 0;
+  return function (val) {
+    var i; // Try to find in the location of the last found
+
+    for (i = lastIndex; i < len; i++) {
+      var interval = pieceList[i].interval;
+
+      if (interval[0] <= val && val <= interval[1]) {
+        lastIndex = i;
+        break;
+      }
+    }
+
+    if (i === len) {
+      // Not found, back interation
+      for (i = lastIndex - 1; i >= 0; i--) {
+        var interval = pieceList[i].interval;
+
+        if (interval[0] <= val && val <= interval[1]) {
+          lastIndex = i;
+          break;
+        }
+      }
+    }
+
+    return i >= 0 && i < len && selected[i];
+  };
+}
+
+function getIsInContinuousRange(dataExtent, range) {
+  var dataSpan = dataExtent[1] - dataExtent[0];
+  range = [(range[0] - dataExtent[0]) / dataSpan, (range[1] - dataExtent[0]) / dataSpan];
+  return function (val) {
+    return val >= range[0] && val <= range[1];
+  };
+}
+
+function isGeoCoordSys(coordSys) {
+  var dimensions = coordSys.dimensions; // Not use coorSys.type === 'geo' because coordSys maybe extended
+
+  return dimensions[0] === 'lng' && dimensions[1] === 'lat';
+}
+
+var HeatmapView =
+/** @class */
+function (_super) {
+  __extends$1(HeatmapView, _super);
+
+  function HeatmapView() {
+    var _this = _super !== null && _super.apply(this, arguments) || this;
+
+    _this.type = HeatmapView.type;
+    return _this;
+  }
+
+  HeatmapView.prototype.render = function (seriesModel, ecModel, api) {
+    var visualMapOfThisSeries;
+    ecModel.eachComponent('visualMap', function (visualMap) {
+      visualMap.eachTargetSeries(function (targetSeries) {
+        if (targetSeries === seriesModel) {
+          visualMapOfThisSeries = visualMap;
+        }
+      });
+    });
+
+    if (process.env.NODE_ENV !== 'production') {
+      if (!visualMapOfThisSeries) {
+        throw new Error('Heatmap must use with visualMap');
+      }
+    } // Clear previously rendered progressive elements.
+
+
+    this._progressiveEls = null;
+    this.group.removeAll();
+    var coordSys = seriesModel.coordinateSystem;
+
+    if (coordSys.type === 'cartesian2d' || coordSys.type === 'calendar') {
+      this._renderOnCartesianAndCalendar(seriesModel, api, 0, seriesModel.getData().count());
+    } else if (isGeoCoordSys(coordSys)) {
+      this._renderOnGeo(coordSys, seriesModel, visualMapOfThisSeries, api);
+    }
+  };
+
+  HeatmapView.prototype.incrementalPrepareRender = function (seriesModel, ecModel, api) {
+    this.group.removeAll();
+  };
+
+  HeatmapView.prototype.incrementalRender = function (params, seriesModel, ecModel, api) {
+    var coordSys = seriesModel.coordinateSystem;
+
+    if (coordSys) {
+      // geo does not support incremental rendering?
+      if (isGeoCoordSys(coordSys)) {
+        this.render(seriesModel, ecModel, api);
+      } else {
+        this._progressiveEls = [];
+
+        this._renderOnCartesianAndCalendar(seriesModel, api, params.start, params.end, true);
+      }
+    }
+  };
+
+  HeatmapView.prototype.eachRendered = function (cb) {
+    traverseElements(this._progressiveEls || this.group, cb);
+  };
+
+  HeatmapView.prototype._renderOnCartesianAndCalendar = function (seriesModel, api, start, end, incremental) {
+    var coordSys = seriesModel.coordinateSystem;
+    var isCartesian2d = isCoordinateSystemType(coordSys, 'cartesian2d');
+    var width;
+    var height;
+    var xAxisExtent;
+    var yAxisExtent;
+
+    if (isCartesian2d) {
+      var xAxis = coordSys.getAxis('x');
+      var yAxis = coordSys.getAxis('y');
+
+      if (process.env.NODE_ENV !== 'production') {
+        if (!(xAxis.type === 'category' && yAxis.type === 'category')) {
+          throw new Error('Heatmap on cartesian must have two category axes');
+        }
+
+        if (!(xAxis.onBand && yAxis.onBand)) {
+          throw new Error('Heatmap on cartesian must have two axes with boundaryGap true');
+        }
+      } // add 0.5px to avoid the gaps
+
+
+      width = xAxis.getBandWidth() + .5;
+      height = yAxis.getBandWidth() + .5;
+      xAxisExtent = xAxis.scale.getExtent();
+      yAxisExtent = yAxis.scale.getExtent();
+    }
+
+    var group = this.group;
+    var data = seriesModel.getData();
+    var emphasisStyle = seriesModel.getModel(['emphasis', 'itemStyle']).getItemStyle();
+    var blurStyle = seriesModel.getModel(['blur', 'itemStyle']).getItemStyle();
+    var selectStyle = seriesModel.getModel(['select', 'itemStyle']).getItemStyle();
+    var borderRadius = seriesModel.get(['itemStyle', 'borderRadius']);
+    var labelStatesModels = getLabelStatesModels(seriesModel);
+    var emphasisModel = seriesModel.getModel('emphasis');
+    var focus = emphasisModel.get('focus');
+    var blurScope = emphasisModel.get('blurScope');
+    var emphasisDisabled = emphasisModel.get('disabled');
+    var dataDims = isCartesian2d ? [data.mapDimension('x'), data.mapDimension('y'), data.mapDimension('value')] : [data.mapDimension('time'), data.mapDimension('value')];
+
+    for (var idx = start; idx < end; idx++) {
+      var rect = void 0;
+      var style = data.getItemVisual(idx, 'style');
+
+      if (isCartesian2d) {
+        var dataDimX = data.get(dataDims[0], idx);
+        var dataDimY = data.get(dataDims[1], idx); // Ignore empty data and out of extent data
+
+        if (isNaN(data.get(dataDims[2], idx)) || dataDimX < xAxisExtent[0] || dataDimX > xAxisExtent[1] || dataDimY < yAxisExtent[0] || dataDimY > yAxisExtent[1]) {
+          continue;
+        }
+
+        var point = coordSys.dataToPoint([dataDimX, dataDimY]);
+        rect = new Rect$1({
+          shape: {
+            x: point[0] - width / 2,
+            y: point[1] - height / 2,
+            width: width,
+            height: height
+          },
+          style: style
+        });
+      } else {
+        // Ignore empty data
+        if (isNaN(data.get(dataDims[1], idx))) {
+          continue;
+        }
+
+        rect = new Rect$1({
+          z2: 1,
+          shape: coordSys.dataToRect([data.get(dataDims[0], idx)]).contentShape,
+          style: style
+        });
+      } // Optimization for large datset
+
+
+      if (data.hasItemOption) {
+        var itemModel = data.getItemModel(idx);
+        var emphasisModel_1 = itemModel.getModel('emphasis');
+        emphasisStyle = emphasisModel_1.getModel('itemStyle').getItemStyle();
+        blurStyle = itemModel.getModel(['blur', 'itemStyle']).getItemStyle();
+        selectStyle = itemModel.getModel(['select', 'itemStyle']).getItemStyle(); // Each item value struct in the data would be firstly
+        // {
+        //     itemStyle: { borderRadius: [30, 30] },
+        //     value: [2022, 02, 22]
+        // }
+
+        borderRadius = itemModel.get(['itemStyle', 'borderRadius']);
+        focus = emphasisModel_1.get('focus');
+        blurScope = emphasisModel_1.get('blurScope');
+        emphasisDisabled = emphasisModel_1.get('disabled');
+        labelStatesModels = getLabelStatesModels(itemModel);
+      }
+
+      rect.shape.r = borderRadius;
+      var rawValue = seriesModel.getRawValue(idx);
+      var defaultText = '-';
+
+      if (rawValue && rawValue[2] != null) {
+        defaultText = rawValue[2] + '';
+      }
+
+      setLabelStyle(rect, labelStatesModels, {
+        labelFetcher: seriesModel,
+        labelDataIndex: idx,
+        defaultOpacity: style.opacity,
+        defaultText: defaultText
+      });
+      rect.ensureState('emphasis').style = emphasisStyle;
+      rect.ensureState('blur').style = blurStyle;
+      rect.ensureState('select').style = selectStyle;
+      toggleHoverEmphasis(rect, focus, blurScope, emphasisDisabled);
+      rect.incremental = incremental; // PENDING
+
+      if (incremental) {
+        // Rect must use hover layer if it's incremental.
+        rect.states.emphasis.hoverLayer = true;
+      }
+
+      group.add(rect);
+      data.setItemGraphicEl(idx, rect);
+
+      if (this._progressiveEls) {
+        this._progressiveEls.push(rect);
+      }
+    }
+  };
+
+  HeatmapView.prototype._renderOnGeo = function (geo, seriesModel, visualMapModel, api) {
+    var inRangeVisuals = visualMapModel.targetVisuals.inRange;
+    var outOfRangeVisuals = visualMapModel.targetVisuals.outOfRange; // if (!visualMapping) {
+    //     throw new Error('Data range must have color visuals');
+    // }
+
+    var data = seriesModel.getData();
+    var hmLayer = this._hmLayer || this._hmLayer || new HeatmapLayer$1();
+    hmLayer.blurSize = seriesModel.get('blurSize');
+    hmLayer.pointSize = seriesModel.get('pointSize');
+    hmLayer.minOpacity = seriesModel.get('minOpacity');
+    hmLayer.maxOpacity = seriesModel.get('maxOpacity');
+    var rect = geo.getViewRect().clone();
+    var roamTransform = geo.getRoamTransform();
+    rect.applyTransform(roamTransform); // Clamp on viewport
+
+    var x = Math.max(rect.x, 0);
+    var y = Math.max(rect.y, 0);
+    var x2 = Math.min(rect.width + rect.x, api.getWidth());
+    var y2 = Math.min(rect.height + rect.y, api.getHeight());
+    var width = x2 - x;
+    var height = y2 - y;
+    var dims = [data.mapDimension('lng'), data.mapDimension('lat'), data.mapDimension('value')];
+    var points = data.mapArray(dims, function (lng, lat, value) {
+      var pt = geo.dataToPoint([lng, lat]);
+      pt[0] -= x;
+      pt[1] -= y;
+      pt.push(value);
+      return pt;
+    });
+    var dataExtent = visualMapModel.getExtent();
+    var isInRange = visualMapModel.type === 'visualMap.continuous' ? getIsInContinuousRange(dataExtent, visualMapModel.option.range) : getIsInPiecewiseRange(dataExtent, visualMapModel.getPieceList(), visualMapModel.option.selected);
+    hmLayer.update(points, width, height, inRangeVisuals.color.getNormalizer(), {
+      inRange: inRangeVisuals.color.getColorMapper(),
+      outOfRange: outOfRangeVisuals.color.getColorMapper()
+    }, isInRange);
+    var img = new ZRImage$1({
+      style: {
+        width: width,
+        height: height,
+        x: x,
+        y: y,
+        image: hmLayer.canvas
+      },
+      silent: true
+    });
+    this.group.add(img);
+  };
+
+  HeatmapView.type = 'heatmap';
+  return HeatmapView;
+}(ChartView$1);
+
+var HeatmapView$1 = HeatmapView;
+
+var HeatmapSeriesModel =
+/** @class */
+function (_super) {
+  __extends$1(HeatmapSeriesModel, _super);
+
+  function HeatmapSeriesModel() {
+    var _this = _super !== null && _super.apply(this, arguments) || this;
+
+    _this.type = HeatmapSeriesModel.type;
+    return _this;
+  }
+
+  HeatmapSeriesModel.prototype.getInitialData = function (option, ecModel) {
+    return createSeriesData(null, this, {
+      generateCoord: 'value'
+    });
+  };
+
+  HeatmapSeriesModel.prototype.preventIncremental = function () {
+    var coordSysCreator = CoordinateSystem.get(this.get('coordinateSystem'));
+
+    if (coordSysCreator && coordSysCreator.dimensions) {
+      return coordSysCreator.dimensions[0] === 'lng' && coordSysCreator.dimensions[1] === 'lat';
+    }
+  };
+
+  HeatmapSeriesModel.type = 'series.heatmap';
+  HeatmapSeriesModel.dependencies = ['grid', 'geo', 'calendar'];
+  HeatmapSeriesModel.defaultOption = {
+    coordinateSystem: 'cartesian2d',
+    // zlevel: 0,
+    z: 2,
+    // Cartesian coordinate system
+    // xAxisIndex: 0,
+    // yAxisIndex: 0,
+    // Geo coordinate system
+    geoIndex: 0,
+    blurSize: 30,
+    pointSize: 20,
+    maxOpacity: 1,
+    minOpacity: 0,
+    select: {
+      itemStyle: {
+        borderColor: '#212121'
+      }
+    }
+  };
+  return HeatmapSeriesModel;
+}(SeriesModel$1);
+
+var HeatmapSeriesModel$1 = HeatmapSeriesModel;
+
+function install$c(registers) {
+  registers.registerChartView(HeatmapView$1);
+  registers.registerSeriesModel(HeatmapSeriesModel$1);
 }
 
 var inner$2 = makeInner();
@@ -95840,7 +99078,7 @@ function install$b(registers) {
 }
 
 function install$a(registers) {
-  use(install$e);
+  use(install$f);
   use(install$b);
 }
 
@@ -102815,11 +106053,11 @@ function install(registers) {
   registers.registerPainter('canvas', CanvasPainter$1);
 }
 
-var css$6 = ".BaseVerticalBarChart_module_root__db36f9d1 {\n  width: \"100%\";\n}";
+var css$8 = ".BaseVerticalBarChart_module_root__db36f9d1 {\n  width: \"100%\";\n}";
 var modules_8757388c = {"root":"BaseVerticalBarChart_module_root__db36f9d1"};
-n(css$6,{});
+n(css$8,{});
 
-use([install$8, install$9, install$a, install$1, install$5, install$g, install]);
+use([install$8, install$9, install$a, install$1, install$5, install$h, install]);
 var BaseVerticalBarChart = function BaseVerticalBarChart(props) {
   var _seriesData$metaData$, _seriesData$metaData, _seriesData$metaData$2, _seriesData$chartData, _seriesData$chartData9;
   var title = props.title,
@@ -103013,11 +106251,11 @@ BaseVerticalBarChart.defaultProps = {
   className: ''
 };
 
-var css$5 = ".BaseHorizontalBarChart_module_root__75f8867a {\n  width: \"100%\";\n}";
+var css$7 = ".BaseHorizontalBarChart_module_root__75f8867a {\n  width: \"100%\";\n}";
 var modules_8904c6a0 = {"root":"BaseHorizontalBarChart_module_root__75f8867a"};
-n(css$5,{});
+n(css$7,{});
 
-use([install$8, install$9, install$a, install$1, install$g, install]);
+use([install$8, install$9, install$a, install$1, install$h, install]);
 var BaseHorizontalBarChart = function BaseHorizontalBarChart(props) {
   var _seriesOption$length, _seriesData$metaData$, _seriesData$metaData, _seriesData$metaData$2, _seriesData$chartData, _seriesData$chartData9;
   var title = props.title,
@@ -103186,11 +106424,11 @@ BaseHorizontalBarChart.defaultProps = {
   className: ''
 };
 
-var css$4 = ".BasePieChart_module_root__45f70e28 {\n  width: \"100%\";\n}";
+var css$6 = ".BasePieChart_module_root__45f70e28 {\n  width: \"100%\";\n}";
 var modules_c20882aa = {"root":"BasePieChart_module_root__45f70e28"};
-n(css$4,{});
+n(css$6,{});
 
-use([install$8, install$9, install$a, install$1, install$f, install, install$5]);
+use([install$8, install$9, install$a, install$1, install$g, install, install$5]);
 var BasePieChart = function BasePieChart(props) {
   var _seriesData$chartData;
   var title = props.title,
@@ -103340,11 +106578,11 @@ BasePieChart.defaultProps = {
   className: ''
 };
 
-var css$3 = ".BaseRegionChart_module_root__617af265 {\n  width: \"100%\";\n}";
+var css$5 = ".BaseRegionChart_module_root__617af265 {\n  width: \"100%\";\n}";
 var modules_459dfe63 = {"root":"BaseRegionChart_module_root__617af265"};
-n(css$3,{});
+n(css$5,{});
 
-use([install$8, install$9, install$a, install$1, install$c, install$2, install$d, install$5, install]);
+use([install$8, install$9, install$a, install$1, install$d, install$2, install$e, install$5, install]);
 var BaseRegionChart = function BaseRegionChart(props) {
   var geoJson = props.geoJson,
     specialAreas = props.specialAreas,
@@ -103424,6 +106662,392 @@ BaseRegionChart.defaultProps = {
     aspectScale: '1:1'
   },
   onEvents: function onEvents() {},
+  style: {
+    width: '100%',
+    height: '100%'
+  },
+  className: ''
+};
+
+var css$4 = ".HeatMapChart_module_root__41cf6ace {\n  width: \"100%\";\n}";
+var modules_0ba85659 = {"root":"HeatMapChart_module_root__41cf6ace"};
+n(css$4,{});
+
+use([install$8, install$9, install$a, install$1, install$5, install$c, install]);
+var HeatMapChart = function HeatMapChart(props) {
+  var _seriesData$metaData$, _seriesData$metaData, _seriesData$metaData$2;
+  var title = props.title,
+    gridContainLabel = props.gridContainLabel,
+    gridOptions = props.gridOptions,
+    xAxisLabel = props.xAxisLabel,
+    seriesData = props.seriesData,
+    onEvents = props.onEvents,
+    xSplitLineShow = props.xSplitLineShow,
+    xAxisLineShow = props.xAxisLineShow,
+    xAxisTickShow = props.xAxisTickShow,
+    yAxisLabelShow = props.yAxisLabelShow,
+    ySplitLineShow = props.ySplitLineShow,
+    yAxisLineShow = props.yAxisLineShow,
+    yAxisTickShow = props.yAxisTickShow,
+    axisColor = props.axisColor,
+    tooltip = props.tooltip,
+    seriesName = props.seriesName,
+    seriesOption = props.seriesOption,
+    visualMap = props.visualMap,
+    style = props.style,
+    className = props.className;
+  var seriesOptionObject = {
+    type: 'heatmap',
+    label: {
+      show: true
+    },
+    emphasis: {
+      itemStyle: {
+        shadowBlur: 10,
+        shadowColor: 'rgba(0, 0, 0, 0.5)'
+      }
+    },
+    name: (_seriesData$metaData$ = seriesData === null || seriesData === void 0 ? void 0 : (_seriesData$metaData = seriesData.metaData) === null || _seriesData$metaData === void 0 ? void 0 : (_seriesData$metaData$2 = _seriesData$metaData.seriesDetails) === null || _seriesData$metaData$2 === void 0 ? void 0 : _seriesData$metaData$2.id) !== null && _seriesData$metaData$ !== void 0 ? _seriesData$metaData$ : '',
+    data: []
+  };
+  var generateXAxis = function generateXAxis() {
+    var row = Math.floor(Math.sqrt(seriesData.length));
+    var xAxis = [];
+    for (var i = 0; i < row; i++) {
+      xAxis.push(i);
+    }
+    return xAxis;
+  };
+  var generateYAxis = function generateYAxis() {
+    var col = Math.ceil(Math.sqrt(seriesData.length));
+    var yAxis = [];
+    for (var i = 0; i < col; i++) {
+      yAxis.push(i);
+    }
+    return yAxis;
+  };
+  var generateSeries = function generateSeries() {
+    var _seriesData$chartData, _seriesOptionObject$l, _seriesOption$label;
+    var newSeriesData = Object.keys((_seriesData$chartData = seriesData === null || seriesData === void 0 ? void 0 : seriesData.chartData) !== null && _seriesData$chartData !== void 0 ? _seriesData$chartData : {}).map(function (ob) {
+      return {
+        name: ob,
+        value: seriesData.chartData[ob].x1
+      };
+    });
+    var row = Math.floor(Math.sqrt(newSeriesData.length));
+    var col = Math.ceil(Math.sqrt(newSeriesData.length));
+    var dataNew = [];
+    for (var i = 0, k = 0; i < row; i++) {
+      for (var j = 0; j < col; j++, k++) {
+        var _newSeriesData$k$name, _newSeriesData$k, _newSeriesData$k$valu, _newSeriesData$k2;
+        dataNew.push({
+          name: (_newSeriesData$k$name = newSeriesData === null || newSeriesData === void 0 ? void 0 : (_newSeriesData$k = newSeriesData[k]) === null || _newSeriesData$k === void 0 ? void 0 : _newSeriesData$k.name) !== null && _newSeriesData$k$name !== void 0 ? _newSeriesData$k$name : '',
+          value: [j, i, (_newSeriesData$k$valu = newSeriesData === null || newSeriesData === void 0 ? void 0 : (_newSeriesData$k2 = newSeriesData[k]) === null || _newSeriesData$k2 === void 0 ? void 0 : _newSeriesData$k2.value) !== null && _newSeriesData$k$valu !== void 0 ? _newSeriesData$k$valu : '-']
+        });
+      }
+    }
+    return [_objectSpread2(_objectSpread2(_objectSpread2({}, seriesOptionObject), seriesOption), {}, {
+      label: _objectSpread2(_objectSpread2({}, (_seriesOptionObject$l = seriesOptionObject === null || seriesOptionObject === void 0 ? void 0 : seriesOptionObject.label) !== null && _seriesOptionObject$l !== void 0 ? _seriesOptionObject$l : {}), (_seriesOption$label = seriesOption === null || seriesOption === void 0 ? void 0 : seriesOption.label) !== null && _seriesOption$label !== void 0 ? _seriesOption$label : {}),
+      name: seriesName,
+      data: dataNew
+    })];
+  };
+  return /*#__PURE__*/jsx(_default, {
+    option: {
+      title: {
+        text: title
+      },
+      grid: _objectSpread2({
+        containLabel: gridContainLabel
+      }, gridOptions),
+      xAxis: {
+        data: generateXAxis(),
+        type: 'category',
+        axisLabel: _objectSpread2({}, xAxisLabel),
+        splitLine: {
+          show: xSplitLineShow
+        },
+        axisLine: {
+          show: xAxisLineShow
+        },
+        axisTick: {
+          show: xAxisTickShow
+        },
+        splitArea: {
+          show: true
+        }
+      },
+      tooltip: _objectSpread2({}, tooltip),
+      yAxis: {
+        data: generateYAxis(),
+        type: 'category',
+        splitArea: {
+          show: true
+        },
+        axisLabel: {
+          show: yAxisLabelShow,
+          color: axisColor
+        },
+        splitLine: {
+          show: ySplitLineShow
+        },
+        axisLine: {
+          show: yAxisLineShow
+        },
+        axisTick: {
+          show: yAxisTickShow
+        }
+      },
+      visualMap: _objectSpread2({}, visualMap),
+      series: generateSeries()
+    },
+    onEvents: onEvents,
+    echarts: echarts,
+    notMerge: true,
+    lazyUpdate: true,
+    className: classes(className, modules_0ba85659.root),
+    style: style
+  });
+};
+HeatMapChart.propTypes = {
+  title: propTypes$1.exports.string,
+  gridContainLabel: propTypes$1.exports.bool,
+  gridOptions: propTypes$1.exports.object,
+  xAxisLabel: propTypes$1.exports.object,
+  tooltip: propTypes$1.exports.object,
+  seriesData: propTypes$1.exports.object,
+  onEvents: propTypes$1.exports.func,
+  xSplitLineShow: propTypes$1.exports.bool,
+  xAxisLineShow: propTypes$1.exports.bool,
+  xAxisTickShow: propTypes$1.exports.bool,
+  yAxisLabelShow: propTypes$1.exports.bool,
+  ySplitLineShow: propTypes$1.exports.bool,
+  yAxisLineShow: propTypes$1.exports.bool,
+  yAxisTickShow: propTypes$1.exports.bool,
+  axisColor: propTypes$1.exports.string,
+  seriesName: propTypes$1.exports.string,
+  visualMap: propTypes$1.exports.shape({}),
+  seriesOption: propTypes$1.exports.shape({}),
+  style: propTypes$1.exports.objectOf(propTypes$1.exports.shape),
+  className: propTypes$1.exports.string
+};
+HeatMapChart.defaultProps = {
+  title: '',
+  gridContainLabel: false,
+  gridOptions: {
+    left: 0,
+    right: 0,
+    bottom: 0,
+    top: 0
+  },
+  xAxisLabel: {},
+  tooltip: {
+    position: 'top'
+  },
+  seriesData: {},
+  onEvents: function onEvents() {},
+  yAxisLabelShow: false,
+  xSplitLineShow: false,
+  xAxisLineShow: false,
+  xAxisTickShow: false,
+  ySplitLineShow: false,
+  yAxisLineShow: false,
+  yAxisTickShow: false,
+  axisColor: '',
+  visualMap: {},
+  seriesName: '',
+  seriesOption: {
+    label: {
+      show: true
+    }
+  },
+  style: {
+    width: '100%',
+    height: '100%'
+  },
+  className: ''
+};
+
+var css$3 = ":root {\n  --white: #ffffff;\n  --black: #000000;\n  --dark-grey: #333333;\n  --dark-grey-o-85: rgba(51, 51, 51, 0.85);\n  --grey: #737373;\n  --grey1: #888888;\n  --grey2: #a6a6a6;\n  --grey3: #bbbbbb;\n  --grey4: #c4c4c4;\n  --grey5: #dddddd;\n  --grey6: #e8e8e8;\n  --grey7: #eeeeee;\n  --grey8: #f2f2f2;\n  --grey9: #eff0f0;\n  --grey10: #f7f7f7;\n  --highlight: #0f62fe;\n  --dark-blue: #001833;\n  --background: #d0e2ff;\n  --banyan-blue: #00037c;\n  --banyan-orange: #ff892a;\n  --banyan-pink: #ff1597;\n  --banyan-gradient: linear-gradient(\n  \t84.71deg,\n  \tvar(--banyan-pink) 0.48%,\n  \tvar(--banyan-orange) 99.57%\n  );\n  --error: #da1e28;\n  --error-bg: #fff1f1;\n  --error-outline: rgba(218, 30, 40, 0.08);\n  --success: #24a148;\n  --success-bg: #defbe6;\n  --success-outline: rgba(36, 161, 72, 0.08);\n  --warning: #f1c21b;\n  --warning-bg: #fff8e1;\n  --warning-outline: rgba(203, 160, 6, 0.08);\n  --info: #0043ce;\n  --info-bg: #edf5ff;\n  --info-outline: #2864db98;\n}\n\n.BaseAreaChart_module_root__c98697a0 {\n  width: \"100%\";\n}";
+var modules_6d3781f0 = {"white":"var(--white)","black":"var(--black)","dark-grey":"var(--dark-grey)","dark-grey-o-85":"var(--dark-grey-o-85)","grey":"var(--grey)","grey1":"var(--grey1)","grey2":"var(--grey2)","grey3":"var(--grey3)","grey4":"var(--grey4)","grey5":"var(--grey5)","grey6":"var(--grey6)","grey7":"var(--grey7)","grey8":"var(--grey8)","grey9":"var(--grey9)","grey10":"var(--grey10)","highlight":"var(--highlight)","dark-blue":"var(--dark-blue)","background":"var(--background)","banyan-blue":"var(--banyan-blue)","banyan-orange":"var(--banyan-orange)","banyan-pink":"var(--banyan-pink)","banyan-gradient":"var(--banyan-gradient)","error":"var(--error)","error-bg":"var(--error-bg)","error-outline":"var(--error-outline)","success":"var(--success)","success-bg":"var(--success-bg)","success-outline":"var(--success-outline)","warning":"var(--warning)","warning-bg":"var(--warning-bg)","warning-outline":"var(--warning-outline)","info":"var(--info)","info-bg":"var(--info-bg)","info-outline":"var(--info-outline)","root":"BaseAreaChart_module_root__c98697a0"};
+n(css$3,{});
+
+use([install$8, install$5, install$9, install$a, install$1, install$i, install]);
+var BaseAreaChart = function BaseAreaChart(props) {
+  var _seriesData$chartData, _seriesData$chartData6, _seriesData$metaData$, _seriesData$metaData;
+  var title = props.title,
+    gridOptions = props.gridOptions,
+    gridContainLabel = props.gridContainLabel,
+    seriesData = props.seriesData,
+    tooltip = props.tooltip,
+    legendShow = props.legendShow,
+    xAxisShow = props.xAxisShow,
+    yAxisLabelShow = props.yAxisLabelShow,
+    ySplitLineShow = props.ySplitLineShow,
+    yAxisLineShow = props.yAxisLineShow,
+    yAxisTickShow = props.yAxisTickShow,
+    seriesOption = props.seriesOption,
+    lineStyleWidth = props.lineStyleWidth,
+    lineStyleType = props.lineStyleType,
+    lineStyleCap = props.lineStyleCap,
+    lineStyleJoin = props.lineStyleJoin,
+    stacked = props.stacked,
+    cursor = props.cursor,
+    smooth = props.smooth,
+    style = props.style,
+    className = props.className;
+  var seriesOptionObject = {
+    type: 'line',
+    color: 'blue',
+    symbol: 'emptyCircle',
+    stack: stacked,
+    symbolSize: 4,
+    smooth: smooth,
+    name: 'SeriesName',
+    connectNulls: true,
+    clip: true,
+    cursor: cursor,
+    groupPadding: 3,
+    showBackground: true,
+    backgroundStyle: {
+      color: 'whitesmoke'
+    },
+    label: {
+      color: 'black',
+      offset: [0, 0],
+      show: false,
+      position: 'top',
+      formatter: function formatter(param) {
+        return param.value;
+      }
+    },
+    lineStyle: {
+      width: lineStyleWidth,
+      type: lineStyleType,
+      cap: lineStyleCap,
+      join: lineStyleJoin
+    },
+    areaStyle: {
+      color: 'lightblue',
+      origin: 'auto',
+      shadowBlur: 0,
+      shadowColor: 'white',
+      shadowOffsetX: 0,
+      shadowOffsetY: 0,
+      opacity: 1
+    },
+    emphasis: {
+      focus: 'series'
+    },
+    data: Object.keys((_seriesData$chartData = seriesData === null || seriesData === void 0 ? void 0 : seriesData.chartData) !== null && _seriesData$chartData !== void 0 ? _seriesData$chartData : {}).map(function (key) {
+      var _seriesData$chartData2, _seriesData$chartData3;
+      return (_seriesData$chartData2 = seriesData === null || seriesData === void 0 ? void 0 : (_seriesData$chartData3 = seriesData.chartData) === null || _seriesData$chartData3 === void 0 ? void 0 : _seriesData$chartData3[key]) !== null && _seriesData$chartData2 !== void 0 ? _seriesData$chartData2 : '';
+    })
+  };
+  var generateSeries = function generateSeries() {
+    return seriesOption.map(function (objectData, index) {
+      var _Object$keys$index, _Object$keys, _seriesData$chartData4, _seriesOptionObject$l, _objectData$label, _seriesOptionObject$l2, _objectData$lineStyle, _seriesOptionObject$a, _objectData$areaStyle, _seriesOptionObject$e, _objectData$emphasis, _Object$values$index, _Object$values, _seriesData$chartData5;
+      return _objectSpread2(_objectSpread2(_objectSpread2({}, seriesOptionObject), objectData), {}, {
+        name: (_Object$keys$index = (_Object$keys = Object.keys((_seriesData$chartData4 = seriesData === null || seriesData === void 0 ? void 0 : seriesData.chartData) !== null && _seriesData$chartData4 !== void 0 ? _seriesData$chartData4 : {})) === null || _Object$keys === void 0 ? void 0 : _Object$keys[index]) !== null && _Object$keys$index !== void 0 ? _Object$keys$index : '',
+        label: _objectSpread2(_objectSpread2({}, (_seriesOptionObject$l = seriesOptionObject === null || seriesOptionObject === void 0 ? void 0 : seriesOptionObject.label) !== null && _seriesOptionObject$l !== void 0 ? _seriesOptionObject$l : {}), (_objectData$label = objectData === null || objectData === void 0 ? void 0 : objectData.label) !== null && _objectData$label !== void 0 ? _objectData$label : {}),
+        lineStyle: _objectSpread2(_objectSpread2({}, (_seriesOptionObject$l2 = seriesOptionObject === null || seriesOptionObject === void 0 ? void 0 : seriesOptionObject.lineStyle) !== null && _seriesOptionObject$l2 !== void 0 ? _seriesOptionObject$l2 : {}), (_objectData$lineStyle = objectData === null || objectData === void 0 ? void 0 : objectData.lineStyle) !== null && _objectData$lineStyle !== void 0 ? _objectData$lineStyle : {}),
+        areaStyle: _objectSpread2(_objectSpread2({}, (_seriesOptionObject$a = seriesOptionObject === null || seriesOptionObject === void 0 ? void 0 : seriesOptionObject.areaStyle) !== null && _seriesOptionObject$a !== void 0 ? _seriesOptionObject$a : {}), (_objectData$areaStyle = objectData === null || objectData === void 0 ? void 0 : objectData.areaStyle) !== null && _objectData$areaStyle !== void 0 ? _objectData$areaStyle : {}),
+        emphasis: _objectSpread2(_objectSpread2({}, (_seriesOptionObject$e = seriesOptionObject === null || seriesOptionObject === void 0 ? void 0 : seriesOptionObject.emphasis) !== null && _seriesOptionObject$e !== void 0 ? _seriesOptionObject$e : {}), (_objectData$emphasis = objectData === null || objectData === void 0 ? void 0 : objectData.emphasis) !== null && _objectData$emphasis !== void 0 ? _objectData$emphasis : {}),
+        data: (_Object$values$index = (_Object$values = Object.values((_seriesData$chartData5 = seriesData === null || seriesData === void 0 ? void 0 : seriesData.chartData) !== null && _seriesData$chartData5 !== void 0 ? _seriesData$chartData5 : {})) === null || _Object$values === void 0 ? void 0 : _Object$values[index]) !== null && _Object$values$index !== void 0 ? _Object$values$index : ''
+      });
+    });
+  };
+  return /*#__PURE__*/jsx(_default, {
+    option: {
+      title: {
+        text: title
+      },
+      grid: _objectSpread2({
+        containLabel: gridContainLabel
+      }, gridOptions),
+      tooltip: _objectSpread2({}, tooltip),
+      legend: {
+        show: legendShow,
+        data: Object.keys((_seriesData$chartData6 = seriesData === null || seriesData === void 0 ? void 0 : seriesData.chartData) !== null && _seriesData$chartData6 !== void 0 ? _seriesData$chartData6 : [])
+      },
+      xAxis: [{
+        type: 'category',
+        show: xAxisShow,
+        boundaryGap: false,
+        data: (_seriesData$metaData$ = seriesData === null || seriesData === void 0 ? void 0 : (_seriesData$metaData = seriesData.metaData) === null || _seriesData$metaData === void 0 ? void 0 : _seriesData$metaData.xAxisData) !== null && _seriesData$metaData$ !== void 0 ? _seriesData$metaData$ : []
+      }],
+      yAxis: [{
+        type: 'value',
+        axisLabel: {
+          show: yAxisLabelShow
+        },
+        splitLine: {
+          show: ySplitLineShow
+        },
+        axisLine: {
+          show: yAxisLineShow
+        },
+        axisTick: {
+          show: yAxisTickShow
+        }
+      }],
+      series: generateSeries()
+    },
+    echarts: echarts,
+    notMerge: true,
+    lazyUpdate: true,
+    className: classes(className, modules_6d3781f0.root),
+    style: style
+  });
+};
+BaseAreaChart.propTypes = {
+  title: propTypes$1.exports.string,
+  gridOptions: propTypes$1.exports.object,
+  gridContainLabel: propTypes$1.exports.bool,
+  tooltip: propTypes$1.exports.object,
+  legendShow: propTypes$1.exports.bool,
+  xAxisShow: propTypes$1.exports.bool,
+  seriesData: propTypes$1.exports.objectOf(propTypes$1.exports.shape),
+  stacked: propTypes$1.exports.bool,
+  yAxisLabelShow: propTypes$1.exports.bool,
+  ySplitLineShow: propTypes$1.exports.bool,
+  yAxisLineShow: propTypes$1.exports.bool,
+  yAxisTickShow: propTypes$1.exports.bool,
+  cursor: propTypes$1.exports.string,
+  seriesOption: propTypes$1.exports.arrayOf(propTypes$1.exports.object),
+  lineStyleWidth: propTypes$1.exports.number,
+  lineStyleType: propTypes$1.exports.oneOf(['dashed', 'solid', 'dotted']),
+  lineStyleCap: propTypes$1.exports.oneOf(['butt', 'round', 'square']),
+  lineStyleJoin: propTypes$1.exports.oneOf(['round', 'bevel', 'miter']),
+  smooth: propTypes$1.exports.bool,
+  style: propTypes$1.exports.objectOf(propTypes$1.exports.shape),
+  className: propTypes$1.exports.string
+};
+BaseAreaChart.defaultProps = {
+  title: '',
+  gridOptions: {
+    left: 0,
+    right: 0,
+    bottom: 0,
+    top: 0
+  },
+  gridContainLabel: false,
+  tooltip: {},
+  stacked: false,
+  legendShow: false,
+  xAxisShow: false,
+  seriesData: {},
+  yAxisLabelShow: false,
+  ySplitLineShow: false,
+  yAxisLineShow: false,
+  yAxisTickShow: false,
+  cursor: 'default',
+  seriesOption: [],
+  lineStyleWidth: 4,
+  lineStyleType: 'solid',
+  lineStyleCap: 'butt',
+  lineStyleJoin: 'round',
+  smooth: false,
   style: {
     width: '100%',
     height: '100%'
@@ -105593,7 +109217,7 @@ function useDeepCompareMemoize(value) {
   return ref.current;
 }
 
-var _excluded = ["onClick", "onIdle", "children", "style", "mapId", "clustered", "fitBounds"];
+var _excluded$1 = ["onClick", "onIdle", "children", "style", "mapId", "clustered", "fitBounds"];
 var BaseMap = function BaseMap(props) {
   // eslint-disable-next-line object-curly-newline
   var onClick = props.onClick,
@@ -105603,12 +109227,17 @@ var BaseMap = function BaseMap(props) {
     mapId = props.mapId,
     clustered = props.clustered,
     fitBounds = props.fitBounds,
-    options = _objectWithoutProperties$1(props, _excluded);
+    options = _objectWithoutProperties$1(props, _excluded$1);
   var ref = useRef(null);
+  var markersRef = useRef([]);
   var _useState = useState(),
     _useState2 = _slicedToArray(_useState, 2),
     map = _useState2[0],
     setMap = _useState2[1];
+  var _useState3 = useState(null),
+    _useState4 = _slicedToArray(_useState3, 2),
+    activeInfoWindow = _useState4[0],
+    setActiveInfoWindow = _useState4[1];
   useEffect(function () {
     if (ref.current && !map) {
       setMap(new window.google.maps.Map(ref.current, {
@@ -105617,12 +109246,13 @@ var BaseMap = function BaseMap(props) {
     }
   }, [map]);
   useEffect(function () {
-    if (clustered && map && Children.count(children) > 0) {
-      var markers = Children.map(children, function (child) {
-        return new google.maps.Marker({
-          position: child.props.position
-        });
+    var _markersRef$current;
+    if (clustered && map && Children.count(children) > 0 && (markersRef === null || markersRef === void 0 ? void 0 : (_markersRef$current = markersRef.current) === null || _markersRef$current === void 0 ? void 0 : _markersRef$current.length) > 0) {
+      var _markersRef$current2;
+      var markers = markersRef === null || markersRef === void 0 ? void 0 : (_markersRef$current2 = markersRef.current) === null || _markersRef$current2 === void 0 ? void 0 : _markersRef$current2.map(function (marker) {
+        return marker.current;
       });
+
       // eslint-disable-next-line no-new
       new MarkerClusterer({
         map: map,
@@ -105678,11 +109308,23 @@ var BaseMap = function BaseMap(props) {
     children: [/*#__PURE__*/jsx("div", {
       ref: ref,
       style: style
-    }), !clustered && Children.map(children, function (child) {
+    }), Children.toArray(children).filter(function (child) {
+      return /*#__PURE__*/isValidElement(child);
+    }).map(function (child, index) {
+      if (index === 0) {
+        markersRef.current = [];
+      }
       if ( /*#__PURE__*/isValidElement(child)) {
+        var _markersRef$current3;
+        var childRef = /*#__PURE__*/createRef();
+        markersRef === null || markersRef === void 0 ? void 0 : (_markersRef$current3 = markersRef.current) === null || _markersRef$current3 === void 0 ? void 0 : _markersRef$current3.push(childRef);
         // set the map prop on the child component
         return /*#__PURE__*/cloneElement(child, {
-          map: map
+          map: map,
+          ref: childRef,
+          index: index,
+          activeInfoWindow: activeInfoWindow,
+          setActiveInfoWindow: setActiveInfoWindow
         });
       }
       return null;
@@ -105720,30 +109362,97 @@ Map$1.defaultProps = {
   libraries: undefined
 };
 
-var Marker = function Marker(options) {
+var _excluded = ["children", "activeInfoWindow", "setActiveInfoWindow", "index"];
+
+// eslint-disable-next-line prefer-arrow-callback
+var Marker = /*#__PURE__*/forwardRef(function Marker(_ref, ref) {
+  var children = _ref.children,
+    activeInfoWindow = _ref.activeInfoWindow,
+    setActiveInfoWindow = _ref.setActiveInfoWindow,
+    index = _ref.index,
+    options = _objectWithoutProperties$1(_ref, _excluded);
   var _useState = useState(),
     _useState2 = _slicedToArray(_useState, 2),
     marker = _useState2[0],
     setMarker = _useState2[1];
+  var infoWindowRef = useRef(null);
   useEffect(function () {
+    if (marker) {
+      ref.current = marker;
+    }
     if (!marker) {
-      setMarker(new google.maps.Marker());
+      var newMap = new google.maps.Marker();
+      setMarker(newMap);
+      ref.current = newMap;
     }
 
     // remove marker from map on unmount
     return function () {
       if (marker) {
         marker.setMap(null);
+        ref.current = null;
       }
     };
   }, [marker]);
+  useEffect(function () {
+    if (marker && Children.count(children) === 1 && infoWindowRef !== null && infoWindowRef !== void 0 && infoWindowRef.current) {
+      var infoWindow = infoWindowRef === null || infoWindowRef === void 0 ? void 0 : infoWindowRef.current;
+      marker.addListener('click', function () {
+        setActiveInfoWindow(index);
+        infoWindow.open({
+          anchor: marker,
+          map: options.map
+        });
+      });
+    }
+  }, [marker, children]);
   useEffect(function () {
     if (marker) {
       marker.setOptions(options);
     }
   }, [marker, options]);
+  useEffect(function () {
+    if (activeInfoWindow == null || activeInfoWindow !== index) {
+      var infoWindow = infoWindowRef === null || infoWindowRef === void 0 ? void 0 : infoWindowRef.current;
+      infoWindow.close();
+    }
+  }, [activeInfoWindow]);
+  if (Children.count(children) === 1) {
+    var _Children$toArray;
+    var child = (_Children$toArray = Children.toArray(children)) === null || _Children$toArray === void 0 ? void 0 : _Children$toArray[0];
+    if ( /*#__PURE__*/isValidElement(child)) {
+      // set the map prop on the child component
+      return /*#__PURE__*/cloneElement(child, {
+        ref: infoWindowRef
+      });
+    }
+  }
   return null;
+});
+
+// eslint-disable-next-line prefer-arrow-callback
+var InfoWindow = /*#__PURE__*/forwardRef(function InfoWindow(options, ref) {
+  var _useState = useState(),
+    _useState2 = _slicedToArray(_useState, 2),
+    infoWindow = _useState2[0],
+    setInfoWindow = _useState2[1];
+  useEffect(function () {
+    if (!infoWindow) {
+      var newInfoWindow = new google.maps.InfoWindow();
+      setInfoWindow(newInfoWindow);
+      ref.current = newInfoWindow;
+    }
+  }, [infoWindow]);
+  useEffect(function () {
+    if (infoWindow) {
+      infoWindow.setOptions(options);
+    }
+  }, [infoWindow, options]);
+  return null;
+});
+InfoWindow.defaultProps = {
+  disableAutoPan: true
 };
 
-export { Accordion, Alert, AlertIcon, AngleDouble as AngleDoubleIcon, Arrow$1 as ArrowIcon, BASE_URLS, BaseButton, BaseCell, BaseHorizontalBarChart, BaseMap, BaseModal, BasePieChart, BaseRegionChart, BaseSidePanel, BaseTable, BaseVerticalBarChart, BaseWidget, BreadCrumbs, BreadcrumbSeperator as BreadcrumbSeperatorIcon, Button, COLORS, Calender$1 as CalenderIcon, Caret as CaretIcon, Checkbox, CheckboxIcon, Chevron as ChevronIcon, Chip, Close as CloseIcon, Clouds as CloudIcons, CodeSnippet, Columns$1 as ColumnsIcon, Copy as CopyIcon, Cross$1 as CrossIcon, DAYS, Databases as DatabaseIcons, DatePicker, Delete as DeleteIcon, DialogBox, DisplayPicture, Download as DownloadIcon, Dropdown, DropdownItem, Edit as EditIcon, ExpandArrowAlt as ExpandArrowAltIcon, FULL_MONTHS, Filter as FilterIcon, HalfShade as HalfShadeIcon, HierarchyBrowser, HierarchyItem, Link, MONTHS, MagnifyingGlass as MagnifyingGlassIcon, Map$1 as Map, Marker, Nut as NutIcon, PageHeader, Pagination, PaginationList, Plus as PlusIcon, Popover, Popper, Radio, RadioIcon, Refresh as RefreshIcon, Reset as ResetIcon, SearchIcon, Server as ServerIcon, Settings as SettingsIcon, Sort as SortIcon, Stepper, Table, TableCell, TableChip, TableChips, TableColumn, TableFilters, Tabs, Text, TextField, Tick as TickIcon, TimePicker, Toggle, Tooltip, Trash as TrashIcon, View$2 as ViewIcon, classes, cloneDeep, defaultProps, doubleDigitted, get$1 as get, getCSSVariableValue, getCurrentSearchParams, getDateFromEpoch, getDatesInAMonth, getDayInfo, getInitialsOfName, getJSDateFromEpoch, getPagination, getSpacedDisplayName, getTimeFromEpoch, inputHelper, propTypes, stringToPath, sumArrayOfObjects, uniqueArray, uniqueArrayOfObjects, useOutsideClickListener, usePagination, useResize, useRowFilter };
+export { Accordion, Alert, AlertIcon, AngleDouble as AngleDoubleIcon, Arrow$1 as ArrowIcon, BASE_URLS, BaseAreaChart, BaseButton, BaseCell, BaseHorizontalBarChart, BaseMap, BaseModal, BasePieChart, BaseRegionChart, BaseSidePanel, BaseTable, BaseVerticalBarChart, BaseWidget, BreadCrumbs, BreadcrumbSeperator as BreadcrumbSeperatorIcon, Button, COLORS, Calender$1 as CalenderIcon, Caret as CaretIcon, Checkbox, CheckboxIcon, Chevron as ChevronIcon, Chip, Close as CloseIcon, Clouds as CloudIcons, CodeSnippet, Columns$1 as ColumnsIcon, Copy as CopyIcon, Cross$1 as CrossIcon, DAYS, Databases as DatabaseIcons, DatePicker, Delete as DeleteIcon, DialogBox, DisplayPicture, Download as DownloadIcon, Dropdown, DropdownItem, Edit as EditIcon, ExpandArrowAlt as ExpandArrowAltIcon, FULL_MONTHS, Filter as FilterIcon, HalfShade as HalfShadeIcon, HeatMapChart, HierarchyBrowser, HierarchyItem, InfoWindow, Link, MONTHS, MagnifyingGlass as MagnifyingGlassIcon, Map$1 as Map, Marker, Nut as NutIcon, PageHeader, Pagination, PaginationList, Plus as PlusIcon, Popover, Popper, Radio, RadioIcon, Refresh as RefreshIcon, Reset as ResetIcon, SearchIcon, Server as ServerIcon, Settings as SettingsIcon, Sort as SortIcon, Stepper, Table, TableCell, TableChip, TableChips, TableColumn, TableFilters, Tabs, Text, TextField, Tick as TickIcon, TimePicker, Toggle, Tooltip, Trash as TrashIcon, View$2 as ViewIcon, classes, cloneDeep, defaultProps, doubleDigitted, get$1 as get, getCSSVariableValue, getCurrentSearchParams, getDateFromEpoch, getDatesInAMonth, getDatesInStringFormat, getDayInfo, getInitialsOfName, getJSDateFromEpoch, getPagination, getSpacedDisplayName, getTimeFromEpoch, inputHelper, propTypes, safeJSONParse, stringToPath, sumArrayOfObjects, uniqueArray, uniqueArrayOfObjects, useOutsideClickListener, usePagination, useResize, useRowFilter };
 //# sourceMappingURL=index.js.map

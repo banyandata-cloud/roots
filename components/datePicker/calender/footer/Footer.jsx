@@ -30,6 +30,8 @@ const Footer = (props) => {
 		range,
 		goToDate,
 		onApply,
+		setFixedRange,
+		customRanges,
 	} = props;
 
 	const { date, month, year } = selectedDate;
@@ -40,8 +42,9 @@ const Footer = (props) => {
 
 	const datesSelected = date || dates.length === 2;
 
-	const selectFixedDateRange = (dateRange) => {
+	const selectFixedDateRange = (dateRange, title) => {
 		setSelectedRange(dateRange);
+		setFixedRange(title);
 	};
 
 	const resetDate = () => {
@@ -64,16 +67,20 @@ const Footer = (props) => {
 		if (time.meridian === 'PM') {
 			hours = 12 + parseInt(time.hours, 10);
 		}
+
 		const unix = getUnixTime(
 			new Date(
-				selectedDate.year || getDayInfo(new Date()).year,
-				monthNumber || getDayInfo(new Date()).monthAsNumber,
-				selectedDate.date || getDayInfo(new Date()).dateAsNumber,
+				!Number.isNaN(selectedDate.year) ? selectedDate.year : getDayInfo(new Date()).year,
+				!Number.isNaN(monthNumber) ? monthNumber : getDayInfo(new Date()).monthAsNumber,
+				!Number.isNaN(selectedDate.date)
+					? selectedDate.date
+					: getDayInfo(new Date()).dateAsNumber,
 				Number(hours),
 				Number(time.minutes),
 				Number(time.seconds)
 			)
 		);
+
 		setSelectedDate({
 			...selectedDate,
 			unix,
@@ -111,11 +118,13 @@ const Footer = (props) => {
 
 	return (
 		<div className={styles.root}>
-			<TimePicker
-				value={getTimePickerValue()}
-				onChange={onTimeChange}
-				className={styles['time-picker']}
-			/>
+			{!range && (
+				<TimePicker
+					value={getTimePickerValue()}
+					onChange={onTimeChange}
+					className={styles['time-picker']}
+				/>
+			)}
 
 			{datesSelected && dates?.length === 2 ? (
 				<SelectedDateView
@@ -140,7 +149,7 @@ const Footer = (props) => {
 
 			{range && (
 				<div className={styles['date-ranges']}>
-					{dateRanges.map(({ dateRange, title }) => {
+					{dateRanges(customRanges).map(({ dateRange, title }) => {
 						const selectedFixedDateRange =
 							dateRange.unix.toString() === selectedRange.unix?.toString();
 
@@ -151,7 +160,7 @@ const Footer = (props) => {
 									selectedFixedDateRange ? styles.selected : ''
 								)}
 								onClick={() => {
-									selectFixedDateRange(dateRange);
+									selectFixedDateRange(dateRange, title);
 								}}
 								key={title}>
 								<HalfShadeIcon />
