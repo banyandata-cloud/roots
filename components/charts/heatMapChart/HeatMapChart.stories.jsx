@@ -461,7 +461,6 @@ Default.args = {
 		bottom: 0,
 		top: 15,
 	},
-	xAxisShow: false,
 	xAxisLabel: {
 		show: false,
 	},
