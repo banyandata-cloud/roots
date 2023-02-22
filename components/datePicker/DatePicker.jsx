@@ -18,7 +18,7 @@ import { Calender } from './calender';
 import { CalenderIcon, ChevronIcon, CrossIcon } from '../icons';
 import { Popper } from '../popper';
 import styles from './DatePicker.module.css';
-import { isMaxRangeExceeded } from './utils';
+import { getDateRangeTag, isMaxRangeExceeded } from './utils';
 import { MONTHS } from '../../constants';
 import { dateRanges } from './calender/footer/utils';
 
@@ -134,7 +134,7 @@ const DatePicker = (props) => {
 	]);
 
 	const apply = () => {
-		if (selectedRange.dates.length === 2) {
+		if (selectedRange.dates?.length === 2) {
 			if (
 				maxRange !== null &&
 				!isMaxRangeExceeded({
@@ -147,7 +147,7 @@ const DatePicker = (props) => {
 				return;
 			}
 			setError('');
-			onApply(selectedRange.unix, fixedRange);
+			onApply(selectedRange.unix, fixedRange, getDateRangeTag(selectedRange.unix));
 			setOpen(false);
 		} else {
 			onApply(selectedDate.unix);
