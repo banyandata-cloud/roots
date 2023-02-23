@@ -145,6 +145,10 @@ export const Default = Template.bind({});
 
 Default.args = {
 	title: 'Widget Title - 7 Services',
+	showBack: true,
+	onBack: () => {
+		alert('This will bring you back');
+	},
 	options: [
 		{
 			id: 'toggle',

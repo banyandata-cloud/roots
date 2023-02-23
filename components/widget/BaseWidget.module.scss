@@ -12,6 +12,18 @@
 
 		.header-title {
 			@include flex(row, space-between);
+			gap: 0.5rem;
+			.back {
+				height: 1.5rem;
+				width: 1.5rem;
+				[data-elem='component1'] {
+					.icon {
+						width: 1.5rem;
+						height: 1.5rem;
+						fill: $white;
+					}
+				}
+			}
 			&.no-options {
 				flex: 1;
 			}
