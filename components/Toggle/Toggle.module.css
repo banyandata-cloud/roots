@@ -7,7 +7,6 @@ div.root {
   gap: 0.25rem;
   padding: 0.25rem;
   background: var(--grey8);
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   border-radius: 0.4rem 0.4rem;

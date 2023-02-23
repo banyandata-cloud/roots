@@ -58,7 +58,7 @@ const TableChip = (props) => {
 		<BaseCell
 			radius='default'
 			size='auto'
-			className={styles['chip-parent']}
+			className={classes(styles['chip-parent'], disabled ? styles.disabled : '')}
 			component1={Icon}
 			component2={Title}
 			component3={RightComponent}
