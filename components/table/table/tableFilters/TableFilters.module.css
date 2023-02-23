@@ -57,8 +57,7 @@
   border-color: var(--grey4);
 }
 .root[data-elem=base-cell] > [data-elem=component2] .center [data-elem=base-cell]:focus-within {
-  border-color: var(--highlight);
-  border-width: 1px;
+  outline: 1px solid var(--highlight);
 }
 .root[data-elem=base-cell] > [data-elem=component2] .center .icon {
   width: 1.25rem;

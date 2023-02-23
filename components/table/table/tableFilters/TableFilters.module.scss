@@ -60,8 +60,7 @@
 			[data-elem='base-cell'] {
 				border-color: $grey4;
 				&:focus-within {
-					border-color: $highlight;
-					border-width: 1px;
+					outline: 1px solid $highlight;
 				}
 			}
 
