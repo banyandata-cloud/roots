@@ -12,18 +12,15 @@
 
 		.header-title {
 			@include flex(row, space-between);
-			.button {
-				padding-top: 0.25rem;
-				padding-right: 0.5rem;
-				.back {
-					height: 1.5rem;
-					width: 1.5rem;
-					[data-elem='component1'] {
-						.icon {
-							width: 1.5rem;
-							height: 1.5rem;
-							fill: $white;
-						}
+			gap: 0.5rem;
+			.back {
+				height: 1.5rem;
+				width: 1.5rem;
+				[data-elem='component1'] {
+					.icon {
+						width: 1.5rem;
+						height: 1.5rem;
+						fill: $white;
 					}
 				}
 			}

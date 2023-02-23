@@ -64,7 +64,6 @@ const BaseWidget = (props) => {
 					)}
 					data-elem='header-title'>
 					{showBack && (
-						<div className={styles.button}>
 							<Button
 								size='auto'
 								radius='round'
@@ -74,7 +73,6 @@ const BaseWidget = (props) => {
 								}}
 								onClick={onBack}
 							/>
-						</div>
 					)}
 					<span className={styles.title} data-elem='title'>
 						{title}

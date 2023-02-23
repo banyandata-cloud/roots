@@ -19,16 +19,13 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  gap: 0.5rem;
 }
-.root .header .header-title .button {
-  padding-top: 0.25rem;
-  padding-right: 0.5rem;
-}
-.root .header .header-title .button .back {
+.root .header .header-title .back {
   height: 1.5rem;
   width: 1.5rem;
 }
-.root .header .header-title .button .back [data-elem=component1] .icon {
+.root .header .header-title .back [data-elem=component1] .icon {
   width: 1.5rem;
   height: 1.5rem;
   fill: var(--white);
