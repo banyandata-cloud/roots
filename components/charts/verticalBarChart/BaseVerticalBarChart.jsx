@@ -1,5 +1,4 @@
 /* eslint-disable react/forbid-prop-types */
-/* eslint-disable no-tabs */
 import PropTypes from 'prop-types';
 // ReactEcharts from 'echarts-for-react' would import the entire bundle
 import EChartsReactCore from 'echarts-for-react/lib/core';
@@ -19,6 +18,7 @@ import {
 } from 'echarts/renderers';
 import styles from './BaseVerticalBarChart.module.css';
 import { classes } from '../../../utils';
+import { ErrorStateChart } from '../errorState';
 
 // Register the required components
 echarts.use([
@@ -53,8 +53,11 @@ const BaseVerticalBarChart = (props) => {
 		seriesName,
 		stackCount,
 		seriesOption,
+		errorHandle,
 		style,
 		className,
+		errorClassName,
+		errorMessage,
 	} = props;
 
 	const seriesOptionObject = {
@@ -99,11 +102,14 @@ const BaseVerticalBarChart = (props) => {
 				name: seriesName(index),
 				data: Object.keys(seriesData?.chartData ?? {}).map((key, subIndex) => {
 					return {
-						value: seriesData?.chartData?.[key]?.[`x${index + 1}`] ?? '',
+						value: seriesData?.chartData?.[key]?.[`x${index + 1}`]
+							? seriesData?.chartData?.[key]?.[`x${index + 1}`] ?? ''
+							: 0.25,
 						itemStyle: {
-							color:
-								(objectData?.barColor?.[subIndex] ?? '') ||
-								(objectData?.color ?? ''),
+							color: seriesData?.chartData?.[key]?.[`x${index + 1}`]
+								? (objectData?.barColor?.[subIndex] ?? '') ||
+								  (objectData?.color ?? '')
+								: 'whitesmoke',
 						},
 						tooltip: {
 							...(seriesOption[subIndex]?.tooltip ?? {}),
@@ -114,7 +120,7 @@ const BaseVerticalBarChart = (props) => {
 		});
 	};
 
-	return (
+	return Object.keys(seriesData?.chartData ?? {}).length ? (
 		<EChartsReactCore
 			option={{
 				title: {
@@ -170,6 +176,8 @@ const BaseVerticalBarChart = (props) => {
 			className={classes(className, styles.root)}
 			style={style}
 		/>
+	) : (
+		<ErrorStateChart onClick={errorHandle} title={errorMessage} className={errorClassName} />
 	);
 };
 
@@ -197,8 +205,11 @@ BaseVerticalBarChart.propTypes = {
 	cursor: PropTypes.string,
 	stackCount: PropTypes.number,
 	seriesOption: PropTypes.arrayOf(PropTypes.shape),
+	errorHandle: PropTypes.func,
 	style: PropTypes.objectOf(PropTypes.shape),
 	className: PropTypes.string,
+	errorClassName: PropTypes.string,
+	errorMessage: PropTypes.string,
 };
 
 BaseVerticalBarChart.defaultProps = {
@@ -241,11 +252,14 @@ BaseVerticalBarChart.defaultProps = {
 			stackIndex: 1,
 		},
 	],
+	errorHandle: () => {},
 	style: {
 		width: '100%',
 		height: '100%',
 	},
 	className: '',
+	errorClassName: '',
+	errorMessage: 'No Data Found',
 };
 
 export default BaseVerticalBarChart;
