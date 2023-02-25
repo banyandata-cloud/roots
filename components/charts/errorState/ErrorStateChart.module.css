@@ -1,0 +1,19 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: 35%;
+  margin-top: 5%;
+  width: 30%;
+  height: 60%;
+}
+.root .text {
+  margin: 5%;
+  text-align: center;
+}
+.root .button {
+  width: 60%;
+  height: 20%;
+  color: #6496ff;
+}/*# sourceMappingURL=ErrorStateChart.module.css.map */

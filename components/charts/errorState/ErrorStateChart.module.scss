@@ -1,0 +1,18 @@
+@import '../../../styles/index';
+
+.root {
+	@include flex(column);
+	margin-left: 35%;
+	margin-top: 5%;
+	width: 30%;
+	height: 60%;
+    .text {
+        margin: 5%;
+        text-align: center;
+    }
+	.button {
+		width: 60%;
+        height: 20%;
+		color: #6496ff;
+	}
+}
