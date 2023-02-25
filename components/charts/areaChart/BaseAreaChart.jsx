@@ -17,6 +17,7 @@ import {
 } from 'echarts/renderers';
 import styles from './BaseAreaChart.module.css';
 import { classes } from '../../../utils';
+import { ErrorStateChart } from '../errorState';
 
 // Register the required components
 echarts.use([
@@ -50,8 +51,11 @@ const BaseAreaChart = (props) => {
 		stacked,
 		cursor,
 		smooth,
+		errorHandle,
 		style,
 		className,
+		errorClassName,
+		errorMessage,
 	} = props;
 
 	const seriesOptionObject = {
@@ -109,26 +113,26 @@ const BaseAreaChart = (props) => {
 				...objectData,
 				name: Object.keys(seriesData?.chartData ?? {})?.[index] ?? '',
 				label: {
-					...seriesOptionObject?.label ?? {},
-					...objectData?.label ?? {},
+					...(seriesOptionObject?.label ?? {}),
+					...(objectData?.label ?? {}),
 				},
 				lineStyle: {
-					...seriesOptionObject?.lineStyle ?? {},
-					...objectData?.lineStyle ?? {},
+					...(seriesOptionObject?.lineStyle ?? {}),
+					...(objectData?.lineStyle ?? {}),
 				},
 				areaStyle: {
-					...seriesOptionObject?.areaStyle ?? {},
-					...objectData?.areaStyle ?? {},
+					...(seriesOptionObject?.areaStyle ?? {}),
+					...(objectData?.areaStyle ?? {}),
 				},
 				emphasis: {
-					...seriesOptionObject?.emphasis ?? {},
-					...objectData?.emphasis ?? {},
+					...(seriesOptionObject?.emphasis ?? {}),
+					...(objectData?.emphasis ?? {}),
 				},
 				data: Object.values(seriesData?.chartData ?? {})?.[index] ?? '',
 			};
 		});
 	};
-	return (
+	return Object.keys(seriesData?.chartData ?? {}).length ? (
 		<EChartsReactCore
 			option={{
 				title: {
@@ -178,6 +182,8 @@ const BaseAreaChart = (props) => {
 			className={classes(className, styles.root)}
 			style={style}
 		/>
+	) : (
+		<ErrorStateChart onClick={errorHandle} title={errorMessage} className={errorClassName} />
 	);
 };
 
@@ -201,8 +207,12 @@ BaseAreaChart.propTypes = {
 	lineStyleCap: PropTypes.oneOf(['butt', 'round', 'square']),
 	lineStyleJoin: PropTypes.oneOf(['round', 'bevel', 'miter']),
 	smooth: PropTypes.bool,
+	opacity: PropTypes.number,
+	errorHandle: PropTypes.func,
 	style: PropTypes.objectOf(PropTypes.shape),
 	className: PropTypes.string,
+	errorClassName: PropTypes.string,
+	errorMessage: PropTypes.string,
 };
 
 BaseAreaChart.defaultProps = {
@@ -230,11 +240,15 @@ BaseAreaChart.defaultProps = {
 	lineStyleCap: 'butt',
 	lineStyleJoin: 'round',
 	smooth: false,
+	opacity: 1,
+	errorHandle: () => {},
 	style: {
 		width: '100%',
 		height: '100%',
 	},
 	className: '',
+	errorClassName: '',
+	errorMessage: 'No Data Found',
 };
 
 export default BaseAreaChart;
