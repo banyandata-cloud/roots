@@ -1,4 +1,4 @@
-import { differenceInDays, differenceInMonths, fromUnixTime } from 'date-fns';
+import { differenceInDays, differenceInHours, differenceInMonths, fromUnixTime } from 'date-fns';
 
 export const isMaxRangeExceeded = ({ maxRange, selectedRange }) => {
 	if (maxRange === null) {
@@ -27,4 +27,22 @@ export const isMaxRangeExceeded = ({ maxRange, selectedRange }) => {
 	}
 
 	return false;
+};
+
+export const getDateRangeTag = (dates = []) => {
+	const [startUnix, endUnix] = dates;
+
+	const dayDifference = differenceInDays(fromUnixTime(endUnix), fromUnixTime(startUnix));
+
+	const hourDifference = differenceInHours(fromUnixTime(endUnix), fromUnixTime(startUnix));
+
+	if (hourDifference <= 24) {
+		return 'hours';
+	}
+
+	if (dayDifference >= 30) {
+		return 'month';
+	}
+
+	return 'day';
 };

@@ -45,7 +45,6 @@
   font-size: 1rem;
   -webkit-user-select: none;
      -moz-user-select: none;
-      -ms-user-select: none;
           user-select: none;
   margin-left: 0.9375rem;
   color: var(--grey1);
@@ -115,7 +114,6 @@
   color: var(--grey3);
   -webkit-user-select: none;
      -moz-user-select: none;
-      -ms-user-select: none;
           user-select: none;
 }
 .root.open {

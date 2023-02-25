@@ -76,6 +76,32 @@
 				height: 100%;
 			}
 
+			&.disabled {
+				&:hover {
+					border-color: $grey4;
+
+					> [data-elem='component2'] {
+						.label {
+							color: $dark-grey;
+						}
+
+						.chip-child {
+							background: $info-bg;
+							> [data-elem='component2'] {
+								> [data-elem='title'] {
+									color: $dark-grey;
+								}
+							}
+
+							.icon {
+								width: 0.875rem;
+								height: 0.875rem;
+							}
+						}
+					}
+				}
+			}
+
 			&:hover {
 				border-color: $highlight;
 
