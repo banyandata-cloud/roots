@@ -135,6 +135,10 @@ const Template = (args) => {
 							},
 						},
 					]}
+					errorHandle={() => {
+						alert('This will call the API again');
+					}}
+					errorMessage='We are having trouble loading this content.'
 				/>
 			</BaseWidget>
 		</div>

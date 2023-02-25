@@ -87,6 +87,9 @@
 .root .children {
   flex: 1 1;
 }
+.root .children [data-elem=error-msg] {
+  color: var(--white);
+}
 
 .dropdown-popper {
   padding: 0rem;
