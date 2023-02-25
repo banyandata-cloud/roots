@@ -207,7 +207,6 @@ BaseAreaChart.propTypes = {
 	lineStyleCap: PropTypes.oneOf(['butt', 'round', 'square']),
 	lineStyleJoin: PropTypes.oneOf(['round', 'bevel', 'miter']),
 	smooth: PropTypes.bool,
-	opacity: PropTypes.number,
 	errorHandle: PropTypes.func,
 	style: PropTypes.objectOf(PropTypes.shape),
 	className: PropTypes.string,
@@ -240,7 +239,6 @@ BaseAreaChart.defaultProps = {
 	lineStyleCap: 'butt',
 	lineStyleJoin: 'round',
 	smooth: false,
-	opacity: 1,
 	errorHandle: () => {},
 	style: {
 		width: '100%',
