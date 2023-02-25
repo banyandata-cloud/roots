@@ -19,6 +19,7 @@ import {
 } from 'echarts/renderers';
 import styles from './BasePieChart.module.css';
 import { classes } from '../../../utils';
+import { ErrorStateChart } from '../errorState';
 
 // Register the required components
 echarts.use([
@@ -46,8 +47,11 @@ const BasePieChart = (props) => {
 		itemStyle,
 		legend,
 		seriesOption,
+		errorHandle,
 		style,
 		className,
+		errorClassName,
+		errorMessage,
 	} = props;
 
 	const seriesOptionObject = {
@@ -128,7 +132,7 @@ const BasePieChart = (props) => {
 		};
 	};
 
-	return (
+	return Object.keys(seriesData?.chartData ?? {}).length ? (
 		<EChartsReactCore
 			option={{
 				title: {
@@ -149,6 +153,8 @@ const BasePieChart = (props) => {
 			className={classes(className, styles.root)}
 			style={style}
 		/>
+	) : (
+		<ErrorStateChart onClick={errorHandle} title={errorMessage} className={errorClassName} />
 	);
 };
 
@@ -169,8 +175,11 @@ BasePieChart.propTypes = {
 	itemStyle: PropTypes.object,
 	legend: PropTypes.object,
 	seriesOption: PropTypes.arrayOf(PropTypes.shape),
+	errorHandle: PropTypes.func,
 	style: PropTypes.objectOf(PropTypes.shape),
 	className: PropTypes.string,
+	errorClassName: PropTypes.string,
+	errorMessage: PropTypes.string,
 };
 
 BasePieChart.defaultProps = {
@@ -206,11 +215,14 @@ BasePieChart.defaultProps = {
 			stackIndex: 1,
 		},
 	],
+	errorHandle: () => {},
 	style: {
 		width: '100%',
 		height: '100%',
 	},
 	className: '',
+	errorClassName: '',
+	errorMessage: 'No Data Found',
 };
 
 export default BasePieChart;
