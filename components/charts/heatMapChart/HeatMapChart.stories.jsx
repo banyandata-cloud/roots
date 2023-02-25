@@ -504,4 +504,7 @@ Default.args = {
 			show: false,
 		},
 	},
+	errorHandle: () => {
+		alert('This will Call Fetch API again');
+	},
 };

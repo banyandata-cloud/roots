@@ -19,6 +19,7 @@ import {
 } from 'echarts/renderers';
 import styles from './HeatMapChart.module.css';
 import { classes } from '../../../utils';
+import { ErrorStateChart } from '../errorState';
 
 // Register the required components
 echarts.use([
@@ -51,8 +52,11 @@ const HeatMapChart = (props) => {
 		seriesName,
 		seriesOption,
 		visualMap,
+		errorHandle,
 		style,
 		className,
+		errorClassName,
+		errorMessage,
 	} = props;
 
 	const seriesOptionObject = {
@@ -122,7 +126,7 @@ const HeatMapChart = (props) => {
 		];
 	};
 
-	return (
+	return Object.keys(seriesData?.chartData ?? {}).length ? (
 		<EChartsReactCore
 			option={{
 				title: {
@@ -187,6 +191,8 @@ const HeatMapChart = (props) => {
 			className={classes(className, styles.root)}
 			style={style}
 		/>
+	) : (
+		<ErrorStateChart onClick={errorHandle} title={errorMessage} className={errorClassName} />
 	);
 };
 
@@ -198,7 +204,7 @@ HeatMapChart.propTypes = {
 	tooltip: PropTypes.object,
 	seriesData: PropTypes.object,
 	onEvents: PropTypes.func,
-    xSplitLineShow: PropTypes.bool,
+	xSplitLineShow: PropTypes.bool,
 	xAxisLineShow: PropTypes.bool,
 	xAxisTickShow: PropTypes.bool,
 	yAxisLabelShow: PropTypes.bool,
@@ -209,8 +215,11 @@ HeatMapChart.propTypes = {
 	seriesName: PropTypes.string,
 	visualMap: PropTypes.shape({}),
 	seriesOption: PropTypes.shape({}),
+	errorHandle: PropTypes.func,
 	style: PropTypes.objectOf(PropTypes.shape),
 	className: PropTypes.string,
+	errorClassName: PropTypes.string,
+	errorMessage: PropTypes.string,
 };
 
 HeatMapChart.defaultProps = {
@@ -229,7 +238,7 @@ HeatMapChart.defaultProps = {
 	seriesData: {},
 	onEvents: () => {},
 	yAxisLabelShow: false,
-    xSplitLineShow: false,
+	xSplitLineShow: false,
 	xAxisLineShow: false,
 	xAxisTickShow: false,
 	ySplitLineShow: false,
@@ -243,11 +252,14 @@ HeatMapChart.defaultProps = {
 			show: true,
 		},
 	},
+	errorHandle: () => {},
 	style: {
 		width: '100%',
 		height: '100%',
 	},
 	className: '',
+	errorClassName: '',
+	errorMessage: 'No Data Found',
 };
 
 export default HeatMapChart;
