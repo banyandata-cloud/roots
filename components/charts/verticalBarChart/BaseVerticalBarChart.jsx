@@ -18,7 +18,6 @@ import {
 } from 'echarts/renderers';
 import styles from './BaseVerticalBarChart.module.css';
 import { classes } from '../../../utils';
-import { ErrorStateChart } from '../errorState';
 
 // Register the required components
 echarts.use([
@@ -53,11 +52,8 @@ const BaseVerticalBarChart = (props) => {
 		seriesName,
 		stackCount,
 		seriesOption,
-		errorHandle,
 		style,
 		className,
-		errorClassName,
-		errorMessage,
 	} = props;
 
 	const seriesOptionObject = {
@@ -120,7 +116,7 @@ const BaseVerticalBarChart = (props) => {
 		});
 	};
 
-	return Object.keys(seriesData?.chartData ?? {}).length ? (
+	return (
 		<EChartsReactCore
 			option={{
 				title: {
@@ -176,8 +172,6 @@ const BaseVerticalBarChart = (props) => {
 			className={classes(className, styles.root)}
 			style={style}
 		/>
-	) : (
-		<ErrorStateChart onClick={errorHandle} title={errorMessage} className={errorClassName} />
 	);
 };
 
@@ -205,11 +199,8 @@ BaseVerticalBarChart.propTypes = {
 	cursor: PropTypes.string,
 	stackCount: PropTypes.number,
 	seriesOption: PropTypes.arrayOf(PropTypes.shape),
-	errorHandle: PropTypes.func,
 	style: PropTypes.objectOf(PropTypes.shape),
 	className: PropTypes.string,
-	errorClassName: PropTypes.string,
-	errorMessage: PropTypes.string,
 };
 
 BaseVerticalBarChart.defaultProps = {
@@ -252,14 +243,11 @@ BaseVerticalBarChart.defaultProps = {
 			stackIndex: 1,
 		},
 	],
-	errorHandle: () => {},
 	style: {
 		width: '100%',
 		height: '100%',
 	},
 	className: '',
-	errorClassName: '',
-	errorMessage: 'No Data Found',
 };
 
 export default BaseVerticalBarChart;

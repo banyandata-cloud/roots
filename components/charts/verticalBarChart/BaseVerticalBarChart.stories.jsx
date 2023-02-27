@@ -420,10 +420,6 @@ Default.args = {
 			},
 		},
 	],
-	errorHandle: () => {
-		alert('This will Call Fetch API again');
-	},
-	errorMessage: 'Data not Fetched',
 };
 
 StackSeries.args = {
