@@ -165,9 +165,6 @@ Default.args = {
 			},
 		},
 	],
-	errorHandle: () => {
-		alert('This will Call Fetch API again');
-	},
 };
 
 PieIcon.args = {
