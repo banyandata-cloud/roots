@@ -19,7 +19,6 @@ import {
 } from 'echarts/renderers';
 import styles from './HeatMapChart.module.css';
 import { classes } from '../../../utils';
-import { ErrorStateChart } from '../errorState';
 
 // Register the required components
 echarts.use([
@@ -52,17 +51,18 @@ const HeatMapChart = (props) => {
 		seriesName,
 		seriesOption,
 		visualMap,
-		errorHandle,
 		style,
 		className,
-		errorClassName,
-		errorMessage,
 	} = props;
 
 	const seriesOptionObject = {
 		type: 'heatmap',
 		label: {
 			show: true,
+		},
+        itemStyle: {
+			borderWidth: 0,
+			borderColor: 'white',
 		},
 		emphasis: {
 			itemStyle: {
@@ -119,14 +119,17 @@ const HeatMapChart = (props) => {
 					...(seriesOptionObject?.label ?? {}),
 					...(seriesOption?.label ?? {}),
 				},
-
+				itemStyle: {
+					...(seriesOptionObject?.itemStyle ?? {}),
+					...(seriesOption?.itemStyle ?? {}),
+				},
 				name: seriesName,
 				data: dataNew,
 			},
 		];
 	};
 
-	return Object.keys(seriesData?.chartData ?? {}).length ? (
+	return (
 		<EChartsReactCore
 			option={{
 				title: {
@@ -191,8 +194,6 @@ const HeatMapChart = (props) => {
 			className={classes(className, styles.root)}
 			style={style}
 		/>
-	) : (
-		<ErrorStateChart onClick={errorHandle} title={errorMessage} className={errorClassName} />
 	);
 };
 
@@ -215,11 +216,8 @@ HeatMapChart.propTypes = {
 	seriesName: PropTypes.string,
 	visualMap: PropTypes.shape({}),
 	seriesOption: PropTypes.shape({}),
-	errorHandle: PropTypes.func,
 	style: PropTypes.objectOf(PropTypes.shape),
 	className: PropTypes.string,
-	errorClassName: PropTypes.string,
-	errorMessage: PropTypes.string,
 };
 
 HeatMapChart.defaultProps = {
@@ -252,14 +250,11 @@ HeatMapChart.defaultProps = {
 			show: true,
 		},
 	},
-	errorHandle: () => {},
 	style: {
 		width: '100%',
 		height: '100%',
 	},
 	className: '',
-	errorClassName: '',
-	errorMessage: 'No Data Found',
 };
 
 export default HeatMapChart;

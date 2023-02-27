@@ -364,9 +364,6 @@ LineStack.args = {
 			},
 		},
 	],
-	errorHandle: () => {
-		alert('This will Call Fetch API again');
-	},
 };
 
 Default.parameters = {
