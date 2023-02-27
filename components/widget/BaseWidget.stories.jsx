@@ -206,4 +206,8 @@ Default.args = {
 			},
 		},
 	],
+	errorMessage: 'We are having trouble loading the Data',
+	errorHandle: () => {
+		alert('This will Fetch API again');
+	},
 };

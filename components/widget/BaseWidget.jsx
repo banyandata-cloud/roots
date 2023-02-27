@@ -1,10 +1,12 @@
 import PropTypes from 'prop-types';
+import { Children } from 'react';
 import styles from './BaseWidget.module.css';
 import { ArrowIcon, ExpandArrowAltIcon } from '../icons';
 import Button from '../buttons/button/Button';
 import { Dropdown, DropdownItem } from '../input';
 import { Toggle } from '../Toggle';
 import { classes } from '../../utils';
+import { ErrorStateChart } from '../charts/errorState';
 
 const generateOptions = (optionData) => {
 	switch (optionData?.id ?? '') {
@@ -52,7 +54,22 @@ const generateOptions = (optionData) => {
 };
 
 const BaseWidget = (props) => {
-	const { title, showBack, onBack, options, className, children } = props;
+	const {
+		title,
+		showBack,
+		onBack,
+		options,
+		className,
+		children,
+		errorHandle,
+		errorClassName,
+		errorMessage,
+	} = props;
+
+	const emptyChartData = Children.toArray(children).every((child) => {
+		const chartData = child.props?.seriesData?.chartData ?? {};
+		return chartData && Object.keys(chartData).length === 0;
+	});
 
 	return (
 		<div className={classes(styles.root, className)}>
@@ -64,15 +81,15 @@ const BaseWidget = (props) => {
 					)}
 					data-elem='header-title'>
 					{showBack && (
-							<Button
-								size='auto'
-								radius='round'
-								className={styles.back}
-								leftComponent={() => {
-									return <ArrowIcon className={styles.icon} position='left' />;
-								}}
-								onClick={onBack}
-							/>
+						<Button
+							size='auto'
+							radius='round'
+							className={styles.back}
+							leftComponent={() => {
+								return <ArrowIcon className={styles.icon} position='left' />;
+							}}
+							onClick={onBack}
+						/>
 					)}
 					<span className={styles.title} data-elem='title'>
 						{title}
@@ -87,7 +104,15 @@ const BaseWidget = (props) => {
 				</div>
 			</div>
 			<div className={styles.children} data-elem='children'>
-				{children}
+				{emptyChartData ? (
+					<ErrorStateChart
+						onClick={errorHandle}
+						title={errorMessage}
+						className={errorClassName}
+					/>
+				) : (
+					children
+				)}
 			</div>
 		</div>
 	);
@@ -99,6 +124,9 @@ BaseWidget.propTypes = {
 	onBack: PropTypes.func,
 	options: PropTypes.arrayOf(PropTypes.shape),
 	className: PropTypes.string,
+	errorHandle: PropTypes.func,
+	errorClassName: PropTypes.string,
+	errorMessage: PropTypes.string,
 };
 
 BaseWidget.defaultProps = {
@@ -107,6 +135,9 @@ BaseWidget.defaultProps = {
 	onBack: () => {},
 	options: [],
 	className: '',
+	errorHandle: () => {},
+	errorClassName: '',
+	errorMessage: 'No Data Found',
 };
 
 export default BaseWidget;
