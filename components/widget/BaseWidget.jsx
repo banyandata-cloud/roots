@@ -80,20 +80,20 @@ const BaseWidget = (props) => {
 						(options?.length ?? 0) === 0 ? styles['no-options'] : ''
 					)}
 					data-elem='header-title'>
-					{showBack && (
-						<Button
-							size='auto'
-							radius='round'
-							className={styles.back}
-							leftComponent={() => {
-								return <ArrowIcon className={styles.icon} position='left' />;
-							}}
-							onClick={onBack}
-						/>
-					)}
-					<span className={styles.title} data-elem='title'>
-						{title}
-					</span>
+						{showBack && (
+							<Button
+								size='auto'
+								radius='round'
+								className={styles.back}
+								leftComponent={() => {
+									return <ArrowIcon className={styles.icon} position='left' />;
+								}}
+								onClick={onBack}
+							/>
+						)}
+						<span className={styles.title} data-elem='title'>
+							{title}
+						</span>
 				</div>
 
 				<div className={styles['header-options']} data-elem='header-options'>
