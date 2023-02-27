@@ -101,21 +101,6 @@ const Template = (args) => {
 						}`;
 					},
 				}}
-				// legend={{
-				// 	show: true,
-				// 	top: '20',
-				// 	right: '30%',
-				// 	orient: 'vertical',
-				// 	selectedMode: true,
-				// 	itemGap: 20,
-				// 	icon: 'rect',
-				// 	data: Object.keys(sampleData.metaData.keyData).map((key) => {
-				// 		return sampleData?.metaData?.keyData?.[key];
-				// 	}),
-				// }}
-				// seriesName={(index) => {
-				// 	return sampleData?.metaData?.keyData?.[`x${index + 1}`];
-				// }}
 			/>
 		</div>
 	);

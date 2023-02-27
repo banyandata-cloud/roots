@@ -19,6 +19,7 @@ import {
 } from 'echarts/renderers';
 import styles from './BaseVerticalBarChart.module.css';
 import { classes } from '../../../utils';
+import { Skeleton } from './Skeleton';
 
 // Register the required components
 echarts.use([
@@ -33,6 +34,7 @@ echarts.use([
 
 const BaseVerticalBarChart = (props) => {
 	const {
+		loading,
 		title,
 		gridContainLabel,
 		gridOptions,
@@ -56,6 +58,10 @@ const BaseVerticalBarChart = (props) => {
 		style,
 		className,
 	} = props;
+
+	if (loading) {
+		return <Skeleton />;
+	}
 
 	const seriesOptionObject = {
 		type: 'bar',
@@ -174,6 +180,7 @@ const BaseVerticalBarChart = (props) => {
 };
 
 BaseVerticalBarChart.propTypes = {
+	loading: PropTypes.bool,
 	title: PropTypes.string,
 	gridContainLabel: PropTypes.bool,
 	gridOptions: PropTypes.object,
@@ -202,6 +209,7 @@ BaseVerticalBarChart.propTypes = {
 };
 
 BaseVerticalBarChart.defaultProps = {
+	loading: false,
 	title: '',
 	gridContainLabel: false,
 	gridOptions: {
