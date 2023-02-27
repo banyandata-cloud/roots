@@ -70,6 +70,22 @@
 .root[data-elem=base-cell] > [data-elem=component2] .chip-parent > [data-elem=component3] {
   height: 100%;
 }
+.root[data-elem=base-cell] > [data-elem=component2] .chip-parent.disabled:hover {
+  border-color: var(--grey4);
+}
+.root[data-elem=base-cell] > [data-elem=component2] .chip-parent.disabled:hover > [data-elem=component2] .label {
+  color: var(--dark-grey);
+}
+.root[data-elem=base-cell] > [data-elem=component2] .chip-parent.disabled:hover > [data-elem=component2] .chip-child {
+  background: var(--info-bg);
+}
+.root[data-elem=base-cell] > [data-elem=component2] .chip-parent.disabled:hover > [data-elem=component2] .chip-child > [data-elem=component2] > [data-elem=title] {
+  color: var(--dark-grey);
+}
+.root[data-elem=base-cell] > [data-elem=component2] .chip-parent.disabled:hover > [data-elem=component2] .chip-child .icon {
+  width: 0.875rem;
+  height: 0.875rem;
+}
 .root[data-elem=base-cell] > [data-elem=component2] .chip-parent:hover {
   border-color: var(--highlight);
 }
