@@ -503,8 +503,8 @@ Default.args = {
 		label: {
 			show: false,
 		},
-	},
-	errorHandle: () => {
-		alert('This will Call Fetch API again');
+		itemStyle: {
+			borderWidth: 1,
+		},
 	},
 };
