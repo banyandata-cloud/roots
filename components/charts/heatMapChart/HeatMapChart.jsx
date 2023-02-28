@@ -60,6 +60,10 @@ const HeatMapChart = (props) => {
 		label: {
 			show: true,
 		},
+        itemStyle: {
+			borderWidth: 0,
+			borderColor: 'white',
+		},
 		emphasis: {
 			itemStyle: {
 				shadowBlur: 10,
@@ -115,7 +119,10 @@ const HeatMapChart = (props) => {
 					...(seriesOptionObject?.label ?? {}),
 					...(seriesOption?.label ?? {}),
 				},
-
+				itemStyle: {
+					...(seriesOptionObject?.itemStyle ?? {}),
+					...(seriesOption?.itemStyle ?? {}),
+				},
 				name: seriesName,
 				data: dataNew,
 			},
@@ -198,7 +205,7 @@ HeatMapChart.propTypes = {
 	tooltip: PropTypes.object,
 	seriesData: PropTypes.object,
 	onEvents: PropTypes.func,
-    xSplitLineShow: PropTypes.bool,
+	xSplitLineShow: PropTypes.bool,
 	xAxisLineShow: PropTypes.bool,
 	xAxisTickShow: PropTypes.bool,
 	yAxisLabelShow: PropTypes.bool,
@@ -229,7 +236,7 @@ HeatMapChart.defaultProps = {
 	seriesData: {},
 	onEvents: () => {},
 	yAxisLabelShow: false,
-    xSplitLineShow: false,
+	xSplitLineShow: false,
 	xAxisLineShow: false,
 	xAxisTickShow: false,
 	ySplitLineShow: false,

@@ -50,6 +50,7 @@ const BaseAreaChart = (props) => {
 		stacked,
 		cursor,
 		smooth,
+
 		style,
 		className,
 	} = props;
@@ -109,20 +110,20 @@ const BaseAreaChart = (props) => {
 				...objectData,
 				name: Object.keys(seriesData?.chartData ?? {})?.[index] ?? '',
 				label: {
-					...seriesOptionObject?.label ?? {},
-					...objectData?.label ?? {},
+					...(seriesOptionObject?.label ?? {}),
+					...(objectData?.label ?? {}),
 				},
 				lineStyle: {
-					...seriesOptionObject?.lineStyle ?? {},
-					...objectData?.lineStyle ?? {},
+					...(seriesOptionObject?.lineStyle ?? {}),
+					...(objectData?.lineStyle ?? {}),
 				},
 				areaStyle: {
-					...seriesOptionObject?.areaStyle ?? {},
-					...objectData?.areaStyle ?? {},
+					...(seriesOptionObject?.areaStyle ?? {}),
+					...(objectData?.areaStyle ?? {}),
 				},
 				emphasis: {
-					...seriesOptionObject?.emphasis ?? {},
-					...objectData?.emphasis ?? {},
+					...(seriesOptionObject?.emphasis ?? {}),
+					...(objectData?.emphasis ?? {}),
 				},
 				data: Object.values(seriesData?.chartData ?? {})?.[index] ?? '',
 			};
@@ -201,6 +202,7 @@ BaseAreaChart.propTypes = {
 	lineStyleCap: PropTypes.oneOf(['butt', 'round', 'square']),
 	lineStyleJoin: PropTypes.oneOf(['round', 'bevel', 'miter']),
 	smooth: PropTypes.bool,
+
 	style: PropTypes.objectOf(PropTypes.shape),
 	className: PropTypes.string,
 };
@@ -230,6 +232,7 @@ BaseAreaChart.defaultProps = {
 	lineStyleCap: 'butt',
 	lineStyleJoin: 'round',
 	smooth: false,
+
 	style: {
 		width: '100%',
 		height: '100%',

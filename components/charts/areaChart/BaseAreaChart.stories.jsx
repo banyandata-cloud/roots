@@ -59,7 +59,7 @@ const Template = (args) => {
 				seriesData={{
 					...datum1,
 					metaData: {
-						xAxisData: datum1.metaData.xAxisData.map((key) => {
+						xAxisData: datum1?.metaData?.xAxisData?.map((key) => {
 							const d = new Date(key * 1000);
 							return `${d.getHours()}:${d.getMinutes()}`;
 						}),
@@ -240,6 +240,9 @@ Default.args = {
 			},
 		},
 	],
+	errorHandle: () => {
+		alert('This will Call Fetch API again');
+	},
 };
 
 LineStack.args = {

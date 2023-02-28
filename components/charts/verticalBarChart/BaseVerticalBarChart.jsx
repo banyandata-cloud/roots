@@ -1,5 +1,4 @@
 /* eslint-disable react/forbid-prop-types */
-/* eslint-disable no-tabs */
 import PropTypes from 'prop-types';
 // ReactEcharts from 'echarts-for-react' would import the entire bundle
 import EChartsReactCore from 'echarts-for-react/lib/core';
@@ -99,11 +98,14 @@ const BaseVerticalBarChart = (props) => {
 				name: seriesName(index),
 				data: Object.keys(seriesData?.chartData ?? {}).map((key, subIndex) => {
 					return {
-						value: seriesData?.chartData?.[key]?.[`x${index + 1}`] ?? '',
+						value: seriesData?.chartData?.[key]?.[`x${index + 1}`]
+							? seriesData?.chartData?.[key]?.[`x${index + 1}`] ?? ''
+							: 0.25,
 						itemStyle: {
-							color:
-								(objectData?.barColor?.[subIndex] ?? '') ||
-								(objectData?.color ?? ''),
+							color: seriesData?.chartData?.[key]?.[`x${index + 1}`]
+								? (objectData?.barColor?.[subIndex] ?? '') ||
+								  (objectData?.color ?? '')
+								: 'whitesmoke',
 						},
 						tooltip: {
 							...(seriesOption[subIndex]?.tooltip ?? {}),

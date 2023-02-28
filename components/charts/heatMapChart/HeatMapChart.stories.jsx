@@ -503,5 +503,8 @@ Default.args = {
 		label: {
 			show: false,
 		},
+		itemStyle: {
+			borderWidth: 1,
+		},
 	},
 };

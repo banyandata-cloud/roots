@@ -1,4 +1,3 @@
-/* eslint-disable no-tabs */
 import React, { useState } from 'react';
 import BaseVerticalBarChart from './BaseVerticalBarChart';
 import { COLORS } from '../../../styles';
@@ -206,19 +205,19 @@ const Template = (args) => {
 					},
 				}}
 				// legend={{
-				// 	show: true,
-				// 	top: '20',
-				// 	right: '30%',
-				// 	orient: 'vertical',
-				// 	selectedMode: true,
-				// 	itemGap: 20,
-				// 	icon: 'rect',
-				// 	data: Object.keys(sampleData.metaData.keyData).map((key) => {
-				// 		return sampleData?.metaData?.keyData?.[key];
-				// 	}),
+				// show: true,
+				// top: '20',
+				// right: '30%',
+				// orient: 'vertical',
+				// selectedMode: true,
+				// itemGap: 20,
+				// icon: 'rect',
+				// data: Object.keys(sampleData.metaData.keyData).map((key) => {
+				// return sampleData?.metaData?.keyData?.[key];
+				// }),
 				// }}
 				// seriesName={(index) => {
-				// 	return sampleData?.metaData?.keyData?.[`x${index + 1}`];
+				// return sampleData?.metaData?.keyData?.[`x${index + 1}`];
 				// }}
 			/>
 		</div>
@@ -243,19 +242,19 @@ const StackTemplate = (args) => {
 					},
 				}}
 				// legend={{
-				// 	show: true,
-				// 	top: '20',
-				// 	right: '30%',
-				// 	orient: 'vertical',
-				// 	selectedMode: true,
-				// 	itemGap: 20,
-				// 	icon: 'rect',
-				// 	data: Object.keys(sampleData.metaData.keyData).map((key) => {
-				// 		return sampleData?.metaData?.keyData?.[key];
-				// 	}),
+				// show: true,
+				// top: '20',
+				// right: '30%',
+				// orient: 'vertical',
+				// selectedMode: true,
+				// itemGap: 20,
+				// icon: 'rect',
+				// data: Object.keys(sampleData.metaData.keyData).map((key) => {
+				// return sampleData?.metaData?.keyData?.[key];
+				// }),
 				// }}
 				// seriesName={(index) => {
-				// 	return sampleData?.metaData?.keyData?.[`x${index + 1}`];
+				// return sampleData?.metaData?.keyData?.[`x${index + 1}`];
 				// }}
 			/>
 		</div>
