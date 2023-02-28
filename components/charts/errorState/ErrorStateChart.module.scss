@@ -2,17 +2,16 @@
 
 .root {
 	@include flex(column);
-	margin-left: 35%;
-	margin-top: 5%;
+	margin: auto;
 	width: 30%;
-	height: 60%;
+	height: 100%;
+    gap: 1rem;
     .text {
-        margin: 5%;
         text-align: center;
     }
 	.button {
 		width: 60%;
-        height: 20%;
+        height: 12%;
 		color: #6496ff;
 	}
 }
