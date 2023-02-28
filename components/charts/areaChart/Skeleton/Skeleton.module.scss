@@ -1,0 +1,40 @@
+@import '../../../../styles/';
+
+.root {
+	@include flex;
+	height: 100%;
+	width: 100%;
+
+	.bump {
+		&:not(:nth-child(1)) {
+			margin-left: -1.75rem;
+		}
+		transform: rotate(30deg);
+		&:nth-child(2n) {
+			transform: rotate(-30deg);
+		}
+	}
+
+	&.filled {
+		@include flex(column, flex-start, stretch);
+		.bumps {
+			@include flex;
+			gap: 1rem;
+			flex: 1 1 50%;
+
+			.triangle {
+				width: 0%;
+				height: 0%;
+				border: 1rem solid $grey5;
+				border-left-width: 0.5rem;
+				border-right-width: 0.5rem;
+				border-bottom-width: 0;
+			}
+		}
+
+		.base {
+			flex: 1 1 50%;
+			// height: 50%;
+		}
+	}
+}
