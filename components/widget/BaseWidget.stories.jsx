@@ -119,6 +119,7 @@ const Template = (args) => {
 						{
 							stackIndex: 1,
 							color: 'orange',
+							showBackground: false,
 							label: {
 								color: 'white',
 								show: false,
@@ -129,9 +130,11 @@ const Template = (args) => {
 						},
 						{
 							stackIndex: 2,
+							showBackground: false,
 							color: 'blue',
 							label: {
-								show: false,
+								show: true,
+								color: 'white',
 							},
 						},
 					]}

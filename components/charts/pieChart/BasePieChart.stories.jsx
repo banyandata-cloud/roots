@@ -148,17 +148,11 @@ Default.args = {
 			itemStyle: {
 				color: '#71EEFF',
 			},
-			label: {
-				show: false,
-			},
 		},
 		{
 			stackIndex: 3,
 			itemStyle: {
 				color: '#67F990',
-			},
-			label: {
-				show: false,
 			},
 			tooltip: {
 				trigger: 'none',

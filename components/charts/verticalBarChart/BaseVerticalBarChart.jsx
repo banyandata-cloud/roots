@@ -56,12 +56,21 @@ const BaseVerticalBarChart = (props) => {
 		className,
 	} = props;
 
+	const minHeightCheck = !Object.keys(seriesData?.chartData ?? 0)?.some((obj1) => {
+		return seriesOption.some((obj, index) => {
+			return seriesData?.chartData?.[obj1]?.[`x${index + 1}`];
+		});
+	})
+		? 1
+		: 0;
+
 	const seriesOptionObject = {
 		type: 'bar',
 		barWidth: stackCount ? barWidth : barWidth / stackCount,
 		cursor,
 		stack: stackCount,
 		groupPadding: 3,
+		barMinHeight: minHeightCheck,
 		showBackground: true,
 		backgroundStyle: {
 			color: 'whitesmoke',
@@ -86,6 +95,13 @@ const BaseVerticalBarChart = (props) => {
 	};
 
 	const generateSeries = () => {
+		const minHeight = Object.keys(seriesData?.chartData ?? 0)?.some((obj1) => {
+			return seriesOption.some((obj, index) => {
+				return seriesData?.chartData?.[obj1]?.[`x${index + 1}`];
+			});
+		})
+			? 0.2
+			: 0;
 		return seriesOption.map((objectData, index) => {
 			return {
 				...seriesOptionObject,
@@ -97,10 +113,25 @@ const BaseVerticalBarChart = (props) => {
 
 				name: seriesName(index),
 				data: Object.keys(seriesData?.chartData ?? {}).map((key, subIndex) => {
+					let check = true;
+					if (stackCount <= 1) {
+						check = seriesOption.some((obj, checkIndex) => {
+							return seriesData?.chartData?.[key]?.[`x${checkIndex + 1}`];
+						});
+					} else {
+						const stackCal = seriesOption[index].stack;
+						check = seriesOption.some((series, checkNewIndex) => {
+							if (series.stack === stackCal) {
+								return seriesData?.chartData?.[key]?.[`x${checkNewIndex + 1}`];
+							}
+							return false;
+						});
+					}
+
 					return {
-						value: seriesData?.chartData?.[key]?.[`x${index + 1}`]
+						value: check
 							? seriesData?.chartData?.[key]?.[`x${index + 1}`] ?? ''
-							: 0.25,
+							: minHeight,
 						itemStyle: {
 							color: seriesData?.chartData?.[key]?.[`x${index + 1}`]
 								? (objectData?.barColor?.[subIndex] ?? '') ||
