@@ -106163,7 +106163,7 @@ n(css$9,{});
 
 use([install$8, install$9, install$a, install$1, install$5, install$h, install]);
 var BaseVerticalBarChart = function BaseVerticalBarChart(props) {
-  var _seriesData$metaData$, _seriesData$metaData, _seriesData$metaData$2, _seriesData$chartData, _seriesData$chartData13;
+  var _Object$keys, _seriesData$chartData, _seriesData$metaData$, _seriesData$metaData, _seriesData$metaData$2, _seriesData$chartData4, _seriesData$chartData21;
   var title = props.title,
     gridContainLabel = props.gridContainLabel,
     gridOptions = props.gridOptions,
@@ -106186,12 +106186,19 @@ var BaseVerticalBarChart = function BaseVerticalBarChart(props) {
     seriesOption = props.seriesOption,
     style = props.style,
     className = props.className;
+  var minHeightCheck = !((_Object$keys = Object.keys((_seriesData$chartData = seriesData === null || seriesData === void 0 ? void 0 : seriesData.chartData) !== null && _seriesData$chartData !== void 0 ? _seriesData$chartData : 0)) !== null && _Object$keys !== void 0 && _Object$keys.some(function (obj1) {
+    return seriesOption.some(function (obj, index) {
+      var _seriesData$chartData2, _seriesData$chartData3;
+      return seriesData === null || seriesData === void 0 ? void 0 : (_seriesData$chartData2 = seriesData.chartData) === null || _seriesData$chartData2 === void 0 ? void 0 : (_seriesData$chartData3 = _seriesData$chartData2[obj1]) === null || _seriesData$chartData3 === void 0 ? void 0 : _seriesData$chartData3["x".concat(index + 1)];
+    });
+  })) ? 1 : 0;
   var seriesOptionObject = {
     type: 'bar',
     barWidth: stackCount ? barWidth : barWidth / stackCount,
     cursor: cursor,
     stack: stackCount,
     groupPadding: 3,
+    barMinHeight: minHeightCheck,
     showBackground: true,
     backgroundStyle: {
       color: 'whitesmoke'
@@ -106208,25 +106215,48 @@ var BaseVerticalBarChart = function BaseVerticalBarChart(props) {
       borderRadius: [0, 2, 2, 0]
     },
     name: (_seriesData$metaData$ = seriesData === null || seriesData === void 0 ? void 0 : (_seriesData$metaData = seriesData.metaData) === null || _seriesData$metaData === void 0 ? void 0 : (_seriesData$metaData$2 = _seriesData$metaData.keyData) === null || _seriesData$metaData$2 === void 0 ? void 0 : _seriesData$metaData$2.x1) !== null && _seriesData$metaData$ !== void 0 ? _seriesData$metaData$ : '',
-    data: Object.keys((_seriesData$chartData = seriesData === null || seriesData === void 0 ? void 0 : seriesData.chartData) !== null && _seriesData$chartData !== void 0 ? _seriesData$chartData : {}).map(function (key) {
-      var _seriesData$chartData2, _seriesData$chartData3, _seriesData$chartData4;
+    data: Object.keys((_seriesData$chartData4 = seriesData === null || seriesData === void 0 ? void 0 : seriesData.chartData) !== null && _seriesData$chartData4 !== void 0 ? _seriesData$chartData4 : {}).map(function (key) {
+      var _seriesData$chartData5, _seriesData$chartData6, _seriesData$chartData7;
       return {
-        value: (_seriesData$chartData2 = seriesData === null || seriesData === void 0 ? void 0 : (_seriesData$chartData3 = seriesData.chartData) === null || _seriesData$chartData3 === void 0 ? void 0 : (_seriesData$chartData4 = _seriesData$chartData3[key]) === null || _seriesData$chartData4 === void 0 ? void 0 : _seriesData$chartData4.x1) !== null && _seriesData$chartData2 !== void 0 ? _seriesData$chartData2 : ''
+        value: (_seriesData$chartData5 = seriesData === null || seriesData === void 0 ? void 0 : (_seriesData$chartData6 = seriesData.chartData) === null || _seriesData$chartData6 === void 0 ? void 0 : (_seriesData$chartData7 = _seriesData$chartData6[key]) === null || _seriesData$chartData7 === void 0 ? void 0 : _seriesData$chartData7.x1) !== null && _seriesData$chartData5 !== void 0 ? _seriesData$chartData5 : ''
       };
     })
   };
   var generateSeries = function generateSeries() {
+    var _Object$keys2, _seriesData$chartData8;
+    var minHeight = (_Object$keys2 = Object.keys((_seriesData$chartData8 = seriesData === null || seriesData === void 0 ? void 0 : seriesData.chartData) !== null && _seriesData$chartData8 !== void 0 ? _seriesData$chartData8 : 0)) !== null && _Object$keys2 !== void 0 && _Object$keys2.some(function (obj1) {
+      return seriesOption.some(function (obj, index) {
+        var _seriesData$chartData9, _seriesData$chartData10;
+        return seriesData === null || seriesData === void 0 ? void 0 : (_seriesData$chartData9 = seriesData.chartData) === null || _seriesData$chartData9 === void 0 ? void 0 : (_seriesData$chartData10 = _seriesData$chartData9[obj1]) === null || _seriesData$chartData10 === void 0 ? void 0 : _seriesData$chartData10["x".concat(index + 1)];
+      });
+    }) ? 0.2 : 0;
     return seriesOption.map(function (objectData, index) {
-      var _seriesOptionObject$l, _objectData$label, _seriesData$chartData5;
+      var _seriesOptionObject$l, _objectData$label, _seriesData$chartData11;
       return _objectSpread2(_objectSpread2(_objectSpread2({}, seriesOptionObject), objectData), {}, {
         label: _objectSpread2(_objectSpread2({}, (_seriesOptionObject$l = seriesOptionObject === null || seriesOptionObject === void 0 ? void 0 : seriesOptionObject.label) !== null && _seriesOptionObject$l !== void 0 ? _seriesOptionObject$l : {}), (_objectData$label = objectData === null || objectData === void 0 ? void 0 : objectData.label) !== null && _objectData$label !== void 0 ? _objectData$label : {}),
         name: seriesName(index),
-        data: Object.keys((_seriesData$chartData5 = seriesData === null || seriesData === void 0 ? void 0 : seriesData.chartData) !== null && _seriesData$chartData5 !== void 0 ? _seriesData$chartData5 : {}).map(function (key, subIndex) {
-          var _seriesData$chartData6, _seriesData$chartData7, _seriesData$chartData8, _seriesData$chartData9, _seriesData$chartData10, _seriesData$chartData11, _seriesData$chartData12, _objectData$barColor$, _objectData$barColor, _objectData$color, _seriesOption$subInde, _seriesOption$subInde2;
+        data: Object.keys((_seriesData$chartData11 = seriesData === null || seriesData === void 0 ? void 0 : seriesData.chartData) !== null && _seriesData$chartData11 !== void 0 ? _seriesData$chartData11 : {}).map(function (key, subIndex) {
+          var _seriesData$chartData16, _seriesData$chartData17, _seriesData$chartData18, _seriesData$chartData19, _seriesData$chartData20, _objectData$barColor$, _objectData$barColor, _objectData$color, _seriesOption$subInde, _seriesOption$subInde2;
+          var check = true;
+          if (stackCount <= 1) {
+            check = seriesOption.some(function (obj, checkIndex) {
+              var _seriesData$chartData12, _seriesData$chartData13;
+              return seriesData === null || seriesData === void 0 ? void 0 : (_seriesData$chartData12 = seriesData.chartData) === null || _seriesData$chartData12 === void 0 ? void 0 : (_seriesData$chartData13 = _seriesData$chartData12[key]) === null || _seriesData$chartData13 === void 0 ? void 0 : _seriesData$chartData13["x".concat(checkIndex + 1)];
+            });
+          } else {
+            var stackCal = seriesOption[index].stack;
+            check = seriesOption.some(function (series, checkNewIndex) {
+              if (series.stack === stackCal) {
+                var _seriesData$chartData14, _seriesData$chartData15;
+                return seriesData === null || seriesData === void 0 ? void 0 : (_seriesData$chartData14 = seriesData.chartData) === null || _seriesData$chartData14 === void 0 ? void 0 : (_seriesData$chartData15 = _seriesData$chartData14[key]) === null || _seriesData$chartData15 === void 0 ? void 0 : _seriesData$chartData15["x".concat(checkNewIndex + 1)];
+              }
+              return false;
+            });
+          }
           return {
-            value: seriesData !== null && seriesData !== void 0 && (_seriesData$chartData6 = seriesData.chartData) !== null && _seriesData$chartData6 !== void 0 && (_seriesData$chartData7 = _seriesData$chartData6[key]) !== null && _seriesData$chartData7 !== void 0 && _seriesData$chartData7["x".concat(index + 1)] ? (_seriesData$chartData8 = seriesData === null || seriesData === void 0 ? void 0 : (_seriesData$chartData9 = seriesData.chartData) === null || _seriesData$chartData9 === void 0 ? void 0 : (_seriesData$chartData10 = _seriesData$chartData9[key]) === null || _seriesData$chartData10 === void 0 ? void 0 : _seriesData$chartData10["x".concat(index + 1)]) !== null && _seriesData$chartData8 !== void 0 ? _seriesData$chartData8 : '' : 0.25,
+            value: check ? (_seriesData$chartData16 = seriesData === null || seriesData === void 0 ? void 0 : (_seriesData$chartData17 = seriesData.chartData) === null || _seriesData$chartData17 === void 0 ? void 0 : (_seriesData$chartData18 = _seriesData$chartData17[key]) === null || _seriesData$chartData18 === void 0 ? void 0 : _seriesData$chartData18["x".concat(index + 1)]) !== null && _seriesData$chartData16 !== void 0 ? _seriesData$chartData16 : '' : minHeight,
             itemStyle: {
-              color: seriesData !== null && seriesData !== void 0 && (_seriesData$chartData11 = seriesData.chartData) !== null && _seriesData$chartData11 !== void 0 && (_seriesData$chartData12 = _seriesData$chartData11[key]) !== null && _seriesData$chartData12 !== void 0 && _seriesData$chartData12["x".concat(index + 1)] ? ((_objectData$barColor$ = objectData === null || objectData === void 0 ? void 0 : (_objectData$barColor = objectData.barColor) === null || _objectData$barColor === void 0 ? void 0 : _objectData$barColor[subIndex]) !== null && _objectData$barColor$ !== void 0 ? _objectData$barColor$ : '') || ((_objectData$color = objectData === null || objectData === void 0 ? void 0 : objectData.color) !== null && _objectData$color !== void 0 ? _objectData$color : '') : 'whitesmoke'
+              color: seriesData !== null && seriesData !== void 0 && (_seriesData$chartData19 = seriesData.chartData) !== null && _seriesData$chartData19 !== void 0 && (_seriesData$chartData20 = _seriesData$chartData19[key]) !== null && _seriesData$chartData20 !== void 0 && _seriesData$chartData20["x".concat(index + 1)] ? ((_objectData$barColor$ = objectData === null || objectData === void 0 ? void 0 : (_objectData$barColor = objectData.barColor) === null || _objectData$barColor === void 0 ? void 0 : _objectData$barColor[subIndex]) !== null && _objectData$barColor$ !== void 0 ? _objectData$barColor$ : '') || ((_objectData$color = objectData === null || objectData === void 0 ? void 0 : objectData.color) !== null && _objectData$color !== void 0 ? _objectData$color : '') : 'whitesmoke'
             },
             tooltip: _objectSpread2({}, (_seriesOption$subInde = (_seriesOption$subInde2 = seriesOption[subIndex]) === null || _seriesOption$subInde2 === void 0 ? void 0 : _seriesOption$subInde2.tooltip) !== null && _seriesOption$subInde !== void 0 ? _seriesOption$subInde : {})
           };
@@ -106243,7 +106273,7 @@ var BaseVerticalBarChart = function BaseVerticalBarChart(props) {
         containLabel: gridContainLabel
       }, gridOptions),
       xAxis: {
-        data: Object.keys((_seriesData$chartData13 = seriesData === null || seriesData === void 0 ? void 0 : seriesData.chartData) !== null && _seriesData$chartData13 !== void 0 ? _seriesData$chartData13 : {}),
+        data: Object.keys((_seriesData$chartData21 = seriesData === null || seriesData === void 0 ? void 0 : seriesData.chartData) !== null && _seriesData$chartData21 !== void 0 ? _seriesData$chartData21 : {}),
         show: xAxisShow,
         type: 'category',
         axisTick: {
@@ -106561,6 +106591,9 @@ var BasePieChart = function BasePieChart(props) {
       show: showLabelLine
     },
     itemStyle: _objectSpread2({}, itemStyle),
+    label: {
+      show: false
+    },
     data: Object.keys((_seriesData$chartData = seriesData === null || seriesData === void 0 ? void 0 : seriesData.chartData) !== null && _seriesData$chartData !== void 0 ? _seriesData$chartData : {}).map(function (key) {
       var _seriesData$chartData2;
       var temp = [];
@@ -106596,13 +106629,14 @@ var BasePieChart = function BasePieChart(props) {
           show: false
         }
       }]) : Object.keys((_seriesData$chartData7 = seriesData === null || seriesData === void 0 ? void 0 : seriesData.chartData) !== null && _seriesData$chartData7 !== void 0 ? _seriesData$chartData7 : {}).map(function (key, subIndex) {
-        var _seriesData$chartData8, _seriesData$metaData2, _seriesData$metaData3, _seriesOption$subInde6, _seriesOption$subInde7, _seriesOption$subInde8;
+        var _seriesData$chartData8, _seriesData$metaData2, _seriesData$metaData3, _seriesOption$subInde6, _seriesOption$subInde7, _seriesOption$subInde8, _seriesOption$subInde9;
         return {
           value: seriesData === null || seriesData === void 0 ? void 0 : (_seriesData$chartData8 = seriesData.chartData) === null || _seriesData$chartData8 === void 0 ? void 0 : _seriesData$chartData8[key],
           name: seriesData === null || seriesData === void 0 ? void 0 : (_seriesData$metaData2 = seriesData.metaData) === null || _seriesData$metaData2 === void 0 ? void 0 : (_seriesData$metaData3 = _seriesData$metaData2.keyData) === null || _seriesData$metaData3 === void 0 ? void 0 : _seriesData$metaData3[key],
           itemStyle: _objectSpread2({}, seriesOption === null || seriesOption === void 0 ? void 0 : (_seriesOption$subInde6 = seriesOption[subIndex]) === null || _seriesOption$subInde6 === void 0 ? void 0 : _seriesOption$subInde6.itemStyle),
           label: _objectSpread2({}, seriesOption === null || seriesOption === void 0 ? void 0 : (_seriesOption$subInde7 = seriesOption[subIndex]) === null || _seriesOption$subInde7 === void 0 ? void 0 : _seriesOption$subInde7.label),
-          tooltip: _objectSpread2({}, seriesOption === null || seriesOption === void 0 ? void 0 : (_seriesOption$subInde8 = seriesOption[subIndex]) === null || _seriesOption$subInde8 === void 0 ? void 0 : _seriesOption$subInde8.tooltip)
+          tooltip: _objectSpread2({}, seriesOption === null || seriesOption === void 0 ? void 0 : (_seriesOption$subInde8 = seriesOption[subIndex]) === null || _seriesOption$subInde8 === void 0 ? void 0 : _seriesOption$subInde8.tooltip),
+          emphasis: _objectSpread2({}, seriesOption === null || seriesOption === void 0 ? void 0 : (_seriesOption$subInde9 = seriesOption[subIndex]) === null || _seriesOption$subInde9 === void 0 ? void 0 : _seriesOption$subInde9.emphasis)
         };
       })
     });
@@ -106990,7 +107024,10 @@ var BaseAreaChart = function BaseAreaChart(props) {
     seriesData = props.seriesData,
     tooltip = props.tooltip,
     legendShow = props.legendShow,
-    xAxisShow = props.xAxisShow,
+    xAxisLabelShow = props.xAxisLabelShow,
+    xSplitLineShow = props.xSplitLineShow,
+    xAxisLineShow = props.xAxisLineShow,
+    xAxisTickShow = props.xAxisTickShow,
     yAxisLabelShow = props.yAxisLabelShow,
     ySplitLineShow = props.ySplitLineShow,
     yAxisLineShow = props.yAxisLineShow,
@@ -107003,11 +107040,11 @@ var BaseAreaChart = function BaseAreaChart(props) {
     stacked = props.stacked,
     cursor = props.cursor,
     smooth = props.smooth,
+    opacity = props.opacity,
     style = props.style,
     className = props.className;
   var seriesOptionObject = {
     type: 'line',
-    color: 'blue',
     symbol: 'emptyCircle',
     stack: stacked,
     symbolSize: 4,
@@ -107037,13 +107074,12 @@ var BaseAreaChart = function BaseAreaChart(props) {
       join: lineStyleJoin
     },
     areaStyle: {
-      color: 'lightblue',
       origin: 'auto',
       shadowBlur: 0,
       shadowColor: 'white',
       shadowOffsetX: 0,
       shadowOffsetY: 0,
-      opacity: 1
+      opacity: opacity
     },
     emphasis: {
       focus: 'series'
@@ -107054,14 +107090,14 @@ var BaseAreaChart = function BaseAreaChart(props) {
     })
   };
   var generateSeries = function generateSeries() {
-    return seriesOption.map(function (objectData, index) {
-      var _Object$keys$index, _Object$keys, _seriesData$chartData4, _seriesOptionObject$l, _objectData$label, _seriesOptionObject$l2, _objectData$lineStyle, _seriesOptionObject$a, _objectData$areaStyle, _seriesOptionObject$e, _objectData$emphasis, _Object$values$index, _Object$values, _seriesData$chartData5;
-      return _objectSpread2(_objectSpread2(_objectSpread2({}, seriesOptionObject), objectData), {}, {
+    return Object.keys(seriesData === null || seriesData === void 0 ? void 0 : seriesData.chartData).map(function (objectData, index) {
+      var _Object$keys$index, _Object$keys, _seriesData$chartData4, _seriesOptionObject$l, _seriesOption$index$l, _seriesOption$index, _seriesOptionObject$l2, _seriesOption$index$l2, _seriesOption$index2, _seriesOptionObject$a, _seriesOption$index$a, _seriesOption$index3, _seriesOptionObject$e, _seriesOption$index$e, _seriesOption$index4, _Object$values$index, _Object$values, _seriesData$chartData5;
+      return _objectSpread2(_objectSpread2(_objectSpread2({}, seriesOptionObject), seriesOption[index]), {}, {
         name: (_Object$keys$index = (_Object$keys = Object.keys((_seriesData$chartData4 = seriesData === null || seriesData === void 0 ? void 0 : seriesData.chartData) !== null && _seriesData$chartData4 !== void 0 ? _seriesData$chartData4 : {})) === null || _Object$keys === void 0 ? void 0 : _Object$keys[index]) !== null && _Object$keys$index !== void 0 ? _Object$keys$index : '',
-        label: _objectSpread2(_objectSpread2({}, (_seriesOptionObject$l = seriesOptionObject === null || seriesOptionObject === void 0 ? void 0 : seriesOptionObject.label) !== null && _seriesOptionObject$l !== void 0 ? _seriesOptionObject$l : {}), (_objectData$label = objectData === null || objectData === void 0 ? void 0 : objectData.label) !== null && _objectData$label !== void 0 ? _objectData$label : {}),
-        lineStyle: _objectSpread2(_objectSpread2({}, (_seriesOptionObject$l2 = seriesOptionObject === null || seriesOptionObject === void 0 ? void 0 : seriesOptionObject.lineStyle) !== null && _seriesOptionObject$l2 !== void 0 ? _seriesOptionObject$l2 : {}), (_objectData$lineStyle = objectData === null || objectData === void 0 ? void 0 : objectData.lineStyle) !== null && _objectData$lineStyle !== void 0 ? _objectData$lineStyle : {}),
-        areaStyle: _objectSpread2(_objectSpread2({}, (_seriesOptionObject$a = seriesOptionObject === null || seriesOptionObject === void 0 ? void 0 : seriesOptionObject.areaStyle) !== null && _seriesOptionObject$a !== void 0 ? _seriesOptionObject$a : {}), (_objectData$areaStyle = objectData === null || objectData === void 0 ? void 0 : objectData.areaStyle) !== null && _objectData$areaStyle !== void 0 ? _objectData$areaStyle : {}),
-        emphasis: _objectSpread2(_objectSpread2({}, (_seriesOptionObject$e = seriesOptionObject === null || seriesOptionObject === void 0 ? void 0 : seriesOptionObject.emphasis) !== null && _seriesOptionObject$e !== void 0 ? _seriesOptionObject$e : {}), (_objectData$emphasis = objectData === null || objectData === void 0 ? void 0 : objectData.emphasis) !== null && _objectData$emphasis !== void 0 ? _objectData$emphasis : {}),
+        label: _objectSpread2(_objectSpread2({}, (_seriesOptionObject$l = seriesOptionObject === null || seriesOptionObject === void 0 ? void 0 : seriesOptionObject.label) !== null && _seriesOptionObject$l !== void 0 ? _seriesOptionObject$l : {}), (_seriesOption$index$l = (_seriesOption$index = seriesOption[index]) === null || _seriesOption$index === void 0 ? void 0 : _seriesOption$index.label) !== null && _seriesOption$index$l !== void 0 ? _seriesOption$index$l : {}),
+        lineStyle: _objectSpread2(_objectSpread2({}, (_seriesOptionObject$l2 = seriesOptionObject === null || seriesOptionObject === void 0 ? void 0 : seriesOptionObject.lineStyle) !== null && _seriesOptionObject$l2 !== void 0 ? _seriesOptionObject$l2 : {}), (_seriesOption$index$l2 = (_seriesOption$index2 = seriesOption[index]) === null || _seriesOption$index2 === void 0 ? void 0 : _seriesOption$index2.lineStyle) !== null && _seriesOption$index$l2 !== void 0 ? _seriesOption$index$l2 : {}),
+        areaStyle: _objectSpread2(_objectSpread2({}, (_seriesOptionObject$a = seriesOptionObject === null || seriesOptionObject === void 0 ? void 0 : seriesOptionObject.areaStyle) !== null && _seriesOptionObject$a !== void 0 ? _seriesOptionObject$a : {}), (_seriesOption$index$a = (_seriesOption$index3 = seriesOption[index]) === null || _seriesOption$index3 === void 0 ? void 0 : _seriesOption$index3.areaStyle) !== null && _seriesOption$index$a !== void 0 ? _seriesOption$index$a : {}),
+        emphasis: _objectSpread2(_objectSpread2({}, (_seriesOptionObject$e = seriesOptionObject === null || seriesOptionObject === void 0 ? void 0 : seriesOptionObject.emphasis) !== null && _seriesOptionObject$e !== void 0 ? _seriesOptionObject$e : {}), (_seriesOption$index$e = (_seriesOption$index4 = seriesOption[index]) === null || _seriesOption$index4 === void 0 ? void 0 : _seriesOption$index4.emphasis) !== null && _seriesOption$index$e !== void 0 ? _seriesOption$index$e : {}),
         data: (_Object$values$index = (_Object$values = Object.values((_seriesData$chartData5 = seriesData === null || seriesData === void 0 ? void 0 : seriesData.chartData) !== null && _seriesData$chartData5 !== void 0 ? _seriesData$chartData5 : {})) === null || _Object$values === void 0 ? void 0 : _Object$values[index]) !== null && _Object$values$index !== void 0 ? _Object$values$index : ''
       });
     });
@@ -107081,7 +107117,18 @@ var BaseAreaChart = function BaseAreaChart(props) {
       },
       xAxis: [{
         type: 'category',
-        show: xAxisShow,
+        axisLabel: {
+          show: xAxisLabelShow
+        },
+        splitLine: {
+          show: xSplitLineShow
+        },
+        axisLine: {
+          show: xAxisLineShow
+        },
+        axisTick: {
+          show: xAxisTickShow
+        },
         boundaryGap: false,
         data: (_seriesData$metaData$ = seriesData === null || seriesData === void 0 ? void 0 : (_seriesData$metaData = seriesData.metaData) === null || _seriesData$metaData === void 0 ? void 0 : _seriesData$metaData.xAxisData) !== null && _seriesData$metaData$ !== void 0 ? _seriesData$metaData$ : []
       }],
@@ -107115,7 +107162,10 @@ BaseAreaChart.propTypes = {
   gridContainLabel: propTypes$1.exports.bool,
   tooltip: propTypes$1.exports.object,
   legendShow: propTypes$1.exports.bool,
-  xAxisShow: propTypes$1.exports.bool,
+  xAxisLabelShow: propTypes$1.exports.bool,
+  xSplitLineShow: propTypes$1.exports.bool,
+  xAxisLineShow: propTypes$1.exports.bool,
+  xAxisTickShow: propTypes$1.exports.bool,
   seriesData: propTypes$1.exports.objectOf(propTypes$1.exports.shape),
   stacked: propTypes$1.exports.bool,
   yAxisLabelShow: propTypes$1.exports.bool,
@@ -107129,6 +107179,7 @@ BaseAreaChart.propTypes = {
   lineStyleCap: propTypes$1.exports.oneOf(['butt', 'round', 'square']),
   lineStyleJoin: propTypes$1.exports.oneOf(['round', 'bevel', 'miter']),
   smooth: propTypes$1.exports.bool,
+  opacity: propTypes$1.exports.number,
   style: propTypes$1.exports.objectOf(propTypes$1.exports.shape),
   className: propTypes$1.exports.string
 };
@@ -107144,7 +107195,10 @@ BaseAreaChart.defaultProps = {
   tooltip: {},
   stacked: false,
   legendShow: false,
-  xAxisShow: false,
+  xAxisLabelShow: false,
+  xSplitLineShow: false,
+  xAxisLineShow: false,
+  xAxisTickShow: false,
   seriesData: {},
   yAxisLabelShow: false,
   ySplitLineShow: false,
@@ -107157,6 +107211,7 @@ BaseAreaChart.defaultProps = {
   lineStyleCap: 'butt',
   lineStyleJoin: 'round',
   smooth: false,
+  opacity: 1,
   style: {
     width: '100%',
     height: '100%'
