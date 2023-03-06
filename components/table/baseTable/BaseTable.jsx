@@ -10,7 +10,16 @@ import { Skeleton } from './Skeleton';
 
 // eslint-disable-next-line prefer-arrow-callback
 const BaseTable = forwardRef(function BaseTable(props, ref) {
-	const { headerData, customCells, tableData, className, loading, expandable, onSort } = props;
+	const {
+		headerData,
+		customCells,
+		tableData,
+		className,
+		loading,
+		expandable,
+		onSort,
+		rowHeight,
+	} = props;
 
 	if (loading) {
 		return <Skeleton />;
@@ -28,6 +37,7 @@ const BaseTable = forwardRef(function BaseTable(props, ref) {
 					customCells,
 					expandable,
 					onSort,
+					rowHeight,
 				}}
 			/>
 			<TableBody
@@ -37,6 +47,7 @@ const BaseTable = forwardRef(function BaseTable(props, ref) {
 					customCells,
 					tableData,
 					expandable,
+					rowHeight,
 				}}
 			/>
 		</table>
@@ -64,6 +75,7 @@ BaseTable.propTypes = {
 	loading: PropTypes.bool,
 	expandable: PropTypes.func,
 	onSort: PropTypes.func,
+	rowHeight: PropTypes.oneOf(['md', 'lg']),
 };
 
 BaseTable.defaultProps = {
@@ -77,6 +89,7 @@ BaseTable.defaultProps = {
 	loading: null,
 	expandable: null,
 	onSort: () => {},
+	rowHeight: 'md',
 };
 
 export default BaseTable;
