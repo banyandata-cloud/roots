@@ -10,12 +10,15 @@ div.root {
   width: -moz-fit-content;
   width: fit-content;
   border-radius: 0.4rem 0.4rem;
-  box-shadow: inset 0px 1px 2px rgba(97, 97, 97, 0.2), inset 0px 2px 4px rgba(97, 97, 97, 0.2);
+  border-width: 1px;
+  border-style: solid;
 }
 div.root.theme-dark {
-  background: var(--grey);
+  background: var(--white);
+  border-color: var(--grey);
 }
 div.root.theme-dark [data-elem=base-cell].toggle-button {
+  background: var(--white);
   color: var(--grey4);
 }
 div.root.theme-dark [data-elem=base-cell].toggle-button.active {
@@ -23,19 +26,24 @@ div.root.theme-dark [data-elem=base-cell].toggle-button.active {
   color: var(--white);
 }
 div.root.theme-light {
+  background: var(--white);
+  border-color: var(--grey1);
+}
+div.root.theme-light [data-elem=base-cell].toggle-button {
+  background: transparent;
+  color: var(--grey);
+}
+div.root.theme-light [data-elem=base-cell].toggle-button.active {
+  background: var(--grey6);
   color: var(--dark-grey);
+  border: 1px solid var(--grey4);
 }
 div.root [data-elem=base-cell].toggle-button {
-  color: var(--grey);
   padding: 0.344rem 0.75rem;
   height: 2rem;
-  background: transparent;
 }
 div.root [data-elem=base-cell].toggle-button.active {
-  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);
-  background: var(--white);
   border-radius: 0.25rem;
-  color: var(--dark-grey);
 }
 div.root .input {
   display: none;
