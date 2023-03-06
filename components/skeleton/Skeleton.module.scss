@@ -4,10 +4,17 @@
 	width: 100%;
 	height: 100%;
 	background: $grey6;
-	background-image: linear-gradient(to right, $grey6 0%, $grey8 20%, $grey6 40%, $grey6 100%);
 	background-repeat: no-repeat;
 	background-size: cover;
 	display: inline-block;
+
+	&.light-theme {
+		background-image: linear-gradient(to right, $grey4 0%, $grey6 20%, $grey4 40%, $grey4 100%);
+	}
+
+	&.dark-theme {
+		background-image: linear-gradient(to right, $grey6 0%, $grey8 20%, $grey6 40%, $grey6 100%);
+	}
 
 	&.animated {
 		animation-duration: 1.25s;

@@ -3,7 +3,7 @@ import { classes } from '../../utils';
 import styles from './Skeleton.module.css';
 
 const Skeleton = (props) => {
-	const { height, width, variant, className, noAnimation } = props;
+	const { height, width, variant, className, noAnimation, theme } = props;
 
 	return (
 		<span
@@ -12,6 +12,7 @@ const Skeleton = (props) => {
 				className,
 				styles.root,
 				styles[variant],
+				styles[`${theme}-theme`],
 				noAnimation ? '' : styles.animated
 			)}
 			style={{
@@ -24,6 +25,7 @@ const Skeleton = (props) => {
 
 Skeleton.propTypes = {
 	className: PropTypes.string,
+	theme: PropTypes.oneOf(['light', 'dark']),
 	height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	variant: PropTypes.oneOf(['circle', 'text', 'rounded', 'rectangle']),
@@ -32,6 +34,7 @@ Skeleton.propTypes = {
 
 Skeleton.defaultProps = {
 	className: '',
+	theme: 'dark',
 	height: null,
 	width: '100%',
 	variant: 'text',
