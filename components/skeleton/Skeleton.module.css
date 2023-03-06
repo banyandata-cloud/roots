@@ -30,7 +30,7 @@
   height: 1.5rem;
 }
 .root.circle {
-  border-radius: 1.5rem;
+  border-radius: 50%;
 }
 .root.rounded {
   border-radius: 0.25rem;
