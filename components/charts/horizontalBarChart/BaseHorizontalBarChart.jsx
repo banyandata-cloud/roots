@@ -16,6 +16,7 @@ import {
 } from 'echarts/renderers';
 import styles from './BaseHorizontalBarChart.module.css';
 import { classes } from '../../../utils';
+import { Skeleton } from './Skeleton';
 
 // Register the required components
 echarts.use([
@@ -29,6 +30,7 @@ echarts.use([
 
 const BaseHorizontalBarChart = (props) => {
 	const {
+		loading,
 		title,
 		gridContainLabel,
 		gridOptions,
@@ -49,6 +51,10 @@ const BaseHorizontalBarChart = (props) => {
 		style,
 		className,
 	} = props;
+
+	if (loading) {
+		return <Skeleton />;
+	}
 
 	const seriesOptionObject = {
 		type: 'bar',
@@ -92,7 +98,9 @@ const BaseHorizontalBarChart = (props) => {
 					return {
 						value: seriesData?.chartData?.[key]?.[`x${index + 1}`] ?? '',
 						itemStyle: {
-							color: (objectData?.barColor?.[subIndex] ?? '') || (objectData?.color ?? ''),
+							color:
+								(objectData?.barColor?.[subIndex] ?? '') ||
+								(objectData?.color ?? ''),
 						},
 						tooltip: {
 							...(seriesOption[subIndex]?.tooltip ?? {}),
@@ -153,6 +161,7 @@ const BaseHorizontalBarChart = (props) => {
 };
 
 BaseHorizontalBarChart.propTypes = {
+	loading: PropTypes.bool,
 	title: PropTypes.string,
 	gridContainLabel: PropTypes.bool,
 	gridOptions: PropTypes.object,
@@ -178,6 +187,7 @@ BaseHorizontalBarChart.propTypes = {
 };
 
 BaseHorizontalBarChart.defaultProps = {
+	loading: false,
 	title: '',
 	gridContainLabel: false,
 	gridOptions: {

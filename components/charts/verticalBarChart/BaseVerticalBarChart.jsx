@@ -18,6 +18,7 @@ import {
 } from 'echarts/renderers';
 import styles from './BaseVerticalBarChart.module.css';
 import { classes } from '../../../utils';
+import { Skeleton } from './Skeleton';
 
 // Register the required components
 echarts.use([
@@ -32,6 +33,7 @@ echarts.use([
 
 const BaseVerticalBarChart = (props) => {
 	const {
+		loading,
 		title,
 		gridContainLabel,
 		gridOptions,
@@ -56,6 +58,9 @@ const BaseVerticalBarChart = (props) => {
 		className,
 	} = props;
 
+	if (loading) {
+		return <Skeleton />;
+	}
 	const minHeightCheck = !Object.keys(seriesData?.chartData ?? 0)?.some((obj1) => {
 		return seriesOption.some((obj, index) => {
 			return seriesData?.chartData?.[obj1]?.[`x${index + 1}`];
@@ -207,6 +212,7 @@ const BaseVerticalBarChart = (props) => {
 };
 
 BaseVerticalBarChart.propTypes = {
+	loading: PropTypes.bool,
 	title: PropTypes.string,
 	gridContainLabel: PropTypes.bool,
 	gridOptions: PropTypes.object,
@@ -235,6 +241,7 @@ BaseVerticalBarChart.propTypes = {
 };
 
 BaseVerticalBarChart.defaultProps = {
+	loading: false,
 	title: '',
 	gridContainLabel: false,
 	gridOptions: {

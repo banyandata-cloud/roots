@@ -1,4 +1,5 @@
 import React from 'react';
+import { ThemedContainer } from '../helpers';
 import Skeleton from './Skeleton';
 
 export default {
@@ -14,9 +15,9 @@ export default {
 
 const Template = (args) => {
 	return (
-		<div>
+		<ThemedContainer {...args}>
 			<Skeleton {...args} />
-		</div>
+		</ThemedContainer>
 	);
 };
 

@@ -9,10 +9,12 @@ import {
 } from 'react';
 import { MarkerClusterer } from '@googlemaps/markerclusterer';
 import { useDeepCompareEffectForMaps } from './utils';
+import Skeleton from '../../skeleton/Skeleton';
 
 const BaseMap = (props) => {
 	// eslint-disable-next-line object-curly-newline
-	const { onClick, onIdle, children, style, mapId, clustered, fitBounds, ...options } = props;
+	const { loading, onClick, onIdle, children, style, mapId, clustered, fitBounds, ...options } =
+		props;
 
 	const ref = useRef(null);
 	const markersRef = useRef([]);
@@ -98,7 +100,17 @@ const BaseMap = (props) => {
 
 	return (
 		<>
-			<div ref={ref} style={style} />
+			<div
+				ref={ref}
+				style={
+					loading
+						? {
+								flexGrow: 0,
+						  }
+						: style
+				}
+			/>
+			{loading && <Skeleton height='100%' />}
 			{Children.toArray(children)
 				.filter((child) => {
 					return isValidElement(child);
@@ -126,6 +138,7 @@ const BaseMap = (props) => {
 };
 
 BaseMap.defaultProps = {
+	loading: false,
 	clustered: false,
 	fitBounds: false,
 	zoom: 1,
