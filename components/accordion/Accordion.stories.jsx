@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import ThemedContainer from '../helpers/themedContainer/ThemedContainer';
 import Accordion from './Accordion';
 
 export default {
@@ -24,9 +25,11 @@ export default {
 
 export const Default = (args) => {
 	return (
-		<div>
-			<Accordion {...args} />
-		</div>
+		<ThemedContainer>
+			{[...Array(8).keys()].map((key) => {
+				return <Accordion key={key} {...args} />;
+			})}
+		</ThemedContainer>
 	);
 };
 
@@ -42,9 +45,35 @@ Default.parameters = {
 	},
 };
 
+export const Controlled = () => {
+	const [open, setOpen] = useState(null);
+
+	return (
+		<ThemedContainer>
+			{[...Array(8).keys()].map((key) => {
+				return (
+					<Accordion
+						open={key === open}
+						onToggle={(active) => {
+							if (active) {
+								setOpen(null);
+							} else {
+								setOpen(key);
+							}
+						}}
+						key={key}
+						title={`Item ${key + 1}`}
+						description={`This is the decription for Item ${key + 1}`}
+					/>
+				);
+			})}
+		</ThemedContainer>
+	);
+};
+
 export const Nested = () => {
 	return (
-		<div>
+		<ThemedContainer>
 			<Accordion title='Parent' description='This is the parent description'>
 				<Accordion
 					title='Child'
@@ -52,6 +81,6 @@ export const Nested = () => {
 					onExpand={() => {}}
 				/>
 			</Accordion>
-		</div>
+		</ThemedContainer>
 	);
 };
