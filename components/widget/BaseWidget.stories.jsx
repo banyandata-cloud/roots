@@ -119,6 +119,88 @@ const Template = (args) => {
 						{
 							stackIndex: 1,
 							color: 'orange',
+							showBackground: false,
+							label: {
+								color: 'white',
+								show: false,
+								formatter(param) {
+									return param.name;
+								},
+							},
+						},
+						{
+							stackIndex: 2,
+							showBackground: false,
+							color: 'blue',
+							label: {
+								show: true,
+								color: 'white',
+							},
+						},
+					]}
+					errorHandle={() => {
+						alert('This will call the API again');
+					}}
+					errorMessage='We are having trouble loading this content.'
+				/>
+			</BaseWidget>
+		</div>
+	);
+};
+
+const ErrorStateTemplate = (args) => {
+	const [dropValue, setDropValue] = useState(0);
+	const [selectedValue, setSelectedValue] = useState('Option 1');
+	return (
+		<div
+			style={{
+				backgroundColor: COLORS['dark-grey'],
+				height: '100%',
+				width: '100%',
+			}}>
+			<BaseWidget
+				{...args}
+				// eslint-disable-next-line react/destructuring-assignment
+				options={args.options.map((option) => {
+					// eslint-disable-next-line no-nested-ternary
+					return option.id === 'toggle'
+						? {
+								...option,
+								selectedToggle: selectedValue,
+								setSelectedToggle: (data) => {
+									setSelectedValue(data);
+								},
+						  }
+						: option.id === 'dropdown'
+						? {
+								...option,
+								value: dropValue,
+								onChange: (event) => {
+									setDropValue(event.target.value);
+								},
+						  }
+						: option;
+				})}>
+				<BaseVerticalBarChart
+					yAxisLabelShow
+					ySplitLineShow
+					xAxisShow
+					xAxisLabel={{
+						show: true,
+						rotate: 90,
+						inside: true,
+						color: 'white',
+						verticalAlign: 'bottom',
+						padding: [0, 0, 20, -5],
+					}}
+					barWidth='15%'
+					seriesData={{
+						chartData: {},
+					}}
+					seriesOption={[
+						{
+							stackIndex: 1,
+							color: 'orange',
 							label: {
 								color: 'white',
 								show: false,
@@ -135,6 +217,10 @@ const Template = (args) => {
 							},
 						},
 					]}
+					errorHandle={() => {
+						alert('This will call the API again');
+					}}
+					errorMessage='We are having trouble loading this content.'
 				/>
 			</BaseWidget>
 		</div>
@@ -142,6 +228,7 @@ const Template = (args) => {
 };
 
 export const Default = Template.bind({});
+export const ErrorState = ErrorStateTemplate.bind({});
 
 Default.args = {
 	title: 'Widget Title - 7 Services',
@@ -202,4 +289,73 @@ Default.args = {
 			},
 		},
 	],
+	errorMessage: 'We are having trouble loading the Data',
+	errorHandle: () => {
+		alert('This will Fetch API again');
+	},
+};
+
+ErrorState.args = {
+	title: 'Widget Title - 7 Services',
+	showBack: true,
+	onBack: () => {
+		alert('This will bring you back');
+	},
+	options: [
+		{
+			id: 'toggle',
+			options: [
+				{
+					id: '1',
+					leftCompoenent: '',
+					rightCompoenent: '',
+					title: 'Option 1',
+					value: 'Option 1',
+				},
+				{
+					id: '2',
+					leftCompoenent: '',
+					rightCompoenent: '',
+					title: 'Option 2',
+					value: 'Option 2',
+				},
+			],
+		},
+		{
+			id: 'dropdown',
+			placeholder: 'Region',
+			selectOption: [
+				{
+					title: 'India',
+					value: '1',
+				},
+				{
+					title: 'USA',
+					value: '2',
+				},
+				{
+					title: 'UAE',
+					value: '3',
+				},
+				{
+					title: 'UK',
+					value: '4',
+				},
+			],
+			onChange: (cb, data) => {
+				cb(data);
+			},
+		},
+		{
+			id: 'expand',
+			title: 'Expand',
+			onClick: () => {
+				alert('This will open the Modal or a new Page with Expanded chart');
+			},
+		},
+	],
+	errorMessage: 'We are having trouble loading the Data',
+	errorHandle: () => {
+		alert('This will Fetch API again');
+	},
 };

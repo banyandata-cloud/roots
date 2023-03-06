@@ -63,6 +63,9 @@ const BasePieChart = (props) => {
 		itemStyle: {
 			...itemStyle,
 		},
+		label: {
+			show: false,
+		},
 		data: Object.keys(seriesData?.chartData ?? {}).map((key) => {
 			const temp = [];
 			temp.push({
@@ -122,6 +125,9 @@ const BasePieChart = (props) => {
 							},
 							tooltip: {
 								...seriesOption?.[subIndex]?.tooltip,
+							},
+							emphasis: {
+								...seriesOption?.[subIndex]?.emphasis,
 							},
 						};
 				  }),

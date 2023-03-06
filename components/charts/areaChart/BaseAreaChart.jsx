@@ -39,7 +39,10 @@ const BaseAreaChart = (props) => {
 		seriesData,
 		tooltip,
 		legendShow,
-		xAxisShow,
+		xAxisLabelShow,
+		xSplitLineShow,
+		xAxisLineShow,
+		xAxisTickShow,
 		yAxisLabelShow,
 		ySplitLineShow,
 		yAxisLineShow,
@@ -52,6 +55,7 @@ const BaseAreaChart = (props) => {
 		stacked,
 		cursor,
 		smooth,
+		opacity,
 		style,
 		className,
 	} = props;
@@ -65,7 +69,6 @@ const BaseAreaChart = (props) => {
 
 	const seriesOptionObject = {
 		type: 'line',
-		color: 'blue',
 		symbol: 'emptyCircle',
 		stack: stacked,
 		symbolSize: 4,
@@ -95,13 +98,12 @@ const BaseAreaChart = (props) => {
 			join: lineStyleJoin,
 		},
 		areaStyle: {
-			color: 'lightblue',
 			origin: 'auto',
 			shadowBlur: 0,
 			shadowColor: 'white',
 			shadowOffsetX: 0,
 			shadowOffsetY: 0,
-			opacity: 1,
+			opacity,
 		},
 		emphasis: {
 			focus: 'series',
@@ -112,26 +114,26 @@ const BaseAreaChart = (props) => {
 	};
 
 	const generateSeries = () => {
-		return seriesOption.map((objectData, index) => {
+		return Object.keys(seriesData?.chartData).map((objectData, index) => {
 			return {
 				...seriesOptionObject,
-				...objectData,
+				...seriesOption[index],
 				name: Object.keys(seriesData?.chartData ?? {})?.[index] ?? '',
 				label: {
 					...(seriesOptionObject?.label ?? {}),
-					...(objectData?.label ?? {}),
+					...(seriesOption[index]?.label ?? {}),
 				},
 				lineStyle: {
 					...(seriesOptionObject?.lineStyle ?? {}),
-					...(objectData?.lineStyle ?? {}),
+					...(seriesOption[index]?.lineStyle ?? {}),
 				},
 				areaStyle: {
 					...(seriesOptionObject?.areaStyle ?? {}),
-					...(objectData?.areaStyle ?? {}),
+					...(seriesOption[index]?.areaStyle ?? {}),
 				},
 				emphasis: {
 					...(seriesOptionObject?.emphasis ?? {}),
-					...(objectData?.emphasis ?? {}),
+					...(seriesOption[index]?.emphasis ?? {}),
 				},
 				data: Object.values(seriesData?.chartData ?? {})?.[index] ?? '',
 			};
@@ -157,7 +159,18 @@ const BaseAreaChart = (props) => {
 				xAxis: [
 					{
 						type: 'category',
-						show: xAxisShow,
+						axisLabel: {
+							show: xAxisLabelShow,
+						},
+						splitLine: {
+							show: xSplitLineShow,
+						},
+						axisLine: {
+							show: xAxisLineShow,
+						},
+						axisTick: {
+							show: xAxisTickShow,
+						},
 						boundaryGap: false,
 						data: seriesData?.metaData?.xAxisData ?? [],
 					},
@@ -197,7 +210,10 @@ BaseAreaChart.propTypes = {
 	gridContainLabel: PropTypes.bool,
 	tooltip: PropTypes.object,
 	legendShow: PropTypes.bool,
-	xAxisShow: PropTypes.bool,
+	xAxisLabelShow: PropTypes.bool,
+	xSplitLineShow: PropTypes.bool,
+	xAxisLineShow: PropTypes.bool,
+	xAxisTickShow: PropTypes.bool,
 	seriesData: PropTypes.objectOf(PropTypes.shape),
 	stacked: PropTypes.bool,
 	yAxisLabelShow: PropTypes.bool,
@@ -211,6 +227,7 @@ BaseAreaChart.propTypes = {
 	lineStyleCap: PropTypes.oneOf(['butt', 'round', 'square']),
 	lineStyleJoin: PropTypes.oneOf(['round', 'bevel', 'miter']),
 	smooth: PropTypes.bool,
+	opacity: PropTypes.number,
 	style: PropTypes.objectOf(PropTypes.shape),
 	className: PropTypes.string,
 };
@@ -228,7 +245,10 @@ BaseAreaChart.defaultProps = {
 	tooltip: {},
 	stacked: false,
 	legendShow: false,
-	xAxisShow: false,
+	xAxisLabelShow: false,
+	xSplitLineShow: false,
+	xAxisLineShow: false,
+	xAxisTickShow: false,
 	seriesData: {},
 	yAxisLabelShow: false,
 	ySplitLineShow: false,
@@ -241,6 +261,7 @@ BaseAreaChart.defaultProps = {
 	lineStyleCap: 'butt',
 	lineStyleJoin: 'round',
 	smooth: false,
+	opacity: 1,
 	style: {
 		width: '100%',
 		height: '100%',

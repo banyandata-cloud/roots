@@ -1,0 +1,15 @@
+@import '../../../styles/index';
+
+.root {
+	@include flex(column);
+	margin: auto;
+	width: 30%;
+	height: 100%;
+    gap: 1rem;
+    .text {
+        text-align: center;
+    }
+	.button {
+		width: 60%;
+	}
+}
