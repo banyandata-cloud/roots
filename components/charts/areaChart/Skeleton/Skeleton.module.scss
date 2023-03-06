@@ -1,34 +1,44 @@
 @import '../../../../styles/';
 
 .root {
-	@include flex;
+	@include flex(column);
+	overflow: hidden;
 	height: 100%;
 	width: 100%;
 
-	.bump {
-		&:not(:nth-child(1)) {
-			margin-left: -1.75rem;
-		}
-		transform: rotate(30deg);
-		&:nth-child(2n) {
-			transform: rotate(-30deg);
+	.line {
+		@include flex;
+		width: 100%;
+		.bump {
+			&:not(:nth-child(1)) {
+				margin-left: -1.75rem;
+			}
+			transform: rotate(30deg);
+			&:nth-child(2n) {
+				transform: rotate(-30deg);
+			}
 		}
 	}
 
 	&.filled {
 		@include flex(column, flex-start, stretch);
 		.bumps {
-			@include flex;
-			gap: 1rem;
+			@include flex(row, center, flex-end);
 			flex: 1 1 50%;
 
 			.triangle {
-				width: 0%;
-				height: 0%;
-				border: 1rem solid $grey5;
-				border-left-width: 0.5rem;
-				border-right-width: 0.5rem;
-				border-bottom-width: 0;
+				height: 10rem;
+				background: linear-gradient(
+					to bottom right,
+					#fff 0%,
+					#fff 50%,
+					$grey6 50%,
+					$grey6 100%
+				);
+
+				&:nth-child(2n) {
+					transform: rotate3d(0, 1, 0, 180deg);
+				}
 			}
 		}
 

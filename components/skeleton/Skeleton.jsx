@@ -3,12 +3,17 @@ import { classes } from '../../utils';
 import styles from './Skeleton.module.css';
 
 const Skeleton = (props) => {
-	const { height, width, variant, className } = props;
+	const { height, width, variant, className, noAnimation } = props;
 
 	return (
 		<span
 			data-elem='skeleton'
-			className={classes(className, styles.root, styles[variant])}
+			className={classes(
+				className,
+				styles.root,
+				styles[variant],
+				noAnimation ? '' : styles.animated
+			)}
 			style={{
 				height,
 				width,
@@ -22,6 +27,7 @@ Skeleton.propTypes = {
 	height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	variant: PropTypes.oneOf(['circle', 'text', 'rounded', 'rectangle']),
+	noAnimation: PropTypes.bool,
 };
 
 Skeleton.defaultProps = {
@@ -29,6 +35,7 @@ Skeleton.defaultProps = {
 	height: null,
 	width: '100%',
 	variant: 'text',
+	noAnimation: false,
 };
 
 export default Skeleton;

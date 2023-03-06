@@ -6,6 +6,8 @@
   background-repeat: no-repeat;
   background-size: cover;
   display: inline-block;
+}
+.root.animated {
   animation-duration: 1.25s;
   animation-fill-mode: forwards;
   animation-iteration-count: infinite;

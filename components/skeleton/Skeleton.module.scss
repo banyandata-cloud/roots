@@ -8,23 +8,26 @@
 	background-repeat: no-repeat;
 	background-size: cover;
 	display: inline-block;
-	animation-duration: 1.25s;
-	animation-fill-mode: forwards;
-	animation-iteration-count: infinite;
-	animation-name: shimmer;
-	animation-timing-function: linear;
-	animation-fill-mode: forwards;
-	animation-iteration-count: infinite;
-	animation-name: shimmer;
-	animation-timing-function: linear;
-	-webkit-animation-fill-mode: forwards;
-	-webkit-animation-iteration-count: infinite;
-	-webkit-animation-name: shimmer;
-	-webkit-animation-timing-function: linear;
-	-webkit-animation-fill-mode: forwards;
-	-webkit-animation-iteration-count: infinite;
-	-webkit-animation-name: shimmer;
-	-webkit-animation-timing-function: linear;
+
+	&.animated {
+		animation-duration: 1.25s;
+		animation-fill-mode: forwards;
+		animation-iteration-count: infinite;
+		animation-name: shimmer;
+		animation-timing-function: linear;
+		animation-fill-mode: forwards;
+		animation-iteration-count: infinite;
+		animation-name: shimmer;
+		animation-timing-function: linear;
+		-webkit-animation-fill-mode: forwards;
+		-webkit-animation-iteration-count: infinite;
+		-webkit-animation-name: shimmer;
+		-webkit-animation-timing-function: linear;
+		-webkit-animation-fill-mode: forwards;
+		-webkit-animation-iteration-count: infinite;
+		-webkit-animation-name: shimmer;
+		-webkit-animation-timing-function: linear;
+	}
 
 	&.text {
 		height: 1.5rem;
