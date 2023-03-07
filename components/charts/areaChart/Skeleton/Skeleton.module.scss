@@ -1,0 +1,50 @@
+@import '../../../../styles/';
+
+.root {
+	@include flex(column);
+	overflow: hidden;
+	height: 100%;
+	width: 100%;
+
+	.line {
+		@include flex;
+		width: 100%;
+		.bump {
+			&:not(:nth-child(1)) {
+				margin-left: -1.75rem;
+			}
+			transform: rotate(30deg);
+			&:nth-child(2n) {
+				transform: rotate(-30deg);
+			}
+		}
+	}
+
+	&.filled {
+		@include flex(column, flex-start, stretch);
+		.bumps {
+			@include flex(row, center, flex-end);
+			flex: 1 1 50%;
+
+			.triangle {
+				height: 10rem;
+				background: linear-gradient(
+					to bottom right,
+					#fff 0%,
+					#fff 50%,
+					$grey6 50%,
+					$grey6 100%
+				);
+
+				&:nth-child(2n) {
+					transform: rotate3d(0, 1, 0, 180deg);
+				}
+			}
+		}
+
+		.base {
+			flex: 1 1 50%;
+			// height: 50%;
+		}
+	}
+}

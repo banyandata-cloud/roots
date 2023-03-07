@@ -38,6 +38,18 @@
 		}
 	}
 
+	&.row-height-md {
+		> td[data-elem='base-cell'] {
+			height: 3rem;
+		}
+	}
+
+	&.row-height-lg {
+		> td[data-elem='base-cell'] {
+			height: 4rem;
+		}
+	}
+
 	> [data-elem='base-cell'].expandable-cell {
 		padding-left: 0.9rem;
 		padding-right: 0.1rem;

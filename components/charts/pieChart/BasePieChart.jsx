@@ -1,5 +1,4 @@
 /* eslint-disable react/forbid-prop-types */
-/* eslint-disable no-tabs */
 import PropTypes from 'prop-types';
 // ReactEcharts from 'echarts-for-react' would import the entire bundle
 import EChartsReactCore from 'echarts-for-react/lib/core';
@@ -19,6 +18,7 @@ import {
 } from 'echarts/renderers';
 import styles from './BasePieChart.module.css';
 import { classes } from '../../../utils';
+import { Skeleton } from './Skeleton';
 
 // Register the required components
 echarts.use([
@@ -33,6 +33,7 @@ echarts.use([
 
 const BasePieChart = (props) => {
 	const {
+		loading,
 		title,
 		gridOptions,
 		tooltip,
@@ -49,6 +50,10 @@ const BasePieChart = (props) => {
 		style,
 		className,
 	} = props;
+
+	if (loading) {
+		return <Skeleton />;
+	}
 
 	const seriesOptionObject = {
 		type: 'pie',
@@ -159,6 +164,7 @@ const BasePieChart = (props) => {
 };
 
 BasePieChart.propTypes = {
+	loading: PropTypes.bool,
 	title: PropTypes.string,
 	gridOptions: PropTypes.object,
 	tooltip: PropTypes.object,
@@ -180,6 +186,7 @@ BasePieChart.propTypes = {
 };
 
 BasePieChart.defaultProps = {
+	loading: false,
 	title: '',
 	gridOptions: {
 		left: 0,

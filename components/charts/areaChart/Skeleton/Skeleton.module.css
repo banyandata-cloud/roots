@@ -1,0 +1,48 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+}
+.root .line {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.root .line .bump {
+  transform: rotate(30deg);
+}
+.root .line .bump:not(:nth-child(1)) {
+  margin-left: -1.75rem;
+}
+.root .line .bump:nth-child(2n) {
+  transform: rotate(-30deg);
+}
+.root.filled {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+.root.filled .bumps {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+  flex: 1 1 50%;
+}
+.root.filled .bumps .triangle {
+  height: 10rem;
+  background: linear-gradient(to bottom right, #fff 0%, #fff 50%, var(--grey6) 50%, var(--grey6) 100%);
+}
+.root.filled .bumps .triangle:nth-child(2n) {
+  transform: rotate3d(0, 1, 0, 180deg);
+}
+.root.filled .base {
+  flex: 1 1 50%;
+}/*# sourceMappingURL=Skeleton.module.css.map */

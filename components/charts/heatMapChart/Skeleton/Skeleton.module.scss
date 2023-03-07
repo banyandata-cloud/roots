@@ -1,0 +1,8 @@
+@import '../../../../styles/';
+
+.root {
+	@include grid(repeat(6, 1fr));
+	row-gap: 0.25rem;
+	column-gap: 0.25rem;
+	height: 100%;
+}

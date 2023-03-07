@@ -29,6 +29,12 @@
 .root > [data-elem=base-cell]:last-child {
   padding-right: 1rem;
 }
+.root.row-height-md > td[data-elem=base-cell] {
+  height: 3rem;
+}
+.root.row-height-lg > td[data-elem=base-cell] {
+  height: 4rem;
+}
 .root > [data-elem=base-cell].expandable-cell {
   padding-left: 0.9rem;
   padding-right: 0.1rem;

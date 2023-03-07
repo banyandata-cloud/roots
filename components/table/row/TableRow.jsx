@@ -19,6 +19,7 @@ const TableRow = forwardRef(function BaseTable(props, ref) {
 		setActiveId,
 		expandable: Expandable,
 		onSort,
+		rowHeight,
 	} = props;
 
 	const [expanded, setExpanded] = useState(false);
@@ -42,6 +43,7 @@ const TableRow = forwardRef(function BaseTable(props, ref) {
 			cellTitle: cellContent,
 			type,
 			onSort,
+			rowHeight,
 		};
 
 		const getCustomCell = customCells?.[type];
@@ -67,6 +69,7 @@ const TableRow = forwardRef(function BaseTable(props, ref) {
 					className,
 					styles.root,
 					styles[`${type}-row`],
+					styles[`row-height-${rowHeight}`],
 					Expandable ? styles.expandable : ''
 				)}>
 				{Expandable && type === 'header' && (
@@ -142,6 +145,7 @@ TableRow.propTypes = {
 	setActiveId: PropTypes.func,
 	expandable: PropTypes.func,
 	onSort: PropTypes.func,
+	rowHeight: PropTypes.oneOf(['md', 'lg']),
 };
 
 TableRow.defaultProps = {
@@ -156,6 +160,7 @@ TableRow.defaultProps = {
 	setActiveId: () => {},
 	expandable: null,
 	onSort: () => {},
+	rowHeight: 'md',
 };
 
 export default TableRow;

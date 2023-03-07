@@ -17,6 +17,7 @@ import {
 } from 'echarts/renderers';
 import styles from './BaseAreaChart.module.css';
 import { classes } from '../../../utils';
+import { Skeleton } from './Skeleton';
 
 // Register the required components
 echarts.use([
@@ -31,6 +32,7 @@ echarts.use([
 
 const BaseAreaChart = (props) => {
 	const {
+		loading,
 		title,
 		gridOptions,
 		gridContainLabel,
@@ -57,6 +59,13 @@ const BaseAreaChart = (props) => {
 		style,
 		className,
 	} = props;
+
+	if (loading) {
+		const filled = seriesOption.some((series) => {
+			return series?.areaStyle.opacity > 0;
+		});
+		return <Skeleton filled={filled} />;
+	}
 
 	const seriesOptionObject = {
 		type: 'line',
@@ -195,6 +204,7 @@ const BaseAreaChart = (props) => {
 };
 
 BaseAreaChart.propTypes = {
+	loading: PropTypes.bool,
 	title: PropTypes.string,
 	gridOptions: PropTypes.object,
 	gridContainLabel: PropTypes.bool,
@@ -223,6 +233,7 @@ BaseAreaChart.propTypes = {
 };
 
 BaseAreaChart.defaultProps = {
+	loading: false,
 	title: '',
 	gridOptions: {
 		left: 0,
