@@ -1,5 +1,6 @@
 /* eslint-disable no-tabs */
 import React from 'react';
+import { ThemedContainer } from '../../helpers';
 import BaseAreaChart from './BaseAreaChart';
 
 export default {
@@ -50,7 +51,8 @@ const datum1 = {
 
 const Template = (args) => {
 	return (
-		<div
+		<ThemedContainer
+			{...args}
 			style={{
 				height: '100%',
 			}}>
@@ -77,7 +79,7 @@ const Template = (args) => {
 					triggerOn: 'mousemove',
 				}}
 			/>
-		</div>
+		</ThemedContainer>
 	);
 };
 

@@ -3,7 +3,7 @@ import { classes } from '../../utils';
 import styles from './Skeleton.module.css';
 
 const Skeleton = (props) => {
-	const { height, width, variant, className, noAnimation, theme } = props;
+	const { height, width, variant, className, noAnimation, theme, style } = props;
 
 	return (
 		<span
@@ -18,6 +18,7 @@ const Skeleton = (props) => {
 			style={{
 				height,
 				width,
+				...style,
 			}}
 		/>
 	);
@@ -30,6 +31,8 @@ Skeleton.propTypes = {
 	width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	variant: PropTypes.oneOf(['circle', 'text', 'rounded', 'rectangle']),
 	noAnimation: PropTypes.bool,
+	// eslint-disable-next-line react/forbid-prop-types
+	style: PropTypes.object,
 };
 
 Skeleton.defaultProps = {
@@ -39,6 +42,7 @@ Skeleton.defaultProps = {
 	width: '100%',
 	variant: 'text',
 	noAnimation: false,
+	style: {},
 };
 
 export default Skeleton;

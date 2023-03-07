@@ -6,6 +6,7 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
+  padding: 2rem;
 }
 .root > .outer,
 .root > .inner {
@@ -14,20 +15,30 @@
 }
 .root > .inner {
   position: absolute;
-  background: var(--white);
 }
 .root span.line {
   height: 0.5rem;
   position: absolute;
-  background: var(--white);
   transform-origin: left;
 }
 .root span.line:nth-last-of-type(1) {
-  transform: translateX(3.75rem) rotate(45deg);
+  transform: translateX(3.25rem) rotate(45deg);
 }
 .root span.line:nth-last-of-type(2) {
-  transform: translateX(3.75rem) rotate(-75deg);
+  transform: translateX(3.25rem) rotate(-75deg);
 }
 .root span.line:nth-last-of-type(3) {
-  transform: translateX(3.75rem) rotate(-10deg);
+  transform: translateX(3.25rem) rotate(-10deg);
+}
+.root.light-theme > .inner {
+  background: var(--white);
+}
+.root.light-theme span.line {
+  background: var(--white);
+}
+.root.dark-theme > .inner {
+  background: var(--dark-grey);
+}
+.root.dark-theme span.line {
+  background: var(--dark-grey);
 }/*# sourceMappingURL=Skeleton.module.css.map */

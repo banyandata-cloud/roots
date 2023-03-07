@@ -50,10 +50,11 @@ const BaseHorizontalBarChart = (props) => {
 		seriesOption,
 		style,
 		className,
+		theme,
 	} = props;
 
 	if (loading) {
-		return <Skeleton />;
+		return <Skeleton theme={theme} />;
 	}
 
 	const seriesOptionObject = {
@@ -184,6 +185,7 @@ BaseHorizontalBarChart.propTypes = {
 	seriesOption: PropTypes.objectOf(PropTypes.shape),
 	style: PropTypes.object,
 	className: PropTypes.string,
+	theme: PropTypes.oneOf(['light', 'dark']),
 };
 
 BaseHorizontalBarChart.defaultProps = {
@@ -223,6 +225,7 @@ BaseHorizontalBarChart.defaultProps = {
 		height: '100%',
 	},
 	className: '',
+	theme: 'dark',
 };
 
 export default BaseHorizontalBarChart;

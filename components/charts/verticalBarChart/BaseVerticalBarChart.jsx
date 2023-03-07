@@ -56,10 +56,11 @@ const BaseVerticalBarChart = (props) => {
 		seriesOption,
 		style,
 		className,
+		theme,
 	} = props;
 
 	if (loading) {
-		return <Skeleton />;
+		return <Skeleton theme={theme} />;
 	}
 	const minHeightCheck = !Object.keys(seriesData?.chartData ?? 0)?.some((obj1) => {
 		return seriesOption.some((obj, index) => {
@@ -238,6 +239,7 @@ BaseVerticalBarChart.propTypes = {
 	seriesOption: PropTypes.arrayOf(PropTypes.shape),
 	style: PropTypes.objectOf(PropTypes.shape),
 	className: PropTypes.string,
+	theme: PropTypes.oneOf(['light', 'dark']),
 };
 
 BaseVerticalBarChart.defaultProps = {
@@ -286,6 +288,7 @@ BaseVerticalBarChart.defaultProps = {
 		height: '100%',
 	},
 	className: '',
+	theme: 'dark',
 };
 
 export default BaseVerticalBarChart;

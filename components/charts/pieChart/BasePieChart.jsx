@@ -49,10 +49,11 @@ const BasePieChart = (props) => {
 		seriesOption,
 		style,
 		className,
+		theme,
 	} = props;
 
 	if (loading) {
-		return <Skeleton />;
+		return <Skeleton theme={theme} />;
 	}
 
 	const seriesOptionObject = {
@@ -183,6 +184,7 @@ BasePieChart.propTypes = {
 	seriesOption: PropTypes.arrayOf(PropTypes.shape),
 	style: PropTypes.objectOf(PropTypes.shape),
 	className: PropTypes.string,
+	theme: PropTypes.oneOf(['light', 'dark']),
 };
 
 BasePieChart.defaultProps = {
@@ -224,6 +226,7 @@ BasePieChart.defaultProps = {
 		height: '100%',
 	},
 	className: '',
+	theme: 'dark',
 };
 
 export default BasePieChart;
