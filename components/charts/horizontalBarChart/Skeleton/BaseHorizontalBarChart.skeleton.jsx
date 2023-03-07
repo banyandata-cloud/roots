@@ -5,11 +5,19 @@ const BARS = [...Array(8).keys()].map(() => {
 	return Math.random() * 80 + 20;
 });
 
-const ChartSkeleton = () => {
+const ChartSkeleton = ({ theme }) => {
 	return (
 		<div className={styles.root}>
 			{BARS.map((bar) => {
-				return <Skeleton key={bar} variant='rounded' width={`${bar}%`} height='3rem' />;
+				return (
+					<Skeleton
+						key={bar}
+						theme={theme}
+						variant='rounded'
+						width={`${bar}%`}
+						height='3rem'
+					/>
+				);
 			})}
 		</div>
 	);

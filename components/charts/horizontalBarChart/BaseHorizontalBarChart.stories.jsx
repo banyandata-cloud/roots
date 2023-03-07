@@ -1,6 +1,7 @@
 /* eslint-disable no-tabs */
 import React from 'react';
 import { COLORS } from '../../../styles';
+import { ThemedContainer } from '../../helpers';
 import BaseHorizontalBarChart from './BaseHorizontalBarChart';
 
 export default {
@@ -83,7 +84,8 @@ const Template = (args) => {
 		alert(`Click Event on ${params.name}`);
 	};
 	return (
-		<div
+		<ThemedContainer
+			{...args}
 			style={{
 				height: '100%',
 			}}>
@@ -102,7 +104,7 @@ const Template = (args) => {
 					},
 				}}
 			/>
-		</div>
+		</ThemedContainer>
 	);
 };
 

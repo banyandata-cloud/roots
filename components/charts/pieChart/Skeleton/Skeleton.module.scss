@@ -5,6 +5,7 @@
 	width: 100%;
 	height: 100%;
 	overflow: hidden;
+	padding: 2rem;
 
 	> .outer,
 	> .inner {
@@ -14,25 +15,43 @@
 
 	> .inner {
 		position: absolute;
-		background: $white;
 	}
 
 	span.line {
 		height: 0.5rem;
 		position: absolute;
-		background: $white;
 		transform-origin: left;
 
 		&:nth-last-of-type(1) {
-			transform: translateX(3.75rem) rotate(45deg);
+			transform: translateX(3.25rem) rotate(45deg);
 		}
 
 		&:nth-last-of-type(2) {
-			transform: translateX(3.75rem) rotate(-75deg);
+			transform: translateX(3.25rem) rotate(-75deg);
 		}
 
 		&:nth-last-of-type(3) {
-			transform: translateX(3.75rem) rotate(-10deg);
+			transform: translateX(3.25rem) rotate(-10deg);
+		}
+	}
+
+	&.light-theme {
+		> .inner {
+			background: $white;
+		}
+
+		span.line {
+			background: $white;
+		}
+	}
+
+	&.dark-theme {
+		> .inner {
+			background: $dark-grey;
+		}
+
+		span.line {
+			background: $dark-grey;
 		}
 	}
 }

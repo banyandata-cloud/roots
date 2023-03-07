@@ -1,10 +1,17 @@
+import { classes } from '../../../../utils';
 import Skeleton from '../../../skeleton/Skeleton';
 import styles from './Skeleton.module.css';
 
-const ChartSkeleton = () => {
+const ChartSkeleton = ({ theme }) => {
 	return (
-		<div className={styles.root}>
-			<Skeleton className={styles.outer} width='15rem' height='15rem' variant='circle' />
+		<div className={classes(styles.root, styles[`${theme}-theme`])}>
+			<Skeleton
+				theme={theme}
+				className={styles.outer}
+				width='12.5rem'
+				height='12.5rem'
+				variant='circle'
+			/>
 			<Skeleton
 				noAnimation
 				className={styles.inner}
@@ -12,9 +19,9 @@ const ChartSkeleton = () => {
 				height='7.5rem'
 				variant='circle'
 			/>
-			<Skeleton noAnimation className={styles.line} width='7.5rem' />
-			<Skeleton noAnimation className={styles.line} width='7.5rem' />
-			<Skeleton noAnimation className={styles.line} width='7.5rem' />
+			<Skeleton noAnimation className={styles.line} width='6.25rem' />
+			<Skeleton noAnimation className={styles.line} width='6.25rem' />
+			<Skeleton noAnimation className={styles.line} width='6.25rem' />
 		</div>
 	);
 };
