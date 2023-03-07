@@ -55,6 +55,7 @@ const generateOptions = (optionData) => {
 
 const BaseWidget = (props) => {
 	const {
+		loading,
 		title,
 		showBack,
 		onBack,
@@ -64,12 +65,12 @@ const BaseWidget = (props) => {
 		errorHandle,
 		errorClassName,
 		errorMessage,
-		loading,
+		showFallback,
 	} = props;
 
 	const emptyChartData = Children.toArray(children).every((child) => {
 		const chartData = child.props?.seriesData?.chartData ?? {};
-		return chartData && Object.keys(chartData).length === 0 && !loading;
+		return chartData && Object.keys(chartData).length === 0;
 	});
 
 	return (
@@ -105,7 +106,7 @@ const BaseWidget = (props) => {
 				</div>
 			</div>
 			<div className={styles.children} data-elem='children'>
-				{emptyChartData ? (
+				{showFallback && !loading && emptyChartData ? (
 					<ErrorStateChart
 						onClick={errorHandle}
 						title={errorMessage}
@@ -120,6 +121,8 @@ const BaseWidget = (props) => {
 };
 
 BaseWidget.propTypes = {
+	loading: PropTypes.bool,
+	showFallback: PropTypes.bool,
 	title: PropTypes.string,
 	showBack: PropTypes.bool,
 	onBack: PropTypes.func,
@@ -128,10 +131,11 @@ BaseWidget.propTypes = {
 	errorHandle: PropTypes.func,
 	errorClassName: PropTypes.string,
 	errorMessage: PropTypes.string,
-	loading: PropTypes.bool,
 };
 
 BaseWidget.defaultProps = {
+	loading: false,
+	showFallback: false,
 	title: '',
 	showBack: false,
 	onBack: () => {},
@@ -140,7 +144,6 @@ BaseWidget.defaultProps = {
 	errorHandle: () => {},
 	errorClassName: '',
 	errorMessage: 'No Data Found',
-	loading: false,
 };
 
 export default BaseWidget;

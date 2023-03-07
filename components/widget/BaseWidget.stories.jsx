@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import BaseVerticalBarChart from '../charts/verticalBarChart/BaseVerticalBarChart';
 import BaseWidget from './BaseWidget';
-import { COLORS } from '../../styles';
+import { ThemedContainer } from '../helpers';
 
 export default {
 	title: 'ComponentsV2/Widget/BaseWidget',
@@ -13,13 +13,67 @@ export default {
 	},
 };
 
+const CHART_DATA = {
+	1: {
+		'Networking Services': {
+			x1: 66.66,
+			x2: 33.33,
+		},
+		'IAM&Admin': {
+			x1: 66.66,
+			x2: 33.33,
+		},
+		'Cloud SQL': {
+			x1: 66.66,
+			x2: 33.33,
+		},
+		'VPC Network': {
+			x1: 66.66,
+			x2: 33.33,
+		},
+		'Compute Engine': {
+			x1: 66.66,
+			x2: 33.33,
+		},
+		'Cloud Storage': {
+			x1: 66.66,
+			x2: 33.33,
+		},
+	},
+	2: {
+		'Networking Services': {
+			x1: 33.33,
+			x2: 66.66,
+		},
+		'IAM&Admin': {
+			x1: 33.33,
+			x2: 66.66,
+		},
+		'Cloud SQL': {
+			x1: 33.33,
+			x2: 66.66,
+		},
+		'VPC Network': {
+			x1: 33.33,
+			x2: 66.66,
+		},
+		'Compute Engine': {
+			x1: 33.33,
+			x2: 66.66,
+		},
+		'Cloud Storage': {
+			x1: 33.33,
+			x2: 66.66,
+		},
+	},
+};
+
 const Template = (args) => {
 	const [dropValue, setDropValue] = useState(0);
 	const [selectedValue, setSelectedValue] = useState('Option 1');
 	return (
-		<div
+		<ThemedContainer
 			style={{
-				backgroundColor: COLORS['dark-grey'],
 				height: '100%',
 				width: '100%',
 			}}>
@@ -31,8 +85,8 @@ const Template = (args) => {
 					return option.id === 'toggle'
 						? {
 								...option,
-								selectedToggle: selectedValue,
-								setSelectedToggle: (data) => {
+								value: selectedValue,
+								onChange: (data) => {
 									setSelectedValue(data);
 								},
 						  }
@@ -60,60 +114,7 @@ const Template = (args) => {
 					}}
 					barWidth='15%'
 					seriesData={{
-						chartData:
-							selectedValue === 'Option 1'
-								? {
-										'Networking Services': {
-											x1: 66.66,
-											x2: 33.33,
-										},
-										'IAM&Admin': {
-											x1: 66.66,
-											x2: 33.33,
-										},
-										'Cloud SQL': {
-											x1: 66.66,
-											x2: 33.33,
-										},
-										'VPC Network': {
-											x1: 66.66,
-											x2: 33.33,
-										},
-										'Compute Engine': {
-											x1: 66.66,
-											x2: 33.33,
-										},
-										'Cloud Storage': {
-											x1: 66.66,
-											x2: 33.33,
-										},
-								  }
-								: {
-										'Networking Services': {
-											x1: 33.33,
-											x2: 66.66,
-										},
-										'IAM&Admin': {
-											x1: 33.33,
-											x2: 66.66,
-										},
-										'Cloud SQL': {
-											x1: 33.33,
-											x2: 66.66,
-										},
-										'VPC Network': {
-											x1: 33.33,
-											x2: 66.66,
-										},
-										'Compute Engine': {
-											x1: 33.33,
-											x2: 66.66,
-										},
-										'Cloud Storage': {
-											x1: 33.33,
-											x2: 66.66,
-										},
-								  },
+						chartData: selectedValue === 'Option 1' ? CHART_DATA[1] : CHART_DATA[2],
 					}}
 					seriesOption={[
 						{
@@ -144,7 +145,7 @@ const Template = (args) => {
 					errorMessage='We are having trouble loading this content.'
 				/>
 			</BaseWidget>
-		</div>
+		</ThemedContainer>
 	);
 };
 
@@ -152,9 +153,8 @@ const ErrorStateTemplate = (args) => {
 	const [dropValue, setDropValue] = useState(0);
 	const [selectedValue, setSelectedValue] = useState('Option 1');
 	return (
-		<div
+		<ThemedContainer
 			style={{
-				backgroundColor: COLORS['dark-grey'],
 				height: '100%',
 				width: '100%',
 			}}>
@@ -166,8 +166,8 @@ const ErrorStateTemplate = (args) => {
 					return option.id === 'toggle'
 						? {
 								...option,
-								selectedToggle: selectedValue,
-								setSelectedToggle: (data) => {
+								value: selectedValue,
+								onChange: (data) => {
 									setSelectedValue(data);
 								},
 						  }
@@ -182,6 +182,8 @@ const ErrorStateTemplate = (args) => {
 						: option;
 				})}>
 				<BaseVerticalBarChart
+					// eslint-disable-next-line react/destructuring-assignment
+					loading={args.loading}
 					yAxisLabelShow
 					ySplitLineShow
 					xAxisShow
@@ -195,7 +197,7 @@ const ErrorStateTemplate = (args) => {
 					}}
 					barWidth='15%'
 					seriesData={{
-						chartData: {},
+						chartData: selectedValue === 'Option 1' ? {} : CHART_DATA[2],
 					}}
 					seriesOption={[
 						{
@@ -223,12 +225,13 @@ const ErrorStateTemplate = (args) => {
 					errorMessage='We are having trouble loading this content.'
 				/>
 			</BaseWidget>
-		</div>
+		</ThemedContainer>
 	);
 };
 
 export const Default = Template.bind({});
 export const ErrorState = ErrorStateTemplate.bind({});
+export const WithLoader = ErrorStateTemplate.bind({});
 
 Default.args = {
 	title: 'Widget Title - 7 Services',
@@ -296,66 +299,14 @@ Default.args = {
 };
 
 ErrorState.args = {
-	title: 'Widget Title - 7 Services',
-	showBack: true,
-	onBack: () => {
-		alert('This will bring you back');
-	},
-	options: [
-		{
-			id: 'toggle',
-			options: [
-				{
-					id: '1',
-					leftCompoenent: '',
-					rightCompoenent: '',
-					title: 'Option 1',
-					value: 'Option 1',
-				},
-				{
-					id: '2',
-					leftCompoenent: '',
-					rightCompoenent: '',
-					title: 'Option 2',
-					value: 'Option 2',
-				},
-			],
-		},
-		{
-			id: 'dropdown',
-			placeholder: 'Region',
-			selectOption: [
-				{
-					title: 'India',
-					value: '1',
-				},
-				{
-					title: 'USA',
-					value: '2',
-				},
-				{
-					title: 'UAE',
-					value: '3',
-				},
-				{
-					title: 'UK',
-					value: '4',
-				},
-			],
-			onChange: (cb, data) => {
-				cb(data);
-			},
-		},
-		{
-			id: 'expand',
-			title: 'Expand',
-			onClick: () => {
-				alert('This will open the Modal or a new Page with Expanded chart');
-			},
-		},
-	],
+	...Default.args,
 	errorMessage: 'We are having trouble loading the Data',
 	errorHandle: () => {
 		alert('This will Fetch API again');
 	},
+};
+
+WithLoader.args = {
+	...Default.args,
+	loading: true,
 };

@@ -9,27 +9,39 @@
 	display: inline-block;
 
 	&.light-theme {
-		background-image: linear-gradient(to right, $grey4 0%, $grey6 20%, $grey4 40%, $grey4 100%);
+		background-color: $grey6;
 	}
 
 	&.dark-theme {
-		background-image: linear-gradient(to right, $grey6 0%, $grey8 20%, $grey6 40%, $grey6 100%);
+		background-color: $grey2;
 	}
 
 	&.animated {
+		&.light-theme {
+			background-image: linear-gradient(
+				to right,
+				$grey6 0%,
+				$grey8 20%,
+				$grey6 40%,
+				$grey6 100%
+			);
+		}
+
+		&.dark-theme {
+			background-image: linear-gradient(
+				to right,
+				$grey2 0%,
+				$grey4 20%,
+				$grey2 40%,
+				$grey2 100%
+			);
+		}
+
 		animation-duration: 1.25s;
 		animation-fill-mode: forwards;
 		animation-iteration-count: infinite;
 		animation-name: shimmer;
 		animation-timing-function: linear;
-		animation-fill-mode: forwards;
-		animation-iteration-count: infinite;
-		animation-name: shimmer;
-		animation-timing-function: linear;
-		-webkit-animation-fill-mode: forwards;
-		-webkit-animation-iteration-count: infinite;
-		-webkit-animation-name: shimmer;
-		-webkit-animation-timing-function: linear;
 		-webkit-animation-fill-mode: forwards;
 		-webkit-animation-iteration-count: infinite;
 		-webkit-animation-name: shimmer;
