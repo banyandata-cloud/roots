@@ -1,4 +1,5 @@
 import React from 'react';
+import { ThemedContainer } from '../../../helpers';
 import TableFilters from './TableFilters';
 
 export default {
@@ -13,9 +14,9 @@ export default {
 
 const Template = (args) => {
 	return (
-		<div>
+		<ThemedContainer {...args}>
 			<TableFilters {...args} />
-		</div>
+		</ThemedContainer>
 	);
 };
 

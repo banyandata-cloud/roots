@@ -8,7 +8,7 @@ const COLUMNS = [...Array(4).keys()].map(() => {
 
 const ROWS = [...Array(10).keys()];
 
-const BaseTableSkeleton = () => {
+const BaseTableSkeleton = ({ theme }) => {
 	return ROWS.map((row, rowIndex) => {
 		return (
 			<div className={classes(styles.row, rowIndex === 0 ? styles.header : '')} key={row}>
@@ -25,6 +25,7 @@ const BaseTableSkeleton = () => {
 								width={rowIndex === 0 ? '60%' : '100%'}
 								variant='rounded'
 								className={styles.skeleton}
+								theme={theme}
 							/>
 						</div>
 					);

@@ -4,14 +4,14 @@ import styles from './Skeleton.module.css';
 
 const CHIPS = [...Array(5).keys()];
 
-const TableChipsSkeleton = () => {
+const TableChipsSkeleton = ({ theme }) => {
 	return (
 		<BaseCell
 			flexible
 			className={styles.root}
-			component1={<Skeleton variant='circle' />}
+			component1={<Skeleton variant='circle' theme={theme} />}
 			component2={CHIPS.map((chip) => {
-				return <Skeleton key={chip} variant='circle' />;
+				return <Skeleton key={chip} variant='ellipse' theme={theme} />;
 			})}
 		/>
 	);

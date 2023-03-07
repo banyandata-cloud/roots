@@ -29,7 +29,7 @@ Skeleton.propTypes = {
 	theme: PropTypes.oneOf(['light', 'dark']),
 	height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 	width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-	variant: PropTypes.oneOf(['circle', 'text', 'rounded', 'rectangle']),
+	variant: PropTypes.oneOf(['circle', 'text', 'rounded', 'rectangle', 'ellipse']),
 	noAnimation: PropTypes.bool,
 	// eslint-disable-next-line react/forbid-prop-types
 	style: PropTypes.object,
