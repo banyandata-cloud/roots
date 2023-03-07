@@ -27,3 +27,4 @@ export * from './timePicker';
 export * from './text';
 export * from './link';
 export * from './maps';
+export * from './skeleton';
