@@ -64,11 +64,12 @@ const BaseWidget = (props) => {
 		errorHandle,
 		errorClassName,
 		errorMessage,
+		loading,
 	} = props;
 
 	const emptyChartData = Children.toArray(children).every((child) => {
 		const chartData = child.props?.seriesData?.chartData ?? {};
-		return chartData && Object.keys(chartData).length === 0;
+		return chartData && Object.keys(chartData).length === 0 && !loading;
 	});
 
 	return (
@@ -80,20 +81,20 @@ const BaseWidget = (props) => {
 						(options?.length ?? 0) === 0 ? styles['no-options'] : ''
 					)}
 					data-elem='header-title'>
-						{showBack && (
-							<Button
-								size='auto'
-								radius='round'
-								className={styles.back}
-								leftComponent={() => {
-									return <ArrowIcon className={styles.icon} position='left' />;
-								}}
-								onClick={onBack}
-							/>
-						)}
-						<span className={styles.title} data-elem='title'>
-							{title}
-						</span>
+					{showBack && (
+						<Button
+							size='auto'
+							radius='round'
+							className={styles.back}
+							leftComponent={() => {
+								return <ArrowIcon className={styles.icon} position='left' />;
+							}}
+							onClick={onBack}
+						/>
+					)}
+					<span className={styles.title} data-elem='title'>
+						{title}
+					</span>
 				</div>
 
 				<div className={styles['header-options']} data-elem='header-options'>
@@ -127,6 +128,7 @@ BaseWidget.propTypes = {
 	errorHandle: PropTypes.func,
 	errorClassName: PropTypes.string,
 	errorMessage: PropTypes.string,
+	loading: PropTypes.bool,
 };
 
 BaseWidget.defaultProps = {
@@ -138,6 +140,7 @@ BaseWidget.defaultProps = {
 	errorHandle: () => {},
 	errorClassName: '',
 	errorMessage: 'No Data Found',
+	loading: false,
 };
 
 export default BaseWidget;
