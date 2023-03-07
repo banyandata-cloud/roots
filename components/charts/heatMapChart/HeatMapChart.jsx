@@ -19,6 +19,7 @@ import {
 } from 'echarts/renderers';
 import styles from './HeatMapChart.module.css';
 import { classes } from '../../../utils';
+import { Skeleton } from './Skeleton';
 
 // Register the required components
 echarts.use([
@@ -33,6 +34,7 @@ echarts.use([
 
 const HeatMapChart = (props) => {
 	const {
+		loading,
 		title,
 		gridContainLabel,
 		gridOptions,
@@ -55,12 +57,16 @@ const HeatMapChart = (props) => {
 		className,
 	} = props;
 
+	if (loading) {
+		return <Skeleton />;
+	}
+
 	const seriesOptionObject = {
 		type: 'heatmap',
 		label: {
 			show: true,
 		},
-        itemStyle: {
+		itemStyle: {
 			borderWidth: 0,
 			borderColor: 'white',
 		},
@@ -198,6 +204,7 @@ const HeatMapChart = (props) => {
 };
 
 HeatMapChart.propTypes = {
+	loading: PropTypes.bool,
 	title: PropTypes.string,
 	gridContainLabel: PropTypes.bool,
 	gridOptions: PropTypes.object,
@@ -221,6 +228,7 @@ HeatMapChart.propTypes = {
 };
 
 HeatMapChart.defaultProps = {
+	loading: false,
 	title: '',
 	gridContainLabel: false,
 	gridOptions: {

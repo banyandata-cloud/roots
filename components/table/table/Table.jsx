@@ -32,6 +32,7 @@ const Table = (props) => {
 		loading,
 		disabledFilterOptions,
 		onSort,
+		rowHeight,
 	} = props;
 
 	const ref = useRef(null);
@@ -138,6 +139,7 @@ const Table = (props) => {
 					customCells,
 					className: styles.table,
 					onSort,
+					rowHeight,
 				}}
 				loading={loading}
 			/>
@@ -193,6 +195,7 @@ Table.propTypes = {
 		settings: PropTypes.bool,
 	}),
 	onSort: PropTypes.func,
+	rowHeight: PropTypes.oneOf(['md', 'lg']),
 };
 
 Table.defaultProps = {
@@ -217,6 +220,7 @@ Table.defaultProps = {
 		settings: false,
 	},
 	onSort: () => {},
+	rowHeight: 'md',
 };
 
 export default Table;

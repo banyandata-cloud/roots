@@ -1,0 +1,8 @@
+@import '../../../../styles/';
+
+.root {
+	@include flex(column, space-between, flex-start);
+	height: 100%;
+	width: 100%;
+	gap: 1rem;
+}

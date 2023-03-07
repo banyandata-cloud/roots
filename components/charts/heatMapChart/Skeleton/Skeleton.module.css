@@ -1,0 +1,9 @@
+.root {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: repeat(6, 1fr);
+  row-gap: 0.25rem;
+  -moz-column-gap: 0.25rem;
+       column-gap: 0.25rem;
+  height: 100%;
+}/*# sourceMappingURL=Skeleton.module.css.map */
