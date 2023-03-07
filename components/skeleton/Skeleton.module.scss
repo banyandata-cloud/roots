@@ -9,7 +9,7 @@
 	display: inline-block;
 
 	&.light-theme {
-		background-color: $grey6;
+		background-color: $skeleton;
 	}
 
 	&.dark-theme {
@@ -20,10 +20,10 @@
 		&.light-theme {
 			background-image: linear-gradient(
 				to right,
-				$grey6 0%,
+				$skeleton 0%,
 				$grey8 20%,
-				$grey6 40%,
-				$grey6 100%
+				$skeleton 40%,
+				$skeleton 100%
 			);
 		}
 
@@ -58,6 +58,10 @@
 
 	&.rounded {
 		border-radius: 0.25rem;
+	}
+
+	&.ellipse {
+		border-radius: 1.5rem;
 	}
 }
 

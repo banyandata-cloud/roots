@@ -28,6 +28,7 @@ const TableFilters = (props) => {
 		setHiddenColumns,
 		loading,
 		disabledFilterOptions,
+		theme,
 	} = props;
 
 	const [openColumns, setOpenColumns] = useState(false);
@@ -42,7 +43,7 @@ const TableFilters = (props) => {
 	const hideRightOptions = disabledColumnFilter && disabledRefresh && disabledSettings;
 
 	if (loading) {
-		return <Skeleton />;
+		return <Skeleton theme={theme} />;
 	}
 
 	return (
@@ -172,6 +173,7 @@ TableFilters.propTypes = {
 		columnFilter: PropTypes.bool,
 		settings: PropTypes.bool,
 	}),
+	theme: PropTypes.oneOf(['light', 'dark']),
 };
 
 TableFilters.defaultProps = {
@@ -190,6 +192,7 @@ TableFilters.defaultProps = {
 		columnFilter: false,
 		settings: false,
 	},
+	theme: 'light',
 };
 
 export default TableFilters;

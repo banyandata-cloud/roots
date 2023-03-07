@@ -7,7 +7,7 @@
   display: inline-block;
 }
 .root.light-theme {
-  background-color: var(--grey6);
+  background-color: var(--skeleton);
 }
 .root.dark-theme {
   background-color: var(--grey2);
@@ -24,7 +24,7 @@
   -webkit-animation-timing-function: linear;
 }
 .root.animated.light-theme {
-  background-image: linear-gradient(to right, var(--grey6) 0%, var(--grey8) 20%, var(--grey6) 40%, var(--grey6) 100%);
+  background-image: linear-gradient(to right, var(--skeleton) 0%, var(--grey8) 20%, var(--skeleton) 40%, var(--skeleton) 100%);
 }
 .root.animated.dark-theme {
   background-image: linear-gradient(to right, var(--grey2) 0%, var(--grey4) 20%, var(--grey2) 40%, var(--grey2) 100%);
@@ -37,6 +37,9 @@
 }
 .root.rounded {
   border-radius: 0.25rem;
+}
+.root.ellipse {
+  border-radius: 1.5rem;
 }
 
 @keyframes shimmer {
