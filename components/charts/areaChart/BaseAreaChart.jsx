@@ -62,10 +62,15 @@ const BaseAreaChart = (props) => {
 	} = props;
 
 	if (loading) {
-		const filled = seriesOption.some((series) => {
-			return series?.areaStyle.opacity > 0;
-		});
-		return <Skeleton filled={filled} theme={theme} />;
+		// const filled = seriesOption.some((series) => {
+		// return series?.areaStyle.opacity > 0;
+		// });
+		return (
+			<Skeleton
+				//  filled={filled}
+				theme={theme}
+			/>
+		);
 	}
 
 	const seriesOptionObject = {
