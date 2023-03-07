@@ -55,6 +55,7 @@ const generateOptions = (optionData) => {
 
 const BaseWidget = (props) => {
 	const {
+		loading,
 		title,
 		showBack,
 		onBack,
@@ -64,6 +65,7 @@ const BaseWidget = (props) => {
 		errorHandle,
 		errorClassName,
 		errorMessage,
+		showFallback,
 	} = props;
 
 	const emptyChartData = Children.toArray(children).every((child) => {
@@ -80,20 +82,20 @@ const BaseWidget = (props) => {
 						(options?.length ?? 0) === 0 ? styles['no-options'] : ''
 					)}
 					data-elem='header-title'>
-						{showBack && (
-							<Button
-								size='auto'
-								radius='round'
-								className={styles.back}
-								leftComponent={() => {
-									return <ArrowIcon className={styles.icon} position='left' />;
-								}}
-								onClick={onBack}
-							/>
-						)}
-						<span className={styles.title} data-elem='title'>
-							{title}
-						</span>
+					{showBack && (
+						<Button
+							size='auto'
+							radius='round'
+							className={styles.back}
+							leftComponent={() => {
+								return <ArrowIcon className={styles.icon} position='left' />;
+							}}
+							onClick={onBack}
+						/>
+					)}
+					<span className={styles.title} data-elem='title'>
+						{title}
+					</span>
 				</div>
 
 				<div className={styles['header-options']} data-elem='header-options'>
@@ -104,7 +106,7 @@ const BaseWidget = (props) => {
 				</div>
 			</div>
 			<div className={styles.children} data-elem='children'>
-				{emptyChartData ? (
+				{showFallback && !loading && emptyChartData ? (
 					<ErrorStateChart
 						onClick={errorHandle}
 						title={errorMessage}
@@ -119,6 +121,8 @@ const BaseWidget = (props) => {
 };
 
 BaseWidget.propTypes = {
+	loading: PropTypes.bool,
+	showFallback: PropTypes.bool,
 	title: PropTypes.string,
 	showBack: PropTypes.bool,
 	onBack: PropTypes.func,
@@ -130,6 +134,8 @@ BaseWidget.propTypes = {
 };
 
 BaseWidget.defaultProps = {
+	loading: false,
+	showFallback: false,
 	title: '',
 	showBack: false,
 	onBack: () => {},
