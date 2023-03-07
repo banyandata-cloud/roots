@@ -64,12 +64,11 @@ const BaseWidget = (props) => {
 		errorHandle,
 		errorClassName,
 		errorMessage,
-		loading,
 	} = props;
 
 	const emptyChartData = Children.toArray(children).every((child) => {
 		const chartData = child.props?.seriesData?.chartData ?? {};
-		return chartData && Object.keys(chartData).length === 0 && !loading;
+		return chartData && Object.keys(chartData).length === 0;
 	});
 
 	return (
@@ -128,7 +127,6 @@ BaseWidget.propTypes = {
 	errorHandle: PropTypes.func,
 	errorClassName: PropTypes.string,
 	errorMessage: PropTypes.string,
-	loading: PropTypes.bool,
 };
 
 BaseWidget.defaultProps = {
@@ -140,7 +138,6 @@ BaseWidget.defaultProps = {
 	errorHandle: () => {},
 	errorClassName: '',
 	errorMessage: 'No Data Found',
-	loading: false,
 };
 
 export default BaseWidget;
