@@ -46912,7 +46912,7 @@ var css$y = ".Stepper_module_root__781d3116 {\n  display: flex;\n  flex-directio
 var modules_bbfded44 = {"root":"Stepper_module_root__781d3116","step":"Stepper_module_step__781d3116","title":"Stepper_module_title__781d3116","left":"Stepper_module_left__781d3116","icon":"Stepper_module_icon__781d3116","error-icon":"Stepper_module_errorIcon__781d3116","completion-icon":"Stepper_module_completionIcon__781d3116","active":"Stepper_module_active__781d3116","progress":"Stepper_module_progress__781d3116","right":"Stepper_module_right__781d3116","description":"Stepper_module_description__781d3116","completed":"Stepper_module_completed__781d3116","error":"Stepper_module_error__781d3116"};
 n(css$y,{});
 
-var css$x = ":root {\n  --white: #ffffff;\n  --black: #000000;\n  --dark-grey: #333333;\n  --dark-grey-o-85: rgba(51, 51, 51, 0.85);\n  --grey: #737373;\n  --grey1: #888888;\n  --grey2: #a6a6a6;\n  --grey3: #bbbbbb;\n  --grey4: #c4c4c4;\n  --grey5: #dddddd;\n  --grey6: #e8e8e8;\n  --grey7: #eeeeee;\n  --grey8: #f2f2f2;\n  --grey9: #eff0f0;\n  --grey10: #f7f7f7;\n  --highlight: #0f62fe;\n  --dark-blue: #001833;\n  --background: #d0e2ff;\n  --banyan-blue: #00037c;\n  --banyan-orange: #ff892a;\n  --banyan-pink: #ff1597;\n  --banyan-gradient: linear-gradient(\n  \t84.71deg,\n  \tvar(--banyan-pink) 0.48%,\n  \tvar(--banyan-orange) 99.57%\n  );\n  --error: #ff626a;\n  --error-bg: #fff1f1;\n  --error-outline: rgba(218, 30, 40, 0.08);\n  --success: #24a148;\n  --success-bg: #defbe6;\n  --success-outline: rgba(36, 161, 72, 0.08);\n  --warning: #f1c21b;\n  --warning-bg: #fff8e1;\n  --warning-outline: rgba(203, 160, 6, 0.08);\n  --info: #0043ce;\n  --info-bg: #edf5ff;\n  --info-outline: #2864db98;\n}";
+var css$x = ":root {\n  --white: #ffffff;\n  --black: #000000;\n  --dark-grey: #333333;\n  --dark-grey-o-85: rgba(51, 51, 51, 0.85);\n  --grey: #737373;\n  --grey1: #888888;\n  --grey2: #a6a6a6;\n  --grey3: #bbbbbb;\n  --grey4: #c4c4c4;\n  --grey5: #dddddd;\n  --grey6: #e8e8e8;\n  --grey7: #eeeeee;\n  --grey8: #f2f2f2;\n  --grey9: #eff0f0;\n  --grey10: #f7f7f7;\n  --skeleton: #e0e1e9;\n  --highlight: #0f62fe;\n  --dark-blue: #001833;\n  --background: #d0e2ff;\n  --banyan-blue: #00037c;\n  --banyan-orange: #ff892a;\n  --banyan-pink: #ff1597;\n  --banyan-gradient: linear-gradient(\n  \t84.71deg,\n  \tvar(--banyan-pink) 0.48%,\n  \tvar(--banyan-orange) 99.57%\n  );\n  --error: #ff626a;\n  --error-bg: #fff1f1;\n  --error-outline: rgba(218, 30, 40, 0.08);\n  --success: #24a148;\n  --success-bg: #defbe6;\n  --success-outline: rgba(36, 161, 72, 0.08);\n  --warning: #f1c21b;\n  --warning-bg: #fff8e1;\n  --warning-outline: rgba(203, 160, 6, 0.08);\n  --info: #0043ce;\n  --info-bg: #edf5ff;\n  --info-outline: #2864db98;\n}";
 var modules_dd21d9e9 = {"white":"--white","black":"--black","dark-grey":"--dark-grey","dark-grey-o-85":"--dark-grey-o-85","grey":"--grey","grey1":"--grey1","grey2":"--grey2","grey3":"--grey3","grey4":"--grey4","grey5":"--grey5","grey6":"--grey6","grey7":"--grey7","grey8":"--grey8","grey9":"--grey9","grey10":"--grey10","highlight":"--highlight","dark-blue":"--dark-blue","background":"--background","banyan-blue":"--banyan-blue","banyan-orange":"--banyan-orange","banyan-pink":"--banyan-pink","banyan-gradient":"--banyan-gradient","error":"--error","error-bg":"--error-bg","error-outline":"--error-outline","success":"--success","success-bg":"--success-bg","success-outline":"--success-outline","warning":"--warning","warning-bg":"--warning-bg","warning-outline":"--warning-outline","info":"--info","info-bg":"--info-bg","info-outline":"--info-outline"};
 n(css$x,{});
 
@@ -47389,8 +47389,8 @@ var css$s = ".BaseTable_module_root__7a8d241c {\n  display: flex;\n  flex-direct
 var modules_f1817c60 = {"root":"BaseTable_module_root__7a8d241c"};
 n(css$s,{});
 
-var css$r = ".Skeleton_module_root__129d9e09 {\n  width: 100%;\n  height: 100%;\n  background: var(--grey6);\n  background-repeat: no-repeat;\n  background-size: cover;\n  display: inline-block;\n}\n.Skeleton_module_root__129d9e09.Skeleton_module_lightTheme__129d9e09 {\n  background-color: var(--grey6);\n}\n.Skeleton_module_root__129d9e09.Skeleton_module_darkTheme__129d9e09 {\n  background-color: var(--grey2);\n}\n.Skeleton_module_root__129d9e09.Skeleton_module_animated__129d9e09 {\n  animation-duration: 1.25s;\n  animation-fill-mode: forwards;\n  animation-iteration-count: infinite;\n  animation-name: Skeleton_module_shimmer__129d9e09;\n  animation-timing-function: linear;\n  -webkit-animation-fill-mode: forwards;\n  -webkit-animation-iteration-count: infinite;\n  -webkit-animation-name: Skeleton_module_shimmer__129d9e09;\n  -webkit-animation-timing-function: linear;\n}\n.Skeleton_module_root__129d9e09.Skeleton_module_animated__129d9e09.Skeleton_module_lightTheme__129d9e09 {\n  background-image: linear-gradient(to right, var(--grey6) 0%, var(--grey8) 20%, var(--grey6) 40%, var(--grey6) 100%);\n}\n.Skeleton_module_root__129d9e09.Skeleton_module_animated__129d9e09.Skeleton_module_darkTheme__129d9e09 {\n  background-image: linear-gradient(to right, var(--grey2) 0%, var(--grey4) 20%, var(--grey2) 40%, var(--grey2) 100%);\n}\n.Skeleton_module_root__129d9e09.Skeleton_module_text__129d9e09 {\n  height: 1.5rem;\n}\n.Skeleton_module_root__129d9e09.Skeleton_module_circle__129d9e09 {\n  border-radius: 50%;\n}\n.Skeleton_module_root__129d9e09.Skeleton_module_rounded__129d9e09 {\n  border-radius: 0.25rem;\n}\n\n@keyframes Skeleton_module_shimmer__129d9e09 {\n  0% {\n    background-position: -50rem 0;\n  }\n  100% {\n    background-position: 50rem 0;\n  }\n}";
-var modules_37a5ff73$8 = {"root":"Skeleton_module_root__129d9e09","light-theme":"Skeleton_module_lightTheme__129d9e09","dark-theme":"Skeleton_module_darkTheme__129d9e09","animated":"Skeleton_module_animated__129d9e09","shimmer":"Skeleton_module_shimmer__129d9e09","text":"Skeleton_module_text__129d9e09","circle":"Skeleton_module_circle__129d9e09","rounded":"Skeleton_module_rounded__129d9e09"};
+var css$r = ".Skeleton_module_root__43458bd0 {\n  width: 100%;\n  height: 100%;\n  background: var(--grey6);\n  background-repeat: no-repeat;\n  background-size: cover;\n  display: inline-block;\n}\n.Skeleton_module_root__43458bd0.Skeleton_module_lightTheme__43458bd0 {\n  background-color: var(--skeleton);\n}\n.Skeleton_module_root__43458bd0.Skeleton_module_darkTheme__43458bd0 {\n  background-color: var(--grey2);\n}\n.Skeleton_module_root__43458bd0.Skeleton_module_animated__43458bd0 {\n  animation-duration: 1.25s;\n  animation-fill-mode: forwards;\n  animation-iteration-count: infinite;\n  animation-name: Skeleton_module_shimmer__43458bd0;\n  animation-timing-function: linear;\n  -webkit-animation-fill-mode: forwards;\n  -webkit-animation-iteration-count: infinite;\n  -webkit-animation-name: Skeleton_module_shimmer__43458bd0;\n  -webkit-animation-timing-function: linear;\n}\n.Skeleton_module_root__43458bd0.Skeleton_module_animated__43458bd0.Skeleton_module_lightTheme__43458bd0 {\n  background-image: linear-gradient(to right, var(--skeleton) 0%, var(--grey8) 20%, var(--skeleton) 40%, var(--skeleton) 100%);\n}\n.Skeleton_module_root__43458bd0.Skeleton_module_animated__43458bd0.Skeleton_module_darkTheme__43458bd0 {\n  background-image: linear-gradient(to right, var(--grey2) 0%, var(--grey4) 20%, var(--grey2) 40%, var(--grey2) 100%);\n}\n.Skeleton_module_root__43458bd0.Skeleton_module_text__43458bd0 {\n  height: 1.5rem;\n}\n.Skeleton_module_root__43458bd0.Skeleton_module_circle__43458bd0 {\n  border-radius: 50%;\n}\n.Skeleton_module_root__43458bd0.Skeleton_module_rounded__43458bd0 {\n  border-radius: 0.25rem;\n}\n.Skeleton_module_root__43458bd0.Skeleton_module_ellipse__43458bd0 {\n  border-radius: 1.5rem;\n}\n\n@keyframes Skeleton_module_shimmer__43458bd0 {\n  0% {\n    background-position: -50rem 0;\n  }\n  100% {\n    background-position: 50rem 0;\n  }\n}";
+var modules_37a5ff73$8 = {"root":"Skeleton_module_root__43458bd0","light-theme":"Skeleton_module_lightTheme__43458bd0","dark-theme":"Skeleton_module_darkTheme__43458bd0","animated":"Skeleton_module_animated__43458bd0","shimmer":"Skeleton_module_shimmer__43458bd0","text":"Skeleton_module_text__43458bd0","circle":"Skeleton_module_circle__43458bd0","rounded":"Skeleton_module_rounded__43458bd0","ellipse":"Skeleton_module_ellipse__43458bd0"};
 n(css$r,{});
 
 var Skeleton = function Skeleton(props) {
@@ -47415,7 +47415,7 @@ Skeleton.propTypes = {
   theme: propTypes$1.exports.oneOf(['light', 'dark']),
   height: propTypes$1.exports.oneOfType([propTypes$1.exports.string, propTypes$1.exports.number]),
   width: propTypes$1.exports.oneOfType([propTypes$1.exports.string, propTypes$1.exports.number]),
-  variant: propTypes$1.exports.oneOf(['circle', 'text', 'rounded', 'rectangle']),
+  variant: propTypes$1.exports.oneOf(['circle', 'text', 'rounded', 'rectangle', 'ellipse']),
   noAnimation: propTypes$1.exports.bool,
   // eslint-disable-next-line react/forbid-prop-types
   style: propTypes$1.exports.object
@@ -47438,7 +47438,8 @@ var COLUMNS = _toConsumableArray$1(Array(4).keys()).map(function () {
   return Math.floor(Math.random() * 80 + 20);
 });
 var ROWS = _toConsumableArray$1(Array(10).keys());
-var BaseTableSkeleton = function BaseTableSkeleton() {
+var BaseTableSkeleton = function BaseTableSkeleton(_ref) {
+  var theme = _ref.theme;
   return ROWS.map(function (row, rowIndex) {
     return /*#__PURE__*/jsx("div", {
       className: classes(modules_37a5ff73$7.row, rowIndex === 0 ? modules_37a5ff73$7.header : ''),
@@ -47448,7 +47449,8 @@ var BaseTableSkeleton = function BaseTableSkeleton() {
           children: /*#__PURE__*/jsx(Skeleton, {
             width: rowIndex === 0 ? '60%' : '100%',
             variant: "rounded",
-            className: modules_37a5ff73$7.skeleton
+            className: modules_37a5ff73$7.skeleton,
+            theme: theme
           })
         }, column);
       })
@@ -47465,9 +47467,12 @@ var BaseTable = /*#__PURE__*/forwardRef(function BaseTable(props, ref) {
     loading = props.loading,
     expandable = props.expandable,
     onSort = props.onSort,
-    rowHeight = props.rowHeight;
+    rowHeight = props.rowHeight,
+    theme = props.theme;
   if (loading) {
-    return /*#__PURE__*/jsx(BaseTableSkeleton, {});
+    return /*#__PURE__*/jsx(BaseTableSkeleton, {
+      theme: theme
+    });
   }
   var transformedHeaderData = headerData.map(function (header) {
     return new TableColumn(header);
@@ -47511,7 +47516,8 @@ BaseTable.propTypes = {
   loading: propTypes$1.exports.bool,
   expandable: propTypes$1.exports.func,
   onSort: propTypes$1.exports.func,
-  rowHeight: propTypes$1.exports.oneOf(['md', 'lg'])
+  rowHeight: propTypes$1.exports.oneOf(['md', 'lg']),
+  theme: propTypes$1.exports.oneOf(['light', 'dark'])
 };
 BaseTable.defaultProps = {
   className: '',
@@ -47524,7 +47530,8 @@ BaseTable.defaultProps = {
   loading: null,
   expandable: null,
   onSort: function onSort() {},
-  rowHeight: 'md'
+  rowHeight: 'md',
+  theme: 'light'
 };
 
 var css$p = ".Skeleton_module_root__15c10a9b[data-elem=base-cell] {\n  align-items: flex-start;\n  width: 100%;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component1] {\n  width: auto;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component1] > [data-elem=skeleton] {\n  height: 1.5rem;\n  width: 1.5rem !important;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component2] {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 1rem;\n  flex: 8;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component2] > [data-elem=skeleton] {\n  max-width: 9rem;\n  height: 1.5rem;\n}";
@@ -47532,16 +47539,19 @@ var modules_37a5ff73$6 = {"root":"Skeleton_module_root__15c10a9b"};
 n(css$p,{});
 
 var CHIPS = _toConsumableArray$1(Array(5).keys());
-var TableChipsSkeleton = function TableChipsSkeleton() {
+var TableChipsSkeleton = function TableChipsSkeleton(_ref) {
+  var theme = _ref.theme;
   return /*#__PURE__*/jsx(BaseCell, {
     flexible: true,
     className: modules_37a5ff73$6.root,
     component1: /*#__PURE__*/jsx(Skeleton, {
-      variant: "circle"
+      variant: "circle",
+      theme: theme
     }),
     component2: CHIPS.map(function (chip) {
       return /*#__PURE__*/jsx(Skeleton, {
-        variant: "circle"
+        variant: "ellipse",
+        theme: theme
       }, chip);
     })
   });
@@ -47619,9 +47629,12 @@ var TableChips = function TableChips(props) {
     className = props.className,
     style = props.style,
     loading = props.loading,
-    _onRemove = props.onRemove;
+    _onRemove = props.onRemove,
+    theme = props.theme;
   if (loading) {
-    return /*#__PURE__*/jsx(TableChipsSkeleton, {});
+    return /*#__PURE__*/jsx(TableChipsSkeleton, {
+      theme: theme
+    });
   }
   var chipsDOM = chips === null || chips === void 0 ? void 0 : (_chips$filter = chips.filter(function (chip) {
     return (chip === null || chip === void 0 ? void 0 : chip.value) != null;
@@ -47680,7 +47693,8 @@ TableChips.propTypes = {
     rightComponent: propTypes$1.exports.node
   })),
   loading: propTypes$1.exports.bool,
-  onRemove: propTypes$1.exports.func
+  onRemove: propTypes$1.exports.func,
+  theme: propTypes$1.exports.oneOf(['light', 'dark'])
 };
 TableChips.defaultProps = {
   className: '',
@@ -47690,7 +47704,8 @@ TableChips.defaultProps = {
   onClear: function onClear() {},
   chips: [],
   loading: null,
-  onRemove: function onRemove() {}
+  onRemove: function onRemove() {},
+  theme: 'light'
 };
 
 var TableChip = /*#__PURE__*/_createClass(function TableChip(_ref) {
@@ -47913,27 +47928,33 @@ var css$k = ".Skeleton_module_root__bdc934d4[data-elem=base-cell] {\n  width: 10
 var modules_37a5ff73$5 = {"root":"Skeleton_module_root__bdc934d4"};
 n(css$k,{});
 
-var TableFiltersSkeleton = function TableFiltersSkeleton() {
+var TableFiltersSkeleton = function TableFiltersSkeleton(_ref) {
+  var theme = _ref.theme;
   return /*#__PURE__*/jsx(BaseCell, {
     className: modules_37a5ff73$5.root,
     flexible: true,
     component1: /*#__PURE__*/jsx(Skeleton, {
-      className: modules_37a5ff73$5.filter
+      className: modules_37a5ff73$5.filter,
+      theme: theme
     }),
     component2: /*#__PURE__*/jsx(Skeleton, {
-      className: modules_37a5ff73$5.search
+      className: modules_37a5ff73$5.search,
+      theme: theme
     }),
     component3: /*#__PURE__*/jsx(BaseCell, {
       flexible: true,
       size: "auto",
       component1: /*#__PURE__*/jsx(Skeleton, {
-        className: modules_37a5ff73$5.columns
+        className: modules_37a5ff73$5.columns,
+        theme: theme
       }),
       component2: /*#__PURE__*/jsx(Skeleton, {
-        className: modules_37a5ff73$5.refresh
+        className: modules_37a5ff73$5.refresh,
+        theme: theme
       }),
       component3: /*#__PURE__*/jsx(Skeleton, {
-        className: modules_37a5ff73$5.settings
+        className: modules_37a5ff73$5.settings,
+        theme: theme
       })
     })
   });
@@ -47950,7 +47971,8 @@ var TableFilters = function TableFilters(props) {
     hiddenColumns = props.hiddenColumns,
     setHiddenColumns = props.setHiddenColumns,
     loading = props.loading,
-    disabledFilterOptions = props.disabledFilterOptions;
+    disabledFilterOptions = props.disabledFilterOptions,
+    theme = props.theme;
   var _useState = useState(false),
     _useState2 = _slicedToArray(_useState, 2),
     openColumns = _useState2[0],
@@ -47965,7 +47987,9 @@ var TableFilters = function TableFilters(props) {
     disabledSettings = disabledFilterOptions.settings;
   var hideRightOptions = disabledColumnFilter && disabledRefresh && disabledSettings;
   if (loading) {
-    return /*#__PURE__*/jsx(TableFiltersSkeleton, {});
+    return /*#__PURE__*/jsx(TableFiltersSkeleton, {
+      theme: theme
+    });
   }
   return /*#__PURE__*/jsx(BaseCell, {
     flexible: true,
@@ -48076,7 +48100,8 @@ TableFilters.propTypes = {
     refresh: propTypes$1.exports.bool,
     columnFilter: propTypes$1.exports.bool,
     settings: propTypes$1.exports.bool
-  })
+  }),
+  theme: propTypes$1.exports.oneOf(['light', 'dark'])
 };
 TableFilters.defaultProps = {
   className: '',
@@ -48093,7 +48118,8 @@ TableFilters.defaultProps = {
     refresh: false,
     columnFilter: false,
     settings: false
-  }
+  },
+  theme: 'light'
 };
 
 var css$j = ".Table_module_root__b07b1753 {\n  position: relative;\n  border-style: solid;\n  border-color: var(--grey4);\n  border-width: 1px 1px 0px 1px;\n  border-radius: 0.25rem;\n  width: 100%;\n  max-width: 100%;\n  height: 100%;\n  overflow: hidden;\n}\n.Table_module_root__b07b1753 .Table_module_table__b07b1753 {\n  height: calc(100% - 6rem);\n  padding-bottom: 3.5rem;\n}\n.Table_module_root__b07b1753 .Table_module_pagination__b07b1753 {\n  position: absolute;\n  bottom: 0;\n  left: 50%;\n  transform: translateX(-50%);\n}\n.Table_module_root__b07b1753 .Table_module_pagination__b07b1753.Table_module_floating__b07b1753 {\n  bottom: 1rem;\n}\n.Table_module_root__b07b1753 .Table_module_chips__b07b1753,\n.Table_module_root__b07b1753 .Table_module_filters__b07b1753,\n.Table_module_root__b07b1753 .Table_module_table__b07b1753 > [data-elem=table-header] {\n  position: sticky;\n  z-index: 1;\n  top: 0;\n}";
@@ -48121,7 +48147,8 @@ var Table = function Table(props) {
     loading = props.loading,
     disabledFilterOptions = props.disabledFilterOptions,
     onSort = props.onSort,
-    rowHeight = props.rowHeight;
+    rowHeight = props.rowHeight,
+    theme = props.theme;
   var ref = useRef(null);
   var paginationRef = useRef(null);
   var _useState = useState(false),
@@ -48198,7 +48225,8 @@ var Table = function Table(props) {
     children: [chipsData != null && ((chipsData === null || chipsData === void 0 ? void 0 : (_chipsData$chips = chipsData.chips) === null || _chipsData$chips === void 0 ? void 0 : _chipsData$chips.length) > 0 || (chipsData === null || chipsData === void 0 ? void 0 : chipsData.showBack) != null) && /*#__PURE__*/jsx(TableChips, _objectSpread2(_objectSpread2({
       className: modules_2e8406c7.chips
     }, chipsData), {}, {
-      loading: loading
+      loading: loading,
+      theme: theme
     })), filtersData != null && /*#__PURE__*/jsx(TableFilters, _objectSpread2(_objectSpread2({
       className: modules_2e8406c7.filters
     }, _objectSpread2(_objectSpread2({}, filtersData), {}, {
@@ -48207,7 +48235,8 @@ var Table = function Table(props) {
       hiddenColumns: hiddenColumns,
       setHiddenColumns: setHiddenColumns
     })), {}, {
-      loading: loading
+      loading: loading,
+      theme: theme
     })), /*#__PURE__*/jsx(BaseTable, {
       ref: ref,
       headerData: visibileColumns,
@@ -48259,7 +48288,8 @@ Table.propTypes = {
     settings: propTypes$1.exports.bool
   }),
   onSort: propTypes$1.exports.func,
-  rowHeight: propTypes$1.exports.oneOf(['md', 'lg'])
+  rowHeight: propTypes$1.exports.oneOf(['md', 'lg']),
+  theme: propTypes$1.exports.oneOf(['light', 'dark'])
 };
 Table.defaultProps = {
   className: '',
@@ -48283,7 +48313,8 @@ Table.defaultProps = {
     settings: false
   },
   onSort: function onSort() {},
-  rowHeight: 'md'
+  rowHeight: 'md',
+  theme: 'light'
 };
 
 var css$i = ".Tabs_module_root__83feec3e {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e {\n  padding: 0.75rem;\n  gap: 0.75rem;\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e > [data-elem=component1] > .Tabs_module_icon__83feec3e,\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e > [data-elem=component3] > .Tabs_module_icon__83feec3e {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--black);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e > [data-elem=component2] {\n  color: var(--black);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e.Tabs_module_active__83feec3e {\n  border-bottom: 2px solid var(--highlight);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e.Tabs_module_active__83feec3e > [data-elem=component1] > .Tabs_module_icon__83feec3e,\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e.Tabs_module_active__83feec3e > [data-elem=component3] > .Tabs_module_icon__83feec3e {\n  fill: var(--highlight);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e.Tabs_module_active__83feec3e > [data-elem=component2] {\n  color: var(--highlight);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e:hover {\n  background: var(--info-bg);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e:hover > [data-elem=component1] > .Tabs_module_icon__83feec3e,\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e:hover > [data-elem=component3] > .Tabs_module_icon__83feec3e {\n  fill: var(--highlight);\n}\n.Tabs_module_root__83feec3e > .Tabs_module_tab__83feec3e:hover > [data-elem=component2] {\n  color: var(--highlight);\n}";
@@ -108977,8 +109008,8 @@ var css$b = ".BasePieChart_module_root__45f70e28 {\n  width: \"100%\";\n}";
 var modules_c20882aa = {"root":"BasePieChart_module_root__45f70e28"};
 n(css$b,{});
 
-var css$a = ".Skeleton_module_root__331b9519 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  width: 100%;\n  height: 100%;\n  overflow: hidden;\n  padding: 2rem;\n}\n.Skeleton_module_root__331b9519 > .Skeleton_module_outer__331b9519,\n.Skeleton_module_root__331b9519 > .Skeleton_module_inner__331b9519 {\n  max-width: 100%;\n  max-height: 100%;\n}\n.Skeleton_module_root__331b9519 > .Skeleton_module_inner__331b9519 {\n  position: absolute;\n}\n.Skeleton_module_root__331b9519 span.Skeleton_module_line__331b9519 {\n  height: 0.5rem;\n  position: absolute;\n  transform-origin: left;\n}\n.Skeleton_module_root__331b9519 span.Skeleton_module_line__331b9519:nth-last-of-type(1) {\n  transform: translateX(3.25rem) rotate(45deg);\n}\n.Skeleton_module_root__331b9519 span.Skeleton_module_line__331b9519:nth-last-of-type(2) {\n  transform: translateX(3.25rem) rotate(-75deg);\n}\n.Skeleton_module_root__331b9519 span.Skeleton_module_line__331b9519:nth-last-of-type(3) {\n  transform: translateX(3.25rem) rotate(-10deg);\n}\n.Skeleton_module_root__331b9519.Skeleton_module_lightTheme__331b9519 > .Skeleton_module_inner__331b9519 {\n  background: var(--white);\n}\n.Skeleton_module_root__331b9519.Skeleton_module_lightTheme__331b9519 span.Skeleton_module_line__331b9519 {\n  background: var(--white);\n}\n.Skeleton_module_root__331b9519.Skeleton_module_darkTheme__331b9519 > .Skeleton_module_inner__331b9519 {\n  background: var(--dark-grey);\n}\n.Skeleton_module_root__331b9519.Skeleton_module_darkTheme__331b9519 span.Skeleton_module_line__331b9519 {\n  background: var(--dark-grey);\n}";
-var modules_37a5ff73$2 = {"root":"Skeleton_module_root__331b9519","outer":"Skeleton_module_outer__331b9519","inner":"Skeleton_module_inner__331b9519","line":"Skeleton_module_line__331b9519","light-theme":"Skeleton_module_lightTheme__331b9519","dark-theme":"Skeleton_module_darkTheme__331b9519"};
+var css$a = ".Skeleton_module_root__0710ee34 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  width: 100%;\n  height: 100%;\n  overflow: hidden;\n  position: relative;\n}\n.Skeleton_module_root__0710ee34 > .Skeleton_module_outer__0710ee34,\n.Skeleton_module_root__0710ee34 > .Skeleton_module_inner__0710ee34 {\n  max-width: 100%;\n  max-height: 100%;\n}\n.Skeleton_module_root__0710ee34 > .Skeleton_module_inner__0710ee34 {\n  position: absolute;\n}\n.Skeleton_module_root__0710ee34 span.Skeleton_module_line__0710ee34 {\n  height: 0.5rem;\n  position: absolute;\n  transform-origin: left;\n}\n.Skeleton_module_root__0710ee34 span.Skeleton_module_line__0710ee34:nth-last-of-type(1) {\n  transform: translateX(3.25rem) rotate(45deg);\n}\n.Skeleton_module_root__0710ee34 span.Skeleton_module_line__0710ee34:nth-last-of-type(2) {\n  transform: translateX(3.25rem) rotate(-75deg);\n}\n.Skeleton_module_root__0710ee34 span.Skeleton_module_line__0710ee34:nth-last-of-type(3) {\n  transform: translateX(3.25rem) rotate(-10deg);\n}\n.Skeleton_module_root__0710ee34.Skeleton_module_lightTheme__0710ee34 > .Skeleton_module_inner__0710ee34 {\n  background: var(--white);\n}\n.Skeleton_module_root__0710ee34.Skeleton_module_lightTheme__0710ee34 span.Skeleton_module_line__0710ee34 {\n  background: var(--white);\n}\n.Skeleton_module_root__0710ee34.Skeleton_module_darkTheme__0710ee34 > .Skeleton_module_inner__0710ee34 {\n  background: var(--dark-grey);\n}\n.Skeleton_module_root__0710ee34.Skeleton_module_darkTheme__0710ee34 span.Skeleton_module_line__0710ee34 {\n  background: var(--dark-grey);\n}";
+var modules_37a5ff73$2 = {"root":"Skeleton_module_root__0710ee34","outer":"Skeleton_module_outer__0710ee34","inner":"Skeleton_module_inner__0710ee34","line":"Skeleton_module_line__0710ee34","light-theme":"Skeleton_module_lightTheme__0710ee34","dark-theme":"Skeleton_module_darkTheme__0710ee34"};
 n(css$a,{});
 
 var ChartSkeleton$2 = function ChartSkeleton(_ref) {
@@ -109586,11 +109617,12 @@ var BaseAreaChart = function BaseAreaChart(props) {
     className = props.className,
     theme = props.theme;
   if (loading) {
-    var filled = seriesOption.some(function (series) {
-      return (series === null || series === void 0 ? void 0 : series.areaStyle.opacity) > 0;
-    });
-    return /*#__PURE__*/jsx(ChartSkeleton, {
-      filled: filled,
+    // const filled = seriesOption.some((series) => {
+    // return series?.areaStyle.opacity > 0;
+    // });
+    return /*#__PURE__*/jsx(ChartSkeleton
+    //  filled={filled}
+    , {
       theme: theme
     });
   }
