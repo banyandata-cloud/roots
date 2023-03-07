@@ -48,7 +48,16 @@ export const getTimeFromEpoch = (epoch) => {
 };
 
 // The above two functions will be depracted soon.
-export const epochToFormattedDate = ({ epoch, type, format }) => {
+
+/**
+ * To get the formatted time and date
+ *
+ * @param {string} epoch The epoch value : timestamp .
+ * @param {string} type type of format to return either "date" or "time"
+ * @param {string} format fomrat of date(optional) and time[default = 12 hrs]
+ * @returns {string} Returns the formatted date or time.
+ */
+export const epochToFormattedDate = (epoch, type, format) => {
 	const date = new Date(0);
 	date.setUTCSeconds(epoch);
 	if (type === 'time') {
@@ -58,10 +67,10 @@ export const epochToFormattedDate = ({ epoch, type, format }) => {
 		const hours12 = ((date.getHours() + 11) % 12) + 1;
 		const meridian = date.getHours() >= 12 ? 'PM' : 'AM';
 		const timeFormat = {
-			24: `${hours}:${minutes}:${seconds}`,
+			24: `${hours}:${minutes}:${seconds} Hrs`,
 			12: `${hours12}:${minutes}:${seconds} ${meridian}`,
 		};
-		return timeFormat[format];
+		return timeFormat[format ?? 12];
 	}
 	if (type === 'date') {
 		if (format) {
