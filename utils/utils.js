@@ -1,3 +1,4 @@
+import { format as fnsFormat } from 'date-fns';
 import { DAYS, FULL_MONTHS, MONTHS } from '../constants';
 
 export const sumArrayOfObjects = (objects) => {
@@ -44,6 +45,43 @@ export const getTimeFromEpoch = (epoch) => {
 	const minutes = doubleDigitted(date.getMinutes());
 	const seconds = doubleDigitted(date.getSeconds());
 	return `${hours}:${minutes}:${seconds}`;
+};
+
+// The above two functions will be depracted soon.
+
+/**
+ * To get the formatted time and date
+ *
+ * @param {string} epoch The epoch value : timestamp .
+ * @param {string} type type of format to return either "date" or "time"
+ * @param {string} format fomrat of date(optional) and time[default = 12 hrs]
+ * @returns {string} Returns the formatted date or time.
+ */
+export const epochToFormattedDate = (epoch, type, format) => {
+	const date = new Date(0);
+	date.setUTCSeconds(epoch);
+	if (type === 'time') {
+		const hours = doubleDigitted(date.getHours());
+		const minutes = doubleDigitted(date.getMinutes());
+		const seconds = doubleDigitted(date.getSeconds());
+		const hours12 = ((date.getHours() + 11) % 12) + 1;
+		const meridian = date.getHours() >= 12 ? 'PM' : 'AM';
+		const timeFormat = {
+			24: `${hours}:${minutes}:${seconds} Hrs`,
+			12: `${hours12}:${minutes}:${seconds} ${meridian}`,
+		};
+		return timeFormat[format ?? 12];
+	}
+	if (type === 'date') {
+		if (format) {
+			return fnsFormat(date, format);
+		}
+		const paddedDate = date.getDate().toString().padStart(2, '0');
+		const month = MONTHS[date.getMonth()];
+		const year = date.getFullYear();
+		return `${month} ${paddedDate}, ${year}`;
+	}
+	return null;
 };
 
 export const uniqueArray = (array) => {
