@@ -25,6 +25,7 @@ const BaseMap = (props) => {
 		clustered,
 		fitBounds,
 		theme,
+		fallback,
 		...options
 	} = props;
 
@@ -122,7 +123,14 @@ const BaseMap = (props) => {
 						: style
 				}
 			/>
-			{loading && <Skeleton theme={theme} height='100%' variant='rounded' />}
+			{loading && (
+				<Skeleton
+					theme={theme}
+					height='100%'
+					variant='rounded'
+					noAnimation={!loading && fallback}
+				/>
+			)}
 			{Children.toArray(children)
 				.filter((child) => {
 					return isValidElement(child);

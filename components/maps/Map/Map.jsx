@@ -4,11 +4,11 @@ import { Wrapper } from '@googlemaps/react-wrapper';
 import { BaseMap } from '../BaseMap';
 
 const Map = (props) => {
-	const { loading, options, apiKey, libraries, children, theme } = props;
+	const { loading, options, apiKey, libraries, children, theme, fallback } = props;
 
 	return (
 		<Wrapper apiKey={apiKey} libraries={libraries}>
-			<BaseMap {...options} loading={loading} theme={theme}>
+			<BaseMap {...options} loading={loading} theme={theme} fallback={fallback}>
 				{children}
 			</BaseMap>
 		</Wrapper>

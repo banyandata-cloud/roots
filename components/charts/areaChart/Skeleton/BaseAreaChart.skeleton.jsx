@@ -10,7 +10,7 @@ const TRIANGLES = [...Array(7).keys()].map(() => {
 	return Math.random() * 80 + 20;
 });
 
-const ChartSkeleton = ({ filled, theme }) => {
+const ChartSkeleton = ({ filled, theme, fallback }) => {
 	if (filled) {
 		return (
 			<div className={classes(styles.root, styles.filled, styles[`${theme}-theme`])}>
@@ -41,6 +41,7 @@ const ChartSkeleton = ({ filled, theme }) => {
 							theme={theme}
 							className={styles.bump}
 							height='0.5rem'
+							noAnimation={fallback}
 						/>
 					);
 				})}

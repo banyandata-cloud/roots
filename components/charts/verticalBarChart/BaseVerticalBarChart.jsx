@@ -57,10 +57,11 @@ const BaseVerticalBarChart = (props) => {
 		style,
 		className,
 		theme,
+		fallback,
 	} = props;
 
-	if (loading) {
-		return <Skeleton theme={theme} />;
+	if (loading || fallback) {
+		return <Skeleton theme={theme} fallback={!loading && fallback} />;
 	}
 	const minHeightCheck = !Object.keys(seriesData?.chartData ?? 0)?.some((obj1) => {
 		return seriesOption.some((obj, index) => {

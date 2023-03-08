@@ -1,0 +1,41 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  padding: 2rem;
+  gap: 0.5rem;
+  margin: auto;
+  -webkit-backdrop-filter: blur(0.25rem);
+          backdrop-filter: blur(0.25rem);
+}
+.root .wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  gap: 0.5rem;
+}
+.root .text {
+  text-align: center;
+  width: 80%;
+}
+.root.light-theme span.text:nth-of-type(1) {
+  color: var(--dark-grey);
+}
+.root.light-theme span.text:nth-of-type(2) {
+  color: var(--grey2);
+}
+.root.dark-theme span.text:nth-of-type(1) {
+  color: var(--white);
+}
+.root.dark-theme span.text:nth-of-type(2) {
+  color: var(--grey1);
+}
+.root button {
+  margin-top: 1rem;
+}/*# sourceMappingURL=WidgetFallback.module.css.map */

@@ -2,7 +2,7 @@ import { classes } from '../../../../utils';
 import Skeleton from '../../../skeleton/Skeleton';
 import styles from './Skeleton.module.css';
 
-const ChartSkeleton = ({ theme }) => {
+const ChartSkeleton = ({ theme, fallback }) => {
 	return (
 		<div className={classes(styles.root, styles[`${theme}-theme`])}>
 			<Skeleton
@@ -11,6 +11,7 @@ const ChartSkeleton = ({ theme }) => {
 				width='12.5rem'
 				height='12.5rem'
 				variant='circle'
+				noAnimation={fallback}
 			/>
 			<Skeleton
 				noAnimation

@@ -50,10 +50,11 @@ const BasePieChart = (props) => {
 		style,
 		className,
 		theme,
+		fallback,
 	} = props;
 
-	if (loading) {
-		return <Skeleton theme={theme} />;
+	if (loading || fallback) {
+		return <Skeleton theme={theme} fallback={!loading && fallback} />;
 	}
 
 	const seriesOptionObject = {
@@ -166,6 +167,7 @@ const BasePieChart = (props) => {
 
 BasePieChart.propTypes = {
 	loading: PropTypes.bool,
+	fallback: PropTypes.bool,
 	title: PropTypes.string,
 	gridOptions: PropTypes.object,
 	tooltip: PropTypes.object,
@@ -189,6 +191,7 @@ BasePieChart.propTypes = {
 
 BasePieChart.defaultProps = {
 	loading: false,
+	fallback: false,
 	title: '',
 	gridOptions: {
 		left: 0,

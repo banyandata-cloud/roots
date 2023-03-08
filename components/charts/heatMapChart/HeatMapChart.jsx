@@ -56,10 +56,11 @@ const HeatMapChart = (props) => {
 		style,
 		className,
 		theme,
+		fallback,
 	} = props;
 
-	if (loading) {
-		return <Skeleton theme={theme} />;
+	if (loading || fallback) {
+		return <Skeleton theme={theme} fallback={!loading && fallback} />;
 	}
 
 	const seriesOptionObject = {
@@ -206,6 +207,7 @@ const HeatMapChart = (props) => {
 
 HeatMapChart.propTypes = {
 	loading: PropTypes.bool,
+	fallback: PropTypes.bool,
 	title: PropTypes.string,
 	gridContainLabel: PropTypes.bool,
 	gridOptions: PropTypes.object,
@@ -231,6 +233,7 @@ HeatMapChart.propTypes = {
 
 HeatMapChart.defaultProps = {
 	loading: false,
+	fallback: false,
 	title: '',
 	gridContainLabel: false,
 	gridOptions: {

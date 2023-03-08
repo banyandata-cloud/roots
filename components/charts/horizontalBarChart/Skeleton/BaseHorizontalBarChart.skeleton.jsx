@@ -5,7 +5,7 @@ const BARS = [...Array(8).keys()].map(() => {
 	return Math.random() * 80 + 20;
 });
 
-const ChartSkeleton = ({ theme }) => {
+const ChartSkeleton = ({ theme, fallback }) => {
 	return (
 		<div className={styles.root}>
 			{BARS.map((bar) => {
@@ -16,6 +16,7 @@ const ChartSkeleton = ({ theme }) => {
 						variant='rounded'
 						width={`${bar}%`}
 						height='3rem'
+						noAnimation={fallback}
 					/>
 				);
 			})}

@@ -4,7 +4,7 @@ import { ThemedContainer } from '../../helpers';
 import BaseAreaChart from './BaseAreaChart';
 
 export default {
-	title: 'ComponentsV2/Charts/AreaChart/BaseAreaChart',
+	title: 'Components/Charts/AreaChart/BaseAreaChart',
 	component: BaseAreaChart,
 	parameters: {
 		options: {
