@@ -82,9 +82,7 @@
 
 	.children {
 		flex: 1 1;
-		[data-elem='error-msg'] {
-			color: $white;
-		}
+		position: relative;
 	}
 }
 

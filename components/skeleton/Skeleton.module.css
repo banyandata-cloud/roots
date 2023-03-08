@@ -11,6 +11,7 @@
 }
 .root.dark-theme {
   background-color: var(--grey2);
+  opacity: 0.2;
 }
 .root.animated {
   animation-duration: 1.25s;

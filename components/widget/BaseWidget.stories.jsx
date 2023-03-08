@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import BaseVerticalBarChart from '../charts/verticalBarChart/BaseVerticalBarChart';
 import BaseWidget from './BaseWidget';
 import { ThemedContainer } from '../helpers';
+import Map from '../maps/Map/Map';
 
 export default {
-	title: 'ComponentsV2/Widget/BaseWidget',
+	title: 'Components/Widget/BaseWidget',
 	component: BaseWidget,
 	parameters: {
 		options: {
@@ -139,17 +140,13 @@ const Template = (args) => {
 							},
 						},
 					]}
-					errorHandle={() => {
-						alert('This will call the API again');
-					}}
-					errorMessage='We are having trouble loading this content.'
 				/>
 			</BaseWidget>
 		</ThemedContainer>
 	);
 };
 
-const ErrorStateTemplate = (args) => {
+const WithFallbackTemplate = (args) => {
 	const [dropValue, setDropValue] = useState(0);
 	const [selectedValue, setSelectedValue] = useState('Option 1');
 	return (
@@ -219,10 +216,95 @@ const ErrorStateTemplate = (args) => {
 							},
 						},
 					]}
-					errorHandle={() => {
-						alert('This will call the API again');
+				/>
+			</BaseWidget>
+		</ThemedContainer>
+	);
+};
+
+const WithNestedFallbackTemplate = (args) => {
+	const [fallback, setFallback] = useState(false);
+	return (
+		<ThemedContainer
+			style={{
+				height: '100%',
+				width: '100%',
+			}}>
+			<BaseWidget
+				{...args}
+				setFallback={setFallback}
+				// eslint-disable-next-line react/destructuring-assignment
+			>
+				<div
+					style={{
+						width: '100%',
+						height: '100%',
+					}}>
+					<BaseVerticalBarChart
+						// eslint-disable-next-line react/destructuring-assignment
+						loading={args.loading}
+						fallback={fallback}
+						yAxisLabelShow
+						ySplitLineShow
+						xAxisShow
+						xAxisLabel={{
+							show: true,
+							rotate: 90,
+							inside: true,
+							color: 'white',
+							verticalAlign: 'bottom',
+							padding: [0, 0, 20, -5],
+						}}
+						barWidth='15%'
+						seriesData={{
+							chartData: {},
+						}}
+						seriesOption={[
+							{
+								stackIndex: 1,
+								color: 'orange',
+								label: {
+									color: 'white',
+									show: false,
+									formatter(param) {
+										return param.name;
+									},
+								},
+							},
+							{
+								stackIndex: 2,
+								color: 'blue',
+								label: {
+									show: false,
+								},
+							},
+						]}
+					/>
+				</div>
+			</BaseWidget>
+		</ThemedContainer>
+	);
+};
+
+const MapTemplate = (args) => {
+	return (
+		<ThemedContainer
+			style={{
+				height: '100%',
+				width: '100%',
+			}}>
+			<BaseWidget {...args}>
+				<Map
+					// eslint-disable-next-line react/destructuring-assignment
+					loading={args.loading}
+					options={{
+						style: {
+							flexGrow: '1',
+							height: '100%',
+						},
+						mapId: '20e2e511856fee45',
 					}}
-					errorMessage='We are having trouble loading this content.'
+					chartData={[]}
 				/>
 			</BaseWidget>
 		</ThemedContainer>
@@ -230,14 +312,19 @@ const ErrorStateTemplate = (args) => {
 };
 
 export const Default = Template.bind({});
-export const ErrorState = ErrorStateTemplate.bind({});
-export const WithLoader = ErrorStateTemplate.bind({});
+export const WithFallback = WithFallbackTemplate.bind({});
+export const WithNestedFallback = WithNestedFallbackTemplate.bind({});
+export const WithLoader = WithFallbackTemplate.bind({});
+export const WithMap = MapTemplate.bind({});
 
 Default.args = {
 	title: 'Widget Title - 7 Services',
 	showBack: true,
 	onBack: () => {
 		alert('This will bring you back');
+	},
+	onReload: () => {
+		alert('Callback for fallback reload button');
 	},
 	options: [
 		{
@@ -292,21 +379,21 @@ Default.args = {
 			},
 		},
 	],
-	errorMessage: 'We are having trouble loading the Data',
-	errorHandle: () => {
-		alert('This will Fetch API again');
-	},
 };
 
-ErrorState.args = {
+WithFallback.args = {
 	...Default.args,
-	errorMessage: 'We are having trouble loading the Data',
-	errorHandle: () => {
-		alert('This will Fetch API again');
-	},
+};
+
+WithNestedFallback.args = {
+	...WithFallback.args,
 };
 
 WithLoader.args = {
 	...Default.args,
 	loading: true,
+};
+
+WithMap.args = {
+	...WithFallback.args,
 };

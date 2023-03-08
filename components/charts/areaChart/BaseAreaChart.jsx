@@ -59,9 +59,10 @@ const BaseAreaChart = (props) => {
 		style,
 		className,
 		theme,
+		fallback,
 	} = props;
 
-	if (loading) {
+	if (loading || fallback) {
 		// const filled = seriesOption.some((series) => {
 		// return series?.areaStyle.opacity > 0;
 		// });
@@ -69,6 +70,7 @@ const BaseAreaChart = (props) => {
 			<Skeleton
 				//  filled={filled}
 				theme={theme}
+				fallback={!loading && fallback}
 			/>
 		);
 	}
@@ -211,6 +213,7 @@ const BaseAreaChart = (props) => {
 
 BaseAreaChart.propTypes = {
 	loading: PropTypes.bool,
+	fallback: PropTypes.bool,
 	title: PropTypes.string,
 	gridOptions: PropTypes.object,
 	gridContainLabel: PropTypes.bool,
@@ -241,6 +244,7 @@ BaseAreaChart.propTypes = {
 
 BaseAreaChart.defaultProps = {
 	loading: false,
+	fallback: false,
 	title: '',
 	gridOptions: {
 		left: 0,
