@@ -15,9 +15,11 @@
 
 	> .inner {
 		position: absolute;
+		opacity: 1;
 	}
 
 	span.line {
+		opacity: 1;
 		height: 0.5rem;
 		position: absolute;
 		transform-origin: left;
