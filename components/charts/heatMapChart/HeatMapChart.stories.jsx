@@ -1,5 +1,6 @@
 /* eslint-disable no-tabs */
 import React from 'react';
+import { ThemedContainer } from '../../helpers';
 import HeatMapChart from './HeatMapChart';
 
 export default {
@@ -442,12 +443,13 @@ const sampleData = {
 
 const Template = (args) => {
 	return (
-		<div
+		<ThemedContainer
+			{...args}
 			style={{
 				height: '100%',
 			}}>
 			<HeatMapChart {...args} />
-		</div>
+		</ThemedContainer>
 	);
 };
 

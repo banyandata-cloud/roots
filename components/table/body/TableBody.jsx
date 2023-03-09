@@ -7,7 +7,7 @@ import { TableRow } from '../row';
 import styles from './TableBody.module.css';
 
 const TableBody = (props) => {
-	const { tableData, headerData, customCells, className, expandable } = props;
+	const { tableData, headerData, customCells, className, expandable, rowHeight } = props;
 
 	const listRef = useRef([]);
 
@@ -40,6 +40,7 @@ const TableBody = (props) => {
 							_index,
 							setActiveId,
 							expandable,
+							rowHeight,
 						}}
 					/>
 				);
@@ -67,6 +68,7 @@ TableBody.propTypes = {
 		body: PropTypes.object,
 	}),
 	expandable: PropTypes.func,
+	rowHeight: PropTypes.oneOf(['md', 'lg']),
 };
 
 TableBody.defaultProps = {
@@ -78,6 +80,7 @@ TableBody.defaultProps = {
 		body: null,
 	},
 	expandable: null,
+	rowHeight: 'md',
 };
 
 export default TableBody;

@@ -32,6 +32,8 @@ const Table = (props) => {
 		loading,
 		disabledFilterOptions,
 		onSort,
+		rowHeight,
+		theme,
 	} = props;
 
 	const ref = useRef(null);
@@ -112,7 +114,12 @@ const Table = (props) => {
 	return (
 		<div className={classes(styles.root, className)}>
 			{chipsData != null && (chipsData?.chips?.length > 0 || chipsData?.showBack != null) && (
-				<TableChips className={styles.chips} {...chipsData} loading={loading} />
+				<TableChips
+					className={styles.chips}
+					{...chipsData}
+					loading={loading}
+					theme={theme}
+				/>
 			)}
 			{filtersData != null && (
 				<TableFilters
@@ -125,6 +132,7 @@ const Table = (props) => {
 						setHiddenColumns,
 					}}
 					loading={loading}
+					theme={theme}
 				/>
 			)}
 			<BaseTable
@@ -138,6 +146,7 @@ const Table = (props) => {
 					customCells,
 					className: styles.table,
 					onSort,
+					rowHeight,
 				}}
 				loading={loading}
 			/>
@@ -193,6 +202,8 @@ Table.propTypes = {
 		settings: PropTypes.bool,
 	}),
 	onSort: PropTypes.func,
+	rowHeight: PropTypes.oneOf(['md', 'lg']),
+	theme: PropTypes.oneOf(['light', 'dark']),
 };
 
 Table.defaultProps = {
@@ -217,6 +228,8 @@ Table.defaultProps = {
 		settings: false,
 	},
 	onSort: () => {},
+	rowHeight: 'md',
+	theme: 'light',
 };
 
 export default Table;

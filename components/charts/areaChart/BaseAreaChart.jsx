@@ -17,6 +17,7 @@ import {
 } from 'echarts/renderers';
 import styles from './BaseAreaChart.module.css';
 import { classes } from '../../../utils';
+import { Skeleton } from './Skeleton';
 
 // Register the required components
 echarts.use([
@@ -31,6 +32,7 @@ echarts.use([
 
 const BaseAreaChart = (props) => {
 	const {
+		loading,
 		title,
 		gridOptions,
 		gridContainLabel,
@@ -56,7 +58,22 @@ const BaseAreaChart = (props) => {
 		opacity,
 		style,
 		className,
+		theme,
+		fallback,
 	} = props;
+
+	if (loading || fallback) {
+		// const filled = seriesOption.some((series) => {
+		// return series?.areaStyle.opacity > 0;
+		// });
+		return (
+			<Skeleton
+				//  filled={filled}
+				theme={theme}
+				fallback={!loading && fallback}
+			/>
+		);
+	}
 
 	const seriesOptionObject = {
 		type: 'line',
@@ -195,6 +212,8 @@ const BaseAreaChart = (props) => {
 };
 
 BaseAreaChart.propTypes = {
+	loading: PropTypes.bool,
+	fallback: PropTypes.bool,
 	title: PropTypes.string,
 	gridOptions: PropTypes.object,
 	gridContainLabel: PropTypes.bool,
@@ -220,9 +239,12 @@ BaseAreaChart.propTypes = {
 	opacity: PropTypes.number,
 	style: PropTypes.objectOf(PropTypes.shape),
 	className: PropTypes.string,
+	theme: PropTypes.oneOf(['light', 'dark']),
 };
 
 BaseAreaChart.defaultProps = {
+	loading: false,
+	fallback: false,
 	title: '',
 	gridOptions: {
 		left: 0,
@@ -256,6 +278,7 @@ BaseAreaChart.defaultProps = {
 		height: '100%',
 	},
 	className: '',
+	theme: 'dark',
 };
 
 export default BaseAreaChart;

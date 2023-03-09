@@ -5,6 +5,12 @@
 	align-items: $align-items;
 }
 
+@mixin grid($columns: auto, $rows: auto) {
+	display: grid;
+	grid-template-rows: $rows;
+	grid-template-columns: $columns;
+}
+
 @mixin bordermixin($border-color, $background-color) {
 	border-style: solid;
 	border-color: $border-color;

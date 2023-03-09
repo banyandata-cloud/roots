@@ -3,7 +3,7 @@ import React from 'react';
 import BaseHybridChart from './BaseHybridChart';
 
 export default {
-	title: 'ComponentsV2/Charts/HybridChart/BaseHybridChart',
+	title: 'Components/Charts/HybridChart/BaseHybridChart',
 	component: BaseHybridChart,
 	parameters: {
 		options: {

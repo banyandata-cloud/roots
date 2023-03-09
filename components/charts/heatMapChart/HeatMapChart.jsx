@@ -19,6 +19,7 @@ import {
 } from 'echarts/renderers';
 import styles from './HeatMapChart.module.css';
 import { classes } from '../../../utils';
+import { Skeleton } from './Skeleton';
 
 // Register the required components
 echarts.use([
@@ -33,6 +34,7 @@ echarts.use([
 
 const HeatMapChart = (props) => {
 	const {
+		loading,
 		title,
 		gridContainLabel,
 		gridOptions,
@@ -53,14 +55,20 @@ const HeatMapChart = (props) => {
 		visualMap,
 		style,
 		className,
+		theme,
+		fallback,
 	} = props;
+
+	if (loading || fallback) {
+		return <Skeleton theme={theme} fallback={!loading && fallback} />;
+	}
 
 	const seriesOptionObject = {
 		type: 'heatmap',
 		label: {
 			show: true,
 		},
-        itemStyle: {
+		itemStyle: {
 			borderWidth: 0,
 			borderColor: 'white',
 		},
@@ -199,6 +207,8 @@ const HeatMapChart = (props) => {
 };
 
 HeatMapChart.propTypes = {
+	loading: PropTypes.bool,
+	fallback: PropTypes.bool,
 	title: PropTypes.string,
 	gridContainLabel: PropTypes.bool,
 	gridOptions: PropTypes.object,
@@ -219,9 +229,12 @@ HeatMapChart.propTypes = {
 	seriesOption: PropTypes.shape({}),
 	style: PropTypes.objectOf(PropTypes.shape),
 	className: PropTypes.string,
+	theme: PropTypes.oneOf(['light', 'dark']),
 };
 
 HeatMapChart.defaultProps = {
+	loading: false,
+	fallback: false,
 	title: '',
 	gridContainLabel: false,
 	gridOptions: {
@@ -256,6 +269,7 @@ HeatMapChart.defaultProps = {
 		height: '100%',
 	},
 	className: '',
+	theme: 'dark',
 };
 
 export default HeatMapChart;

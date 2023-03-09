@@ -8,34 +8,46 @@ div.root {
 	background: $grey8;
 	width: fit-content;
 	border-radius: 0.4rem 0.4rem;
-	box-shadow: inset 0px 1px 2px rgba(97, 97, 97, 0.2), inset 0px 2px 4px rgba(97, 97, 97, 0.2);
+	border-width: 1px;
+	border-style: solid;
+	background: transparent;
+	[data-elem='base-cell'].toggle-button {
+		background: transparent;
+	}
+
 	&.theme-dark {
-		background: $grey;
+		border-color: $grey;
 
 		[data-elem='base-cell'].toggle-button {
 			color: $grey4;
 
 			&.active {
-				background: $dark-grey;
+				background: $menu-black;
 				color: $white;
 			}
 		}
 	}
 
 	&.theme-light {
-		color: $dark-grey;
+		border-color: $grey1;
+
+		[data-elem='base-cell'].toggle-button {
+			background: transparent;
+			color: $grey;
+
+			&.active {
+				background: $grey6;
+				color: $dark-grey;
+			}
+		}
 	}
+
 	[data-elem='base-cell'].toggle-button {
-		color: $grey;
 		padding: 0.344rem 0.75rem;
 		height: 2rem;
-		background: transparent;
 
 		&.active {
-			@include boxShadow;
-			background: $white;
 			border-radius: 0.25rem;
-			color: $dark-grey;
 		}
 	}
 

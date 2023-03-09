@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { classes } from '../../utils/utils';
 import { Button } from '../buttons';
 import { BaseCell } from '../cell';
@@ -8,6 +8,8 @@ import styles from './Accordion.module.css';
 
 const Accordion = (props) => {
 	const {
+		open,
+		onToggle,
 		defaultOpen,
 		iconPlacement,
 		title,
@@ -18,12 +20,17 @@ const Accordion = (props) => {
 		onExpand,
 	} = props;
 
-	const [open, setOpen] = useState(defaultOpen);
+	// uncontrolled
+	const [uncontrolledOpen, setUncontrolledOpen] = useState(defaultOpen);
+
+	const { current: isControlled } = useRef(open !== undefined);
+
+	const isOpen = isControlled ? open : uncontrolledOpen;
 
 	return (
 		<div
-			className={classes(className, styles.root, open ? styles.open : '')}
-			data-state-open={open}>
+			className={classes(className, styles.root, isOpen ? styles.open : '')}
+			data-state-open={isOpen}>
 			<BaseCell
 				flexible
 				size='auto'
@@ -31,11 +38,15 @@ const Accordion = (props) => {
 				className={styles.header}
 				attrs={{
 					onClick: () => {
-						setOpen((prevState) => {
-							const newState = !prevState;
-							onClick(newState);
-							return newState;
-						});
+						if (isControlled) {
+							onToggle(open);
+						} else {
+							setUncontrolledOpen((prevState) => {
+								const newState = !prevState;
+								onClick(newState);
+								return newState;
+							});
+						}
 					},
 				}}
 				component1={iconPlacement === 'left' && <CaretIcon className={styles.icon} />}
@@ -63,6 +74,8 @@ const Accordion = (props) => {
 };
 
 Accordion.propTypes = {
+	open: PropTypes.bool,
+	onToggle: PropTypes.func,
 	iconPlacement: PropTypes.oneOf(['left', 'right', 'none']),
 	title: PropTypes.node,
 	description: PropTypes.string,
@@ -73,6 +86,8 @@ Accordion.propTypes = {
 };
 
 Accordion.defaultProps = {
+	open: undefined,
+	onToggle: null,
 	iconPlacement: 'left',
 	title: null,
 	description: null,

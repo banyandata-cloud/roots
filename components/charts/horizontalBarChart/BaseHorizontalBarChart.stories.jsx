@@ -1,6 +1,7 @@
 /* eslint-disable no-tabs */
 import React from 'react';
 import { COLORS } from '../../../styles';
+import { ThemedContainer } from '../../helpers';
 import BaseHorizontalBarChart from './BaseHorizontalBarChart';
 
 export default {
@@ -83,7 +84,8 @@ const Template = (args) => {
 		alert(`Click Event on ${params.name}`);
 	};
 	return (
-		<div
+		<ThemedContainer
+			{...args}
 			style={{
 				height: '100%',
 			}}>
@@ -101,23 +103,8 @@ const Template = (args) => {
 						}`;
 					},
 				}}
-				// legend={{
-				// 	show: true,
-				// 	top: '20',
-				// 	right: '30%',
-				// 	orient: 'vertical',
-				// 	selectedMode: true,
-				// 	itemGap: 20,
-				// 	icon: 'rect',
-				// 	data: Object.keys(sampleData.metaData.keyData).map((key) => {
-				// 		return sampleData?.metaData?.keyData?.[key];
-				// 	}),
-				// }}
-				// seriesName={(index) => {
-				// 	return sampleData?.metaData?.keyData?.[`x${index + 1}`];
-				// }}
 			/>
-		</div>
+		</ThemedContainer>
 	);
 };
 

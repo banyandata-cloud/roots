@@ -10,10 +10,20 @@ import { Skeleton } from './Skeleton';
 
 // eslint-disable-next-line prefer-arrow-callback
 const BaseTable = forwardRef(function BaseTable(props, ref) {
-	const { headerData, customCells, tableData, className, loading, expandable, onSort } = props;
+	const {
+		headerData,
+		customCells,
+		tableData,
+		className,
+		loading,
+		expandable,
+		onSort,
+		rowHeight,
+		theme,
+	} = props;
 
 	if (loading) {
-		return <Skeleton />;
+		return <Skeleton theme={theme} />;
 	}
 
 	const transformedHeaderData = headerData.map((header) => {
@@ -28,6 +38,7 @@ const BaseTable = forwardRef(function BaseTable(props, ref) {
 					customCells,
 					expandable,
 					onSort,
+					rowHeight,
 				}}
 			/>
 			<TableBody
@@ -37,6 +48,7 @@ const BaseTable = forwardRef(function BaseTable(props, ref) {
 					customCells,
 					tableData,
 					expandable,
+					rowHeight,
 				}}
 			/>
 		</table>
@@ -64,6 +76,8 @@ BaseTable.propTypes = {
 	loading: PropTypes.bool,
 	expandable: PropTypes.func,
 	onSort: PropTypes.func,
+	rowHeight: PropTypes.oneOf(['md', 'lg']),
+	theme: PropTypes.oneOf(['light', 'dark']),
 };
 
 BaseTable.defaultProps = {
@@ -77,6 +91,8 @@ BaseTable.defaultProps = {
 	loading: null,
 	expandable: null,
 	onSort: () => {},
+	rowHeight: 'md',
+	theme: 'light',
 };
 
 export default BaseTable;

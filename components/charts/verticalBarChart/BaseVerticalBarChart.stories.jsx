@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import BaseVerticalBarChart from './BaseVerticalBarChart';
 import { COLORS } from '../../../styles';
+import { ThemedContainer } from '../../helpers';
 
 export default {
 	title: 'Components/Charts/VerticalBarChart/BaseVerticalBarChart',
@@ -189,7 +190,8 @@ const stackData = transformToStack(sampleStackData);
 
 const Template = (args) => {
 	return (
-		<div
+		<ThemedContainer
+			{...args}
 			style={{
 				height: '100%',
 			}}>
@@ -220,13 +222,14 @@ const Template = (args) => {
 				// return sampleData?.metaData?.keyData?.[`x${index + 1}`];
 				// }}
 			/>
-		</div>
+		</ThemedContainer>
 	);
 };
 
 const StackTemplate = (args) => {
 	return (
-		<div
+		<ThemedContainer
+			{...args}
 			style={{
 				height: '100%',
 			}}>
@@ -257,7 +260,7 @@ const StackTemplate = (args) => {
 				// return sampleData?.metaData?.keyData?.[`x${index + 1}`];
 				// }}
 			/>
-		</div>
+		</ThemedContainer>
 	);
 };
 
@@ -345,7 +348,8 @@ const InteractiveTemplate = (args) => {
 		]);
 	};
 	return (
-		<div
+		<ThemedContainer
+			{...args}
 			style={{
 				height: '100%',
 			}}>
@@ -357,7 +361,7 @@ const InteractiveTemplate = (args) => {
 					click: onBarClick,
 				}}
 			/>
-		</div>
+		</ThemedContainer>
 	);
 };
 
