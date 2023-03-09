@@ -10,23 +10,25 @@ div.root {
 	border-radius: 0.4rem 0.4rem;
 	border-width: 1px;
 	border-style: solid;
+	background: transparent;
+	[data-elem='base-cell'].toggle-button {
+		background: transparent;
+	}
+
 	&.theme-dark {
-		background: $white;
 		border-color: $grey;
 
 		[data-elem='base-cell'].toggle-button {
-			background: $white;
 			color: $grey4;
 
 			&.active {
-				background: $dark-grey;
+				background: $menu-black;
 				color: $white;
 			}
 		}
 	}
 
 	&.theme-light {
-		background: $white;
 		border-color: $grey1;
 
 		[data-elem='base-cell'].toggle-button {
@@ -36,7 +38,6 @@ div.root {
 			&.active {
 				background: $grey6;
 				color: $dark-grey;
-				border: 1px solid $grey4;
 			}
 		}
 	}
