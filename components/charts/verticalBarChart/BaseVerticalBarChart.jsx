@@ -107,7 +107,7 @@ const BaseVerticalBarChart = (props) => {
 				return seriesData?.chartData?.[obj1]?.[`x${index + 1}`];
 			});
 		})
-			? 0.2
+			? 0.03
 			: 0;
 		return seriesOption.map((objectData, index) => {
 			return {

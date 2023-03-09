@@ -106,8 +106,9 @@ const HeatMapChart = (props) => {
 				value: seriesData.chartData[ob].x1,
 			};
 		});
-		const row = Math.floor(Math.sqrt(newSeriesData.length));
-		const col = Math.ceil(Math.sqrt(newSeriesData.length));
+
+        const row = 7;
+        const col = 7;
 
 		const dataNew = [];
 
@@ -115,7 +116,7 @@ const HeatMapChart = (props) => {
 			for (let j = 0; j < col; j++, k++) {
 				dataNew.push({
 					name: newSeriesData?.[k]?.name ?? '',
-					value: [j, i, newSeriesData?.[k]?.value ?? '-'],
+					value: [j, i, newSeriesData?.[k]?.value ?? -1],
 				});
 			}
 		}
