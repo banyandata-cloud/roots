@@ -9,12 +9,25 @@ import {
 } from 'react';
 import { MarkerClusterer } from '@googlemaps/markerclusterer';
 import { useDeepCompareEffectForMaps } from './utils';
-import Skeleton from '../../skeleton/Skeleton';
+import { Skeleton } from '../../skeleton';
+import styles from './BaseMap.module.css';
+import { classes } from '../../../utils';
 
 const BaseMap = (props) => {
 	// eslint-disable-next-line object-curly-newline
-	const { loading, onClick, onIdle, children, style, mapId, clustered, fitBounds, ...options } =
-		props;
+	const {
+		loading,
+		onClick,
+		onIdle,
+		children,
+		style,
+		mapId,
+		clustered,
+		fitBounds,
+		theme,
+		fallback,
+		...options
+	} = props;
 
 	const ref = useRef(null);
 	const markersRef = useRef([]);
@@ -99,7 +112,7 @@ const BaseMap = (props) => {
 	}, [map, onClick, onIdle]);
 
 	return (
-		<>
+		<div className={classes(styles.root, loading ? styles.loading : '')}>
 			<div
 				ref={ref}
 				style={
@@ -110,7 +123,14 @@ const BaseMap = (props) => {
 						: style
 				}
 			/>
-			{loading && <Skeleton height='100%' />}
+			{loading && (
+				<Skeleton
+					theme={theme}
+					height='100%'
+					variant='rounded'
+					noAnimation={!loading && fallback}
+				/>
+			)}
 			{Children.toArray(children)
 				.filter((child) => {
 					return isValidElement(child);
@@ -133,7 +153,7 @@ const BaseMap = (props) => {
 					}
 					return null;
 				})}
-		</>
+		</div>
 	);
 };
 
@@ -146,6 +166,7 @@ BaseMap.defaultProps = {
 		lat: 0,
 		lng: 0,
 	},
+	theme: 'dark',
 };
 
 export default BaseMap;

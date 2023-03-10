@@ -1,4 +1,5 @@
 import React from 'react';
+import { ThemedContainer } from '../../helpers';
 import BasePieChart from './BasePieChart';
 
 export default {
@@ -61,12 +62,13 @@ const iconColor = (data) => {
 
 const Template = (args) => {
 	return (
-		<div
+		<ThemedContainer
+			{...args}
 			style={{
 				height: '100%',
 			}}>
 			<BasePieChart {...args} />
-		</div>
+		</ThemedContainer>
 	);
 };
 

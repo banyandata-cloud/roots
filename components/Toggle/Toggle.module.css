@@ -12,21 +12,22 @@ div.root {
   border-radius: 0.4rem 0.4rem;
   border-width: 1px;
   border-style: solid;
+  background: transparent;
+}
+div.root [data-elem=base-cell].toggle-button {
+  background: transparent;
 }
 div.root.theme-dark {
-  background: var(--white);
   border-color: var(--grey);
 }
 div.root.theme-dark [data-elem=base-cell].toggle-button {
-  background: var(--white);
   color: var(--grey4);
 }
 div.root.theme-dark [data-elem=base-cell].toggle-button.active {
-  background: var(--dark-grey);
+  background: var(--menu-black);
   color: var(--white);
 }
 div.root.theme-light {
-  background: var(--white);
   border-color: var(--grey1);
 }
 div.root.theme-light [data-elem=base-cell].toggle-button {
@@ -36,7 +37,6 @@ div.root.theme-light [data-elem=base-cell].toggle-button {
 div.root.theme-light [data-elem=base-cell].toggle-button.active {
   background: var(--grey6);
   color: var(--dark-grey);
-  border: 1px solid var(--grey4);
 }
 div.root [data-elem=base-cell].toggle-button {
   padding: 0.344rem 0.75rem;

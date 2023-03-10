@@ -7,10 +7,11 @@
   display: inline-block;
 }
 .root.light-theme {
-  background-image: linear-gradient(to right, var(--grey4) 0%, var(--grey6) 20%, var(--grey4) 40%, var(--grey4) 100%);
+  background-color: var(--skeleton);
 }
 .root.dark-theme {
-  background-image: linear-gradient(to right, var(--grey6) 0%, var(--grey8) 20%, var(--grey6) 40%, var(--grey6) 100%);
+  background-color: var(--grey2);
+  opacity: 0.2;
 }
 .root.animated {
   animation-duration: 1.25s;
@@ -18,18 +19,16 @@
   animation-iteration-count: infinite;
   animation-name: shimmer;
   animation-timing-function: linear;
-  animation-fill-mode: forwards;
-  animation-iteration-count: infinite;
-  animation-name: shimmer;
-  animation-timing-function: linear;
   -webkit-animation-fill-mode: forwards;
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-name: shimmer;
   -webkit-animation-timing-function: linear;
-  -webkit-animation-fill-mode: forwards;
-  -webkit-animation-iteration-count: infinite;
-  -webkit-animation-name: shimmer;
-  -webkit-animation-timing-function: linear;
+}
+.root.animated.light-theme {
+  background-image: linear-gradient(to right, var(--skeleton) 0%, var(--grey8) 20%, var(--skeleton) 40%, var(--skeleton) 100%);
+}
+.root.animated.dark-theme {
+  background-image: linear-gradient(to right, var(--grey2) 0%, var(--grey4) 20%, var(--grey2) 40%, var(--grey2) 100%);
 }
 .root.text {
   height: 1.5rem;
@@ -39,6 +38,9 @@
 }
 .root.rounded {
   border-radius: 0.25rem;
+}
+.root.ellipse {
+  border-radius: 1.5rem;
 }
 
 @keyframes shimmer {

@@ -69,10 +69,10 @@ const TableChip = (props) => {
 
 const TableChips = (props) => {
 	// eslint-disable-next-line object-curly-newline
-	const { showBack, onBack, onClear, chips, className, style, loading, onRemove } = props;
+	const { showBack, onBack, onClear, chips, className, style, loading, onRemove, theme } = props;
 
 	if (loading) {
-		return <Skeleton />;
+		return <Skeleton theme={theme} />;
 	}
 
 	const chipsDOM = chips
@@ -152,6 +152,7 @@ TableChips.propTypes = {
 	),
 	loading: PropTypes.bool,
 	onRemove: PropTypes.func,
+	theme: PropTypes.oneOf(['light', 'dark']),
 };
 
 TableChips.defaultProps = {
@@ -163,6 +164,7 @@ TableChips.defaultProps = {
 	chips: [],
 	loading: null,
 	onRemove: () => {},
+	theme: 'light',
 };
 
 export default TableChips;

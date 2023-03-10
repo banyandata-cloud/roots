@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { Button } from '../../buttons';
+import { ThemedContainer } from '../../helpers';
 import Text from '../../text/Text';
 import { InfoWindow } from '../InfoWindow';
 import { Marker } from '../Marker';
@@ -46,25 +47,32 @@ const coords = [
 
 const Template = (args) => {
 	return (
-		<Map {...args}>
-			{coords.map((position, index) => {
-				return (
-					<Marker
-						key={`${position.lat}-${position.lng}`}
-						position={position}
-						title={`Location ${index + 1}`}>
-						<InfoWindow
-							content={ReactDOMServer.renderToString(
-								<>
-									<Button title='hey' />
-									<Text component='p'>Location {index + 1}</Text>
-								</>
-							)}
-						/>
-					</Marker>
-				);
-			})}
-		</Map>
+		<ThemedContainer
+			{...args}
+			style={{
+				width: '100%',
+				height: '100%',
+			}}>
+			<Map {...args}>
+				{coords.map((position, index) => {
+					return (
+						<Marker
+							key={`${position.lat}-${position.lng}`}
+							position={position}
+							title={`Location ${index + 1}`}>
+							<InfoWindow
+								content={ReactDOMServer.renderToString(
+									<>
+										<Button title='hey' />
+										<Text component='p'>Location {index + 1}</Text>
+									</>
+								)}
+							/>
+						</Marker>
+					);
+				})}
+			</Map>
+		</ThemedContainer>
 	);
 };
 

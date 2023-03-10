@@ -50,10 +50,12 @@ const BaseHorizontalBarChart = (props) => {
 		seriesOption,
 		style,
 		className,
+		theme,
+		fallback,
 	} = props;
 
-	if (loading) {
-		return <Skeleton />;
+	if (loading || fallback) {
+		return <Skeleton theme={theme} fallback={!loading && fallback} />;
 	}
 
 	const seriesOptionObject = {
@@ -162,6 +164,7 @@ const BaseHorizontalBarChart = (props) => {
 
 BaseHorizontalBarChart.propTypes = {
 	loading: PropTypes.bool,
+	fallback: PropTypes.bool,
 	title: PropTypes.string,
 	gridContainLabel: PropTypes.bool,
 	gridOptions: PropTypes.object,
@@ -184,10 +187,12 @@ BaseHorizontalBarChart.propTypes = {
 	seriesOption: PropTypes.objectOf(PropTypes.shape),
 	style: PropTypes.object,
 	className: PropTypes.string,
+	theme: PropTypes.oneOf(['light', 'dark']),
 };
 
 BaseHorizontalBarChart.defaultProps = {
 	loading: false,
+	fallback: false,
 	title: '',
 	gridContainLabel: false,
 	gridOptions: {
@@ -223,6 +228,7 @@ BaseHorizontalBarChart.defaultProps = {
 		height: '100%',
 	},
 	className: '',
+	theme: 'dark',
 };
 
 export default BaseHorizontalBarChart;
