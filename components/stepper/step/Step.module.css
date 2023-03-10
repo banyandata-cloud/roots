@@ -1,0 +1,113 @@
+.root {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  position: relative;
+  z-index: 1;
+  gap: 0.5rem;
+  flex: 1;
+  cursor: default;
+}
+.root:last-child {
+  flex: 0 1 auto;
+}
+.root:last-child .title::after {
+  display: none;
+}
+.root .left {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: var(--white);
+  border: 0.063rem solid var(--grey2);
+  border-radius: 2rem;
+  font-size: 1rem;
+  color: var(--grey2);
+}
+.root .left .icon {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+.root .left .icon.error-icon {
+  fill: var(--error);
+}
+.root .left .icon.completion-icon {
+  fill: var(--highlight);
+}
+.root .left .icon.completion-icon.active {
+  fill: var(--white);
+}
+.root .left .progress {
+  position: absolute;
+  z-index: -1;
+  inset: -0.3rem;
+  border-radius: 2rem;
+}
+.root .left .progress::after {
+  position: absolute;
+  content: "";
+  inset: 0.15rem;
+  background: white;
+  border-radius: 2rem;
+}
+.root .right {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex: 1;
+}
+.root .right .title {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0.75rem;
+  width: 100%;
+  font-size: 1rem;
+  color: var(--grey2);
+}
+.root .right .title::after {
+  content: "";
+  flex: 1;
+  min-width: 1.5rem;
+  border-bottom: 0.063rem solid;
+  margin-top: 0.75rem;
+  border-bottom-color: var(--grey2);
+}
+.root .right .description {
+  font-size: 0.75rem;
+  color: var(--grey2);
+}
+.root.active .left {
+  background: var(--highlight);
+  color: var(--white);
+}
+.root.active .left, .root.completed .left {
+  border-color: var(--highlight);
+}
+.root.active .right .title, .root.completed .right .title {
+  color: var(--black);
+}
+.root.active .right .description, .root.completed .right .description {
+  color: var(--grey);
+}
+.root.completed .right .title::after {
+  border-bottom-color: var(--highlight);
+}
+.root.error .left {
+  background: var(--white);
+  border-color: var(--error);
+  color: var(--error);
+}
+.root.error .right .title {
+  color: var(--error);
+}
+.root.error .right .description {
+  color: rgba(var(--error), 0.6);
+}/*# sourceMappingURL=Step.module.css.map */
