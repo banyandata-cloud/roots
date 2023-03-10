@@ -19,10 +19,11 @@ const BaseTable = forwardRef(function BaseTable(props, ref) {
 		expandable,
 		onSort,
 		rowHeight,
+		theme,
 	} = props;
 
 	if (loading) {
-		return <Skeleton />;
+		return <Skeleton theme={theme} />;
 	}
 
 	const transformedHeaderData = headerData.map((header) => {
@@ -76,6 +77,7 @@ BaseTable.propTypes = {
 	expandable: PropTypes.func,
 	onSort: PropTypes.func,
 	rowHeight: PropTypes.oneOf(['md', 'lg']),
+	theme: PropTypes.oneOf(['light', 'dark']),
 };
 
 BaseTable.defaultProps = {
@@ -90,6 +92,7 @@ BaseTable.defaultProps = {
 	expandable: null,
 	onSort: () => {},
 	rowHeight: 'md',
+	theme: 'light',
 };
 
 export default BaseTable;

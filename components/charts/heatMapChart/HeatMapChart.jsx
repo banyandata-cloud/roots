@@ -55,10 +55,12 @@ const HeatMapChart = (props) => {
 		visualMap,
 		style,
 		className,
+		theme,
+		fallback,
 	} = props;
 
-	if (loading) {
-		return <Skeleton />;
+	if (loading || fallback) {
+		return <Skeleton theme={theme} fallback={!loading && fallback} />;
 	}
 
 	const seriesOptionObject = {
@@ -104,8 +106,9 @@ const HeatMapChart = (props) => {
 				value: seriesData.chartData[ob].x1,
 			};
 		});
-		const row = Math.floor(Math.sqrt(newSeriesData.length));
-		const col = Math.ceil(Math.sqrt(newSeriesData.length));
+
+        const row = 7;
+        const col = 7;
 
 		const dataNew = [];
 
@@ -113,7 +116,7 @@ const HeatMapChart = (props) => {
 			for (let j = 0; j < col; j++, k++) {
 				dataNew.push({
 					name: newSeriesData?.[k]?.name ?? '',
-					value: [j, i, newSeriesData?.[k]?.value ?? '-'],
+					value: [j, i, newSeriesData?.[k]?.value ?? -1],
 				});
 			}
 		}
@@ -205,6 +208,7 @@ const HeatMapChart = (props) => {
 
 HeatMapChart.propTypes = {
 	loading: PropTypes.bool,
+	fallback: PropTypes.bool,
 	title: PropTypes.string,
 	gridContainLabel: PropTypes.bool,
 	gridOptions: PropTypes.object,
@@ -225,10 +229,12 @@ HeatMapChart.propTypes = {
 	seriesOption: PropTypes.shape({}),
 	style: PropTypes.objectOf(PropTypes.shape),
 	className: PropTypes.string,
+	theme: PropTypes.oneOf(['light', 'dark']),
 };
 
 HeatMapChart.defaultProps = {
 	loading: false,
+	fallback: false,
 	title: '',
 	gridContainLabel: false,
 	gridOptions: {
@@ -263,6 +269,7 @@ HeatMapChart.defaultProps = {
 		height: '100%',
 	},
 	className: '',
+	theme: 'dark',
 };
 
 export default HeatMapChart;

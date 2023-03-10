@@ -52,10 +52,6 @@
   padding: 0.125rem 0.25rem;
   height: 1.75rem;
 }
-.root .header .header-options .toggle-body > [data-elem=base-cell] {
-  background-color: transparent;
-  color: var(--white);
-}
 .root .header .header-options .dropdown-header {
   height: 1.75rem;
 }
@@ -86,9 +82,7 @@
 }
 .root .children {
   flex: 1 1;
-}
-.root .children [data-elem=error-msg] {
-  color: var(--white);
+  position: relative;
 }
 
 .dropdown-popper {
