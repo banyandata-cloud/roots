@@ -20876,49 +20876,40 @@ They are, in order: __emphasis__, **strong**, ++monospace++, +++passthrough+++, 
   })(Prism);
 }
 
-var asm6502_1;
-var hasRequiredAsm6502;
-
-function requireAsm6502 () {
-	if (hasRequiredAsm6502) return asm6502_1;
-	hasRequiredAsm6502 = 1;
-
-	asm6502_1 = asm6502;
-	asm6502.displayName = 'asm6502';
-	asm6502.aliases = [];
-	function asm6502(Prism) {
-	  Prism.languages.asm6502 = {
-	    comment: /;.*/,
-	    directive: {
-	      pattern: /\.\w+(?= )/,
-	      alias: 'property'
-	    },
-	    string: /(["'`])(?:\\.|(?!\1)[^\\\r\n])*\1/,
-	    'op-code': {
-	      pattern:
-	        /\b(?:ADC|AND|ASL|BCC|BCS|BEQ|BIT|BMI|BNE|BPL|BRK|BVC|BVS|CLC|CLD|CLI|CLV|CMP|CPX|CPY|DEC|DEX|DEY|EOR|INC|INX|INY|JMP|JSR|LDA|LDX|LDY|LSR|NOP|ORA|PHA|PHP|PLA|PLP|ROL|ROR|RTI|RTS|SBC|SEC|SED|SEI|STA|STX|STY|TAX|TAY|TSX|TXA|TXS|TYA|adc|and|asl|bcc|bcs|beq|bit|bmi|bne|bpl|brk|bvc|bvs|clc|cld|cli|clv|cmp|cpx|cpy|dec|dex|dey|eor|inc|inx|iny|jmp|jsr|lda|ldx|ldy|lsr|nop|ora|pha|php|pla|plp|rol|ror|rti|rts|sbc|sec|sed|sei|sta|stx|sty|tax|tay|tsx|txa|txs|tya)\b/,
-	      alias: 'keyword'
-	    },
-	    'hex-number': {
-	      pattern: /#?\$[\da-f]{1,4}\b/i,
-	      alias: 'number'
-	    },
-	    'binary-number': {
-	      pattern: /#?%[01]+\b/,
-	      alias: 'number'
-	    },
-	    'decimal-number': {
-	      pattern: /#?\b\d+\b/,
-	      alias: 'number'
-	    },
-	    register: {
-	      pattern: /\b[xya]\b/i,
-	      alias: 'variable'
-	    },
-	    punctuation: /[(),:]/
-	  };
-	}
-	return asm6502_1;
+var asm6502_1 = asm6502;
+asm6502.displayName = 'asm6502';
+asm6502.aliases = [];
+function asm6502(Prism) {
+  Prism.languages.asm6502 = {
+    comment: /;.*/,
+    directive: {
+      pattern: /\.\w+(?= )/,
+      alias: 'property'
+    },
+    string: /(["'`])(?:\\.|(?!\1)[^\\\r\n])*\1/,
+    'op-code': {
+      pattern:
+        /\b(?:ADC|AND|ASL|BCC|BCS|BEQ|BIT|BMI|BNE|BPL|BRK|BVC|BVS|CLC|CLD|CLI|CLV|CMP|CPX|CPY|DEC|DEX|DEY|EOR|INC|INX|INY|JMP|JSR|LDA|LDX|LDY|LSR|NOP|ORA|PHA|PHP|PLA|PLP|ROL|ROR|RTI|RTS|SBC|SEC|SED|SEI|STA|STX|STY|TAX|TAY|TSX|TXA|TXS|TYA|adc|and|asl|bcc|bcs|beq|bit|bmi|bne|bpl|brk|bvc|bvs|clc|cld|cli|clv|cmp|cpx|cpy|dec|dex|dey|eor|inc|inx|iny|jmp|jsr|lda|ldx|ldy|lsr|nop|ora|pha|php|pla|plp|rol|ror|rti|rts|sbc|sec|sed|sei|sta|stx|sty|tax|tay|tsx|txa|txs|tya)\b/,
+      alias: 'keyword'
+    },
+    'hex-number': {
+      pattern: /#?\$[\da-f]{1,4}\b/i,
+      alias: 'number'
+    },
+    'binary-number': {
+      pattern: /#?%[01]+\b/,
+      alias: 'number'
+    },
+    'decimal-number': {
+      pattern: /#?\b\d+\b/,
+      alias: 'number'
+    },
+    register: {
+      pattern: /\b[xya]\b/i,
+      alias: 'variable'
+    },
+    punctuation: /[(),:]/
+  };
 }
 
 var asmatmel_1 = asmatmel;
@@ -22875,95 +22866,104 @@ function requireCobol () {
 	return cobol_1;
 }
 
-var coffeescript_1 = coffeescript;
-coffeescript.displayName = 'coffeescript';
-coffeescript.aliases = ['coffee'];
-function coffeescript(Prism) {
+var coffeescript_1;
+var hasRequiredCoffeescript;
+
+function requireCoffeescript () {
+	if (hasRequiredCoffeescript) return coffeescript_1;
+	hasRequiredCoffeescript = 1;
+
+	coffeescript_1 = coffeescript;
+	coffeescript.displayName = 'coffeescript';
+	coffeescript.aliases = ['coffee'];
+	function coffeescript(Prism) {
 (function (Prism) {
-    // Ignore comments starting with { to privilege string interpolation highlighting
-    var comment = /#(?!\{).+/;
-    var interpolation = {
-      pattern: /#\{[^}]+\}/,
-      alias: 'variable'
-    };
-    Prism.languages.coffeescript = Prism.languages.extend('javascript', {
-      comment: comment,
-      string: [
-        // Strings are multiline
-        {
-          pattern: /'(?:\\[\s\S]|[^\\'])*'/,
-          greedy: true
-        },
-        {
-          // Strings are multiline
-          pattern: /"(?:\\[\s\S]|[^\\"])*"/,
-          greedy: true,
-          inside: {
-            interpolation: interpolation
-          }
-        }
-      ],
-      keyword:
-        /\b(?:and|break|by|catch|class|continue|debugger|delete|do|each|else|extend|extends|false|finally|for|if|in|instanceof|is|isnt|let|loop|namespace|new|no|not|null|of|off|on|or|own|return|super|switch|then|this|throw|true|try|typeof|undefined|unless|until|when|while|window|with|yes|yield)\b/,
-      'class-member': {
-        pattern: /@(?!\d)\w+/,
-        alias: 'variable'
-      }
-    });
-    Prism.languages.insertBefore('coffeescript', 'comment', {
-      'multiline-comment': {
-        pattern: /###[\s\S]+?###/,
-        alias: 'comment'
-      },
-      // Block regexp can contain comments and interpolation
-      'block-regex': {
-        pattern: /\/{3}[\s\S]*?\/{3}/,
-        alias: 'regex',
-        inside: {
-          comment: comment,
-          interpolation: interpolation
-        }
-      }
-    });
-    Prism.languages.insertBefore('coffeescript', 'string', {
-      'inline-javascript': {
-        pattern: /`(?:\\[\s\S]|[^\\`])*`/,
-        inside: {
-          delimiter: {
-            pattern: /^`|`$/,
-            alias: 'punctuation'
-          },
-          script: {
-            pattern: /[\s\S]+/,
-            alias: 'language-javascript',
-            inside: Prism.languages.javascript
-          }
-        }
-      },
-      // Block strings
-      'multiline-string': [
-        {
-          pattern: /'''[\s\S]*?'''/,
-          greedy: true,
-          alias: 'string'
-        },
-        {
-          pattern: /"""[\s\S]*?"""/,
-          greedy: true,
-          alias: 'string',
-          inside: {
-            interpolation: interpolation
-          }
-        }
-      ]
-    });
-    Prism.languages.insertBefore('coffeescript', 'keyword', {
-      // Object property
-      property: /(?!\d)\w+(?=\s*:(?!:))/
-    });
-    delete Prism.languages.coffeescript['template-string'];
-    Prism.languages.coffee = Prism.languages.coffeescript;
-  })(Prism);
+	    // Ignore comments starting with { to privilege string interpolation highlighting
+	    var comment = /#(?!\{).+/;
+	    var interpolation = {
+	      pattern: /#\{[^}]+\}/,
+	      alias: 'variable'
+	    };
+	    Prism.languages.coffeescript = Prism.languages.extend('javascript', {
+	      comment: comment,
+	      string: [
+	        // Strings are multiline
+	        {
+	          pattern: /'(?:\\[\s\S]|[^\\'])*'/,
+	          greedy: true
+	        },
+	        {
+	          // Strings are multiline
+	          pattern: /"(?:\\[\s\S]|[^\\"])*"/,
+	          greedy: true,
+	          inside: {
+	            interpolation: interpolation
+	          }
+	        }
+	      ],
+	      keyword:
+	        /\b(?:and|break|by|catch|class|continue|debugger|delete|do|each|else|extend|extends|false|finally|for|if|in|instanceof|is|isnt|let|loop|namespace|new|no|not|null|of|off|on|or|own|return|super|switch|then|this|throw|true|try|typeof|undefined|unless|until|when|while|window|with|yes|yield)\b/,
+	      'class-member': {
+	        pattern: /@(?!\d)\w+/,
+	        alias: 'variable'
+	      }
+	    });
+	    Prism.languages.insertBefore('coffeescript', 'comment', {
+	      'multiline-comment': {
+	        pattern: /###[\s\S]+?###/,
+	        alias: 'comment'
+	      },
+	      // Block regexp can contain comments and interpolation
+	      'block-regex': {
+	        pattern: /\/{3}[\s\S]*?\/{3}/,
+	        alias: 'regex',
+	        inside: {
+	          comment: comment,
+	          interpolation: interpolation
+	        }
+	      }
+	    });
+	    Prism.languages.insertBefore('coffeescript', 'string', {
+	      'inline-javascript': {
+	        pattern: /`(?:\\[\s\S]|[^\\`])*`/,
+	        inside: {
+	          delimiter: {
+	            pattern: /^`|`$/,
+	            alias: 'punctuation'
+	          },
+	          script: {
+	            pattern: /[\s\S]+/,
+	            alias: 'language-javascript',
+	            inside: Prism.languages.javascript
+	          }
+	        }
+	      },
+	      // Block strings
+	      'multiline-string': [
+	        {
+	          pattern: /'''[\s\S]*?'''/,
+	          greedy: true,
+	          alias: 'string'
+	        },
+	        {
+	          pattern: /"""[\s\S]*?"""/,
+	          greedy: true,
+	          alias: 'string',
+	          inside: {
+	            interpolation: interpolation
+	          }
+	        }
+	      ]
+	    });
+	    Prism.languages.insertBefore('coffeescript', 'keyword', {
+	      // Object property
+	      property: /(?!\d)\w+(?=\s*:(?!:))/
+	    });
+	    delete Prism.languages.coffeescript['template-string'];
+	    Prism.languages.coffee = Prism.languages.coffeescript;
+	  })(Prism);
+	}
+	return coffeescript_1;
 }
 
 var concurnas_1;
@@ -42829,7 +42829,7 @@ refractor.register(aql_1);
 refractor.register(arduino_1);
 refractor.register(arff_1);
 refractor.register(asciidoc_1);
-refractor.register(requireAsm6502());
+refractor.register(asm6502_1);
 refractor.register(asmatmel_1);
 refractor.register(aspnet_1);
 refractor.register(autohotkey_1);
@@ -42855,7 +42855,7 @@ refractor.register(cil_1);
 refractor.register(clojure_1);
 refractor.register(cmake_1);
 refractor.register(requireCobol());
-refractor.register(coffeescript_1);
+refractor.register(requireCoffeescript());
 refractor.register(requireConcurnas());
 refractor.register(requireCoq());
 refractor.register(requireCpp());
@@ -46941,8 +46941,8 @@ var COLORS = Object.keys(modules_dd21d9e9).reduce(function (acc, curr) {
   return acc;
 }, {});
 
-var css$x = ".Step_module_root__07bf3bd8 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n  position: relative;\n  z-index: 1;\n  gap: 0.5rem;\n  flex: 1;\n  cursor: default;\n}\n.Step_module_root__07bf3bd8:last-child {\n  flex: 0 1 auto;\n}\n.Step_module_root__07bf3bd8:last-child .Step_module_title__07bf3bd8::after {\n  display: none;\n}\n.Step_module_root__07bf3bd8 .Step_module_left__07bf3bd8 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  position: relative;\n  width: 1.5rem;\n  height: 1.5rem;\n  background: var(--white);\n  border: 0.063rem solid var(--grey2);\n  border-radius: 2rem;\n  font-size: 1rem;\n  color: var(--grey2);\n}\n.Step_module_root__07bf3bd8 .Step_module_left__07bf3bd8 .Step_module_icon__07bf3bd8 {\n  width: 0.75rem;\n  height: 0.75rem;\n}\n.Step_module_root__07bf3bd8 .Step_module_left__07bf3bd8 .Step_module_icon__07bf3bd8.Step_module_errorIcon__07bf3bd8 {\n  fill: var(--error);\n}\n.Step_module_root__07bf3bd8 .Step_module_left__07bf3bd8 .Step_module_icon__07bf3bd8.Step_module_completionIcon__07bf3bd8 {\n  fill: var(--highlight);\n}\n.Step_module_root__07bf3bd8 .Step_module_left__07bf3bd8 .Step_module_icon__07bf3bd8.Step_module_completionIcon__07bf3bd8.Step_module_active__07bf3bd8 {\n  fill: var(--white);\n}\n.Step_module_root__07bf3bd8 .Step_module_left__07bf3bd8 .Step_module_progress__07bf3bd8 {\n  position: absolute;\n  z-index: -1;\n  inset: -0.3rem;\n  border-radius: 2rem;\n}\n.Step_module_root__07bf3bd8 .Step_module_left__07bf3bd8 .Step_module_progress__07bf3bd8::after {\n  position: absolute;\n  content: \"\";\n  inset: 0.15rem;\n  background: white;\n  border-radius: 2rem;\n}\n.Step_module_root__07bf3bd8 .Step_module_right__07bf3bd8 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  flex: 1;\n}\n.Step_module_root__07bf3bd8 .Step_module_right__07bf3bd8 .Step_module_title__07bf3bd8 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n  gap: 0.75rem;\n  width: 100%;\n  font-size: 1rem;\n  color: var(--grey2);\n}\n.Step_module_root__07bf3bd8 .Step_module_right__07bf3bd8 .Step_module_title__07bf3bd8::after {\n  content: \"\";\n  flex: 1;\n  min-width: 1.5rem;\n  border-bottom: 0.063rem solid;\n  margin-top: 0.75rem;\n  border-bottom-color: var(--grey2);\n}\n.Step_module_root__07bf3bd8 .Step_module_right__07bf3bd8 .Step_module_description__07bf3bd8 {\n  font-size: 0.75rem;\n  color: var(--grey2);\n}\n.Step_module_root__07bf3bd8.Step_module_active__07bf3bd8 .Step_module_left__07bf3bd8 {\n  background: var(--highlight);\n  color: var(--white);\n}\n.Step_module_root__07bf3bd8.Step_module_active__07bf3bd8 .Step_module_left__07bf3bd8, .Step_module_root__07bf3bd8.Step_module_completed__07bf3bd8 .Step_module_left__07bf3bd8 {\n  border-color: var(--highlight);\n}\n.Step_module_root__07bf3bd8.Step_module_active__07bf3bd8 .Step_module_right__07bf3bd8 .Step_module_title__07bf3bd8, .Step_module_root__07bf3bd8.Step_module_completed__07bf3bd8 .Step_module_right__07bf3bd8 .Step_module_title__07bf3bd8 {\n  color: var(--black);\n}\n.Step_module_root__07bf3bd8.Step_module_active__07bf3bd8 .Step_module_right__07bf3bd8 .Step_module_description__07bf3bd8, .Step_module_root__07bf3bd8.Step_module_completed__07bf3bd8 .Step_module_right__07bf3bd8 .Step_module_description__07bf3bd8 {\n  color: var(--grey);\n}\n.Step_module_root__07bf3bd8.Step_module_completed__07bf3bd8 .Step_module_right__07bf3bd8 .Step_module_title__07bf3bd8::after {\n  border-bottom-color: var(--highlight);\n}\n.Step_module_root__07bf3bd8.Step_module_error__07bf3bd8 .Step_module_left__07bf3bd8 {\n  background: var(--white);\n  border-color: var(--error);\n  color: var(--error);\n}\n.Step_module_root__07bf3bd8.Step_module_error__07bf3bd8 .Step_module_right__07bf3bd8 .Step_module_title__07bf3bd8 {\n  color: var(--error);\n}\n.Step_module_root__07bf3bd8.Step_module_error__07bf3bd8 .Step_module_right__07bf3bd8 .Step_module_description__07bf3bd8 {\n  color: rgba(var(--error), 0.6);\n}";
-var modules_abbc385a = {"root":"Step_module_root__07bf3bd8","title":"Step_module_title__07bf3bd8","left":"Step_module_left__07bf3bd8","icon":"Step_module_icon__07bf3bd8","error-icon":"Step_module_errorIcon__07bf3bd8","completion-icon":"Step_module_completionIcon__07bf3bd8","active":"Step_module_active__07bf3bd8","progress":"Step_module_progress__07bf3bd8","right":"Step_module_right__07bf3bd8","description":"Step_module_description__07bf3bd8","completed":"Step_module_completed__07bf3bd8","error":"Step_module_error__07bf3bd8"};
+var css$x = ".Step_module_root__94d74268 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n  position: relative;\n  z-index: 1;\n  gap: 0.5rem;\n  flex: 1;\n  cursor: default;\n}\n.Step_module_root__94d74268:last-child {\n  flex: 0 1 auto;\n}\n.Step_module_root__94d74268:last-child .Step_module_title__94d74268::after {\n  display: none;\n}\n.Step_module_root__94d74268 .Step_module_left__94d74268 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  position: relative;\n  width: 1.5rem;\n  height: 1.5rem;\n  background: var(--white);\n  border: 0.063rem solid var(--grey2);\n  border-radius: 2rem;\n  font-size: 1rem;\n  color: var(--grey2);\n}\n.Step_module_root__94d74268 .Step_module_left__94d74268 .Step_module_icon__94d74268 {\n  width: 0.75rem;\n  height: 0.75rem;\n}\n.Step_module_root__94d74268 .Step_module_left__94d74268 .Step_module_icon__94d74268.Step_module_errorIcon__94d74268 {\n  fill: var(--error);\n}\n.Step_module_root__94d74268 .Step_module_left__94d74268 .Step_module_icon__94d74268.Step_module_completionIcon__94d74268 {\n  fill: var(--highlight);\n}\n.Step_module_root__94d74268 .Step_module_left__94d74268 .Step_module_icon__94d74268.Step_module_completionIcon__94d74268.Step_module_active__94d74268 {\n  fill: var(--white);\n}\n.Step_module_root__94d74268 .Step_module_left__94d74268 .Step_module_progress__94d74268 {\n  position: absolute;\n  z-index: -1;\n  inset: -0.3rem;\n  border-radius: 2rem;\n}\n.Step_module_root__94d74268 .Step_module_left__94d74268 .Step_module_progress__94d74268::after {\n  position: absolute;\n  content: \"\";\n  inset: 0.15rem;\n  background: white;\n  border-radius: 2rem;\n}\n.Step_module_root__94d74268 .Step_module_right__94d74268 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  flex: 1;\n}\n.Step_module_root__94d74268 .Step_module_right__94d74268 .Step_module_title__94d74268 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n  gap: 0.75rem;\n  width: 100%;\n  font-size: 1rem;\n  color: var(--grey2);\n}\n.Step_module_root__94d74268 .Step_module_right__94d74268 .Step_module_title__94d74268::after {\n  content: \"\";\n  flex: 1;\n  min-width: 1.5rem;\n  border-bottom: 0.063rem solid;\n  margin-top: 0.75rem;\n  border-bottom-color: var(--grey2);\n}\n.Step_module_root__94d74268 .Step_module_right__94d74268 .Step_module_title__94d74268.Step_module_noTail__94d74268::after {\n  display: none;\n}\n.Step_module_root__94d74268 .Step_module_right__94d74268 .Step_module_description__94d74268 {\n  font-size: 0.75rem;\n  color: var(--grey2);\n}\n.Step_module_root__94d74268.Step_module_active__94d74268 .Step_module_left__94d74268 {\n  background: var(--highlight);\n  color: var(--white);\n}\n.Step_module_root__94d74268.Step_module_active__94d74268 .Step_module_left__94d74268, .Step_module_root__94d74268.Step_module_completed__94d74268 .Step_module_left__94d74268 {\n  border-color: var(--highlight);\n}\n.Step_module_root__94d74268.Step_module_active__94d74268 .Step_module_right__94d74268 .Step_module_title__94d74268, .Step_module_root__94d74268.Step_module_completed__94d74268 .Step_module_right__94d74268 .Step_module_title__94d74268 {\n  color: var(--black);\n}\n.Step_module_root__94d74268.Step_module_active__94d74268 .Step_module_right__94d74268 .Step_module_description__94d74268, .Step_module_root__94d74268.Step_module_completed__94d74268 .Step_module_right__94d74268 .Step_module_description__94d74268 {\n  color: var(--grey);\n}\n.Step_module_root__94d74268.Step_module_completed__94d74268 .Step_module_right__94d74268 .Step_module_title__94d74268::after {\n  border-bottom-color: var(--highlight);\n}\n.Step_module_root__94d74268.Step_module_error__94d74268 .Step_module_left__94d74268 {\n  background: var(--white);\n  border-color: var(--error);\n  color: var(--error);\n}\n.Step_module_root__94d74268.Step_module_error__94d74268 .Step_module_right__94d74268 .Step_module_title__94d74268 {\n  color: var(--error);\n}\n.Step_module_root__94d74268.Step_module_error__94d74268 .Step_module_right__94d74268 .Step_module_description__94d74268 {\n  color: rgba(var(--error), 0.6);\n}";
+var modules_abbc385a = {"root":"Step_module_root__94d74268","title":"Step_module_title__94d74268","left":"Step_module_left__94d74268","icon":"Step_module_icon__94d74268","error-icon":"Step_module_errorIcon__94d74268","completion-icon":"Step_module_completionIcon__94d74268","active":"Step_module_active__94d74268","progress":"Step_module_progress__94d74268","right":"Step_module_right__94d74268","no-tail":"Step_module_noTail__94d74268","description":"Step_module_description__94d74268","completed":"Step_module_completed__94d74268","error":"Step_module_error__94d74268"};
 n(css$x,{});
 
 var Step = function Step(props) {
@@ -46951,7 +46951,8 @@ var Step = function Step(props) {
     active = props.active,
     completion = props.completion,
     error = props.error,
-    index = props.index;
+    index = props.index,
+    noTail = props.noTail;
   var display = /*#__PURE__*/jsxRuntime.jsx("span", {
     className: modules_abbc385a.text,
     children: index + 1
@@ -46978,7 +46979,7 @@ var Step = function Step(props) {
     }), /*#__PURE__*/jsxRuntime.jsxs("div", {
       className: modules_abbc385a.right,
       children: [/*#__PURE__*/jsxRuntime.jsx("span", {
-        className: modules_abbc385a.title,
+        className: classes(modules_abbc385a.title, noTail ? modules_abbc385a['no-tail'] : ''),
         children: title
       }), description != null && /*#__PURE__*/jsxRuntime.jsx("span", {
         className: modules_abbc385a.description,
@@ -46993,14 +46994,16 @@ Step.propTypes = {
   active: propTypes$1.exports.bool,
   completion: propTypes$1.exports.number,
   error: propTypes$1.exports.bool,
-  index: propTypes$1.exports.number
+  index: propTypes$1.exports.number,
+  noTail: propTypes$1.exports.bool
 };
 Step.defaultProps = {
   description: '',
   active: false,
   completion: 0,
   error: false,
-  index: 0
+  index: 0,
+  noTail: false
 };
 
 var Stepper = function Stepper(props) {
@@ -108684,7 +108687,7 @@ var BaseVerticalBarChart = function BaseVerticalBarChart(props) {
         var _seriesData$chartData9, _seriesData$chartData10;
         return seriesData === null || seriesData === void 0 ? void 0 : (_seriesData$chartData9 = seriesData.chartData) === null || _seriesData$chartData9 === void 0 ? void 0 : (_seriesData$chartData10 = _seriesData$chartData9[obj1]) === null || _seriesData$chartData10 === void 0 ? void 0 : _seriesData$chartData10["x".concat(index + 1)];
       });
-    }) ? 0.03 : 0;
+    }) ? 0.004 : 0;
     return seriesOption.map(function (objectData, index) {
       var _seriesOptionObject$l, _objectData$label, _seriesData$chartData11;
       return _objectSpread2(_objectSpread2(_objectSpread2({}, seriesOptionObject), objectData), {}, {
@@ -109407,6 +109410,7 @@ var HeatMapChart = function HeatMapChart(props) {
     seriesName = props.seriesName,
     seriesOption = props.seriesOption,
     visualMap = props.visualMap,
+    defaultColor = props.defaultColor,
     style = props.style,
     className = props.className,
     theme = props.theme,
@@ -109462,13 +109466,20 @@ var HeatMapChart = function HeatMapChart(props) {
     var row = 7;
     var col = 7;
     var dataNew = [];
-    for (var i = 0, k = 0; i < row; i++) {
+    for (var i = row, k = 0; i > 0; i--) {
       for (var j = 0; j < col; j++, k++) {
-        var _newSeriesData$k$name, _newSeriesData$k, _newSeriesData$k$valu, _newSeriesData$k2;
-        dataNew.push({
+        var _newSeriesData$k$name, _newSeriesData$k, _newSeriesData$k$valu, _newSeriesData$k2, _newSeriesData$k$valu2, _newSeriesData$k3;
+        dataNew.push(_objectSpread2({
           name: (_newSeriesData$k$name = newSeriesData === null || newSeriesData === void 0 ? void 0 : (_newSeriesData$k = newSeriesData[k]) === null || _newSeriesData$k === void 0 ? void 0 : _newSeriesData$k.name) !== null && _newSeriesData$k$name !== void 0 ? _newSeriesData$k$name : '',
           value: [j, i, (_newSeriesData$k$valu = newSeriesData === null || newSeriesData === void 0 ? void 0 : (_newSeriesData$k2 = newSeriesData[k]) === null || _newSeriesData$k2 === void 0 ? void 0 : _newSeriesData$k2.value) !== null && _newSeriesData$k$valu !== void 0 ? _newSeriesData$k$valu : -1]
-        });
+        }, ((_newSeriesData$k$valu2 = newSeriesData === null || newSeriesData === void 0 ? void 0 : (_newSeriesData$k3 = newSeriesData[k]) === null || _newSeriesData$k3 === void 0 ? void 0 : _newSeriesData$k3.value) !== null && _newSeriesData$k$valu2 !== void 0 ? _newSeriesData$k$valu2 : -1) === -1 ? {
+          itemStyle: {
+            color: defaultColor
+          },
+          emphasis: {
+            disabled: true
+          }
+        } : {}));
       }
     }
     return [_objectSpread2(_objectSpread2(_objectSpread2({}, seriesOptionObject), seriesOption), {}, {
@@ -109557,6 +109568,7 @@ HeatMapChart.propTypes = {
   visualMap: propTypes$1.exports.shape({}),
   seriesOption: propTypes$1.exports.shape({}),
   style: propTypes$1.exports.objectOf(propTypes$1.exports.shape),
+  defaultColor: propTypes$1.exports.string,
   className: propTypes$1.exports.string,
   theme: propTypes$1.exports.oneOf(['light', 'dark'])
 };
@@ -109592,6 +109604,7 @@ HeatMapChart.defaultProps = {
       show: true
     }
   },
+  defaultColor: 'grey',
   style: {
     width: '100%',
     height: '100%'
