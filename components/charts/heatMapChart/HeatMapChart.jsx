@@ -53,6 +53,7 @@ const HeatMapChart = (props) => {
 		seriesName,
 		seriesOption,
 		visualMap,
+		defaultColor,
 		style,
 		className,
 		theme,
@@ -107,16 +108,26 @@ const HeatMapChart = (props) => {
 			};
 		});
 
-        const row = 7;
-        const col = 7;
+		const row = 7;
+		const col = 7;
 
 		const dataNew = [];
 
-		for (let i = 0, k = 0; i < row; i++) {
+		for (let i = row, k = 0; i > 0; i--) {
 			for (let j = 0; j < col; j++, k++) {
 				dataNew.push({
 					name: newSeriesData?.[k]?.name ?? '',
 					value: [j, i, newSeriesData?.[k]?.value ?? -1],
+					...((newSeriesData?.[k]?.value ?? -1) === -1
+						? {
+								itemStyle: {
+									color: defaultColor,
+								},
+								emphasis: {
+									disabled: true,
+								},
+						  }
+						: {}),
 				});
 			}
 		}
@@ -228,6 +239,7 @@ HeatMapChart.propTypes = {
 	visualMap: PropTypes.shape({}),
 	seriesOption: PropTypes.shape({}),
 	style: PropTypes.objectOf(PropTypes.shape),
+	defaultColor: PropTypes.string,
 	className: PropTypes.string,
 	theme: PropTypes.oneOf(['light', 'dark']),
 };
@@ -264,6 +276,7 @@ HeatMapChart.defaultProps = {
 			show: true,
 		},
 	},
+	defaultColor: 'grey',
 	style: {
 		width: '100%',
 		height: '100%',
