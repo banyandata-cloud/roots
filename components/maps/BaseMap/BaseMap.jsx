@@ -40,6 +40,8 @@ const BaseMap = (props) => {
 			setMap(
 				new window.google.maps.Map(ref.current, {
 					mapId,
+					mapTypeControl: false,
+					streetViewControl: false,
 				})
 			);
 		}
