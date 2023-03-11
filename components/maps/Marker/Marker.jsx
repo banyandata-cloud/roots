@@ -57,7 +57,7 @@ const Marker = forwardRef(function Marker(
 	useEffect(() => {
 		if (activeInfoWindow == null || activeInfoWindow !== index) {
 			const infoWindow = infoWindowRef?.current;
-			infoWindow.close();
+			infoWindow?.close();
 		}
 	}, [activeInfoWindow]);
 

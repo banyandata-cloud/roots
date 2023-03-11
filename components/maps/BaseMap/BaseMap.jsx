@@ -32,6 +32,7 @@ const BaseMap = (props) => {
 	const ref = useRef(null);
 	const markersRef = useRef([]);
 	const [map, setMap] = useState();
+	const [markerClusterer, setMarkerClusterer] = useState(null);
 	const [activeInfoWindow, setActiveInfoWindow] = useState(null);
 
 	useEffect(() => {
@@ -46,15 +47,21 @@ const BaseMap = (props) => {
 
 	useEffect(() => {
 		if (clustered && map && Children.count(children) > 0 && markersRef?.current?.length > 0) {
+			if (markerClusterer) {
+				markerClusterer.clearMarkers();
+				setMarkerClusterer(null);
+			}
 			const markers = markersRef?.current?.map((marker) => {
 				return marker.current;
 			});
 
 			// eslint-disable-next-line no-new
-			new MarkerClusterer({
-				map,
-				markers,
-			});
+			setMarkerClusterer(
+				new MarkerClusterer({
+					map,
+					markers,
+				})
+			);
 		}
 	}, [clustered, children, map]);
 
