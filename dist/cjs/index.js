@@ -112188,12 +112188,18 @@ var BaseMap = function BaseMap(props) {
     setMap = _useState2[1];
   var _useState3 = React.useState(null),
     _useState4 = _slicedToArray(_useState3, 2),
-    activeInfoWindow = _useState4[0],
-    setActiveInfoWindow = _useState4[1];
+    markerClusterer = _useState4[0],
+    setMarkerClusterer = _useState4[1];
+  var _useState5 = React.useState(null),
+    _useState6 = _slicedToArray(_useState5, 2),
+    activeInfoWindow = _useState6[0],
+    setActiveInfoWindow = _useState6[1];
   React.useEffect(function () {
     if (ref.current && !map) {
       setMap(new window.google.maps.Map(ref.current, {
-        mapId: mapId
+        mapId: mapId,
+        mapTypeControl: false,
+        streetViewControl: false
       }));
     }
   }, [map]);
@@ -112201,15 +112207,19 @@ var BaseMap = function BaseMap(props) {
     var _markersRef$current;
     if (clustered && map && React.Children.count(children) > 0 && (markersRef === null || markersRef === void 0 ? void 0 : (_markersRef$current = markersRef.current) === null || _markersRef$current === void 0 ? void 0 : _markersRef$current.length) > 0) {
       var _markersRef$current2;
+      if (markerClusterer) {
+        markerClusterer.clearMarkers();
+        setMarkerClusterer(null);
+      }
       var markers = markersRef === null || markersRef === void 0 ? void 0 : (_markersRef$current2 = markersRef.current) === null || _markersRef$current2 === void 0 ? void 0 : _markersRef$current2.map(function (marker) {
         return marker.current;
       });
 
       // eslint-disable-next-line no-new
-      new MarkerClusterer({
+      setMarkerClusterer(new MarkerClusterer({
         map: map,
         markers: markers
-      });
+      }));
     }
   }, [clustered, children, map]);
   React.useEffect(function () {
@@ -112386,7 +112396,7 @@ var Marker = /*#__PURE__*/React.forwardRef(function Marker(_ref, ref) {
   React.useEffect(function () {
     if (activeInfoWindow == null || activeInfoWindow !== index) {
       var infoWindow = infoWindowRef === null || infoWindowRef === void 0 ? void 0 : infoWindowRef.current;
-      infoWindow.close();
+      infoWindow === null || infoWindow === void 0 ? void 0 : infoWindow.close();
     }
   }, [activeInfoWindow]);
   if (React.Children.count(children) === 1) {
