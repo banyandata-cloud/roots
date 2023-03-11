@@ -5,7 +5,7 @@ import { CrossIcon, TickIcon } from '../../icons';
 import styles from './Step.module.css';
 
 const Step = (props) => {
-	const { title, description, active, completion, error, index } = props;
+	const { title, description, active, completion, error, index, noTail } = props;
 
 	let display = <span className={styles.text}>{index + 1}</span>;
 
@@ -45,7 +45,9 @@ const Step = (props) => {
 				)}
 			</div>
 			<div className={styles.right}>
-				<span className={styles.title}>{title}</span>
+				<span className={classes(styles.title, noTail ? styles['no-tail'] : '')}>
+					{title}
+				</span>
 				{description != null && <span className={styles.description}>{description}</span>}
 			</div>
 		</div>
@@ -59,6 +61,7 @@ Step.propTypes = {
 	completion: PropTypes.number,
 	error: PropTypes.bool,
 	index: PropTypes.number,
+	noTail: PropTypes.bool,
 };
 
 Step.defaultProps = {
@@ -67,6 +70,7 @@ Step.defaultProps = {
 	completion: 0,
 	error: false,
 	index: 0,
+	noTail: false,
 };
 
 export default Step;

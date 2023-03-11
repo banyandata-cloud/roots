@@ -80,6 +80,12 @@
 				margin-top: 0.75rem;
 				border-bottom-color: $grey2;
 			}
+
+			&.no-tail {
+				&::after {
+					display: none;
+				}
+			}
 		}
 
 		.description {

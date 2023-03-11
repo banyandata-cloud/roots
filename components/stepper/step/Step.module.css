@@ -80,6 +80,9 @@
   margin-top: 0.75rem;
   border-bottom-color: var(--grey2);
 }
+.root .right .title.no-tail::after {
+  display: none;
+}
 .root .right .description {
   font-size: 0.75rem;
   color: var(--grey2);
