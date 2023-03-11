@@ -105,7 +105,7 @@ const HeatMapChart = (props) => {
 
 		const dataNew = [];
 
-		for (let i = 0, k = 0; i < row; i++) {
+		for (let i = row, k = 0; i > 0; i--) {
 			for (let j = 0; j < col; j++, k++) {
 				dataNew.push({
 					name: newSeriesData?.[k]?.name ?? '',
