@@ -68,7 +68,7 @@ const BaseMap = (props) => {
 	}, [clustered, children, map]);
 
 	useEffect(() => {
-		if (map && Children.count(children) > 0) {
+		if (fitBounds && map && Children.count(children) > 0) {
 			const bounds = new google.maps.LatLngBounds();
 
 			Children.forEach(children, (child) => {
