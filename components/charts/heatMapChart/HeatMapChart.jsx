@@ -108,8 +108,14 @@ const HeatMapChart = (props) => {
 			};
 		});
 
-		const row = 7;
-		const col = 7;
+		const row =
+			Math.floor(Math.sqrt(newSeriesData.length)) > 7
+				? Math.floor(Math.sqrt(newSeriesData.length))
+				: 7;
+		const col =
+			Math.ceil(Math.sqrt(newSeriesData.length)) > 7
+				? Math.ceil(Math.sqrt(newSeriesData.length))
+				: 7;
 
 		const dataNew = [];
 
