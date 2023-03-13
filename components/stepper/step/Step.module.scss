@@ -1,0 +1,145 @@
+@import '../../../styles';
+
+.root {
+	@include flex(row, flex-start, flex-start);
+	position: relative;
+	z-index: 1;
+	gap: 0.5rem;
+	flex: 1;
+
+	cursor: default;
+
+	&:last-child {
+		flex: 0 1 auto;
+
+		.title::after {
+			display: none;
+		}
+	}
+
+	.left {
+		@include flex;
+		position: relative;
+		width: 1.5rem;
+		height: 1.5rem;
+		background: $white;
+		border: 0.063rem solid $grey2;
+		border-radius: 2rem;
+		font-size: 1rem;
+		color: $grey2;
+
+		.icon {
+			width: 0.75rem;
+			height: 0.75rem;
+			&.error-icon {
+				fill: $error;
+			}
+
+			&.completion-icon {
+				fill: $highlight;
+				&.active {
+					fill: $white;
+				}
+			}
+		}
+
+		.progress {
+			position: absolute;
+			z-index: -1;
+			inset: -0.3rem;
+			border-radius: 2rem;
+
+			&::after {
+				position: absolute;
+				content: '';
+				inset: 0.15rem;
+				background: white;
+				border-radius: 2rem;
+			}
+		}
+	}
+
+	.right {
+		@include flex(column, flex-start, flex-start);
+
+		flex: 1;
+
+		.title {
+			@include flex(row, flex-start, flex-start);
+			gap: 0.75rem;
+			width: 100%;
+			font-size: 1rem;
+			color: $grey2;
+			// height: 1.5rem;
+
+			&::after {
+				content: '';
+				flex: 1;
+				min-width: 1.5rem;
+				border-bottom: 0.063rem solid;
+				margin-top: 0.75rem;
+				border-bottom-color: $grey2;
+			}
+
+			&.no-tail {
+				&::after {
+					display: none;
+				}
+			}
+		}
+
+		.description {
+			font-size: 0.75rem;
+			color: $grey2;
+		}
+	}
+
+	&.active {
+		.left {
+			background: $highlight;
+			color: $white;
+		}
+	}
+
+	&.active,
+	&.completed {
+		.left {
+			border-color: $highlight;
+		}
+
+		.right {
+			.title {
+				color: $black;
+			}
+
+			.description {
+				color: $grey;
+			}
+		}
+	}
+
+	&.completed {
+		.right {
+			.title::after {
+				border-bottom-color: $highlight;
+			}
+		}
+	}
+
+	&.error {
+		.left {
+			background: $white;
+			border-color: $error;
+			color: $error;
+		}
+
+		.right {
+			.title {
+				color: $error;
+			}
+			.description {
+				color: rgba($error, 0.6);
+			}
+		}
+	}
+}
