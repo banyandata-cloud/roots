@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ThemedContainer from '../helpers/themedContainer/ThemedContainer';
+import { PlusIcon } from '../icons';
 import Accordion from './Accordion';
 
 export default {
@@ -43,6 +44,13 @@ Default.parameters = {
 		type: 'figma',
 		url: 'https://www.figma.com/file/e9opoAtQHBo4vFd6u0Co98/Component-Library?node-id=1%3A6',
 	},
+};
+
+export const CustomIcon = Default.bind({});
+
+CustomIcon.args = {
+	...Default.args,
+	icon: PlusIcon,
 };
 
 export const Controlled = () => {
