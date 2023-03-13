@@ -18,6 +18,7 @@ const Accordion = (props) => {
 		onClick,
 		className,
 		onExpand,
+		icon: CustomIcon,
 	} = props;
 
 	// uncontrolled
@@ -26,6 +27,12 @@ const Accordion = (props) => {
 	const { current: isControlled } = useRef(open !== undefined);
 
 	const isOpen = isControlled ? open : uncontrolledOpen;
+
+	let Icon = CaretIcon;
+
+	if (CustomIcon) {
+		Icon = CustomIcon;
+	}
 
 	return (
 		<div
@@ -49,9 +56,9 @@ const Accordion = (props) => {
 						}
 					},
 				}}
-				component1={iconPlacement === 'left' && <CaretIcon className={styles.icon} />}
+				component1={iconPlacement === 'left' && <Icon className={styles.icon} />}
 				component2={<span className={styles.title}>{title}</span>}
-				component3={iconPlacement === 'right' && <CaretIcon className={styles.icon} />}
+				component3={iconPlacement === 'right' && <Icon className={styles.icon} />}
 			/>
 			<div data-elem='body' className={styles.body}>
 				{description && <p>{description}</p>}

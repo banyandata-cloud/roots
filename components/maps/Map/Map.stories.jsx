@@ -171,6 +171,16 @@ const COORDS = {
 			lng: 78,
 		},
 	],
+	3: [
+		{
+			lat: 28,
+			lng: 120,
+		},
+		{
+			lat: 22,
+			lng: 125,
+		},
+	],
 };
 
 const DynamicTemplate = (args) => {
@@ -191,14 +201,14 @@ const DynamicTemplate = (args) => {
 					{
 						value: '1',
 						title: 'First',
-						rightComponent: null,
-						leftComponent: null,
 					},
 					{
 						value: '2',
 						title: 'Second',
-						rightComponent: null,
-						leftComponent: null,
+					},
+					{
+						value: '3',
+						title: 'Third',
 					},
 				]}
 				value={selectedToggle}
@@ -226,6 +236,6 @@ DynamicCoords.args = {
 	...Default.args,
 	options: {
 		...Default.args.options,
-		clustered: true,
+		// clustered: true,
 	},
 };
