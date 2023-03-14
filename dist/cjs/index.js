@@ -6462,8 +6462,8 @@ var Databases = {
   MySql: MySql
 };
 
-var css$$ = ".Accordion_module_root__a615f3fc {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  width: 100%;\n}\n.Accordion_module_root__a615f3fc > .Accordion_module_header__a615f3fc[data-elem=base-cell] {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.5rem;\n  padding: 0.5rem 1rem;\n  cursor: pointer;\n}\n.Accordion_module_root__a615f3fc > .Accordion_module_header__a615f3fc[data-elem=base-cell] > [data-elem=component1] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.Accordion_module_root__a615f3fc > .Accordion_module_header__a615f3fc[data-elem=base-cell] > [data-elem=component1] .Accordion_module_icon__a615f3fc {\n  transform: rotate(-90deg);\n  width: 1rem;\n  height: 1rem;\n}\n.Accordion_module_root__a615f3fc > .Accordion_module_header__a615f3fc[data-elem=base-cell] .Accordion_module_title__a615f3fc {\n  flex: 1 1 auto;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n          user-select: none;\n}\n.Accordion_module_root__a615f3fc > .Accordion_module_header__a615f3fc[data-elem=base-cell]:hover {\n  background: var(--background);\n}\n.Accordion_module_root__a615f3fc > .Accordion_module_header__a615f3fc[data-elem=base-cell]:hover .Accordion_module_icon__a615f3fc,\n.Accordion_module_root__a615f3fc > .Accordion_module_header__a615f3fc[data-elem=base-cell]:hover .Accordion_module_title__a615f3fc {\n  color: var(--highlight);\n  fill: var(--highlight);\n}\n.Accordion_module_root__a615f3fc > .Accordion_module_body__a615f3fc {\n  display: none;\n  padding: 0.5rem 2.5rem;\n}\n.Accordion_module_root__a615f3fc.Accordion_module_open__a615f3fc > .Accordion_module_header__a615f3fc[data-elem=base-cell] [data-elem=component1] .Accordion_module_icon__a615f3fc {\n  transform: none;\n}\n.Accordion_module_root__a615f3fc.Accordion_module_open__a615f3fc > .Accordion_module_body__a615f3fc {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n}\n.Accordion_module_root__a615f3fc.Accordion_module_open__a615f3fc > .Accordion_module_body__a615f3fc > button[data-elem=base-cell] {\n  width: -moz-fit-content;\n  width: fit-content;\n  align-self: flex-end;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-end;\n  align-items: center;\n}\n.Accordion_module_root__a615f3fc.Accordion_module_open__a615f3fc > .Accordion_module_body__a615f3fc > button[data-elem=base-cell] .Accordion_module_expand__a615f3fc {\n  height: 1.5rem;\n  width: 1.5rem;\n}";
-var modules_8207625f = {"root":"Accordion_module_root__a615f3fc","header":"Accordion_module_header__a615f3fc","icon":"Accordion_module_icon__a615f3fc","title":"Accordion_module_title__a615f3fc","body":"Accordion_module_body__a615f3fc","open":"Accordion_module_open__a615f3fc","expand":"Accordion_module_expand__a615f3fc"};
+var css$$ = ".Accordion_module_root__4d824a08 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  width: 100%;\n}\n.Accordion_module_root__4d824a08 > .Accordion_module_header__4d824a08[data-elem=base-cell] {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.5rem;\n  padding: 0.5rem 1rem;\n  cursor: pointer;\n}\n.Accordion_module_root__4d824a08 > .Accordion_module_header__4d824a08[data-elem=base-cell] > [data-elem=component1] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.Accordion_module_root__4d824a08 > .Accordion_module_header__4d824a08[data-elem=base-cell] > [data-elem=component1] .Accordion_module_icon__4d824a08 {\n  transform: rotate(-90deg);\n  width: 1rem;\n  height: 1rem;\n  fill: var(--dark-grey);\n}\n.Accordion_module_root__4d824a08 > .Accordion_module_header__4d824a08[data-elem=base-cell] .Accordion_module_title__4d824a08 {\n  flex: 1 1 auto;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n          user-select: none;\n}\n.Accordion_module_root__4d824a08 > .Accordion_module_header__4d824a08[data-elem=base-cell]:hover {\n  background: var(--background);\n}\n.Accordion_module_root__4d824a08 > .Accordion_module_header__4d824a08[data-elem=base-cell]:hover .Accordion_module_icon__4d824a08,\n.Accordion_module_root__4d824a08 > .Accordion_module_header__4d824a08[data-elem=base-cell]:hover .Accordion_module_title__4d824a08 {\n  color: var(--highlight);\n  fill: var(--highlight);\n}\n.Accordion_module_root__4d824a08 > .Accordion_module_body__4d824a08 {\n  display: none;\n  padding: 0.5rem 2.5rem;\n}\n.Accordion_module_root__4d824a08.Accordion_module_open__4d824a08 > .Accordion_module_header__4d824a08[data-elem=base-cell] [data-elem=component1] .Accordion_module_icon__4d824a08 {\n  transform: none;\n}\n.Accordion_module_root__4d824a08.Accordion_module_open__4d824a08 > .Accordion_module_body__4d824a08 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n}\n.Accordion_module_root__4d824a08.Accordion_module_open__4d824a08 > .Accordion_module_body__4d824a08 > button[data-elem=base-cell] {\n  width: -moz-fit-content;\n  width: fit-content;\n  align-self: flex-end;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-end;\n  align-items: center;\n}\n.Accordion_module_root__4d824a08.Accordion_module_open__4d824a08 > .Accordion_module_body__4d824a08 > button[data-elem=base-cell] .Accordion_module_expand__4d824a08 {\n  height: 1.5rem;\n  width: 1.5rem;\n}";
+var modules_8207625f = {"root":"Accordion_module_root__4d824a08","header":"Accordion_module_header__4d824a08","icon":"Accordion_module_icon__4d824a08","title":"Accordion_module_title__4d824a08","body":"Accordion_module_body__4d824a08","open":"Accordion_module_open__4d824a08","expand":"Accordion_module_expand__4d824a08"};
 n(css$$,{});
 
 var Accordion = function Accordion(props) {
@@ -6476,7 +6476,8 @@ var Accordion = function Accordion(props) {
     children = props.children,
     _onClick = props.onClick,
     className = props.className,
-    onExpand = props.onExpand;
+    onExpand = props.onExpand,
+    CustomIcon = props.icon;
 
   // uncontrolled
   var _useState = React.useState(defaultOpen),
@@ -6486,6 +6487,10 @@ var Accordion = function Accordion(props) {
   var _useRef = React.useRef(open !== undefined),
     isControlled = _useRef.current;
   var isOpen = isControlled ? open : uncontrolledOpen;
+  var Icon = Caret;
+  if (CustomIcon) {
+    Icon = CustomIcon;
+  }
   return /*#__PURE__*/jsxRuntime.jsxs("div", {
     className: classes(className, modules_8207625f.root, isOpen ? modules_8207625f.open : ''),
     "data-state-open": isOpen,
@@ -6507,14 +6512,14 @@ var Accordion = function Accordion(props) {
           }
         }
       },
-      component1: iconPlacement === 'left' && /*#__PURE__*/jsxRuntime.jsx(Caret, {
+      component1: iconPlacement === 'left' && /*#__PURE__*/jsxRuntime.jsx(Icon, {
         className: modules_8207625f.icon
       }),
       component2: /*#__PURE__*/jsxRuntime.jsx("span", {
         className: modules_8207625f.title,
         children: title
       }),
-      component3: iconPlacement === 'right' && /*#__PURE__*/jsxRuntime.jsx(Caret, {
+      component3: iconPlacement === 'right' && /*#__PURE__*/jsxRuntime.jsx(Icon, {
         className: modules_8207625f.icon
       })
     }), /*#__PURE__*/jsxRuntime.jsxs("div", {
@@ -20633,29 +20638,20 @@ function arduino(Prism) {
   Prism.languages.ino = Prism.languages.arduino;
 }
 
-var arff_1;
-var hasRequiredArff;
-
-function requireArff () {
-	if (hasRequiredArff) return arff_1;
-	hasRequiredArff = 1;
-
-	arff_1 = arff;
-	arff.displayName = 'arff';
-	arff.aliases = [];
-	function arff(Prism) {
-	  Prism.languages.arff = {
-	    comment: /%.*/,
-	    string: {
-	      pattern: /(["'])(?:\\.|(?!\1)[^\\\r\n])*\1/,
-	      greedy: true
-	    },
-	    keyword: /@(?:attribute|data|end|relation)\b/i,
-	    number: /\b\d+(?:\.\d+)?\b/,
-	    punctuation: /[{},]/
-	  };
-	}
-	return arff_1;
+var arff_1 = arff;
+arff.displayName = 'arff';
+arff.aliases = [];
+function arff(Prism) {
+  Prism.languages.arff = {
+    comment: /%.*/,
+    string: {
+      pattern: /(["'])(?:\\.|(?!\1)[^\\\r\n])*\1/,
+      greedy: true
+    },
+    keyword: /@(?:attribute|data|end|relation)\b/i,
+    number: /\b\d+(?:\.\d+)?\b/,
+    punctuation: /[{},]/
+  };
 }
 
 var asciidoc_1 = asciidoc;
@@ -21759,314 +21755,341 @@ function avisynth(Prism) {
   })(Prism);
 }
 
-var avroIdl_1 = avroIdl;
-avroIdl.displayName = 'avroIdl';
-avroIdl.aliases = [];
-function avroIdl(Prism) {
-  // GitHub: https://github.com/apache/avro
-  // Docs: https://avro.apache.org/docs/current/idl.html
-  Prism.languages['avro-idl'] = {
-    comment: {
-      pattern: /\/\/.*|\/\*[\s\S]*?\*\//,
-      greedy: true
-    },
-    string: {
-      pattern: /(^|[^\\])"(?:[^\r\n"\\]|\\.)*"/,
-      lookbehind: true,
-      greedy: true
-    },
-    annotation: {
-      pattern: /@(?:[$\w.-]|`[^\r\n`]+`)+/,
-      greedy: true,
-      alias: 'function'
-    },
-    'function-identifier': {
-      pattern: /`[^\r\n`]+`(?=\s*\()/,
-      greedy: true,
-      alias: 'function'
-    },
-    identifier: {
-      pattern: /`[^\r\n`]+`/,
-      greedy: true
-    },
-    'class-name': {
-      pattern: /(\b(?:enum|error|protocol|record|throws)\b\s+)[$\w]+/,
-      lookbehind: true,
-      greedy: true
-    },
-    keyword:
-      /\b(?:array|boolean|bytes|date|decimal|double|enum|error|false|fixed|float|idl|import|int|local_timestamp_ms|long|map|null|oneway|protocol|record|schema|string|throws|time_ms|timestamp_ms|true|union|uuid|void)\b/,
-    function: /\b[a-z_]\w*(?=\s*\()/i,
-    number: [
-      {
-        pattern:
-          /(^|[^\w.])-?(?:(?:\d+(?:\.\d*)?|\.\d+)(?:e[+-]?\d+)?|0x(?:[a-f0-9]+(?:\.[a-f0-9]*)?|\.[a-f0-9]+)(?:p[+-]?\d+)?)[dfl]?(?![\w.])/i,
-        lookbehind: true
-      },
-      /-?\b(?:Infinity|NaN)\b/
-    ],
-    operator: /=/,
-    punctuation: /[()\[\]{}<>.:,;-]/
-  };
-  Prism.languages.avdl = Prism.languages['avro-idl'];
+var avroIdl_1;
+var hasRequiredAvroIdl;
+
+function requireAvroIdl () {
+	if (hasRequiredAvroIdl) return avroIdl_1;
+	hasRequiredAvroIdl = 1;
+
+	avroIdl_1 = avroIdl;
+	avroIdl.displayName = 'avroIdl';
+	avroIdl.aliases = [];
+	function avroIdl(Prism) {
+	  // GitHub: https://github.com/apache/avro
+	  // Docs: https://avro.apache.org/docs/current/idl.html
+	  Prism.languages['avro-idl'] = {
+	    comment: {
+	      pattern: /\/\/.*|\/\*[\s\S]*?\*\//,
+	      greedy: true
+	    },
+	    string: {
+	      pattern: /(^|[^\\])"(?:[^\r\n"\\]|\\.)*"/,
+	      lookbehind: true,
+	      greedy: true
+	    },
+	    annotation: {
+	      pattern: /@(?:[$\w.-]|`[^\r\n`]+`)+/,
+	      greedy: true,
+	      alias: 'function'
+	    },
+	    'function-identifier': {
+	      pattern: /`[^\r\n`]+`(?=\s*\()/,
+	      greedy: true,
+	      alias: 'function'
+	    },
+	    identifier: {
+	      pattern: /`[^\r\n`]+`/,
+	      greedy: true
+	    },
+	    'class-name': {
+	      pattern: /(\b(?:enum|error|protocol|record|throws)\b\s+)[$\w]+/,
+	      lookbehind: true,
+	      greedy: true
+	    },
+	    keyword:
+	      /\b(?:array|boolean|bytes|date|decimal|double|enum|error|false|fixed|float|idl|import|int|local_timestamp_ms|long|map|null|oneway|protocol|record|schema|string|throws|time_ms|timestamp_ms|true|union|uuid|void)\b/,
+	    function: /\b[a-z_]\w*(?=\s*\()/i,
+	    number: [
+	      {
+	        pattern:
+	          /(^|[^\w.])-?(?:(?:\d+(?:\.\d*)?|\.\d+)(?:e[+-]?\d+)?|0x(?:[a-f0-9]+(?:\.[a-f0-9]*)?|\.[a-f0-9]+)(?:p[+-]?\d+)?)[dfl]?(?![\w.])/i,
+	        lookbehind: true
+	      },
+	      /-?\b(?:Infinity|NaN)\b/
+	    ],
+	    operator: /=/,
+	    punctuation: /[()\[\]{}<>.:,;-]/
+	  };
+	  Prism.languages.avdl = Prism.languages['avro-idl'];
+	}
+	return avroIdl_1;
 }
 
-var bash_1 = bash;
-bash.displayName = 'bash';
-bash.aliases = ['shell'];
-function bash(Prism) {
+var bash_1;
+var hasRequiredBash;
+
+function requireBash () {
+	if (hasRequiredBash) return bash_1;
+	hasRequiredBash = 1;
+
+	bash_1 = bash;
+	bash.displayName = 'bash';
+	bash.aliases = ['shell'];
+	function bash(Prism) {
 (function (Prism) {
-    // $ set | grep '^[A-Z][^[:space:]]*=' | cut -d= -f1 | tr '\n' '|'
-    // + LC_ALL, RANDOM, REPLY, SECONDS.
-    // + make sure PS1..4 are here as they are not always set,
-    // - some useless things.
-    var envVars =
-      '\\b(?:BASH|BASHOPTS|BASH_ALIASES|BASH_ARGC|BASH_ARGV|BASH_CMDS|BASH_COMPLETION_COMPAT_DIR|BASH_LINENO|BASH_REMATCH|BASH_SOURCE|BASH_VERSINFO|BASH_VERSION|COLORTERM|COLUMNS|COMP_WORDBREAKS|DBUS_SESSION_BUS_ADDRESS|DEFAULTS_PATH|DESKTOP_SESSION|DIRSTACK|DISPLAY|EUID|GDMSESSION|GDM_LANG|GNOME_KEYRING_CONTROL|GNOME_KEYRING_PID|GPG_AGENT_INFO|GROUPS|HISTCONTROL|HISTFILE|HISTFILESIZE|HISTSIZE|HOME|HOSTNAME|HOSTTYPE|IFS|INSTANCE|JOB|LANG|LANGUAGE|LC_ADDRESS|LC_ALL|LC_IDENTIFICATION|LC_MEASUREMENT|LC_MONETARY|LC_NAME|LC_NUMERIC|LC_PAPER|LC_TELEPHONE|LC_TIME|LESSCLOSE|LESSOPEN|LINES|LOGNAME|LS_COLORS|MACHTYPE|MAILCHECK|MANDATORY_PATH|NO_AT_BRIDGE|OLDPWD|OPTERR|OPTIND|ORBIT_SOCKETDIR|OSTYPE|PAPERSIZE|PATH|PIPESTATUS|PPID|PS1|PS2|PS3|PS4|PWD|RANDOM|REPLY|SECONDS|SELINUX_INIT|SESSION|SESSIONTYPE|SESSION_MANAGER|SHELL|SHELLOPTS|SHLVL|SSH_AUTH_SOCK|TERM|UID|UPSTART_EVENTS|UPSTART_INSTANCE|UPSTART_JOB|UPSTART_SESSION|USER|WINDOWID|XAUTHORITY|XDG_CONFIG_DIRS|XDG_CURRENT_DESKTOP|XDG_DATA_DIRS|XDG_GREETER_DATA_DIR|XDG_MENU_PREFIX|XDG_RUNTIME_DIR|XDG_SEAT|XDG_SEAT_PATH|XDG_SESSION_DESKTOP|XDG_SESSION_ID|XDG_SESSION_PATH|XDG_SESSION_TYPE|XDG_VTNR|XMODIFIERS)\\b';
-    var commandAfterHeredoc = {
-      pattern: /(^(["']?)\w+\2)[ \t]+\S.*/,
-      lookbehind: true,
-      alias: 'punctuation',
-      // this looks reasonably well in all themes
-      inside: null // see below
-    };
-    var insideString = {
-      bash: commandAfterHeredoc,
-      environment: {
-        pattern: RegExp('\\$' + envVars),
-        alias: 'constant'
-      },
-      variable: [
-        // [0]: Arithmetic Environment
-        {
-          pattern: /\$?\(\([\s\S]+?\)\)/,
-          greedy: true,
-          inside: {
-            // If there is a $ sign at the beginning highlight $(( and )) as variable
-            variable: [
-              {
-                pattern: /(^\$\(\([\s\S]+)\)\)/,
-                lookbehind: true
-              },
-              /^\$\(\(/
-            ],
-            number:
-              /\b0x[\dA-Fa-f]+\b|(?:\b\d+(?:\.\d*)?|\B\.\d+)(?:[Ee]-?\d+)?/,
-            // Operators according to https://www.gnu.org/software/bash/manual/bashref.html#Shell-Arithmetic
-            operator:
-              /--|\+\+|\*\*=?|<<=?|>>=?|&&|\|\||[=!+\-*/%<>^&|]=?|[?~:]/,
-            // If there is no $ sign at the beginning highlight (( and )) as punctuation
-            punctuation: /\(\(?|\)\)?|,|;/
-          }
-        }, // [1]: Command Substitution
-        {
-          pattern: /\$\((?:\([^)]+\)|[^()])+\)|`[^`]+`/,
-          greedy: true,
-          inside: {
-            variable: /^\$\(|^`|\)$|`$/
-          }
-        }, // [2]: Brace expansion
-        {
-          pattern: /\$\{[^}]+\}/,
-          greedy: true,
-          inside: {
-            operator: /:[-=?+]?|[!\/]|##?|%%?|\^\^?|,,?/,
-            punctuation: /[\[\]]/,
-            environment: {
-              pattern: RegExp('(\\{)' + envVars),
-              lookbehind: true,
-              alias: 'constant'
-            }
-          }
-        },
-        /\$(?:\w+|[#?*!@$])/
-      ],
-      // Escape sequences from echo and printf's manuals, and escaped quotes.
-      entity:
-        /\\(?:[abceEfnrtv\\"]|O?[0-7]{1,3}|U[0-9a-fA-F]{8}|u[0-9a-fA-F]{4}|x[0-9a-fA-F]{1,2})/
-    };
-    Prism.languages.bash = {
-      shebang: {
-        pattern: /^#!\s*\/.*/,
-        alias: 'important'
-      },
-      comment: {
-        pattern: /(^|[^"{\\$])#.*/,
-        lookbehind: true
-      },
-      'function-name': [
-        // a) function foo {
-        // b) foo() {
-        // c) function foo() {
-        // but not “foo {”
-        {
-          // a) and c)
-          pattern: /(\bfunction\s+)[\w-]+(?=(?:\s*\(?:\s*\))?\s*\{)/,
-          lookbehind: true,
-          alias: 'function'
-        },
-        {
-          // b)
-          pattern: /\b[\w-]+(?=\s*\(\s*\)\s*\{)/,
-          alias: 'function'
-        }
-      ],
-      // Highlight variable names as variables in for and select beginnings.
-      'for-or-select': {
-        pattern: /(\b(?:for|select)\s+)\w+(?=\s+in\s)/,
-        alias: 'variable',
-        lookbehind: true
-      },
-      // Highlight variable names as variables in the left-hand part
-      // of assignments (“=” and “+=”).
-      'assign-left': {
-        pattern: /(^|[\s;|&]|[<>]\()\w+(?=\+?=)/,
-        inside: {
-          environment: {
-            pattern: RegExp('(^|[\\s;|&]|[<>]\\()' + envVars),
-            lookbehind: true,
-            alias: 'constant'
-          }
-        },
-        alias: 'variable',
-        lookbehind: true
-      },
-      string: [
-        // Support for Here-documents https://en.wikipedia.org/wiki/Here_document
-        {
-          pattern: /((?:^|[^<])<<-?\s*)(\w+)\s[\s\S]*?(?:\r?\n|\r)\2/,
-          lookbehind: true,
-          greedy: true,
-          inside: insideString
-        }, // Here-document with quotes around the tag
-        // → No expansion (so no “inside”).
-        {
-          pattern: /((?:^|[^<])<<-?\s*)(["'])(\w+)\2\s[\s\S]*?(?:\r?\n|\r)\3/,
-          lookbehind: true,
-          greedy: true,
-          inside: {
-            bash: commandAfterHeredoc
-          }
-        }, // “Normal” string
-        {
-          // https://www.gnu.org/software/bash/manual/html_node/Double-Quotes.html
-          pattern:
-            /(^|[^\\](?:\\\\)*)"(?:\\[\s\S]|\$\([^)]+\)|\$(?!\()|`[^`]+`|[^"\\`$])*"/,
-          lookbehind: true,
-          greedy: true,
-          inside: insideString
-        },
-        {
-          // https://www.gnu.org/software/bash/manual/html_node/Single-Quotes.html
-          pattern: /(^|[^$\\])'[^']*'/,
-          lookbehind: true,
-          greedy: true
-        },
-        {
-          // https://www.gnu.org/software/bash/manual/html_node/ANSI_002dC-Quoting.html
-          pattern: /\$'(?:[^'\\]|\\[\s\S])*'/,
-          greedy: true,
-          inside: {
-            entity: insideString.entity
-          }
-        }
-      ],
-      environment: {
-        pattern: RegExp('\\$?' + envVars),
-        alias: 'constant'
-      },
-      variable: insideString.variable,
-      function: {
-        pattern:
-          /(^|[\s;|&]|[<>]\()(?:add|apropos|apt|apt-cache|apt-get|aptitude|aspell|automysqlbackup|awk|basename|bash|bc|bconsole|bg|bzip2|cal|cat|cfdisk|chgrp|chkconfig|chmod|chown|chroot|cksum|clear|cmp|column|comm|composer|cp|cron|crontab|csplit|curl|cut|date|dc|dd|ddrescue|debootstrap|df|diff|diff3|dig|dir|dircolors|dirname|dirs|dmesg|docker|docker-compose|du|egrep|eject|env|ethtool|expand|expect|expr|fdformat|fdisk|fg|fgrep|file|find|fmt|fold|format|free|fsck|ftp|fuser|gawk|git|gparted|grep|groupadd|groupdel|groupmod|groups|grub-mkconfig|gzip|halt|head|hg|history|host|hostname|htop|iconv|id|ifconfig|ifdown|ifup|import|install|ip|jobs|join|kill|killall|less|link|ln|locate|logname|logrotate|look|lpc|lpr|lprint|lprintd|lprintq|lprm|ls|lsof|lynx|make|man|mc|mdadm|mkconfig|mkdir|mke2fs|mkfifo|mkfs|mkisofs|mknod|mkswap|mmv|more|most|mount|mtools|mtr|mutt|mv|nano|nc|netstat|nice|nl|node|nohup|notify-send|npm|nslookup|op|open|parted|passwd|paste|pathchk|ping|pkill|pnpm|podman|podman-compose|popd|pr|printcap|printenv|ps|pushd|pv|quota|quotacheck|quotactl|ram|rar|rcp|reboot|remsync|rename|renice|rev|rm|rmdir|rpm|rsync|scp|screen|sdiff|sed|sendmail|seq|service|sftp|sh|shellcheck|shuf|shutdown|sleep|slocate|sort|split|ssh|stat|strace|su|sudo|sum|suspend|swapon|sync|tac|tail|tar|tee|time|timeout|top|touch|tr|traceroute|tsort|tty|umount|uname|unexpand|uniq|units|unrar|unshar|unzip|update-grub|uptime|useradd|userdel|usermod|users|uudecode|uuencode|v|vcpkg|vdir|vi|vim|virsh|vmstat|wait|watch|wc|wget|whereis|which|who|whoami|write|xargs|xdg-open|yarn|yes|zenity|zip|zsh|zypper)(?=$|[)\s;|&])/,
-        lookbehind: true
-      },
-      keyword: {
-        pattern:
-          /(^|[\s;|&]|[<>]\()(?:case|do|done|elif|else|esac|fi|for|function|if|in|select|then|until|while)(?=$|[)\s;|&])/,
-        lookbehind: true
-      },
-      // https://www.gnu.org/software/bash/manual/html_node/Shell-Builtin-Commands.html
-      builtin: {
-        pattern:
-          /(^|[\s;|&]|[<>]\()(?:\.|:|alias|bind|break|builtin|caller|cd|command|continue|declare|echo|enable|eval|exec|exit|export|getopts|hash|help|let|local|logout|mapfile|printf|pwd|read|readarray|readonly|return|set|shift|shopt|source|test|times|trap|type|typeset|ulimit|umask|unalias|unset)(?=$|[)\s;|&])/,
-        lookbehind: true,
-        // Alias added to make those easier to distinguish from strings.
-        alias: 'class-name'
-      },
-      boolean: {
-        pattern: /(^|[\s;|&]|[<>]\()(?:false|true)(?=$|[)\s;|&])/,
-        lookbehind: true
-      },
-      'file-descriptor': {
-        pattern: /\B&\d\b/,
-        alias: 'important'
-      },
-      operator: {
-        // Lots of redirections here, but not just that.
-        pattern:
-          /\d?<>|>\||\+=|=[=~]?|!=?|<<[<-]?|[&\d]?>>|\d[<>]&?|[<>][&=]?|&[>&]?|\|[&|]?/,
-        inside: {
-          'file-descriptor': {
-            pattern: /^\d/,
-            alias: 'important'
-          }
-        }
-      },
-      punctuation: /\$?\(\(?|\)\)?|\.\.|[{}[\];\\]/,
-      number: {
-        pattern: /(^|\s)(?:[1-9]\d*|0)(?:[.,]\d+)?\b/,
-        lookbehind: true
-      }
-    };
-    commandAfterHeredoc.inside = Prism.languages.bash;
-    /* Patterns in command substitution. */
-    var toBeCopied = [
-      'comment',
-      'function-name',
-      'for-or-select',
-      'assign-left',
-      'string',
-      'environment',
-      'function',
-      'keyword',
-      'builtin',
-      'boolean',
-      'file-descriptor',
-      'operator',
-      'punctuation',
-      'number'
-    ];
-    var inside = insideString.variable[1].inside;
-    for (var i = 0; i < toBeCopied.length; i++) {
-      inside[toBeCopied[i]] = Prism.languages.bash[toBeCopied[i]];
-    }
-    Prism.languages.shell = Prism.languages.bash;
-  })(Prism);
+	    // $ set | grep '^[A-Z][^[:space:]]*=' | cut -d= -f1 | tr '\n' '|'
+	    // + LC_ALL, RANDOM, REPLY, SECONDS.
+	    // + make sure PS1..4 are here as they are not always set,
+	    // - some useless things.
+	    var envVars =
+	      '\\b(?:BASH|BASHOPTS|BASH_ALIASES|BASH_ARGC|BASH_ARGV|BASH_CMDS|BASH_COMPLETION_COMPAT_DIR|BASH_LINENO|BASH_REMATCH|BASH_SOURCE|BASH_VERSINFO|BASH_VERSION|COLORTERM|COLUMNS|COMP_WORDBREAKS|DBUS_SESSION_BUS_ADDRESS|DEFAULTS_PATH|DESKTOP_SESSION|DIRSTACK|DISPLAY|EUID|GDMSESSION|GDM_LANG|GNOME_KEYRING_CONTROL|GNOME_KEYRING_PID|GPG_AGENT_INFO|GROUPS|HISTCONTROL|HISTFILE|HISTFILESIZE|HISTSIZE|HOME|HOSTNAME|HOSTTYPE|IFS|INSTANCE|JOB|LANG|LANGUAGE|LC_ADDRESS|LC_ALL|LC_IDENTIFICATION|LC_MEASUREMENT|LC_MONETARY|LC_NAME|LC_NUMERIC|LC_PAPER|LC_TELEPHONE|LC_TIME|LESSCLOSE|LESSOPEN|LINES|LOGNAME|LS_COLORS|MACHTYPE|MAILCHECK|MANDATORY_PATH|NO_AT_BRIDGE|OLDPWD|OPTERR|OPTIND|ORBIT_SOCKETDIR|OSTYPE|PAPERSIZE|PATH|PIPESTATUS|PPID|PS1|PS2|PS3|PS4|PWD|RANDOM|REPLY|SECONDS|SELINUX_INIT|SESSION|SESSIONTYPE|SESSION_MANAGER|SHELL|SHELLOPTS|SHLVL|SSH_AUTH_SOCK|TERM|UID|UPSTART_EVENTS|UPSTART_INSTANCE|UPSTART_JOB|UPSTART_SESSION|USER|WINDOWID|XAUTHORITY|XDG_CONFIG_DIRS|XDG_CURRENT_DESKTOP|XDG_DATA_DIRS|XDG_GREETER_DATA_DIR|XDG_MENU_PREFIX|XDG_RUNTIME_DIR|XDG_SEAT|XDG_SEAT_PATH|XDG_SESSION_DESKTOP|XDG_SESSION_ID|XDG_SESSION_PATH|XDG_SESSION_TYPE|XDG_VTNR|XMODIFIERS)\\b';
+	    var commandAfterHeredoc = {
+	      pattern: /(^(["']?)\w+\2)[ \t]+\S.*/,
+	      lookbehind: true,
+	      alias: 'punctuation',
+	      // this looks reasonably well in all themes
+	      inside: null // see below
+	    };
+	    var insideString = {
+	      bash: commandAfterHeredoc,
+	      environment: {
+	        pattern: RegExp('\\$' + envVars),
+	        alias: 'constant'
+	      },
+	      variable: [
+	        // [0]: Arithmetic Environment
+	        {
+	          pattern: /\$?\(\([\s\S]+?\)\)/,
+	          greedy: true,
+	          inside: {
+	            // If there is a $ sign at the beginning highlight $(( and )) as variable
+	            variable: [
+	              {
+	                pattern: /(^\$\(\([\s\S]+)\)\)/,
+	                lookbehind: true
+	              },
+	              /^\$\(\(/
+	            ],
+	            number:
+	              /\b0x[\dA-Fa-f]+\b|(?:\b\d+(?:\.\d*)?|\B\.\d+)(?:[Ee]-?\d+)?/,
+	            // Operators according to https://www.gnu.org/software/bash/manual/bashref.html#Shell-Arithmetic
+	            operator:
+	              /--|\+\+|\*\*=?|<<=?|>>=?|&&|\|\||[=!+\-*/%<>^&|]=?|[?~:]/,
+	            // If there is no $ sign at the beginning highlight (( and )) as punctuation
+	            punctuation: /\(\(?|\)\)?|,|;/
+	          }
+	        }, // [1]: Command Substitution
+	        {
+	          pattern: /\$\((?:\([^)]+\)|[^()])+\)|`[^`]+`/,
+	          greedy: true,
+	          inside: {
+	            variable: /^\$\(|^`|\)$|`$/
+	          }
+	        }, // [2]: Brace expansion
+	        {
+	          pattern: /\$\{[^}]+\}/,
+	          greedy: true,
+	          inside: {
+	            operator: /:[-=?+]?|[!\/]|##?|%%?|\^\^?|,,?/,
+	            punctuation: /[\[\]]/,
+	            environment: {
+	              pattern: RegExp('(\\{)' + envVars),
+	              lookbehind: true,
+	              alias: 'constant'
+	            }
+	          }
+	        },
+	        /\$(?:\w+|[#?*!@$])/
+	      ],
+	      // Escape sequences from echo and printf's manuals, and escaped quotes.
+	      entity:
+	        /\\(?:[abceEfnrtv\\"]|O?[0-7]{1,3}|U[0-9a-fA-F]{8}|u[0-9a-fA-F]{4}|x[0-9a-fA-F]{1,2})/
+	    };
+	    Prism.languages.bash = {
+	      shebang: {
+	        pattern: /^#!\s*\/.*/,
+	        alias: 'important'
+	      },
+	      comment: {
+	        pattern: /(^|[^"{\\$])#.*/,
+	        lookbehind: true
+	      },
+	      'function-name': [
+	        // a) function foo {
+	        // b) foo() {
+	        // c) function foo() {
+	        // but not “foo {”
+	        {
+	          // a) and c)
+	          pattern: /(\bfunction\s+)[\w-]+(?=(?:\s*\(?:\s*\))?\s*\{)/,
+	          lookbehind: true,
+	          alias: 'function'
+	        },
+	        {
+	          // b)
+	          pattern: /\b[\w-]+(?=\s*\(\s*\)\s*\{)/,
+	          alias: 'function'
+	        }
+	      ],
+	      // Highlight variable names as variables in for and select beginnings.
+	      'for-or-select': {
+	        pattern: /(\b(?:for|select)\s+)\w+(?=\s+in\s)/,
+	        alias: 'variable',
+	        lookbehind: true
+	      },
+	      // Highlight variable names as variables in the left-hand part
+	      // of assignments (“=” and “+=”).
+	      'assign-left': {
+	        pattern: /(^|[\s;|&]|[<>]\()\w+(?=\+?=)/,
+	        inside: {
+	          environment: {
+	            pattern: RegExp('(^|[\\s;|&]|[<>]\\()' + envVars),
+	            lookbehind: true,
+	            alias: 'constant'
+	          }
+	        },
+	        alias: 'variable',
+	        lookbehind: true
+	      },
+	      string: [
+	        // Support for Here-documents https://en.wikipedia.org/wiki/Here_document
+	        {
+	          pattern: /((?:^|[^<])<<-?\s*)(\w+)\s[\s\S]*?(?:\r?\n|\r)\2/,
+	          lookbehind: true,
+	          greedy: true,
+	          inside: insideString
+	        }, // Here-document with quotes around the tag
+	        // → No expansion (so no “inside”).
+	        {
+	          pattern: /((?:^|[^<])<<-?\s*)(["'])(\w+)\2\s[\s\S]*?(?:\r?\n|\r)\3/,
+	          lookbehind: true,
+	          greedy: true,
+	          inside: {
+	            bash: commandAfterHeredoc
+	          }
+	        }, // “Normal” string
+	        {
+	          // https://www.gnu.org/software/bash/manual/html_node/Double-Quotes.html
+	          pattern:
+	            /(^|[^\\](?:\\\\)*)"(?:\\[\s\S]|\$\([^)]+\)|\$(?!\()|`[^`]+`|[^"\\`$])*"/,
+	          lookbehind: true,
+	          greedy: true,
+	          inside: insideString
+	        },
+	        {
+	          // https://www.gnu.org/software/bash/manual/html_node/Single-Quotes.html
+	          pattern: /(^|[^$\\])'[^']*'/,
+	          lookbehind: true,
+	          greedy: true
+	        },
+	        {
+	          // https://www.gnu.org/software/bash/manual/html_node/ANSI_002dC-Quoting.html
+	          pattern: /\$'(?:[^'\\]|\\[\s\S])*'/,
+	          greedy: true,
+	          inside: {
+	            entity: insideString.entity
+	          }
+	        }
+	      ],
+	      environment: {
+	        pattern: RegExp('\\$?' + envVars),
+	        alias: 'constant'
+	      },
+	      variable: insideString.variable,
+	      function: {
+	        pattern:
+	          /(^|[\s;|&]|[<>]\()(?:add|apropos|apt|apt-cache|apt-get|aptitude|aspell|automysqlbackup|awk|basename|bash|bc|bconsole|bg|bzip2|cal|cat|cfdisk|chgrp|chkconfig|chmod|chown|chroot|cksum|clear|cmp|column|comm|composer|cp|cron|crontab|csplit|curl|cut|date|dc|dd|ddrescue|debootstrap|df|diff|diff3|dig|dir|dircolors|dirname|dirs|dmesg|docker|docker-compose|du|egrep|eject|env|ethtool|expand|expect|expr|fdformat|fdisk|fg|fgrep|file|find|fmt|fold|format|free|fsck|ftp|fuser|gawk|git|gparted|grep|groupadd|groupdel|groupmod|groups|grub-mkconfig|gzip|halt|head|hg|history|host|hostname|htop|iconv|id|ifconfig|ifdown|ifup|import|install|ip|jobs|join|kill|killall|less|link|ln|locate|logname|logrotate|look|lpc|lpr|lprint|lprintd|lprintq|lprm|ls|lsof|lynx|make|man|mc|mdadm|mkconfig|mkdir|mke2fs|mkfifo|mkfs|mkisofs|mknod|mkswap|mmv|more|most|mount|mtools|mtr|mutt|mv|nano|nc|netstat|nice|nl|node|nohup|notify-send|npm|nslookup|op|open|parted|passwd|paste|pathchk|ping|pkill|pnpm|podman|podman-compose|popd|pr|printcap|printenv|ps|pushd|pv|quota|quotacheck|quotactl|ram|rar|rcp|reboot|remsync|rename|renice|rev|rm|rmdir|rpm|rsync|scp|screen|sdiff|sed|sendmail|seq|service|sftp|sh|shellcheck|shuf|shutdown|sleep|slocate|sort|split|ssh|stat|strace|su|sudo|sum|suspend|swapon|sync|tac|tail|tar|tee|time|timeout|top|touch|tr|traceroute|tsort|tty|umount|uname|unexpand|uniq|units|unrar|unshar|unzip|update-grub|uptime|useradd|userdel|usermod|users|uudecode|uuencode|v|vcpkg|vdir|vi|vim|virsh|vmstat|wait|watch|wc|wget|whereis|which|who|whoami|write|xargs|xdg-open|yarn|yes|zenity|zip|zsh|zypper)(?=$|[)\s;|&])/,
+	        lookbehind: true
+	      },
+	      keyword: {
+	        pattern:
+	          /(^|[\s;|&]|[<>]\()(?:case|do|done|elif|else|esac|fi|for|function|if|in|select|then|until|while)(?=$|[)\s;|&])/,
+	        lookbehind: true
+	      },
+	      // https://www.gnu.org/software/bash/manual/html_node/Shell-Builtin-Commands.html
+	      builtin: {
+	        pattern:
+	          /(^|[\s;|&]|[<>]\()(?:\.|:|alias|bind|break|builtin|caller|cd|command|continue|declare|echo|enable|eval|exec|exit|export|getopts|hash|help|let|local|logout|mapfile|printf|pwd|read|readarray|readonly|return|set|shift|shopt|source|test|times|trap|type|typeset|ulimit|umask|unalias|unset)(?=$|[)\s;|&])/,
+	        lookbehind: true,
+	        // Alias added to make those easier to distinguish from strings.
+	        alias: 'class-name'
+	      },
+	      boolean: {
+	        pattern: /(^|[\s;|&]|[<>]\()(?:false|true)(?=$|[)\s;|&])/,
+	        lookbehind: true
+	      },
+	      'file-descriptor': {
+	        pattern: /\B&\d\b/,
+	        alias: 'important'
+	      },
+	      operator: {
+	        // Lots of redirections here, but not just that.
+	        pattern:
+	          /\d?<>|>\||\+=|=[=~]?|!=?|<<[<-]?|[&\d]?>>|\d[<>]&?|[<>][&=]?|&[>&]?|\|[&|]?/,
+	        inside: {
+	          'file-descriptor': {
+	            pattern: /^\d/,
+	            alias: 'important'
+	          }
+	        }
+	      },
+	      punctuation: /\$?\(\(?|\)\)?|\.\.|[{}[\];\\]/,
+	      number: {
+	        pattern: /(^|\s)(?:[1-9]\d*|0)(?:[.,]\d+)?\b/,
+	        lookbehind: true
+	      }
+	    };
+	    commandAfterHeredoc.inside = Prism.languages.bash;
+	    /* Patterns in command substitution. */
+	    var toBeCopied = [
+	      'comment',
+	      'function-name',
+	      'for-or-select',
+	      'assign-left',
+	      'string',
+	      'environment',
+	      'function',
+	      'keyword',
+	      'builtin',
+	      'boolean',
+	      'file-descriptor',
+	      'operator',
+	      'punctuation',
+	      'number'
+	    ];
+	    var inside = insideString.variable[1].inside;
+	    for (var i = 0; i < toBeCopied.length; i++) {
+	      inside[toBeCopied[i]] = Prism.languages.bash[toBeCopied[i]];
+	    }
+	    Prism.languages.shell = Prism.languages.bash;
+	  })(Prism);
+	}
+	return bash_1;
 }
 
-var basic_1 = basic;
-basic.displayName = 'basic';
-basic.aliases = [];
-function basic(Prism) {
-  Prism.languages.basic = {
-    comment: {
-      pattern: /(?:!|REM\b).+/i,
-      inside: {
-        keyword: /^REM/i
-      }
-    },
-    string: {
-      pattern: /"(?:""|[!#$%&'()*,\/:;<=>?^\w +\-.])*"/,
-      greedy: true
-    },
-    number: /(?:\b\d+(?:\.\d*)?|\B\.\d+)(?:E[+-]?\d+)?/i,
-    keyword:
-      /\b(?:AS|BEEP|BLOAD|BSAVE|CALL(?: ABSOLUTE)?|CASE|CHAIN|CHDIR|CLEAR|CLOSE|CLS|COM|COMMON|CONST|DATA|DECLARE|DEF(?: FN| SEG|DBL|INT|LNG|SNG|STR)|DIM|DO|DOUBLE|ELSE|ELSEIF|END|ENVIRON|ERASE|ERROR|EXIT|FIELD|FILES|FOR|FUNCTION|GET|GOSUB|GOTO|IF|INPUT|INTEGER|IOCTL|KEY|KILL|LINE INPUT|LOCATE|LOCK|LONG|LOOP|LSET|MKDIR|NAME|NEXT|OFF|ON(?: COM| ERROR| KEY| TIMER)?|OPEN|OPTION BASE|OUT|POKE|PUT|READ|REDIM|REM|RESTORE|RESUME|RETURN|RMDIR|RSET|RUN|SELECT CASE|SHARED|SHELL|SINGLE|SLEEP|STATIC|STEP|STOP|STRING|SUB|SWAP|SYSTEM|THEN|TIMER|TO|TROFF|TRON|TYPE|UNLOCK|UNTIL|USING|VIEW PRINT|WAIT|WEND|WHILE|WRITE)(?:\$|\b)/i,
-    function:
-      /\b(?:ABS|ACCESS|ACOS|ANGLE|AREA|ARITHMETIC|ARRAY|ASIN|ASK|AT|ATN|BASE|BEGIN|BREAK|CAUSE|CEIL|CHR|CLIP|COLLATE|COLOR|CON|COS|COSH|COT|CSC|DATE|DATUM|DEBUG|DECIMAL|DEF|DEG|DEGREES|DELETE|DET|DEVICE|DISPLAY|DOT|ELAPSED|EPS|ERASABLE|EXLINE|EXP|EXTERNAL|EXTYPE|FILETYPE|FIXED|FP|GO|GRAPH|HANDLER|IDN|IMAGE|IN|INT|INTERNAL|IP|IS|KEYED|LBOUND|LCASE|LEFT|LEN|LENGTH|LET|LINE|LINES|LOG|LOG10|LOG2|LTRIM|MARGIN|MAT|MAX|MAXNUM|MID|MIN|MISSING|MOD|NATIVE|NUL|NUMERIC|OF|OPTION|ORD|ORGANIZATION|OUTIN|OUTPUT|PI|POINT|POINTER|POINTS|POS|PRINT|PROGRAM|PROMPT|RAD|RADIANS|RANDOMIZE|RECORD|RECSIZE|RECTYPE|RELATIVE|REMAINDER|REPEAT|REST|RETRY|REWRITE|RIGHT|RND|ROUND|RTRIM|SAME|SEC|SELECT|SEQUENTIAL|SET|SETTER|SGN|SIN|SINH|SIZE|SKIP|SQR|STANDARD|STATUS|STR|STREAM|STYLE|TAB|TAN|TANH|TEMPLATE|TEXT|THERE|TIME|TIMEOUT|TRACE|TRANSFORM|TRUNCATE|UBOUND|UCASE|USE|VAL|VARIABLE|VIEWPORT|WHEN|WINDOW|WITH|ZER|ZONEWIDTH)(?:\$|\b)/i,
-    operator: /<[=>]?|>=?|[+\-*\/^=&]|\b(?:AND|EQV|IMP|NOT|OR|XOR)\b/i,
-    punctuation: /[,;:()]/
-  };
+var basic_1;
+var hasRequiredBasic;
+
+function requireBasic () {
+	if (hasRequiredBasic) return basic_1;
+	hasRequiredBasic = 1;
+
+	basic_1 = basic;
+	basic.displayName = 'basic';
+	basic.aliases = [];
+	function basic(Prism) {
+	  Prism.languages.basic = {
+	    comment: {
+	      pattern: /(?:!|REM\b).+/i,
+	      inside: {
+	        keyword: /^REM/i
+	      }
+	    },
+	    string: {
+	      pattern: /"(?:""|[!#$%&'()*,\/:;<=>?^\w +\-.])*"/,
+	      greedy: true
+	    },
+	    number: /(?:\b\d+(?:\.\d*)?|\B\.\d+)(?:E[+-]?\d+)?/i,
+	    keyword:
+	      /\b(?:AS|BEEP|BLOAD|BSAVE|CALL(?: ABSOLUTE)?|CASE|CHAIN|CHDIR|CLEAR|CLOSE|CLS|COM|COMMON|CONST|DATA|DECLARE|DEF(?: FN| SEG|DBL|INT|LNG|SNG|STR)|DIM|DO|DOUBLE|ELSE|ELSEIF|END|ENVIRON|ERASE|ERROR|EXIT|FIELD|FILES|FOR|FUNCTION|GET|GOSUB|GOTO|IF|INPUT|INTEGER|IOCTL|KEY|KILL|LINE INPUT|LOCATE|LOCK|LONG|LOOP|LSET|MKDIR|NAME|NEXT|OFF|ON(?: COM| ERROR| KEY| TIMER)?|OPEN|OPTION BASE|OUT|POKE|PUT|READ|REDIM|REM|RESTORE|RESUME|RETURN|RMDIR|RSET|RUN|SELECT CASE|SHARED|SHELL|SINGLE|SLEEP|STATIC|STEP|STOP|STRING|SUB|SWAP|SYSTEM|THEN|TIMER|TO|TROFF|TRON|TYPE|UNLOCK|UNTIL|USING|VIEW PRINT|WAIT|WEND|WHILE|WRITE)(?:\$|\b)/i,
+	    function:
+	      /\b(?:ABS|ACCESS|ACOS|ANGLE|AREA|ARITHMETIC|ARRAY|ASIN|ASK|AT|ATN|BASE|BEGIN|BREAK|CAUSE|CEIL|CHR|CLIP|COLLATE|COLOR|CON|COS|COSH|COT|CSC|DATE|DATUM|DEBUG|DECIMAL|DEF|DEG|DEGREES|DELETE|DET|DEVICE|DISPLAY|DOT|ELAPSED|EPS|ERASABLE|EXLINE|EXP|EXTERNAL|EXTYPE|FILETYPE|FIXED|FP|GO|GRAPH|HANDLER|IDN|IMAGE|IN|INT|INTERNAL|IP|IS|KEYED|LBOUND|LCASE|LEFT|LEN|LENGTH|LET|LINE|LINES|LOG|LOG10|LOG2|LTRIM|MARGIN|MAT|MAX|MAXNUM|MID|MIN|MISSING|MOD|NATIVE|NUL|NUMERIC|OF|OPTION|ORD|ORGANIZATION|OUTIN|OUTPUT|PI|POINT|POINTER|POINTS|POS|PRINT|PROGRAM|PROMPT|RAD|RADIANS|RANDOMIZE|RECORD|RECSIZE|RECTYPE|RELATIVE|REMAINDER|REPEAT|REST|RETRY|REWRITE|RIGHT|RND|ROUND|RTRIM|SAME|SEC|SELECT|SEQUENTIAL|SET|SETTER|SGN|SIN|SINH|SIZE|SKIP|SQR|STANDARD|STATUS|STR|STREAM|STYLE|TAB|TAN|TANH|TEMPLATE|TEXT|THERE|TIME|TIMEOUT|TRACE|TRANSFORM|TRUNCATE|UBOUND|UCASE|USE|VAL|VARIABLE|VIEWPORT|WHEN|WINDOW|WITH|ZER|ZONEWIDTH)(?:\$|\b)/i,
+	    operator: /<[=>]?|>=?|[+\-*\/^=&]|\b(?:AND|EQV|IMP|NOT|OR|XOR)\b/i,
+	    punctuation: /[,;:()]/
+	  };
+	}
+	return basic_1;
 }
 
 var batch_1 = batch;
@@ -22866,183 +22889,165 @@ function cobol(Prism) {
   };
 }
 
-var coffeescript_1;
-var hasRequiredCoffeescript;
-
-function requireCoffeescript () {
-	if (hasRequiredCoffeescript) return coffeescript_1;
-	hasRequiredCoffeescript = 1;
-
-	coffeescript_1 = coffeescript;
-	coffeescript.displayName = 'coffeescript';
-	coffeescript.aliases = ['coffee'];
-	function coffeescript(Prism) {
+var coffeescript_1 = coffeescript;
+coffeescript.displayName = 'coffeescript';
+coffeescript.aliases = ['coffee'];
+function coffeescript(Prism) {
 (function (Prism) {
-	    // Ignore comments starting with { to privilege string interpolation highlighting
-	    var comment = /#(?!\{).+/;
-	    var interpolation = {
-	      pattern: /#\{[^}]+\}/,
-	      alias: 'variable'
-	    };
-	    Prism.languages.coffeescript = Prism.languages.extend('javascript', {
-	      comment: comment,
-	      string: [
-	        // Strings are multiline
-	        {
-	          pattern: /'(?:\\[\s\S]|[^\\'])*'/,
-	          greedy: true
-	        },
-	        {
-	          // Strings are multiline
-	          pattern: /"(?:\\[\s\S]|[^\\"])*"/,
-	          greedy: true,
-	          inside: {
-	            interpolation: interpolation
-	          }
-	        }
-	      ],
-	      keyword:
-	        /\b(?:and|break|by|catch|class|continue|debugger|delete|do|each|else|extend|extends|false|finally|for|if|in|instanceof|is|isnt|let|loop|namespace|new|no|not|null|of|off|on|or|own|return|super|switch|then|this|throw|true|try|typeof|undefined|unless|until|when|while|window|with|yes|yield)\b/,
-	      'class-member': {
-	        pattern: /@(?!\d)\w+/,
-	        alias: 'variable'
-	      }
-	    });
-	    Prism.languages.insertBefore('coffeescript', 'comment', {
-	      'multiline-comment': {
-	        pattern: /###[\s\S]+?###/,
-	        alias: 'comment'
-	      },
-	      // Block regexp can contain comments and interpolation
-	      'block-regex': {
-	        pattern: /\/{3}[\s\S]*?\/{3}/,
-	        alias: 'regex',
-	        inside: {
-	          comment: comment,
-	          interpolation: interpolation
-	        }
-	      }
-	    });
-	    Prism.languages.insertBefore('coffeescript', 'string', {
-	      'inline-javascript': {
-	        pattern: /`(?:\\[\s\S]|[^\\`])*`/,
-	        inside: {
-	          delimiter: {
-	            pattern: /^`|`$/,
-	            alias: 'punctuation'
-	          },
-	          script: {
-	            pattern: /[\s\S]+/,
-	            alias: 'language-javascript',
-	            inside: Prism.languages.javascript
-	          }
-	        }
-	      },
-	      // Block strings
-	      'multiline-string': [
-	        {
-	          pattern: /'''[\s\S]*?'''/,
-	          greedy: true,
-	          alias: 'string'
-	        },
-	        {
-	          pattern: /"""[\s\S]*?"""/,
-	          greedy: true,
-	          alias: 'string',
-	          inside: {
-	            interpolation: interpolation
-	          }
-	        }
-	      ]
-	    });
-	    Prism.languages.insertBefore('coffeescript', 'keyword', {
-	      // Object property
-	      property: /(?!\d)\w+(?=\s*:(?!:))/
-	    });
-	    delete Prism.languages.coffeescript['template-string'];
-	    Prism.languages.coffee = Prism.languages.coffeescript;
-	  })(Prism);
-	}
-	return coffeescript_1;
+    // Ignore comments starting with { to privilege string interpolation highlighting
+    var comment = /#(?!\{).+/;
+    var interpolation = {
+      pattern: /#\{[^}]+\}/,
+      alias: 'variable'
+    };
+    Prism.languages.coffeescript = Prism.languages.extend('javascript', {
+      comment: comment,
+      string: [
+        // Strings are multiline
+        {
+          pattern: /'(?:\\[\s\S]|[^\\'])*'/,
+          greedy: true
+        },
+        {
+          // Strings are multiline
+          pattern: /"(?:\\[\s\S]|[^\\"])*"/,
+          greedy: true,
+          inside: {
+            interpolation: interpolation
+          }
+        }
+      ],
+      keyword:
+        /\b(?:and|break|by|catch|class|continue|debugger|delete|do|each|else|extend|extends|false|finally|for|if|in|instanceof|is|isnt|let|loop|namespace|new|no|not|null|of|off|on|or|own|return|super|switch|then|this|throw|true|try|typeof|undefined|unless|until|when|while|window|with|yes|yield)\b/,
+      'class-member': {
+        pattern: /@(?!\d)\w+/,
+        alias: 'variable'
+      }
+    });
+    Prism.languages.insertBefore('coffeescript', 'comment', {
+      'multiline-comment': {
+        pattern: /###[\s\S]+?###/,
+        alias: 'comment'
+      },
+      // Block regexp can contain comments and interpolation
+      'block-regex': {
+        pattern: /\/{3}[\s\S]*?\/{3}/,
+        alias: 'regex',
+        inside: {
+          comment: comment,
+          interpolation: interpolation
+        }
+      }
+    });
+    Prism.languages.insertBefore('coffeescript', 'string', {
+      'inline-javascript': {
+        pattern: /`(?:\\[\s\S]|[^\\`])*`/,
+        inside: {
+          delimiter: {
+            pattern: /^`|`$/,
+            alias: 'punctuation'
+          },
+          script: {
+            pattern: /[\s\S]+/,
+            alias: 'language-javascript',
+            inside: Prism.languages.javascript
+          }
+        }
+      },
+      // Block strings
+      'multiline-string': [
+        {
+          pattern: /'''[\s\S]*?'''/,
+          greedy: true,
+          alias: 'string'
+        },
+        {
+          pattern: /"""[\s\S]*?"""/,
+          greedy: true,
+          alias: 'string',
+          inside: {
+            interpolation: interpolation
+          }
+        }
+      ]
+    });
+    Prism.languages.insertBefore('coffeescript', 'keyword', {
+      // Object property
+      property: /(?!\d)\w+(?=\s*:(?!:))/
+    });
+    delete Prism.languages.coffeescript['template-string'];
+    Prism.languages.coffee = Prism.languages.coffeescript;
+  })(Prism);
 }
 
-var concurnas_1;
-var hasRequiredConcurnas;
-
-function requireConcurnas () {
-	if (hasRequiredConcurnas) return concurnas_1;
-	hasRequiredConcurnas = 1;
-
-	concurnas_1 = concurnas;
-	concurnas.displayName = 'concurnas';
-	concurnas.aliases = ['conc'];
-	function concurnas(Prism) {
-	  Prism.languages.concurnas = {
-	    comment: {
-	      pattern: /(^|[^\\])(?:\/\*[\s\S]*?(?:\*\/|$)|\/\/.*)/,
-	      lookbehind: true,
-	      greedy: true
-	    },
-	    langext: {
-	      pattern: /\b\w+\s*\|\|[\s\S]+?\|\|/,
-	      greedy: true,
-	      inside: {
-	        'class-name': /^\w+/,
-	        string: {
-	          pattern: /(^\s*\|\|)[\s\S]+(?=\|\|$)/,
-	          lookbehind: true
-	        },
-	        punctuation: /\|\|/
-	      }
-	    },
-	    function: {
-	      pattern: /((?:^|\s)def[ \t]+)[a-zA-Z_]\w*(?=\s*\()/,
-	      lookbehind: true
-	    },
-	    keyword:
-	      /\b(?:abstract|actor|also|annotation|assert|async|await|bool|boolean|break|byte|case|catch|changed|char|class|closed|constant|continue|def|default|del|double|elif|else|enum|every|extends|false|finally|float|for|from|global|gpudef|gpukernel|if|import|in|init|inject|int|lambda|local|long|loop|match|new|nodefault|null|of|onchange|open|out|override|package|parfor|parforsync|post|pre|private|protected|provide|provider|public|return|shared|short|single|size_t|sizeof|super|sync|this|throw|trait|trans|transient|true|try|typedef|unchecked|using|val|var|void|while|with)\b/,
-	    boolean: /\b(?:false|true)\b/,
-	    number:
-	      /\b0b[01][01_]*L?\b|\b0x(?:[\da-f_]*\.)?[\da-f_p+-]+\b|(?:\b\d[\d_]*(?:\.[\d_]*)?|\B\.\d[\d_]*)(?:e[+-]?\d[\d_]*)?[dfls]?/i,
-	    punctuation: /[{}[\];(),.:]/,
-	    operator:
-	      /<==|>==|=>|->|<-|<>|&==|&<>|\?:?|\.\?|\+\+|--|[-+*/=<>]=?|[!^~]|\b(?:and|as|band|bor|bxor|comp|is|isnot|mod|or)\b=?/,
-	    annotation: {
-	      pattern: /@(?:\w+:)?(?:\w+|\[[^\]]+\])?/,
-	      alias: 'builtin'
-	    }
-	  };
-	  Prism.languages.insertBefore('concurnas', 'langext', {
-	    'regex-literal': {
-	      pattern: /\br("|')(?:\\.|(?!\1)[^\\\r\n])*\1/,
-	      greedy: true,
-	      inside: {
-	        interpolation: {
-	          pattern:
-	            /((?:^|[^\\])(?:\\{2})*)\{(?:[^{}]|\{(?:[^{}]|\{[^}]*\})*\})+\}/,
-	          lookbehind: true,
-	          inside: Prism.languages.concurnas
-	        },
-	        regex: /[\s\S]+/
-	      }
-	    },
-	    'string-literal': {
-	      pattern: /(?:\B|\bs)("|')(?:\\.|(?!\1)[^\\\r\n])*\1/,
-	      greedy: true,
-	      inside: {
-	        interpolation: {
-	          pattern:
-	            /((?:^|[^\\])(?:\\{2})*)\{(?:[^{}]|\{(?:[^{}]|\{[^}]*\})*\})+\}/,
-	          lookbehind: true,
-	          inside: Prism.languages.concurnas
-	        },
-	        string: /[\s\S]+/
-	      }
-	    }
-	  });
-	  Prism.languages.conc = Prism.languages.concurnas;
-	}
-	return concurnas_1;
+var concurnas_1 = concurnas;
+concurnas.displayName = 'concurnas';
+concurnas.aliases = ['conc'];
+function concurnas(Prism) {
+  Prism.languages.concurnas = {
+    comment: {
+      pattern: /(^|[^\\])(?:\/\*[\s\S]*?(?:\*\/|$)|\/\/.*)/,
+      lookbehind: true,
+      greedy: true
+    },
+    langext: {
+      pattern: /\b\w+\s*\|\|[\s\S]+?\|\|/,
+      greedy: true,
+      inside: {
+        'class-name': /^\w+/,
+        string: {
+          pattern: /(^\s*\|\|)[\s\S]+(?=\|\|$)/,
+          lookbehind: true
+        },
+        punctuation: /\|\|/
+      }
+    },
+    function: {
+      pattern: /((?:^|\s)def[ \t]+)[a-zA-Z_]\w*(?=\s*\()/,
+      lookbehind: true
+    },
+    keyword:
+      /\b(?:abstract|actor|also|annotation|assert|async|await|bool|boolean|break|byte|case|catch|changed|char|class|closed|constant|continue|def|default|del|double|elif|else|enum|every|extends|false|finally|float|for|from|global|gpudef|gpukernel|if|import|in|init|inject|int|lambda|local|long|loop|match|new|nodefault|null|of|onchange|open|out|override|package|parfor|parforsync|post|pre|private|protected|provide|provider|public|return|shared|short|single|size_t|sizeof|super|sync|this|throw|trait|trans|transient|true|try|typedef|unchecked|using|val|var|void|while|with)\b/,
+    boolean: /\b(?:false|true)\b/,
+    number:
+      /\b0b[01][01_]*L?\b|\b0x(?:[\da-f_]*\.)?[\da-f_p+-]+\b|(?:\b\d[\d_]*(?:\.[\d_]*)?|\B\.\d[\d_]*)(?:e[+-]?\d[\d_]*)?[dfls]?/i,
+    punctuation: /[{}[\];(),.:]/,
+    operator:
+      /<==|>==|=>|->|<-|<>|&==|&<>|\?:?|\.\?|\+\+|--|[-+*/=<>]=?|[!^~]|\b(?:and|as|band|bor|bxor|comp|is|isnot|mod|or)\b=?/,
+    annotation: {
+      pattern: /@(?:\w+:)?(?:\w+|\[[^\]]+\])?/,
+      alias: 'builtin'
+    }
+  };
+  Prism.languages.insertBefore('concurnas', 'langext', {
+    'regex-literal': {
+      pattern: /\br("|')(?:\\.|(?!\1)[^\\\r\n])*\1/,
+      greedy: true,
+      inside: {
+        interpolation: {
+          pattern:
+            /((?:^|[^\\])(?:\\{2})*)\{(?:[^{}]|\{(?:[^{}]|\{[^}]*\})*\})+\}/,
+          lookbehind: true,
+          inside: Prism.languages.concurnas
+        },
+        regex: /[\s\S]+/
+      }
+    },
+    'string-literal': {
+      pattern: /(?:\B|\bs)("|')(?:\\.|(?!\1)[^\\\r\n])*\1/,
+      greedy: true,
+      inside: {
+        interpolation: {
+          pattern:
+            /((?:^|[^\\])(?:\\{2})*)\{(?:[^{}]|\{(?:[^{}]|\{[^}]*\})*\})+\}/,
+          lookbehind: true,
+          inside: Prism.languages.concurnas
+        },
+        string: /[\s\S]+/
+      }
+    }
+  });
+  Prism.languages.conc = Prism.languages.concurnas;
 }
 
 var coq_1;
@@ -38629,7 +38634,7 @@ var hasRequiredShellSession;
 function requireShellSession () {
 	if (hasRequiredShellSession) return shellSession_1;
 	hasRequiredShellSession = 1;
-	var refractorBash = bash_1;
+	var refractorBash = requireBash();
 	shellSession_1 = shellSession;
 	shellSession.displayName = 'shellSession';
 	shellSession.aliases = [];
@@ -40096,7 +40101,7 @@ var hasRequiredVbnet;
 function requireVbnet () {
 	if (hasRequiredVbnet) return vbnet_1;
 	hasRequiredVbnet = 1;
-	var refractorBasic = basic_1;
+	var refractorBasic = requireBasic();
 	vbnet_1 = vbnet;
 	vbnet.displayName = 'vbnet';
 	vbnet.aliases = [];
@@ -42827,7 +42832,7 @@ refractor.register(apl_1);
 refractor.register(applescript_1);
 refractor.register(aql_1);
 refractor.register(arduino_1);
-refractor.register(requireArff());
+refractor.register(arff_1);
 refractor.register(asciidoc_1);
 refractor.register(asm6502_1);
 refractor.register(asmatmel_1);
@@ -42835,9 +42840,9 @@ refractor.register(aspnet_1);
 refractor.register(autohotkey_1);
 refractor.register(autoit_1);
 refractor.register(avisynth_1);
-refractor.register(avroIdl_1);
-refractor.register(bash_1);
-refractor.register(basic_1);
+refractor.register(requireAvroIdl());
+refractor.register(requireBash());
+refractor.register(requireBasic());
 refractor.register(batch_1);
 refractor.register(bbcode_1);
 refractor.register(bicep_1);
@@ -42855,8 +42860,8 @@ refractor.register(cil_1);
 refractor.register(clojure_1);
 refractor.register(cmake_1);
 refractor.register(cobol_1);
-refractor.register(requireCoffeescript());
-refractor.register(requireConcurnas());
+refractor.register(coffeescript_1);
+refractor.register(concurnas_1);
 refractor.register(requireCoq());
 refractor.register(requireCpp());
 refractor.register(requireCrystal());
@@ -45895,7 +45900,7 @@ var getDateRangeTag = function getDateRangeTag() {
   var dayDifference = differenceInDays(fromUnixTime(endUnix), fromUnixTime(startUnix));
   var hourDifference = differenceInHours(fromUnixTime(endUnix), fromUnixTime(startUnix));
   if (hourDifference <= 24) {
-    return 'hours';
+    return 'hour';
   }
   if (dayDifference >= 30) {
     return 'month';
@@ -109674,7 +109679,7 @@ var BaseAreaChart = function BaseAreaChart(props) {
     gridContainLabel = props.gridContainLabel,
     seriesData = props.seriesData,
     tooltip = props.tooltip,
-    legendShow = props.legendShow,
+    legend = props.legend,
     xAxisLabelShow = props.xAxisLabelShow,
     xSplitLineShow = props.xSplitLineShow,
     xAxisLineShow = props.xAxisLineShow,
@@ -109775,10 +109780,9 @@ var BaseAreaChart = function BaseAreaChart(props) {
         containLabel: gridContainLabel
       }, gridOptions),
       tooltip: _objectSpread2({}, tooltip),
-      legend: {
-        show: legendShow,
+      legend: _objectSpread2(_objectSpread2({}, legend), {}, {
         data: Object.keys((_seriesData$chartData6 = seriesData === null || seriesData === void 0 ? void 0 : seriesData.chartData) !== null && _seriesData$chartData6 !== void 0 ? _seriesData$chartData6 : [])
-      },
+      }),
       xAxis: [{
         type: 'category',
         axisLabel: {
@@ -109827,7 +109831,7 @@ BaseAreaChart.propTypes = {
   gridOptions: propTypes$1.exports.object,
   gridContainLabel: propTypes$1.exports.bool,
   tooltip: propTypes$1.exports.object,
-  legendShow: propTypes$1.exports.bool,
+  legend: propTypes$1.exports.object,
   xAxisLabelShow: propTypes$1.exports.bool,
   xSplitLineShow: propTypes$1.exports.bool,
   xAxisLineShow: propTypes$1.exports.bool,
@@ -109863,7 +109867,7 @@ BaseAreaChart.defaultProps = {
   gridContainLabel: false,
   tooltip: {},
   stacked: false,
-  legendShow: false,
+  legend: {},
   xAxisLabelShow: false,
   xSplitLineShow: false,
   xAxisLineShow: false,
@@ -110144,7 +110148,8 @@ var BaseWidget = function BaseWidget(props) {
     children = props.children,
     fallbackProps = props.fallbackProps,
     theme = props.theme,
-    setFallback = props.setFallback;
+    setFallback = props.setFallback,
+    showFallback = props.showFallback;
   var emptyChartData = React.useMemo(function () {
     return React.Children.toArray(children).every(function (child) {
       var _child$props$seriesDa, _child$props, _child$props$seriesDa2;
@@ -110189,7 +110194,7 @@ var BaseWidget = function BaseWidget(props) {
     }), /*#__PURE__*/jsxRuntime.jsxs("div", {
       className: modules_6a0e74b6.children,
       "data-elem": "children",
-      children: [!loading && emptyChartData && /*#__PURE__*/jsxRuntime.jsx(WidgetFallback, _objectSpread2(_objectSpread2({}, fallbackProps), {}, {
+      children: [showFallback && !loading && emptyChartData && /*#__PURE__*/jsxRuntime.jsx(WidgetFallback, _objectSpread2(_objectSpread2({}, fallbackProps), {}, {
         onReload: onReload,
         theme: theme
       })), React.Children.map(children, function (child) {
@@ -110217,7 +110222,8 @@ BaseWidget.propTypes = {
     subtitle: propTypes$1.exports.string
   }),
   theme: propTypes$1.exports.oneOf(['light', 'dark']),
-  setFallback: propTypes$1.exports.func
+  setFallback: propTypes$1.exports.func,
+  showFallback: propTypes$1.exports.bool
 };
 BaseWidget.defaultProps = {
   loading: false,
@@ -110233,7 +110239,8 @@ BaseWidget.defaultProps = {
     subtitle: 'There could be something happening on our end. Reload this widget to try again.'
   },
   theme: 'dark',
-  setFallback: function setFallback() {}
+  setFallback: function setFallback() {},
+  showFallback: false
 };
 
 var css$1 = ".DisplayPicture_module_root__a7ba07d1.DisplayPicture_module_sm__a7ba07d1 img {\n  height: 1.5rem;\n  width: 1.5rem;\n  border-radius: 100%;\n}\n.DisplayPicture_module_root__a7ba07d1.DisplayPicture_module_sm__a7ba07d1 div {\n  height: 1.5rem;\n  width: 1.5rem;\n  border-radius: 100%;\n  background-color: var(--highlight);\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.DisplayPicture_module_root__a7ba07d1.DisplayPicture_module_sm__a7ba07d1 div span {\n  font-size: 1rem;\n  font-weight: 600;\n  color: var(--white);\n}\n.DisplayPicture_module_root__a7ba07d1.DisplayPicture_module_md__a7ba07d1 img {\n  height: 5.3125rem;\n  width: 5.3125rem;\n  border-radius: 100%;\n}\n.DisplayPicture_module_root__a7ba07d1.DisplayPicture_module_md__a7ba07d1 div {\n  height: 5.3125rem;\n  width: 5.3125rem;\n  border-radius: 100%;\n  background-color: var(--highlight);\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.DisplayPicture_module_root__a7ba07d1.DisplayPicture_module_md__a7ba07d1 div span {\n  font-size: 2rem;\n  font-weight: 600;\n  color: var(--white);\n}";

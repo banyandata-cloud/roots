@@ -37,7 +37,7 @@ export const getDateRangeTag = (dates = []) => {
 	const hourDifference = differenceInHours(fromUnixTime(endUnix), fromUnixTime(startUnix));
 
 	if (hourDifference <= 24) {
-		return 'hours';
+		return 'hour';
 	}
 
 	if (dayDifference >= 30) {

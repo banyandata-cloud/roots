@@ -67,6 +67,7 @@ const BaseWidget = (props) => {
 		fallbackProps,
 		theme,
 		setFallback,
+		showFallback,
 	} = props;
 
 	const emptyChartData = useMemo(() => {
@@ -113,7 +114,7 @@ const BaseWidget = (props) => {
 				</div>
 			</div>
 			<div className={styles.children} data-elem='children'>
-				{!loading && emptyChartData && (
+				{showFallback && !loading && emptyChartData && (
 					<WidgetFallback {...fallbackProps} onReload={onReload} theme={theme} />
 				)}
 				{Children.map(children, (child) => {
@@ -144,6 +145,7 @@ BaseWidget.propTypes = {
 	}),
 	theme: PropTypes.oneOf(['light', 'dark']),
 	setFallback: PropTypes.func,
+	showFallback: PropTypes.bool,
 };
 
 BaseWidget.defaultProps = {
@@ -161,6 +163,7 @@ BaseWidget.defaultProps = {
 	},
 	theme: 'dark',
 	setFallback: () => {},
+	showFallback: false,
 };
 
 export default BaseWidget;
