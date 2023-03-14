@@ -16,9 +16,9 @@ export default {
 const sampleData = {
 	chartData: {
 		MySql: {
-			x1: 0,
-			x2: 0,
-			x3: 0,
+			x1: 39.53,
+			x2: 46.51,
+			x3: 13.95,
 		},
 		PgSql: {
 			x1: 39.53,
