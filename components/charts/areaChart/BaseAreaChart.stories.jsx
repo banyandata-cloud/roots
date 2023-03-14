@@ -253,7 +253,9 @@ Default.args = {
 LineStack.args = {
 	title: 'Title',
 	gridContainLabel: true,
-	legendShow: false,
+	legend: {
+		show: false,
+	},
 	xAxisShow: true,
 	smooth: false,
 	stacked: false,
