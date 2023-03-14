@@ -95,7 +95,9 @@ Default.args = {
 		top: 100,
 	},
 	gridContainLabel: true,
-	legendShow: false,
+	legend: {
+		show: false,
+	},
 	xAxisLabelShow: true,
 	xSplitLineShow: false,
 	xAxisLineShow: true,
