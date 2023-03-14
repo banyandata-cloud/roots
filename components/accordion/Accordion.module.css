@@ -24,6 +24,7 @@
   transform: rotate(-90deg);
   width: 1rem;
   height: 1rem;
+  fill: var(--dark-grey);
 }
 .root > .header[data-elem=base-cell] .title {
   flex: 1 1 auto;
