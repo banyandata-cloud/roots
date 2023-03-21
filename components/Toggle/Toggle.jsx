@@ -98,14 +98,24 @@ const Toggle = forwardRef(function Toggle(props, ref) {
 				</Button>
 			)}
 			{options.map((item) => {
-				const { title, value: itemValue, leftComponent, rightComponent } = item;
+				const {
+					title,
+					value: itemValue,
+					leftComponent,
+					rightComponent,
+					className: itemClassName,
+				} = item;
 				const isActive = inputValue.indexOf(itemValue) !== -1 && !allSelected;
 				return (
 					<Button
 						size='auto'
 						data-elem='toggle'
 						key={itemValue}
-						className={classes(styles['toggle-button'], isActive ? styles.active : '')}
+						className={classes(
+							styles['toggle-button'],
+							isActive ? styles.active : '',
+							itemClassName
+						)}
 						onClick={() => {
 							onButtonClick(itemValue, isActive);
 						}}
