@@ -150,6 +150,6 @@ export const Multi = ControlledTemplate.bind({});
 
 Multi.args = {
 	...Controlled.args,
-	defaultValue: ['oracle'],
+	defaultValue: ['oracle', 'mysql', 'pgsql'],
 	multi: true,
 };
