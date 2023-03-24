@@ -38,7 +38,6 @@ const NestedPieChart = (props) => {
 		gridOptions,
 		tooltip,
 		seriesData,
-		startAngle,
 		radius,
 		center,
 		cursor,
@@ -84,16 +83,19 @@ const NestedPieChart = (props) => {
 	const generateSeries = () => {
 		return pieSeries.map((objectData) => {
 			let completionValue = objectData?.complete;
+			let semiDoughnutValue = 0;
 			return {
 				...seriesOptionObject,
 				...objectData,
-				startAngle,
+				startAngle: objectData?.semiDoughnut ? 180 : objectData?.startAngle,
 				data:
 					objectData?.complete ?? 0
 						? [
 								...Object.keys(objectData?.seriesData?.chartData ?? {}).map(
 									(key, subIndex) => {
 										completionValue -=
+											objectData?.seriesData?.chartData?.[key] ?? 0;
+										semiDoughnutValue +=
 											objectData?.seriesData?.chartData?.[key] ?? 0;
 										return {
 											value: objectData?.seriesData?.chartData?.[key],
@@ -123,27 +125,55 @@ const NestedPieChart = (props) => {
 										show: false,
 									},
 								},
+								objectData?.semiDoughnut
+									? {
+											value: semiDoughnutValue,
+											name: '',
+											itemStyle: {
+												opacity: 0,
+											},
+											tooltip: {
+												show: false,
+											},
+									  }
+									: {},
 						  ]
-						: Object.keys(objectData?.seriesData?.chartData ?? {}).map(
-								(key, subIndex) => {
-									return {
-										value: objectData?.seriesData?.chartData?.[key],
-										name: objectData?.seriesData?.metaData?.keyData?.[key],
-										itemStyle: {
-											...objectData?.seriesOption?.[subIndex]?.itemStyle,
-										},
-										label: {
-											...objectData?.seriesOption?.[subIndex]?.label,
-										},
-										tooltip: {
-											...objectData?.seriesOption?.[subIndex]?.tooltip,
-										},
-										emphasis: {
-											...objectData?.seriesOption?.[subIndex]?.emphasis,
-										},
-									};
-								}
-						  ),
+						: [
+								...Object.keys(objectData?.seriesData?.chartData ?? {}).map(
+									(key, subIndex) => {
+										semiDoughnutValue +=
+											objectData?.seriesData?.chartData?.[key] ?? 0;
+										return {
+											value: objectData?.seriesData?.chartData?.[key],
+											name: objectData?.seriesData?.metaData?.keyData?.[key],
+											itemStyle: {
+												...objectData?.seriesOption?.[subIndex]?.itemStyle,
+											},
+											label: {
+												...objectData?.seriesOption?.[subIndex]?.label,
+											},
+											tooltip: {
+												...objectData?.seriesOption?.[subIndex]?.tooltip,
+											},
+											emphasis: {
+												...objectData?.seriesOption?.[subIndex]?.emphasis,
+											},
+										};
+									}
+								),
+								objectData?.semiDoughnut
+									? {
+											value: semiDoughnutValue,
+											name: '',
+											itemStyle: {
+												opacity: 0,
+											},
+											tooltip: {
+												show: false,
+											},
+									  }
+									: {},
+						  ],
 			};
 		});
 	};
@@ -182,7 +212,6 @@ NestedPieChart.propTypes = {
 		chartData: PropTypes.object,
 		metaData: PropTypes.object,
 	}),
-	startAngle: PropTypes.number,
 	cursor: PropTypes.string,
 	radius: PropTypes.arrayOf(PropTypes.string),
 	center: PropTypes.arrayOf(PropTypes.string),
@@ -209,7 +238,6 @@ NestedPieChart.defaultProps = {
 		trigger: 'item',
 	},
 	seriesData: {},
-	startAngle: 90,
 	cursor: 'default',
 	radius: ['30%', '60%'],
 	center: ['50%', '50%'],
