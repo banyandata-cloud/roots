@@ -109995,12 +109995,13 @@ var Toggle = /*#__PURE__*/forwardRef(function Toggle(props, ref) {
       var title = item.title,
         itemValue = item.value,
         leftComponent = item.leftComponent,
-        rightComponent = item.rightComponent;
+        rightComponent = item.rightComponent,
+        itemClassName = item.className;
       var isActive = inputValue.indexOf(itemValue) !== -1 && !allSelected;
       return /*#__PURE__*/jsx(Button, {
         size: "auto",
         "data-elem": "toggle",
-        className: classes(modules_a2cdc77c['toggle-button'], isActive ? modules_a2cdc77c.active : ''),
+        className: classes(modules_a2cdc77c['toggle-button'], isActive ? modules_a2cdc77c.active : '', itemClassName),
         onClick: function onClick() {
           onButtonClick(itemValue, isActive);
         },
