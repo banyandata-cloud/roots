@@ -71,6 +71,18 @@ const BaseVerticalBarChart = (props) => {
 		? 1
 		: 0;
 
+	const determineColor = (objectData, index, subIndex, key) => {
+		if (seriesData?.chartData?.[key]?.[`x${index + 1}`]) {
+			if (typeof (objectData?.color ?? '' ?? {}) !== 'string') {
+				return new echarts.graphic.LinearGradient(
+					...((objectData?.barColor?.[subIndex] ?? '') || (objectData?.color ?? ''))
+				);
+			}
+			return (objectData?.barColor?.[subIndex] ?? '') || (objectData?.color ?? '');
+		}
+		return 'whitesmoke';
+	};
+
 	const seriesOptionObject = {
 		type: 'bar',
 		barWidth: stackCount ? barWidth : barWidth / stackCount,
@@ -140,10 +152,7 @@ const BaseVerticalBarChart = (props) => {
 							? seriesData?.chartData?.[key]?.[`x${index + 1}`] ?? ''
 							: minHeight,
 						itemStyle: {
-							color: seriesData?.chartData?.[key]?.[`x${index + 1}`]
-								? (objectData?.barColor?.[subIndex] ?? '') ||
-								  (objectData?.color ?? '')
-								: 'whitesmoke',
+							color: determineColor(objectData, index, subIndex, key),
 						},
 						tooltip: {
 							...(seriesOption[subIndex]?.tooltip ?? {}),
