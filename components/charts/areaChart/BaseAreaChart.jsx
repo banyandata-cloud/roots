@@ -199,6 +199,10 @@ const BaseAreaChart = (props) => {
 						},
 						splitLine: {
 							show: xSplitLineShow,
+							lineStyle: {
+								color: axisSplitColor,
+								type: splitType,
+							},
 						},
 						axisLine: {
 							show: xAxisLineShow,
