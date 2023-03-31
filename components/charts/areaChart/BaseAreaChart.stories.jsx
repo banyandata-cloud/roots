@@ -49,6 +49,22 @@ const datum1 = {
 	},
 };
 
+const datum2 = {
+	chartData: {
+		IAM: [5, 2, 3, 4, 5, 1, 5, 2, 3, 1, 2, 5],
+	},
+	metaData: {
+		seriesData: {
+			IAM: {
+				Default: [377, 376, 377, 378, 379, 380],
+				New_CTG: [143, 144, 145, 146, 147, 148],
+			},
+		},
+
+		xAxisData: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+	},
+};
+
 const Template = (args) => {
 	return (
 		<ThemedContainer
@@ -83,11 +99,40 @@ const Template = (args) => {
 	);
 };
 
+const Template2 = (args) => {
+	return (
+		<ThemedContainer
+			{...args}
+			style={{
+				height: '100%',
+			}}>
+			<BaseAreaChart
+				{...args}
+				seriesData={{
+					...datum2,
+				}}
+				tooltip={{
+					show: true,
+					trigger: 'item',
+					axisPointer: {
+						type: 'cross',
+						label: {
+							backgroundColor: '#6a7985',
+						},
+					},
+					triggerOn: 'mousemove',
+				}}
+			/>
+		</ThemedContainer>
+	);
+};
+
 export const Default = Template.bind({});
 export const LineStack = Template.bind({});
+export const CurveGradient = Template2.bind({});
 
 Default.args = {
-	title: 'Title',
+	title: '',
 	gridOptions: {
 		left: 50,
 		right: 50,
@@ -370,6 +415,75 @@ LineStack.args = {
 			},
 			emphasis: {
 				focus: 'series',
+			},
+		},
+	],
+};
+
+CurveGradient.args = {
+	title: 'Title',
+	gridContainLabel: true,
+	legend: {
+		show: false,
+	},
+	xAxisShow: true,
+	smooth: true,
+	stacked: false,
+	yAxisLabelShow: false,
+	ySplitLineShow: false,
+	yAxisLineShow: false,
+	yAxisTickShow: false,
+	cursor: 'default',
+	seriesOption: [
+		{
+			stackIndex: 1,
+			color: [
+				0,
+				0,
+				0,
+				1,
+				[
+					{
+						offset: 0,
+						color: 'rgb(255, 158, 68)',
+					},
+					{
+						offset: 1,
+						color: 'rgb(255, 70, 131)',
+					},
+				],
+			],
+			symbol: 'circle',
+			label: {
+				show: false,
+			},
+			lineStyle: {
+				width: 4,
+				type: 'solid',
+				cap: 'butt',
+				join: 'round',
+				color: [
+					0,
+					0,
+					0,
+					1,
+					[
+						{
+							offset: 0,
+							color: 'rgb(255, 158, 68)',
+						},
+						{
+							offset: 1,
+							color: 'rgb(255, 70, 131)',
+						},
+					],
+				],
+			},
+			areaStyle: {
+				opacity: 0,
+			},
+			emphasis: {
+				focus: 'none',
 			},
 		},
 	],

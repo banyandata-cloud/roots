@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable react/forbid-prop-types */
 import PropTypes from 'prop-types';
 import EChartsReactCore from 'echarts-for-react/lib/core';
@@ -18,6 +19,7 @@ import {
 import styles from './BaseAreaChart.module.css';
 import { classes } from '../../../utils';
 import { Skeleton } from './Skeleton';
+import { COLORS } from '../../../styles';
 
 // Register the required components
 echarts.use([
@@ -130,6 +132,14 @@ const BaseAreaChart = (props) => {
 				...seriesOptionObject,
 				...seriesOption[index],
 				name: Object.keys(seriesData?.chartData ?? {})?.[index] ?? '',
+				...(seriesOption[index]?.color && {
+					color:
+						typeof (seriesOption[index]?.color ?? {}) !== 'string'
+							? new echarts.graphic.LinearGradient(
+									...(seriesOption[index]?.color ?? [])
+							  )
+							: seriesOption[index]?.color ?? {},
+				}),
 				label: {
 					...(seriesOptionObject?.label ?? {}),
 					...(seriesOption[index]?.label ?? {}),
@@ -137,10 +147,26 @@ const BaseAreaChart = (props) => {
 				lineStyle: {
 					...(seriesOptionObject?.lineStyle ?? {}),
 					...(seriesOption[index]?.lineStyle ?? {}),
+					...(seriesOption[index]?.lineStyle?.color && {
+						color:
+							typeof (seriesOption[index]?.lineStyle?.color ?? {}) !== 'string'
+								? new echarts.graphic.LinearGradient(
+										...(seriesOption[index]?.lineStyle?.color ?? {})
+								  )
+								: seriesOption[index]?.lineStyle?.color ?? {},
+					}),
 				},
 				areaStyle: {
 					...(seriesOptionObject?.areaStyle ?? {}),
 					...(seriesOption[index]?.areaStyle ?? {}),
+					...(seriesOption[index]?.areaStyle?.color && {
+						color:
+							typeof (seriesOption[index]?.areaStyle?.color ?? {}) !== 'string'
+								? new echarts.graphic.LinearGradient(
+										seriesOption[index]?.areaStyle?.color ?? {}
+								  )
+								: seriesOption[index]?.areaStyle?.color ?? {},
+					}),
 				},
 				emphasis: {
 					...(seriesOptionObject?.emphasis ?? {}),
@@ -172,15 +198,36 @@ const BaseAreaChart = (props) => {
 						type: 'category',
 						axisLabel: {
 							show: xAxisLabelShow,
+							color:
+								axisLabelColor !== ''
+									? axisLabelColor
+									: theme === 'dark'
+									? '#a2a4a5'
+									: COLORS.grey,
 						},
 						splitLine: {
 							show: xSplitLineShow,
+							lineStyle: {
+								color:
+									axisSplitColor !== ''
+										? axisSplitColor
+										: theme === 'dark'
+										? COLORS['dark-grey']
+										: COLORS.grey5,
+								type: splitType,
+							},
 						},
 						axisLine: {
 							show: xAxisLineShow,
+							lineStyle: {
+								color: theme === 'dark' ? '#757679' : COLORS.grey3,
+							},
 						},
 						axisTick: {
 							show: xAxisTickShow,
+							lineStyle: {
+								color: theme === 'dark' ? '#a2a4a5' : COLORS.grey,
+							},
 						},
 						boundaryGap: false,
 						data: seriesData?.metaData?.xAxisData ?? [],
@@ -191,20 +238,36 @@ const BaseAreaChart = (props) => {
 						type: 'value',
 						axisLabel: {
 							show: yAxisLabelShow,
-							color: axisLabelColor,
+							color:
+								axisLabelColor !== ''
+									? axisLabelColor
+									: theme === 'dark'
+									? '#a2a4a5'
+									: COLORS.grey,
 						},
 						splitLine: {
 							show: ySplitLineShow,
 							lineStyle: {
-								color: axisSplitColor,
+								color:
+									axisSplitColor !== ''
+										? axisSplitColor
+										: theme === 'dark'
+										? COLORS['dark-grey']
+										: COLORS.grey5,
 								type: splitType,
 							},
 						},
 						axisLine: {
 							show: yAxisLineShow,
+							lineStyle: {
+								color: theme === 'dark' ? '#757679' : COLORS.grey3,
+							},
 						},
 						axisTick: {
 							show: yAxisTickShow,
+							lineStyle: {
+								color: theme === 'dark' ? '#a2a4a5' : COLORS.grey,
+							},
 						},
 					},
 				],
@@ -271,8 +334,8 @@ BaseAreaChart.defaultProps = {
 	xSplitLineShow: false,
 	xAxisLineShow: false,
 	xAxisTickShow: false,
-	axisLabelColor: 'white',
-	axisSplitColor: 'white',
+	axisLabelColor: '',
+	axisSplitColor: '',
 	splitType: 'solid',
 	seriesData: {},
 	yAxisLabelShow: false,
