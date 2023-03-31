@@ -39,8 +39,8 @@
   background: var(--white);
 }
 .root.dark-theme > .inner {
-  background: var(--dark-grey);
+  background: var(--menu-black);
 }
 .root.dark-theme span.line {
-  background: var(--dark-grey);
+  background: var(--menu-black);
 }/*# sourceMappingURL=Skeleton.module.css.map */
