@@ -19,6 +19,7 @@ import {
 import styles from './NestedPieChart.module.css';
 import { classes } from '../../../utils';
 import { Skeleton } from '../pieChart/Skeleton';
+import { COLORS } from '../../../styles';
 
 // Register the required components
 echarts.use([
@@ -66,6 +67,7 @@ const NestedPieChart = (props) => {
 			show: showLabelLine,
 		},
 		itemStyle: {
+			borderColor: theme === 'dark' ? COLORS['menu-black'] : COLORS.white,
 			...itemStyle,
 		},
 		label: {

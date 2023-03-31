@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable react/forbid-prop-types */
 import PropTypes from 'prop-types';
 import EChartsReactCore from 'echarts-for-react/lib/core';
@@ -18,6 +19,7 @@ import {
 import styles from './BaseAreaChart.module.css';
 import { classes } from '../../../utils';
 import { Skeleton } from './Skeleton';
+import { COLORS } from '../../../styles';
 
 // Register the required components
 echarts.use([
@@ -196,19 +198,36 @@ const BaseAreaChart = (props) => {
 						type: 'category',
 						axisLabel: {
 							show: xAxisLabelShow,
+							color:
+								axisLabelColor !== ''
+									? axisLabelColor
+									: theme === 'dark'
+									? '#a2a4a5'
+									: COLORS.grey,
 						},
 						splitLine: {
 							show: xSplitLineShow,
 							lineStyle: {
-								color: axisSplitColor,
+								color:
+									axisSplitColor !== ''
+										? axisSplitColor
+										: theme === 'dark'
+										? COLORS['dark-grey']
+										: COLORS.grey5,
 								type: splitType,
 							},
 						},
 						axisLine: {
 							show: xAxisLineShow,
+							lineStyle: {
+								color: theme === 'dark' ? '#757679' : COLORS.grey3,
+							},
 						},
 						axisTick: {
 							show: xAxisTickShow,
+							lineStyle: {
+								color: theme === 'dark' ? '#a2a4a5' : COLORS.grey,
+							},
 						},
 						boundaryGap: false,
 						data: seriesData?.metaData?.xAxisData ?? [],
@@ -219,20 +238,36 @@ const BaseAreaChart = (props) => {
 						type: 'value',
 						axisLabel: {
 							show: yAxisLabelShow,
-							color: axisLabelColor,
+							color:
+								axisLabelColor !== ''
+									? axisLabelColor
+									: theme === 'dark'
+									? '#a2a4a5'
+									: COLORS.grey,
 						},
 						splitLine: {
 							show: ySplitLineShow,
 							lineStyle: {
-								color: axisSplitColor,
+								color:
+									axisSplitColor !== ''
+										? axisSplitColor
+										: theme === 'dark'
+										? COLORS['dark-grey']
+										: COLORS.grey5,
 								type: splitType,
 							},
 						},
 						axisLine: {
 							show: yAxisLineShow,
+							lineStyle: {
+								color: theme === 'dark' ? '#757679' : COLORS.grey3,
+							},
 						},
 						axisTick: {
 							show: yAxisTickShow,
+							lineStyle: {
+								color: theme === 'dark' ? '#a2a4a5' : COLORS.grey,
+							},
 						},
 					},
 				],
@@ -299,8 +334,8 @@ BaseAreaChart.defaultProps = {
 	xSplitLineShow: false,
 	xAxisLineShow: false,
 	xAxisTickShow: false,
-	axisLabelColor: 'white',
-	axisSplitColor: 'white',
+	axisLabelColor: '',
+	axisSplitColor: '',
 	splitType: 'solid',
 	seriesData: {},
 	yAxisLabelShow: false,

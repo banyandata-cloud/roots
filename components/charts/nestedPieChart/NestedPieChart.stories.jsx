@@ -122,7 +122,6 @@ Default.args = {
 						color: '#0F62FE',
 						borderWidth: 15,
 						borderRadius: 500,
-						borderColor: COLORS['dark-grey'],
 						borderType: 'solid',
 					},
 				},
@@ -132,7 +131,6 @@ Default.args = {
 						color: '#71EEFF',
 						borderWidth: 15,
 						borderRadius: 500,
-						borderColor: COLORS['dark-grey'],
 						borderType: 'solid',
 					},
 				},
@@ -142,7 +140,6 @@ Default.args = {
 						color: '#67F990',
 						borderWidth: 15,
 						borderRadius: 500,
-						borderColor: COLORS['dark-grey'],
 						borderType: 'solid',
 					},
 					tooltip: {
