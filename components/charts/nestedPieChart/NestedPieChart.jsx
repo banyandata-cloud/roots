@@ -56,7 +56,6 @@ const NestedPieChart = (props) => {
 		return <Skeleton theme={theme} fallback={!loading && fallback} />;
 	}
 
-	console.log(COLORS);
 	const seriesOptionObject = {
 		type: 'pie',
 		radius,
