@@ -20,10 +20,9 @@
 		@include flex(row, space-between, center);
 		position: relative;
 		background: transparent;
-		border: 0.0625rem solid #d9d9d9;
 		border-radius: 0.25rem;
 		width: auto;
-		border: 0.0625rem solid $grey5;
+		border: 0.0625rem solid;
 		padding: 0.75rem 1rem;
 
 		cursor: pointer;
@@ -41,7 +40,6 @@
 			font-size: 1rem;
 			user-select: none;
 			margin-left: 0.9375rem;
-			color: $grey1;
 		}
 		.value {
 			font-weight: 400;
@@ -86,11 +84,29 @@
 			transform: rotate(90deg);
 		}
 	}
+
+	&.dark {
+		.container {
+			border-color: $grey;
+			.placeholder {
+				color: $grey2;
+			}
+		}
+	}
+
+	&.light {
+		.container {
+			border-color: $grey4;
+			.placeholder {
+				color: $grey;
+			}
+		}
+	}
+
 	.disabled {
 		@include flex(row, space-between, center);
 		position: relative;
 		background: $grey10;
-		border: 0.0625rem solid #d9d9d9;
 		border-radius: 0.25rem;
 		border: 0.0625rem solid $grey5;
 		padding: 0.75rem 1rem;

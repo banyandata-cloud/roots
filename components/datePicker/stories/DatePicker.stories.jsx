@@ -1,4 +1,5 @@
 import React from 'react';
+import { ThemedContainer } from '../../helpers';
 
 import DatePicker from '../DatePicker';
 
@@ -92,14 +93,9 @@ DisabledDatePicker.parameters = {
 
 export const ThemedDatePicker = (args) => {
 	return (
-		<div
-			style={{
-				width: '50%',
-				padding: 20,
-				background: '#333',
-			}}>
+		<ThemedContainer {...args}>
 			<DatePicker {...args} />
-		</div>
+		</ThemedContainer>
 	);
 };
 

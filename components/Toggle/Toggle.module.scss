@@ -16,20 +16,21 @@ div.root {
 	}
 
 	&.theme-dark {
-		border-color: $grey;
+		border-color: $dark-grey;
 
 		[data-elem='base-cell'].toggle-button {
 			color: $grey4;
 
 			&.active {
-				background: $menu-black;
+				background: $dark-grey;
 				color: $white;
+				border: 1px solid $grey;
 			}
 		}
 	}
 
 	&.theme-light {
-		border-color: $grey1;
+		border-color: $grey6;
 
 		[data-elem='base-cell'].toggle-button {
 			background: transparent;
@@ -38,6 +39,7 @@ div.root {
 			&.active {
 				background: $grey6;
 				color: $dark-grey;
+				border: 1px solid $grey4;
 			}
 		}
 	}
