@@ -19,6 +19,7 @@ import {
 import styles from './NestedPieChart.module.css';
 import { classes } from '../../../utils';
 import { Skeleton } from '../pieChart/Skeleton';
+import { COLORS } from '../../../styles';
 
 // Register the required components
 echarts.use([
@@ -55,6 +56,7 @@ const NestedPieChart = (props) => {
 		return <Skeleton theme={theme} fallback={!loading && fallback} />;
 	}
 
+	console.log(COLORS);
 	const seriesOptionObject = {
 		type: 'pie',
 		radius,
@@ -66,6 +68,7 @@ const NestedPieChart = (props) => {
 			show: showLabelLine,
 		},
 		itemStyle: {
+			borderColor: theme === 'dark' ? COLORS['menu-black'] : COLORS.white,
 			...itemStyle,
 		},
 		label: {
