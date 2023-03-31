@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Tabs from './Tabs';
 import { CaretIcon } from '../icons';
+import { ThemedContainer } from '../helpers';
 
 export default {
 	title: 'Components/Tabs',
@@ -16,7 +17,7 @@ const Template = (args) => {
 	const [selectedTab, setSelectedTab] = useState('');
 
 	return (
-		<div>
+		<ThemedContainer {...args}>
 			<Tabs {...args} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
 			<span
 				style={{
@@ -24,7 +25,7 @@ const Template = (args) => {
 				}}>
 				You have selected {selectedTab}
 			</span>
-		</div>
+		</ThemedContainer>
 	);
 };
 
@@ -50,6 +51,7 @@ Default.args = {
 		},
 	],
 	selectedTab: 'Tab1',
+	theme: 'light',
 };
 
 Default.parameters = {
@@ -93,6 +95,7 @@ WithOnlyLeftIcon.args = {
 		},
 	],
 	selectedTab: 'Tab1',
+	theme: 'light',
 };
 
 export const WithRightIcon = Template.bind({});
@@ -129,6 +132,7 @@ WithRightIcon.args = {
 		},
 	],
 	selectedTab: 'Tab1',
+	theme: 'light',
 };
 
 export const WithBothSideIcon = Template.bind({});
@@ -177,4 +181,5 @@ WithBothSideIcon.args = {
 		},
 	],
 	selectedTab: 'Tab1',
+	theme: 'light',
 };

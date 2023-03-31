@@ -16,31 +16,70 @@
 .root {
 	@include flex(row, flex-start, center);
 
-	> .tab {
+	&.light-theme {
+		> button.tab {
+			border-color: $grey4;
+
+			> [data-elem='component1'],
+			> [data-elem='component3'] {
+				> .icon {
+					fill: $black;
+				}
+			}
+
+			> [data-elem='component2'] {
+				color: $black;
+			}
+
+			&:hover {
+				background: $info-bg;
+			}
+		}
+	}
+
+	&.dark-theme {
+		> button.tab {
+			border-color: $grey;
+
+			> [data-elem='component1'],
+			> [data-elem='component3'] {
+				> .icon {
+					fill: $white;
+				}
+			}
+
+			> [data-elem='component2'] {
+				color: $white;
+			}
+
+			&:hover {
+				background: $dark-grey;
+			}
+		}
+	}
+
+	> button.tab {
 		padding: 0.75rem;
 		gap: 0.75rem;
+		border-bottom-width: 1px;
+		border-bottom-style: solid;
 
 		> [data-elem='component1'],
 		> [data-elem='component3'] {
 			> .icon {
 				width: 1.5rem;
 				height: 1.5rem;
-				fill: $black;
 			}
-		}
-
-		> [data-elem='component2'] {
-			color: $black;
 		}
 
 		&.active {
 			@include commonActive;
-			border-bottom: 2px solid $highlight;
+			border-bottom-width: 2px;
+			border-color: $highlight;
 		}
 
 		&:hover {
 			@include commonActive;
-			background: $info-bg;
 		}
 	}
 }

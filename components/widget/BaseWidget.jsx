@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Children, cloneElement, isValidElement, useEffect, useMemo } from 'react';
+import { Children, cloneElement, forwardRef, isValidElement, useEffect, useMemo } from 'react';
 import styles from './BaseWidget.module.css';
 import { ArrowIcon, ExpandArrowAltIcon } from '../icons';
 import Button from '../buttons/button/Button';
@@ -53,7 +53,8 @@ const generateOptions = (optionData) => {
 	}
 };
 
-const BaseWidget = (props) => {
+// eslint-disable-next-line prefer-arrow-callback
+const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 	// eslint-disable-next-line object-curly-newline
 	const {
 		loading,
@@ -68,6 +69,10 @@ const BaseWidget = (props) => {
 		theme,
 		setFallback,
 		showFallback,
+		style,
+		onMouseDown,
+		onMouseUp,
+		onTouchEnd,
 	} = props;
 
 	const emptyChartData = useMemo(() => {
@@ -82,7 +87,13 @@ const BaseWidget = (props) => {
 	}, [emptyChartData]);
 
 	return (
-		<div className={classes(styles.root, className)}>
+		<div
+			ref={ref}
+			className={classes(styles.root, className)}
+			style={style}
+			onMouseDown={onMouseDown}
+			onMouseUp={onMouseUp}
+			onTouchEnd={onTouchEnd}>
 			<div className={styles.header} data-elem='header'>
 				<div
 					className={classes(
@@ -128,7 +139,7 @@ const BaseWidget = (props) => {
 			</div>
 		</div>
 	);
-};
+});
 
 BaseWidget.propTypes = {
 	loading: PropTypes.bool,
