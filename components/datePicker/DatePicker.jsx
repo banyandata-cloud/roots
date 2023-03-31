@@ -173,7 +173,7 @@ const DatePicker = (props) => {
 	};
 
 	return (
-		<div className={classes(styles.root, className)} ref={datePickerRef}>
+		<div className={classes(styles.root, className, styles[theme])} ref={datePickerRef}>
 			{label && <span className={classes(styles.label, styles[theme])}>{label}</span>}
 			<div
 				data-elem='header'
