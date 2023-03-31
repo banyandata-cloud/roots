@@ -130,6 +130,14 @@ const BaseAreaChart = (props) => {
 				...seriesOptionObject,
 				...seriesOption[index],
 				name: Object.keys(seriesData?.chartData ?? {})?.[index] ?? '',
+				...(seriesOption[index]?.color && {
+					color:
+						typeof (seriesOption[index]?.color ?? {}) !== 'string'
+							? new echarts.graphic.LinearGradient(
+									...(seriesOption[index]?.color ?? [])
+							  )
+							: seriesOption[index]?.color ?? {},
+				}),
 				label: {
 					...(seriesOptionObject?.label ?? {}),
 					...(seriesOption[index]?.label ?? {}),
@@ -137,10 +145,26 @@ const BaseAreaChart = (props) => {
 				lineStyle: {
 					...(seriesOptionObject?.lineStyle ?? {}),
 					...(seriesOption[index]?.lineStyle ?? {}),
+					...(seriesOption[index]?.lineStyle?.color && {
+						color:
+							typeof (seriesOption[index]?.lineStyle?.color ?? {}) !== 'string'
+								? new echarts.graphic.LinearGradient(
+										...(seriesOption[index]?.lineStyle?.color ?? {})
+								  )
+								: seriesOption[index]?.lineStyle?.color ?? {},
+					}),
 				},
 				areaStyle: {
 					...(seriesOptionObject?.areaStyle ?? {}),
 					...(seriesOption[index]?.areaStyle ?? {}),
+					...(seriesOption[index]?.areaStyle?.color && {
+						color:
+							typeof (seriesOption[index]?.areaStyle?.color ?? {}) !== 'string'
+								? new echarts.graphic.LinearGradient(
+										seriesOption[index]?.areaStyle?.color ?? {}
+								  )
+								: seriesOption[index]?.areaStyle?.color ?? {},
+					}),
 				},
 				emphasis: {
 					...(seriesOptionObject?.emphasis ?? {}),
@@ -175,6 +199,10 @@ const BaseAreaChart = (props) => {
 						},
 						splitLine: {
 							show: xSplitLineShow,
+							lineStyle: {
+								color: axisSplitColor,
+								type: splitType,
+							},
 						},
 						axisLine: {
 							show: xAxisLineShow,
