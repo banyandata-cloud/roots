@@ -4,14 +4,14 @@ import { Button } from '../buttons';
 import styles from './Tabs.module.css';
 
 const Tabs = (props) => {
-	const { tabs, selectedTab, setSelectedTab } = props;
+	const { tabs, selectedTab, setSelectedTab, theme } = props;
 
 	const onTabClick = (id) => {
 		setSelectedTab(id);
 	};
 
 	return (
-		<div className={styles.root}>
+		<div className={classes(styles.root, styles[`${theme}-theme`])}>
 			{tabs?.map((tab) => {
 				const { id, title, leftIcon: LeftIcon, rightIcon: RightIcon } = tab;
 
@@ -49,38 +49,15 @@ const Tabs = (props) => {
 Tabs.propTypes = {
 	tabs: PropTypes.arrayOf(PropTypes.string),
 	selectedTab: PropTypes.string,
-	setSelectedTab: PropTypes.string,
+	setSelectedTab: PropTypes.func,
+	theme: PropTypes.oneOf(['light', 'dark']),
 };
 
 Tabs.defaultProps = {
-	tabs: [
-		{
-			id: '1',
-			title: 'Tab1',
-			leftIcon: '',
-			rightIcon: '',
-		},
-		{
-			id: '2',
-			title: 'Tab2',
-			leftIcon: '',
-			rightIcon: '',
-		},
-		{
-			id: '3',
-			title: 'Tab3',
-			leftIcon: '',
-			rightIcon: '',
-		},
-		{
-			id: '4',
-			title: 'Tab4',
-			leftIcon: '',
-			rightIcon: '',
-		},
-	],
-	selectedTab: 'Tab1',
-	setSelectedTab: 'None',
+	tabs: [],
+	selectedTab: null,
+	setSelectedTab: () => {},
+	theme: 'light',
 };
 
 export default Tabs;
