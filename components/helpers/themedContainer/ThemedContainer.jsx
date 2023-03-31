@@ -7,7 +7,7 @@ const ThemedContainer = (props) => {
 		<div
 			className={className}
 			style={{
-				background: theme === 'dark' ? COLORS['dark-grey'] : COLORS.white,
+				background: theme === 'dark' ? COLORS['menu-black'] : COLORS.white,
 				padding: '1rem',
 				...style,
 			}}>

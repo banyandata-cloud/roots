@@ -18,17 +18,18 @@ div.root [data-elem=base-cell].toggle-button {
   background: transparent;
 }
 div.root.theme-dark {
-  border-color: var(--grey);
+  border-color: var(--dark-grey);
 }
 div.root.theme-dark [data-elem=base-cell].toggle-button {
   color: var(--grey4);
 }
 div.root.theme-dark [data-elem=base-cell].toggle-button.active {
-  background: var(--menu-black);
+  background: var(--dark-grey);
   color: var(--white);
+  border: 1px solid var(--grey);
 }
 div.root.theme-light {
-  border-color: var(--grey1);
+  border-color: var(--grey6);
 }
 div.root.theme-light [data-elem=base-cell].toggle-button {
   background: transparent;
@@ -37,6 +38,7 @@ div.root.theme-light [data-elem=base-cell].toggle-button {
 div.root.theme-light [data-elem=base-cell].toggle-button.active {
   background: var(--grey6);
   color: var(--dark-grey);
+  border: 1px solid var(--grey4);
 }
 div.root [data-elem=base-cell].toggle-button {
   padding: 0.344rem 0.75rem;
