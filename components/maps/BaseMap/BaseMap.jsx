@@ -121,7 +121,7 @@ const BaseMap = (props) => {
 	}, [map, onClick, onIdle]);
 
 	return (
-		<div className={classes(styles.root, loading ? styles.loading : '')}>
+		<div className={classes(styles.root)}>
 			<div
 				ref={ref}
 				style={
