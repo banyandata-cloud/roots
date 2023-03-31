@@ -16,7 +16,7 @@ const PageHeader = (props) => {
 	} = props;
 
 	return (
-		<div className={classes(styles.root, styles[`theme-${theme}`])}>
+		<div className={classes(styles.root, styles[`${theme}-theme`])}>
 			<div className={styles.breadcrumb}>
 				<BreadCrumbs
 					{...{

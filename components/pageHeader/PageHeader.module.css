@@ -5,15 +5,15 @@
   align-items: flex-start;
   width: 100%;
   background-color: transparent;
-  gap: 4px;
+  gap: 0.25rem;
 }
-.root.theme-dark {
+.root.dark-theme {
   color: var(--white);
 }
-.root.theme-dark .breadcrumb [data-elem=breadcrumb-item-active] {
+.root.dark-theme .breadcrumb [data-elem=breadcrumb-item-active] {
   color: var(--white);
 }
-.root.theme-light {
+.root.light-theme {
   color: var(--dark-grey);
 }
 .root .description {
@@ -24,6 +24,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  gap: 0.75rem;
   width: 100%;
 }
 .root .contents .left,
@@ -32,9 +33,15 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  gap: 10px;
+  gap: 0.75rem;
+}
+.root .contents .left {
+  overflow: hidden;
 }
 .root .contents .left .title {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
   font-size: 2.25rem;
   font-weight: 600;
   line-height: 3.375rem;
