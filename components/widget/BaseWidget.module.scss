@@ -29,12 +29,10 @@
 			}
 			.title {
 				white-space: nowrap;
-				color: $white;
 			}
 
 			.value {
 				white-space: nowrap;
-				color: $white;
 			}
 		}
 
@@ -53,15 +51,11 @@
 				[data-elem='select'] {
 					background-color: transparent;
 					width: 100%;
-					color: $white;
-					border-color: $grey;
 					padding: 0.07rem 0.5rem;
 					[data-elem='placeholder'] {
 						font-size: 0.875rem;
-						color: $white;
 					}
 					> svg {
-						fill: $white;
 						width: 0.875rem;
 					}
 				}
@@ -69,12 +63,81 @@
 
 			.expand-button {
 				height: 1.75rem;
-				color: $white;
-				border-color: $grey;
 				.expand-icon {
 					height: 1.25rem;
 					width: 1.25rem;
-					fill: $white;
+				}
+			}
+		}
+	}
+
+	&.dark-theme {
+		.header {
+			.header-title {
+				.title {
+					color: $white;
+				}
+
+				.value {
+					color: $white;
+				}
+			}
+
+			.header-options {
+				.dropdown-header {
+					[data-elem='select'] {
+						border-color: $grey;
+						[data-elem='placeholder'] {
+							color: $white;
+						}
+						> svg {
+							fill: $white;
+						}
+					}
+				}
+
+				.expand-button {
+					color: $white;
+					border-color: $grey;
+					.expand-icon {
+						fill: $white;
+					}
+				}
+			}
+		}
+	}
+
+	&.light-theme {
+		.header {
+			.header-title {
+				.title {
+					color: $dark-grey;
+				}
+
+				.value {
+					color: $dark-grey;
+				}
+			}
+
+			.header-options {
+				.dropdown-header {
+					[data-elem='select'] {
+						border-color: $grey6;
+						[data-elem='placeholder'] {
+							color: $dark-grey;
+						}
+						> svg {
+							fill: $dark-grey;
+						}
+					}
+				}
+
+				.expand-button {
+					color: $dark-grey;
+					border-color: $grey6;
+					.expand-icon {
+						fill: $dark-grey;
+					}
 				}
 			}
 		}

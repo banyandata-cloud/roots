@@ -8,17 +8,17 @@ import { Toggle } from '../Toggle';
 import { classes } from '../../utils';
 import { WidgetFallback } from './fallback';
 
-const generateOptions = (optionData) => {
+const generateOptions = (optionData, theme) => {
 	switch (optionData?.id ?? '') {
 		case 'toggle':
-			return <Toggle className={styles['toggle-body']} theme='dark' {...optionData} />;
+			return <Toggle className={styles['toggle-body']} theme={theme} {...optionData} />;
 		case 'dropdown':
 			return (
 				<Dropdown
 					placeholder={optionData?.placeholder ?? ''}
 					value={optionData?.value ?? ''}
 					onChange={optionData?.onChange ?? ''}
-					className={styles['dropdown-header']}
+					className={classes(styles['dropdown-header'])}
 					popperClassName={styles['dropdown-popper']}>
 					{(optionData?.selectOption ?? []).map((objectData) => {
 						return (
@@ -47,7 +47,9 @@ const generateOptions = (optionData) => {
 				/>
 			);
 		case 'custom':
-			return optionData.render();
+			return optionData.render({
+				theme,
+			});
 		default:
 			return null;
 	}
@@ -89,7 +91,7 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 	return (
 		<div
 			ref={ref}
-			className={classes(styles.root, className)}
+			className={classes(styles.root, className, styles[`${theme}-theme`])}
 			style={style}
 			onMouseDown={onMouseDown}
 			onMouseUp={onMouseUp}
@@ -117,10 +119,10 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 					</span>
 				</div>
 
-				<div className={styles['header-options']} data-elem='header-options'>
+				<div className={classes(styles['header-options'])} data-elem='header-options'>
 					{(options?.length ?? 0) > 0 &&
 						options?.map((objectData) => {
-							return generateOptions(objectData);
+							return generateOptions(objectData, theme);
 						})}
 				</div>
 			</div>
