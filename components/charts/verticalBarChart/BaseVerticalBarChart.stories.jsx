@@ -382,6 +382,7 @@ Default.args = {
 	xAxisLabel: {
 		show: true,
 		rotate: 90,
+		color: 'white',
 		inside: true,
 		verticalAlign: 'bottom',
 		padding: [0, 0, 90, 0],
@@ -390,8 +391,6 @@ Default.args = {
 	ySplitLineShow: false,
 	yAxisLineShow: false,
 	yAxisTickShow: false,
-	axisColor: 'grey',
-	splitType: 'dashed',
 	barWidth: '50%',
 	cursor: 'default',
 	stackCount: 1,
@@ -417,6 +416,7 @@ Default.args = {
 			stack: 1,
 			color: COLORS.warning,
 			label: {
+				color: 'white',
 				show: true,
 				formatter(param) {
 					return sampleData.metaData.controlsApplied[param.name].x1;
