@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable react/forbid-prop-types */
 import PropTypes from 'prop-types';
 // ReactEcharts from 'echarts-for-react' would import the entire bundle
@@ -19,6 +20,7 @@ import {
 import styles from './BaseVerticalBarChart.module.css';
 import { classes } from '../../../utils';
 import { Skeleton } from './Skeleton';
+import { COLORS } from '../../../styles';
 
 // Register the required components
 echarts.use([
@@ -70,6 +72,18 @@ const BaseVerticalBarChart = (props) => {
 	})
 		? 1
 		: 0;
+
+	const determineColor = (objectData, index, subIndex, key) => {
+		if (seriesData?.chartData?.[key]?.[`x${index + 1}`]) {
+			if (typeof (objectData?.color ?? '' ?? {}) !== 'string') {
+				return new echarts.graphic.LinearGradient(
+					...((objectData?.barColor?.[subIndex] ?? '') || (objectData?.color ?? ''))
+				);
+			}
+			return (objectData?.barColor?.[subIndex] ?? '') || (objectData?.color ?? '');
+		}
+		return 'whitesmoke';
+	};
 
 	const seriesOptionObject = {
 		type: 'bar',
@@ -140,10 +154,7 @@ const BaseVerticalBarChart = (props) => {
 							? seriesData?.chartData?.[key]?.[`x${index + 1}`] ?? ''
 							: minHeight,
 						itemStyle: {
-							color: seriesData?.chartData?.[key]?.[`x${index + 1}`]
-								? (objectData?.barColor?.[subIndex] ?? '') ||
-								  (objectData?.color ?? '')
-								: 'whitesmoke',
+							color: determineColor(objectData, index, subIndex, key),
 						},
 						tooltip: {
 							...(seriesOption[subIndex]?.tooltip ?? {}),
@@ -174,6 +185,12 @@ const BaseVerticalBarChart = (props) => {
 					axisLabel: {
 						...xAxisLabel,
 					},
+					axisLine: {
+						show: xAxisShow,
+						lineStyle: {
+							color: theme === 'dark' ? '#757679' : COLORS.grey3,
+						},
+					},
 				},
 				legend: {
 					...legend,
@@ -185,20 +202,46 @@ const BaseVerticalBarChart = (props) => {
 					type: 'value',
 					axisLabel: {
 						show: yAxisLabelShow,
-						color: axisColor,
+						color:
+							axisColor !== ''
+								? axisColor
+								: theme === 'dark'
+								? '#a2a4a5'
+								: COLORS.grey,
 					},
 					splitLine: {
 						show: ySplitLineShow,
 						lineStyle: {
-							color: axisColor,
+							color:
+								axisColor !== ''
+									? axisColor
+									: theme === 'dark'
+									? COLORS['dark-grey']
+									: COLORS.grey5,
 							type: splitType,
 						},
 					},
 					axisLine: {
 						show: yAxisLineShow,
+						lineStyle: {
+							color:
+								axisColor !== ''
+									? axisColor
+									: theme === 'dark'
+									? '#757679'
+									: COLORS.grey3,
+						},
 					},
 					axisTick: {
 						show: yAxisTickShow,
+						lineStyle: {
+							color:
+								axisColor !== ''
+									? axisColor
+									: theme === 'dark'
+									? '#757679'
+									: COLORS.grey3,
+						},
 					},
 				},
 				series: generateSeries(),
@@ -270,8 +313,8 @@ BaseVerticalBarChart.defaultProps = {
 	ySplitLineShow: false,
 	yAxisLineShow: false,
 	yAxisTickShow: false,
-	axisColor: 'grey',
-	splitType: 'dashed',
+	axisColor: '',
+	splitType: 'solid',
 	barWidth: '50%',
 	seriesName: () => {},
 	legend: {

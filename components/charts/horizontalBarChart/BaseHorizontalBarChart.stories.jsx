@@ -79,6 +79,27 @@ const sampleData = {
 	},
 };
 
+const sampleData2 = {
+	chartData: {
+		'Audit, Logging and Monitering': {
+			x1: 40,
+		},
+	},
+	metaData: {
+		controlsApplied: {
+			'Audit, Logging and Monitering': {
+				x1: 40,
+			},
+		},
+		keyData: {
+			x1: 'compliant',
+		},
+		totalControls: {
+			x1: 61,
+		},
+	},
+};
+
 const Template = (args) => {
 	const onBarClick = (params) => {
 		alert(`Click Event on ${params.name}`);
@@ -109,6 +130,7 @@ const Template = (args) => {
 };
 
 export const Default = Template.bind({});
+export const BarGradient = Template.bind({});
 
 Default.args = {
 	title: 'Title',
@@ -157,6 +179,61 @@ Default.args = {
 			color: COLORS.warning,
 			backgroundStyle: {
 				color: 'transparent',
+			},
+			label: {
+				show: false,
+			},
+		},
+	],
+};
+
+BarGradient.args = {
+	title: 'Title',
+	gridContainLabel: false,
+	gridOptions: {
+		left: 10,
+		right: 10,
+		bottom: 50,
+		top: 50,
+	},
+	xAxisShow: false,
+	seriesData: sampleData2,
+	yAxisLabelShow: false,
+	ySplitLineShow: false,
+	yAxisLineShow: false,
+	yAxisTickShow: false,
+	barWidth: '50%',
+	cursor: 'default',
+	stacked: true,
+	seriesOption: [
+		{
+			stackIndex: 1,
+			showBackground: false,
+			maxvalueStyle: {
+				value: 100,
+				itemStyle: {
+					color: 'white',
+					// opacity: 0,
+				},
+			},
+			color: [
+				1,
+				0,
+				0,
+				0,
+				[
+					{
+						offset: 0,
+						color: 'rgb(124, 255, 185)',
+					},
+					{
+						offset: 1,
+						color: 'rgb(26, 165, 91)',
+					},
+				],
+			],
+			itemStyle: {
+				borderRadius: 100,
 			},
 			label: {
 				show: false,

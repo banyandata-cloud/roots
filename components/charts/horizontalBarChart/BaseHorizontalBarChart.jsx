@@ -34,6 +34,7 @@ const BaseHorizontalBarChart = (props) => {
 		title,
 		gridContainLabel,
 		gridOptions,
+		inverse,
 		xAxisShow,
 		seriesData,
 		onEvents,
@@ -96,19 +97,55 @@ const BaseHorizontalBarChart = (props) => {
 				},
 
 				name: seriesName(index),
-				data: Object.keys(seriesData?.chartData ?? {}).map((key, subIndex) => {
-					return {
-						value: seriesData?.chartData?.[key]?.[`x${index + 1}`] ?? '',
-						itemStyle: {
-							color:
-								(objectData?.barColor?.[subIndex] ?? '') ||
-								(objectData?.color ?? ''),
-						},
-						tooltip: {
-							...(seriesOption[subIndex]?.tooltip ?? {}),
-						},
-					};
-				}),
+				data: seriesOption?.[index]?.maxvalueStyle?.value
+					? [
+							{
+								...seriesOption?.[index]?.maxvalueStyle,
+								emphasis: {
+									disabled: true,
+								},
+								tooltip: {
+									show: false,
+								},
+							},
+							...Object.keys(seriesData?.chartData ?? {}).map((key, subIndex) => {
+								return {
+									value: seriesData?.chartData?.[key]?.[`x${index + 1}`] ?? '',
+									itemStyle: {
+										color:
+											typeof (objectData?.color ?? '' ?? {}) !== 'string'
+												? new echarts.graphic.LinearGradient(
+														...((objectData?.barColor?.[subIndex] ??
+															'') ||
+															(objectData?.color ?? ''))
+												  )
+												: (objectData?.barColor?.[subIndex] ?? '') ||
+												  (objectData?.color ?? ''),
+									},
+									tooltip: {
+										...(seriesOption[subIndex]?.tooltip ?? {}),
+									},
+								};
+							}),
+					  ]
+					: Object.keys(seriesData?.chartData ?? {}).map((key, subIndex) => {
+							return {
+								value: seriesData?.chartData?.[key]?.[`x${index + 1}`] ?? '',
+								itemStyle: {
+									color:
+										typeof (objectData?.color ?? '' ?? {}) !== 'string'
+											? new echarts.graphic.LinearGradient(
+													...((objectData?.barColor?.[subIndex] ?? '') ||
+														(objectData?.color ?? ''))
+											  )
+											: (objectData?.barColor?.[subIndex] ?? '') ||
+											  (objectData?.color ?? ''),
+								},
+								tooltip: {
+									...(seriesOption[subIndex]?.tooltip ?? {}),
+								},
+							};
+					  }),
 			};
 		});
 	};
@@ -124,6 +161,7 @@ const BaseHorizontalBarChart = (props) => {
 					...gridOptions,
 				},
 				xAxis: {
+					inverse,
 					show: xAxisShow,
 					type: 'value',
 				},
@@ -170,6 +208,7 @@ BaseHorizontalBarChart.propTypes = {
 	gridOptions: PropTypes.object,
 	tooltip: PropTypes.object,
 	xAxisShow: PropTypes.bool,
+	inverse: PropTypes.bool,
 	seriesData: PropTypes.shape({
 		chartData: PropTypes.object,
 		metaData: PropTypes.object,
@@ -202,6 +241,7 @@ BaseHorizontalBarChart.defaultProps = {
 		top: 5,
 	},
 	xAxisShow: false,
+	inverse: false,
 	tooltip: {
 		trigger: 'item',
 	},

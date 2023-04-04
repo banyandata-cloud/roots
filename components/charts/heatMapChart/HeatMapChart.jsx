@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable no-tabs */
 import PropTypes from 'prop-types';
@@ -20,6 +21,7 @@ import {
 import styles from './HeatMapChart.module.css';
 import { classes } from '../../../utils';
 import { Skeleton } from './Skeleton';
+import { COLORS } from '../../../styles';
 
 // Register the required components
 echarts.use([
@@ -71,7 +73,7 @@ const HeatMapChart = (props) => {
 		},
 		itemStyle: {
 			borderWidth: 0,
-			borderColor: 'white',
+			borderColor: theme === 'dark' ? '#757679' : COLORS.grey3,
 		},
 		emphasis: {
 			itemStyle: {
@@ -127,7 +129,12 @@ const HeatMapChart = (props) => {
 					...((newSeriesData?.[k]?.value ?? -1) === -1
 						? {
 								itemStyle: {
-									color: defaultColor,
+									color:
+										defaultColor !== ''
+											? defaultColor
+											: theme === 'dark'
+											? COLORS['dark-grey']
+											: COLORS.grey5,
 								},
 								emphasis: {
 									disabled: true,
@@ -282,7 +289,7 @@ HeatMapChart.defaultProps = {
 			show: true,
 		},
 	},
-	defaultColor: 'grey',
+	defaultColor: '',
 	style: {
 		width: '100%',
 		height: '100%',
