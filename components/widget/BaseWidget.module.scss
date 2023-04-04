@@ -1,14 +1,15 @@
 @import '../../styles/index';
 
 .root {
+	@include debug($grey);
+	border-radius: 0.25rem;
 	@include flex(column, flex-start, stretch);
 	height: 100%;
 	width: 100%;
-	padding: 0.25rem;
 
 	.header {
 		@include flex(row, space-between);
-		padding: 0.25rem;
+		padding: 1rem;
 
 		.header-title {
 			@include flex(row, flex-start);
@@ -74,11 +75,8 @@
 	&.dark-theme {
 		.header {
 			.header-title {
-				.title {
-					color: $white;
-				}
-
-				.value {
+				[data-elem='title'],
+				[data-elem='subtitle'] {
 					color: $white;
 				}
 			}
@@ -110,11 +108,8 @@
 	&.light-theme {
 		.header {
 			.header-title {
-				.title {
-					color: $dark-grey;
-				}
-
-				.value {
+				[data-elem='title'],
+				[data-elem='subtitle'] {
 					color: $dark-grey;
 				}
 			}
@@ -146,6 +141,7 @@
 	.children {
 		flex: 1 1;
 		position: relative;
+		padding: 0.5rem;
 	}
 }
 

@@ -319,7 +319,8 @@ export const WithLoader = WithFallbackTemplate.bind({});
 export const WithMap = MapTemplate.bind({});
 
 Default.args = {
-	title: 'Widget Title - 7 Services',
+	title: 'Widget Title',
+	subtitle: '7 Services',
 	showBack: true,
 	onBack: () => {
 		alert('This will bring you back');
