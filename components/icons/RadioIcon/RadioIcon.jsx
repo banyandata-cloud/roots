@@ -4,18 +4,12 @@ const RadioIcon = {
 		return (
 			<svg
 				className={className}
-				viewBox='0 0 24 24'
+				viewBox='0 0 20 20'
 				fill='none'
 				xmlns='http://www.w3.org/2000/svg'>
-				<circle
-					cx='12'
-					cy='12'
-					r='11.3'
-					fill='#2871E6'
-					stroke='#2871E6'
-					strokeWidth='1.4'
-				/>
-				<circle cx='12' cy='12' r='6' fill='white' />
+				<rect x='0.5' y='0.5' width='19' height='19' rx='9.5' fill='#EDF5FF' />
+				<circle cx='10' cy='10' r='4' fill='#0F62FE' />
+				<rect x='0.5' y='0.5' width='19' height='19' rx='9.5' stroke='#0F62FE' />
 			</svg>
 		);
 	},
@@ -25,10 +19,10 @@ const RadioIcon = {
 		return (
 			<svg
 				className={className}
-				viewBox='0 0 24 24'
+				viewBox='0 0 20 20'
 				fill='none'
 				xmlns='http://www.w3.org/2000/svg'>
-				<circle cx='12' cy='12' r='11.3' stroke='#AEB3BC' strokeWidth='1.4' />
+				<rect x='0.5' y='0.5' width='19' height='19' rx='9.5' stroke='#888888' />
 			</svg>
 		);
 	},
