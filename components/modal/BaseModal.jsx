@@ -12,17 +12,34 @@ import { Button } from '../buttons';
 import styles from './BaseModal.module.css';
 
 const BaseModal = (props) => {
-	const { className, renderHeader, children, renderFooter, toggle, open } = props;
+	const {
+		className,
+		popperClassName,
+		renderHeader,
+		children,
+		renderFooter,
+		toggle,
+		open,
+		noDismiss,
+	} = props;
 
 	const { floating, context } = useFloating({
 		open,
 		onOpenChange: toggle,
 	});
 
-	const { getFloatingProps } = useInteractions([useDismiss(context)]);
+	const { getFloatingProps } = useInteractions([
+		useDismiss(context, {
+			enabled: !noDismiss,
+		}),
+	]);
 
 	return (
-		<Popper open={open} transparent={false} wrapperId='base-modal-popper'>
+		<Popper
+			open={open}
+			className={popperClassName}
+			transparent={false}
+			wrapperId='base-modal-popper'>
 			{open && (
 				<FloatingFocusManager context={context}>
 					<div
@@ -64,16 +81,20 @@ const BaseModal = (props) => {
 
 BaseModal.propTypes = {
 	className: PropTypes.string,
+	popperClassName: PropTypes.string,
 	renderHeader: PropTypes.element,
 	renderFooter: PropTypes.element,
 	toggle: PropTypes.func,
+	noDismiss: PropTypes.bool,
 };
 
 BaseModal.defaultProps = {
 	className: '',
+	popperClassName: '',
 	renderHeader: null,
 	renderFooter: null,
 	toggle: () => {},
+	noDismiss: false,
 };
 
 export default BaseModal;
