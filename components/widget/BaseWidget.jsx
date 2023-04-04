@@ -7,6 +7,7 @@ import { Dropdown, DropdownItem } from '../input';
 import { Toggle } from '../Toggle';
 import { classes } from '../../utils';
 import { WidgetFallback } from './fallback';
+import { Text } from '../text';
 
 const generateOptions = (optionData, theme) => {
 	switch (optionData?.id ?? '') {
@@ -61,6 +62,7 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 	const {
 		loading,
 		title,
+		subtitle,
 		showBack,
 		onBack,
 		onReload,
@@ -114,9 +116,24 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 							onClick={onBack}
 						/>
 					)}
-					<span className={styles.title} data-elem='title'>
-						{title}
-					</span>
+					<Text
+						variant='b1'
+						stroke='semibold'
+						attrs={{
+							'data-elem': 'title',
+						}}>
+						{title} -
+					</Text>
+					{subtitle && (
+						<Text
+							variant='b2'
+							stroke='medium'
+							attrs={{
+								'data-elem': 'subtitle',
+							}}>
+							{subtitle}
+						</Text>
+					)}
 				</div>
 
 				<div className={classes(styles['header-options'])} data-elem='header-options'>
