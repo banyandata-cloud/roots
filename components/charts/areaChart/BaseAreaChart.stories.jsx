@@ -422,6 +422,12 @@ LineStack.args = {
 
 CurveGradient.args = {
 	title: 'Title',
+	gridOptions: {
+		left: 50,
+		right: 50,
+		bottom: 50,
+		top: 50,
+	},
 	gridContainLabel: true,
 	legend: {
 		show: false,
