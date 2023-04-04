@@ -77,7 +77,8 @@ const Template = (args) => {
 			style={{
 				height: '100%',
 				width: '100%',
-			}}>
+			}}
+			{...args}>
 			<BaseWidget
 				{...args}
 				// eslint-disable-next-line react/destructuring-assignment
