@@ -45,10 +45,12 @@ const BaseAreaChart = (props) => {
 		xSplitLineShow,
 		xAxisLineShow,
 		xAxisTickShow,
+		xAxisLabel,
 		yAxisLabelShow,
 		ySplitLineShow,
 		yAxisLineShow,
 		yAxisTickShow,
+		yAxisLabel,
 		axisLabelColor,
 		axisSplitColor,
 		splitType,
@@ -204,6 +206,7 @@ const BaseAreaChart = (props) => {
 									: theme === 'dark'
 									? '#a2a4a5'
 									: COLORS.grey,
+							...xAxisLabel,
 						},
 						splitLine: {
 							show: xSplitLineShow,
@@ -244,6 +247,7 @@ const BaseAreaChart = (props) => {
 									: theme === 'dark'
 									? '#a2a4a5'
 									: COLORS.grey,
+							...yAxisLabel,
 						},
 						splitLine: {
 							show: ySplitLineShow,
@@ -294,6 +298,7 @@ BaseAreaChart.propTypes = {
 	xSplitLineShow: PropTypes.bool,
 	xAxisLineShow: PropTypes.bool,
 	xAxisTickShow: PropTypes.bool,
+	xAxisLabel: PropTypes.object,
 	axisLabelColor: PropTypes.string,
 	axisSplitColor: PropTypes.string,
 	splitType: PropTypes.string,
@@ -303,6 +308,7 @@ BaseAreaChart.propTypes = {
 	ySplitLineShow: PropTypes.bool,
 	yAxisLineShow: PropTypes.bool,
 	yAxisTickShow: PropTypes.bool,
+	yAxisLabel: PropTypes.object,
 	cursor: PropTypes.string,
 	seriesOption: PropTypes.arrayOf(PropTypes.object),
 	lineStyleWidth: PropTypes.number,
@@ -334,6 +340,7 @@ BaseAreaChart.defaultProps = {
 	xSplitLineShow: false,
 	xAxisLineShow: false,
 	xAxisTickShow: false,
+	xAxisLabel: {},
 	axisLabelColor: '',
 	axisSplitColor: '',
 	splitType: 'solid',
@@ -342,6 +349,7 @@ BaseAreaChart.defaultProps = {
 	ySplitLineShow: false,
 	yAxisLineShow: false,
 	yAxisTickShow: false,
+	yAxisLabel: {},
 	cursor: 'default',
 	seriesOption: [],
 	lineStyleWidth: 4,
