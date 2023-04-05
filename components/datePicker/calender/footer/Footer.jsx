@@ -3,7 +3,6 @@ import { fromUnixTime, getUnixTime } from 'date-fns';
 import { classes, doubleDigitted, getDayInfo } from '../../../../utils';
 import { Button } from '../../../buttons';
 import { CalenderIcon, HalfShadeIcon, ResetIcon, CrossIcon } from '../../../icons';
-import { TimePicker } from '../../../timePicker';
 import styles from './Footer.module.css';
 import { dateRanges } from './utils';
 
@@ -25,7 +24,6 @@ const Footer = (props) => {
 	const {
 		selectedDate = {},
 		selectedRange = {},
-		setSelectedDate,
 		setSelectedRange,
 		range,
 		goToDate,
@@ -56,36 +54,6 @@ const Footer = (props) => {
 	};
 
 	const datePassed = fromUnixTime(selectedDate.unix);
-
-	const onTimeChange = (time) => {
-		const monthNumber = datePassed.getMonth();
-		let hours = null;
-		hours = time.hours;
-		if (time.hours === '12') {
-			hours = '00';
-		}
-		if (time.meridian === 'PM') {
-			hours = 12 + parseInt(time.hours, 10);
-		}
-
-		const unix = getUnixTime(
-			new Date(
-				!Number.isNaN(selectedDate.year) ? selectedDate.year : getDayInfo(new Date()).year,
-				!Number.isNaN(monthNumber) ? monthNumber : getDayInfo(new Date()).monthAsNumber,
-				!Number.isNaN(selectedDate.date)
-					? selectedDate.date
-					: getDayInfo(new Date()).dateAsNumber,
-				Number(hours),
-				Number(time.minutes),
-				Number(time.seconds)
-			)
-		);
-
-		setSelectedDate({
-			...selectedDate,
-			unix,
-		});
-	};
 
 	const getTimePickerValue = () => {
 		if (datePassed.getDate()) {
@@ -118,14 +86,6 @@ const Footer = (props) => {
 
 	return (
 		<div className={styles.root}>
-			{!range && (
-				<TimePicker
-					value={getTimePickerValue()}
-					onChange={onTimeChange}
-					className={styles['time-picker']}
-				/>
-			)}
-
 			{datesSelected && dates?.length === 2 ? (
 				<SelectedDateView
 					range
