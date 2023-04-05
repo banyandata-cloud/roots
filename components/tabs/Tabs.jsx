@@ -4,14 +4,14 @@ import { Button } from '../buttons';
 import styles from './Tabs.module.css';
 
 const Tabs = (props) => {
-	const { tabs, selectedTab, setSelectedTab, theme } = props;
+	const { tabs, selectedTab, setSelectedTab, theme, className } = props;
 
 	const onTabClick = (id) => {
 		setSelectedTab(id);
 	};
 
 	return (
-		<div className={classes(styles.root, styles[`${theme}-theme`])}>
+		<div className={classes(styles.root, styles[`${theme}-theme`], className)}>
 			{tabs?.map((tab) => {
 				const { id, title, leftIcon: LeftIcon, rightIcon: RightIcon } = tab;
 
@@ -47,6 +47,7 @@ const Tabs = (props) => {
 };
 
 Tabs.propTypes = {
+	className: PropTypes.string,
 	tabs: PropTypes.arrayOf(PropTypes.string),
 	selectedTab: PropTypes.string,
 	setSelectedTab: PropTypes.func,
@@ -54,6 +55,7 @@ Tabs.propTypes = {
 };
 
 Tabs.defaultProps = {
+	className: '',
 	tabs: [],
 	selectedTab: null,
 	setSelectedTab: () => {},
