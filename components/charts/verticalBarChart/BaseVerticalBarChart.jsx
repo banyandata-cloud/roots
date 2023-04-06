@@ -33,6 +33,44 @@ echarts.use([
 	CanvasRenderer,
 ]);
 
+const AXIS_COLORS = {
+	label: {
+		dark: '#a2a4a5',
+		light: COLORS.grey,
+	},
+	line: {
+		dark: '#757679',
+		light: COLORS.grey3,
+	},
+	split: {
+		dark: COLORS['dark-grey'],
+		light: COLORS.grey5,
+	},
+	tick: {
+		dark: '#757679',
+		light: COLORS.grey3,
+	},
+};
+
+const determineAxesColors = (type, defaultColor = '', theme = 'dark') => {
+	if (defaultColor !== '') {
+		return defaultColor;
+	}
+	return AXIS_COLORS[type][`${theme}`];
+};
+
+const determineGradient = (seriesData, objectData, index, subIndex, key) => {
+	if (seriesData?.chartData?.[key]?.[`x${index + 1}`]) {
+		if (typeof (objectData?.color ?? '' ?? {}) !== 'string') {
+			return new echarts.graphic.LinearGradient(
+				...((objectData?.barColor?.[subIndex] ?? '') || (objectData?.color ?? ''))
+			);
+		}
+		return (objectData?.barColor?.[subIndex] ?? '') || (objectData?.color ?? '');
+	}
+	return '';
+};
+
 const BaseVerticalBarChart = (props) => {
 	const {
 		loading,
@@ -72,43 +110,6 @@ const BaseVerticalBarChart = (props) => {
 	})
 		? 1
 		: 0;
-
-	const determineColor = (objectData, index, subIndex, key) => {
-		if (seriesData?.chartData?.[key]?.[`x${index + 1}`]) {
-			if (typeof (objectData?.color ?? '' ?? {}) !== 'string') {
-				return new echarts.graphic.LinearGradient(
-					...((objectData?.barColor?.[subIndex] ?? '') || (objectData?.color ?? ''))
-				);
-			}
-			return (objectData?.barColor?.[subIndex] ?? '') || (objectData?.color ?? '');
-		}
-		return '';
-	};
-	const axisValue = {
-		label: {
-			dark: '#a2a4a5',
-			light: COLORS.grey,
-		},
-		line: {
-			dark: '#757679',
-			light: COLORS.grey3,
-		},
-		split: {
-			dark: COLORS['dark-grey'],
-			light: COLORS.grey5,
-		},
-		tick: {
-			dark: '#757679',
-			light: COLORS.grey3,
-		},
-	};
-
-	const determineAxisColors = (data) => {
-		if (axisColor !== '') {
-			return axisColor;
-		}
-		return axisValue[data][`${theme}`];
-	};
 
 	const seriesOptionObject = {
 		type: 'bar',
@@ -180,7 +181,13 @@ const BaseVerticalBarChart = (props) => {
 							: minHeight,
 						...((objectData?.color ?? '') && {
 							itemStyle: {
-								color: determineColor(objectData, index, subIndex, key),
+								color: determineGradient(
+									seriesData,
+									objectData,
+									index,
+									subIndex,
+									key
+								),
 							},
 						}),
 						tooltip: {
@@ -209,17 +216,17 @@ const BaseVerticalBarChart = (props) => {
 					axisTick: {
 						show: false,
 						lineStyle: {
-							color: determineAxisColors('tick'),
+							color: determineAxesColors('tick', axisColor, theme),
 						},
 					},
 					axisLabel: {
 						...xAxisLabel,
-						color: determineAxisColors('label'),
+						color: determineAxesColors('label', axisColor, theme),
 					},
 					axisLine: {
 						show: xAxisShow,
 						lineStyle: {
-							color: determineAxisColors('line'),
+							color: determineAxesColors('line', axisColor, theme),
 						},
 					},
 				},
@@ -233,25 +240,25 @@ const BaseVerticalBarChart = (props) => {
 					type: 'value',
 					axisLabel: {
 						show: yAxisLabelShow,
-						color: determineAxisColors('label'),
+						color: determineAxesColors('label', axisColor, theme),
 					},
 					splitLine: {
 						show: ySplitLineShow,
 						lineStyle: {
-							color: determineAxisColors('split'),
+							color: determineAxesColors('split', axisColor, theme),
 							type: splitType,
 						},
 					},
 					axisLine: {
 						show: yAxisLineShow,
 						lineStyle: {
-							color: determineAxisColors('line'),
+							color: determineAxesColors('line', axisColor, theme),
 						},
 					},
 					axisTick: {
 						show: yAxisTickShow,
 						lineStyle: {
-							color: determineAxisColors('tick'),
+							color: determineAxesColors('tick', axisColor, theme),
 						},
 					},
 				},
