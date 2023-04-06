@@ -84,6 +84,31 @@ const BaseVerticalBarChart = (props) => {
 		}
 		return '';
 	};
+	const axisValue = {
+		label: {
+			dark: '#a2a4a5',
+			light: COLORS.grey,
+		},
+		line: {
+			dark: '#757679',
+			light: COLORS.grey3,
+		},
+		split: {
+			dark: COLORS['dark-grey'],
+			light: COLORS.grey5,
+		},
+		tick: {
+			dark: '#757679',
+			light: COLORS.grey3,
+		},
+	};
+
+	const determineAxisColors = (data) => {
+		if (axisColor !== '') {
+			return axisColor;
+		}
+		return axisValue[data][`${theme}`];
+	};
 
 	const seriesOptionObject = {
 		type: 'bar',
@@ -183,20 +208,18 @@ const BaseVerticalBarChart = (props) => {
 					type: 'category',
 					axisTick: {
 						show: false,
+						lineStyle: {
+							color: determineAxisColors('tick'),
+						},
 					},
 					axisLabel: {
 						...xAxisLabel,
-						color:
-							axisColor !== ''
-								? axisColor
-								: theme === 'dark'
-								? '#a2a4a5'
-								: COLORS.grey,
+						color: determineAxisColors('label'),
 					},
 					axisLine: {
 						show: xAxisShow,
 						lineStyle: {
-							color: theme === 'dark' ? '#757679' : COLORS.grey3,
+							color: determineAxisColors('line'),
 						},
 					},
 				},
@@ -210,45 +233,25 @@ const BaseVerticalBarChart = (props) => {
 					type: 'value',
 					axisLabel: {
 						show: yAxisLabelShow,
-						color:
-							axisColor !== ''
-								? axisColor
-								: theme === 'dark'
-								? '#a2a4a5'
-								: COLORS.grey,
+						color: determineAxisColors('label'),
 					},
 					splitLine: {
 						show: ySplitLineShow,
 						lineStyle: {
-							color:
-								axisColor !== ''
-									? axisColor
-									: theme === 'dark'
-									? COLORS['dark-grey']
-									: COLORS.grey5,
+							color: determineAxisColors('split'),
 							type: splitType,
 						},
 					},
 					axisLine: {
 						show: yAxisLineShow,
 						lineStyle: {
-							color:
-								axisColor !== ''
-									? axisColor
-									: theme === 'dark'
-									? '#757679'
-									: COLORS.grey3,
+							color: determineAxisColors('line'),
 						},
 					},
 					axisTick: {
 						show: yAxisTickShow,
 						lineStyle: {
-							color:
-								axisColor !== ''
-									? axisColor
-									: theme === 'dark'
-									? '#757679'
-									: COLORS.grey3,
+							color: determineAxisColors('tick'),
 						},
 					},
 				},
