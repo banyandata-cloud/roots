@@ -82,7 +82,7 @@ const BaseVerticalBarChart = (props) => {
 			}
 			return (objectData?.barColor?.[subIndex] ?? '') || (objectData?.color ?? '');
 		}
-		return 'whitesmoke';
+		return '';
 	};
 
 	const seriesOptionObject = {
@@ -153,9 +153,11 @@ const BaseVerticalBarChart = (props) => {
 						value: check
 							? seriesData?.chartData?.[key]?.[`x${index + 1}`] ?? ''
 							: minHeight,
-						itemStyle: {
-							color: determineColor(objectData, index, subIndex, key),
-						},
+						...((objectData?.color ?? '') && {
+							itemStyle: {
+								color: determineColor(objectData, index, subIndex, key),
+							},
+						}),
 						tooltip: {
 							...(seriesOption[subIndex]?.tooltip ?? {}),
 						},
@@ -184,6 +186,12 @@ const BaseVerticalBarChart = (props) => {
 					},
 					axisLabel: {
 						...xAxisLabel,
+						color:
+							axisColor !== ''
+								? axisColor
+								: theme === 'dark'
+								? '#a2a4a5'
+								: COLORS.grey,
 					},
 					axisLine: {
 						show: xAxisShow,
