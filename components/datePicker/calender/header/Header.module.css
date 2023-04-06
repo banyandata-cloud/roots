@@ -1,18 +1,29 @@
-.container {
+.root {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1.75rem;
+}
+.root .title-container {
+  align-self: stretch;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding: 0rem 1.5625rem;
 }
-.container .title {
-  font-weight: 400;
-  font-size: 0.8rem;
+.root .title-container .title {
+  font-weight: 500;
+  font-size: 0.875rem;
   color: var(--black);
+  line-height: 1.3125rem;
+  color: var(--dark-grey);
 }
-.container .icon {
+.root .title-container .icon {
   width: 1.5rem;
   height: 1.5rem;
-  stroke: #181818;
+  stroke: var(--dark-grey);
+  stroke-width: 0.5px;
   cursor: pointer;
 }/*# sourceMappingURL=Header.module.css.map */

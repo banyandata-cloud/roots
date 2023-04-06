@@ -4,23 +4,22 @@ import {
 	useFloating,
 	useInteractions,
 	useDismiss,
-	offset,
-	flip,
-	size,
-	autoUpdate,
 	useClick,
-	shift,
 } from '@floating-ui/react-dom-interactions';
-import { fromUnixTime } from 'date-fns';
 import { useOutsideClickListener } from '../../hooks';
 import { classes } from '../../utils';
 import { Calender } from './calender';
-import { CalenderIcon, ChevronIcon, CrossIcon } from '../icons';
+import { CalenderIcon, ChevronIcon, ClockIcon, CrossIcon } from '../icons';
 import { Popper } from '../popper';
 import styles from './DatePicker.module.css';
-import { getDateRangeTag, isMaxRangeExceeded } from './utils';
-import { MONTHS } from '../../constants';
-import { dateRanges } from './calender/footer/utils';
+import {
+	getDatePickerDisplayValue,
+	getDateRangeTag,
+	isMaxRangeExceeded,
+	getFloatingReferences,
+} from './utils';
+import { Button } from '../buttons';
+import { DateAndTimeCustomRanges } from './customRanges';
 
 const DatePicker = (props) => {
 	const {
@@ -39,7 +38,8 @@ const DatePicker = (props) => {
 		customRanges,
 	} = props;
 
-	const [open, setOpen] = useState(false);
+	const [openDatePicker, setOpenDatePicker] = useState(false);
+	const [openCustomRange, setOpenCustomRange] = useState(false);
 
 	const [selectedRange, setSelectedRange] = useState(() => {
 		return {
@@ -48,7 +48,9 @@ const DatePicker = (props) => {
 		};
 	});
 
-	const [fixedRange, setFixedRange] = useState(null);
+	const [fixedRange, setFixedRange] = useState(() => {
+		return null;
+	});
 
 	const [selectedDate, setSelectedDate] = useState(() => {
 		return '';
@@ -60,77 +62,40 @@ const DatePicker = (props) => {
 
 	const datePickerRef = useRef();
 
-	let displayValue = '';
-
-	if (range && value?.filter(Boolean)?.length > 0) {
-		const sDate = fromUnixTime(value[0]);
-		const eDate = fromUnixTime(value[1]);
-
-		const selectedFixedRange = dateRanges().find((rg) => {
-			return rg.dateRange?.unix?.toString() === value.toString();
-		});
-
-		if (selectedFixedRange) {
-			displayValue = selectedFixedRange.title;
-		} else {
-			displayValue = ` ${sDate.getDate()} ${
-				MONTHS[sDate.getMonth().toString()?.substring(0, 3)]
-			} - ${eDate.getDate()} ${
-				MONTHS[eDate.getMonth().toString()?.substring(0, 3)]
-			} ${eDate.getFullYear()}`;
-		}
-	}
-
-	if (!range && value) {
-		const sDate = fromUnixTime(value);
-
-		const timeValue = `${((sDate.getHours() + 11) % 12) + 1}:${sDate.getMinutes()} ${
-			sDate.getHours() >= 12 ? 'PM' : 'AM'
-		}`;
-
-		displayValue = ` ${sDate.getDate()} ${
-			MONTHS[sDate.getMonth().toString()?.substring(0, 3)]
-		} ${sDate.getFullYear()} ${timeValue}`;
-	}
-
-	if (fixedRange) {
-		displayValue = fixedRange;
-	}
-
-	const { x, y, reference, floating, strategy, context } = useFloating({
-		open,
-		onOpenChange: setOpen,
-		whileElementsMounted: autoUpdate,
-		middleware: [
-			size({
-				apply({ rects, availableHeight, elements }) {
-					Object.assign(elements.floating.style, {
-						width: `${rects.reference.width}px`,
-						minWidth: 'fit-content',
-						maxHeight: `${availableHeight}px`,
-					});
-				},
-				padding: 8,
-			}),
-			offset(5),
-			flip({
-				padding: 8,
-			}),
-			shift({
-				padding: 8,
-			}),
-		],
+	const displayValue = getDatePickerDisplayValue({
+		value,
+		rangePicker: range && value?.filter(Boolean)?.length > 0,
+		singlePicker: !range && value,
 	});
 
-	useOutsideClickListener(floating, () => {
-		return setOpen(false);
+	const datePickerFloatingReference = useFloating(
+		getFloatingReferences(openDatePicker, setOpenDatePicker)
+	);
+
+	const customRangeFloatingReference = useFloating(
+		getFloatingReferences(openCustomRange, setOpenCustomRange)
+	);
+
+	useOutsideClickListener(datePickerFloatingReference.floating, () => {
+		return setOpenDatePicker(false);
 	});
 
-	const { getReferenceProps, getFloatingProps } = useInteractions([
-		useClick(context, {
+	useOutsideClickListener(customRangeFloatingReference.floating, () => {
+		return setOpenDatePicker(false);
+	});
+
+	const datePickerInteractionProps = useInteractions([
+		useClick(datePickerFloatingReference.context, {
 			enabled: !disabled,
 		}),
-		useDismiss(context),
+		useDismiss(datePickerFloatingReference.context),
+	]);
+
+	const customRangeInteractionProps = useInteractions([
+		useClick(customRangeFloatingReference.context, {
+			enabled: !disabled,
+		}),
+		useDismiss(customRangeFloatingReference.context),
 	]);
 
 	const apply = () => {
@@ -143,15 +108,15 @@ const DatePicker = (props) => {
 				})
 			) {
 				setError('Invalid range of dates');
-				setOpen(false);
+				setOpenDatePicker(false);
 				return;
 			}
 			setError('');
 			onApply(selectedRange.unix, fixedRange, getDateRangeTag(selectedRange.unix));
-			setOpen(false);
+			setOpenDatePicker(false);
 		} else {
 			onApply(selectedDate.unix);
-			setOpen(false);
+			setOpenDatePicker(false);
 		}
 	};
 
@@ -160,6 +125,7 @@ const DatePicker = (props) => {
 		setSelectedDate,
 		selectedRange,
 		setSelectedRange,
+		fixedRange,
 		range,
 		onApply: () => {
 			apply();
@@ -172,73 +138,131 @@ const DatePicker = (props) => {
 		customRanges,
 	};
 
+	const hasCustomRanges = customRanges?.length && customRanges !== null;
+
 	return (
-		<div className={classes(styles.root, className, styles[theme])} ref={datePickerRef}>
-			{label && <span className={classes(styles.label, styles[theme])}>{label}</span>}
-			<div
-				data-elem='header'
-				ref={reference}
-				className={classes(
-					styles.container,
-					disabled ? styles.disabled : '',
-					open ? styles.open : '',
-					error ? styles.error : '',
-					styles[theme]
+		<div className={classes(styles.root)} ref={datePickerRef}>
+			{hasCustomRanges && (
+				<Button
+					data-elem='custom-header'
+					ref={customRangeFloatingReference.reference}
+					leftComponent={() => {
+						return <ClockIcon className={classes(styles.icon, styles[theme])} />;
+					}}
+					title={fixedRange || 'Custom'}
+					className={styles['custom-picker']}
+					{...customRangeInteractionProps.getReferenceProps()}
+				/>
+			)}
+			<div className={classes(styles['date-picker'], className, styles[theme])}>
+				{label && !hasCustomRanges && (
+					<span className={classes(styles.label, styles[theme])}>{label}</span>
 				)}
-				{...getReferenceProps()}>
-				<div>
-					<CalenderIcon className={classes(styles.icon, styles[theme])} />
-					{!displayValue && (
-						<span className={classes(styles.placeholder, styles[theme])}>
-							{placeholder}
-						</span>
+				<div
+					data-elem='header'
+					ref={datePickerFloatingReference.reference}
+					role='button'
+					className={classes(
+						styles.container,
+						disabled ? styles.disabled : '',
+						openDatePicker ? styles.open : '',
+						error ? styles.error : '',
+						customRanges ? styles['with-custom'] : '',
+						styles[theme]
 					)}
-					{displayValue && (
-						<div className={classes(styles.value, styles[theme])}>
-							<span>{displayValue}</span>
-						</div>
+					{...datePickerInteractionProps.getReferenceProps()}>
+					<div>
+						<CalenderIcon className={classes(styles.icon, styles[theme])} />
+						{!displayValue && (
+							<span className={classes(styles.placeholder, styles[theme])}>
+								{placeholder}
+							</span>
+						)}
+						{displayValue && (
+							<div className={classes(styles.value, styles[theme])}>
+								<span>{displayValue}</span>
+							</div>
+						)}
+					</div>
+
+					<input className={styles.input} value={displayValue} />
+					{value ? (
+						<Button
+							size='auto'
+							variant='text'
+							data-elem='close'
+							className={styles.close}
+							onClick={(event) => {
+								event.stopPropagation();
+								onClear();
+							}}
+							rightComponent={() => {
+								return (
+									<CrossIcon className={classes(styles.icon, styles[theme])} />
+								);
+							}}
+						/>
+					) : (
+						<ChevronIcon
+							className={classes(styles.icon, styles[theme])}
+							position={openDatePicker ? 'bottom' : 'top'}
+						/>
 					)}
 				</div>
-
-				<input className={styles.input} value={displayValue} />
-				{value ? (
-					<div
-						onClick={(event) => {
-							event.stopPropagation();
-							onClear();
-						}}>
-						<CrossIcon className={classes(styles.icon, styles[theme])} />
-					</div>
-				) : (
-					<ChevronIcon
-						className={classes(styles.icon, styles[theme])}
-						position={open ? 'bottom' : 'top'}
-					/>
-				)}
+				{error && <div className={styles['error-text']}>{error}</div>}
+				<Popper open={openDatePicker} wrapperid='datePicker-popper'>
+					{openDatePicker && (
+						<div
+							{...datePickerInteractionProps.getFloatingProps({
+								role: 'group',
+								ref: datePickerFloatingReference.floating,
+								onKeyDown(event) {
+									if (event.key === 'Tab') {
+										setOpenDatePicker(false);
+									}
+								},
+								style: {
+									position: datePickerFloatingReference.strategy,
+									top: datePickerFloatingReference.y ?? 0,
+									left: datePickerFloatingReference.x ?? 0,
+								},
+							})}
+							className={classes(styles.popper, openDatePicker ? styles.open : '')}>
+							<Calender {...calenderProps} />
+						</div>
+					)}
+				</Popper>
+				<Popper open={openCustomRange} wrapperid='custom-range-popper'>
+					{openCustomRange && (
+						<div
+							{...customRangeInteractionProps.getFloatingProps({
+								role: 'group',
+								ref: customRangeFloatingReference.floating,
+								onKeyDown(event) {
+									if (event.key === 'Tab') {
+										setOpenCustomRange(false);
+									}
+								},
+								style: {
+									position: customRangeFloatingReference.strategy,
+									top: customRangeFloatingReference.y ?? 0,
+									left: customRangeFloatingReference.x ?? 0,
+								},
+							})}
+							className={classes(styles.popper, openCustomRange ? styles.open : '')}>
+							<DateAndTimeCustomRanges
+								customRanges={customRanges}
+								selectedRange={selectedRange}
+								setSelectedRange={setSelectedRange}
+								setFixedRange={setFixedRange}
+								setOpenDatePicker={setOpenDatePicker}
+								setOpenCustomRange={setOpenCustomRange}
+								fixedRange={fixedRange}
+							/>
+						</div>
+					)}
+				</Popper>
 			</div>
-			{error && <div className={styles['error-text']}>{error}</div>}
-			<Popper open={open} wrapperid='datePicker-popper'>
-				{open && (
-					<div
-						{...getFloatingProps({
-							role: 'group',
-							ref: floating,
-							onKeyDown(event) {
-								if (event.key === 'Tab') {
-									setOpen(false);
-								}
-							},
-							style: {
-								position: strategy,
-								top: y ?? 0,
-								left: x ?? 0,
-							},
-						})}
-						className={classes(styles.popper, open ? styles.open : '')}>
-						<Calender {...calenderProps} />
-					</div>
-				)}
-			</Popper>
 		</div>
 	);
 };
@@ -280,7 +304,7 @@ DatePicker.defaultProps = {
 	value: null,
 	className: '',
 	disableDatesBefore: [],
-	theme: 'dark',
+	theme: 'light',
 	customRanges: null,
 	defaultRangeSelection: null,
 	onClear: () => {},

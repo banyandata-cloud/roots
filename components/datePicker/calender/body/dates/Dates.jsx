@@ -1,7 +1,8 @@
 /* eslint-disable no-nested-ternary */
-import { getUnixTime, fromUnixTime, isAfter, isBefore, isSameDay } from 'date-fns';
+import { getUnixTime, fromUnixTime, isAfter, isBefore, isSameDay, isToday } from 'date-fns';
 import { useEffect, useState } from 'react';
 import { classes, getDatesInAMonth } from '../../../../../utils';
+import { TodayIndicator } from './assets';
 import styles from './Dates.module.css';
 import { getDatesToDisplay, rangeSelection } from './utils';
 
@@ -37,6 +38,8 @@ const Dates = (props) => {
 			year,
 		});
 	});
+
+	const [firstItem, lastItem] = selectedRange.unix ?? [];
 
 	const { days, dateObj } = datesInMonth;
 
@@ -109,32 +112,37 @@ const Dates = (props) => {
 	};
 
 	return (
-		<div className={styles.dates}>
+		<div className={styles.root}>
 			{datesToDisplay.map((date) => {
 				const dateNumber = date?.getDate();
+
+				const today = isToday(date);
+
 				const selectedSingleDate = isSameDay(fromUnixTime(selectedDate.unix), date);
-				const [firstItem, lastItem] = selectedRange.unix ?? [];
+
+				const todaySelected = today & selectedSingleDate;
 
 				const isFirstItem = isSameDay(fromUnixTime(firstItem), date);
 				const isLastItem = isSameDay(fromUnixTime(lastItem), date);
-
-				const isLastItemHovered = hoveredEndingDate === getUnixTime(date);
 				const isFirstItemHovered =
 					isBefore(date, fromUnixTime(firstItem)) &&
 					hoveredEndingDate === getUnixTime(date);
+				const isLastItemHovered = hoveredEndingDate === getUnixTime(date);
+
 				const notSameMonth = date.getMonth() !== monthAsNumber;
+
 				const isUnSelected = unSelectedDate === date.toISOString();
 
-				const disabled =
+				const isDisabled =
 					disabledDates.includes(date.toDateString()) ||
 					disabledBeforeDate(date) ||
 					disabledAfterDate(date);
 
-				const isDisabled = disabled;
 				const isHoveringBeforeSelectedDate = isBefore(
 					fromUnixTime(hoveredEndingDate),
 					fromUnixTime(firstItem)
 				);
+
 				let isMidItem;
 
 				if (hoveredEndingDate) {
@@ -162,7 +170,9 @@ const Dates = (props) => {
 						: '',
 					isLastItem ? styles.maxInRange : '',
 					isLastItemHovered ? styles['first-hovered'] : '',
-					isFirstItemHovered ? styles['last-hovered'] : ''
+					isFirstItemHovered ? styles['last-hovered'] : '',
+					today ? styles.today : '',
+					todaySelected ? styles['today-selected'] : ''
 				);
 
 				const childClassNames = classes(
@@ -186,6 +196,7 @@ const Dates = (props) => {
 						}}
 						key={date.toDateString()}>
 						<span className={childClassNames}>{dateNumber}</span>
+						{today && <TodayIndicator className={styles.indicator} />}
 					</div>
 				);
 			})}

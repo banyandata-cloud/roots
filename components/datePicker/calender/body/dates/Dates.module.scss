@@ -1,17 +1,181 @@
 @import '../../../../../styles';
 
-.dates {
+.root {
 	display: grid;
 	grid-template-columns: repeat(7, 1fr);
 	align-items: center;
 	flex-wrap: wrap;
-	div {
+	> div {
 		flex-basis: 14.28%;
 		@include flex(row, center, center);
 		margin-bottom: 0.25rem;
 		cursor: pointer;
 		align-self: center;
 		user-select: none;
+
+		&.minInRange {
+			background-color: $highlight;
+			border-radius: 1.5rem 0rem 0rem 1.5rem;
+			.date {
+				color: $white;
+			}
+			&:hover {
+				.date {
+					background: $highlight;
+					color: $white;
+					@include boxShadow;
+				}
+			}
+			&.today {
+				@include flex(column, flex-start, center);
+				.date {
+					color: $white;
+					font-weight: 500;
+				}
+				.indicator {
+					display: none;
+				}
+			}
+			&.today-selected {
+				@include flex(column, flex-start, center);
+				.date {
+					font-weight: 500;
+					color: $white;
+				}
+				.indicator {
+					display: none;
+				}
+			}
+		}
+		&.maxInRange {
+			background-color: $highlight;
+			border-radius: 0rem 1.5rem 1.5rem 0rem;
+			.date {
+				color: $white;
+			}
+			&.today-selected {
+				@include flex(column, flex-start, center);
+				display: none;
+				.date {
+					font-weight: 500;
+					color: $white;
+				}
+				.indicator {
+					display: none;
+				}
+			}
+			&.today {
+				@include flex(column, flex-start, center);
+				.date {
+					color: $white;
+					font-weight: 500;
+				}
+				.indicator {
+					display: none;
+				}
+			}
+			&:hover {
+				.date {
+					background: $highlight;
+					color: $white;
+					@include boxShadow;
+				}
+			}
+		}
+		&.midInRange {
+			background: $background;
+			border-radius: 0rem;
+			.date {
+				color: $highlight;
+			}
+			&.today-selected {
+				@include flex(column, flex-start, center);
+				.date {
+					font-weight: 500;
+					color: $white;
+				}
+				.indicator {
+					display: none;
+				}
+			}
+		}
+		&.midInRangeSelected {
+			background: $background;
+			border-radius: 0rem;
+			.date {
+				color: $white;
+			}
+			&.today-selected {
+				@include flex(column, flex-start, center);
+				.date {
+					font-weight: 500;
+					color: $white;
+				}
+				.indicator {
+					display: none;
+				}
+			}
+		}
+
+		&.first-hovered {
+			background: $background;
+			border-radius: 0rem 1.5rem 1.5rem 0rem;
+			.date {
+				color: $highlight;
+			}
+			&.today-selected {
+				@include flex(column, flex-start, center);
+				.date {
+					font-weight: 500;
+					color: $white;
+				}
+				.indicator {
+					display: none;
+				}
+			}
+		}
+		&.last-hovered {
+			background: $background;
+			border-radius: 1.5rem 0rem 0rem 1.5rem;
+			.date {
+				color: $highlight;
+			}
+
+			&.today-selected {
+				@include flex(column, flex-start, center);
+				.date {
+					font-weight: 500;
+					color: $white;
+				}
+				.indicator {
+					display: none;
+				}
+			}
+		}
+
+		&.today {
+			@include flex(column, flex-start, center);
+			.date {
+				color: $highlight;
+				font-weight: 500;
+			}
+			.indicator {
+				margin-top: -0.825rem;
+			}
+		}
+
+		&.today-selected {
+			@include flex(column, flex-start, center);
+			.date {
+				font-weight: 500;
+				color: $white;
+			}
+			.indicator {
+				margin-top: -0.825rem;
+				fill: $white;
+			}
+		}
+
 		.date {
 			@include flex(row, center, center);
 			text-align: center;
@@ -22,24 +186,24 @@
 			font-weight: 400;
 			font-size: 0.875rem;
 			color: $black;
-		}
-		.selected {
-			background-color: $highlight;
-			color: $white;
-		}
-		.unSelected {
-			background-color: $white;
-			border-color: $highlight;
-			border-width: 0.125rem;
-			border-style: solid;
-			color: $black;
-		}
-		.disabled {
-			border-radius: 1.5rem;
-			color: $grey2;
-		}
-		.diffMonth {
-			opacity: 0.6;
+			&.selected {
+				background-color: $highlight;
+				color: $white;
+			}
+			&.unSelected {
+				background-color: $white;
+				border-color: $highlight;
+				border-width: 0.125rem;
+				border-style: solid;
+				color: $black;
+			}
+			&.disabled {
+				border-radius: 1.5rem;
+				color: $grey2;
+			}
+			&.diffMonth {
+				opacity: 0.6;
+			}
 		}
 
 		&:hover {
@@ -58,62 +222,6 @@
 				border-radius: 1.5rem;
 				color: $grey2;
 			}
-		}
-	}
-	.minInRange {
-		background-color: $highlight;
-		border-radius: 1.5rem 0rem 0rem 1.5rem;
-		.date {
-			color: $white;
-		}
-		&:hover {
-			.date {
-				background: $highlight;
-				color: $white;
-				@include boxShadow;
-			}
-		}
-	}
-	.maxInRange {
-		background-color: $highlight;
-		border-radius: 0rem 1.5rem 1.5rem 0rem;
-		.date {
-			color: $white;
-		}
-		&:hover {
-			.date {
-				background: $highlight;
-				color: $white;
-				@include boxShadow;
-			}
-		}
-	}
-	.midInRange {
-		background: $background;
-		border-radius: 0rem;
-		.date {
-			color: $highlight;
-		}
-	}
-	.midInRangeSelected {
-		background: $background;
-		border-radius: 0rem;
-		.date {
-			color: $white;
-		}
-	}
-	.first-hovered {
-		background: $background;
-		border-radius: 0rem 1.5rem 1.5rem 0rem;
-		.date {
-			color: $highlight;
-		}
-	}
-	.last-hovered {
-		background: $background;
-		border-radius: 1.5rem 0rem 0rem 1.5rem;
-		.date {
-			color: $highlight;
 		}
 	}
 }

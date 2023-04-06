@@ -19,6 +19,7 @@ const Calender = (props) => {
 		disableDatesBefore,
 		value,
 		setFixedRange,
+		fixedRange,
 		customRanges,
 	} = props;
 
@@ -31,6 +32,9 @@ const Calender = (props) => {
 	});
 
 	useEffect(() => {
+		if (fixedRange) {
+			return;
+		}
 		if (range && value?.filter(Boolean)?.length > 0) {
 			setSelectedRange({
 				dates: getDatesInStringFormat({
@@ -49,9 +53,9 @@ const Calender = (props) => {
 				dayAsNumber: selectedDayInfo.dayAsNumber,
 			};
 			setSelectedMonth({
-				month: selectedDayInfo.month,
-				monthAsNumber: selectedDayInfo.monthAsNumber,
-				year: selectedDayInfo.year,
+				month: getDayInfo(fromUnixTime(value[0])).month,
+				monthAsNumber: getDayInfo(fromUnixTime(value[0])).monthAsNumber,
+				year: getDayInfo(fromUnixTime(value[0])).year,
 			});
 			setSelectedDate({
 				...selectedDate,
@@ -164,7 +168,12 @@ const Calender = (props) => {
 
 	return (
 		<div className={styles.root}>
-			<CalenderHeader selectedMonth={selectedMonth} onMonthChange={onMonthChange} />
+			<CalenderHeader
+				{...commonCalenderProps}
+				selectedMonth={selectedMonth}
+				onMonthChange={onMonthChange}
+				setSelectedMonth={setSelectedMonth}
+			/>
 			<CalenderBody
 				{...commonCalenderProps}
 				selectedMonth={selectedMonth}

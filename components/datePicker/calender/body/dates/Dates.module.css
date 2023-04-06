@@ -1,10 +1,10 @@
-.dates {
+.root {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   align-items: center;
   flex-wrap: wrap;
 }
-.dates div {
+.root > div {
   flex-basis: 14.28%;
   display: flex;
   flex-direction: row;
@@ -15,10 +15,193 @@
   align-self: center;
   -webkit-user-select: none;
      -moz-user-select: none;
-      -ms-user-select: none;
           user-select: none;
 }
-.dates div .date {
+.root > div.minInRange {
+  background-color: var(--highlight);
+  border-radius: 1.5rem 0rem 0rem 1.5rem;
+}
+.root > div.minInRange .date {
+  color: var(--white);
+}
+.root > div.minInRange:hover .date {
+  background: var(--highlight);
+  color: var(--white);
+  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);
+}
+.root > div.minInRange.today {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.root > div.minInRange.today .date {
+  color: var(--white);
+  font-weight: 500;
+}
+.root > div.minInRange.today .indicator {
+  display: none;
+}
+.root > div.minInRange.today-selected {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.root > div.minInRange.today-selected .date {
+  font-weight: 500;
+  color: var(--white);
+}
+.root > div.minInRange.today-selected .indicator {
+  display: none;
+}
+.root > div.maxInRange {
+  background-color: var(--highlight);
+  border-radius: 0rem 1.5rem 1.5rem 0rem;
+}
+.root > div.maxInRange .date {
+  color: var(--white);
+}
+.root > div.maxInRange.today-selected {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  display: none;
+}
+.root > div.maxInRange.today-selected .date {
+  font-weight: 500;
+  color: var(--white);
+}
+.root > div.maxInRange.today-selected .indicator {
+  display: none;
+}
+.root > div.maxInRange.today {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.root > div.maxInRange.today .date {
+  color: var(--white);
+  font-weight: 500;
+}
+.root > div.maxInRange.today .indicator {
+  display: none;
+}
+.root > div.maxInRange:hover .date {
+  background: var(--highlight);
+  color: var(--white);
+  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);
+}
+.root > div.midInRange {
+  background: var(--background);
+  border-radius: 0rem;
+}
+.root > div.midInRange .date {
+  color: var(--highlight);
+}
+.root > div.midInRange.today-selected {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.root > div.midInRange.today-selected .date {
+  font-weight: 500;
+  color: var(--white);
+}
+.root > div.midInRange.today-selected .indicator {
+  display: none;
+}
+.root > div.midInRangeSelected {
+  background: var(--background);
+  border-radius: 0rem;
+}
+.root > div.midInRangeSelected .date {
+  color: var(--white);
+}
+.root > div.midInRangeSelected.today-selected {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.root > div.midInRangeSelected.today-selected .date {
+  font-weight: 500;
+  color: var(--white);
+}
+.root > div.midInRangeSelected.today-selected .indicator {
+  display: none;
+}
+.root > div.first-hovered {
+  background: var(--background);
+  border-radius: 0rem 1.5rem 1.5rem 0rem;
+}
+.root > div.first-hovered .date {
+  color: var(--highlight);
+}
+.root > div.first-hovered.today-selected {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.root > div.first-hovered.today-selected .date {
+  font-weight: 500;
+  color: var(--white);
+}
+.root > div.first-hovered.today-selected .indicator {
+  display: none;
+}
+.root > div.last-hovered {
+  background: var(--background);
+  border-radius: 1.5rem 0rem 0rem 1.5rem;
+}
+.root > div.last-hovered .date {
+  color: var(--highlight);
+}
+.root > div.last-hovered.today-selected {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.root > div.last-hovered.today-selected .date {
+  font-weight: 500;
+  color: var(--white);
+}
+.root > div.last-hovered.today-selected .indicator {
+  display: none;
+}
+.root > div.today {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.root > div.today .date {
+  color: var(--highlight);
+  font-weight: 500;
+}
+.root > div.today .indicator {
+  margin-top: -0.825rem;
+}
+.root > div.today-selected {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.root > div.today-selected .date {
+  font-weight: 500;
+  color: var(--white);
+}
+.root > div.today-selected .indicator {
+  margin-top: -0.825rem;
+  fill: var(--white);
+}
+.root > div .date {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -32,88 +215,36 @@
   font-size: 0.875rem;
   color: var(--black);
 }
-.dates div .selected {
+.root > div .date.selected {
   background-color: var(--highlight);
   color: var(--white);
 }
-.dates div .unSelected {
+.root > div .date.unSelected {
   background-color: var(--white);
   border-color: var(--highlight);
   border-width: 0.125rem;
   border-style: solid;
   color: var(--black);
 }
-.dates div .disabled {
+.root > div .date.disabled {
   border-radius: 1.5rem;
   color: var(--grey2);
 }
-.dates div .diffMonth {
+.root > div .date.diffMonth {
   opacity: 0.6;
 }
-.dates div:hover .date {
+.root > div:hover .date {
   background: var(--background);
   color: var(--highlight);
   box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);
 }
-.dates div:hover .selected {
+.root > div:hover .selected {
   background-color: var(--highlight);
   color: var(--white);
 }
-.dates div:hover .disabled {
+.root > div:hover .disabled {
   background: transparent;
   box-shadow: none;
   border-radius: 1.5rem;
   color: var(--grey2);
-}
-.dates .minInRange {
-  background-color: var(--highlight);
-  border-radius: 1.5rem 0rem 0rem 1.5rem;
-}
-.dates .minInRange .date {
-  color: var(--white);
-}
-.dates .minInRange:hover .date {
-  background: var(--highlight);
-  color: var(--white);
-  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);
-}
-.dates .maxInRange {
-  background-color: var(--highlight);
-  border-radius: 0rem 1.5rem 1.5rem 0rem;
-}
-.dates .maxInRange .date {
-  color: var(--white);
-}
-.dates .maxInRange:hover .date {
-  background: var(--highlight);
-  color: var(--white);
-  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);
-}
-.dates .midInRange {
-  background: var(--background);
-  border-radius: 0rem;
-}
-.dates .midInRange .date {
-  color: var(--highlight);
-}
-.dates .midInRangeSelected {
-  background: var(--background);
-  border-radius: 0rem;
-}
-.dates .midInRangeSelected .date {
-  color: var(--white);
-}
-.dates .first-hovered {
-  background: var(--background);
-  border-radius: 0rem 1.5rem 1.5rem 0rem;
-}
-.dates .first-hovered .date {
-  color: var(--highlight);
-}
-.dates .last-hovered {
-  background: var(--background);
-  border-radius: 1.5rem 0rem 0rem 1.5rem;
-}
-.dates .last-hovered .date {
-  color: var(--highlight);
 }/*# sourceMappingURL=Dates.module.css.map */
