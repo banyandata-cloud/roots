@@ -108697,8 +108697,46 @@ var ChartSkeleton$4 = function ChartSkeleton(_ref) {
 };
 
 use([install$8, install$9, install$a, install$1, install$5, install$h, install]);
+var AXIS_COLORS = {
+  label: {
+    dark: '#a2a4a5',
+    light: COLORS.grey
+  },
+  line: {
+    dark: '#757679',
+    light: COLORS.grey3
+  },
+  split: {
+    dark: COLORS['dark-grey'],
+    light: COLORS.grey5
+  },
+  tick: {
+    dark: '#757679',
+    light: COLORS.grey3
+  }
+};
+var determineAxesColors = function determineAxesColors(type) {
+  var defaultColor = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+  var theme = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'dark';
+  if (defaultColor !== '') {
+    return defaultColor;
+  }
+  return AXIS_COLORS[type]["".concat(theme)];
+};
+var determineGradient = function determineGradient(seriesData, objectData, index, subIndex, key) {
+  var _seriesData$chartData, _seriesData$chartData2;
+  if (seriesData !== null && seriesData !== void 0 && (_seriesData$chartData = seriesData.chartData) !== null && _seriesData$chartData !== void 0 && (_seriesData$chartData2 = _seriesData$chartData[key]) !== null && _seriesData$chartData2 !== void 0 && _seriesData$chartData2["x".concat(index + 1)]) {
+    var _ref, _objectData$color, _objectData$barColor$2, _objectData$barColor2, _objectData$color3;
+    if (typeof ((_ref = (_objectData$color = objectData === null || objectData === void 0 ? void 0 : objectData.color) !== null && _objectData$color !== void 0 ? _objectData$color : '') !== null && _ref !== void 0 ? _ref : {}) !== 'string') {
+      var _objectData$barColor$, _objectData$barColor, _objectData$color2;
+      return _construct(LinearGradient$1, _toConsumableArray$1(((_objectData$barColor$ = objectData === null || objectData === void 0 ? void 0 : (_objectData$barColor = objectData.barColor) === null || _objectData$barColor === void 0 ? void 0 : _objectData$barColor[subIndex]) !== null && _objectData$barColor$ !== void 0 ? _objectData$barColor$ : '') || ((_objectData$color2 = objectData === null || objectData === void 0 ? void 0 : objectData.color) !== null && _objectData$color2 !== void 0 ? _objectData$color2 : '')));
+    }
+    return ((_objectData$barColor$2 = objectData === null || objectData === void 0 ? void 0 : (_objectData$barColor2 = objectData.barColor) === null || _objectData$barColor2 === void 0 ? void 0 : _objectData$barColor2[subIndex]) !== null && _objectData$barColor$2 !== void 0 ? _objectData$barColor$2 : '') || ((_objectData$color3 = objectData === null || objectData === void 0 ? void 0 : objectData.color) !== null && _objectData$color3 !== void 0 ? _objectData$color3 : '');
+  }
+  return '';
+};
 var BaseVerticalBarChart = function BaseVerticalBarChart(props) {
-  var _Object$keys, _seriesData$chartData, _seriesData$metaData$, _seriesData$metaData, _seriesData$metaData$2, _seriesData$chartData6, _seriesData$chartData21;
+  var _Object$keys, _seriesData$chartData3, _seriesData$metaData$, _seriesData$metaData, _seriesData$metaData$2, _seriesData$chartData6, _seriesData$chartData21;
   var loading = props.loading,
     title = props.title,
     gridContainLabel = props.gridContainLabel,
@@ -108730,24 +108768,12 @@ var BaseVerticalBarChart = function BaseVerticalBarChart(props) {
       fallback: !loading && fallback
     });
   }
-  var minHeightCheck = !((_Object$keys = Object.keys((_seriesData$chartData = seriesData === null || seriesData === void 0 ? void 0 : seriesData.chartData) !== null && _seriesData$chartData !== void 0 ? _seriesData$chartData : 0)) !== null && _Object$keys !== void 0 && _Object$keys.some(function (obj1) {
+  var minHeightCheck = !((_Object$keys = Object.keys((_seriesData$chartData3 = seriesData === null || seriesData === void 0 ? void 0 : seriesData.chartData) !== null && _seriesData$chartData3 !== void 0 ? _seriesData$chartData3 : 0)) !== null && _Object$keys !== void 0 && _Object$keys.some(function (obj1) {
     return seriesOption.some(function (obj, index) {
-      var _seriesData$chartData2, _seriesData$chartData3;
-      return seriesData === null || seriesData === void 0 ? void 0 : (_seriesData$chartData2 = seriesData.chartData) === null || _seriesData$chartData2 === void 0 ? void 0 : (_seriesData$chartData3 = _seriesData$chartData2[obj1]) === null || _seriesData$chartData3 === void 0 ? void 0 : _seriesData$chartData3["x".concat(index + 1)];
+      var _seriesData$chartData4, _seriesData$chartData5;
+      return seriesData === null || seriesData === void 0 ? void 0 : (_seriesData$chartData4 = seriesData.chartData) === null || _seriesData$chartData4 === void 0 ? void 0 : (_seriesData$chartData5 = _seriesData$chartData4[obj1]) === null || _seriesData$chartData5 === void 0 ? void 0 : _seriesData$chartData5["x".concat(index + 1)];
     });
   })) ? 1 : 0;
-  var determineColor = function determineColor(objectData, index, subIndex, key) {
-    var _seriesData$chartData4, _seriesData$chartData5;
-    if (seriesData !== null && seriesData !== void 0 && (_seriesData$chartData4 = seriesData.chartData) !== null && _seriesData$chartData4 !== void 0 && (_seriesData$chartData5 = _seriesData$chartData4[key]) !== null && _seriesData$chartData5 !== void 0 && _seriesData$chartData5["x".concat(index + 1)]) {
-      var _ref, _objectData$color, _objectData$barColor$2, _objectData$barColor2, _objectData$color3;
-      if (typeof ((_ref = (_objectData$color = objectData === null || objectData === void 0 ? void 0 : objectData.color) !== null && _objectData$color !== void 0 ? _objectData$color : '') !== null && _ref !== void 0 ? _ref : {}) !== 'string') {
-        var _objectData$barColor$, _objectData$barColor, _objectData$color2;
-        return _construct(LinearGradient$1, _toConsumableArray$1(((_objectData$barColor$ = objectData === null || objectData === void 0 ? void 0 : (_objectData$barColor = objectData.barColor) === null || _objectData$barColor === void 0 ? void 0 : _objectData$barColor[subIndex]) !== null && _objectData$barColor$ !== void 0 ? _objectData$barColor$ : '') || ((_objectData$color2 = objectData === null || objectData === void 0 ? void 0 : objectData.color) !== null && _objectData$color2 !== void 0 ? _objectData$color2 : '')));
-      }
-      return ((_objectData$barColor$2 = objectData === null || objectData === void 0 ? void 0 : (_objectData$barColor2 = objectData.barColor) === null || _objectData$barColor2 === void 0 ? void 0 : _objectData$barColor2[subIndex]) !== null && _objectData$barColor$2 !== void 0 ? _objectData$barColor$2 : '') || ((_objectData$color3 = objectData === null || objectData === void 0 ? void 0 : objectData.color) !== null && _objectData$color3 !== void 0 ? _objectData$color3 : '');
-    }
-    return 'whitesmoke';
-  };
   var seriesOptionObject = {
     type: 'bar',
     barWidth: stackCount ? barWidth : barWidth / stackCount,
@@ -108792,7 +108818,7 @@ var BaseVerticalBarChart = function BaseVerticalBarChart(props) {
         label: _objectSpread2(_objectSpread2({}, (_seriesOptionObject$l = seriesOptionObject === null || seriesOptionObject === void 0 ? void 0 : seriesOptionObject.label) !== null && _seriesOptionObject$l !== void 0 ? _seriesOptionObject$l : {}), (_objectData$label = objectData === null || objectData === void 0 ? void 0 : objectData.label) !== null && _objectData$label !== void 0 ? _objectData$label : {}),
         name: seriesName(index),
         data: Object.keys((_seriesData$chartData13 = seriesData === null || seriesData === void 0 ? void 0 : seriesData.chartData) !== null && _seriesData$chartData13 !== void 0 ? _seriesData$chartData13 : {}).map(function (key, subIndex) {
-          var _seriesData$chartData18, _seriesData$chartData19, _seriesData$chartData20, _seriesOption$subInde, _seriesOption$subInde2;
+          var _seriesData$chartData18, _seriesData$chartData19, _seriesData$chartData20, _objectData$color4, _seriesOption$subInde, _seriesOption$subInde2;
           var check = true;
           if (stackCount <= 1) {
             check = seriesOption.some(function (obj, checkIndex) {
@@ -108809,13 +108835,15 @@ var BaseVerticalBarChart = function BaseVerticalBarChart(props) {
               return false;
             });
           }
-          return {
-            value: check ? (_seriesData$chartData18 = seriesData === null || seriesData === void 0 ? void 0 : (_seriesData$chartData19 = seriesData.chartData) === null || _seriesData$chartData19 === void 0 ? void 0 : (_seriesData$chartData20 = _seriesData$chartData19[key]) === null || _seriesData$chartData20 === void 0 ? void 0 : _seriesData$chartData20["x".concat(index + 1)]) !== null && _seriesData$chartData18 !== void 0 ? _seriesData$chartData18 : '' : minHeight,
+          return _objectSpread2(_objectSpread2({
+            value: check ? (_seriesData$chartData18 = seriesData === null || seriesData === void 0 ? void 0 : (_seriesData$chartData19 = seriesData.chartData) === null || _seriesData$chartData19 === void 0 ? void 0 : (_seriesData$chartData20 = _seriesData$chartData19[key]) === null || _seriesData$chartData20 === void 0 ? void 0 : _seriesData$chartData20["x".concat(index + 1)]) !== null && _seriesData$chartData18 !== void 0 ? _seriesData$chartData18 : '' : minHeight
+          }, ((_objectData$color4 = objectData === null || objectData === void 0 ? void 0 : objectData.color) !== null && _objectData$color4 !== void 0 ? _objectData$color4 : '') && {
             itemStyle: {
-              color: determineColor(objectData, index, subIndex, key)
-            },
+              color: determineGradient(seriesData, objectData, index, subIndex, key)
+            }
+          }), {}, {
             tooltip: _objectSpread2({}, (_seriesOption$subInde = (_seriesOption$subInde2 = seriesOption[subIndex]) === null || _seriesOption$subInde2 === void 0 ? void 0 : _seriesOption$subInde2.tooltip) !== null && _seriesOption$subInde !== void 0 ? _seriesOption$subInde : {})
-          };
+          });
         })
       });
     });
@@ -108833,13 +108861,18 @@ var BaseVerticalBarChart = function BaseVerticalBarChart(props) {
         show: xAxisShow,
         type: 'category',
         axisTick: {
-          show: false
+          show: false,
+          lineStyle: {
+            color: determineAxesColors('tick', axisColor, theme)
+          }
         },
-        axisLabel: _objectSpread2({}, xAxisLabel),
+        axisLabel: _objectSpread2(_objectSpread2({}, xAxisLabel), {}, {
+          color: determineAxesColors('label', axisColor, theme)
+        }),
         axisLine: {
           show: xAxisShow,
           lineStyle: {
-            color: theme === 'dark' ? '#757679' : COLORS.grey3
+            color: determineAxesColors('line', axisColor, theme)
           }
         }
       },
@@ -108849,25 +108882,25 @@ var BaseVerticalBarChart = function BaseVerticalBarChart(props) {
         type: 'value',
         axisLabel: {
           show: yAxisLabelShow,
-          color: axisColor !== '' ? axisColor : theme === 'dark' ? '#a2a4a5' : COLORS.grey
+          color: determineAxesColors('label', axisColor, theme)
         },
         splitLine: {
           show: ySplitLineShow,
           lineStyle: {
-            color: axisColor !== '' ? axisColor : theme === 'dark' ? COLORS['dark-grey'] : COLORS.grey5,
+            color: determineAxesColors('split', axisColor, theme),
             type: splitType
           }
         },
         axisLine: {
           show: yAxisLineShow,
           lineStyle: {
-            color: axisColor !== '' ? axisColor : theme === 'dark' ? '#757679' : COLORS.grey3
+            color: determineAxesColors('line', axisColor, theme)
           }
         },
         axisTick: {
           show: yAxisTickShow,
           lineStyle: {
-            color: axisColor !== '' ? axisColor : theme === 'dark' ? '#757679' : COLORS.grey3
+            color: determineAxesColors('tick', axisColor, theme)
           }
         }
       },
