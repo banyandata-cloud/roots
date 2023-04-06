@@ -3,8 +3,8 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  padding: 4px;
-  gap: 4px;
+  padding: 0.25rem;
+  gap: 0.25rem;
 }
 .root .option[data-elem=base-cell] {
   background-color: transparent !important;
