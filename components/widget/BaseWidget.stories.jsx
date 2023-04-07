@@ -313,6 +313,7 @@ const MapTemplate = (args) => {
 };
 
 export const Default = Template.bind({});
+export const WithTitleOptions = Template.bind({});
 export const WithFallback = WithFallbackTemplate.bind({});
 export const WithNestedFallback = WithNestedFallbackTemplate.bind({});
 export const WithLoader = WithFallbackTemplate.bind({});
@@ -381,6 +382,11 @@ Default.args = {
 			},
 		},
 	],
+};
+
+WithTitleOptions.args = {
+	...Default.args,
+	titleOptions: 'Hello There',
 };
 
 WithFallback.args = {

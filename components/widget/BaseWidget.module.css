@@ -1,10 +1,10 @@
 .root {
-  border: 1px solid var(--grey);
-  border-radius: 0.25rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
+  border: 1px solid var(--grey);
+  border-radius: 0.25rem;
   height: 100%;
   width: 100%;
 }
@@ -13,7 +13,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  padding: 0.5rem;
 }
 .root .header .header-title {
   display: flex;
@@ -34,11 +34,20 @@
 .root .header .header-title.no-options {
   flex: 1;
 }
-.root .header .header-title .title {
-  white-space: nowrap;
+.root .header .header-title.no-title-options {
+  gap: 1rem;
 }
-.root .header .header-title .value {
-  white-space: nowrap;
+.root .header .header-title button.title {
+  height: auto;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  padding: 0 0.5rem;
+}
+.root .header .header-title button.title .icon {
+  width: 1rem;
+  height: 1rem;
+  fill: var(--white);
 }
 .root .header .header-options {
   display: flex;
@@ -76,6 +85,9 @@
 .root.dark-theme .header .header-title [data-elem=subtitle] {
   color: var(--white);
 }
+.root.dark-theme .header .header-title .title .icon {
+  fill: var(--white);
+}
 .root.dark-theme .header .header-options .dropdown-header [data-elem=select] {
   border-color: var(--grey);
 }
@@ -95,6 +107,9 @@
 .root.light-theme .header .header-title [data-elem=title],
 .root.light-theme .header .header-title [data-elem=subtitle] {
   color: var(--dark-grey);
+}
+.root.light-theme .header .header-title .title .icon {
+  fill: var(--menu-black);
 }
 .root.light-theme .header .header-options .dropdown-header [data-elem=select] {
   border-color: var(--grey6);
