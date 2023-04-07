@@ -1,4 +1,4 @@
-@import '../../../assets/styles';
+@import '../../../styles';
 
 .root {
 	cursor: pointer;
@@ -24,6 +24,7 @@
 
 	.icon {
 		display: inline-block;
+		border-radius: 0.375rem;
 		&.icon-sm {
 			width: 1rem;
 			height: 1rem;
@@ -34,7 +35,15 @@
 		}
 		&.icon-lg {
 			width: 1.5rem;
-			height: 2rem;
+			height: 1.5rem;
+		}
+	}
+
+	input {
+		&:focus {
+			+ .icon {
+				box-shadow: 0px 0px 0px 8px rgba(15, 98, 254, 0.125);
+			}
 		}
 	}
 

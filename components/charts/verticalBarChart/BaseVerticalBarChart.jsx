@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable react/forbid-prop-types */
 import PropTypes from 'prop-types';
 // ReactEcharts from 'echarts-for-react' would import the entire bundle
@@ -19,6 +20,7 @@ import {
 import styles from './BaseVerticalBarChart.module.css';
 import { classes } from '../../../utils';
 import { Skeleton } from './Skeleton';
+import { COLORS } from '../../../styles';
 
 // Register the required components
 echarts.use([
@@ -30,6 +32,44 @@ echarts.use([
 	BarChart,
 	CanvasRenderer,
 ]);
+
+const AXIS_COLORS = {
+	label: {
+		dark: '#a2a4a5',
+		light: COLORS.grey,
+	},
+	line: {
+		dark: '#757679',
+		light: COLORS.grey3,
+	},
+	split: {
+		dark: COLORS['dark-grey'],
+		light: COLORS.grey5,
+	},
+	tick: {
+		dark: '#757679',
+		light: COLORS.grey3,
+	},
+};
+
+const determineAxesColors = (type, defaultColor = '', theme = 'dark') => {
+	if (defaultColor !== '') {
+		return defaultColor;
+	}
+	return AXIS_COLORS[type][`${theme}`];
+};
+
+const determineGradient = (seriesData, objectData, index, subIndex, key) => {
+	if (seriesData?.chartData?.[key]?.[`x${index + 1}`]) {
+		if (typeof (objectData?.color ?? '' ?? {}) !== 'string') {
+			return new echarts.graphic.LinearGradient(
+				...((objectData?.barColor?.[subIndex] ?? '') || (objectData?.color ?? ''))
+			);
+		}
+		return (objectData?.barColor?.[subIndex] ?? '') || (objectData?.color ?? '');
+	}
+	return '';
+};
 
 const BaseVerticalBarChart = (props) => {
 	const {
@@ -139,12 +179,17 @@ const BaseVerticalBarChart = (props) => {
 						value: check
 							? seriesData?.chartData?.[key]?.[`x${index + 1}`] ?? ''
 							: minHeight,
-						itemStyle: {
-							color: seriesData?.chartData?.[key]?.[`x${index + 1}`]
-								? (objectData?.barColor?.[subIndex] ?? '') ||
-								  (objectData?.color ?? '')
-								: 'whitesmoke',
-						},
+						...((objectData?.color ?? '') && {
+							itemStyle: {
+								color: determineGradient(
+									seriesData,
+									objectData,
+									index,
+									subIndex,
+									key
+								),
+							},
+						}),
 						tooltip: {
 							...(seriesOption[subIndex]?.tooltip ?? {}),
 						},
@@ -170,9 +215,19 @@ const BaseVerticalBarChart = (props) => {
 					type: 'category',
 					axisTick: {
 						show: false,
+						lineStyle: {
+							color: determineAxesColors('tick', axisColor, theme),
+						},
 					},
 					axisLabel: {
 						...xAxisLabel,
+						color: determineAxesColors('label', axisColor, theme),
+					},
+					axisLine: {
+						show: xAxisShow,
+						lineStyle: {
+							color: determineAxesColors('line', axisColor, theme),
+						},
 					},
 				},
 				legend: {
@@ -185,20 +240,26 @@ const BaseVerticalBarChart = (props) => {
 					type: 'value',
 					axisLabel: {
 						show: yAxisLabelShow,
-						color: axisColor,
+						color: determineAxesColors('label', axisColor, theme),
 					},
 					splitLine: {
 						show: ySplitLineShow,
 						lineStyle: {
-							color: axisColor,
+							color: determineAxesColors('split', axisColor, theme),
 							type: splitType,
 						},
 					},
 					axisLine: {
 						show: yAxisLineShow,
+						lineStyle: {
+							color: determineAxesColors('line', axisColor, theme),
+						},
 					},
 					axisTick: {
 						show: yAxisTickShow,
+						lineStyle: {
+							color: determineAxesColors('tick', axisColor, theme),
+						},
 					},
 				},
 				series: generateSeries(),
@@ -270,8 +331,8 @@ BaseVerticalBarChart.defaultProps = {
 	ySplitLineShow: false,
 	yAxisLineShow: false,
 	yAxisTickShow: false,
-	axisColor: 'grey',
-	splitType: 'dashed',
+	axisColor: '',
+	splitType: 'solid',
 	barWidth: '50%',
 	seriesName: () => {},
 	legend: {
