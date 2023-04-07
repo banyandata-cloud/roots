@@ -1,5 +1,13 @@
 /* eslint-disable no-nested-ternary */
-import { getUnixTime, fromUnixTime, isAfter, isBefore, isSameDay, isToday } from 'date-fns';
+import {
+	getUnixTime,
+	fromUnixTime,
+	isAfter,
+	isBefore,
+	isSameDay,
+	isToday,
+	isEqual,
+} from 'date-fns';
 import { useEffect, useState } from 'react';
 import { classes, getDatesInAMonth } from '../../../../../utils';
 import { TodayIndicator } from './assets';
@@ -95,6 +103,14 @@ const Dates = (props) => {
 	};
 
 	const onMouseEnterADate = (date) => {
+		const sameDay = isSameDay(
+			fromUnixTime(selectedRange?.unix?.[0]),
+			fromUnixTime(selectedRange?.unix?.[1])
+		);
+		if (selectedRange.unix?.length === 2 && sameDay) {
+			setHoveredEndingDate(getUnixTime(date));
+			return;
+		}
 		if (range && selectedRange.unix?.length === 1) {
 			setHoveredEndingDate(getUnixTime(date));
 		}
@@ -120,10 +136,25 @@ const Dates = (props) => {
 
 				const selectedSingleDate = isSameDay(fromUnixTime(selectedDate.unix), date);
 
+				const isSameDayRange =
+					isSameDay(fromUnixTime(firstItem), date) &&
+					isSameDay(fromUnixTime(firstItem), fromUnixTime(lastItem));
+
 				const todaySelected = today & selectedSingleDate;
 
-				const isFirstItem = isSameDay(fromUnixTime(firstItem), date);
-				const isLastItem = isSameDay(fromUnixTime(lastItem), date);
+				const isFirstItem =
+					!isSameDayRange &&
+					isEqual(
+						fromUnixTime(firstItem).setHours(0, 0, 0, 0),
+						date.setHours(0, 0, 0, 0)
+					);
+				const isLastItem =
+					!isSameDayRange &&
+					isEqual(
+						fromUnixTime(lastItem).setHours(23, 59, 59, 59),
+						date.setHours(23, 59, 59, 59)
+					);
+
 				const isFirstItemHovered =
 					isBefore(date, fromUnixTime(firstItem)) &&
 					hoveredEndingDate === getUnixTime(date);
@@ -147,7 +178,8 @@ const Dates = (props) => {
 
 				if (hoveredEndingDate) {
 					isMidItem =
-						(isBefore(date, fromUnixTime(hoveredEndingDate)) &&
+						(!isSameDayRange &&
+							isBefore(date, fromUnixTime(hoveredEndingDate)) &&
 							isAfter(date, fromUnixTime(firstItem))) ||
 						(isAfter(date, fromUnixTime(hoveredEndingDate)) &&
 							isBefore(date, fromUnixTime(firstItem)));
@@ -169,15 +201,19 @@ const Dates = (props) => {
 							: styles.minInRange
 						: '',
 					isLastItem ? styles.maxInRange : '',
-					isLastItemHovered ? styles['first-hovered'] : '',
-					isFirstItemHovered ? styles['last-hovered'] : '',
+					(isSameDayRange && isLastItemHovered) || isLastItemHovered
+						? styles['first-hovered']
+						: '',
+					(isSameDayRange && isFirstItemHovered) || isFirstItemHovered
+						? styles['last-hovered']
+						: '',
 					today ? styles.today : '',
 					todaySelected ? styles['today-selected'] : ''
 				);
 
 				const childClassNames = classes(
 					date ? styles.date : '',
-					selectedSingleDate ? styles.selected : '',
+					isSameDayRange || selectedSingleDate ? styles.selected : '',
 					isUnSelected ? styles.unSelected : '',
 					notSameMonth ? styles.diffMonth : '',
 					isDisabled ? styles.disabled : ''

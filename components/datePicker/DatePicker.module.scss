@@ -34,6 +34,7 @@
 		}
 		> [data-elem='component2'] {
 			color: $dark-grey;
+			@include ellipsis;
 		}
 	}
 
@@ -78,7 +79,7 @@
 				border-radius: 0.25rem;
 				border: 0.0625rem solid $grey5;
 				padding: 0.75rem 1rem;
-				cursor: pointer;
+				cursor: not-allowed;
 				.down-arrow {
 					transform: rotate(270deg);
 					fill: $grey3;
@@ -98,17 +99,18 @@
 				outline: 0.0625rem solid $error;
 			}
 
-			> div {
+			.left {
 				@include flex(row, flex-start, center);
 				gap: 0.9375rem;
-				&.placeholder {
-					font-weight: 400;
-					font-size: 1rem;
-					user-select: none;
+				overflow: hidden;
+				.icon {
+					flex: 1 0 auto;
 				}
-				&.value {
+				> div {
 					font-weight: 400;
 					font-size: 1rem;
+					flex: 1 1 auto;
+					overflow: hidden;
 					@include flex;
 					&.light {
 						color: $black;
@@ -116,8 +118,13 @@
 					&.dark {
 						color: $white;
 					}
-					span {
-						max-width: 12.5rem;
+					.placeholder {
+						font-weight: 400;
+						font-size: 1rem;
+						user-select: none;
+					}
+
+					> span {
 						display: inline-block;
 						@include ellipsis;
 						font-weight: 500;

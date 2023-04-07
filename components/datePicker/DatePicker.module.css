@@ -36,6 +36,9 @@
 }
 .root .custom-picker[data-elem=base-cell] > [data-elem=component2] {
   color: var(--dark-grey);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 .root .date-picker {
   flex: 1;
@@ -85,7 +88,7 @@
   border-radius: 0.25rem;
   border: 0.0625rem solid var(--grey5);
   padding: 0.75rem 1rem;
-  cursor: pointer;
+  cursor: not-allowed;
 }
 .root .date-picker .container.disabled .down-arrow {
   transform: rotate(270deg);
@@ -105,36 +108,41 @@
 .root .date-picker .container.error {
   outline: 0.0625rem solid var(--error);
 }
-.root .date-picker .container > div {
+.root .date-picker .container .left {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   gap: 0.9375rem;
+  overflow: hidden;
 }
-.root .date-picker .container > div.placeholder {
+.root .date-picker .container .left .icon {
+  flex: 1 0 auto;
+}
+.root .date-picker .container .left > div {
+  font-weight: 400;
+  font-size: 1rem;
+  flex: 1 1 auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.root .date-picker .container .left > div.light {
+  color: var(--black);
+}
+.root .date-picker .container .left > div.dark {
+  color: var(--white);
+}
+.root .date-picker .container .left > div .placeholder {
   font-weight: 400;
   font-size: 1rem;
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
 }
-.root .date-picker .container > div.value {
-  font-weight: 400;
-  font-size: 1rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-.root .date-picker .container > div.value.light {
-  color: var(--black);
-}
-.root .date-picker .container > div.value.dark {
-  color: var(--white);
-}
-.root .date-picker .container > div.value span {
-  max-width: 12.5rem;
+.root .date-picker .container .left > div > span {
   display: inline-block;
   text-overflow: ellipsis;
   overflow: hidden;

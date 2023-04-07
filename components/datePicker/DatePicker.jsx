@@ -171,7 +171,7 @@ const DatePicker = (props) => {
 						styles[theme]
 					)}
 					{...datePickerInteractionProps.getReferenceProps()}>
-					<div>
+					<div className={styles.left}>
 						<CalenderIcon className={classes(styles.icon, styles[theme])} />
 						{!displayValue && (
 							<span className={classes(styles.placeholder, styles[theme])}>
