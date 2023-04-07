@@ -34,8 +34,8 @@
 .root .header .header-title.no-options {
   flex: 1;
 }
-.root .header .header-title.no-title-options {
-  gap: 1rem;
+.root .header .header-title.no-title-options .title-container {
+  margin-left: 0.5rem;
 }
 .root .header .header-title button.title {
   height: auto;

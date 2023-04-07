@@ -104,7 +104,7 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 	const [anchorEl, setAnchorEl] = useState(null);
 
 	const titleText = (
-		<Text>
+		<Text className={styles['title-container']}>
 			<Text
 				variant='b1'
 				stroke='semibold'

@@ -31,7 +31,9 @@
 			}
 
 			&.no-title-options {
-				gap: 1rem;
+				.title-container {
+					margin-left: 0.5rem;
+				}
 			}
 
 			button.title {
