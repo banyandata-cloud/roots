@@ -1,4 +1,3 @@
-import React from 'react';
 import ThemedContainer from '../../../helpers/themedContainer/ThemedContainer';
 import { CalenderIcon, CopyIcon, ServerIcon } from '../../../icons';
 import ChipDropdown from './chipDropdown/ChipDropdown';
@@ -35,6 +34,7 @@ Default.args = {
 			icon: ServerIcon,
 			label: 'DB Tech',
 			value: 'PgSQL',
+			search: true,
 		}),
 		new TableChip({
 			key: 'something',

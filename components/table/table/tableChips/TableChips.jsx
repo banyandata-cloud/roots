@@ -1,71 +1,11 @@
 import PropTypes from 'prop-types';
 import { classes } from '../../../../utils';
-import { Button, Chip } from '../../../buttons';
+import { Button } from '../../../buttons';
 import { BaseCell } from '../../../cell';
-import { ArrowIcon, CloseIcon } from '../../../icons';
-import { Text } from '../../../text';
+import { ArrowIcon } from '../../../icons';
 import { Skeleton } from './Skeleton';
+import { TableChipItem } from './tableChipItem';
 import styles from './TableChips.module.css';
-
-const TableChip = (props) => {
-	const { icon, rightComponent, label, value, onRemove, disabled } = props;
-
-	// component 1
-	let Icon = icon;
-
-	if (Icon) {
-		Icon = <Icon className={styles['chip-icon']} />;
-	} else {
-		Icon = null;
-	}
-
-	// component 2
-	const Title = (
-		<>
-			<Text className={styles.label} variant='b2' stroke='medium'>
-				{label} :
-			</Text>
-			{typeof value === 'string' && value.length > 0 && (
-				<Chip
-					disabled={disabled}
-					className={styles['chip-child']}
-					title={value}
-					radius='ellipse'
-					color='info'
-					variant='input'
-					onClick={onRemove}
-					rightComponent={
-						!disabled &&
-						(() => {
-							return <CloseIcon className={styles.icon} />;
-						})
-					}
-				/>
-			)}
-		</>
-	);
-
-	// component 3
-	let RightComponent = rightComponent;
-
-	if (RightComponent) {
-		RightComponent = <RightComponent />;
-	} else {
-		RightComponent = null;
-	}
-
-	return (
-		<BaseCell
-			radius='default'
-			size='auto'
-			className={classes(styles['chip-parent'], disabled ? styles.disabled : '')}
-			component1={Icon}
-			component2={Title}
-			component3={RightComponent}
-			title={`${label} : ${value}`}
-		/>
-	);
-};
 
 const TableChips = (props) => {
 	// eslint-disable-next-line object-curly-newline
@@ -81,7 +21,7 @@ const TableChips = (props) => {
 		})
 		?.map((chip, index) => {
 			return (
-				<TableChip
+				<TableChipItem
 					key={chip.key}
 					{...chip}
 					onRemove={() => {
