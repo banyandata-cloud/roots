@@ -1,0 +1,25 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0.25rem;
+  gap: 0.25rem;
+}
+.root .option[data-elem=base-cell] {
+  background-color: transparent !important;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.root .option[data-elem=base-cell] > [data-elem=component2] {
+  color: var(--grey1);
+}
+.root .option[data-elem=base-cell]:hover {
+  background-color: var(--grey6) !important;
+}
+.root .option[data-elem=base-cell].selected {
+  background-color: var(--grey6) !important;
+}/*# sourceMappingURL=CustomRanges.module.css.map */

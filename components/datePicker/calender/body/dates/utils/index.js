@@ -66,10 +66,20 @@ export const rangeSelection = ({ selectedRange, date }) => {
 	const month = MONTHS[date?.getMonth()]?.substring(0, 3);
 	const year = date?.getFullYear();
 
-	if (selectedRange.unix?.[0] === getUnixTime(date)) {
+	if (selectedRange.unix?.[0] === getUnixTime(date.setHours(0, 0, 0, 0))) {
 		return {
 			dates: [],
 			unix: [],
+		};
+	}
+
+	if (!selectedRange?.dates || selectedRange?.dates?.length === 0) {
+		return {
+			dates: [`${dateAsNumber} ${month} ${year}`, `${dateAsNumber} ${month} ${year}`],
+			unix: [
+				getUnixTime(date.setHours(0, 0, 0, 0)),
+				getUnixTime(date.setHours(23, 59, 59, 59)),
+			],
 		};
 	}
 
@@ -83,6 +93,7 @@ export const rangeSelection = ({ selectedRange, date }) => {
 				unix: [getUnixTime(date), ...selectedRange.unix],
 			};
 		}
+
 		return {
 			dates: [...selectedRange.dates, `${dateAsNumber} ${month} ${year}`],
 			unix: [...selectedRange.unix, getUnixTime(date)],
@@ -93,17 +104,22 @@ export const rangeSelection = ({ selectedRange, date }) => {
 			isAfter(date, fromUnixTime(selectedRange.unix?.[1]))) &&
 		isAfter(date, fromUnixTime(selectedRange.unix?.[0]))
 	) {
+		console.log('after');
 		return {
 			dates: [selectedRange.dates?.[0], `${dateAsNumber} ${month} ${year}`],
 			unix: [selectedRange.unix?.[0], getUnixTime(date)],
 		};
 	}
 	if (isBefore(date, fromUnixTime(selectedRange.unix?.[0]))) {
+		console.log('before');
+
 		return {
 			dates: [`${dateAsNumber} ${month} ${year}`, selectedRange.dates?.[1]],
 			unix: [getUnixTime(date), selectedRange.unix?.[1]],
 		};
 	}
+
+	console.log('lkjl');
 
 	return {
 		dates: [],

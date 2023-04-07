@@ -1,108 +1,84 @@
 .root {
   display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  max-width: 100%;
+}
+.root .custom-picker[data-elem=base-cell] {
+  flex: 1;
+  width: 100%;
+  min-width: 15rem;
+  border-color: var(--grey3);
+  border-style: solid;
+  border-width: 0.0625rem 0 0.0625rem 0.0625rem;
+  background-color: transparent !important;
+  border-radius: 0.25rem 0 0 0.25rem;
+  height: auto;
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.root .custom-picker[data-elem=base-cell] > [data-elem=component1] {
+  flex: 0 0 auto;
+}
+.root .custom-picker[data-elem=base-cell] > [data-elem=component1] .icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.root .custom-picker[data-elem=base-cell] > [data-elem=component1] .icon.light path {
+  stroke: var(--black);
+}
+.root .custom-picker[data-elem=base-cell] > [data-elem=component1] .icon.dark path {
+  stroke: var(--white);
+}
+.root .custom-picker[data-elem=base-cell] > [data-elem=component2] {
+  color: var(--dark-grey);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.root .date-picker {
+  flex: 1;
+  display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
   gap: 0.5rem;
   max-width: 100%;
+  min-width: 15rem;
   overflow: visible;
 }
-.root .label {
+.root .date-picker .label {
   font-weight: 400;
   font-size: 0.75rem;
+  line-height: 0.9375rem;
 }
-.root .label.light {
+.root .date-picker .label.light {
   color: var(--black);
 }
-.root .label.dark {
+.root .date-picker .label.dark {
   color: var(--white);
 }
-.root .container {
+.root .date-picker .container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   position: relative;
-  background: transparent;
+  background-color: transparent;
   border-radius: 0.25rem;
   width: auto;
-  border: 0.0625rem solid;
+  border: 0.0625rem solid transparent;
   padding: 0.75rem 1rem;
   cursor: pointer;
 }
-.root .container > div {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0px;
-  letter-spacing: 0px;
-  word-spacing: 0px;
+.root .date-picker .container.with-custom {
+  border-radius: 0 0.25rem 0.25rem 0;
 }
-.root .container .placeholder {
-  font-weight: 400;
-  font-size: 1rem;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  margin-left: 0.9375rem;
-}
-.root .container .value {
-  font-weight: 400;
-  font-size: 1rem;
-  margin-left: 0.9375rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-.root .container .value.light {
-  color: var(--black);
-}
-.root .container .value.dark {
-  color: var(--white);
-}
-.root .container .value span {
-  max-width: 200px;
-  display: inline-block;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-  font-weight: 500;
-}
-.root .container .input {
-  display: none;
-}
-.root .container .icon {
-  width: 1.25rem;
-  height: 1.25rem;
-}
-.root .container .icon.light > path {
-  fill: var(--dark-grey);
-}
-.root .container .icon.dark > path {
-  fill: var(--white);
-}
-.root .container .down {
-  transform: rotate(270deg);
-}
-.root .container .up {
-  transform: rotate(90deg);
-}
-.root.dark .container {
-  border-color: var(--grey);
-}
-.root.dark .container .placeholder {
-  color: var(--grey2);
-}
-.root.light .container {
-  border-color: var(--grey4);
-}
-.root.light .container .placeholder {
-  color: var(--grey);
-}
-.root .disabled {
+.root .date-picker .container.disabled {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -112,28 +88,97 @@
   border-radius: 0.25rem;
   border: 0.0625rem solid var(--grey5);
   padding: 0.75rem 1rem;
-  cursor: pointer;
+  cursor: not-allowed;
 }
-.root .disabled .down-arrow {
+.root .date-picker .container.disabled .down-arrow {
   transform: rotate(270deg);
   fill: var(--grey3);
 }
-.root .disabled .placeholder {
+.root .date-picker .container.disabled .placeholder {
   font-weight: 400;
   font-size: 1rem;
   color: var(--grey3);
   -webkit-user-select: none;
      -moz-user-select: none;
-      -ms-user-select: none;
           user-select: none;
 }
-.root.open {
-  border-color: var(--highlight);
+.root .date-picker .container.open {
+  outline: 0.0625rem solid var(--highlight);
 }
-.root .error {
-  border: 0.0938rem solid var(--error);
+.root .date-picker .container.error {
+  outline: 0.0625rem solid var(--error);
 }
-.root .error-text {
+.root .date-picker .container .left {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.9375rem;
+  overflow: hidden;
+}
+.root .date-picker .container .left .icon {
+  flex: 1 0 auto;
+}
+.root .date-picker .container .left > div {
+  font-weight: 400;
+  font-size: 1rem;
+  flex: 1 1 auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.root .date-picker .container .left > div.light {
+  color: var(--black);
+}
+.root .date-picker .container .left > div.dark {
+  color: var(--white);
+}
+.root .date-picker .container .left > div .placeholder {
+  font-weight: 400;
+  font-size: 1rem;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.root .date-picker .container .left > div > span {
+  display: inline-block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-weight: 500;
+}
+.root .date-picker .container .input {
+  display: none;
+}
+.root .date-picker .container .close {
+  height: auto;
+  padding: 0;
+}
+.root .date-picker .container .icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.root .date-picker .container .icon.light > path {
+  fill: var(--dark-grey);
+}
+.root .date-picker .container .icon.dark > path {
+  fill: var(--white);
+}
+.root .date-picker.dark .container {
+  border-color: var(--grey);
+}
+.root .date-picker.dark .container .placeholder {
+  color: var(--grey2);
+}
+.root .date-picker.light .container {
+  border-color: var(--grey4);
+}
+.root .date-picker.light .container .placeholder {
+  color: var(--grey);
+}
+.root .date-picker .error-text {
   font-weight: 400;
   font-size: 0.75rem;
   line-height: 0.9375rem;

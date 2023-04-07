@@ -1,0 +1,45 @@
+@import '../../../../../styles/';
+
+.root {
+	@include flex(column, flex-start, flex-start);
+	gap: 0.3125rem;
+	padding-inline: 0.75rem;
+	width: 100%;
+	> span {
+		font-weight: 500;
+		font-size: 0.875rem;
+		line-height: 1.3125rem;
+		color: $dark-grey;
+	}
+	> div {
+		@include flex(row, flex-start, flex-start);
+		width: 100%;
+		gap: 0.25rem;
+		.input {
+			flex: 1;
+			background: $white;
+			border: 1px solid $grey3;
+			border-radius: 4px;
+			padding: 0.75rem 1rem;
+			> label {
+				> div[data-elem='base-cell'] {
+					padding: 0 0;
+					border: none;
+					> span[data-elem='component2'] {
+						> input[data-elem='input'] {
+							padding: 0;
+							color: $dark-grey;
+						}
+					}
+				}
+			}
+		}
+	}
+	&.range {
+		> span {
+			&:nth-last-child(2) {
+				margin-top: 0.25rem;
+			}
+		}
+	}
+}
