@@ -1,1 +1,1 @@
-export { default as MaximizeIcon } from './MaximizeIcon';
+export { default as MaximizeIcon } from './Maximize';

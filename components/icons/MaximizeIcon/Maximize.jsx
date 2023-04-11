@@ -1,12 +1,12 @@
 import React from 'react';
 
-const MaximizeIcon = (props) => {
+const Maximize = (props) => {
 	const { className } = props;
 	return (
 		<svg
 			className={className}
-			width='20'
-			height='20'
+			width='1.5rem'
+			height='1.5rem'
 			viewBox='0 0 20 20'
 			fill='#FFFFFF'
 			xmlns='http://www.w3.org/2000/svg'>
@@ -17,4 +17,4 @@ const MaximizeIcon = (props) => {
 	);
 };
 
-export default MaximizeIcon;
+export default Maximize;
