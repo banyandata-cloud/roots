@@ -1,13 +1,14 @@
 import PropTypes from 'prop-types';
 import { Children, cloneElement, forwardRef, isValidElement, useEffect, useMemo } from 'react';
 import styles from './BaseWidget.module.css';
-import { ArrowIcon, ExpandArrowAltIcon } from '../icons';
+import { ArrowIcon, MaximizeIcon } from '../icons';
 import Button from '../buttons/button/Button';
 import { Dropdown, DropdownItem } from '../input';
 import { Toggle } from '../Toggle';
 import { classes } from '../../utils';
 import { WidgetFallback } from './fallback';
 import { Text } from '../text';
+import DatePicker from '../datePicker/DatePicker';
 
 const generateOptions = (optionData, theme) => {
 	switch (optionData?.id ?? '') {
@@ -43,8 +44,18 @@ const generateOptions = (optionData, theme) => {
 					className={styles['expand-button']}
 					onClick={optionData?.onClick ?? ''}
 					rightComponent={() => {
-						return <ExpandArrowAltIcon className={styles['expand-icon']} />;
+						return <MaximizeIcon className={styles['expand-icon']} />;
 					}}
+				/>
+			);
+		case 'datepicker':
+			return (
+				<DatePicker
+					className={styles['date-picker']}
+					placeholder='Select Date'
+					onApply={optionData?.onApply ?? ''}
+					onClear={optionData?.onClear ?? ''}
+					value={optionData?.date ?? ''}
 				/>
 			);
 		case 'custom':
