@@ -388,7 +388,7 @@ Default.args = {
 			onClear: () => {
 				alert('Clear Date Picker');
 			},
-			dateValue: '',
+			date: null,
 		},
 	],
 };
