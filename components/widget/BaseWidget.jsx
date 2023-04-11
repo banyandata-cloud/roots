@@ -122,7 +122,7 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 				attrs={{
 					'data-elem': 'title',
 				}}>
-				{title} -
+				{title} {subtitle && '-'}
 			</Text>
 			{subtitle && (
 				<Text
