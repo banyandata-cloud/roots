@@ -50,6 +50,30 @@
 	scrollbar-width: none;
 }
 
+@mixin customScrollBar($theme: dark) {
+	-ms-overflow-style: none;
+	scrollbar-width: thin;
+
+	&::-webkit-scrollbar {
+		width: 0.25rem;
+		background: transparent;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		border-radius: 0.25rem;
+	}
+
+	@if $theme == dark {
+		&::-webkit-scrollbar-thumb {
+			background: $grey6;
+		}
+	} @else {
+		&::-webkit-scrollbar-thumb {
+			background: $grey2;
+		}
+	}
+}
+
 @function derive-rgb-values-from-hex($hex) {
 	@return red($hex), green($hex), blue($hex);
 }
