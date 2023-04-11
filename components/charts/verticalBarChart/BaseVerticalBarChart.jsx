@@ -123,7 +123,7 @@ const BaseVerticalBarChart = (props) => {
 			color: 'whitesmoke',
 		},
 		label: {
-			color: 'black',
+			color: theme === 'dark' ? COLORS.white : COLORS.black,
 			position: 'outside',
 			formatter(param) {
 				return param.value;

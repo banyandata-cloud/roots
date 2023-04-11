@@ -1,14 +1,23 @@
 import PropTypes from 'prop-types';
-import { Children, cloneElement, forwardRef, isValidElement, useEffect, useMemo } from 'react';
+import {
+	Children,
+	cloneElement,
+	forwardRef,
+	isValidElement,
+	useEffect,
+	useMemo,
+	useState,
+} from 'react';
 import styles from './BaseWidget.module.css';
-import { ArrowIcon, MaximizeIcon } from '../icons';
-import Button from '../buttons/button/Button';
+import { ArrowIcon, CaretIcon, MaximizeIcon } from '../icons';
 import { Dropdown, DropdownItem } from '../input';
 import { Toggle } from '../Toggle';
 import { classes } from '../../utils';
 import { WidgetFallback } from './fallback';
 import { Text } from '../text';
-import DatePicker from '../datePicker/DatePicker';
+import { Popover } from '../popover';
+import { BaseButton, Button } from '../buttons';
+import { DatePicker } from '../datePicker';
 
 const generateOptions = (optionData, theme) => {
 	switch (optionData?.id ?? '') {
@@ -74,6 +83,7 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 		loading,
 		title,
 		subtitle,
+		titleOptions,
 		showBack,
 		onBack,
 		onReload,
@@ -101,6 +111,33 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 		setFallback(emptyChartData);
 	}, [emptyChartData]);
 
+	const [open, setOpen] = useState(false);
+	const [anchorEl, setAnchorEl] = useState(null);
+
+	const titleText = (
+		<Text className={styles['title-container']}>
+			<Text
+				variant='b1'
+				stroke='semibold'
+				attrs={{
+					'data-elem': 'title',
+				}}>
+				{title} -
+			</Text>
+			{subtitle && (
+				<Text
+					variant='b2'
+					stroke='medium'
+					attrs={{
+						'data-elem': 'subtitle',
+					}}>
+					{' '}
+					{subtitle}
+				</Text>
+			)}
+		</Text>
+	);
+
 	return (
 		<div
 			ref={ref}
@@ -113,7 +150,8 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 				<div
 					className={classes(
 						styles['header-title'],
-						(options?.length ?? 0) === 0 ? styles['no-options'] : ''
+						(options?.length ?? 0) === 0 ? styles['no-options'] : '',
+						titleOptions == null ? styles['no-title-options'] : ''
 					)}
 					data-elem='header-title'>
 					{showBack && (
@@ -127,23 +165,32 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 							onClick={onBack}
 						/>
 					)}
-					<Text
-						variant='b1'
-						stroke='semibold'
-						attrs={{
-							'data-elem': 'title',
-						}}>
-						{title} {subtitle && '-'}
-					</Text>
-					{subtitle && (
-						<Text
-							variant='b2'
-							stroke='medium'
-							attrs={{
-								'data-elem': 'subtitle',
-							}}>
-							{subtitle}
-						</Text>
+					{titleOptions != null ? (
+						<>
+							<BaseButton
+								blurOnClick={false}
+								ref={setAnchorEl}
+								size='auto'
+								className={styles.title}
+								onClick={setOpen}
+								title={titleText}
+								component3={<CaretIcon className={styles.icon} />}
+							/>
+							<Popover
+								theme={theme}
+								className={classes(
+									styles['title-popover'],
+									styles[`${theme}-theme`]
+								)}
+								anchorEl={anchorEl}
+								open={open}
+								setOpen={setOpen}
+								placement='bottom-start'>
+								{titleOptions}
+							</Popover>
+						</>
+					) : (
+						titleText
 					)}
 				</div>
 
@@ -187,6 +234,7 @@ BaseWidget.propTypes = {
 	theme: PropTypes.oneOf(['light', 'dark']),
 	setFallback: PropTypes.func,
 	showFallback: PropTypes.bool,
+	titleOptions: PropTypes.node,
 };
 
 BaseWidget.defaultProps = {
@@ -205,6 +253,7 @@ BaseWidget.defaultProps = {
 	theme: 'dark',
 	setFallback: () => {},
 	showFallback: false,
+	titleOptions: null,
 };
 
 export default BaseWidget;

@@ -1,8 +1,21 @@
 @import '../../styles/index';
 
 .root {
-	@include boxShadow;
-	background-color: $white;
 	padding: 1rem;
 	border-radius: 0.25rem;
+	border: 1px solid $grey;
+
+	&.dark-theme {
+		@include boxShadow(dark);
+		background-color: $dark-grey;
+		color: $white;
+		border-color: $grey;
+	}
+
+	&.light-theme {
+		@include boxShadow(light);
+		background-color: $white;
+		color: $dark-grey;
+		border-color: $grey4;
+	}
 }

@@ -34,7 +34,7 @@
   color: var(--grey);
 }
 .root[data-elem=base-cell].status:hover {
-  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);
+  box-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);
 }
 .root[data-elem=base-cell].input {
   border-width: 1px;

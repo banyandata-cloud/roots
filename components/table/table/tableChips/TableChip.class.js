@@ -5,6 +5,7 @@ export class TableChip {
 		label = '',
 		value = '',
 		disabled = false,
+		search = false,
 		rightComponent = null,
 	}) {
 		this.key = key;
@@ -12,6 +13,7 @@ export class TableChip {
 		this.label = label;
 		this.value = value;
 		this.disabled = disabled;
+		this.search = search;
 		this.rightComponent = rightComponent;
 	}
 }
