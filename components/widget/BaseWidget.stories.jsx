@@ -376,10 +376,20 @@ Default.args = {
 		},
 		{
 			id: 'expand',
-			title: 'Expand',
+			title: '',
 			onClick: () => {
 				alert('This will open the Modal or a new Page with Expanded chart');
 			},
+		},
+		{
+			id: 'datepicker',
+			onApply: () => {
+				alert('Apply Date Picker');
+			},
+			onClear: () => {
+				alert('Clear Date Picker');
+			},
+			dateValue: '',
 		},
 	],
 };

@@ -77,10 +77,27 @@
 			}
 
 			.expand-button {
+				padding: 0 0.25rem;
 				height: 1.75rem;
 				.expand-icon {
 					height: 1.25rem;
 					width: 1.25rem;
+					fill: $white;
+				}
+			}
+			.date-picker {
+				min-width: 0;
+				[data-elem='header'] {
+					padding: 0.06rem 0.25rem;
+					border: 1px solid $grey;
+					font-size: 0.875rem;
+					> div {
+						gap: 0.5rem;
+						:nth-child(1) {
+							height: 1.25rem;
+							width: 1.25rem;
+						}
+					}
 				}
 			}
 		}
@@ -109,6 +126,14 @@
 							color: $white;
 						}
 						> svg {
+							fill: $white;
+						}
+					}
+				}
+				.date-picker {
+					[data-elem='header'] {
+						border-color: $grey;
+						:nth-child(1) {
 							fill: $white;
 						}
 					}
@@ -148,6 +173,14 @@
 							color: $dark-grey;
 						}
 						> svg {
+							fill: $dark-grey;
+						}
+					}
+				}
+				.date-picker {
+					[data-elem='header'] {
+						border-color: $grey6;
+						:nth-child(1) {
 							fill: $dark-grey;
 						}
 					}

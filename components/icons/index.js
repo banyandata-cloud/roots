@@ -31,3 +31,5 @@ export * from './Close';
 export * from './Sort';
 export * from './Clouds';
 export * from './Databases';
+export * from './Clock';
+export * from './MaximizeIcon';

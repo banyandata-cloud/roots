@@ -46,7 +46,10 @@ SingleDatePicker.parameters = {
 
 export const RangeDatePicker = (args) => {
 	return (
-		<div>
+		<div
+			style={{
+				width: '50%',
+			}}>
 			<DatePicker {...args} />
 		</div>
 	);
@@ -58,6 +61,32 @@ RangeDatePicker.args = {
 	value: [1674412200, 1675708200],
 	range: true,
 	theme: 'light',
+};
+
+export const CustomRangeDatePicker = (args) => {
+	return (
+		<div
+			style={{
+				width: '70%',
+			}}>
+			<DatePicker {...args} />
+		</div>
+	);
+};
+
+CustomRangeDatePicker.args = {
+	placeholder: 'Select Date',
+	label: 'Range Date Picker',
+	value: [1674412200, 1675708200],
+	range: true,
+	theme: 'light',
+	customRanges: [
+		{
+			title: 'Last Seven Days',
+			type: 'days',
+			value: 7,
+		},
+	],
 };
 
 export const DatePickerWithDisabledDate = (args) => {
@@ -102,23 +131,4 @@ export const ThemedDatePicker = (args) => {
 ThemedDatePicker.args = {
 	placeholder: 'Select Date',
 	label: 'Single Date Picker',
-};
-
-export const SingleDatePickerWithTime = (args) => {
-	return (
-		<div
-			style={{
-				width: '50%',
-				padding: 20,
-			}}>
-			<DatePicker {...args} />
-		</div>
-	);
-};
-
-SingleDatePickerWithTime.args = {
-	placeholder: 'Select Date',
-	label: 'Single Date Picker',
-	theme: 'light',
-	showTimePicker: true,
 };

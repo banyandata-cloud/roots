@@ -9,7 +9,7 @@ import {
 	useState,
 } from 'react';
 import styles from './BaseWidget.module.css';
-import { ArrowIcon, ExpandArrowAltIcon, CaretIcon } from '../icons';
+import { ArrowIcon, CaretIcon, MaximizeIcon } from '../icons';
 import { Dropdown, DropdownItem } from '../input';
 import { Toggle } from '../Toggle';
 import { classes } from '../../utils';
@@ -17,6 +17,7 @@ import { WidgetFallback } from './fallback';
 import { Text } from '../text';
 import { Popover } from '../popover';
 import { BaseButton, Button } from '../buttons';
+import { DatePicker } from '../datePicker';
 
 const generateOptions = (optionData, theme) => {
 	switch (optionData?.id ?? '') {
@@ -52,8 +53,18 @@ const generateOptions = (optionData, theme) => {
 					className={styles['expand-button']}
 					onClick={optionData?.onClick ?? ''}
 					rightComponent={() => {
-						return <ExpandArrowAltIcon className={styles['expand-icon']} />;
+						return <MaximizeIcon className={styles['expand-icon']} />;
 					}}
+				/>
+			);
+		case 'datepicker':
+			return (
+				<DatePicker
+					className={styles['date-picker']}
+					placeholder='Select Date'
+					onApply={optionData?.onApply ?? ''}
+					onClear={optionData?.onClear ?? ''}
+					value={optionData?.date ?? ''}
 				/>
 			);
 		case 'custom':
