@@ -66,9 +66,26 @@
   width: 0.875rem;
 }
 .root .header .header-options .expand-button {
+  padding: 0 0.25rem;
   height: 1.75rem;
 }
 .root .header .header-options .expand-button .expand-icon {
+  height: 1.25rem;
+  width: 1.25rem;
+  fill: var(--white);
+}
+.root .header .header-options .date-picker {
+  min-width: 0;
+}
+.root .header .header-options .date-picker [data-elem=header] {
+  padding: 0.06rem 0.25rem;
+  border: 1px solid var(--grey);
+  font-size: 0.875rem;
+}
+.root .header .header-options .date-picker [data-elem=header] > div {
+  gap: 0.5rem;
+}
+.root .header .header-options .date-picker [data-elem=header] > div :nth-child(1) {
   height: 1.25rem;
   width: 1.25rem;
 }
@@ -85,6 +102,12 @@
 .root.dark-theme .header .header-options .dropdown-header [data-elem=select] > svg {
   fill: var(--white);
 }
+.root.dark-theme .header .header-options .date-picker [data-elem=header] {
+  border-color: var(--grey);
+}
+.root.dark-theme .header .header-options .date-picker [data-elem=header] :nth-child(1) {
+  fill: var(--white);
+}
 .root.dark-theme .header .header-options .expand-button {
   color: var(--white);
   border-color: var(--grey);
@@ -94,15 +117,21 @@
 }
 .root.light-theme .header .header-title [data-elem=title],
 .root.light-theme .header .header-title [data-elem=subtitle] {
-  color: var(--dark-grey);
+  color: var(--black);
 }
 .root.light-theme .header .header-options .dropdown-header [data-elem=select] {
   border-color: var(--grey6);
 }
 .root.light-theme .header .header-options .dropdown-header [data-elem=select] [data-elem=placeholder] {
-  color: var(--dark-grey);
+  color: var(--black);
 }
 .root.light-theme .header .header-options .dropdown-header [data-elem=select] > svg {
+  fill: var(--dark-grey);
+}
+.root.light-theme .header .header-options .date-picker [data-elem=header] {
+  border-color: var(--grey6);
+}
+.root.light-theme .header .header-options .date-picker [data-elem=header] :nth-child(1) {
   fill: var(--dark-grey);
 }
 .root.light-theme .header .header-options .expand-button {
