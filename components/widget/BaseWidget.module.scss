@@ -135,7 +135,7 @@
 			.header-title {
 				[data-elem='title'],
 				[data-elem='subtitle'] {
-					color: $black;
+					color: $dark-grey;
 				}
 			}
 
@@ -144,7 +144,7 @@
 					[data-elem='select'] {
 						border-color: $grey6;
 						[data-elem='placeholder'] {
-							color: $black;
+							color: $dark-grey;
 						}
 						> svg {
 							fill: $dark-grey;

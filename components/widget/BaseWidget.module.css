@@ -117,13 +117,13 @@
 }
 .root.light-theme .header .header-title [data-elem=title],
 .root.light-theme .header .header-title [data-elem=subtitle] {
-  color: var(--black);
+  color: var(--dark-grey);
 }
 .root.light-theme .header .header-options .dropdown-header [data-elem=select] {
   border-color: var(--grey6);
 }
 .root.light-theme .header .header-options .dropdown-header [data-elem=select] [data-elem=placeholder] {
-  color: var(--black);
+  color: var(--dark-grey);
 }
 .root.light-theme .header .header-options .dropdown-header [data-elem=select] > svg {
   fill: var(--dark-grey);

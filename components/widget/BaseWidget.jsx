@@ -1,14 +1,13 @@
 import PropTypes from 'prop-types';
 import { Children, cloneElement, forwardRef, isValidElement, useEffect, useMemo } from 'react';
 import styles from './BaseWidget.module.css';
-import { ArrowIcon } from '../icons';
+import { ArrowIcon, MaximizeIcon } from '../icons';
 import Button from '../buttons/button/Button';
 import { Dropdown, DropdownItem } from '../input';
 import { Toggle } from '../Toggle';
 import { classes } from '../../utils';
 import { WidgetFallback } from './fallback';
 import { Text } from '../text';
-import { MaximizeIcon } from '../icons/MaximizeIcon';
 import DatePicker from '../datePicker/DatePicker';
 
 const generateOptions = (optionData, theme) => {
@@ -203,7 +202,7 @@ BaseWidget.defaultProps = {
 		title: "We're having trouble loading this data",
 		subtitle: 'There could be something happening on our end. Reload this widget to try again.',
 	},
-	theme: 'light',
+	theme: 'dark',
 	setFallback: () => {},
 	showFallback: false,
 };
