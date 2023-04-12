@@ -61,10 +61,11 @@ const generateOptions = (optionData, theme) => {
 			return (
 				<DatePicker
 					className={styles['date-picker']}
-					placeholder='Select Date'
+					placeholder={optionData?.placeholder ?? 'Select Date'}
+					range={optionData?.range ?? false}
 					onApply={optionData?.onApply ?? ''}
 					onClear={optionData?.onClear ?? ''}
-					value={optionData?.date ?? ''}
+					value={optionData?.date ?? null}
 				/>
 			);
 		case 'custom':
