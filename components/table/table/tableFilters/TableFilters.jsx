@@ -118,6 +118,7 @@ const TableFilters = (props) => {
 										columns={headerData}
 										hiddenColumns={hiddenColumns}
 										setHiddenColumns={setHiddenColumns}
+										theme={theme}
 									/>
 								</>
 							)
