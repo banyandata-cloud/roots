@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import ThemedContainer from '../../helpers/themedContainer/ThemedContainer';
 import { ArrowIcon, CopyIcon } from '../../icons';
 
 import TextField from './TextField';
@@ -110,4 +111,27 @@ WithInputIconFieldIcon.args = {
 		return <ArrowIcon active height='12' width='12' color='#0aa6ee' />;
 	},
 	fieldInfo: 'Some Text',
+};
+
+const AutocompleteTemplate = (args) => {
+	const [autocompleteOpen, setAutocompleteOpen] = useState(true);
+
+	return (
+		<ThemedContainer {...args}>
+			<TextField
+				{...args}
+				autocompleteOptions={{
+					open: autocompleteOpen,
+					setOpen: setAutocompleteOpen,
+				}}
+			/>
+		</ThemedContainer>
+	);
+};
+
+export const WithAutocomplete = AutocompleteTemplate.bind({});
+
+WithAutocomplete.args = {
+	...Default.args,
+	autocomplete: true,
 };

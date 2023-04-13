@@ -1,8 +1,10 @@
 import React, { createElement, forwardRef, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
+import { mergeRefs } from 'react-merge-refs';
 import styles from './TextField.module.css';
 import { classes, inputHelper } from '../../../utils/utils';
 import { BaseCell } from '../../cell';
+import { Popover } from '../../popover';
 
 // eslint-disable-next-line prefer-arrow-callback
 const TextField = forwardRef(function TextField(props, inputRef) {
@@ -18,6 +20,7 @@ const TextField = forwardRef(function TextField(props, inputRef) {
 		onChange,
 		size,
 		border,
+		theme,
 		LeftComponent,
 		RightComponent,
 		className,
@@ -28,12 +31,16 @@ const TextField = forwardRef(function TextField(props, inputRef) {
 		feedbackAndCount,
 		maxLength,
 		onKeyDown,
+		autocomplete,
+		autocompleteOptions,
 	} = props;
 
 	const { current: isControlled } = useRef(value !== undefined);
 
 	// for uncontrolled input
 	const [uncontrolledValue, setUncontrolledValue] = useState(defaultValue);
+
+	const [anchorEl, setAnchorEl] = useState(null);
 
 	const handleChange = (event) => {
 		const { fieldValue } = inputHelper(event);
@@ -57,10 +64,15 @@ const TextField = forwardRef(function TextField(props, inputRef) {
 		...(maxLength !== null && {
 			maxLength,
 		}),
+		onFocus: () => {
+			if (autocomplete && inputValue?.length > 0) {
+				autocompleteOptions.setOpen(true);
+			}
+		},
 		onBlur,
 		onKeyDown,
 		'data-elem': 'input',
-		ref: inputRef,
+		ref: mergeRefs([inputRef]),
 		value: inputValue,
 		onChange: handleChange,
 		className: classes(styles[size], styles.input),
@@ -72,6 +84,7 @@ const TextField = forwardRef(function TextField(props, inputRef) {
 			<label>
 				{label}
 				<BaseCell
+					ref={setAnchorEl}
 					className={classes(
 						styles['input-wrapper'],
 						styles[`border-${border}`],
@@ -107,6 +120,15 @@ const TextField = forwardRef(function TextField(props, inputRef) {
 					)}
 				</div>
 			)}
+			{autocomplete && (
+				<Popover
+					anchorEl={anchorEl}
+					open={autocompleteOptions?.open}
+					setOpen={autocompleteOptions?.setOpen}
+					theme={theme}>
+					{autocompleteOptions?.render?.()}
+				</Popover>
+			)}
 		</div>
 	);
 });
@@ -137,6 +159,13 @@ TextField.propTypes = {
 	feedbackAndCount: PropTypes.bool,
 	maxLength: PropTypes.number,
 	onKeyDown: PropTypes.func,
+	autocomplete: PropTypes.bool,
+	autocompleteOptions: PropTypes.shape({
+		open: PropTypes.bool,
+		setOpen: PropTypes.func,
+		render: PropTypes.func,
+	}),
+	theme: PropTypes.oneOf(['light', 'dark']),
 };
 
 TextField.defaultProps = {
@@ -159,6 +188,9 @@ TextField.defaultProps = {
 	feedbackAndCount: false,
 	maxLength: null,
 	onKeyDown: () => {},
+	autocomplete: false,
+	autocompleteOptions: {},
+	theme: 'light',
 };
 
 export default TextField;
