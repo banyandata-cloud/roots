@@ -3,10 +3,8 @@ import { getDatesInStringFormat } from '../../../../utils';
 
 const getDateAndUnixRange = (duration) => {
 	const startingDate = sub(new Date(), duration);
-	startingDate.setHours(0, 0, 0, 0);
 
 	const endingDate = new Date();
-	endingDate.setHours(0, 0, 0, 0);
 
 	const dates = getDatesInStringFormat({
 		startingDate,
@@ -27,7 +25,7 @@ export const dateRanges = (customRanges = []) => {
 			return {
 				title: range.title,
 				dateRange: getDateAndUnixRange({
-					[range.type]: [range.value],
+					[range.type]: range.value,
 				}),
 			};
 		});

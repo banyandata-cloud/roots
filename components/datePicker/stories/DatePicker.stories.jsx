@@ -65,12 +65,14 @@ RangeDatePicker.args = {
 
 export const CustomRangeDatePicker = (args) => {
 	return (
-		<div
-			style={{
-				width: '70%',
-			}}>
-			<DatePicker {...args} />
-		</div>
+		<ThemedContainer {...args}>
+			<div
+				style={{
+					width: '70%',
+				}}>
+				<DatePicker {...args} />
+			</div>
+		</ThemedContainer>
 	);
 };
 
@@ -79,12 +81,12 @@ CustomRangeDatePicker.args = {
 	label: 'Range Date Picker',
 	value: [1674412200, 1675708200],
 	range: true,
-	theme: 'light',
+	theme: 'dark',
 	customRanges: [
 		{
-			title: 'Last Seven Days',
-			type: 'days',
-			value: 7,
+			title: 'Last 12 hours',
+			type: 'hours',
+			value: 12,
 		},
 	],
 };

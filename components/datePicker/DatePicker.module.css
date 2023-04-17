@@ -34,8 +34,14 @@
 .root .custom-picker[data-elem=base-cell] > [data-elem=component1] .icon.dark path {
   stroke: var(--white);
 }
-.root .custom-picker[data-elem=base-cell] > [data-elem=component2] {
+.root .custom-picker[data-elem=base-cell].light > [data-elem=component2] {
   color: var(--dark-grey);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.root .custom-picker[data-elem=base-cell].dark > [data-elem=component2] {
+  color: var(--white);
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;

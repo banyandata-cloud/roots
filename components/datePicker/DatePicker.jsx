@@ -150,7 +150,7 @@ const DatePicker = (props) => {
 						return <ClockIcon className={classes(styles.icon, styles[theme])} />;
 					}}
 					title={fixedRange || 'Custom'}
-					className={styles['custom-picker']}
+					className={classes(styles['custom-picker'], styles[theme])}
 					{...customRangeInteractionProps.getReferenceProps()}
 				/>
 			)}
@@ -258,6 +258,7 @@ const DatePicker = (props) => {
 								setOpenDatePicker={setOpenDatePicker}
 								setOpenCustomRange={setOpenCustomRange}
 								fixedRange={fixedRange}
+								theme={theme}
 							/>
 						</div>
 					)}
