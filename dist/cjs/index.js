@@ -23004,62 +23004,71 @@ function cmake(Prism) {
   };
 }
 
-var cobol_1 = cobol;
-cobol.displayName = 'cobol';
-cobol.aliases = [];
-function cobol(Prism) {
-  Prism.languages.cobol = {
-    comment: {
-      pattern: /\*>.*|(^[ \t]*)\*.*/m,
-      lookbehind: true,
-      greedy: true
-    },
-    string: {
-      pattern: /[xzgn]?(?:"(?:[^\r\n"]|"")*"(?!")|'(?:[^\r\n']|'')*'(?!'))/i,
-      greedy: true
-    },
-    level: {
-      pattern: /(^[ \t]*)\d+\b/m,
-      lookbehind: true,
-      greedy: true,
-      alias: 'number'
-    },
-    'class-name': {
-      // https://github.com/antlr/grammars-v4/blob/42edd5b687d183b5fa679e858a82297bd27141e7/cobol85/Cobol85.g4#L1015
-      pattern:
-        /(\bpic(?:ture)?\s+)(?:(?:[-\w$/,:*+<>]|\.(?!\s|$))(?:\(\d+\))?)+/i,
-      lookbehind: true,
-      inside: {
-        number: {
-          pattern: /(\()\d+/,
-          lookbehind: true
-        },
-        punctuation: /[()]/
-      }
-    },
-    keyword: {
-      pattern:
-        /(^|[^\w-])(?:ABORT|ACCEPT|ACCESS|ADD|ADDRESS|ADVANCING|AFTER|ALIGNED|ALL|ALPHABET|ALPHABETIC|ALPHABETIC-LOWER|ALPHABETIC-UPPER|ALPHANUMERIC|ALPHANUMERIC-EDITED|ALSO|ALTER|ALTERNATE|ANY|ARE|AREA|AREAS|AS|ASCENDING|ASCII|ASSIGN|ASSOCIATED-DATA|ASSOCIATED-DATA-LENGTH|AT|ATTRIBUTE|AUTHOR|AUTO|AUTO-SKIP|BACKGROUND-COLOR|BACKGROUND-COLOUR|BASIS|BEEP|BEFORE|BEGINNING|BELL|BINARY|BIT|BLANK|BLINK|BLOCK|BOTTOM|BOUNDS|BY|BYFUNCTION|BYTITLE|CALL|CANCEL|CAPABLE|CCSVERSION|CD|CF|CH|CHAINING|CHANGED|CHANNEL|CHARACTER|CHARACTERS|CLASS|CLASS-ID|CLOCK-UNITS|CLOSE|CLOSE-DISPOSITION|COBOL|CODE|CODE-SET|COL|COLLATING|COLUMN|COM-REG|COMMA|COMMITMENT|COMMON|COMMUNICATION|COMP|COMP-1|COMP-2|COMP-3|COMP-4|COMP-5|COMPUTATIONAL|COMPUTATIONAL-1|COMPUTATIONAL-2|COMPUTATIONAL-3|COMPUTATIONAL-4|COMPUTATIONAL-5|COMPUTE|CONFIGURATION|CONTAINS|CONTENT|CONTINUE|CONTROL|CONTROL-POINT|CONTROLS|CONVENTION|CONVERTING|COPY|CORR|CORRESPONDING|COUNT|CRUNCH|CURRENCY|CURSOR|DATA|DATA-BASE|DATE|DATE-COMPILED|DATE-WRITTEN|DAY|DAY-OF-WEEK|DBCS|DE|DEBUG-CONTENTS|DEBUG-ITEM|DEBUG-LINE|DEBUG-NAME|DEBUG-SUB-1|DEBUG-SUB-2|DEBUG-SUB-3|DEBUGGING|DECIMAL-POINT|DECLARATIVES|DEFAULT|DEFAULT-DISPLAY|DEFINITION|DELETE|DELIMITED|DELIMITER|DEPENDING|DESCENDING|DESTINATION|DETAIL|DFHRESP|DFHVALUE|DISABLE|DISK|DISPLAY|DISPLAY-1|DIVIDE|DIVISION|DONTCARE|DOUBLE|DOWN|DUPLICATES|DYNAMIC|EBCDIC|EGCS|EGI|ELSE|EMI|EMPTY-CHECK|ENABLE|END|END-ACCEPT|END-ADD|END-CALL|END-COMPUTE|END-DELETE|END-DIVIDE|END-EVALUATE|END-IF|END-MULTIPLY|END-OF-PAGE|END-PERFORM|END-READ|END-RECEIVE|END-RETURN|END-REWRITE|END-SEARCH|END-START|END-STRING|END-SUBTRACT|END-UNSTRING|END-WRITE|ENDING|ENTER|ENTRY|ENTRY-PROCEDURE|ENVIRONMENT|EOL|EOP|EOS|ERASE|ERROR|ESCAPE|ESI|EVALUATE|EVENT|EVERY|EXCEPTION|EXCLUSIVE|EXHIBIT|EXIT|EXPORT|EXTEND|EXTENDED|EXTERNAL|FD|FILE|FILE-CONTROL|FILLER|FINAL|FIRST|FOOTING|FOR|FOREGROUND-COLOR|FOREGROUND-COLOUR|FROM|FULL|FUNCTION|FUNCTION-POINTER|FUNCTIONNAME|GENERATE|GIVING|GLOBAL|GO|GOBACK|GRID|GROUP|HEADING|HIGH-VALUE|HIGH-VALUES|HIGHLIGHT|I-O|I-O-CONTROL|ID|IDENTIFICATION|IF|IMPLICIT|IMPORT|IN|INDEX|INDEXED|INDICATE|INITIAL|INITIALIZE|INITIATE|INPUT|INPUT-OUTPUT|INSPECT|INSTALLATION|INTEGER|INTO|INVALID|INVOKE|IS|JUST|JUSTIFIED|KANJI|KEPT|KEY|KEYBOARD|LABEL|LANGUAGE|LAST|LB|LD|LEADING|LEFT|LEFTLINE|LENGTH|LENGTH-CHECK|LIBACCESS|LIBPARAMETER|LIBRARY|LIMIT|LIMITS|LINAGE|LINAGE-COUNTER|LINE|LINE-COUNTER|LINES|LINKAGE|LIST|LOCAL|LOCAL-STORAGE|LOCK|LONG-DATE|LONG-TIME|LOW-VALUE|LOW-VALUES|LOWER|LOWLIGHT|MEMORY|MERGE|MESSAGE|MMDDYYYY|MODE|MODULES|MORE-LABELS|MOVE|MULTIPLE|MULTIPLY|NAMED|NATIONAL|NATIONAL-EDITED|NATIVE|NEGATIVE|NETWORK|NEXT|NO|NO-ECHO|NULL|NULLS|NUMBER|NUMERIC|NUMERIC-DATE|NUMERIC-EDITED|NUMERIC-TIME|OBJECT-COMPUTER|OCCURS|ODT|OF|OFF|OMITTED|ON|OPEN|OPTIONAL|ORDER|ORDERLY|ORGANIZATION|OTHER|OUTPUT|OVERFLOW|OVERLINE|OWN|PACKED-DECIMAL|PADDING|PAGE|PAGE-COUNTER|PASSWORD|PERFORM|PF|PH|PIC|PICTURE|PLUS|POINTER|PORT|POSITION|POSITIVE|PRINTER|PRINTING|PRIVATE|PROCEDURE|PROCEDURE-POINTER|PROCEDURES|PROCEED|PROCESS|PROGRAM|PROGRAM-ID|PROGRAM-LIBRARY|PROMPT|PURGE|QUEUE|QUOTE|QUOTES|RANDOM|RD|READ|READER|REAL|RECEIVE|RECEIVED|RECORD|RECORDING|RECORDS|RECURSIVE|REDEFINES|REEL|REF|REFERENCE|REFERENCES|RELATIVE|RELEASE|REMAINDER|REMARKS|REMOTE|REMOVAL|REMOVE|RENAMES|REPLACE|REPLACING|REPORT|REPORTING|REPORTS|REQUIRED|RERUN|RESERVE|RESET|RETURN|RETURN-CODE|RETURNING|REVERSE-VIDEO|REVERSED|REWIND|REWRITE|RF|RH|RIGHT|ROUNDED|RUN|SAME|SAVE|SCREEN|SD|SEARCH|SECTION|SECURE|SECURITY|SEGMENT|SEGMENT-LIMIT|SELECT|SEND|SENTENCE|SEPARATE|SEQUENCE|SEQUENTIAL|SET|SHARED|SHAREDBYALL|SHAREDBYRUNUNIT|SHARING|SHIFT-IN|SHIFT-OUT|SHORT-DATE|SIGN|SIZE|SORT|SORT-CONTROL|SORT-CORE-SIZE|SORT-FILE-SIZE|SORT-MERGE|SORT-MESSAGE|SORT-MODE-SIZE|SORT-RETURN|SOURCE|SOURCE-COMPUTER|SPACE|SPACES|SPECIAL-NAMES|STANDARD|STANDARD-1|STANDARD-2|START|STATUS|STOP|STRING|SUB-QUEUE-1|SUB-QUEUE-2|SUB-QUEUE-3|SUBTRACT|SUM|SUPPRESS|SYMBOL|SYMBOLIC|SYNC|SYNCHRONIZED|TABLE|TALLY|TALLYING|TAPE|TASK|TERMINAL|TERMINATE|TEST|TEXT|THEN|THREAD|THREAD-LOCAL|THROUGH|THRU|TIME|TIMER|TIMES|TITLE|TO|TODAYS-DATE|TODAYS-NAME|TOP|TRAILING|TRUNCATED|TYPE|TYPEDEF|UNDERLINE|UNIT|UNSTRING|UNTIL|UP|UPON|USAGE|USE|USING|VALUE|VALUES|VARYING|VIRTUAL|WAIT|WHEN|WHEN-COMPILED|WITH|WORDS|WORKING-STORAGE|WRITE|YEAR|YYYYDDD|YYYYMMDD|ZERO-FILL|ZEROES|ZEROS)(?![\w-])/i,
-      lookbehind: true
-    },
-    boolean: {
-      pattern: /(^|[^\w-])(?:false|true)(?![\w-])/i,
-      lookbehind: true
-    },
-    number: {
-      pattern:
-        /(^|[^\w-])(?:[+-]?(?:(?:\d+(?:[.,]\d+)?|[.,]\d+)(?:e[+-]?\d+)?|zero))(?![\w-])/i,
-      lookbehind: true
-    },
-    operator: [
-      /<>|[<>]=?|[=+*/&]/,
-      {
-        pattern: /(^|[^\w-])(?:-|and|equal|greater|less|not|or|than)(?![\w-])/i,
-        lookbehind: true
-      }
-    ],
-    punctuation: /[.:,()]/
-  };
+var cobol_1;
+var hasRequiredCobol;
+
+function requireCobol () {
+	if (hasRequiredCobol) return cobol_1;
+	hasRequiredCobol = 1;
+
+	cobol_1 = cobol;
+	cobol.displayName = 'cobol';
+	cobol.aliases = [];
+	function cobol(Prism) {
+	  Prism.languages.cobol = {
+	    comment: {
+	      pattern: /\*>.*|(^[ \t]*)\*.*/m,
+	      lookbehind: true,
+	      greedy: true
+	    },
+	    string: {
+	      pattern: /[xzgn]?(?:"(?:[^\r\n"]|"")*"(?!")|'(?:[^\r\n']|'')*'(?!'))/i,
+	      greedy: true
+	    },
+	    level: {
+	      pattern: /(^[ \t]*)\d+\b/m,
+	      lookbehind: true,
+	      greedy: true,
+	      alias: 'number'
+	    },
+	    'class-name': {
+	      // https://github.com/antlr/grammars-v4/blob/42edd5b687d183b5fa679e858a82297bd27141e7/cobol85/Cobol85.g4#L1015
+	      pattern:
+	        /(\bpic(?:ture)?\s+)(?:(?:[-\w$/,:*+<>]|\.(?!\s|$))(?:\(\d+\))?)+/i,
+	      lookbehind: true,
+	      inside: {
+	        number: {
+	          pattern: /(\()\d+/,
+	          lookbehind: true
+	        },
+	        punctuation: /[()]/
+	      }
+	    },
+	    keyword: {
+	      pattern:
+	        /(^|[^\w-])(?:ABORT|ACCEPT|ACCESS|ADD|ADDRESS|ADVANCING|AFTER|ALIGNED|ALL|ALPHABET|ALPHABETIC|ALPHABETIC-LOWER|ALPHABETIC-UPPER|ALPHANUMERIC|ALPHANUMERIC-EDITED|ALSO|ALTER|ALTERNATE|ANY|ARE|AREA|AREAS|AS|ASCENDING|ASCII|ASSIGN|ASSOCIATED-DATA|ASSOCIATED-DATA-LENGTH|AT|ATTRIBUTE|AUTHOR|AUTO|AUTO-SKIP|BACKGROUND-COLOR|BACKGROUND-COLOUR|BASIS|BEEP|BEFORE|BEGINNING|BELL|BINARY|BIT|BLANK|BLINK|BLOCK|BOTTOM|BOUNDS|BY|BYFUNCTION|BYTITLE|CALL|CANCEL|CAPABLE|CCSVERSION|CD|CF|CH|CHAINING|CHANGED|CHANNEL|CHARACTER|CHARACTERS|CLASS|CLASS-ID|CLOCK-UNITS|CLOSE|CLOSE-DISPOSITION|COBOL|CODE|CODE-SET|COL|COLLATING|COLUMN|COM-REG|COMMA|COMMITMENT|COMMON|COMMUNICATION|COMP|COMP-1|COMP-2|COMP-3|COMP-4|COMP-5|COMPUTATIONAL|COMPUTATIONAL-1|COMPUTATIONAL-2|COMPUTATIONAL-3|COMPUTATIONAL-4|COMPUTATIONAL-5|COMPUTE|CONFIGURATION|CONTAINS|CONTENT|CONTINUE|CONTROL|CONTROL-POINT|CONTROLS|CONVENTION|CONVERTING|COPY|CORR|CORRESPONDING|COUNT|CRUNCH|CURRENCY|CURSOR|DATA|DATA-BASE|DATE|DATE-COMPILED|DATE-WRITTEN|DAY|DAY-OF-WEEK|DBCS|DE|DEBUG-CONTENTS|DEBUG-ITEM|DEBUG-LINE|DEBUG-NAME|DEBUG-SUB-1|DEBUG-SUB-2|DEBUG-SUB-3|DEBUGGING|DECIMAL-POINT|DECLARATIVES|DEFAULT|DEFAULT-DISPLAY|DEFINITION|DELETE|DELIMITED|DELIMITER|DEPENDING|DESCENDING|DESTINATION|DETAIL|DFHRESP|DFHVALUE|DISABLE|DISK|DISPLAY|DISPLAY-1|DIVIDE|DIVISION|DONTCARE|DOUBLE|DOWN|DUPLICATES|DYNAMIC|EBCDIC|EGCS|EGI|ELSE|EMI|EMPTY-CHECK|ENABLE|END|END-ACCEPT|END-ADD|END-CALL|END-COMPUTE|END-DELETE|END-DIVIDE|END-EVALUATE|END-IF|END-MULTIPLY|END-OF-PAGE|END-PERFORM|END-READ|END-RECEIVE|END-RETURN|END-REWRITE|END-SEARCH|END-START|END-STRING|END-SUBTRACT|END-UNSTRING|END-WRITE|ENDING|ENTER|ENTRY|ENTRY-PROCEDURE|ENVIRONMENT|EOL|EOP|EOS|ERASE|ERROR|ESCAPE|ESI|EVALUATE|EVENT|EVERY|EXCEPTION|EXCLUSIVE|EXHIBIT|EXIT|EXPORT|EXTEND|EXTENDED|EXTERNAL|FD|FILE|FILE-CONTROL|FILLER|FINAL|FIRST|FOOTING|FOR|FOREGROUND-COLOR|FOREGROUND-COLOUR|FROM|FULL|FUNCTION|FUNCTION-POINTER|FUNCTIONNAME|GENERATE|GIVING|GLOBAL|GO|GOBACK|GRID|GROUP|HEADING|HIGH-VALUE|HIGH-VALUES|HIGHLIGHT|I-O|I-O-CONTROL|ID|IDENTIFICATION|IF|IMPLICIT|IMPORT|IN|INDEX|INDEXED|INDICATE|INITIAL|INITIALIZE|INITIATE|INPUT|INPUT-OUTPUT|INSPECT|INSTALLATION|INTEGER|INTO|INVALID|INVOKE|IS|JUST|JUSTIFIED|KANJI|KEPT|KEY|KEYBOARD|LABEL|LANGUAGE|LAST|LB|LD|LEADING|LEFT|LEFTLINE|LENGTH|LENGTH-CHECK|LIBACCESS|LIBPARAMETER|LIBRARY|LIMIT|LIMITS|LINAGE|LINAGE-COUNTER|LINE|LINE-COUNTER|LINES|LINKAGE|LIST|LOCAL|LOCAL-STORAGE|LOCK|LONG-DATE|LONG-TIME|LOW-VALUE|LOW-VALUES|LOWER|LOWLIGHT|MEMORY|MERGE|MESSAGE|MMDDYYYY|MODE|MODULES|MORE-LABELS|MOVE|MULTIPLE|MULTIPLY|NAMED|NATIONAL|NATIONAL-EDITED|NATIVE|NEGATIVE|NETWORK|NEXT|NO|NO-ECHO|NULL|NULLS|NUMBER|NUMERIC|NUMERIC-DATE|NUMERIC-EDITED|NUMERIC-TIME|OBJECT-COMPUTER|OCCURS|ODT|OF|OFF|OMITTED|ON|OPEN|OPTIONAL|ORDER|ORDERLY|ORGANIZATION|OTHER|OUTPUT|OVERFLOW|OVERLINE|OWN|PACKED-DECIMAL|PADDING|PAGE|PAGE-COUNTER|PASSWORD|PERFORM|PF|PH|PIC|PICTURE|PLUS|POINTER|PORT|POSITION|POSITIVE|PRINTER|PRINTING|PRIVATE|PROCEDURE|PROCEDURE-POINTER|PROCEDURES|PROCEED|PROCESS|PROGRAM|PROGRAM-ID|PROGRAM-LIBRARY|PROMPT|PURGE|QUEUE|QUOTE|QUOTES|RANDOM|RD|READ|READER|REAL|RECEIVE|RECEIVED|RECORD|RECORDING|RECORDS|RECURSIVE|REDEFINES|REEL|REF|REFERENCE|REFERENCES|RELATIVE|RELEASE|REMAINDER|REMARKS|REMOTE|REMOVAL|REMOVE|RENAMES|REPLACE|REPLACING|REPORT|REPORTING|REPORTS|REQUIRED|RERUN|RESERVE|RESET|RETURN|RETURN-CODE|RETURNING|REVERSE-VIDEO|REVERSED|REWIND|REWRITE|RF|RH|RIGHT|ROUNDED|RUN|SAME|SAVE|SCREEN|SD|SEARCH|SECTION|SECURE|SECURITY|SEGMENT|SEGMENT-LIMIT|SELECT|SEND|SENTENCE|SEPARATE|SEQUENCE|SEQUENTIAL|SET|SHARED|SHAREDBYALL|SHAREDBYRUNUNIT|SHARING|SHIFT-IN|SHIFT-OUT|SHORT-DATE|SIGN|SIZE|SORT|SORT-CONTROL|SORT-CORE-SIZE|SORT-FILE-SIZE|SORT-MERGE|SORT-MESSAGE|SORT-MODE-SIZE|SORT-RETURN|SOURCE|SOURCE-COMPUTER|SPACE|SPACES|SPECIAL-NAMES|STANDARD|STANDARD-1|STANDARD-2|START|STATUS|STOP|STRING|SUB-QUEUE-1|SUB-QUEUE-2|SUB-QUEUE-3|SUBTRACT|SUM|SUPPRESS|SYMBOL|SYMBOLIC|SYNC|SYNCHRONIZED|TABLE|TALLY|TALLYING|TAPE|TASK|TERMINAL|TERMINATE|TEST|TEXT|THEN|THREAD|THREAD-LOCAL|THROUGH|THRU|TIME|TIMER|TIMES|TITLE|TO|TODAYS-DATE|TODAYS-NAME|TOP|TRAILING|TRUNCATED|TYPE|TYPEDEF|UNDERLINE|UNIT|UNSTRING|UNTIL|UP|UPON|USAGE|USE|USING|VALUE|VALUES|VARYING|VIRTUAL|WAIT|WHEN|WHEN-COMPILED|WITH|WORDS|WORKING-STORAGE|WRITE|YEAR|YYYYDDD|YYYYMMDD|ZERO-FILL|ZEROES|ZEROS)(?![\w-])/i,
+	      lookbehind: true
+	    },
+	    boolean: {
+	      pattern: /(^|[^\w-])(?:false|true)(?![\w-])/i,
+	      lookbehind: true
+	    },
+	    number: {
+	      pattern:
+	        /(^|[^\w-])(?:[+-]?(?:(?:\d+(?:[.,]\d+)?|[.,]\d+)(?:e[+-]?\d+)?|zero))(?![\w-])/i,
+	      lookbehind: true
+	    },
+	    operator: [
+	      /<>|[<>]=?|[=+*/&]/,
+	      {
+	        pattern: /(^|[^\w-])(?:-|and|equal|greater|less|not|or|than)(?![\w-])/i,
+	        lookbehind: true
+	      }
+	    ],
+	    punctuation: /[.:,()]/
+	  };
+	}
+	return cobol_1;
 }
 
 var coffeescript_1;
@@ -43050,7 +43059,7 @@ refractor.register(chaiscript_1);
 refractor.register(cil_1);
 refractor.register(clojure_1);
 refractor.register(cmake_1);
-refractor.register(cobol_1);
+refractor.register(requireCobol());
 refractor.register(requireCoffeescript());
 refractor.register(requireConcurnas());
 refractor.register(requireCoq());
@@ -45954,16 +45963,7 @@ var Calender = function Calender(props) {
   React.useEffect(function () {
     var _value$filter;
     if (fixedRange) {
-      return;
-    }
-    if (range && (value === null || value === void 0 ? void 0 : (_value$filter = value.filter(Boolean)) === null || _value$filter === void 0 ? void 0 : _value$filter.length) > 0) {
-      setSelectedRange({
-        dates: getDatesInStringFormat({
-          startingDate: fromUnixTime(value[0]),
-          endingDate: fromUnixTime(value[1])
-        }),
-        unix: [value[0], value[1]]
-      });
+      var _selectedRange$unix, _selectedRange$unix2, _selectedRange$unix3;
       var _date = new Date();
       var dateAsNumber = _date.getDate();
       var selectedDayInfo = getDayInfo(_date);
@@ -45974,9 +45974,9 @@ var Calender = function Calender(props) {
         dayAsNumber: selectedDayInfo.dayAsNumber
       };
       setSelectedMonth({
-        month: getDayInfo(fromUnixTime(value[0])).month,
-        monthAsNumber: getDayInfo(fromUnixTime(value[0])).monthAsNumber,
-        year: getDayInfo(fromUnixTime(value[0])).year
+        month: getDayInfo(fromUnixTime(selectedRange === null || selectedRange === void 0 ? void 0 : (_selectedRange$unix = selectedRange.unix) === null || _selectedRange$unix === void 0 ? void 0 : _selectedRange$unix[0])).month,
+        monthAsNumber: getDayInfo(fromUnixTime(selectedRange === null || selectedRange === void 0 ? void 0 : (_selectedRange$unix2 = selectedRange.unix) === null || _selectedRange$unix2 === void 0 ? void 0 : _selectedRange$unix2[0])).monthAsNumber,
+        year: getDayInfo(fromUnixTime(selectedRange === null || selectedRange === void 0 ? void 0 : (_selectedRange$unix3 = selectedRange.unix) === null || _selectedRange$unix3 === void 0 ? void 0 : _selectedRange$unix3[0])).year
       });
       setSelectedDate(_objectSpread2(_objectSpread2({}, selectedDate), {}, {
         month: selectedDateMonth.month,
@@ -45986,8 +45986,15 @@ var Calender = function Calender(props) {
       }));
       return;
     }
-    if (!range && value) {
-      var _date2 = fromUnixTime(value);
+    if (range && (value === null || value === void 0 ? void 0 : (_value$filter = value.filter(Boolean)) === null || _value$filter === void 0 ? void 0 : _value$filter.length) > 0) {
+      setSelectedRange({
+        dates: getDatesInStringFormat({
+          startingDate: fromUnixTime(value[0]),
+          endingDate: fromUnixTime(value[1])
+        }),
+        unix: [value[0], value[1]]
+      });
+      var _date2 = new Date();
       var _dateAsNumber = _date2.getDate();
       var _selectedDayInfo = getDayInfo(_date2);
       var _selectedDateMonth = {
@@ -45997,9 +46004,9 @@ var Calender = function Calender(props) {
         dayAsNumber: _selectedDayInfo.dayAsNumber
       };
       setSelectedMonth({
-        month: _selectedDayInfo.month,
-        monthAsNumber: _selectedDayInfo.monthAsNumber,
-        year: _selectedDayInfo.year
+        month: getDayInfo(fromUnixTime(value[0])).month,
+        monthAsNumber: getDayInfo(fromUnixTime(value[0])).monthAsNumber,
+        year: getDayInfo(fromUnixTime(value[0])).year
       });
       setSelectedDate(_objectSpread2(_objectSpread2({}, selectedDate), {}, {
         month: _selectedDateMonth.month,
@@ -46009,20 +46016,43 @@ var Calender = function Calender(props) {
       }));
       return;
     }
+    if (!range && value) {
+      var _date3 = fromUnixTime(value);
+      var _dateAsNumber2 = _date3.getDate();
+      var _selectedDayInfo2 = getDayInfo(_date3);
+      var _selectedDateMonth2 = {
+        month: _selectedDayInfo2.month,
+        monthAsNumber: _selectedDayInfo2.monthAsNumber,
+        year: _selectedDayInfo2.year,
+        dayAsNumber: _selectedDayInfo2.dayAsNumber
+      };
+      setSelectedMonth({
+        month: _selectedDayInfo2.month,
+        monthAsNumber: _selectedDayInfo2.monthAsNumber,
+        year: _selectedDayInfo2.year
+      });
+      setSelectedDate(_objectSpread2(_objectSpread2({}, selectedDate), {}, {
+        month: _selectedDateMonth2.month,
+        year: _selectedDateMonth2.year,
+        date: _dateAsNumber2,
+        unix: getUnixTime(_date3)
+      }));
+      return;
+    }
     var date = new Date();
     if (range && !value && (disableDatesBefore === null || disableDatesBefore === void 0 ? void 0 : disableDatesBefore.length) === 0 || !range && !isBefore(date, disableDatesBefore)) {
-      var _dateAsNumber2 = date.getDate();
-      var _selectedDayInfo2 = getDayInfo(date);
+      var _dateAsNumber3 = date.getDate();
+      var _selectedDayInfo3 = getDayInfo(date);
       setSelectedDate(_objectSpread2(_objectSpread2({}, selectedDate), {}, {
-        month: _selectedDayInfo2.month,
-        year: _selectedDayInfo2.year,
-        date: _dateAsNumber2,
+        month: _selectedDayInfo3.month,
+        year: _selectedDayInfo3.year,
+        date: _dateAsNumber3,
         unix: getUnixTime(date)
       }));
       setSelectedMonth({
-        month: _selectedDayInfo2.month,
-        monthAsNumber: MONTHS[_selectedDayInfo2.month],
-        year: _selectedDayInfo2.year
+        month: _selectedDayInfo3.month,
+        monthAsNumber: MONTHS[_selectedDayInfo3.month],
+        year: _selectedDayInfo3.year
       });
     }
   }, []);
@@ -46105,8 +46135,8 @@ var Calender = function Calender(props) {
   });
 };
 
-var css$J = ".DatePicker_module_root__e9055cc7 {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: flex-start;\n\talign-items: center;\n\tmax-width: 100%;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_customPicker__e9055cc7[data-elem='base-cell'] {\n\tflex: 1;\n\twidth: 100%;\n\tmin-width: 15rem;\n\tborder-color: var(--grey3);\n\tborder-style: solid;\n\tborder-width: 0.0625rem 0 0.0625rem 0.0625rem;\n\tbackground-color: transparent !important;\n\tborder-radius: 0.25rem 0 0 0.25rem;\n\theight: auto;\n\tpadding: 0.75rem 1rem;\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: flex-start;\n\talign-items: center;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_customPicker__e9055cc7[data-elem='base-cell'] > [data-elem='component1'] {\n\tflex: 0 0 auto;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_customPicker__e9055cc7[data-elem='base-cell'] > [data-elem='component1'] .DatePicker_module_icon__e9055cc7 {\n\twidth: 1.5rem;\n\theight: 1.5rem;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_customPicker__e9055cc7[data-elem='base-cell'] > [data-elem='component1'] .DatePicker_module_icon__e9055cc7.DatePicker_module_light__e9055cc7 path {\n\tstroke: var(--black);\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_customPicker__e9055cc7[data-elem='base-cell'] > [data-elem='component1'] .DatePicker_module_icon__e9055cc7.DatePicker_module_dark__e9055cc7 path {\n\tstroke: var(--white);\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_customPicker__e9055cc7[data-elem='base-cell'] > [data-elem='component2'] {\n\tcolor: var(--dark-grey);\n\ttext-overflow: ellipsis;\n\toverflow: hidden;\n\twhite-space: nowrap;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 {\n\tflex: 1;\n\tdisplay: flex;\n\tflex-direction: column;\n\tjustify-content: flex-start;\n\talign-items: stretch;\n\tgap: 0.5rem;\n\tmax-width: 100%;\n\tmin-width: 15rem;\n\toverflow: visible;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_label__e9055cc7 {\n\tfont-weight: 400;\n\tfont-size: 0.75rem;\n\tline-height: 0.9375rem;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_label__e9055cc7.DatePicker_module_light__e9055cc7 {\n\tcolor: var(--black);\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_label__e9055cc7.DatePicker_module_dark__e9055cc7 {\n\tcolor: var(--white);\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7 {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: space-between;\n\talign-items: center;\n\tposition: relative;\n\tbackground-color: transparent;\n\tborder-radius: 0.25rem;\n\twidth: auto;\n\tborder: 0.0625rem solid transparent;\n\tpadding: 0.75rem 1rem;\n\tcursor: pointer;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7.DatePicker_module_withCustom__e9055cc7 {\n\tborder-radius: 0 0.25rem 0.25rem 0;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7.DatePicker_module_disabled__e9055cc7 {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: space-between;\n\talign-items: center;\n\tposition: relative;\n\tbackground: var(--grey10);\n\tborder-radius: 0.25rem;\n\tborder: 0.0625rem solid var(--grey5);\n\tpadding: 0.75rem 1rem;\n\tcursor: not-allowed;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7.DatePicker_module_disabled__e9055cc7 .DatePicker_module_downArrow__e9055cc7 {\n\ttransform: rotate(270deg);\n\tfill: var(--grey3);\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7.DatePicker_module_disabled__e9055cc7 .DatePicker_module_placeholder__e9055cc7 {\n\tfont-weight: 400;\n\tfont-size: 1rem;\n\tcolor: var(--grey3);\n\t-webkit-user-select: none;\n\t-moz-user-select: none;\n\tuser-select: none;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7.DatePicker_module_open__e9055cc7 {\n\toutline: 0.0625rem solid var(--highlight);\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7.DatePicker_module_error__e9055cc7 {\n\toutline: 0.0625rem solid var(--error);\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7 .DatePicker_module_left__e9055cc7 {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: flex-start;\n\talign-items: center;\n\tgap: 0.9375rem;\n\toverflow: hidden;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7 .DatePicker_module_left__e9055cc7 .DatePicker_module_icon__e9055cc7 {\n\tflex: 1 0 auto;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7 .DatePicker_module_left__e9055cc7 > div {\n\tfont-weight: 400;\n\tfont-size: 1rem;\n\tflex: 1 1 auto;\n\toverflow: hidden;\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: center;\n\talign-items: center;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7 .DatePicker_module_left__e9055cc7 > div.DatePicker_module_light__e9055cc7 {\n\tcolor: var(--black);\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7 .DatePicker_module_left__e9055cc7 > div.DatePicker_module_dark__e9055cc7 {\n\tcolor: var(--white);\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7 .DatePicker_module_left__e9055cc7 > div .DatePicker_module_placeholder__e9055cc7 {\n\tfont-weight: 400;\n\tfont-size: 1rem;\n\t-webkit-user-select: none;\n\t-moz-user-select: none;\n\tuser-select: none;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7 .DatePicker_module_left__e9055cc7 > div > span {\n\tdisplay: inline-block;\n\ttext-overflow: ellipsis;\n\toverflow: hidden;\n\twhite-space: nowrap;\n\tfont-weight: 500;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7 .DatePicker_module_input__e9055cc7 {\n\tdisplay: none;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7 .DatePicker_module_close__e9055cc7 {\n\theight: auto;\n\tpadding: 0;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7 .DatePicker_module_icon__e9055cc7 {\n\twidth: 1.5rem;\n\theight: 1.5rem;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7 .DatePicker_module_icon__e9055cc7.DatePicker_module_light__e9055cc7 > path {\n\tfill: var(--dark-grey);\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7 .DatePicker_module_icon__e9055cc7.DatePicker_module_dark__e9055cc7 > path {\n\tfill: var(--white);\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7.DatePicker_module_dark__e9055cc7 .DatePicker_module_container__e9055cc7 {\n\tborder-color: var(--grey);\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7.DatePicker_module_dark__e9055cc7 .DatePicker_module_container__e9055cc7 .DatePicker_module_placeholder__e9055cc7 {\n\tcolor: var(--grey2);\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7.DatePicker_module_light__e9055cc7 .DatePicker_module_container__e9055cc7 {\n\tborder-color: var(--grey4);\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7.DatePicker_module_light__e9055cc7 .DatePicker_module_container__e9055cc7 .DatePicker_module_placeholder__e9055cc7 {\n\tcolor: var(--grey);\n}\n\n.DatePicker_module_root__e9055cc7 .DatePicker_module_disabled__e9055cc7 {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: space-between;\n\talign-items: center;\n\tposition: relative;\n\tbackground: var(--grey10);\n\tborder-radius: 0.25rem;\n\tborder: 0.0625rem solid var(--grey5);\n\tpadding: 0.75rem 1rem;\n\tcursor: pointer;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_disabled__e9055cc7 .DatePicker_module_downArrow__e9055cc7 {\n\ttransform: rotate(270deg);\n\tfill: var(--grey3);\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_disabled__e9055cc7 .DatePicker_module_placeholder__e9055cc7 {\n\tfont-weight: 400;\n\tfont-size: 1rem;\n\tcolor: var(--grey3);\n\t-webkit-user-select: none;\n\t-moz-user-select: none;\n\tuser-select: none;\n}\n.DatePicker_module_root__e9055cc7.DatePicker_module_open__e9055cc7 {\n\tborder-color: var(--highlight);\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_error__e9055cc7 {\n\tborder: 0.0938rem solid var(--error);\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_errorText__e9055cc7 {\n\tfont-weight: 400;\n\tfont-size: 0.75rem;\n\tline-height: 0.9375rem;\n\tcolor: var(--error);\n}\n\n.DatePicker_module_popper__e9055cc7 {\n\tdisplay: none;\n\tbackground: var(--white);\n\tborder: 0.0625rem solid #d9d9d9;\n\tbox-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);\n\tborder-radius: 0.25rem;\n\toverflow: auto;\n}\n.DatePicker_module_popper__e9055cc7.DatePicker_module_open__e9055cc7 {\n\tdisplay: flex;\n\tflex-direction: column;\n\tjustify-content: flex-start;\n\talign-items: stretch;\n\tposition: absolute;\n} \n";
-var modules_5b831cd1 = {"root":"DatePicker_module_root__e9055cc7","custom-picker":"DatePicker_module_customPicker__e9055cc7","icon":"DatePicker_module_icon__e9055cc7","light":"DatePicker_module_light__e9055cc7","dark":"DatePicker_module_dark__e9055cc7","date-picker":"DatePicker_module_datePicker__e9055cc7","label":"DatePicker_module_label__e9055cc7","container":"DatePicker_module_container__e9055cc7","with-custom":"DatePicker_module_withCustom__e9055cc7","disabled":"DatePicker_module_disabled__e9055cc7","down-arrow":"DatePicker_module_downArrow__e9055cc7","placeholder":"DatePicker_module_placeholder__e9055cc7","open":"DatePicker_module_open__e9055cc7","error":"DatePicker_module_error__e9055cc7","left":"DatePicker_module_left__e9055cc7","input":"DatePicker_module_input__e9055cc7","close":"DatePicker_module_close__e9055cc7","error-text":"DatePicker_module_errorText__e9055cc7","popper":"DatePicker_module_popper__e9055cc7"};
+var css$J = ".DatePicker_module_root__c48dd103 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  max-width: 100%;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_customPicker__c48dd103[data-elem=base-cell] {\n  flex: 1;\n  width: 100%;\n  min-width: 15rem;\n  border-color: var(--grey3);\n  border-style: solid;\n  border-width: 0.0625rem 0 0.0625rem 0.0625rem;\n  background-color: transparent !important;\n  border-radius: 0.25rem 0 0 0.25rem;\n  height: auto;\n  padding: 0.75rem 1rem;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_customPicker__c48dd103[data-elem=base-cell] > [data-elem=component1] {\n  flex: 0 0 auto;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_customPicker__c48dd103[data-elem=base-cell] > [data-elem=component1] .DatePicker_module_icon__c48dd103 {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_customPicker__c48dd103[data-elem=base-cell] > [data-elem=component1] .DatePicker_module_icon__c48dd103.DatePicker_module_light__c48dd103 path {\n  stroke: var(--black);\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_customPicker__c48dd103[data-elem=base-cell] > [data-elem=component1] .DatePicker_module_icon__c48dd103.DatePicker_module_dark__c48dd103 path {\n  stroke: var(--white);\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_customPicker__c48dd103[data-elem=base-cell].DatePicker_module_light__c48dd103 > [data-elem=component2] {\n  color: var(--dark-grey);\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_customPicker__c48dd103[data-elem=base-cell].DatePicker_module_dark__c48dd103 > [data-elem=component2] {\n  color: var(--white);\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  gap: 0.5rem;\n  max-width: 100%;\n  min-width: 15rem;\n  overflow: visible;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_label__c48dd103 {\n  font-weight: 400;\n  font-size: 0.75rem;\n  line-height: 0.9375rem;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_label__c48dd103.DatePicker_module_light__c48dd103 {\n  color: var(--black);\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_label__c48dd103.DatePicker_module_dark__c48dd103 {\n  color: var(--white);\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  position: relative;\n  background-color: transparent;\n  border-radius: 0.25rem;\n  width: auto;\n  border: 0.0625rem solid transparent;\n  padding: 0.75rem 1rem;\n  cursor: pointer;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103.DatePicker_module_withCustom__c48dd103 {\n  border-radius: 0 0.25rem 0.25rem 0;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103.DatePicker_module_disabled__c48dd103 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  position: relative;\n  background: var(--grey10);\n  border-radius: 0.25rem;\n  border: 0.0625rem solid var(--grey5);\n  padding: 0.75rem 1rem;\n  cursor: not-allowed;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103.DatePicker_module_disabled__c48dd103 .DatePicker_module_downArrow__c48dd103 {\n  transform: rotate(270deg);\n  fill: var(--grey3);\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103.DatePicker_module_disabled__c48dd103 .DatePicker_module_placeholder__c48dd103 {\n  font-weight: 400;\n  font-size: 1rem;\n  color: var(--grey3);\n  -webkit-user-select: none;\n     -moz-user-select: none;\n          user-select: none;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103.DatePicker_module_open__c48dd103 {\n  outline: 0.0625rem solid var(--highlight);\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103.DatePicker_module_error__c48dd103 {\n  outline: 0.0625rem solid var(--error);\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103 .DatePicker_module_left__c48dd103 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.9375rem;\n  overflow: hidden;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103 .DatePicker_module_left__c48dd103 .DatePicker_module_icon__c48dd103 {\n  flex: 1 0 auto;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103 .DatePicker_module_left__c48dd103 > div {\n  font-weight: 400;\n  font-size: 1rem;\n  flex: 1 1 auto;\n  overflow: hidden;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103 .DatePicker_module_left__c48dd103 > div.DatePicker_module_light__c48dd103 {\n  color: var(--black);\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103 .DatePicker_module_left__c48dd103 > div.DatePicker_module_dark__c48dd103 {\n  color: var(--white);\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103 .DatePicker_module_left__c48dd103 > div .DatePicker_module_placeholder__c48dd103 {\n  font-weight: 400;\n  font-size: 1rem;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n          user-select: none;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103 .DatePicker_module_left__c48dd103 > div > span {\n  display: inline-block;\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  font-weight: 500;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103 .DatePicker_module_input__c48dd103 {\n  display: none;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103 .DatePicker_module_close__c48dd103 {\n  height: auto;\n  padding: 0;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103 .DatePicker_module_icon__c48dd103 {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103 .DatePicker_module_icon__c48dd103.DatePicker_module_light__c48dd103 > path {\n  fill: var(--dark-grey);\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103 .DatePicker_module_icon__c48dd103.DatePicker_module_dark__c48dd103 > path {\n  fill: var(--white);\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103.DatePicker_module_dark__c48dd103 .DatePicker_module_container__c48dd103 {\n  border-color: var(--grey);\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103.DatePicker_module_dark__c48dd103 .DatePicker_module_container__c48dd103 .DatePicker_module_placeholder__c48dd103 {\n  color: var(--grey2);\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103.DatePicker_module_light__c48dd103 .DatePicker_module_container__c48dd103 {\n  border-color: var(--grey4);\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103.DatePicker_module_light__c48dd103 .DatePicker_module_container__c48dd103 .DatePicker_module_placeholder__c48dd103 {\n  color: var(--grey);\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_errorText__c48dd103 {\n  font-weight: 400;\n  font-size: 0.75rem;\n  line-height: 0.9375rem;\n  color: var(--error);\n}\n\n.DatePicker_module_popper__c48dd103 {\n  display: none;\n  background: var(--white);\n  border: 0.0625rem solid #d9d9d9;\n  box-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);\n  border-radius: 0.25rem;\n  overflow: auto;\n}\n.DatePicker_module_popper__c48dd103.DatePicker_module_open__c48dd103 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  position: absolute;\n}";
+var modules_5b831cd1 = {"root":"DatePicker_module_root__c48dd103","custom-picker":"DatePicker_module_customPicker__c48dd103","icon":"DatePicker_module_icon__c48dd103","light":"DatePicker_module_light__c48dd103","dark":"DatePicker_module_dark__c48dd103","date-picker":"DatePicker_module_datePicker__c48dd103","label":"DatePicker_module_label__c48dd103","container":"DatePicker_module_container__c48dd103","with-custom":"DatePicker_module_withCustom__c48dd103","disabled":"DatePicker_module_disabled__c48dd103","down-arrow":"DatePicker_module_downArrow__c48dd103","placeholder":"DatePicker_module_placeholder__c48dd103","open":"DatePicker_module_open__c48dd103","error":"DatePicker_module_error__c48dd103","left":"DatePicker_module_left__c48dd103","input":"DatePicker_module_input__c48dd103","close":"DatePicker_module_close__c48dd103","error-text":"DatePicker_module_errorText__c48dd103","popper":"DatePicker_module_popper__c48dd103"};
 n(css$J,{});
 
 var getDateAndUnixRange$1 = function getDateAndUnixRange(duration) {
@@ -46252,9 +46282,7 @@ n(css$I,{});
 
 var getDateAndUnixRange = function getDateAndUnixRange(duration) {
   var startingDate = sub$2(new Date(), duration);
-  startingDate.setHours(0, 0, 0, 0);
   var endingDate = new Date();
-  endingDate.setHours(0, 0, 0, 0);
   var dates = getDatesInStringFormat({
     startingDate: startingDate,
     endingDate: endingDate
@@ -46271,7 +46299,7 @@ var dateRanges = function dateRanges() {
     return customRanges.map(function (range) {
       return {
         title: range.title,
-        dateRange: getDateAndUnixRange(_defineProperty$1({}, range.type, [range.value]))
+        dateRange: getDateAndUnixRange(_defineProperty$1({}, range.type, range.value))
       };
     });
   }
@@ -46429,7 +46457,7 @@ var DatePicker = function DatePicker(props) {
         });
       },
       title: fixedRange || 'Custom',
-      className: modules_5b831cd1['custom-picker']
+      className: classes(modules_5b831cd1['custom-picker'], modules_5b831cd1[theme])
     }, customRangeInteractionProps.getReferenceProps())), /*#__PURE__*/jsxRuntime.jsxs("div", {
       className: classes(modules_5b831cd1['date-picker'], className, modules_5b831cd1[theme]),
       children: [label && !hasCustomRanges && /*#__PURE__*/jsxRuntime.jsx("span", {
@@ -46523,7 +46551,8 @@ var DatePicker = function DatePicker(props) {
             setFixedRange: setFixedRange,
             setOpenDatePicker: setOpenDatePicker,
             setOpenCustomRange: setOpenCustomRange,
-            fixedRange: fixedRange
+            fixedRange: fixedRange,
+            theme: theme
           })
         }))
       })]
