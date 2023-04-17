@@ -104,22 +104,17 @@ export const rangeSelection = ({ selectedRange, date }) => {
 			isAfter(date, fromUnixTime(selectedRange.unix?.[1]))) &&
 		isAfter(date, fromUnixTime(selectedRange.unix?.[0]))
 	) {
-		console.log('after');
 		return {
 			dates: [selectedRange.dates?.[0], `${dateAsNumber} ${month} ${year}`],
 			unix: [selectedRange.unix?.[0], getUnixTime(date)],
 		};
 	}
 	if (isBefore(date, fromUnixTime(selectedRange.unix?.[0]))) {
-		console.log('before');
-
 		return {
 			dates: [`${dateAsNumber} ${month} ${year}`, selectedRange.dates?.[1]],
 			unix: [getUnixTime(date), selectedRange.unix?.[1]],
 		};
 	}
-
-	console.log('lkjl');
 
 	return {
 		dates: [],

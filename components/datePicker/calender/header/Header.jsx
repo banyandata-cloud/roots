@@ -25,7 +25,7 @@ const Header = (props) => {
 				/>
 
 				<span className={styles.title}>
-					{`${selectedMonth.month} ${selectedMonth.year}`}
+					{`${selectedMonth?.month} ${selectedMonth?.year}`}
 				</span>
 
 				<Button
