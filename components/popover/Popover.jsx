@@ -16,7 +16,8 @@ import styles from './Popover.module.css';
 
 const Popover = (props) => {
 	// eslint-disable-next-line object-curly-newline
-	const { children, anchorEl, open, setOpen, className, transparent, onClose, placement } = props;
+	const { children, anchorEl, open, setOpen, className, transparent, onClose, placement, theme } =
+		props;
 
 	const { x, y, reference, floating, strategy, context } = useFloating({
 		open,
@@ -64,7 +65,7 @@ const Popover = (props) => {
 						top: y ?? 0,
 						left: x ?? 0,
 					},
-					className: classes(styles.root, className),
+					className: classes(styles.root, className, styles[`${theme}-theme`]),
 				})}>
 				{children}
 			</div>
@@ -92,6 +93,7 @@ Popover.propTypes = {
 		'left-start',
 		'left-end',
 	]),
+	theme: PropTypes.oneOf(['light', 'dark']),
 };
 
 Popover.defaultProps = {
@@ -99,6 +101,7 @@ Popover.defaultProps = {
 	transparent: true,
 	onClose: () => {},
 	placement: 'bottom',
+	theme: 'dark',
 };
 
 export default Popover;

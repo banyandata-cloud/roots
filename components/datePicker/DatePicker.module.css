@@ -195,7 +195,7 @@
   display: none;
   background: var(--white);
   border: 0.0625rem solid #d9d9d9;
-  box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);
+  box-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);
   border-radius: 0.25rem;
   overflow: auto;
 }

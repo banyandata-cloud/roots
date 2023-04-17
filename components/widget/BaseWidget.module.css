@@ -1,10 +1,10 @@
 .root {
-  border: 1px solid var(--grey);
-  border-radius: 0.25rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
+  border: 1px solid var(--grey);
+  border-radius: 0.25rem;
   height: 100%;
   width: 100%;
 }
@@ -13,7 +13,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  padding: 0.5rem;
 }
 .root .header .header-title {
   display: flex;
@@ -34,11 +34,20 @@
 .root .header .header-title.no-options {
   flex: 1;
 }
-.root .header .header-title .title {
-  white-space: nowrap;
+.root .header .header-title.no-title-options .title-container {
+  margin-left: 0.5rem;
 }
-.root .header .header-title .value {
-  white-space: nowrap;
+.root .header .header-title button.title {
+  height: auto;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  padding: 0 0.5rem;
+}
+.root .header .header-title button.title .icon {
+  width: 1rem;
+  height: 1rem;
+  fill: var(--white);
 }
 .root .header .header-options {
   display: flex;
@@ -66,15 +75,35 @@
   width: 0.875rem;
 }
 .root .header .header-options .expand-button {
+  padding: 0 0.25rem;
   height: 1.75rem;
 }
 .root .header .header-options .expand-button .expand-icon {
+  height: 1.25rem;
+  width: 1.25rem;
+  fill: var(--white);
+}
+.root .header .header-options .date-picker {
+  min-width: 0;
+}
+.root .header .header-options .date-picker [data-elem=header] {
+  padding: 0.06rem 0.25rem;
+  border: 1px solid var(--grey);
+  font-size: 0.875rem;
+}
+.root .header .header-options .date-picker [data-elem=header] > div {
+  gap: 0.5rem;
+}
+.root .header .header-options .date-picker [data-elem=header] > div :nth-child(1) {
   height: 1.25rem;
   width: 1.25rem;
 }
 .root.dark-theme .header .header-title [data-elem=title],
 .root.dark-theme .header .header-title [data-elem=subtitle] {
   color: var(--white);
+}
+.root.dark-theme .header .header-title .title .icon {
+  fill: var(--white);
 }
 .root.dark-theme .header .header-options .dropdown-header [data-elem=select] {
   border-color: var(--grey);
@@ -83,6 +112,12 @@
   color: var(--white);
 }
 .root.dark-theme .header .header-options .dropdown-header [data-elem=select] > svg {
+  fill: var(--white);
+}
+.root.dark-theme .header .header-options .date-picker [data-elem=header] {
+  border-color: var(--grey);
+}
+.root.dark-theme .header .header-options .date-picker [data-elem=header] :nth-child(1) {
   fill: var(--white);
 }
 .root.dark-theme .header .header-options .expand-button {
@@ -96,6 +131,9 @@
 .root.light-theme .header .header-title [data-elem=subtitle] {
   color: var(--dark-grey);
 }
+.root.light-theme .header .header-title .title .icon {
+  fill: var(--menu-black);
+}
 .root.light-theme .header .header-options .dropdown-header [data-elem=select] {
   border-color: var(--grey6);
 }
@@ -103,6 +141,12 @@
   color: var(--dark-grey);
 }
 .root.light-theme .header .header-options .dropdown-header [data-elem=select] > svg {
+  fill: var(--dark-grey);
+}
+.root.light-theme .header .header-options .date-picker [data-elem=header] {
+  border-color: var(--grey6);
+}
+.root.light-theme .header .header-options .date-picker [data-elem=header] :nth-child(1) {
   fill: var(--dark-grey);
 }
 .root.light-theme .header .header-options .expand-button {

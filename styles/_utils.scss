@@ -50,10 +50,40 @@
 	scrollbar-width: none;
 }
 
+@mixin customScrollBar($theme: dark) {
+	-ms-overflow-style: none;
+	scrollbar-width: thin;
+
+	&::-webkit-scrollbar {
+		width: 0.25rem;
+		background: transparent;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		border-radius: 0.25rem;
+	}
+
+	@if $theme == dark {
+		&::-webkit-scrollbar-thumb {
+			background: $grey6;
+		}
+	} @else {
+		&::-webkit-scrollbar-thumb {
+			background: $grey2;
+		}
+	}
+}
+
 @function derive-rgb-values-from-hex($hex) {
 	@return red($hex), green($hex), blue($hex);
 }
 
-@mixin boxShadow {
-	box-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);
+@mixin boxShadow($theme: light) {
+	@if $theme == dark {
+		box-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);
+	}
+
+	@if $theme == light {
+		box-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);
+	}
 }

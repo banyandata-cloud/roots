@@ -33,6 +33,44 @@ echarts.use([
 	CanvasRenderer,
 ]);
 
+const AXIS_COLORS = {
+	label: {
+		dark: '#a2a4a5',
+		light: COLORS.grey,
+	},
+	line: {
+		dark: '#757679',
+		light: COLORS.grey3,
+	},
+	split: {
+		dark: COLORS['dark-grey'],
+		light: COLORS.grey5,
+	},
+	tick: {
+		dark: '#757679',
+		light: COLORS.grey3,
+	},
+};
+
+const determineAxesColors = (type, defaultColor = '', theme = 'dark') => {
+	if (defaultColor !== '') {
+		return defaultColor;
+	}
+	return AXIS_COLORS[type][`${theme}`];
+};
+
+const determineGradient = (seriesData, objectData, index, subIndex, key) => {
+	if (seriesData?.chartData?.[key]?.[`x${index + 1}`]) {
+		if (typeof (objectData?.color ?? '' ?? {}) !== 'string') {
+			return new echarts.graphic.LinearGradient(
+				...((objectData?.barColor?.[subIndex] ?? '') || (objectData?.color ?? ''))
+			);
+		}
+		return (objectData?.barColor?.[subIndex] ?? '') || (objectData?.color ?? '');
+	}
+	return '';
+};
+
 const BaseVerticalBarChart = (props) => {
 	const {
 		loading,
@@ -73,18 +111,6 @@ const BaseVerticalBarChart = (props) => {
 		? 1
 		: 0;
 
-	const determineColor = (objectData, index, subIndex, key) => {
-		if (seriesData?.chartData?.[key]?.[`x${index + 1}`]) {
-			if (typeof (objectData?.color ?? '' ?? {}) !== 'string') {
-				return new echarts.graphic.LinearGradient(
-					...((objectData?.barColor?.[subIndex] ?? '') || (objectData?.color ?? ''))
-				);
-			}
-			return (objectData?.barColor?.[subIndex] ?? '') || (objectData?.color ?? '');
-		}
-		return 'whitesmoke';
-	};
-
 	const seriesOptionObject = {
 		type: 'bar',
 		barWidth: stackCount ? barWidth : barWidth / stackCount,
@@ -97,7 +123,7 @@ const BaseVerticalBarChart = (props) => {
 			color: 'whitesmoke',
 		},
 		label: {
-			color: 'black',
+			color: theme === 'dark' ? COLORS.white : COLORS.black,
 			position: 'outside',
 			formatter(param) {
 				return param.value;
@@ -153,9 +179,17 @@ const BaseVerticalBarChart = (props) => {
 						value: check
 							? seriesData?.chartData?.[key]?.[`x${index + 1}`] ?? ''
 							: minHeight,
-						itemStyle: {
-							color: determineColor(objectData, index, subIndex, key),
-						},
+						...((objectData?.color ?? '') && {
+							itemStyle: {
+								color: determineGradient(
+									seriesData,
+									objectData,
+									index,
+									subIndex,
+									key
+								),
+							},
+						}),
 						tooltip: {
 							...(seriesOption[subIndex]?.tooltip ?? {}),
 						},
@@ -181,14 +215,18 @@ const BaseVerticalBarChart = (props) => {
 					type: 'category',
 					axisTick: {
 						show: false,
+						lineStyle: {
+							color: determineAxesColors('tick', axisColor, theme),
+						},
 					},
 					axisLabel: {
 						...xAxisLabel,
+						color: determineAxesColors('label', axisColor, theme),
 					},
 					axisLine: {
 						show: xAxisShow,
 						lineStyle: {
-							color: theme === 'dark' ? '#757679' : COLORS.grey3,
+							color: determineAxesColors('line', axisColor, theme),
 						},
 					},
 				},
@@ -202,45 +240,25 @@ const BaseVerticalBarChart = (props) => {
 					type: 'value',
 					axisLabel: {
 						show: yAxisLabelShow,
-						color:
-							axisColor !== ''
-								? axisColor
-								: theme === 'dark'
-								? '#a2a4a5'
-								: COLORS.grey,
+						color: determineAxesColors('label', axisColor, theme),
 					},
 					splitLine: {
 						show: ySplitLineShow,
 						lineStyle: {
-							color:
-								axisColor !== ''
-									? axisColor
-									: theme === 'dark'
-									? COLORS['dark-grey']
-									: COLORS.grey5,
+							color: determineAxesColors('split', axisColor, theme),
 							type: splitType,
 						},
 					},
 					axisLine: {
 						show: yAxisLineShow,
 						lineStyle: {
-							color:
-								axisColor !== ''
-									? axisColor
-									: theme === 'dark'
-									? '#757679'
-									: COLORS.grey3,
+							color: determineAxesColors('line', axisColor, theme),
 						},
 					},
 					axisTick: {
 						show: yAxisTickShow,
 						lineStyle: {
-							color:
-								axisColor !== ''
-									? axisColor
-									: theme === 'dark'
-									? '#757679'
-									: COLORS.grey3,
+							color: determineAxesColors('tick', axisColor, theme),
 						},
 					},
 				},
