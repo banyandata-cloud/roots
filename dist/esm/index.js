@@ -22944,44 +22944,53 @@ function clojure(Prism) {
   };
 }
 
-var cmake_1 = cmake;
-cmake.displayName = 'cmake';
-cmake.aliases = [];
-function cmake(Prism) {
-  Prism.languages.cmake = {
-    comment: /#.*/,
-    string: {
-      pattern: /"(?:[^\\"]|\\.)*"/,
-      greedy: true,
-      inside: {
-        interpolation: {
-          pattern: /\$\{(?:[^{}$]|\$\{[^{}$]*\})*\}/,
-          inside: {
-            punctuation: /\$\{|\}/,
-            variable: /\w+/
-          }
-        }
-      }
-    },
-    variable:
-      /\b(?:CMAKE_\w+|\w+_(?:(?:BINARY|SOURCE)_DIR|DESCRIPTION|HOMEPAGE_URL|ROOT|VERSION(?:_MAJOR|_MINOR|_PATCH|_TWEAK)?)|(?:ANDROID|APPLE|BORLAND|BUILD_SHARED_LIBS|CACHE|CPACK_(?:ABSOLUTE_DESTINATION_FILES|COMPONENT_INCLUDE_TOPLEVEL_DIRECTORY|ERROR_ON_ABSOLUTE_INSTALL_DESTINATION|INCLUDE_TOPLEVEL_DIRECTORY|INSTALL_DEFAULT_DIRECTORY_PERMISSIONS|INSTALL_SCRIPT|PACKAGING_INSTALL_PREFIX|SET_DESTDIR|WARN_ON_ABSOLUTE_INSTALL_DESTINATION)|CTEST_(?:BINARY_DIRECTORY|BUILD_COMMAND|BUILD_NAME|BZR_COMMAND|BZR_UPDATE_OPTIONS|CHANGE_ID|CHECKOUT_COMMAND|CONFIGURATION_TYPE|CONFIGURE_COMMAND|COVERAGE_COMMAND|COVERAGE_EXTRA_FLAGS|CURL_OPTIONS|CUSTOM_(?:COVERAGE_EXCLUDE|ERROR_EXCEPTION|ERROR_MATCH|ERROR_POST_CONTEXT|ERROR_PRE_CONTEXT|MAXIMUM_FAILED_TEST_OUTPUT_SIZE|MAXIMUM_NUMBER_OF_(?:ERRORS|WARNINGS)|MAXIMUM_PASSED_TEST_OUTPUT_SIZE|MEMCHECK_IGNORE|POST_MEMCHECK|POST_TEST|PRE_MEMCHECK|PRE_TEST|TESTS_IGNORE|WARNING_EXCEPTION|WARNING_MATCH)|CVS_CHECKOUT|CVS_COMMAND|CVS_UPDATE_OPTIONS|DROP_LOCATION|DROP_METHOD|DROP_SITE|DROP_SITE_CDASH|DROP_SITE_PASSWORD|DROP_SITE_USER|EXTRA_COVERAGE_GLOB|GIT_COMMAND|GIT_INIT_SUBMODULES|GIT_UPDATE_CUSTOM|GIT_UPDATE_OPTIONS|HG_COMMAND|HG_UPDATE_OPTIONS|LABELS_FOR_SUBPROJECTS|MEMORYCHECK_(?:COMMAND|COMMAND_OPTIONS|SANITIZER_OPTIONS|SUPPRESSIONS_FILE|TYPE)|NIGHTLY_START_TIME|P4_CLIENT|P4_COMMAND|P4_OPTIONS|P4_UPDATE_OPTIONS|RUN_CURRENT_SCRIPT|SCP_COMMAND|SITE|SOURCE_DIRECTORY|SUBMIT_URL|SVN_COMMAND|SVN_OPTIONS|SVN_UPDATE_OPTIONS|TEST_LOAD|TEST_TIMEOUT|TRIGGER_SITE|UPDATE_COMMAND|UPDATE_OPTIONS|UPDATE_VERSION_ONLY|USE_LAUNCHERS)|CYGWIN|ENV|EXECUTABLE_OUTPUT_PATH|GHS-MULTI|IOS|LIBRARY_OUTPUT_PATH|MINGW|MSVC(?:10|11|12|14|60|70|71|80|90|_IDE|_TOOLSET_VERSION|_VERSION)?|MSYS|PROJECT_(?:BINARY_DIR|DESCRIPTION|HOMEPAGE_URL|NAME|SOURCE_DIR|VERSION|VERSION_(?:MAJOR|MINOR|PATCH|TWEAK))|UNIX|WIN32|WINCE|WINDOWS_PHONE|WINDOWS_STORE|XCODE|XCODE_VERSION))\b/,
-    property:
-      /\b(?:cxx_\w+|(?:ARCHIVE_OUTPUT_(?:DIRECTORY|NAME)|COMPILE_DEFINITIONS|COMPILE_PDB_NAME|COMPILE_PDB_OUTPUT_DIRECTORY|EXCLUDE_FROM_DEFAULT_BUILD|IMPORTED_(?:IMPLIB|LIBNAME|LINK_DEPENDENT_LIBRARIES|LINK_INTERFACE_LANGUAGES|LINK_INTERFACE_LIBRARIES|LINK_INTERFACE_MULTIPLICITY|LOCATION|NO_SONAME|OBJECTS|SONAME)|INTERPROCEDURAL_OPTIMIZATION|LIBRARY_OUTPUT_DIRECTORY|LIBRARY_OUTPUT_NAME|LINK_FLAGS|LINK_INTERFACE_LIBRARIES|LINK_INTERFACE_MULTIPLICITY|LOCATION|MAP_IMPORTED_CONFIG|OSX_ARCHITECTURES|OUTPUT_NAME|PDB_NAME|PDB_OUTPUT_DIRECTORY|RUNTIME_OUTPUT_DIRECTORY|RUNTIME_OUTPUT_NAME|STATIC_LIBRARY_FLAGS|VS_CSHARP|VS_DOTNET_REFERENCEPROP|VS_DOTNET_REFERENCE|VS_GLOBAL_SECTION_POST|VS_GLOBAL_SECTION_PRE|VS_GLOBAL|XCODE_ATTRIBUTE)_\w+|\w+_(?:CLANG_TIDY|COMPILER_LAUNCHER|CPPCHECK|CPPLINT|INCLUDE_WHAT_YOU_USE|OUTPUT_NAME|POSTFIX|VISIBILITY_PRESET)|ABSTRACT|ADDITIONAL_MAKE_CLEAN_FILES|ADVANCED|ALIASED_TARGET|ALLOW_DUPLICATE_CUSTOM_TARGETS|ANDROID_(?:ANT_ADDITIONAL_OPTIONS|API|API_MIN|ARCH|ASSETS_DIRECTORIES|GUI|JAR_DEPENDENCIES|NATIVE_LIB_DEPENDENCIES|NATIVE_LIB_DIRECTORIES|PROCESS_MAX|PROGUARD|PROGUARD_CONFIG_PATH|SECURE_PROPS_PATH|SKIP_ANT_STEP|STL_TYPE)|ARCHIVE_OUTPUT_DIRECTORY|ATTACHED_FILES|ATTACHED_FILES_ON_FAIL|AUTOGEN_(?:BUILD_DIR|ORIGIN_DEPENDS|PARALLEL|SOURCE_GROUP|TARGETS_FOLDER|TARGET_DEPENDS)|AUTOMOC|AUTOMOC_(?:COMPILER_PREDEFINES|DEPEND_FILTERS|EXECUTABLE|MACRO_NAMES|MOC_OPTIONS|SOURCE_GROUP|TARGETS_FOLDER)|AUTORCC|AUTORCC_EXECUTABLE|AUTORCC_OPTIONS|AUTORCC_SOURCE_GROUP|AUTOUIC|AUTOUIC_EXECUTABLE|AUTOUIC_OPTIONS|AUTOUIC_SEARCH_PATHS|BINARY_DIR|BUILDSYSTEM_TARGETS|BUILD_RPATH|BUILD_RPATH_USE_ORIGIN|BUILD_WITH_INSTALL_NAME_DIR|BUILD_WITH_INSTALL_RPATH|BUNDLE|BUNDLE_EXTENSION|CACHE_VARIABLES|CLEAN_NO_CUSTOM|COMMON_LANGUAGE_RUNTIME|COMPATIBLE_INTERFACE_(?:BOOL|NUMBER_MAX|NUMBER_MIN|STRING)|COMPILE_(?:DEFINITIONS|FEATURES|FLAGS|OPTIONS|PDB_NAME|PDB_OUTPUT_DIRECTORY)|COST|CPACK_DESKTOP_SHORTCUTS|CPACK_NEVER_OVERWRITE|CPACK_PERMANENT|CPACK_STARTUP_SHORTCUTS|CPACK_START_MENU_SHORTCUTS|CPACK_WIX_ACL|CROSSCOMPILING_EMULATOR|CUDA_EXTENSIONS|CUDA_PTX_COMPILATION|CUDA_RESOLVE_DEVICE_SYMBOLS|CUDA_SEPARABLE_COMPILATION|CUDA_STANDARD|CUDA_STANDARD_REQUIRED|CXX_EXTENSIONS|CXX_STANDARD|CXX_STANDARD_REQUIRED|C_EXTENSIONS|C_STANDARD|C_STANDARD_REQUIRED|DEBUG_CONFIGURATIONS|DEFINE_SYMBOL|DEFINITIONS|DEPENDS|DEPLOYMENT_ADDITIONAL_FILES|DEPLOYMENT_REMOTE_DIRECTORY|DISABLED|DISABLED_FEATURES|ECLIPSE_EXTRA_CPROJECT_CONTENTS|ECLIPSE_EXTRA_NATURES|ENABLED_FEATURES|ENABLED_LANGUAGES|ENABLE_EXPORTS|ENVIRONMENT|EXCLUDE_FROM_ALL|EXCLUDE_FROM_DEFAULT_BUILD|EXPORT_NAME|EXPORT_PROPERTIES|EXTERNAL_OBJECT|EchoString|FAIL_REGULAR_EXPRESSION|FIND_LIBRARY_USE_LIB32_PATHS|FIND_LIBRARY_USE_LIB64_PATHS|FIND_LIBRARY_USE_LIBX32_PATHS|FIND_LIBRARY_USE_OPENBSD_VERSIONING|FIXTURES_CLEANUP|FIXTURES_REQUIRED|FIXTURES_SETUP|FOLDER|FRAMEWORK|Fortran_FORMAT|Fortran_MODULE_DIRECTORY|GENERATED|GENERATOR_FILE_NAME|GENERATOR_IS_MULTI_CONFIG|GHS_INTEGRITY_APP|GHS_NO_SOURCE_GROUP_FILE|GLOBAL_DEPENDS_DEBUG_MODE|GLOBAL_DEPENDS_NO_CYCLES|GNUtoMS|HAS_CXX|HEADER_FILE_ONLY|HELPSTRING|IMPLICIT_DEPENDS_INCLUDE_TRANSFORM|IMPORTED|IMPORTED_(?:COMMON_LANGUAGE_RUNTIME|CONFIGURATIONS|GLOBAL|IMPLIB|LIBNAME|LINK_DEPENDENT_LIBRARIES|LINK_INTERFACE_(?:LANGUAGES|LIBRARIES|MULTIPLICITY)|LOCATION|NO_SONAME|OBJECTS|SONAME)|IMPORT_PREFIX|IMPORT_SUFFIX|INCLUDE_DIRECTORIES|INCLUDE_REGULAR_EXPRESSION|INSTALL_NAME_DIR|INSTALL_RPATH|INSTALL_RPATH_USE_LINK_PATH|INTERFACE_(?:AUTOUIC_OPTIONS|COMPILE_DEFINITIONS|COMPILE_FEATURES|COMPILE_OPTIONS|INCLUDE_DIRECTORIES|LINK_DEPENDS|LINK_DIRECTORIES|LINK_LIBRARIES|LINK_OPTIONS|POSITION_INDEPENDENT_CODE|SOURCES|SYSTEM_INCLUDE_DIRECTORIES)|INTERPROCEDURAL_OPTIMIZATION|IN_TRY_COMPILE|IOS_INSTALL_COMBINED|JOB_POOLS|JOB_POOL_COMPILE|JOB_POOL_LINK|KEEP_EXTENSION|LABELS|LANGUAGE|LIBRARY_OUTPUT_DIRECTORY|LINKER_LANGUAGE|LINK_(?:DEPENDS|DEPENDS_NO_SHARED|DIRECTORIES|FLAGS|INTERFACE_LIBRARIES|INTERFACE_MULTIPLICITY|LIBRARIES|OPTIONS|SEARCH_END_STATIC|SEARCH_START_STATIC|WHAT_YOU_USE)|LISTFILE_STACK|LOCATION|MACOSX_BUNDLE|MACOSX_BUNDLE_INFO_PLIST|MACOSX_FRAMEWORK_INFO_PLIST|MACOSX_PACKAGE_LOCATION|MACOSX_RPATH|MACROS|MANUALLY_ADDED_DEPENDENCIES|MEASUREMENT|MODIFIED|NAME|NO_SONAME|NO_SYSTEM_FROM_IMPORTED|OBJECT_DEPENDS|OBJECT_OUTPUTS|OSX_ARCHITECTURES|OUTPUT_NAME|PACKAGES_FOUND|PACKAGES_NOT_FOUND|PARENT_DIRECTORY|PASS_REGULAR_EXPRESSION|PDB_NAME|PDB_OUTPUT_DIRECTORY|POSITION_INDEPENDENT_CODE|POST_INSTALL_SCRIPT|PREDEFINED_TARGETS_FOLDER|PREFIX|PRE_INSTALL_SCRIPT|PRIVATE_HEADER|PROCESSORS|PROCESSOR_AFFINITY|PROJECT_LABEL|PUBLIC_HEADER|REPORT_UNDEFINED_PROPERTIES|REQUIRED_FILES|RESOURCE|RESOURCE_LOCK|RULE_LAUNCH_COMPILE|RULE_LAUNCH_CUSTOM|RULE_LAUNCH_LINK|RULE_MESSAGES|RUNTIME_OUTPUT_DIRECTORY|RUN_SERIAL|SKIP_AUTOGEN|SKIP_AUTOMOC|SKIP_AUTORCC|SKIP_AUTOUIC|SKIP_BUILD_RPATH|SKIP_RETURN_CODE|SOURCES|SOURCE_DIR|SOVERSION|STATIC_LIBRARY_FLAGS|STATIC_LIBRARY_OPTIONS|STRINGS|SUBDIRECTORIES|SUFFIX|SYMBOLIC|TARGET_ARCHIVES_MAY_BE_SHARED_LIBS|TARGET_MESSAGES|TARGET_SUPPORTS_SHARED_LIBS|TESTS|TEST_INCLUDE_FILE|TEST_INCLUDE_FILES|TIMEOUT|TIMEOUT_AFTER_MATCH|TYPE|USE_FOLDERS|VALUE|VARIABLES|VERSION|VISIBILITY_INLINES_HIDDEN|VS_(?:CONFIGURATION_TYPE|COPY_TO_OUT_DIR|DEBUGGER_(?:COMMAND|COMMAND_ARGUMENTS|ENVIRONMENT|WORKING_DIRECTORY)|DEPLOYMENT_CONTENT|DEPLOYMENT_LOCATION|DOTNET_REFERENCES|DOTNET_REFERENCES_COPY_LOCAL|GLOBAL_KEYWORD|GLOBAL_PROJECT_TYPES|GLOBAL_ROOTNAMESPACE|INCLUDE_IN_VSIX|IOT_STARTUP_TASK|KEYWORD|RESOURCE_GENERATOR|SCC_AUXPATH|SCC_LOCALPATH|SCC_PROJECTNAME|SCC_PROVIDER|SDK_REFERENCES|SHADER_(?:DISABLE_OPTIMIZATIONS|ENABLE_DEBUG|ENTRYPOINT|FLAGS|MODEL|OBJECT_FILE_NAME|OUTPUT_HEADER_FILE|TYPE|VARIABLE_NAME)|STARTUP_PROJECT|TOOL_OVERRIDE|USER_PROPS|WINRT_COMPONENT|WINRT_EXTENSIONS|WINRT_REFERENCES|XAML_TYPE)|WILL_FAIL|WIN32_EXECUTABLE|WINDOWS_EXPORT_ALL_SYMBOLS|WORKING_DIRECTORY|WRAP_EXCLUDE|XCODE_(?:EMIT_EFFECTIVE_PLATFORM_NAME|EXPLICIT_FILE_TYPE|FILE_ATTRIBUTES|LAST_KNOWN_FILE_TYPE|PRODUCT_TYPE|SCHEME_(?:ADDRESS_SANITIZER|ADDRESS_SANITIZER_USE_AFTER_RETURN|ARGUMENTS|DISABLE_MAIN_THREAD_CHECKER|DYNAMIC_LIBRARY_LOADS|DYNAMIC_LINKER_API_USAGE|ENVIRONMENT|EXECUTABLE|GUARD_MALLOC|MAIN_THREAD_CHECKER_STOP|MALLOC_GUARD_EDGES|MALLOC_SCRIBBLE|MALLOC_STACK|THREAD_SANITIZER(?:_STOP)?|UNDEFINED_BEHAVIOUR_SANITIZER(?:_STOP)?|ZOMBIE_OBJECTS))|XCTEST)\b/,
-    keyword:
-      /\b(?:add_compile_definitions|add_compile_options|add_custom_command|add_custom_target|add_definitions|add_dependencies|add_executable|add_library|add_link_options|add_subdirectory|add_test|aux_source_directory|break|build_command|build_name|cmake_host_system_information|cmake_minimum_required|cmake_parse_arguments|cmake_policy|configure_file|continue|create_test_sourcelist|ctest_build|ctest_configure|ctest_coverage|ctest_empty_binary_directory|ctest_memcheck|ctest_read_custom_files|ctest_run_script|ctest_sleep|ctest_start|ctest_submit|ctest_test|ctest_update|ctest_upload|define_property|else|elseif|enable_language|enable_testing|endforeach|endfunction|endif|endmacro|endwhile|exec_program|execute_process|export|export_library_dependencies|file|find_file|find_library|find_package|find_path|find_program|fltk_wrap_ui|foreach|function|get_cmake_property|get_directory_property|get_filename_component|get_property|get_source_file_property|get_target_property|get_test_property|if|include|include_directories|include_external_msproject|include_guard|include_regular_expression|install|install_files|install_programs|install_targets|link_directories|link_libraries|list|load_cache|load_command|macro|make_directory|mark_as_advanced|math|message|option|output_required_files|project|qt_wrap_cpp|qt_wrap_ui|remove|remove_definitions|return|separate_arguments|set|set_directory_properties|set_property|set_source_files_properties|set_target_properties|set_tests_properties|site_name|source_group|string|subdir_depends|subdirs|target_compile_definitions|target_compile_features|target_compile_options|target_include_directories|target_link_directories|target_link_libraries|target_link_options|target_sources|try_compile|try_run|unset|use_mangled_mesa|utility_source|variable_requires|variable_watch|while|write_file)(?=\s*\()\b/,
-    boolean: /\b(?:FALSE|OFF|ON|TRUE)\b/,
-    namespace:
-      /\b(?:INTERFACE|PRIVATE|PROPERTIES|PUBLIC|SHARED|STATIC|TARGET_OBJECTS)\b/,
-    operator:
-      /\b(?:AND|DEFINED|EQUAL|GREATER|LESS|MATCHES|NOT|OR|STREQUAL|STRGREATER|STRLESS|VERSION_EQUAL|VERSION_GREATER|VERSION_LESS)\b/,
-    inserted: {
-      pattern: /\b\w+::\w+\b/,
-      alias: 'class-name'
-    },
-    number: /\b\d+(?:\.\d+)*\b/,
-    function: /\b[a-z_]\w*(?=\s*\()\b/i,
-    punctuation: /[()>}]|\$[<{]/
-  };
+var cmake_1;
+var hasRequiredCmake;
+
+function requireCmake () {
+	if (hasRequiredCmake) return cmake_1;
+	hasRequiredCmake = 1;
+
+	cmake_1 = cmake;
+	cmake.displayName = 'cmake';
+	cmake.aliases = [];
+	function cmake(Prism) {
+	  Prism.languages.cmake = {
+	    comment: /#.*/,
+	    string: {
+	      pattern: /"(?:[^\\"]|\\.)*"/,
+	      greedy: true,
+	      inside: {
+	        interpolation: {
+	          pattern: /\$\{(?:[^{}$]|\$\{[^{}$]*\})*\}/,
+	          inside: {
+	            punctuation: /\$\{|\}/,
+	            variable: /\w+/
+	          }
+	        }
+	      }
+	    },
+	    variable:
+	      /\b(?:CMAKE_\w+|\w+_(?:(?:BINARY|SOURCE)_DIR|DESCRIPTION|HOMEPAGE_URL|ROOT|VERSION(?:_MAJOR|_MINOR|_PATCH|_TWEAK)?)|(?:ANDROID|APPLE|BORLAND|BUILD_SHARED_LIBS|CACHE|CPACK_(?:ABSOLUTE_DESTINATION_FILES|COMPONENT_INCLUDE_TOPLEVEL_DIRECTORY|ERROR_ON_ABSOLUTE_INSTALL_DESTINATION|INCLUDE_TOPLEVEL_DIRECTORY|INSTALL_DEFAULT_DIRECTORY_PERMISSIONS|INSTALL_SCRIPT|PACKAGING_INSTALL_PREFIX|SET_DESTDIR|WARN_ON_ABSOLUTE_INSTALL_DESTINATION)|CTEST_(?:BINARY_DIRECTORY|BUILD_COMMAND|BUILD_NAME|BZR_COMMAND|BZR_UPDATE_OPTIONS|CHANGE_ID|CHECKOUT_COMMAND|CONFIGURATION_TYPE|CONFIGURE_COMMAND|COVERAGE_COMMAND|COVERAGE_EXTRA_FLAGS|CURL_OPTIONS|CUSTOM_(?:COVERAGE_EXCLUDE|ERROR_EXCEPTION|ERROR_MATCH|ERROR_POST_CONTEXT|ERROR_PRE_CONTEXT|MAXIMUM_FAILED_TEST_OUTPUT_SIZE|MAXIMUM_NUMBER_OF_(?:ERRORS|WARNINGS)|MAXIMUM_PASSED_TEST_OUTPUT_SIZE|MEMCHECK_IGNORE|POST_MEMCHECK|POST_TEST|PRE_MEMCHECK|PRE_TEST|TESTS_IGNORE|WARNING_EXCEPTION|WARNING_MATCH)|CVS_CHECKOUT|CVS_COMMAND|CVS_UPDATE_OPTIONS|DROP_LOCATION|DROP_METHOD|DROP_SITE|DROP_SITE_CDASH|DROP_SITE_PASSWORD|DROP_SITE_USER|EXTRA_COVERAGE_GLOB|GIT_COMMAND|GIT_INIT_SUBMODULES|GIT_UPDATE_CUSTOM|GIT_UPDATE_OPTIONS|HG_COMMAND|HG_UPDATE_OPTIONS|LABELS_FOR_SUBPROJECTS|MEMORYCHECK_(?:COMMAND|COMMAND_OPTIONS|SANITIZER_OPTIONS|SUPPRESSIONS_FILE|TYPE)|NIGHTLY_START_TIME|P4_CLIENT|P4_COMMAND|P4_OPTIONS|P4_UPDATE_OPTIONS|RUN_CURRENT_SCRIPT|SCP_COMMAND|SITE|SOURCE_DIRECTORY|SUBMIT_URL|SVN_COMMAND|SVN_OPTIONS|SVN_UPDATE_OPTIONS|TEST_LOAD|TEST_TIMEOUT|TRIGGER_SITE|UPDATE_COMMAND|UPDATE_OPTIONS|UPDATE_VERSION_ONLY|USE_LAUNCHERS)|CYGWIN|ENV|EXECUTABLE_OUTPUT_PATH|GHS-MULTI|IOS|LIBRARY_OUTPUT_PATH|MINGW|MSVC(?:10|11|12|14|60|70|71|80|90|_IDE|_TOOLSET_VERSION|_VERSION)?|MSYS|PROJECT_(?:BINARY_DIR|DESCRIPTION|HOMEPAGE_URL|NAME|SOURCE_DIR|VERSION|VERSION_(?:MAJOR|MINOR|PATCH|TWEAK))|UNIX|WIN32|WINCE|WINDOWS_PHONE|WINDOWS_STORE|XCODE|XCODE_VERSION))\b/,
+	    property:
+	      /\b(?:cxx_\w+|(?:ARCHIVE_OUTPUT_(?:DIRECTORY|NAME)|COMPILE_DEFINITIONS|COMPILE_PDB_NAME|COMPILE_PDB_OUTPUT_DIRECTORY|EXCLUDE_FROM_DEFAULT_BUILD|IMPORTED_(?:IMPLIB|LIBNAME|LINK_DEPENDENT_LIBRARIES|LINK_INTERFACE_LANGUAGES|LINK_INTERFACE_LIBRARIES|LINK_INTERFACE_MULTIPLICITY|LOCATION|NO_SONAME|OBJECTS|SONAME)|INTERPROCEDURAL_OPTIMIZATION|LIBRARY_OUTPUT_DIRECTORY|LIBRARY_OUTPUT_NAME|LINK_FLAGS|LINK_INTERFACE_LIBRARIES|LINK_INTERFACE_MULTIPLICITY|LOCATION|MAP_IMPORTED_CONFIG|OSX_ARCHITECTURES|OUTPUT_NAME|PDB_NAME|PDB_OUTPUT_DIRECTORY|RUNTIME_OUTPUT_DIRECTORY|RUNTIME_OUTPUT_NAME|STATIC_LIBRARY_FLAGS|VS_CSHARP|VS_DOTNET_REFERENCEPROP|VS_DOTNET_REFERENCE|VS_GLOBAL_SECTION_POST|VS_GLOBAL_SECTION_PRE|VS_GLOBAL|XCODE_ATTRIBUTE)_\w+|\w+_(?:CLANG_TIDY|COMPILER_LAUNCHER|CPPCHECK|CPPLINT|INCLUDE_WHAT_YOU_USE|OUTPUT_NAME|POSTFIX|VISIBILITY_PRESET)|ABSTRACT|ADDITIONAL_MAKE_CLEAN_FILES|ADVANCED|ALIASED_TARGET|ALLOW_DUPLICATE_CUSTOM_TARGETS|ANDROID_(?:ANT_ADDITIONAL_OPTIONS|API|API_MIN|ARCH|ASSETS_DIRECTORIES|GUI|JAR_DEPENDENCIES|NATIVE_LIB_DEPENDENCIES|NATIVE_LIB_DIRECTORIES|PROCESS_MAX|PROGUARD|PROGUARD_CONFIG_PATH|SECURE_PROPS_PATH|SKIP_ANT_STEP|STL_TYPE)|ARCHIVE_OUTPUT_DIRECTORY|ATTACHED_FILES|ATTACHED_FILES_ON_FAIL|AUTOGEN_(?:BUILD_DIR|ORIGIN_DEPENDS|PARALLEL|SOURCE_GROUP|TARGETS_FOLDER|TARGET_DEPENDS)|AUTOMOC|AUTOMOC_(?:COMPILER_PREDEFINES|DEPEND_FILTERS|EXECUTABLE|MACRO_NAMES|MOC_OPTIONS|SOURCE_GROUP|TARGETS_FOLDER)|AUTORCC|AUTORCC_EXECUTABLE|AUTORCC_OPTIONS|AUTORCC_SOURCE_GROUP|AUTOUIC|AUTOUIC_EXECUTABLE|AUTOUIC_OPTIONS|AUTOUIC_SEARCH_PATHS|BINARY_DIR|BUILDSYSTEM_TARGETS|BUILD_RPATH|BUILD_RPATH_USE_ORIGIN|BUILD_WITH_INSTALL_NAME_DIR|BUILD_WITH_INSTALL_RPATH|BUNDLE|BUNDLE_EXTENSION|CACHE_VARIABLES|CLEAN_NO_CUSTOM|COMMON_LANGUAGE_RUNTIME|COMPATIBLE_INTERFACE_(?:BOOL|NUMBER_MAX|NUMBER_MIN|STRING)|COMPILE_(?:DEFINITIONS|FEATURES|FLAGS|OPTIONS|PDB_NAME|PDB_OUTPUT_DIRECTORY)|COST|CPACK_DESKTOP_SHORTCUTS|CPACK_NEVER_OVERWRITE|CPACK_PERMANENT|CPACK_STARTUP_SHORTCUTS|CPACK_START_MENU_SHORTCUTS|CPACK_WIX_ACL|CROSSCOMPILING_EMULATOR|CUDA_EXTENSIONS|CUDA_PTX_COMPILATION|CUDA_RESOLVE_DEVICE_SYMBOLS|CUDA_SEPARABLE_COMPILATION|CUDA_STANDARD|CUDA_STANDARD_REQUIRED|CXX_EXTENSIONS|CXX_STANDARD|CXX_STANDARD_REQUIRED|C_EXTENSIONS|C_STANDARD|C_STANDARD_REQUIRED|DEBUG_CONFIGURATIONS|DEFINE_SYMBOL|DEFINITIONS|DEPENDS|DEPLOYMENT_ADDITIONAL_FILES|DEPLOYMENT_REMOTE_DIRECTORY|DISABLED|DISABLED_FEATURES|ECLIPSE_EXTRA_CPROJECT_CONTENTS|ECLIPSE_EXTRA_NATURES|ENABLED_FEATURES|ENABLED_LANGUAGES|ENABLE_EXPORTS|ENVIRONMENT|EXCLUDE_FROM_ALL|EXCLUDE_FROM_DEFAULT_BUILD|EXPORT_NAME|EXPORT_PROPERTIES|EXTERNAL_OBJECT|EchoString|FAIL_REGULAR_EXPRESSION|FIND_LIBRARY_USE_LIB32_PATHS|FIND_LIBRARY_USE_LIB64_PATHS|FIND_LIBRARY_USE_LIBX32_PATHS|FIND_LIBRARY_USE_OPENBSD_VERSIONING|FIXTURES_CLEANUP|FIXTURES_REQUIRED|FIXTURES_SETUP|FOLDER|FRAMEWORK|Fortran_FORMAT|Fortran_MODULE_DIRECTORY|GENERATED|GENERATOR_FILE_NAME|GENERATOR_IS_MULTI_CONFIG|GHS_INTEGRITY_APP|GHS_NO_SOURCE_GROUP_FILE|GLOBAL_DEPENDS_DEBUG_MODE|GLOBAL_DEPENDS_NO_CYCLES|GNUtoMS|HAS_CXX|HEADER_FILE_ONLY|HELPSTRING|IMPLICIT_DEPENDS_INCLUDE_TRANSFORM|IMPORTED|IMPORTED_(?:COMMON_LANGUAGE_RUNTIME|CONFIGURATIONS|GLOBAL|IMPLIB|LIBNAME|LINK_DEPENDENT_LIBRARIES|LINK_INTERFACE_(?:LANGUAGES|LIBRARIES|MULTIPLICITY)|LOCATION|NO_SONAME|OBJECTS|SONAME)|IMPORT_PREFIX|IMPORT_SUFFIX|INCLUDE_DIRECTORIES|INCLUDE_REGULAR_EXPRESSION|INSTALL_NAME_DIR|INSTALL_RPATH|INSTALL_RPATH_USE_LINK_PATH|INTERFACE_(?:AUTOUIC_OPTIONS|COMPILE_DEFINITIONS|COMPILE_FEATURES|COMPILE_OPTIONS|INCLUDE_DIRECTORIES|LINK_DEPENDS|LINK_DIRECTORIES|LINK_LIBRARIES|LINK_OPTIONS|POSITION_INDEPENDENT_CODE|SOURCES|SYSTEM_INCLUDE_DIRECTORIES)|INTERPROCEDURAL_OPTIMIZATION|IN_TRY_COMPILE|IOS_INSTALL_COMBINED|JOB_POOLS|JOB_POOL_COMPILE|JOB_POOL_LINK|KEEP_EXTENSION|LABELS|LANGUAGE|LIBRARY_OUTPUT_DIRECTORY|LINKER_LANGUAGE|LINK_(?:DEPENDS|DEPENDS_NO_SHARED|DIRECTORIES|FLAGS|INTERFACE_LIBRARIES|INTERFACE_MULTIPLICITY|LIBRARIES|OPTIONS|SEARCH_END_STATIC|SEARCH_START_STATIC|WHAT_YOU_USE)|LISTFILE_STACK|LOCATION|MACOSX_BUNDLE|MACOSX_BUNDLE_INFO_PLIST|MACOSX_FRAMEWORK_INFO_PLIST|MACOSX_PACKAGE_LOCATION|MACOSX_RPATH|MACROS|MANUALLY_ADDED_DEPENDENCIES|MEASUREMENT|MODIFIED|NAME|NO_SONAME|NO_SYSTEM_FROM_IMPORTED|OBJECT_DEPENDS|OBJECT_OUTPUTS|OSX_ARCHITECTURES|OUTPUT_NAME|PACKAGES_FOUND|PACKAGES_NOT_FOUND|PARENT_DIRECTORY|PASS_REGULAR_EXPRESSION|PDB_NAME|PDB_OUTPUT_DIRECTORY|POSITION_INDEPENDENT_CODE|POST_INSTALL_SCRIPT|PREDEFINED_TARGETS_FOLDER|PREFIX|PRE_INSTALL_SCRIPT|PRIVATE_HEADER|PROCESSORS|PROCESSOR_AFFINITY|PROJECT_LABEL|PUBLIC_HEADER|REPORT_UNDEFINED_PROPERTIES|REQUIRED_FILES|RESOURCE|RESOURCE_LOCK|RULE_LAUNCH_COMPILE|RULE_LAUNCH_CUSTOM|RULE_LAUNCH_LINK|RULE_MESSAGES|RUNTIME_OUTPUT_DIRECTORY|RUN_SERIAL|SKIP_AUTOGEN|SKIP_AUTOMOC|SKIP_AUTORCC|SKIP_AUTOUIC|SKIP_BUILD_RPATH|SKIP_RETURN_CODE|SOURCES|SOURCE_DIR|SOVERSION|STATIC_LIBRARY_FLAGS|STATIC_LIBRARY_OPTIONS|STRINGS|SUBDIRECTORIES|SUFFIX|SYMBOLIC|TARGET_ARCHIVES_MAY_BE_SHARED_LIBS|TARGET_MESSAGES|TARGET_SUPPORTS_SHARED_LIBS|TESTS|TEST_INCLUDE_FILE|TEST_INCLUDE_FILES|TIMEOUT|TIMEOUT_AFTER_MATCH|TYPE|USE_FOLDERS|VALUE|VARIABLES|VERSION|VISIBILITY_INLINES_HIDDEN|VS_(?:CONFIGURATION_TYPE|COPY_TO_OUT_DIR|DEBUGGER_(?:COMMAND|COMMAND_ARGUMENTS|ENVIRONMENT|WORKING_DIRECTORY)|DEPLOYMENT_CONTENT|DEPLOYMENT_LOCATION|DOTNET_REFERENCES|DOTNET_REFERENCES_COPY_LOCAL|GLOBAL_KEYWORD|GLOBAL_PROJECT_TYPES|GLOBAL_ROOTNAMESPACE|INCLUDE_IN_VSIX|IOT_STARTUP_TASK|KEYWORD|RESOURCE_GENERATOR|SCC_AUXPATH|SCC_LOCALPATH|SCC_PROJECTNAME|SCC_PROVIDER|SDK_REFERENCES|SHADER_(?:DISABLE_OPTIMIZATIONS|ENABLE_DEBUG|ENTRYPOINT|FLAGS|MODEL|OBJECT_FILE_NAME|OUTPUT_HEADER_FILE|TYPE|VARIABLE_NAME)|STARTUP_PROJECT|TOOL_OVERRIDE|USER_PROPS|WINRT_COMPONENT|WINRT_EXTENSIONS|WINRT_REFERENCES|XAML_TYPE)|WILL_FAIL|WIN32_EXECUTABLE|WINDOWS_EXPORT_ALL_SYMBOLS|WORKING_DIRECTORY|WRAP_EXCLUDE|XCODE_(?:EMIT_EFFECTIVE_PLATFORM_NAME|EXPLICIT_FILE_TYPE|FILE_ATTRIBUTES|LAST_KNOWN_FILE_TYPE|PRODUCT_TYPE|SCHEME_(?:ADDRESS_SANITIZER|ADDRESS_SANITIZER_USE_AFTER_RETURN|ARGUMENTS|DISABLE_MAIN_THREAD_CHECKER|DYNAMIC_LIBRARY_LOADS|DYNAMIC_LINKER_API_USAGE|ENVIRONMENT|EXECUTABLE|GUARD_MALLOC|MAIN_THREAD_CHECKER_STOP|MALLOC_GUARD_EDGES|MALLOC_SCRIBBLE|MALLOC_STACK|THREAD_SANITIZER(?:_STOP)?|UNDEFINED_BEHAVIOUR_SANITIZER(?:_STOP)?|ZOMBIE_OBJECTS))|XCTEST)\b/,
+	    keyword:
+	      /\b(?:add_compile_definitions|add_compile_options|add_custom_command|add_custom_target|add_definitions|add_dependencies|add_executable|add_library|add_link_options|add_subdirectory|add_test|aux_source_directory|break|build_command|build_name|cmake_host_system_information|cmake_minimum_required|cmake_parse_arguments|cmake_policy|configure_file|continue|create_test_sourcelist|ctest_build|ctest_configure|ctest_coverage|ctest_empty_binary_directory|ctest_memcheck|ctest_read_custom_files|ctest_run_script|ctest_sleep|ctest_start|ctest_submit|ctest_test|ctest_update|ctest_upload|define_property|else|elseif|enable_language|enable_testing|endforeach|endfunction|endif|endmacro|endwhile|exec_program|execute_process|export|export_library_dependencies|file|find_file|find_library|find_package|find_path|find_program|fltk_wrap_ui|foreach|function|get_cmake_property|get_directory_property|get_filename_component|get_property|get_source_file_property|get_target_property|get_test_property|if|include|include_directories|include_external_msproject|include_guard|include_regular_expression|install|install_files|install_programs|install_targets|link_directories|link_libraries|list|load_cache|load_command|macro|make_directory|mark_as_advanced|math|message|option|output_required_files|project|qt_wrap_cpp|qt_wrap_ui|remove|remove_definitions|return|separate_arguments|set|set_directory_properties|set_property|set_source_files_properties|set_target_properties|set_tests_properties|site_name|source_group|string|subdir_depends|subdirs|target_compile_definitions|target_compile_features|target_compile_options|target_include_directories|target_link_directories|target_link_libraries|target_link_options|target_sources|try_compile|try_run|unset|use_mangled_mesa|utility_source|variable_requires|variable_watch|while|write_file)(?=\s*\()\b/,
+	    boolean: /\b(?:FALSE|OFF|ON|TRUE)\b/,
+	    namespace:
+	      /\b(?:INTERFACE|PRIVATE|PROPERTIES|PUBLIC|SHARED|STATIC|TARGET_OBJECTS)\b/,
+	    operator:
+	      /\b(?:AND|DEFINED|EQUAL|GREATER|LESS|MATCHES|NOT|OR|STREQUAL|STRGREATER|STRLESS|VERSION_EQUAL|VERSION_GREATER|VERSION_LESS)\b/,
+	    inserted: {
+	      pattern: /\b\w+::\w+\b/,
+	      alias: 'class-name'
+	    },
+	    number: /\b\d+(?:\.\d+)*\b/,
+	    function: /\b[a-z_]\w*(?=\s*\()\b/i,
+	    punctuation: /[()>}]|\$[<{]/
+	  };
+	}
+	return cmake_1;
 }
 
 var cobol_1 = cobol;
@@ -43029,7 +43038,7 @@ refractor.register(cfscript_1);
 refractor.register(chaiscript_1);
 refractor.register(cil_1);
 refractor.register(clojure_1);
-refractor.register(cmake_1);
+refractor.register(requireCmake());
 refractor.register(cobol_1);
 refractor.register(requireCoffeescript());
 refractor.register(requireConcurnas());
@@ -45934,16 +45943,7 @@ var Calender = function Calender(props) {
   useEffect(function () {
     var _value$filter;
     if (fixedRange) {
-      return;
-    }
-    if (range && (value === null || value === void 0 ? void 0 : (_value$filter = value.filter(Boolean)) === null || _value$filter === void 0 ? void 0 : _value$filter.length) > 0) {
-      setSelectedRange({
-        dates: getDatesInStringFormat({
-          startingDate: fromUnixTime(value[0]),
-          endingDate: fromUnixTime(value[1])
-        }),
-        unix: [value[0], value[1]]
-      });
+      var _selectedRange$unix, _selectedRange$unix2, _selectedRange$unix3;
       var _date = new Date();
       var dateAsNumber = _date.getDate();
       var selectedDayInfo = getDayInfo(_date);
@@ -45954,9 +45954,9 @@ var Calender = function Calender(props) {
         dayAsNumber: selectedDayInfo.dayAsNumber
       };
       setSelectedMonth({
-        month: getDayInfo(fromUnixTime(value[0])).month,
-        monthAsNumber: getDayInfo(fromUnixTime(value[0])).monthAsNumber,
-        year: getDayInfo(fromUnixTime(value[0])).year
+        month: getDayInfo(fromUnixTime(selectedRange === null || selectedRange === void 0 ? void 0 : (_selectedRange$unix = selectedRange.unix) === null || _selectedRange$unix === void 0 ? void 0 : _selectedRange$unix[0])).month,
+        monthAsNumber: getDayInfo(fromUnixTime(selectedRange === null || selectedRange === void 0 ? void 0 : (_selectedRange$unix2 = selectedRange.unix) === null || _selectedRange$unix2 === void 0 ? void 0 : _selectedRange$unix2[0])).monthAsNumber,
+        year: getDayInfo(fromUnixTime(selectedRange === null || selectedRange === void 0 ? void 0 : (_selectedRange$unix3 = selectedRange.unix) === null || _selectedRange$unix3 === void 0 ? void 0 : _selectedRange$unix3[0])).year
       });
       setSelectedDate(_objectSpread2(_objectSpread2({}, selectedDate), {}, {
         month: selectedDateMonth.month,
@@ -45966,8 +45966,15 @@ var Calender = function Calender(props) {
       }));
       return;
     }
-    if (!range && value) {
-      var _date2 = fromUnixTime(value);
+    if (range && (value === null || value === void 0 ? void 0 : (_value$filter = value.filter(Boolean)) === null || _value$filter === void 0 ? void 0 : _value$filter.length) > 0) {
+      setSelectedRange({
+        dates: getDatesInStringFormat({
+          startingDate: fromUnixTime(value[0]),
+          endingDate: fromUnixTime(value[1])
+        }),
+        unix: [value[0], value[1]]
+      });
+      var _date2 = new Date();
       var _dateAsNumber = _date2.getDate();
       var _selectedDayInfo = getDayInfo(_date2);
       var _selectedDateMonth = {
@@ -45977,9 +45984,9 @@ var Calender = function Calender(props) {
         dayAsNumber: _selectedDayInfo.dayAsNumber
       };
       setSelectedMonth({
-        month: _selectedDayInfo.month,
-        monthAsNumber: _selectedDayInfo.monthAsNumber,
-        year: _selectedDayInfo.year
+        month: getDayInfo(fromUnixTime(value[0])).month,
+        monthAsNumber: getDayInfo(fromUnixTime(value[0])).monthAsNumber,
+        year: getDayInfo(fromUnixTime(value[0])).year
       });
       setSelectedDate(_objectSpread2(_objectSpread2({}, selectedDate), {}, {
         month: _selectedDateMonth.month,
@@ -45989,20 +45996,43 @@ var Calender = function Calender(props) {
       }));
       return;
     }
+    if (!range && value) {
+      var _date3 = fromUnixTime(value);
+      var _dateAsNumber2 = _date3.getDate();
+      var _selectedDayInfo2 = getDayInfo(_date3);
+      var _selectedDateMonth2 = {
+        month: _selectedDayInfo2.month,
+        monthAsNumber: _selectedDayInfo2.monthAsNumber,
+        year: _selectedDayInfo2.year,
+        dayAsNumber: _selectedDayInfo2.dayAsNumber
+      };
+      setSelectedMonth({
+        month: _selectedDayInfo2.month,
+        monthAsNumber: _selectedDayInfo2.monthAsNumber,
+        year: _selectedDayInfo2.year
+      });
+      setSelectedDate(_objectSpread2(_objectSpread2({}, selectedDate), {}, {
+        month: _selectedDateMonth2.month,
+        year: _selectedDateMonth2.year,
+        date: _dateAsNumber2,
+        unix: getUnixTime(_date3)
+      }));
+      return;
+    }
     var date = new Date();
     if (range && !value && (disableDatesBefore === null || disableDatesBefore === void 0 ? void 0 : disableDatesBefore.length) === 0 || !range && !isBefore(date, disableDatesBefore)) {
-      var _dateAsNumber2 = date.getDate();
-      var _selectedDayInfo2 = getDayInfo(date);
+      var _dateAsNumber3 = date.getDate();
+      var _selectedDayInfo3 = getDayInfo(date);
       setSelectedDate(_objectSpread2(_objectSpread2({}, selectedDate), {}, {
-        month: _selectedDayInfo2.month,
-        year: _selectedDayInfo2.year,
-        date: _dateAsNumber2,
+        month: _selectedDayInfo3.month,
+        year: _selectedDayInfo3.year,
+        date: _dateAsNumber3,
         unix: getUnixTime(date)
       }));
       setSelectedMonth({
-        month: _selectedDayInfo2.month,
-        monthAsNumber: MONTHS[_selectedDayInfo2.month],
-        year: _selectedDayInfo2.year
+        month: _selectedDayInfo3.month,
+        monthAsNumber: MONTHS[_selectedDayInfo3.month],
+        year: _selectedDayInfo3.year
       });
     }
   }, []);
@@ -46085,8 +46115,8 @@ var Calender = function Calender(props) {
   });
 };
 
-var css$J = ".DatePicker_module_root__e9055cc7 {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: flex-start;\n\talign-items: center;\n\tmax-width: 100%;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_customPicker__e9055cc7[data-elem='base-cell'] {\n\tflex: 1;\n\twidth: 100%;\n\tmin-width: 15rem;\n\tborder-color: var(--grey3);\n\tborder-style: solid;\n\tborder-width: 0.0625rem 0 0.0625rem 0.0625rem;\n\tbackground-color: transparent !important;\n\tborder-radius: 0.25rem 0 0 0.25rem;\n\theight: auto;\n\tpadding: 0.75rem 1rem;\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: flex-start;\n\talign-items: center;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_customPicker__e9055cc7[data-elem='base-cell'] > [data-elem='component1'] {\n\tflex: 0 0 auto;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_customPicker__e9055cc7[data-elem='base-cell'] > [data-elem='component1'] .DatePicker_module_icon__e9055cc7 {\n\twidth: 1.5rem;\n\theight: 1.5rem;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_customPicker__e9055cc7[data-elem='base-cell'] > [data-elem='component1'] .DatePicker_module_icon__e9055cc7.DatePicker_module_light__e9055cc7 path {\n\tstroke: var(--black);\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_customPicker__e9055cc7[data-elem='base-cell'] > [data-elem='component1'] .DatePicker_module_icon__e9055cc7.DatePicker_module_dark__e9055cc7 path {\n\tstroke: var(--white);\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_customPicker__e9055cc7[data-elem='base-cell'] > [data-elem='component2'] {\n\tcolor: var(--dark-grey);\n\ttext-overflow: ellipsis;\n\toverflow: hidden;\n\twhite-space: nowrap;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 {\n\tflex: 1;\n\tdisplay: flex;\n\tflex-direction: column;\n\tjustify-content: flex-start;\n\talign-items: stretch;\n\tgap: 0.5rem;\n\tmax-width: 100%;\n\tmin-width: 15rem;\n\toverflow: visible;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_label__e9055cc7 {\n\tfont-weight: 400;\n\tfont-size: 0.75rem;\n\tline-height: 0.9375rem;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_label__e9055cc7.DatePicker_module_light__e9055cc7 {\n\tcolor: var(--black);\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_label__e9055cc7.DatePicker_module_dark__e9055cc7 {\n\tcolor: var(--white);\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7 {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: space-between;\n\talign-items: center;\n\tposition: relative;\n\tbackground-color: transparent;\n\tborder-radius: 0.25rem;\n\twidth: auto;\n\tborder: 0.0625rem solid transparent;\n\tpadding: 0.75rem 1rem;\n\tcursor: pointer;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7.DatePicker_module_withCustom__e9055cc7 {\n\tborder-radius: 0 0.25rem 0.25rem 0;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7.DatePicker_module_disabled__e9055cc7 {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: space-between;\n\talign-items: center;\n\tposition: relative;\n\tbackground: var(--grey10);\n\tborder-radius: 0.25rem;\n\tborder: 0.0625rem solid var(--grey5);\n\tpadding: 0.75rem 1rem;\n\tcursor: not-allowed;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7.DatePicker_module_disabled__e9055cc7 .DatePicker_module_downArrow__e9055cc7 {\n\ttransform: rotate(270deg);\n\tfill: var(--grey3);\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7.DatePicker_module_disabled__e9055cc7 .DatePicker_module_placeholder__e9055cc7 {\n\tfont-weight: 400;\n\tfont-size: 1rem;\n\tcolor: var(--grey3);\n\t-webkit-user-select: none;\n\t-moz-user-select: none;\n\tuser-select: none;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7.DatePicker_module_open__e9055cc7 {\n\toutline: 0.0625rem solid var(--highlight);\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7.DatePicker_module_error__e9055cc7 {\n\toutline: 0.0625rem solid var(--error);\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7 .DatePicker_module_left__e9055cc7 {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: flex-start;\n\talign-items: center;\n\tgap: 0.9375rem;\n\toverflow: hidden;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7 .DatePicker_module_left__e9055cc7 .DatePicker_module_icon__e9055cc7 {\n\tflex: 1 0 auto;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7 .DatePicker_module_left__e9055cc7 > div {\n\tfont-weight: 400;\n\tfont-size: 1rem;\n\tflex: 1 1 auto;\n\toverflow: hidden;\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: center;\n\talign-items: center;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7 .DatePicker_module_left__e9055cc7 > div.DatePicker_module_light__e9055cc7 {\n\tcolor: var(--black);\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7 .DatePicker_module_left__e9055cc7 > div.DatePicker_module_dark__e9055cc7 {\n\tcolor: var(--white);\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7 .DatePicker_module_left__e9055cc7 > div .DatePicker_module_placeholder__e9055cc7 {\n\tfont-weight: 400;\n\tfont-size: 1rem;\n\t-webkit-user-select: none;\n\t-moz-user-select: none;\n\tuser-select: none;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7 .DatePicker_module_left__e9055cc7 > div > span {\n\tdisplay: inline-block;\n\ttext-overflow: ellipsis;\n\toverflow: hidden;\n\twhite-space: nowrap;\n\tfont-weight: 500;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7 .DatePicker_module_input__e9055cc7 {\n\tdisplay: none;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7 .DatePicker_module_close__e9055cc7 {\n\theight: auto;\n\tpadding: 0;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7 .DatePicker_module_icon__e9055cc7 {\n\twidth: 1.5rem;\n\theight: 1.5rem;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7 .DatePicker_module_icon__e9055cc7.DatePicker_module_light__e9055cc7 > path {\n\tfill: var(--dark-grey);\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7 .DatePicker_module_icon__e9055cc7.DatePicker_module_dark__e9055cc7 > path {\n\tfill: var(--white);\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7.DatePicker_module_dark__e9055cc7 .DatePicker_module_container__e9055cc7 {\n\tborder-color: var(--grey);\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7.DatePicker_module_dark__e9055cc7 .DatePicker_module_container__e9055cc7 .DatePicker_module_placeholder__e9055cc7 {\n\tcolor: var(--grey2);\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7.DatePicker_module_light__e9055cc7 .DatePicker_module_container__e9055cc7 {\n\tborder-color: var(--grey4);\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7.DatePicker_module_light__e9055cc7 .DatePicker_module_container__e9055cc7 .DatePicker_module_placeholder__e9055cc7 {\n\tcolor: var(--grey);\n}\n\n.DatePicker_module_root__e9055cc7 .DatePicker_module_disabled__e9055cc7 {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: space-between;\n\talign-items: center;\n\tposition: relative;\n\tbackground: var(--grey10);\n\tborder-radius: 0.25rem;\n\tborder: 0.0625rem solid var(--grey5);\n\tpadding: 0.75rem 1rem;\n\tcursor: pointer;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_disabled__e9055cc7 .DatePicker_module_downArrow__e9055cc7 {\n\ttransform: rotate(270deg);\n\tfill: var(--grey3);\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_disabled__e9055cc7 .DatePicker_module_placeholder__e9055cc7 {\n\tfont-weight: 400;\n\tfont-size: 1rem;\n\tcolor: var(--grey3);\n\t-webkit-user-select: none;\n\t-moz-user-select: none;\n\tuser-select: none;\n}\n.DatePicker_module_root__e9055cc7.DatePicker_module_open__e9055cc7 {\n\tborder-color: var(--highlight);\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_error__e9055cc7 {\n\tborder: 0.0938rem solid var(--error);\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_errorText__e9055cc7 {\n\tfont-weight: 400;\n\tfont-size: 0.75rem;\n\tline-height: 0.9375rem;\n\tcolor: var(--error);\n}\n\n.DatePicker_module_popper__e9055cc7 {\n\tdisplay: none;\n\tbackground: var(--white);\n\tborder: 0.0625rem solid #d9d9d9;\n\tbox-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);\n\tborder-radius: 0.25rem;\n\toverflow: auto;\n}\n.DatePicker_module_popper__e9055cc7.DatePicker_module_open__e9055cc7 {\n\tdisplay: flex;\n\tflex-direction: column;\n\tjustify-content: flex-start;\n\talign-items: stretch;\n\tposition: absolute;\n} \n";
-var modules_5b831cd1 = {"root":"DatePicker_module_root__e9055cc7","custom-picker":"DatePicker_module_customPicker__e9055cc7","icon":"DatePicker_module_icon__e9055cc7","light":"DatePicker_module_light__e9055cc7","dark":"DatePicker_module_dark__e9055cc7","date-picker":"DatePicker_module_datePicker__e9055cc7","label":"DatePicker_module_label__e9055cc7","container":"DatePicker_module_container__e9055cc7","with-custom":"DatePicker_module_withCustom__e9055cc7","disabled":"DatePicker_module_disabled__e9055cc7","down-arrow":"DatePicker_module_downArrow__e9055cc7","placeholder":"DatePicker_module_placeholder__e9055cc7","open":"DatePicker_module_open__e9055cc7","error":"DatePicker_module_error__e9055cc7","left":"DatePicker_module_left__e9055cc7","input":"DatePicker_module_input__e9055cc7","close":"DatePicker_module_close__e9055cc7","error-text":"DatePicker_module_errorText__e9055cc7","popper":"DatePicker_module_popper__e9055cc7"};
+var css$J = ".DatePicker_module_root__c48dd103 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  max-width: 100%;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_customPicker__c48dd103[data-elem=base-cell] {\n  flex: 1;\n  width: 100%;\n  min-width: 15rem;\n  border-color: var(--grey3);\n  border-style: solid;\n  border-width: 0.0625rem 0 0.0625rem 0.0625rem;\n  background-color: transparent !important;\n  border-radius: 0.25rem 0 0 0.25rem;\n  height: auto;\n  padding: 0.75rem 1rem;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_customPicker__c48dd103[data-elem=base-cell] > [data-elem=component1] {\n  flex: 0 0 auto;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_customPicker__c48dd103[data-elem=base-cell] > [data-elem=component1] .DatePicker_module_icon__c48dd103 {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_customPicker__c48dd103[data-elem=base-cell] > [data-elem=component1] .DatePicker_module_icon__c48dd103.DatePicker_module_light__c48dd103 path {\n  stroke: var(--black);\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_customPicker__c48dd103[data-elem=base-cell] > [data-elem=component1] .DatePicker_module_icon__c48dd103.DatePicker_module_dark__c48dd103 path {\n  stroke: var(--white);\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_customPicker__c48dd103[data-elem=base-cell].DatePicker_module_light__c48dd103 > [data-elem=component2] {\n  color: var(--dark-grey);\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_customPicker__c48dd103[data-elem=base-cell].DatePicker_module_dark__c48dd103 > [data-elem=component2] {\n  color: var(--white);\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  gap: 0.5rem;\n  max-width: 100%;\n  min-width: 15rem;\n  overflow: visible;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_label__c48dd103 {\n  font-weight: 400;\n  font-size: 0.75rem;\n  line-height: 0.9375rem;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_label__c48dd103.DatePicker_module_light__c48dd103 {\n  color: var(--black);\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_label__c48dd103.DatePicker_module_dark__c48dd103 {\n  color: var(--white);\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  position: relative;\n  background-color: transparent;\n  border-radius: 0.25rem;\n  width: auto;\n  border: 0.0625rem solid transparent;\n  padding: 0.75rem 1rem;\n  cursor: pointer;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103.DatePicker_module_withCustom__c48dd103 {\n  border-radius: 0 0.25rem 0.25rem 0;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103.DatePicker_module_disabled__c48dd103 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  position: relative;\n  background: var(--grey10);\n  border-radius: 0.25rem;\n  border: 0.0625rem solid var(--grey5);\n  padding: 0.75rem 1rem;\n  cursor: not-allowed;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103.DatePicker_module_disabled__c48dd103 .DatePicker_module_downArrow__c48dd103 {\n  transform: rotate(270deg);\n  fill: var(--grey3);\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103.DatePicker_module_disabled__c48dd103 .DatePicker_module_placeholder__c48dd103 {\n  font-weight: 400;\n  font-size: 1rem;\n  color: var(--grey3);\n  -webkit-user-select: none;\n     -moz-user-select: none;\n          user-select: none;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103.DatePicker_module_open__c48dd103 {\n  outline: 0.0625rem solid var(--highlight);\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103.DatePicker_module_error__c48dd103 {\n  outline: 0.0625rem solid var(--error);\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103 .DatePicker_module_left__c48dd103 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.9375rem;\n  overflow: hidden;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103 .DatePicker_module_left__c48dd103 .DatePicker_module_icon__c48dd103 {\n  flex: 1 0 auto;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103 .DatePicker_module_left__c48dd103 > div {\n  font-weight: 400;\n  font-size: 1rem;\n  flex: 1 1 auto;\n  overflow: hidden;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103 .DatePicker_module_left__c48dd103 > div.DatePicker_module_light__c48dd103 {\n  color: var(--black);\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103 .DatePicker_module_left__c48dd103 > div.DatePicker_module_dark__c48dd103 {\n  color: var(--white);\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103 .DatePicker_module_left__c48dd103 > div .DatePicker_module_placeholder__c48dd103 {\n  font-weight: 400;\n  font-size: 1rem;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n          user-select: none;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103 .DatePicker_module_left__c48dd103 > div > span {\n  display: inline-block;\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  font-weight: 500;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103 .DatePicker_module_input__c48dd103 {\n  display: none;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103 .DatePicker_module_close__c48dd103 {\n  height: auto;\n  padding: 0;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103 .DatePicker_module_icon__c48dd103 {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103 .DatePicker_module_icon__c48dd103.DatePicker_module_light__c48dd103 > path {\n  fill: var(--dark-grey);\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103 .DatePicker_module_icon__c48dd103.DatePicker_module_dark__c48dd103 > path {\n  fill: var(--white);\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103.DatePicker_module_dark__c48dd103 .DatePicker_module_container__c48dd103 {\n  border-color: var(--grey);\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103.DatePicker_module_dark__c48dd103 .DatePicker_module_container__c48dd103 .DatePicker_module_placeholder__c48dd103 {\n  color: var(--grey2);\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103.DatePicker_module_light__c48dd103 .DatePicker_module_container__c48dd103 {\n  border-color: var(--grey4);\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103.DatePicker_module_light__c48dd103 .DatePicker_module_container__c48dd103 .DatePicker_module_placeholder__c48dd103 {\n  color: var(--grey);\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_errorText__c48dd103 {\n  font-weight: 400;\n  font-size: 0.75rem;\n  line-height: 0.9375rem;\n  color: var(--error);\n}\n\n.DatePicker_module_popper__c48dd103 {\n  display: none;\n  background: var(--white);\n  border: 0.0625rem solid #d9d9d9;\n  box-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);\n  border-radius: 0.25rem;\n  overflow: auto;\n}\n.DatePicker_module_popper__c48dd103.DatePicker_module_open__c48dd103 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  position: absolute;\n}";
+var modules_5b831cd1 = {"root":"DatePicker_module_root__c48dd103","custom-picker":"DatePicker_module_customPicker__c48dd103","icon":"DatePicker_module_icon__c48dd103","light":"DatePicker_module_light__c48dd103","dark":"DatePicker_module_dark__c48dd103","date-picker":"DatePicker_module_datePicker__c48dd103","label":"DatePicker_module_label__c48dd103","container":"DatePicker_module_container__c48dd103","with-custom":"DatePicker_module_withCustom__c48dd103","disabled":"DatePicker_module_disabled__c48dd103","down-arrow":"DatePicker_module_downArrow__c48dd103","placeholder":"DatePicker_module_placeholder__c48dd103","open":"DatePicker_module_open__c48dd103","error":"DatePicker_module_error__c48dd103","left":"DatePicker_module_left__c48dd103","input":"DatePicker_module_input__c48dd103","close":"DatePicker_module_close__c48dd103","error-text":"DatePicker_module_errorText__c48dd103","popper":"DatePicker_module_popper__c48dd103"};
 n(css$J,{});
 
 var getDateAndUnixRange$1 = function getDateAndUnixRange(duration) {
@@ -46232,9 +46262,7 @@ n(css$I,{});
 
 var getDateAndUnixRange = function getDateAndUnixRange(duration) {
   var startingDate = sub$2(new Date(), duration);
-  startingDate.setHours(0, 0, 0, 0);
   var endingDate = new Date();
-  endingDate.setHours(0, 0, 0, 0);
   var dates = getDatesInStringFormat({
     startingDate: startingDate,
     endingDate: endingDate
@@ -46251,7 +46279,7 @@ var dateRanges = function dateRanges() {
     return customRanges.map(function (range) {
       return {
         title: range.title,
-        dateRange: getDateAndUnixRange(_defineProperty$1({}, range.type, [range.value]))
+        dateRange: getDateAndUnixRange(_defineProperty$1({}, range.type, range.value))
       };
     });
   }
@@ -46409,7 +46437,7 @@ var DatePicker = function DatePicker(props) {
         });
       },
       title: fixedRange || 'Custom',
-      className: modules_5b831cd1['custom-picker']
+      className: classes(modules_5b831cd1['custom-picker'], modules_5b831cd1[theme])
     }, customRangeInteractionProps.getReferenceProps())), /*#__PURE__*/jsxs("div", {
       className: classes(modules_5b831cd1['date-picker'], className, modules_5b831cd1[theme]),
       children: [label && !hasCustomRanges && /*#__PURE__*/jsx("span", {
@@ -46503,7 +46531,8 @@ var DatePicker = function DatePicker(props) {
             setFixedRange: setFixedRange,
             setOpenDatePicker: setOpenDatePicker,
             setOpenCustomRange: setOpenCustomRange,
-            fixedRange: fixedRange
+            fixedRange: fixedRange,
+            theme: theme
           })
         }))
       })]
@@ -46770,8 +46799,8 @@ HierarchyBrowser.defaultProps = {
   title: 'Browser'
 };
 
-var css$F = ".BaseModal_module_root__2dd7477e {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  top: 50%;\n  left: 50%;\n  right: auto;\n  bottom: auto;\n  transform: translate(-50%, -50%);\n  max-height: 100%;\n  width: 50%;\n  position: fixed;\n  background: #ffffff;\n  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.13);\n  border-radius: 5px;\n  outline: none;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_body__2dd7477e {\n  overflow-y: scroll;\n  padding: 0 15px;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_header__2dd7477e,\n.BaseModal_module_root__2dd7477e .BaseModal_module_footer__2dd7477e {\n  padding: 1rem;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_header__2dd7477e {\n  font-weight: 500;\n  font-size: 1.375rem;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_footer__2dd7477e {\n  margin-top: auto;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_close__2dd7477e {\n  position: absolute;\n  right: 0.5rem;\n  top: 0.5rem;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_close__2dd7477e .BaseModal_module_icon__2dd7477e {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--black);\n}";
-var modules_f23ae002 = {"root":"BaseModal_module_root__2dd7477e","body":"BaseModal_module_body__2dd7477e","header":"BaseModal_module_header__2dd7477e","footer":"BaseModal_module_footer__2dd7477e","close":"BaseModal_module_close__2dd7477e","icon":"BaseModal_module_icon__2dd7477e"};
+var css$F = ".BaseModal_module_root__7a4ddeae {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  top: 50%;\n  left: 50%;\n  right: auto;\n  bottom: auto;\n  transform: translate(-50%, -50%);\n  max-height: 100%;\n  height: 43.75rem;\n  width: 62.5rem;\n  position: fixed;\n  background: #ffffff;\n  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.13);\n  border-radius: 8px;\n  outline: none;\n}\n.BaseModal_module_root__7a4ddeae .BaseModal_module_body__7a4ddeae {\n  overflow-y: scroll;\n  padding: 0 15px;\n}\n.BaseModal_module_root__7a4ddeae .BaseModal_module_header__7a4ddeae,\n.BaseModal_module_root__7a4ddeae .BaseModal_module_footer__7a4ddeae {\n  padding: 1rem;\n}\n.BaseModal_module_root__7a4ddeae .BaseModal_module_header__7a4ddeae {\n  font-weight: 500;\n  font-size: 1.375rem;\n  border-bottom: 1px solid var(--grey5);\n}\n.BaseModal_module_root__7a4ddeae .BaseModal_module_footer__7a4ddeae {\n  margin-top: auto;\n  background: var(--grey5);\n  border-radius: 0 0 8px 8px;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-end;\n  align-items: center;\n  gap: 0.625rem;\n}\n.BaseModal_module_root__7a4ddeae button.BaseModal_module_close__7a4ddeae {\n  position: absolute;\n  right: 1rem;\n  top: 1rem;\n  padding: 0.25rem;\n  height: auto;\n  background: var(--grey6);\n}\n.BaseModal_module_root__7a4ddeae button.BaseModal_module_close__7a4ddeae .BaseModal_module_icon__7a4ddeae {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--black);\n}";
+var modules_f23ae002 = {"root":"BaseModal_module_root__7a4ddeae","body":"BaseModal_module_body__7a4ddeae","header":"BaseModal_module_header__7a4ddeae","footer":"BaseModal_module_footer__7a4ddeae","close":"BaseModal_module_close__7a4ddeae","icon":"BaseModal_module_icon__7a4ddeae"};
 n(css$F,{});
 
 var BaseModal = function BaseModal(props) {
