@@ -27,6 +27,27 @@ const Calender = (props) => {
 
 	useEffect(() => {
 		if (fixedRange) {
+			const date = new Date();
+			const dateAsNumber = date.getDate();
+			const selectedDayInfo = getDayInfo(date);
+			const selectedDateMonth = {
+				month: selectedDayInfo.month,
+				monthAsNumber: selectedDayInfo.monthAsNumber,
+				year: selectedDayInfo.year,
+				dayAsNumber: selectedDayInfo.dayAsNumber,
+			};
+			setSelectedMonth({
+				month: getDayInfo(fromUnixTime(selectedRange?.unix?.[0])).month,
+				monthAsNumber: getDayInfo(fromUnixTime(selectedRange?.unix?.[0])).monthAsNumber,
+				year: getDayInfo(fromUnixTime(selectedRange?.unix?.[0])).year,
+			});
+			setSelectedDate({
+				...selectedDate,
+				month: selectedDateMonth.month,
+				year: selectedDateMonth.year,
+				date: dateAsNumber,
+				unix: getUnixTime(date),
+			});
 			return;
 		}
 		if (range && value?.filter(Boolean)?.length > 0) {
