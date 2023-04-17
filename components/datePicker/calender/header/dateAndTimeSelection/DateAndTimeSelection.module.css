@@ -35,6 +35,8 @@
 .root > div .input > label > div[data-elem=base-cell] > span[data-elem=component2] > input[data-elem=input] {
   padding: 0;
   color: var(--dark-grey);
+  width: -moz-fit-content;
+  width: fit-content;
 }
 .root.range > span:nth-last-child(2) {
   margin-top: 0.25rem;

@@ -112,7 +112,7 @@ const DateAndTimeSelection = ({
 				}
 
 				if (key === 'end') {
-					if (isAfter(fromUnixTime(validUnix), fromUnixTime(selectedRange.unix[1]))) {
+					if (isAfter(fromUnixTime(validUnix), fromUnixTime(selectedRange.unix[0]))) {
 						setSelectedRange({
 							dates: [
 								selectedRange.dates[0],
@@ -161,7 +161,7 @@ const DateAndTimeSelection = ({
 				}
 
 				if (key === 'end') {
-					if (isAfter(fromUnixTime(validUnix), fromUnixTime(selectedRange.unix[1]))) {
+					if (isAfter(fromUnixTime(validUnix), fromUnixTime(selectedRange.unix[0]))) {
 						setSelectedRange({
 							dates: [
 								selectedRange.dates[0],
