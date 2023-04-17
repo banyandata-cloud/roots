@@ -32,9 +32,17 @@
 				}
 			}
 		}
-		> [data-elem='component2'] {
-			color: $dark-grey;
-			@include ellipsis;
+		&.light {
+			> [data-elem='component2'] {
+				color: $dark-grey;
+				@include ellipsis;
+			}
+		}
+		&.dark {
+			> [data-elem='component2'] {
+				color: $white;
+				@include ellipsis;
+			}
 		}
 	}
 
