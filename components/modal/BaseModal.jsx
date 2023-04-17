@@ -52,7 +52,6 @@ const BaseModal = (props) => {
 								{renderHeader}
 							</div>
 						)}
-						{renderHeader && <hr className={styles.headrule} />}
 						<div data-elem='body' className={styles.body}>
 							{children}
 						</div>

@@ -28,9 +28,7 @@
 .root .header {
   font-weight: 500;
   font-size: 1.375rem;
-}
-.root .headrule {
-  border: 1px solid var(--grey5);
+  border-bottom: 1px solid var(--grey5);
 }
 .root .footer {
   margin-top: auto;
