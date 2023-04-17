@@ -26,7 +26,7 @@ const Dates = (props) => {
 		disableDatesBefore,
 	} = props;
 
-	const { monthAsNumber, year } = selectedMonth;
+	const { monthAsNumber, year } = selectedMonth || {};
 
 	const [datesToDisplay, setDatesToDisplay] = useState(() => {
 		return [];
@@ -131,7 +131,6 @@ const Dates = (props) => {
 		<div className={styles.root}>
 			{datesToDisplay.map((date) => {
 				const dateNumber = date?.getDate();
-
 				const today = isToday(date);
 
 				const selectedSingleDate = isSameDay(fromUnixTime(selectedDate.unix), date);
