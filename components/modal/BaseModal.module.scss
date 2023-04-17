@@ -8,11 +8,12 @@
 	bottom: auto;
 	transform: translate(-50%, -50%);
 	max-height: 100%;
-	width: 50%;
+	height: 43.75rem;
+	width: 62.5rem;
 	position: fixed;
 	background: #ffffff;
 	box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.13);
-	border-radius: 5px;
+	border-radius: 8px;
 	outline: none;
 
 	.body {
@@ -30,14 +31,25 @@
 		font-size: 1.375rem;
 	}
 
-	.footer {
-		margin-top: auto;
+	.headrule {
+		border: 1px solid $grey5;
 	}
 
-	.close {
+	.footer {
+		margin-top: auto;
+		background: $grey5;
+		border-radius: 0 0 8px 8px;
+		@include flex(row, flex-end);
+		gap: 0.625rem;
+	}
+
+	button.close {
 		position: absolute;
-		right: 0.5rem;
-		top: 0.5rem;
+		right: 1rem;
+		top: 1rem;
+		padding: 0.25rem;
+		height: auto;
+		background: $grey6;
 		.icon {
 			width: 1.5rem;
 			height: 1.5rem;
