@@ -32,7 +32,7 @@
 }
 .root .footer {
   margin-top: auto;
-  background: var(--grey5);
+  background: var(--grey6);
   border-radius: 0 0 8px 8px;
   display: flex;
   flex-direction: row;
