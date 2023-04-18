@@ -313,6 +313,7 @@ const MapTemplate = (args) => {
 };
 
 export const Default = Template.bind({});
+export const WithTitleOptions = Template.bind({});
 export const WithFallback = WithFallbackTemplate.bind({});
 export const WithNestedFallback = WithNestedFallbackTemplate.bind({});
 export const WithLoader = WithFallbackTemplate.bind({});
@@ -375,12 +376,27 @@ Default.args = {
 		},
 		{
 			id: 'expand',
-			title: 'Expand',
+			title: '',
 			onClick: () => {
 				alert('This will open the Modal or a new Page with Expanded chart');
 			},
 		},
+		{
+			id: 'datepicker',
+			onApply: () => {
+				alert('Apply Date Picker');
+			},
+			onClear: () => {
+				alert('Clear Date Picker');
+			},
+			date: null,
+		},
 	],
+};
+
+WithTitleOptions.args = {
+	...Default.args,
+	titleOptions: 'Hello There',
 };
 
 WithFallback.args = {

@@ -3,7 +3,7 @@ import { fromUnixTime, getUnixTime, isBefore } from 'date-fns';
 import { CalenderHeader } from './header';
 import styles from './Calender.module.css';
 import { getDatesInStringFormat, getDayInfo } from '../../../utils';
-import { FULL_MONTHS, MONTHS } from '../../../constants';
+import { FULL_MONTHS } from '../../../constants';
 import { CalenderBody } from './body';
 import { CalenderFooter } from './footer';
 
@@ -27,6 +27,27 @@ const Calender = (props) => {
 
 	useEffect(() => {
 		if (fixedRange) {
+			const date = new Date();
+			const dateAsNumber = date.getDate();
+			const selectedDayInfo = getDayInfo(date);
+			const selectedDateMonth = {
+				month: selectedDayInfo.month,
+				monthAsNumber: selectedDayInfo.monthAsNumber,
+				year: selectedDayInfo.year,
+				dayAsNumber: selectedDayInfo.dayAsNumber,
+			};
+			setSelectedMonth({
+				month: getDayInfo(fromUnixTime(selectedRange?.unix?.[0])).month,
+				monthAsNumber: getDayInfo(fromUnixTime(selectedRange?.unix?.[0])).monthAsNumber,
+				year: getDayInfo(fromUnixTime(selectedRange?.unix?.[0])).year,
+			});
+			setSelectedDate({
+				...selectedDate,
+				month: selectedDateMonth.month,
+				year: selectedDateMonth.year,
+				date: dateAsNumber,
+				unix: getUnixTime(date),
+			});
 			return;
 		}
 		if (range && value?.filter(Boolean)?.length > 0) {
@@ -100,7 +121,7 @@ const Calender = (props) => {
 			});
 			setSelectedMonth({
 				month: selectedDayInfo.month,
-				monthAsNumber: MONTHS[selectedDayInfo.month],
+				monthAsNumber: selectedDayInfo.monthAsNumber,
 				year: selectedDayInfo.year,
 			});
 		}
