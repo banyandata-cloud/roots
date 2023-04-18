@@ -17,6 +17,9 @@
 .root.body-row {
   background: var(--white);
 }
+.root.body-row > [data-elem=base-cell] {
+  background: var(--white);
+}
 .root.body-row:hover > [data-elem=base-cell] {
   background: var(--info-bg);
 }

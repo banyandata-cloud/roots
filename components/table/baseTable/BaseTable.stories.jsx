@@ -1,6 +1,8 @@
 import React from 'react';
 import { TableColumn } from '../BaseTable.class';
 import BaseTable from './BaseTable';
+import { TableCell } from '../cell';
+import { Button } from '../../buttons';
 
 export default {
 	title: 'Components/Table/BaseTable',
@@ -79,6 +81,29 @@ Expandable.args = {
 	expandable: () => {
 		return <BaseTable {...Default.args} />;
 	},
+	customCells: {
+		body: () => {
+			return {
+				name: ({ datum, expandableProps, ...rest }) => {
+					return (
+						<TableCell
+							{...rest}
+							component3={
+								!expandableProps.disabled && (
+									<Button
+										{...expandableProps}
+										// eslint-disable-next-line no-underscore-dangle
+										title={expandableProps._expanded ? 'Collapse' : 'Expand'}
+										size='auto'
+									/>
+								)
+							}
+						/>
+					);
+				},
+			};
+		},
+	},
 };
 
 Expandable.parameters = {};
@@ -86,7 +111,7 @@ Expandable.parameters = {};
 export const ConditionalExpand = Template.bind({});
 
 ConditionalExpand.args = {
-	...Default.args,
+	...Expandable.args,
 	expandable: ({ index }) => {
 		if (index < 3) {
 			return null;
