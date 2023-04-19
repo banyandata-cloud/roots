@@ -19,7 +19,7 @@
 }
 .root .body {
   overflow-y: scroll;
-  padding: 0 15px;
+  padding: 1rem 2rem 1rem 2rem;
 }
 .root .header,
 .root .footer {
@@ -28,7 +28,7 @@
 .root .header {
   font-weight: 500;
   font-size: 1.375rem;
-  border-bottom: 1px solid var(--grey5);
+  border-bottom: 1px solid var(--grey4);
 }
 .root .footer {
   margin-top: auto;
