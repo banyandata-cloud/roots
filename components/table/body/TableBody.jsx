@@ -16,13 +16,15 @@ const TableBody = (props) => {
 			{tableData?.map((datum, _index) => {
 				const key = datum?.uuid;
 
-				const setActiveId = (reset = false) => {
+				const setActiveId = (reset = false, multiSelect = false) => {
 					if (reset) {
 						listRef.current[_index].removeAttribute('data-active');
 					} else {
-						listRef.current?.forEach((elem) => {
-							elem.removeAttribute('data-active');
-						});
+						if (!multiSelect) {
+							listRef.current?.forEach((elem) => {
+								elem.removeAttribute('data-active');
+							});
+						}
 						listRef.current[_index].setAttribute('data-active', true);
 					}
 				};
