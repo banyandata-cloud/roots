@@ -18,14 +18,14 @@ const TableBody = (props) => {
 
 				const setActiveId = (reset = false, multiSelect = false) => {
 					if (reset) {
-						listRef.current[_index].removeAttribute('data-active');
+						listRef.current?.[_index]?.removeAttribute?.('data-active');
 					} else {
 						if (!multiSelect) {
 							listRef.current?.forEach((elem) => {
-								elem.removeAttribute('data-active');
+								elem?.removeAttribute?.('data-active');
 							});
 						}
-						listRef.current[_index].setAttribute('data-active', true);
+						listRef.current?.[_index]?.setAttribute?.('data-active', true);
 					}
 				};
 
