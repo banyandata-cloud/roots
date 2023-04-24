@@ -45,7 +45,10 @@ export const Default = Template.bind({});
 
 Default.args = {
 	renderHeader: 'Header',
-	renderFooter: <Button title='Footer Button' />,
+	renderFooter: [
+		<Button key='Footer1' title='Footer Button' variant='outlined' />,
+		<Button key='Footer2' title='Footer Button' />,
+	],
 };
 
 Default.parameters = {
