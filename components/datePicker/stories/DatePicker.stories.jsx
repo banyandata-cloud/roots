@@ -24,7 +24,7 @@ export const SingleDatePicker = (args) => {
 	return (
 		<div
 			style={{
-				width: '50%',
+				width: '40%',
 			}}>
 			<DatePicker {...args} />
 		</div>
