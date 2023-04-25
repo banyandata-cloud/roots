@@ -3,13 +3,25 @@ import { classes } from '../../../../utils';
 import { Button } from '../../../buttons';
 import { BaseCell } from '../../../cell';
 import { ArrowIcon } from '../../../icons';
+import Tooltip from '../../../tooltip/Tooltip';
 import { Skeleton } from './Skeleton';
 import { TableChipItem } from './tableChipItem';
 import styles from './TableChips.module.css';
 
 const TableChips = (props) => {
 	// eslint-disable-next-line object-curly-newline
-	const { showBack, onBack, onClear, chips, className, style, loading, onRemove, theme } = props;
+	const {
+		showBack,
+		onBack,
+		onClear,
+		chips,
+		className,
+		style,
+		tooltip,
+		loading,
+		onRemove,
+		theme,
+	} = props;
 
 	if (loading) {
 		return <Skeleton theme={theme} />;
@@ -41,15 +53,17 @@ const TableChips = (props) => {
 				}}
 				component1={
 					showBack && (
-						<Button
-							size='auto'
-							radius='round'
-							className={styles.back}
-							leftComponent={() => {
-								return <ArrowIcon className={styles.icon} position='left' />;
-							}}
-							onClick={onBack}
-						/>
+						<Tooltip {...tooltip} variant={theme}>
+							<Button
+								size='auto'
+								radius='round'
+								className={styles.back}
+								leftComponent={() => {
+									return <ArrowIcon className={styles.icon} position='left' />;
+								}}
+								onClick={onBack}
+							/>
+						</Tooltip>
 					)
 				}
 				component2={chipsDOM?.length > 0 ? chipsDOM : null}
@@ -90,6 +104,8 @@ TableChips.propTypes = {
 			rightComponent: PropTypes.node,
 		})
 	),
+	// eslint-disable-next-line react/forbid-prop-types
+	tooltip: PropTypes.object,
 	loading: PropTypes.bool,
 	onRemove: PropTypes.func,
 	theme: PropTypes.oneOf(['light', 'dark']),
@@ -99,6 +115,7 @@ TableChips.defaultProps = {
 	className: '',
 	style: {},
 	showBack: false,
+	tooltip: {},
 	onBack: () => {},
 	onClear: () => {},
 	chips: [],
