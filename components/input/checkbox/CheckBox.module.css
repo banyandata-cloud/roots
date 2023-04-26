@@ -24,9 +24,18 @@
 .root.disabled {
   cursor: default;
 }
+.root.disabled .icon rect:nth-of-type(1) {
+  fill: var(--grey10);
+}
+.root.disabled .icon rect:nth-of-type(2) {
+  stroke: var(--grey5);
+}
+.root.disabled .icon path {
+  stroke: var(--grey5);
+}
 .root .icon {
   display: inline-block;
-  border-radius: 0.375rem;
+  border-radius: 0.25rem;
 }
 .root .icon.icon-sm {
   width: 1rem;
@@ -41,7 +50,7 @@
   height: 1.5rem;
 }
 .root input:focus + .icon {
-  box-shadow: 0px 0px 0px 8px rgba(15, 98, 254, 0.125);
+  box-shadow: 0px 0px 0px 0.25rem rgba(15, 98, 254, 0.125);
 }
 .root [data-elem=label] {
   -webkit-user-select: none;

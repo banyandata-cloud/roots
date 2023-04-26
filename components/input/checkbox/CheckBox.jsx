@@ -4,9 +4,29 @@ import styles from './CheckBox.module.css';
 import { CheckboxIcon } from '../../icons';
 import { classes, inputHelper } from '../../../utils/utils';
 
+const getIcon = (checked, intermediate) => {
+	if (checked) {
+		if (intermediate) {
+			return CheckboxIcon.Intermediate;
+		}
+		return CheckboxIcon.Checked;
+	}
+	return CheckboxIcon.UnChecked;
+};
+
 const Checkbox = (props) => {
 	// eslint-disable-next-line object-curly-newline
-	const { label, onChange, defaultChecked, checked, position, size, className, disabled } = props;
+	const {
+		label,
+		onChange,
+		defaultChecked,
+		checked,
+		position,
+		size,
+		className,
+		disabled,
+		intermediate,
+	} = props;
 
 	const { current: isControlled } = useRef(checked !== undefined);
 
@@ -24,6 +44,8 @@ const Checkbox = (props) => {
 	};
 
 	const isChecked = isControlled ? checked : uncontrolledChecked;
+
+	const Icon = getIcon(isChecked, intermediate);
 
 	return (
 		<label
@@ -44,17 +66,7 @@ const Checkbox = (props) => {
 					: {})}
 				onChange={handleChange}
 			/>
-			{isChecked ? (
-				<CheckboxIcon.Checked
-					data-elem='icon'
-					className={classes(styles[`icon-${size}`], styles.icon)}
-				/>
-			) : (
-				<CheckboxIcon.UnChecked
-					data-elem='icon'
-					className={classes(styles[`icon-${size}`], styles.icon)}
-				/>
-			)}
+			<Icon className={classes(styles[`icon-${size}`], styles.icon)} />
 			{label && <span data-elem='label'>{label}</span>}
 		</label>
 	);
