@@ -3,6 +3,7 @@
 .root {
 	cursor: pointer;
 	gap: 10px;
+	color: $grey1;
 
 	&.position-left {
 		@include flex(row, flex-start);
@@ -13,6 +14,7 @@
 
 	&.disabled {
 		cursor: default;
+		color: $grey4;
 		.icon {
 			rect {
 				&:nth-of-type(1) {
@@ -29,7 +31,12 @@
 		}
 	}
 
+	&.selected {
+		color: $dark-grey;
+	}
+
 	&:hover:not(.disabled) {
+		color: $dark-grey;
 		.icon {
 			rect {
 				&:nth-of-type(1) {
