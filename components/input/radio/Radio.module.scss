@@ -13,6 +13,31 @@
 
 	&.disabled {
 		cursor: default;
+		.icon {
+			rect {
+				&:nth-of-type(1) {
+					stroke: $grey5;
+					fill: $grey10;
+				}
+				&:nth-of-type(2) {
+					stroke: $grey5;
+				}
+			}
+			circle {
+				fill: $grey5;
+			}
+		}
+	}
+
+	&:hover:not(.disabled) {
+		.icon {
+			rect {
+				&:nth-of-type(1) {
+					stroke: $highlight;
+					fill: $info-bg;
+				}
+			}
+		}
 	}
 
 	input[type='radio'] {
@@ -44,7 +69,7 @@
 		&:focus {
 			+ .icon {
 				// border-radius: 50%;
-				box-shadow: 0px 0px 0px 8px rgba(15, 98, 254, 0.125);
+				box-shadow: 0px 0px 0px 0.25rem rgba(15, 98, 254, 0.125);
 			}
 		}
 	}

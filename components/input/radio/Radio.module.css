@@ -17,6 +17,20 @@
 .root.disabled {
   cursor: default;
 }
+.root.disabled .icon rect:nth-of-type(1) {
+  stroke: var(--grey5);
+  fill: var(--grey10);
+}
+.root.disabled .icon rect:nth-of-type(2) {
+  stroke: var(--grey5);
+}
+.root.disabled .icon circle {
+  fill: var(--grey5);
+}
+.root:hover:not(.disabled) .icon rect:nth-of-type(1) {
+  stroke: var(--highlight);
+  fill: var(--info-bg);
+}
 .root input[type=radio] {
   opacity: 0;
   z-index: 1;
@@ -41,7 +55,7 @@
   height: 2rem;
 }
 .root input:focus + .icon {
-  box-shadow: 0px 0px 0px 8px rgba(15, 98, 254, 0.125);
+  box-shadow: 0px 0px 0px 0.25rem rgba(15, 98, 254, 0.125);
 }
 .root [data-elem=label] {
   -webkit-user-select: none;
