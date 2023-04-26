@@ -1,6 +1,7 @@
 .root {
   cursor: pointer;
   gap: 10px;
+  color: var(--grey1);
 }
 .root.position-left {
   display: flex;
@@ -23,6 +24,7 @@
 }
 .root.disabled {
   cursor: default;
+  color: var(--grey4);
 }
 .root.disabled .icon rect:nth-of-type(1) {
   fill: var(--grey10);
@@ -32,6 +34,21 @@
 }
 .root.disabled .icon path {
   stroke: var(--grey5);
+}
+.root.selected {
+  color: var(--dark-grey);
+}
+.root:hover:not(.disabled) {
+  color: var(--dark-grey);
+}
+.root:hover:not(.disabled) .icon rect:nth-of-type(1) {
+  fill: var(--info-bg);
+}
+.root:hover:not(.disabled) .icon rect:nth-of-type(2) {
+  stroke: var(--highlight);
+}
+.root:hover:not(.disabled) .icon path {
+  stroke: var(--highlight);
 }
 .root .icon {
   display: inline-block;
