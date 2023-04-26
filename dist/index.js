@@ -48021,9 +48021,120 @@ BaseTable.defaultProps = {
   theme: 'light'
 };
 
-var css$r = ".Skeleton_module_root__15c10a9b[data-elem=base-cell] {\n  align-items: flex-start;\n  width: 100%;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component1] {\n  width: auto;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component1] > [data-elem=skeleton] {\n  height: 1.5rem;\n  width: 1.5rem !important;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component2] {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 1rem;\n  flex: 8;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component2] > [data-elem=skeleton] {\n  max-width: 9rem;\n  height: 1.5rem;\n}";
-var modules_37a5ff73$6 = {"root":"Skeleton_module_root__15c10a9b"};
+function o(f){return r=>{f.forEach(n=>{typeof n=="function"?n(r):n!=null&&(n.current=r);});}}
+
+var css$r = ".Tooltip_module_tooltip__04fbc763 {\n  text-align: center;\n  border-radius: 0.25rem;\n  min-width: auto;\n  max-width: 12rem;\n  padding: 0.375rem;\n  font-size: 0.875rem;\n  font-family: sans-serif;\n  line-height: 1;\n}\n.Tooltip_module_tooltip__04fbc763.Tooltip_module_light__04fbc763 {\n  color: var(--black);\n  background: var(--grey7);\n  border-color: var(--black);\n}\n.Tooltip_module_tooltip__04fbc763.Tooltip_module_light__04fbc763 .Tooltip_module_arrow__04fbc763 {\n  background: var(--grey7);\n}\n.Tooltip_module_tooltip__04fbc763.Tooltip_module_dark__04fbc763 {\n  color: var(--white);\n  background: var(--black);\n  border-color: var(--white);\n}\n.Tooltip_module_tooltip__04fbc763.Tooltip_module_dark__04fbc763 .Tooltip_module_arrow__04fbc763 {\n  background: var(--black);\n}\n.Tooltip_module_tooltip__04fbc763 .Tooltip_module_arrow__04fbc763 {\n  position: absolute;\n  width: 1rem;\n  height: 1rem;\n  z-index: -1;\n  pointer-events: none;\n  transform: rotate(45deg);\n}";
+var modules_e4619b04 = {"tooltip":"Tooltip_module_tooltip__04fbc763","light":"Tooltip_module_light__04fbc763","arrow":"Tooltip_module_arrow__04fbc763","dark":"Tooltip_module_dark__04fbc763"};
 n(css$r,{});
+
+var Tooltip = /*#__PURE__*/forwardRef(function Tooltip(props, propRef) {
+  var _middlewareData$arrow, _middlewareData$arrow2, _middlewareData$arrow3, _middlewareData$arrow4;
+  var children = props.children,
+    position = props.position,
+    content = props.content,
+    variant = props.variant,
+    className = props.className;
+  var arrowEl = useRef(null);
+  var _useState = useState(false),
+    _useState2 = _slicedToArray(_useState, 2),
+    open = _useState2[0],
+    setOpen = _useState2[1];
+
+  // eslint-disable-next-line object-curly-newline
+  var _useFloating = useFloating({
+      open: open,
+      onOpenChange: setOpen,
+      // strategy: 'fixed',
+      placement: position,
+      // Make sure the tooltip stays on the screen
+      whileElementsMounted: autoUpdate,
+      middleware: [offset(12), flip(), shift(), arrow({
+        element: arrowEl
+      })]
+    }),
+    x = _useFloating.x,
+    y = _useFloating.y,
+    reference = _useFloating.reference,
+    floating = _useFloating.floating,
+    strategy = _useFloating.strategy,
+    context = _useFloating.context,
+    middlewareData = _useFloating.middlewareData,
+    placement = _useFloating.placement;
+
+  // Event listeners to change the open state
+  var hover = useHover(context, {
+    move: true
+  });
+  var focus = useFocus(context);
+  var dismiss = useDismiss(context);
+  // Role props for screen readers
+  var role = useRole(context, {
+    role: 'tooltip'
+  });
+
+  // Merge all the interactions into prop getters
+  var _useInteractions = useInteractions([hover, focus, dismiss, role]),
+    getReferenceProps = _useInteractions.getReferenceProps,
+    getFloatingProps = _useInteractions.getFloatingProps;
+  var childrenRef = children.ref;
+  var ref = React__default.useMemo(function () {
+    return o([reference, childrenRef, propRef]);
+  }, [reference, childrenRef]);
+  var clonedChildren = /*#__PURE__*/cloneElement(children, getReferenceProps(_objectSpread2({
+    ref: ref
+  }, children.props)));
+  var side = placement.split('-')[0];
+  var staticSide = {
+    top: 'bottom',
+    right: 'left',
+    bottom: 'top',
+    left: 'right'
+  }[side];
+  return /*#__PURE__*/jsxs(Fragment, {
+    children: [clonedChildren, /*#__PURE__*/jsx(Popper, {
+      open: open && content != null,
+      backdrop: false,
+      wrapperId: "tooltip",
+      children: /*#__PURE__*/jsxs("div", _objectSpread2(_objectSpread2({}, getFloatingProps({
+        ref: floating,
+        className: classes(modules_e4619b04.tooltip, modules_e4619b04[variant], className),
+        style: {
+          position: strategy,
+          top: y !== null && y !== void 0 ? y : 0,
+          left: x !== null && x !== void 0 ? x : 0,
+          zIndex: 100
+        }
+      })), {}, {
+        children: [/*#__PURE__*/jsx("div", {
+          className: modules_e4619b04.arrow,
+          ref: arrowEl,
+          style: _defineProperty$1({
+            left: (_middlewareData$arrow = middlewareData === null || middlewareData === void 0 ? void 0 : (_middlewareData$arrow2 = middlewareData.arrow) === null || _middlewareData$arrow2 === void 0 ? void 0 : _middlewareData$arrow2.x) !== null && _middlewareData$arrow !== void 0 ? _middlewareData$arrow : '',
+            top: (_middlewareData$arrow3 = middlewareData === null || middlewareData === void 0 ? void 0 : (_middlewareData$arrow4 = middlewareData.arrow) === null || _middlewareData$arrow4 === void 0 ? void 0 : _middlewareData$arrow4.y) !== null && _middlewareData$arrow3 !== void 0 ? _middlewareData$arrow3 : '',
+            right: '',
+            bottom: ''
+          }, staticSide, '-0.5rem')
+        }), content]
+      }))
+    })]
+  });
+});
+Tooltip.propTypes = {
+  variant: propTypes$1.exports.oneOf(['light', 'dark']),
+  content: propTypes$1.exports.node,
+  position: propTypes$1.exports.oneOf(['right', 'top', 'bottom', 'left']),
+  className: propTypes$1.exports.string
+};
+Tooltip.defaultProps = {
+  variant: 'light',
+  content: null,
+  position: 'top',
+  className: ''
+};
+
+var css$q = ".Skeleton_module_root__15c10a9b[data-elem=base-cell] {\n  align-items: flex-start;\n  width: 100%;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component1] {\n  width: auto;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component1] > [data-elem=skeleton] {\n  height: 1.5rem;\n  width: 1.5rem !important;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component2] {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 1rem;\n  flex: 8;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component2] > [data-elem=skeleton] {\n  max-width: 9rem;\n  height: 1.5rem;\n}";
+var modules_37a5ff73$6 = {"root":"Skeleton_module_root__15c10a9b"};
+n(css$q,{});
 
 var CHIPS = _toConsumableArray$1(Array(5).keys());
 var TableChipsSkeleton = function TableChipsSkeleton(_ref) {
@@ -48044,9 +48155,9 @@ var TableChipsSkeleton = function TableChipsSkeleton(_ref) {
   });
 };
 
-var css$q = ".TableChipItem_module_root__46c5e2b5 {\n  background: var(--grey8);\n  border: 1px solid var(--grey4);\n  padding: 0.344rem 0.25rem;\n  height: 3rem;\n  max-height: 100%;\n  max-width: -moz-fit-content;\n  max-width: fit-content;\n  cursor: default;\n}\n.TableChipItem_module_root__46c5e2b5 .TableChipItem_module_chipIcon__46c5e2b5 {\n  width: 1rem;\n  height: 1rem;\n}\n.TableChipItem_module_root__46c5e2b5 > [data-elem=component1] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.TableChipItem_module_root__46c5e2b5 > [data-elem=component2] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  gap: 0.25rem;\n  height: 100%;\n}\n.TableChipItem_module_root__46c5e2b5 > [data-elem=component2] div.TableChipItem_module_chipSearch__46c5e2b5 {\n  padding: 0;\n  height: 100%;\n}\n.TableChipItem_module_root__46c5e2b5 > [data-elem=component2] div.TableChipItem_module_chipSearch__46c5e2b5 > label > [data-elem=base-cell] {\n  border-radius: 1.5rem;\n  width: auto;\n}\n.TableChipItem_module_root__46c5e2b5 > [data-elem=component2] div.TableChipItem_module_chipSearch__46c5e2b5 > label > [data-elem=base-cell] > [data-elem=component2] > [data-elem=input] {\n  font-size: 0.875rem;\n  font-weight: 500;\n  width: auto;\n}\n.TableChipItem_module_root__46c5e2b5 > [data-elem=component2] .TableChipItem_module_chip__46c5e2b5 {\n  height: 100%;\n}\n.TableChipItem_module_root__46c5e2b5 > [data-elem=component2] .TableChipItem_module_chip__46c5e2b5:not(:disabled) {\n  cursor: pointer;\n}\n.TableChipItem_module_root__46c5e2b5 > [data-elem=component2] .TableChipItem_module_chip__46c5e2b5:disabled {\n  cursor: default;\n  color: var(--info);\n  border-color: var(--info-outline);\n  background: var(--info-bg);\n  filter: none;\n}\n.TableChipItem_module_root__46c5e2b5 > [data-elem=component2] .TableChipItem_module_chip__46c5e2b5 > [data-elem=component2] > [data-elem=title] {\n  color: var(--dark-grey);\n}\n.TableChipItem_module_root__46c5e2b5 > [data-elem=component2] .TableChipItem_module_chip__46c5e2b5 .TableChipItem_module_icon__46c5e2b5 {\n  width: 0.875rem;\n  height: 0.875rem;\n}\n.TableChipItem_module_root__46c5e2b5 > [data-elem=component3] {\n  height: 100%;\n}\n.TableChipItem_module_root__46c5e2b5.TableChipItem_module_disabled__46c5e2b5:hover {\n  border-color: var(--grey4);\n}\n.TableChipItem_module_root__46c5e2b5.TableChipItem_module_disabled__46c5e2b5:hover > [data-elem=component2] .TableChipItem_module_label__46c5e2b5 {\n  color: var(--dark-grey);\n}\n.TableChipItem_module_root__46c5e2b5.TableChipItem_module_disabled__46c5e2b5:hover > [data-elem=component2] .TableChipItem_module_chipChild__46c5e2b5 {\n  background: var(--info-bg);\n}\n.TableChipItem_module_root__46c5e2b5.TableChipItem_module_disabled__46c5e2b5:hover > [data-elem=component2] .TableChipItem_module_chipChild__46c5e2b5 > [data-elem=component2] > [data-elem=title] {\n  color: var(--dark-grey);\n}\n.TableChipItem_module_root__46c5e2b5.TableChipItem_module_disabled__46c5e2b5:hover > [data-elem=component2] .TableChipItem_module_chipChild__46c5e2b5 .TableChipItem_module_icon__46c5e2b5 {\n  width: 0.875rem;\n  height: 0.875rem;\n}\n.TableChipItem_module_root__46c5e2b5:hover {\n  border-color: var(--highlight);\n}\n.TableChipItem_module_root__46c5e2b5:hover > [data-elem=component2] .TableChipItem_module_label__46c5e2b5 {\n  color: var(--highlight);\n}\n.TableChipItem_module_root__46c5e2b5:hover > [data-elem=component2] .TableChipItem_module_chipChild__46c5e2b5 {\n  background: var(--background);\n}\n.TableChipItem_module_root__46c5e2b5:hover > [data-elem=component2] .TableChipItem_module_chipChild__46c5e2b5 > [data-elem=component2] > [data-elem=title] {\n  color: var(--highlight);\n}\n.TableChipItem_module_root__46c5e2b5:hover > [data-elem=component2] .TableChipItem_module_chipChild__46c5e2b5 .TableChipItem_module_icon__46c5e2b5 {\n  width: 0.875rem;\n  height: 0.875rem;\n}";
+var css$p = ".TableChipItem_module_root__46c5e2b5 {\n  background: var(--grey8);\n  border: 1px solid var(--grey4);\n  padding: 0.344rem 0.25rem;\n  height: 3rem;\n  max-height: 100%;\n  max-width: -moz-fit-content;\n  max-width: fit-content;\n  cursor: default;\n}\n.TableChipItem_module_root__46c5e2b5 .TableChipItem_module_chipIcon__46c5e2b5 {\n  width: 1rem;\n  height: 1rem;\n}\n.TableChipItem_module_root__46c5e2b5 > [data-elem=component1] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.TableChipItem_module_root__46c5e2b5 > [data-elem=component2] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  gap: 0.25rem;\n  height: 100%;\n}\n.TableChipItem_module_root__46c5e2b5 > [data-elem=component2] div.TableChipItem_module_chipSearch__46c5e2b5 {\n  padding: 0;\n  height: 100%;\n}\n.TableChipItem_module_root__46c5e2b5 > [data-elem=component2] div.TableChipItem_module_chipSearch__46c5e2b5 > label > [data-elem=base-cell] {\n  border-radius: 1.5rem;\n  width: auto;\n}\n.TableChipItem_module_root__46c5e2b5 > [data-elem=component2] div.TableChipItem_module_chipSearch__46c5e2b5 > label > [data-elem=base-cell] > [data-elem=component2] > [data-elem=input] {\n  font-size: 0.875rem;\n  font-weight: 500;\n  width: auto;\n}\n.TableChipItem_module_root__46c5e2b5 > [data-elem=component2] .TableChipItem_module_chip__46c5e2b5 {\n  height: 100%;\n}\n.TableChipItem_module_root__46c5e2b5 > [data-elem=component2] .TableChipItem_module_chip__46c5e2b5:not(:disabled) {\n  cursor: pointer;\n}\n.TableChipItem_module_root__46c5e2b5 > [data-elem=component2] .TableChipItem_module_chip__46c5e2b5:disabled {\n  cursor: default;\n  color: var(--info);\n  border-color: var(--info-outline);\n  background: var(--info-bg);\n  filter: none;\n}\n.TableChipItem_module_root__46c5e2b5 > [data-elem=component2] .TableChipItem_module_chip__46c5e2b5 > [data-elem=component2] > [data-elem=title] {\n  color: var(--dark-grey);\n}\n.TableChipItem_module_root__46c5e2b5 > [data-elem=component2] .TableChipItem_module_chip__46c5e2b5 .TableChipItem_module_icon__46c5e2b5 {\n  width: 0.875rem;\n  height: 0.875rem;\n}\n.TableChipItem_module_root__46c5e2b5 > [data-elem=component3] {\n  height: 100%;\n}\n.TableChipItem_module_root__46c5e2b5.TableChipItem_module_disabled__46c5e2b5:hover {\n  border-color: var(--grey4);\n}\n.TableChipItem_module_root__46c5e2b5.TableChipItem_module_disabled__46c5e2b5:hover > [data-elem=component2] .TableChipItem_module_label__46c5e2b5 {\n  color: var(--dark-grey);\n}\n.TableChipItem_module_root__46c5e2b5.TableChipItem_module_disabled__46c5e2b5:hover > [data-elem=component2] .TableChipItem_module_chipChild__46c5e2b5 {\n  background: var(--info-bg);\n}\n.TableChipItem_module_root__46c5e2b5.TableChipItem_module_disabled__46c5e2b5:hover > [data-elem=component2] .TableChipItem_module_chipChild__46c5e2b5 > [data-elem=component2] > [data-elem=title] {\n  color: var(--dark-grey);\n}\n.TableChipItem_module_root__46c5e2b5.TableChipItem_module_disabled__46c5e2b5:hover > [data-elem=component2] .TableChipItem_module_chipChild__46c5e2b5 .TableChipItem_module_icon__46c5e2b5 {\n  width: 0.875rem;\n  height: 0.875rem;\n}\n.TableChipItem_module_root__46c5e2b5:hover {\n  border-color: var(--highlight);\n}\n.TableChipItem_module_root__46c5e2b5:hover > [data-elem=component2] .TableChipItem_module_label__46c5e2b5 {\n  color: var(--highlight);\n}\n.TableChipItem_module_root__46c5e2b5:hover > [data-elem=component2] .TableChipItem_module_chipChild__46c5e2b5 {\n  background: var(--background);\n}\n.TableChipItem_module_root__46c5e2b5:hover > [data-elem=component2] .TableChipItem_module_chipChild__46c5e2b5 > [data-elem=component2] > [data-elem=title] {\n  color: var(--highlight);\n}\n.TableChipItem_module_root__46c5e2b5:hover > [data-elem=component2] .TableChipItem_module_chipChild__46c5e2b5 .TableChipItem_module_icon__46c5e2b5 {\n  width: 0.875rem;\n  height: 0.875rem;\n}";
 var modules_ac61eac3 = {"root":"TableChipItem_module_root__46c5e2b5","chip-icon":"TableChipItem_module_chipIcon__46c5e2b5","chip-search":"TableChipItem_module_chipSearch__46c5e2b5","chip":"TableChipItem_module_chip__46c5e2b5","icon":"TableChipItem_module_icon__46c5e2b5","disabled":"TableChipItem_module_disabled__46c5e2b5","label":"TableChipItem_module_label__46c5e2b5","chip-child":"TableChipItem_module_chipChild__46c5e2b5"};
-n(css$q,{});
+n(css$p,{});
 
 var TableChipItem = function TableChipItem(props) {
   // eslint-disable-next-line object-curly-newline
@@ -48124,9 +48235,9 @@ var TableChipItem = function TableChipItem(props) {
   });
 };
 
-var css$p = ".TableChips_module_root__6212ef0c[data-elem=base-cell] {\n  padding: 0.5rem 1.5rem;\n  width: 100%;\n  background: var(--grey6);\n  border-radius: 0.25rem 0.25rem 0 0;\n}\n.TableChips_module_root__6212ef0c[data-elem=base-cell] > [data-elem=component1] .TableChips_module_back__6212ef0c {\n  height: 2rem;\n  width: 2rem;\n}\n.TableChips_module_root__6212ef0c[data-elem=base-cell] > [data-elem=component1] .TableChips_module_back__6212ef0c [data-elem=component1] .TableChips_module_icon__6212ef0c {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--white);\n}\n.TableChips_module_root__6212ef0c[data-elem=base-cell] > [data-elem=component2] {\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  height: 100%;\n  gap: 0.5rem;\n  overflow: auto hidden;\n  flex: 1;\n}\n.TableChips_module_root__6212ef0c[data-elem=base-cell] > [data-elem=component2]::-webkit-scrollbar {\n  display: none;\n}\n.TableChips_module_root__6212ef0c[data-elem=base-cell] > [data-elem=component3] {\n  height: 100%;\n}\n.TableChips_module_root__6212ef0c[data-elem=base-cell] > [data-elem=component3] .TableChips_module_clear__6212ef0c {\n  height: 100%;\n}";
+var css$o = ".TableChips_module_root__6212ef0c[data-elem=base-cell] {\n  padding: 0.5rem 1.5rem;\n  width: 100%;\n  background: var(--grey6);\n  border-radius: 0.25rem 0.25rem 0 0;\n}\n.TableChips_module_root__6212ef0c[data-elem=base-cell] > [data-elem=component1] .TableChips_module_back__6212ef0c {\n  height: 2rem;\n  width: 2rem;\n}\n.TableChips_module_root__6212ef0c[data-elem=base-cell] > [data-elem=component1] .TableChips_module_back__6212ef0c [data-elem=component1] .TableChips_module_icon__6212ef0c {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--white);\n}\n.TableChips_module_root__6212ef0c[data-elem=base-cell] > [data-elem=component2] {\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  height: 100%;\n  gap: 0.5rem;\n  overflow: auto hidden;\n  flex: 1;\n}\n.TableChips_module_root__6212ef0c[data-elem=base-cell] > [data-elem=component2]::-webkit-scrollbar {\n  display: none;\n}\n.TableChips_module_root__6212ef0c[data-elem=base-cell] > [data-elem=component3] {\n  height: 100%;\n}\n.TableChips_module_root__6212ef0c[data-elem=base-cell] > [data-elem=component3] .TableChips_module_clear__6212ef0c {\n  height: 100%;\n}";
 var modules_016d9b3e = {"root":"TableChips_module_root__6212ef0c","back":"TableChips_module_back__6212ef0c","icon":"TableChips_module_icon__6212ef0c","clear":"TableChips_module_clear__6212ef0c"};
-n(css$p,{});
+n(css$o,{});
 
 var TableChips = function TableChips(props) {
   var _chips$filter;
@@ -48137,6 +48248,7 @@ var TableChips = function TableChips(props) {
     chips = props.chips,
     className = props.className,
     style = props.style,
+    tooltip = props.tooltip,
     loading = props.loading,
     _onRemove = props.onRemove,
     theme = props.theme;
@@ -48161,18 +48273,21 @@ var TableChips = function TableChips(props) {
       attrs: {
         style: style
       },
-      component1: showBack && /*#__PURE__*/jsx(Button, {
-        size: "auto",
-        radius: "round",
-        className: modules_016d9b3e.back,
-        leftComponent: function leftComponent() {
-          return /*#__PURE__*/jsx(Arrow$1, {
-            className: modules_016d9b3e.icon,
-            position: "left"
-          });
-        },
-        onClick: onBack
-      }),
+      component1: showBack && /*#__PURE__*/jsx(Tooltip, _objectSpread2(_objectSpread2({}, tooltip), {}, {
+        variant: theme,
+        children: /*#__PURE__*/jsx(Button, {
+          size: "auto",
+          radius: "round",
+          className: modules_016d9b3e.back,
+          leftComponent: function leftComponent() {
+            return /*#__PURE__*/jsx(Arrow$1, {
+              className: modules_016d9b3e.icon,
+              position: "left"
+            });
+          },
+          onClick: onBack
+        })
+      })),
       component2: (chipsDOM === null || chipsDOM === void 0 ? void 0 : chipsDOM.length) > 0 ? chipsDOM : null,
       component3: (chipsDOM === null || chipsDOM === void 0 ? void 0 : chipsDOM.length) > 0 ? /*#__PURE__*/jsx(Button, {
         size: "auto",
@@ -48201,6 +48316,8 @@ TableChips.propTypes = {
     disabled: propTypes$1.exports.bool,
     rightComponent: propTypes$1.exports.node
   })),
+  // eslint-disable-next-line react/forbid-prop-types
+  tooltip: propTypes$1.exports.object,
   loading: propTypes$1.exports.bool,
   onRemove: propTypes$1.exports.func,
   theme: propTypes$1.exports.oneOf(['light', 'dark'])
@@ -48209,6 +48326,7 @@ TableChips.defaultProps = {
   className: '',
   style: {},
   showBack: false,
+  tooltip: {},
   onBack: function onBack() {},
   onClear: function onClear() {},
   chips: [],
@@ -48242,9 +48360,9 @@ var TableChip = /*#__PURE__*/_createClass(function TableChip(_ref) {
   this.rightComponent = rightComponent;
 });
 
-var css$o = ".Popover_module_root__e2663c00 {\n  padding: 1rem;\n  border-radius: 0.25rem;\n  border: 1px solid var(--grey);\n}\n.Popover_module_root__e2663c00.Popover_module_darkTheme__e2663c00 {\n  box-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);\n  background-color: var(--dark-grey);\n  color: var(--white);\n  border-color: var(--grey);\n}\n.Popover_module_root__e2663c00.Popover_module_lightTheme__e2663c00 {\n  box-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);\n  background-color: var(--white);\n  color: var(--dark-grey);\n  border-color: var(--grey4);\n}";
+var css$n = ".Popover_module_root__e2663c00 {\n  padding: 1rem;\n  border-radius: 0.25rem;\n  border: 1px solid var(--grey);\n}\n.Popover_module_root__e2663c00.Popover_module_darkTheme__e2663c00 {\n  box-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);\n  background-color: var(--dark-grey);\n  color: var(--white);\n  border-color: var(--grey);\n}\n.Popover_module_root__e2663c00.Popover_module_lightTheme__e2663c00 {\n  box-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);\n  background-color: var(--white);\n  color: var(--dark-grey);\n  border-color: var(--grey4);\n}";
 var modules_dfc4608f = {"root":"Popover_module_root__e2663c00","dark-theme":"Popover_module_darkTheme__e2663c00","light-theme":"Popover_module_lightTheme__e2663c00"};
-n(css$o,{});
+n(css$n,{});
 
 var Popover = function Popover(props) {
   // eslint-disable-next-line object-curly-newline
@@ -48328,9 +48446,9 @@ Popover.defaultProps = {
   theme: 'dark'
 };
 
-var css$n = ".Columns_module_popover__19f4f6da {\n  height: 32rem;\n  padding: 0;\n  overflow: hidden;\n}\n\n.Columns_module_root__19f4f6da {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  position: relative;\n  height: 100%;\n  min-width: 18rem;\n  max-width: 100%;\n}\n.Columns_module_root__19f4f6da .Columns_module_header__19f4f6da {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  border-bottom: 1px solid var(--grey4);\n  padding: 0.75rem 2.5rem;\n}\n.Columns_module_root__19f4f6da .Columns_module_header__19f4f6da > [data-elem=component1] {\n  font-weight: 500;\n}\n.Columns_module_root__19f4f6da .Columns_module_header__19f4f6da > [data-elem=component2] .Columns_module_close__19f4f6da {\n  height: auto;\n  padding: 0;\n}\n.Columns_module_root__19f4f6da .Columns_module_header__19f4f6da > [data-elem=component2] .Columns_module_close__19f4f6da .Columns_module_icon__19f4f6da {\n  width: 1rem;\n  height: 1rem;\n}\n.Columns_module_root__19f4f6da .Columns_module_body__19f4f6da {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  gap: 0.5rem;\n  padding: 0.75rem 2.5rem;\n  max-height: 28rem;\n  overflow-y: auto;\n  flex: 1 1 auto;\n}\n.Columns_module_root__19f4f6da .Columns_module_body__19f4f6da .Columns_module_search__19f4f6da {\n  position: sticky;\n  top: 0;\n}\n.Columns_module_root__19f4f6da .Columns_module_body__19f4f6da .Columns_module_columns__19f4f6da {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  gap: 0.5rem;\n  overflow-y: auto;\n}\n.Columns_module_root__19f4f6da .Columns_module_body__19f4f6da .Columns_module_columns__19f4f6da .Columns_module_item__19f4f6da {\n  height: 3rem;\n}\n.Columns_module_root__19f4f6da .Columns_module_body__19f4f6da .Columns_module_columns__19f4f6da .Columns_module_item__19f4f6da > [data-elem=title] {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n}\n.Columns_module_root__19f4f6da .Columns_module_footer__19f4f6da {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-end;\n  align-items: center;\n  height: auto;\n  margin-top: auto;\n  padding: 0.5rem 2.5rem;\n  border-top: 1px solid var(--grey4);\n}\n.Columns_module_root__19f4f6da .Columns_module_footer__19f4f6da button.Columns_module_expand__19f4f6da {\n  height: auto;\n  background: var(--grey8);\n  border: 1px solid var(--grey4);\n  color: var(--black);\n}\n.Columns_module_root__19f4f6da .Columns_module_footer__19f4f6da button.Columns_module_expand__19f4f6da .Columns_module_icon__19f4f6da {\n  width: 1.5rem;\n  height: 1.5rem;\n  transform: rotate(180deg);\n}\n.Columns_module_root__19f4f6da.Columns_module_expanded__19f4f6da .Columns_module_body__19f4f6da {\n  flex: 0 1 auto;\n}\n.Columns_module_root__19f4f6da.Columns_module_expanded__19f4f6da .Columns_module_body__19f4f6da .Columns_module_columns__19f4f6da {\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n}\n.Columns_module_root__19f4f6da.Columns_module_expanded__19f4f6da .Columns_module_body__19f4f6da .Columns_module_columns__19f4f6da .Columns_module_item__19f4f6da {\n  overflow: hidden;\n}\n.Columns_module_root__19f4f6da.Columns_module_expanded__19f4f6da .Columns_module_footer__19f4f6da button.Columns_module_expand__19f4f6da .Columns_module_icon__19f4f6da {\n  transform: none;\n}";
+var css$m = ".Columns_module_popover__19f4f6da {\n  height: 32rem;\n  padding: 0;\n  overflow: hidden;\n}\n\n.Columns_module_root__19f4f6da {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  position: relative;\n  height: 100%;\n  min-width: 18rem;\n  max-width: 100%;\n}\n.Columns_module_root__19f4f6da .Columns_module_header__19f4f6da {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  border-bottom: 1px solid var(--grey4);\n  padding: 0.75rem 2.5rem;\n}\n.Columns_module_root__19f4f6da .Columns_module_header__19f4f6da > [data-elem=component1] {\n  font-weight: 500;\n}\n.Columns_module_root__19f4f6da .Columns_module_header__19f4f6da > [data-elem=component2] .Columns_module_close__19f4f6da {\n  height: auto;\n  padding: 0;\n}\n.Columns_module_root__19f4f6da .Columns_module_header__19f4f6da > [data-elem=component2] .Columns_module_close__19f4f6da .Columns_module_icon__19f4f6da {\n  width: 1rem;\n  height: 1rem;\n}\n.Columns_module_root__19f4f6da .Columns_module_body__19f4f6da {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  gap: 0.5rem;\n  padding: 0.75rem 2.5rem;\n  max-height: 28rem;\n  overflow-y: auto;\n  flex: 1 1 auto;\n}\n.Columns_module_root__19f4f6da .Columns_module_body__19f4f6da .Columns_module_search__19f4f6da {\n  position: sticky;\n  top: 0;\n}\n.Columns_module_root__19f4f6da .Columns_module_body__19f4f6da .Columns_module_columns__19f4f6da {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  gap: 0.5rem;\n  overflow-y: auto;\n}\n.Columns_module_root__19f4f6da .Columns_module_body__19f4f6da .Columns_module_columns__19f4f6da .Columns_module_item__19f4f6da {\n  height: 3rem;\n}\n.Columns_module_root__19f4f6da .Columns_module_body__19f4f6da .Columns_module_columns__19f4f6da .Columns_module_item__19f4f6da > [data-elem=title] {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n}\n.Columns_module_root__19f4f6da .Columns_module_footer__19f4f6da {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-end;\n  align-items: center;\n  height: auto;\n  margin-top: auto;\n  padding: 0.5rem 2.5rem;\n  border-top: 1px solid var(--grey4);\n}\n.Columns_module_root__19f4f6da .Columns_module_footer__19f4f6da button.Columns_module_expand__19f4f6da {\n  height: auto;\n  background: var(--grey8);\n  border: 1px solid var(--grey4);\n  color: var(--black);\n}\n.Columns_module_root__19f4f6da .Columns_module_footer__19f4f6da button.Columns_module_expand__19f4f6da .Columns_module_icon__19f4f6da {\n  width: 1.5rem;\n  height: 1.5rem;\n  transform: rotate(180deg);\n}\n.Columns_module_root__19f4f6da.Columns_module_expanded__19f4f6da .Columns_module_body__19f4f6da {\n  flex: 0 1 auto;\n}\n.Columns_module_root__19f4f6da.Columns_module_expanded__19f4f6da .Columns_module_body__19f4f6da .Columns_module_columns__19f4f6da {\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n}\n.Columns_module_root__19f4f6da.Columns_module_expanded__19f4f6da .Columns_module_body__19f4f6da .Columns_module_columns__19f4f6da .Columns_module_item__19f4f6da {\n  overflow: hidden;\n}\n.Columns_module_root__19f4f6da.Columns_module_expanded__19f4f6da .Columns_module_footer__19f4f6da button.Columns_module_expand__19f4f6da .Columns_module_icon__19f4f6da {\n  transform: none;\n}";
 var modules_48c02c99 = {"popover":"Columns_module_popover__19f4f6da","root":"Columns_module_root__19f4f6da","header":"Columns_module_header__19f4f6da","close":"Columns_module_close__19f4f6da","icon":"Columns_module_icon__19f4f6da","body":"Columns_module_body__19f4f6da","search":"Columns_module_search__19f4f6da","columns":"Columns_module_columns__19f4f6da","item":"Columns_module_item__19f4f6da","footer":"Columns_module_footer__19f4f6da","expand":"Columns_module_expand__19f4f6da","expanded":"Columns_module_expanded__19f4f6da"};
-n(css$n,{});
+n(css$m,{});
 
 var Columns = function Columns(props) {
   var open = props.open,
@@ -48435,13 +48553,13 @@ var Columns = function Columns(props) {
   });
 };
 
-var css$m = ".TableFilters_module_root__53838cde[data-elem=base-cell] {\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n  overflow-x: auto;\n  padding: 0.5rem;\n  gap: 1.25rem;\n  width: 100%;\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell]::-webkit-scrollbar {\n  display: none;\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] .TableFilters_module_icon__53838cde {\n  width: 1.5rem;\n  height: 1.5rem;\n  flex-shrink: 0;\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] button.TableFilters_module_iconButton__53838cde {\n  height: 100%;\n  background: var(--grey8);\n  border: 1px solid var(--grey4);\n  color: var(--black);\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] > [data-elem*=component] {\n  height: 100%;\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] .TableFilters_module_left__53838cde,\n.TableFilters_module_root__53838cde[data-elem=base-cell] .TableFilters_module_center__53838cde,\n.TableFilters_module_root__53838cde[data-elem=base-cell] .TableFilters_module_right__53838cde {\n  height: 100%;\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] > [data-elem=component1] .TableFilters_module_left__53838cde {\n  gap: 1rem;\n  background: var(--grey8);\n  border: 1px solid var(--grey4);\n  color: var(--black);\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] > [data-elem=component1] .TableFilters_module_left__53838cde [data-elem=left] {\n  gap: 1rem;\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] > [data-elem=component1] .TableFilters_module_left__53838cde .TableFilters_module_icon__53838cde {\n  fill: var(--black);\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] > [data-elem=component1] .TableFilters_module_left__53838cde .TableFilters_module_filterValue__53838cde {\n  color: var(--white);\n  background: var(--highlight);\n  padding: 0.125rem 0.5rem;\n  border-radius: 50%;\n  font-size: 0.813rem;\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] > [data-elem=component2] {\n  flex: 1;\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] > [data-elem=component2] .TableFilters_module_center__53838cde {\n  width: 100%;\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] > [data-elem=component2] .TableFilters_module_center__53838cde [data-elem=base-cell] {\n  border-color: var(--grey4);\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] > [data-elem=component2] .TableFilters_module_center__53838cde [data-elem=base-cell]:focus-within {\n  outline: 1px solid var(--highlight);\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] > [data-elem=component2] .TableFilters_module_center__53838cde .TableFilters_module_icon__53838cde {\n  width: 1.25rem;\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] .TableFilters_module_right__53838cde {\n  width: auto;\n  padding: 0;\n  min-width: 0rem;\n  gap: 0.5rem;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] .TableFilters_module_right__53838cde > [data-elem*=component] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  height: 100%;\n}";
+var css$l = ".TableFilters_module_root__53838cde[data-elem=base-cell] {\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n  overflow-x: auto;\n  padding: 0.5rem;\n  gap: 1.25rem;\n  width: 100%;\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell]::-webkit-scrollbar {\n  display: none;\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] .TableFilters_module_icon__53838cde {\n  width: 1.5rem;\n  height: 1.5rem;\n  flex-shrink: 0;\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] button.TableFilters_module_iconButton__53838cde {\n  height: 100%;\n  background: var(--grey8);\n  border: 1px solid var(--grey4);\n  color: var(--black);\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] > [data-elem*=component] {\n  height: 100%;\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] .TableFilters_module_left__53838cde,\n.TableFilters_module_root__53838cde[data-elem=base-cell] .TableFilters_module_center__53838cde,\n.TableFilters_module_root__53838cde[data-elem=base-cell] .TableFilters_module_right__53838cde {\n  height: 100%;\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] > [data-elem=component1] .TableFilters_module_left__53838cde {\n  gap: 1rem;\n  background: var(--grey8);\n  border: 1px solid var(--grey4);\n  color: var(--black);\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] > [data-elem=component1] .TableFilters_module_left__53838cde [data-elem=left] {\n  gap: 1rem;\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] > [data-elem=component1] .TableFilters_module_left__53838cde .TableFilters_module_icon__53838cde {\n  fill: var(--black);\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] > [data-elem=component1] .TableFilters_module_left__53838cde .TableFilters_module_filterValue__53838cde {\n  color: var(--white);\n  background: var(--highlight);\n  padding: 0.125rem 0.5rem;\n  border-radius: 50%;\n  font-size: 0.813rem;\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] > [data-elem=component2] {\n  flex: 1;\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] > [data-elem=component2] .TableFilters_module_center__53838cde {\n  width: 100%;\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] > [data-elem=component2] .TableFilters_module_center__53838cde [data-elem=base-cell] {\n  border-color: var(--grey4);\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] > [data-elem=component2] .TableFilters_module_center__53838cde [data-elem=base-cell]:focus-within {\n  outline: 1px solid var(--highlight);\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] > [data-elem=component2] .TableFilters_module_center__53838cde .TableFilters_module_icon__53838cde {\n  width: 1.25rem;\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] .TableFilters_module_right__53838cde {\n  width: auto;\n  padding: 0;\n  min-width: 0rem;\n  gap: 0.5rem;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] .TableFilters_module_right__53838cde > [data-elem*=component] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  height: 100%;\n}";
 var modules_a0fe63f9 = {"root":"TableFilters_module_root__53838cde","icon":"TableFilters_module_icon__53838cde","icon-button":"TableFilters_module_iconButton__53838cde","left":"TableFilters_module_left__53838cde","center":"TableFilters_module_center__53838cde","right":"TableFilters_module_right__53838cde","filter-value":"TableFilters_module_filterValue__53838cde"};
-n(css$m,{});
-
-var css$l = ".Skeleton_module_root__bdc934d4[data-elem=base-cell] {\n  width: 100%;\n  gap: 1.25rem;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component1] {\n  flex: 1;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component2] {\n  flex: 6;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component3] {\n  flex: 3;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component3] > [data-elem=base-cell] {\n  padding: 0;\n  align-items: flex-start;\n  height: auto;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component3] > [data-elem=base-cell] > [data-elem*=component] {\n  flex: 1;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component3] > [data-elem=base-cell] > [data-elem*=component] > [data-elem=skeleton] {\n  height: 1.5rem;\n}";
-var modules_37a5ff73$5 = {"root":"Skeleton_module_root__bdc934d4"};
 n(css$l,{});
+
+var css$k = ".Skeleton_module_root__bdc934d4[data-elem=base-cell] {\n  width: 100%;\n  gap: 1.25rem;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component1] {\n  flex: 1;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component2] {\n  flex: 6;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component3] {\n  flex: 3;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component3] > [data-elem=base-cell] {\n  padding: 0;\n  align-items: flex-start;\n  height: auto;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component3] > [data-elem=base-cell] > [data-elem*=component] {\n  flex: 1;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component3] > [data-elem=base-cell] > [data-elem*=component] > [data-elem=skeleton] {\n  height: 1.5rem;\n}";
+var modules_37a5ff73$5 = {"root":"Skeleton_module_root__bdc934d4"};
+n(css$k,{});
 
 var TableFiltersSkeleton = function TableFiltersSkeleton(_ref) {
   var theme = _ref.theme;
@@ -48637,9 +48755,9 @@ TableFilters.defaultProps = {
   theme: 'light'
 };
 
-var css$k = ".Table_module_root__b07b1753 {\n  position: relative;\n  border-style: solid;\n  border-color: var(--grey4);\n  border-width: 1px 1px 0px 1px;\n  border-radius: 0.25rem;\n  width: 100%;\n  max-width: 100%;\n  height: 100%;\n  overflow: hidden;\n}\n.Table_module_root__b07b1753 .Table_module_table__b07b1753 {\n  height: calc(100% - 6rem);\n  padding-bottom: 3.5rem;\n}\n.Table_module_root__b07b1753 .Table_module_pagination__b07b1753 {\n  position: absolute;\n  bottom: 0;\n  left: 50%;\n  transform: translateX(-50%);\n}\n.Table_module_root__b07b1753 .Table_module_pagination__b07b1753.Table_module_floating__b07b1753 {\n  bottom: 1rem;\n}\n.Table_module_root__b07b1753 .Table_module_chips__b07b1753,\n.Table_module_root__b07b1753 .Table_module_filters__b07b1753,\n.Table_module_root__b07b1753 .Table_module_table__b07b1753 > [data-elem=table-header] {\n  position: sticky;\n  z-index: 1;\n  top: 0;\n}";
+var css$j = ".Table_module_root__b07b1753 {\n  position: relative;\n  border-style: solid;\n  border-color: var(--grey4);\n  border-width: 1px 1px 0px 1px;\n  border-radius: 0.25rem;\n  width: 100%;\n  max-width: 100%;\n  height: 100%;\n  overflow: hidden;\n}\n.Table_module_root__b07b1753 .Table_module_table__b07b1753 {\n  height: calc(100% - 6rem);\n  padding-bottom: 3.5rem;\n}\n.Table_module_root__b07b1753 .Table_module_pagination__b07b1753 {\n  position: absolute;\n  bottom: 0;\n  left: 50%;\n  transform: translateX(-50%);\n}\n.Table_module_root__b07b1753 .Table_module_pagination__b07b1753.Table_module_floating__b07b1753 {\n  bottom: 1rem;\n}\n.Table_module_root__b07b1753 .Table_module_chips__b07b1753,\n.Table_module_root__b07b1753 .Table_module_filters__b07b1753,\n.Table_module_root__b07b1753 .Table_module_table__b07b1753 > [data-elem=table-header] {\n  position: sticky;\n  z-index: 1;\n  top: 0;\n}";
 var modules_2e8406c7 = {"root":"Table_module_root__b07b1753","table":"Table_module_table__b07b1753","pagination":"Table_module_pagination__b07b1753","floating":"Table_module_floating__b07b1753","chips":"Table_module_chips__b07b1753","filters":"Table_module_filters__b07b1753"};
-n(css$k,{});
+n(css$j,{});
 
 var INTERSECTION = 1;
 var STEP = 0.05;
@@ -48832,9 +48950,9 @@ Table.defaultProps = {
   theme: 'light'
 };
 
-var css$j = ".Tabs_module_root__18f64bf7 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.Tabs_module_root__18f64bf7.Tabs_module_lightTheme__18f64bf7 > button.Tabs_module_tab__18f64bf7 {\n  border-color: var(--grey4);\n}\n.Tabs_module_root__18f64bf7.Tabs_module_lightTheme__18f64bf7 > button.Tabs_module_tab__18f64bf7 > [data-elem=component1] > .Tabs_module_icon__18f64bf7,\n.Tabs_module_root__18f64bf7.Tabs_module_lightTheme__18f64bf7 > button.Tabs_module_tab__18f64bf7 > [data-elem=component3] > .Tabs_module_icon__18f64bf7 {\n  fill: var(--black);\n}\n.Tabs_module_root__18f64bf7.Tabs_module_lightTheme__18f64bf7 > button.Tabs_module_tab__18f64bf7 > [data-elem=component2] {\n  color: var(--black);\n}\n.Tabs_module_root__18f64bf7.Tabs_module_lightTheme__18f64bf7 > button.Tabs_module_tab__18f64bf7:hover {\n  background: var(--info-bg);\n}\n.Tabs_module_root__18f64bf7.Tabs_module_darkTheme__18f64bf7 > button.Tabs_module_tab__18f64bf7 {\n  border-color: var(--grey);\n}\n.Tabs_module_root__18f64bf7.Tabs_module_darkTheme__18f64bf7 > button.Tabs_module_tab__18f64bf7 > [data-elem=component1] > .Tabs_module_icon__18f64bf7,\n.Tabs_module_root__18f64bf7.Tabs_module_darkTheme__18f64bf7 > button.Tabs_module_tab__18f64bf7 > [data-elem=component3] > .Tabs_module_icon__18f64bf7 {\n  fill: var(--white);\n}\n.Tabs_module_root__18f64bf7.Tabs_module_darkTheme__18f64bf7 > button.Tabs_module_tab__18f64bf7 > [data-elem=component2] {\n  color: var(--white);\n}\n.Tabs_module_root__18f64bf7.Tabs_module_darkTheme__18f64bf7 > button.Tabs_module_tab__18f64bf7:hover {\n  background: var(--dark-grey);\n}\n.Tabs_module_root__18f64bf7 > button.Tabs_module_tab__18f64bf7 {\n  padding: 0.75rem;\n  gap: 0.75rem;\n  border-bottom-width: 1px;\n  border-bottom-style: solid;\n}\n.Tabs_module_root__18f64bf7 > button.Tabs_module_tab__18f64bf7 > [data-elem=component1] > .Tabs_module_icon__18f64bf7,\n.Tabs_module_root__18f64bf7 > button.Tabs_module_tab__18f64bf7 > [data-elem=component3] > .Tabs_module_icon__18f64bf7 {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.Tabs_module_root__18f64bf7 > button.Tabs_module_tab__18f64bf7.Tabs_module_active__18f64bf7 {\n  border-bottom-width: 2px;\n  border-color: var(--highlight);\n}\n.Tabs_module_root__18f64bf7 > button.Tabs_module_tab__18f64bf7.Tabs_module_active__18f64bf7 > [data-elem=component1] > .Tabs_module_icon__18f64bf7,\n.Tabs_module_root__18f64bf7 > button.Tabs_module_tab__18f64bf7.Tabs_module_active__18f64bf7 > [data-elem=component3] > .Tabs_module_icon__18f64bf7 {\n  fill: var(--highlight);\n}\n.Tabs_module_root__18f64bf7 > button.Tabs_module_tab__18f64bf7.Tabs_module_active__18f64bf7 > [data-elem=component2] {\n  color: var(--highlight);\n}\n.Tabs_module_root__18f64bf7 > button.Tabs_module_tab__18f64bf7:hover > [data-elem=component1] > .Tabs_module_icon__18f64bf7,\n.Tabs_module_root__18f64bf7 > button.Tabs_module_tab__18f64bf7:hover > [data-elem=component3] > .Tabs_module_icon__18f64bf7 {\n  fill: var(--highlight);\n}\n.Tabs_module_root__18f64bf7 > button.Tabs_module_tab__18f64bf7:hover > [data-elem=component2] {\n  color: var(--highlight);\n}";
+var css$i = ".Tabs_module_root__18f64bf7 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.Tabs_module_root__18f64bf7.Tabs_module_lightTheme__18f64bf7 > button.Tabs_module_tab__18f64bf7 {\n  border-color: var(--grey4);\n}\n.Tabs_module_root__18f64bf7.Tabs_module_lightTheme__18f64bf7 > button.Tabs_module_tab__18f64bf7 > [data-elem=component1] > .Tabs_module_icon__18f64bf7,\n.Tabs_module_root__18f64bf7.Tabs_module_lightTheme__18f64bf7 > button.Tabs_module_tab__18f64bf7 > [data-elem=component3] > .Tabs_module_icon__18f64bf7 {\n  fill: var(--black);\n}\n.Tabs_module_root__18f64bf7.Tabs_module_lightTheme__18f64bf7 > button.Tabs_module_tab__18f64bf7 > [data-elem=component2] {\n  color: var(--black);\n}\n.Tabs_module_root__18f64bf7.Tabs_module_lightTheme__18f64bf7 > button.Tabs_module_tab__18f64bf7:hover {\n  background: var(--info-bg);\n}\n.Tabs_module_root__18f64bf7.Tabs_module_darkTheme__18f64bf7 > button.Tabs_module_tab__18f64bf7 {\n  border-color: var(--grey);\n}\n.Tabs_module_root__18f64bf7.Tabs_module_darkTheme__18f64bf7 > button.Tabs_module_tab__18f64bf7 > [data-elem=component1] > .Tabs_module_icon__18f64bf7,\n.Tabs_module_root__18f64bf7.Tabs_module_darkTheme__18f64bf7 > button.Tabs_module_tab__18f64bf7 > [data-elem=component3] > .Tabs_module_icon__18f64bf7 {\n  fill: var(--white);\n}\n.Tabs_module_root__18f64bf7.Tabs_module_darkTheme__18f64bf7 > button.Tabs_module_tab__18f64bf7 > [data-elem=component2] {\n  color: var(--white);\n}\n.Tabs_module_root__18f64bf7.Tabs_module_darkTheme__18f64bf7 > button.Tabs_module_tab__18f64bf7:hover {\n  background: var(--dark-grey);\n}\n.Tabs_module_root__18f64bf7 > button.Tabs_module_tab__18f64bf7 {\n  padding: 0.75rem;\n  gap: 0.75rem;\n  border-bottom-width: 1px;\n  border-bottom-style: solid;\n}\n.Tabs_module_root__18f64bf7 > button.Tabs_module_tab__18f64bf7 > [data-elem=component1] > .Tabs_module_icon__18f64bf7,\n.Tabs_module_root__18f64bf7 > button.Tabs_module_tab__18f64bf7 > [data-elem=component3] > .Tabs_module_icon__18f64bf7 {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.Tabs_module_root__18f64bf7 > button.Tabs_module_tab__18f64bf7.Tabs_module_active__18f64bf7 {\n  border-bottom-width: 2px;\n  border-color: var(--highlight);\n}\n.Tabs_module_root__18f64bf7 > button.Tabs_module_tab__18f64bf7.Tabs_module_active__18f64bf7 > [data-elem=component1] > .Tabs_module_icon__18f64bf7,\n.Tabs_module_root__18f64bf7 > button.Tabs_module_tab__18f64bf7.Tabs_module_active__18f64bf7 > [data-elem=component3] > .Tabs_module_icon__18f64bf7 {\n  fill: var(--highlight);\n}\n.Tabs_module_root__18f64bf7 > button.Tabs_module_tab__18f64bf7.Tabs_module_active__18f64bf7 > [data-elem=component2] {\n  color: var(--highlight);\n}\n.Tabs_module_root__18f64bf7 > button.Tabs_module_tab__18f64bf7:hover > [data-elem=component1] > .Tabs_module_icon__18f64bf7,\n.Tabs_module_root__18f64bf7 > button.Tabs_module_tab__18f64bf7:hover > [data-elem=component3] > .Tabs_module_icon__18f64bf7 {\n  fill: var(--highlight);\n}\n.Tabs_module_root__18f64bf7 > button.Tabs_module_tab__18f64bf7:hover > [data-elem=component2] {\n  color: var(--highlight);\n}";
 var modules_78ab5066 = {"root":"Tabs_module_root__18f64bf7","light-theme":"Tabs_module_lightTheme__18f64bf7","tab":"Tabs_module_tab__18f64bf7","icon":"Tabs_module_icon__18f64bf7","dark-theme":"Tabs_module_darkTheme__18f64bf7","active":"Tabs_module_active__18f64bf7"};
-n(css$j,{});
+n(css$i,{});
 
 var Tabs = function Tabs(props) {
   var tabs = props.tabs,
@@ -48889,117 +49007,6 @@ Tabs.defaultProps = {
   selectedTab: null,
   setSelectedTab: function setSelectedTab() {},
   theme: 'light'
-};
-
-function o(f){return r=>{f.forEach(n=>{typeof n=="function"?n(r):n!=null&&(n.current=r);});}}
-
-var css$i = ".Tooltip_module_tooltip__04fbc763 {\n  text-align: center;\n  border-radius: 0.25rem;\n  min-width: auto;\n  max-width: 12rem;\n  padding: 0.375rem;\n  font-size: 0.875rem;\n  font-family: sans-serif;\n  line-height: 1;\n}\n.Tooltip_module_tooltip__04fbc763.Tooltip_module_light__04fbc763 {\n  color: var(--black);\n  background: var(--grey7);\n  border-color: var(--black);\n}\n.Tooltip_module_tooltip__04fbc763.Tooltip_module_light__04fbc763 .Tooltip_module_arrow__04fbc763 {\n  background: var(--grey7);\n}\n.Tooltip_module_tooltip__04fbc763.Tooltip_module_dark__04fbc763 {\n  color: var(--white);\n  background: var(--black);\n  border-color: var(--white);\n}\n.Tooltip_module_tooltip__04fbc763.Tooltip_module_dark__04fbc763 .Tooltip_module_arrow__04fbc763 {\n  background: var(--black);\n}\n.Tooltip_module_tooltip__04fbc763 .Tooltip_module_arrow__04fbc763 {\n  position: absolute;\n  width: 1rem;\n  height: 1rem;\n  z-index: -1;\n  pointer-events: none;\n  transform: rotate(45deg);\n}";
-var modules_e4619b04 = {"tooltip":"Tooltip_module_tooltip__04fbc763","light":"Tooltip_module_light__04fbc763","arrow":"Tooltip_module_arrow__04fbc763","dark":"Tooltip_module_dark__04fbc763"};
-n(css$i,{});
-
-var Tooltip = /*#__PURE__*/forwardRef(function Tooltip(props, propRef) {
-  var _middlewareData$arrow, _middlewareData$arrow2, _middlewareData$arrow3, _middlewareData$arrow4;
-  var children = props.children,
-    position = props.position,
-    content = props.content,
-    variant = props.variant,
-    className = props.className;
-  var arrowEl = useRef(null);
-  var _useState = useState(false),
-    _useState2 = _slicedToArray(_useState, 2),
-    open = _useState2[0],
-    setOpen = _useState2[1];
-
-  // eslint-disable-next-line object-curly-newline
-  var _useFloating = useFloating({
-      open: open,
-      onOpenChange: setOpen,
-      // strategy: 'fixed',
-      placement: position,
-      // Make sure the tooltip stays on the screen
-      whileElementsMounted: autoUpdate,
-      middleware: [offset(12), flip(), shift(), arrow({
-        element: arrowEl
-      })]
-    }),
-    x = _useFloating.x,
-    y = _useFloating.y,
-    reference = _useFloating.reference,
-    floating = _useFloating.floating,
-    strategy = _useFloating.strategy,
-    context = _useFloating.context,
-    middlewareData = _useFloating.middlewareData,
-    placement = _useFloating.placement;
-
-  // Event listeners to change the open state
-  var hover = useHover(context, {
-    move: true
-  });
-  var focus = useFocus(context);
-  var dismiss = useDismiss(context);
-  // Role props for screen readers
-  var role = useRole(context, {
-    role: 'tooltip'
-  });
-
-  // Merge all the interactions into prop getters
-  var _useInteractions = useInteractions([hover, focus, dismiss, role]),
-    getReferenceProps = _useInteractions.getReferenceProps,
-    getFloatingProps = _useInteractions.getFloatingProps;
-  var childrenRef = children.ref;
-  var ref = React__default.useMemo(function () {
-    return o([reference, childrenRef, propRef]);
-  }, [reference, childrenRef]);
-  var clonedChildren = /*#__PURE__*/cloneElement(children, getReferenceProps(_objectSpread2({
-    ref: ref
-  }, children.props)));
-  var side = placement.split('-')[0];
-  var staticSide = {
-    top: 'bottom',
-    right: 'left',
-    bottom: 'top',
-    left: 'right'
-  }[side];
-  return /*#__PURE__*/jsxs(Fragment, {
-    children: [clonedChildren, /*#__PURE__*/jsx(Popper, {
-      open: open && content != null,
-      backdrop: false,
-      wrapperId: "tooltip",
-      children: /*#__PURE__*/jsxs("div", _objectSpread2(_objectSpread2({}, getFloatingProps({
-        ref: floating,
-        className: classes(modules_e4619b04.tooltip, modules_e4619b04[variant], className),
-        style: {
-          position: strategy,
-          top: y !== null && y !== void 0 ? y : 0,
-          left: x !== null && x !== void 0 ? x : 0,
-          zIndex: 100
-        }
-      })), {}, {
-        children: [/*#__PURE__*/jsx("div", {
-          className: modules_e4619b04.arrow,
-          ref: arrowEl,
-          style: _defineProperty$1({
-            left: (_middlewareData$arrow = middlewareData === null || middlewareData === void 0 ? void 0 : (_middlewareData$arrow2 = middlewareData.arrow) === null || _middlewareData$arrow2 === void 0 ? void 0 : _middlewareData$arrow2.x) !== null && _middlewareData$arrow !== void 0 ? _middlewareData$arrow : '',
-            top: (_middlewareData$arrow3 = middlewareData === null || middlewareData === void 0 ? void 0 : (_middlewareData$arrow4 = middlewareData.arrow) === null || _middlewareData$arrow4 === void 0 ? void 0 : _middlewareData$arrow4.y) !== null && _middlewareData$arrow3 !== void 0 ? _middlewareData$arrow3 : '',
-            right: '',
-            bottom: ''
-          }, staticSide, '-0.5rem')
-        }), content]
-      }))
-    })]
-  });
-});
-Tooltip.propTypes = {
-  variant: propTypes$1.exports.oneOf(['light', 'dark']),
-  content: propTypes$1.exports.node,
-  position: propTypes$1.exports.oneOf(['right', 'top', 'bottom', 'left']),
-  className: propTypes$1.exports.string
-};
-Tooltip.defaultProps = {
-  variant: 'light',
-  content: null,
-  position: 'top',
-  className: ''
 };
 
 var css$h = ".BaseSidePanel_module_root__c7817916 {\n  max-height: 100%;\n  height: 100%;\n  display: flex;\n  width: 30%;\n  flex-direction: column;\n  top: 0;\n  background: #ffffff;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.12);\n  overflow-x: hidden;\n  transition: 0.5s;\n}\n.BaseSidePanel_module_root__c7817916.BaseSidePanel_module_close__c7817916 {\n  width: 0rem;\n}\n.BaseSidePanel_module_root__c7817916 .BaseSidePanel_module_body__c7817916 {\n  flex: 1;\n  overflow-y: auto;\n}";
