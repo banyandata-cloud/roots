@@ -3,6 +3,8 @@
 .root {
 	cursor: pointer;
 	gap: 10px;
+	color: $grey1;
+
 	&.position-left {
 		@include flex(row, flex-start);
 	}
@@ -20,11 +22,46 @@
 
 	&.disabled {
 		cursor: default;
+		color: $grey4;
+		.icon {
+			rect {
+				&:nth-of-type(1) {
+					fill: $grey10;
+				}
+				&:nth-of-type(2) {
+					stroke: $grey5;
+				}
+			}
+			path {
+				stroke: $grey5;
+			}
+		}
+	}
+
+	&.selected {
+		color: $dark-grey;
+	}
+
+	&:hover:not(.disabled) {
+		color: $dark-grey;
+		.icon {
+			rect {
+				&:nth-of-type(1) {
+					fill: $info-bg;
+				}
+				&:nth-of-type(2) {
+					stroke: $highlight;
+				}
+			}
+			path {
+				stroke: $highlight;
+			}
+		}
 	}
 
 	.icon {
 		display: inline-block;
-		border-radius: 0.375rem;
+		border-radius: 0.25rem;
 		&.icon-sm {
 			width: 1rem;
 			height: 1rem;
@@ -42,7 +79,7 @@
 	input {
 		&:focus {
 			+ .icon {
-				box-shadow: 0px 0px 0px 8px rgba(15, 98, 254, 0.125);
+				box-shadow: 0px 0px 0px 0.25rem rgba(15, 98, 254, 0.125);
 			}
 		}
 	}
