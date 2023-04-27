@@ -808,6 +808,22 @@ WithCustomCells.args = {
 						/>
 					);
 				},
+				cloudOrganizationId: ({ cellContent, setActiveId, ...rest }) => {
+					return (
+						<TableCell
+							{...rest}
+							multiLine
+							cellContent={
+								<Button
+									onClick={() => {
+										setActiveId(false, true);
+									}}
+									title='Multi'
+								/>
+							}
+						/>
+					);
+				},
 				cloudAccountId: ({ cellContent, ...rest }) => {
 					return (
 						<TableCell

@@ -5403,6 +5403,8 @@ var CheckboxIcon = {
     var className = props.className;
     return /*#__PURE__*/jsxRuntime.jsxs("svg", {
       className: className,
+      width: "1.5rem",
+      height: "1.5rem",
       viewBox: "0 0 20 20",
       fill: "none",
       xmlns: "http://www.w3.org/2000/svg",
@@ -5412,7 +5414,7 @@ var CheckboxIcon = {
         width: "19",
         height: "19",
         rx: "5.5",
-        fill: "white"
+        fill: "#EDF5FF"
       }), /*#__PURE__*/jsxRuntime.jsx("path", {
         d: "M14.6668 6.5L8.25016 12.9167L5.3335 10",
         stroke: "#0F62FE",
@@ -5433,6 +5435,8 @@ var CheckboxIcon = {
     var className = props.className;
     return /*#__PURE__*/jsxRuntime.jsxs("svg", {
       className: className,
+      width: "1.5rem",
+      height: "1.5rem",
       viewBox: "0 0 20 20",
       fill: "none",
       xmlns: "http://www.w3.org/2000/svg",
@@ -5449,7 +5453,39 @@ var CheckboxIcon = {
         width: "19",
         height: "19",
         rx: "5.5",
-        stroke: "#888888"
+        stroke: "#333333"
+      })]
+    });
+  },
+  Intermediate: function Intermediate(_ref) {
+    var className = _ref.className;
+    return /*#__PURE__*/jsxRuntime.jsxs("svg", {
+      className: className,
+      width: "1.5rem",
+      height: "1.5rem",
+      viewBox: "0 0 20 20",
+      fill: "none",
+      xmlns: "http://www.w3.org/2000/svg",
+      children: [/*#__PURE__*/jsxRuntime.jsx("rect", {
+        x: "0.5",
+        y: "0.5",
+        width: "19",
+        height: "19",
+        rx: "5.5",
+        fill: "#EDF5FF"
+      }), /*#__PURE__*/jsxRuntime.jsx("path", {
+        d: "M5.9165 10H14.0832",
+        stroke: "#0F62FE",
+        strokeWidth: "2",
+        strokeLinecap: "round",
+        strokeLinejoin: "round"
+      }), /*#__PURE__*/jsxRuntime.jsx("rect", {
+        x: "0.5",
+        y: "0.5",
+        width: "19",
+        height: "19",
+        rx: "5.5",
+        stroke: "#0F62FE"
       })]
     });
   }
@@ -5569,8 +5605,7 @@ var Chevron = function Chevron(props) {
     fill: "none",
     xmlns: "http://www.w3.org/2000/svg",
     children: /*#__PURE__*/jsxRuntime.jsx("path", {
-      d: "M11.2898 11.9997L14.8298 8.4597C15.0161 8.27234 15.1206 8.01889 15.1206 7.7547C15.1206 7.49052 15.0161 7.23707 14.8298 7.0497C14.7369 6.95598 14.6263 6.88158 14.5044 6.83081C14.3825 6.78004 14.2518 6.75391 14.1198 6.75391C13.9878 6.75391 13.8571 6.78004 13.7352 6.83081C13.6134 6.88158 13.5028 6.95598 13.4098 7.0497L9.16982 11.2897C9.07609 11.3827 9.0017 11.4933 8.95093 11.6151C8.90016 11.737 8.87402 11.8677 8.87402 11.9997C8.87402 12.1317 8.90016 12.2624 8.95093 12.3843C9.0017 12.5061 9.07609 12.6167 9.16982 12.7097L13.4098 16.9997C13.5033 17.0924 13.6141 17.1657 13.7359 17.2155C13.8578 17.2652 13.9882 17.2905 14.1198 17.2897C14.2514 17.2905 14.3819 17.2652 14.5037 17.2155C14.6256 17.1657 14.7364 17.0924 14.8298 16.9997C15.0161 16.8123 15.1206 16.5589 15.1206 16.2947C15.1206 16.0305 15.0161 15.7771 14.8298 15.5897L11.2898 11.9997Z",
-      fill: "#333333"
+      d: "M11.2898 11.9997L14.8298 8.4597C15.0161 8.27234 15.1206 8.01889 15.1206 7.7547C15.1206 7.49052 15.0161 7.23707 14.8298 7.0497C14.7369 6.95598 14.6263 6.88158 14.5044 6.83081C14.3825 6.78004 14.2518 6.75391 14.1198 6.75391C13.9878 6.75391 13.8571 6.78004 13.7352 6.83081C13.6134 6.88158 13.5028 6.95598 13.4098 7.0497L9.16982 11.2897C9.07609 11.3827 9.0017 11.4933 8.95093 11.6151C8.90016 11.737 8.87402 11.8677 8.87402 11.9997C8.87402 12.1317 8.90016 12.2624 8.95093 12.3843C9.0017 12.5061 9.07609 12.6167 9.16982 12.7097L13.4098 16.9997C13.5033 17.0924 13.6141 17.1657 13.7359 17.2155C13.8578 17.2652 13.9882 17.2905 14.1198 17.2897C14.2514 17.2905 14.3819 17.2652 14.5037 17.2155C14.6256 17.1657 14.7364 17.0924 14.8298 16.9997C15.0161 16.8123 15.1206 16.5589 15.1206 16.2947C15.1206 16.0305 15.0161 15.7771 14.8298 15.5897L11.2898 11.9997Z"
     })
   });
 };
@@ -23014,162 +23049,162 @@ function cmake(Prism) {
   };
 }
 
-var cobol_1;
-var hasRequiredCobol;
-
-function requireCobol () {
-	if (hasRequiredCobol) return cobol_1;
-	hasRequiredCobol = 1;
-
-	cobol_1 = cobol;
-	cobol.displayName = 'cobol';
-	cobol.aliases = [];
-	function cobol(Prism) {
-	  Prism.languages.cobol = {
-	    comment: {
-	      pattern: /\*>.*|(^[ \t]*)\*.*/m,
-	      lookbehind: true,
-	      greedy: true
-	    },
-	    string: {
-	      pattern: /[xzgn]?(?:"(?:[^\r\n"]|"")*"(?!")|'(?:[^\r\n']|'')*'(?!'))/i,
-	      greedy: true
-	    },
-	    level: {
-	      pattern: /(^[ \t]*)\d+\b/m,
-	      lookbehind: true,
-	      greedy: true,
-	      alias: 'number'
-	    },
-	    'class-name': {
-	      // https://github.com/antlr/grammars-v4/blob/42edd5b687d183b5fa679e858a82297bd27141e7/cobol85/Cobol85.g4#L1015
-	      pattern:
-	        /(\bpic(?:ture)?\s+)(?:(?:[-\w$/,:*+<>]|\.(?!\s|$))(?:\(\d+\))?)+/i,
-	      lookbehind: true,
-	      inside: {
-	        number: {
-	          pattern: /(\()\d+/,
-	          lookbehind: true
-	        },
-	        punctuation: /[()]/
-	      }
-	    },
-	    keyword: {
-	      pattern:
-	        /(^|[^\w-])(?:ABORT|ACCEPT|ACCESS|ADD|ADDRESS|ADVANCING|AFTER|ALIGNED|ALL|ALPHABET|ALPHABETIC|ALPHABETIC-LOWER|ALPHABETIC-UPPER|ALPHANUMERIC|ALPHANUMERIC-EDITED|ALSO|ALTER|ALTERNATE|ANY|ARE|AREA|AREAS|AS|ASCENDING|ASCII|ASSIGN|ASSOCIATED-DATA|ASSOCIATED-DATA-LENGTH|AT|ATTRIBUTE|AUTHOR|AUTO|AUTO-SKIP|BACKGROUND-COLOR|BACKGROUND-COLOUR|BASIS|BEEP|BEFORE|BEGINNING|BELL|BINARY|BIT|BLANK|BLINK|BLOCK|BOTTOM|BOUNDS|BY|BYFUNCTION|BYTITLE|CALL|CANCEL|CAPABLE|CCSVERSION|CD|CF|CH|CHAINING|CHANGED|CHANNEL|CHARACTER|CHARACTERS|CLASS|CLASS-ID|CLOCK-UNITS|CLOSE|CLOSE-DISPOSITION|COBOL|CODE|CODE-SET|COL|COLLATING|COLUMN|COM-REG|COMMA|COMMITMENT|COMMON|COMMUNICATION|COMP|COMP-1|COMP-2|COMP-3|COMP-4|COMP-5|COMPUTATIONAL|COMPUTATIONAL-1|COMPUTATIONAL-2|COMPUTATIONAL-3|COMPUTATIONAL-4|COMPUTATIONAL-5|COMPUTE|CONFIGURATION|CONTAINS|CONTENT|CONTINUE|CONTROL|CONTROL-POINT|CONTROLS|CONVENTION|CONVERTING|COPY|CORR|CORRESPONDING|COUNT|CRUNCH|CURRENCY|CURSOR|DATA|DATA-BASE|DATE|DATE-COMPILED|DATE-WRITTEN|DAY|DAY-OF-WEEK|DBCS|DE|DEBUG-CONTENTS|DEBUG-ITEM|DEBUG-LINE|DEBUG-NAME|DEBUG-SUB-1|DEBUG-SUB-2|DEBUG-SUB-3|DEBUGGING|DECIMAL-POINT|DECLARATIVES|DEFAULT|DEFAULT-DISPLAY|DEFINITION|DELETE|DELIMITED|DELIMITER|DEPENDING|DESCENDING|DESTINATION|DETAIL|DFHRESP|DFHVALUE|DISABLE|DISK|DISPLAY|DISPLAY-1|DIVIDE|DIVISION|DONTCARE|DOUBLE|DOWN|DUPLICATES|DYNAMIC|EBCDIC|EGCS|EGI|ELSE|EMI|EMPTY-CHECK|ENABLE|END|END-ACCEPT|END-ADD|END-CALL|END-COMPUTE|END-DELETE|END-DIVIDE|END-EVALUATE|END-IF|END-MULTIPLY|END-OF-PAGE|END-PERFORM|END-READ|END-RECEIVE|END-RETURN|END-REWRITE|END-SEARCH|END-START|END-STRING|END-SUBTRACT|END-UNSTRING|END-WRITE|ENDING|ENTER|ENTRY|ENTRY-PROCEDURE|ENVIRONMENT|EOL|EOP|EOS|ERASE|ERROR|ESCAPE|ESI|EVALUATE|EVENT|EVERY|EXCEPTION|EXCLUSIVE|EXHIBIT|EXIT|EXPORT|EXTEND|EXTENDED|EXTERNAL|FD|FILE|FILE-CONTROL|FILLER|FINAL|FIRST|FOOTING|FOR|FOREGROUND-COLOR|FOREGROUND-COLOUR|FROM|FULL|FUNCTION|FUNCTION-POINTER|FUNCTIONNAME|GENERATE|GIVING|GLOBAL|GO|GOBACK|GRID|GROUP|HEADING|HIGH-VALUE|HIGH-VALUES|HIGHLIGHT|I-O|I-O-CONTROL|ID|IDENTIFICATION|IF|IMPLICIT|IMPORT|IN|INDEX|INDEXED|INDICATE|INITIAL|INITIALIZE|INITIATE|INPUT|INPUT-OUTPUT|INSPECT|INSTALLATION|INTEGER|INTO|INVALID|INVOKE|IS|JUST|JUSTIFIED|KANJI|KEPT|KEY|KEYBOARD|LABEL|LANGUAGE|LAST|LB|LD|LEADING|LEFT|LEFTLINE|LENGTH|LENGTH-CHECK|LIBACCESS|LIBPARAMETER|LIBRARY|LIMIT|LIMITS|LINAGE|LINAGE-COUNTER|LINE|LINE-COUNTER|LINES|LINKAGE|LIST|LOCAL|LOCAL-STORAGE|LOCK|LONG-DATE|LONG-TIME|LOW-VALUE|LOW-VALUES|LOWER|LOWLIGHT|MEMORY|MERGE|MESSAGE|MMDDYYYY|MODE|MODULES|MORE-LABELS|MOVE|MULTIPLE|MULTIPLY|NAMED|NATIONAL|NATIONAL-EDITED|NATIVE|NEGATIVE|NETWORK|NEXT|NO|NO-ECHO|NULL|NULLS|NUMBER|NUMERIC|NUMERIC-DATE|NUMERIC-EDITED|NUMERIC-TIME|OBJECT-COMPUTER|OCCURS|ODT|OF|OFF|OMITTED|ON|OPEN|OPTIONAL|ORDER|ORDERLY|ORGANIZATION|OTHER|OUTPUT|OVERFLOW|OVERLINE|OWN|PACKED-DECIMAL|PADDING|PAGE|PAGE-COUNTER|PASSWORD|PERFORM|PF|PH|PIC|PICTURE|PLUS|POINTER|PORT|POSITION|POSITIVE|PRINTER|PRINTING|PRIVATE|PROCEDURE|PROCEDURE-POINTER|PROCEDURES|PROCEED|PROCESS|PROGRAM|PROGRAM-ID|PROGRAM-LIBRARY|PROMPT|PURGE|QUEUE|QUOTE|QUOTES|RANDOM|RD|READ|READER|REAL|RECEIVE|RECEIVED|RECORD|RECORDING|RECORDS|RECURSIVE|REDEFINES|REEL|REF|REFERENCE|REFERENCES|RELATIVE|RELEASE|REMAINDER|REMARKS|REMOTE|REMOVAL|REMOVE|RENAMES|REPLACE|REPLACING|REPORT|REPORTING|REPORTS|REQUIRED|RERUN|RESERVE|RESET|RETURN|RETURN-CODE|RETURNING|REVERSE-VIDEO|REVERSED|REWIND|REWRITE|RF|RH|RIGHT|ROUNDED|RUN|SAME|SAVE|SCREEN|SD|SEARCH|SECTION|SECURE|SECURITY|SEGMENT|SEGMENT-LIMIT|SELECT|SEND|SENTENCE|SEPARATE|SEQUENCE|SEQUENTIAL|SET|SHARED|SHAREDBYALL|SHAREDBYRUNUNIT|SHARING|SHIFT-IN|SHIFT-OUT|SHORT-DATE|SIGN|SIZE|SORT|SORT-CONTROL|SORT-CORE-SIZE|SORT-FILE-SIZE|SORT-MERGE|SORT-MESSAGE|SORT-MODE-SIZE|SORT-RETURN|SOURCE|SOURCE-COMPUTER|SPACE|SPACES|SPECIAL-NAMES|STANDARD|STANDARD-1|STANDARD-2|START|STATUS|STOP|STRING|SUB-QUEUE-1|SUB-QUEUE-2|SUB-QUEUE-3|SUBTRACT|SUM|SUPPRESS|SYMBOL|SYMBOLIC|SYNC|SYNCHRONIZED|TABLE|TALLY|TALLYING|TAPE|TASK|TERMINAL|TERMINATE|TEST|TEXT|THEN|THREAD|THREAD-LOCAL|THROUGH|THRU|TIME|TIMER|TIMES|TITLE|TO|TODAYS-DATE|TODAYS-NAME|TOP|TRAILING|TRUNCATED|TYPE|TYPEDEF|UNDERLINE|UNIT|UNSTRING|UNTIL|UP|UPON|USAGE|USE|USING|VALUE|VALUES|VARYING|VIRTUAL|WAIT|WHEN|WHEN-COMPILED|WITH|WORDS|WORKING-STORAGE|WRITE|YEAR|YYYYDDD|YYYYMMDD|ZERO-FILL|ZEROES|ZEROS)(?![\w-])/i,
-	      lookbehind: true
-	    },
-	    boolean: {
-	      pattern: /(^|[^\w-])(?:false|true)(?![\w-])/i,
-	      lookbehind: true
-	    },
-	    number: {
-	      pattern:
-	        /(^|[^\w-])(?:[+-]?(?:(?:\d+(?:[.,]\d+)?|[.,]\d+)(?:e[+-]?\d+)?|zero))(?![\w-])/i,
-	      lookbehind: true
-	    },
-	    operator: [
-	      /<>|[<>]=?|[=+*/&]/,
-	      {
-	        pattern: /(^|[^\w-])(?:-|and|equal|greater|less|not|or|than)(?![\w-])/i,
-	        lookbehind: true
-	      }
-	    ],
-	    punctuation: /[.:,()]/
-	  };
-	}
-	return cobol_1;
+var cobol_1 = cobol;
+cobol.displayName = 'cobol';
+cobol.aliases = [];
+function cobol(Prism) {
+  Prism.languages.cobol = {
+    comment: {
+      pattern: /\*>.*|(^[ \t]*)\*.*/m,
+      lookbehind: true,
+      greedy: true
+    },
+    string: {
+      pattern: /[xzgn]?(?:"(?:[^\r\n"]|"")*"(?!")|'(?:[^\r\n']|'')*'(?!'))/i,
+      greedy: true
+    },
+    level: {
+      pattern: /(^[ \t]*)\d+\b/m,
+      lookbehind: true,
+      greedy: true,
+      alias: 'number'
+    },
+    'class-name': {
+      // https://github.com/antlr/grammars-v4/blob/42edd5b687d183b5fa679e858a82297bd27141e7/cobol85/Cobol85.g4#L1015
+      pattern:
+        /(\bpic(?:ture)?\s+)(?:(?:[-\w$/,:*+<>]|\.(?!\s|$))(?:\(\d+\))?)+/i,
+      lookbehind: true,
+      inside: {
+        number: {
+          pattern: /(\()\d+/,
+          lookbehind: true
+        },
+        punctuation: /[()]/
+      }
+    },
+    keyword: {
+      pattern:
+        /(^|[^\w-])(?:ABORT|ACCEPT|ACCESS|ADD|ADDRESS|ADVANCING|AFTER|ALIGNED|ALL|ALPHABET|ALPHABETIC|ALPHABETIC-LOWER|ALPHABETIC-UPPER|ALPHANUMERIC|ALPHANUMERIC-EDITED|ALSO|ALTER|ALTERNATE|ANY|ARE|AREA|AREAS|AS|ASCENDING|ASCII|ASSIGN|ASSOCIATED-DATA|ASSOCIATED-DATA-LENGTH|AT|ATTRIBUTE|AUTHOR|AUTO|AUTO-SKIP|BACKGROUND-COLOR|BACKGROUND-COLOUR|BASIS|BEEP|BEFORE|BEGINNING|BELL|BINARY|BIT|BLANK|BLINK|BLOCK|BOTTOM|BOUNDS|BY|BYFUNCTION|BYTITLE|CALL|CANCEL|CAPABLE|CCSVERSION|CD|CF|CH|CHAINING|CHANGED|CHANNEL|CHARACTER|CHARACTERS|CLASS|CLASS-ID|CLOCK-UNITS|CLOSE|CLOSE-DISPOSITION|COBOL|CODE|CODE-SET|COL|COLLATING|COLUMN|COM-REG|COMMA|COMMITMENT|COMMON|COMMUNICATION|COMP|COMP-1|COMP-2|COMP-3|COMP-4|COMP-5|COMPUTATIONAL|COMPUTATIONAL-1|COMPUTATIONAL-2|COMPUTATIONAL-3|COMPUTATIONAL-4|COMPUTATIONAL-5|COMPUTE|CONFIGURATION|CONTAINS|CONTENT|CONTINUE|CONTROL|CONTROL-POINT|CONTROLS|CONVENTION|CONVERTING|COPY|CORR|CORRESPONDING|COUNT|CRUNCH|CURRENCY|CURSOR|DATA|DATA-BASE|DATE|DATE-COMPILED|DATE-WRITTEN|DAY|DAY-OF-WEEK|DBCS|DE|DEBUG-CONTENTS|DEBUG-ITEM|DEBUG-LINE|DEBUG-NAME|DEBUG-SUB-1|DEBUG-SUB-2|DEBUG-SUB-3|DEBUGGING|DECIMAL-POINT|DECLARATIVES|DEFAULT|DEFAULT-DISPLAY|DEFINITION|DELETE|DELIMITED|DELIMITER|DEPENDING|DESCENDING|DESTINATION|DETAIL|DFHRESP|DFHVALUE|DISABLE|DISK|DISPLAY|DISPLAY-1|DIVIDE|DIVISION|DONTCARE|DOUBLE|DOWN|DUPLICATES|DYNAMIC|EBCDIC|EGCS|EGI|ELSE|EMI|EMPTY-CHECK|ENABLE|END|END-ACCEPT|END-ADD|END-CALL|END-COMPUTE|END-DELETE|END-DIVIDE|END-EVALUATE|END-IF|END-MULTIPLY|END-OF-PAGE|END-PERFORM|END-READ|END-RECEIVE|END-RETURN|END-REWRITE|END-SEARCH|END-START|END-STRING|END-SUBTRACT|END-UNSTRING|END-WRITE|ENDING|ENTER|ENTRY|ENTRY-PROCEDURE|ENVIRONMENT|EOL|EOP|EOS|ERASE|ERROR|ESCAPE|ESI|EVALUATE|EVENT|EVERY|EXCEPTION|EXCLUSIVE|EXHIBIT|EXIT|EXPORT|EXTEND|EXTENDED|EXTERNAL|FD|FILE|FILE-CONTROL|FILLER|FINAL|FIRST|FOOTING|FOR|FOREGROUND-COLOR|FOREGROUND-COLOUR|FROM|FULL|FUNCTION|FUNCTION-POINTER|FUNCTIONNAME|GENERATE|GIVING|GLOBAL|GO|GOBACK|GRID|GROUP|HEADING|HIGH-VALUE|HIGH-VALUES|HIGHLIGHT|I-O|I-O-CONTROL|ID|IDENTIFICATION|IF|IMPLICIT|IMPORT|IN|INDEX|INDEXED|INDICATE|INITIAL|INITIALIZE|INITIATE|INPUT|INPUT-OUTPUT|INSPECT|INSTALLATION|INTEGER|INTO|INVALID|INVOKE|IS|JUST|JUSTIFIED|KANJI|KEPT|KEY|KEYBOARD|LABEL|LANGUAGE|LAST|LB|LD|LEADING|LEFT|LEFTLINE|LENGTH|LENGTH-CHECK|LIBACCESS|LIBPARAMETER|LIBRARY|LIMIT|LIMITS|LINAGE|LINAGE-COUNTER|LINE|LINE-COUNTER|LINES|LINKAGE|LIST|LOCAL|LOCAL-STORAGE|LOCK|LONG-DATE|LONG-TIME|LOW-VALUE|LOW-VALUES|LOWER|LOWLIGHT|MEMORY|MERGE|MESSAGE|MMDDYYYY|MODE|MODULES|MORE-LABELS|MOVE|MULTIPLE|MULTIPLY|NAMED|NATIONAL|NATIONAL-EDITED|NATIVE|NEGATIVE|NETWORK|NEXT|NO|NO-ECHO|NULL|NULLS|NUMBER|NUMERIC|NUMERIC-DATE|NUMERIC-EDITED|NUMERIC-TIME|OBJECT-COMPUTER|OCCURS|ODT|OF|OFF|OMITTED|ON|OPEN|OPTIONAL|ORDER|ORDERLY|ORGANIZATION|OTHER|OUTPUT|OVERFLOW|OVERLINE|OWN|PACKED-DECIMAL|PADDING|PAGE|PAGE-COUNTER|PASSWORD|PERFORM|PF|PH|PIC|PICTURE|PLUS|POINTER|PORT|POSITION|POSITIVE|PRINTER|PRINTING|PRIVATE|PROCEDURE|PROCEDURE-POINTER|PROCEDURES|PROCEED|PROCESS|PROGRAM|PROGRAM-ID|PROGRAM-LIBRARY|PROMPT|PURGE|QUEUE|QUOTE|QUOTES|RANDOM|RD|READ|READER|REAL|RECEIVE|RECEIVED|RECORD|RECORDING|RECORDS|RECURSIVE|REDEFINES|REEL|REF|REFERENCE|REFERENCES|RELATIVE|RELEASE|REMAINDER|REMARKS|REMOTE|REMOVAL|REMOVE|RENAMES|REPLACE|REPLACING|REPORT|REPORTING|REPORTS|REQUIRED|RERUN|RESERVE|RESET|RETURN|RETURN-CODE|RETURNING|REVERSE-VIDEO|REVERSED|REWIND|REWRITE|RF|RH|RIGHT|ROUNDED|RUN|SAME|SAVE|SCREEN|SD|SEARCH|SECTION|SECURE|SECURITY|SEGMENT|SEGMENT-LIMIT|SELECT|SEND|SENTENCE|SEPARATE|SEQUENCE|SEQUENTIAL|SET|SHARED|SHAREDBYALL|SHAREDBYRUNUNIT|SHARING|SHIFT-IN|SHIFT-OUT|SHORT-DATE|SIGN|SIZE|SORT|SORT-CONTROL|SORT-CORE-SIZE|SORT-FILE-SIZE|SORT-MERGE|SORT-MESSAGE|SORT-MODE-SIZE|SORT-RETURN|SOURCE|SOURCE-COMPUTER|SPACE|SPACES|SPECIAL-NAMES|STANDARD|STANDARD-1|STANDARD-2|START|STATUS|STOP|STRING|SUB-QUEUE-1|SUB-QUEUE-2|SUB-QUEUE-3|SUBTRACT|SUM|SUPPRESS|SYMBOL|SYMBOLIC|SYNC|SYNCHRONIZED|TABLE|TALLY|TALLYING|TAPE|TASK|TERMINAL|TERMINATE|TEST|TEXT|THEN|THREAD|THREAD-LOCAL|THROUGH|THRU|TIME|TIMER|TIMES|TITLE|TO|TODAYS-DATE|TODAYS-NAME|TOP|TRAILING|TRUNCATED|TYPE|TYPEDEF|UNDERLINE|UNIT|UNSTRING|UNTIL|UP|UPON|USAGE|USE|USING|VALUE|VALUES|VARYING|VIRTUAL|WAIT|WHEN|WHEN-COMPILED|WITH|WORDS|WORKING-STORAGE|WRITE|YEAR|YYYYDDD|YYYYMMDD|ZERO-FILL|ZEROES|ZEROS)(?![\w-])/i,
+      lookbehind: true
+    },
+    boolean: {
+      pattern: /(^|[^\w-])(?:false|true)(?![\w-])/i,
+      lookbehind: true
+    },
+    number: {
+      pattern:
+        /(^|[^\w-])(?:[+-]?(?:(?:\d+(?:[.,]\d+)?|[.,]\d+)(?:e[+-]?\d+)?|zero))(?![\w-])/i,
+      lookbehind: true
+    },
+    operator: [
+      /<>|[<>]=?|[=+*/&]/,
+      {
+        pattern: /(^|[^\w-])(?:-|and|equal|greater|less|not|or|than)(?![\w-])/i,
+        lookbehind: true
+      }
+    ],
+    punctuation: /[.:,()]/
+  };
 }
 
-var coffeescript_1 = coffeescript;
-coffeescript.displayName = 'coffeescript';
-coffeescript.aliases = ['coffee'];
-function coffeescript(Prism) {
+var coffeescript_1;
+var hasRequiredCoffeescript;
+
+function requireCoffeescript () {
+	if (hasRequiredCoffeescript) return coffeescript_1;
+	hasRequiredCoffeescript = 1;
+
+	coffeescript_1 = coffeescript;
+	coffeescript.displayName = 'coffeescript';
+	coffeescript.aliases = ['coffee'];
+	function coffeescript(Prism) {
 (function (Prism) {
-    // Ignore comments starting with { to privilege string interpolation highlighting
-    var comment = /#(?!\{).+/;
-    var interpolation = {
-      pattern: /#\{[^}]+\}/,
-      alias: 'variable'
-    };
-    Prism.languages.coffeescript = Prism.languages.extend('javascript', {
-      comment: comment,
-      string: [
-        // Strings are multiline
-        {
-          pattern: /'(?:\\[\s\S]|[^\\'])*'/,
-          greedy: true
-        },
-        {
-          // Strings are multiline
-          pattern: /"(?:\\[\s\S]|[^\\"])*"/,
-          greedy: true,
-          inside: {
-            interpolation: interpolation
-          }
-        }
-      ],
-      keyword:
-        /\b(?:and|break|by|catch|class|continue|debugger|delete|do|each|else|extend|extends|false|finally|for|if|in|instanceof|is|isnt|let|loop|namespace|new|no|not|null|of|off|on|or|own|return|super|switch|then|this|throw|true|try|typeof|undefined|unless|until|when|while|window|with|yes|yield)\b/,
-      'class-member': {
-        pattern: /@(?!\d)\w+/,
-        alias: 'variable'
-      }
-    });
-    Prism.languages.insertBefore('coffeescript', 'comment', {
-      'multiline-comment': {
-        pattern: /###[\s\S]+?###/,
-        alias: 'comment'
-      },
-      // Block regexp can contain comments and interpolation
-      'block-regex': {
-        pattern: /\/{3}[\s\S]*?\/{3}/,
-        alias: 'regex',
-        inside: {
-          comment: comment,
-          interpolation: interpolation
-        }
-      }
-    });
-    Prism.languages.insertBefore('coffeescript', 'string', {
-      'inline-javascript': {
-        pattern: /`(?:\\[\s\S]|[^\\`])*`/,
-        inside: {
-          delimiter: {
-            pattern: /^`|`$/,
-            alias: 'punctuation'
-          },
-          script: {
-            pattern: /[\s\S]+/,
-            alias: 'language-javascript',
-            inside: Prism.languages.javascript
-          }
-        }
-      },
-      // Block strings
-      'multiline-string': [
-        {
-          pattern: /'''[\s\S]*?'''/,
-          greedy: true,
-          alias: 'string'
-        },
-        {
-          pattern: /"""[\s\S]*?"""/,
-          greedy: true,
-          alias: 'string',
-          inside: {
-            interpolation: interpolation
-          }
-        }
-      ]
-    });
-    Prism.languages.insertBefore('coffeescript', 'keyword', {
-      // Object property
-      property: /(?!\d)\w+(?=\s*:(?!:))/
-    });
-    delete Prism.languages.coffeescript['template-string'];
-    Prism.languages.coffee = Prism.languages.coffeescript;
-  })(Prism);
+	    // Ignore comments starting with { to privilege string interpolation highlighting
+	    var comment = /#(?!\{).+/;
+	    var interpolation = {
+	      pattern: /#\{[^}]+\}/,
+	      alias: 'variable'
+	    };
+	    Prism.languages.coffeescript = Prism.languages.extend('javascript', {
+	      comment: comment,
+	      string: [
+	        // Strings are multiline
+	        {
+	          pattern: /'(?:\\[\s\S]|[^\\'])*'/,
+	          greedy: true
+	        },
+	        {
+	          // Strings are multiline
+	          pattern: /"(?:\\[\s\S]|[^\\"])*"/,
+	          greedy: true,
+	          inside: {
+	            interpolation: interpolation
+	          }
+	        }
+	      ],
+	      keyword:
+	        /\b(?:and|break|by|catch|class|continue|debugger|delete|do|each|else|extend|extends|false|finally|for|if|in|instanceof|is|isnt|let|loop|namespace|new|no|not|null|of|off|on|or|own|return|super|switch|then|this|throw|true|try|typeof|undefined|unless|until|when|while|window|with|yes|yield)\b/,
+	      'class-member': {
+	        pattern: /@(?!\d)\w+/,
+	        alias: 'variable'
+	      }
+	    });
+	    Prism.languages.insertBefore('coffeescript', 'comment', {
+	      'multiline-comment': {
+	        pattern: /###[\s\S]+?###/,
+	        alias: 'comment'
+	      },
+	      // Block regexp can contain comments and interpolation
+	      'block-regex': {
+	        pattern: /\/{3}[\s\S]*?\/{3}/,
+	        alias: 'regex',
+	        inside: {
+	          comment: comment,
+	          interpolation: interpolation
+	        }
+	      }
+	    });
+	    Prism.languages.insertBefore('coffeescript', 'string', {
+	      'inline-javascript': {
+	        pattern: /`(?:\\[\s\S]|[^\\`])*`/,
+	        inside: {
+	          delimiter: {
+	            pattern: /^`|`$/,
+	            alias: 'punctuation'
+	          },
+	          script: {
+	            pattern: /[\s\S]+/,
+	            alias: 'language-javascript',
+	            inside: Prism.languages.javascript
+	          }
+	        }
+	      },
+	      // Block strings
+	      'multiline-string': [
+	        {
+	          pattern: /'''[\s\S]*?'''/,
+	          greedy: true,
+	          alias: 'string'
+	        },
+	        {
+	          pattern: /"""[\s\S]*?"""/,
+	          greedy: true,
+	          alias: 'string',
+	          inside: {
+	            interpolation: interpolation
+	          }
+	        }
+	      ]
+	    });
+	    Prism.languages.insertBefore('coffeescript', 'keyword', {
+	      // Object property
+	      property: /(?!\d)\w+(?=\s*:(?!:))/
+	    });
+	    delete Prism.languages.coffeescript['template-string'];
+	    Prism.languages.coffee = Prism.languages.coffeescript;
+	  })(Prism);
+	}
+	return coffeescript_1;
 }
 
 var concurnas_1;
@@ -43060,8 +43095,8 @@ refractor.register(chaiscript_1);
 refractor.register(cil_1);
 refractor.register(clojure_1);
 refractor.register(cmake_1);
-refractor.register(requireCobol());
-refractor.register(coffeescript_1);
+refractor.register(cobol_1);
+refractor.register(requireCoffeescript());
 refractor.register(requireConcurnas());
 refractor.register(requireCoq());
 refractor.register(requireCpp());
@@ -44585,10 +44620,19 @@ TextField.defaultProps = {
   onKeyDown: function onKeyDown() {}
 };
 
-var css$V = ".CheckBox_module_root__82d23531 {\n  cursor: pointer;\n  gap: 10px;\n}\n.CheckBox_module_root__82d23531.CheckBox_module_positionLeft__82d23531 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.CheckBox_module_root__82d23531.CheckBox_module_positionRight__82d23531 {\n  display: flex;\n  flex-direction: row-reverse;\n  justify-content: flex-end;\n  align-items: center;\n}\n.CheckBox_module_root__82d23531 input[type=checkbox] {\n  opacity: 0;\n  z-index: 1;\n  position: absolute;\n  width: 1px;\n  height: 1px;\n}\n.CheckBox_module_root__82d23531.CheckBox_module_disabled__82d23531 {\n  cursor: default;\n}\n.CheckBox_module_root__82d23531 .CheckBox_module_icon__82d23531 {\n  display: inline-block;\n  border-radius: 0.375rem;\n}\n.CheckBox_module_root__82d23531 .CheckBox_module_icon__82d23531.CheckBox_module_iconSm__82d23531 {\n  width: 1rem;\n  height: 1rem;\n}\n.CheckBox_module_root__82d23531 .CheckBox_module_icon__82d23531.CheckBox_module_iconMd__82d23531 {\n  width: 1.25rem;\n  height: 1.25rem;\n}\n.CheckBox_module_root__82d23531 .CheckBox_module_icon__82d23531.CheckBox_module_iconLg__82d23531 {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.CheckBox_module_root__82d23531 input:focus + .CheckBox_module_icon__82d23531 {\n  box-shadow: 0px 0px 0px 8px rgba(15, 98, 254, 0.125);\n}\n.CheckBox_module_root__82d23531 [data-elem=label] {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n          user-select: none;\n}";
-var modules_066398a2 = {"root":"CheckBox_module_root__82d23531","position-left":"CheckBox_module_positionLeft__82d23531","position-right":"CheckBox_module_positionRight__82d23531","disabled":"CheckBox_module_disabled__82d23531","icon":"CheckBox_module_icon__82d23531","icon-sm":"CheckBox_module_iconSm__82d23531","icon-md":"CheckBox_module_iconMd__82d23531","icon-lg":"CheckBox_module_iconLg__82d23531"};
+var css$V = ".CheckBox_module_root__b2c202fd {\n  cursor: pointer;\n  gap: 10px;\n  color: var(--grey1);\n}\n.CheckBox_module_root__b2c202fd.CheckBox_module_positionLeft__b2c202fd {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.CheckBox_module_root__b2c202fd.CheckBox_module_positionRight__b2c202fd {\n  display: flex;\n  flex-direction: row-reverse;\n  justify-content: flex-end;\n  align-items: center;\n}\n.CheckBox_module_root__b2c202fd input[type=checkbox] {\n  opacity: 0;\n  z-index: 1;\n  position: absolute;\n  width: 1px;\n  height: 1px;\n}\n.CheckBox_module_root__b2c202fd.CheckBox_module_disabled__b2c202fd {\n  cursor: default;\n  color: var(--grey4);\n}\n.CheckBox_module_root__b2c202fd.CheckBox_module_disabled__b2c202fd .CheckBox_module_icon__b2c202fd rect:nth-of-type(1) {\n  fill: var(--grey10);\n}\n.CheckBox_module_root__b2c202fd.CheckBox_module_disabled__b2c202fd .CheckBox_module_icon__b2c202fd rect:nth-of-type(2) {\n  stroke: var(--grey5);\n}\n.CheckBox_module_root__b2c202fd.CheckBox_module_disabled__b2c202fd .CheckBox_module_icon__b2c202fd path {\n  stroke: var(--grey5);\n}\n.CheckBox_module_root__b2c202fd.CheckBox_module_selected__b2c202fd {\n  color: var(--dark-grey);\n}\n.CheckBox_module_root__b2c202fd:hover:not(.CheckBox_module_disabled__b2c202fd) {\n  color: var(--dark-grey);\n}\n.CheckBox_module_root__b2c202fd:hover:not(.CheckBox_module_disabled__b2c202fd) .CheckBox_module_icon__b2c202fd rect:nth-of-type(1) {\n  fill: var(--info-bg);\n}\n.CheckBox_module_root__b2c202fd:hover:not(.CheckBox_module_disabled__b2c202fd) .CheckBox_module_icon__b2c202fd rect:nth-of-type(2) {\n  stroke: var(--highlight);\n}\n.CheckBox_module_root__b2c202fd:hover:not(.CheckBox_module_disabled__b2c202fd) .CheckBox_module_icon__b2c202fd path {\n  stroke: var(--highlight);\n}\n.CheckBox_module_root__b2c202fd .CheckBox_module_icon__b2c202fd {\n  display: inline-block;\n  border-radius: 0.25rem;\n}\n.CheckBox_module_root__b2c202fd .CheckBox_module_icon__b2c202fd.CheckBox_module_iconSm__b2c202fd {\n  width: 1rem;\n  height: 1rem;\n}\n.CheckBox_module_root__b2c202fd .CheckBox_module_icon__b2c202fd.CheckBox_module_iconMd__b2c202fd {\n  width: 1.25rem;\n  height: 1.25rem;\n}\n.CheckBox_module_root__b2c202fd .CheckBox_module_icon__b2c202fd.CheckBox_module_iconLg__b2c202fd {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.CheckBox_module_root__b2c202fd input:focus + .CheckBox_module_icon__b2c202fd {\n  box-shadow: 0px 0px 0px 0.25rem rgba(15, 98, 254, 0.125);\n}\n.CheckBox_module_root__b2c202fd [data-elem=label] {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n          user-select: none;\n}";
+var modules_066398a2 = {"root":"CheckBox_module_root__b2c202fd","position-left":"CheckBox_module_positionLeft__b2c202fd","position-right":"CheckBox_module_positionRight__b2c202fd","disabled":"CheckBox_module_disabled__b2c202fd","icon":"CheckBox_module_icon__b2c202fd","selected":"CheckBox_module_selected__b2c202fd","icon-sm":"CheckBox_module_iconSm__b2c202fd","icon-md":"CheckBox_module_iconMd__b2c202fd","icon-lg":"CheckBox_module_iconLg__b2c202fd"};
 n(css$V,{});
 
+var getIcon = function getIcon(checked, intermediate) {
+  if (checked) {
+    if (intermediate) {
+      return CheckboxIcon.Intermediate;
+    }
+    return CheckboxIcon.Checked;
+  }
+  return CheckboxIcon.UnChecked;
+};
 var Checkbox = function Checkbox(props) {
   // eslint-disable-next-line object-curly-newline
   var label = props.label,
@@ -44598,7 +44642,8 @@ var Checkbox = function Checkbox(props) {
     position = props.position,
     size = props.size,
     className = props.className,
-    disabled = props.disabled;
+    disabled = props.disabled,
+    intermediate = props.intermediate;
   var _useRef = React.useRef(checked !== undefined),
     isControlled = _useRef.current;
 
@@ -44617,8 +44662,9 @@ var Checkbox = function Checkbox(props) {
     }
   };
   var isChecked = isControlled ? checked : uncontrolledChecked;
+  var Icon = getIcon(isChecked, intermediate);
   return /*#__PURE__*/jsxRuntime.jsxs("label", {
-    className: classes(modules_066398a2.root, modules_066398a2["position-".concat(position)], className, disabled ? modules_066398a2.disabled : ''),
+    className: classes(modules_066398a2.root, modules_066398a2["position-".concat(position)], className, disabled ? modules_066398a2.disabled : '', isChecked ? modules_066398a2.selected : ''),
     children: [/*#__PURE__*/jsxRuntime.jsx("input", _objectSpread2(_objectSpread2({
       disabled: disabled,
       type: "checkbox",
@@ -44627,11 +44673,7 @@ var Checkbox = function Checkbox(props) {
       checked: checked
     } : {}), {}, {
       onChange: handleChange
-    })), isChecked ? /*#__PURE__*/jsxRuntime.jsx(CheckboxIcon.Checked, {
-      "data-elem": "icon",
-      className: classes(modules_066398a2["icon-".concat(size)], modules_066398a2.icon)
-    }) : /*#__PURE__*/jsxRuntime.jsx(CheckboxIcon.UnChecked, {
-      "data-elem": "icon",
+    })), /*#__PURE__*/jsxRuntime.jsx(Icon, {
       className: classes(modules_066398a2["icon-".concat(size)], modules_066398a2.icon)
     }), label && /*#__PURE__*/jsxRuntime.jsx("span", {
       "data-elem": "label",
@@ -44658,8 +44700,8 @@ Checkbox.defaultProps = {
   onChange: function onChange() {}
 };
 
-var css$U = ".Radio_module_root__0f04dc19 {\n  cursor: pointer;\n  gap: 10px;\n}\n.Radio_module_root__0f04dc19.Radio_module_positionLeft__0f04dc19 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.Radio_module_root__0f04dc19.Radio_module_positionRight__0f04dc19 {\n  display: flex;\n  flex-direction: row-reverse;\n  justify-content: flex-end;\n  align-items: center;\n}\n.Radio_module_root__0f04dc19.Radio_module_disabled__0f04dc19 {\n  cursor: default;\n}\n.Radio_module_root__0f04dc19 input[type=radio] {\n  opacity: 0;\n  z-index: 1;\n  position: absolute;\n  width: 1px;\n  height: 1px;\n}\n.Radio_module_root__0f04dc19 .Radio_module_icon__0f04dc19 {\n  display: inline-block;\n  border-radius: 50%;\n}\n.Radio_module_root__0f04dc19 .Radio_module_icon__0f04dc19.Radio_module_iconSm__0f04dc19 {\n  width: 1rem;\n  height: 1rem;\n}\n.Radio_module_root__0f04dc19 .Radio_module_icon__0f04dc19.Radio_module_iconMd__0f04dc19 {\n  width: 1.25rem;\n  height: 1.25rem;\n}\n.Radio_module_root__0f04dc19 .Radio_module_icon__0f04dc19.Radio_module_iconLg__0f04dc19 {\n  width: 1.5rem;\n  height: 2rem;\n}\n.Radio_module_root__0f04dc19 input:focus + .Radio_module_icon__0f04dc19 {\n  box-shadow: 0px 0px 0px 8px rgba(15, 98, 254, 0.125);\n}\n.Radio_module_root__0f04dc19 [data-elem=label] {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n          user-select: none;\n}";
-var modules_3705961f = {"root":"Radio_module_root__0f04dc19","position-left":"Radio_module_positionLeft__0f04dc19","position-right":"Radio_module_positionRight__0f04dc19","disabled":"Radio_module_disabled__0f04dc19","icon":"Radio_module_icon__0f04dc19","icon-sm":"Radio_module_iconSm__0f04dc19","icon-md":"Radio_module_iconMd__0f04dc19","icon-lg":"Radio_module_iconLg__0f04dc19"};
+var css$U = ".Radio_module_root__8f69abe5 {\n  cursor: pointer;\n  gap: 10px;\n  color: var(--grey1);\n}\n.Radio_module_root__8f69abe5.Radio_module_positionLeft__8f69abe5 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.Radio_module_root__8f69abe5.Radio_module_positionRight__8f69abe5 {\n  display: flex;\n  flex-direction: row-reverse;\n  justify-content: flex-end;\n  align-items: center;\n}\n.Radio_module_root__8f69abe5.Radio_module_disabled__8f69abe5 {\n  cursor: default;\n  color: var(--grey4);\n}\n.Radio_module_root__8f69abe5.Radio_module_disabled__8f69abe5 .Radio_module_icon__8f69abe5 rect:nth-of-type(1) {\n  stroke: var(--grey5);\n  fill: var(--grey10);\n}\n.Radio_module_root__8f69abe5.Radio_module_disabled__8f69abe5 .Radio_module_icon__8f69abe5 rect:nth-of-type(2) {\n  stroke: var(--grey5);\n}\n.Radio_module_root__8f69abe5.Radio_module_disabled__8f69abe5 .Radio_module_icon__8f69abe5 circle {\n  fill: var(--grey5);\n}\n.Radio_module_root__8f69abe5.Radio_module_selected__8f69abe5 {\n  color: var(--dark-grey);\n}\n.Radio_module_root__8f69abe5:hover:not(.Radio_module_disabled__8f69abe5) {\n  color: var(--dark-grey);\n}\n.Radio_module_root__8f69abe5:hover:not(.Radio_module_disabled__8f69abe5) .Radio_module_icon__8f69abe5 rect:nth-of-type(1) {\n  stroke: var(--highlight);\n  fill: var(--info-bg);\n}\n.Radio_module_root__8f69abe5 input[type=radio] {\n  opacity: 0;\n  z-index: 1;\n  position: absolute;\n  width: 1px;\n  height: 1px;\n}\n.Radio_module_root__8f69abe5 .Radio_module_icon__8f69abe5 {\n  display: inline-block;\n  border-radius: 50%;\n}\n.Radio_module_root__8f69abe5 .Radio_module_icon__8f69abe5.Radio_module_iconSm__8f69abe5 {\n  width: 1rem;\n  height: 1rem;\n}\n.Radio_module_root__8f69abe5 .Radio_module_icon__8f69abe5.Radio_module_iconMd__8f69abe5 {\n  width: 1.25rem;\n  height: 1.25rem;\n}\n.Radio_module_root__8f69abe5 .Radio_module_icon__8f69abe5.Radio_module_iconLg__8f69abe5 {\n  width: 1.5rem;\n  height: 2rem;\n}\n.Radio_module_root__8f69abe5 input:focus + .Radio_module_icon__8f69abe5 {\n  box-shadow: 0px 0px 0px 0.25rem rgba(15, 98, 254, 0.125);\n}\n.Radio_module_root__8f69abe5 [data-elem=label] {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n          user-select: none;\n}";
+var modules_3705961f = {"root":"Radio_module_root__8f69abe5","position-left":"Radio_module_positionLeft__8f69abe5","position-right":"Radio_module_positionRight__8f69abe5","disabled":"Radio_module_disabled__8f69abe5","icon":"Radio_module_icon__8f69abe5","selected":"Radio_module_selected__8f69abe5","icon-sm":"Radio_module_iconSm__8f69abe5","icon-md":"Radio_module_iconMd__8f69abe5","icon-lg":"Radio_module_iconLg__8f69abe5"};
 n(css$U,{});
 
 var Radio = function Radio(props) {
@@ -44691,7 +44733,7 @@ var Radio = function Radio(props) {
   };
   var isChecked = isControlled ? checked : uncontrolledChecked;
   return /*#__PURE__*/jsxRuntime.jsxs("label", {
-    className: classes(modules_3705961f.root, modules_3705961f["position-".concat(position)], className, disabled ? modules_3705961f.disabled : ''),
+    className: classes(modules_3705961f.root, modules_3705961f["position-".concat(position)], className, disabled ? modules_3705961f.disabled : '', isChecked ? modules_3705961f.selected : ''),
     children: [/*#__PURE__*/jsxRuntime.jsx("input", {
       disabled: disabled,
       type: "radio",
@@ -45263,8 +45305,8 @@ Switch.defaultProps = {
   onChange: function onChange() {}
 };
 
-var css$Q = ".DateAndTimeSelection_module_root__13d18e8b {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  gap: 0.3125rem;\n  padding-inline: 0.75rem;\n  width: 100%;\n}\n.DateAndTimeSelection_module_root__13d18e8b > span {\n  font-weight: 500;\n  font-size: 0.875rem;\n  line-height: 1.3125rem;\n  color: var(--dark-grey);\n}\n.DateAndTimeSelection_module_root__13d18e8b > div {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n  width: 100%;\n  gap: 0.25rem;\n}\n.DateAndTimeSelection_module_root__13d18e8b > div .DateAndTimeSelection_module_input__13d18e8b {\n  flex: 1;\n  background: var(--white);\n  border: 1px solid var(--grey3);\n  border-radius: 4px;\n  padding: 0.75rem 1rem;\n}\n.DateAndTimeSelection_module_root__13d18e8b > div .DateAndTimeSelection_module_input__13d18e8b > label > div[data-elem=base-cell] {\n  padding: 0 0;\n  border: none;\n}\n.DateAndTimeSelection_module_root__13d18e8b > div .DateAndTimeSelection_module_input__13d18e8b > label > div[data-elem=base-cell] > span[data-elem=component2] > input[data-elem=input] {\n  padding: 0;\n  color: var(--dark-grey);\n}\n.DateAndTimeSelection_module_root__13d18e8b.DateAndTimeSelection_module_range__13d18e8b > span:nth-last-child(2) {\n  margin-top: 0.25rem;\n}";
-var modules_a8ff92a5 = {"root":"DateAndTimeSelection_module_root__13d18e8b","input":"DateAndTimeSelection_module_input__13d18e8b","range":"DateAndTimeSelection_module_range__13d18e8b"};
+var css$Q = ".DateAndTimeSelection_module_root__beb12207 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: flex-start;\n  gap: 0.3125rem;\n  padding-inline: 0.75rem;\n  width: 100%;\n}\n.DateAndTimeSelection_module_root__beb12207 > span {\n  font-weight: 500;\n  font-size: 0.875rem;\n  line-height: 1.3125rem;\n  color: var(--dark-grey);\n}\n.DateAndTimeSelection_module_root__beb12207 > div {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n  width: 100%;\n  gap: 0.25rem;\n}\n.DateAndTimeSelection_module_root__beb12207 > div .DateAndTimeSelection_module_input__beb12207 {\n  flex: 1;\n  background: var(--white);\n  border: 1px solid var(--grey3);\n  border-radius: 4px;\n  padding: 0.75rem 1rem;\n}\n.DateAndTimeSelection_module_root__beb12207 > div .DateAndTimeSelection_module_input__beb12207 > label > div[data-elem=base-cell] {\n  padding: 0 0;\n  border: none;\n  width: 9.063rem;\n}\n.DateAndTimeSelection_module_root__beb12207 > div .DateAndTimeSelection_module_input__beb12207 > label > div[data-elem=base-cell] > span[data-elem=component2] > input[data-elem=input] {\n  padding: 0;\n  color: var(--dark-grey);\n  width: -moz-fit-content;\n  width: fit-content;\n}\n.DateAndTimeSelection_module_root__beb12207.DateAndTimeSelection_module_range__beb12207 > span:nth-last-child(2) {\n  margin-top: 0.25rem;\n}";
+var modules_a8ff92a5 = {"root":"DateAndTimeSelection_module_root__beb12207","input":"DateAndTimeSelection_module_input__beb12207","range":"DateAndTimeSelection_module_range__beb12207"};
 n(css$Q,{});
 
 var DateAndTimeSelection = function DateAndTimeSelection(_ref) {
@@ -45350,7 +45392,7 @@ var DateAndTimeSelection = function DateAndTimeSelection(_ref) {
           }
         }
         if (key === 'end') {
-          if (isAfter(fromUnixTime(validUnix), fromUnixTime(selectedRange.unix[1]))) {
+          if (isAfter(fromUnixTime(validUnix), fromUnixTime(selectedRange.unix[0]))) {
             setSelectedRange({
               dates: [selectedRange.dates[0], "".concat(rangeValue.date, " ").concat(rangeValue.month, " ").concat(rangeValue === null || rangeValue === void 0 ? void 0 : rangeValue.year)],
               unix: [selectedRange.unix[0], validUnix]
@@ -45386,7 +45428,7 @@ var DateAndTimeSelection = function DateAndTimeSelection(_ref) {
           }
         }
         if (key === 'end') {
-          if (isAfter(fromUnixTime(validUnix), fromUnixTime(selectedRange.unix[1]))) {
+          if (isAfter(fromUnixTime(validUnix), fromUnixTime(selectedRange.unix[0]))) {
             setSelectedRange({
               dates: [selectedRange.dates[0], "".concat(rangeValue.date, " ").concat(rangeValue.month, " ").concat(rangeValue === null || rangeValue === void 0 ? void 0 : rangeValue.year)],
               unix: [selectedRange.unix[0], validUnix]
@@ -45585,7 +45627,7 @@ var Header = function Header(props) {
         }
       }), /*#__PURE__*/jsxRuntime.jsx("span", {
         className: modules_cf337dc1.title,
-        children: "".concat(selectedMonth.month, " ").concat(selectedMonth.year)
+        children: "".concat(selectedMonth === null || selectedMonth === void 0 ? void 0 : selectedMonth.month, " ").concat(selectedMonth === null || selectedMonth === void 0 ? void 0 : selectedMonth.year)
       }), /*#__PURE__*/jsxRuntime.jsx(Button, {
         size: "auto",
         variant: "text",
@@ -45629,8 +45671,8 @@ var TodayIndicator = function TodayIndicator(_ref) {
   });
 };
 
-var css$M = ".Dates_module_root__8d11831d {\n\tdisplay: grid;\n\tgrid-template-columns: repeat(7, 1fr);\n\talign-items: center;\n\tflex-wrap: wrap;\n}\n.Dates_module_root__8d11831d > div {\n\tflex-basis: 14.28%;\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: center;\n\talign-items: center;\n\tmargin-bottom: 0.25rem;\n\tcursor: pointer;\n\talign-self: center;\n\t-webkit-user-select: none;\n\t-moz-user-select: none;\n\tuser-select: none;\n}\n.Dates_module_root__8d11831d > div.Dates_module_minInRange__8d11831d {\n\tbackground-color: var(--highlight);\n\tborder-radius: 1.5rem 0rem 0rem 1.5rem;\n}\n.Dates_module_root__8d11831d > div.Dates_module_minInRange__8d11831d .Dates_module_date__8d11831d {\n\tcolor: var(--white);\n}\n.Dates_module_root__8d11831d > div.Dates_module_minInRange__8d11831d:hover .Dates_module_date__8d11831d {\n\tbackground: var(--highlight);\n\tcolor: var(--white);\n\tbox-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n}\n.Dates_module_root__8d11831d > div.Dates_module_minInRange__8d11831d.Dates_module_today__8d11831d {\n\tdisplay: flex;\n\tflex-direction: column;\n\tjustify-content: flex-start;\n\talign-items: center;\n}\n.Dates_module_root__8d11831d > div.Dates_module_minInRange__8d11831d.Dates_module_today__8d11831d .Dates_module_date__8d11831d {\n\tcolor: var(--white);\n\tfont-weight: 500;\n}\n.Dates_module_dates__8d11831d div:hover .Dates_module_date__8d11831d {\n\tbackground: var(--background);\n\tcolor: var(--highlight);\n\tbox-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);\n}\n.Dates_module_root__8d11831d > div.Dates_module_minInRange__8d11831d.Dates_module_today__8d11831d .Dates_module_indicator__8d11831d {\n\tdisplay: none;\n}\n.Dates_module_root__8d11831d > div.Dates_module_minInRange__8d11831d.Dates_module_todaySelected__8d11831d {\n\tdisplay: flex;\n\tflex-direction: column;\n\tjustify-content: flex-start;\n\talign-items: center;\n}\n.Dates_module_root__8d11831d > div.Dates_module_minInRange__8d11831d.Dates_module_todaySelected__8d11831d .Dates_module_date__8d11831d {\n\tfont-weight: 500;\n\tcolor: var(--white);\n}\n.Dates_module_root__8d11831d > div.Dates_module_minInRange__8d11831d.Dates_module_todaySelected__8d11831d .Dates_module_indicator__8d11831d {\n\tdisplay: none;\n}\n.Dates_module_root__8d11831d > div.Dates_module_maxInRange__8d11831d {\n\tbackground-color: var(--highlight);\n\tborder-radius: 0rem 1.5rem 1.5rem 0rem;\n}\n.Dates_module_root__8d11831d > div.Dates_module_maxInRange__8d11831d .Dates_module_date__8d11831d {\n\tcolor: var(--white);\n}\n.Dates_module_root__8d11831d > div.Dates_module_maxInRange__8d11831d.Dates_module_todaySelected__8d11831d {\n\tdisplay: flex;\n\tflex-direction: column;\n\tjustify-content: flex-start;\n\talign-items: center;\n\tdisplay: none;\n}\n.Dates_module_root__8d11831d > div.Dates_module_maxInRange__8d11831d.Dates_module_todaySelected__8d11831d .Dates_module_date__8d11831d {\n\tfont-weight: 500;\n\tcolor: var(--white);\n\tbox-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);\n}\n.Dates_module_root__8d11831d > div.Dates_module_maxInRange__8d11831d.Dates_module_todaySelected__8d11831d .Dates_module_indicator__8d11831d {\n\tdisplay: none;\n}\n.Dates_module_root__8d11831d > div.Dates_module_maxInRange__8d11831d.Dates_module_today__8d11831d {\n\tdisplay: flex;\n\tflex-direction: column;\n\tjustify-content: flex-start;\n\talign-items: center;\n}\n.Dates_module_root__8d11831d > div.Dates_module_maxInRange__8d11831d.Dates_module_today__8d11831d .Dates_module_date__8d11831d {\n\tcolor: var(--white);\n\tfont-weight: 500;\n}\n.Dates_module_root__8d11831d > div.Dates_module_maxInRange__8d11831d.Dates_module_today__8d11831d .Dates_module_indicator__8d11831d {\n\tdisplay: none;\n}\n.Dates_module_root__8d11831d > div.Dates_module_maxInRange__8d11831d:hover .Dates_module_date__8d11831d {\n\tbackground: var(--highlight);\n\tcolor: var(--white);\n\tbox-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);\n}\n.Dates_module_root__8d11831d > div.Dates_module_midInRange__8d11831d {\n\tbackground: var(--background);\n\tborder-radius: 0rem;\n}\n.Dates_module_root__8d11831d > div.Dates_module_midInRange__8d11831d .Dates_module_date__8d11831d {\n\tcolor: var(--highlight);\n}\n.Dates_module_root__8d11831d > div.Dates_module_midInRange__8d11831d.Dates_module_todaySelected__8d11831d {\n\tdisplay: flex;\n\tflex-direction: column;\n\tjustify-content: flex-start;\n\talign-items: center;\n}\n.Dates_module_root__8d11831d > div.Dates_module_midInRange__8d11831d.Dates_module_todaySelected__8d11831d .Dates_module_date__8d11831d {\n\tfont-weight: 500;\n\tcolor: var(--white);\n}\n.Dates_module_root__8d11831d > div.Dates_module_midInRange__8d11831d.Dates_module_todaySelected__8d11831d .Dates_module_indicator__8d11831d {\n\tdisplay: none;\n}\n.Dates_module_root__8d11831d > div.Dates_module_midInRangeSelected__8d11831d {\n\tbackground: var(--background);\n\tborder-radius: 0rem;\n}\n.Dates_module_root__8d11831d > div.Dates_module_midInRangeSelected__8d11831d .Dates_module_date__8d11831d {\n\tcolor: var(--white);\n}\n.Dates_module_root__8d11831d > div.Dates_module_midInRangeSelected__8d11831d.Dates_module_todaySelected__8d11831d {\n\tdisplay: flex;\n\tflex-direction: column;\n\tjustify-content: flex-start;\n\talign-items: center;\n}\n.Dates_module_root__8d11831d > div.Dates_module_midInRangeSelected__8d11831d.Dates_module_todaySelected__8d11831d .Dates_module_date__8d11831d {\n\tfont-weight: 500;\n\tcolor: var(--white);\n}\n.Dates_module_root__8d11831d > div.Dates_module_midInRangeSelected__8d11831d.Dates_module_todaySelected__8d11831d .Dates_module_indicator__8d11831d {\n\tdisplay: none;\n}\n.Dates_module_root__8d11831d > div.Dates_module_firstHovered__8d11831d {\n\tbackground: var(--background);\n\tborder-radius: 0rem 1.5rem 1.5rem 0rem;\n}\n.Dates_module_root__8d11831d > div.Dates_module_firstHovered__8d11831d .Dates_module_date__8d11831d {\n\tcolor: var(--highlight);\n}\n.Dates_module_root__8d11831d > div.Dates_module_firstHovered__8d11831d.Dates_module_todaySelected__8d11831d {\n\tdisplay: flex;\n\tflex-direction: column;\n\tjustify-content: flex-start;\n\talign-items: center;\n}\n.Dates_module_root__8d11831d > div.Dates_module_firstHovered__8d11831d.Dates_module_todaySelected__8d11831d .Dates_module_date__8d11831d {\n\tfont-weight: 500;\n\tcolor: var(--white);\n}\n.Dates_module_root__8d11831d > div.Dates_module_firstHovered__8d11831d.Dates_module_todaySelected__8d11831d .Dates_module_indicator__8d11831d {\n\tdisplay: none;\n}\n.Dates_module_root__8d11831d > div.Dates_module_lastHovered__8d11831d {\n\tbackground: var(--background);\n\tborder-radius: 1.5rem 0rem 0rem 1.5rem;\n}\n.Dates_module_root__8d11831d > div.Dates_module_lastHovered__8d11831d .Dates_module_date__8d11831d {\n\tcolor: var(--highlight);\n}\n.Dates_module_root__8d11831d > div.Dates_module_lastHovered__8d11831d.Dates_module_todaySelected__8d11831d {\n\tdisplay: flex;\n\tflex-direction: column;\n\tjustify-content: flex-start;\n\talign-items: center;\n}\n.Dates_module_root__8d11831d > div.Dates_module_lastHovered__8d11831d.Dates_module_todaySelected__8d11831d .Dates_module_date__8d11831d {\n\tfont-weight: 500;\n\tcolor: var(--white);\n}\n.Dates_module_root__8d11831d > div.Dates_module_lastHovered__8d11831d.Dates_module_todaySelected__8d11831d .Dates_module_indicator__8d11831d {\n\tdisplay: none;\n}\n.Dates_module_root__8d11831d > div.Dates_module_today__8d11831d {\n\tdisplay: flex;\n\tflex-direction: column;\n\tjustify-content: flex-start;\n\talign-items: center;\n}\n.Dates_module_root__8d11831d > div.Dates_module_today__8d11831d .Dates_module_date__8d11831d {\n\tcolor: var(--highlight);\n\tfont-weight: 500;\n}\n.Dates_module_root__8d11831d > div.Dates_module_today__8d11831d .Dates_module_indicator__8d11831d {\n\tmargin-top: -0.825rem;\n}\n.Dates_module_root__8d11831d > div.Dates_module_todaySelected__8d11831d {\n\tdisplay: flex;\n\tflex-direction: column;\n\tjustify-content: flex-start;\n\talign-items: center;\n}\n.Dates_module_root__8d11831d > div.Dates_module_todaySelected__8d11831d .Dates_module_date__8d11831d {\n\tfont-weight: 500;\n\tcolor: var(--white);\n}\n.Dates_module_root__8d11831d > div.Dates_module_todaySelected__8d11831d .Dates_module_indicator__8d11831d {\n\tmargin-top: -0.825rem;\n\tfill: var(--white);\n}\n.Dates_module_root__8d11831d > div .Dates_module_date__8d11831d {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: center;\n\talign-items: center;\n\ttext-align: center;\n\tvertical-align: middle;\n\tborder-radius: 1.5rem;\n\theight: 2.5rem;\n\twidth: 2.5rem;\n\tfont-weight: 400;\n\tfont-size: 0.875rem;\n\tcolor: var(--black);\n}\n.Dates_module_root__8d11831d > div .Dates_module_date__8d11831d.Dates_module_selected__8d11831d {\n\tbackground-color: var(--highlight);\n\tcolor: var(--white);\n}\n.Dates_module_root__8d11831d > div .Dates_module_date__8d11831d.Dates_module_unSelected__8d11831d {\n\tbackground-color: var(--white);\n\tborder-color: var(--highlight);\n\tborder-width: 0.125rem;\n\tborder-style: solid;\n\tcolor: var(--black);\n}\n.Dates_module_root__8d11831d > div .Dates_module_date__8d11831d.Dates_module_disabled__8d11831d {\n\tborder-radius: 1.5rem;\n\tcolor: var(--grey2);\n}\n.Dates_module_root__8d11831d > div .Dates_module_date__8d11831d.Dates_module_diffMonth__8d11831d {\n\topacity: 0.6;\n}\n.Dates_module_root__8d11831d > div:hover .Dates_module_date__8d11831d {\n\tbackground: var(--background);\n\tcolor: var(--highlight);\n\tbox-shadow: -2px -2px 4px rgba(166, 166, 166, 0.25), 2px 2px 4px rgba(166, 166, 166, 0.24);\n}\n.Dates_module_root__8d11831d > div:hover .Dates_module_selected__8d11831d {\n\tbackground-color: var(--highlight);\n\tcolor: var(--white);\n}\n.Dates_module_root__8d11831d > div:hover .Dates_module_disabled__8d11831d {\n\tbackground: transparent;\n\tbox-shadow: none;\n\tborder-radius: 1.5rem;\n\tcolor: var(--grey2);\n} \n";
-var modules_b02dadcc = {"root":"Dates_module_root__8d11831d","minInRange":"Dates_module_minInRange__8d11831d","date":"Dates_module_date__8d11831d","today":"Dates_module_today__8d11831d","dates":"Dates_module_dates__8d11831d","indicator":"Dates_module_indicator__8d11831d","today-selected":"Dates_module_todaySelected__8d11831d","maxInRange":"Dates_module_maxInRange__8d11831d","midInRange":"Dates_module_midInRange__8d11831d","midInRangeSelected":"Dates_module_midInRangeSelected__8d11831d","first-hovered":"Dates_module_firstHovered__8d11831d","last-hovered":"Dates_module_lastHovered__8d11831d","selected":"Dates_module_selected__8d11831d","unSelected":"Dates_module_unSelected__8d11831d","disabled":"Dates_module_disabled__8d11831d","diffMonth":"Dates_module_diffMonth__8d11831d"};
+var css$M = ".Dates_module_root__923ee458 {\n  display: grid;\n  grid-template-columns: repeat(7, 1fr);\n  align-items: center;\n  flex-wrap: wrap;\n}\n.Dates_module_root__923ee458 > div {\n  flex-basis: 14.28%;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  margin-bottom: 0.25rem;\n  cursor: pointer;\n  align-self: center;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n          user-select: none;\n}\n.Dates_module_root__923ee458 > div.Dates_module_minInRange__923ee458 {\n  background-color: var(--highlight);\n  border-radius: 1.5rem 0rem 0rem 1.5rem;\n}\n.Dates_module_root__923ee458 > div.Dates_module_minInRange__923ee458 .Dates_module_date__923ee458 {\n  color: var(--white);\n}\n.Dates_module_root__923ee458 > div.Dates_module_minInRange__923ee458:hover .Dates_module_date__923ee458 {\n  background: var(--highlight);\n  color: var(--white);\n  box-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);\n}\n.Dates_module_root__923ee458 > div.Dates_module_minInRange__923ee458.Dates_module_today__923ee458 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: center;\n}\n.Dates_module_root__923ee458 > div.Dates_module_minInRange__923ee458.Dates_module_today__923ee458 .Dates_module_date__923ee458 {\n  color: var(--white);\n  font-weight: 500;\n}\n.Dates_module_root__923ee458 > div.Dates_module_minInRange__923ee458.Dates_module_today__923ee458 .Dates_module_indicator__923ee458 {\n  display: none;\n}\n.Dates_module_root__923ee458 > div.Dates_module_minInRange__923ee458.Dates_module_todaySelected__923ee458 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: center;\n}\n.Dates_module_root__923ee458 > div.Dates_module_minInRange__923ee458.Dates_module_todaySelected__923ee458 .Dates_module_date__923ee458 {\n  font-weight: 500;\n  color: var(--white);\n}\n.Dates_module_root__923ee458 > div.Dates_module_minInRange__923ee458.Dates_module_todaySelected__923ee458 .Dates_module_indicator__923ee458 {\n  display: none;\n}\n.Dates_module_root__923ee458 > div.Dates_module_maxInRange__923ee458 {\n  background-color: var(--highlight);\n  border-radius: 0rem 1.5rem 1.5rem 0rem;\n}\n.Dates_module_root__923ee458 > div.Dates_module_maxInRange__923ee458 .Dates_module_date__923ee458 {\n  color: var(--white);\n}\n.Dates_module_root__923ee458 > div.Dates_module_maxInRange__923ee458.Dates_module_todaySelected__923ee458 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: center;\n  display: none;\n}\n.Dates_module_root__923ee458 > div.Dates_module_maxInRange__923ee458.Dates_module_todaySelected__923ee458 .Dates_module_date__923ee458 {\n  font-weight: 500;\n  color: var(--white);\n}\n.Dates_module_root__923ee458 > div.Dates_module_maxInRange__923ee458.Dates_module_todaySelected__923ee458 .Dates_module_indicator__923ee458 {\n  display: none;\n}\n.Dates_module_root__923ee458 > div.Dates_module_maxInRange__923ee458.Dates_module_today__923ee458 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: center;\n}\n.Dates_module_root__923ee458 > div.Dates_module_maxInRange__923ee458.Dates_module_today__923ee458 .Dates_module_date__923ee458 {\n  color: var(--white);\n  font-weight: 500;\n}\n.Dates_module_root__923ee458 > div.Dates_module_maxInRange__923ee458.Dates_module_today__923ee458 .Dates_module_indicator__923ee458 {\n  display: none;\n}\n.Dates_module_root__923ee458 > div.Dates_module_maxInRange__923ee458:hover .Dates_module_date__923ee458 {\n  background: var(--highlight);\n  color: var(--white);\n  box-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);\n}\n.Dates_module_root__923ee458 > div.Dates_module_midInRange__923ee458 {\n  background: var(--background);\n  border-radius: 0rem;\n}\n.Dates_module_root__923ee458 > div.Dates_module_midInRange__923ee458 .Dates_module_date__923ee458 {\n  color: var(--highlight);\n}\n.Dates_module_root__923ee458 > div.Dates_module_midInRange__923ee458.Dates_module_todaySelected__923ee458 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: center;\n}\n.Dates_module_root__923ee458 > div.Dates_module_midInRange__923ee458.Dates_module_todaySelected__923ee458 .Dates_module_date__923ee458 {\n  font-weight: 500;\n  color: var(--white);\n}\n.Dates_module_root__923ee458 > div.Dates_module_midInRange__923ee458.Dates_module_todaySelected__923ee458 .Dates_module_indicator__923ee458 {\n  display: none;\n}\n.Dates_module_root__923ee458 > div.Dates_module_midInRangeSelected__923ee458 {\n  background: var(--background);\n  border-radius: 0rem;\n}\n.Dates_module_root__923ee458 > div.Dates_module_midInRangeSelected__923ee458 .Dates_module_date__923ee458 {\n  color: var(--white);\n}\n.Dates_module_root__923ee458 > div.Dates_module_midInRangeSelected__923ee458.Dates_module_todaySelected__923ee458 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: center;\n}\n.Dates_module_root__923ee458 > div.Dates_module_midInRangeSelected__923ee458.Dates_module_todaySelected__923ee458 .Dates_module_date__923ee458 {\n  font-weight: 500;\n  color: var(--white);\n}\n.Dates_module_root__923ee458 > div.Dates_module_midInRangeSelected__923ee458.Dates_module_todaySelected__923ee458 .Dates_module_indicator__923ee458 {\n  display: none;\n}\n.Dates_module_root__923ee458 > div.Dates_module_firstHovered__923ee458 {\n  background: var(--background);\n  border-radius: 0rem 1.5rem 1.5rem 0rem;\n}\n.Dates_module_root__923ee458 > div.Dates_module_firstHovered__923ee458 .Dates_module_date__923ee458 {\n  color: var(--highlight);\n}\n.Dates_module_root__923ee458 > div.Dates_module_firstHovered__923ee458.Dates_module_todaySelected__923ee458 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: center;\n}\n.Dates_module_root__923ee458 > div.Dates_module_firstHovered__923ee458.Dates_module_todaySelected__923ee458 .Dates_module_date__923ee458 {\n  font-weight: 500;\n  color: var(--white);\n}\n.Dates_module_root__923ee458 > div.Dates_module_firstHovered__923ee458.Dates_module_todaySelected__923ee458 .Dates_module_indicator__923ee458 {\n  display: none;\n}\n.Dates_module_root__923ee458 > div.Dates_module_lastHovered__923ee458 {\n  background: var(--background);\n  border-radius: 1.5rem 0rem 0rem 1.5rem;\n}\n.Dates_module_root__923ee458 > div.Dates_module_lastHovered__923ee458 .Dates_module_date__923ee458 {\n  color: var(--highlight);\n}\n.Dates_module_root__923ee458 > div.Dates_module_lastHovered__923ee458.Dates_module_todaySelected__923ee458 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: center;\n}\n.Dates_module_root__923ee458 > div.Dates_module_lastHovered__923ee458.Dates_module_todaySelected__923ee458 .Dates_module_date__923ee458 {\n  font-weight: 500;\n  color: var(--white);\n}\n.Dates_module_root__923ee458 > div.Dates_module_lastHovered__923ee458.Dates_module_todaySelected__923ee458 .Dates_module_indicator__923ee458 {\n  display: none;\n}\n.Dates_module_root__923ee458 > div.Dates_module_today__923ee458 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: center;\n}\n.Dates_module_root__923ee458 > div.Dates_module_today__923ee458 .Dates_module_date__923ee458 {\n  color: var(--highlight);\n  font-weight: 500;\n}\n.Dates_module_root__923ee458 > div.Dates_module_today__923ee458 .Dates_module_indicator__923ee458 {\n  margin-top: -0.825rem;\n}\n.Dates_module_root__923ee458 > div.Dates_module_todaySelected__923ee458 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: center;\n}\n.Dates_module_root__923ee458 > div.Dates_module_todaySelected__923ee458 .Dates_module_date__923ee458 {\n  font-weight: 500;\n  color: var(--white);\n}\n.Dates_module_root__923ee458 > div.Dates_module_todaySelected__923ee458 .Dates_module_indicator__923ee458 {\n  margin-top: -0.825rem;\n  fill: var(--white);\n}\n.Dates_module_root__923ee458 > div .Dates_module_date__923ee458 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  text-align: center;\n  vertical-align: middle;\n  border-radius: 1.5rem;\n  height: 2.5rem;\n  width: 2.5rem;\n  font-weight: 400;\n  font-size: 0.875rem;\n  color: var(--black);\n}\n.Dates_module_root__923ee458 > div .Dates_module_date__923ee458.Dates_module_selected__923ee458 {\n  background-color: var(--highlight);\n  color: var(--white);\n}\n.Dates_module_root__923ee458 > div .Dates_module_date__923ee458.Dates_module_unSelected__923ee458 {\n  background-color: var(--white);\n  border-color: var(--highlight);\n  border-width: 0.125rem;\n  border-style: solid;\n  color: var(--black);\n}\n.Dates_module_root__923ee458 > div .Dates_module_date__923ee458.Dates_module_disabled__923ee458 {\n  border-radius: 1.5rem;\n  color: var(--grey2);\n}\n.Dates_module_root__923ee458 > div .Dates_module_date__923ee458.Dates_module_diffMonth__923ee458 {\n  opacity: 0.6;\n}\n.Dates_module_root__923ee458 > div:hover .Dates_module_date__923ee458 {\n  background: var(--background);\n  color: var(--highlight);\n  box-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);\n}\n.Dates_module_root__923ee458 > div:hover .Dates_module_selected__923ee458 {\n  background-color: var(--highlight);\n  color: var(--white);\n}\n.Dates_module_root__923ee458 > div:hover .Dates_module_disabled__923ee458 {\n  background: transparent;\n  box-shadow: none;\n  border-radius: 1.5rem;\n  color: var(--grey2);\n}";
+var modules_b02dadcc = {"root":"Dates_module_root__923ee458","minInRange":"Dates_module_minInRange__923ee458","date":"Dates_module_date__923ee458","today":"Dates_module_today__923ee458","indicator":"Dates_module_indicator__923ee458","today-selected":"Dates_module_todaySelected__923ee458","maxInRange":"Dates_module_maxInRange__923ee458","midInRange":"Dates_module_midInRange__923ee458","midInRangeSelected":"Dates_module_midInRangeSelected__923ee458","first-hovered":"Dates_module_firstHovered__923ee458","last-hovered":"Dates_module_lastHovered__923ee458","selected":"Dates_module_selected__923ee458","unSelected":"Dates_module_unSelected__923ee458","disabled":"Dates_module_disabled__923ee458","diffMonth":"Dates_module_diffMonth__923ee458"};
 n(css$M,{});
 
 var getDatesOfLastWeekOfLastMonth = function getDatesOfLastWeekOfLastMonth(_ref) {
@@ -45728,7 +45770,6 @@ var rangeSelection = function rangeSelection(_ref4) {
   }
   if ((isBefore(date, fromUnixTime((_selectedRange$unix3 = selectedRange.unix) === null || _selectedRange$unix3 === void 0 ? void 0 : _selectedRange$unix3[1])) || isAfter(date, fromUnixTime((_selectedRange$unix4 = selectedRange.unix) === null || _selectedRange$unix4 === void 0 ? void 0 : _selectedRange$unix4[1]))) && isAfter(date, fromUnixTime((_selectedRange$unix5 = selectedRange.unix) === null || _selectedRange$unix5 === void 0 ? void 0 : _selectedRange$unix5[0]))) {
     var _selectedRange$dates4, _selectedRange$unix6;
-    console.log('after');
     return {
       dates: [(_selectedRange$dates4 = selectedRange.dates) === null || _selectedRange$dates4 === void 0 ? void 0 : _selectedRange$dates4[0], "".concat(dateAsNumber, " ").concat(month, " ").concat(year)],
       unix: [(_selectedRange$unix6 = selectedRange.unix) === null || _selectedRange$unix6 === void 0 ? void 0 : _selectedRange$unix6[0], getUnixTime(date)]
@@ -45736,13 +45777,11 @@ var rangeSelection = function rangeSelection(_ref4) {
   }
   if (isBefore(date, fromUnixTime((_selectedRange$unix7 = selectedRange.unix) === null || _selectedRange$unix7 === void 0 ? void 0 : _selectedRange$unix7[0]))) {
     var _selectedRange$dates5, _selectedRange$unix8;
-    console.log('before');
     return {
       dates: ["".concat(dateAsNumber, " ").concat(month, " ").concat(year), (_selectedRange$dates5 = selectedRange.dates) === null || _selectedRange$dates5 === void 0 ? void 0 : _selectedRange$dates5[1]],
       unix: [getUnixTime(date), (_selectedRange$unix8 = selectedRange.unix) === null || _selectedRange$unix8 === void 0 ? void 0 : _selectedRange$unix8[1]]
     };
   }
-  console.log('lkjl');
   return {
     dates: [],
     unix: []
@@ -45759,8 +45798,9 @@ var Dates = function Dates(props) {
     setSelectedRange = props.setSelectedRange,
     disabledDates = props.disabledDates,
     disableDatesBefore = props.disableDatesBefore;
-  var monthAsNumber = selectedMonth.monthAsNumber,
-    year = selectedMonth.year;
+  var _ref = selectedMonth || {},
+    monthAsNumber = _ref.monthAsNumber,
+    year = _ref.year;
   var _useState = React.useState(function () {
       return [];
     }),
@@ -45788,10 +45828,10 @@ var Dates = function Dates(props) {
     _useState8 = _slicedToArray(_useState7, 2),
     datesInMonth = _useState8[0],
     setDatesInMonth = _useState8[1];
-  var _ref = (_selectedRange$unix = selectedRange.unix) !== null && _selectedRange$unix !== void 0 ? _selectedRange$unix : [],
-    _ref2 = _slicedToArray(_ref, 2),
-    firstItem = _ref2[0],
-    lastItem = _ref2[1];
+  var _ref2 = (_selectedRange$unix = selectedRange.unix) !== null && _selectedRange$unix !== void 0 ? _selectedRange$unix : [],
+    _ref3 = _slicedToArray(_ref2, 2),
+    firstItem = _ref3[0],
+    lastItem = _ref3[1];
   var days = datesInMonth.days,
     dateObj = datesInMonth.dateObj;
   React.useEffect(function () {
@@ -45959,23 +45999,34 @@ var Calender = function Calender(props) {
     setFixedRange = props.setFixedRange,
     fixedRange = props.fixedRange,
     customRanges = props.customRanges;
-  var _getDayInfo = getDayInfo(new Date()),
-    month = _getDayInfo.month,
-    year = _getDayInfo.year,
-    monthAsNumber = _getDayInfo.monthAsNumber,
-    dayAsNumber = _getDayInfo.dayAsNumber;
-  var _useState = React.useState({
-      month: month,
-      monthAsNumber: monthAsNumber,
-      year: year,
-      dayAsNumber: dayAsNumber
-    }),
+  var _useState = React.useState(),
     _useState2 = _slicedToArray(_useState, 2),
     selectedMonth = _useState2[0],
     setSelectedMonth = _useState2[1];
   React.useEffect(function () {
     var _value$filter;
     if (fixedRange) {
+      var _selectedRange$unix, _selectedRange$unix2, _selectedRange$unix3;
+      var _date = new Date();
+      var dateAsNumber = _date.getDate();
+      var selectedDayInfo = getDayInfo(_date);
+      var selectedDateMonth = {
+        month: selectedDayInfo.month,
+        monthAsNumber: selectedDayInfo.monthAsNumber,
+        year: selectedDayInfo.year,
+        dayAsNumber: selectedDayInfo.dayAsNumber
+      };
+      setSelectedMonth({
+        month: getDayInfo(fromUnixTime(selectedRange === null || selectedRange === void 0 ? void 0 : (_selectedRange$unix = selectedRange.unix) === null || _selectedRange$unix === void 0 ? void 0 : _selectedRange$unix[0])).month,
+        monthAsNumber: getDayInfo(fromUnixTime(selectedRange === null || selectedRange === void 0 ? void 0 : (_selectedRange$unix2 = selectedRange.unix) === null || _selectedRange$unix2 === void 0 ? void 0 : _selectedRange$unix2[0])).monthAsNumber,
+        year: getDayInfo(fromUnixTime(selectedRange === null || selectedRange === void 0 ? void 0 : (_selectedRange$unix3 = selectedRange.unix) === null || _selectedRange$unix3 === void 0 ? void 0 : _selectedRange$unix3[0])).year
+      });
+      setSelectedDate(_objectSpread2(_objectSpread2({}, selectedDate), {}, {
+        month: selectedDateMonth.month,
+        year: selectedDateMonth.year,
+        date: dateAsNumber,
+        unix: getUnixTime(_date)
+      }));
       return;
     }
     if (range && (value === null || value === void 0 ? void 0 : (_value$filter = value.filter(Boolean)) === null || _value$filter === void 0 ? void 0 : _value$filter.length) > 0) {
@@ -45986,30 +46037,9 @@ var Calender = function Calender(props) {
         }),
         unix: [value[0], value[1]]
       });
-      var date = new Date();
-      var dateAsNumber = date.getDate();
-      var selectedDayInfo = getDayInfo(date);
-      var selectedDateMonth = {
-        month: selectedDayInfo.month,
-        monthAsNumber: selectedDayInfo.monthAsNumber,
-        year: selectedDayInfo.year,
-        dayAsNumber: selectedDayInfo.dayAsNumber
-      };
-      setSelectedMonth({
-        month: getDayInfo(fromUnixTime(value[0])).month,
-        monthAsNumber: getDayInfo(fromUnixTime(value[0])).monthAsNumber,
-        year: getDayInfo(fromUnixTime(value[0])).year
-      });
-      setSelectedDate(_objectSpread2(_objectSpread2({}, selectedDate), {}, {
-        month: selectedDateMonth.month,
-        year: selectedDateMonth.year,
-        date: dateAsNumber,
-        unix: getUnixTime(date)
-      }));
-    } else if (!range && value) {
-      var _date = fromUnixTime(value);
-      var _dateAsNumber = _date.getDate();
-      var _selectedDayInfo = getDayInfo(_date);
+      var _date2 = new Date();
+      var _dateAsNumber = _date2.getDate();
+      var _selectedDayInfo = getDayInfo(_date2);
       var _selectedDateMonth = {
         month: _selectedDayInfo.month,
         monthAsNumber: _selectedDayInfo.monthAsNumber,
@@ -46017,27 +46047,56 @@ var Calender = function Calender(props) {
         dayAsNumber: _selectedDayInfo.dayAsNumber
       };
       setSelectedMonth({
-        month: _selectedDayInfo.month,
-        monthAsNumber: _selectedDayInfo.monthAsNumber,
-        year: _selectedDayInfo.year
+        month: getDayInfo(fromUnixTime(value[0])).month,
+        monthAsNumber: getDayInfo(fromUnixTime(value[0])).monthAsNumber,
+        year: getDayInfo(fromUnixTime(value[0])).year
       });
       setSelectedDate(_objectSpread2(_objectSpread2({}, selectedDate), {}, {
         month: _selectedDateMonth.month,
         year: _selectedDateMonth.year,
         date: _dateAsNumber,
-        unix: getUnixTime(_date)
+        unix: getUnixTime(_date2)
       }));
-    } else {
-      var _date2 = new Date();
-      if (!range && !isBefore(_date2, disableDatesBefore)) {
-        var _dateAsNumber2 = _date2.getDate();
-        setSelectedDate(_objectSpread2(_objectSpread2({}, selectedDate), {}, {
-          month: selectedMonth.month,
-          year: selectedMonth.year,
-          date: _dateAsNumber2,
-          unix: getUnixTime(_date2)
-        }));
-      }
+      return;
+    }
+    if (!range && value) {
+      var _date3 = fromUnixTime(value);
+      var _dateAsNumber2 = _date3.getDate();
+      var _selectedDayInfo2 = getDayInfo(_date3);
+      var _selectedDateMonth2 = {
+        month: _selectedDayInfo2.month,
+        monthAsNumber: _selectedDayInfo2.monthAsNumber,
+        year: _selectedDayInfo2.year,
+        dayAsNumber: _selectedDayInfo2.dayAsNumber
+      };
+      setSelectedMonth({
+        month: _selectedDayInfo2.month,
+        monthAsNumber: _selectedDayInfo2.monthAsNumber,
+        year: _selectedDayInfo2.year
+      });
+      setSelectedDate(_objectSpread2(_objectSpread2({}, selectedDate), {}, {
+        month: _selectedDateMonth2.month,
+        year: _selectedDateMonth2.year,
+        date: _dateAsNumber2,
+        unix: getUnixTime(_date3)
+      }));
+      return;
+    }
+    var date = new Date();
+    if (range && !value && (disableDatesBefore === null || disableDatesBefore === void 0 ? void 0 : disableDatesBefore.length) === 0 || !range && !isBefore(date, disableDatesBefore)) {
+      var _dateAsNumber3 = date.getDate();
+      var _selectedDayInfo3 = getDayInfo(date);
+      setSelectedDate(_objectSpread2(_objectSpread2({}, selectedDate), {}, {
+        month: _selectedDayInfo3.month,
+        year: _selectedDayInfo3.year,
+        date: _dateAsNumber3,
+        unix: getUnixTime(date)
+      }));
+      setSelectedMonth({
+        month: _selectedDayInfo3.month,
+        monthAsNumber: _selectedDayInfo3.monthAsNumber,
+        year: _selectedDayInfo3.year
+      });
     }
   }, []);
   var goToDate = function goToDate(unix) {
@@ -46119,8 +46178,8 @@ var Calender = function Calender(props) {
   });
 };
 
-var css$J = ".DatePicker_module_root__e9055cc7 {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: flex-start;\n\talign-items: center;\n\tmax-width: 100%;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_customPicker__e9055cc7[data-elem='base-cell'] {\n\tflex: 1;\n\twidth: 100%;\n\tmin-width: 15rem;\n\tborder-color: var(--grey3);\n\tborder-style: solid;\n\tborder-width: 0.0625rem 0 0.0625rem 0.0625rem;\n\tbackground-color: transparent !important;\n\tborder-radius: 0.25rem 0 0 0.25rem;\n\theight: auto;\n\tpadding: 0.75rem 1rem;\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: flex-start;\n\talign-items: center;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_customPicker__e9055cc7[data-elem='base-cell'] > [data-elem='component1'] {\n\tflex: 0 0 auto;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_customPicker__e9055cc7[data-elem='base-cell'] > [data-elem='component1'] .DatePicker_module_icon__e9055cc7 {\n\twidth: 1.5rem;\n\theight: 1.5rem;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_customPicker__e9055cc7[data-elem='base-cell'] > [data-elem='component1'] .DatePicker_module_icon__e9055cc7.DatePicker_module_light__e9055cc7 path {\n\tstroke: var(--black);\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_customPicker__e9055cc7[data-elem='base-cell'] > [data-elem='component1'] .DatePicker_module_icon__e9055cc7.DatePicker_module_dark__e9055cc7 path {\n\tstroke: var(--white);\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_customPicker__e9055cc7[data-elem='base-cell'] > [data-elem='component2'] {\n\tcolor: var(--dark-grey);\n\ttext-overflow: ellipsis;\n\toverflow: hidden;\n\twhite-space: nowrap;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 {\n\tflex: 1;\n\tdisplay: flex;\n\tflex-direction: column;\n\tjustify-content: flex-start;\n\talign-items: stretch;\n\tgap: 0.5rem;\n\tmax-width: 100%;\n\tmin-width: 15rem;\n\toverflow: visible;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_label__e9055cc7 {\n\tfont-weight: 400;\n\tfont-size: 0.75rem;\n\tline-height: 0.9375rem;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_label__e9055cc7.DatePicker_module_light__e9055cc7 {\n\tcolor: var(--black);\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_label__e9055cc7.DatePicker_module_dark__e9055cc7 {\n\tcolor: var(--white);\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7 {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: space-between;\n\talign-items: center;\n\tposition: relative;\n\tbackground-color: transparent;\n\tborder-radius: 0.25rem;\n\twidth: auto;\n\tborder: 0.0625rem solid transparent;\n\tpadding: 0.75rem 1rem;\n\tcursor: pointer;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7.DatePicker_module_withCustom__e9055cc7 {\n\tborder-radius: 0 0.25rem 0.25rem 0;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7.DatePicker_module_disabled__e9055cc7 {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: space-between;\n\talign-items: center;\n\tposition: relative;\n\tbackground: var(--grey10);\n\tborder-radius: 0.25rem;\n\tborder: 0.0625rem solid var(--grey5);\n\tpadding: 0.75rem 1rem;\n\tcursor: not-allowed;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7.DatePicker_module_disabled__e9055cc7 .DatePicker_module_downArrow__e9055cc7 {\n\ttransform: rotate(270deg);\n\tfill: var(--grey3);\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7.DatePicker_module_disabled__e9055cc7 .DatePicker_module_placeholder__e9055cc7 {\n\tfont-weight: 400;\n\tfont-size: 1rem;\n\tcolor: var(--grey3);\n\t-webkit-user-select: none;\n\t-moz-user-select: none;\n\tuser-select: none;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7.DatePicker_module_open__e9055cc7 {\n\toutline: 0.0625rem solid var(--highlight);\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7.DatePicker_module_error__e9055cc7 {\n\toutline: 0.0625rem solid var(--error);\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7 .DatePicker_module_left__e9055cc7 {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: flex-start;\n\talign-items: center;\n\tgap: 0.9375rem;\n\toverflow: hidden;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7 .DatePicker_module_left__e9055cc7 .DatePicker_module_icon__e9055cc7 {\n\tflex: 1 0 auto;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7 .DatePicker_module_left__e9055cc7 > div {\n\tfont-weight: 400;\n\tfont-size: 1rem;\n\tflex: 1 1 auto;\n\toverflow: hidden;\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: center;\n\talign-items: center;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7 .DatePicker_module_left__e9055cc7 > div.DatePicker_module_light__e9055cc7 {\n\tcolor: var(--black);\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7 .DatePicker_module_left__e9055cc7 > div.DatePicker_module_dark__e9055cc7 {\n\tcolor: var(--white);\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7 .DatePicker_module_left__e9055cc7 > div .DatePicker_module_placeholder__e9055cc7 {\n\tfont-weight: 400;\n\tfont-size: 1rem;\n\t-webkit-user-select: none;\n\t-moz-user-select: none;\n\tuser-select: none;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7 .DatePicker_module_left__e9055cc7 > div > span {\n\tdisplay: inline-block;\n\ttext-overflow: ellipsis;\n\toverflow: hidden;\n\twhite-space: nowrap;\n\tfont-weight: 500;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7 .DatePicker_module_input__e9055cc7 {\n\tdisplay: none;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7 .DatePicker_module_close__e9055cc7 {\n\theight: auto;\n\tpadding: 0;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7 .DatePicker_module_icon__e9055cc7 {\n\twidth: 1.5rem;\n\theight: 1.5rem;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7 .DatePicker_module_icon__e9055cc7.DatePicker_module_light__e9055cc7 > path {\n\tfill: var(--dark-grey);\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_container__e9055cc7 .DatePicker_module_icon__e9055cc7.DatePicker_module_dark__e9055cc7 > path {\n\tfill: var(--white);\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7.DatePicker_module_dark__e9055cc7 .DatePicker_module_container__e9055cc7 {\n\tborder-color: var(--grey);\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7.DatePicker_module_dark__e9055cc7 .DatePicker_module_container__e9055cc7 .DatePicker_module_placeholder__e9055cc7 {\n\tcolor: var(--grey2);\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7.DatePicker_module_light__e9055cc7 .DatePicker_module_container__e9055cc7 {\n\tborder-color: var(--grey4);\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7.DatePicker_module_light__e9055cc7 .DatePicker_module_container__e9055cc7 .DatePicker_module_placeholder__e9055cc7 {\n\tcolor: var(--grey);\n}\n\n.DatePicker_module_root__e9055cc7 .DatePicker_module_disabled__e9055cc7 {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: space-between;\n\talign-items: center;\n\tposition: relative;\n\tbackground: var(--grey10);\n\tborder-radius: 0.25rem;\n\tborder: 0.0625rem solid var(--grey5);\n\tpadding: 0.75rem 1rem;\n\tcursor: pointer;\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_disabled__e9055cc7 .DatePicker_module_downArrow__e9055cc7 {\n\ttransform: rotate(270deg);\n\tfill: var(--grey3);\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_disabled__e9055cc7 .DatePicker_module_placeholder__e9055cc7 {\n\tfont-weight: 400;\n\tfont-size: 1rem;\n\tcolor: var(--grey3);\n\t-webkit-user-select: none;\n\t-moz-user-select: none;\n\tuser-select: none;\n}\n.DatePicker_module_root__e9055cc7.DatePicker_module_open__e9055cc7 {\n\tborder-color: var(--highlight);\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_error__e9055cc7 {\n\tborder: 0.0938rem solid var(--error);\n}\n.DatePicker_module_root__e9055cc7 .DatePicker_module_datePicker__e9055cc7 .DatePicker_module_errorText__e9055cc7 {\n\tfont-weight: 400;\n\tfont-size: 0.75rem;\n\tline-height: 0.9375rem;\n\tcolor: var(--error);\n}\n\n.DatePicker_module_popper__e9055cc7 {\n\tdisplay: none;\n\tbackground: var(--white);\n\tborder: 0.0625rem solid #d9d9d9;\n\tbox-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);\n\tborder-radius: 0.25rem;\n\toverflow: auto;\n}\n.DatePicker_module_popper__e9055cc7.DatePicker_module_open__e9055cc7 {\n\tdisplay: flex;\n\tflex-direction: column;\n\tjustify-content: flex-start;\n\talign-items: stretch;\n\tposition: absolute;\n} \n";
-var modules_5b831cd1 = {"root":"DatePicker_module_root__e9055cc7","custom-picker":"DatePicker_module_customPicker__e9055cc7","icon":"DatePicker_module_icon__e9055cc7","light":"DatePicker_module_light__e9055cc7","dark":"DatePicker_module_dark__e9055cc7","date-picker":"DatePicker_module_datePicker__e9055cc7","label":"DatePicker_module_label__e9055cc7","container":"DatePicker_module_container__e9055cc7","with-custom":"DatePicker_module_withCustom__e9055cc7","disabled":"DatePicker_module_disabled__e9055cc7","down-arrow":"DatePicker_module_downArrow__e9055cc7","placeholder":"DatePicker_module_placeholder__e9055cc7","open":"DatePicker_module_open__e9055cc7","error":"DatePicker_module_error__e9055cc7","left":"DatePicker_module_left__e9055cc7","input":"DatePicker_module_input__e9055cc7","close":"DatePicker_module_close__e9055cc7","error-text":"DatePicker_module_errorText__e9055cc7","popper":"DatePicker_module_popper__e9055cc7"};
+var css$J = ".DatePicker_module_root__c48dd103 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  max-width: 100%;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_customPicker__c48dd103[data-elem=base-cell] {\n  flex: 1;\n  width: 100%;\n  min-width: 15rem;\n  border-color: var(--grey3);\n  border-style: solid;\n  border-width: 0.0625rem 0 0.0625rem 0.0625rem;\n  background-color: transparent !important;\n  border-radius: 0.25rem 0 0 0.25rem;\n  height: auto;\n  padding: 0.75rem 1rem;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_customPicker__c48dd103[data-elem=base-cell] > [data-elem=component1] {\n  flex: 0 0 auto;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_customPicker__c48dd103[data-elem=base-cell] > [data-elem=component1] .DatePicker_module_icon__c48dd103 {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_customPicker__c48dd103[data-elem=base-cell] > [data-elem=component1] .DatePicker_module_icon__c48dd103.DatePicker_module_light__c48dd103 path {\n  stroke: var(--black);\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_customPicker__c48dd103[data-elem=base-cell] > [data-elem=component1] .DatePicker_module_icon__c48dd103.DatePicker_module_dark__c48dd103 path {\n  stroke: var(--white);\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_customPicker__c48dd103[data-elem=base-cell].DatePicker_module_light__c48dd103 > [data-elem=component2] {\n  color: var(--dark-grey);\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_customPicker__c48dd103[data-elem=base-cell].DatePicker_module_dark__c48dd103 > [data-elem=component2] {\n  color: var(--white);\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 {\n  flex: 1;\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  gap: 0.5rem;\n  max-width: 100%;\n  min-width: 15rem;\n  overflow: visible;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_label__c48dd103 {\n  font-weight: 400;\n  font-size: 0.75rem;\n  line-height: 0.9375rem;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_label__c48dd103.DatePicker_module_light__c48dd103 {\n  color: var(--black);\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_label__c48dd103.DatePicker_module_dark__c48dd103 {\n  color: var(--white);\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  position: relative;\n  background-color: transparent;\n  border-radius: 0.25rem;\n  width: auto;\n  border: 0.0625rem solid transparent;\n  padding: 0.75rem 1rem;\n  cursor: pointer;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103.DatePicker_module_withCustom__c48dd103 {\n  border-radius: 0 0.25rem 0.25rem 0;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103.DatePicker_module_disabled__c48dd103 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  position: relative;\n  background: var(--grey10);\n  border-radius: 0.25rem;\n  border: 0.0625rem solid var(--grey5);\n  padding: 0.75rem 1rem;\n  cursor: not-allowed;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103.DatePicker_module_disabled__c48dd103 .DatePicker_module_downArrow__c48dd103 {\n  transform: rotate(270deg);\n  fill: var(--grey3);\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103.DatePicker_module_disabled__c48dd103 .DatePicker_module_placeholder__c48dd103 {\n  font-weight: 400;\n  font-size: 1rem;\n  color: var(--grey3);\n  -webkit-user-select: none;\n     -moz-user-select: none;\n          user-select: none;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103.DatePicker_module_open__c48dd103 {\n  outline: 0.0625rem solid var(--highlight);\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103.DatePicker_module_error__c48dd103 {\n  outline: 0.0625rem solid var(--error);\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103 .DatePicker_module_left__c48dd103 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.9375rem;\n  overflow: hidden;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103 .DatePicker_module_left__c48dd103 .DatePicker_module_icon__c48dd103 {\n  flex: 1 0 auto;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103 .DatePicker_module_left__c48dd103 > div {\n  font-weight: 400;\n  font-size: 1rem;\n  flex: 1 1 auto;\n  overflow: hidden;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103 .DatePicker_module_left__c48dd103 > div.DatePicker_module_light__c48dd103 {\n  color: var(--black);\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103 .DatePicker_module_left__c48dd103 > div.DatePicker_module_dark__c48dd103 {\n  color: var(--white);\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103 .DatePicker_module_left__c48dd103 > div .DatePicker_module_placeholder__c48dd103 {\n  font-weight: 400;\n  font-size: 1rem;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n          user-select: none;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103 .DatePicker_module_left__c48dd103 > div > span {\n  display: inline-block;\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  font-weight: 500;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103 .DatePicker_module_input__c48dd103 {\n  display: none;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103 .DatePicker_module_close__c48dd103 {\n  height: auto;\n  padding: 0;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103 .DatePicker_module_icon__c48dd103 {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103 .DatePicker_module_icon__c48dd103.DatePicker_module_light__c48dd103 > path {\n  fill: var(--dark-grey);\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_container__c48dd103 .DatePicker_module_icon__c48dd103.DatePicker_module_dark__c48dd103 > path {\n  fill: var(--white);\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103.DatePicker_module_dark__c48dd103 .DatePicker_module_container__c48dd103 {\n  border-color: var(--grey);\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103.DatePicker_module_dark__c48dd103 .DatePicker_module_container__c48dd103 .DatePicker_module_placeholder__c48dd103 {\n  color: var(--grey2);\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103.DatePicker_module_light__c48dd103 .DatePicker_module_container__c48dd103 {\n  border-color: var(--grey4);\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103.DatePicker_module_light__c48dd103 .DatePicker_module_container__c48dd103 .DatePicker_module_placeholder__c48dd103 {\n  color: var(--grey);\n}\n.DatePicker_module_root__c48dd103 .DatePicker_module_datePicker__c48dd103 .DatePicker_module_errorText__c48dd103 {\n  font-weight: 400;\n  font-size: 0.75rem;\n  line-height: 0.9375rem;\n  color: var(--error);\n}\n\n.DatePicker_module_popper__c48dd103 {\n  display: none;\n  background: var(--white);\n  border: 0.0625rem solid #d9d9d9;\n  box-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);\n  border-radius: 0.25rem;\n  overflow: auto;\n}\n.DatePicker_module_popper__c48dd103.DatePicker_module_open__c48dd103 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  position: absolute;\n}";
+var modules_5b831cd1 = {"root":"DatePicker_module_root__c48dd103","custom-picker":"DatePicker_module_customPicker__c48dd103","icon":"DatePicker_module_icon__c48dd103","light":"DatePicker_module_light__c48dd103","dark":"DatePicker_module_dark__c48dd103","date-picker":"DatePicker_module_datePicker__c48dd103","label":"DatePicker_module_label__c48dd103","container":"DatePicker_module_container__c48dd103","with-custom":"DatePicker_module_withCustom__c48dd103","disabled":"DatePicker_module_disabled__c48dd103","down-arrow":"DatePicker_module_downArrow__c48dd103","placeholder":"DatePicker_module_placeholder__c48dd103","open":"DatePicker_module_open__c48dd103","error":"DatePicker_module_error__c48dd103","left":"DatePicker_module_left__c48dd103","input":"DatePicker_module_input__c48dd103","close":"DatePicker_module_close__c48dd103","error-text":"DatePicker_module_errorText__c48dd103","popper":"DatePicker_module_popper__c48dd103"};
 n(css$J,{});
 
 var getDateAndUnixRange$1 = function getDateAndUnixRange(duration) {
@@ -46266,9 +46325,7 @@ n(css$I,{});
 
 var getDateAndUnixRange = function getDateAndUnixRange(duration) {
   var startingDate = sub$2(new Date(), duration);
-  startingDate.setHours(0, 0, 0, 0);
   var endingDate = new Date();
-  endingDate.setHours(0, 0, 0, 0);
   var dates = getDatesInStringFormat({
     startingDate: startingDate,
     endingDate: endingDate
@@ -46285,7 +46342,7 @@ var dateRanges = function dateRanges() {
     return customRanges.map(function (range) {
       return {
         title: range.title,
-        dateRange: getDateAndUnixRange(_defineProperty$1({}, range.type, [range.value]))
+        dateRange: getDateAndUnixRange(_defineProperty$1({}, range.type, range.value))
       };
     });
   }
@@ -46298,12 +46355,14 @@ var CustomRanges = function CustomRanges(_ref) {
     selectedRange = _ref.selectedRange,
     setSelectedRange = _ref.setSelectedRange,
     setFixedRange = _ref.setFixedRange,
-    setOpenDatePicker = _ref.setOpenDatePicker,
-    setOpenCustomRange = _ref.setOpenCustomRange;
+    setOpenCustomRange = _ref.setOpenCustomRange,
+    apply = _ref.apply;
   var selectFixedDateRange = function selectFixedDateRange(dateRange, title) {
     setSelectedRange(dateRange);
     setFixedRange(title);
-    setOpenDatePicker(true);
+    apply({
+      rangeSelected: dateRange
+    });
     setOpenCustomRange(false);
   };
   return /*#__PURE__*/jsxRuntime.jsx("div", {
@@ -46395,22 +46454,24 @@ var DatePicker = function DatePicker(props) {
   var customRangeInteractionProps = useInteractions([useClick(customRangeFloatingReference.context, {
     enabled: !disabled
   }), useDismiss(customRangeFloatingReference.context)]);
-  var apply = function apply() {
-    var _selectedRange$dates;
-    if (((_selectedRange$dates = selectedRange.dates) === null || _selectedRange$dates === void 0 ? void 0 : _selectedRange$dates.length) === 2) {
+  var apply = function apply(_ref) {
+    var _rangeSelected$dates;
+    var rangeSelected = _ref.rangeSelected,
+      dateSelected = _ref.dateSelected;
+    if (((_rangeSelected$dates = rangeSelected.dates) === null || _rangeSelected$dates === void 0 ? void 0 : _rangeSelected$dates.length) === 2) {
       if (maxRange !== null && !isMaxRangeExceeded({
         maxRange: maxRange,
-        selectedRange: selectedRange
+        rangeSelected: rangeSelected
       })) {
         setError('Invalid range of dates');
         setOpenDatePicker(false);
         return;
       }
       setError('');
-      onApply(selectedRange.unix, fixedRange, getDateRangeTag(selectedRange.unix));
+      onApply(rangeSelected.unix, fixedRange, getDateRangeTag(rangeSelected.unix));
       setOpenDatePicker(false);
     } else {
-      onApply(selectedDate.unix);
+      onApply(dateSelected.unix);
       setOpenDatePicker(false);
     }
   };
@@ -46422,13 +46483,26 @@ var DatePicker = function DatePicker(props) {
     fixedRange: fixedRange,
     range: range,
     onApply: function onApply() {
-      apply();
+      apply({
+        rangeSelected: selectedRange,
+        dateSelected: selectedDate
+      });
     },
     disabledDates: disabledDates,
     disableDatesBefore: disableDatesBefore,
     value: value,
     setFixedRange: setFixedRange,
     customRanges: customRanges
+  };
+  var customRangesProps = {
+    customRanges: customRanges,
+    selectedRange: selectedRange,
+    setSelectedRange: setSelectedRange,
+    setFixedRange: setFixedRange,
+    setOpenCustomRange: setOpenCustomRange,
+    fixedRange: fixedRange,
+    theme: theme,
+    apply: apply
   };
   var hasCustomRanges = (customRanges === null || customRanges === void 0 ? void 0 : customRanges.length) && customRanges !== null;
   return /*#__PURE__*/jsxRuntime.jsxs("div", {
@@ -46443,7 +46517,7 @@ var DatePicker = function DatePicker(props) {
         });
       },
       title: fixedRange || 'Custom',
-      className: modules_5b831cd1['custom-picker']
+      className: classes(modules_5b831cd1['custom-picker'], modules_5b831cd1[theme])
     }, customRangeInteractionProps.getReferenceProps())), /*#__PURE__*/jsxRuntime.jsxs("div", {
       className: classes(modules_5b831cd1['date-picker'], className, modules_5b831cd1[theme]),
       children: [label && !hasCustomRanges && /*#__PURE__*/jsxRuntime.jsx("span", {
@@ -46530,15 +46604,7 @@ var DatePicker = function DatePicker(props) {
           }
         })), {}, {
           className: classes(modules_5b831cd1.popper, openCustomRange ? modules_5b831cd1.open : ''),
-          children: /*#__PURE__*/jsxRuntime.jsx(CustomRanges, {
-            customRanges: customRanges,
-            selectedRange: selectedRange,
-            setSelectedRange: setSelectedRange,
-            setFixedRange: setFixedRange,
-            setOpenDatePicker: setOpenDatePicker,
-            setOpenCustomRange: setOpenCustomRange,
-            fixedRange: fixedRange
-          })
+          children: /*#__PURE__*/jsxRuntime.jsx(CustomRanges, _objectSpread2({}, customRangesProps))
         }))
       })]
     })]
@@ -46804,8 +46870,8 @@ HierarchyBrowser.defaultProps = {
   title: 'Browser'
 };
 
-var css$F = ".BaseModal_module_root__2dd7477e {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  top: 50%;\n  left: 50%;\n  right: auto;\n  bottom: auto;\n  transform: translate(-50%, -50%);\n  max-height: 100%;\n  width: 50%;\n  position: fixed;\n  background: #ffffff;\n  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.13);\n  border-radius: 5px;\n  outline: none;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_body__2dd7477e {\n  overflow-y: scroll;\n  padding: 0 15px;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_header__2dd7477e,\n.BaseModal_module_root__2dd7477e .BaseModal_module_footer__2dd7477e {\n  padding: 1rem;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_header__2dd7477e {\n  font-weight: 500;\n  font-size: 1.375rem;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_footer__2dd7477e {\n  margin-top: auto;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_close__2dd7477e {\n  position: absolute;\n  right: 0.5rem;\n  top: 0.5rem;\n}\n.BaseModal_module_root__2dd7477e .BaseModal_module_close__2dd7477e .BaseModal_module_icon__2dd7477e {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--black);\n}";
-var modules_f23ae002 = {"root":"BaseModal_module_root__2dd7477e","body":"BaseModal_module_body__2dd7477e","header":"BaseModal_module_header__2dd7477e","footer":"BaseModal_module_footer__2dd7477e","close":"BaseModal_module_close__2dd7477e","icon":"BaseModal_module_icon__2dd7477e"};
+var css$F = ".BaseModal_module_root__22dbeb47 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  top: 50%;\n  left: 50%;\n  right: auto;\n  bottom: auto;\n  transform: translate(-50%, -50%);\n  max-height: 100%;\n  height: 43.75rem;\n  width: 62.5rem;\n  position: fixed;\n  background: #ffffff;\n  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.13);\n  border-radius: 8px;\n  outline: none;\n}\n.BaseModal_module_root__22dbeb47 .BaseModal_module_body__22dbeb47 {\n  overflow-y: scroll;\n  padding: 1rem 2rem 1rem 2rem;\n}\n.BaseModal_module_root__22dbeb47 .BaseModal_module_header__22dbeb47,\n.BaseModal_module_root__22dbeb47 .BaseModal_module_footer__22dbeb47 {\n  padding: 1rem;\n}\n.BaseModal_module_root__22dbeb47 .BaseModal_module_header__22dbeb47 {\n  font-weight: 500;\n  font-size: 1.375rem;\n  border-bottom: 1px solid var(--grey4);\n}\n.BaseModal_module_root__22dbeb47 .BaseModal_module_footer__22dbeb47 {\n  margin-top: auto;\n  background: var(--grey6);\n  border-radius: 0 0 8px 8px;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-end;\n  align-items: center;\n  gap: 0.625rem;\n}\n.BaseModal_module_root__22dbeb47 button.BaseModal_module_close__22dbeb47 {\n  position: absolute;\n  right: 1rem;\n  top: 1rem;\n  padding: 0.25rem;\n  height: auto;\n  background: var(--grey6);\n}\n.BaseModal_module_root__22dbeb47 button.BaseModal_module_close__22dbeb47 .BaseModal_module_icon__22dbeb47 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--black);\n}";
+var modules_f23ae002 = {"root":"BaseModal_module_root__22dbeb47","body":"BaseModal_module_body__22dbeb47","header":"BaseModal_module_header__22dbeb47","footer":"BaseModal_module_footer__22dbeb47","close":"BaseModal_module_close__22dbeb47","icon":"BaseModal_module_icon__22dbeb47"};
 n(css$F,{});
 
 var BaseModal = function BaseModal(props) {
@@ -47516,8 +47582,8 @@ var TableColumn = /*#__PURE__*/_createClass(function TableColumn(_ref) {
   this.sticky = sticky;
 });
 
-var css$y = ".TableCell_module_root__b0c82b08[data-elem='base-cell'] {\n\tbackground: var(--white);\n\tborder-bottom: 1px solid var(--grey4);\n}\n.TableCell_module_root__b0c82b08[data-elem='base-cell'] > [data-elem*='component'] {\n\toverflow: hidden;\n}\n.TableCell_module_root__b0c82b08[data-elem='base-cell'] > [data-elem*='component'] {\n\tdisplay: flex;\n\tflex-direction: row;\n\tjustify-content: flex-start;\n\talign-items: center;\n\tflex: 1;\n}\n.TableCell_module_root__b0c82b08[data-elem='base-cell'] > [data-elem*='component'] .TableCell_module_cellText__b0c82b08 {\n\ttext-overflow: ellipsis;\n\toverflow: hidden;\n\twhite-space: nowrap;\n\tdisplay: inline-block;\n\twidth: 100%;\n\tfont-size: 0.875rem;\n}\n.TableCell_module_root__b0c82b08[data-elem='base-cell'].TableCell_module_headerCell__b0c82b08 {\n\tbackground: var(--grey6);\n}\n.TableCell_module_root__b0c82b08[data-elem='base-cell'].TableCell_module_headerCell__b0c82b08 .TableCell_module_cellText__b0c82b08 {\n\tfont-weight: 500;\n\tcolor: var(--grey);\n\tfont-size: 0.75rem;\n}\n.TableCell_module_root__b0c82b08[data-elem='base-cell'].TableCell_module_headerCell__b0c82b08.TableCell_module_sortable__b0c82b08 > [data-elem='component2'] {\n\tflex: 0 0 auto;\n}\n.TableCell_module_root__b0c82b08[data-elem='base-cell'].TableCell_module_headerCell__b0c82b08.TableCell_module_sortable__b0c82b08 > [data-elem='component2'] .TableCell_module_cellText__b0c82b08 {\n\twidth: auto;\n}\n.TableCell_module_root__b0c82b08[data-elem='base-cell'].TableCell_module_headerCell__b0c82b08.TableCell_module_sortable__b0c82b08 > [data-elem='component3'] {\n\tflex: 0 0 auto;\n\tmargin-right: auto;\n\toverflow: visible;\n}\n.TableCell_module_root__b0c82b08[data-elem='base-cell'].TableCell_module_headerCell__b0c82b08.TableCell_module_sortable__b0c82b08 > [data-elem='component3'] button.TableCell_module_sort__b0c82b08 {\n\theight: auto;\n\tbackground: transparent;\n\tpadding: 0;\n}\n.TableCell_module_root__b0c82b08[data-elem='base-cell'].TableCell_module_headerCell__b0c82b08.TableCell_module_sortable__b0c82b08 > [data-elem='component3'] .TableCell_module_sortIcon__b0c82b08 {\n\twidth: 1rem;\n\theight: 1rem;\n}\n.TableCell_module_root__b0c82b08[data-elem='base-cell'].TableCell_module_headerCell__b0c82b08.TableCell_module_sortable__b0c82b08.TableCell_module_sortDefault__b0c82b08 > [data-elem='component3'] {\n\tvisibility: hidden;\n}\n.TableCell_module_root__b0c82b08[data-elem='base-cell'].TableCell_module_headerCell__b0c82b08.TableCell_module_sortable__b0c82b08.TableCell_module_sortDefault__b0c82b08\n\t> [data-elem='component3']\n\t.TableCell_module_sortIcon__b0c82b08 {\n\twidth: 1rem;\n\theight: 1rem;\n}\n.TableCell_module_root__b0c82b08[data-elem='base-cell'].TableCell_module_headerCell__b0c82b08.TableCell_module_sortable__b0c82b08.TableCell_module_sortAsc__b0c82b08 > [data-elem='component3'],\n.TableCell_module_root__b0c82b08[data-elem='base-cell'].TableCell_module_headerCell__b0c82b08.TableCell_module_sortable__b0c82b08.TableCell_module_sortDesc__b0c82b08 > [data-elem='component3'] {\n\tvisibility: visible;\n}\n.TableCell_module_root__b0c82b08[data-elem='base-cell'].TableCell_module_headerCell__b0c82b08.TableCell_module_sortable__b0c82b08.TableCell_module_sortAsc__b0c82b08 > [data-elem='component3'] .TableCell_module_sortIcon__b0c82b08,\n.TableCell_module_root__b0c82b08[data-elem='base-cell'].TableCell_module_headerCell__b0c82b08.TableCell_module_sortable__b0c82b08.TableCell_module_sortDesc__b0c82b08 > [data-elem='component3'] .TableCell_module_sortIcon__b0c82b08 {\n\tfill: var(--highlight);\n\twidth: 1rem;\n\theight: 1rem;\n}\n.TableCell_module_root__b0c82b08[data-elem='base-cell'].TableCell_module_headerCell__b0c82b08.TableCell_module_sortable__b0c82b08:hover > [data-elem='component3'] {\n\tvisibility: visible;\n}\n.TableCell_module_root__b0c82b08[data-elem='base-cell'].TableCell_module_bodyCell__b0c82b08 .TableCell_module_cellText__b0c82b08.TableCell_module_multiLine__b0c82b08 {\n\twhite-space: normal;\n\tdisplay: -webkit-box;\n\t-webkit-box-orient: vertical;\n\t-webkit-line-clamp: 2;\n\tfont-size: 0.75rem;\n}\n.TableCell_module_root__b0c82b08[data-elem='base-cell'].TableCell_module_stickyLeft__b0c82b08 {\n\tbox-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);\n\tposition: sticky;\n\tleft: 0;\n}\n.TableCell_module_root__b0c82b08[data-elem='base-cell'].TableCell_module_stickyRight__b0c82b08 {\n\tbox-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);\n\tposition: sticky;\n\tright: 0;\n} \n";
-var modules_7ba8d001 = {"root":"TableCell_module_root__b0c82b08","cell-text":"TableCell_module_cellText__b0c82b08","header-cell":"TableCell_module_headerCell__b0c82b08","sortable":"TableCell_module_sortable__b0c82b08","sort":"TableCell_module_sort__b0c82b08","sort-icon":"TableCell_module_sortIcon__b0c82b08","sort-default":"TableCell_module_sortDefault__b0c82b08","sort-asc":"TableCell_module_sortAsc__b0c82b08","sort-desc":"TableCell_module_sortDesc__b0c82b08","body-cell":"TableCell_module_bodyCell__b0c82b08","multi-line":"TableCell_module_multiLine__b0c82b08","sticky-left":"TableCell_module_stickyLeft__b0c82b08","sticky-right":"TableCell_module_stickyRight__b0c82b08"};
+var css$y = ".TableCell_module_root__915d8e0c[data-elem=base-cell] {\n  background: var(--white);\n  border-bottom: 1px solid var(--grey4);\n}\n.TableCell_module_root__915d8e0c[data-elem=base-cell] > [data-elem*=component] {\n  overflow: hidden;\n}\n.TableCell_module_root__915d8e0c[data-elem=base-cell] > [data-elem*=component] {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  flex: 1;\n}\n.TableCell_module_root__915d8e0c[data-elem=base-cell] > [data-elem*=component] .TableCell_module_cellText__915d8e0c {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  display: inline-block;\n  width: 100%;\n  font-size: 0.875rem;\n}\n.TableCell_module_root__915d8e0c[data-elem=base-cell].TableCell_module_headerCell__915d8e0c {\n  background: var(--grey6);\n}\n.TableCell_module_root__915d8e0c[data-elem=base-cell].TableCell_module_headerCell__915d8e0c .TableCell_module_cellText__915d8e0c {\n  font-weight: 500;\n  color: var(--grey);\n  font-size: 0.75rem;\n}\n.TableCell_module_root__915d8e0c[data-elem=base-cell].TableCell_module_headerCell__915d8e0c.TableCell_module_sortable__915d8e0c > [data-elem=component2] {\n  flex: 0 0 auto;\n}\n.TableCell_module_root__915d8e0c[data-elem=base-cell].TableCell_module_headerCell__915d8e0c.TableCell_module_sortable__915d8e0c > [data-elem=component2] .TableCell_module_cellText__915d8e0c {\n  width: auto;\n}\n.TableCell_module_root__915d8e0c[data-elem=base-cell].TableCell_module_headerCell__915d8e0c.TableCell_module_sortable__915d8e0c > [data-elem=component3] {\n  flex: 0 0 auto;\n  margin-right: auto;\n  overflow: visible;\n}\n.TableCell_module_root__915d8e0c[data-elem=base-cell].TableCell_module_headerCell__915d8e0c.TableCell_module_sortable__915d8e0c > [data-elem=component3] button.TableCell_module_sort__915d8e0c {\n  height: auto;\n  background: transparent;\n  padding: 0;\n}\n.TableCell_module_root__915d8e0c[data-elem=base-cell].TableCell_module_headerCell__915d8e0c.TableCell_module_sortable__915d8e0c > [data-elem=component3] .TableCell_module_sortIcon__915d8e0c {\n  width: 1rem;\n  height: 1rem;\n}\n.TableCell_module_root__915d8e0c[data-elem=base-cell].TableCell_module_headerCell__915d8e0c.TableCell_module_sortable__915d8e0c.TableCell_module_sortDefault__915d8e0c > [data-elem=component3] {\n  visibility: hidden;\n}\n.TableCell_module_root__915d8e0c[data-elem=base-cell].TableCell_module_headerCell__915d8e0c.TableCell_module_sortable__915d8e0c.TableCell_module_sortDefault__915d8e0c > [data-elem=component3] .TableCell_module_sortIcon__915d8e0c {\n  width: 1rem;\n  height: 1rem;\n}\n.TableCell_module_root__915d8e0c[data-elem=base-cell].TableCell_module_headerCell__915d8e0c.TableCell_module_sortable__915d8e0c.TableCell_module_sortAsc__915d8e0c > [data-elem=component3], .TableCell_module_root__915d8e0c[data-elem=base-cell].TableCell_module_headerCell__915d8e0c.TableCell_module_sortable__915d8e0c.TableCell_module_sortDesc__915d8e0c > [data-elem=component3] {\n  visibility: visible;\n}\n.TableCell_module_root__915d8e0c[data-elem=base-cell].TableCell_module_headerCell__915d8e0c.TableCell_module_sortable__915d8e0c.TableCell_module_sortAsc__915d8e0c > [data-elem=component3] .TableCell_module_sortIcon__915d8e0c, .TableCell_module_root__915d8e0c[data-elem=base-cell].TableCell_module_headerCell__915d8e0c.TableCell_module_sortable__915d8e0c.TableCell_module_sortDesc__915d8e0c > [data-elem=component3] .TableCell_module_sortIcon__915d8e0c {\n  fill: var(--highlight);\n  width: 1rem;\n  height: 1rem;\n}\n.TableCell_module_root__915d8e0c[data-elem=base-cell].TableCell_module_headerCell__915d8e0c.TableCell_module_sortable__915d8e0c:hover > [data-elem=component3] {\n  visibility: visible;\n}\n.TableCell_module_root__915d8e0c[data-elem=base-cell].TableCell_module_bodyCell__915d8e0c .TableCell_module_cellText__915d8e0c.TableCell_module_multiLine__915d8e0c {\n  white-space: normal;\n  display: -webkit-box;\n  -webkit-box-orient: vertical;\n  -webkit-line-clamp: 2;\n  font-size: 0.75rem;\n}\n.TableCell_module_root__915d8e0c[data-elem=base-cell].TableCell_module_stickyLeft__915d8e0c {\n  box-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);\n  position: sticky;\n  left: 0;\n}\n.TableCell_module_root__915d8e0c[data-elem=base-cell].TableCell_module_stickyRight__915d8e0c {\n  box-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);\n  position: sticky;\n  right: 0;\n}";
+var modules_7ba8d001 = {"root":"TableCell_module_root__915d8e0c","cell-text":"TableCell_module_cellText__915d8e0c","header-cell":"TableCell_module_headerCell__915d8e0c","sortable":"TableCell_module_sortable__915d8e0c","sort":"TableCell_module_sort__915d8e0c","sort-icon":"TableCell_module_sortIcon__915d8e0c","sort-default":"TableCell_module_sortDefault__915d8e0c","sort-asc":"TableCell_module_sortAsc__915d8e0c","sort-desc":"TableCell_module_sortDesc__915d8e0c","body-cell":"TableCell_module_bodyCell__915d8e0c","multi-line":"TableCell_module_multiLine__915d8e0c","sticky-left":"TableCell_module_stickyLeft__915d8e0c","sticky-right":"TableCell_module_stickyRight__915d8e0c"};
 n(css$y,{});
 
 var SORT_ICONS = {
@@ -47617,8 +47683,8 @@ TableCell.defaultProps = _objectSpread2(_objectSpread2({}, BaseCell.defaultProps
   onSort: function onSort() {}
 });
 
-var css$x = ".TableRow_module_root__f4710f2d {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.TableRow_module_root__f4710f2d.TableRow_module_headerRow__f4710f2d {\n  background: var(--grey6);\n}\n.TableRow_module_root__f4710f2d.TableRow_module_headerRow__f4710f2d > [data-elem=base-cell].TableRow_module_expandableCell__f4710f2d {\n  background: transparent;\n}\n.TableRow_module_root__f4710f2d.TableRow_module_headerRow__f4710f2d > [data-elem=base-cell].TableRow_module_expandableCell__f4710f2d > [data-elem=component2] {\n  width: 3rem;\n  visibility: hidden;\n}\n.TableRow_module_root__f4710f2d.TableRow_module_bodyRow__f4710f2d {\n  background: var(--white);\n}\n.TableRow_module_root__f4710f2d.TableRow_module_bodyRow__f4710f2d:hover > [data-elem=base-cell] {\n  background: var(--info-bg);\n}\n.TableRow_module_root__f4710f2d.TableRow_module_bodyRow__f4710f2d[data-active=true] > [data-elem=base-cell] {\n  background: var(--background);\n}\n.TableRow_module_root__f4710f2d > [data-elem=base-cell]:first-child {\n  padding-left: 1rem;\n}\n.TableRow_module_root__f4710f2d > [data-elem=base-cell]:last-child {\n  padding-right: 1rem;\n}\n.TableRow_module_root__f4710f2d.TableRow_module_rowHeightMd__f4710f2d > td[data-elem=base-cell] {\n  height: 3rem;\n}\n.TableRow_module_root__f4710f2d.TableRow_module_rowHeightLg__f4710f2d > td[data-elem=base-cell] {\n  height: 4rem;\n}\n.TableRow_module_root__f4710f2d > [data-elem=base-cell].TableRow_module_expandableCell__f4710f2d {\n  padding-left: 0.9rem;\n  padding-right: 0.1rem;\n  overflow: visible;\n}\n.TableRow_module_root__f4710f2d > [data-elem=base-cell].TableRow_module_expandableCell__f4710f2d > [data-elem=component2] {\n  overflow: visible;\n}\n.TableRow_module_root__f4710f2d > [data-elem=base-cell].TableRow_module_expandableCell__f4710f2d > [data-elem=component2] > [data-elem=text] {\n  overflow: visible;\n}\n.TableRow_module_root__f4710f2d button.TableRow_module_button__f4710f2d[data-elem=base-cell] .TableRow_module_icon__f4710f2d {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.TableRow_module_root__f4710f2d button.TableRow_module_button__f4710f2d[data-elem=base-cell]:disabled {\n  cursor: default;\n}\n.TableRow_module_root__f4710f2d button.TableRow_module_button__f4710f2d[data-elem=base-cell]:disabled .TableRow_module_icon__f4710f2d {\n  visibility: hidden;\n}\n.TableRow_module_root__f4710f2d .TableRow_module_expanded__f4710f2d .TableRow_module_button__f4710f2d .TableRow_module_icon__f4710f2d {\n  transform: rotate(180deg);\n}";
-var modules_f6618a87 = {"root":"TableRow_module_root__f4710f2d","header-row":"TableRow_module_headerRow__f4710f2d","expandable-cell":"TableRow_module_expandableCell__f4710f2d","body-row":"TableRow_module_bodyRow__f4710f2d","row-height-md":"TableRow_module_rowHeightMd__f4710f2d","row-height-lg":"TableRow_module_rowHeightLg__f4710f2d","button":"TableRow_module_button__f4710f2d","icon":"TableRow_module_icon__f4710f2d","expanded":"TableRow_module_expanded__f4710f2d"};
+var css$x = ".TableRow_module_root__56f50f2c {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.TableRow_module_root__56f50f2c.TableRow_module_headerRow__56f50f2c {\n  background: var(--grey6);\n}\n.TableRow_module_root__56f50f2c.TableRow_module_headerRow__56f50f2c > [data-elem=base-cell].TableRow_module_expandableCell__56f50f2c {\n  background: transparent;\n}\n.TableRow_module_root__56f50f2c.TableRow_module_headerRow__56f50f2c > [data-elem=base-cell].TableRow_module_expandableCell__56f50f2c > [data-elem=component2] {\n  width: 3rem;\n  visibility: hidden;\n}\n.TableRow_module_root__56f50f2c.TableRow_module_bodyRow__56f50f2c {\n  background: var(--white);\n}\n.TableRow_module_root__56f50f2c.TableRow_module_bodyRow__56f50f2c > [data-elem=base-cell] {\n  background: var(--white);\n}\n.TableRow_module_root__56f50f2c.TableRow_module_bodyRow__56f50f2c:hover > [data-elem=base-cell] {\n  background: var(--info-bg);\n}\n.TableRow_module_root__56f50f2c.TableRow_module_bodyRow__56f50f2c[data-active=true] > [data-elem=base-cell] {\n  background: var(--background);\n}\n.TableRow_module_root__56f50f2c > [data-elem=base-cell]:first-child {\n  padding-left: 1rem;\n}\n.TableRow_module_root__56f50f2c > [data-elem=base-cell]:last-child {\n  padding-right: 1rem;\n}\n.TableRow_module_root__56f50f2c.TableRow_module_rowHeightMd__56f50f2c > td[data-elem=base-cell] {\n  height: 3rem;\n}\n.TableRow_module_root__56f50f2c.TableRow_module_rowHeightLg__56f50f2c > td[data-elem=base-cell] {\n  height: 4rem;\n}\n.TableRow_module_root__56f50f2c > [data-elem=base-cell].TableRow_module_expandableCell__56f50f2c {\n  padding-left: 0.9rem;\n  padding-right: 0.1rem;\n  overflow: visible;\n}\n.TableRow_module_root__56f50f2c > [data-elem=base-cell].TableRow_module_expandableCell__56f50f2c > [data-elem=component2] {\n  overflow: visible;\n}\n.TableRow_module_root__56f50f2c > [data-elem=base-cell].TableRow_module_expandableCell__56f50f2c > [data-elem=component2] > [data-elem=text] {\n  overflow: visible;\n}\n.TableRow_module_root__56f50f2c button.TableRow_module_button__56f50f2c[data-elem=base-cell] .TableRow_module_icon__56f50f2c {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.TableRow_module_root__56f50f2c button.TableRow_module_button__56f50f2c[data-elem=base-cell]:disabled {\n  cursor: default;\n}\n.TableRow_module_root__56f50f2c button.TableRow_module_button__56f50f2c[data-elem=base-cell]:disabled .TableRow_module_icon__56f50f2c {\n  visibility: hidden;\n}\n.TableRow_module_root__56f50f2c .TableRow_module_expanded__56f50f2c .TableRow_module_button__56f50f2c .TableRow_module_icon__56f50f2c {\n  transform: rotate(180deg);\n}";
+var modules_f6618a87 = {"root":"TableRow_module_root__56f50f2c","header-row":"TableRow_module_headerRow__56f50f2c","expandable-cell":"TableRow_module_expandableCell__56f50f2c","body-row":"TableRow_module_bodyRow__56f50f2c","row-height-md":"TableRow_module_rowHeightMd__56f50f2c","row-height-lg":"TableRow_module_rowHeightLg__56f50f2c","button":"TableRow_module_button__56f50f2c","icon":"TableRow_module_icon__56f50f2c","expanded":"TableRow_module_expanded__56f50f2c"};
 n(css$x,{});
 
 var TableRow = /*#__PURE__*/React.forwardRef(function BaseTable(props, ref) {
@@ -47637,6 +47703,19 @@ var TableRow = /*#__PURE__*/React.forwardRef(function BaseTable(props, ref) {
     _useState2 = _slicedToArray(_useState, 2),
     expanded = _useState2[0],
     setExpanded = _useState2[1];
+  var expandableProps = Expandable ? {
+    _expanded: expanded,
+    _setExpanded: setExpanded,
+    disabled: !Expandable({
+      datum: datum,
+      index: _index
+    }),
+    onClick: function onClick() {
+      setExpanded(function (prev) {
+        return !prev;
+      });
+    }
+  } : {};
   var tableCells = headerData === null || headerData === void 0 ? void 0 : (_headerData$map = headerData.map) === null || _headerData$map === void 0 ? void 0 : _headerData$map.call(headerData, function (item) {
     var _getCustomCell;
     var cellContent = null;
@@ -47647,6 +47726,7 @@ var TableRow = /*#__PURE__*/React.forwardRef(function BaseTable(props, ref) {
     }
     var cellProps = _objectSpread2(_objectSpread2(_objectSpread2({}, props), item), {}, {
       _index: _index,
+      expandableProps: expandableProps,
       setActiveId: setActiveId,
       key: item.id,
       datum: datum,
@@ -47669,38 +47749,12 @@ var TableRow = /*#__PURE__*/React.forwardRef(function BaseTable(props, ref) {
     );
   });
   return /*#__PURE__*/jsxRuntime.jsxs(jsxRuntime.Fragment, {
-    children: [/*#__PURE__*/jsxRuntime.jsxs("tr", {
+    children: [/*#__PURE__*/jsxRuntime.jsx("tr", {
       ref: ref,
       tabIndex: -1,
       "data-elem": "table-row",
-      className: classes(className, modules_f6618a87.root, modules_f6618a87["".concat(type, "-row")], modules_f6618a87["row-height-".concat(rowHeight)], Expandable ? modules_f6618a87.expandable : ''),
-      children: [Expandable && type === 'header' && /*#__PURE__*/jsxRuntime.jsx(TableCell, {
-        className: classes(modules_f6618a87['expandable-cell'], expanded ? modules_f6618a87.expanded : ''),
-        size: "auto",
-        cellContent: null
-      }), Expandable && type === 'body' && /*#__PURE__*/jsxRuntime.jsx(TableCell, {
-        className: classes(modules_f6618a87['expandable-cell'], expanded ? modules_f6618a87.expanded : ''),
-        size: "auto",
-        cellContent: /*#__PURE__*/jsxRuntime.jsx(Button, {
-          className: modules_f6618a87.button,
-          size: "auto",
-          variant: "text",
-          disabled: !Expandable({
-            datum: datum,
-            index: _index
-          }),
-          onClick: function onClick() {
-            setExpanded(function (prev) {
-              return !prev;
-            });
-          },
-          leftComponent: function leftComponent() {
-            return /*#__PURE__*/jsxRuntime.jsx(Caret, {
-              className: modules_f6618a87.icon
-            });
-          }
-        })
-      }), tableCells]
+      className: classes(className, modules_f6618a87.root, modules_f6618a87["".concat(type, "-row")], modules_f6618a87["row-height-".concat(rowHeight)]),
+      children: tableCells
     }), Expandable && expanded && /*#__PURE__*/jsxRuntime.jsx("tr", {
       children: /*#__PURE__*/jsxRuntime.jsx(Expandable, {
         datum: datum,
@@ -47766,14 +47820,20 @@ var TableBody = function TableBody(props) {
       var key = datum === null || datum === void 0 ? void 0 : datum.uuid;
       var setActiveId = function setActiveId() {
         var reset = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+        var multiSelect = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
         if (reset) {
-          listRef.current[_index].removeAttribute('data-active');
+          var _listRef$current, _listRef$current$_ind, _listRef$current$_ind2;
+          (_listRef$current = listRef.current) === null || _listRef$current === void 0 ? void 0 : (_listRef$current$_ind = _listRef$current[_index]) === null || _listRef$current$_ind === void 0 ? void 0 : (_listRef$current$_ind2 = _listRef$current$_ind.removeAttribute) === null || _listRef$current$_ind2 === void 0 ? void 0 : _listRef$current$_ind2.call(_listRef$current$_ind, 'data-active');
         } else {
-          var _listRef$current;
-          (_listRef$current = listRef.current) === null || _listRef$current === void 0 ? void 0 : _listRef$current.forEach(function (elem) {
-            elem.removeAttribute('data-active');
-          });
-          listRef.current[_index].setAttribute('data-active', true);
+          var _listRef$current3, _listRef$current3$_in, _listRef$current3$_in2;
+          if (!multiSelect) {
+            var _listRef$current2;
+            (_listRef$current2 = listRef.current) === null || _listRef$current2 === void 0 ? void 0 : _listRef$current2.forEach(function (elem) {
+              var _elem$removeAttribute;
+              elem === null || elem === void 0 ? void 0 : (_elem$removeAttribute = elem.removeAttribute) === null || _elem$removeAttribute === void 0 ? void 0 : _elem$removeAttribute.call(elem, 'data-active');
+            });
+          }
+          (_listRef$current3 = listRef.current) === null || _listRef$current3 === void 0 ? void 0 : (_listRef$current3$_in = _listRef$current3[_index]) === null || _listRef$current3$_in === void 0 ? void 0 : (_listRef$current3$_in2 = _listRef$current3$_in.setAttribute) === null || _listRef$current3$_in2 === void 0 ? void 0 : _listRef$current3$_in2.call(_listRef$current3$_in, 'data-active', true);
         }
       };
       return /*#__PURE__*/jsxRuntime.jsx(TableRow, {
@@ -48024,9 +48084,120 @@ BaseTable.defaultProps = {
   theme: 'light'
 };
 
-var css$r = ".Skeleton_module_root__15c10a9b[data-elem=base-cell] {\n  align-items: flex-start;\n  width: 100%;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component1] {\n  width: auto;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component1] > [data-elem=skeleton] {\n  height: 1.5rem;\n  width: 1.5rem !important;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component2] {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 1rem;\n  flex: 8;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component2] > [data-elem=skeleton] {\n  max-width: 9rem;\n  height: 1.5rem;\n}";
-var modules_37a5ff73$6 = {"root":"Skeleton_module_root__15c10a9b"};
+function o(f){return r=>{f.forEach(n=>{typeof n=="function"?n(r):n!=null&&(n.current=r);});}}
+
+var css$r = ".Tooltip_module_tooltip__04fbc763 {\n  text-align: center;\n  border-radius: 0.25rem;\n  min-width: auto;\n  max-width: 12rem;\n  padding: 0.375rem;\n  font-size: 0.875rem;\n  font-family: sans-serif;\n  line-height: 1;\n}\n.Tooltip_module_tooltip__04fbc763.Tooltip_module_light__04fbc763 {\n  color: var(--black);\n  background: var(--grey7);\n  border-color: var(--black);\n}\n.Tooltip_module_tooltip__04fbc763.Tooltip_module_light__04fbc763 .Tooltip_module_arrow__04fbc763 {\n  background: var(--grey7);\n}\n.Tooltip_module_tooltip__04fbc763.Tooltip_module_dark__04fbc763 {\n  color: var(--white);\n  background: var(--black);\n  border-color: var(--white);\n}\n.Tooltip_module_tooltip__04fbc763.Tooltip_module_dark__04fbc763 .Tooltip_module_arrow__04fbc763 {\n  background: var(--black);\n}\n.Tooltip_module_tooltip__04fbc763 .Tooltip_module_arrow__04fbc763 {\n  position: absolute;\n  width: 1rem;\n  height: 1rem;\n  z-index: -1;\n  pointer-events: none;\n  transform: rotate(45deg);\n}";
+var modules_e4619b04 = {"tooltip":"Tooltip_module_tooltip__04fbc763","light":"Tooltip_module_light__04fbc763","arrow":"Tooltip_module_arrow__04fbc763","dark":"Tooltip_module_dark__04fbc763"};
 n(css$r,{});
+
+var Tooltip = /*#__PURE__*/React.forwardRef(function Tooltip(props, propRef) {
+  var _middlewareData$arrow, _middlewareData$arrow2, _middlewareData$arrow3, _middlewareData$arrow4;
+  var children = props.children,
+    position = props.position,
+    content = props.content,
+    variant = props.variant,
+    className = props.className;
+  var arrowEl = React.useRef(null);
+  var _useState = React.useState(false),
+    _useState2 = _slicedToArray(_useState, 2),
+    open = _useState2[0],
+    setOpen = _useState2[1];
+
+  // eslint-disable-next-line object-curly-newline
+  var _useFloating = useFloating({
+      open: open,
+      onOpenChange: setOpen,
+      // strategy: 'fixed',
+      placement: position,
+      // Make sure the tooltip stays on the screen
+      whileElementsMounted: autoUpdate,
+      middleware: [offset(12), flip(), shift(), arrow({
+        element: arrowEl
+      })]
+    }),
+    x = _useFloating.x,
+    y = _useFloating.y,
+    reference = _useFloating.reference,
+    floating = _useFloating.floating,
+    strategy = _useFloating.strategy,
+    context = _useFloating.context,
+    middlewareData = _useFloating.middlewareData,
+    placement = _useFloating.placement;
+
+  // Event listeners to change the open state
+  var hover = useHover(context, {
+    move: true
+  });
+  var focus = useFocus(context);
+  var dismiss = useDismiss(context);
+  // Role props for screen readers
+  var role = useRole(context, {
+    role: 'tooltip'
+  });
+
+  // Merge all the interactions into prop getters
+  var _useInteractions = useInteractions([hover, focus, dismiss, role]),
+    getReferenceProps = _useInteractions.getReferenceProps,
+    getFloatingProps = _useInteractions.getFloatingProps;
+  var childrenRef = children.ref;
+  var ref = React.useMemo(function () {
+    return o([reference, childrenRef, propRef]);
+  }, [reference, childrenRef]);
+  var clonedChildren = /*#__PURE__*/React.cloneElement(children, getReferenceProps(_objectSpread2({
+    ref: ref
+  }, children.props)));
+  var side = placement.split('-')[0];
+  var staticSide = {
+    top: 'bottom',
+    right: 'left',
+    bottom: 'top',
+    left: 'right'
+  }[side];
+  return /*#__PURE__*/jsxRuntime.jsxs(jsxRuntime.Fragment, {
+    children: [clonedChildren, /*#__PURE__*/jsxRuntime.jsx(Popper, {
+      open: open && content != null,
+      backdrop: false,
+      wrapperId: "tooltip",
+      children: /*#__PURE__*/jsxRuntime.jsxs("div", _objectSpread2(_objectSpread2({}, getFloatingProps({
+        ref: floating,
+        className: classes(modules_e4619b04.tooltip, modules_e4619b04[variant], className),
+        style: {
+          position: strategy,
+          top: y !== null && y !== void 0 ? y : 0,
+          left: x !== null && x !== void 0 ? x : 0,
+          zIndex: 100
+        }
+      })), {}, {
+        children: [/*#__PURE__*/jsxRuntime.jsx("div", {
+          className: modules_e4619b04.arrow,
+          ref: arrowEl,
+          style: _defineProperty$1({
+            left: (_middlewareData$arrow = middlewareData === null || middlewareData === void 0 ? void 0 : (_middlewareData$arrow2 = middlewareData.arrow) === null || _middlewareData$arrow2 === void 0 ? void 0 : _middlewareData$arrow2.x) !== null && _middlewareData$arrow !== void 0 ? _middlewareData$arrow : '',
+            top: (_middlewareData$arrow3 = middlewareData === null || middlewareData === void 0 ? void 0 : (_middlewareData$arrow4 = middlewareData.arrow) === null || _middlewareData$arrow4 === void 0 ? void 0 : _middlewareData$arrow4.y) !== null && _middlewareData$arrow3 !== void 0 ? _middlewareData$arrow3 : '',
+            right: '',
+            bottom: ''
+          }, staticSide, '-0.5rem')
+        }), content]
+      }))
+    })]
+  });
+});
+Tooltip.propTypes = {
+  variant: propTypes$1.exports.oneOf(['light', 'dark']),
+  content: propTypes$1.exports.node,
+  position: propTypes$1.exports.oneOf(['right', 'top', 'bottom', 'left']),
+  className: propTypes$1.exports.string
+};
+Tooltip.defaultProps = {
+  variant: 'light',
+  content: null,
+  position: 'top',
+  className: ''
+};
+
+var css$q = ".Skeleton_module_root__15c10a9b[data-elem=base-cell] {\n  align-items: flex-start;\n  width: 100%;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component1] {\n  width: auto;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component1] > [data-elem=skeleton] {\n  height: 1.5rem;\n  width: 1.5rem !important;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component2] {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 1rem;\n  flex: 8;\n}\n.Skeleton_module_root__15c10a9b[data-elem=base-cell] > [data-elem=component2] > [data-elem=skeleton] {\n  max-width: 9rem;\n  height: 1.5rem;\n}";
+var modules_37a5ff73$6 = {"root":"Skeleton_module_root__15c10a9b"};
+n(css$q,{});
 
 var CHIPS = _toConsumableArray$1(Array(5).keys());
 var TableChipsSkeleton = function TableChipsSkeleton(_ref) {
@@ -48047,9 +48218,9 @@ var TableChipsSkeleton = function TableChipsSkeleton(_ref) {
   });
 };
 
-var css$q = ".TableChipItem_module_root__46c5e2b5 {\n  background: var(--grey8);\n  border: 1px solid var(--grey4);\n  padding: 0.344rem 0.25rem;\n  height: 3rem;\n  max-height: 100%;\n  max-width: -moz-fit-content;\n  max-width: fit-content;\n  cursor: default;\n}\n.TableChipItem_module_root__46c5e2b5 .TableChipItem_module_chipIcon__46c5e2b5 {\n  width: 1rem;\n  height: 1rem;\n}\n.TableChipItem_module_root__46c5e2b5 > [data-elem=component1] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.TableChipItem_module_root__46c5e2b5 > [data-elem=component2] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  gap: 0.25rem;\n  height: 100%;\n}\n.TableChipItem_module_root__46c5e2b5 > [data-elem=component2] div.TableChipItem_module_chipSearch__46c5e2b5 {\n  padding: 0;\n  height: 100%;\n}\n.TableChipItem_module_root__46c5e2b5 > [data-elem=component2] div.TableChipItem_module_chipSearch__46c5e2b5 > label > [data-elem=base-cell] {\n  border-radius: 1.5rem;\n  width: auto;\n}\n.TableChipItem_module_root__46c5e2b5 > [data-elem=component2] div.TableChipItem_module_chipSearch__46c5e2b5 > label > [data-elem=base-cell] > [data-elem=component2] > [data-elem=input] {\n  font-size: 0.875rem;\n  font-weight: 500;\n  width: auto;\n}\n.TableChipItem_module_root__46c5e2b5 > [data-elem=component2] .TableChipItem_module_chip__46c5e2b5 {\n  height: 100%;\n}\n.TableChipItem_module_root__46c5e2b5 > [data-elem=component2] .TableChipItem_module_chip__46c5e2b5:not(:disabled) {\n  cursor: pointer;\n}\n.TableChipItem_module_root__46c5e2b5 > [data-elem=component2] .TableChipItem_module_chip__46c5e2b5:disabled {\n  cursor: default;\n  color: var(--info);\n  border-color: var(--info-outline);\n  background: var(--info-bg);\n  filter: none;\n}\n.TableChipItem_module_root__46c5e2b5 > [data-elem=component2] .TableChipItem_module_chip__46c5e2b5 > [data-elem=component2] > [data-elem=title] {\n  color: var(--dark-grey);\n}\n.TableChipItem_module_root__46c5e2b5 > [data-elem=component2] .TableChipItem_module_chip__46c5e2b5 .TableChipItem_module_icon__46c5e2b5 {\n  width: 0.875rem;\n  height: 0.875rem;\n}\n.TableChipItem_module_root__46c5e2b5 > [data-elem=component3] {\n  height: 100%;\n}\n.TableChipItem_module_root__46c5e2b5.TableChipItem_module_disabled__46c5e2b5:hover {\n  border-color: var(--grey4);\n}\n.TableChipItem_module_root__46c5e2b5.TableChipItem_module_disabled__46c5e2b5:hover > [data-elem=component2] .TableChipItem_module_label__46c5e2b5 {\n  color: var(--dark-grey);\n}\n.TableChipItem_module_root__46c5e2b5.TableChipItem_module_disabled__46c5e2b5:hover > [data-elem=component2] .TableChipItem_module_chipChild__46c5e2b5 {\n  background: var(--info-bg);\n}\n.TableChipItem_module_root__46c5e2b5.TableChipItem_module_disabled__46c5e2b5:hover > [data-elem=component2] .TableChipItem_module_chipChild__46c5e2b5 > [data-elem=component2] > [data-elem=title] {\n  color: var(--dark-grey);\n}\n.TableChipItem_module_root__46c5e2b5.TableChipItem_module_disabled__46c5e2b5:hover > [data-elem=component2] .TableChipItem_module_chipChild__46c5e2b5 .TableChipItem_module_icon__46c5e2b5 {\n  width: 0.875rem;\n  height: 0.875rem;\n}\n.TableChipItem_module_root__46c5e2b5:hover {\n  border-color: var(--highlight);\n}\n.TableChipItem_module_root__46c5e2b5:hover > [data-elem=component2] .TableChipItem_module_label__46c5e2b5 {\n  color: var(--highlight);\n}\n.TableChipItem_module_root__46c5e2b5:hover > [data-elem=component2] .TableChipItem_module_chipChild__46c5e2b5 {\n  background: var(--background);\n}\n.TableChipItem_module_root__46c5e2b5:hover > [data-elem=component2] .TableChipItem_module_chipChild__46c5e2b5 > [data-elem=component2] > [data-elem=title] {\n  color: var(--highlight);\n}\n.TableChipItem_module_root__46c5e2b5:hover > [data-elem=component2] .TableChipItem_module_chipChild__46c5e2b5 .TableChipItem_module_icon__46c5e2b5 {\n  width: 0.875rem;\n  height: 0.875rem;\n}";
+var css$p = ".TableChipItem_module_root__46c5e2b5 {\n  background: var(--grey8);\n  border: 1px solid var(--grey4);\n  padding: 0.344rem 0.25rem;\n  height: 3rem;\n  max-height: 100%;\n  max-width: -moz-fit-content;\n  max-width: fit-content;\n  cursor: default;\n}\n.TableChipItem_module_root__46c5e2b5 .TableChipItem_module_chipIcon__46c5e2b5 {\n  width: 1rem;\n  height: 1rem;\n}\n.TableChipItem_module_root__46c5e2b5 > [data-elem=component1] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.TableChipItem_module_root__46c5e2b5 > [data-elem=component2] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  gap: 0.25rem;\n  height: 100%;\n}\n.TableChipItem_module_root__46c5e2b5 > [data-elem=component2] div.TableChipItem_module_chipSearch__46c5e2b5 {\n  padding: 0;\n  height: 100%;\n}\n.TableChipItem_module_root__46c5e2b5 > [data-elem=component2] div.TableChipItem_module_chipSearch__46c5e2b5 > label > [data-elem=base-cell] {\n  border-radius: 1.5rem;\n  width: auto;\n}\n.TableChipItem_module_root__46c5e2b5 > [data-elem=component2] div.TableChipItem_module_chipSearch__46c5e2b5 > label > [data-elem=base-cell] > [data-elem=component2] > [data-elem=input] {\n  font-size: 0.875rem;\n  font-weight: 500;\n  width: auto;\n}\n.TableChipItem_module_root__46c5e2b5 > [data-elem=component2] .TableChipItem_module_chip__46c5e2b5 {\n  height: 100%;\n}\n.TableChipItem_module_root__46c5e2b5 > [data-elem=component2] .TableChipItem_module_chip__46c5e2b5:not(:disabled) {\n  cursor: pointer;\n}\n.TableChipItem_module_root__46c5e2b5 > [data-elem=component2] .TableChipItem_module_chip__46c5e2b5:disabled {\n  cursor: default;\n  color: var(--info);\n  border-color: var(--info-outline);\n  background: var(--info-bg);\n  filter: none;\n}\n.TableChipItem_module_root__46c5e2b5 > [data-elem=component2] .TableChipItem_module_chip__46c5e2b5 > [data-elem=component2] > [data-elem=title] {\n  color: var(--dark-grey);\n}\n.TableChipItem_module_root__46c5e2b5 > [data-elem=component2] .TableChipItem_module_chip__46c5e2b5 .TableChipItem_module_icon__46c5e2b5 {\n  width: 0.875rem;\n  height: 0.875rem;\n}\n.TableChipItem_module_root__46c5e2b5 > [data-elem=component3] {\n  height: 100%;\n}\n.TableChipItem_module_root__46c5e2b5.TableChipItem_module_disabled__46c5e2b5:hover {\n  border-color: var(--grey4);\n}\n.TableChipItem_module_root__46c5e2b5.TableChipItem_module_disabled__46c5e2b5:hover > [data-elem=component2] .TableChipItem_module_label__46c5e2b5 {\n  color: var(--dark-grey);\n}\n.TableChipItem_module_root__46c5e2b5.TableChipItem_module_disabled__46c5e2b5:hover > [data-elem=component2] .TableChipItem_module_chipChild__46c5e2b5 {\n  background: var(--info-bg);\n}\n.TableChipItem_module_root__46c5e2b5.TableChipItem_module_disabled__46c5e2b5:hover > [data-elem=component2] .TableChipItem_module_chipChild__46c5e2b5 > [data-elem=component2] > [data-elem=title] {\n  color: var(--dark-grey);\n}\n.TableChipItem_module_root__46c5e2b5.TableChipItem_module_disabled__46c5e2b5:hover > [data-elem=component2] .TableChipItem_module_chipChild__46c5e2b5 .TableChipItem_module_icon__46c5e2b5 {\n  width: 0.875rem;\n  height: 0.875rem;\n}\n.TableChipItem_module_root__46c5e2b5:hover {\n  border-color: var(--highlight);\n}\n.TableChipItem_module_root__46c5e2b5:hover > [data-elem=component2] .TableChipItem_module_label__46c5e2b5 {\n  color: var(--highlight);\n}\n.TableChipItem_module_root__46c5e2b5:hover > [data-elem=component2] .TableChipItem_module_chipChild__46c5e2b5 {\n  background: var(--background);\n}\n.TableChipItem_module_root__46c5e2b5:hover > [data-elem=component2] .TableChipItem_module_chipChild__46c5e2b5 > [data-elem=component2] > [data-elem=title] {\n  color: var(--highlight);\n}\n.TableChipItem_module_root__46c5e2b5:hover > [data-elem=component2] .TableChipItem_module_chipChild__46c5e2b5 .TableChipItem_module_icon__46c5e2b5 {\n  width: 0.875rem;\n  height: 0.875rem;\n}";
 var modules_ac61eac3 = {"root":"TableChipItem_module_root__46c5e2b5","chip-icon":"TableChipItem_module_chipIcon__46c5e2b5","chip-search":"TableChipItem_module_chipSearch__46c5e2b5","chip":"TableChipItem_module_chip__46c5e2b5","icon":"TableChipItem_module_icon__46c5e2b5","disabled":"TableChipItem_module_disabled__46c5e2b5","label":"TableChipItem_module_label__46c5e2b5","chip-child":"TableChipItem_module_chipChild__46c5e2b5"};
-n(css$q,{});
+n(css$p,{});
 
 var TableChipItem = function TableChipItem(props) {
   // eslint-disable-next-line object-curly-newline
@@ -48127,9 +48298,9 @@ var TableChipItem = function TableChipItem(props) {
   });
 };
 
-var css$p = ".TableChips_module_root__6212ef0c[data-elem=base-cell] {\n  padding: 0.5rem 1.5rem;\n  width: 100%;\n  background: var(--grey6);\n  border-radius: 0.25rem 0.25rem 0 0;\n}\n.TableChips_module_root__6212ef0c[data-elem=base-cell] > [data-elem=component1] .TableChips_module_back__6212ef0c {\n  height: 2rem;\n  width: 2rem;\n}\n.TableChips_module_root__6212ef0c[data-elem=base-cell] > [data-elem=component1] .TableChips_module_back__6212ef0c [data-elem=component1] .TableChips_module_icon__6212ef0c {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--white);\n}\n.TableChips_module_root__6212ef0c[data-elem=base-cell] > [data-elem=component2] {\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  height: 100%;\n  gap: 0.5rem;\n  overflow: auto hidden;\n  flex: 1;\n}\n.TableChips_module_root__6212ef0c[data-elem=base-cell] > [data-elem=component2]::-webkit-scrollbar {\n  display: none;\n}\n.TableChips_module_root__6212ef0c[data-elem=base-cell] > [data-elem=component3] {\n  height: 100%;\n}\n.TableChips_module_root__6212ef0c[data-elem=base-cell] > [data-elem=component3] .TableChips_module_clear__6212ef0c {\n  height: 100%;\n}";
+var css$o = ".TableChips_module_root__6212ef0c[data-elem=base-cell] {\n  padding: 0.5rem 1.5rem;\n  width: 100%;\n  background: var(--grey6);\n  border-radius: 0.25rem 0.25rem 0 0;\n}\n.TableChips_module_root__6212ef0c[data-elem=base-cell] > [data-elem=component1] .TableChips_module_back__6212ef0c {\n  height: 2rem;\n  width: 2rem;\n}\n.TableChips_module_root__6212ef0c[data-elem=base-cell] > [data-elem=component1] .TableChips_module_back__6212ef0c [data-elem=component1] .TableChips_module_icon__6212ef0c {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--white);\n}\n.TableChips_module_root__6212ef0c[data-elem=base-cell] > [data-elem=component2] {\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  height: 100%;\n  gap: 0.5rem;\n  overflow: auto hidden;\n  flex: 1;\n}\n.TableChips_module_root__6212ef0c[data-elem=base-cell] > [data-elem=component2]::-webkit-scrollbar {\n  display: none;\n}\n.TableChips_module_root__6212ef0c[data-elem=base-cell] > [data-elem=component3] {\n  height: 100%;\n}\n.TableChips_module_root__6212ef0c[data-elem=base-cell] > [data-elem=component3] .TableChips_module_clear__6212ef0c {\n  height: 100%;\n}";
 var modules_016d9b3e = {"root":"TableChips_module_root__6212ef0c","back":"TableChips_module_back__6212ef0c","icon":"TableChips_module_icon__6212ef0c","clear":"TableChips_module_clear__6212ef0c"};
-n(css$p,{});
+n(css$o,{});
 
 var TableChips = function TableChips(props) {
   var _chips$filter;
@@ -48140,6 +48311,7 @@ var TableChips = function TableChips(props) {
     chips = props.chips,
     className = props.className,
     style = props.style,
+    tooltip = props.tooltip,
     loading = props.loading,
     _onRemove = props.onRemove,
     theme = props.theme;
@@ -48164,18 +48336,21 @@ var TableChips = function TableChips(props) {
       attrs: {
         style: style
       },
-      component1: showBack && /*#__PURE__*/jsxRuntime.jsx(Button, {
-        size: "auto",
-        radius: "round",
-        className: modules_016d9b3e.back,
-        leftComponent: function leftComponent() {
-          return /*#__PURE__*/jsxRuntime.jsx(Arrow$1, {
-            className: modules_016d9b3e.icon,
-            position: "left"
-          });
-        },
-        onClick: onBack
-      }),
+      component1: showBack && /*#__PURE__*/jsxRuntime.jsx(Tooltip, _objectSpread2(_objectSpread2({}, tooltip), {}, {
+        variant: theme,
+        children: /*#__PURE__*/jsxRuntime.jsx(Button, {
+          size: "auto",
+          radius: "round",
+          className: modules_016d9b3e.back,
+          leftComponent: function leftComponent() {
+            return /*#__PURE__*/jsxRuntime.jsx(Arrow$1, {
+              className: modules_016d9b3e.icon,
+              position: "left"
+            });
+          },
+          onClick: onBack
+        })
+      })),
       component2: (chipsDOM === null || chipsDOM === void 0 ? void 0 : chipsDOM.length) > 0 ? chipsDOM : null,
       component3: (chipsDOM === null || chipsDOM === void 0 ? void 0 : chipsDOM.length) > 0 ? /*#__PURE__*/jsxRuntime.jsx(Button, {
         size: "auto",
@@ -48204,6 +48379,8 @@ TableChips.propTypes = {
     disabled: propTypes$1.exports.bool,
     rightComponent: propTypes$1.exports.node
   })),
+  // eslint-disable-next-line react/forbid-prop-types
+  tooltip: propTypes$1.exports.object,
   loading: propTypes$1.exports.bool,
   onRemove: propTypes$1.exports.func,
   theme: propTypes$1.exports.oneOf(['light', 'dark'])
@@ -48212,6 +48389,7 @@ TableChips.defaultProps = {
   className: '',
   style: {},
   showBack: false,
+  tooltip: {},
   onBack: function onBack() {},
   onClear: function onClear() {},
   chips: [],
@@ -48245,9 +48423,9 @@ var TableChip = /*#__PURE__*/_createClass(function TableChip(_ref) {
   this.rightComponent = rightComponent;
 });
 
-var css$o = ".Popover_module_root__e2663c00 {\n  padding: 1rem;\n  border-radius: 0.25rem;\n  border: 1px solid var(--grey);\n}\n.Popover_module_root__e2663c00.Popover_module_darkTheme__e2663c00 {\n  box-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);\n  background-color: var(--dark-grey);\n  color: var(--white);\n  border-color: var(--grey);\n}\n.Popover_module_root__e2663c00.Popover_module_lightTheme__e2663c00 {\n  box-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);\n  background-color: var(--white);\n  color: var(--dark-grey);\n  border-color: var(--grey4);\n}";
+var css$n = ".Popover_module_root__e2663c00 {\n  padding: 1rem;\n  border-radius: 0.25rem;\n  border: 1px solid var(--grey);\n}\n.Popover_module_root__e2663c00.Popover_module_darkTheme__e2663c00 {\n  box-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);\n  background-color: var(--dark-grey);\n  color: var(--white);\n  border-color: var(--grey);\n}\n.Popover_module_root__e2663c00.Popover_module_lightTheme__e2663c00 {\n  box-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);\n  background-color: var(--white);\n  color: var(--dark-grey);\n  border-color: var(--grey4);\n}";
 var modules_dfc4608f = {"root":"Popover_module_root__e2663c00","dark-theme":"Popover_module_darkTheme__e2663c00","light-theme":"Popover_module_lightTheme__e2663c00"};
-n(css$o,{});
+n(css$n,{});
 
 var Popover = function Popover(props) {
   // eslint-disable-next-line object-curly-newline
@@ -48331,9 +48509,9 @@ Popover.defaultProps = {
   theme: 'dark'
 };
 
-var css$n = ".Columns_module_popover__19f4f6da {\n  height: 32rem;\n  padding: 0;\n  overflow: hidden;\n}\n\n.Columns_module_root__19f4f6da {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  position: relative;\n  height: 100%;\n  min-width: 18rem;\n  max-width: 100%;\n}\n.Columns_module_root__19f4f6da .Columns_module_header__19f4f6da {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  border-bottom: 1px solid var(--grey4);\n  padding: 0.75rem 2.5rem;\n}\n.Columns_module_root__19f4f6da .Columns_module_header__19f4f6da > [data-elem=component1] {\n  font-weight: 500;\n}\n.Columns_module_root__19f4f6da .Columns_module_header__19f4f6da > [data-elem=component2] .Columns_module_close__19f4f6da {\n  height: auto;\n  padding: 0;\n}\n.Columns_module_root__19f4f6da .Columns_module_header__19f4f6da > [data-elem=component2] .Columns_module_close__19f4f6da .Columns_module_icon__19f4f6da {\n  width: 1rem;\n  height: 1rem;\n}\n.Columns_module_root__19f4f6da .Columns_module_body__19f4f6da {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  gap: 0.5rem;\n  padding: 0.75rem 2.5rem;\n  max-height: 28rem;\n  overflow-y: auto;\n  flex: 1 1 auto;\n}\n.Columns_module_root__19f4f6da .Columns_module_body__19f4f6da .Columns_module_search__19f4f6da {\n  position: sticky;\n  top: 0;\n}\n.Columns_module_root__19f4f6da .Columns_module_body__19f4f6da .Columns_module_columns__19f4f6da {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  gap: 0.5rem;\n  overflow-y: auto;\n}\n.Columns_module_root__19f4f6da .Columns_module_body__19f4f6da .Columns_module_columns__19f4f6da .Columns_module_item__19f4f6da {\n  height: 3rem;\n}\n.Columns_module_root__19f4f6da .Columns_module_body__19f4f6da .Columns_module_columns__19f4f6da .Columns_module_item__19f4f6da > [data-elem=title] {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n}\n.Columns_module_root__19f4f6da .Columns_module_footer__19f4f6da {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-end;\n  align-items: center;\n  height: auto;\n  margin-top: auto;\n  padding: 0.5rem 2.5rem;\n  border-top: 1px solid var(--grey4);\n}\n.Columns_module_root__19f4f6da .Columns_module_footer__19f4f6da button.Columns_module_expand__19f4f6da {\n  height: auto;\n  background: var(--grey8);\n  border: 1px solid var(--grey4);\n  color: var(--black);\n}\n.Columns_module_root__19f4f6da .Columns_module_footer__19f4f6da button.Columns_module_expand__19f4f6da .Columns_module_icon__19f4f6da {\n  width: 1.5rem;\n  height: 1.5rem;\n  transform: rotate(180deg);\n}\n.Columns_module_root__19f4f6da.Columns_module_expanded__19f4f6da .Columns_module_body__19f4f6da {\n  flex: 0 1 auto;\n}\n.Columns_module_root__19f4f6da.Columns_module_expanded__19f4f6da .Columns_module_body__19f4f6da .Columns_module_columns__19f4f6da {\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n}\n.Columns_module_root__19f4f6da.Columns_module_expanded__19f4f6da .Columns_module_body__19f4f6da .Columns_module_columns__19f4f6da .Columns_module_item__19f4f6da {\n  overflow: hidden;\n}\n.Columns_module_root__19f4f6da.Columns_module_expanded__19f4f6da .Columns_module_footer__19f4f6da button.Columns_module_expand__19f4f6da .Columns_module_icon__19f4f6da {\n  transform: none;\n}";
+var css$m = ".Columns_module_popover__19f4f6da {\n  height: 32rem;\n  padding: 0;\n  overflow: hidden;\n}\n\n.Columns_module_root__19f4f6da {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  position: relative;\n  height: 100%;\n  min-width: 18rem;\n  max-width: 100%;\n}\n.Columns_module_root__19f4f6da .Columns_module_header__19f4f6da {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  border-bottom: 1px solid var(--grey4);\n  padding: 0.75rem 2.5rem;\n}\n.Columns_module_root__19f4f6da .Columns_module_header__19f4f6da > [data-elem=component1] {\n  font-weight: 500;\n}\n.Columns_module_root__19f4f6da .Columns_module_header__19f4f6da > [data-elem=component2] .Columns_module_close__19f4f6da {\n  height: auto;\n  padding: 0;\n}\n.Columns_module_root__19f4f6da .Columns_module_header__19f4f6da > [data-elem=component2] .Columns_module_close__19f4f6da .Columns_module_icon__19f4f6da {\n  width: 1rem;\n  height: 1rem;\n}\n.Columns_module_root__19f4f6da .Columns_module_body__19f4f6da {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  gap: 0.5rem;\n  padding: 0.75rem 2.5rem;\n  max-height: 28rem;\n  overflow-y: auto;\n  flex: 1 1 auto;\n}\n.Columns_module_root__19f4f6da .Columns_module_body__19f4f6da .Columns_module_search__19f4f6da {\n  position: sticky;\n  top: 0;\n}\n.Columns_module_root__19f4f6da .Columns_module_body__19f4f6da .Columns_module_columns__19f4f6da {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  gap: 0.5rem;\n  overflow-y: auto;\n}\n.Columns_module_root__19f4f6da .Columns_module_body__19f4f6da .Columns_module_columns__19f4f6da .Columns_module_item__19f4f6da {\n  height: 3rem;\n}\n.Columns_module_root__19f4f6da .Columns_module_body__19f4f6da .Columns_module_columns__19f4f6da .Columns_module_item__19f4f6da > [data-elem=title] {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n}\n.Columns_module_root__19f4f6da .Columns_module_footer__19f4f6da {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-end;\n  align-items: center;\n  height: auto;\n  margin-top: auto;\n  padding: 0.5rem 2.5rem;\n  border-top: 1px solid var(--grey4);\n}\n.Columns_module_root__19f4f6da .Columns_module_footer__19f4f6da button.Columns_module_expand__19f4f6da {\n  height: auto;\n  background: var(--grey8);\n  border: 1px solid var(--grey4);\n  color: var(--black);\n}\n.Columns_module_root__19f4f6da .Columns_module_footer__19f4f6da button.Columns_module_expand__19f4f6da .Columns_module_icon__19f4f6da {\n  width: 1.5rem;\n  height: 1.5rem;\n  transform: rotate(180deg);\n}\n.Columns_module_root__19f4f6da.Columns_module_expanded__19f4f6da .Columns_module_body__19f4f6da {\n  flex: 0 1 auto;\n}\n.Columns_module_root__19f4f6da.Columns_module_expanded__19f4f6da .Columns_module_body__19f4f6da .Columns_module_columns__19f4f6da {\n  display: grid;\n  grid-template-columns: 1fr 1fr;\n}\n.Columns_module_root__19f4f6da.Columns_module_expanded__19f4f6da .Columns_module_body__19f4f6da .Columns_module_columns__19f4f6da .Columns_module_item__19f4f6da {\n  overflow: hidden;\n}\n.Columns_module_root__19f4f6da.Columns_module_expanded__19f4f6da .Columns_module_footer__19f4f6da button.Columns_module_expand__19f4f6da .Columns_module_icon__19f4f6da {\n  transform: none;\n}";
 var modules_48c02c99 = {"popover":"Columns_module_popover__19f4f6da","root":"Columns_module_root__19f4f6da","header":"Columns_module_header__19f4f6da","close":"Columns_module_close__19f4f6da","icon":"Columns_module_icon__19f4f6da","body":"Columns_module_body__19f4f6da","search":"Columns_module_search__19f4f6da","columns":"Columns_module_columns__19f4f6da","item":"Columns_module_item__19f4f6da","footer":"Columns_module_footer__19f4f6da","expand":"Columns_module_expand__19f4f6da","expanded":"Columns_module_expanded__19f4f6da"};
-n(css$n,{});
+n(css$m,{});
 
 var Columns = function Columns(props) {
   var open = props.open,
@@ -48438,13 +48616,13 @@ var Columns = function Columns(props) {
   });
 };
 
-var css$m = ".TableFilters_module_root__53838cde[data-elem=base-cell] {\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n  overflow-x: auto;\n  padding: 0.5rem;\n  gap: 1.25rem;\n  width: 100%;\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell]::-webkit-scrollbar {\n  display: none;\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] .TableFilters_module_icon__53838cde {\n  width: 1.5rem;\n  height: 1.5rem;\n  flex-shrink: 0;\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] button.TableFilters_module_iconButton__53838cde {\n  height: 100%;\n  background: var(--grey8);\n  border: 1px solid var(--grey4);\n  color: var(--black);\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] > [data-elem*=component] {\n  height: 100%;\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] .TableFilters_module_left__53838cde,\n.TableFilters_module_root__53838cde[data-elem=base-cell] .TableFilters_module_center__53838cde,\n.TableFilters_module_root__53838cde[data-elem=base-cell] .TableFilters_module_right__53838cde {\n  height: 100%;\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] > [data-elem=component1] .TableFilters_module_left__53838cde {\n  gap: 1rem;\n  background: var(--grey8);\n  border: 1px solid var(--grey4);\n  color: var(--black);\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] > [data-elem=component1] .TableFilters_module_left__53838cde [data-elem=left] {\n  gap: 1rem;\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] > [data-elem=component1] .TableFilters_module_left__53838cde .TableFilters_module_icon__53838cde {\n  fill: var(--black);\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] > [data-elem=component1] .TableFilters_module_left__53838cde .TableFilters_module_filterValue__53838cde {\n  color: var(--white);\n  background: var(--highlight);\n  padding: 0.125rem 0.5rem;\n  border-radius: 50%;\n  font-size: 0.813rem;\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] > [data-elem=component2] {\n  flex: 1;\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] > [data-elem=component2] .TableFilters_module_center__53838cde {\n  width: 100%;\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] > [data-elem=component2] .TableFilters_module_center__53838cde [data-elem=base-cell] {\n  border-color: var(--grey4);\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] > [data-elem=component2] .TableFilters_module_center__53838cde [data-elem=base-cell]:focus-within {\n  outline: 1px solid var(--highlight);\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] > [data-elem=component2] .TableFilters_module_center__53838cde .TableFilters_module_icon__53838cde {\n  width: 1.25rem;\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] .TableFilters_module_right__53838cde {\n  width: auto;\n  padding: 0;\n  min-width: 0rem;\n  gap: 0.5rem;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] .TableFilters_module_right__53838cde > [data-elem*=component] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  height: 100%;\n}";
+var css$l = ".TableFilters_module_root__53838cde[data-elem=base-cell] {\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n  overflow-x: auto;\n  padding: 0.5rem;\n  gap: 1.25rem;\n  width: 100%;\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell]::-webkit-scrollbar {\n  display: none;\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] .TableFilters_module_icon__53838cde {\n  width: 1.5rem;\n  height: 1.5rem;\n  flex-shrink: 0;\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] button.TableFilters_module_iconButton__53838cde {\n  height: 100%;\n  background: var(--grey8);\n  border: 1px solid var(--grey4);\n  color: var(--black);\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] > [data-elem*=component] {\n  height: 100%;\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] .TableFilters_module_left__53838cde,\n.TableFilters_module_root__53838cde[data-elem=base-cell] .TableFilters_module_center__53838cde,\n.TableFilters_module_root__53838cde[data-elem=base-cell] .TableFilters_module_right__53838cde {\n  height: 100%;\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] > [data-elem=component1] .TableFilters_module_left__53838cde {\n  gap: 1rem;\n  background: var(--grey8);\n  border: 1px solid var(--grey4);\n  color: var(--black);\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] > [data-elem=component1] .TableFilters_module_left__53838cde [data-elem=left] {\n  gap: 1rem;\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] > [data-elem=component1] .TableFilters_module_left__53838cde .TableFilters_module_icon__53838cde {\n  fill: var(--black);\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] > [data-elem=component1] .TableFilters_module_left__53838cde .TableFilters_module_filterValue__53838cde {\n  color: var(--white);\n  background: var(--highlight);\n  padding: 0.125rem 0.5rem;\n  border-radius: 50%;\n  font-size: 0.813rem;\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] > [data-elem=component2] {\n  flex: 1;\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] > [data-elem=component2] .TableFilters_module_center__53838cde {\n  width: 100%;\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] > [data-elem=component2] .TableFilters_module_center__53838cde [data-elem=base-cell] {\n  border-color: var(--grey4);\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] > [data-elem=component2] .TableFilters_module_center__53838cde [data-elem=base-cell]:focus-within {\n  outline: 1px solid var(--highlight);\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] > [data-elem=component2] .TableFilters_module_center__53838cde .TableFilters_module_icon__53838cde {\n  width: 1.25rem;\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] .TableFilters_module_right__53838cde {\n  width: auto;\n  padding: 0;\n  min-width: 0rem;\n  gap: 0.5rem;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.TableFilters_module_root__53838cde[data-elem=base-cell] .TableFilters_module_right__53838cde > [data-elem*=component] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  height: 100%;\n}";
 var modules_a0fe63f9 = {"root":"TableFilters_module_root__53838cde","icon":"TableFilters_module_icon__53838cde","icon-button":"TableFilters_module_iconButton__53838cde","left":"TableFilters_module_left__53838cde","center":"TableFilters_module_center__53838cde","right":"TableFilters_module_right__53838cde","filter-value":"TableFilters_module_filterValue__53838cde"};
-n(css$m,{});
-
-var css$l = ".Skeleton_module_root__bdc934d4[data-elem=base-cell] {\n  width: 100%;\n  gap: 1.25rem;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component1] {\n  flex: 1;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component2] {\n  flex: 6;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component3] {\n  flex: 3;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component3] > [data-elem=base-cell] {\n  padding: 0;\n  align-items: flex-start;\n  height: auto;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component3] > [data-elem=base-cell] > [data-elem*=component] {\n  flex: 1;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component3] > [data-elem=base-cell] > [data-elem*=component] > [data-elem=skeleton] {\n  height: 1.5rem;\n}";
-var modules_37a5ff73$5 = {"root":"Skeleton_module_root__bdc934d4"};
 n(css$l,{});
+
+var css$k = ".Skeleton_module_root__bdc934d4[data-elem=base-cell] {\n  width: 100%;\n  gap: 1.25rem;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component1] {\n  flex: 1;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component2] {\n  flex: 6;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component3] {\n  flex: 3;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component3] > [data-elem=base-cell] {\n  padding: 0;\n  align-items: flex-start;\n  height: auto;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component3] > [data-elem=base-cell] > [data-elem*=component] {\n  flex: 1;\n}\n.Skeleton_module_root__bdc934d4[data-elem=base-cell] > [data-elem=component3] > [data-elem=base-cell] > [data-elem*=component] > [data-elem=skeleton] {\n  height: 1.5rem;\n}";
+var modules_37a5ff73$5 = {"root":"Skeleton_module_root__bdc934d4"};
+n(css$k,{});
 
 var TableFiltersSkeleton = function TableFiltersSkeleton(_ref) {
   var theme = _ref.theme;
@@ -48640,9 +48818,9 @@ TableFilters.defaultProps = {
   theme: 'light'
 };
 
-var css$k = ".Table_module_root__b07b1753 {\n  position: relative;\n  border-style: solid;\n  border-color: var(--grey4);\n  border-width: 1px 1px 0px 1px;\n  border-radius: 0.25rem;\n  width: 100%;\n  max-width: 100%;\n  height: 100%;\n  overflow: hidden;\n}\n.Table_module_root__b07b1753 .Table_module_table__b07b1753 {\n  height: calc(100% - 6rem);\n  padding-bottom: 3.5rem;\n}\n.Table_module_root__b07b1753 .Table_module_pagination__b07b1753 {\n  position: absolute;\n  bottom: 0;\n  left: 50%;\n  transform: translateX(-50%);\n}\n.Table_module_root__b07b1753 .Table_module_pagination__b07b1753.Table_module_floating__b07b1753 {\n  bottom: 1rem;\n}\n.Table_module_root__b07b1753 .Table_module_chips__b07b1753,\n.Table_module_root__b07b1753 .Table_module_filters__b07b1753,\n.Table_module_root__b07b1753 .Table_module_table__b07b1753 > [data-elem=table-header] {\n  position: sticky;\n  z-index: 1;\n  top: 0;\n}";
+var css$j = ".Table_module_root__b07b1753 {\n  position: relative;\n  border-style: solid;\n  border-color: var(--grey4);\n  border-width: 1px 1px 0px 1px;\n  border-radius: 0.25rem;\n  width: 100%;\n  max-width: 100%;\n  height: 100%;\n  overflow: hidden;\n}\n.Table_module_root__b07b1753 .Table_module_table__b07b1753 {\n  height: calc(100% - 6rem);\n  padding-bottom: 3.5rem;\n}\n.Table_module_root__b07b1753 .Table_module_pagination__b07b1753 {\n  position: absolute;\n  bottom: 0;\n  left: 50%;\n  transform: translateX(-50%);\n}\n.Table_module_root__b07b1753 .Table_module_pagination__b07b1753.Table_module_floating__b07b1753 {\n  bottom: 1rem;\n}\n.Table_module_root__b07b1753 .Table_module_chips__b07b1753,\n.Table_module_root__b07b1753 .Table_module_filters__b07b1753,\n.Table_module_root__b07b1753 .Table_module_table__b07b1753 > [data-elem=table-header] {\n  position: sticky;\n  z-index: 1;\n  top: 0;\n}";
 var modules_2e8406c7 = {"root":"Table_module_root__b07b1753","table":"Table_module_table__b07b1753","pagination":"Table_module_pagination__b07b1753","floating":"Table_module_floating__b07b1753","chips":"Table_module_chips__b07b1753","filters":"Table_module_filters__b07b1753"};
-n(css$k,{});
+n(css$j,{});
 
 var INTERSECTION = 1;
 var STEP = 0.05;
@@ -48835,9 +49013,9 @@ Table.defaultProps = {
   theme: 'light'
 };
 
-var css$j = ".Tabs_module_root__18f64bf7 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.Tabs_module_root__18f64bf7.Tabs_module_lightTheme__18f64bf7 > button.Tabs_module_tab__18f64bf7 {\n  border-color: var(--grey4);\n}\n.Tabs_module_root__18f64bf7.Tabs_module_lightTheme__18f64bf7 > button.Tabs_module_tab__18f64bf7 > [data-elem=component1] > .Tabs_module_icon__18f64bf7,\n.Tabs_module_root__18f64bf7.Tabs_module_lightTheme__18f64bf7 > button.Tabs_module_tab__18f64bf7 > [data-elem=component3] > .Tabs_module_icon__18f64bf7 {\n  fill: var(--black);\n}\n.Tabs_module_root__18f64bf7.Tabs_module_lightTheme__18f64bf7 > button.Tabs_module_tab__18f64bf7 > [data-elem=component2] {\n  color: var(--black);\n}\n.Tabs_module_root__18f64bf7.Tabs_module_lightTheme__18f64bf7 > button.Tabs_module_tab__18f64bf7:hover {\n  background: var(--info-bg);\n}\n.Tabs_module_root__18f64bf7.Tabs_module_darkTheme__18f64bf7 > button.Tabs_module_tab__18f64bf7 {\n  border-color: var(--grey);\n}\n.Tabs_module_root__18f64bf7.Tabs_module_darkTheme__18f64bf7 > button.Tabs_module_tab__18f64bf7 > [data-elem=component1] > .Tabs_module_icon__18f64bf7,\n.Tabs_module_root__18f64bf7.Tabs_module_darkTheme__18f64bf7 > button.Tabs_module_tab__18f64bf7 > [data-elem=component3] > .Tabs_module_icon__18f64bf7 {\n  fill: var(--white);\n}\n.Tabs_module_root__18f64bf7.Tabs_module_darkTheme__18f64bf7 > button.Tabs_module_tab__18f64bf7 > [data-elem=component2] {\n  color: var(--white);\n}\n.Tabs_module_root__18f64bf7.Tabs_module_darkTheme__18f64bf7 > button.Tabs_module_tab__18f64bf7:hover {\n  background: var(--dark-grey);\n}\n.Tabs_module_root__18f64bf7 > button.Tabs_module_tab__18f64bf7 {\n  padding: 0.75rem;\n  gap: 0.75rem;\n  border-bottom-width: 1px;\n  border-bottom-style: solid;\n}\n.Tabs_module_root__18f64bf7 > button.Tabs_module_tab__18f64bf7 > [data-elem=component1] > .Tabs_module_icon__18f64bf7,\n.Tabs_module_root__18f64bf7 > button.Tabs_module_tab__18f64bf7 > [data-elem=component3] > .Tabs_module_icon__18f64bf7 {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.Tabs_module_root__18f64bf7 > button.Tabs_module_tab__18f64bf7.Tabs_module_active__18f64bf7 {\n  border-bottom-width: 2px;\n  border-color: var(--highlight);\n}\n.Tabs_module_root__18f64bf7 > button.Tabs_module_tab__18f64bf7.Tabs_module_active__18f64bf7 > [data-elem=component1] > .Tabs_module_icon__18f64bf7,\n.Tabs_module_root__18f64bf7 > button.Tabs_module_tab__18f64bf7.Tabs_module_active__18f64bf7 > [data-elem=component3] > .Tabs_module_icon__18f64bf7 {\n  fill: var(--highlight);\n}\n.Tabs_module_root__18f64bf7 > button.Tabs_module_tab__18f64bf7.Tabs_module_active__18f64bf7 > [data-elem=component2] {\n  color: var(--highlight);\n}\n.Tabs_module_root__18f64bf7 > button.Tabs_module_tab__18f64bf7:hover > [data-elem=component1] > .Tabs_module_icon__18f64bf7,\n.Tabs_module_root__18f64bf7 > button.Tabs_module_tab__18f64bf7:hover > [data-elem=component3] > .Tabs_module_icon__18f64bf7 {\n  fill: var(--highlight);\n}\n.Tabs_module_root__18f64bf7 > button.Tabs_module_tab__18f64bf7:hover > [data-elem=component2] {\n  color: var(--highlight);\n}";
+var css$i = ".Tabs_module_root__18f64bf7 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.Tabs_module_root__18f64bf7.Tabs_module_lightTheme__18f64bf7 > button.Tabs_module_tab__18f64bf7 {\n  border-color: var(--grey4);\n}\n.Tabs_module_root__18f64bf7.Tabs_module_lightTheme__18f64bf7 > button.Tabs_module_tab__18f64bf7 > [data-elem=component1] > .Tabs_module_icon__18f64bf7,\n.Tabs_module_root__18f64bf7.Tabs_module_lightTheme__18f64bf7 > button.Tabs_module_tab__18f64bf7 > [data-elem=component3] > .Tabs_module_icon__18f64bf7 {\n  fill: var(--black);\n}\n.Tabs_module_root__18f64bf7.Tabs_module_lightTheme__18f64bf7 > button.Tabs_module_tab__18f64bf7 > [data-elem=component2] {\n  color: var(--black);\n}\n.Tabs_module_root__18f64bf7.Tabs_module_lightTheme__18f64bf7 > button.Tabs_module_tab__18f64bf7:hover {\n  background: var(--info-bg);\n}\n.Tabs_module_root__18f64bf7.Tabs_module_darkTheme__18f64bf7 > button.Tabs_module_tab__18f64bf7 {\n  border-color: var(--grey);\n}\n.Tabs_module_root__18f64bf7.Tabs_module_darkTheme__18f64bf7 > button.Tabs_module_tab__18f64bf7 > [data-elem=component1] > .Tabs_module_icon__18f64bf7,\n.Tabs_module_root__18f64bf7.Tabs_module_darkTheme__18f64bf7 > button.Tabs_module_tab__18f64bf7 > [data-elem=component3] > .Tabs_module_icon__18f64bf7 {\n  fill: var(--white);\n}\n.Tabs_module_root__18f64bf7.Tabs_module_darkTheme__18f64bf7 > button.Tabs_module_tab__18f64bf7 > [data-elem=component2] {\n  color: var(--white);\n}\n.Tabs_module_root__18f64bf7.Tabs_module_darkTheme__18f64bf7 > button.Tabs_module_tab__18f64bf7:hover {\n  background: var(--dark-grey);\n}\n.Tabs_module_root__18f64bf7 > button.Tabs_module_tab__18f64bf7 {\n  padding: 0.75rem;\n  gap: 0.75rem;\n  border-bottom-width: 1px;\n  border-bottom-style: solid;\n}\n.Tabs_module_root__18f64bf7 > button.Tabs_module_tab__18f64bf7 > [data-elem=component1] > .Tabs_module_icon__18f64bf7,\n.Tabs_module_root__18f64bf7 > button.Tabs_module_tab__18f64bf7 > [data-elem=component3] > .Tabs_module_icon__18f64bf7 {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.Tabs_module_root__18f64bf7 > button.Tabs_module_tab__18f64bf7.Tabs_module_active__18f64bf7 {\n  border-bottom-width: 2px;\n  border-color: var(--highlight);\n}\n.Tabs_module_root__18f64bf7 > button.Tabs_module_tab__18f64bf7.Tabs_module_active__18f64bf7 > [data-elem=component1] > .Tabs_module_icon__18f64bf7,\n.Tabs_module_root__18f64bf7 > button.Tabs_module_tab__18f64bf7.Tabs_module_active__18f64bf7 > [data-elem=component3] > .Tabs_module_icon__18f64bf7 {\n  fill: var(--highlight);\n}\n.Tabs_module_root__18f64bf7 > button.Tabs_module_tab__18f64bf7.Tabs_module_active__18f64bf7 > [data-elem=component2] {\n  color: var(--highlight);\n}\n.Tabs_module_root__18f64bf7 > button.Tabs_module_tab__18f64bf7:hover > [data-elem=component1] > .Tabs_module_icon__18f64bf7,\n.Tabs_module_root__18f64bf7 > button.Tabs_module_tab__18f64bf7:hover > [data-elem=component3] > .Tabs_module_icon__18f64bf7 {\n  fill: var(--highlight);\n}\n.Tabs_module_root__18f64bf7 > button.Tabs_module_tab__18f64bf7:hover > [data-elem=component2] {\n  color: var(--highlight);\n}";
 var modules_78ab5066 = {"root":"Tabs_module_root__18f64bf7","light-theme":"Tabs_module_lightTheme__18f64bf7","tab":"Tabs_module_tab__18f64bf7","icon":"Tabs_module_icon__18f64bf7","dark-theme":"Tabs_module_darkTheme__18f64bf7","active":"Tabs_module_active__18f64bf7"};
-n(css$j,{});
+n(css$i,{});
 
 var Tabs = function Tabs(props) {
   var tabs = props.tabs,
@@ -48892,117 +49070,6 @@ Tabs.defaultProps = {
   selectedTab: null,
   setSelectedTab: function setSelectedTab() {},
   theme: 'light'
-};
-
-function o(f){return r=>{f.forEach(n=>{typeof n=="function"?n(r):n!=null&&(n.current=r);});}}
-
-var css$i = ".Tooltip_module_tooltip__04fbc763 {\n  text-align: center;\n  border-radius: 0.25rem;\n  min-width: auto;\n  max-width: 12rem;\n  padding: 0.375rem;\n  font-size: 0.875rem;\n  font-family: sans-serif;\n  line-height: 1;\n}\n.Tooltip_module_tooltip__04fbc763.Tooltip_module_light__04fbc763 {\n  color: var(--black);\n  background: var(--grey7);\n  border-color: var(--black);\n}\n.Tooltip_module_tooltip__04fbc763.Tooltip_module_light__04fbc763 .Tooltip_module_arrow__04fbc763 {\n  background: var(--grey7);\n}\n.Tooltip_module_tooltip__04fbc763.Tooltip_module_dark__04fbc763 {\n  color: var(--white);\n  background: var(--black);\n  border-color: var(--white);\n}\n.Tooltip_module_tooltip__04fbc763.Tooltip_module_dark__04fbc763 .Tooltip_module_arrow__04fbc763 {\n  background: var(--black);\n}\n.Tooltip_module_tooltip__04fbc763 .Tooltip_module_arrow__04fbc763 {\n  position: absolute;\n  width: 1rem;\n  height: 1rem;\n  z-index: -1;\n  pointer-events: none;\n  transform: rotate(45deg);\n}";
-var modules_e4619b04 = {"tooltip":"Tooltip_module_tooltip__04fbc763","light":"Tooltip_module_light__04fbc763","arrow":"Tooltip_module_arrow__04fbc763","dark":"Tooltip_module_dark__04fbc763"};
-n(css$i,{});
-
-var Tooltip = /*#__PURE__*/React.forwardRef(function Tooltip(props, propRef) {
-  var _middlewareData$arrow, _middlewareData$arrow2, _middlewareData$arrow3, _middlewareData$arrow4;
-  var children = props.children,
-    position = props.position,
-    content = props.content,
-    variant = props.variant,
-    className = props.className;
-  var arrowEl = React.useRef(null);
-  var _useState = React.useState(false),
-    _useState2 = _slicedToArray(_useState, 2),
-    open = _useState2[0],
-    setOpen = _useState2[1];
-
-  // eslint-disable-next-line object-curly-newline
-  var _useFloating = useFloating({
-      open: open,
-      onOpenChange: setOpen,
-      // strategy: 'fixed',
-      placement: position,
-      // Make sure the tooltip stays on the screen
-      whileElementsMounted: autoUpdate,
-      middleware: [offset(12), flip(), shift(), arrow({
-        element: arrowEl
-      })]
-    }),
-    x = _useFloating.x,
-    y = _useFloating.y,
-    reference = _useFloating.reference,
-    floating = _useFloating.floating,
-    strategy = _useFloating.strategy,
-    context = _useFloating.context,
-    middlewareData = _useFloating.middlewareData,
-    placement = _useFloating.placement;
-
-  // Event listeners to change the open state
-  var hover = useHover(context, {
-    move: true
-  });
-  var focus = useFocus(context);
-  var dismiss = useDismiss(context);
-  // Role props for screen readers
-  var role = useRole(context, {
-    role: 'tooltip'
-  });
-
-  // Merge all the interactions into prop getters
-  var _useInteractions = useInteractions([hover, focus, dismiss, role]),
-    getReferenceProps = _useInteractions.getReferenceProps,
-    getFloatingProps = _useInteractions.getFloatingProps;
-  var childrenRef = children.ref;
-  var ref = React.useMemo(function () {
-    return o([reference, childrenRef, propRef]);
-  }, [reference, childrenRef]);
-  var clonedChildren = /*#__PURE__*/React.cloneElement(children, getReferenceProps(_objectSpread2({
-    ref: ref
-  }, children.props)));
-  var side = placement.split('-')[0];
-  var staticSide = {
-    top: 'bottom',
-    right: 'left',
-    bottom: 'top',
-    left: 'right'
-  }[side];
-  return /*#__PURE__*/jsxRuntime.jsxs(jsxRuntime.Fragment, {
-    children: [clonedChildren, /*#__PURE__*/jsxRuntime.jsx(Popper, {
-      open: open && content != null,
-      backdrop: false,
-      wrapperId: "tooltip",
-      children: /*#__PURE__*/jsxRuntime.jsxs("div", _objectSpread2(_objectSpread2({}, getFloatingProps({
-        ref: floating,
-        className: classes(modules_e4619b04.tooltip, modules_e4619b04[variant], className),
-        style: {
-          position: strategy,
-          top: y !== null && y !== void 0 ? y : 0,
-          left: x !== null && x !== void 0 ? x : 0,
-          zIndex: 100
-        }
-      })), {}, {
-        children: [/*#__PURE__*/jsxRuntime.jsx("div", {
-          className: modules_e4619b04.arrow,
-          ref: arrowEl,
-          style: _defineProperty$1({
-            left: (_middlewareData$arrow = middlewareData === null || middlewareData === void 0 ? void 0 : (_middlewareData$arrow2 = middlewareData.arrow) === null || _middlewareData$arrow2 === void 0 ? void 0 : _middlewareData$arrow2.x) !== null && _middlewareData$arrow !== void 0 ? _middlewareData$arrow : '',
-            top: (_middlewareData$arrow3 = middlewareData === null || middlewareData === void 0 ? void 0 : (_middlewareData$arrow4 = middlewareData.arrow) === null || _middlewareData$arrow4 === void 0 ? void 0 : _middlewareData$arrow4.y) !== null && _middlewareData$arrow3 !== void 0 ? _middlewareData$arrow3 : '',
-            right: '',
-            bottom: ''
-          }, staticSide, '-0.5rem')
-        }), content]
-      }))
-    })]
-  });
-});
-Tooltip.propTypes = {
-  variant: propTypes$1.exports.oneOf(['light', 'dark']),
-  content: propTypes$1.exports.node,
-  position: propTypes$1.exports.oneOf(['right', 'top', 'bottom', 'left']),
-  className: propTypes$1.exports.string
-};
-Tooltip.defaultProps = {
-  variant: 'light',
-  content: null,
-  position: 'top',
-  className: ''
 };
 
 var css$h = ".BaseSidePanel_module_root__c7817916 {\n  max-height: 100%;\n  height: 100%;\n  display: flex;\n  width: 30%;\n  flex-direction: column;\n  top: 0;\n  background: #ffffff;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.12);\n  overflow-x: hidden;\n  transition: 0.5s;\n}\n.BaseSidePanel_module_root__c7817916.BaseSidePanel_module_close__c7817916 {\n  width: 0rem;\n}\n.BaseSidePanel_module_root__c7817916 .BaseSidePanel_module_body__c7817916 {\n  flex: 1;\n  overflow-y: auto;\n}";
@@ -110862,7 +110929,7 @@ WidgetFallback.defaultProps = {
 };
 
 var generateOptions = function generateOptions(optionData, theme) {
-  var _optionData$id, _optionData$placehold, _optionData$value, _optionData$onChange, _optionData$selectOpt, _optionData$title, _optionData$onClick, _optionData$onApply, _optionData$onClear, _optionData$date;
+  var _optionData$id, _optionData$placehold, _optionData$value, _optionData$onChange, _optionData$selectOpt, _optionData$title, _optionData$onClick, _optionData$placehold2, _optionData$range, _optionData$onApply, _optionData$onClear, _optionData$date;
   switch ((_optionData$id = optionData === null || optionData === void 0 ? void 0 : optionData.id) !== null && _optionData$id !== void 0 ? _optionData$id : '') {
     case 'toggle':
       return /*#__PURE__*/jsxRuntime.jsx(Toggle, _objectSpread2({
@@ -110902,10 +110969,11 @@ var generateOptions = function generateOptions(optionData, theme) {
     case 'datepicker':
       return /*#__PURE__*/jsxRuntime.jsx(DatePicker, {
         className: modules_6a0e74b6['date-picker'],
-        placeholder: "Select Date",
+        placeholder: (_optionData$placehold2 = optionData === null || optionData === void 0 ? void 0 : optionData.placeholder) !== null && _optionData$placehold2 !== void 0 ? _optionData$placehold2 : 'Select Date',
+        range: (_optionData$range = optionData === null || optionData === void 0 ? void 0 : optionData.range) !== null && _optionData$range !== void 0 ? _optionData$range : false,
         onApply: (_optionData$onApply = optionData === null || optionData === void 0 ? void 0 : optionData.onApply) !== null && _optionData$onApply !== void 0 ? _optionData$onApply : '',
         onClear: (_optionData$onClear = optionData === null || optionData === void 0 ? void 0 : optionData.onClear) !== null && _optionData$onClear !== void 0 ? _optionData$onClear : '',
-        value: (_optionData$date = optionData === null || optionData === void 0 ? void 0 : optionData.date) !== null && _optionData$date !== void 0 ? _optionData$date : ''
+        value: (_optionData$date = optionData === null || optionData === void 0 ? void 0 : optionData.date) !== null && _optionData$date !== void 0 ? _optionData$date : null
       });
     case 'custom':
       return optionData.render({
@@ -110964,7 +111032,7 @@ var BaseWidget = /*#__PURE__*/React.forwardRef(function BaseWidget(props, ref) {
       attrs: {
         'data-elem': 'title'
       },
-      children: [title, " -"]
+      children: [title, " ", subtitle && '-']
     }), subtitle && /*#__PURE__*/jsxRuntime.jsxs(Text, {
       variant: "b2",
       stroke: "medium",

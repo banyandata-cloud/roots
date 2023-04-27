@@ -25,10 +25,12 @@
 				> div[data-elem='base-cell'] {
 					padding: 0 0;
 					border: none;
+					width: 9.063rem;
 					> span[data-elem='component2'] {
 						> input[data-elem='input'] {
 							padding: 0;
 							color: $dark-grey;
+							width: fit-content;
 						}
 					}
 				}

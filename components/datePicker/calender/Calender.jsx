@@ -23,16 +23,31 @@ const Calender = (props) => {
 		customRanges,
 	} = props;
 
-	const { month, year, monthAsNumber, dayAsNumber } = getDayInfo(new Date());
-	const [selectedMonth, setSelectedMonth] = useState({
-		month,
-		monthAsNumber,
-		year,
-		dayAsNumber,
-	});
+	const [selectedMonth, setSelectedMonth] = useState();
 
 	useEffect(() => {
 		if (fixedRange) {
+			const date = new Date();
+			const dateAsNumber = date.getDate();
+			const selectedDayInfo = getDayInfo(date);
+			const selectedDateMonth = {
+				month: selectedDayInfo.month,
+				monthAsNumber: selectedDayInfo.monthAsNumber,
+				year: selectedDayInfo.year,
+				dayAsNumber: selectedDayInfo.dayAsNumber,
+			};
+			setSelectedMonth({
+				month: getDayInfo(fromUnixTime(selectedRange?.unix?.[0])).month,
+				monthAsNumber: getDayInfo(fromUnixTime(selectedRange?.unix?.[0])).monthAsNumber,
+				year: getDayInfo(fromUnixTime(selectedRange?.unix?.[0])).year,
+			});
+			setSelectedDate({
+				...selectedDate,
+				month: selectedDateMonth.month,
+				year: selectedDateMonth.year,
+				date: dateAsNumber,
+				unix: getUnixTime(date),
+			});
 			return;
 		}
 		if (range && value?.filter(Boolean)?.length > 0) {
@@ -64,7 +79,9 @@ const Calender = (props) => {
 				date: dateAsNumber,
 				unix: getUnixTime(date),
 			});
-		} else if (!range && value) {
+			return;
+		}
+		if (!range && value) {
 			const date = fromUnixTime(value);
 			const dateAsNumber = date.getDate();
 			const selectedDayInfo = getDayInfo(date);
@@ -86,18 +103,27 @@ const Calender = (props) => {
 				date: dateAsNumber,
 				unix: getUnixTime(date),
 			});
-		} else {
-			const date = new Date();
-			if (!range && !isBefore(date, disableDatesBefore)) {
-				const dateAsNumber = date.getDate();
-				setSelectedDate({
-					...selectedDate,
-					month: selectedMonth.month,
-					year: selectedMonth.year,
-					date: dateAsNumber,
-					unix: getUnixTime(date),
-				});
-			}
+			return;
+		}
+		const date = new Date();
+		if (
+			(range && !value && disableDatesBefore?.length === 0) ||
+			(!range && !isBefore(date, disableDatesBefore))
+		) {
+			const dateAsNumber = date.getDate();
+			const selectedDayInfo = getDayInfo(date);
+			setSelectedDate({
+				...selectedDate,
+				month: selectedDayInfo.month,
+				year: selectedDayInfo.year,
+				date: dateAsNumber,
+				unix: getUnixTime(date),
+			});
+			setSelectedMonth({
+				month: selectedDayInfo.month,
+				monthAsNumber: selectedDayInfo.monthAsNumber,
+				year: selectedDayInfo.year,
+			});
 		}
 	}, []);
 

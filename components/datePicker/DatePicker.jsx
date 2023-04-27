@@ -98,13 +98,13 @@ const DatePicker = (props) => {
 		useDismiss(customRangeFloatingReference.context),
 	]);
 
-	const apply = () => {
-		if (selectedRange.dates?.length === 2) {
+	const apply = ({ rangeSelected, dateSelected }) => {
+		if (rangeSelected.dates?.length === 2) {
 			if (
 				maxRange !== null &&
 				!isMaxRangeExceeded({
 					maxRange,
-					selectedRange,
+					rangeSelected,
 				})
 			) {
 				setError('Invalid range of dates');
@@ -112,10 +112,10 @@ const DatePicker = (props) => {
 				return;
 			}
 			setError('');
-			onApply(selectedRange.unix, fixedRange, getDateRangeTag(selectedRange.unix));
+			onApply(rangeSelected.unix, fixedRange, getDateRangeTag(rangeSelected.unix));
 			setOpenDatePicker(false);
 		} else {
-			onApply(selectedDate.unix);
+			onApply(dateSelected.unix);
 			setOpenDatePicker(false);
 		}
 	};
@@ -128,7 +128,10 @@ const DatePicker = (props) => {
 		fixedRange,
 		range,
 		onApply: () => {
-			apply();
+			apply({
+				rangeSelected: selectedRange,
+				dateSelected: selectedDate,
+			});
 		},
 		disabledDates,
 
@@ -136,6 +139,17 @@ const DatePicker = (props) => {
 		value,
 		setFixedRange,
 		customRanges,
+	};
+
+	const customRangesProps = {
+		customRanges,
+		selectedRange,
+		setSelectedRange,
+		setFixedRange,
+		setOpenCustomRange,
+		fixedRange,
+		theme,
+		apply,
 	};
 
 	const hasCustomRanges = customRanges?.length && customRanges !== null;
@@ -150,14 +164,16 @@ const DatePicker = (props) => {
 						return <ClockIcon className={classes(styles.icon, styles[theme])} />;
 					}}
 					title={fixedRange || 'Custom'}
-					className={styles['custom-picker']}
+					className={classes(styles['custom-picker'], styles[theme])}
 					{...customRangeInteractionProps.getReferenceProps()}
 				/>
 			)}
+
 			<div className={classes(styles['date-picker'], className, styles[theme])}>
 				{label && !hasCustomRanges && (
 					<span className={classes(styles.label, styles[theme])}>{label}</span>
 				)}
+
 				<div
 					data-elem='header'
 					ref={datePickerFloatingReference.reference}
@@ -173,11 +189,13 @@ const DatePicker = (props) => {
 					{...datePickerInteractionProps.getReferenceProps()}>
 					<div className={styles.left}>
 						<CalenderIcon className={classes(styles.icon, styles[theme])} />
+
 						{!displayValue && (
 							<span className={classes(styles.placeholder, styles[theme])}>
 								{placeholder}
 							</span>
 						)}
+
 						{displayValue && (
 							<div className={classes(styles.value, styles[theme])}>
 								<span>{displayValue}</span>
@@ -186,6 +204,7 @@ const DatePicker = (props) => {
 					</div>
 
 					<input className={styles.input} value={displayValue} />
+
 					{value ? (
 						<Button
 							size='auto'
@@ -209,7 +228,9 @@ const DatePicker = (props) => {
 						/>
 					)}
 				</div>
+
 				{error && <div className={styles['error-text']}>{error}</div>}
+
 				<Popper open={openDatePicker} wrapperid='datePicker-popper'>
 					{openDatePicker && (
 						<div
@@ -232,6 +253,7 @@ const DatePicker = (props) => {
 						</div>
 					)}
 				</Popper>
+
 				<Popper open={openCustomRange} wrapperid='custom-range-popper'>
 					{openCustomRange && (
 						<div
@@ -250,15 +272,7 @@ const DatePicker = (props) => {
 								},
 							})}
 							className={classes(styles.popper, openCustomRange ? styles.open : '')}>
-							<DateAndTimeCustomRanges
-								customRanges={customRanges}
-								selectedRange={selectedRange}
-								setSelectedRange={setSelectedRange}
-								setFixedRange={setFixedRange}
-								setOpenDatePicker={setOpenDatePicker}
-								setOpenCustomRange={setOpenCustomRange}
-								fixedRange={fixedRange}
-							/>
+							<DateAndTimeCustomRanges {...customRangesProps} />
 						</div>
 					)}
 				</Popper>
