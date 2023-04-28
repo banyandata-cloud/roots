@@ -32,6 +32,7 @@ const BaseHorizontalBarChart = (props) => {
 	const {
 		loading,
 		title,
+		titleOptions,
 		gridContainLabel,
 		gridOptions,
 		inverse,
@@ -154,6 +155,7 @@ const BaseHorizontalBarChart = (props) => {
 			option={{
 				title: {
 					text: title,
+					...titleOptions,
 				},
 
 				grid: {
@@ -204,6 +206,7 @@ BaseHorizontalBarChart.propTypes = {
 	loading: PropTypes.bool,
 	fallback: PropTypes.bool,
 	title: PropTypes.string,
+	titleOptions: PropTypes.object,
 	gridContainLabel: PropTypes.bool,
 	gridOptions: PropTypes.object,
 	tooltip: PropTypes.object,
@@ -233,6 +236,7 @@ BaseHorizontalBarChart.defaultProps = {
 	loading: false,
 	fallback: false,
 	title: '',
+	titleOptions: {},
 	gridContainLabel: false,
 	gridOptions: {
 		left: 0,
