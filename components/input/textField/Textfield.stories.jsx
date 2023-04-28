@@ -113,8 +113,8 @@ WithInputIconFieldIcon.args = {
 	fieldInfo: 'Some Text',
 };
 
-const AutocompleteTemplate = (args) => {
-	const [autocompleteOpen, setAutocompleteOpen] = useState(true);
+const AutocompleteTemplate = ({ autocompleteOptions, ...args }) => {
+	const [autocompleteOpen, setAutocompleteOpen] = useState(false);
 
 	return (
 		<ThemedContainer {...args}>
@@ -123,6 +123,7 @@ const AutocompleteTemplate = (args) => {
 				autocompleteOptions={{
 					open: autocompleteOpen,
 					setOpen: setAutocompleteOpen,
+					...autocompleteOptions,
 				}}
 			/>
 		</ThemedContainer>
@@ -134,4 +135,9 @@ export const WithAutocomplete = AutocompleteTemplate.bind({});
 WithAutocomplete.args = {
 	...Default.args,
 	autocomplete: true,
+	autocompleteOptions: {
+		predicate: (input) => {
+			return input?.length > 4;
+		},
+	},
 };

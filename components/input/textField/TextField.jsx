@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 import React, { createElement, forwardRef, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import { mergeRefs } from 'react-merge-refs';
@@ -42,8 +43,18 @@ const TextField = forwardRef(function TextField(props, inputRef) {
 
 	const [anchorEl, setAnchorEl] = useState(null);
 
+	const checkAndOpenAutocomplete = (inputString) => {
+		if (autocomplete) {
+			autocompleteOptions.setOpen(
+				autocompleteOptions?.predicate?.(inputString) ?? inputString?.length > 0
+			);
+		}
+	};
+
 	const handleChange = (event) => {
 		const { fieldValue } = inputHelper(event);
+
+		checkAndOpenAutocomplete(fieldValue);
 
 		if (isControlled) {
 			onChange(event, fieldValue);
@@ -65,9 +76,7 @@ const TextField = forwardRef(function TextField(props, inputRef) {
 			maxLength,
 		}),
 		onFocus: () => {
-			if (autocomplete && inputValue?.length > 0) {
-				autocompleteOptions.setOpen(true);
-			}
+			checkAndOpenAutocomplete(inputValue);
 		},
 		onBlur,
 		onKeyDown,
@@ -125,7 +134,9 @@ const TextField = forwardRef(function TextField(props, inputRef) {
 					anchorEl={anchorEl}
 					open={autocompleteOptions?.open}
 					setOpen={autocompleteOptions?.setOpen}
-					theme={theme}>
+					theme={theme}
+					placement={autocompleteOptions?.placement}
+					middlewareOptions={autocompleteOptions?.middlewareOptions}>
 					{autocompleteOptions?.render?.()}
 				</Popover>
 			)}
@@ -164,6 +175,13 @@ TextField.propTypes = {
 		open: PropTypes.bool,
 		setOpen: PropTypes.func,
 		render: PropTypes.func,
+		predicate: PropTypes.func,
+		placement: PropTypes.string,
+		middlewareOptions: PropTypes.shape({
+			offset: PropTypes.object,
+			shift: PropTypes.object,
+			flip: PropTypes.object,
+		}),
 	}),
 	theme: PropTypes.oneOf(['light', 'dark']),
 };
