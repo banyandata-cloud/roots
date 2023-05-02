@@ -17,6 +17,7 @@ const TextField = forwardRef(function TextField(props, inputRef) {
 		type,
 		value,
 		defaultValue,
+		onFocus,
 		onBlur,
 		onChange,
 		size,
@@ -76,6 +77,7 @@ const TextField = forwardRef(function TextField(props, inputRef) {
 			maxLength,
 		}),
 		onFocus: () => {
+			onFocus?.();
 			checkAndOpenAutocomplete(inputValue);
 		},
 		onBlur,
@@ -87,6 +89,8 @@ const TextField = forwardRef(function TextField(props, inputRef) {
 		className: classes(styles[size], styles.input),
 		...inputProps,
 	});
+
+	const AutocompletePopover = autocompleteOptions?.render;
 
 	return (
 		<div className={classes(styles.root, className)}>
@@ -137,7 +141,7 @@ const TextField = forwardRef(function TextField(props, inputRef) {
 					theme={theme}
 					placement={autocompleteOptions?.placement}
 					middlewareOptions={autocompleteOptions?.middlewareOptions}>
-					{autocompleteOptions?.render?.()}
+					{AutocompletePopover && <AutocompletePopover name={name} value={value} />}
 				</Popover>
 			)}
 		</div>

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { createRef, useCallback, useRef, useState } from 'react';
 import { classes } from '../../../../utils';
 import { Button } from '../../../buttons';
 import { BaseCell } from '../../../cell';
@@ -14,14 +14,14 @@ import { Columns } from './Filters';
 import { TextField } from '../../../input';
 import styles from './TableFilters.module.css';
 import { Skeleton } from './Skeleton';
+import TableChipItem from '../tableChips/tableChipItem/TableChipItem';
 
 const TableFilters = (props) => {
 	const {
 		className,
 		style,
 		onRefresh,
-		onSearch,
-		searchValue,
+		searchOptions,
 		filterValue,
 		headerData,
 		hiddenColumns,
@@ -39,12 +39,49 @@ const TableFilters = (props) => {
 		columnFilter: disabledColumnFilter,
 		settings: disabledSettings,
 	} = disabledFilterOptions;
+	const filterRefs = useRef([]);
 
 	const hideRightOptions = disabledColumnFilter && disabledRefresh && disabledSettings;
+
+	const { onSearch, onRemove, onBlur, selectedFilters, renderAutocomplete } = searchOptions;
 
 	if (loading) {
 		return <Skeleton theme={theme} />;
 	}
+
+	const totalFilters = selectedFilters?.length ?? 0;
+
+	const renderFilters = useCallback(() => {
+		const filtersDOM = selectedFilters?.map((selectedFilter, index) => {
+			if (index === 0) {
+				filterRefs.current = [];
+			}
+			const filterRef = createRef();
+			filterRefs.current.push(filterRef);
+			return (
+				<TableChipItem
+					ref={filterRef}
+					// eslint-disable-next-line react/no-array-index-key
+					key={index}
+					{...selectedFilter}
+					onRemove={() => {
+						onRemove(selectedFilter, index);
+					}}
+					autocompleteOptions={{
+						...selectedFilter.autocompleteOptions,
+						render: renderAutocomplete,
+					}}
+					onSearch={onSearch}
+				/>
+			);
+		});
+		return (
+			<>
+				<MagnifyingGlassIcon className={styles.icon} />
+				{filtersDOM}
+			</>
+		);
+	}, [totalFilters]);
 
 	return (
 		<BaseCell
@@ -52,6 +89,7 @@ const TableFilters = (props) => {
 			className={classes(styles.root, className)}
 			attrs={{
 				style,
+				// onBlur,
 			}}
 			component1={
 				!disabledFilterButton && (
@@ -78,12 +116,21 @@ const TableFilters = (props) => {
 			component2={
 				<TextField
 					className={styles.center}
-					value={searchValue}
-					onChange={onSearch}
-					LeftComponent={() => {
-						return <MagnifyingGlassIcon className={styles.icon} />;
+					value={null}
+					{...searchOptions}
+					onFocus={() => {
+						searchOptions?.onFocus?.();
+						console.log({
+							filterRefs,
+						});
+						if (filterRefs?.current?.length > 0) {
+							const lastFilter = filterRefs?.current?.slice(-1);
+							lastFilter?.current?.focusLabel();
+						}
 					}}
-					placeholder='Search'
+					LeftComponent={renderFilters}
+					placeholder={selectedFilters?.length > 0 ? '' : 'Search'}
+					// disabled={selectedFilters?.length > 0}
 				/>
 			}
 			component3={
@@ -164,6 +211,8 @@ TableFilters.propTypes = {
 	onRefresh: PropTypes.func,
 	onSearch: PropTypes.func,
 	searchValue: PropTypes.string,
+	// eslint-disable-next-line react/forbid-prop-types
+	searchOptions: PropTypes.object,
 	filterValue: PropTypes.shape({
 		applied: PropTypes.number,
 	}),
@@ -183,6 +232,7 @@ TableFilters.defaultProps = {
 	onRefresh: () => {},
 	onSearch: () => {},
 	searchValue: null,
+	searchOptions: {},
 	filterValue: {
 		applied: null,
 	},
