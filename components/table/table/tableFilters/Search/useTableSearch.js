@@ -4,13 +4,13 @@ import { TableChip } from '../../tableChips/TableChip.class';
 import { DropdownItem } from '../../../../input';
 
 const useTableSearch = ({ filters = [], onApply } = {}) => {
-	// render: PropTypes.func,
-	// middlewareOptions: PropTypes.shape({
-	// offset: PropTypes.object,
-	// shift: PropTypes.object,
-	// flip: PropTypes.object,
-	// }),
 	const [selectedFilters, setSelectedFilters] = useState([]);
+	const [autocompleteOpen, setAutocompleteOpen] = useState(false);
+	const [value, setValue] = useState('');
+
+	const onChange = (event, newValue) => {
+		setValue(newValue);
+	};
 
 	const setFieldValue = (fieldValue, type, id = null, lock = false) => {
 		if (selectedFilters?.length > 0) {
@@ -25,11 +25,12 @@ const useTableSearch = ({ filters = [], onApply } = {}) => {
 						return fil.id === id;
 					})?.icon ?? null;
 			}
-			setSelectedFilters(clonedFilters);
 			// the chip is about to be locked
 			if (lock && type === 'value') {
 				onApply?.(clonedFilters);
+				current.temp = true;
 			}
+			setSelectedFilters(clonedFilters);
 		}
 	};
 
@@ -50,49 +51,39 @@ const useTableSearch = ({ filters = [], onApply } = {}) => {
 		setSelectedFilters(clonedFilters);
 	};
 
-	// onFocus we will add an empty chip
-	// that chip will have dropdown options from all filters provided through options
-	const onFocus = () => {
-		const clonedFilters = [...selectedFilters];
-		const current = clonedFilters?.slice()?.[0];
-		// if the search is off, the chip is completed
-		// add a new one
-		if (clonedFilters?.length === 0 || (!current?.labelSearch && !current?.valueSearch)) {
-			const newChip = new TableChip({
-				labelSearch: true,
-				valueSearch: true,
-				autocompleteOptions: {
-					// open: autocompleteOpen,
-					// setOpen: setAutocompleteOpen,
-					middlewareOptions: {
-						offset: {
-							mainAxis: 10,
-						},
-					},
-					predicate: () => {
-						return true;
-					},
-					// render: ({ name, value }) => {
-					// const currentFilterChip = selectedFilters?.at(-1);
-					// let filtersDOM = [];
-					// console.log(selectedFilters);
-					// if (name === 'label') {
-					// filtersDOM = FILTERS.filter((fil) => {
-					// return fil.title.indexOf(currentFilterChip?.label) !== -1;
-					// }).map((fil) => {
-					// return (
-					// <DropdownItem key={fil.id} value={fil.id} title={fil.title} />
-					// );
-					// });
-					// }
-					// return <div>{filtersDOM}</div>;
-					// },
-					placement: 'bottom-start',
-				},
-			});
-			clonedFilters.push(newChip);
-			setSelectedFilters(clonedFilters);
+	const onLock = (event, index) => {
+		if (event.keyCode === 13) {
+			const current = selectedFilters?.[index];
+			if (current && current?.value?.length > 0) {
+				setFieldValue(current.value, 'value', current.value, true);
+			}
 		}
+	};
+
+	// on selecting searchbar option we will add an empty chip
+	// that chip will have dropdown options from all filters provided through options
+	const onAdd = (fil) => {
+		const clonedFilters = [...selectedFilters];
+		const newChip = new TableChip({
+			labelSearch: false,
+			label: fil.title,
+			labelId: fil.id,
+			icon: fil.icon,
+			valueSearch: true,
+			autocompleteOptions: {
+				middlewareOptions: {
+					offset: {
+						mainAxis: 10,
+					},
+				},
+				predicate: () => {
+					return true;
+				},
+				placement: 'bottom-start',
+			},
+		});
+		clonedFilters.push(newChip);
+		setSelectedFilters(clonedFilters);
 	};
 
 	// onBlur will remove the incomplete chip
@@ -106,14 +97,47 @@ const useTableSearch = ({ filters = [], onApply } = {}) => {
 		}
 	};
 
-	// the autocomplete options which get rendered
+	// the autocomplete options which get rendered for table searchbar
+	// call the onAdd method on selection of an option
+	const renderAutocomplete = ({ value: inputValue }) => {
+		return filters
+			?.filter((fil) => {
+				return fil?.title.toLowerCase()?.indexOf(inputValue?.toLowerCase()) !== -1;
+			})
+			?.map((fil) => {
+				const disabled =
+					fil.deps?.every?.((dep) => {
+						return (
+							selectedFilters?.find((sFil) => {
+								return sFil?.labelId === dep && sFil.temp;
+							}) != null
+						);
+					}) === false;
+				return (
+					<DropdownItem
+						key={fil.id}
+						value={fil.id}
+						title={fil.title}
+						disabled={disabled}
+						onClick={() => {
+							if (!disabled) {
+								onAdd(fil);
+								setAutocompleteOpen(false);
+							}
+						}}
+					/>
+				);
+			});
+	};
+
+	// the autocomplete options which get rendered for a chip
 	// and set the state on selection
-	const renderAutocomplete = ({ name, value }) => {
+	const renderChipAutocomplete = ({ name, value: inputValue }) => {
 		let filtersDOM = [];
 		if (name === 'label') {
 			filtersDOM = filters
 				?.filter((fil) => {
-					return fil?.title.toLowerCase()?.indexOf(value?.toLowerCase()) !== -1;
+					return fil?.title.toLowerCase()?.indexOf(inputValue?.toLowerCase()) !== -1;
 				})
 				?.map((fil) => {
 					return (
@@ -134,7 +158,10 @@ const useTableSearch = ({ filters = [], onApply } = {}) => {
 				?.find((fil) => {
 					return fil.id === currentFilter;
 				})
-				?.options?.map((option) => {
+				?.options?.filter((option) => {
+					return option?.toLowerCase()?.indexOf(inputValue?.toLowerCase()) !== -1;
+				})
+				?.map((option) => {
 					return (
 						<DropdownItem
 							key={option}
@@ -151,11 +178,25 @@ const useTableSearch = ({ filters = [], onApply } = {}) => {
 	};
 
 	return {
-		onFocus,
-		// onBlur,
+		onAdd,
+		onBlur,
 		onSearch,
 		onRemove,
-		renderAutocomplete,
+		onLock,
+		searchbarOptions: {
+			value,
+			onChange,
+			autocomplete: true,
+			autocompleteOptions: {
+				open: autocompleteOpen,
+				setOpen: setAutocompleteOpen,
+				render: renderAutocomplete,
+				predicate: () => {
+					return true;
+				},
+			},
+		},
+		renderChipAutocomplete,
 		selectedFilters,
 	};
 };

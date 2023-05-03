@@ -134,7 +134,7 @@
 		}
 	}
 
-	&:hover {
+	&:hover:not(.temp) {
 		border-color: $highlight;
 
 		> [data-elem='component2'] {
@@ -142,7 +142,7 @@
 				color: $highlight;
 			}
 
-			.chip-child {
+			.chip {
 				background: $background;
 				> [data-elem='component2'] {
 					> [data-elem='title'] {
@@ -153,6 +153,37 @@
 				.icon {
 					width: 0.875rem;
 					height: 0.875rem;
+				}
+			}
+		}
+	}
+
+	&.temp {
+		background: $highlight;
+		> [data-elem='component1'] {
+			.chip-icon {
+				fill: $white;
+			}
+		}
+
+		> [data-elem='component2'] {
+			.label {
+				color: $white;
+			}
+		}
+
+		&:hover {
+			> [data-elem='component2'] {
+				.chip {
+					background: $info-bg;
+				}
+			}
+		}
+
+		> [data-elem='component3'] {
+			.remove {
+				.icon {
+					fill: $white;
 				}
 			}
 		}

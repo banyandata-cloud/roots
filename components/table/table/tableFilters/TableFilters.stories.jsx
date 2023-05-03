@@ -25,6 +25,7 @@ const FILTERS = [
 		title: 'Resource Type',
 		icon: CloudIcons.GCP,
 		options: ['XYZ', '123', '456'],
+		deps: ['serviceType'],
 	},
 ];
 

@@ -46,7 +46,7 @@ const TextField = forwardRef(function TextField(props, inputRef) {
 
 	const checkAndOpenAutocomplete = (inputString) => {
 		if (autocomplete) {
-			autocompleteOptions.setOpen(
+			autocompleteOptions?.setOpen?.(
 				autocompleteOptions?.predicate?.(inputString) ?? inputString?.length > 0
 			);
 		}

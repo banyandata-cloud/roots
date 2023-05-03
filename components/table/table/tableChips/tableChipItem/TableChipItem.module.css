@@ -102,19 +102,34 @@
   width: 0.875rem;
   height: 0.875rem;
 }
-.root:hover {
+.root:hover:not(.temp) {
   border-color: var(--highlight);
 }
-.root:hover > [data-elem=component2] .label {
+.root:hover:not(.temp) > [data-elem=component2] .label {
   color: var(--highlight);
 }
-.root:hover > [data-elem=component2] .chip-child {
+.root:hover:not(.temp) > [data-elem=component2] .chip {
   background: var(--background);
 }
-.root:hover > [data-elem=component2] .chip-child > [data-elem=component2] > [data-elem=title] {
+.root:hover:not(.temp) > [data-elem=component2] .chip > [data-elem=component2] > [data-elem=title] {
   color: var(--highlight);
 }
-.root:hover > [data-elem=component2] .chip-child .icon {
+.root:hover:not(.temp) > [data-elem=component2] .chip .icon {
   width: 0.875rem;
   height: 0.875rem;
+}
+.root.temp {
+  background: var(--highlight);
+}
+.root.temp > [data-elem=component1] .chip-icon {
+  fill: var(--white);
+}
+.root.temp > [data-elem=component2] .label {
+  color: var(--white);
+}
+.root.temp:hover > [data-elem=component2] .chip {
+  background: var(--info-bg);
+}
+.root.temp > [data-elem=component3] .remove .icon {
+  fill: var(--white);
 }/*# sourceMappingURL=TableChipItem.module.css.map */

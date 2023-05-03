@@ -1,4 +1,4 @@
-import { forwardRef, useImperativeHandle, useState } from 'react';
+import { forwardRef, useState } from 'react';
 import { classes } from '../../../../../utils';
 import { Button, Chip } from '../../../../buttons';
 import { BaseCell } from '../../../../cell';
@@ -20,7 +20,9 @@ const TableChipItem = forwardRef((props, ref) => {
 		onRemove,
 		disabled,
 		onSearch,
+		onKeyDown,
 		autocompleteOptions,
+		temp,
 	} = props;
 
 	const [autocompleteOpen, setAutocompleteOpen] = useState(false);
@@ -35,7 +37,7 @@ const TableChipItem = forwardRef((props, ref) => {
 	}
 
 	let labelDOM = (
-		<Text variant='b2' stroke='medium'>
+		<Text variant='b2' stroke='medium' className={styles.label}>
 			{label}
 		</Text>
 	);
@@ -95,6 +97,7 @@ const TableChipItem = forwardRef((props, ref) => {
 				name='value'
 				value={value}
 				onChange={onSearch}
+				onKeyDown={onKeyDown}
 				className={styles['chip-search']}
 				inputProps={{
 					style: {
@@ -126,25 +129,17 @@ const TableChipItem = forwardRef((props, ref) => {
 		RightComponent = null;
 	}
 
-	useImperativeHandle(
-		ref,
-		() => {
-			return {
-				focusLabel: () => {
-					console.log('hiiiiiiiiiih');
-					console.log(ref.current.querySelector('input[name="label"]'));
-				},
-			};
-		},
-		[]
-	);
-
 	return (
 		<BaseCell
 			radius='default'
 			size='auto'
 			ref={ref}
-			className={classes(styles.root, className, disabled ? styles.disabled : '')}
+			className={classes(
+				styles.root,
+				className,
+				disabled ? styles.disabled : '',
+				temp ? styles.temp : ''
+			)}
 			component1={Icon}
 			component2={Title}
 			component3={[

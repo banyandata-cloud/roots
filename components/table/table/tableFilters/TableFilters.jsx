@@ -1,5 +1,10 @@
 import PropTypes from 'prop-types';
-import { createRef, useCallback, useRef, useState } from 'react';
+import {
+	//  createRef,
+	useCallback,
+	useRef,
+	useState,
+} from 'react';
 import { classes } from '../../../../utils';
 import { Button } from '../../../buttons';
 import { BaseCell } from '../../../cell';
@@ -39,11 +44,19 @@ const TableFilters = (props) => {
 		columnFilter: disabledColumnFilter,
 		settings: disabledSettings,
 	} = disabledFilterOptions;
-	const filterRefs = useRef([]);
+	// const filterRefs = useRef([]);
 
 	const hideRightOptions = disabledColumnFilter && disabledRefresh && disabledSettings;
+	const ref = useRef(null);
 
-	const { onSearch, onRemove, onBlur, selectedFilters, renderAutocomplete } = searchOptions;
+	const {
+		onSearch,
+		onRemove,
+		onLock,
+		selectedFilters,
+		renderChipAutocomplete,
+		searchbarOptions,
+	} = searchOptions;
 
 	if (loading) {
 		return <Skeleton theme={theme} />;
@@ -53,14 +66,14 @@ const TableFilters = (props) => {
 
 	const renderFilters = useCallback(() => {
 		const filtersDOM = selectedFilters?.map((selectedFilter, index) => {
-			if (index === 0) {
-				filterRefs.current = [];
-			}
-			const filterRef = createRef();
-			filterRefs.current.push(filterRef);
+			// if (index === 0) {
+			// filterRefs.current = [];
+			// }
+			// const filterRef = createRef();
+			// filterRefs.current.push(filterRef);
 			return (
 				<TableChipItem
-					ref={filterRef}
+					// ref={filterRef}
 					// eslint-disable-next-line react/no-array-index-key
 					key={index}
 					{...selectedFilter}
@@ -69,9 +82,12 @@ const TableFilters = (props) => {
 					}}
 					autocompleteOptions={{
 						...selectedFilter.autocompleteOptions,
-						render: renderAutocomplete,
+						render: renderChipAutocomplete,
 					}}
 					onSearch={onSearch}
+					onKeyDown={(event) => {
+						onLock(event, index);
+					}}
 				/>
 			);
 		});
@@ -115,17 +131,20 @@ const TableFilters = (props) => {
 			}
 			component2={
 				<TextField
+					{...searchbarOptions}
+					ref={ref}
 					className={styles.center}
-					value={null}
-					{...searchOptions}
+					// {...searchOptions}
 					onFocus={() => {
 						searchOptions?.onFocus?.();
-						console.log({
-							filterRefs,
-						});
-						if (filterRefs?.current?.length > 0) {
-							const lastFilter = filterRefs?.current?.slice(-1);
-							lastFilter?.current?.focusLabel();
+						// if (filterRefs?.current?.length > 0) {
+						// const lastFilter = filterRefs?.current?.slice(-1);
+						// lastFilter?.current?.focusLabel();
+						// }
+					}}
+					onKeyDown={(event) => {
+						if (event.keyCode === 8) {
+							onRemove(null, (selectedFilters?.length ?? 0) - 1);
 						}
 					}}
 					LeftComponent={renderFilters}
