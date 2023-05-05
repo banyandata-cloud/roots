@@ -22,19 +22,21 @@ export default {
 
 export const SingleDatePicker = (args) => {
 	return (
-		<div
-			style={{
-				width: '40%',
-			}}>
-			<DatePicker {...args} />
-		</div>
+		<ThemedContainer {...args}>
+			<div
+				style={{
+					width: '40%',
+				}}>
+				<DatePicker {...args} />
+			</div>
+		</ThemedContainer>
 	);
 };
 
 SingleDatePicker.args = {
 	placeholder: 'Select Date',
 	label: 'Single Date Picker',
-	theme: 'light',
+	theme: 'dark',
 };
 
 SingleDatePicker.parameters = {
