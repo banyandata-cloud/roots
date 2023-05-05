@@ -1,19 +1,22 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './Stepper.module.css';
 import { Step } from './step';
+import { classes } from '../../utils';
 
 const Stepper = (props) => {
-	const { steps } = props;
+	const { steps, orientation } = props;
 
 	return (
-		<div className={styles.root}>
+		<div className={classes(styles.root, styles[orientation])}>
 			{steps.map((step, index) => {
 				return (
 					<Step
-						key={`${step.title}-${step.description}`}
 						{...step}
+						key={`${step.title}-${step.description}`}
 						index={index}
 						total={steps.length}
+						orientation={orientation}
 					/>
 				);
 			})}
@@ -24,17 +27,15 @@ const Stepper = (props) => {
 Stepper.propTypes = {
 	steps: PropTypes.arrayOf(
 		PropTypes.shape({
-			title: PropTypes.string.isRequired,
-			description: PropTypes.string,
-			active: PropTypes.bool,
-			completion: PropTypes.number,
-			error: PropTypes.bool,
+			...Step.propTypes,
 		})
 	),
+	orientation: PropTypes.oneOf(['horizontal', 'vertical']),
 };
 
 Stepper.defaultProps = {
 	steps: [],
+	orientation: 'horizontal',
 };
 
 export default Stepper;
