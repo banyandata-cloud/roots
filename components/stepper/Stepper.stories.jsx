@@ -1,6 +1,9 @@
 import React from 'react';
 
 import Stepper from './Stepper';
+import DisplayPicture from '../displayPicture/DisplayPicture';
+import Text from '../text/Text';
+import { epochToFormattedDate } from '../../utils';
 
 export default {
 	title: 'Components/Stepper',
@@ -193,4 +196,58 @@ Error.args = {
 			error: true,
 		},
 	],
+};
+
+export const Custom = Template.bind({});
+
+const COMMENTS = [
+	{
+		user: 'Alok',
+		comment: null,
+		attachments: [],
+		timestamp: Date.now(),
+	},
+	{
+		user: 'Jaidev',
+		comment: `Hi Team, 
+		I am working on this ticket, will be back with the update.
+		
+		Hi Saiprakash,
+		
+		FYI - I will share you with action plan before implementation.`,
+		attachments: [],
+		timestamp: Date.now(),
+	},
+	{
+		user: 'Pradeep',
+		comment: `Hi Jaidev/Saiprakash,
+
+		The schema creation request been processed successfully in the respective database.Here,attaching the document for team reference.
+		
+		SR operation performed successfully.`,
+		attachments: [],
+		timestamp: Date.now(),
+	},
+];
+
+Custom.args = {
+	steps: COMMENTS.map((comment) => {
+		return {
+			title: comment.user,
+			renderIcon: () => {
+				return <DisplayPicture name={comment.user} />;
+			},
+			renderTitle: () => {
+				return (
+					<Text>
+						{comment.user} - {epochToFormattedDate(comment.timestamp, 'date')}
+					</Text>
+				);
+			},
+			renderDescription: () => {
+				return <Text>{comment.comment}</Text>;
+			},
+		};
+	}),
+	orientation: 'vertical',
 };

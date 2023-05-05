@@ -27,11 +27,7 @@ const Stepper = (props) => {
 Stepper.propTypes = {
 	steps: PropTypes.arrayOf(
 		PropTypes.shape({
-			title: PropTypes.string.isRequired,
-			description: PropTypes.string,
-			active: PropTypes.bool,
-			completion: PropTypes.number,
-			error: PropTypes.bool,
+			...Step.propTypes,
 		})
 	),
 	orientation: PropTypes.oneOf(['horizontal', 'vertical']),
