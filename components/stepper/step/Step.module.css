@@ -6,7 +6,7 @@
   position: relative;
   z-index: 1;
   gap: 0.5rem;
-  flex: 1;
+  flex: 1 0 auto;
   cursor: default;
 }
 .root:last-child {
@@ -15,31 +15,40 @@
 .root:last-child .title::after {
   display: none;
 }
+.root:last-child .left::after {
+  display: none;
+}
 .root .left {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.root .left .icon-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  position: relative;
   width: 1.5rem;
   height: 1.5rem;
-  background: var(--white);
-  border: 0.063rem solid var(--grey2);
   border-radius: 2rem;
   font-size: 1rem;
+  border: 0.063rem solid var(--grey2);
+  background: var(--white);
   color: var(--grey2);
+  position: relative;
 }
-.root .left .icon {
+.root .left .icon-container .icon {
   width: 0.75rem;
   height: 0.75rem;
 }
-.root .left .icon.error-icon {
+.root .left .icon-container .icon.error-icon {
   fill: var(--error);
 }
-.root .left .icon.completion-icon {
+.root .left .icon-container .icon.completion-icon {
   fill: var(--highlight);
 }
-.root .left .icon.completion-icon.active {
+.root .left .icon-container .icon.completion-icon.active {
   fill: var(--white);
 }
 .root .left .progress {
@@ -80,18 +89,18 @@
   margin-top: 0.75rem;
   border-bottom-color: var(--grey2);
 }
-.root .right .title.no-tail::after {
-  display: none;
-}
 .root .right .description {
   font-size: 0.75rem;
   color: var(--grey2);
 }
-.root.active .left {
+.root.no-tail .right .title::after {
+  display: none;
+}
+.root.active .left .icon-container {
   background: var(--highlight);
   color: var(--white);
 }
-.root.active .left, .root.completed .left {
+.root.active .left .icon-container, .root.completed .left .icon-container {
   border-color: var(--highlight);
 }
 .root.active .right .title, .root.completed .right .title {
@@ -103,7 +112,7 @@
 .root.completed .right .title::after {
   border-bottom-color: var(--highlight);
 }
-.root.error .left {
+.root.error .left .icon-container {
   background: var(--white);
   border-color: var(--error);
   color: var(--error);
@@ -113,4 +122,28 @@
 }
 .root.error .right .description {
   color: rgba(var(--error), 0.6);
+}
+.root.vertical {
+  height: 100%;
+  flex: 1;
+}
+.root.vertical .left {
+  height: 100%;
+  gap: 0.5rem;
+}
+.root.vertical .left::after {
+  content: "";
+  border-right: 1px solid var(--grey2);
+  height: 100%;
+  min-height: 1.5rem;
+  flex: 1 1 auto;
+}
+.root.vertical .left .icon-container {
+  flex: 0 0 auto;
+}
+.root.vertical .right .title::after {
+  display: none;
+}
+.root.vertical.completed .left::after {
+  border-right-color: var(--highlight);
 }/*# sourceMappingURL=Step.module.css.map */

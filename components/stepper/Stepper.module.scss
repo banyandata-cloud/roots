@@ -1,6 +1,13 @@
 @import '../../styles';
 
 .root {
-	@include flex(row, flex-start, flex-start);
-	gap: 1rem;
+	&.horizontal {
+		@include flex(row, flex-start, flex-start);
+		gap: 1rem;
+	}
+	&.vertical {
+		@include flex(column, flex-start, flex-start);
+		height: 100%;
+		gap: 0.5rem;
+	}
 }

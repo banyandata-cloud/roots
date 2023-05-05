@@ -24,7 +24,10 @@ export default {
 
 const Template = (args) => {
 	return (
-		<div>
+		<div
+			style={{
+				height: '100%',
+			}}>
 			<Stepper {...args} />
 		</div>
 	);
@@ -64,7 +67,8 @@ Default.args = {
 		},
 		{
 			title: 'Step E',
-			description: 'Just another description',
+			description:
+				'Just another description which is a very very very long text to show the component in a situtation where the text is just too much!',
 			active: false,
 			completion: 0,
 			error: false,
@@ -77,6 +81,13 @@ Default.parameters = {
 		type: 'figma',
 		url: 'https://www.figma.com/file/e9opoAtQHBo4vFd6u0Co98/Component-Library?node-id=266%3A49880',
 	},
+};
+
+export const Vertical = Template.bind({});
+
+Vertical.args = {
+	...Default.args,
+	orientation: 'vertical',
 };
 
 export const Active = Template.bind({});
