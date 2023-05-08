@@ -79,7 +79,8 @@ const Step = (props) => {
 				error ? styles.error : '',
 				noTail ? styles['no-tail'] : '',
 				styles[orientation]
-			)}>
+			)}
+			data-elem='step'>
 			<div className={styles.left}>{IconContainer}</div>
 			<div className={styles.right}>
 				{Title}
