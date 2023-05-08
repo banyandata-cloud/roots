@@ -24066,24 +24066,15 @@ function requireCssExtras () {
 	return cssExtras_1;
 }
 
-var csv_1;
-var hasRequiredCsv;
-
-function requireCsv () {
-	if (hasRequiredCsv) return csv_1;
-	hasRequiredCsv = 1;
-
-	csv_1 = csv;
-	csv.displayName = 'csv';
-	csv.aliases = [];
-	function csv(Prism) {
-	  // https://tools.ietf.org/html/rfc4180
-	  Prism.languages.csv = {
-	    value: /[^\r\n,"]+|"(?:[^"]|"")*"(?!")/,
-	    punctuation: /,/
-	  };
-	}
-	return csv_1;
+var csv_1 = csv;
+csv.displayName = 'csv';
+csv.aliases = [];
+function csv(Prism) {
+  // https://tools.ietf.org/html/rfc4180
+  Prism.languages.csv = {
+    value: /[^\r\n,"]+|"(?:[^"]|"")*"(?!")/,
+    punctuation: /,/
+  };
 }
 
 var cypher_1;
@@ -43105,7 +43096,7 @@ refractor.register(requireCsharp());
 refractor.register(requireCshtml());
 refractor.register(requireCsp());
 refractor.register(requireCssExtras());
-refractor.register(requireCsv());
+refractor.register(csv_1);
 refractor.register(requireCypher());
 refractor.register(requireD());
 refractor.register(requireDart());
@@ -47653,6 +47644,7 @@ var Step = function Step(props) {
   }
   return /*#__PURE__*/jsxRuntime.jsxs("div", {
     className: classes(modules_abbc385a.root, active ? modules_abbc385a.active : '', completion === 1 ? modules_abbc385a.completed : '', error ? modules_abbc385a.error : '', noTail ? modules_abbc385a['no-tail'] : '', modules_abbc385a[orientation]),
+    "data-elem": "step",
     children: [/*#__PURE__*/jsxRuntime.jsx("div", {
       className: modules_abbc385a.left,
       children: IconContainer
@@ -47691,9 +47683,10 @@ Step.defaultProps = {
 
 var Stepper = function Stepper(props) {
   var steps = props.steps,
-    orientation = props.orientation;
+    orientation = props.orientation,
+    className = props.className;
   return /*#__PURE__*/jsxRuntime.jsx("div", {
-    className: classes(modules_bbfded44.root, modules_bbfded44[orientation]),
+    className: classes(className, modules_bbfded44.root, modules_bbfded44[orientation]),
     children: steps.map(function (step, index) {
       return /*#__PURE__*/React.createElement(Step, _objectSpread2(_objectSpread2({}, step), {}, {
         key: "".concat(step.title, "-").concat(step.description),
