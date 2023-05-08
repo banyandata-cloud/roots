@@ -5,10 +5,10 @@ import { Step } from './step';
 import { classes } from '../../utils';
 
 const Stepper = (props) => {
-	const { steps, orientation } = props;
+	const { steps, orientation, className } = props;
 
 	return (
-		<div className={classes(styles.root, styles[orientation])}>
+		<div className={classes(className, styles.root, styles[orientation])}>
 			{steps.map((step, index) => {
 				return (
 					<Step
