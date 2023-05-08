@@ -143,7 +143,7 @@ const TableFilters = (props) => {
 						// }
 					}}
 					onKeyDown={(event) => {
-						if (event.keyCode === 8) {
+						if (event.keyCode === 8 && searchbarOptions?.value?.length === 0) {
 							onRemove(null, (selectedFilters?.length ?? 0) - 1);
 						}
 					}}

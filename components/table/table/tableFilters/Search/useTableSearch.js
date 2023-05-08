@@ -84,6 +84,7 @@ const useTableSearch = ({ filters = [], onApply } = {}) => {
 		});
 		clonedFilters.push(newChip);
 		setSelectedFilters(clonedFilters);
+		setValue('');
 	};
 
 	// onBlur will remove the incomplete chip
