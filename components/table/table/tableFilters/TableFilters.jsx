@@ -58,10 +58,6 @@ const TableFilters = (props) => {
 		searchbarOptions,
 	} = searchOptions;
 
-	if (loading) {
-		return <Skeleton theme={theme} />;
-	}
-
 	const totalFilters = selectedFilters?.length ?? 0;
 
 	const renderFilters = useCallback(() => {
@@ -98,6 +94,10 @@ const TableFilters = (props) => {
 			</>
 		);
 	}, [totalFilters]);
+
+	if (loading) {
+		return <Skeleton theme={theme} />;
+	}
 
 	return (
 		<BaseCell
