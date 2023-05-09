@@ -19,6 +19,7 @@ const DropdownItem = forwardRef(function DropdownItem(props, ref) {
 		dataAttrs,
 		className,
 		tabIndex,
+		disabled,
 	} = props;
 
 	let action = null;
@@ -37,7 +38,12 @@ const DropdownItem = forwardRef(function DropdownItem(props, ref) {
 	return (
 		<li
 			ref={ref}
-			className={classes(className, styles.root, selected ? styles.selected : '')}
+			className={classes(
+				className,
+				styles.root,
+				selected ? styles.selected : '',
+				disabled ? styles.disabled : ''
+			)}
 			data-elem='dropdown-item'
 			data-variant={variant}
 			data-value={value}

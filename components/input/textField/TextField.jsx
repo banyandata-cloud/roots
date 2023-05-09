@@ -1,8 +1,11 @@
+/* eslint-disable react/forbid-prop-types */
 import React, { createElement, forwardRef, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
+import { mergeRefs } from 'react-merge-refs';
 import styles from './TextField.module.css';
 import { classes, inputHelper } from '../../../utils/utils';
 import { BaseCell } from '../../cell';
+import { Popover } from '../../popover';
 
 // eslint-disable-next-line prefer-arrow-callback
 const TextField = forwardRef(function TextField(props, inputRef) {
@@ -14,10 +17,12 @@ const TextField = forwardRef(function TextField(props, inputRef) {
 		type,
 		value,
 		defaultValue,
+		onFocus,
 		onBlur,
 		onChange,
 		size,
 		border,
+		theme,
 		LeftComponent,
 		RightComponent,
 		className,
@@ -28,6 +33,8 @@ const TextField = forwardRef(function TextField(props, inputRef) {
 		feedbackAndCount,
 		maxLength,
 		onKeyDown,
+		autocomplete,
+		autocompleteOptions,
 	} = props;
 
 	const { current: isControlled } = useRef(value !== undefined);
@@ -35,8 +42,20 @@ const TextField = forwardRef(function TextField(props, inputRef) {
 	// for uncontrolled input
 	const [uncontrolledValue, setUncontrolledValue] = useState(defaultValue);
 
+	const [anchorEl, setAnchorEl] = useState(null);
+
+	const checkAndOpenAutocomplete = (inputString) => {
+		if (autocomplete) {
+			autocompleteOptions?.setOpen?.(
+				autocompleteOptions?.predicate?.(inputString) ?? inputString?.length > 0
+			);
+		}
+	};
+
 	const handleChange = (event) => {
 		const { fieldValue } = inputHelper(event);
+
+		checkAndOpenAutocomplete(fieldValue);
 
 		if (isControlled) {
 			onChange(event, fieldValue);
@@ -57,21 +76,28 @@ const TextField = forwardRef(function TextField(props, inputRef) {
 		...(maxLength !== null && {
 			maxLength,
 		}),
+		onFocus: () => {
+			onFocus?.();
+			checkAndOpenAutocomplete(inputValue);
+		},
 		onBlur,
 		onKeyDown,
 		'data-elem': 'input',
-		ref: inputRef,
+		ref: mergeRefs([inputRef]),
 		value: inputValue,
 		onChange: handleChange,
 		className: classes(styles[size], styles.input),
 		...inputProps,
 	});
 
+	const AutocompletePopover = autocompleteOptions?.render;
+
 	return (
 		<div className={classes(styles.root, className)}>
 			<label>
 				{label}
 				<BaseCell
+					ref={setAnchorEl}
 					className={classes(
 						styles['input-wrapper'],
 						styles[`border-${border}`],
@@ -107,6 +133,17 @@ const TextField = forwardRef(function TextField(props, inputRef) {
 					)}
 				</div>
 			)}
+			{autocomplete && (
+				<Popover
+					anchorEl={anchorEl}
+					open={autocompleteOptions?.open}
+					setOpen={autocompleteOptions?.setOpen}
+					theme={theme}
+					placement={autocompleteOptions?.placement}
+					middlewareOptions={autocompleteOptions?.middlewareOptions}>
+					{AutocompletePopover && <AutocompletePopover name={name} value={value} />}
+				</Popover>
+			)}
 		</div>
 	);
 });
@@ -137,6 +174,20 @@ TextField.propTypes = {
 	feedbackAndCount: PropTypes.bool,
 	maxLength: PropTypes.number,
 	onKeyDown: PropTypes.func,
+	autocomplete: PropTypes.bool,
+	autocompleteOptions: PropTypes.shape({
+		open: PropTypes.bool,
+		setOpen: PropTypes.func,
+		render: PropTypes.func,
+		predicate: PropTypes.func,
+		placement: PropTypes.string,
+		middlewareOptions: PropTypes.shape({
+			offset: PropTypes.object,
+			shift: PropTypes.object,
+			flip: PropTypes.object,
+		}),
+	}),
+	theme: PropTypes.oneOf(['light', 'dark']),
 };
 
 TextField.defaultProps = {
@@ -159,6 +210,9 @@ TextField.defaultProps = {
 	feedbackAndCount: false,
 	maxLength: null,
 	onKeyDown: () => {},
+	autocomplete: false,
+	autocompleteOptions: {},
+	theme: 'light',
 };
 
 export default TextField;

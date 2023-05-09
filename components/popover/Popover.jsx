@@ -16,8 +16,18 @@ import styles from './Popover.module.css';
 
 const Popover = (props) => {
 	// eslint-disable-next-line object-curly-newline
-	const { children, anchorEl, open, setOpen, className, transparent, onClose, placement, theme } =
-		props;
+	const {
+		children,
+		anchorEl,
+		open,
+		setOpen,
+		className,
+		transparent,
+		onClose,
+		placement,
+		theme,
+		middlewareOptions,
+	} = props;
 
 	const { x, y, reference, floating, strategy, context } = useFloating({
 		open,
@@ -25,10 +35,16 @@ const Popover = (props) => {
 		placement,
 		whileElementsMounted: autoUpdate,
 		middleware: [
-			offset(5),
-			shift(),
+			offset({
+				mainAxis: 5,
+				...(middlewareOptions?.offset ?? {}),
+			}),
+			shift({
+				...(middlewareOptions?.shift ?? {}),
+			}),
 			flip({
 				padding: 8,
+				...(middlewareOptions?.flip ?? {}),
 			}),
 			size({
 				apply({ rects, availableHeight, elements }) {
