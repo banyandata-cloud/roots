@@ -54,6 +54,7 @@ const BaseHorizontalBarChart = (props) => {
 		className,
 		theme,
 		fallback,
+		minBarHeight,
 	} = props;
 
 	if (loading || fallback) {
@@ -87,6 +88,19 @@ const BaseHorizontalBarChart = (props) => {
 		}),
 	};
 
+	const calcHeight = (barVal) => {
+		if (barVal === 0) {
+			return 0;
+		}
+		if (barVal > minBarHeight) {
+			return barVal - minBarHeight;
+		}
+		if (barVal < minBarHeight) {
+			return barVal + minBarHeight;
+		}
+		return barVal;
+	};
+
 	const generateSeries = () => {
 		return seriesOption.map((objectData, index) => {
 			return {
@@ -96,7 +110,6 @@ const BaseHorizontalBarChart = (props) => {
 					...(seriesOptionObject?.label ?? {}),
 					...(objectData?.label ?? {}),
 				},
-
 				name: seriesName(index),
 				data: seriesOption?.[index]?.maxvalueStyle?.value
 					? [
@@ -131,7 +144,11 @@ const BaseHorizontalBarChart = (props) => {
 					  ]
 					: Object.keys(seriesData?.chartData ?? {}).map((key, subIndex) => {
 							return {
-								value: seriesData?.chartData?.[key]?.[`x${index + 1}`] ?? '',
+								value: minBarHeight
+									? calcHeight(
+											seriesData?.chartData?.[key]?.[`x${index + 1}`] ?? 0
+									  )
+									: seriesData?.chartData?.[key]?.[`x${index + 1}`] ?? 0,
 								itemStyle: {
 									color:
 										typeof (objectData?.color ?? '' ?? {}) !== 'string'
@@ -225,6 +242,7 @@ BaseHorizontalBarChart.propTypes = {
 	legend: PropTypes.object,
 	seriesName: PropTypes.func,
 	cursor: PropTypes.string,
+	minBarHeight: PropTypes.number,
 	stacked: PropTypes.bool,
 	seriesOption: PropTypes.objectOf(PropTypes.shape),
 	style: PropTypes.object,
@@ -255,6 +273,7 @@ BaseHorizontalBarChart.defaultProps = {
 	ySplitLineShow: false,
 	yAxisLineShow: false,
 	yAxisTickShow: false,
+	minBarHeight: 0,
 	barWidth: '50%',
 	seriesName: () => {},
 	legend: {
