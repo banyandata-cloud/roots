@@ -103,7 +103,12 @@ const useTableSearch = ({ filters = [], onApply } = {}) => {
 	const renderAutocomplete = ({ value: inputValue }) => {
 		return filters
 			?.filter((fil) => {
-				return fil?.title.toLowerCase()?.indexOf(inputValue?.toLowerCase()) !== -1;
+				return (
+					fil?.title.toLowerCase()?.indexOf(inputValue?.toLowerCase()) !== -1 &&
+					selectedFilters?.findIndex((sFil) => {
+						return fil?.title === sFil.label;
+					}) === -1
+				);
 			})
 			?.map((fil) => {
 				const disabled =
