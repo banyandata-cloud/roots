@@ -45,7 +45,7 @@ const Template = (args) => {
 export const Default = Template.bind({});
 
 Default.args = {
-	intersectionState: (state) => {
+	onIntersection: (state) => {
 		if (state) {
 			console.log('Make API call for next Page APIS');
 		}
