@@ -45,6 +45,11 @@ const Template = (args) => {
 export const Default = Template.bind({});
 
 Default.args = {
+	intersectionState: (state) => {
+		if (state) {
+			console.log('Make API call for next Page APIS');
+		}
+	},
 	headerData: [
 		new TableColumn({
 			title: 'Name',
