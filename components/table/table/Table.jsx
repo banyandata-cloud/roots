@@ -30,6 +30,7 @@ const Table = (props) => {
 		filtersData,
 		paginationData,
 		loading,
+		onIntersection,
 		disabledFilterOptions,
 		onSort,
 		rowHeight,
@@ -63,6 +64,7 @@ const Table = (props) => {
 							entry?.intersectionRect?.height >= lastRowHeight
 						) {
 							setFloating(false);
+							onIntersection(true);
 						} else {
 							setFloating(true);
 						}
@@ -191,6 +193,7 @@ Table.propTypes = {
 	filtersData: PropTypes.shape({
 		...TableFilters.propTypes,
 	}),
+	onIntersection: PropTypes.func,
 	paginationData: PropTypes.shape({
 		...Pagination.propTypes,
 	}),
@@ -213,6 +216,7 @@ Table.defaultProps = {
 	uniqueKey: [],
 	activeData: {},
 	setActiveData: () => {},
+	onIntersection: () => {},
 	customCells: {
 		header: null,
 		body: null,
