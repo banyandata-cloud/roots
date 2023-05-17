@@ -84,7 +84,7 @@ export const usePagination = (props) => {
 export const Pagination = forwardRef((props, ref) => {
 	const { className, floating, paginationState, paginationDispatch, loading } = props;
 
-	const { totalPages, currentPage, step, totalData } = paginationState;
+	const { totalPages, currentPage, step, totalData, showData = true } = paginationState;
 
 	const paginationList = new PaginationList({
 		curr: currentPage,
@@ -119,7 +119,7 @@ export const Pagination = forwardRef((props, ref) => {
 		return null;
 	}
 
-	const showTotalData = totalData && (currentPage - 1) * step + 1 < totalData;
+	const showTotalData = showData && totalData && (currentPage - 1) * step + 1 < totalData;
 
 	return (
 		<div
@@ -286,6 +286,7 @@ Pagination.propTypes = {
 		totalPages: PropTypes.number,
 		currentPage: PropTypes.number,
 		step: PropTypes.number,
+		showData: PropTypes.bool,
 	}),
 	paginationDispatch: PropTypes.func,
 	onChange: PropTypes.func,
@@ -298,6 +299,7 @@ Pagination.defaultProps = {
 		totalPages: null,
 		currentPage: null,
 		step: null,
+		showData: true,
 	},
 	paginationDispatch: () => {},
 	onChange: () => {},
