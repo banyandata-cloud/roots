@@ -50,6 +50,7 @@ Default.args = {
 			console.log('Make API call for next Page APIS');
 		}
 	},
+	isFloating: true,
 	headerData: [
 		new TableColumn({
 			title: 'Name',
