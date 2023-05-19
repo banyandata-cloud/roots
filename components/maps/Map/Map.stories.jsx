@@ -239,3 +239,22 @@ DynamicCoords.args = {
 		// clustered: true,
 	},
 };
+
+export const RestrictedBounds = DynamicTemplate.bind({});
+
+RestrictedBounds.args = {
+	...DynamicCoords.args,
+	options: {
+		...Default.args.options,
+		restriction: {
+			latLngBounds: {
+				north: 90,
+				south: -90,
+				east: 189.999,
+				west: -170,
+			},
+			strictBounds: true,
+		},
+		fitBounds: true,
+	},
+};
