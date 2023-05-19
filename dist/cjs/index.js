@@ -113574,15 +113574,16 @@ var BaseMap = function BaseMap(props) {
       }));
     }
   }, [clustered, children, map]);
+  var childCount = React.Children.count(children);
   React.useEffect(function () {
-    if (fitBounds && map && React.Children.count(children) > 0) {
+    if (fitBounds && map && childCount > 0) {
       var bounds = new google.maps.LatLngBounds();
       React.Children.forEach(children, function (child) {
         bounds.extend(new google.maps.LatLng(child.props.position.lat, child.props.position.lng));
       });
       map.fitBounds(bounds);
     }
-  }, [fitBounds, map]);
+  }, [fitBounds, map, childCount]);
   useDeepCompareEffectForMaps(function () {
     if (map) {
       map.setOptions(options);
