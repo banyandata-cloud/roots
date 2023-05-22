@@ -49260,6 +49260,7 @@ var Table = function Table(props) {
     paginationData = props.paginationData,
     loading = props.loading,
     onIntersection = props.onIntersection,
+    isFloating = props.isFloating,
     disabledFilterOptions = props.disabledFilterOptions,
     onSort = props.onSort,
     rowHeight = props.rowHeight,
@@ -49293,7 +49294,7 @@ var Table = function Table(props) {
               setFloating(false);
               onIntersection(true);
             } else {
-              setFloating(true);
+              setFloating(isFloating);
             }
           });
         };
@@ -49396,6 +49397,7 @@ Table.propTypes = {
   chipsData: propTypes$1.exports.shape(_objectSpread2({}, TableChips.propTypes)),
   filtersData: propTypes$1.exports.shape(_objectSpread2({}, TableFilters.propTypes)),
   onIntersection: propTypes$1.exports.func,
+  isFloating: propTypes$1.exports.bool,
   paginationData: propTypes$1.exports.shape(_objectSpread2({}, Pagination.propTypes)),
   loading: propTypes$1.exports.bool,
   disabledFilterOptions: propTypes$1.exports.shape({
@@ -49416,6 +49418,7 @@ Table.defaultProps = {
   activeData: {},
   setActiveData: function setActiveData() {},
   onIntersection: function onIntersection() {},
+  isFloating: false,
   customCells: {
     header: null,
     body: null
