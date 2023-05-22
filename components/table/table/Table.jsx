@@ -31,6 +31,7 @@ const Table = (props) => {
 		paginationData,
 		loading,
 		onIntersection,
+		isFloating,
 		disabledFilterOptions,
 		onSort,
 		rowHeight,
@@ -66,7 +67,7 @@ const Table = (props) => {
 							setFloating(false);
 							onIntersection(true);
 						} else {
-							setFloating(true);
+							setFloating(isFloating);
 						}
 					});
 				};
@@ -194,6 +195,7 @@ Table.propTypes = {
 		...TableFilters.propTypes,
 	}),
 	onIntersection: PropTypes.func,
+	isFloating: PropTypes.bool,
 	paginationData: PropTypes.shape({
 		...Pagination.propTypes,
 	}),
@@ -217,6 +219,7 @@ Table.defaultProps = {
 	activeData: {},
 	setActiveData: () => {},
 	onIntersection: () => {},
+	isFloating: false,
 	customCells: {
 		header: null,
 		body: null,
