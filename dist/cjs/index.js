@@ -4689,31 +4689,6 @@ function sub$2(date, duration) {
   return finalDate;
 }
 
-// BASE URLS
-var auth = process.env.REACT_APP_AUTH_BASE_URL;
-var encs = process.env.REACT_APP_ENCS_BASE_URL;
-var scos = process.env.REACT_APP_SCOS_BASE_URL;
-var aws = process.env.REACT_APP_AWS_BASE_URL;
-var gcp = process.env.REACT_APP_GCP_BASE_URL;
-var oci = process.env.REACT_APP_OCI_BASE_URL;
-var pgsql = process.env.REACT_APP_PGSQL_BASE_URL;
-var mysql = process.env.REACT_APP_MYSQL_BASE_URL;
-var oracle = process.env.REACT_APP_ORACLE_BASE_URL;
-var lmosGcp = process.env.REACT_APP_AUDIT_LOG_GCP_BASE_URL;
-var lmosAws = process.env.REACT_APP_AUDIT_LOG_AWS_BASE_URL;
-var BASE_URLS = {
-  auth: auth,
-  encs: encs,
-  scos: scos,
-  aws: aws,
-  gcp: gcp,
-  oci: oci,
-  'lmos-aws': lmosAws,
-  'lmos-gcp': lmosGcp,
-  pgsql: pgsql,
-  mysql: mysql,
-  oracle: oracle
-};
 var MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 var FULL_MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 var DAYS = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
@@ -113797,7 +113772,6 @@ exports.Alert = Alert;
 exports.AlertIcon = AlertIcon;
 exports.AngleDoubleIcon = AngleDouble;
 exports.ArrowIcon = Arrow$1;
-exports.BASE_URLS = BASE_URLS;
 exports.BaseAreaChart = BaseAreaChart;
 exports.BaseButton = BaseButton;
 exports.BaseCell = BaseCell;

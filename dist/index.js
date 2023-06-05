@@ -4669,31 +4669,6 @@ function sub$2(date, duration) {
   return finalDate;
 }
 
-// BASE URLS
-var auth = process.env.REACT_APP_AUTH_BASE_URL;
-var encs = process.env.REACT_APP_ENCS_BASE_URL;
-var scos = process.env.REACT_APP_SCOS_BASE_URL;
-var aws = process.env.REACT_APP_AWS_BASE_URL;
-var gcp = process.env.REACT_APP_GCP_BASE_URL;
-var oci = process.env.REACT_APP_OCI_BASE_URL;
-var pgsql = process.env.REACT_APP_PGSQL_BASE_URL;
-var mysql = process.env.REACT_APP_MYSQL_BASE_URL;
-var oracle = process.env.REACT_APP_ORACLE_BASE_URL;
-var lmosGcp = process.env.REACT_APP_AUDIT_LOG_GCP_BASE_URL;
-var lmosAws = process.env.REACT_APP_AUDIT_LOG_AWS_BASE_URL;
-var BASE_URLS = {
-  auth: auth,
-  encs: encs,
-  scos: scos,
-  aws: aws,
-  gcp: gcp,
-  oci: oci,
-  'lmos-aws': lmosAws,
-  'lmos-gcp': lmosGcp,
-  pgsql: pgsql,
-  mysql: mysql,
-  oracle: oracle
-};
 var MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 var FULL_MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 var DAYS = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
@@ -113770,4 +113745,4 @@ InfoWindow.defaultProps = {
   disableAutoPan: true
 };
 
-export { Accordion, Alert, AlertIcon, AngleDouble as AngleDoubleIcon, Arrow$1 as ArrowIcon, BASE_URLS, BaseAreaChart, BaseButton, BaseCell, BaseHorizontalBarChart, BaseMap, BaseModal, BasePieChart, BaseRegionChart, BaseSidePanel, BaseTable, BaseVerticalBarChart, BaseWidget, BreadCrumbs, BreadcrumbSeperator as BreadcrumbSeperatorIcon, Button, COLORS, Calender$1 as CalenderIcon, Caret as CaretIcon, Checkbox, CheckboxIcon, Chevron as ChevronIcon, Chip, Clock as ClockIcon, Close as CloseIcon, Clouds as CloudIcons, CodeSnippet, Columns$1 as ColumnsIcon, Copy as CopyIcon, Cross$1 as CrossIcon, DAYS, Databases as DatabaseIcons, DatePicker, Delete as DeleteIcon, DialogBox, DisplayPicture, Download as DownloadIcon, Dropdown, DropdownItem, Edit as EditIcon, ExpandArrowAlt as ExpandArrowAltIcon, FULL_MONTHS, Filter as FilterIcon, HalfShade as HalfShadeIcon, HeatMapChart, HierarchyBrowser, HierarchyItem, InfoWindow, Link, MONTHS, MagnifyingGlass as MagnifyingGlassIcon, Map$1 as Map, Marker, Maximize as MaximizeIcon, NestedPieChart, Nut as NutIcon, PageHeader, Pagination, PaginationList, Plus as PlusIcon, Popover, Popper, Radio, RadioIcon, Refresh as RefreshIcon, Reset as ResetIcon, SearchIcon, Server as ServerIcon, Settings as SettingsIcon, Skeleton, Sort as SortIcon, Step, Stepper, Switch, Table, TableCell, TableChip, TableChipItem, TableChips, TableColumn, TableFilters, Tabs, Text, TextField, Tick as TickIcon, Toggle, Tooltip, Trash as TrashIcon, View$2 as ViewIcon, classes, cloneDeep, defaultProps, doubleDigitted, epochToFormattedDate, get$1 as get, getCSSVariableValue, getCurrentSearchParams, getDateFromEpoch, getDatesInAMonth, getDatesInStringFormat, getDayInfo, getInitialsOfName, getJSDateFromEpoch, getPagination, getSpacedDisplayName, getTimeFromEpoch, inputHelper, propTypes, safeJSONParse, stringToPath, sumArrayOfObjects, uniqueArray, uniqueArrayOfObjects, useOutsideClickListener, usePagination, useResize, useRowFilter, useTableSearch };
+export { Accordion, Alert, AlertIcon, AngleDouble as AngleDoubleIcon, Arrow$1 as ArrowIcon, BaseAreaChart, BaseButton, BaseCell, BaseHorizontalBarChart, BaseMap, BaseModal, BasePieChart, BaseRegionChart, BaseSidePanel, BaseTable, BaseVerticalBarChart, BaseWidget, BreadCrumbs, BreadcrumbSeperator as BreadcrumbSeperatorIcon, Button, COLORS, Calender$1 as CalenderIcon, Caret as CaretIcon, Checkbox, CheckboxIcon, Chevron as ChevronIcon, Chip, Clock as ClockIcon, Close as CloseIcon, Clouds as CloudIcons, CodeSnippet, Columns$1 as ColumnsIcon, Copy as CopyIcon, Cross$1 as CrossIcon, DAYS, Databases as DatabaseIcons, DatePicker, Delete as DeleteIcon, DialogBox, DisplayPicture, Download as DownloadIcon, Dropdown, DropdownItem, Edit as EditIcon, ExpandArrowAlt as ExpandArrowAltIcon, FULL_MONTHS, Filter as FilterIcon, HalfShade as HalfShadeIcon, HeatMapChart, HierarchyBrowser, HierarchyItem, InfoWindow, Link, MONTHS, MagnifyingGlass as MagnifyingGlassIcon, Map$1 as Map, Marker, Maximize as MaximizeIcon, NestedPieChart, Nut as NutIcon, PageHeader, Pagination, PaginationList, Plus as PlusIcon, Popover, Popper, Radio, RadioIcon, Refresh as RefreshIcon, Reset as ResetIcon, SearchIcon, Server as ServerIcon, Settings as SettingsIcon, Skeleton, Sort as SortIcon, Step, Stepper, Switch, Table, TableCell, TableChip, TableChipItem, TableChips, TableColumn, TableFilters, Tabs, Text, TextField, Tick as TickIcon, Toggle, Tooltip, Trash as TrashIcon, View$2 as ViewIcon, classes, cloneDeep, defaultProps, doubleDigitted, epochToFormattedDate, get$1 as get, getCSSVariableValue, getCurrentSearchParams, getDateFromEpoch, getDatesInAMonth, getDatesInStringFormat, getDayInfo, getInitialsOfName, getJSDateFromEpoch, getPagination, getSpacedDisplayName, getTimeFromEpoch, inputHelper, propTypes, safeJSONParse, stringToPath, sumArrayOfObjects, uniqueArray, uniqueArrayOfObjects, useOutsideClickListener, usePagination, useResize, useRowFilter, useTableSearch };
