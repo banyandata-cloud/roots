@@ -50,7 +50,8 @@ export const CustomIcon = Default.bind({});
 
 CustomIcon.args = {
 	...Default.args,
-	icon: PlusIcon,
+	LeftComponent: PlusIcon,
+	RightComponent: PlusIcon,
 };
 
 export const Controlled = () => {

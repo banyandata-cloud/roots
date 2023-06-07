@@ -11,14 +11,14 @@ const Accordion = (props) => {
 		open,
 		onToggle,
 		defaultOpen,
-		iconPlacement,
+		LeftComponent,
+		RightComponent,
 		title,
 		description,
 		children,
 		onClick,
 		className,
 		onExpand,
-		icon: CustomIcon,
 	} = props;
 
 	// uncontrolled
@@ -27,12 +27,6 @@ const Accordion = (props) => {
 	const { current: isControlled } = useRef(open !== undefined);
 
 	const isOpen = isControlled ? open : uncontrolledOpen;
-
-	let Icon = CaretIcon;
-
-	if (CustomIcon) {
-		Icon = CustomIcon;
-	}
 
 	return (
 		<div
@@ -56,9 +50,9 @@ const Accordion = (props) => {
 						}
 					},
 				}}
-				component1={iconPlacement === 'left' && <Icon className={styles.icon} />}
+				component1={LeftComponent && <LeftComponent className={styles.icon} />}
 				component2={<span className={styles.title}>{title}</span>}
-				component3={iconPlacement === 'right' && <Icon className={styles.icon} />}
+				component3={RightComponent && <RightComponent className={styles.icon} />}
 			/>
 			<div data-elem='body' className={styles.body}>
 				{description && <p>{description}</p>}
@@ -83,7 +77,8 @@ const Accordion = (props) => {
 Accordion.propTypes = {
 	open: PropTypes.bool,
 	onToggle: PropTypes.func,
-	iconPlacement: PropTypes.oneOf(['left', 'right', 'none']),
+	LeftComponent: PropTypes.node,
+	RightComponent: PropTypes.node,
 	title: PropTypes.node,
 	description: PropTypes.string,
 	defaultOpen: PropTypes.bool,
@@ -95,7 +90,8 @@ Accordion.propTypes = {
 Accordion.defaultProps = {
 	open: undefined,
 	onToggle: null,
-	iconPlacement: 'left',
+	LeftComponent: CaretIcon,
+	RightComponent: null,
 	title: null,
 	description: null,
 	defaultOpen: false,
