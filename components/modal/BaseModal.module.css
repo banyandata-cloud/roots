@@ -12,7 +12,7 @@
   height: 43.75rem;
   width: 62.5rem;
   position: fixed;
-  background: #ffffff;
+  background: var(--white);
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.13);
   border-radius: 8px;
   outline: none;
