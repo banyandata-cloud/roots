@@ -6653,22 +6653,22 @@ var Maximize = function Maximize(props) {
   });
 };
 
-var css$13 = ".Accordion_module_root__4d824a08 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  width: 100%;\n}\n.Accordion_module_root__4d824a08 > .Accordion_module_header__4d824a08[data-elem=base-cell] {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.5rem;\n  padding: 0.5rem 1rem;\n  cursor: pointer;\n}\n.Accordion_module_root__4d824a08 > .Accordion_module_header__4d824a08[data-elem=base-cell] > [data-elem=component1] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.Accordion_module_root__4d824a08 > .Accordion_module_header__4d824a08[data-elem=base-cell] > [data-elem=component1] .Accordion_module_icon__4d824a08 {\n  transform: rotate(-90deg);\n  width: 1rem;\n  height: 1rem;\n  fill: var(--dark-grey);\n}\n.Accordion_module_root__4d824a08 > .Accordion_module_header__4d824a08[data-elem=base-cell] .Accordion_module_title__4d824a08 {\n  flex: 1 1 auto;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n          user-select: none;\n}\n.Accordion_module_root__4d824a08 > .Accordion_module_header__4d824a08[data-elem=base-cell]:hover {\n  background: var(--background);\n}\n.Accordion_module_root__4d824a08 > .Accordion_module_header__4d824a08[data-elem=base-cell]:hover .Accordion_module_icon__4d824a08,\n.Accordion_module_root__4d824a08 > .Accordion_module_header__4d824a08[data-elem=base-cell]:hover .Accordion_module_title__4d824a08 {\n  color: var(--highlight);\n  fill: var(--highlight);\n}\n.Accordion_module_root__4d824a08 > .Accordion_module_body__4d824a08 {\n  display: none;\n  padding: 0.5rem 2.5rem;\n}\n.Accordion_module_root__4d824a08.Accordion_module_open__4d824a08 > .Accordion_module_header__4d824a08[data-elem=base-cell] [data-elem=component1] .Accordion_module_icon__4d824a08 {\n  transform: none;\n}\n.Accordion_module_root__4d824a08.Accordion_module_open__4d824a08 > .Accordion_module_body__4d824a08 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n}\n.Accordion_module_root__4d824a08.Accordion_module_open__4d824a08 > .Accordion_module_body__4d824a08 > button[data-elem=base-cell] {\n  width: -moz-fit-content;\n  width: fit-content;\n  align-self: flex-end;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-end;\n  align-items: center;\n}\n.Accordion_module_root__4d824a08.Accordion_module_open__4d824a08 > .Accordion_module_body__4d824a08 > button[data-elem=base-cell] .Accordion_module_expand__4d824a08 {\n  height: 1.5rem;\n  width: 1.5rem;\n}";
-var modules_8207625f = {"root":"Accordion_module_root__4d824a08","header":"Accordion_module_header__4d824a08","icon":"Accordion_module_icon__4d824a08","title":"Accordion_module_title__4d824a08","body":"Accordion_module_body__4d824a08","open":"Accordion_module_open__4d824a08","expand":"Accordion_module_expand__4d824a08"};
+var css$13 = ".Accordion_module_root__d838df6d {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  width: 100%;\n}\n.Accordion_module_root__d838df6d > .Accordion_module_header__d838df6d[data-elem=base-cell] {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.5rem;\n  padding: 0.5rem 1rem;\n  cursor: pointer;\n}\n.Accordion_module_root__d838df6d > .Accordion_module_header__d838df6d[data-elem=base-cell] > [data-elem=component1], .Accordion_module_root__d838df6d > .Accordion_module_header__d838df6d[data-elem=base-cell] > [data-elem=component3] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.Accordion_module_root__d838df6d > .Accordion_module_header__d838df6d[data-elem=base-cell] > [data-elem=component1] .Accordion_module_icon__d838df6d, .Accordion_module_root__d838df6d > .Accordion_module_header__d838df6d[data-elem=base-cell] > [data-elem=component3] .Accordion_module_icon__d838df6d {\n  transform: rotate(-90deg);\n  width: 1rem;\n  height: 1rem;\n  fill: var(--dark-grey);\n}\n.Accordion_module_root__d838df6d > .Accordion_module_header__d838df6d[data-elem=base-cell] > [data-elem=component3] {\n  margin-left: auto;\n}\n.Accordion_module_root__d838df6d > .Accordion_module_header__d838df6d[data-elem=base-cell] .Accordion_module_title__d838df6d {\n  flex: 1 1 auto;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.Accordion_module_root__d838df6d > .Accordion_module_header__d838df6d[data-elem=base-cell]:hover {\n  background: var(--background);\n}\n.Accordion_module_root__d838df6d > .Accordion_module_header__d838df6d[data-elem=base-cell]:hover .Accordion_module_icon__d838df6d,\n.Accordion_module_root__d838df6d > .Accordion_module_header__d838df6d[data-elem=base-cell]:hover .Accordion_module_title__d838df6d {\n  color: var(--highlight);\n  fill: var(--highlight);\n}\n.Accordion_module_root__d838df6d > .Accordion_module_body__d838df6d {\n  display: none;\n  padding: 0.5rem 2.5rem;\n}\n.Accordion_module_root__d838df6d.Accordion_module_open__d838df6d > .Accordion_module_header__d838df6d[data-elem=base-cell] [data-elem=component1] .Accordion_module_icon__d838df6d {\n  transform: none;\n}\n.Accordion_module_root__d838df6d.Accordion_module_open__d838df6d > .Accordion_module_body__d838df6d {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n}\n.Accordion_module_root__d838df6d.Accordion_module_open__d838df6d > .Accordion_module_body__d838df6d > button[data-elem=base-cell] {\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  align-self: flex-end;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-end;\n  align-items: center;\n}\n.Accordion_module_root__d838df6d.Accordion_module_open__d838df6d > .Accordion_module_body__d838df6d > button[data-elem=base-cell] .Accordion_module_expand__d838df6d {\n  height: 1.5rem;\n  width: 1.5rem;\n}";
+var modules_8207625f = {"root":"Accordion_module_root__d838df6d","header":"Accordion_module_header__d838df6d","icon":"Accordion_module_icon__d838df6d","title":"Accordion_module_title__d838df6d","body":"Accordion_module_body__d838df6d","open":"Accordion_module_open__d838df6d","expand":"Accordion_module_expand__d838df6d"};
 n(css$13,{});
 
 var Accordion = function Accordion(props) {
   var open = props.open,
     onToggle = props.onToggle,
     defaultOpen = props.defaultOpen,
-    iconPlacement = props.iconPlacement,
+    LeftComponent = props.leftComponent,
+    RightComponent = props.rightComponent,
     title = props.title,
     description = props.description,
     children = props.children,
     _onClick = props.onClick,
     className = props.className,
-    onExpand = props.onExpand,
-    CustomIcon = props.icon;
+    onExpand = props.onExpand;
 
   // uncontrolled
   var _useState = useState(defaultOpen),
@@ -6678,10 +6678,6 @@ var Accordion = function Accordion(props) {
   var _useRef = useRef(open !== undefined),
     isControlled = _useRef.current;
   var isOpen = isControlled ? open : uncontrolledOpen;
-  var Icon = Caret;
-  if (CustomIcon) {
-    Icon = CustomIcon;
-  }
   return /*#__PURE__*/jsxs("div", {
     className: classes(className, modules_8207625f.root, isOpen ? modules_8207625f.open : ''),
     "data-state-open": isOpen,
@@ -6703,14 +6699,14 @@ var Accordion = function Accordion(props) {
           }
         }
       },
-      component1: iconPlacement === 'left' && /*#__PURE__*/jsx(Icon, {
+      component1: LeftComponent && /*#__PURE__*/jsx(LeftComponent, {
         className: modules_8207625f.icon
       }),
       component2: /*#__PURE__*/jsx("span", {
         className: modules_8207625f.title,
         children: title
       }),
-      component3: iconPlacement === 'right' && /*#__PURE__*/jsx(Icon, {
+      component3: RightComponent && /*#__PURE__*/jsx(RightComponent, {
         className: modules_8207625f.icon
       })
     }), /*#__PURE__*/jsxs("div", {
@@ -6736,7 +6732,8 @@ var Accordion = function Accordion(props) {
 Accordion.propTypes = {
   open: propTypes$1.exports.bool,
   onToggle: propTypes$1.exports.func,
-  iconPlacement: propTypes$1.exports.oneOf(['left', 'right', 'none']),
+  leftComponent: propTypes$1.exports.node,
+  rightComponent: propTypes$1.exports.node,
   title: propTypes$1.exports.node,
   description: propTypes$1.exports.string,
   defaultOpen: propTypes$1.exports.bool,
@@ -6747,7 +6744,8 @@ Accordion.propTypes = {
 Accordion.defaultProps = {
   open: undefined,
   onToggle: null,
-  iconPlacement: 'left',
+  leftComponent: Caret,
+  rightComponent: null,
   title: null,
   description: null,
   defaultOpen: false,
@@ -46967,8 +46965,8 @@ HierarchyBrowser.defaultProps = {
   title: 'Browser'
 };
 
-var css$E = ".BaseModal_module_root__22dbeb47 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  top: 50%;\n  left: 50%;\n  right: auto;\n  bottom: auto;\n  transform: translate(-50%, -50%);\n  max-height: 100%;\n  height: 43.75rem;\n  width: 62.5rem;\n  position: fixed;\n  background: #ffffff;\n  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.13);\n  border-radius: 8px;\n  outline: none;\n}\n.BaseModal_module_root__22dbeb47 .BaseModal_module_body__22dbeb47 {\n  overflow-y: scroll;\n  padding: 1rem 2rem 1rem 2rem;\n}\n.BaseModal_module_root__22dbeb47 .BaseModal_module_header__22dbeb47,\n.BaseModal_module_root__22dbeb47 .BaseModal_module_footer__22dbeb47 {\n  padding: 1rem;\n}\n.BaseModal_module_root__22dbeb47 .BaseModal_module_header__22dbeb47 {\n  font-weight: 500;\n  font-size: 1.375rem;\n  border-bottom: 1px solid var(--grey4);\n}\n.BaseModal_module_root__22dbeb47 .BaseModal_module_footer__22dbeb47 {\n  margin-top: auto;\n  background: var(--grey6);\n  border-radius: 0 0 8px 8px;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-end;\n  align-items: center;\n  gap: 0.625rem;\n}\n.BaseModal_module_root__22dbeb47 button.BaseModal_module_close__22dbeb47 {\n  position: absolute;\n  right: 1rem;\n  top: 1rem;\n  padding: 0.25rem;\n  height: auto;\n  background: var(--grey6);\n}\n.BaseModal_module_root__22dbeb47 button.BaseModal_module_close__22dbeb47 .BaseModal_module_icon__22dbeb47 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--black);\n}";
-var modules_f23ae002 = {"root":"BaseModal_module_root__22dbeb47","body":"BaseModal_module_body__22dbeb47","header":"BaseModal_module_header__22dbeb47","footer":"BaseModal_module_footer__22dbeb47","close":"BaseModal_module_close__22dbeb47","icon":"BaseModal_module_icon__22dbeb47"};
+var css$E = ".BaseModal_module_root__7a89d9a7 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  top: 50%;\n  left: 50%;\n  right: auto;\n  bottom: auto;\n  transform: translate(-50%, -50%);\n  max-height: 100%;\n  height: 43.75rem;\n  width: 62.5rem;\n  position: fixed;\n  background: var(--white);\n  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.13);\n  border-radius: 8px;\n  outline: none;\n}\n.BaseModal_module_root__7a89d9a7 .BaseModal_module_body__7a89d9a7 {\n  overflow-y: scroll;\n  padding: 1rem 2rem 1rem 2rem;\n}\n.BaseModal_module_root__7a89d9a7 .BaseModal_module_header__7a89d9a7,\n.BaseModal_module_root__7a89d9a7 .BaseModal_module_footer__7a89d9a7 {\n  padding: 1rem;\n}\n.BaseModal_module_root__7a89d9a7 .BaseModal_module_header__7a89d9a7 {\n  font-weight: 500;\n  font-size: 1.375rem;\n  border-bottom: 1px solid var(--grey4);\n}\n.BaseModal_module_root__7a89d9a7 .BaseModal_module_footer__7a89d9a7 {\n  margin-top: auto;\n  background: var(--grey6);\n  border-radius: 0 0 8px 8px;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-end;\n  align-items: center;\n  gap: 0.625rem;\n}\n.BaseModal_module_root__7a89d9a7 button.BaseModal_module_close__7a89d9a7 {\n  position: absolute;\n  right: 1rem;\n  top: 1rem;\n  padding: 0.25rem;\n  height: auto;\n  background: var(--grey6);\n}\n.BaseModal_module_root__7a89d9a7 button.BaseModal_module_close__7a89d9a7 .BaseModal_module_icon__7a89d9a7 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--black);\n}";
+var modules_f23ae002 = {"root":"BaseModal_module_root__7a89d9a7","body":"BaseModal_module_body__7a89d9a7","header":"BaseModal_module_header__7a89d9a7","footer":"BaseModal_module_footer__7a89d9a7","close":"BaseModal_module_close__7a89d9a7","icon":"BaseModal_module_icon__7a89d9a7"};
 n(css$E,{});
 
 var BaseModal = function BaseModal(props) {
