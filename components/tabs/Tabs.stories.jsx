@@ -44,6 +44,7 @@ Default.args = {
 		{
 			id: '3',
 			title: 'Tab3',
+			disabled: true,
 		},
 		{
 			id: '4',

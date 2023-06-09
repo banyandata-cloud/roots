@@ -13,7 +13,7 @@ const Tabs = (props) => {
 	return (
 		<div className={classes(styles.root, styles[`${theme}-theme`], className)}>
 			{tabs?.map((tab) => {
-				const { id, title, leftIcon: LeftIcon, rightIcon: RightIcon } = tab;
+				const { id, title, leftIcon: LeftIcon, rightIcon: RightIcon, disabled } = tab;
 
 				return (
 					<Button
@@ -25,6 +25,7 @@ const Tabs = (props) => {
 						onClick={() => {
 							onTabClick(id);
 						}}
+						disabled={disabled}
 						title={title}
 						className={classes(styles.tab, selectedTab === id ? styles.active : '')}
 						leftComponent={
