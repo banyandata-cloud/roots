@@ -8,13 +8,15 @@ const CustomRanges = ({
 	selectedRange,
 	setSelectedRange,
 	setFixedRange,
-	setOpenDatePicker,
 	setOpenCustomRange,
+	apply,
 }) => {
 	const selectFixedDateRange = (dateRange, title) => {
 		setSelectedRange(dateRange);
 		setFixedRange(title);
-		setOpenDatePicker(true);
+		apply({
+			rangeSelected: dateRange,
+		});
 		setOpenCustomRange(false);
 	};
 

@@ -2,8 +2,6 @@
 import PropTypes from 'prop-types';
 import { forwardRef, useState } from 'react';
 import { classes } from '../../../utils';
-import { Button } from '../../buttons';
-import { CaretIcon } from '../../icons';
 import { TableCell } from '../cell';
 import styles from './TableRow.module.css';
 
@@ -25,6 +23,22 @@ const TableRow = forwardRef(function BaseTable(props, ref) {
 
 	const [expanded, setExpanded] = useState(false);
 
+	const expandableProps = Expandable
+		? {
+				_expanded: expanded,
+				_setExpanded: setExpanded,
+				disabled: !Expandable({
+					datum,
+					index: _index,
+				}),
+				onClick: () => {
+					setExpanded((prev) => {
+						return !prev;
+					});
+				},
+		  }
+		: {};
+
 	const tableCells = headerData?.map?.((item) => {
 		let cellContent = null;
 		if (type === 'header') {
@@ -37,6 +51,7 @@ const TableRow = forwardRef(function BaseTable(props, ref) {
 			...props,
 			...item,
 			_index,
+			expandableProps,
 			setActiveId,
 			key: item.id,
 			datum,
@@ -49,6 +64,7 @@ const TableRow = forwardRef(function BaseTable(props, ref) {
 
 		const getCustomCell = customCells?.[type];
 		const CustomCell = typeof getCustomCell === 'function' ? getCustomCell()?.[item.id] : null;
+
 		if (CustomCell != null) {
 			// eslint-disable-next-line react/jsx-key
 			return <CustomCell {...cellProps} />;
@@ -73,49 +89,8 @@ const TableRow = forwardRef(function BaseTable(props, ref) {
 					className,
 					styles.root,
 					styles[`${type}-row`],
-					styles[`row-height-${rowHeight}`],
-					Expandable ? styles.expandable : ''
+					styles[`row-height-${rowHeight}`]
 				)}>
-				{Expandable && type === 'header' && (
-					<TableCell
-						className={classes(
-							styles['expandable-cell'],
-							expanded ? styles.expanded : ''
-						)}
-						size='auto'
-						cellContent={null}
-					/>
-				)}
-				{Expandable && type === 'body' && (
-					<TableCell
-						className={classes(
-							styles['expandable-cell'],
-							expanded ? styles.expanded : ''
-						)}
-						size='auto'
-						cellContent={
-							<Button
-								className={styles.button}
-								size='auto'
-								variant='text'
-								disabled={
-									!Expandable({
-										datum,
-										index: _index,
-									})
-								}
-								onClick={() => {
-									setExpanded((prev) => {
-										return !prev;
-									});
-								}}
-								leftComponent={() => {
-									return <CaretIcon className={styles.icon} />;
-								}}
-							/>
-						}
-					/>
-				)}
 				{tableCells}
 			</tr>
 			{Expandable && expanded && (

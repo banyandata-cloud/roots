@@ -27,9 +27,15 @@ Default.args = {
 	position: 'right',
 	size: 'sm',
 };
-Default.parameters = {
-	design: {
-		type: 'figma',
-		url: 'https://www.figma.com/file/e9opoAtQHBo4vFd6u0Co98/Component-Library?node-id=173%3A25103',
-	},
+
+export const Intermediate = Template.bind({});
+Intermediate.args = {
+	...Default.args,
+	intermediate: true,
+};
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+	...Default.args,
+	disabled: true,
 };

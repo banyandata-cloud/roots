@@ -3,7 +3,7 @@ import { fromUnixTime, getUnixTime, isBefore } from 'date-fns';
 import { CalenderHeader } from './header';
 import styles from './Calender.module.css';
 import { getDatesInStringFormat, getDayInfo } from '../../../utils';
-import { FULL_MONTHS, MONTHS } from '../../../constants';
+import { FULL_MONTHS } from '../../../constants';
 import { CalenderBody } from './body';
 import { CalenderFooter } from './footer';
 
@@ -121,7 +121,7 @@ const Calender = (props) => {
 			});
 			setSelectedMonth({
 				month: selectedDayInfo.month,
-				monthAsNumber: MONTHS[selectedDayInfo.month],
+				monthAsNumber: selectedDayInfo.monthAsNumber,
 				year: selectedDayInfo.year,
 			});
 		}

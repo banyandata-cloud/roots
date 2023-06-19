@@ -1,5 +1,10 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import {
+	//  createRef,
+	useCallback,
+	useRef,
+	useState,
+} from 'react';
 import { classes } from '../../../../utils';
 import { Button } from '../../../buttons';
 import { BaseCell } from '../../../cell';
@@ -14,14 +19,14 @@ import { Columns } from './Filters';
 import { TextField } from '../../../input';
 import styles from './TableFilters.module.css';
 import { Skeleton } from './Skeleton';
+import TableChipItem from '../tableChips/tableChipItem/TableChipItem';
 
 const TableFilters = (props) => {
 	const {
 		className,
 		style,
 		onRefresh,
-		onSearch,
-		searchValue,
+		searchOptions,
 		filterValue,
 		headerData,
 		hiddenColumns,
@@ -39,8 +44,56 @@ const TableFilters = (props) => {
 		columnFilter: disabledColumnFilter,
 		settings: disabledSettings,
 	} = disabledFilterOptions;
+	// const filterRefs = useRef([]);
 
 	const hideRightOptions = disabledColumnFilter && disabledRefresh && disabledSettings;
+	const ref = useRef(null);
+
+	const {
+		onSearch,
+		onRemove,
+		onLock,
+		selectedFilters,
+		renderChipAutocomplete,
+		searchbarOptions,
+	} = searchOptions;
+
+	const totalFilters = selectedFilters?.length ?? 0;
+
+	const renderFilters = useCallback(() => {
+		const filtersDOM = selectedFilters?.map((selectedFilter, index) => {
+			// if (index === 0) {
+			// filterRefs.current = [];
+			// }
+			// const filterRef = createRef();
+			// filterRefs.current.push(filterRef);
+			return (
+				<TableChipItem
+					// ref={filterRef}
+					// eslint-disable-next-line react/no-array-index-key
+					key={index}
+					{...selectedFilter}
+					onRemove={() => {
+						onRemove(selectedFilter, index);
+					}}
+					autocompleteOptions={{
+						...selectedFilter.autocompleteOptions,
+						render: renderChipAutocomplete,
+					}}
+					onSearch={onSearch}
+					onKeyDown={(event) => {
+						onLock(event, index);
+					}}
+				/>
+			);
+		});
+		return (
+			<>
+				<MagnifyingGlassIcon className={styles.icon} />
+				{filtersDOM}
+			</>
+		);
+	}, [totalFilters]);
 
 	if (loading) {
 		return <Skeleton theme={theme} />;
@@ -52,6 +105,7 @@ const TableFilters = (props) => {
 			className={classes(styles.root, className)}
 			attrs={{
 				style,
+				// onBlur,
 			}}
 			component1={
 				!disabledFilterButton && (
@@ -77,13 +131,25 @@ const TableFilters = (props) => {
 			}
 			component2={
 				<TextField
+					{...searchbarOptions}
+					ref={ref}
 					className={styles.center}
-					value={searchValue}
-					onChange={onSearch}
-					LeftComponent={() => {
-						return <MagnifyingGlassIcon className={styles.icon} />;
+					// {...searchOptions}
+					onFocus={() => {
+						searchOptions?.onFocus?.();
+						// if (filterRefs?.current?.length > 0) {
+						// const lastFilter = filterRefs?.current?.slice(-1);
+						// lastFilter?.current?.focusLabel();
+						// }
 					}}
-					placeholder='Search'
+					onKeyDown={(event) => {
+						if (event.keyCode === 8 && searchbarOptions?.value?.length === 0) {
+							onRemove(null, (selectedFilters?.length ?? 0) - 1);
+						}
+					}}
+					LeftComponent={renderFilters}
+					placeholder={selectedFilters?.length > 0 ? '' : 'Search'}
+					// disabled={selectedFilters?.length > 0}
 				/>
 			}
 			component3={
@@ -118,6 +184,7 @@ const TableFilters = (props) => {
 										columns={headerData}
 										hiddenColumns={hiddenColumns}
 										setHiddenColumns={setHiddenColumns}
+										theme={theme}
 									/>
 								</>
 							)
@@ -163,6 +230,8 @@ TableFilters.propTypes = {
 	onRefresh: PropTypes.func,
 	onSearch: PropTypes.func,
 	searchValue: PropTypes.string,
+	// eslint-disable-next-line react/forbid-prop-types
+	searchOptions: PropTypes.object,
 	filterValue: PropTypes.shape({
 		applied: PropTypes.number,
 	}),
@@ -182,6 +251,7 @@ TableFilters.defaultProps = {
 	onRefresh: () => {},
 	onSearch: () => {},
 	searchValue: null,
+	searchOptions: {},
 	filterValue: {
 		applied: null,
 	},

@@ -22,4 +22,11 @@
 	&.selected {
 		background: $info-bg;
 	}
+
+	&.disabled {
+		filter: opacity(0.25);
+		&:hover {
+			cursor: not-allowed;
+		}
+	}
 }

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { inputHelper } from '../../../../../utils';
 import { ThemedContainer } from '../../../../helpers';
-import { ServerIcon } from '../../../../icons';
+// import { ServerIcon } from '../../../../icons';
 import TableChipItem from './TableChipItem';
 
 export default {
@@ -15,16 +15,23 @@ export default {
 };
 
 const Template = (args) => {
+	const [label, setLabel] = useState(null);
 	const [value, setValue] = useState(null);
 
 	return (
 		<ThemedContainer {...args}>
 			<TableChipItem
 				{...args}
-				inputValue={value}
+				label={label}
+				value={value}
 				onSearch={(event) => {
-					const { fieldValue } = inputHelper(event);
-					setValue(fieldValue);
+					const { fieldValue, dataset } = inputHelper(event);
+					const { search } = dataset;
+					if (search === 'label') {
+						setLabel(fieldValue);
+					} else if (search === 'value') {
+						setValue(fieldValue);
+					}
 				}}
 			/>
 		</ThemedContainer>
@@ -35,8 +42,13 @@ export const Default = Template.bind({});
 
 Default.args = {
 	key: 'something',
-	icon: ServerIcon,
-	label: 'DB Tech',
-	value: 'PgSQL',
+	// icon: ServerIcon,
 	search: true,
+	labelSearch: true,
+	valueSearch: true,
+	autocompleteOptions: {
+		render: ({ value }) => {
+			return value;
+		},
+	},
 };

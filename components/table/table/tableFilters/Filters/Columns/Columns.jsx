@@ -8,13 +8,14 @@ import { Popover } from '../../../../../popover';
 import styles from './Columns.module.css';
 
 const Columns = (props) => {
-	const { open, setOpen, anchorEl, columns, hiddenColumns, setHiddenColumns } = props;
+	const { open, setOpen, anchorEl, columns, hiddenColumns, setHiddenColumns, theme } = props;
 
 	const [expanded, setExpanded] = useState(false);
 	const [search, setSearch] = useState(null);
 
 	return (
 		<Popover
+			theme={theme}
 			anchorEl={anchorEl}
 			open={open}
 			setOpen={setOpen}

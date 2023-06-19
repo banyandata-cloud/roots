@@ -1,6 +1,7 @@
-import React from 'react';
 import { ThemedContainer } from '../../../helpers';
 import TableFilters from './TableFilters';
+import { useTableSearch } from './Search';
+import { CloudIcons } from '../../../icons';
 
 export default {
 	title: 'Components/Table/TableTop/Filters',
@@ -12,10 +13,32 @@ export default {
 	},
 };
 
+const FILTERS = [
+	{
+		id: 'serviceType',
+		title: 'Service Type',
+		icon: CloudIcons.AWS,
+		options: ['VPC', 'ABC', 'DEF'],
+	},
+	{
+		id: 'resourceType',
+		title: 'Resource Type',
+		icon: CloudIcons.GCP,
+		options: ['XYZ', '123', '456'],
+		deps: ['serviceType'],
+	},
+];
+
 const Template = (args) => {
+	const searchOptions = useTableSearch({
+		filters: FILTERS,
+		onApply: (filters) => {
+			alert(`${filters.length} Filter(s) Applied`);
+		},
+	});
 	return (
 		<ThemedContainer {...args}>
-			<TableFilters {...args} />
+			<TableFilters {...args} searchOptions={searchOptions} />
 		</ThemedContainer>
 	);
 };

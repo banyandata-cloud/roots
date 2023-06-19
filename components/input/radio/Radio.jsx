@@ -31,7 +31,8 @@ const Radio = (props) => {
 				styles.root,
 				styles[`position-${position}`],
 				className,
-				disabled ? styles.disabled : ''
+				disabled ? styles.disabled : '',
+				isChecked ? styles.selected : ''
 			)}>
 			<input disabled={disabled} type='radio' checked={isChecked} onChange={handleChange} />
 			{isChecked ? (

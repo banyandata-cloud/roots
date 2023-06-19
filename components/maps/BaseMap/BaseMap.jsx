@@ -67,8 +67,10 @@ const BaseMap = (props) => {
 		}
 	}, [clustered, children, map]);
 
+	const childCount = Children.count(children);
+
 	useEffect(() => {
-		if (fitBounds && map && Children.count(children) > 0) {
+		if (fitBounds && map && childCount > 0) {
 			const bounds = new google.maps.LatLngBounds();
 
 			Children.forEach(children, (child) => {
@@ -78,7 +80,7 @@ const BaseMap = (props) => {
 			});
 			map.fitBounds(bounds);
 		}
-	}, [fitBounds, map]);
+	}, [fitBounds, map, childCount]);
 
 	useDeepCompareEffectForMaps(() => {
 		if (map) {
