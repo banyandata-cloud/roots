@@ -36,6 +36,7 @@ const Table = (props) => {
 		onSort,
 		rowHeight,
 		theme,
+		onRowClick,
 	} = props;
 
 	const ref = useRef(null);
@@ -150,6 +151,7 @@ const Table = (props) => {
 					className: styles.table,
 					onSort,
 					rowHeight,
+					onRowClick,
 				}}
 				loading={loading}
 			/>
@@ -208,6 +210,7 @@ Table.propTypes = {
 	}),
 	onSort: PropTypes.func,
 	rowHeight: PropTypes.oneOf(['md', 'lg']),
+	onRowClick: PropTypes.func,
 	theme: PropTypes.oneOf(['light', 'dark']),
 };
 
@@ -237,6 +240,7 @@ Table.defaultProps = {
 	onSort: () => {},
 	rowHeight: 'md',
 	theme: 'light',
+	onRowClick: () => {},
 };
 
 export default Table;

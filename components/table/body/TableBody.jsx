@@ -7,7 +7,8 @@ import { TableRow } from '../row';
 import styles from './TableBody.module.css';
 
 const TableBody = (props) => {
-	const { tableData, headerData, customCells, className, expandable, rowHeight } = props;
+	const { tableData, headerData, customCells, className, expandable, rowHeight, onRowClick } =
+		props;
 
 	const listRef = useRef([]);
 
@@ -41,6 +42,7 @@ const TableBody = (props) => {
 							setActiveId,
 							expandable,
 							rowHeight,
+							onRowClick,
 						}}
 					/>
 				);
@@ -69,6 +71,7 @@ TableBody.propTypes = {
 	}),
 	expandable: PropTypes.func,
 	rowHeight: PropTypes.oneOf(['md', 'lg']),
+	onRowClick: PropTypes.func,
 };
 
 TableBody.defaultProps = {
@@ -81,6 +84,7 @@ TableBody.defaultProps = {
 	},
 	expandable: null,
 	rowHeight: 'md',
+	onRowClick: () => {},
 };
 
 export default TableBody;

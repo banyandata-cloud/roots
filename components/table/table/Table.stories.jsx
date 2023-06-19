@@ -51,6 +51,10 @@ Default.args = {
 		}
 	},
 	isFloating: true,
+	onRowClick: (datum, setActiveId) => {
+		console.log(datum, setActiveId);
+		setActiveId();
+	},
 	headerData: [
 		new TableColumn({
 			title: 'Name',

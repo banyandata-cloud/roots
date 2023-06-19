@@ -31,6 +31,9 @@ Default.args = {
 		designation: 'UI Engineer',
 		state: 'Delhi',
 	},
+	onRowClick: (datum, setActiveId) => {
+		console.log(datum, setActiveId);
+	},
 	headerData: [
 		new TableColumn({
 			title: 'Name',
