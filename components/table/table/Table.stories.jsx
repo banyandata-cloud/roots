@@ -698,13 +698,13 @@ const API_RESPONSE = {
 			sort: 'false',
 			title: 'Rolebinding Name',
 		},
-		// {
-		// 	flexible: 'false',
-		// 	id: 'k8sClusterRolebindingMetadata',
-		// 	size: 'md',
-		// 	sort: 'false',
-		// 	title: 'Cluster Metadata',
-		// },
+		{
+			flexible: 'false',
+			id: 'k8sClusterRolebindingMetadata',
+			size: 'md',
+			sort: 'false',
+			title: 'Cluster Metadata',
+		},
 		{
 			flexible: 'false',
 			id: 'k8sClusterRolebindingChecksum',
@@ -768,9 +768,9 @@ WithCustomCells.args = {
 					const [anchorEl, setAnchorEl] = useState(null);
 					const [open, setOpen] = useState(false);
 
-					// useEffect(() => {
-					// 	setActiveId(!open);
-					// }, [open]);
+					useEffect(() => {
+						setActiveId(!open);
+					}, [open]);
 
 					return (
 						<>
@@ -874,8 +874,6 @@ const LoaderTemplate = (args) => {
 		fetchAPI();
 	}, []);
 
-	console.log(args);
-
 	return (
 		<div
 			style={{
@@ -910,5 +908,4 @@ export const WithLoader = LoaderTemplate.bind({});
 
 WithLoader.args = {
 	...WithCustomCells.args,
-	defaultActiveIndex: 4,
 };
