@@ -67,7 +67,7 @@ const TableRow = forwardRef(function BaseTable(props, ref) {
 				tabIndex={-1}
 				data-elem='table-row'
 				onClick={() => {
-					return onRowClick(datum, setActiveId);
+					return onRowClick(props);
 				}}
 				className={classes(
 					className,
