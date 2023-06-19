@@ -21,6 +21,7 @@ const BaseTable = forwardRef(function BaseTable(props, ref) {
 		onSort,
 		rowHeight,
 		theme,
+		defaultActiveIndex,
 	} = props;
 
 	if (loading) {
@@ -52,6 +53,7 @@ const BaseTable = forwardRef(function BaseTable(props, ref) {
 					expandable,
 					rowHeight,
 					onRowClick,
+					defaultActiveIndex,
 				}}
 			/>
 		</table>

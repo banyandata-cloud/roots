@@ -7,8 +7,16 @@ import { TableRow } from '../row';
 import styles from './TableBody.module.css';
 
 const TableBody = (props) => {
-	const { tableData, headerData, customCells, className, expandable, rowHeight, onRowClick } =
-		props;
+	const {
+		tableData,
+		headerData,
+		customCells,
+		className,
+		expandable,
+		rowHeight,
+		onRowClick,
+		defaultActiveIndex,
+	} = props;
 
 	const listRef = useRef([]);
 
@@ -34,6 +42,13 @@ const TableBody = (props) => {
 						{...{
 							ref: (node) => {
 								listRef.current[_index] = node;
+
+								if (
+									!node?.getAttribute('data-active') &&
+									defaultActiveIndex === _index
+								) {
+									node?.setAttribute('data-active', true);
+								}
 							},
 							datum,
 							headerData,
