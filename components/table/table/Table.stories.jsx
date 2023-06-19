@@ -856,6 +856,13 @@ WithCustomCells.args = {
 	},
 };
 
+export const WithDefaultActive = Template.bind({});
+
+WithDefaultActive.args = {
+	...Default.args,
+	defaultActiveIndex: 3,
+};
+
 const LoaderTemplate = (args) => {
 	const [tableData, setTableData] = useState({});
 

@@ -37,6 +37,7 @@ const Table = (props) => {
 		rowHeight,
 		theme,
 		onRowClick,
+		defaultActiveIndex,
 	} = props;
 
 	const ref = useRef(null);
@@ -152,6 +153,7 @@ const Table = (props) => {
 					onSort,
 					rowHeight,
 					onRowClick,
+					defaultActiveIndex,
 				}}
 				loading={loading}
 			/>
