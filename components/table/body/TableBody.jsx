@@ -19,6 +19,7 @@ const TableBody = (props) => {
 	} = props;
 
 	const listRef = useRef([]);
+	const isActiveRef = useRef(false);
 
 	return (
 		<tbody data-elem='table-body' className={classes(styles.root, className)}>
@@ -27,6 +28,7 @@ const TableBody = (props) => {
 
 				const setActiveId = (reset = false, multiSelect = false) => {
 					if (reset) {
+						isActiveRef.current = false;
 						listRef.current?.[_index]?.removeAttribute?.('data-active');
 					} else {
 						if (!multiSelect) {
@@ -34,6 +36,7 @@ const TableBody = (props) => {
 								elem?.removeAttribute?.('data-active');
 							});
 						}
+						isActiveRef.current = true;
 						listRef.current?.[_index]?.setAttribute?.('data-active', true);
 					}
 				};
@@ -45,10 +48,7 @@ const TableBody = (props) => {
 							ref: (node) => {
 								listRef.current[_index] = node;
 
-								if (
-									!node?.getAttribute('data-active') &&
-									defaultActiveIndex === _index
-								) {
+								if (!isActiveRef.current && defaultActiveIndex === _index) {
 									node?.setAttribute('data-active', true);
 								}
 							},

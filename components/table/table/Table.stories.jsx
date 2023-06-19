@@ -860,7 +860,7 @@ export const WithDefaultActive = Template.bind({});
 
 WithDefaultActive.args = {
 	...Default.args,
-	defaultActiveIndex: 3,
+	defaultActiveIndex: 0,
 };
 
 const LoaderTemplate = (args) => {
@@ -873,13 +873,17 @@ const LoaderTemplate = (args) => {
 	});
 
 	const [loading, setLoading] = useState(false);
+	const [activeIndex, setActiveIndex] = useState(4);
 
 	const fetchAPI = () => {
 		setLoading(true);
-		setTimeout(() => {
-			setTableData(API_RESPONSE);
-			setLoading(false);
-		}, 1000);
+		return new Promise((resolve) => {
+			setTimeout(() => {
+				setTableData(API_RESPONSE);
+				setLoading(false);
+				resolve();
+			}, 1000);
+		});
 	};
 
 	useEffect(() => {
@@ -896,9 +900,14 @@ const LoaderTemplate = (args) => {
 			}}>
 			<Table
 				{...args}
+				defaultActiveIndex={activeIndex}
 				loading={loading}
 				headerData={tableData?.header}
 				tableData={tableData?.data}
+				onRowClick={({ _index }) => {
+					fetchAPI();
+					setActiveIndex(_index);
+				}}
 				paginationData={{
 					paginationState,
 					paginationDispatch,
