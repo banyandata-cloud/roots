@@ -15,6 +15,7 @@ const TableRow = forwardRef(function BaseTable(props, ref) {
 		customCells,
 		className,
 		setActiveId,
+		onRowClick,
 		expandable: Expandable,
 		onSort,
 		rowHeight,
@@ -81,6 +82,9 @@ const TableRow = forwardRef(function BaseTable(props, ref) {
 				ref={ref}
 				tabIndex={-1}
 				data-elem='table-row'
+				onClick={() => {
+					return onRowClick(datum, setActiveId);
+				}}
 				className={classes(
 					className,
 					styles.root,
@@ -90,7 +94,10 @@ const TableRow = forwardRef(function BaseTable(props, ref) {
 				{tableCells}
 			</tr>
 			{Expandable && expanded && (
-				<tr>
+				<tr
+					onClick={() => {
+						return onRowClick(datum, setActiveId);
+					}}>
 					<Expandable datum={datum} index={_index} />
 				</tr>
 			)}
@@ -121,6 +128,7 @@ TableRow.propTypes = {
 	expandable: PropTypes.func,
 	onSort: PropTypes.func,
 	rowHeight: PropTypes.oneOf(['md', 'lg']),
+	onRowClick: PropTypes.func,
 };
 
 TableRow.defaultProps = {
@@ -136,6 +144,7 @@ TableRow.defaultProps = {
 	expandable: null,
 	onSort: () => {},
 	rowHeight: 'md',
+	onRowClick: () => {},
 };
 
 export default TableRow;

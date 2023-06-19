@@ -4,7 +4,7 @@ import { TableRow } from '../row';
 import styles from './TableHeader.module.css';
 
 const TableHeader = (props) => {
-	const { headerData, customCells, expandable, onSort, rowHeight } = props;
+	const { headerData, customCells, expandable, onSort, rowHeight, onRowClick } = props;
 
 	return (
 		<thead data-elem='table-header' className={styles.root}>
@@ -15,6 +15,7 @@ const TableHeader = (props) => {
 				expandable={expandable}
 				onSort={onSort}
 				rowHeight={rowHeight}
+				onRowClick={onRowClick}
 			/>
 		</thead>
 	);
@@ -39,6 +40,7 @@ TableHeader.propTypes = {
 	expandable: PropTypes.func,
 	onSort: PropTypes.func,
 	rowHeight: PropTypes.oneOf(['md', 'lg']),
+	onRowClick: PropTypes.func,
 };
 
 TableHeader.defaultProps = {
@@ -50,6 +52,7 @@ TableHeader.defaultProps = {
 	expandable: null,
 	onSort: () => {},
 	rowHeight: 'md',
+	onRowClick: () => {},
 };
 
 export default TableHeader;

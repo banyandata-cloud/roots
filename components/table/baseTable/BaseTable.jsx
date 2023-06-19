@@ -16,6 +16,7 @@ const BaseTable = forwardRef(function BaseTable(props, ref) {
 		tableData,
 		className,
 		loading,
+		onRowClick,
 		expandable,
 		onSort,
 		rowHeight,
@@ -39,6 +40,7 @@ const BaseTable = forwardRef(function BaseTable(props, ref) {
 					expandable,
 					onSort,
 					rowHeight,
+					onRowClick,
 				}}
 			/>
 			<TableBody
@@ -49,6 +51,7 @@ const BaseTable = forwardRef(function BaseTable(props, ref) {
 					tableData,
 					expandable,
 					rowHeight,
+					onRowClick,
 				}}
 			/>
 		</table>
@@ -77,6 +80,7 @@ BaseTable.propTypes = {
 	expandable: PropTypes.func,
 	onSort: PropTypes.func,
 	rowHeight: PropTypes.oneOf(['md', 'lg']),
+	onRowClick: PropTypes.func,
 	theme: PropTypes.oneOf(['light', 'dark']),
 };
 
@@ -93,6 +97,7 @@ BaseTable.defaultProps = {
 	onSort: () => {},
 	rowHeight: 'md',
 	theme: 'light',
+	onRowClick: () => {},
 };
 
 export default BaseTable;
