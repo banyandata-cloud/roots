@@ -21646,74 +21646,66 @@ function requireCsharp () {
 	return csharp_1;
 }
 
-var aspnet_1;
-var hasRequiredAspnet;
-
-function requireAspnet () {
-	if (hasRequiredAspnet) return aspnet_1;
-	hasRequiredAspnet = 1;
-	var refractorCsharp = requireCsharp();
-	aspnet_1 = aspnet;
-	aspnet.displayName = 'aspnet';
-	aspnet.aliases = [];
-	function aspnet(Prism) {
-	  Prism.register(refractorCsharp);
-	  Prism.languages.aspnet = Prism.languages.extend('markup', {
-	    'page-directive': {
-	      pattern: /<%\s*@.*%>/,
-	      alias: 'tag',
-	      inside: {
-	        'page-directive': {
-	          pattern:
-	            /<%\s*@\s*(?:Assembly|Control|Implements|Import|Master(?:Type)?|OutputCache|Page|PreviousPageType|Reference|Register)?|%>/i,
-	          alias: 'tag'
-	        },
-	        rest: Prism.languages.markup.tag.inside
-	      }
-	    },
-	    directive: {
-	      pattern: /<%.*%>/,
-	      alias: 'tag',
-	      inside: {
-	        directive: {
-	          pattern: /<%\s*?[$=%#:]{0,2}|%>/,
-	          alias: 'tag'
-	        },
-	        rest: Prism.languages.csharp
-	      }
-	    }
-	  }); // Regexp copied from prism-markup, with a negative look-ahead added
-	  Prism.languages.aspnet.tag.pattern =
-	    /<(?!%)\/?[^\s>\/]+(?:\s+[^\s>\/=]+(?:=(?:("|')(?:\\[\s\S]|(?!\1)[^\\])*\1|[^\s'">=]+))?)*\s*\/?>/; // match directives of attribute value foo="<% Bar %>"
-	  Prism.languages.insertBefore(
-	    'inside',
-	    'punctuation',
-	    {
-	      directive: Prism.languages.aspnet['directive']
-	    },
-	    Prism.languages.aspnet.tag.inside['attr-value']
-	  );
-	  Prism.languages.insertBefore('aspnet', 'comment', {
-	    'asp-comment': {
-	      pattern: /<%--[\s\S]*?--%>/,
-	      alias: ['asp', 'comment']
-	    }
-	  }); // script runat="server" contains csharp, not javascript
-	  Prism.languages.insertBefore(
-	    'aspnet',
-	    Prism.languages.javascript ? 'script' : 'tag',
-	    {
-	      'asp-script': {
-	        pattern:
-	          /(<script(?=.*runat=['"]?server\b)[^>]*>)[\s\S]*?(?=<\/script>)/i,
-	        lookbehind: true,
-	        alias: ['asp', 'script'],
-	        inside: Prism.languages.csharp || {}
-	      }
-	    }
-	  );
-	}
-	return aspnet_1;
+var refractorCsharp = requireCsharp();
+var aspnet_1 = aspnet;
+aspnet.displayName = 'aspnet';
+aspnet.aliases = [];
+function aspnet(Prism) {
+  Prism.register(refractorCsharp);
+  Prism.languages.aspnet = Prism.languages.extend('markup', {
+    'page-directive': {
+      pattern: /<%\s*@.*%>/,
+      alias: 'tag',
+      inside: {
+        'page-directive': {
+          pattern:
+            /<%\s*@\s*(?:Assembly|Control|Implements|Import|Master(?:Type)?|OutputCache|Page|PreviousPageType|Reference|Register)?|%>/i,
+          alias: 'tag'
+        },
+        rest: Prism.languages.markup.tag.inside
+      }
+    },
+    directive: {
+      pattern: /<%.*%>/,
+      alias: 'tag',
+      inside: {
+        directive: {
+          pattern: /<%\s*?[$=%#:]{0,2}|%>/,
+          alias: 'tag'
+        },
+        rest: Prism.languages.csharp
+      }
+    }
+  }); // Regexp copied from prism-markup, with a negative look-ahead added
+  Prism.languages.aspnet.tag.pattern =
+    /<(?!%)\/?[^\s>\/]+(?:\s+[^\s>\/=]+(?:=(?:("|')(?:\\[\s\S]|(?!\1)[^\\])*\1|[^\s'">=]+))?)*\s*\/?>/; // match directives of attribute value foo="<% Bar %>"
+  Prism.languages.insertBefore(
+    'inside',
+    'punctuation',
+    {
+      directive: Prism.languages.aspnet['directive']
+    },
+    Prism.languages.aspnet.tag.inside['attr-value']
+  );
+  Prism.languages.insertBefore('aspnet', 'comment', {
+    'asp-comment': {
+      pattern: /<%--[\s\S]*?--%>/,
+      alias: ['asp', 'comment']
+    }
+  }); // script runat="server" contains csharp, not javascript
+  Prism.languages.insertBefore(
+    'aspnet',
+    Prism.languages.javascript ? 'script' : 'tag',
+    {
+      'asp-script': {
+        pattern:
+          /(<script(?=.*runat=['"]?server\b)[^>]*>)[\s\S]*?(?=<\/script>)/i,
+        lookbehind: true,
+        alias: ['asp', 'script'],
+        inside: Prism.languages.csharp || {}
+      }
+    }
+  );
 }
 
 var autohotkey_1 = autohotkey;
@@ -23021,62 +23013,71 @@ function cmake(Prism) {
   };
 }
 
-var cobol_1 = cobol;
-cobol.displayName = 'cobol';
-cobol.aliases = [];
-function cobol(Prism) {
-  Prism.languages.cobol = {
-    comment: {
-      pattern: /\*>.*|(^[ \t]*)\*.*/m,
-      lookbehind: true,
-      greedy: true
-    },
-    string: {
-      pattern: /[xzgn]?(?:"(?:[^\r\n"]|"")*"(?!")|'(?:[^\r\n']|'')*'(?!'))/i,
-      greedy: true
-    },
-    level: {
-      pattern: /(^[ \t]*)\d+\b/m,
-      lookbehind: true,
-      greedy: true,
-      alias: 'number'
-    },
-    'class-name': {
-      // https://github.com/antlr/grammars-v4/blob/42edd5b687d183b5fa679e858a82297bd27141e7/cobol85/Cobol85.g4#L1015
-      pattern:
-        /(\bpic(?:ture)?\s+)(?:(?:[-\w$/,:*+<>]|\.(?!\s|$))(?:\(\d+\))?)+/i,
-      lookbehind: true,
-      inside: {
-        number: {
-          pattern: /(\()\d+/,
-          lookbehind: true
-        },
-        punctuation: /[()]/
-      }
-    },
-    keyword: {
-      pattern:
-        /(^|[^\w-])(?:ABORT|ACCEPT|ACCESS|ADD|ADDRESS|ADVANCING|AFTER|ALIGNED|ALL|ALPHABET|ALPHABETIC|ALPHABETIC-LOWER|ALPHABETIC-UPPER|ALPHANUMERIC|ALPHANUMERIC-EDITED|ALSO|ALTER|ALTERNATE|ANY|ARE|AREA|AREAS|AS|ASCENDING|ASCII|ASSIGN|ASSOCIATED-DATA|ASSOCIATED-DATA-LENGTH|AT|ATTRIBUTE|AUTHOR|AUTO|AUTO-SKIP|BACKGROUND-COLOR|BACKGROUND-COLOUR|BASIS|BEEP|BEFORE|BEGINNING|BELL|BINARY|BIT|BLANK|BLINK|BLOCK|BOTTOM|BOUNDS|BY|BYFUNCTION|BYTITLE|CALL|CANCEL|CAPABLE|CCSVERSION|CD|CF|CH|CHAINING|CHANGED|CHANNEL|CHARACTER|CHARACTERS|CLASS|CLASS-ID|CLOCK-UNITS|CLOSE|CLOSE-DISPOSITION|COBOL|CODE|CODE-SET|COL|COLLATING|COLUMN|COM-REG|COMMA|COMMITMENT|COMMON|COMMUNICATION|COMP|COMP-1|COMP-2|COMP-3|COMP-4|COMP-5|COMPUTATIONAL|COMPUTATIONAL-1|COMPUTATIONAL-2|COMPUTATIONAL-3|COMPUTATIONAL-4|COMPUTATIONAL-5|COMPUTE|CONFIGURATION|CONTAINS|CONTENT|CONTINUE|CONTROL|CONTROL-POINT|CONTROLS|CONVENTION|CONVERTING|COPY|CORR|CORRESPONDING|COUNT|CRUNCH|CURRENCY|CURSOR|DATA|DATA-BASE|DATE|DATE-COMPILED|DATE-WRITTEN|DAY|DAY-OF-WEEK|DBCS|DE|DEBUG-CONTENTS|DEBUG-ITEM|DEBUG-LINE|DEBUG-NAME|DEBUG-SUB-1|DEBUG-SUB-2|DEBUG-SUB-3|DEBUGGING|DECIMAL-POINT|DECLARATIVES|DEFAULT|DEFAULT-DISPLAY|DEFINITION|DELETE|DELIMITED|DELIMITER|DEPENDING|DESCENDING|DESTINATION|DETAIL|DFHRESP|DFHVALUE|DISABLE|DISK|DISPLAY|DISPLAY-1|DIVIDE|DIVISION|DONTCARE|DOUBLE|DOWN|DUPLICATES|DYNAMIC|EBCDIC|EGCS|EGI|ELSE|EMI|EMPTY-CHECK|ENABLE|END|END-ACCEPT|END-ADD|END-CALL|END-COMPUTE|END-DELETE|END-DIVIDE|END-EVALUATE|END-IF|END-MULTIPLY|END-OF-PAGE|END-PERFORM|END-READ|END-RECEIVE|END-RETURN|END-REWRITE|END-SEARCH|END-START|END-STRING|END-SUBTRACT|END-UNSTRING|END-WRITE|ENDING|ENTER|ENTRY|ENTRY-PROCEDURE|ENVIRONMENT|EOL|EOP|EOS|ERASE|ERROR|ESCAPE|ESI|EVALUATE|EVENT|EVERY|EXCEPTION|EXCLUSIVE|EXHIBIT|EXIT|EXPORT|EXTEND|EXTENDED|EXTERNAL|FD|FILE|FILE-CONTROL|FILLER|FINAL|FIRST|FOOTING|FOR|FOREGROUND-COLOR|FOREGROUND-COLOUR|FROM|FULL|FUNCTION|FUNCTION-POINTER|FUNCTIONNAME|GENERATE|GIVING|GLOBAL|GO|GOBACK|GRID|GROUP|HEADING|HIGH-VALUE|HIGH-VALUES|HIGHLIGHT|I-O|I-O-CONTROL|ID|IDENTIFICATION|IF|IMPLICIT|IMPORT|IN|INDEX|INDEXED|INDICATE|INITIAL|INITIALIZE|INITIATE|INPUT|INPUT-OUTPUT|INSPECT|INSTALLATION|INTEGER|INTO|INVALID|INVOKE|IS|JUST|JUSTIFIED|KANJI|KEPT|KEY|KEYBOARD|LABEL|LANGUAGE|LAST|LB|LD|LEADING|LEFT|LEFTLINE|LENGTH|LENGTH-CHECK|LIBACCESS|LIBPARAMETER|LIBRARY|LIMIT|LIMITS|LINAGE|LINAGE-COUNTER|LINE|LINE-COUNTER|LINES|LINKAGE|LIST|LOCAL|LOCAL-STORAGE|LOCK|LONG-DATE|LONG-TIME|LOW-VALUE|LOW-VALUES|LOWER|LOWLIGHT|MEMORY|MERGE|MESSAGE|MMDDYYYY|MODE|MODULES|MORE-LABELS|MOVE|MULTIPLE|MULTIPLY|NAMED|NATIONAL|NATIONAL-EDITED|NATIVE|NEGATIVE|NETWORK|NEXT|NO|NO-ECHO|NULL|NULLS|NUMBER|NUMERIC|NUMERIC-DATE|NUMERIC-EDITED|NUMERIC-TIME|OBJECT-COMPUTER|OCCURS|ODT|OF|OFF|OMITTED|ON|OPEN|OPTIONAL|ORDER|ORDERLY|ORGANIZATION|OTHER|OUTPUT|OVERFLOW|OVERLINE|OWN|PACKED-DECIMAL|PADDING|PAGE|PAGE-COUNTER|PASSWORD|PERFORM|PF|PH|PIC|PICTURE|PLUS|POINTER|PORT|POSITION|POSITIVE|PRINTER|PRINTING|PRIVATE|PROCEDURE|PROCEDURE-POINTER|PROCEDURES|PROCEED|PROCESS|PROGRAM|PROGRAM-ID|PROGRAM-LIBRARY|PROMPT|PURGE|QUEUE|QUOTE|QUOTES|RANDOM|RD|READ|READER|REAL|RECEIVE|RECEIVED|RECORD|RECORDING|RECORDS|RECURSIVE|REDEFINES|REEL|REF|REFERENCE|REFERENCES|RELATIVE|RELEASE|REMAINDER|REMARKS|REMOTE|REMOVAL|REMOVE|RENAMES|REPLACE|REPLACING|REPORT|REPORTING|REPORTS|REQUIRED|RERUN|RESERVE|RESET|RETURN|RETURN-CODE|RETURNING|REVERSE-VIDEO|REVERSED|REWIND|REWRITE|RF|RH|RIGHT|ROUNDED|RUN|SAME|SAVE|SCREEN|SD|SEARCH|SECTION|SECURE|SECURITY|SEGMENT|SEGMENT-LIMIT|SELECT|SEND|SENTENCE|SEPARATE|SEQUENCE|SEQUENTIAL|SET|SHARED|SHAREDBYALL|SHAREDBYRUNUNIT|SHARING|SHIFT-IN|SHIFT-OUT|SHORT-DATE|SIGN|SIZE|SORT|SORT-CONTROL|SORT-CORE-SIZE|SORT-FILE-SIZE|SORT-MERGE|SORT-MESSAGE|SORT-MODE-SIZE|SORT-RETURN|SOURCE|SOURCE-COMPUTER|SPACE|SPACES|SPECIAL-NAMES|STANDARD|STANDARD-1|STANDARD-2|START|STATUS|STOP|STRING|SUB-QUEUE-1|SUB-QUEUE-2|SUB-QUEUE-3|SUBTRACT|SUM|SUPPRESS|SYMBOL|SYMBOLIC|SYNC|SYNCHRONIZED|TABLE|TALLY|TALLYING|TAPE|TASK|TERMINAL|TERMINATE|TEST|TEXT|THEN|THREAD|THREAD-LOCAL|THROUGH|THRU|TIME|TIMER|TIMES|TITLE|TO|TODAYS-DATE|TODAYS-NAME|TOP|TRAILING|TRUNCATED|TYPE|TYPEDEF|UNDERLINE|UNIT|UNSTRING|UNTIL|UP|UPON|USAGE|USE|USING|VALUE|VALUES|VARYING|VIRTUAL|WAIT|WHEN|WHEN-COMPILED|WITH|WORDS|WORKING-STORAGE|WRITE|YEAR|YYYYDDD|YYYYMMDD|ZERO-FILL|ZEROES|ZEROS)(?![\w-])/i,
-      lookbehind: true
-    },
-    boolean: {
-      pattern: /(^|[^\w-])(?:false|true)(?![\w-])/i,
-      lookbehind: true
-    },
-    number: {
-      pattern:
-        /(^|[^\w-])(?:[+-]?(?:(?:\d+(?:[.,]\d+)?|[.,]\d+)(?:e[+-]?\d+)?|zero))(?![\w-])/i,
-      lookbehind: true
-    },
-    operator: [
-      /<>|[<>]=?|[=+*/&]/,
-      {
-        pattern: /(^|[^\w-])(?:-|and|equal|greater|less|not|or|than)(?![\w-])/i,
-        lookbehind: true
-      }
-    ],
-    punctuation: /[.:,()]/
-  };
+var cobol_1;
+var hasRequiredCobol;
+
+function requireCobol () {
+	if (hasRequiredCobol) return cobol_1;
+	hasRequiredCobol = 1;
+
+	cobol_1 = cobol;
+	cobol.displayName = 'cobol';
+	cobol.aliases = [];
+	function cobol(Prism) {
+	  Prism.languages.cobol = {
+	    comment: {
+	      pattern: /\*>.*|(^[ \t]*)\*.*/m,
+	      lookbehind: true,
+	      greedy: true
+	    },
+	    string: {
+	      pattern: /[xzgn]?(?:"(?:[^\r\n"]|"")*"(?!")|'(?:[^\r\n']|'')*'(?!'))/i,
+	      greedy: true
+	    },
+	    level: {
+	      pattern: /(^[ \t]*)\d+\b/m,
+	      lookbehind: true,
+	      greedy: true,
+	      alias: 'number'
+	    },
+	    'class-name': {
+	      // https://github.com/antlr/grammars-v4/blob/42edd5b687d183b5fa679e858a82297bd27141e7/cobol85/Cobol85.g4#L1015
+	      pattern:
+	        /(\bpic(?:ture)?\s+)(?:(?:[-\w$/,:*+<>]|\.(?!\s|$))(?:\(\d+\))?)+/i,
+	      lookbehind: true,
+	      inside: {
+	        number: {
+	          pattern: /(\()\d+/,
+	          lookbehind: true
+	        },
+	        punctuation: /[()]/
+	      }
+	    },
+	    keyword: {
+	      pattern:
+	        /(^|[^\w-])(?:ABORT|ACCEPT|ACCESS|ADD|ADDRESS|ADVANCING|AFTER|ALIGNED|ALL|ALPHABET|ALPHABETIC|ALPHABETIC-LOWER|ALPHABETIC-UPPER|ALPHANUMERIC|ALPHANUMERIC-EDITED|ALSO|ALTER|ALTERNATE|ANY|ARE|AREA|AREAS|AS|ASCENDING|ASCII|ASSIGN|ASSOCIATED-DATA|ASSOCIATED-DATA-LENGTH|AT|ATTRIBUTE|AUTHOR|AUTO|AUTO-SKIP|BACKGROUND-COLOR|BACKGROUND-COLOUR|BASIS|BEEP|BEFORE|BEGINNING|BELL|BINARY|BIT|BLANK|BLINK|BLOCK|BOTTOM|BOUNDS|BY|BYFUNCTION|BYTITLE|CALL|CANCEL|CAPABLE|CCSVERSION|CD|CF|CH|CHAINING|CHANGED|CHANNEL|CHARACTER|CHARACTERS|CLASS|CLASS-ID|CLOCK-UNITS|CLOSE|CLOSE-DISPOSITION|COBOL|CODE|CODE-SET|COL|COLLATING|COLUMN|COM-REG|COMMA|COMMITMENT|COMMON|COMMUNICATION|COMP|COMP-1|COMP-2|COMP-3|COMP-4|COMP-5|COMPUTATIONAL|COMPUTATIONAL-1|COMPUTATIONAL-2|COMPUTATIONAL-3|COMPUTATIONAL-4|COMPUTATIONAL-5|COMPUTE|CONFIGURATION|CONTAINS|CONTENT|CONTINUE|CONTROL|CONTROL-POINT|CONTROLS|CONVENTION|CONVERTING|COPY|CORR|CORRESPONDING|COUNT|CRUNCH|CURRENCY|CURSOR|DATA|DATA-BASE|DATE|DATE-COMPILED|DATE-WRITTEN|DAY|DAY-OF-WEEK|DBCS|DE|DEBUG-CONTENTS|DEBUG-ITEM|DEBUG-LINE|DEBUG-NAME|DEBUG-SUB-1|DEBUG-SUB-2|DEBUG-SUB-3|DEBUGGING|DECIMAL-POINT|DECLARATIVES|DEFAULT|DEFAULT-DISPLAY|DEFINITION|DELETE|DELIMITED|DELIMITER|DEPENDING|DESCENDING|DESTINATION|DETAIL|DFHRESP|DFHVALUE|DISABLE|DISK|DISPLAY|DISPLAY-1|DIVIDE|DIVISION|DONTCARE|DOUBLE|DOWN|DUPLICATES|DYNAMIC|EBCDIC|EGCS|EGI|ELSE|EMI|EMPTY-CHECK|ENABLE|END|END-ACCEPT|END-ADD|END-CALL|END-COMPUTE|END-DELETE|END-DIVIDE|END-EVALUATE|END-IF|END-MULTIPLY|END-OF-PAGE|END-PERFORM|END-READ|END-RECEIVE|END-RETURN|END-REWRITE|END-SEARCH|END-START|END-STRING|END-SUBTRACT|END-UNSTRING|END-WRITE|ENDING|ENTER|ENTRY|ENTRY-PROCEDURE|ENVIRONMENT|EOL|EOP|EOS|ERASE|ERROR|ESCAPE|ESI|EVALUATE|EVENT|EVERY|EXCEPTION|EXCLUSIVE|EXHIBIT|EXIT|EXPORT|EXTEND|EXTENDED|EXTERNAL|FD|FILE|FILE-CONTROL|FILLER|FINAL|FIRST|FOOTING|FOR|FOREGROUND-COLOR|FOREGROUND-COLOUR|FROM|FULL|FUNCTION|FUNCTION-POINTER|FUNCTIONNAME|GENERATE|GIVING|GLOBAL|GO|GOBACK|GRID|GROUP|HEADING|HIGH-VALUE|HIGH-VALUES|HIGHLIGHT|I-O|I-O-CONTROL|ID|IDENTIFICATION|IF|IMPLICIT|IMPORT|IN|INDEX|INDEXED|INDICATE|INITIAL|INITIALIZE|INITIATE|INPUT|INPUT-OUTPUT|INSPECT|INSTALLATION|INTEGER|INTO|INVALID|INVOKE|IS|JUST|JUSTIFIED|KANJI|KEPT|KEY|KEYBOARD|LABEL|LANGUAGE|LAST|LB|LD|LEADING|LEFT|LEFTLINE|LENGTH|LENGTH-CHECK|LIBACCESS|LIBPARAMETER|LIBRARY|LIMIT|LIMITS|LINAGE|LINAGE-COUNTER|LINE|LINE-COUNTER|LINES|LINKAGE|LIST|LOCAL|LOCAL-STORAGE|LOCK|LONG-DATE|LONG-TIME|LOW-VALUE|LOW-VALUES|LOWER|LOWLIGHT|MEMORY|MERGE|MESSAGE|MMDDYYYY|MODE|MODULES|MORE-LABELS|MOVE|MULTIPLE|MULTIPLY|NAMED|NATIONAL|NATIONAL-EDITED|NATIVE|NEGATIVE|NETWORK|NEXT|NO|NO-ECHO|NULL|NULLS|NUMBER|NUMERIC|NUMERIC-DATE|NUMERIC-EDITED|NUMERIC-TIME|OBJECT-COMPUTER|OCCURS|ODT|OF|OFF|OMITTED|ON|OPEN|OPTIONAL|ORDER|ORDERLY|ORGANIZATION|OTHER|OUTPUT|OVERFLOW|OVERLINE|OWN|PACKED-DECIMAL|PADDING|PAGE|PAGE-COUNTER|PASSWORD|PERFORM|PF|PH|PIC|PICTURE|PLUS|POINTER|PORT|POSITION|POSITIVE|PRINTER|PRINTING|PRIVATE|PROCEDURE|PROCEDURE-POINTER|PROCEDURES|PROCEED|PROCESS|PROGRAM|PROGRAM-ID|PROGRAM-LIBRARY|PROMPT|PURGE|QUEUE|QUOTE|QUOTES|RANDOM|RD|READ|READER|REAL|RECEIVE|RECEIVED|RECORD|RECORDING|RECORDS|RECURSIVE|REDEFINES|REEL|REF|REFERENCE|REFERENCES|RELATIVE|RELEASE|REMAINDER|REMARKS|REMOTE|REMOVAL|REMOVE|RENAMES|REPLACE|REPLACING|REPORT|REPORTING|REPORTS|REQUIRED|RERUN|RESERVE|RESET|RETURN|RETURN-CODE|RETURNING|REVERSE-VIDEO|REVERSED|REWIND|REWRITE|RF|RH|RIGHT|ROUNDED|RUN|SAME|SAVE|SCREEN|SD|SEARCH|SECTION|SECURE|SECURITY|SEGMENT|SEGMENT-LIMIT|SELECT|SEND|SENTENCE|SEPARATE|SEQUENCE|SEQUENTIAL|SET|SHARED|SHAREDBYALL|SHAREDBYRUNUNIT|SHARING|SHIFT-IN|SHIFT-OUT|SHORT-DATE|SIGN|SIZE|SORT|SORT-CONTROL|SORT-CORE-SIZE|SORT-FILE-SIZE|SORT-MERGE|SORT-MESSAGE|SORT-MODE-SIZE|SORT-RETURN|SOURCE|SOURCE-COMPUTER|SPACE|SPACES|SPECIAL-NAMES|STANDARD|STANDARD-1|STANDARD-2|START|STATUS|STOP|STRING|SUB-QUEUE-1|SUB-QUEUE-2|SUB-QUEUE-3|SUBTRACT|SUM|SUPPRESS|SYMBOL|SYMBOLIC|SYNC|SYNCHRONIZED|TABLE|TALLY|TALLYING|TAPE|TASK|TERMINAL|TERMINATE|TEST|TEXT|THEN|THREAD|THREAD-LOCAL|THROUGH|THRU|TIME|TIMER|TIMES|TITLE|TO|TODAYS-DATE|TODAYS-NAME|TOP|TRAILING|TRUNCATED|TYPE|TYPEDEF|UNDERLINE|UNIT|UNSTRING|UNTIL|UP|UPON|USAGE|USE|USING|VALUE|VALUES|VARYING|VIRTUAL|WAIT|WHEN|WHEN-COMPILED|WITH|WORDS|WORKING-STORAGE|WRITE|YEAR|YYYYDDD|YYYYMMDD|ZERO-FILL|ZEROES|ZEROS)(?![\w-])/i,
+	      lookbehind: true
+	    },
+	    boolean: {
+	      pattern: /(^|[^\w-])(?:false|true)(?![\w-])/i,
+	      lookbehind: true
+	    },
+	    number: {
+	      pattern:
+	        /(^|[^\w-])(?:[+-]?(?:(?:\d+(?:[.,]\d+)?|[.,]\d+)(?:e[+-]?\d+)?|zero))(?![\w-])/i,
+	      lookbehind: true
+	    },
+	    operator: [
+	      /<>|[<>]=?|[=+*/&]/,
+	      {
+	        pattern: /(^|[^\w-])(?:-|and|equal|greater|less|not|or|than)(?![\w-])/i,
+	        lookbehind: true
+	      }
+	    ],
+	    punctuation: /[.:,()]/
+	  };
+	}
+	return cobol_1;
 }
 
 var coffeescript_1;
@@ -43044,7 +43045,7 @@ refractor.register(arff_1);
 refractor.register(asciidoc_1);
 refractor.register(asm6502_1);
 refractor.register(asmatmel_1);
-refractor.register(requireAspnet());
+refractor.register(aspnet_1);
 refractor.register(autohotkey_1);
 refractor.register(autoit_1);
 refractor.register(avisynth_1);
@@ -43067,7 +43068,7 @@ refractor.register(chaiscript_1);
 refractor.register(cil_1);
 refractor.register(clojure_1);
 refractor.register(cmake_1);
-refractor.register(cobol_1);
+refractor.register(requireCobol());
 refractor.register(requireCoffeescript());
 refractor.register(requireConcurnas());
 refractor.register(requireCoq());
@@ -47839,6 +47840,7 @@ var TableRow = /*#__PURE__*/React.forwardRef(function BaseTable(props, ref) {
     customCells = props.customCells,
     className = props.className,
     setActiveId = props.setActiveId,
+    onRowClick = props.onRowClick,
     Expandable = props.expandable,
     onSort = props.onSort,
     rowHeight = props.rowHeight;
@@ -47896,9 +47898,15 @@ var TableRow = /*#__PURE__*/React.forwardRef(function BaseTable(props, ref) {
       ref: ref,
       tabIndex: -1,
       "data-elem": "table-row",
+      onClick: function onClick() {
+        return onRowClick(datum, setActiveId);
+      },
       className: classes(className, modules_f6618a87.root, modules_f6618a87["".concat(type, "-row")], modules_f6618a87["row-height-".concat(rowHeight)]),
       children: tableCells
     }), Expandable && expanded && /*#__PURE__*/jsxRuntime.jsx("tr", {
+      onClick: function onClick() {
+        return onRowClick(datum, setActiveId);
+      },
       children: /*#__PURE__*/jsxRuntime.jsx(Expandable, {
         datum: datum,
         index: _index
@@ -47926,7 +47934,8 @@ TableRow.propTypes = {
   setActiveId: propTypes$1.exports.func,
   expandable: propTypes$1.exports.func,
   onSort: propTypes$1.exports.func,
-  rowHeight: propTypes$1.exports.oneOf(['md', 'lg'])
+  rowHeight: propTypes$1.exports.oneOf(['md', 'lg']),
+  onRowClick: propTypes$1.exports.func
 };
 TableRow.defaultProps = {
   className: '',
@@ -47940,7 +47949,8 @@ TableRow.defaultProps = {
   setActiveId: function setActiveId() {},
   expandable: null,
   onSort: function onSort() {},
-  rowHeight: 'md'
+  rowHeight: 'md',
+  onRowClick: function onRowClick() {}
 };
 
 var css$v = ".TableBody_module_root__77e2990d {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n}";
@@ -47954,7 +47964,8 @@ var TableBody = function TableBody(props) {
     customCells = props.customCells,
     className = props.className,
     expandable = props.expandable,
-    rowHeight = props.rowHeight;
+    rowHeight = props.rowHeight,
+    onRowClick = props.onRowClick;
   var listRef = React.useRef([]);
   return /*#__PURE__*/jsxRuntime.jsx("tbody", {
     "data-elem": "table-body",
@@ -47989,7 +48000,8 @@ var TableBody = function TableBody(props) {
         _index: _index,
         setActiveId: setActiveId,
         expandable: expandable,
-        rowHeight: rowHeight
+        rowHeight: rowHeight,
+        onRowClick: onRowClick
       }, key);
     })
   });
@@ -48011,7 +48023,8 @@ TableBody.propTypes = {
     body: propTypes$1.exports.object
   }),
   expandable: propTypes$1.exports.func,
-  rowHeight: propTypes$1.exports.oneOf(['md', 'lg'])
+  rowHeight: propTypes$1.exports.oneOf(['md', 'lg']),
+  onRowClick: propTypes$1.exports.func
 };
 TableBody.defaultProps = {
   className: '',
@@ -48022,7 +48035,8 @@ TableBody.defaultProps = {
     body: null
   },
   expandable: null,
-  rowHeight: 'md'
+  rowHeight: 'md',
+  onRowClick: function onRowClick() {}
 };
 
 var css$u = ".TableHeader_module_root__daf69a14 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n}";
@@ -48035,7 +48049,8 @@ var TableHeader = function TableHeader(props) {
     customCells = props.customCells,
     expandable = props.expandable,
     onSort = props.onSort,
-    rowHeight = props.rowHeight;
+    rowHeight = props.rowHeight,
+    onRowClick = props.onRowClick;
   return /*#__PURE__*/jsxRuntime.jsx("thead", {
     "data-elem": "table-header",
     className: modules_3be98c28.root,
@@ -48045,7 +48060,8 @@ var TableHeader = function TableHeader(props) {
       customCells: customCells,
       expandable: expandable,
       onSort: onSort,
-      rowHeight: rowHeight
+      rowHeight: rowHeight,
+      onRowClick: onRowClick
     })
   });
 };
@@ -48065,7 +48081,8 @@ TableHeader.propTypes = {
   }),
   expandable: propTypes$1.exports.func,
   onSort: propTypes$1.exports.func,
-  rowHeight: propTypes$1.exports.oneOf(['md', 'lg'])
+  rowHeight: propTypes$1.exports.oneOf(['md', 'lg']),
+  onRowClick: propTypes$1.exports.func
 };
 TableHeader.defaultProps = {
   headerData: [],
@@ -48075,7 +48092,8 @@ TableHeader.defaultProps = {
   },
   expandable: null,
   onSort: function onSort() {},
-  rowHeight: 'md'
+  rowHeight: 'md',
+  onRowClick: function onRowClick() {}
 };
 
 var css$t = ".BaseTable_module_root__7a8d241c {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  background: var(--white);\n  overflow: auto;\n}";
@@ -48158,6 +48176,7 @@ var BaseTable = /*#__PURE__*/React.forwardRef(function BaseTable(props, ref) {
     tableData = props.tableData,
     className = props.className,
     loading = props.loading,
+    onRowClick = props.onRowClick,
     expandable = props.expandable,
     onSort = props.onSort,
     rowHeight = props.rowHeight,
@@ -48179,14 +48198,16 @@ var BaseTable = /*#__PURE__*/React.forwardRef(function BaseTable(props, ref) {
       customCells: customCells,
       expandable: expandable,
       onSort: onSort,
-      rowHeight: rowHeight
+      rowHeight: rowHeight,
+      onRowClick: onRowClick
     }), /*#__PURE__*/jsxRuntime.jsx(TableBody, {
       ref: ref,
       headerData: transformedHeaderData,
       customCells: customCells,
       tableData: tableData,
       expandable: expandable,
-      rowHeight: rowHeight
+      rowHeight: rowHeight,
+      onRowClick: onRowClick
     })]
   });
 });
@@ -48210,6 +48231,7 @@ BaseTable.propTypes = {
   expandable: propTypes$1.exports.func,
   onSort: propTypes$1.exports.func,
   rowHeight: propTypes$1.exports.oneOf(['md', 'lg']),
+  onRowClick: propTypes$1.exports.func,
   theme: propTypes$1.exports.oneOf(['light', 'dark'])
 };
 BaseTable.defaultProps = {
@@ -48224,7 +48246,8 @@ BaseTable.defaultProps = {
   expandable: null,
   onSort: function onSort() {},
   rowHeight: 'md',
-  theme: 'light'
+  theme: 'light',
+  onRowClick: function onRowClick() {}
 };
 
 var css$q = ".Tooltip_module_tooltip__04fbc763 {\n  text-align: center;\n  border-radius: 0.25rem;\n  min-width: auto;\n  max-width: 12rem;\n  padding: 0.375rem;\n  font-size: 0.875rem;\n  font-family: sans-serif;\n  line-height: 1;\n}\n.Tooltip_module_tooltip__04fbc763.Tooltip_module_light__04fbc763 {\n  color: var(--black);\n  background: var(--grey7);\n  border-color: var(--black);\n}\n.Tooltip_module_tooltip__04fbc763.Tooltip_module_light__04fbc763 .Tooltip_module_arrow__04fbc763 {\n  background: var(--grey7);\n}\n.Tooltip_module_tooltip__04fbc763.Tooltip_module_dark__04fbc763 {\n  color: var(--white);\n  background: var(--black);\n  border-color: var(--white);\n}\n.Tooltip_module_tooltip__04fbc763.Tooltip_module_dark__04fbc763 .Tooltip_module_arrow__04fbc763 {\n  background: var(--black);\n}\n.Tooltip_module_tooltip__04fbc763 .Tooltip_module_arrow__04fbc763 {\n  position: absolute;\n  width: 1rem;\n  height: 1rem;\n  z-index: -1;\n  pointer-events: none;\n  transform: rotate(45deg);\n}";
@@ -49236,7 +49259,8 @@ var Table = function Table(props) {
     disabledFilterOptions = props.disabledFilterOptions,
     onSort = props.onSort,
     rowHeight = props.rowHeight,
-    theme = props.theme;
+    theme = props.theme,
+    onRowClick = props.onRowClick;
   var ref = React.useRef(null);
   var paginationRef = React.useRef(null);
   var _useState = React.useState(false),
@@ -49337,6 +49361,7 @@ var Table = function Table(props) {
       className: modules_2e8406c7.table,
       onSort: onSort,
       rowHeight: rowHeight,
+      onRowClick: onRowClick,
       loading: loading
     }), paginationData != null && /*#__PURE__*/jsxRuntime.jsx(Pagination, _objectSpread2(_objectSpread2({
       className: classes(modules_2e8406c7.pagination, floating ? modules_2e8406c7.floating : ''),
@@ -49380,6 +49405,7 @@ Table.propTypes = {
   }),
   onSort: propTypes$1.exports.func,
   rowHeight: propTypes$1.exports.oneOf(['md', 'lg']),
+  onRowClick: propTypes$1.exports.func,
   theme: propTypes$1.exports.oneOf(['light', 'dark'])
 };
 Table.defaultProps = {
@@ -49407,7 +49433,8 @@ Table.defaultProps = {
   },
   onSort: function onSort() {},
   rowHeight: 'md',
-  theme: 'light'
+  theme: 'light',
+  onRowClick: function onRowClick() {}
 };
 
 var css$i = ".Tabs_module_root__18f64bf7 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.Tabs_module_root__18f64bf7.Tabs_module_lightTheme__18f64bf7 > button.Tabs_module_tab__18f64bf7 {\n  border-color: var(--grey4);\n}\n.Tabs_module_root__18f64bf7.Tabs_module_lightTheme__18f64bf7 > button.Tabs_module_tab__18f64bf7 > [data-elem=component1] > .Tabs_module_icon__18f64bf7,\n.Tabs_module_root__18f64bf7.Tabs_module_lightTheme__18f64bf7 > button.Tabs_module_tab__18f64bf7 > [data-elem=component3] > .Tabs_module_icon__18f64bf7 {\n  fill: var(--black);\n}\n.Tabs_module_root__18f64bf7.Tabs_module_lightTheme__18f64bf7 > button.Tabs_module_tab__18f64bf7 > [data-elem=component2] {\n  color: var(--black);\n}\n.Tabs_module_root__18f64bf7.Tabs_module_lightTheme__18f64bf7 > button.Tabs_module_tab__18f64bf7:hover {\n  background: var(--info-bg);\n}\n.Tabs_module_root__18f64bf7.Tabs_module_darkTheme__18f64bf7 > button.Tabs_module_tab__18f64bf7 {\n  border-color: var(--grey);\n}\n.Tabs_module_root__18f64bf7.Tabs_module_darkTheme__18f64bf7 > button.Tabs_module_tab__18f64bf7 > [data-elem=component1] > .Tabs_module_icon__18f64bf7,\n.Tabs_module_root__18f64bf7.Tabs_module_darkTheme__18f64bf7 > button.Tabs_module_tab__18f64bf7 > [data-elem=component3] > .Tabs_module_icon__18f64bf7 {\n  fill: var(--white);\n}\n.Tabs_module_root__18f64bf7.Tabs_module_darkTheme__18f64bf7 > button.Tabs_module_tab__18f64bf7 > [data-elem=component2] {\n  color: var(--white);\n}\n.Tabs_module_root__18f64bf7.Tabs_module_darkTheme__18f64bf7 > button.Tabs_module_tab__18f64bf7:hover {\n  background: var(--dark-grey);\n}\n.Tabs_module_root__18f64bf7 > button.Tabs_module_tab__18f64bf7 {\n  padding: 0.75rem;\n  gap: 0.75rem;\n  border-bottom-width: 1px;\n  border-bottom-style: solid;\n}\n.Tabs_module_root__18f64bf7 > button.Tabs_module_tab__18f64bf7 > [data-elem=component1] > .Tabs_module_icon__18f64bf7,\n.Tabs_module_root__18f64bf7 > button.Tabs_module_tab__18f64bf7 > [data-elem=component3] > .Tabs_module_icon__18f64bf7 {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.Tabs_module_root__18f64bf7 > button.Tabs_module_tab__18f64bf7.Tabs_module_active__18f64bf7 {\n  border-bottom-width: 2px;\n  border-color: var(--highlight);\n}\n.Tabs_module_root__18f64bf7 > button.Tabs_module_tab__18f64bf7.Tabs_module_active__18f64bf7 > [data-elem=component1] > .Tabs_module_icon__18f64bf7,\n.Tabs_module_root__18f64bf7 > button.Tabs_module_tab__18f64bf7.Tabs_module_active__18f64bf7 > [data-elem=component3] > .Tabs_module_icon__18f64bf7 {\n  fill: var(--highlight);\n}\n.Tabs_module_root__18f64bf7 > button.Tabs_module_tab__18f64bf7.Tabs_module_active__18f64bf7 > [data-elem=component2] {\n  color: var(--highlight);\n}\n.Tabs_module_root__18f64bf7 > button.Tabs_module_tab__18f64bf7:hover > [data-elem=component1] > .Tabs_module_icon__18f64bf7,\n.Tabs_module_root__18f64bf7 > button.Tabs_module_tab__18f64bf7:hover > [data-elem=component3] > .Tabs_module_icon__18f64bf7 {\n  fill: var(--highlight);\n}\n.Tabs_module_root__18f64bf7 > button.Tabs_module_tab__18f64bf7:hover > [data-elem=component2] {\n  color: var(--highlight);\n}";
