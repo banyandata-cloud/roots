@@ -47945,7 +47945,8 @@ var TableBody = function TableBody(props) {
     className = props.className,
     expandable = props.expandable,
     rowHeight = props.rowHeight,
-    onRowClick = props.onRowClick;
+    onRowClick = props.onRowClick,
+    defaultActiveIndex = props.defaultActiveIndex;
   var listRef = useRef([]);
   return /*#__PURE__*/jsx("tbody", {
     "data-elem": "table-body",
@@ -47973,6 +47974,9 @@ var TableBody = function TableBody(props) {
       return /*#__PURE__*/jsx(TableRow, {
         ref: function ref(node) {
           listRef.current[_index] = node;
+          if (!(node !== null && node !== void 0 && node.getAttribute('data-active')) && defaultActiveIndex === _index) {
+            node === null || node === void 0 ? void 0 : node.setAttribute('data-active', true);
+          }
         },
         datum: datum,
         headerData: headerData,
@@ -48160,7 +48164,8 @@ var BaseTable = /*#__PURE__*/forwardRef(function BaseTable(props, ref) {
     expandable = props.expandable,
     onSort = props.onSort,
     rowHeight = props.rowHeight,
-    theme = props.theme;
+    theme = props.theme,
+    defaultActiveIndex = props.defaultActiveIndex;
   if (loading) {
     return /*#__PURE__*/jsx(BaseTableSkeleton, {
       theme: theme
@@ -48187,7 +48192,8 @@ var BaseTable = /*#__PURE__*/forwardRef(function BaseTable(props, ref) {
       tableData: tableData,
       expandable: expandable,
       rowHeight: rowHeight,
-      onRowClick: onRowClick
+      onRowClick: onRowClick,
+      defaultActiveIndex: defaultActiveIndex
     })]
   });
 });
@@ -49240,7 +49246,8 @@ var Table = function Table(props) {
     onSort = props.onSort,
     rowHeight = props.rowHeight,
     theme = props.theme,
-    onRowClick = props.onRowClick;
+    onRowClick = props.onRowClick,
+    defaultActiveIndex = props.defaultActiveIndex;
   var ref = useRef(null);
   var paginationRef = useRef(null);
   var _useState = useState(false),
@@ -49342,6 +49349,7 @@ var Table = function Table(props) {
       onSort: onSort,
       rowHeight: rowHeight,
       onRowClick: onRowClick,
+      defaultActiveIndex: defaultActiveIndex,
       loading: loading
     }), paginationData != null && /*#__PURE__*/jsx(Pagination, _objectSpread2(_objectSpread2({
       className: classes(modules_2e8406c7.pagination, floating ? modules_2e8406c7.floating : ''),
