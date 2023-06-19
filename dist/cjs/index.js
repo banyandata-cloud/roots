@@ -47965,7 +47965,8 @@ var TableBody = function TableBody(props) {
     className = props.className,
     expandable = props.expandable,
     rowHeight = props.rowHeight,
-    onRowClick = props.onRowClick;
+    onRowClick = props.onRowClick,
+    defaultActiveIndex = props.defaultActiveIndex;
   var listRef = React.useRef([]);
   return /*#__PURE__*/jsxRuntime.jsx("tbody", {
     "data-elem": "table-body",
@@ -47993,6 +47994,9 @@ var TableBody = function TableBody(props) {
       return /*#__PURE__*/jsxRuntime.jsx(TableRow, {
         ref: function ref(node) {
           listRef.current[_index] = node;
+          if (!(node !== null && node !== void 0 && node.getAttribute('data-active')) && defaultActiveIndex === _index) {
+            node === null || node === void 0 ? void 0 : node.setAttribute('data-active', true);
+          }
         },
         datum: datum,
         headerData: headerData,
@@ -48180,7 +48184,8 @@ var BaseTable = /*#__PURE__*/React.forwardRef(function BaseTable(props, ref) {
     expandable = props.expandable,
     onSort = props.onSort,
     rowHeight = props.rowHeight,
-    theme = props.theme;
+    theme = props.theme,
+    defaultActiveIndex = props.defaultActiveIndex;
   if (loading) {
     return /*#__PURE__*/jsxRuntime.jsx(BaseTableSkeleton, {
       theme: theme
@@ -48207,7 +48212,8 @@ var BaseTable = /*#__PURE__*/React.forwardRef(function BaseTable(props, ref) {
       tableData: tableData,
       expandable: expandable,
       rowHeight: rowHeight,
-      onRowClick: onRowClick
+      onRowClick: onRowClick,
+      defaultActiveIndex: defaultActiveIndex
     })]
   });
 });
@@ -49260,7 +49266,8 @@ var Table = function Table(props) {
     onSort = props.onSort,
     rowHeight = props.rowHeight,
     theme = props.theme,
-    onRowClick = props.onRowClick;
+    onRowClick = props.onRowClick,
+    defaultActiveIndex = props.defaultActiveIndex;
   var ref = React.useRef(null);
   var paginationRef = React.useRef(null);
   var _useState = React.useState(false),
@@ -49362,6 +49369,7 @@ var Table = function Table(props) {
       onSort: onSort,
       rowHeight: rowHeight,
       onRowClick: onRowClick,
+      defaultActiveIndex: defaultActiveIndex,
       loading: loading
     }), paginationData != null && /*#__PURE__*/jsxRuntime.jsx(Pagination, _objectSpread2(_objectSpread2({
       className: classes(modules_2e8406c7.pagination, floating ? modules_2e8406c7.floating : ''),
