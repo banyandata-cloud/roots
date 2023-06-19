@@ -47879,7 +47879,7 @@ var TableRow = /*#__PURE__*/forwardRef(function BaseTable(props, ref) {
       tabIndex: -1,
       "data-elem": "table-row",
       onClick: function onClick() {
-        return onRowClick(datum, setActiveId);
+        return onRowClick(props);
       },
       className: classes(className, modules_f6618a87.root, modules_f6618a87["".concat(type, "-row")], modules_f6618a87["row-height-".concat(rowHeight)]),
       children: tableCells
@@ -47948,6 +47948,7 @@ var TableBody = function TableBody(props) {
     onRowClick = props.onRowClick,
     defaultActiveIndex = props.defaultActiveIndex;
   var listRef = useRef([]);
+  var isActiveRef = useRef(false);
   return /*#__PURE__*/jsx("tbody", {
     "data-elem": "table-body",
     className: classes(modules_82c0c387.root, className),
@@ -47958,6 +47959,7 @@ var TableBody = function TableBody(props) {
         var multiSelect = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
         if (reset) {
           var _listRef$current, _listRef$current$_ind, _listRef$current$_ind2;
+          isActiveRef.current = false;
           (_listRef$current = listRef.current) === null || _listRef$current === void 0 ? void 0 : (_listRef$current$_ind = _listRef$current[_index]) === null || _listRef$current$_ind === void 0 ? void 0 : (_listRef$current$_ind2 = _listRef$current$_ind.removeAttribute) === null || _listRef$current$_ind2 === void 0 ? void 0 : _listRef$current$_ind2.call(_listRef$current$_ind, 'data-active');
         } else {
           var _listRef$current3, _listRef$current3$_in, _listRef$current3$_in2;
@@ -47968,13 +47970,14 @@ var TableBody = function TableBody(props) {
               elem === null || elem === void 0 ? void 0 : (_elem$removeAttribute = elem.removeAttribute) === null || _elem$removeAttribute === void 0 ? void 0 : _elem$removeAttribute.call(elem, 'data-active');
             });
           }
+          isActiveRef.current = true;
           (_listRef$current3 = listRef.current) === null || _listRef$current3 === void 0 ? void 0 : (_listRef$current3$_in = _listRef$current3[_index]) === null || _listRef$current3$_in === void 0 ? void 0 : (_listRef$current3$_in2 = _listRef$current3$_in.setAttribute) === null || _listRef$current3$_in2 === void 0 ? void 0 : _listRef$current3$_in2.call(_listRef$current3$_in, 'data-active', true);
         }
       };
       return /*#__PURE__*/jsx(TableRow, {
         ref: function ref(node) {
           listRef.current[_index] = node;
-          if (!(node !== null && node !== void 0 && node.getAttribute('data-active')) && defaultActiveIndex === _index) {
+          if (!isActiveRef.current && defaultActiveIndex === _index) {
             node === null || node === void 0 ? void 0 : node.setAttribute('data-active', true);
           }
         },
