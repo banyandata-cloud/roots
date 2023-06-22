@@ -105,7 +105,7 @@ const Toggle = forwardRef(function Toggle(props, ref) {
 					rightComponent,
 					className: itemClassName,
 				} = item;
-				const isActive = inputValue.indexOf(itemValue) !== -1 && !allSelected;
+				const isActive = inputValue === itemValue && !allSelected;
 				return (
 					<Button
 						size='auto'
