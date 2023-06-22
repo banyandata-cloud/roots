@@ -111274,7 +111274,7 @@ var Toggle = /*#__PURE__*/forwardRef(function Toggle(props, ref) {
         leftComponent = item.leftComponent,
         rightComponent = item.rightComponent,
         itemClassName = item.className;
-      var isActive = inputValue.indexOf(itemValue) !== -1 && !allSelected;
+      var isActive = inputValue === itemValue && !allSelected;
       return /*#__PURE__*/jsx(Button, {
         size: "auto",
         "data-elem": "toggle",
