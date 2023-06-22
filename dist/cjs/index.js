@@ -111294,7 +111294,7 @@ var Toggle = /*#__PURE__*/React.forwardRef(function Toggle(props, ref) {
         leftComponent = item.leftComponent,
         rightComponent = item.rightComponent,
         itemClassName = item.className;
-      var isActive = inputValue.indexOf(itemValue) !== -1 && !allSelected;
+      var isActive = inputValue === itemValue && !allSelected;
       return /*#__PURE__*/jsxRuntime.jsx(Button, {
         size: "auto",
         "data-elem": "toggle",
