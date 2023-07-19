@@ -1,4 +1,4 @@
-import { offset, flip, size, autoUpdate, shift } from '@floating-ui/react-dom-interactions';
+import { offset, flip, size, autoUpdate, shift } from '@floating-ui/react';
 import { differenceInDays, differenceInHours, differenceInMonths, fromUnixTime } from 'date-fns';
 import { MONTHS } from '../../../constants';
 import { dateRanges } from '../calender/footer/utils';
