@@ -3,8 +3,6 @@ import { COLORS } from '../../../styles';
 const ThemedContainer = (props) => {
 	const { theme, style, className, children } = props;
 
-	console.log(COLORS);
-
 	return (
 		<div
 			className={className}
