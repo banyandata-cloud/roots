@@ -1,0 +1,116 @@
+🔎 checking possible migrations..
+
+🔎 found a 'eslintPlugin' migration:
+╭ Automigration detected ──────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                              │
+│   We've detected you are not using our eslint-plugin.                                                        │
+│                                                                                                              │
+│   In order to have the best experience with Storybook and follow best practices, we advise you to install    │
+│   eslint-plugin-storybook.                                                                                   │
+│                                                                                                              │
+│   More info: https://github.com/storybookjs/eslint-plugin-storybook#readme                                   │
+│                                                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+? Do you want to run the 'eslintPlugin' migration on your project? › (Y/n)✔ Do you want to run the 'eslintPlugin' migration on your project? … yes
+✅ Adding dependencies: eslint-plugin-storybook
+    Configuring Storybook ESLint plugin at .eslintrc.json
+❌ error when running eslintPlugin migration
+SyntaxError: .eslintrc.json: Expected double-quoted property name in JSON at position 31
+    at JSON.parse (<anonymous>)
+    at _readFile (/Users/pradeep/.npm/_npx/bc7e1e37fcb46ffc/node_modules/jsonfile/index.js:25:16)
+    at async configureEslintPlugin (/Users/pradeep/.npm/_npx/bc7e1e37fcb46ffc/node_modules/@storybook/cli/dist/generate.js:61:6745)
+    at async Object.run (/Users/pradeep/.npm/_npx/bc7e1e37fcb46ffc/node_modules/@storybook/cli/dist/generate.js:164:25)
+    at async runFixes (/Users/pradeep/.npm/_npx/bc7e1e37fcb46ffc/node_modules/@storybook/cli/dist/generate.js:368:1144)
+    at async automigrate (/Users/pradeep/.npm/_npx/bc7e1e37fcb46ffc/node_modules/@storybook/cli/dist/generate.js:363:676)
+    at async doUpgrade (/Users/pradeep/.npm/_npx/bc7e1e37fcb46ffc/node_modules/@storybook/cli/dist/generate.js:395:3419)
+    at async withTelemetry (/Users/pradeep/.npm/_npx/bc7e1e37fcb46ffc/node_modules/@storybook/core-server/dist/index.js:113:3659)
+    at async upgrade (/Users/pradeep/.npm/_npx/bc7e1e37fcb46ffc/node_modules/@storybook/cli/dist/generate.js:395:3865)
+
+
+🔎 found a 'storybook-binary' migration:
+╭ Automigration detected ───────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                           │
+│   We've detected you are using Storybook 7.1.0 without Storybook's storybook binary. Starting in Storybook 7.0, it has    │
+│   to be installed.                                                                                                        │
+│                                                                                                                           │
+│                                                                                                                           │
+│   More info:                                                                                                              │
+│   https://github.com/storybookjs/storybook/blob/next/MIGRATION.md#start-storybook--build-storybook-binaries-removed       │
+│                                                                                                                           │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+? Do you want to run the 'storybook-binary' migration on your project? › (Y/n)✔ Do you want to run the 'storybook-binary' migration on your project? … yes
+
+✅ Adding 'storybook' as dev dependency
+
+✅ ran storybook-binary migration
+
+🔎 found a 'incompatible-addons' migration:
+╭ Manual migration detected ────────────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                           │
+│   Attention: We've detected that you're using the following addons in versions which are known to be incompatible with    │
+│   Storybook 7:                                                                                                            │
+│                                                                                                                           │
+│   - storybook-addon-designs@6.3.1                                                                                         │
+│                                                                                                                           │
+│   Please be aware they might not work in Storybook 7. Reach out to their maintainers for updates and check the            │
+│   following Github issue for more information:                                                                            │
+│   https://github.com/storybookjs/storybook/issues/20529                                                                   │
+│                                                                                                                           │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+? Select continue once you have made the required changes, or quit to exit the migration process › quit / continue? Select continue once you have made the required changes, or quit to exit the migration process › quit / continue? Select continue once you have made the required changes, or quit to exit the migration process › quit / continue✔ Select continue once you have made the required changes, or quit to exit the migration process … quit / continue
+
+🔎 found a 'mdx1to2' migration:
+╭ Automigration detected ──────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                  │
+│   We've found 6 '.stories.mdx' files in your project.                                                            │
+│                                                                                                                  │
+│   Storybook has upgraded to MDX2 (https://mdxjs.com/blog/v2/), which contains breaking changes from MDX1.        │
+│   We can try to automatically upgrade your MDX files to MDX2 format using some common patterns.                  │
+│                                                                                                                  │
+│   After this install completes, and before you start Storybook, we strongly recommend reading the MDX2 section   │
+│   of the 7.0 migration guide. It contains useful tools for detecting and fixing any remaining issues.            │
+│                                                                                                                  │
+│   https://storybook.js.org/migration-guides/7.0                                                                  │
+│                                                                                                                  │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+? Do you want to run the 'mdx1to2' migration on your project? › (Y/n)✔ Do you want to run the 'mdx1to2' migration on your project? … no
+
+╭ Migration check ran with failures ────────────────────────────────────────────────────────────────────────────────────────╮
+│                                                                                                                           │
+│   Successful migrations:                                                                                                  │
+│                                                                                                                           │
+│   storybook-binary                                                                                                        │
+│                                                                                                                           │
+│   Failed migrations:                                                                                                      │
+│                                                                                                                           │
+│   eslintPlugin:                                                                                                           │
+│   .eslintrc.json: Expected double-quoted property name in JSON at position 31                                             │
+│                                                                                                                           │
+│   You can find the full logs in /Users/pradeep/Desktop/bds/web/roots/migration-storybook.log                              │
+│                                                                                                                           │
+│   Manual migrations:                                                                                                      │
+│                                                                                                                           │
+│   incompatible-addons                                                                                                     │
+│                                                                                                                           │
+│   Skipped migrations:                                                                                                     │
+│                                                                                                                           │
+│   mdx1to2                                                                                                                 │
+│                                                                                                                           │
+│   ─────────────────────────────────────────────────                                                                       │
+│                                                                                                                           │
+│   If you'd like to run the migrations again, you can do so by running 'npx storybook@next automigrate'                    │
+│                                                                                                                           │
+│   The automigrations try to migrate common patterns in your project, but might not contain everything needed to migrate   │
+│   to the latest version of Storybook.                                                                                     │
+│                                                                                                                           │
+│   Please check the changelog and migration guide for manual migrations and more information:                              │
+│   https://storybook.js.org/migration-guides/7.0                                                                           │
+│   And reach out on Discord if you need help: https://discord.gg/storybook                                                 │
+│                                                                                                                           │
+│   ─────────────────────────────────────────────────                                                                       │
+│                                                                                                                           │
+│   You can find more information for a given dependency by running pnpm list --depth=1 <package-name>                      │
+│                                                                                                                           │
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+

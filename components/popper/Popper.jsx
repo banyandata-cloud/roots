@@ -1,4 +1,4 @@
-import { FloatingPortal, FloatingOverlay, useId } from '@floating-ui/react-dom-interactions';
+import { FloatingPortal, FloatingOverlay, useId } from '@floating-ui/react';
 import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { classes } from '../../utils';

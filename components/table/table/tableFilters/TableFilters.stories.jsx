@@ -1,7 +1,6 @@
 import { ThemedContainer } from '../../../helpers';
 import TableFilters from './TableFilters';
 import { useTableSearch } from './Search';
-import { CloudIcons } from '../../../icons';
 
 export default {
 	title: 'Components/Table/TableTop/Filters',
@@ -17,13 +16,11 @@ const FILTERS = [
 	{
 		id: 'serviceType',
 		title: 'Service Type',
-		icon: CloudIcons.AWS,
 		options: ['VPC', 'ABC', 'DEF'],
 	},
 	{
 		id: 'resourceType',
 		title: 'Resource Type',
-		icon: CloudIcons.GCP,
 		options: ['XYZ', '123', '456'],
 		deps: ['serviceType'],
 	},

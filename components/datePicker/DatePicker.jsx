@@ -1,11 +1,6 @@
 import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
-import {
-	useFloating,
-	useInteractions,
-	useDismiss,
-	useClick,
-} from '@floating-ui/react-dom-interactions';
+import { useFloating, useInteractions, useDismiss, useClick } from '@floating-ui/react';
 import { useOutsideClickListener } from '../../hooks';
 import { classes } from '../../utils';
 import { Calender } from './calender';

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './Breadcrumbs.module.css';
-
 import { getSpacedDisplayName, classes } from '../../utils/utils';
 import BreadcrumbSeperator from '../icons/BreadcrumbSeperator/BreadcrumbSeperator';
 import { Link } from '../link';

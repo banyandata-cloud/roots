@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ThemedContainer from '../helpers/themedContainer/ThemedContainer';
-import { DatabaseIcons } from '../icons/Databases';
+import { TrashIcon } from '../icons';
 import Toggle from './Toggle';
 
 export default {
@@ -83,7 +83,7 @@ WithIcon.args = {
 			value: 'pgsql',
 			title: '',
 			rightComponent: () => {
-				return <DatabaseIcons.PgSql />;
+				return <TrashIcon />;
 			},
 			leftComponent: null,
 		},
@@ -91,7 +91,7 @@ WithIcon.args = {
 			value: 'mysql',
 			title: '',
 			rightComponent: () => {
-				return <DatabaseIcons.MySql />;
+				return <TrashIcon />;
 			},
 			leftComponent: null,
 		},
@@ -99,7 +99,7 @@ WithIcon.args = {
 			value: 'oracle',
 			title: '',
 			rightComponent: () => {
-				return <DatabaseIcons.Oracle />;
+				return <TrashIcon />;
 			},
 			leftComponent: null,
 		},
@@ -107,7 +107,7 @@ WithIcon.args = {
 			value: 'mongodb',
 			title: '',
 			rightComponent: () => {
-				return <DatabaseIcons.MongoDB />;
+				return <TrashIcon />;
 			},
 			leftComponent: null,
 		},
@@ -115,7 +115,7 @@ WithIcon.args = {
 			value: 'mssql',
 			title: '',
 			rightComponent: () => {
-				return <DatabaseIcons.MSSql />;
+				return <TrashIcon />;
 			},
 			leftComponent: null,
 		},
