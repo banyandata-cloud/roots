@@ -20,6 +20,7 @@ import { BaseButton, Button } from '../buttons';
 import { DatePicker } from '../datePicker';
 
 const generateOptions = (optionData, theme) => {
+	const defaultDate = optionData?.defaultValue ?? null;
 	switch (optionData?.id ?? '') {
 		case 'toggle':
 			return <Toggle className={styles['toggle-body']} theme={theme} {...optionData} />;
@@ -65,7 +66,7 @@ const generateOptions = (optionData, theme) => {
 					range={optionData?.range ?? false}
 					onApply={optionData?.onApply ?? ''}
 					onClear={optionData?.onClear ?? ''}
-					value={optionData?.date ?? null}
+					value={defaultDate ?? optionData?.date ?? null}
 				/>
 			);
 		case 'custom':
