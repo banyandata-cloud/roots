@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, {
 	useMemo,
 	useState,
@@ -32,7 +31,6 @@ import Button from '../../buttons/button/Button';
 
 // eslint-disable-next-line prefer-arrow-callback
 const Dropdown = forwardRef(function Dropdown(props, inputRef) {
-	// eslint-disable-next-line object-curly-newline
 	const {
 		className,
 		popperClassName,
@@ -60,7 +58,7 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 	// for uncontrolled input
 	const [uncontrolledValue, setUncontrolledValue] = useState(value);
 
-	const { x, y, reference, floating, strategy, context } = useFloating({
+	const { x, y, refs, strategy, context } = useFloating({
 		open,
 		onOpenChange: setOpen,
 		whileElementsMounted: autoUpdate,
@@ -315,7 +313,7 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 			<div
 				data-elem='header'
 				className={styles.header}
-				ref={reference}
+				ref={refs.setReference}
 				{...getReferenceProps()}>
 				<input
 					id={id}
@@ -362,7 +360,7 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 							{...getFloatingProps({
 								'data-elem': 'body',
 								role: 'group',
-								ref: floating,
+								ref: refs.setFloating,
 								onKeyDown(event) {
 									setPointer(false);
 									if (event.key === 'Tab' && !multi) {

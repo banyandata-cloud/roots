@@ -23,24 +23,22 @@ const Tooltip = forwardRef(function Tooltip(props, propRef) {
 	const [open, setOpen] = useState(false);
 
 	// eslint-disable-next-line object-curly-newline
-	const { x, y, reference, floating, strategy, context, middlewareData, placement } = useFloating(
-		{
-			open,
-			onOpenChange: setOpen,
-			// strategy: 'fixed',
-			placement: position,
-			// Make sure the tooltip stays on the screen
-			whileElementsMounted: autoUpdate,
-			middleware: [
-				offset(12),
-				flip(),
-				shift(),
-				arrow({
-					element: arrowEl,
-				}),
-			],
-		}
-	);
+	const { x, y, refs, strategy, context, middlewareData, placement } = useFloating({
+		open,
+		onOpenChange: setOpen,
+		// strategy: 'fixed',
+		placement: position,
+		// Make sure the tooltip stays on the screen
+		whileElementsMounted: autoUpdate,
+		middleware: [
+			offset(12),
+			flip(),
+			shift(),
+			arrow({
+				element: arrowEl,
+			}),
+		],
+	});
 
 	// Event listeners to change the open state
 	const hover = useHover(context, {
@@ -59,8 +57,8 @@ const Tooltip = forwardRef(function Tooltip(props, propRef) {
 	const childrenRef = children.ref;
 
 	const ref = React.useMemo(() => {
-		return mergeRefs([reference, childrenRef, propRef]);
-	}, [reference, childrenRef]);
+		return mergeRefs([refs.setReference, childrenRef, propRef]);
+	}, [refs.setReference, childrenRef]);
 
 	const clonedChildren = cloneElement(
 		children,
@@ -86,7 +84,7 @@ const Tooltip = forwardRef(function Tooltip(props, propRef) {
 			<Popper open={open && content != null} backdrop={false} wrapperId='tooltip'>
 				<div
 					{...getFloatingProps({
-						ref: floating,
+						ref: refs.setFloating,
 						className: classes(styles.tooltip, styles[variant], className),
 						style: {
 							position: strategy,

@@ -54,11 +54,17 @@ const DatePicker = (props) => {
 	});
 
 	const datePickerFloatingReference = useFloating(
-		getFloatingReferences(openDatePicker, setOpenDatePicker)
+		getFloatingReferences({
+			open: openDatePicker,
+			onOpenChange: setOpenDatePicker,
+		})
 	);
 
 	const customRangeFloatingReference = useFloating(
-		getFloatingReferences(openCustomRange, setOpenCustomRange)
+		getFloatingReferences({
+			open: openCustomRange,
+			onOpenChange: setOpenCustomRange,
+		})
 	);
 
 	useOutsideClickListener(datePickerFloatingReference.floating, () => {
@@ -144,7 +150,7 @@ const DatePicker = (props) => {
 			{hasCustomRanges && (
 				<Button
 					data-elem='custom-header'
-					ref={customRangeFloatingReference.reference}
+					ref={customRangeFloatingReference.refs.setReference}
 					leftComponent={() => {
 						return <ClockIcon className={classes(styles.icon, styles[theme])} />;
 					}}
@@ -161,7 +167,7 @@ const DatePicker = (props) => {
 
 				<div
 					data-elem='header'
-					ref={datePickerFloatingReference.reference}
+					ref={datePickerFloatingReference.refs.setReference}
 					role='button'
 					className={classes(
 						styles.container,
@@ -221,7 +227,7 @@ const DatePicker = (props) => {
 						<div
 							{...datePickerInteractionProps.getFloatingProps({
 								role: 'group',
-								ref: datePickerFloatingReference.floating,
+								ref: datePickerFloatingReference.refs.setFloating,
 								onKeyDown(event) {
 									if (event.key === 'Tab') {
 										setOpenDatePicker(false);
@@ -244,7 +250,7 @@ const DatePicker = (props) => {
 						<div
 							{...customRangeInteractionProps.getFloatingProps({
 								role: 'group',
-								ref: customRangeFloatingReference.floating,
+								ref: customRangeFloatingReference.refs.setFloating,
 								onKeyDown(event) {
 									if (event.key === 'Tab') {
 										setOpenCustomRange(false);
