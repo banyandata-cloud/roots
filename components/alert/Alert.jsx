@@ -45,7 +45,7 @@ const Alert = (props) => {
 		}
 	}
 
-	const { floating, context } = useFloating({
+	const { refs, context } = useFloating({
 		open,
 		onOpenChange: toggle,
 	});
@@ -56,7 +56,7 @@ const Alert = (props) => {
 		<Popper open={open} className={styles.popper} id='alert-popper'>
 			<div
 				{...getFloatingProps({
-					ref: floating,
+					ref: refs.setFloating,
 					className: classes(
 						styles.root,
 						styles[color],

@@ -18,7 +18,7 @@ const BaseModal = (props) => {
 		noDismiss,
 	} = props;
 
-	const { floating, context } = useFloating({
+	const { refs, context } = useFloating({
 		open,
 		onOpenChange: toggle,
 	});
@@ -40,7 +40,7 @@ const BaseModal = (props) => {
 					<div
 						{...getFloatingProps({
 							className: classes(styles.root, className),
-							ref: floating,
+							ref: refs.setFloating,
 						})}>
 						{renderHeader && (
 							<div data-elem='header' className={styles.header}>

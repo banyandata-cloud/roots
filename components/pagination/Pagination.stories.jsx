@@ -33,7 +33,7 @@ const Template = (args) => {
 
 export const Default = Template.bind({});
 Default.args = {
-	loading: true,
+	loading: false,
 };
 Default.parameters = {
 	design: {

@@ -50,7 +50,7 @@ const Template = (args) => {
 export const Default = Template.bind({});
 Default.args = {
 	content: 'Popover Info',
-	position: 'left',
+	placement: 'top-start',
 };
 
 Default.parameters = {
