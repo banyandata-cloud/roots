@@ -5576,6 +5576,8 @@ var MagnifyingGlass = function MagnifyingGlass(props) {
     className: className,
     viewBox: "0 0 19 18",
     fill: "none",
+    width: "3rem",
+    height: "3rem",
     xmlns: "http://www.w3.org/2000/svg",
     children: [/*#__PURE__*/jsx("path", {
       d: "M8.85626 14.0625C12.1182 14.0625 14.7625 11.4182 14.7625 8.15625C14.7625 4.89432 12.1182 2.25 8.85626 2.25C5.59433 2.25 2.95001 4.89432 2.95001 8.15625C2.95001 11.4182 5.59433 14.0625 8.85626 14.0625Z",
@@ -5745,8 +5747,8 @@ var Trash = function Trash(props) {
   var className = props.className;
   return /*#__PURE__*/jsxs("svg", {
     className: className,
-    width: "14",
-    height: "15",
+    width: "3rem",
+    height: "3rem",
     viewBox: "0 0 14 15",
     fill: "none",
     xmlns: "http://www.w3.org/2000/svg",
@@ -5883,8 +5885,8 @@ var Maximize = function Maximize(props) {
   });
 };
 
-var css$13 = ".Accordion_module_root__d838df6d {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  width: 100%;\n}\n.Accordion_module_root__d838df6d > .Accordion_module_header__d838df6d[data-elem=base-cell] {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.5rem;\n  padding: 0.5rem 1rem;\n  cursor: pointer;\n}\n.Accordion_module_root__d838df6d > .Accordion_module_header__d838df6d[data-elem=base-cell] > [data-elem=component1], .Accordion_module_root__d838df6d > .Accordion_module_header__d838df6d[data-elem=base-cell] > [data-elem=component3] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.Accordion_module_root__d838df6d > .Accordion_module_header__d838df6d[data-elem=base-cell] > [data-elem=component1] .Accordion_module_icon__d838df6d, .Accordion_module_root__d838df6d > .Accordion_module_header__d838df6d[data-elem=base-cell] > [data-elem=component3] .Accordion_module_icon__d838df6d {\n  transform: rotate(-90deg);\n  width: 1rem;\n  height: 1rem;\n  fill: var(--dark-grey);\n}\n.Accordion_module_root__d838df6d > .Accordion_module_header__d838df6d[data-elem=base-cell] > [data-elem=component3] {\n  margin-left: auto;\n}\n.Accordion_module_root__d838df6d > .Accordion_module_header__d838df6d[data-elem=base-cell] .Accordion_module_title__d838df6d {\n  flex: 1 1 auto;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.Accordion_module_root__d838df6d > .Accordion_module_header__d838df6d[data-elem=base-cell]:hover {\n  background: var(--background);\n}\n.Accordion_module_root__d838df6d > .Accordion_module_header__d838df6d[data-elem=base-cell]:hover .Accordion_module_icon__d838df6d,\n.Accordion_module_root__d838df6d > .Accordion_module_header__d838df6d[data-elem=base-cell]:hover .Accordion_module_title__d838df6d {\n  color: var(--highlight);\n  fill: var(--highlight);\n}\n.Accordion_module_root__d838df6d > .Accordion_module_body__d838df6d {\n  display: none;\n  padding: 0.5rem 2.5rem;\n}\n.Accordion_module_root__d838df6d.Accordion_module_open__d838df6d > .Accordion_module_header__d838df6d[data-elem=base-cell] [data-elem=component1] .Accordion_module_icon__d838df6d {\n  transform: none;\n}\n.Accordion_module_root__d838df6d.Accordion_module_open__d838df6d > .Accordion_module_body__d838df6d {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n}\n.Accordion_module_root__d838df6d.Accordion_module_open__d838df6d > .Accordion_module_body__d838df6d > button[data-elem=base-cell] {\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  align-self: flex-end;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-end;\n  align-items: center;\n}\n.Accordion_module_root__d838df6d.Accordion_module_open__d838df6d > .Accordion_module_body__d838df6d > button[data-elem=base-cell] .Accordion_module_expand__d838df6d {\n  height: 1.5rem;\n  width: 1.5rem;\n}";
-var modules_8207625f = {"root":"Accordion_module_root__d838df6d","header":"Accordion_module_header__d838df6d","icon":"Accordion_module_icon__d838df6d","title":"Accordion_module_title__d838df6d","body":"Accordion_module_body__d838df6d","open":"Accordion_module_open__d838df6d","expand":"Accordion_module_expand__d838df6d"};
+var css$13 = ".Accordion_module_root__86aa20a7 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  width: 100%;\n}\n.Accordion_module_root__86aa20a7 > .Accordion_module_header__86aa20a7[data-elem=base-cell] {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.5rem;\n  padding: 0.5rem 1rem;\n  cursor: pointer;\n}\n.Accordion_module_root__86aa20a7 > .Accordion_module_header__86aa20a7[data-elem=base-cell] > [data-elem=component1], .Accordion_module_root__86aa20a7 > .Accordion_module_header__86aa20a7[data-elem=base-cell] > [data-elem=component3] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.Accordion_module_root__86aa20a7 > .Accordion_module_header__86aa20a7[data-elem=base-cell] > [data-elem=component1] .Accordion_module_icon__86aa20a7, .Accordion_module_root__86aa20a7 > .Accordion_module_header__86aa20a7[data-elem=base-cell] > [data-elem=component3] .Accordion_module_icon__86aa20a7 {\n  transform: rotate(-90deg);\n  width: 1rem;\n  height: 1rem;\n  fill: var(--dark-grey);\n}\n.Accordion_module_root__86aa20a7 > .Accordion_module_header__86aa20a7[data-elem=base-cell] > [data-elem=component3] {\n  margin-left: auto;\n}\n.Accordion_module_root__86aa20a7 > .Accordion_module_header__86aa20a7[data-elem=base-cell] .Accordion_module_title__86aa20a7 {\n  flex: 1 1 auto;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n          user-select: none;\n}\n.Accordion_module_root__86aa20a7 > .Accordion_module_header__86aa20a7[data-elem=base-cell]:hover {\n  background: var(--background);\n}\n.Accordion_module_root__86aa20a7 > .Accordion_module_header__86aa20a7[data-elem=base-cell]:hover .Accordion_module_icon__86aa20a7,\n.Accordion_module_root__86aa20a7 > .Accordion_module_header__86aa20a7[data-elem=base-cell]:hover .Accordion_module_title__86aa20a7 {\n  color: var(--highlight);\n  fill: var(--highlight);\n}\n.Accordion_module_root__86aa20a7 > .Accordion_module_body__86aa20a7 {\n  display: none;\n  padding: 0.5rem 2.5rem;\n}\n.Accordion_module_root__86aa20a7.Accordion_module_open__86aa20a7 > .Accordion_module_header__86aa20a7[data-elem=base-cell] [data-elem=component1] .Accordion_module_icon__86aa20a7 {\n  transform: none;\n}\n.Accordion_module_root__86aa20a7.Accordion_module_open__86aa20a7 > .Accordion_module_body__86aa20a7 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n}\n.Accordion_module_root__86aa20a7.Accordion_module_open__86aa20a7 > .Accordion_module_body__86aa20a7 > button[data-elem=base-cell] {\n  width: -moz-fit-content;\n  width: fit-content;\n  align-self: flex-end;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-end;\n  align-items: center;\n}\n.Accordion_module_root__86aa20a7.Accordion_module_open__86aa20a7 > .Accordion_module_body__86aa20a7 > button[data-elem=base-cell] .Accordion_module_expand__86aa20a7 {\n  height: 1.5rem;\n  width: 1.5rem;\n}";
+var modules_8207625f = {"root":"Accordion_module_root__86aa20a7","header":"Accordion_module_header__86aa20a7","icon":"Accordion_module_icon__86aa20a7","title":"Accordion_module_title__86aa20a7","body":"Accordion_module_body__86aa20a7","open":"Accordion_module_open__86aa20a7","expand":"Accordion_module_expand__86aa20a7"};
 n(css$13,{});
 
 var Accordion = function Accordion(props) {
@@ -11086,7 +11088,7 @@ var Alert = function Alert(props) {
       open: open,
       onOpenChange: toggle
     }),
-    floating = _useFloating.floating,
+    refs = _useFloating.refs,
     context = _useFloating.context;
   var _useInteractions = useInteractions([useDismiss(context)]),
     getFloatingProps = _useInteractions.getFloatingProps;
@@ -11095,7 +11097,7 @@ var Alert = function Alert(props) {
     className: modules_3a764ea3.popper,
     id: "alert-popper",
     children: /*#__PURE__*/jsxs("div", _objectSpread2(_objectSpread2({}, getFloatingProps({
-      ref: floating,
+      ref: refs.setFloating,
       className: classes(modules_3a764ea3.root, modules_3a764ea3[color], modules_3a764ea3["border-".concat(border)], shadow ? modules_3a764ea3.shadow : '', modules_3a764ea3["position-".concat(position)])
     })), {}, {
       children: [/*#__PURE__*/jsxs("div", {
@@ -45201,6 +45203,9 @@ var Popover = function Popover(props) {
     theme = props.theme,
     middlewareOptions = props.middlewareOptions;
   var _useFloating = useFloating({
+      elements: {
+        reference: anchorEl
+      },
       open: open,
       onOpenChange: setOpen,
       placement: placement,
@@ -45225,10 +45230,9 @@ var Popover = function Popover(props) {
     }),
     x = _useFloating.x,
     y = _useFloating.y,
-    reference = _useFloating.reference,
-    floating = _useFloating.floating,
     strategy = _useFloating.strategy,
-    context = _useFloating.context;
+    context = _useFloating.context,
+    refs = _useFloating.refs;
   var _useInteractions = useInteractions([useDismiss(context)]),
     getFloatingProps = _useInteractions.getFloatingProps;
   useEffect(function () {
@@ -45236,15 +45240,12 @@ var Popover = function Popover(props) {
       onClose();
     }
   }, [open]);
-  useLayoutEffect(function () {
-    reference(anchorEl);
-  }, [anchorEl]);
   return /*#__PURE__*/jsx(Popper, {
     open: open,
     wrapperId: "popover",
     transparent: transparent,
     children: /*#__PURE__*/jsx("div", _objectSpread2(_objectSpread2({}, getFloatingProps({
-      ref: floating,
+      ref: refs.setFloating,
       style: {
         position: strategy,
         top: y !== null && y !== void 0 ? y : 0,
@@ -45609,7 +45610,6 @@ n(css$S,{});
 
 var Dropdown = /*#__PURE__*/forwardRef(function Dropdown(props, inputRef) {
   var _selectedOptions$map, _ref2, _selectedOptions$;
-  // eslint-disable-next-line object-curly-newline
   var className = props.className,
     popperClassName = props.popperClassName,
     value = props.value,
@@ -45669,8 +45669,7 @@ var Dropdown = /*#__PURE__*/forwardRef(function Dropdown(props, inputRef) {
     }),
     x = _useFloating.x,
     y = _useFloating.y,
-    reference = _useFloating.reference,
-    floating = _useFloating.floating,
+    refs = _useFloating.refs,
     strategy = _useFloating.strategy,
     context = _useFloating.context;
   var _useInteractions = useInteractions([useClick(context, {
@@ -45872,7 +45871,7 @@ var Dropdown = /*#__PURE__*/forwardRef(function Dropdown(props, inputRef) {
     }), /*#__PURE__*/jsxs("div", _objectSpread2(_objectSpread2({
       "data-elem": "header",
       className: modules_1b90f5ea.header,
-      ref: reference
+      ref: refs.setReference
     }, getReferenceProps()), {}, {
       children: [/*#__PURE__*/jsx("input", {
         id: id,
@@ -45914,7 +45913,7 @@ var Dropdown = /*#__PURE__*/forwardRef(function Dropdown(props, inputRef) {
         children: /*#__PURE__*/jsxs("ul", _objectSpread2(_objectSpread2({}, getFloatingProps({
           'data-elem': 'body',
           role: 'group',
-          ref: floating,
+          ref: refs.setFloating,
           onKeyDown: function onKeyDown(event) {
             setPointer(false);
             if (event.key === 'Tab' && !multi) {
@@ -46795,8 +46794,8 @@ var Body = function Body(props) {
   });
 };
 
-var css$J = ".Footer_module_root__4cf0f510 {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-items: stretch;\n  margin-inline: 1rem;\n}\n.Footer_module_root__4cf0f510 .Footer_module_apply__4cf0f510 {\n  margin-top: 0.5rem;\n  width: 100%;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n          user-select: none;\n}\n.Footer_module_root__4cf0f510 .Footer_module_timePicker__4cf0f510 {\n  margin-bottom: 1.25rem;\n}\n\n.Footer_module_selectedDate__4cf0f510 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  gap: 1.125rem;\n  background: var(--white);\n  border: 0.0625rem solid var(--grey4);\n  border-radius: 0.25rem;\n}\n.Footer_module_selectedDate__4cf0f510 .Footer_module_date__4cf0f510 {\n  font-weight: 500;\n  font-size: 0.875rem;\n  line-height: 1.3125rem;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.Footer_module_selectedDate__4cf0f510 .Footer_module_date__4cf0f510 .Footer_module_cross__4cf0f510 {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.Footer_module_selectedDate__4cf0f510 .Footer_module_date__4cf0f510 .Footer_module_value__4cf0f510 {\n  font-weight: 400;\n  padding-right: 0.7rem;\n  border-right: 1px var(--grey3) solid;\n}\n\n.Footer_module_dateRanges__4cf0f510 {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-items: stretch;\n  margin-top: 0.5rem;\n}\n.Footer_module_dateRanges__4cf0f510 .Footer_module_dateRange__4cf0f510 {\n  display: flex;\n  align-items: center;\n  padding: 0.875rem 1rem;\n  gap: 1.125rem;\n  cursor: pointer;\n}\n.Footer_module_dateRanges__4cf0f510 .Footer_module_dateRange__4cf0f510:hover {\n  background-color: var(--background);\n}\n.Footer_module_dateRanges__4cf0f510 .Footer_module_dateRange__4cf0f510 span {\n  font-weight: 400;\n  font-size: 0.875rem;\n  line-height: 1.3125rem;\n  color: var(--black);\n}\n.Footer_module_dateRanges__4cf0f510 .Footer_module_selected__4cf0f510 {\n  background-color: var(--background);\n}";
-var modules_b490bd5d = {"root":"Footer_module_root__4cf0f510","apply":"Footer_module_apply__4cf0f510","time-picker":"Footer_module_timePicker__4cf0f510","selected-date":"Footer_module_selectedDate__4cf0f510","date":"Footer_module_date__4cf0f510","cross":"Footer_module_cross__4cf0f510","value":"Footer_module_value__4cf0f510","date-ranges":"Footer_module_dateRanges__4cf0f510","date-range":"Footer_module_dateRange__4cf0f510","selected":"Footer_module_selected__4cf0f510"};
+var css$J = ".Footer_module_root__2073c547 {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-items: stretch;\n  margin-inline: 1rem;\n}\n.Footer_module_root__2073c547 .Footer_module_apply__2073c547 {\n  margin-top: 0.5rem;\n  width: 100%;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n          user-select: none;\n}\n.Footer_module_root__2073c547 .Footer_module_timePicker__2073c547 {\n  margin-bottom: 1.25rem;\n}\n\n.Footer_module_selectedDate__2073c547 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  gap: 1.125rem;\n  background: var(--white);\n  border: 0.0625rem solid var(--grey4);\n  border-radius: 0.25rem;\n}\n.Footer_module_selectedDate__2073c547 .Footer_module_date__2073c547 {\n  font-weight: 500;\n  font-size: 0.875rem;\n  line-height: 1.3125rem;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.Footer_module_selectedDate__2073c547 .Footer_module_date__2073c547 .Footer_module_cross__2073c547 {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.Footer_module_selectedDate__2073c547 .Footer_module_date__2073c547 .Footer_module_value__2073c547 {\n  font-weight: 400;\n  padding-right: 0.7rem;\n  border-right: 1px var(--grey3) solid;\n}\n\n.Footer_module_dateRanges__2073c547 {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-items: stretch;\n  margin-top: 0.5rem;\n}\n.Footer_module_dateRanges__2073c547 .Footer_module_dateRange__2073c547 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  padding: 0.875rem 1rem;\n  gap: 1.125rem;\n  cursor: pointer;\n}\n.Footer_module_dateRanges__2073c547 .Footer_module_dateRange__2073c547:hover {\n  background-color: var(--background);\n}\n.Footer_module_dateRanges__2073c547 .Footer_module_dateRange__2073c547 span {\n  font-weight: 400;\n  font-size: 0.875rem;\n  line-height: 1.3125rem;\n  color: var(--black);\n}\n.Footer_module_dateRanges__2073c547 .Footer_module_selected__2073c547 {\n  background-color: var(--background);\n}";
+var modules_b490bd5d = {"root":"Footer_module_root__2073c547","apply":"Footer_module_apply__2073c547","time-picker":"Footer_module_timePicker__2073c547","selected-date":"Footer_module_selectedDate__2073c547","date":"Footer_module_date__2073c547","cross":"Footer_module_cross__2073c547","value":"Footer_module_value__2073c547","date-ranges":"Footer_module_dateRanges__2073c547","date-range":"Footer_module_dateRange__2073c547","selected":"Footer_module_selected__2073c547"};
 n(css$J,{});
 
 /* eslint-disable no-nested-ternary */
@@ -47064,16 +47063,22 @@ var dateRanges$1 = function dateRanges() {
   }];
 };
 
-var getFloatingReferences = function getFloatingReferences(open, onOpenChange) {
+var getFloatingReferences = function getFloatingReferences(_ref) {
+  var open = _ref.open,
+    onOpenChange = _ref.onOpenChange,
+    anchor = _ref.anchor;
   return {
     open: open,
+    elements: {
+      reference: anchor
+    },
     onOpenChange: onOpenChange,
     whileElementsMounted: autoUpdate,
     middleware: [size({
-      apply: function apply(_ref) {
-        var rects = _ref.rects,
-          availableHeight = _ref.availableHeight,
-          elements = _ref.elements;
+      apply: function apply(_ref2) {
+        var rects = _ref2.rects,
+          availableHeight = _ref2.availableHeight,
+          elements = _ref2.elements;
         Object.assign(elements.floating.style, {
           width: "".concat(rects.reference.width, "px"),
           minWidth: 'fit-content',
@@ -47088,9 +47093,9 @@ var getFloatingReferences = function getFloatingReferences(open, onOpenChange) {
     })]
   };
 };
-var isMaxRangeExceeded = function isMaxRangeExceeded(_ref2) {
-  var maxRange = _ref2.maxRange,
-    selectedRange = _ref2.selectedRange;
+var isMaxRangeExceeded = function isMaxRangeExceeded(_ref3) {
+  var maxRange = _ref3.maxRange,
+    selectedRange = _ref3.selectedRange;
   if (maxRange === null) {
     return false;
   }
@@ -47125,10 +47130,10 @@ var getDateRangeTag = function getDateRangeTag() {
   }
   return 'day';
 };
-var getDatePickerDisplayValue = function getDatePickerDisplayValue(_ref3) {
-  var value = _ref3.value,
-    rangePicker = _ref3.rangePicker,
-    singlePicker = _ref3.singlePicker;
+var getDatePickerDisplayValue = function getDatePickerDisplayValue(_ref4) {
+  var value = _ref4.value,
+    rangePicker = _ref4.rangePicker,
+    singlePicker = _ref4.singlePicker;
   if (rangePicker) {
     var _startDate$getMonth$t, _endDate$getMonth$toS;
     var startDate = fromUnixTime(value[0]);
@@ -47250,21 +47255,15 @@ var DatePicker = function DatePicker(props) {
     _useState6 = _slicedToArray(_useState5, 2),
     selectedRange = _useState6[0],
     setSelectedRange = _useState6[1];
-  var _useState7 = useState(function () {
-      return null;
-    }),
+  var _useState7 = useState(null),
     _useState8 = _slicedToArray(_useState7, 2),
     fixedRange = _useState8[0],
     setFixedRange = _useState8[1];
-  var _useState9 = useState(function () {
-      return '';
-    }),
+  var _useState9 = useState(''),
     _useState10 = _slicedToArray(_useState9, 2),
     selectedDate = _useState10[0],
     setSelectedDate = _useState10[1];
-  var _useState11 = useState(function () {
-      return '';
-    }),
+  var _useState11 = useState(''),
     _useState12 = _slicedToArray(_useState11, 2),
     error = _useState12[0],
     setError = _useState12[1];
@@ -47274,8 +47273,14 @@ var DatePicker = function DatePicker(props) {
     rangePicker: range && (value === null || value === void 0 || (_value$filter = value.filter(Boolean)) === null || _value$filter === void 0 ? void 0 : _value$filter.length) > 0,
     singlePicker: !range && value
   });
-  var datePickerFloatingReference = useFloating(getFloatingReferences(openDatePicker, setOpenDatePicker));
-  var customRangeFloatingReference = useFloating(getFloatingReferences(openCustomRange, setOpenCustomRange));
+  var datePickerFloatingReference = useFloating(getFloatingReferences({
+    open: openDatePicker,
+    onOpenChange: setOpenDatePicker
+  }));
+  var customRangeFloatingReference = useFloating(getFloatingReferences({
+    open: openCustomRange,
+    onOpenChange: setOpenCustomRange
+  }));
   useOutsideClickListener(datePickerFloatingReference.floating, function () {
     return setOpenDatePicker(false);
   });
@@ -47344,7 +47349,7 @@ var DatePicker = function DatePicker(props) {
     ref: datePickerRef,
     children: [hasCustomRanges && /*#__PURE__*/jsx(Button, _objectSpread2({
       "data-elem": "custom-header",
-      ref: customRangeFloatingReference.reference,
+      ref: customRangeFloatingReference.refs.setReference,
       leftComponent: function leftComponent() {
         return /*#__PURE__*/jsx(Clock, {
           className: classes(modules_5b831cd1.icon, modules_5b831cd1[theme])
@@ -47359,7 +47364,7 @@ var DatePicker = function DatePicker(props) {
         children: label
       }), /*#__PURE__*/jsxs("div", _objectSpread2(_objectSpread2({
         "data-elem": "header",
-        ref: datePickerFloatingReference.reference,
+        ref: datePickerFloatingReference.refs.setReference,
         role: "button",
         className: classes(modules_5b831cd1.container, disabled ? modules_5b831cd1.disabled : '', openDatePicker ? modules_5b831cd1.open : '', error ? modules_5b831cd1.error : '', customRanges ? modules_5b831cd1['with-custom'] : '', modules_5b831cd1[theme])
       }, datePickerInteractionProps.getReferenceProps()), {}, {
@@ -47405,7 +47410,7 @@ var DatePicker = function DatePicker(props) {
         wrapperid: "datePicker-popper",
         children: openDatePicker && /*#__PURE__*/jsx("div", _objectSpread2(_objectSpread2({}, datePickerInteractionProps.getFloatingProps({
           role: 'group',
-          ref: datePickerFloatingReference.floating,
+          ref: datePickerFloatingReference.refs.setFloating,
           onKeyDown: function onKeyDown(event) {
             if (event.key === 'Tab') {
               setOpenDatePicker(false);
@@ -47425,7 +47430,7 @@ var DatePicker = function DatePicker(props) {
         wrapperid: "custom-range-popper",
         children: openCustomRange && /*#__PURE__*/jsx("div", _objectSpread2(_objectSpread2({}, customRangeInteractionProps.getFloatingProps({
           role: 'group',
-          ref: customRangeFloatingReference.floating,
+          ref: customRangeFloatingReference.refs.setFloating,
           onKeyDown: function onKeyDown(event) {
             if (event.key === 'Tab') {
               setOpenCustomRange(false);
@@ -47721,7 +47726,7 @@ var BaseModal = function BaseModal(props) {
       open: open,
       onOpenChange: toggle
     }),
-    floating = _useFloating.floating,
+    refs = _useFloating.refs,
     context = _useFloating.context;
   var _useInteractions = useInteractions([useDismiss(context, {
       enabled: !noDismiss
@@ -47736,7 +47741,7 @@ var BaseModal = function BaseModal(props) {
       context: context,
       children: /*#__PURE__*/jsxs("div", _objectSpread2(_objectSpread2({}, getFloatingProps({
         className: classes(modules_f23ae002.root, className),
-        ref: floating
+        ref: refs.setFloating
       })), {}, {
         children: [renderHeader && /*#__PURE__*/jsx("div", {
           "data-elem": "header",
@@ -47996,8 +48001,8 @@ function getPagination(curr, total, limit) {
   return pages;
 }
 
-var css$B = ".Pagination_module_root__993674e2 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: stretch;\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n  gap: 0.75rem;\n  padding: 0.625rem 2.125rem;\n  background: var(--dark-grey);\n  margin-top: auto;\n  width: 100%;\n  height: 3.5rem;\n  overflow: auto;\n  transition-property: background-color, color, bottom, width;\n  transition-duration: 0.33s;\n  transition-timing-function: ease-out;\n}\n.Pagination_module_root__993674e2::-webkit-scrollbar {\n  display: none;\n}\n.Pagination_module_root__993674e2.Pagination_module_floating__993674e2 {\n  background: var(--dark-grey-o-85);\n  position: absolute;\n  border-radius: 6.25rem;\n  width: 82%;\n  bottom: 3rem;\n}\n.Pagination_module_root__993674e2 .Pagination_module_rowSwitcher__993674e2,\n.Pagination_module_root__993674e2 .Pagination_module_jumpToPage__993674e2,\n.Pagination_module_root__993674e2 .Pagination_module_form__993674e2 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  height: 100%;\n}\n.Pagination_module_root__993674e2 .Pagination_module_rowSwitcher__993674e2 {\n  display: none;\n  flex: 0 1 15%;\n  background-color: transparent;\n  padding: 0;\n  height: 100%;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__993674e2 .Pagination_module_rowSwitcher__993674e2 {\n    display: flex;\n    flex-direction: row;\n    justify-content: space-between;\n    align-items: center;\n  }\n}\n.Pagination_module_root__993674e2 .Pagination_module_rowSwitcher__993674e2 > [data-elem=component2] {\n  flex: 0 1 auto;\n  height: 100%;\n}\n.Pagination_module_root__993674e2 .Pagination_module_rowSwitcher__993674e2 .Pagination_module_rowSwitcherHandle__993674e2 {\n  gap: 0.75rem;\n  background-color: var(--grey);\n  padding: 0;\n  border-radius: 0.25rem;\n  height: 100%;\n  width: 100%;\n}\n.Pagination_module_root__993674e2 .Pagination_module_rowSwitcher__993674e2 .Pagination_module_rowSwitcherHandle__993674e2 > [data-elem*=component] {\n  overflow: hidden;\n}\n.Pagination_module_root__993674e2 .Pagination_module_rowSwitcher__993674e2 .Pagination_module_rowSwitcherHandle__993674e2 > [data-elem=component2] {\n  display: flex;\n  flex: 0 0 auto;\n  height: 100%;\n}\n.Pagination_module_root__993674e2 .Pagination_module_rowSwitcher__993674e2 .Pagination_module_rowSwitcherHandle__993674e2 > [data-elem=component2]::before {\n  content: \"\";\n  margin: auto;\n  background: var(--white);\n  width: 0.5px;\n  height: 50%;\n}\n.Pagination_module_root__993674e2 .Pagination_module_rowSwitcher__993674e2 .Pagination_module_text__993674e2 {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  height: 100%;\n  display: block;\n  padding: 0.5rem;\n  font-size: 0.875rem;\n  font-weight: 500;\n  color: var(--white);\n}\n.Pagination_module_root__993674e2 .Pagination_module_rowSwitcher__993674e2 .Pagination_module_dropdown__993674e2 {\n  height: 100%;\n}\n.Pagination_module_root__993674e2 .Pagination_module_rowSwitcher__993674e2 .Pagination_module_dropdown__993674e2 > [data-elem=header] {\n  height: 100%;\n}\n.Pagination_module_root__993674e2 .Pagination_module_rowSwitcher__993674e2 .Pagination_module_dropdown__993674e2 > [data-elem=header] > [data-elem=select] {\n  height: 2.375rem;\n  max-height: 100%;\n  width: auto;\n  min-width: -webkit-fit-content;\n  min-width: -moz-fit-content;\n  min-width: fit-content;\n  padding: 0.625rem;\n  background-color: var(--grey);\n  border: none;\n}\n.Pagination_module_root__993674e2 .Pagination_module_rowSwitcher__993674e2 .Pagination_module_dropdown__993674e2 > [data-elem=header] > [data-elem=select] > [data-elem=placeholder] {\n  color: var(--white);\n  font-size: 0.875rem;\n}\n.Pagination_module_root__993674e2 .Pagination_module_rowSwitcher__993674e2 .Pagination_module_dropdown__993674e2 > [data-elem=header] > [data-elem=select] > svg {\n  fill: var(--white);\n  width: 0.813rem;\n  height: 0.813rem;\n}\n.Pagination_module_root__993674e2 .Pagination_module_pageNumbers__993674e2 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  gap: 1.25rem;\n  flex: 1 1 100%;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__993674e2 .Pagination_module_pageNumbers__993674e2 {\n    flex: 1 1 40%;\n  }\n}\n.Pagination_module_root__993674e2 .Pagination_module_pageNumbers__993674e2 > .Pagination_module_button__993674e2.Pagination_module_disable__993674e2 {\n  pointer-events: none;\n}\n.Pagination_module_root__993674e2 .Pagination_module_pageNumbers__993674e2 > .Pagination_module_button__993674e2 [data-elem=title] {\n  color: var(--white);\n}\n.Pagination_module_root__993674e2 .Pagination_module_pageNumbers__993674e2 > .Pagination_module_button__993674e2 .Pagination_module_icon__993674e2 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--white);\n}\n.Pagination_module_root__993674e2 .Pagination_module_pageNumbers__993674e2 > .Pagination_module_pageSelect__993674e2 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  gap: 0.625rem;\n}\n.Pagination_module_root__993674e2 .Pagination_module_pageNumbers__993674e2 > .Pagination_module_pageSelect__993674e2 .Pagination_module_number__993674e2 {\n  cursor: pointer;\n  border-radius: 50%;\n  background-color: #e0e0e0;\n  color: var(--black);\n  width: 2.313rem;\n  line-height: 2.313rem;\n  text-align: center;\n  font-size: 1rem;\n  border: 1px solid transparent;\n}\n.Pagination_module_root__993674e2 .Pagination_module_pageNumbers__993674e2 > .Pagination_module_pageSelect__993674e2 .Pagination_module_number__993674e2:not([data-active=true]) {\n  display: none;\n}\n@media (min-width: 768px) {\n  .Pagination_module_root__993674e2 .Pagination_module_pageNumbers__993674e2 > .Pagination_module_pageSelect__993674e2 .Pagination_module_number__993674e2:not([data-active=true]) {\n    display: block;\n  }\n}\n.Pagination_module_root__993674e2 .Pagination_module_pageNumbers__993674e2 > .Pagination_module_pageSelect__993674e2 .Pagination_module_number__993674e2:hover {\n  border: 1px solid var(--highlight);\n  color: var(--highlight);\n  background: var(--background);\n}\n.Pagination_module_root__993674e2 .Pagination_module_pageNumbers__993674e2 > .Pagination_module_pageSelect__993674e2 .Pagination_module_number__993674e2.Pagination_module_active__993674e2 {\n  background-color: var(--highlight);\n  color: var(--white);\n}\n.Pagination_module_root__993674e2 .Pagination_module_form__993674e2 {\n  display: none;\n  padding: 0;\n  flex: 0 1 30%;\n  background: transparent;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__993674e2 .Pagination_module_form__993674e2 {\n    display: flex;\n    flex-direction: row;\n    justify-content: center;\n    align-items: center;\n  }\n}\n.Pagination_module_root__993674e2 .Pagination_module_form__993674e2 > [data-elem*=component] {\n  width: 100%;\n  height: 100%;\n}\n.Pagination_module_root__993674e2 .Pagination_module_form__993674e2 > [data-elem*=component] > * {\n  height: 100%;\n}\n.Pagination_module_root__993674e2 .Pagination_module_form__993674e2 > [data-elem*=component] > form {\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  margin-left: auto;\n}\n.Pagination_module_root__993674e2 .Pagination_module_form__993674e2 .Pagination_module_jumpToPage__993674e2 {\n  width: 100%;\n  background: transparent;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: stretch;\n  gap: 0rem;\n  padding: 0;\n  height: 100%;\n}\n.Pagination_module_root__993674e2 .Pagination_module_form__993674e2 .Pagination_module_jumpToPage__993674e2 > [data-elem*=component] {\n  overflow: hidden;\n  height: 100%;\n}\n.Pagination_module_root__993674e2 .Pagination_module_form__993674e2 .Pagination_module_jumpToPage__993674e2 .Pagination_module_inputbox__993674e2 {\n  max-width: 100%;\n  height: 100%;\n}\n.Pagination_module_root__993674e2 .Pagination_module_form__993674e2 .Pagination_module_jumpToPage__993674e2 .Pagination_module_inputbox__993674e2 > label {\n  height: 100%;\n}\n.Pagination_module_root__993674e2 .Pagination_module_form__993674e2 .Pagination_module_jumpToPage__993674e2 .Pagination_module_inputbox__993674e2 > label > [data-elem=base-cell] {\n  border-radius: 0.313rem;\n  background-color: transparent;\n  color: var(--white);\n  border-color: var(--grey1);\n  border-radius: 0.25rem 0 0 0.25rem;\n  height: 100%;\n  width: 10rem;\n  flex: 1;\n}\n.Pagination_module_root__993674e2 .Pagination_module_form__993674e2 .Pagination_module_jumpToPage__993674e2 .Pagination_module_inputbox__993674e2 > label > [data-elem=base-cell] .Pagination_module_icon__993674e2 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--grey1);\n}\n.Pagination_module_root__993674e2 .Pagination_module_form__993674e2 .Pagination_module_jumpToPage__993674e2 .Pagination_module_inputbox__993674e2 > label > [data-elem=base-cell] > [data-elem=component2] {\n  height: 100%;\n}\n.Pagination_module_root__993674e2 .Pagination_module_form__993674e2 .Pagination_module_jumpToPage__993674e2 .Pagination_module_inputbox__993674e2 > label > [data-elem=base-cell] [data-elem=input] {\n  text-align: center;\n  color: var(--white);\n  background-color: transparent;\n  border: none;\n  height: 100%;\n  width: 100%;\n}\n.Pagination_module_root__993674e2 .Pagination_module_form__993674e2 .Pagination_module_jumpToPage__993674e2 .Pagination_module_button__993674e2 {\n  border-radius: 0rem 0.25rem 0.25rem 0rem;\n  background-color: var(--grey1);\n  padding: 0.75rem 0.5rem;\n  height: 100%;\n}\n.Pagination_module_root__993674e2 .Pagination_module_form__993674e2 .Pagination_module_jumpToPage__993674e2 .Pagination_module_button__993674e2 .Pagination_module_icon__993674e2 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--white);\n  flex-shrink: 0;\n}\n.Pagination_module_root__993674e2 .Pagination_module_totalData__993674e2 {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  display: none;\n  margin: auto;\n  color: var(--white);\n  flex: 0 1 15%;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__993674e2 .Pagination_module_totalData__993674e2 {\n    display: inline;\n  }\n}\n.Pagination_module_root__993674e2.Pagination_module_noTotalData__993674e2 .Pagination_module_rowSwitcher__993674e2 {\n  flex: 0 1 20%;\n}\n.Pagination_module_root__993674e2.Pagination_module_noTotalData__993674e2 .Pagination_module_jumpToPage__993674e2 {\n  flex: 1 1 60%;\n}\n.Pagination_module_root__993674e2.Pagination_module_noTotalData__993674e2 .Pagination_module_form__993674e2 {\n  flex: 0 1 20%;\n}";
-var modules_a3d40e77 = {"root":"Pagination_module_root__993674e2","floating":"Pagination_module_floating__993674e2","row-switcher":"Pagination_module_rowSwitcher__993674e2","jump-to-page":"Pagination_module_jumpToPage__993674e2","form":"Pagination_module_form__993674e2","row-switcher-handle":"Pagination_module_rowSwitcherHandle__993674e2","text":"Pagination_module_text__993674e2","dropdown":"Pagination_module_dropdown__993674e2","page-numbers":"Pagination_module_pageNumbers__993674e2","button":"Pagination_module_button__993674e2","disable":"Pagination_module_disable__993674e2","icon":"Pagination_module_icon__993674e2","pageSelect":"Pagination_module_pageSelect__993674e2","number":"Pagination_module_number__993674e2","active":"Pagination_module_active__993674e2","inputbox":"Pagination_module_inputbox__993674e2","total-data":"Pagination_module_totalData__993674e2","no-total-data":"Pagination_module_noTotalData__993674e2"};
+var css$B = ".Pagination_module_root__2305e5f8 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: stretch;\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n  gap: 0.75rem;\n  padding: 0.625rem 2.125rem;\n  background: var(--dark-grey);\n  margin-top: auto;\n  width: 100%;\n  height: 3.5rem;\n  overflow: auto;\n  transition-property: background-color, color, bottom, width;\n  transition-duration: 0.33s;\n  transition-timing-function: ease-out;\n}\n.Pagination_module_root__2305e5f8::-webkit-scrollbar {\n  display: none;\n}\n.Pagination_module_root__2305e5f8.Pagination_module_floating__2305e5f8 {\n  background: var(--dark-grey-o-85);\n  position: absolute;\n  border-radius: 6.25rem;\n  width: 82%;\n  bottom: 3rem;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_rowSwitcher__2305e5f8,\n.Pagination_module_root__2305e5f8 .Pagination_module_jumpToPage__2305e5f8,\n.Pagination_module_root__2305e5f8 .Pagination_module_form__2305e5f8 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  height: 100%;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_rowSwitcher__2305e5f8 {\n  display: none;\n  flex: 0 1 15%;\n  background-color: transparent;\n  padding: 0;\n  height: 100%;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__2305e5f8 .Pagination_module_rowSwitcher__2305e5f8 {\n    display: flex;\n    flex-direction: row;\n    justify-content: space-between;\n    align-items: center;\n  }\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_rowSwitcher__2305e5f8 > [data-elem=component2] {\n  flex: 0 1 auto;\n  height: 100%;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_rowSwitcher__2305e5f8 .Pagination_module_rowSwitcherHandle__2305e5f8 {\n  gap: 0.75rem;\n  background-color: var(--grey);\n  padding: 0;\n  border-radius: 0.25rem;\n  height: 100%;\n  width: 100%;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_rowSwitcher__2305e5f8 .Pagination_module_rowSwitcherHandle__2305e5f8 > [data-elem*=component] {\n  overflow: hidden;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_rowSwitcher__2305e5f8 .Pagination_module_rowSwitcherHandle__2305e5f8 > [data-elem=component2] {\n  display: flex;\n  flex: 0 0 auto;\n  height: 100%;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_rowSwitcher__2305e5f8 .Pagination_module_rowSwitcherHandle__2305e5f8 > [data-elem=component2]::before {\n  content: \"\";\n  margin: auto;\n  background: var(--white);\n  width: 0.5px;\n  height: 50%;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_rowSwitcher__2305e5f8 .Pagination_module_text__2305e5f8 {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  height: 100%;\n  display: block;\n  padding: 0.5rem;\n  font-size: 0.875rem;\n  font-weight: 500;\n  color: var(--white);\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_rowSwitcher__2305e5f8 .Pagination_module_dropdown__2305e5f8 {\n  height: 100%;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_rowSwitcher__2305e5f8 .Pagination_module_dropdown__2305e5f8 > [data-elem=header] {\n  height: 100%;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_rowSwitcher__2305e5f8 .Pagination_module_dropdown__2305e5f8 > [data-elem=header] > [data-elem=select] {\n  height: 2.375rem;\n  max-height: 100%;\n  width: auto;\n  min-width: -moz-fit-content;\n  min-width: fit-content;\n  padding: 0.625rem;\n  background-color: var(--grey);\n  border: none;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_rowSwitcher__2305e5f8 .Pagination_module_dropdown__2305e5f8 > [data-elem=header] > [data-elem=select] > [data-elem=placeholder] {\n  color: var(--white);\n  font-size: 0.875rem;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_rowSwitcher__2305e5f8 .Pagination_module_dropdown__2305e5f8 > [data-elem=header] > [data-elem=select] > svg {\n  fill: var(--white);\n  width: 0.813rem;\n  height: 0.813rem;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_pageNumbers__2305e5f8 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  gap: 1.25rem;\n  flex: 1 1 100%;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__2305e5f8 .Pagination_module_pageNumbers__2305e5f8 {\n    flex: 1 1 40%;\n  }\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_pageNumbers__2305e5f8 > .Pagination_module_button__2305e5f8.Pagination_module_disable__2305e5f8 {\n  pointer-events: none;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_pageNumbers__2305e5f8 > .Pagination_module_button__2305e5f8 [data-elem=title] {\n  color: var(--white);\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_pageNumbers__2305e5f8 > .Pagination_module_button__2305e5f8 .Pagination_module_icon__2305e5f8 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--white);\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_pageNumbers__2305e5f8 > .Pagination_module_pageSelect__2305e5f8 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  gap: 0.625rem;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_pageNumbers__2305e5f8 > .Pagination_module_pageSelect__2305e5f8 .Pagination_module_number__2305e5f8 {\n  cursor: pointer;\n  border-radius: 50%;\n  background-color: #e0e0e0;\n  color: var(--black);\n  width: 2.313rem;\n  line-height: 2.313rem;\n  text-align: center;\n  font-size: 1rem;\n  border: 1px solid transparent;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_pageNumbers__2305e5f8 > .Pagination_module_pageSelect__2305e5f8 .Pagination_module_number__2305e5f8:not([data-active=true]) {\n  display: none;\n}\n@media (min-width: 768px) {\n  .Pagination_module_root__2305e5f8 .Pagination_module_pageNumbers__2305e5f8 > .Pagination_module_pageSelect__2305e5f8 .Pagination_module_number__2305e5f8:not([data-active=true]) {\n    display: block;\n  }\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_pageNumbers__2305e5f8 > .Pagination_module_pageSelect__2305e5f8 .Pagination_module_number__2305e5f8:hover {\n  border: 1px solid var(--highlight);\n  color: var(--highlight);\n  background: var(--background);\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_pageNumbers__2305e5f8 > .Pagination_module_pageSelect__2305e5f8 .Pagination_module_number__2305e5f8.Pagination_module_active__2305e5f8 {\n  background-color: var(--highlight);\n  color: var(--white);\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_form__2305e5f8 {\n  display: none;\n  padding: 0;\n  flex: 0 1 30%;\n  background: transparent;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__2305e5f8 .Pagination_module_form__2305e5f8 {\n    display: flex;\n    flex-direction: row;\n    justify-content: center;\n    align-items: center;\n  }\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_form__2305e5f8 > [data-elem*=component] {\n  width: 100%;\n  height: 100%;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_form__2305e5f8 > [data-elem*=component] > * {\n  height: 100%;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_form__2305e5f8 > [data-elem*=component] > form {\n  width: -moz-fit-content;\n  width: fit-content;\n  margin-left: auto;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_form__2305e5f8 .Pagination_module_jumpToPage__2305e5f8 {\n  width: 100%;\n  background: transparent;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: stretch;\n  gap: 0rem;\n  padding: 0;\n  height: 100%;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_form__2305e5f8 .Pagination_module_jumpToPage__2305e5f8 > [data-elem*=component] {\n  overflow: hidden;\n  height: 100%;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_form__2305e5f8 .Pagination_module_jumpToPage__2305e5f8 .Pagination_module_inputbox__2305e5f8 {\n  max-width: 100%;\n  height: 100%;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_form__2305e5f8 .Pagination_module_jumpToPage__2305e5f8 .Pagination_module_inputbox__2305e5f8 > label {\n  height: 100%;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_form__2305e5f8 .Pagination_module_jumpToPage__2305e5f8 .Pagination_module_inputbox__2305e5f8 > label > [data-elem=base-cell] {\n  border-radius: 0.313rem;\n  background-color: transparent;\n  color: var(--white);\n  border-color: var(--grey1);\n  border-radius: 0.25rem 0 0 0.25rem;\n  height: 100%;\n  width: 10rem;\n  flex: 1;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_form__2305e5f8 .Pagination_module_jumpToPage__2305e5f8 .Pagination_module_inputbox__2305e5f8 > label > [data-elem=base-cell] .Pagination_module_icon__2305e5f8 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--grey1);\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_form__2305e5f8 .Pagination_module_jumpToPage__2305e5f8 .Pagination_module_inputbox__2305e5f8 > label > [data-elem=base-cell] > [data-elem=component2] {\n  height: 100%;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_form__2305e5f8 .Pagination_module_jumpToPage__2305e5f8 .Pagination_module_inputbox__2305e5f8 > label > [data-elem=base-cell] [data-elem=input] {\n  text-align: center;\n  color: var(--white);\n  background-color: transparent;\n  border: none;\n  height: 100%;\n  width: 100%;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_form__2305e5f8 .Pagination_module_jumpToPage__2305e5f8 .Pagination_module_button__2305e5f8 {\n  border-radius: 0rem 0.25rem 0.25rem 0rem;\n  background-color: var(--grey1);\n  padding: 0.75rem 0.5rem;\n  height: 100%;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_form__2305e5f8 .Pagination_module_jumpToPage__2305e5f8 .Pagination_module_button__2305e5f8 .Pagination_module_icon__2305e5f8 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--white);\n  flex-shrink: 0;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_totalData__2305e5f8 {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  display: none;\n  margin: auto;\n  color: var(--white);\n  flex: 0 1 15%;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__2305e5f8 .Pagination_module_totalData__2305e5f8 {\n    display: inline;\n  }\n}\n.Pagination_module_root__2305e5f8.Pagination_module_noTotalData__2305e5f8 .Pagination_module_rowSwitcher__2305e5f8 {\n  flex: 0 1 20%;\n}\n.Pagination_module_root__2305e5f8.Pagination_module_noTotalData__2305e5f8 .Pagination_module_jumpToPage__2305e5f8 {\n  flex: 1 1 60%;\n}\n.Pagination_module_root__2305e5f8.Pagination_module_noTotalData__2305e5f8 .Pagination_module_form__2305e5f8 {\n  flex: 0 1 20%;\n}";
+var modules_a3d40e77 = {"root":"Pagination_module_root__2305e5f8","floating":"Pagination_module_floating__2305e5f8","row-switcher":"Pagination_module_rowSwitcher__2305e5f8","jump-to-page":"Pagination_module_jumpToPage__2305e5f8","form":"Pagination_module_form__2305e5f8","row-switcher-handle":"Pagination_module_rowSwitcherHandle__2305e5f8","text":"Pagination_module_text__2305e5f8","dropdown":"Pagination_module_dropdown__2305e5f8","page-numbers":"Pagination_module_pageNumbers__2305e5f8","button":"Pagination_module_button__2305e5f8","disable":"Pagination_module_disable__2305e5f8","icon":"Pagination_module_icon__2305e5f8","pageSelect":"Pagination_module_pageSelect__2305e5f8","number":"Pagination_module_number__2305e5f8","active":"Pagination_module_active__2305e5f8","inputbox":"Pagination_module_inputbox__2305e5f8","total-data":"Pagination_module_totalData__2305e5f8","no-total-data":"Pagination_module_noTotalData__2305e5f8"};
 n(css$B,{});
 
 var dropdownOptions = ['10', '25', '50', '100', '200', '250'];
@@ -48280,11 +48285,11 @@ var modules_bbfded44 = {"root":"Stepper_module_root__c8ed92f3","horizontal":"Ste
 n(css$A,{});
 
 var css$z = ":root {\n  --white: #ffffff;\n  --black: #000000;\n  --dark-grey: #333333;\n  --dark-grey-o-85: rgba(51, 51, 51, 0.85);\n  --grey: #737373;\n  --grey1: #888888;\n  --grey2: #a6a6a6;\n  --grey3: #bbbbbb;\n  --grey4: #c4c4c4;\n  --grey5: #dddddd;\n  --grey6: #e8e8e8;\n  --grey7: #eeeeee;\n  --grey8: #f2f2f2;\n  --grey9: #eff0f0;\n  --grey10: #f7f7f7;\n  --skeleton: #e0e1e9;\n  --highlight: #0f62fe;\n  --dark-blue: #001833;\n  --background: #d0e2ff;\n  --menu-black: #191b1f;\n  --banyan-blue: #00037c;\n  --banyan-orange: #ff892a;\n  --banyan-pink: #ff1597;\n  --banyan-gradient: linear-gradient(\n  \t84.71deg,\n  \tvar(--banyan-pink) 0.48%,\n  \tvar(--banyan-orange) 99.57%\n  );\n  --error: #ff626a;\n  --error-bg: #fff1f1;\n  --error-outline: rgba(218, 30, 40, 0.08);\n  --success: #24a148;\n  --success-bg: #defbe6;\n  --success-outline: rgba(36, 161, 72, 0.08);\n  --warning: #f1c21b;\n  --warning-bg: #fff8e1;\n  --warning-outline: rgba(203, 160, 6, 0.08);\n  --info: #0043ce;\n  --info-bg: #edf5ff;\n  --info-outline: #2864db98;\n}";
-var modules_dd21d9e9 = {"white":"--white","black":"--black","menu-black":"--menu-black","dark-grey":"--dark-grey","dark-grey-o-85":"--dark-grey-o-85","grey":"--grey","grey1":"--grey1","grey2":"--grey2","grey3":"--grey3","grey4":"--grey4","grey5":"--grey5","grey6":"--grey6","grey7":"--grey7","grey8":"--grey8","grey9":"--grey9","grey10":"--grey10","highlight":"--highlight","dark-blue":"--dark-blue","background":"--background","banyan-blue":"--banyan-blue","banyan-orange":"--banyan-orange","banyan-pink":"--banyan-pink","banyan-gradient":"--banyan-gradient","error":"--error","error-bg":"--error-bg","error-outline":"--error-outline","success":"--success","success-bg":"--success-bg","success-outline":"--success-outline","warning":"--warning","warning-bg":"--warning-bg","warning-outline":"--warning-outline","info":"--info","info-bg":"--info-bg","info-outline":"--info-outline"};
+var modules_1722b0e5 = {"white":"--white","black":"--black","menu-black":"--menu-black","dark-grey":"--dark-grey","dark-grey-o-85":"--dark-grey-o-85","grey":"--grey","grey1":"--grey1","grey2":"--grey2","grey3":"--grey3","grey4":"--grey4","grey5":"--grey5","grey6":"--grey6","grey7":"--grey7","grey8":"--grey8","grey9":"--grey9","grey10":"--grey10","highlight":"--highlight","dark-blue":"--dark-blue","background":"--background","banyan-blue":"--banyan-blue","banyan-orange":"--banyan-orange","banyan-pink":"--banyan-pink","banyan-gradient":"--banyan-gradient","error":"--error","error-bg":"--error-bg","error-outline":"--error-outline","success":"--success","success-bg":"--success-bg","success-outline":"--success-outline","warning":"--warning","warning-bg":"--warning-bg","warning-outline":"--warning-outline","info":"--info","info-bg":"--info-bg","info-outline":"--info-outline"};
 n(css$z,{});
 
-var COLORS = Object.keys(modules_dd21d9e9 !== null && modules_dd21d9e9 !== void 0 ? modules_dd21d9e9 : {}).reduce(function (acc, curr) {
-  acc[curr] = getCSSVariableValue(modules_dd21d9e9[curr]);
+var COLORS = Object.keys(modules_1722b0e5).reduce(function (acc, curr) {
+  acc[curr] = getCSSVariableValue(modules_1722b0e5[curr]);
   return acc;
 }, {});
 
@@ -49010,8 +49015,7 @@ var Tooltip = /*#__PURE__*/forwardRef(function Tooltip(props, propRef) {
     }),
     x = _useFloating.x,
     y = _useFloating.y,
-    reference = _useFloating.reference,
-    floating = _useFloating.floating,
+    refs = _useFloating.refs,
     strategy = _useFloating.strategy,
     context = _useFloating.context,
     middlewareData = _useFloating.middlewareData,
@@ -49034,8 +49038,8 @@ var Tooltip = /*#__PURE__*/forwardRef(function Tooltip(props, propRef) {
     getFloatingProps = _useInteractions.getFloatingProps;
   var childrenRef = children.ref;
   var ref = React__default.useMemo(function () {
-    return o([reference, childrenRef, propRef]);
-  }, [reference, childrenRef]);
+    return o([refs.setReference, childrenRef, propRef]);
+  }, [refs.setReference, childrenRef]);
   var clonedChildren = /*#__PURE__*/cloneElement(children, getReferenceProps(_objectSpread2({
     ref: ref
   }, children.props)));
@@ -49052,7 +49056,7 @@ var Tooltip = /*#__PURE__*/forwardRef(function Tooltip(props, propRef) {
       backdrop: false,
       wrapperId: "tooltip",
       children: /*#__PURE__*/jsxs("div", _objectSpread2(_objectSpread2({}, getFloatingProps({
-        ref: floating,
+        ref: refs.setFloating,
         className: classes(modules_e4619b04.tooltip, modules_e4619b04[variant], className),
         style: {
           position: strategy,
@@ -50229,8 +50233,8 @@ Tabs.defaultProps = {
   theme: 'light'
 };
 
-var css$h = ".BaseSidePanel_module_root__c7817916 {\n  max-height: 100%;\n  height: 100%;\n  display: flex;\n  width: 30%;\n  flex-direction: column;\n  top: 0;\n  background: #ffffff;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.12);\n  overflow-x: hidden;\n  transition: 0.5s;\n}\n.BaseSidePanel_module_root__c7817916.BaseSidePanel_module_close__c7817916 {\n  width: 0rem;\n}\n.BaseSidePanel_module_root__c7817916 .BaseSidePanel_module_body__c7817916 {\n  flex: 1;\n  overflow-y: auto;\n}";
-var modules_c7321921 = {"root":"BaseSidePanel_module_root__c7817916","close":"BaseSidePanel_module_close__c7817916","body":"BaseSidePanel_module_body__c7817916"};
+var css$h = ".BaseSidePanel_module_root__d6244fa4 {\n  max-height: 100%;\n  height: 100%;\n  width: 30%;\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  box-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);\n  overflow-x: hidden;\n  top: 0;\n  background: var(--white);\n  opacity: 1;\n  transition: 700ms;\n  transform: translateX(0%);\n}\n.BaseSidePanel_module_root__d6244fa4.BaseSidePanel_module_close__d6244fa4 {\n  opacity: 0;\n  transform: translateX(100%);\n}\n.BaseSidePanel_module_root__d6244fa4 .BaseSidePanel_module_body__d6244fa4 {\n  flex: 1;\n  overflow-y: auto;\n}";
+var modules_c7321921 = {"root":"BaseSidePanel_module_root__d6244fa4","close":"BaseSidePanel_module_close__d6244fa4","body":"BaseSidePanel_module_body__d6244fa4"};
 n(css$h,{});
 
 var BaseSidePanel = function BaseSidePanel(props) {
@@ -50564,7 +50568,7 @@ function __classPrivateFieldIn(state, receiver) {
 
 function __addDisposableResource(env, value, async) {
   if (value !== null && value !== void 0) {
-    if (typeof value !== "object") throw new TypeError("Object expected.");
+    if (typeof value !== "object" && typeof value !== "function") throw new TypeError("Object expected.");
     var dispose;
     if (async) {
         if (!Symbol.asyncDispose) throw new TypeError("Symbol.asyncDispose is not defined.");
