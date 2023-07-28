@@ -3,9 +3,12 @@ import { differenceInDays, differenceInHours, differenceInMonths, fromUnixTime }
 import { MONTHS } from '../../../constants';
 import { dateRanges } from '../calender/footer/utils';
 
-export const getFloatingReferences = (open, onOpenChange) => {
+export const getFloatingReferences = ({ open, onOpenChange, anchor }) => {
 	return {
 		open,
+		elements: {
+			reference: anchor,
+		},
 		onOpenChange,
 		whileElementsMounted: autoUpdate,
 		middleware: [
