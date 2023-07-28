@@ -35,25 +35,15 @@ const DatePicker = (props) => {
 
 	const [openDatePicker, setOpenDatePicker] = useState(false);
 	const [openCustomRange, setOpenCustomRange] = useState(false);
-
 	const [selectedRange, setSelectedRange] = useState(() => {
 		return {
 			dates: [],
 			unix: [],
 		};
 	});
-
-	const [fixedRange, setFixedRange] = useState(() => {
-		return null;
-	});
-
-	const [selectedDate, setSelectedDate] = useState(() => {
-		return '';
-	});
-
-	const [error, setError] = useState(() => {
-		return '';
-	});
+	const [fixedRange, setFixedRange] = useState(null);
+	const [selectedDate, setSelectedDate] = useState('');
+	const [error, setError] = useState('');
 
 	const datePickerRef = useRef();
 
