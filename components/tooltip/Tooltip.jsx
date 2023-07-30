@@ -8,7 +8,7 @@ import {
 	useHover,
 	useInteractions,
 	useRole,
-} from '@floating-ui/react';
+} from '@floating-ui/react-dom-interactions';
 import { mergeRefs } from 'react-merge-refs';
 import { Popper } from '../popper';
 import { classes } from '../../utils';
@@ -23,22 +23,24 @@ const Tooltip = forwardRef(function Tooltip(props, propRef) {
 	const [open, setOpen] = useState(false);
 
 	// eslint-disable-next-line object-curly-newline
-	const { x, y, refs, strategy, context, middlewareData, placement } = useFloating({
-		open,
-		onOpenChange: setOpen,
-		// strategy: 'fixed',
-		placement: position,
-		// Make sure the tooltip stays on the screen
-		whileElementsMounted: autoUpdate,
-		middleware: [
-			offset(12),
-			flip(),
-			shift(),
-			arrow({
-				element: arrowEl,
-			}),
-		],
-	});
+	const { x, y, reference, floating, strategy, context, middlewareData, placement } = useFloating(
+		{
+			open,
+			onOpenChange: setOpen,
+			// strategy: 'fixed',
+			placement: position,
+			// Make sure the tooltip stays on the screen
+			whileElementsMounted: autoUpdate,
+			middleware: [
+				offset(12),
+				flip(),
+				shift(),
+				arrow({
+					element: arrowEl,
+				}),
+			],
+		}
+	);
 
 	// Event listeners to change the open state
 	const hover = useHover(context, {
@@ -57,8 +59,8 @@ const Tooltip = forwardRef(function Tooltip(props, propRef) {
 	const childrenRef = children.ref;
 
 	const ref = React.useMemo(() => {
-		return mergeRefs([refs.setReference, childrenRef, propRef]);
-	}, [refs.setReference, childrenRef]);
+		return mergeRefs([reference, childrenRef, propRef]);
+	}, [reference, childrenRef]);
 
 	const clonedChildren = cloneElement(
 		children,
@@ -84,7 +86,7 @@ const Tooltip = forwardRef(function Tooltip(props, propRef) {
 			<Popper open={open && content != null} backdrop={false} wrapperId='tooltip'>
 				<div
 					{...getFloatingProps({
-						ref: refs.setFloating,
+						ref: floating,
 						className: classes(styles.tooltip, styles[variant], className),
 						style: {
 							position: strategy,

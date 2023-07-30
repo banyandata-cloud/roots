@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useDismiss, useFloating, useInteractions } from '@floating-ui/react';
+import { useDismiss, useFloating, useInteractions } from '@floating-ui/react-dom-interactions';
 import { classes } from '../../utils/utils';
 import styles from './Alert.module.css';
 import { CrossIcon, AlertIcon } from '../icons';
@@ -45,7 +45,7 @@ const Alert = (props) => {
 		}
 	}
 
-	const { refs, context } = useFloating({
+	const { floating, context } = useFloating({
 		open,
 		onOpenChange: toggle,
 	});
@@ -56,7 +56,7 @@ const Alert = (props) => {
 		<Popper open={open} className={styles.popper} id='alert-popper'>
 			<div
 				{...getFloatingProps({
-					ref: refs.setFloating,
+					ref: floating,
 					className: classes(
 						styles.root,
 						styles[color],
