@@ -50253,8 +50253,8 @@ Tabs.defaultProps = {
   theme: 'light'
 };
 
-var css$h = ".BaseSidePanel_module_root__d6244fa4 {\n  max-height: 100%;\n  height: 100%;\n  width: 30%;\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  box-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);\n  overflow-x: hidden;\n  top: 0;\n  background: var(--white);\n  opacity: 1;\n  transition: 700ms;\n  transform: translateX(0%);\n}\n.BaseSidePanel_module_root__d6244fa4.BaseSidePanel_module_close__d6244fa4 {\n  opacity: 0;\n  transform: translateX(100%);\n}\n.BaseSidePanel_module_root__d6244fa4 .BaseSidePanel_module_body__d6244fa4 {\n  flex: 1;\n  overflow-y: auto;\n}";
-var modules_c7321921 = {"root":"BaseSidePanel_module_root__d6244fa4","close":"BaseSidePanel_module_close__d6244fa4","body":"BaseSidePanel_module_body__d6244fa4"};
+var css$h = ".BaseSidePanel_module_root__c7817916 {\n  max-height: 100%;\n  height: 100%;\n  display: flex;\n  width: 30%;\n  flex-direction: column;\n  top: 0;\n  background: #ffffff;\n  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.12);\n  overflow-x: hidden;\n  transition: 0.5s;\n}\n.BaseSidePanel_module_root__c7817916.BaseSidePanel_module_close__c7817916 {\n  width: 0rem;\n}\n.BaseSidePanel_module_root__c7817916 .BaseSidePanel_module_body__c7817916 {\n  flex: 1;\n  overflow-y: auto;\n}";
+var modules_c7321921 = {"root":"BaseSidePanel_module_root__c7817916","close":"BaseSidePanel_module_close__c7817916","body":"BaseSidePanel_module_body__c7817916"};
 n(css$h,{});
 
 var BaseSidePanel = function BaseSidePanel(props) {
