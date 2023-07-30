@@ -1,6 +1,11 @@
 import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { useFloating, useInteractions, useDismiss, useClick } from '@floating-ui/react';
+import {
+	useFloating,
+	useInteractions,
+	useDismiss,
+	useClick,
+} from '@floating-ui/react-dom-interactions';
 import { useOutsideClickListener } from '../../hooks';
 import { classes } from '../../utils';
 import { Calender } from './calender';
@@ -35,15 +40,25 @@ const DatePicker = (props) => {
 
 	const [openDatePicker, setOpenDatePicker] = useState(false);
 	const [openCustomRange, setOpenCustomRange] = useState(false);
+
 	const [selectedRange, setSelectedRange] = useState(() => {
 		return {
 			dates: [],
 			unix: [],
 		};
 	});
-	const [fixedRange, setFixedRange] = useState(null);
-	const [selectedDate, setSelectedDate] = useState('');
-	const [error, setError] = useState('');
+
+	const [fixedRange, setFixedRange] = useState(() => {
+		return null;
+	});
+
+	const [selectedDate, setSelectedDate] = useState(() => {
+		return '';
+	});
+
+	const [error, setError] = useState(() => {
+		return '';
+	});
 
 	const datePickerRef = useRef();
 
@@ -54,17 +69,11 @@ const DatePicker = (props) => {
 	});
 
 	const datePickerFloatingReference = useFloating(
-		getFloatingReferences({
-			open: openDatePicker,
-			onOpenChange: setOpenDatePicker,
-		})
+		getFloatingReferences(openDatePicker, setOpenDatePicker)
 	);
 
 	const customRangeFloatingReference = useFloating(
-		getFloatingReferences({
-			open: openCustomRange,
-			onOpenChange: setOpenCustomRange,
-		})
+		getFloatingReferences(openCustomRange, setOpenCustomRange)
 	);
 
 	useOutsideClickListener(datePickerFloatingReference.floating, () => {
@@ -150,7 +159,7 @@ const DatePicker = (props) => {
 			{hasCustomRanges && (
 				<Button
 					data-elem='custom-header'
-					ref={customRangeFloatingReference.refs.setReference}
+					ref={customRangeFloatingReference.reference}
 					leftComponent={() => {
 						return <ClockIcon className={classes(styles.icon, styles[theme])} />;
 					}}
@@ -167,7 +176,7 @@ const DatePicker = (props) => {
 
 				<div
 					data-elem='header'
-					ref={datePickerFloatingReference.refs.setReference}
+					ref={datePickerFloatingReference.reference}
 					role='button'
 					className={classes(
 						styles.container,
@@ -227,7 +236,7 @@ const DatePicker = (props) => {
 						<div
 							{...datePickerInteractionProps.getFloatingProps({
 								role: 'group',
-								ref: datePickerFloatingReference.refs.setFloating,
+								ref: datePickerFloatingReference.floating,
 								onKeyDown(event) {
 									if (event.key === 'Tab') {
 										setOpenDatePicker(false);
@@ -250,7 +259,7 @@ const DatePicker = (props) => {
 						<div
 							{...customRangeInteractionProps.getFloatingProps({
 								role: 'group',
-								ref: customRangeFloatingReference.refs.setFloating,
+								ref: customRangeFloatingReference.floating,
 								onKeyDown(event) {
 									if (event.key === 'Tab') {
 										setOpenCustomRange(false);

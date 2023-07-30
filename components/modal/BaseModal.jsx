@@ -1,4 +1,9 @@
-import { FloatingFocusManager, useDismiss, useFloating, useInteractions } from '@floating-ui/react';
+import {
+	FloatingFocusManager,
+	useDismiss,
+	useFloating,
+	useInteractions,
+} from '@floating-ui/react-dom-interactions';
 import PropTypes from 'prop-types';
 import { classes } from '../../utils';
 import { CrossIcon } from '../icons';
@@ -18,7 +23,7 @@ const BaseModal = (props) => {
 		noDismiss,
 	} = props;
 
-	const { refs, context } = useFloating({
+	const { floating, context } = useFloating({
 		open,
 		onOpenChange: toggle,
 	});
@@ -40,7 +45,7 @@ const BaseModal = (props) => {
 					<div
 						{...getFloatingProps({
 							className: classes(styles.root, className),
-							ref: refs.setFloating,
+							ref: floating,
 						})}>
 						{renderHeader && (
 							<div data-elem='header' className={styles.header}>

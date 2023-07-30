@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, {
 	useMemo,
 	useState,
@@ -20,7 +21,7 @@ import {
 	size,
 	autoUpdate,
 	FloatingFocusManager,
-} from '@floating-ui/react';
+} from '@floating-ui/react-dom-interactions';
 import PropTypes from 'prop-types';
 import { classes } from '../../../utils';
 import { CaretIcon } from '../../icons';
@@ -31,6 +32,7 @@ import Button from '../../buttons/button/Button';
 
 // eslint-disable-next-line prefer-arrow-callback
 const Dropdown = forwardRef(function Dropdown(props, inputRef) {
+	// eslint-disable-next-line object-curly-newline
 	const {
 		className,
 		popperClassName,
@@ -58,7 +60,7 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 	// for uncontrolled input
 	const [uncontrolledValue, setUncontrolledValue] = useState(value);
 
-	const { x, y, refs, strategy, context } = useFloating({
+	const { x, y, reference, floating, strategy, context } = useFloating({
 		open,
 		onOpenChange: setOpen,
 		whileElementsMounted: autoUpdate,
@@ -313,7 +315,7 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 			<div
 				data-elem='header'
 				className={styles.header}
-				ref={refs.setReference}
+				ref={reference}
 				{...getReferenceProps()}>
 				<input
 					id={id}
@@ -360,7 +362,7 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 							{...getFloatingProps({
 								'data-elem': 'body',
 								role: 'group',
-								ref: refs.setFloating,
+								ref: floating,
 								onKeyDown(event) {
 									setPointer(false);
 									if (event.key === 'Tab' && !multi) {

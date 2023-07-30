@@ -8,8 +8,8 @@ import {
 	useDismiss,
 	useFloating,
 	useInteractions,
-} from '@floating-ui/react';
-import { useEffect } from 'react';
+} from '@floating-ui/react-dom-interactions';
+import { useEffect, useLayoutEffect } from 'react';
 import { Popper } from '../popper';
 import { classes } from '../../utils';
 import styles from './Popover.module.css';
@@ -29,10 +29,7 @@ const Popover = (props) => {
 		middlewareOptions,
 	} = props;
 
-	const { x, y, strategy, context, refs } = useFloating({
-		elements: {
-			reference: anchorEl,
-		},
+	const { x, y, reference, floating, strategy, context } = useFloating({
 		open,
 		onOpenChange: setOpen,
 		placement,
@@ -70,11 +67,15 @@ const Popover = (props) => {
 		}
 	}, [open]);
 
+	useLayoutEffect(() => {
+		reference(anchorEl);
+	}, [anchorEl]);
+
 	return (
 		<Popper open={open} wrapperId='popover' transparent={transparent}>
 			<div
 				{...getFloatingProps({
-					ref: refs.setFloating,
+					ref: floating,
 					style: {
 						position: strategy,
 						top: y ?? 0,
