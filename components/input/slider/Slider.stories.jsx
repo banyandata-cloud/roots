@@ -43,9 +43,8 @@ DisableSlider.args = {
 export const UncontrolledSlider = Template.bind({});
 UncontrolledSlider.args = {
 	label: 'Volume Control',
-	value: 0,
 	min: 0,
-	max: 10,
+	max: 50,
 	step: 5,
 };
 

@@ -16,7 +16,7 @@
 			cursor: pointer;
 		}
 		&:disabled::-webkit-slider-thumb {
-			cursor: default;
+			cursor: not-allowed;
 		}
 	}
 	.label-container {

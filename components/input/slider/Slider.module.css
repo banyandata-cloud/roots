@@ -16,7 +16,7 @@
   cursor: pointer;
 }
 .slider-container .slider:disabled::-webkit-slider-thumb {
-  cursor: default;
+  cursor: not-allowed;
 }
 .slider-container .label-container {
   display: flex;
