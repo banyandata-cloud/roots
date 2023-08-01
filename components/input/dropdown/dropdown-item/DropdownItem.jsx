@@ -80,7 +80,7 @@ DropdownItem.defaultProps = {
 	variant: 'default',
 	dataAttrs: {},
 	selected: false,
-	customComponent: false,
+	customComponent: null,
 };
 
 export default DropdownItem;
