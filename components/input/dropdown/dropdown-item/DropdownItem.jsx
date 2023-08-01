@@ -20,6 +20,7 @@ const DropdownItem = forwardRef(function DropdownItem(props, ref) {
 		className,
 		tabIndex,
 		disabled,
+		customComponent,
 	} = props;
 
 	let action = null;
@@ -58,7 +59,7 @@ const DropdownItem = forwardRef(function DropdownItem(props, ref) {
 			aria-selected={selected}
 			onKeyDown={onKeyDown}>
 			{action}
-			<span data-elem='title'>{title}</span>
+			{customComponent ?? <span data-elem='title'>{title}</span>}
 		</li>
 	);
 });
@@ -70,6 +71,7 @@ DropdownItem.propTypes = {
 	selected: PropTypes.bool,
 	// eslint-disable-next-line react/forbid-prop-types
 	dataAttrs: PropTypes.object,
+	customComponent: PropTypes.node,
 };
 
 DropdownItem.defaultProps = {
@@ -78,6 +80,7 @@ DropdownItem.defaultProps = {
 	variant: 'default',
 	dataAttrs: {},
 	selected: false,
+	customComponent: false,
 };
 
 export default DropdownItem;
