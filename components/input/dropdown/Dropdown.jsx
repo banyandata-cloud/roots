@@ -21,7 +21,7 @@ import {
 	size,
 	autoUpdate,
 	FloatingFocusManager,
-} from '@floating-ui/react';
+} from '@floating-ui/react-dom-interactions';
 import PropTypes from 'prop-types';
 import { classes } from '../../../utils';
 import { CaretIcon } from '../../icons';

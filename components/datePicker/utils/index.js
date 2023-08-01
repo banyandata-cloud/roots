@@ -1,11 +1,14 @@
-import { offset, flip, size, autoUpdate, shift } from '@floating-ui/react';
+import { offset, flip, size, autoUpdate, shift } from '@floating-ui/react-dom-interactions';
 import { differenceInDays, differenceInHours, differenceInMonths, fromUnixTime } from 'date-fns';
 import { MONTHS } from '../../../constants';
 import { dateRanges } from '../calender/footer/utils';
 
-export const getFloatingReferences = (open, onOpenChange) => {
+export const getFloatingReferences = ({ open, onOpenChange, anchor }) => {
 	return {
 		open,
+		elements: {
+			reference: anchor,
+		},
 		onOpenChange,
 		whileElementsMounted: autoUpdate,
 		middleware: [

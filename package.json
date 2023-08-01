@@ -1,6 +1,6 @@
 {
 	"name": "@banyan_cloud/roots",
-	"version": "1.0.134",
+	"version": "1.0.142",
 	"description": "Design System Library which drives the Banyan Cloud products",
 	"main": "dist/cjs/index.js",
 	"module": "dist/esm/index.js",
@@ -16,8 +16,8 @@
 		"react-dom": "^18.2.0"
 	},
 	"dependencies": {
-		"@floating-ui/react": "^0.24.8",
-		"@floating-ui/react-dom": "^2.0.1",
+		"@floating-ui/react-dom": "^1.0.0",
+		"@floating-ui/react-dom-interactions": "^0.10.1",
 		"@googlemaps/markerclusterer": "^2.0.15",
 		"@googlemaps/react-wrapper": "^1.1.35",
 		"date-fns": "^2.29.3",
