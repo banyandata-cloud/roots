@@ -39,7 +39,7 @@ const BaseModal = (props) => {
 				<FloatingFocusManager context={context}>
 					<div
 						{...getFloatingProps({
-							className: classes(styles.root),
+							className: classes(styles.root, modalClassName),
 							ref: floating,
 						})}>
 						{renderHeader && (
