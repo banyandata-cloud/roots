@@ -8,7 +8,7 @@ import styles from './BaseModal.module.css';
 
 const BaseModal = (props) => {
 	const {
-		modalClassName,
+		className,
 		popperClassName,
 		renderHeader,
 		children,
@@ -39,7 +39,7 @@ const BaseModal = (props) => {
 				<FloatingFocusManager context={context}>
 					<div
 						{...getFloatingProps({
-							className: classes(styles.root, modalClassName),
+							className: classes(styles.root, className),
 							ref: floating,
 						})}>
 						{renderHeader && (
