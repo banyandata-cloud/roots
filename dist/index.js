@@ -44996,7 +44996,8 @@ var DropdownItem = /*#__PURE__*/forwardRef(function DropdownItem(props, ref) {
     dataAttrs = props.dataAttrs,
     className = props.className,
     tabIndex = props.tabIndex,
-    disabled = props.disabled;
+    disabled = props.disabled,
+    customComponent = props.customComponent;
   var action = null;
   switch (variant) {
     case 'checkbox':
@@ -45028,7 +45029,7 @@ var DropdownItem = /*#__PURE__*/forwardRef(function DropdownItem(props, ref) {
     role: "option",
     "aria-selected": selected,
     onKeyDown: onKeyDown,
-    children: [action, /*#__PURE__*/jsx("span", {
+    children: [action, customComponent !== null && customComponent !== void 0 ? customComponent : /*#__PURE__*/jsx("span", {
       "data-elem": "title",
       children: title
     })]
@@ -45040,14 +45041,16 @@ DropdownItem.propTypes = {
   variant: propTypesExports.oneOf(['default', 'checkbox', 'radio']),
   selected: propTypesExports.bool,
   // eslint-disable-next-line react/forbid-prop-types
-  dataAttrs: propTypesExports.object
+  dataAttrs: propTypesExports.object,
+  customComponent: propTypesExports.node
 };
 DropdownItem.defaultProps = {
   className: '',
   title: '',
   variant: 'default',
   dataAttrs: {},
-  selected: false
+  selected: false,
+  customComponent: null
 };
 
 var css$Q = ".Switch_module_root__c9616649 {\n  cursor: pointer;\n  gap: 0.625rem;\n  position: relative;\n  height: 1.5rem;\n}\n.Switch_module_root__c9616649.Switch_module_disabled__c9616649 {\n  cursor: default;\n}\n.Switch_module_root__c9616649.Switch_module_positionLeft__c9616649 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.Switch_module_root__c9616649.Switch_module_positionRight__c9616649 {\n  display: flex;\n  flex-direction: row-reverse;\n  justify-content: flex-end;\n  align-items: center;\n}\n.Switch_module_root__c9616649 input[type=checkbox] {\n  opacity: 0;\n  z-index: 1;\n  position: absolute;\n  width: 1px;\n  height: 1px;\n}\n.Switch_module_root__c9616649 .Switch_module_pill__c9616649 {\n  position: relative;\n  width: 3rem;\n  height: 100%;\n  cursor: pointer;\n  background-color: var(--grey5);\n  transition: 0.4s;\n  border-radius: 0.75rem;\n}\n.Switch_module_root__c9616649 .Switch_module_pill__c9616649:before {\n  position: absolute;\n  content: \"\";\n  height: 1.25rem;\n  width: 1.25rem;\n  left: 0.125rem;\n  bottom: 0.125rem;\n  background-color: white;\n  transition: 0.4s;\n  border-radius: 50%;\n}\n.Switch_module_root__c9616649 input:checked + .Switch_module_pill__c9616649 {\n  background-color: var(--highlight);\n}\n.Switch_module_root__c9616649 input:checked + .Switch_module_pill__c9616649:before {\n  transform: translateX(1.5rem);\n}\n.Switch_module_root__c9616649 input:focus + .Switch_module_pill__c9616649::before {\n  box-shadow: 0px 0px 0px 8px rgba(15, 98, 254, 0.125);\n}\n.Switch_module_root__c9616649 [data-elem=label] {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n          user-select: none;\n}";
