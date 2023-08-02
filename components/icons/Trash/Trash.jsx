@@ -4,8 +4,8 @@ const Trash = (props) => {
 	return (
 		<svg
 			className={className}
-			width='14'
-			height='15'
+			width='3rem'
+			height='3rem'
 			viewBox='0 0 14 15'
 			fill='none'
 			xmlns='http://www.w3.org/2000/svg'>

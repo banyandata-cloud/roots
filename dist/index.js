@@ -5576,6 +5576,8 @@ var MagnifyingGlass = function MagnifyingGlass(props) {
     className: className,
     viewBox: "0 0 19 18",
     fill: "none",
+    width: "3rem",
+    height: "3rem",
     xmlns: "http://www.w3.org/2000/svg",
     children: [/*#__PURE__*/jsx("path", {
       d: "M8.85626 14.0625C12.1182 14.0625 14.7625 11.4182 14.7625 8.15625C14.7625 4.89432 12.1182 2.25 8.85626 2.25C5.59433 2.25 2.95001 4.89432 2.95001 8.15625C2.95001 11.4182 5.59433 14.0625 8.85626 14.0625Z",
@@ -5745,8 +5747,8 @@ var Trash = function Trash(props) {
   var className = props.className;
   return /*#__PURE__*/jsxs("svg", {
     className: className,
-    width: "14",
-    height: "15",
+    width: "3rem",
+    height: "3rem",
     viewBox: "0 0 14 15",
     fill: "none",
     xmlns: "http://www.w3.org/2000/svg",
@@ -5883,8 +5885,8 @@ var Maximize = function Maximize(props) {
   });
 };
 
-var css$13 = ".Accordion_module_root__d838df6d {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  width: 100%;\n}\n.Accordion_module_root__d838df6d > .Accordion_module_header__d838df6d[data-elem=base-cell] {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.5rem;\n  padding: 0.5rem 1rem;\n  cursor: pointer;\n}\n.Accordion_module_root__d838df6d > .Accordion_module_header__d838df6d[data-elem=base-cell] > [data-elem=component1], .Accordion_module_root__d838df6d > .Accordion_module_header__d838df6d[data-elem=base-cell] > [data-elem=component3] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.Accordion_module_root__d838df6d > .Accordion_module_header__d838df6d[data-elem=base-cell] > [data-elem=component1] .Accordion_module_icon__d838df6d, .Accordion_module_root__d838df6d > .Accordion_module_header__d838df6d[data-elem=base-cell] > [data-elem=component3] .Accordion_module_icon__d838df6d {\n  transform: rotate(-90deg);\n  width: 1rem;\n  height: 1rem;\n  fill: var(--dark-grey);\n}\n.Accordion_module_root__d838df6d > .Accordion_module_header__d838df6d[data-elem=base-cell] > [data-elem=component3] {\n  margin-left: auto;\n}\n.Accordion_module_root__d838df6d > .Accordion_module_header__d838df6d[data-elem=base-cell] .Accordion_module_title__d838df6d {\n  flex: 1 1 auto;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.Accordion_module_root__d838df6d > .Accordion_module_header__d838df6d[data-elem=base-cell]:hover {\n  background: var(--background);\n}\n.Accordion_module_root__d838df6d > .Accordion_module_header__d838df6d[data-elem=base-cell]:hover .Accordion_module_icon__d838df6d,\n.Accordion_module_root__d838df6d > .Accordion_module_header__d838df6d[data-elem=base-cell]:hover .Accordion_module_title__d838df6d {\n  color: var(--highlight);\n  fill: var(--highlight);\n}\n.Accordion_module_root__d838df6d > .Accordion_module_body__d838df6d {\n  display: none;\n  padding: 0.5rem 2.5rem;\n}\n.Accordion_module_root__d838df6d.Accordion_module_open__d838df6d > .Accordion_module_header__d838df6d[data-elem=base-cell] [data-elem=component1] .Accordion_module_icon__d838df6d {\n  transform: none;\n}\n.Accordion_module_root__d838df6d.Accordion_module_open__d838df6d > .Accordion_module_body__d838df6d {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n}\n.Accordion_module_root__d838df6d.Accordion_module_open__d838df6d > .Accordion_module_body__d838df6d > button[data-elem=base-cell] {\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  align-self: flex-end;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-end;\n  align-items: center;\n}\n.Accordion_module_root__d838df6d.Accordion_module_open__d838df6d > .Accordion_module_body__d838df6d > button[data-elem=base-cell] .Accordion_module_expand__d838df6d {\n  height: 1.5rem;\n  width: 1.5rem;\n}";
-var modules_8207625f = {"root":"Accordion_module_root__d838df6d","header":"Accordion_module_header__d838df6d","icon":"Accordion_module_icon__d838df6d","title":"Accordion_module_title__d838df6d","body":"Accordion_module_body__d838df6d","open":"Accordion_module_open__d838df6d","expand":"Accordion_module_expand__d838df6d"};
+var css$13 = ".Accordion_module_root__86aa20a7 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n  width: 100%;\n}\n.Accordion_module_root__86aa20a7 > .Accordion_module_header__86aa20a7[data-elem=base-cell] {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  gap: 0.5rem;\n  padding: 0.5rem 1rem;\n  cursor: pointer;\n}\n.Accordion_module_root__86aa20a7 > .Accordion_module_header__86aa20a7[data-elem=base-cell] > [data-elem=component1], .Accordion_module_root__86aa20a7 > .Accordion_module_header__86aa20a7[data-elem=base-cell] > [data-elem=component3] {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.Accordion_module_root__86aa20a7 > .Accordion_module_header__86aa20a7[data-elem=base-cell] > [data-elem=component1] .Accordion_module_icon__86aa20a7, .Accordion_module_root__86aa20a7 > .Accordion_module_header__86aa20a7[data-elem=base-cell] > [data-elem=component3] .Accordion_module_icon__86aa20a7 {\n  transform: rotate(-90deg);\n  width: 1rem;\n  height: 1rem;\n  fill: var(--dark-grey);\n}\n.Accordion_module_root__86aa20a7 > .Accordion_module_header__86aa20a7[data-elem=base-cell] > [data-elem=component3] {\n  margin-left: auto;\n}\n.Accordion_module_root__86aa20a7 > .Accordion_module_header__86aa20a7[data-elem=base-cell] .Accordion_module_title__86aa20a7 {\n  flex: 1 1 auto;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n          user-select: none;\n}\n.Accordion_module_root__86aa20a7 > .Accordion_module_header__86aa20a7[data-elem=base-cell]:hover {\n  background: var(--background);\n}\n.Accordion_module_root__86aa20a7 > .Accordion_module_header__86aa20a7[data-elem=base-cell]:hover .Accordion_module_icon__86aa20a7,\n.Accordion_module_root__86aa20a7 > .Accordion_module_header__86aa20a7[data-elem=base-cell]:hover .Accordion_module_title__86aa20a7 {\n  color: var(--highlight);\n  fill: var(--highlight);\n}\n.Accordion_module_root__86aa20a7 > .Accordion_module_body__86aa20a7 {\n  display: none;\n  padding: 0.5rem 2.5rem;\n}\n.Accordion_module_root__86aa20a7.Accordion_module_open__86aa20a7 > .Accordion_module_header__86aa20a7[data-elem=base-cell] [data-elem=component1] .Accordion_module_icon__86aa20a7 {\n  transform: none;\n}\n.Accordion_module_root__86aa20a7.Accordion_module_open__86aa20a7 > .Accordion_module_body__86aa20a7 {\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-start;\n  align-items: stretch;\n}\n.Accordion_module_root__86aa20a7.Accordion_module_open__86aa20a7 > .Accordion_module_body__86aa20a7 > button[data-elem=base-cell] {\n  width: -moz-fit-content;\n  width: fit-content;\n  align-self: flex-end;\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-end;\n  align-items: center;\n}\n.Accordion_module_root__86aa20a7.Accordion_module_open__86aa20a7 > .Accordion_module_body__86aa20a7 > button[data-elem=base-cell] .Accordion_module_expand__86aa20a7 {\n  height: 1.5rem;\n  width: 1.5rem;\n}";
+var modules_8207625f = {"root":"Accordion_module_root__86aa20a7","header":"Accordion_module_header__86aa20a7","icon":"Accordion_module_icon__86aa20a7","title":"Accordion_module_title__86aa20a7","body":"Accordion_module_body__86aa20a7","open":"Accordion_module_open__86aa20a7","expand":"Accordion_module_expand__86aa20a7"};
 n(css$13,{});
 
 var Accordion = function Accordion(props) {
@@ -5984,20 +5986,124 @@ Accordion.defaultProps = {
   onExpand: null
 };
 
-function getAlignment(placement) {
-  return placement.split('-')[1];
+const min$2 = Math.min;
+const max$2 = Math.max;
+const round$2 = Math.round;
+const floor = Math.floor;
+const createCoords = v => ({
+  x: v,
+  y: v
+});
+const oppositeSideMap = {
+  left: 'right',
+  right: 'left',
+  bottom: 'top',
+  top: 'bottom'
+};
+const oppositeAlignmentMap = {
+  start: 'end',
+  end: 'start'
+};
+function clamp$1(start, value, end) {
+  return max$2(start, min$2(value, end));
 }
-
-function getLengthFromAxis(axis) {
-  return axis === 'y' ? 'height' : 'width';
+function evaluate(value, param) {
+  return typeof value === 'function' ? value(param) : value;
 }
-
 function getSide(placement) {
   return placement.split('-')[0];
 }
-
-function getMainAxisFromPlacement(placement) {
-  return ['top', 'bottom'].includes(getSide(placement)) ? 'x' : 'y';
+function getAlignment(placement) {
+  return placement.split('-')[1];
+}
+function getOppositeAxis(axis) {
+  return axis === 'x' ? 'y' : 'x';
+}
+function getAxisLength(axis) {
+  return axis === 'y' ? 'height' : 'width';
+}
+function getSideAxis(placement) {
+  return ['top', 'bottom'].includes(getSide(placement)) ? 'y' : 'x';
+}
+function getAlignmentAxis(placement) {
+  return getOppositeAxis(getSideAxis(placement));
+}
+function getAlignmentSides(placement, rects, rtl) {
+  if (rtl === void 0) {
+    rtl = false;
+  }
+  const alignment = getAlignment(placement);
+  const alignmentAxis = getAlignmentAxis(placement);
+  const length = getAxisLength(alignmentAxis);
+  let mainAlignmentSide = alignmentAxis === 'x' ? alignment === (rtl ? 'end' : 'start') ? 'right' : 'left' : alignment === 'start' ? 'bottom' : 'top';
+  if (rects.reference[length] > rects.floating[length]) {
+    mainAlignmentSide = getOppositePlacement(mainAlignmentSide);
+  }
+  return [mainAlignmentSide, getOppositePlacement(mainAlignmentSide)];
+}
+function getExpandedPlacements(placement) {
+  const oppositePlacement = getOppositePlacement(placement);
+  return [getOppositeAlignmentPlacement(placement), oppositePlacement, getOppositeAlignmentPlacement(oppositePlacement)];
+}
+function getOppositeAlignmentPlacement(placement) {
+  return placement.replace(/start|end/g, alignment => oppositeAlignmentMap[alignment]);
+}
+function getSideList(side, isStart, rtl) {
+  const lr = ['left', 'right'];
+  const rl = ['right', 'left'];
+  const tb = ['top', 'bottom'];
+  const bt = ['bottom', 'top'];
+  switch (side) {
+    case 'top':
+    case 'bottom':
+      if (rtl) return isStart ? rl : lr;
+      return isStart ? lr : rl;
+    case 'left':
+    case 'right':
+      return isStart ? tb : bt;
+    default:
+      return [];
+  }
+}
+function getOppositeAxisPlacements(placement, flipAlignment, direction, rtl) {
+  const alignment = getAlignment(placement);
+  let list = getSideList(getSide(placement), direction === 'start', rtl);
+  if (alignment) {
+    list = list.map(side => side + "-" + alignment);
+    if (flipAlignment) {
+      list = list.concat(list.map(getOppositeAlignmentPlacement));
+    }
+  }
+  return list;
+}
+function getOppositePlacement(placement) {
+  return placement.replace(/left|right|bottom|top/g, side => oppositeSideMap[side]);
+}
+function expandPaddingObject(padding) {
+  return {
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    ...padding
+  };
+}
+function getPaddingObject(padding) {
+  return typeof padding !== 'number' ? expandPaddingObject(padding) : {
+    top: padding,
+    right: padding,
+    bottom: padding,
+    left: padding
+  };
+}
+function rectToClientRect(rect) {
+  return {
+    ...rect,
+    top: rect.y,
+    left: rect.x,
+    right: rect.x + rect.width,
+    bottom: rect.y + rect.height
+  };
 }
 
 function computeCoordsFromPlacement(_ref, placement, rtl) {
@@ -6005,13 +6111,14 @@ function computeCoordsFromPlacement(_ref, placement, rtl) {
     reference,
     floating
   } = _ref;
+  const sideAxis = getSideAxis(placement);
+  const alignmentAxis = getAlignmentAxis(placement);
+  const alignLength = getAxisLength(alignmentAxis);
+  const side = getSide(placement);
+  const isVertical = sideAxis === 'y';
   const commonX = reference.x + reference.width / 2 - floating.width / 2;
   const commonY = reference.y + reference.height / 2 - floating.height / 2;
-  const mainAxis = getMainAxisFromPlacement(placement);
-  const length = getLengthFromAxis(mainAxis);
-  const commonAlign = reference[length] / 2 - floating[length] / 2;
-  const side = getSide(placement);
-  const isVertical = mainAxis === 'x';
+  const commonAlign = reference[alignLength] / 2 - floating[alignLength] / 2;
   let coords;
   switch (side) {
     case 'top':
@@ -6046,10 +6153,10 @@ function computeCoordsFromPlacement(_ref, placement, rtl) {
   }
   switch (getAlignment(placement)) {
     case 'start':
-      coords[mainAxis] -= commonAlign * (rtl && isVertical ? -1 : 1);
+      coords[alignmentAxis] -= commonAlign * (rtl && isVertical ? -1 : 1);
       break;
     case 'end':
-      coords[mainAxis] += commonAlign * (rtl && isVertical ? -1 : 1);
+      coords[alignmentAxis] += commonAlign * (rtl && isVertical ? -1 : 1);
       break;
   }
   return coords;
@@ -6147,39 +6254,6 @@ const computePosition$1 = async (reference, floating, config) => {
   };
 };
 
-function evaluate(value, param) {
-  return typeof value === 'function' ? value(param) : value;
-}
-
-function expandPaddingObject(padding) {
-  return {
-    top: 0,
-    right: 0,
-    bottom: 0,
-    left: 0,
-    ...padding
-  };
-}
-
-function getSideObjectFromPadding(padding) {
-  return typeof padding !== 'number' ? expandPaddingObject(padding) : {
-    top: padding,
-    right: padding,
-    bottom: padding,
-    left: padding
-  };
-}
-
-function rectToClientRect(rect) {
-  return {
-    ...rect,
-    top: rect.y,
-    left: rect.x,
-    right: rect.x + rect.width,
-    bottom: rect.y + rect.height
-  };
-}
-
 /**
  * Resolves with an object of overflow side offsets that determine how much the
  * element is overflowing a given clipping boundary on each side.
@@ -6208,7 +6282,7 @@ async function detectOverflow(state, options) {
     altBoundary = false,
     padding = 0
   } = evaluate(options, state);
-  const paddingObject = getSideObjectFromPadding(padding);
+  const paddingObject = getPaddingObject(padding);
   const altContext = elementContext === 'floating' ? 'reference' : 'floating';
   const element = elements[altBoundary ? altContext : elementContext];
   const clippingClientRect = rectToClientRect(await platform.getClippingRect({
@@ -6243,13 +6317,6 @@ async function detectOverflow(state, options) {
   };
 }
 
-const min$3 = Math.min;
-const max$3 = Math.max;
-
-function within(min$1, value, max$1) {
-  return max$3(min$1, min$3(value, max$1));
-}
-
 /**
  * Provides data to position an inner element of the floating element so that it
  * appears centered to the reference element.
@@ -6275,13 +6342,13 @@ const arrow$1 = options => ({
     if (element == null) {
       return {};
     }
-    const paddingObject = getSideObjectFromPadding(padding);
+    const paddingObject = getPaddingObject(padding);
     const coords = {
       x,
       y
     };
-    const axis = getMainAxisFromPlacement(placement);
-    const length = getLengthFromAxis(axis);
+    const axis = getAlignmentAxis(placement);
+    const length = getAxisLength(axis);
     const arrowDimensions = await platform.getDimensions(element);
     const isYAxis = axis === 'y';
     const minProp = isYAxis ? 'top' : 'left';
@@ -6301,15 +6368,15 @@ const arrow$1 = options => ({
     // If the padding is large enough that it causes the arrow to no longer be
     // centered, modify the padding so that it is centered.
     const largestPossiblePadding = clientSize / 2 - arrowDimensions[length] / 2 - 1;
-    const minPadding = min$3(paddingObject[minProp], largestPossiblePadding);
-    const maxPadding = min$3(paddingObject[maxProp], largestPossiblePadding);
+    const minPadding = min$2(paddingObject[minProp], largestPossiblePadding);
+    const maxPadding = min$2(paddingObject[maxProp], largestPossiblePadding);
 
     // Make sure the arrow doesn't overflow the floating element if the center
     // point is outside the floating element's bounds.
     const min$1 = minPadding;
     const max = clientSize - arrowDimensions[length] - maxPadding;
     const center = clientSize / 2 - arrowDimensions[length] / 2 + centerToReference;
-    const offset = within(min$1, center, max);
+    const offset = clamp$1(min$1, center, max);
 
     // If the reference is small enough that the arrow's padding causes it to
     // to point to nothing for an aligned placement, adjust the offset of the
@@ -6326,75 +6393,6 @@ const arrow$1 = options => ({
     };
   }
 });
-
-const oppositeSideMap = {
-  left: 'right',
-  right: 'left',
-  bottom: 'top',
-  top: 'bottom'
-};
-function getOppositePlacement(placement) {
-  return placement.replace(/left|right|bottom|top/g, side => oppositeSideMap[side]);
-}
-
-function getAlignmentSides(placement, rects, rtl) {
-  if (rtl === void 0) {
-    rtl = false;
-  }
-  const alignment = getAlignment(placement);
-  const mainAxis = getMainAxisFromPlacement(placement);
-  const length = getLengthFromAxis(mainAxis);
-  let mainAlignmentSide = mainAxis === 'x' ? alignment === (rtl ? 'end' : 'start') ? 'right' : 'left' : alignment === 'start' ? 'bottom' : 'top';
-  if (rects.reference[length] > rects.floating[length]) {
-    mainAlignmentSide = getOppositePlacement(mainAlignmentSide);
-  }
-  return {
-    main: mainAlignmentSide,
-    cross: getOppositePlacement(mainAlignmentSide)
-  };
-}
-
-const oppositeAlignmentMap = {
-  start: 'end',
-  end: 'start'
-};
-function getOppositeAlignmentPlacement(placement) {
-  return placement.replace(/start|end/g, alignment => oppositeAlignmentMap[alignment]);
-}
-
-function getExpandedPlacements(placement) {
-  const oppositePlacement = getOppositePlacement(placement);
-  return [getOppositeAlignmentPlacement(placement), oppositePlacement, getOppositeAlignmentPlacement(oppositePlacement)];
-}
-
-function getSideList(side, isStart, rtl) {
-  const lr = ['left', 'right'];
-  const rl = ['right', 'left'];
-  const tb = ['top', 'bottom'];
-  const bt = ['bottom', 'top'];
-  switch (side) {
-    case 'top':
-    case 'bottom':
-      if (rtl) return isStart ? rl : lr;
-      return isStart ? lr : rl;
-    case 'left':
-    case 'right':
-      return isStart ? tb : bt;
-    default:
-      return [];
-  }
-}
-function getOppositeAxisPlacements(placement, flipAlignment, direction, rtl) {
-  const alignment = getAlignment(placement);
-  let list = getSideList(getSide(placement), direction === 'start', rtl);
-  if (alignment) {
-    list = list.map(side => side + "-" + alignment);
-    if (flipAlignment) {
-      list = list.concat(list.map(getOppositeAlignmentPlacement));
-    }
-  }
-  return list;
-}
 
 /**
  * Optimizes the visibility of the floating element by flipping the `placement`
@@ -6443,11 +6441,8 @@ const flip = function (options) {
         overflows.push(overflow[side]);
       }
       if (checkCrossAxis) {
-        const {
-          main,
-          cross
-        } = getAlignmentSides(placement, rects, rtl);
-        overflows.push(overflow[main], overflow[cross]);
+        const sides = getAlignmentSides(placement, rects, rtl);
+        overflows.push(overflow[sides[0]], overflow[sides[1]]);
       }
       overflowsData = [...overflowsData, {
         placement,
@@ -6506,6 +6501,8 @@ const flip = function (options) {
   };
 };
 
+// For type backwards-compatibility, the `OffsetOptions` type was also
+// Derivable.
 async function convertValueToCoords(state, options) {
   const {
     placement,
@@ -6515,7 +6512,7 @@ async function convertValueToCoords(state, options) {
   const rtl = await (platform.isRTL == null ? void 0 : platform.isRTL(elements.floating));
   const side = getSide(placement);
   const alignment = getAlignment(placement);
-  const isVertical = getMainAxisFromPlacement(placement) === 'x';
+  const isVertical = getSideAxis(placement) === 'y';
   const mainAxisMulti = ['left', 'top'].includes(side) ? -1 : 1;
   const crossAxisMulti = rtl && isVertical ? -1 : 1;
   const rawValue = evaluate(options, state);
@@ -6576,10 +6573,6 @@ const offset = function (options) {
   };
 };
 
-function getCrossAxis(axis) {
-  return axis === 'x' ? 'y' : 'x';
-}
-
 /**
  * Optimizes the visibility of the floating element by shifting it in order to
  * keep it in view when it will overflow the clipping boundary.
@@ -6620,8 +6613,8 @@ const shift = function (options) {
         y
       };
       const overflow = await detectOverflow(state, detectOverflowOptions);
-      const mainAxis = getMainAxisFromPlacement(getSide(placement));
-      const crossAxis = getCrossAxis(mainAxis);
+      const crossAxis = getSideAxis(getSide(placement));
+      const mainAxis = getOppositeAxis(crossAxis);
       let mainAxisCoord = coords[mainAxis];
       let crossAxisCoord = coords[crossAxis];
       if (checkMainAxis) {
@@ -6629,14 +6622,14 @@ const shift = function (options) {
         const maxSide = mainAxis === 'y' ? 'bottom' : 'right';
         const min = mainAxisCoord + overflow[minSide];
         const max = mainAxisCoord - overflow[maxSide];
-        mainAxisCoord = within(min, mainAxisCoord, max);
+        mainAxisCoord = clamp$1(min, mainAxisCoord, max);
       }
       if (checkCrossAxis) {
         const minSide = crossAxis === 'y' ? 'top' : 'left';
         const maxSide = crossAxis === 'y' ? 'bottom' : 'right';
         const min = crossAxisCoord + overflow[minSide];
         const max = crossAxisCoord - overflow[maxSide];
-        crossAxisCoord = within(min, crossAxisCoord, max);
+        crossAxisCoord = clamp$1(min, crossAxisCoord, max);
       }
       const limitedCoords = limiter.fn({
         ...state,
@@ -6681,8 +6674,7 @@ const size = function (options) {
       const overflow = await detectOverflow(state, detectOverflowOptions);
       const side = getSide(placement);
       const alignment = getAlignment(placement);
-      const axis = getMainAxisFromPlacement(placement);
-      const isXAxis = axis === 'x';
+      const isYAxis = getSideAxis(placement) === 'y';
       const {
         width,
         height
@@ -6701,22 +6693,22 @@ const size = function (options) {
       const noShift = !state.middlewareData.shift;
       let availableHeight = overflowAvailableHeight;
       let availableWidth = overflowAvailableWidth;
-      if (isXAxis) {
+      if (isYAxis) {
         const maximumClippingWidth = width - overflow.left - overflow.right;
-        availableWidth = alignment || noShift ? min$3(overflowAvailableWidth, maximumClippingWidth) : maximumClippingWidth;
+        availableWidth = alignment || noShift ? min$2(overflowAvailableWidth, maximumClippingWidth) : maximumClippingWidth;
       } else {
         const maximumClippingHeight = height - overflow.top - overflow.bottom;
-        availableHeight = alignment || noShift ? min$3(overflowAvailableHeight, maximumClippingHeight) : maximumClippingHeight;
+        availableHeight = alignment || noShift ? min$2(overflowAvailableHeight, maximumClippingHeight) : maximumClippingHeight;
       }
       if (noShift && !alignment) {
-        const xMin = max$3(overflow.left, 0);
-        const xMax = max$3(overflow.right, 0);
-        const yMin = max$3(overflow.top, 0);
-        const yMax = max$3(overflow.bottom, 0);
-        if (isXAxis) {
-          availableWidth = width - 2 * (xMin !== 0 || xMax !== 0 ? xMin + xMax : max$3(overflow.left, overflow.right));
+        const xMin = max$2(overflow.left, 0);
+        const xMax = max$2(overflow.right, 0);
+        const yMin = max$2(overflow.top, 0);
+        const yMax = max$2(overflow.bottom, 0);
+        if (isYAxis) {
+          availableWidth = width - 2 * (xMin !== 0 || xMax !== 0 ? xMin + xMax : max$2(overflow.left, overflow.right));
         } else {
-          availableHeight = height - 2 * (yMin !== 0 || yMax !== 0 ? yMin + yMax : max$3(overflow.top, overflow.bottom));
+          availableHeight = height - 2 * (yMin !== 0 || yMax !== 0 ? yMin + yMax : max$2(overflow.top, overflow.bottom));
         }
       }
       await apply({
@@ -6737,18 +6729,6 @@ const size = function (options) {
   };
 };
 
-function getWindow$1(node) {
-  var _node$ownerDocument;
-  return (node == null ? void 0 : (_node$ownerDocument = node.ownerDocument) == null ? void 0 : _node$ownerDocument.defaultView) || window;
-}
-
-function getComputedStyle$1$1(element) {
-  return getWindow$1(element).getComputedStyle(element);
-}
-
-function isNode$1(value) {
-  return value instanceof getWindow$1(value).Node;
-}
 function getNodeName(node) {
   if (isNode$1(node)) {
     return (node.nodeName || '').toLowerCase();
@@ -6758,16 +6738,29 @@ function getNodeName(node) {
   // https://github.com/floating-ui/floating-ui/issues/2317
   return '#document';
 }
-
+function getWindow$1(node) {
+  var _node$ownerDocument;
+  return (node == null ? void 0 : (_node$ownerDocument = node.ownerDocument) == null ? void 0 : _node$ownerDocument.defaultView) || window;
+}
+function getDocumentElement(node) {
+  var _ref;
+  return (_ref = (isNode$1(node) ? node.ownerDocument : node.document) || window.document) == null ? void 0 : _ref.documentElement;
+}
+function isNode$1(value) {
+  return value instanceof Node || value instanceof getWindow$1(value).Node;
+}
+function isElement$1(value) {
+  return value instanceof Element || value instanceof getWindow$1(value).Element;
+}
 function isHTMLElement$1(value) {
   return value instanceof HTMLElement || value instanceof getWindow$1(value).HTMLElement;
 }
-function isShadowRoot$1(node) {
+function isShadowRoot(value) {
   // Browsers without `ShadowRoot` support.
   if (typeof ShadowRoot === 'undefined') {
     return false;
   }
-  return node instanceof getWindow$1(node).ShadowRoot || node instanceof ShadowRoot;
+  return value instanceof ShadowRoot || value instanceof getWindow$1(value).ShadowRoot;
 }
 function isOverflowElement(element) {
   const {
@@ -6775,38 +6768,93 @@ function isOverflowElement(element) {
     overflowX,
     overflowY,
     display
-  } = getComputedStyle$1$1(element);
+  } = getComputedStyle$2(element);
   return /auto|scroll|overlay|hidden|clip/.test(overflow + overflowY + overflowX) && !['inline', 'contents'].includes(display);
 }
 function isTableElement(element) {
   return ['table', 'td', 'th'].includes(getNodeName(element));
 }
 function isContainingBlock(element) {
-  const safari = isSafari$1();
-  const css = getComputedStyle$1$1(element);
+  const webkit = isWebKit();
+  const css = getComputedStyle$2(element);
 
   // https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block#identifying_the_containing_block
-  return css.transform !== 'none' || css.perspective !== 'none' || (css.containerType ? css.containerType !== 'normal' : false) || !safari && (css.backdropFilter ? css.backdropFilter !== 'none' : false) || !safari && (css.filter ? css.filter !== 'none' : false) || ['transform', 'perspective', 'filter'].some(value => (css.willChange || '').includes(value)) || ['paint', 'layout', 'strict', 'content'].some(value => (css.contain || '').includes(value));
+  return css.transform !== 'none' || css.perspective !== 'none' || (css.containerType ? css.containerType !== 'normal' : false) || !webkit && (css.backdropFilter ? css.backdropFilter !== 'none' : false) || !webkit && (css.filter ? css.filter !== 'none' : false) || ['transform', 'perspective', 'filter'].some(value => (css.willChange || '').includes(value)) || ['paint', 'layout', 'strict', 'content'].some(value => (css.contain || '').includes(value));
 }
-function isSafari$1() {
+function getContainingBlock(element) {
+  let currentNode = getParentNode(element);
+  while (isHTMLElement$1(currentNode) && !isLastTraversableNode(currentNode)) {
+    if (isContainingBlock(currentNode)) {
+      return currentNode;
+    } else {
+      currentNode = getParentNode(currentNode);
+    }
+  }
+  return null;
+}
+function isWebKit() {
   if (typeof CSS === 'undefined' || !CSS.supports) return false;
   return CSS.supports('-webkit-backdrop-filter', 'none');
 }
 function isLastTraversableNode(node) {
   return ['html', 'body', '#document'].includes(getNodeName(node));
 }
-
-const min$2 = Math.min;
-const max$2 = Math.max;
-const round$2 = Math.round;
-const floor = Math.floor;
-const createCoords = v => ({
-  x: v,
-  y: v
-});
+function getComputedStyle$2(element) {
+  return getWindow$1(element).getComputedStyle(element);
+}
+function getNodeScroll(element) {
+  if (isElement$1(element)) {
+    return {
+      scrollLeft: element.scrollLeft,
+      scrollTop: element.scrollTop
+    };
+  }
+  return {
+    scrollLeft: element.pageXOffset,
+    scrollTop: element.pageYOffset
+  };
+}
+function getParentNode(node) {
+  if (getNodeName(node) === 'html') {
+    return node;
+  }
+  const result =
+  // Step into the shadow DOM of the parent of a slotted node.
+  node.assignedSlot ||
+  // DOM Element detected.
+  node.parentNode ||
+  // ShadowRoot detected.
+  isShadowRoot(node) && node.host ||
+  // Fallback.
+  getDocumentElement(node);
+  return isShadowRoot(result) ? result.host : result;
+}
+function getNearestOverflowAncestor(node) {
+  const parentNode = getParentNode(node);
+  if (isLastTraversableNode(parentNode)) {
+    return node.ownerDocument ? node.ownerDocument.body : node.body;
+  }
+  if (isHTMLElement$1(parentNode) && isOverflowElement(parentNode)) {
+    return parentNode;
+  }
+  return getNearestOverflowAncestor(parentNode);
+}
+function getOverflowAncestors(node, list) {
+  var _node$ownerDocument2;
+  if (list === void 0) {
+    list = [];
+  }
+  const scrollableAncestor = getNearestOverflowAncestor(node);
+  const isBody = scrollableAncestor === ((_node$ownerDocument2 = node.ownerDocument) == null ? void 0 : _node$ownerDocument2.body);
+  const win = getWindow$1(scrollableAncestor);
+  if (isBody) {
+    return list.concat(win, win.visualViewport || [], isOverflowElement(scrollableAncestor) ? scrollableAncestor : []);
+  }
+  return list.concat(scrollableAncestor, getOverflowAncestors(scrollableAncestor));
+}
 
 function getCssDimensions(element) {
-  const css = getComputedStyle$1$1(element);
+  const css = getComputedStyle$2(element);
   // In testing environments, the `width` and `height` properties are empty
   // strings for SVG elements, returning NaN. Fallback to `0` in this case.
   let width = parseFloat(css.width) || 0;
@@ -6824,10 +6872,6 @@ function getCssDimensions(element) {
     height,
     $: shouldFallback
   };
-}
-
-function isElement$1(value) {
-  return value instanceof Element || value instanceof getWindow$1(value).Element;
 }
 
 function unwrapElement(element) {
@@ -6865,7 +6909,7 @@ function getScale(element) {
 const noOffsets = /*#__PURE__*/createCoords(0);
 function getVisualOffsets(element) {
   const win = getWindow$1(element);
-  if (!isSafari$1() || !win.visualViewport) {
+  if (!isWebKit() || !win.visualViewport) {
     return noOffsets;
   }
   return {
@@ -6914,7 +6958,7 @@ function getBoundingClientRect(element, includeScale, isFixedStrategy, offsetPar
     while (currentIFrame && offsetParent && offsetWin !== win) {
       const iframeScale = getScale(currentIFrame);
       const iframeRect = currentIFrame.getBoundingClientRect();
-      const css = getComputedStyle(currentIFrame);
+      const css = getComputedStyle$2(currentIFrame);
       const left = iframeRect.left + (currentIFrame.clientLeft + parseFloat(css.paddingLeft)) * iframeScale.x;
       const top = iframeRect.top + (currentIFrame.clientTop + parseFloat(css.paddingTop)) * iframeScale.y;
       x *= iframeScale.x;
@@ -6932,24 +6976,6 @@ function getBoundingClientRect(element, includeScale, isFixedStrategy, offsetPar
     x,
     y
   });
-}
-
-function getNodeScroll(element) {
-  if (isElement$1(element)) {
-    return {
-      scrollLeft: element.scrollLeft,
-      scrollTop: element.scrollTop
-    };
-  }
-  return {
-    scrollLeft: element.pageXOffset,
-    scrollTop: element.pageYOffset
-  };
-}
-
-function getDocumentElement(node) {
-  var _ref;
-  return (_ref = (isNode$1(node) ? node.ownerDocument : node.document) || window.document) == null ? void 0 : _ref.documentElement;
 }
 
 function convertOffsetParentRelativeRectToViewportRelativeRect(_ref) {
@@ -7008,7 +7034,7 @@ function getDocumentRect(element) {
   const height = max$2(html.scrollHeight, html.clientHeight, body.scrollHeight, body.clientHeight);
   let x = -scroll.scrollLeft + getWindowScrollBarX(element);
   const y = -scroll.scrollTop;
-  if (getComputedStyle$1$1(body).direction === 'rtl') {
+  if (getComputedStyle$2(body).direction === 'rtl') {
     x += max$2(html.clientWidth, body.clientWidth) - width;
   }
   return {
@@ -7017,47 +7043,6 @@ function getDocumentRect(element) {
     x,
     y
   };
-}
-
-function getParentNode(node) {
-  if (getNodeName(node) === 'html') {
-    return node;
-  }
-  const result =
-  // Step into the shadow DOM of the parent of a slotted node.
-  node.assignedSlot ||
-  // DOM Element detected.
-  node.parentNode ||
-  // ShadowRoot detected.
-  isShadowRoot$1(node) && node.host ||
-  // Fallback.
-  getDocumentElement(node);
-  return isShadowRoot$1(result) ? result.host : result;
-}
-
-function getNearestOverflowAncestor(node) {
-  const parentNode = getParentNode(node);
-  if (isLastTraversableNode(parentNode)) {
-    return node.ownerDocument ? node.ownerDocument.body : node.body;
-  }
-  if (isHTMLElement$1(parentNode) && isOverflowElement(parentNode)) {
-    return parentNode;
-  }
-  return getNearestOverflowAncestor(parentNode);
-}
-
-function getOverflowAncestors(node, list) {
-  var _node$ownerDocument;
-  if (list === void 0) {
-    list = [];
-  }
-  const scrollableAncestor = getNearestOverflowAncestor(node);
-  const isBody = scrollableAncestor === ((_node$ownerDocument = node.ownerDocument) == null ? void 0 : _node$ownerDocument.body);
-  const win = getWindow$1(scrollableAncestor);
-  if (isBody) {
-    return list.concat(win, win.visualViewport || [], isOverflowElement(scrollableAncestor) ? scrollableAncestor : []);
-  }
-  return list.concat(scrollableAncestor, getOverflowAncestors(scrollableAncestor));
 }
 
 function getViewportRect(element, strategy) {
@@ -7071,7 +7056,7 @@ function getViewportRect(element, strategy) {
   if (visualViewport) {
     width = visualViewport.width;
     height = visualViewport.height;
-    const visualViewportBased = isSafari$1();
+    const visualViewportBased = isWebKit();
     if (!visualViewportBased || visualViewportBased && strategy === 'fixed') {
       x = visualViewport.offsetLeft;
       y = visualViewport.offsetTop;
@@ -7125,7 +7110,7 @@ function hasFixedPositionAncestor(element, stopNode) {
   if (parentNode === stopNode || !isElement$1(parentNode) || isLastTraversableNode(parentNode)) {
     return false;
   }
-  return getComputedStyle$1$1(parentNode).position === 'fixed' || hasFixedPositionAncestor(parentNode, stopNode);
+  return getComputedStyle$2(parentNode).position === 'fixed' || hasFixedPositionAncestor(parentNode, stopNode);
 }
 
 // A "clipping ancestor" is an `overflow` element with the characteristic of
@@ -7138,12 +7123,12 @@ function getClippingElementAncestors(element, cache) {
   }
   let result = getOverflowAncestors(element).filter(el => isElement$1(el) && getNodeName(el) !== 'body');
   let currentContainingBlockComputedStyle = null;
-  const elementIsFixed = getComputedStyle$1$1(element).position === 'fixed';
+  const elementIsFixed = getComputedStyle$2(element).position === 'fixed';
   let currentNode = elementIsFixed ? getParentNode(element) : element;
 
   // https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block#identifying_the_containing_block
   while (isElement$1(currentNode) && !isLastTraversableNode(currentNode)) {
-    const computedStyle = getComputedStyle$1$1(currentNode);
+    const computedStyle = getComputedStyle$2(currentNode);
     const currentNodeIsContaining = isContainingBlock(currentNode);
     if (!currentNodeIsContaining && computedStyle.position === 'fixed') {
       currentContainingBlockComputedStyle = null;
@@ -7208,7 +7193,7 @@ function getRectRelativeToOffsetParent(element, offsetParent, strategy) {
     if (getNodeName(offsetParent) !== 'body' || isOverflowElement(documentElement)) {
       scroll = getNodeScroll(offsetParent);
     }
-    if (isHTMLElement$1(offsetParent)) {
+    if (isOffsetParentAnElement) {
       const offsetRect = getBoundingClientRect(offsetParent, true, isFixed, offsetParent);
       offsets.x = offsetRect.x + offsetParent.clientLeft;
       offsets.y = offsetRect.y + offsetParent.clientTop;
@@ -7225,24 +7210,13 @@ function getRectRelativeToOffsetParent(element, offsetParent, strategy) {
 }
 
 function getTrueOffsetParent(element, polyfill) {
-  if (!isHTMLElement$1(element) || getComputedStyle$1$1(element).position === 'fixed') {
+  if (!isHTMLElement$1(element) || getComputedStyle$2(element).position === 'fixed') {
     return null;
   }
   if (polyfill) {
     return polyfill(element);
   }
   return element.offsetParent;
-}
-function getContainingBlock(element) {
-  let currentNode = getParentNode(element);
-  while (isHTMLElement$1(currentNode) && !isLastTraversableNode(currentNode)) {
-    if (isContainingBlock(currentNode)) {
-      return currentNode;
-    } else {
-      currentNode = getParentNode(currentNode);
-    }
-  }
-  return null;
 }
 
 // Gets the closest ancestor positioned element. Handles some edge cases,
@@ -7253,10 +7227,10 @@ function getOffsetParent(element, polyfill) {
     return window;
   }
   let offsetParent = getTrueOffsetParent(element, polyfill);
-  while (offsetParent && isTableElement(offsetParent) && getComputedStyle$1$1(offsetParent).position === 'static') {
+  while (offsetParent && isTableElement(offsetParent) && getComputedStyle$2(offsetParent).position === 'static') {
     offsetParent = getTrueOffsetParent(offsetParent, polyfill);
   }
-  if (offsetParent && (getNodeName(offsetParent) === 'html' || getNodeName(offsetParent) === 'body' && getComputedStyle$1$1(offsetParent).position === 'static' && !isContainingBlock(offsetParent))) {
+  if (offsetParent && (getNodeName(offsetParent) === 'html' || getNodeName(offsetParent) === 'body' && getComputedStyle$2(offsetParent).position === 'static' && !isContainingBlock(offsetParent))) {
     return window;
   }
   return offsetParent || getContainingBlock(element) || window;
@@ -7281,7 +7255,7 @@ const getElementRects = async function (_ref) {
 };
 
 function isRTL(element) {
-  return getComputedStyle(element).direction === 'rtl';
+  return getComputedStyle$2(element).direction === 'rtl';
 }
 
 const platform$1 = {
@@ -7473,36 +7447,37 @@ const computePosition = (reference, floating, options) => {
 };
 
 /**
- * Provides data to position an inner element of the floating element so that it
- * appears centered to the reference element.
+ * A data provider that provides data to position an inner element of the
+ * floating element (usually a triangle or caret) so that it is centered to the
+ * reference element.
  * This wraps the core `arrow` middleware to allow React refs as the element.
  * @see https://floating-ui.com/docs/arrow
  */
 const arrow = options => {
+  const {
+    element,
+    padding
+  } = options;
   function isRef(value) {
-    return {}.hasOwnProperty.call(value, 'current');
+    return Object.prototype.hasOwnProperty.call(value, 'current');
   }
   return {
     name: 'arrow',
     options,
-    fn(state) {
-      const {
-        element,
-        padding
-      } = typeof options === 'function' ? options(state) : options;
-      if (element && isRef(element)) {
+    fn(args) {
+      if (isRef(element)) {
         if (element.current != null) {
           return arrow$1({
             element: element.current,
             padding
-          }).fn(state);
+          }).fn(args);
         }
         return {};
       } else if (element) {
         return arrow$1({
           element,
           padding
-        }).fn(state);
+        }).fn(args);
       }
       return {};
     }
@@ -7541,7 +7516,7 @@ function deepEqual(a, b) {
       return false;
     }
     for (i = length; i-- !== 0;) {
-      if (!{}.hasOwnProperty.call(b, keys[i])) {
+      if (!Object.prototype.hasOwnProperty.call(b, keys[i])) {
         return false;
       }
     }
@@ -7557,19 +7532,6 @@ function deepEqual(a, b) {
     return true;
   }
   return a !== a && b !== b;
-}
-
-function getDPR(element) {
-  if (typeof window === 'undefined') {
-    return 1;
-  }
-  const win = element.ownerDocument.defaultView || window;
-  return win.devicePixelRatio || 1;
-}
-
-function roundByDPR(element, value) {
-  const dpr = getDPR(element);
-  return Math.round(value * dpr) / dpr;
 }
 
 function useLatestRef$1(value) {
@@ -7593,17 +7555,12 @@ function useFloating$1(options) {
     strategy = 'absolute',
     middleware = [],
     platform,
-    elements: {
-      reference: externalReference,
-      floating: externalFloating
-    } = {},
-    transform = true,
     whileElementsMounted,
     open
   } = options;
   const [data, setData] = React.useState({
-    x: 0,
-    y: 0,
+    x: null,
+    y: null,
     strategy,
     placement,
     middlewareData: {},
@@ -7613,27 +7570,25 @@ function useFloating$1(options) {
   if (!deepEqual(latestMiddleware, middleware)) {
     setLatestMiddleware(middleware);
   }
-  const [_reference, _setReference] = React.useState(null);
-  const [_floating, _setFloating] = React.useState(null);
-  const setReference = React.useCallback(node => {
-    if (node != referenceRef.current) {
-      referenceRef.current = node;
-      _setReference(node);
-    }
-  }, [_setReference]);
-  const setFloating = React.useCallback(node => {
-    if (node !== floatingRef.current) {
-      floatingRef.current = node;
-      _setFloating(node);
-    }
-  }, [_setFloating]);
-  const referenceEl = externalReference || _reference;
-  const floatingEl = externalFloating || _floating;
   const referenceRef = React.useRef(null);
   const floatingRef = React.useRef(null);
   const dataRef = React.useRef(data);
   const whileElementsMountedRef = useLatestRef$1(whileElementsMounted);
   const platformRef = useLatestRef$1(platform);
+  const [reference, _setReference] = React.useState(null);
+  const [floating, _setFloating] = React.useState(null);
+  const setReference = React.useCallback(node => {
+    if (referenceRef.current !== node) {
+      referenceRef.current = node;
+      _setReference(node);
+    }
+  }, []);
+  const setFloating = React.useCallback(node => {
+    if (floatingRef.current !== node) {
+      floatingRef.current = node;
+      _setFloating(node);
+    }
+  }, []);
   const update = React.useCallback(() => {
     if (!referenceRef.current || !floatingRef.current) {
       return;
@@ -7676,16 +7631,14 @@ function useFloating$1(options) {
     };
   }, []);
   index$1(() => {
-    if (referenceEl) referenceRef.current = referenceEl;
-    if (floatingEl) floatingRef.current = floatingEl;
-    if (referenceEl && floatingEl) {
+    if (reference && floating) {
       if (whileElementsMountedRef.current) {
-        return whileElementsMountedRef.current(referenceEl, floatingEl, update);
+        return whileElementsMountedRef.current(reference, floating, update);
       } else {
         update();
       }
     }
-  }, [referenceEl, floatingEl, update, whileElementsMountedRef]);
+  }, [reference, floating, update, whileElementsMountedRef]);
   const refs = React.useMemo(() => ({
     reference: referenceRef,
     floating: floatingRef,
@@ -7693,42 +7646,17 @@ function useFloating$1(options) {
     setFloating
   }), [setReference, setFloating]);
   const elements = React.useMemo(() => ({
-    reference: referenceEl,
-    floating: floatingEl
-  }), [referenceEl, floatingEl]);
-  const floatingStyles = React.useMemo(() => {
-    const initialStyles = {
-      position: strategy,
-      left: 0,
-      top: 0
-    };
-    if (!elements.floating) {
-      return initialStyles;
-    }
-    const x = roundByDPR(elements.floating, data.x);
-    const y = roundByDPR(elements.floating, data.y);
-    if (transform) {
-      return {
-        ...initialStyles,
-        transform: "translate(" + x + "px, " + y + "px)",
-        ...(getDPR(elements.floating) >= 1.5 && {
-          willChange: 'transform'
-        })
-      };
-    }
-    return {
-      position: strategy,
-      left: x,
-      top: y
-    };
-  }, [strategy, transform, elements.floating, data.x, data.y]);
+    reference,
+    floating
+  }), [reference, floating]);
   return React.useMemo(() => ({
     ...data,
     update,
     refs,
     elements,
-    floatingStyles
-  }), [data, update, refs, elements, floatingStyles]);
+    reference: setReference,
+    floating: setFloating
+  }), [data, update, refs, elements, setReference, setFloating]);
 }
 
 var getDefaultParent = function (originalTarget) {
@@ -7860,600 +7788,41 @@ var hideOthers = function (originalTarget, parentNode, markerName) {
     targets.push.apply(targets, Array.from(activeParentNode.querySelectorAll('[aria-live]')));
     return applyAttributeToOthers(targets, activeParentNode, markerName, 'aria-hidden');
 };
-/**
- * Marks everything except given node(or nodes) as inert
- * @param {Element | Element[]} originalTarget - elements to keep on the page
- * @param [parentNode] - top element, defaults to document.body
- * @param {String} [markerName] - a special attribute to mark every node
- * @return {Undo} undo command
- */
-var inertOthers = function (originalTarget, parentNode, markerName) {
-    if (markerName === void 0) { markerName = 'data-inert-ed'; }
-    var activeParentNode = parentNode || getDefaultParent(originalTarget);
-    if (!activeParentNode) {
-        return function () { return null; };
-    }
-    return applyAttributeToOthers(originalTarget, activeParentNode, markerName, 'inert');
-};
-/**
- * @returns if current browser supports inert
- */
-var supportsInert = function () {
-    return typeof HTMLElement !== 'undefined' && HTMLElement.prototype.hasOwnProperty('inert');
-};
-/**
- * Automatic function to "suppress" DOM elements - _hide_ or _inert_ in the best possible way
- * @param {Element | Element[]} originalTarget - elements to keep on the page
- * @param [parentNode] - top element, defaults to document.body
- * @param {String} [markerName] - a special attribute to mark every node
- * @return {Undo} undo command
- */
-var suppressOthers = function (originalTarget, parentNode, markerName) {
-    if (markerName === void 0) { markerName = 'data-suppressed'; }
-    return (supportsInert() ? inertOthers : hideOthers)(originalTarget, parentNode, markerName);
-};
-
-/*!
-* tabbable 6.2.0
-* @license MIT, https://github.com/focus-trap/tabbable/blob/master/LICENSE
-*/
-// NOTE: separate `:not()` selectors has broader browser support than the newer
-//  `:not([inert], [inert] *)` (Feb 2023)
-// CAREFUL: JSDom does not support `:not([inert] *)` as a selector; using it causes
-//  the entire query to fail, resulting in no nodes found, which will break a lot
-//  of things... so we have to rely on JS to identify nodes inside an inert container
-var candidateSelectors = ['input:not([inert])', 'select:not([inert])', 'textarea:not([inert])', 'a[href]:not([inert])', 'button:not([inert])', '[tabindex]:not(slot):not([inert])', 'audio[controls]:not([inert])', 'video[controls]:not([inert])', '[contenteditable]:not([contenteditable="false"]):not([inert])', 'details>summary:first-of-type:not([inert])', 'details:not([inert])'];
-var candidateSelector = /* #__PURE__ */candidateSelectors.join(',');
-var NoElement = typeof Element === 'undefined';
-var matches = NoElement ? function () {} : Element.prototype.matches || Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
-var getRootNode = !NoElement && Element.prototype.getRootNode ? function (element) {
-  var _element$getRootNode;
-  return element === null || element === void 0 ? void 0 : (_element$getRootNode = element.getRootNode) === null || _element$getRootNode === void 0 ? void 0 : _element$getRootNode.call(element);
-} : function (element) {
-  return element === null || element === void 0 ? void 0 : element.ownerDocument;
-};
-
-/**
- * Determines if a node is inert or in an inert ancestor.
- * @param {Element} [node]
- * @param {boolean} [lookUp] If true and `node` is not inert, looks up at ancestors to
- *  see if any of them are inert. If false, only `node` itself is considered.
- * @returns {boolean} True if inert itself or by way of being in an inert ancestor.
- *  False if `node` is falsy.
- */
-var isInert = function isInert(node, lookUp) {
-  var _node$getAttribute;
-  if (lookUp === void 0) {
-    lookUp = true;
-  }
-  // CAREFUL: JSDom does not support inert at all, so we can't use the `HTMLElement.inert`
-  //  JS API property; we have to check the attribute, which can either be empty or 'true';
-  //  if it's `null` (not specified) or 'false', it's an active element
-  var inertAtt = node === null || node === void 0 ? void 0 : (_node$getAttribute = node.getAttribute) === null || _node$getAttribute === void 0 ? void 0 : _node$getAttribute.call(node, 'inert');
-  var inert = inertAtt === '' || inertAtt === 'true';
-
-  // NOTE: this could also be handled with `node.matches('[inert], :is([inert] *)')`
-  //  if it weren't for `matches()` not being a function on shadow roots; the following
-  //  code works for any kind of node
-  // CAREFUL: JSDom does not appear to support certain selectors like `:not([inert] *)`
-  //  so it likely would not support `:is([inert] *)` either...
-  var result = inert || lookUp && node && isInert(node.parentNode); // recursive
-
-  return result;
-};
-
-/**
- * Determines if a node's content is editable.
- * @param {Element} [node]
- * @returns True if it's content-editable; false if it's not or `node` is falsy.
- */
-var isContentEditable = function isContentEditable(node) {
-  var _node$getAttribute2;
-  // CAREFUL: JSDom does not support the `HTMLElement.isContentEditable` API so we have
-  //  to use the attribute directly to check for this, which can either be empty or 'true';
-  //  if it's `null` (not specified) or 'false', it's a non-editable element
-  var attValue = node === null || node === void 0 ? void 0 : (_node$getAttribute2 = node.getAttribute) === null || _node$getAttribute2 === void 0 ? void 0 : _node$getAttribute2.call(node, 'contenteditable');
-  return attValue === '' || attValue === 'true';
-};
-
-/**
- * @param {Element} el container to check in
- * @param {boolean} includeContainer add container to check
- * @param {(node: Element) => boolean} filter filter candidates
- * @returns {Element[]}
- */
-var getCandidates = function getCandidates(el, includeContainer, filter) {
-  // even if `includeContainer=false`, we still have to check it for inertness because
-  //  if it's inert, all its children are inert
-  if (isInert(el)) {
-    return [];
-  }
-  var candidates = Array.prototype.slice.apply(el.querySelectorAll(candidateSelector));
-  if (includeContainer && matches.call(el, candidateSelector)) {
-    candidates.unshift(el);
-  }
-  candidates = candidates.filter(filter);
-  return candidates;
-};
-
-/**
- * @callback GetShadowRoot
- * @param {Element} element to check for shadow root
- * @returns {ShadowRoot|boolean} ShadowRoot if available or boolean indicating if a shadowRoot is attached but not available.
- */
-
-/**
- * @callback ShadowRootFilter
- * @param {Element} shadowHostNode the element which contains shadow content
- * @returns {boolean} true if a shadow root could potentially contain valid candidates.
- */
-
-/**
- * @typedef {Object} CandidateScope
- * @property {Element} scopeParent contains inner candidates
- * @property {Element[]} candidates list of candidates found in the scope parent
- */
-
-/**
- * @typedef {Object} IterativeOptions
- * @property {GetShadowRoot|boolean} getShadowRoot true if shadow support is enabled; falsy if not;
- *  if a function, implies shadow support is enabled and either returns the shadow root of an element
- *  or a boolean stating if it has an undisclosed shadow root
- * @property {(node: Element) => boolean} filter filter candidates
- * @property {boolean} flatten if true then result will flatten any CandidateScope into the returned list
- * @property {ShadowRootFilter} shadowRootFilter filter shadow roots;
- */
-
-/**
- * @param {Element[]} elements list of element containers to match candidates from
- * @param {boolean} includeContainer add container list to check
- * @param {IterativeOptions} options
- * @returns {Array.<Element|CandidateScope>}
- */
-var getCandidatesIteratively = function getCandidatesIteratively(elements, includeContainer, options) {
-  var candidates = [];
-  var elementsToCheck = Array.from(elements);
-  while (elementsToCheck.length) {
-    var element = elementsToCheck.shift();
-    if (isInert(element, false)) {
-      // no need to look up since we're drilling down
-      // anything inside this container will also be inert
-      continue;
-    }
-    if (element.tagName === 'SLOT') {
-      // add shadow dom slot scope (slot itself cannot be focusable)
-      var assigned = element.assignedElements();
-      var content = assigned.length ? assigned : element.children;
-      var nestedCandidates = getCandidatesIteratively(content, true, options);
-      if (options.flatten) {
-        candidates.push.apply(candidates, nestedCandidates);
-      } else {
-        candidates.push({
-          scopeParent: element,
-          candidates: nestedCandidates
-        });
-      }
-    } else {
-      // check candidate element
-      var validCandidate = matches.call(element, candidateSelector);
-      if (validCandidate && options.filter(element) && (includeContainer || !elements.includes(element))) {
-        candidates.push(element);
-      }
-
-      // iterate over shadow content if possible
-      var shadowRoot = element.shadowRoot ||
-      // check for an undisclosed shadow
-      typeof options.getShadowRoot === 'function' && options.getShadowRoot(element);
-
-      // no inert look up because we're already drilling down and checking for inertness
-      //  on the way down, so all containers to this root node should have already been
-      //  vetted as non-inert
-      var validShadowRoot = !isInert(shadowRoot, false) && (!options.shadowRootFilter || options.shadowRootFilter(element));
-      if (shadowRoot && validShadowRoot) {
-        // add shadow dom scope IIF a shadow root node was given; otherwise, an undisclosed
-        //  shadow exists, so look at light dom children as fallback BUT create a scope for any
-        //  child candidates found because they're likely slotted elements (elements that are
-        //  children of the web component element (which has the shadow), in the light dom, but
-        //  slotted somewhere _inside_ the undisclosed shadow) -- the scope is created below,
-        //  _after_ we return from this recursive call
-        var _nestedCandidates = getCandidatesIteratively(shadowRoot === true ? element.children : shadowRoot.children, true, options);
-        if (options.flatten) {
-          candidates.push.apply(candidates, _nestedCandidates);
-        } else {
-          candidates.push({
-            scopeParent: element,
-            candidates: _nestedCandidates
-          });
-        }
-      } else {
-        // there's not shadow so just dig into the element's (light dom) children
-        //  __without__ giving the element special scope treatment
-        elementsToCheck.unshift.apply(elementsToCheck, element.children);
-      }
-    }
-  }
-  return candidates;
-};
-
-/**
- * @private
- * Determines if the node has an explicitly specified `tabindex` attribute.
- * @param {HTMLElement} node
- * @returns {boolean} True if so; false if not.
- */
-var hasTabIndex = function hasTabIndex(node) {
-  return !isNaN(parseInt(node.getAttribute('tabindex'), 10));
-};
-
-/**
- * Determine the tab index of a given node.
- * @param {HTMLElement} node
- * @returns {number} Tab order (negative, 0, or positive number).
- * @throws {Error} If `node` is falsy.
- */
-var getTabIndex = function getTabIndex(node) {
-  if (!node) {
-    throw new Error('No node provided');
-  }
-  if (node.tabIndex < 0) {
-    // in Chrome, <details/>, <audio controls/> and <video controls/> elements get a default
-    // `tabIndex` of -1 when the 'tabindex' attribute isn't specified in the DOM,
-    // yet they are still part of the regular tab order; in FF, they get a default
-    // `tabIndex` of 0; since Chrome still puts those elements in the regular tab
-    // order, consider their tab index to be 0.
-    // Also browsers do not return `tabIndex` correctly for contentEditable nodes;
-    // so if they don't have a tabindex attribute specifically set, assume it's 0.
-    if ((/^(AUDIO|VIDEO|DETAILS)$/.test(node.tagName) || isContentEditable(node)) && !hasTabIndex(node)) {
-      return 0;
-    }
-  }
-  return node.tabIndex;
-};
-
-/**
- * Determine the tab index of a given node __for sort order purposes__.
- * @param {HTMLElement} node
- * @param {boolean} [isScope] True for a custom element with shadow root or slot that, by default,
- *  has tabIndex -1, but needs to be sorted by document order in order for its content to be
- *  inserted into the correct sort position.
- * @returns {number} Tab order (negative, 0, or positive number).
- */
-var getSortOrderTabIndex = function getSortOrderTabIndex(node, isScope) {
-  var tabIndex = getTabIndex(node);
-  if (tabIndex < 0 && isScope && !hasTabIndex(node)) {
-    return 0;
-  }
-  return tabIndex;
-};
-var sortOrderedTabbables = function sortOrderedTabbables(a, b) {
-  return a.tabIndex === b.tabIndex ? a.documentOrder - b.documentOrder : a.tabIndex - b.tabIndex;
-};
-var isInput = function isInput(node) {
-  return node.tagName === 'INPUT';
-};
-var isHiddenInput = function isHiddenInput(node) {
-  return isInput(node) && node.type === 'hidden';
-};
-var isDetailsWithSummary = function isDetailsWithSummary(node) {
-  var r = node.tagName === 'DETAILS' && Array.prototype.slice.apply(node.children).some(function (child) {
-    return child.tagName === 'SUMMARY';
-  });
-  return r;
-};
-var getCheckedRadio = function getCheckedRadio(nodes, form) {
-  for (var i = 0; i < nodes.length; i++) {
-    if (nodes[i].checked && nodes[i].form === form) {
-      return nodes[i];
-    }
-  }
-};
-var isTabbableRadio = function isTabbableRadio(node) {
-  if (!node.name) {
-    return true;
-  }
-  var radioScope = node.form || getRootNode(node);
-  var queryRadios = function queryRadios(name) {
-    return radioScope.querySelectorAll('input[type="radio"][name="' + name + '"]');
-  };
-  var radioSet;
-  if (typeof window !== 'undefined' && typeof window.CSS !== 'undefined' && typeof window.CSS.escape === 'function') {
-    radioSet = queryRadios(window.CSS.escape(node.name));
-  } else {
-    try {
-      radioSet = queryRadios(node.name);
-    } catch (err) {
-      // eslint-disable-next-line no-console
-      console.error('Looks like you have a radio button with a name attribute containing invalid CSS selector characters and need the CSS.escape polyfill: %s', err.message);
-      return false;
-    }
-  }
-  var checked = getCheckedRadio(radioSet, node.form);
-  return !checked || checked === node;
-};
-var isRadio = function isRadio(node) {
-  return isInput(node) && node.type === 'radio';
-};
-var isNonTabbableRadio = function isNonTabbableRadio(node) {
-  return isRadio(node) && !isTabbableRadio(node);
-};
-
-// determines if a node is ultimately attached to the window's document
-var isNodeAttached = function isNodeAttached(node) {
-  var _nodeRoot;
-  // The root node is the shadow root if the node is in a shadow DOM; some document otherwise
-  //  (but NOT _the_ document; see second 'If' comment below for more).
-  // If rootNode is shadow root, it'll have a host, which is the element to which the shadow
-  //  is attached, and the one we need to check if it's in the document or not (because the
-  //  shadow, and all nodes it contains, is never considered in the document since shadows
-  //  behave like self-contained DOMs; but if the shadow's HOST, which is part of the document,
-  //  is hidden, or is not in the document itself but is detached, it will affect the shadow's
-  //  visibility, including all the nodes it contains). The host could be any normal node,
-  //  or a custom element (i.e. web component). Either way, that's the one that is considered
-  //  part of the document, not the shadow root, nor any of its children (i.e. the node being
-  //  tested).
-  // To further complicate things, we have to look all the way up until we find a shadow HOST
-  //  that is attached (or find none) because the node might be in nested shadows...
-  // If rootNode is not a shadow root, it won't have a host, and so rootNode should be the
-  //  document (per the docs) and while it's a Document-type object, that document does not
-  //  appear to be the same as the node's `ownerDocument` for some reason, so it's safer
-  //  to ignore the rootNode at this point, and use `node.ownerDocument`. Otherwise,
-  //  using `rootNode.contains(node)` will _always_ be true we'll get false-positives when
-  //  node is actually detached.
-  // NOTE: If `nodeRootHost` or `node` happens to be the `document` itself (which is possible
-  //  if a tabbable/focusable node was quickly added to the DOM, focused, and then removed
-  //  from the DOM as in https://github.com/focus-trap/focus-trap-react/issues/905), then
-  //  `ownerDocument` will be `null`, hence the optional chaining on it.
-  var nodeRoot = node && getRootNode(node);
-  var nodeRootHost = (_nodeRoot = nodeRoot) === null || _nodeRoot === void 0 ? void 0 : _nodeRoot.host;
-
-  // in some cases, a detached node will return itself as the root instead of a document or
-  //  shadow root object, in which case, we shouldn't try to look further up the host chain
-  var attached = false;
-  if (nodeRoot && nodeRoot !== node) {
-    var _nodeRootHost, _nodeRootHost$ownerDo, _node$ownerDocument;
-    attached = !!((_nodeRootHost = nodeRootHost) !== null && _nodeRootHost !== void 0 && (_nodeRootHost$ownerDo = _nodeRootHost.ownerDocument) !== null && _nodeRootHost$ownerDo !== void 0 && _nodeRootHost$ownerDo.contains(nodeRootHost) || node !== null && node !== void 0 && (_node$ownerDocument = node.ownerDocument) !== null && _node$ownerDocument !== void 0 && _node$ownerDocument.contains(node));
-    while (!attached && nodeRootHost) {
-      var _nodeRoot2, _nodeRootHost2, _nodeRootHost2$ownerD;
-      // since it's not attached and we have a root host, the node MUST be in a nested shadow DOM,
-      //  which means we need to get the host's host and check if that parent host is contained
-      //  in (i.e. attached to) the document
-      nodeRoot = getRootNode(nodeRootHost);
-      nodeRootHost = (_nodeRoot2 = nodeRoot) === null || _nodeRoot2 === void 0 ? void 0 : _nodeRoot2.host;
-      attached = !!((_nodeRootHost2 = nodeRootHost) !== null && _nodeRootHost2 !== void 0 && (_nodeRootHost2$ownerD = _nodeRootHost2.ownerDocument) !== null && _nodeRootHost2$ownerD !== void 0 && _nodeRootHost2$ownerD.contains(nodeRootHost));
-    }
-  }
-  return attached;
-};
-var isZeroArea = function isZeroArea(node) {
-  var _node$getBoundingClie = node.getBoundingClientRect(),
-    width = _node$getBoundingClie.width,
-    height = _node$getBoundingClie.height;
-  return width === 0 && height === 0;
-};
-var isHidden = function isHidden(node, _ref) {
-  var displayCheck = _ref.displayCheck,
-    getShadowRoot = _ref.getShadowRoot;
-  // NOTE: visibility will be `undefined` if node is detached from the document
-  //  (see notes about this further down), which means we will consider it visible
-  //  (this is legacy behavior from a very long way back)
-  // NOTE: we check this regardless of `displayCheck="none"` because this is a
-  //  _visibility_ check, not a _display_ check
-  if (getComputedStyle(node).visibility === 'hidden') {
-    return true;
-  }
-  var isDirectSummary = matches.call(node, 'details>summary:first-of-type');
-  var nodeUnderDetails = isDirectSummary ? node.parentElement : node;
-  if (matches.call(nodeUnderDetails, 'details:not([open]) *')) {
-    return true;
-  }
-  if (!displayCheck || displayCheck === 'full' || displayCheck === 'legacy-full') {
-    if (typeof getShadowRoot === 'function') {
-      // figure out if we should consider the node to be in an undisclosed shadow and use the
-      //  'non-zero-area' fallback
-      var originalNode = node;
-      while (node) {
-        var parentElement = node.parentElement;
-        var rootNode = getRootNode(node);
-        if (parentElement && !parentElement.shadowRoot && getShadowRoot(parentElement) === true // check if there's an undisclosed shadow
-        ) {
-          // node has an undisclosed shadow which means we can only treat it as a black box, so we
-          //  fall back to a non-zero-area test
-          return isZeroArea(node);
-        } else if (node.assignedSlot) {
-          // iterate up slot
-          node = node.assignedSlot;
-        } else if (!parentElement && rootNode !== node.ownerDocument) {
-          // cross shadow boundary
-          node = rootNode.host;
-        } else {
-          // iterate up normal dom
-          node = parentElement;
-        }
-      }
-      node = originalNode;
-    }
-    // else, `getShadowRoot` might be true, but all that does is enable shadow DOM support
-    //  (i.e. it does not also presume that all nodes might have undisclosed shadows); or
-    //  it might be a falsy value, which means shadow DOM support is disabled
-
-    // Since we didn't find it sitting in an undisclosed shadow (or shadows are disabled)
-    //  now we can just test to see if it would normally be visible or not, provided it's
-    //  attached to the main document.
-    // NOTE: We must consider case where node is inside a shadow DOM and given directly to
-    //  `isTabbable()` or `isFocusable()` -- regardless of `getShadowRoot` option setting.
-
-    if (isNodeAttached(node)) {
-      // this works wherever the node is: if there's at least one client rect, it's
-      //  somehow displayed; it also covers the CSS 'display: contents' case where the
-      //  node itself is hidden in place of its contents; and there's no need to search
-      //  up the hierarchy either
-      return !node.getClientRects().length;
-    }
-
-    // Else, the node isn't attached to the document, which means the `getClientRects()`
-    //  API will __always__ return zero rects (this can happen, for example, if React
-    //  is used to render nodes onto a detached tree, as confirmed in this thread:
-    //  https://github.com/facebook/react/issues/9117#issuecomment-284228870)
-    //
-    // It also means that even window.getComputedStyle(node).display will return `undefined`
-    //  because styles are only computed for nodes that are in the document.
-    //
-    // NOTE: THIS HAS BEEN THE CASE FOR YEARS. It is not new, nor is it caused by tabbable
-    //  somehow. Though it was never stated officially, anyone who has ever used tabbable
-    //  APIs on nodes in detached containers has actually implicitly used tabbable in what
-    //  was later (as of v5.2.0 on Apr 9, 2021) called `displayCheck="none"` mode -- essentially
-    //  considering __everything__ to be visible because of the innability to determine styles.
-    //
-    // v6.0.0: As of this major release, the default 'full' option __no longer treats detached
-    //  nodes as visible with the 'none' fallback.__
-    if (displayCheck !== 'legacy-full') {
-      return true; // hidden
-    }
-    // else, fallback to 'none' mode and consider the node visible
-  } else if (displayCheck === 'non-zero-area') {
-    // NOTE: Even though this tests that the node's client rect is non-zero to determine
-    //  whether it's displayed, and that a detached node will __always__ have a zero-area
-    //  client rect, we don't special-case for whether the node is attached or not. In
-    //  this mode, we do want to consider nodes that have a zero area to be hidden at all
-    //  times, and that includes attached or not.
-    return isZeroArea(node);
-  }
-
-  // visible, as far as we can tell, or per current `displayCheck=none` mode, we assume
-  //  it's visible
-  return false;
-};
-
-// form fields (nested) inside a disabled fieldset are not focusable/tabbable
-//  unless they are in the _first_ <legend> element of the top-most disabled
-//  fieldset
-var isDisabledFromFieldset = function isDisabledFromFieldset(node) {
-  if (/^(INPUT|BUTTON|SELECT|TEXTAREA)$/.test(node.tagName)) {
-    var parentNode = node.parentElement;
-    // check if `node` is contained in a disabled <fieldset>
-    while (parentNode) {
-      if (parentNode.tagName === 'FIELDSET' && parentNode.disabled) {
-        // look for the first <legend> among the children of the disabled <fieldset>
-        for (var i = 0; i < parentNode.children.length; i++) {
-          var child = parentNode.children.item(i);
-          // when the first <legend> (in document order) is found
-          if (child.tagName === 'LEGEND') {
-            // if its parent <fieldset> is not nested in another disabled <fieldset>,
-            // return whether `node` is a descendant of its first <legend>
-            return matches.call(parentNode, 'fieldset[disabled] *') ? true : !child.contains(node);
-          }
-        }
-        // the disabled <fieldset> containing `node` has no <legend>
-        return true;
-      }
-      parentNode = parentNode.parentElement;
-    }
-  }
-
-  // else, node's tabbable/focusable state should not be affected by a fieldset's
-  //  enabled/disabled state
-  return false;
-};
-var isNodeMatchingSelectorFocusable = function isNodeMatchingSelectorFocusable(options, node) {
-  if (node.disabled ||
-  // we must do an inert look up to filter out any elements inside an inert ancestor
-  //  because we're limited in the type of selectors we can use in JSDom (see related
-  //  note related to `candidateSelectors`)
-  isInert(node) || isHiddenInput(node) || isHidden(node, options) ||
-  // For a details element with a summary, the summary element gets the focus
-  isDetailsWithSummary(node) || isDisabledFromFieldset(node)) {
-    return false;
-  }
-  return true;
-};
-var isNodeMatchingSelectorTabbable = function isNodeMatchingSelectorTabbable(options, node) {
-  if (isNonTabbableRadio(node) || getTabIndex(node) < 0 || !isNodeMatchingSelectorFocusable(options, node)) {
-    return false;
-  }
-  return true;
-};
-var isValidShadowRootTabbable = function isValidShadowRootTabbable(shadowHostNode) {
-  var tabIndex = parseInt(shadowHostNode.getAttribute('tabindex'), 10);
-  if (isNaN(tabIndex) || tabIndex >= 0) {
-    return true;
-  }
-  // If a custom element has an explicit negative tabindex,
-  // browsers will not allow tab targeting said element's children.
-  return false;
-};
-
-/**
- * @param {Array.<Element|CandidateScope>} candidates
- * @returns Element[]
- */
-var sortByOrder = function sortByOrder(candidates) {
-  var regularTabbables = [];
-  var orderedTabbables = [];
-  candidates.forEach(function (item, i) {
-    var isScope = !!item.scopeParent;
-    var element = isScope ? item.scopeParent : item;
-    var candidateTabindex = getSortOrderTabIndex(element, isScope);
-    var elements = isScope ? sortByOrder(item.candidates) : element;
-    if (candidateTabindex === 0) {
-      isScope ? regularTabbables.push.apply(regularTabbables, elements) : regularTabbables.push(element);
-    } else {
-      orderedTabbables.push({
-        documentOrder: i,
-        tabIndex: candidateTabindex,
-        item: item,
-        isScope: isScope,
-        content: elements
-      });
-    }
-  });
-  return orderedTabbables.sort(sortOrderedTabbables).reduce(function (acc, sortable) {
-    sortable.isScope ? acc.push.apply(acc, sortable.content) : acc.push(sortable.content);
-    return acc;
-  }, []).concat(regularTabbables);
-};
-var tabbable = function tabbable(container, options) {
-  options = options || {};
-  var candidates;
-  if (options.getShadowRoot) {
-    candidates = getCandidatesIteratively([container], options.includeContainer, {
-      filter: isNodeMatchingSelectorTabbable.bind(null, options),
-      flatten: false,
-      getShadowRoot: options.getShadowRoot,
-      shadowRootFilter: isValidShadowRootTabbable
-    });
-  } else {
-    candidates = getCandidates(container, options.includeContainer, isNodeMatchingSelectorTabbable.bind(null, options));
-  }
-  return sortByOrder(candidates);
-};
-
-function _extends$1() {
-  _extends$1 = Object.assign ? Object.assign.bind() : function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-    return target;
-  };
-  return _extends$1.apply(this, arguments);
-}
 
 var index = typeof document !== 'undefined' ? useLayoutEffect : useEffect;
 
+function createPubSub() {
+  const map = new Map();
+  return {
+    emit(event, data) {
+      var _map$get;
+
+      (_map$get = map.get(event)) == null ? void 0 : _map$get.forEach(handler => handler(data));
+    },
+
+    on(event, listener) {
+      map.set(event, [...(map.get(event) || []), listener]);
+    },
+
+    off(event, listener) {
+      map.set(event, (map.get(event) || []).filter(l => l !== listener));
+    }
+
+  };
+}
+
 let serverHandoffComplete = false;
 let count = 0;
+
 const genId = () => "floating-ui-" + count++;
+
 function useFloatingId() {
   const [id, setId] = React.useState(() => serverHandoffComplete ? genId() : undefined);
   index(() => {
     if (id == null) {
       setId(genId());
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    } // eslint-disable-next-line react-hooks/exhaustive-deps
+
   }, []);
   React.useEffect(() => {
     if (!serverHandoffComplete) {
@@ -8461,1160 +7830,344 @@ function useFloatingId() {
     }
   }, []);
   return id;
-}
+} // `toString()` prevents bundlers from trying to `import { useId } from 'react'`
 
-// `toString()` prevents bundlers from trying to `import { useId } from 'react'`
+
 const useReactId = React[/*#__PURE__*/'useId'.toString()];
-
 /**
  * Uses React 18's built-in `useId()` when available, or falls back to a
  * slightly less performant (requiring a double render) implementation for
  * earlier React versions.
  * @see https://floating-ui.com/docs/useId
  */
-const useId = useReactId || useFloatingId;
 
-function createPubSub() {
-  const map = new Map();
-  return {
-    emit(event, data) {
-      var _map$get;
-      (_map$get = map.get(event)) == null ? void 0 : _map$get.forEach(handler => handler(data));
-    },
-    on(event, listener) {
-      map.set(event, [...(map.get(event) || []), listener]);
-    },
-    off(event, listener) {
-      var _map$get2;
-      map.set(event, ((_map$get2 = map.get(event)) == null ? void 0 : _map$get2.filter(l => l !== listener)) || []);
-    }
-  };
-}
+const useId = useReactId != null ? useReactId : useFloatingId;
 
 const FloatingNodeContext = /*#__PURE__*/React.createContext(null);
 const FloatingTreeContext = /*#__PURE__*/React.createContext(null);
 const useFloatingParentNodeId = () => {
-  var _React$useContext;
-  return ((_React$useContext = React.useContext(FloatingNodeContext)) == null ? void 0 : _React$useContext.id) || null;
+  var _React$useContext$id, _React$useContext;
+
+  return (_React$useContext$id = (_React$useContext = React.useContext(FloatingNodeContext)) == null ? void 0 : _React$useContext.id) != null ? _React$useContext$id : null;
 };
 const useFloatingTree = () => React.useContext(FloatingTreeContext);
 
-function getDocument(node) {
-  return (node == null ? void 0 : node.ownerDocument) || document;
-}
+function getDocument(floating) {
+  var _floating$ownerDocume;
 
-// Avoid Chrome DevTools blue warning.
-function getPlatform() {
-  const uaData = navigator.userAgentData;
-  if (uaData != null && uaData.platform) {
-    return uaData.platform;
-  }
-  return navigator.platform;
-}
-function getUserAgent() {
-  const uaData = navigator.userAgentData;
-  if (uaData && Array.isArray(uaData.brands)) {
-    return uaData.brands.map(_ref => {
-      let {
-        brand,
-        version
-      } = _ref;
-      return brand + "/" + version;
-    }).join(' ');
-  }
-  return navigator.userAgent;
+  return (_floating$ownerDocume = floating == null ? void 0 : floating.ownerDocument) != null ? _floating$ownerDocume : document;
 }
 
 function getWindow(value) {
-  return getDocument(value).defaultView || window;
+  var _getDocument$defaultV;
+
+  return (_getDocument$defaultV = getDocument(value).defaultView) != null ? _getDocument$defaultV : window;
 }
+
 function isElement(value) {
-  return value ? value instanceof Element || value instanceof getWindow(value).Element : false;
+  return value ? value instanceof getWindow(value).Element : false;
 }
 function isHTMLElement(value) {
-  return value ? value instanceof HTMLElement || value instanceof getWindow(value).HTMLElement : false;
-}
-function isShadowRoot(node) {
-  // Browsers without `ShadowRoot` support
-  if (typeof ShadowRoot === 'undefined') {
-    return false;
-  }
-  const OwnElement = getWindow(node).ShadowRoot;
-  return node instanceof OwnElement || node instanceof ShadowRoot;
+  return value ? value instanceof getWindow(value).HTMLElement : false;
 }
 
-// License: https://github.com/adobe/react-spectrum/blob/b35d5c02fe900badccd0cf1a8f23bb593419f238/packages/@react-aria/utils/src/isVirtualEvent.ts
-function isVirtualClick(event) {
-  if (event.mozInputSource === 0 && event.isTrusted) {
-    return true;
-  }
-  const androidRe = /Android/i;
-  if ((androidRe.test(getPlatform()) || androidRe.test(getUserAgent())) && event.pointerType) {
-    return event.type === 'click' && event.buttons === 1;
-  }
-  return event.detail === 0 && !event.pointerType;
-}
-function isVirtualPointerEvent(event) {
-  return event.width === 0 && event.height === 0 || event.width === 1 && event.height === 1 && event.pressure === 0 && event.detail === 0 && event.pointerType !== 'mouse' ||
-  // iOS VoiceOver returns 0.333• for width/height.
-  event.width < 1 && event.height < 1 && event.pressure === 0 && event.detail === 0;
-}
-function isSafari() {
-  // Chrome DevTools does not complain about navigator.vendor
-  return /apple/i.test(navigator.vendor);
-}
-function isMac() {
-  return getPlatform().toLowerCase().startsWith('mac') && !navigator.maxTouchPoints;
-}
-function isMouseLikePointerType(pointerType, strict) {
-  // On some Linux machines with Chromium, mouse inputs return a `pointerType`
-  // of "pen": https://github.com/floating-ui/floating-ui/issues/2015
-  const values = ['mouse', 'pen'];
-  if (!strict) {
-    values.push('', undefined);
-  }
-  return values.includes(pointerType);
-}
-function isReactEvent(event) {
-  return 'nativeEvent' in event;
-}
-
-function contains(parent, child) {
-  if (!parent || !child) {
-    return false;
-  }
-  const rootNode = child.getRootNode && child.getRootNode();
-
-  // First, attempt with faster native method
-  if (parent.contains(child)) {
-    return true;
-  }
-
-  // then fallback to custom implementation with Shadow DOM support
-  if (rootNode && isShadowRoot(rootNode)) {
-    let next = child;
-    while (next) {
-      if (parent === next) {
-        return true;
-      }
-      // @ts-ignore
-      next = next.parentNode || next.host;
+// `toString()` prevents bundlers from trying to `import { useInsertionEffect } from 'react'`
+const useInsertionEffect = React[/*#__PURE__*/'useInsertionEffect'.toString()];
+function useEvent(callback) {
+  const ref = React.useRef(() => {
+    if (process.env.NODE_ENV !== "production") {
+      throw new Error('Cannot call an event handler while rendering.');
     }
-  }
-
-  // Give up, the result is false
-  return false;
-}
-
-function createAttribute(name) {
-  return "data-floating-ui-" + name;
-}
-
-function useLatestRef(value) {
-  const ref = useRef(value);
-  index(() => {
-    ref.current = value;
   });
-  return ref;
+
+  if (useInsertionEffect) {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useInsertionEffect(() => {
+      ref.current = callback;
+    });
+  } else {
+    ref.current = callback;
+  }
+
+  return React.useCallback(function () {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return ref.current == null ? void 0 : ref.current(...args);
+  }, []);
 }
 
-const safePolygonIdentifier = /*#__PURE__*/createAttribute('safe-polygon');
-function getDelay(value, prop, pointerType) {
-  if (pointerType && !isMouseLikePointerType(pointerType)) {
-    return 0;
-  }
-  if (typeof value === 'number') {
-    return value;
-  }
-  return value == null ? void 0 : value[prop];
-}
-/**
- * Opens the floating element while hovering over the reference element, like
- * CSS `:hover`.
- * @see https://floating-ui.com/docs/useHover
- */
-function useHover(context, props) {
-  if (props === void 0) {
-    props = {};
-  }
-  const {
+function useFloating(_temp) {
+  let {
+    open = false,
+    onOpenChange: unstable_onOpenChange,
+    whileElementsMounted,
+    placement,
+    middleware,
+    strategy,
+    nodeId
+  } = _temp === void 0 ? {} : _temp;
+  const [domReference, setDomReference] = React.useState(null);
+  const tree = useFloatingTree();
+  const domReferenceRef = React.useRef(null);
+  const dataRef = React.useRef({});
+  const events = React.useState(() => createPubSub())[0];
+  const position = useFloating$1({
+    placement,
+    middleware,
+    strategy,
+    whileElementsMounted
+  });
+  const onOpenChange = useEvent(unstable_onOpenChange);
+  const refs = React.useMemo(() => ({ ...position.refs,
+    domReference: domReferenceRef
+  }), [position.refs]);
+  const context = React.useMemo(() => ({ ...position,
+    refs,
+    dataRef,
+    nodeId,
+    events,
     open,
     onOpenChange,
-    dataRef,
-    events,
-    elements: {
-      domReference,
-      floating
-    },
-    refs
-  } = context;
-  const {
-    enabled = true,
-    delay = 0,
-    handleClose = null,
-    mouseOnly = false,
-    restMs = 0,
-    move = true
-  } = props;
-  const tree = useFloatingTree();
-  const parentId = useFloatingParentNodeId();
-  const handleCloseRef = useLatestRef(handleClose);
-  const delayRef = useLatestRef(delay);
-  const pointerTypeRef = React.useRef();
-  const timeoutRef = React.useRef();
-  const handlerRef = React.useRef();
-  const restTimeoutRef = React.useRef();
-  const blockMouseMoveRef = React.useRef(true);
-  const performedPointerEventsMutationRef = React.useRef(false);
-  const unbindMouseMoveRef = React.useRef(() => {});
-  const isHoverOpen = React.useCallback(() => {
-    var _dataRef$current$open;
-    const type = (_dataRef$current$open = dataRef.current.openEvent) == null ? void 0 : _dataRef$current$open.type;
-    return (type == null ? void 0 : type.includes('mouse')) && type !== 'mousedown';
-  }, [dataRef]);
-
-  // When dismissing before opening, clear the delay timeouts to cancel it
-  // from showing.
-  React.useEffect(() => {
-    if (!enabled) {
-      return;
+    _: {
+      domReference
     }
-    function onDismiss() {
-      clearTimeout(timeoutRef.current);
-      clearTimeout(restTimeoutRef.current);
-      blockMouseMoveRef.current = true;
-    }
-    events.on('dismiss', onDismiss);
-    return () => {
-      events.off('dismiss', onDismiss);
-    };
-  }, [enabled, events]);
-  React.useEffect(() => {
-    if (!enabled || !handleCloseRef.current || !open) {
-      return;
-    }
-    function onLeave(event) {
-      if (isHoverOpen()) {
-        onOpenChange(false, event);
-      }
-    }
-    const html = getDocument(floating).documentElement;
-    html.addEventListener('mouseleave', onLeave);
-    return () => {
-      html.removeEventListener('mouseleave', onLeave);
-    };
-  }, [floating, open, onOpenChange, enabled, handleCloseRef, dataRef, isHoverOpen]);
-  const closeWithDelay = React.useCallback(function (event, runElseBranch) {
-    if (runElseBranch === void 0) {
-      runElseBranch = true;
-    }
-    const closeDelay = getDelay(delayRef.current, 'close', pointerTypeRef.current);
-    if (closeDelay && !handlerRef.current) {
-      clearTimeout(timeoutRef.current);
-      timeoutRef.current = setTimeout(() => onOpenChange(false, event), closeDelay);
-    } else if (runElseBranch) {
-      clearTimeout(timeoutRef.current);
-      onOpenChange(false, event);
-    }
-  }, [delayRef, onOpenChange]);
-  const cleanupMouseMoveHandler = React.useCallback(() => {
-    unbindMouseMoveRef.current();
-    handlerRef.current = undefined;
-  }, []);
-  const clearPointerEvents = React.useCallback(() => {
-    if (performedPointerEventsMutationRef.current) {
-      const body = getDocument(refs.floating.current).body;
-      body.style.pointerEvents = '';
-      body.removeAttribute(safePolygonIdentifier);
-      performedPointerEventsMutationRef.current = false;
-    }
-  }, [refs]);
-
-  // Registering the mouse events on the reference directly to bypass React's
-  // delegation system. If the cursor was on a disabled element and then entered
-  // the reference (no gap), `mouseenter` doesn't fire in the delegation system.
-  React.useEffect(() => {
-    if (!enabled) {
-      return;
-    }
-    function isClickLikeOpenEvent() {
-      return dataRef.current.openEvent ? ['click', 'mousedown'].includes(dataRef.current.openEvent.type) : false;
-    }
-    function onMouseEnter(event) {
-      clearTimeout(timeoutRef.current);
-      blockMouseMoveRef.current = false;
-      if (mouseOnly && !isMouseLikePointerType(pointerTypeRef.current) || restMs > 0 && getDelay(delayRef.current, 'open') === 0) {
-        return;
-      }
-      const openDelay = getDelay(delayRef.current, 'open', pointerTypeRef.current);
-      if (openDelay) {
-        timeoutRef.current = setTimeout(() => {
-          onOpenChange(true, event);
-        }, openDelay);
-      } else {
-        onOpenChange(true, event);
-      }
-    }
-    function onMouseLeave(event) {
-      if (isClickLikeOpenEvent()) {
-        return;
-      }
-      unbindMouseMoveRef.current();
-      const doc = getDocument(floating);
-      clearTimeout(restTimeoutRef.current);
-      if (handleCloseRef.current) {
-        // Prevent clearing `onScrollMouseLeave` timeout.
-        if (!open) {
-          clearTimeout(timeoutRef.current);
-        }
-        handlerRef.current = handleCloseRef.current({
-          ...context,
-          tree,
-          x: event.clientX,
-          y: event.clientY,
-          onClose() {
-            clearPointerEvents();
-            cleanupMouseMoveHandler();
-            // Should the event expose that it was closed by `safePolygon`?
-            closeWithDelay(event);
-          }
-        });
-        const handler = handlerRef.current;
-        doc.addEventListener('mousemove', handler);
-        unbindMouseMoveRef.current = () => {
-          doc.removeEventListener('mousemove', handler);
-        };
-        return;
-      }
-
-      // Allow interactivity without `safePolygon` on touch devices. With a
-      // pointer, a short close delay is an alternative, so it should work
-      // consistently.
-      const shouldClose = pointerTypeRef.current === 'touch' ? !contains(floating, event.relatedTarget) : true;
-      if (shouldClose) {
-        closeWithDelay(event);
-      }
-    }
-
-    // Ensure the floating element closes after scrolling even if the pointer
-    // did not move.
-    // https://github.com/floating-ui/floating-ui/discussions/1692
-    function onScrollMouseLeave(event) {
-      if (isClickLikeOpenEvent()) {
-        return;
-      }
-      handleCloseRef.current == null ? void 0 : handleCloseRef.current({
-        ...context,
-        tree,
-        x: event.clientX,
-        y: event.clientY,
-        onClose() {
-          clearPointerEvents();
-          cleanupMouseMoveHandler();
-          closeWithDelay(event);
-        }
-      })(event);
-    }
-    if (isElement(domReference)) {
-      const ref = domReference;
-      open && ref.addEventListener('mouseleave', onScrollMouseLeave);
-      floating == null ? void 0 : floating.addEventListener('mouseleave', onScrollMouseLeave);
-      move && ref.addEventListener('mousemove', onMouseEnter, {
-        once: true
-      });
-      ref.addEventListener('mouseenter', onMouseEnter);
-      ref.addEventListener('mouseleave', onMouseLeave);
-      return () => {
-        open && ref.removeEventListener('mouseleave', onScrollMouseLeave);
-        floating == null ? void 0 : floating.removeEventListener('mouseleave', onScrollMouseLeave);
-        move && ref.removeEventListener('mousemove', onMouseEnter);
-        ref.removeEventListener('mouseenter', onMouseEnter);
-        ref.removeEventListener('mouseleave', onMouseLeave);
-      };
-    }
-  }, [domReference, floating, enabled, context, mouseOnly, restMs, move, closeWithDelay, cleanupMouseMoveHandler, clearPointerEvents, onOpenChange, open, tree, delayRef, handleCloseRef, dataRef]);
-
-  // Block pointer-events of every element other than the reference and floating
-  // while the floating element is open and has a `handleClose` handler. Also
-  // handles nested floating elements.
-  // https://github.com/floating-ui/floating-ui/issues/1722
+  }), [position, nodeId, events, open, onOpenChange, refs, domReference]);
   index(() => {
-    var _handleCloseRef$curre;
-    if (!enabled) {
-      return;
-    }
-    if (open && (_handleCloseRef$curre = handleCloseRef.current) != null && _handleCloseRef$curre.__options.blockPointerEvents && isHoverOpen()) {
-      const body = getDocument(floating).body;
-      body.setAttribute(safePolygonIdentifier, '');
-      body.style.pointerEvents = 'none';
-      performedPointerEventsMutationRef.current = true;
-      if (isElement(domReference) && floating) {
-        var _tree$nodesRef$curren, _tree$nodesRef$curren2;
-        const ref = domReference;
-        const parentFloating = tree == null ? void 0 : (_tree$nodesRef$curren = tree.nodesRef.current.find(node => node.id === parentId)) == null ? void 0 : (_tree$nodesRef$curren2 = _tree$nodesRef$curren.context) == null ? void 0 : _tree$nodesRef$curren2.elements.floating;
-        if (parentFloating) {
-          parentFloating.style.pointerEvents = '';
-        }
-        ref.style.pointerEvents = 'auto';
-        floating.style.pointerEvents = 'auto';
-        return () => {
-          ref.style.pointerEvents = '';
-          floating.style.pointerEvents = '';
-        };
-      }
-    }
-  }, [enabled, open, parentId, floating, domReference, tree, handleCloseRef, dataRef, isHoverOpen]);
-  index(() => {
-    if (!open) {
-      pointerTypeRef.current = undefined;
-      cleanupMouseMoveHandler();
-      clearPointerEvents();
-    }
-  }, [open, cleanupMouseMoveHandler, clearPointerEvents]);
-  React.useEffect(() => {
-    return () => {
-      cleanupMouseMoveHandler();
-      clearTimeout(timeoutRef.current);
-      clearTimeout(restTimeoutRef.current);
-      clearPointerEvents();
-    };
-  }, [enabled, cleanupMouseMoveHandler, clearPointerEvents]);
-  return React.useMemo(() => {
-    if (!enabled) {
-      return {};
-    }
-    function setPointerRef(event) {
-      pointerTypeRef.current = event.pointerType;
-    }
-    return {
-      reference: {
-        onPointerDown: setPointerRef,
-        onPointerEnter: setPointerRef,
-        onMouseMove(event) {
-          if (open || restMs === 0) {
-            return;
-          }
-          clearTimeout(restTimeoutRef.current);
-          restTimeoutRef.current = setTimeout(() => {
-            if (!blockMouseMoveRef.current) {
-              onOpenChange(true, event.nativeEvent);
-            }
-          }, restMs);
-        }
-      },
-      floating: {
-        onMouseEnter() {
-          clearTimeout(timeoutRef.current);
-        },
-        onMouseLeave(event) {
-          events.emit('dismiss', {
-            type: 'mouseLeave',
-            data: {
-              returnFocus: false
-            }
-          });
-          closeWithDelay(event.nativeEvent, false);
-        }
-      }
-    };
-  }, [events, enabled, restMs, open, onOpenChange, closeWithDelay]);
-}
+    const node = tree == null ? void 0 : tree.nodesRef.current.find(node => node.id === nodeId);
 
-/**
- * Find the real active element. Traverses into shadowRoots.
- */
-function activeElement(doc) {
-  let activeElement = doc.activeElement;
-  while (((_activeElement = activeElement) == null ? void 0 : (_activeElement$shadow = _activeElement.shadowRoot) == null ? void 0 : _activeElement$shadow.activeElement) != null) {
-    var _activeElement, _activeElement$shadow;
-    activeElement = activeElement.shadowRoot.activeElement;
-  }
-  return activeElement;
-}
-
-let rafId = 0;
-function enqueueFocus(el, options) {
-  if (options === void 0) {
-    options = {};
-  }
-  const {
-    preventScroll = false,
-    cancelPrevious = true,
-    sync = false
-  } = options;
-  cancelPrevious && cancelAnimationFrame(rafId);
-  const exec = () => el == null ? void 0 : el.focus({
-    preventScroll
+    if (node) {
+      node.context = context;
+    }
   });
-  if (sync) {
-    exec();
-  } else {
-    rafId = requestAnimationFrame(exec);
-  }
+  const {
+    reference
+  } = position;
+  const setReference = React.useCallback(node => {
+    if (isElement(node) || node === null) {
+      context.refs.domReference.current = node;
+      setDomReference(node);
+    }
+
+    reference(node);
+  }, [reference, context.refs]);
+  return React.useMemo(() => ({ ...position,
+    context,
+    refs,
+    reference: setReference
+  }), [position, refs, context, setReference]);
 }
 
-function getAncestors(nodes, id) {
-  var _nodes$find;
-  let allAncestors = [];
-  let currentParentId = (_nodes$find = nodes.find(node => node.id === id)) == null ? void 0 : _nodes$find.parentId;
-  while (currentParentId) {
-    const currentNode = nodes.find(node => node.id === currentParentId);
-    currentParentId = currentNode == null ? void 0 : currentNode.parentId;
-    if (currentNode) {
-      allAncestors = allAncestors.concat(currentNode);
-    }
-  }
-  return allAncestors;
+function mergeProps(userProps, propsList, elementKey) {
+  const map = new Map();
+  return { ...(elementKey === 'floating' && {
+      tabIndex: -1
+    }),
+    ...userProps,
+    ...propsList.map(value => value ? value[elementKey] : null).concat(userProps).reduce((acc, props) => {
+      if (!props) {
+        return acc;
+      }
+
+      Object.entries(props).forEach(_ref => {
+        let [key, value] = _ref;
+
+        if (key.indexOf('on') === 0) {
+          if (!map.has(key)) {
+            map.set(key, []);
+          }
+
+          if (typeof value === 'function') {
+            var _map$get;
+
+            (_map$get = map.get(key)) == null ? void 0 : _map$get.push(value);
+
+            acc[key] = function () {
+              var _map$get2;
+
+              for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+                args[_key] = arguments[_key];
+              }
+
+              (_map$get2 = map.get(key)) == null ? void 0 : _map$get2.forEach(fn => fn(...args));
+            };
+          }
+        } else {
+          acc[key] = value;
+        }
+      });
+      return acc;
+    }, {})
+  };
 }
+
+const useInteractions = function (propsList) {
+  if (propsList === void 0) {
+    propsList = [];
+  }
+
+  // The dependencies are a dynamic array, so we can't use the linter's
+  // suggestion to add it to the deps array.
+  const deps = propsList;
+  const getReferenceProps = React.useCallback(userProps => mergeProps(userProps, propsList, 'reference'), // eslint-disable-next-line react-hooks/exhaustive-deps
+  deps);
+  const getFloatingProps = React.useCallback(userProps => mergeProps(userProps, propsList, 'floating'), // eslint-disable-next-line react-hooks/exhaustive-deps
+  deps);
+  const getItemProps = React.useCallback(userProps => mergeProps(userProps, propsList, 'item'), // eslint-disable-next-line react-hooks/exhaustive-deps
+  deps);
+  return React.useMemo(() => ({
+    getReferenceProps,
+    getFloatingProps,
+    getItemProps
+  }), [getReferenceProps, getFloatingProps, getItemProps]);
+};
 
 function getChildren(nodes, id) {
-  let allChildren = nodes.filter(node => {
+  var _nodes$filter;
+
+  let allChildren = (_nodes$filter = nodes.filter(node => {
     var _node$context;
+
     return node.parentId === id && ((_node$context = node.context) == null ? void 0 : _node$context.open);
-  });
+  })) != null ? _nodes$filter : [];
   let currentChildren = allChildren;
+
   while (currentChildren.length) {
-    currentChildren = nodes.filter(node => {
+    var _nodes$filter2;
+
+    currentChildren = (_nodes$filter2 = nodes.filter(node => {
       var _currentChildren;
+
       return (_currentChildren = currentChildren) == null ? void 0 : _currentChildren.some(n => {
         var _node$context2;
+
         return node.parentId === n.id && ((_node$context2 = node.context) == null ? void 0 : _node$context2.open);
       });
-    });
+    })) != null ? _nodes$filter2 : [];
     allChildren = allChildren.concat(currentChildren);
   }
+
   return allChildren;
 }
 
-function getTarget(event) {
-  if ('composedPath' in event) {
-    return event.composedPath()[0];
-  }
-
-  // TS thinks `event` is of type never as it assumes all browsers support
-  // `composedPath()`, but browsers without shadow DOM don't.
-  return event.target;
-}
-
-const TYPEABLE_SELECTOR = "input:not([type='hidden']):not([disabled])," + "[contenteditable]:not([contenteditable='false']),textarea:not([disabled])";
-function isTypeableElement(element) {
-  return isHTMLElement(element) && element.matches(TYPEABLE_SELECTOR);
-}
-
-function stopEvent$1(event) {
-  event.preventDefault();
-  event.stopPropagation();
-}
-
-const getTabbableOptions = () => ({
-  getShadowRoot: true,
-  displayCheck:
-  // JSDOM does not support the `tabbable` library. To solve this we can
-  // check if `ResizeObserver` is a real function (not polyfilled), which
-  // determines if the current environment is JSDOM-like.
-  typeof ResizeObserver === 'function' && ResizeObserver.toString().includes('[native code]') ? 'full' : 'none'
-});
-function getTabbableIn(container, direction) {
-  const allTabbable = tabbable(container, getTabbableOptions());
-  if (direction === 'prev') {
-    allTabbable.reverse();
-  }
-  const activeIndex = allTabbable.indexOf(activeElement(getDocument(container)));
-  const nextTabbableElements = allTabbable.slice(activeIndex + 1);
-  return nextTabbableElements[0];
-}
-function getNextTabbable() {
-  return getTabbableIn(document.body, 'next');
-}
-function getPreviousTabbable() {
-  return getTabbableIn(document.body, 'prev');
-}
-function isOutsideEvent(event, container) {
-  const containerElement = container || event.currentTarget;
-  const relatedTarget = event.relatedTarget;
-  return !relatedTarget || !contains(containerElement, relatedTarget);
-}
-function disableFocusInside(container) {
-  const tabbableElements = tabbable(container, getTabbableOptions());
-  tabbableElements.forEach(element => {
-    element.dataset.tabindex = element.getAttribute('tabindex') || '';
-    element.setAttribute('tabindex', '-1');
-  });
-}
-function enableFocusInside(container) {
-  const elements = container.querySelectorAll('[data-tabindex]');
-  elements.forEach(element => {
-    const tabindex = element.dataset.tabindex;
-    delete element.dataset.tabindex;
-    if (tabindex) {
-      element.setAttribute('tabindex', tabindex);
-    } else {
-      element.removeAttribute('tabindex');
-    }
-  });
-}
-
-// See Diego Haz's Sandbox for making this logic work well on Safari/iOS:
-// https://codesandbox.io/s/tabbable-portal-f4tng?file=/src/FocusTrap.tsx
-
-const HIDDEN_STYLES = {
-  border: 0,
-  clip: 'rect(0 0 0 0)',
-  height: '1px',
-  margin: '-1px',
-  overflow: 'hidden',
-  padding: 0,
-  position: 'fixed',
-  whiteSpace: 'nowrap',
-  width: '1px',
-  top: 0,
-  left: 0
-};
-let timeoutId;
-function setActiveElementOnTab(event) {
-  if (event.key === 'Tab') {
-    event.target;
-    clearTimeout(timeoutId);
-  }
-}
-const FocusGuard = /*#__PURE__*/React.forwardRef(function FocusGuard(props, ref) {
-  const [role, setRole] = React.useState();
-  index(() => {
-    if (isSafari()) {
-      // Unlike other screen readers such as NVDA and JAWS, the virtual cursor
-      // on VoiceOver does trigger the onFocus event, so we can use the focus
-      // trap element. On Safari, only buttons trigger the onFocus event.
-      // NB: "group" role in the Sandbox no longer appears to work, must be a
-      // button role.
-      setRole('button');
-    }
-    document.addEventListener('keydown', setActiveElementOnTab);
-    return () => {
-      document.removeEventListener('keydown', setActiveElementOnTab);
-    };
-  }, []);
-  const restProps = {
-    ref,
-    tabIndex: 0,
-    // Role is only for VoiceOver
-    role,
-    'aria-hidden': role ? undefined : true,
-    [createAttribute('focus-guard')]: '',
-    style: HIDDEN_STYLES
-  };
-  return /*#__PURE__*/React.createElement("span", _extends$1({}, props, restProps));
-});
-
-const PortalContext = /*#__PURE__*/React.createContext(null);
-function useFloatingPortalNode(_temp) {
+const DEFAULT_ID$1 = 'floating-ui-root';
+const useFloatingPortalNode = function (_temp) {
   let {
-    id,
-    root
+    id = DEFAULT_ID$1,
+    enabled = true
   } = _temp === void 0 ? {} : _temp;
-  const [portalNode, setPortalNode] = React.useState(null);
-  const uniqueId = useId();
-  const portalContext = usePortalContext();
-  const data = React.useMemo(() => ({
-    id,
-    root,
-    portalContext,
-    uniqueId
-  }), [id, root, portalContext, uniqueId]);
-  const dataRef = React.useRef();
+  const [portalEl, setPortalEl] = React.useState(null);
   index(() => {
-    return () => {
-      portalNode == null ? void 0 : portalNode.remove();
-    };
-  }, [portalNode, data]);
-  index(() => {
-    if (dataRef.current === data) return;
-    dataRef.current = data;
-    const {
-      id,
-      root,
-      portalContext,
-      uniqueId
-    } = data;
-    const existingIdRoot = id ? document.getElementById(id) : null;
-    const attr = createAttribute('portal');
-    if (existingIdRoot) {
-      const subRoot = document.createElement('div');
-      subRoot.id = uniqueId;
-      subRoot.setAttribute(attr, '');
-      existingIdRoot.appendChild(subRoot);
-      setPortalNode(subRoot);
-    } else {
-      let container = root || (portalContext == null ? void 0 : portalContext.portalNode);
-      if (container && !isElement(container)) container = container.current;
-      container = container || document.body;
-      let idWrapper = null;
-      if (id) {
-        idWrapper = document.createElement('div');
-        idWrapper.id = id;
-        container.appendChild(idWrapper);
-      }
-      const subRoot = document.createElement('div');
-      subRoot.id = uniqueId;
-      subRoot.setAttribute(attr, '');
-      container = idWrapper || container;
-      container.appendChild(subRoot);
-      setPortalNode(subRoot);
-    }
-  }, [data]);
-  return portalNode;
-}
-/**
- * Portals the floating element into a given container element — by default,
- * outside of the app root and into the body.
- * @see https://floating-ui.com/docs/FloatingPortal
- */
-function FloatingPortal(_ref) {
-  let {
-    children,
-    id,
-    root = null,
-    preserveTabOrder = true
-  } = _ref;
-  const portalNode = useFloatingPortalNode({
-    id,
-    root
-  });
-  const [focusManagerState, setFocusManagerState] = React.useState(null);
-  const beforeOutsideRef = React.useRef(null);
-  const afterOutsideRef = React.useRef(null);
-  const beforeInsideRef = React.useRef(null);
-  const afterInsideRef = React.useRef(null);
-  const shouldRenderGuards =
-  // The FocusManager and therefore floating element are currently open/
-  // rendered.
-  !!focusManagerState &&
-  // Guards are only for non-modal focus management.
-  !focusManagerState.modal &&
-  // Don't render if unmount is transitioning.
-  focusManagerState.open && preserveTabOrder && !!(root || portalNode);
-
-  // https://codesandbox.io/s/tabbable-portal-f4tng?file=/src/TabbablePortal.tsx
-  React.useEffect(() => {
-    if (!portalNode || !preserveTabOrder || focusManagerState != null && focusManagerState.modal) {
+    if (!enabled) {
       return;
     }
 
-    // Make sure elements inside the portal element are tabbable only when the
-    // portal has already been focused, either by tabbing into a focus trap
-    // element outside or using the mouse.
-    function onFocus(event) {
-      if (portalNode && isOutsideEvent(event)) {
-        const focusing = event.type === 'focusin';
-        const manageFocus = focusing ? enableFocusInside : disableFocusInside;
-        manageFocus(portalNode);
-      }
-    }
-    // Listen to the event on the capture phase so they run before the focus
-    // trap elements onFocus prop is called.
-    portalNode.addEventListener('focusin', onFocus, true);
-    portalNode.addEventListener('focusout', onFocus, true);
-    return () => {
-      portalNode.removeEventListener('focusin', onFocus, true);
-      portalNode.removeEventListener('focusout', onFocus, true);
-    };
-  }, [portalNode, preserveTabOrder, focusManagerState == null ? void 0 : focusManagerState.modal]);
-  return /*#__PURE__*/React.createElement(PortalContext.Provider, {
-    value: React.useMemo(() => ({
-      preserveTabOrder,
-      beforeOutsideRef,
-      afterOutsideRef,
-      beforeInsideRef,
-      afterInsideRef,
-      portalNode,
-      setFocusManagerState
-    }), [preserveTabOrder, portalNode])
-  }, shouldRenderGuards && portalNode && /*#__PURE__*/React.createElement(FocusGuard, {
-    "data-type": "outside",
-    ref: beforeOutsideRef,
-    onFocus: event => {
-      if (isOutsideEvent(event, portalNode)) {
-        var _beforeInsideRef$curr;
-        (_beforeInsideRef$curr = beforeInsideRef.current) == null ? void 0 : _beforeInsideRef$curr.focus();
-      } else {
-        const prevTabbable = getPreviousTabbable() || (focusManagerState == null ? void 0 : focusManagerState.refs.domReference.current);
-        prevTabbable == null ? void 0 : prevTabbable.focus();
-      }
-    }
-  }), shouldRenderGuards && portalNode && /*#__PURE__*/React.createElement("span", {
-    "aria-owns": portalNode.id,
-    style: HIDDEN_STYLES
-  }), portalNode && /*#__PURE__*/createPortal(children, portalNode), shouldRenderGuards && portalNode && /*#__PURE__*/React.createElement(FocusGuard, {
-    "data-type": "outside",
-    ref: afterOutsideRef,
-    onFocus: event => {
-      if (isOutsideEvent(event, portalNode)) {
-        var _afterInsideRef$curre;
-        (_afterInsideRef$curre = afterInsideRef.current) == null ? void 0 : _afterInsideRef$curre.focus();
-      } else {
-        const nextTabbable = getNextTabbable() || (focusManagerState == null ? void 0 : focusManagerState.refs.domReference.current);
-        nextTabbable == null ? void 0 : nextTabbable.focus();
-        (focusManagerState == null ? void 0 : focusManagerState.closeOnFocusOut) && (focusManagerState == null ? void 0 : focusManagerState.onOpenChange(false, event.nativeEvent));
-      }
-    }
-  }));
-}
-const usePortalContext = () => React.useContext(PortalContext);
+    const rootNode = document.getElementById(id);
 
-const VisuallyHiddenDismiss = /*#__PURE__*/React.forwardRef(function VisuallyHiddenDismiss(props, ref) {
-  return /*#__PURE__*/React.createElement("button", _extends$1({}, props, {
-    type: "button",
-    ref: ref,
-    tabIndex: -1,
-    style: HIDDEN_STYLES
-  }));
-});
+    if (rootNode) {
+      setPortalEl(rootNode);
+    } else {
+      const newPortalEl = document.createElement('div');
+      newPortalEl.id = id;
+      setPortalEl(newPortalEl);
+
+      if (!document.body.contains(newPortalEl)) {
+        document.body.appendChild(newPortalEl);
+      }
+    }
+  }, [id, enabled]);
+  return portalEl;
+};
 /**
- * Provides focus management for the floating element.
- * @see https://floating-ui.com/docs/FloatingFocusManager
+ * Portals your floating element outside of the main app node.
+ * @see https://floating-ui.com/docs/FloatingPortal
  */
-function FloatingFocusManager(props) {
-  const {
-    context,
+
+const FloatingPortal = _ref => {
+  let {
     children,
-    disabled = false,
-    order = ['content'],
-    guards: _guards = true,
-    initialFocus = 0,
-    returnFocus = true,
-    modal = true,
-    visuallyHiddenDismiss = false,
-    closeOnFocusOut = true
-  } = props;
-  const {
-    open,
-    refs,
-    nodeId,
-    onOpenChange,
-    events,
-    dataRef,
-    elements: {
-      domReference,
-      floating
-    }
-  } = context;
+    id = DEFAULT_ID$1,
+    root = null
+  } = _ref;
+  const portalNode = useFloatingPortalNode({
+    id,
+    enabled: !root
+  });
 
-  // Force the guards to be rendered if the `inert` attribute is not supported.
-  const guards = supportsInert() ? _guards : true;
-  const orderRef = useLatestRef(order);
-  const initialFocusRef = useLatestRef(initialFocus);
-  const returnFocusRef = useLatestRef(returnFocus);
-  const tree = useFloatingTree();
-  const portalContext = usePortalContext();
-
-  // Controlled by `useListNavigation`.
-  const ignoreInitialFocus = typeof initialFocus === 'number' && initialFocus < 0;
-  const startDismissButtonRef = React.useRef(null);
-  const endDismissButtonRef = React.useRef(null);
-  const preventReturnFocusRef = React.useRef(false);
-  const previouslyFocusedElementRef = React.useRef(null);
-  const isPointerDownRef = React.useRef(false);
-  const isInsidePortal = portalContext != null;
-
-  // If the reference is a combobox and is typeable (e.g. input/textarea),
-  // there are different focus semantics. The guards should not be rendered, but
-  // aria-hidden should be applied to all nodes still. Further, the visually
-  // hidden dismiss button should only appear at the end of the list, not the
-  // start.
-  const isTypeableCombobox = domReference && domReference.getAttribute('role') === 'combobox' && isTypeableElement(domReference);
-  const getTabbableContent = React.useCallback(function (container) {
-    if (container === void 0) {
-      container = floating;
-    }
-    return container ? tabbable(container, getTabbableOptions()) : [];
-  }, [floating]);
-  const getTabbableElements = React.useCallback(container => {
-    const content = getTabbableContent(container);
-    return orderRef.current.map(type => {
-      if (domReference && type === 'reference') {
-        return domReference;
-      }
-      if (floating && type === 'floating') {
-        return floating;
-      }
-      return content;
-    }).filter(Boolean).flat();
-  }, [domReference, floating, orderRef, getTabbableContent]);
-  React.useEffect(() => {
-    if (disabled || !modal) return;
-    function onKeyDown(event) {
-      if (event.key === 'Tab') {
-        // The focus guards have nothing to focus, so we need to stop the event.
-        if (contains(floating, activeElement(getDocument(floating))) && getTabbableContent().length === 0 && !isTypeableCombobox) {
-          stopEvent$1(event);
-        }
-        const els = getTabbableElements();
-        const target = getTarget(event);
-        if (orderRef.current[0] === 'reference' && target === domReference) {
-          stopEvent$1(event);
-          if (event.shiftKey) {
-            enqueueFocus(els[els.length - 1]);
-          } else {
-            enqueueFocus(els[1]);
-          }
-        }
-        if (orderRef.current[1] === 'floating' && target === floating && event.shiftKey) {
-          stopEvent$1(event);
-          enqueueFocus(els[0]);
-        }
-      }
-    }
-    const doc = getDocument(floating);
-    doc.addEventListener('keydown', onKeyDown);
-    return () => {
-      doc.removeEventListener('keydown', onKeyDown);
-    };
-  }, [disabled, domReference, floating, modal, orderRef, refs, isTypeableCombobox, getTabbableContent, getTabbableElements]);
-  React.useEffect(() => {
-    if (disabled || !closeOnFocusOut) return;
-
-    // In Safari, buttons lose focus when pressing them.
-    function handlePointerDown() {
-      isPointerDownRef.current = true;
-      setTimeout(() => {
-        isPointerDownRef.current = false;
-      });
-    }
-    function handleFocusOutside(event) {
-      const relatedTarget = event.relatedTarget;
-      queueMicrotask(() => {
-        const movedToUnrelatedNode = !(contains(domReference, relatedTarget) || contains(floating, relatedTarget) || contains(relatedTarget, floating) || contains(portalContext == null ? void 0 : portalContext.portalNode, relatedTarget) || relatedTarget != null && relatedTarget.hasAttribute(createAttribute('focus-guard')) || tree && (getChildren(tree.nodesRef.current, nodeId).find(node => {
-          var _node$context, _node$context2;
-          return contains((_node$context = node.context) == null ? void 0 : _node$context.elements.floating, relatedTarget) || contains((_node$context2 = node.context) == null ? void 0 : _node$context2.elements.domReference, relatedTarget);
-        }) || getAncestors(tree.nodesRef.current, nodeId).find(node => {
-          var _node$context3, _node$context4;
-          return ((_node$context3 = node.context) == null ? void 0 : _node$context3.elements.floating) === relatedTarget || ((_node$context4 = node.context) == null ? void 0 : _node$context4.elements.domReference) === relatedTarget;
-        })));
-
-        // Focus did not move inside the floating tree, and there are no tabbable
-        // portal guards to handle closing.
-        if (relatedTarget && movedToUnrelatedNode && !isPointerDownRef.current &&
-        // Fix React 18 Strict Mode returnFocus due to double rendering.
-        relatedTarget !== previouslyFocusedElementRef.current) {
-          preventReturnFocusRef.current = true;
-          onOpenChange(false, event);
-        }
-      });
-    }
-    if (floating && isHTMLElement(domReference)) {
-      domReference.addEventListener('focusout', handleFocusOutside);
-      domReference.addEventListener('pointerdown', handlePointerDown);
-      !modal && floating.addEventListener('focusout', handleFocusOutside);
-      return () => {
-        domReference.removeEventListener('focusout', handleFocusOutside);
-        domReference.removeEventListener('pointerdown', handlePointerDown);
-        !modal && floating.removeEventListener('focusout', handleFocusOutside);
-      };
-    }
-  }, [disabled, domReference, floating, modal, nodeId, tree, portalContext, onOpenChange, closeOnFocusOut]);
-  React.useEffect(() => {
-    var _portalContext$portal;
-    if (disabled) return;
-
-    // Don't hide portals nested within the parent portal.
-    const portalNodes = Array.from((portalContext == null ? void 0 : (_portalContext$portal = portalContext.portalNode) == null ? void 0 : _portalContext$portal.querySelectorAll("[" + createAttribute('portal') + "]")) || []);
-    if (floating && modal) {
-      const insideNodes = [floating, ...portalNodes, startDismissButtonRef.current, endDismissButtonRef.current].filter(x => x != null);
-      const suppressorFn = guards ? hideOthers : suppressOthers;
-      const cleanup = suppressorFn(orderRef.current.includes('reference') || isTypeableCombobox ? insideNodes.concat(domReference || []) : insideNodes, undefined, createAttribute('inert'));
-      return () => {
-        cleanup();
-      };
-    }
-  }, [disabled, domReference, floating, modal, orderRef, portalContext, isTypeableCombobox, guards]);
-  index(() => {
-    if (disabled || !floating) return;
-    const doc = getDocument(floating);
-    const previouslyFocusedElement = activeElement(doc);
-
-    // Wait for any layout effect state setters to execute to set `tabIndex`.
-    queueMicrotask(() => {
-      const focusableElements = getTabbableElements(floating);
-      const initialFocusValue = initialFocusRef.current;
-      const elToFocus = (typeof initialFocusValue === 'number' ? focusableElements[initialFocusValue] : initialFocusValue.current) || floating;
-      const focusAlreadyInsideFloatingEl = contains(floating, previouslyFocusedElement);
-      if (!ignoreInitialFocus && !focusAlreadyInsideFloatingEl && open) {
-        enqueueFocus(elToFocus, {
-          preventScroll: elToFocus === floating
-        });
-      }
-    });
-  }, [disabled, open, floating, ignoreInitialFocus, getTabbableElements, initialFocusRef]);
-  index(() => {
-    if (disabled || !floating) return;
-    let preventReturnFocusScroll = false;
-    const doc = getDocument(floating);
-    const previouslyFocusedElement = activeElement(doc);
-    const contextData = dataRef.current;
-    previouslyFocusedElementRef.current = previouslyFocusedElement;
-
-    // Dismissing via outside press should always ignore `returnFocus` to
-    // prevent unwanted scrolling.
-    function onDismiss(payload) {
-      if (payload.type === 'escapeKey' && refs.domReference.current) {
-        previouslyFocusedElementRef.current = refs.domReference.current;
-      }
-      if (['referencePress', 'escapeKey'].includes(payload.type)) {
-        return;
-      }
-      const returnFocus = payload.data.returnFocus;
-      if (typeof returnFocus === 'object') {
-        preventReturnFocusRef.current = false;
-        preventReturnFocusScroll = returnFocus.preventScroll;
-      } else {
-        preventReturnFocusRef.current = !returnFocus;
-      }
-    }
-    events.on('dismiss', onDismiss);
-    return () => {
-      events.off('dismiss', onDismiss);
-      const activeEl = activeElement(doc);
-      const shouldFocusReference = contains(floating, activeEl) || tree && getChildren(tree.nodesRef.current, nodeId).some(node => {
-        var _node$context5;
-        return contains((_node$context5 = node.context) == null ? void 0 : _node$context5.elements.floating, activeEl);
-      }) || contextData.openEvent && ['click', 'mousedown'].includes(contextData.openEvent.type);
-      if (shouldFocusReference && refs.domReference.current) {
-        previouslyFocusedElementRef.current = refs.domReference.current;
-      }
-      if (
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      returnFocusRef.current && isHTMLElement(previouslyFocusedElementRef.current) && !preventReturnFocusRef.current) {
-        enqueueFocus(previouslyFocusedElementRef.current, {
-          // When dismissing nested floating elements, by the time the rAF has
-          // executed, the menus will all have been unmounted. When they try
-          // to get focused, the calls get ignored — leaving the root
-          // reference focused as desired.
-          cancelPrevious: false,
-          preventScroll: preventReturnFocusScroll
-        });
-      }
-    };
-  }, [disabled, floating, returnFocusRef, dataRef, refs, events, tree, nodeId]);
-
-  // Synchronize the `context` & `modal` value to the FloatingPortal context.
-  // It will decide whether or not it needs to render its own guards.
-  index(() => {
-    if (disabled || !portalContext) return;
-    portalContext.setFocusManagerState({
-      ...context,
-      modal,
-      closeOnFocusOut,
-      open
-    });
-    return () => {
-      portalContext.setFocusManagerState(null);
-    };
-  }, [disabled, portalContext, modal, open, closeOnFocusOut, context]);
-  index(() => {
-    if (disabled) return;
-    if (floating && typeof MutationObserver === 'function') {
-      const handleMutation = () => {
-        const tabIndex = floating.getAttribute('tabindex');
-        if (orderRef.current.includes('floating') || activeElement(getDocument(floating)) !== refs.domReference.current && getTabbableContent().length === 0) {
-          if (tabIndex !== '0') {
-            floating.setAttribute('tabindex', '0');
-          }
-        } else if (tabIndex !== '-1') {
-          floating.setAttribute('tabindex', '-1');
-        }
-      };
-      handleMutation();
-      const observer = new MutationObserver(handleMutation);
-      observer.observe(floating, {
-        childList: true,
-        subtree: true,
-        attributes: true
-      });
-      return () => {
-        observer.disconnect();
-      };
-    }
-  }, [disabled, floating, refs, orderRef, getTabbableContent]);
-  function renderDismissButton(location) {
-    if (disabled || !visuallyHiddenDismiss || !modal) {
-      return null;
-    }
-    return /*#__PURE__*/React.createElement(VisuallyHiddenDismiss, {
-      ref: location === 'start' ? startDismissButtonRef : endDismissButtonRef,
-      onClick: event => onOpenChange(false, event.nativeEvent)
-    }, typeof visuallyHiddenDismiss === 'string' ? visuallyHiddenDismiss : 'Dismiss');
+  if (root) {
+    return /*#__PURE__*/createPortal(children, root);
   }
-  const shouldRenderGuards = !disabled && guards && !isTypeableCombobox && (isInsidePortal || modal);
-  return /*#__PURE__*/React.createElement(React.Fragment, null, shouldRenderGuards && /*#__PURE__*/React.createElement(FocusGuard, {
-    "data-type": "inside",
-    ref: portalContext == null ? void 0 : portalContext.beforeInsideRef,
-    onFocus: event => {
-      if (modal) {
-        const els = getTabbableElements();
-        enqueueFocus(order[0] === 'reference' ? els[0] : els[els.length - 1]);
-      } else if (portalContext != null && portalContext.preserveTabOrder && portalContext.portalNode) {
-        preventReturnFocusRef.current = false;
-        if (isOutsideEvent(event, portalContext.portalNode)) {
-          const nextTabbable = getNextTabbable() || domReference;
-          nextTabbable == null ? void 0 : nextTabbable.focus();
-        } else {
-          var _portalContext$before;
-          (_portalContext$before = portalContext.beforeOutsideRef.current) == null ? void 0 : _portalContext$before.focus();
+
+  if (portalNode) {
+    return /*#__PURE__*/createPortal(children, portalNode);
+  }
+
+  return null;
+};
+
+function _extends$1() {
+  _extends$1 = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
         }
       }
     }
-  }), !isTypeableCombobox && renderDismissButton('start'), children, renderDismissButton('end'), shouldRenderGuards && /*#__PURE__*/React.createElement(FocusGuard, {
-    "data-type": "inside",
-    ref: portalContext == null ? void 0 : portalContext.afterInsideRef,
-    onFocus: event => {
-      if (modal) {
-        enqueueFocus(getTabbableElements()[0]);
-      } else if (portalContext != null && portalContext.preserveTabOrder && portalContext.portalNode) {
-        if (closeOnFocusOut) {
-          preventReturnFocusRef.current = true;
-        }
-        if (isOutsideEvent(event, portalContext.portalNode)) {
-          const prevTabbable = getPreviousTabbable() || domReference;
-          prevTabbable == null ? void 0 : prevTabbable.focus();
-        } else {
-          var _portalContext$afterO;
-          (_portalContext$afterO = portalContext.afterOutsideRef.current) == null ? void 0 : _portalContext$afterO.focus();
-        }
-      }
-    }
-  }));
+
+    return target;
+  };
+
+  return _extends$1.apply(this, arguments);
 }
 
-const identifier = /*#__PURE__*/createAttribute('scroll-lock');
+// Avoid Chrome DevTools blue warning
+function getPlatform() {
+  const uaData = navigator.userAgentData;
 
+  if (uaData != null && uaData.platform) {
+    return uaData.platform;
+  }
+
+  return navigator.platform;
+}
+
+const identifier = 'data-floating-ui-scroll-lock';
 /**
  * Provides base styling for a fixed overlay element to dim content or block
  * pointer events behind a floating element.
  * It's a regular `<div>`, so it can be styled via any CSS solution you prefer.
  * @see https://floating-ui.com/docs/FloatingOverlay
  */
+
 const FloatingOverlay = /*#__PURE__*/React.forwardRef(function FloatingOverlay(_ref, ref) {
   let {
     lockScroll = false,
     ...rest
   } = _ref;
   index(() => {
-    var _window$visualViewpor, _window$visualViewpor2;
+    var _window$visualViewpor, _window$visualViewpor2, _window$visualViewpor3, _window$visualViewpor4;
+
     if (!lockScroll) {
       return;
     }
+
     const alreadyLocked = document.body.hasAttribute(identifier);
+
     if (alreadyLocked) {
       return;
     }
-    document.body.setAttribute(identifier, '');
 
-    // RTL <body> scrollbar
+    document.body.setAttribute(identifier, ''); // RTL <body> scrollbar
+
     const scrollbarX = Math.round(document.documentElement.getBoundingClientRect().left) + document.documentElement.scrollLeft;
     const paddingProp = scrollbarX ? 'paddingLeft' : 'paddingRight';
-    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-
-    // Only iOS doesn't respect `overflow: hidden` on document.body, and this
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth; // Only iOS doesn't respect `overflow: hidden` on document.body, and this
     // technique has fewer side effects.
+
     if (!/iP(hone|ad|od)|iOS/.test(getPlatform())) {
       Object.assign(document.body.style, {
         overflow: 'hidden',
@@ -9627,11 +8180,11 @@ const FloatingOverlay = /*#__PURE__*/React.forwardRef(function FloatingOverlay(_
           [paddingProp]: ''
         });
       };
-    }
+    } // iOS 12 does not support `visuaViewport`.
 
-    // iOS 12 does not support `visualViewport`.
-    const offsetLeft = ((_window$visualViewpor = window.visualViewport) == null ? void 0 : _window$visualViewpor.offsetLeft) || 0;
-    const offsetTop = ((_window$visualViewpor2 = window.visualViewport) == null ? void 0 : _window$visualViewpor2.offsetTop) || 0;
+
+    const offsetLeft = (_window$visualViewpor = (_window$visualViewpor2 = window.visualViewport) == null ? void 0 : _window$visualViewpor2.offsetLeft) != null ? _window$visualViewpor : 0;
+    const offsetTop = (_window$visualViewpor3 = (_window$visualViewpor4 = window.visualViewport) == null ? void 0 : _window$visualViewpor4.offsetTop) != null ? _window$visualViewpor3 : 0;
     const scrollX = window.pageXOffset;
     const scrollY = window.pageYOffset;
     Object.assign(document.body.style, {
@@ -9670,133 +8223,838 @@ const FloatingOverlay = /*#__PURE__*/React.forwardRef(function FloatingOverlay(_
   }));
 });
 
-function isButtonTarget(event) {
-  return isHTMLElement(event.target) && event.target.tagName === 'BUTTON';
-}
-function isSpaceIgnored(element) {
-  return isTypeableElement(element);
-}
 /**
- * Opens or closes the floating element when clicking the reference element.
- * @see https://floating-ui.com/docs/useClick
+ * Find the real active element. Traverses into shadowRoots.
  */
-function useClick(context, props) {
-  if (props === void 0) {
-    props = {};
+function activeElement(doc) {
+  let activeElement = doc.activeElement;
+
+  while (((_activeElement = activeElement) == null ? void 0 : (_activeElement$shadow = _activeElement.shadowRoot) == null ? void 0 : _activeElement$shadow.activeElement) != null) {
+    var _activeElement, _activeElement$shadow;
+
+    activeElement = activeElement.shadowRoot.activeElement;
   }
+
+  return activeElement;
+}
+
+function getAncestors(nodes, id) {
+  var _nodes$find;
+
+  let allAncestors = [];
+  let currentParentId = (_nodes$find = nodes.find(node => node.id === id)) == null ? void 0 : _nodes$find.parentId;
+
+  while (currentParentId) {
+    const currentNode = nodes.find(node => node.id === currentParentId);
+    currentParentId = currentNode == null ? void 0 : currentNode.parentId;
+
+    if (currentNode) {
+      allAncestors = allAncestors.concat(currentNode);
+    }
+  }
+
+  return allAncestors;
+}
+
+function getTarget(event) {
+  if ('composedPath' in event) {
+    return event.composedPath()[0];
+  } // TS thinks `event` is of type never as it assumes all browsers support
+  // `composedPath()`, but browsers without shadow DOM don't.
+
+
+  return event.target;
+}
+
+const TYPEABLE_SELECTOR = "input:not([type='hidden']):not([disabled])," + "[contenteditable]:not([contenteditable='false']),textarea:not([disabled])";
+function isTypeableElement(element) {
+  return isHTMLElement(element) && element.matches(TYPEABLE_SELECTOR);
+}
+
+function stopEvent$1(event) {
+  event.preventDefault();
+  event.stopPropagation();
+}
+
+function useLatestRef(value) {
+  const ref = useRef(value);
+  index(() => {
+    ref.current = value;
+  });
+  return ref;
+}
+
+function focus(el, preventScroll) {
+  if (preventScroll === void 0) {
+    preventScroll = false;
+  }
+
+  // `mousedown` clicks occur before `focus`, so the button will steal the
+  // focus unless we wait a frame.
+  requestAnimationFrame(() => {
+    el == null ? void 0 : el.focus({
+      preventScroll
+    });
+  });
+}
+
+const SELECTOR = 'select:not([disabled]),a[href],button:not([disabled]),[tabindex],' + 'iframe,object,embed,area[href],audio[controls],video[controls],' + TYPEABLE_SELECTOR;
+const FocusGuard = /*#__PURE__*/React.forwardRef(function FocusGuard(props, ref) {
+  return /*#__PURE__*/React.createElement("span", _extends$1({}, props, {
+    ref: ref,
+    tabIndex: 0,
+    style: {
+      position: 'fixed',
+      opacity: '0',
+      pointerEvents: 'none',
+      outline: '0'
+    }
+  }));
+});
+
+/**
+ * Provides focus management for the floating element.
+ * @see https://floating-ui.com/docs/FloatingFocusManager
+ */
+function FloatingFocusManager(_ref) {
+  let {
+    context: {
+      refs,
+      nodeId,
+      onOpenChange,
+      dataRef,
+      events
+    },
+    children,
+    order = ['content'],
+    endGuard = true,
+    initialFocus = 0,
+    returnFocus = true,
+    modal = true
+  } = _ref;
+  const orderRef = useLatestRef(order);
+  const tree = useFloatingTree();
+  const getTabbableElements = React.useCallback(() => {
+    return orderRef.current.map(type => {
+      if (type === 'reference') {
+        return refs.domReference.current;
+      }
+
+      if (refs.floating.current && type === 'floating') {
+        return refs.floating.current;
+      }
+
+      if (type === 'content') {
+        var _refs$floating$curren, _refs$floating$curren2;
+
+        return Array.from((_refs$floating$curren = (_refs$floating$curren2 = refs.floating.current) == null ? void 0 : _refs$floating$curren2.querySelectorAll(SELECTOR)) != null ? _refs$floating$curren : []);
+      }
+
+      return null;
+    }).flat().filter(el => {
+      if (el === refs.floating.current || el === refs.domReference.current) {
+        return true;
+      }
+
+      if (isHTMLElement(el)) {
+        var _el$getAttribute;
+
+        const tabIndex = (_el$getAttribute = el.getAttribute('tabindex')) != null ? _el$getAttribute : '0';
+        return tabIndex[0].trim() !== '-';
+      }
+    });
+  }, [orderRef, refs]);
+  React.useEffect(() => {
+    if (!modal) {
+      return;
+    } // If the floating element has no focusable elements inside it, fallback
+    // to focusing the floating element and preventing tab navigation
+
+
+    const noTabbableContentElements = getTabbableElements().filter(el => el !== refs.floating.current && el !== refs.domReference.current).length === 0;
+
+    function onKeyDown(event) {
+      if (event.key === 'Tab') {
+        if (noTabbableContentElements) {
+          stopEvent$1(event);
+        }
+
+        const els = getTabbableElements();
+        const target = getTarget(event);
+
+        if (orderRef.current[0] === 'reference' && target === refs.domReference.current) {
+          stopEvent$1(event);
+
+          if (event.shiftKey) {
+            focus(els[els.length - 1]);
+          } else {
+            focus(els[1]);
+          }
+        }
+
+        if (orderRef.current[1] === 'floating' && target === refs.floating.current && event.shiftKey) {
+          stopEvent$1(event);
+          focus(els[0]);
+        }
+      }
+    }
+
+    const doc = getDocument(refs.floating.current);
+    doc.addEventListener('keydown', onKeyDown);
+    return () => {
+      doc.removeEventListener('keydown', onKeyDown);
+    };
+  }, [modal, getTabbableElements, orderRef, refs]);
+  React.useEffect(() => {
+    let isPointerDown = false;
+
+    function onFocusOut(event) {
+      var _refs$floating$curren3, _getAncestors;
+
+      const relatedTarget = event.relatedTarget;
+      const focusMovedOutsideFloating = !((_refs$floating$curren3 = refs.floating.current) != null && _refs$floating$curren3.contains(relatedTarget));
+      const focusMovedOutsideReference = isElement(refs.domReference.current) && !refs.domReference.current.contains(relatedTarget);
+      const isChildOpen = tree && getChildren(tree.nodesRef.current, nodeId).length > 0;
+      const isParentRelated = tree && event.currentTarget === refs.domReference.current && ((_getAncestors = getAncestors(tree.nodesRef.current, nodeId)) == null ? void 0 : _getAncestors.some(node => {
+        var _node$context, _node$context$refs$fl;
+
+        return (_node$context = node.context) == null ? void 0 : (_node$context$refs$fl = _node$context.refs.floating.current) == null ? void 0 : _node$context$refs$fl.contains(relatedTarget);
+      }));
+
+      if (focusMovedOutsideFloating && focusMovedOutsideReference && !isChildOpen && !isParentRelated && !isPointerDown) {
+        onOpenChange(false);
+      }
+    }
+
+    function onPointerDown() {
+      // In Safari, buttons *lose* focus when pressing them. This causes the
+      // reference `focusout` to fire, which closes the floating element.
+      isPointerDown = true;
+      setTimeout(() => {
+        isPointerDown = false;
+      });
+    }
+
+    const floating = refs.floating.current;
+    const reference = refs.domReference.current;
+
+    if (floating && isHTMLElement(reference)) {
+      if (!modal) {
+        floating.addEventListener('focusout', onFocusOut);
+        reference.addEventListener('focusout', onFocusOut);
+        reference.addEventListener('pointerdown', onPointerDown);
+      }
+
+      let cleanup;
+
+      if (modal) {
+        if (orderRef.current.includes('reference')) {
+          cleanup = hideOthers([reference, floating]);
+        } else {
+          cleanup = hideOthers(floating);
+        }
+      }
+
+      return () => {
+        if (!modal) {
+          floating.removeEventListener('focusout', onFocusOut);
+          reference.removeEventListener('focusout', onFocusOut);
+          reference.removeEventListener('pointerdown', onPointerDown);
+        }
+
+        cleanup == null ? void 0 : cleanup();
+      };
+    }
+  }, [nodeId, tree, modal, onOpenChange, orderRef, dataRef, getTabbableElements, refs]);
+  React.useEffect(() => {
+    const floating = refs.floating.current;
+    const doc = getDocument(floating);
+    let returnFocusValue = returnFocus;
+    let preventReturnFocusScroll = false;
+    let previouslyFocusedElement = activeElement(doc);
+
+    if (previouslyFocusedElement === doc.body && refs.domReference.current) {
+      previouslyFocusedElement = refs.domReference.current;
+    }
+
+    if (typeof initialFocus === 'number') {
+      var _getTabbableElements$;
+
+      const el = (_getTabbableElements$ = getTabbableElements()[initialFocus]) != null ? _getTabbableElements$ : floating;
+      focus(el, el === floating);
+    } else if (isHTMLElement(initialFocus.current)) {
+      var _initialFocus$current;
+
+      const el = (_initialFocus$current = initialFocus.current) != null ? _initialFocus$current : floating;
+      focus(el, el === floating);
+    } // Dismissing via outside press should always ignore `returnFocus` to
+    // prevent unwanted scrolling.
+
+
+    function onDismiss(allowReturnFocus) {
+      if (allowReturnFocus === void 0) {
+        allowReturnFocus = false;
+      }
+
+      if (typeof allowReturnFocus === 'object') {
+        returnFocusValue = true;
+        preventReturnFocusScroll = allowReturnFocus.preventScroll;
+      } else {
+        returnFocusValue = allowReturnFocus;
+      }
+    }
+
+    events.on('dismiss', onDismiss);
+    return () => {
+      events.off('dismiss', onDismiss);
+
+      if (returnFocusValue && isHTMLElement(previouslyFocusedElement)) {
+        focus(previouslyFocusedElement, preventReturnFocusScroll);
+      }
+    };
+  }, [getTabbableElements, initialFocus, returnFocus, refs, events]);
+
+  const isTypeableCombobox = () => {
+    var _refs$domReference$cu;
+
+    return ((_refs$domReference$cu = refs.domReference.current) == null ? void 0 : _refs$domReference$cu.getAttribute('role')) === 'combobox' && isTypeableElement(refs.domReference.current);
+  };
+
+  return /*#__PURE__*/React.createElement(React.Fragment, null, modal && /*#__PURE__*/React.createElement(FocusGuard, {
+    onFocus: event => {
+      if (isTypeableCombobox()) {
+        return;
+      }
+
+      stopEvent$1(event);
+      const els = getTabbableElements();
+
+      if (order[0] === 'reference') {
+        focus(els[0]);
+      } else {
+        focus(els[els.length - 1]);
+      }
+    }
+  }), /*#__PURE__*/React.cloneElement(children, order.includes('floating') ? {
+    tabIndex: 0
+  } : {}), modal && endGuard && /*#__PURE__*/React.createElement(FocusGuard, {
+    onFocus: event => {
+      if (isTypeableCombobox()) {
+        return;
+      }
+
+      stopEvent$1(event);
+      focus(getTabbableElements()[0]);
+    }
+  }));
+}
+
+function usePrevious(value) {
+  const ref = useRef();
+  index(() => {
+    ref.current = value;
+  }, [value]);
+  return ref.current;
+}
+
+function getDelay(value, prop, pointerType) {
+  if (pointerType && pointerType !== 'mouse') {
+    return 0;
+  }
+
+  if (typeof value === 'number') {
+    return value;
+  }
+
+  return value == null ? void 0 : value[prop];
+}
+
+/**
+ * Adds hover event listeners that change the open state, like CSS :hover.
+ * @see https://floating-ui.com/docs/useHover
+ */
+const useHover = function (context, _temp) {
+  let {
+    enabled = true,
+    delay = 0,
+    handleClose = null,
+    mouseOnly = false,
+    restMs = 0,
+    move = true
+  } = _temp === void 0 ? {} : _temp;
   const {
     open,
     onOpenChange,
     dataRef,
-    elements: {
-      domReference
-    }
+    events,
+    refs,
+    _
   } = context;
-  const {
+  const tree = useFloatingTree();
+  const parentId = useFloatingParentNodeId();
+  const handleCloseRef = useLatestRef(handleClose);
+  const delayRef = useLatestRef(delay);
+  const previousOpen = usePrevious(open);
+  const pointerTypeRef = React.useRef();
+  const timeoutRef = React.useRef();
+  const handlerRef = React.useRef();
+  const restTimeoutRef = React.useRef();
+  const blockMouseMoveRef = React.useRef(true);
+  const performedPointerEventsMutationRef = React.useRef(false);
+  const isHoverOpen = React.useCallback(() => {
+    var _dataRef$current$open;
+
+    const type = (_dataRef$current$open = dataRef.current.openEvent) == null ? void 0 : _dataRef$current$open.type;
+    return (type == null ? void 0 : type.includes('mouse')) && type !== 'mousedown';
+  }, [dataRef]);
+  React.useEffect(() => {
+    if (!enabled) {
+      return;
+    }
+
+    function onDismiss() {
+      clearTimeout(timeoutRef.current);
+      clearTimeout(restTimeoutRef.current);
+      blockMouseMoveRef.current = true;
+    }
+
+    events.on('dismiss', onDismiss);
+    return () => {
+      events.off('dismiss', onDismiss);
+    };
+  }, [enabled, events, refs]);
+  React.useEffect(() => {
+    if (!enabled || !handleCloseRef.current) {
+      return;
+    }
+
+    function onLeave() {
+      if (isHoverOpen()) {
+        onOpenChange(false);
+      }
+    }
+
+    const html = getDocument(refs.floating.current).documentElement;
+    html.addEventListener('mouseleave', onLeave);
+    return () => {
+      html.removeEventListener('mouseleave', onLeave);
+    };
+  }, [refs, onOpenChange, enabled, handleCloseRef, dataRef, isHoverOpen]);
+  const closeWithDelay = React.useCallback(function (runElseBranch) {
+    if (runElseBranch === void 0) {
+      runElseBranch = true;
+    }
+
+    const closeDelay = getDelay(delayRef.current, 'close', pointerTypeRef.current);
+
+    if (closeDelay && !handlerRef.current) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = setTimeout(() => onOpenChange(false), closeDelay);
+    } else if (runElseBranch) {
+      clearTimeout(timeoutRef.current);
+      onOpenChange(false);
+    }
+  }, [delayRef, onOpenChange]);
+  const cleanupPointerMoveHandler = React.useCallback(() => {
+    if (handlerRef.current) {
+      getDocument(refs.floating.current).removeEventListener('pointermove', handlerRef.current);
+      handlerRef.current = undefined;
+    }
+  }, [refs]);
+  const clearPointerEvents = React.useCallback(() => {
+    getDocument(refs.floating.current).body.style.pointerEvents = '';
+    performedPointerEventsMutationRef.current = false;
+  }, [refs]); // Registering the mouse events on the reference directly to bypass React's
+  // delegation system. If the cursor was on a disabled element and then entered
+  // the reference (no gap), `mouseenter` doesn't fire in the delegation system.
+
+  React.useEffect(() => {
+    if (!enabled) {
+      return;
+    }
+
+    function isClickLikeOpenEvent() {
+      return dataRef.current.openEvent ? ['click', 'mousedown'].includes(dataRef.current.openEvent.type) : false;
+    }
+
+    function onMouseEnter(event) {
+      clearTimeout(timeoutRef.current);
+      blockMouseMoveRef.current = false;
+
+      if (mouseOnly && pointerTypeRef.current !== 'mouse' || restMs > 0 && getDelay(delayRef.current, 'open') === 0) {
+        return;
+      }
+
+      dataRef.current.openEvent = event;
+      const openDelay = getDelay(delayRef.current, 'open', pointerTypeRef.current);
+
+      if (openDelay) {
+        timeoutRef.current = setTimeout(() => {
+          onOpenChange(true);
+        }, openDelay);
+      } else {
+        onOpenChange(true);
+      }
+    }
+
+    function onMouseLeave(event) {
+      if (isClickLikeOpenEvent()) {
+        return;
+      }
+
+      const doc = getDocument(refs.floating.current);
+      clearTimeout(restTimeoutRef.current);
+
+      if (handleCloseRef.current) {
+        clearTimeout(timeoutRef.current);
+        handlerRef.current && doc.removeEventListener('pointermove', handlerRef.current);
+        handlerRef.current = handleCloseRef.current({ ...context,
+          tree,
+          x: event.clientX,
+          y: event.clientY,
+
+          onClose() {
+            clearPointerEvents();
+            cleanupPointerMoveHandler();
+            closeWithDelay();
+          }
+
+        });
+        doc.addEventListener('pointermove', handlerRef.current);
+        return;
+      }
+
+      closeWithDelay();
+    } // Ensure the floating element closes after scrolling even if the pointer
+    // did not move.
+    // https://github.com/floating-ui/floating-ui/discussions/1692
+
+
+    function onScrollMouseLeave(event) {
+      if (isClickLikeOpenEvent()) {
+        return;
+      }
+
+      handleCloseRef.current == null ? void 0 : handleCloseRef.current({ ...context,
+        tree,
+        x: event.clientX,
+        y: event.clientY,
+        leave: true,
+
+        onClose() {
+          clearPointerEvents();
+          cleanupPointerMoveHandler();
+          closeWithDelay();
+        }
+
+      })(event);
+    }
+
+    const floating = refs.floating.current;
+    const reference = refs.domReference.current;
+
+    if (isElement(reference)) {
+      open && reference.addEventListener('mouseleave', onScrollMouseLeave);
+      floating == null ? void 0 : floating.addEventListener('mouseleave', onScrollMouseLeave);
+      move && reference.addEventListener('mousemove', onMouseEnter, {
+        once: true
+      });
+      reference.addEventListener('mouseenter', onMouseEnter);
+      reference.addEventListener('mouseleave', onMouseLeave);
+      return () => {
+        open && reference.removeEventListener('mouseleave', onScrollMouseLeave);
+        floating == null ? void 0 : floating.removeEventListener('mouseleave', onScrollMouseLeave);
+        move && reference.removeEventListener('mousemove', onMouseEnter);
+        reference.removeEventListener('mouseenter', onMouseEnter);
+        reference.removeEventListener('mouseleave', onMouseLeave);
+      };
+    }
+  }, [// Ensure the effect is re-run when the reference changes.
+  // https://github.com/floating-ui/floating-ui/issues/1833
+  _.domReference, enabled, context, mouseOnly, restMs, move, closeWithDelay, cleanupPointerMoveHandler, clearPointerEvents, onOpenChange, open, tree, refs, delayRef, handleCloseRef, dataRef]); // Block pointer-events of every element other than the reference and floating
+  // while the floating element is open and has a `handleClose` handler. Also
+  // handles nested floating elements.
+  // https://github.com/floating-ui/floating-ui/issues/1722
+
+  index(() => {
+    if (!enabled) {
+      return;
+    }
+
+    if (open && handleCloseRef.current && handleCloseRef.current.__options.blockPointerEvents && isHoverOpen()) {
+      getDocument(refs.floating.current).body.style.pointerEvents = 'none';
+      performedPointerEventsMutationRef.current = true;
+      const reference = refs.domReference.current;
+      const floating = refs.floating.current;
+
+      if (isElement(reference) && floating) {
+        var _tree$nodesRef$curren, _tree$nodesRef$curren2;
+
+        const parentFloating = tree == null ? void 0 : (_tree$nodesRef$curren = tree.nodesRef.current.find(node => node.id === parentId)) == null ? void 0 : (_tree$nodesRef$curren2 = _tree$nodesRef$curren.context) == null ? void 0 : _tree$nodesRef$curren2.refs.floating.current;
+
+        if (parentFloating) {
+          parentFloating.style.pointerEvents = '';
+        }
+
+        reference.style.pointerEvents = 'auto';
+        floating.style.pointerEvents = 'auto';
+        return () => {
+          reference.style.pointerEvents = '';
+          floating.style.pointerEvents = '';
+        };
+      }
+    }
+  }, [enabled, open, parentId, refs, tree, handleCloseRef, dataRef, isHoverOpen]);
+  index(() => {
+    if (previousOpen && !open) {
+      pointerTypeRef.current = undefined;
+      cleanupPointerMoveHandler();
+      clearPointerEvents();
+    }
+  });
+  React.useEffect(() => {
+    return () => {
+      cleanupPointerMoveHandler();
+      clearTimeout(timeoutRef.current);
+      clearTimeout(restTimeoutRef.current);
+
+      if (performedPointerEventsMutationRef.current) {
+        clearPointerEvents();
+      }
+    };
+  }, [enabled, cleanupPointerMoveHandler, clearPointerEvents]);
+  return React.useMemo(() => {
+    if (!enabled) {
+      return {};
+    }
+
+    function setPointerRef(event) {
+      pointerTypeRef.current = event.pointerType;
+    }
+
+    return {
+      reference: {
+        onPointerDown: setPointerRef,
+        onPointerEnter: setPointerRef,
+
+        onMouseMove() {
+          if (open || restMs === 0) {
+            return;
+          }
+
+          clearTimeout(restTimeoutRef.current);
+          restTimeoutRef.current = setTimeout(() => {
+            if (!blockMouseMoveRef.current) {
+              onOpenChange(true);
+            }
+          }, restMs);
+        }
+
+      },
+      floating: {
+        onMouseEnter() {
+          clearTimeout(timeoutRef.current);
+        },
+
+        onMouseLeave() {
+          closeWithDelay(false);
+        }
+
+      }
+    };
+  }, [enabled, restMs, open, onOpenChange, closeWithDelay]);
+};
+
+/**
+ * Adds relevant screen reader props for a given element `role`.
+ * @see https://floating-ui.com/docs/useRole
+ */
+const useRole = function (_ref, _temp) {
+  let {
+    open
+  } = _ref;
+  let {
+    enabled = true,
+    role = 'dialog'
+  } = _temp === void 0 ? {} : _temp;
+  const rootId = useId();
+  const referenceId = useId();
+  return React.useMemo(() => {
+    const floatingProps = {
+      id: rootId,
+      role
+    };
+
+    if (!enabled) {
+      return {};
+    }
+
+    if (role === 'tooltip') {
+      return {
+        reference: {
+          'aria-describedby': open ? rootId : undefined
+        },
+        floating: floatingProps
+      };
+    }
+
+    return {
+      reference: {
+        'aria-expanded': open ? 'true' : 'false',
+        'aria-haspopup': role === 'alertdialog' ? 'dialog' : role,
+        'aria-controls': open ? rootId : undefined,
+        ...(role === 'listbox' && {
+          role: 'combobox'
+        }),
+        ...(role === 'menu' && {
+          id: referenceId
+        })
+      },
+      floating: { ...floatingProps,
+        ...(role === 'menu' && {
+          'aria-labelledby': referenceId
+        })
+      }
+    };
+  }, [enabled, role, open, rootId, referenceId]);
+};
+
+function isButtonTarget(event) {
+  return isHTMLElement(event.target) && event.target.tagName === 'BUTTON';
+}
+
+function isSpaceIgnored(element) {
+  return isTypeableElement(element);
+}
+
+/**
+ * Adds click event listeners that change the open state.
+ * @see https://floating-ui.com/docs/useClick
+ */
+const useClick = function (_ref, _temp) {
+  let {
+    open,
+    onOpenChange,
+    dataRef,
+    refs
+  } = _ref;
+  let {
     enabled = true,
     event: eventOption = 'click',
     toggle = true,
     ignoreMouse = false,
     keyboardHandlers = true
-  } = props;
+  } = _temp === void 0 ? {} : _temp;
   const pointerTypeRef = React.useRef();
-  const didKeyDownRef = React.useRef(false);
   return React.useMemo(() => {
-    if (!enabled) return {};
+    if (!enabled) {
+      return {};
+    }
+
     return {
       reference: {
         onPointerDown(event) {
           pointerTypeRef.current = event.pointerType;
         },
+
         onMouseDown(event) {
           // Ignore all buttons except for the "main" button.
           // https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/button
           if (event.button !== 0) {
             return;
           }
-          if (isMouseLikePointerType(pointerTypeRef.current, true) && ignoreMouse) {
+
+          if (pointerTypeRef.current === 'mouse' && ignoreMouse) {
             return;
           }
+
           if (eventOption === 'click') {
             return;
           }
-          if (open && toggle && (dataRef.current.openEvent ? dataRef.current.openEvent.type === 'mousedown' : true)) {
-            onOpenChange(false, event.nativeEvent);
+
+          if (open) {
+            if (toggle && (dataRef.current.openEvent ? dataRef.current.openEvent.type === 'mousedown' : true)) {
+              onOpenChange(false);
+            }
           } else {
-            // Prevent stealing focus from the floating element
-            event.preventDefault();
-            onOpenChange(true, event.nativeEvent);
+            onOpenChange(true);
           }
+
+          dataRef.current.openEvent = event.nativeEvent;
         },
+
         onClick(event) {
           if (eventOption === 'mousedown' && pointerTypeRef.current) {
             pointerTypeRef.current = undefined;
             return;
           }
-          if (isMouseLikePointerType(pointerTypeRef.current, true) && ignoreMouse) {
+
+          if (pointerTypeRef.current === 'mouse' && ignoreMouse) {
             return;
           }
-          if (open && toggle && (dataRef.current.openEvent ? dataRef.current.openEvent.type === 'click' : true)) {
-            onOpenChange(false, event.nativeEvent);
+
+          if (open) {
+            if (toggle && (dataRef.current.openEvent ? dataRef.current.openEvent.type === 'click' : true)) {
+              onOpenChange(false);
+            }
           } else {
-            onOpenChange(true, event.nativeEvent);
+            onOpenChange(true);
           }
+
+          dataRef.current.openEvent = event.nativeEvent;
         },
+
         onKeyDown(event) {
           pointerTypeRef.current = undefined;
-          if (event.defaultPrevented || !keyboardHandlers || isButtonTarget(event)) {
+
+          if (!keyboardHandlers) {
             return;
           }
-          if (event.key === ' ' && !isSpaceIgnored(domReference)) {
-            // Prevent scrolling
-            event.preventDefault();
-            didKeyDownRef.current = true;
+
+          if (isButtonTarget(event)) {
+            return;
           }
+
+          if (event.key === ' ' && !isSpaceIgnored(refs.domReference.current)) {
+            // Prvent scrolling
+            event.preventDefault();
+          }
+
           if (event.key === 'Enter') {
-            if (open && toggle) {
-              onOpenChange(false, event.nativeEvent);
+            if (open) {
+              if (toggle) {
+                onOpenChange(false);
+              }
             } else {
-              onOpenChange(true, event.nativeEvent);
+              onOpenChange(true);
             }
           }
         },
+
         onKeyUp(event) {
-          if (event.defaultPrevented || !keyboardHandlers || isButtonTarget(event) || isSpaceIgnored(domReference)) {
+          if (!keyboardHandlers) {
             return;
           }
-          if (event.key === ' ' && didKeyDownRef.current) {
-            didKeyDownRef.current = false;
-            if (open && toggle) {
-              onOpenChange(false, event.nativeEvent);
+
+          if (isButtonTarget(event) || isSpaceIgnored(refs.domReference.current)) {
+            return;
+          }
+
+          if (event.key === ' ') {
+            if (open) {
+              if (toggle) {
+                onOpenChange(false);
+              }
             } else {
-              onOpenChange(true, event.nativeEvent);
+              onOpenChange(true);
             }
           }
         }
+
       }
     };
-  }, [enabled, dataRef, eventOption, ignoreMouse, keyboardHandlers, domReference, toggle, open, onOpenChange]);
-}
-
-// `toString()` prevents bundlers from trying to `import { useInsertionEffect } from 'react'`
-const useInsertionEffect = React[/*#__PURE__*/'useInsertionEffect'.toString()];
-const useSafeInsertionEffect = useInsertionEffect || (fn => fn());
-function useEffectEvent(callback) {
-  const ref = React.useRef(() => {
-    if (process.env.NODE_ENV !== "production") {
-      throw new Error('Cannot call an event handler while rendering.');
-    }
-  });
-  useSafeInsertionEffect(() => {
-    ref.current = callback;
-  });
-  return React.useCallback(function () {
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-    return ref.current == null ? void 0 : ref.current(...args);
-  }, []);
-}
+  }, [enabled, dataRef, eventOption, ignoreMouse, keyboardHandlers, refs, toggle, open, onOpenChange]);
+};
 
 /**
  * Check whether the event.target is within the provided node. Uses event.composedPath if available for custom element support.
@@ -9809,11 +9067,12 @@ function isEventTargetWithin(event, node) {
   if (node == null) {
     return false;
   }
+
   if ('composedPath' in event) {
     return event.composedPath().includes(node);
-  }
+  } // TS thinks `event` is of type never as it assumes all browsers support composedPath, but browsers without shadow dom don't
 
-  // TS thinks `event` is of type never as it assumes all browsers support composedPath, but browsers without shadow dom don't
+
   const e = event;
   return e.target != null && node.contains(e.target);
 }
@@ -9828,178 +9087,135 @@ const captureHandlerKeys = {
   mousedown: 'onMouseDownCapture',
   click: 'onClickCapture'
 };
-const normalizeBubblesProp = bubbles => {
-  var _bubbles$escapeKey, _bubbles$outsidePress;
-  return {
-    escapeKeyBubbles: typeof bubbles === 'boolean' ? bubbles : (_bubbles$escapeKey = bubbles == null ? void 0 : bubbles.escapeKey) != null ? _bubbles$escapeKey : false,
-    outsidePressBubbles: typeof bubbles === 'boolean' ? bubbles : (_bubbles$outsidePress = bubbles == null ? void 0 : bubbles.outsidePress) != null ? _bubbles$outsidePress : true
-  };
-};
+
 /**
- * Closes the floating element when a dismissal is requested — by default, when
- * the user presses the `escape` key or outside of the floating element.
+ * Adds listeners that dismiss (close) the floating element.
  * @see https://floating-ui.com/docs/useDismiss
  */
-function useDismiss(context, props) {
-  if (props === void 0) {
-    props = {};
-  }
-  const {
+const useDismiss = function (_ref, _temp) {
+  let {
     open,
     onOpenChange,
+    refs,
     events,
-    nodeId,
-    elements: {
-      reference,
-      domReference,
-      floating
-    },
-    dataRef
-  } = context;
-  const {
+    nodeId
+  } = _ref;
+  let {
     enabled = true,
     escapeKey = true,
-    outsidePress: unstable_outsidePress = true,
+    outsidePress = true,
     outsidePressEvent = 'pointerdown',
     referencePress = false,
     referencePressEvent = 'pointerdown',
     ancestorScroll = false,
-    bubbles
-  } = props;
+    bubbles = true
+  } = _temp === void 0 ? {} : _temp;
   const tree = useFloatingTree();
   const nested = useFloatingParentNodeId() != null;
-  const outsidePressFn = useEffectEvent(typeof unstable_outsidePress === 'function' ? unstable_outsidePress : () => false);
-  const outsidePress = typeof unstable_outsidePress === 'function' ? outsidePressFn : unstable_outsidePress;
   const insideReactTreeRef = React.useRef(false);
-  const {
-    escapeKeyBubbles,
-    outsidePressBubbles
-  } = normalizeBubblesProp(bubbles);
-  const closeOnEscapeKeyDown = useEffectEvent(event => {
-    if (!open || !enabled || !escapeKey || event.key !== 'Escape') {
-      return;
-    }
-    const children = tree ? getChildren(tree.nodesRef.current, nodeId) : [];
-    if (!escapeKeyBubbles) {
-      event.stopPropagation();
-      if (children.length > 0) {
-        let shouldDismiss = true;
-        children.forEach(child => {
-          var _child$context;
-          if ((_child$context = child.context) != null && _child$context.open && !child.context.dataRef.current.__escapeKeyBubbles) {
-            shouldDismiss = false;
-            return;
-          }
-        });
-        if (!shouldDismiss) {
-          return;
-        }
-      }
-    }
-    events.emit('dismiss', {
-      type: 'escapeKey',
-      data: {
-        returnFocus: {
-          preventScroll: false
-        }
-      }
-    });
-    onOpenChange(false, isReactEvent(event) ? event.nativeEvent : event);
-  });
-  const closeOnPressOutside = useEffectEvent(event => {
-    // Given developers can stop the propagation of the synthetic event,
-    // we can only be confident with a positive value.
-    const insideReactTree = insideReactTreeRef.current;
-    insideReactTreeRef.current = false;
-    if (insideReactTree) {
-      return;
-    }
-    if (typeof outsidePress === 'function' && !outsidePress(event)) {
-      return;
-    }
-    const target = getTarget(event);
-
-    // Check if the click occurred on the scrollbar
-    if (isHTMLElement(target) && floating) {
-      // In Firefox, `target.scrollWidth > target.clientWidth` for inline
-      // elements.
-      const canScrollX = target.clientWidth > 0 && target.scrollWidth > target.clientWidth;
-      const canScrollY = target.clientHeight > 0 && target.scrollHeight > target.clientHeight;
-      let xCond = canScrollY && event.offsetX > target.clientWidth;
-
-      // In some browsers it is possible to change the <body> (or window)
-      // scrollbar to the left side, but is very rare and is difficult to
-      // check for. Plus, for modal dialogs with backdrops, it is more
-      // important that the backdrop is checked but not so much the window.
-      if (canScrollY) {
-        const isRTL = getWindow(floating).getComputedStyle(target).direction === 'rtl';
-        if (isRTL) {
-          xCond = event.offsetX <= target.offsetWidth - target.clientWidth;
-        }
-      }
-      if (xCond || canScrollX && event.offsetY > target.clientHeight) {
-        return;
-      }
-    }
-    const targetIsInsideChildren = tree && getChildren(tree.nodesRef.current, nodeId).some(node => {
-      var _node$context;
-      return isEventTargetWithin(event, (_node$context = node.context) == null ? void 0 : _node$context.elements.floating);
-    });
-    if (isEventTargetWithin(event, floating) || isEventTargetWithin(event, domReference) || targetIsInsideChildren) {
-      return;
-    }
-    const children = tree ? getChildren(tree.nodesRef.current, nodeId) : [];
-    if (children.length > 0) {
-      let shouldDismiss = true;
-      children.forEach(child => {
-        var _child$context2;
-        if ((_child$context2 = child.context) != null && _child$context2.open && !child.context.dataRef.current.__outsidePressBubbles) {
-          shouldDismiss = false;
-          return;
-        }
-      });
-      if (!shouldDismiss) {
-        return;
-      }
-    }
-    events.emit('dismiss', {
-      type: 'outsidePress',
-      data: {
-        returnFocus: nested ? {
-          preventScroll: true
-        } : isVirtualClick(event) || isVirtualPointerEvent(event)
-      }
-    });
-    onOpenChange(false, event);
-  });
   React.useEffect(() => {
     if (!open || !enabled) {
       return;
     }
-    dataRef.current.__escapeKeyBubbles = escapeKeyBubbles;
-    dataRef.current.__outsidePressBubbles = outsidePressBubbles;
-    function onScroll(event) {
-      onOpenChange(false, event);
-    }
-    const doc = getDocument(floating);
-    escapeKey && doc.addEventListener('keydown', closeOnEscapeKeyDown);
-    outsidePress && doc.addEventListener(outsidePressEvent, closeOnPressOutside);
-    let ancestors = [];
-    if (ancestorScroll) {
-      if (isElement(domReference)) {
-        ancestors = getOverflowAncestors(domReference);
-      }
-      if (isElement(floating)) {
-        ancestors = ancestors.concat(getOverflowAncestors(floating));
-      }
-      if (!isElement(reference) && reference && reference.contextElement) {
-        ancestors = ancestors.concat(getOverflowAncestors(reference.contextElement));
+
+    function onKeyDown(event) {
+      if (event.key === 'Escape') {
+        if (!bubbles && tree && getChildren(tree.nodesRef.current, nodeId).length > 0) {
+          return;
+        }
+
+        events.emit('dismiss', {
+          preventScroll: false
+        });
+        onOpenChange(false);
       }
     }
 
-    // Ignore the visual viewport for scrolling dismissal (allow pinch-zoom)
+    function onOutsidePress(event) {
+      // Given developers can stop the propagation of the synthetic event,
+      // we can only be confident with a positive value.
+      const insideReactTree = insideReactTreeRef.current;
+      insideReactTreeRef.current = false;
+
+      if (insideReactTree) {
+        return;
+      }
+
+      const target = getTarget(event); // Check if the click occurred on the scrollbar
+
+      if (isElement(target) && refs.floating.current) {
+        var _refs$floating$curren;
+
+        const win = (_refs$floating$curren = refs.floating.current.ownerDocument.defaultView) != null ? _refs$floating$curren : window;
+        const canScrollX = target.scrollWidth > target.clientWidth;
+        const canScrollY = target.scrollHeight > target.clientHeight;
+        let xCond = canScrollY && event.offsetX > target.clientWidth; // In some browsers it is possible to change the <body> (or window)
+        // scrollbar to the left side, but is very rare and is difficult to
+        // check for. Plus, for modal dialogs with backdrops, it is more
+        // important that the backdrop is checked but not so much the window.
+
+        if (canScrollY) {
+          const isRTL = win.getComputedStyle(target).direction === 'rtl';
+
+          if (isRTL) {
+            xCond = event.offsetX <= target.offsetWidth - target.clientWidth;
+          }
+        }
+
+        if (xCond || canScrollX && event.offsetY > target.clientHeight) {
+          return;
+        }
+      }
+
+      const targetIsInsideChildren = tree && getChildren(tree.nodesRef.current, nodeId).some(node => {
+        var _node$context;
+
+        return isEventTargetWithin(event, (_node$context = node.context) == null ? void 0 : _node$context.refs.floating.current);
+      });
+
+      if (isEventTargetWithin(event, refs.floating.current) || isEventTargetWithin(event, refs.domReference.current) || targetIsInsideChildren) {
+        return;
+      }
+
+      if (!bubbles && tree && getChildren(tree.nodesRef.current, nodeId).length > 0) {
+        return;
+      }
+
+      events.emit('dismiss', nested ? {
+        preventScroll: true
+      } : false);
+      onOpenChange(false);
+    }
+
+    function onScroll() {
+      onOpenChange(false);
+    }
+
+    const doc = getDocument(refs.floating.current);
+    escapeKey && doc.addEventListener('keydown', onKeyDown);
+    outsidePress && doc.addEventListener(outsidePressEvent, onOutsidePress);
+    let ancestors = [];
+
+    if (ancestorScroll) {
+      if (isElement(refs.domReference.current)) {
+        ancestors = getOverflowAncestors(refs.domReference.current);
+      }
+
+      if (isElement(refs.floating.current)) {
+        ancestors = ancestors.concat(getOverflowAncestors(refs.floating.current));
+      }
+
+      if (!isElement(refs.reference.current) && refs.reference.current && // @ts-expect-error is VirtualElement
+      refs.reference.current.contextElement) {
+        ancestors = ancestors.concat( // @ts-expect-error is VirtualElement
+        getOverflowAncestors(refs.reference.current.contextElement));
+      }
+    } // Ignore the visual viewport for scrolling dismissal (allow pinch-zoom)
+
+
     ancestors = ancestors.filter(ancestor => {
       var _doc$defaultView;
+
       return ancestor !== ((_doc$defaultView = doc.defaultView) == null ? void 0 : _doc$defaultView.visualViewport);
     });
     ancestors.forEach(ancestor => {
@@ -10008,13 +9224,13 @@ function useDismiss(context, props) {
       });
     });
     return () => {
-      escapeKey && doc.removeEventListener('keydown', closeOnEscapeKeyDown);
-      outsidePress && doc.removeEventListener(outsidePressEvent, closeOnPressOutside);
+      escapeKey && doc.removeEventListener('keydown', onKeyDown);
+      outsidePress && doc.removeEventListener(outsidePressEvent, onOutsidePress);
       ancestors.forEach(ancestor => {
         ancestor.removeEventListener('scroll', onScroll);
       });
     };
-  }, [dataRef, floating, domReference, reference, escapeKey, outsidePress, outsidePressEvent, open, onOpenChange, ancestorScroll, enabled, escapeKeyBubbles, outsidePressBubbles, closeOnEscapeKeyDown, closeOnPressOutside]);
+  }, [escapeKey, outsidePress, outsidePressEvent, events, tree, nodeId, open, onOpenChange, ancestorScroll, enabled, bubbles, refs, nested]);
   React.useEffect(() => {
     insideReactTreeRef.current = false;
   }, [outsidePress, outsidePressEvent]);
@@ -10022,173 +9238,74 @@ function useDismiss(context, props) {
     if (!enabled) {
       return {};
     }
+
     return {
       reference: {
-        onKeyDown: closeOnEscapeKeyDown,
-        [bubbleHandlerKeys[referencePressEvent]]: event => {
+        [bubbleHandlerKeys[referencePressEvent]]: () => {
           if (referencePress) {
-            events.emit('dismiss', {
-              type: 'referencePress',
-              data: {
-                returnFocus: false
-              }
-            });
-            onOpenChange(false, event.nativeEvent);
+            events.emit('dismiss');
+            onOpenChange(false);
           }
         }
       },
       floating: {
-        onKeyDown: closeOnEscapeKeyDown,
         [captureHandlerKeys[outsidePressEvent]]: () => {
           insideReactTreeRef.current = true;
         }
       }
     };
-  }, [enabled, events, referencePress, outsidePressEvent, referencePressEvent, onOpenChange, closeOnEscapeKeyDown]);
-}
+  }, [enabled, events, referencePress, outsidePressEvent, referencePressEvent, onOpenChange]);
+};
 
 /**
- * Provides data to position a floating element and context to add interactions.
- * @see https://floating-ui.com/docs/react
- */
-function useFloating(options) {
-  var _options$elements;
-  if (options === void 0) {
-    options = {};
-  }
-  const {
-    open = false,
-    onOpenChange: unstable_onOpenChange,
-    nodeId
-  } = options;
-  const [_domReference, setDomReference] = React.useState(null);
-  const domReference = ((_options$elements = options.elements) == null ? void 0 : _options$elements.reference) || _domReference;
-  const position = useFloating$1(options);
-  const tree = useFloatingTree();
-  const onOpenChange = useEffectEvent((open, event) => {
-    if (open) {
-      dataRef.current.openEvent = event;
-    }
-    unstable_onOpenChange == null ? void 0 : unstable_onOpenChange(open, event);
-  });
-  const domReferenceRef = React.useRef(null);
-  const dataRef = React.useRef({});
-  const events = React.useState(() => createPubSub())[0];
-  const floatingId = useId();
-  const setPositionReference = React.useCallback(node => {
-    const positionReference = isElement(node) ? {
-      getBoundingClientRect: () => node.getBoundingClientRect(),
-      contextElement: node
-    } : node;
-    position.refs.setReference(positionReference);
-  }, [position.refs]);
-  const setReference = React.useCallback(node => {
-    if (isElement(node) || node === null) {
-      domReferenceRef.current = node;
-      setDomReference(node);
-    }
-
-    // Backwards-compatibility for passing a virtual element to `reference`
-    // after it has set the DOM reference.
-    if (isElement(position.refs.reference.current) || position.refs.reference.current === null ||
-    // Don't allow setting virtual elements using the old technique back to
-    // `null` to support `positionReference` + an unstable `reference`
-    // callback ref.
-    node !== null && !isElement(node)) {
-      position.refs.setReference(node);
-    }
-  }, [position.refs]);
-  const refs = React.useMemo(() => ({
-    ...position.refs,
-    setReference,
-    setPositionReference,
-    domReference: domReferenceRef
-  }), [position.refs, setReference, setPositionReference]);
-  const elements = React.useMemo(() => ({
-    ...position.elements,
-    domReference: domReference
-  }), [position.elements, domReference]);
-  const context = React.useMemo(() => ({
-    ...position,
-    refs,
-    elements,
-    dataRef,
-    nodeId,
-    floatingId,
-    events,
-    open,
-    onOpenChange
-  }), [position, nodeId, floatingId, events, open, onOpenChange, refs, elements]);
-  index(() => {
-    const node = tree == null ? void 0 : tree.nodesRef.current.find(node => node.id === nodeId);
-    if (node) {
-      node.context = context;
-    }
-  });
-  return React.useMemo(() => ({
-    ...position,
-    context,
-    refs,
-    elements
-  }), [position, refs, elements, context]);
-}
-
-/**
- * Opens the floating element while the reference element has focus, like CSS
- * `:focus`.
+ * Adds focus event listeners that change the open state, like CSS :focus.
  * @see https://floating-ui.com/docs/useFocus
  */
-function useFocus(context, props) {
-  if (props === void 0) {
-    props = {};
-  }
-  const {
+const useFocus = function (_ref, _temp) {
+  let {
     open,
     onOpenChange,
     dataRef,
-    events,
     refs,
-    elements: {
-      floating,
-      domReference
-    }
-  } = context;
-  const {
+    events
+  } = _ref;
+  let {
     enabled = true,
     keyboardOnly = true
-  } = props;
+  } = _temp === void 0 ? {} : _temp;
   const pointerTypeRef = React.useRef('');
   const blockFocusRef = React.useRef(false);
   const timeoutRef = React.useRef();
   React.useEffect(() => {
+    var _doc$defaultView;
+
     if (!enabled) {
       return;
     }
-    const doc = getDocument(floating);
-    const win = doc.defaultView || window;
 
-    // If the reference was focused and the user left the tab/window, and the
-    // floating element was not open, the focus should be blocked when they
-    // return to the tab/window.
+    const doc = getDocument(refs.floating.current);
+    const win = (_doc$defaultView = doc.defaultView) != null ? _doc$defaultView : window;
+
     function onBlur() {
-      if (!open && isHTMLElement(domReference) && domReference === activeElement(getDocument(domReference))) {
-        blockFocusRef.current = true;
+      if (!open && isHTMLElement(refs.domReference.current)) {
+        refs.domReference.current.blur();
       }
     }
+
     win.addEventListener('blur', onBlur);
     return () => {
       win.removeEventListener('blur', onBlur);
     };
-  }, [floating, domReference, open, enabled]);
+  }, [refs, open, enabled]);
   React.useEffect(() => {
     if (!enabled) {
       return;
     }
-    function onDismiss(payload) {
-      if (payload.type === 'referencePress' || payload.type === 'escapeKey') {
-        blockFocusRef.current = true;
-      }
+
+    function onDismiss() {
+      blockFocusRef.current = true;
     }
+
     events.on('dismiss', onDismiss);
     return () => {
       events.off('dismiss', onDismiss);
@@ -10203,136 +9320,74 @@ function useFocus(context, props) {
     if (!enabled) {
       return {};
     }
+
     return {
       reference: {
-        onPointerDown(_ref) {
+        onPointerDown(_ref2) {
           let {
             pointerType
-          } = _ref;
+          } = _ref2;
           pointerTypeRef.current = pointerType;
           blockFocusRef.current = !!(pointerType && keyboardOnly);
         },
-        onMouseLeave() {
+
+        onPointerLeave() {
           blockFocusRef.current = false;
         },
+
         onFocus(event) {
-          var _dataRef$current$open;
+          var _dataRef$current$open, _refs$domReference$cu, _dataRef$current$open2;
+
           if (blockFocusRef.current) {
             return;
-          }
+          } // Dismiss with click should ignore the subsequent `focus` trigger, but
+          // only if the click originated inside the reference element.
 
-          // Dismiss with click should ignore the subsequent `focus` trigger,
-          // but only if the click originated inside the reference element.
-          if (event.type === 'focus' && ((_dataRef$current$open = dataRef.current.openEvent) == null ? void 0 : _dataRef$current$open.type) === 'mousedown' && isEventTargetWithin(dataRef.current.openEvent, domReference)) {
+
+          if (event.type === 'focus' && ((_dataRef$current$open = dataRef.current.openEvent) == null ? void 0 : _dataRef$current$open.type) === 'mousedown' && (_refs$domReference$cu = refs.domReference.current) != null && _refs$domReference$cu.contains((_dataRef$current$open2 = dataRef.current.openEvent) == null ? void 0 : _dataRef$current$open2.target)) {
             return;
           }
-          onOpenChange(true, event.nativeEvent);
+
+          dataRef.current.openEvent = event.nativeEvent;
+          onOpenChange(true);
         },
+
         onBlur(event) {
-          blockFocusRef.current = false;
-          const relatedTarget = event.relatedTarget;
+          const target = event.relatedTarget; // Wait for the window blur listener to fire.
 
-          // Hit the non-modal focus management portal guard. Focus will be
-          // moved into the floating element immediately after.
-          const movedToFocusGuard = isElement(relatedTarget) && relatedTarget.hasAttribute(createAttribute('focus-guard')) && relatedTarget.getAttribute('data-type') === 'outside';
-
-          // Wait for the window blur listener to fire.
           timeoutRef.current = setTimeout(() => {
+            var _refs$floating$curren, _refs$domReference$cu2;
+
             // When focusing the reference element (e.g. regular click), then
             // clicking into the floating element, prevent it from hiding.
             // Note: it must be focusable, e.g. `tabindex="-1"`.
-            if (contains(refs.floating.current, relatedTarget) || contains(domReference, relatedTarget) || movedToFocusGuard) {
+            if ((_refs$floating$curren = refs.floating.current) != null && _refs$floating$curren.contains(target) || (_refs$domReference$cu2 = refs.domReference.current) != null && _refs$domReference$cu2.contains(target)) {
               return;
             }
-            onOpenChange(false, event.nativeEvent);
+
+            blockFocusRef.current = false;
+            onOpenChange(false);
           });
         }
+
       }
     };
-  }, [enabled, keyboardOnly, domReference, refs, dataRef, onOpenChange]);
-}
+  }, [enabled, keyboardOnly, refs, dataRef, onOpenChange]);
+};
 
-function mergeProps(userProps, propsList, elementKey) {
-  const map = new Map();
-  return {
-    ...(elementKey === 'floating' && {
-      tabIndex: -1
-    }),
-    ...userProps,
-    ...propsList.map(value => value ? value[elementKey] : null).concat(userProps).reduce((acc, props) => {
-      if (!props) {
-        return acc;
-      }
-      Object.entries(props).forEach(_ref => {
-        let [key, value] = _ref;
-        if (key.indexOf('on') === 0) {
-          if (!map.has(key)) {
-            map.set(key, []);
-          }
-          if (typeof value === 'function') {
-            var _map$get;
-            (_map$get = map.get(key)) == null ? void 0 : _map$get.push(value);
-            acc[key] = function () {
-              var _map$get2;
-              for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-                args[_key] = arguments[_key];
-              }
-              return (_map$get2 = map.get(key)) == null ? void 0 : _map$get2.map(fn => fn(...args)).find(val => val !== undefined);
-            };
-          }
-        } else {
-          acc[key] = value;
-        }
-      });
-      return acc;
-    }, {})
-  };
-}
-
-/**
- * Merges an array of interaction hooks' props into prop getters, allowing
- * event handler functions to be composed together without overwriting one
- * another.
- * @see https://floating-ui.com/docs/react#interaction-hooks
- */
-function useInteractions(propsList) {
-  if (propsList === void 0) {
-    propsList = [];
-  }
-  // The dependencies are a dynamic array, so we can't use the linter's
-  // suggestion to add it to the deps array.
-  const deps = propsList;
-  const getReferenceProps = React.useCallback(userProps => mergeProps(userProps, propsList, 'reference'),
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  deps);
-  const getFloatingProps = React.useCallback(userProps => mergeProps(userProps, propsList, 'floating'),
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  deps);
-  const getItemProps = React.useCallback(userProps => mergeProps(userProps, propsList, 'item'),
-  // Granularly check for `item` changes, because the `getItemProps` getter
-  // should be as referentially stable as possible since it may be passed as
-  // a prop to many components. All `item` key values must therefore be
-  // memoized.
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  propsList.map(key => key == null ? void 0 : key.item));
-  return React.useMemo(() => ({
-    getReferenceProps,
-    getFloatingProps,
-    getItemProps
-  }), [getReferenceProps, getFloatingProps, getItemProps]);
-}
-
-let isPreventScrollSupported = false;
 const ARROW_UP = 'ArrowUp';
 const ARROW_DOWN = 'ArrowDown';
 const ARROW_LEFT = 'ArrowLeft';
 const ARROW_RIGHT = 'ArrowRight';
+
 function isDifferentRow(index, cols, prevRow) {
   return Math.floor(index / cols) !== prevRow;
 }
+
 function isIndexOutOfBounds(listRef, index) {
   return index < 0 || index >= listRef.current.length;
 }
+
 function findNonDisabledIndex(listRef, _temp) {
   let {
     startingIndex = -1,
@@ -10342,47 +9397,59 @@ function findNonDisabledIndex(listRef, _temp) {
   } = _temp === void 0 ? {} : _temp;
   const list = listRef.current;
   let index = startingIndex;
+
   do {
     var _list$index, _list$index2;
+
     index = index + (decrement ? -amount : amount);
   } while (index >= 0 && index <= list.length - 1 && (disabledIndices ? disabledIndices.includes(index) : list[index] == null || ((_list$index = list[index]) == null ? void 0 : _list$index.hasAttribute('disabled')) || ((_list$index2 = list[index]) == null ? void 0 : _list$index2.getAttribute('aria-disabled')) === 'true'));
+
   return index;
 }
+
 function doSwitch(orientation, vertical, horizontal) {
   switch (orientation) {
     case 'vertical':
       return vertical;
+
     case 'horizontal':
       return horizontal;
+
     default:
       return vertical || horizontal;
   }
 }
+
 function isMainOrientationKey(key, orientation) {
   const vertical = key === ARROW_UP || key === ARROW_DOWN;
   const horizontal = key === ARROW_LEFT || key === ARROW_RIGHT;
   return doSwitch(orientation, vertical, horizontal);
 }
+
 function isMainOrientationToEndKey(key, orientation, rtl) {
   const vertical = key === ARROW_DOWN;
   const horizontal = rtl ? key === ARROW_LEFT : key === ARROW_RIGHT;
   return doSwitch(orientation, vertical, horizontal) || key === 'Enter' || key == ' ' || key === '';
 }
+
 function isCrossOrientationOpenKey(key, orientation, rtl) {
   const vertical = rtl ? key === ARROW_LEFT : key === ARROW_RIGHT;
   const horizontal = key === ARROW_DOWN;
   return doSwitch(orientation, vertical, horizontal);
 }
+
 function isCrossOrientationCloseKey(key, orientation, rtl) {
   const vertical = rtl ? key === ARROW_RIGHT : key === ARROW_LEFT;
   const horizontal = key === ARROW_UP;
   return doSwitch(orientation, vertical, horizontal);
 }
+
 function getMinIndex(listRef, disabledIndices) {
   return findNonDisabledIndex(listRef, {
     disabledIndices
   });
 }
+
 function getMaxIndex(listRef, disabledIndices) {
   return findNonDisabledIndex(listRef, {
     decrement: true,
@@ -10390,22 +9457,19 @@ function getMaxIndex(listRef, disabledIndices) {
     disabledIndices
   });
 }
+
 /**
- * Adds arrow key-based navigation of a list of items, either using real DOM
- * focus or virtual focus.
+ * Adds focus-managed indexed navigation via arrow keys to a list of items
+ * within the floating element.
  * @see https://floating-ui.com/docs/useListNavigation
  */
-function useListNavigation(context, props) {
-  const {
+const useListNavigation = function (_ref, _temp2) {
+  let {
     open,
     onOpenChange,
-    refs,
-    elements: {
-      domReference,
-      floating
-    }
-  } = context;
-  const {
+    refs
+  } = _ref;
+  let {
     listRef,
     activeIndex,
     onNavigate: unstable_onNavigate = () => {},
@@ -10421,273 +9485,175 @@ function useListNavigation(context, props) {
     openOnArrowKeyDown = true,
     disabledIndices = undefined,
     orientation = 'vertical',
-    cols = 1,
-    scrollItemIntoView = true
-  } = props;
+    cols = 1
+  } = _temp2 === void 0 ? {
+    listRef: {
+      current: []
+    },
+    activeIndex: null,
+    onNavigate: () => {}
+  } : _temp2;
+
   if (process.env.NODE_ENV !== "production") {
     if (allowEscape) {
       if (!loop) {
         console.warn(['Floating UI: `useListNavigation` looping must be enabled to allow', 'escaping.'].join(' '));
       }
+
       if (!virtual) {
         console.warn(['Floating UI: `useListNavigation` must be virtual to allow', 'escaping.'].join(' '));
       }
     }
+
     if (orientation === 'vertical' && cols > 1) {
       console.warn(['Floating UI: In grid list navigation mode (`cols` > 1), the', '`orientation` should be either "horizontal" or "both".'].join(' '));
     }
   }
+
   const parentId = useFloatingParentNodeId();
   const tree = useFloatingTree();
-  const onNavigate = useEffectEvent(unstable_onNavigate);
+  const previousOpen = usePrevious(open);
+  const onNavigate = useEvent(unstable_onNavigate);
+  const previousOnNavigate = useEvent(usePrevious(unstable_onNavigate));
   const focusItemOnOpenRef = React.useRef(focusItemOnOpen);
   const indexRef = React.useRef(selectedIndex != null ? selectedIndex : -1);
   const keyRef = React.useRef(null);
-  const isPointerModalityRef = React.useRef(true);
-  const previousOnNavigateRef = React.useRef(onNavigate);
-  const previousMountedRef = React.useRef(!!floating);
-  const forceSyncFocus = React.useRef(false);
-  const forceScrollIntoViewRef = React.useRef(false);
   const disabledIndicesRef = useLatestRef(disabledIndices);
-  const latestOpenRef = useLatestRef(open);
-  const scrollItemIntoViewRef = useLatestRef(scrollItemIntoView);
+  const blockPointerLeaveRef = React.useRef(false);
+  const frameRef = React.useRef(-1);
   const [activeId, setActiveId] = React.useState();
-  const focusItem = useEffectEvent(function (listRef, indexRef, forceScrollIntoView) {
-    if (forceScrollIntoView === void 0) {
-      forceScrollIntoView = false;
-    }
-    const item = listRef.current[indexRef.current];
-    if (!item) return;
-    if (virtual) {
-      setActiveId(item.id);
-    } else {
-      enqueueFocus(item, {
-        preventScroll: true,
-        // Mac Safari does not move the virtual cursor unless the focus call
-        // is sync. However, for the very first focus call, we need to wait
-        // for the position to be ready in order to prevent unwanted
-        // scrolling. This means the virtual cursor will not move to the first
-        // item when first opening the floating element, but will on
-        // subsequent calls. `preventScroll` is supported in modern Safari,
-        // so we can use that instead.
-        // iOS Safari must be async or the first item will not be focused.
-        sync: isMac() && isSafari() ? isPreventScrollSupported || forceSyncFocus.current : false
-      });
-    }
-    requestAnimationFrame(() => {
-      const scrollIntoViewOptions = scrollItemIntoViewRef.current;
-      const shouldScrollIntoView = scrollIntoViewOptions && item && (forceScrollIntoView || !isPointerModalityRef.current);
-      if (shouldScrollIntoView) {
-        // JSDOM doesn't support `.scrollIntoView()` but it's widely supported
-        // by all browsers.
-        item.scrollIntoView == null ? void 0 : item.scrollIntoView(typeof scrollIntoViewOptions === 'boolean' ? {
-          block: 'nearest',
-          inline: 'nearest'
-        } : scrollIntoViewOptions);
-      }
-    });
-  });
-  index(() => {
-    document.createElement('div').focus({
-      get preventScroll() {
-        isPreventScrollSupported = true;
-        return false;
-      }
-    });
-  }, []);
+  const focusItem = React.useCallback((listRef, indexRef) => {
+    // `mousedown` clicks occur before `focus`, so the button will steal the
+    // focus unless we wait a frame.
+    frameRef.current = requestAnimationFrame(() => {
+      if (virtual) {
+        var _listRef$current$inde;
 
-  // Sync `selectedIndex` to be the `activeIndex` upon opening the floating
+        setActiveId((_listRef$current$inde = listRef.current[indexRef.current]) == null ? void 0 : _listRef$current$inde.id);
+      } else {
+        var _listRef$current$inde2;
+
+        (_listRef$current$inde2 = listRef.current[indexRef.current]) == null ? void 0 : _listRef$current$inde2.focus({
+          preventScroll: true
+        });
+      }
+    });
+  }, [virtual]); // Sync `selectedIndex` to be the `activeIndex` upon opening the floating
   // element. Also, reset `activeIndex` upon closing the floating element.
-  index(() => {
-    if (!enabled) {
-      return;
-    }
-    if (open && floating) {
-      if (focusItemOnOpenRef.current && selectedIndex != null) {
-        // Regardless of the pointer modality, we want to ensure the selected
-        // item comes into view when the floating element is opened.
-        forceScrollIntoViewRef.current = true;
-        onNavigate(selectedIndex);
-      }
-    } else if (previousMountedRef.current) {
-      // Since the user can specify `onNavigate` conditionally
-      // (onNavigate: open ? setActiveIndex : setSelectedIndex),
-      // we store and call the previous function.
-      indexRef.current = -1;
-      previousOnNavigateRef.current(null);
-    }
-  }, [enabled, open, floating, selectedIndex, onNavigate]);
 
-  // Sync `activeIndex` to be the focused item while the floating element is
-  // open.
   index(() => {
     if (!enabled) {
       return;
     }
-    if (open && floating) {
+
+    if (!previousOpen && open && focusItemOnOpenRef.current && selectedIndex != null) {
+      onNavigate(selectedIndex);
+    } // Unset `activeIndex`. Since the user can specify `onNavigate`
+    // conditionally (onNavigate: open ? setActiveIndex : setSelectedIndex)
+    // we store and call the previous function
+
+
+    if (previousOpen && !open) {
+      cancelAnimationFrame(frameRef.current);
+      indexRef.current = -1;
+      previousOnNavigate(null);
+    }
+  }, [open, previousOpen, selectedIndex, listRef, focusItem, enabled, onNavigate, previousOnNavigate]); // Sync `activeIndex` to be the focused item while the floating element is
+  // open.
+
+  index(() => {
+    if (!enabled) {
+      return;
+    }
+
+    if (open) {
       if (activeIndex == null) {
-        forceSyncFocus.current = false;
         if (selectedIndex != null) {
           return;
-        }
+        } // Reset while the floating element was open (e.g. the list changed).
 
-        // Reset while the floating element was open (e.g. the list changed).
-        if (previousMountedRef.current) {
+
+        if (previousOpen) {
           indexRef.current = -1;
           focusItem(listRef, indexRef);
-        }
+        } // Initial sync
 
-        // Initial sync.
-        if (!previousMountedRef.current && focusItemOnOpenRef.current && (keyRef.current != null || focusItemOnOpenRef.current === true && keyRef.current == null)) {
-          let runs = 0;
-          const waitForListPopulated = () => {
-            if (listRef.current[0] == null) {
-              // Avoid letting the browser paint if possible on the first try,
-              // otherwise use rAF. Don't try more than twice, since something
-              // is wrong otherwise.
-              if (runs < 2) {
-                const scheduler = runs ? requestAnimationFrame : queueMicrotask;
-                scheduler(waitForListPopulated);
-              }
-              runs++;
-            } else {
-              indexRef.current = keyRef.current == null || isMainOrientationToEndKey(keyRef.current, orientation, rtl) || nested ? getMinIndex(listRef, disabledIndicesRef.current) : getMaxIndex(listRef, disabledIndicesRef.current);
-              keyRef.current = null;
-              onNavigate(indexRef.current);
-            }
-          };
-          waitForListPopulated();
+
+        if (!previousOpen && focusItemOnOpenRef.current && (keyRef.current != null || focusItemOnOpenRef.current === true && keyRef.current == null)) {
+          indexRef.current = keyRef.current == null || isMainOrientationToEndKey(keyRef.current, orientation, rtl) || nested ? getMinIndex(listRef, disabledIndicesRef.current) : getMaxIndex(listRef, disabledIndicesRef.current);
+          onNavigate(indexRef.current);
+          focusItem(listRef, indexRef);
         }
       } else if (!isIndexOutOfBounds(listRef, activeIndex)) {
         indexRef.current = activeIndex;
-        focusItem(listRef, indexRef, forceScrollIntoViewRef.current);
-        forceScrollIntoViewRef.current = false;
+        focusItem(listRef, indexRef);
       }
     }
-  }, [enabled, open, floating, activeIndex, selectedIndex, nested, listRef, orientation, rtl, onNavigate, focusItem, disabledIndicesRef]);
-
-  // Ensure the parent floating element has focus when a nested child closes
+  }, [open, previousOpen, activeIndex, selectedIndex, nested, listRef, onNavigate, focusItem, enabled, allowEscape, orientation, rtl, virtual, disabledIndicesRef]); // Ensure the parent floating element has focus when a nested child closes
   // to allow arrow key navigation to work after the pointer leaves the child.
+
   index(() => {
     if (!enabled) {
       return;
     }
-    if (previousMountedRef.current && !floating && tree) {
-      var _nodes$find, _nodes$find$context;
-      const nodes = tree.nodesRef.current;
-      const parent = (_nodes$find = nodes.find(node => node.id === parentId)) == null ? void 0 : (_nodes$find$context = _nodes$find.context) == null ? void 0 : _nodes$find$context.elements.floating;
-      const activeEl = activeElement(getDocument(floating));
-      const treeContainsActiveEl = nodes.some(node => node.context && contains(node.context.elements.floating, activeEl));
-      if (parent && !treeContainsActiveEl) {
-        parent.focus({
+
+    if (!open && previousOpen) {
+      var _tree$nodesRef$curren, _tree$nodesRef$curren2;
+
+      const parentFloating = tree == null ? void 0 : (_tree$nodesRef$curren = tree.nodesRef.current.find(node => node.id === parentId)) == null ? void 0 : (_tree$nodesRef$curren2 = _tree$nodesRef$curren.context) == null ? void 0 : _tree$nodesRef$curren2.refs.floating.current;
+
+      if (parentFloating && !parentFloating.contains(activeElement(getDocument(parentFloating)))) {
+        parentFloating.focus({
           preventScroll: true
         });
       }
     }
-  }, [enabled, floating, tree, parentId]);
+  }, [enabled, open, previousOpen, tree, parentId]);
   index(() => {
-    previousOnNavigateRef.current = onNavigate;
-    previousMountedRef.current = !!floating;
+    keyRef.current = null;
   });
-  index(() => {
-    if (!open) {
-      keyRef.current = null;
-    }
-  }, [open]);
-  const hasActiveIndex = activeIndex != null;
-  const item = React.useMemo(() => {
-    function syncCurrentTarget(currentTarget) {
-      if (!open) return;
-      const index = listRef.current.indexOf(currentTarget);
-      if (index !== -1) {
-        onNavigate(index);
-      }
-    }
-    const props = {
-      onFocus(_ref) {
-        let {
-          currentTarget
-        } = _ref;
-        syncCurrentTarget(currentTarget);
-      },
-      onClick: _ref2 => {
-        let {
-          currentTarget
-        } = _ref2;
-        return currentTarget.focus({
-          preventScroll: true
-        });
-      },
-      // Safari
-      ...(focusItemOnHover && {
-        onMouseMove(_ref3) {
-          let {
-            currentTarget
-          } = _ref3;
-          syncCurrentTarget(currentTarget);
-        },
-        onPointerLeave(_ref4) {
-          let {
-            pointerType
-          } = _ref4;
-          if (!isPointerModalityRef.current || pointerType === 'touch') {
-            return;
-          }
-          indexRef.current = -1;
-          focusItem(listRef, indexRef);
-          onNavigate(null);
-          if (!virtual) {
-            enqueueFocus(refs.floating.current, {
-              preventScroll: true
-            });
-          }
-        }
-      })
-    };
-    return props;
-  }, [open, refs, focusItem, focusItemOnHover, listRef, onNavigate, virtual]);
   return React.useMemo(() => {
     if (!enabled) {
       return {};
     }
-    const disabledIndices = disabledIndicesRef.current;
-    function onKeyDown(event) {
-      isPointerModalityRef.current = false;
-      forceSyncFocus.current = true;
 
-      // If the floating element is animating out, ignore navigation. Otherwise,
-      // the `activeIndex` gets set to 0 despite not being open so the next time
-      // the user ArrowDowns, the first item won't be focused.
-      if (!latestOpenRef.current && event.currentTarget === refs.floating.current) {
-        return;
-      }
+    const disabledIndices = disabledIndicesRef.current;
+
+    function onKeyDown(event) {
+      blockPointerLeaveRef.current = true;
+
       if (nested && isCrossOrientationCloseKey(event.key, orientation, rtl)) {
         stopEvent$1(event);
-        onOpenChange(false, event.nativeEvent);
-        if (isHTMLElement(domReference)) {
-          domReference.focus();
+        onOpenChange(false);
+
+        if (isHTMLElement(refs.domReference.current)) {
+          refs.domReference.current.focus();
         }
+
         return;
       }
+
       const currentIndex = indexRef.current;
       const minIndex = getMinIndex(listRef, disabledIndices);
       const maxIndex = getMaxIndex(listRef, disabledIndices);
+
       if (event.key === 'Home') {
-        stopEvent$1(event);
         indexRef.current = minIndex;
         onNavigate(indexRef.current);
       }
+
       if (event.key === 'End') {
-        stopEvent$1(event);
         indexRef.current = maxIndex;
         onNavigate(indexRef.current);
-      }
+      } // Grid navigation
 
-      // Grid navigation.
+
       if (cols > 1) {
         const prevIndex = indexRef.current;
+
         if (event.key === ARROW_UP) {
           stopEvent$1(event);
+
           if (prevIndex === -1) {
             indexRef.current = maxIndex;
           } else {
@@ -10697,10 +9663,12 @@ function useListNavigation(context, props) {
               decrement: true,
               disabledIndices
             });
+
             if (loop && (prevIndex - cols < minIndex || indexRef.current < 0)) {
               const col = prevIndex % cols;
               const maxCol = maxIndex % cols;
               const offset = maxIndex - (maxCol - col);
+
               if (maxCol === col) {
                 indexRef.current = maxIndex;
               } else {
@@ -10708,13 +9676,17 @@ function useListNavigation(context, props) {
               }
             }
           }
+
           if (isIndexOutOfBounds(listRef, indexRef.current)) {
             indexRef.current = prevIndex;
           }
+
           onNavigate(indexRef.current);
         }
+
         if (event.key === ARROW_DOWN) {
           stopEvent$1(event);
+
           if (prevIndex === -1) {
             indexRef.current = minIndex;
           } else {
@@ -10723,6 +9695,7 @@ function useListNavigation(context, props) {
               amount: cols,
               disabledIndices
             });
+
             if (loop && prevIndex + cols > maxIndex) {
               indexRef.current = findNonDisabledIndex(listRef, {
                 startingIndex: prevIndex % cols - cols,
@@ -10731,22 +9704,27 @@ function useListNavigation(context, props) {
               });
             }
           }
+
           if (isIndexOutOfBounds(listRef, indexRef.current)) {
             indexRef.current = prevIndex;
           }
-          onNavigate(indexRef.current);
-        }
 
-        // Remains on the same row/column.
+          onNavigate(indexRef.current);
+        } // Remains on the same row/column
+
+
         if (orientation === 'both') {
           const prevRow = Math.floor(prevIndex / cols);
+
           if (event.key === ARROW_RIGHT) {
             stopEvent$1(event);
+
             if (prevIndex % cols !== cols - 1) {
               indexRef.current = findNonDisabledIndex(listRef, {
                 startingIndex: prevIndex,
                 disabledIndices
               });
+
               if (loop && isDifferentRow(indexRef.current, cols, prevRow)) {
                 indexRef.current = findNonDisabledIndex(listRef, {
                   startingIndex: prevIndex - prevIndex % cols - 1,
@@ -10759,18 +9737,22 @@ function useListNavigation(context, props) {
                 disabledIndices
               });
             }
+
             if (isDifferentRow(indexRef.current, cols, prevRow)) {
               indexRef.current = prevIndex;
             }
           }
+
           if (event.key === ARROW_LEFT) {
             stopEvent$1(event);
+
             if (prevIndex % cols !== 0) {
               indexRef.current = findNonDisabledIndex(listRef, {
                 startingIndex: prevIndex,
                 disabledIndices,
                 decrement: true
               });
+
               if (loop && isDifferentRow(indexRef.current, cols, prevRow)) {
                 indexRef.current = findNonDisabledIndex(listRef, {
                   startingIndex: prevIndex + (cols - prevIndex % cols),
@@ -10785,11 +9767,14 @@ function useListNavigation(context, props) {
                 disabledIndices
               });
             }
+
             if (isDifferentRow(indexRef.current, cols, prevRow)) {
               indexRef.current = prevIndex;
             }
           }
+
           const lastRow = Math.floor(maxIndex / cols) === prevRow;
+
           if (isIndexOutOfBounds(listRef, indexRef.current)) {
             if (loop && lastRow) {
               indexRef.current = event.key === ARROW_LEFT ? maxIndex : findNonDisabledIndex(listRef, {
@@ -10800,19 +9785,21 @@ function useListNavigation(context, props) {
               indexRef.current = prevIndex;
             }
           }
+
           onNavigate(indexRef.current);
           return;
         }
       }
-      if (isMainOrientationKey(event.key, orientation)) {
-        stopEvent$1(event);
 
-        // Reset the index if no item is focused.
+      if (isMainOrientationKey(event.key, orientation)) {
+        stopEvent$1(event); // Reset the index if no item is focused.
+
         if (open && !virtual && activeElement(event.currentTarget.ownerDocument) === event.currentTarget) {
           indexRef.current = isMainOrientationToEndKey(event.key, orientation, rtl) ? minIndex : maxIndex;
           onNavigate(indexRef.current);
           return;
         }
+
         if (isMainOrientationToEndKey(event.key, orientation, rtl)) {
           if (loop) {
             indexRef.current = currentIndex >= maxIndex ? allowEscape && currentIndex !== listRef.current.length ? -1 : minIndex : findNonDisabledIndex(listRef, {
@@ -10840,6 +9827,7 @@ function useListNavigation(context, props) {
             }));
           }
         }
+
         if (isIndexOutOfBounds(listRef, indexRef.current)) {
           onNavigate(null);
         } else {
@@ -10847,146 +9835,132 @@ function useListNavigation(context, props) {
         }
       }
     }
-    function checkVirtualMouse(event) {
-      if (focusItemOnOpen === 'auto' && isVirtualClick(event.nativeEvent)) {
-        focusItemOnOpenRef.current = true;
-      }
-    }
-    function checkVirtualPointer(event) {
-      // `pointerdown` fires first, reset the state then perform the checks.
-      focusItemOnOpenRef.current = focusItemOnOpen;
-      if (focusItemOnOpen === 'auto' && isVirtualPointerEvent(event.nativeEvent)) {
-        focusItemOnOpenRef.current = true;
-      }
-    }
-    const ariaActiveDescendantProp = virtual && open && hasActiveIndex && {
-      'aria-activedescendant': activeId
-    };
+
     return {
-      reference: {
-        ...ariaActiveDescendantProp,
+      reference: { ...(virtual && open && activeIndex != null && {
+          'aria-activedescendant': activeId
+        }),
+
         onKeyDown(event) {
-          isPointerModalityRef.current = false;
-          const isArrowKey = event.key.indexOf('Arrow') === 0;
+          blockPointerLeaveRef.current = true;
+
           if (virtual && open) {
             return onKeyDown(event);
           }
 
-          // If a floating element should not open on arrow key down, avoid
-          // setting `activeIndex` while it's closed.
-          if (!open && !openOnArrowKeyDown && isArrowKey) {
-            return;
-          }
-          const isNavigationKey = isArrowKey || event.key === 'Enter' || event.key.trim() === '';
-          const isMainKey = isMainOrientationKey(event.key, orientation);
-          const isCrossKey = isCrossOrientationOpenKey(event.key, orientation, rtl);
+          const isNavigationKey = event.key.indexOf('Arrow') === 0 || event.key === 'Enter' || event.key === ' ' || event.key === '';
+
           if (isNavigationKey) {
-            keyRef.current = nested && isMainKey ? null : event.key;
+            keyRef.current = event.key;
           }
+
           if (nested) {
-            if (isCrossKey) {
+            if (isCrossOrientationOpenKey(event.key, orientation, rtl)) {
               stopEvent$1(event);
+
               if (open) {
                 indexRef.current = getMinIndex(listRef, disabledIndices);
                 onNavigate(indexRef.current);
               } else {
-                onOpenChange(true, event.nativeEvent);
+                onOpenChange(true);
               }
             }
+
             return;
           }
-          if (isMainKey) {
+
+          if (isMainOrientationKey(event.key, orientation)) {
             if (selectedIndex != null) {
               indexRef.current = selectedIndex;
             }
+
             stopEvent$1(event);
+
             if (!open && openOnArrowKeyDown) {
-              onOpenChange(true, event.nativeEvent);
+              onOpenChange(true);
             } else {
               onKeyDown(event);
             }
+
             if (open) {
               onNavigate(indexRef.current);
             }
           }
-        },
-        onFocus() {
-          if (open) {
-            onNavigate(null);
-          }
-        },
-        onPointerDown: checkVirtualPointer,
-        onMouseDown: checkVirtualMouse,
-        onClick: checkVirtualMouse
+        }
+
       },
       floating: {
         'aria-orientation': orientation === 'both' ? undefined : orientation,
-        ...ariaActiveDescendantProp,
-        onKeyDown,
-        onPointerMove() {
-          isPointerModalityRef.current = true;
-        }
-      },
-      item
-    };
-  }, [domReference, refs, activeId, disabledIndicesRef, latestOpenRef, listRef, enabled, orientation, rtl, virtual, open, hasActiveIndex, nested, selectedIndex, openOnArrowKeyDown, allowEscape, cols, loop, focusItemOnOpen, onNavigate, onOpenChange, item]);
-}
-
-/**
- * Adds base screen reader props to the reference and floating elements for a
- * given floating element `role`.
- * @see https://floating-ui.com/docs/useRole
- */
-function useRole(context, props) {
-  if (props === void 0) {
-    props = {};
-  }
-  const {
-    open,
-    floatingId
-  } = context;
-  const {
-    enabled = true,
-    role = 'dialog'
-  } = props;
-  const referenceId = useId();
-  return React.useMemo(() => {
-    const floatingProps = {
-      id: floatingId,
-      role
-    };
-    if (!enabled) {
-      return {};
-    }
-    if (role === 'tooltip') {
-      return {
-        reference: {
-          'aria-describedby': open ? floatingId : undefined
-        },
-        floating: floatingProps
-      };
-    }
-    return {
-      reference: {
-        'aria-expanded': open ? 'true' : 'false',
-        'aria-haspopup': role === 'alertdialog' ? 'dialog' : role,
-        'aria-controls': open ? floatingId : undefined,
-        ...(role === 'listbox' && {
-          role: 'combobox'
+        ...(virtual && activeIndex != null && {
+          'aria-activedescendant': activeId
         }),
-        ...(role === 'menu' && {
-          id: referenceId
-        })
+        onKeyDown,
+
+        onPointerMove() {
+          blockPointerLeaveRef.current = false;
+        }
+
       },
-      floating: {
-        ...floatingProps,
-        ...(role === 'menu' && {
-          'aria-labelledby': referenceId
+      item: {
+        onFocus(_ref2) {
+          let {
+            currentTarget
+          } = _ref2;
+          const index = listRef.current.indexOf(currentTarget);
+
+          if (index !== -1) {
+            onNavigate(index);
+          }
+        },
+
+        onClick: _ref3 => {
+          let {
+            currentTarget
+          } = _ref3;
+          return currentTarget.focus({
+            preventScroll: true
+          });
+        },
+        // Safari
+        ...(focusItemOnHover && {
+          onMouseMove(_ref4) {
+            let {
+              currentTarget
+            } = _ref4;
+            const target = currentTarget;
+
+            if (target) {
+              const index = listRef.current.indexOf(target);
+
+              if (index !== -1) {
+                onNavigate(index);
+              }
+            }
+          },
+
+          onPointerLeave() {
+            if (!blockPointerLeaveRef.current) {
+              indexRef.current = -1;
+              focusItem(listRef, indexRef);
+              onNavigate(null);
+
+              if (!virtual) {
+                requestAnimationFrame(() => {
+                  var _refs$floating$curren;
+
+                  (_refs$floating$curren = refs.floating.current) == null ? void 0 : _refs$floating$curren.focus({
+                    preventScroll: true
+                  });
+                });
+              }
+            }
+          }
+
         })
       }
     };
-  }, [enabled, role, open, floatingId, referenceId]);
-}
+  }, [activeId, disabledIndicesRef, listRef, enabled, orientation, rtl, virtual, open, activeIndex, nested, selectedIndex, openOnArrowKeyDown, focusItemOnHover, allowEscape, cols, loop, refs, focusItem, onNavigate, onOpenChange]);
+};
 
 var css$12 = ".Alert_module_root__f2bc8467 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: flex-start;\n  position: fixed;\n  padding: 0.938rem;\n  width: 500px;\n}\n.Alert_module_root__f2bc8467.Alert_module_positionBottomCenter__f2bc8467 {\n  left: 50%;\n  bottom: 1rem;\n  transform: translate(-50%, 0);\n}\n.Alert_module_root__f2bc8467.Alert_module_positionTopRight__f2bc8467 {\n  right: 1rem;\n  top: 1rem;\n}\n.Alert_module_root__f2bc8467 .Alert_module_left__f2bc8467 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: flex-start;\n}\n.Alert_module_root__f2bc8467 .Alert_module_left__f2bc8467 .Alert_module_icons__f2bc8467 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  padding: 0.313rem 0.938rem 0rem 0rem;\n  height: auto;\n}\n.Alert_module_root__f2bc8467 .Alert_module_left__f2bc8467 .Alert_module_icons__f2bc8467 .Alert_module_icon__f2bc8467 {\n  width: 1.25rem;\n  height: 1.25rem;\n}\n.Alert_module_root__f2bc8467 .Alert_module_left__f2bc8467 .Alert_module_content__f2bc8467 {\n  padding: 0.188rem 0.938rem 0rem 0rem;\n}\n.Alert_module_root__f2bc8467 .Alert_module_left__f2bc8467 .Alert_module_content__f2bc8467 .Alert_module_title__f2bc8467 {\n  font-size: 0.875rem;\n  font-weight: 600;\n  padding-right: 2px;\n}\n.Alert_module_root__f2bc8467 .Alert_module_left__f2bc8467 .Alert_module_content__f2bc8467 .Alert_module_description__f2bc8467 {\n  word-wrap: break-word;\n  height: auto;\n  font-size: 0.875rem;\n  font-weight: 400;\n  margin-bottom: 0.5rem;\n}\n.Alert_module_root__f2bc8467 .Alert_module_actions__f2bc8467 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: flex-start;\n  gap: 5px;\n}\n.Alert_module_root__f2bc8467 .Alert_module_actions__f2bc8467 .Alert_module_button__f2bc8467 {\n  padding: 0.313rem 1rem;\n  font-weight: 400;\n}\n.Alert_module_root__f2bc8467 .Alert_module_actions__f2bc8467 .Alert_module_close__f2bc8467 {\n  height: auto;\n}\n.Alert_module_root__f2bc8467 .Alert_module_actions__f2bc8467 .Alert_module_close__f2bc8467 .Alert_module_icon__f2bc8467 {\n  width: 1.25rem;\n  height: 1.25rem;\n  fill: var(--black);\n}\n.Alert_module_root__f2bc8467.Alert_module_borderDefault__f2bc8467 {\n  border-width: 0.063rem;\n}\n.Alert_module_root__f2bc8467.Alert_module_borderThickLeft__f2bc8467 {\n  border-width: 0.063rem 0.063rem 0.063rem 0.25rem;\n}\n.Alert_module_root__f2bc8467.Alert_module_borderNone__f2bc8467 {\n  border-width: 0rem 0rem 0rem 0.25rem;\n}\n.Alert_module_root__f2bc8467.Alert_module_info__f2bc8467 {\n  border-style: solid;\n  border-color: var(--info);\n  background-color: #edf5ff;\n}\n.Alert_module_root__f2bc8467.Alert_module_info__f2bc8467 .Alert_module_icon__f2bc8467 {\n  fill: var(--info);\n}\n.Alert_module_root__f2bc8467.Alert_module_success__f2bc8467 {\n  border-style: solid;\n  border-color: var(--success);\n  background-color: var(--success-bg);\n}\n.Alert_module_root__f2bc8467.Alert_module_success__f2bc8467 .Alert_module_icon__f2bc8467 {\n  fill: var(--success);\n}\n.Alert_module_root__f2bc8467.Alert_module_danger__f2bc8467 {\n  border-style: solid;\n  border-color: var(--error);\n  background-color: var(--error-bg);\n}\n.Alert_module_root__f2bc8467.Alert_module_danger__f2bc8467 .Alert_module_icon__f2bc8467 {\n  fill: var(--error);\n}\n.Alert_module_root__f2bc8467.Alert_module_warning__f2bc8467 {\n  border-style: solid;\n  border-color: var(--warning);\n  background-color: var(--warning-bg);\n}\n.Alert_module_root__f2bc8467.Alert_module_warning__f2bc8467 .Alert_module_icon__f2bc8467 {\n  fill: var(--warning);\n}\n.Alert_module_root__f2bc8467.Alert_module_shadow__f2bc8467 {\n  box-shadow: 0.125rem 0.5rem 1rem rgba(60, 60, 60, 0.12);\n}";
 var modules_3a764ea3 = {"root":"Alert_module_root__f2bc8467","position-bottom-center":"Alert_module_positionBottomCenter__f2bc8467","position-top-right":"Alert_module_positionTopRight__f2bc8467","left":"Alert_module_left__f2bc8467","icons":"Alert_module_icons__f2bc8467","icon":"Alert_module_icon__f2bc8467","content":"Alert_module_content__f2bc8467","title":"Alert_module_title__f2bc8467","description":"Alert_module_description__f2bc8467","actions":"Alert_module_actions__f2bc8467","button":"Alert_module_button__f2bc8467","close":"Alert_module_close__f2bc8467","border-default":"Alert_module_borderDefault__f2bc8467","border-thick-left":"Alert_module_borderThickLeft__f2bc8467","border-none":"Alert_module_borderNone__f2bc8467","info":"Alert_module_info__f2bc8467","success":"Alert_module_success__f2bc8467","danger":"Alert_module_danger__f2bc8467","warning":"Alert_module_warning__f2bc8467","shadow":"Alert_module_shadow__f2bc8467"};
@@ -46022,7 +44996,8 @@ var DropdownItem = /*#__PURE__*/forwardRef(function DropdownItem(props, ref) {
     dataAttrs = props.dataAttrs,
     className = props.className,
     tabIndex = props.tabIndex,
-    disabled = props.disabled;
+    disabled = props.disabled,
+    customComponent = props.customComponent;
   var action = null;
   switch (variant) {
     case 'checkbox':
@@ -46054,7 +45029,7 @@ var DropdownItem = /*#__PURE__*/forwardRef(function DropdownItem(props, ref) {
     role: "option",
     "aria-selected": selected,
     onKeyDown: onKeyDown,
-    children: [action, /*#__PURE__*/jsx("span", {
+    children: [action, customComponent !== null && customComponent !== void 0 ? customComponent : /*#__PURE__*/jsx("span", {
       "data-elem": "title",
       children: title
     })]
@@ -46066,14 +45041,16 @@ DropdownItem.propTypes = {
   variant: propTypesExports.oneOf(['default', 'checkbox', 'radio']),
   selected: propTypesExports.bool,
   // eslint-disable-next-line react/forbid-prop-types
-  dataAttrs: propTypesExports.object
+  dataAttrs: propTypesExports.object,
+  customComponent: propTypesExports.node
 };
 DropdownItem.defaultProps = {
   className: '',
   title: '',
   variant: 'default',
   dataAttrs: {},
-  selected: false
+  selected: false,
+  customComponent: null
 };
 
 var css$Q = ".Switch_module_root__c9616649 {\n  cursor: pointer;\n  gap: 0.625rem;\n  position: relative;\n  height: 1.5rem;\n}\n.Switch_module_root__c9616649.Switch_module_disabled__c9616649 {\n  cursor: default;\n}\n.Switch_module_root__c9616649.Switch_module_positionLeft__c9616649 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n}\n.Switch_module_root__c9616649.Switch_module_positionRight__c9616649 {\n  display: flex;\n  flex-direction: row-reverse;\n  justify-content: flex-end;\n  align-items: center;\n}\n.Switch_module_root__c9616649 input[type=checkbox] {\n  opacity: 0;\n  z-index: 1;\n  position: absolute;\n  width: 1px;\n  height: 1px;\n}\n.Switch_module_root__c9616649 .Switch_module_pill__c9616649 {\n  position: relative;\n  width: 3rem;\n  height: 100%;\n  cursor: pointer;\n  background-color: var(--grey5);\n  transition: 0.4s;\n  border-radius: 0.75rem;\n}\n.Switch_module_root__c9616649 .Switch_module_pill__c9616649:before {\n  position: absolute;\n  content: \"\";\n  height: 1.25rem;\n  width: 1.25rem;\n  left: 0.125rem;\n  bottom: 0.125rem;\n  background-color: white;\n  transition: 0.4s;\n  border-radius: 50%;\n}\n.Switch_module_root__c9616649 input:checked + .Switch_module_pill__c9616649 {\n  background-color: var(--highlight);\n}\n.Switch_module_root__c9616649 input:checked + .Switch_module_pill__c9616649:before {\n  transform: translateX(1.5rem);\n}\n.Switch_module_root__c9616649 input:focus + .Switch_module_pill__c9616649::before {\n  box-shadow: 0px 0px 0px 8px rgba(15, 98, 254, 0.125);\n}\n.Switch_module_root__c9616649 [data-elem=label] {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n          user-select: none;\n}";
@@ -46795,8 +45772,8 @@ var Body = function Body(props) {
   });
 };
 
-var css$J = ".Footer_module_root__4cf0f510 {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-items: stretch;\n  margin-inline: 1rem;\n}\n.Footer_module_root__4cf0f510 .Footer_module_apply__4cf0f510 {\n  margin-top: 0.5rem;\n  width: 100%;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n          user-select: none;\n}\n.Footer_module_root__4cf0f510 .Footer_module_timePicker__4cf0f510 {\n  margin-bottom: 1.25rem;\n}\n\n.Footer_module_selectedDate__4cf0f510 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  gap: 1.125rem;\n  background: var(--white);\n  border: 0.0625rem solid var(--grey4);\n  border-radius: 0.25rem;\n}\n.Footer_module_selectedDate__4cf0f510 .Footer_module_date__4cf0f510 {\n  font-weight: 500;\n  font-size: 0.875rem;\n  line-height: 1.3125rem;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.Footer_module_selectedDate__4cf0f510 .Footer_module_date__4cf0f510 .Footer_module_cross__4cf0f510 {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.Footer_module_selectedDate__4cf0f510 .Footer_module_date__4cf0f510 .Footer_module_value__4cf0f510 {\n  font-weight: 400;\n  padding-right: 0.7rem;\n  border-right: 1px var(--grey3) solid;\n}\n\n.Footer_module_dateRanges__4cf0f510 {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-items: stretch;\n  margin-top: 0.5rem;\n}\n.Footer_module_dateRanges__4cf0f510 .Footer_module_dateRange__4cf0f510 {\n  display: flex;\n  align-items: center;\n  padding: 0.875rem 1rem;\n  gap: 1.125rem;\n  cursor: pointer;\n}\n.Footer_module_dateRanges__4cf0f510 .Footer_module_dateRange__4cf0f510:hover {\n  background-color: var(--background);\n}\n.Footer_module_dateRanges__4cf0f510 .Footer_module_dateRange__4cf0f510 span {\n  font-weight: 400;\n  font-size: 0.875rem;\n  line-height: 1.3125rem;\n  color: var(--black);\n}\n.Footer_module_dateRanges__4cf0f510 .Footer_module_selected__4cf0f510 {\n  background-color: var(--background);\n}";
-var modules_b490bd5d = {"root":"Footer_module_root__4cf0f510","apply":"Footer_module_apply__4cf0f510","time-picker":"Footer_module_timePicker__4cf0f510","selected-date":"Footer_module_selectedDate__4cf0f510","date":"Footer_module_date__4cf0f510","cross":"Footer_module_cross__4cf0f510","value":"Footer_module_value__4cf0f510","date-ranges":"Footer_module_dateRanges__4cf0f510","date-range":"Footer_module_dateRange__4cf0f510","selected":"Footer_module_selected__4cf0f510"};
+var css$J = ".Footer_module_root__2073c547 {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-items: stretch;\n  margin-inline: 1rem;\n}\n.Footer_module_root__2073c547 .Footer_module_apply__2073c547 {\n  margin-top: 0.5rem;\n  width: 100%;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n          user-select: none;\n}\n.Footer_module_root__2073c547 .Footer_module_timePicker__2073c547 {\n  margin-bottom: 1.25rem;\n}\n\n.Footer_module_selectedDate__2073c547 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  gap: 1.125rem;\n  background: var(--white);\n  border: 0.0625rem solid var(--grey4);\n  border-radius: 0.25rem;\n}\n.Footer_module_selectedDate__2073c547 .Footer_module_date__2073c547 {\n  font-weight: 500;\n  font-size: 0.875rem;\n  line-height: 1.3125rem;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n}\n.Footer_module_selectedDate__2073c547 .Footer_module_date__2073c547 .Footer_module_cross__2073c547 {\n  width: 1.5rem;\n  height: 1.5rem;\n}\n.Footer_module_selectedDate__2073c547 .Footer_module_date__2073c547 .Footer_module_value__2073c547 {\n  font-weight: 400;\n  padding-right: 0.7rem;\n  border-right: 1px var(--grey3) solid;\n}\n\n.Footer_module_dateRanges__2073c547 {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-items: stretch;\n  margin-top: 0.5rem;\n}\n.Footer_module_dateRanges__2073c547 .Footer_module_dateRange__2073c547 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  padding: 0.875rem 1rem;\n  gap: 1.125rem;\n  cursor: pointer;\n}\n.Footer_module_dateRanges__2073c547 .Footer_module_dateRange__2073c547:hover {\n  background-color: var(--background);\n}\n.Footer_module_dateRanges__2073c547 .Footer_module_dateRange__2073c547 span {\n  font-weight: 400;\n  font-size: 0.875rem;\n  line-height: 1.3125rem;\n  color: var(--black);\n}\n.Footer_module_dateRanges__2073c547 .Footer_module_selected__2073c547 {\n  background-color: var(--background);\n}";
+var modules_b490bd5d = {"root":"Footer_module_root__2073c547","apply":"Footer_module_apply__2073c547","time-picker":"Footer_module_timePicker__2073c547","selected-date":"Footer_module_selectedDate__2073c547","date":"Footer_module_date__2073c547","cross":"Footer_module_cross__2073c547","value":"Footer_module_value__2073c547","date-ranges":"Footer_module_dateRanges__2073c547","date-range":"Footer_module_dateRange__2073c547","selected":"Footer_module_selected__2073c547"};
 n(css$J,{});
 
 /* eslint-disable no-nested-ternary */
@@ -47064,16 +46041,22 @@ var dateRanges$1 = function dateRanges() {
   }];
 };
 
-var getFloatingReferences = function getFloatingReferences(open, onOpenChange) {
+var getFloatingReferences = function getFloatingReferences(_ref) {
+  var open = _ref.open,
+    onOpenChange = _ref.onOpenChange,
+    anchor = _ref.anchor;
   return {
     open: open,
+    elements: {
+      reference: anchor
+    },
     onOpenChange: onOpenChange,
     whileElementsMounted: autoUpdate,
     middleware: [size({
-      apply: function apply(_ref) {
-        var rects = _ref.rects,
-          availableHeight = _ref.availableHeight,
-          elements = _ref.elements;
+      apply: function apply(_ref2) {
+        var rects = _ref2.rects,
+          availableHeight = _ref2.availableHeight,
+          elements = _ref2.elements;
         Object.assign(elements.floating.style, {
           width: "".concat(rects.reference.width, "px"),
           minWidth: 'fit-content',
@@ -47088,9 +46071,9 @@ var getFloatingReferences = function getFloatingReferences(open, onOpenChange) {
     })]
   };
 };
-var isMaxRangeExceeded = function isMaxRangeExceeded(_ref2) {
-  var maxRange = _ref2.maxRange,
-    selectedRange = _ref2.selectedRange;
+var isMaxRangeExceeded = function isMaxRangeExceeded(_ref3) {
+  var maxRange = _ref3.maxRange,
+    selectedRange = _ref3.selectedRange;
   if (maxRange === null) {
     return false;
   }
@@ -47125,10 +46108,10 @@ var getDateRangeTag = function getDateRangeTag() {
   }
   return 'day';
 };
-var getDatePickerDisplayValue = function getDatePickerDisplayValue(_ref3) {
-  var value = _ref3.value,
-    rangePicker = _ref3.rangePicker,
-    singlePicker = _ref3.singlePicker;
+var getDatePickerDisplayValue = function getDatePickerDisplayValue(_ref4) {
+  var value = _ref4.value,
+    rangePicker = _ref4.rangePicker,
+    singlePicker = _ref4.singlePicker;
   if (rangePicker) {
     var _startDate$getMonth$t, _endDate$getMonth$toS;
     var startDate = fromUnixTime(value[0]);
@@ -47274,8 +46257,8 @@ var DatePicker = function DatePicker(props) {
     rangePicker: range && (value === null || value === void 0 || (_value$filter = value.filter(Boolean)) === null || _value$filter === void 0 ? void 0 : _value$filter.length) > 0,
     singlePicker: !range && value
   });
-  var datePickerFloatingReference = useFloating(getFloatingReferences(openDatePicker, setOpenDatePicker));
-  var customRangeFloatingReference = useFloating(getFloatingReferences(openCustomRange, setOpenCustomRange));
+  var datePickerFloatingReference = useFloating(getFloatingReferences(openDatePicker));
+  var customRangeFloatingReference = useFloating(getFloatingReferences(openCustomRange));
   useOutsideClickListener(datePickerFloatingReference.floating, function () {
     return setOpenDatePicker(false);
   });
@@ -47996,8 +46979,8 @@ function getPagination(curr, total, limit) {
   return pages;
 }
 
-var css$B = ".Pagination_module_root__993674e2 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: stretch;\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n  gap: 0.75rem;\n  padding: 0.625rem 2.125rem;\n  background: var(--dark-grey);\n  margin-top: auto;\n  width: 100%;\n  height: 3.5rem;\n  overflow: auto;\n  transition-property: background-color, color, bottom, width;\n  transition-duration: 0.33s;\n  transition-timing-function: ease-out;\n}\n.Pagination_module_root__993674e2::-webkit-scrollbar {\n  display: none;\n}\n.Pagination_module_root__993674e2.Pagination_module_floating__993674e2 {\n  background: var(--dark-grey-o-85);\n  position: absolute;\n  border-radius: 6.25rem;\n  width: 82%;\n  bottom: 3rem;\n}\n.Pagination_module_root__993674e2 .Pagination_module_rowSwitcher__993674e2,\n.Pagination_module_root__993674e2 .Pagination_module_jumpToPage__993674e2,\n.Pagination_module_root__993674e2 .Pagination_module_form__993674e2 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  height: 100%;\n}\n.Pagination_module_root__993674e2 .Pagination_module_rowSwitcher__993674e2 {\n  display: none;\n  flex: 0 1 15%;\n  background-color: transparent;\n  padding: 0;\n  height: 100%;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__993674e2 .Pagination_module_rowSwitcher__993674e2 {\n    display: flex;\n    flex-direction: row;\n    justify-content: space-between;\n    align-items: center;\n  }\n}\n.Pagination_module_root__993674e2 .Pagination_module_rowSwitcher__993674e2 > [data-elem=component2] {\n  flex: 0 1 auto;\n  height: 100%;\n}\n.Pagination_module_root__993674e2 .Pagination_module_rowSwitcher__993674e2 .Pagination_module_rowSwitcherHandle__993674e2 {\n  gap: 0.75rem;\n  background-color: var(--grey);\n  padding: 0;\n  border-radius: 0.25rem;\n  height: 100%;\n  width: 100%;\n}\n.Pagination_module_root__993674e2 .Pagination_module_rowSwitcher__993674e2 .Pagination_module_rowSwitcherHandle__993674e2 > [data-elem*=component] {\n  overflow: hidden;\n}\n.Pagination_module_root__993674e2 .Pagination_module_rowSwitcher__993674e2 .Pagination_module_rowSwitcherHandle__993674e2 > [data-elem=component2] {\n  display: flex;\n  flex: 0 0 auto;\n  height: 100%;\n}\n.Pagination_module_root__993674e2 .Pagination_module_rowSwitcher__993674e2 .Pagination_module_rowSwitcherHandle__993674e2 > [data-elem=component2]::before {\n  content: \"\";\n  margin: auto;\n  background: var(--white);\n  width: 0.5px;\n  height: 50%;\n}\n.Pagination_module_root__993674e2 .Pagination_module_rowSwitcher__993674e2 .Pagination_module_text__993674e2 {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  height: 100%;\n  display: block;\n  padding: 0.5rem;\n  font-size: 0.875rem;\n  font-weight: 500;\n  color: var(--white);\n}\n.Pagination_module_root__993674e2 .Pagination_module_rowSwitcher__993674e2 .Pagination_module_dropdown__993674e2 {\n  height: 100%;\n}\n.Pagination_module_root__993674e2 .Pagination_module_rowSwitcher__993674e2 .Pagination_module_dropdown__993674e2 > [data-elem=header] {\n  height: 100%;\n}\n.Pagination_module_root__993674e2 .Pagination_module_rowSwitcher__993674e2 .Pagination_module_dropdown__993674e2 > [data-elem=header] > [data-elem=select] {\n  height: 2.375rem;\n  max-height: 100%;\n  width: auto;\n  min-width: -webkit-fit-content;\n  min-width: -moz-fit-content;\n  min-width: fit-content;\n  padding: 0.625rem;\n  background-color: var(--grey);\n  border: none;\n}\n.Pagination_module_root__993674e2 .Pagination_module_rowSwitcher__993674e2 .Pagination_module_dropdown__993674e2 > [data-elem=header] > [data-elem=select] > [data-elem=placeholder] {\n  color: var(--white);\n  font-size: 0.875rem;\n}\n.Pagination_module_root__993674e2 .Pagination_module_rowSwitcher__993674e2 .Pagination_module_dropdown__993674e2 > [data-elem=header] > [data-elem=select] > svg {\n  fill: var(--white);\n  width: 0.813rem;\n  height: 0.813rem;\n}\n.Pagination_module_root__993674e2 .Pagination_module_pageNumbers__993674e2 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  gap: 1.25rem;\n  flex: 1 1 100%;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__993674e2 .Pagination_module_pageNumbers__993674e2 {\n    flex: 1 1 40%;\n  }\n}\n.Pagination_module_root__993674e2 .Pagination_module_pageNumbers__993674e2 > .Pagination_module_button__993674e2.Pagination_module_disable__993674e2 {\n  pointer-events: none;\n}\n.Pagination_module_root__993674e2 .Pagination_module_pageNumbers__993674e2 > .Pagination_module_button__993674e2 [data-elem=title] {\n  color: var(--white);\n}\n.Pagination_module_root__993674e2 .Pagination_module_pageNumbers__993674e2 > .Pagination_module_button__993674e2 .Pagination_module_icon__993674e2 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--white);\n}\n.Pagination_module_root__993674e2 .Pagination_module_pageNumbers__993674e2 > .Pagination_module_pageSelect__993674e2 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  gap: 0.625rem;\n}\n.Pagination_module_root__993674e2 .Pagination_module_pageNumbers__993674e2 > .Pagination_module_pageSelect__993674e2 .Pagination_module_number__993674e2 {\n  cursor: pointer;\n  border-radius: 50%;\n  background-color: #e0e0e0;\n  color: var(--black);\n  width: 2.313rem;\n  line-height: 2.313rem;\n  text-align: center;\n  font-size: 1rem;\n  border: 1px solid transparent;\n}\n.Pagination_module_root__993674e2 .Pagination_module_pageNumbers__993674e2 > .Pagination_module_pageSelect__993674e2 .Pagination_module_number__993674e2:not([data-active=true]) {\n  display: none;\n}\n@media (min-width: 768px) {\n  .Pagination_module_root__993674e2 .Pagination_module_pageNumbers__993674e2 > .Pagination_module_pageSelect__993674e2 .Pagination_module_number__993674e2:not([data-active=true]) {\n    display: block;\n  }\n}\n.Pagination_module_root__993674e2 .Pagination_module_pageNumbers__993674e2 > .Pagination_module_pageSelect__993674e2 .Pagination_module_number__993674e2:hover {\n  border: 1px solid var(--highlight);\n  color: var(--highlight);\n  background: var(--background);\n}\n.Pagination_module_root__993674e2 .Pagination_module_pageNumbers__993674e2 > .Pagination_module_pageSelect__993674e2 .Pagination_module_number__993674e2.Pagination_module_active__993674e2 {\n  background-color: var(--highlight);\n  color: var(--white);\n}\n.Pagination_module_root__993674e2 .Pagination_module_form__993674e2 {\n  display: none;\n  padding: 0;\n  flex: 0 1 30%;\n  background: transparent;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__993674e2 .Pagination_module_form__993674e2 {\n    display: flex;\n    flex-direction: row;\n    justify-content: center;\n    align-items: center;\n  }\n}\n.Pagination_module_root__993674e2 .Pagination_module_form__993674e2 > [data-elem*=component] {\n  width: 100%;\n  height: 100%;\n}\n.Pagination_module_root__993674e2 .Pagination_module_form__993674e2 > [data-elem*=component] > * {\n  height: 100%;\n}\n.Pagination_module_root__993674e2 .Pagination_module_form__993674e2 > [data-elem*=component] > form {\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  margin-left: auto;\n}\n.Pagination_module_root__993674e2 .Pagination_module_form__993674e2 .Pagination_module_jumpToPage__993674e2 {\n  width: 100%;\n  background: transparent;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: stretch;\n  gap: 0rem;\n  padding: 0;\n  height: 100%;\n}\n.Pagination_module_root__993674e2 .Pagination_module_form__993674e2 .Pagination_module_jumpToPage__993674e2 > [data-elem*=component] {\n  overflow: hidden;\n  height: 100%;\n}\n.Pagination_module_root__993674e2 .Pagination_module_form__993674e2 .Pagination_module_jumpToPage__993674e2 .Pagination_module_inputbox__993674e2 {\n  max-width: 100%;\n  height: 100%;\n}\n.Pagination_module_root__993674e2 .Pagination_module_form__993674e2 .Pagination_module_jumpToPage__993674e2 .Pagination_module_inputbox__993674e2 > label {\n  height: 100%;\n}\n.Pagination_module_root__993674e2 .Pagination_module_form__993674e2 .Pagination_module_jumpToPage__993674e2 .Pagination_module_inputbox__993674e2 > label > [data-elem=base-cell] {\n  border-radius: 0.313rem;\n  background-color: transparent;\n  color: var(--white);\n  border-color: var(--grey1);\n  border-radius: 0.25rem 0 0 0.25rem;\n  height: 100%;\n  width: 10rem;\n  flex: 1;\n}\n.Pagination_module_root__993674e2 .Pagination_module_form__993674e2 .Pagination_module_jumpToPage__993674e2 .Pagination_module_inputbox__993674e2 > label > [data-elem=base-cell] .Pagination_module_icon__993674e2 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--grey1);\n}\n.Pagination_module_root__993674e2 .Pagination_module_form__993674e2 .Pagination_module_jumpToPage__993674e2 .Pagination_module_inputbox__993674e2 > label > [data-elem=base-cell] > [data-elem=component2] {\n  height: 100%;\n}\n.Pagination_module_root__993674e2 .Pagination_module_form__993674e2 .Pagination_module_jumpToPage__993674e2 .Pagination_module_inputbox__993674e2 > label > [data-elem=base-cell] [data-elem=input] {\n  text-align: center;\n  color: var(--white);\n  background-color: transparent;\n  border: none;\n  height: 100%;\n  width: 100%;\n}\n.Pagination_module_root__993674e2 .Pagination_module_form__993674e2 .Pagination_module_jumpToPage__993674e2 .Pagination_module_button__993674e2 {\n  border-radius: 0rem 0.25rem 0.25rem 0rem;\n  background-color: var(--grey1);\n  padding: 0.75rem 0.5rem;\n  height: 100%;\n}\n.Pagination_module_root__993674e2 .Pagination_module_form__993674e2 .Pagination_module_jumpToPage__993674e2 .Pagination_module_button__993674e2 .Pagination_module_icon__993674e2 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--white);\n  flex-shrink: 0;\n}\n.Pagination_module_root__993674e2 .Pagination_module_totalData__993674e2 {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  display: none;\n  margin: auto;\n  color: var(--white);\n  flex: 0 1 15%;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__993674e2 .Pagination_module_totalData__993674e2 {\n    display: inline;\n  }\n}\n.Pagination_module_root__993674e2.Pagination_module_noTotalData__993674e2 .Pagination_module_rowSwitcher__993674e2 {\n  flex: 0 1 20%;\n}\n.Pagination_module_root__993674e2.Pagination_module_noTotalData__993674e2 .Pagination_module_jumpToPage__993674e2 {\n  flex: 1 1 60%;\n}\n.Pagination_module_root__993674e2.Pagination_module_noTotalData__993674e2 .Pagination_module_form__993674e2 {\n  flex: 0 1 20%;\n}";
-var modules_a3d40e77 = {"root":"Pagination_module_root__993674e2","floating":"Pagination_module_floating__993674e2","row-switcher":"Pagination_module_rowSwitcher__993674e2","jump-to-page":"Pagination_module_jumpToPage__993674e2","form":"Pagination_module_form__993674e2","row-switcher-handle":"Pagination_module_rowSwitcherHandle__993674e2","text":"Pagination_module_text__993674e2","dropdown":"Pagination_module_dropdown__993674e2","page-numbers":"Pagination_module_pageNumbers__993674e2","button":"Pagination_module_button__993674e2","disable":"Pagination_module_disable__993674e2","icon":"Pagination_module_icon__993674e2","pageSelect":"Pagination_module_pageSelect__993674e2","number":"Pagination_module_number__993674e2","active":"Pagination_module_active__993674e2","inputbox":"Pagination_module_inputbox__993674e2","total-data":"Pagination_module_totalData__993674e2","no-total-data":"Pagination_module_noTotalData__993674e2"};
+var css$B = ".Pagination_module_root__2305e5f8 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: stretch;\n  -ms-overflow-style: none;\n  scrollbar-width: none;\n  gap: 0.75rem;\n  padding: 0.625rem 2.125rem;\n  background: var(--dark-grey);\n  margin-top: auto;\n  width: 100%;\n  height: 3.5rem;\n  overflow: auto;\n  transition-property: background-color, color, bottom, width;\n  transition-duration: 0.33s;\n  transition-timing-function: ease-out;\n}\n.Pagination_module_root__2305e5f8::-webkit-scrollbar {\n  display: none;\n}\n.Pagination_module_root__2305e5f8.Pagination_module_floating__2305e5f8 {\n  background: var(--dark-grey-o-85);\n  position: absolute;\n  border-radius: 6.25rem;\n  width: 82%;\n  bottom: 3rem;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_rowSwitcher__2305e5f8,\n.Pagination_module_root__2305e5f8 .Pagination_module_jumpToPage__2305e5f8,\n.Pagination_module_root__2305e5f8 .Pagination_module_form__2305e5f8 {\n  display: flex;\n  flex-direction: row;\n  justify-content: flex-start;\n  align-items: center;\n  height: 100%;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_rowSwitcher__2305e5f8 {\n  display: none;\n  flex: 0 1 15%;\n  background-color: transparent;\n  padding: 0;\n  height: 100%;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__2305e5f8 .Pagination_module_rowSwitcher__2305e5f8 {\n    display: flex;\n    flex-direction: row;\n    justify-content: space-between;\n    align-items: center;\n  }\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_rowSwitcher__2305e5f8 > [data-elem=component2] {\n  flex: 0 1 auto;\n  height: 100%;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_rowSwitcher__2305e5f8 .Pagination_module_rowSwitcherHandle__2305e5f8 {\n  gap: 0.75rem;\n  background-color: var(--grey);\n  padding: 0;\n  border-radius: 0.25rem;\n  height: 100%;\n  width: 100%;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_rowSwitcher__2305e5f8 .Pagination_module_rowSwitcherHandle__2305e5f8 > [data-elem*=component] {\n  overflow: hidden;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_rowSwitcher__2305e5f8 .Pagination_module_rowSwitcherHandle__2305e5f8 > [data-elem=component2] {\n  display: flex;\n  flex: 0 0 auto;\n  height: 100%;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_rowSwitcher__2305e5f8 .Pagination_module_rowSwitcherHandle__2305e5f8 > [data-elem=component2]::before {\n  content: \"\";\n  margin: auto;\n  background: var(--white);\n  width: 0.5px;\n  height: 50%;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_rowSwitcher__2305e5f8 .Pagination_module_text__2305e5f8 {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  height: 100%;\n  display: block;\n  padding: 0.5rem;\n  font-size: 0.875rem;\n  font-weight: 500;\n  color: var(--white);\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_rowSwitcher__2305e5f8 .Pagination_module_dropdown__2305e5f8 {\n  height: 100%;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_rowSwitcher__2305e5f8 .Pagination_module_dropdown__2305e5f8 > [data-elem=header] {\n  height: 100%;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_rowSwitcher__2305e5f8 .Pagination_module_dropdown__2305e5f8 > [data-elem=header] > [data-elem=select] {\n  height: 2.375rem;\n  max-height: 100%;\n  width: auto;\n  min-width: -moz-fit-content;\n  min-width: fit-content;\n  padding: 0.625rem;\n  background-color: var(--grey);\n  border: none;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_rowSwitcher__2305e5f8 .Pagination_module_dropdown__2305e5f8 > [data-elem=header] > [data-elem=select] > [data-elem=placeholder] {\n  color: var(--white);\n  font-size: 0.875rem;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_rowSwitcher__2305e5f8 .Pagination_module_dropdown__2305e5f8 > [data-elem=header] > [data-elem=select] > svg {\n  fill: var(--white);\n  width: 0.813rem;\n  height: 0.813rem;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_pageNumbers__2305e5f8 {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: center;\n  gap: 1.25rem;\n  flex: 1 1 100%;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__2305e5f8 .Pagination_module_pageNumbers__2305e5f8 {\n    flex: 1 1 40%;\n  }\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_pageNumbers__2305e5f8 > .Pagination_module_button__2305e5f8.Pagination_module_disable__2305e5f8 {\n  pointer-events: none;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_pageNumbers__2305e5f8 > .Pagination_module_button__2305e5f8 [data-elem=title] {\n  color: var(--white);\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_pageNumbers__2305e5f8 > .Pagination_module_button__2305e5f8 .Pagination_module_icon__2305e5f8 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--white);\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_pageNumbers__2305e5f8 > .Pagination_module_pageSelect__2305e5f8 {\n  display: flex;\n  flex-direction: row;\n  justify-content: space-between;\n  align-items: center;\n  gap: 0.625rem;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_pageNumbers__2305e5f8 > .Pagination_module_pageSelect__2305e5f8 .Pagination_module_number__2305e5f8 {\n  cursor: pointer;\n  border-radius: 50%;\n  background-color: #e0e0e0;\n  color: var(--black);\n  width: 2.313rem;\n  line-height: 2.313rem;\n  text-align: center;\n  font-size: 1rem;\n  border: 1px solid transparent;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_pageNumbers__2305e5f8 > .Pagination_module_pageSelect__2305e5f8 .Pagination_module_number__2305e5f8:not([data-active=true]) {\n  display: none;\n}\n@media (min-width: 768px) {\n  .Pagination_module_root__2305e5f8 .Pagination_module_pageNumbers__2305e5f8 > .Pagination_module_pageSelect__2305e5f8 .Pagination_module_number__2305e5f8:not([data-active=true]) {\n    display: block;\n  }\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_pageNumbers__2305e5f8 > .Pagination_module_pageSelect__2305e5f8 .Pagination_module_number__2305e5f8:hover {\n  border: 1px solid var(--highlight);\n  color: var(--highlight);\n  background: var(--background);\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_pageNumbers__2305e5f8 > .Pagination_module_pageSelect__2305e5f8 .Pagination_module_number__2305e5f8.Pagination_module_active__2305e5f8 {\n  background-color: var(--highlight);\n  color: var(--white);\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_form__2305e5f8 {\n  display: none;\n  padding: 0;\n  flex: 0 1 30%;\n  background: transparent;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__2305e5f8 .Pagination_module_form__2305e5f8 {\n    display: flex;\n    flex-direction: row;\n    justify-content: center;\n    align-items: center;\n  }\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_form__2305e5f8 > [data-elem*=component] {\n  width: 100%;\n  height: 100%;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_form__2305e5f8 > [data-elem*=component] > * {\n  height: 100%;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_form__2305e5f8 > [data-elem*=component] > form {\n  width: -moz-fit-content;\n  width: fit-content;\n  margin-left: auto;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_form__2305e5f8 .Pagination_module_jumpToPage__2305e5f8 {\n  width: 100%;\n  background: transparent;\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-items: stretch;\n  gap: 0rem;\n  padding: 0;\n  height: 100%;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_form__2305e5f8 .Pagination_module_jumpToPage__2305e5f8 > [data-elem*=component] {\n  overflow: hidden;\n  height: 100%;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_form__2305e5f8 .Pagination_module_jumpToPage__2305e5f8 .Pagination_module_inputbox__2305e5f8 {\n  max-width: 100%;\n  height: 100%;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_form__2305e5f8 .Pagination_module_jumpToPage__2305e5f8 .Pagination_module_inputbox__2305e5f8 > label {\n  height: 100%;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_form__2305e5f8 .Pagination_module_jumpToPage__2305e5f8 .Pagination_module_inputbox__2305e5f8 > label > [data-elem=base-cell] {\n  border-radius: 0.313rem;\n  background-color: transparent;\n  color: var(--white);\n  border-color: var(--grey1);\n  border-radius: 0.25rem 0 0 0.25rem;\n  height: 100%;\n  width: 10rem;\n  flex: 1;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_form__2305e5f8 .Pagination_module_jumpToPage__2305e5f8 .Pagination_module_inputbox__2305e5f8 > label > [data-elem=base-cell] .Pagination_module_icon__2305e5f8 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--grey1);\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_form__2305e5f8 .Pagination_module_jumpToPage__2305e5f8 .Pagination_module_inputbox__2305e5f8 > label > [data-elem=base-cell] > [data-elem=component2] {\n  height: 100%;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_form__2305e5f8 .Pagination_module_jumpToPage__2305e5f8 .Pagination_module_inputbox__2305e5f8 > label > [data-elem=base-cell] [data-elem=input] {\n  text-align: center;\n  color: var(--white);\n  background-color: transparent;\n  border: none;\n  height: 100%;\n  width: 100%;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_form__2305e5f8 .Pagination_module_jumpToPage__2305e5f8 .Pagination_module_button__2305e5f8 {\n  border-radius: 0rem 0.25rem 0.25rem 0rem;\n  background-color: var(--grey1);\n  padding: 0.75rem 0.5rem;\n  height: 100%;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_form__2305e5f8 .Pagination_module_jumpToPage__2305e5f8 .Pagination_module_button__2305e5f8 .Pagination_module_icon__2305e5f8 {\n  width: 1.5rem;\n  height: 1.5rem;\n  fill: var(--white);\n  flex-shrink: 0;\n}\n.Pagination_module_root__2305e5f8 .Pagination_module_totalData__2305e5f8 {\n  text-overflow: ellipsis;\n  overflow: hidden;\n  white-space: nowrap;\n  display: none;\n  margin: auto;\n  color: var(--white);\n  flex: 0 1 15%;\n}\n@media (min-width: 992px) {\n  .Pagination_module_root__2305e5f8 .Pagination_module_totalData__2305e5f8 {\n    display: inline;\n  }\n}\n.Pagination_module_root__2305e5f8.Pagination_module_noTotalData__2305e5f8 .Pagination_module_rowSwitcher__2305e5f8 {\n  flex: 0 1 20%;\n}\n.Pagination_module_root__2305e5f8.Pagination_module_noTotalData__2305e5f8 .Pagination_module_jumpToPage__2305e5f8 {\n  flex: 1 1 60%;\n}\n.Pagination_module_root__2305e5f8.Pagination_module_noTotalData__2305e5f8 .Pagination_module_form__2305e5f8 {\n  flex: 0 1 20%;\n}";
+var modules_a3d40e77 = {"root":"Pagination_module_root__2305e5f8","floating":"Pagination_module_floating__2305e5f8","row-switcher":"Pagination_module_rowSwitcher__2305e5f8","jump-to-page":"Pagination_module_jumpToPage__2305e5f8","form":"Pagination_module_form__2305e5f8","row-switcher-handle":"Pagination_module_rowSwitcherHandle__2305e5f8","text":"Pagination_module_text__2305e5f8","dropdown":"Pagination_module_dropdown__2305e5f8","page-numbers":"Pagination_module_pageNumbers__2305e5f8","button":"Pagination_module_button__2305e5f8","disable":"Pagination_module_disable__2305e5f8","icon":"Pagination_module_icon__2305e5f8","pageSelect":"Pagination_module_pageSelect__2305e5f8","number":"Pagination_module_number__2305e5f8","active":"Pagination_module_active__2305e5f8","inputbox":"Pagination_module_inputbox__2305e5f8","total-data":"Pagination_module_totalData__2305e5f8","no-total-data":"Pagination_module_noTotalData__2305e5f8"};
 n(css$B,{});
 
 var dropdownOptions = ['10', '25', '50', '100', '200', '250'];
@@ -48280,11 +47263,11 @@ var modules_bbfded44 = {"root":"Stepper_module_root__c8ed92f3","horizontal":"Ste
 n(css$A,{});
 
 var css$z = ":root {\n  --white: #ffffff;\n  --black: #000000;\n  --dark-grey: #333333;\n  --dark-grey-o-85: rgba(51, 51, 51, 0.85);\n  --grey: #737373;\n  --grey1: #888888;\n  --grey2: #a6a6a6;\n  --grey3: #bbbbbb;\n  --grey4: #c4c4c4;\n  --grey5: #dddddd;\n  --grey6: #e8e8e8;\n  --grey7: #eeeeee;\n  --grey8: #f2f2f2;\n  --grey9: #eff0f0;\n  --grey10: #f7f7f7;\n  --skeleton: #e0e1e9;\n  --highlight: #0f62fe;\n  --dark-blue: #001833;\n  --background: #d0e2ff;\n  --menu-black: #191b1f;\n  --banyan-blue: #00037c;\n  --banyan-orange: #ff892a;\n  --banyan-pink: #ff1597;\n  --banyan-gradient: linear-gradient(\n  \t84.71deg,\n  \tvar(--banyan-pink) 0.48%,\n  \tvar(--banyan-orange) 99.57%\n  );\n  --error: #ff626a;\n  --error-bg: #fff1f1;\n  --error-outline: rgba(218, 30, 40, 0.08);\n  --success: #24a148;\n  --success-bg: #defbe6;\n  --success-outline: rgba(36, 161, 72, 0.08);\n  --warning: #f1c21b;\n  --warning-bg: #fff8e1;\n  --warning-outline: rgba(203, 160, 6, 0.08);\n  --info: #0043ce;\n  --info-bg: #edf5ff;\n  --info-outline: #2864db98;\n}";
-var modules_dd21d9e9 = {"white":"--white","black":"--black","menu-black":"--menu-black","dark-grey":"--dark-grey","dark-grey-o-85":"--dark-grey-o-85","grey":"--grey","grey1":"--grey1","grey2":"--grey2","grey3":"--grey3","grey4":"--grey4","grey5":"--grey5","grey6":"--grey6","grey7":"--grey7","grey8":"--grey8","grey9":"--grey9","grey10":"--grey10","highlight":"--highlight","dark-blue":"--dark-blue","background":"--background","banyan-blue":"--banyan-blue","banyan-orange":"--banyan-orange","banyan-pink":"--banyan-pink","banyan-gradient":"--banyan-gradient","error":"--error","error-bg":"--error-bg","error-outline":"--error-outline","success":"--success","success-bg":"--success-bg","success-outline":"--success-outline","warning":"--warning","warning-bg":"--warning-bg","warning-outline":"--warning-outline","info":"--info","info-bg":"--info-bg","info-outline":"--info-outline"};
+var modules_1722b0e5 = {"white":"--white","black":"--black","menu-black":"--menu-black","dark-grey":"--dark-grey","dark-grey-o-85":"--dark-grey-o-85","grey":"--grey","grey1":"--grey1","grey2":"--grey2","grey3":"--grey3","grey4":"--grey4","grey5":"--grey5","grey6":"--grey6","grey7":"--grey7","grey8":"--grey8","grey9":"--grey9","grey10":"--grey10","highlight":"--highlight","dark-blue":"--dark-blue","background":"--background","banyan-blue":"--banyan-blue","banyan-orange":"--banyan-orange","banyan-pink":"--banyan-pink","banyan-gradient":"--banyan-gradient","error":"--error","error-bg":"--error-bg","error-outline":"--error-outline","success":"--success","success-bg":"--success-bg","success-outline":"--success-outline","warning":"--warning","warning-bg":"--warning-bg","warning-outline":"--warning-outline","info":"--info","info-bg":"--info-bg","info-outline":"--info-outline"};
 n(css$z,{});
 
-var COLORS = Object.keys(modules_dd21d9e9 !== null && modules_dd21d9e9 !== void 0 ? modules_dd21d9e9 : {}).reduce(function (acc, curr) {
-  acc[curr] = getCSSVariableValue(modules_dd21d9e9[curr]);
+var COLORS = Object.keys(modules_1722b0e5).reduce(function (acc, curr) {
+  acc[curr] = getCSSVariableValue(modules_1722b0e5[curr]);
   return acc;
 }, {});
 
@@ -50564,7 +49547,7 @@ function __classPrivateFieldIn(state, receiver) {
 
 function __addDisposableResource(env, value, async) {
   if (value !== null && value !== void 0) {
-    if (typeof value !== "object") throw new TypeError("Object expected.");
+    if (typeof value !== "object" && typeof value !== "function") throw new TypeError("Object expected.");
     var dispose;
     if (async) {
         if (!Symbol.asyncDispose) throw new TypeError("Symbol.asyncDispose is not defined.");

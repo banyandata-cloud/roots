@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useDismiss, useFloating, useInteractions } from '@floating-ui/react';
+import { useDismiss, useFloating, useInteractions } from '@floating-ui/react-dom-interactions';
 import { classes } from '../../utils/utils';
 import styles from './Alert.module.css';
 import { CrossIcon, AlertIcon } from '../icons';

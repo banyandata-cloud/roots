@@ -1,4 +1,9 @@
-import { FloatingFocusManager, useDismiss, useFloating, useInteractions } from '@floating-ui/react';
+import {
+	FloatingFocusManager,
+	useDismiss,
+	useFloating,
+	useInteractions,
+} from '@floating-ui/react-dom-interactions';
 import PropTypes from 'prop-types';
 import { classes } from '../../utils';
 import { CrossIcon } from '../icons';
