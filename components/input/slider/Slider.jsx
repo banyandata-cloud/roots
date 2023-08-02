@@ -1,12 +1,22 @@
 import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './Slider.module.css';
+import RangeSlider from './rangeslider/RangeSlider';
 
 const Slider = (props) => {
 	const {
-		label, minLabel, medLabel, disabled, maxLabel, value, onChange, min, max, step,
-	} =
-		props;
+		label,
+		minLabel,
+		medLabel,
+		disabled,
+		maxLabel,
+		value,
+		onChange,
+		min,
+		max,
+		step,
+		range,
+	} = props;
 
 	const { current: isControlled } = useRef(value !== undefined);
 
@@ -23,6 +33,10 @@ const Slider = (props) => {
 	};
 
 	const sliderValue = isControlled ? value : uncontrolledValue;
+
+	if (range) {
+		return <RangeSlider className={styles['range-slider']} min={min} max={max} step={step} />;
+	}
 
 	return (
 		<label className={styles['slider-container']}>
@@ -54,11 +68,15 @@ Slider.propTypes = {
 	minLabel: PropTypes.string,
 	medLabel: PropTypes.string,
 	maxLabel: PropTypes.string,
-	value: PropTypes.number,
+	value: PropTypes.oneOfType([
+		PropTypes.number,
+		PropTypes.arrayOf(PropTypes.number),
+	]),
 	onChange: PropTypes.func,
 	min: PropTypes.number,
 	max: PropTypes.number,
 	step: PropTypes.number,
+	range: PropTypes.bool,
 };
 
 Slider.defaultProps = {
@@ -71,6 +89,7 @@ Slider.defaultProps = {
 	min: 0,
 	max: 100,
 	step: 1,
+	range: false,
 };
 
 export default Slider;
