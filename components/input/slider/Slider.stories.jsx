@@ -40,23 +40,12 @@ DisableSlider.args = {
 	disabled: true,
 };
 
-export const UncontrolledSlider = Template.bind({});
-UncontrolledSlider.args = {
+export const RangeSlider = Template.bind({});
+RangeSlider.args = {
 	label: 'Volume Control',
-	value: 0,
 	min: 0,
-	max: 10,
-	step: 5,
-};
-
-export const ControlledSlider = Template.bind({});
-ControlledSlider.args = {
-	label: 'Volume Control',
-	minLabel: 'Low',
-	medLabel: 'Medium',
-	maxLabel: 'High',
-	defaultChecked: true,
-	min: 0,
-	max: 10,
-	step: 5,
+	max: 100,
+	step: 1,
+	range: true,
+	value: [25, 75],
 };
