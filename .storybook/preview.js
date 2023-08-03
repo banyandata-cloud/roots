@@ -15,6 +15,7 @@ export const parameters = {
 		},
 	},
 	docs: {
+		toc: true,
 		container: (props) => {
 			const isDark = useDarkMode();
 
