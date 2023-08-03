@@ -8,7 +8,7 @@ import {
 	useDismiss,
 	useFloating,
 	useInteractions,
-} from '@floating-ui/react';
+} from '@floating-ui/react-dom-interactions';
 import { useEffect, useLayoutEffect } from 'react';
 import { Popper } from '../popper';
 import { classes } from '../../utils';

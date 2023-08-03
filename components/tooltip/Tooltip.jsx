@@ -8,7 +8,7 @@ import {
 	useHover,
 	useInteractions,
 	useRole,
-} from '@floating-ui/react';
+} from '@floating-ui/react-dom-interactions';
 import { mergeRefs } from 'react-merge-refs';
 import { Popper } from '../popper';
 import { classes } from '../../utils';

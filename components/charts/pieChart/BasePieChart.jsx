@@ -46,6 +46,7 @@ const BasePieChart = (props) => {
 		showLabelLine,
 		itemStyle,
 		legend,
+		onEvents,
 		seriesOption,
 		style,
 		className,
@@ -156,6 +157,7 @@ const BasePieChart = (props) => {
 				},
 				series: generateSeries(),
 			}}
+			onEvents={onEvents}
 			echarts={echarts}
 			notMerge
 			lazyUpdate
@@ -183,6 +185,7 @@ BasePieChart.propTypes = {
 	showLabelLine: PropTypes.bool,
 	itemStyle: PropTypes.object,
 	legend: PropTypes.object,
+	onEvents: PropTypes.func,
 	seriesOption: PropTypes.arrayOf(PropTypes.shape),
 	style: PropTypes.objectOf(PropTypes.shape),
 	className: PropTypes.string,
@@ -219,6 +222,7 @@ BasePieChart.defaultProps = {
 		left: '30%',
 		orient: 'vertical',
 	},
+	onEvents: () => {},
 	seriesOption: [
 		{
 			stackIndex: 1,
