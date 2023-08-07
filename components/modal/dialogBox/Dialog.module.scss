@@ -3,7 +3,7 @@
 .root {
 	padding: 0.25rem 0px;
 	max-height: 14rem;
-	background: #ffffff;
+	background: $white;
 	border-radius: 0.25rem;
 
 	&.sm {
@@ -23,7 +23,7 @@
 		@include flex(row, flex-end);
 		gap: 1rem;
 		.cancel[data-elem='base-cell'] {
-			display: flex;
+			@include flex(row, flex-start, stretch);
 			color: $grey1;
 			border-radius: 0.25rem;
 			border: 1px solid $grey4;
