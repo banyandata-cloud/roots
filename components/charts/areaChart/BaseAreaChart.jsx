@@ -363,7 +363,7 @@ BaseAreaChart.defaultProps = {
 		height: '100%',
 	},
 	className: '',
-	theme: 'dark',
+	theme: 'light',
 };
 
 export default BaseAreaChart;
