@@ -197,9 +197,9 @@ const DatePicker = (props) => {
 						)}
 
 						{displayValue && (
-							<div className={classes(styles.value, styles[theme])}>
-								<span>{displayValue}</span>
-							</div>
+							<span className={classes(styles.value, styles[theme])}>
+								{displayValue}
+							</span>
 						)}
 					</div>
 
