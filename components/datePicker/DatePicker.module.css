@@ -106,6 +106,7 @@
   color: var(--grey3);
   -webkit-user-select: none;
      -moz-user-select: none;
+      -ms-user-select: none;
           user-select: none;
 }
 .root .date-picker .container.open {
@@ -146,6 +147,7 @@
   font-size: 1rem;
   -webkit-user-select: none;
      -moz-user-select: none;
+      -ms-user-select: none;
           user-select: none;
 }
 .root .date-picker .container .left > div > span {
@@ -178,11 +180,18 @@
 .root .date-picker.dark .container .placeholder {
   color: var(--grey2);
 }
+.root .date-picker.dark .container .value {
+  color: var(--grey2);
+}
 .root .date-picker.light .container {
   border-color: var(--grey4);
 }
 .root .date-picker.light .container .placeholder {
   color: var(--grey);
+}
+.root .date-picker.light .container .value {
+  color: var(--grey);
+  padding: 0rem 0.3rem 0rem 0rem;
 }
 .root .date-picker .error-text {
   font-weight: 400;

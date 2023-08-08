@@ -171,6 +171,9 @@
 				.placeholder {
 					color: $grey2;
 				}
+				.value {
+					color: $grey2;
+				}
 			}
 		}
 
@@ -179,6 +182,10 @@
 				border-color: $grey4;
 				.placeholder {
 					color: $grey;
+				}
+				.value {
+					color: $grey;
+					padding: 0rem 0.3rem 0rem 0rem;
 				}
 			}
 		}
