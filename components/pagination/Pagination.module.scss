@@ -55,7 +55,7 @@
 			}
 
 			> [data-elem='component2'] {
-				display: flex;
+				@include flex(row, flex-start, stretch);
 				flex: 0 0 auto;
 				height: 100%;
 				&::before {

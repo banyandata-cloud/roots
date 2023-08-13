@@ -1,7 +1,7 @@
 .root {
   padding: 0.25rem 0px;
   max-height: 14rem;
-  background: #ffffff;
+  background: var(--white);
   border-radius: 0.25rem;
 }
 .root.sm {
@@ -24,6 +24,9 @@
 }
 .root .footer .cancel[data-elem=base-cell] {
   display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: stretch;
   color: var(--grey1);
   border-radius: 0.25rem;
   border: 1px solid var(--grey4);
