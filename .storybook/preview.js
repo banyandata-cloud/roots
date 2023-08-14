@@ -38,18 +38,4 @@ export const parameters = {
 		// Override the default light theme
 		light: { ...banyanTheme, ...themes.light, appBg: 'white' },
 	},
-	options: {
-		storySort: {
-			order: [
-				'Introduction',
-				'Auth',
-				'Layout',
-				'Pages',
-				'Hooks',
-				'Utils',
-				'Api Services',
-				'Components',
-			],
-		},
-	},
 };

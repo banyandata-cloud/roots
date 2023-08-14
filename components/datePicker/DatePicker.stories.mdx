@@ -1,0 +1,407 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+
+import { ThemedContainer } from '../helpers';
+import DatePicker from './DatePicker';
+
+<Meta title='Components/DatePicker' parameters={{ options: { showToolbar: false } }} />
+
+export const Template = (args) => (
+	<ThemedContainer {...args}>
+		<DatePicker {...args} />
+	</ThemedContainer>
+);
+
+# Date Picker
+
+A select component to get a single date or a date range which is either a predefined custom fixed range or manual selection.
+
+#### Design - [Figma](https://www.figma.com/file/e9opoAtQHBo4vFd6u0Co98/Component-Library?type=design&node-id=1111-30539&mode=design&t=Afx8B20v4RpJy0j6-0) | Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/components/datePicker)
+
+> This components uses the `date-fns` utility library to use date related methods with respect to comparision and sorting.
+
+## Usage
+
+Basic import and additional information on how to use this component.
+
+```js
+import { DatePicker } from '@banyan_cloud/roots';
+```
+
+-   Treat Date Picker as another dropdown(select) element in terms of HTML, as both uses the same `<PopOver` Wrapper.
+-   The `width` of the date picker has to adjusted in the implementaion code to match its flexibility with respect to its container.
+
+## Stories
+
+The CSF rendered inside the `Canvas` from which you can see the implementation example.
+
+### Single Date Picker
+
+The date picker which allows to select a date from the popover.
+
+<Canvas>
+	<Story
+		name='Default Singe Date Picker'
+		args={{
+			placeholder: 'Select Date',
+			label: 'Single Date Picker',
+			theme: 'dark',
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Range Date Picker
+
+The date picker allows to select the range of date from the popever.
+
+<Canvas>
+	<Story
+		name='Range Date Picker'
+		args={{
+			placeholder: 'Select Date Range',
+			label: 'Range Date Picker',
+			value: [1678732200, 1678905000],
+			range: true,
+			theme: 'dark',
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Custom Range Date Picker
+
+The Date picker with custom dropdown to select the pre-defined ranges.
+
+<Canvas>
+	<Story
+		name='Custom Range Date Picker'
+		args={{
+			placeholder: 'Select Date Range',
+			label: 'Range Date Picker',
+			value: [1674412200, 1675708200],
+			range: true,
+			theme: 'dark',
+			customRanges: [
+				{
+					title: 'Last 12 hours',
+					type: 'hours',
+					value: 12,
+				},
+			],
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Disabled Picker
+
+The disabled date picker
+
+<Canvas>
+	<Story
+		name='Disabled Picker'
+		args={{
+			placeholder: 'Disabled Date',
+			label: 'Disabled Date Picker',
+			disabled: true,
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### With Disabled Date
+
+The date picker with disabled dates inside the Calander
+
+<Canvas>
+	<Story
+		name='With Disabled Date'
+		args={{
+			placeholder: 'Select Date',
+			label: 'Date Picker With Disabled Date',
+			disableDatesBefore: '1666062682',
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+## Try in the Code Editor
+
+This embeded `CodeSandBox` is external third party code editor `iframe` shared publicly. It is advised to create an account with banyancloud mail id to create/fork this sandbox.
+
+<iframe
+	src='https://codesandbox.io/embed/xenodochial-moon-5y668f?fontsize=14&hidenavigation=1&theme=dark'
+	style={{ width: '100%', height: 500 }}
+	title='xenodochial-moon-5y668f'
+	allow='accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking'
+	sandbox='allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts'></iframe>
+
+## API
+
+**`placeholder`**
+
+The placeholder text to indicate the user what the picker will be used to select.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>"Select the date"</td>
+	</tr>
+</table>
+
+```jsx
+<DatePicker placeholder='Select the date' />
+```
+
+**`label`**
+
+The label text to indicate the type of the picker
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>''</td>
+	</tr>
+</table>
+
+```jsx
+<DatePicker label='Range Picker' />
+```
+
+**`range`**
+
+An optional Key to enable the range selection in the date picker.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<DatePicker range />
+```
+
+**`onApply`**
+
+The method to **get** the selected date or range from the date picker.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Function</td>
+		<td>null</td>
+	</tr>
+</table>
+
+```jsx
+<DatePicker
+	onApply={({ rangeSelected, dateSected }) => {
+		console.log(rangeSelected, dateSelected);
+	}}
+/>
+```
+
+**`disabled`**
+
+An optional key to disabled the date picker from opening the popover.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<DatePicker disabled={false} />
+```
+
+**`disabledDates`**
+
+An array of multiple sequential or non-sequential dates to be disabled.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Array</td>
+		<td>[]</td>
+	</tr>
+</table>
+
+```jsx
+<DatePicker disabledDates=['1666062682','1666062611'] />
+```
+
+**`maxRange`**
+
+An object representing type of range and value of range to be considered as the maximum range for selection.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Object</td>
+		<td>{}</td>
+	</tr>
+</table>
+
+```jsx
+<DatePicker
+	maxRange={{
+		type: 'months',
+		value: 6,
+	}}
+/>
+```
+
+**`value`**
+
+The value of the date picker which was selected from the popover
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>''</td>
+	</tr>
+</table>
+
+```jsx
+<DatePicker value={1666062682} />
+```
+
+**`className`**
+
+The custom style module class to be passed to the container of the snippet.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>''</td>
+	</tr>
+</table>
+
+```jsx
+<DatePicker className={styles.dates} />
+```
+
+**`theme`**
+
+The color theme of the container to select between `light` or `dark` mode.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>"dark"</td>
+	</tr>
+</table>
+
+```jsx
+<DatePicker theme='light' />
+```
+
+**`disabledDatesBefore`**
+
+The date value before which all the dates will be disabled for selection.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Array</td>
+		<td>[]</td>
+	</tr>
+</table>
+
+```jsx
+<DatePicker disableDatesBefore={1666062682} />
+```
+
+**`customRanges`**
+
+An Array of objects containing the custom ragnes of dates with `type` and `value`, along with title.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Array</td>
+		<td>null</td>
+	</tr>
+</table>
+
+```jsx
+<DatePicker
+	customRanges={[
+		{
+			title: 'Last 12 hours',
+			type: 'hours',
+			value: 12,
+		},
+	]}
+/>
+```
+
+**`onClear`**
+
+The method to **clear** the selected date or range from the date picker.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Function</td>
+		<td>null</td>
+	</tr>
+</table>
+
+```jsx
+<DatePicker
+	onClear={() => {
+		console.log('Do Something in the Application');
+	}}
+/>
+```

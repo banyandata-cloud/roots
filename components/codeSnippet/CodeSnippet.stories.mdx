@@ -1,0 +1,185 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+
+import CodeSnippet from './CodeSnippet';
+
+<Meta title='Components/CodeSnippet' parameters={{ options: { showToolbar: false } }} />
+
+export const Template = (args) => <CodeSnippet {...args} />;
+
+# Code Snippet
+
+A container to display the block of `code` of any langauge. It acts as the medium to show the code block or particulat syntax to represent the source code or an example snippet with an option to `copy`.
+
+#### Design - [Figma](https://www.figma.com/file/e9opoAtQHBo4vFd6u0Co98/Component-Library?type=design&node-id=943-47942&mode=design&t=Afx8B20v4RpJy0j6-0) | Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/components/codeSnippet)
+
+> This components uses the `react-syntax-highlighter` library to highlight the syntax.
+
+## Usage
+
+Basic import and additional information on how to use this component.
+
+```js
+import { CodeSnippet } from '@banyan_cloud/roots';
+```
+
+-   It is recommended to use the formatted stringified code to use as the snippet
+
+## Story
+
+The CSF rendered inside the `Canvas` from which you can see the implementation example.
+
+### Default
+
+<Canvas>
+	<Story
+		name='Default'
+		args={{
+			code: JSON.stringify(
+				{
+					id: 1,
+					title: 'iPhone 9',
+					description: 'An apple mobile which is nothing like apple',
+					price: 549,
+					discountPercentage: 12.96,
+					rating: 4.69,
+					stock: 94,
+					brand: 'Apple',
+					category: 'smartphones',
+				},
+				null,
+				4
+			),
+			language: 'json',
+			copy: true,
+			theme: 'dark',
+			showLineNumbers: false,
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+## Try in the Code Editor
+
+This embeded `CodeSandBox` is external third party code editor `iframe` shared publicly. It is advised to create an account with banyancloud mail id to create/fork this sandbox.
+
+<iframe
+	src='https://codesandbox.io/embed/modest-dawn-gdm72w?fontsize=14&hidenavigation=1&theme=dark'
+	style={{ width: '100%', height: 500 }}
+	allow='accelerometer; ambient-light-sensor; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking'
+	sandbox='allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts'></iframe>
+
+## API
+
+**`code`**
+
+The code block that has to be presented or displayed.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>REQUIRED</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>YES</td>
+	</tr>
+</table>
+
+```jsx
+<CodeSnippet code='<h1>Hello World!</h1>' />
+```
+
+**`language`**
+
+The programming, query or markup language to which the `code` belongs to.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>REQUIRED</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>YES</td>
+	</tr>
+</table>
+
+```jsx
+<CodeSnippet langauge='html' />
+```
+
+**`copy`**
+
+An optional Key to enable the copy icon in the snippet container to copy the code to clipboard.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<CodeSnippet copy />
+```
+
+**`theme`**
+
+The color theme of the container to select between `light` or `dark` mode.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>"dark"</td>
+	</tr>
+</table>
+
+```jsx
+<CodeSnippet theme='light' />
+```
+
+**`showLineNumbers`**
+
+An optional key to display the line numbers of the code in the left side of the snippet holder.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<CodeSnippet showLineNumbers={false} />
+```
+
+**`className`**
+
+The custom style module class to be passed to the container of the snippet.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>''</td>
+	</tr>
+</table>
+
+```jsx
+<CodeSnippet className={styles.code} />
+```

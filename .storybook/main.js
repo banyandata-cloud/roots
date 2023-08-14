@@ -1,4 +1,5 @@
 const path = require('path');
+
 module.exports = {
 	stories: ['../components/**/*.stories.mdx', '../components/**/*.stories.@(js|jsx|ts|tsx)'],
 	addons: [
@@ -10,13 +11,13 @@ module.exports = {
 		'@storybook/addon-backgrounds',
 		'storybook-dark-mode',
 	],
-	framework: {
-		name: '@storybook/react-webpack5',
-		options: {},
-	},
+	framework: '@storybook/react',
 	features: {
 		interactionsDebugger: true,
 		buildStoriesJson: true,
+	},
+	core: {
+		builder: '@storybook/builder-webpack5',
 	},
 	babel: async (options) => ({
 		...options,
@@ -31,7 +32,6 @@ module.exports = {
 			],
 		],
 	}),
-
 	webpackFinal: async (config, { configType }) => {
 		// `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
 		// You can change the configuration based on that.
@@ -46,9 +46,5 @@ module.exports = {
 
 		// Return the altered config
 		return config;
-	},
-	docs: {
-		autodocs: 'tag',
-		defaultName: 'Overview',
 	},
 };
