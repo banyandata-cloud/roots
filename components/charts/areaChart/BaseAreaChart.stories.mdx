@@ -1,0 +1,1215 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+
+import { ThemedContainer } from '../../helpers';
+import BaseAreaChart from './BaseAreaChart';
+
+import { datum1, datum2 } from './BaseAreaChartData.js';
+
+<Meta title='Components/AreaChart' parameters={{ options: { showToolbar: true } }} />
+
+export const Template = (args) => (
+	<ThemedContainer
+		{...args}
+		style={{
+			height: '400px',
+		}}>
+		<BaseAreaChart
+			{...args}
+			seriesData={{
+				...datum1,
+				metaData: {
+					xAxisData: datum1?.metaData?.xAxisData?.map((key) => {
+						const d = new Date(key * 1000);
+						return `${d.getHours()}:${d.getMinutes()}`;
+					}),
+				},
+			}}
+			tooltip={{
+				show: true,
+				trigger: 'item',
+				axisPointer: {
+					type: 'cross',
+					label: {
+						backgroundColor: '#6a7985',
+					},
+				},
+				triggerOn: 'mousemove',
+			}}
+		/>
+	</ThemedContainer>
+);
+
+export const Template2 = (args) => (
+	<ThemedContainer
+		{...args}
+		style={{
+			height: '400px',
+		}}>
+		<BaseAreaChart
+			{...args}
+			seriesData={{
+				...datum2,
+			}}
+			tooltip={{
+				show: true,
+				trigger: 'item',
+				axisPointer: {
+					type: 'cross',
+					label: {
+						backgroundColor: '#6a7985',
+					},
+				},
+				triggerOn: 'mousemove',
+			}}
+		/>
+	</ThemedContainer>
+);
+
+# Area Chart
+
+A Visual Representation of Time Based Data to display value-to-value comparison during a time period through lines or value-to-time comparison through shaded area.
+
+#### Design - [Figma](https://www.figma.com/file/Cx1dHCv47N2i35IP8wNz1u/Charts?type=design&node-id=30-34177&mode=design&t=ZtOwdHlsq1S664aU-0) | Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/components/charts/areaChart)
+
+> This components uses the `echarts` utility library to use the Basic Visual Components and properties to customise the same for required use case and `EChartsReactCore` utility library to Wrap the Charts for React Projects.
+
+## Usage
+
+Basic import and additional information on how to use this component.
+
+```js
+import { BaseAreaChart } from '@banyan_cloud/roots';
+```
+
+-   The Area Chart is just like any other chart with standard `chartData` and `metaData` values alongwith props to control customization.
+-   The `className` of the Area Chart can be adjusted in the implementaion code to match its flexibility with respect to its container.
+
+## Stories
+
+The CSF rendered inside the `Canvas` from which you can see the implementation example.
+
+### Default Area Chart
+
+The default Area Chart with Areas Stacked.
+
+<Canvas>
+	<Story
+		name='Default'
+		args={{
+			title: '',
+			gridOptions: {
+				left: 50,
+				right: 50,
+				bottom: 50,
+				top: 100,
+			},
+			gridContainLabel: true,
+			legend: {
+				show: false,
+			},
+			xAxisLabelShow: true,
+			xSplitLineShow: false,
+			xAxisLineShow: true,
+			xAxisTickShow: true,
+			smooth: false,
+			stacked: true,
+			yAxisLabelShow: false,
+			ySplitLineShow: false,
+			yAxisLineShow: false,
+			yAxisTickShow: false,
+			cursor: 'default',
+			seriesOption: [
+				{
+					stackIndex: 1,
+					color: 'green',
+					symbol: 'none',
+					symbolSize: 10,
+					label: {
+						show: false,
+					},
+					lineStyle: {
+						width: 4,
+						type: 'solid',
+						cap: 'butt',
+						join: 'round',
+					},
+					areaStyle: {
+						color: 'lightgreen',
+						origin: 'auto',
+						shadowBlur: 0,
+						shadowColor: 'white',
+						shadowOffsetX: 0,
+						shadowOffsetY: 0,
+						opacity: 0.9,
+					},
+					emphasis: {
+						focus: 'none',
+					},
+				},
+				{
+					stackIndex: 2,
+					color: 'pink',
+					symbol: 'rect',
+					symbolSize: 10,
+					label: {
+						show: false,
+					},
+					lineStyle: {
+						width: 5,
+						type: 'dashed',
+						cap: 'round',
+						join: 'bevel',
+					},
+					areaStyle: {
+						color: 'lightpink',
+						origin: 'auto',
+						shadowBlur: 0,
+						shadowColor: 'white',
+						shadowOffsetX: 0,
+						shadowOffsetY: 0,
+						opacity: 0.9,
+					},
+					emphasis: {
+						focus: 'self',
+					},
+				},
+				{
+					stackIndex: 3,
+					color: 'orange',
+					symbol: 'roundRect',
+					symbolSize: 10,
+					label: {
+						show: false,
+					},
+					lineStyle: {
+						width: 6,
+						type: 'dotted',
+						cap: 'square',
+						join: 'miter',
+					},
+					areaStyle: {
+						color: '#F4D696',
+						origin: 'auto',
+						shadowBlur: 0,
+						shadowColor: 'white',
+						shadowOffsetX: 0,
+						shadowOffsetY: 0,
+						opacity: 0.9,
+					},
+					emphasis: {
+						focus: 'series',
+					},
+				},
+				{
+					stackIndex: 4,
+					color: 'red',
+					symbol: 'roundRect',
+					symbolSize: 10,
+					label: {
+						show: false,
+					},
+					lineStyle: {
+						width: 6,
+						type: 'dotted',
+						cap: 'square',
+						join: 'miter',
+					},
+					areaStyle: {
+						color: '#fd9695',
+						origin: 'auto',
+						shadowBlur: 0,
+						shadowColor: 'white',
+						shadowOffsetX: 0,
+						shadowOffsetY: 0,
+						opacity: 0.9,
+						cursor: 'default',
+					},
+					emphasis: {
+						focus: 'series',
+					},
+				},
+				{
+					stackIndex: 5,
+					color: 'blue',
+					symbol: 'roundRect',
+					symbolSize: 10,
+					label: {
+						show: false,
+					},
+					lineStyle: {
+						width: 6,
+						type: 'dotted',
+						cap: 'square',
+						join: 'miter',
+					},
+					areaStyle: {
+						color: 'lightblue',
+						origin: 'auto',
+						shadowBlur: 0,
+						shadowColor: 'white',
+						shadowOffsetX: 0,
+						shadowOffsetY: 0,
+						opacity: 0.9,
+					},
+					emphasis: {
+						focus: 'series',
+					},
+				},
+			],
+			errorHandle: () => {
+				alert('This will Call Fetch API again');
+			},
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Line Stack Area Chart
+
+The Line Chart with transparent areas and unstacked Lines.
+
+<Canvas>
+	<Story
+		name='Line Stack'
+		args={{
+			title: 'Title',
+			gridContainLabel: true,
+			legend: {
+				show: false,
+			},
+			xAxisShow: true,
+			smooth: false,
+			stacked: false,
+			yAxisLabelShow: false,
+			ySplitLineShow: false,
+			yAxisLineShow: false,
+			yAxisTickShow: false,
+			cursor: 'default',
+			seriesOption: [
+				{
+					stackIndex: 1,
+					color: 'green',
+					symbol: 'circle',
+					symbolSize: 10,
+					label: {
+						show: false,
+					},
+					lineStyle: {
+						width: 4,
+						type: 'solid',
+						cap: 'butt',
+						join: 'round',
+					},
+					areaStyle: {
+						opacity: 0,
+					},
+					emphasis: {
+						focus: 'none',
+					},
+				},
+				{
+					stackIndex: 2,
+					color: 'pink',
+					symbol: 'rect',
+					symbolSize: 10,
+					label: {
+						show: false,
+					},
+					lineStyle: {
+						width: 5,
+						type: 'dashed',
+						cap: 'round',
+						join: 'bevel',
+					},
+					areaStyle: {
+						opacity: 0,
+					},
+					emphasis: {
+						focus: 'self',
+					},
+				},
+				{
+					stackIndex: 3,
+					color: 'orange',
+					symbol: 'roundRect',
+					symbolSize: 10,
+					label: {
+						show: false,
+					},
+					lineStyle: {
+						width: 6,
+						type: 'dotted',
+						cap: 'square',
+						join: 'miter',
+					},
+					areaStyle: {
+						opacity: 0,
+					},
+					emphasis: {
+						focus: 'series',
+					},
+				},
+				{
+					stackIndex: 4,
+					color: 'red',
+					symbol: 'roundRect',
+					symbolSize: 10,
+					label: {
+						show: false,
+					},
+					lineStyle: {
+						width: 6,
+						type: 'dotted',
+						cap: 'square',
+						join: 'miter',
+					},
+					areaStyle: {
+						opacity: 0,
+					},
+					emphasis: {
+						focus: 'series',
+					},
+				},
+				{
+					stackIndex: 5,
+					color: 'blue',
+					symbol: 'roundRect',
+					symbolSize: 10,
+					label: {
+						show: false,
+					},
+					lineStyle: {
+						width: 6,
+						type: 'dotted',
+						cap: 'square',
+						join: 'miter',
+					},
+					areaStyle: {
+						opacity: 0,
+					},
+					emphasis: {
+						focus: 'series',
+					},
+				},
+			],
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Curve and Gradient
+
+The Area Chart with curved lines and Gradient colorset.
+
+<Canvas>
+	<Story
+		name='Curve Gradient'
+		args={{
+			title: 'Title',
+			gridOptions: {
+				left: 50,
+				right: 50,
+				bottom: 50,
+				top: 50,
+			},
+			gridContainLabel: true,
+			legend: {
+				show: false,
+			},
+			xAxisShow: true,
+			smooth: true,
+			stacked: false,
+			yAxisLabelShow: false,
+			ySplitLineShow: false,
+			yAxisLineShow: false,
+			yAxisTickShow: false,
+			cursor: 'default',
+			seriesOption: [
+				{
+					stackIndex: 1,
+					color: [
+						0,
+						0,
+						0,
+						1,
+						[
+							{
+								offset: 0,
+								color: 'rgb(255, 158, 68)',
+							},
+							{
+								offset: 1,
+								color: 'rgb(255, 70, 131)',
+							},
+						],
+					],
+					symbol: 'circle',
+					label: {
+						show: false,
+					},
+					lineStyle: {
+						width: 4,
+						type: 'solid',
+						cap: 'butt',
+						join: 'round',
+						color: [
+							0,
+							0,
+							0,
+							1,
+							[
+								{
+									offset: 0,
+									color: 'rgb(255, 158, 68)',
+								},
+								{
+									offset: 1,
+									color: 'rgb(255, 70, 131)',
+								},
+							],
+						],
+					},
+					areaStyle: {
+						opacity: 0,
+					},
+					emphasis: {
+						focus: 'none',
+					},
+				},
+			],
+		}}>
+		{Template2.bind({})}
+	</Story>
+</Canvas>
+
+## Try in the Code Editor
+
+This embeded `CodeSandBox` is external third party code editor `iframe` shared publicly. It is advised to create an account with banyancloud mail id to create/fork this sandbox.
+
+<iframe
+	src='https://codesandbox.io/s/sad-grothendieck-k2rjz5?file=/src/App.js'
+	style={{ width: '100%', height: 500 }}
+	title='xenodochial-moon-5y668f'
+	allow='accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking'
+	sandbox='allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts'></iframe>
+
+## API
+
+**`loading`**
+
+loading indicates the waiting state of chart while data is loading
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>bool</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<BaseAreaChart loading={false} />
+```
+
+**`fallback`**
+
+The fallback indicates whether to show Skeleton component or not in case of Exception
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>bool</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<BaseAreaChart fallback={false} />
+```
+
+**`title`**
+
+An optional Key to give a title to the Chart.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>''</td>
+	</tr>
+</table>
+
+```jsx
+<BaseAreaChart title='Title' />
+```
+
+**`gridOptions`**
+
+Object that set Chart Layout Dimensions from Left, Right, Top and Bottom.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>object</td>
+		<td>
+			{JSON.stringify({
+				left: 0,
+				right: 0,
+				bottom: 0,
+				top: 0,
+			})}
+		</td>
+	</tr>
+</table>
+
+```jsx
+<BaseAreaChart
+	gridOptions={{
+		left: 50,
+		right: 50,
+		bottom: 50,
+		top: 100,
+	}}
+/>
+```
+
+**`gridContainLabel`**
+
+An optional key to resize the Chart Layout in order to include 'Title' in display.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<BaseAreaChart gridContainLabel={false} />
+```
+
+**`tooltip`**
+
+Tooltip key can be used to format and display Data in Tooltip for Charts, it can be triggered through several events as input by dev.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>object</td>
+		<td>{}</td>
+	</tr>
+</table>
+
+```jsx
+<BaseAreaChart
+	tooltip={{
+		show: true,
+		trigger: 'item',
+		axisPointer: {
+			type: 'cross',
+			label: {
+				backgroundColor: '#6a7985',
+			},
+		},
+		triggerOn: 'mousemove',
+	}}
+/>
+```
+
+**`legend`**
+
+Legend key is used to customise Chart Legend and the it's data.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Object</td>
+		<td>{}</td>
+	</tr>
+</table>
+
+```jsx
+<BaseAreaChart
+	legend={{
+		show: false,
+	}}
+/>
+```
+
+**`xAxisLabelShow`**
+
+Key to decide whether to show or hide X-Axis Label
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>bool</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<BaseAreaChart xAxisLabelShow={false} />
+```
+
+**`xSplitLineShow`**
+
+Key to decide whether to show or hide X-Axis Split Line.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>bool</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<BaseAreaChart xSplitLineShow={false} />
+```
+
+**`xAxisLineShow`**
+
+Key to decide whether to show or hide X-Axis Division Line
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>bool</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<BaseAreaChart xAxisLineShow={false} />
+```
+
+**`xAxisTickShow`**
+
+Key to decide whether to show or hide X-Axis Tick
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>bool</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<BaseAreaChart xAxisTickShow={false} />
+```
+
+**`yAxisLabelShow`**
+
+Key to decide whether to show or hide Y-Axis Label
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>bool</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<BaseAreaChart yAxisLabelShow={false} />
+```
+
+**`ySplitLineShow`**
+
+Key to decide whether to show or hide Y-Axis Split Line
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>bool</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<BaseAreaChart ySplitLineShow={false} />
+```
+
+**`yAxisLineShow`**
+
+Key to decide whether to show or hide Y-Axis Line
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>bool</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<BaseAreaChart yAxisLineShow={false} />
+```
+
+**`yAxisTickShow`**
+
+Key to decide whether to show or hide Y-Axis Tick
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>bool</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<BaseAreaChart yAxisTickShow={false} />
+```
+
+**`xAxisLabel`**
+
+Object to customise X-Axis Data Labels.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>object</td>
+		<td>{}</td>
+	</tr>
+</table>
+
+```jsx
+<BaseAreaChart
+	xAxisLabel={{
+		show: true,
+		rotate: 90,
+		inside: true,
+		color: 'white',
+		verticalAlign: 'bottom',
+		padding: [0, 0, calculateLabelPadding(dataLength), -7],
+	}}
+/>
+```
+
+**`yAxisLabel`**
+
+Object to customise Y-Axis Data Labels.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>object</td>
+		<td>{}</td>
+	</tr>
+</table>
+
+```jsx
+<BaseAreaChart
+	yAxisLabel={{
+		show: true,
+		rotate: 90,
+		inside: true,
+		color: 'white',
+		verticalAlign: 'bottom',
+		padding: [0, 0, calculateLabelPadding(dataLength), -7],
+	}}
+/>
+```
+
+**`axisLabelColor`**
+
+key to specify 'color' of Axis Label.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>''</td>
+	</tr>
+</table>
+
+```jsx
+<BaseAreaChart axisLabelColor='red' />
+```
+
+**`axisSplitColor`**
+
+Key to specify Axis Split Line color.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>''</td>
+	</tr>
+</table>
+
+```jsx
+<BaseAreaChart axisSplitColor='red' />
+```
+
+**`splitType`**
+
+The Layout Split type can be `solid`, `dashed` or `dotted`.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>solid</td>
+	</tr>
+</table>
+
+```jsx
+<BaseAreaChart splitType='solid' />
+```
+
+**`seriesData`**
+
+The Actual Data which will be displayed in the Chart. It must have 2 keys - 'chartData' and 'metaData'.
+The chartData can have any number of keys representing Data in numerical Array.
+The metaData can have any other required Data but must contain 'xAxisData' key which is an array representing Time Series in unix-date format.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>REQUIRED</th>
+	</tr>
+	<tr>
+		<td>Object</td>
+		<td>{}</td>
+	</tr>
+</table>
+
+```jsx
+<BaseAreaChart
+	seriesData={{
+		chartData: {
+			VALUE: [0, 1, 2, 3, 4, 5],
+		},
+		metaData: {
+			xAxisData: [1657893600, 1657897200, 1657900800, 1657904400, 1657908000, 1657911600],
+		},
+	}}
+/>
+```
+
+**`stacked`**
+
+Key to decide whether the Lines/Areas are stacked or not.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>bool</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<BaseAreaChart stacked={false} />
+```
+
+**`cursor`**
+
+Key to modify 'cursor' UI, it supports all standard css cursor options.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>default</td>
+	</tr>
+</table>
+
+```jsx
+<BaseAreaChart cursor='default' />
+```
+
+**`seriesOption`**
+
+This key contains an Array of Objects where each Object maps to each Data-Value and allows customization of them individually.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>REQUIRED</th>
+	</tr>
+	<tr>
+		<td>Array</td>
+		<td>[]</td>
+	</tr>
+</table>
+
+```jsx
+<BaseAreaChart seriesOption=[
+		{
+			stackIndex: 1,
+			color: 'green',
+			symbol: 'none',
+			symbolSize: 10,
+			label: {
+				show: false,
+			},
+			lineStyle: {
+				width: 4,
+				type: 'solid',
+				cap: 'butt',
+				join: 'round',
+			},
+			areaStyle: {
+				color: 'lightgreen',
+				origin: 'auto',
+				shadowBlur: 0,
+				shadowColor: 'white',
+				shadowOffsetX: 0,
+				shadowOffsetY: 0,
+				opacity: 0.9,
+			},
+			emphasis: {
+				focus: 'none',
+			},
+		}
+	] />
+```
+
+**`lineStyleWidth`**
+
+Key to specify line width through number.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>4</td>
+	</tr>
+</table>
+
+```jsx
+<BaseAreaChart lineStyleWidth='10' />
+```
+
+**`lineStyleType`**
+
+The Line Style type can be `solid`, `dashed` or `dotted`.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>solid</td>
+	</tr>
+</table>
+
+```jsx
+<BaseAreaChart lineStyleType='solid' />
+```
+
+**`lineStyleCap`**
+
+The Line Cap Style type can be `butt`, `round` or `square`.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>butt</td>
+	</tr>
+</table>
+
+```jsx
+<BaseAreaChart lineStyleCap='butt' />
+```
+
+**`lineStyleJoin`**
+
+The Line Join Style type can be `round`, `bevel` or `miter`.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>round</td>
+	</tr>
+</table>
+
+```jsx
+<BaseAreaChart lineStyleJoin='round' />
+```
+
+**`smooth`**
+
+Key to decide whether Line curves are smooth or straight.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Bool</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<BaseAreaChart smooth={false} />
+```
+
+**`opacity`**
+
+Key that determines the opacity level of Area Region in the Chart. It ranges from 0 to 1, where 0 is transparent.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>1</td>
+	</tr>
+</table>
+
+```jsx
+<BaseAreaChart opacity={false} />
+```
+
+**`style`**
+
+Key to change styles thorugh standard CSS values.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>object</td>
+		<td>
+			{JSON.stringify({
+				width: '100%',
+				height: '100%',
+			})}
+		</td>
+	</tr>
+</table>
+
+```jsx
+<BaseAreaChart style={{ width: '90%' }} />
+```
+
+**`className`**
+
+Key to change style through external className.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>''</td>
+	</tr>
+</table>
+
+```jsx
+<BaseAreaChart className='chart-area' />
+```
+
+**`theme`**
+
+The color theme of the container to select between `light` or `dark` mode.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>"dark"</td>
+	</tr>
+</table>
+
+```jsx
+<BaseAreaChart theme='light' />
+```
