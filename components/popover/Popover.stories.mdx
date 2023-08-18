@@ -1,0 +1,316 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+
+import Popover from './Popover';
+
+<Meta title='Components/Popover' parameters={{ options: { showToolbar: true } }} />
+
+export const Template = (args) => {
+	// const [anchorEl, setAnchorEl] = useState(null);
+	// const [open, setOpen] = useState(false);
+	let anchorEl;
+	return (
+		<div
+			style={{
+				textAlign: 'center',
+				marginTop: 50,
+			}}>
+			<Button
+				title='Content of the popover'
+				ref={(el) => {
+					anchorEl = el;
+				}}
+				// onClick={() => {
+				// 	setOpen((prev) => {
+				// 		return !prev;
+				// 	});
+				// }}
+				// ref={(el) => {
+				// 	setAnchorEl(el);
+				// }}
+			/>
+			<Popover {...args} open={false} anchorEl={anchorEl}>
+				<div
+					style={{
+						backgroundColor: 'rgba(36, 161, 72, 0.08)',
+						color: '#24a148',
+					}}>
+					Content of the popover
+				</div>
+			</Popover>
+		</div>
+	);
+};
+
+# Popover
+
+A Layover Component that renders in Z-Index i.e above existing Elements.
+
+#### Design - [Figma](https://www.figma.com/file/e9opoAtQHBo4vFd6u0Co98/Component-Library?node-id=1%3A13) | Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/components/popover)
+
+> This components uses the `floating-ui` utility library to use react-dom-interactions to customise the same for required use case.
+
+## Usage
+
+Basic import and additional information on how to use this component.
+
+```js
+import { Popover } from '@banyan_cloud/roots';
+```
+
+-   The PopOver is just like any other Floating Component that uses z-index internally and displays anything .
+-   The `className` of the component can be adjusted in the implementaion code to match its flexibility with respect to its container.
+
+## Stories
+
+The CSF rendered inside the `Canvas` from which you can see the implementation example.
+
+### Default
+
+<Canvas>
+	<Story
+		name='Default'
+		args={{
+			content: 'Popover Info',
+			placement: 'top-start',
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+## Try in the Code Editor
+
+This embeded `CodeSandBox` is external third party code editor `iframe` shared publicly. It is advised to create an account with banyancloud mail id to create/fork this sandbox.
+
+<iframe
+	src='https://codesandbox.io/s/trusting-darkness-p7rygs?file=/src/App.js'
+	style={{ width: '100%', height: 500 }}
+	title='xenodochial-moon-5y668f'
+	allow='accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking'
+	sandbox='allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts'></iframe>
+
+## API
+
+**`anchorEl`**
+
+Reference to the Component where PopOver is intended to show.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>element</td>
+		<td>null</td>
+	</tr>
+</table>
+
+```jsx
+const [anchorEl, setAnchorEl] = useState(null);
+<Button
+	title='Click Me'
+	ref={(el) => {
+		setAnchorEl(el);
+	}}
+/>;
+<Popover {...args} anchorEl={anchorEl} open={open} setOpen={setOpen}>
+	<div
+		style={{
+			backgroundColor: 'rgba(36, 161, 72, 0.08)',
+			color: '#24a148',
+		}}>
+		Content of the popover
+	</div>
+</Popover>;
+```
+
+**`open`**
+
+State that decides whether to show PopOver or not.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>REQUIRED</th>
+	</tr>
+	<tr>
+		<td>bool</td>
+		<td>''</td>
+	</tr>
+</table>
+
+```jsx
+const [open, setOpen] = useState(false);
+<Button
+	onClick={() => {
+		setOpen((prev) => {
+			return !prev;
+		});
+	}}
+	title='Click Me'
+/>;
+<Popover {...args} anchorEl={anchorEl} open={open} setOpen={setOpen}>
+	<div
+		style={{
+			backgroundColor: 'rgba(36, 161, 72, 0.08)',
+			color: '#24a148',
+		}}>
+		Content of the popover
+	</div>
+</Popover>;
+```
+
+**`setOpen`**
+
+Callback to change display state of PopOver.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>REQUIRED</th>
+	</tr>
+	<tr>
+		<td>func</td>
+		<td>''</td>
+	</tr>
+</table>
+
+```jsx
+const [open, setOpen] = useState(false);
+<Button
+	onClick={() => {
+		setOpen((prev) => {
+			return !prev;
+		});
+	}}
+	title='Click Me'
+/>;
+<Popover {...args} anchorEl={anchorEl} open={open} setOpen={setOpen}>
+	<div
+		style={{
+			backgroundColor: 'rgba(36, 161, 72, 0.08)',
+			color: '#24a148',
+		}}>
+		Content of the popover
+	</div>
+</Popover>;
+```
+
+**`onClose`**
+
+Callback function to Close the PopOver from another Event Handler.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>func</td>
+		<td>() => {}</td>
+	</tr>
+</table>
+
+```jsx
+<Popover {...args} onClose={onClose} open={open} setOpen={setOpen}>
+	<div
+		style={{
+			backgroundColor: 'rgba(36, 161, 72, 0.08)',
+			color: '#24a148',
+		}}>
+		Content of the popover
+	</div>
+</Popover>
+```
+
+**`transparent`**
+
+State to decide whether the PopOver background should be transparent or not.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>bool</td>
+		<td>true</td>
+	</tr>
+</table>
+
+```jsx
+<Popover {...args} transparent={false} open={open} setOpen={setOpen}>
+	<div
+		style={{
+			backgroundColor: 'rgba(36, 161, 72, 0.08)',
+			color: '#24a148',
+		}}>
+		Content of the popover
+	</div>
+</Popover>
+```
+
+**`placement`**
+
+Value to decide where will the PopOver be placed it can be `top`, `top-start`, `top-end`, `right`, `right-start`, `right-end`, `bottom`, `bottom-start`, `bottom-end`, `left`, `left-start` and `left-end`.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>bottom</td>
+	</tr>
+</table>
+
+```jsx
+<Popover {...args} placement={'left-end'} open={open} setOpen={setOpen}>
+	<div
+		style={{
+			backgroundColor: 'rgba(36, 161, 72, 0.08)',
+			color: '#24a148',
+		}}>
+		Content of the popover
+	</div>
+</Popover>
+```
+
+**`className`**
+
+Key to change style through external className.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>''</td>
+	</tr>
+</table>
+
+```jsx
+<Popover className='chart-area' />
+```
+
+**`theme`**
+
+The color theme of the container to select between `light` or `dark` mode.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>"dark"</td>
+	</tr>
+</table>
+
+```jsx
+<Popover theme='light' />
+```
