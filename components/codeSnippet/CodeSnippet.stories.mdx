@@ -2,7 +2,15 @@ import { Meta, Canvas, Story } from '@storybook/addon-docs';
 
 import CodeSnippet from './CodeSnippet';
 
-<Meta title='Components/CodeSnippet' parameters={{ options: { showToolbar: true } }} />
+<Meta
+	title='Components/CodeSnippet'
+	parameters={{
+		options: {
+			showToolbar: false,
+		},
+	}}
+	r
+/>
 
 export const Template = (args) => <CodeSnippet {...args} />;
 

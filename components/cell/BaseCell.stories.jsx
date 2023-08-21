@@ -6,7 +6,7 @@ export default {
 	component: BaseCell,
 	parameters: {
 		options: {
-			showToolbar: true,
+			showToolbar: false,
 		},
 		componentSubtitle: 'Description of the BaseCell',
 	},

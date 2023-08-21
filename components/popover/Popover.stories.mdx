@@ -1,45 +1,9 @@
 import { Meta, Canvas, Story } from '@storybook/addon-docs';
-
+import { useState, useEffect } from 'react';
 import Popover from './Popover';
+import { Button } from '../buttons';
 
-<Meta title='Components/Popover' parameters={{ options: { showToolbar: true } }} />
-
-export const Template = (args) => {
-	// const [anchorEl, setAnchorEl] = useState(null);
-	// const [open, setOpen] = useState(false);
-	let anchorEl;
-	return (
-		<div
-			style={{
-				textAlign: 'center',
-				marginTop: 50,
-			}}>
-			<Button
-				title='Content of the popover'
-				ref={(el) => {
-					anchorEl = el;
-				}}
-				// onClick={() => {
-				// 	setOpen((prev) => {
-				// 		return !prev;
-				// 	});
-				// }}
-				// ref={(el) => {
-				// 	setAnchorEl(el);
-				// }}
-			/>
-			<Popover {...args} open={false} anchorEl={anchorEl}>
-				<div
-					style={{
-						backgroundColor: 'rgba(36, 161, 72, 0.08)',
-						color: '#24a148',
-					}}>
-					Content of the popover
-				</div>
-			</Popover>
-		</div>
-	);
-};
+<Meta title='Components/Popover' parameters={{ options: { showToolbar: false } }} />
 
 # Popover
 
@@ -67,26 +31,62 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 ### Default
 
 <Canvas>
-	<Story
-		name='Default'
-		args={{
-			content: 'Popover Info',
-			placement: 'top-start',
-		}}>
-		{Template.bind({})}
+	<Story name='Default'>
+		{() => {
+			const [storyAnchorEl, setStoryAnchorEl] = useState(null);
+			const [open, setOpen] = useState(false);
+			useEffect(() => {
+				const handleEsc = (event) => {
+					if (event.key === 'Escape') {
+						setOpen((prev) => {
+							return !prev;
+						});
+					}
+				};
+				window.addEventListener('keydown', handleEsc);
+				return () => {
+					window.removeEventListener('keydown', handleEsc);
+				};
+			}, []);
+			return (
+				<div
+					style={{
+						textAlign: 'center',
+						marginTop: 50,
+					}}>
+					<Button
+						title='Content of the popover'
+						size='auto'
+						ref={(el) => {
+							storyAnchorEl = el;
+						}}
+						onClick={() => {
+							setOpen((prev) => {
+								return !prev;
+							});
+						}}
+						ref={(el) => {
+							setStoryAnchorEl(el);
+						}}
+					/>
+					<Popover open={open} anchorEl={storyAnchorEl}>
+						<div
+							style={{
+								backgroundColor: 'rgba(36, 161, 72, 0.08)',
+								color: '#24a148',
+							}}>
+							Content of the popover
+						</div>
+					</Popover>
+				</div>
+			);
+		}}
 	</Story>
 </Canvas>
 
 ## Try in the Code Editor
 
 This embeded `CodeSandBox` is external third party code editor `iframe` shared publicly. It is advised to create an account with banyancloud mail id to create/fork this sandbox.
-
-<iframe
-	src='https://codesandbox.io/s/trusting-darkness-p7rygs?file=/src/App.js'
-	style={{ width: '100%', height: 500 }}
-	title='xenodochial-moon-5y668f'
-	allow='accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking'
-	sandbox='allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts'></iframe>
 
 ## API
 

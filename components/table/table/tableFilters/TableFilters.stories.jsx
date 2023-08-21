@@ -7,7 +7,7 @@ export default {
 	component: TableFilters,
 	parameters: {
 		options: {
-			showToolbar: true,
+			showToolbar: false,
 		},
 	},
 };

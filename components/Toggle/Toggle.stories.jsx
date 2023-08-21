@@ -8,7 +8,7 @@ export default {
 	component: Toggle,
 	parameters: {
 		options: {
-			showToolbar: true,
+			showToolbar: false,
 		},
 		// componentSubtitle: '',
 	},
