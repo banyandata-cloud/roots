@@ -1,0 +1,298 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+
+import { ThemedContainer } from '../../helpers';
+import Button from './Button';
+
+<Meta title='Components/Buttons/Button' parameters={{ options: { showToolbar: true } }} />
+
+export const Template = (args) => (
+	<ThemedContainer {...args}>
+		<Button {...args} />
+	</ThemedContainer>
+);
+
+# Button
+
+A versatile and customizable button component designed for enabling interactive user experiences with configurable appearance and behavior.
+
+#### Design - [Figma](https://www.figma.com/file/e9opoAtQHBo4vFd6u0Co98/Component-Library?type=design&node-id=1-2&mode=design&t=doFoJhh78NiStend-0) | Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/components/buttons/Button)
+
+> This components uses the `date-fns` utility library to use date related methods with respect to comparision and sorting.
+
+## Usage
+
+Basic import and additional information on how to use this component.
+
+```js
+import { Button } from '@banyan_cloud/roots';
+```
+
+-   Treat Date Picker as another dropdown(select) element in terms of HTML, as both uses the same `<PopOver` Wrapper.
+-   The `width` of the date picker has to adjusted in the implementaion code to match its flexibility with respect to its container.
+
+## Stories
+
+The CSF rendered inside the `Canvas` from which you can see the implementation example.
+
+### Simple Button
+
+The date picker which allows to select a date from the popover.
+
+<Canvas>
+	<Story
+		name='Default Button'
+		args={{
+			title: 'Button Name',
+			variant: 'contained',
+			size: 'md',
+			radius: 'default',
+			color: 'primary',
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+## Try in the Code Editor
+
+This embeded `CodeSandBox` is external third party code editor `iframe` shared publicly. It is advised to create an account with banyancloud mail id to create/fork this sandbox.
+
+<iframe
+	src='https://codesandbox.io/embed/banyancloud-Button-2m9sk7?fontsize=14&hidenavigation=1&theme=dark'
+	style={{ width: '100%', height: '500px', border: 0, borderRadius: '4px', overflow: 'hidden' }}
+	title='BanyanCloud - Button'
+	allow='accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking'
+	sandbox='allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts'></iframe>
+
+## API
+
+**`className`**
+
+Additional CSS class names to be applied to the button.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>""</td>
+	</tr>
+</table>
+
+```jsx
+<Button className='additionalClass' />
+```
+
+**`component1`**
+
+The first component on the left of the title. Accepts JSX element.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>JSX</td>
+		<td>null</td>
+	</tr>
+</table>
+
+```jsx
+<Button component1={<p>Some text</p>} />
+```
+
+**`title`**
+
+The text to be displayed within the button.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>""</td>
+	</tr>
+</table>
+
+```jsx
+<Button title='Submit' />
+```
+
+**`component3`**
+
+The third component on the right of the title. Accepts JSX element.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>JSX</td>
+		<td>null</td>
+	</tr>
+</table>
+
+```jsx
+<Button component3={<p>Some text</p>} />
+```
+
+**`size`**
+
+The size of the button, affecting its dimensions.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>'sm', 'md', 'lg', 'auto'</td>
+		<td>'sm'</td>
+	</tr>
+</table>
+
+```jsx
+<Button size='sm' />
+```
+
+**`flexible`**
+
+Make the button button flexible. It adds the following styles: {flex-grow: 1;flex-shrink: 1;min-width: 3rem;}
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<Button flexible='flexibleStyleClassname' />
+```
+
+**`radius`**
+
+For applying border radius to the button.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>'none', 'default', 'round', 'ellipse'</td>
+		<td>'default'</td>
+	</tr>
+</table>
+
+```jsx
+<Button radius='none' />
+```
+
+**`disabled`**
+
+If true, the button is disabled and cannot be interacted with.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<Button disabled={false} />
+```
+
+**`type`**
+
+The type of the button.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>'button', 'submit', 'reset'</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<Button type='submit' />
+```
+
+**`onClick`**
+
+Callback function to be executed when the button is clicked.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Function</td>
+		<td>() => void</td>
+	</tr>
+</table>
+
+```jsx
+<Button
+	onClick={() => {
+		console.log('Button clicked');
+	}}
+/>
+```
+
+**`blurOnClick`**
+
+If true, the button will lose focus after being clicked.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>true</td>
+	</tr>
+</table>
+
+```jsx
+<Button blurOnClick={false} />
+```
+
+**`variant`**
+
+For applying visual style to the button.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>'contained', 'outlined', 'text'</td>
+		<td>'contained'</td>
+	</tr>
+</table>
+
+```jsx
+<Button variant='outlined' />
+```
