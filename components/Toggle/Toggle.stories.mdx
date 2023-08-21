@@ -1,5 +1,5 @@
 import { Meta, Canvas, Story } from '@storybook/addon-docs';
-
+import { useState } from 'react';
 import { ThemedContainer } from '../helpers';
 import { TrashIcon } from '../icons';
 import Toggle from './Toggle';
@@ -7,29 +7,17 @@ import Toggle from './Toggle';
 <Meta title='Components/Toggle' parameters={{ options: { showToolbar: true } }} />
 
 export const Template = (args) => {
-	// const [selectedToggle, setSelectedToggle] = useState(args.selectedToggle);
 	return (
 		<ThemedContainer {...args}>
-			<Toggle
-				{...args}
-				selectedToggle={args.selectedToggle}
-				// setSelectedToggle={setSelectedToggle}
-			/>
+			<Toggle {...args} selectedToggle={args.selectedToggle} />
 		</ThemedContainer>
 	);
 };
 
 export const ControlledTemplate = (args) => {
-	// eslint-disable-next-line react/destructuring-assignment
-	// const [selectedToggle, setSelectedToggle] = useState(args.defaultValue);
 	return (
 		<ThemedContainer {...args}>
-			<Toggle
-				{...args}
-				// eslint-disable-next-line react/destructuring-assignment
-				value={args.defaultValue}
-				// onChange={setSelectedToggle}
-			/>
+			<Toggle {...args} value={args.defaultValue} />
 		</ThemedContainer>
 	);
 };
@@ -244,10 +232,9 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 ### Multi Toggle
 
 <Canvas>
-	<Story
-		name='Multi Toggle'
-		args={{
-			options: [
+	<Story name='Multi Toggle'>
+		{() => {
+			const options = [
 				{
 					value: 'pgsql',
 					title: '',
@@ -288,12 +275,22 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					},
 					leftComponent: null,
 				},
-			],
-			defaultValue: ['oracle', 'mysql', 'pgsql'],
-			multi: true,
-			theme: 'light',
-		}}>
-		{ControlledTemplate.bind({})}
+			];
+			const defaultValue = ['oracle', 'mysql', 'pgsql'];
+			const [selectedToggle, setSelectedToggle] = useState(defaultValue);
+			return (
+				<ThemedContainer>
+					<Toggle
+						options={options}
+						theme='light'
+						defaultValue={defaultValue}
+						multi
+						value={selectedToggle}
+						onChange={setSelectedToggle}
+					/>
+				</ThemedContainer>
+			);
+		}}
 	</Story>
 </Canvas>
 
@@ -302,7 +299,7 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 This embeded `CodeSandBox` is external third party code editor `iframe` shared publicly. It is advised to create an account with banyancloud mail id to create/fork this sandbox.
 
 <iframe
-	src='https://codesandbox.io/s/heuristic-fermi-ccqshh?file=/src/App.js'
+	src='https://codesandbox.io/s/broken-cherry-3vhh73?file=/src/App.js'
 	style={{ width: '100%', height: 500 }}
 	title='xenodochial-moon-5y668f'
 	allow='accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking'
@@ -310,9 +307,9 @@ This embeded `CodeSandBox` is external third party code editor `iframe` shared p
 
 ## API
 
-**`loading`**
+**`multi`**
 
-loading indicates the waiting state of chart while data is loading
+This Key decides whether to allow Multi Selection or Not.
 
 <table style={{ width: '100%' }}>
 	<tr>
@@ -326,12 +323,12 @@ loading indicates the waiting state of chart while data is loading
 </table>
 
 ```jsx
-<BaseVerticalBarChart loading={false} />
+<Toggle multi={false} />
 ```
 
-**`title`**
+**`value`**
 
-An optional Key to give a title to the Chart.
+This Key hold the current selected Value in a Controlled Component.
 
 <table style={{ width: '100%' }}>
 	<tr>
@@ -345,280 +342,12 @@ An optional Key to give a title to the Chart.
 </table>
 
 ```jsx
-<BaseVerticalBarChart title='Title' />
+<Toggle value='OPTION-1' />
 ```
 
-**`gridOptions`**
+**`options`**
 
-Object that set Chart Layout Dimensions from Left, Right, Top and Bottom.
-
-<table style={{ width: '100%' }}>
-	<tr>
-		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
-		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
-	</tr>
-	<tr>
-		<td>object</td>
-		<td>
-			{JSON.stringify({
-				left: 0,
-				right: 0,
-				bottom: 0,
-				top: 0,
-			})}
-		</td>
-	</tr>
-</table>
-
-```jsx
-<BaseVerticalBarChart
-	gridOptions={{
-		left: 50,
-		right: 50,
-		bottom: 50,
-		top: 100,
-	}}
-/>
-```
-
-**`gridContainLabel`**
-
-An optional key to resize the Chart Layout in order to include 'Title' in display.
-
-<table style={{ width: '100%' }}>
-	<tr>
-		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
-		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
-	</tr>
-	<tr>
-		<td>Boolean</td>
-		<td>false</td>
-	</tr>
-</table>
-
-```jsx
-<BaseVerticalBarChart gridContainLabel={false} />
-```
-
-**`tooltip`**
-
-Tooltip key can be used to format and display Data in Tooltip for Charts, it can be triggered through several events as input by dev.
-
-<table style={{ width: '100%' }}>
-	<tr>
-		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
-		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
-	</tr>
-	<tr>
-		<td>object</td>
-		<td>{}</td>
-	</tr>
-</table>
-
-```jsx
-<BaseVerticalBarChart
-	tooltip={{
-		show: true,
-		trigger: 'item',
-		axisPointer: {
-			type: 'cross',
-			label: {
-				backgroundColor: '#6a7985',
-			},
-		},
-		triggerOn: 'mousemove',
-	}}
-/>
-```
-
-**`seriesData`**
-
-The Actual Data which will be displayed in the Chart. It must have 2 keys - 'chartData' and 'metaData'.
-The chartData can have any number of keys representing Data in object.
-The metaData can have any other required Data.
-
-<table style={{ width: '100%' }}>
-	<tr>
-		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
-		<th style={{ textAlign: 'left', width: '50%' }}>REQUIRED</th>
-	</tr>
-	<tr>
-		<td>Object</td>
-		<td>{}</td>
-	</tr>
-</table>
-
-```jsx
-<BaseVerticalBarChart
-	seriesData={{
-		chartData: {
-			'Audit, Logging and Monitering': {
-				x1: 40,
-			},
-		},
-	}}
-/>
-```
-
-**`yAxisLabelShow`**
-
-Key to decide whether to show or hide Y-Axis Label
-
-<table style={{ width: '100%' }}>
-	<tr>
-		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
-		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
-	</tr>
-	<tr>
-		<td>bool</td>
-		<td>false</td>
-	</tr>
-</table>
-
-```jsx
-<BaseVerticalBarChart yAxisLabelShow={false} />
-```
-
-**`xAxisShow`**
-
-Key to decide whether to show or hide X-Axis Division Line
-
-<table style={{ width: '100%' }}>
-	<tr>
-		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
-		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
-	</tr>
-	<tr>
-		<td>bool</td>
-		<td>false</td>
-	</tr>
-</table>
-
-```jsx
-<BaseVerticalBarChart xAxisLineShow={false} />
-```
-
-**`ySplitLineShow`**
-
-Key to decide whether to show or hide Y-Axis Split Line
-
-<table style={{ width: '100%' }}>
-	<tr>
-		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
-		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
-	</tr>
-	<tr>
-		<td>bool</td>
-		<td>false</td>
-	</tr>
-</table>
-
-```jsx
-<BaseVerticalBarChart ySplitLineShow={false} />
-```
-
-**`yAxisLineShow`**
-
-Key to decide whether to show or hide Y-Axis Line
-
-<table style={{ width: '100%' }}>
-	<tr>
-		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
-		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
-	</tr>
-	<tr>
-		<td>bool</td>
-		<td>false</td>
-	</tr>
-</table>
-
-```jsx
-<BaseVerticalBarChart yAxisLineShow={false} />
-```
-
-**`yAxisTickShow`**
-
-Key to decide whether to show or hide Y-Axis Tick
-
-<table style={{ width: '100%' }}>
-	<tr>
-		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
-		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
-	</tr>
-	<tr>
-		<td>bool</td>
-		<td>false</td>
-	</tr>
-</table>
-
-```jsx
-<BaseVerticalBarChart yAxisTickShow={false} />
-```
-
-**`onEvents`**
-
-Callback to control 'Click' event on HeatMap
-
-<table style={{ width: '100%' }}>
-	<tr>
-		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
-		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
-	</tr>
-	<tr>
-		<td>Function</td>
-		<td>() => {}</td>
-	</tr>
-</table>
-
-```jsx
-<BaseVerticalBarChart
-	onEvents={{
-		click: functionName,
-	}}
-/>
-```
-
-**`stackCount`**
-
-Key to decide number of stacks that the Bar Chart have.
-
-<table style={{ width: '100%' }}>
-	<tr>
-		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
-		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
-	</tr>
-	<tr>
-		<td>Number</td>
-		<td>1</td>
-	</tr>
-</table>
-
-```jsx
-<BaseAreaChart stackCount={2} />
-```
-
-**`cursor`**
-
-Key to modify 'cursor' UI, it supports all standard css cursor options.
-
-<table style={{ width: '100%' }}>
-	<tr>
-		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
-		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
-	</tr>
-	<tr>
-		<td>String</td>
-		<td>default</td>
-	</tr>
-</table>
-
-```jsx
-<BaseVerticalBarChart cursor='default' />
-```
-
-**`seriesOption`**
-
-This key contains an Array of Objects where each Object maps to each Data-Value and allows customization of them individually.
+This key contains a list of all Options to be selected in Toggle Component.
 
 <table style={{ width: '100%' }}>
 	<tr>
@@ -632,53 +361,37 @@ This key contains an Array of Objects where each Object maps to each Data-Value 
 </table>
 
 ```jsx
-<BaseVerticalBarChart seriesOption=[
-		{
-			stackIndex: 1,
-			color: COLORS.success,
-			backgroundStyle: {
-				color: 'transparent',
-			},
-			label: {
-				show: true,
-				formatter(param) {
-					return param.name;
-				},
-			},
-		},
-	] />
+<Toggle options=[
+    {
+      value: "First",
+      title: "First",
+      rightComponent: null,
+      leftComponent: null
+    },
+    {
+      value: "Second",
+      title: "Second",
+      rightComponent: null,
+      leftComponent: null
+    },
+    {
+      value: "Third",
+      title: "Third",
+      rightComponent: null,
+      leftComponent: null
+    },
+    {
+      value: "Fourth",
+      title: "Fourth",
+      rightComponent: null,
+      leftComponent: null
+    }
+  ] />
 ```
 
-**`legend`**
+**`defaultValue`**
 
-Legend key is used to customise Chart Legend and the it's data.
-
-<table style={{ width: '100%' }}>
-	<tr>
-		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
-		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
-	</tr>
-	<tr>
-		<td>Object</td>
-		<td>
-			{JSON.stringify({
-				show: false,
-			})}
-		</td>
-	</tr>
-</table>
-
-```jsx
-<BaseVerticalBarChart
-	legend={{
-		show: false,
-	}}
-/>
-```
-
-**`seriesName`**
-
-Optional key to specify any name to the HeatMap series.
+This key hold the default selected value in Uncontrolled Component.
 
 <table style={{ width: '100%' }}>
 	<tr>
@@ -687,36 +400,12 @@ Optional key to specify any name to the HeatMap series.
 	</tr>
 	<tr>
 		<td>String</td>
-		<td>''</td>
+		<td>null</td>
 	</tr>
 </table>
 
 ```jsx
-<BaseVerticalBarChart seriesName='Permission Count' />
-```
-
-**`style`**
-
-Key to change styles thorugh standard CSS values.
-
-<table style={{ width: '100%' }}>
-	<tr>
-		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
-		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
-	</tr>
-	<tr>
-		<td>object</td>
-		<td>
-			{JSON.stringify({
-				width: '100%',
-				height: '100%',
-			})}
-		</td>
-	</tr>
-</table>
-
-```jsx
-<BaseVerticalBarChart style={{ width: '90%' }} />
+<Toggle defaultValue='Fourth' />
 ```
 
 **`className`**
@@ -735,7 +424,7 @@ Key to change style through external className.
 </table>
 
 ```jsx
-<BaseVerticalBarChart className='chart-area' />
+<Toggle className='chart-area' />
 ```
 
 **`theme`**
@@ -754,5 +443,5 @@ The color theme of the container to select between `light` or `dark` mode.
 </table>
 
 ```jsx
-<BaseVerticalBarChart theme='light' />
+<Toggle theme='light' />
 ```
