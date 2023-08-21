@@ -2,6 +2,7 @@ import { Meta, Canvas, Story } from '@storybook/addon-docs';
 
 import { ThemedContainer } from '../../helpers';
 import Button from './Button';
+import { CopyIcon, ArrowIcon } from '../../icons';
 
 <Meta title='Components/Buttons/Button' parameters={{ options: { showToolbar: true } }} />
 
@@ -34,9 +35,9 @@ import { Button } from '@banyan_cloud/roots';
 
 The CSF rendered inside the `Canvas` from which you can see the implementation example.
 
-### Simple Button
+### Default Button
 
-The date picker which allows to select a date from the popover.
+The default button component.
 
 <Canvas>
 	<Story
@@ -47,6 +48,112 @@ The date picker which allows to select a date from the popover.
 			size: 'md',
 			radius: 'default',
 			color: 'primary',
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### With Left Icon
+
+Button with icon on the left of the title.
+
+<Canvas>
+	<Story
+		name='With left icon'
+		args={{
+			title: 'Button Name',
+			variant: 'contained',
+			size: 'md',
+			radius: 'default',
+			color: 'primary',
+			leftComponent: () => {
+				return <ArrowIcon height='24' width='24' color='#ffffff' />;
+			},
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### With Right Icon
+
+Button with icon on the right of the title.
+
+<Canvas>
+	<Story
+		name='With right icon'
+		args={{
+			title: 'Button Name',
+			variant: 'contained',
+			size: 'md',
+			radius: 'default',
+			color: 'primary',
+			rightComponent: () => {
+				return <CopyIcon active height='12' width='12' color='#ffffff' />;
+			},
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### With Both side Icon
+
+Button with icons on both sides of the title.
+
+<Canvas>
+	<Story
+		name='With both side icon'
+		args={{
+			title: 'Button Name',
+			variant: 'contained',
+			size: 'md',
+			radius: 'default',
+			color: 'primary',
+			leftComponent: () => {
+				return <ArrowIcon height='24' width='24' color='#ffffff' />;
+			},
+			rightComponent: () => {
+				return <CopyIcon active height='12' width='12' color='#ffffff' />;
+			},
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### With Only Icon
+
+Button with only icon and no title.
+
+<Canvas>
+	<Story
+		name='With only icon'
+		args={{
+			title: '',
+			variant: 'contained',
+			size: 'md',
+			radius: 'default',
+			color: 'primary',
+			leftComponent: () => {
+				return <ArrowIcon height='24' width='24' color='#ffffff' />;
+			},
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Disabled
+
+Disabled button with no interaction.
+
+<Canvas>
+	<Story
+		name='Disabled'
+		args={{
+			title: 'Button Name',
+			variant: 'contained',
+			size: 'md',
+			radius: 'default',
+			color: 'secondary',
+			disabled: true,
 		}}>
 		{Template.bind({})}
 	</Story>

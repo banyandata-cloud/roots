@@ -1,8 +1,10 @@
 const Copy = (props) => {
-	const { className } = props;
+	const { className, width, height, color } = props;
 	return (
 		<svg
-			fill='black'
+			width={width ?? '1.5rem'}
+			height={height ?? '1.5rem'}
+			fill={color ?? 'black'}
 			className={className}
 			viewBox='0 0 16 17'
 			xmlns='http://www.w3.org/2000/svg'>
