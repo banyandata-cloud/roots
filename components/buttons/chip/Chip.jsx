@@ -61,7 +61,7 @@ Chip.defaultProps = {
 	...BaseButton.defaultProps,
 	size: 'sm',
 	variant: 'status',
-	color: 'success',
+	color: 'default',
 	leftComponent: null,
 	rightComponent: null,
 	radius: 'default',

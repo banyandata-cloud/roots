@@ -6,7 +6,7 @@ import BaseButton from './BaseButton';
 <Meta title='Components/Buttons/BaseButton' parameters={{ options: { showToolbar: true } }} />
 
 export const Template = (args) => (
-	<ThemedContainer {...args}>
+	<ThemedContainer theme='light'>
 		<BaseButton {...args} />
 	</ThemedContainer>
 );
@@ -17,8 +17,6 @@ A button component used for user interactions. It provides a versatile interface
 
 #### Design - [Figma](https://www.figma.com/file/e9opoAtQHBo4vFd6u0Co98/Component-Library?type=design&node-id=1-2&mode=design&t=doFoJhh78NiStend-0) | Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/components/buttons/baseButton)
 
-> This components uses the `date-fns` utility library to use date related methods with respect to comparision and sorting.
-
 ## Usage
 
 Basic import and additional information on how to use this component.
@@ -26,9 +24,6 @@ Basic import and additional information on how to use this component.
 ```js
 import { BaseButton } from '@banyan_cloud/roots';
 ```
-
--   Treat Date Picker as another dropdown(select) element in terms of HTML, as both uses the same `<PopOver` Wrapper.
--   The `width` of the date picker has to adjusted in the implementaion code to match its flexibility with respect to its container.
 
 ## Stories
 
