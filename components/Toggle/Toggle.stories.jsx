@@ -29,16 +29,16 @@ const Template = (args) => {
 	);
 };
 
-export const Uncontrolled = Template.bind({});
+export const Uncontrolled1 = Template.bind({});
 
-Uncontrolled.parameters = {
+Uncontrolled1.parameters = {
 	design: {
 		type: 'figma',
 		url: 'https://www.figma.com/file/e9opoAtQHBo4vFd6u0Co98/Component-Library?node-id=120%3A8220',
 	},
 };
 
-Uncontrolled.args = {
+Uncontrolled1.args = {
 	options: [
 		{
 			value: 'First',
@@ -71,7 +71,7 @@ Uncontrolled.args = {
 export const Dark = Template.bind({});
 
 Dark.args = {
-	...Uncontrolled.args,
+	...Uncontrolled1.args,
 	theme: 'dark',
 };
 
