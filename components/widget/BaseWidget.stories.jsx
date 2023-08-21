@@ -9,7 +9,7 @@ export default {
 	component: BaseWidget,
 	parameters: {
 		options: {
-			showToolbar: true,
+			showToolbar: false,
 		},
 	},
 };

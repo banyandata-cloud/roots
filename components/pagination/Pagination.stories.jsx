@@ -7,7 +7,7 @@ export default {
 	component: Pagination,
 	parameters: {
 		options: {
-			showToolbar: true,
+			showToolbar: false,
 		},
 	},
 };

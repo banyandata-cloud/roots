@@ -7,7 +7,7 @@ export default {
 	component: Alert,
 	parameters: {
 		options: {
-			showToolbar: true,
+			showToolbar: false,
 		},
 	},
 };

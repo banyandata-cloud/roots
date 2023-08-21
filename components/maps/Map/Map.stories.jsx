@@ -13,7 +13,7 @@ export default {
 	component: Map,
 	parameters: {
 		options: {
-			showToolbar: true,
+			showToolbar: false,
 		},
 		componentSubtitle: 'Map component used everywhere',
 	},

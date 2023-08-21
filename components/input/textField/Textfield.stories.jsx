@@ -9,7 +9,7 @@ export default {
 	component: TextField,
 	parameters: {
 		options: {
-			showToolbar: true,
+			showToolbar: false,
 		},
 	},
 	decorators: [

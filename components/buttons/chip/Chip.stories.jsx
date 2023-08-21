@@ -9,7 +9,7 @@ export default {
 	component: Chip,
 	parameters: {
 		options: {
-			showToolbar: true,
+			showToolbar: false,
 		},
 		componentSubtitle: 'Description of the  button',
 	},

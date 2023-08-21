@@ -13,7 +13,7 @@ export default {
 		storyOrder: 1,
 		options: {
 			options: {
-				showToolbar: true,
+				showToolbar: false,
 			},
 		},
 		canvas: {
