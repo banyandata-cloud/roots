@@ -1,0 +1,250 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+
+import { ThemedContainer } from '../helpers';
+import Breadcrumbs from './Breadcrumbs';
+
+<Meta title='Components/Buttons/Breadcrumbs' parameters={{ options: { showToolbar: true } }} />
+
+export const Template = (args) => (
+	<ThemedContainer theme='light'>
+		<Breadcrumbs {...args} />
+	</ThemedContainer>
+);
+
+# Breadcrumbs
+
+A breadcrumb navigation component for React applications that helps users track their current location within a hierarchical structure. The component supports dynamic expansion and contraction of breadcrumbs when there are too many to display comfortably.
+
+#### Design - [Figma](https://www.figma.com/file/e9opoAtQHBo4vFd6u0Co98/Component-Library?type=design&node-id=1-9&mode=design&t=JRLSPAWC13zoSNJn-0) | Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/components/breadcrumbs)
+
+> The BreadCrumbs component renders a navigation bar that displays breadcrumb items. Breadcrumbs are created from the crumbs prop, with each item having a title, a path for the URL, and an optional icon to display before the title.
+
+## Usage
+
+Basic import and additional information on how to use this component.
+
+```js
+import { Breadcrumbs } from '@banyan_cloud/roots';
+```
+
+-   This BreadCrumbs component provides users with a clear visual representation of their current navigation path and supports efficient handling of breadcrumb overflow through expansion and contraction.
+-   It's a helpful addition to improve the usability and user experience of the application's navigation.
+
+## Stories
+
+The CSF rendered inside the `Canvas` from which you can see the implementation example.
+
+### Simple Breadcrumbs
+
+The default Breadcrumbs.
+
+<Canvas>
+	<Story
+		name='Default Breadcrumbs'
+		args={{
+			theme: 'light',
+			crumbs: [
+				{
+					title: 'section-1',
+					path: 'section-1',
+					icon: null,
+				},
+				{
+					title: 'section-2',
+					path: 'section-2',
+					icon: null,
+				},
+				{
+					title: 'section-3',
+					path: 'section-3',
+					icon: null,
+				},
+			],
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Collapsed Breadcrumbs
+
+The Breadcrumbs in collapsed state.
+
+<Canvas>
+	<Story
+		name='Collapsed Breadcrumbs'
+		args={{
+			theme: 'light',
+			crumbs: [
+				{
+					title: 'section-1',
+					path: 'section-1',
+					icon: null,
+				},
+				{
+					title: 'section-2',
+					path: 'section-2',
+					icon: null,
+				},
+				{
+					title: 'section-3',
+					path: 'section-3',
+					icon: null,
+				},
+				{
+					title: 'section-4',
+					path: 'section-4',
+					icon: null,
+				},
+				{
+					title: 'section-5',
+					path: 'section-5',
+					icon: null,
+				},
+				{
+					title: 'section-6',
+					path: 'section-6',
+					icon: null,
+				},
+				{
+					title: 'final-section',
+					path: 'final-section',
+					icon: null,
+				},
+			],
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+## Try in the Code Editor
+
+This embeded `CodeSandBox` is external third party code editor `iframe` shared publicly. It is advised to create an account with banyancloud mail id to create/fork this sandbox.
+
+## API
+
+**`theme`**
+
+The theme of the breadcrumbs.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>'light', 'dark'</td>
+		<td>'dark'</td>
+	</tr>
+</table>
+
+```jsx
+<Breadcrumbs theme='dark' />
+```
+
+**`crumbs`**
+
+An array of breadcrumb items with properties.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>{`[{title: string, path: string, icon: node}]`}</td>
+		<td>[]</td>
+	</tr>
+</table>
+
+```jsx
+<Breadcrumbs
+	crumbs={[
+		{
+			title: 'section-1',
+			path: 'section-1',
+			icon: <Icon1 />,
+		},
+		{
+			title: 'section-2',
+			path: 'section-2',
+			icon: <Icon2 />,
+		},
+	]}
+/>
+```
+
+**`maxItems`**
+
+The maximum number of visible breadcrumbs.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Number</td>
+		<td>4</td>
+	</tr>
+</table>
+
+```jsx
+<Breadcrumbs maxItems={5} />
+```
+
+**`itemsBeforeCollapse`**
+
+Number of breadcrumbs to show before collapsing.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Number</td>
+		<td>2</td>
+	</tr>
+</table>
+
+```jsx
+<Breadcrumbs itemsBeforeCollapse={3} />
+```
+
+**`itemsAfterCollapse`**
+
+Number of breadcrumbs to show after collapsing.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Number</td>
+		<td>1</td>
+	</tr>
+</table>
+
+```jsx
+<Breadcrumbs itemsAfterCollapse={3} />
+```
+
+**`linkComponent`**
+
+A component to render each breadcrumb item.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Number</td>
+		<td>'a'</td>
+	</tr>
+</table>
+
+```jsx
+<Breadcrumbs linkComponent='a-random-string' />
+```
