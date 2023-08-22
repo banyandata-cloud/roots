@@ -5,7 +5,7 @@ export default {
 	component: Link,
 	parameters: {
 		options: {
-			showToolbar: true,
+			showToolbar: false,
 		},
 		componentSubtitle: 'For creating hyperlinks',
 	},

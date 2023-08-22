@@ -6,7 +6,7 @@ export default {
 	title: 'Components/Icons',
 	parameters: {
 		options: {
-			showToolbar: true,
+			showToolbar: false,
 		},
 		componentSubtitle: 'All the icons',
 	},

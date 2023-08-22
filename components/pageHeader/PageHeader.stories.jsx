@@ -11,7 +11,7 @@ export default {
 	component: PageHeader,
 	parameters: {
 		options: {
-			showToolbar: true,
+			showToolbar: false,
 		},
 		componentSubtitle: 'Description of the Chip',
 	},

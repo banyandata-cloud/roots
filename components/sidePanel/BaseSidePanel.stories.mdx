@@ -1,0 +1,181 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+import { Button } from '../buttons';
+import { useState } from 'react';
+import BaseSidePanel from './BaseSidePanel';
+
+<Meta title='Components/SidePanel/BaseSidePanel' parameters={{ options: { showToolbar: false } }} />
+
+export const Template = (args) => {
+	return <BasePanel {...args} />;
+};
+
+# Side Panel
+
+Component that displays a Container in Side Drawer or Panel.
+
+#### Design - [Figma](https://www.figma.com/file/e9opoAtQHBo4vFd6u0Co98/Component-Library?node-id=2%3A157&t=QUwVGAtrtHseOQKo-0) | Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/components/sidePanel)
+
+## Usage
+
+Basic import and additional information on how to use this component.
+
+```js
+import { BasePanel } from '@banyan_cloud/roots';
+```
+
+-   Base Panel uses reference to Display Side Drawer over current DOM.
+-   The `className` of the Chart can be adjusted in the implementaion code to match its flexibility with respect to its container.
+
+## Stories
+
+The CSF rendered inside the `Canvas` from which you can see the implementation example.
+
+### Default Base Panel
+
+<Canvas>
+	<Story name='Default'>
+		{() => {
+			const [open, setOpen] = useState(false);
+			const toggle = () => {
+				setOpen((prevState) => {
+					return !prevState;
+				});
+			};
+			return (
+				<div
+					style={{
+						display: 'flex',
+						alignItems: 'flex-start',
+						justifyContent: 'space-between',
+						height: '100%',
+					}}>
+					<Button
+						title='Open Drawer'
+						size='auto'
+						onClick={() => {
+							setOpen((prev) => {
+								return !prev;
+							});
+						}}
+					/>
+					<BaseSidePanel
+						renderHeader={
+							<div
+								style={{
+									background: 'red',
+								}}>
+								<div>Header</div>
+							</div>
+						}
+						renderFooter={
+							<div
+								style={{
+									background: 'orange',
+								}}>
+								Footer
+							</div>
+						}
+						toggle={toggle}
+						open={open}>
+						<div
+							style={{
+								background: 'tomato',
+								height: '500px',
+							}}>
+							<p>Body</p>
+						</div>
+					</BaseSidePanel>
+				</div>
+			);
+		}}
+	</Story>
+</Canvas>
+
+## Try in the Code Editor
+
+This embeded `CodeSandBox` is external third party code editor `iframe` shared publicly. It is advised to create an account with banyancloud mail id to create/fork this sandbox.
+
+<iframe
+	src='https://codesandbox.io/s/summer-shadow-g2nmvp?file=/src/App.js'
+	style={{ width: '100%', height: 500 }}
+	title='xenodochial-moon-5y668f'
+	allow='accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking'
+	sandbox='allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts'></iframe>
+
+## API
+
+**`renderHeader`**
+
+Header Element of the Side Panel
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>element</td>
+		<td>null</td>
+	</tr>
+</table>
+
+```jsx
+<BaseSidePanel renderHeader={false} />
+```
+
+**`renderFooter`**
+
+Footer Element of the Side Panel
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>element</td>
+		<td>null</td>
+	</tr>
+</table>
+
+```jsx
+<BaseSidePanel renderFooter={false} />
+```
+
+**`open`**
+
+State to decide whether to Open or Close the Side Panel.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>bool</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<BaseSidePanel open={true} />
+```
+
+**`className`**
+
+Key to change style through external className.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>''</td>
+	</tr>
+</table>
+
+```jsx
+<BaseSidePanel className='chart-area' />
+```

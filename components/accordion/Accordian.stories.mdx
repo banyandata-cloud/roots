@@ -1,0 +1,342 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+import { useState } from 'react';
+import ThemedContainer from '../helpers/themedContainer/ThemedContainer';
+import { PlusIcon } from '../icons';
+import Accordion from './Accordion';
+
+<Meta title='Components/Accordian' parameters={{ options: { showToolbar: true } }} />
+
+export const Template = (args) => {
+	return (
+		<ThemedContainer>
+			{[...Array(4).keys()].map((key) => {
+				return <Accordion key={key} {...args} />;
+			})}
+		</ThemedContainer>
+	);
+};
+
+export const Nested = () => {
+	return (
+		<ThemedContainer>
+			<Accordion title='Parent' description='This is the parent description'>
+				<Accordion
+					title='Child'
+					description='This is the child description'
+					onExpand={() => {}}
+				/>
+			</Accordion>
+		</ThemedContainer>
+	);
+};
+
+# Accordian
+
+A Visual interactive Collapsable list of Components that can be interacted and shown as required.
+
+#### Design - [Figma](https://www.figma.com/file/e9opoAtQHBo4vFd6u0Co98/Component-Library?node-id=1%3A6) | Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/components/accordion)
+
+## Usage
+
+Basic import and additional information on how to use this component.
+
+```js
+import { Accordion } from '@banyan_cloud/roots';
+```
+
+-   Toggle uses reference to change state of Components.
+-   The `className` of the Component can be adjusted in the implementaion code to match its flexibility with respect to its container.
+
+## Stories
+
+The CSF rendered inside the `Canvas` from which you can see the implementation example.
+
+### Default
+
+<Canvas>
+	<Story
+		name='Default'
+		args={{
+			title: 'Click to Expand',
+			description:
+				"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+			defaultOpen: false,
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Custom Icon
+
+<Canvas>
+	<Story
+		name='Custom Icon'
+		args={{
+			title: 'Click to Expand',
+			description:
+				"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+			defaultOpen: false,
+			leftComponent: PlusIcon,
+			rightComponent: PlusIcon,
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Controlled
+
+<Canvas>
+	<Story name='Controlled'>
+		{() => {
+			const [open, setOpen] = useState(null);
+			return (
+				<ThemedContainer>
+					{[...Array(4).keys()].map((key) => {
+						return (
+							<Accordion
+								open={key === open}
+								onToggle={(active) => {
+									if (active) {
+										setOpen(null);
+									} else {
+										setOpen(key);
+									}
+								}}
+								key={key}
+								title={`Item ${key + 1}`}
+								description={`This is the decription for Item ${key + 1}`}
+							/>
+						);
+					})}
+				</ThemedContainer>
+			);
+		}}
+	</Story>
+</Canvas>
+
+## Try in the Code Editor
+
+This embeded `CodeSandBox` is external third party code editor `iframe` shared publicly. It is advised to create an account with banyancloud mail id to create/fork this sandbox.
+
+<iframe
+	src='https://codesandbox.io/s/condescending-grass-6y725l?file=/src/App.js'
+	style={{ width: '100%', height: 500 }}
+	title='xenodochial-moon-5y668f'
+	allow='accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking'
+	sandbox='allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts'></iframe>
+
+## API
+
+**`open`**
+
+This Key decides whether to Accordian is open or not.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>bool</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<Accordion open={false} />
+```
+
+**`defaultOpen`**
+
+This Key decides whether Accordian is open by default or not.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>bool</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<Accordion defaultOpen={false} />
+```
+
+**`description`**
+
+Optional Key to give a description to the Component.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>''</td>
+	</tr>
+</table>
+
+```jsx
+<Accordion description='Accordian Description' />
+```
+
+**`onToggle`**
+
+A Callback function that captures when Accordian state is changed.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Function</td>
+		<td>null</td>
+	</tr>
+</table>
+
+```jsx
+<Accordion
+	onToggle={(active) => {
+		if (active) {
+			setOpen(null);
+		} else {
+			setOpen(key);
+		}
+	}}
+/>
+```
+
+**`onClick`**
+
+A Callback function that captures when Accordian is clicked.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Function</td>
+		<td>null</td>
+	</tr>
+</table>
+
+```jsx
+<Accordion
+	onClick={(active) => {
+		if (active) {
+			setOpen(null);
+		} else {
+			setOpen(key);
+		}
+	}}
+/>
+```
+
+**`onExpand`**
+
+A Callback function that captures when Accordian is Expanded.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Function</td>
+		<td>null</td>
+	</tr>
+</table>
+
+```jsx
+<Accordion
+	onExpand={(active) => {
+		if (active) {
+			setOpen(null);
+		} else {
+			setOpen(key);
+		}
+	}}
+/>
+```
+
+**`leftComponent`**
+
+This Component displays another component on Left Side of Accordian.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Node</td>
+		<td>CaretIcon</td>
+	</tr>
+</table>
+
+```jsx
+<Accordion leftComponent={PlusIcon} />
+```
+
+**`rightComponent`**
+
+This Component displays another component on Right Side of Accordian.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Node</td>
+		<td>CaretIcon</td>
+	</tr>
+</table>
+
+```jsx
+<Accordion rightComponent={PlusIcon} />
+```
+
+**`title`**
+
+This Component shows the main Titular value of Accordian.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Node</td>
+		<td>CaretIcon</td>
+	</tr>
+</table>
+
+```jsx
+<Accordion title={PlusIcon} />
+```
+
+**`className`**
+
+Key to change style through external className.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>''</td>
+	</tr>
+</table>
+
+```jsx
+<Accordion className='chart-area' />
+```

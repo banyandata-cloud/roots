@@ -7,7 +7,7 @@ export default {
 	component: BaseHybridChart,
 	parameters: {
 		options: {
-			showToolbar: true,
+			showToolbar: false,
 		},
 	},
 };

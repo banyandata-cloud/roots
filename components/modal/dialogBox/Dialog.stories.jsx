@@ -6,7 +6,7 @@ export default {
 	component: DialogBox,
 	parameters: {
 		options: {
-			showToolbar: true,
+			showToolbar: false,
 		},
 	},
 };

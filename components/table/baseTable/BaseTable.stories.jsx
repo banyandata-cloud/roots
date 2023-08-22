@@ -9,7 +9,7 @@ export default {
 	component: BaseTable,
 	parameters: {
 		options: {
-			showToolbar: true,
+			showToolbar: false,
 		},
 	},
 };

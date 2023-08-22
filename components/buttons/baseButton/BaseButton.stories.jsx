@@ -10,7 +10,7 @@ export default {
 	},
 	parameters: {
 		options: {
-			showToolbar: true,
+			showToolbar: false,
 		},
 		componentSubtitle: 'Description of the  button',
 	},

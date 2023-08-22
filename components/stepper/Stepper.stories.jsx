@@ -11,7 +11,7 @@ export default {
 	parameters: {
 		options: {
 			options: {
-				showToolbar: true,
+				showToolbar: false,
 			},
 		},
 		docs: {

@@ -15,7 +15,7 @@ export default {
 	component: Table,
 	parameters: {
 		options: {
-			showToolbar: true,
+			showToolbar: false,
 		},
 	},
 };

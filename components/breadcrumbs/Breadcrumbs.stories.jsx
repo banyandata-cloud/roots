@@ -7,7 +7,7 @@ export default {
 	component: BreadCrumbs,
 	parameters: {
 		options: {
-			showToolbar: true,
+			showToolbar: false,
 		},
 	},
 };

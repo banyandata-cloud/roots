@@ -10,7 +10,7 @@ export default {
 	component: TableRow,
 	parameters: {
 		options: {
-			showToolbar: true,
+			showToolbar: false,
 		},
 		componentSubtitle: 'Container for table rows of table body',
 	},

@@ -7,7 +7,7 @@ export default {
 	component: CheckBox,
 	parameters: {
 		options: {
-			showToolbar: true,
+			showToolbar: false,
 		},
 		componentSubtitle: 'Description of the Checkbox',
 	},

@@ -1,19 +1,4 @@
-/* eslint-disable no-tabs */
-import React from 'react';
-import { ThemedContainer } from '../../helpers';
-import HeatMapChart from './HeatMapChart';
-
-export default {
-	title: 'Components/Charts/HeatMapChart/BaseHeatMapChart',
-	component: HeatMapChart,
-	parameters: {
-		options: {
-			showToolbar: true,
-		},
-	},
-};
-
-const sampleData = {
+export const sampleData = {
 	chartData: {
 		user1: {
 			x1: 4,
@@ -437,76 +422,6 @@ const sampleData = {
 				'User Priviledges': 56,
 				total: 80,
 			},
-		},
-	},
-};
-
-const Template = (args) => {
-	return (
-		<ThemedContainer
-			{...args}
-			style={{
-				height: '100%',
-			}}>
-			<HeatMapChart {...args} />
-		</ThemedContainer>
-	);
-};
-
-export const Default = Template.bind({});
-
-Default.args = {
-	gridContainLabel: true,
-	gridOptions: {
-		left: 0,
-		right: 0,
-		bottom: 0,
-		top: 15,
-	},
-	xAxisLabel: {
-		show: false,
-	},
-	xSplitLineShow: false,
-	xAxisLineShow: false,
-	xAxisTickShow: false,
-	yAxisLabelShow: false,
-	ySplitLineShow: false,
-	yAxisLineShow: false,
-	yAxisTickShow: false,
-	axisColor: 'grey',
-	tooltip: {
-		trigger: 'item',
-		formatter: (param) => {
-			return `${param.name}: ${sampleData.metaData.seriesData[param.name].total} Permissions`;
-		},
-	},
-	seriesData: sampleData,
-	visualMap: {
-		min: 0,
-		max: 10,
-		show: false,
-		calculable: true,
-		inRange: {
-			color: [
-				'#313695',
-				'#74add1',
-				'#abd9e9',
-				'#e0f3f8',
-				'#ffffbf',
-				'#fee090',
-				'#fdae61',
-				'#f46d43',
-				'#d73027',
-				'#a50026',
-			],
-		},
-	},
-	seriesOption: {
-		label: {
-			show: false,
-		},
-		itemStyle: {
-			borderWidth: 1,
 		},
 	},
 };

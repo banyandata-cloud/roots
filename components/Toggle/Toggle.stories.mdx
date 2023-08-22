@@ -1,0 +1,447 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+import { useState } from 'react';
+import { ThemedContainer } from '../helpers';
+import { TrashIcon } from '../icons';
+import Toggle from './Toggle';
+
+<Meta title='Components/Toggle' parameters={{ options: { showToolbar: true } }} />
+
+export const Template = (args) => {
+	return (
+		<ThemedContainer {...args}>
+			<Toggle {...args} selectedToggle={args.selectedToggle} />
+		</ThemedContainer>
+	);
+};
+
+export const ControlledTemplate = (args) => {
+	return (
+		<ThemedContainer {...args}>
+			<Toggle {...args} value={args.defaultValue} />
+		</ThemedContainer>
+	);
+};
+
+# Toggle
+
+A Visual interactive selection list with Options that shows available Options as well has the selected one.
+
+#### Design - [Figma](https://www.figma.com/file/e9opoAtQHBo4vFd6u0Co98/Component-Library?node-id=120%3A8220) | Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/components/Toggle)
+
+## Usage
+
+Basic import and additional information on how to use this component.
+
+```js
+import { Toggle } from '@banyan_cloud/roots';
+```
+
+-   Toggle uses reference to change selection of option.
+-   The `className` of the Component can be adjusted in the implementaion code to match its flexibility with respect to its container.
+
+## Stories
+
+The CSF rendered inside the `Canvas` from which you can see the implementation example.
+
+### Uncontrolled Toggle
+
+<Canvas>
+	<Story
+		name='Uncontrolled'
+		args={{
+			options: [
+				{
+					value: 'First',
+					title: 'First',
+					rightComponent: null,
+					leftComponent: null,
+				},
+				{
+					value: 'Second',
+					title: 'Second',
+					rightComponent: null,
+					leftComponent: null,
+				},
+				{
+					value: 'Third',
+					title: 'Third',
+					rightComponent: null,
+					leftComponent: null,
+				},
+				{
+					value: 'Fourth',
+					title: 'Fourth',
+					rightComponent: null,
+					leftComponent: null,
+				},
+			],
+			theme: 'light',
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Dark Toggle
+
+<Canvas>
+	<Story
+		name='Dark Toggle'
+		args={{
+			options: [
+				{
+					value: 'First',
+					title: 'First',
+					rightComponent: null,
+					leftComponent: null,
+				},
+				{
+					value: 'Second',
+					title: 'Second',
+					rightComponent: null,
+					leftComponent: null,
+				},
+				{
+					value: 'Third',
+					title: 'Third',
+					rightComponent: null,
+					leftComponent: null,
+				},
+				{
+					value: 'Fourth',
+					title: 'Fourth',
+					rightComponent: null,
+					leftComponent: null,
+				},
+			],
+			theme: 'dark',
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Icon Toggle
+
+<Canvas>
+	<Story
+		name='Icon Toggle'
+		args={{
+			options: [
+				{
+					value: 'pgsql',
+					title: '',
+					rightComponent: () => {
+						return <TrashIcon />;
+					},
+					leftComponent: null,
+				},
+				{
+					value: 'mysql',
+					title: '',
+					rightComponent: () => {
+						return <TrashIcon />;
+					},
+					leftComponent: null,
+				},
+				{
+					value: 'oracle',
+					title: '',
+					rightComponent: () => {
+						return <TrashIcon />;
+					},
+					leftComponent: null,
+				},
+				{
+					value: 'mongodb',
+					title: '',
+					rightComponent: () => {
+						return <TrashIcon />;
+					},
+					leftComponent: null,
+				},
+				{
+					value: 'mssql',
+					title: '',
+					rightComponent: () => {
+						return <TrashIcon />;
+					},
+					leftComponent: null,
+				},
+			],
+			defaultValue: 'oracle',
+			theme: 'light',
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Controlled Toggle
+
+<Canvas>
+	<Story
+		name='Controlled Toggle'
+		args={{
+			options: [
+				{
+					value: 'pgsql',
+					title: '',
+					rightComponent: () => {
+						return <TrashIcon />;
+					},
+					leftComponent: null,
+				},
+				{
+					value: 'mysql',
+					title: '',
+					rightComponent: () => {
+						return <TrashIcon />;
+					},
+					leftComponent: null,
+				},
+				{
+					value: 'oracle',
+					title: '',
+					rightComponent: () => {
+						return <TrashIcon />;
+					},
+					leftComponent: null,
+				},
+				{
+					value: 'mongodb',
+					title: '',
+					rightComponent: () => {
+						return <TrashIcon />;
+					},
+					leftComponent: null,
+				},
+				{
+					value: 'mssql',
+					title: '',
+					rightComponent: () => {
+						return <TrashIcon />;
+					},
+					leftComponent: null,
+				},
+			],
+			defaultValue: 'oracle',
+			theme: 'light',
+		}}>
+		{ControlledTemplate.bind({})}
+	</Story>
+</Canvas>
+
+### Multi Toggle
+
+<Canvas>
+	<Story name='Multi Toggle'>
+		{() => {
+			const options = [
+				{
+					value: 'pgsql',
+					title: '',
+					rightComponent: () => {
+						return <TrashIcon />;
+					},
+					leftComponent: null,
+				},
+				{
+					value: 'mysql',
+					title: '',
+					rightComponent: () => {
+						return <TrashIcon />;
+					},
+					leftComponent: null,
+				},
+				{
+					value: 'oracle',
+					title: '',
+					rightComponent: () => {
+						return <TrashIcon />;
+					},
+					leftComponent: null,
+				},
+				{
+					value: 'mongodb',
+					title: '',
+					rightComponent: () => {
+						return <TrashIcon />;
+					},
+					leftComponent: null,
+				},
+				{
+					value: 'mssql',
+					title: '',
+					rightComponent: () => {
+						return <TrashIcon />;
+					},
+					leftComponent: null,
+				},
+			];
+			const defaultValue = ['oracle', 'mysql', 'pgsql'];
+			const [selectedToggle, setSelectedToggle] = useState(defaultValue);
+			return (
+				<ThemedContainer>
+					<Toggle
+						options={options}
+						theme='light'
+						defaultValue={defaultValue}
+						multi
+						value={selectedToggle}
+						onChange={setSelectedToggle}
+					/>
+				</ThemedContainer>
+			);
+		}}
+	</Story>
+</Canvas>
+
+## Try in the Code Editor
+
+This embeded `CodeSandBox` is external third party code editor `iframe` shared publicly. It is advised to create an account with banyancloud mail id to create/fork this sandbox.
+
+<iframe
+	src='https://codesandbox.io/s/broken-cherry-3vhh73?file=/src/App.js'
+	style={{ width: '100%', height: 500 }}
+	title='xenodochial-moon-5y668f'
+	allow='accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking'
+	sandbox='allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts'></iframe>
+
+## API
+
+**`multi`**
+
+This Key decides whether to allow Multi Selection or Not.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>bool</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<Toggle multi={false} />
+```
+
+**`value`**
+
+This Key hold the current selected Value in a Controlled Component.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>''</td>
+	</tr>
+</table>
+
+```jsx
+<Toggle value='OPTION-1' />
+```
+
+**`options`**
+
+This key contains a list of all Options to be selected in Toggle Component.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>REQUIRED</th>
+	</tr>
+	<tr>
+		<td>Array</td>
+		<td>[]</td>
+	</tr>
+</table>
+
+```jsx
+<Toggle options=[
+    {
+      value: "First",
+      title: "First",
+      rightComponent: null,
+      leftComponent: null
+    },
+    {
+      value: "Second",
+      title: "Second",
+      rightComponent: null,
+      leftComponent: null
+    },
+    {
+      value: "Third",
+      title: "Third",
+      rightComponent: null,
+      leftComponent: null
+    },
+    {
+      value: "Fourth",
+      title: "Fourth",
+      rightComponent: null,
+      leftComponent: null
+    }
+  ] />
+```
+
+**`defaultValue`**
+
+This key hold the default selected value in Uncontrolled Component.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>null</td>
+	</tr>
+</table>
+
+```jsx
+<Toggle defaultValue='Fourth' />
+```
+
+**`className`**
+
+Key to change style through external className.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>''</td>
+	</tr>
+</table>
+
+```jsx
+<Toggle className='chart-area' />
+```
+
+**`theme`**
+
+The color theme of the container to select between `light` or `dark` mode.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>"dark"</td>
+	</tr>
+</table>
+
+```jsx
+<Toggle theme='light' />
+```

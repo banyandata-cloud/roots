@@ -7,7 +7,7 @@ export default {
 	component: TableHeader,
 	parameters: {
 		options: {
-			showToolbar: true,
+			showToolbar: false,
 		},
 		componentSubtitle: 'Container of Table Header',
 	},
