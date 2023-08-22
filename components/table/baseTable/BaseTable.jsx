@@ -95,7 +95,7 @@ BaseTable.defaultProps = {
 		body: null,
 	},
 	loading: null,
-	expandable: null,
+	expandable: () => {},
 	onSort: () => {},
 	rowHeight: 'md',
 	theme: 'light',
