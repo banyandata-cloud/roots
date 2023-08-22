@@ -7,7 +7,7 @@ export default {
 	component: BaseRegionChart,
 	parameters: {
 		options: {
-			showToolbar: true,
+			showToolbar: false,
 		},
 	},
 };

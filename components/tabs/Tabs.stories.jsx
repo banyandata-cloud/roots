@@ -8,7 +8,7 @@ export default {
 	component: Tabs,
 	parameters: {
 		options: {
-			showToolbar: true,
+			showToolbar: false,
 		},
 	},
 };

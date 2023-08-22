@@ -9,7 +9,7 @@ export default {
 	component: TableChips,
 	parameters: {
 		options: {
-			showToolbar: true,
+			showToolbar: false,
 		},
 	},
 };

@@ -5,7 +5,7 @@ export default {
 	component: Text,
 	parameters: {
 		options: {
-			showToolbar: true,
+			showToolbar: false,
 		},
 		componentSubtitle: 'Text component used everywhere',
 	},

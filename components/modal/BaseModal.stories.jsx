@@ -8,7 +8,7 @@ export default {
 	component: BaseModal,
 	parameters: {
 		options: {
-			showToolbar: true,
+			showToolbar: false,
 		},
 	},
 };

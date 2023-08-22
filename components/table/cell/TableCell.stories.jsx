@@ -6,7 +6,7 @@ export default {
 	component: TableCell,
 	parameters: {
 		options: {
-			showToolbar: true,
+			showToolbar: false,
 		},
 		componentSubtitle: 'Just extends the Base Cell with the property of text overflow ellipsis',
 	},

@@ -6,7 +6,7 @@ export default {
 	component: Tooltip,
 	parameters: {
 		options: {
-			showToolbar: true,
+			showToolbar: false,
 		},
 		componentSubtitle: 'Description of the Tooltip',
 	},
