@@ -1,23 +1,17 @@
 import { Meta, Canvas, Story } from '@storybook/addon-docs';
 
 import { ThemedContainer } from '../helpers';
-import Pagination from './Pagination';
+import { Pagination, usePagination } from './Pagination';
 
 <Meta title='Components/Pagination' parameters={{ options: { showToolbar: true } }} />
 
-export const Template = (args) => (
-	<ThemedContainer theme='light'>
-		<Pagination {...args} />
-	</ThemedContainer>
-);
-
 # Pagination
 
-A button component used for user interactions. It provides a versatile interface with customizable features such as size, appearance, and behavior.
+A versatile pagination component designed to display and navigate through paginated data in React applications.
 
-#### Design - [Figma](https://www.figma.com/file/e9opoAtQHBo4vFd6u0Co98/Component-Library?type=design&node-id=1-2&mode=design&t=doFoJhh78NiStend-0) | Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/components/buttons/Pagination)
+#### Design - [Figma](https://www.figma.com/file/e9opoAtQHBo4vFd6u0Co98/Component-Library?type=design&node-id=1712-44479&mode=design&t=0c2K2ujwYT3NGWlW-0) | Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/components/pagination)
 
-> The Pagination component renders a button element, encapsulating its behavior and appearance. It is customizable through various props, such as size, disabled, and variant. The onClick prop allows you to define a function to be executed when the button is clicked.
+> The Pagination component provides navigation controls for paginated data. It accepts a paginationState object to manage the pagination state and a paginationDispatch function for pagination actions.
 
 ## Usage
 
@@ -27,8 +21,8 @@ Basic import and additional information on how to use this component.
 import { Pagination } from '@banyan_cloud/roots';
 ```
 
--   This button component can be used in different parts of the application where user interactions are required, providing consistent and adaptable visual elements for your UI.
--   The Pagination component also supports the inheritance of props from the BaseCell component.
+-   This Pagination component enhances the user experience when dealing with paginated data, providing intuitive controls to navigate through different pages.
+-   It's a valuable tool for improving the usability of data-heavy interfaces within your React application.
 
 ## Stories
 
@@ -36,15 +30,27 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 
 ### Simple Pagination
 
-The default Base Button.
+The default Pagination component.
 
 <Canvas>
-	<Story
-		name='Default Pagination'
-		args={{
-			loading: false,
-		}}>
-		{Template.bind({})}
+	<Story name='Default Pagination'>
+		{() => {
+			const [paginationState, paginationDispatch] = usePagination({
+				totalPages: 20,
+				currentPage: 1,
+			});
+			return (
+				<ThemedContainer theme='light'>
+					<Pagination
+						loading={false}
+						{...{
+							paginationState,
+							paginationDispatch,
+						}}
+					/>
+				</ThemedContainer>
+			);
+		}}
 	</Story>
 </Canvas>
 
@@ -56,7 +62,7 @@ This embeded `CodeSandBox` is external third party code editor `iframe` shared p
 
 **`className`**
 
-Additional CSS class names to be applied to the button.
+Additional CSS class names to be applied to the pagination component.
 
 <table style={{ width: '100%' }}>
 	<tr>
@@ -71,4 +77,88 @@ Additional CSS class names to be applied to the button.
 
 ```jsx
 <Pagination className='additionalClass' />
+```
+
+**`floating`**
+
+If true, the pagination component will float.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<Pagination floating={false} />
+```
+
+**`paginationState`**
+
+Pagination state with properties totalPages, currentPage, and step.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>{`{ totalPages: Number, currentPage: Number, step: Number }`}</td>
+		<td>{`{ totalPages: null, currentPage: null, step: null }`}</td>
+	</tr>
+</table>
+
+```jsx
+<Pagination paginationState={{ totalPages: 10, currentPage: 1, step: 5 }} />
+```
+
+**`paginationDispatch`**
+
+Dispatch function for pagination actions.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Function</td>
+		<td>{`() => {}`}</td>
+	</tr>
+</table>
+
+```jsx
+<Pagination
+	paginationDispatch={() => {
+		console.log('Something happens');
+	}}
+/>
+```
+
+**`onChange`**
+
+Callback function triggered when the page changes.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Function</td>
+		<td>{`() => {}`}</td>
+	</tr>
+</table>
+
+```jsx
+<Pagination
+	onChange={() => {
+		console.log('Pagination state updated');
+	}}
+/>
 ```
