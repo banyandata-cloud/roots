@@ -1,12 +1,14 @@
 import React from 'react';
 import BaseButton from './BaseButton';
-import * as BaseCellStories from '../../cell/BaseCell.stories';
 
 export default {
 	title: 'Components/Buttons/BaseButton',
 	component: BaseButton,
 	argTypes: {
-		...BaseCellStories.default.argTypes,
+		className: '',
+		component1: 1,
+		component2: 2,
+		component3: 3,
 	},
 	parameters: {
 		options: {
