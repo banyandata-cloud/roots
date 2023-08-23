@@ -1,0 +1,190 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+
+import { useState } from 'react';
+import { ThemedContainer } from '../helpers';
+import { Button } from '../buttons';
+import { Dropdown, DropdownItem } from '../input';
+import BaseModal from './BaseModal';
+
+<Meta title='Components/Modal' parameters={{ options: { showToolbar: true } }} />
+
+# BaseModal
+
+The BaseModal component is a customizable modal component that can be used to display content, prompts, forms, or other UI elements in a floating overlay. It offers options to include a header, body, footer, and a close button.
+
+#### Design - [Figma](https://www.figma.com/file/e9opoAtQHBo4vFd6u0Co98/Component-Library?node-id=0%3A1&mode=dev) | Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/components/modal)
+
+> The BaseModal component provides a way to render modal content in a floating overlay. It encapsulates modal behavior and appearance, allowing you to focus on building the content without worrying about the underlying modal mechanics.
+
+## Usage
+
+Basic import and additional information on how to use this component.
+
+```js
+import { BaseModal } from '@banyan_cloud/roots';
+```
+
+-   The toggle prop can be used to control the visibility of the modal.
+-   The renderHeader and renderFooter props allow you to provide custom React elements for the header and footer sections of the modal.
+-   The noDismiss prop can be set to true to prevent the modal from being dismissed by clicking outside of it.
+
+## Stories
+
+The CSF rendered inside the `Canvas` from which you can see the implementation example.
+
+### Simple BaseModal
+
+The default Base Modal.
+
+<Canvas>
+	<Story name='Default'>
+		{() => {
+			const [open, setOpen] = useState(false);
+			const toggle = () => {
+				setOpen((prevState) => {
+					return !prevState;
+				});
+			};
+			return (
+				<ThemedContainer theme='light'>
+					<Button onClick={toggle} title='Open Modal' />
+					<BaseModal
+						renderHeader='Header'
+						renderFooter={[
+							<Button key='Footer1' title='Footer Button' variant='outlined' />,
+							<Button key='Footer2' title='Footer Button' />,
+						]}
+						open={open}
+						toggle={toggle}>
+						<p>Modal description: Pass the header and footer as a Component</p>
+						<Dropdown label='Select Type 1'>
+							<DropdownItem title='Item 1' value={1} />
+							<DropdownItem title='Item 2' value={2} />
+							<DropdownItem title='Item 3' value={3} />
+						</Dropdown>
+					</BaseModal>
+				</ThemedContainer>
+			);
+		}}
+	</Story>
+</Canvas>
+
+## Try in the Code Editor
+
+This embeded `CodeSandBox` is external third party code editor `iframe` shared publicly. It is advised to create an account with banyancloud mail id to create/fork this sandbox.
+
+## API
+
+**`className`**
+
+Additional CSS class names to be applied to the BaseModal component.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>""</td>
+	</tr>
+</table>
+
+```jsx
+<BaseModal className='additionalClass' />
+```
+
+**`popperClassName`**
+
+Additional class name to apply to the underlying Popper component.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>""</td>
+	</tr>
+</table>
+
+```jsx
+<BaseModal popperClassName='popperClass' />
+```
+
+**`renderHeader`**
+
+A React element to render as the modal header.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>JSX</td>
+		<td>null</td>
+	</tr>
+</table>
+
+```jsx
+<BaseModal renderHeader={<p>Modal Title</p>} />
+```
+
+**`renderFooter`**
+
+A React element to render as the modal footer.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>JSX</td>
+		<td>null</td>
+	</tr>
+</table>
+
+```jsx
+<BaseModal renderHeader={<p>Modal Footer</p>} />
+```
+
+**`toggle`**
+
+Function to toggle the modal's visibility.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Function</td>
+		<td>{`() => {}`}</td>
+	</tr>
+</table>
+
+```jsx
+<BaseModal toggle={() => {}} />
+```
+
+**`noDismiss`**
+
+Prevents the modal from being dismissed when clicking outside of it.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<BaseModal toggle={true} />
+```
