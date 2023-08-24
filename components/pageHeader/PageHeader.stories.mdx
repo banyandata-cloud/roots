@@ -1,0 +1,309 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+
+import { ThemedContainer } from '../helpers';
+import PageHeader from './PageHeader';
+import { Button } from '../buttons';
+import { DownloadIcon, CalenderIcon } from '../icons';
+import Tabs from '../tabs/Tabs';
+import styles from './PageHeader.module.css';
+
+<Meta title='Components/PageHeader' parameters={{ options: { showToolbar: true } }} />
+
+export const Template = (args) => (
+	<ThemedContainer theme='light'>
+		<PageHeader {...args}>
+			<Tabs />
+		</PageHeader>
+	</ThemedContainer>
+);
+
+# PageHeader
+
+The PageHeader component is a versatile header component designed for page headers or section headings. It supports customization of the title, description, breadcrumbs, right action, and other elements to provide a comprehensive header for your content.
+
+#### Design - [Figma](https://www.figma.com/file/e9opoAtQHBo4vFd6u0Co98/Component-Library?node-id=1%3A8&mode=dev) | Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/components/pageHeader)
+
+> The PageHeader component is a flexible solution for creating consistent and appealing headers for different sections or pages within your application. It combines various elements like title, description, breadcrumbs, and custom actions to enhance the presentation of your content.
+
+## Usage
+
+Basic import and additional information on how to use this component.
+
+```js
+import { PageHeader } from '@banyan_cloud/roots';
+```
+
+-   The theme prop allows you to choose between a dark or light theme for the header.
+-   The crumbsProps prop allows you to configure the breadcrumbs using the same props as the BreadCrumbs component.
+-   The rightAction prop accepts a custom component that will be rendered as a right action in the header.
+
+## Stories
+
+The CSF rendered inside the `Canvas` from which you can see the implementation example.
+
+### Light PageHeader
+
+The Light varietn of PageHeader component.
+
+<Canvas>
+	<Story
+		name='Light'
+		args={{
+			title: 'Compliance Dashboard',
+			description: 'Resource and Regulation Complaince Details',
+			theme: 'light',
+			crumbsProps: {
+				crumbs: [
+					{
+						title: 'section-1',
+						path: 'section-1',
+						icon: null,
+					},
+					{
+						title: 'section-2',
+						path: 'section-2',
+						icon: null,
+					},
+					{
+						title: 'section-3',
+						path: 'section-3',
+						icon: null,
+					},
+				],
+			},
+			chipTitle: '4 Updates',
+			rightAction: () => {
+				return (
+					<>
+						<Button
+							title='Save Changes'
+							size='medium'
+							variant='outlined'
+							color='secondary'
+							leftIcon={() => {
+								return <DownloadIcon className={styles.download} />;
+							}}
+						/>
+						<Button
+							title='Select Date'
+							size='medium'
+							variant='contained'
+							color='primary'
+							leftIcon={() => {
+								return <CalenderIcon className={styles.calender} />;
+							}}
+						/>
+					</>
+				);
+			},
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Dark PageHeader
+
+The default Base Button.
+
+<Canvas>
+	<Story
+		name='Dark'
+		args={{
+			title: 'Compliance Dashboard',
+			description: 'Resource and Regulation Complaince Details',
+			theme: 'dark',
+			crumbsProps: {
+				crumbs: [
+					{
+						title: 'section-1',
+						path: 'section-1',
+						icon: null,
+					},
+					{
+						title: 'section-2',
+						path: 'section-2',
+						icon: null,
+					},
+					{
+						title: 'section-3',
+						path: 'section-3',
+						icon: null,
+					},
+				],
+			},
+			chipTitle: '4 Updates',
+			rightAction: () => {
+				return (
+					<>
+						<Button
+							title='Save Changes'
+							size='medium'
+							variant='outlined'
+							color='secondary'
+							leftIcon={() => {
+								return <DownloadIcon className={styles.download} />;
+							}}
+						/>
+						<Button
+							title='Select Date'
+							size='medium'
+							variant='contained'
+							color='primary'
+							leftIcon={() => {
+								return <CalenderIcon className={styles.calender} />;
+							}}
+						/>
+					</>
+				);
+			},
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+## Try in the Code Editor
+
+This embeded `CodeSandBox` is external third party code editor `iframe` shared publicly. It is advised to create an account with banyancloud mail id to create/fork this sandbox.
+
+## API
+
+**`title`**
+
+The main title of the header.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>'Page Header'</td>
+	</tr>
+</table>
+
+```jsx
+<PageHeader title='Page header title' />
+```
+
+**`description`**
+
+A description or subtext for the header.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>''</td>
+	</tr>
+</table>
+
+```jsx
+<PageHeader description='Page header subtext' />
+```
+
+**`theme`**
+
+A description or subtext for the header.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>'dark', 'light'</td>
+		<td>'light'</td>
+	</tr>
+</table>
+
+```jsx
+<PageHeader theme='dark' />
+```
+
+**`chipTitle`**
+
+The title for an optional Chip component.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>null</td>
+	</tr>
+</table>
+
+```jsx
+<PageHeader chipTitle='Chip title' />
+```
+
+**`crumbsProps`**
+
+Props for configuring the BreadCrumbs component.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>BreadCrumbs</td>
+		<td>{`{}`}</td>
+	</tr>
+</table>
+
+```jsx
+<PageHeader crumbsProps={crumbsProps: {
+				crumbs: [
+					{
+						title: 'section-1',
+						path: 'section-1',
+						icon: null,
+					},
+					{
+						title: 'section-2',
+						path: 'section-2',
+						icon: null,
+					},]
+				}
+			} />
+```
+
+**`rightAction`**
+
+A custom component to be rendered as a right action.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>JSX</td>
+		<td>null</td>
+	</tr>
+</table>
+
+```jsx
+<PageHeader
+	rightAction={() => {
+		return (
+			<Button
+				title='Save Changes'
+				size='medium'
+				variant='outlined'
+				color='secondary'
+				leftIcon={() => {
+					return <DownloadIcon className={styles.download} />;
+				}}
+			/>
+		);
+	}}
+/>
+```
