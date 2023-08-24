@@ -3,12 +3,24 @@ import PropTypes from 'prop-types';
 import { useRef, useState, forwardRef } from 'react';
 import { classes } from '../../utils';
 import { Button } from '../buttons';
+import { Skeleton } from './Skeleton';
 import styles from './Toggle.module.css';
 
 // eslint-disable-next-line prefer-arrow-callback
 const Toggle = forwardRef(function Toggle(props, ref) {
 	// eslint-disable-next-line object-curly-newline
-	const { className, theme, options, defaultValue, value, onChange, multi, color } = props;
+	const {
+		className,
+		theme,
+		options,
+		defaultValue,
+		value,
+		onChange,
+		multi,
+		color,
+		loading,
+		fallback,
+	} = props;
 
 	// for uncontrolled input
 	const [uncontrolledValue, setUncontrolledValue] = useState(() => {
@@ -84,6 +96,10 @@ const Toggle = forwardRef(function Toggle(props, ref) {
 		}
 	};
 
+	if (loading || fallback) {
+		return <Skeleton theme={theme} fallback={!loading && fallback} />;
+	}
+
 	return (
 		<div className={classes(className, styles.root, styles[`theme-${theme}`])}>
 			{multi && (
@@ -133,21 +149,27 @@ const Toggle = forwardRef(function Toggle(props, ref) {
 });
 
 Toggle.propTypes = {
+	loading: PropTypes.bool,
+	fallback: PropTypes.bool,
 	className: PropTypes.string,
 	theme: PropTypes.oneOf(['dark', 'light']),
 	options: PropTypes.arrayOf(PropTypes.string),
 	defaultValue: PropTypes.string,
 	value: PropTypes.string,
 	multi: PropTypes.bool,
+	theme: PropTypes.oneOf(['light', 'dark']),
 };
 
 Toggle.defaultProps = {
+	loading: false,
+	fallback: false,
 	className: '',
 	theme: 'light',
 	options: [],
 	defaultValue: null,
 	value: undefined,
 	multi: false,
+	theme: 'dark',
 };
 
 export default Toggle;
