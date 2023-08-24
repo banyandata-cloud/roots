@@ -9,8 +9,8 @@ import styles from './PageHeader.module.css';
 
 <Meta title='Components/PageHeader' parameters={{ options: { showToolbar: true } }} />
 
-export const Template = (args) => (
-	<ThemedContainer theme='light'>
+export const Template = (args, theme) => (
+	<ThemedContainer {...args}>
 		<PageHeader {...args}>
 			<Tabs />
 		</PageHeader>
