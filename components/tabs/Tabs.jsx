@@ -1,14 +1,19 @@
 import PropTypes from 'prop-types';
 import { classes } from '../../utils';
 import { Button } from '../buttons';
+import { Skeleton } from './Skeleton';
 import styles from './Tabs.module.css';
 
 const Tabs = (props) => {
-	const { tabs, selectedTab, setSelectedTab, theme, className } = props;
+	const { tabs, selectedTab, setSelectedTab, theme, loading, fallback, className } = props;
 
 	const onTabClick = (id) => {
 		setSelectedTab(id);
 	};
+
+	if (loading || fallback) {
+		return <Skeleton theme={theme} fallback={!loading && fallback} />;
+	}
 
 	return (
 		<div className={classes(styles.root, styles[`${theme}-theme`], className)}>
@@ -53,6 +58,8 @@ Tabs.propTypes = {
 	selectedTab: PropTypes.string,
 	setSelectedTab: PropTypes.func,
 	theme: PropTypes.oneOf(['light', 'dark']),
+	loading: PropTypes.bool,
+	fallback: PropTypes.bool,
 };
 
 Tabs.defaultProps = {
@@ -61,6 +68,8 @@ Tabs.defaultProps = {
 	selectedTab: null,
 	setSelectedTab: () => {},
 	theme: 'light',
+	loading: true,
+	fallback: false,
 };
 
 export default Tabs;
