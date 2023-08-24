@@ -183,6 +183,70 @@ Horizonatal Bar Chart with Gradient in Bars
 	</Story>
 </Canvas>
 
+### Loading State in Horizontal Bar Chart
+
+<Canvas>
+	<Story
+		name='Loading State'
+		args={{
+			title: 'Title',
+			gridContainLabel: false,
+			gridOptions: {
+				left: 10,
+				right: 10,
+				bottom: 50,
+				top: 50,
+			},
+			xAxisShow: false,
+			seriesData: sampleData,
+			yAxisLabelShow: false,
+			ySplitLineShow: false,
+			yAxisLineShow: false,
+			yAxisTickShow: false,
+			barWidth: '50%',
+			cursor: 'default',
+			stacked: true,
+			loading: true,
+			seriesOption: [
+				{
+					stackIndex: 1,
+					color: COLORS.success,
+					backgroundStyle: {
+						color: 'transparent',
+					},
+					label: {
+						show: true,
+						formatter(param) {
+							return param.name;
+						},
+					},
+				},
+				{
+					stackIndex: 2,
+					color: COLORS.error,
+					backgroundStyle: {
+						color: 'transparent',
+					},
+					label: {
+						show: false,
+					},
+				},
+				{
+					stackIndex: 3,
+					color: COLORS.warning,
+					backgroundStyle: {
+						color: 'transparent',
+					},
+					label: {
+						show: false,
+					},
+				},
+			],
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
 ## Try in the Code Editor
 
 This embeded `CodeSandBox` is external third party code editor `iframe` shared publicly. It is advised to create an account with banyancloud mail id to create/fork this sandbox.

@@ -1,0 +1,9 @@
+@import '../../../styles/';
+
+.root {
+	@include flex(row, flex-start, flex-start);
+	height: 100%;
+	width: 45%;
+	gap: 1rem;
+	padding: 0.5rem;
+}

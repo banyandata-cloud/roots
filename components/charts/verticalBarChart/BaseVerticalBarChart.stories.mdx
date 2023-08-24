@@ -247,6 +247,72 @@ Vertical Bar Chart with 2 Stacks of Bars
 	</Story>
 </Canvas>
 
+### Loading state
+
+<Canvas>
+	<Story
+		name='Loading State'
+		args={{
+			title: 'Title',
+			gridContainLabel: true,
+			gridOptions: {
+				left: 0,
+				right: 0,
+				bottom: 0,
+				top: 15,
+			},
+			xAxisShow: true,
+			xAxisLabel: {
+				show: true,
+				rotate: 90,
+				color: 'white',
+				inside: true,
+				verticalAlign: 'bottom',
+				padding: [0, 0, 90, 0],
+			},
+			yAxisLabelShow: false,
+			ySplitLineShow: false,
+			yAxisLineShow: false,
+			yAxisTickShow: false,
+			barWidth: '50%',
+			cursor: 'default',
+			stackCount: 1,
+			loading: true,
+			seriesOption: [
+				{
+					stackIndex: 1,
+					stack: 1,
+					color: COLORS.success,
+					label: {
+						show: false,
+					},
+				},
+				{
+					stackIndex: 2,
+					stack: 1,
+					color: COLORS.error,
+					label: {
+						show: false,
+					},
+				},
+				{
+					stackIndex: 3,
+					stack: 1,
+					color: COLORS.warning,
+					label: {
+						color: 'white',
+						show: true,
+						formatter(param) {
+							return sampleData.metaData.controlsApplied[param.name].x1;
+						},
+					},
+				},
+			],
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
 ## Try in the Code Editor
 
 This embeded `CodeSandBox` is external third party code editor `iframe` shared publicly. It is advised to create an account with banyancloud mail id to create/fork this sandbox.
