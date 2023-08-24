@@ -232,7 +232,7 @@ Table.defaultProps = {
 	chipsData: null,
 	filtersData: null,
 	paginationData: null,
-	loading: null,
+	loading: false,
 	disabledFilterOptions: {
 		filterButton: false,
 		refresh: false,
