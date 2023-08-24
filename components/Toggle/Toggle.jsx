@@ -96,6 +96,14 @@ const Toggle = forwardRef(function Toggle(props, ref) {
 		}
 	};
 
+	const compareSelection = (input, item) => {
+		if (Array.isArray(input)) {
+			return input?.includes(item);
+		} else {
+			return input === item;
+		}
+	};
+
 	if (loading || fallback) {
 		return <Skeleton theme={theme} fallback={!loading && fallback} />;
 	}
@@ -121,7 +129,7 @@ const Toggle = forwardRef(function Toggle(props, ref) {
 					rightComponent,
 					className: itemClassName,
 				} = item;
-				const isActive = inputValue === itemValue && !allSelected;
+				const isActive = compareSelection(inputValue, itemValue) && !allSelected;
 				return (
 					<Button
 						size='auto'

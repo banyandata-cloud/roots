@@ -35,6 +35,9 @@ dependencies:
   postcss:
     specifier: ^8.4.18
     version: 8.4.18
+  react-error-boundary:
+    specifier: ^4.0.10
+    version: 4.0.10(react@18.2.0)
   react-merge-refs:
     specifier: ^2.0.1
     version: 2.0.1
@@ -16231,6 +16234,15 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
       react-is: 17.0.2
     dev: true
+
+  /react-error-boundary@4.0.10(react@18.2.0):
+    resolution: {integrity: sha512-pvVKdi77j2OoPHo+p3rorgE43OjDWiqFkaqkJz8sJKK6uf/u8xtzuaVfj5qJ2JnDLIgF1De3zY5AJDijp+LVPA==}
+    peerDependencies:
+      react: '>=16.13.1'
+    dependencies:
+      '@babel/runtime': 7.22.10
+      react: 18.2.0
+    dev: false
 
   /react-error-overlay@6.0.11:
     resolution: {integrity: sha512-/6UZ2qgEyH2aqzYZgQPxEnz33NJ2gNsnHA2o5+o4wW9bLM/JYQitNP9xPhsXwC08hMMovfGe/8retsdDsczPRg==}
