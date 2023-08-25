@@ -68,7 +68,7 @@ Tabs.defaultProps = {
 	selectedTab: null,
 	setSelectedTab: () => {},
 	theme: 'light',
-	loading: true,
+	loading: false,
 	fallback: false,
 };
 
