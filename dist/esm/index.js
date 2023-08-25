@@ -49276,7 +49276,7 @@ Tabs.defaultProps = {
   selectedTab: null,
   setSelectedTab: function setSelectedTab() {},
   theme: 'light',
-  loading: true,
+  loading: false,
   fallback: false
 };
 
