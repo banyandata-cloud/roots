@@ -7,7 +7,6 @@ import styles from './TextField.module.css';
 import { classes, inputHelper } from '../../../utils/utils';
 import { BaseCell } from '../../cell';
 import { Popover } from '../../popover';
-import { ErrorBoundaryWrapper } from '../../errorBoundary';
 
 // eslint-disable-next-line prefer-arrow-callback
 const TextField = forwardRef(function TextField(props, inputRef) {
