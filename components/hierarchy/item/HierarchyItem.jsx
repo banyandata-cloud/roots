@@ -1,10 +1,12 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 import { classes } from '../../../utils';
 import { Button } from '../../buttons';
 import { BaseCell } from '../../cell';
 import { CaretIcon } from '../../icons';
 import styles from './HierarchyItem.module.css';
+import { ErrorBoundaryWrapper } from '../../errorBoundary';
 
 const HierarchyItem = (props) => {
 	const { defaultOpen, iconPlacement, title, children, onClick, onDoubleClick, active } = props;
@@ -32,48 +34,64 @@ const HierarchyItem = (props) => {
 	);
 
 	return (
-		<div className={classes(styles.root, open ? styles.open : '', active ? styles.active : '')}>
-			<BaseCell
-				flexible
-				size='auto'
-				className={styles.header}
-				component1={iconPlacement === 'left' && icon}
-				component2={
-					<Button
-						className={styles.title}
-						flexible
-						size='auto'
-						variant='text'
-						color='default'
-						onClick={(event) => {
-							const { detail } = event;
-
-							// single click
-							if (detail === 1) {
-								onClick?.(open);
-								// double click
-							} else if (detail === 2) {
-								setOpen((prevState) => {
-									const newState = !prevState;
-									onDoubleClick?.(newState);
-									return newState;
-								});
-							}
-						}}
-						leftComponent={() => {
-							return title;
-						}}
+		<ErrorBoundary
+			FallbackComponent={(args) => {
+				return (
+					<ErrorBoundaryWrapper
+						{...args}
+						className={styles['error-boundary']}
+						custom={custom}
 					/>
-				}
-				component3={iconPlacement === 'right' && icon}
-			/>
-			<BaseCell
-				size='auto'
-				className={styles.body}
-				component1={<div className={styles.tail} />}
-				component2={<div className={styles.children}>{children}</div>}
-			/>
-		</div>
+				);
+			}}>
+			<div
+				className={classes(
+					styles.root,
+					open ? styles.open : '',
+					active ? styles.active : ''
+				)}>
+				<BaseCell
+					flexible
+					size='auto'
+					className={styles.header}
+					component1={iconPlacement === 'left' && icon}
+					component2={
+						<Button
+							className={styles.title}
+							flexible
+							size='auto'
+							variant='text'
+							color='default'
+							onClick={(event) => {
+								const { detail } = event;
+
+								// single click
+								if (detail === 1) {
+									onClick?.(open);
+									// double click
+								} else if (detail === 2) {
+									setOpen((prevState) => {
+										const newState = !prevState;
+										onDoubleClick?.(newState);
+										return newState;
+									});
+								}
+							}}
+							leftComponent={() => {
+								return title;
+							}}
+						/>
+					}
+					component3={iconPlacement === 'right' && icon}
+				/>
+				<BaseCell
+					size='auto'
+					className={styles.body}
+					component1={<div className={styles.tail} />}
+					component2={<div className={styles.children}>{children}</div>}
+				/>
+			</div>
+		</ErrorBoundary>
 	);
 };
 
