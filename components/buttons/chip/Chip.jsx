@@ -1,8 +1,10 @@
 import PropTypes from 'prop-types';
 import { forwardRef } from 'react';
 import styles from './Chip.module.css';
+import { ErrorBoundary } from 'react-error-boundary';
 import { classes } from '../../../utils';
 import { BaseButton } from '../baseButton';
+import { ErrorBoundaryWrapper } from '../../errorBoundary';
 
 // eslint-disable-next-line prefer-arrow-callback
 const Chip = forwardRef(function Chip(props, ref) {
@@ -19,32 +21,44 @@ const Chip = forwardRef(function Chip(props, ref) {
 		onClick,
 		variant,
 		color,
+		custom,
 	} = props;
 
 	return (
-		<BaseButton
-			{...{
-				ref,
-				type,
-				component1: LeftComponent && <LeftComponent />,
-				title,
-				component3: RightComponent && <RightComponent />,
-				size: 'auto',
-				flexible,
-				radius,
-				disabled,
-				onClick,
-				variant: 'contained',
-			}}
-			className={classes(
-				styles.root,
-				styles[`radius-${radius}`],
-				styles[variant],
-				styles[color],
-				styles[size],
-				className
-			)}
-		/>
+		<ErrorBoundary
+			FallbackComponent={(args) => {
+				return (
+					<ErrorBoundaryWrapper
+						{...args}
+						className={styles['error-boundary']}
+						custom={custom}
+					/>
+				);
+			}}>
+			<BaseButton
+				{...{
+					ref,
+					type,
+					component1: LeftComponent && <LeftComponent />,
+					title,
+					component3: RightComponent && <RightComponent />,
+					size: 'auto',
+					flexible,
+					radius,
+					disabled,
+					onClick,
+					variant: 'contained',
+				}}
+				className={classes(
+					styles.root,
+					styles[`radius-${radius}`],
+					styles[variant],
+					styles[color],
+					styles[size],
+					className
+				)}
+			/>
+		</ErrorBoundary>
 	);
 });
 
