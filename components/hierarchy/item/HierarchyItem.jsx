@@ -9,7 +9,8 @@ import styles from './HierarchyItem.module.css';
 import { ErrorBoundaryWrapper } from '../../errorBoundary';
 
 const HierarchyItem = (props) => {
-	const { defaultOpen, iconPlacement, title, children, onClick, onDoubleClick, active } = props;
+	const { defaultOpen, iconPlacement, title, children, onClick, onDoubleClick, active, custom } =
+		props;
 
 	const [open, setOpen] = useState(defaultOpen);
 
