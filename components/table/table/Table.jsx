@@ -1,6 +1,7 @@
 /* eslint-disable react/forbid-prop-types */
 import PropTypes from 'prop-types';
 import { useEffect, useRef, useState } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 import { classes } from '../../../utils';
 import { BaseTable } from '../baseTable';
 import { TableChips } from './tableChips';
@@ -8,6 +9,7 @@ import { TableFilters } from './tableFilters';
 import { Pagination } from '../../pagination';
 import styles from './Table.module.css';
 import { TableColumn } from '../BaseTable.class';
+import { ErrorBoundaryWrapper } from '../../errorBoundary';
 
 const INTERSECTION = 1;
 const STEP = 0.05;
@@ -38,6 +40,7 @@ const Table = (props) => {
 		theme,
 		onRowClick,
 		defaultActiveIndex,
+		custom,
 	} = props;
 
 	const ref = useRef(null);
@@ -117,57 +120,69 @@ const Table = (props) => {
 	}, [headerData]);
 
 	return (
-		<div className={classes(styles.root, className)}>
-			{chipsData != null && (chipsData?.chips?.length > 0 || chipsData?.showBack != null) && (
-				<TableChips
-					className={styles.chips}
-					{...chipsData}
-					loading={loading}
-					theme={theme}
-				/>
-			)}
-			{filtersData != null && (
-				<TableFilters
-					className={styles.filters}
+		<ErrorBoundary
+			FallbackComponent={(args) => {
+				return (
+					<ErrorBoundaryWrapper
+						{...args}
+						className={styles['error-boundary']}
+						custom={custom}
+					/>
+				);
+			}}>
+			<div className={classes(styles.root, className)}>
+				{chipsData != null &&
+					(chipsData?.chips?.length > 0 || chipsData?.showBack != null) && (
+						<TableChips
+							className={styles.chips}
+							{...chipsData}
+							loading={loading}
+							theme={theme}
+						/>
+					)}
+				{filtersData != null && (
+					<TableFilters
+						className={styles.filters}
+						{...{
+							...filtersData,
+							disabledFilterOptions,
+							headerData,
+							hiddenColumns,
+							setHiddenColumns,
+						}}
+						loading={loading}
+						theme={theme}
+					/>
+				)}
+				<BaseTable
 					{...{
-						...filtersData,
-						disabledFilterOptions,
-						headerData,
-						hiddenColumns,
-						setHiddenColumns,
+						ref,
+						headerData: visibileColumns,
+						tableData,
+						uniqueKey,
+						activeData,
+						setActiveData,
+						customCells,
+						className: styles.table,
+						onSort,
+						rowHeight,
+						onRowClick,
+						defaultActiveIndex,
 					}}
 					loading={loading}
-					theme={theme}
 				/>
-			)}
-			<BaseTable
-				{...{
-					ref,
-					headerData: visibileColumns,
-					tableData,
-					uniqueKey,
-					activeData,
-					setActiveData,
-					customCells,
-					className: styles.table,
-					onSort,
-					rowHeight,
-					onRowClick,
-					defaultActiveIndex,
-				}}
-				loading={loading}
-			/>
 
-			{paginationData != null && (
-				<Pagination
-					className={classes(styles.pagination, floating ? styles.floating : '')}
-					ref={paginationRef}
-					{...paginationData}
-					floating={floating}
-					loading={loading}
-				/>
-			)}
-		</div>
+				{paginationData != null && (
+					<Pagination
+						className={classes(styles.pagination, floating ? styles.floating : '')}
+						ref={paginationRef}
+						{...paginationData}
+						floating={floating}
+						loading={loading}
+					/>
+				)}
+			</div>
+		</ErrorBoundary>
 	);
 };
 
@@ -214,6 +229,7 @@ Table.propTypes = {
 	rowHeight: PropTypes.oneOf(['md', 'lg']),
 	onRowClick: PropTypes.func,
 	theme: PropTypes.oneOf(['light', 'dark']),
+	custom: PropTypes.node,
 };
 
 Table.defaultProps = {
@@ -232,7 +248,7 @@ Table.defaultProps = {
 	chipsData: null,
 	filtersData: null,
 	paginationData: null,
-	loading: null,
+	loading: false,
 	disabledFilterOptions: {
 		filterButton: false,
 		refresh: false,
@@ -243,6 +259,7 @@ Table.defaultProps = {
 	rowHeight: 'md',
 	theme: 'light',
 	onRowClick: () => {},
+	custom: null,
 };
 
 export default Table;

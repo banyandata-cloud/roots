@@ -1,0 +1,1194 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+
+import { useEffect, useState } from 'react';
+import { Button } from '../../buttons';
+import { ThemedContainer } from '../../helpers';
+import { ServerIcon, CopyIcon, ArrowIcon } from '../../icons';
+import { usePagination } from '../../pagination';
+import { Popover } from '../../popover';
+import { Tooltip } from '../../tooltip';
+import { TableColumn } from '../BaseTable.class';
+import { TableCell } from '../cell';
+import Table from './Table';
+import { TableChip } from './tableChips';
+
+<Meta title='Components/Table/Table' parameters={{ options: { showToolbar: false } }} />
+
+# Table
+
+Visual Representation of Data in Tabular format alongwith Associated components in Table like Header and Pagination.
+
+#### Design - [Figma](https://www.figma.com/file/e9opoAtQHBo4vFd6u0Co98/Component-Library?type=design&node-id=1-5&mode=design&t=tXbQWENNIzmFNTVU-0) | Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/components/table/table)
+
+> This components uses combination of all Table Elements i.e Cell, Header, Coloum and Row.
+
+## Usage
+
+Basic import and additional information on how to use this component.
+
+```js
+import { Table } from '@banyan_cloud/roots';
+```
+
+-   The `className` of the Table can be adjusted in the implementaion code to match its flexibility with respect to its container.
+
+## Stories
+
+The CSF rendered inside the `Canvas` from which you can see the implementation example.
+
+### Default
+
+<Canvas>
+	<Story name='Default'>
+		{() => {
+			const onIntersection = (state) => {
+				if (state) {
+					console.log('Make API call for next Page APIS');
+				}
+			};
+			const isFloating = true;
+			const onRowClick = (datum, setActiveId) => {
+				console.log(datum, setActiveId);
+				setActiveId();
+			};
+			const headerData = [
+				new TableColumn({
+					title: 'Name',
+					id: 'name',
+					size: 'sm',
+					// flexible: true,
+					sticky: 'left',
+				}),
+				new TableColumn({
+					title: 'Description',
+					id: 'description',
+					size: 'lg',
+					flexible: true,
+					multiLine: true,
+				}),
+				new TableColumn({
+					title: 'Gender',
+					id: 'gender',
+					size: 'sm',
+				}),
+				new TableColumn({
+					title: 'Age',
+					id: 'age',
+					size: 'sm',
+				}),
+				new TableColumn({
+					title: 'Designation',
+					id: 'designation',
+				}),
+				new TableColumn({
+					title: 'A Column',
+					id: 'aColumn',
+					size: 'lg',
+					flexible: true,
+				}),
+				new TableColumn({
+					title: 'Another Column',
+					id: 'anotherColumn',
+					size: 'lg',
+				}),
+				new TableColumn({
+					title: 'Another One',
+					id: 'anotherOne',
+					size: 'lg',
+				}),
+				new TableColumn({
+					title: 'And Another One',
+					id: 'andAnotherOne',
+					size: 'lg',
+				}),
+				new TableColumn({
+					title: 'State',
+					id: 'state',
+					size: 'sm',
+					sticky: 'right',
+				}),
+			];
+			const tableData = [
+				{
+					name: 'Aryan Dixit',
+					gender: 'M',
+					description:
+						'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta nulla voluptatum consectetur libero, fuga amet earum ducimus quidem aliquam fugit id ipsum, cupiditate dignissimos facilis, repellendus possimus aspernatur tempore! Veniam saepe dolor reprehenderit sunt tenetur quam adipisci quis deleniti, maxime officiis dolorum, iure quia excepturi velit repellendus ad eius iste.',
+					age: 27,
+					designation: 'UI Engineer',
+					aColumn:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					anotherColumn:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					anotherOne:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					andAnotherOne:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					state: 'UP',
+				},
+				{
+					name: 'Pradeep Annadurai',
+					gender: 'M',
+					description:
+						'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta nulla voluptatum consectetur libero, fuga amet earum ducimus quidem aliquam fugit id ipsum, cupiditate dignissimos facilis, repellendus possimus aspernatur tempore! Veniam saepe dolor reprehenderit sunt tenetur quam adipisci quis deleniti, maxime officiis dolorum, iure quia excepturi velit repellendus ad eius iste.',
+					age: 24,
+					designation: 'UI Engineer',
+					aColumn:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					anotherColumn:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					anotherOne:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					andAnotherOne:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					state: 'Tamil Nadu',
+				},
+				{
+					name: 'Jaidev Singh Bhui',
+					gender: 'M',
+					description:
+						'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta nulla voluptatum consectetur libero, fuga amet earum ducimus quidem aliquam fugit id ipsum, cupiditate dignissimos facilis, repellendus possimus aspernatur tempore! Veniam saepe dolor reprehenderit sunt tenetur quam adipisci quis deleniti, maxime officiis dolorum, iure quia excepturi velit repellendus ad eius iste.',
+					age: 23,
+					designation: 'UI Engineer',
+					aColumn:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					anotherColumn:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					anotherOne:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					andAnotherOne:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					state: 'Delhi',
+				},
+			];
+			const [paginationState, paginationDispatch] = usePagination({
+				totalPages: 20,
+				currentPage: 1,
+			});
+			return (
+				<ThemedContainer
+					style={{
+						height: '100%',
+					}}>
+					<Table
+						onIntersection={onIntersection}
+						isFloating={isFloating}
+						onRowClick={onRowClick}
+						headerData={headerData}
+						tableData={tableData}
+						paginationData={{
+							paginationState,
+							paginationDispatch,
+						}}
+					/>
+				</ThemedContainer>
+			);
+		}}
+	</Story>
+</Canvas>
+
+### With Chips
+
+<Canvas>
+	<Story name='With Chips'>
+		{() => {
+			const onIntersection = (state) => {
+				if (state) {
+					console.log('Make API call for next Page APIS');
+				}
+			};
+			const isFloating = true;
+			const onRowClick = (datum, setActiveId) => {
+				console.log(datum, setActiveId);
+				setActiveId();
+			};
+			const headerData = [
+				new TableColumn({
+					title: 'Name',
+					id: 'name',
+					size: 'sm',
+					// flexible: true,
+					sticky: 'left',
+				}),
+				new TableColumn({
+					title: 'Description',
+					id: 'description',
+					size: 'lg',
+					flexible: true,
+					multiLine: true,
+				}),
+				new TableColumn({
+					title: 'Gender',
+					id: 'gender',
+					size: 'sm',
+				}),
+				new TableColumn({
+					title: 'Age',
+					id: 'age',
+					size: 'sm',
+				}),
+				new TableColumn({
+					title: 'Designation',
+					id: 'designation',
+				}),
+				new TableColumn({
+					title: 'A Column',
+					id: 'aColumn',
+					size: 'lg',
+					flexible: true,
+				}),
+				new TableColumn({
+					title: 'Another Column',
+					id: 'anotherColumn',
+					size: 'lg',
+				}),
+				new TableColumn({
+					title: 'Another One',
+					id: 'anotherOne',
+					size: 'lg',
+				}),
+				new TableColumn({
+					title: 'And Another One',
+					id: 'andAnotherOne',
+					size: 'lg',
+				}),
+				new TableColumn({
+					title: 'State',
+					id: 'state',
+					size: 'sm',
+					sticky: 'right',
+				}),
+			];
+			const tableData = [
+				{
+					name: 'Aryan Dixit',
+					gender: 'M',
+					description:
+						'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta nulla voluptatum consectetur libero, fuga amet earum ducimus quidem aliquam fugit id ipsum, cupiditate dignissimos facilis, repellendus possimus aspernatur tempore! Veniam saepe dolor reprehenderit sunt tenetur quam adipisci quis deleniti, maxime officiis dolorum, iure quia excepturi velit repellendus ad eius iste.',
+					age: 27,
+					designation: 'UI Engineer',
+					aColumn:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					anotherColumn:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					anotherOne:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					andAnotherOne:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					state: 'UP',
+				},
+				{
+					name: 'Pradeep Annadurai',
+					gender: 'M',
+					description:
+						'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta nulla voluptatum consectetur libero, fuga amet earum ducimus quidem aliquam fugit id ipsum, cupiditate dignissimos facilis, repellendus possimus aspernatur tempore! Veniam saepe dolor reprehenderit sunt tenetur quam adipisci quis deleniti, maxime officiis dolorum, iure quia excepturi velit repellendus ad eius iste.',
+					age: 24,
+					designation: 'UI Engineer',
+					aColumn:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					anotherColumn:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					anotherOne:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					andAnotherOne:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					state: 'Tamil Nadu',
+				},
+				{
+					name: 'Jaidev Singh Bhui',
+					gender: 'M',
+					description:
+						'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta nulla voluptatum consectetur libero, fuga amet earum ducimus quidem aliquam fugit id ipsum, cupiditate dignissimos facilis, repellendus possimus aspernatur tempore! Veniam saepe dolor reprehenderit sunt tenetur quam adipisci quis deleniti, maxime officiis dolorum, iure quia excepturi velit repellendus ad eius iste.',
+					age: 23,
+					designation: 'UI Engineer',
+					aColumn:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					anotherColumn:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					anotherOne:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					andAnotherOne:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					state: 'Delhi',
+				},
+			];
+			const chipsData = {
+				showBack: true,
+				chips: [
+					new TableChip({
+						key: 'something',
+						icon: ArrowIcon,
+						label: 'DB Tech',
+						value: 'PgSQL',
+						disabled: true,
+					}),
+					new TableChip({
+						key: 'something',
+						icon: ArrowIcon,
+						label: 'DB Tech',
+						value: 'MySQL',
+						disabled: true,
+					}),
+					new TableChip({
+						key: 'something',
+						icon: (iconProps) => {
+							return <CopyIcon {...iconProps} />;
+						},
+						label: 'Cloud',
+						value: 'Google',
+						disabled: true,
+					}),
+					new TableChip({
+						key: 'something',
+						icon: (iconProps) => {
+							return <ServerIcon {...iconProps} />;
+						},
+						label: 'Cloud',
+						value: 'Amazon',
+						disabled: true,
+					}),
+				],
+			};
+			const [paginationState, paginationDispatch] = usePagination({
+				totalPages: 20,
+				currentPage: 1,
+			});
+			return (
+				<ThemedContainer
+					style={{
+						height: '100%',
+					}}>
+					<Table
+						chipsData={chipsData}
+						onIntersection={onIntersection}
+						isFloating={isFloating}
+						onRowClick={onRowClick}
+						headerData={headerData}
+						tableData={tableData}
+						paginationData={{
+							paginationState,
+							paginationDispatch,
+						}}
+					/>
+				</ThemedContainer>
+			);
+		}}
+	</Story>
+</Canvas>
+
+### With Filters
+
+<Canvas>
+	<Story name='With Filters'>
+		{() => {
+			const onIntersection = (state) => {
+				if (state) {
+					console.log('Make API call for next Page APIS');
+				}
+			};
+			const isFloating = true;
+			const onRowClick = (datum, setActiveId) => {
+				console.log(datum, setActiveId);
+				setActiveId();
+			};
+			const headerData = [
+				new TableColumn({
+					title: 'Name',
+					id: 'name',
+					size: 'sm',
+					// flexible: true,
+					sticky: 'left',
+				}),
+				new TableColumn({
+					title: 'Description',
+					id: 'description',
+					size: 'lg',
+					flexible: true,
+					multiLine: true,
+				}),
+				new TableColumn({
+					title: 'Gender',
+					id: 'gender',
+					size: 'sm',
+				}),
+				new TableColumn({
+					title: 'Age',
+					id: 'age',
+					size: 'sm',
+				}),
+				new TableColumn({
+					title: 'Designation',
+					id: 'designation',
+				}),
+				new TableColumn({
+					title: 'A Column',
+					id: 'aColumn',
+					size: 'lg',
+					flexible: true,
+				}),
+				new TableColumn({
+					title: 'Another Column',
+					id: 'anotherColumn',
+					size: 'lg',
+				}),
+				new TableColumn({
+					title: 'Another One',
+					id: 'anotherOne',
+					size: 'lg',
+				}),
+				new TableColumn({
+					title: 'And Another One',
+					id: 'andAnotherOne',
+					size: 'lg',
+				}),
+				new TableColumn({
+					title: 'State',
+					id: 'state',
+					size: 'sm',
+					sticky: 'right',
+				}),
+			];
+			const tableData = [
+				{
+					name: 'Aryan Dixit',
+					gender: 'M',
+					description:
+						'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta nulla voluptatum consectetur libero, fuga amet earum ducimus quidem aliquam fugit id ipsum, cupiditate dignissimos facilis, repellendus possimus aspernatur tempore! Veniam saepe dolor reprehenderit sunt tenetur quam adipisci quis deleniti, maxime officiis dolorum, iure quia excepturi velit repellendus ad eius iste.',
+					age: 27,
+					designation: 'UI Engineer',
+					aColumn:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					anotherColumn:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					anotherOne:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					andAnotherOne:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					state: 'UP',
+				},
+				{
+					name: 'Pradeep Annadurai',
+					gender: 'M',
+					description:
+						'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta nulla voluptatum consectetur libero, fuga amet earum ducimus quidem aliquam fugit id ipsum, cupiditate dignissimos facilis, repellendus possimus aspernatur tempore! Veniam saepe dolor reprehenderit sunt tenetur quam adipisci quis deleniti, maxime officiis dolorum, iure quia excepturi velit repellendus ad eius iste.',
+					age: 24,
+					designation: 'UI Engineer',
+					aColumn:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					anotherColumn:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					anotherOne:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					andAnotherOne:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					state: 'Tamil Nadu',
+				},
+				{
+					name: 'Jaidev Singh Bhui',
+					gender: 'M',
+					description:
+						'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta nulla voluptatum consectetur libero, fuga amet earum ducimus quidem aliquam fugit id ipsum, cupiditate dignissimos facilis, repellendus possimus aspernatur tempore! Veniam saepe dolor reprehenderit sunt tenetur quam adipisci quis deleniti, maxime officiis dolorum, iure quia excepturi velit repellendus ad eius iste.',
+					age: 23,
+					designation: 'UI Engineer',
+					aColumn:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					anotherColumn:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					anotherOne:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					andAnotherOne:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					state: 'Delhi',
+				},
+			];
+			const filtersData = {
+				filterValue: {
+					applied: 4,
+				},
+			};
+			const [paginationState, paginationDispatch] = usePagination({
+				totalPages: 20,
+				currentPage: 1,
+			});
+			return (
+				<ThemedContainer
+					style={{
+						height: '100%',
+					}}>
+					<Table
+						filtersData={filtersData}
+						onIntersection={onIntersection}
+						isFloating={isFloating}
+						onRowClick={onRowClick}
+						headerData={headerData}
+						tableData={tableData}
+						paginationData={{
+							paginationState,
+							paginationDispatch,
+						}}
+					/>
+				</ThemedContainer>
+			);
+		}}
+	</Story>
+</Canvas>
+
+### With Chips and Filters
+
+<Canvas>
+	<Story name='With Chips and Filters'>
+		{() => {
+			const onIntersection = (state) => {
+				if (state) {
+					console.log('Make API call for next Page APIS');
+				}
+			};
+			const isFloating = true;
+			const onRowClick = (datum, setActiveId) => {
+				console.log(datum, setActiveId);
+				setActiveId();
+			};
+			const headerData = [
+				new TableColumn({
+					title: 'Name',
+					id: 'name',
+					size: 'sm',
+					// flexible: true,
+					sticky: 'left',
+				}),
+				new TableColumn({
+					title: 'Description',
+					id: 'description',
+					size: 'lg',
+					flexible: true,
+					multiLine: true,
+				}),
+				new TableColumn({
+					title: 'Gender',
+					id: 'gender',
+					size: 'sm',
+				}),
+				new TableColumn({
+					title: 'Age',
+					id: 'age',
+					size: 'sm',
+				}),
+				new TableColumn({
+					title: 'Designation',
+					id: 'designation',
+				}),
+				new TableColumn({
+					title: 'A Column',
+					id: 'aColumn',
+					size: 'lg',
+					flexible: true,
+				}),
+				new TableColumn({
+					title: 'Another Column',
+					id: 'anotherColumn',
+					size: 'lg',
+				}),
+				new TableColumn({
+					title: 'Another One',
+					id: 'anotherOne',
+					size: 'lg',
+				}),
+				new TableColumn({
+					title: 'And Another One',
+					id: 'andAnotherOne',
+					size: 'lg',
+				}),
+				new TableColumn({
+					title: 'State',
+					id: 'state',
+					size: 'sm',
+					sticky: 'right',
+				}),
+			];
+			const tableData = [
+				{
+					name: 'Aryan Dixit',
+					gender: 'M',
+					description:
+						'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta nulla voluptatum consectetur libero, fuga amet earum ducimus quidem aliquam fugit id ipsum, cupiditate dignissimos facilis, repellendus possimus aspernatur tempore! Veniam saepe dolor reprehenderit sunt tenetur quam adipisci quis deleniti, maxime officiis dolorum, iure quia excepturi velit repellendus ad eius iste.',
+					age: 27,
+					designation: 'UI Engineer',
+					aColumn:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					anotherColumn:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					anotherOne:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					andAnotherOne:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					state: 'UP',
+				},
+				{
+					name: 'Pradeep Annadurai',
+					gender: 'M',
+					description:
+						'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta nulla voluptatum consectetur libero, fuga amet earum ducimus quidem aliquam fugit id ipsum, cupiditate dignissimos facilis, repellendus possimus aspernatur tempore! Veniam saepe dolor reprehenderit sunt tenetur quam adipisci quis deleniti, maxime officiis dolorum, iure quia excepturi velit repellendus ad eius iste.',
+					age: 24,
+					designation: 'UI Engineer',
+					aColumn:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					anotherColumn:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					anotherOne:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					andAnotherOne:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					state: 'Tamil Nadu',
+				},
+				{
+					name: 'Jaidev Singh Bhui',
+					gender: 'M',
+					description:
+						'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta nulla voluptatum consectetur libero, fuga amet earum ducimus quidem aliquam fugit id ipsum, cupiditate dignissimos facilis, repellendus possimus aspernatur tempore! Veniam saepe dolor reprehenderit sunt tenetur quam adipisci quis deleniti, maxime officiis dolorum, iure quia excepturi velit repellendus ad eius iste.',
+					age: 23,
+					designation: 'UI Engineer',
+					aColumn:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					anotherColumn:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					anotherOne:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					andAnotherOne:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					state: 'Delhi',
+				},
+			];
+			const chipsData = {
+				showBack: true,
+				chips: [
+					new TableChip({
+						key: 'something',
+						icon: ArrowIcon,
+						label: 'DB Tech',
+						value: 'PgSQL',
+						disabled: true,
+					}),
+					new TableChip({
+						key: 'something',
+						icon: ArrowIcon,
+						label: 'DB Tech',
+						value: 'MySQL',
+						disabled: true,
+					}),
+					new TableChip({
+						key: 'something',
+						icon: (iconProps) => {
+							return <CopyIcon {...iconProps} />;
+						},
+						label: 'Cloud',
+						value: 'Google',
+						disabled: true,
+					}),
+					new TableChip({
+						key: 'something',
+						icon: (iconProps) => {
+							return <ServerIcon {...iconProps} />;
+						},
+						label: 'Cloud',
+						value: 'Amazon',
+						disabled: true,
+					}),
+				],
+			};
+			const filtersData = {
+				filterValue: {
+					applied: 4,
+				},
+			};
+			const [paginationState, paginationDispatch] = usePagination({
+				totalPages: 20,
+				currentPage: 1,
+			});
+			return (
+				<ThemedContainer
+					style={{
+						height: '100%',
+					}}>
+					<Table
+						chipsData={chipsData}
+						filtersData={filtersData}
+						onIntersection={onIntersection}
+						isFloating={isFloating}
+						onRowClick={onRowClick}
+						headerData={headerData}
+						tableData={tableData}
+						paginationData={{
+							paginationState,
+							paginationDispatch,
+						}}
+					/>
+				</ThemedContainer>
+			);
+		}}
+	</Story>
+</Canvas>
+
+### With Default Active
+
+<Canvas>
+	<Story name='With Default Active'>
+		{() => {
+			const onIntersection = (state) => {
+				if (state) {
+					console.log('Make API call for next Page APIS');
+				}
+			};
+			const isFloating = true;
+			const onRowClick = (datum, setActiveId) => {
+				console.log(datum, setActiveId);
+				setActiveId();
+			};
+			const headerData = [
+				new TableColumn({
+					title: 'Name',
+					id: 'name',
+					size: 'sm',
+					// flexible: true,
+					sticky: 'left',
+				}),
+				new TableColumn({
+					title: 'Description',
+					id: 'description',
+					size: 'lg',
+					flexible: true,
+					multiLine: true,
+				}),
+				new TableColumn({
+					title: 'Gender',
+					id: 'gender',
+					size: 'sm',
+				}),
+				new TableColumn({
+					title: 'Age',
+					id: 'age',
+					size: 'sm',
+				}),
+				new TableColumn({
+					title: 'Designation',
+					id: 'designation',
+				}),
+				new TableColumn({
+					title: 'A Column',
+					id: 'aColumn',
+					size: 'lg',
+					flexible: true,
+				}),
+				new TableColumn({
+					title: 'Another Column',
+					id: 'anotherColumn',
+					size: 'lg',
+				}),
+				new TableColumn({
+					title: 'Another One',
+					id: 'anotherOne',
+					size: 'lg',
+				}),
+				new TableColumn({
+					title: 'And Another One',
+					id: 'andAnotherOne',
+					size: 'lg',
+				}),
+				new TableColumn({
+					title: 'State',
+					id: 'state',
+					size: 'sm',
+					sticky: 'right',
+				}),
+			];
+			const tableData = [
+				{
+					name: 'Aryan Dixit',
+					gender: 'M',
+					description:
+						'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta nulla voluptatum consectetur libero, fuga amet earum ducimus quidem aliquam fugit id ipsum, cupiditate dignissimos facilis, repellendus possimus aspernatur tempore! Veniam saepe dolor reprehenderit sunt tenetur quam adipisci quis deleniti, maxime officiis dolorum, iure quia excepturi velit repellendus ad eius iste.',
+					age: 27,
+					designation: 'UI Engineer',
+					aColumn:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					anotherColumn:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					anotherOne:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					andAnotherOne:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					state: 'UP',
+				},
+				{
+					name: 'Pradeep Annadurai',
+					gender: 'M',
+					description:
+						'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta nulla voluptatum consectetur libero, fuga amet earum ducimus quidem aliquam fugit id ipsum, cupiditate dignissimos facilis, repellendus possimus aspernatur tempore! Veniam saepe dolor reprehenderit sunt tenetur quam adipisci quis deleniti, maxime officiis dolorum, iure quia excepturi velit repellendus ad eius iste.',
+					age: 24,
+					designation: 'UI Engineer',
+					aColumn:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					anotherColumn:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					anotherOne:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					andAnotherOne:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					state: 'Tamil Nadu',
+				},
+				{
+					name: 'Jaidev Singh Bhui',
+					gender: 'M',
+					description:
+						'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta nulla voluptatum consectetur libero, fuga amet earum ducimus quidem aliquam fugit id ipsum, cupiditate dignissimos facilis, repellendus possimus aspernatur tempore! Veniam saepe dolor reprehenderit sunt tenetur quam adipisci quis deleniti, maxime officiis dolorum, iure quia excepturi velit repellendus ad eius iste.',
+					age: 23,
+					designation: 'UI Engineer',
+					aColumn:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					anotherColumn:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					anotherOne:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					andAnotherOne:
+						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
+					state: 'Delhi',
+				},
+			];
+			const defaultActiveIndex = 0;
+			const [paginationState, paginationDispatch] = usePagination({
+				totalPages: 20,
+				currentPage: 1,
+			});
+			return (
+				<ThemedContainer
+					style={{
+						height: '100%',
+					}}>
+					<Table
+						defaultActiveIndex={defaultActiveIndex}
+						onIntersection={onIntersection}
+						isFloating={isFloating}
+						onRowClick={onRowClick}
+						headerData={headerData}
+						tableData={tableData}
+						paginationData={{
+							paginationState,
+							paginationDispatch,
+						}}
+					/>
+				</ThemedContainer>
+			);
+		}}
+	</Story>
+</Canvas>
+
+### Loading State
+
+<Canvas>
+	<Story name='Loading State'>
+		{() => {
+			const onIntersection = (state) => {
+				if (state) {
+					console.log('Make API call for next Page APIS');
+				}
+			};
+			const isFloating = true;
+			const onRowClick = (datum, setActiveId) => {
+				console.log(datum, setActiveId);
+				setActiveId();
+			};
+			const [paginationState, paginationDispatch] = usePagination({
+				totalPages: 20,
+				currentPage: 1,
+			});
+			return (
+				<ThemedContainer
+					style={{
+						height: '100%',
+					}}>
+					<Table
+						onIntersection={onIntersection}
+						isFloating={isFloating}
+						onRowClick={onRowClick}
+						paginationData={{
+							paginationState,
+							paginationDispatch,
+						}}
+						loading={true}
+					/>
+				</ThemedContainer>
+			);
+		}}
+	</Story>
+</Canvas>
+
+## Try in the Code Editor
+
+This embeded `CodeSandBox` is external third party code editor `iframe` shared publicly. It is advised to create an account with banyancloud mail id to create/fork this sandbox.
+
+<iframe
+	src='https://codesandbox.io/s/delicate-wood-vrqzpw?file=/src/App.js'
+	style={{ width: '100%', height: 500 }}
+	title='xenodochial-moon-5y668f'
+	allow='accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking'
+	sandbox='allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts'></iframe>
+
+## API
+
+**`loading`**
+
+loading indicates the waiting state of chart while data is loading
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>bool</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<Table loading={false} />
+```
+
+**`headerData`**
+
+The key that holds details of all headers of the Table mapped to the Data with key.
+It has following shape - `title`, `id`, `size`, `flexible`, `sort`, `style` and `multiline`.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Array</td>
+		<td>[]</td>
+	</tr>
+</table>
+
+```jsx
+<Table
+	headerData={[
+		{
+			title: 'Name',
+			id: 'name',
+			size: 'lg',
+			flexible: true,
+		},
+		{
+			title: 'Gender',
+			id: 'gender',
+			size: 'sm',
+		},
+		{
+			title: 'Age',
+			id: 'age',
+			size: 'sm',
+		},
+		{
+			title: 'Designation',
+			id: 'designation',
+		},
+		{
+			title: 'State',
+			id: 'state',
+			size: 'sm',
+		},
+	]}
+/>
+```
+
+**`tableData`**
+
+The Fundamental data which is displayed in Table and mapped againt header.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Array</td>
+		<td>[]</td>
+	</tr>
+</table>
+
+```jsx
+<Table
+	tableData={[
+		{
+			name: 'Aryan Dixit',
+			gender: 'M',
+			age: 27,
+			designation: 'UI Engineer',
+			state: 'UP',
+		},
+	]}
+/>
+```
+
+**`customCells`**
+
+Any additional UI or funcationlity that is required in either Header or Body except data Mapping.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Object</td>
+		<td>
+			{`{
+				header: null,
+				body: null,
+			}`}
+		</td>
+	</tr>
+</table>
+
+```jsx
+<Table
+	customCells={{
+		body: BodyCells({
+			datum,
+			selectedResources,
+			setSelectedResources,
+		}),
+		header: HeaderCells({
+			datum,
+			selectedResources,
+			setSelectedResources,
+			resourcesList,
+		}),
+	}}
+/>
+```
+
+**`expandable`**
+A callback function to capture Expand event.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Function</td>
+		<td>() => {}</td>
+	</tr>
+</table>
+
+```jsx
+<Table
+	expandable={() => {
+		// Reset some Data
+	}}
+/>
+```
+
+**`onSort`**
+
+A callback function to capture Sort event.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Function</td>
+		<td>() => {}</td>
+	</tr>
+</table>
+
+```jsx
+<Table
+	onSort={() => {
+		// Reset some Data
+	}}
+/>
+```
+
+**`onRowClick`**
+
+A callback function to capture Row Click event.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Function</td>
+		<td>() => {}</td>
+	</tr>
+</table>
+
+```jsx
+<Table
+	onRowClick={() => {
+		// Reset some Data
+	}}
+/>
+```
+
+**`className`**
+
+Key to change style through external className.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>''</td>
+	</tr>
+</table>
+
+```jsx
+<Table className='chart-area' />
+```
+
+**`rowHeight`**
+
+Key to decide height of Row to select between `md` or `lg` mode.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>"md"</td>
+	</tr>
+</table>
+
+```jsx
+<Table rowHeight='lg' />
+```
+
+**`theme`**
+
+The color theme of the container to select between `light` or `dark` mode.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>"dark"</td>
+	</tr>
+</table>
+
+```jsx
+<Table theme='light' />
+```

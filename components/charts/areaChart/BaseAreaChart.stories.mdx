@@ -482,6 +482,181 @@ The Area Chart with curved lines and Gradient colorset.
 	</Story>
 </Canvas>
 
+### Area Chart Loading State
+
+<Canvas>
+	<Story
+		name='Loading State'
+		args={{
+			title: '',
+			gridOptions: {
+				left: 50,
+				right: 50,
+				bottom: 50,
+				top: 100,
+			},
+			gridContainLabel: true,
+			legend: {
+				show: false,
+			},
+			xAxisLabelShow: true,
+			xSplitLineShow: false,
+			xAxisLineShow: true,
+			xAxisTickShow: true,
+			smooth: false,
+			stacked: true,
+			yAxisLabelShow: false,
+			ySplitLineShow: false,
+			yAxisLineShow: false,
+			yAxisTickShow: false,
+			cursor: 'default',
+			loading: true,
+			seriesOption: [
+				{
+					stackIndex: 1,
+					color: 'green',
+					symbol: 'none',
+					symbolSize: 10,
+					label: {
+						show: false,
+					},
+					lineStyle: {
+						width: 4,
+						type: 'solid',
+						cap: 'butt',
+						join: 'round',
+					},
+					areaStyle: {
+						color: 'lightgreen',
+						origin: 'auto',
+						shadowBlur: 0,
+						shadowColor: 'white',
+						shadowOffsetX: 0,
+						shadowOffsetY: 0,
+						opacity: 0.9,
+					},
+					emphasis: {
+						focus: 'none',
+					},
+				},
+				{
+					stackIndex: 2,
+					color: 'pink',
+					symbol: 'rect',
+					symbolSize: 10,
+					label: {
+						show: false,
+					},
+					lineStyle: {
+						width: 5,
+						type: 'dashed',
+						cap: 'round',
+						join: 'bevel',
+					},
+					areaStyle: {
+						color: 'lightpink',
+						origin: 'auto',
+						shadowBlur: 0,
+						shadowColor: 'white',
+						shadowOffsetX: 0,
+						shadowOffsetY: 0,
+						opacity: 0.9,
+					},
+					emphasis: {
+						focus: 'self',
+					},
+				},
+				{
+					stackIndex: 3,
+					color: 'orange',
+					symbol: 'roundRect',
+					symbolSize: 10,
+					label: {
+						show: false,
+					},
+					lineStyle: {
+						width: 6,
+						type: 'dotted',
+						cap: 'square',
+						join: 'miter',
+					},
+					areaStyle: {
+						color: '#F4D696',
+						origin: 'auto',
+						shadowBlur: 0,
+						shadowColor: 'white',
+						shadowOffsetX: 0,
+						shadowOffsetY: 0,
+						opacity: 0.9,
+					},
+					emphasis: {
+						focus: 'series',
+					},
+				},
+				{
+					stackIndex: 4,
+					color: 'red',
+					symbol: 'roundRect',
+					symbolSize: 10,
+					label: {
+						show: false,
+					},
+					lineStyle: {
+						width: 6,
+						type: 'dotted',
+						cap: 'square',
+						join: 'miter',
+					},
+					areaStyle: {
+						color: '#fd9695',
+						origin: 'auto',
+						shadowBlur: 0,
+						shadowColor: 'white',
+						shadowOffsetX: 0,
+						shadowOffsetY: 0,
+						opacity: 0.9,
+						cursor: 'default',
+					},
+					emphasis: {
+						focus: 'series',
+					},
+				},
+				{
+					stackIndex: 5,
+					color: 'blue',
+					symbol: 'roundRect',
+					symbolSize: 10,
+					label: {
+						show: false,
+					},
+					lineStyle: {
+						width: 6,
+						type: 'dotted',
+						cap: 'square',
+						join: 'miter',
+					},
+					areaStyle: {
+						color: 'lightblue',
+						origin: 'auto',
+						shadowBlur: 0,
+						shadowColor: 'white',
+						shadowOffsetX: 0,
+						shadowOffsetY: 0,
+						opacity: 0.9,
+					},
+					emphasis: {
+						focus: 'series',
+					},
+				},
+			],
+			errorHandle: () => {
+				alert('This will Call Fetch API again');
+			},
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
 ## Try in the Code Editor
 
 This embeded `CodeSandBox` is external third party code editor `iframe` shared publicly. It is advised to create an account with banyancloud mail id to create/fork this sandbox.

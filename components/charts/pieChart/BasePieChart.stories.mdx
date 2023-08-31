@@ -41,7 +41,7 @@ import { BasePieChart } from '@banyan_cloud/roots';
 
 The CSF rendered inside the `Canvas` from which you can see the implementation example.
 
-### Default Vertical Bar Chart
+### Default Pie Chart
 
 <Canvas>
 	<Story
@@ -188,6 +188,83 @@ Pie Chart as Icon
 					},
 					label: {
 						show: false,
+					},
+				},
+			],
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Loading State in Pie Chart Chart
+
+<Canvas>
+	<Story
+		name='Loading State'
+		args={{
+			title: 'Title',
+			gridOptions: {
+				height: '100%',
+				width: '100%',
+			},
+			cursor: 'default',
+			radius: ['30%', '60%'],
+			center: ['50%', '50%'],
+			seriesData: sampleData,
+			semiDoughnut: false,
+			startAngle: 90,
+			loading: true,
+			tooltip: {
+				trigger: 'item',
+				formatter: (param) => {
+					const index = Object.keys(sampleData.metaData.keyData).find((key) => {
+						return sampleData.metaData.keyData[key] === param.name;
+					});
+					return `${param.marker} ${param.name} ${sampleData.metaData.controlsApplied[index].comp}/${sampleData.metaData.controlsApplied[index].count}`;
+				},
+			},
+			itemStyle: {
+				borderWidth: 5,
+				borderColor: 'black',
+				borderType: 'solid',
+			},
+			legend: {
+				show: true,
+				top: '80%',
+				left: '30%',
+				orient: 'vertical',
+				selectedMode: true,
+			},
+			seriesOption: [
+				{
+					stackIndex: 1,
+					itemStyle: {
+						color: '#0F62FE',
+					},
+					label: {
+						show: true,
+						fontSize: '20',
+						color: 'black',
+						fontWeight: 'bold',
+						position: 'outside',
+						formatter(d) {
+							return d.name !== '' ? `${d.value}%\n${d.name}` : null;
+						},
+					},
+				},
+				{
+					stackIndex: 2,
+					itemStyle: {
+						color: '#71EEFF',
+					},
+				},
+				{
+					stackIndex: 3,
+					itemStyle: {
+						color: '#67F990',
+					},
+					tooltip: {
+						trigger: 'none',
 					},
 				},
 			],

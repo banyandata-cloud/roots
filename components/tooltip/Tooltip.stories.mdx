@@ -1,0 +1,224 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+
+import { useRef } from 'react';
+import Tooltip from './Tooltip';
+
+<Meta title='Components/Tooltip' parameters={{ options: { showToolbar: false } }} />
+
+export const Template = (args) => <Link>This is just some sample text.</Link>;
+
+# Tooltip
+
+#### Design - [Figma](https://www.figma.com/file/e9opoAtQHBo4vFd6u0Co98/Component-Library?type=design&node-id=1-5&mode=design&t=tXbQWENNIzmFNTVU-0) | Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/components/tooltip)
+
+## Usage
+
+Basic import and additional information on how to use this component.
+
+```js
+import { Tooltip } from '@banyan_cloud/roots';
+```
+
+-   The `className` of the Tooltip can be adjusted in the implementaion code to match its flexibility with respect to its container.
+
+## Stories
+
+The CSF rendered inside the `Canvas` from which you can see the implementation example.
+
+### Tooltip at Left
+
+<Canvas>
+	<Story name='Tooltip Left'>
+		{() => {
+			const ref = useRef(null);
+			return (
+				<div
+					style={{
+						display: 'flex',
+						justifyContent: 'center',
+						marginTop: 150,
+					}}>
+					<Tooltip content='Tooltip Info' position='left'>
+						<div
+							style={{
+								width: '70%',
+								backgroundColor: 'rgba(36, 161, 72, 0.08)',
+								color: '#24a148',
+								textAlign: 'center',
+								marginTop: -20,
+							}}
+							ref={ref}>
+							Children, Here child is Div, it can by anything
+						</div>
+					</Tooltip>
+				</div>
+			);
+		}}
+	</Story>
+</Canvas>
+
+### Tooltip at Right
+
+<Canvas>
+	<Story name='Tooltip Right'>
+		{() => {
+			const ref = useRef(null);
+			return (
+				<div
+					style={{
+						display: 'flex',
+						justifyContent: 'center',
+						marginTop: 150,
+					}}>
+					<Tooltip content='Tooltip Info' position='right'>
+						<div
+							style={{
+								width: '70%',
+								backgroundColor: 'rgba(36, 161, 72, 0.08)',
+								color: '#24a148',
+								textAlign: 'center',
+								marginTop: -20,
+							}}
+							ref={ref}>
+							Children, Here child is Div, it can by anything
+						</div>
+					</Tooltip>
+				</div>
+			);
+		}}
+	</Story>
+</Canvas>
+
+### Tooltip at Top
+
+<Canvas>
+	<Story name='Tooltip Top'>
+		{() => {
+			const ref = useRef(null);
+			return (
+				<div
+					style={{
+						display: 'flex',
+						justifyContent: 'center',
+						marginTop: 150,
+					}}>
+					<Tooltip content='Tooltip Info' position='top'>
+						<div
+							style={{
+								width: '70%',
+								backgroundColor: 'rgba(36, 161, 72, 0.08)',
+								color: '#24a148',
+								textAlign: 'center',
+								marginTop: -20,
+							}}
+							ref={ref}>
+							Children, Here child is Div, it can by anything
+						</div>
+					</Tooltip>
+				</div>
+			);
+		}}
+	</Story>
+</Canvas>
+
+### Tooltip at Bottom
+
+<Canvas>
+	<Story name='Tooltip Bottom'>
+		{() => {
+			const ref = useRef(null);
+			return (
+				<div
+					style={{
+						display: 'flex',
+						justifyContent: 'center',
+						marginTop: 150,
+					}}>
+					<Tooltip content='Tooltip Info' position='bottom'>
+						<div
+							style={{
+								width: '70%',
+								backgroundColor: 'rgba(36, 161, 72, 0.08)',
+								color: '#24a148',
+								textAlign: 'center',
+								marginTop: -20,
+							}}
+							ref={ref}>
+							Children, Here child is Div, it can by anything
+						</div>
+					</Tooltip>
+				</div>
+			);
+		}}
+	</Story>
+</Canvas>
+
+## Try in the Code Editor
+
+This embeded `CodeSandBox` is external third party code editor `iframe` shared publicly. It is advised to create an account with banyancloud mail id to create/fork this sandbox.
+
+<iframe
+	src='https://codesandbox.io/s/cold-tree-ndkld9?file=/src/App.js'
+	style={{ width: '100%', height: 500 }}
+	title='xenodochial-moon-5y668f'
+	allow='accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking'
+	sandbox='allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts'></iframe>
+
+## API
+
+**`className`**
+
+Key to change style through external className.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>''</td>
+	</tr>
+</table>
+
+```jsx
+<Tooltip className='chart-area' />
+```
+
+**`variant`**
+
+The color variant of the container to select between `light` or `dark` mode.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>"dark"</td>
+	</tr>
+</table>
+
+```jsx
+<Tooltip variant='light' />
+```
+
+**`position`**
+
+This key decides the position of Tooltip, among the options `right`, `top`, `bottom` and `left`.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>'always'</td>
+	</tr>
+</table>
+
+```jsx
+<Tooltip position='right' />
+```
