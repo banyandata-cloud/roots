@@ -10,7 +10,7 @@ import styles from './CodeSnippet.module.css';
 import { ErrorBoundaryWrapper } from '../errorBoundary';
 
 const CodeSnippet = (props) => {
-	const { copy, code, language, showLineNumbers, theme, className } = props;
+	const { copy, code, language, showLineNumbers, theme, className, custom } = props;
 
 	const [copiedState, setCopiedState] = useState(false);
 
