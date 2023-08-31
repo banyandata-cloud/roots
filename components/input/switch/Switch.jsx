@@ -1,11 +1,14 @@
 import React, { useRef, useState } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 import PropTypes from 'prop-types';
 import styles from './Switch.module.css';
 import { classes, inputHelper } from '../../../utils';
+import { ErrorBoundaryWrapper } from '../../errorBoundary';
 
 const Switch = (props) => {
 	// eslint-disable-next-line object-curly-newline
-	const { label, checked, defaultChecked, onChange, position, className, disabled } = props;
+	const { label, checked, defaultChecked, onChange, position, className, disabled, custom } =
+		props;
 
 	const { current: isControlled } = useRef(checked !== undefined);
 
@@ -25,22 +28,33 @@ const Switch = (props) => {
 	const isChecked = isControlled ? checked : uncontrolledChecked;
 
 	return (
-		<label
-			className={classes(
-				styles.root,
-				styles[`position-${position}`],
-				className,
-				disabled ? styles.disabled : ''
-			)}>
-			<input
-				disabled={disabled}
-				type='checkbox'
-				checked={isChecked}
-				onChange={handleChange}
-			/>
-			<div className={classes(styles.pill)} />
-			{label && <span data-elem='label'>{label}</span>}
-		</label>
+		<ErrorBoundary
+			FallbackComponent={(args) => {
+				return (
+					<ErrorBoundaryWrapper
+						{...args}
+						className={styles['error-boundary']}
+						custom={custom}
+					/>
+				);
+			}}>
+			<label
+				className={classes(
+					styles.root,
+					styles[`position-${position}`],
+					className,
+					disabled ? styles.disabled : ''
+				)}>
+				<input
+					disabled={disabled}
+					type='checkbox'
+					checked={isChecked}
+					onChange={handleChange}
+				/>
+				<div className={classes(styles.pill)} />
+				{label && <span data-elem='label'>{label}</span>}
+			</label>
+		</ErrorBoundary>
 	);
 };
 
