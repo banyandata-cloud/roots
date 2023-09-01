@@ -1,13 +1,15 @@
 import { useRef } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 import PropTypes from 'prop-types';
 import { useResize } from '../../../hooks';
 import { classes } from '../../../utils';
 import { ServerIcon } from '../../icons';
 import { HierarchyItem } from '../item';
 import styles from './HierarchyBrowser.module.css';
+import { ErrorBoundaryWrapper } from '../../errorBoundary';
 
 const Title = (props) => {
-	const { item } = props;
+	const { item, custom } = props;
 
 	let Icon = null;
 
@@ -22,11 +24,22 @@ const Title = (props) => {
 	}
 
 	return (
-		<span className={styles.item}>
-			{Icon && <Icon className={styles['item-icon']} />}
-			<span className={styles['item-title']}>{item?.title}</span>
-			{item?.count && <span className={styles['item-count']}>({item?.count})</span>}
-		</span>
+		<ErrorBoundary
+			FallbackComponent={(args) => {
+				return (
+					<ErrorBoundaryWrapper
+						{...args}
+						className={styles['error-boundary']}
+						custom={custom}
+					/>
+				);
+			}}>
+			<span className={styles.item}>
+				{Icon && <Icon className={styles['item-icon']} />}
+				<span className={styles['item-title']}>{item?.title}</span>
+				{item?.count && <span className={styles['item-count']}>({item?.count})</span>}
+			</span>
+		</ErrorBoundary>
 	);
 };
 

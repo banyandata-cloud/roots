@@ -1,0 +1,386 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+
+import { ThemedContainer } from '../../helpers';
+import HierarchyBrowser from './HierarchyBrowser';
+
+<Meta title='Components/Hierarchy/Browser' parameters={{ options: { showToolbar: true } }} />
+
+export const Template = (args) => (
+	<ThemedContainer theme='light'>
+		<HierarchyBrowser {...args} />
+	</ThemedContainer>
+);
+
+# Hierarchy Browser
+
+A versatile component designed to display hierarchical data structures in a browser-like interface within React applications. The component allows users to interact with and navigate through hierarchical items.
+
+#### Design - [Figma](https://www.figma.com/file/e9opoAtQHBo4vFd6u0Co98/Component-Library?type=design&node-id=943-47941&mode=design&t=glo0ufmkJup9qJbN-0) | Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/components/hierarchy/browser)
+
+> The HierarchyBrowser component renders a browser-like interface for hierarchical data. It accepts metadata that defines the hierarchy structure. Each item in the hierarchy can have a title, ID, count, and list of child items.
+
+## Usage
+
+Basic import and additional information on how to use this component.
+
+```js
+import { HierarchyBrowser } from '@banyan_cloud/roots';
+```
+
+-   This HierarchyBrowser component provides an organized and interactive way to display and navigate through hierarchical data structures, enhancing the user experience and aiding in data exploration within your React application.
+
+## Stories
+
+The CSF rendered inside the `Canvas` from which you can see the implementation example.
+
+### Default Hierarchy Browser
+
+The default Hierarchy Browser.
+
+<Canvas>
+	<Story
+		name='Default Hierarchy Browser'
+		args={{
+			metadata: {
+				title: 'database',
+				id: 'database',
+				count: 2,
+				list: [
+					{
+						title: 'test1',
+						id: 'schema',
+						count: 2,
+						list: [
+							{
+								title: 'first',
+								id: 'object',
+								count: 10,
+								list: [
+									{
+										title: 'Tables',
+										count: 10,
+									},
+									{
+										title: 'Indexes',
+										count: 10,
+									},
+									{
+										title: 'Views',
+										count: 5,
+									},
+									{
+										title: 'Trigger',
+										count: 7,
+									},
+								],
+							},
+							{
+								title: 'second',
+								id: 'object',
+								count: 10,
+								list: [
+									{
+										title: 'Tables',
+										count: 3,
+									},
+									{
+										title: 'Indexes',
+										count: 1,
+									},
+									{
+										title: 'Views',
+										count: 2,
+									},
+									{
+										title: 'Trigger',
+										count: 1,
+									},
+								],
+							},
+						],
+					},
+					{
+						title: 'test2',
+						id: 'schema',
+						count: 2,
+						list: [
+							{
+								title: 'first',
+								id: 'object',
+								count: 10,
+								list: [
+									{
+										id: 'tables',
+										title: 'Tables',
+										count: 10,
+										list: [],
+									},
+									{
+										title: 'Indexes',
+										count: 10,
+									},
+									{
+										title: 'Views',
+										count: 5,
+									},
+									{
+										title: 'Trigger',
+										count: 7,
+									},
+								],
+							},
+							{
+								title: 'second',
+								id: 'object',
+								count: 10,
+								list: [
+									{
+										title: 'Tables',
+										count: 3,
+									},
+									{
+										title: 'Indexes',
+										count: 1,
+									},
+									{
+										title: 'Views',
+										count: 2,
+									},
+									{
+										title: 'Trigger',
+										count: 1,
+									},
+								],
+							},
+						],
+					},
+				],
+			},
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+## Try in the Code Editor
+
+This embeded `CodeSandBox` is external third party code editor `iframe` shared publicly. It is advised to create an account with banyancloud mail id to create/fork this sandbox.
+
+## API
+
+**`className`**
+
+Additional CSS class names to be applied to the HierarchyBrowser component.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>""</td>
+	</tr>
+</table>
+
+```jsx
+<HierarchyBrowser className='additionalClass' />
+```
+
+**`metadata`**
+
+Hierarchical data to be displayed with properties title, id, count, and list.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>{`{
+		title: string,
+		id: string,
+		count: number,
+		list: array,
+	}`}</td>
+		<td>{`{}`}</td>
+	</tr>
+</table>
+
+```jsx
+<HierarchyBrowser metadata={
+	title: 'database',
+	id: 'database',
+	count: 2,
+	list: [
+		{
+			title: 'test1',
+			id: 'schema',
+			count: 2,
+		}
+	]
+} />
+```
+
+**`onItemClick`**
+
+Callback function triggered when a hierarchy item is clicked.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Function</td>
+		<td>{`() => {}`}</td>
+	</tr>
+</table>
+
+```jsx
+<HierarchyBrowser
+	onItemClick={() => {
+		console.log('Button clicked');
+	}}
+/>
+```
+
+**`onItemDoubleClick`**
+
+Callback function triggered when a hierarchy item is double-clicked.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Function</td>
+		<td>{`() => {}`}</td>
+	</tr>
+</table>
+
+```jsx
+<HierarchyBrowser
+	onItemDoubleClick={() => {
+		console.log('Button clicked');
+	}}
+/>
+```
+
+**`borderSize`**
+
+The size of the border of the hierarchy browser.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Number</td>
+		<td>4</td>
+	</tr>
+</table>
+
+```jsx
+<HierarchyBrowser borderSize={2} />
+```
+
+**`minWidth`**
+
+The size of the border of the hierarchy browser.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Number</td>
+		<td>220</td>
+	</tr>
+</table>
+
+```jsx
+<HierarchyBrowser minWidth={100} />
+```
+
+**`maxWidth`**
+
+The maximum width of the hierarchy browser.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Number</td>
+		<td>null</td>
+	</tr>
+</table>
+
+```jsx
+<HierarchyBrowser maxWidth={400} />
+```
+
+**`resizable`**
+
+If true, the hierarchy browser can be resized.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<HierarchyBrowser resizable={true} />
+```
+
+**`setItemProps`**
+
+A function that returns additional props for hierarchy items.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Function</td>
+		<td>{`() => { return {} }`}</td>
+	</tr>
+</table>
+
+```jsx
+<HierarchyBrowser
+	setItemProps={(items) => {
+		return { items };
+	}}
+/>
+```
+
+**`title`**
+
+The title of the hierarchy browser.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>"Browser"</td>
+	</tr>
+</table>
+
+```jsx
+<HierarchyBrowser title='Browser' />
+```

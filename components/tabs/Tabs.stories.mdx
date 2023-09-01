@@ -1,0 +1,279 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+
+import { useState } from 'react';
+import Tabs from './Tabs';
+import { CaretIcon } from '../icons';
+import { ThemedContainer } from '../helpers';
+
+<Meta title='Components/Tabs' parameters={{ options: { showToolbar: true } }} />
+
+export const Template = (args) => {
+	const [selectedTab, setSelectedTab] = useState('');
+	return (
+		<ThemedContainer {...args}>
+			<Tabs {...args} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
+			<span
+				style={{
+					fontSize: '0.875rem',
+				}}>
+				You have selected {selectedTab}
+			</span>
+		</ThemedContainer>
+	);
+};
+
+# Tabs
+
+The Tabs component provides a way to create a tabbed interface with customizable tabs. Each tab can have an associated title, icons, and functionality to manage content switching.
+
+#### Design - [Figma](https://www.figma.com/file/e9opoAtQHBo4vFd6u0Co98/Component-Library?node-id=943%3A47943&mode=dev) | Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/components/tabs)
+
+> The Tabs component simplifies the creation of tabbed interfaces by providing a customizable way to define tabs and manage their selection. It enhances the user experience by allowing content to be organized and displayed in a structured manner.
+
+## Usage
+
+Basic import and additional information on how to use this component.
+
+```js
+import { Tabs } from '@banyan_cloud/roots';
+```
+
+-   The tabs prop should be an array of tab objects, where each tab object contains properties like id, title, leftIcon, rightIcon, and disabled.
+-   The setSelectedTab function allows you to change the selected tab when a tab is clicked.
+
+## Stories
+
+The CSF rendered inside the `Canvas` from which you can see the implementation example.
+
+### Default
+
+The default Tabs.
+
+<Canvas>
+	<Story
+		name='Default'
+		args={{
+			tabs: [
+				{
+					id: '1',
+					title: 'Tab1',
+				},
+				{
+					id: '2',
+					title: 'Tab2',
+				},
+				{
+					id: '3',
+					title: 'Tab3',
+					disabled: true,
+				},
+				{
+					id: '4',
+					title: 'Tab4',
+				},
+			],
+			selectedTab: 'Tab1',
+			theme: 'light',
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### With Only Left Icon
+
+Tabs with with only left icon.
+
+<Canvas>
+	<Story
+		name='With Only Left Icon'
+		args={{
+			tabs: [
+				{
+					id: '1',
+					title: 'Tab1',
+					leftIcon: (props) => {
+						return <CaretIcon {...props} />;
+					},
+				},
+				{
+					id: '2',
+					title: 'Tab2',
+					leftIcon: (props) => {
+						return <CaretIcon {...props} />;
+					},
+				},
+				{
+					id: '3',
+					title: 'Tab3',
+					leftIcon: (props) => {
+						return <CaretIcon {...props} />;
+					},
+				},
+				{
+					id: '4',
+					title: 'Tab4',
+					leftIcon: (props) => {
+						return <CaretIcon {...props} />;
+					},
+				},
+			],
+			selectedTab: 'Tab1',
+			theme: 'light',
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### With Right Icon
+
+Tabs with with right icon.
+
+<Canvas>
+	<Story
+		name='With Right Icon'
+		args={{
+			tabs: [
+				{
+					id: '1',
+					title: 'Tab1',
+					rightIcon: (props) => {
+						return <CaretIcon {...props} />;
+					},
+				},
+				{
+					id: '2',
+					title: 'Tab2',
+					rightIcon: (props) => {
+						return <CaretIcon {...props} />;
+					},
+				},
+				{
+					id: '3',
+					title: 'Tab3',
+					rightIcon: (props) => {
+						return <CaretIcon {...props} />;
+					},
+				},
+				{
+					id: '4',
+					title: 'Tab4',
+					rightIcon: (props) => {
+						return <CaretIcon {...props} />;
+					},
+				},
+			],
+			selectedTab: 'Tab1',
+			theme: 'light',
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### With Both side Icon
+
+Tabs with with With both side icon.
+
+<Canvas>
+	<Story
+		name='With Both side Icon'
+		args={{
+			tabs: [
+				{
+					id: '1',
+					title: 'Tab1',
+					leftIcon: (props) => {
+						return <CaretIcon {...props} />;
+					},
+					rightIcon: (props) => {
+						return <CaretIcon {...props} />;
+					},
+				},
+				{
+					id: '2',
+					title: 'Tab2',
+					leftIcon: (props) => {
+						return <CaretIcon {...props} />;
+					},
+					rightIcon: (props) => {
+						return <CaretIcon {...props} />;
+					},
+				},
+				{
+					id: '3',
+					title: 'Tab3',
+					leftIcon: (props) => {
+						return <CaretIcon {...props} />;
+					},
+					rightIcon: (props) => {
+						return <CaretIcon {...props} />;
+					},
+				},
+				{
+					id: '4',
+					title: 'Tab4',
+					leftIcon: (props) => {
+						return <CaretIcon {...props} />;
+					},
+					rightIcon: (props) => {
+						return <CaretIcon {...props} />;
+					},
+				},
+			],
+			selectedTab: 'Tab1',
+			theme: 'light',
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+## Try in the Code Editor
+
+This embeded `CodeSandBox` is external third party code editor `iframe` shared publicly. It is advised to create an account with banyancloud mail id to create/fork this sandbox.
+
+## API
+
+**`className`**
+
+Additional CSS class names to be applied to the Tabs container.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>""</td>
+	</tr>
+</table>
+
+```jsx
+<Tabs className='additionalClass' />
+```
+
+**`tabs`**
+
+An array of tab objects, where each object represents a tab with properties such as id, title, leftIcon, rightIcon, and disabled.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Array of string</td>
+		<td>[]</td>
+	</tr>
+</table>
+
+```jsx
+<Tabs
+	tabs={[
+		{
+			id: '1',
+			title: 'Tab1',
+			disabled: true,
+		},
+	]}
+/>
+```

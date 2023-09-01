@@ -1,8 +1,10 @@
 import PropTypes from 'prop-types';
 import { forwardRef } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 import { classes } from '../../../utils';
 import { BaseCell } from '../../cell';
 import styles from './BaseButton.module.css';
+import { ErrorBoundaryWrapper } from '../../errorBoundary';
 
 // eslint-disable-next-line prefer-arrow-callback
 const BaseButton = forwardRef(function BaseButton(props, ref) {
@@ -19,34 +21,46 @@ const BaseButton = forwardRef(function BaseButton(props, ref) {
 		onClick,
 		blurOnClick,
 		variant,
+		custom,
 	} = props;
 
 	const Title = title && <span data-elem='title'>{title}</span>;
 
 	return (
-		<BaseCell
-			className={classes(className, styles.root, styles[variant])}
-			{...{
-				ref,
-				component1,
-				component2: Title,
-				component3,
-				flexible,
-				radius,
-				size,
-			}}
-			attrs={{
-				disabled,
-				type,
-				onClick: (event) => {
-					if (blurOnClick) {
-						event?.currentTarget?.blur();
-					}
-					onClick(event);
-				},
-			}}
-			RootDOM='button'
-		/>
+		<ErrorBoundary
+			FallbackComponent={(args) => {
+				return (
+					<ErrorBoundaryWrapper
+						{...args}
+						className={styles['error-boundary']}
+						custom={custom}
+					/>
+				);
+			}}>
+			<BaseCell
+				className={classes(className, styles.root, styles[variant])}
+				{...{
+					ref,
+					component1,
+					component2: Title,
+					component3,
+					flexible,
+					radius,
+					size,
+				}}
+				attrs={{
+					disabled,
+					type,
+					onClick: (event) => {
+						if (blurOnClick) {
+							event?.currentTarget?.blur();
+						}
+						onClick(event);
+					},
+				}}
+				RootDOM='button'
+			/>
+		</ErrorBoundary>
 	);
 });
 
