@@ -3,8 +3,9 @@ const BreadcrumbSeperator = (props) => {
 	return (
 		<svg
 			className={className}
+			viewBox='0 0 24 24'
+			fill='none'
 			data-elem='breadcrumb-seperator-icon'
-			viewBox='0 0 28 28'
 			stroke='black'
 			xmlns='http://www.w3.org/2000/svg'>
 			<path

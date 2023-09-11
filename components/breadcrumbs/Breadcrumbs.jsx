@@ -4,6 +4,7 @@ import styles from './Breadcrumbs.module.css';
 import { getSpacedDisplayName, classes } from '../../utils/utils';
 import BreadcrumbSeperator from '../icons/BreadcrumbSeperator/BreadcrumbSeperator';
 import { Link } from '../link';
+import { ServerIcon } from '../icons';
 import Button from '../buttons/button/Button';
 
 const BreadCrumbs = (props) => {
@@ -33,7 +34,7 @@ const BreadCrumbs = (props) => {
 					}}
 					component={!active ? linkComponent : 'span'}
 					stroke={!active ? 'regular' : 'medium'}>
-					{icon && icon}
+					<div className={classes(styles.iconWrapper)}>{icon && icon}</div>
 					{title && (
 						<span className={classes(styles.title)}>
 							{getSpacedDisplayName(title).replace(/-/g, ' ')}

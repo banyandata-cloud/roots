@@ -6,8 +6,6 @@
 	width: auto;
 
 	.seperator {
-		width: 1.5rem;
-		height: 1.5rem;
 		stroke: $grey2;
 		margin-top: 0.625rem;
 		margin-left: 0.375rem;
@@ -26,9 +24,8 @@
 
 	.crumb {
 		@include flex(row, flex-start, center);
-		border-width: 0.0625rem;
-		border-color: #dfe0e2;
-		border-style: solid;
+		border-radius: 4px;
+		border: 0.0625rem solid #dfe0e2;
 		padding-left: 0.25rem;
 		padding-right: 0.25rem;
 		padding-top: 0.5rem;
@@ -37,12 +34,19 @@
 
 		.title {
 			color: #818181;
+			padding-left: 0.25rem;
 		}
 
 		.value {
 			color: #1a2028;
 			padding-left: 0.5rem;
 			padding-right: 0.5rem;
+		}
+
+		.iconWrapper {
+			width: 1rem;
+			height: 1rem;
+			margin-right: 25rem;
 		}
 	}
 
