@@ -19,10 +19,11 @@ import { Popover } from '../popover';
 import { BaseButton, Button } from '../buttons';
 import { DatePicker } from '../datePicker';
 
+const renderToggle = (optionData, theme) => {
+	return <Toggle className={styles['toggle-body']} theme={theme} {...optionData} />;
+};
 const generateOptions = (optionData, theme) => {
 	switch (optionData?.id ?? '') {
-		case 'toggle':
-			return <Toggle className={styles['toggle-body']} theme={theme} {...optionData} />;
 		case 'dropdown':
 			return (
 				<Dropdown
@@ -89,6 +90,7 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 		onBack,
 		onReload,
 		options,
+		toggle,
 		className,
 		children,
 		fallbackProps,
@@ -99,6 +101,7 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 		onMouseDown,
 		onMouseUp,
 		onTouchEnd,
+		titleDesc,
 	} = props;
 
 	const emptyChartData = useMemo(() => {
@@ -117,23 +120,36 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 
 	const titleText = (
 		<Text className={styles['title-container']}>
-			<Text
-				variant='b1'
-				stroke='semibold'
-				attrs={{
-					'data-elem': 'title',
-				}}>
-				{title} {subtitle && '-'}
+			<Text className={styles['title-primary']}>
+				<Text
+					variant='b1'
+					stroke='semibold'
+					attrs={{
+						'data-elem': 'title',
+					}}>
+					{title} {subtitle && '-'}
+				</Text>
+				{subtitle && (
+					<Text
+						variant='b2'
+						stroke='medium'
+						attrs={{
+							'data-elem': 'subtitle',
+						}}>
+						{' '}
+						{subtitle}
+					</Text>
+				)}
 			</Text>
-			{subtitle && (
+			{titleDesc && (
 				<Text
 					variant='b2'
 					stroke='medium'
 					attrs={{
-						'data-elem': 'subtitle',
+						'data-elem': 'title-desc',
 					}}>
 					{' '}
-					{subtitle}
+					{titleDesc}
 				</Text>
 			)}
 		</Text>
@@ -196,10 +212,15 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 				</div>
 
 				<div className={classes(styles['header-options'])} data-elem='header-options'>
-					{(options?.length ?? 0) > 0 &&
-						options?.map((objectData) => {
-							return generateOptions(objectData, theme);
-						})}
+					<div className={classes(styles['header-options-toggle'])} data-elem='header-options-toggle'>
+						{(toggle?.options?.length ?? 0) > 0 && renderToggle(toggle, theme)}
+					</div>
+					<div className={classes(styles['header-options-list'])} data-elem='header-options-list'>
+						{(options?.length ?? 0) > 0 &&
+							options?.map((objectData) => {
+								return generateOptions(objectData, theme);
+							})}
+					</div>
 				</div>
 			</div>
 			<div className={styles.children} data-elem='children'>
@@ -222,10 +243,13 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 BaseWidget.propTypes = {
 	loading: PropTypes.bool,
 	title: PropTypes.string,
+	subtitle: PropTypes.string,
+	titleDesc: PropTypes.string,
 	showBack: PropTypes.bool,
 	onBack: PropTypes.func,
 	onReload: PropTypes.func,
 	options: PropTypes.arrayOf(PropTypes.shape),
+	toggle: PropTypes.arrayOf(PropTypes.shape),
 	className: PropTypes.string,
 	fallbackProps: PropTypes.shape({
 		className: PropTypes.string,
@@ -241,10 +265,13 @@ BaseWidget.propTypes = {
 BaseWidget.defaultProps = {
 	loading: false,
 	title: '',
+	subtitle: '',
+	titleDesc: '',
 	showBack: false,
 	onBack: () => {},
 	onReload: () => {},
 	options: [],
+	toggle: [],
 	className: '',
 	fallbackProps: {
 		className: '',

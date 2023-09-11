@@ -4,7 +4,8 @@
   justify-content: flex-start;
   align-items: stretch;
   border: 1px solid var(--grey);
-  border-radius: 0.25rem;
+  border-radius: 2.5rem;
+  opacity: 0.7;
   height: 100%;
   width: 100%;
 }
@@ -13,7 +14,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem;
+  padding: 1.713rem;
 }
 .root .header .header-title {
   display: flex;
@@ -35,7 +36,11 @@
   flex: 1;
 }
 .root .header .header-title.no-title-options .title-container {
-  margin-left: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0.4rem;
 }
 .root .header .header-title button.title {
   height: auto;
@@ -51,56 +56,66 @@
 }
 .root .header .header-options {
   display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+.root .header .header-options .header-options-toggle .toggle-body {
+  padding: 0.125rem 0.25rem;
+  height: 1.75rem;
+}
+.root .header .header-options .header-options-list {
+  display: flex;
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
   gap: 0.5rem;
 }
-.root .header .header-options .toggle-body {
-  padding: 0.125rem 0.25rem;
+.root .header .header-options .header-options-list .dropdown-header {
   height: 1.75rem;
 }
-.root .header .header-options .dropdown-header {
-  height: 1.75rem;
-}
-.root .header .header-options .dropdown-header [data-elem=select] {
+.root .header .header-options .header-options-list .dropdown-header [data-elem=select] {
   background-color: transparent;
   width: 100%;
   padding: 0.07rem 0.5rem;
 }
-.root .header .header-options .dropdown-header [data-elem=select] [data-elem=placeholder] {
+.root .header .header-options .header-options-list .dropdown-header [data-elem=select] [data-elem=placeholder] {
   font-size: 0.875rem;
 }
-.root .header .header-options .dropdown-header [data-elem=select] > svg {
+.root .header .header-options .header-options-list .dropdown-header [data-elem=select] > svg {
   width: 0.875rem;
 }
-.root .header .header-options .expand-button {
+.root .header .header-options .header-options-list .expand-button {
   padding: 0 0.25rem;
   height: 1.75rem;
 }
-.root .header .header-options .expand-button .expand-icon {
+.root .header .header-options .header-options-list .expand-button .expand-icon {
   height: 1.25rem;
   width: 1.25rem;
   fill: var(--white);
 }
-.root .header .header-options .date-picker {
+.root .header .header-options .header-options-list .date-picker {
   min-width: 0;
 }
-.root .header .header-options .date-picker [data-elem=header] {
+.root .header .header-options .header-options-list .date-picker [data-elem=header] {
   padding: 0.06rem 0.25rem;
   border: 1px solid var(--grey);
   font-size: 0.875rem;
 }
-.root .header .header-options .date-picker [data-elem=header] > div {
+.root .header .header-options .header-options-list .date-picker [data-elem=header] > div {
   gap: 0.5rem;
 }
-.root .header .header-options .date-picker [data-elem=header] > div :nth-child(1) {
+.root .header .header-options .header-options-list .date-picker [data-elem=header] > div :nth-child(1) {
   height: 1.25rem;
   width: 1.25rem;
 }
 .root.dark-theme .header .header-title [data-elem=title],
 .root.dark-theme .header .header-title [data-elem=subtitle] {
   color: var(--white);
+}
+.root.dark-theme .header .header-title [data-elem=title-desc] {
+  color: #9a9ea5;
 }
 .root.dark-theme .header .header-title .title .icon {
   fill: var(--white);
@@ -127,9 +142,16 @@
 .root.dark-theme .header .header-options .expand-button .expand-icon {
   fill: var(--white);
 }
+.root.light-theme {
+  background: #fbfbfb;
+  box-shadow: 4px 4px 25px 2px rgba(226, 226, 226, 0.8);
+}
 .root.light-theme .header .header-title [data-elem=title],
 .root.light-theme .header .header-title [data-elem=subtitle] {
-  color: var(--dark-grey);
+  color: #1a2028;
+}
+.root.light-theme .header .header-title [data-elem=title-desc] {
+  color: #9a9ea5;
 }
 .root.light-theme .header .header-title .title .icon {
   fill: var(--menu-black);
