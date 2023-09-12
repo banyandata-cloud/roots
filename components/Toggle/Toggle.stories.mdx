@@ -43,6 +43,32 @@ import { Toggle } from '@banyan_cloud/roots';
 
 The CSF rendered inside the `Canvas` from which you can see the implementation example.
 
+### Test Toggle
+
+<Canvas>
+	<Story
+		name='Test'
+		args={{
+			options: [
+				{
+					value: 'All Controls',
+					title: 'All Controls',
+					rightComponent: null,
+					leftComponent: null,
+				},
+				{
+					value: 'Distinct Controls',
+					title: 'Distinct Controls',
+					rightComponent: null,
+					leftComponent: null,
+				},
+			],
+			theme: 'light',
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
 ### Uncontrolled Toggle
 
 <Canvas>

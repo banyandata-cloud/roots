@@ -4,7 +4,6 @@
   padding: 0.25rem;
   height: 100%;
   max-height: 3rem;
-  max-width: -webkit-fit-content;
   max-width: -moz-fit-content;
   max-width: fit-content;
   cursor: default;
