@@ -5,7 +5,6 @@
   align-items: stretch;
   border: 1px solid var(--grey);
   border-radius: 2.5rem;
-  opacity: 0.7;
   height: 100%;
   width: 100%;
 }
