@@ -37,8 +37,8 @@
 			gap: 0.5rem;
 			background: $white;
 			outline: none;
-			border: 1px solid $grey5;
-			border-radius: 0.25rem;
+			border-radius: 0.3125rem;
+			border: 0.0625rem solid #dfe0e2;
 			padding: 0.75rem 0.75rem 0.75rem 1rem;
 			cursor: pointer;
 
@@ -112,9 +112,9 @@
 	top: calc(100% + 0.5rem);
 	background: $white;
 	width: auto;
-	border: 0.063rem solid $grey5;
+	border-radius: 0.3125rem;
+	border: 0.0625rem solid #dfe0e2;
 	box-shadow: 0rem 0.5rem 1.25rem rgba(24, 24, 24, 0.08);
-	border-radius: 0.25rem;
 	padding: 1rem;
 	overflow-y: auto;
 	min-height: 4rem;

@@ -101,7 +101,6 @@
   height: 2.375rem;
   max-height: 100%;
   width: auto;
-  min-width: -webkit-fit-content;
   min-width: -moz-fit-content;
   min-width: fit-content;
   padding: 0.625rem;
@@ -198,7 +197,6 @@
   height: 100%;
 }
 .root .form > [data-elem*=component] > form {
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   margin-left: auto;
