@@ -3,13 +3,13 @@
 .root {
 	@include flex(column, flex-start, stretch);
 	@include debug($grey);
-	border-radius: 0.25rem;
+	border-radius: 2.5rem;
 	height: 100%;
 	width: 100%;
 
 	.header {
 		@include flex(row, space-between);
-		padding: 0.5rem;
+		padding: 1.713rem;
 
 		.header-title {
 			@include flex(row, flex-start);
@@ -32,7 +32,8 @@
 
 			&.no-title-options {
 				.title-container {
-					margin-left: 0.5rem;
+					@include flex(column, flex-start, flex-start);
+					gap: 0.4rem;
 				}
 			}
 
@@ -52,50 +53,56 @@
 		}
 
 		.header-options {
-			@include flex(row, flex-end);
+			@include flex(column, flex-end, flex-end);
 			gap: 0.5rem;
 
-			.toggle-body {
-				padding: 0.125rem 0.25rem;
-				height: 1.75rem;
+			.header-options-toggle {
+				.toggle-body {
+					padding: 0.125rem 0.25rem;
+					height: 1.75rem;
+				}
 			}
 
-			.dropdown-header {
-				height: 1.75rem;
+			.header-options-list {
+				@include flex(row, flex-end);
+				gap: 0.5rem;
+				.dropdown-header {
+					height: 1.75rem;
 
-				[data-elem='select'] {
-					background-color: transparent;
-					width: 100%;
-					padding: 0.07rem 0.5rem;
-					[data-elem='placeholder'] {
+					[data-elem='select'] {
+						background-color: transparent;
+						width: 100%;
+						padding: 0.07rem 0.5rem;
+						[data-elem='placeholder'] {
+							font-size: 0.875rem;
+						}
+						> svg {
+							width: 0.875rem;
+						}
+					}
+				}
+
+				.expand-button {
+					padding: 0 0.25rem;
+					height: 1.75rem;
+					.expand-icon {
+						height: 1.25rem;
+						width: 1.25rem;
+						fill: $white;
+					}
+				}
+				.date-picker {
+					min-width: 0;
+					[data-elem='header'] {
+						padding: 0.06rem 0.25rem;
+						border: 1px solid $grey;
 						font-size: 0.875rem;
-					}
-					> svg {
-						width: 0.875rem;
-					}
-				}
-			}
-
-			.expand-button {
-				padding: 0 0.25rem;
-				height: 1.75rem;
-				.expand-icon {
-					height: 1.25rem;
-					width: 1.25rem;
-					fill: $white;
-				}
-			}
-			.date-picker {
-				min-width: 0;
-				[data-elem='header'] {
-					padding: 0.06rem 0.25rem;
-					border: 1px solid $grey;
-					font-size: 0.875rem;
-					> div {
-						gap: 0.5rem;
-						:nth-child(1) {
-							height: 1.25rem;
-							width: 1.25rem;
+						> div {
+							gap: 0.5rem;
+							:nth-child(1) {
+								height: 1.25rem;
+								width: 1.25rem;
+							}
 						}
 					}
 				}
@@ -109,6 +116,10 @@
 				[data-elem='title'],
 				[data-elem='subtitle'] {
 					color: $white;
+				}
+
+				[data-elem='title-desc'] {
+					color: #9a9ea5;
 				}
 
 				.title {
@@ -151,11 +162,16 @@
 	}
 
 	&.light-theme {
+		background: #fbfbfb;
+		box-shadow: 4px 4px 25px 2px rgba(226, 226, 226, 0.8);
 		.header {
 			.header-title {
 				[data-elem='title'],
 				[data-elem='subtitle'] {
-					color: $dark-grey;
+					color: #1a2028;
+				}
+				[data-elem='title-desc'] {
+					color: #9a9ea5;
 				}
 
 				.title {
