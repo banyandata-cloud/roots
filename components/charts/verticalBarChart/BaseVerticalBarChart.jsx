@@ -93,6 +93,7 @@ const BaseVerticalBarChart = (props) => {
 		yAxisLineShow,
 		yAxisTickShow,
 		axisColor,
+		xAxisTick,
 		splitType,
 		xSplitType,
 		barWidth,
@@ -241,6 +242,7 @@ const BaseVerticalBarChart = (props) => {
 						lineStyle: {
 							color: determineAxesColors('tick', axisColor, theme),
 						},
+						...xAxisTick,
 					},
 					splitLine: {
 						show: xSplitLineShow,
@@ -328,6 +330,7 @@ BaseVerticalBarChart.propTypes = {
 	xSplitType: PropTypes.string,
 	barWidth: PropTypes.string,
 	legend: PropTypes.object,
+	xAxisTick: PropTypes.object,
 	seriesName: PropTypes.func,
 	cursor: PropTypes.string,
 	stackCount: PropTypes.number,
@@ -379,6 +382,7 @@ BaseVerticalBarChart.defaultProps = {
 	legend: {
 		show: true,
 	},
+	xAxisTick: {},
 	cursor: 'default',
 	stackCount: 1,
 	seriesOption: [
