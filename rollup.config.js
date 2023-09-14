@@ -5,6 +5,7 @@ import pluginStyles from 'rollup-plugin-styles';
 import pluginPeerDepsExternal from 'rollup-plugin-peer-deps-external';
 import pluginJSON from '@rollup/plugin-json';
 import pluginBundleSize from 'rollup-plugin-bundle-size';
+import image from '@rollup/plugin-image';
 
 const packageJson = require('./package.json');
 
@@ -42,6 +43,7 @@ export default [
 			pluginCommonjs(),
 			pluginJSON(),
 			pluginBundleSize(),
+			image(),
 		],
 	},
 	{
