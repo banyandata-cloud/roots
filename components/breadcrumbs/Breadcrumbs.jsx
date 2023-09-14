@@ -4,6 +4,7 @@ import styles from './Breadcrumbs.module.css';
 import { getSpacedDisplayName, classes } from '../../utils/utils';
 import BreadcrumbSeperator from '../icons/BreadcrumbSeperator/BreadcrumbSeperator';
 import { Link } from '../link';
+import { ServerIcon } from '../icons';
 import Button from '../buttons/button/Button';
 
 const BreadCrumbs = (props) => {
@@ -15,7 +16,7 @@ const BreadCrumbs = (props) => {
 	let href = '';
 
 	const CrumbsDOM = crumbs.map((crumb, index) => {
-		const { title, path, search, icon } = crumb;
+		const { title, value, path, search, icon } = crumb;
 
 		const active = index === crumbs.length - 1;
 		const showSeperator = index < crumbs.length - 1;
@@ -26,15 +27,24 @@ const BreadCrumbs = (props) => {
 			<React.Fragment key={path}>
 				<Link
 					href={!active && `${href}${search ?? ''}`}
-					underline={!active ? 'hover' : 'none'}
+					underline='none'
 					className={classes(styles.crumb, active ? styles.active : '')}
 					dataAttrs={{
 						'data-state': active,
 					}}
 					component={!active ? linkComponent : 'span'}
 					stroke={!active ? 'regular' : 'medium'}>
-					{icon && icon}
-					{title && <span>{getSpacedDisplayName(title).replace(/-/g, ' ')}</span>}
+					<div className={classes(styles.iconWrapper)}>{icon && icon}</div>
+					{title && (
+						<span className={classes(styles.title)}>
+							{getSpacedDisplayName(title).replace(/-/g, ' ')}
+						</span>
+					)}
+					{value && (
+						<span className={classes(styles.value)}>
+							: {getSpacedDisplayName(value).replace(/-/g, ' ')}
+						</span>
+					)}
 				</Link>
 				{showSeperator && <BreadcrumbSeperator className={styles.seperator} />}
 			</React.Fragment>
@@ -68,6 +78,7 @@ BreadCrumbs.propTypes = {
 	crumbs: PropTypes.arrayOf(
 		PropTypes.shape({
 			title: PropTypes.string,
+			value: PropTypes.string,
 			path: PropTypes.string,
 			icon: PropTypes.node,
 		})
