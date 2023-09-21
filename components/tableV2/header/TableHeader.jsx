@@ -4,7 +4,7 @@ import { TableRow } from '../row';
 import styles from './TableHeader.module.css';
 
 const TableHeader = (props) => {
-	const { headerData, customCells, expandable, onSort, rowHeight, onRowClick } = props;
+	const { headerData, customCells, expandable, onSort, rowHeight, theme, onRowClick } = props;
 
 	return (
 		<thead data-elem='table-header' className={styles.root}>
@@ -16,6 +16,7 @@ const TableHeader = (props) => {
 				onSort={onSort}
 				rowHeight={rowHeight}
 				onRowClick={onRowClick}
+				theme={theme}
 			/>
 		</thead>
 	);
