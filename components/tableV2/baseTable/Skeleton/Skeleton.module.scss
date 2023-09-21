@@ -1,0 +1,29 @@
+@import '../../../../styles/';
+
+.row {
+	@include flex;
+	gap: 1rem;
+	margin-bottom: 1rem;
+	padding: 0rem 0.5rem;
+
+	&.header {
+		height: 2rem;
+		background: $grey4;
+		border-radius: 0.25rem;
+
+		.th {
+			@include flex(row, flex-start);
+			.skeleton {
+				background: $grey8;
+			}
+		}
+	}
+
+	& > .column {
+		width: 100%;
+
+		.skeleton {
+			height: 1.5rem;
+		}
+	}
+}

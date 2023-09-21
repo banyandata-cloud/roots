@@ -1,0 +1,191 @@
+@import '../../../../../styles/';
+
+.root {
+	background: $grey8;
+	border: 1px solid $grey4;
+	padding: 0.25rem;
+	height: 100%;
+	max-height: 3rem;
+	max-width: fit-content;
+	cursor: default;
+
+	.chip-icon {
+		width: 1rem;
+		height: 1rem;
+	}
+
+	> [data-elem='component1'] {
+		@include flex;
+	}
+
+	> [data-elem='component2'] {
+		@include flex;
+		gap: 0.25rem;
+		height: 100%;
+
+		.label {
+			height: 100%;
+			div.chip-search {
+				> label {
+					> [data-elem='base-cell'] {
+						background-color: transparent;
+						border: none;
+						padding: 0 0.125rem;
+						border-radius: 0.125rem;
+						> [data-elem='component2'] {
+							> [data-elem='input'] {
+								font-size: 0.875rem;
+								font-weight: 500;
+								width: auto;
+							}
+						}
+
+						width: auto;
+					}
+				}
+			}
+		}
+
+		div.chip-search {
+			padding: 0;
+			height: 100%;
+
+			> label {
+				> [data-elem='base-cell'] {
+					border-radius: 1.5rem;
+
+					> [data-elem='component2'] {
+						> [data-elem='input'] {
+							font-size: 0.875rem;
+							font-weight: 500;
+							width: auto;
+						}
+					}
+
+					width: auto;
+				}
+			}
+		}
+
+		.chip {
+			&:not(:disabled) {
+				cursor: pointer;
+			}
+
+			&:disabled {
+				cursor: default;
+				color: $info;
+				border-color: $info-outline;
+				background: $info-bg;
+				filter: none;
+			}
+
+			height: 100%;
+
+			> [data-elem='component2'] {
+				> [data-elem='title'] {
+					color: $dark-grey;
+				}
+			}
+
+			.icon {
+				width: 0.875rem;
+				height: 0.875rem;
+			}
+		}
+	}
+
+	> [data-elem='component3'] {
+		height: 100%;
+		width: auto;
+		button.remove[data-elem='base-cell'] {
+			background: transparent;
+			padding: 0;
+			.icon {
+				width: 1rem;
+				height: 1rem;
+			}
+		}
+	}
+
+	&.disabled {
+		&:hover {
+			border-color: $grey4;
+
+			> [data-elem='component2'] {
+				.label {
+					color: $dark-grey;
+				}
+
+				.chip-child {
+					background: $info-bg;
+					> [data-elem='component2'] {
+						> [data-elem='title'] {
+							color: $dark-grey;
+						}
+					}
+
+					.icon {
+						width: 0.875rem;
+						height: 0.875rem;
+					}
+				}
+			}
+		}
+	}
+
+	&:hover:not(.temp) {
+		border-color: $highlight;
+
+		> [data-elem='component2'] {
+			.label {
+				color: $highlight;
+			}
+
+			.chip {
+				background: $background;
+				> [data-elem='component2'] {
+					> [data-elem='title'] {
+						color: $highlight;
+					}
+				}
+
+				.icon {
+					width: 0.875rem;
+					height: 0.875rem;
+				}
+			}
+		}
+	}
+
+	&.temp {
+		background: $highlight;
+		> [data-elem='component1'] {
+			.chip-icon {
+				fill: $white;
+			}
+		}
+
+		> [data-elem='component2'] {
+			.label {
+				color: $white;
+			}
+		}
+
+		&:hover {
+			> [data-elem='component2'] {
+				.chip {
+					background: $info-bg;
+				}
+			}
+		}
+
+		> [data-elem='component3'] {
+			.remove {
+				.icon {
+					fill: $white;
+				}
+			}
+		}
+	}
+}

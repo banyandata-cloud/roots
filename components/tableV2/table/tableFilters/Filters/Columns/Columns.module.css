@@ -1,0 +1,100 @@
+.popover {
+  height: 32rem;
+  padding: 0;
+  overflow: hidden;
+}
+
+.root {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  position: relative;
+  height: 100%;
+  min-width: 18rem;
+  max-width: 100%;
+}
+.root .header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--grey4);
+  padding: 0.75rem 2.5rem;
+}
+.root .header > [data-elem=component1] {
+  font-weight: 500;
+}
+.root .header > [data-elem=component2] .close {
+  height: auto;
+  padding: 0;
+}
+.root .header > [data-elem=component2] .close .icon {
+  width: 1rem;
+  height: 1rem;
+}
+.root .body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 0.5rem;
+  padding: 0.75rem 2.5rem;
+  max-height: 28rem;
+  overflow-y: auto;
+  flex: 1 1 auto;
+}
+.root .body .search {
+  position: sticky;
+  top: 0;
+}
+.root .body .columns {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 0.5rem;
+  overflow-y: auto;
+}
+.root .body .columns .item {
+  height: 3rem;
+}
+.root .body .columns .item > [data-elem=title] {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.root .footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  height: auto;
+  margin-top: auto;
+  padding: 0.5rem 2.5rem;
+  border-top: 1px solid var(--grey4);
+}
+.root .footer button.expand {
+  height: auto;
+  background: var(--grey8);
+  border: 1px solid var(--grey4);
+  color: var(--black);
+}
+.root .footer button.expand .icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  transform: rotate(180deg);
+}
+.root.expanded .body {
+  flex: 0 1 auto;
+}
+.root.expanded .body .columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.root.expanded .body .columns .item {
+  overflow: hidden;
+}
+.root.expanded .footer button.expand .icon {
+  transform: none;
+}/*# sourceMappingURL=Columns.module.css.map */
