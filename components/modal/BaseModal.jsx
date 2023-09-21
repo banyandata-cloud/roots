@@ -34,6 +34,8 @@ const BaseModal = (props) => {
 		}),
 	]);
 
+	const { props: bodyProps } = children ?? {};
+
 	return (
 		<Popper
 			open={open}
@@ -49,7 +51,12 @@ const BaseModal = (props) => {
 						})}>
 						{renderHeader && (
 							<div data-elem='header' className={styles.header}>
-								{renderHeader}
+								{(() => {
+									if (typeof renderHeader !== 'function') {
+										return renderHeader;
+									}
+									return renderHeader({ ...bodyProps });
+								})()}
 							</div>
 						)}
 						<div data-elem='body' className={styles.body}>
@@ -57,7 +64,12 @@ const BaseModal = (props) => {
 						</div>
 						{renderFooter && (
 							<div data-elem='footer' className={styles.footer}>
-								{renderFooter}
+								{(() => {
+									if (typeof renderFooter !== 'function') {
+										return renderFooter;
+									}
+									return renderFooter({ ...bodyProps });
+								})()}
 							</div>
 						)}
 						<Button
