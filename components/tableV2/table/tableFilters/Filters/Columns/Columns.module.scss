@@ -1,0 +1,104 @@
+@import '../../../../../../styles/index';
+
+.popover {
+	height: 32rem;
+	padding: 0;
+	overflow: hidden;
+}
+
+.root {
+	@include flex(column, flex-start, stretch);
+	position: relative;
+	height: 100%;
+	min-width: 18rem;
+	max-width: 100%;
+
+	.header {
+		@include flex(row, space-between);
+		border-bottom: 1px solid $grey4;
+		padding: 0.75rem 2.5rem;
+
+		> [data-elem='component1'] {
+			font-weight: 500;
+		}
+
+		> [data-elem='component2'] {
+			.close {
+				height: auto;
+				padding: 0;
+				.icon {
+					width: 1rem;
+					height: 1rem;
+				}
+			}
+		}
+	}
+
+	.body {
+		@include flex(column, flex-start, stretch);
+		gap: 0.5rem;
+		padding: 0.75rem 2.5rem;
+		max-height: 28rem;
+		overflow-y: auto;
+		flex: 1 1 auto;
+
+		.search {
+			position: sticky;
+			top: 0;
+		}
+
+		.columns {
+			@include flex(column, flex-start, stretch);
+			gap: 0.5rem;
+			overflow-y: auto;
+
+			.item {
+				height: 3rem;
+				> [data-elem='title'] {
+					@include ellipsis;
+				}
+			}
+		}
+	}
+
+	.footer {
+		@include flex(row, flex-end);
+		height: auto;
+		margin-top: auto;
+		padding: 0.5rem 2.5rem;
+		border-top: 1px solid $grey4;
+
+		button.expand {
+			height: auto;
+			background: $grey8;
+			border: 1px solid $grey4;
+			color: $black;
+			.icon {
+				width: 1.5rem;
+				height: 1.5rem;
+				transform: rotate(180deg);
+			}
+		}
+	}
+
+	&.expanded {
+		.body {
+			.columns {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				.item {
+					overflow: hidden;
+				}
+			}
+			flex: 0 1 auto;
+		}
+
+		.footer {
+			button.expand {
+				.icon {
+					transform: none;
+				}
+			}
+		}
+	}
+}
