@@ -18,7 +18,19 @@
   white-space: nowrap;
   display: inline-block;
   width: 100%;
-  font-size: 0.875rem;
+  font-size: 1rem;
+}
+.root[data-elem=base-cell] > [data-elem*=component].light {
+  background: #ffffff;
+}
+.root[data-elem=base-cell] > [data-elem*=component].light .cell-text {
+  color: #1a2028;
+}
+.root[data-elem=base-cell] > [data-elem*=component].dark {
+  background: #ffffff;
+}
+.root[data-elem=base-cell] > [data-elem*=component].dark .cell-text {
+  color: var(--grey);
 }
 .root[data-elem=base-cell].header-cell .cell-text {
   font-weight: 400;
@@ -28,7 +40,7 @@
   background: #f7f7f8;
 }
 .root[data-elem=base-cell].header-cell.light .cell-text {
-  color: #575F6E;
+  color: #575f6e;
 }
 .root[data-elem=base-cell].header-cell.dark {
   background: #f7f7f8;
@@ -80,6 +92,18 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   font-size: 0.75rem;
+}
+.root[data-elem=base-cell].body-cell.light {
+  background: #ffffff;
+}
+.root[data-elem=base-cell].body-cell.light .cell-text {
+  color: #1a2028;
+}
+.root[data-elem=base-cell].body-cell.dark {
+  background: #ffffff;
+}
+.root[data-elem=base-cell].body-cell.dark .cell-text {
+  color: var(--grey);
 }
 .root[data-elem=base-cell].sticky-left {
   box-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);

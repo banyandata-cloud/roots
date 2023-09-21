@@ -14,7 +14,19 @@
 			@include ellipsis;
 			display: inline-block;
 			width: 100%;
-			font-size: 0.875rem;
+			font-size: 1rem;
+		}
+		&.light {
+			background: #ffffff;
+			.cell-text {
+				color: #1a2028;
+			}
+		}
+		&.dark {
+			background: #ffffff;
+			.cell-text {
+				color: $grey;
+			}
 		}
 	}
 
@@ -26,7 +38,7 @@
 		&.light {
 			background: #f7f7f8;
 			.cell-text {
-				color: #575F6E;
+				color: #575f6e;
 			}
 		}
 		&.dark {
@@ -100,6 +112,18 @@
 				-webkit-box-orient: vertical;
 				-webkit-line-clamp: 2;
 				font-size: 0.75rem;
+			}
+		}
+		&.light {
+			background: #ffffff;
+			.cell-text {
+				color: #1a2028;
+			}
+		}
+		&.dark {
+			background: #ffffff;
+			.cell-text {
+				color: $grey;
 			}
 		}
 	}
