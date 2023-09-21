@@ -18,6 +18,7 @@ const TableRow = forwardRef(function BaseTable(props, ref) {
 		onRowClick,
 		expandable: Expandable,
 		onSort,
+		theme,
 		rowHeight,
 	} = props;
 
@@ -59,6 +60,7 @@ const TableRow = forwardRef(function BaseTable(props, ref) {
 			cellTitle: cellContent,
 			type,
 			onSort,
+			theme,
 			rowHeight,
 		};
 

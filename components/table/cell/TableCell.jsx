@@ -4,6 +4,7 @@ import { classes } from '../../../utils';
 import { Button } from '../../buttons';
 import { BaseCell } from '../../cell';
 import { SortIcon } from '../../icons';
+import { TableCellV2 } from '../../tableV2/cell';
 import styles from './TableCell.module.css';
 
 const SORT_ICONS = {
@@ -41,7 +42,17 @@ const TableCell = forwardRef(function TableCell(props, ref) {
 		sticky,
 		sort,
 		onSort,
+		theme,
+		v2,
 	} = props;
+
+	console.log({
+		v2,
+	});
+
+	if (v2) {
+		return <TableCellV2 {...props} />;
+	}
 
 	return (
 		<BaseCell
@@ -118,6 +129,8 @@ TableCell.propTypes = {
 	sticky: PropTypes.oneOf(['left', 'right', 'none']),
 	cellContent: PropTypes.node,
 	cellTitle: PropTypes.string,
+	theme: PropTypes.oneOf(['light', 'dark']),
+	v2: PropTypes.bool,
 	onSort: PropTypes.func,
 };
 
@@ -126,6 +139,8 @@ TableCell.defaultProps = {
 	cellContent: null,
 	cellTitle: null,
 	RootDOM: 'td',
+	theme: 'light',
+	v2: false,
 	onSort: () => {},
 };
 
