@@ -7,6 +7,17 @@ import { CrossIcon, AlertIcon } from '../icons';
 import { Button } from '../buttons';
 import Popper from '../popper/Popper';
 
+/**
+ * Renders an alert message with optional icon, title, description, and action button.
+ *
+ * @param {Object} props - The props object containing the following properties:
+ *   - showIcon (boolean): Determines whether to show the alert icon.
+ *   - border (string): Specifies the border style of the alert.
+ *   - shadow (boolean): Determines whether to apply a shadow effect to the alert.
+ *   - position (string): Specifies the position of the alert on the screen.
+ * @param {Ref} ref - The ref object used to expose the 'alert' function to the parent component.
+ * @returns {JSX.Element} - The rendered alert component.
+ */
 const Alert = forwardRef((props, ref) => {
 	const { showIcon, border, shadow, position: defaultPosition } = props;
 
@@ -72,6 +83,9 @@ const Alert = forwardRef((props, ref) => {
 	};
 
 	useImperativeHandle(ref, () => ({
+		/**
+		 * methods to get exposed
+		 */
 		alert,
 	}));
 

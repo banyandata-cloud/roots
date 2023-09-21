@@ -11,6 +11,21 @@ import { Popper } from '../popper';
 import { Button } from '../buttons';
 import styles from './BaseModal.module.css';
 
+/**
+ * Renders a modal dialog with customizable header, body, and footer content.
+ * Manages the modal's open state and provides a toggle function.
+ * Handles dismiss interactions, such as clicking outside the modal or pressing the Escape key.
+ *
+ * @param {string} className - The CSS class name for the modal container.
+ * @param {string} popperClassName - The CSS class name for the popper container.
+ * @param {ReactElement|Function} renderHeader - The content to render in the modal header.
+ * @param {ReactElement} children - The content to render in the modal body.
+ * @param {ReactElement|Function} renderFooter - The content to render in the modal footer.
+ * @param {Function} toggle - A function to toggle the modal's open state.
+ * @param {boolean} open - The open state of the modal.
+ * @param {boolean} noDismiss - If true, the modal cannot be dismissed by clicking outside or pressing the Escape key.
+ * @returns {ReactElement} The rendered modal dialog.
+ */
 const BaseModal = (props) => {
 	const {
 		className,
