@@ -1,14 +1,14 @@
 @import '../../styles/index';
 
 .root {
-	@include flex(row, flex-start, center);
+	@include flex(row, flex-start, center, center);
 	gap: 0.5rem;
 	width: auto;
 
 	.seperator {
-		width: 1.5rem;
-		height: 1.5rem;
 		stroke: $grey2;
+		margin-top: 0.625rem;
+		margin-left: 0.375rem;
 	}
 
 	button.expand[data-elem='base-cell'] {
@@ -24,14 +24,29 @@
 
 	.crumb {
 		@include flex(row, flex-start, center);
-		color: $grey2;
+		border-radius: 4px;
+		border: 0.0625rem solid #dfe0e2;
+		padding-left: 0.25rem;
+		padding-right: 0.25rem;
+		padding-top: 0.5rem;
+		padding-bottom: 0.5rem;
+		border-radius: 0.25rem;
 
-		&.active {
-			color: $black;
+		.title {
+			color: #818181;
+			padding-left: 0.25rem;
 		}
 
-		&:hover:not(.active) {
-			color: $info;
+		.value {
+			color: #1a2028;
+			padding-left: 0.5rem;
+			padding-right: 0.5rem;
+		}
+
+		.iconWrapper {
+			width: 1rem;
+			height: 1rem;
+			margin-right: 25rem;
 		}
 	}
 
@@ -39,6 +54,7 @@
 		.crumb {
 			@include flex(row, flex-start, center);
 			color: $grey2;
+			font-weight: 500;
 
 			&.active {
 				color: $black;

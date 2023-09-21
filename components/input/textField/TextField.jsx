@@ -1,5 +1,6 @@
 /* eslint-disable react/forbid-prop-types */
 import React, { createElement, forwardRef, useRef, useState } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 import { ErrorBoundaryWrapper } from '../../errorBoundary';
 import PropTypes from 'prop-types';
 import { mergeRefs } from 'react-merge-refs';
