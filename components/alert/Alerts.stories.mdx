@@ -1,6 +1,5 @@
 import { Meta, Canvas, Story } from '@storybook/addon-docs';
-
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { ThemedContainer } from '../helpers';
 import { AlertIcon } from '../icons';
 import Alert from './Alert';
@@ -36,10 +35,19 @@ The default Alert component showing info.
 <Canvas>
 	<Story name='Info'>
 		{() => {
-			const [infoOpen, setInfoOpen] = useState(false);
+			const alertRef = useRef();
+			const [funs, setFuns] = useState({});
+			useEffect(() => {
+				setFuns({
+					...funs,
+					alert: alertRef.current.alert,
+				});
+			}, []);
 			const toggle = () => {
-				setInfoOpen((prevState) => {
-					return !prevState;
+				funs.alert({
+					title: 'Information',
+					description: 'Basic Info',
+					type: 'info',
 				});
 			};
 			return (
@@ -52,7 +60,7 @@ The default Alert component showing info.
 						}}>
 						Alert
 					</button>
-					<Alert title='Information' toggle={toggle} open={infoOpen} />
+					<Alert ref={alertRef} />
 				</ThemedContainer>
 			);
 		}}
@@ -66,10 +74,19 @@ The Alert component for showing warning.
 <Canvas>
 	<Story name='Warning'>
 		{() => {
-			const [warningOpen, setWarningOpen] = useState(false);
+			const alertRef = useRef();
+			const [funs, setFuns] = useState({});
+			useEffect(() => {
+				setFuns({
+					...funs,
+					alert: alertRef.current.alert,
+				});
+			}, []);
 			const toggle = () => {
-				setWarningOpen((prevState) => {
-					return !prevState;
+				funs.alert({
+					title: 'Warning',
+					description: 'Basic Warning',
+					type: 'warning',
 				});
 			};
 			return (
@@ -82,7 +99,7 @@ The Alert component for showing warning.
 						}}>
 						Alert
 					</button>
-					<Alert title='Warning' color='warning' toggle={toggle} open={warningOpen} />
+					<Alert ref={alertRef} />
 				</ThemedContainer>
 			);
 		}}
@@ -96,10 +113,19 @@ The Alert component for showing success.
 <Canvas>
 	<Story name='Success'>
 		{() => {
-			const [successOpen, setSuccessOpen] = useState(false);
+			const alertRef = useRef();
+			const [funs, setFuns] = useState({});
+			useEffect(() => {
+				setFuns({
+					...funs,
+					alert: alertRef.current.alert,
+				});
+			}, []);
 			const toggle = () => {
-				setSuccessOpen((prevState) => {
-					return !prevState;
+				funs.alert({
+					title: 'Success',
+					description: 'Basic Success Desc.',
+					type: 'success',
 				});
 			};
 			return (
@@ -112,7 +138,7 @@ The Alert component for showing success.
 						}}>
 						Alert
 					</button>
-					<Alert title='Success' color='success' toggle={toggle} open={successOpen} />
+					<Alert ref={alertRef} />
 				</ThemedContainer>
 			);
 		}}
@@ -126,10 +152,19 @@ The Alert component for showing danger.
 <Canvas>
 	<Story name='Danger'>
 		{() => {
-			const [dangerOpen, setDangerOpen] = useState(false);
+			const alertRef = useRef();
+			const [funs, setFuns] = useState({});
+			useEffect(() => {
+				setFuns({
+					...funs,
+					alert: alertRef.current.alert,
+				});
+			}, []);
 			const toggle = () => {
-				setDangerOpen((prevState) => {
-					return !prevState;
+				funs.alert({
+					title: 'Error',
+					description: 'Error Description',
+					type: 'danger',
 				});
 			};
 			return (
@@ -142,7 +177,7 @@ The Alert component for showing danger.
 						}}>
 						Alert
 					</button>
-					<Alert title='Danger' color='danger' toggle={toggle} open={dangerOpen} />
+					<Alert ref={alertRef} />
 				</ThemedContainer>
 			);
 		}}
@@ -156,10 +191,22 @@ The Alert component with icon.
 <Canvas>
 	<Story name='CustomIcon'>
 		{() => {
-			const [customIconOpen, setCustomIconOpen] = useState(false);
+			const alertRef = useRef();
+			const [funs, setFuns] = useState({});
+			useEffect(() => {
+				setFuns({
+					...funs,
+					alert: alertRef.current.alert,
+				});
+			}, []);
 			const toggle = () => {
-				setCustomIconOpen((prevState) => {
-					return !prevState;
+				funs.alert({
+					title: 'Error',
+					description: 'Error Desc.',
+					type: 'danger',
+					icon: (props) => {
+						return <AlertIcon.Info {...props} />;
+					},
 				});
 			};
 			return (
@@ -172,15 +219,7 @@ The Alert component with icon.
 						}}>
 						Alert
 					</button>
-					<Alert
-						title='Danger'
-						color='danger'
-						icon={(props) => {
-							return <AlertIcon.Info {...props} />;
-						}}
-						toggle={toggle}
-						open={customIconOpen}
-					/>
+					<Alert ref={alertRef} />
 				</ThemedContainer>
 			);
 		}}
@@ -192,25 +231,6 @@ The Alert component with icon.
 This embeded `CodeSandBox` is external third party code editor `iframe` shared publicly. It is advised to create an account with banyancloud mail id to create/fork this sandbox.
 
 ## API
-
-**`action`**
-
-Text for an optional action button.
-
-<table style={{ width: '100%' }}>
-	<tr>
-		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
-		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
-	</tr>
-	<tr>
-		<td>String</td>
-		<td>""</td>
-	</tr>
-</table>
-
-```jsx
-<Alert action='Action button title' />
-```
 
 **`showIcon`**
 
@@ -229,67 +249,6 @@ Determines whether to display an icon in the alert.
 
 ```jsx
 <Alert showIcon={false} />
-```
-
-**`icon`**
-
-Custom icon component to display in the alert.
-
-<table style={{ width: '100%' }}>
-	<tr>
-		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
-		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
-	</tr>
-	<tr>
-		<td>JSX</td>
-		<td>null</td>
-	</tr>
-</table>
-
-```jsx
-<Alert
-	icon={(props) => {
-		return <AlertIcon.Info {...props} />;
-	}}
-/>
-```
-
-**`title`**
-
-Title text of the alert.
-
-<table style={{ width: '100%' }}>
-	<tr>
-		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
-		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
-	</tr>
-	<tr>
-		<td>String</td>
-		<td>'Alert Title'</td>
-	</tr>
-</table>
-
-```jsx
-<Alert title='Some alert text' />
-```
-
-**`description`**
-
-Description text of the alert.
-
-<table style={{ width: '100%' }}>
-	<tr>
-		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
-		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
-	</tr>
-	<tr>
-		<td>String</td>
-		<td>'Alert Description in single line'</td>
-	</tr>
-</table>
-
-```jsx
-<Alert description='Some description text' />
 ```
 
 **`border`**
@@ -311,25 +270,6 @@ Border style of the alert.
 <Alert border='thick-left' />
 ```
 
-**`color`**
-
-Color scheme of the alert.
-
-<table style={{ width: '100%' }}>
-	<tr>
-		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
-		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
-	</tr>
-	<tr>
-		<td>'info', 'success', 'danger', 'warning', default: 'info'</td>
-		<td>'info'</td>
-	</tr>
-</table>
-
-```jsx
-<Alert color='success' />
-```
-
 **`shadow`**
 
 Determines whether to show a shadow around the alert.
@@ -347,44 +287,6 @@ Determines whether to show a shadow around the alert.
 
 ```jsx
 <Alert shadow={true} />
-```
-
-**`toggle`**
-
-Function to toggle the alert's visibility.
-
-<table style={{ width: '100%' }}>
-	<tr>
-		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
-		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
-	</tr>
-	<tr>
-		<td>Function</td>
-		<td>{`() => {}`}</td>
-	</tr>
-</table>
-
-```jsx
-<Alert toggle={funtionToSetVisibilityState} />
-```
-
-**`open`**
-
-Determines whether the alert is initially open.
-
-<table style={{ width: '100%' }}>
-	<tr>
-		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
-		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
-	</tr>
-	<tr>
-		<td>Boolean</td>
-		<td>true</td>
-	</tr>
-</table>
-
-```jsx
-<Alert open={false} />
 ```
 
 **`position`**
