@@ -25,7 +25,7 @@ import {
 } from '@floating-ui/react-dom-interactions';
 import PropTypes from 'prop-types';
 import { classes } from '../../../utils';
-import { CaretIcon } from '../../icons';
+import { CaretIcon, DropdownIcon } from '../../icons';
 import styles from './Dropdown.module.css';
 import Popper from '../../popper/Popper';
 import { Checkbox } from '../checkbox';
@@ -51,6 +51,7 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 		feedback,
 		formatter,
 		custom,
+		newIcon,
 	} = props;
 	const [open, setOpen] = useState(false);
 	const [activeIndex, setActiveIndex] = useState(null);
@@ -362,10 +363,17 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 								? formatter(selectedOptions.length)
 								: selectedOptions?.[0]?.title) ?? placeholder}
 						</span>
-						<CaretIcon
-							data-elem='icon'
-							className={classes(styles.icon, styles['drop-icon'])}
-						/>
+						{newIcon ? (
+							<DropdownIcon
+								data-elem='icon'
+								className={classes(styles.icon, styles['drop-icon'])}
+							/>
+						) : (
+							<CaretIcon
+								data-elem='icon'
+								className={classes(styles.icon, styles['drop-icon'])}
+							/>
+						)}
 					</div>
 				</div>
 				<Popper open={open} wrapperId='dropdown-popper'>
