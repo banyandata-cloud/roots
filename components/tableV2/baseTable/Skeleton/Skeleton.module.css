@@ -1,0 +1,29 @@
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 0rem 0.5rem;
+}
+.row.header {
+  height: 2rem;
+  background: var(--grey4);
+  border-radius: 0.25rem;
+}
+.row.header .th {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.row.header .th .skeleton {
+  background: var(--grey8);
+}
+.row > .column {
+  width: 100%;
+}
+.row > .column .skeleton {
+  height: 1.5rem;
+}/*# sourceMappingURL=Skeleton.module.css.map */
