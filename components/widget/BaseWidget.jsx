@@ -122,7 +122,7 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 		<Text className={styles['title-container']}>
 			<Text className={styles['title-primary']}>
 				<Text
-					variant='b1'
+					variant='h2'
 					stroke='semibold'
 					attrs={{
 						'data-elem': 'title',
@@ -131,7 +131,7 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 				</Text>
 				{subtitle && (
 					<Text
-						variant='b2'
+						variant='b1'
 						stroke='medium'
 						attrs={{
 							'data-elem': 'subtitle',
@@ -143,7 +143,7 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 			</Text>
 			{titleDesc && (
 				<Text
-					variant='b2'
+					variant='b1'
 					stroke='medium'
 					attrs={{
 						'data-elem': 'title-desc',

@@ -12,8 +12,8 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
-  padding: 1.713rem;
+  align-items: flex-start;
+  padding: 1.713rem 1.713rem 0 1.713rem;
 }
 .root .header .header-title {
   display: flex;
