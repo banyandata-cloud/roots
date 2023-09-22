@@ -6,6 +6,7 @@ export * from './BreadcrumbSeperator';
 export * from './Calender';
 export * from './Copy';
 export * from './Download';
+export * from './Dropdown';
 export * from './CheckboxIcon';
 export * from './RadioIcon';
 export * from './Server';
