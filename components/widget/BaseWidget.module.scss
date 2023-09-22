@@ -8,7 +8,7 @@
 	width: 100%;
 
 	.header {
-		@include flex(row, space-between);
+		@include flex(row, space-between, flex-start);
 		padding: 1.713rem;
 
 		.header-title {
