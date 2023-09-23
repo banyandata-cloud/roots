@@ -25,6 +25,7 @@
 		"echarts": "^5.4.0",
 		"echarts-for-react": "^3.0.2",
 		"fast-equals": "^4.0.3",
+		"framer-motion": "^10.16.4",
 		"highcharts": "^11.1.0",
 		"highcharts-react-official": "^3.2.1",
 		"path": "^0.12.7",
