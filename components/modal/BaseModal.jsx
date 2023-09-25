@@ -26,6 +26,7 @@ import { useEffect } from 'react';
  * @param {Function} toggle - A function to toggle the modal's open state.
  * @param {boolean} open - The open state of the modal.
  * @param {boolean} noDismiss - If true, the modal cannot be dismissed by clicking outside or pressing the Escape key.
+ * @param {boolean} hideCrossDismiss - If true, it will hide the cross close button from the top right of the modal.
  * @returns {ReactElement} The rendered modal dialog.
  */
 const BaseModal = (props) => {
@@ -38,6 +39,7 @@ const BaseModal = (props) => {
 		toggle,
 		open,
 		noDismiss,
+		hideCrossDismiss,
 	} = props;
 
 	const { floating, context } = useFloating({
@@ -98,18 +100,20 @@ const BaseModal = (props) => {
 								})()}
 							</footer>
 						)}
-						<Button
-							size='auto'
-							variant='text'
-							data-elem='close'
-							className={styles.close}
-							onClick={() => {
-								toggle(false);
-							}}
-							rightComponent={() => {
-								return <CrossIcon className={styles.icon} />;
-							}}
-						/>
+						{!hideCrossDismiss && (
+							<Button
+								size='auto'
+								variant='text'
+								data-elem='close'
+								className={styles.close}
+								onClick={() => {
+									toggle(false);
+								}}
+								rightComponent={() => {
+									return <CrossIcon className={styles.icon} />;
+								}}
+							/>
+						)}
 					</div>
 				</FloatingFocusManager>
 			)}
@@ -124,6 +128,7 @@ BaseModal.propTypes = {
 	renderFooter: PropTypes.element,
 	toggle: PropTypes.func,
 	noDismiss: PropTypes.bool,
+	hideCrossDismiss: PropTypes.bool,
 };
 
 BaseModal.defaultProps = {
@@ -133,6 +138,7 @@ BaseModal.defaultProps = {
 	renderFooter: null,
 	toggle: () => {},
 	noDismiss: false,
+	hideCrossDismiss: false,
 };
 
 export default BaseModal;
