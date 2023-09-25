@@ -17,6 +17,7 @@ export * from './Plus';
 export * from './Edit';
 export * from './View';
 export * from './Filter';
+export * from './ColumnFilter';
 export * from './MagnifyingGlass';
 export * from './Columns';
 export * from './Refresh';
