@@ -21,7 +21,7 @@ const BreadCrumbs = (props) => {
 
 	const [expand, setExpand] = useState(false);
 
-	let href = '';
+	let href = `/${crumbs?.[0]?.path}`;
 	const crumbsList = crumbs?.slice(1);
 
 	const CrumbsDOM =
