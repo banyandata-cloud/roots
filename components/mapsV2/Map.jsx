@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { forwardRef, useImperativeHandle, useRef } from 'react';
 import Highcharts from 'highcharts';
 import PropTypes from 'prop-types';
 import highchartsMap from 'highcharts/modules/map';
@@ -56,7 +56,7 @@ const FullScreenButton = ({ handleFullScreen }) => {
  * @param {Object} customMarkerOptions - Additional options for the custom markers.
  * @returns {JSX.Element} The rendered map component.
  */
-const Map = (props) => {
+const Map = forwardRef((props, ref) => {
 	const { loading, theme, fallback, className, showFullScreen } = props;
 
 	if (loading) {
@@ -94,13 +94,20 @@ const Map = (props) => {
 		}
 	};
 
+	useImperativeHandle(ref, () => ({
+		/**
+		 * methods to get exposed
+		 */
+		toggleFullScreen: handleFullScreen,
+	}));
+
 	return (
 		<div className={classes(styles.root, className)}>
 			<HighchartsReact {...chartProps} />
 			{showFullScreen && <FullScreenButton handleFullScreen={handleFullScreen} />}
 		</div>
 	);
-};
+});
 
 Map.propTypes = {
 	coordinates: PropTypes.arrayOf(
