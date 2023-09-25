@@ -39,6 +39,7 @@ const Table = (props) => {
 		rowHeight,
 		theme,
 		onRowClick,
+		onSearch,
 		defaultActiveIndex,
 		custom,
 	} = props;
@@ -151,6 +152,7 @@ const Table = (props) => {
 							hiddenColumns,
 							setHiddenColumns,
 						}}
+						onSearch={onSearch}
 						loading={loading}
 						theme={theme}
 					/>
@@ -228,6 +230,7 @@ Table.propTypes = {
 	onSort: PropTypes.func,
 	rowHeight: PropTypes.oneOf(['md', 'lg']),
 	onRowClick: PropTypes.func,
+	onSearch: PropTypes.func,
 	theme: PropTypes.oneOf(['light', 'dark']),
 	custom: PropTypes.node,
 };
@@ -257,6 +260,7 @@ Table.defaultProps = {
 	rowHeight: 'md',
 	theme: 'light',
 	onRowClick: () => {},
+	onSearch: () => {},
 	custom: null,
 };
 
