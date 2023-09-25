@@ -54,7 +54,9 @@
 
 		.header-options {
 			@include flex(column, flex-end, flex-end);
-			gap: 0.5rem;
+			&.toggle {
+				gap: 0.5rem;
+			}
 
 			.header-options-toggle {
 				.toggle-body {

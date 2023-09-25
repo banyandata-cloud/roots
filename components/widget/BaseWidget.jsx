@@ -211,11 +211,20 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 					)}
 				</div>
 
-				<div className={classes(styles['header-options'])} data-elem='header-options'>
-					<div className={classes(styles['header-options-toggle'])} data-elem='header-options-toggle'>
+				<div
+					className={classes(
+						styles['header-options'],
+						(toggle?.options?.length ?? 0) > 0 && styles.toggle
+					)}
+					data-elem='header-options'>
+					<div
+						className={classes(styles['header-options-toggle'])}
+						data-elem='header-options-toggle'>
 						{(toggle?.options?.length ?? 0) > 0 && renderToggle(toggle, theme)}
 					</div>
-					<div className={classes(styles['header-options-list'])} data-elem='header-options-list'>
+					<div
+						className={classes(styles['header-options-list'])}
+						data-elem='header-options-list'>
 						{(options?.length ?? 0) > 0 &&
 							options?.map((objectData) => {
 								return generateOptions(objectData, theme);

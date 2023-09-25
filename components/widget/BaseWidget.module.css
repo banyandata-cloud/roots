@@ -58,6 +58,8 @@
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-end;
+}
+.root .header .header-options.toggle {
   gap: 0.5rem;
 }
 .root .header .header-options .header-options-toggle .toggle-body {
