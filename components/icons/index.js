@@ -32,3 +32,4 @@ export * from './Close';
 export * from './Sort';
 export * from './Clock';
 export * from './MaximizeIcon';
+export * from './Home';
