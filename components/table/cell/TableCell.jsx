@@ -46,10 +46,6 @@ const TableCell = forwardRef(function TableCell(props, ref) {
 		v2,
 	} = props;
 
-	console.log({
-		v2,
-	});
-
 	if (v2) {
 		return <TableCellV2 {...props} />;
 	}
