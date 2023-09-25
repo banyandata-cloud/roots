@@ -10,6 +10,7 @@ import { Pagination } from '../../pagination';
 import styles from './Table.module.css';
 import { TableColumn } from '../BaseTable.class';
 import { ErrorBoundaryWrapper } from '../../errorBoundary';
+import { Table as TableV2 } from '../../tableV2/table';
 
 const INTERSECTION = 1;
 const STEP = 0.05;
@@ -41,7 +42,12 @@ const Table = (props) => {
 		onRowClick,
 		defaultActiveIndex,
 		custom,
+		v2,
 	} = props;
+
+	if (v2) {
+		return <TableV2 {...props} />;
+	}
 
 	const ref = useRef(null);
 	const paginationRef = useRef(null);
@@ -230,6 +236,7 @@ Table.propTypes = {
 	onRowClick: PropTypes.func,
 	theme: PropTypes.oneOf(['light', 'dark']),
 	custom: PropTypes.node,
+	v2: PropTypes.bool,
 };
 
 Table.defaultProps = {
@@ -260,6 +267,7 @@ Table.defaultProps = {
 	theme: 'light',
 	onRowClick: () => {},
 	custom: null,
+	v2: false,
 };
 
 export default Table;
