@@ -4,12 +4,14 @@ import {
 	useFloating,
 	useInteractions,
 } from '@floating-ui/react-dom-interactions';
+import { useAnimate } from 'framer-motion';
 import PropTypes from 'prop-types';
 import { classes } from '../../utils';
 import { CrossIcon } from '../icons';
 import { Popper } from '../popper';
 import { Button } from '../buttons';
 import styles from './BaseModal.module.css';
+import { useEffect } from 'react';
 
 const BaseModal = (props) => {
 	const {
@@ -34,6 +36,15 @@ const BaseModal = (props) => {
 		}),
 	]);
 
+	const [scope, animate] = useAnimate();
+
+	useEffect(() => {
+		if (scope.current) {
+			animate(scope.current, { opacity: 1 });
+			animate('footer', { y: ['100%', '0%'] });
+		}
+	});
+
 	return (
 		<Popper
 			open={open}
@@ -46,19 +57,20 @@ const BaseModal = (props) => {
 						{...getFloatingProps({
 							className: classes(styles.root, className),
 							ref: floating,
-						})}>
+						})}
+						ref={scope}>
 						{renderHeader && (
-							<div data-elem='header' className={styles.header}>
+							<header data-elem='header' className={styles.header}>
 								{renderHeader}
-							</div>
+							</header>
 						)}
 						<div data-elem='body' className={styles.body}>
 							{children}
 						</div>
 						{renderFooter && (
-							<div data-elem='footer' className={styles.footer}>
+							<footer data-elem='footer' className={styles.footer}>
 								{renderFooter}
-							</div>
+							</footer>
 						)}
 						<Button
 							size='auto'
