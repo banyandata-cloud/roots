@@ -16,21 +16,21 @@
 
 	.header {
 		font-weight: 600;
-		font-size: 0.875rem;
+		font-size: 1rem;
 		color: $black;
 	}
 	.footer {
 		@include flex(row, flex-end);
 		gap: 1rem;
 		.cancel[data-elem='base-cell'] {
-			@include flex(row, flex-start, stretch);
+			@include flex(row, center, stretch);
 			color: $grey1;
 			border-radius: 0.25rem;
 			border: 1px solid $grey4;
 		}
 	}
 	.description {
-		padding: 0.5rem 0px;
-		font-size: 0.75rem;
+		padding: 0.5rem 0;
+		font-size: 1rem;
 	}
 }

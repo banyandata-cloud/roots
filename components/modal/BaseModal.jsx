@@ -4,12 +4,14 @@ import {
 	useFloating,
 	useInteractions,
 } from '@floating-ui/react-dom-interactions';
+import { useAnimate } from 'framer-motion';
 import PropTypes from 'prop-types';
 import { classes } from '../../utils';
 import { CrossIcon } from '../icons';
 import { Popper } from '../popper';
 import { Button } from '../buttons';
 import styles from './BaseModal.module.css';
+import { useEffect } from 'react';
 
 /**
  * Renders a modal dialog with customizable header, body, and footer content.
@@ -50,6 +52,14 @@ const BaseModal = (props) => {
 	]);
 
 	const { props: bodyProps } = children ?? {};
+	const [scope, animate] = useAnimate();
+
+	useEffect(() => {
+		if (scope.current) {
+			animate(scope.current, { opacity: 1 });
+			animate('footer', { y: ['100%', '0%'] });
+		}
+	});
 
 	return (
 		<Popper
@@ -63,29 +73,30 @@ const BaseModal = (props) => {
 						{...getFloatingProps({
 							className: classes(styles.root, className),
 							ref: floating,
-						})}>
+						})}
+						ref={scope}>
 						{renderHeader && (
-							<div data-elem='header' className={styles.header}>
+							<header data-elem='header' className={styles.header}>
 								{(() => {
 									if (typeof renderHeader !== 'function') {
 										return renderHeader;
 									}
 									return renderHeader({ ...bodyProps });
 								})()}
-							</div>
+							</header>
 						)}
 						<div data-elem='body' className={styles.body}>
 							{children}
 						</div>
 						{renderFooter && (
-							<div data-elem='footer' className={styles.footer}>
+							<footer data-elem='footer' className={styles.footer}>
 								{(() => {
 									if (typeof renderFooter !== 'function') {
 										return renderFooter;
 									}
 									return renderFooter({ ...bodyProps });
 								})()}
-							</div>
+							</footer>
 						)}
 						<Button
 							size='auto'

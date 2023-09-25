@@ -5,32 +5,51 @@ import BaseModal from '../BaseModal';
 import { classes } from '../../../utils';
 import styles from './Dialog.module.css';
 
+const Header = ({ heading }) => {
+	return (
+		<div className={styles.header}>
+			<p>{heading}</p>
+		</div>
+	);
+};
+
+const Footer = ({ action, onAction, onCancel, variant }) => {
+	return (
+		<div className={styles.footer}>
+			<Button
+				color='default'
+				variant='outlined'
+				className={styles.cancel}
+				onClick={onCancel}
+				title='Cancel'
+			/>
+			<Button onClick={onAction} title={action} color={variant} variant={'outlined'} />
+		</div>
+	);
+};
+
 const DialogBox = (props) => {
 	const { open, heading, description, action, variant, onCancel, onAction, size, className } =
 		props;
+
+	const headerProps = {
+		heading,
+	};
+
+	const footerProps = {
+		action,
+		variant,
+		onAction,
+		onCancel,
+	};
 
 	return (
 		<BaseModal
 			open={open}
 			toggle={onCancel}
 			className={classes(className, styles.root, styles[size])}
-			renderHeader={
-				<div className={styles.header}>
-					<p>{heading}</p>
-				</div>
-			}
-			renderFooter={
-				<div className={styles.footer}>
-					<Button
-						color='default'
-						variant='outlined'
-						className={styles.cancel}
-						onClick={onCancel}
-						title='Cancel'
-					/>
-					<Button onClick={onAction} title={action} color={variant} />
-				</div>
-			}>
+			renderHeader={<Header {...headerProps} />}
+			renderFooter={<Footer {...footerProps} />}>
 			<div className={styles.description}>{description}</div>
 		</BaseModal>
 	);
@@ -55,7 +74,7 @@ DialogBox.defaultProps = {
 	variant: 'danger',
 	onCancel: () => {},
 	onAction: () => {},
-	size: 'sm',
+	size: 'md',
 };
 
 export default DialogBox;
