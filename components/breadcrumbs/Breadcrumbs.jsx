@@ -22,14 +22,15 @@ const BreadCrumbs = (props) => {
 	const [expand, setExpand] = useState(false);
 
 	let href = '';
+	const crumbsList = crumbs?.slice(1);
 
 	const CrumbsDOM =
-		crumbs !== null &&
-		crumbs.map((crumb, index) => {
+		crumbsList !== null &&
+		crumbsList.map((crumb, index) => {
 			const { title, value, path, search, icon } = crumb;
 
-			const active = index === crumbs.length - 1;
-			const showSeperator = index < crumbs.length - 1;
+			const active = index === crumbsList.length - 1;
+			const showSeperator = index < crumbsList.length - 1;
 
 			href += `/${path}`;
 
@@ -61,7 +62,7 @@ const BreadCrumbs = (props) => {
 			);
 		});
 
-	if (crumbs !== null && CrumbsDOM.length > maxItems && !expand) {
+	if (crumbsList !== null && CrumbsDOM.length > maxItems && !expand) {
 		CrumbsDOM.splice(
 			itemsBeforeCollapse,
 			CrumbsDOM.length - (itemsAfterCollapse + itemsBeforeCollapse),
@@ -81,7 +82,7 @@ const BreadCrumbs = (props) => {
 	}
 
 	return (
-		crumbs?.length > 1 && (
+		crumbsList?.length > 1 && (
 			<div className={classes(styles.root, styles[`theme-${theme}`])}>
 				<Button
 					size='auto'
