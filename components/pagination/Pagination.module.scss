@@ -290,7 +290,7 @@
 
 	&.no-total-data {
 		.row-switcher {
-			flex: 0;
+			flex: 0 0 20%;
 		}
 
 		.jump-to-page {
@@ -298,7 +298,7 @@
 		}
 
 		.form {
-			flex: 1;
+			flex: 1 0 20%;
 		}
 	}
 }
