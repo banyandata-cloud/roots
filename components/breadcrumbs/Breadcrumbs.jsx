@@ -82,7 +82,7 @@ const BreadCrumbs = (props) => {
 	}
 
 	return (
-		crumbsList?.length > 1 && (
+		crumbs?.length > 1 && (
 			<div className={classes(styles.root, styles[`theme-${theme}`])}>
 				<Button
 					size='auto'
