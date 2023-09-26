@@ -30,6 +30,7 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  flex: 1 0 10%;
 }
 .root .copyrightText > .text {
   color: #9a9ea5;
@@ -195,7 +196,7 @@
   .root .form {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
   }
 }
@@ -296,11 +297,17 @@
     display: inline;
   }
 }
+.root.no-total-data .copyrightText {
+  flex: 1 0 30%;
+}
 .root.no-total-data .row-switcher {
-  flex: 0 0 20%;
+  flex: 0;
+}
+.root.no-total-data .page-numbers {
+  flex: 1 1 100%;
 }
 .root.no-total-data .jump-to-page {
-  flex: 1 1 60%;
+  flex: 1 1 40%;
 }
 .root.no-total-data .form {
   flex: 1 0 20%;

@@ -24,6 +24,7 @@
 
 	.copyrightText {
 		@include flex(row, flex-start, center);
+		flex: 1 0 10%;
 		> .text {
 			color: #9a9ea5;
 			font-size: 0.875rem;
@@ -182,7 +183,7 @@
 	.form {
 		display: none;
 		@include lg {
-			@include flex;
+			@include flex(row, space-between, center);
 		}
 		> [data-elem*='component'] {
 			width: 100%;
@@ -289,14 +290,18 @@
 	}
 
 	&.no-total-data {
+		.copyrightText {
+			flex: 1 0 30%;
+		}
 		.row-switcher {
-			flex: 0 0 20%;
+			flex: 0;
 		}
-
+		.page-numbers {
+			flex: 1 1 100%;
+		}
 		.jump-to-page {
-			flex: 1 1 60%;
+			flex: 1 1 40%;
 		}
-
 		.form {
 			flex: 1 0 20%;
 		}
