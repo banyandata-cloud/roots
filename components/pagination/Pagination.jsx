@@ -136,21 +136,6 @@ export const Pagination = forwardRef((props, ref) => {
 				<p className={styles.text}>© 2023 Banyan Cloud Inc. All rights reserved.</p>
 			</div>
 			<div className={styles['page-numbers']}>
-				{/* <Button
-					size='auto'
-					disabled={currentPage === 1}
-					title='Prev'
-					onClick={() => {
-						onChange({
-							type: 'PREV_PAGE',
-						});
-					}}
-					className={classes(styles.button)}
-					leftComponent={() => {
-						return <ChevronIcon className={styles.icon} position='left' />;
-					}}
-					variant='text'
-				/> */}
 				<div className={styles.pageSelect}>
 					{paginationList.pages.map((page) => {
 						const active = currentPage === page.number;
@@ -171,21 +156,6 @@ export const Pagination = forwardRef((props, ref) => {
 						);
 					})}
 				</div>
-				{/* <Button
-					size='auto'
-					disabled={currentPage === totalPages}
-					title='Next'
-					onClick={() => {
-						onChange({
-							type: 'NEXT_PAGE',
-						});
-					}}
-					className={classes(styles.button)}
-					rightComponent={() => {
-						return <ChevronIcon className={styles.icon} position='right' />;
-					}}
-					variant='text'
-				/> */}
 			</div>
 			{showTotalData && (
 				<Text
@@ -210,11 +180,6 @@ export const Pagination = forwardRef((props, ref) => {
 						size='auto'
 						flexible
 						className={styles['row-switcher-handle']}
-						// component1={
-						// <span title='Rows per page' className={styles.text}>
-						// Rows per page
-						// </span>
-						// }
 						component1={
 							<Dropdown
 								className={styles.dropdown}
@@ -262,9 +227,6 @@ export const Pagination = forwardRef((props, ref) => {
 									ref={jumpPageRef}
 									type='number'
 									className={styles.inputbox}
-									// LeftComponent={() => {
-									// 	return <SearchIcon className={styles.icon} />;
-									// }}
 								/>
 							}
 							component2={

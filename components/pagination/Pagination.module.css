@@ -297,11 +297,11 @@
   }
 }
 .root.no-total-data .row-switcher {
-  flex: 0;
+  flex: 0 0 20%;
 }
 .root.no-total-data .jump-to-page {
   flex: 1 1 60%;
 }
 .root.no-total-data .form {
-  flex: 1;
+  flex: 1 0 20%;
 }/*# sourceMappingURL=Pagination.module.css.map */
