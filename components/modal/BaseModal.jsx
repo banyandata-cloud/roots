@@ -21,6 +21,7 @@ const BaseModal = (props) => {
 		toggle,
 		open,
 		noDismiss,
+		customWrapperId,
 	} = props;
 
 	const { floating, context } = useFloating({
@@ -39,7 +40,7 @@ const BaseModal = (props) => {
 			open={open}
 			className={popperClassName}
 			transparent={false}
-			wrapperId='base-modal-popper'>
+			wrapperId={customWrapperId ?? 'base-modal-popper'}>
 			{open && (
 				<FloatingFocusManager context={context}>
 					<div
@@ -86,6 +87,7 @@ BaseModal.propTypes = {
 	renderFooter: PropTypes.element,
 	toggle: PropTypes.func,
 	noDismiss: PropTypes.bool,
+	customWrapperId: PropTypes.string,
 };
 
 BaseModal.defaultProps = {
@@ -95,6 +97,7 @@ BaseModal.defaultProps = {
 	renderFooter: null,
 	toggle: () => {},
 	noDismiss: false,
+	customWrapperId: null,
 };
 
 export default BaseModal;
