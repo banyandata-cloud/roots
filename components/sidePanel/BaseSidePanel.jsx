@@ -12,9 +12,8 @@ const BaseSidePanel = (props) => {
 	return isModal ? (
 		<Popper
 			open={open}
-			customWrapperId='side-panel'
 			transparent={false}
-			wrapperId='base-modal-popper'
+			wrapperId='side-panel'
 			className={classes(styles.modal, open ? '' : styles.close, className)}>
 			{renderHeader && (
 				<div data-elem='header' className={styles.header}>
