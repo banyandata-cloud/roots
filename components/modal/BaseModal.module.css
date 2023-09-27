@@ -34,7 +34,7 @@
 .root .header {
   font-weight: 500;
   font-size: 1.375rem;
-  border-bottom: 1px solid var(--grey6);
+  border-bottom: 0.0625rem solid var(--grey6);
 }
 .root .footer {
   margin-top: auto;
