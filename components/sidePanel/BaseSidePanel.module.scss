@@ -20,11 +20,11 @@
 
 .modal {
 	height: 100%;
-	width: 30%;
+	width: 45%;
 	@include flex(column, flex-end, stretch);
 	position: fixed;
-	top: 0 !important;
-	left: 70% !important;
+	top: 0% !important;
+	left: 55% !important;
 	z-index: 100;
 	background: $white;
 	@include boxShadow;
