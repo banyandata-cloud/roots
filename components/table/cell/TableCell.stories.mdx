@@ -1,0 +1,141 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+
+import TableCell from './TableCell';
+
+<Meta title='Components/Table/Cell' parameters={{ options: { showToolbar: false } }} />
+
+export const Template = (args) => (
+	<div
+		style={{
+			background: '#ccc',
+			height: '10rem',
+			padding: '1rem',
+		}}>
+		<TableCell {...args} />
+	</div>
+);
+
+# Table Cell
+
+Just extends the Base Cell with the property of text overflow ellipsis.
+
+#### Design - [Figma](https://www.figma.com/file/e9opoAtQHBo4vFd6u0Co98/Component-Library?type=design&node-id=1-5&mode=design&t=tXbQWENNIzmFNTVU-0) | Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/components/table/cell)
+
+> This components uses combination of all Table Elements i.e Cell, Header, Coloum and Row.
+
+## Usage
+
+Basic import and additional information on how to use this component.
+
+```js
+import { TableCell } from '@banyan_cloud/roots';
+```
+
+## Stories
+
+The CSF rendered inside the `Canvas` from which you can see the implementation example.
+
+### Default
+
+<Canvas>
+	<Story
+		name='Default'
+		args={{
+			className: '',
+			component1: 1,
+			component2: 2,
+			component3: 3,
+			v2: true,
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+## Try in the Code Editor
+
+This embeded `CodeSandBox` is external third party code editor `iframe` shared publicly. It is advised to create an account with banyancloud mail id to create/fork this sandbox.
+
+<iframe
+	src='https://codesandbox.io/s/delicate-wood-vrqzpw?file=/src/App.js'
+	style={{ width: '100%', height: 500 }}
+	title='xenodochial-moon-5y668f'
+	allow='accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking'
+	sandbox='allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts'></iframe>
+
+## API
+
+**`component1`**
+
+Prop to display Element at left of Base Cell.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>element</td>
+		<td>null</td>
+	</tr>
+</table>
+
+```jsx
+<TableCell component1={1} />
+```
+
+**`component2`**
+
+Prop to display Element at Center of Base Cell.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>element</td>
+		<td>null</td>
+	</tr>
+</table>
+
+```jsx
+<TableCell component2={2} />
+```
+
+**`component3`**
+
+Prop to display Element at Right of Base Cell.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>element</td>
+		<td>null</td>
+	</tr>
+</table>
+
+```jsx
+<TableCell component3={3} />
+```
+
+**`className`**
+
+Key to change style through external className.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>''</td>
+	</tr>
+</table>
+
+```jsx
+<BaseTable className='chart-area' />
+```

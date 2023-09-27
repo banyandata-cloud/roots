@@ -1,9 +1,11 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-tabs */
 import React, { forwardRef, useEffect, useReducer, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { classes } from '../../utils';
 import { Button } from '../buttons';
 import { Dropdown, DropdownItem, TextField } from '../input';
-import { ArrowIcon, ChevronIcon, SearchIcon } from '../icons';
+import { ArrowIcon, SearchIcon } from '../icons';
 import { BaseCell } from '../cell';
 import { PaginationList } from './Pagination.class';
 import styles from './Pagination.module.css';
@@ -130,70 +132,10 @@ export const Pagination = forwardRef((props, ref) => {
 				floating ? styles.floating : '',
 				showTotalData ? '' : styles['no-total-data']
 			)}>
-			<BaseCell
-				size='auto'
-				flexible
-				className={styles['row-switcher']}
-				component2={
-					<BaseCell
-						size='auto'
-						flexible
-						className={styles['row-switcher-handle']}
-						component1={
-							<span title='Rows per page' className={styles.text}>
-								Rows per page
-							</span>
-						}
-						component2={
-							<Dropdown
-								className={styles.dropdown}
-								popperClassName={styles['dropdown-popper']}
-								value={step}
-								placeholder={null}
-								onChange={(e, newStep) => {
-									onChange({
-										type: 'SET_STEP',
-										payload: newStep,
-									});
-								}}>
-								{dropdownOptions.map((item) => {
-									return <DropdownItem title={item} value={item} key={item} />;
-								})}
-							</Dropdown>
-						}
-					/>
-				}
-			/>
-			{showTotalData && (
-				<Text
-					variant='b1'
-					stroke='medium'
-					className={styles['total-data']}
-					attrs={{
-						title: `${(currentPage - 1) * step + 1}-${
-							currentPage * step
-						} of ${totalData}`,
-					}}>
-					{(currentPage - 1) * step + 1}-
-					{currentPage === totalPages ? totalData : currentPage * step} of {totalData}
-				</Text>
-			)}
+			<div className={styles.copyrightText}>
+				<p className={styles.text}>© 2023 Banyan Cloud Inc. All rights reserved.</p>
+			</div>
 			<div className={styles['page-numbers']}>
-				<Button
-					size='auto'
-					disabled={currentPage === 1}
-					title='Prev'
-					onClick={() => {
-						onChange({
-							type: 'PREV_PAGE',
-						});
-					}}
-					className={classes(styles.button)}
-					leftComponent={() => {
-						return <ChevronIcon className={styles.icon} position='left' />;
-					}}
-					variant='text'
-				/>
 				<div className={styles.pageSelect}>
 					{paginationList.pages.map((page) => {
 						const active = currentPage === page.number;
@@ -214,22 +156,51 @@ export const Pagination = forwardRef((props, ref) => {
 						);
 					})}
 				</div>
-				<Button
-					size='auto'
-					disabled={currentPage === totalPages}
-					title='Next'
-					onClick={() => {
-						onChange({
-							type: 'NEXT_PAGE',
-						});
-					}}
-					className={classes(styles.button)}
-					rightComponent={() => {
-						return <ChevronIcon className={styles.icon} position='right' />;
-					}}
-					variant='text'
-				/>
 			</div>
+			{showTotalData && (
+				<Text
+					variant='b1'
+					stroke='medium'
+					className={styles['total-data']}
+					attrs={{
+						title: `${(currentPage - 1) * step + 1}-${
+							currentPage * step
+						} of ${totalData}`,
+					}}>
+					{(currentPage - 1) * step + 1}-
+					{currentPage === totalPages ? totalData : currentPage * step}/{totalData}
+				</Text>
+			)}
+			<BaseCell
+				size='auto'
+				flexible
+				className={styles['row-switcher']}
+				component2={
+					<BaseCell
+						size='auto'
+						flexible
+						className={styles['row-switcher-handle']}
+						component1={
+							<Dropdown
+								className={styles.dropdown}
+								popperClassName={styles['dropdown-popper']}
+								value={step}
+								newIcon
+								placeholder={null}
+								onChange={(e, newStep) => {
+									onChange({
+										type: 'SET_STEP',
+										payload: newStep,
+									});
+								}}>
+								{dropdownOptions.map((item) => {
+									return <DropdownItem title={item} value={item} key={item} />;
+								})}
+							</Dropdown>
+						}
+					/>
+				}
+			/>
 			<BaseCell
 				flexible
 				className={styles.form}
@@ -256,9 +227,6 @@ export const Pagination = forwardRef((props, ref) => {
 									ref={jumpPageRef}
 									type='number'
 									className={styles.inputbox}
-									LeftComponent={() => {
-										return <SearchIcon className={styles.icon} />;
-									}}
 								/>
 							}
 							component2={

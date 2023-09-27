@@ -75,9 +75,9 @@
   align-items: center;
   position: relative;
   background-color: transparent;
-  border-radius: 0.25rem;
+  border-radius: 0.3125rem;
   width: auto;
-  border: 0.0625rem solid transparent;
+  border: 0.0625rem solid #dfe0e2;
   padding: 0.75rem 1rem;
   cursor: pointer;
 }
@@ -178,11 +178,18 @@
 .root .date-picker.dark .container .placeholder {
   color: var(--grey2);
 }
+.root .date-picker.dark .container .value {
+  color: var(--grey2);
+}
 .root .date-picker.light .container {
   border-color: var(--grey4);
 }
 .root .date-picker.light .container .placeholder {
   color: var(--grey);
+}
+.root .date-picker.light .container .value {
+  color: var(--grey);
+  padding: 0rem 0.3rem 0rem 0rem;
 }
 .root .date-picker .error-text {
   font-weight: 400;

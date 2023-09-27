@@ -1,0 +1,10 @@
+.root {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 100%;
+  width: 100%;
+  gap: 1.5rem;
+  padding: 1rem;
+}/*# sourceMappingURL=Skeleton.module.css.map */

@@ -9,6 +9,9 @@ import {
 	GridComponent,
 	TooltipComponent,
 	TitleComponent,
+	DataZoomComponent,
+	DataZoomInsideComponent,
+	DataZoomSliderComponent,
 	DatasetComponent,
 	LegendComponent,
 } from 'echarts/components';
@@ -25,6 +28,9 @@ import { COLORS } from '../../../styles';
 // Register the required components
 echarts.use([
 	TitleComponent,
+	DataZoomComponent,
+	DataZoomInsideComponent,
+	DataZoomSliderComponent,
 	TooltipComponent,
 	GridComponent,
 	DatasetComponent,
@@ -40,7 +46,7 @@ const AXIS_COLORS = {
 	},
 	line: {
 		dark: '#757679',
-		light: COLORS.grey3,
+		light: '#414955',
 	},
 	split: {
 		dark: COLORS['dark-grey'],
@@ -79,6 +85,7 @@ const BaseVerticalBarChart = (props) => {
 		gridOptions,
 		xAxisShow,
 		xAxisLabel,
+		xSplitLineShow,
 		seriesData,
 		onEvents,
 		yAxisLabelShow,
@@ -86,11 +93,14 @@ const BaseVerticalBarChart = (props) => {
 		yAxisLineShow,
 		yAxisTickShow,
 		axisColor,
+		xAxisTick,
 		splitType,
+		xSplitType,
 		barWidth,
 		cursor,
 		legend,
 		tooltip,
+		dataZoom,
 		seriesName,
 		stackCount,
 		seriesOption,
@@ -205,6 +215,20 @@ const BaseVerticalBarChart = (props) => {
 				title: {
 					text: title,
 				},
+				dataZoom: [
+					{
+						type: 'inside',
+						id: 'insideX',
+						xAxisIndex: 0,
+						start: 0,
+						end: 100,
+						zoomOnMouseWheel: false,
+						moveOnMouseMove: false,
+						moveOnMouseWheel: false,
+						...dataZoom,
+					},
+				],
+
 				grid: {
 					containLabel: gridContainLabel,
 					...gridOptions,
@@ -217,6 +241,14 @@ const BaseVerticalBarChart = (props) => {
 						show: false,
 						lineStyle: {
 							color: determineAxesColors('tick', axisColor, theme),
+						},
+						...xAxisTick,
+					},
+					splitLine: {
+						show: xSplitLineShow,
+						lineStyle: {
+							color: determineAxesColors('split', axisColor, theme),
+							type: xSplitType,
 						},
 					},
 					axisLabel: {
@@ -282,6 +314,7 @@ BaseVerticalBarChart.propTypes = {
 	xAxisShow: PropTypes.bool,
 	xAxisLabel: PropTypes.object,
 	tooltip: PropTypes.object,
+	dataZoom: PropTypes.object,
 	seriesData: PropTypes.shape({
 		chartData: PropTypes.object,
 		metaData: PropTypes.object,
@@ -291,10 +324,13 @@ BaseVerticalBarChart.propTypes = {
 	ySplitLineShow: PropTypes.bool,
 	yAxisLineShow: PropTypes.bool,
 	yAxisTickShow: PropTypes.bool,
+	xSplitLineShow: PropTypes.bool,
 	axisColor: PropTypes.string,
 	splitType: PropTypes.string,
+	xSplitType: PropTypes.string,
 	barWidth: PropTypes.string,
 	legend: PropTypes.object,
+	xAxisTick: PropTypes.object,
 	seriesName: PropTypes.func,
 	cursor: PropTypes.string,
 	stackCount: PropTypes.number,
@@ -325,19 +361,28 @@ BaseVerticalBarChart.defaultProps = {
 	tooltip: {
 		trigger: 'item',
 	},
+	dataZoom: {},
+	// dataZoom: {
+	// 	moveOnMouseMove: true,
+	// 	moveOnMouseWheel: true,
+	// 	end: 80,
+	// },
 	seriesData: {},
 	onEvents: () => {},
 	yAxisLabelShow: false,
 	ySplitLineShow: false,
 	yAxisLineShow: false,
 	yAxisTickShow: false,
+	xSplitLineShow: false,
 	axisColor: '',
+	xSplitType: 'solid',
 	splitType: 'solid',
 	barWidth: '50%',
 	seriesName: () => {},
 	legend: {
 		show: true,
 	},
+	xAxisTick: {},
 	cursor: 'default',
 	stackCount: 1,
 	seriesOption: [

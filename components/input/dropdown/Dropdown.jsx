@@ -8,6 +8,7 @@ import React, {
 	useRef,
 	useLayoutEffect,
 } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 import {
 	useFloating,
 	useInteractions,
@@ -24,11 +25,12 @@ import {
 } from '@floating-ui/react-dom-interactions';
 import PropTypes from 'prop-types';
 import { classes } from '../../../utils';
-import { CaretIcon } from '../../icons';
+import { CaretIcon, DropdownIcon } from '../../icons';
 import styles from './Dropdown.module.css';
 import Popper from '../../popper/Popper';
 import { Checkbox } from '../checkbox';
 import Button from '../../buttons/button/Button';
+import { ErrorBoundaryWrapper } from '../../errorBoundary';
 
 // eslint-disable-next-line prefer-arrow-callback
 const Dropdown = forwardRef(function Dropdown(props, inputRef) {
@@ -48,6 +50,8 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 		name,
 		feedback,
 		formatter,
+		custom,
+		newIcon,
 	} = props;
 	const [open, setOpen] = useState(false);
 	const [activeIndex, setActiveIndex] = useState(null);
@@ -300,136 +304,159 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 	};
 
 	return (
-		<div
-			className={classes(
-				className,
-				styles.root,
-				open ? styles.open : '',
-				disabled ? styles.disabled : ''
-			)}>
-			{label && (
-				<div data-elem='label' className={styles.label}>
-					<span>{label}</span>
-				</div>
-			)}
-			<div
-				data-elem='header'
-				className={styles.header}
-				ref={reference}
-				{...getReferenceProps()}>
-				<input
-					id={id}
-					name={name}
-					ref={inputRef}
-					disabled={disabled}
-					tabIndex={0}
-					className={styles.input}
-					onKeyDown={(event) => {
-						const validKey = [' ', 'Spacebar', 'Enter'].includes(event.key);
-						if (validKey) {
-							setOpen(true);
-						}
-					}}
-					onBlur={onBlur}
-					value={selectedOptions
-						?.map((option) => {
-							return option?.value;
-						})
-						?.join(', ')}
-				/>
-				<div
-					data-elem='select'
-					role='button'
-					className={classes(
-						styles.select,
-						feedback != null ? styles[`feedback-${feedback?.type}`] : ''
-					)}>
-					<span data-elem='placeholder' className={styles.placeholder}>
-						{(selectedOptions?.length > 1
-							? formatter(selectedOptions.length)
-							: selectedOptions?.[0]?.title) ?? placeholder}
-					</span>
-					<CaretIcon
-						data-elem='icon'
-						className={classes(styles.icon, styles['drop-icon'])}
+		<ErrorBoundary
+			FallbackComponent={(args) => {
+				return (
+					<ErrorBoundaryWrapper
+						{...args}
+						className={styles['error-boundary']}
+						custom={custom}
 					/>
-				</div>
-			</div>
-			<Popper open={open} wrapperId='dropdown-popper'>
-				{open && (
-					<FloatingFocusManager context={context} initialFocus={-1} modal={false}>
-						<ul
-							{...getFloatingProps({
-								'data-elem': 'body',
-								role: 'group',
-								ref: floating,
-								onKeyDown(event) {
-									setPointer(false);
-									if (event.key === 'Tab' && !multi) {
-										setOpen(false);
-									}
-								},
-								onPointerMove() {
-									setPointer(true);
-								},
-								style: {
-									position: strategy,
-									top: y ?? 0,
-									left: x ?? 0,
-								},
-								className: classes(
-									styles.body,
-									popperClassName,
-									open ? styles.open : ''
-								),
-							})}>
-							{multi && (
-								<li
-									ref={multiOptionsRef}
-									className={styles['multi-options']}
-									tabIndex={-1}>
-									<Checkbox
-										label='Select All'
-										position='left'
-										checked={selectedOptions.length === childrenArray.length}
-										onChange={onSelectAll}
-									/>{' '}
-									<Button
-										blurOnClick={false}
-										variant='text'
-										title='Clear'
-										size='auto'
-										color='danger'
-										onClick={(event) => {
-											multiOptionsRef?.current?.focus();
-											onSelectAll(event, false);
-										}}
-									/>
-								</li>
-							)}
-							{items}
-							{multi && (
-								<Button
-									className={styles['multi-apply']}
-									title='Apply'
-									size='auto'
-									onClick={onApply}
-								/>
-							)}
-						</ul>
-					</FloatingFocusManager>
+				);
+			}}>
+			<div
+				className={classes(
+					className,
+					styles.root,
+					open ? styles.open : '',
+					disabled ? styles.disabled : ''
+				)}>
+				{label && (
+					<div data-elem='label' className={styles.label}>
+						<span>{label}</span>
+					</div>
 				)}
-			</Popper>
-			{feedback != null && (
-				<div className={styles.bottom}>
+				<div
+					data-elem='header'
+					className={styles.header}
+					ref={reference}
+					{...getReferenceProps()}>
+					<input
+						id={id}
+						name={name}
+						ref={inputRef}
+						disabled={disabled}
+						tabIndex={0}
+						className={styles.input}
+						onKeyDown={(event) => {
+							const validKey = [' ', 'Spacebar', 'Enter'].includes(event.key);
+							if (validKey) {
+								setOpen(true);
+							}
+						}}
+						onBlur={onBlur}
+						value={selectedOptions
+							?.map((option) => {
+								return option?.value;
+							})
+							?.join(', ')}
+					/>
 					<div
-						data-elem='feedback'
-						className={classes(styles.feedback, styles[`feedback-${feedback.type}`])}>
-						{feedback.text}
+						data-elem='select'
+						role='button'
+						className={classes(
+							styles.select,
+							feedback != null ? styles[`feedback-${feedback?.type}`] : ''
+						)}>
+						<span data-elem='placeholder' className={styles.placeholder}>
+							{(selectedOptions?.length > 1
+								? formatter(selectedOptions.length)
+								: selectedOptions?.[0]?.title) ?? placeholder}
+						</span>
+						{newIcon ? (
+							<DropdownIcon
+								data-elem='icon'
+								className={classes(styles.icon, styles['drop-icon'])}
+							/>
+						) : (
+							<CaretIcon
+								data-elem='icon'
+								className={classes(styles.icon, styles['drop-icon'])}
+							/>
+						)}
 					</div>
 				</div>
-			)}
-		</div>
+				<Popper open={open} wrapperId='dropdown-popper'>
+					{open && (
+						<FloatingFocusManager context={context} initialFocus={-1} modal={false}>
+							<ul
+								{...getFloatingProps({
+									'data-elem': 'body',
+									role: 'group',
+									ref: floating,
+									onKeyDown(event) {
+										setPointer(false);
+										if (event.key === 'Tab' && !multi) {
+											setOpen(false);
+										}
+									},
+									onPointerMove() {
+										setPointer(true);
+									},
+									style: {
+										position: strategy,
+										top: y ?? 0,
+										left: x ?? 0,
+									},
+									className: classes(
+										styles.body,
+										popperClassName,
+										open ? styles.open : ''
+									),
+								})}>
+								{multi && (
+									<li
+										ref={multiOptionsRef}
+										className={styles['multi-options']}
+										tabIndex={-1}>
+										<Checkbox
+											label='Select All'
+											position='left'
+											checked={
+												selectedOptions.length === childrenArray.length
+											}
+											onChange={onSelectAll}
+										/>{' '}
+										<Button
+											blurOnClick={false}
+											variant='text'
+											title='Clear'
+											size='auto'
+											color='danger'
+											onClick={(event) => {
+												multiOptionsRef?.current?.focus();
+												onSelectAll(event, false);
+											}}
+										/>
+									</li>
+								)}
+								{items}
+								{multi && (
+									<Button
+										className={styles['multi-apply']}
+										title='Apply'
+										size='auto'
+										onClick={onApply}
+									/>
+								)}
+							</ul>
+						</FloatingFocusManager>
+					)}
+				</Popper>
+				{feedback != null && (
+					<div className={styles.bottom}>
+						<div
+							data-elem='feedback'
+							className={classes(
+								styles.feedback,
+								styles[`feedback-${feedback.type}`]
+							)}>
+							{feedback.text}
+						</div>
+					</div>
+				)}
+			</div>
+		</ErrorBoundary>
 	);
 });
 

@@ -301,7 +301,7 @@ BaseAreaChart.propTypes = {
 	xAxisLabel: PropTypes.object,
 	axisLabelColor: PropTypes.string,
 	axisSplitColor: PropTypes.string,
-	splitType: PropTypes.string,
+	splitType: PropTypes.oneOf(['dashed', 'solid', 'dotted']),
 	seriesData: PropTypes.objectOf(PropTypes.shape),
 	stacked: PropTypes.bool,
 	yAxisLabelShow: PropTypes.bool,

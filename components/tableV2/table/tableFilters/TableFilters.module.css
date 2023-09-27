@@ -1,0 +1,58 @@
+.root[data-elem=base-cell] {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  background: #ececed;
+  overflow-x: auto;
+  padding: 0.375rem 1rem;
+  width: 100%;
+}
+.root[data-elem=base-cell]::-webkit-scrollbar {
+  display: none;
+}
+.root[data-elem=base-cell] .icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+}
+.root[data-elem=base-cell] button.icon-button {
+  border: 1px solid red;
+  height: 100%;
+  background: var(--grey8);
+  border: 1px solid var(--grey4);
+  color: #141920;
+}
+.root[data-elem=base-cell] > [data-elem*=component] {
+  height: 100%;
+}
+.root[data-elem=base-cell] .left,
+.root[data-elem=base-cell] .center,
+.root[data-elem=base-cell] .right {
+  height: 100%;
+}
+.root[data-elem=base-cell] > [data-elem=component1] .left {
+  gap: 1rem;
+  background: var(--grey8);
+  border: 1px solid var(--grey4);
+  color: var(--black);
+}
+.root[data-elem=base-cell] > [data-elem=component1] .left [data-elem=left] {
+  gap: 1rem;
+}
+.root[data-elem=base-cell] > [data-elem=component1] .left .icon {
+  fill: var(--black);
+}
+.root[data-elem=base-cell] > [data-elem=component1] .left .filter-value {
+  color: var(--white);
+  background: var(--highlight);
+  padding: 0.125rem 0.5rem;
+  border-radius: 50%;
+  font-size: 0.813rem;
+}
+.root[data-elem=base-cell] > [data-elem=component2] {
+  gap: 0.5rem;
+  height: 100%;
+}/*# sourceMappingURL=TableFilters.module.css.map */

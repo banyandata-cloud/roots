@@ -1,0 +1,1040 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+
+import { useState } from 'react';
+import BaseVerticalBarChart from '../charts/verticalBarChart/BaseVerticalBarChart';
+import BaseWidget from './BaseWidget';
+import { ThemedContainer } from '../helpers';
+import Map from '../maps/Map/Map';
+import { CHART_DATA } from './BaseWidgetStoriesData.js';
+
+<Meta title='Components/Widget' parameters={{ options: { showToolbar: false } }} />
+
+# Widget
+
+Advanced Component Wrapper with interactive and selective features..
+
+#### Design - [Figma](https://www.figma.com/file/e9opoAtQHBo4vFd6u0Co98/Component-Library?type=design&node-id=1-5&mode=design&t=tXbQWENNIzmFNTVU-0) | Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/components/widget)
+
+## Usage
+
+Basic import and additional information on how to use this component.
+
+```js
+import { BaseWidget } from '@banyan_cloud/roots';
+```
+
+## Stories
+
+The CSF rendered inside the `Canvas` from which you can see the implementation example.
+
+### Default
+
+<Canvas>
+	<Story name='Default'>
+		{() => {
+			const [dropValue, setDropValue] = useState(0);
+			const [selectedValue, setSelectedValue] = useState('Option 1');
+			const title = 'Widget Title';
+			const subtitle = '7 Services';
+			const showBack = true;
+			const onBack = () => {
+				alert('This will bring you back');
+			};
+			const onReload = () => {
+				alert('Callback for fallback reload button');
+			};
+			const toggle = {
+				options: [
+					{
+						id: '1',
+						leftCompoenent: '',
+						rightCompoenent: '',
+						title: 'Option 1',
+						value: 'Option 1',
+					},
+					{
+						id: '2',
+						leftCompoenent: '',
+						rightCompoenent: '',
+						title: 'Option 2',
+						value: 'Option 2',
+					},
+				],
+			};
+			const options = [
+				{
+					id: 'dropdown',
+					placeholder: 'Region',
+					selectOption: [
+						{
+							title: 'India',
+							value: '1',
+						},
+						{
+							title: 'USA',
+							value: '2',
+						},
+						{
+							title: 'UAE',
+							value: '3',
+						},
+						{
+							title: 'UK',
+							value: '4',
+						},
+					],
+					onChange: (cb, data) => {
+						cb(data);
+					},
+				},
+				{
+					id: 'expand',
+					title: '',
+					onClick: () => {
+						alert('This will open the Modal or a new Page with Expanded chart');
+					},
+				},
+				{
+					id: 'datepicker',
+					onApply: () => {
+						alert('Apply Date Picker');
+					},
+					onClear: () => {
+						alert('Clear Date Picker');
+					},
+					date: null,
+				},
+			];
+			return (
+				<ThemedContainer
+					style={{
+						height: '100%',
+						width: '100%',
+					}}>
+					<BaseWidget
+						title={title}
+						subtitle={subtitle}
+						showBack={showBack}
+						onBack={onBack}
+						onReload={onReload}
+						toggle={toggle}
+						options={options.map((option) => {
+							return option.id === 'toggle'
+								? {
+										...option,
+										value: selectedValue,
+										onChange: (data) => {
+											setSelectedValue(data);
+										},
+								  }
+								: option.id === 'dropdown'
+								? {
+										...option,
+										value: dropValue,
+										onChange: (event) => {
+											setDropValue(event.target.value);
+										},
+								  }
+								: option;
+						})}>
+						<BaseVerticalBarChart
+							yAxisLabelShow
+							ySplitLineShow
+							xAxisShow
+							xAxisLabel={{
+								show: true,
+								rotate: 90,
+								inside: true,
+								color: 'white',
+								verticalAlign: 'bottom',
+								padding: [0, 0, 20, -5],
+							}}
+							barWidth='15%'
+							seriesData={{
+								chartData:
+									selectedValue === 'Option 1' ? CHART_DATA[1] : CHART_DATA[2],
+							}}
+							seriesOption={[
+								{
+									stackIndex: 1,
+									color: 'orange',
+									showBackground: false,
+									label: {
+										color: 'white',
+										show: false,
+										formatter(param) {
+											return param.name;
+										},
+									},
+								},
+								{
+									stackIndex: 2,
+									showBackground: false,
+									color: 'blue',
+									label: {
+										show: true,
+										color: 'white',
+									},
+								},
+							]}
+						/>
+					</BaseWidget>
+				</ThemedContainer>
+			);
+		}}
+	</Story>
+</Canvas>
+
+### With Title Options
+
+<Canvas>
+	<Story name='With Title Options'>
+		{() => {
+			const [dropValue, setDropValue] = useState(0);
+			const [selectedValue, setSelectedValue] = useState('Option 1');
+			const title = 'Widget Title';
+			const subtitle = '7 Services';
+			const showBack = true;
+			const onBack = () => {
+				alert('This will bring you back');
+			};
+			const onReload = () => {
+				alert('Callback for fallback reload button');
+			};
+			const options = [
+				{
+					id: 'toggle',
+					options: [
+						{
+							id: '1',
+							leftCompoenent: '',
+							rightCompoenent: '',
+							title: 'Option 1',
+							value: 'Option 1',
+						},
+						{
+							id: '2',
+							leftCompoenent: '',
+							rightCompoenent: '',
+							title: 'Option 2',
+							value: 'Option 2',
+						},
+					],
+				},
+				{
+					id: 'dropdown',
+					placeholder: 'Region',
+					selectOption: [
+						{
+							title: 'India',
+							value: '1',
+						},
+						{
+							title: 'USA',
+							value: '2',
+						},
+						{
+							title: 'UAE',
+							value: '3',
+						},
+						{
+							title: 'UK',
+							value: '4',
+						},
+					],
+					onChange: (cb, data) => {
+						cb(data);
+					},
+				},
+				{
+					id: 'expand',
+					title: '',
+					onClick: () => {
+						alert('This will open the Modal or a new Page with Expanded chart');
+					},
+				},
+				{
+					id: 'datepicker',
+					onApply: () => {
+						alert('Apply Date Picker');
+					},
+					onClear: () => {
+						alert('Clear Date Picker');
+					},
+					date: null,
+				},
+			];
+			return (
+				<ThemedContainer
+					style={{
+						height: '100%',
+						width: '100%',
+					}}>
+					<BaseWidget
+						title={title}
+						subtitle={subtitle}
+						showBack={showBack}
+						onBack={onBack}
+						onReload={onReload}
+						titleOptions='Hello There'
+						options={options.map((option) => {
+							return option.id === 'toggle'
+								? {
+										...option,
+										value: selectedValue,
+										onChange: (data) => {
+											setSelectedValue(data);
+										},
+								  }
+								: option.id === 'dropdown'
+								? {
+										...option,
+										value: dropValue,
+										onChange: (event) => {
+											setDropValue(event.target.value);
+										},
+								  }
+								: option;
+						})}>
+						<BaseVerticalBarChart
+							yAxisLabelShow
+							ySplitLineShow
+							xAxisShow
+							xAxisLabel={{
+								show: true,
+								rotate: 90,
+								inside: true,
+								color: 'white',
+								verticalAlign: 'bottom',
+								padding: [0, 0, 20, -5],
+							}}
+							barWidth='15%'
+							seriesData={{
+								chartData:
+									selectedValue === 'Option 1' ? CHART_DATA[1] : CHART_DATA[2],
+							}}
+							seriesOption={[
+								{
+									stackIndex: 1,
+									color: 'orange',
+									showBackground: false,
+									label: {
+										color: 'white',
+										show: false,
+										formatter(param) {
+											return param.name;
+										},
+									},
+								},
+								{
+									stackIndex: 2,
+									showBackground: false,
+									color: 'blue',
+									label: {
+										show: true,
+										color: 'white',
+									},
+								},
+							]}
+						/>
+					</BaseWidget>
+				</ThemedContainer>
+			);
+		}}
+	</Story>
+</Canvas>
+
+### With Fallback
+
+<Canvas>
+	<Story name='With Fallback'>
+		{() => {
+			const [dropValue, setDropValue] = useState(0);
+			const [selectedValue, setSelectedValue] = useState('Option 1');
+			const title = 'Widget Title';
+			const subtitle = '7 Services';
+			const showBack = true;
+			const onBack = () => {
+				alert('This will bring you back');
+			};
+			const onReload = () => {
+				alert('Callback for fallback reload button');
+			};
+			const options = [
+				{
+					id: 'toggle',
+					options: [
+						{
+							id: '1',
+							leftCompoenent: '',
+							rightCompoenent: '',
+							title: 'Option 1',
+							value: 'Option 1',
+						},
+						{
+							id: '2',
+							leftCompoenent: '',
+							rightCompoenent: '',
+							title: 'Option 2',
+							value: 'Option 2',
+						},
+					],
+				},
+				{
+					id: 'dropdown',
+					placeholder: 'Region',
+					selectOption: [
+						{
+							title: 'India',
+							value: '1',
+						},
+						{
+							title: 'USA',
+							value: '2',
+						},
+						{
+							title: 'UAE',
+							value: '3',
+						},
+						{
+							title: 'UK',
+							value: '4',
+						},
+					],
+					onChange: (cb, data) => {
+						cb(data);
+					},
+				},
+				{
+					id: 'expand',
+					title: '',
+					onClick: () => {
+						alert('This will open the Modal or a new Page with Expanded chart');
+					},
+				},
+				{
+					id: 'datepicker',
+					onApply: () => {
+						alert('Apply Date Picker');
+					},
+					onClear: () => {
+						alert('Clear Date Picker');
+					},
+					date: null,
+				},
+			];
+			return (
+				<ThemedContainer
+					style={{
+						height: '100%',
+						width: '100%',
+					}}>
+					<BaseWidget
+						title={title}
+						subtitle={subtitle}
+						showBack={showBack}
+						onBack={onBack}
+						onReload={onReload}
+						showFallback={true}
+						options={options.map((option) => {
+							return option.id === 'toggle'
+								? {
+										...option,
+										value: selectedValue,
+										onChange: (data) => {
+											setSelectedValue(data);
+										},
+								  }
+								: option.id === 'dropdown'
+								? {
+										...option,
+										value: dropValue,
+										onChange: (event) => {
+											setDropValue(event.target.value);
+										},
+								  }
+								: option;
+						})}>
+						<BaseVerticalBarChart
+							yAxisLabelShow
+							ySplitLineShow
+							xAxisShow
+							xAxisLabel={{
+								show: true,
+								rotate: 90,
+								inside: true,
+								color: 'white',
+								verticalAlign: 'bottom',
+								padding: [0, 0, 20, -5],
+							}}
+							barWidth='15%'
+							seriesData={{
+								chartData: selectedValue === 'Option 1' ? {} : CHART_DATA[2],
+							}}
+							seriesOption={[
+								{
+									stackIndex: 1,
+									color: 'orange',
+									showBackground: false,
+									label: {
+										color: 'white',
+										show: false,
+										formatter(param) {
+											return param.name;
+										},
+									},
+								},
+								{
+									stackIndex: 2,
+									showBackground: false,
+									color: 'blue',
+									label: {
+										show: true,
+										color: 'white',
+									},
+								},
+							]}
+						/>
+					</BaseWidget>
+				</ThemedContainer>
+			);
+		}}
+	</Story>
+</Canvas>
+
+### With Nested Fallback Template
+
+<Canvas>
+	<Story name='With Nested Fallback Template'>
+		{() => {
+			const [dropValue, setDropValue] = useState(0);
+			const [selectedValue, setSelectedValue] = useState('Option 1');
+			const [fallback, setFallback] = useState(false);
+			const title = 'Widget Title';
+			const subtitle = '7 Services';
+			const showBack = true;
+			const onBack = () => {
+				alert('This will bring you back');
+			};
+			const onReload = () => {
+				alert('Callback for fallback reload button');
+			};
+			const options = [
+				{
+					id: 'toggle',
+					options: [
+						{
+							id: '1',
+							leftCompoenent: '',
+							rightCompoenent: '',
+							title: 'Option 1',
+							value: 'Option 1',
+						},
+						{
+							id: '2',
+							leftCompoenent: '',
+							rightCompoenent: '',
+							title: 'Option 2',
+							value: 'Option 2',
+						},
+					],
+				},
+				{
+					id: 'dropdown',
+					placeholder: 'Region',
+					selectOption: [
+						{
+							title: 'India',
+							value: '1',
+						},
+						{
+							title: 'USA',
+							value: '2',
+						},
+						{
+							title: 'UAE',
+							value: '3',
+						},
+						{
+							title: 'UK',
+							value: '4',
+						},
+					],
+					onChange: (cb, data) => {
+						cb(data);
+					},
+				},
+				{
+					id: 'expand',
+					title: '',
+					onClick: () => {
+						alert('This will open the Modal or a new Page with Expanded chart');
+					},
+				},
+				{
+					id: 'datepicker',
+					onApply: () => {
+						alert('Apply Date Picker');
+					},
+					onClear: () => {
+						alert('Clear Date Picker');
+					},
+					date: null,
+				},
+			];
+			return (
+				<ThemedContainer
+					style={{
+						height: '100%',
+						width: '100%',
+					}}>
+					<BaseWidget
+						title={title}
+						subtitle={subtitle}
+						showBack={showBack}
+						onBack={onBack}
+						onReload={onReload}
+						setFallback={setFallback}
+						options={options.map((option) => {
+							return option.id === 'toggle'
+								? {
+										...option,
+										value: selectedValue,
+										onChange: (data) => {
+											setSelectedValue(data);
+										},
+								  }
+								: option.id === 'dropdown'
+								? {
+										...option,
+										value: dropValue,
+										onChange: (event) => {
+											setDropValue(event.target.value);
+										},
+								  }
+								: option;
+						})}>
+						<BaseVerticalBarChart
+							yAxisLabelShow
+							ySplitLineShow
+							xAxisShow
+							xAxisLabel={{
+								show: true,
+								rotate: 90,
+								inside: true,
+								color: 'white',
+								verticalAlign: 'bottom',
+								padding: [0, 0, 20, -5],
+							}}
+							barWidth='15%'
+							seriesData={{
+								chartData: selectedValue === 'Option 1' ? {} : CHART_DATA[2],
+							}}
+							seriesOption={[
+								{
+									stackIndex: 1,
+									color: 'orange',
+									showBackground: false,
+									label: {
+										color: 'white',
+										show: false,
+										formatter(param) {
+											return param.name;
+										},
+									},
+								},
+								{
+									stackIndex: 2,
+									showBackground: false,
+									color: 'blue',
+									label: {
+										show: true,
+										color: 'white',
+									},
+								},
+							]}
+						/>
+					</BaseWidget>
+				</ThemedContainer>
+			);
+		}}
+	</Story>
+</Canvas>
+
+### Light Theme
+
+<Canvas>
+	<Story name='Light Theme'>
+		{() => {
+			const [dropValue, setDropValue] = useState(0);
+			const [selectedValue, setSelectedValue] = useState('Option 1');
+			const title = 'Widget Title';
+			const subtitle = '7 Services';
+			const titleDesc = 'Test Description';
+			const showBack = false;
+			const onBack = () => {
+				alert('This will bring you back');
+			};
+			const onReload = () => {
+				alert('Callback for fallback reload button');
+			};
+			const toggle = {
+				options: [
+					{
+						id: '1',
+						leftCompoenent: '',
+						rightCompoenent: '',
+						title: 'Option 1',
+						value: 'Option 1',
+					},
+					{
+						id: '2',
+						leftCompoenent: '',
+						rightCompoenent: '',
+						title: 'Option 2',
+						value: 'Option 2',
+					},
+				],
+			};
+			const options = [
+				{
+					id: 'dropdown',
+					placeholder: 'Region',
+					selectOption: [
+						{
+							title: 'India',
+							value: '1',
+						},
+						{
+							title: 'USA',
+							value: '2',
+						},
+						{
+							title: 'UAE',
+							value: '3',
+						},
+						{
+							title: 'UK',
+							value: '4',
+						},
+					],
+					onChange: (cb, data) => {
+						cb(data);
+					},
+				},
+				{
+					id: 'expand',
+					title: '',
+					onClick: () => {
+						alert('This will open the Modal or a new Page with Expanded chart');
+					},
+				},
+				{
+					id: 'datepicker',
+					onApply: () => {
+						alert('Apply Date Picker');
+					},
+					onClear: () => {
+						alert('Clear Date Picker');
+					},
+					date: null,
+				},
+			];
+			return (
+				<ThemedContainer
+					style={{
+						height: '100%',
+						width: '100%',
+					}}>
+					<BaseWidget
+						title={title}
+						subtitle={subtitle}
+						titleDesc={titleDesc}
+						showBack={showBack}
+						onBack={onBack}
+						onReload={onReload}
+						theme='light'
+						toggle={{
+							...toggle,
+							value: selectedValue,
+							onChange: (data) => {
+								setSelectedValue(data);
+							},
+						}}
+						options={options.map((option) => {
+							return option.id === 'dropdown'
+								? {
+										...option,
+										value: dropValue,
+										onChange: (event) => {
+											setDropValue(event.target.value);
+										},
+								  }
+								: option;
+						})}>
+						<BaseVerticalBarChart
+							theme='light'
+							yAxisLabelShow
+							ySplitLineShow
+							xAxisShow
+							yAxisLineShow
+							xSplitLineShow
+							axisTick={{
+								show: true,
+								lineStyle: {
+									color: '#414955',
+								},
+							}}
+							splitType='dotted'
+							xSplitType='dotted'
+							xAxisLabel={{
+								show: true,
+								rotate: 90,
+								inside: true,
+								color: 'white',
+								verticalAlign: 'bottom',
+								padding: [0, 0, 20, -5],
+							}}
+							gridOptions={{
+								left: 30,
+								right: 10,
+								bottom: 20,
+								top: 20,
+							}}
+							barWidth='15%'
+							seriesData={{
+								chartData:
+									selectedValue === 'Option 1' ? CHART_DATA[1] : CHART_DATA[2],
+							}}
+							seriesOption={[
+								{
+									stackIndex: 1,
+									color: 'orange',
+									showBackground: false,
+									label: {
+										show: true,
+										color: '#818181',
+										position: 'bottom',
+									},
+								},
+								{
+									stackIndex: 2,
+									showBackground: false,
+									color: 'blue',
+									label: {
+										color: 'white',
+										show: false,
+										formatter(param) {
+											return param.name;
+										},
+									},
+								},
+							]}
+						/>
+					</BaseWidget>
+				</ThemedContainer>
+			);
+		}}
+	</Story>
+</Canvas>
+
+## Try in the Code Editor
+
+This embeded `CodeSandBox` is external third party code editor `iframe` shared publicly. It is advised to create an account with banyancloud mail id to create/fork this sandbox.
+
+<iframe
+	src='https://codesandbox.io/s/dazzling-torvalds-kwr7yy?file=/src/App.js'
+	style={{ width: '100%', height: 500 }}
+	title='xenodochial-moon-5y668f'
+	allow='accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking'
+	sandbox='allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts'></iframe>
+
+## API
+
+**`loading`**
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>bool</td>
+		<td>'false'</td>
+	</tr>
+</table>
+
+```jsx
+<Text loading={true} />
+```
+
+**`showBack`**
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>bool</td>
+		<td>'false'</td>
+	</tr>
+</table>
+
+```jsx
+<Text showBack={true} />
+```
+
+**`onBack`**
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>func</td>
+		<td>() => {}</td>
+	</tr>
+</table>
+
+```jsx
+<Text
+	onBack={() => {
+		// Some Data changes
+	}}
+/>
+```
+
+**`onReload`**
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>func</td>
+		<td>() => {}</td>
+	</tr>
+</table>
+
+```jsx
+<Text
+	onReload={() => {
+		// Some Data changes
+	}}
+/>
+```
+
+**`setFallback`**
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>func</td>
+		<td>() => {}</td>
+	</tr>
+</table>
+
+```jsx
+<Text
+	setFallback={() => {
+		// Some Data changes
+	}}
+/>
+```
+
+**`showFallback`**
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>bool</td>
+		<td>'false'</td>
+	</tr>
+</table>
+
+```jsx
+<Text showFallback={true} />
+```
+
+**`title`**
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>'span'</td>
+	</tr>
+</table>
+
+```jsx
+<Text title='TITLE' />
+```
+
+**`fallbackProps`**
+
+One of `className`,`title` and `subtitle`
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>'span'</td>
+	</tr>
+</table>
+
+```jsx
+<Text fallbackProps='TITLE' />
+```
+
+**`className`**
+
+Key to change style through external className.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>''</td>
+	</tr>
+</table>
+
+```jsx
+<Text className='chart-area' />
+```
+
+**`theme`**
+
+The color theme of the container to select between `light` or `dark` mode.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>"dark"</td>
+	</tr>
+</table>
+
+```jsx
+<Popover theme='light' />
+```

@@ -1,5 +1,7 @@
 /* eslint-disable react/forbid-prop-types */
 import React, { createElement, forwardRef, useRef, useState } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
+import { ErrorBoundaryWrapper } from '../../errorBoundary';
 import PropTypes from 'prop-types';
 import { mergeRefs } from 'react-merge-refs';
 import styles from './TextField.module.css';
@@ -35,6 +37,7 @@ const TextField = forwardRef(function TextField(props, inputRef) {
 		onKeyDown,
 		autocomplete,
 		autocompleteOptions,
+		custom,
 	} = props;
 
 	const { current: isControlled } = useRef(value !== undefined);
@@ -93,58 +96,69 @@ const TextField = forwardRef(function TextField(props, inputRef) {
 	const AutocompletePopover = autocompleteOptions?.render;
 
 	return (
-		<div className={classes(styles.root, className)}>
-			<label>
-				{label}
-				<BaseCell
-					ref={setAnchorEl}
-					className={classes(
-						styles['input-wrapper'],
-						styles[`border-${border}`],
-						styles[`type-${type}`],
-						feedback != null ? styles[`feedback-${feedback?.type}`] : ''
-					)}
-					component1={LeftComponent && <LeftComponent />}
-					component2={Input}
-					component3={RightComponent && <RightComponent />}
-				/>
-			</label>
-			{feedbackAndCount && (
-				<div className={styles.bottom}>
-					{feedback != null && (
-						<div
-							data-elem='feedback'
-							className={classes(
-								styles.feedback,
-								styles[`feedback-${feedback.type}`]
-							)}>
-							{feedback.text}
-						</div>
-					)}
-					{count?.limit != null && (
-						<div
-							data-elem='count'
-							className={classes(
-								styles.count,
-								inputValue?.length > count.limit ? styles.exceeded : ''
-							)}>
-							{inputValue.length ?? 0}/{count.limit}
-						</div>
-					)}
-				</div>
-			)}
-			{autocomplete && (
-				<Popover
-					anchorEl={anchorEl}
-					open={autocompleteOptions?.open}
-					setOpen={autocompleteOptions?.setOpen}
-					theme={theme}
-					placement={autocompleteOptions?.placement}
-					middlewareOptions={autocompleteOptions?.middlewareOptions}>
-					{AutocompletePopover && <AutocompletePopover name={name} value={value} />}
-				</Popover>
-			)}
-		</div>
+		<ErrorBoundary
+			FallbackComponent={(args) => {
+				return (
+					<ErrorBoundaryWrapper
+						{...args}
+						className={styles['error-boundary']}
+						custom={custom}
+					/>
+				);
+			}}>
+			<div className={classes(styles.root, className)}>
+				<label>
+					{label}
+					<BaseCell
+						ref={setAnchorEl}
+						className={classes(
+							styles['input-wrapper'],
+							styles[`border-${border}`],
+							styles[`type-${type}`],
+							feedback != null ? styles[`feedback-${feedback?.type}`] : ''
+						)}
+						component1={LeftComponent && <LeftComponent />}
+						component2={Input}
+						component3={RightComponent && <RightComponent />}
+					/>
+				</label>
+				{feedbackAndCount && (
+					<div className={styles.bottom}>
+						{feedback != null && (
+							<div
+								data-elem='feedback'
+								className={classes(
+									styles.feedback,
+									styles[`feedback-${feedback.type}`]
+								)}>
+								{feedback.text}
+							</div>
+						)}
+						{count?.limit != null && (
+							<div
+								data-elem='count'
+								className={classes(
+									styles.count,
+									inputValue?.length > count.limit ? styles.exceeded : ''
+								)}>
+								{inputValue.length ?? 0}/{count.limit}
+							</div>
+						)}
+					</div>
+				)}
+				{autocomplete && (
+					<Popover
+						anchorEl={anchorEl}
+						open={autocompleteOptions?.open}
+						setOpen={autocompleteOptions?.setOpen}
+						theme={theme}
+						placement={autocompleteOptions?.placement}
+						middlewareOptions={autocompleteOptions?.middlewareOptions}>
+						{AutocompletePopover && <AutocompletePopover name={name} value={value} />}
+					</Popover>
+				)}
+			</div>
+		</ErrorBoundary>
 	);
 });
 

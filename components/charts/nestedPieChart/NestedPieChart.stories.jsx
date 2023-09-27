@@ -8,7 +8,7 @@ export default {
 	component: NestedPieChart,
 	parameters: {
 		options: {
-			showToolbar: true,
+			showToolbar: false,
 		},
 	},
 };

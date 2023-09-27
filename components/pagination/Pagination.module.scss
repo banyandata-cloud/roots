@@ -3,9 +3,8 @@
 .root {
 	@include flex(row, space-between, stretch);
 	@include removeScrollbar;
-	gap: 0.75rem;
-	padding: 0.625rem 2.125rem;
-	background: $dark-grey;
+	padding: 0.4375rem 1rem;
+	background: #f7f7f8;
 	margin-top: auto;
 	width: 100%;
 	height: 3.5rem;
@@ -23,6 +22,18 @@
 		bottom: 3rem;
 	}
 
+	.copyrightText {
+		@include flex(row, flex-start, center);
+		flex: 1 0 10%;
+		> .text {
+			color: #9a9ea5;
+			font-size: 0.875rem;
+			font-style: normal;
+			font-weight: 400;
+			line-height: 1.125rem;
+		}
+	}
+
 	.row-switcher,
 	.jump-to-page,
 	.form {
@@ -37,14 +48,14 @@
 			@include flex(row, space-between, center);
 		}
 
-		> [data-elem='component2'] {
+		> [data-elem='component1'] {
 			flex: 0 1 auto;
 			height: 100%;
 		}
 
 		.row-switcher-handle {
 			gap: 0.75rem;
-			background-color: $grey;
+			// background-color: $grey;
 			padding: 0;
 			border-radius: 0.25rem;
 			height: 100%;
@@ -54,20 +65,20 @@
 				overflow: hidden;
 			}
 
-			> [data-elem='component2'] {
-				display: flex;
+			> [data-elem='component1'] {
+				@include flex(row, flex-start, stretch);
 				flex: 0 0 auto;
 				height: 100%;
 				&::before {
 					content: '';
 					margin: auto;
 					background: $white;
-					width: 0.5px;
+					width: 0.0313rem;
 					height: 50%;
 				}
 			}
 		}
-		flex: 0 1 15%;
+		flex: 0;
 		background-color: transparent;
 		padding: 0;
 		height: 100%;
@@ -81,25 +92,32 @@
 			font-weight: 500;
 			color: $white;
 		}
+
+		[data-elem='dropdown'] {
+			border: none;
+		}
+
 		.dropdown {
 			height: 100%;
 
 			& > [data-elem='header'] {
 				height: 100%;
+				background-color: #f7f7f8;
 				& > [data-elem='select'] {
 					height: 2.375rem;
 					max-height: 100%;
 					width: auto;
 					min-width: fit-content;
 					padding: 0.625rem;
-					background-color: $grey;
-					border: none;
+					background-color: #f7f7f8;
+					border: 0rem solid transparent;
 					& > [data-elem='placeholder'] {
-						color: $white;
+						color: #1a2028;
 						font-size: 0.875rem;
+						background-color: #f7f7f8;
 					}
 					& > svg {
-						fill: $white;
+						fill: #1a2028;
 						width: 0.813rem;
 						height: 0.813rem;
 					}
@@ -113,7 +131,7 @@
 		flex: 1 1 100%;
 
 		@include lg {
-			flex: 1 1 40%;
+			flex: 1 1 25%;
 		}
 
 		& > .button {
@@ -131,18 +149,18 @@
 		}
 		& > .pageSelect {
 			@include flex(row, space-between, center);
-			gap: 0.625rem;
+			gap: 1rem;
 
 			.number {
 				cursor: pointer;
-				border-radius: 50%;
-				background-color: #e0e0e0;
-				color: $black;
-				width: 2.313rem;
-				line-height: 2.313rem;
+				color: #1a2028;
 				text-align: center;
-				font-size: 1rem;
-				border: 1px solid transparent;
+				font-size: 0.875rem;
+				font-style: normal;
+				font-weight: 500;
+				line-height: 1.125rem;
+				border: 0.0625rem solid transparent;
+				padding: 0rem 0.5rem;
 
 				&:not([data-active='true']) {
 					display: none;
@@ -154,15 +172,9 @@
 					}
 				}
 
-				&:hover {
-					border: 1px solid $highlight;
-					color: $highlight;
-					background: $background;
-				}
-
 				&.active {
-					background-color: $highlight;
-					color: $white;
+					// background-color: $highlight;
+					color: #007aff;
 				}
 			}
 		}
@@ -171,7 +183,7 @@
 	.form {
 		display: none;
 		@include lg {
-			@include flex;
+			@include flex(row, space-between, center);
 		}
 		> [data-elem*='component'] {
 			width: 100%;
@@ -186,7 +198,7 @@
 			}
 		}
 		padding: 0;
-		flex: 0 1 30%;
+		flex: 1;
 		background: transparent;
 		.jump-to-page {
 			width: 100%;
@@ -198,23 +210,27 @@
 				height: 100%;
 			}
 			gap: 0rem;
-			padding: 0;
+			padding: 0rem;
 			height: 100%;
+			border-radius: 0.25rem;
+			border: 0.0313rem solid var(--light-mono-grey-5, #ddd);
+			box-shadow: 0.1875rem 0.1875rem 0.25rem 0rem rgba(194, 194, 194, 0.12) inset;
 
 			.inputbox {
 				max-width: 100%;
 				height: 100%;
+
 				> label {
 					height: 100%;
+					font-size: 0.875rem;
 					> [data-elem='base-cell'] {
-						border-radius: 0.313rem;
 						background-color: transparent;
 						color: $white;
-						border-color: $grey1;
-						border-radius: 0.25rem 0 0 0.25rem;
 						height: 100%;
 						width: 10rem;
 						flex: 1;
+						padding: 0.625rem;
+						border: none;
 
 						.icon {
 							width: 1.5rem;
@@ -228,11 +244,15 @@
 
 						[data-elem='input'] {
 							text-align: center;
-							color: $white;
 							background-color: transparent;
 							border: none;
 							height: 100%;
 							width: 100%;
+							color: #9a9ea5;
+							font-size: 0.875rem;
+							font-style: normal;
+							font-weight: 400;
+							line-height: normal;
 						}
 					}
 				}
@@ -240,14 +260,14 @@
 
 			.button {
 				border-radius: 0rem 0.25rem 0.25rem 0rem;
-				background-color: $grey1;
+				background-color: #dddddd;
 				padding: 0.75rem 0.5rem;
 				height: 100%;
 
 				.icon {
 					width: 1.5rem;
 					height: 1.5rem;
-					fill: $white;
+					fill: #737373;
 					flex-shrink: 0;
 				}
 			}
@@ -261,21 +281,29 @@
 			display: inline;
 		}
 		margin: auto;
-		color: $white;
-		flex: 0 1 15%;
+		flex: 0 1 7%;
+		color: #1a2028;
+		font-size: 0.875rem;
+		font-style: normal;
+		font-weight: 500;
+		line-height: 1.125rem;
 	}
 
 	&.no-total-data {
+		.copyrightText {
+			flex: 1 0 30%;
+		}
 		.row-switcher {
-			flex: 0 1 20%;
+			flex: 0;
 		}
-
+		.page-numbers {
+			flex: 1 1 100%;
+		}
 		.jump-to-page {
-			flex: 1 1 60%;
+			flex: 1 1 40%;
 		}
-
 		.form {
-			flex: 0 1 20%;
+			flex: 1 0 20%;
 		}
 	}
 }

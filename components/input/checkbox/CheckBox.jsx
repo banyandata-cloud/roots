@@ -1,8 +1,10 @@
 import React, { useState, useRef } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 import PropTypes from 'prop-types';
 import styles from './CheckBox.module.css';
 import { CheckboxIcon } from '../../icons';
 import { classes, inputHelper } from '../../../utils/utils';
+import { ErrorBoundaryWrapper } from '../../errorBoundary';
 
 const getIcon = (checked, intermediate) => {
 	if (checked) {
@@ -26,6 +28,7 @@ const Checkbox = (props) => {
 		className,
 		disabled,
 		intermediate,
+		custom,
 	} = props;
 
 	const { current: isControlled } = useRef(checked !== undefined);
@@ -48,28 +51,39 @@ const Checkbox = (props) => {
 	const Icon = getIcon(isChecked, intermediate);
 
 	return (
-		<label
-			className={classes(
-				styles.root,
-				styles[`position-${position}`],
-				className,
-				disabled ? styles.disabled : '',
-				isChecked ? styles.selected : ''
-			)}>
-			<input
-				disabled={disabled}
-				type='checkbox'
-				defaultChecked={defaultChecked}
-				{...(isControlled
-					? {
-							checked,
-					  }
-					: {})}
-				onChange={handleChange}
-			/>
-			<Icon className={classes(styles[`icon-${size}`], styles.icon)} />
-			{label && <span data-elem='label'>{label}</span>}
-		</label>
+		<ErrorBoundary
+			FallbackComponent={(args) => {
+				return (
+					<ErrorBoundaryWrapper
+						{...args}
+						className={styles['error-boundary']}
+						custom={custom}
+					/>
+				);
+			}}>
+			<label
+				className={classes(
+					styles.root,
+					styles[`position-${position}`],
+					className,
+					disabled ? styles.disabled : '',
+					isChecked ? styles.selected : ''
+				)}>
+				<input
+					disabled={disabled}
+					type='checkbox'
+					defaultChecked={defaultChecked}
+					{...(isControlled
+						? {
+								checked,
+						  }
+						: {})}
+					onChange={handleChange}
+				/>
+				<Icon className={classes(styles[`icon-${size}`], styles.icon)} />
+				{label && <span data-elem='label'>{label}</span>}
+			</label>
+		</ErrorBoundary>
 	);
 };
 

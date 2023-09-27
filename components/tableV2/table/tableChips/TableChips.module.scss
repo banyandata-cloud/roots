@@ -1,0 +1,37 @@
+@import '../../../../styles/index';
+
+.root[data-elem='base-cell'] {
+	padding: 0.5rem 1.5rem;
+	width: 100%;
+	background: $grey6;
+	border-radius: 0.25rem 0.25rem 0 0;
+	> [data-elem='component1'] {
+		.back {
+			height: 2rem;
+			width: 2rem;
+			[data-elem='component1'] {
+				.icon {
+					width: 1.5rem;
+					height: 1.5rem;
+					fill: $white;
+				}
+			}
+		}
+	}
+
+	> [data-elem='component2'] {
+		@include removeScrollbar;
+		@include flex(row, flex-start);
+		height: 100%;
+		gap: 0.5rem;
+		overflow: auto hidden;
+		flex: 1;
+	}
+
+	> [data-elem='component3'] {
+		height: 100%;
+		.clear {
+			height: 100%;
+		}
+	}
+}

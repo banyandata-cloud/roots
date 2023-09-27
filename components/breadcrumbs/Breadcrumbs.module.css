@@ -5,11 +5,18 @@
   align-items: center;
   gap: 0.5rem;
   width: auto;
+  overflow: auto;
+  width: 100%;
 }
-.root .seperator {
+.root [data-elem=breadcrumb-seperator-icon] {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  stroke: #141920;
+  fill: #141920;
   width: 1.5rem;
   height: 1.5rem;
-  stroke: var(--grey2);
 }
 .root button.expand[data-elem=base-cell] {
   background: var(--grey6);
@@ -20,37 +27,60 @@
 .root button.expand[data-elem=base-cell] [data-elem=title] {
   margin-bottom: 0.4rem;
 }
+.root .back {
+  height: 2rem;
+  width: 2rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  padding-left: 0.4375rem;
+  padding-right: 0.4375rem;
+}
+.root .back .icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: var(--white);
+}
 .root .crumb {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-  color: var(--grey2);
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-radius: 0.25rem;
 }
-.root .crumb.active {
-  color: var(--black);
+.root .crumb .title {
+  color: #818181;
+  margin-left: 0.25rem;
 }
-.root .crumb:hover:not(.active) {
-  color: var(--info);
+.root .crumb .value {
+  color: #1a2028;
+  margin-left: 0.25rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+.root .crumb .iconWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 1rem;
+  height: 1rem;
 }
 .root.theme-light .crumb {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  color: var(--grey2);
+  font-weight: 500;
+  border: 0.0625rem solid #dfe0e2;
 }
 .root.theme-light .crumb.active {
-  color: var(--black);
+  border: 1px solid var(--background);
 }
 .root.theme-light .crumb:hover:not(.active) {
-  color: var(--info);
+  cursor: pointer;
+  background: var(--support-colors-information-background, #edf5ff);
 }
 .root.theme-dark .crumb {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
   color: var(--grey2);
 }
 .root.theme-dark .crumb.active {

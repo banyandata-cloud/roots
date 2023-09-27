@@ -1,0 +1,174 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+
+import { ThemedContainer } from '../../helpers';
+import Switch from './Switch';
+
+<Meta title='Components/Input/Switch' parameters={{ options: { showToolbar: true } }} />
+
+export const Template = (args) => (
+	<ThemedContainer theme='light'>
+		<Switch {...args} />
+	</ThemedContainer>
+);
+
+# Switch
+
+The Switch component provides a customizable toggle switch input. It supports controlled and uncontrolled usage and offers various customization options.
+
+#### Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/components/input/switch)
+
+> The Switch component provides a sleek and accessible way to implement toggle switches in your application. It supports both controlled and uncontrolled usage and offers options for positioning the switch input.
+
+## Usage
+
+Basic import and additional information on how to use this component.
+
+```js
+import { Switch } from '@banyan_cloud/roots';
+```
+
+-   The onChange function is called when the switch input state changes. It provides the new checked value as a parameter.
+-   The position prop determines the position of the switch input relative to the label.
+
+## Stories
+
+The CSF rendered inside the `Canvas` from which you can see the implementation example.
+
+### Default
+
+The default Switch input.
+
+<Canvas>
+	<Story
+		name='Default'
+		args={{
+			label: 'Switch',
+			position: 'left',
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+## Try in the Code Editor
+
+This embeded `CodeSandBox` is external third party code editor `iframe` shared publicly. It is advised to create an account with banyancloud mail id to create/fork this sandbox.
+
+## API
+
+**`disabled`**
+
+Disables the switch input.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<Switch disabled={true} />
+```
+
+**`label`**
+
+Text label associated with the switch input.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>null</td>
+	</tr>
+</table>
+
+```jsx
+<Switch label='Switch label' />
+```
+
+**`checked`**
+
+Specifies whether the switch is checked (controlled mode).
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>undefined</td>
+	</tr>
+</table>
+
+```jsx
+<Switch checked={true} />
+```
+
+**`defaultChecked`**
+
+Specifies the initial checked state (uncontrolled mode).
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<Switch defaultChecked={true} />
+```
+
+**`position`**
+
+Position of the switch input relative to the label.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>'left', 'right'</td>
+		<td>'left'</td>
+	</tr>
+</table>
+
+```jsx
+<Switch position='right' />
+```
+
+**`onChange`**
+
+Function to execute when the switch input state changes.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Function</td>
+		<td>{`() => {}`}</td>
+	</tr>
+</table>
+
+```jsx
+<Switch
+	onChange={() => {
+		console.log('On change');
+	}}
+/>
+```

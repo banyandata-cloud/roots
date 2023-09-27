@@ -1,0 +1,271 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+
+import { ThemedContainer } from '../../helpers';
+import Step from './Step';
+
+<Meta title='Components/Stepper/Step' parameters={{ options: { showToolbar: true } }} />
+
+export const Template = (args) => (
+	<ThemedContainer theme='light'>
+		<Step {...args} />
+	</ThemedContainer>
+);
+
+# Step
+
+The Step component is used within the Stepper component to represent an individual step within a linear sequence. It can display a title, description, icons indicating completion or error, and optional custom render functions for more advanced customization.
+
+#### Design - [Figma](https://www.figma.com/file/e9opoAtQHBo4vFd6u0Co98/Component-Library?node-id=266%3A48405&mode=dev) | Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/components/stepper/step)
+
+> The Step component is essential for building a visually engaging and user-friendly stepper UI for multi-step processes, forms, and other linear sequences.
+
+## Usage
+
+Basic import and additional information on how to use this component.
+
+```js
+import { Step } from '@banyan_cloud/roots';
+```
+
+-   The Step component is used within the Stepper component to display each individual step.
+-   The Step component can display different icons based on completion and error states.
+-   Custom rendering functions can be used to fully customize the appearance of each step.
+-   The Step component is part of the Stepper component and provides flexibility for step customization.
+
+## Stories
+
+The CSF rendered inside the `Canvas` from which you can see the implementation example.
+
+### Default
+
+The default Step input.
+
+<Canvas>
+	<Story
+		name='Default'
+		args={{
+			title: null,
+			description: null,
+			active: false,
+			completion: 1,
+			error: false,
+			index: 0,
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+## Try in the Code Editor
+
+This embeded `CodeSandBox` is external third party code editor `iframe` shared publicly. It is advised to create an account with banyancloud mail id to create/fork this sandbox.
+
+## API
+
+**`orientation`**
+
+The orientation of the step.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>'horizontal', 'vertical'</td>
+		<td>'horizontal'</td>
+	</tr>
+</table>
+
+```jsx
+<Step orientation='vertical' />
+```
+
+**`title`**
+
+The title of the step.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>null</td>
+	</tr>
+</table>
+
+```jsx
+<Step title='Step title' />
+```
+
+**`description`**
+
+A description or additional information about the step.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>''</td>
+	</tr>
+</table>
+
+```jsx
+<Step description='Step description' />
+```
+
+**`active`**
+
+Indicates if the step is currently active.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<Step active={true} />
+```
+
+**`completion`**
+
+A value from 0 to 1 indicating the completion progress of the step. A value of 1 indicates completion.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Number</td>
+		<td>0</td>
+	</tr>
+</table>
+
+```jsx
+<Step completion={5} />
+```
+
+**`error`**
+
+Indicates if the step has an error.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<Step error={true} />
+```
+
+**`index`**
+
+The index of the step within the sequence.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Number</td>
+		<td>0</td>
+	</tr>
+</table>
+
+```jsx
+<Step index={2} />
+```
+
+**`noTail`**
+
+If true, the tail connecting line to the next step is hidden.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<Step noTail={true} />
+```
+
+**`renderIcon`**
+
+A custom render function for the step's icon. Overrides the default icons.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Function</td>
+		<td>null</td>
+	</tr>
+</table>
+
+```jsx
+<Step renderIcon={() => {}} />
+```
+
+**`renderTitle`**
+
+A custom render function for the step's title. Overrides the default title display.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Function</td>
+		<td>null</td>
+	</tr>
+</table>
+
+```jsx
+<Step renderTitle={() => {}} />
+```
+
+**`renderDescription`**
+
+A custom render function for the step's description. Overrides the default description display.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Function</td>
+		<td>null</td>
+	</tr>
+</table>
+
+```jsx
+<Step renderDescription={() => {}} />
+```

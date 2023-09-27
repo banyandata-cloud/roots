@@ -1,0 +1,64 @@
+.root {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.root.header-row {
+  background: #F7F7F8;
+}
+.root.header-row > [data-elem=base-cell].expandable-cell {
+  background: transparent;
+}
+.root.header-row > [data-elem=base-cell].expandable-cell > [data-elem=component2] {
+  width: 3rem;
+  visibility: hidden;
+}
+.root.body-row {
+  background: var(--white);
+}
+.root.body-row > [data-elem=base-cell] {
+  background: var(--white);
+}
+.root.body-row:hover > [data-elem=base-cell] {
+  background: var(--info-bg);
+}
+.root.body-row[data-active=true] > [data-elem=base-cell] {
+  background: var(--background);
+}
+.root > [data-elem=base-cell]:first-child {
+  padding-left: 1rem;
+}
+.root > [data-elem=base-cell]:last-child {
+  padding-right: 1rem;
+}
+.root.row-height-md > td[data-elem=base-cell] {
+  height: 3rem;
+}
+.root.row-height-lg > td[data-elem=base-cell] {
+  height: 4rem;
+}
+.root > [data-elem=base-cell].expandable-cell {
+  padding-left: 0.9rem;
+  padding-right: 0.1rem;
+  overflow: visible;
+}
+.root > [data-elem=base-cell].expandable-cell > [data-elem=component2] {
+  overflow: visible;
+}
+.root > [data-elem=base-cell].expandable-cell > [data-elem=component2] > [data-elem=text] {
+  overflow: visible;
+}
+.root button.button[data-elem=base-cell] .icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.root button.button[data-elem=base-cell]:disabled {
+  cursor: default;
+}
+.root button.button[data-elem=base-cell]:disabled .icon {
+  visibility: hidden;
+}
+.root .expanded .button .icon {
+  transform: rotate(180deg);
+}/*# sourceMappingURL=TableRow.module.css.map */

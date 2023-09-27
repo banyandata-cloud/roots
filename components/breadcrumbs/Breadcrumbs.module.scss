@@ -4,11 +4,15 @@
 	@include flex(row, flex-start, center);
 	gap: 0.5rem;
 	width: auto;
+	overflow: auto;
+	width: 100%;
 
-	.seperator {
+	[data-elem='breadcrumb-seperator-icon'] {
+		@include flex(row, center, center);
+		stroke: #141920;
+		fill: #141920;
 		width: 1.5rem;
 		height: 1.5rem;
-		stroke: $grey2;
 	}
 
 	button.expand[data-elem='base-cell'] {
@@ -22,37 +26,65 @@
 		}
 	}
 
-	.crumb {
-		@include flex(row, flex-start, center);
-		color: $grey2;
+	.back {
+		height: 2rem;
+		width: 2rem;
+		margin-left: 0.5rem;
+		margin-right: 0.5rem;
+		padding-left: 0.4375rem;
+		padding-right: 0.4375rem;
+		.icon {
+			width: 1.5rem;
+			height: 1.5rem;
+			fill: $white;
+		}
+	}
 
-		&.active {
-			color: $black;
+	.crumb {
+		@include flex(row, center, center);
+		padding-left: 0.25rem;
+		padding-right: 0.25rem;
+		padding-top: 0.5rem;
+		padding-bottom: 0.5rem;
+		border-radius: 0.25rem;
+
+		.title {
+			color: #818181;
+			margin-left: 0.25rem;
 		}
 
-		&:hover:not(.active) {
-			color: $info;
+		.value {
+			color: #1a2028;
+			margin-left: 0.25rem;
+			padding-left: 0.5rem;
+			padding-right: 0.5rem;
+		}
+
+		.iconWrapper {
+			@include flex(row, center, center);
+			width: 1rem;
+			height: 1rem;
 		}
 	}
 
 	&.theme-light {
 		.crumb {
-			@include flex(row, flex-start, center);
-			color: $grey2;
+			font-weight: 500;
+			border: 0.0625rem solid #dfe0e2;
 
 			&.active {
-				color: $black;
+				border: 1px solid $background;
 			}
 
 			&:hover:not(.active) {
-				color: $info;
+				cursor: pointer;
+				background: var(--support-colors-information-background, #edf5ff);
 			}
 		}
 	}
 
 	&.theme-dark {
 		.crumb {
-			@include flex(row, flex-start, center);
 			color: $grey2;
 
 			&.active {
