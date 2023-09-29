@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './Slider.module.css';
@@ -61,30 +60,6 @@ const Slider = (props) => {
 				<span>{maxLabel}</span>
 			</div>
 		</label>
-=======
-import React from 'react';
-import { ErrorBoundary } from 'react-error-boundary';
-import { Track } from './track';
-import { ErrorBoundaryWrapper } from '../../errorBoundary';
-
-const Slider = (props) => {
-	const { custom } = props;
-	return (
-		<ErrorBoundary
-			FallbackComponent={(args) => {
-				return (
-					<ErrorBoundaryWrapper
-						{...args}
-						className={styles['error-boundary']}
-						custom={custom}
-					/>
-				);
-			}}>
-			<div>
-				<Track />
-			</div>
-		</ErrorBoundary>
->>>>>>> 27962df15f58cd89616fa91cd1ef1b1438258e19
 	);
 };
 
