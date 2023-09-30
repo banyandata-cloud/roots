@@ -8,8 +8,8 @@
 	width: 100%;
 
 	.header {
-		@include flex(row, space-between);
-		padding: 1.713rem;
+		@include flex(row, space-between, flex-start);
+		padding: 1.713rem 1.713rem 0 1.713rem;
 
 		.header-title {
 			@include flex(row, flex-start);
@@ -54,7 +54,9 @@
 
 		.header-options {
 			@include flex(column, flex-end, flex-end);
-			gap: 0.5rem;
+			&.toggle {
+				gap: 0.5rem;
+			}
 
 			.header-options-toggle {
 				.toggle-body {
@@ -109,6 +111,10 @@
 			}
 		}
 	}
+
+	// div.children {
+	// 	padding: 1.713rem 0 0 0;
+	// }
 
 	&.dark-theme {
 		.header {
@@ -219,6 +225,12 @@
 		padding: 0.5rem;
 	}
 }
+
+// .chart {
+// 	[data-elem='children'] {
+// 		padding: 3rem 0 0 0;
+// 	}
+// }
 
 .dropdown-popper {
 	padding: 0rem;

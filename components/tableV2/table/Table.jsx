@@ -39,6 +39,7 @@ const Table = (props) => {
 		rowHeight,
 		theme,
 		onRowClick,
+		onSearch,
 		defaultActiveIndex,
 		custom,
 	} = props;
@@ -131,7 +132,7 @@ const Table = (props) => {
 				);
 			}}>
 			<div className={classes(styles.root, className)}>
-				{chipsData != null &&
+				{/* {chipsData != null &&
 					(chipsData?.chips?.length > 0 || chipsData?.showBack != null) && (
 						<TableChips
 							className={styles.chips}
@@ -139,17 +140,19 @@ const Table = (props) => {
 							loading={loading}
 							theme={theme}
 						/>
-					)}
-				{filtersData != null && (
+					)} */}
+				{!Object.keys(disabledFilterOptions).every(
+					(key) => disabledFilterOptions[key] === true
+				) && (
 					<TableFilters
 						className={styles.filters}
 						{...{
-							...filtersData,
 							disabledFilterOptions,
 							headerData,
 							hiddenColumns,
 							setHiddenColumns,
 						}}
+						onSearch={onSearch}
 						loading={loading}
 						theme={theme}
 					/>
@@ -171,7 +174,6 @@ const Table = (props) => {
 					}}
 					loading={loading}
 				/>
-
 				{paginationData != null && (
 					<Pagination
 						className={classes(styles.pagination, floating ? styles.floating : '')}
@@ -228,6 +230,7 @@ Table.propTypes = {
 	onSort: PropTypes.func,
 	rowHeight: PropTypes.oneOf(['md', 'lg']),
 	onRowClick: PropTypes.func,
+	onSearch: PropTypes.func,
 	theme: PropTypes.oneOf(['light', 'dark']),
 	custom: PropTypes.node,
 };
@@ -250,15 +253,14 @@ Table.defaultProps = {
 	paginationData: null,
 	loading: false,
 	disabledFilterOptions: {
-		filterButton: false,
-		refresh: false,
+		search: false,
 		columnFilter: false,
-		settings: false,
 	},
 	onSort: () => {},
 	rowHeight: 'md',
 	theme: 'light',
 	onRowClick: () => {},
+	onSearch: () => {},
 	custom: null,
 };
 
