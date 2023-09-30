@@ -122,7 +122,7 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 		<Text className={styles['title-container']}>
 			<Text className={styles['title-primary']}>
 				<Text
-					variant='b1'
+					variant='h2'
 					stroke='semibold'
 					attrs={{
 						'data-elem': 'title',
@@ -131,7 +131,7 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 				</Text>
 				{subtitle && (
 					<Text
-						variant='b2'
+						variant='b1'
 						stroke='medium'
 						attrs={{
 							'data-elem': 'subtitle',
@@ -143,7 +143,7 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 			</Text>
 			{titleDesc && (
 				<Text
-					variant='b2'
+					variant='b1'
 					stroke='medium'
 					attrs={{
 						'data-elem': 'title-desc',
@@ -211,11 +211,20 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 					)}
 				</div>
 
-				<div className={classes(styles['header-options'])} data-elem='header-options'>
-					<div className={classes(styles['header-options-toggle'])} data-elem='header-options-toggle'>
+				<div
+					className={classes(
+						styles['header-options'],
+						(toggle?.options?.length ?? 0) > 0 && styles.toggle
+					)}
+					data-elem='header-options'>
+					<div
+						className={classes(styles['header-options-toggle'])}
+						data-elem='header-options-toggle'>
 						{(toggle?.options?.length ?? 0) > 0 && renderToggle(toggle, theme)}
 					</div>
-					<div className={classes(styles['header-options-list'])} data-elem='header-options-list'>
+					<div
+						className={classes(styles['header-options-list'])}
+						data-elem='header-options-list'>
 						{(options?.length ?? 0) > 0 &&
 							options?.map((objectData) => {
 								return generateOptions(objectData, theme);

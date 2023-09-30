@@ -7,8 +7,26 @@ import { BaseButton } from '../baseButton';
 import styles from './Button.module.css';
 import { ErrorBoundaryWrapper } from '../../errorBoundary';
 
-// eslint-disable-next-line prefer-arrow-callback
-const Button = forwardRef(function Button(props, ref) {
+/**
+ * Renders a customized button component wrapped in an ErrorBoundary component.
+ *
+ * @param {string} className - The CSS class name for the button.
+ * @param {string} type - The type attribute for the button element.
+ * @param {React.Component} leftComponent - The component to be rendered on the left side of the button.
+ * @param {string} title - The text to be displayed as the button's title.
+ * @param {React.Component} rightComponent - The component to be rendered on the right side of the button.
+ * @param {string} size - The size variant of the button.
+ * @param {boolean} flexible - Whether the button should have flexible width.
+ * @param {string} radius - The border radius variant of the button.
+ * @param {boolean} disabled - Whether the button is disabled.
+ * @param {function} onClick - The event handler for the button's click event.
+ * @param {boolean} blurOnClick - Whether the button should lose focus after being clicked.
+ * @param {string} variant - The variant style of the button.
+ * @param {string} color - The color variant of the button.
+ * @param {React.Component} custom - A custom component to be rendered instead of the default error boundary fallback.
+ * @returns {JSX.Element} - The rendered BaseButton component wrapped in an ErrorBoundary component.
+ */
+const Button = forwardRef((props, ref) => {
 	const {
 		className,
 		type,

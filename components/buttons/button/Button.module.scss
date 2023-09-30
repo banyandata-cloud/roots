@@ -14,14 +14,24 @@
 		&.contained {
 			background-color: $highlight;
 			color: $white;
+			&:hover {
+				opacity: 0.85;
+			}
+		}
+		&.text {
+			color: $highlight;
 		}
 		&.outlined {
 			background-color: transparent;
 			border-color: $highlight;
-		}
-		&.outlined,
-		&.text {
 			color: $highlight;
+			&:hover {
+				background-color: $highlight;
+				color: white;
+				&:hover {
+					opacity: 0.85;
+				}
+			}
 		}
 	}
 
@@ -29,12 +39,22 @@
 		&.contained {
 			background-color: $success;
 			color: $white;
+			&:hover {
+				opacity: 0.85;
+			}
 		}
 		&.outlined {
 			background-color: transparent;
 			border-color: $success;
+			color: $success;
+			&:hover {
+				background-color: $success;
+				color: white;
+				&:hover {
+					opacity: 0.85;
+				}
+			}
 		}
-		&.outlined,
 		&.text {
 			color: $success;
 		}
@@ -43,12 +63,22 @@
 		&.contained {
 			background-color: $error;
 			color: $white;
+			&:hover {
+				opacity: 0.85;
+			}
 		}
 		&.outlined {
 			background-color: transparent;
 			border-color: $error;
+			color: $error;
+			&:hover {
+				background-color: $error;
+				color: white;
+				&:hover {
+					opacity: 0.85;
+				}
+			}
 		}
-		&.outlined,
 		&.text {
 			color: $error;
 		}
@@ -57,12 +87,22 @@
 		&.contained {
 			background-color: $warning;
 			color: $white;
+			&:hover {
+				opacity: 0.85;
+			}
 		}
 		&.outlined {
 			background-color: transparent;
 			border-color: $warning;
+			color: $warning;
+			&:hover {
+				background-color: $warning;
+				color: white;
+				&:hover {
+					opacity: 0.85;
+				}
+			}
 		}
-		&.outlined,
 		&.text {
 			color: $warning;
 		}

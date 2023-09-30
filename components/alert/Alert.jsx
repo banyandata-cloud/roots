@@ -6,9 +6,33 @@ import styles from './Alert.module.css';
 import { CrossIcon, AlertIcon } from '../icons';
 import { Button } from '../buttons';
 import Popper from '../popper/Popper';
+import { useAnimate } from 'framer-motion';
 
+const ANIMATION = {
+	transform: {
+		top: [-100, 0],
+		bottom: [100, 0],
+	},
+	static: {
+		center: ['-50%', '-50%'],
+		right: ['0%', '0%'],
+	},
+};
+
+/**
+ * Renders an alert message with optional icon, title, description, and action button.
+ *
+ * @param {Object} props - The props object containing the following properties:
+ *   - showIcon (boolean): Determines whether to show the alert icon.
+ *   - border (string): Specifies the border style of the alert.
+ *   - shadow (boolean): Determines whether to apply a shadow effect to the alert.
+ *   - position (string): Specifies the position of the alert on the screen.
+ *   - animation (boolean): Determines whether to apply the animation effect.
+ * @param {Ref} ref - The ref object used to expose the 'alert' function to the parent component.
+ * @returns {JSX.Element} - The rendered alert component.
+ */
 const Alert = forwardRef((props, ref) => {
-	const { showIcon, border, shadow, position: defaultPosition } = props;
+	const { showIcon, border, shadow, position: defaultPosition, animation } = props;
 
 	const [open, setOpen] = useState(false);
 	const [alertProps, setAlertProps] = useState({
@@ -63,6 +87,7 @@ const Alert = forwardRef((props, ref) => {
 		open,
 		onOpenChange: setOpen,
 	});
+	const [scope, animate] = useAnimate();
 
 	const alert = (appliedAlertProps) => {
 		setAlertProps({
@@ -72,6 +97,9 @@ const Alert = forwardRef((props, ref) => {
 	};
 
 	useImperativeHandle(ref, () => ({
+		/**
+		 * methods to get exposed
+		 */
 		alert,
 	}));
 
@@ -82,6 +110,16 @@ const Alert = forwardRef((props, ref) => {
 			});
 		}
 	}, [alertProps]);
+
+	useEffect(() => {
+		if (scope.current && animation) {
+			const [positionType, staticPosition] = position.split('-');
+			animate(scope.current, {
+				y: ANIMATION.transform[positionType],
+				x: ANIMATION.static[staticPosition],
+			});
+		}
+	});
 
 	const { getFloatingProps } = useInteractions([useDismiss(context)]);
 
@@ -97,7 +135,8 @@ const Alert = forwardRef((props, ref) => {
 						shadow ? styles.shadow : '',
 						styles[`position-${position}`]
 					),
-				})}>
+				})}
+				ref={scope}>
 				<div className={styles.left}>
 					<div className={styles.icons}>{showIcon && Icon}</div>
 					<div className={styles.content}>
@@ -131,14 +170,16 @@ Alert.propTypes = {
 	showIcon: PropTypes.bool,
 	border: PropTypes.oneOf(['default', 'thick-left', 'none']),
 	shadow: PropTypes.bool,
-	position: PropTypes.oneOf(['bottom-center', 'top-right']),
+	position: PropTypes.oneOf(['bottom-right', 'bottom-center', 'top-right', 'top-center']),
+	animation: PropTypes.bool,
 };
 
 Alert.defaultProps = {
 	showIcon: true,
-	border: 'default',
+	border: 'none',
 	shadow: true,
 	position: 'bottom-center',
+	animation: true,
 };
 
 export default Alert;

@@ -9,44 +9,88 @@
   background-color: var(--highlight);
   color: var(--white);
 }
+.root[data-elem=base-cell].primary.contained:hover {
+  opacity: 0.85;
+}
+.root[data-elem=base-cell].primary.text {
+  color: var(--highlight);
+}
 .root[data-elem=base-cell].primary.outlined {
   background-color: transparent;
   border-color: var(--highlight);
-}
-.root[data-elem=base-cell].primary.outlined, .root[data-elem=base-cell].primary.text {
   color: var(--highlight);
+}
+.root[data-elem=base-cell].primary.outlined:hover {
+  background-color: var(--highlight);
+  color: white;
+}
+.root[data-elem=base-cell].primary.outlined:hover:hover {
+  opacity: 0.85;
 }
 .root[data-elem=base-cell].success.contained {
   background-color: var(--success);
   color: var(--white);
 }
+.root[data-elem=base-cell].success.contained:hover {
+  opacity: 0.85;
+}
 .root[data-elem=base-cell].success.outlined {
   background-color: transparent;
   border-color: var(--success);
+  color: var(--success);
 }
-.root[data-elem=base-cell].success.outlined, .root[data-elem=base-cell].success.text {
+.root[data-elem=base-cell].success.outlined:hover {
+  background-color: var(--success);
+  color: white;
+}
+.root[data-elem=base-cell].success.outlined:hover:hover {
+  opacity: 0.85;
+}
+.root[data-elem=base-cell].success.text {
   color: var(--success);
 }
 .root[data-elem=base-cell].danger.contained {
   background-color: var(--error);
   color: var(--white);
 }
+.root[data-elem=base-cell].danger.contained:hover {
+  opacity: 0.85;
+}
 .root[data-elem=base-cell].danger.outlined {
   background-color: transparent;
   border-color: var(--error);
+  color: var(--error);
 }
-.root[data-elem=base-cell].danger.outlined, .root[data-elem=base-cell].danger.text {
+.root[data-elem=base-cell].danger.outlined:hover {
+  background-color: var(--error);
+  color: white;
+}
+.root[data-elem=base-cell].danger.outlined:hover:hover {
+  opacity: 0.85;
+}
+.root[data-elem=base-cell].danger.text {
   color: var(--error);
 }
 .root[data-elem=base-cell].warning.contained {
   background-color: var(--warning);
   color: var(--white);
 }
+.root[data-elem=base-cell].warning.contained:hover {
+  opacity: 0.85;
+}
 .root[data-elem=base-cell].warning.outlined {
   background-color: transparent;
   border-color: var(--warning);
+  color: var(--warning);
 }
-.root[data-elem=base-cell].warning.outlined, .root[data-elem=base-cell].warning.text {
+.root[data-elem=base-cell].warning.outlined:hover {
+  background-color: var(--warning);
+  color: white;
+}
+.root[data-elem=base-cell].warning.outlined:hover:hover {
+  opacity: 0.85;
+}
+.root[data-elem=base-cell].warning.text {
   color: var(--warning);
 }
 .root[data-elem=base-cell]:disabled.primary.contained, .root[data-elem=base-cell]:disabled.success.contained, .root[data-elem=base-cell]:disabled.danger.contained, .root[data-elem=base-cell]:disabled.warning.contained {

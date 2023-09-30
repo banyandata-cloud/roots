@@ -107,13 +107,11 @@
 }
 .root[data-elem=base-cell].sticky-left {
   box-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);
-  position: -webkit-sticky;
   position: sticky;
   left: 0;
 }
 .root[data-elem=base-cell].sticky-right {
   box-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);
-  position: -webkit-sticky;
   position: sticky;
   right: 0;
 }/*# sourceMappingURL=TableCell.module.css.map */

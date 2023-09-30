@@ -12,7 +12,7 @@
 }
 .root .header {
   font-weight: 600;
-  font-size: 0.875rem;
+  font-size: 1rem;
   color: var(--black);
 }
 .root .footer {
@@ -25,13 +25,13 @@
 .root .footer .cancel[data-elem=base-cell] {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: stretch;
   color: var(--grey1);
   border-radius: 0.25rem;
   border: 1px solid var(--grey4);
 }
 .root .description {
-  padding: 0.5rem 0px;
-  font-size: 0.75rem;
+  padding: 0.5rem 0;
+  font-size: 1rem;
 }/*# sourceMappingURL=Dialog.module.css.map */

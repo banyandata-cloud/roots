@@ -34,19 +34,37 @@ import { Button } from '@banyan_cloud/roots';
 
 The CSF rendered inside the `Canvas` from which you can see the implementation example.
 
-### Default Button
+### Default Button (Outlined)
 
 The default button component.
 
 <Canvas>
 	<Story
-		name='Default Button'
+		name='Button - Outlined'
+		args={{
+			title: 'Button Name',
+			variant: 'outlined',
+			size: 'md',
+			radius: 'default',
+			color: 'primary',
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Default Button (Contained)
+
+The default button component.
+
+<Canvas>
+	<Story
+		name='Button - Contained'
 		args={{
 			title: 'Button Name',
 			variant: 'contained',
 			size: 'md',
 			radius: 'default',
-			color: 'primary',
+			color: 'success',
 		}}>
 		{Template.bind({})}
 	</Story>

@@ -49,19 +49,13 @@ The default Breadcrumbs.
 					title: 'section-1',
 					value: 'test',
 					path: 'section-1',
-					icon: <ServerIcon />,
+					icon: null,
 				},
 				{
 					title: 'section-2',
 					value: 'test',
 					path: 'section-2',
-					icon: <ServerIcon />,
-				},
-				{
-					title: 'section-3',
-					value: 'test',
-					path: 'section-3',
-					icon: <ServerIcon />,
+					icon: null,
 				},
 			],
 		}}>
@@ -81,38 +75,79 @@ The Breadcrumbs in collapsed state.
 			crumbs: [
 				{
 					title: 'section-1',
+					value: 'test',
 					path: 'section-1',
 					icon: null,
 				},
 				{
 					title: 'section-2',
+					value: 'test',
 					path: 'section-2',
 					icon: null,
 				},
 				{
 					title: 'section-3',
+					value: 'test',
 					path: 'section-3',
 					icon: null,
 				},
 				{
 					title: 'section-4',
+					value: 'test',
 					path: 'section-4',
 					icon: null,
 				},
 				{
 					title: 'section-5',
+					value: 'test',
 					path: 'section-5',
 					icon: null,
 				},
 				{
 					title: 'section-6',
+					value: 'test',
 					path: 'section-6',
 					icon: null,
 				},
 				{
 					title: 'final-section',
+					value: 'test',
 					path: 'final-section',
 					icon: null,
+				},
+			],
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Breadcrumbs with icon
+
+The Breadcrumbs containing icon.
+
+<Canvas>
+	<Story
+		name='Breadcrumbs with icon'
+		args={{
+			theme: 'light',
+			crumbs: [
+				{
+					title: 'section-1',
+					value: 'test',
+					path: 'section-1',
+					icon: <ServerIcon />,
+				},
+				{
+					title: 'section-2',
+					value: 'test',
+					path: 'section-2',
+					icon: <ServerIcon />,
+				},
+				{
+					title: 'section-3',
+					value: 'test',
+					path: 'section-3',
+					icon: <ServerIcon />,
 				},
 			],
 		}}>
