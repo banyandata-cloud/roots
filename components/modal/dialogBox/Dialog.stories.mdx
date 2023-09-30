@@ -1,6 +1,6 @@
 import { Meta, Canvas, Story } from '@storybook/addon-docs';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { ThemedContainer } from '../../helpers';
 import DialogBox from './DialogBox';
 
@@ -37,14 +37,17 @@ The default Dialog Box.
 <Canvas>
 	<Story name='Dialog'>
 		{() => {
-			const [open, setOpen] = useState(false);
-			const toggle = (show) => {
-				setOpen((prevState) => {
-					if (show != null) {
-						return show;
-					}
-					return !prevState;
-				});
+			const dialogRef = useRef(null);
+			const toggle = () => {
+				if (dialogRef.current) {
+					console.log('mlk');
+					dialogRef.current.dialog({
+						title: 'Delete Row?',
+						description: 'Are you sure you want to delete',
+						action: 'Delete',
+						variant: 'danger',
+					});
+				}
 			};
 			return (
 				<ThemedContainer theme='light'>
@@ -56,19 +59,7 @@ The default Dialog Box.
 						}}>
 						Open Modal
 					</button>
-					<DialogBox
-						heading='Delete Row?'
-						description='Are you sure you want to delete'
-						action='Delete'
-						variant='danger'
-						open={open}
-						onCancel={() => {
-							setOpen(false);
-						}}>
-						<div>
-							<p>Modal description: Pass the header and footer as a Component</p>
-						</div>
-					</DialogBox>
+					<DialogBox ref={dialogRef} />
 				</ThemedContainer>
 			);
 		}}
