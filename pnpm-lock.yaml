@@ -17,6 +17,9 @@ dependencies:
   '@googlemaps/react-wrapper':
     specifier: ^1.1.35
     version: 1.1.35(react@18.2.0)
+  '@highcharts/map-collection':
+    specifier: ^2.1.0
+    version: 2.1.0
   d3:
     specifier: ^7.8.5
     version: 7.8.5
@@ -32,6 +35,15 @@ dependencies:
   fast-equals:
     specifier: ^4.0.3
     version: 4.0.3
+  framer-motion:
+    specifier: ^10.16.4
+    version: 10.16.4(react-dom@18.2.0)(react@18.2.0)
+  highcharts:
+    specifier: ^11.1.0
+    version: 11.1.0
+  highcharts-react-official:
+    specifier: ^3.2.1
+    version: 3.2.1(highcharts@11.1.0)(react@18.2.0)
   neo4j-driver:
     specifier: ^5.12.0
     version: 5.12.0
@@ -2002,6 +2014,20 @@ packages:
     engines: {node: '>=10.0.0'}
     dev: true
 
+  /@emotion/is-prop-valid@0.8.8:
+    resolution: {integrity: sha512-u5WtneEAr5IDG2Wv65yhunPSMLIpuKsbuOktRojfrEiEvRyC85LgPMZI63cr7NUqT8ZIGdSVg8ZKGxIug4lXcA==}
+    requiresBuild: true
+    dependencies:
+      '@emotion/memoize': 0.7.4
+    dev: false
+    optional: true
+
+  /@emotion/memoize@0.7.4:
+    resolution: {integrity: sha512-Ja/Vfqe3HpuzRsG1oBtWTHk2PGZ7GR+2Vz5iYGelAw8dx32K0y7PjVuxK6z1nMpZOqAFsRUPCkK1YjJ56qJlgw==}
+    requiresBuild: true
+    dev: false
+    optional: true
+
   /@eslint-community/eslint-utils@4.4.0(eslint@8.2.0):
     resolution: {integrity: sha512-1/sA4dwrzBAyeUoQ6oxahHKmrZvsnLCg4RfxW3ZFGGmQkSNQPFNLV9CUEFQP1x9EYXHTo5p6xdhZM1Ne9p/AfA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
@@ -2115,6 +2141,10 @@ packages:
     dependencies:
       '@googlemaps/js-api-loader': 1.16.2
       react: 18.2.0
+    dev: false
+
+  /@highcharts/map-collection@2.1.0:
+    resolution: {integrity: sha512-oS7ELhgvltY7OVPG4EFHHcdLRSKu2Fwvg2B9eXRo/Get4rZPUoLwv5i+bUcPb5JYLxzhHVNniuw01yMJAnXJ8g==}
     dev: false
 
   /@humanwhocodes/config-array@0.6.0:
@@ -9772,6 +9802,24 @@ packages:
       map-cache: 0.2.2
     dev: true
 
+  /framer-motion@10.16.4(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-p9V9nGomS3m6/CALXqv6nFGMuFOxbWsmaOrdmhyQimMIlLl3LC7h7l86wge/Js/8cRu5ktutS/zlzgR7eBOtFA==}
+    peerDependencies:
+      react: ^18.0.0
+      react-dom: ^18.0.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      tslib: 2.6.2
+    optionalDependencies:
+      '@emotion/is-prop-valid': 0.8.8
+    dev: false
+
   /fresh@0.5.2:
     resolution: {integrity: sha512-zJ2mQYM18rEFOudeV4GShTGIQ7RbzA7ozbU9I/XBpm7kqgMywgmylMwXHxZJmkVoYkna9d2pVXVXPdYTP9ej8Q==}
     engines: {node: '>= 0.6'}
@@ -10355,6 +10403,20 @@ packages:
     resolution: {integrity: sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==}
     hasBin: true
     dev: true
+
+  /highcharts-react-official@3.2.1(highcharts@11.1.0)(react@18.2.0):
+    resolution: {integrity: sha512-hyQTX7ezCxl7JqumaWiGsroGWalzh24GedQIgO3vJbkGOZ6ySRAltIYjfxhrq4HszJOySZegotEF7v+haQ75UA==}
+    peerDependencies:
+      highcharts: '>=6.0.0'
+      react: '>=16.8.0'
+    dependencies:
+      highcharts: 11.1.0
+      react: 18.2.0
+    dev: false
+
+  /highcharts@11.1.0:
+    resolution: {integrity: sha512-vhmqq6/frteWMx0GKYWwEFL25g4OYc7+m+9KQJb/notXbNtIb8KVy+ijOF7XAFqF165cq0pdLIePAmyFY5ph3g==}
+    dev: false
 
   /highlight.js@10.7.3:
     resolution: {integrity: sha512-tzcUFauisWKNHaRkN4Wjl/ZA07gENAjFl3J/c480dprkGTg5EQstgaNFqBfUqCq54kZRIEcreTsAgF/m2quD7A==}

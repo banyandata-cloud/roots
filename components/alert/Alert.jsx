@@ -1,32 +1,70 @@
 import PropTypes from 'prop-types';
+import { forwardRef, useEffect, useImperativeHandle, useState } from 'react';
 import { useDismiss, useFloating, useInteractions } from '@floating-ui/react-dom-interactions';
 import { classes } from '../../utils/utils';
 import styles from './Alert.module.css';
 import { CrossIcon, AlertIcon } from '../icons';
 import { Button } from '../buttons';
 import Popper from '../popper/Popper';
+import { useAnimate } from 'framer-motion';
 
-const Alert = (props) => {
+const ANIMATION = {
+	transform: {
+		top: [-100, 0],
+		bottom: [100, 0],
+	},
+	static: {
+		center: ['-50%', '-50%'],
+		right: ['0%', '0%'],
+	},
+};
+
+/**
+ * Renders an alert message with optional icon, title, description, and action button.
+ *
+ * @param {Object} props - The props object containing the following properties:
+ *   - showIcon (boolean): Determines whether to show the alert icon.
+ *   - border (string): Specifies the border style of the alert.
+ *   - shadow (boolean): Determines whether to apply a shadow effect to the alert.
+ *   - position (string): Specifies the position of the alert on the screen.
+ *   - animation (boolean): Determines whether to apply the animation effect.
+ * @param {Ref} ref - The ref object used to expose the 'alert' function to the parent component.
+ * @returns {JSX.Element} - The rendered alert component.
+ */
+const Alert = forwardRef((props, ref) => {
+	const { showIcon, border, shadow, position: defaultPosition, animation } = props;
+
+	const [open, setOpen] = useState(false);
+	const [alertProps, setAlertProps] = useState({
+		title: null,
+		description: null,
+		icon: null,
+		type: 'info',
+		action: null,
+		position: null,
+		onClose: () => {
+			setOpen((prev) => {
+				return !prev;
+			});
+		},
+	});
 	const {
-		action,
-		icon: AlertTypeIcon,
-		showIcon,
-		close,
 		title,
 		description,
-		border,
-		color,
-		shadow,
-		open,
-		toggle,
-		position,
-	} = props;
+		icon: CustomIcon,
+		action: CustomAction,
+		type,
+		position: appliedPosition,
+		onClose,
+	} = alertProps;
+
+	const position = appliedPosition ?? defaultPosition;
 
 	let Icon = null;
-	if (AlertTypeIcon != null) {
-		Icon = <AlertTypeIcon className={styles.icon} />;
+	if (CustomIcon != null) {
+		Icon = <CustomIcon className={styles.icon} />;
 	} else {
-		switch (color) {
+		switch (type) {
 			case 'info':
 				Icon = <AlertIcon.Info className={styles.icon} />;
 				break;
@@ -40,14 +78,47 @@ const Alert = (props) => {
 				Icon = <AlertIcon.Danger className={styles.icon} />;
 				break;
 			default:
-				Icon = <AlertTypeIcon />;
+				Icon = <CustomIcon />;
 				break;
 		}
 	}
 
 	const { floating, context } = useFloating({
 		open,
-		onOpenChange: toggle,
+		onOpenChange: setOpen,
+	});
+	const [scope, animate] = useAnimate();
+
+	const alert = (appliedAlertProps) => {
+		setAlertProps({
+			...alertProps,
+			...appliedAlertProps,
+		});
+	};
+
+	useImperativeHandle(ref, () => ({
+		/**
+		 * methods to get exposed
+		 */
+		alert,
+	}));
+
+	useEffect(() => {
+		if (alertProps.title) {
+			setOpen((prev) => {
+				return !prev;
+			});
+		}
+	}, [alertProps]);
+
+	useEffect(() => {
+		if (scope.current && animation) {
+			const [positionType, staticPosition] = position.split('-');
+			animate(scope.current, {
+				y: ANIMATION.transform[positionType],
+				x: ANIMATION.static[staticPosition],
+			});
+		}
 	});
 
 	const { getFloatingProps } = useInteractions([useDismiss(context)]);
@@ -59,12 +130,13 @@ const Alert = (props) => {
 					ref: floating,
 					className: classes(
 						styles.root,
-						styles[color],
+						styles[type],
 						styles[`border-${border}`],
 						shadow ? styles.shadow : '',
 						styles[`position-${position}`]
 					),
-				})}>
+				})}
+				ref={scope}>
 				<div className={styles.left}>
 					<div className={styles.icons}>{showIcon && Icon}</div>
 					<div className={styles.content}>
@@ -72,63 +144,42 @@ const Alert = (props) => {
 						<span className={styles.description}>{description}</span>
 					</div>
 				</div>
-				{(action || close) && (
-					<div className={styles.actions}>
-						{action && (
-							<Button
-								title={action}
-								size='small'
-								variant='text'
-								color='primary'
-								className={styles.button}
-							/>
-						)}
-						{close && (
-							<Button
-								size='auto'
-								variant='text'
-								onClick={toggle}
-								className={styles.close}
-								leftComponent={() => {
-									return <CrossIcon className={styles.icon} />;
-								}}
-							/>
-						)}
-					</div>
-				)}
+				<div className={styles.actions}>
+					{CustomAction && <CustomAction />}
+					{onClose && (
+						<Button
+							size='auto'
+							variant='text'
+							onClick={() => {
+								onClose();
+								setOpen(false);
+							}}
+							className={styles.close}
+							leftComponent={() => {
+								return <CrossIcon className={styles.icon} />;
+							}}
+						/>
+					)}
+				</div>
 			</div>
 		</Popper>
 	);
-};
+});
 
 Alert.propTypes = {
-	action: PropTypes.string,
 	showIcon: PropTypes.bool,
-	icon: PropTypes.node,
-	title: PropTypes.string,
-	close: PropTypes.bool,
-	description: PropTypes.string,
 	border: PropTypes.oneOf(['default', 'thick-left', 'none']),
-	color: PropTypes.oneOf(['info', 'success', 'danger', 'warning']),
 	shadow: PropTypes.bool,
-	toggle: PropTypes.func,
-	open: PropTypes.bool,
-	position: PropTypes.oneOf(['bottom-center', 'top-right']),
+	position: PropTypes.oneOf(['bottom-right', 'bottom-center', 'top-right', 'top-center']),
+	animation: PropTypes.bool,
 };
 
 Alert.defaultProps = {
-	action: '',
 	showIcon: true,
-	icon: null,
-	title: 'Alert Title',
-	close: true,
-	description: 'Alert Description in single line',
-	border: 'default',
-	color: 'info',
-	shadow: false,
-	toggle: () => {},
-	open: true,
+	border: 'none',
+	shadow: true,
 	position: 'bottom-center',
+	animation: true,
 };
 
 export default Alert;

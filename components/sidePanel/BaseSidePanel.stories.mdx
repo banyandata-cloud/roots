@@ -91,6 +91,68 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 	</Story>
 </Canvas>
 
+### Base Panel modal
+
+<Canvas>
+	<Story name='Base Panel Modal'>
+		{() => {
+			const [open, setOpen] = useState(false);
+			const toggle = () => {
+				setOpen((prevState) => {
+					return !prevState;
+				});
+			};
+			return (
+				<div
+					style={{
+						display: 'flex',
+						alignItems: 'flex-start',
+						justifyContent: 'space-between',
+						height: '100%',
+					}}>
+					<Button
+						title='Open Drawer'
+						size='auto'
+						onClick={() => {
+							setOpen((prev) => {
+								return !prev;
+							});
+						}}
+					/>
+					<BaseSidePanel
+						isModal
+						renderHeader={
+							<div
+								style={{
+									background: 'red',
+								}}>
+								<div>Header</div>
+							</div>
+						}
+						renderFooter={
+							<div
+								style={{
+									background: 'orange',
+								}}>
+								Footer
+							</div>
+						}
+						toggle={toggle}
+						open={open}>
+						<div
+							style={{
+								background: 'tomato',
+								height: '500px',
+							}}>
+							<p>Body</p>
+						</div>
+					</BaseSidePanel>
+				</div>
+			);
+		}}
+	</Story>
+</Canvas>
+
 ## Try in the Code Editor
 
 This embeded `CodeSandBox` is external third party code editor `iframe` shared publicly. It is advised to create an account with banyancloud mail id to create/fork this sandbox.
