@@ -3,6 +3,25 @@ import * as d3 from 'd3';
 import neo4j from 'neo4j-driver';
 import PropTypes from 'prop-types';
 
+/**
+ * Renders a FlowChart that visualizes data as a chart from neo4j Database.
+ *
+ * @param {string} url - The base url for connecting to a Neo4j DataBase.
+ * @param {string} user - The neo4j database userName.
+ * @param {string} password - Password to access Data in Neo4j DataBase.
+ * @param {string} query - Cypher Query to query data from the Neo4j database and display only the information that is required.
+ * @param {number} width - Width allow you to manually adjust the width of the Graph screen.
+ * @param {number} height - Height allow you to manually adjust the height of the Graph screen.
+ * @param {number} linkDistance - linkDistance adjust the distance of the link connected between the nodes.
+ * @param {number} linkWidth - linkWidth adjust the width of the link connected between the nodes.
+ * @param {string} linkFontSize - linkFontSize adjust the font size of relation label displayed on link connected between the nodes.
+ * @param {string} labelFontSize - labelFontSize adjust the size of label displayed on the nodes.
+ * @param {number} nodeRadius - nodeRadius is radius of node.
+ * @param {string} labelColor - labelColor to modify the color of label displayed on the nodes.
+ * @param {string} textLinkColor - textLinkColor to modify the color of relation label displayed on the link.
+ * @returns {JSX.Element} - The rendered FlowChart component.
+ */
+
 const FlowChart = ({
 	url,
 	user,
@@ -19,23 +38,28 @@ const FlowChart = ({
 	textLinkColor,
 }) => {
 	useEffect(() => {
+		// Establish Neo4j driver connection
 		const driver = neo4j.driver(url, neo4j.auth.basic(user, password));
 
 		const handleErrors = (error) => {
 			console.error('Neo4j error:', error);
 		};
 
+		// Clear existing SVG content
 		const svgContainer = d3.select('#graph-2d');
 		svgContainer.selectAll('*').remove();
 
+		// Create SVG and container for the graph
 		const svg = svgContainer.append('svg').attr('width', width).attr('height', height);
 		const container = svg.append('g');
 
+		// Color scale for node levels
 		const colorScale = d3
 			.scaleOrdinal()
 			.domain([0, 1, 2])
 			.range(['#e31a1c', '#33a02c', '#1f78b4']);
 
+		// Function to update the graph based on nodes and links
 		const updateGraph = (nodes, links) => {
 			const simulation = d3
 				.forceSimulation(nodes)
@@ -49,6 +73,7 @@ const FlowChart = ({
 				.force('charge', d3.forceManyBody().strength(-100))
 				.force('center', d3.forceCenter(width / 2, height / 2));
 
+			// Drag functions for nodes
 			const dragstarted = (event, d) => {
 				if (!event.active) simulation.alphaTarget(0.3).restart();
 				d.fx = d.x;
@@ -175,6 +200,7 @@ const FlowChart = ({
 				labels.attr('x', (d) => d.x).attr('y', (d) => d.y);
 			});
 
+			// Zoom functionality
 			const zoom = d3.zoom().scaleExtent([0.1, 10]).on('zoom', zoomed);
 			svg.call(zoom);
 			svg.call(zoom.transform, d3.zoomIdentity.scale(0.7));
@@ -184,6 +210,7 @@ const FlowChart = ({
 			}
 		};
 
+		// Function to assign node levels based on links
 		const assignNodeLevels = (nodes, links) => {
 			const nodeHierarchy = {};
 
@@ -196,6 +223,7 @@ const FlowChart = ({
 			});
 		};
 
+		// Create a Neo4j session and fetch data
 		const session = driver.session({ database: 'neo4j' });
 		session
 			.run(query)
@@ -245,6 +273,7 @@ const FlowChart = ({
 			})
 			.catch(handleErrors);
 
+		// Cleanup resources on component unmount
 		return () => {
 			session.close();
 			driver.close();
