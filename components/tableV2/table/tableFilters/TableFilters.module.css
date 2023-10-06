@@ -21,7 +21,7 @@
 .root[data-elem=base-cell] button.icon-button {
   border: 1px solid red;
   height: 100%;
-  background: var(--grey8);
+  background: transparent;
   border: 1px solid var(--grey4);
   color: #141920;
 }
