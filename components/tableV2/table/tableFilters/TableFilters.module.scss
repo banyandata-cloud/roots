@@ -16,7 +16,7 @@
 	button.icon-button {
 		@include debug;
 		height: 100%;
-		background: $grey8;
+		background: transparent;
 		border: 1px solid $grey4;
 		color: #141920;
 	}
