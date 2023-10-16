@@ -78,7 +78,7 @@ const Map = forwardRef((props, ref) => {
 		highcharts: Highcharts,
 		options: mapOptions(props),
 		constructorType: 'mapChart', // renders map based highchart
-		containerProps: { className: styles['bc-map-root'] }, // container class for the map component
+		containerProps: { className: classes(styles['bc-map-root'], className) }, // container class for the map component
 		ref: mapRef,
 	};
 
