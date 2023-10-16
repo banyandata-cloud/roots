@@ -73,7 +73,12 @@ const DialogBox = forwardRef((props, ref) => {
 		action: actionText,
 		cancel: cancelText,
 		variant,
-		onAction,
+		...(onAction && {
+			onAction: () => {
+				onAction();
+				setOpen(false);
+			},
+		}),
 		onCancel: toggle,
 	};
 
