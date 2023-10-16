@@ -75,7 +75,7 @@ const DialogBox = forwardRef((props, ref) => {
 		variant,
 		...(onAction && {
 			onAction: () => {
-				onAction?.();
+				onAction();
 				setOpen(false);
 			},
 		}),
