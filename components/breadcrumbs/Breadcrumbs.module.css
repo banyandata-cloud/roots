@@ -71,6 +71,9 @@
   width: 1rem;
   height: 1rem;
 }
+.root .crumb .iconWrapper svg {
+  fill: #0f62fe;
+}
 .root.theme-light .crumb {
   font-weight: 500;
 }
