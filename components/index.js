@@ -28,3 +28,4 @@ export * from './link';
 export * from './maps';
 export * from './mapsV2';
 export * from './skeleton';
+export * from './flowChart';

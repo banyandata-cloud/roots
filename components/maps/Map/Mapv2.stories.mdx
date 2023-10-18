@@ -4,6 +4,7 @@ import { ThemedContainer } from '../../helpers';
 import { useEffect, useState } from 'react';
 import { Button } from '../../buttons';
 import Text from '../../text/Text';
+import Widget from '../../widget/BaseWidget';
 import Toggle from '../../Toggle/Toggle';
 import { InfoWindow } from '../InfoWindow';
 import { Marker } from '../Marker';
@@ -349,6 +350,72 @@ The Map component with dynamic coordinates.
 						/>
 					</div>
 					<Map v2 theme={theme} cluster={false} coordinates={COORDS[selectedToggle]} />
+				</ThemedContainer>
+			);
+		}}
+	</Story>
+</Canvas>
+
+### Map in Widget
+
+The Map component within widget.
+
+<Canvas>
+	<Story name='Map in Widget'>
+		{() => {
+			const coords = [
+				{
+					lat: 28,
+					lon: 120,
+				},
+				{
+					lat: 28.5,
+					lon: 120,
+				},
+				{
+					lat: 28.2,
+					lon: 120,
+				},
+				{
+					lat: 27,
+					lon: 103,
+				},
+				{
+					lat: 22,
+					lon: 125,
+				},
+				{
+					lat: 22,
+					lon: 78,
+				},
+				{ lon: 77.73, lat: 12.96 },
+				{ lon: -121, lat: 37 },
+			];
+			const [theme, setTheme] = useState('dark');
+			return (
+				<ThemedContainer
+					theme={theme}
+					style={{
+						width: '100%',
+						height: '100%',
+					}}>
+					<Toggle
+						options={[
+							{
+								value: 'dark',
+								title: 'Dark',
+							},
+							{
+								value: 'light',
+								title: 'Light',
+							},
+						]}
+						value={theme}
+						onChange={setTheme}
+					/>
+					<Widget title='Hello'>
+						<Map v2 cluster theme={theme} coordinates={coords} />
+					</Widget>
 				</ThemedContainer>
 			);
 		}}

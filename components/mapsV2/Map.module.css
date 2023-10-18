@@ -16,5 +16,6 @@
 }
 
 .bc-map-root {
-  position: relative;
+  height: 100%;
+  width: 100%;
 }/*# sourceMappingURL=Map.module.css.map */
