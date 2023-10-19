@@ -6,7 +6,7 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
   padding: 0.4375rem 1rem;
-  background: #f7f7f8;
+  background: #efeff0;
   margin-top: auto;
   width: 100%;
   height: 3.5rem;
@@ -111,7 +111,7 @@
 }
 .root .row-switcher .dropdown > [data-elem=header] {
   height: 100%;
-  background-color: #f7f7f8;
+  background-color: #efeff0;
 }
 .root .row-switcher .dropdown > [data-elem=header] > [data-elem=select] {
   height: 2.375rem;
@@ -120,13 +120,13 @@
   min-width: -moz-fit-content;
   min-width: fit-content;
   padding: 0.625rem;
-  background-color: #f7f7f8;
+  background-color: #efeff0;
   border: 0rem solid transparent;
 }
 .root .row-switcher .dropdown > [data-elem=header] > [data-elem=select] > [data-elem=placeholder] {
   color: #1a2028;
   font-size: 0.875rem;
-  background-color: #f7f7f8;
+  background-color: #efeff0;
 }
 .root .row-switcher .dropdown > [data-elem=header] > [data-elem=select] > svg {
   fill: #1a2028;
@@ -223,7 +223,7 @@
   padding: 0rem;
   height: 100%;
   border-radius: 0.25rem;
-  border: 0.0313rem solid var(--light-mono-grey-5, #ddd);
+  border: 0.0313rem solid #b7cadb;
   box-shadow: 0.1875rem 0.1875rem 0.25rem 0rem rgba(194, 194, 194, 0.12) inset;
 }
 .root .form .jump-to-page > [data-elem*=component] {
@@ -269,14 +269,14 @@
 }
 .root .form .jump-to-page .button {
   border-radius: 0rem 0.25rem 0.25rem 0rem;
-  background-color: #dddddd;
+  background-color: #b7cadb;
   padding: 0.75rem 0.5rem;
   height: 100%;
 }
 .root .form .jump-to-page .button .icon {
   width: 1.5rem;
   height: 1.5rem;
-  fill: #737373;
+  fill: #71839b;
   flex-shrink: 0;
 }
 .root .total-data {
