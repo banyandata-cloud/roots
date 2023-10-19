@@ -11,12 +11,12 @@ const MAP_THEME = {
 		zoomButtonsBackgroundOnHover: '#f0f0f0',
 	},
 	light: {
-		mapBackgroundColor: '#ffffff',
+		mapBackgroundColor: '#fbfbfb',
 		mapAreaColor: '#dde7f1',
 		defaultMarkerColor: '#5a6b51',
 		mapAreaBorderColor: '#ffffff',
-		zoomButtonsBackground: '#00000',
-		zoomButtonsTextColor: '#ffffff',
+		zoomButtonsBackground: '#ffffff',
+		zoomButtonsTextColor: '#000000',
 		zoomButtonsBackgroundOnHover: '#00000088',
 	},
 };

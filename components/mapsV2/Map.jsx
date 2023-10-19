@@ -78,11 +78,11 @@ const Map = forwardRef((props, ref) => {
 		highcharts: Highcharts,
 		options: mapOptions(props),
 		constructorType: 'mapChart', // renders map based highchart
-		containerProps: { className: styles['bc-map-root'] }, // container class for the map component
+		containerProps: { className: classes(styles['bc-map-root'], className) }, // container class for the map component
 		ref: mapRef,
 	};
 
-	const handleFullScreen = () => {
+	const toggleFullScreen = () => {
 		/**
 		 * The function first checks if the mapRef exists
 		 * and if it has a current property and a chart property.
@@ -98,13 +98,13 @@ const Map = forwardRef((props, ref) => {
 		/**
 		 * methods to get exposed
 		 */
-		toggleFullScreen: handleFullScreen,
+		toggleFullScreen,
 	}));
 
 	return (
 		<div className={classes(styles.root, className)}>
 			<HighchartsReact {...chartProps} />
-			{showFullScreen && <FullScreenButton handleFullScreen={handleFullScreen} />}
+			{showFullScreen && <FullScreenButton handleFullScreen={toggleFullScreen} />}
 		</div>
 	);
 });
