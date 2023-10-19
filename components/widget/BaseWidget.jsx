@@ -144,7 +144,7 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 			{titleDesc && (
 				<Text
 					variant='b1'
-					stroke='medium'
+					stroke='light'
 					attrs={{
 						'data-elem': 'title-desc',
 					}}>
