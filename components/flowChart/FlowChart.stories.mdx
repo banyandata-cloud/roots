@@ -13,11 +13,11 @@ export const Template = (args) => (
 
 # FlowChart
 
-A flowchart component that visualizes data from Neo4j.
+A flowchart component that visualizes the data in the form of Chart.
 
 #### Design - [Figma](https://www.figma.com) | Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/components/FlowChart)
 
-> The FlowChart component provides an easy and customizable way to incorporate flowcharts into your application.By connecting to the Neo4j DataBase and retrieving the data to display in the chart.
+> The FlowChart component provides an easy and customizable way to incorporate flowcharts into your application.By fetching data from API and retrieving that data to display in the chart.
 
 ## Usage
 
@@ -27,9 +27,8 @@ Basic import and additional information on how to use this component.
 import { FlowChart } from '@banyan_cloud/roots';
 ```
 
--   The url,user and password are the basic props that let you to connect to the Neo4j database.
--   The query prop allows you to query data from the Neo4j database and display only the information that is required.
--   The other props are used to personalise the node, linkages and fonts in the graph. 
+-   The apiUrl is the basic prop that let you to fetch the data.
+-   The other props are used to personalise the node, linkages and fonts in the graph.
 
 ## Stories
 
@@ -43,14 +42,13 @@ The default FlowChart.
 	<Story
 		name='Default'
 		args={{
-			url: 'bolt://localhost:7687',
-			password: '1234567890',
-			query: 'MATCH (n)-[r]->(m) RETURN n, r, m',
+			apiUrl: 'http://localhost:5000/api/v1/fetch_data_from_neo4j',
+			width: 900,
+			height: 600,
 		}}>
 		{Template.bind({})}
 	</Story>
 </Canvas>
-
 
 ## Try in the Code Editor
 
@@ -58,66 +56,9 @@ This embeded `CodeSandBox` is external third party code editor `iframe` shared p
 
 ## API
 
-**`url`**
+**`apiUrl`**
 
-The base url for connecting to a Neo4j DataBase.
-
-<table style={{ width: '100%' }}>
-	<tr>
-		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
-		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
-	</tr>
-	<tr>
-		<td>string</td>
-		<td>null</td>
-	</tr>
-</table>
-
-```jsx
-<FlowChart url='neo4j_url' />
-```
-
-**`user`**
-
-The neo4j database userName.
-
-<table style={{ width: '100%' }}>
-	<tr>
-		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
-		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
-	</tr>
-	<tr>
-		<td>string</td>
-		<td>neo4j</td>
-	</tr>
-</table>
-
-```jsx
-<FlowChart user='neo4j_user' />
-```
-
-**`password`**
-
-Password to access Data in Neo4j DataBase.
-
-<table style={{ width: '100%' }}>
-	<tr>
-		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
-		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
-	</tr>
-	<tr>
-		<td>string</td>
-		<td>undefined</td>
-	</tr>
-</table>
-
-```jsx
-<FlowChart password='neo4j_password' />
-```
-
-**`query`**
-
-Cypher Query to query data from the Neo4j database and display only the information that is required.
+The actual base URL of the API from which you want to fetch data.
 
 <table style={{ width: '100%' }}>
 	<tr>
@@ -131,7 +72,7 @@ Cypher Query to query data from the Neo4j database and display only the informat
 </table>
 
 ```jsx
-<FlowChart query='Your_query' />
+<FlowChart apiUrl='API_url' />
 ```
 
 **`width`**
@@ -188,26 +129,7 @@ linkDistance adjust the distance of the link connected between the nodes.
 </table>
 
 ```jsx
-<FlowChart linkDistance='100' />
-```
-
-**`linkWidth`**
-
-linkWidth adjust the width of the link connected between the nodes.
-
-<table style={{ width: '100%' }}>
-	<tr>
-		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
-		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
-	</tr>
-	<tr>
-		<td>number</td>
-		<td>2</td>
-	</tr>
-</table>
-
-```jsx
-<FlowChart linkWidth='2' />
+<FlowChart linkDistance='150' />
 ```
 
 **`linkFontSize`**
@@ -245,7 +167,7 @@ labelFontSize adjust the size of label displayed on the nodes.
 </table>
 
 ```jsx
-<FlowChart linkFontSize='8px' />
+<FlowChart labelFontSize='8px' />
 ```
 
 **`nodeRadius`**
@@ -286,9 +208,9 @@ labelColor to modify the color of label displayed on the nodes.
 <FlowChart labelColor='white' />
 ```
 
-**`textLinkColor`**
+**`linkFontColor`**
 
-textLinkColor to modify the color of relation label displayed on the link.
+linkFontColor to modify the color of relation label displayed on the link.
 
 <table style={{ width: '100%' }}>
 	<tr>
@@ -302,5 +224,5 @@ textLinkColor to modify the color of relation label displayed on the link.
 </table>
 
 ```jsx
-<FlowChart textLinkColor='black' />
+<FlowChart linkFontColor='black' />
 ```
