@@ -26,13 +26,14 @@
 		}
 	}
 
-	.back {
+	.back[data-elem='base-cell'] {
 		height: 2rem;
 		width: 2rem;
 		margin-left: 0.5rem;
 		margin-right: 0.5rem;
 		padding-left: 0.4375rem;
 		padding-right: 0.4375rem;
+		background-color: #71839b !important;
 		.icon {
 			width: 1.5rem;
 			height: 1.5rem;
@@ -47,14 +48,15 @@
 		padding-top: 0.5rem;
 		padding-bottom: 0.5rem;
 		border-radius: 0.25rem;
+		background: var(--mono-colours-203, #d8dfe5);
 
 		.title {
-			color: #818181;
+			color: #141920;
 			margin-left: 0.25rem;
 		}
 
 		.value {
-			color: #1a2028;
+			color: #141920;
 			margin-left: 0.25rem;
 			padding-left: 0.5rem;
 			padding-right: 0.5rem;
@@ -64,21 +66,35 @@
 			@include flex(row, center, center);
 			width: 1rem;
 			height: 1rem;
+			svg {
+				fill: #0f62fe;
+			}
 		}
 	}
 
 	&.theme-light {
 		.crumb {
 			font-weight: 500;
-			border: 0.0625rem solid #dfe0e2;
 
 			&.active {
-				border: 1px solid $background;
+				background-color: #71839b;
+				.title {
+					color: #fff;
+				}
+
+				.value {
+					color: #fff;
+				}
+				.iconWrapper {
+					svg {
+						fill: #fff;
+					}
+				}
 			}
 
 			&:hover:not(.active) {
 				cursor: pointer;
-				background: var(--support-colors-information-background, #edf5ff);
+				background: var(--light-colours-201, #efeff0);
 			}
 		}
 	}

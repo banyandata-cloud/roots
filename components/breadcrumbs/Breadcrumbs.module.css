@@ -27,15 +27,16 @@
 .root button.expand[data-elem=base-cell] [data-elem=title] {
   margin-bottom: 0.4rem;
 }
-.root .back {
+.root .back[data-elem=base-cell] {
   height: 2rem;
   width: 2rem;
   margin-left: 0.5rem;
   margin-right: 0.5rem;
   padding-left: 0.4375rem;
   padding-right: 0.4375rem;
+  background-color: #71839b !important;
 }
-.root .back .icon {
+.root .back[data-elem=base-cell] .icon {
   width: 1.5rem;
   height: 1.5rem;
   fill: var(--white);
@@ -50,13 +51,14 @@
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   border-radius: 0.25rem;
+  background: var(--mono-colours-203, #d8dfe5);
 }
 .root .crumb .title {
-  color: #818181;
+  color: #141920;
   margin-left: 0.25rem;
 }
 .root .crumb .value {
-  color: #1a2028;
+  color: #141920;
   margin-left: 0.25rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -69,16 +71,27 @@
   width: 1rem;
   height: 1rem;
 }
+.root .crumb .iconWrapper svg {
+  fill: #0f62fe;
+}
 .root.theme-light .crumb {
   font-weight: 500;
-  border: 0.0625rem solid #dfe0e2;
 }
 .root.theme-light .crumb.active {
-  border: 1px solid var(--background);
+  background-color: #71839b;
+}
+.root.theme-light .crumb.active .title {
+  color: #fff;
+}
+.root.theme-light .crumb.active .value {
+  color: #fff;
+}
+.root.theme-light .crumb.active .iconWrapper svg {
+  fill: #fff;
 }
 .root.theme-light .crumb:hover:not(.active) {
   cursor: pointer;
-  background: var(--support-colors-information-background, #edf5ff);
+  background: var(--light-colours-201, #efeff0);
 }
 .root.theme-dark .crumb {
   color: var(--grey2);

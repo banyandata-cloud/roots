@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { string } from 'prop-types';
 import styles from './Breadcrumbs.module.css';
 import { getSpacedDisplayName, classes } from '../../utils/utils';
 import BreadcrumbSeperator from '../icons/BreadcrumbSeperator/BreadcrumbSeperator';
@@ -45,7 +45,7 @@ const BreadCrumbs = (props) => {
 						}}
 						component={!active ? linkComponent : 'span'}
 						stroke={!active ? 'regular' : 'medium'}>
-						<div className={classes(styles.iconWrapper)}>{icon && icon}</div>
+						{icon && <div className={classes(styles.iconWrapper)}>{icon}</div>}
 						{title && (
 							<span className={classes(styles.title)}>
 								{getSpacedDisplayName(title).replace(/-/g, ' ')} :

@@ -1,1 +1,25 @@
-/*# sourceMappingURL=Slider.module.css.map */
+.slider-container .slider {
+  width: 100%;
+  height: 0.5rem;
+}
+.slider-container .slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+          appearance: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background: #0f62fe;
+  cursor: pointer;
+}
+.slider-container .slider:disabled::-webkit-slider-thumb {
+  cursor: not-allowed;
+}
+.slider-container .label-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 10px;
+  font-size: 15px;
+  color: #333;
+}/*# sourceMappingURL=Slider.module.css.map */
