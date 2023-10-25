@@ -2,7 +2,7 @@
 
 .root {
 	@include flex(row, flex-start, center);
-	gap: 0.5rem;
+	gap: 1rem;
 	width: auto;
 	overflow: auto;
 	width: 100%;
