@@ -127,6 +127,7 @@ export const mapOptions = (props) => {
 		chart: {
 			backgroundColor: MAP_THEME[theme].mapBackgroundColor, // background color of the map container
 			spacing: [0, 0, 0, 0], // outer spacing around the map. Setting it to 0 to get max ratio.
+			animation: false,
 		},
 		mapNavigation: {
 			enabled: showZoomButton,
