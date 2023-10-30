@@ -11,6 +11,12 @@
 		font-size: 0.75rem;
 		color: $grey;
 		width: auto;
+		&.required {
+			&::after {
+				content: ' *';
+				color: $error;
+			}
+		}
 	}
 
 	.header {
