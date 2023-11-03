@@ -4,7 +4,7 @@
 	@include flex(column, center, flex-start);
 	width: 100%;
 	background-color: transparent;
-	gap: 0.25rem;
+	gap: 1rem;
 	&.dark-theme {
 		color: $white;
 

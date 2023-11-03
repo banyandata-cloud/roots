@@ -34,7 +34,6 @@ import { ErrorBoundaryWrapper } from '../../errorBoundary';
 
 // eslint-disable-next-line prefer-arrow-callback
 const Dropdown = forwardRef(function Dropdown(props, inputRef) {
-	// eslint-disable-next-line object-curly-newline
 	const {
 		className,
 		popperClassName,
@@ -52,6 +51,7 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 		formatter,
 		custom,
 		newIcon,
+		required,
 	} = props;
 	const [open, setOpen] = useState(false);
 	const [activeIndex, setActiveIndex] = useState(null);
@@ -322,7 +322,9 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 					disabled ? styles.disabled : ''
 				)}>
 				{label && (
-					<div data-elem='label' className={styles.label}>
+					<div
+						data-elem='label'
+						className={classes(styles.label, required ? styles.required : '')}>
 						<span>{label}</span>
 					</div>
 				)}
@@ -477,6 +479,7 @@ Dropdown.propTypes = {
 		type: PropTypes.oneOf(['error', 'success', 'default']),
 	}),
 	formatter: PropTypes.func,
+	required: PropTypes.bool,
 };
 
 Dropdown.defaultProps = {
@@ -495,6 +498,7 @@ Dropdown.defaultProps = {
 	formatter: (totalSelected) => {
 		return `${totalSelected} options selected`;
 	},
+	required: false,
 };
 
 export default Dropdown;
