@@ -59,7 +59,9 @@ const BaseModal = (props) => {
 	useEffect(() => {
 		if (scope.current) {
 			animate(scope.current, { opacity: 1 });
-			animate('footer', { y: ['100%', '0%'] });
+			if (renderFooter) {
+				animate('footer', { y: ['100%', '0%'] });
+			}
 		}
 	});
 
