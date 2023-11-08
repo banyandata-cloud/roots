@@ -33,7 +33,7 @@ const BaseTable = forwardRef(function BaseTable(props, ref) {
 	});
 
 	return (
-		<table ref={ref} data-elem='table' className={classes(className, styles.root)}>
+		<table ref={ref} data-elem='table' className={classes(styles.root, className)}>
 			<TableHeader
 				{...{
 					headerData: transformedHeaderData,

@@ -130,9 +130,9 @@ export const Pagination = forwardRef((props, ref) => {
 			ref={ref}
 			className={classes(
 				styles.root,
-				className,
 				floating ? styles.floating : '',
-				showTotalData ? '' : styles['no-total-data']
+				showTotalData ? '' : styles['no-total-data'],
+				className
 			)}>
 			<div className={styles.copyrightText}>
 				<p className={styles.text}>

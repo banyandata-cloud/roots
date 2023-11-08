@@ -47,7 +47,7 @@ const TableChips = (props) => {
 		return (
 			<BaseCell
 				flexible
-				className={classes(className, styles.root)}
+				className={classes(styles.root, className)}
 				attrs={{
 					style,
 				}}

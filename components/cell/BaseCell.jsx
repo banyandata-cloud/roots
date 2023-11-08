@@ -26,12 +26,12 @@ export const BaseCell = forwardRef(function BaseCell(props, ref) {
 			'data-elem': 'base-cell',
 			ref,
 			className: classes(
-				className,
 				styles.root,
 				styles[size],
 				styles[`border-radius-${radius}`],
 				flexible ? styles.flexible : '',
-				rounded ? styles.rounded : ''
+				rounded ? styles.rounded : '',
+				className
 			),
 			...attrs,
 		},

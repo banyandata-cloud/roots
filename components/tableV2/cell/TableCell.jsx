@@ -50,12 +50,12 @@ const TableCell = forwardRef(function TableCell(props, ref) {
 				ref,
 				className: classes(
 					styles.root,
-					className,
 					styles[`${type}-cell`],
 					styles[`${theme}`],
 					styles[`sticky-${sticky}`],
 					styles[`sort-${sort}`],
-					sort != null ? styles.sortable : ''
+					sort != null ? styles.sortable : '',
+					className
 				),
 				attrs: {
 					style,

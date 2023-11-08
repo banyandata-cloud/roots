@@ -300,7 +300,7 @@ const BaseVerticalBarChart = (props) => {
 			echarts={echarts}
 			notMerge
 			lazyUpdate
-			className={classes(className, styles.root)}
+			className={classes(styles.root, className)}
 			style={style}
 		/>
 	);

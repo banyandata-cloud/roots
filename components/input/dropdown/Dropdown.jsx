@@ -316,10 +316,10 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 			}}>
 			<div
 				className={classes(
-					className,
 					styles.root,
 					open ? styles.open : '',
-					disabled ? styles.disabled : ''
+					disabled ? styles.disabled : '',
+					className
 				)}>
 				{label && (
 					<div

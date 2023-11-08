@@ -106,7 +106,7 @@ const DialogBox = forwardRef((props, ref) => {
 			open={open}
 			toggle={toggle}
 			hideCrossDismiss
-			className={classes(className, styles.root, styles[size])}
+			className={classes( styles.root, styles[size], className)}
 			renderHeader={<Header {...headerProps} />}
 			renderFooter={<Footer {...footerProps} />}>
 			<div className={styles.description}>{description}</div>

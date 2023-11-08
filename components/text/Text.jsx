@@ -25,7 +25,7 @@ const Text = forwardRef(function Text(props, ref) {
 					fontWeight: weight,
 				}),
 			},
-			className: classes(className, styles.root, styles[variant], styles[`${stroke}-stroke`]),
+			className: classes(styles.root, styles[variant], styles[`${stroke}-stroke`], className),
 			...attrs,
 		},
 		children

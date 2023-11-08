@@ -27,10 +27,10 @@ const Popper = (props) => {
 				<FloatingOverlay
 					lockScroll
 					className={classes(
-						className,
 						styles.backdrop,
 						transparent ? styles.transparent : '',
-						backdrop ? '' : styles['hide-backdrop']
+						backdrop ? '' : styles['hide-backdrop'],
+						className
 					)}>
 					{children}
 				</FloatingOverlay>
