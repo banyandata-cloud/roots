@@ -9,11 +9,11 @@ const Skeleton = (props) => {
 		<span
 			data-elem='skeleton'
 			className={classes(
-				className,
 				styles.root,
 				styles[variant],
 				styles[`${theme}-theme`],
-				noAnimation ? '' : styles.animated
+				noAnimation ? '' : styles.animated,
+				className
 			)}
 			style={{
 				height,

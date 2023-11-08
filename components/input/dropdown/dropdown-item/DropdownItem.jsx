@@ -40,10 +40,10 @@ const DropdownItem = forwardRef(function DropdownItem(props, ref) {
 		<li
 			ref={ref}
 			className={classes(
-				className,
 				styles.root,
 				selected ? styles.selected : '',
-				disabled ? styles.disabled : ''
+				disabled ? styles.disabled : '',
+				className
 			)}
 			data-elem='dropdown-item'
 			data-variant={variant}

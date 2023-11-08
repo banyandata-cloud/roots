@@ -65,9 +65,9 @@ const Checkbox = (props) => {
 				className={classes(
 					styles.root,
 					styles[`position-${position}`],
-					className,
 					disabled ? styles.disabled : '',
-					isChecked ? styles.selected : ''
+					isChecked ? styles.selected : '',
+					className
 				)}>
 				<input
 					disabled={disabled}

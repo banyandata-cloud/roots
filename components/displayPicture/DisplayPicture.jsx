@@ -6,7 +6,7 @@ const DisplayPicture = (props) => {
 	const { name, className, url, size } = props;
 
 	return (
-		<div className={classes(styles.root, className, styles[size])}>
+		<div className={classes(styles.root, styles[size], className)}>
 			{!url && (
 				<div>
 					<span data-elem='dp-name'>{getInitialsOfName(name)}</span>

@@ -136,9 +136,9 @@ const TableChipItem = forwardRef((props, ref) => {
 			ref={ref}
 			className={classes(
 				styles.root,
-				className,
 				disabled ? styles.disabled : '',
-				temp ? styles.temp : ''
+				temp ? styles.temp : '',
+				className
 			)}
 			component1={Icon}
 			component2={Title}
