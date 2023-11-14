@@ -21,6 +21,31 @@
 		color: #141920;
 	}
 
+	.column-dropdown {
+		// @include debug;
+		display: flex;
+		padding: 0px 8px;
+		justify-content: center;
+		align-items: center;
+		align-self: stretch;
+		> [data-elem='header'] {
+			> [data-elem='select'] {
+				background-color: transparent;
+				border: 1px solid $grey4;
+				color: #141920;
+				height: 2.3125rem;
+				width: 11.25rem;
+			}
+		}
+
+		.item {
+			height: 3rem;
+			> [data-elem='title'] {
+				@include ellipsis;
+			}
+		}
+	}
+
 	> [data-elem*='component'] {
 		height: 100%;
 	}

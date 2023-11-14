@@ -360,11 +360,17 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 							styles.select,
 							feedback != null ? styles[`feedback-${feedback?.type}`] : ''
 						)}>
-						<span data-elem='placeholder' className={styles.placeholder}>
-							{(selectedOptions?.length > 1
+						{typeof placeholder === 'string' || placeholder instanceof String ? (
+							(selectedOptions?.length > 1
 								? formatter(selectedOptions.length)
-								: selectedOptions?.[0]?.title) ?? placeholder}
-						</span>
+								: selectedOptions?.[0]?.title) ?? (
+								<span data-elem='placeholder' className={styles.placeholder}>
+									{placeholder}
+								</span>
+							)
+						) : (
+							<div data-elem='placeholder'>{placeholder}</div>
+						)}
 						{newIcon ? (
 							<DropdownIcon
 								data-elem='icon'
@@ -468,7 +474,7 @@ Dropdown.propTypes = {
 	disabled: PropTypes.bool,
 	label: PropTypes.string,
 	value: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]),
-	placeholder: PropTypes.string,
+	placeholder: PropTypes.string || PropTypes.node,
 	// search: PropTypes.bool,
 	// max: PropTypes.number,
 	multi: PropTypes.bool,

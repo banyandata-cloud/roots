@@ -1,18 +1,13 @@
 import PropTypes from 'prop-types';
-import {
-	useState,
-} from 'react';
+import { useState } from 'react';
 import { classes } from '../../../../utils';
 import { Button } from '../../../buttons';
 import { BaseCell } from '../../../cell';
-import {
-	FilterIcon,
-	CaretIcon,
-	ColumnFilter,
-} from '../../../icons';
+import { FilterIcon, CaretIcon, ColumnFilter } from '../../../icons';
 import { Columns } from './Filters';
 import styles from './TableFilters.module.css';
 import { Skeleton } from './Skeleton';
+import { Dropdown, DropdownItem } from '../../../input';
 
 const TableFilters = (props) => {
 	const {
@@ -60,7 +55,7 @@ const TableFilters = (props) => {
 			component2={
 				!disabledColumnFilter && (
 					<>
-						<Button
+						{/* <Button
 							ref={(el) => {
 								setAnchorEl(el);
 							}}
@@ -88,7 +83,54 @@ const TableFilters = (props) => {
 							hiddenColumns={hiddenColumns}
 							setHiddenColumns={setHiddenColumns}
 							theme={theme}
-						/>
+						/> */}
+						<Dropdown
+							theme={theme}
+							className={styles['column-dropdown']}
+							placeholder='Columns'
+							multi
+							onChange={(_, col) => {
+								console.log({
+									headerData,
+								});
+								const selected = [null, false, undefined].includes(
+									hiddenColumns?.[col?.id]
+								);
+								if (selected) {
+									setHiddenColumns({
+										...hiddenColumns,
+										[col.id]: true,
+									});
+								} else {
+									setHiddenColumns({
+										...hiddenColumns,
+										[col.id]: false,
+									});
+								}
+							}}>
+							{headerData.map((col) => {
+								const selected = [null, false, undefined].includes(
+									hiddenColumns?.[col?.id]
+								);
+								console.log({
+									col,
+								});
+								return (
+									<DropdownItem
+										className={styles.item}
+										key={col.id}
+										selected={selected}
+										title={col.title}
+										variant='checkbox'
+										onClick={(v) => {
+											console.log({
+												v,
+											});
+										}}
+									/>
+								);
+							})}
+						</Dropdown>
 					</>
 				)
 			}
