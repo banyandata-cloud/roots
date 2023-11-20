@@ -109,7 +109,7 @@ const Toggle = forwardRef(function Toggle(props, ref) {
 	}
 
 	return (
-		<div className={classes(className, styles.root, styles[`theme-${theme}`])}>
+		<div className={classes(styles.root, styles[`theme-${theme}`], className)}>
 			{multi && (
 				<Button
 					size='auto'

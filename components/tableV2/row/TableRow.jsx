@@ -88,10 +88,10 @@ const TableRow = forwardRef(function BaseTable(props, ref) {
 					return onRowClick(props);
 				}}
 				className={classes(
-					className,
 					styles.root,
 					styles[`${type}-row`],
-					styles[`row-height-${rowHeight}`]
+					styles[`row-height-${rowHeight}`],
+					className
 				)}>
 				{tableCells}
 			</tr>
