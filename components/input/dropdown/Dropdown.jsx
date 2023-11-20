@@ -52,6 +52,7 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 		custom,
 		newIcon,
 		required,
+		hideIcon,
 	} = props;
 	const [open, setOpen] = useState(false);
 	const [activeIndex, setActiveIndex] = useState(null);
@@ -371,17 +372,17 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 						) : (
 							<div data-elem='placeholder'>{placeholder}</div>
 						)}
-						{newIcon ? (
+						{newIcon && !hideIcon ? (
 							<DropdownIcon
 								data-elem='icon'
 								className={classes(styles.icon, styles['drop-icon'])}
 							/>
-						) : (
+						) : !hideIcon ? (
 							<CaretIcon
 								data-elem='icon'
 								className={classes(styles.icon, styles['drop-icon'])}
 							/>
-						)}
+						) : null}
 					</div>
 				</div>
 				<Popper open={open} wrapperId='dropdown-popper'>
@@ -486,6 +487,7 @@ Dropdown.propTypes = {
 	}),
 	formatter: PropTypes.func,
 	required: PropTypes.bool,
+	hideIcon: PropTypes.bool,
 };
 
 Dropdown.defaultProps = {
@@ -505,6 +507,7 @@ Dropdown.defaultProps = {
 		return `${totalSelected} options selected`;
 	},
 	required: false,
+	hideIcon: false,
 };
 
 export default Dropdown;

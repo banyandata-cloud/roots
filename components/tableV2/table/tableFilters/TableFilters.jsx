@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { classes } from '../../../../utils';
 import { Button } from '../../../buttons';
 import { BaseCell } from '../../../cell';
-import { FilterIcon } from '../../../icons';
+import { FilterIcon, CaretIcon, ColumnFilter } from '../../../icons';
 import styles from './TableFilters.module.css';
 import { Skeleton } from './Skeleton';
 import { Dropdown, DropdownItem } from '../../../input';
@@ -67,7 +67,21 @@ const TableFilters = (props) => {
 					<Dropdown
 						theme={theme}
 						className={styles['column-dropdown']}
-						placeholder='Columns'
+						hideIcon
+						placeholder={
+							<Button
+								size='auto'
+								className={styles['icon-button']}
+								color='default'
+								leftComponent={() => {
+									return <ColumnFilter className={styles.icon} />;
+								}}
+								rightComponent={() => {
+									return <CaretIcon className={styles.icon} />;
+								}}
+								title='Columns'
+							/>
+						}
 						multi
 						value={Object.keys(hiddenColumns)}
 						onChange={handleColumnChange}>

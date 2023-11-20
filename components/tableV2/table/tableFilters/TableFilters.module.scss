@@ -22,19 +22,20 @@
 	}
 
 	.column-dropdown {
-		// @include debug;
 		display: flex;
-		padding: 0px 8px;
 		justify-content: center;
 		align-items: center;
 		align-self: stretch;
+		[data-elem='base-cell'] {
+			height: 2.3125rem;
+		}
 		> [data-elem='header'] {
 			> [data-elem='select'] {
 				background-color: transparent;
-				border: 1px solid $grey4;
+				border: none;
 				color: #141920;
-				height: 2.3125rem;
-				width: 11.25rem;
+				padding: 0rem;
+				width: 9.375rem;
 			}
 		}
 
