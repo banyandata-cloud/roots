@@ -21,6 +21,32 @@
 		color: #141920;
 	}
 
+	.column-dropdown {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		align-self: stretch;
+		[data-elem='base-cell'] {
+			height: 2.3125rem;
+		}
+		> [data-elem='header'] {
+			> [data-elem='select'] {
+				background-color: transparent;
+				border: none;
+				color: #141920;
+				padding: 0rem;
+				width: 9.375rem;
+			}
+		}
+
+		.item {
+			height: 3rem;
+			> [data-elem='title'] {
+				@include ellipsis;
+			}
+		}
+	}
+
 	> [data-elem*='component'] {
 		height: 100%;
 	}

@@ -25,6 +25,30 @@
   border: 1px solid var(--grey4);
   color: #141920;
 }
+.root[data-elem=base-cell] .column-dropdown {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: stretch;
+}
+.root[data-elem=base-cell] .column-dropdown [data-elem=base-cell] {
+  height: 2.3125rem;
+}
+.root[data-elem=base-cell] .column-dropdown > [data-elem=header] > [data-elem=select] {
+  background-color: transparent;
+  border: none;
+  color: #141920;
+  padding: 0rem;
+  width: 9.375rem;
+}
+.root[data-elem=base-cell] .column-dropdown .item {
+  height: 3rem;
+}
+.root[data-elem=base-cell] .column-dropdown .item > [data-elem=title] {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
 .root[data-elem=base-cell] > [data-elem*=component] {
   height: 100%;
 }
