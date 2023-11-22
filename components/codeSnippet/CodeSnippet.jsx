@@ -23,6 +23,56 @@ const CodeSnippet = (props) => {
 		setCopiedState(true);
 	};
 
+	const handleCodeClick = (event) => {
+		if (language === 'json') {
+			try {
+				const parsedCode = JSON.parse(code);
+				const clickedKey = event.target.textContent.replace(/"/g, '').trim();
+
+				// Check for a direct match in top-level keys
+				const matchingKey = Object.keys(parsedCode).find(
+					(key) => String(parsedCode[key]) === clickedKey
+				);
+
+				if (matchingKey) {
+					console.log(`${matchingKey}`);
+				} else {
+					// Check for nested keys
+					const keyPath = findKeyPath(parsedCode, clickedKey);
+
+					if (keyPath) {
+						console.log(`${keyPath}`);
+					} else {
+						console.log(`${clickedKey}`);
+					}
+				}
+			} catch (error) {
+				console.error('Error parsing JSON:', error);
+			}
+		}
+	};
+
+	function findKeyPath(obj, targetKey, currentPath = '') {
+		const keys = Object.keys(obj);
+
+		for (const key of keys) {
+			const newPath = currentPath ? `${currentPath}/${key}` : key;
+
+			if (key === targetKey) {
+				// Display the full path of the key from the object
+				return newPath;
+			} else if (typeof obj[key] === 'object') {
+				// Recursively search nested keys
+				const nestedPath = findKeyPath(obj[key], targetKey, newPath);
+				if (nestedPath) {
+					return nestedPath;
+				}
+			}
+		}
+
+		return null;
+	}
+
 	const syntaxHighlighterProps = {
 		showLineNumbers,
 		language,
@@ -32,6 +82,7 @@ const CodeSnippet = (props) => {
 			className: classes(styles.code, className),
 		},
 		style: theme === 'light' ? oneLight : oneDark,
+		onClick: handleCodeClick,
 	};
 
 	return (
