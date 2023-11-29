@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PropTypes, { string } from 'prop-types';
+import PropTypes from 'prop-types';
 import styles from './Breadcrumbs.module.css';
 import { getSpacedDisplayName, classes } from '../../utils/utils';
 import BreadcrumbSeperator from '../icons/BreadcrumbSeperator/BreadcrumbSeperator';
@@ -27,18 +27,16 @@ const BreadCrumbs = (props) => {
 	const CrumbsDOM =
 		crumbsList !== null &&
 		crumbsList.map((crumb, index) => {
-			const { title, value, path, search, icon } = crumb;
+			const { title, value, icon, navigate } = crumb;
 
 			const active = index === crumbsList.length - 1;
 			const showSeperator = index < crumbsList.length - 1;
 
-			href += `/${path}`;
-
 			return (
-				<React.Fragment key={path}>
+				<React.Fragment key={title}>
 					<Link
-						href={!active && `${href}${search ?? ''}`}
 						underline='none'
+						onClick={navigate}
 						className={classes(styles.crumb, active ? styles.active : '')}
 						dataAttrs={{
 							'data-state': active,
