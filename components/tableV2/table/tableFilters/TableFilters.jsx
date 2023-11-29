@@ -1,18 +1,11 @@
 import PropTypes from 'prop-types';
-import {
-	useState,
-} from 'react';
 import { classes } from '../../../../utils';
 import { Button } from '../../../buttons';
 import { BaseCell } from '../../../cell';
-import {
-	FilterIcon,
-	CaretIcon,
-	ColumnFilter,
-} from '../../../icons';
-import { Columns } from './Filters';
+import { FilterIcon, CaretIcon, ColumnFilter } from '../../../icons';
 import styles from './TableFilters.module.css';
 import { Skeleton } from './Skeleton';
+import { Dropdown, DropdownItem } from '../../../input';
 
 const TableFilters = (props) => {
 	const {
@@ -27,13 +20,26 @@ const TableFilters = (props) => {
 		theme,
 	} = props;
 
-	const [openColumns, setOpenColumns] = useState(false);
-	const [anchorEl, setAnchorEl] = useState(null);
 	const { search: disabledSearch, columnFilter: disabledColumnFilter } = disabledFilterOptions;
 
 	if (loading) {
 		return <Skeleton theme={theme} />;
 	}
+
+	const columns = headerData.map((datum) => {
+		return {
+			title: datum.title,
+			value: datum.id,
+		};
+	});
+
+	const handleColumnChange = (_, col) => {
+		let items = {};
+		col.forEach((column) => {
+			items[column] = true;
+		});
+		setHiddenColumns(items);
+	};
 
 	return (
 		<BaseCell
@@ -41,7 +47,6 @@ const TableFilters = (props) => {
 			className={classes(styles.root, className)}
 			attrs={{
 				style,
-				// onBlur,
 			}}
 			component1={
 				!disabledSearch && (
@@ -59,37 +64,38 @@ const TableFilters = (props) => {
 			}
 			component2={
 				!disabledColumnFilter && (
-					<>
-						<Button
-							ref={(el) => {
-								setAnchorEl(el);
-							}}
-							size='auto'
-							className={styles['icon-button']}
-							color='default'
-							leftComponent={() => {
-								return <ColumnFilter className={styles.icon} />;
-							}}
-							rightComponent={() => {
-								return <CaretIcon className={styles.icon} />;
-							}}
-							title='Columns'
-							onClick={() => {
-								setOpenColumns((prev) => {
-									return !prev;
-								});
-							}}
-						/>
-						<Columns
-							anchorEl={anchorEl}
-							open={openColumns}
-							setOpen={setOpenColumns}
-							columns={headerData}
-							hiddenColumns={hiddenColumns}
-							setHiddenColumns={setHiddenColumns}
-							theme={theme}
-						/>
-					</>
+					<Dropdown
+						theme={theme}
+						className={styles['column-dropdown']}
+						hideIcon
+						placeholder={
+							<Button
+								size='auto'
+								className={styles['icon-button']}
+								color='default'
+								leftComponent={() => {
+									return <ColumnFilter className={styles.icon} />;
+								}}
+								rightComponent={() => {
+									return <CaretIcon className={styles.icon} />;
+								}}
+								title='Columns'
+							/>
+						}
+						multi
+						value={Object.keys(hiddenColumns)}
+						onChange={handleColumnChange}>
+						{columns.map((col) => {
+							return (
+								<DropdownItem
+									key={col.value}
+									title={col.title}
+									value={col.value}
+									variant='checkbox'
+								/>
+							);
+						})}
+					</Dropdown>
 				)
 			}
 		/>

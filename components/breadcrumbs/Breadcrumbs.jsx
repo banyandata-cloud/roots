@@ -85,7 +85,7 @@ const BreadCrumbs = (props) => {
 				<Button
 					size='auto'
 					radius='round'
-					className={styles.back}
+					className={styles['crumb-actions']}
 					leftComponent={() => {
 						return <ArrowIcon className={styles.icon} position='left' />;
 					}}
@@ -94,7 +94,7 @@ const BreadCrumbs = (props) => {
 				<Button
 					size='auto'
 					radius='round'
-					className={styles.back}
+					className={styles['crumb-actions']}
 					leftComponent={() => {
 						return <HomeIcon className={styles.icon} position='left' />;
 					}}

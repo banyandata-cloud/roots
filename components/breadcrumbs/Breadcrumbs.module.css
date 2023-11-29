@@ -3,7 +3,7 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1rem;
   width: auto;
   overflow: auto;
   width: 100%;
@@ -27,18 +27,17 @@
 .root button.expand[data-elem=base-cell] [data-elem=title] {
   margin-bottom: 0.4rem;
 }
-.root .back[data-elem=base-cell] {
+.root .crumb-actions[data-elem=base-cell] {
   height: 2rem;
   width: 2rem;
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-  padding-left: 0.4375rem;
-  padding-right: 0.4375rem;
   background-color: #71839b !important;
 }
-.root .back[data-elem=base-cell] .icon {
-  width: 1.5rem;
-  height: 1.5rem;
+.root .crumb-actions[data-elem=base-cell] > [data-elem=component1] > svg {
+  margin-left: 0.125rem;
+}
+.root .crumb-actions[data-elem=base-cell] .icon {
+  width: 1.25rem;
+  height: 1.25rem;
   fill: var(--white);
 }
 .root .crumb {
@@ -46,22 +45,16 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding-left: 0.25rem;
-  padding-right: 0.25rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  gap: 0.5rem;
+  padding: 0.5rem 0.5rem;
   border-radius: 0.25rem;
   background: var(--mono-colours-203, #d8dfe5);
 }
 .root .crumb .title {
   color: #141920;
-  margin-left: 0.25rem;
 }
 .root .crumb .value {
   color: #141920;
-  margin-left: 0.25rem;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
 }
 .root .crumb .iconWrapper {
   display: flex;

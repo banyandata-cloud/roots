@@ -15,6 +15,10 @@
   color: var(--grey);
   width: auto;
 }
+.root .label.required::after {
+  content: " *";
+  color: var(--error);
+}
 .root .header {
   display: flex;
   flex-direction: row;

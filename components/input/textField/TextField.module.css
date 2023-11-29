@@ -15,6 +15,10 @@
   color: var(--grey);
   height: 100%;
 }
+.root label .required::after {
+  content: " *";
+  color: var(--error);
+}
 .root label .input-wrapper {
   display: flex;
   flex-direction: row;

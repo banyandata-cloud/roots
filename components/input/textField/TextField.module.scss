@@ -12,6 +12,13 @@
 		letter-spacing: 0.32px;
 		color: $grey;
 		height: 100%;
+		.required {
+			&::after {
+				content: ' *';
+				color: $error;
+			}
+		}
+
 		.input-wrapper {
 			@include flex(row, space-between, center);
 			gap: 0.5rem;

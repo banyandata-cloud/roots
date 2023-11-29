@@ -8,6 +8,8 @@ import { Button } from '../buttons';
 import Popper from '../popper/Popper';
 import { useAnimate } from 'framer-motion';
 
+const ALERT_DISMISS_TIME = 2000;
+
 const ANIMATION = {
 	transform: {
 		top: [-100, 0],
@@ -47,6 +49,8 @@ const Alert = forwardRef((props, ref) => {
 				return !prev;
 			});
 		},
+		autoDismiss: true,
+		dismissTime: ALERT_DISMISS_TIME,
 	});
 	const {
 		title,
@@ -56,6 +60,8 @@ const Alert = forwardRef((props, ref) => {
 		type,
 		position: appliedPosition,
 		onClose,
+		autoDismiss,
+		dismissTime,
 	} = alertProps;
 
 	const position = appliedPosition ?? defaultPosition;
@@ -121,6 +127,15 @@ const Alert = forwardRef((props, ref) => {
 		}
 	});
 
+	useEffect(() => {
+		if (alertProps.title && autoDismiss) {
+			const timer = setTimeout(() => {
+				setOpen(false);
+			}, dismissTime);
+			return () => clearTimeout(timer);
+		}
+	}, [alertProps]);
+
 	const { getFloatingProps } = useInteractions([useDismiss(context)]);
 
 	return (
@@ -146,7 +161,7 @@ const Alert = forwardRef((props, ref) => {
 				</div>
 				<div className={styles.actions}>
 					{CustomAction && <CustomAction />}
-					{onClose && (
+					{onClose && !autoDismiss && (
 						<Button
 							size='auto'
 							variant='text'

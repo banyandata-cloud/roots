@@ -228,6 +228,7 @@ const FlowChart = ({
 		session
 			.run(query)
 			.then(function (result) {
+				console.log('l');
 				const nodes = [];
 				const links = [];
 				const nodeSet = new Set();

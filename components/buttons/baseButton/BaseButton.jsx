@@ -38,7 +38,7 @@ const BaseButton = forwardRef(function BaseButton(props, ref) {
 				);
 			}}>
 			<BaseCell
-				className={classes(className, styles.root, styles[variant])}
+				className={classes(styles.root, styles[variant], className)}
 				{...{
 					ref,
 					component1,

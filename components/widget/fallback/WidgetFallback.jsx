@@ -8,7 +8,7 @@ const WidgetFallback = (props) => {
 	const { onReload, title, subtitle, className, theme } = props;
 
 	return (
-		<div className={classes(styles.root, className, styles[`${theme}-theme`])}>
+		<div className={classes(styles.root, styles[`${theme}-theme`], className)}>
 			<div className={styles.wrapper}>
 				<Text variant='h2' stroke='medium' className={styles.text}>
 					{title}

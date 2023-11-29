@@ -5,11 +5,13 @@ import PropTypes from 'prop-types';
 import { classes } from '../../utils';
 import { Button } from '../buttons';
 import { Dropdown, DropdownItem, TextField } from '../input';
-import { ArrowIcon, SearchIcon } from '../icons';
+import { ArrowIcon } from '../icons';
 import { BaseCell } from '../cell';
 import { PaginationList } from './Pagination.class';
 import styles from './Pagination.module.css';
 import { Text } from '../text';
+
+const CURRENT_YEAR = new Date().getFullYear();
 
 const dropdownOptions = ['10', '25', '50', '100', '200', '250'];
 
@@ -128,12 +130,14 @@ export const Pagination = forwardRef((props, ref) => {
 			ref={ref}
 			className={classes(
 				styles.root,
-				className,
 				floating ? styles.floating : '',
-				showTotalData ? '' : styles['no-total-data']
+				showTotalData ? '' : styles['no-total-data'],
+				className
 			)}>
 			<div className={styles.copyrightText}>
-				<p className={styles.text}>© 2023 Banyan Cloud Inc. All rights reserved.</p>
+				<p className={styles.text}>
+					© {CURRENT_YEAR} Banyan Cloud Inc. All rights reserved.
+				</p>
 			</div>
 			<div className={styles['page-numbers']}>
 				<div className={styles.pageSelect}>

@@ -110,7 +110,7 @@ const HierarchyBrowser = (props) => {
 	return (
 		<div
 			ref={browserRef}
-			className={classes(styles.root, className, resizable ? styles.resizable : '')}>
+			className={classes(styles.root, resizable ? styles.resizable : '', className)}>
 			<div className={styles.header} data-elem='header'>
 				{title}
 			</div>

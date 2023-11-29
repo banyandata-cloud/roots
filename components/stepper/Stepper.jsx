@@ -8,7 +8,7 @@ const Stepper = (props) => {
 	const { steps, orientation, className } = props;
 
 	return (
-		<div className={classes(className, styles.root, styles[orientation])}>
+		<div className={classes(styles.root, styles[orientation], className)}>
 			{steps.map((step, index) => {
 				return (
 					<Step

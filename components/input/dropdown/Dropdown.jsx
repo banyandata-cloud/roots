@@ -34,7 +34,6 @@ import { ErrorBoundaryWrapper } from '../../errorBoundary';
 
 // eslint-disable-next-line prefer-arrow-callback
 const Dropdown = forwardRef(function Dropdown(props, inputRef) {
-	// eslint-disable-next-line object-curly-newline
 	const {
 		className,
 		popperClassName,
@@ -52,6 +51,8 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 		formatter,
 		custom,
 		newIcon,
+		required,
+		hideIcon,
 	} = props;
 	const [open, setOpen] = useState(false);
 	const [activeIndex, setActiveIndex] = useState(null);
@@ -316,13 +317,15 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 			}}>
 			<div
 				className={classes(
-					className,
 					styles.root,
 					open ? styles.open : '',
-					disabled ? styles.disabled : ''
+					disabled ? styles.disabled : '',
+					className
 				)}>
 				{label && (
-					<div data-elem='label' className={styles.label}>
+					<div
+						data-elem='label'
+						className={classes(styles.label, required ? styles.required : '')}>
 						<span>{label}</span>
 					</div>
 				)}
@@ -358,22 +361,28 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 							styles.select,
 							feedback != null ? styles[`feedback-${feedback?.type}`] : ''
 						)}>
-						<span data-elem='placeholder' className={styles.placeholder}>
-							{(selectedOptions?.length > 1
+						{typeof placeholder === 'string' || placeholder instanceof String ? (
+							(selectedOptions?.length > 1
 								? formatter(selectedOptions.length)
-								: selectedOptions?.[0]?.title) ?? placeholder}
-						</span>
-						{newIcon ? (
+								: selectedOptions?.[0]?.title) ?? (
+								<span data-elem='placeholder' className={styles.placeholder}>
+									{placeholder}
+								</span>
+							)
+						) : (
+							<div data-elem='placeholder'>{placeholder}</div>
+						)}
+						{newIcon && !hideIcon ? (
 							<DropdownIcon
 								data-elem='icon'
 								className={classes(styles.icon, styles['drop-icon'])}
 							/>
-						) : (
+						) : !hideIcon ? (
 							<CaretIcon
 								data-elem='icon'
 								className={classes(styles.icon, styles['drop-icon'])}
 							/>
-						)}
+						) : null}
 					</div>
 				</div>
 				<Popper open={open} wrapperId='dropdown-popper'>
@@ -466,7 +475,7 @@ Dropdown.propTypes = {
 	disabled: PropTypes.bool,
 	label: PropTypes.string,
 	value: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]),
-	placeholder: PropTypes.string,
+	placeholder: PropTypes.string || PropTypes.node,
 	// search: PropTypes.bool,
 	// max: PropTypes.number,
 	multi: PropTypes.bool,
@@ -477,6 +486,8 @@ Dropdown.propTypes = {
 		type: PropTypes.oneOf(['error', 'success', 'default']),
 	}),
 	formatter: PropTypes.func,
+	required: PropTypes.bool,
+	hideIcon: PropTypes.bool,
 };
 
 Dropdown.defaultProps = {
@@ -495,6 +506,8 @@ Dropdown.defaultProps = {
 	formatter: (totalSelected) => {
 		return `${totalSelected} options selected`;
 	},
+	required: false,
+	hideIcon: false,
 };
 
 export default Dropdown;
