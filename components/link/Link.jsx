@@ -19,6 +19,7 @@ const Link = forwardRef(function Link(props, ref) {
 		attrs,
 		className,
 		underline,
+		onClick,
 	} = props;
 
 	return (
@@ -34,6 +35,7 @@ const Link = forwardRef(function Link(props, ref) {
 				to: href,
 				href,
 				target,
+				onClick,
 				...attrs,
 			}}>
 			{children}
