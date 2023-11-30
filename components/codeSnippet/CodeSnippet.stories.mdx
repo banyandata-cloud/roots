@@ -53,19 +53,25 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					stock: 94,
 					brand: {
 						abc: 'smartphones',
-						prinynyce: 549,
-						diynyscountPercentage: 12.96,
-						ratirnnng: 4.69,
-						stocnynryk: 94,
-						brannnrynyd: 'Apple',
+						price: 549,
+						discountPercentage: 12.96,
+						rating: {
+							hen: {
+								rate: {
+									yes: true,
+								},
+							},
+						},
+						stock: 94,
+						brand: 'Apple',
 					},
 					category: {
 						abc: 'smartphones',
-						prinywdwdnyce: 549,
-						diynyscountPyhyhyercentage: 12.96,
-						ratirnwdwdnng: 4.69,
-						stocnynccryk: 94,
-						bradnnnrynyd: 'Apple',
+						price: 549,
+						discountPercentage: 12.96,
+						rating: 4.69,
+						stock: 94,
+						brands: 'Apple',
 					},
 				},
 				null,
@@ -74,7 +80,11 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 			language: 'json',
 			copy: true,
 			theme: 'dark',
-			showLineNumbers: false,
+			showLineNumbers: true,
+			onClick: (e, d) => {
+				console.log(d(e));
+			},
+			parentKeyToSelect: 'category',
 		}}>
 		{Template.bind({})}
 	</Story>

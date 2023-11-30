@@ -1,4 +1,4 @@
-/* eslint-disable react/forbid-prop-types */
+/* eslint-disable no-param-reassign */
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
@@ -10,7 +10,17 @@ import styles from './CodeSnippet.module.css';
 import { ErrorBoundaryWrapper } from '../errorBoundary';
 
 const CodeSnippet = (props) => {
-	const { copy, code, language, showLineNumbers, theme, className, custom } = props;
+	const {
+		copy,
+		code,
+		language,
+		showLineNumbers,
+		theme,
+		className,
+		custom,
+		onClick,
+		parentKeyToSelect,
+	} = props;
 
 	const [copiedState, setCopiedState] = useState(false);
 
@@ -23,45 +33,27 @@ const CodeSnippet = (props) => {
 		setCopiedState(true);
 	};
 
-	const handleCodeClick = (event) => {
-		if (language === 'json') {
-			try {
-				const parsedCode = JSON.parse(code);
-				const clickedKey = event.target.textContent.replace(/"/g, '').trim();
-
-				// Check for a direct match in top-level keys
-				const matchingKey = Object.keys(parsedCode).find(
-					(key) => String(parsedCode[key]) === clickedKey
-				);
-
-				if (matchingKey) {
-					console.log(`${matchingKey}`);
-				} else {
-					// Check for nested keys
-					const keyPath = findKeyPath(parsedCode, clickedKey);
-
-					if (keyPath) {
-						console.log(`${keyPath}`);
-					} else {
-						console.log(`${clickedKey}`);
-					}
-				}
-			} catch (error) {
-				console.error('Error parsing JSON:', error);
-			}
-		}
-	};
-
 	function findKeyPath(obj, targetKey, currentPath = '') {
 		const keys = Object.keys(obj);
-
+		// eslint-disable-next-line no-restricted-syntax
 		for (const key of keys) {
 			const newPath = currentPath ? `${currentPath}/${key}` : key;
 
 			if (key === targetKey) {
 				// Display the full path of the key from the object
 				return newPath;
-			} else if (typeof obj[key] === 'object') {
+			}
+			if (parentKeyToSelect && !currentPath) {
+				const nestedPath = findKeyPath(
+					obj[parentKeyToSelect],
+					targetKey,
+					parentKeyToSelect
+				);
+				if (nestedPath) {
+					return nestedPath;
+				}
+			}
+			if (typeof obj[key] === 'object') {
 				// Recursively search nested keys
 				const nestedPath = findKeyPath(obj[key], targetKey, newPath);
 				if (nestedPath) {
@@ -70,8 +62,38 @@ const CodeSnippet = (props) => {
 			}
 		}
 
-		return null;
+		return '';
 	}
+
+	const handleCodeClick = (event) => {
+		if (language === 'json') {
+			try {
+				const parsedCode = JSON.parse(code);
+				const clickedKey = event.target.textContent.replace(/"/g, '').trim();
+
+				// Check for a direct match in top-level keys
+				const matchingKey = Object.keys(parsedCode).find((key) => {
+					return String(parsedCode[key]) === clickedKey;
+				});
+
+				if (matchingKey) {
+					return matchingKey;
+				}
+				// Check for nested keys
+				const keyPath = findKeyPath(parsedCode, clickedKey);
+
+				if (keyPath) {
+					event.target.parentNode.style.backgroundColor =
+						theme === 'light' ? '#333' : 'white';
+					return keyPath;
+				}
+				return clickedKey;
+			} catch (error) {
+				return error;
+			}
+		}
+		return '';
+	};
 
 	const syntaxHighlighterProps = {
 		showLineNumbers,
@@ -82,7 +104,9 @@ const CodeSnippet = (props) => {
 			className: classes(styles.code, className),
 		},
 		style: theme === 'light' ? oneLight : oneDark,
-		onClick: handleCodeClick,
+		onClick: (event) => {
+			return onClick(event, handleCodeClick);
+		},
 	};
 
 	return (
@@ -123,6 +147,8 @@ CodeSnippet.propTypes = {
 	showLineNumbers: PropTypes.bool,
 	theme: PropTypes.string,
 	className: PropTypes.string,
+	onClick: PropTypes.func,
+	parentKeyToSelect: PropTypes.string,
 };
 
 CodeSnippet.defaultProps = {
@@ -132,6 +158,8 @@ CodeSnippet.defaultProps = {
 	showLineNumbers: false,
 	theme: 'light',
 	className: '',
+	onClick: () => {},
+	parentKeyToSelect: null,
 };
 
 export default CodeSnippet;
