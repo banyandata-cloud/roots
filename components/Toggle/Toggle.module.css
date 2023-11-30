@@ -10,6 +10,7 @@ div.root {
   padding-top: 0.125rem;
   padding-bottom: 0.125rem;
   background: var(--grey8);
+  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   border-radius: 0.4375rem;
