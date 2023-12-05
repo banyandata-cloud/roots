@@ -1,22 +1,27 @@
+/* eslint-disable react/forbid-prop-types */
 import { forwardRef, useImperativeHandle, useRef } from 'react';
 import Highcharts from 'highcharts';
 import PropTypes from 'prop-types';
 import highchartsMap from 'highcharts/modules/map';
 import markerClusters from 'highcharts/modules/marker-clusters';
+import highchartsExporting from 'highcharts/modules/exporting';
 import HighchartsReact from 'highcharts-react-official';
+import highchartsExportData from 'highcharts/modules/export-data';
 import { mapOptions } from './config';
 import styles from './Map.module.css';
 import { Skeleton } from '../skeleton';
 import { classes } from '../../utils';
 import { Button } from '../buttons';
 import { FullScreenIcon } from '../icons';
+
 markerClusters(Highcharts);
 highchartsMap(Highcharts);
-require('highcharts/modules/exporting')(Highcharts);
-require('highcharts/modules/export-data')(Highcharts);
+highchartsExporting(Highcharts);
+highchartsExportData(Highcharts);
 
 /**
- * Renders a button with a full-screen icon. When the button is clicked, it calls the `handleFullScreen` function passed as a prop.
+ * Renders a button with a full-screen icon. When the button is clicked,
+ * it calls the `handleFullScreen` function passed as a prop.
  *
  * @param {Function} handleFullScreen - The function to be called when the button is clicked.
  * @returns {JSX.Element} - The rendered button component.
@@ -40,11 +45,13 @@ const FullScreenButton = ({ handleFullScreen }) => {
  *
  * @param {boolean} loading - Indicates whether the map is still loading or not.
  * @param {string} theme - The theme to be applied to the map.
- * @param {boolean} fallback - Indicates whether to show a fallback UI when the map is still loading.
+ * @param {boolean} fallback - Indicates whether to show a fallback UI when
+ * the map is still loading.
  * @param {string} className - Additional CSS class name for the map container.
  * @param {boolean} showFullScreen - Indicates whether to show a full-screen button for the map.
  * @param {boolean} enableDoubleClickZoom - Indicates whether to enable zooming on double-click.
- * @param {boolean} enableMouseWheelZoom - Indicates whether to enable zooming using the mouse wheel.
+ * @param {boolean} enableMouseWheelZoom - Indicates whether to
+ * enable zooming using the mouse wheel.
  * @param {Array} coordinates - The coordinates of the map points to be displayed.
  * @param {boolean} cluster - Indicates whether to enable clustering of map points.
  * @param {boolean} showZoomButton - Indicates whether to show zoom buttons on the map.
@@ -78,7 +85,9 @@ const Map = forwardRef((props, ref) => {
 		highcharts: Highcharts,
 		options: mapOptions(props),
 		constructorType: 'mapChart', // renders map based highchart
-		containerProps: { className: classes(styles['bc-map-root'], className) }, // container class for the map component
+		containerProps: {
+			className: classes(styles['bc-map-root'], className),
+		}, // container class for the map component
 		ref: mapRef,
 	};
 
@@ -94,12 +103,14 @@ const Map = forwardRef((props, ref) => {
 		}
 	};
 
-	useImperativeHandle(ref, () => ({
-		/**
-		 * methods to get exposed
-		 */
-		toggleFullScreen,
-	}));
+	useImperativeHandle(ref, () => {
+		return {
+			/**
+			 * methods to get exposed
+			 */
+			toggleFullScreen,
+		};
+	});
 
 	return (
 		<div className={classes(styles.root, className)}>
