@@ -4,7 +4,6 @@ import { classes } from '../../../utils';
 import { Button } from '../../buttons';
 import { BaseCell } from '../../cell';
 import { SortIcon } from '../../icons';
-import { TableCellV2 } from '../../tableV2/cell';
 import styles from './TableCell.module.css';
 
 const SORT_ICONS = {
@@ -43,12 +42,7 @@ const TableCell = forwardRef(function TableCell(props, ref) {
 		sort,
 		onSort,
 		theme,
-		v2,
 	} = props;
-
-	if (v2) {
-		return <TableCellV2 {...props} />;
-	}
 
 	return (
 		<BaseCell
@@ -56,11 +50,12 @@ const TableCell = forwardRef(function TableCell(props, ref) {
 				ref,
 				className: classes(
 					styles.root,
-					className,
 					styles[`${type}-cell`],
+					styles[`${theme}`],
 					styles[`sticky-${sticky}`],
 					styles[`sort-${sort}`],
-					sort != null ? styles.sortable : ''
+					sort != null ? styles.sortable : '',
+					className
 				),
 				attrs: {
 					style,
@@ -114,6 +109,7 @@ const TableCell = forwardRef(function TableCell(props, ref) {
 
 TableCell.propTypes = {
 	...BaseCell.propTypes,
+	theme: PropTypes.string,
 	title: PropTypes.string,
 	id: PropTypes.string,
 	size: PropTypes.oneOf(['sm', 'md', 'lg']),
@@ -125,8 +121,6 @@ TableCell.propTypes = {
 	sticky: PropTypes.oneOf(['left', 'right', 'none']),
 	cellContent: PropTypes.node,
 	cellTitle: PropTypes.string,
-	theme: PropTypes.oneOf(['light', 'dark']),
-	v2: PropTypes.bool,
 	onSort: PropTypes.func,
 };
 
@@ -136,7 +130,6 @@ TableCell.defaultProps = {
 	cellTitle: null,
 	RootDOM: 'td',
 	theme: 'light',
-	v2: false,
 	onSort: () => {},
 };
 

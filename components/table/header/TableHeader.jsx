@@ -1,15 +1,10 @@
 /* eslint-disable react/forbid-prop-types */
 import PropTypes from 'prop-types';
-import { TableHeaderV2 } from '../../tableV2/header';
 import { TableRow } from '../row';
 import styles from './TableHeader.module.css';
 
 const TableHeader = (props) => {
-	const { headerData, customCells, expandable, onSort, rowHeight, theme, v2, onRowClick } = props;
-
-	if (v2) {
-		return <TableHeaderV2 {...props} />;
-	}
+	const { headerData, customCells, expandable, onSort, rowHeight, theme, onRowClick } = props;
 
 	return (
 		<thead data-elem='table-header' className={styles.root}>
@@ -21,6 +16,7 @@ const TableHeader = (props) => {
 				onSort={onSort}
 				rowHeight={rowHeight}
 				onRowClick={onRowClick}
+				theme={theme}
 			/>
 		</thead>
 	);
@@ -45,8 +41,6 @@ TableHeader.propTypes = {
 	expandable: PropTypes.func,
 	onSort: PropTypes.func,
 	rowHeight: PropTypes.oneOf(['md', 'lg']),
-	theme: PropTypes.oneOf(['light', 'dark']),
-	v2: PropTypes.bool,
 	onRowClick: PropTypes.func,
 };
 
@@ -59,8 +53,6 @@ TableHeader.defaultProps = {
 	expandable: null,
 	onSort: () => {},
 	rowHeight: 'md',
-	theme: 'light',
-	v2: false,
 	onRowClick: () => {},
 };
 
