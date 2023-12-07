@@ -36,6 +36,7 @@
 .root > div .input > label > div[data-elem=base-cell] > span[data-elem=component2] > input[data-elem=input] {
   padding: 0;
   color: var(--dark-grey);
+  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
 }
