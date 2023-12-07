@@ -4,7 +4,7 @@
 	@include flex(row, flex-start);
 
 	&.header-row {
-		background: $grey6;
+		background: #F7F7F8;
 		> [data-elem='base-cell'].expandable-cell {
 			background: transparent;
 			> [data-elem='component2'] {

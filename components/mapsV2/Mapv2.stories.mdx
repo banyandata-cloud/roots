@@ -1,17 +1,13 @@
 import { Meta, Canvas, Story } from '@storybook/addon-docs';
 import ReactDOMServer from 'react-dom/server';
-import { ThemedContainer } from '../../helpers';
+import { ThemedContainer } from '../helpers';
 import { useEffect, useState } from 'react';
-import { Button } from '../../buttons';
-import Text from '../../text/Text';
-import Widget from '../../widget/BaseWidget';
-import Toggle from '../../Toggle/Toggle';
-import { InfoWindow } from '../InfoWindow';
-import { Marker } from '../Marker';
+import Widget from '../widget/BaseWidget';
+import Toggle from '../Toggle/Toggle';
 import Map from './Map';
-import { MapTooltip } from '../../mapsV2/tooltip/Tooltip';
+import { MapTooltip } from './tooltip/Tooltip';
 
-<Meta title='Components/Map-V2' parameters={{ options: { showToolbar: true } }} />
+<Meta title='Components/Map' parameters={{ options: { showToolbar: true } }} />
 
 # Map
 
