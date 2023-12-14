@@ -25,7 +25,6 @@ export * from './displayPicture';
 export * from './Toggle';
 export * from './text';
 export * from './link';
-export * from './maps';
 export * from './mapsV2';
 export * from './skeleton';
 export * from './flowChart';

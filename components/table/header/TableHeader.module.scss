@@ -2,4 +2,5 @@
 
 .root {
 	@include flex(column, flex-start, stretch);
+	color: #f7f7f8;
 }
