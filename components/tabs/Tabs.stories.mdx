@@ -226,6 +226,45 @@ Tabs with with With both side icon.
 	</Story>
 </Canvas>
 
+### With Dropdown
+
+Tabs With Dropdown Items.
+
+<Canvas>
+	<Story
+		name='With Dropdown Items'
+		args={{
+			tabs: [
+				{
+					id: '1',
+					title: 'Tab1',
+				},
+				{
+					id: '2',
+					title: 'Tab2',
+				},
+				{
+					id: '3',
+					title: 'Tab3',
+				},
+				{
+					id: '4',
+					title: 'Tab4',
+					dropdown: true,
+					dropdownItems: [
+						{ id: '4', title: 'Tab4' },
+						{ id: '5', title: 'Tab5' },
+						{ id: '6', title: 'Ted6' },
+					],
+				},
+			],
+			selectedTab: 'Tab1',
+			theme: 'light',
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
 ## Try in the Code Editor
 
 This embeded `CodeSandBox` is external third party code editor `iframe` shared publicly. It is advised to create an account with banyancloud mail id to create/fork this sandbox.

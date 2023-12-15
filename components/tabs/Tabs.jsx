@@ -3,6 +3,7 @@ import { classes } from '../../utils';
 import { Button } from '../buttons';
 import { Skeleton } from './Skeleton';
 import styles from './Tabs.module.css';
+import { Dropdown, DropdownItem } from '../input';
 
 const Tabs = (props) => {
 	const { tabs, selectedTab, setSelectedTab, theme, loading, fallback, className } = props;
@@ -18,7 +19,40 @@ const Tabs = (props) => {
 	return (
 		<div className={classes(styles.root, styles[`${theme}-theme`], className)}>
 			{tabs?.map((tab) => {
-				const { id, title, leftIcon: LeftIcon, rightIcon: RightIcon, disabled } = tab;
+				const {
+					id,
+					title,
+					leftIcon: LeftIcon,
+					rightIcon: RightIcon,
+					disabled,
+					dropdown,
+					dropdownItems,
+				} = tab;
+
+				if (dropdown) {
+					return (
+						<Dropdown
+							className={styles.dropdown}
+							onChange={(abc) => {
+								onTabClick(abc);
+							}}
+							placeholder={title}>
+							{dropdownItems.map((option) => {
+								return (
+									<DropdownItem
+										className={styles.item}
+										key={id}
+										title={option.title}
+										value={option.id}
+										onClick={() => {
+											onTabClick(option.id);
+										}}
+									/>
+								);
+							})}
+						</Dropdown>
+					);
+				}
 
 				return (
 					<Button
