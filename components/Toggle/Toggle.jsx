@@ -99,9 +99,8 @@ const Toggle = forwardRef(function Toggle(props, ref) {
 	const compareSelection = (input, item) => {
 		if (Array.isArray(input)) {
 			return input?.includes(item);
-		} else {
-			return input === item;
 		}
+		return input === item;
 	};
 
 	if (loading || fallback) {
@@ -165,7 +164,6 @@ Toggle.propTypes = {
 	defaultValue: PropTypes.string,
 	value: PropTypes.string,
 	multi: PropTypes.bool,
-	theme: PropTypes.oneOf(['light', 'dark']),
 };
 
 Toggle.defaultProps = {
@@ -177,7 +175,6 @@ Toggle.defaultProps = {
 	defaultValue: null,
 	value: undefined,
 	multi: false,
-	theme: 'dark',
 };
 
 export default Toggle;

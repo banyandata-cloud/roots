@@ -9,7 +9,6 @@
 	width: 100%;
 	height: 3.5rem;
 	overflow: auto;
-
 	transition-property: background-color, color, bottom, width;
 	transition-duration: 0.33s;
 	transition-timing-function: ease-out;
@@ -24,7 +23,6 @@
 
 	.copyrightText {
 		@include flex(row, flex-start, center);
-		flex: 1 0 10%;
 		> .text {
 			color: #9a9ea5;
 			font-size: 0.875rem;
@@ -34,103 +32,13 @@
 		}
 	}
 
-	.row-switcher,
-	.jump-to-page,
-	.form {
-		@include flex(row, flex-start, center);
-		height: 100%;
-	}
-
-	.row-switcher {
-		display: none;
-
-		@include lg {
-			@include flex(row, space-between, center);
-		}
-
-		> [data-elem='component1'] {
-			flex: 0 1 auto;
-			height: 100%;
-		}
-
-		.row-switcher-handle {
-			gap: 0.75rem;
-			padding: 0;
-			border-radius: 0.25rem;
-			height: 100%;
-			width: 100%;
-
-			> [data-elem*='component'] {
-				overflow: hidden;
-			}
-
-			> [data-elem='component1'] {
-				@include flex(row, flex-start, stretch);
-				flex: 0 0 auto;
-				height: 100%;
-				&::before {
-					content: '';
-					margin: auto;
-					background: $white;
-					width: 0.0313rem;
-					height: 50%;
-				}
-			}
-		}
-		flex: 0;
-		background-color: transparent;
-		padding: 0;
-		height: 100%;
-
-		.text {
-			@include ellipsis;
-			height: 100%;
-			display: block;
-			padding: 0.5rem;
-			font-size: 0.875rem;
-			font-weight: 500;
-			color: $white;
-		}
-
-		[data-elem='dropdown'] {
-			border: none;
-		}
-
-		.dropdown {
-			height: 100%;
-
-			& > [data-elem='header'] {
-				height: 100%;
-				background-color: #efeff0;
-				& > [data-elem='select'] {
-					height: 2.375rem;
-					max-height: 100%;
-					width: auto;
-					min-width: fit-content;
-					padding: 0.625rem;
-					background-color: #efeff0;
-					border: 0rem solid transparent;
-					& > [data-elem='placeholder'] {
-						color: #1a2028;
-						font-size: 0.875rem;
-						background-color: #efeff0;
-					}
-					& > svg {
-						fill: #1a2028;
-						width: 0.813rem;
-						height: 0.813rem;
-					}
-				}
-			}
-		}
-	}
 	.page-numbers {
 		@include flex;
 		gap: 1.25rem;
-		flex: 1 1 100%;
+		flex: 1 1;
 
 		@include lg {
-			flex: 1 1 25%;
+			// flex: 1 1 25%;
 		}
 
 		& > .button {
@@ -148,18 +56,18 @@
 		}
 		& > .pageSelect {
 			@include flex(row, space-between, center);
-			gap: 1rem;
+			gap: 0.625rem;
 
 			.number {
 				cursor: pointer;
-				color: #1a2028;
+				border-radius: 50%;
+				background-color: #e0e0e0;
+				color: $black;
+				width: 2.313rem;
+				line-height: 2.313rem;
 				text-align: center;
-				font-size: 0.875rem;
-				font-style: normal;
-				font-weight: 500;
-				line-height: 1.125rem;
-				border: 0.0625rem solid transparent;
-				padding: 0rem 0.5rem;
+				font-size: 1rem;
+				border: 1px solid transparent;
 
 				&:not([data-active='true']) {
 					display: none;
@@ -171,138 +79,173 @@
 					}
 				}
 
+				&:hover {
+					border: 1px solid $highlight;
+					color: $highlight;
+					background: $background;
+				}
+
 				&.active {
-					// background-color: $highlight;
-					color: #007aff;
+					background-color: $highlight;
+					color: $white;
 				}
 			}
 		}
 	}
 
-	.form {
-		display: none;
-		@include lg {
+	.options {
+		@include flex(row);
+		gap: 1rem;
+		.total-data {
+			@include ellipsis;
+			color: #1a2028;
+			font-size: 0.875rem;
+			font-weight: 500;
+			line-height: 1.125rem;
+		}
+
+		.row-switcher {
 			@include flex(row, space-between, center);
-		}
-		> [data-elem*='component'] {
-			width: 100%;
-			height: 100%;
-			> * {
+			min-width: 4rem;
+			> [data-elem='component2'] {
 				height: 100%;
+				width: 100%;
 			}
 
-			> form {
-				width: fit-content;
-				margin-left: auto;
-			}
-		}
-		padding: 0;
-		flex: 1;
-		background: transparent;
-		.jump-to-page {
-			width: 100%;
-			background: transparent;
-			@include flex(row, center, stretch);
-
-			> [data-elem*='component'] {
-				overflow: hidden;
+			.row-switcher-handle {
+				gap: 0.75rem;
+				padding: 0;
+				border-radius: 0.25rem;
 				height: 100%;
-			}
-			gap: 0rem;
-			padding: 0rem;
-			height: 100%;
-			border-radius: 0.25rem;
-			border: 0.0313rem solid #b7cadb;
-			box-shadow: 0.1875rem 0.1875rem 0.25rem 0rem rgba(194, 194, 194, 0.12) inset;
+				width: 100%;
 
-			.inputbox {
-				max-width: 100%;
-				height: 100%;
-
-				> label {
+				> [data-elem='component1'] {
+					@include flex(row, flex-start, stretch);
 					height: 100%;
-					font-size: 0.875rem;
-					> [data-elem='base-cell'] {
-						background-color: transparent;
-						color: $white;
-						height: 100%;
-						width: 10rem;
-						flex: 1;
+					&::before {
+						content: '';
+						margin: auto;
+						background: $white;
+						width: 0.0313rem;
+						height: 50%;
+					}
+				}
+			}
+			background-color: transparent;
+			padding: 0;
+			height: 100%;
+
+			.dropdown {
+				height: 100%;
+
+				& > [data-elem='header'] {
+					height: 100%;
+					& > [data-elem='select'] {
+						height: 2.375rem;
+						max-height: 100%;
+						width: auto;
+						min-width: fit-content;
 						padding: 0.625rem;
-						border: none;
-
-						.icon {
-							width: 1.5rem;
-							height: 1.5rem;
-							fill: $grey1;
-						}
-
-						> [data-elem='component2'] {
-							height: 100%;
-						}
-
-						[data-elem='input'] {
-							text-align: center;
-							background-color: transparent;
-							border: none;
-							height: 100%;
-							width: 100%;
-							color: #9a9ea5;
+						border: 0rem solid transparent;
+						& > [data-elem='placeholder'] {
+							color: #1a2028;
 							font-size: 0.875rem;
-							font-style: normal;
-							font-weight: 400;
-							line-height: normal;
+							background-color: #2f2fc6;
+						}
+						& > svg {
+							fill: #1a2028;
+							width: 1rem;
+							height: 1rem;
 						}
 					}
 				}
 			}
+		}
 
-			.button {
-				border-radius: 0rem 0.25rem 0.25rem 0rem;
-				background-color: #b7cadb;
-				padding: 0.75rem 0.5rem;
+		.form {
+			@include flex(row, space-between, center);
+			width: auto;
+			min-width: auto;
+			> [data-elem*='component'] {
+				width: 100%;
 				height: 100%;
-
-				.icon {
-					width: 1.5rem;
-					height: 1.5rem;
-					fill: #71839b;
-					flex-shrink: 0;
+				> * {
+					height: 100%;
 				}
 			}
-		}
-	}
+			padding: 0;
+			flex: 1;
+			background: transparent;
+			.jump-to-page {
+				background: transparent;
+				@include flex(row, center, stretch);
 
-	.total-data {
-		@include ellipsis;
-		display: none;
-		@include lg {
-			display: inline;
-		}
-		margin: auto;
-		flex: 0 1 7%;
-		color: #1a2028;
-		font-size: 0.875rem;
-		font-style: normal;
-		font-weight: 500;
-		line-height: 1.125rem;
-	}
+				> [data-elem*='component'] {
+					overflow: hidden;
+					height: 100%;
+				}
+				gap: 0rem;
+				padding: 0rem;
+				height: 100%;
+				border-radius: 0.25rem;
+				border: 0.0313rem solid #b7cadb;
+				box-shadow: 0.1875rem 0.1875rem 0.25rem 0rem rgba(194, 194, 194, 0.12) inset;
 
-	&.no-total-data {
-		.copyrightText {
-			flex: 1 0 30%;
-		}
-		.row-switcher {
-			flex: 0;
-		}
-		.page-numbers {
-			flex: 1 1 100%;
-		}
-		.jump-to-page {
-			flex: 1 1 40%;
-		}
-		.form {
-			flex: 1 0 20%;
+				.inputbox {
+					height: 100%;
+
+					> label {
+						height: 100%;
+						font-size: 0.875rem;
+						> [data-elem='base-cell'] {
+							background-color: transparent;
+							color: $white;
+							height: 100%;
+							width: 3rem;
+							flex: 1;
+							padding: 0.625rem;
+							border: none;
+
+							.icon {
+								width: 1.5rem;
+								height: 1.5rem;
+								fill: $grey1;
+							}
+
+							> [data-elem='component2'] {
+								height: 100%;
+							}
+
+							[data-elem='input'] {
+								text-align: center;
+								background-color: transparent;
+								border: none;
+								height: 100%;
+								width: 100%;
+								color: #9a9ea5;
+								font-size: 0.875rem;
+								font-style: normal;
+								font-weight: 600;
+								line-height: normal;
+							}
+						}
+					}
+				}
+
+				.button {
+					border-radius: 0rem 0.25rem 0.25rem 0rem;
+					background-color: #b7cadb;
+					padding: 0.75rem 0.5rem;
+					height: 100%;
+
+					.icon {
+						width: 1.5rem;
+						height: 1.5rem;
+						fill: #71839b;
+						flex-shrink: 0;
+					}
+				}
+			}
 		}
 	}
 }
