@@ -25,21 +25,6 @@
   width: 82%;
   bottom: 3rem;
 }
-.root.no-total-data .copyrightText {
-  flex: 1 0 30%;
-}
-.root.no-total-data .row-switcher {
-  flex: 0;
-}
-.root.no-total-data .page-numbers {
-  flex: 1 1 100%;
-}
-.root.no-total-data .jump-to-page {
-  flex: 1 1 40%;
-}
-.root.no-total-data .form {
-  flex: 1 0 20%;
-}
 .root .copyrightText {
   display: flex;
   flex-direction: row;
@@ -59,7 +44,7 @@
   justify-content: center;
   align-items: center;
   gap: 1.25rem;
-  flex: 1 1 100%;
+  flex: 1 1;
 }
 .root .page-numbers > .button.disable {
   pointer-events: none;
@@ -112,52 +97,30 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  gap: 1rem;
 }
 .root .options .total-data {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  display: none;
-  margin: auto;
-  flex: 0 1 7%;
   color: #1a2028;
   font-size: 0.875rem;
-  font-style: normal;
   font-weight: 500;
   line-height: 1.125rem;
 }
-@media (min-width: 992px) {
-  .root .options .total-data {
-    display: inline;
-  }
-}
-.root .options .row-switcher,
-.root .options .jump-to-page,
-.root .options .form {
+.root .options .row-switcher {
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
-  height: 100%;
-}
-.root .options .row-switcher {
-  display: none;
-  flex: 0;
+  min-width: 4rem;
   background-color: transparent;
   padding: 0;
   height: 100%;
 }
-@media (min-width: 992px) {
-  .root .options .row-switcher {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
-}
-.root .options .row-switcher > [data-elem=component1] {
-  flex: 0 1 auto;
+.root .options .row-switcher > [data-elem=component2] {
   height: 100%;
+  width: 100%;
 }
 .root .options .row-switcher .row-switcher-handle {
   gap: 0.75rem;
@@ -166,15 +129,11 @@
   height: 100%;
   width: 100%;
 }
-.root .options .row-switcher .row-switcher-handle > [data-elem*=component] {
-  overflow: hidden;
-}
 .root .options .row-switcher .row-switcher-handle > [data-elem=component1] {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: stretch;
-  flex: 0 0 auto;
   height: 100%;
 }
 .root .options .row-switcher .row-switcher-handle > [data-elem=component1]::before {
@@ -183,20 +142,6 @@
   background: var(--white);
   width: 0.0313rem;
   height: 50%;
-}
-.root .options .row-switcher .text {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-  height: 100%;
-  display: block;
-  padding: 0.5rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--white);
-}
-.root .options .row-switcher [data-elem=dropdown] {
-  border: none;
 }
 .root .options .row-switcher .dropdown {
   height: 100%;
@@ -216,26 +161,23 @@
 .root .options .row-switcher .dropdown > [data-elem=header] > [data-elem=select] > [data-elem=placeholder] {
   color: #1a2028;
   font-size: 0.875rem;
-  background-color: #efeff0;
+  background-color: #2f2fc6;
 }
 .root .options .row-switcher .dropdown > [data-elem=header] > [data-elem=select] > svg {
   fill: #1a2028;
-  width: 0.813rem;
-  height: 0.813rem;
+  width: 1rem;
+  height: 1rem;
 }
 .root .options .form {
-  display: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: auto;
+  min-width: auto;
   padding: 0;
   flex: 1;
   background: transparent;
-}
-@media (min-width: 992px) {
-  .root .options .form {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
 }
 .root .options .form > [data-elem*=component] {
   width: 100%;
@@ -245,7 +187,6 @@
   height: 100%;
 }
 .root .options .form .jump-to-page {
-  width: 100%;
   background: transparent;
   display: flex;
   flex-direction: row;
@@ -263,7 +204,6 @@
   height: 100%;
 }
 .root .options .form .jump-to-page .inputbox {
-  max-width: 100%;
   height: 100%;
 }
 .root .options .form .jump-to-page .inputbox > label {
@@ -296,7 +236,7 @@
   color: #9a9ea5;
   font-size: 0.875rem;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 600;
   line-height: normal;
 }
 .root .options .form .jump-to-page .button {

@@ -10,6 +10,7 @@ import { BaseCell } from '../cell';
 import { PaginationList } from './Pagination.class';
 import styles from './Pagination.module.css';
 import { Text } from '../text';
+import { Tooltip } from '../tooltip';
 
 const CURRENT_YEAR = new Date().getFullYear();
 
@@ -190,8 +191,7 @@ export const Pagination = forwardRef((props, ref) => {
 									className={styles.dropdown}
 									popperClassName={styles['dropdown-popper']}
 									value={step}
-									newIcon
-									placeholder={null}
+									placeholder=''
 									onChange={(e, newStep) => {
 										onChange({
 											type: 'SET_STEP',
@@ -220,33 +220,35 @@ export const Pagination = forwardRef((props, ref) => {
 									payload: parseInt(jumpPageRef?.current?.value, 10),
 								});
 							}}>
-							<BaseCell
-								size='auto'
-								className={styles['jump-to-page']}
-								component1={
-									<TextField
-										inputProps={{
-											min: 1,
-											max: totalPages,
-											required: true,
-											placeholder: '',
-										}}
-										ref={jumpPageRef}
-										type='number'
-										className={styles.inputbox}
-									/>
-								}
-								component2={
-									<Button
-										size='auto'
-										variant='contained'
-										className={styles.button}
-										rightComponent={() => {
-											return <ArrowIcon className={styles.icon} />;
-										}}
-									/>
-								}
-							/>
+							<Tooltip content='Jump To Page' position='top'>
+								<BaseCell
+									size='auto'
+									className={styles['jump-to-page']}
+									component1={
+										<TextField
+											inputProps={{
+												min: 1,
+												max: totalPages,
+												required: true,
+												placeholder: '',
+											}}
+											ref={jumpPageRef}
+											type='number'
+											className={styles.inputbox}
+										/>
+									}
+									component2={
+										<Button
+											size='auto'
+											variant='contained'
+											className={styles.button}
+											rightComponent={() => {
+												return <ArrowIcon className={styles.icon} />;
+											}}
+										/>
+									}
+								/>
+							</Tooltip>
 						</form>
 					}
 				/>
