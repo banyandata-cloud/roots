@@ -10,7 +10,6 @@ import { Pagination } from '../../pagination';
 import styles from './Table.module.css';
 import { TableColumn } from '../BaseTable.class';
 import { ErrorBoundaryWrapper } from '../../errorBoundary';
-import { Table as TableV2 } from '../../tableV2/table';
 
 const INTERSECTION = 1;
 const STEP = 0.05;
@@ -40,14 +39,10 @@ const Table = (props) => {
 		rowHeight,
 		theme,
 		onRowClick,
+		onSearch,
 		defaultActiveIndex,
 		custom,
-		v2,
 	} = props;
-
-	if (v2) {
-		return <TableV2 {...props} />;
-	}
 
 	const ref = useRef(null);
 	const paginationRef = useRef(null);
@@ -137,7 +132,7 @@ const Table = (props) => {
 				);
 			}}>
 			<div className={classes(styles.root, className)}>
-				{chipsData != null &&
+				{/* {chipsData != null &&
 					(chipsData?.chips?.length > 0 || chipsData?.showBack != null) && (
 						<TableChips
 							className={styles.chips}
@@ -145,17 +140,19 @@ const Table = (props) => {
 							loading={loading}
 							theme={theme}
 						/>
-					)}
-				{filtersData != null && (
+					)} */}
+				{!Object.keys(disabledFilterOptions).every(
+					(key) => disabledFilterOptions[key] === true
+				) && (
 					<TableFilters
 						className={styles.filters}
 						{...{
-							...filtersData,
 							disabledFilterOptions,
 							headerData,
 							hiddenColumns,
 							setHiddenColumns,
 						}}
+						onSearch={onSearch}
 						loading={loading}
 						theme={theme}
 					/>
@@ -177,7 +174,6 @@ const Table = (props) => {
 					}}
 					loading={loading}
 				/>
-
 				{paginationData != null && (
 					<Pagination
 						className={classes(styles.pagination, floating ? styles.floating : '')}
@@ -234,9 +230,9 @@ Table.propTypes = {
 	onSort: PropTypes.func,
 	rowHeight: PropTypes.oneOf(['md', 'lg']),
 	onRowClick: PropTypes.func,
+	onSearch: PropTypes.func,
 	theme: PropTypes.oneOf(['light', 'dark']),
 	custom: PropTypes.node,
-	v2: PropTypes.bool,
 };
 
 Table.defaultProps = {
@@ -257,17 +253,15 @@ Table.defaultProps = {
 	paginationData: null,
 	loading: false,
 	disabledFilterOptions: {
-		filterButton: false,
-		refresh: false,
+		search: false,
 		columnFilter: false,
-		settings: false,
 	},
 	onSort: () => {},
 	rowHeight: 'md',
 	theme: 'light',
 	onRowClick: () => {},
+	onSearch: () => {},
 	custom: null,
-	v2: false,
 };
 
 export default Table;

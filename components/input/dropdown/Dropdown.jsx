@@ -53,6 +53,7 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 		newIcon,
 		required,
 		hideIcon,
+		customButtonTitle,
 	} = props;
 	const [open, setOpen] = useState(false);
 	const [activeIndex, setActiveIndex] = useState(null);
@@ -443,7 +444,7 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 								{multi && (
 									<Button
 										className={styles['multi-apply']}
-										title='Apply'
+										title={customButtonTitle ?? 'Apply'}
 										size='auto'
 										onClick={onApply}
 									/>

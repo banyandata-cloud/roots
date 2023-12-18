@@ -5,7 +5,7 @@
   align-items: center;
 }
 .root.header-row {
-  background: var(--grey6);
+  background: #F7F7F8;
 }
 .root.header-row > [data-elem=base-cell].expandable-cell {
   background: transparent;
