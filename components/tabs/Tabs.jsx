@@ -31,26 +31,32 @@ const Tabs = (props) => {
 
 				if (dropdown) {
 					return (
-						<Dropdown
-							className={styles.dropdown}
-							onChange={(abc) => {
-								onTabClick(abc);
-							}}
-							placeholder={title}>
-							{dropdownItems.map((option) => {
-								return (
-									<DropdownItem
-										className={styles.item}
-										key={id}
-										title={option.title}
-										value={option.id}
-										onClick={() => {
-											onTabClick(option.id);
-										}}
-									/>
-								);
-							})}
-						</Dropdown>
+						<div
+							className={classes(
+								styles.main,
+								selectedTab === id ? styles.active : ''
+							)}
+							onClick={() => {
+								onTabClick(id);
+							}}>
+							<Dropdown
+								className={styles.dropdown}
+								onChange={() => {
+									setSelectedTab(id);
+								}}
+								placeholder={title}>
+								{dropdownItems.map((option) => {
+									return (
+										<DropdownItem
+											className={styles.item}
+											key={option.id}
+											title={option.title}
+											value={option.id}
+										/>
+									);
+								})}
+							</Dropdown>
+						</div>
 					);
 				}
 
