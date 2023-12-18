@@ -99,9 +99,8 @@ const Toggle = forwardRef(function Toggle(props, ref) {
 	const compareSelection = (input, item) => {
 		if (Array.isArray(input)) {
 			return input?.includes(item);
-		} else {
-			return input === item;
 		}
+		return input === item;
 	};
 
 	if (loading || fallback) {

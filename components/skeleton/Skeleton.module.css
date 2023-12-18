@@ -14,8 +14,7 @@
   opacity: 0.2;
 }
 .root.animated {
-  -webkit-animation-duration: 1.25s;
-          animation-duration: 1.25s;
+  animation-duration: 1.25s;
   animation-fill-mode: forwards;
   animation-iteration-count: infinite;
   animation-name: shimmer;
@@ -45,14 +44,6 @@
 }
 
 @keyframes shimmer {
-  0% {
-    background-position: -50rem 0;
-  }
-  100% {
-    background-position: 50rem 0;
-  }
-}
-@-webkit-keyframes shimmer {
   0% {
     background-position: -50rem 0;
   }
