@@ -161,92 +161,96 @@ export const Pagination = forwardRef((props, ref) => {
 					})}
 				</div>
 			</div>
-			{showTotalData && (
-				<Text
-					variant='b1'
-					stroke='medium'
-					className={styles['total-data']}
-					attrs={{
-						title: `${(currentPage - 1) * step + 1}-${
-							currentPage * step
-						} of ${totalData}`,
-					}}>
-					{(currentPage - 1) * step + 1}-
-					{currentPage === totalPages ? totalData : currentPage * step}/{totalData}
-				</Text>
-			)}
-			<BaseCell
-				size='auto'
-				flexible
-				className={styles['row-switcher']}
-				component2={
-					<BaseCell
-						size='auto'
-						flexible
-						className={styles['row-switcher-handle']}
-						component1={
-							<Dropdown
-								className={styles.dropdown}
-								popperClassName={styles['dropdown-popper']}
-								value={step}
-								newIcon
-								placeholder={null}
-								onChange={(e, newStep) => {
-									onChange({
-										type: 'SET_STEP',
-										payload: newStep,
-									});
-								}}>
-								{dropdownOptions.map((item) => {
-									return <DropdownItem title={item} value={item} key={item} />;
-								})}
-							</Dropdown>
-						}
-					/>
-				}
-			/>
-			<BaseCell
-				flexible
-				className={styles.form}
-				component1={
-					<form
-						onSubmit={(e) => {
-							e.preventDefault();
-							onChange({
-								type: 'SET_PAGE',
-								payload: parseInt(jumpPageRef?.current?.value, 10),
-							});
+			<div className={styles.options}>
+				{showTotalData && (
+					<Text
+						variant='b1'
+						stroke='medium'
+						className={styles['total-data']}
+						attrs={{
+							title: `${(currentPage - 1) * step + 1}-${
+								currentPage * step
+							} of ${totalData}`,
 						}}>
+						{(currentPage - 1) * step + 1}-
+						{currentPage === totalPages ? totalData : currentPage * step}/{totalData}
+					</Text>
+				)}
+				<BaseCell
+					size='auto'
+					flexible
+					className={styles['row-switcher']}
+					component2={
 						<BaseCell
 							size='auto'
-							className={styles['jump-to-page']}
+							flexible
+							className={styles['row-switcher-handle']}
 							component1={
-								<TextField
-									inputProps={{
-										min: 1,
-										max: totalPages,
-										required: true,
-										placeholder: 'Jump to Page',
-									}}
-									ref={jumpPageRef}
-									type='number'
-									className={styles.inputbox}
-								/>
-							}
-							component2={
-								<Button
-									size='auto'
-									variant='contained'
-									className={styles.button}
-									rightComponent={() => {
-										return <ArrowIcon className={styles.icon} />;
-									}}
-								/>
+								<Dropdown
+									className={styles.dropdown}
+									popperClassName={styles['dropdown-popper']}
+									value={step}
+									newIcon
+									placeholder={null}
+									onChange={(e, newStep) => {
+										onChange({
+											type: 'SET_STEP',
+											payload: newStep,
+										});
+									}}>
+									{dropdownOptions.map((item) => {
+										return (
+											<DropdownItem title={item} value={item} key={item} />
+										);
+									})}
+								</Dropdown>
 							}
 						/>
-					</form>
-				}
-			/>
+					}
+				/>
+				<BaseCell
+					flexible
+					className={styles.form}
+					component1={
+						<form
+							onSubmit={(e) => {
+								e.preventDefault();
+								onChange({
+									type: 'SET_PAGE',
+									payload: parseInt(jumpPageRef?.current?.value, 10),
+								});
+							}}>
+							<BaseCell
+								size='auto'
+								className={styles['jump-to-page']}
+								component1={
+									<TextField
+										inputProps={{
+											min: 1,
+											max: totalPages,
+											required: true,
+											placeholder: '',
+										}}
+										ref={jumpPageRef}
+										type='number'
+										className={styles.inputbox}
+									/>
+								}
+								component2={
+									<Button
+										size='auto'
+										variant='contained'
+										className={styles.button}
+										rightComponent={() => {
+											return <ArrowIcon className={styles.icon} />;
+										}}
+									/>
+								}
+							/>
+						</form>
+					}
+				/>
+			</div>
 		</div>
 	);
 });

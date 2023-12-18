@@ -25,12 +25,26 @@
   width: 82%;
   bottom: 3rem;
 }
+.root.no-total-data .copyrightText {
+  flex: 1 0 30%;
+}
+.root.no-total-data .row-switcher {
+  flex: 0;
+}
+.root.no-total-data .page-numbers {
+  flex: 1 1 100%;
+}
+.root.no-total-data .jump-to-page {
+  flex: 1 1 40%;
+}
+.root.no-total-data .form {
+  flex: 1 0 20%;
+}
 .root .copyrightText {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  flex: 1 0 10%;
 }
 .root .copyrightText > .text {
   color: #9a9ea5;
@@ -39,100 +53,6 @@
   font-weight: 400;
   line-height: 1.125rem;
 }
-.root .row-switcher,
-.root .jump-to-page,
-.root .form {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  height: 100%;
-}
-.root .row-switcher {
-  display: none;
-  flex: 0;
-  background-color: transparent;
-  padding: 0;
-  height: 100%;
-}
-@media (min-width: 992px) {
-  .root .row-switcher {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
-}
-.root .row-switcher > [data-elem=component1] {
-  flex: 0 1 auto;
-  height: 100%;
-}
-.root .row-switcher .row-switcher-handle {
-  gap: 0.75rem;
-  padding: 0;
-  border-radius: 0.25rem;
-  height: 100%;
-  width: 100%;
-}
-.root .row-switcher .row-switcher-handle > [data-elem*=component] {
-  overflow: hidden;
-}
-.root .row-switcher .row-switcher-handle > [data-elem=component1] {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: stretch;
-  flex: 0 0 auto;
-  height: 100%;
-}
-.root .row-switcher .row-switcher-handle > [data-elem=component1]::before {
-  content: "";
-  margin: auto;
-  background: var(--white);
-  width: 0.0313rem;
-  height: 50%;
-}
-.root .row-switcher .text {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-  height: 100%;
-  display: block;
-  padding: 0.5rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: var(--white);
-}
-.root .row-switcher [data-elem=dropdown] {
-  border: none;
-}
-.root .row-switcher .dropdown {
-  height: 100%;
-}
-.root .row-switcher .dropdown > [data-elem=header] {
-  height: 100%;
-  background-color: #efeff0;
-}
-.root .row-switcher .dropdown > [data-elem=header] > [data-elem=select] {
-  height: 2.375rem;
-  max-height: 100%;
-  width: auto;
-  min-width: -moz-fit-content;
-  min-width: fit-content;
-  padding: 0.625rem;
-  background-color: #efeff0;
-  border: 0rem solid transparent;
-}
-.root .row-switcher .dropdown > [data-elem=header] > [data-elem=select] > [data-elem=placeholder] {
-  color: #1a2028;
-  font-size: 0.875rem;
-  background-color: #efeff0;
-}
-.root .row-switcher .dropdown > [data-elem=header] > [data-elem=select] > svg {
-  fill: #1a2028;
-  width: 0.813rem;
-  height: 0.813rem;
-}
 .root .page-numbers {
   display: flex;
   flex-direction: row;
@@ -140,11 +60,6 @@
   align-items: center;
   gap: 1.25rem;
   flex: 1 1 100%;
-}
-@media (min-width: 992px) {
-  .root .page-numbers {
-    flex: 1 1 25%;
-  }
 }
 .root .page-numbers > .button.disable {
   pointer-events: none;
@@ -162,18 +77,18 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  gap: 1rem;
+  gap: 0.625rem;
 }
 .root .page-numbers > .pageSelect .number {
   cursor: pointer;
-  color: #1a2028;
+  border-radius: 50%;
+  background-color: #e0e0e0;
+  color: var(--black);
+  width: 2.313rem;
+  line-height: 2.313rem;
   text-align: center;
-  font-size: 0.875rem;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 1.125rem;
-  border: 0.0625rem solid transparent;
-  padding: 0rem 0.5rem;
+  font-size: 1rem;
+  border: 1px solid transparent;
 }
 .root .page-numbers > .pageSelect .number:not([data-active=true]) {
   display: none;
@@ -183,103 +98,22 @@
     display: block;
   }
 }
+.root .page-numbers > .pageSelect .number:hover {
+  border: 1px solid var(--highlight);
+  color: var(--highlight);
+  background: var(--background);
+}
 .root .page-numbers > .pageSelect .number.active {
-  color: #007aff;
+  background-color: var(--highlight);
+  color: var(--white);
 }
-.root .form {
-  display: none;
-  padding: 0;
-  flex: 1;
-  background: transparent;
-}
-@media (min-width: 992px) {
-  .root .form {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
-}
-.root .form > [data-elem*=component] {
-  width: 100%;
-  height: 100%;
-}
-.root .form > [data-elem*=component] > * {
-  height: 100%;
-}
-.root .form > [data-elem*=component] > form {
-  width: -moz-fit-content;
-  width: fit-content;
-  margin-left: auto;
-}
-.root .form .jump-to-page {
-  width: 100%;
-  background: transparent;
+.root .options {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: stretch;
-  gap: 0rem;
-  padding: 0rem;
-  height: 100%;
-  border-radius: 0.25rem;
-  border: 0.0313rem solid #b7cadb;
-  box-shadow: 0.1875rem 0.1875rem 0.25rem 0rem rgba(194, 194, 194, 0.12) inset;
+  align-items: center;
 }
-.root .form .jump-to-page > [data-elem*=component] {
-  overflow: hidden;
-  height: 100%;
-}
-.root .form .jump-to-page .inputbox {
-  max-width: 100%;
-  height: 100%;
-}
-.root .form .jump-to-page .inputbox > label {
-  height: 100%;
-  font-size: 0.875rem;
-}
-.root .form .jump-to-page .inputbox > label > [data-elem=base-cell] {
-  background-color: transparent;
-  color: var(--white);
-  height: 100%;
-  width: 10rem;
-  flex: 1;
-  padding: 0.625rem;
-  border: none;
-}
-.root .form .jump-to-page .inputbox > label > [data-elem=base-cell] .icon {
-  width: 1.5rem;
-  height: 1.5rem;
-  fill: var(--grey1);
-}
-.root .form .jump-to-page .inputbox > label > [data-elem=base-cell] > [data-elem=component2] {
-  height: 100%;
-}
-.root .form .jump-to-page .inputbox > label > [data-elem=base-cell] [data-elem=input] {
-  text-align: center;
-  background-color: transparent;
-  border: none;
-  height: 100%;
-  width: 100%;
-  color: #9a9ea5;
-  font-size: 0.875rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-}
-.root .form .jump-to-page .button {
-  border-radius: 0rem 0.25rem 0.25rem 0rem;
-  background-color: #b7cadb;
-  padding: 0.75rem 0.5rem;
-  height: 100%;
-}
-.root .form .jump-to-page .button .icon {
-  width: 1.5rem;
-  height: 1.5rem;
-  fill: #71839b;
-  flex-shrink: 0;
-}
-.root .total-data {
+.root .options .total-data {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
@@ -293,22 +127,187 @@
   line-height: 1.125rem;
 }
 @media (min-width: 992px) {
-  .root .total-data {
+  .root .options .total-data {
     display: inline;
   }
 }
-.root.no-total-data .copyrightText {
-  flex: 1 0 30%;
+.root .options .row-switcher,
+.root .options .jump-to-page,
+.root .options .form {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
 }
-.root.no-total-data .row-switcher {
+.root .options .row-switcher {
+  display: none;
   flex: 0;
+  background-color: transparent;
+  padding: 0;
+  height: 100%;
 }
-.root.no-total-data .page-numbers {
-  flex: 1 1 100%;
+@media (min-width: 992px) {
+  .root .options .row-switcher {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
-.root.no-total-data .jump-to-page {
-  flex: 1 1 40%;
+.root .options .row-switcher > [data-elem=component1] {
+  flex: 0 1 auto;
+  height: 100%;
 }
-.root.no-total-data .form {
-  flex: 1 0 20%;
+.root .options .row-switcher .row-switcher-handle {
+  gap: 0.75rem;
+  padding: 0;
+  border-radius: 0.25rem;
+  height: 100%;
+  width: 100%;
+}
+.root .options .row-switcher .row-switcher-handle > [data-elem*=component] {
+  overflow: hidden;
+}
+.root .options .row-switcher .row-switcher-handle > [data-elem=component1] {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: stretch;
+  flex: 0 0 auto;
+  height: 100%;
+}
+.root .options .row-switcher .row-switcher-handle > [data-elem=component1]::before {
+  content: "";
+  margin: auto;
+  background: var(--white);
+  width: 0.0313rem;
+  height: 50%;
+}
+.root .options .row-switcher .text {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  height: 100%;
+  display: block;
+  padding: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--white);
+}
+.root .options .row-switcher [data-elem=dropdown] {
+  border: none;
+}
+.root .options .row-switcher .dropdown {
+  height: 100%;
+}
+.root .options .row-switcher .dropdown > [data-elem=header] {
+  height: 100%;
+}
+.root .options .row-switcher .dropdown > [data-elem=header] > [data-elem=select] {
+  height: 2.375rem;
+  max-height: 100%;
+  width: auto;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+  padding: 0.625rem;
+  border: 0rem solid transparent;
+}
+.root .options .row-switcher .dropdown > [data-elem=header] > [data-elem=select] > [data-elem=placeholder] {
+  color: #1a2028;
+  font-size: 0.875rem;
+  background-color: #efeff0;
+}
+.root .options .row-switcher .dropdown > [data-elem=header] > [data-elem=select] > svg {
+  fill: #1a2028;
+  width: 0.813rem;
+  height: 0.813rem;
+}
+.root .options .form {
+  display: none;
+  padding: 0;
+  flex: 1;
+  background: transparent;
+}
+@media (min-width: 992px) {
+  .root .options .form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+.root .options .form > [data-elem*=component] {
+  width: 100%;
+  height: 100%;
+}
+.root .options .form > [data-elem*=component] > * {
+  height: 100%;
+}
+.root .options .form .jump-to-page {
+  width: 100%;
+  background: transparent;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  gap: 0rem;
+  padding: 0rem;
+  height: 100%;
+  border-radius: 0.25rem;
+  border: 0.0313rem solid #b7cadb;
+  box-shadow: 0.1875rem 0.1875rem 0.25rem 0rem rgba(194, 194, 194, 0.12) inset;
+}
+.root .options .form .jump-to-page > [data-elem*=component] {
+  overflow: hidden;
+  height: 100%;
+}
+.root .options .form .jump-to-page .inputbox {
+  max-width: 100%;
+  height: 100%;
+}
+.root .options .form .jump-to-page .inputbox > label {
+  height: 100%;
+  font-size: 0.875rem;
+}
+.root .options .form .jump-to-page .inputbox > label > [data-elem=base-cell] {
+  background-color: transparent;
+  color: var(--white);
+  height: 100%;
+  width: 3rem;
+  flex: 1;
+  padding: 0.625rem;
+  border: none;
+}
+.root .options .form .jump-to-page .inputbox > label > [data-elem=base-cell] .icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: var(--grey1);
+}
+.root .options .form .jump-to-page .inputbox > label > [data-elem=base-cell] > [data-elem=component2] {
+  height: 100%;
+}
+.root .options .form .jump-to-page .inputbox > label > [data-elem=base-cell] [data-elem=input] {
+  text-align: center;
+  background-color: transparent;
+  border: none;
+  height: 100%;
+  width: 100%;
+  color: #9a9ea5;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.root .options .form .jump-to-page .button {
+  border-radius: 0rem 0.25rem 0.25rem 0rem;
+  background-color: #b7cadb;
+  padding: 0.75rem 0.5rem;
+  height: 100%;
+}
+.root .options .form .jump-to-page .button .icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: #71839b;
+  flex-shrink: 0;
 }/*# sourceMappingURL=Pagination.module.css.map */
