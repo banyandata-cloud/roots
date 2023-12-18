@@ -5,16 +5,16 @@
   align-items: center;
   font-size: 14px;
 }
-.root .dropdown {
+.root .main .dropdown {
   display: flex;
   justify-content: center;
   align-items: center;
   align-self: stretch;
 }
-.root .dropdown [data-elem=base-cell] {
+.root .main .dropdown [data-elem=base-cell] {
   height: 2.3125rem;
 }
-.root .dropdown > [data-elem=header] > [data-elem=select] {
+.root .main .dropdown > [data-elem=header] > [data-elem=select] {
   background-color: transparent;
   border: none;
   border-bottom: 1px rgba(0, 0, 0, 0.176) solid;
@@ -24,17 +24,24 @@
   font-size: 10px;
   font-weight: 500;
 }
-.root .dropdown > [data-elem=header]:hover {
-  background-color: rgba(0, 128, 255, 0.1);
-  color: var(--highlight);
-}
-.root .dropdown .item {
+.root .main .dropdown .item {
   height: 3rem;
 }
-.root .dropdown .item > [data-elem=title] {
+.root .main .dropdown .item > [data-elem=title] {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+}
+.root .main:hover {
+  background-color: rgba(0, 128, 255, 0.1);
+  color: var(--highlight) !important;
+}
+.root .main.active {
+  border: 2px solid var(--highlight);
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  color: var(--highlight) !important;
 }
 .root.light-theme > button.tab {
   border-color: var(--grey4);
