@@ -111,6 +111,7 @@ const Toggle = forwardRef(function Toggle(props, ref) {
 		<div className={classes(styles.root, styles[`theme-${theme}`], className)}>
 			{multi && (
 				<Button
+					type='button'
 					size='auto'
 					data-elem='toggle'
 					className={classes(styles['toggle-button'], allSelected ? styles.active : '')}
@@ -131,6 +132,7 @@ const Toggle = forwardRef(function Toggle(props, ref) {
 				const isActive = compareSelection(inputValue, itemValue) && !allSelected;
 				return (
 					<Button
+						type='button'
 						size='auto'
 						data-elem='toggle'
 						key={itemValue}
