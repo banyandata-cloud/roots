@@ -11,7 +11,7 @@ const TableFilters = (props) => {
 	const {
 		className,
 		style,
-		onSearch,
+		onAdvancedFilterClick,
 		headerData,
 		hiddenColumns,
 		setHiddenColumns,
@@ -26,7 +26,11 @@ const TableFilters = (props) => {
 		return <Skeleton theme={theme} />;
 	}
 
-	const columns = headerData.map((datum) => {
+	const columnFilters = headerData?.filter((datum) => {
+		return datum.columnFilter;
+	});
+
+	const columns = columnFilters?.map((datum) => {
 		return {
 			title: datum.title,
 			value: datum.id,
@@ -34,7 +38,7 @@ const TableFilters = (props) => {
 	});
 
 	const handleColumnChange = (_, col) => {
-		let items = {};
+		const items = {};
 		col.forEach((column) => {
 			items[column] = true;
 		});
@@ -54,8 +58,8 @@ const TableFilters = (props) => {
 						size='auto'
 						className={styles['icon-button']}
 						color='default'
-						title='Search Filter'
-						onClick={onSearch}
+						title='Search and Filter'
+						onClick={onAdvancedFilterClick}
 						leftComponent={() => {
 							return <FilterIcon className={styles.icon} />;
 						}}
@@ -63,7 +67,8 @@ const TableFilters = (props) => {
 				)
 			}
 			component2={
-				!disabledColumnFilter && (
+				!disabledColumnFilter &&
+				columnFilters.length > 0 && (
 					<Dropdown
 						theme={theme}
 						className={styles['column-dropdown']}
@@ -84,9 +89,9 @@ const TableFilters = (props) => {
 						}
 						multi
 						customButtonTitle='Hide Columns'
-						value={Object.keys(hiddenColumns)}
+						value={Object.keys(hiddenColumns ?? {})}
 						onChange={handleColumnChange}>
-						{columns.map((col) => {
+						{columns?.map((col) => {
 							return (
 								<DropdownItem
 									key={col.value}
@@ -107,10 +112,7 @@ TableFilters.propTypes = {
 	className: PropTypes.string,
 	// eslint-disable-next-line react/forbid-prop-types
 	style: PropTypes.object,
-	onSearch: PropTypes.func,
-	searchValue: PropTypes.string,
-	// eslint-disable-next-line react/forbid-prop-types
-	searchOptions: PropTypes.object,
+	onAdvancedFilterClick: PropTypes.func,
 	filterValue: PropTypes.shape({
 		applied: PropTypes.number,
 	}),
@@ -127,9 +129,7 @@ TableFilters.propTypes = {
 TableFilters.defaultProps = {
 	className: '',
 	style: {},
-	onSearch: () => {},
-	searchValue: null,
-	searchOptions: {},
+	onAdvancedFilterClick: () => {},
 	filterValue: {
 		applied: null,
 	},
