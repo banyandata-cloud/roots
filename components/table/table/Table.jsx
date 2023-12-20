@@ -39,7 +39,7 @@ const Table = (props) => {
 		rowHeight,
 		theme,
 		onRowClick,
-		onSearch,
+		onAdvancedFilterClick,
 		defaultActiveIndex,
 		custom,
 	} = props;
@@ -141,9 +141,9 @@ const Table = (props) => {
 							theme={theme}
 						/>
 					)} */}
-				{!Object.keys(disabledFilterOptions).every(
-					(key) => disabledFilterOptions[key] === true
-				) && (
+				{!Object.keys(disabledFilterOptions).every((key) => {
+					return disabledFilterOptions[key] === true;
+				}) && (
 					<TableFilters
 						className={styles.filters}
 						{...{
@@ -152,7 +152,7 @@ const Table = (props) => {
 							hiddenColumns,
 							setHiddenColumns,
 						}}
-						onSearch={onSearch}
+						onAdvancedFilterClick={onAdvancedFilterClick}
 						loading={loading}
 						theme={theme}
 					/>
@@ -233,6 +233,7 @@ Table.propTypes = {
 	onSearch: PropTypes.func,
 	theme: PropTypes.oneOf(['light', 'dark']),
 	custom: PropTypes.node,
+	onAdvancedFilterClick: PropTypes.func,
 };
 
 Table.defaultProps = {
@@ -262,6 +263,7 @@ Table.defaultProps = {
 	onRowClick: () => {},
 	onSearch: () => {},
 	custom: null,
+	onAdvancedFilterClick: () => {},
 };
 
 export default Table;
