@@ -26,7 +26,11 @@ const TableFilters = (props) => {
 		return <Skeleton theme={theme} />;
 	}
 
-	const columns = headerData.map((datum) => {
+	const columnFilters = headerData?.filter((datum) => {
+		return datum.columnFilter;
+	});
+
+	const columns = columnFilters?.map((datum) => {
 		return {
 			title: datum.title,
 			value: datum.id,
@@ -34,7 +38,7 @@ const TableFilters = (props) => {
 	});
 
 	const handleColumnChange = (_, col) => {
-		let items = {};
+		const items = {};
 		col.forEach((column) => {
 			items[column] = true;
 		});
@@ -84,9 +88,9 @@ const TableFilters = (props) => {
 						}
 						multi
 						customButtonTitle='Hide Columns'
-						value={Object.keys(hiddenColumns)}
+						value={Object.keys(hiddenColumns ?? {})}
 						onChange={handleColumnChange}>
-						{columns.map((col) => {
+						{columns?.map((col) => {
 							return (
 								<DropdownItem
 									key={col.value}

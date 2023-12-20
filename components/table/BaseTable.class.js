@@ -14,6 +14,7 @@ export class TableColumn {
 		style = {},
 		multiLine = false,
 		sticky = null,
+		columnFilter = false,
 	}) {
 		this.title = title;
 		this.id = id;
@@ -28,5 +29,6 @@ export class TableColumn {
 		this.style = style;
 		this.multiLine = multiLine;
 		this.sticky = sticky;
+		this.columnFilter = columnFilter;
 	}
 }
