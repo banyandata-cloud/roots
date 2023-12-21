@@ -55,6 +55,7 @@ The default Breadcrumbs.
 					title: 'section-2',
 					value: 'test',
 					path: 'section-2',
+					isDisabled: true,
 					icon: null,
 				},
 			],
@@ -95,12 +96,19 @@ The Breadcrumbs in collapsed state.
 					title: 'section-4',
 					value: 'test',
 					path: 'section-4',
+					navigate: () => {
+						console.log('CLICKED NOW 4');
+					},
 					icon: null,
 				},
 				{
 					title: 'section-5',
 					value: 'test',
+					isDisabled: true,
 					path: 'section-5',
+					navigate: () => {
+						console.log('CLICKED NOW 5');
+					},
 					icon: null,
 				},
 				{
