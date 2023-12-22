@@ -1,3 +1,4 @@
+/* eslint-disable object-curly-newline */
 import { useRef } from 'react';
 import PropTypes from 'prop-types';
 import styles from './BaseSidePanel.module.css';
@@ -5,7 +6,8 @@ import { classes } from '../../utils';
 import BaseModal from '../modal/BaseModal';
 
 const BaseSidePanel = (props) => {
-	const { className, renderHeader, children, renderFooter, open, isModal, toggle } = props;
+	const { className, renderHeader, children, renderFooter, open, isModal, toggle, noDismiss } =
+		props;
 
 	const panelRef = useRef();
 
@@ -13,6 +15,8 @@ const BaseSidePanel = (props) => {
 		<BaseModal
 			open={open}
 			toggle={toggle}
+			hideCrossDismiss
+			noDismiss={noDismiss}
 			className={classes(styles.modal, className)}
 			renderHeader={
 				<div data-elem='header' className={styles.header}>
