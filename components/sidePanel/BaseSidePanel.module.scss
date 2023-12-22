@@ -20,20 +20,9 @@
 
 .modal {
 	height: 100%;
-	width: 45%;
-	@include flex(column, flex-end, stretch);
-	position: fixed;
-	top: 0% !important;
-	left: 55% !important;
-	z-index: 100;
-	background: $white;
-	@include boxShadow;
-	overflow-x: hidden;
-	&.close {
-		width: 0rem;
-	}
-	.body {
-		flex: 1;
-		overflow-y: auto;
-	}
+	width: 50%;
+	border-radius: 0;
+	right: 0;
+	top: auto;
+	transform: none;
 }

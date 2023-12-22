@@ -1,9 +1,11 @@
+/* eslint-disable max-len */
 import {
 	FloatingFocusManager,
 	useDismiss,
 	useFloating,
 	useInteractions,
 } from '@floating-ui/react-dom-interactions';
+import { useEffect } from 'react';
 import { useAnimate } from 'framer-motion';
 import PropTypes from 'prop-types';
 import { classes } from '../../utils';
@@ -11,7 +13,6 @@ import { CrossIcon } from '../icons';
 import { Popper } from '../popper';
 import { Button } from '../buttons';
 import styles from './BaseModal.module.css';
-import { useEffect } from 'react';
 
 /**
  * Renders a modal dialog with customizable header, body, and footer content.
@@ -58,9 +59,10 @@ const BaseModal = (props) => {
 
 	useEffect(() => {
 		if (scope.current) {
-			animate(scope.current, { opacity: 1 });
 			if (renderFooter) {
-				animate('footer', { y: ['100%', '0%'] });
+				animate('footer', {
+					y: ['100%', '0%'],
+				});
 			}
 		}
 	});
@@ -85,7 +87,9 @@ const BaseModal = (props) => {
 									if (typeof renderHeader !== 'function') {
 										return renderHeader;
 									}
-									return renderHeader({ ...bodyProps });
+									return renderHeader({
+										...bodyProps,
+									});
 								})()}
 							</header>
 						)}
@@ -98,7 +102,9 @@ const BaseModal = (props) => {
 									if (typeof renderFooter !== 'function') {
 										return renderFooter;
 									}
-									return renderFooter({ ...bodyProps });
+									return renderFooter({
+										...bodyProps,
+									});
 								})()}
 							</footer>
 						)}
