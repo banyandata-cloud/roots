@@ -21,13 +21,13 @@ const BreadCrumbs = (props) => {
 
 	const [expand, setExpand] = useState(false);
 
-	let href = `/${crumbs?.[0]?.path}`;
+	// let href = `/${crumbs?.[0]?.path}`;
 	const crumbsList = crumbs?.slice(1);
 
 	const CrumbsDOM =
 		crumbsList !== null &&
 		crumbsList.map((crumb, index) => {
-			const { title, value, icon, navigate } = crumb;
+			const { title, value, icon, navigate, isDisabled = false } = crumb;
 
 			const active = index === crumbsList.length - 1;
 			const showSeperator = index < crumbsList.length - 1;
@@ -36,7 +36,7 @@ const BreadCrumbs = (props) => {
 				<React.Fragment key={title}>
 					<Link
 						underline='none'
-						onClick={navigate}
+						onClick={!isDisabled ? navigate : null}
 						className={classes(styles.crumb, active ? styles.active : '')}
 						dataAttrs={{
 							'data-state': active,

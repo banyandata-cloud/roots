@@ -70,9 +70,13 @@ const Map = forwardRef((props, ref) => {
 		return (
 			<div className={styles.root}>
 				<Skeleton
-					theme={theme}
+					width='100%'
 					height='100%'
+					theme={theme}
 					variant='rounded'
+					style={{
+						animationDuration: '4s',
+					}}
 					noAnimation={!loading && fallback}
 				/>
 			</div>
