@@ -41,6 +41,7 @@ const BaseModal = (props) => {
 		open,
 		noDismiss,
 		hideCrossDismiss,
+		animationConfig,
 	} = props;
 
 	const { floating, context } = useFloating({
@@ -57,8 +58,14 @@ const BaseModal = (props) => {
 	const { props: bodyProps } = children ?? {};
 	const [scope, animate] = useAnimate();
 
+
 	useEffect(() => {
 		if (scope.current) {
+			if (animationConfig) {
+				animate(scope.current, animationConfig, {
+					duration: 0.5,
+				});
+			}
 			if (renderFooter) {
 				animate('footer', {
 					y: ['100%', '0%'],
@@ -67,13 +74,15 @@ const BaseModal = (props) => {
 		}
 	});
 
+
+
 	return (
 		<Popper
 			open={open}
 			className={popperClassName}
 			transparent={false}
 			wrapperId='base-modal-popper'>
-			{open && (
+				{open && (
 				<FloatingFocusManager context={context}>
 					<div
 						{...getFloatingProps({
@@ -125,6 +134,7 @@ const BaseModal = (props) => {
 					</div>
 				</FloatingFocusManager>
 			)}
+			
 		</Popper>
 	);
 };
@@ -137,6 +147,8 @@ BaseModal.propTypes = {
 	toggle: PropTypes.func,
 	noDismiss: PropTypes.bool,
 	hideCrossDismiss: PropTypes.bool,
+	// eslint-disable-next-line react/forbid-prop-types
+	animationConfig: PropTypes.object,
 };
 
 BaseModal.defaultProps = {
@@ -147,6 +159,7 @@ BaseModal.defaultProps = {
 	toggle: () => {},
 	noDismiss: false,
 	hideCrossDismiss: false,
+	animationConfig: null,
 };
 
 export default BaseModal;
