@@ -4,7 +4,6 @@ import { useEffect, useRef, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { classes } from '../../../utils';
 import { BaseTable } from '../baseTable';
-import { TableChips } from './tableChips';
 import { TableFilters } from './tableFilters';
 import { Pagination } from '../../pagination';
 import styles from './Table.module.css';
@@ -132,15 +131,6 @@ const Table = (props) => {
 				);
 			}}>
 			<div className={classes(styles.root, className)}>
-				{/* {chipsData != null &&
-					(chipsData?.chips?.length > 0 || chipsData?.showBack != null) && (
-						<TableChips
-							className={styles.chips}
-							{...chipsData}
-							loading={loading}
-							theme={theme}
-						/>
-					)} */}
 				{!Object.keys(disabledFilterOptions).every((key) => {
 					return disabledFilterOptions[key] === true;
 				}) && (
@@ -208,9 +198,6 @@ Table.propTypes = {
 	customCells: PropTypes.shape({
 		header: PropTypes.func,
 		body: PropTypes.func,
-	}),
-	chipsData: PropTypes.shape({
-		...TableChips.propTypes,
 	}),
 	filtersData: PropTypes.shape({
 		...TableFilters.propTypes,

@@ -1,16 +1,9 @@
 import { Meta, Canvas, Story } from '@storybook/addon-docs';
-
-import { useEffect, useState } from 'react';
-import { Button } from '../../buttons';
 import { ThemedContainer } from '../../helpers';
 import { ServerIcon, CopyIcon, ArrowIcon } from '../../icons';
 import { usePagination } from '../../pagination';
-import { Popover } from '../../popover';
-import { Tooltip } from '../../tooltip';
 import { TableColumn } from '../BaseTable.class';
-import { TableCell } from '../cell';
 import Table from './Table';
-import { TableChip } from './tableChips';
 
 <Meta title='Components/Table/Table' parameters={{ options: { showToolbar: false } }} />
 
@@ -314,40 +307,6 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 			];
 			const chipsData = {
 				showBack: true,
-				chips: [
-					new TableChip({
-						key: 'something',
-						icon: ArrowIcon,
-						label: 'DB Tech',
-						value: 'PgSQL',
-						disabled: true,
-					}),
-					new TableChip({
-						key: 'something',
-						icon: ArrowIcon,
-						label: 'DB Tech',
-						value: 'MySQL',
-						disabled: true,
-					}),
-					new TableChip({
-						key: 'something',
-						icon: (iconProps) => {
-							return <CopyIcon {...iconProps} />;
-						},
-						label: 'Cloud',
-						value: 'Google',
-						disabled: true,
-					}),
-					new TableChip({
-						key: 'something',
-						icon: (iconProps) => {
-							return <ServerIcon {...iconProps} />;
-						},
-						label: 'Cloud',
-						value: 'Amazon',
-						disabled: true,
-					}),
-				],
 			};
 			const [paginationState, paginationDispatch] = usePagination({
 				totalPages: 20,
@@ -665,40 +624,6 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 			];
 			const chipsData = {
 				showBack: true,
-				chips: [
-					new TableChip({
-						key: 'something',
-						icon: ArrowIcon,
-						label: 'DB Tech',
-						value: 'PgSQL',
-						disabled: true,
-					}),
-					new TableChip({
-						key: 'something',
-						icon: ArrowIcon,
-						label: 'DB Tech',
-						value: 'MySQL',
-						disabled: true,
-					}),
-					new TableChip({
-						key: 'something',
-						icon: (iconProps) => {
-							return <CopyIcon {...iconProps} />;
-						},
-						label: 'Cloud',
-						value: 'Google',
-						disabled: true,
-					}),
-					new TableChip({
-						key: 'something',
-						icon: (iconProps) => {
-							return <ServerIcon {...iconProps} />;
-						},
-						label: 'Cloud',
-						value: 'Amazon',
-						disabled: true,
-					}),
-				],
 			};
 			const filtersData = {
 				filterValue: {
