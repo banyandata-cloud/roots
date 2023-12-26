@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { classes } from '../../../utils';
 import { BaseTable } from '../baseTable';
+import { TableChips } from './tableChips';
 import { TableFilters } from './tableFilters';
 import { Pagination } from '../../pagination';
 import styles from './Table.module.css';
@@ -41,6 +42,8 @@ const Table = (props) => {
 		onAdvancedFilterClick,
 		defaultActiveIndex,
 		custom,
+		tableTitleIcon,
+		tableTitleText
 	} = props;
 
 	const ref = useRef(null);
@@ -145,6 +148,8 @@ const Table = (props) => {
 						onAdvancedFilterClick={onAdvancedFilterClick}
 						loading={loading}
 						theme={theme}
+						tableTitleIcon={tableTitleIcon}
+						tableTitleText={tableTitleText}
 					/>
 				)}
 				<BaseTable
@@ -198,6 +203,9 @@ Table.propTypes = {
 	customCells: PropTypes.shape({
 		header: PropTypes.func,
 		body: PropTypes.func,
+	}),
+	chipsData: PropTypes.shape({
+		...TableChips.propTypes,
 	}),
 	filtersData: PropTypes.shape({
 		...TableFilters.propTypes,
