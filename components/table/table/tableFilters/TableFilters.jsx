@@ -153,7 +153,7 @@ TableFilters.defaultProps = {
 		settings: false,
 	},
 	theme: 'light',
-	tableTitleText:'Table Title Text or Any Info',
+	tableTitleText:null,
 	tableTitleIcon:null
 };
 

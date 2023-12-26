@@ -5,8 +5,6 @@ import {
 	useFloating,
 	useInteractions,
 } from '@floating-ui/react-dom-interactions';
-import { useEffect } from 'react';
-import { useAnimate } from 'framer-motion';
 import PropTypes from 'prop-types';
 import { classes } from '../../utils';
 import { CrossIcon } from '../icons';
@@ -41,7 +39,6 @@ const BaseModal = (props) => {
 		open,
 		noDismiss,
 		hideCrossDismiss,
-		animationConfig,
 	} = props;
 
 	const { floating, context } = useFloating({
@@ -56,24 +53,6 @@ const BaseModal = (props) => {
 	]);
 
 	const { props: bodyProps } = children ?? {};
-	const [scope, animate] = useAnimate();
-
-
-	useEffect(() => {
-		if (scope.current) {
-			if (animationConfig) {
-				animate(scope.current, animationConfig, {
-					duration: 0.5,
-				});
-			}
-			if (renderFooter) {
-				animate('footer', {
-					y: ['100%', '0%'],
-				});
-			}
-		}
-	});
-
 
 
 	return (
@@ -89,7 +68,7 @@ const BaseModal = (props) => {
 							className: classes(styles.root, className),
 							ref: floating,
 						})}
-						ref={scope}>
+						>
 						{renderHeader && (
 							<header data-elem='header' className={styles.header}>
 								{(() => {
@@ -106,7 +85,7 @@ const BaseModal = (props) => {
 							{children}
 						</div>
 						{renderFooter && (
-							<footer data-elem='footer' className={styles.footer}>
+							<footer  data-elem='footer' className={styles.footer}>
 								{(() => {
 									if (typeof renderFooter !== 'function') {
 										return renderFooter;
@@ -148,7 +127,6 @@ BaseModal.propTypes = {
 	noDismiss: PropTypes.bool,
 	hideCrossDismiss: PropTypes.bool,
 	// eslint-disable-next-line react/forbid-prop-types
-	animationConfig: PropTypes.object,
 };
 
 BaseModal.defaultProps = {
@@ -159,7 +137,6 @@ BaseModal.defaultProps = {
 	toggle: () => {},
 	noDismiss: false,
 	hideCrossDismiss: false,
-	animationConfig: null,
 };
 
 export default BaseModal;
