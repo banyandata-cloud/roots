@@ -18,10 +18,6 @@ const BaseSidePanel = (props) => {
 			hideCrossDismiss
 			noDismiss={noDismiss}
 			className={classes(styles.modal, className)}
-			animationConfig={{
-				x: ['100%', '0%'],
-				opacity:1
-			}}
 			renderHeader={
 				<div data-elem='header' className={styles.header}>
 					{renderHeader}
