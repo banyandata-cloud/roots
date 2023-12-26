@@ -1,3 +1,4 @@
+/* eslint-disable object-curly-newline */
 import { useRef } from 'react';
 import PropTypes from 'prop-types';
 import styles from './BaseSidePanel.module.css';
@@ -5,7 +6,8 @@ import { classes } from '../../utils';
 import BaseModal from '../modal/BaseModal';
 
 const BaseSidePanel = (props) => {
-	const { className, renderHeader, children, renderFooter, open, isModal, toggle } = props;
+	const { className, renderHeader, children, renderFooter, open, isModal, toggle, noDismiss } =
+		props;
 
 	const panelRef = useRef();
 
@@ -13,7 +15,13 @@ const BaseSidePanel = (props) => {
 		<BaseModal
 			open={open}
 			toggle={toggle}
+			hideCrossDismiss
+			noDismiss={noDismiss}
 			className={classes(styles.modal, className)}
+			animationConfig={{
+				x: ['100%', '0%'],
+				opacity:1
+			}}
 			renderHeader={
 				<div data-elem='header' className={styles.header}>
 					{renderHeader}
@@ -50,6 +58,9 @@ BaseSidePanel.propTypes = {
 	renderHeader: PropTypes.element,
 	renderFooter: PropTypes.element,
 	open: PropTypes.bool,
+	isModal: PropTypes.bool,
+	toggle: PropTypes.func,
+	noDismiss: PropTypes.bool,
 };
 
 BaseSidePanel.defaultProps = {
@@ -57,6 +68,9 @@ BaseSidePanel.defaultProps = {
 	renderHeader: null,
 	renderFooter: null,
 	open: false,
+	isModal: false,
+	toggle: () => {},
+	noDismiss: false,
 };
 
 export default BaseSidePanel;
