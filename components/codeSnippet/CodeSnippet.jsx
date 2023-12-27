@@ -23,6 +23,7 @@ const CodeSnippet = (props) => {
 	} = props;
 
 	const [copiedState, setCopiedState] = useState(false);
+	const [parentNode,setParentNode] = useState(null);
 
 	setTimeout(() => {
 		setCopiedState(false);
@@ -39,6 +40,7 @@ const CodeSnippet = (props) => {
 		for (const key of keys) {
 			const newPath = currentPath ? `${currentPath}/${key}` : key;
 
+
 			if (key === targetKey) {
 				// Display the full path of the key from the object
 				return newPath;
@@ -53,7 +55,7 @@ const CodeSnippet = (props) => {
 					return nestedPath;
 				}
 			}
-			if (typeof obj[key] === 'object') {
+			if (obj[key] && typeof obj[key] === 'object') {
 				// Recursively search nested keys
 				const nestedPath = findKeyPath(obj[key], targetKey, newPath);
 				if (nestedPath) {
@@ -85,6 +87,14 @@ const CodeSnippet = (props) => {
 				if (keyPath) {
 					event.target.parentNode.style.backgroundColor =
 						theme === 'light' ? '#333' : 'white';
+						if(parentNode){
+							parentNode.style.backgroundColor=''
+							if(event.target.parentNode===parentNode){
+								setParentNode(null)
+								return
+							}
+						}
+						setParentNode(event.target.parentNode);
 					return keyPath;
 				}
 				return clickedKey;
