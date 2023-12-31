@@ -5,6 +5,7 @@ import {
 	useFloating,
 	useInteractions,
 } from '@floating-ui/react-dom-interactions';
+import { motion, AnimatePresence } from 'framer-motion';
 import PropTypes from 'prop-types';
 import { classes } from '../../utils';
 import { CrossIcon } from '../icons';
@@ -39,6 +40,7 @@ const BaseModal = (props) => {
 		open,
 		noDismiss,
 		hideCrossDismiss,
+		animation,
 	} = props;
 
 	const { floating, context } = useFloating({
@@ -54,66 +56,79 @@ const BaseModal = (props) => {
 
 	const { props: bodyProps } = children ?? {};
 
-
 	return (
 		<Popper
 			open={open}
 			className={popperClassName}
 			transparent={false}
 			wrapperId='base-modal-popper'>
+			<AnimatePresence>
 				{open && (
-				<FloatingFocusManager context={context}>
-					<div
-						{...getFloatingProps({
-							className: classes(styles.root, className),
-							ref: floating,
-						})}
-						>
-						{renderHeader && (
-							<header data-elem='header' className={styles.header}>
-								{(() => {
-									if (typeof renderHeader !== 'function') {
-										return renderHeader;
-									}
-									return renderHeader({
-										...bodyProps,
-									});
-								})()}
-							</header>
-						)}
-						<div data-elem='body' className={styles.body}>
-							{children}
-						</div>
-						{renderFooter && (
-							<footer  data-elem='footer' className={styles.footer}>
-								{(() => {
-									if (typeof renderFooter !== 'function') {
-										return renderFooter;
-									}
-									return renderFooter({
-										...bodyProps,
-									});
-								})()}
-							</footer>
-						)}
-						{!hideCrossDismiss && (
-							<Button
-								size='auto'
-								variant='text'
-								data-elem='close'
-								className={styles.close}
-								onClick={() => {
-									toggle(false);
-								}}
-								rightComponent={() => {
-									return <CrossIcon className={styles.icon} />;
-								}}
-							/>
-						)}
-					</div>
-				</FloatingFocusManager>
-			)}
-			
+					<FloatingFocusManager context={context}>
+						<motion.div
+							{...getFloatingProps({
+								className: classes(styles.root, className),
+								ref: floating,
+								...(animation && {
+									initial: {
+										x: '100%',
+									},
+									animate: {
+										x: 0,
+									},
+									exit: {
+										x: '100%',
+									},
+									transition: {
+										duration: 0.2,
+									},
+								}),
+							})}>
+							{renderHeader && (
+								<header data-elem='header' className={styles.header}>
+									{(() => {
+										if (typeof renderHeader !== 'function') {
+											return renderHeader;
+										}
+										return renderHeader({
+											...bodyProps,
+										});
+									})()}
+								</header>
+							)}
+							<div data-elem='body' className={styles.body}>
+								{children}
+							</div>
+							{renderFooter && (
+								<footer data-elem='footer' className={styles.footer}>
+									{(() => {
+										if (typeof renderFooter !== 'function') {
+											return renderFooter;
+										}
+										return renderFooter({
+											...bodyProps,
+										});
+									})()}
+								</footer>
+							)}
+							{!hideCrossDismiss && (
+								<Button
+									size='auto'
+									variant='text'
+									data-elem='close'
+									className={styles.close}
+									onClick={() => {
+										toggle(false);
+									}}
+									rightComponent={() => {
+										return <CrossIcon className={styles.icon} />;
+									}}
+								/>
+							)}
+						</motion.div>
+					</FloatingFocusManager>
+				)}
+			</AnimatePresence>
 		</Popper>
 	);
 };
@@ -126,7 +141,7 @@ BaseModal.propTypes = {
 	toggle: PropTypes.func,
 	noDismiss: PropTypes.bool,
 	hideCrossDismiss: PropTypes.bool,
-	// eslint-disable-next-line react/forbid-prop-types
+	animation: PropTypes.bool,
 };
 
 BaseModal.defaultProps = {
@@ -137,6 +152,7 @@ BaseModal.defaultProps = {
 	toggle: () => {},
 	noDismiss: false,
 	hideCrossDismiss: false,
+	animation: false,
 };
 
 export default BaseModal;
