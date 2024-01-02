@@ -38,7 +38,7 @@ const Accordion = (props) => {
 
 	return (
 		<div
-			className={classes(styles.root, isOpen ? styles.open : '',)}
+			className={classes(styles.root, isOpen ? styles.open : '', className)}
 			data-state-open={isOpen}>
 			<BaseCell
 				flexible

@@ -40,6 +40,10 @@
 			height: 1.25rem;
 			fill: $white;
 		}
+		&.home {
+			width: fit-content;
+			border-radius: 4px;
+		}
 	}
 
 	.crumb {

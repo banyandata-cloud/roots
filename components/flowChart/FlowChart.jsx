@@ -1,3 +1,5 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable max-len */
 import React, { useEffect } from 'react';
 import * as d3 from 'd3';
 import neo4j from 'neo4j-driver';
@@ -67,7 +69,9 @@ const FlowChart = ({
 					'link',
 					d3
 						.forceLink(links)
-						.id((d) => d.id)
+						.id((d) => {
+							return d.id;
+						})
 						.distance(linkDistance)
 				)
 				.force('charge', d3.forceManyBody().strength(-100))
@@ -108,7 +112,9 @@ const FlowChart = ({
 				.data(links)
 				.enter()
 				.append('path')
-				.attr('id', (d, i) => `linkPath${i}`)
+				.attr('id', (d, i) => {
+					return `linkPath${i}`;
+				})
 				.attr('d', (d) => {
 					const startX = d.source.x;
 					const startY = d.source.y;
@@ -125,8 +131,12 @@ const FlowChart = ({
 				.append('text')
 				.attr('class', 'link-label')
 				.append('textPath')
-				.attr('href', (d, i) => `#linkPath${i}`)
-				.text((d) => d.relationshipType)
+				.attr('href', (d, i) => {
+					return `#linkPath${i}`;
+				})
+				.text((d) => {
+					return d.relationshipType;
+				})
 				.attr('startOffset', '50%')
 				.attr('font-size', linkFontSize)
 				.attr('fill', textLinkColor)
@@ -138,33 +148,41 @@ const FlowChart = ({
 				.data(nodes)
 				.enter()
 				.append('g')
-				.attr('class', (d) => `node-level-${d.level}`)
+				.attr('class', (d) => {
+					return `node-level-${d.level}`;
+				})
 				.call(d3.drag().on('start', dragstarted).on('drag', dragged).on('end', dragended));
 
 			const circles = node
 				.append('circle')
-				.attr('r', (d) => calculateRadius(d.label))
+				.attr('r', (d) => {
+					return calculateRadius(d.label);
+				})
 				.attr('fill', (d) => {
 					if (d.level === 1) {
 						if (d.label === 'AzuVirtualNetwork') {
 							return '#33a02c';
-						} else {
-							return '#ff7f0e';
 						}
-					} else {
-						return colorScale(d.level);
+						return '#ff7f0e';
 					}
+					return colorScale(d.level);
 				});
 
 			const labels = node
 				.append('text')
-				.text((d) => d.label)
+				.text((d) => {
+					return d.label;
+				})
 				.attr('dy', 4)
 				.style('text-anchor', 'middle')
 				.attr('fill', labelColor)
 				.style('font-size', labelFontSize)
-				.attr('y', (d) => d.y - d.r / 2)
-				.attr('x', (d) => d.x - calculateRadius(d.label));
+				.attr('y', (d) => {
+					return d.y - d.r / 2;
+				})
+				.attr('x', (d) => {
+					return d.x - calculateRadius(d.label);
+				});
 
 			function calculateRadius(label) {
 				const defaultRadius = nodeRadius;
@@ -175,13 +193,23 @@ const FlowChart = ({
 				return defaultRadius * scale(Math.min(labelLength, maxLength)) + nodeRadius;
 			}
 
-			node.append('title').text((d) => `${d.label} - ${JSON.stringify(d.properties)}`);
+			node.append('title').text((d) => {
+				return `${d.label} - ${JSON.stringify(d.properties)}`;
+			});
 
 			simulation.on('tick', () => {
-				link.attr('x1', (d) => d.source.x)
-					.attr('y1', (d) => d.source.y)
-					.attr('x2', (d) => d.target.x)
-					.attr('y2', (d) => d.target.y);
+				link.attr('x1', (d) => {
+					return d.source.x;
+				})
+					.attr('y1', (d) => {
+						return d.source.y;
+					})
+					.attr('x2', (d) => {
+						return d.target.x;
+					})
+					.attr('y2', (d) => {
+						return d.target.y;
+					});
 
 				linkPaths.attr('d', (d) => {
 					const startX = d.source.x;
@@ -192,12 +220,30 @@ const FlowChart = ({
 				});
 
 				linkText
-					.attr('x', (d) => (d.source.x + d.target.x) / 2)
-					.attr('y', (d) => (d.source.y + d.target.y) / 2)
-					.text((d) => d.relationshipType);
+					.attr('x', (d) => {
+						return (d.source.x + d.target.x) / 2;
+					})
+					.attr('y', (d) => {
+						return (d.source.y + d.target.y) / 2;
+					})
+					.text((d) => {
+						return d.relationshipType;
+					});
 
-				circles.attr('cx', (d) => d.x).attr('cy', (d) => d.y);
-				labels.attr('x', (d) => d.x).attr('y', (d) => d.y);
+				circles
+					.attr('cx', (d) => {
+						return d.x;
+					})
+					.attr('cy', (d) => {
+						return d.y;
+					});
+				labels
+					.attr('x', (d) => {
+						return d.x;
+					})
+					.attr('y', (d) => {
+						return d.y;
+					});
 			});
 
 			// Zoom functionality
@@ -224,11 +270,12 @@ const FlowChart = ({
 		};
 
 		// Create a Neo4j session and fetch data
-		const session = driver.session({ database: 'neo4j' });
+		const session = driver.session({
+			database: 'neo4j',
+		});
 		session
 			.run(query)
-			.then(function (result) {
-				console.log('l');
+			.then((result) => {
 				const nodes = [];
 				const links = [];
 				const nodeSet = new Set();
@@ -295,7 +342,7 @@ const FlowChart = ({
 		query,
 	]);
 
-	return <div id='graph-2d'></div>;
+	return <div id='graph-2d'> </div>;
 };
 
 FlowChart.propTypes = {
@@ -314,16 +361,8 @@ FlowChart.propTypes = {
 	textLinkColor: PropTypes.string,
 };
 FlowChart.defaultProps = {
-	linkDistance: 120,
-	linkWidth: 2,
-	linkFontSize: '8px',
-	nodeRadius: 13,
-	labelFontSize: '8px',
-	width: 950,
-	height: 600,
 	textLinkColor: 'black',
 	labelColor: 'white',
-	user: 'neo4j',
 };
 
 export default FlowChart;
