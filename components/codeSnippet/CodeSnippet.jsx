@@ -23,7 +23,7 @@ const CodeSnippet = (props) => {
 	} = props;
 
 	const [copiedState, setCopiedState] = useState(false);
-	const [parentNode,setParentNode] = useState(null);
+	const [parentNode, setParentNode] = useState(null);
 
 	setTimeout(() => {
 		setCopiedState(false);
@@ -39,7 +39,6 @@ const CodeSnippet = (props) => {
 		// eslint-disable-next-line no-restricted-syntax
 		for (const key of keys) {
 			const newPath = currentPath ? `${currentPath}/${key}` : key;
-
 
 			if (key === targetKey) {
 				// Display the full path of the key from the object
@@ -87,14 +86,14 @@ const CodeSnippet = (props) => {
 				if (keyPath) {
 					event.target.parentNode.style.backgroundColor =
 						theme === 'light' ? '#333' : 'white';
-						if(parentNode){
-							parentNode.style.backgroundColor=''
-							if(event.target.parentNode===parentNode){
-								setParentNode(null)
-								return
-							}
+					if (parentNode) {
+						parentNode.style.backgroundColor = '';
+						if (event.target.parentNode === parentNode) {
+							setParentNode(null);
+							return null;
 						}
-						setParentNode(event.target.parentNode);
+					}
+					setParentNode(event.target.parentNode);
 					return keyPath;
 				}
 				return clickedKey;

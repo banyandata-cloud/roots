@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, {
 	useMemo,
