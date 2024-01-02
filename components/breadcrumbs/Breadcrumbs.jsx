@@ -81,7 +81,7 @@ const BreadCrumbs = (props) => {
 		);
 	}
 
-	if (crumbs?.length === 1) {
+	if (crumbs?.length <= 1) {
 		return (
 			<div className={classes(styles.root, styles[`theme-${theme}`])}>
 				<Button
@@ -89,6 +89,9 @@ const BreadCrumbs = (props) => {
 					radius='round'
 					className={classes(styles['crumb-actions'], styles.home)}
 					title={homeTitle}
+					leftComponent={() => {
+						return <HomeIcon className={styles.icon} position='left' />;
+					}}
 				/>
 				{CrumbsDOM}
 			</div>
