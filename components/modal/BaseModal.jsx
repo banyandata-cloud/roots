@@ -80,7 +80,7 @@ const BaseModal = (props) => {
 										x: '100%',
 									},
 									transition: {
-										duration: 0.2,
+										duration: 0.5,
 									},
 								}),
 							})}>
