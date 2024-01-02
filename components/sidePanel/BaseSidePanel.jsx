@@ -6,8 +6,17 @@ import { classes } from '../../utils';
 import BaseModal from '../modal/BaseModal';
 
 const BaseSidePanel = (props) => {
-	const { className, renderHeader, children, renderFooter, open, isModal, toggle, noDismiss } =
-		props;
+	const {
+		className,
+		renderHeader,
+		children,
+		renderFooter,
+		open,
+		isModal,
+		toggle,
+		noDismiss,
+		animation,
+	} = props;
 
 	const panelRef = useRef();
 
@@ -27,7 +36,9 @@ const BaseSidePanel = (props) => {
 				<div data-elem='footer' className={styles.footer}>
 					{renderFooter}
 				</div>
-			}>
+			}
+			animation={animation}
+		>
 			{children}
 		</BaseModal>
 	) : (
@@ -57,6 +68,7 @@ BaseSidePanel.propTypes = {
 	isModal: PropTypes.bool,
 	toggle: PropTypes.func,
 	noDismiss: PropTypes.bool,
+	animation: PropTypes.bool,
 };
 
 BaseSidePanel.defaultProps = {
@@ -67,6 +79,7 @@ BaseSidePanel.defaultProps = {
 	isModal: false,
 	toggle: () => {},
 	noDismiss: false,
+	animation: false,
 };
 
 export default BaseSidePanel;
