@@ -52,6 +52,10 @@
   border: 0.0625rem solid #dfe0e2;
   padding: 0.75rem 0.75rem 0.75rem 1rem;
   cursor: pointer;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 .root .header .select .placeholder {
   text-overflow: ellipsis;
@@ -62,6 +66,10 @@
 .root .header .select .icon {
   width: 1.5rem;
   height: 1.5rem;
+  transition: transform 0.5s;
+}
+.root .header .select .icon.open {
+  transform: rotate(180deg);
 }
 .root .header .select.feedback-error {
   border-color: var(--error);

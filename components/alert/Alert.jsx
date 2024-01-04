@@ -34,7 +34,7 @@ const ANIMATION = {
  * @returns {JSX.Element} - The rendered alert component.
  */
 const Alert = forwardRef((props, ref) => {
-	const { showIcon, border, shadow, position: defaultPosition, animation } = props;
+	const { showIcon, border, shadow, position: defaultPosition, animation, className } = props;
 
 	const [open, setOpen] = useState(false);
 	const [alertProps, setAlertProps] = useState({
@@ -153,7 +153,8 @@ const Alert = forwardRef((props, ref) => {
 						styles[type],
 						styles[`border-${border}`],
 						shadow ? styles.shadow : '',
-						styles[`position-${position}`]
+						styles[`position-${position}`],
+						className
 					),
 				})}
 				ref={scope}>
@@ -192,6 +193,7 @@ Alert.propTypes = {
 	shadow: PropTypes.bool,
 	position: PropTypes.oneOf(['bottom-right', 'bottom-center', 'top-right', 'top-center']),
 	animation: PropTypes.bool,
+	className: PropTypes.string,
 };
 
 Alert.defaultProps = {
@@ -200,6 +202,7 @@ Alert.defaultProps = {
 	shadow: true,
 	position: 'bottom-center',
 	animation: true,
+	className: '',
 };
 
 export default Alert;

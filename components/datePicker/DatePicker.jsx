@@ -10,7 +10,7 @@ import {
 import { useOutsideClickListener } from '../../hooks';
 import { classes } from '../../utils';
 import { Calender } from './calender';
-import { CalenderIcon, ChevronIcon, ClockIcon, CrossIcon } from '../icons';
+import { CalenderIcon, CaretIcon, ClockIcon, CrossIcon } from '../icons';
 import { Popper } from '../popper';
 import styles from './DatePicker.module.css';
 import {
@@ -237,9 +237,12 @@ const DatePicker = (props) => {
 								}}
 							/>
 						) : (
-							<ChevronIcon
-								className={classes(styles.icon, styles[theme])}
-								position={openDatePicker ? 'bottom' : 'top'}
+							<CaretIcon
+								className={classes(
+									styles.icon,
+									styles[theme],
+									openDatePicker ? styles.open : ''
+								)}
 							/>
 						)}
 					</div>

@@ -93,7 +93,6 @@ const BreadCrumbs = (props) => {
 						return <HomeIcon className={styles.icon} position='left' />;
 					}}
 				/>
-				{CrumbsDOM}
 			</div>
 		);
 	}
@@ -120,6 +119,8 @@ const BreadCrumbs = (props) => {
 					title={homeTitle}
 					onClick={onHomeClick}
 				/>
+				<BreadcrumbSeperator className={styles.seperator} />
+
 				{CrumbsDOM}
 			</div>
 		)
