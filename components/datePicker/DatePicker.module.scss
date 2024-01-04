@@ -93,7 +93,7 @@
 					fill: $grey3;
 				}
 				.placeholder {
-					font-weight: 400;
+					font-weight: 500;
 					font-size: 1rem;
 					color: $grey3;
 					user-select: none;
@@ -127,7 +127,7 @@
 						color: $white;
 					}
 					.placeholder {
-						font-weight: 400;
+						font-weight: 500;
 						font-size: 1rem;
 						user-select: none;
 					}
@@ -152,6 +152,7 @@
 			.icon {
 				width: 1.5rem;
 				height: 1.5rem;
+				transition: transform 0.5s;
 				&.light {
 					> path {
 						fill: $dark-grey;
@@ -162,6 +163,9 @@
 						fill: $white;
 					}
 				}
+				&.open {
+					transform: rotate(180deg);
+				}
 			}
 		}
 
@@ -170,9 +174,11 @@
 				border-color: $grey;
 				.placeholder {
 					color: $grey2;
+					font-weight: 500;
 				}
 				.value {
 					color: $grey2;
+					font-weight: 500;
 				}
 			}
 		}
@@ -182,10 +188,12 @@
 				border-color: $grey4;
 				.placeholder {
 					color: $grey;
+					font-weight: 500;
 				}
 				.value {
 					color: $grey;
 					padding: 0rem 0.3rem 0rem 0rem;
+					font-weight: 500;
 				}
 			}
 		}

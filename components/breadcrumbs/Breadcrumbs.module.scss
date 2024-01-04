@@ -29,7 +29,7 @@
 	.crumb-actions[data-elem='base-cell'] {
 		height: 2rem;
 		width: 2rem;
-		background-color: #71839b !important;
+		background-color: $mono-color1 !important;
 		> [data-elem='component1'] {
 			> svg {
 				margin-left: 0.125rem;
@@ -43,6 +43,13 @@
 		&.home {
 			width: fit-content;
 			border-radius: 4px;
+			background-color: $mono-color3 !important;
+			color: $black;
+			.icon {
+				width: 1.25rem;
+				height: 1.25rem;
+				fill: $black;
+			}
 		}
 	}
 
@@ -51,7 +58,7 @@
 		gap: 0.5rem;
 		padding: 0.5rem 0.5rem;
 		border-radius: 0.25rem;
-		background: var(--mono-colours-203, #d8dfe5);
+		background: $mono-color3;
 
 		.title {
 			color: #141920;
