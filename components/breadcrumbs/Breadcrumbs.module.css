@@ -30,7 +30,7 @@
 .root .crumb-actions[data-elem=base-cell] {
   height: 2rem;
   width: 2rem;
-  background-color: #71839b !important;
+  background-color: var(--mono-color1) !important;
 }
 .root .crumb-actions[data-elem=base-cell] > [data-elem=component1] > svg {
   margin-left: 0.125rem;
@@ -40,6 +40,18 @@
   height: 1.25rem;
   fill: var(--white);
 }
+.root .crumb-actions[data-elem=base-cell].home {
+  width: -moz-fit-content;
+  width: fit-content;
+  border-radius: 4px;
+  background-color: var(--mono-color3) !important;
+  color: var(--black);
+}
+.root .crumb-actions[data-elem=base-cell].home .icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: var(--black);
+}
 .root .crumb {
   display: flex;
   flex-direction: row;
@@ -48,7 +60,7 @@
   gap: 0.5rem;
   padding: 0.5rem 0.5rem;
   border-radius: 0.25rem;
-  background: var(--mono-colours-203, #d8dfe5);
+  background: var(--mono-color3);
 }
 .root .crumb .title {
   color: #141920;

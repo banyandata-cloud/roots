@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import mapBase from '@highcharts/map-collection/custom/world-highres3.topo.json';
 
 const MAP_THEME = {
@@ -138,7 +139,7 @@ export const mapOptions = (props) => {
 		tooltip: {
 			stickOnContact: true, // persistence of the tooltip on hover contact
 			useHTML: true, // use the html tags passed. use only svg tags if false
-			formatter: function () {
+			formatter() {
 				const tooltip = this.point.key;
 				if (!tooltip) {
 					return false; // hide empty tooltip if undefined

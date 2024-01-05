@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React, {
 	useMemo,
@@ -381,7 +382,11 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 						) : !hideIcon ? (
 							<CaretIcon
 								data-elem='icon'
-								className={classes(styles.icon, styles['drop-icon'])}
+								className={classes(
+									styles.icon,
+									styles['drop-icon'],
+									open ? styles.open : ''
+								)}
 							/>
 						) : null}
 					</div>
