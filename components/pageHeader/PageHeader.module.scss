@@ -27,6 +27,7 @@
 		gap: 0.75rem;
 		&.start-left {
 			@include flex(row, flex-start, center);
+			margin-left: unset;
 		}
 		.right {
 			@include flex(row, flex-start, center);
