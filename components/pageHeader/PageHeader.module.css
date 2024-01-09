@@ -7,6 +7,12 @@
   background-color: transparent;
   gap: 1rem;
 }
+.root.compact {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
 .root.dark-theme {
   color: var(--white);
 }
@@ -21,8 +27,8 @@
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
+  margin-left: auto;
   gap: 0.75rem;
-  width: 100%;
 }
 .root .contents.start-left {
   display: flex;
