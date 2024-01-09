@@ -1,9 +1,10 @@
 /* eslint-disable no-param-reassign */
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark, oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { Alert } from '../alert';
 import { classes } from '../../utils';
 import { CopyIcon } from '../icons';
 import styles from './CodeSnippet.module.css';
@@ -22,16 +23,19 @@ const CodeSnippet = (props) => {
 		parentKeyToSelect,
 	} = props;
 
-	const [copiedState, setCopiedState] = useState(false);
 	const [parentNode, setParentNode] = useState(null);
 
-	setTimeout(() => {
-		setCopiedState(false);
-	}, 2.0 * 1000);
+	const alertRef = useRef(Alert);
 
 	const onCopy = () => {
 		navigator.clipboard.writeText(code);
-		setCopiedState(true);
+		alertRef.current?.alert({
+			title: `The ${language?.toUpperCase()} snippet has been copied to the clipboard`,
+			type: 'info',
+			icon: (args) => {
+				return <CopyIcon {...args} />;
+			},
+		});
 	};
 
 	function findKeyPath(obj, targetKey, currentPath = '') {
@@ -139,12 +143,10 @@ const CodeSnippet = (props) => {
 								theme === 'dark' ? styles.dark : styles.light
 							)}
 						/>
-						<div className={copiedState ? styles.copied : styles.notCopied}>
-							{copiedState ? 'Copied' : ''}
-						</div>
 					</div>
 				)}
 			</div>
+			<Alert ref={alertRef} />
 		</ErrorBoundary>
 	);
 };

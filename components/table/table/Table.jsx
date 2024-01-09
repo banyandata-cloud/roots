@@ -28,7 +28,6 @@ const Table = (props) => {
 		activeData,
 		setActiveData,
 		customCells,
-		chipsData,
 		filtersData,
 		paginationData,
 		loading,
@@ -43,7 +42,7 @@ const Table = (props) => {
 		defaultActiveIndex,
 		custom,
 		tableTitleIcon,
-		tableTitleText
+		tableTitleText,
 	} = props;
 
 	const ref = useRef(null);
@@ -94,10 +93,9 @@ const Table = (props) => {
 	useEffect(() => {
 		const tableElem = ref.current;
 		if (tableElem && !loading) {
-			const totalAddons = [chipsData, filtersData].filter(Boolean).length;
-			tableElem.style.height = `calc(100% - ${totalAddons * 3}rem)`;
+			tableElem.style.height = 'calc(100% -  3rem)';
 		}
-	}, [chipsData, filtersData, loading]);
+	}, [filtersData, loading]);
 
 	// setting body and header min-width to allow horizontal sticky column beyond viewport width
 	useEffect(() => {

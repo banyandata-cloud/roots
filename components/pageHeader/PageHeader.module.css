@@ -35,6 +35,7 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  margin-left: unset;
 }
 .root .contents .right {
   display: flex;
