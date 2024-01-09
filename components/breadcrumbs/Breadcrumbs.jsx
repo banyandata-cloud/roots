@@ -87,7 +87,7 @@ const BreadCrumbs = (props) => {
 				<Button
 					size='auto'
 					radius='round'
-					className={classes(styles['crumb-actions'], styles.home)}
+					className={classes(styles['crumb-actions'], styles.home, styles.highlight)}
 					title={homeTitle}
 					leftComponent={() => {
 						return <HomeIcon className={styles.icon} position='left' />;

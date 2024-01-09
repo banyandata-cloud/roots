@@ -52,6 +52,15 @@
   height: 1.25rem;
   fill: var(--black);
 }
+.root .crumb-actions[data-elem=base-cell].home.highlight {
+  background-color: #71839b !important;
+  color: var(--white);
+}
+.root .crumb-actions[data-elem=base-cell].home.highlight .icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: var(--white);
+}
 .root .crumb {
   display: flex;
   flex-direction: row;

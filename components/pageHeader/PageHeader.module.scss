@@ -5,6 +5,9 @@
 	width: 100%;
 	background-color: transparent;
 	gap: 1rem;
+	&.compact {
+		@include flex(row, space-between, flex-start);
+	}
 	&.dark-theme {
 		color: $white;
 
@@ -20,8 +23,8 @@
 
 	.contents {
 		@include flex(row, flex-end, center);
+		margin-left: auto;
 		gap: 0.75rem;
-		width: 100%;
 		&.start-left {
 			@include flex(row, flex-start, center);
 		}

@@ -4,10 +4,23 @@ import { BreadCrumbs } from '../breadcrumbs';
 import { classes } from '../../utils';
 
 const PageHeader = (props) => {
-	const { theme, title, children, rightAction: RightAction, crumbsProps, startLeft } = props;
+	const {
+		theme,
+		title,
+		children,
+		rightAction: RightAction,
+		crumbsProps,
+		startLeft,
+		compact,
+	} = props;
 
 	return (
-		<div className={classes(styles.root, styles[`${theme}-theme`])}>
+		<div
+			className={classes(
+				styles.root,
+				compact ? styles.compact : '',
+				styles[`${theme}-theme`]
+			)}>
 			<div className={styles.breadcrumb}>
 				<BreadCrumbs
 					{...{
@@ -36,6 +49,7 @@ PageHeader.propTypes = {
 	crumbsProps: PropTypes.shape(BreadCrumbs.propTypes),
 	rightAction: PropTypes.node,
 	startLeft: PropTypes.bool,
+	compact: PropTypes.bool,
 };
 
 PageHeader.defaultProps = {
@@ -44,6 +58,7 @@ PageHeader.defaultProps = {
 	crumbsProps: {},
 	rightAction: null,
 	startLeft: false,
+	compact: false,
 };
 
 export default PageHeader;

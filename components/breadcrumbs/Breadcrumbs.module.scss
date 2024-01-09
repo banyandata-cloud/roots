@@ -50,6 +50,15 @@
 				height: 1.25rem;
 				fill: $black;
 			}
+			&.highlight {
+				background-color: #71839b !important;
+				color: $white;
+				.icon {
+					width: 1.25rem;
+					height: 1.25rem;
+					fill: $white;
+				}
+			}
 		}
 	}
 
