@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 /* eslint-disable max-len */
 import {
 	FloatingFocusManager,
@@ -41,6 +42,7 @@ const BaseModal = (props) => {
 		noDismiss,
 		hideCrossDismiss,
 		animation,
+		animationProperties,
 	} = props;
 
 	const { floating, context } = useFloating({
@@ -57,12 +59,12 @@ const BaseModal = (props) => {
 	const { props: bodyProps } = children ?? {};
 
 	return (
-		<Popper
-			open={open}
-			className={popperClassName}
-			transparent={false}
-			wrapperId='base-modal-popper'>
-			<AnimatePresence>
+		<AnimatePresence>
+			<Popper
+				open={open}
+				className={popperClassName}
+				transparent={false}
+				wrapperId='base-modal-popper'>
 				{open && (
 					<FloatingFocusManager context={context}>
 						<motion.div
@@ -70,18 +72,7 @@ const BaseModal = (props) => {
 								className: classes(styles.root, className),
 								ref: floating,
 								...(animation && {
-									initial: {
-										x: '100%',
-									},
-									animate: {
-										x: 0,
-									},
-									exit: {
-										x: '100%',
-									},
-									transition: {
-										duration: 0.2,
-									},
+									...animationProperties,
 								}),
 							})}>
 							{renderHeader && (
@@ -128,8 +119,8 @@ const BaseModal = (props) => {
 						</motion.div>
 					</FloatingFocusManager>
 				)}
-			</AnimatePresence>
-		</Popper>
+			</Popper>
+		</AnimatePresence>
 	);
 };
 
@@ -142,6 +133,7 @@ BaseModal.propTypes = {
 	noDismiss: PropTypes.bool,
 	hideCrossDismiss: PropTypes.bool,
 	animation: PropTypes.bool,
+	animationProperties: PropTypes.object,
 };
 
 BaseModal.defaultProps = {
@@ -153,6 +145,21 @@ BaseModal.defaultProps = {
 	noDismiss: false,
 	hideCrossDismiss: false,
 	animation: false,
+	animationProperties: {
+		initial: {
+			x: '100%',
+		},
+		animate: {
+			x: '-50%',
+			y: '-50%',
+		},
+		exit: {
+			x: '100%',
+		},
+		transition: {
+			duration: 0.25,
+		},
+	},
 };
 
 export default BaseModal;
