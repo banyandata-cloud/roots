@@ -68,15 +68,12 @@ const Accordion = (props) => {
 					<motion.div
 						key={title + description}
 						initial={{
-							maxHeight: 0,
 							opacity: 0,
 						}}
 						animate={{
-							maxHeight: 500,
 							opacity: 1,
 						}}
 						exit={{
-							maxHeight: 0,
 							opacity: 0,
 						}}
 						transition={{
