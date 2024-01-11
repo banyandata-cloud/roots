@@ -19,6 +19,7 @@ const BreadCrumbs = (props) => {
 		onBackClick,
 		onHomeClick,
 		homeTitle,
+		className,
 	} = props;
 
 	const [expand, setExpand] = useState(false);
@@ -99,7 +100,7 @@ const BreadCrumbs = (props) => {
 
 	return (
 		crumbs?.length > 1 && (
-			<div className={classes(styles.root, styles[`theme-${theme}`])}>
+			<div className={classes(styles.root, styles[`theme-${theme}`], className)}>
 				<Button
 					size='auto'
 					radius='round'
@@ -120,7 +121,6 @@ const BreadCrumbs = (props) => {
 					onClick={onHomeClick}
 				/>
 				<BreadcrumbSeperator className={styles.seperator} />
-
 				{CrumbsDOM}
 			</div>
 		)
@@ -142,6 +142,7 @@ BreadCrumbs.propTypes = {
 	itemsAfterCollapse: PropTypes.number,
 	linkComponent: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	homeTitle: PropTypes.string,
+	className: PropTypes.string,
 };
 
 BreadCrumbs.defaultProps = {
@@ -152,6 +153,7 @@ BreadCrumbs.defaultProps = {
 	itemsAfterCollapse: 1,
 	linkComponent: 'a',
 	homeTitle: '',
+	className: '',
 };
 
 export default BreadCrumbs;

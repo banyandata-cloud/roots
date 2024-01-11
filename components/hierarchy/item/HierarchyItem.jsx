@@ -9,6 +9,7 @@ import styles from './HierarchyItem.module.css';
 import { ErrorBoundaryWrapper } from '../../errorBoundary';
 
 const HierarchyItem = (props) => {
+	// eslint-disable-next-line object-curly-newline
 	const { defaultOpen, iconPlacement, title, children, onClick, onDoubleClick, active, custom } =
 		props;
 

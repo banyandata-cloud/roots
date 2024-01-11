@@ -10,6 +10,12 @@
 		padding: 0.5rem 1rem;
 		cursor: pointer;
 
+		& > [data-elem='component1'] {
+			.icon {
+				transition: all 0.3s ease-in-out;
+			}
+		}
+
 		& > [data-elem='component1'],
 		& > [data-elem='component3'] {
 			@include flex;
@@ -42,7 +48,6 @@
 	}
 
 	& > .body {
-		display: none;
 		padding: 0.5rem 2.5rem;
 	}
 

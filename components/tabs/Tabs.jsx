@@ -32,6 +32,7 @@ const Tabs = (props) => {
 				if (dropdown) {
 					return (
 						<div
+							key={id}
 							className={classes(
 								styles.main,
 								selectedTab === id ? styles.active : ''
