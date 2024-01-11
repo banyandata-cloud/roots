@@ -12,6 +12,7 @@ const PageHeader = (props) => {
 		crumbsProps,
 		startLeft,
 		compact,
+		className,
 	} = props;
 
 	return (
@@ -19,7 +20,8 @@ const PageHeader = (props) => {
 			className={classes(
 				styles.root,
 				compact ? styles.compact : '',
-				styles[`${theme}-theme`]
+				styles[`${theme}-theme`],
+				className
 			)}>
 			<div className={styles.breadcrumb}>
 				<BreadCrumbs
@@ -50,6 +52,7 @@ PageHeader.propTypes = {
 	rightAction: PropTypes.node,
 	startLeft: PropTypes.bool,
 	compact: PropTypes.bool,
+	className: PropTypes.string,
 };
 
 PageHeader.defaultProps = {
@@ -59,6 +62,7 @@ PageHeader.defaultProps = {
 	rightAction: null,
 	startLeft: false,
 	compact: false,
+	className: '',
 };
 
 export default PageHeader;
