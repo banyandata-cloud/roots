@@ -9,8 +9,8 @@
 
 	[data-elem='breadcrumb-seperator-icon'] {
 		@include flex(row, center, center);
-		stroke: #141920;
-		fill: #141920;
+		stroke: $text-colour-2;
+		fill: $text-colour-2;
 		width: 1.5rem;
 		height: 1.5rem;
 	}
@@ -51,7 +51,7 @@
 				fill: $black;
 			}
 			&.highlight {
-				background-color: #71839b !important;
+				background-color: $mono-color1 !important;
 				color: $white;
 				.icon {
 					width: 1.25rem;
@@ -70,11 +70,11 @@
 		background: $mono-color3;
 
 		.title {
-			color: #141920;
+			color: $text-colour-2;
 		}
 
 		.value {
-			color: #141920;
+			color: $text-colour-2;
 		}
 
 		.iconWrapper {
@@ -82,7 +82,7 @@
 			width: 1rem;
 			height: 1rem;
 			svg {
-				fill: #0f62fe;
+				fill: $highlight;
 			}
 		}
 	}
@@ -92,24 +92,24 @@
 			font-weight: 500;
 
 			&.active {
-				background-color: #71839b;
+				background-color: $mono-color1;
 				.title {
-					color: #fff;
+					color: $white;
 				}
 
 				.value {
-					color: #fff;
+					color: $white;
 				}
 				.iconWrapper {
 					svg {
-						fill: #fff;
+						fill: $white;
 					}
 				}
 			}
 
 			&:hover:not(.active) {
 				cursor: pointer;
-				background: var(--light-colours-201, #efeff0);
+				background: var(--light-colours-201, $light-color1);
 			}
 		}
 	}

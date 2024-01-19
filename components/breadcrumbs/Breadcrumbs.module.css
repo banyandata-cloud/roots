@@ -13,8 +13,8 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  stroke: #141920;
-  fill: #141920;
+  stroke: var(--text-colour-2);
+  fill: var(--text-colour-2);
   width: 1.5rem;
   height: 1.5rem;
 }
@@ -53,7 +53,7 @@
   fill: var(--black);
 }
 .root .crumb-actions[data-elem=base-cell].home.highlight {
-  background-color: #71839b !important;
+  background-color: var(--mono-color1) !important;
   color: var(--white);
 }
 .root .crumb-actions[data-elem=base-cell].home.highlight .icon {
@@ -72,10 +72,10 @@
   background: var(--mono-color3);
 }
 .root .crumb .title {
-  color: #141920;
+  color: var(--text-colour-2);
 }
 .root .crumb .value {
-  color: #141920;
+  color: var(--text-colour-2);
 }
 .root .crumb .iconWrapper {
   display: flex;
@@ -86,26 +86,26 @@
   height: 1rem;
 }
 .root .crumb .iconWrapper svg {
-  fill: #0f62fe;
+  fill: var(--highlight);
 }
 .root.theme-light .crumb {
   font-weight: 500;
 }
 .root.theme-light .crumb.active {
-  background-color: #71839b;
+  background-color: var(--mono-color1);
 }
 .root.theme-light .crumb.active .title {
-  color: #fff;
+  color: var(--white);
 }
 .root.theme-light .crumb.active .value {
-  color: #fff;
+  color: var(--white);
 }
 .root.theme-light .crumb.active .iconWrapper svg {
-  fill: #fff;
+  fill: var(--white);
 }
 .root.theme-light .crumb:hover:not(.active) {
   cursor: pointer;
-  background: var(--light-colours-201, #efeff0);
+  background: var(--light-colours-201, var(--light-color1));
 }
 .root.theme-dark .crumb {
   color: var(--grey2);

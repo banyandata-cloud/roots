@@ -21,13 +21,13 @@
   font-size: 1rem;
 }
 .root[data-elem=base-cell] > [data-elem*=component].light {
-  background: #ffffff;
+  background: var(--white);
 }
 .root[data-elem=base-cell] > [data-elem*=component].light .cell-text {
   color: #1a2028;
 }
 .root[data-elem=base-cell] > [data-elem*=component].dark {
-  background: #ffffff;
+  background: var(--white);
 }
 .root[data-elem=base-cell] > [data-elem*=component].dark .cell-text {
   color: var(--grey);
@@ -37,13 +37,13 @@
   font-size: 0.875rem;
 }
 .root[data-elem=base-cell].header-cell.light {
-  background: #f7f7f8;
+  background: var(--light-color2);
 }
 .root[data-elem=base-cell].header-cell.light .cell-text {
   color: #575f6e;
 }
 .root[data-elem=base-cell].header-cell.dark {
-  background: #f7f7f8;
+  background: var(--light-color2);
 }
 .root[data-elem=base-cell].header-cell.dark .cell-text {
   color: var(--grey);
@@ -94,13 +94,13 @@
   font-size: 0.75rem;
 }
 .root[data-elem=base-cell].body-cell.light {
-  background: #ffffff;
+  background: var(--white);
 }
 .root[data-elem=base-cell].body-cell.light .cell-text {
   color: #1a2028;
 }
 .root[data-elem=base-cell].body-cell.dark {
-  background: #ffffff;
+  background: var(--white);
 }
 .root[data-elem=base-cell].body-cell.dark .cell-text {
   color: var(--grey);
