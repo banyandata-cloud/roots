@@ -3,5 +3,5 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
-  color: #f7f7f8;
+  color: var(--light-color2);
 }/*# sourceMappingURL=TableHeader.module.css.map */
