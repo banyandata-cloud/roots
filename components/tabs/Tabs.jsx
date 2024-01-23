@@ -29,32 +29,48 @@ const Tabs = (props) => {
 				} = tab;
 
 				if (dropdownItems) {
+					const selected = !!dropdownItems?.find((item) => {
+						return item.id === selectedTab;
+					});
+
 					return (
-						<div
+						<Button
+							size='auto'
+							color='default'
+							radius='none'
 							key={id}
-							className={classes(
-								styles.main,
-								selectedTab === id ? styles.active : ''
-							)}>
-							<Dropdown
-								className={styles.dropdown}
-								onChange={(event, value) => {
-									onTabClick(value);
-								}}
-								placeholder={title}
-								value={selectedTab ?? dropdownItems[0].id}>
-								{dropdownItems.map((option) => {
-									return (
-										<DropdownItem
-											className={styles.item}
-											key={option.id}
-											title={option.title}
-											value={option.id}
-										/>
-									);
-								})}
-							</Dropdown>
-						</div>
+							variant='text'
+							disabled={disabled}
+							className={classes(styles.main, selected ? styles.active : '')}
+							leftComponent={
+								LeftIcon &&
+								(() => {
+									return <LeftIcon className={styles.icon} />;
+								})
+							}
+							rightComponent={() => {
+								return (
+									<Dropdown
+										className={styles.dropdown}
+										onChange={(event, value) => {
+											onTabClick(value);
+										}}
+										placeholder={title}
+										value={selectedTab ?? dropdownItems[0].id}>
+										{dropdownItems.map((option) => {
+											return (
+												<DropdownItem
+													className={styles.item}
+													key={option.id}
+													title={option.title}
+													value={option.id}
+												/>
+											);
+										})}
+									</Dropdown>
+								);
+							}}
+						/>
 					);
 				}
 
