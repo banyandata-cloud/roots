@@ -25,27 +25,24 @@ const Tabs = (props) => {
 					leftIcon: LeftIcon,
 					rightIcon: RightIcon,
 					disabled,
-					dropdown,
 					dropdownItems,
 				} = tab;
 
-				if (dropdown) {
+				if (dropdownItems) {
 					return (
 						<div
 							key={id}
 							className={classes(
 								styles.main,
 								selectedTab === id ? styles.active : ''
-							)}
-							onClick={() => {
-								onTabClick(id);
-							}}>
+							)}>
 							<Dropdown
 								className={styles.dropdown}
-								onChange={() => {
-									setSelectedTab(id);
+								onChange={(event, value) => {
+									onTabClick(value);
 								}}
-								placeholder={title}>
+								placeholder={title}
+								value={selectedTab ?? dropdownItems[0].id}>
 								{dropdownItems.map((option) => {
 									return (
 										<DropdownItem
