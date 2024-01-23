@@ -28,6 +28,19 @@ const Tabs = (props) => {
 					dropdownItems,
 				} = tab;
 
+				const buttonProps = {
+					size: 'auto',
+					color: 'default',
+					radius: 'none',
+					variant: 'text',
+					disabled,
+					leftComponent:
+						LeftIcon &&
+						(() => {
+							return <LeftIcon className={styles.icon} />;
+						}),
+				};
+
 				if (dropdownItems) {
 					const selected = !!dropdownItems?.find((item) => {
 						return item.id === selectedTab;
@@ -35,19 +48,9 @@ const Tabs = (props) => {
 
 					return (
 						<Button
-							size='auto'
-							color='default'
-							radius='none'
 							key={id}
-							variant='text'
-							disabled={disabled}
+							{...buttonProps}
 							className={classes(styles.main, selected ? styles.active : '')}
-							leftComponent={
-								LeftIcon &&
-								(() => {
-									return <LeftIcon className={styles.icon} />;
-								})
-							}
 							rightComponent={() => {
 								return (
 									<Dropdown
@@ -76,23 +79,13 @@ const Tabs = (props) => {
 
 				return (
 					<Button
-						size='auto'
-						color='default'
-						radius='none'
 						key={id}
-						variant='text'
+						{...buttonProps}
 						onClick={() => {
 							onTabClick(id);
 						}}
-						disabled={disabled}
 						title={title}
 						className={classes(styles.tab, selectedTab === id ? styles.active : '')}
-						leftComponent={
-							LeftIcon &&
-							(() => {
-								return <LeftIcon className={styles.icon} />;
-							})
-						}
 						rightComponent={
 							RightIcon &&
 							(() => {
