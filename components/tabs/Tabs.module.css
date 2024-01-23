@@ -5,6 +5,9 @@
   align-items: center;
   font-size: 14px;
 }
+.root .main {
+  padding: 0 !important;
+}
 .root .main .dropdown {
   display: flex;
   justify-content: center;
@@ -17,7 +20,7 @@
 .root .main .dropdown > [data-elem=header] > [data-elem=select] {
   background-color: transparent;
   border: none;
-  border-bottom: 1px rgba(0, 0, 0, 0.176) solid;
+  border-bottom: 1px var(--grey4) solid;
   padding: 9px;
   width: auto;
   border-radius: 0px;
