@@ -144,7 +144,7 @@ BaseModal.defaultProps = {
 	toggle: () => {},
 	noDismiss: false,
 	hideCrossDismiss: false,
-	animation: true,
+	animation: false,
 	animationProperties: {
 		initial: {
 			y: '100%',
