@@ -188,7 +188,7 @@
 				padding: 0rem;
 				height: 100%;
 				border-radius: 0.25rem;
-				border: 0.0313rem solid #b7cadb;
+				border: 0.0313rem solid $mono-color2;
 				box-shadow: 0.1875rem 0.1875rem 0.25rem 0rem rgba(194, 194, 194, 0.12) inset;
 
 				.inputbox {
@@ -234,14 +234,14 @@
 
 				.button {
 					border-radius: 0rem 0.25rem 0.25rem 0rem;
-					background-color: #b7cadb;
+					background-color: $mono-color2;
 					padding: 0.75rem 0.5rem;
 					height: 100%;
 
 					.icon {
 						width: 1.5rem;
 						height: 1.5rem;
-						fill: #71839b;
+						fill: $mono-color1;
 						flex-shrink: 0;
 					}
 				}
