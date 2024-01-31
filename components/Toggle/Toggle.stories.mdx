@@ -17,7 +17,7 @@ export const Template = (args) => {
 export const ControlledTemplate = (args) => {
 	return (
 		<ThemedContainer {...args}>
-			<Toggle {...args} value={args.defaultValue} />
+			<Toggle {...args} value={args.defaultSelected} />
 		</ThemedContainer>
 	);
 };
@@ -167,7 +167,7 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					leftComponent: null,
 				},
 			],
-			defaultValue: 'oracle',
+			defaultSelected: 'oracle',
 			theme: 'light',
 		}}>
 		{Template.bind({})}
@@ -222,7 +222,7 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					leftComponent: null,
 				},
 			],
-			defaultValue: 'oracle',
+			defaultSelected: 'oracle',
 			theme: 'light',
 		}}>
 		{ControlledTemplate.bind({})}
@@ -276,17 +276,15 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					leftComponent: null,
 				},
 			];
-			const defaultValue = ['oracle', 'mysql', 'pgsql'];
-			const [selectedToggle, setSelectedToggle] = useState(defaultValue);
+			const defaultSelected = ['oracle', 'mysql', 'pgsql'];
+			const [selectedToggle, setSelectedToggle] = useState(defaultSelected);
 			return (
 				<ThemedContainer>
 					<Toggle
 						options={options}
 						theme='light'
-						defaultValue={defaultValue}
+						defaultSelected={defaultSelected}
 						multi
-						value={selectedToggle}
-						onChange={setSelectedToggle}
 					/>
 				</ThemedContainer>
 			);
@@ -428,7 +426,7 @@ This key contains a list of all Options to be selected in Toggle Component.
   ] />
 ```
 
-**`defaultValue`**
+**`defaultSelected`**
 
 This key hold the default selected value in Uncontrolled Component.
 
@@ -444,7 +442,7 @@ This key hold the default selected value in Uncontrolled Component.
 </table>
 
 ```jsx
-<Toggle defaultValue='Fourth' />
+<Toggle defaultSelected='Fourth' />
 ```
 
 **`className`**
