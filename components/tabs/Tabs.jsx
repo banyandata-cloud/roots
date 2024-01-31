@@ -1,18 +1,31 @@
 /* eslint-disable react/no-array-index-key */
 import React, { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
+import { CaretIcon } from '../icons';
 import { Skeleton } from './Skeleton';
 import styles from './Tabs.module.css';
 
 const Tabs = (props) => {
-	const { tabs, className, loading, fallback, selectedTab } = props;
-	const [activeTab, setActiveTab] = useState(selectedTab || 0);
+	const { tabs, className, loading, fallback, selectedTab, setSelectedTab, defaultSelected } =
+		props;
+
 	const [sliderLeft, setSliderLeft] = useState(0);
 	const [sliderWidth, setSliderWidth] = useState(0);
 	const [dropdownOpen, setDropdownOpen] = useState(false);
 	const [selectedDropdownValue, setSelectedDropdownValue] = useState(null);
-
 	const sliderRef = useRef(null);
+
+	const getDefaultSelectedIndex = () => {
+		if (defaultSelected) {
+			const index = tabs.findIndex((tab) => {
+				return tab.id === defaultSelected;
+			});
+			return index !== -1 ? index : 0;
+		}
+		return 0;
+	};
+
+	const [activeTab, setActiveTab] = useState(selectedTab || getDefaultSelectedIndex());
 
 	const updateSliderPosition = () => {
 		const activeTabElement = sliderRef.current;
@@ -35,6 +48,7 @@ const Tabs = (props) => {
 			if (tab.dropdown) {
 				setSelectedDropdownValue(null);
 			}
+			setSelectedTab(tab.id);
 		}
 	};
 
@@ -90,6 +104,12 @@ const Tabs = (props) => {
 										}}>
 										{title}
 									</div>
+									<CaretIcon
+										className={`${styles.icon} ${
+											dropdownOpen ? styles.rotateCaret : ''
+										}`}
+									/>
+
 									{dropdownOpen && index === activeTab && (
 										<div className={styles['dropdown-options']}>
 											{dropdownItems.map((option) => {
@@ -152,6 +172,7 @@ Tabs.propTypes = {
 	selectedTab: PropTypes.number,
 	loading: PropTypes.bool,
 	fallback: PropTypes.bool,
+	defaultSelected: PropTypes.string,
 };
 
 Tabs.defaultProps = {
@@ -160,6 +181,7 @@ Tabs.defaultProps = {
 	selectedTab: null,
 	loading: false,
 	fallback: false,
+	defaultSelected: '',
 };
 
 export default Tabs;
