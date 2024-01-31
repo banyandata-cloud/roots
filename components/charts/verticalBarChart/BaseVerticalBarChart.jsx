@@ -141,7 +141,7 @@ const BaseVerticalBarChart = (props) => {
 			show: true,
 		},
 		itemStyle: {
-			borderRadius: [0, 2, 2, 0],
+			borderRadius: [0, 0, 0, 0],
 		},
 		name: seriesData?.metaData?.keyData?.x1 ?? '',
 		data: Object.keys(seriesData?.chartData ?? {}).map((key) => {
