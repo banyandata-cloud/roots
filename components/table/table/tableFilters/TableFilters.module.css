@@ -57,26 +57,44 @@
 .root[data-elem=base-cell] .right {
   height: 100%;
 }
-.root[data-elem=base-cell] > [data-elem=component1] .left {
+.root[data-elem=base-cell] > [data-elem=component1] {
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.root[data-elem=base-cell] > [data-elem=component1] > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3rem;
+}
+.root[data-elem=base-cell] > [data-elem=component1] > div > svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.root[data-elem=base-cell] > [data-elem=component2] .left {
   gap: 1rem;
   background: var(--grey8);
   border: 1px solid var(--grey4);
   color: var(--black);
 }
-.root[data-elem=base-cell] > [data-elem=component1] .left [data-elem=left] {
+.root[data-elem=base-cell] > [data-elem=component2] .left [data-elem=left] {
   gap: 1rem;
 }
-.root[data-elem=base-cell] > [data-elem=component1] .left .icon {
+.root[data-elem=base-cell] > [data-elem=component2] .left .icon {
   fill: var(--black);
 }
-.root[data-elem=base-cell] > [data-elem=component1] .left .filter-value {
+.root[data-elem=base-cell] > [data-elem=component2] .left .filter-value {
   color: var(--white);
   background: var(--highlight);
   padding: 0.125rem 0.5rem;
   border-radius: 50%;
   font-size: 0.813rem;
 }
-.root[data-elem=base-cell] > [data-elem=component2] {
+.root[data-elem=base-cell] > [data-elem=component3] {
   gap: 0.5rem;
   height: 100%;
 }/*# sourceMappingURL=TableFilters.module.css.map */

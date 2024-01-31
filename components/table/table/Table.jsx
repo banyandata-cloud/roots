@@ -28,7 +28,6 @@ const Table = (props) => {
 		activeData,
 		setActiveData,
 		customCells,
-		chipsData,
 		filtersData,
 		paginationData,
 		loading,
@@ -42,6 +41,8 @@ const Table = (props) => {
 		onAdvancedFilterClick,
 		defaultActiveIndex,
 		custom,
+		tableTitleIcon,
+		tableTitleText,
 	} = props;
 
 	const ref = useRef(null);
@@ -92,10 +93,9 @@ const Table = (props) => {
 	useEffect(() => {
 		const tableElem = ref.current;
 		if (tableElem && !loading) {
-			const totalAddons = [chipsData, filtersData].filter(Boolean).length;
-			tableElem.style.height = `calc(100% - ${totalAddons * 3}rem)`;
+			tableElem.style.height = 'calc(100% -  3rem)';
 		}
-	}, [chipsData, filtersData, loading]);
+	}, [filtersData, loading]);
 
 	// setting body and header min-width to allow horizontal sticky column beyond viewport width
 	useEffect(() => {
@@ -132,15 +132,6 @@ const Table = (props) => {
 				);
 			}}>
 			<div className={classes(styles.root, className)}>
-				{/* {chipsData != null &&
-					(chipsData?.chips?.length > 0 || chipsData?.showBack != null) && (
-						<TableChips
-							className={styles.chips}
-							{...chipsData}
-							loading={loading}
-							theme={theme}
-						/>
-					)} */}
 				{!Object.keys(disabledFilterOptions).every((key) => {
 					return disabledFilterOptions[key] === true;
 				}) && (
@@ -155,6 +146,8 @@ const Table = (props) => {
 						onAdvancedFilterClick={onAdvancedFilterClick}
 						loading={loading}
 						theme={theme}
+						tableTitleIcon={tableTitleIcon}
+						tableTitleText={tableTitleText}
 					/>
 				)}
 				<BaseTable

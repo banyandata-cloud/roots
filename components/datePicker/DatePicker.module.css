@@ -21,6 +21,9 @@
   justify-content: flex-start;
   align-items: center;
 }
+.root .custom-picker[data-elem=base-cell].highlight {
+  background-color: var(--mono-color3) !important;
+}
 .root .custom-picker[data-elem=base-cell] > [data-elem=component1] {
   flex: 0 0 auto;
 }
@@ -101,7 +104,7 @@
   fill: var(--grey3);
 }
 .root .date-picker .container.disabled .placeholder {
-  font-weight: 400;
+  font-weight: 500;
   font-size: 1rem;
   color: var(--grey3);
   -webkit-user-select: none;
@@ -142,7 +145,7 @@
   color: var(--white);
 }
 .root .date-picker .container .left > div .placeholder {
-  font-weight: 400;
+  font-weight: 500;
   font-size: 1rem;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -165,6 +168,7 @@
 .root .date-picker .container .icon {
   width: 1.5rem;
   height: 1.5rem;
+  transition: transform 0.5s;
 }
 .root .date-picker .container .icon.light > path {
   fill: var(--dark-grey);
@@ -172,24 +176,71 @@
 .root .date-picker .container .icon.dark > path {
   fill: var(--white);
 }
+.root .date-picker .container .icon.open {
+  transform: rotate(180deg);
+}
 .root .date-picker.dark .container {
   border-color: var(--grey);
 }
 .root .date-picker.dark .container .placeholder {
   color: var(--grey2);
+  font-weight: 500;
 }
 .root .date-picker.dark .container .value {
   color: var(--grey2);
+  font-weight: 500;
+}
+.root .date-picker.dark .container.highlight {
+  background-color: var(--mono-color1);
+}
+.root .date-picker.dark .container.highlight .value {
+  color: white;
+}
+.root .date-picker.dark .container.highlight .icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  transition: transform 0.5s;
+}
+.root .date-picker.dark .container.highlight .icon.light > path {
+  fill: var(--white);
+}
+.root .date-picker.dark .container.highlight .icon.dark > path {
+  fill: var(--white);
+}
+.root .date-picker.dark .container.highlight .icon.open {
+  transform: rotate(180deg);
 }
 .root .date-picker.light .container {
   border-color: var(--grey4);
 }
 .root .date-picker.light .container .placeholder {
   color: var(--grey);
+  font-weight: 500;
 }
 .root .date-picker.light .container .value {
   color: var(--grey);
   padding: 0rem 0.3rem 0rem 0rem;
+  font-weight: 500;
+}
+.root .date-picker.light .container.highlight {
+  background-color: var(--mono-color1);
+}
+.root .date-picker.light .container.highlight .value {
+  color: white;
+}
+.root .date-picker.light .container.highlight .icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  transition: transform 0.5s;
+}
+.root .date-picker.light .container.highlight .icon.light > path {
+  fill: var(--white);
+}
+.root .date-picker.light .container.highlight .icon.dark > path {
+  fill: var(--white);
+}
+.root .date-picker.light .container.highlight .icon.open {
+  transform: rotate(180deg);
 }
 .root .date-picker .error-text {
   font-weight: 400;

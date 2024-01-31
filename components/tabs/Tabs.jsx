@@ -25,60 +25,67 @@ const Tabs = (props) => {
 					leftIcon: LeftIcon,
 					rightIcon: RightIcon,
 					disabled,
-					dropdown,
 					dropdownItems,
 				} = tab;
 
-				if (dropdown) {
+				const buttonProps = {
+					size: 'auto',
+					color: 'default',
+					radius: 'none',
+					variant: 'text',
+					disabled,
+					leftComponent:
+						LeftIcon &&
+						(() => {
+							return <LeftIcon className={styles.icon} />;
+						}),
+				};
+
+				if (dropdownItems) {
+					const selected = !!dropdownItems?.find((item) => {
+						return item.id === selectedTab;
+					});
+
 					return (
-						<div
-							className={classes(
-								styles.main,
-								selectedTab === id ? styles.active : ''
-							)}
-							onClick={() => {
-								onTabClick(id);
-							}}>
-							<Dropdown
-								className={styles.dropdown}
-								onChange={() => {
-									setSelectedTab(id);
-								}}
-								placeholder={title}>
-								{dropdownItems.map((option) => {
-									return (
-										<DropdownItem
-											className={styles.item}
-											key={option.id}
-											title={option.title}
-											value={option.id}
-										/>
-									);
-								})}
-							</Dropdown>
-						</div>
+						<Button
+							key={id}
+							{...buttonProps}
+							className={classes(styles.main, selected ? styles.active : '')}
+							rightComponent={() => {
+								return (
+									<Dropdown
+										className={styles.dropdown}
+										onChange={(event, value) => {
+											onTabClick(value);
+										}}
+										placeholder={title}
+										value={selectedTab ?? dropdownItems[0].id}>
+										{dropdownItems.map((option) => {
+											return (
+												<DropdownItem
+													className={styles.item}
+													key={option.id}
+													title={option.title}
+													value={option.id}
+												/>
+											);
+										})}
+									</Dropdown>
+								);
+							}}
+						/>
 					);
 				}
 
 				return (
 					<Button
-						size='auto'
-						color='default'
-						radius='none'
 						key={id}
-						variant='text'
+						{...buttonProps}
 						onClick={() => {
 							onTabClick(id);
 						}}
-						disabled={disabled}
 						title={title}
 						className={classes(styles.tab, selectedTab === id ? styles.active : '')}
-						leftComponent={
-							LeftIcon &&
-							(() => {
-								return <LeftIcon className={styles.icon} />;
-							})
-						}
 						rightComponent={
 							RightIcon &&
 							(() => {

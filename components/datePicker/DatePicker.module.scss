@@ -15,6 +15,9 @@
 		height: auto;
 		padding: 0.75rem 1rem;
 		@include flex(row, flex-start, center);
+		&.highlight {
+			background-color: $mono-color3 !important;
+		}
 		> [data-elem='component1'] {
 			flex: 0 0 auto;
 			.icon {
@@ -93,7 +96,7 @@
 					fill: $grey3;
 				}
 				.placeholder {
-					font-weight: 400;
+					font-weight: 500;
 					font-size: 1rem;
 					color: $grey3;
 					user-select: none;
@@ -127,7 +130,7 @@
 						color: $white;
 					}
 					.placeholder {
-						font-weight: 400;
+						font-weight: 500;
 						font-size: 1rem;
 						user-select: none;
 					}
@@ -152,6 +155,7 @@
 			.icon {
 				width: 1.5rem;
 				height: 1.5rem;
+				transition: transform 0.5s;
 				&.light {
 					> path {
 						fill: $dark-grey;
@@ -162,6 +166,9 @@
 						fill: $white;
 					}
 				}
+				&.open {
+					transform: rotate(180deg);
+				}
 			}
 		}
 
@@ -170,9 +177,35 @@
 				border-color: $grey;
 				.placeholder {
 					color: $grey2;
+					font-weight: 500;
 				}
 				.value {
 					color: $grey2;
+					font-weight: 500;
+				}
+				&.highlight {
+					background-color: $mono-color1;
+					.value {
+						color: white;
+					}
+					.icon {
+						width: 1.5rem;
+						height: 1.5rem;
+						transition: transform 0.5s;
+						&.light {
+							> path {
+								fill: $white;
+							}
+						}
+						&.dark {
+							> path {
+								fill: $white;
+							}
+						}
+						&.open {
+							transform: rotate(180deg);
+						}
+					}
 				}
 			}
 		}
@@ -182,10 +215,36 @@
 				border-color: $grey4;
 				.placeholder {
 					color: $grey;
+					font-weight: 500;
 				}
 				.value {
 					color: $grey;
 					padding: 0rem 0.3rem 0rem 0rem;
+					font-weight: 500;
+				}
+				&.highlight {
+					background-color: $mono-color1;
+					.value {
+						color: white;
+					}
+					.icon {
+						width: 1.5rem;
+						height: 1.5rem;
+						transition: transform 0.5s;
+						&.light {
+							> path {
+								fill: $white;
+							}
+						}
+						&.dark {
+							> path {
+								fill: $white;
+							}
+						}
+						&.open {
+							transform: rotate(180deg);
+						}
+					}
 				}
 			}
 		}

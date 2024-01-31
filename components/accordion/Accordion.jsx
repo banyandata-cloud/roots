@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { useRef, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import { classes } from '../../utils/utils';
 import { Button } from '../buttons';
 import { BaseCell } from '../cell';
@@ -38,7 +39,7 @@ const Accordion = (props) => {
 
 	return (
 		<div
-			className={classes(styles.root, isOpen ? styles.open : '',)}
+			className={classes(styles.root, isOpen ? styles.open : '', className)}
 			data-state-open={isOpen}>
 			<BaseCell
 				flexible
@@ -62,22 +63,41 @@ const Accordion = (props) => {
 				component2={<span className={styles.title}>{title}</span>}
 				component3={RightComponent && <RightComponent className={styles.icon} />}
 			/>
-			<div data-elem='body' className={styles.body}>
-				{description && <p>{description}</p>}
-				{children}
-				{onExpand && (
-					<Button
-						size='auto'
-						variant='text'
-						onClick={() => {
-							onExpand();
+			<AnimatePresence>
+				{isOpen && (
+					<motion.div
+						key={title + description}
+						initial={{
+							opacity: 0,
 						}}
-						rightComponent={() => {
-							return <ExpandArrowAltIcon className={styles.expand} />;
+						animate={{
+							opacity: 1,
 						}}
-					/>
+						exit={{
+							opacity: 0,
+						}}
+						transition={{
+							duration: 0.2,
+						}}
+						data-elem='body'
+						className={styles.body}>
+						{description && <p>{description}</p>}
+						{children}
+						{onExpand && (
+							<Button
+								size='auto'
+								variant='text'
+								onClick={() => {
+									onExpand();
+								}}
+								rightComponent={() => {
+									return <ExpandArrowAltIcon className={styles.expand} />;
+								}}
+							/>
+						)}
+					</motion.div>
 				)}
-			</div>
+			</AnimatePresence>
 		</div>
 	);
 };

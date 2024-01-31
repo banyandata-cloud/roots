@@ -1,25 +1,30 @@
-.slider-container .slider {
-  width: 100%;
-  height: 0.5rem;
+.slider-container {
+  position: relative;
 }
-.slider-container .slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-          appearance: none;
-  width: 1.5rem;
-  height: 1.5rem;
-  border-radius: 50%;
-  background: #0f62fe;
+.slider-container .slider {
+  width: 300px;
   cursor: pointer;
+}
+.slider-container .slider:disabled {
+  cursor: not-allowed;
 }
 .slider-container .slider:disabled::-webkit-slider-thumb {
   cursor: not-allowed;
 }
-.slider-container .label-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  margin-top: 10px;
-  font-size: 15px;
-  color: #333;
+.slider-container .slider:disabled ~ .tooltip {
+  opacity: 0;
+}
+
+.tooltip {
+  position: absolute;
+  margin-left: 7%;
+  top: -30px;
+  transform: translateX(-50%);
+  background-color: #0040ff;
+  color: #fff;
+  padding: 2px 5px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  opacity: 1;
 }/*# sourceMappingURL=Slider.module.css.map */

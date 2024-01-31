@@ -1,17 +1,18 @@
+/* eslint-disable react/forbid-prop-types */
+/* eslint-disable max-len */
 import {
 	FloatingFocusManager,
 	useDismiss,
 	useFloating,
 	useInteractions,
 } from '@floating-ui/react-dom-interactions';
-import { useAnimate } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import PropTypes from 'prop-types';
 import { classes } from '../../utils';
 import { CrossIcon } from '../icons';
 import { Popper } from '../popper';
 import { Button } from '../buttons';
 import styles from './BaseModal.module.css';
-import { useEffect } from 'react';
 
 /**
  * Renders a modal dialog with customizable header, body, and footer content.
@@ -40,6 +41,8 @@ const BaseModal = (props) => {
 		open,
 		noDismiss,
 		hideCrossDismiss,
+		animation,
+		animationProperties,
 	} = props;
 
 	const { floating, context } = useFloating({
@@ -54,72 +57,70 @@ const BaseModal = (props) => {
 	]);
 
 	const { props: bodyProps } = children ?? {};
-	const [scope, animate] = useAnimate();
-
-	useEffect(() => {
-		if (scope.current) {
-			animate(scope.current, { opacity: 1 });
-			if (renderFooter) {
-				animate('footer', { y: ['100%', '0%'] });
-			}
-		}
-	});
 
 	return (
-		<Popper
-			open={open}
-			className={popperClassName}
-			transparent={false}
-			wrapperId='base-modal-popper'>
-			{open && (
-				<FloatingFocusManager context={context}>
-					<div
-						{...getFloatingProps({
-							className: classes(styles.root, className),
-							ref: floating,
-						})}
-						ref={scope}>
-						{renderHeader && (
-							<header data-elem='header' className={styles.header}>
-								{(() => {
-									if (typeof renderHeader !== 'function') {
-										return renderHeader;
-									}
-									return renderHeader({ ...bodyProps });
-								})()}
-							</header>
-						)}
-						<div data-elem='body' className={styles.body}>
-							{children}
-						</div>
-						{renderFooter && (
-							<footer data-elem='footer' className={styles.footer}>
-								{(() => {
-									if (typeof renderFooter !== 'function') {
-										return renderFooter;
-									}
-									return renderFooter({ ...bodyProps });
-								})()}
-							</footer>
-						)}
-						{!hideCrossDismiss && (
-							<Button
-								size='auto'
-								variant='text'
-								data-elem='close'
-								className={styles.close}
-								onClick={() => {
-									toggle(false);
-								}}
-								rightComponent={() => {
-									return <CrossIcon className={styles.icon} />;
-								}}
-							/>
-						)}
-					</div>
-				</FloatingFocusManager>
-			)}
-		</Popper>
+		<AnimatePresence>
+			<Popper
+				open={open}
+				className={popperClassName}
+				transparent={false}
+				wrapperId='base-modal-popper'>
+				{open && (
+					<FloatingFocusManager context={context}>
+						<motion.div
+							{...getFloatingProps({
+								className: classes(styles.root, className),
+								ref: floating,
+								...(animation && {
+									...animationProperties,
+								}),
+							})}>
+							{renderHeader && (
+								<header data-elem='header' className={styles.header}>
+									{(() => {
+										if (typeof renderHeader !== 'function') {
+											return renderHeader;
+										}
+										return renderHeader({
+											...bodyProps,
+										});
+									})()}
+								</header>
+							)}
+							<div data-elem='body' className={styles.body}>
+								{children}
+							</div>
+							{renderFooter && (
+								<footer data-elem='footer' className={styles.footer}>
+									{(() => {
+										if (typeof renderFooter !== 'function') {
+											return renderFooter;
+										}
+										return renderFooter({
+											...bodyProps,
+										});
+									})()}
+								</footer>
+							)}
+							{!hideCrossDismiss && (
+								<Button
+									size='auto'
+									variant='text'
+									data-elem='close'
+									className={styles.close}
+									onClick={() => {
+										toggle(false);
+									}}
+									rightComponent={() => {
+										return <CrossIcon className={styles.icon} />;
+									}}
+								/>
+							)}
+						</motion.div>
+					</FloatingFocusManager>
+				)}
+			</Popper>
+		</AnimatePresence>
 	);
 };
 
@@ -131,6 +132,8 @@ BaseModal.propTypes = {
 	toggle: PropTypes.func,
 	noDismiss: PropTypes.bool,
 	hideCrossDismiss: PropTypes.bool,
+	animation: PropTypes.bool,
+	animationProperties: PropTypes.object,
 };
 
 BaseModal.defaultProps = {
@@ -141,6 +144,23 @@ BaseModal.defaultProps = {
 	toggle: () => {},
 	noDismiss: false,
 	hideCrossDismiss: false,
+	animation: false,
+	animationProperties: {
+		initial: {
+			y: '100%',
+			x: '100%',
+		},
+		animate: {
+			x: '-50%',
+			y: '-50%',
+		},
+		exit: {
+			x: '100%',
+		},
+		transition: {
+			duration: 0.25,
+		},
+	},
 };
 
 export default BaseModal;

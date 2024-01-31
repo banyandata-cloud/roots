@@ -1,8 +1,6 @@
 import { Meta, Canvas, Story } from '@storybook/addon-docs';
-
 import { ThemedContainer } from '../../../helpers';
 import TableFilters from './TableFilters';
-import { useTableSearch } from './Search';
 
 <Meta title='Components/Table/TableTop/Filters' parameters={{ options: { showToolbar: false } }} />
 
@@ -41,18 +39,10 @@ export const FILTERS = [
 <Canvas>
 	<Story name='Default'>
 		{() => {
-			const filterValue = {
-				applied: 4,
-			};
-			const searchOptions = useTableSearch({
-				filters: FILTERS,
-				onApply: (filters) => {
-					alert(`${filters.length} Filter(s) Applied`);
-				},
-			});
+			
 			return (
-				<ThemedContainer filterValue={filterValue}>
-					<TableFilters filterValue={filterValue} searchOptions={searchOptions} />
+				<ThemedContainer >
+					<TableFilters />
 				</ThemedContainer>
 			);
 		}}

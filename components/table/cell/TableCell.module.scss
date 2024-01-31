@@ -17,13 +17,13 @@
 			font-size: 1rem;
 		}
 		&.light {
-			background: #ffffff;
+			background: $white;
 			.cell-text {
 				color: #1a2028;
 			}
 		}
 		&.dark {
-			background: #ffffff;
+			background: $white;
 			.cell-text {
 				color: $grey;
 			}
@@ -36,13 +36,13 @@
 			font-size: 0.875rem;
 		}
 		&.light {
-			background: #f7f7f8;
+			background: $light-color2;
 			.cell-text {
 				color: #575f6e;
 			}
 		}
 		&.dark {
-			background: #f7f7f8;
+			background: $light-color2;
 			.cell-text {
 				color: $grey;
 			}
@@ -115,13 +115,13 @@
 			}
 		}
 		&.light {
-			background: #ffffff;
+			background: $white;
 			.cell-text {
 				color: #1a2028;
 			}
 		}
 		&.dark {
-			background: #ffffff;
+			background: $white;
 			.cell-text {
 				color: $grey;
 			}

@@ -15,7 +15,7 @@ div.root {
   border-radius: 0.4375rem;
   border-width: 1px;
   border-style: solid;
-  border-color: var(--mono-colours-202, #b7cadb);
+  border-color: var(--mono-colours-202, var(--mono-color2));
   font-weight: 275;
   background: transparent;
   font-size: 0.75rem;
@@ -42,7 +42,7 @@ div.root.theme-light [data-elem=base-cell].toggle-button {
   font-weight: 275;
 }
 div.root.theme-light [data-elem=base-cell].toggle-button.active {
-  background: var(--mono-colours-201, #71839b);
+  background: var(--mono-colours-201, var(--mono-color1));
   font-weight: 500;
   color: var(--light-colours-203, #fff);
   border-radius: 0.3125rem;
@@ -50,7 +50,7 @@ div.root.theme-light [data-elem=base-cell].toggle-button.active {
 }
 div.root.theme-light [data-elem=base-cell].toggle-button:hover:not(.active) {
   cursor: pointer;
-  background: var(--mono-colours-202, #b7cadb);
+  background: var(--mono-colours-202, var(--mono-color2));
 }
 div.root [data-elem=base-cell].toggle-button {
   height: 2rem;

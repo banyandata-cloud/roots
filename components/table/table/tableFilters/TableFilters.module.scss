@@ -18,7 +18,7 @@
 		height: 100%;
 		background: transparent;
 		border: 1px solid $grey4;
-		color: #141920;
+		color: $text-colour-20;
 	}
 
 	.column-dropdown {
@@ -33,7 +33,7 @@
 			> [data-elem='select'] {
 				background-color: transparent;
 				border: none;
-				color: #141920;
+				color: $text-colour-20;
 				padding: 0rem;
 				width: 9.375rem;
 			}
@@ -58,6 +58,19 @@
 	}
 
 	> [data-elem='component1'] {
+		margin-right: auto;
+		@include flex(column, center, flex-start);
+		> div {
+			@include flex;
+			gap: 0.3rem;
+			> svg {
+				width: 1.5rem;
+				height: 1.5rem;
+			}
+		}
+	}
+
+	> [data-elem='component2'] {
 		.left {
 			gap: 1rem;
 			background: $grey8;
@@ -81,7 +94,7 @@
 		}
 	}
 
-	> [data-elem='component2'] {
+	> [data-elem='component3'] {
 		gap: 0.5rem;
 		height: 100%;
 	}

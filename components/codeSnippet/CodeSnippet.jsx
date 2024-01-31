@@ -1,9 +1,10 @@
 /* eslint-disable no-param-reassign */
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark, oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { Alert } from '../alert';
 import { classes } from '../../utils';
 import { CopyIcon } from '../icons';
 import styles from './CodeSnippet.module.css';
@@ -22,15 +23,19 @@ const CodeSnippet = (props) => {
 		parentKeyToSelect,
 	} = props;
 
-	const [copiedState, setCopiedState] = useState(false);
+	const [parentNode, setParentNode] = useState(null);
 
-	setTimeout(() => {
-		setCopiedState(false);
-	}, 2.0 * 1000);
+	const alertRef = useRef(Alert);
 
 	const onCopy = () => {
 		navigator.clipboard.writeText(code);
-		setCopiedState(true);
+		alertRef.current?.alert({
+			title: `The ${language?.toUpperCase()} snippet has been copied to the clipboard`,
+			type: 'info',
+			icon: (args) => {
+				return <CopyIcon {...args} />;
+			},
+		});
 	};
 
 	function findKeyPath(obj, targetKey, currentPath = '') {
@@ -53,7 +58,7 @@ const CodeSnippet = (props) => {
 					return nestedPath;
 				}
 			}
-			if (typeof obj[key] === 'object') {
+			if (obj[key] && typeof obj[key] === 'object') {
 				// Recursively search nested keys
 				const nestedPath = findKeyPath(obj[key], targetKey, newPath);
 				if (nestedPath) {
@@ -85,6 +90,14 @@ const CodeSnippet = (props) => {
 				if (keyPath) {
 					event.target.parentNode.style.backgroundColor =
 						theme === 'light' ? '#333' : 'white';
+					if (parentNode) {
+						parentNode.style.backgroundColor = '';
+						if (event.target.parentNode === parentNode) {
+							setParentNode(null);
+							return null;
+						}
+					}
+					setParentNode(event.target.parentNode);
 					return keyPath;
 				}
 				return clickedKey;
@@ -130,12 +143,10 @@ const CodeSnippet = (props) => {
 								theme === 'dark' ? styles.dark : styles.light
 							)}
 						/>
-						<div className={copiedState ? styles.copied : styles.notCopied}>
-							{copiedState ? 'Copied' : ''}
-						</div>
 					</div>
 				)}
 			</div>
+			<Alert ref={alertRef} />
 		</ErrorBoundary>
 	);
 };

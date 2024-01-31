@@ -1,10 +1,12 @@
 import React, { useState, useRef } from 'react';
+import PropTypes from 'prop-types';
 import styles from './RangeSlider.module.css';
 
-function RangeSlider() {
+function RangeSlider(props) {
+	const { minn, maxx, onChange, step, disabled } = props;
 	const [rangeValues, setRangeValues] = useState({
-		min: 25,
-		max: 75,
+		min: minn,
+		max: maxx,
 	});
 	const [dragging, setDragging] = useState(null);
 	const sliderRef = useRef(null);
@@ -14,8 +16,8 @@ function RangeSlider() {
 		setDragging(thumb);
 	};
 
-	const snapToStep = (value, step) => {
-		return Math.round(value / step) * step;
+	const snapToStep = (value, steps) => {
+		return Math.round(value / steps) * steps;
 	};
 
 	const handleMouseMove = (event) => {
@@ -52,6 +54,9 @@ function RangeSlider() {
 
 	const handleMouseUp = () => {
 		setDragging(null);
+		if (typeof onChange === 'function') {
+			onChange(rangeValues);
+		}
 	};
 
 	return (
@@ -98,8 +103,9 @@ function RangeSlider() {
 						min='0'
 						max='100'
 						name={thumb}
+						disabled={disabled}
 						value={rangeValues[thumb]}
-						step='1'
+						step={step}
 						onChange={(e) => {
 							setRangeValues({
 								...rangeValues,
@@ -113,5 +119,15 @@ function RangeSlider() {
 		</div>
 	);
 }
+
+RangeSlider.propTypes = {
+	step: PropTypes.number,
+	disabled: PropTypes.bool,
+};
+
+RangeSlider.defaultProps = {
+	step: 1,
+	disabled: false,
+};
 
 export default RangeSlider;

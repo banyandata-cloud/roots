@@ -1,34 +1,59 @@
+/* eslint-disable object-curly-newline */
 import { useRef } from 'react';
 import PropTypes from 'prop-types';
 import styles from './BaseSidePanel.module.css';
 import { classes } from '../../utils';
-import { Popper } from '../popper';
+import BaseModal from '../modal/BaseModal';
 
 const BaseSidePanel = (props) => {
-	const { className, renderHeader, children, renderFooter, open, isModal } = props;
+	const {
+		className,
+		renderHeader,
+		children,
+		renderFooter,
+		open,
+		isModal,
+		toggle,
+		noDismiss,
+		animation,
+	} = props;
 
 	const panelRef = useRef();
 
 	return isModal ? (
-		<Popper
+		<BaseModal
 			open={open}
-			transparent={false}
-			wrapperId='side-panel'
-			className={classes(styles.modal, open ? '' : styles.close, className)}>
-			{renderHeader && (
+			toggle={toggle}
+			hideCrossDismiss
+			noDismiss={noDismiss}
+			className={classes(styles.modal, className)}
+			renderHeader={
 				<div data-elem='header' className={styles.header}>
 					{renderHeader}
 				</div>
-			)}
-			<div data-elem='body' className={styles.body}>
-				{children}
-			</div>
-			{renderFooter && (
+			}
+			renderFooter={
 				<div data-elem='footer' className={styles.footer}>
 					{renderFooter}
 				</div>
-			)}
-		</Popper>
+			}
+			animation={animation}
+			animationProperties={{
+				initial: {
+					x: '100%',
+				},
+				animate: {
+					x: 0,
+				},
+				exit: {
+					x: '100%',
+				},
+				transition: {
+					duration: 0.3,
+				},
+			}}>
+			{children}
+		</BaseModal>
 	) : (
 		<div ref={panelRef} className={classes(styles.drawer, open ? '' : styles.close, className)}>
 			{renderHeader && (
@@ -53,6 +78,10 @@ BaseSidePanel.propTypes = {
 	renderHeader: PropTypes.element,
 	renderFooter: PropTypes.element,
 	open: PropTypes.bool,
+	isModal: PropTypes.bool,
+	toggle: PropTypes.func,
+	noDismiss: PropTypes.bool,
+	animation: PropTypes.bool,
 };
 
 BaseSidePanel.defaultProps = {
@@ -60,6 +89,10 @@ BaseSidePanel.defaultProps = {
 	renderHeader: null,
 	renderFooter: null,
 	open: false,
+	isModal: false,
+	toggle: () => {},
+	noDismiss: false,
+	animation: false,
 };
 
 export default BaseSidePanel;

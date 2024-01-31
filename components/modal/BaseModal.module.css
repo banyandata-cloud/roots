@@ -16,7 +16,6 @@
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.13);
   border-radius: 8px;
   outline: none;
-  opacity: 0;
 }
 .root .body {
   overflow-y: scroll;

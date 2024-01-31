@@ -2,6 +2,7 @@ import { offset, flip, size, autoUpdate, shift } from '@floating-ui/react-dom-in
 import { differenceInDays, differenceInHours, differenceInMonths, fromUnixTime } from 'date-fns';
 import { MONTHS } from '../../../constants';
 import { dateRanges } from '../calender/footer/utils';
+import { doubleDigitted } from '../../../utils';
 
 export const getFloatingReferences = (open, onOpenChange) => {
 	return {
@@ -104,9 +105,9 @@ export const getDatePickerDisplayValue = ({ value, rangePicker, singlePicker }) 
 	if (singlePicker) {
 		const sDate = fromUnixTime(value);
 
-		const timeValue = `${((sDate.getHours() + 11) % 12) + 1}:${sDate.getMinutes()} ${
-			sDate.getHours() >= 12 ? 'PM' : 'AM'
-		}`;
+		const timeValue = `${doubleDigitted(((sDate.getHours() + 11) % 12) + 1)}:${doubleDigitted(
+			sDate.getMinutes()
+		)} ${sDate.getHours() >= 12 ? 'PM' : 'AM'}`;
 
 		return ` ${sDate.getDate()} ${
 			MONTHS[sDate.getMonth().toString()?.substring(0, 3)]

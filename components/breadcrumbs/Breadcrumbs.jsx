@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './Breadcrumbs.module.css';
@@ -17,6 +18,8 @@ const BreadCrumbs = (props) => {
 		theme,
 		onBackClick,
 		onHomeClick,
+		homeTitle,
+		className,
 	} = props;
 
 	const [expand, setExpand] = useState(false);
@@ -79,9 +82,25 @@ const BreadCrumbs = (props) => {
 		);
 	}
 
+	if (crumbs?.length <= 1) {
+		return (
+			<div className={classes(styles.root, styles[`theme-${theme}`])}>
+				<Button
+					size='auto'
+					radius='round'
+					className={classes(styles['crumb-actions'], styles.home, styles.highlight)}
+					title={homeTitle}
+					leftComponent={() => {
+						return <HomeIcon className={styles.icon} position='left' />;
+					}}
+				/>
+			</div>
+		);
+	}
+
 	return (
 		crumbs?.length > 1 && (
-			<div className={classes(styles.root, styles[`theme-${theme}`])}>
+			<div className={classes(styles.root, styles[`theme-${theme}`], className)}>
 				<Button
 					size='auto'
 					radius='round'
@@ -94,12 +113,14 @@ const BreadCrumbs = (props) => {
 				<Button
 					size='auto'
 					radius='round'
-					className={styles['crumb-actions']}
+					className={classes(styles['crumb-actions'], styles.home)}
 					leftComponent={() => {
 						return <HomeIcon className={styles.icon} position='left' />;
 					}}
+					title={homeTitle}
 					onClick={onHomeClick}
 				/>
+				<BreadcrumbSeperator className={styles.seperator} />
 				{CrumbsDOM}
 			</div>
 		)
@@ -120,6 +141,8 @@ BreadCrumbs.propTypes = {
 	itemsBeforeCollapse: PropTypes.number,
 	itemsAfterCollapse: PropTypes.number,
 	linkComponent: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+	homeTitle: PropTypes.string,
+	className: PropTypes.string,
 };
 
 BreadCrumbs.defaultProps = {
@@ -129,6 +152,8 @@ BreadCrumbs.defaultProps = {
 	itemsBeforeCollapse: 2,
 	itemsAfterCollapse: 1,
 	linkComponent: 'a',
+	homeTitle: '',
+	className: '',
 };
 
 export default BreadCrumbs;
