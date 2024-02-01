@@ -10,52 +10,59 @@
 }
 
 .tab {
-	position: relative;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex: 1;
-	text-align: center;
-	cursor: pointer;
-	transition: color 0.3s;
-	padding: 10px;
+	> [data-elem='base-cell'] {
+		padding: 5px !important;
+
+		&.active {
+			color: $highlight !important;
+		}
+		> [data-elem='component1'],
+		> [data-elem='component3'] {
+			> .icon {
+				fill: $black;
+				width: 1.5rem;
+				height: 1.5rem;
+			}
+		}
+	}
+
+	> [data-elem='base-cell']:disabled {
+		color: $grey3 !important;
+	}
 
 	&:hover {
-		color: $highlight;
+		color: $highlight !important;
 		background: #007bff23;
 	}
 
 	&.active {
-		color: $highlight;
+		color: $highlight !important;
 	}
 
-	&.disabled {
-		cursor: not-allowed;
-		color: $grey3;
-	}
-}
-
-.drop-label {
-	padding: 0px;
-}
-
-.tab-label {
-	padding: 1px;
-	margin-left: 5px;
-	margin-right: 5px;
-	width: fit-content;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-}
-
-.tab-left,
-.tab-right {
-	margin: 0 7px;
-	display: contents;
-	> svg {
-		width: 14px;
-		height: 14px;
+	.tab-dropdown {
+		.dropdown {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			align-self: stretch;
+			[data-elem='base-cell'] {
+				height: 2.3125rem;
+				
+				&.active {
+					color: $highlight !important;
+				}
+			}
+			> [data-elem='header'] {
+				> [data-elem='select'] {
+					background-color: transparent;
+					border: none;
+					padding: 5px !important;
+					width: auto;
+					font-size: 0.875rem;
+					font-weight: 500;
+				}
+			}
+		}
 	}
 }
 
@@ -73,49 +80,4 @@
 	padding-top: 10px;
 	border-top: 1px solid rgba(0, 0, 0, 0.199);
 	z-index: -1;
-}
-
-.tab-dropdown {
-	position: relative;
-	cursor: pointer;
-	white-space: nowrap;
-	display: flex;
-	> svg {
-		margin-left: 5px;
-		margin-top: 1px;
-		width: 16px;
-		height: 16px;
-	}
-}
-
-.dropdown-options {
-	position: absolute;
-	top: 34px;
-	left: 0;
-	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.353);
-	background-color: $white;
-	transform: translateX(-10px);
-}
-
-.dropdown-option {
-	width: 100%;
-	padding: 10px;
-	cursor: pointer;
-	white-space: nowrap;
-	transition: background-color 0.3s;
-	color: rgba(0, 0, 0, 0.7);
-
-	&:hover {
-		background-color: $grey7;
-	}
-
-	&.selected {
-		background-color: $grey5;
-	}
-}
-.icon {
-	transition: transform 0.3s ease-in-out;
-}
-.rotateCaret {
-	transform: rotate(180deg);
 }

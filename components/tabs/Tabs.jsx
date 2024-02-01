@@ -1,9 +1,11 @@
 /* eslint-disable react/no-array-index-key */
 import React, { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { CaretIcon } from '../icons';
 import { Skeleton } from './Skeleton';
 import styles from './Tabs.module.css';
+import Dropdown from '../input/dropdown/Dropdown';
+import DropdownItem from '../input/dropdown/dropdown-item/DropdownItem';
+import { Button } from '../buttons';
 
 const Tabs = (props) => {
 	const { tabs, className, loading, fallback, selectedTab, setSelectedTab, defaultSelected } =
@@ -11,7 +13,6 @@ const Tabs = (props) => {
 
 	const [sliderLeft, setSliderLeft] = useState(0);
 	const [sliderWidth, setSliderWidth] = useState(0);
-	const [dropdownOpen, setDropdownOpen] = useState(false);
 	const [selectedDropdownValue, setSelectedDropdownValue] = useState(null);
 	const sliderRef = useRef(null);
 
@@ -43,29 +44,12 @@ const Tabs = (props) => {
 		const tab = tabs[index];
 		if (!tab.disabled) {
 			setActiveTab(index);
-			setDropdownOpen(false);
 
 			if (tab.dropdown) {
 				setSelectedDropdownValue(null);
 			}
 			setSelectedTab(tab.id);
 		}
-	};
-
-	const handleDropdownClick = (index, event) => {
-		event.stopPropagation();
-		handleTabClick(index);
-		setDropdownOpen(!dropdownOpen);
-	};
-
-	const handleDropdownOptionClick = (index, value, label) => {
-		setSelectedDropdownValue(value);
-		setDropdownOpen(false);
-
-		// eslint-disable-next-line no-param-reassign
-		tabs[index].title = label;
-
-		handleTabClick(index);
 	};
 
 	if (loading || fallback) {
@@ -76,6 +60,7 @@ const Tabs = (props) => {
 		<div className={`${styles['tabs-container']} ${className}`}>
 			<div className={styles.tabs}>
 				{tabs.map((tab, index) => {
+					const isActive = index === activeTab;
 					const {
 						id,
 						title,
@@ -89,66 +74,59 @@ const Tabs = (props) => {
 						<div
 							key={id}
 							ref={index === activeTab ? sliderRef : null}
-							className={`${styles.tab} ${index === activeTab ? styles.active : ''} ${
-								disabled ? styles.disabled : ''
-							} ${dropdown ? styles.dropdown : ''}`}
+							className={`${styles.tab} ${index === activeTab ? styles.active : ''}`}
 							onClick={() => {
 								return handleTabClick(index);
 							}}>
 							{dropdown ? (
 								<div className={styles['tab-dropdown']}>
-									<div
-										className={styles['drop-label']}
-										onClick={(event) => {
-											return handleDropdownClick(index, event);
-										}}>
-										{title}
-									</div>
-									<CaretIcon
-										className={`${styles.icon} ${
-											dropdownOpen ? styles.rotateCaret : ''
+									<Dropdown
+										className={`${styles.dropdown} ${
+											isActive ? styles.active : ''
 										}`}
-									/>
-
-									{dropdownOpen && index === activeTab && (
-										<div className={styles['dropdown-options']}>
-											{dropdownItems.map((option) => {
-												return (
-													<div
-														key={option.id}
-														className={`${styles['dropdown-option']} ${
-															option.id === selectedDropdownValue
-																? styles.selected
-																: ''
-														}`}
-														onClick={() => {
-															return handleDropdownOptionClick(
-																index,
-																option.id,
-																option.title
-															);
-														}}>
-														{option.title}
-													</div>
-												);
-											})}
-										</div>
-									)}
+										onChange={() => {
+											setSelectedTab(id);
+										}}
+										placeholder={title}>
+										{dropdownItems.map((option) => {
+											return (
+												<DropdownItem
+													className={`${styles['dropdown-option']} ${
+														option.id === selectedDropdownValue
+															? styles.selected
+															: ''
+													}`}
+													key={option.id}
+													title={option.title}
+													value={option.id}
+												/>
+											);
+										})}
+									</Dropdown>
 								</div>
 							) : (
-								<React.Fragment key={id}>
-									{LeftIcon && (
-										<div className={styles['tab-left']}>
-											<LeftIcon className={styles.icon} />
-										</div>
-									)}
-									<div className={styles['tab-label']}>{title}</div>
-									{RightIcon && (
-										<div className={styles['tab-right']}>
-											<RightIcon className={styles.icon} />
-										</div>
-									)}
-								</React.Fragment>
+								<Button
+									size='auto'
+									color='default'
+									radius='none'
+									key={id}
+									variant='text'
+									disabled={disabled}
+									className={isActive ? styles.active : ''}
+									title={title}
+									leftComponent={
+										LeftIcon &&
+										(() => {
+											return <LeftIcon className={styles.icon} />;
+										})
+									}
+									rightComponent={
+										RightIcon &&
+										(() => {
+											return <RightIcon className={styles.icon} />;
+										})
+									}
+								/>
 							)}
 						</div>
 					);

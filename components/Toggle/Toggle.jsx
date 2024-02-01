@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { useRef, useState, useEffect } from 'react';
 import { Skeleton } from './Skeleton';
 import styles from './Toggle.module.css';
+import { Button } from '../buttons';
 
 // eslint-disable-next-line prefer-arrow-callback
 const Toggle = (props) => {
@@ -147,8 +148,12 @@ const Toggle = (props) => {
 			} ${className}`}>
 			<div className={styles.tabs}>
 				{multi && (
-					<div
-						className={`${styles.tab} ${
+					<Button
+						type='button'
+						size='auto'
+						data-elem='toggle'
+						variant='text'
+						className={`${
 							selectedTabs.length === options.length
 								? `${styles.selected} ${
 										theme === 'dark' ? styles['dark-theme'] : ''
@@ -157,17 +162,14 @@ const Toggle = (props) => {
 						}`}
 						onClick={() => {
 							return handleTabClick(0);
-						}}>
-						<div>All</div>
-					</div>
+						}}
+						title='All'>
+						{value}
+					</Button>
 				)}
 				{options.map((tab, index) => {
-					const {
-						title,
-						leftComponent: LeftIcon,
-						rightComponent: RightIcon,
-						disabled,
-					} = tab;
+					const { title, leftComponent, rightComponent, disabled } = tab;
+					const isActive = index + 1 === activeTab;
 					return (
 						<div
 							key={index}
@@ -186,19 +188,19 @@ const Toggle = (props) => {
 							onClick={() => {
 								return handleTabClick(index + 1);
 							}}>
-							<div className={styles.main} key={index}>
-								{LeftIcon && (
-									<div className={styles['tab-left']}>
-										<LeftIcon className={styles.icon} />
-									</div>
-								)}
-								<div className={styles['tab-label']}>{title}</div>
-								{RightIcon && (
-									<div className={styles['tab-right']}>
-										<RightIcon className={styles.icon} />
-									</div>
-								)}
-							</div>
+							<Button
+								type='button'
+								size='auto'
+								variant='text'
+								data-elem='toggle'
+								title={title}
+								className={` ${styles.button} ${
+									theme === 'dark' ? styles['dark-theme'] : ''
+								} ${isActive ? styles.active : ''}`}
+								leftComponent={leftComponent}
+								rightComponent={rightComponent}>
+								{value}
+							</Button>
 						</div>
 					);
 				})}
