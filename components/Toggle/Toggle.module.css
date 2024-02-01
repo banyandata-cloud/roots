@@ -1,95 +1,64 @@
-.tabs-container {
-  width: -moz-fit-content;
-  width: fit-content;
+div.root {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: auto;
+  gap: 0.25rem;
+  padding-left: 0.125rem;
+  padding-right: 0.125rem;
+  padding-top: 0.125rem;
+  padding-bottom: 0.125rem;
   background: var(--grey8);
-  border: 1px solid var(--mono-colours-202, #b7cadb);
-  border-radius: 0.4375rem;
-  background: transparent;
-  font-weight: 500;
-  padding: 0.3125rem;
-}
-.tabs-container .tabs {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  position: relative;
-  gap: 0.4375rem;
-}
-.tabs-container .tabs .tab {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  align-items: center;
-  justify-content: center;
-  flex: 1;
-  text-align: center;
-  cursor: pointer;
-  transition: color 0.3s;
-  padding: 0.4125rem;
-}
-.tabs-container .tabs .tab:hover {
-  background: var(--mono-colours-202, #b7cadb);
-  border-radius: 0.3375rem;
-}
-.tabs-container .tabs .tab.active {
-  color: var(--light-colours-203, #fff);
-}
-.tabs-container .tabs .tab.dark-theme:hover {
-  background: var(--grey);
-}
-.tabs-container .tabs .tab .tab-label {
   width: -moz-fit-content;
   width: fit-content;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  position: relative;
-  z-index: 2;
+  border-radius: 0.4375rem;
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--mono-colours-202, var(--mono-color2));
+  font-weight: 275;
+  background: transparent;
+  font-size: 0.75rem;
 }
-.tabs-container .tabs .tab .main {
-  z-index: 2;
+div.root [data-elem=base-cell].toggle-button {
+  background: transparent;
 }
-.tabs-container .tabs .tab.tab-left, .tabs-container .tabs .tab.tab-right {
-  margin: 0 7px;
-  display: contents;
+div.root.theme-dark {
+  border-color: var(--dark-grey);
 }
-.tabs-container .tabs .tab.tab-left > svg, .tabs-container .tabs .tab.tab-right > svg {
-  width: 0.975rem;
-  height: 0.975rem;
+div.root.theme-dark [data-elem=base-cell].toggle-button {
+  color: var(--grey4);
 }
-.tabs-container .tabs .tab.disabled {
-  cursor: not-allowed;
-  color: var(--disabled-color);
+div.root.theme-dark [data-elem=base-cell].toggle-button.active {
+  background: var(--dark-grey);
+  color: var(--white);
+  border: 1px solid var(--grey);
 }
-.tabs-container .tabs .tab.selected {
-  background: var(--mono-colours-201, #71839b);
+div.root.theme-light [data-elem=base-cell].toggle-button {
+  background: transparent;
+  color: var(--text-colour-20, #141920);
+  padding-top: 0.375rem;
+  padding-bottom: 0.375rem;
+  font-weight: 275;
+}
+div.root.theme-light [data-elem=base-cell].toggle-button.active {
+  background: var(--mono-colours-201, var(--mono-color1));
   font-weight: 500;
   color: var(--light-colours-203, #fff);
-  border-radius: 0.4375rem;
-}
-.tabs-container .tabs .tab.selected.dark-theme {
-  background: var(--dark-grey);
-  border: 0.5px solid rgba(255, 255, 255, 0.423);
-}
-.tabs-container .tabs .tab-slider {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  height: 100%;
   border-radius: 0.3125rem;
-  font-weight: 500;
-  background: var(--mono-colours-201, #71839b);
-  transition: left 0.3s ease-in-out, width 0.3s ease-in-out;
+  border-width: 0rem;
 }
-.tabs-container .tabs .tab-slider.dark-theme {
-  background: var(--dark-grey);
-  border: 1px solid rgba(255, 255, 255, 0.423);
+div.root.theme-light [data-elem=base-cell].toggle-button:hover:not(.active) {
+  cursor: pointer;
+  background: var(--mono-colours-202, var(--mono-color2));
 }
-.tabs-container.dark-theme {
-  background-color: var(--black);
-  color: white;
-  border: 1px solid var(--grey);
+div.root [data-elem=base-cell].toggle-button {
+  height: 2rem;
+}
+div.root [data-elem=base-cell].toggle-button.active {
+  border-radius: 0.3125rem;
+  border-width: 0rem;
+}
+div.root .input {
+  display: none;
 }/*# sourceMappingURL=Toggle.module.css.map */
