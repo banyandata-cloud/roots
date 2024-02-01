@@ -153,7 +153,7 @@ const Toggle = (props) => {
 						size='auto'
 						data-elem='toggle'
 						variant='text'
-						className={`${
+						className={` ${
 							selectedTabs.length === options.length
 								? `${styles.selected} ${
 										theme === 'dark' ? styles['dark-theme'] : ''

@@ -72,6 +72,7 @@ The default Tabs.
 					title: 'Tab4',
 				},
 			],
+			selectedTab: 'Tab1',
 			theme: 'light',
 		}}>
 		{Template.bind({})}
@@ -116,11 +117,11 @@ Tabs with with only left icon.
 					},
 				},
 			],
-			defaultSelected: '2',
-    		theme: 'light',
-    	}}>
-    	{Template.bind({})}
-    </Story>
+			selectedTab: 'Tab1',
+			theme: 'light',
+		}}>
+		{Template.bind({})}
+	</Story>
 </Canvas>
 
 ### With Right Icon
@@ -161,6 +162,7 @@ Tabs with with right icon.
 					},
 				},
 			],
+			selectedTab: 'Tab1',
 			theme: 'light',
 		}}>
 		{Template.bind({})}
@@ -217,6 +219,7 @@ Tabs with with With both side icon.
 					},
 				},
 			],
+			selectedTab: 'Tab1',
 			theme: 'light',
 		}}>
 		{Template.bind({})}
@@ -245,16 +248,16 @@ Tabs With Dropdown Items.
 					title: 'Tab3',
 				},
 				{
-					id: '4',
-					title: 'Options',
-					dropdown: true,
+					id: 'multi',
+					title: 'Multiple Tabs',
 					dropdownItems: [
-						{ id: '4', title: 'Option 1' },
-						{ id: '5', title: 'Option 2' },
-						{ id: '6', title: 'Option 3' },
+						{ id: '4', title: 'Tab4' },
+						{ id: '5', title: 'Tab5' },
+						{ id: '6', title: 'Tab6' },
 					],
 				},
 			],
+			selectedTab: 'Tab1',
 			theme: 'light',
 		}}>
 		{Template.bind({})}
@@ -308,57 +311,6 @@ An array of tab objects, where each object represents a tab with properties such
 			id: '1',
 			title: 'Tab1',
 			disabled: true,
-		},
-	]}
-/>
-```
-
-**`dropdown`**
-
-dropdown.
-
-<table style={{ width: '100%' }}>
-	<tr>
-		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
-		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
-	</tr>
-	<tr>
-		<td>Bool</td>
-		<td>false</td>
-	</tr>
-</table>
-
-```jsx
-<Tabs dropdown=false />
-```
-
-**`dropdownItems`**
-
-An array of tab objects, where each object represents a dropdown option with properties such as id and title.
-
-<table style={{ width: '100%' }}>
-	<tr>
-		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
-		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
-	</tr>
-	<tr>
-		<td>Object</td>
-		<td>{'{}'}</td>
-	</tr>
-</table>
-
-```jsx
-<Tabs
-	tabs={[
-		{
-			id: '1',
-			title: 'Tab1',
-			dropdown: true,
-			dropdownItems: [
-				{ id: '1', title: 'Tab1' },
-				{ id: '2', title: 'Tab2' },
-				{ id: '3', title: 'Tab3' },
-			],
 		},
 	]}
 />

@@ -1,8 +1,5 @@
 .root {
   position: relative;
-  border-style: solid;
-  border-color: var(--grey4);
-  border-width: 1px 1px 0px 1px;
   border-radius: 0.25rem;
   width: 100%;
   max-width: 100%;
@@ -25,6 +22,7 @@
 .root .chips,
 .root .filters,
 .root .table > [data-elem=table-header] {
+  position: -webkit-sticky;
   position: sticky;
   z-index: 1;
   top: 0;
