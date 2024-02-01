@@ -6,7 +6,7 @@
 	}
 
 	background: $white;
-	border-bottom: 1px solid $grey4;
+	// border-bottom: 1px solid $grey4;
 	> [data-elem*='component'] {
 		@include flex(row, flex-start);
 		flex: 1;

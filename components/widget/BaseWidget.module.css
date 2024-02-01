@@ -152,7 +152,7 @@
   color: #1a2028;
 }
 .root.light-theme .header .header-title [data-elem=title-desc] {
-  color: #141920;
+  color: var(--text-colour2);
 }
 .root.light-theme .header .header-title .title .icon {
   fill: var(--menu-black);

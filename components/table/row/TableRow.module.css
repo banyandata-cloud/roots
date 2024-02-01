@@ -33,10 +33,10 @@
   padding-right: 1rem;
 }
 .root.row-height-md > td[data-elem=base-cell] {
-  height: 3rem;
+  height: 3.375rem;
 }
 .root.row-height-lg > td[data-elem=base-cell] {
-  height: 4rem;
+  height: 4.375rem;
 }
 .root > [data-elem=base-cell].expandable-cell {
   padding-left: 0.9rem;
