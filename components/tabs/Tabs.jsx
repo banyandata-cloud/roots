@@ -13,7 +13,6 @@ const Tabs = (props) => {
 
 	const [sliderLeft, setSliderLeft] = useState(0);
 	const [sliderWidth, setSliderWidth] = useState(0);
-	const [selectedDropdownValue, setSelectedDropdownValue] = useState(null);
 	const sliderRef = useRef(null);
 
 	const getDefaultSelectedIndex = () => {
@@ -33,10 +32,10 @@ const Tabs = (props) => {
 		if (activeTabElement) {
 			setSliderLeft(activeTabElement.offsetLeft);
 			setSliderWidth(activeTabElement.offsetWidth);
-		}
+}
 	};
 
-	useEffect(() => {
+		useEffect(() => {
 		updateSliderPosition();
 	}, [activeTab, tabs]);
 
@@ -44,11 +43,8 @@ const Tabs = (props) => {
 		const tab = tabs[index];
 		if (!tab.disabled) {
 			setActiveTab(index);
-
-			if (tab.dropdown) {
-				setSelectedDropdownValue(null);
-			}
 			setSelectedTab(tab.id);
+			updateSliderPosition();
 		}
 	};
 
@@ -70,6 +66,7 @@ const Tabs = (props) => {
 						dropdown,
 						dropdownItems,
 					} = tab;
+
 					return (
 						<div
 							key={id}
@@ -85,17 +82,13 @@ const Tabs = (props) => {
 											isActive ? styles.active : ''
 										}`}
 										onChange={() => {
-											setSelectedTab(id);
+											updateSliderPosition();
 										}}
-										placeholder={title}>
+										placeholder={title}
+										value={!isActive ? title : undefined}>
 										{dropdownItems.map((option) => {
 											return (
 												<DropdownItem
-													className={`${styles['dropdown-option']} ${
-														option.id === selectedDropdownValue
-															? styles.selected
-															: ''
-													}`}
 													key={option.id}
 													title={option.title}
 													value={option.id}
@@ -131,6 +124,7 @@ const Tabs = (props) => {
 						</div>
 					);
 				})}
+
 				<div
 					className={styles['tab-slider']}
 					style={{
