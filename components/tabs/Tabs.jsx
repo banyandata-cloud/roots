@@ -14,6 +14,7 @@ const Tabs = (props) => {
 	const [sliderLeft, setSliderLeft] = useState(0);
 	const [sliderWidth, setSliderWidth] = useState(0);
 	const sliderRef = useRef(null);
+	const dropdownTabRefs = useRef([]);
 
 	const getDefaultSelectedIndex = () => {
 		if (defaultSelected) {
@@ -28,24 +29,28 @@ const Tabs = (props) => {
 	const [activeTab, setActiveTab] = useState(selectedTab || getDefaultSelectedIndex());
 
 	const updateSliderPosition = () => {
-		const activeTabElement = sliderRef.current;
+		const activeTabElement = dropdownTabRefs.current[activeTab] || sliderRef.current;
+
 		if (activeTabElement) {
 			setSliderLeft(activeTabElement.offsetLeft);
 			setSliderWidth(activeTabElement.offsetWidth);
-}
+		}
 	};
 
-		useEffect(() => {
+	useEffect(() => {
 		updateSliderPosition();
-	}, [activeTab, tabs]);
+	}, [activeTab, tabs, selectedTab]);
 
 	const handleTabClick = (index) => {
-		const tab = tabs[index];
-		if (!tab.disabled) {
-			setActiveTab(index);
-			setSelectedTab(tab.id);
-			updateSliderPosition();
-		}
+		const clickedTab = tabs[index];
+
+		setSelectedTab(clickedTab.id);
+		setActiveTab(index);
+	};
+
+	const handleDropClick = (selectedValue) => {
+		setSelectedTab(selectedValue);
+		updateSliderPosition();
 	};
 
 	if (loading || fallback) {
@@ -69,34 +74,35 @@ const Tabs = (props) => {
 
 					return (
 						<div
-							key={id}
-							ref={index === activeTab ? sliderRef : null}
-							className={`${styles.tab} ${index === activeTab ? styles.active : ''}`}
-							onClick={() => {
-								return handleTabClick(index);
-							}}>
+							key={index}
+							ref={(ref) => {
+								dropdownTabRefs.current[index] = ref;
+							}}
+							className={`${styles.tab} ${index === activeTab ? styles.active : ''}`}>
 							{dropdown ? (
-								<div className={styles['tab-dropdown']}>
-									<Dropdown
-										className={`${styles.dropdown} ${
-											isActive ? styles.active : ''
-										}`}
-										onChange={() => {
-											updateSliderPosition();
-										}}
-										placeholder={title}
-										value={!isActive ? title : undefined}>
-										{dropdownItems.map((option) => {
-											return (
-												<DropdownItem
-													key={option.id}
-													title={option.title}
-													value={option.id}
-												/>
-											);
-										})}
-									</Dropdown>
-								</div>
+								<Dropdown
+									className={`${styles.dropdown} ${
+										isActive ? styles.active : ''
+									}`}
+									onChange={(event) => {
+										const selectedValue = event.target.value;
+										handleDropClick(selectedValue);
+										setActiveTab(index);
+									}}
+									value={selectedTab}
+									placeholder={title}
+									// value={!isActive ? title : undefined}
+								>
+									{dropdownItems.map((option) => {
+										return (
+											<DropdownItem
+												key={option.id}
+												title={option.title}
+												value={option.id}
+											/>
+										);
+									})}
+								</Dropdown>
 							) : (
 								<Button
 									size='auto'
@@ -107,6 +113,9 @@ const Tabs = (props) => {
 									disabled={disabled}
 									className={isActive ? styles.active : ''}
 									title={title}
+									onClick={() => {
+										return handleTabClick(index);
+									}}
 									leftComponent={
 										LeftIcon &&
 										(() => {

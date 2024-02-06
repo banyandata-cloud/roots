@@ -33,19 +33,19 @@
 .tab.active {
   color: var(--highlight) !important;
 }
-.tab .tab-dropdown .dropdown {
+.tab .dropdown {
   display: flex;
   justify-content: center;
   align-items: center;
   align-self: stretch;
 }
-.tab .tab-dropdown .dropdown [data-elem=base-cell] {
+.tab .dropdown [data-elem=base-cell] {
   height: 2.3125rem;
 }
-.tab .tab-dropdown .dropdown [data-elem=base-cell].active {
+.tab .dropdown [data-elem=base-cell].active {
   color: var(--highlight) !important;
 }
-.tab .tab-dropdown .dropdown > [data-elem=header] > [data-elem=select] {
+.tab .dropdown > [data-elem=header] > [data-elem=select] {
   background-color: transparent;
   border: none;
   padding: 5px !important;
