@@ -1,15 +1,33 @@
 import { classes } from '../../utils';
-import Error503 from '../../503-error.png';
 import { Button } from '../buttons';
+import { RefreshIcon } from '../icons';
+import { Text } from '../text';
 import styles from './ErrorBoundaryWrapper.module.css';
+import { ErrorBoundaryVector } from './assets';
 
 const ErrorBoundaryWrapper = (props) => {
-	const { resetErrorBoundary, className, custom } = props;
+	const { resetErrorBoundary, className, custom, error } = props;
+
 	return (
 		custom ?? (
 			<div className={classes(styles.root, className)}>
-				<img src={Error503} alt='Error 503' />
-				<Button title='Retry' onClick={resetErrorBoundary} />
+				<ErrorBoundaryVector />
+				<Text component='p' variant='h2' weight={600} className={styles.message}>
+					<Text component='h1' variant='h2' weight={400}>
+						Component Error:
+					</Text>
+					{error.message}
+				</Text>
+				<div className={styles.actions}>
+					<Button
+						leftComponent={() => {
+							return <RefreshIcon className={styles.icon} />;
+						}}
+						title='Retry'
+						className={styles.action}
+						onClick={resetErrorBoundary}
+					/>
+				</div>
 			</div>
 		)
 	);

@@ -1,10 +1,9 @@
-@import '../../../../styles/_index';
+@import '../..../../../../../styles/';
 
 .root[data-elem='base-cell'] {
 	@include removeScrollbar;
 	@include flex(row, flex-end, center);
-	background: #ececed;
-	overflow-x: auto;
+	background: $light-color1;
 	padding: 0.375rem 1rem;
 	width: 100%;
 	.icon {
@@ -18,7 +17,7 @@
 		height: 100%;
 		background: transparent;
 		border: 1px solid $grey4;
-		color: $text-colour-20;
+		color: $text-colour2;
 	}
 
 	.column-dropdown {
@@ -33,9 +32,9 @@
 			> [data-elem='select'] {
 				background-color: transparent;
 				border: none;
-				color: $text-colour-20;
+				color: $text-colour2;
 				padding: 0rem;
-				width: 9.375rem;
+				width: auto;
 			}
 		}
 
@@ -97,5 +96,6 @@
 	> [data-elem='component3'] {
 		gap: 0.5rem;
 		height: 100%;
+		width: fit-content;
 	}
 }

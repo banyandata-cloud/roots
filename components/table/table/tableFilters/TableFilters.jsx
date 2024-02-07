@@ -2,11 +2,11 @@ import PropTypes from 'prop-types';
 import { classes } from '../../../../utils';
 import { Button } from '../../../buttons';
 import { BaseCell } from '../../../cell';
-import { FilterIcon, CaretIcon, ColumnFilter, AlertIcon } from '../../../icons';
-import styles from './TableFilters.module.css';
-import { Skeleton } from './Skeleton';
+import { AlertIcon, CaretIcon, ColumnFilter, FilterIcon } from '../../../icons';
 import { Dropdown, DropdownItem } from '../../../input';
 import { Text } from '../../../text';
+import { Skeleton } from './Skeleton';
+import styles from './TableFilters.module.css';
 
 const TableFilters = (props) => {
 	const {
@@ -19,8 +19,8 @@ const TableFilters = (props) => {
 		loading,
 		disabledFilterOptions,
 		theme,
-		tableTitleIcon:TableTitleCustomIcon,
-		tableTitleText
+		tableTitleIcon: TableTitleCustomIcon,
+		tableTitleText,
 	} = props;
 
 	const { search: disabledSearch, columnFilter: disabledColumnFilter } = disabledFilterOptions;
@@ -57,10 +57,14 @@ const TableFilters = (props) => {
 			}}
 			component1={
 				tableTitleText && (
-			<div>
-			{TableTitleCustomIcon ?? <AlertIcon.Info />}
-			<Text variant='b1' weight={500}>{tableTitleText}</Text>
-			</div>)}
+					<div>
+						{TableTitleCustomIcon ?? <AlertIcon.Info />}
+						<Text variant='b1' weight={500}>
+							{tableTitleText}
+						</Text>
+					</div>
+				)
+			}
 			component2={
 				!disabledSearch && (
 					<Button
@@ -133,9 +137,8 @@ TableFilters.propTypes = {
 		settings: PropTypes.bool,
 	}),
 	theme: PropTypes.oneOf(['light', 'dark']),
-	tableTitleText:PropTypes.string,
-	tableTitleIcon:PropTypes.node
-
+	tableTitleText: PropTypes.string,
+	tableTitleIcon: PropTypes.node,
 };
 
 TableFilters.defaultProps = {
@@ -153,8 +156,8 @@ TableFilters.defaultProps = {
 		settings: false,
 	},
 	theme: 'light',
-	tableTitleText:null,
-	tableTitleIcon:null
+	tableTitleText: null,
+	tableTitleIcon: null,
 };
 
 export default TableFilters;
