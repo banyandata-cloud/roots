@@ -36,14 +36,16 @@ The default Pagination component.
 	<Story name='Default Pagination'>
 		{() => {
 			const [paginationState, paginationDispatch] = usePagination({
-				totalPages: 20,
+				totalPages: 1,
 				currentPage: 1,
-				totalData: 200,
+				totalData: 20,
 			});
+			const dataLabel = 'items';
 			return (
 				<ThemedContainer theme='light'>
 					<Pagination
 						loading={false}
+						dataLabel={dataLabel}
 						{...{
 							paginationState,
 							paginationDispatch,
