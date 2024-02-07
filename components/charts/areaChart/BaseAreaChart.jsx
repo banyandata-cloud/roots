@@ -257,7 +257,7 @@ const BaseAreaChart = (props) => {
 										? axisSplitColor
 										: theme === 'dark'
 										? COLORS['dark-grey']
-										: COLORS.grey5,
+										: COLORS['mono-color2'],
 								type: splitType,
 							},
 						},

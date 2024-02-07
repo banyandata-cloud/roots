@@ -50,7 +50,7 @@ const AXIS_COLORS = {
 	},
 	split: {
 		dark: COLORS['dark-grey'],
-		light: COLORS.grey5,
+		light: COLORS['mono-color2'],
 	},
 	tick: {
 		dark: '#757679',
