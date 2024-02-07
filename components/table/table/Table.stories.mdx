@@ -1,6 +1,6 @@
-import { Meta, Canvas, Story } from '@storybook/addon-docs';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { ThemedContainer } from '../../helpers';
-import { ServerIcon, CopyIcon, ArrowIcon } from '../../icons';
+import { ArrowIcon, CopyIcon, ServerIcon } from '../../icons';
 import { usePagination } from '../../pagination';
 import { TableColumn } from '../BaseTable.class';
 import Table from './Table';
@@ -391,6 +391,7 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 						onRowClick={onRowClick}
 						headerData={headerData}
 						tableData={tableData}
+						dataLabel='items'
 						paginationData={{
 							paginationState,
 							paginationDispatch,

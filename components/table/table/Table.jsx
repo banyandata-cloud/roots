@@ -43,6 +43,7 @@ const Table = (props) => {
 		custom,
 		tableTitleIcon,
 		tableTitleText,
+		dataLabel,
 	} = props;
 
 	const ref = useRef(null);
@@ -174,6 +175,7 @@ const Table = (props) => {
 						{...paginationData}
 						floating={floating}
 						loading={loading}
+						dataLabel={dataLabel}
 					/>
 				)}
 			</div>
@@ -227,6 +229,7 @@ Table.propTypes = {
 	theme: PropTypes.oneOf(['light', 'dark']),
 	custom: PropTypes.node,
 	onAdvancedFilterClick: PropTypes.func,
+	dataLabel: PropTypes.string,
 };
 
 Table.defaultProps = {
@@ -257,6 +260,7 @@ Table.defaultProps = {
 	onSearch: () => {},
 	custom: null,
 	onAdvancedFilterClick: () => {},
+	dataLabel: null,
 };
 
 export default Table;
