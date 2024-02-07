@@ -1,16 +1,16 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-tabs */
-import React, { forwardRef, useEffect, useReducer, useRef } from 'react';
 import PropTypes from 'prop-types';
+import React, { forwardRef, useEffect, useReducer, useRef } from 'react';
 import { classes } from '../../utils';
 import { Button } from '../buttons';
-import { Dropdown, DropdownItem, TextField } from '../input';
-import { ArrowIcon } from '../icons';
 import { BaseCell } from '../cell';
-import { PaginationList } from './Pagination.class';
-import styles from './Pagination.module.css';
+import { ArrowIcon } from '../icons';
+import { Dropdown, DropdownItem, TextField } from '../input';
 import { Text } from '../text';
 import { Tooltip } from '../tooltip';
+import { PaginationList } from './Pagination.class';
+import styles from './Pagination.module.css';
 
 const CURRENT_YEAR = new Date().getFullYear();
 
@@ -126,6 +126,8 @@ export const Pagination = forwardRef((props, ref) => {
 
 	const showTotalData = totalData && (currentPage - 1) * step + 1 < totalData;
 
+	const showPages = totalPages > 1;
+
 	return (
 		<div
 			ref={ref}
@@ -140,28 +142,30 @@ export const Pagination = forwardRef((props, ref) => {
 					© {CURRENT_YEAR} Banyan Cloud Inc. All rights reserved.
 				</p>
 			</div>
-			<div className={styles['page-numbers']}>
-				<div className={styles.pageSelect}>
-					{paginationList.pages.map((page) => {
-						const active = currentPage === page.number;
-						return (
-							<span
-								title={`Page ${page.number}`}
-								key={page.number}
-								onClick={() => {
-									onChange({
-										type: 'SET_PAGE',
-										payload: page.number,
-									});
-								}}
-								data-active={active}
-								className={classes(active ? styles.active : '', styles.number)}>
-								{page.ellipsis ? '...' : page.number}
-							</span>
-						);
-					})}
+			{showPages && (
+				<div className={styles['page-numbers']}>
+					<div className={styles.pageSelect}>
+						{paginationList.pages.map((page) => {
+							const active = currentPage === page.number;
+							return (
+								<span
+									title={`Page ${page.number}`}
+									key={page.number}
+									onClick={() => {
+										onChange({
+											type: 'SET_PAGE',
+											payload: page.number,
+										});
+									}}
+									data-active={active}
+									className={classes(active ? styles.active : '', styles.number)}>
+									{page.ellipsis ? '...' : page.number}
+								</span>
+							);
+						})}
+					</div>
 				</div>
-			</div>
+			)}
 			<div className={styles.options}>
 				{showTotalData && (
 					<Text
@@ -173,85 +177,94 @@ export const Pagination = forwardRef((props, ref) => {
 								currentPage * step
 							} of ${totalData}`,
 						}}>
-						{(currentPage - 1) * step + 1}-
-						{currentPage === totalPages ? totalData : currentPage * step}/{totalData}
+						<Text>Showing</Text> {(currentPage - 1) * step + 1}-
+						{currentPage === totalPages ? totalData : currentPage * step} of {totalData}{' '}
+						<Text>records</Text>
 					</Text>
 				)}
-				<BaseCell
-					size='auto'
-					flexible
-					className={styles['row-switcher']}
-					component2={
-						<BaseCell
-							size='auto'
-							flexible
-							className={styles['row-switcher-handle']}
-							component1={
-								<Dropdown
-									className={styles.dropdown}
-									popperClassName={styles['dropdown-popper']}
-									value={step}
-									placeholder=''
-									onChange={(e, newStep) => {
-										onChange({
-											type: 'SET_STEP',
-											payload: newStep,
-										});
-									}}>
-									{dropdownOptions.map((item) => {
-										return (
-											<DropdownItem title={item} value={item} key={item} />
-										);
-									})}
-								</Dropdown>
-							}
-						/>
-					}
-				/>
-				<BaseCell
-					flexible
-					className={styles.form}
-					component1={
-						<form
-							onSubmit={(e) => {
-								e.preventDefault();
-								onChange({
-									type: 'SET_PAGE',
-									payload: parseInt(jumpPageRef?.current?.value, 10),
-								});
-							}}>
-							<Tooltip content='Jump To Page' position='top'>
-								<BaseCell
-									size='auto'
-									className={styles['jump-to-page']}
-									component1={
-										<TextField
-											inputProps={{
-												min: 1,
-												max: totalPages,
-												required: true,
-												placeholder: '',
-											}}
-											ref={jumpPageRef}
-											type='number'
-											className={styles.inputbox}
-										/>
-									}
-									component2={
-										<Button
-											size='auto'
-											variant='contained'
-											className={styles.button}
-											rightComponent={() => {
-												return <ArrowIcon className={styles.icon} />;
-											}}
-										/>
-									}
-								/>
-							</Tooltip>
-						</form>
-					}
-				/>
+				{showPages && (
+					<BaseCell
+						size='auto'
+						flexible
+						className={styles['row-switcher']}
+						component2={
+							<BaseCell
+								size='auto'
+								flexible
+								className={styles['row-switcher-handle']}
+								component1={
+									<Dropdown
+										className={styles.dropdown}
+										popperClassName={styles['dropdown-popper']}
+										value={step}
+										placeholder=''
+										onChange={(e, newStep) => {
+											onChange({
+												type: 'SET_STEP',
+												payload: newStep,
+											});
+										}}>
+										{dropdownOptions.map((item) => {
+											return (
+												<DropdownItem
+													title={item}
+													value={item}
+													key={item}
+												/>
+											);
+										})}
+									</Dropdown>
+								}
+							/>
+						}
+					/>
+				)}
+				{showPages && (
+					<BaseCell
+						flexible
+						className={styles.form}
+						component1={
+							<form
+								onSubmit={(e) => {
+									e.preventDefault();
+									onChange({
+										type: 'SET_PAGE',
+										payload: parseInt(jumpPageRef?.current?.value, 10),
+									});
+								}}>
+								<Tooltip content='Jump To Page' position='top'>
+									<BaseCell
+										size='auto'
+										className={styles['jump-to-page']}
+										component1={
+											<TextField
+												inputProps={{
+													min: 1,
+													max: totalPages,
+													required: true,
+													placeholder: '',
+												}}
+												ref={jumpPageRef}
+												type='number'
+												className={styles.inputbox}
+											/>
+										}
+										component2={
+											<Button
+												size='auto'
+												variant='contained'
+												className={styles.button}
+												rightComponent={() => {
+													return <ArrowIcon className={styles.icon} />;
+												}}
+											/>
+										}
+									/>
+								</Tooltip>
+							</form>
+						}
+					/>
+				)}
 			</div>
 		</div>
 	);

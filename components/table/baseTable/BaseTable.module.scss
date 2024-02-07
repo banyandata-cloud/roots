@@ -4,4 +4,10 @@
 	@include flex(column, flex-start, stretch);
 	background: $white;
 	overflow: auto;
+	&.no-scroll {
+		overflow: hidden;
+	}
+	.placeholder {
+		padding-block: 1.25rem;
+	}
 }

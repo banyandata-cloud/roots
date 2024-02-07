@@ -1,4 +1,4 @@
-import { Meta, Canvas, Story } from '@storybook/addon-docs';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import { ThemedContainer } from '../helpers';
 import { Pagination, usePagination } from './Pagination';
@@ -36,7 +36,7 @@ The default Pagination component.
 	<Story name='Default Pagination'>
 		{() => {
 			const [paginationState, paginationDispatch] = usePagination({
-				totalPages: 10,
+				totalPages: 20,
 				currentPage: 1,
 				totalData: 200,
 			});

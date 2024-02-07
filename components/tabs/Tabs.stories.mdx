@@ -1,9 +1,9 @@
-import { Meta, Canvas, Story } from '@storybook/addon-docs';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import { useState } from 'react';
-import Tabs from './Tabs';
-import { CaretIcon } from '../icons';
 import { ThemedContainer } from '../helpers';
+import { CaretIcon } from '../icons';
+import Tabs from './Tabs';
 
 <Meta title='Components/Tabs' parameters={{ options: { showToolbar: true } }} />
 
@@ -72,7 +72,6 @@ The default Tabs.
 					title: 'Tab4',
 				},
 			],
-			selectedTab: 'Tab1',
 			theme: 'light',
 		}}>
 		{Template.bind({})}
@@ -117,7 +116,7 @@ Tabs with with only left icon.
 					},
 				},
 			],
-			selectedTab: 'Tab1',
+			defaultSelected: '2',
 			theme: 'light',
 		}}>
 		{Template.bind({})}
@@ -162,7 +161,6 @@ Tabs with with right icon.
 					},
 				},
 			],
-			selectedTab: 'Tab1',
 			theme: 'light',
 		}}>
 		{Template.bind({})}
@@ -219,7 +217,6 @@ Tabs with with With both side icon.
 					},
 				},
 			],
-			selectedTab: 'Tab1',
 			theme: 'light',
 		}}>
 		{Template.bind({})}
@@ -248,16 +245,16 @@ Tabs With Dropdown Items.
 					title: 'Tab3',
 				},
 				{
-					id: 'multi',
-					title: 'Multiple Tabs',
+					id: '4',
+					title: 'Options',
+					dropdown: true,
 					dropdownItems: [
-						{ id: '4', title: 'Tab4' },
-						{ id: '5', title: 'Tab5' },
-						{ id: '6', title: 'Tab6' },
+						{ id: '4', title: 'Option 1 Big Title' },
+						{ id: '5', title: 'Option 2' },
+						{ id: '6', title: 'Option 3' },
 					],
 				},
 			],
-			selectedTab: 'Tab1',
 			theme: 'light',
 		}}>
 		{Template.bind({})}

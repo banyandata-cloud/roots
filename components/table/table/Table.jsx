@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import { useEffect, useRef, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { classes } from '../../../utils';
+import { ErrorBoundaryWrapper } from '../../errorBoundary';
+import { Pagination } from '../../pagination';
+import { TableColumn } from '../BaseTable.class';
 import { BaseTable } from '../baseTable';
+import styles from './Table.module.css';
 import { TableChips } from './tableChips';
 import { TableFilters } from './tableFilters';
-import { Pagination } from '../../pagination';
-import styles from './Table.module.css';
-import { TableColumn } from '../BaseTable.class';
-import { ErrorBoundaryWrapper } from '../../errorBoundary';
 
 const INTERSECTION = 1;
 const STEP = 0.05;

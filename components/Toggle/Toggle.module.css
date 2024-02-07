@@ -1,64 +1,91 @@
-div.root {
+.tabs-container {
+  width: -moz-fit-content;
+  width: fit-content;
+  background: var(--grey8);
+  border: 1px solid var(--mono-color2);
+  border-radius: 0.4375rem;
+  background: transparent;
+  font-weight: 500;
+  padding: 0.3125rem;
+}
+.tabs-container .tabs {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  overflow: auto;
-  gap: 0.25rem;
-  padding-left: 0.125rem;
-  padding-right: 0.125rem;
-  padding-top: 0.125rem;
-  padding-bottom: 0.125rem;
-  background: var(--grey8);
-  width: -moz-fit-content;
-  width: fit-content;
-  border-radius: 0.4375rem;
-  border-width: 1px;
-  border-style: solid;
-  border-color: var(--mono-colours-202, var(--mono-color2));
-  font-weight: 275;
-  background: transparent;
-  font-size: 0.75rem;
+  position: relative;
+  gap: 0.3375rem;
 }
-div.root [data-elem=base-cell].toggle-button {
-  background: transparent;
+.tabs-container .tabs > [data-elem=base-cell] {
+  height: 26px;
+  padding: 5px !important;
+  position: relative;
+  z-index: 2;
+  color: var(--black) !important;
 }
-div.root.theme-dark {
-  border-color: var(--dark-grey);
+.tabs-container .tabs > [data-elem=base-cell] > [data-elem=component1] > svg,
+.tabs-container .tabs > [data-elem=base-cell] > [data-elem=component3] > svg {
+  padding-top: 3px;
+  width: 2.2rem;
+  height: 2.2rem;
 }
-div.root.theme-dark [data-elem=base-cell].toggle-button {
-  color: var(--grey4);
+.tabs-container .tabs > [data-elem=base-cell].active {
+  background: var(--mono-color1);
 }
-div.root.theme-dark [data-elem=base-cell].toggle-button.active {
-  background: var(--dark-grey);
-  color: var(--white);
-  border: 1px solid var(--grey);
+.tabs-container .tabs > [data-elem=base-cell]:hover {
+  border-radius: 0.3375rem;
 }
-div.root.theme-light [data-elem=base-cell].toggle-button {
-  background: transparent;
-  color: var(--text-colour-20, #141920);
-  padding-top: 0.375rem;
-  padding-bottom: 0.375rem;
-  font-weight: 275;
+.tabs-container .tabs .tab > [data-elem=base-cell] {
+  height: 26px;
+  padding: 5px !important;
+  position: relative;
+  z-index: 2;
+  color: var(--black) !important;
 }
-div.root.theme-light [data-elem=base-cell].toggle-button.active {
-  background: var(--mono-colours-201, var(--mono-color1));
+.tabs-container .tabs .tab > [data-elem=base-cell] > [data-elem=component1] > svg,
+.tabs-container .tabs .tab > [data-elem=base-cell] > [data-elem=component3] > svg {
+  padding-top: 3px;
+  width: 2.2rem;
+  height: 2.2rem;
+}
+.tabs-container .tabs .tab > [data-elem=base-cell].active {
+  color: var(--white) !important;
+}
+.tabs-container .tabs .tab.dark-theme > [data-elem=base-cell] {
+  color: var(--white) !important;
+}
+.tabs-container .tabs .tab:hover {
+  border-radius: 0.3375rem;
+}
+.tabs-container .tabs .tab.disabled {
+  cursor: not-allowed;
+  color: var(--grey3);
+}
+.tabs-container .tabs .tab.selected {
+  background: var(--mono-color1);
   font-weight: 500;
-  color: var(--light-colours-203, #fff);
+  color: var(--white);
+  border-radius: 0.4375rem;
+}
+.tabs-container .tabs .tab.selected.dark-theme {
+  background: var(--dark-grey);
+  border: 0.5px solid var(--grey2);
+}
+.tabs-container .tabs .tab-slider {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 100%;
   border-radius: 0.3125rem;
-  border-width: 0rem;
+  font-weight: 500;
+  background: var(--mono-color1);
+  transition: left 0.2s ease-in-out, width 0.2s ease-in-out;
 }
-div.root.theme-light [data-elem=base-cell].toggle-button:hover:not(.active) {
-  cursor: pointer;
-  background: var(--mono-colours-202, var(--mono-color2));
+.tabs-container .tabs .tab-slider.dark-theme {
+  background: var(--dark-grey);
+  border: 1px solid var(--grey2);
 }
-div.root [data-elem=base-cell].toggle-button {
-  height: 2rem;
-}
-div.root [data-elem=base-cell].toggle-button.active {
-  border-radius: 0.3125rem;
-  border-width: 0rem;
-}
-div.root .input {
-  display: none;
+.tabs-container.dark-theme {
+  background-color: var(--black);
+  border: 1px solid var(--grey);
 }/*# sourceMappingURL=Toggle.module.css.map */

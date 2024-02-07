@@ -1,100 +1,148 @@
+/* eslint-disable react/no-array-index-key */
+import React, { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { classes } from '../../utils';
-import { Button } from '../buttons';
 import { Skeleton } from './Skeleton';
 import styles from './Tabs.module.css';
-import { Dropdown, DropdownItem } from '../input';
+import Dropdown from '../input/dropdown/Dropdown';
+import DropdownItem from '../input/dropdown/dropdown-item/DropdownItem';
+import { Button } from '../buttons';
 
 const Tabs = (props) => {
-	const { tabs, selectedTab, setSelectedTab, theme, loading, fallback, className } = props;
+	const { tabs, className, loading, fallback, selectedTab, setSelectedTab, defaultSelected } =
+		props;
 
-	const onTabClick = (id) => {
-		setSelectedTab(id);
+	const [sliderLeft, setSliderLeft] = useState(0);
+	const [sliderWidth, setSliderWidth] = useState(0);
+	const sliderRef = useRef(null);
+	const dropdownTabRefs = useRef([]);
+
+	const getDefaultSelectedIndex = () => {
+		if (defaultSelected) {
+			const index = tabs.findIndex((tab) => {
+				return tab.id === defaultSelected;
+			});
+			return index !== -1 ? index : 0;
+		}
+		return 0;
+	};
+
+	const [activeTab, setActiveTab] = useState(selectedTab || getDefaultSelectedIndex());
+
+	const updateSliderPosition = () => {
+		const activeTabElement = dropdownTabRefs.current[activeTab] || sliderRef.current;
+
+		if (activeTabElement) {
+			setSliderLeft(activeTabElement.offsetLeft);
+			setSliderWidth(activeTabElement.offsetWidth);
+		}
+	};
+
+	useEffect(() => {
+		updateSliderPosition();
+	}, [activeTab, tabs, selectedTab]);
+
+	const handleTabClick = (index) => {
+		const clickedTab = tabs[index];
+
+		setSelectedTab(clickedTab.id);
+		setActiveTab(index);
+	};
+
+	const handleDropClick = (selectedValue) => {
+		setSelectedTab(selectedValue);
+		updateSliderPosition();
 	};
 
 	if (loading || fallback) {
-		return <Skeleton theme={theme} fallback={!loading && fallback} />;
+		return <Skeleton fallback={!loading && fallback} />;
 	}
 
 	return (
-		<div className={classes(styles.root, styles[`${theme}-theme`], className)}>
-			{tabs?.map((tab) => {
-				const {
-					id,
-					title,
-					leftIcon: LeftIcon,
-					rightIcon: RightIcon,
-					disabled,
-					dropdownItems,
-				} = tab;
-
-				const buttonProps = {
-					size: 'auto',
-					color: 'default',
-					radius: 'none',
-					variant: 'text',
-					disabled,
-					leftComponent:
-						LeftIcon &&
-						(() => {
-							return <LeftIcon className={styles.icon} />;
-						}),
-				};
-
-				if (dropdownItems) {
-					const selected = !!dropdownItems?.find((item) => {
-						return item.id === selectedTab;
-					});
+		<div className={`${styles['tabs-container']} ${className}`}>
+			<div className={styles.tabs}>
+				{tabs.map((tab, index) => {
+					const isActive = index === activeTab;
+					const {
+						id,
+						title,
+						leftIcon: LeftIcon,
+						rightIcon: RightIcon,
+						disabled,
+						dropdown,
+						dropdownItems,
+					} = tab;
 
 					return (
-						<Button
-							key={id}
-							{...buttonProps}
-							className={classes(styles.main, selected ? styles.active : '')}
-							rightComponent={() => {
-								return (
-									<Dropdown
-										className={styles.dropdown}
-										onChange={(event, value) => {
-											onTabClick(value);
-										}}
-										placeholder={title}
-										value={selectedTab ?? dropdownItems[0].id}>
-										{dropdownItems.map((option) => {
-											return (
-												<DropdownItem
-													className={styles.item}
-													key={option.id}
-													title={option.title}
-													value={option.id}
-												/>
-											);
-										})}
-									</Dropdown>
-								);
+						<div
+							key={index}
+							ref={(ref) => {
+								dropdownTabRefs.current[index] = ref;
 							}}
-						/>
+							className={`${styles.tab} ${index === activeTab ? styles.active : ''}`}>
+							{dropdown ? (
+								<Dropdown
+									className={`${styles.dropdown} ${
+										isActive ? styles.active : ''
+									}`}
+									onChange={(event) => {
+										const selectedValue = event.target.value;
+										handleDropClick(selectedValue);
+										setActiveTab(index);
+									}}
+									value={selectedTab}
+									placeholder={title}
+									// value={!isActive ? title : undefined}
+								>
+									{dropdownItems.map((option) => {
+										return (
+											<DropdownItem
+												key={option.id}
+												title={option.title}
+												value={option.id}
+											/>
+										);
+									})}
+								</Dropdown>
+							) : (
+								<Button
+									size='auto'
+									color='default'
+									radius='none'
+									key={id}
+									variant='text'
+									disabled={disabled}
+									className={isActive ? styles.active : ''}
+									title={title}
+									onClick={() => {
+										return handleTabClick(index);
+									}}
+									leftComponent={
+										LeftIcon &&
+										(() => {
+											return <LeftIcon className={styles.icon} />;
+										})
+									}
+									rightComponent={
+										RightIcon &&
+										(() => {
+											return <RightIcon className={styles.icon} />;
+										})
+									}
+								/>
+							)}
+						</div>
 					);
-				}
+				})}
 
-				return (
-					<Button
-						key={id}
-						{...buttonProps}
-						onClick={() => {
-							onTabClick(id);
-						}}
-						title={title}
-						className={classes(styles.tab, selectedTab === id ? styles.active : '')}
-						rightComponent={
-							RightIcon &&
-							(() => {
-								return <RightIcon className={styles.icon} />;
-							})
-						}
-					/>
-				);
-			})}
+				<div
+					className={styles['tab-slider']}
+					style={{
+						left: `${sliderLeft}px`,
+						width: `${sliderWidth}px`,
+					}}
+				/>
+			</div>
+			<div className={styles['tab-content']} />
 		</div>
 	);
 };
@@ -102,21 +150,19 @@ const Tabs = (props) => {
 Tabs.propTypes = {
 	className: PropTypes.string,
 	tabs: PropTypes.arrayOf(PropTypes.string),
-	selectedTab: PropTypes.string,
-	setSelectedTab: PropTypes.func,
-	theme: PropTypes.oneOf(['light', 'dark']),
+	selectedTab: PropTypes.number,
 	loading: PropTypes.bool,
 	fallback: PropTypes.bool,
+	defaultSelected: PropTypes.string,
 };
 
 Tabs.defaultProps = {
 	className: '',
 	tabs: [],
 	selectedTab: null,
-	setSelectedTab: () => {},
-	theme: 'light',
 	loading: false,
 	fallback: false,
+	defaultSelected: '',
 };
 
 export default Tabs;

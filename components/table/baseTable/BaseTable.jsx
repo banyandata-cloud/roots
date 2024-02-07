@@ -5,6 +5,7 @@ import { classes } from '../../../utils';
 import { TableColumn } from '../BaseTable.class';
 import { TableBody } from '../body';
 import { TableHeader } from '../header';
+import { NoDataPlaceHolder } from '../placeholders/noData/general';
 import styles from './BaseTable.module.css';
 import { Skeleton } from './Skeleton';
 
@@ -33,7 +34,14 @@ const BaseTable = forwardRef(function BaseTable(props, ref) {
 	});
 
 	return (
-		<table ref={ref} data-elem='table' className={classes(styles.root, className)}>
+		<table
+			ref={ref}
+			data-elem='table'
+			className={classes(
+				styles.root,
+				tableData?.length === 0 ? styles['no-scroll'] : '',
+				className
+			)}>
 			<TableHeader
 				{...{
 					headerData: transformedHeaderData,
@@ -44,18 +52,22 @@ const BaseTable = forwardRef(function BaseTable(props, ref) {
 					onRowClick,
 				}}
 			/>
-			<TableBody
-				{...{
-					ref,
-					headerData: transformedHeaderData,
-					customCells,
-					tableData,
-					expandable,
-					rowHeight,
-					onRowClick,
-					defaultActiveIndex,
-				}}
-			/>
+			{tableData?.length === 0 ? (
+				<NoDataPlaceHolder className={styles.placeholder} />
+			) : (
+				<TableBody
+					{...{
+						ref,
+						headerData: transformedHeaderData,
+						customCells,
+						tableData,
+						expandable,
+						rowHeight,
+						onRowClick,
+						defaultActiveIndex,
+					}}
+				/>
+			)}
 		</table>
 	);
 });
