@@ -1,3 +1,5 @@
+import { motion } from 'framer-motion';
+
 const RadioIcon = {
 	Checked: (props) => {
 		const { className } = props;
@@ -8,7 +10,18 @@ const RadioIcon = {
 				fill='none'
 				xmlns='http://www.w3.org/2000/svg'>
 				<rect x='0.5' y='0.5' width='19' height='19' rx='9.5' fill='#EDF5FF' />
-				<circle cx='10' cy='10' r='4' fill='#0F62FE' />
+				<motion.circle
+					initial={{
+						opacity: 0,
+					}}
+					animate={{
+						opacity: 1,
+					}}
+					fill='#0F62FE'
+					cx='10'
+					cy='10'
+					r='4'
+				/>
 				<rect x='0.5' y='0.5' width='19' height='19' rx='9.5' stroke='#0F62FE' />
 			</svg>
 		);

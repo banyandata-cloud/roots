@@ -16,6 +16,12 @@ const Tabs = (props) => {
 	const dropdownTabRefs = useRef([]);
 
 	const tabIndex = tabs?.findIndex((tab) => {
+		if (tab.dropdown) {
+			const dropdownItem = tab.dropdownItems?.find((item) => {
+				return item.id === selectedTab;
+			});
+			return !!dropdownItem;
+		}
 		return tab.id === selectedTab;
 	});
 

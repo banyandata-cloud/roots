@@ -1,17 +1,18 @@
 /* eslint-disable react/forbid-prop-types */
+import PropTypes from 'prop-types';
 import React, { createElement, forwardRef, useRef, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import { ErrorBoundaryWrapper } from '../../errorBoundary';
-import PropTypes from 'prop-types';
 import { mergeRefs } from 'react-merge-refs';
-import styles from './TextField.module.css';
 import { classes, inputHelper } from '../../../utils/utils';
 import { BaseCell } from '../../cell';
+import { ErrorBoundaryWrapper } from '../../errorBoundary';
 import { Popover } from '../../popover';
+import styles from './TextField.module.css';
 
 /**
  * TextField is a functional component that renders a text input field with customizable options.
- * It handles both controlled and uncontrolled input values and provides a way to open an autocomplete popover.
+ * It handles both controlled and uncontrolled input values
+ * and provides a way to open an autocomplete popover.
  *
  * @param {object} - An object containing various properties to configure the TextField component.
  * @param {string} id - The id of the input field.
