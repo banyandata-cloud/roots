@@ -4,7 +4,7 @@
 	width: fit-content;
 	background: $grey8;
 	border: 1px solid $mono-color2;
-	border-radius: 0.4375rem;
+	border-radius: 0.3125rem;
 	background: transparent;
 	font-weight: 500;
 	padding: 0.3125rem;
@@ -39,7 +39,7 @@
 
 		.tab {
 			> [data-elem='base-cell'] {
-				height: 26px;
+				height: fit-content;
 				padding: 5px !important;
 				position: relative;
 				z-index: 2;

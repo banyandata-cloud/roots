@@ -1,32 +1,27 @@
 /* eslint-disable react/no-array-index-key */
-import React, { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { Skeleton } from './Skeleton';
-import styles from './Tabs.module.css';
+import React, { useEffect, useRef, useState } from 'react';
+import { Button } from '../buttons';
 import Dropdown from '../input/dropdown/Dropdown';
 import DropdownItem from '../input/dropdown/dropdown-item/DropdownItem';
-import { Button } from '../buttons';
+import { Skeleton } from './Skeleton';
+import styles from './Tabs.module.css';
 
 const Tabs = (props) => {
-	const { tabs, className, loading, fallback, selectedTab, setSelectedTab, defaultSelected } =
-		props;
+	const { tabs, className, loading, fallback, selectedTab, setSelectedTab } = props;
 
 	const [sliderLeft, setSliderLeft] = useState(0);
 	const [sliderWidth, setSliderWidth] = useState(0);
 	const sliderRef = useRef(null);
 	const dropdownTabRefs = useRef([]);
 
-	const getDefaultSelectedIndex = () => {
-		if (defaultSelected) {
-			const index = tabs.findIndex((tab) => {
-				return tab.id === defaultSelected;
-			});
-			return index !== -1 ? index : 0;
-		}
-		return 0;
-	};
+	const tabIndex = tabs?.findIndex((tab) => {
+		return tab.id === selectedTab;
+	});
 
-	const [activeTab, setActiveTab] = useState(selectedTab || getDefaultSelectedIndex());
+	const selectedTabIndex = tabIndex !== -1 ? tabIndex : 0;
+
+	const [activeTab, setActiveTab] = useState(selectedTabIndex);
 
 	const updateSliderPosition = () => {
 		const activeTabElement = dropdownTabRefs.current[activeTab] || sliderRef.current;
@@ -41,10 +36,8 @@ const Tabs = (props) => {
 		updateSliderPosition();
 	}, [activeTab, tabs, selectedTab]);
 
-	const handleTabClick = (index) => {
-		const clickedTab = tabs[index];
-
-		setSelectedTab(clickedTab.id);
+	const handleTabClick = (id, index) => {
+		setSelectedTab(id);
 		setActiveTab(index);
 	};
 
@@ -61,7 +54,7 @@ const Tabs = (props) => {
 		<div className={`${styles['tabs-container']} ${className}`}>
 			<div className={styles.tabs}>
 				{tabs.map((tab, index) => {
-					const isActive = index === activeTab;
+					const isActive = tab.id === selectedTab;
 					const {
 						id,
 						title,
@@ -74,11 +67,11 @@ const Tabs = (props) => {
 
 					return (
 						<div
-							key={index}
+							key={tab.id}
 							ref={(ref) => {
 								dropdownTabRefs.current[index] = ref;
 							}}
-							className={`${styles.tab} ${index === activeTab ? styles.active : ''}`}>
+							className={`${styles.tab} ${isActive ? styles.active : ''}`}>
 							{dropdown ? (
 								<Dropdown
 									className={`${styles.dropdown} ${
@@ -114,7 +107,7 @@ const Tabs = (props) => {
 									className={isActive ? styles.active : ''}
 									title={title}
 									onClick={() => {
-										return handleTabClick(index);
+										return handleTabClick(tab.id, index);
 									}}
 									leftComponent={
 										LeftIcon &&
@@ -153,7 +146,6 @@ Tabs.propTypes = {
 	selectedTab: PropTypes.number,
 	loading: PropTypes.bool,
 	fallback: PropTypes.bool,
-	defaultSelected: PropTypes.string,
 };
 
 Tabs.defaultProps = {
@@ -162,7 +154,6 @@ Tabs.defaultProps = {
 	selectedTab: null,
 	loading: false,
 	fallback: false,
-	defaultSelected: '',
 };
 
 export default Tabs;
