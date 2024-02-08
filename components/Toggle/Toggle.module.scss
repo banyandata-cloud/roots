@@ -94,7 +94,10 @@
 			border-radius: 0.3125rem;
 			font-weight: 500;
 			background: $mono-color1;
-			transition: left 0.2s ease-in-out, width 0.2s ease-in-out;
+
+			&.smooth {
+				transition: left 0.2s ease-in-out, width 0.2s ease-in-out;
+			}
 
 			&.dark-theme {
 				background: $dark-grey;

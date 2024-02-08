@@ -1,10 +1,10 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable no-lonely-if */
 import PropTypes from 'prop-types';
-import { useRef, useState, useEffect } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { Button } from '../buttons';
 import { Skeleton } from './Skeleton';
 import styles from './Toggle.module.css';
-import { Button } from '../buttons';
 
 // eslint-disable-next-line prefer-arrow-callback
 const Toggle = (props) => {
@@ -18,6 +18,7 @@ const Toggle = (props) => {
 		loading,
 		fallback,
 		className,
+		smooth,
 	} = props;
 	const [selectedTabs, setSelectedTabs] = useState([]);
 	const [activeTab, setActiveTab] = useState(0);
@@ -207,7 +208,7 @@ const Toggle = (props) => {
 				<div
 					className={`${styles['tab-slider']} ${
 						theme === 'dark' ? styles['dark-theme'] : ''
-					}`}
+					} ${smooth ? styles.smooth : ''}`}
 					style={{
 						left: `${sliderLeft}px`,
 						width: `${sliderWidth}px`,
@@ -227,6 +228,7 @@ Toggle.propTypes = {
 	defaultSelected: PropTypes.string,
 	value: PropTypes.string,
 	multi: PropTypes.bool,
+	smooth: PropTypes.bool,
 };
 
 Toggle.defaultProps = {
@@ -238,6 +240,7 @@ Toggle.defaultProps = {
 	defaultSelected: null,
 	value: undefined,
 	multi: false,
+	smooth: false,
 };
 
 export default Toggle;
