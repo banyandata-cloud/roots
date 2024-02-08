@@ -6,13 +6,27 @@ import {
 	useFloating,
 	useInteractions,
 } from '@floating-ui/react-dom-interactions';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import PropTypes from 'prop-types';
 import { classes } from '../../utils';
+import { Button } from '../buttons';
 import { CrossIcon } from '../icons';
 import { Popper } from '../popper';
-import { Button } from '../buttons';
 import styles from './BaseModal.module.css';
+
+const footerAnimations = {
+	initial: {
+		opacity: 0,
+		y: '50%',
+	},
+	animate: {
+		opacity: 1,
+		y: 0,
+	},
+	transition: {
+		duration: 0.5,
+	},
+};
 
 /**
  * Renders a modal dialog with customizable header, body, and footer content.
@@ -91,7 +105,12 @@ const BaseModal = (props) => {
 								{children}
 							</div>
 							{renderFooter && (
-								<footer data-elem='footer' className={styles.footer}>
+								<motion.footer
+									{...(animation && {
+										...footerAnimations,
+									})}
+									data-elem='footer'
+									className={styles.footer}>
 									{(() => {
 										if (typeof renderFooter !== 'function') {
 											return renderFooter;
@@ -100,7 +119,7 @@ const BaseModal = (props) => {
 											...bodyProps,
 										});
 									})()}
-								</footer>
+								</motion.footer>
 							)}
 							{!hideCrossDismiss && (
 								<Button
@@ -144,21 +163,26 @@ BaseModal.defaultProps = {
 	toggle: () => {},
 	noDismiss: false,
 	hideCrossDismiss: false,
-	animation: false,
+	animation: true,
 	animationProperties: {
 		initial: {
-			y: '100%',
-			x: '100%',
+			opacity: 0,
+			scale: 0,
+			x: '-50%',
+			y: '-50%',
 		},
 		animate: {
+			opacity: 1,
+			scale: 1,
 			x: '-50%',
 			y: '-50%',
 		},
 		exit: {
-			x: '100%',
+			scale: 0,
+			opacity: 0,
 		},
 		transition: {
-			duration: 0.25,
+			duration: 0.15,
 		},
 	},
 };

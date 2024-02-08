@@ -3,7 +3,7 @@
   width: fit-content;
   background: var(--grey8);
   border: 1px solid var(--mono-color2);
-  border-radius: 0.4375rem;
+  border-radius: 0.3125rem;
   background: transparent;
   font-weight: 500;
   padding: 0.3125rem;
@@ -36,7 +36,8 @@
   border-radius: 0.3375rem;
 }
 .tabs-container .tabs .tab > [data-elem=base-cell] {
-  height: 26px;
+  height: -moz-fit-content;
+  height: fit-content;
   padding: 5px !important;
   position: relative;
   z-index: 2;
