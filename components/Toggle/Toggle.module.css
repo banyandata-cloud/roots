@@ -79,6 +79,8 @@
   border-radius: 0.3125rem;
   font-weight: 500;
   background: var(--mono-color1);
+}
+.tabs-container .tabs .tab-slider.smooth {
   transition: left 0.2s ease-in-out, width 0.2s ease-in-out;
 }
 .tabs-container .tabs .tab-slider.dark-theme {

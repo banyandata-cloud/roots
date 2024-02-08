@@ -8,19 +8,19 @@ import {
 	useMemo,
 	useState,
 } from 'react';
-import styles from './BaseWidget.module.css';
-import { ArrowIcon, CaretIcon, MaximizeIcon } from '../icons';
-import { Dropdown, DropdownItem } from '../input';
-import { Toggle } from '../Toggle';
 import { classes } from '../../utils';
-import { WidgetFallback } from './fallback';
-import { Text } from '../text';
-import { Popover } from '../popover';
+import { Toggle } from '../Toggle';
 import { BaseButton, Button } from '../buttons';
 import { DatePicker } from '../datePicker';
+import { ArrowIcon, CaretIcon, MaximizeIcon } from '../icons';
+import { Dropdown, DropdownItem } from '../input';
+import { Popover } from '../popover';
+import { Text } from '../text';
+import styles from './BaseWidget.module.css';
+import { WidgetFallback } from './fallback';
 
 const renderToggle = (optionData, theme) => {
-	return <Toggle className={styles['toggle-body']} theme={theme} {...optionData} />;
+	return <Toggle className={styles['toggle-body']} theme={theme} smooth {...optionData} />;
 };
 const generateOptions = (optionData, theme) => {
 	switch (optionData?.id ?? '') {

@@ -167,19 +167,33 @@ export const Pagination = forwardRef((props, ref) => {
 				</div>
 			)}
 			<div className={styles.options}>
-				<Text
-					variant='b1'
-					stroke='medium'
-					className={styles['total-data']}
-					attrs={{
-						title: `${(currentPage - 1) * step + 1}-${
-							currentPage * step
-						} of ${totalData}`,
-					}}>
-					<Text>Displaying</Text> {(currentPage - 1) * step + 1}-
-					{currentPage === totalPages && totalData ? totalData : currentPage * step} of{' '}
-					{totalData ?? 'total'} <Text>{dataLabel ?? 'records'}</Text>
-				</Text>
+				{totalData || totalPages ? (
+					<Text
+						variant='b1'
+						stroke='medium'
+						className={styles['total-data']}
+						attrs={{
+							title: `${(currentPage - 1) * step + 1}-${
+								currentPage * step
+							} of ${totalData}`,
+						}}>
+						<Text>Displaying</Text> {(currentPage - 1) * step + 1}-
+						{currentPage === totalPages && totalData ? totalData : currentPage * step}{' '}
+						of {totalData ?? 'total'} <Text>{dataLabel ?? 'records'}</Text>
+					</Text>
+				) : (
+					<Text
+						variant='b1'
+						stroke='medium'
+						className={styles['total-data']}
+						attrs={{
+							title: `${(currentPage - 1) * step + 1}-${
+								currentPage * step
+							} of ${totalData}`,
+						}}>
+						<Text>No available {dataLabel ?? 'records'} at the moment</Text>
+					</Text>
+				)}
 				{showPages && (
 					<BaseCell
 						size='auto'
