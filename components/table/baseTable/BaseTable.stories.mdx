@@ -58,6 +58,7 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 				new TableColumn({
 					title: 'Designation',
 					id: 'designation',
+					fallbackValue: 'NA'
 				}),
 				new TableColumn({
 					title: 'State',
@@ -77,7 +78,7 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					name: 'Jaidev Singh Bhui',
 					gender: 'M',
 					age: 23,
-					designation: 'UI Engineer',
+					designation: null,
 					state: 'Delhi',
 				},
 				...[...Array(30).keys()].map(() => {

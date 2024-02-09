@@ -8,6 +8,7 @@ export class TableColumn {
 	constructor({
 		title = '',
 		id = '',
+		fallbackValue = '-',
 		sort = false,
 		size = 'md',
 		flexible = false,
@@ -18,6 +19,7 @@ export class TableColumn {
 	}) {
 		this.title = title;
 		this.id = id;
+		this.fallbackValue = fallbackValue;
 		this.sort = sort;
 		this.size = size;
 		this.sizeInRem = SIZE_MAP[size];

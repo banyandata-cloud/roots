@@ -39,7 +39,7 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 			datum: {
 				name: 'Aryan Dixit',
 				age: 27,
-				designation: 'UI Engineer',
+				designation: null,
 				state: 'UP',
 			},
 			onRowClick: (datum, setActiveId) => {
@@ -59,6 +59,7 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 				new TableColumn({
 					title: 'Designation',
 					id: 'designation',
+					fallbackValue: 'Fallback',
 				}),
 				new TableColumn({
 					title: 'State',
