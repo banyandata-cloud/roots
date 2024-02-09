@@ -10,13 +10,14 @@
 		@include flex(row, flex-start);
 		position: relative;
 		gap: 0.3375rem;
-
+		height: 100%;
 		> button[data-elem='base-cell'].toggle-button {
 			position: relative;
 			z-index: 2;
 			background: transparent;
 			min-width: 5rem;
 			width: auto;
+			height: auto;
 			> [data-elem='component2'] {
 				> [data-elem='title'] {
 					color: $black;
@@ -40,6 +41,13 @@
 
 			&.all-select {
 				background-color: $mono-color1;
+				> [data-elem='component2'] {
+					> [data-elem='title'] {
+						color: $white;
+					}
+				}
+			}
+			&.dark {
 				> [data-elem='component2'] {
 					> [data-elem='title'] {
 						color: $white;
