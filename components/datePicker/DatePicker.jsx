@@ -1,27 +1,27 @@
-import React, { useState, useRef } from 'react';
-import { ErrorBoundary } from 'react-error-boundary';
-import PropTypes from 'prop-types';
 import {
+	useClick,
+	useDismiss,
 	useFloating,
 	useInteractions,
-	useDismiss,
-	useClick,
 } from '@floating-ui/react-dom-interactions';
+import PropTypes from 'prop-types';
+import React, { useRef, useState } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 import { useOutsideClickListener } from '../../hooks';
 import { classes } from '../../utils';
-import { Calender } from './calender';
+import { Button } from '../buttons';
+import { ErrorBoundaryWrapper } from '../errorBoundary';
 import { CalenderIcon, CaretIcon, ClockIcon, CrossIcon } from '../icons';
 import { Popper } from '../popper';
 import styles from './DatePicker.module.css';
+import { Calender } from './calender';
+import { DateAndTimeCustomRanges } from './customRanges';
 import {
 	getDatePickerDisplayValue,
 	getDateRangeTag,
-	isMaxRangeExceeded,
 	getFloatingReferences,
+	isMaxRangeExceeded,
 } from './utils';
-import { Button } from '../buttons';
-import { DateAndTimeCustomRanges } from './customRanges';
-import { ErrorBoundaryWrapper } from '../errorBoundary';
 
 const DatePicker = (props) => {
 	const {
@@ -195,6 +195,7 @@ const DatePicker = (props) => {
 						data-elem='header'
 						ref={datePickerFloatingReference.reference}
 						role='button'
+						tabIndex={0}
 						className={classes(
 							styles.container,
 							disabled ? styles.disabled : '',

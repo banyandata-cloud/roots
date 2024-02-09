@@ -12,6 +12,7 @@
   align-items: center;
   position: relative;
   gap: 0.3375rem;
+  height: 100%;
 }
 .root .toggle > button[data-elem=base-cell].toggle-button {
   position: relative;
@@ -19,6 +20,7 @@
   background: transparent;
   min-width: 5rem;
   width: auto;
+  height: auto;
 }
 .root .toggle > button[data-elem=base-cell].toggle-button > [data-elem=component2] > [data-elem=title] {
   color: var(--black);
@@ -37,6 +39,9 @@
   background-color: var(--mono-color1);
 }
 .root .toggle > button[data-elem=base-cell].toggle-button.all-select > [data-elem=component2] > [data-elem=title] {
+  color: var(--white);
+}
+.root .toggle > button[data-elem=base-cell].toggle-button.dark > [data-elem=component2] > [data-elem=title] {
   color: var(--white);
 }
 .root .toggle .slider {
