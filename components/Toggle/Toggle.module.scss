@@ -1,71 +1,36 @@
 @import '../../styles/_index';
 
-.tabs-container {
+.root {
 	width: fit-content;
-	background: $grey8;
-	border: 1px solid $mono-color2;
 	border-radius: 0.3125rem;
-	background: transparent;
 	font-weight: 500;
 	padding: 0.3125rem;
 
-	.tabs {
+	.toggle {
 		@include flex(row, flex-start);
 		position: relative;
 		gap: 0.3375rem;
 
-		> [data-elem='base-cell'] {
-			height: 26px;
-			padding: 5px !important;
+		> button[data-elem='base-cell'].toggle-button {
 			position: relative;
 			z-index: 2;
-			color: $black !important;
-
-			> [data-elem='component1'],
-			> [data-elem='component3'] {
-				> svg {
-					padding-top: 3px;
-					width: 2.2rem;
-					height: 2.2rem;
+			background: transparent;
+			min-width: 5rem;
+			width: auto;
+			> [data-elem='component2'] {
+				> [data-elem='title'] {
+					color: $black;
 				}
 			}
 			&.active {
-				background: $mono-color1;
-			}
-			&:hover {
-				border-radius: 0.3375rem;
-			}
-		}
-
-		.tab {
-			> [data-elem='base-cell'] {
-				height: fit-content;
-				padding: 5px !important;
-				position: relative;
-				z-index: 2;
-				color: $black !important;
-
-				> [data-elem='component1'],
-				> [data-elem='component3'] {
-					> svg {
-						padding-top: 3px;
-						width: 2.2rem;
-						height: 2.2rem;
+				&.highlight {
+					background-color: $mono-color1;
+				}
+				> [data-elem='component2'] {
+					> [data-elem='title'] {
+						color: $white;
 					}
 				}
-				&.active {
-					color: $white !important;
-				}
-			}
-
-			&.dark-theme {
-				> [data-elem='base-cell'] {
-					color: $white !important;
-				}
-			}
-
-			&:hover {
-				border-radius: 0.3375rem;
 			}
 
 			&.disabled {
@@ -73,20 +38,17 @@
 				color: $grey3;
 			}
 
-			&.selected {
-				background: $mono-color1;
-				font-weight: 500;
-				color: $white;
-				border-radius: 0.4375rem;
-			}
-
-			&.selected.dark-theme {
-				background: $dark-grey;
-				border: 0.5px solid $grey2;
+			&.all-select {
+				background-color: $mono-color1;
+				> [data-elem='component2'] {
+					> [data-elem='title'] {
+						color: $white;
+					}
+				}
 			}
 		}
 
-		.tab-slider {
+		.slider {
 			position: absolute;
 			bottom: 0;
 			left: 0;
@@ -99,15 +61,19 @@
 				transition: left 0.2s ease-in-out, width 0.2s ease-in-out;
 			}
 
-			&.dark-theme {
+			&.dark {
 				background: $dark-grey;
 				border: 1px solid $grey2;
 			}
 		}
 	}
 
-	&.dark-theme {
-		background-color: $black;
+	&.dark {
+		background: $black;
 		border: 1px solid $grey;
+	}
+	&.light {
+		background: $grey8;
+		border: 1px solid $mono-color2;
 	}
 }

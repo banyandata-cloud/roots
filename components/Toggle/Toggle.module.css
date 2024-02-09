@@ -1,14 +1,11 @@
-.tabs-container {
+.root {
   width: -moz-fit-content;
   width: fit-content;
-  background: var(--grey8);
-  border: 1px solid var(--mono-color2);
   border-radius: 0.3125rem;
-  background: transparent;
   font-weight: 500;
   padding: 0.3125rem;
 }
-.tabs-container .tabs {
+.root .toggle {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -16,63 +13,33 @@
   position: relative;
   gap: 0.3375rem;
 }
-.tabs-container .tabs > [data-elem=base-cell] {
-  height: 26px;
-  padding: 5px !important;
+.root .toggle > button[data-elem=base-cell].toggle-button {
   position: relative;
   z-index: 2;
-  color: var(--black) !important;
+  background: transparent;
+  min-width: 5rem;
+  width: auto;
 }
-.tabs-container .tabs > [data-elem=base-cell] > [data-elem=component1] > svg,
-.tabs-container .tabs > [data-elem=base-cell] > [data-elem=component3] > svg {
-  padding-top: 3px;
-  width: 2.2rem;
-  height: 2.2rem;
+.root .toggle > button[data-elem=base-cell].toggle-button > [data-elem=component2] > [data-elem=title] {
+  color: var(--black);
 }
-.tabs-container .tabs > [data-elem=base-cell].active {
-  background: var(--mono-color1);
+.root .toggle > button[data-elem=base-cell].toggle-button.active.highlight {
+  background-color: var(--mono-color1);
 }
-.tabs-container .tabs > [data-elem=base-cell]:hover {
-  border-radius: 0.3375rem;
+.root .toggle > button[data-elem=base-cell].toggle-button.active > [data-elem=component2] > [data-elem=title] {
+  color: var(--white);
 }
-.tabs-container .tabs .tab > [data-elem=base-cell] {
-  height: -moz-fit-content;
-  height: fit-content;
-  padding: 5px !important;
-  position: relative;
-  z-index: 2;
-  color: var(--black) !important;
-}
-.tabs-container .tabs .tab > [data-elem=base-cell] > [data-elem=component1] > svg,
-.tabs-container .tabs .tab > [data-elem=base-cell] > [data-elem=component3] > svg {
-  padding-top: 3px;
-  width: 2.2rem;
-  height: 2.2rem;
-}
-.tabs-container .tabs .tab > [data-elem=base-cell].active {
-  color: var(--white) !important;
-}
-.tabs-container .tabs .tab.dark-theme > [data-elem=base-cell] {
-  color: var(--white) !important;
-}
-.tabs-container .tabs .tab:hover {
-  border-radius: 0.3375rem;
-}
-.tabs-container .tabs .tab.disabled {
+.root .toggle > button[data-elem=base-cell].toggle-button.disabled {
   cursor: not-allowed;
   color: var(--grey3);
 }
-.tabs-container .tabs .tab.selected {
-  background: var(--mono-color1);
-  font-weight: 500;
+.root .toggle > button[data-elem=base-cell].toggle-button.all-select {
+  background-color: var(--mono-color1);
+}
+.root .toggle > button[data-elem=base-cell].toggle-button.all-select > [data-elem=component2] > [data-elem=title] {
   color: var(--white);
-  border-radius: 0.4375rem;
 }
-.tabs-container .tabs .tab.selected.dark-theme {
-  background: var(--dark-grey);
-  border: 0.5px solid var(--grey2);
-}
-.tabs-container .tabs .tab-slider {
+.root .toggle .slider {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -81,14 +48,18 @@
   font-weight: 500;
   background: var(--mono-color1);
 }
-.tabs-container .tabs .tab-slider.smooth {
+.root .toggle .slider.smooth {
   transition: left 0.2s ease-in-out, width 0.2s ease-in-out;
 }
-.tabs-container .tabs .tab-slider.dark-theme {
+.root .toggle .slider.dark {
   background: var(--dark-grey);
   border: 1px solid var(--grey2);
 }
-.tabs-container.dark-theme {
-  background-color: var(--black);
+.root.dark {
+  background: var(--black);
   border: 1px solid var(--grey);
+}
+.root.light {
+  background: var(--grey8);
+  border: 1px solid var(--mono-color2);
 }/*# sourceMappingURL=Toggle.module.css.map */
