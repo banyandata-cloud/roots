@@ -121,14 +121,22 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 	const titleText = (
 		<Text className={styles['title-container']}>
 			<Text className={styles['title-primary']}>
-				<Text
-					variant='h2'
-					stroke='semibold'
-					attrs={{
-						'data-elem': 'title',
-					}}>
-					{title} {subtitle && '-'}
-				</Text>
+				{title ? (
+					<Text
+						variant='h2'
+						stroke='semibold'
+						attrs={{
+							'data-elem': 'title',
+						}}>
+						{title} {subtitle && '-'}
+					</Text>
+				) : (
+					<div
+						className={classes(styles['header-options-toggle'])}
+						data-elem='header-options-toggle'>
+						{(toggle?.options?.length ?? 0) > 0 && renderToggle(toggle, theme)}
+					</div>
+				)}
 				{subtitle && (
 					<Text
 						variant='b1'
@@ -217,11 +225,13 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 						(toggle?.options?.length ?? 0) > 0 && styles.toggle
 					)}
 					data-elem='header-options'>
-					<div
-						className={classes(styles['header-options-toggle'])}
-						data-elem='header-options-toggle'>
-						{(toggle?.options?.length ?? 0) > 0 && renderToggle(toggle, theme)}
-					</div>
+					{title && (
+						<div
+							className={classes(styles['header-options-toggle'])}
+							data-elem='header-options-toggle'>
+							{(toggle?.options?.length ?? 0) > 0 && renderToggle(toggle, theme)}
+						</div>
+					)}
 					<div
 						className={classes(styles['header-options-list'])}
 						data-elem='header-options-list'>
