@@ -1,17 +1,18 @@
-import React, { cloneElement, useRef, useState, forwardRef } from 'react';
-import PropTypes from 'prop-types';
 import { arrow, autoUpdate, flip, offset, shift } from '@floating-ui/react-dom';
 import {
-	useFloating,
 	useDismiss,
+	useFloating,
 	useFocus,
 	useHover,
 	useInteractions,
 	useRole,
 } from '@floating-ui/react-dom-interactions';
+import { motion } from 'framer-motion';
+import PropTypes from 'prop-types';
+import React, { cloneElement, forwardRef, useRef, useState } from 'react';
 import { mergeRefs } from 'react-merge-refs';
-import { Popper } from '../popper';
 import { classes } from '../../utils';
+import { Popper } from '../popper';
 import styles from './Tooltip.module.css';
 
 // eslint-disable-next-line prefer-arrow-callback
@@ -84,7 +85,7 @@ const Tooltip = forwardRef(function Tooltip(props, propRef) {
 			{/* Wrapping */}
 			{clonedChildren}
 			<Popper open={open && content != null} backdrop={false} wrapperId='tooltip'>
-				<div
+				<motion.div
 					{...getFloatingProps({
 						ref: floating,
 						className: classes(styles.tooltip, styles[variant], className),
@@ -94,7 +95,15 @@ const Tooltip = forwardRef(function Tooltip(props, propRef) {
 							left: x ?? 0,
 							zIndex: 100,
 						},
-					})}>
+					})}
+					initial={{
+						opacity: 0,
+						scale: 0,
+					}}
+					animate={{
+						opacity: 1,
+						scale: 1,
+					}}>
 					<div
 						className={styles.arrow}
 						ref={arrowEl}
@@ -107,7 +116,7 @@ const Tooltip = forwardRef(function Tooltip(props, propRef) {
 						}}
 					/>
 					{content}
-				</div>
+				</motion.div>
 			</Popper>
 		</>
 	);
