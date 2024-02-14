@@ -4,11 +4,11 @@ import React, { useRef, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark, oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import { Alert } from '../alert';
 import { classes } from '../../utils';
+import { Alert } from '../alert';
+import { ErrorBoundaryWrapper } from '../errorBoundary';
 import { CopyIcon } from '../icons';
 import styles from './CodeSnippet.module.css';
-import { ErrorBoundaryWrapper } from '../errorBoundary';
 
 const CodeSnippet = (props) => {
 	const {
@@ -71,7 +71,8 @@ const CodeSnippet = (props) => {
 	}
 
 	const handleCodeClick = (event) => {
-		if (language === 'json') {
+		const hasNoChildren = event.target.children?.length === 0;
+		if (language === 'json' && hasNoChildren) {
 			try {
 				const parsedCode = JSON.parse(code);
 				const clickedKey = event.target.textContent.replace(/"/g, '').trim();
@@ -105,7 +106,7 @@ const CodeSnippet = (props) => {
 				return error;
 			}
 		}
-		return '';
+		return null;
 	};
 
 	const syntaxHighlighterProps = {

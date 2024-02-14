@@ -1,37 +1,38 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import React, {
-	useMemo,
-	useState,
-	useEffect,
-	forwardRef,
-	useImperativeHandle,
-	useRef,
-	useLayoutEffect,
-} from 'react';
-import { ErrorBoundary } from 'react-error-boundary';
 import {
+	FloatingFocusManager,
+	autoUpdate,
+	flip,
+	offset,
+	shift,
+	size,
+	useClick,
+	useDismiss,
 	useFloating,
 	useInteractions,
 	useListNavigation,
 	useRole,
-	useClick,
-	useDismiss,
-	offset,
-	flip,
-	shift,
-	size,
-	autoUpdate,
-	FloatingFocusManager,
 } from '@floating-ui/react-dom-interactions';
+import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
+import React, {
+	forwardRef,
+	useEffect,
+	useImperativeHandle,
+	useLayoutEffect,
+	useMemo,
+	useRef,
+	useState,
+} from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 import { classes } from '../../../utils';
-import { CaretIcon, DropdownIcon } from '../../icons';
-import styles from './Dropdown.module.css';
-import Popper from '../../popper/Popper';
-import { Checkbox } from '../checkbox';
 import Button from '../../buttons/button/Button';
 import { ErrorBoundaryWrapper } from '../../errorBoundary';
+import { CaretIcon, DropdownIcon } from '../../icons';
+import Popper from '../../popper/Popper';
+import { Checkbox } from '../checkbox';
+import styles from './Dropdown.module.css';
 
 // eslint-disable-next-line prefer-arrow-callback
 const Dropdown = forwardRef(function Dropdown(props, inputRef) {
@@ -394,7 +395,7 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 				<Popper open={open} wrapperId='dropdown-popper'>
 					{open && (
 						<FloatingFocusManager context={context} initialFocus={-1} modal={false}>
-							<ul
+							<motion.ul
 								{...getFloatingProps({
 									'data-elem': 'body',
 									role: 'group',
@@ -418,7 +419,15 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 										popperClassName,
 										open ? styles.open : ''
 									),
-								})}>
+								})}
+								initial={{
+									opacity: 0,
+									scale: 0,
+								}}
+								animate={{
+									opacity: 1,
+									scale: 1,
+								}}>
 								{multi && (
 									<li
 										ref={multiOptionsRef}
@@ -454,7 +463,7 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 										onClick={onApply}
 									/>
 								)}
-							</ul>
+							</motion.ul>
 						</FloatingFocusManager>
 					)}
 				</Popper>
