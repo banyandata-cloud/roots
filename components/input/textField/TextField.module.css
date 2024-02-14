@@ -14,6 +14,11 @@
   letter-spacing: 0.32px;
   color: var(--grey);
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0.3125rem;
 }
 .root label .required::after {
   content: " *";
