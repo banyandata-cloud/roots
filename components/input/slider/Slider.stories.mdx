@@ -1,15 +1,24 @@
-import { Meta, Canvas, Story } from '@storybook/addon-docs';
-
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { useState } from 'react';
 import { ThemedContainer } from '../../helpers';
 import Slider from './Slider';
 
 <Meta title='Components/Input/Slider' parameters={{ options: { showToolbar: true } }} />
 
-export const Template = (args) => (
-	<ThemedContainer theme='light'>
-		<Slider {...args} />
-	</ThemedContainer>
-);
+export const Template = (args) => {
+	const [value, setValue] = useState(0);
+	return (
+		<ThemedContainer theme='light'>
+			<Slider
+				{...args}
+				value={value}
+				onChange={(a, v) => {
+					setValue(v);
+				}}
+			/>
+		</ThemedContainer>
+	);
+};
 
 # Slider
 
@@ -60,6 +69,9 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 			min: 20,
 			max: 70,
 			range,
+			onChange: (a) => {
+				console.log(a);
+			},
 		}}>
 		{Template.bind({})}
 	</Story>

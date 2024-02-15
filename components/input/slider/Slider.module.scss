@@ -1,3 +1,5 @@
+@import '../../../styles/index';
+
 .slider-container {
 	position: relative;
 
@@ -17,18 +19,17 @@
 			opacity: 0;
 		}
 	}
-}
-
-.tooltip {
-	position: absolute;
-	margin-left: 7%;
-	top: -30px;
-	transform: translateX(-50%);
-	background-color: #0040ff;
-	color: $white;
-	padding: 2px 5px;
-	border-radius: 4px;
-	font-size: 12px;
-	font-weight: 600;
-	opacity: 1;
+	.tooltip {
+		position: absolute;
+		margin-left: 7%;
+		top: -30px;
+		transform: translateX(-50%);
+		background-color: #0040ff;
+		color: $white;
+		padding: 2px 5px;
+		border-radius: 4px;
+		font-size: 12px;
+		font-weight: 600;
+		opacity: 1;
+	}
 }

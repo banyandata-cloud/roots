@@ -14,14 +14,13 @@
 .slider-container .slider:disabled ~ .tooltip {
   opacity: 0;
 }
-
-.tooltip {
+.slider-container .tooltip {
   position: absolute;
   margin-left: 7%;
   top: -30px;
   transform: translateX(-50%);
   background-color: #0040ff;
-  color: #fff;
+  color: var(--white);
   padding: 2px 5px;
   border-radius: 4px;
   font-size: 12px;
