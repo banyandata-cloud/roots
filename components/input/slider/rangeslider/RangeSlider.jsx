@@ -1,5 +1,5 @@
-import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
+import React, { useRef, useState } from 'react';
 import styles from './RangeSlider.module.css';
 
 function RangeSlider(props) {
@@ -16,8 +16,8 @@ function RangeSlider(props) {
 		setDragging(thumb);
 	};
 
-	const snapToStep = (value, steps) => {
-		return Math.round(value / steps) * steps;
+	const snapToStep = (val, steps) => {
+		return Math.round(val / steps) * steps;
 	};
 
 	const handleMouseMove = (event) => {
