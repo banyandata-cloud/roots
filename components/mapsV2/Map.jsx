@@ -1,23 +1,26 @@
 /* eslint-disable react/forbid-prop-types */
-import { forwardRef, useImperativeHandle, useRef } from 'react';
 import Highcharts from 'highcharts';
-import PropTypes from 'prop-types';
-import highchartsMap from 'highcharts/modules/map';
-import markerClusters from 'highcharts/modules/marker-clusters';
-import highchartsExporting from 'highcharts/modules/exporting';
 import HighchartsReact from 'highcharts-react-official';
 import highchartsExportData from 'highcharts/modules/export-data';
-import { mapOptions } from './config';
-import styles from './Map.module.css';
-import { Skeleton } from '../skeleton';
+import highchartsExporting from 'highcharts/modules/exporting';
+import highchartsMap from 'highcharts/modules/map';
+import markerClusters from 'highcharts/modules/marker-clusters';
+import PropTypes from 'prop-types';
+import { forwardRef, useImperativeHandle, useRef } from 'react';
 import { classes } from '../../utils';
 import { Button } from '../buttons';
 import { FullScreenIcon } from '../icons';
+import { Skeleton } from '../skeleton';
+import styles from './Map.module.css';
+import { mapOptions } from './config';
 
 markerClusters(Highcharts);
 highchartsMap(Highcharts);
 highchartsExporting(Highcharts);
 highchartsExportData(Highcharts);
+
+Highcharts.AST.allowedReferences.push('data:');
+Highcharts.AST.allowedAttributes.push('svg');
 
 /**
  * Renders a button with a full-screen icon. When the button is clicked,

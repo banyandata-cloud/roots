@@ -56,6 +56,7 @@ export const MapTooltip = () => {
 								backgroundColor: `${el.marker}`,
 							}}
 						/>
+
 						<span className={styles.bodyTitle}>{el?.bodyTitle}</span>
 						<span className={styles.bodyPercentage}>
 							{((el?.bodyPercentage ?? 0) * 100).toFixed(2)}%&nbsp;
