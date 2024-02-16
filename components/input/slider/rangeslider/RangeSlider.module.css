@@ -1,8 +1,17 @@
+.rangeslider-container .label {
+  font-weight: 400;
+  font-size: 0.75rem;
+  line-height: 1.125rem;
+  letter-spacing: 0.32px;
+  color: var(--grey);
+  margin-bottom: 0.5rem;
+}
 .rangeslider-container .rangeslider {
   position: relative;
   width: 300px;
   height: 8px;
-  background: #d3d3d3;
+  background: rgba(211, 211, 211, 0.5137254902);
+  border: solid 1px var(--grey3);
   border-radius: 5px;
   cursor: pointer;
 }
@@ -24,7 +33,7 @@
   left: 50%;
   transform: translateX(-50%);
   background: #0040ff;
-  color: #fff;
+  color: var(--white);
   font-weight: 600;
   padding: 2px 5px;
   border-radius: 4px;
@@ -51,4 +60,21 @@
 }
 .rangeslider-container .rangeslider-label {
   margin: 5px;
+}
+.rangeslider-container .minMaxContainer {
+  display: flex;
+  width: 300px;
+  justify-content: space-between;
+  font-weight: 400;
+  font-size: 0.75rem;
+  line-height: 1.125rem;
+  letter-spacing: 0.32px;
+  color: var(--grey);
+  margin-top: 0.3rem;
+}
+.rangeslider-container .min {
+  margin-left: 0.1rem;
+}
+.rangeslider-container .max {
+  margin-left: auto;
 }/*# sourceMappingURL=RangeSlider.module.css.map */

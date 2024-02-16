@@ -3,21 +3,59 @@ import React, { useRef, useState } from 'react';
 import styles from './RangeSlider.module.css';
 
 function RangeSlider(props) {
-	const { minn, maxx, onChange, step, disabled } = props;
+	// eslint-disable-next-line object-curly-newline
+	const { min, max, onChange, step, disabled, label, node1, node2 } = props;
 	const [rangeValues, setRangeValues] = useState({
-		min: minn,
-		max: maxx,
+		min: node1,
+		max: node2,
 	});
 	const [dragging, setDragging] = useState(null);
 	const sliderRef = useRef(null);
 
+	const snapToStep = (val, steps) => {
+		return Math.round(val / steps) * steps;
+	};
+
+	const handleSliderClick = (event) => {
+		const rect = sliderRef.current.getBoundingClientRect();
+		const offsetX = event.clientX - rect.left;
+		const percentage = (offsetX / rect.width) * 100;
+
+		const newValue = snapToStep(percentage, step || 1);
+
+		setRangeValues((prevValues) => {
+			const distanceToMin = Math.abs(newValue - prevValues.min);
+			const distanceToMax = Math.abs(newValue - prevValues.max);
+
+			let newMin = prevValues.min;
+			let newMax = prevValues.max;
+
+			if (distanceToMin <= distanceToMax) {
+				newMin = Math.min(newValue, prevValues.max);
+			} else {
+				newMax = Math.max(newValue, prevValues.min);
+			}
+
+			newMin = Math.max(newMin, min || 0);
+			newMax = Math.min(newMax, max || 100);
+
+			if (onChange && typeof onChange === 'function') {
+				onChange({
+					min: newMin,
+					max: newMax,
+				});
+			}
+
+			return {
+				min: newMin,
+				max: newMax,
+			};
+		});
+	};
+
 	const handleMouseDown = (event, thumb) => {
 		event.preventDefault();
 		setDragging(thumb);
-	};
-
-	const snapToStep = (val, steps) => {
-		return Math.round(val / steps) * steps;
 	};
 
 	const handleMouseMove = (event) => {
@@ -41,8 +79,8 @@ function RangeSlider(props) {
 					newMax = Math.max(newValue, prevValues.min);
 				}
 
-				newMin = Math.max(newMin, 0);
-				newMax = Math.min(newMax, 100);
+				newMin = Math.max(newMin, min);
+				newMax = Math.min(newMax, max);
 
 				return {
 					min: newMin,
@@ -59,8 +97,13 @@ function RangeSlider(props) {
 		}
 	};
 
+	const handleThumbContainerClick = (e) => {
+		e.stopPropagation();
+	};
+
 	return (
 		<div className={styles['rangeslider-container']}>
+			<p className={styles.label}>{label}</p>
 			<div
 				className={styles.rangeslider}
 				ref={sliderRef}
@@ -68,11 +111,14 @@ function RangeSlider(props) {
 				onMouseUp={handleMouseUp}
 				onMouseLeave={() => {
 					return dragging && handleMouseUp();
-				}}>
+				}}
+				onClick={handleSliderClick}>
 				{['min', 'max'].map((thumb) => {
 					return (
 						<React.Fragment key={thumb}>
-							<div className={styles['rangeslider-thumb-container']}>
+							<div
+								className={styles['rangeslider-thumb-container']}
+								onClick={handleThumbContainerClick}>
 								<div
 									className={styles['rangeslider-thumb']}
 									data-value={rangeValues[thumb]}
@@ -100,8 +146,8 @@ function RangeSlider(props) {
 					<input
 						key={thumb}
 						type='range'
-						min='0'
-						max='100'
+						min={min}
+						max={max}
 						name={thumb}
 						disabled={disabled}
 						value={rangeValues[thumb]}
@@ -116,6 +162,10 @@ function RangeSlider(props) {
 					/>
 				);
 			})}
+			<div className={styles.minMaxContainer}>
+				<span className={styles.min}>{min}</span>
+				<span className={styles.max}>{max}</span>
+			</div>
 		</div>
 	);
 }

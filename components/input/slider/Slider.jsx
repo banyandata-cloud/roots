@@ -4,7 +4,8 @@ import styles from './Slider.module.css';
 import RangeSlider from './rangeslider/RangeSlider';
 
 const Slider = (props) => {
-	const { disabled, value, onChange, min, max, step, range } = props;
+	// eslint-disable-next-line object-curly-newline
+	const { disabled, value, onChange, min, max, step, range, label, node1, node2 } = props;
 
 	const { current: isControlled } = useRef(value !== undefined);
 
@@ -27,12 +28,15 @@ const Slider = (props) => {
 		return (
 			<RangeSlider
 				className={styles['range-slider']}
-				minn={min}
-				maxx={max}
+				min={min}
+				max={max}
+				node1={node1}
+				node2={node2}
 				step={step}
 				value={value}
 				onChange={onChange}
 				disabled={disabled}
+				label={label}
 			/>
 		);
 	}
@@ -45,8 +49,11 @@ const Slider = (props) => {
 		setTooltipVisible(false);
 	};
 
+	const tooltipTop = label ? -10 : -24;
+
 	const tooltipStyle = {
-		left: `calc(${(valueOfSlider / 100) * 100}% - 15px)`,
+		left: `calc(${(valueOfSlider / 100) * 30}% - 58px)`,
+		top: `${tooltipTop}px`,
 		visibility: isTooltipVisible ? 'visible' : 'hidden',
 	};
 
@@ -58,6 +65,7 @@ const Slider = (props) => {
 			<div className={styles.tooltip} style={tooltipStyle}>
 				{valueOfSlider}
 			</div>
+			<p className={styles.label}>{label}</p>
 			<input
 				type='range'
 				className={styles.slider}
@@ -68,6 +76,10 @@ const Slider = (props) => {
 				onChange={handleChange}
 				step={step}
 			/>
+			<div className={styles.minMaxContainer}>
+				<span className={styles.min}>{min}</span>
+				<span className={styles.max}>{max}</span>
+			</div>
 		</label>
 	);
 };
@@ -80,6 +92,7 @@ Slider.propTypes = {
 	step: PropTypes.number,
 	range: PropTypes.bool,
 	disabled: PropTypes.bool,
+	label: PropTypes.string,
 };
 
 Slider.defaultProps = {
@@ -90,6 +103,7 @@ Slider.defaultProps = {
 	step: 1,
 	range: false,
 	disabled: false,
+	label: '',
 };
 
 export default Slider;
