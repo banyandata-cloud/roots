@@ -26,4 +26,28 @@
   font-size: 12px;
   font-weight: 600;
   opacity: 1;
+}
+.slider-container .label {
+  font-weight: 400;
+  font-size: 0.75rem;
+  line-height: 1.125rem;
+  letter-spacing: 0.32px;
+  color: var(--grey);
+  margin-bottom: 0.3rem;
+}
+.slider-container .minMaxContainer {
+  display: flex;
+  width: 300px;
+  justify-content: space-between;
+  font-weight: 400;
+  font-size: 0.75rem;
+  line-height: 1.125rem;
+  letter-spacing: 0.32px;
+  color: var(--grey);
+}
+.slider-container .min {
+  margin-left: 0.1rem;
+}
+.slider-container .max {
+  margin-left: auto;
 }/*# sourceMappingURL=Slider.module.css.map */

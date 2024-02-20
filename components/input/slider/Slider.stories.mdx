@@ -51,7 +51,7 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 	<Story
 		name='Default'
 		args={{
-			label: 'Volume Control',
+			label: 'label',
 			min: 0,
 			max: 100,
 		}}>
@@ -65,9 +65,11 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 	<Story
 		name='Range'
 		args={{
-			label: 'Volume Control',
-			min: 20,
-			max: 70,
+			label: 'label',
+			node1: 20,
+			node2: 70,
+			min: 0,
+			max: 100,
 			range,
 			onChange: (a) => {
 				console.log(a);
@@ -83,7 +85,6 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 	<Story
 		name='Disable'
 		args={{
-			label: 'Volume Control',
 			min: 20,
 			max: 70,
 			disabled: true,
