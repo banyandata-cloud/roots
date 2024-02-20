@@ -12,12 +12,27 @@
 		flex-shrink: 0;
 	}
 
+	.cross {
+		fill: $error;
+		width: 1.5rem;
+		height: 1.5rem;
+	}
+
 	button.icon-button {
 		@include debug;
 		height: 100%;
 		background: transparent;
 		border: 1px solid $grey4;
 		color: $text-colour2;
+	}
+
+	button.clear-button {
+		@include debug;
+		height: 100%;
+		border: 1px solid $grey4;
+		color: $text-colour2;
+		margin-right: 0.625rem;
+		background: $error-bg;
 	}
 
 	.column-dropdown {
