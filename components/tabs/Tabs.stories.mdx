@@ -1,9 +1,9 @@
-import { Meta, Canvas, Story } from '@storybook/addon-docs';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import { useState } from 'react';
-import Tabs from './Tabs';
-import { CaretIcon } from '../icons';
 import { ThemedContainer } from '../helpers';
+import { CaretIcon } from '../icons';
+import Tabs from './Tabs';
 
 <Meta title='Components/Tabs' parameters={{ options: { showToolbar: true } }} />
 
@@ -56,23 +56,13 @@ The default Tabs.
 			tabs: [
 				{
 					id: '1',
-					title: 'Tab1',
+					title: 'Space Patrol',
 				},
 				{
 					id: '2',
-					title: 'Tab2',
-				},
-				{
-					id: '3',
-					title: 'Tab3',
-					disabled: true,
-				},
-				{
-					id: '4',
-					title: 'Tab4',
+					title: 'Mystic Force',
 				},
 			],
-			selectedTab: 'Tab1',
 			theme: 'light',
 		}}>
 		{Template.bind({})}
@@ -117,7 +107,6 @@ Tabs with with only left icon.
 					},
 				},
 			],
-			selectedTab: 'Tab1',
 			theme: 'light',
 		}}>
 		{Template.bind({})}
@@ -162,7 +151,6 @@ Tabs with with right icon.
 					},
 				},
 			],
-			selectedTab: 'Tab1',
 			theme: 'light',
 		}}>
 		{Template.bind({})}
@@ -219,7 +207,44 @@ Tabs with with With both side icon.
 					},
 				},
 			],
-			selectedTab: 'Tab1',
+			theme: 'light',
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### With Dropdown
+
+Tabs With Dropdown Items.
+
+<Canvas>
+	<Story
+		name='With Dropdown Items'
+		args={{
+			tabs: [
+				{
+					id: '1',
+					title: 'Tab1',
+				},
+				{
+					id: '2',
+					title: 'Tab2',
+				},
+				{
+					id: '3',
+					title: 'Tab3',
+				},
+				{
+					id: '4',
+					title: 'Options',
+					dropdown: true,
+					dropdownItems: [
+						{ id: '4', title: 'Option 1 Big Title' },
+						{ id: '5', title: 'Option 2' },
+						{ id: '6', title: 'Option 3' },
+					],
+				},
+			],
 			theme: 'light',
 		}}>
 		{Template.bind({})}

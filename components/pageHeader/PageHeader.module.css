@@ -5,7 +5,13 @@
   align-items: flex-start;
   width: 100%;
   background-color: transparent;
-  gap: 0.25rem;
+  gap: 1rem;
+}
+.root.compact {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 .root.dark-theme {
   color: var(--white);
@@ -16,45 +22,28 @@
 .root.light-theme {
   color: var(--dark-grey);
 }
-.root .description {
-  color: var(--grey);
-}
 .root .contents {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
+  margin-left: auto;
   gap: 0.75rem;
-  width: 100%;
 }
-.root .contents .left,
+.root .contents.start-left {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: unset;
+}
 .root .contents .right {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
   gap: 0.75rem;
-}
-.root .contents .left {
-  overflow: hidden;
-}
-.root .contents .left .title {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-  font-size: 2.25rem;
-  font-weight: 600;
-  line-height: 3.375rem;
-}
-.root .contents .left .chip {
-  font-weight: 500;
-  background: var(--highlight);
-  color: var(--white);
-}
-.root .description {
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5rem;
+  flex-wrap: wrap;
 }
 
 .download,

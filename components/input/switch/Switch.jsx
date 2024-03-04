@@ -42,8 +42,8 @@ const Switch = (props) => {
 				className={classes(
 					styles.root,
 					styles[`position-${position}`],
-					className,
-					disabled ? styles.disabled : ''
+					disabled ? styles.disabled : '',
+					className
 				)}>
 				<input
 					disabled={disabled}

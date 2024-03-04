@@ -1,4 +1,4 @@
-import { Meta, Canvas, Story } from '@storybook/addon-docs';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { useState } from 'react';
 import { ThemedContainer } from '../helpers';
 import { TrashIcon } from '../icons';
@@ -43,11 +43,11 @@ import { Toggle } from '@banyan_cloud/roots';
 
 The CSF rendered inside the `Canvas` from which you can see the implementation example.
 
-### Uncontrolled Toggle
+### Default Toggle
 
 <Canvas>
 	<Story
-		name='Uncontrolled'
+		name='Default Toggle'
 		args={{
 			options: [
 				{
@@ -70,50 +70,13 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 				},
 				{
 					value: 'Fourth',
-					title: 'Fourth',
+					title: 'Fourthojojojjo',
 					rightComponent: null,
 					leftComponent: null,
 				},
 			],
+			smooth: true,
 			theme: 'light',
-		}}>
-		{Template.bind({})}
-	</Story>
-</Canvas>
-
-### Dark Toggle
-
-<Canvas>
-	<Story
-		name='Dark Toggle'
-		args={{
-			options: [
-				{
-					value: 'First',
-					title: 'First',
-					rightComponent: null,
-					leftComponent: null,
-				},
-				{
-					value: 'Second',
-					title: 'Second',
-					rightComponent: null,
-					leftComponent: null,
-				},
-				{
-					value: 'Third',
-					title: 'Third',
-					rightComponent: null,
-					leftComponent: null,
-				},
-				{
-					value: 'Fourth',
-					title: 'Fourth',
-					rightComponent: null,
-					leftComponent: null,
-				},
-			],
-			theme: 'dark',
 		}}>
 		{Template.bind({})}
 	</Story>
@@ -174,61 +137,6 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 	</Story>
 </Canvas>
 
-### Controlled Toggle
-
-<Canvas>
-	<Story
-		name='Controlled Toggle'
-		args={{
-			options: [
-				{
-					value: 'pgsql',
-					title: '',
-					rightComponent: () => {
-						return <TrashIcon />;
-					},
-					leftComponent: null,
-				},
-				{
-					value: 'mysql',
-					title: '',
-					rightComponent: () => {
-						return <TrashIcon />;
-					},
-					leftComponent: null,
-				},
-				{
-					value: 'oracle',
-					title: '',
-					rightComponent: () => {
-						return <TrashIcon />;
-					},
-					leftComponent: null,
-				},
-				{
-					value: 'mongodb',
-					title: '',
-					rightComponent: () => {
-						return <TrashIcon />;
-					},
-					leftComponent: null,
-				},
-				{
-					value: 'mssql',
-					title: '',
-					rightComponent: () => {
-						return <TrashIcon />;
-					},
-					leftComponent: null,
-				},
-			],
-			defaultValue: 'oracle',
-			theme: 'light',
-		}}>
-		{ControlledTemplate.bind({})}
-	</Story>
-</Canvas>
-
 ### Multi Toggle
 
 <Canvas>
@@ -237,42 +145,27 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 			const options = [
 				{
 					value: 'pgsql',
-					title: '',
-					rightComponent: () => {
-						return <TrashIcon />;
-					},
+					title: 'PGSQL',
 					leftComponent: null,
 				},
 				{
 					value: 'mysql',
-					title: '',
-					rightComponent: () => {
-						return <TrashIcon />;
-					},
+					title: 'MYSQL',
 					leftComponent: null,
 				},
 				{
 					value: 'oracle',
-					title: '',
-					rightComponent: () => {
-						return <TrashIcon />;
-					},
+					title: 'ORACLE',
 					leftComponent: null,
 				},
 				{
 					value: 'mongodb',
-					title: '',
-					rightComponent: () => {
-						return <TrashIcon />;
-					},
+					title: 'MONGODB',
 					leftComponent: null,
 				},
 				{
 					value: 'mssql',
-					title: '',
-					rightComponent: () => {
-						return <TrashIcon />;
-					},
+					title: 'MSSQL',
 					leftComponent: null,
 				},
 			];
@@ -283,7 +176,6 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					<Toggle
 						options={options}
 						theme='light'
-						defaultValue={defaultValue}
 						multi
 						value={selectedToggle}
 						onChange={setSelectedToggle}
@@ -336,13 +228,6 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 ## Try in the Code Editor
 
 This embeded `CodeSandBox` is external third party code editor `iframe` shared publicly. It is advised to create an account with banyancloud mail id to create/fork this sandbox.
-
-<iframe
-	src='https://codesandbox.io/s/broken-cherry-3vhh73?file=/src/App.js'
-	style={{ width: '100%', height: 500 }}
-	title='xenodochial-moon-5y668f'
-	allow='accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking'
-	sandbox='allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts'></iframe>
 
 ## API
 

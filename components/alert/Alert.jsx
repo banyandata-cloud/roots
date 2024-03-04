@@ -1,12 +1,14 @@
 import PropTypes from 'prop-types';
 import { forwardRef, useEffect, useImperativeHandle, useState } from 'react';
 import { useDismiss, useFloating, useInteractions } from '@floating-ui/react-dom-interactions';
+import { useAnimate } from 'framer-motion';
 import { classes } from '../../utils/utils';
 import styles from './Alert.module.css';
 import { CrossIcon, AlertIcon } from '../icons';
 import { Button } from '../buttons';
 import Popper from '../popper/Popper';
-import { useAnimate } from 'framer-motion';
+
+const ALERT_DISMISS_TIME = 2000;
 
 const ANIMATION = {
 	transform: {
@@ -32,7 +34,7 @@ const ANIMATION = {
  * @returns {JSX.Element} - The rendered alert component.
  */
 const Alert = forwardRef((props, ref) => {
-	const { showIcon, border, shadow, position: defaultPosition, animation } = props;
+	const { showIcon, border, shadow, position: defaultPosition, animation, className } = props;
 
 	const [open, setOpen] = useState(false);
 	const [alertProps, setAlertProps] = useState({
@@ -47,6 +49,8 @@ const Alert = forwardRef((props, ref) => {
 				return !prev;
 			});
 		},
+		autoDismiss: true,
+		dismissTime: ALERT_DISMISS_TIME,
 	});
 	const {
 		title,
@@ -56,6 +60,8 @@ const Alert = forwardRef((props, ref) => {
 		type,
 		position: appliedPosition,
 		onClose,
+		autoDismiss,
+		dismissTime,
 	} = alertProps;
 
 	const position = appliedPosition ?? defaultPosition;
@@ -96,12 +102,14 @@ const Alert = forwardRef((props, ref) => {
 		});
 	};
 
-	useImperativeHandle(ref, () => ({
-		/**
-		 * methods to get exposed
-		 */
-		alert,
-	}));
+	useImperativeHandle(ref, () => {
+		return {
+			/**
+			 * methods to get exposed
+			 */
+			alert,
+		};
+	});
 
 	useEffect(() => {
 		if (alertProps.title) {
@@ -121,6 +129,18 @@ const Alert = forwardRef((props, ref) => {
 		}
 	});
 
+	// eslint-disable-next-line consistent-return
+	useEffect(() => {
+		if (alertProps.title && autoDismiss) {
+			const timer = setTimeout(() => {
+				setOpen(false);
+			}, dismissTime);
+			return () => {
+				return clearTimeout(timer);
+			};
+		}
+	}, [alertProps]);
+
 	const { getFloatingProps } = useInteractions([useDismiss(context)]);
 
 	return (
@@ -133,7 +153,8 @@ const Alert = forwardRef((props, ref) => {
 						styles[type],
 						styles[`border-${border}`],
 						shadow ? styles.shadow : '',
-						styles[`position-${position}`]
+						styles[`position-${position}`],
+						className
 					),
 				})}
 				ref={scope}>
@@ -146,7 +167,7 @@ const Alert = forwardRef((props, ref) => {
 				</div>
 				<div className={styles.actions}>
 					{CustomAction && <CustomAction />}
-					{onClose && (
+					{onClose && !autoDismiss && (
 						<Button
 							size='auto'
 							variant='text'
@@ -172,6 +193,7 @@ Alert.propTypes = {
 	shadow: PropTypes.bool,
 	position: PropTypes.oneOf(['bottom-right', 'bottom-center', 'top-right', 'top-center']),
 	animation: PropTypes.bool,
+	className: PropTypes.string,
 };
 
 Alert.defaultProps = {
@@ -180,6 +202,7 @@ Alert.defaultProps = {
 	shadow: true,
 	position: 'bottom-center',
 	animation: true,
+	className: '',
 };
 
 export default Alert;

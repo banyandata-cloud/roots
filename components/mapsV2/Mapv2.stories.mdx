@@ -1,0 +1,759 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+import ReactDOMServer from 'react-dom/server';
+import { ThemedContainer } from '../helpers';
+import { useEffect, useState } from 'react';
+import Widget from '../widget/BaseWidget';
+import Toggle from '../Toggle/Toggle';
+import Map from './Map';
+import { MapTooltip } from './tooltip/Tooltip';
+
+<Meta title='Components/Map' parameters={{ options: { showToolbar: true } }} />
+
+# Map
+
+The Map component is a highcarts wrapper that renders the basic world map JSON by default with markers and clusters optionally. It provides an easy-to-use interface for integrating maps into your React application.
+
+#### Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/components/maps/Map)
+
+## Usage
+
+Basic import and additional information on how to use this component.
+
+```js
+import { Map } from '@banyan_cloud/roots';
+```
+
+-   The markers can be customised with any image or svg or base symbols.
+-   As this is a highcharts wrapper, some options of highcharts which are provided as props can be passed with additional highctarts' props.
+
+## Stories
+
+The CSF rendered inside the `Canvas` from which you can see the implementation example.
+
+### Default Map
+
+The default Map component with tooltip in a point.
+
+<Canvas>
+	<Story name='Default'>
+		{() => {
+			const coords = [
+				{
+					lat: 28,
+					lon: 120,
+				},
+				{
+					lat: 28.5,
+					lon: 120,
+				},
+				{
+					lat: 28.2,
+					lon: 120,
+				},
+				{
+					lat: 27,
+					lon: 103,
+				},
+				{
+					lat: 22,
+					lon: 125,
+				},
+				{
+					lat: 22,
+					lon: 78,
+				},
+				{ lon: 77.73, lat: 12.96 },
+				{
+					lon: -121,
+					lat: 37,
+					tooltip: ReactDOMServer.renderToString(<MapTooltip />),
+				},
+			];
+			const [theme, setTheme] = useState('dark');
+			return (
+				<ThemedContainer
+					theme={theme}
+					style={{
+						width: '100%',
+						height: '100%',
+					}}>
+					<Toggle
+						options={[
+							{
+								value: 'dark',
+								title: 'Dark',
+							},
+							{
+								value: 'light',
+								title: 'Light',
+							},
+						]}
+						value={theme}
+						onChange={setTheme}
+					/>
+					<Map v2 theme={theme} cluster={false} coordinates={coords} />
+				</ThemedContainer>
+			);
+		}}
+	</Story>
+</Canvas>
+
+### Clustered Map
+
+The clustered Map component.
+
+<Canvas>
+	<Story name='Clustered'>
+		{() => {
+			const coords = [
+				{
+					lat: 28,
+					lon: 120,
+				},
+				{
+					lat: 28.5,
+					lon: 120,
+				},
+				{
+					lat: 28.2,
+					lon: 120,
+				},
+				{
+					lat: 27,
+					lon: 103,
+				},
+				{
+					lat: 22,
+					lon: 125,
+				},
+				{
+					lat: 22,
+					lon: 78,
+				},
+				{ lon: 77.73, lat: 12.96 },
+				{ lon: -121, lat: 37 },
+			];
+			const [theme, setTheme] = useState('dark');
+			return (
+				<ThemedContainer
+					theme={theme}
+					style={{
+						width: '100%',
+						height: '100%',
+					}}>
+					<Toggle
+						options={[
+							{
+								value: 'dark',
+								title: 'Dark',
+							},
+							{
+								value: 'light',
+								title: 'Light',
+							},
+						]}
+						value={theme}
+						onChange={setTheme}
+					/>
+					<Map v2 cluster theme={theme} coordinates={coords} />
+				</ThemedContainer>
+			);
+		}}
+	</Story>
+</Canvas>
+
+### With Network Call
+
+The Map component with network call capability.
+
+<Canvas>
+	<Story name='With Network Call'>
+		{() => {
+			const [theme, setTheme] = useState('dark');
+			const coords = [
+				{
+					lat: 28,
+					lon: 120,
+				},
+				{
+					lat: 28.5,
+					lon: 120,
+				},
+				{
+					lat: 28.2,
+					lon: 120,
+				},
+				{
+					lat: 27,
+					lon: 103,
+				},
+				{
+					lat: 22,
+					lon: 125,
+				},
+				{
+					lat: 22,
+					lon: 78,
+				},
+				{ lon: 77.73, lat: 12.96 },
+				{ lon: -121, lat: 37 },
+			];
+			const [coordinates, setCoordinates] = useState([]);
+			useEffect(() => {
+				setTimeout(() => {
+					setCoordinates(coords);
+				}, 1000);
+			}, []);
+			return (
+				<ThemedContainer
+					theme={theme}
+					style={{
+						width: '100%',
+						height: '100%',
+					}}>
+					<Toggle
+						options={[
+							{
+								value: 'dark',
+								title: 'Dark',
+							},
+							{
+								value: 'light',
+								title: 'Light',
+							},
+						]}
+						value={theme}
+						onChange={setTheme}
+					/>
+					<Map
+						v2
+						theme={theme}
+						cluster={false}
+						tooltip={ReactDOMServer.renderToString(<MapTooltip />)}
+						coordinates={coordinates}
+					/>
+				</ThemedContainer>
+			);
+		}}
+	</Story>
+</Canvas>
+
+### Dynamic Coordinates
+
+The Map component with dynamic coordinates.
+
+<Canvas>
+	<Story name='Dynamic Coordinates'>
+		{() => {
+			const [selectedToggle, setSelectedToggle] = useState('1');
+			const [theme, setTheme] = useState('dark');
+			const COORDS = {
+				1: [
+					{
+						lat: 28,
+						lon: 120,
+					},
+					{
+						lat: 28.5,
+						lon: 120,
+					},
+					{
+						lat: 28.2,
+						lon: 120,
+					},
+					{
+						lat: 27,
+						lon: 103,
+					},
+					{
+						lat: 22,
+						lon: 125,
+					},
+					{
+						lat: 22,
+						lon: 78,
+					},
+					{ lon: 77.73, lat: 12.96 },
+					{ lon: -121, lat: 37 },
+				],
+				2: [
+					{ lon: 77.73, lat: 12.96 },
+					{ lon: -121, lat: 37 },
+				],
+				3: [
+					{
+						lat: 28,
+						lon: 120,
+					},
+					{
+						lat: 28.5,
+						lon: 120,
+					},
+					{
+						lat: 22,
+						lon: 78,
+					},
+					{ lon: 77.73, lat: 12.96 },
+					{ lon: -121, lat: 37 },
+				],
+			};
+			const coordinates = COORDS[selectedToggle];
+			return (
+				<ThemedContainer
+					theme={theme}
+					style={{
+						width: '100%',
+						height: '100%',
+						display: 'flex',
+						flexDirection: 'column',
+					}}>
+					<div
+						style={{
+							display: 'flex',
+							justifyContent: 'space-between',
+						}}>
+						<Toggle
+							options={[
+								{
+									value: '1',
+									title: 'First',
+								},
+								{
+									value: '2',
+									title: 'Second',
+								},
+								{
+									value: '3',
+									title: 'Third',
+								},
+							]}
+							value={selectedToggle}
+							onChange={setSelectedToggle}
+						/>
+						<Toggle
+							options={[
+								{
+									value: 'dark',
+									title: 'Dark',
+								},
+								{
+									value: 'light',
+									title: 'Light',
+								},
+							]}
+							value={theme}
+							onChange={setTheme}
+						/>
+					</div>
+					<Map v2 theme={theme} cluster={false} coordinates={COORDS[selectedToggle]} />
+				</ThemedContainer>
+			);
+		}}
+	</Story>
+</Canvas>
+
+### Map in Widget
+
+The Map component within widget.
+
+<Canvas>
+	<Story name='Map in Widget'>
+		{() => {
+			const coords = [
+				{
+					lat: 28,
+					lon: 120,
+				},
+				{
+					lat: 28.5,
+					lon: 120,
+				},
+				{
+					lat: 28.2,
+					lon: 120,
+				},
+				{
+					lat: 27,
+					lon: 103,
+				},
+				{
+					lat: 22,
+					lon: 125,
+				},
+				{
+					lat: 22,
+					lon: 78,
+				},
+				{ lon: 77.73, lat: 12.96 },
+				{ lon: -121, lat: 37 },
+			];
+			const [theme, setTheme] = useState('dark');
+			return (
+				<ThemedContainer
+					theme={theme}
+					style={{
+						width: '100%',
+						height: '100%',
+					}}>
+					<Toggle
+						options={[
+							{
+								value: 'dark',
+								title: 'Dark',
+							},
+							{
+								value: 'light',
+								title: 'Light',
+							},
+						]}
+						value={theme}
+						onChange={setTheme}
+					/>
+					<Widget title='Hello'>
+						<Map v2 cluster theme={theme} coordinates={coords} />
+					</Widget>
+				</ThemedContainer>
+			);
+		}}
+	</Story>
+</Canvas>
+
+## Try in the Code Editor
+
+This embeded `CodeSandBox` is external third party code editor `iframe` shared publicly. It is advised to create an account with banyancloud mail id to create/fork this sandbox.
+
+## API
+
+**`loading`**
+
+If true, displays a loading indicator while the map is being loaded.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<Map loading={true} />
+```
+
+**`fallback`**
+
+If set to true, the loading animation will not be shown when loading is false.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>undefined</td>
+	</tr>
+</table>
+
+```jsx
+<Map fallback={true} />
+```
+
+**`theme`**
+
+An array of Google Maps libraries to be loaded.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>'light', 'dark'</td>
+		<td>'dark'</td>
+	</tr>
+</table>
+
+```jsx
+<Map theme='light' />
+```
+
+**`coordinates`**
+
+The coordinates of the map which includes latitude `lat` and longitude `lon` with tooltips optionally. `showMarker` prop has to be true for the coordinates to be visible.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Array of objects</td>
+		<td>[]</td>
+	</tr>
+</table>
+
+```jsx
+<Map coordinates=[{
+   "lat":70,
+   "lon":12,
+   "tooltip":"Stringified Component"
+}] />
+```
+
+**`enableDoubleClickZoom`**
+
+Zooming into the map on double click in the interface.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<Map enableDoubleClickZoom />
+```
+
+**`enableMouseWheelZoom`**
+
+Zooming into the map on wheel scroll of the mouse.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>true</td>
+	</tr>
+</table>
+
+```jsx
+<Map enableMouseWheelZoom={false} />
+```
+
+**`cluster`**
+
+Group the closely placed markers in to a cluster. Clicking on a cluster will drill into individual markers by default.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>true</td>
+	</tr>
+</table>
+
+```jsx
+<Map cluster={false} />
+```
+
+**`showZoomButton`**
+
+Show the zoomIn(+)/zoomOut(-) button combo at the top-right corner of the map.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>true</td>
+	</tr>
+</table>
+
+```jsx
+<Map showZoomButton={false} />
+```
+
+**`zoomButtonOptions`**
+
+Additional configurations to style and position the zoom buttons in the map. All the possible options can be found from highcharts API doc.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Object</td>
+		<td>null</td>
+	</tr>
+</table>
+
+```jsx
+<Map
+	zoomButtonOptions={{
+		align: 'left',
+		style: {
+			color: 'green',
+		},
+		theme: {
+			fill: 'red',
+		},
+	}}
+/>
+```
+
+**`mapView`**
+
+The map view configuration to control the centering and zooming of the projection. More options can be found in the Highcharts API doc.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Object</td>
+		<td>null</td>
+	</tr>
+</table>
+
+```jsx
+<Map
+	mapView={{
+		center: [10, 0],
+		maxZoom: 20,
+	}}
+/>
+```
+
+**`showMarker`**
+
+show the markers which are plotted in a seris as the coordinates.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>true</td>
+	</tr>
+</table>
+
+```jsx
+<Map showMarker={false} />
+```
+
+**`defaultMarkeroptions`**
+
+The configuration options to customise the style of the default svg markers. More Options can be found in the Highcharts API doc.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Object</td>
+		<td>null</td>
+	</tr>
+</table>
+
+```jsx
+<Map
+	defaultMarkeroptions={{
+		lineColor: 'red',
+		lineWidth: 5,
+		radius: 10,
+	}}
+/>
+```
+
+**`customMarker`**
+
+The custom marker to replace the default marker. The custom marker can ben an `image`, `svg` or any predefined symbols such as `circle`, or `triangle`.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>null</td>
+	</tr>
+</table>
+
+```jsx
+<Map customMarker={`url(https://someImage.com)`} />
+```
+
+**`customMarkerOptions`**
+
+The additional configuration to customise the custom marker which is `image`. The possible props are `width` and `height`.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Object</td>
+		<td>null</td>
+	</tr>
+</table>
+
+```jsx
+<Map
+	customMarkerOptions={{
+		width: 30,
+		height: 30,
+	}}
+/>
+```
+
+**`className`**
+
+The custom classname to override the parent container's style.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>''</td>
+	</tr>
+</table>
+
+```jsx
+<Map className={styles.custom} />
+```
+
+**`showFullScreen`**
+
+Show the Full Screen toggle icon at the bottom-end of the map. To close the full screen, `esc`.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>true</td>
+	</tr>
+</table>
+
+```jsx
+<Map showFullScreen={false} />
+```

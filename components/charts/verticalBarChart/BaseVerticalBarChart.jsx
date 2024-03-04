@@ -50,7 +50,7 @@ const AXIS_COLORS = {
 	},
 	split: {
 		dark: COLORS['dark-grey'],
-		light: COLORS.grey5,
+		light: COLORS['mono-color2'],
 	},
 	tick: {
 		dark: '#757679',
@@ -141,7 +141,7 @@ const BaseVerticalBarChart = (props) => {
 			show: true,
 		},
 		itemStyle: {
-			borderRadius: [0, 2, 2, 0],
+			borderRadius: [0, 0, 0, 0],
 		},
 		name: seriesData?.metaData?.keyData?.x1 ?? '',
 		data: Object.keys(seriesData?.chartData ?? {}).map((key) => {
@@ -300,7 +300,7 @@ const BaseVerticalBarChart = (props) => {
 			echarts={echarts}
 			notMerge
 			lazyUpdate
-			className={classes(className, styles.root)}
+			className={classes(styles.root, className)}
 			style={style}
 		/>
 	);

@@ -51,8 +51,28 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					discountPercentage: 12.96,
 					rating: 4.69,
 					stock: 94,
-					brand: 'Apple',
-					category: 'smartphones',
+					brand: {
+						abc: 'smartphones',
+						price: 549,
+						discountPercentage: 12.96,
+						rating: {
+							hen: {
+								rate: {
+									yes: true,
+								},
+							},
+						},
+						stock: 94,
+						brand: 'Apple',
+					},
+					category: {
+						abc: 'smartphones',
+						price: 549,
+						discountPercentage: 12.96,
+						rating: 4.69,
+						stock: 94,
+						brands: 'Apple',
+					},
 				},
 				null,
 				4
@@ -60,7 +80,10 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 			language: 'json',
 			copy: true,
 			theme: 'dark',
-			showLineNumbers: false,
+			showLineNumbers: true,
+			onClick: (e, d) => {
+				console.log(d(e));
+			},
 		}}>
 		{Template.bind({})}
 	</Story>

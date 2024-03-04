@@ -26,7 +26,7 @@ const Footer = ({ action, cancel, onAction, onCancel, variant }) => {
 			/>
 
 			{onAction && (
-				<Button onClick={onAction} title={action} color={variant} variant={'outlined'} />
+				<Button onClick={onAction} title={action} color={variant} variant='outlined' />
 			)}
 		</div>
 	);
@@ -73,7 +73,12 @@ const DialogBox = forwardRef((props, ref) => {
 		action: actionText,
 		cancel: cancelText,
 		variant,
-		onAction,
+		...(onAction && {
+			onAction: () => {
+				onAction();
+				setOpen(false);
+			},
+		}),
 		onCancel: toggle,
 	};
 
@@ -84,9 +89,11 @@ const DialogBox = forwardRef((props, ref) => {
 		});
 	};
 
-	useImperativeHandle(ref, () => ({
-		dialog,
-	}));
+	useImperativeHandle(ref, () => {
+		return {
+			dialog,
+		};
+	});
 
 	useEffect(() => {
 		if (dialogProps.title && dialogProps.description) {
@@ -101,8 +108,8 @@ const DialogBox = forwardRef((props, ref) => {
 			open={open}
 			toggle={toggle}
 			hideCrossDismiss
-			className={classes(className, styles.root, styles[size])}
-			renderHeader={<Header {...headerProps} />}
+			className={classes(styles.root, styles[size], className)}
+			renderHeader={title && <Header {...headerProps} />}
 			renderFooter={<Footer {...footerProps} />}>
 			<div className={styles.description}>{description}</div>
 		</BaseModal>

@@ -1,15 +1,18 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-tabs */
-import React, { forwardRef, useEffect, useReducer, useRef } from 'react';
 import PropTypes from 'prop-types';
+import React, { forwardRef, useEffect, useReducer, useRef } from 'react';
 import { classes } from '../../utils';
 import { Button } from '../buttons';
-import { Dropdown, DropdownItem, TextField } from '../input';
-import { ArrowIcon, SearchIcon } from '../icons';
 import { BaseCell } from '../cell';
+import { ArrowIcon } from '../icons';
+import { Dropdown, DropdownItem, TextField } from '../input';
+import { Text } from '../text';
+import { Tooltip } from '../tooltip';
 import { PaginationList } from './Pagination.class';
 import styles from './Pagination.module.css';
-import { Text } from '../text';
+
+const CURRENT_YEAR = new Date().getFullYear();
 
 const dropdownOptions = ['10', '25', '50', '100', '200', '250'];
 
@@ -84,7 +87,7 @@ export const usePagination = (props) => {
 };
 
 export const Pagination = forwardRef((props, ref) => {
-	const { className, floating, paginationState, paginationDispatch, loading } = props;
+	const { className, floating, paginationState, paginationDispatch, loading, dataLabel } = props;
 
 	const { totalPages, currentPage, step, totalData } = paginationState;
 
@@ -123,126 +126,158 @@ export const Pagination = forwardRef((props, ref) => {
 
 	const showTotalData = totalData && (currentPage - 1) * step + 1 < totalData;
 
+	const showPages = totalPages > 1;
+
 	return (
 		<div
 			ref={ref}
 			className={classes(
 				styles.root,
-				className,
 				floating ? styles.floating : '',
-				showTotalData ? '' : styles['no-total-data']
+				showTotalData ? '' : styles['no-total-data'],
+				className
 			)}>
 			<div className={styles.copyrightText}>
-				<p className={styles.text}>© 2023 Banyan Cloud Inc. All rights reserved.</p>
+				<p className={styles.text}>
+					© {CURRENT_YEAR} Banyan Cloud Inc. All rights reserved.
+				</p>
 			</div>
-			<div className={styles['page-numbers']}>
-				<div className={styles.pageSelect}>
-					{paginationList.pages.map((page) => {
-						const active = currentPage === page.number;
-						return (
-							<span
-								title={`Page ${page.number}`}
-								key={page.number}
-								onClick={() => {
-									onChange({
-										type: 'SET_PAGE',
-										payload: page.number,
-									});
-								}}
-								data-active={active}
-								className={classes(active ? styles.active : '', styles.number)}>
-								{page.ellipsis ? '...' : page.number}
-							</span>
-						);
-					})}
+			{showPages && (
+				<div className={styles['page-numbers']}>
+					<div className={styles.pageSelect}>
+						{paginationList.pages.map((page) => {
+							const active = currentPage === page.number;
+							return (
+								<span
+									title={`Page ${page.number}`}
+									key={page.number}
+									onClick={() => {
+										onChange({
+											type: 'SET_PAGE',
+											payload: page.number,
+										});
+									}}
+									data-active={active}
+									className={classes(active ? styles.active : '', styles.number)}>
+									{page.ellipsis ? '...' : page.number}
+								</span>
+							);
+						})}
+					</div>
 				</div>
-			</div>
-			{showTotalData && (
-				<Text
-					variant='b1'
-					stroke='medium'
-					className={styles['total-data']}
-					attrs={{
-						title: `${(currentPage - 1) * step + 1}-${
-							currentPage * step
-						} of ${totalData}`,
-					}}>
-					{(currentPage - 1) * step + 1}-
-					{currentPage === totalPages ? totalData : currentPage * step}/{totalData}
-				</Text>
 			)}
-			<BaseCell
-				size='auto'
-				flexible
-				className={styles['row-switcher']}
-				component2={
+			<div className={styles.options}>
+				{totalData || totalPages ? (
+					<Text
+						variant='b1'
+						stroke='medium'
+						className={styles['total-data']}
+						attrs={{
+							title: `${(currentPage - 1) * step + 1}-${
+								currentPage * step
+							} of ${totalData}`,
+						}}>
+						<Text>Displaying</Text> {(currentPage - 1) * step + 1}-
+						{currentPage === totalPages && totalData ? totalData : currentPage * step}{' '}
+						of {totalData ?? 'total'} <Text>{dataLabel ?? 'records'}</Text>
+					</Text>
+				) : (
+					<Text
+						variant='b1'
+						stroke='medium'
+						className={styles['total-data']}
+						attrs={{
+							title: `${(currentPage - 1) * step + 1}-${
+								currentPage * step
+							} of ${totalData}`,
+						}}>
+						<Text>No available {dataLabel ?? 'records'} at the moment</Text>
+					</Text>
+				)}
+				{showPages && (
 					<BaseCell
 						size='auto'
 						flexible
-						className={styles['row-switcher-handle']}
-						component1={
-							<Dropdown
-								className={styles.dropdown}
-								popperClassName={styles['dropdown-popper']}
-								value={step}
-								newIcon
-								placeholder={null}
-								onChange={(e, newStep) => {
-									onChange({
-										type: 'SET_STEP',
-										payload: newStep,
-									});
-								}}>
-								{dropdownOptions.map((item) => {
-									return <DropdownItem title={item} value={item} key={item} />;
-								})}
-							</Dropdown>
+						className={styles['row-switcher']}
+						component2={
+							<BaseCell
+								size='auto'
+								flexible
+								className={styles['row-switcher-handle']}
+								component1={
+									<Dropdown
+										className={styles.dropdown}
+										popperClassName={styles['dropdown-popper']}
+										value={step}
+										placeholder=''
+										onChange={(e, newStep) => {
+											onChange({
+												type: 'SET_STEP',
+												payload: newStep,
+											});
+										}}>
+										{dropdownOptions.map((item) => {
+											return (
+												<DropdownItem
+													title={item}
+													value={item}
+													key={item}
+												/>
+											);
+										})}
+									</Dropdown>
+								}
+							/>
 						}
 					/>
-				}
-			/>
-			<BaseCell
-				flexible
-				className={styles.form}
-				component1={
-					<form
-						onSubmit={(e) => {
-							e.preventDefault();
-							onChange({
-								type: 'SET_PAGE',
-								payload: parseInt(jumpPageRef?.current?.value, 10),
-							});
-						}}>
-						<BaseCell
-							size='auto'
-							className={styles['jump-to-page']}
-							component1={
-								<TextField
-									inputProps={{
-										min: 1,
-										max: totalPages,
-										required: true,
-										placeholder: 'Jump to Page',
-									}}
-									ref={jumpPageRef}
-									type='number'
-									className={styles.inputbox}
-								/>
-							}
-							component2={
-								<Button
-									size='auto'
-									variant='contained'
-									className={styles.button}
-									rightComponent={() => {
-										return <ArrowIcon className={styles.icon} />;
-									}}
-								/>
-							}
-						/>
-					</form>
-				}
-			/>
+				)}
+				{showPages && (
+					<BaseCell
+						flexible
+						className={styles.form}
+						component1={
+							<form
+								onSubmit={(e) => {
+									e.preventDefault();
+									onChange({
+										type: 'SET_PAGE',
+										payload: parseInt(jumpPageRef?.current?.value, 10),
+									});
+								}}>
+								<Tooltip content='Jump To Page' position='top'>
+									<BaseCell
+										size='auto'
+										className={styles['jump-to-page']}
+										component1={
+											<TextField
+												inputProps={{
+													min: 1,
+													max: totalPages,
+													required: true,
+													placeholder: '',
+												}}
+												ref={jumpPageRef}
+												type='number'
+												className={styles.inputbox}
+											/>
+										}
+										component2={
+											<Button
+												size='auto'
+												variant='contained'
+												className={styles.button}
+												rightComponent={() => {
+													return <ArrowIcon className={styles.icon} />;
+												}}
+											/>
+										}
+									/>
+								</Tooltip>
+							</form>
+						}
+					/>
+				)}
+			</div>
 		</div>
 	);
 });

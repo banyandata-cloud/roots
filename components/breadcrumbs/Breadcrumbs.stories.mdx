@@ -44,6 +44,7 @@ The default Breadcrumbs.
 		name='Default Breadcrumbs'
 		args={{
 			theme: 'light',
+			homeTitle: 'Title of the Home',
 			crumbs: [
 				{
 					title: 'section-1',
@@ -53,7 +54,7 @@ The default Breadcrumbs.
 				},
 				{
 					title: 'section-2',
-					value: 'test',
+					value: 'test2',
 					path: 'section-2',
 					icon: null,
 				},
@@ -72,6 +73,7 @@ The Breadcrumbs in collapsed state.
 		name='Collapsed Breadcrumbs'
 		args={{
 			theme: 'light',
+			homeTitle: 'Title of the Home',
 			crumbs: [
 				{
 					title: 'section-1',
@@ -95,12 +97,19 @@ The Breadcrumbs in collapsed state.
 					title: 'section-4',
 					value: 'test',
 					path: 'section-4',
+					navigate: () => {
+						console.log('CLICKED NOW 4');
+					},
 					icon: null,
 				},
 				{
 					title: 'section-5',
 					value: 'test',
+					isDisabled: true,
 					path: 'section-5',
+					navigate: () => {
+						console.log('CLICKED NOW 5');
+					},
 					icon: null,
 				},
 				{
@@ -130,6 +139,7 @@ The Breadcrumbs containing icon.
 		name='Breadcrumbs with icon'
 		args={{
 			theme: 'light',
+			homeTitle: 'Title of the Home',
 			crumbs: [
 				{
 					title: 'section-1',

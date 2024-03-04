@@ -1,27 +1,28 @@
-import React, { useState, useRef } from 'react';
-import { ErrorBoundary } from 'react-error-boundary';
-import PropTypes from 'prop-types';
 import {
+	useClick,
+	useDismiss,
 	useFloating,
 	useInteractions,
-	useDismiss,
-	useClick,
 } from '@floating-ui/react-dom-interactions';
+import { motion } from 'framer-motion';
+import PropTypes from 'prop-types';
+import React, { useRef, useState } from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 import { useOutsideClickListener } from '../../hooks';
 import { classes } from '../../utils';
-import { Calender } from './calender';
-import { CalenderIcon, ChevronIcon, ClockIcon, CrossIcon } from '../icons';
+import { Button } from '../buttons';
+import { ErrorBoundaryWrapper } from '../errorBoundary';
+import { CalenderIcon, CaretIcon, ClockIcon, CrossIcon } from '../icons';
 import { Popper } from '../popper';
 import styles from './DatePicker.module.css';
+import { Calender } from './calender';
+import { DateAndTimeCustomRanges } from './customRanges';
 import {
 	getDatePickerDisplayValue,
 	getDateRangeTag,
-	isMaxRangeExceeded,
 	getFloatingReferences,
+	isMaxRangeExceeded,
 } from './utils';
-import { Button } from '../buttons';
-import { DateAndTimeCustomRanges } from './customRanges';
-import { ErrorBoundaryWrapper } from '../errorBoundary';
 
 const DatePicker = (props) => {
 	const {
@@ -177,7 +178,11 @@ const DatePicker = (props) => {
 							return <ClockIcon className={classes(styles.icon, styles[theme])} />;
 						}}
 						title={fixedRange || 'Custom'}
-						className={classes(styles['custom-picker'], styles[theme])}
+						className={classes(
+							styles['custom-picker'],
+							styles[theme],
+							fixedRange ? styles.highlight : ''
+						)}
 						{...customRangeInteractionProps.getReferenceProps()}
 					/>
 				)}
@@ -191,13 +196,15 @@ const DatePicker = (props) => {
 						data-elem='header'
 						ref={datePickerFloatingReference.reference}
 						role='button'
+						tabIndex={0}
 						className={classes(
 							styles.container,
 							disabled ? styles.disabled : '',
 							openDatePicker ? styles.open : '',
 							error ? styles.error : '',
 							customRanges ? styles['with-custom'] : '',
-							styles[theme]
+							styles[theme],
+							displayValue ? styles.highlight : ''
 						)}
 						{...datePickerInteractionProps.getReferenceProps()}>
 						<div className={styles.left}>
@@ -237,9 +244,12 @@ const DatePicker = (props) => {
 								}}
 							/>
 						) : (
-							<ChevronIcon
-								className={classes(styles.icon, styles[theme])}
-								position={openDatePicker ? 'bottom' : 'top'}
+							<CaretIcon
+								className={classes(
+									styles.icon,
+									styles[theme],
+									openDatePicker ? styles.open : ''
+								)}
 							/>
 						)}
 					</div>
@@ -248,7 +258,7 @@ const DatePicker = (props) => {
 
 					<Popper open={openDatePicker} wrapperid='datePicker-popper'>
 						{openDatePicker && (
-							<div
+							<motion.div
 								{...datePickerInteractionProps.getFloatingProps({
 									role: 'group',
 									ref: datePickerFloatingReference.floating,
@@ -263,12 +273,20 @@ const DatePicker = (props) => {
 										left: datePickerFloatingReference.x ?? 0,
 									},
 								})}
+								initial={{
+									opacity: 0,
+									scale: 0,
+								}}
+								animate={{
+									scale: 1,
+									opacity: 1,
+								}}
 								className={classes(
 									styles.popper,
 									openDatePicker ? styles.open : ''
 								)}>
 								<Calender {...calenderProps} />
-							</div>
+							</motion.div>
 						)}
 					</Popper>
 

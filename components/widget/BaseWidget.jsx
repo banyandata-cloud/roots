@@ -8,19 +8,19 @@ import {
 	useMemo,
 	useState,
 } from 'react';
-import styles from './BaseWidget.module.css';
-import { ArrowIcon, CaretIcon, MaximizeIcon } from '../icons';
-import { Dropdown, DropdownItem } from '../input';
-import { Toggle } from '../Toggle';
 import { classes } from '../../utils';
-import { WidgetFallback } from './fallback';
-import { Text } from '../text';
-import { Popover } from '../popover';
+import { Toggle } from '../Toggle';
 import { BaseButton, Button } from '../buttons';
 import { DatePicker } from '../datePicker';
+import { ArrowIcon, CaretIcon, MaximizeIcon } from '../icons';
+import { Dropdown, DropdownItem } from '../input';
+import { Popover } from '../popover';
+import { Text } from '../text';
+import styles from './BaseWidget.module.css';
+import { WidgetFallback } from './fallback';
 
 const renderToggle = (optionData, theme) => {
-	return <Toggle className={styles['toggle-body']} theme={theme} {...optionData} />;
+	return <Toggle className={styles['toggle-body']} theme={theme} smooth {...optionData} />;
 };
 const generateOptions = (optionData, theme) => {
 	switch (optionData?.id ?? '') {
@@ -121,14 +121,22 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 	const titleText = (
 		<Text className={styles['title-container']}>
 			<Text className={styles['title-primary']}>
-				<Text
-					variant='h2'
-					stroke='semibold'
-					attrs={{
-						'data-elem': 'title',
-					}}>
-					{title} {subtitle && '-'}
-				</Text>
+				{title ? (
+					<Text
+						variant='h2'
+						stroke='semibold'
+						attrs={{
+							'data-elem': 'title',
+						}}>
+						{title} {subtitle && '-'}
+					</Text>
+				) : (
+					<div
+						className={classes(styles['header-options-toggle'])}
+						data-elem='header-options-toggle'>
+						{(toggle?.options?.length ?? 0) > 0 && renderToggle(toggle, theme)}
+					</div>
+				)}
 				{subtitle && (
 					<Text
 						variant='b1'
@@ -144,7 +152,7 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 			{titleDesc && (
 				<Text
 					variant='b1'
-					stroke='medium'
+					stroke='light'
 					attrs={{
 						'data-elem': 'title-desc',
 					}}>
@@ -217,11 +225,13 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 						(toggle?.options?.length ?? 0) > 0 && styles.toggle
 					)}
 					data-elem='header-options'>
-					<div
-						className={classes(styles['header-options-toggle'])}
-						data-elem='header-options-toggle'>
-						{(toggle?.options?.length ?? 0) > 0 && renderToggle(toggle, theme)}
-					</div>
+					{title && (
+						<div
+							className={classes(styles['header-options-toggle'])}
+							data-elem='header-options-toggle'>
+							{(toggle?.options?.length ?? 0) > 0 && renderToggle(toggle, theme)}
+						</div>
+					)}
 					<div
 						className={classes(styles['header-options-list'])}
 						data-elem='header-options-list'>

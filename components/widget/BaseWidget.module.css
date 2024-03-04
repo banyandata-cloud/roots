@@ -64,7 +64,7 @@
 }
 .root .header .header-options .header-options-toggle .toggle-body {
   padding: 0.125rem 0.25rem;
-  height: 1.75rem;
+  height: auto;
 }
 .root .header .header-options .header-options-list {
   display: flex;
@@ -152,7 +152,7 @@
   color: #1a2028;
 }
 .root.light-theme .header .header-title [data-elem=title-desc] {
-  color: #9a9ea5;
+  color: var(--text-colour2);
 }
 .root.light-theme .header .header-title .title .icon {
   fill: var(--menu-black);

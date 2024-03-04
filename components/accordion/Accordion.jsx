@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
 import { useRef, useState } from 'react';
 import { classes } from '../../utils/utils';
@@ -38,7 +39,7 @@ const Accordion = (props) => {
 
 	return (
 		<div
-			className={classes(className, styles.root, isOpen ? styles.open : '')}
+			className={classes(styles.root, isOpen ? styles.open : '', className)}
 			data-state-open={isOpen}>
 			<BaseCell
 				flexible
@@ -62,22 +63,37 @@ const Accordion = (props) => {
 				component2={<span className={styles.title}>{title}</span>}
 				component3={RightComponent && <RightComponent className={styles.icon} />}
 			/>
-			<div data-elem='body' className={styles.body}>
-				{description && <p>{description}</p>}
-				{children}
-				{onExpand && (
-					<Button
-						size='auto'
-						variant='text'
-						onClick={() => {
-							onExpand();
-						}}
-						rightComponent={() => {
-							return <ExpandArrowAltIcon className={styles.expand} />;
-						}}
-					/>
-				)}
-			</div>
+
+			{isOpen && (
+				<motion.div
+					key={title + description}
+					initial={{
+						opacity: 0,
+					}}
+					animate={{
+						opacity: 1,
+					}}
+					transition={{
+						duration: 0.2,
+					}}
+					data-elem='body'
+					className={styles.body}>
+					{description && <p>{description}</p>}
+					{children}
+					{onExpand && (
+						<Button
+							size='auto'
+							variant='text'
+							onClick={() => {
+								onExpand();
+							}}
+							rightComponent={() => {
+								return <ExpandArrowAltIcon className={styles.expand} />;
+							}}
+						/>
+					)}
+				</motion.div>
+			)}
 		</div>
 	);
 };

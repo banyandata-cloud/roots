@@ -1,22 +1,30 @@
-import { forwardRef, useImperativeHandle, useRef } from 'react';
+/* eslint-disable react/forbid-prop-types */
 import Highcharts from 'highcharts';
-import PropTypes from 'prop-types';
+import HighchartsReact from 'highcharts-react-official';
+import highchartsExportData from 'highcharts/modules/export-data';
+import highchartsExporting from 'highcharts/modules/exporting';
 import highchartsMap from 'highcharts/modules/map';
 import markerClusters from 'highcharts/modules/marker-clusters';
-import HighchartsReact from 'highcharts-react-official';
-import { mapOptions } from './config';
-import styles from './Map.module.css';
-import { Skeleton } from '../skeleton';
+import PropTypes from 'prop-types';
+import { forwardRef, useImperativeHandle, useRef } from 'react';
 import { classes } from '../../utils';
 import { Button } from '../buttons';
 import { FullScreenIcon } from '../icons';
+import { Skeleton } from '../skeleton';
+import styles from './Map.module.css';
+import { mapOptions } from './config';
+
 markerClusters(Highcharts);
 highchartsMap(Highcharts);
-require('highcharts/modules/exporting')(Highcharts);
-require('highcharts/modules/export-data')(Highcharts);
+highchartsExporting(Highcharts);
+highchartsExportData(Highcharts);
+
+Highcharts.AST.allowedReferences.push('data:');
+Highcharts.AST.allowedAttributes.push('svg');
 
 /**
- * Renders a button with a full-screen icon. When the button is clicked, it calls the `handleFullScreen` function passed as a prop.
+ * Renders a button with a full-screen icon. When the button is clicked,
+ * it calls the `handleFullScreen` function passed as a prop.
  *
  * @param {Function} handleFullScreen - The function to be called when the button is clicked.
  * @returns {JSX.Element} - The rendered button component.
@@ -40,11 +48,13 @@ const FullScreenButton = ({ handleFullScreen }) => {
  *
  * @param {boolean} loading - Indicates whether the map is still loading or not.
  * @param {string} theme - The theme to be applied to the map.
- * @param {boolean} fallback - Indicates whether to show a fallback UI when the map is still loading.
+ * @param {boolean} fallback - Indicates whether to show a fallback UI when
+ * the map is still loading.
  * @param {string} className - Additional CSS class name for the map container.
  * @param {boolean} showFullScreen - Indicates whether to show a full-screen button for the map.
  * @param {boolean} enableDoubleClickZoom - Indicates whether to enable zooming on double-click.
- * @param {boolean} enableMouseWheelZoom - Indicates whether to enable zooming using the mouse wheel.
+ * @param {boolean} enableMouseWheelZoom - Indicates whether to
+ * enable zooming using the mouse wheel.
  * @param {Array} coordinates - The coordinates of the map points to be displayed.
  * @param {boolean} cluster - Indicates whether to enable clustering of map points.
  * @param {boolean} showZoomButton - Indicates whether to show zoom buttons on the map.
@@ -63,9 +73,13 @@ const Map = forwardRef((props, ref) => {
 		return (
 			<div className={styles.root}>
 				<Skeleton
-					theme={theme}
+					width='100%'
 					height='100%'
+					theme={theme}
 					variant='rounded'
+					style={{
+						animationDuration: '4s',
+					}}
 					noAnimation={!loading && fallback}
 				/>
 			</div>
@@ -78,11 +92,13 @@ const Map = forwardRef((props, ref) => {
 		highcharts: Highcharts,
 		options: mapOptions(props),
 		constructorType: 'mapChart', // renders map based highchart
-		containerProps: { className: styles['bc-map-root'] }, // container class for the map component
+		containerProps: {
+			className: classes(styles['bc-map-root'], className),
+		}, // container class for the map component
 		ref: mapRef,
 	};
 
-	const handleFullScreen = () => {
+	const toggleFullScreen = () => {
 		/**
 		 * The function first checks if the mapRef exists
 		 * and if it has a current property and a chart property.
@@ -94,17 +110,19 @@ const Map = forwardRef((props, ref) => {
 		}
 	};
 
-	useImperativeHandle(ref, () => ({
-		/**
-		 * methods to get exposed
-		 */
-		toggleFullScreen: handleFullScreen,
-	}));
+	useImperativeHandle(ref, () => {
+		return {
+			/**
+			 * methods to get exposed
+			 */
+			toggleFullScreen,
+		};
+	});
 
 	return (
 		<div className={classes(styles.root, className)}>
 			<HighchartsReact {...chartProps} />
-			{showFullScreen && <FullScreenButton handleFullScreen={handleFullScreen} />}
+			{showFullScreen && <FullScreenButton handleFullScreen={toggleFullScreen} />}
 		</div>
 	);
 });

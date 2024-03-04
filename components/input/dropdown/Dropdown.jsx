@@ -1,40 +1,41 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import React, {
-	useMemo,
-	useState,
-	useEffect,
-	forwardRef,
-	useImperativeHandle,
-	useRef,
-	useLayoutEffect,
-} from 'react';
-import { ErrorBoundary } from 'react-error-boundary';
 import {
+	FloatingFocusManager,
+	autoUpdate,
+	flip,
+	offset,
+	shift,
+	size,
+	useClick,
+	useDismiss,
 	useFloating,
 	useInteractions,
 	useListNavigation,
 	useRole,
-	useClick,
-	useDismiss,
-	offset,
-	flip,
-	shift,
-	size,
-	autoUpdate,
-	FloatingFocusManager,
 } from '@floating-ui/react-dom-interactions';
+import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
+import React, {
+	forwardRef,
+	useEffect,
+	useImperativeHandle,
+	useLayoutEffect,
+	useMemo,
+	useRef,
+	useState,
+} from 'react';
+import { ErrorBoundary } from 'react-error-boundary';
 import { classes } from '../../../utils';
-import { CaretIcon, DropdownIcon } from '../../icons';
-import styles from './Dropdown.module.css';
-import Popper from '../../popper/Popper';
-import { Checkbox } from '../checkbox';
 import Button from '../../buttons/button/Button';
 import { ErrorBoundaryWrapper } from '../../errorBoundary';
+import { CaretIcon, DropdownIcon } from '../../icons';
+import Popper from '../../popper/Popper';
+import { Checkbox } from '../checkbox';
+import styles from './Dropdown.module.css';
 
 // eslint-disable-next-line prefer-arrow-callback
 const Dropdown = forwardRef(function Dropdown(props, inputRef) {
-	// eslint-disable-next-line object-curly-newline
 	const {
 		className,
 		popperClassName,
@@ -52,6 +53,9 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 		formatter,
 		custom,
 		newIcon,
+		required,
+		hideIcon,
+		customButtonTitle,
 	} = props;
 	const [open, setOpen] = useState(false);
 	const [activeIndex, setActiveIndex] = useState(null);
@@ -316,13 +320,15 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 			}}>
 			<div
 				className={classes(
-					className,
 					styles.root,
 					open ? styles.open : '',
-					disabled ? styles.disabled : ''
+					disabled ? styles.disabled : '',
+					className
 				)}>
 				{label && (
-					<div data-elem='label' className={styles.label}>
+					<div
+						data-elem='label'
+						className={classes(styles.label, required ? styles.required : '')}>
 						<span>{label}</span>
 					</div>
 				)}
@@ -358,28 +364,38 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 							styles.select,
 							feedback != null ? styles[`feedback-${feedback?.type}`] : ''
 						)}>
-						<span data-elem='placeholder' className={styles.placeholder}>
-							{(selectedOptions?.length > 1
+						{typeof placeholder === 'string' || placeholder instanceof String ? (
+							(selectedOptions?.length > 1
 								? formatter(selectedOptions.length)
-								: selectedOptions?.[0]?.title) ?? placeholder}
-						</span>
-						{newIcon ? (
+								: selectedOptions?.[0]?.title) ?? (
+								<span data-elem='placeholder' className={styles.placeholder}>
+									{placeholder}
+								</span>
+							)
+						) : (
+							<div data-elem='placeholder'>{placeholder}</div>
+						)}
+						{newIcon && !hideIcon ? (
 							<DropdownIcon
 								data-elem='icon'
 								className={classes(styles.icon, styles['drop-icon'])}
 							/>
-						) : (
+						) : !hideIcon ? (
 							<CaretIcon
 								data-elem='icon'
-								className={classes(styles.icon, styles['drop-icon'])}
+								className={classes(
+									styles.icon,
+									styles['drop-icon'],
+									open ? styles.open : ''
+								)}
 							/>
-						)}
+						) : null}
 					</div>
 				</div>
 				<Popper open={open} wrapperId='dropdown-popper'>
 					{open && (
 						<FloatingFocusManager context={context} initialFocus={-1} modal={false}>
-							<ul
+							<motion.ul
 								{...getFloatingProps({
 									'data-elem': 'body',
 									role: 'group',
@@ -403,7 +419,15 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 										popperClassName,
 										open ? styles.open : ''
 									),
-								})}>
+								})}
+								initial={{
+									opacity: 0,
+									scale: 0,
+								}}
+								animate={{
+									opacity: 1,
+									scale: 1,
+								}}>
 								{multi && (
 									<li
 										ref={multiOptionsRef}
@@ -434,12 +458,12 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 								{multi && (
 									<Button
 										className={styles['multi-apply']}
-										title='Apply'
+										title={customButtonTitle ?? 'Apply'}
 										size='auto'
 										onClick={onApply}
 									/>
 								)}
-							</ul>
+							</motion.ul>
 						</FloatingFocusManager>
 					)}
 				</Popper>
@@ -466,7 +490,7 @@ Dropdown.propTypes = {
 	disabled: PropTypes.bool,
 	label: PropTypes.string,
 	value: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]),
-	placeholder: PropTypes.string,
+	placeholder: PropTypes.string || PropTypes.node,
 	// search: PropTypes.bool,
 	// max: PropTypes.number,
 	multi: PropTypes.bool,
@@ -477,6 +501,8 @@ Dropdown.propTypes = {
 		type: PropTypes.oneOf(['error', 'success', 'default']),
 	}),
 	formatter: PropTypes.func,
+	required: PropTypes.bool,
+	hideIcon: PropTypes.bool,
 };
 
 Dropdown.defaultProps = {
@@ -495,6 +521,8 @@ Dropdown.defaultProps = {
 	formatter: (totalSelected) => {
 		return `${totalSelected} options selected`;
 	},
+	required: false,
+	hideIcon: false,
 };
 
 export default Dropdown;

@@ -3,14 +3,13 @@ import PropTypes from 'prop-types';
 import { useEffect, useRef, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { classes } from '../../../utils';
+import { ErrorBoundaryWrapper } from '../../errorBoundary';
+import { Pagination } from '../../pagination';
+import { TableColumn } from '../BaseTable.class';
 import { BaseTable } from '../baseTable';
+import styles from './Table.module.css';
 import { TableChips } from './tableChips';
 import { TableFilters } from './tableFilters';
-import { Pagination } from '../../pagination';
-import styles from './Table.module.css';
-import { TableColumn } from '../BaseTable.class';
-import { ErrorBoundaryWrapper } from '../../errorBoundary';
-import { Table as TableV2 } from '../../tableV2/table';
 
 const INTERSECTION = 1;
 const STEP = 0.05;
@@ -29,7 +28,6 @@ const Table = (props) => {
 		activeData,
 		setActiveData,
 		customCells,
-		chipsData,
 		filtersData,
 		paginationData,
 		loading,
@@ -40,14 +38,14 @@ const Table = (props) => {
 		rowHeight,
 		theme,
 		onRowClick,
+		onAdvancedFilterClick,
 		defaultActiveIndex,
 		custom,
-		v2,
+		tableTitleIcon,
+		tableTitleText,
+		dataLabel,
+		onFilterClear,
 	} = props;
-
-	if (v2) {
-		return <TableV2 {...props} />;
-	}
 
 	const ref = useRef(null);
 	const paginationRef = useRef(null);
@@ -97,10 +95,9 @@ const Table = (props) => {
 	useEffect(() => {
 		const tableElem = ref.current;
 		if (tableElem && !loading) {
-			const totalAddons = [chipsData, filtersData].filter(Boolean).length;
-			tableElem.style.height = `calc(100% - ${totalAddons * 3}rem)`;
+			tableElem.style.height = 'calc(100% -  3rem)';
 		}
-	}, [chipsData, filtersData, loading]);
+	}, [filtersData, loading]);
 
 	// setting body and header min-width to allow horizontal sticky column beyond viewport width
 	useEffect(() => {
@@ -137,27 +134,23 @@ const Table = (props) => {
 				);
 			}}>
 			<div className={classes(styles.root, className)}>
-				{chipsData != null &&
-					(chipsData?.chips?.length > 0 || chipsData?.showBack != null) && (
-						<TableChips
-							className={styles.chips}
-							{...chipsData}
-							loading={loading}
-							theme={theme}
-						/>
-					)}
-				{filtersData != null && (
+				{!Object.keys(disabledFilterOptions).every((key) => {
+					return disabledFilterOptions[key] === true;
+				}) && (
 					<TableFilters
 						className={styles.filters}
 						{...{
-							...filtersData,
 							disabledFilterOptions,
 							headerData,
 							hiddenColumns,
 							setHiddenColumns,
 						}}
+						onAdvancedFilterClick={onAdvancedFilterClick}
 						loading={loading}
 						theme={theme}
+						tableTitleIcon={tableTitleIcon}
+						tableTitleText={tableTitleText}
+						onClear={onFilterClear}
 					/>
 				)}
 				<BaseTable
@@ -177,7 +170,6 @@ const Table = (props) => {
 					}}
 					loading={loading}
 				/>
-
 				{paginationData != null && (
 					<Pagination
 						className={classes(styles.pagination, floating ? styles.floating : '')}
@@ -185,6 +177,7 @@ const Table = (props) => {
 						{...paginationData}
 						floating={floating}
 						loading={loading}
+						dataLabel={dataLabel}
 					/>
 				)}
 			</div>
@@ -234,9 +227,11 @@ Table.propTypes = {
 	onSort: PropTypes.func,
 	rowHeight: PropTypes.oneOf(['md', 'lg']),
 	onRowClick: PropTypes.func,
+	onSearch: PropTypes.func,
 	theme: PropTypes.oneOf(['light', 'dark']),
 	custom: PropTypes.node,
-	v2: PropTypes.bool,
+	onAdvancedFilterClick: PropTypes.func,
+	dataLabel: PropTypes.string,
 };
 
 Table.defaultProps = {
@@ -257,17 +252,17 @@ Table.defaultProps = {
 	paginationData: null,
 	loading: false,
 	disabledFilterOptions: {
-		filterButton: false,
-		refresh: false,
+		search: false,
 		columnFilter: false,
-		settings: false,
 	},
 	onSort: () => {},
 	rowHeight: 'md',
 	theme: 'light',
 	onRowClick: () => {},
+	onSearch: () => {},
 	custom: null,
-	v2: false,
+	onAdvancedFilterClick: () => {},
+	dataLabel: null,
 };
 
 export default Table;

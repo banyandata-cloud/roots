@@ -8,15 +8,18 @@ export class TableColumn {
 	constructor({
 		title = '',
 		id = '',
+		fallbackValue = '-',
 		sort = false,
 		size = 'md',
 		flexible = false,
 		style = {},
 		multiLine = false,
 		sticky = null,
+		columnFilter = false,
 	}) {
 		this.title = title;
 		this.id = id;
+		this.fallbackValue = fallbackValue;
 		this.sort = sort;
 		this.size = size;
 		this.sizeInRem = SIZE_MAP[size];
@@ -28,5 +31,6 @@ export class TableColumn {
 		this.style = style;
 		this.multiLine = multiLine;
 		this.sticky = sticky;
+		this.columnFilter = columnFilter;
 	}
 }

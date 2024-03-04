@@ -1,11 +1,34 @@
-@import '../../../node_modules/@banyan_cloud/roots/styles/';
+@import '../../styles';
 
 .root {
 	@include flex(column);
 	width: 100%;
 	height: 100%;
-	> img {
-		aspect-ratio: 1/1;
-		object-fit: contain;
+	.message {
+		@include flex(row, center, flex-start);
+		gap: 1rem;
+		margin-bottom: 1.5rem;
+		width: 80%;
+		> h1 {
+			text-wrap: nowrap;
+		}
+	}
+
+	.actions {
+		@include flex;
+		gap: 0.625rem;
+		> button[data-elem='base-cell'].action {
+			&:nth-child(1) {
+				background-color: $mono-color1;
+			}
+			gap: 1rem;
+			> [data-elem='component1'] {
+				.icon {
+					width: 1.5rem;
+					height: 1.5rem;
+					fill: $white;
+				}
+			}
+		}
 	}
 }

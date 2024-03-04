@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import mapBase from '@highcharts/map-collection/custom/world-highres3.topo.json';
 
 const MAP_THEME = {
@@ -11,12 +12,12 @@ const MAP_THEME = {
 		zoomButtonsBackgroundOnHover: '#f0f0f0',
 	},
 	light: {
-		mapBackgroundColor: '#ffffff',
+		mapBackgroundColor: '#fbfbfb',
 		mapAreaColor: '#dde7f1',
 		defaultMarkerColor: '#5a6b51',
 		mapAreaBorderColor: '#ffffff',
-		zoomButtonsBackground: '#00000',
-		zoomButtonsTextColor: '#ffffff',
+		zoomButtonsBackground: '#ffffff',
+		zoomButtonsTextColor: '#000000',
 		zoomButtonsBackgroundOnHover: '#00000088',
 	},
 };
@@ -127,6 +128,7 @@ export const mapOptions = (props) => {
 		chart: {
 			backgroundColor: MAP_THEME[theme].mapBackgroundColor, // background color of the map container
 			spacing: [0, 0, 0, 0], // outer spacing around the map. Setting it to 0 to get max ratio.
+			animation: false,
 		},
 		mapNavigation: {
 			enabled: showZoomButton,
@@ -137,7 +139,7 @@ export const mapOptions = (props) => {
 		tooltip: {
 			stickOnContact: true, // persistence of the tooltip on hover contact
 			useHTML: true, // use the html tags passed. use only svg tags if false
-			formatter: function () {
+			formatter() {
 				const tooltip = this.point.key;
 				if (!tooltip) {
 					return false; // hide empty tooltip if undefined

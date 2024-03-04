@@ -1,8 +1,6 @@
 import { Meta, Canvas, Story } from '@storybook/addon-docs';
-
 import { ThemedContainer } from '../../../helpers';
 import TableFilters from './TableFilters';
-import { useTableSearch } from './Search';
 
 <Meta title='Components/Table/TableTop/Filters' parameters={{ options: { showToolbar: false } }} />
 
@@ -41,34 +39,15 @@ export const FILTERS = [
 <Canvas>
 	<Story name='Default'>
 		{() => {
-			const filterValue = {
-				applied: 4,
-			};
-			const searchOptions = useTableSearch({
-				filters: FILTERS,
-				onApply: (filters) => {
-					alert(`${filters.length} Filter(s) Applied`);
-				},
-			});
+			
 			return (
-				<ThemedContainer filterValue={filterValue}>
-					<TableFilters filterValue={filterValue} searchOptions={searchOptions} />
+				<ThemedContainer >
+					<TableFilters />
 				</ThemedContainer>
 			);
 		}}
 	</Story>
 </Canvas>
-
-## Try in the Code Editor
-
-This embeded `CodeSandBox` is external third party code editor `iframe` shared publicly. It is advised to create an account with banyancloud mail id to create/fork this sandbox.
-
-<iframe
-	src='https://codesandbox.io/s/delicate-wood-vrqzpw?file=/src/App.js'
-	style={{ width: '100%', height: 500 }}
-	title='xenodochial-moon-5y668f'
-	allow='accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking'
-	sandbox='allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts'></iframe>
 
 ## API
 

@@ -257,7 +257,7 @@ const BaseAreaChart = (props) => {
 										? axisSplitColor
 										: theme === 'dark'
 										? COLORS['dark-grey']
-										: COLORS.grey5,
+										: COLORS['mono-color2'],
 								type: splitType,
 							},
 						},
@@ -280,7 +280,7 @@ const BaseAreaChart = (props) => {
 			echarts={echarts}
 			notMerge
 			lazyUpdate
-			className={classes(className, styles.root)}
+			className={classes(styles.root, className)}
 			style={style}
 		/>
 	);

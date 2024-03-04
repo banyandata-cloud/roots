@@ -4,7 +4,7 @@
 	@include flex(row, flex-start);
 
 	&.header-row {
-		background: $grey6;
+		background: #F7F7F8;
 		> [data-elem='base-cell'].expandable-cell {
 			background: transparent;
 			> [data-elem='component2'] {
@@ -43,13 +43,13 @@
 
 	&.row-height-md {
 		> td[data-elem='base-cell'] {
-			height: 3rem;
+			height: 3.375rem;
 		}
 	}
 
 	&.row-height-lg {
 		> td[data-elem='base-cell'] {
-			height: 4rem;
+			height: 4.375rem;
 		}
 	}
 

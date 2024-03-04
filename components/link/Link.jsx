@@ -19,6 +19,7 @@ const Link = forwardRef(function Link(props, ref) {
 		attrs,
 		className,
 		underline,
+		onClick,
 	} = props;
 
 	return (
@@ -29,11 +30,12 @@ const Link = forwardRef(function Link(props, ref) {
 			stroke={stroke}
 			weight={weight}
 			italic={italic}
-			className={classes(className, styles.root, styles[`underline-${underline}`])}
+			className={classes(styles.root, styles[`underline-${underline}`], className)}
 			attrs={{
 				to: href,
 				href,
 				target,
+				onClick,
 				...attrs,
 			}}>
 			{children}

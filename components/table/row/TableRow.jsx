@@ -18,6 +18,7 @@ const TableRow = forwardRef(function BaseTable(props, ref) {
 		onRowClick,
 		expandable: Expandable,
 		onSort,
+		theme,
 		rowHeight,
 	} = props;
 
@@ -44,7 +45,7 @@ const TableRow = forwardRef(function BaseTable(props, ref) {
 		if (type === 'header') {
 			cellContent = item.title;
 		} else if (type === 'body') {
-			cellContent = datum?.[item.id];
+			cellContent = datum?.[item.id] ?? item?.fallbackValue;
 		}
 
 		const cellProps = {
@@ -59,6 +60,7 @@ const TableRow = forwardRef(function BaseTable(props, ref) {
 			cellTitle: cellContent,
 			type,
 			onSort,
+			theme,
 			rowHeight,
 		};
 
@@ -86,10 +88,10 @@ const TableRow = forwardRef(function BaseTable(props, ref) {
 					return onRowClick(props);
 				}}
 				className={classes(
-					className,
 					styles.root,
 					styles[`${type}-row`],
-					styles[`row-height-${rowHeight}`]
+					styles[`row-height-${rowHeight}`],
+					className
 				)}>
 				{tableCells}
 			</tr>

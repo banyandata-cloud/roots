@@ -1,16 +1,50 @@
 /* eslint-disable react/forbid-prop-types */
+import PropTypes from 'prop-types';
 import React, { createElement, forwardRef, useRef, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import { ErrorBoundaryWrapper } from '../../errorBoundary';
-import PropTypes from 'prop-types';
 import { mergeRefs } from 'react-merge-refs';
-import styles from './TextField.module.css';
 import { classes, inputHelper } from '../../../utils/utils';
 import { BaseCell } from '../../cell';
+import { ErrorBoundaryWrapper } from '../../errorBoundary';
 import { Popover } from '../../popover';
+import styles from './TextField.module.css';
 
-// eslint-disable-next-line prefer-arrow-callback
-const TextField = forwardRef(function TextField(props, inputRef) {
+/**
+ * TextField is a functional component that renders a text input field with customizable options.
+ * It handles both controlled and uncontrolled input values
+ * and provides a way to open an autocomplete popover.
+ *
+ * @param {object} - An object containing various properties to configure the TextField component.
+ * @param {string} id - The id of the input field.
+ * @param {string} name - The name of the input field.
+ * @param {string|number} label - The label text for the input field.
+ * @param {string|number} placeholder - The placeholder text for the input field.
+ * @param {string} type - The type of the input field (text, email, password, number, textarea).
+ * @param {string|number} value - The value of the input field.
+ * @param {boolean} required - Whether the input field is required.
+ * @param {string} defaultValue - The default value for the input field.
+ * @param {function} onFocus - The event handler for the input field's focus event.
+ * @param {function} onBlur - The event handler for the input field's blur event.
+ * @param {function} onChange - The event handler for the input field's change event.
+ * @param {string} size - The size of the input field (sm, md, lg).
+ * @param {string} border - The border style of the input field (default, bottom, none).
+ * @param {string} theme - The theme of the input field (light, dark).
+ * @param {ReactNode} LeftComponent - The component to render on the left side of the input field.
+ * @param {ReactNode} RightComponent - The component to render on the right side of the input field.
+ * @param {string} className - The CSS class name for the input field.
+ * @param {boolean} disabled - Whether the input field is disabled.
+ * @param {object} input- Additional to pass to the input field.
+ * @param {object} feedback - The feedback message for the input field.
+ * @param {object} count - The character count configuration for the input field.
+ * @param {boolean} feedbackAndCount - Whether to display both feedback and character count.
+ * @param {number} maxLength - The maximum length of the input field.
+ * @param {function} onKeyDown - The event handler for the input field's key down event.
+ * @param {boolean} autocomplete - Whether to enable autocomplete for the input field.
+ * @param {object} autocompleteOptions - The options for the autocomplete feature.
+ * @param {boolean} custom - Whether to use custom styling for the input field.
+ * @returns {ReactNode} The rendered TextField component.
+ */
+const TextField = forwardRef((props, inputRef) => {
 	const {
 		id,
 		name,
@@ -18,6 +52,7 @@ const TextField = forwardRef(function TextField(props, inputRef) {
 		placeholder,
 		type,
 		value,
+		required,
 		defaultValue,
 		onFocus,
 		onBlur,
@@ -85,6 +120,7 @@ const TextField = forwardRef(function TextField(props, inputRef) {
 		},
 		onBlur,
 		onKeyDown,
+		required,
 		'data-elem': 'input',
 		ref: mergeRefs([inputRef]),
 		value: inputValue,
@@ -108,7 +144,7 @@ const TextField = forwardRef(function TextField(props, inputRef) {
 			}}>
 			<div className={classes(styles.root, className)}>
 				<label>
-					{label}
+					<span className={required ? styles.required : ''}>{label}</span>
 					<BaseCell
 						ref={setAnchorEl}
 						className={classes(
@@ -202,6 +238,7 @@ TextField.propTypes = {
 		}),
 	}),
 	theme: PropTypes.oneOf(['light', 'dark']),
+	required: PropTypes.bool,
 };
 
 TextField.defaultProps = {
@@ -227,6 +264,7 @@ TextField.defaultProps = {
 	autocomplete: false,
 	autocompleteOptions: {},
 	theme: 'light',
+	required: false,
 };
 
 export default TextField;

@@ -1,3 +1,6 @@
+/* eslint-disable max-len */
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-nested-ternary */
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import * as d3 from 'd3';
 import PropTypes from 'prop-types';
@@ -57,15 +60,20 @@ const FlowChart = ({
 					const responseData = await response.json();
 
 					setData((prevData) => {
-						const updatedNodes = prevData.nodes.map((n) =>
-							n.id === node.id
-								? { ...n, properties: responseData.data.properties }
-								: n
-						);
+						const updatedNodes = prevData.nodes.map((n) => {
+							return n.id === node.id
+								? {
+										...n,
+										properties: responseData.data.properties,
+								  }
+								: n;
+						});
 
 						const allNodes = [
 							...updatedNodes,
-							...responseData.data.nodes.filter((n) => n.id !== node.id),
+							...responseData.data.nodes.filter((n) => {
+								return n.id !== node.id;
+							}),
 						];
 
 						const allRelationships = [
@@ -79,8 +87,12 @@ const FlowChart = ({
 						};
 					});
 
-					setDisplayedLevel((prevLevel) => prevLevel + 1);
-					setClickedNodes((prevClickedNodes) => new Set(prevClickedNodes).add(node.id));
+					setDisplayedLevel((prevLevel) => {
+						return prevLevel + 1;
+					});
+					setClickedNodes((prevClickedNodes) => {
+						return new Set(prevClickedNodes).add(node.id);
+					});
 				} else {
 					console.error('Error in API response:', response.statusText);
 				}
@@ -111,7 +123,13 @@ const FlowChart = ({
 			return;
 		}
 
-		const uniqueLabels = Array.from(new Set(data.nodes.map((node) => node.labels[0])));
+		const uniqueLabels = Array.from(
+			new Set(
+				data.nodes.map((node) => {
+					return node.labels[0];
+				})
+			)
+		);
 
 		const labelToLevel = Object.fromEntries(
 			uniqueLabels.map((label) => {
@@ -135,22 +153,27 @@ const FlowChart = ({
 			})
 		);
 
-		const nodes = data.nodes.map((node) => ({
-			id: node.properties.id || node.properties.name,
-			label: node.labels[0],
-			timestamp: node.properties.timestamp,
-			properties: node.properties,
-			level: labelToLevel[node.labels[0]],
-			visibility: 'visible',
-		}));
+		const nodes = data.nodes.map((node) => {
+			return {
+				id: node.properties.id || node.properties.name,
+				label: node.labels[0],
+				timestamp: node.properties.timestamp,
+				properties: node.properties,
+				level: labelToLevel[node.labels[0]],
+				visibility: 'visible',
+			};
+		});
 
-		const links = data.relationships.map((relationship) => ({
-			source:
-				relationship.start_node.properties.id || relationship.start_node.properties.name,
-			target: relationship.end_node.properties.id || relationship.end_node.properties.name,
-			relationshipType: relationship.type,
-		}));
-
+		const links = data.relationships.map((relationship) => {
+			return {
+				source:
+					relationship.start_node.properties.id ||
+					relationship.start_node.properties.name,
+				target:
+					relationship.end_node.properties.id || relationship.end_node.properties.name,
+				relationshipType: relationship.type,
+			};
+		});
 
 		const Width = width;
 		const Height = height;
@@ -172,7 +195,9 @@ const FlowChart = ({
 				'link',
 				d3
 					.forceLink(links)
-					.id((d) => d.id)
+					.id((d) => {
+						return d.id;
+					})
 					.distance(linkDistance)
 			)
 			.force('charge', d3.forceManyBody().strength(-100))
@@ -204,11 +229,11 @@ const FlowChart = ({
 			.style('stroke', '#999')
 			.style('stroke-Width', 2.5)
 			.attr('stroke-opacity', 0.5)
-			.style('visibility', (d) =>
-				d.source.visibility !== 'hidden' && d.target.visibility !== 'hidden'
+			.style('visibility', (d) => {
+				return d.source.visibility !== 'hidden' && d.target.visibility !== 'hidden'
 					? 'visible'
-					: 'hidden'
-			);
+					: 'hidden';
+			});
 
 		const defs = svgContainer.append('defs');
 
@@ -217,7 +242,9 @@ const FlowChart = ({
 			.data(links)
 			.enter()
 			.append('path')
-			.attr('id', (d, i) => `linkPath${i}`)
+			.attr('id', (d, i) => {
+				return `linkPath${i}`;
+			})
 			.attr('d', (d) => {
 				const startX = d.source.x;
 				const startY = d.source.y;
@@ -225,11 +252,11 @@ const FlowChart = ({
 				const endY = d.target.y;
 				return `M${startX},${startY}L${endX},${endY}`;
 			})
-			.style('visibility', (d) =>
-				d.source.visibility !== 'hidden' && d.target.visibility !== 'hidden'
+			.style('visibility', (d) => {
+				return d.source.visibility !== 'hidden' && d.target.visibility !== 'hidden'
 					? 'visible'
-					: 'hidden'
-			);
+					: 'hidden';
+			});
 
 		const linkText = container
 			.selectAll('.link-label')
@@ -239,44 +266,59 @@ const FlowChart = ({
 			.attr('class', 'link-label')
 			.style('text-anchor', 'middle')
 			.append('textPath')
-			.attr('href', (d, i) => `#linkPath${i}`)
+			.attr('href', (d, i) => {
+				return `#linkPath${i}`;
+			})
 			.attr('startOffset', '50%')
-			.text((d) => d.relationshipType)
+			.text((d) => {
+				return d.relationshipType;
+			})
 			.attr('font-size', linkFontSize)
 			.attr('fill', linkFontColor)
-			.style('visibility', (d) =>
-				d.source.visibility !== 'hidden' && d.target.visibility !== 'hidden'
+			.style('visibility', (d) => {
+				return d.source.visibility !== 'hidden' && d.target.visibility !== 'hidden'
 					? 'visible'
-					: 'hidden'
-			);
+					: 'hidden';
+			});
 
-		const nodesToDisplay = nodes.filter((node) => node.level <= displayedLevel);
+		const nodesToDisplay = nodes.filter((node) => {
+			return node.level <= displayedLevel;
+		});
 
 		const node = container
 			.selectAll('.node')
-			.data(nodesToDisplay, (d) => d.id)
+			.data(nodesToDisplay, (d) => {
+				return d.id;
+			})
 			.enter()
 			.append('circle')
-			.attr('class', (d) => `node-level-${d.level}`)
-			.attr('r', (d) => calculateRadius(d.label))
+			.attr('class', (d) => {
+				return `node-level-${d.level}`;
+			})
+			.attr('r', (d) => {
+				return calculateRadius(d.label);
+			})
 			.attr('fill', (d) => {
 				const labelStr = d.label.replace(/[^a-zA-Z]/g, '');
 
 				if (labelStr === 'AzuVirtualMachine') {
 					return '#33a02c';
-				} else if (labelStr === 'AzuDisk') {
-					return '#ff00c9';
-				} else if (labelStr === 'AzuNetworkInterface') {
-					return 'gray';
-				} else if (labelStr === 'AzuSubscription') {
-					return '#BEBB00';
-				} else {
-					return colorScale(d.level);
 				}
+				if (labelStr === 'AzuDisk') {
+					return '#ff00c9';
+				}
+				if (labelStr === 'AzuNetworkInterface') {
+					return 'gray';
+				}
+				if (labelStr === 'AzuSubscription') {
+					return '#BEBB00';
+				}
+				return colorScale(d.level);
 			})
-			.attr('stroke', (d) =>
-				d3
+			.attr('stroke', (d) => {
+				return d3
 					.color(
+						// eslint-disable-next-line no-nested-ternary
 						d.label === 'AzuVirtualMachine'
 							? '#33a02c'
 							: d.label === 'AzuDisk'
@@ -287,8 +329,8 @@ const FlowChart = ({
 							? '#BEBB00'
 							: colorScale(d.level)
 					)
-					.darker(1)
-			)
+					.darker(1);
+			})
 			.attr('opacity', 0.9)
 			.call(d3.drag().on('start', dragstarted).on('drag', dragged).on('end', dragended))
 			.on('click', (event, d) => {
@@ -325,12 +367,30 @@ const FlowChart = ({
 			});
 
 		simulation.on('tick', () => {
-			link.attr('x1', (d) => d.source.x)
-				.attr('y1', (d) => d.source.y)
-				.attr('x2', (d) => d.target.x)
-				.attr('y2', (d) => d.target.y);
-			node.attr('cx', (d) => d.x).attr('cy', (d) => d.y);
-			labels.attr('x', (d) => d.x).attr('y', (d) => d.y);
+			link.attr('x1', (d) => {
+				return d.source.x;
+			})
+				.attr('y1', (d) => {
+					return d.source.y;
+				})
+				.attr('x2', (d) => {
+					return d.target.x;
+				})
+				.attr('y2', (d) => {
+					return d.target.y;
+				});
+			node.attr('cx', (d) => {
+				return d.x;
+			}).attr('cy', (d) => {
+				return d.y;
+			});
+			labels
+				.attr('x', (d) => {
+					return d.x;
+				})
+				.attr('y', (d) => {
+					return d.y;
+				});
 			linkPaths.attr('d', (d) => {
 				const startX = d.source.x;
 				const startY = d.source.y;
@@ -339,8 +399,12 @@ const FlowChart = ({
 				return `M${startX},${startY}L${endX},${endY}`;
 			});
 			linkText
-				.attr('x', (d) => (d.source.x + d.target.x) / 2)
-				.attr('y', (d) => (d.source.y + d.target.y) / 2);
+				.attr('x', (d) => {
+					return (d.source.x + d.target.x) / 2;
+				})
+				.attr('y', (d) => {
+					return (d.source.y + d.target.y) / 2;
+				});
 		});
 
 		const zoom = d3.zoom().scaleExtent([0.1, 7]).on('zoom', zoomed);
@@ -350,6 +414,7 @@ const FlowChart = ({
 			container.attr('transform', event.transform);
 		}
 
+		// eslint-disable-next-line consistent-return
 		return () => {
 			simulation.stop();
 		};
@@ -367,7 +432,7 @@ const FlowChart = ({
 		labelFontSize,
 	]);
 
-	return <svg ref={svgRef} width={width} height={height}></svg>;
+	return <svg ref={svgRef} width={width} height={height} />;
 };
 
 FlowChart.propTypes = {

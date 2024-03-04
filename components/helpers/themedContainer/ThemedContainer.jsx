@@ -17,7 +17,7 @@ const ThemedContainer = (props) => {
 };
 
 ThemedContainer.defaultProps = {
-	theme: 'dark',
+	theme: 'light',
 	style: {},
 	className: '',
 };

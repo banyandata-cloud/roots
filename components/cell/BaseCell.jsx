@@ -1,7 +1,6 @@
 import React, { createElement, forwardRef, isValidElement } from 'react';
 /* eslint-disable react/forbid-prop-types */
 import PropTypes from 'prop-types';
-// import { createElement, isValidElement } from 'react';
 import { classes } from '../../utils';
 import styles from './BaseCell.module.css';
 
@@ -26,12 +25,12 @@ export const BaseCell = forwardRef(function BaseCell(props, ref) {
 			'data-elem': 'base-cell',
 			ref,
 			className: classes(
-				className,
 				styles.root,
 				styles[size],
 				styles[`border-radius-${radius}`],
 				flexible ? styles.flexible : '',
-				rounded ? styles.rounded : ''
+				rounded ? styles.rounded : '',
+				className
 			),
 			...attrs,
 		},

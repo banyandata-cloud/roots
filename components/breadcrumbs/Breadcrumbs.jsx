@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './Breadcrumbs.module.css';
@@ -17,35 +18,35 @@ const BreadCrumbs = (props) => {
 		theme,
 		onBackClick,
 		onHomeClick,
+		homeTitle,
+		className,
 	} = props;
 
 	const [expand, setExpand] = useState(false);
 
-	let href = `/${crumbs?.[0]?.path}`;
+	// let href = `/${crumbs?.[0]?.path}`;
 	const crumbsList = crumbs?.slice(1);
 
 	const CrumbsDOM =
 		crumbsList !== null &&
 		crumbsList.map((crumb, index) => {
-			const { title, value, path, search, icon } = crumb;
+			const { title, value, icon, navigate, isDisabled = false } = crumb;
 
 			const active = index === crumbsList.length - 1;
 			const showSeperator = index < crumbsList.length - 1;
 
-			href += `/${path}`;
-
 			return (
-				<React.Fragment key={path}>
+				<React.Fragment key={title}>
 					<Link
-						href={!active && `${href}${search ?? ''}`}
 						underline='none'
+						onClick={!isDisabled ? navigate : null}
 						className={classes(styles.crumb, active ? styles.active : '')}
 						dataAttrs={{
 							'data-state': active,
 						}}
 						component={!active ? linkComponent : 'span'}
 						stroke={!active ? 'regular' : 'medium'}>
-						<div className={classes(styles.iconWrapper)}>{icon && icon}</div>
+						{icon && <div className={classes(styles.iconWrapper)}>{icon}</div>}
 						{title && (
 							<span className={classes(styles.title)}>
 								{getSpacedDisplayName(title).replace(/-/g, ' ')} :
@@ -81,13 +82,29 @@ const BreadCrumbs = (props) => {
 		);
 	}
 
-	return (
-		crumbs?.length > 1 && (
+	if (crumbs?.length <= 1) {
+		return (
 			<div className={classes(styles.root, styles[`theme-${theme}`])}>
 				<Button
 					size='auto'
 					radius='round'
-					className={styles.back}
+					className={classes(styles['crumb-actions'], styles.home, styles.highlight)}
+					title={homeTitle}
+					leftComponent={() => {
+						return <HomeIcon className={styles.icon} position='left' />;
+					}}
+				/>
+			</div>
+		);
+	}
+
+	return (
+		crumbs?.length > 1 && (
+			<div className={classes(styles.root, styles[`theme-${theme}`], className)}>
+				<Button
+					size='auto'
+					radius='round'
+					className={styles['crumb-actions']}
 					leftComponent={() => {
 						return <ArrowIcon className={styles.icon} position='left' />;
 					}}
@@ -96,12 +113,14 @@ const BreadCrumbs = (props) => {
 				<Button
 					size='auto'
 					radius='round'
-					className={styles.back}
+					className={classes(styles['crumb-actions'], styles.home)}
 					leftComponent={() => {
 						return <HomeIcon className={styles.icon} position='left' />;
 					}}
+					title={homeTitle}
 					onClick={onHomeClick}
 				/>
+				<BreadcrumbSeperator className={styles.seperator} />
 				{CrumbsDOM}
 			</div>
 		)
@@ -122,6 +141,8 @@ BreadCrumbs.propTypes = {
 	itemsBeforeCollapse: PropTypes.number,
 	itemsAfterCollapse: PropTypes.number,
 	linkComponent: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+	homeTitle: PropTypes.string,
+	className: PropTypes.string,
 };
 
 BreadCrumbs.defaultProps = {
@@ -131,6 +152,8 @@ BreadCrumbs.defaultProps = {
 	itemsBeforeCollapse: 2,
 	itemsAfterCollapse: 1,
 	linkComponent: 'a',
+	homeTitle: '',
+	className: '',
 };
 
 export default BreadCrumbs;

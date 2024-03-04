@@ -6,7 +6,7 @@
 	}
 
 	background: $white;
-	border-bottom: 1px solid $grey4;
+	// border-bottom: 1px solid $grey4;
 	> [data-elem*='component'] {
 		@include flex(row, flex-start);
 		flex: 1;
@@ -14,16 +14,38 @@
 			@include ellipsis;
 			display: inline-block;
 			width: 100%;
-			font-size: 0.875rem;
+			font-size: 1rem;
+		}
+		&.light {
+			background: $white;
+			.cell-text {
+				color: #1a2028;
+			}
+		}
+		&.dark {
+			background: $white;
+			.cell-text {
+				color: $grey;
+			}
 		}
 	}
 
 	&.header-cell {
-		background: $grey6;
 		.cell-text {
-			font-weight: 500;
-			color: $grey;
-			font-size: 0.75rem;
+			font-weight: 400;
+			font-size: 0.875rem;
+		}
+		&.light {
+			background: $light-color2;
+			.cell-text {
+				color: #575f6e;
+			}
+		}
+		&.dark {
+			background: $light-color2;
+			.cell-text {
+				color: $grey;
+			}
 		}
 
 		&.sortable {
@@ -90,6 +112,18 @@
 				-webkit-box-orient: vertical;
 				-webkit-line-clamp: 2;
 				font-size: 0.75rem;
+			}
+		}
+		&.light {
+			background: $white;
+			.cell-text {
+				color: #1a2028;
+			}
+		}
+		&.dark {
+			background: $white;
+			.cell-text {
+				color: $grey;
 			}
 		}
 	}

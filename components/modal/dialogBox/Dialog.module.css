@@ -1,6 +1,8 @@
 .root {
   padding: 0.25rem 0px;
-  max-height: 14rem;
+  height: -moz-fit-content;
+  height: fit-content;
+  max-height: 30rem;
   background: var(--white);
   border-radius: 0.25rem;
 }
@@ -18,7 +20,7 @@
 .root .footer {
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   gap: 1rem;
 }
@@ -32,6 +34,7 @@
   border: 1px solid var(--grey4);
 }
 .root .description {
-  padding: 0.5rem 0;
   font-size: 1rem;
+  height: -moz-fit-content;
+  height: fit-content;
 }/*# sourceMappingURL=Dialog.module.css.map */

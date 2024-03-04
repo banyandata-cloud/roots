@@ -1,11 +1,10 @@
+/* eslint-disable max-len */
 /* eslint-disable react/button-has-type */
 import PropTypes from 'prop-types';
 import { forwardRef } from 'react';
-import { ErrorBoundary } from 'react-error-boundary';
 import { classes } from '../../../utils/utils';
 import { BaseButton } from '../baseButton';
 import styles from './Button.module.css';
-import { ErrorBoundaryWrapper } from '../../errorBoundary';
 
 /**
  * Renders a customized button component wrapped in an ErrorBoundary component.
@@ -41,44 +40,32 @@ const Button = forwardRef((props, ref) => {
 		blurOnClick,
 		variant,
 		color,
-		custom,
 	} = props;
 
 	return (
-		<ErrorBoundary
-			FallbackComponent={(args) => {
-				return (
-					<ErrorBoundaryWrapper
-						{...args}
-						className={styles['error-boundary']}
-						custom={custom}
-					/>
-				);
-			}}>
-			<BaseButton
-				{...{
-					ref,
-					type,
-					component1: LeftComponent && <LeftComponent />,
-					title,
-					component3: RightComponent && <RightComponent />,
-					size,
-					flexible,
-					radius,
-					disabled,
-					onClick,
-					blurOnClick,
-					variant,
-				}}
-				className={classes(
-					styles.root,
-					styles[`radius-${radius}`],
-					styles[variant],
-					styles[color],
-					className
-				)}
-			/>
-		</ErrorBoundary>
+		<BaseButton
+			{...{
+				ref,
+				type,
+				component1: LeftComponent && <LeftComponent />,
+				title,
+				component3: RightComponent && <RightComponent />,
+				size,
+				flexible,
+				radius,
+				disabled,
+				onClick,
+				blurOnClick,
+				variant,
+			}}
+			className={classes(
+				styles.root,
+				styles[`radius-${radius}`],
+				styles[variant],
+				styles[color],
+				className
+			)}
+		/>
 	);
 });
 

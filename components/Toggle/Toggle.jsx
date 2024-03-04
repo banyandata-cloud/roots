@@ -1,26 +1,36 @@
 /* eslint-disable no-lonely-if */
 import PropTypes from 'prop-types';
-import { useRef, useState, forwardRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { classes } from '../../utils';
 import { Button } from '../buttons';
 import { Skeleton } from './Skeleton';
 import styles from './Toggle.module.css';
 
-// eslint-disable-next-line prefer-arrow-callback
-const Toggle = forwardRef(function Toggle(props, ref) {
-	// eslint-disable-next-line object-curly-newline
+const Toggle = (props) => {
 	const {
-		className,
-		theme,
 		options,
+		multi,
 		defaultValue,
+		theme,
 		value,
 		onChange,
-		multi,
-		color,
 		loading,
 		fallback,
+		className,
+		smooth,
 	} = props;
+	const [sliderLeft, setSliderLeft] = useState(0);
+	const [sliderWidth, setSliderWidth] = useState(0);
+
+	const sliderRef = useRef(null);
+
+	const updateSliderPosition = () => {
+		const activeTabElement = sliderRef.current;
+		if (activeTabElement) {
+			setSliderLeft(activeTabElement.offsetLeft);
+			setSliderWidth(activeTabElement.offsetWidth);
+		}
+	};
 
 	// for uncontrolled input
 	const [uncontrolledValue, setUncontrolledValue] = useState(() => {
@@ -99,62 +109,85 @@ const Toggle = forwardRef(function Toggle(props, ref) {
 	const compareSelection = (input, item) => {
 		if (Array.isArray(input)) {
 			return input?.includes(item);
-		} else {
-			return input === item;
 		}
+		return input === item;
 	};
-
 	if (loading || fallback) {
 		return <Skeleton theme={theme} fallback={!loading && fallback} />;
 	}
 
+	useEffect(() => {
+		updateSliderPosition();
+	}, [inputValue, options]);
+
 	return (
-		<div className={classes(className, styles.root, styles[`theme-${theme}`])}>
-			{multi && (
-				<Button
-					size='auto'
-					data-elem='toggle'
-					className={classes(styles['toggle-button'], allSelected ? styles.active : '')}
-					onClick={onSelectAll}
-					title='All'
-					color={allSelected ? color : 'default'}>
-					{value}
-				</Button>
-			)}
-			{options.map((item) => {
-				const {
-					title,
-					value: itemValue,
-					leftComponent,
-					rightComponent,
-					className: itemClassName,
-				} = item;
-				const isActive = compareSelection(inputValue, itemValue) && !allSelected;
-				return (
+		<div className={classes(styles.root, styles[theme], className)}>
+			<div className={styles.toggle}>
+				{multi && (
 					<Button
+						type='button'
 						size='auto'
 						data-elem='toggle'
-						key={itemValue}
+						variant='text'
 						className={classes(
 							styles['toggle-button'],
-							isActive ? styles.active : '',
-							itemClassName
+							allSelected ? styles['all-select'] : ''
 						)}
-						onClick={() => {
-							onButtonClick(itemValue, isActive);
+						onClick={onSelectAll}
+						title='All'
+					/>
+				)}
+				{options.map((tab) => {
+					const {
+						title,
+						leftComponent,
+						rightComponent,
+						disabled,
+						className: itemClassName,
+					} = tab;
+					const isActive = compareSelection(inputValue, tab.value) && !allSelected;
+
+					return (
+						<Button
+							key={title}
+							ref={isActive ? sliderRef : null}
+							type='button'
+							onClick={() => {
+								return onButtonClick(tab.value, isActive);
+							}}
+							size='auto'
+							data-elem='toggle'
+							title={title}
+							className={classes(
+								styles['toggle-button'],
+								styles[theme],
+								disabled ? styles.disabled : '',
+								isActive ? styles.active : '',
+								!smooth ? styles.highlight : '',
+								itemClassName
+							)}
+							leftComponent={leftComponent}
+							rightComponent={rightComponent}
+						/>
+					);
+				})}
+				{smooth && !multi && (
+					<div
+						className={classes(
+							styles.slider,
+							styles[theme],
+							smooth ? styles.smooth : ''
+						)}
+						style={{
+							left: `${sliderLeft}px`,
+							width: `${sliderWidth}px`,
 						}}
-						title={title}
-						color={isActive ? color : 'default'}
-						leftComponent={leftComponent}
-						rightComponent={rightComponent}>
-						{value}
-					</Button>
-				);
-			})}
-			<input type='text' ref={ref} className={styles.input} value={inputValue} />
+					/>
+				)}
+			</div>
 		</div>
 	);
-});
+};
 
 Toggle.propTypes = {
 	loading: PropTypes.bool,
@@ -162,10 +195,9 @@ Toggle.propTypes = {
 	className: PropTypes.string,
 	theme: PropTypes.oneOf(['dark', 'light']),
 	options: PropTypes.arrayOf(PropTypes.string),
-	defaultValue: PropTypes.string,
 	value: PropTypes.string,
 	multi: PropTypes.bool,
-	theme: PropTypes.oneOf(['light', 'dark']),
+	smooth: PropTypes.bool,
 };
 
 Toggle.defaultProps = {
@@ -174,10 +206,9 @@ Toggle.defaultProps = {
 	className: '',
 	theme: 'light',
 	options: [],
-	defaultValue: null,
 	value: undefined,
 	multi: false,
-	theme: 'dark',
+	smooth: false,
 };
 
 export default Toggle;

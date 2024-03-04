@@ -1,5 +1,6 @@
 import { FloatingPortal, FloatingOverlay, useId } from '@floating-ui/react-dom-interactions';
 import PropTypes from 'prop-types';
+import { AnimatePresence } from 'framer-motion';
 import { useEffect } from 'react';
 import { classes } from '../../utils';
 import styles from './Popper.module.css';
@@ -23,18 +24,20 @@ const Popper = (props) => {
 
 	return (
 		<FloatingPortal id={portalId}>
-			{open && (
-				<FloatingOverlay
-					lockScroll
-					className={classes(
-						className,
-						styles.backdrop,
-						transparent ? styles.transparent : '',
-						backdrop ? '' : styles['hide-backdrop']
-					)}>
-					{children}
-				</FloatingOverlay>
-			)}
+			<AnimatePresence>
+				{open && (
+					<FloatingOverlay
+						lockScroll
+						className={classes(
+							styles.backdrop,
+							transparent ? styles.transparent : '',
+							backdrop ? '' : styles['hide-backdrop'],
+							className
+						)}>
+						{children}
+					</FloatingOverlay>
+				)}
+			</AnimatePresence>
 		</FloatingPortal>
 	);
 };
