@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-tabs */
 import PropTypes from 'prop-types';
 import React, { forwardRef, useEffect, useReducer, useRef } from 'react';
 import { classes } from '../../utils';
@@ -194,43 +192,37 @@ export const Pagination = forwardRef((props, ref) => {
 						<Text>No available {dataLabel ?? 'records'} at the moment</Text>
 					</Text>
 				)}
-				{showPages && (
-					<BaseCell
-						size='auto'
-						flexible
-						className={styles['row-switcher']}
-						component2={
-							<BaseCell
-								size='auto'
-								flexible
-								className={styles['row-switcher-handle']}
-								component1={
-									<Dropdown
-										className={styles.dropdown}
-										popperClassName={styles['dropdown-popper']}
-										value={step}
-										placeholder=''
-										onChange={(e, newStep) => {
-											onChange({
-												type: 'SET_STEP',
-												payload: newStep,
-											});
-										}}>
-										{dropdownOptions.map((item) => {
-											return (
-												<DropdownItem
-													title={item}
-													value={item}
-													key={item}
-												/>
-											);
-										})}
-									</Dropdown>
-								}
-							/>
-						}
-					/>
-				)}
+				<BaseCell
+					size='auto'
+					flexible
+					className={styles['row-switcher']}
+					component2={
+						<BaseCell
+							size='auto'
+							flexible
+							className={styles['row-switcher-handle']}
+							component1={
+								<Dropdown
+									className={styles.dropdown}
+									popperClassName={styles['dropdown-popper']}
+									value={step}
+									placeholder=''
+									onChange={(e, newStep) => {
+										onChange({
+											type: 'SET_STEP',
+											payload: newStep,
+										});
+									}}>
+									{dropdownOptions.map((item) => {
+										return (
+											<DropdownItem title={item} value={item} key={item} />
+										);
+									})}
+								</Dropdown>
+							}
+						/>
+					}
+				/>
 				{showPages && (
 					<BaseCell
 						flexible
