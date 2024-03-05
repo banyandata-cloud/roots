@@ -42,7 +42,46 @@ The default FlowChart.
 	<Story
 		name='Default'
 		args={{
-			apiUrl: 'http://localhost:5000/api/v1/fetch_data_from_neo4j',
+			data: {
+				nodes: [
+					{
+						id: '1',
+						label: 'AzuSubscription',
+						timestamp: '2024-03-04T12:00:00',
+						properties: {
+							/* ... */
+						},
+					},
+					{
+						id: '2',
+						label: 'AzuResourceGroup',
+						timestamp: '2024-03-04T12:15:00',
+						properties: {
+							/* ... */
+						},
+					},
+					{
+						id: '3',
+						label: 'AzuVirtualMachine',
+						properties: {},
+						timestamp: '2024-03-04T12:30:00',
+					},
+					// Add more nodes as needed
+				],
+				relationships: [
+					{
+						start_node: { properties: { id: '2' } },
+						end_node: { properties: { id: '1' } },
+						type: 'LINK 1',
+					},
+					{
+						start_node: { properties: { id: '2' } },
+						end_node: { properties: { id: '3' } },
+						type: 'LINK 2',
+					},
+					// Add more relationships as needed
+				],
+			},
 			width: 900,
 			height: 600,
 		}}>

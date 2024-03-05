@@ -112,7 +112,8 @@ function RangeSlider(props) {
 				onMouseLeave={() => {
 					return dragging && handleMouseUp();
 				}}
-				onClick={handleSliderClick}>
+				onClick={handleSliderClick}
+				data-elem='track'>
 				{['min', 'max'].map((thumb) => {
 					return (
 						<React.Fragment key={thumb}>
@@ -122,6 +123,7 @@ function RangeSlider(props) {
 								<div
 									className={styles['rangeslider-thumb']}
 									data-value={rangeValues[thumb]}
+									data-elem={thumb}
 									style={{
 										left: `${rangeValues[thumb]}%`,
 									}}
@@ -162,7 +164,7 @@ function RangeSlider(props) {
 					/>
 				);
 			})}
-			<div className={styles.minMaxContainer}>
+			<div className={styles.minMaxContainer} data-elem='minMax'>
 				<span className={styles.min}>{min}</span>
 				<span className={styles.max}>{max}</span>
 			</div>

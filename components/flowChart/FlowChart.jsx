@@ -21,7 +21,7 @@ import PropTypes from 'prop-types';
  */
 
 const FlowChart = ({
-	apiUrl,
+	data: initialData,
 	width,
 	height,
 	linkDistance,
@@ -31,109 +31,31 @@ const FlowChart = ({
 	labelColor,
 	labelFontSize,
 }) => {
-	const [data, setData] = useState(null);
+	const [data, setData] = useState(initialData);
 	const svgRef = useRef(null);
 	const [displayedLevel, setDisplayedLevel] = useState(3);
 
-	const [clickedNodes, setClickedNodes] = useState(new Set());
-
-	const handleNodeClick = useCallback(
-		async (node) => {
-			try {
-				if (clickedNodes.has(node.id)) {
-					console.log('Node already clicked:', node.id);
-					return;
-				}
-
-				const response = await fetch(apiUrl, {
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json',
-					},
-					body: JSON.stringify({
-						clicked_id: node.id,
-						timestamp: node.timestamp,
-					}),
-				});
-
-				if (response.ok) {
-					const responseData = await response.json();
-
-					setData((prevData) => {
-						const updatedNodes = prevData.nodes.map((n) => {
-							return n.id === node.id
-								? {
-										...n,
-										properties: responseData.data.properties,
-								  }
-								: n;
-						});
-
-						const allNodes = [
-							...updatedNodes,
-							...responseData.data.nodes.filter((n) => {
-								return n.id !== node.id;
-							}),
-						];
-
-						const allRelationships = [
-							...prevData.relationships,
-							...responseData.data.relationships,
-						];
-
-						return {
-							nodes: allNodes,
-							relationships: allRelationships,
-						};
-					});
-
-					setDisplayedLevel((prevLevel) => {
-						return prevLevel + 1;
-					});
-					setClickedNodes((prevClickedNodes) => {
-						return new Set(prevClickedNodes).add(node.id);
-					});
-				} else {
-					console.error('Error in API response:', response.statusText);
-				}
-			} catch (error) {
-				console.error('Error making API request:', error);
-			}
-		},
-		[apiUrl, clickedNodes]
-	);
+	useEffect(() => {
+		setData(initialData);
+	}, [initialData]);
 
 	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				const response = await fetch(apiUrl);
-				const jsonData = await response.json();
-				setData(jsonData.data);
-			} catch (error) {
-				console.error('Error fetching data:', error);
-			}
-		};
-
-		fetchData();
-	}, [apiUrl]);
-
-	useEffect(() => {
-		if (!data || !data.nodes || !data.relationships) {
+		if (!initialData || !initialData.nodes || !initialData.relationships) {
 			console.warn('Invalid data format.');
 			return;
 		}
 
 		const uniqueLabels = Array.from(
 			new Set(
-				data.nodes.map((node) => {
-					return node.labels[0];
+				initialData.nodes.map((node) => {
+					return node.label;
 				})
 			)
 		);
 
 		const labelToLevel = Object.fromEntries(
 			uniqueLabels.map((label) => {
-				const labelStr = label.replace(/[^a-zA-Z]/g, '');
+				const labelStr = label;
 				if (labelStr === 'AzuSubscription') {
 					return [label, 1];
 				}
@@ -153,18 +75,20 @@ const FlowChart = ({
 			})
 		);
 
-		const nodes = data.nodes.map((node) => {
+		const nodes = initialData.nodes.map((node) => {
+			console.log(node);
+
 			return {
-				id: node.properties.id || node.properties.name,
-				label: node.labels[0],
-				timestamp: node.properties.timestamp,
+				id: node.id || node.name,
+				label: node.label,
+				timestamp: node.timestamp,
 				properties: node.properties,
-				level: labelToLevel[node.labels[0]],
+				level: labelToLevel[node.label],
 				visibility: 'visible',
 			};
 		});
 
-		const links = data.relationships.map((relationship) => {
+		const links = initialData.relationships.map((relationship) => {
 			return {
 				source:
 					relationship.start_node.properties.id ||
@@ -196,6 +120,7 @@ const FlowChart = ({
 				d3
 					.forceLink(links)
 					.id((d) => {
+						// console.log(d);
 						return d.id;
 					})
 					.distance(linkDistance)
@@ -332,16 +257,7 @@ const FlowChart = ({
 					.darker(1);
 			})
 			.attr('opacity', 0.9)
-			.call(d3.drag().on('start', dragstarted).on('drag', dragged).on('end', dragended))
-			.on('click', (event, d) => {
-				event.stopPropagation();
-				if (d.level === displayedLevel) {
-					handleNodeClick(d);
-				} else {
-					setDisplayedLevel(d.level);
-				}
-				d3.select(this).on('click', null);
-			});
+			.call(d3.drag().on('start', dragstarted).on('drag', dragged).on('end', dragended));
 
 		function calculateRadius(label) {
 			const defaultRadius = nodeRadius;
@@ -419,9 +335,8 @@ const FlowChart = ({
 			simulation.stop();
 		};
 	}, [
-		data,
+		initialData,
 		displayedLevel,
-		handleNodeClick,
 		width,
 		height,
 		linkDistance,
@@ -436,7 +351,12 @@ const FlowChart = ({
 };
 
 FlowChart.propTypes = {
-	apiUrl: PropTypes.string.isRequired,
+	data: PropTypes.shape({
+		// eslint-disable-next-line react/forbid-prop-types
+		nodes: PropTypes.array.isRequired,
+		// eslint-disable-next-line react/forbid-prop-types
+		relationships: PropTypes.array.isRequired,
+	}).isRequired,
 	width: PropTypes.number,
 	height: PropTypes.number,
 	linkDistance: PropTypes.number,
