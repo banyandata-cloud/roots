@@ -5,7 +5,8 @@ import RangeSlider from './rangeslider/RangeSlider';
 
 const Slider = (props) => {
 	// eslint-disable-next-line object-curly-newline
-	const { disabled, value, onChange, min, max, step, range, label, node1, node2 } = props;
+	const { disabled, value, onChange, min, max, step, range, label, node1, node2, percent } =
+		props;
 
 	const { current: isControlled } = useRef(value !== undefined);
 
@@ -37,6 +38,7 @@ const Slider = (props) => {
 				onChange={onChange}
 				disabled={disabled}
 				label={label}
+				percent={percent}
 			/>
 		);
 	}
@@ -93,6 +95,7 @@ Slider.propTypes = {
 	range: PropTypes.bool,
 	disabled: PropTypes.bool,
 	label: PropTypes.string,
+	percent: PropTypes.bool,
 };
 
 Slider.defaultProps = {
@@ -104,6 +107,7 @@ Slider.defaultProps = {
 	range: false,
 	disabled: false,
 	label: '',
+	percent: false,
 };
 
 export default Slider;

@@ -4,7 +4,7 @@ import styles from './RangeSlider.module.css';
 
 function RangeSlider(props) {
 	// eslint-disable-next-line object-curly-newline
-	const { min, max, onChange, step, disabled, label, node1, node2 } = props;
+	const { min, max, onChange, step, disabled, label, node1, node2, percent } = props;
 	const [rangeValues, setRangeValues] = useState({
 		min: node1,
 		max: node2,
@@ -122,7 +122,9 @@ function RangeSlider(props) {
 								onClick={handleThumbContainerClick}>
 								<div
 									className={styles['rangeslider-thumb']}
-									data-value={rangeValues[thumb]}
+									data-value={
+										percent ? `${rangeValues[thumb]}%` : rangeValues[thumb]
+									}
 									data-elem={thumb}
 									style={{
 										left: `${rangeValues[thumb]}%`,
