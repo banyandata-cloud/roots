@@ -4,7 +4,7 @@ import styles from './RangeSlider.module.css';
 
 function RangeSlider(props) {
 	// eslint-disable-next-line object-curly-newline
-	const { min, max, onChange, step, disabled, label, node1, node2 } = props;
+	const { min, max, onChange, step, disabled, label, node1, node2, percent } = props;
 	const [rangeValues, setRangeValues] = useState({
 		min: node1,
 		max: node2,
@@ -112,7 +112,8 @@ function RangeSlider(props) {
 				onMouseLeave={() => {
 					return dragging && handleMouseUp();
 				}}
-				onClick={handleSliderClick}>
+				onClick={handleSliderClick}
+				data-elem='track'>
 				{['min', 'max'].map((thumb) => {
 					return (
 						<React.Fragment key={thumb}>
@@ -121,7 +122,10 @@ function RangeSlider(props) {
 								onClick={handleThumbContainerClick}>
 								<div
 									className={styles['rangeslider-thumb']}
-									data-value={rangeValues[thumb]}
+									data-value={
+										percent ? `${rangeValues[thumb]}%` : rangeValues[thumb]
+									}
+									data-elem={thumb}
 									style={{
 										left: `${rangeValues[thumb]}%`,
 									}}
@@ -162,7 +166,7 @@ function RangeSlider(props) {
 					/>
 				);
 			})}
-			<div className={styles.minMaxContainer}>
+			<div className={styles.minMaxContainer} data-elem='minMax'>
 				<span className={styles.min}>{min}</span>
 				<span className={styles.max}>{max}</span>
 			</div>
