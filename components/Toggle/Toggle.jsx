@@ -157,6 +157,7 @@ const Toggle = (props) => {
 							}}
 							size='auto'
 							data-elem='toggle'
+							disabled={disabled}
 							title={title}
 							className={classes(
 								styles['toggle-button'],
