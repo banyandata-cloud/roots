@@ -33,7 +33,9 @@
 }
 .root .toggle > button[data-elem=base-cell].toggle-button.disabled {
   cursor: not-allowed;
-  color: var(--grey3);
+}
+.root .toggle > button[data-elem=base-cell].toggle-button.disabled > [data-elem=component2] > [data-elem=title] {
+  color: var(--grey1);
 }
 .root .toggle > button[data-elem=base-cell].toggle-button.all-select {
   background-color: var(--mono-color1);
