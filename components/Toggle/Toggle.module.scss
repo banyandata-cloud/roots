@@ -36,7 +36,11 @@
 
 			&.disabled {
 				cursor: not-allowed;
-				color: $grey3;
+				> [data-elem='component2'] {
+					> [data-elem='title'] {
+						color: $grey1;
+					}
+				}
 			}
 
 			&.all-select {
