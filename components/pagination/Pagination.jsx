@@ -175,8 +175,11 @@ export const Pagination = forwardRef((props, ref) => {
 								currentPage * step
 							} of ${totalData}`,
 						}}>
-						<Text>Displaying</Text> {(currentPage - 1) * step + 1}-
-						{currentPage === totalPages && totalData ? totalData : currentPage * step}{' '}
+						<Text>Displaying</Text>{' '}
+						{((currentPage === 0 ? 1 : currentPage) - 1) * step + 1}-
+						{currentPage === totalPages && totalData
+							? totalData
+							: (currentPage === 0 ? 1 : currentPage) * step}{' '}
 						of {totalData ?? 'total'} <Text>{dataLabel ?? 'records'}</Text>
 					</Text>
 				) : (
