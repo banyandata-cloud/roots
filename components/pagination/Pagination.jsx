@@ -90,7 +90,7 @@ export const Pagination = forwardRef((props, ref) => {
 	const { totalPages, currentPage, step, totalData } = paginationState;
 
 	const paginationList = new PaginationList({
-		curr: currentPage,
+		curr: currentPage === 0 ? 1 : currentPage,
 		total: totalPages,
 	});
 
@@ -104,7 +104,7 @@ export const Pagination = forwardRef((props, ref) => {
 	useEffect(() => {
 		if (mountedRef.current) {
 			props.onChange({
-				currentPage,
+				currentPage: currentPage === 0 ? 1 : currentPage,
 				step,
 				totalPages,
 			});
@@ -122,7 +122,8 @@ export const Pagination = forwardRef((props, ref) => {
 		return null;
 	}
 
-	const showTotalData = totalData && (currentPage - 1) * step + 1 < totalData;
+	const showTotalData =
+		totalData && ((currentPage === 0 ? 1 : currentPage) - 1) * step + 1 < totalData;
 
 	const showPages = totalPages > 1;
 
@@ -144,7 +145,7 @@ export const Pagination = forwardRef((props, ref) => {
 				<div className={styles['page-numbers']}>
 					<div className={styles.pageSelect}>
 						{paginationList.pages.map((page) => {
-							const active = currentPage === page.number;
+							const active = (currentPage === 0 ? 1 : currentPage) === page.number;
 							return (
 								<span
 									title={`Page ${page.number}`}
@@ -171,8 +172,8 @@ export const Pagination = forwardRef((props, ref) => {
 						stroke='medium'
 						className={styles['total-data']}
 						attrs={{
-							title: `${(currentPage - 1) * step + 1}-${
-								currentPage * step
+							title: `${((currentPage === 0 ? 1 : currentPage) - 1) * step + 1}-${
+								(currentPage === 0 ? 1 : currentPage) * step
 							} of ${totalData}`,
 						}}>
 						<Text>Displaying</Text>{' '}
@@ -188,8 +189,8 @@ export const Pagination = forwardRef((props, ref) => {
 						stroke='medium'
 						className={styles['total-data']}
 						attrs={{
-							title: `${(currentPage - 1) * step + 1}-${
-								currentPage * step
+							title: `${((currentPage === 0 ? 1 : currentPage) - 1) * step + 1}-${
+								(currentPage === 0 ? 1 : currentPage) * step
 							} of ${totalData}`,
 						}}>
 						<Text>No available {dataLabel ?? 'records'} at the moment</Text>
