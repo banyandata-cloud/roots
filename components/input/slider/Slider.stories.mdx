@@ -1,15 +1,24 @@
-import { Meta, Canvas, Story } from '@storybook/addon-docs';
-
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { useState } from 'react';
 import { ThemedContainer } from '../../helpers';
 import Slider from './Slider';
 
 <Meta title='Components/Input/Slider' parameters={{ options: { showToolbar: true } }} />
 
-export const Template = (args) => (
-	<ThemedContainer theme='light'>
-		<Slider {...args} />
-	</ThemedContainer>
-);
+export const Template = (args) => {
+	const [value, setValue] = useState(0);
+	return (
+		<ThemedContainer theme='light'>
+			<Slider
+				{...args}
+				value={value}
+				onChange={(a, v) => {
+					setValue(v);
+				}}
+			/>
+		</ThemedContainer>
+	);
+};
 
 # Slider
 
@@ -42,7 +51,7 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 	<Story
 		name='Default'
 		args={{
-			label: 'Volume Control',
+			label: 'label',
 			min: 0,
 			max: 100,
 		}}>
@@ -56,10 +65,15 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 	<Story
 		name='Range'
 		args={{
-			label: 'Volume Control',
-			min: 20,
-			max: 70,
+			label: 'label',
+			node1: 20,
+			node2: 70,
+			min: 0,
+			max: 100,
 			range,
+			onChange: (a) => {
+				console.log(a);
+			},
 		}}>
 		{Template.bind({})}
 	</Story>
@@ -71,7 +85,6 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 	<Story
 		name='Disable'
 		args={{
-			label: 'Volume Control',
 			min: 20,
 			max: 70,
 			disabled: true,

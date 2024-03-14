@@ -1,9 +1,20 @@
+@import '../../../../styles/index';
+
 .rangeslider-container {
+	.label {
+		font-weight: 400;
+		font-size: 0.75rem;
+		line-height: 1.125rem;
+		letter-spacing: 0.32px;
+		color: $grey;
+		margin-bottom: 0.5rem;
+	}
 	.rangeslider {
 		position: relative;
 		width: 300px;
 		height: 8px;
-		background: #d3d3d3;
+		background: #d3d3d383;
+		border: solid 1px $grey3;
 		border-radius: 5px;
 		cursor: pointer;
 
@@ -58,5 +69,24 @@
 
 	.rangeslider-label {
 		margin: 5px;
+	}
+
+	.minMaxContainer {
+		display: flex;
+		width: 300px;
+		justify-content: space-between;
+		font-weight: 400;
+		font-size: 0.75rem;
+		line-height: 1.125rem;
+		letter-spacing: 0.32px;
+		color: $grey;
+		margin-top: 0.3rem;
+	}
+	.min {
+		margin-left: 0.1rem;
+	}
+
+	.max {
+		margin-left: auto;
 	}
 }

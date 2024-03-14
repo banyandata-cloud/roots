@@ -44,6 +44,7 @@ const Table = (props) => {
 		tableTitleIcon,
 		tableTitleText,
 		dataLabel,
+		onFilterClear,
 	} = props;
 
 	const ref = useRef(null);
@@ -149,6 +150,7 @@ const Table = (props) => {
 						theme={theme}
 						tableTitleIcon={tableTitleIcon}
 						tableTitleText={tableTitleText}
+						onClear={onFilterClear}
 					/>
 				)}
 				<BaseTable

@@ -1,15 +1,16 @@
-import React, { useRef, useState } from 'react';
 import PropTypes from 'prop-types';
+import React, { useRef, useState } from 'react';
 import styles from './Slider.module.css';
 import RangeSlider from './rangeslider/RangeSlider';
 
 const Slider = (props) => {
-	const { disabled, value, onChange, min, max, step, range } = props;
+	// eslint-disable-next-line object-curly-newline
+	const { disabled, value, onChange, min, max, step, range, label, node1, node2, percent } =
+		props;
 
 	const { current: isControlled } = useRef(value !== undefined);
 
 	const [uncontrolledValue, setUncontrolledValue] = useState(value);
-	const [sliderValue, setSliderValue] = useState(50);
 	const [isTooltipVisible, setTooltipVisible] = useState(false);
 
 	const handleChange = (event) => {
@@ -19,20 +20,25 @@ const Slider = (props) => {
 			onChange(event, fieldValue);
 		} else {
 			setUncontrolledValue(fieldValue);
-			setSliderValue(fieldValue);
 		}
 	};
 
-	const sliderValuee = isControlled ? value : uncontrolledValue;
+	const valueOfSlider = isControlled ? value : uncontrolledValue;
 
 	if (range) {
 		return (
 			<RangeSlider
 				className={styles['range-slider']}
-				minn={min}
-				maxx={max}
+				min={min}
+				max={max}
+				node1={node1}
+				node2={node2}
 				step={step}
+				value={value}
+				onChange={onChange}
 				disabled={disabled}
+				label={label}
+				percent={percent}
 			/>
 		);
 	}
@@ -45,8 +51,11 @@ const Slider = (props) => {
 		setTooltipVisible(false);
 	};
 
+	const tooltipTop = label ? -10 : -24;
+
 	const tooltipStyle = {
-		left: `calc(${(sliderValue / 100) * 100}% - 15px)`,
+		left: `calc(${(valueOfSlider / 100) * 30}% - 58px)`,
+		top: `${tooltipTop}px`,
 		visibility: isTooltipVisible ? 'visible' : 'hidden',
 	};
 
@@ -56,18 +65,23 @@ const Slider = (props) => {
 			onMouseEnter={handleMouseEnter}
 			onMouseLeave={handleMouseLeave}>
 			<div className={styles.tooltip} style={tooltipStyle}>
-				{sliderValue}
+				{valueOfSlider}
 			</div>
+			<p className={styles.label}>{label}</p>
 			<input
 				type='range'
 				className={styles.slider}
 				min={min}
 				max={max}
 				disabled={disabled}
-				value={sliderValuee}
+				value={valueOfSlider}
 				onChange={handleChange}
 				step={step}
 			/>
+			<div className={styles.minMaxContainer}>
+				<span className={styles.min}>{min}</span>
+				<span className={styles.max}>{max}</span>
+			</div>
 		</label>
 	);
 };
@@ -80,6 +94,8 @@ Slider.propTypes = {
 	step: PropTypes.number,
 	range: PropTypes.bool,
 	disabled: PropTypes.bool,
+	label: PropTypes.string,
+	percent: PropTypes.bool,
 };
 
 Slider.defaultProps = {
@@ -90,6 +106,8 @@ Slider.defaultProps = {
 	step: 1,
 	range: false,
 	disabled: false,
+	label: '',
+	percent: false,
 };
 
 export default Slider;

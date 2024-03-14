@@ -4,6 +4,7 @@ import {
 	useFloating,
 	useInteractions,
 } from '@floating-ui/react-dom-interactions';
+import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
 import React, { useRef, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
@@ -257,7 +258,7 @@ const DatePicker = (props) => {
 
 					<Popper open={openDatePicker} wrapperid='datePicker-popper'>
 						{openDatePicker && (
-							<div
+							<motion.div
 								{...datePickerInteractionProps.getFloatingProps({
 									role: 'group',
 									ref: datePickerFloatingReference.floating,
@@ -272,12 +273,20 @@ const DatePicker = (props) => {
 										left: datePickerFloatingReference.x ?? 0,
 									},
 								})}
+								initial={{
+									opacity: 0,
+									scale: 0,
+								}}
+								animate={{
+									scale: 1,
+									opacity: 1,
+								}}
 								className={classes(
 									styles.popper,
 									openDatePicker ? styles.open : ''
 								)}>
 								<Calender {...calenderProps} />
-							</div>
+							</motion.div>
 						)}
 					</Popper>
 

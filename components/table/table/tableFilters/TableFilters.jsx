@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { classes } from '../../../../utils';
 import { Button } from '../../../buttons';
 import { BaseCell } from '../../../cell';
-import { AlertIcon, CaretIcon, ColumnFilter, FilterIcon } from '../../../icons';
+import { AlertIcon, CaretIcon, ColumnFilter, CrossIcon, FilterIcon } from '../../../icons';
 import { Dropdown, DropdownItem } from '../../../input';
 import { Text } from '../../../text';
 import { Skeleton } from './Skeleton';
@@ -21,6 +21,7 @@ const TableFilters = (props) => {
 		theme,
 		tableTitleIcon: TableTitleCustomIcon,
 		tableTitleText,
+		onClear,
 	} = props;
 
 	const { search: disabledSearch, columnFilter: disabledColumnFilter } = disabledFilterOptions;
@@ -67,16 +68,30 @@ const TableFilters = (props) => {
 			}
 			component2={
 				!disabledSearch && (
-					<Button
-						size='auto'
-						className={styles['icon-button']}
-						color='default'
-						title='Search and Filter'
-						onClick={onAdvancedFilterClick}
-						leftComponent={() => {
-							return <FilterIcon className={styles.icon} />;
-						}}
-					/>
+					<>
+						{onClear && (
+							<Button
+								size='auto'
+								className={styles['clear-button']}
+								color='default'
+								onClick={onClear}
+								title='Clear Filters'
+								leftComponent={() => {
+									return <CrossIcon className={styles.cross} />;
+								}}
+							/>
+						)}
+						<Button
+							size='auto'
+							className={styles['icon-button']}
+							color='default'
+							title='Search and Filter'
+							onClick={onAdvancedFilterClick}
+							leftComponent={() => {
+								return <FilterIcon className={styles.icon} />;
+							}}
+						/>
+					</>
 				)
 			}
 			component3={

@@ -17,12 +17,25 @@
   height: 1.5rem;
   flex-shrink: 0;
 }
+.root[data-elem=base-cell] .cross {
+  fill: var(--error);
+  width: 1.5rem;
+  height: 1.5rem;
+}
 .root[data-elem=base-cell] button.icon-button {
   border: 1px solid red;
   height: 100%;
   background: transparent;
   border: 1px solid var(--grey4);
   color: var(--text-colour2);
+}
+.root[data-elem=base-cell] button.clear-button {
+  border: 1px solid red;
+  height: 100%;
+  border: 1px solid var(--grey4);
+  color: var(--text-colour2);
+  margin-right: 0.625rem;
+  background: var(--error-bg);
 }
 .root[data-elem=base-cell] .column-dropdown {
   display: flex;
