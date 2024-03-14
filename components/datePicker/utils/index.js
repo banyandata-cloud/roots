@@ -1,5 +1,11 @@
 import { offset, flip, size, autoUpdate, shift } from '@floating-ui/react-dom-interactions';
-import { differenceInDays, differenceInHours, differenceInMonths, fromUnixTime } from 'date-fns';
+import {
+	differenceInMinutes,
+	differenceInHours,
+	differenceInDays,
+	differenceInMonths,
+	fromUnixTime,
+} from 'date-fns';
 import { MONTHS } from '../../../constants';
 import { dateRanges } from '../calender/footer/utils';
 import { doubleDigitted } from '../../../utils';
@@ -66,6 +72,12 @@ export const getDateRangeTag = (dates = []) => {
 	const dayDifference = differenceInDays(fromUnixTime(endUnix), fromUnixTime(startUnix));
 
 	const hourDifference = differenceInHours(fromUnixTime(endUnix), fromUnixTime(startUnix));
+
+	const minuteDifference = differenceInMinutes(fromUnixTime(endUnix), fromUnixTime(startUnix));
+
+	if (minuteDifference <= 60) {
+		return 'minute';
+	}
 
 	if (hourDifference <= 24) {
 		return 'hour';
