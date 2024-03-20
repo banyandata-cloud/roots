@@ -1,9 +1,9 @@
 /* eslint-disable object-curly-newline */
 import PropTypes from 'prop-types';
 import { forwardRef, useEffect, useImperativeHandle, useState } from 'react';
+import { classes } from '../../../utils';
 import { Button } from '../../buttons';
 import BaseModal from '../BaseModal';
-import { classes } from '../../../utils';
 import styles from './Dialog.module.css';
 
 const Header = ({ title }) => {
@@ -73,14 +73,10 @@ const DialogBox = forwardRef((props, ref) => {
 		title,
 	};
 
-	console.log({
-		onCancel,
-	});
-
 	const footerProps = {
 		action: actionText,
 		cancel: cancelText,
-		hideCancel: hideCancel,
+		hideCancel,
 		variant,
 		...(onAction && {
 			onAction: () => {
