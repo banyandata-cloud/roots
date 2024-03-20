@@ -14,16 +14,18 @@ const Header = ({ title }) => {
 	);
 };
 
-const Footer = ({ action, cancel, onAction, onCancel, variant }) => {
+const Footer = ({ action, cancel, onAction, onCancel, hideCancel, variant }) => {
 	return (
 		<div className={styles.footer}>
-			<Button
-				color='default'
-				variant='outlined'
-				className={styles.cancel}
-				onClick={onCancel}
-				title={cancel}
-			/>
+			{!hideCancel && (
+				<Button
+					color='default'
+					variant='outlined'
+					className={styles.cancel}
+					onClick={onCancel}
+					title={cancel}
+				/>
+			)}
 
 			{onAction && (
 				<Button onClick={onAction} title={action} color={variant} variant='outlined' />
@@ -55,6 +57,8 @@ const DialogBox = forwardRef((props, ref) => {
 		variant,
 		onAction,
 		onCancel,
+		hideCancel = false,
+		noDismiss,
 		size: appliedSize,
 	} = dialogProps;
 
@@ -69,9 +73,14 @@ const DialogBox = forwardRef((props, ref) => {
 		title,
 	};
 
+	console.log({
+		onCancel,
+	});
+
 	const footerProps = {
 		action: actionText,
 		cancel: cancelText,
+		hideCancel: hideCancel,
 		variant,
 		...(onAction && {
 			onAction: () => {
@@ -79,7 +88,9 @@ const DialogBox = forwardRef((props, ref) => {
 				setOpen(false);
 			},
 		}),
-		onCancel: toggle,
+		...(!hideCancel && {
+			onCancel: toggle,
+		}),
 	};
 
 	const dialog = (appliedDialogProps) => {
@@ -108,6 +119,7 @@ const DialogBox = forwardRef((props, ref) => {
 			open={open}
 			toggle={toggle}
 			hideCrossDismiss
+			noDismiss={noDismiss}
 			className={classes(styles.root, styles[size], className)}
 			renderHeader={title && <Header {...headerProps} />}
 			renderFooter={<Footer {...footerProps} />}>
