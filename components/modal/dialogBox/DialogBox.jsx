@@ -1,9 +1,9 @@
 /* eslint-disable object-curly-newline */
 import PropTypes from 'prop-types';
 import { forwardRef, useEffect, useImperativeHandle, useState } from 'react';
+import { classes } from '../../../utils';
 import { Button } from '../../buttons';
 import BaseModal from '../BaseModal';
-import { classes } from '../../../utils';
 import styles from './Dialog.module.css';
 
 const Header = ({ title }) => {
@@ -14,16 +14,18 @@ const Header = ({ title }) => {
 	);
 };
 
-const Footer = ({ action, cancel, onAction, onCancel, variant }) => {
+const Footer = ({ action, cancel, onAction, onCancel, hideCancel, variant }) => {
 	return (
 		<div className={styles.footer}>
-			<Button
-				color='default'
-				variant='outlined'
-				className={styles.cancel}
-				onClick={onCancel}
-				title={cancel}
-			/>
+			{!hideCancel && (
+				<Button
+					color='default'
+					variant='outlined'
+					className={styles.cancel}
+					onClick={onCancel}
+					title={cancel}
+				/>
+			)}
 
 			{onAction && (
 				<Button onClick={onAction} title={action} color={variant} variant='outlined' />
@@ -55,6 +57,8 @@ const DialogBox = forwardRef((props, ref) => {
 		variant,
 		onAction,
 		onCancel,
+		hideCancel = false,
+		noDismiss,
 		size: appliedSize,
 	} = dialogProps;
 
@@ -72,6 +76,7 @@ const DialogBox = forwardRef((props, ref) => {
 	const footerProps = {
 		action: actionText,
 		cancel: cancelText,
+		hideCancel,
 		variant,
 		...(onAction && {
 			onAction: () => {
@@ -79,7 +84,9 @@ const DialogBox = forwardRef((props, ref) => {
 				setOpen(false);
 			},
 		}),
-		onCancel: toggle,
+		...(!hideCancel && {
+			onCancel: toggle,
+		}),
 	};
 
 	const dialog = (appliedDialogProps) => {
@@ -108,6 +115,7 @@ const DialogBox = forwardRef((props, ref) => {
 			open={open}
 			toggle={toggle}
 			hideCrossDismiss
+			noDismiss={noDismiss}
 			className={classes(styles.root, styles[size], className)}
 			renderHeader={title && <Header {...headerProps} />}
 			renderFooter={<Footer {...footerProps} />}>
