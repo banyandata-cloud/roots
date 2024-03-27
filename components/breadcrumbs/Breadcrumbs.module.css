@@ -13,8 +13,8 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  stroke: var(--text-colour-2);
-  fill: var(--text-colour-2);
+  stroke: var(--text-colour2);
+  fill: var(--text-colour2);
   width: 1.5rem;
   height: 1.5rem;
 }
@@ -72,10 +72,10 @@
   background: var(--mono-color3);
 }
 .root .crumb .title {
-  color: var(--text-colour-2);
+  color: var(--text-colour2);
 }
 .root .crumb .value {
-  color: var(--text-colour-2);
+  color: var(--text-colour2);
 }
 .root .crumb .iconWrapper {
   display: flex;
