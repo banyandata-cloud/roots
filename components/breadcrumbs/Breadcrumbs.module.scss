@@ -9,8 +9,8 @@
 
 	[data-elem='breadcrumb-seperator-icon'] {
 		@include flex(row, center, center);
-		stroke: $text-colour-2;
-		fill: $text-colour-2;
+		stroke: $text-colour2;
+		fill: $text-colour2;
 		width: 1.5rem;
 		height: 1.5rem;
 	}
@@ -70,11 +70,11 @@
 		background: $mono-color3;
 
 		.title {
-			color: $text-colour-2;
+			color: $text-colour2;
 		}
 
 		.value {
-			color: $text-colour-2;
+			color: $text-colour2;
 		}
 
 		.iconWrapper {
