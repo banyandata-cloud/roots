@@ -12,7 +12,7 @@ import styles from './Pagination.module.css';
 
 const CURRENT_YEAR = new Date().getFullYear();
 
-const dropdownOptions = ['10', '25', '50', '100', '200', '250'];
+const dropdownOptions = ['10', '15', '25', '35', '50', '100'];
 
 const reducer = (state, { type, payload }) => {
 	switch (type) {
