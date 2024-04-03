@@ -8,8 +8,8 @@
 }
 .root .header {
   padding: 0.5rem;
-  background: var(--dark-grey);
-  color: var(--white);
+  background: var(--text-color);
+  color: var(--light-color3);
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;

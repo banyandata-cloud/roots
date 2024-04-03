@@ -13,7 +13,7 @@
 	}
 
 	.cross {
-		fill: $error;
+		fill: $primary-color1;
 		width: 1.5rem;
 		height: 1.5rem;
 	}
@@ -22,17 +22,17 @@
 		@include debug;
 		height: 100%;
 		background: transparent;
-		border: 1px solid $grey4;
-		color: $text-colour2;
+		border: 1px solid $mono-color2;
+		color: $text-color;
 	}
 
 	button.clear-button {
 		@include debug;
 		height: 100%;
-		border: 1px solid $grey4;
-		color: $text-colour2;
+		border: 1px solid $mono-color2;
+		color: $text-color;
 		margin-right: 0.625rem;
-		background: $error-bg;
+		background: $background-color1;
 	}
 
 	.column-dropdown {
@@ -47,7 +47,7 @@
 			> [data-elem='select'] {
 				background-color: transparent;
 				border: none;
-				color: $text-colour2;
+				color: $text-color;
 				padding: 0rem;
 				width: auto;
 			}
@@ -88,7 +88,7 @@
 		.left {
 			gap: 1rem;
 			background: $grey8;
-			border: 1px solid $grey4;
+			border: 1px solid $mono-color2;
 			color: $black;
 			[data-elem='left'] {
 				gap: 1rem;
@@ -112,5 +112,8 @@
 		gap: 0.5rem;
 		height: 100%;
 		width: fit-content;
+		.icon {
+			fill: $text-color;
+		}
 	}
 }

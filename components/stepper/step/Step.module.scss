@@ -30,20 +30,20 @@
 			border-radius: 2rem;
 			font-size: 1rem;
 			border: 0.063rem solid $grey2;
-			background: $white;
+			background: $light-color3;
 			color: $grey2;
 			position: relative;
 			.icon {
 				width: 0.75rem;
 				height: 0.75rem;
 				&.error-icon {
-					fill: $error;
+					fill: $primary-color1;
 				}
 
 				&.completion-icon {
-					fill: $highlight;
+					fill: $primary-color4;
 					&.active {
-						fill: $white;
+						fill: $light-color3;
 					}
 				}
 			}
@@ -59,7 +59,7 @@
 				position: absolute;
 				content: '';
 				inset: 0.15rem;
-				background: white;
+				background: $light-color3;
 				border-radius: 2rem;
 			}
 		}
@@ -75,7 +75,7 @@
 			gap: 0.75rem;
 			width: 100%;
 			font-size: 1rem;
-			color: $grey2;
+			color: $mono-color1;
 			// height: 1.5rem;
 
 			&::after {
@@ -84,13 +84,13 @@
 				min-width: 1.5rem;
 				border-bottom: 0.063rem solid;
 				margin-top: 0.75rem;
-				border-bottom-color: $grey2;
+				border-bottom-color: $mono-color2;
 			}
 		}
 
 		.description {
 			font-size: 0.75rem;
-			color: $grey2;
+			color: $mono-color2;
 		}
 	}
 
@@ -107,7 +107,7 @@
 	&.active {
 		.left {
 			.icon-container {
-				background: $highlight;
+				background: $primary-color4;
 				color: $white;
 			}
 		}
@@ -117,17 +117,17 @@
 	&.completed {
 		.left {
 			.icon-container {
-				border-color: $highlight;
+				border-color: $primary-color4;
 			}
 		}
 
 		.right {
 			.title {
-				color: $black;
+				color: $text-color;
 			}
 
 			.description {
-				color: $grey;
+				color: $mono-color1;
 			}
 		}
 	}
@@ -135,7 +135,7 @@
 	&.completed {
 		.right {
 			.title::after {
-				border-bottom-color: $highlight;
+				border-bottom-color: $primary-color4;
 			}
 		}
 	}
@@ -144,17 +144,17 @@
 		.left {
 			.icon-container {
 				background: $white;
-				border-color: $error;
-				color: $error;
+				border-color: $primary-color1;
+				color: $primary-color1;
 			}
 		}
 
 		.right {
 			.title {
-				color: $error;
+				color: $primary-color1;
 			}
 			.description {
-				color: rgba($error, 0.6);
+				color: rgba($primary-color1, 0.6);
 			}
 		}
 	}
@@ -184,7 +184,7 @@
 		&.completed {
 			.left {
 				&::after {
-					border-right-color: $highlight;
+					border-right-color: $primary-color4;
 				}
 			}
 		}

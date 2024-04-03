@@ -12,7 +12,7 @@
   height: 43.75rem;
   width: 62.5rem;
   position: fixed;
-  background: var(--white);
+  background: var(--light-color3);
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.13);
   border-radius: 8px;
   outline: none;
@@ -22,6 +22,7 @@
   padding: 1rem;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  color: var(--text-color);
 }
 .root .body::-webkit-scrollbar {
   display: none;
@@ -29,15 +30,16 @@
 .root .header,
 .root .footer {
   padding: 1rem;
+  color: var(--text-color);
 }
 .root .header {
   font-weight: 500;
   font-size: 1.375rem;
-  border-bottom: 0.0625rem solid var(--grey6);
+  border-bottom: 0.0625rem solid var(--mono-color3);
 }
 .root .footer {
   margin-top: auto;
-  border-top: 0.0625rem solid var(--grey6);
+  border-top: 0.0625rem solid var(--mono-color3);
   border-radius: 0 0 8px 8px;
   display: flex;
   flex-direction: row;
@@ -51,10 +53,10 @@
   top: 1rem;
   padding: 0.25rem;
   height: auto;
-  background: var(--grey6);
+  background: var(--mono-color1);
 }
 .root button.close .icon {
   width: 1.5rem;
   height: 1.5rem;
-  fill: var(--black);
+  fill: var(--white);
 }/*# sourceMappingURL=BaseModal.module.css.map */

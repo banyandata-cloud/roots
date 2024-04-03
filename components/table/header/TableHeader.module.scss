@@ -2,5 +2,4 @@
 
 .root {
 	@include flex(column, flex-start, stretch);
-	color: $light-color2;
 }

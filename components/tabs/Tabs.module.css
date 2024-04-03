@@ -15,23 +15,23 @@
   padding: 5px !important;
 }
 .tab > [data-elem=base-cell].active {
-  color: var(--highlight) !important;
+  color: var(--primary-color4) !important;
 }
 .tab > [data-elem=base-cell] > [data-elem=component1] > .icon,
 .tab > [data-elem=base-cell] > [data-elem=component3] > .icon {
-  fill: var(--black);
+  fill: var(--text-color);
   width: 1.5rem;
   height: 1.5rem;
 }
 .tab > [data-elem=base-cell]:disabled {
-  color: var(--grey3) !important;
+  color: var(--mono-color2) !important;
 }
 .tab:hover {
-  color: var(--highlight) !important;
-  background: var(--background);
+  color: var(--primary-color4) !important;
+  background: var(--background-color4);
 }
 .tab.active {
-  color: var(--highlight) !important;
+  color: var(--primary-color4) !important;
 }
 .tab .dropdown {
   display: flex;
@@ -43,7 +43,7 @@
   height: 2.3125rem;
 }
 .tab .dropdown [data-elem=base-cell].active {
-  color: var(--highlight) !important;
+  color: var(--primary-color4) !important;
 }
 .tab .dropdown > [data-elem=header] > [data-elem=select] {
   background-color: transparent;
@@ -59,7 +59,7 @@
   bottom: 0;
   left: 0;
   height: 3px;
-  background-color: var(--highlight);
+  background-color: var(--primary-color4);
   transition: left 0.3s ease-in-out, width 0.3s ease-in-out;
   width: 100%;
 }

@@ -2,7 +2,7 @@
 
 .root {
 	@include flex(column, flex-start, stretch);
-	background: $white;
+	background: $light-color3;
 	overflow: auto;
 	&.no-scroll {
 		overflow: hidden;

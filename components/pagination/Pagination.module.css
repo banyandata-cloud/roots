@@ -19,7 +19,7 @@
   display: none;
 }
 .root.floating {
-  background: var(--dark-grey-o-85);
+  background: var(--light-color1);
   position: absolute;
   border-radius: 6.25rem;
   width: 82%;
@@ -32,7 +32,7 @@
   align-items: center;
 }
 .root .copyrightText > .text {
-  color: #9a9ea5;
+  color: var(--mono-color1);
   font-size: 0.875rem;
   font-style: normal;
   font-weight: 400;
@@ -69,7 +69,7 @@
   border-radius: 50%;
   background-color: #e0e0e0;
   color: var(--black);
-  width: 2.313rem;
+  min-width: 2.313rem;
   line-height: 2.313rem;
   text-align: center;
   font-size: 1rem;
@@ -84,12 +84,12 @@
   }
 }
 .root .page-numbers > .pageSelect .number:hover {
-  border: 1px solid var(--highlight);
-  color: var(--highlight);
-  background: var(--background);
+  border: 1px solid var(--primary-color4);
+  color: var(--primary-color4);
+  background: var(--background-color4);
 }
 .root .page-numbers > .pageSelect .number.active {
-  background-color: var(--highlight);
+  background-color: var(--primary-color4);
   color: var(--white);
 }
 .root .options {
@@ -103,7 +103,7 @@
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  color: #1a2028;
+  color: var(--text-color);
   font-size: 0.875rem;
   font-weight: 500;
   line-height: 1.125rem;

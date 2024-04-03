@@ -22,7 +22,7 @@
 }
 .root label .required::after {
   content: " *";
-  color: var(--error);
+  color: var(--primary-color1);
 }
 .root label .input-wrapper {
   display: flex;
@@ -62,7 +62,7 @@
   font-size: 0.875rem;
   line-height: 1.125rem;
   letter-spacing: 0.16px;
-  color: var(--black);
+  color: var(--text-color);
   width: 100%;
 }
 .root label .input-wrapper > [data-elem=component2] .input::-webkit-outer-spin-button, .root label .input-wrapper > [data-elem=component2] .input::-webkit-inner-spin-button {
@@ -99,10 +99,10 @@
   font-size: 1rem;
 }
 .root label .input-wrapper:focus-within {
-  border: 0.063rem solid var(--info);
+  border: 0.063rem solid var(--primary-color4);
 }
 .root label .input-wrapper:focus-within.feedback-error {
-  border-color: var(--error);
+  border-color: var(--primary-color1);
 }
 .root label .input-wrapper.border-default {
   border-width: 0.063rem;
@@ -132,17 +132,17 @@
   margin-right: auto;
 }
 .root .bottom .feedback.feedback-error {
-  color: var(--error);
-  fill: var(--error);
+  color: var(--primary-color1);
+  fill: var(--primary-color1);
 }
 .root .bottom .feedback.feedback-success {
-  color: var(--success);
-  fill: var(--success);
+  color: var(--primary-color2);
+  fill: var(--primary-color2);
 }
 .root .bottom .count {
   text-align: right;
   margin-left: auto;
 }
 .root .bottom .count.exceeded {
-  color: var(--error);
+  color: var(--primary-color1);
 }/*# sourceMappingURL=TextField.module.css.map */

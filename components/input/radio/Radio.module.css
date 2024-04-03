@@ -30,14 +30,14 @@
   fill: var(--grey5);
 }
 .root.selected {
-  color: var(--dark-grey);
+  color: var(--text-color);
 }
 .root:hover:not(.disabled) {
-  color: var(--dark-grey);
+  color: var(--text-color);
 }
 .root:hover:not(.disabled) .icon rect:nth-of-type(1) {
-  stroke: var(--highlight);
-  fill: var(--info-bg);
+  stroke: var(--primary-color4);
+  fill: var(--background-color5);
 }
 .root input[type=radio] {
   opacity: 0;

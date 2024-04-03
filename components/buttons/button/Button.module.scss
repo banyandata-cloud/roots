@@ -12,22 +12,22 @@
 
 	&.primary {
 		&.contained {
-			background-color: $highlight;
+			background-color: $primary-color4;
 			color: $white;
 			&:hover {
 				opacity: 0.85;
 			}
 		}
 		&.text {
-			color: $highlight;
+			color: $primary-color4;
 		}
 		&.outlined {
 			background-color: transparent;
-			border-color: $highlight;
-			color: $highlight;
+			border-color: $primary-color4;
+			color: $primary-color4;
 			&:hover {
-				background-color: $highlight;
-				color: white;
+				background-color: $primary-color4;
+				color: $white;
 				&:hover {
 					opacity: 0.85;
 				}
@@ -37,7 +37,7 @@
 
 	&.success {
 		&.contained {
-			background-color: $success;
+			background-color: $primary-color2;
 			color: $white;
 			&:hover {
 				opacity: 0.85;
@@ -45,66 +45,66 @@
 		}
 		&.outlined {
 			background-color: transparent;
-			border-color: $success;
-			color: $success;
+			border-color: $primary-color2;
+			color: $primary-color2;
 			&:hover {
-				background-color: $success;
-				color: white;
+				background-color: $primary-color2;
+				color: $white;
 				&:hover {
 					opacity: 0.85;
 				}
 			}
 		}
 		&.text {
-			color: $success;
+			color: $primary-color2;
 		}
 	}
 	&.danger {
 		&.contained {
-			background-color: $error;
-			color: $white;
+			background-color: $primary-color1;
+			color: $light-color3;
 			&:hover {
 				opacity: 0.85;
 			}
 		}
 		&.outlined {
 			background-color: transparent;
-			border-color: $error;
-			color: $error;
+			border-color: $primary-color1;
+			color: $primary-color1;
 			&:hover {
-				background-color: $error;
-				color: white;
+				background-color: $primary-color1;
+				color: $white;
 				&:hover {
 					opacity: 0.85;
 				}
 			}
 		}
 		&.text {
-			color: $error;
+			color: $primary-color1;
 		}
 	}
 	&.warning {
 		&.contained {
-			background-color: $warning;
-			color: $white;
+			background-color: $primary-color3;
+			color: $light-color3;
 			&:hover {
 				opacity: 0.85;
 			}
 		}
 		&.outlined {
 			background-color: transparent;
-			border-color: $warning;
-			color: $warning;
+			border-color: $primary-color3;
+			color: $primary-color3;
 			&:hover {
-				background-color: $warning;
-				color: white;
+				background-color: $primary-color3;
+				color: $white;
 				&:hover {
 					opacity: 0.85;
 				}
 			}
 		}
 		&.text {
-			color: $warning;
+			color: $primary-color3;
 		}
 	}
 
@@ -114,8 +114,8 @@
 		&.danger,
 		&.warning {
 			&.contained {
-				background-color: $grey4;
-				color: $grey;
+				background-color: $mono-color3;
+				color: $mono-color1;
 			}
 			&.outlined {
 				background-color: transparent;

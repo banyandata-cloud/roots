@@ -26,7 +26,7 @@
 		}
 		&.info {
 			background-color: $info-bg;
-			color: $info;
+			color: $primary-color4
 		}
 		&.danger {
 			background-color: $error-bg;
@@ -59,7 +59,7 @@
 		}
 		&.info {
 			background-color: $info-bg;
-			color: $info;
+			color: $primary-color4
 			border-color: $info-outline;
 			&:hover {
 				background-color: $info-outline;

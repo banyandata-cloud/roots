@@ -15,12 +15,7 @@
 .root .copy .icon {
   width: 1.5rem;
   height: 1.5rem;
-}
-.root .copy .icon.dark {
-  fill: var(--white);
-}
-.root .copy .icon.light {
-  fill: var(--black);
+  fill: var(--text-color);
 }
 .root .copy .notCopied {
   display: none;
@@ -31,6 +26,6 @@
   top: 2.188rem;
   padding: 0.5rem;
   border-radius: 0.25rem;
-  background-color: var(--highlight);
-  color: var(--grey10);
+  background-color: var(--primary-color4);
+  color: var(--mono-color3);
 }/*# sourceMappingURL=CodeSnippet.module.css.map */

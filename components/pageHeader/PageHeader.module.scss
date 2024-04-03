@@ -8,17 +8,11 @@
 	&.compact {
 		@include flex(row, space-between, flex-start);
 	}
-	&.dark-theme {
-		color: $white;
-
-		.breadcrumb {
-			[data-elem='breadcrumb-item-active'] {
-				color: $white;
-			}
+	color: $text-color;
+	.breadcrumb {
+		[data-elem='breadcrumb-item-active'] {
+			color: $text-color;
 		}
-	}
-	&.light-theme {
-		color: $dark-grey;
 	}
 
 	.contents {

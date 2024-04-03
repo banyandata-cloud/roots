@@ -18,17 +18,17 @@ button.root[data-elem='base-cell'] {
 	}
 
 	&.contained {
-		background: $black;
-		color: $white;
+		background: $text-color;
+		color: $light-color3;
 	}
 
 	&.outlined {
-		color: $black;
-		border: 1px solid $black;
+		color: $light-color3;
+		border: 1px solid $text-color;
 	}
 
 	&.text {
-		color: $black;
+		color: $text-color;
 	}
 
 	[data-elem*='component'] {

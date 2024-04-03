@@ -6,29 +6,29 @@
   font-size: 0.875rem;
 }
 .root[data-elem=base-cell].primary.contained {
-  background-color: var(--highlight);
+  background-color: var(--primary-color4);
   color: var(--white);
 }
 .root[data-elem=base-cell].primary.contained:hover {
   opacity: 0.85;
 }
 .root[data-elem=base-cell].primary.text {
-  color: var(--highlight);
+  color: var(--primary-color4);
 }
 .root[data-elem=base-cell].primary.outlined {
   background-color: transparent;
-  border-color: var(--highlight);
-  color: var(--highlight);
+  border-color: var(--primary-color4);
+  color: var(--primary-color4);
 }
 .root[data-elem=base-cell].primary.outlined:hover {
-  background-color: var(--highlight);
-  color: white;
+  background-color: var(--primary-color4);
+  color: var(--white);
 }
 .root[data-elem=base-cell].primary.outlined:hover:hover {
   opacity: 0.85;
 }
 .root[data-elem=base-cell].success.contained {
-  background-color: var(--success);
+  background-color: var(--primary-color2);
   color: var(--white);
 }
 .root[data-elem=base-cell].success.contained:hover {
@@ -36,66 +36,66 @@
 }
 .root[data-elem=base-cell].success.outlined {
   background-color: transparent;
-  border-color: var(--success);
-  color: var(--success);
+  border-color: var(--primary-color2);
+  color: var(--primary-color2);
 }
 .root[data-elem=base-cell].success.outlined:hover {
-  background-color: var(--success);
-  color: white;
+  background-color: var(--primary-color2);
+  color: var(--white);
 }
 .root[data-elem=base-cell].success.outlined:hover:hover {
   opacity: 0.85;
 }
 .root[data-elem=base-cell].success.text {
-  color: var(--success);
+  color: var(--primary-color2);
 }
 .root[data-elem=base-cell].danger.contained {
-  background-color: var(--error);
-  color: var(--white);
+  background-color: var(--primary-color1);
+  color: var(--light-color3);
 }
 .root[data-elem=base-cell].danger.contained:hover {
   opacity: 0.85;
 }
 .root[data-elem=base-cell].danger.outlined {
   background-color: transparent;
-  border-color: var(--error);
-  color: var(--error);
+  border-color: var(--primary-color1);
+  color: var(--primary-color1);
 }
 .root[data-elem=base-cell].danger.outlined:hover {
-  background-color: var(--error);
-  color: white;
+  background-color: var(--primary-color1);
+  color: var(--white);
 }
 .root[data-elem=base-cell].danger.outlined:hover:hover {
   opacity: 0.85;
 }
 .root[data-elem=base-cell].danger.text {
-  color: var(--error);
+  color: var(--primary-color1);
 }
 .root[data-elem=base-cell].warning.contained {
-  background-color: var(--warning);
-  color: var(--white);
+  background-color: var(--primary-color3);
+  color: var(--light-color3);
 }
 .root[data-elem=base-cell].warning.contained:hover {
   opacity: 0.85;
 }
 .root[data-elem=base-cell].warning.outlined {
   background-color: transparent;
-  border-color: var(--warning);
-  color: var(--warning);
+  border-color: var(--primary-color3);
+  color: var(--primary-color3);
 }
 .root[data-elem=base-cell].warning.outlined:hover {
-  background-color: var(--warning);
-  color: white;
+  background-color: var(--primary-color3);
+  color: var(--white);
 }
 .root[data-elem=base-cell].warning.outlined:hover:hover {
   opacity: 0.85;
 }
 .root[data-elem=base-cell].warning.text {
-  color: var(--warning);
+  color: var(--primary-color3);
 }
 .root[data-elem=base-cell]:disabled.primary.contained, .root[data-elem=base-cell]:disabled.success.contained, .root[data-elem=base-cell]:disabled.danger.contained, .root[data-elem=base-cell]:disabled.warning.contained {
-  background-color: var(--grey4);
-  color: var(--grey);
+  background-color: var(--mono-color3);
+  color: var(--mono-color1);
 }
 .root[data-elem=base-cell]:disabled.primary.outlined, .root[data-elem=base-cell]:disabled.success.outlined, .root[data-elem=base-cell]:disabled.danger.outlined, .root[data-elem=base-cell]:disabled.warning.outlined {
   background-color: transparent;

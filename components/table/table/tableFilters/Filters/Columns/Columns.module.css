@@ -19,7 +19,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid var(--grey4);
+  border-bottom: 1px solid var(--mono-color2);
   padding: 0.75rem 2.5rem;
 }
 .root .header > [data-elem=component1] {
@@ -72,7 +72,7 @@
   height: auto;
   margin-top: auto;
   padding: 0.5rem 2.5rem;
-  border-top: 1px solid var(--grey4);
+  border-top: 1px solid var(--mono-color2);
 }
 .root .footer button.expand {
   height: auto;

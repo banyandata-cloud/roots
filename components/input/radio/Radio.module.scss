@@ -32,16 +32,16 @@
 	}
 
 	&.selected {
-		color: $dark-grey;
+		color: $text-color;
 	}
 
 	&:hover:not(.disabled) {
-		color: $dark-grey;
+		color: $text-color;
 		.icon {
 			rect {
 				&:nth-of-type(1) {
-					stroke: $highlight;
-					fill: $info-bg;
+					stroke: $primary-color4;
+					fill: $background-color5;
 				}
 			}
 		}

@@ -15,7 +15,7 @@
 
 	.header {
 		@include flex(row, space-between);
-		border-bottom: 1px solid $grey4;
+		border-bottom: 1px solid $mono-color2;
 		padding: 0.75rem 2.5rem;
 
 		> [data-elem='component1'] {
@@ -66,7 +66,7 @@
 		height: auto;
 		margin-top: auto;
 		padding: 0.5rem 2.5rem;
-		border-top: 1px solid $grey4;
+		border-top: 1px solid $mono-color2;
 
 		button.expand {
 			height: auto;

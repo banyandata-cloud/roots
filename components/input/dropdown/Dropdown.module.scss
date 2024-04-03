@@ -14,7 +14,7 @@
 		&.required {
 			&::after {
 				content: ' *';
-				color: $error;
+				color: $primary-color1;
 			}
 		}
 	}
@@ -29,9 +29,9 @@
 			width: 1px;
 			height: 1px;
 			&:focus + .select {
-				border-color: $highlight;
+				border-color: $primary-color4;
 				&.feedback-error {
-					border-color: $error;
+					border-color: $primary-color1;
 				}
 			}
 		}
@@ -41,7 +41,7 @@
 			width: 25rem;
 			max-width: 100%;
 			gap: 0.5rem;
-			background: $white;
+			background: $light-color3;
 			outline: none;
 			border-radius: 0.3125rem;
 			border: 0.0625rem solid #dfe0e2;
@@ -52,27 +52,28 @@
 
 			.placeholder {
 				@include ellipsis;
-				color: $black;
+				color: $text-color;
 			}
 
 			.icon {
 				width: 1.5rem;
 				height: 1.5rem;
 				transition: transform 0.5s;
+				fill: $text-color !important;
 				&.open {
 					transform: rotate(180deg);
 				}
 			}
 
 			&.feedback-error {
-				border-color: $error;
+				border-color: $primary-color1;
 			}
 		}
 	}
 
 	&.open {
 		.header {
-			border-color: $highlight;
+			border-color: $primary-color4;
 		}
 	}
 
@@ -97,13 +98,13 @@
 			margin-right: auto;
 
 			&.feedback-error {
-				color: $error;
-				fill: $error;
+				color: $primary-color1;
+				fill: $primary-color1;
 			}
 
 			&.feedback-success {
-				color: $success;
-				fill: $success;
+				color: $primary-color2;
+				fill: $primary-color2;
 			}
 		}
 
@@ -112,7 +113,7 @@
 			margin-left: auto;
 
 			&.exceeded {
-				color: $error;
+				color: $primary-color1;
 			}
 		}
 	}
@@ -122,11 +123,11 @@
 	display: none;
 	position: absolute;
 	top: calc(100% + 0.5rem);
-	background: $white;
+	background: $light-color3;
 	width: auto;
 	border-radius: 0.3125rem;
-	border: 0.0625rem solid #dfe0e2;
-	box-shadow: 0rem 0.5rem 1.25rem rgba(24, 24, 24, 0.08);
+	border: 0.0625rem solid $light-color2;
+	@include boxShadow;
 	padding: 1rem;
 	overflow-y: auto;
 	min-height: 4rem;

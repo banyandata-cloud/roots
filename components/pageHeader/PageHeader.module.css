@@ -6,6 +6,7 @@
   width: 100%;
   background-color: transparent;
   gap: 1rem;
+  color: var(--text-color);
 }
 .root.compact {
   display: flex;
@@ -13,14 +14,8 @@
   justify-content: space-between;
   align-items: flex-start;
 }
-.root.dark-theme {
-  color: var(--white);
-}
-.root.dark-theme .breadcrumb [data-elem=breadcrumb-item-active] {
-  color: var(--white);
-}
-.root.light-theme {
-  color: var(--dark-grey);
+.root .breadcrumb [data-elem=breadcrumb-item-active] {
+  color: var(--text-color);
 }
 .root .contents {
   display: flex;

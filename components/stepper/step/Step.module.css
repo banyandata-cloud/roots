@@ -34,7 +34,7 @@
   border-radius: 2rem;
   font-size: 1rem;
   border: 0.063rem solid var(--grey2);
-  background: var(--white);
+  background: var(--light-color3);
   color: var(--grey2);
   position: relative;
 }
@@ -43,13 +43,13 @@
   height: 0.75rem;
 }
 .root .left .icon-container .icon.error-icon {
-  fill: var(--error);
+  fill: var(--primary-color1);
 }
 .root .left .icon-container .icon.completion-icon {
-  fill: var(--highlight);
+  fill: var(--primary-color4);
 }
 .root .left .icon-container .icon.completion-icon.active {
-  fill: var(--white);
+  fill: var(--light-color3);
 }
 .root .left .progress {
   position: absolute;
@@ -61,7 +61,7 @@
   position: absolute;
   content: "";
   inset: 0.15rem;
-  background: white;
+  background: var(--light-color3);
   border-radius: 2rem;
 }
 .root .right {
@@ -79,7 +79,7 @@
   gap: 0.75rem;
   width: 100%;
   font-size: 1rem;
-  color: var(--grey2);
+  color: var(--mono-color1);
 }
 .root .right .title::after {
   content: "";
@@ -87,41 +87,41 @@
   min-width: 1.5rem;
   border-bottom: 0.063rem solid;
   margin-top: 0.75rem;
-  border-bottom-color: var(--grey2);
+  border-bottom-color: var(--mono-color2);
 }
 .root .right .description {
   font-size: 0.75rem;
-  color: var(--grey2);
+  color: var(--mono-color2);
 }
 .root.no-tail .right .title::after {
   display: none;
 }
 .root.active .left .icon-container {
-  background: var(--highlight);
+  background: var(--primary-color4);
   color: var(--white);
 }
 .root.active .left .icon-container, .root.completed .left .icon-container {
-  border-color: var(--highlight);
+  border-color: var(--primary-color4);
 }
 .root.active .right .title, .root.completed .right .title {
-  color: var(--black);
+  color: var(--text-color);
 }
 .root.active .right .description, .root.completed .right .description {
-  color: var(--grey);
+  color: var(--mono-color1);
 }
 .root.completed .right .title::after {
-  border-bottom-color: var(--highlight);
+  border-bottom-color: var(--primary-color4);
 }
 .root.error .left .icon-container {
   background: var(--white);
-  border-color: var(--error);
-  color: var(--error);
+  border-color: var(--primary-color1);
+  color: var(--primary-color1);
 }
 .root.error .right .title {
-  color: var(--error);
+  color: var(--primary-color1);
 }
 .root.error .right .description {
-  color: rgba(var(--error), 0.6);
+  color: rgba(var(--primary-color1), 0.6);
 }
 .root.vertical {
   height: 100%;
@@ -145,5 +145,5 @@
   display: none;
 }
 .root.vertical.completed .left::after {
-  border-right-color: var(--highlight);
+  border-right-color: var(--primary-color4);
 }/*# sourceMappingURL=Step.module.css.map */

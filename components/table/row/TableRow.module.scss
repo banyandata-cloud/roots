@@ -4,7 +4,6 @@
 	@include flex(row, flex-start);
 
 	&.header-row {
-		background: #F7F7F8;
 		> [data-elem='base-cell'].expandable-cell {
 			background: transparent;
 			> [data-elem='component2'] {
@@ -21,13 +20,23 @@
 		}
 		&:hover {
 			> [data-elem='base-cell'] {
-				background: $info-bg;
+				background: $background-color4;
+				> [data-elem='component2'] {
+					> [data-elem='text'] {
+						color: $black !important;
+					}
+				}
 			}
 		}
 
 		&[data-active='true'] {
 			> [data-elem='base-cell'] {
-				background: $background;
+				background: $background-color5;
+				> [data-elem='component2'] {
+					> [data-elem='text'] {
+						color: $black !important;
+					}
+				}
 			}
 		}
 	}

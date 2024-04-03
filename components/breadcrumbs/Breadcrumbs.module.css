@@ -8,19 +8,19 @@
   overflow: auto;
   width: 100%;
 }
-.root [data-elem=breadcrumb-seperator-icon] {
+.root [data-elem=breadcrumb-separator-icon] {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  stroke: var(--text-colour2);
-  fill: var(--text-colour2);
+  stroke: var(--text-color);
+  fill: var(--text-color);
   width: 1.5rem;
   height: 1.5rem;
 }
 .root button.expand[data-elem=base-cell] {
   background: var(--grey6);
-  color: var(--dark-grey);
+  color: var(--text-color);
   height: 0.75rem;
   padding: 0.25rem;
 }
@@ -34,32 +34,33 @@
 }
 .root .crumb-actions[data-elem=base-cell] > [data-elem=component1] > svg {
   margin-left: 0.125rem;
+  fill: var(--white);
 }
 .root .crumb-actions[data-elem=base-cell] .icon {
   width: 1.25rem;
   height: 1.25rem;
-  fill: var(--white);
+  fill: var(--light-color3);
 }
 .root .crumb-actions[data-elem=base-cell].home {
   width: -moz-fit-content;
   width: fit-content;
   border-radius: 4px;
   background-color: var(--mono-color3) !important;
-  color: var(--black);
+  color: var(--text-color);
 }
 .root .crumb-actions[data-elem=base-cell].home .icon {
   width: 1.25rem;
   height: 1.25rem;
-  fill: var(--black);
+  fill: var(--text-color);
 }
 .root .crumb-actions[data-elem=base-cell].home.highlight {
   background-color: var(--mono-color1) !important;
-  color: var(--white);
+  color: var(--light-color3);
 }
 .root .crumb-actions[data-elem=base-cell].home.highlight .icon {
   width: 1.25rem;
   height: 1.25rem;
-  fill: var(--white);
+  fill: var(--light-color3);
 }
 .root .crumb {
   display: flex;
@@ -70,12 +71,29 @@
   padding: 0.5rem 0.5rem;
   border-radius: 0.25rem;
   background: var(--mono-color3);
+  font-weight: 500;
+}
+.root .crumb:hover:not(.active) {
+  cursor: pointer;
+  background: var(--light-color1);
+}
+.root .crumb.active {
+  background-color: var(--mono-color1);
+}
+.root .crumb.active .title {
+  color: var(--white);
+}
+.root .crumb.active .value {
+  color: var(--white);
+}
+.root .crumb.active .iconWrapper svg {
+  fill: var(--white);
 }
 .root .crumb .title {
-  color: var(--text-colour2);
+  color: var(--text-color);
 }
 .root .crumb .value {
-  color: var(--text-colour2);
+  color: var(--text-color);
 }
 .root .crumb .iconWrapper {
   display: flex;
@@ -86,33 +104,5 @@
   height: 1rem;
 }
 .root .crumb .iconWrapper svg {
-  fill: var(--highlight);
-}
-.root.theme-light .crumb {
-  font-weight: 500;
-}
-.root.theme-light .crumb.active {
-  background-color: var(--mono-color1);
-}
-.root.theme-light .crumb.active .title {
-  color: var(--white);
-}
-.root.theme-light .crumb.active .value {
-  color: var(--white);
-}
-.root.theme-light .crumb.active .iconWrapper svg {
-  fill: var(--white);
-}
-.root.theme-light .crumb:hover:not(.active) {
-  cursor: pointer;
-  background: var(--light-colours-201, var(--light-color1));
-}
-.root.theme-dark .crumb {
-  color: var(--grey2);
-}
-.root.theme-dark .crumb.active {
-  color: var(--white);
-}
-.root.theme-dark .crumb:hover:not(.active) {
-  color: var(--info);
+  fill: var(--primary-color4);
 }/*# sourceMappingURL=Breadcrumbs.module.css.map */

@@ -6,7 +6,7 @@
 		font-size: 0.75rem;
 		line-height: 1.125rem;
 		letter-spacing: 0.32px;
-		color: $grey;
+		color: $mono-color1;
 		margin-bottom: 0.5rem;
 	}
 	.rangeslider {
@@ -14,7 +14,7 @@
 		width: 300px;
 		height: 8px;
 		background: #d3d3d383;
-		border: solid 1px $grey3;
+		border: solid 1px $mono-color3;
 		border-radius: 5px;
 		cursor: pointer;
 
@@ -24,7 +24,7 @@
 			transform: translate(-50%, -50%);
 			width: 16px;
 			height: 16px;
-			background: #0040ff;
+			background: $primary-color4;
 			border-radius: 50%;
 			cursor: pointer;
 			z-index: 1;
@@ -35,7 +35,7 @@
 				bottom: 22px;
 				left: 50%;
 				transform: translateX(-50%);
-				background: #0040ff;
+				background: $primary-color4;
 				color: $white;
 				font-weight: 600;
 				padding: 2px 5px;
@@ -57,7 +57,7 @@
 			top: 50%;
 			transform: translateY(-50%);
 			height: 8px;
-			background: #0040ff;
+			background: $primary-color4;
 			border-radius: 5px;
 			z-index: 0;
 		}
@@ -79,7 +79,7 @@
 		font-size: 0.75rem;
 		line-height: 1.125rem;
 		letter-spacing: 0.32px;
-		color: $grey;
+		color: $mono-color1;
 		margin-top: 0.3rem;
 	}
 	.min {

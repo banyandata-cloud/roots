@@ -6,7 +6,7 @@
 	width: 30%;
 	@include flex(column, flex-start, stretch);
 	top: 0;
-	background: $white;
+	background: $light-color3;
 	@include boxShadow;
 	overflow-x: hidden;
 	&.close {

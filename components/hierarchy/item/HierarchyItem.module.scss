@@ -24,6 +24,7 @@
 					transform: rotate(-90deg);
 					width: 1rem;
 					height: 1rem;
+					fill: $text-color;
 				}
 			}
 		}
@@ -43,11 +44,11 @@
 			.icon,
 			.title,
 			.title svg {
-				color: $highlight;
-				fill: $highlight;
+				color: $primary-color4;
+				fill: $primary-color4;
 			}
 
-			background: $background;
+			background: $background-color4;
 		}
 	}
 
@@ -102,11 +103,11 @@
 			.icon,
 			.title,
 			.title svg {
-				color: $highlight;
-				fill: $highlight;
+				color: $primary-color4;
+				fill: $primary-color4;
 			}
 
-			background: $background;
+			background: $background-color4;
 		}
 	}
 }

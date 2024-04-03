@@ -4,7 +4,7 @@
   position: relative;
 }
 .root button.full-screen[data-elem=base-cell] {
-  background-color: white;
+  background-color: var(--white);
   position: absolute;
   bottom: 0;
   right: 0;
@@ -12,7 +12,7 @@
 .root button.full-screen[data-elem=base-cell] .icon {
   width: 1.5rem;
   height: 1.5rem;
-  fill: var(--black);
+  fill: var(--text-color);
 }
 
 .bc-map-root {

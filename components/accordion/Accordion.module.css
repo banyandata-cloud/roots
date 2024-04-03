@@ -27,7 +27,7 @@
   transform: rotate(-90deg);
   width: 1rem;
   height: 1rem;
-  fill: var(--dark-grey);
+  fill: var(--text-color);
 }
 .root > .header[data-elem=base-cell] > [data-elem=component3] {
   margin-left: auto;
@@ -43,8 +43,8 @@
 }
 .root > .header[data-elem=base-cell]:hover .icon,
 .root > .header[data-elem=base-cell]:hover .title {
-  color: var(--highlight);
-  fill: var(--highlight);
+  color: var(--secondary-color1);
+  fill: var(--secondary-color1);
 }
 .root > .body {
   padding: 0.5rem 2.5rem;

@@ -3,7 +3,7 @@
 .root {
 	cursor: pointer;
 	gap: 10px;
-	color: $grey1;
+	color: $mono-color1;
 
 	&.position-left {
 		@include flex(row, flex-start);
@@ -22,7 +22,7 @@
 
 	&.disabled {
 		cursor: default;
-		color: $grey4;
+		color: $mono-color2;
 		.icon {
 			rect {
 				&:nth-of-type(1) {
@@ -39,22 +39,22 @@
 	}
 
 	&.selected {
-		color: $dark-grey;
+		color: $text-color;
 	}
 
 	&:hover:not(.disabled) {
-		color: $dark-grey;
+		color: $text-color;
 		.icon {
 			rect {
 				&:nth-of-type(1) {
-					fill: $info-bg;
+					fill: $background-color5;
 				}
 				&:nth-of-type(2) {
-					stroke: $highlight;
+					stroke: $primary-color4;
 				}
 			}
 			path {
-				stroke: $highlight;
+				stroke: $primary-color4;
 			}
 		}
 	}

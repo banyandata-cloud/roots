@@ -9,25 +9,11 @@
 	font-size: 0.875rem;
 	font-family: sans-serif;
 	line-height: 1;
-
-	&.light {
-		color: $black;
-		background: $grey7;
-		border-color: $black;
-
-		.arrow {
-			background: $grey7;
-		}
-	}
-
-	&.dark {
-		color: $white;
-		background: $black;
-		border-color: $white;
-
-		.arrow {
-			background: $black;
-		}
+	color: $light-color3;
+	background: $text-color;
+	border-color: $text-color;
+	.arrow {
+		background: $text-color;
 	}
 
 	.arrow {

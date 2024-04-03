@@ -16,7 +16,7 @@
 }
 .root .label.required::after {
   content: " *";
-  color: var(--error);
+  color: var(--primary-color1);
 }
 .root .header {
   display: flex;
@@ -33,10 +33,10 @@
   height: 1px;
 }
 .root .header .input:focus + .select {
-  border-color: var(--highlight);
+  border-color: var(--primary-color4);
 }
 .root .header .input:focus + .select.feedback-error {
-  border-color: var(--error);
+  border-color: var(--primary-color1);
 }
 .root .header .select {
   display: flex;
@@ -46,7 +46,7 @@
   width: 25rem;
   max-width: 100%;
   gap: 0.5rem;
-  background: var(--white);
+  background: var(--light-color3);
   outline: none;
   border-radius: 0.3125rem;
   border: 0.0625rem solid #dfe0e2;
@@ -61,21 +61,22 @@
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  color: var(--black);
+  color: var(--text-color);
 }
 .root .header .select .icon {
   width: 1.5rem;
   height: 1.5rem;
   transition: transform 0.5s;
+  fill: var(--text-color) !important;
 }
 .root .header .select .icon.open {
   transform: rotate(180deg);
 }
 .root .header .select.feedback-error {
-  border-color: var(--error);
+  border-color: var(--primary-color1);
 }
 .root.open .header {
-  border-color: var(--highlight);
+  border-color: var(--primary-color4);
 }
 .root.disabled .select {
   background: var(--grey10);
@@ -100,30 +101,30 @@
   margin-right: auto;
 }
 .root .bottom .feedback.feedback-error {
-  color: var(--error);
-  fill: var(--error);
+  color: var(--primary-color1);
+  fill: var(--primary-color1);
 }
 .root .bottom .feedback.feedback-success {
-  color: var(--success);
-  fill: var(--success);
+  color: var(--primary-color2);
+  fill: var(--primary-color2);
 }
 .root .bottom .count {
   text-align: right;
   margin-left: auto;
 }
 .root .bottom .count.exceeded {
-  color: var(--error);
+  color: var(--primary-color1);
 }
 
 .body {
   display: none;
   position: absolute;
   top: calc(100% + 0.5rem);
-  background: var(--white);
+  background: var(--light-color3);
   width: auto;
   border-radius: 0.3125rem;
-  border: 0.0625rem solid #dfe0e2;
-  box-shadow: 0rem 0.5rem 1.25rem rgba(24, 24, 24, 0.08);
+  border: 0.0625rem solid var(--light-color2);
+  box-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);
   padding: 1rem;
   overflow-y: auto;
   min-height: 4rem;

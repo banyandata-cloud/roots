@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
-  background: var(--white);
+  background: var(--light-color3);
   overflow: auto;
 }
 .root.no-scroll {
