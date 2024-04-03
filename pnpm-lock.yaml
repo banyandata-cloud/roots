@@ -191,8 +191,8 @@ devDependencies:
     specifier: ^1.55.0
     version: 1.69.5
   sass-loader:
-    specifier: 14.1.1
-    version: 14.1.1(sass@1.69.5)(webpack@5.89.0)
+    specifier: ^13.1.0
+    version: 13.1.0(sass@1.69.5)(webpack@5.89.0)
   storybook:
     specifier: ^6.5.12
     version: 6.5.16(eslint@8.56.0)(react-dom@18.2.0)(react@18.2.0)(typescript@5.3.3)
@@ -15883,17 +15883,17 @@ packages:
       webpack: 5.89.0
     dev: true
 
-  /sass-loader@14.1.1(sass@1.69.5)(webpack@5.89.0):
-    resolution: {integrity: sha512-QX8AasDg75monlybel38BZ49JP5Z+uSKfKwF2rO7S74BywaRmGQMUBw9dtkS+ekyM/QnP+NOrRYq8ABMZ9G8jw==}
-    engines: {node: '>= 18.12.0'}
+  /sass-loader@13.1.0(sass@1.69.5)(webpack@5.89.0):
+    resolution: {integrity: sha512-tZS1RJQ2n2+QNyf3CCAo1H562WjL/5AM6Gi8YcPVVoNxQX8d19mx8E+8fRrMWsyc93ZL6Q8vZDSM0FHVTJaVnQ==}
+    engines: {node: '>= 14.15.0'}
     peerDependencies:
-      '@rspack/core': 0.x || 1.x
-      node-sass: ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0 || ^9.0.0
+      fibers: '>= 3.1.0'
+      node-sass: ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0
       sass: ^1.3.0
       sass-embedded: '*'
       webpack: ^5.0.0
     peerDependenciesMeta:
-      '@rspack/core':
+      fibers:
         optional: true
       node-sass:
         optional: true
@@ -15901,9 +15901,8 @@ packages:
         optional: true
       sass-embedded:
         optional: true
-      webpack:
-        optional: true
     dependencies:
+      klona: 2.0.6
       neo-async: 2.6.2
       sass: 1.69.5
       webpack: 5.89.0
@@ -18349,7 +18348,6 @@ packages:
 
   /workbox-google-analytics@6.6.0:
     resolution: {integrity: sha512-p4DJa6OldXWd6M9zRl0H6vB9lkrmqYFkRQ2xEiNdBFp9U0LhsGO7hsBscVEyH9H2/3eZZt8c97NB2FD9U2NJ+Q==}
-    deprecated: It is not compatible with newer versions of GA starting with v4, as long as you are using GAv3 it should be ok, but the package is not longer being maintained
     dependencies:
       workbox-background-sync: 6.6.0
       workbox-core: 6.6.0

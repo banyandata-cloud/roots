@@ -38,20 +38,13 @@
 				cursor: not-allowed;
 				> [data-elem='component2'] {
 					> [data-elem='title'] {
-						color: $grey1;
+						color: $mono-color2;
 					}
 				}
 			}
 
 			&.all-select {
 				background-color: $mono-color1;
-				> [data-elem='component2'] {
-					> [data-elem='title'] {
-						color: $white;
-					}
-				}
-			}
-			&.dark {
 				> [data-elem='component2'] {
 					> [data-elem='title'] {
 						color: $white;
@@ -72,20 +65,9 @@
 			&.smooth {
 				transition: left 0.2s ease-in-out, width 0.2s ease-in-out;
 			}
-
-			&.dark {
-				background: $dark-grey;
-				border: 1px solid $grey2;
-			}
 		}
 	}
 
-	&.dark {
-		background: $black;
-		border: 1px solid $grey;
-	}
-	&.light {
-		background: $grey8;
-		border: 1px solid $mono-color2;
-	}
+	background: $mono-color3;
+	border: 1px solid $mono-color2;
 }

@@ -16,36 +16,19 @@
 			width: 100%;
 			font-size: 1rem;
 		}
-		&.light {
-			background: $white;
-			.cell-text {
-				color: #1a2028;
-			}
-		}
-		&.dark {
-			background: $white;
-			.cell-text {
-				color: $grey;
-			}
+		.cell-text {
+			color: $text-color;
 		}
 	}
 
 	&.header-cell {
 		.cell-text {
-			font-weight: 400;
+			font-weight: 500;
 			font-size: 0.875rem;
 		}
-		&.light {
-			background: $light-color2;
-			.cell-text {
-				color: #575f6e;
-			}
-		}
-		&.dark {
-			background: $light-color2;
-			.cell-text {
-				color: $grey;
-			}
+		background: $light-color2;
+		.cell-text {
+			color: $text-color;
 		}
 
 		&.sortable {
@@ -89,7 +72,7 @@
 					visibility: visible;
 
 					.sort-icon {
-						fill: $highlight;
+						fill: $primary-color4;
 						width: 1rem;
 						height: 1rem;
 					}
@@ -114,17 +97,9 @@
 				font-size: 0.75rem;
 			}
 		}
-		&.light {
-			background: $white;
-			.cell-text {
-				color: #1a2028;
-			}
-		}
-		&.dark {
-			background: $white;
-			.cell-text {
-				color: $grey;
-			}
+		background: $light-color3;
+		.cell-text {
+			color: $text-color;
 		}
 	}
 

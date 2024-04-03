@@ -21,15 +21,15 @@ button.root[data-elem=base-cell]:disabled {
   cursor: not-allowed;
 }
 button.root[data-elem=base-cell].contained {
-  background: var(--black);
-  color: var(--white);
+  background: var(--text-color);
+  color: var(--light-color3);
 }
 button.root[data-elem=base-cell].outlined {
-  color: var(--black);
-  border: 1px solid var(--black);
+  color: var(--light-color3);
+  border: 1px solid var(--text-color);
 }
 button.root[data-elem=base-cell].text {
-  color: var(--black);
+  color: var(--text-color);
 }
 button.root[data-elem=base-cell] [data-elem*=component] {
   display: flex;

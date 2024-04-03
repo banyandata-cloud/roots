@@ -15,12 +15,7 @@
 		.icon {
 			width: 1.5rem;
 			height: 1.5rem;
-			&.dark {
-				fill: $white;
-			}
-			&.light {
-				fill: $black;
-			}
+			fill: $text-color;
 		}
 
 		.notCopied {
@@ -32,8 +27,8 @@
 			top: 2.188rem;
 			padding: 0.5rem;
 			border-radius: 0.25rem;
-			background-color: $highlight;
-			color: $grey10;
+			background-color: $primary-color4;
+			color: $mono-color3;
 		}
 	}
 }

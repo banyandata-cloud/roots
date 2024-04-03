@@ -79,7 +79,7 @@
 .root .actions .close .icon {
   width: 1.25rem;
   height: 1.25rem;
-  fill: var(--black);
+  fill: var(--text-color);
 }
 .root.border-default {
   border-width: 0.063rem;
@@ -92,35 +92,35 @@
 }
 .root.info {
   border-style: solid;
-  border-color: var(--info);
-  background-color: #edf5ff;
+  border-color: var(--primary-color4);
+  background-color: var(--background-color5);
 }
 .root.info .icon {
-  fill: var(--info);
+  fill: var(--primary-color4);
 }
 .root.success {
   border-style: solid;
-  border-color: var(--success);
-  background-color: var(--success-bg);
+  border-color: var(--primary-color2);
+  background-color: var(--background-color2);
 }
 .root.success .icon {
-  fill: var(--success);
+  fill: var(--primary-color2);
 }
 .root.danger {
   border-style: solid;
-  border-color: var(--error);
-  background-color: var(--error-bg);
+  border-color: var(--primary-color1);
+  background-color: var(--background-color1);
 }
 .root.danger .icon {
-  fill: var(--error);
+  fill: var(--primary-color1);
 }
 .root.warning {
   border-style: solid;
-  border-color: var(--warning);
-  background-color: var(--warning-bg);
+  border-color: var(--primary-color3);
+  background-color: var(--background-color3);
 }
 .root.warning .icon {
-  fill: var(--warning);
+  fill: var(--primary-color3);
 }
 .root.shadow {
   box-shadow: 0.125rem 0.5rem 1rem rgba(60, 60, 60, 0.12);

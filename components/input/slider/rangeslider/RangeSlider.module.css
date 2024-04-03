@@ -3,7 +3,7 @@
   font-size: 0.75rem;
   line-height: 1.125rem;
   letter-spacing: 0.32px;
-  color: var(--grey);
+  color: var(--mono-color1);
   margin-bottom: 0.5rem;
 }
 .rangeslider-container .rangeslider {
@@ -11,7 +11,7 @@
   width: 300px;
   height: 8px;
   background: rgba(211, 211, 211, 0.5137254902);
-  border: solid 1px var(--grey3);
+  border: solid 1px var(--mono-color3);
   border-radius: 5px;
   cursor: pointer;
 }
@@ -21,7 +21,7 @@
   transform: translate(-50%, -50%);
   width: 16px;
   height: 16px;
-  background: #0040ff;
+  background: var(--primary-color4);
   border-radius: 50%;
   cursor: pointer;
   z-index: 1;
@@ -32,7 +32,7 @@
   bottom: 22px;
   left: 50%;
   transform: translateX(-50%);
-  background: #0040ff;
+  background: var(--primary-color4);
   color: var(--white);
   font-weight: 600;
   padding: 2px 5px;
@@ -51,7 +51,7 @@
   top: 50%;
   transform: translateY(-50%);
   height: 8px;
-  background: #0040ff;
+  background: var(--primary-color4);
   border-radius: 5px;
   z-index: 0;
 }
@@ -69,7 +69,7 @@
   font-size: 0.75rem;
   line-height: 1.125rem;
   letter-spacing: 0.32px;
-  color: var(--grey);
+  color: var(--mono-color1);
   margin-top: 0.3rem;
 }
 .rangeslider-container .min {

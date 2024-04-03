@@ -1,12 +1,12 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import styles from './Breadcrumbs.module.css';
-import { getSpacedDisplayName, classes } from '../../utils/utils';
-import BreadcrumbSeperator from '../icons/BreadcrumbSeperator/BreadcrumbSeperator';
-import { Link } from '../link';
-import { ArrowIcon, HomeIcon } from '../icons';
+import React, { useState } from 'react';
+import { classes, getSpacedDisplayName } from '../../utils/utils';
 import Button from '../buttons/button/Button';
+import { ArrowIcon, HomeIcon } from '../icons';
+import BreadcrumbSeparator from '../icons/BreadcrumbSeperator/BreadcrumbSeperator';
+import { Link } from '../link';
+import styles from './Breadcrumbs.module.css';
 
 const BreadCrumbs = (props) => {
 	const {
@@ -15,7 +15,6 @@ const BreadCrumbs = (props) => {
 		itemsBeforeCollapse,
 		itemsAfterCollapse,
 		linkComponent,
-		theme,
 		onBackClick,
 		onHomeClick,
 		homeTitle,
@@ -33,7 +32,7 @@ const BreadCrumbs = (props) => {
 			const { title, value, icon, navigate, isDisabled = false } = crumb;
 
 			const active = index === crumbsList.length - 1;
-			const showSeperator = index < crumbsList.length - 1;
+			const showSeparator = index < crumbsList.length - 1;
 
 			return (
 				<React.Fragment key={title}>
@@ -58,7 +57,7 @@ const BreadCrumbs = (props) => {
 							</span>
 						)}
 					</Link>
-					{showSeperator && <BreadcrumbSeperator className={styles.seperator} />}
+					{showSeparator && <BreadcrumbSeparator className={styles.separator} />}
 				</React.Fragment>
 			);
 		});
@@ -77,14 +76,14 @@ const BreadCrumbs = (props) => {
 						setExpand(true);
 					}}
 				/>
-				<BreadcrumbSeperator className={styles.seperator} />
+				<BreadcrumbSeparator className={styles.separator} />
 			</React.Fragment>
 		);
 	}
 
 	if (crumbs?.length <= 1) {
 		return (
-			<div className={classes(styles.root, styles[`theme-${theme}`])}>
+			<div className={classes(styles.root)}>
 				<Button
 					size='auto'
 					radius='round'
@@ -100,7 +99,7 @@ const BreadCrumbs = (props) => {
 
 	return (
 		crumbs?.length > 1 && (
-			<div className={classes(styles.root, styles[`theme-${theme}`], className)}>
+			<div className={classes(styles.root, className)}>
 				<Button
 					size='auto'
 					radius='round'
@@ -120,7 +119,7 @@ const BreadCrumbs = (props) => {
 					title={homeTitle}
 					onClick={onHomeClick}
 				/>
-				<BreadcrumbSeperator className={styles.seperator} />
+				<BreadcrumbSeparator className={styles.separator} />
 				{CrumbsDOM}
 			</div>
 		)
@@ -128,7 +127,6 @@ const BreadCrumbs = (props) => {
 };
 
 BreadCrumbs.propTypes = {
-	theme: PropTypes.oneOf(['light', 'dark']),
 	crumbs: PropTypes.arrayOf(
 		PropTypes.shape({
 			title: PropTypes.string,
@@ -146,7 +144,6 @@ BreadCrumbs.propTypes = {
 };
 
 BreadCrumbs.defaultProps = {
-	theme: 'dark',
 	crumbs: [],
 	maxItems: 4,
 	itemsBeforeCollapse: 2,

@@ -5,14 +5,14 @@
 	height: 100%;
 	position: relative;
 	button.full-screen[data-elem='base-cell'] {
-		background-color: white;
+		background-color: $white;
 		position: absolute;
 		bottom: 0;
 		right: 0;
 		.icon {
 			width: 1.5rem;
 			height: 1.5rem;
-			fill: $black;
+			fill: $text-color;
 		}
 	}
 }

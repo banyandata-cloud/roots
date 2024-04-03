@@ -23,7 +23,7 @@
 				transform: rotate(-90deg);
 				width: 1rem;
 				height: 1rem;
-				fill: $dark-grey;
+				fill: $text-color;
 			}
 		}
 
@@ -39,8 +39,8 @@
 		&:hover {
 			.icon,
 			.title {
-				color: $highlight;
-				fill: $highlight;
+				color: $secondary-color1;
+				fill: $secondary-color1;
 			}
 
 			background: $background;

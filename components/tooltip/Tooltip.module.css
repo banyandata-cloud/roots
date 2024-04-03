@@ -7,22 +7,12 @@
   font-size: 0.875rem;
   font-family: sans-serif;
   line-height: 1;
+  color: var(--light-color3);
+  background: var(--text-color);
+  border-color: var(--text-color);
 }
-.tooltip.light {
-  color: var(--black);
-  background: var(--grey7);
-  border-color: var(--black);
-}
-.tooltip.light .arrow {
-  background: var(--grey7);
-}
-.tooltip.dark {
-  color: var(--white);
-  background: var(--black);
-  border-color: var(--white);
-}
-.tooltip.dark .arrow {
-  background: var(--black);
+.tooltip .arrow {
+  background: var(--text-color);
 }
 .tooltip .arrow {
   position: absolute;

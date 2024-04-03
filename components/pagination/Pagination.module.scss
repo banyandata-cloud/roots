@@ -4,7 +4,7 @@
 	@include flex(row, space-between, stretch);
 	@include removeScrollbar;
 	padding: 0.4375rem 1rem;
-	background: var(--light-color1);
+	background: $light-color1;
 	margin-top: auto;
 	width: 100%;
 	height: 3.5rem;
@@ -14,7 +14,7 @@
 	transition-timing-function: ease-out;
 
 	&.floating {
-		background: $dark-grey-o-85;
+		background: $light-color1;
 		position: absolute;
 		border-radius: 6.25rem;
 		width: 82%;
@@ -24,7 +24,7 @@
 	.copyrightText {
 		@include flex(row, flex-start, center);
 		> .text {
-			color: #9a9ea5;
+			color: $mono-color1;
 			font-size: 0.875rem;
 			font-style: normal;
 			font-weight: 400;
@@ -63,7 +63,7 @@
 				border-radius: 50%;
 				background-color: #e0e0e0;
 				color: $black;
-				width: 2.313rem;
+				min-width: 2.313rem;
 				line-height: 2.313rem;
 				text-align: center;
 				font-size: 1rem;
@@ -80,13 +80,13 @@
 				}
 
 				&:hover {
-					border: 1px solid $highlight;
-					color: $highlight;
-					background: $background;
+					border: 1px solid $primary-color4;
+					color: $primary-color4;
+					background: $background-color4;
 				}
 
 				&.active {
-					background-color: $highlight;
+					background-color: $primary-color4;
 					color: $white;
 				}
 			}
@@ -98,7 +98,7 @@
 		gap: 1rem;
 		.total-data {
 			@include ellipsis;
-			color: #1a2028;
+			color: $text-color;
 			font-size: 0.875rem;
 			font-weight: 500;
 			line-height: 1.125rem;

@@ -18,7 +18,7 @@
   flex-shrink: 0;
 }
 .root[data-elem=base-cell] .cross {
-  fill: var(--error);
+  fill: var(--primary-color1);
   width: 1.5rem;
   height: 1.5rem;
 }
@@ -26,16 +26,16 @@
   border: 1px solid red;
   height: 100%;
   background: transparent;
-  border: 1px solid var(--grey4);
-  color: var(--text-colour2);
+  border: 1px solid var(--mono-color2);
+  color: var(--text-color);
 }
 .root[data-elem=base-cell] button.clear-button {
   border: 1px solid red;
   height: 100%;
-  border: 1px solid var(--grey4);
-  color: var(--text-colour2);
+  border: 1px solid var(--mono-color2);
+  color: var(--text-color);
   margin-right: 0.625rem;
-  background: var(--error-bg);
+  background: var(--background-color1);
 }
 .root[data-elem=base-cell] .column-dropdown {
   display: flex;
@@ -49,7 +49,7 @@
 .root[data-elem=base-cell] .column-dropdown > [data-elem=header] > [data-elem=select] {
   background-color: transparent;
   border: none;
-  color: var(--text-colour2);
+  color: var(--text-color);
   padding: 0rem;
   width: auto;
 }
@@ -90,7 +90,7 @@
 .root[data-elem=base-cell] > [data-elem=component2] .left {
   gap: 1rem;
   background: var(--grey8);
-  border: 1px solid var(--grey4);
+  border: 1px solid var(--mono-color2);
   color: var(--black);
 }
 .root[data-elem=base-cell] > [data-elem=component2] .left [data-elem=left] {
@@ -111,4 +111,7 @@
   height: 100%;
   width: -moz-fit-content;
   width: fit-content;
+}
+.root[data-elem=base-cell] > [data-elem=component3] .icon {
+  fill: var(--text-color);
 }/*# sourceMappingURL=TableFilters.module.css.map */

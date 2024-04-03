@@ -14,12 +14,12 @@
 		padding: 5px !important;
 
 		&.active {
-			color: $highlight !important;
+			color: $primary-color4 !important;
 		}
 		> [data-elem='component1'],
 		> [data-elem='component3'] {
 			> .icon {
-				fill: $black;
+				fill: $text-color;
 				width: 1.5rem;
 				height: 1.5rem;
 			}
@@ -27,16 +27,16 @@
 	}
 
 	> [data-elem='base-cell']:disabled {
-		color: $grey3 !important;
+		color: $mono-color2 !important;
 	}
 
 	&:hover {
-		color: $highlight !important;
-		background: $background;
+		color: $primary-color4 !important;
+		background: $background-color4;
 	}
 
 	&.active {
-		color: $highlight !important;
+		color: $primary-color4 !important;
 	}
 
 	.dropdown {
@@ -48,7 +48,7 @@
 			height: 2.3125rem;
 
 			&.active {
-				color: $highlight !important;
+				color: $primary-color4 !important;
 			}
 		}
 		> [data-elem='header'] {
@@ -69,7 +69,7 @@
 	bottom: 0;
 	left: 0;
 	height: 3px;
-	background-color: $highlight;
+	background-color: $primary-color4;
 	transition: left 0.3s ease-in-out, width 0.3s ease-in-out;
 	width: 100%;
 }

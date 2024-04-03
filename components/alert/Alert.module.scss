@@ -68,7 +68,7 @@
 			.icon {
 				width: 1.25rem;
 				height: 1.25rem;
-				fill: $black;
+				fill: $text-color;
 			}
 		}
 	}
@@ -84,27 +84,27 @@
 	}
 
 	&.info {
-		@include bordermixin($info, #edf5ff);
+		@include bordermixin($primary-color4, $background-color5);
 		.icon {
-			fill: $info;
+			fill: $primary-color4;
 		}
 	}
 	&.success {
-		@include bordermixin($success, $success-bg);
+		@include bordermixin($primary-color2, $background-color2);
 		.icon {
-			fill: $success;
+			fill: $primary-color2;
 		}
 	}
 	&.danger {
-		@include bordermixin($error, $error-bg);
+		@include bordermixin($primary-color1, $background-color1);
 		.icon {
-			fill: $error;
+			fill: $primary-color1;
 		}
 	}
 	&.warning {
-		@include bordermixin($warning, $warning-bg);
+		@include bordermixin($primary-color3, $background-color3);
 		.icon {
-			fill: $warning;
+			fill: $primary-color3;
 		}
 	}
 
