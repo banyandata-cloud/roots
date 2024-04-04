@@ -115,8 +115,8 @@ const TextField = forwardRef((props, inputRef) => {
 			maxLength,
 		}),
 		onFocus: () => {
-			onFocus?.();
 			checkAndOpenAutocomplete(inputValue);
+			onFocus?.();
 		},
 		onBlur,
 		onKeyDown,
