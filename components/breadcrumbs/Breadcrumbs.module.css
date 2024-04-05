@@ -42,6 +42,7 @@
   fill: var(--light-color3);
 }
 .root .crumb-actions[data-elem=base-cell].home {
+  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   border-radius: 4px;

@@ -95,6 +95,7 @@
   color: var(--grey3);
   -webkit-user-select: none;
      -moz-user-select: none;
+      -ms-user-select: none;
           user-select: none;
 }
 .root .date-picker .container.open {
@@ -130,6 +131,7 @@
   font-size: 1rem;
   -webkit-user-select: none;
      -moz-user-select: none;
+      -ms-user-select: none;
           user-select: none;
 }
 .root .date-picker .container .left > div > span {
