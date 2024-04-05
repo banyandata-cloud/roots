@@ -46,6 +46,7 @@ const Table = (props) => {
 		tableTitleText,
 		dataLabel,
 		customLabel,
+		jumpLabel,
 		customPaginationList,
 		customPageCallback,
 		hideDisabledPages,
@@ -185,6 +186,7 @@ const Table = (props) => {
 						loading={loading}
 						dataLabel={dataLabel}
 						customLabel={customLabel}
+						jumpLabel={jumpLabel}
 						customPaginationList={customPaginationList}
 						customPageCallback={customPageCallback}
 						hideDisabledPages={hideDisabledPages}

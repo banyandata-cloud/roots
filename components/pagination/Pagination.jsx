@@ -94,6 +94,7 @@ export const Pagination = forwardRef((props, ref) => {
 		loading,
 		dataLabel,
 		customLabel,
+		jumpLabel = 'Jump to Page',
 		hideDisabledPages = false,
 		customPaginationList = [],
 		customPageCallback = () => {},
@@ -368,7 +369,7 @@ export const Pagination = forwardRef((props, ref) => {
 										payload: parseInt(jumpPageRef?.current?.value, 10),
 									});
 								}}>
-								<Tooltip content='Jump To Minute' position='top'>
+								<Tooltip content={jumpLabel} position='top'>
 									<BaseCell
 										size='auto'
 										className={styles['jump-to-page']}
