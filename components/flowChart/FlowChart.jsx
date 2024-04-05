@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-nested-ternary */
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 import PropTypes from 'prop-types';
 
@@ -30,32 +30,23 @@ const FlowChart = ({
 	nodeRadius,
 	labelColor,
 	labelFontSize,
+	linkTextColor,
+	hideLinkText,
 }) => {
-	const [data, setData] = useState(initialData);
 	const svgRef = useRef(null);
-	const [displayedLevel, setDisplayedLevel] = useState(3);
 
 	useEffect(() => {
-		setData(initialData);
-	}, [initialData]);
-
-	useEffect(() => {
-		if (!initialData || !initialData.nodes || !initialData.relationships) {
-			console.warn('Invalid data format.');
-			return;
-		}
-
 		const uniqueLabels = Array.from(
 			new Set(
 				initialData.nodes.map((node) => {
-					return node.label;
+					return node.labels[0];
 				})
 			)
 		);
 
 		const labelToLevel = Object.fromEntries(
 			uniqueLabels.map((label) => {
-				const labelStr = label;
+				const labelStr = label.replace(/[^a-zA-Z]/g, '');
 				if (labelStr === 'AzuSubscription') {
 					return [label, 1];
 				}
@@ -71,19 +62,17 @@ const FlowChart = ({
 				if (labelStr.includes('AzuDisk')) {
 					return [label, 2];
 				}
-				return [label, 4];
+				return [label, 5];
 			})
 		);
 
 		const nodes = initialData.nodes.map((node) => {
-			console.log(node);
-
 			return {
-				id: node.id || node.name,
-				label: node.label,
-				timestamp: node.timestamp,
+				id: node.properties.id || node.properties.name,
+				label: node.labels[0],
+				timestamp: node.properties.timestamp,
 				properties: node.properties,
-				level: labelToLevel[node.label],
+				level: labelToLevel[node.labels[0]],
 				visibility: 'visible',
 			};
 		});
@@ -105,7 +94,12 @@ const FlowChart = ({
 		const svg = d3.select(svgRef.current);
 		svg.selectAll('*').remove();
 
-		const svgContainer = svg.append('svg').attr('Width', Width).attr('Height', Height);
+		const svgContainer = svg
+			.append('svg')
+			.attr('width', Width)
+			.attr('height', Height)
+			.append('g')
+			.attr('transform', `translate(${Width / 3.5},${Height / 2.7})scale(0.36)`);
 		const container = svgContainer.append('g');
 
 		const colorScale = d3
@@ -113,19 +107,46 @@ const FlowChart = ({
 			.domain([0, 1, 2])
 			.range(['#e31a1c', '#ff7f0e', '#1f78b4']);
 
+		function filterDuplicateNodes() {
+			const uniqueNodesMap = new Map();
+			nodes.forEach((node) => {
+				uniqueNodesMap.set(node.id, node);
+			});
+			return Array.from(uniqueNodesMap.values());
+		}
+
+		const uniqueNodes = filterDuplicateNodes(
+			Array.from(
+				new Map(
+					nodes.map((node) => {
+						return [node.id, node];
+					})
+				).values()
+			)
+		);
+
+		const linkedNodesIds = new Set();
+		links.forEach((link) => {
+			linkedNodesIds.add(link.source);
+			linkedNodesIds.add(link.target);
+		});
+
+		const filteredNodes = uniqueNodes.filter((node) => {
+			return linkedNodesIds.has(node.id);
+		});
+
 		const simulation = d3
-			.forceSimulation(nodes)
+			.forceSimulation(filteredNodes)
 			.force(
 				'link',
 				d3
 					.forceLink(links)
 					.id((d) => {
-						// console.log(d);
 						return d.id;
 					})
 					.distance(linkDistance)
 			)
-			.force('charge', d3.forceManyBody().strength(-100))
+			.force('charge', d3.forceManyBody().strength(-300))
 			.force('center', d3.forceCenter(Width / 2, Height / 2));
 
 		const dragstarted = (event, d) => {
@@ -199,20 +220,21 @@ const FlowChart = ({
 				return d.relationshipType;
 			})
 			.attr('font-size', linkFontSize)
-			.attr('fill', linkFontColor)
+			.attr('fill', linkTextColor)
 			.style('visibility', (d) => {
 				return d.source.visibility !== 'hidden' && d.target.visibility !== 'hidden'
 					? 'visible'
 					: 'hidden';
 			});
 
-		const nodesToDisplay = nodes.filter((node) => {
-			return node.level <= displayedLevel;
-		});
+		// Hide link text if hideLinkText prop is true
+		if (hideLinkText) {
+			linkText.style('visibility', 'hidden');
+		}
 
 		const node = container
 			.selectAll('.node')
-			.data(nodesToDisplay, (d) => {
+			.data(filteredNodes, (d) => {
 				return d.id;
 			})
 			.enter()
@@ -230,7 +252,7 @@ const FlowChart = ({
 					return '#33a02c';
 				}
 				if (labelStr === 'AzuDisk') {
-					return '#ff00c9';
+					return '#ff00c8';
 				}
 				if (labelStr === 'AzuNetworkInterface') {
 					return 'gray';
@@ -238,6 +260,19 @@ const FlowChart = ({
 				if (labelStr === 'AzuSubscription') {
 					return '#BEBB00';
 				}
+				if (labelStr === 'CustomerId') {
+					return 'brown';
+				}
+				if (labelStr === 'AzuRegion') {
+					return 'orange';
+				}
+				if (labelStr === 'AzuResourceGroup') {
+					return 'darkBlue';
+				}
+				if (labelStr === 'AzuLoadBalancer') {
+					return 'black';
+				}
+
 				return colorScale(d.level);
 			})
 			.attr('stroke', (d) => {
@@ -257,7 +292,43 @@ const FlowChart = ({
 					.darker(1);
 			})
 			.attr('opacity', 0.9)
-			.call(d3.drag().on('start', dragstarted).on('drag', dragged).on('end', dragended));
+			.call(d3.drag().on('start', dragstarted).on('drag', dragged).on('end', dragended))
+			.on('mouseover', handleMouseOver)
+			.on('mouseout', handleMouseOut);
+		// .on('click', (event, d) => {
+		// console.log('Clicked node ID:', d.id);
+		// });
+
+		function handleMouseOver(event, d) {
+			d3.select(this).attr('stroke-width', 2);
+
+			// Show popover
+			d3.select(this).append('title').text(d.id);
+		}
+
+		function handleMouseOut() {
+			d3.select(this)
+				.attr('stroke', (d) => {
+					return d3
+						.color(
+							// eslint-disable-next-line no-nested-ternary
+							d.label === 'AzuVirtualMachine'
+								? '#33a02c'
+								: d.label === 'AzuDisk'
+								? '#ff00c9'
+								: d.label === 'AzuNetworkInterface'
+								? 'gray'
+								: d.label === 'AzuSubscription'
+								? '#BEBB00'
+								: colorScale(d.level)
+						)
+						.darker(1);
+				})
+				.attr('stroke-width', 1);
+
+			// Remove popover
+			d3.select(this).select('title').remove();
+		}
 
 		function calculateRadius(label) {
 			const defaultRadius = nodeRadius;
@@ -269,7 +340,7 @@ const FlowChart = ({
 
 		const labels = container
 			.selectAll('.label')
-			.data(nodesToDisplay)
+			.data(filteredNodes)
 			.enter()
 			.append('text')
 			.attr('class', 'label')
@@ -336,7 +407,6 @@ const FlowChart = ({
 		};
 	}, [
 		initialData,
-		displayedLevel,
 		width,
 		height,
 		linkDistance,
@@ -345,6 +415,8 @@ const FlowChart = ({
 		nodeRadius,
 		labelColor,
 		labelFontSize,
+		linkTextColor,
+		hideLinkText,
 	]);
 
 	return <svg ref={svgRef} width={width} height={height} />;
@@ -364,7 +436,8 @@ FlowChart.propTypes = {
 	nodeRadius: PropTypes.number,
 	labelFontSize: PropTypes.string,
 	labelColor: PropTypes.string,
-	linkFontColor: PropTypes.string,
+	linkTextColor: PropTypes.string,
+	hideLinkText: PropTypes.bool,
 };
 
 FlowChart.defaultProps = {
@@ -374,8 +447,9 @@ FlowChart.defaultProps = {
 	linkFontSize: '8px',
 	nodeRadius: 13,
 	labelFontSize: '8px',
-	linkFontColor: 'black',
+	linkTextColor: 'black',
 	labelColor: 'white',
+	hideLinkText: false,
 };
 
 export default FlowChart;
