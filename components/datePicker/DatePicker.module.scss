@@ -23,29 +23,14 @@
 			.icon {
 				width: 1.5rem;
 				height: 1.5rem;
-				&.light {
-					path {
-						stroke: $black;
-					}
-				}
-				&.dark {
-					path {
-						stroke: $white;
-					}
+				path {
+					stroke: $text-color;
 				}
 			}
 		}
-		&.light {
-			> [data-elem='component2'] {
-				color: $dark-grey;
-				@include ellipsis;
-			}
-		}
-		&.dark {
-			> [data-elem='component2'] {
-				color: $white;
-				@include ellipsis;
-			}
+		> [data-elem='component2'] {
+			color: $text-color;
+			@include ellipsis;
 		}
 	}
 
@@ -61,12 +46,7 @@
 			font-weight: 400;
 			font-size: 0.75rem;
 			line-height: 0.9375rem;
-			&.light {
-				color: $black;
-			}
-			&.dark {
-				color: $white;
-			}
+			color: $text-color;
 		}
 
 		.container {
@@ -104,10 +84,10 @@
 			}
 
 			&.open {
-				outline: 0.0625rem solid $highlight;
+				outline: 0.0625rem solid $primary-color4;
 			}
 			&.error {
-				outline: 0.0625rem solid $error;
+				outline: 0.0625rem solid $primary-color1;
 			}
 
 			.left {
@@ -123,12 +103,8 @@
 					flex: 1 1 auto;
 					overflow: hidden;
 					@include flex;
-					&.light {
-						color: $black;
-					}
-					&.dark {
-						color: $white;
-					}
+					color: $text-color;
+
 					.placeholder {
 						font-weight: 500;
 						font-size: 1rem;
@@ -156,16 +132,10 @@
 				width: 1.5rem;
 				height: 1.5rem;
 				transition: transform 0.5s;
-				&.light {
-					> path {
-						fill: $dark-grey;
-					}
+				> path {
+					fill: $text-color;
 				}
-				&.dark {
-					> path {
-						fill: $white;
-					}
-				}
+
 				&.open {
 					transform: rotate(180deg);
 				}
@@ -192,16 +162,10 @@
 						width: 1.5rem;
 						height: 1.5rem;
 						transition: transform 0.5s;
-						&.light {
-							> path {
-								fill: $white;
-							}
+						> path {
+							fill: $white;
 						}
-						&.dark {
-							> path {
-								fill: $white;
-							}
-						}
+
 						&.open {
 							transform: rotate(180deg);
 						}
@@ -225,22 +189,16 @@
 				&.highlight {
 					background-color: $mono-color1;
 					.value {
-						color: white;
+						color: $white;
 					}
 					.icon {
 						width: 1.5rem;
 						height: 1.5rem;
 						transition: transform 0.5s;
-						&.light {
-							> path {
-								fill: $white;
-							}
+						> path {
+							fill: $white;
 						}
-						&.dark {
-							> path {
-								fill: $white;
-							}
-						}
+
 						&.open {
 							transform: rotate(180deg);
 						}

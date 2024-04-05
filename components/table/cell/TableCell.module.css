@@ -1,5 +1,5 @@
 .root[data-elem=base-cell] {
-  background: var(--white);
+  background: var(--light-color3);
 }
 .root[data-elem=base-cell] > [data-elem*=component] {
   overflow: hidden;

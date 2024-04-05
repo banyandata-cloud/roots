@@ -14,9 +14,9 @@
 	}
 
 	&.body-row {
-		background: $white;
+		background: $light-color3;
 		> [data-elem='base-cell'] {
-			background: $white;
+			background: $light-color3;
 		}
 		&:hover {
 			> [data-elem='base-cell'] {
