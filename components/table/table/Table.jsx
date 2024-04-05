@@ -29,6 +29,7 @@ const Table = (props) => {
 		setActiveData,
 		customCells,
 		filtersData,
+		customPagination,
 		paginationData,
 		loading,
 		onIntersection,
@@ -44,6 +45,11 @@ const Table = (props) => {
 		tableTitleIcon,
 		tableTitleText,
 		dataLabel,
+		customLabel,
+		jumpLabel,
+		customPaginationList,
+		customPageCallback,
+		hideDisabledPages,
 		onFilterClear,
 	} = props;
 
@@ -174,10 +180,16 @@ const Table = (props) => {
 					<Pagination
 						className={classes(styles.pagination, floating ? styles.floating : '')}
 						ref={paginationRef}
+						customPagination={customPagination}
 						{...paginationData}
 						floating={floating}
 						loading={loading}
 						dataLabel={dataLabel}
+						customLabel={customLabel}
+						jumpLabel={jumpLabel}
+						customPaginationList={customPaginationList}
+						customPageCallback={customPageCallback}
+						hideDisabledPages={hideDisabledPages}
 					/>
 				)}
 			</div>

@@ -45,6 +45,7 @@
   flex: 1 1 auto;
 }
 .root .body .search {
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
 }
