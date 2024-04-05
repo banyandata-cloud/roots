@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-nested-ternary */
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 import PropTypes from 'prop-types';
 
@@ -34,28 +34,6 @@ const FlowChart = ({
 	hideLinkText,
 }) => {
 	const svgRef = useRef(null);
-	// eslint-disable-next-line no-unused-vars
-	const [data, setData] = useState(null);
-
-	const fetchDataFromApi = () => {
-		// Fetch data from API and set it using setData
-		// Example fetch call:
-		fetch('api_url_here')
-			.then((response) => {
-				return response.json();
-			})
-			.then((dataa) => {
-				return setData(dataa);
-			});
-	};
-
-	useEffect(() => {
-		if (initialData) {
-			setData(initialData);
-		} else {
-			fetchDataFromApi(); // Fetch data from API if initialData is not provided
-		}
-	}, [initialData]);
 
 	useEffect(() => {
 		const uniqueLabels = Array.from(
