@@ -156,11 +156,7 @@ export const Pagination = forwardRef((props, ref) => {
 				</div>
 			)}
 			{showPages && !customPagination && (
-				<div
-					className={classes(
-						styles['page-numbers'],
-						customPagination ? styles['custom-page-number'] : null
-					)}>
+				<div className={styles['page-numbers']}>
 					<div className={styles.pageSelect}>
 						{paginationList.pages.map((page) => {
 							const active = (currentPage === 0 ? 1 : currentPage) === page.number;
@@ -184,11 +180,7 @@ export const Pagination = forwardRef((props, ref) => {
 				</div>
 			)}
 			{showPages && customPagination && (
-				<div
-					className={classes(
-						styles['page-numbers'],
-						customPagination ? styles['custom-page-number'] : null
-					)}>
+				<div className={classes(styles['page-numbers'], styles['custom-page-number'])}>
 					<div className={styles.pageSelect}>
 						{paginationList.pages.map((page) => {
 							const active = (currentPage === 0 ? 1 : currentPage) === page.number;
@@ -376,7 +368,7 @@ export const Pagination = forwardRef((props, ref) => {
 										payload: parseInt(jumpPageRef?.current?.value, 10),
 									});
 								}}>
-								<Tooltip content='Jump To Page' position='top'>
+								<Tooltip content='Jump To Minute' position='top'>
 									<BaseCell
 										size='auto'
 										className={styles['jump-to-page']}
