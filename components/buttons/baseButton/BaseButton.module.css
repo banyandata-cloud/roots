@@ -26,7 +26,7 @@ button.root[data-elem=base-cell].contained {
   color: var(--light-color3);
 }
 button.root[data-elem=base-cell].outlined {
-  color: var(--light-color3);
+  color: var(--text-color);
   border: 1px solid var(--text-color);
 }
 button.root[data-elem=base-cell].text {
