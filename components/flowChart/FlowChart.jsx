@@ -21,7 +21,7 @@ import PropTypes from 'prop-types';
  */
 
 const FlowChart = ({
-	data: initialData,
+	data,
 	width,
 	height,
 	linkDistance,
@@ -36,48 +36,18 @@ const FlowChart = ({
 	const svgRef = useRef(null);
 
 	useEffect(() => {
-		const uniqueLabels = Array.from(
-			new Set(
-				initialData.nodes.map((node) => {
-					return node.labels[0];
-				})
-			)
-		);
-
-		const labelToLevel = Object.fromEntries(
-			uniqueLabels.map((label) => {
-				const labelStr = label.replace(/[^a-zA-Z]/g, '');
-				if (labelStr === 'AzuSubscription') {
-					return [label, 1];
-				}
-				if (labelStr === 'AzuResourceGroup') {
-					return [label, 2];
-				}
-				if (labelStr === 'AzuVirtualNetwork' || labelStr === 'AzuVirtualMachine') {
-					return [label, 3];
-				}
-				if (labelStr === 'AzuSubnet' || labelStr === 'AzuNetworkInterface') {
-					return [label, 4];
-				}
-				if (labelStr.includes('AzuDisk')) {
-					return [label, 2];
-				}
-				return [label, 5];
-			})
-		);
-
-		const nodes = initialData.nodes.map((node) => {
+		const nodes = data?.nodes?.map((node) => {
 			return {
 				id: node.properties.id || node.properties.name,
 				label: node.labels[0],
 				timestamp: node.properties.timestamp,
 				properties: node.properties,
-				level: labelToLevel[node.labels[0]],
+				level: node.labels[0],
 				visibility: 'visible',
 			};
 		});
 
-		const links = initialData.relationships.map((relationship) => {
+		const links = data?.relationships?.map((relationship) => {
 			return {
 				source:
 					relationship.start_node.properties.id ||
@@ -91,7 +61,7 @@ const FlowChart = ({
 		const Width = width;
 		const Height = height;
 
-		const svg = d3.select(svgRef.current);
+		const svg = d3?.select(svgRef.current);
 		svg.selectAll('*').remove();
 
 		const svgContainer = svg
@@ -100,19 +70,14 @@ const FlowChart = ({
 			.attr('height', Height)
 			.append('g')
 			.attr('transform', `translate(${Width / 3.5},${Height / 2.7})scale(0.36)`);
-		const container = svgContainer.append('g');
-
-		const colorScale = d3
-			.scaleOrdinal()
-			.domain([0, 1, 2])
-			.range(['#e31a1c', '#ff7f0e', '#1f78b4']);
+		const container = svgContainer?.append('g');
 
 		function filterDuplicateNodes() {
 			const uniqueNodesMap = new Map();
 			nodes.forEach((node) => {
 				uniqueNodesMap.set(node.id, node);
 			});
-			return Array.from(uniqueNodesMap.values());
+			return Array?.from(uniqueNodesMap.values());
 		}
 
 		const uniqueNodes = filterDuplicateNodes(
@@ -131,7 +96,7 @@ const FlowChart = ({
 			linkedNodesIds.add(link.target);
 		});
 
-		const filteredNodes = uniqueNodes.filter((node) => {
+		const filteredNodes = uniqueNodes?.filter((node) => {
 			return linkedNodesIds.has(node.id);
 		});
 
@@ -181,7 +146,7 @@ const FlowChart = ({
 					: 'hidden';
 			});
 
-		const defs = svgContainer.append('defs');
+		const defs = svgContainer?.append('defs');
 
 		const linkPaths = defs
 			.selectAll('path')
@@ -232,6 +197,25 @@ const FlowChart = ({
 			linkText.style('visibility', 'hidden');
 		}
 
+		const predefinedColors = [
+			'#0043CE',
+			'#71839B',
+			'#BD3C45',
+			'#110B02',
+			'#487349',
+			'#FF892A',
+			'#00037C',
+			'#FF1597',
+			'#CBA006',
+			'#4E9F3D',
+			'#FFBF45',
+		];
+		const colorMap = {};
+
+		function getRandomColor() {
+			return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+		}
+
 		const node = container
 			.selectAll('.node')
 			.data(filteredNodes, (d) => {
@@ -248,48 +232,12 @@ const FlowChart = ({
 			.attr('fill', (d) => {
 				const labelStr = d.label.replace(/[^a-zA-Z]/g, '');
 
-				if (labelStr === 'AzuVirtualMachine') {
-					return '#33a02c';
-				}
-				if (labelStr === 'AzuDisk') {
-					return '#ff00c8';
-				}
-				if (labelStr === 'AzuNetworkInterface') {
-					return 'gray';
-				}
-				if (labelStr === 'AzuSubscription') {
-					return '#BEBB00';
-				}
-				if (labelStr === 'CustomerId') {
-					return 'brown';
-				}
-				if (labelStr === 'AzuRegion') {
-					return 'orange';
-				}
-				if (labelStr === 'AzuResourceGroup') {
-					return 'darkBlue';
-				}
-				if (labelStr === 'AzuLoadBalancer') {
-					return 'black';
+				if (!colorMap[labelStr]) {
+					colorMap[labelStr] = predefinedColors.pop() || getRandomColor();
 				}
 
-				return colorScale(d.level);
-			})
-			.attr('stroke', (d) => {
-				return d3
-					.color(
-						// eslint-disable-next-line no-nested-ternary
-						d.label === 'AzuVirtualMachine'
-							? '#33a02c'
-							: d.label === 'AzuDisk'
-							? '#ff00c9'
-							: d.label === 'AzuNetworkInterface'
-							? 'gray'
-							: d.label === 'AzuSubscription'
-							? '#BEBB00'
-							: colorScale(d.level)
-					)
-					.darker(1);
+				// Return the color for the current labelStr
+				return colorMap[labelStr];
 			})
 			.attr('opacity', 0.9)
 			.call(d3.drag().on('start', dragstarted).on('drag', dragged).on('end', dragended))
@@ -308,20 +256,8 @@ const FlowChart = ({
 
 		function handleMouseOut() {
 			d3.select(this)
-				.attr('stroke', (d) => {
+				.attr('stroke', () => {
 					return d3
-						.color(
-							// eslint-disable-next-line no-nested-ternary
-							d.label === 'AzuVirtualMachine'
-								? '#33a02c'
-								: d.label === 'AzuDisk'
-								? '#ff00c9'
-								: d.label === 'AzuNetworkInterface'
-								? 'gray'
-								: d.label === 'AzuSubscription'
-								? '#BEBB00'
-								: colorScale(d.level)
-						)
 						.darker(1);
 				})
 				.attr('stroke-width', 1);
@@ -406,7 +342,7 @@ const FlowChart = ({
 			simulation.stop();
 		};
 	}, [
-		initialData,
+		data,
 		width,
 		height,
 		linkDistance,
