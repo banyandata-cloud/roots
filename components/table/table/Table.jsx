@@ -47,7 +47,7 @@ const Table = (props) => {
 		dataLabel,
 		customLabel,
 		jumpLabel,
-		customPaginationList,
+		customPageList,
 		customPageCallback,
 		hideDisabledPages,
 		onFilterClear,
@@ -187,7 +187,7 @@ const Table = (props) => {
 						dataLabel={dataLabel}
 						customLabel={customLabel}
 						jumpLabel={jumpLabel}
-						customPaginationList={customPaginationList}
+						customPageList={customPageList}
 						customPageCallback={customPageCallback}
 						hideDisabledPages={hideDisabledPages}
 					/>

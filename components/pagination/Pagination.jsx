@@ -7,7 +7,7 @@ import { ArrowIcon } from '../icons';
 import { Dropdown, DropdownItem, TextField } from '../input';
 import { Text } from '../text';
 import { Tooltip } from '../tooltip';
-import { PaginationList } from './Pagination.class';
+import { CustomPaginationList, PaginationList } from './Pagination.class';
 import styles from './Pagination.module.css';
 
 const CURRENT_YEAR = new Date().getFullYear();
@@ -96,16 +96,36 @@ export const Pagination = forwardRef((props, ref) => {
 		customLabel,
 		jumpLabel = 'Jump to Page',
 		hideDisabledPages = false,
-		customPaginationList = [],
+		customPageList = [],
 		customPageCallback = () => {},
 	} = props;
 
 	const { totalPages, currentPage, step, totalData } = paginationState;
 
-	const paginationList = new PaginationList({
-		curr: currentPage === 0 ? 1 : currentPage,
-		total: totalPages,
+	const newCustomPageList = customPageList?.filter((currPage) => {
+		return currPage?.enable;
 	});
+
+	const paginationList = customPagination
+		? new CustomPaginationList({
+				curr: currentPage === 0 ? 1 : currentPage,
+				total: hideDisabledPages ? newCustomPageList?.length : totalPages,
+				hideDisabledPages: hideDisabledPages,
+				customPageList: hideDisabledPages ? newCustomPageList : customPageList,
+		  })
+		: new PaginationList({
+				curr: currentPage === 0 ? 1 : currentPage,
+				total: totalPages,
+		  });
+
+	let activePage = 0;
+
+	for (let i = 0; i < customPageList?.length; i++) {
+		if (customPageList?.[i]?.enable) {
+			activePage = i + 1;
+			break;
+		}
+	}
 
 	const jumpPageRef = useRef(null);
 	const mountedRef = useRef(false);
@@ -184,10 +204,15 @@ export const Pagination = forwardRef((props, ref) => {
 				<div className={classes(styles['page-numbers'], styles['custom-page-number'])}>
 					<div className={styles.pageSelect}>
 						{paginationList.pages.map((page) => {
-							const active = (currentPage === 0 ? 1 : currentPage) === page.number;
+							const active =
+								currentPage === 0 || currentPage === 1
+									? activePage === page.number
+									: currentPage === page.number &&
+									  customPageList[page.number - 1].enable;
 							if (
 								hideDisabledPages &&
-								!customPaginationList[page.number - 1]?.enable
+								!customPageList[page.number - 1]?.enable &&
+								!page.ellipsis
 							) {
 								return;
 							}
@@ -196,7 +221,10 @@ export const Pagination = forwardRef((props, ref) => {
 									title={`Page ${page.number}`}
 									key={page.number}
 									onClick={() => {
-										if (!customPaginationList[page.number - 1]?.enable) {
+										if (
+											!customPageList[page.number - 1]?.enable &&
+											!page.ellipsis
+										) {
 											customPageCallback(page.number);
 											return;
 										}
@@ -210,13 +238,11 @@ export const Pagination = forwardRef((props, ref) => {
 										active ? styles.active : '',
 										styles.number,
 										customPagination ? styles['custom-number'] : null,
-										!customPaginationList[page.number - 1]?.enable
+										!customPageList[page.number - 1]?.enable
 											? styles['disabled']
 											: null
 									)}>
-									{page.ellipsis
-										? '...'
-										: customPaginationList[page.number - 1]?.label}
+									{page.ellipsis ? '...' : customPageList[page.number - 1]?.label}
 								</span>
 							);
 						})}
@@ -357,10 +383,7 @@ export const Pagination = forwardRef((props, ref) => {
 							<form
 								onSubmit={(e) => {
 									e.preventDefault();
-									if (
-										!customPaginationList[jumpPageRef?.current?.value - 1]
-											?.enable
-									) {
+									if (!customPageList[jumpPageRef?.current?.value - 1]?.enable) {
 										customPageCallback(jumpPageRef?.current?.value);
 										return;
 									}
