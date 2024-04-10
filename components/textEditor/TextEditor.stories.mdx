@@ -1,0 +1,121 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+
+<Meta title='Components/TextEditor' parameters={{ options: { showToolbar: false } }} />
+
+export const Template = (args) => (
+	<ThemedContainer
+		{...args}
+		style={{
+			height: '400px',
+		}}></ThemedContainer>
+);
+
+# Vertical Bar Chart
+
+A visual Representation of Data that compares it with others in similar Category through Bars, where Bar Height represents the count of represented value.
+
+#### Design - [Figma](https://www.figma.com/file/Cx1dHCv47N2i35IP8wNz1u/Charts?type=design&node-id=13-35013&mode=design&t=CHtnZmqsfkOQE9cx-0) | Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/components/charts/verticalBarChart)
+
+> This components uses the `echarts` utility library to use the Basic Visual Components and properties to customise the same for required use case and `EChartsReactCore` utility library to Wrap the Charts for React Projects.
+
+## Usage
+
+Basic import and additional information on how to use this component.
+
+```js
+import { BaseVerticalBarChart } from '@banyan_cloud/roots';
+```
+
+-   The Vertical Bar Chart is just like any other chart with standard `chartData` and `metaData` values alongwith props to control customization.
+-   The `className` of the Chart can be adjusted in the implementaion code to match its flexibility with respect to its container.
+
+## Stories
+
+The CSF rendered inside the `Canvas` from which you can see the implementation example.
+
+### Default Vertical Bar Chart
+
+<Canvas>
+	<Story
+		name='Default'
+		args={{
+			title: 'Title',
+			gridContainLabel: true,
+			gridOptions: {
+				left: 0,
+				right: 0,
+				bottom: 0,
+				top: 15,
+			},
+			xAxisShow: true,
+			xAxisLabel: {
+				show: true,
+				rotate: 90,
+				color: 'white',
+				inside: true,
+				verticalAlign: 'bottom',
+				padding: [0, 0, 90, 0],
+			},
+			yAxisLabelShow: false,
+			ySplitLineShow: false,
+			yAxisLineShow: false,
+			yAxisTickShow: false,
+			barWidth: '50%',
+			cursor: 'default',
+			stackCount: 1,
+			seriesOption: [
+				{
+					stackIndex: 1,
+					stack: 1,
+					color: COLORS.success,
+					label: {
+						show: false,
+					},
+					itemStyle: {
+						borderRadius: [12, 12, 0, 0],
+					},
+				},
+				{
+					stackIndex: 2,
+					stack: 1,
+					color: COLORS.error,
+					label: {
+						show: false,
+					},
+				},
+				{
+					stackIndex: 3,
+					stack: 1,
+					color: COLORS.warning,
+					label: {
+						color: 'white',
+						show: true,
+						formatter(param) {
+							return sampleData.metaData.controlsApplied[param.name].x1;
+						},
+					},
+				},
+			],
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+**`theme`**
+
+The color theme of the container to select between `light` or `dark` mode.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>"dark"</td>
+	</tr>
+</table>
+
+```jsx
+<BaseVerticalBarChart theme='light' />
+```

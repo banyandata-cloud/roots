@@ -750,7 +750,7 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 				},
 			];
 			const [paginationState, paginationDispatch] = usePagination({
-				totalPages: 11,
+				totalPages: 60,
 				currentPage: 1,
 			});
 			return (
@@ -772,50 +772,306 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 							console.log('CLICKED', page);
 						}}
 						hideDisabledPages={false}
-						customPaginationList={[
+						customPageList={[
 							{
-								label: '1 min',
 								enable: false,
+								label: '01 min',
+								pageNumber: 1,
 							},
 							{
-								label: '2 min',
 								enable: true,
+								label: '02 min',
+								pageNumber: 2,
 							},
 							{
-								label: '3 min',
 								enable: false,
+								label: '03 min',
+								pageNumber: 3,
 							},
 							{
-								label: '4 min',
-								enable: true,
+								enable: false,
+								label: '04 min',
+								pageNumber: 4,
 							},
 							{
-								label: '5 min',
-								enable: true,
+								enable: false,
+								label: '05 min',
+								pageNumber: 5,
 							},
 							{
-								label: '6 min',
-								enable: true,
+								enable: false,
+								label: '06 min',
+								pageNumber: 6,
 							},
 							{
-								label: '7 min',
-								enable: true,
+								enable: false,
+								label: '07 min',
+								pageNumber: 7,
 							},
 							{
-								label: '8 min',
-								enable: true,
+								enable: false,
+								label: '08 min',
+								pageNumber: 8,
 							},
 							{
-								label: '9 min',
-								enable: true,
+								enable: false,
+								label: '09 min',
+								pageNumber: 9,
 							},
 							{
+								enable: false,
 								label: '10 min',
-								enable: true,
+								pageNumber: 10,
 							},
 							{
+								enable: false,
 								label: '11 min',
+								pageNumber: 11,
+							},
+							{
+								enable: false,
+								label: '12 min',
+								pageNumber: 12,
+							},
+							{
+								enable: false,
+								label: '13 min',
+								pageNumber: 13,
+							},
+							{
+								enable: false,
+								label: '14 min',
+								pageNumber: 14,
+							},
+							{
+								enable: false,
+								label: '15 min',
+								pageNumber: 15,
+							},
+							{
+								enable: false,
+								label: '16 min',
+								pageNumber: 16,
+							},
+							{
 								enable: true,
+								label: '17 min',
+								pageNumber: 17,
+							},
+							{
+								enable: false,
+								label: '18 min',
+								pageNumber: 18,
+							},
+							{
+								enable: false,
+								label: '19 min',
+								pageNumber: 19,
+							},
+							{
+								enable: false,
+								label: '20 min',
+								pageNumber: 20,
+							},
+							{
+								enable: false,
+								label: '21 min',
+								pageNumber: 21,
+							},
+							{
+								enable: false,
+								label: '22 min',
+								pageNumber: 22,
+							},
+							{
+								enable: false,
+								label: '23 min',
+								pageNumber: 23,
+							},
+							{
+								enable: false,
+								label: '24 min',
+								pageNumber: 24,
+							},
+							{
+								enable: false,
+								label: '25 min',
+								pageNumber: 25,
+							},
+							{
+								enable: false,
+								label: '26 min',
+								pageNumber: 26,
+							},
+							{
+								enable: false,
+								label: '27 min',
+								pageNumber: 27,
+							},
+							{
+								enable: false,
+								label: '28 min',
+								pageNumber: 28,
+							},
+							{
+								enable: false,
+								label: '29 min',
+								pageNumber: 29,
+							},
+							{
+								enable: false,
+								label: '30 min',
+								pageNumber: 30,
+							},
+							{
+								enable: false,
+								label: '31 min',
+								pageNumber: 31,
+							},
+							{
+								enable: false,
+								label: '32 min',
+								pageNumber: 32,
+							},
+							{
+								enable: false,
+								label: '33 min',
+								pageNumber: 33,
+							},
+							{
+								enable: false,
+								label: '34 min',
+								pageNumber: 34,
+							},
+							{
+								enable: false,
+								label: '35 min',
+								pageNumber: 35,
+							},
+							{
+								enable: false,
+								label: '36 min',
+								pageNumber: 36,
+							},
+							{
+								enable: false,
+								label: '37 min',
+								pageNumber: 37,
+							},
+							{
+								enable: false,
+								label: '38 min',
+								pageNumber: 38,
+							},
+							{
+								enable: false,
+								label: '39 min',
+								pageNumber: 39,
+							},
+							{
+								enable: false,
+								label: '40 min',
+								pageNumber: 40,
+							},
+							{
+								enable: false,
+								label: '41 min',
+								pageNumber: 41,
+							},
+							{
+								enable: false,
+								label: '42 min',
+								pageNumber: 42,
+							},
+							{
+								enable: false,
+								label: '43 min',
+								pageNumber: 43,
+							},
+							{
+								enable: false,
+								label: '44 min',
+								pageNumber: 44,
+							},
+							{
+								enable: false,
+								label: '45 min',
+								pageNumber: 45,
+							},
+							{
+								enable: false,
+								label: '46 min',
+								pageNumber: 46,
+							},
+							{
+								enable: false,
+								label: '47 min',
+								pageNumber: 47,
+							},
+							{
+								enable: true,
+								label: '48 min',
+								pageNumber: 48,
+							},
+							{
+								enable: false,
+								label: '49 min',
+								pageNumber: 49,
+							},
+							{
+								enable: false,
+								label: '50 min',
+								pageNumber: 50,
+							},
+							{
+								enable: false,
+								label: '51 min',
+								pageNumber: 51,
+							},
+							{
+								enable: false,
+								label: '52 min',
+								pageNumber: 52,
+							},
+							{
+								enable: false,
+								label: '53 min',
+								pageNumber: 53,
+							},
+							{
+								enable: false,
+								label: '54 min',
+								pageNumber: 54,
+							},
+							{
+								enable: false,
+								label: '55 min',
+								pageNumber: 55,
+							},
+							{
+								enable: false,
+								label: '56 min',
+								pageNumber: 56,
+							},
+							{
+								enable: false,
+								label: '57 min',
+								pageNumber: 57,
+							},
+							{
+								enable: false,
+								label: '58 min',
+								pageNumber: 58,
+							},
+							{
+								enable: false,
+								label: '59 min',
+								pageNumber: 59,
+							},
+							{
+								enable: false,
+								label: '60 min',
+								pageNumber: 60,
 							},
 						]}
 						paginationData={{
