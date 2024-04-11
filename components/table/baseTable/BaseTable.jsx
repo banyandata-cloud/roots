@@ -22,6 +22,7 @@ const BaseTable = forwardRef(function BaseTable(props, ref) {
 		onSort,
 		rowHeight,
 		theme,
+		placeholder,
 		defaultActiveIndex,
 	} = props;
 
@@ -53,7 +54,7 @@ const BaseTable = forwardRef(function BaseTable(props, ref) {
 				}}
 			/>
 			{tableData?.length === 0 ? (
-				<NoDataPlaceHolder className={styles.placeholder} />
+				<NoDataPlaceHolder className={styles.placeholder} placeholder={placeholder} />
 			) : (
 				<TableBody
 					{...{

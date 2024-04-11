@@ -41,6 +41,7 @@ const Table = (props) => {
 		onRowClick,
 		onAdvancedFilterClick,
 		defaultActiveIndex,
+		placeholder,
 		custom,
 		tableTitleIcon,
 		tableTitleText,
@@ -173,6 +174,7 @@ const Table = (props) => {
 						rowHeight,
 						onRowClick,
 						defaultActiveIndex,
+						placeholder,
 					}}
 					loading={loading}
 				/>
