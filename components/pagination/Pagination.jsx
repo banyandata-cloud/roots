@@ -209,23 +209,25 @@ export const Pagination = forwardRef((props, ref) => {
 									? activePage === page.number
 									: currentPage === page.number &&
 									  customPageList[page.number - 1].enable;
-							if (
-								hideDisabledPages &&
-								!customPageList[page.number - 1]?.enable &&
-								!page.ellipsis
-							) {
-								return;
-							}
+
 							return (
 								<span
 									title={`Page ${page.number}`}
 									key={page.number}
 									onClick={() => {
 										if (
+											!hideDisabledPages &&
 											!customPageList[page.number - 1]?.enable &&
 											!page.ellipsis
 										) {
 											customPageCallback(page.number);
+											return;
+										}
+										if (page.ellipsis) {
+											onChange({
+												type: 'SET_PAGE',
+												payload: page.number,
+											});
 											return;
 										}
 										onChange({
@@ -238,11 +240,19 @@ export const Pagination = forwardRef((props, ref) => {
 										active ? styles.active : '',
 										styles.number,
 										customPagination ? styles['custom-number'] : null,
-										!customPageList[page.number - 1]?.enable
+										hideDisabledPages
+											? !newCustomPageList[page.number - 1]?.enable
+												? styles['disabled']
+												: null
+											: !customPageList[page.number - 1]?.enable
 											? styles['disabled']
 											: null
 									)}>
-									{page.ellipsis ? '...' : customPageList[page.number - 1]?.label}
+									{page.ellipsis
+										? '...'
+										: hideDisabledPages
+										? newCustomPageList[page.number - 1]?.label
+										: customPageList[page.number - 1]?.label}
 								</span>
 							);
 						})}

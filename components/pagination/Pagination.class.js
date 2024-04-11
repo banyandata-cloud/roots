@@ -101,11 +101,11 @@ export class CustomPaginationList {
 	}
 }
 
-export function getCustomPagination(curr, total, limit, hideDisabledPages, customPageList) {
+export function getCustomPagination(curr, total, limit) {
 	if (total <= limit) {
 		return [...Array(total).keys()].map((page) => {
 			return new Page({
-				number: hideDisabledPages ? customPageList?.[page]?.pageNumber : page + 1,
+				number: page + 1,
 				active: page + 1 === curr,
 			});
 		});
@@ -113,7 +113,7 @@ export function getCustomPagination(curr, total, limit, hideDisabledPages, custo
 
 	const pages = [
 		new Page({
-			number: hideDisabledPages ? customPageList?.[0]?.pageNumber : 1,
+			number: 1,
 		}),
 	];
 
@@ -121,14 +121,14 @@ export function getCustomPagination(curr, total, limit, hideDisabledPages, custo
 		for (let i = 1; i <= limit - 5; i++) {
 			pages.push(
 				new Page({
-					number: hideDisabledPages ? customPageList?.[i]?.pageNumber : 1 + i,
+					number: 1 + i,
 					active: 1 + i === curr,
 				})
 			);
 			if (i === limit - 5) {
 				pages.push(
 					new Page({
-						number: hideDisabledPages ? customPageList?.[1 + i]?.pageNumber : 1 + i + 1,
+						number: 1 + i + 1,
 						ellipsis: true,
 					})
 				);
@@ -139,48 +139,38 @@ export function getCustomPagination(curr, total, limit, hideDisabledPages, custo
 			if (i === limit - 5) {
 				pages.push(
 					new Page({
-						number: hideDisabledPages
-							? customPageList?.[total - i - 2]?.pageNumber
-							: total - i - 1,
+						number: total - i - 1,
 						ellipsis: true,
 					})
 				);
 			}
 			pages.push(
 				new Page({
-					number: hideDisabledPages
-						? customPageList?.[total - i - 1]?.pageNumber
-						: total - i,
+					number: total - i,
 				})
 			);
 		}
 	} else {
-		const mod = (curr - (limit - 2)) % (limit - 4) || limit - 4;
-		const first = curr - (mod - 1);
-		for (let i = 0; i < limit - 4; i++) {
+		const mod = (curr - (limit - 4)) % (limit - 6) || limit - 6;
+		const first = curr - (mod - 3);
+		for (let i = 0; i < limit - 6; i++) {
 			if (i === 0) {
 				pages.push(
 					new Page({
-						number: hideDisabledPages
-							? customPageList?.[first + i - 2]?.pageNumber
-							: first + i - 1,
+						number: first + i - 3,
 						ellipsis: true,
 					})
 				);
 			}
 			pages.push(
 				new Page({
-					number: hideDisabledPages
-						? customPageList?.[first + i - 1]?.pageNumber
-						: first + i,
+					number: first + i - 2,
 				})
 			);
-			if (i === limit - 4 - 1) {
+			if (i === limit - 4 - 3) {
 				pages.push(
 					new Page({
-						number: hideDisabledPages
-							? customPageList?.[first + i]?.pageNumber
-							: first + i + 1,
+						number: first + i - 1,
 						ellipsis: true,
 					})
 				);
@@ -191,15 +181,16 @@ export function getCustomPagination(curr, total, limit, hideDisabledPages, custo
 		for (let i = total - 2; i < total; i++) {
 			pages.push(
 				new Page({
-					number: hideDisabledPages ? customPageList?.[i - 1]?.pageNumber : i,
+					number: i,
 				})
 			);
 		}
 	}
 	pages.push(
 		new Page({
-			number: hideDisabledPages ? customPageList?.[total - 1]?.pageNumber : total,
+			number: total,
 		})
 	);
+
 	return pages;
 }
