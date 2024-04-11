@@ -127,6 +127,15 @@ export const Pagination = forwardRef((props, ref) => {
 		}
 	}
 
+	let activeCutomPage = 0;
+
+	for (let i = 0; i < newCustomPageList?.length; i++) {
+		if (newCustomPageList?.[i]?.enable) {
+			activeCutomPage = i + 1;
+			break;
+		}
+	}
+
 	const jumpPageRef = useRef(null);
 	const mountedRef = useRef(false);
 
@@ -204,11 +213,20 @@ export const Pagination = forwardRef((props, ref) => {
 				<div className={classes(styles['page-numbers'], styles['custom-page-number'])}>
 					<div className={styles.pageSelect}>
 						{paginationList.pages.map((page) => {
-							const active =
-								currentPage === 0 || currentPage === 1
-									? activePage === page.number
-									: currentPage === page.number &&
-									  customPageList[page.number - 1].enable;
+							let active = false;
+							if (hideDisabledPages) {
+								active =
+									currentPage === 0 || currentPage === 1
+										? activeCutomPage === page.number
+										: currentPage === page.number &&
+										  newCustomPageList[page.number - 1].enable;
+							} else {
+								active =
+									currentPage === 0 || currentPage === 1
+										? activePage === page.number
+										: currentPage === page.number &&
+										  customPageList[page.number - 1].enable;
+							}
 
 							return (
 								<span
@@ -223,6 +241,7 @@ export const Pagination = forwardRef((props, ref) => {
 											customPageCallback(page.number);
 											return;
 										}
+
 										if (page.ellipsis) {
 											onChange({
 												type: 'SET_PAGE',
