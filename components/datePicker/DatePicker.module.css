@@ -159,73 +159,41 @@
 .root .date-picker .container .icon.open {
   transform: rotate(180deg);
 }
-.root .date-picker.dark .container {
+.root .date-picker .container {
   border-color: var(--grey);
 }
-.root .date-picker.dark .container .placeholder {
+.root .date-picker .container .placeholder {
   color: var(--grey2);
   font-weight: 500;
 }
-.root .date-picker.dark .container .value {
+.root .date-picker .container .value {
   color: var(--grey2);
   font-weight: 500;
 }
-.root .date-picker.dark .container.highlight {
-  background-color: var(--mono-color1);
+.root .date-picker .container.highlight .value {
+  color: var(--text-color);
 }
-.root .date-picker.dark .container.highlight .value {
-  color: white;
-}
-.root .date-picker.dark .container.highlight .icon {
+.root .date-picker .container.highlight .icon {
   width: 1.5rem;
   height: 1.5rem;
   transition: transform 0.5s;
 }
-.root .date-picker.dark .container.highlight .icon > path {
-  fill: var(--white);
+.root .date-picker .container.highlight .icon > path {
+  fill: var(--text-color);
 }
-.root .date-picker.dark .container.highlight .icon.open {
-  transform: rotate(180deg);
-}
-.root .date-picker.light .container {
-  border-color: var(--grey4);
-}
-.root .date-picker.light .container .placeholder {
-  color: var(--grey);
-  font-weight: 500;
-}
-.root .date-picker.light .container .value {
-  color: var(--grey);
-  padding: 0rem 0.3rem 0rem 0rem;
-  font-weight: 500;
-}
-.root .date-picker.light .container.highlight {
-  background-color: var(--mono-color1);
-}
-.root .date-picker.light .container.highlight .value {
-  color: var(--white);
-}
-.root .date-picker.light .container.highlight .icon {
-  width: 1.5rem;
-  height: 1.5rem;
-  transition: transform 0.5s;
-}
-.root .date-picker.light .container.highlight .icon > path {
-  fill: var(--white);
-}
-.root .date-picker.light .container.highlight .icon.open {
+.root .date-picker .container.highlight .icon.open {
   transform: rotate(180deg);
 }
 .root .date-picker .error-text {
   font-weight: 400;
   font-size: 0.75rem;
   line-height: 0.9375rem;
-  color: var(--error);
+  color: var(--primary-color1);
 }
 
 .popper {
   display: none;
-  background: var(--white);
+  background: var(--light-color3);
   border: 0.0625rem solid #d9d9d9;
   box-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);
   border-radius: 0.25rem;

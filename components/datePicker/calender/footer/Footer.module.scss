@@ -4,57 +4,7 @@
 	@include flex(column, space-between, stretch);
 	margin-inline: 1rem;
 	.apply {
-		margin-top: 0.5rem;
+		margin-top: auto;
 		width: 100%;
-		user-select: none;
-	}
-	.time-picker {
-		margin-bottom: 1.25rem;
-	}
-}
-
-.selected-date {
-	@include flex(row, center, center);
-	gap: 1.125rem;
-	background: $white;
-	border: 0.0625rem solid $grey4;
-	border-radius: 0.25rem;
-	.date {
-		font-weight: 500;
-		font-size: 0.875rem;
-		line-height: 1.3125rem;
-		@include flex(row, center, center);
-		.cross {
-			width: 1.5rem;
-			height: 1.5rem;
-		}
-		.value {
-			font-weight: 400;
-			padding-right: 0.7rem;
-			border-right: 1px $grey3 solid;
-		}
-	}
-}
-
-.date-ranges {
-	@include flex(column, space-between, stretch);
-	margin-top: 0.5rem;
-	.date-range {
-		@include flex(row, flex-start, center);
-		padding: 0.875rem 1rem;
-		gap: 1.125rem;
-		cursor: pointer;
-		&:hover {
-			background-color: $background;
-		}
-		span {
-			font-weight: 400;
-			font-size: 0.875rem;
-			line-height: 1.3125rem;
-			color: $black;
-		}
-	}
-	.selected {
-		background-color: $background;
 	}
 }

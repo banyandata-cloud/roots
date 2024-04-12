@@ -3,12 +3,7 @@ import { Button } from '../../../buttons';
 import styles from './Footer.module.css';
 
 const Footer = (props) => {
-	const {
-		selectedDate = {},
-		selectedRange = {},
-
-		onApply,
-	} = props;
+	const { selectedDate = {}, selectedRange = {}, onApply } = props;
 
 	const { date } = selectedDate;
 

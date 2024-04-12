@@ -1,0 +1,60 @@
+.root {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-block: 1rem;
+}
+.root .clock {
+  height: 15rem;
+  width: 15rem;
+  position: relative;
+  background-color: var(--light-color2);
+  border-radius: 100%;
+}
+.root .clock .number {
+  position: absolute;
+  height: 2rem;
+  width: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 100%;
+  border: none;
+  background: none;
+  z-index: 2;
+}
+.root .clock .number:hover {
+  background: var(--background-color5);
+}
+.root .clock .number.selected {
+  background: var(--primary-color4);
+  color: var(--white);
+}
+.root .clock .number.disabled {
+  cursor: not-allowed;
+}
+.root .clock .midpoint {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  transform: translate(-50%, -50%);
+  height: 0.625rem;
+  width: 0.625rem;
+  background: var(--primary-color4);
+  border-radius: 100%;
+}
+.root .clock .connector {
+  height: 6rem;
+  width: 0.15rem;
+  position: absolute;
+  right: auto;
+  bottom: auto;
+  background-color: var(--primary-color4);
+  transform: translate(-50%, -50%);
+}/*# sourceMappingURL=ClockView.module.css.map */

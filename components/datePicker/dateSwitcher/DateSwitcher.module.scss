@@ -1,0 +1,39 @@
+@import '../../../styles/';
+
+.root {
+	@include flex(row);
+	width: 100%;
+	gap: 0.5rem;
+	.switch-selector {
+		@include flex;
+		gap: 0.5rem;
+		.value {
+			width: 6.5rem;
+			height: 2rem;
+			background-color: $background-color5;
+			border-radius: 4px;
+			@include flex;
+		}
+		.arrows {
+			@include flex(column, flex-start, flex-start);
+			button[data-elem='base-cell'].arrow {
+				width: 2rem;
+				height: 1rem;
+				border-radius: 4px 4px 0 0;
+				background-color: $light-color2;
+				&:hover {
+					background-color: $background-color5;
+					color: $primary-color4;
+				}
+				> [data-elem='component2'] {
+					> [data-elem='title'] {
+						color: $text-color;
+					}
+				}
+				&:nth-child(2) {
+					border-radius: 0 0 4px 4px;
+				}
+			}
+		}
+	}
+}

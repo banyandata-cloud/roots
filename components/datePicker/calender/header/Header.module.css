@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  gap: 1.75rem;
+  gap: 1rem;
 }
 .root .title-container {
   align-self: stretch;
@@ -16,14 +16,16 @@
 .root .title-container .title {
   font-weight: 500;
   font-size: 0.875rem;
-  color: var(--black);
+  color: var(--text-color);
   line-height: 1.3125rem;
-  color: var(--dark-grey);
 }
 .root .title-container .icon {
   width: 1.5rem;
   height: 1.5rem;
-  stroke: var(--dark-grey);
+  stroke: var(--text-color);
   stroke-width: 0.5px;
   cursor: pointer;
+}
+.root .date-time-switch {
+  width: 100%;
 }/*# sourceMappingURL=Header.module.css.map */

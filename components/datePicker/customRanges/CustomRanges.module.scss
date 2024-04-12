@@ -9,13 +9,13 @@
 		width: 100%;
 		@include flex(row, flex-start, center);
 		> [data-elem='component2'] {
-			color: $grey1;
+			color: $mono-color1;
 		}
 		&:hover {
-			background-color: $grey6 !important;
+			background-color: $mono-color3 !important;
 		}
 		&.selected {
-			background-color: $grey6 !important;
+			background-color: $mono-color2 !important;
 		}
 	}
 }

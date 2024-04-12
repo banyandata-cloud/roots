@@ -15,11 +15,11 @@
   align-items: center;
 }
 .root .option[data-elem=base-cell] > [data-elem=component2] {
-  color: var(--grey1);
+  color: var(--mono-color1);
 }
 .root .option[data-elem=base-cell]:hover {
-  background-color: var(--grey6) !important;
+  background-color: var(--mono-color3) !important;
 }
 .root .option[data-elem=base-cell].selected {
-  background-color: var(--grey6) !important;
+  background-color: var(--mono-color2) !important;
 }/*# sourceMappingURL=CustomRanges.module.css.map */

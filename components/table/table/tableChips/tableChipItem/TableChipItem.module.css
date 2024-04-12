@@ -62,7 +62,7 @@
 }
 .root > [data-elem=component2] .chip:disabled {
   cursor: default;
-  color: var(--info);
+  color: var(--primary-color4);
   border-color: var(--info-outline);
   background: var(--info-bg);
   filter: none;
@@ -103,23 +103,23 @@
   height: 0.875rem;
 }
 .root:hover:not(.temp) {
-  border-color: var(--highlight);
+  border-color: var(--primary-color4);
 }
 .root:hover:not(.temp) > [data-elem=component2] .label {
-  color: var(--highlight);
+  color: var(--primary-color4);
 }
 .root:hover:not(.temp) > [data-elem=component2] .chip {
-  background: var(--background);
+  background: var(--background-color4);
 }
 .root:hover:not(.temp) > [data-elem=component2] .chip > [data-elem=component2] > [data-elem=title] {
-  color: var(--highlight);
+  color: var(--primary-color4);
 }
 .root:hover:not(.temp) > [data-elem=component2] .chip .icon {
   width: 0.875rem;
   height: 0.875rem;
 }
 .root.temp {
-  background: var(--highlight);
+  background: var(--primary-color4);
 }
 .root.temp > [data-elem=component1] .chip-icon {
   fill: var(--white);

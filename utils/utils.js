@@ -209,7 +209,7 @@ export const getDayInfo = (date) => {
 	const hours = ((date.getHours() + 11) % 12) + 1;
 	const minutes = date.getMinutes();
 	const seconds = date.getSeconds();
-	const meridian = hours >= 12 ? 'PM' : 'AM';
+	const meridian = hoursIn12 >= 12 ? 'PM' : 'AM';
 	return {
 		month,
 		monthAsNumber,

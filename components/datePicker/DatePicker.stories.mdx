@@ -1,12 +1,11 @@
-import { Meta, Canvas, Story } from '@storybook/addon-docs';
-
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { ThemedContainer } from '../helpers';
 import DatePicker from './DatePicker';
 
 <Meta title='Components/DatePicker' parameters={{ options: { showToolbar: true } }} />
 
 export const Template = (args) => (
-	<ThemedContainer {...args}>
+	<ThemedContainer {...args} style={{ width: '27rem' }}>
 		<DatePicker {...args} />
 	</ThemedContainer>
 );
@@ -46,6 +45,12 @@ The date picker which allows to select a date from the popover.
 			label: 'Single Date Picker',
 			theme: 'light',
 			value: 1678732200,
+			limitHours: 1,
+			defaultHourDiff: 1,
+			onApply: (v) => {
+				console.log(v);
+			},
+			valueAsRange: true,
 		}}>
 		{Template.bind({})}
 	</Story>

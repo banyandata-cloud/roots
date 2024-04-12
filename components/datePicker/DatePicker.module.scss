@@ -142,66 +142,30 @@
 			}
 		}
 
-		&.dark {
-			.container {
-				border-color: $grey;
-				.placeholder {
-					color: $grey2;
-					font-weight: 500;
-				}
-				.value {
-					color: $grey2;
-					font-weight: 500;
-				}
-				&.highlight {
-					background-color: $mono-color1;
-					.value {
-						color: white;
-					}
-					.icon {
-						width: 1.5rem;
-						height: 1.5rem;
-						transition: transform 0.5s;
-						> path {
-							fill: $white;
-						}
-
-						&.open {
-							transform: rotate(180deg);
-						}
-					}
-				}
+		.container {
+			border-color: $grey;
+			.placeholder {
+				color: $grey2;
+				font-weight: 500;
 			}
-		}
-
-		&.light {
-			.container {
-				border-color: $grey4;
-				.placeholder {
-					color: $grey;
-					font-weight: 500;
-				}
+			.value {
+				color: $grey2;
+				font-weight: 500;
+			}
+			&.highlight {
 				.value {
-					color: $grey;
-					padding: 0rem 0.3rem 0rem 0rem;
-					font-weight: 500;
+					color: $text-color;
 				}
-				&.highlight {
-					background-color: $mono-color1;
-					.value {
-						color: $white;
+				.icon {
+					width: 1.5rem;
+					height: 1.5rem;
+					transition: transform 0.5s;
+					> path {
+						fill: $text-color;
 					}
-					.icon {
-						width: 1.5rem;
-						height: 1.5rem;
-						transition: transform 0.5s;
-						> path {
-							fill: $white;
-						}
 
-						&.open {
-							transform: rotate(180deg);
-						}
+					&.open {
+						transform: rotate(180deg);
 					}
 				}
 			}
@@ -211,14 +175,14 @@
 			font-weight: 400;
 			font-size: 0.75rem;
 			line-height: 0.9375rem;
-			color: $error;
+			color: $primary-color1;
 		}
 	}
 }
 
 .popper {
 	display: none;
-	background: $white;
+	background: $light-color3;
 	border: 0.0625rem solid #d9d9d9;
 	@include boxShadow;
 	border-radius: 0.25rem;

@@ -14,14 +14,14 @@
 		user-select: none;
 
 		&.minInRange {
-			background-color: $highlight;
+			background-color: $primary-color4;
 			border-radius: 1.5rem 0rem 0rem 1.5rem;
 			.date {
 				color: $white;
 			}
 			&:hover {
 				.date {
-					background: $highlight;
+					background: $primary-color4;
 					color: $white;
 					@include boxShadow;
 				}
@@ -48,7 +48,7 @@
 			}
 		}
 		&.maxInRange {
-			background-color: $highlight;
+			background-color: $primary-color4;
 			border-radius: 0rem 1.5rem 1.5rem 0rem;
 			.date {
 				color: $white;
@@ -76,17 +76,17 @@
 			}
 			&:hover {
 				.date {
-					background: $highlight;
+					background: $primary-color4;
 					color: $white;
 					@include boxShadow;
 				}
 			}
 		}
 		&.midInRange {
-			background: $background;
+			background: $background-color5;
 			border-radius: 0rem;
 			.date {
-				color: $highlight;
+				color: $primary-color4;
 			}
 			&.today-selected {
 				@include flex(column, flex-start, center);
@@ -100,7 +100,7 @@
 			}
 		}
 		&.midInRangeSelected {
-			background: $background;
+			background: $background-color5;
 			border-radius: 0rem;
 			.date {
 				color: $white;
@@ -118,10 +118,10 @@
 		}
 
 		&.first-hovered {
-			background: $background;
+			background: $background-color5;
 			border-radius: 0rem 1.5rem 1.5rem 0rem;
 			.date {
-				color: $highlight;
+				color: $primary-color4;
 			}
 			&.today-selected {
 				@include flex(column, flex-start, center);
@@ -135,10 +135,10 @@
 			}
 		}
 		&.last-hovered {
-			background: $background;
+			background: $background-color5;
 			border-radius: 1.5rem 0rem 0rem 1.5rem;
 			.date {
-				color: $highlight;
+				color: $primary-color4;
 			}
 
 			&.today-selected {
@@ -156,7 +156,7 @@
 		&.today {
 			@include flex(column, flex-start, center);
 			.date {
-				color: $highlight;
+				color: $primary-color4;
 				font-weight: 500;
 			}
 			.indicator {
@@ -185,21 +185,22 @@
 			width: 2.5rem;
 			font-weight: 400;
 			font-size: 0.875rem;
-			color: $black;
+			color: $text-color;
 			&.selected {
-				background-color: $highlight;
+				background-color: $primary-color4;
 				color: $white;
 			}
 			&.unSelected {
 				background-color: $white;
-				border-color: $highlight;
+				border-color: $primary-color4;
 				border-width: 0.125rem;
 				border-style: solid;
 				color: $black;
 			}
 			&.disabled {
 				border-radius: 1.5rem;
-				color: $grey2;
+				color: $mono-color2;
+				cursor: not-allowed;
 			}
 			&.diffMonth {
 				opacity: 0.6;
@@ -208,19 +209,19 @@
 
 		&:hover {
 			.date {
-				background: $background;
-				color: $highlight;
+				background: $background-color5;
+				color: $primary-color4;
 				@include boxShadow;
 			}
 			.selected {
-				background-color: $highlight;
+				background-color: $primary-color4;
 				color: $white;
 			}
 			.disabled {
 				background: transparent;
 				box-shadow: none;
 				border-radius: 1.5rem;
-				color: $grey2;
+				color: $mono-color3;
 			}
 		}
 	}

@@ -40,7 +40,7 @@
           user-select: none;
 }
 .root > .header[data-elem=base-cell]:hover {
-  background: var(--background);
+  background: var(--background-color4);
 }
 .root > .header[data-elem=base-cell]:hover .icon,
 .root > .header[data-elem=base-cell]:hover .title {
