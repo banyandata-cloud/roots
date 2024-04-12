@@ -4,6 +4,7 @@ import {
 	useFloating,
 	useInteractions,
 } from '@floating-ui/react-dom-interactions';
+import { getUnixTime } from 'date-fns';
 import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
 import React, { useRef, useState } from 'react';
@@ -36,10 +37,12 @@ const DatePicker = (props) => {
 		disabled,
 		className,
 		disableDatesBefore,
-		theme,
 		onClear,
 		customRanges,
 		custom,
+		valueAsRange, // only for single Date Picker,
+		defaultHourDiff,
+		limitHours,
 	} = props;
 
 	const [openDatePicker, setOpenDatePicker] = useState(false);
@@ -60,9 +63,13 @@ const DatePicker = (props) => {
 		return '';
 	});
 
+	const [selectedMonth, setSelectedMonth] = useState();
+
 	const [error, setError] = useState(() => {
 		return '';
 	});
+
+	const [timeRangeSelection, setTimeRangeSelection] = useState({});
 
 	const datePickerRef = useRef();
 
@@ -102,7 +109,7 @@ const DatePicker = (props) => {
 		useDismiss(customRangeFloatingReference.context),
 	]);
 
-	const apply = ({ rangeSelected, dateSelected }) => {
+	const apply = ({ rangeSelected }) => {
 		if (rangeSelected.dates?.length === 2) {
 			if (
 				maxRange !== null &&
@@ -116,10 +123,42 @@ const DatePicker = (props) => {
 				return;
 			}
 			setError('');
-			onApply(rangeSelected.unix, fixedRange, getDateRangeTag(rangeSelected.unix));
+			onApply?.(rangeSelected.unix, fixedRange, getDateRangeTag(rangeSelected.unix));
 			setOpenDatePicker(false);
 		} else {
-			onApply(dateSelected.unix);
+			if (valueAsRange) {
+				const fromUnix = getUnixTime(
+					new Date(
+						selectedDate.year,
+						selectedMonth?.monthAsNumber,
+						selectedDate.date,
+						timeRangeSelection.previous?.HOURS,
+						timeRangeSelection.previous?.MINS
+					)
+				);
+
+				const toUnix = getUnixTime(
+					new Date(
+						selectedDate.year,
+						selectedMonth?.monthAsNumber,
+						selectedDate.date,
+						timeRangeSelection.next?.HOURS,
+						timeRangeSelection.next?.MINS
+					)
+				);
+				onApply?.([fromUnix, toUnix], fixedRange, getDateRangeTag([fromUnix, toUnix]));
+				return;
+			}
+			const singleDateUnix = getUnixTime(
+				new Date(
+					selectedDate.year,
+					selectedMonth?.monthAsNumber,
+					selectedDate.date,
+					timeRangeSelection.next?.HOURS,
+					timeRangeSelection.next?.MINS
+				)
+			);
+			onApply?.(singleDateUnix);
 			setOpenDatePicker(false);
 		}
 	};
@@ -143,6 +182,12 @@ const DatePicker = (props) => {
 		value,
 		setFixedRange,
 		customRanges,
+		timeRangeSelection,
+		setTimeRangeSelection,
+		selectedMonth,
+		setSelectedMonth,
+		defaultHourDiff,
+		limitHours,
 	};
 
 	const customRangesProps = {
@@ -152,7 +197,6 @@ const DatePicker = (props) => {
 		setFixedRange,
 		setOpenCustomRange,
 		fixedRange,
-		theme,
 		apply,
 	};
 
@@ -175,21 +219,20 @@ const DatePicker = (props) => {
 						data-elem='custom-header'
 						ref={customRangeFloatingReference.reference}
 						leftComponent={() => {
-							return <ClockIcon className={classes(styles.icon, styles[theme])} />;
+							return <ClockIcon className={classes(styles.icon)} />;
 						}}
 						title={fixedRange || 'Custom'}
 						className={classes(
 							styles['custom-picker'],
-							styles[theme],
 							fixedRange ? styles.highlight : ''
 						)}
 						{...customRangeInteractionProps.getReferenceProps()}
 					/>
 				)}
 
-				<div className={classes(styles['date-picker'], className, styles[theme])}>
+				<div className={classes(styles['date-picker'], className)}>
 					{label && !hasCustomRanges && (
-						<span className={classes(styles.label, styles[theme])}>{label}</span>
+						<span className={classes(styles.label)}>{label}</span>
 					)}
 
 					<div
@@ -203,24 +246,18 @@ const DatePicker = (props) => {
 							openDatePicker ? styles.open : '',
 							error ? styles.error : '',
 							customRanges ? styles['with-custom'] : '',
-							styles[theme],
+
 							displayValue ? styles.highlight : ''
 						)}
 						{...datePickerInteractionProps.getReferenceProps()}>
 						<div className={styles.left}>
-							<CalenderIcon className={classes(styles.icon, styles[theme])} />
+							<CalenderIcon className={styles.icon} />
 
 							{!displayValue && (
-								<span className={classes(styles.placeholder, styles[theme])}>
-									{placeholder}
-								</span>
+								<span className={styles.placeholder}>{placeholder}</span>
 							)}
 
-							{displayValue && (
-								<span className={classes(styles.value, styles[theme])}>
-									{displayValue}
-								</span>
-							)}
+							{displayValue && <span className={styles.value}>{displayValue}</span>}
 						</div>
 
 						<input className={styles.input} value={displayValue} />
@@ -236,18 +273,14 @@ const DatePicker = (props) => {
 									onClear();
 								}}
 								rightComponent={() => {
-									return (
-										<CrossIcon
-											className={classes(styles.icon, styles[theme])}
-										/>
-									);
+									return <CrossIcon className={styles.icon} />;
 								}}
 							/>
 						) : (
 							<CaretIcon
 								className={classes(
 									styles.icon,
-									styles[theme],
+
 									openDatePicker ? styles.open : ''
 								)}
 							/>
@@ -290,7 +323,7 @@ const DatePicker = (props) => {
 						)}
 					</Popper>
 
-					<Popper open={openCustomRange} wrapperid='custom-range-popper'>
+					<Popper open={openCustomRange} wrapperId='custom-range-popper'>
 						{openCustomRange && (
 							<div
 								{...customRangeInteractionProps.getFloatingProps({
@@ -336,7 +369,6 @@ DatePicker.propTypes = {
 	}),
 	className: PropTypes.string,
 	disableDatesBefore: PropTypes.arrayOf(PropTypes.string),
-	theme: PropTypes.string,
 	defaultRangeSelection: PropTypes.arrayOf(PropTypes.number),
 	customRanges: PropTypes.arrayOf(
 		PropTypes.shape({
@@ -345,6 +377,9 @@ DatePicker.propTypes = {
 			value: PropTypes.string,
 		})
 	),
+	valueAsRange: PropTypes.bool, // only for single Date Picker,
+	defaultHourDiff: PropTypes.number,
+	limitHours: PropTypes.number,
 };
 
 DatePicker.defaultProps = {
@@ -358,10 +393,12 @@ DatePicker.defaultProps = {
 	value: null,
 	className: '',
 	disableDatesBefore: [],
-	theme: 'light',
 	customRanges: null,
 	defaultRangeSelection: null,
 	onClear: () => {},
+	valueAsRange: false,
+	defaultHourDiff: null,
+	limitHours: null,
 };
 
 export default DatePicker;

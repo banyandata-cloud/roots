@@ -1,0 +1,56 @@
+@import '../../../styles/';
+
+.root {
+	width: 100%;
+	@include flex;
+	padding-block: 1rem;
+	.clock {
+		height: 15rem;
+		width: 15rem;
+		position: relative;
+		background-color: $light-color2;
+		border-radius: 100%;
+		.number {
+			position: absolute;
+			height: 2rem;
+			width: 2rem;
+			@include flex;
+			cursor: pointer;
+			border-radius: 100%;
+			border: none;
+			background: none;
+			z-index: 2;
+			&:hover {
+				background: $background-color5;
+			}
+			&.selected {
+				background: $primary-color4;
+				color: $white;
+			}
+			&.disabled {
+				cursor: not-allowed;
+			}
+		}
+		.midpoint {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			right: auto;
+			bottom: auto;
+			transform: translate(-50%, -50%);
+			height: 0.625rem;
+			width: 0.625rem;
+			background: $primary-color4;
+			border-radius: 100%;
+		}
+		.connector {
+			height: 6rem;
+			width: 0.15rem;
+			position: absolute;
+			right: auto;
+			bottom: auto;
+			background-color: $primary-color4;
+			transform: translate(-50%, -50%);
+		}
+	}
+}

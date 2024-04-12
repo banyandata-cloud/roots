@@ -9,38 +9,38 @@
 		font-weight: 500;
 		font-size: 0.875rem;
 		line-height: 1.3125rem;
-		color: $dark-grey;
+		color: $text-color;
 	}
 	> div {
 		@include flex(row, flex-start, flex-start);
 		width: 100%;
 		gap: 0.25rem;
-		.input {
+		button[data-elem='base-cell'].selector {
 			flex: 1;
-			background: $white;
-			border: 1px solid $grey3;
+			border: 1px solid $mono-color2 !important;
 			border-radius: 4px;
 			padding: 0.75rem 1rem;
-			> label {
-				> div[data-elem='base-cell'] {
-					padding: 0 0;
-					border: none;
-					width: 9.063rem;
-					> span[data-elem='component2'] {
-						> input[data-elem='input'] {
-							padding: 0;
-							color: $dark-grey;
-							width: fit-content;
-						}
+			@include flex(row, flex-start);
+			&.active {
+				background-color: $primary-color4;
+				> [data-elem='component2'] {
+					> [data-elem='title'] {
+						color: $white;
 					}
 				}
 			}
-		}
-	}
-	&.range {
-		> span {
-			&:nth-last-child(2) {
-				margin-top: 0.25rem;
+			&:hover {
+				border: 1px solid transparent !important;
+				> [data-elem='component2'] {
+					> [data-elem='title'] {
+						color: $white;
+					}
+				}
+			}
+			> [data-elem='component2'] {
+				> [data-elem='title'] {
+					color: $text-color;
+				}
 			}
 		}
 	}

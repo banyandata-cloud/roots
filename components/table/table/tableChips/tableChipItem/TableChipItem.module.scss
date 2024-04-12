@@ -74,7 +74,7 @@
 
 			&:disabled {
 				cursor: default;
-				color: $primary-color4
+				color: $primary-color4;
 				border-color: $info-outline;
 				background: $info-bg;
 				filter: none;
@@ -135,18 +135,18 @@
 	}
 
 	&:hover:not(.temp) {
-		border-color: $highlight;
+		border-color: $primary-color4;
 
 		> [data-elem='component2'] {
 			.label {
-				color: $highlight;
+				color: $primary-color4;
 			}
 
 			.chip {
-				background: $background;
+				background: $background-color4;
 				> [data-elem='component2'] {
 					> [data-elem='title'] {
-						color: $highlight;
+						color: $primary-color4;
 					}
 				}
 
@@ -159,7 +159,7 @@
 	}
 
 	&.temp {
-		background: $highlight;
+		background: $primary-color4;
 		> [data-elem='component1'] {
 			.chip-icon {
 				fill: $white;

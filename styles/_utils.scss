@@ -23,7 +23,7 @@
 
 @mixin outline {
 	&:focus {
-		outline: 1px solid $highlight;
+		outline: 1px solid $primary-color4;
 	}
 }
 

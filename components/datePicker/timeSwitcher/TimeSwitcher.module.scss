@@ -1,0 +1,68 @@
+@import '../../../styles/';
+
+.root {
+	@include flex(row);
+	width: 100%;
+	gap: 0.5rem;
+	.time-counter {
+		@include flex;
+		gap: 0.5rem;
+		button[data-elem='base-cell'].time {
+			width: 2.5rem;
+			height: 2.5rem;
+			background-color: $light-color2;
+			color: $text-color;
+			&.selected {
+				background-color: $background-color5;
+			}
+			> [data-elem='component2'] {
+				> [data-elem='title'] {
+					font-size: 0.7rem;
+				}
+			}
+			&:hover {
+				background-color: $background-color5;
+				color: $primary-color4;
+			}
+		}
+		.meridian-container {
+			@include flex(column);
+			button[data-elem='base-cell'].meridian {
+				width: 2rem;
+				height: 1.25rem;
+				padding: 0 0.5rem;
+				outline: none;
+				border-radius: 2px 2px 0 0;
+				background-color: $light-color2;
+				border: 0.05px solid $mono-color2;
+				color: $text-color;
+				&.selected {
+					background-color: $background-color5;
+				}
+				> [data-elem='component2'] {
+					> [data-elem='title'] {
+						font-size: 0.5rem;
+					}
+				}
+				&:hover {
+					background-color: $background-color5;
+					color: $primary-color4;
+					border-color: $primary-color4;
+				}
+				&:nth-child(2) {
+					border-radius: 0 0 2px 2px;
+					> [data-elem='component2'] {
+						> [data-elem='title'] {
+							font-size: 0.5rem;
+						}
+					}
+					&:hover {
+						background-color: $background-color5;
+						color: $primary-color4;
+						border-color: $primary-color4;
+					}
+				}
+			}
+		}
+	}
+}

@@ -2,8 +2,7 @@
 
 .root {
 	@include flex(column, flex-start, flex-start);
-	gap: 1.75rem;
-
+	gap: 1rem;
 	.title-container {
 		align-self: stretch;
 		@include flex(row, space-between, center);
@@ -11,16 +10,18 @@
 		.title {
 			font-weight: 500;
 			font-size: 0.875rem;
-			color: $black;
+			color: $text-color;
 			line-height: 1.3125rem;
-			color: $dark-grey;
 		}
 		.icon {
 			width: 1.5rem;
 			height: 1.5rem;
-			stroke: $dark-grey;
+			stroke: $text-color;
 			stroke-width: 0.5px;
 			cursor: pointer;
 		}
+	}
+	.date-time-switch {
+		width: 100%;
 	}
 }

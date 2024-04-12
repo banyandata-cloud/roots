@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react';
 import { fromUnixTime, getUnixTime, isBefore } from 'date-fns';
-import { CalenderHeader } from './header';
-import styles from './Calender.module.css';
-import { getDatesInStringFormat, getDayInfo } from '../../../utils';
+import React, { useEffect, useState } from 'react';
 import { FULL_MONTHS } from '../../../constants';
+import { getDatesInStringFormat, getDayInfo } from '../../../utils';
+import { ClockView } from '../clockView';
+import styles from './Calender.module.css';
 import { CalenderBody } from './body';
 import { CalenderFooter } from './footer';
+import { CalenderHeader } from './header';
 
 const Calender = (props) => {
 	const {
@@ -21,11 +22,21 @@ const Calender = (props) => {
 		setFixedRange,
 		fixedRange,
 		customRanges,
+		timeRangeSelection,
+		setTimeRangeSelection,
+		selectedMonth,
+		setSelectedMonth,
+		defaultHourDiff,
+		limitHours,
 	} = props;
 
-	const [selectedMonth, setSelectedMonth] = useState();
+	const [dateSelectionView, showDateSelectionView] = useState(false);
+	const [timeSelectionView, showTimeSelectionView] = useState(false);
 
-	useEffect(() => {
+	const [activeGoToSelection, setActiveGoToSelection] = useState();
+	const [activeTimeSelection, setActiveTimeSelection] = useState();
+
+	const setSelectedValues = () => {
 		if (fixedRange) {
 			const date = new Date();
 			const dateAsNumber = date.getDate();
@@ -125,23 +136,11 @@ const Calender = (props) => {
 				year: selectedDayInfo.year,
 			});
 		}
-	}, []);
-
-	const goToDate = (unix) => {
-		const dayInfo = getDayInfo(new Date(unix * 1000));
-		setSelectedMonth({
-			month: dayInfo.month,
-			monthAsNumber: dayInfo.monthAsNumber,
-			year: dayInfo.year,
-		});
-		setSelectedDate({
-			...selectedDate,
-			month: dayInfo.month,
-			year: dayInfo.year,
-			date: dayInfo.dateAsNumber,
-			unix: getUnixTime(new Date(unix * 1000)),
-		});
 	};
+
+	useEffect(() => {
+		setSelectedValues();
+	}, []);
 
 	const onMonthChange = (switchSide) => {
 		if (switchSide === 'prev') {
@@ -190,7 +189,10 @@ const Calender = (props) => {
 		selectedRange,
 		setSelectedRange,
 		range,
+		selectedMonth,
 	};
+
+	const showCalender = !timeSelectionView;
 
 	return (
 		<div className={styles.root}>
@@ -199,17 +201,40 @@ const Calender = (props) => {
 				selectedMonth={selectedMonth}
 				onMonthChange={onMonthChange}
 				setSelectedMonth={setSelectedMonth}
+				showDateSelectionView={showDateSelectionView}
+				showTimeSelectionView={showTimeSelectionView}
+				dateSelectionView={dateSelectionView}
+				timeSelectionView={timeSelectionView}
+				activeGoToSelection={activeGoToSelection}
+				setActiveGoToSelection={setActiveGoToSelection}
+				activeTimeSelection={activeTimeSelection}
+				setActiveTimeSelection={setActiveTimeSelection}
+				timeRangeSelection={timeRangeSelection}
+				setTimeRangeSelection={setTimeRangeSelection}
+				defaultHourDiff={defaultHourDiff}
+				limitHours={limitHours}
 			/>
-			<CalenderBody
-				{...commonCalenderProps}
-				selectedMonth={selectedMonth}
-				disabledDates={disabledDates}
-				disableDatesBefore={disableDatesBefore}
-			/>
+
+			{showCalender ? (
+				<CalenderBody
+					{...commonCalenderProps}
+					selectedMonth={selectedMonth}
+					disabledDates={disabledDates}
+					disableDatesBefore={disableDatesBefore}
+				/>
+			) : (
+				<ClockView
+					{...commonCalenderProps}
+					setSelectedMonth={setSelectedMonth}
+					activeTimeSelection={activeTimeSelection}
+					timeRangeSelection={timeRangeSelection}
+					setTimeRangeSelection={setTimeRangeSelection}
+					limitHours={limitHours}
+				/>
+			)}
 			<CalenderFooter
 				{...commonCalenderProps}
 				onApply={onApply}
-				goToDate={goToDate}
 				customRanges={customRanges}
 				setFixedRange={setFixedRange}
 			/>

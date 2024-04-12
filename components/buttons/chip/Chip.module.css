@@ -19,11 +19,11 @@
 }
 .root[data-elem=base-cell].status.info {
   background-color: var(--info-bg);
-  color: var(--info);
+  color: var(--primary-color4);
 }
 .root[data-elem=base-cell].status.danger {
   background-color: var(--error-bg);
-  color: var(--error);
+  color: var(--primary-color1);
 }
 .root[data-elem=base-cell].status.warning {
   background-color: var(--warning-bg);
@@ -50,7 +50,7 @@
 }
 .root[data-elem=base-cell].input.info {
   background-color: var(--info-bg);
-  color: var(--info);
+  color: var(--primary-color4);
   border-color: var(--info-outline);
 }
 .root[data-elem=base-cell].input.info:hover {
@@ -58,7 +58,7 @@
 }
 .root[data-elem=base-cell].input.danger {
   background-color: var(--error-bg);
-  color: var(--error);
+  color: var(--primary-color1);
   border-color: var(--error-outline);
 }
 .root[data-elem=base-cell].input.danger:hover {

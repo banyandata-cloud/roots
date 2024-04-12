@@ -26,11 +26,11 @@
 		}
 		&.info {
 			background-color: $info-bg;
-			color: $primary-color4
+			color: $primary-color4;
 		}
 		&.danger {
 			background-color: $error-bg;
-			color: $error;
+			color: $primary-color1;
 		}
 		&.warning {
 			background-color: $warning-bg;
@@ -59,7 +59,7 @@
 		}
 		&.info {
 			background-color: $info-bg;
-			color: $primary-color4
+			color: $primary-color4;
 			border-color: $info-outline;
 			&:hover {
 				background-color: $info-outline;
@@ -67,7 +67,7 @@
 		}
 		&.danger {
 			background-color: $error-bg;
-			color: $error;
+			color: $primary-color1;
 			border-color: $error-outline;
 			&:hover {
 				background-color: $error-outline;

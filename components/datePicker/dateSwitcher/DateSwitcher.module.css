@@ -1,0 +1,47 @@
+.root {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 0.5rem;
+}
+.root .switch-selector {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+.root .switch-selector .value {
+  width: 6.5rem;
+  height: 2rem;
+  background-color: var(--background-color5);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.root .switch-selector .arrows {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.root .switch-selector .arrows button[data-elem=base-cell].arrow {
+  width: 2rem;
+  height: 1rem;
+  border-radius: 4px 4px 0 0;
+  background-color: var(--light-color2);
+}
+.root .switch-selector .arrows button[data-elem=base-cell].arrow:hover {
+  background-color: var(--background-color5);
+  color: var(--primary-color4);
+}
+.root .switch-selector .arrows button[data-elem=base-cell].arrow > [data-elem=component2] > [data-elem=title] {
+  color: var(--text-color);
+}
+.root .switch-selector .arrows button[data-elem=base-cell].arrow:nth-child(2) {
+  border-radius: 0 0 4px 4px;
+}/*# sourceMappingURL=DateSwitcher.module.css.map */

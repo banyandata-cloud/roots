@@ -101,7 +101,7 @@
 }
 .root[data-elem=base-cell] > [data-elem=component2] .left .filter-value {
   color: var(--white);
-  background: var(--highlight);
+  background: var(--primary-color4);
   padding: 0.125rem 0.5rem;
   border-radius: 50%;
   font-size: 0.813rem;
