@@ -36,6 +36,7 @@
   flex: 1 1 auto;
   -webkit-user-select: none;
      -moz-user-select: none;
+      -ms-user-select: none;
           user-select: none;
 }
 .root > .header[data-elem=base-cell]:hover {
@@ -59,6 +60,7 @@
   align-items: stretch;
 }
 .root.open > .body > button[data-elem=base-cell] {
+  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   align-self: flex-end;

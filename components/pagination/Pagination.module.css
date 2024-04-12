@@ -46,6 +46,12 @@
   gap: 1.25rem;
   flex: 1 1;
 }
+.root .page-numbers.custom-page-number {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
 .root .page-numbers > .button.disable {
   pointer-events: none;
 }
@@ -67,13 +73,18 @@
 .root .page-numbers > .pageSelect .number {
   cursor: pointer;
   border-radius: 50%;
+  font-size: 1rem;
   background-color: #e0e0e0;
   color: var(--black);
   min-width: 2.313rem;
   line-height: 2.313rem;
   text-align: center;
-  font-size: 1rem;
   border: 1px solid transparent;
+}
+.root .page-numbers > .pageSelect .number.custom-number {
+  border-radius: 0%;
+  font-size: 0.875rem;
+  padding: 0 5px 0 5px;
 }
 .root .page-numbers > .pageSelect .number:not([data-active=true]) {
   display: none;
@@ -91,6 +102,9 @@
 .root .page-numbers > .pageSelect .number.active {
   background-color: var(--primary-color4);
   color: var(--white);
+}
+.root .page-numbers > .pageSelect .number.disabled {
+  color: var(--grey2);
 }
 .root .options {
   display: flex;
@@ -153,6 +167,7 @@
   height: 2.375rem;
   max-height: 100%;
   width: auto;
+  min-width: -webkit-fit-content;
   min-width: -moz-fit-content;
   min-width: fit-content;
   padding: 0.625rem;

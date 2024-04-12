@@ -12,6 +12,7 @@
   color: var(--light-color3);
   -webkit-user-select: none;
      -moz-user-select: none;
+      -ms-user-select: none;
           user-select: none;
 }
 .root .body {
