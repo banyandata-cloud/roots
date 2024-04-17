@@ -86,12 +86,18 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 	<Story
 		name='Default'
 		args={{
-			title: 'Title',
+			title: {
+				text: 'Title',
+				textStyle: {
+					fontSize: 10,
+				},
+				left: 20,
+			},
 			gridContainLabel: true,
 			gridOptions: {
-				left: 0,
-				right: 0,
-				bottom: 0,
+				left: 50,
+				right: 50,
+				bottom: 100,
 				top: 15,
 			},
 			xAxisShow: true,
@@ -103,9 +109,17 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 				verticalAlign: 'bottom',
 				padding: [0, 0, 90, 0],
 			},
+			xAxis: {
+				name: 'Aryan',
+				nameLocation: 'center',
+			},
+			yAxis: {
+				name: 'Aryan',
+				nameLocation: 'center',
+			},
 			yAxisLabelShow: false,
 			ySplitLineShow: false,
-			yAxisLineShow: false,
+			yAxisLineShow: true,
 			yAxisTickShow: false,
 			barWidth: '50%',
 			cursor: 'default',
