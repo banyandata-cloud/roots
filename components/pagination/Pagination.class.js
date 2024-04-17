@@ -177,6 +177,8 @@ export function getCustomPagination(curr, total, limit) {
 			}
 		}
 	}
+
+	// Solution 1 is to remove following loop and reduxe last 3 pages to 1
 	if (total > 7) {
 		for (let i = total - 2; i < total; i++) {
 			pages.push(
@@ -191,6 +193,18 @@ export function getCustomPagination(curr, total, limit) {
 			number: total,
 		})
 	);
+
+	// Solution 2 it to remove redundant pages from the array and return new array
+	const pages_set = {};
+	return pages.filter((obj) => {
+		const value = obj.number;
+		if (pages_set[value]) {
+			return false;
+		} else {
+			pages_set[value] = true;
+			return true;
+		}
+	});
 
 	return pages;
 }

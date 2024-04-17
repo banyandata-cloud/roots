@@ -83,11 +83,13 @@ const BaseVerticalBarChart = (props) => {
 		title,
 		gridContainLabel,
 		gridOptions,
+		xAxis,
 		xAxisShow,
 		xAxisLabel,
 		xSplitLineShow,
 		seriesData,
 		onEvents,
+		yAxis,
 		yAxisLabelShow,
 		ySplitLineShow,
 		yAxisLineShow,
@@ -213,7 +215,7 @@ const BaseVerticalBarChart = (props) => {
 		<EChartsReactCore
 			option={{
 				title: {
-					text: title,
+					...title,
 				},
 				dataZoom: [
 					{
@@ -261,6 +263,7 @@ const BaseVerticalBarChart = (props) => {
 							color: determineAxesColors('line', axisColor, theme),
 						},
 					},
+					...xAxis,
 				},
 				legend: {
 					...legend,
@@ -293,6 +296,7 @@ const BaseVerticalBarChart = (props) => {
 							color: determineAxesColors('tick', axisColor, theme),
 						},
 					},
+					...yAxis,
 				},
 				series: generateSeries(),
 			}}
@@ -311,6 +315,8 @@ BaseVerticalBarChart.propTypes = {
 	title: PropTypes.string,
 	gridContainLabel: PropTypes.bool,
 	gridOptions: PropTypes.object,
+	xAxis: PropTypes.object,
+	yAxis: PropTypes.object,
 	xAxisShow: PropTypes.bool,
 	xAxisLabel: PropTypes.object,
 	tooltip: PropTypes.object,
@@ -350,6 +356,8 @@ BaseVerticalBarChart.defaultProps = {
 		bottom: 0,
 		top: 5,
 	},
+	xAxis: {},
+	yAxis: {},
 	xAxisShow: true,
 	xAxisLabel: {
 		show: true,
