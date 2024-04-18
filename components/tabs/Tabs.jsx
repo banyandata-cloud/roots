@@ -26,12 +26,10 @@ const Tabs = (props) => {
 
 	const selectedTabIndex = tabIndex !== -1 ? tabIndex : 0;
 
-	const [activeTab, setActiveTab] = useState(selectedTabIndex);
+	const [activeTab, setActiveTab] = useState();
 
 	useEffect(() => {
-		if (selectedTabIndex) {
-			setActiveTab(selectedTabIndex);
-		}
+		setActiveTab(selectedTabIndex);
 	}, [selectedTabIndex]);
 
 	const updateSliderPosition = () => {
