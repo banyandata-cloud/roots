@@ -12,8 +12,7 @@ const Tabs = (props) => {
 
 	const [sliderLeft, setSliderLeft] = useState(0);
 	const [sliderWidth, setSliderWidth] = useState(0);
-	const sliderRef = useRef(null);
-	const dropdownTabRefs = useRef([]);
+	const tabRefs = useRef([]);
 
 	const tabIndex = tabs?.findIndex((tab) => {
 		if (tab.dropdown) {
@@ -29,8 +28,14 @@ const Tabs = (props) => {
 
 	const [activeTab, setActiveTab] = useState(selectedTabIndex);
 
+	useEffect(() => {
+		if (selectedTabIndex) {
+			setActiveTab(selectedTabIndex);
+		}
+	}, [selectedTabIndex]);
+
 	const updateSliderPosition = () => {
-		const activeTabElement = dropdownTabRefs.current[activeTab] || sliderRef.current;
+		const activeTabElement = tabRefs.current[activeTab];
 
 		if (activeTabElement) {
 			setSliderLeft(activeTabElement.offsetLeft);
@@ -75,7 +80,7 @@ const Tabs = (props) => {
 						<div
 							key={tab.id}
 							ref={(ref) => {
-								dropdownTabRefs.current[index] = ref;
+								tabRefs.current[index] = ref;
 							}}
 							className={`${styles.tab} ${isActive ? styles.active : ''}`}>
 							{dropdown ? (
