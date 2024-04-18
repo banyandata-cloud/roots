@@ -44,7 +44,7 @@
 		&.home {
 			width: fit-content;
 			border-radius: 4px;
-			background-color: $mono-color3 !important;
+			background-color: $mono-color2 !important;
 			color: $text-color;
 			.icon {
 				width: 1.25rem;
@@ -68,7 +68,7 @@
 		gap: 0.5rem;
 		padding: 0.5rem 0.5rem;
 		border-radius: 0.25rem;
-		background: $mono-color3;
+		background: $mono-color2;
 		font-weight: 500;
 
 		&:hover:not(.active) {

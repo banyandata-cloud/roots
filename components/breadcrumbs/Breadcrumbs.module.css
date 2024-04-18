@@ -42,11 +42,10 @@
   fill: var(--light-color3);
 }
 .root .crumb-actions[data-elem=base-cell].home {
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   border-radius: 4px;
-  background-color: var(--mono-color3) !important;
+  background-color: var(--mono-color2) !important;
   color: var(--text-color);
 }
 .root .crumb-actions[data-elem=base-cell].home .icon {
@@ -71,7 +70,7 @@
   gap: 0.5rem;
   padding: 0.5rem 0.5rem;
   border-radius: 0.25rem;
-  background: var(--mono-color3);
+  background: var(--mono-color2);
   font-weight: 500;
 }
 .root .crumb:hover:not(.active) {
