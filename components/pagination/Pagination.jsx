@@ -219,13 +219,13 @@ export const Pagination = forwardRef((props, ref) => {
 									currentPage === 0 || currentPage === 1
 										? activeCutomPage === page.number
 										: currentPage === page.number &&
-										  newCustomPageList[page.number - 1].enable;
+										  newCustomPageList?.[page.number - 1]?.enable;
 							} else {
 								active =
 									currentPage === 0 || currentPage === 1
 										? activePage === page.number
 										: currentPage === page.number &&
-										  customPageList[page.number - 1].enable;
+										  customPageList?.[page.number - 1]?.enable;
 							}
 
 							return (
