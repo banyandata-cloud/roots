@@ -86,6 +86,8 @@ const BaseVerticalBarChart = (props) => {
 		xAxis,
 		xAxisShow,
 		xAxisLabel,
+		xAxisLabelColor,
+		xAxisLineColor,
 		xSplitLineShow,
 		seriesData,
 		onEvents,
@@ -94,6 +96,8 @@ const BaseVerticalBarChart = (props) => {
 		ySplitLineShow,
 		yAxisLineShow,
 		yAxisTickShow,
+		yAxisLineColor,
+		yAxisLabelColor,
 		axisColor,
 		xAxisTick,
 		splitType,
@@ -255,12 +259,12 @@ const BaseVerticalBarChart = (props) => {
 					},
 					axisLabel: {
 						...xAxisLabel,
-						color: determineAxesColors('label', axisColor, theme),
+						color: xAxisLabelColor ?? determineAxesColors('label', axisColor, theme),
 					},
 					axisLine: {
 						show: xAxisShow,
 						lineStyle: {
-							color: determineAxesColors('line', axisColor, theme),
+							color: xAxisLineColor ?? determineAxesColors('line', axisColor, theme),
 						},
 					},
 					...xAxis,
@@ -275,7 +279,7 @@ const BaseVerticalBarChart = (props) => {
 					type: 'value',
 					axisLabel: {
 						show: yAxisLabelShow,
-						color: determineAxesColors('label', axisColor, theme),
+						color: yAxisLabelColor ?? determineAxesColors('label', axisColor, theme),
 					},
 					splitLine: {
 						show: ySplitLineShow,
@@ -287,7 +291,7 @@ const BaseVerticalBarChart = (props) => {
 					axisLine: {
 						show: yAxisLineShow,
 						lineStyle: {
-							color: determineAxesColors('line', axisColor, theme),
+							color: yAxisLineColor ?? determineAxesColors('line', axisColor, theme),
 						},
 					},
 					axisTick: {

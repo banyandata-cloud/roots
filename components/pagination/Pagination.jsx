@@ -219,13 +219,13 @@ export const Pagination = forwardRef((props, ref) => {
 									currentPage === 0 || currentPage === 1
 										? activeCutomPage === page.number
 										: currentPage === page.number &&
-										  newCustomPageList[page.number - 1].enable;
+										  newCustomPageList?.[page.number - 1]?.enable;
 							} else {
 								active =
 									currentPage === 0 || currentPage === 1
 										? activePage === page.number
 										: currentPage === page.number &&
-										  customPageList[page.number - 1].enable;
+										  customPageList?.[page.number - 1]?.enable;
 							}
 
 							return (
@@ -235,7 +235,7 @@ export const Pagination = forwardRef((props, ref) => {
 									onClick={() => {
 										if (
 											!hideDisabledPages &&
-											!customPageList[page.number - 1]?.enable &&
+											!customPageList?.[page.number - 1]?.enable &&
 											!page.ellipsis
 										) {
 											customPageCallback(page.number);
@@ -260,18 +260,18 @@ export const Pagination = forwardRef((props, ref) => {
 										styles.number,
 										customPagination ? styles['custom-number'] : null,
 										hideDisabledPages
-											? !newCustomPageList[page.number - 1]?.enable
+											? !newCustomPageList?.[page.number - 1]?.enable
 												? styles['disabled']
 												: null
-											: !customPageList[page.number - 1]?.enable
+											: !customPageList?.[page.number - 1]?.enable
 											? styles['disabled']
 											: null
 									)}>
 									{page.ellipsis
 										? '...'
 										: hideDisabledPages
-										? newCustomPageList[page.number - 1]?.label
-										: customPageList[page.number - 1]?.label}
+										? newCustomPageList?.[page.number - 1]?.label
+										: customPageList?.[page.number - 1]?.label}
 								</span>
 							);
 						})}
