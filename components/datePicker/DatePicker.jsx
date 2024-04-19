@@ -1,3 +1,4 @@
+/* eslint-disable no-unsafe-optional-chaining */
 import {
 	useClick,
 	useDismiss,
@@ -132,7 +133,10 @@ const DatePicker = (props) => {
 						selectedDate.year,
 						selectedMonth?.monthAsNumber,
 						selectedDate.date,
-						timeRangeSelection.previous?.HOURS,
+						timeRangeSelection.previous?.MER === 'PM' &&
+						timeRangeSelection.previous?.HOURS < 12
+							? timeRangeSelection.previous?.HOURS + 12
+							: timeRangeSelection.previous?.HOURS,
 						timeRangeSelection.previous?.MINS
 					)
 				);
@@ -142,10 +146,13 @@ const DatePicker = (props) => {
 						selectedDate.year,
 						selectedMonth?.monthAsNumber,
 						selectedDate.date,
-						timeRangeSelection.next?.HOURS,
+						timeRangeSelection.next?.MER === 'PM' && timeRangeSelection.next?.HOURS < 12
+							? timeRangeSelection.next?.HOURS + 12
+							: timeRangeSelection.next?.HOURS,
 						timeRangeSelection.next?.MINS
 					)
 				);
+
 				onApply?.([fromUnix, toUnix], fixedRange, getDateRangeTag([fromUnix, toUnix]));
 				return;
 			}
