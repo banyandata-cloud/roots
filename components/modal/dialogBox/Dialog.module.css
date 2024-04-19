@@ -1,10 +1,9 @@
 .root {
   padding: 0.25rem 0px;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
   max-height: 30rem;
-  background: var(--white);
+  background: var(--light-color3);
   border-radius: 0.25rem;
 }
 .root.sm {
@@ -16,7 +15,7 @@
 .root .header {
   font-weight: 600;
   font-size: 1rem;
-  color: var(--black);
+  color: var(--text-color);
 }
 .root .footer {
   display: flex;
@@ -32,11 +31,11 @@
   align-items: stretch;
   color: var(--grey1);
   border-radius: 0.25rem;
-  border: 1px solid var(--grey4);
+  border: 1px solid var(--mono-color3);
 }
 .root .description {
   font-size: 1rem;
-  height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
+  color: var(--text-color);
 }/*# sourceMappingURL=Dialog.module.css.map */

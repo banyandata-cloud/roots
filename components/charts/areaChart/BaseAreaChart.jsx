@@ -1,25 +1,22 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable react/forbid-prop-types */
-import PropTypes from 'prop-types';
 import EChartsReactCore from 'echarts-for-react/lib/core';
-import * as echarts from 'echarts/core';
 import { LineChart } from 'echarts/charts';
 import {
+	DatasetComponent,
 	GridComponent,
 	LegendComponent,
-	TooltipComponent,
 	TitleComponent,
-	DatasetComponent,
+	TooltipComponent,
 } from 'echarts/components';
+import * as echarts from 'echarts/core';
+import PropTypes from 'prop-types';
 // Import renderer, note that introducing the CanvasRenderer or SVGRenderer is a required step
-import {
-	CanvasRenderer,
-	// SVGRenderer,
-} from 'echarts/renderers';
-import styles from './BaseAreaChart.module.css';
-import { classes } from '../../../utils';
-import { Skeleton } from './Skeleton';
+import { CanvasRenderer } from 'echarts/renderers';
 import { COLORS } from '../../../styles';
+import { classes } from '../../../utils';
+import styles from './BaseAreaChart.module.css';
+import { Skeleton } from './Skeleton';
 
 // Register the required components
 echarts.use([
@@ -178,6 +175,7 @@ const BaseAreaChart = (props) => {
 			};
 		});
 	};
+
 	return (
 		<EChartsReactCore
 			option={{
@@ -264,13 +262,19 @@ const BaseAreaChart = (props) => {
 						axisLine: {
 							show: yAxisLineShow,
 							lineStyle: {
-								color: theme === 'dark' ? '#757679' : COLORS.grey3,
+								color:
+									theme === 'dark'
+										? '#757679'
+										: COLORS[`theme-${theme}-mono-color3`],
 							},
 						},
 						axisTick: {
 							show: yAxisTickShow,
 							lineStyle: {
-								color: theme === 'dark' ? '#a2a4a5' : COLORS.grey,
+								color:
+									theme === 'dark'
+										? '#a2a4a5'
+										: COLORS[`theme-${theme}-mono-color1`],
 							},
 						},
 					},
