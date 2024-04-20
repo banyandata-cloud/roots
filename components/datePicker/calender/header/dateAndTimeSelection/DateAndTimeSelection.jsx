@@ -10,6 +10,7 @@ const DateAndTimeSelection = ({
 	showDateSelectionView,
 	showTimeSelectionView,
 	timeRangeSelection = {},
+	showTime,
 }) => {
 	const { date, month, year } = selectedDate || {};
 
@@ -58,15 +59,17 @@ const DateAndTimeSelection = ({
 					title={dateValue}
 					variant='outlined'
 				/>
-				<Button
-					onClick={onTimeSelectorClick}
-					className={classes(
-						styles.selector,
-						activeGoToSelection === 'time' ? styles.active : ''
-					)}
-					title={timeValue}
-					variant='outlined'
-				/>
+				{showTime && (
+					<Button
+						onClick={onTimeSelectorClick}
+						className={classes(
+							styles.selector,
+							activeGoToSelection === 'time' ? styles.active : ''
+						)}
+						title={timeValue}
+						variant='outlined'
+					/>
+				)}
 			</div>
 		</div>
 	);
