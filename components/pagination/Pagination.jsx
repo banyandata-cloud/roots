@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import PropTypes from 'prop-types';
 import React, { forwardRef, useEffect, useReducer, useRef } from 'react';
 import { classes } from '../../utils';

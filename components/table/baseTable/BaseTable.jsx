@@ -43,16 +43,18 @@ const BaseTable = forwardRef(function BaseTable(props, ref) {
 				tableData?.length === 0 ? styles['no-scroll'] : '',
 				className
 			)}>
-			<TableHeader
-				{...{
-					headerData: transformedHeaderData,
-					customCells,
-					expandable,
-					onSort,
-					rowHeight,
-					onRowClick,
-				}}
-			/>
+			{tableData?.length > 0 && (
+				<TableHeader
+					{...{
+						headerData: transformedHeaderData,
+						customCells,
+						expandable,
+						onSort,
+						rowHeight,
+						onRowClick,
+					}}
+				/>
+			)}
 			{tableData?.length === 0 ? (
 				<NoDataPlaceHolder className={styles.placeholder} placeholder={placeholder} />
 			) : (

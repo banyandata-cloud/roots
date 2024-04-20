@@ -141,25 +141,26 @@ const Table = (props) => {
 				);
 			}}>
 			<div className={classes(styles.root, className)}>
-				{!Object.keys(disabledFilterOptions).every((key) => {
-					return disabledFilterOptions[key] === true;
-				}) && (
-					<TableFilters
-						className={styles.filters}
-						{...{
-							disabledFilterOptions,
-							headerData,
-							hiddenColumns,
-							setHiddenColumns,
-						}}
-						onAdvancedFilterClick={onAdvancedFilterClick}
-						loading={loading}
-						theme={theme}
-						tableTitleIcon={tableTitleIcon}
-						tableTitleText={tableTitleText}
-						onClear={onFilterClear}
-					/>
-				)}
+				{tableData?.length > 0 &&
+					!Object.keys(disabledFilterOptions).every((key) => {
+						return disabledFilterOptions[key] === true;
+					}) && (
+						<TableFilters
+							className={styles.filters}
+							{...{
+								disabledFilterOptions,
+								headerData,
+								hiddenColumns,
+								setHiddenColumns,
+							}}
+							onAdvancedFilterClick={onAdvancedFilterClick}
+							loading={loading}
+							theme={theme}
+							tableTitleIcon={tableTitleIcon}
+							tableTitleText={tableTitleText}
+							onClear={onFilterClear}
+						/>
+					)}
 				<BaseTable
 					{...{
 						ref,
