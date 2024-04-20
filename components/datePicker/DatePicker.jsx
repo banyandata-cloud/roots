@@ -44,6 +44,7 @@ const DatePicker = (props) => {
 		valueAsRange, // only for single Date Picker,
 		defaultHourDiff,
 		limitHours,
+		showTime,
 	} = props;
 
 	const [openDatePicker, setOpenDatePicker] = useState(false);
@@ -195,6 +196,7 @@ const DatePicker = (props) => {
 		setSelectedMonth,
 		defaultHourDiff,
 		limitHours,
+		showTime,
 	};
 
 	const customRangesProps = {

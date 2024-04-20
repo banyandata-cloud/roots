@@ -28,6 +28,7 @@ const Calender = (props) => {
 		setSelectedMonth,
 		defaultHourDiff,
 		limitHours,
+		showTime,
 	} = props;
 
 	const [dateSelectionView, showDateSelectionView] = useState(false);
@@ -213,6 +214,7 @@ const Calender = (props) => {
 				setTimeRangeSelection={setTimeRangeSelection}
 				defaultHourDiff={defaultHourDiff}
 				limitHours={limitHours}
+				showTime={showTime}
 			/>
 
 			{showCalender ? (
