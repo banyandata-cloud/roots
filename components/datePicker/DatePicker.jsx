@@ -155,6 +155,7 @@ const DatePicker = (props) => {
 				);
 
 				onApply?.([fromUnix, toUnix], fixedRange, getDateRangeTag([fromUnix, toUnix]));
+				setOpenDatePicker(false);
 				return;
 			}
 			const singleDateUnix = getUnixTime(
