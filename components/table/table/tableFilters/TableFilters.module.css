@@ -109,7 +109,6 @@
 .root[data-elem=base-cell] > [data-elem=component3] {
   gap: 0.5rem;
   height: 100%;
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
 }
