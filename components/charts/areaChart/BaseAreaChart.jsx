@@ -202,7 +202,7 @@ const BaseAreaChart = (props) => {
 								axisLabelColor !== ''
 									? axisLabelColor
 									: theme === 'dark'
-									? '#a2a4a5'
+									? COLORS[`theme-${theme}-mono-color2`]
 									: COLORS.grey,
 							...xAxisLabel,
 						},
@@ -221,13 +221,13 @@ const BaseAreaChart = (props) => {
 						axisLine: {
 							show: xAxisLineShow,
 							lineStyle: {
-								color: theme === 'dark' ? '#757679' : COLORS.grey3,
+								color: theme === 'dark' ? COLORS[`theme-${theme}-mono-color1`] : COLORS.grey3,
 							},
 						},
 						axisTick: {
 							show: xAxisTickShow,
 							lineStyle: {
-								color: theme === 'dark' ? '#a2a4a5' : COLORS.grey,
+								color: theme === 'dark' ? COLORS[`theme-${theme}-mono-color2`] : COLORS.grey,
 							},
 						},
 						boundaryGap: false,
@@ -243,7 +243,7 @@ const BaseAreaChart = (props) => {
 								axisLabelColor !== ''
 									? axisLabelColor
 									: theme === 'dark'
-									? '#a2a4a5'
+									? COLORS[`theme-${theme}-mono-color2`]
 									: COLORS.grey,
 							...yAxisLabel,
 						},
@@ -264,17 +264,14 @@ const BaseAreaChart = (props) => {
 							lineStyle: {
 								color:
 									theme === 'dark'
-										? '#757679'
+										?  COLORS[`theme-${theme}-mono-color2`]
 										: COLORS[`theme-${theme}-mono-color3`],
 							},
 						},
 						axisTick: {
 							show: yAxisTickShow,
 							lineStyle: {
-								color:
-									theme === 'dark'
-										? '#a2a4a5'
-										: COLORS[`theme-${theme}-mono-color1`],
+								color: COLORS[`theme-${theme}-mono-color1`],
 							},
 						},
 					},

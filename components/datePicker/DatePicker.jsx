@@ -198,6 +198,7 @@ const DatePicker = (props) => {
 		defaultHourDiff,
 		limitHours,
 		showTime,
+		valueAsRange,
 	};
 
 	const customRangesProps = {
