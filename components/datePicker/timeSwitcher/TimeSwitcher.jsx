@@ -78,8 +78,8 @@ const TimeCounter = ({
 const TimeSwitcher = (props) => {
 	return (
 		<div className={styles.root}>
-			<TimeCounter {...props} type='previous' />
-			<Text className={styles.to}>to</Text>
+			{props.valueAsRange && <TimeCounter {...props} type='previous' />}
+			{props.valueAsRange && <Text className={styles.to}>to</Text>}
 			<TimeCounter {...props} type='next' />
 		</div>
 	);
