@@ -41,19 +41,19 @@ echarts.use([
 
 const AXIS_COLORS = {
 	label: {
-		dark: '#a2a4a5',
+		dark: COLORS['theme-dark-mono-color3'],
 		light: COLORS.grey,
 	},
 	line: {
-		dark: '#757679',
-		light: '#414955',
+		dark: COLORS['theme-dark-mono-color2'],
+		light:  COLORS['theme-dark-mono-color1'],
 	},
 	split: {
 		dark: COLORS['dark-grey'],
 		light: COLORS['mono-color2'],
 	},
 	tick: {
-		dark: '#757679',
+		dark: COLORS['theme-dark-mono-color2'],
 		light: COLORS.grey3,
 	},
 };
@@ -83,15 +83,21 @@ const BaseVerticalBarChart = (props) => {
 		title,
 		gridContainLabel,
 		gridOptions,
+		xAxis,
 		xAxisShow,
 		xAxisLabel,
+		xAxisLabelColor,
+		xAxisLineColor,
 		xSplitLineShow,
 		seriesData,
 		onEvents,
+		yAxis,
 		yAxisLabelShow,
 		ySplitLineShow,
 		yAxisLineShow,
 		yAxisTickShow,
+		yAxisLineColor,
+		yAxisLabelColor,
 		axisColor,
 		xAxisTick,
 		splitType,
@@ -213,7 +219,7 @@ const BaseVerticalBarChart = (props) => {
 		<EChartsReactCore
 			option={{
 				title: {
-					text: title,
+					...title,
 				},
 				dataZoom: [
 					{
@@ -253,14 +259,15 @@ const BaseVerticalBarChart = (props) => {
 					},
 					axisLabel: {
 						...xAxisLabel,
-						color: determineAxesColors('label', axisColor, theme),
+						color: xAxisLabelColor ?? determineAxesColors('label', axisColor, theme),
 					},
 					axisLine: {
 						show: xAxisShow,
 						lineStyle: {
-							color: determineAxesColors('line', axisColor, theme),
+							color: xAxisLineColor ?? determineAxesColors('line', axisColor, theme),
 						},
 					},
+					...xAxis,
 				},
 				legend: {
 					...legend,
@@ -272,7 +279,7 @@ const BaseVerticalBarChart = (props) => {
 					type: 'value',
 					axisLabel: {
 						show: yAxisLabelShow,
-						color: determineAxesColors('label', axisColor, theme),
+						color: yAxisLabelColor ?? determineAxesColors('label', axisColor, theme),
 					},
 					splitLine: {
 						show: ySplitLineShow,
@@ -284,7 +291,7 @@ const BaseVerticalBarChart = (props) => {
 					axisLine: {
 						show: yAxisLineShow,
 						lineStyle: {
-							color: determineAxesColors('line', axisColor, theme),
+							color: yAxisLineColor ?? determineAxesColors('line', axisColor, theme),
 						},
 					},
 					axisTick: {
@@ -293,6 +300,7 @@ const BaseVerticalBarChart = (props) => {
 							color: determineAxesColors('tick', axisColor, theme),
 						},
 					},
+					...yAxis,
 				},
 				series: generateSeries(),
 			}}
@@ -311,6 +319,8 @@ BaseVerticalBarChart.propTypes = {
 	title: PropTypes.string,
 	gridContainLabel: PropTypes.bool,
 	gridOptions: PropTypes.object,
+	xAxis: PropTypes.object,
+	yAxis: PropTypes.object,
 	xAxisShow: PropTypes.bool,
 	xAxisLabel: PropTypes.object,
 	tooltip: PropTypes.object,
@@ -350,6 +360,8 @@ BaseVerticalBarChart.defaultProps = {
 		bottom: 0,
 		top: 5,
 	},
+	xAxis: {},
+	yAxis: {},
 	xAxisShow: true,
 	xAxisLabel: {
 		show: true,
