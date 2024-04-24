@@ -6,7 +6,6 @@ button.root[data-elem=base-cell] {
   display: inline-flex;
   -webkit-user-select: none;
      -moz-user-select: none;
-      -ms-user-select: none;
           user-select: none;
   border: none;
   background: none;
