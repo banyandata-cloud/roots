@@ -21,6 +21,7 @@ const Footer = ({
 	onCancel,
 	hideCancel,
 	variant,
+	setOpen,
 	customAction: CustomAction,
 }) => {
 	return (
@@ -35,7 +36,13 @@ const Footer = ({
 				/>
 			)}
 
-			{CustomAction && <CustomAction />}
+			{CustomAction && (
+				<CustomAction
+					dismiss={() => {
+						setOpen(false);
+					}}
+				/>
+			)}
 
 			{onAction && (
 				<Button onClick={onAction} title={action} color={variant} variant='outlined' />
@@ -90,6 +97,7 @@ const DialogBox = forwardRef((props, ref) => {
 		cancel: cancelText,
 		hideCancel,
 		variant,
+		setOpen,
 		...(customAction && {
 			customAction,
 		}),
