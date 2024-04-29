@@ -41,19 +41,19 @@ echarts.use([
 
 const AXIS_COLORS = {
 	label: {
-		dark: '#a2a4a5',
+		dark: COLORS['theme-dark-mono-color3'],
 		light: COLORS.grey,
 	},
 	line: {
-		dark: '#757679',
-		light: '#414955',
+		dark: COLORS['theme-dark-mono-color2'],
+		light:  COLORS['theme-dark-mono-color1'],
 	},
 	split: {
 		dark: COLORS['dark-grey'],
 		light: COLORS['mono-color2'],
 	},
 	tick: {
-		dark: '#757679',
+		dark: COLORS['theme-dark-mono-color2'],
 		light: COLORS.grey3,
 	},
 };

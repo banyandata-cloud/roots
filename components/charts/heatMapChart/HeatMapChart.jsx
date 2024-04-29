@@ -73,7 +73,7 @@ const HeatMapChart = (props) => {
 		},
 		itemStyle: {
 			borderWidth: 0,
-			borderColor: theme === 'dark' ? '#757679' : COLORS.grey3,
+			borderColor: theme === 'dark' ? COLORS[`theme-${theme}-mono-color1`] : COLORS.grey3,
 		},
 		emphasis: {
 			itemStyle: {

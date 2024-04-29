@@ -11,16 +11,21 @@ const DateAndTimeSelection = ({
 	showTimeSelectionView,
 	timeRangeSelection = {},
 	showTime,
+	valueAsRange,
 }) => {
 	const { date, month, year } = selectedDate || {};
 
 	const defaultDate = date ? `${doubleDigitted(date)} ${month?.substring(0, 3)} ${year}` : '';
-	const defaultTime = `${doubleDigitted(timeRangeSelection.previous?.HOURS)}:${doubleDigitted(
+	let defaultTime = `${doubleDigitted(
+		timeRangeSelection.next?.HOURS
+	)}:${doubleDigitted(timeRangeSelection.next?.MINS)} ${timeRangeSelection.next?.MER}`;
+	if(valueAsRange) {
+		defaultTime = `${doubleDigitted(timeRangeSelection.previous?.HOURS)}:${doubleDigitted(
 		timeRangeSelection.previous?.MINS
 	)} ${timeRangeSelection.previous?.MER} - ${doubleDigitted(
 		timeRangeSelection.next?.HOURS
 	)}:${doubleDigitted(timeRangeSelection.next?.MINS)} ${timeRangeSelection.next?.MER}`;
-
+	}
 	const [dateValue, setDateValue] = useState();
 
 	const [timeValue, setTimeValue] = useState();

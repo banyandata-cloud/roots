@@ -96,6 +96,7 @@ const ClockView = (props = {}) => {
 									next: {
 										...timeRangeSelection.next,
 										HOURS: item === 0 ? 1 : item + limitHours,
+										MER: item + limitHours >= 12 ? timeRangeSelection.next.MER === 'AM' ? 'PM' : 'AM' : timeRangeSelection.previous.MER,
 									},
 									previous: {
 										...timeRangeSelection[rangeType],
@@ -108,6 +109,7 @@ const ClockView = (props = {}) => {
 										...timeRangeSelection.previous,
 										HOURS:
 											item === 0 ? 11 : item === 1 ? 12 : item - limitHours,
+											MER: item === 11 ? 'AM' : 'PM',
 									},
 									next: {
 										...timeRangeSelection[rangeType],

@@ -14,7 +14,16 @@ const Header = ({ title }) => {
 	);
 };
 
-const Footer = ({ action, cancel, onAction, onCancel, hideCancel, variant }) => {
+const Footer = ({
+	action,
+	cancel,
+	onAction,
+	onCancel,
+	hideCancel,
+	variant,
+	setOpen,
+	customAction: CustomAction,
+}) => {
 	return (
 		<div className={styles.footer}>
 			{!hideCancel && (
@@ -24,6 +33,14 @@ const Footer = ({ action, cancel, onAction, onCancel, hideCancel, variant }) => 
 					className={styles.cancel}
 					onClick={onCancel}
 					title={cancel}
+				/>
+			)}
+
+			{CustomAction && (
+				<CustomAction
+					dismiss={() => {
+						setOpen(false);
+					}}
 				/>
 			)}
 
@@ -47,6 +64,7 @@ const DialogBox = forwardRef((props, ref) => {
 		onAction: null,
 		onCancel: null,
 		size: 'md',
+		customAction: null,
 	});
 
 	const {
@@ -57,6 +75,7 @@ const DialogBox = forwardRef((props, ref) => {
 		variant,
 		onAction,
 		onCancel,
+		customAction,
 		hideCancel = false,
 		noDismiss,
 		size: appliedSize,
@@ -78,6 +97,10 @@ const DialogBox = forwardRef((props, ref) => {
 		cancel: cancelText,
 		hideCancel,
 		variant,
+		setOpen,
+		...(customAction && {
+			customAction,
+		}),
 		...(onAction && {
 			onAction: () => {
 				onAction();

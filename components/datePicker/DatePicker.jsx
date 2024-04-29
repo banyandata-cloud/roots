@@ -198,6 +198,7 @@ const DatePicker = (props) => {
 		defaultHourDiff,
 		limitHours,
 		showTime,
+		valueAsRange,
 	};
 
 	const customRangesProps = {
@@ -390,6 +391,7 @@ DatePicker.propTypes = {
 	valueAsRange: PropTypes.bool, // only for single Date Picker,
 	defaultHourDiff: PropTypes.number,
 	limitHours: PropTypes.number,
+	showTime: PropTypes.bool,
 };
 
 DatePicker.defaultProps = {
@@ -409,6 +411,7 @@ DatePicker.defaultProps = {
 	valueAsRange: false,
 	defaultHourDiff: null,
 	limitHours: null,
+	showTime: true,
 };
 
 export default DatePicker;
