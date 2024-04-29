@@ -1,5 +1,5 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
-import { ThemedContainer } from '../helpers';
+import { ThemedContainer, ToggleIframeContainer } from '../helpers';
 import DatePicker from './DatePicker';
 
 <Meta title='Components/DatePicker' parameters={{ options: { showToolbar: true } }} />
@@ -137,12 +137,14 @@ The date picker with disabled dates inside the Calander
 
 This embeded `CodeSandBox` is external third party code editor `iframe` shared publicly. It is advised to create an account with banyancloud mail id to create/fork this sandbox.
 
-<iframe
-	src='https://codesandbox.io/embed/xenodochial-moon-5y668f?fontsize=14&hidenavigation=1&theme=dark'
-	style={{ width: '100%', height: 500 }}
-	title='xenodochial-moon-5y668f'
-	allow='accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking'
-	sandbox='allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts'></iframe>
+<ToggleIframeContainer>
+	<iframe
+		src='https://codesandbox.io/embed/xenodochial-moon-5y668f?fontsize=14&hidenavigation=1&theme=dark'
+		style={{ width: '100%', height: 500 }}
+		title='xenodochial-moon-5y668f'
+		allow='accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking'
+		sandbox='allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts'></iframe>
+</ToggleIframeContainer>
 
 ## API
 

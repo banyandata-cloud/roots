@@ -1,23 +1,11 @@
 import React, { useState } from 'react';
-import { Toggle } from '../../Toggle';
 
 const ToggleIframeContainer = (props) => {
 	const { className, children } = props;
-	const [value, setvalue] = useState('hide');
+	const [isOpen, setIsOpen] = useState(false);
 
-	const themeOptions = [
-		{
-			title: 'Hide',
-			value: 'hide',
-		},
-		{
-			title: 'Display',
-			value: 'display',
-		},
-	];
-
-	const updatevalue = (val) => {
-		setvalue(val);
+	const toggleAccordion = () => {
+		setIsOpen(!isOpen);
 	};
 
 	return (
@@ -30,15 +18,22 @@ const ToggleIframeContainer = (props) => {
 					alignItems: 'flex-start',
 					justifyContent: 'flex-start',
 					marginBottom: '1rem',
-				}}>
-				<Toggle
-					options={themeOptions}
-					value={value}
-					onChange={updatevalue}
-					smooth
-				/>
+					cursor: 'pointer',
+					backgroundColor: '#eeeeee',
+					padding: '0.5rem',
+				}}
+				onClick={toggleAccordion}>
+				<div
+					style={{
+						transition: 'transform 0.3s',
+						transform: isOpen ? 'rotate(90deg)' : 'rotate(0deg)',
+						marginRight: '1rem',
+					}}>
+					{'>'}
+				</div>
+				<div>{isOpen ? 'Hide Code Editor' : 'Show Code Editor'}</div>
 			</div>
-			{value === 'display' && children}
+			{isOpen && children}
 		</div>
 	);
 };
