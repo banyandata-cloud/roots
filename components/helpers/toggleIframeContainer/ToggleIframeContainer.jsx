@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styles from './ToggleIframeContainer.module.css';
 
 const ToggleIframeContainer = (props) => {
 	const { className, children } = props;
@@ -10,27 +11,8 @@ const ToggleIframeContainer = (props) => {
 
 	return (
 		<div className={className}>
-			<div
-				style={{
-					display: 'flex',
-					flex: 'row',
-					width: '100%',
-					alignItems: 'flex-start',
-					justifyContent: 'flex-start',
-					marginBottom: '1rem',
-					cursor: 'pointer',
-					backgroundColor: '#eeeeee',
-					padding: '0.5rem',
-				}}
-				onClick={toggleAccordion}>
-				<div
-					style={{
-						transition: 'transform 0.3s',
-						transform: isOpen ? 'rotate(90deg)' : 'rotate(0deg)',
-						marginRight: '1rem',
-					}}>
-					{'>'}
-				</div>
+			<div className={styles.root} onClick={toggleAccordion}>
+				<div className={`${styles.main} ${isOpen ? styles.open : styles.close}`}>{'>'}</div>
 				<div>{isOpen ? 'Hide Code Editor' : 'Show Code Editor'}</div>
 			</div>
 			{isOpen && children}
