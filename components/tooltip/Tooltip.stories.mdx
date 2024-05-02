@@ -1,6 +1,7 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import { useRef } from 'react';
+import { ToggleIframeContainer } from '../helpers';
 import Tooltip from './Tooltip';
 
 <Meta title='Components/Tooltip' parameters={{ options: { showToolbar: false } }} />
@@ -157,12 +158,14 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 
 This embeded `CodeSandBox` is external third party code editor `iframe` shared publicly. It is advised to create an account with banyancloud mail id to create/fork this sandbox.
 
-<iframe
-	src='https://codesandbox.io/s/cold-tree-ndkld9?file=/src/App.js'
-	style={{ width: '100%', height: 500 }}
-	title='xenodochial-moon-5y668f'
-	allow='accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking'
-	sandbox='allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts'></iframe>
+<ToggleIframeContainer>
+	<iframe
+		src='https://codesandbox.io/s/cold-tree-ndkld9?file=/src/App.js'
+		style={{ width: '100%', height: 500 }}
+		title='xenodochial-moon-5y668f'
+		allow='accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking'
+		sandbox='allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts'></iframe>
+</ToggleIframeContainer>
 
 ## API
 

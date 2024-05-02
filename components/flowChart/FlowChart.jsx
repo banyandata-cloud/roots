@@ -242,7 +242,8 @@ const FlowChart = ({
 			.attr('opacity', 0.9)
 			.call(d3.drag().on('start', dragstarted).on('drag', dragged).on('end', dragended))
 			.on('mouseover', handleMouseOver)
-			.on('mouseout', handleMouseOut);
+			.on('mouseout', handleMouseOut)
+			.style('cursor', 'pointer');
 		// .on('click', (event, d) => {
 		// console.log('Clicked node ID:', d.id);
 		// });
@@ -257,8 +258,7 @@ const FlowChart = ({
 		function handleMouseOut() {
 			d3.select(this)
 				.attr('stroke', () => {
-					return d3
-						.darker(1);
+					return d3.darker(1);
 				})
 				.attr('stroke-width', 1);
 
@@ -287,7 +287,8 @@ const FlowChart = ({
 			.text((d) => {
 				const labelStr = d.label.replace(/[^a-zA-Z]/g, '');
 				return labelStr;
-			});
+			})
+			.style('cursor', 'pointer');
 
 		simulation.on('tick', () => {
 			link.attr('x1', (d) => {

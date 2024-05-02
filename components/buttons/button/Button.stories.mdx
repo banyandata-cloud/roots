@@ -1,6 +1,6 @@
 import { Meta, Canvas, Story } from '@storybook/addon-docs';
 
-import { ThemedContainer } from '../../helpers';
+import { ThemedContainer, ToggleIframeContainer } from '../../helpers';
 import Button from './Button';
 import { CopyIcon, ArrowIcon } from '../../icons';
 
@@ -180,12 +180,20 @@ Disabled button with no interaction.
 
 This embeded `CodeSandBox` is external third party code editor `iframe` shared publicly. It is advised to create an account with banyancloud mail id to create/fork this sandbox.
 
-<iframe
-	src='https://codesandbox.io/embed/banyancloud-Button-2m9sk7?fontsize=14&hidenavigation=1&theme=dark'
-	style={{ width: '100%', height: '500px', border: 0, borderRadius: '4px', overflow: 'hidden' }}
-	title='BanyanCloud - Button'
-	allow='accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking'
-	sandbox='allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts'></iframe>
+<ToggleIframeContainer>
+	<iframe
+		src='https://codesandbox.io/embed/banyancloud-Button-2m9sk7?fontsize=14&hidenavigation=1&theme=dark'
+		style={{
+			width: '100%',
+			height: '500px',
+			border: 0,
+			borderRadius: '4px',
+			overflow: 'hidden',
+		}}
+		title='BanyanCloud - Button'
+		allow='accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking'
+		sandbox='allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts'></iframe>
+</ToggleIframeContainer>
 
 ## API
 

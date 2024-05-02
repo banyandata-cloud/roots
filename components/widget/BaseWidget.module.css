@@ -116,7 +116,7 @@
   color: var(--white);
 }
 .root.dark-theme .header .header-title [data-elem=title-desc] {
-  color: #9a9ea5;
+  color: var(--text-color);
 }
 .root.dark-theme .header .header-title .title .icon {
   fill: var(--white);
@@ -152,7 +152,7 @@
   color: #1a2028;
 }
 .root.light-theme .header .header-title [data-elem=title-desc] {
-  color: var(--text-colour2);
+  color: var(--grey3);
 }
 .root.light-theme .header .header-title .title .icon {
   fill: var(--menu-black);

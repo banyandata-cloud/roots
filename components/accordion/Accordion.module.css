@@ -37,6 +37,7 @@
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
+  color: var(--text-color);
 }
 .root > .header[data-elem=base-cell]:hover {
   background: var(--background-color4);
