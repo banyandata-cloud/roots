@@ -10,9 +10,15 @@
 
 	.table {
 		height: calc(100% - (6rem));
+		padding-bottom: 3.5rem;
 	}
 
 	.pagination {
+		position: absolute;
+		bottom: 0;
+		left: 50%;
+		transform: translateX(-50%);
+
 		&.floating {
 			bottom: 1rem;
 		}
