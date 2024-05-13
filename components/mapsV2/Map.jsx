@@ -4,6 +4,7 @@ import HighchartsReact from 'highcharts-react-official';
 import highchartsExportData from 'highcharts/modules/export-data';
 import highchartsExporting from 'highcharts/modules/exporting';
 import highchartsMap from 'highcharts/modules/map';
+import TiledWebMap from 'highcharts/modules/tiledwebmap';
 import markerClusters from 'highcharts/modules/marker-clusters';
 import PropTypes from 'prop-types';
 import { forwardRef, useImperativeHandle, useRef } from 'react';
@@ -18,6 +19,7 @@ markerClusters(Highcharts);
 highchartsMap(Highcharts);
 highchartsExporting(Highcharts);
 highchartsExportData(Highcharts);
+TiledWebMap(Highcharts);
 
 Highcharts.AST.allowedReferences.push('data:');
 Highcharts.AST.allowedAttributes.push('svg');
