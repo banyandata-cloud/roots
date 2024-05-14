@@ -6,7 +6,6 @@ div.root > [data-elem=header] {
 }
 div.root > [data-elem=header] > [data-elem=select] {
   border: none;
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   height: 100%;
@@ -20,14 +19,12 @@ div.root > [data-elem=header] > [data-elem=select] > [data-elem=placeholder] {
 
 ul.popper {
   height: 20rem;
-  max-height: -webkit-fit-content;
   max-height: -moz-fit-content;
   max-height: fit-content;
   padding: 1rem 1rem 0rem;
 }
 ul.popper > button:last-child {
   width: auto;
-  position: -webkit-sticky;
   position: sticky;
   bottom: 0rem;
 }

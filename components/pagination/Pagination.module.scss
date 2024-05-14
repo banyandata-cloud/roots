@@ -17,7 +17,7 @@
 		background: $light-color1;
 		position: absolute;
 		border-radius: 6.25rem;
-		width: 82%;
+		width: 100%;
 		bottom: 3rem;
 	}
 
@@ -234,7 +234,7 @@
 								border: none;
 								height: 100%;
 								width: 100%;
-								color: #9a9ea5;
+								color: $text-color;
 								font-size: 0.875rem;
 								font-style: normal;
 								font-weight: 600;

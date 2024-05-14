@@ -69,6 +69,9 @@ export const mapOptions = (props) => {
 		customMarker,
 		customMarkerOptions,
 		theme,
+		type,
+		providerType,
+		providerTheme,
 	} = props;
 
 	let markerOptions = {};
@@ -83,6 +86,11 @@ export const mapOptions = (props) => {
 	}
 
 	const baseMap = {
+		type,
+		provider: {
+			type: providerType,
+			theme: providerTheme,
+		},
 		mapData: mapBase, // main world map file to be loaded
 		borderColor: MAP_THEME[theme].mapAreaBorderColor, // borders of the countries
 		nullColor: MAP_THEME[theme].mapAreaColor, // land areas

@@ -1,6 +1,7 @@
-import { Meta, Canvas, Story } from '@storybook/addon-docs';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { useState } from 'react';
 import ThemedContainer from '../helpers/themedContainer/ThemedContainer';
+import ToggleIframeContainer from '../helpers/toggleIframeContainer/ToggleIframeContainer'
 import { PlusIcon } from '../icons';
 import Accordion from './Accordion';
 
@@ -134,12 +135,14 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 
 This embeded `CodeSandBox` is external third party code editor `iframe` shared publicly. It is advised to create an account with banyancloud mail id to create/fork this sandbox.
 
+<ToggleIframeContainer>
 <iframe
 	src='https://codesandbox.io/s/condescending-grass-6y725l?file=/src/App.js'
 	style={{ width: '100%', height: 500 }}
 	title='xenodochial-moon-5y668f'
 	allow='accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking'
 	sandbox='allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts'></iframe>
+</ToggleIframeContainer>
 
 ## API
 

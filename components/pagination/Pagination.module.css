@@ -22,7 +22,7 @@
   background: var(--light-color1);
   position: absolute;
   border-radius: 6.25rem;
-  width: 82%;
+  width: 100%;
   bottom: 3rem;
 }
 .root .copyrightText {
@@ -167,7 +167,6 @@
   height: 2.375rem;
   max-height: 100%;
   width: auto;
-  min-width: -webkit-fit-content;
   min-width: -moz-fit-content;
   min-width: fit-content;
   padding: 0.625rem;
@@ -248,7 +247,7 @@
   border: none;
   height: 100%;
   width: 100%;
-  color: #9a9ea5;
+  color: var(--text-color);
   font-size: 0.875rem;
   font-style: normal;
   font-weight: 600;

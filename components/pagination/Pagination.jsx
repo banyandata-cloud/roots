@@ -111,7 +111,7 @@ export const Pagination = forwardRef((props, ref) => {
 		? new CustomPaginationList({
 				curr: currentPage === 0 ? 1 : currentPage,
 				total: hideDisabledPages ? newCustomPageList?.length : totalPages,
-				hideDisabledPages: hideDisabledPages,
+				hideDisabledPages,
 				customPageList: hideDisabledPages ? newCustomPageList : customPageList,
 		  })
 		: new PaginationList({
@@ -262,10 +262,10 @@ export const Pagination = forwardRef((props, ref) => {
 										customPagination ? styles['custom-number'] : null,
 										hideDisabledPages
 											? !newCustomPageList[page.number - 1]?.enable
-												? styles['disabled']
+												? styles.disabled
 												: null
 											: !customPageList[page.number - 1]?.enable
-											? styles['disabled']
+											? styles.disabled
 											: null
 									)}>
 									{page.ellipsis
@@ -413,7 +413,7 @@ export const Pagination = forwardRef((props, ref) => {
 							<form
 								onSubmit={(e) => {
 									e.preventDefault();
-									if (!customPageList[jumpPageRef?.current?.value - 1]?.enable) {
+									if (!customPageList[jumpPageRef.current.value - 1]?.enable) {
 										customPageCallback(jumpPageRef?.current?.value);
 										return;
 									}
