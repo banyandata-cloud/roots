@@ -38,11 +38,13 @@ const BaseAreaChart = (props) => {
 		seriesData,
 		tooltip,
 		legend,
+		xAxis,
 		xAxisLabelShow,
 		xSplitLineShow,
 		xAxisLineShow,
 		xAxisTickShow,
 		xAxisLabel,
+		yAxis,
 		yAxisLabelShow,
 		ySplitLineShow,
 		yAxisLineShow,
@@ -195,6 +197,7 @@ const BaseAreaChart = (props) => {
 				},
 				xAxis: [
 					{
+						data: seriesData?.metaData?.xAxisData ?? [],
 						type: 'category',
 						axisLabel: {
 							show: xAxisLabelShow,
@@ -202,7 +205,7 @@ const BaseAreaChart = (props) => {
 								axisLabelColor !== ''
 									? axisLabelColor
 									: theme === 'dark'
-									? COLORS[`theme-${theme}-mono-color2`]
+									? COLORS[`theme-${theme}-mono-color3`]
 									: COLORS.grey,
 							...xAxisLabel,
 						},
@@ -214,24 +217,24 @@ const BaseAreaChart = (props) => {
 										? axisSplitColor
 										: theme === 'dark'
 										? COLORS['dark-grey']
-										: COLORS.grey5,
+										: COLORS['mono-color2'],
 								type: splitType,
 							},
 						},
 						axisLine: {
 							show: xAxisLineShow,
 							lineStyle: {
-								color: theme === 'dark' ? COLORS[`theme-${theme}-mono-color1`] : COLORS.grey3,
+								color: theme === 'dark' ? COLORS[`theme-${theme}-mono-color2`] : COLORS[`theme-${theme}-mono-color1`],
 							},
 						},
 						axisTick: {
 							show: xAxisTickShow,
 							lineStyle: {
-								color: theme === 'dark' ? COLORS[`theme-${theme}-mono-color2`] : COLORS.grey,
+								color: theme === 'dark' ? COLORS[`theme-${theme}-mono-color2`] : COLORS.grey3,
 							},
 						},
 						boundaryGap: false,
-						data: seriesData?.metaData?.xAxisData ?? [],
+						...xAxis,
 					},
 				],
 				yAxis: [
@@ -243,7 +246,7 @@ const BaseAreaChart = (props) => {
 								axisLabelColor !== ''
 									? axisLabelColor
 									: theme === 'dark'
-									? COLORS[`theme-${theme}-mono-color2`]
+									? COLORS[`theme-${theme}-mono-color3`]
 									: COLORS.grey,
 							...yAxisLabel,
 						},
@@ -265,15 +268,18 @@ const BaseAreaChart = (props) => {
 								color:
 									theme === 'dark'
 										?  COLORS[`theme-${theme}-mono-color2`]
-										: COLORS[`theme-${theme}-mono-color3`],
+										: COLORS[`theme-${theme}-mono-color1`],
 							},
 						},
 						axisTick: {
 							show: yAxisTickShow,
 							lineStyle: {
-								color: COLORS[`theme-${theme}-mono-color1`],
+								color: theme === 'dark'
+								?  COLORS[`theme-${theme}-mono-color2`]
+								: COLORS.grey3,
 							},
 						},
+						...yAxis,
 					},
 				],
 				series: generateSeries(),
@@ -292,6 +298,8 @@ BaseAreaChart.propTypes = {
 	fallback: PropTypes.bool,
 	title: PropTypes.string,
 	gridOptions: PropTypes.object,
+	xAxis: PropTypes.object,
+	yAxis: PropTypes.object,
 	gridContainLabel: PropTypes.bool,
 	tooltip: PropTypes.object,
 	legend: PropTypes.object,
@@ -333,6 +341,8 @@ BaseAreaChart.defaultProps = {
 		bottom: 0,
 		top: 0,
 	},
+	xAxis: {},
+	yAxis: {},
 	gridContainLabel: false,
 	tooltip: {},
 	stacked: false,

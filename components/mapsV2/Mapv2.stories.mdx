@@ -418,6 +418,83 @@ The Map component within widget.
 	</Story>
 </Canvas>
 
+### Tiled Web Map
+
+The Tiled Web Map component with details.
+
+<Canvas>
+	<Story name='Tiled Web Map'>
+		{() => {
+			const coords = [
+				{
+					lat: 28,
+					lon: 120,
+				},
+				{
+					lat: 28.5,
+					lon: 120,
+				},
+				{
+					lat: 28.2,
+					lon: 120,
+				},
+				{
+					lat: 27,
+					lon: 103,
+				},
+				{
+					lat: 22,
+					lon: 125,
+				},
+				{
+					lat: 22,
+					lon: 78,
+				},
+				{ lon: 77.73, lat: 12.96 },
+				{
+					lon: -121,
+					lat: 37,
+					tooltip: ReactDOMServer.renderToString(<MapTooltip />),
+				},
+			];
+			const [theme, setTheme] = useState('dark');
+			return (
+				<ThemedContainer
+					theme={theme}
+					style={{
+						width: '100%',
+						height: '100%',
+					}}>
+					<Toggle
+						options={[
+							{
+								value: 'dark',
+								title: 'Dark',
+							},
+							{
+								value: 'light',
+								title: 'Light',
+							},
+						]}
+						value={theme}
+						onChange={setTheme}
+					/>
+					<Map
+						v2
+						theme={theme}
+						cluster={false}
+						coordinates={coords}
+						type='tiledwebmap'
+						providerType='OpenStreetMap'
+						providerTheme='OpenTopoMap'
+						showZoomButton={true}
+					/>
+				</ThemedContainer>
+			);
+		}}
+	</Story>
+</Canvas>
+
 ## Try in the Code Editor
 
 This embeded `CodeSandBox` is external third party code editor `iframe` shared publicly. It is advised to create an account with banyancloud mail id to create/fork this sandbox.
