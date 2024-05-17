@@ -285,7 +285,7 @@ const FlowChart = ({
 			.attr('fill', labelColor)
 			.style('font-size', labelFontSize)
 			.text((d) => {
-				const labelStr = d.label.replace(/[^a-zA-Z]/g, '');
+				const labelStr = d.label.split(' ').join(' '); // Split by space and join with space
 				return labelStr;
 			})
 			.style('cursor', 'pointer');
@@ -382,7 +382,7 @@ FlowChart.defaultProps = {
 	height: 600,
 	linkDistance: 150,
 	linkFontSize: '8px',
-	nodeRadius: 13,
+	nodeRadius: 16,
 	labelFontSize: '8px',
 	linkTextColor: 'black',
 	labelColor: 'white',
