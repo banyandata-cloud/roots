@@ -1304,6 +1304,7 @@ The default FlowChart.
 					},
 				],
 			},
+			showLegend: true,
 			width: 900,
 			height: 600,
 		}}>
@@ -1505,4 +1506,22 @@ hideLinkText will hide the text on the link beetween the nodes.
 
 ```jsx
 <FlowChart hideLinkText= true />
+```
+**`showLegend`**
+
+showLegend will enable the legend at the top left.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>bool</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<FlowChart showLegend= true />
 ```
