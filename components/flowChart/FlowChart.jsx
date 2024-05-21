@@ -32,6 +32,7 @@ const FlowChart = ({
 	labelFontSize,
 	linkTextColor,
 	hideLinkText,
+	showLegend,
 }) => {
 	const svgRef = useRef(null);
 
@@ -96,9 +97,16 @@ const FlowChart = ({
 			linkedNodesIds.add(link.target);
 		});
 
-		const filteredNodes = uniqueNodes?.filter((node) => {
-			return linkedNodesIds.has(node.id);
-		});
+		const filteredNodes = uniqueNodes
+			?.filter((node) => {
+				return linkedNodesIds.has(node.id);
+			})
+			.map((node) => {
+				return {
+					...node,
+					shortId: node.id.substr(node.id.lastIndexOf('/') + 1),
+				};
+			});
 
 		const simulation = d3
 			.forceSimulation(filteredNodes)
@@ -201,10 +209,10 @@ const FlowChart = ({
 			'#0043CE',
 			'#71839B',
 			'#BD3C45',
-			'#110B02',
-			'#487349',
+			'#2a9d8f',
+			'#c1121f',
 			'#FF892A',
-			'#00037C',
+			'#5e548e',
 			'#FF1597',
 			'#CBA006',
 			'#4E9F3D',
@@ -222,10 +230,16 @@ const FlowChart = ({
 				return d.id;
 			})
 			.enter()
-			.append('circle')
+			.append('g')
 			.attr('class', (d) => {
 				return `node-level-${d.level}`;
 			})
+			.call(d3.drag().on('start', dragstarted).on('drag', dragged).on('end', dragended))
+			.on('mouseover', handleMouseOver) // Attach mouseover event
+			.on('mouseout', handleMouseOut)
+			.style('cursor', 'pointer');
+
+		node.append('circle')
 			.attr('r', (d) => {
 				return calculateRadius(d.label);
 			})
@@ -238,15 +252,32 @@ const FlowChart = ({
 
 				// Return the color for the current labelStr
 				return colorMap[labelStr];
-			})
-			.attr('opacity', 0.9)
-			.call(d3.drag().on('start', dragstarted).on('drag', dragged).on('end', dragended))
-			.on('mouseover', handleMouseOver)
-			.on('mouseout', handleMouseOut)
-			.style('cursor', 'pointer');
-		// .on('click', (event, d) => {
-		// console.log('Clicked node ID:', d.id);
-		// });
+			});
+
+		// Append text for label
+		node.append('text')
+			.attr('text-anchor', 'middle')
+			.attr('fill', labelColor)
+			.attr('font-size', labelFontSize)
+			.attr('dy', -5)
+			.text((d) => {
+				return d.label;
+			});
+
+		// Append text for ID
+		node.append('text')
+			.attr('text-anchor', 'middle')
+			.attr('fill', 'black')
+			.attr('font-size', labelFontSize)
+			.attr('dy', 10)
+			.text((d) => {
+				const maxLength = 15; // Maximum characters allowed before wrapping
+				const id =
+					d.shortId.length > maxLength
+						? `${d.shortId.substring(0, maxLength)}...`
+						: d.shortId;
+				return id;
+			});
 
 		function handleMouseOver(event, d) {
 			d3.select(this).attr('stroke-width', 2);
@@ -274,23 +305,10 @@ const FlowChart = ({
 			return defaultRadius * scale(Math.min(labelLength, maxLength)) + 13;
 		}
 
-		const labels = container
-			.selectAll('.label')
-			.data(filteredNodes)
-			.enter()
-			.append('text')
-			.attr('class', 'label')
-			.attr('dy', '.35em')
-			.attr('text-anchor', 'middle')
-			.attr('fill', labelColor)
-			.style('font-size', labelFontSize)
-			.text((d) => {
-				const labelStr = d.label.split(' ').join(' '); // Split by space and join with space
-				return labelStr;
-			})
-			.style('cursor', 'pointer');
-
 		simulation.on('tick', () => {
+			node.attr('transform', (d) => {
+				return `translate(${d.x}, ${d.y})`;
+			});
 			link.attr('x1', (d) => {
 				return d.source.x;
 			})
@@ -302,18 +320,6 @@ const FlowChart = ({
 				})
 				.attr('y2', (d) => {
 					return d.target.y;
-				});
-			node.attr('cx', (d) => {
-				return d.x;
-			}).attr('cy', (d) => {
-				return d.y;
-			});
-			labels
-				.attr('x', (d) => {
-					return d.x;
-				})
-				.attr('y', (d) => {
-					return d.y;
 				});
 			linkPaths.attr('d', (d) => {
 				const startX = d.source.x;
@@ -338,6 +344,52 @@ const FlowChart = ({
 			container.attr('transform', event.transform);
 		}
 
+		if (showLegend) {
+			const legendX = 10;
+			const legendY = 10;
+			const legendItemHeight = 13;
+			const colorSquareSize = 10;
+
+			// Create legend container
+			const legendContainer = svg
+				.append('g')
+				.attr('class', 'legend')
+				.attr('transform', `translate(${legendX}, ${legendY})`);
+
+			// Add legend items
+			const legendItems = legendContainer
+				.selectAll('.legend-item')
+				.data(Object.entries(colorMap))
+				.enter()
+				.append('g')
+				.attr('class', 'legend-item')
+				.attr('transform', (d, i) => {
+					return `translate(0, ${i * legendItemHeight})`;
+				});
+
+			// Add colored squares
+			legendItems
+				.append('rect')
+				.attr('width', colorSquareSize)
+				.attr('height', colorSquareSize)
+				.attr('fill', (d) => {
+					return d[1];
+				});
+
+			// Add labels
+			legendItems
+				.append('text')
+				.attr('x', colorSquareSize + 5)
+				.attr('y', colorSquareSize / 2)
+				.text((d) => {
+					return d[0];
+				})
+				.attr('fill', 'black')
+				.style('font-size', labelFontSize)
+				.attr('dy', '0.35em')
+				.attr('alignment-baseline', 'middle');
+		}
+
 		// eslint-disable-next-line consistent-return
 		return () => {
 			simulation.stop();
@@ -354,6 +406,7 @@ const FlowChart = ({
 		labelFontSize,
 		linkTextColor,
 		hideLinkText,
+		showLegend,
 	]);
 
 	return <svg ref={svgRef} width={width} height={height} />;
@@ -375,6 +428,7 @@ FlowChart.propTypes = {
 	labelColor: PropTypes.string,
 	linkTextColor: PropTypes.string,
 	hideLinkText: PropTypes.bool,
+	showLegend: PropTypes.bool,
 };
 
 FlowChart.defaultProps = {
@@ -387,6 +441,7 @@ FlowChart.defaultProps = {
 	linkTextColor: 'black',
 	labelColor: 'white',
 	hideLinkText: false,
+	showLegend: false,
 };
 
 export default FlowChart;
