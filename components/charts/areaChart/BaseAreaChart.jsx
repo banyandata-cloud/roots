@@ -224,7 +224,7 @@ const BaseAreaChart = (props) => {
 						axisLine: {
 							show: xAxisLineShow,
 							lineStyle: {
-								color: theme === 'dark' ? COLORS[`theme-${theme}-mono-color2`] : COLORS[`theme-${theme}-mono-color1`],
+								color: theme === 'dark' ? COLORS[`theme-dark-mono-color2`] : COLORS[`theme-dark-mono-color1`],
 							},
 						},
 						axisTick: {
@@ -267,8 +267,8 @@ const BaseAreaChart = (props) => {
 							lineStyle: {
 								color:
 									theme === 'dark'
-										?  COLORS[`theme-${theme}-mono-color2`]
-										: COLORS[`theme-${theme}-mono-color1`],
+										?  COLORS[`theme-dark-mono-color2`]
+										: COLORS[`theme-dark-mono-color1`],
 							},
 						},
 						axisTick: {
