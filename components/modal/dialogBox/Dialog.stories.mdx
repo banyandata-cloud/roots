@@ -43,9 +43,12 @@ The default Dialog Box.
 					console.log('mlk');
 					dialogRef.current.dialog({
 						title: 'Delete Row?',
-						description: 'Are you sure you want to delete',
-						action: 'Delete',
-						variant: 'danger',
+						description: 'Are you sure you want to delete?',
+						actionText: 'Done',
+						cancelText: 'Save',
+						variant: 'primary',
+						onAction: () => {
+						},
 					});
 				}
 			};
