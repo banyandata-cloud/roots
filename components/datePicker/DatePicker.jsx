@@ -163,7 +163,9 @@ const DatePicker = (props) => {
 					selectedDate.year,
 					selectedMonth?.monthAsNumber,
 					selectedDate.date,
-					timeRangeSelection.next?.HOURS,
+					timeRangeSelection.next?.MER === 'PM' && timeRangeSelection.next?.HOURS < 12
+						? timeRangeSelection.next?.HOURS + 12
+						: timeRangeSelection.next?.HOURS,
 					timeRangeSelection.next?.MINS
 				)
 			);
