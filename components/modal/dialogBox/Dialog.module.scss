@@ -24,7 +24,7 @@
 		@include flex(row);
 		gap: 1rem;
 		.cancel[data-elem='base-cell'] {
-			width: 40%;
+			width: 45%;
 			@include flex(row, center, stretch);
 			background: $mono-color2;
 			outline: none;
@@ -32,7 +32,7 @@
 			border: none;
 		}
 		.save[data-elem='base-cell'] {
-			width: 40%;
+			width: 45%;
 			@include flex(row, center, stretch);
 			color: $white;
 			border-radius: 0.25rem;
@@ -43,9 +43,9 @@
 	}
 	.description {
 		font-size: 2rem;
-		padding-left: 1rem;
+		padding-left: 1.2rem;
 		font-weight: 600;
-		padding-right: 1rem;
+		padding-right: 1.2rem;
 		height: fit-content;
 		color: $text-color;
 		text-align: center;
