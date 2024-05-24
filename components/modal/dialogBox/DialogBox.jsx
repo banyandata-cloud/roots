@@ -6,14 +6,6 @@ import { Button } from '../../buttons';
 import BaseModal from '../BaseModal';
 import styles from './Dialog.module.css';
 
-const Header = ({ title }) => {
-	return (
-		<div className={styles.header}>
-			<p>{title}</p>
-		</div>
-	);
-};
-
 const Footer = ({
 	action,
 	cancel,
@@ -45,7 +37,13 @@ const Footer = ({
 			)}
 
 			{onAction && (
-				<Button onClick={onAction} title={action} color={variant} variant='outlined' />
+				<Button
+					onClick={onAction}
+					className={styles.save}
+					title={action}
+					color={variant}
+					variant='outlined'
+				/>
 			)}
 		</div>
 	);
@@ -68,7 +66,6 @@ const DialogBox = forwardRef((props, ref) => {
 	});
 
 	const {
-		title,
 		description,
 		actionText,
 		cancelText,
@@ -86,10 +83,6 @@ const DialogBox = forwardRef((props, ref) => {
 	const toggle = () => {
 		onCancel?.();
 		setOpen(false);
-	};
-
-	const headerProps = {
-		title,
 	};
 
 	const footerProps = {
@@ -140,7 +133,7 @@ const DialogBox = forwardRef((props, ref) => {
 			hideCrossDismiss
 			noDismiss={noDismiss}
 			className={classes(styles.root, styles[size], className)}
-			renderHeader={title && <Header {...headerProps} />}
+			// renderHeader={title && <Header {...headerProps} />}
 			renderFooter={<Footer {...footerProps} />}>
 			<div className={styles.description}>{description}</div>
 		</BaseModal>

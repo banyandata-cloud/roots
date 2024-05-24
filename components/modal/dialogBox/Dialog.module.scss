@@ -5,7 +5,7 @@
 	height: fit-content;
 	max-height: 30rem;
 	background: $light-color3;
-	border-radius: 0.25rem;
+	border-radius: 0.75rem;
 
 	&.sm {
 		width: 21.25rem;
@@ -14,26 +14,40 @@
 	&.md {
 		width: 35rem;
 	}
-
-	.header {
-		font-weight: 600;
-		font-size: 1rem;
-		color: $text-color;
+	>[data-elem="footer"]{
+		border: none;
+				@include flex(row, center, center);
 	}
 
 	.footer {
+		width: 100%;
 		@include flex(row);
 		gap: 1rem;
 		.cancel[data-elem='base-cell'] {
+			width: 45%;
 			@include flex(row, center, stretch);
-			color: $grey1;
+			background: $mono-color2;
+			outline: none;
 			border-radius: 0.25rem;
-			border: 1px solid $mono-color3;
+			border: none;
+		}
+		.save[data-elem='base-cell'] {
+			width: 45%;
+			@include flex(row, center, stretch);
+			color: $white;
+			border-radius: 0.25rem;
+			border: none;
+			background: $secondary-color2;
+			outline: none;
 		}
 	}
 	.description {
-		font-size: 1rem;
+		font-size: 1.7rem;
+		padding-left: 1.2rem;
+		font-weight: 600;
+		padding-right: 1.2rem;
 		height: fit-content;
 		color: $text-color;
+		text-align: center;
 	}
 }
