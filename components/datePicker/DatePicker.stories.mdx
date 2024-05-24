@@ -42,17 +42,11 @@ The date picker which allows to select a date from the popover.
 		name='Default Singe Date Picker'
 		args={{
 			placeholder: 'Select Date',
-			label: 'Single Date Picker',
 			theme: 'light',
-			value: 1678732200,
-			showTime: true,
-			limitHours: 1,
-			defaultHourDiff: 1,
+			value: 1678749060,
 			onApply: (v) => {
-				console.log(v);
+				console.log(new Date(v * 1000), v);
 			},
-			showTime: true,
-			valueAsRange: true,
 		}}>
 		{Template.bind({})}
 	</Story>
