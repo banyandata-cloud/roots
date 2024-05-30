@@ -7,7 +7,7 @@ import highchartsMap from 'highcharts/modules/map';
 import TiledWebMap from 'highcharts/modules/tiledwebmap';
 import markerClusters from 'highcharts/modules/marker-clusters';
 import PropTypes from 'prop-types';
-import { forwardRef, useImperativeHandle, useRef } from 'react';
+import { forwardRef, useImperativeHandle, useRef, useEffect, useState } from 'react';
 import { classes } from '../../utils';
 import { Button } from '../buttons';
 import { FullScreenIcon } from '../icons';
@@ -89,10 +89,21 @@ const Map = forwardRef((props, ref) => {
 	}
 
 	const mapRef = useRef();
+	const [windowHeight, setWindowHeight] = useState(window.innerHeight);
+	const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
 	const chartProps = {
 		highcharts: Highcharts,
-		options: mapOptions(props),
+		options: {
+			...mapOptions(props),
+			exporting: {
+				buttons: {
+					contextButton: {
+						menuItems: ['viewFullscreen'],
+					},
+				},
+			},
+		},
 		constructorType: 'mapChart', // renders map based highchart
 		containerProps: {
 			className: classes(styles['bc-map-root'], className),
@@ -120,6 +131,54 @@ const Map = forwardRef((props, ref) => {
 			toggleFullScreen,
 		};
 	});
+
+	useEffect(() => {
+		const chart = mapRef.current.chart;
+		const handleWindowResize = () => {
+			setWindowHeight(window.innerHeight);
+			setWindowWidth(window.innerWidth);
+		};
+
+		const handleFullscreenChange = () => {
+			if (document.fullscreenElement) {
+				chart.update({
+					chart: {
+						events: {
+							render() {
+								const button = chart.renderer
+									.button(
+										'',
+										windowWidth + 165,
+										windowHeight,
+										function () {
+											toggleFullScreen();
+										},
+										{
+											zIndex: 3,
+											width: 30,
+											height: 30,
+										}
+									)
+									.add();
+
+								chart.renderer.image(FullScreenIcon, 0, 0, 24, 24).add(button);
+
+								chart.fullscreenButton = button;
+							},
+						},
+					},
+				});
+			}
+		};
+
+		window.addEventListener('resize', handleWindowResize);
+		document.addEventListener('fullscreenchange', handleFullscreenChange);
+
+		return () => {
+			document.removeEventListener('fullscreenchange', handleFullscreenChange);
+			window.removeEventListener('resize', handleWindowResize);
+		};
+	}, [windowHeight]);
 
 	return (
 		<div className={classes(styles.root, className)}>
