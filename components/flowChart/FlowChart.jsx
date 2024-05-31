@@ -1,9 +1,13 @@
+/* eslint-disable react/button-has-type */
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable max-len */
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-nested-ternary */
 import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 import PropTypes from 'prop-types';
+import styles from './FlowChart.module.css';
+import { propTypes } from '../cell';
 
 /**
  * Renders a FlowChart that visualizes data as a chart from neo4j Database.
@@ -33,8 +37,11 @@ const FlowChart = ({
 	linkTextColor,
 	hideLinkText,
 	showLegend,
+	displayZoomButtons,
 }) => {
 	const svgRef = useRef(null);
+	const containerRef = useRef(null);
+	const zoom = useRef(null);
 
 	useEffect(() => {
 		const nodes = data?.nodes?.map((node) => {
@@ -72,6 +79,7 @@ const FlowChart = ({
 			.append('g')
 			.attr('transform', `translate(${Width / 3.5},${Height / 2.7})scale(0.36)`);
 		const container = svgContainer?.append('g');
+		containerRef.current = container;
 
 		function filterDuplicateNodes() {
 			const uniqueNodesMap = new Map();
@@ -258,6 +266,7 @@ const FlowChart = ({
 		node.append('text')
 			.attr('text-anchor', 'middle')
 			.attr('fill', labelColor)
+			.attr('font-weight', 600)
 			.attr('font-size', labelFontSize)
 			.attr('dy', -5)
 			.text((d) => {
@@ -337,8 +346,8 @@ const FlowChart = ({
 				});
 		});
 
-		const zoom = d3.zoom().scaleExtent([0.1, 7]).on('zoom', zoomed);
-		svg.call(zoom);
+		zoom.current = d3.zoom().scaleExtent([0.1, 7]).on('zoom', zoomed);
+		svg.call(zoom.current);
 
 		function zoomed(event) {
 			container.attr('transform', event.transform);
@@ -407,9 +416,35 @@ const FlowChart = ({
 		linkTextColor,
 		hideLinkText,
 		showLegend,
+		displayZoomButtons,
 	]);
 
-	return <svg ref={svgRef} width={width} height={height} />;
+	const zoomIn = () => {
+		svgRef.current.__zoom.k *= 1.1;
+		d3.select(svgRef.current).call(zoom.current.transform, svgRef.current.__zoom);
+	};
+
+	const zoomOut = () => {
+		svgRef.current.__zoom.k /= 1.1;
+		d3.select(svgRef.current).call(zoom.current.transform, svgRef.current.__zoom);
+	};
+
+	return (
+		<div
+			className={styles['chart-container']}
+			style={{
+				width,
+				height,
+			}}>
+			<svg ref={svgRef} width={width} height={height} />
+			{displayZoomButtons && (
+				<div className={styles['zoom-buttons']}>
+					<button onClick={zoomIn}>+</button>
+					<button onClick={zoomOut}>-</button>
+				</div>
+			)}
+		</div>
+	);
 };
 
 FlowChart.propTypes = {
@@ -429,6 +464,7 @@ FlowChart.propTypes = {
 	linkTextColor: PropTypes.string,
 	hideLinkText: PropTypes.bool,
 	showLegend: PropTypes.bool,
+	displayZoomButtons: propTypes.bool,
 };
 
 FlowChart.defaultProps = {
@@ -442,6 +478,7 @@ FlowChart.defaultProps = {
 	labelColor: 'white',
 	hideLinkText: false,
 	showLegend: false,
+	displayZoomButtons: true,
 };
 
 export default FlowChart;
