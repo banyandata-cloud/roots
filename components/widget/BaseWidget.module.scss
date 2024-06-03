@@ -9,7 +9,7 @@
 
 	.header {
 		@include flex(row, space-between, flex-start);
-		padding: 1.713rem 1.713rem 0 1.713rem;
+		padding: 1.713rem 1.713rem 0.25rem 1.713rem;
 
 		.header-title {
 			@include flex(row, flex-start);

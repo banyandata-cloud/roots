@@ -13,7 +13,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 1.713rem 1.713rem 0 1.713rem;
+  padding: 1.713rem 1.713rem 0.25rem 1.713rem;
 }
 .root .header .header-title {
   display: flex;
