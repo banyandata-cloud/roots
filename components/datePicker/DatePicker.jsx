@@ -26,6 +26,10 @@ import {
 	isMaxRangeExceeded,
 } from './utils';
 
+const calculateZeroHours = (hr) => {
+	return hr === 12 ? 0 : hr;
+};
+
 const DatePicker = (props) => {
 	const {
 		placeholder,
@@ -137,7 +141,8 @@ const DatePicker = (props) => {
 						timeRangeSelection.previous?.MER === 'PM' &&
 						timeRangeSelection.previous?.HOURS < 12
 							? timeRangeSelection.previous?.HOURS + 12
-							: timeRangeSelection.previous?.HOURS,
+							: calculateZeroHours(timeRangeSelection.previous?.HOURS),
+
 						timeRangeSelection.previous?.MINS
 					)
 				);
@@ -153,7 +158,6 @@ const DatePicker = (props) => {
 						timeRangeSelection.next?.MINS
 					)
 				);
-
 				onApply?.([fromUnix, toUnix], fixedRange, getDateRangeTag([fromUnix, toUnix]));
 				setOpenDatePicker(false);
 				return;

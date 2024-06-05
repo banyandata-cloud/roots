@@ -44,8 +44,9 @@ The date picker which allows to select a date from the popover.
 			placeholder: 'Select Date',
 			theme: 'light',
 			value: 1678749060,
+			valueAsRange: true,
 			onApply: (v) => {
-				console.log(new Date(v * 1000), v);
+				console.log(new Date(v[0] * 1000), new Date(v[1] * 1000), v);
 			},
 		}}>
 		{Template.bind({})}
