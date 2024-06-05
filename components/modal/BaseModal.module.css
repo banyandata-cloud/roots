@@ -38,7 +38,6 @@
   border-bottom: 0.0625rem solid var(--mono-color3);
 }
 .root .footer {
-  background-color: var(--mono-color2);
   margin-top: auto;
   border-top: 0.0625rem solid var(--mono-color3);
   border-radius: 0 0 8px 8px;
