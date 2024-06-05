@@ -9,7 +9,7 @@ import {
 	isEqual,
 } from 'date-fns';
 import { useEffect, useState } from 'react';
-import { classes, getDatesInAMonth } from '../../../../../utils';
+import { classes, getDatesInAMonth, getDayInfo } from '../../../../../utils';
 import { TodayIndicator } from './assets';
 import styles from './Dates.module.css';
 import { getDatesToDisplay, rangeSelection } from './utils';
@@ -17,6 +17,7 @@ import { getDatesToDisplay, rangeSelection } from './utils';
 const Dates = (props) => {
 	const {
 		selectedMonth,
+		setSelectedMonth,
 		selectedDate,
 		setSelectedDate,
 		range,
@@ -95,10 +96,15 @@ const Dates = (props) => {
 		setUnSelectedDate(null);
 		setSelectedDate({
 			...selectedDate,
-			month: selectedMonth.month,
+			month: getDayInfo(date).month,
 			year: selectedMonth.year,
 			date: dateAsNumber,
 			unix: getUnixTime(date.setHours(23, 59, 59, 59)),
+		});
+		setSelectedMonth({
+			month: getDayInfo(date).month,
+			monthAsNumber: getDayInfo(date).monthAsNumber,
+			year: getDayInfo(date).year,
 		});
 	};
 
