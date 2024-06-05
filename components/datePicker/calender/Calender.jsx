@@ -223,6 +223,7 @@ const Calender = (props) => {
 				<CalenderBody
 					{...commonCalenderProps}
 					selectedMonth={selectedMonth}
+					setSelectedMonth={setSelectedMonth}
 					disabledDates={disabledDates}
 					disableDatesBefore={disableDatesBefore}
 				/>
