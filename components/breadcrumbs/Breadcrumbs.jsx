@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { classes, getSpacedDisplayName } from '../../utils/utils';
 import Button from '../buttons/button/Button';
+import { Popover } from '../popover';
 import { ArrowIcon, HomeIcon } from '../icons';
 import BreadcrumbSeparator from '../icons/BreadcrumbSeperator/BreadcrumbSeperator';
 import { Link } from '../link';
@@ -22,6 +23,7 @@ const BreadCrumbs = (props) => {
 	} = props;
 
 	const [expand, setExpand] = useState(false);
+	const [anchorEl, setAnchorEl] = useState(null);
 
 	// let href = `/${crumbs?.[0]?.path}`;
 	const crumbsList = crumbs?.slice(1);
@@ -62,7 +64,37 @@ const BreadCrumbs = (props) => {
 			);
 		});
 
-	if (crumbsList !== null && CrumbsDOM.length > maxItems && !expand) {
+	const tempCrumbsDropList = crumbsList;
+	tempCrumbsDropList.splice(0, 1);
+	tempCrumbsDropList.splice(crumbsList.length - 1, 1);
+
+	const crumbsDropList = tempCrumbsDropList.map((crumb) => {
+		const { title, value, navigate, isDisabled = false } = crumb;
+
+		return (
+			<React.Fragment key={title}>
+				<Link
+					underline='none'
+					onClick={!isDisabled ? navigate : null}
+					className={classes(styles['crumb-list'])}
+					component={linkComponent}
+					stroke='regular'>
+					{title && (
+						<span className={classes(styles.title)}>
+							{getSpacedDisplayName(title).replace(/-/g, ' ')} :
+						</span>
+					)}
+					{value && (
+						<span className={classes(styles.value)}>
+							{getSpacedDisplayName(value).replace(/-/g, ' ')}
+						</span>
+					)}
+				</Link>
+			</React.Fragment>
+		);
+	});
+
+	if (crumbsList !== null && CrumbsDOM.length > maxItems) {
 		CrumbsDOM.splice(
 			itemsBeforeCollapse,
 			CrumbsDOM.length - (itemsAfterCollapse + itemsBeforeCollapse),
@@ -72,10 +104,23 @@ const BreadCrumbs = (props) => {
 					size='auto'
 					color='default'
 					title='...'
+					ref={(el) => {
+						setAnchorEl(el);
+					}}
 					onClick={() => {
-						setExpand(true);
+						setExpand((prev) => {
+							return !prev;
+						});
 					}}
 				/>
+				<Popover
+					className={classes(styles.popover, styles['popover-light'])}
+					anchorEl={anchorEl}
+					open={expand}
+					placement='bottom-end'
+					setOpen={setExpand}>
+					{crumbsDropList}
+				</Popover>
 				<BreadcrumbSeparator className={styles.separator} />
 			</React.Fragment>
 		);
@@ -145,8 +190,8 @@ BreadCrumbs.propTypes = {
 
 BreadCrumbs.defaultProps = {
 	crumbs: [],
-	maxItems: 4,
-	itemsBeforeCollapse: 2,
+	maxItems: 3,
+	itemsBeforeCollapse: 1,
 	itemsAfterCollapse: 1,
 	linkComponent: 'a',
 	homeTitle: '',

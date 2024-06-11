@@ -110,3 +110,67 @@
 		}
 	}
 }
+
+div.popover {
+	height: auto;
+	width: auto;
+	padding: 0.07rem 0.5rem;
+	[data-elem='placeholder'] {
+		font-size: 0.875rem;
+	}
+	@include flex(column);
+	.crumb-list {
+		@include flex(row, center, center);
+		gap: 0.5rem;
+		padding: 0.5rem 0.5rem;
+		border-radius: 0.25rem;
+		background: transparent;
+		font-weight: 500;
+
+		&:hover {
+			cursor: pointer;
+			background: $light-color1;
+		}
+
+		.title {
+			color: $text-color;
+		}
+
+		.value {
+			color: $text-color;
+		}
+	}
+}
+
+div.popover-light {
+	background: $white !important;
+	border-color: $white !important;
+	[data-elem='placeholder'] {
+		color: $white;
+	}
+	> svg {
+		fill: $dark-grey;
+	}
+
+	.body-light {
+		@include flex(row, space-between);
+
+		> [data-elem='component2'] {
+			flex: 1;
+			.content-light {
+				color: #7c7c7c;
+			}
+		}
+
+		.content-light {
+			color: #7c7c7c;
+			button.option-light {
+				color: #7c7c7c;
+			}
+
+			.expand-icon-light {
+				fill: $dark-grey;
+			}
+		}
+	}
+}

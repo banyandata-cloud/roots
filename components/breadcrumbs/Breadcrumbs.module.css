@@ -42,6 +42,7 @@
   fill: var(--light-color3);
 }
 .root .crumb-actions[data-elem=base-cell].home {
+  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   border-radius: 4px;
@@ -105,4 +106,70 @@
 }
 .root .crumb .iconWrapper svg {
   fill: var(--primary-color4);
+}
+
+div.popover {
+  height: auto;
+  width: auto;
+  padding: 0.07rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+div.popover [data-elem=placeholder] {
+  font-size: 0.875rem;
+}
+div.popover .crumb-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.5rem;
+  border-radius: 0.25rem;
+  background: transparent;
+  font-weight: 500;
+}
+div.popover .crumb-list:hover {
+  cursor: pointer;
+  background: var(--light-color1);
+}
+div.popover .crumb-list .title {
+  color: var(--text-color);
+}
+div.popover .crumb-list .value {
+  color: var(--text-color);
+}
+
+div.popover-light {
+  background: var(--white) !important;
+  border-color: var(--white) !important;
+}
+div.popover-light [data-elem=placeholder] {
+  color: var(--white);
+}
+div.popover-light > svg {
+  fill: var(--dark-grey);
+}
+div.popover-light .body-light {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+div.popover-light .body-light > [data-elem=component2] {
+  flex: 1;
+}
+div.popover-light .body-light > [data-elem=component2] .content-light {
+  color: #7c7c7c;
+}
+div.popover-light .body-light .content-light {
+  color: #7c7c7c;
+}
+div.popover-light .body-light .content-light button.option-light {
+  color: #7c7c7c;
+}
+div.popover-light .body-light .content-light .expand-icon-light {
+  fill: var(--dark-grey);
 }/*# sourceMappingURL=Breadcrumbs.module.css.map */
