@@ -1,18 +1,13 @@
 .root {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: flex-start;
+  align-items: center;
   width: 100%;
   background-color: transparent;
   gap: 1rem;
   color: var(--text-color);
-}
-.root.compact {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-start;
 }
 .root .breadcrumb [data-elem=breadcrumb-item-active] {
   color: var(--text-color);
@@ -24,13 +19,6 @@
   align-items: center;
   margin-left: auto;
   gap: 0.75rem;
-}
-.root .contents.start-left {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  margin-left: unset;
 }
 .root .contents .right {
   display: flex;
