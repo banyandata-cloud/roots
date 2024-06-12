@@ -10,19 +10,11 @@ const PageHeader = (props) => {
 		children,
 		rightAction: RightAction,
 		crumbsProps,
-		startLeft,
-		compact,
 		className,
 	} = props;
 
 	return (
-		<div
-			className={classes(
-				styles.root,
-				compact ? styles.compact : '',
-				styles[`${theme}-theme`],
-				className
-			)}>
+		<div className={classes(styles.root, styles[`${theme}-theme`], className)}>
 			<div className={styles.breadcrumb}>
 				<BreadCrumbs
 					{...{
@@ -33,7 +25,7 @@ const PageHeader = (props) => {
 					}}
 				/>
 			</div>
-			<div className={classes(styles.contents, startLeft ? styles['start-left'] : '')}>
+			<div className={styles.contents}>
 				{RightAction && (
 					<div className={styles.right}>
 						<RightAction />
@@ -50,8 +42,6 @@ PageHeader.propTypes = {
 	theme: PropTypes.oneOf(['dark', 'light']),
 	crumbsProps: PropTypes.shape(BreadCrumbs.propTypes),
 	rightAction: PropTypes.node,
-	startLeft: PropTypes.bool,
-	compact: PropTypes.bool,
 	className: PropTypes.string,
 };
 
@@ -60,8 +50,6 @@ PageHeader.defaultProps = {
 	theme: 'light',
 	crumbsProps: {},
 	rightAction: null,
-	startLeft: false,
-	compact: false,
 	className: '',
 };
 

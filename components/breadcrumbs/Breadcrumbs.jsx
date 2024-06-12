@@ -64,11 +64,11 @@ const BreadCrumbs = (props) => {
 			);
 		});
 
-	const tempCrumbsDropList = crumbsList;
-	tempCrumbsDropList.splice(0, 1);
-	tempCrumbsDropList.splice(crumbsList.length - 1, 1);
+	// const tempCrumbsDropList = crumbsList;
+	crumbsList.splice(0, 1);
+	crumbsList.splice(crumbsList.length - 1, 1);
 
-	const crumbsDropList = tempCrumbsDropList.map((crumb) => {
+	const crumbsDropList = crumbsList.map((crumb) => {
 		const { title, value, navigate, isDisabled = false } = crumb;
 
 		return (
@@ -190,7 +190,7 @@ BreadCrumbs.propTypes = {
 
 BreadCrumbs.defaultProps = {
 	crumbs: [],
-	maxItems: 3,
+	maxItems: 2,
 	itemsBeforeCollapse: 1,
 	itemsAfterCollapse: 1,
 	linkComponent: 'a',
