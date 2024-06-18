@@ -7,10 +7,8 @@ import highchartsMap from 'highcharts/modules/map';
 import TiledWebMap from 'highcharts/modules/tiledwebmap';
 import markerClusters from 'highcharts/modules/marker-clusters';
 import PropTypes from 'prop-types';
-import { forwardRef, useImperativeHandle, useRef, useEffect, useState } from 'react';
+import { forwardRef, useRef, useState } from 'react';
 import { classes } from '../../utils';
-import { Button } from '../buttons';
-import { FullScreenIcon } from '../icons';
 import { Skeleton } from '../skeleton';
 import styles from './Map.module.css';
 import { mapOptions } from './config';
@@ -31,19 +29,6 @@ Highcharts.AST.allowedAttributes.push('svg');
  * @param {Function} handleFullScreen - The function to be called when the button is clicked.
  * @returns {JSX.Element} - The rendered button component.
  */
-const FullScreenButton = ({ handleFullScreen }) => {
-	return (
-		<Button
-			variant='text'
-			onClick={handleFullScreen}
-			className={styles['full-screen']}
-			size='auto'
-			rightComponent={() => {
-				return <FullScreenIcon className={styles.icon} />;
-			}}
-		/>
-	);
-};
 
 /**
  * Renders a vectorised high resolution world map.
@@ -68,8 +53,8 @@ const FullScreenButton = ({ handleFullScreen }) => {
  * @param {Object} customMarkerOptions - Additional options for the custom markers.
  * @returns {JSX.Element} The rendered map component.
  */
-const Map = forwardRef((props, ref) => {
-	const { loading, theme, fallback, className, showFullScreen } = props;
+const Map = forwardRef((props) => {
+	const { loading, theme, fallback, className } = props;
 
 	if (loading) {
 		return (
@@ -89,8 +74,6 @@ const Map = forwardRef((props, ref) => {
 	}
 
 	const mapRef = useRef();
-	const [windowHeight, setWindowHeight] = useState(window.innerHeight);
-	const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 	const [isFullScreen, setIsFullScreen] = useState(false);
 
 	document.addEventListener('fullscreenchange', () => {
@@ -121,79 +104,9 @@ const Map = forwardRef((props, ref) => {
 		ref: mapRef,
 	};
 
-	const toggleFullScreen = () => {
-		/**
-		 * The function first checks if the mapRef exists
-		 * and if it has a current property and a chart property.
-		 * Finally, it calls the toggle() method of the fullscreen property of the chart object.
-		 */
-		const mapReference = mapRef && mapRef.current && mapRef.current.chart;
-		if (mapReference) {
-			mapRef.current.chart.fullscreen.toggle();
-		}
-	};
-
-	useImperativeHandle(ref, () => {
-		return {
-			/**
-			 * methods to get exposed
-			 */
-			toggleFullScreen,
-		};
-	});
-
-	useEffect(() => {
-		const chart = mapRef.current.chart;
-		const handleWindowResize = () => {
-			setWindowHeight(window.innerHeight);
-			setWindowWidth(window.innerWidth);
-		};
-
-		const handleFullscreenChange = () => {
-			if (document.fullscreenElement) {
-				chart.update({
-					chart: {
-						events: {
-							render() {
-								const button = chart.renderer
-									.button(
-										'',
-										windowWidth + 165,
-										windowHeight,
-										function () {
-											toggleFullScreen();
-										},
-										{
-											zIndex: 3,
-											width: 30,
-											height: 30,
-										}
-									)
-									.add();
-
-								chart.renderer.image(FullScreenIcon, 0, 0, 24, 24).add(button);
-
-								chart.fullscreenButton = button;
-							},
-						},
-					},
-				});
-			}
-		};
-
-		window.addEventListener('resize', handleWindowResize);
-		document.addEventListener('fullscreenchange', handleFullscreenChange);
-
-		return () => {
-			document.removeEventListener('fullscreenchange', handleFullscreenChange);
-			window.removeEventListener('resize', handleWindowResize);
-		};
-	}, [windowHeight]);
-
 	return (
 		<div className={classes(styles.root, className)}>
 			<HighchartsReact {...chartProps} />
-			{showFullScreen && <FullScreenButton handleFullScreen={toggleFullScreen} />}
 		</div>
 	);
 });
