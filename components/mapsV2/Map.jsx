@@ -91,12 +91,24 @@ const Map = forwardRef((props, ref) => {
 	const mapRef = useRef();
 	const [windowHeight, setWindowHeight] = useState(window.innerHeight);
 	const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+	const [viewFullScreenText, setViewFullScreenText] = useState();
+
+	document.addEventListener('fullscreenchange', () => {
+		return viewFullScreenText === 'Exit Full Screen'
+			? setViewFullScreenText('Open Full Screen')
+			: setViewFullScreenText('Exit Full Screen');
+	});
 
 	const chartProps = {
 		highcharts: Highcharts,
 		options: {
 			...mapOptions(props),
 			exporting: {
+				menuItemDefinitions: {
+					viewFullscreen: {
+						text: viewFullScreenText,
+					},
+				},
 				buttons: {
 					contextButton: {
 						menuItems: ['viewFullscreen'],
@@ -237,7 +249,7 @@ Map.defaultProps = {
 	loading: false,
 	fallback: false,
 	className: '',
-	showFullScreen: true,
+	showFullScreen: false,
 };
 
 export default Map;
