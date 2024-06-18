@@ -91,12 +91,10 @@ const Map = forwardRef((props, ref) => {
 	const mapRef = useRef();
 	const [windowHeight, setWindowHeight] = useState(window.innerHeight);
 	const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-	const [viewFullScreenText, setViewFullScreenText] = useState();
+	const [isFullScreen, setIsFullScreen] = useState(false);
 
 	document.addEventListener('fullscreenchange', () => {
-		return viewFullScreenText === 'Exit Full Screen'
-			? setViewFullScreenText('Open Full Screen')
-			: setViewFullScreenText('Exit Full Screen');
+		return isFullScreen ? setIsFullScreen(false) : setIsFullScreen(true);
 	});
 
 	const chartProps = {
@@ -106,7 +104,7 @@ const Map = forwardRef((props, ref) => {
 			exporting: {
 				menuItemDefinitions: {
 					viewFullscreen: {
-						text: viewFullScreenText,
+						text: isFullScreen ? 'Exit fullscreen' : 'Open fullscreen',
 					},
 				},
 				buttons: {
