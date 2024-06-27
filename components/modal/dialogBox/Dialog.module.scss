@@ -5,7 +5,7 @@
 	height: fit-content;
 	max-height: 30rem;
 	background: $light-color3;
-	border-radius: 0.75rem;
+	border-radius: 0.25rem;
 
 	&.sm {
 		width: 21.25rem;
@@ -14,9 +14,9 @@
 	&.md {
 		width: 35rem;
 	}
-	>[data-elem="footer"]{
+	> [data-elem='footer'] {
 		border: none;
-				@include flex(row, center, center);
+		@include flex(row, center, center);
 	}
 
 	.footer {
@@ -42,10 +42,9 @@
 		}
 	}
 	.description {
-		font-size: 1.7rem;
+		font-size: 1.4rem;
 		padding-left: 1.2rem;
 		font-weight: 600;
-		padding-right: 1.2rem;
 		height: fit-content;
 		color: $text-color;
 		text-align: center;
