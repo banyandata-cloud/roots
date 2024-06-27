@@ -15,6 +15,7 @@ const BaseButton = forwardRef(function BaseButton(props, ref) {
 		flexible,
 		radius,
 		disabled,
+		id,
 		type,
 		onClick,
 		blurOnClick,
@@ -38,6 +39,7 @@ const BaseButton = forwardRef(function BaseButton(props, ref) {
 			attrs={{
 				disabled,
 				type,
+				id,
 				onClick: (event) => {
 					if (blurOnClick) {
 						event?.currentTarget?.blur();

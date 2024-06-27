@@ -4,7 +4,7 @@
   height: fit-content;
   max-height: 30rem;
   background: var(--light-color3);
-  border-radius: 0.75rem;
+  border-radius: 0.25rem;
 }
 .root.sm {
   width: 21.25rem;
@@ -51,10 +51,9 @@
   outline: none;
 }
 .root .description {
-  font-size: 1.7rem;
+  font-size: 1.4rem;
   padding-left: 1.2rem;
   font-weight: 600;
-  padding-right: 1.2rem;
   height: -moz-fit-content;
   height: fit-content;
   color: var(--text-color);
