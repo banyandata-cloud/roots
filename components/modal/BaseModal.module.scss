@@ -32,18 +32,17 @@
 	.header {
 		font-weight: 500;
 		font-size: 1.375rem;
-		border-bottom: 0.0625rem solid $mono-color3;
+		@include boxShadow(0.1px, 2px);
 	}
 
 	.footer {
 		margin-top: auto;
-		border-top: 0.0625rem solid $mono-color3;
 		border-radius: 0 0 8px 8px;
 		@include flex(row, flex-end);
 		gap: 0.625rem;
 	}
 
-	button.close {
+	button.close[data-elem='base-cell'] {
 		position: absolute;
 		right: 1rem;
 		top: 1rem;

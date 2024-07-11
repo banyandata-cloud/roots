@@ -3,8 +3,17 @@ import PropTypes from 'prop-types';
 import { forwardRef, useEffect, useImperativeHandle, useState } from 'react';
 import { classes } from '../../../utils';
 import { Button } from '../../buttons';
+import { Text } from '../../text';
 import BaseModal from '../BaseModal';
 import styles from './Dialog.module.css';
+
+const Header = ({ title }) => {
+	return (
+		<Text component='h2' variant='b1' weight={600}>
+			{title}
+		</Text>
+	);
+};
 
 const Footer = ({
 	action,
@@ -37,13 +46,7 @@ const Footer = ({
 			)}
 
 			{onAction && (
-				<Button
-					onClick={onAction}
-					className={styles.save}
-					title={action}
-					color={variant}
-					variant='outlined'
-				/>
+				<Button onClick={onAction} className={styles.save} title={action} color={variant} />
 			)}
 		</div>
 	);
@@ -70,6 +73,7 @@ const DialogBox = forwardRef((props, ref) => {
 		actionText,
 		cancelText,
 		variant,
+		title,
 		onAction,
 		onCancel,
 		customAction,
@@ -83,6 +87,10 @@ const DialogBox = forwardRef((props, ref) => {
 	const toggle = () => {
 		onCancel?.();
 		setOpen(false);
+	};
+
+	const headerProps = {
+		title,
 	};
 
 	const footerProps = {
@@ -133,7 +141,7 @@ const DialogBox = forwardRef((props, ref) => {
 			hideCrossDismiss
 			noDismiss={noDismiss}
 			className={classes(styles.root, styles[size], className)}
-			// renderHeader={title && <Header {...headerProps} />}
+			renderHeader={title && <Header {...headerProps} />}
 			renderFooter={<Footer {...footerProps} />}>
 			<div className={styles.description}>{description}</div>
 		</BaseModal>

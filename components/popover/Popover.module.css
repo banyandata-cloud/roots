@@ -4,13 +4,13 @@
   border: 1px solid var(--grey);
 }
 .root.dark-theme {
-  box-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);
+  box-shadow: 0px dark 20px rgba(24, 24, 24, 0.08);
   background-color: var(--dark-grey);
   color: var(--white);
   border-color: var(--grey);
 }
 .root.light-theme {
-  box-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);
+  box-shadow: 0px light 20px rgba(24, 24, 24, 0.08);
   background-color: var(--white);
   color: var(--dark-grey);
   border-color: var(--grey4);

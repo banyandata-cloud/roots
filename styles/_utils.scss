@@ -78,12 +78,12 @@
 	@return red($hex), green($hex), blue($hex);
 }
 
-@mixin boxShadow($theme: light) {
+@mixin boxShadow($x: 8px, $y: 20px, $theme: light) {
 	@if $theme == dark {
-		box-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);
+		box-shadow: 0px $x $y rgba(24, 24, 24, 0.08);
 	}
 
 	@if $theme == light {
-		box-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);
+		box-shadow: 0px $x $y rgba(24, 24, 24, 0.08);
 	}
 }
