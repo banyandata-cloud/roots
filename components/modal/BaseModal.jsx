@@ -125,7 +125,6 @@ const BaseModal = (props) => {
 								<Button
 									size='auto'
 									variant='text'
-									data-elem='close'
 									className={styles.close}
 									onClick={() => {
 										toggle(false);

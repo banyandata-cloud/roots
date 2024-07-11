@@ -35,11 +35,10 @@
 .root .header {
   font-weight: 500;
   font-size: 1.375rem;
-  border-bottom: 0.0625rem solid var(--mono-color3);
+  box-shadow: 0px 0.1px 2px rgba(24, 24, 24, 0.08);
 }
 .root .footer {
   margin-top: auto;
-  border-top: 0.0625rem solid var(--mono-color3);
   border-radius: 0 0 8px 8px;
   display: flex;
   flex-direction: row;
@@ -47,7 +46,7 @@
   align-items: center;
   gap: 0.625rem;
 }
-.root button.close {
+.root button.close[data-elem=base-cell] {
   position: absolute;
   right: 1rem;
   top: 1rem;
@@ -55,7 +54,7 @@
   height: auto;
   background: var(--mono-color1);
 }
-.root button.close .icon {
+.root button.close[data-elem=base-cell] .icon {
   width: 1.5rem;
   height: 1.5rem;
   fill: var(--white);
