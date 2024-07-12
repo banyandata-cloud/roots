@@ -3,21 +3,61 @@ import { Button } from '../../buttons';
 import { Text } from '../../text';
 import styles from './TimeSwitcher.module.css';
 
+const calculateMeridian = (prev) => {
+	return prev === 'AM' ? 'PM' : 'AM';
+};
 const TimeCounter = ({
 	activeTimeSelection = {},
 	setActiveTimeSelection,
 	setTimeRangeSelection,
 	timeRangeSelection = {},
 	type,
+	limitHours,
 }) => {
 	const onMeridianClick = (value) => {
-		setTimeRangeSelection({
-			...timeRangeSelection,
-			[type]: {
-				...timeRangeSelection[type],
-				MER: value,
-			},
-		});
+		if (limitHours) {
+			if (type === 'previous') {
+				setTimeRangeSelection({
+					...timeRangeSelection,
+					[type]: {
+						...timeRangeSelection[type],
+						MER: value,
+					},
+
+					next: {
+						...timeRangeSelection.next,
+						MER:
+							timeRangeSelection.previous.HOURS + limitHours >= 12
+								? calculateMeridian(value)
+								: value,
+					},
+				});
+			} else {
+				setTimeRangeSelection({
+					...timeRangeSelection,
+					[type]: {
+						...timeRangeSelection[type],
+						MER: value,
+					},
+
+					previous: {
+						...timeRangeSelection.previous,
+						MER:
+							timeRangeSelection.previous.HOURS + limitHours >= 12
+								? calculateMeridian(value)
+								: value,
+					},
+				});
+			}
+		} else {
+			setTimeRangeSelection({
+				...timeRangeSelection,
+				[type]: {
+					...timeRangeSelection[type],
+					MER: value,
+				},
+			});
+		}
 	};
 
 	const onTimeSelect = (value) => {
@@ -76,10 +116,11 @@ const TimeCounter = ({
 };
 
 const TimeSwitcher = (props) => {
+	const { valueAsRange } = props;
 	return (
 		<div className={styles.root}>
-			{props.valueAsRange && <TimeCounter {...props} type='previous' />}
-			{props.valueAsRange && <Text className={styles.to}>to</Text>}
+			{valueAsRange && <TimeCounter {...props} type='previous' />}
+			{valueAsRange && <Text className={styles.to}>to</Text>}
 			<TimeCounter {...props} type='next' />
 		</div>
 	);

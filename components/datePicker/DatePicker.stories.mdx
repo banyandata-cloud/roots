@@ -45,6 +45,10 @@ The date picker which allows to select a date from the popover.
 			theme: 'light',
 			value: 1678749060,
 			valueAsRange: true,
+			limitHours: 1,
+			defaultHourDiff: 1,
+			showTime: true,
+			timeRange: true,
 			onApply: (v) => {
 				console.log(new Date(v[0] * 1000), new Date(v[1] * 1000), v);
 			},

@@ -49,6 +49,7 @@ const DatePicker = (props) => {
 		defaultHourDiff,
 		limitHours,
 		showTime,
+		timeRange,
 	} = props;
 
 	const [openDatePicker, setOpenDatePicker] = useState(false);
@@ -83,6 +84,8 @@ const DatePicker = (props) => {
 		value,
 		rangePicker: range && value?.filter(Boolean)?.length > 0,
 		singlePicker: !range && value,
+		timeRange,
+		limitHours,
 	});
 
 	const datePickerFloatingReference = useFloating(
