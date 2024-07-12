@@ -40,6 +40,7 @@ const Button = forwardRef((props, ref) => {
 		blurOnClick,
 		variant,
 		color,
+		id,
 	} = props;
 
 	return (
@@ -53,6 +54,7 @@ const Button = forwardRef((props, ref) => {
 				size,
 				flexible,
 				radius,
+				id,
 				disabled,
 				onClick,
 				blurOnClick,
