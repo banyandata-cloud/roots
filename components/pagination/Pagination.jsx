@@ -417,6 +417,29 @@ export const Pagination = forwardRef((props, ref) => {
 										customPageCallback(jumpPageRef?.current?.value);
 										return;
 									}
+
+									if (hideDisabledPages) {
+										const enablePageList = customPageList?.filter((pg) => {
+											return pg?.enable;
+										});
+										// eslint-disable-next-line no-restricted-syntax
+										for (
+											let index = 0;
+											index < enablePageList?.length;
+											index++
+										) {
+											if (
+												enablePageList?.[index]?.pageNumber?.toString() ===
+												jumpPageRef?.current?.value
+											) {
+												onChange({
+													type: 'SET_PAGE',
+													payload: parseInt(index + 1, 10),
+												});
+												return;
+											}
+										}
+									}
 									onChange({
 										type: 'SET_PAGE',
 										payload: parseInt(jumpPageRef?.current?.value, 10),

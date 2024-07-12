@@ -90,7 +90,13 @@ export const getDateRangeTag = (dates = []) => {
 	return 'day';
 };
 
-export const getDatePickerDisplayValue = ({ value, rangePicker, singlePicker }) => {
+export const getDatePickerDisplayValue = ({
+	value,
+	rangePicker,
+	singlePicker,
+	timeRange,
+	limitHours,
+}) => {
 	if (rangePicker) {
 		const startDate = fromUnixTime(value[0]);
 		const endDate = fromUnixTime(value[1]);
@@ -114,8 +120,19 @@ export const getDatePickerDisplayValue = ({ value, rangePicker, singlePicker }) 
 		return `${startDateValue} - ${endDateValue}`;
 	}
 
-	if (singlePicker) {
+	if (singlePicker && !timeRange) {
 		const sDate = fromUnixTime(value);
+
+		const timeValue = `${doubleDigitted(((sDate.getHours() + 11) % 12) + 1)}:${doubleDigitted(
+			sDate.getMinutes()
+		)} ${sDate.getHours() >= 12 ? 'PM' : 'AM'}`;
+
+		return ` ${sDate.getDate()} ${
+			MONTHS[sDate.getMonth().toString()?.substring(0, 3)]
+		} ${sDate.getFullYear()} ${timeValue}`;
+	}
+	if (timeRange) {
+		const sDate = fromUnixTime(value - 3600 * limitHours);
 
 		const timeValue = `${doubleDigitted(((sDate.getHours() + 11) % 12) + 1)}:${doubleDigitted(
 			sDate.getMinutes()

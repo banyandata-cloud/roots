@@ -52,7 +52,10 @@ const Header = (props) => {
 
 	const showCarouselSwitcher = !dateSelectionView && !timeSelectionView;
 
-	const currentTime = getDayInfo(new Date());
+	let currentTime = getDayInfo(new Date());
+	if (selectedDate.unix !== undefined) {
+		currentTime = getDayInfo(new Date(selectedDate.unix * 1000));
+	}
 
 	const prevTime = getDayInfo(
 		subMinutes(
@@ -83,24 +86,6 @@ const Header = (props) => {
 				MER: prevTime.meridian,
 			},
 		});
-	}, []);
-
-	useEffect(() => {
-		if (selectedDate.unix !== undefined) {
-			const newTime = getDayInfo(new Date(selectedDate.unix * 1000));
-			setTimeRangeSelection({
-				next: {
-					HOURS: newTime.hours,
-					MINS: newTime.minutes,
-					MER: newTime.meridian,
-				},
-				previous: {
-					HOURS: prevTime.hours,
-					MINS: prevTime.minutes,
-					MER: prevTime.meridian,
-				},
-			});
-		}
 	}, [selectedDate.unix]);
 
 	return (
