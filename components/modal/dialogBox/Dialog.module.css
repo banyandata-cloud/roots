@@ -24,7 +24,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: stretch;
-  color: var(--grey1);
+  color: var(--mono-color1);
   background-color: var(--light-color2);
   border-radius: 0.25rem;
   outline: 1px solid var(--light-color2) !important;

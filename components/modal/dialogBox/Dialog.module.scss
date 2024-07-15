@@ -20,7 +20,7 @@
 		gap: 1rem;
 		button.cancel[data-elem='base-cell'] {
 			@include flex(row, center, stretch);
-			color: $grey1;
+			color: $mono-color1;
 			background-color: $light-color2;
 			border-radius: 0.25rem;
 			outline: 1px solid $light-color2 !important;
