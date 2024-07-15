@@ -1,9 +1,9 @@
 /* eslint-disable object-curly-newline */
-import { useRef } from 'react';
 import PropTypes from 'prop-types';
-import styles from './BaseSidePanel.module.css';
+import { useRef } from 'react';
 import { classes } from '../../utils';
 import BaseModal from '../modal/BaseModal';
+import styles from './BaseSidePanel.module.css';
 
 const BaseSidePanel = (props) => {
 	const {
@@ -28,14 +28,18 @@ const BaseSidePanel = (props) => {
 			noDismiss={noDismiss}
 			className={classes(styles.modal, className)}
 			renderHeader={
-				<div data-elem='header' className={styles.header}>
-					{renderHeader}
-				</div>
+				renderHeader && (
+					<div data-elem='header' className={styles.header}>
+						{renderHeader}
+					</div>
+				)
 			}
 			renderFooter={
-				<div data-elem='footer' className={styles.footer}>
-					{renderFooter}
-				</div>
+				renderFooter && (
+					<div data-elem='footer' className={styles.footer}>
+						{renderFooter}
+					</div>
+				)
 			}
 			animation={animation}
 			animationProperties={{

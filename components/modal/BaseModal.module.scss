@@ -39,7 +39,18 @@
 		margin-top: auto;
 		border-radius: 0 0 8px 8px;
 		@include flex(row, flex-end);
-		gap: 0.625rem;
+		gap: 1rem;
+		button.dismiss[data-elem='base-cell'] {
+			@include flex(row, center, stretch);
+			color: $mono-color1;
+			background-color: $light-color2;
+			border-radius: 0.25rem;
+			outline: 1px solid $light-color2 !important;
+			border: none;
+			&:hover {
+				background-color: $light-color1;
+			}
+		}
 	}
 
 	button.close[data-elem='base-cell'] {

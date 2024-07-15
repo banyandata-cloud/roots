@@ -36,7 +36,7 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 <Canvas>
 	<Story name='Default'>
 		{() => {
-			const [open, setOpen] = useState(false);
+			const [open, setOpen] = useState(true);
 			const toggle = () => {
 				setOpen((prevState) => {
 					return !prevState;
@@ -242,6 +242,18 @@ Key to change style through external className.
 	</tr>
 </table>
 
-```jsx
+`````jsx
 <BaseSidePanel className='chart-area' />
-```
+```import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { useState } from 'react';
+import { Button } from '../buttons';
+import { ToggleIframeContainer } from '../helpers';
+import BaseSidePanel from './BaseSidePanel';
+
+````import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { useState } from 'react';
+import { Button } from '../buttons';
+import { ToggleIframeContainer } from '../helpers';
+import BaseSidePanel from './BaseSidePanel';
+
+`````
