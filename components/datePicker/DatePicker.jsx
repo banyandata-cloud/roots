@@ -24,11 +24,8 @@ import {
 	getDateRangeTag,
 	getFloatingReferences,
 	isMaxRangeExceeded,
+	calculateZeroHours,
 } from './utils';
-
-const calculateZeroHours = (hr) => {
-	return hr === 12 ? 0 : hr;
-};
 
 const DatePicker = (props) => {
 	const {
@@ -144,7 +141,10 @@ const DatePicker = (props) => {
 						timeRangeSelection.previous?.MER === 'PM' &&
 						timeRangeSelection.previous?.HOURS < 12
 							? timeRangeSelection.previous?.HOURS + 12
-							: calculateZeroHours(timeRangeSelection.previous?.HOURS),
+							: calculateZeroHours(
+									timeRangeSelection.previous?.HOURS,
+									timeRangeSelection.previous?.MER
+							  ),
 
 						timeRangeSelection.previous?.MINS
 					)
@@ -157,7 +157,10 @@ const DatePicker = (props) => {
 						selectedDate.date,
 						timeRangeSelection.next?.MER === 'PM' && timeRangeSelection.next?.HOURS < 12
 							? timeRangeSelection.next?.HOURS + 12
-							: timeRangeSelection.next?.HOURS,
+							: calculateZeroHours(
+									timeRangeSelection.next?.HOURS,
+									timeRangeSelection.next?.MER
+							  ),
 						timeRangeSelection.next?.MINS
 					)
 				);

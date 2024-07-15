@@ -6,6 +6,7 @@ import { classes, doubleDigitted } from '../../../utils';
 import { Text } from '../../text';
 import styles from './ClockView.module.css';
 import { clockConfig } from './config';
+import { calculateMeridian } from '../utils';
 
 const clockHours = new Array(12).fill().map((_, index) => {
 	return index;
@@ -23,13 +24,6 @@ const clockMins = [
 		})
 		.filter(Boolean),
 ];
-
-const calculateMeridian = (prev, next) => {
-	if (prev === next) {
-		return prev === 'AM' ? 'PM' : 'AM';
-	}
-	return next;
-};
 
 const ClockView = (props = {}) => {
 	const {
@@ -122,7 +116,13 @@ const ClockView = (props = {}) => {
 										...timeRangeSelection.previous,
 										HOURS:
 											item === 0 ? 11 : item === 1 ? 12 : item - limitHours,
-										MER: item === 11 ? 'AM' : 'PM',
+										MER:
+											item - limitHours < 0
+												? calculateMeridian(
+														timeRangeSelection.previous.MER,
+														timeRangeSelection.next.MER
+												  )
+												: timeRangeSelection.previous.MER,
 									},
 									next: {
 										...timeRangeSelection[rangeType],
