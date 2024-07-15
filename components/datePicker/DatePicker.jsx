@@ -24,12 +24,8 @@ import {
 	getDateRangeTag,
 	getFloatingReferences,
 	isMaxRangeExceeded,
+	calculateZeroHours,
 } from './utils';
-
-const calculateZeroHours = (hr, me) => {
-	// eslint-disable-next-line no-nested-ternary
-	return hr === 12 ? (me === 'PM' ? 12 : 0) : hr;
-};
 
 const DatePicker = (props) => {
 	const {

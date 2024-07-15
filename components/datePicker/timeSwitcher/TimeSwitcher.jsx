@@ -1,14 +1,9 @@
 import { classes, doubleDigitted } from '../../../utils';
 import { Button } from '../../buttons';
 import { Text } from '../../text';
+import { calculateMeridian } from '../utils';
 import styles from './TimeSwitcher.module.css';
 
-const calculateMeridian = (prev, next) => {
-	if (prev === next) {
-		return prev === 'AM' ? 'PM' : 'AM';
-	}
-	return next;
-};
 const TimeCounter = ({
 	activeTimeSelection = {},
 	setActiveTimeSelection,

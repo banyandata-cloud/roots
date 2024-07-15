@@ -90,6 +90,23 @@ export const getDateRangeTag = (dates = []) => {
 	return 'day';
 };
 
+export const calculateZeroHours = (hours, meridian) => {
+	if (hours === 12) {
+		if (meridian === 'PM') {
+			return 12;
+		}
+		return 0;
+	}
+	return hours;
+};
+
+export const calculateMeridian = (prev, next) => {
+	if (prev === next) {
+		return prev === 'AM' ? 'PM' : 'AM';
+	}
+	return next;
+};
+
 export const getDatePickerDisplayValue = ({
 	value,
 	rangePicker,
