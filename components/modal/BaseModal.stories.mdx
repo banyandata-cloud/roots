@@ -49,11 +49,19 @@ The default Base Modal.
 				<ThemedContainer theme='light'>
 					<Button onClick={toggle} title='Open Modal' />
 					<BaseModal
-						renderHeader='Header'
-						renderFooter={[
-							<Button key='Footer1' title='Footer Button' variant='outlined' />,
-							<Button key='Footer2' title='Footer Button' />,
-						]}
+						title='Header'
+						description='Description'
+						footerProps={{
+							actionTitle: 'Save Changes',
+							cancelTitle: 'Dismiss',
+							onAction: () => {
+								console.log('action');
+							},
+							onDismiss: () => {
+								console.log('dismiss');
+							},
+							toggle,
+						}}
 						open={open}
 						toggle={toggle}>
 						<p>Modal description: Pass the header and footer as a Component</p>
@@ -185,6 +193,56 @@ Prevents the modal from being dismissed when clicking outside of it.
 	</tr>
 </table>
 
-```jsx
+``````````jsx
 <BaseModal toggle={true} />
-```
+```import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { useState } from 'react';
+import { Button } from '../buttons';
+import { ThemedContainer } from '../helpers';
+import { Dropdown, DropdownItem } from '../input';
+import BaseModal from './BaseModal';
+
+````import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { useState } from 'react';
+import { Button } from '../buttons';
+import { ThemedContainer } from '../helpers';
+import { Dropdown, DropdownItem } from '../input';
+import BaseModal from './BaseModal';
+
+`````import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { useState } from 'react';
+import { Button } from '../buttons';
+import { ThemedContainer } from '../helpers';
+import { Dropdown, DropdownItem } from '../input';
+import BaseModal from './BaseModal';
+
+``````import { logDOM } from '@storybook/testing-library';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { useState } from 'react';
+import { Button } from '../buttons';
+import { ThemedContainer } from '../helpers';
+import { Dropdown, DropdownItem } from '../input';
+import BaseModal from './BaseModal';
+
+```````import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { useState } from 'react';
+import { Button } from '../buttons';
+import { ThemedContainer } from '../helpers';
+import { Dropdown, DropdownItem } from '../input';
+import BaseModal from './BaseModal';
+
+````````import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { useState } from 'react';
+import { Button } from '../buttons';
+import { ThemedContainer } from '../helpers';
+import { Dropdown, DropdownItem } from '../input';
+import BaseModal from './BaseModal';
+
+`````````import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { useState } from 'react';
+import { Button } from '../buttons';
+import { ThemedContainer } from '../helpers';
+import { Dropdown, DropdownItem } from '../input';
+import BaseModal from './BaseModal';
+
+``````````

@@ -44,7 +44,21 @@
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
-  gap: 0.625rem;
+  gap: 1rem;
+}
+.root .footer button.dismiss[data-elem=base-cell] {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  color: var(--mono-color1);
+  background-color: var(--light-color2);
+  border-radius: 0.25rem;
+  outline: 1px solid var(--light-color2) !important;
+  border: none;
+}
+.root .footer button.dismiss[data-elem=base-cell]:hover {
+  background-color: var(--light-color1);
 }
 .root button.close[data-elem=base-cell] {
   position: absolute;

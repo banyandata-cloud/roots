@@ -12,6 +12,7 @@ import { classes } from '../../utils';
 import { Button } from '../buttons';
 import { CrossIcon } from '../icons';
 import { Popper } from '../popper';
+import { Text } from '../text';
 import styles from './BaseModal.module.css';
 
 const footerAnimations = {
@@ -26,6 +27,49 @@ const footerAnimations = {
 	transition: {
 		duration: 0.5,
 	},
+};
+
+const ModalHeader = ({ title, description }) => {
+	return (
+		<>
+			<Text component='h2' variant='h2' weight={600}>
+				{title}
+			</Text>
+			<Text component='span' variant='b1' weight={400}>
+				{description}
+			</Text>
+		</>
+	);
+};
+
+const ModalFooter = (props) => {
+	const {
+		actionTitle = 'Save',
+		cancelTitle = 'Cancel',
+		onAction,
+		onDismiss,
+		toggle,
+		loading,
+	} = props ?? {};
+
+	const handleAction = () => {
+		if (loading) {
+			return;
+		}
+		onAction?.();
+	};
+
+	const handleDismiss = () => {
+		onDismiss?.();
+		toggle?.();
+	};
+
+	return (
+		<>
+			<Button className={styles.dismiss} title={cancelTitle} onClick={handleDismiss} />
+			<Button className={styles.action} title={actionTitle} onClick={handleAction} />
+		</>
+	);
 };
 
 /**
@@ -47,6 +91,8 @@ const footerAnimations = {
 const BaseModal = (props) => {
 	const {
 		className,
+		title,
+		description,
 		popperClassName,
 		renderHeader,
 		children,
@@ -55,6 +101,7 @@ const BaseModal = (props) => {
 		open,
 		noDismiss,
 		hideCrossDismiss,
+		footerProps,
 		animation,
 		animationProperties,
 	} = props;
@@ -89,7 +136,7 @@ const BaseModal = (props) => {
 									...animationProperties,
 								}),
 							})}>
-							{renderHeader && (
+							{renderHeader ? (
 								<header data-elem='header' className={styles.header}>
 									{(() => {
 										if (typeof renderHeader !== 'function') {
@@ -100,11 +147,15 @@ const BaseModal = (props) => {
 										});
 									})()}
 								</header>
+							) : (
+								<header data-elem='header' className={styles.header}>
+									<ModalHeader title={title} description={description} />
+								</header>
 							)}
 							<div data-elem='body' className={styles.body}>
 								{children}
 							</div>
-							{renderFooter && (
+							{renderFooter ? (
 								<motion.footer
 									{...(animation && {
 										...footerAnimations,
@@ -119,6 +170,15 @@ const BaseModal = (props) => {
 											...bodyProps,
 										});
 									})()}
+								</motion.footer>
+							) : (
+								<motion.footer
+									{...(animation && {
+										...footerAnimations,
+									})}
+									data-elem='footer'
+									className={styles.footer}>
+									<ModalFooter {...footerProps} />
 								</motion.footer>
 							)}
 							{!hideCrossDismiss && (
