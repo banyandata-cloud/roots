@@ -3,8 +3,11 @@ import { Button } from '../../buttons';
 import { Text } from '../../text';
 import styles from './TimeSwitcher.module.css';
 
-const calculateMeridian = (prev) => {
-	return prev === 'AM' ? 'PM' : 'AM';
+const calculateMeridian = (prev, next) => {
+	if (prev === next) {
+		return prev === 'AM' ? 'PM' : 'AM';
+	}
+	return next;
 };
 const TimeCounter = ({
 	activeTimeSelection = {},
@@ -27,8 +30,10 @@ const TimeCounter = ({
 					next: {
 						...timeRangeSelection.next,
 						MER:
+							timeRangeSelection.previous.MINS === 0 &&
+							timeRangeSelection.previous.HOURS !== 12 &&
 							timeRangeSelection.previous.HOURS + limitHours >= 12
-								? calculateMeridian(value)
+								? calculateMeridian(value, timeRangeSelection.next.MER)
 								: value,
 					},
 				});
@@ -43,8 +48,10 @@ const TimeCounter = ({
 					previous: {
 						...timeRangeSelection.previous,
 						MER:
+							timeRangeSelection.previous.MINS === 0 &&
+							timeRangeSelection.previous.HOURS !== 12 &&
 							timeRangeSelection.previous.HOURS + limitHours >= 12
-								? calculateMeridian(value)
+								? calculateMeridian(value, timeRangeSelection.previous.MER)
 								: value,
 					},
 				});

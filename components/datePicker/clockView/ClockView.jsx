@@ -122,7 +122,13 @@ const ClockView = (props = {}) => {
 										...timeRangeSelection.previous,
 										HOURS:
 											item === 0 ? 11 : item === 1 ? 12 : item - limitHours,
-										MER: item === 11 ? 'AM' : 'PM',
+										MER:
+											item - limitHours < 0
+												? calculateMeridian(
+														timeRangeSelection.previous.MER,
+														timeRangeSelection.next.MER
+												  )
+												: timeRangeSelection.previous.MER,
 									},
 									next: {
 										...timeRangeSelection[rangeType],
