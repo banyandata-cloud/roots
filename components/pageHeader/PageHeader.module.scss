@@ -1,11 +1,13 @@
 @import '../../styles/index';
 
 .root {
-	@include flex(row, space-between, flex-start);
-	align-items: center;
+	@include flex(column, center, flex-start);
 	width: 100%;
 	background-color: transparent;
 	gap: 1rem;
+	&.compact {
+		@include flex(row, space-between, flex-start);
+	}
 	color: $text-color;
 	.breadcrumb {
 		[data-elem='breadcrumb-item-active'] {
@@ -17,6 +19,10 @@
 		@include flex(row, flex-end, center);
 		margin-left: auto;
 		gap: 0.75rem;
+		&.start-left {
+			@include flex(row, flex-start, center);
+			margin-left: unset;
+		}
 		.right {
 			@include flex(row, flex-start, center);
 			gap: 0.75rem;
