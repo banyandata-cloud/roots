@@ -1,20 +1,28 @@
 import PropTypes from 'prop-types';
-import styles from './PageHeader.module.css';
-import { BreadCrumbs } from '../breadcrumbs';
 import { classes } from '../../utils';
+import { BreadCrumbs } from '../breadcrumbs';
+import styles from './PageHeader.module.css';
 
 const PageHeader = (props) => {
 	const {
 		theme,
 		title,
 		children,
+		compact,
 		rightAction: RightAction,
 		crumbsProps,
 		className,
+		startLeft,
 	} = props;
 
 	return (
-		<div className={classes(styles.root, styles[`${theme}-theme`], className)}>
+		<div
+			className={classes(
+				styles.root,
+				compact ? styles.compact : '',
+				styles[`${theme}-theme`],
+				className
+			)}>
 			<div className={styles.breadcrumb}>
 				<BreadCrumbs
 					{...{
@@ -25,7 +33,7 @@ const PageHeader = (props) => {
 					}}
 				/>
 			</div>
-			<div className={styles.contents}>
+			<div className={classes(styles.contents, startLeft ? styles['start-left'] : '')}>
 				{RightAction && (
 					<div className={styles.right}>
 						<RightAction />
