@@ -63,6 +63,7 @@ const Calender = (props) => {
 			});
 			return;
 		}
+
 		if (range && value?.filter(Boolean)?.length > 0) {
 			setSelectedRange({
 				dates: getDatesInStringFormat({
@@ -94,6 +95,7 @@ const Calender = (props) => {
 			});
 			return;
 		}
+
 		if (!range && value) {
 			const date = fromUnixTime(value);
 			const dateAsNumber = date.getDate();
@@ -123,6 +125,10 @@ const Calender = (props) => {
 			(range && !value && disableDatesBefore?.length === 0) ||
 			(!range && !isBefore(date, disableDatesBefore))
 		) {
+			setSelectedRange({
+				dates: [],
+				unix: [],
+			});
 			const dateAsNumber = date.getDate();
 			const selectedDayInfo = getDayInfo(date);
 			setSelectedDate({
