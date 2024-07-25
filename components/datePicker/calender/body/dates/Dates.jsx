@@ -1,12 +1,12 @@
 /* eslint-disable no-nested-ternary */
 import {
-	getUnixTime,
 	fromUnixTime,
+	getUnixTime,
 	isAfter,
 	isBefore,
+	isEqual,
 	isSameDay,
 	isToday,
-	isEqual,
 } from 'date-fns';
 import { useEffect, useState } from 'react';
 import { classes, getDatesInAMonth, getDayInfo } from '../../../../../utils';

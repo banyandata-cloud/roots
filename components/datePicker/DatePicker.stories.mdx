@@ -1,11 +1,12 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { ThemedContainer, ToggleIframeContainer } from '../helpers';
 import DatePicker from './DatePicker';
+import { useState } from 'react';
 
 <Meta title='Components/DatePicker' parameters={{ options: { showToolbar: true } }} />
 
 export const Template = (args) => (
-	<ThemedContainer {...args} style={{ width: '27rem' }}>
+	<ThemedContainer {...args} style={{ width: '40rem' }}>
 		<DatePicker {...args} />
 	</ThemedContainer>
 );
@@ -62,16 +63,28 @@ The date picker which allows to select a date from the popover.
 The date picker allows to select the range of date from the popever.
 
 <Canvas>
-	<Story
-		name='Range Date Picker'
-		args={{
-			placeholder: 'Select Date Range',
-			label: 'Range Date Picker',
-			value: [1678732200, 1678905000],
-			range: true,
-			theme: 'light',
-		}}>
-		{Template.bind({})}
+	<Story name='Range Date Picker'>
+		{() => {
+			const [value, setValue] = useState(null);
+			return (
+				<ThemedContainer style={{ width: '40rem' }}>
+					<DatePicker
+						{...{
+							placeholder: 'Select Date Range',
+							label: 'Range Date Picker',
+							value,
+							range: true,
+							onApply: (v) => {
+								setValue(v);
+							},
+							onClear: () => {
+								setValue(null);
+							},
+						}}
+					/>
+				</ThemedContainer>
+			);
+		}}
 	</Story>
 </Canvas>
 
@@ -407,10 +420,84 @@ The method to **clear** the selected date or range from the date picker.
 	</tr>
 </table>
 
-```jsx
+````````````````````jsx
 <DatePicker
 	onClear={() => {
 		console.log('Do Something in the Application');
 	}}
 />
-```
+```import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ThemedContainer, ToggleIframeContainer } from '../helpers';
+import DatePicker from './DatePicker';
+
+````import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ThemedContainer, ToggleIframeContainer } from '../helpers';
+import DatePicker from './DatePicker';
+
+`````import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ThemedContainer, ToggleIframeContainer } from '../helpers';
+import DatePicker from './DatePicker';
+
+``````import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ThemedContainer, ToggleIframeContainer } from '../helpers';
+import DatePicker from './DatePicker';
+
+```````import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ThemedContainer, ToggleIframeContainer } from '../helpers';
+import DatePicker from './DatePicker';
+
+````````import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ThemedContainer, ToggleIframeContainer } from '../helpers';
+import DatePicker from './DatePicker';
+
+`````````import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ThemedContainer, ToggleIframeContainer } from '../helpers';
+import DatePicker from './DatePicker';
+
+``````````import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ThemedContainer, ToggleIframeContainer } from '../helpers';
+import DatePicker from './DatePicker';
+
+```````````import { useState } from 'react';
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ThemedContainer, ToggleIframeContainer } from '../helpers';
+import DatePicker from './DatePicker';
+
+````````````import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ThemedContainer, ToggleIframeContainer } from '../helpers';
+import DatePicker from './DatePicker';
+
+`````````````import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ThemedContainer, ToggleIframeContainer } from '../helpers';
+import DatePicker from './DatePicker';
+
+``````````````import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ThemedContainer, ToggleIframeContainer } from '../helpers';
+import DatePicker from './DatePicker';
+
+```````````````import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { useState } from 'react';
+import { ThemedContainer, ToggleIframeContainer } from '../helpers';
+import DatePicker from './DatePicker';
+
+````````````````import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { useState } from 'react';
+import { ThemedContainer, ToggleIframeContainer } from '../helpers';
+import DatePicker from './DatePicker';
+
+`````````````````import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { useState } from 'react';
+import { ThemedContainer, ToggleIframeContainer } from '../helpers';
+import DatePicker from './DatePicker';
+
+``````````````````import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { useState } from 'react';
+import { ThemedContainer, ToggleIframeContainer } from '../helpers';
+import DatePicker from './DatePicker';
+
+```````````````````import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { useState } from 'react';
+import { ThemedContainer, ToggleIframeContainer } from '../helpers';
+import DatePicker from './DatePicker';
+
+````````````````````
