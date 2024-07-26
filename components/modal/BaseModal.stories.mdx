@@ -53,6 +53,9 @@ The default Base Modal.
 						description='Description'
 						footerProps={{
 							actionTitle: 'Save Changes',
+							actionButtonProps: {
+								disabled: true,
+							},
 							cancelTitle: 'Dismiss',
 							onAction: () => {
 								console.log('action');
