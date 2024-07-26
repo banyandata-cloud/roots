@@ -46,7 +46,7 @@ const ModalHeader = ({ title, description }) => {
 const ModalFooter = (props) => {
 	const {
 		actionTitle = 'Save',
-		disable = {},
+		disabled = {},
 		cancelTitle = 'Cancel',
 		onAction,
 		onDismiss,
@@ -72,13 +72,13 @@ const ModalFooter = (props) => {
 				className={styles.dismiss}
 				title={cancelTitle}
 				onClick={handleDismiss}
-				disable={disable.cancel}
+				disabled={disabled.cancel}
 			/>
 			<Button
 				className={styles.action}
 				title={actionTitle}
 				onClick={handleAction}
-				disable={disable.action}
+				disabled={disabled.action}
 			/>
 		</>
 	);
