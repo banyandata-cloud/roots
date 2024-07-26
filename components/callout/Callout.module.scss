@@ -97,22 +97,26 @@
 	}
 
 	&.info {
+		box-shadow: 0px 0px 2px 0px $secondary-color2;
 		.icons {
 			box-shadow: 0px 0px 10px 0px $secondary-color2;
 		}
 	}
 	&.success {
+		box-shadow: 0px 0px 2px 0px $primary-color2;
 		.icons {
 			box-shadow: 0px 0px 10px 0px $primary-color2;
 		}
 	}
 	&.danger,
 	&.error {
+		box-shadow: 0px 0px 2px 0px $primary-color1;
 		.icons {
 			box-shadow: 0px 0px 10px 0px $primary-color1;
 		}
 	}
 	&.warning {
+		box-shadow: 0px 0px 2px 0px $primary-color3;
 		.icons {
 			box-shadow: 0px 0px 10px 0px $primary-color3;
 		}

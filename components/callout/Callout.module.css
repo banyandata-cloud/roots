@@ -103,14 +103,26 @@
 .root.border-none {
   border-width: 0rem 0rem 0rem 0.25rem;
 }
+.root.info {
+  box-shadow: 0px 0px 2px 0px var(--secondary-color2);
+}
 .root.info .icons {
   box-shadow: 0px 0px 10px 0px var(--secondary-color2);
+}
+.root.success {
+  box-shadow: 0px 0px 2px 0px var(--primary-color2);
 }
 .root.success .icons {
   box-shadow: 0px 0px 10px 0px var(--primary-color2);
 }
+.root.danger, .root.error {
+  box-shadow: 0px 0px 2px 0px var(--primary-color1);
+}
 .root.danger .icons, .root.error .icons {
   box-shadow: 0px 0px 10px 0px var(--primary-color1);
+}
+.root.warning {
+  box-shadow: 0px 0px 2px 0px var(--primary-color3);
 }
 .root.warning .icons {
   box-shadow: 0px 0px 10px 0px var(--primary-color3);
