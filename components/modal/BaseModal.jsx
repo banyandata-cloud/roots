@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable max-len */
 import {
@@ -45,6 +46,7 @@ const ModalHeader = ({ title, description }) => {
 const ModalFooter = (props) => {
 	const {
 		actionTitle = 'Save',
+		disabled = {},
 		cancelTitle = 'Cancel',
 		onAction,
 		onDismiss,
@@ -66,8 +68,18 @@ const ModalFooter = (props) => {
 
 	return (
 		<>
-			<Button className={styles.dismiss} title={cancelTitle} onClick={handleDismiss} />
-			<Button className={styles.action} title={actionTitle} onClick={handleAction} />
+			<Button
+				className={styles.dismiss}
+				title={cancelTitle}
+				onClick={handleDismiss}
+				disabled={disabled.cancel}
+			/>
+			<Button
+				className={styles.action}
+				title={actionTitle}
+				onClick={handleAction}
+				disabled={disabled.action}
+			/>
 		</>
 	);
 };
@@ -171,7 +183,7 @@ const BaseModal = (props) => {
 										});
 									})()}
 								</motion.footer>
-							) : (
+							) : footerProps ? (
 								<motion.footer
 									{...(animation && {
 										...footerAnimations,
@@ -180,7 +192,7 @@ const BaseModal = (props) => {
 									className={styles.footer}>
 									<ModalFooter {...footerProps} />
 								</motion.footer>
-							)}
+							) : null}
 							{!hideCrossDismiss && (
 								<Button
 									size='auto'
