@@ -40,12 +40,11 @@
   justify-content: center;
   align-items: center;
   padding: 0.5rem;
-  display: flex;
   width: 2.5rem;
   height: 2.5rem;
-  gap: 10px;
+  gap: 0.625rem;
   height: auto;
-  border-radius: 10px;
+  border-radius: 0.625rem;
   background: var(--light-color3);
 }
 .root .left .icons .icon {
@@ -81,7 +80,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 5px;
+  gap: 0.3125rem;
 }
 .root .actions .button {
   padding: 0.313rem 1rem;
@@ -105,16 +104,16 @@
   border-width: 0rem 0rem 0rem 0.25rem;
 }
 .root.info .icons {
-  box-shadow: 0px 0px 10px 0px var(--secondary-color2);
+  box-shadow: 0rem 0rem 10rem 0rem var(--secondary-color2);
 }
 .root.success .icons {
-  box-shadow: 0px 0px 10px 0px var(--primary-color2);
+  box-shadow: 0rem 0rem 10rem 0rem var(--primary-color2);
 }
 .root.danger .icons, .root.error .icons {
-  box-shadow: 0px 0px 10px 0px var(--primary-color1);
+  box-shadow: 0rem 0rem 10rem 0rem var(--primary-color1);
 }
 .root.warning .icons {
-  box-shadow: 0px 0px 10px 0px var(--primary-color3);
+  box-shadow: 0rem 0rem 10rem 0rem var(--primary-color3);
 }
 .root.shadow {
   box-shadow: 0rem 0.0625rem 0.25rem 0rem rgba(0, 0, 0, 0.25), 0rem 0.1875rem 0.25rem 0rem rgba(0, 0, 0, 0.25);
