@@ -62,7 +62,7 @@ const FlowChart = ({
 				properties: node.properties,
 				level: node.labels[0],
 				visibility: 'visible',
-				status: node.properties.final_controls_status, // Extract status
+				status: node.properties.status, // Extract status
 				excluded: node.properties.excluded_resource,
 			};
 		});
