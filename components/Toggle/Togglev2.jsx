@@ -4,10 +4,9 @@ import { useEffect, useRef, useState } from 'react';
 import { classes } from '../../utils';
 import { Button } from '../buttons';
 import { Skeleton } from './Skeleton';
-import Togglev2 from './Togglev2';
-import styles from './Toggle.module.css';
+import styles from './Togglev2.module.css';
 
-const Toggle = (props) => {
+const Togglev2 = (props) => {
 	const {
 		options,
 		multi,
@@ -19,7 +18,7 @@ const Toggle = (props) => {
 		fallback,
 		className,
 		smooth,
-		v2 = false,
+		secondary,
 	} = props;
 	const [sliderLeft, setSliderLeft] = useState(0);
 	const [sliderWidth, setSliderWidth] = useState(0);
@@ -122,10 +121,6 @@ const Toggle = (props) => {
 		updateSliderPosition();
 	}, [inputValue, options]);
 
-	if (v2) {
-		return <Togglev2 {...props} />;
-	}
-
 	return (
 		<div className={classes(styles.root, styles[theme], className)}>
 			<div className={styles.toggle}>
@@ -137,7 +132,12 @@ const Toggle = (props) => {
 						variant='text'
 						className={classes(
 							styles['toggle-button'],
-							allSelected ? styles['all-select'] : ''
+							// eslint-disable-next-line no-nested-ternary
+							allSelected
+								? secondary
+									? classes(styles['all-select'], styles.secondary)
+									: styles['all-select']
+								: ''
 						)}
 						onClick={onSelectAll}
 						title='All'
@@ -170,6 +170,7 @@ const Toggle = (props) => {
 								styles[theme],
 								disabled ? styles.disabled : '',
 								isActive ? styles.active : '',
+								secondary ? styles.secondary : '',
 								!smooth ? styles.highlight : '',
 								itemClassName
 							)}
@@ -182,6 +183,7 @@ const Toggle = (props) => {
 					<div
 						className={classes(
 							styles.slider,
+							secondary ? styles.secondary : '',
 							styles[theme],
 							smooth ? styles.smooth : ''
 						)}
@@ -196,7 +198,7 @@ const Toggle = (props) => {
 	);
 };
 
-Toggle.propTypes = {
+Togglev2.propTypes = {
 	loading: PropTypes.bool,
 	fallback: PropTypes.bool,
 	className: PropTypes.string,
@@ -205,10 +207,9 @@ Toggle.propTypes = {
 	value: PropTypes.string,
 	multi: PropTypes.bool,
 	smooth: PropTypes.bool,
-	v2: PropTypes.bool,
 };
 
-Toggle.defaultProps = {
+Togglev2.defaultProps = {
 	loading: false,
 	fallback: false,
 	className: '',
@@ -217,7 +218,6 @@ Toggle.defaultProps = {
 	value: undefined,
 	multi: false,
 	smooth: false,
-	v2: false,
 };
 
-export default Toggle;
+export default Togglev2;
