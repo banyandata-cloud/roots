@@ -14,7 +14,7 @@ import { useOutsideClickListener } from '../../hooks';
 import { classes } from '../../utils';
 import { Button } from '../buttons';
 import { ErrorBoundaryWrapper } from '../errorBoundary';
-import { CalenderIcon, CaretIcon, ClockIcon, CrossIcon } from '../icons';
+import { CalenderIcon, CaretIcon, ClockIcon } from '../icons';
 import { Popper } from '../popper';
 import styles from './DatePicker.module.css';
 import { Calender } from './calender';
@@ -197,8 +197,8 @@ const DatePicker = (props) => {
 				dateSelected: selectedDate,
 			});
 		},
+		onClear,
 		disabledDates,
-
 		disableDatesBefore,
 		value,
 		setFixedRange,
@@ -284,30 +284,13 @@ const DatePicker = (props) => {
 						</div>
 
 						<input className={styles.input} value={displayValue} />
+						<CaretIcon
+							className={classes(
+								styles.icon,
 
-						{value ? (
-							<Button
-								size='auto'
-								variant='text'
-								data-elem='close'
-								className={styles.close}
-								onClick={(event) => {
-									event.stopPropagation();
-									onClear();
-								}}
-								rightComponent={() => {
-									return <CrossIcon className={styles.icon} />;
-								}}
-							/>
-						) : (
-							<CaretIcon
-								className={classes(
-									styles.icon,
-
-									openDatePicker ? styles.open : ''
-								)}
-							/>
-						)}
+								openDatePicker ? styles.open : ''
+							)}
+						/>
 					</div>
 
 					{error && <div className={styles['error-text']}>{error}</div>}

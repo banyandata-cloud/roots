@@ -16,6 +16,7 @@ const Calender = (props) => {
 		selectedRange,
 		setSelectedRange,
 		onApply,
+		onClear,
 		disabledDates,
 		disableDatesBefore,
 		value,
@@ -246,6 +247,8 @@ const Calender = (props) => {
 			<CalenderFooter
 				{...commonCalenderProps}
 				onApply={onApply}
+				onClear={onClear}
+				value={value}
 				customRanges={customRanges}
 				setFixedRange={setFixedRange}
 			/>
