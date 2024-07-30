@@ -12,7 +12,7 @@
   flex: 1;
 }
 .root button[data-elem=base-cell].clear[type=submit] {
-  background-color: var(--mono-color2);
+  background-color: var(--mono-color3);
   color: black;
   margin-top: auto;
   flex: 1;
