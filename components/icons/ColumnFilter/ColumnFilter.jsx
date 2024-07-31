@@ -1,7 +1,49 @@
 const ColumnFilter = (props) => {
-	const { className } = props;
+	const { className, v3 } = props;
 
-	return (
+	return v3 ? (
+		<svg
+			className={className}
+			viewBox='0 0 24 25'
+			fill='none'
+			xmlns='http://www.w3.org/2000/svg'>
+			<g clipPath='url(#clip0_3076_221)'>
+				<path
+					d='M3.27075 6H19.2708'
+					stroke='#141920'
+					strokeWidth='2'
+					strokeLinecap='round'
+					strokeLinejoin='round'
+				/>
+				<path
+					d='M3.27075 12H7.27075'
+					stroke='#141920'
+					strokeWidth='2'
+					strokeLinecap='round'
+					strokeLinejoin='round'
+				/>
+				<path
+					d='M3.27075 18H7.27075'
+					stroke='#141920'
+					strokeWidth='2'
+					strokeLinecap='round'
+					strokeLinejoin='round'
+				/>
+				<path
+					d='M9.84423 9H20.9871C21.1105 9.04329 21.2224 9.11427 21.3142 9.20748C21.406 9.3007 21.4752 9.41369 21.5166 9.53779C21.5579 9.66189 21.5704 9.79382 21.5529 9.92346C21.5354 10.0531 21.4884 10.177 21.4157 10.2857L17.1299 15V21L13.7014 18.4286V15L9.41565 10.2857C9.34287 10.177 9.29594 10.0531 9.27845 9.92346C9.26096 9.79382 9.27337 9.66189 9.31474 9.53779C9.35611 9.41369 9.42533 9.3007 9.51711 9.20748C9.60889 9.11427 9.72078 9.04329 9.84423 9Z'
+					stroke='black'
+					strokeWidth='1.71429'
+					strokeLinecap='round'
+					strokeLinejoin='round'
+				/>
+			</g>
+			<defs>
+				<clipPath id='clip0_3076_221'>
+					<rect width='24' height='24' fill='white' transform='translate(0 0.5)' />
+				</clipPath>
+			</defs>
+		</svg>
+	) : (
 		<svg
 			width='24'
 			height='24'

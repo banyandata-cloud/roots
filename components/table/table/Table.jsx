@@ -45,6 +45,7 @@ const Table = (props) => {
 		custom,
 		tableTitleIcon,
 		tableTitleText,
+		tableDescriptionText,
 		dataLabel,
 		customLabel,
 		jumpLabel,
@@ -52,6 +53,10 @@ const Table = (props) => {
 		customPageCallback,
 		hideDisabledPages,
 		onFilterClear,
+		v3,
+		search,
+		customSearchIcon,
+		setSearch,
 	} = props;
 
 	const ref = useRef(null);
@@ -157,9 +162,15 @@ const Table = (props) => {
 						theme={theme}
 						tableTitleIcon={tableTitleIcon}
 						tableTitleText={tableTitleText}
+						tableDescriptionText={tableDescriptionText}
 						onClear={onFilterClear}
+						v3={v3}
+						search={search}
+						customSearchIcon={customSearchIcon}
+						setSearch={setSearch}
 					/>
 				)}
+
 				<BaseTable
 					{...{
 						ref,
@@ -246,6 +257,7 @@ Table.propTypes = {
 	custom: PropTypes.node,
 	onAdvancedFilterClick: PropTypes.func,
 	dataLabel: PropTypes.string,
+	v3: PropTypes.bool,
 };
 
 Table.defaultProps = {
@@ -277,6 +289,7 @@ Table.defaultProps = {
 	custom: null,
 	onAdvancedFilterClick: () => {},
 	dataLabel: null,
+	v3: false,
 };
 
 export default Table;
