@@ -195,10 +195,13 @@
   flex: 1;
 }
 .body .footer button[data-elem=base-cell].multi-clear[type=submit] {
-  background-color: var(--mono-color3);
-  color: black;
+  background-color: var(--light-color2);
+  color: var(--mono-color1);
   margin-top: 1rem;
   flex: 1;
+}
+.body .footer button[data-elem=base-cell].multi-clear[type=submit]:hover {
+  background-color: var(--light-color1);
 }
 .body.open {
   display: flex;

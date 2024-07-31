@@ -197,7 +197,10 @@ const DatePicker = (props) => {
 				dateSelected: selectedDate,
 			});
 		},
-		onClear,
+		onClear: () => {
+			onClear();
+			setOpenDatePicker(false);
+		},
 		disabledDates,
 		disableDatesBefore,
 		value,

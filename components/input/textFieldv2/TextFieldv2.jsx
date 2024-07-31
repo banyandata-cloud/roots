@@ -14,10 +14,10 @@ import {
 	PasswordIcon,
 	UnlockPasswordIcon,
 	ViewPasswordIcon,
+	InfoIcon,
 } from '../../icons';
 import { Button } from '../../buttons';
 import { Tooltip } from '../../tooltip';
-import { InfoIcon } from '../../icons/Info';
 
 /**
  * TextField is a functional component that renders a text input field with customizable options.
