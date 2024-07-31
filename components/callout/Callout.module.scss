@@ -2,9 +2,8 @@
 
 .root {
 	@include flex(row, space-between, flex-start);
-	position: fixed;
 	padding: 1rem;
-	width: 37.5rem;
+	width: 100%;
 	opacity: 1;
 	background-color: $light-color3;
 	border-radius: 0.25rem;
@@ -97,22 +96,26 @@
 	}
 
 	&.info {
+		box-shadow: 0rem 0rem 0.125rem 0rem $secondary-color2;
 		.icons {
-			box-shadow: 0rem 0rem 10rem 0rem $secondary-color2;
+			box-shadow: 0rem 0rem 0.625rem 0rem $secondary-color2;
 		}
 	}
 	&.success {
+		box-shadow: 0rem 0rem 0.125rem 0rem $primary-color2;
 		.icons {
 			box-shadow: 0rem 0rem 10rem 0rem $primary-color2;
 		}
 	}
 	&.danger,
 	&.error {
+		box-shadow: 0rem 0rem 0.125rem 0rem $primary-color1;
 		.icons {
 			box-shadow: 0rem 0rem 10rem 0rem $primary-color1;
 		}
 	}
 	&.warning {
+		box-shadow: 0rem 0rem 0.125rem 0rem $primary-color3;
 		.icons {
 			box-shadow: 0rem 0rem 10rem 0rem $primary-color3;
 		}

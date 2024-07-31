@@ -3,9 +3,8 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
-  position: fixed;
   padding: 1rem;
-  width: 37.5rem;
+  width: 100%;
   opacity: 1;
   background-color: var(--light-color3);
   border-radius: 0.25rem;
@@ -103,18 +102,30 @@
 .root.border-none {
   border-width: 0rem 0rem 0rem 0.25rem;
 }
+.root.info {
+  box-shadow: 0rem 0rem 0.125rem 0rem var(--secondary-color2);
+}
 .root.info .icons {
-  box-shadow: 0rem 0rem 10rem 0rem var(--secondary-color2);
+  box-shadow: 0rem 0rem 0.625rem 0rem var(--secondary-color2);
+}
+.root.success {
+  box-shadow: 0rem 0rem 0.125rem 0rem var(--primary-color2);
 }
 .root.success .icons {
   box-shadow: 0rem 0rem 10rem 0rem var(--primary-color2);
 }
+.root.danger, .root.error {
+  box-shadow: 0rem 0rem 0.125rem 0rem var(--primary-color1);
+}
 .root.danger .icons, .root.error .icons {
   box-shadow: 0rem 0rem 10rem 0rem var(--primary-color1);
+}
+.root.warning {
+  box-shadow: 0rem 0rem 0.125rem 0rem var(--primary-color3);
 }
 .root.warning .icons {
   box-shadow: 0rem 0rem 10rem 0rem var(--primary-color3);
 }
 .root.shadow {
   box-shadow: 0rem 0.0625rem 0.25rem 0rem rgba(0, 0, 0, 0.25), 0rem 0.1875rem 0.25rem 0rem rgba(0, 0, 0, 0.25);
-}/*# sourceMappingURL=Alert.module.css.map */
+}/*# sourceMappingURL=Callout.module.css.map */

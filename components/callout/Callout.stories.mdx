@@ -1,0 +1,188 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+import { useState, useRef, useEffect } from 'react';
+import { ThemedContainer } from '../helpers';
+import { AlertIcon } from '../icons';
+import Callout from './Callout';
+
+<Meta title='Components/Callout' parameters={{ options: { showToolbar: true } }} />
+
+# Callout
+
+The Callout component is used to display informative messages, warnings, errors, and other on-screen messages in a user interface. It supports various configurations for customization, including different colors, icons, and optional actions.
+
+#### Design - [Figma](https://www.figma.com/design/rxc8xKBPlEyTJVFGQgh9Gb/Component-Library?node-id=2897-9473&t=fwr4cpT42vgd0PPE-0) | Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/components/callout)
+
+## Usage
+
+Basic import and additional information on how to use this component.
+
+```js
+import { Callout } from '@banyan_cloud/roots';
+```
+
+-   The icon prop can be a custom icon component or one of the predefined icons for different callout types.
+
+## Stories
+
+The CSF rendered inside the `Canvas` from which you can see the implementation example.
+
+### Info
+
+The default Callout component showing info.
+
+<Canvas>
+	<Story name='Info'>
+		{() => {
+			return (
+				<ThemedContainer theme='light'>
+					<div style={{ width: '50%' }}>
+						<Callout
+							title='Information'
+							description='Basic Info Basic Info Basic Info Basic InfoBasic Info'
+							type='info'
+						/>
+					</div>
+				</ThemedContainer>
+			);
+		}}
+	</Story>
+</Canvas>
+
+### Error
+
+The default Callout component showing error.
+
+<Canvas>
+	<Story name='Error'>
+		{() => {
+			return (
+				<ThemedContainer theme='light'>
+					<div style={{ width: '50%' }}>
+						<Callout title='Error' description='Basic Error' type='error' />
+					</div>
+				</ThemedContainer>
+			);
+		}}
+	</Story>
+</Canvas>
+
+### Warning
+
+The default Callout component showing warning.
+
+<Canvas>
+	<Story name='Warning'>
+		{() => {
+			return (
+				<ThemedContainer theme='light'>
+					<div style={{ width: '50%' }}>
+						<Callout title='Warning' description='Basic Warning' type='warning' />
+					</div>
+				</ThemedContainer>
+			);
+		}}
+	</Story>
+</Canvas>
+
+### Success
+
+The default Callout component showing success.
+
+<Canvas>
+	<Story name='Success'>
+		{() => {
+			return (
+				<ThemedContainer theme='light'>
+					<div style={{ width: '50%' }}>
+						<Callout title='Success' description='Basic Success' type='success' />
+					</div>
+				</ThemedContainer>
+			);
+		}}
+	</Story>
+</Canvas>
+
+### Danger
+
+The default Callout component showing danger.
+
+<Canvas>
+	<Story name='Danger'>
+		{() => {
+			return (
+				<ThemedContainer theme='light'>
+					<div style={{ width: '50%' }}>
+						<Callout title='Danger' description='Basic Danger' type='danger' />
+					</div>
+				</ThemedContainer>
+			);
+		}}
+	</Story>
+</Canvas>
+
+## Try in the Code Editor
+
+This embeded `CodeSandBox` is external third party code editor `iframe` shared publicly. It is advised to create an account with banyancloud mail id to create/fork this sandbox.
+
+## API
+
+**`showIcon`**
+
+Determines whether to display an icon in the callout.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>true</td>
+	</tr>
+</table>
+
+```jsx
+<Callout showIcon={false} />
+```
+
+**`border`**
+
+Border style of the alert.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>'default', 'thick-left', 'none'</td>
+		<td>'default'</td>
+	</tr>
+</table>
+
+```jsx
+<Callout border='thick-left' />
+```
+
+**`shadow`**
+
+Determines whether to show a shadow around the callout.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<Callout shadow={true} />
+```
+
+```jsx
+<Callout position='top-right' />
+```
