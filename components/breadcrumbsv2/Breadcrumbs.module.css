@@ -1,0 +1,137 @@
+.root {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.root button[data-elem=base-cell].selected[type=submit] {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  height: 1.9375rem;
+  width: auto;
+  background: #f7f7f8;
+  padding: 0.5rem 0.75rem;
+  gap: 0.625rem;
+  border-radius: 0.25rem;
+}
+.root button[data-elem=base-cell].selected[type=submit].expand {
+  border: 0.0313rem solid #0f62fe;
+}
+.root button[data-elem=base-cell].selected[type=submit] > [data-elem=component1] {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.root button[data-elem=base-cell].selected[type=submit] > [data-elem=component1] div.iconWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.root button[data-elem=base-cell].selected[type=submit] > [data-elem=component2] {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-color);
+}
+.root button[data-elem=base-cell].selected[type=submit] > [data-elem=component3] {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.root button[data-elem=base-cell].selected[type=submit] > [data-elem=component3] div.flowchart {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.root button[data-elem=base-cell].selected[type=submit] > [data-elem=component3] div.flowchart .icon > path {
+  stroke: #97979f;
+}
+
+div.popover {
+  height: auto;
+  width: auto;
+  padding: 0.75rem 0.625rem 0rem 0.625rem;
+  background: var(--white) !important;
+  border-color: var(--white) !important;
+  box-shadow: 0rem 0rem 0.125rem 0rem rgba(0, 0, 0, 0.2509803922);
+}
+div.popover .crumb-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 0.625rem;
+  border-radius: 0.125rem;
+  border: 0.0313rem solid #cdcdcd;
+  background: transparent;
+  font-weight: 500;
+  color: var(--text-color);
+}
+div.popover .crumb-list:hover {
+  cursor: pointer;
+  background: var(--light-color1);
+}
+div.popover .crumb-list.active {
+  background: #cfdfff;
+}
+div.popover .crumb-list .left {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0.625rem;
+}
+div.popover .crumb-list .left .iconWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  color: var(--text-color);
+}
+div.popover .crumb-list .left .title {
+  color: var(--text-color);
+}
+div.popover .crumb-list .left .value {
+  color: var(--text-color);
+}
+div.popover .crumb-list .right {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+div.popover .crumb-list .right .circle {
+  width: 12px;
+  height: 12px;
+  border: 1.5px solid var(--secondary-color2);
+  border-radius: 50%;
+  margin-left: 10px;
+}
+div.popover .crumb-list .right .circle-dropdown {
+  width: 12px;
+  height: 12px;
+  border: 1.5px solid var(--secondary-color2);
+  border-radius: 50%;
+  margin-left: 8px;
+}
+div.popover .crumb-list .right .circle-dropdown > path {
+  stroke: var(--secondary-color2);
+}
+div.popover .crumb-list .right .circle-filled {
+  width: 12px;
+  height: 12px;
+  background-color: var(--secondary-color2);
+  border-radius: 50%;
+  margin-left: 8px;
+}/*# sourceMappingURL=Breadcrumbs.module.css.map */

@@ -41,3 +41,4 @@ export * from './Email';
 export * from './ViewPassword';
 export * from './HidePassword';
 export * from './Info';
+export * from './FlowChart';
