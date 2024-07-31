@@ -1,8 +1,8 @@
-import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
-import styles from './CheckBox.module.css';
-import { CheckboxIcon } from '../../icons';
+import React, { useRef, useState } from 'react';
 import { classes, inputHelper } from '../../../utils/utils';
+import { CheckboxIcon } from '../../icons';
+import styles from './CheckBox.module.css';
 
 const getIcon = (checked, intermediate) => {
 	if (checked) {
@@ -89,7 +89,7 @@ Checkbox.defaultProps = {
 	defaultChecked: false,
 	checked: undefined,
 	position: 'right',
-	size: 'sm',
+	size: 'md',
 	onChange: () => {},
 };
 
