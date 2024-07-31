@@ -1,0 +1,198 @@
+@import '../../../styles/index';
+
+.root {
+	@include flex(column, flex-start, flex-start);
+	gap: 0.5rem;
+	position: relative;
+	width: fit-content;
+	max-width: 100%;
+
+	.label {
+		font-size: 0.75rem;
+		color: $grey;
+		width: auto;
+		&.required {
+			&::after {
+				content: ' *';
+				color: $primary-color1;
+			}
+		}
+	}
+
+	.header {
+		@include flex(row, flex-start);
+		max-width: 100%;
+		position: relative;
+		&.error {
+			border: 1px solid $primary-color1;
+			border-radius: 0.3125rem;
+		}
+		.input {
+			position: absolute;
+			opacity: 0;
+			width: 1px;
+			height: 1px;
+			&:focus + .select {
+				border-color: $primary-color4;
+				&.feedback-error {
+					border-color: $primary-color1;
+				}
+			}
+		}
+
+		.select {
+			@include flex(row, space-between);
+			width: 25rem;
+			max-width: 100%;
+			gap: 0.5rem;
+			background: $light-color3;
+			outline: none;
+			border-radius: 0.3125rem;
+			border: 0.0625rem solid #dfe0e2;
+			padding: 0.75rem 0.75rem 0.75rem 1rem;
+			cursor: pointer;
+			font-weight: 500;
+			@include ellipsis;
+
+			.placeholder {
+				@include ellipsis;
+				color: $text-color;
+			}
+
+			.info-icon {
+				@include flex(row, space-between);
+			}
+			.icon-bundle {
+				@include flex(row, space-between);
+				gap: 1rem;
+				.caret-icon {
+					width: 1.5rem;
+					height: 1.5rem;
+					transition: transform 0.5s;
+					fill: $text-color !important;
+					@include flex(row, space-between);
+					&.open {
+						transform: rotate(180deg);
+					}
+				}
+				.info-icon {
+					path {
+						stroke: $primary-color1;
+					}
+				}
+			}
+			.icon {
+				width: 1.5rem;
+				height: 1.5rem;
+				transition: transform 0.5s;
+				fill: $text-color !important;
+				&.open {
+					transform: rotate(180deg);
+				}
+			}
+
+			&.feedback-error {
+				border-color: $primary-color1;
+			}
+		}
+	}
+
+	&.open {
+		.header {
+			border-color: $primary-color4;
+		}
+	}
+
+	&.disabled {
+		.select {
+			background: $grey10;
+			cursor: not-allowed;
+		}
+	}
+
+	.bottom {
+		@include flex(row, space-between, flex-start);
+		@include debug;
+		min-height: 2rem;
+		width: 100%;
+		gap: 1rem;
+		color: $grey3;
+		font-size: 0.75rem;
+		user-select: none;
+
+		.feedback {
+			flex: 1;
+			margin-right: auto;
+
+			&.feedback-error {
+				color: $primary-color1;
+				fill: $primary-color1;
+			}
+
+			&.feedback-success {
+				color: $primary-color2;
+				fill: $primary-color2;
+			}
+		}
+
+		.count {
+			text-align: right;
+			margin-left: auto;
+
+			&.exceeded {
+				color: $primary-color1;
+			}
+		}
+	}
+}
+
+.body {
+	display: none;
+	position: absolute;
+	top: calc(100% + 0.5rem);
+	background: $light-color3;
+	width: auto;
+	border-radius: 0.3125rem;
+	border: 0.0625rem solid $light-color2;
+	@include boxShadow;
+	padding: 1rem;
+	overflow-y: auto;
+	min-height: 4rem;
+	outline: none;
+
+	.multi-options {
+		@include flex(row, space-between);
+		margin-bottom: 0.5rem;
+		list-style: none;
+		button[data-elem='base-cell'].button[type='button'] {
+			margin: 0.25rem 0rem 0rem 0rem;
+			height: 2rem;
+			width: auto;
+			padding: 0%;
+			background-color: transparent;
+			color: $secondary-color2;
+		}
+	}
+
+	.footer {
+		@include flex(row, space-between);
+		margin-bottom: 0.5rem;
+		list-style: none;
+		gap: 0.5rem;
+		button[data-elem='base-cell'].multi-apply[type='submit'] {
+			background-color: $secondary-color2;
+			margin-top: 1rem;
+			flex: 1;
+		}
+		button[data-elem='base-cell'].multi-clear[type='submit'] {
+			background-color: $mono-color3;
+			color: black;
+			margin-top: 1rem;
+			flex: 1;
+		}
+	}
+
+	&.open {
+		@include flex(column, flex-start, stretch);
+	}
+}

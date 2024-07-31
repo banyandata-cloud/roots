@@ -2,10 +2,10 @@ import { Meta, Canvas, Story } from '@storybook/addon-docs';
 
 import { useState } from 'react';
 import { ThemedContainer } from '../../helpers';
-import Dropdown from './Dropdown';
-import DropdownItem from './dropdown-item/DropdownItem';
+import Dropdown from './Dropdownv2';
+import DropdownItem from './dropdown-itemv2/DropdownItemv2';
 
-<Meta title='Components/Input/Dropdown' parameters={{ options: { showToolbar: true } }} />
+<Meta title='Components/Input/Dropdownv2' parameters={{ options: { showToolbar: true } }} />
 
 export const Template = (args) => (
 	<ThemedContainer theme='light'>
@@ -81,7 +81,6 @@ The dropdown component with multiple selections.
 									title={`Option ${option + 1}`}
 									value={option + 1}
 									variant='checkbox'
-									disabled={true}
 								/>
 							);
 						})}
