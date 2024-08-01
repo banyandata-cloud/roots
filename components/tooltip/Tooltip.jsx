@@ -17,7 +17,7 @@ import styles from './Tooltip.module.css';
 
 // eslint-disable-next-line prefer-arrow-callback
 const Tooltip = forwardRef(function Tooltip(props, propRef) {
-	const { children, position, content, variant, className } = props;
+	const { children, position = 'top', content, variant = 'light', className = '' } = props;
 
 	const arrowEl = useRef(null);
 
@@ -112,7 +112,7 @@ const Tooltip = forwardRef(function Tooltip(props, propRef) {
 							top: middlewareData?.arrow?.y ?? '',
 							right: '',
 							bottom: '',
-							[staticSide]: '-0.25rem',
+							[staticSide]: '-0.5rem',
 						}}
 					/>
 					{content}
@@ -127,13 +127,6 @@ Tooltip.propTypes = {
 	content: PropTypes.node,
 	position: PropTypes.oneOf(['right', 'top', 'bottom', 'left']),
 	className: PropTypes.string,
-};
-
-Tooltip.defaultProps = {
-	variant: 'light',
-	content: null,
-	position: 'top',
-	className: '',
 };
 
 export default Tooltip;

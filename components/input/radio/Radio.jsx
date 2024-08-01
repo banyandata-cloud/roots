@@ -1,20 +1,19 @@
+import PropTypes from 'prop-types';
 import React, { useRef, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import PropTypes from 'prop-types';
-import styles from './Radio.module.css';
-import { RadioIcon } from '../../icons';
 import { classes, inputHelper } from '../../../utils';
 import { ErrorBoundaryWrapper } from '../../errorBoundary';
+import { RadioIcon } from '../../icons';
+import styles from './Radio.module.css';
 
 const Radio = (props) => {
-	// eslint-disable-next-line object-curly-newline
 	const {
 		label,
 		checked,
 		defaultChecked,
-		onChange,
-		position,
-		size,
+		onChange = () => {},
+		position = 'left',
+		size = 'sm',
 		className,
 		disabled,
 		custom,
@@ -87,16 +86,6 @@ Radio.propTypes = {
 	position: PropTypes.oneOf(['left', 'right']),
 	size: PropTypes.oneOf(['sm', 'md', 'lg']),
 	onChange: PropTypes.func,
-};
-
-Radio.defaultProps = {
-	disabled: false,
-	label: null,
-	checked: undefined,
-	defaultChecked: false,
-	position: 'left',
-	size: 'sm',
-	onChange: () => {},
 };
 
 export default Radio;
