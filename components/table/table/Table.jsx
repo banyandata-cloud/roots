@@ -66,17 +66,27 @@ const Table = (props) => {
 
 	const [floating, setFloating] = useState(false);
 	const [hiddenColumns, setHiddenColumns] = useState({});
-	const [toggleTableDrawer, setToggleTableDrawer] = useState(false);
+	const [toggleTableDrawer, setToggleTableDrawer] = useState({
+		open: false,
+		data: {},
+	});
 
-	const toggleDrawer = () => {
+	const toggleDrawer = ({ data }) => {
 		setToggleTableDrawer((prevState) => {
-			return !prevState;
+			return {
+				open: !prevState.open,
+				data,
+			};
 		});
 	};
 
 	const visibileColumns = headerData.filter((header) => {
 		return [null, false, undefined].includes(hiddenColumns?.[header?.id]);
 	});
+
+	const { index } = toggleDrawer.data;
+
+	const Body = tableDrawerProps.renderBody[index];
 
 	// for pagination docking using intersection observer
 	useEffect(() => {
@@ -220,9 +230,19 @@ const Table = (props) => {
 				{v2 && (
 					<BaseSidePanel
 						toggle={toggleDrawer}
-						open={toggleTableDrawer}
-						{...tableDrawerProps}
-					/>
+						open={toggleTableDrawer.open}
+						renderHeader={() => {
+							const DrawerHeader = tableDrawerProps.drawerHeader;
+							return (
+								<DrawerHeader
+									datum={toggleTableDrawer.data}
+									toggle={toggleDrawer}
+								/>
+							);
+						}}
+						{...tableDrawerProps}>
+						<Body datum={toggleTableDrawer.data} toggle={toggleDrawer} />
+					</BaseSidePanel>
 				)}
 			</div>
 		</ErrorBoundary>
