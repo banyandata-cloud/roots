@@ -4,6 +4,7 @@ import { useRef } from 'react';
 import { classes } from '../../utils';
 import BaseModal from '../modal/BaseModal';
 import styles from './BaseSidePanel.module.css';
+import Tabs from '../tabs/Tabs';
 
 const BaseSidePanel = (props) => {
 	const {
@@ -16,7 +17,13 @@ const BaseSidePanel = (props) => {
 		toggle,
 		noDismiss,
 		animation,
+		tabsConfig = {
+			tabs: [],
+			className: '',
+		},
 	} = props;
+
+	const { tabs, className: tabsClassName } = tabsConfig;
 
 	const panelRef = useRef();
 
@@ -60,18 +67,22 @@ const BaseSidePanel = (props) => {
 		</BaseModal>
 	) : (
 		<div ref={panelRef} className={classes(styles.drawer, open ? '' : styles.close, className)}>
-			{renderHeader && (
-				<div data-elem='header' className={styles.header}>
-					{renderHeader}
-				</div>
-			)}
-			<div data-elem='body' className={styles.body}>
-				{children}
-			</div>
-			{renderFooter && (
-				<div data-elem='footer' className={styles.footer}>
-					{renderFooter}
-				</div>
+			{tabs.length > 0 && (
+				<Tabs tabs={tabs} className={tabsClassName} direction='vertical'>
+					{renderHeader && (
+						<div data-elem='header' className={styles.header}>
+							{renderHeader}
+						</div>
+					)}
+					<div data-elem='body' className={styles.body}>
+						{children}
+					</div>
+					{renderFooter && (
+						<div data-elem='footer' className={styles.footer}>
+							{renderFooter}
+						</div>
+					)}
+				</Tabs>
 			)}
 		</div>
 	);

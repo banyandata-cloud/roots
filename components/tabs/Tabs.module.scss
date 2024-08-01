@@ -109,3 +109,8 @@
 	border-top: 1px solid $grey3;
 	z-index: -1;
 }
+
+.tab-content-vertical {
+	@include flex(column);
+	width: 100%;
+}

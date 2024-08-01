@@ -159,8 +159,9 @@ const Tabs = (props) => {
 					}}
 				/>
 			</div>
-			<div className={!vertical ? styles['tab-content'] : ''} />
-			{children}
+			<div className={!vertical ? styles['tab-content'] : styles['tab-content-vertical']}>
+				{children}
+			</div>
 		</div>
 	);
 };

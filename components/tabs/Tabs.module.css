@@ -108,4 +108,12 @@
   padding-top: 10px;
   border-top: 1px solid var(--grey3);
   z-index: -1;
+}
+
+.tab-content-vertical {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }/*# sourceMappingURL=Tabs.module.css.map */
