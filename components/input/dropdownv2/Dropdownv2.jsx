@@ -447,49 +447,26 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 										ref={multiOptionsRef}
 										className={styles['multi-options']}
 										tabIndex={-1}>
-										{selectedOptions?.length > 0 ? (
-											<Button
-												className={styles.button}
-												blurOnClick={false}
-												title='Select All'
-												variant='contained'
-												type='button'
-												leftComponent={() => {
-													return (
-														<SelectAllIcon
-															className={styles.icon}
-															position='left'
-														/>
-													);
-												}}
-												onClick={(event) => {
-													event.stopPropagation();
-													multiOptionsRef?.current?.focus();
-													onSelectAll(event, true);
-												}}
-											/>
-										) : (
-											<Button
-												className={styles.button}
-												blurOnClick={false}
-												title='Select All'
-												variant='contained'
-												type='button'
-												leftComponent={() => {
-													return (
-														<SelectAllIcon
-															className={styles.icon}
-															position='left'
-														/>
-													);
-												}}
-												onClick={(event) => {
-													event.stopPropagation();
-													multiOptionsRef?.current?.focus();
-													onSelectAll(event, true);
-												}}
-											/>
-										)}
+										<Button
+											className={styles.button}
+											blurOnClick={false}
+											title='Select All'
+											variant='contained'
+											type='button'
+											leftComponent={() => {
+												return (
+													<SelectAllIcon
+														className={styles.icon}
+														position='left'
+													/>
+												);
+											}}
+											onClick={(event) => {
+												event.stopPropagation();
+												multiOptionsRef?.current?.focus();
+												onSelectAll(event, true);
+											}}
+										/>
 										{selectedOptions?.length > 0 && (
 											<span>{selectedOptions?.length} item selected</span>
 										)}

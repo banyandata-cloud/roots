@@ -89,7 +89,7 @@ const TextField = forwardRef((props, inputRef) => {
 
 	// for uncontrolled input
 	const [uncontrolledValue, setUncontrolledValue] = useState(defaultValue);
-	const [inputType, setInputType] = useState('textarea');
+	const [inputType, setInputType] = useState(type ?? 'textarea');
 
 	const [anchorEl, setAnchorEl] = useState(null);
 
@@ -118,19 +118,6 @@ const TextField = forwardRef((props, inputRef) => {
 			setInputType('input');
 		}
 		setInputType(currType);
-	};
-
-	const getPlaceholder = (currPlaceholder) => {
-		if (type === 'number') {
-			return 'Eg: 8870375812';
-		}
-		if (type === 'email') {
-			return 'alok@banyandata.com';
-		}
-		if (type === 'password') {
-			return '••••••••';
-		}
-		return currPlaceholder;
 	};
 
 	const getLeftComponent = () => {
@@ -216,8 +203,6 @@ const TextField = forwardRef((props, inputRef) => {
 	useEffect(() => {
 		if (type) {
 			getType(type);
-		} else {
-			setInputType('textarea');
 		}
 	}, [type]);
 
@@ -229,7 +214,7 @@ const TextField = forwardRef((props, inputRef) => {
 		disabled,
 		type: inputType,
 		defaultValue,
-		placeholder: getPlaceholder(placeholder),
+		placeholder,
 		...(maxLength !== null && maxLength),
 		onFocus: () => {
 			checkAndOpenAutocomplete(inputValue);
