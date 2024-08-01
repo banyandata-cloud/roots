@@ -1,6 +1,6 @@
 /* eslint-disable react/forbid-prop-types */
 import PropTypes from 'prop-types';
-import React, { createElement, forwardRef, useRef, useState, useEffect } from 'react';
+import React, { createElement, forwardRef, useRef, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { mergeRefs } from 'react-merge-refs';
 import { classes, inputHelper } from '../../../utils/utils';
@@ -113,13 +113,6 @@ const TextField = forwardRef((props, inputRef) => {
 		}
 	};
 
-	const getType = (currType) => {
-		if (currType === 'email') {
-			setInputType('input');
-		}
-		setInputType(currType);
-	};
-
 	const getLeftComponent = () => {
 		if (type === 'email') {
 			return <EmailIcon className={feedback?.error ? styles.error : ''} />;
@@ -199,12 +192,6 @@ const TextField = forwardRef((props, inputRef) => {
 		}
 		return <RightComponent />;
 	};
-
-	useEffect(() => {
-		if (type) {
-			getType(type);
-		}
-	}, [type]);
 
 	const inputValue = isControlled ? value ?? '' : uncontrolledValue;
 

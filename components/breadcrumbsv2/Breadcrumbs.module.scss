@@ -91,13 +91,19 @@ div.popover {
 				margin-left: 10px;
 			}
 			.circle-dropdown {
+				// @include debug;
+				@include flex(row, flex-end, flex-end);
 				width: 12px;
 				height: 12px;
 				border: 1.5px solid $secondary-color2;
 				border-radius: 50%;
 				margin-left: 8px;
-				> path {
-					stroke: $secondary-color2;
+				.icon {
+					margin-right: 1.8px;
+					margin-bottom: 1.4px;
+					> path {
+						stroke: $secondary-color2;
+					}
 				}
 			}
 			.circle-filled {
@@ -107,25 +113,26 @@ div.popover {
 				border-radius: 50%;
 				margin-left: 8px;
 			}
-			// .circle-dropdown::before {
-			// 	content: '';
-			// 	width: 2px;
-			// 	height: 30px;
-			// 	background: #007bff;
-			// 	position: absolute;
-			// 	top: 22.5%;
-			// 	right: 23px;
-			// }
+			.circle-dropdown::before {
+				content: '';
+				width: 0%;
+				height: 26px;
+				border-left: 2px dotted #007bff;
+				position: relative;
+				bottom: 100%;
+				right: -3.6px;
+			}
 
-			// .circle-filled::before {
-			// 	content: '';
-			// 	width: 2px;
-			// 	height: 30px;
-			// 	background: #007bff;
-			// 	position: absolute;
-			// 	bottom: 22.5%;
-			// 	right: 23px;
-			// }
+			.circle-filled::before {
+				z-index: 100;
+				content: '';
+				width: 2px;
+				height: 26px;
+				background: #007bff;
+				position: absolute;
+				bottom: 28px;
+				right: 22.6px;
+			}
 		}
 	}
 }

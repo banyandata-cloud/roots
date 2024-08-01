@@ -1,4 +1,4 @@
-const Edit = (props) => {
+const SelectAll = (props) => {
 	const { className } = props;
 
 	return (
@@ -17,8 +17,8 @@ const Edit = (props) => {
 	);
 };
 
-Edit.defaultProps = {
+SelectAll.defaultProps = {
 	className: '',
 };
 
-export default Edit;
+export default SelectAll;

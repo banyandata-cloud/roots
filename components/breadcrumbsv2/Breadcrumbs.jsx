@@ -37,7 +37,9 @@ const BreadCrumbs = (props) => {
 					<div className={styles.right}>
 						{index === 0 && <div className={styles.circle} />}
 						{index !== 0 && index !== (crumbs?.length ?? 1) - 1 && (
-							<CaretIcon className={styles['circle-dropdown']} />
+							<div className={styles['circle-dropdown']}>
+								<CaretIcon className={styles.icon} />
+							</div>
 						)}
 						{index === (crumbs?.length ?? 1) - 1 && (
 							<div className={styles['circle-filled']} />

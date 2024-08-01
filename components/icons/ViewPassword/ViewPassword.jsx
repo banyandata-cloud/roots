@@ -1,4 +1,4 @@
-const Edit = (props) => {
+const ViewPasswordIcon = (props) => {
 	const { className } = props;
 
 	return (
@@ -27,8 +27,8 @@ const Edit = (props) => {
 	);
 };
 
-Edit.defaultProps = {
+ViewPasswordIcon.defaultProps = {
 	className: '',
 };
 
-export default Edit;
+export default ViewPasswordIcon;

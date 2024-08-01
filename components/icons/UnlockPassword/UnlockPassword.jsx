@@ -1,4 +1,4 @@
-const Edit = (props) => {
+const UnclockPassword = (props) => {
 	const { className } = props;
 
 	return (
@@ -41,8 +41,8 @@ const Edit = (props) => {
 	);
 };
 
-Edit.defaultProps = {
+UnclockPassword.defaultProps = {
 	className: '',
 };
 
-export default Edit;
+export default UnclockPassword;

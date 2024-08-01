@@ -119,13 +119,21 @@ div.popover .crumb-list .right .circle {
   margin-left: 10px;
 }
 div.popover .crumb-list .right .circle-dropdown {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
   width: 12px;
   height: 12px;
   border: 1.5px solid var(--secondary-color2);
   border-radius: 50%;
   margin-left: 8px;
 }
-div.popover .crumb-list .right .circle-dropdown > path {
+div.popover .crumb-list .right .circle-dropdown .icon {
+  margin-right: 1.8px;
+  margin-bottom: 1.4px;
+}
+div.popover .crumb-list .right .circle-dropdown .icon > path {
   stroke: var(--secondary-color2);
 }
 div.popover .crumb-list .right .circle-filled {
@@ -134,4 +142,23 @@ div.popover .crumb-list .right .circle-filled {
   background-color: var(--secondary-color2);
   border-radius: 50%;
   margin-left: 8px;
+}
+div.popover .crumb-list .right .circle-dropdown::before {
+  content: "";
+  width: 0%;
+  height: 26px;
+  border-left: 2px dotted #007bff;
+  position: relative;
+  bottom: 100%;
+  right: -3.6px;
+}
+div.popover .crumb-list .right .circle-filled::before {
+  z-index: 100;
+  content: "";
+  width: 2px;
+  height: 26px;
+  background: #007bff;
+  position: absolute;
+  bottom: 28px;
+  right: 22.6px;
 }/*# sourceMappingURL=Breadcrumbs.module.css.map */

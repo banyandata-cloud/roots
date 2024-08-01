@@ -109,41 +109,6 @@
 			cursor: not-allowed;
 		}
 	}
-
-	.bottom {
-		@include flex(row, space-between, flex-start);
-		@include debug;
-		min-height: 2rem;
-		width: 100%;
-		gap: 1rem;
-		color: $grey3;
-		font-size: 0.75rem;
-		user-select: none;
-
-		.feedback {
-			flex: 1;
-			margin-right: auto;
-
-			&.feedback-error {
-				color: $primary-color1;
-				fill: $primary-color1;
-			}
-
-			&.feedback-success {
-				color: $primary-color2;
-				fill: $primary-color2;
-			}
-		}
-
-		.count {
-			text-align: right;
-			margin-left: auto;
-
-			&.exceeded {
-				color: $primary-color1;
-			}
-		}
-	}
 }
 
 .body {

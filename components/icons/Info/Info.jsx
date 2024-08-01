@@ -1,4 +1,4 @@
-const Edit = (props) => {
+const Info = (props) => {
 	const { className } = props;
 
 	return (
@@ -20,8 +20,8 @@ const Edit = (props) => {
 	);
 };
 
-Edit.defaultProps = {
+Info.defaultProps = {
 	className: '',
 };
 
-export default Edit;
+export default Info;

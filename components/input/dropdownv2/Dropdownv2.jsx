@@ -498,18 +498,6 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 						</FloatingFocusManager>
 					)}
 				</Popper>
-				{feedback != null && (
-					<div className={styles.bottom}>
-						<div
-							data-elem='feedback'
-							className={classes(
-								styles.feedback,
-								styles[`feedback-${feedback.type}`]
-							)}>
-							{feedback.text}
-						</div>
-					</div>
-				)}
 			</div>
 		</ErrorBoundary>
 	);

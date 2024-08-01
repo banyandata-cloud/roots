@@ -1,4 +1,4 @@
-const Edit = (props) => {
+const HidePassword = (props) => {
 	const { className } = props;
 
 	return (
@@ -27,8 +27,8 @@ const Edit = (props) => {
 	);
 };
 
-Edit.defaultProps = {
+HidePassword.defaultProps = {
 	className: '',
 };
 
-export default Edit;
+export default HidePassword;

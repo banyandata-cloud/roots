@@ -60,12 +60,12 @@
 						padding: 0.625rem;
 						border: 0rem solid transparent;
 						& > [data-elem='placeholder'] {
-							color: #1a2028;
+							color: $text-color;
 							font-size: 0.875rem;
-							background-color: #0f62fe;
+							background-color: $secondary-color2;
 						}
 						& > svg {
-							fill: #1a2028;
+							color: $text-color;
 							width: 1rem;
 							height: 1rem;
 						}
@@ -129,7 +129,7 @@
 					font-size: 0.875rem;
 					padding: 0 5px 0 5px;
 				}
-				background-color: #e0e0e0;
+				background-color: transparent;
 				color: $black;
 				min-width: 2.313rem;
 				line-height: 2.313rem;
@@ -153,7 +153,7 @@
 				}
 
 				&.active {
-					background-color: #0f62fe;
+					background-color: $secondary-color2;
 					color: $white;
 				}
 
@@ -220,12 +220,12 @@
 						padding: 0.625rem;
 						border: 0rem solid transparent;
 						& > [data-elem='placeholder'] {
-							color: #1a2028;
+							color: $text-color;
 							font-size: 0.875rem;
-							background-color: #0f62fe;
+							background-color: $secondary-color2;
 						}
 						& > svg {
-							fill: #1a2028;
+							color: $text-color;
 							width: 1rem;
 							height: 1rem;
 						}
@@ -306,7 +306,7 @@
 
 				.button {
 					border-radius: 0rem 0.25rem 0.25rem 0rem;
-					background-color: #0f62fe;
+					background-color: $secondary-color2;
 					padding: 0.75rem 0.5rem;
 					height: 100%;
 
