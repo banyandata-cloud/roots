@@ -89,7 +89,7 @@ Checkbox.defaultProps = {
 	defaultChecked: false,
 	checked: undefined,
 	position: 'right',
-	size: 'md',
+	size: 'sm',
 	onChange: () => {},
 };
 
