@@ -488,7 +488,7 @@ export const Pagination = forwardRef((props, ref) => {
 													min: 1,
 													max: totalPages,
 													required: true,
-													placeholder: 'Jump to Page',
+													placeholder: '',
 												}}
 												ref={jumpPageRef}
 												type='number'

@@ -15,10 +15,13 @@
 
 	.new-options {
 		@include flex(row);
+		width: 36%;
 		gap: 1rem;
+		@include flex(row, flex-start);
 		.row-switcher {
 			@include flex(row, space-between, center);
 			min-width: 4rem;
+			max-width: 9.5rem;
 			> [data-elem='component2'] {
 				height: 100%;
 				width: 100%;
@@ -93,7 +96,7 @@
 	.page-numbers {
 		@include flex(row, flex-start);
 		gap: 1.25rem;
-		width: 40%;
+		width: 50%;
 
 		&.custom-page-number {
 			flex: 1 1;

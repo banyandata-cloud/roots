@@ -416,6 +416,7 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 				}
 			};
 			const isFloating = true;
+			const v2 = true;
 			const onRowClick = (datum, setActiveId) => {
 				console.log(datum, setActiveId);
 				setActiveId();
@@ -763,6 +764,7 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					<Table
 						onIntersection={onIntersection}
 						isFloating={isFloating}
+						v2={v2}
 						onRowClick={onRowClick}
 						headerData={headerData}
 						tableData={tableData}

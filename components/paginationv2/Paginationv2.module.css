@@ -23,7 +23,12 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  width: 36%;
   gap: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
 }
 .root .new-options .row-switcher {
   display: flex;
@@ -31,6 +36,7 @@
   justify-content: space-between;
   align-items: center;
   min-width: 4rem;
+  max-width: 9.5rem;
   background-color: transparent;
   padding: 0;
   height: 100%;
@@ -107,7 +113,7 @@
   justify-content: flex-start;
   align-items: center;
   gap: 1.25rem;
-  width: 40%;
+  width: 50%;
 }
 .root .page-numbers.custom-page-number {
   flex: 1 1;
