@@ -16,6 +16,7 @@ const TableBody = (props) => {
 		rowHeight,
 		onRowClick,
 		defaultActiveIndex,
+		toggleDrawer,
 	} = props;
 
 	const listRef = useRef([]);
@@ -60,6 +61,7 @@ const TableBody = (props) => {
 							expandable,
 							rowHeight,
 							onRowClick,
+							toggleDrawer,
 						}}
 					/>
 				);

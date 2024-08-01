@@ -1,7 +1,7 @@
 const Filter = (props) => {
-	const { className, v3 } = props;
+	const { className, v2 } = props;
 
-	return v3 ? (
+	return v2 ? (
 		<svg
 			className={className}
 			viewBox='0 0 16 17'

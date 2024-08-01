@@ -1,11 +1,11 @@
-.v3 {
+.v2 {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding: 1.25rem;
 }
-.v3 .details {
+.v2 .details {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -13,7 +13,7 @@
   gap: 0.5rem;
   width: 30%;
 }
-.v3 .filters {
+.v2 .filters {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -21,55 +21,55 @@
   gap: 0.5rem;
   width: 30%;
 }
-.v3 .filters button.icon-button {
+.v2 .filters button.icon-button {
   background: transparent;
   border: 1px solid var(--mono-color2);
   height: 1.875rem;
 }
-.v3 .filters button.icon-button > [data-elem=component2] > [data-elem=title] {
+.v2 .filters button.icon-button > [data-elem=component2] > [data-elem=title] {
   color: var(--text-color);
   font-size: 0.875rem;
   font-weight: 400;
 }
-.v3 .filters .icon {
+.v2 .filters .icon {
   width: 1rem;
   height: 1rem;
   flex-shrink: 0;
 }
-.v3 .filters .column-dropdown {
+.v2 .filters .column-dropdown {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
-.v3 .filters .column-dropdown > [data-elem=header] > [data-elem=select] {
+.v2 .filters .column-dropdown > [data-elem=header] > [data-elem=select] {
   background-color: transparent;
   border: none;
   color: var(--text-color);
   padding: 0rem;
   width: auto;
 }
-.v3 .filters .column-dropdown .item {
+.v2 .filters .column-dropdown .item {
   height: 3rem;
 }
-.v3 .filters .column-dropdown .item > [data-elem=title] {
+.v2 .filters .column-dropdown .item > [data-elem=title] {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
 }
-.v3 .search {
+.v2 .search {
   width: 30%;
 }
-.v3 .search > label > [data-elem=base-cell] .custom-search-icon {
+.v2 .search > label > [data-elem=base-cell] .custom-search-icon {
   width: 1.25rem;
   height: 1.25rem;
 }
-.v3 .search > label > [data-elem=base-cell] [data-elem=input] {
+.v2 .search > label > [data-elem=base-cell] [data-elem=input] {
   color: var(--mono-color3);
   font-size: 0.875rem;
   font-weight: 500;
 }
-.v3 .search > label > [data-elem=base-cell] .search-icon {
+.v2 .search > label > [data-elem=base-cell] .search-icon {
   color: var(--text-color);
   padding-left: 1rem;
   width: 2.5rem;

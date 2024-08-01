@@ -10,6 +10,7 @@ import { BaseTable } from '../baseTable';
 import styles from './Table.module.css';
 import { TableChips } from './tableChips';
 import { TableFilters } from './tableFilters';
+import BaseSidePanel from '../../sidePanel/BaseSidePanel';
 
 const INTERSECTION = 1;
 const STEP = 0.05;
@@ -53,10 +54,11 @@ const Table = (props) => {
 		customPageCallback,
 		hideDisabledPages,
 		onFilterClear,
-		v3,
+		v2,
 		search,
 		customSearchIcon,
 		setSearch,
+		tableDrawerProps,
 	} = props;
 
 	const ref = useRef(null);
@@ -64,6 +66,13 @@ const Table = (props) => {
 
 	const [floating, setFloating] = useState(false);
 	const [hiddenColumns, setHiddenColumns] = useState({});
+	const [toggleTableDrawer, setToggleTableDrawer] = useState(false);
+
+	const toggleDrawer = () => {
+		setToggleTableDrawer((prevState) => {
+			return !prevState;
+		});
+	};
 
 	const visibileColumns = headerData.filter((header) => {
 		return [null, false, undefined].includes(hiddenColumns?.[header?.id]);
@@ -164,7 +173,7 @@ const Table = (props) => {
 						tableTitleText={tableTitleText}
 						tableDescriptionText={tableDescriptionText}
 						onClear={onFilterClear}
-						v3={v3}
+						v2={v2}
 						search={search}
 						customSearchIcon={customSearchIcon}
 						setSearch={setSearch}
@@ -186,6 +195,9 @@ const Table = (props) => {
 						onRowClick,
 						defaultActiveIndex,
 						placeholder,
+						tableDrawerProps,
+						toggleDrawer,
+						v2,
 					}}
 					loading={loading}
 				/>
@@ -203,6 +215,13 @@ const Table = (props) => {
 						customPageList={customPageList}
 						customPageCallback={customPageCallback}
 						hideDisabledPages={hideDisabledPages}
+					/>
+				)}
+				{v2 && (
+					<BaseSidePanel
+						toggle={toggleDrawer}
+						open={toggleTableDrawer}
+						{...tableDrawerProps}
 					/>
 				)}
 			</div>
@@ -257,7 +276,7 @@ Table.propTypes = {
 	custom: PropTypes.node,
 	onAdvancedFilterClick: PropTypes.func,
 	dataLabel: PropTypes.string,
-	v3: PropTypes.bool,
+	v2: PropTypes.bool,
 };
 
 Table.defaultProps = {
@@ -289,7 +308,7 @@ Table.defaultProps = {
 	custom: null,
 	onAdvancedFilterClick: () => {},
 	dataLabel: null,
-	v3: false,
+	v2: false,
 };
 
 export default Table;

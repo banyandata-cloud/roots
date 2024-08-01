@@ -30,7 +30,7 @@ const TableFilters = (props) => {
 		tableTitleText,
 		tableDescriptionText,
 		onClear,
-		v3,
+		v2,
 		search,
 		customSearchIcon: CustomSearchIcon,
 		setSearch,
@@ -61,8 +61,8 @@ const TableFilters = (props) => {
 		setHiddenColumns(items);
 	};
 
-	return v3 ? (
-		<div className={styles.v3}>
+	return v2 ? (
+		<div className={styles.v2}>
 			<div className={styles.details}>
 				<Text variant='b1' weight={600}>
 					{tableTitleText}
@@ -99,7 +99,7 @@ const TableFilters = (props) => {
 						title='Advanced Filter'
 						onClick={onAdvancedFilterClick}
 						leftComponent={() => {
-							return <FilterIcon className={styles.icon} v3 />;
+							return <FilterIcon className={styles.icon} v2 />;
 						}}
 					/>
 				)}
@@ -114,7 +114,7 @@ const TableFilters = (props) => {
 							className={styles['icon-button']}
 							color='default'
 							leftComponent={() => {
-								return <ColumnFilter className={styles.icon} v3 />;
+								return <ColumnFilter className={styles.icon} v2 />;
 							}}
 							rightComponent={() => {
 								return <CaretIcon className={styles.icon} />;
