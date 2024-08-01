@@ -1,6 +1,6 @@
 /* eslint-disable object-curly-newline */
 import PropTypes from 'prop-types';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { classes } from '../../utils';
 import BaseModal from '../modal/BaseModal';
 import styles from './BaseSidePanel.module.css';
@@ -24,6 +24,8 @@ const BaseSidePanel = (props) => {
 	} = props;
 
 	const { tabs, className: tabsClassName } = tabsConfig;
+
+	const [selectedTab, setSelectedTab] = useState('1');
 
 	const panelRef = useRef();
 
@@ -68,7 +70,12 @@ const BaseSidePanel = (props) => {
 	) : (
 		<div ref={panelRef} className={classes(styles.drawer, open ? '' : styles.close, className)}>
 			{tabs.length > 0 && (
-				<Tabs tabs={tabs} className={tabsClassName} direction='vertical'>
+				<Tabs
+					tabs={tabs}
+					className={tabsClassName}
+					direction='vertical'
+					selectedTab={selectedTab}
+					setSelectedTab={setSelectedTab}>
 					{renderHeader && (
 						<div data-elem='header' className={styles.header}>
 							{renderHeader}
