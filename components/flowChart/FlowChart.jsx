@@ -1,13 +1,15 @@
+/* eslint-disable max-len */
+/* eslint-disable func-names */
+/* eslint-disable react/forbid-prop-types */
 /* eslint-disable react/button-has-type */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable max-len */
+/* eslint-disable no-tabs */
 /* eslint-disable no-param-reassign */
-/* eslint-disable no-nested-ternary */
-import React, { useEffect, useRef } from 'react';
-import * as d3 from 'd3';
+import React, { useRef, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import * as d3 from 'd3';
 import styles from './FlowChart.module.css';
-import { propTypes } from '../cell';
+import { getCrossIcon, getExcludeIcon, getTickIconSvg } from './assets';
 
 /**
  * Renders a FlowChart that visualizes data as a chart from neo4j Database.
@@ -38,10 +40,18 @@ const FlowChart = ({
 	hideLinkText,
 	showLegend,
 	displayZoomButtons,
+	showLeftLegend,
+	leftLegendX,
+	leftLegendY,
+	rightLegendLeight,
+	containerBackground,
+	containerBorderRadius,
+	onNodeClick,
 }) => {
 	const svgRef = useRef(null);
 	const containerRef = useRef(null);
 	const zoom = useRef(null);
+	const [selectedNode, setSelectedNode] = useState(null);
 
 	useEffect(() => {
 		const nodes = data?.nodes?.map((node) => {
@@ -52,6 +62,8 @@ const FlowChart = ({
 				properties: node.properties,
 				level: node.labels[0],
 				visibility: 'visible',
+				status: node.properties.status, // Extract status
+				excluded: node.properties.tag,
 			};
 		});
 
@@ -71,6 +83,13 @@ const FlowChart = ({
 
 		const svg = d3?.select(svgRef.current);
 		svg.selectAll('*').remove();
+
+		svg.append('rect')
+			.attr('width', '100%')
+			.attr('height', '100%')
+			.attr('rx', containerBorderRadius) // Border radius
+			.attr('ry', containerBorderRadius)
+			.attr('fill', containerBackground);
 
 		const svgContainer = svg
 			.append('svg')
@@ -245,6 +264,7 @@ const FlowChart = ({
 			.call(d3.drag().on('start', dragstarted).on('drag', dragged).on('end', dragended))
 			.on('mouseover', handleMouseOver) // Attach mouseover event
 			.on('mouseout', handleMouseOut)
+			.on('click', handleClick)
 			.style('cursor', 'pointer');
 
 		node.append('circle')
@@ -273,7 +293,6 @@ const FlowChart = ({
 				return d.label;
 			});
 
-		// Append text for ID
 		node.append('text')
 			.attr('text-anchor', 'middle')
 			.attr('fill', 'black')
@@ -287,6 +306,102 @@ const FlowChart = ({
 						: d.shortId;
 				return id;
 			});
+
+		node.append('g')
+			.attr('class', 'status-icon')
+			.each(function (d) {
+				if (d.status === 'PASS') {
+					d3.select(this)
+						.append('svg')
+						.attr('width', 22)
+						.attr('height', 22)
+						.html(getTickIconSvg());
+				}
+			})
+			.attr('transform', `translate(${+13}, ${-nodeRadius - 34})`);
+
+		node.append('g')
+			.attr('class', 'status-icon')
+			.each(function (d) {
+				if (d.status === 'FAIL') {
+					d3.select(this)
+						.append('svg')
+						.attr('width', 22)
+						.attr('height', 22)
+						.html(getCrossIcon());
+				}
+			})
+			.attr('transform', `translate(${+13}, ${-nodeRadius - 34})`);
+
+		node.append('g')
+			.attr('class', 'icon')
+			.each(function (d) {
+				if (d.excluded === 'NO') {
+					d3.select(this)
+						.append('svg')
+						.attr('width', 22)
+						.attr('height', 22)
+						.html(getExcludeIcon());
+				}
+			})
+			.attr('transform', `translate(${-8}, ${-nodeRadius + 37})`);
+
+		function handleClick(event, d) {
+			if (d.status !== 'PASS' && d.status !== 'FAIL') {
+				return;
+			}
+
+			setSelectedNode(d);
+			onNodeClick(d);
+
+			// Call the onNodeClick prop with the node ID
+			if (selectedNode && selectedNode.id === d.id) {
+				// Remove any existing hover circles
+				container.selectAll('.hover-circle').remove();
+
+				// Reset all links to their default styles
+				container
+					.selectAll('.link')
+					.style('stroke', '#999')
+					.style('stroke-width', 2.5)
+					.attr('stroke-opacity', 0.5);
+
+				// Clear the selected node
+				setSelectedNode(null);
+				return;
+			}
+
+			// Remove any existing hover circles
+			container.selectAll('.hover-circle').remove();
+			d3.select(this).attr('stroke-width', 2);
+			d3.select(this).append('title').text(d.id);
+
+			// Add circle
+			d3.select(this)
+				.append('circle')
+				.attr('class', 'hover-circle')
+				.attr('r', nodeRadius + 39) // Slightly larger radius
+				.attr('fill', 'none')
+				.attr('stroke', d3.select(this).select('circle').attr('fill'))
+				.attr('stroke-width', 2);
+
+			container
+				.selectAll('.link')
+				.style('stroke', '#999')
+				.style('stroke-width', 2.5)
+				.attr('stroke-opacity', 0.5);
+
+			// Highlight the links connected to the clicked node
+			container
+				.selectAll('.link')
+				.filter((l) => {
+					return l.source.id === d.id || l.target.id === d.id;
+				})
+				.style('stroke', 'black')
+				.style('stroke-width', 4);
+
+			// Set the clicked node as the selected node
+		}
 
 		function handleMouseOver(event, d) {
 			d3.select(this).attr('stroke-width', 2);
@@ -354,16 +469,16 @@ const FlowChart = ({
 		}
 
 		if (showLegend) {
-			const legendX = 10;
-			const legendY = 10;
-			const legendItemHeight = 13;
-			const colorSquareSize = 10;
+			const legendMargin = rightLegendLeight; // Margin from the bottom and right edges
+			const legendItemHeight = 8; // Height of each legend item
+			const colorCircleRadius = 6; // Radius of the color circle
+			const innerCircleRadius = 3; // Radius of the inner white circle
 
 			// Create legend container
 			const legendContainer = svg
 				.append('g')
 				.attr('class', 'legend')
-				.attr('transform', `translate(${legendX}, ${legendY})`);
+				.attr('transform', `translate(${width - 120}, ${height - legendMargin})`);
 
 			// Add legend items
 			const legendItems = legendContainer
@@ -373,33 +488,86 @@ const FlowChart = ({
 				.append('g')
 				.attr('class', 'legend-item')
 				.attr('transform', (d, i) => {
-					return `translate(0, ${i * legendItemHeight})`;
+					return `translate(0, ${i * (legendItemHeight + 10)})`; // Adjust spacing
 				});
 
-			// Add colored squares
+			// Add colored circles
 			legendItems
-				.append('rect')
-				.attr('width', colorSquareSize)
-				.attr('height', colorSquareSize)
+				.append('circle')
+				.attr('r', colorCircleRadius)
+				.attr('cx', colorCircleRadius)
+				.attr('cy', legendItemHeight / 2) // Center vertically
 				.attr('fill', (d) => {
 					return d[1];
-				});
+				}); // Outer color
+
+			// Add inner white circles
+			legendItems
+				.append('circle')
+				.attr('r', innerCircleRadius)
+				.attr('cx', colorCircleRadius)
+				.attr('cy', legendItemHeight / 2) // Center vertically
+				.attr('fill', 'white'); // Inner circle color
 
 			// Add labels
 			legendItems
 				.append('text')
-				.attr('x', colorSquareSize + 5)
-				.attr('y', colorSquareSize / 2)
+				.attr('x', colorCircleRadius * 2 + 5) // Space between circle and text
+				.attr('y', legendItemHeight / 2)
 				.text((d) => {
 					return d[0];
 				})
 				.attr('fill', 'black')
 				.style('font-size', labelFontSize)
-				.attr('dy', '0.35em')
+				.attr('dy', '0.35em') // Align text vertically in the middle
 				.attr('alignment-baseline', 'middle');
 		}
 
-		// eslint-disable-next-line consistent-return
+		if (showLeftLegend) {
+			const legendMargin = 150; // Margin from the bottom and right edges
+			const legendItemHeight = 8; // Height of each legend item
+
+			const excludeLegendContainer = svg
+				.append('g')
+				.attr('class', 'exclude-legend')
+				.attr('transform', `translate(${legendMargin}, ${height - legendMargin})`);
+
+			// Add exclude icon
+			excludeLegendContainer
+				.append('rect')
+				.attr('x', leftLegendX - 25) // Add padding
+				.attr('y', -leftLegendY / 2 + 129) // Add padding
+				.attr('width', 85 + 2 * 9) // Width including padding
+				.attr('height', legendItemHeight + 2 * 3) // Height including padding
+				.attr('fill', 'white') // Background color
+				.attr('rx', 5) // Border radius
+				.attr('ry', 5); // Border radius
+
+			excludeLegendContainer
+				.append('text')
+				.attr('x', leftLegendX) // Space between icon and text
+				.attr('y', leftLegendY + 122)
+				.text('Exclude Resource')
+				.attr('fill', 'black')
+				.style('font-size', labelFontSize)
+				.attr('dy', '0.35em') // Align text vertically in the middle
+				.attr('alignment-baseline', 'middle');
+
+			excludeLegendContainer
+				.append('foreignObject')
+				.attr('x', leftLegendX - 17) // Adjust position
+				.attr('y', -leftLegendY / 2 + 131)
+				.attr('width', 10)
+				.attr('height', 10)
+				.append('xhtml:div')
+				.style('width', '10px')
+				.style('height', '10px')
+				.style('display', 'flex')
+				.style('align-items', 'center')
+				.style('justify-content', 'center')
+				.html(getExcludeIcon());
+		}
+
 		return () => {
 			simulation.stop();
 		};
@@ -417,6 +585,13 @@ const FlowChart = ({
 		hideLinkText,
 		showLegend,
 		displayZoomButtons,
+		showLeftLegend,
+		leftLegendX,
+		leftLegendY,
+		containerBackground,
+		containerBorderRadius,
+		onNodeClick,
+		rightLegendLeight,
 	]);
 
 	const zoomIn = () => {
@@ -449,9 +624,7 @@ const FlowChart = ({
 
 FlowChart.propTypes = {
 	data: PropTypes.shape({
-		// eslint-disable-next-line react/forbid-prop-types
 		nodes: PropTypes.array.isRequired,
-		// eslint-disable-next-line react/forbid-prop-types
 		relationships: PropTypes.array.isRequired,
 	}).isRequired,
 	width: PropTypes.number,
@@ -464,7 +637,14 @@ FlowChart.propTypes = {
 	linkTextColor: PropTypes.string,
 	hideLinkText: PropTypes.bool,
 	showLegend: PropTypes.bool,
-	displayZoomButtons: propTypes.bool,
+	displayZoomButtons: PropTypes.bool,
+	showLeftLegend: PropTypes.bool,
+	leftLegendX: PropTypes.number,
+	leftLegendY: PropTypes.number,
+	containerBackground: PropTypes.string,
+	containerBorderRadius: PropTypes.number,
+	onNodeClick: PropTypes.func,
+	rightLegendLeight: PropTypes.number,
 };
 
 FlowChart.defaultProps = {
@@ -472,13 +652,20 @@ FlowChart.defaultProps = {
 	height: 600,
 	linkDistance: 150,
 	linkFontSize: '8px',
-	nodeRadius: 16,
+	nodeRadius: 20,
 	labelFontSize: '8px',
 	linkTextColor: 'black',
 	labelColor: 'white',
 	hideLinkText: false,
 	showLegend: false,
 	displayZoomButtons: true,
+	showLeftLegend: true,
+	containerBackground: '#F7F7F8',
+	containerBorderRadius: 14,
+	leftLegendX: -110,
+	leftLegendY: 8,
+	rightLegendLeight: 178,
+	onNodeClick: () => {},
 };
 
 export default FlowChart;
