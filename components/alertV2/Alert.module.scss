@@ -3,9 +3,11 @@
 .root {
 	@include flex(row, space-between, flex-start);
 	position: fixed;
-	padding: 0.938rem;
+	padding: 1rem;
 	width: 37.5rem;
 	opacity: 1;
+	background-color: $light-color3;
+	border-radius: 0.25rem;
 
 	&.position-bottom-center {
 		left: 50%;
@@ -32,9 +34,14 @@
 	.left {
 		@include flex(row, flex-start, flex-start);
 		.icons {
-			@include flex(row, center, center);
-			padding: 0.25rem 0.938rem 0rem 0rem;
+			@include flex(column, center, center);
+			padding: 0.5rem;
+			width: 2.5rem;
+			height: 2.5rem;
+			gap: 0.625rem;
 			height: auto;
+			border-radius: 0.625rem;
+			background: $light-color3;
 			.icon {
 				width: 1.5rem;
 				height: 1.5rem;
@@ -42,23 +49,29 @@
 		}
 		.content {
 			@include flex(column, flex-start, flex-start);
+			margin-left: 1.25rem;
 			padding: 0.188rem 0.938rem 0rem 0rem;
 			.title {
-				font-size: 1rem;
+				color: $text-color;
+				font-size: 0.875rem;
+				font-style: normal;
 				font-weight: 600;
-				padding-right: 2px;
+				line-height: normal;
 			}
 			.description {
 				word-wrap: break-word;
 				height: auto;
-				font-size: 1rem;
+				color: $text-color;
+				font-size: 0.875rem;
+				font-style: normal;
 				font-weight: 400;
+				line-height: normal;
 			}
 		}
 	}
 	.actions {
 		@include flex(row, space-between, flex-start);
-		gap: 5px;
+		gap: 0.3125rem;
 		.button {
 			padding: 0.313rem 1rem;
 			font-weight: 400;
@@ -84,31 +97,29 @@
 	}
 
 	&.info {
-		@include bordermixin($primary-color4, $background-color5);
-		.icon {
-			fill: $primary-color4;
+		.icons {
+			box-shadow: 0rem 0rem 10rem 0rem $secondary-color2;
 		}
 	}
 	&.success {
-		@include bordermixin($primary-color2, $background-color2);
-		.icon {
-			fill: $primary-color2;
+		.icons {
+			box-shadow: 0rem 0rem 10rem 0rem $primary-color2;
 		}
 	}
-	&.danger {
-		@include bordermixin($primary-color1, $background-color1);
-		.icon {
-			fill: $primary-color1;
+	&.danger,
+	&.error {
+		.icons {
+			box-shadow: 0rem 0rem 10rem 0rem $primary-color1;
 		}
 	}
 	&.warning {
-		@include bordermixin($primary-color3, $background-color3);
-		.icon {
-			fill: $primary-color3;
+		.icons {
+			box-shadow: 0rem 0rem 10rem 0rem $primary-color3;
 		}
 	}
 
 	&.shadow {
-		box-shadow: 0.125rem 0.5rem 1rem rgba(60, 60, 60, 0.12);
+		box-shadow: 0rem 0.0625rem 0.25rem 0rem rgba(0, 0, 0, 0.25),
+			0rem 0.1875rem 0.25rem 0rem rgba(0, 0, 0, 0.25);
 	}
 }

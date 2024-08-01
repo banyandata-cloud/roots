@@ -4,7 +4,7 @@ import { ThemedContainer } from '../helpers';
 import { AlertIcon } from '../icons';
 import Alert from './Alert';
 
-<Meta title='Components/Alert' parameters={{ options: { showToolbar: true } }} />
+<Meta title='Components/AlertV2' parameters={{ options: { showToolbar: true } }} />
 
 # Alert
 
@@ -48,6 +48,45 @@ The default Alert component showing info.
 					title: 'Information',
 					description: 'Basic Info Basic Info Basic Info Basic InfoBasic Info',
 					type: 'info',
+				});
+			};
+			return (
+				<ThemedContainer theme='light'>
+					<button
+						type='button'
+						onClick={toggle}
+						style={{
+							padding: 10,
+						}}>
+						Alert
+					</button>
+					<Alert ref={alertRef} />
+				</ThemedContainer>
+			);
+		}}
+	</Story>
+</Canvas>
+
+### Error
+
+The Alert component for showing warning.
+
+<Canvas>
+	<Story name='Error'>
+		{() => {
+			const alertRef = useRef();
+			const [funs, setFuns] = useState({});
+			useEffect(() => {
+				setFuns({
+					...funs,
+					alert: alertRef.current.alert,
+				});
+			}, []);
+			const toggle = () => {
+				funs.alert({
+					title: 'Error',
+					description: 'Basic Error',
+					type: 'error',
 				});
 			};
 			return (
@@ -203,7 +242,7 @@ The Alert component with icon.
 				funs.alert({
 					title: 'Error',
 					description: 'Error Desc.',
-					type: 'danger',
+					type: 'info',
 					icon: (props) => {
 						return <AlertIcon.Info {...props} />;
 					},
