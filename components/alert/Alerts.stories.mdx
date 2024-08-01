@@ -67,45 +67,6 @@ The default Alert component showing info.
 	</Story>
 </Canvas>
 
-### Error
-
-The Alert component for showing warning.
-
-<Canvas>
-	<Story name='Error'>
-		{() => {
-			const alertRef = useRef();
-			const [funs, setFuns] = useState({});
-			useEffect(() => {
-				setFuns({
-					...funs,
-					alert: alertRef.current.alert,
-				});
-			}, []);
-			const toggle = () => {
-				funs.alert({
-					title: 'Error',
-					description: 'Basic Error',
-					type: 'error',
-				});
-			};
-			return (
-				<ThemedContainer theme='light'>
-					<button
-						type='button'
-						onClick={toggle}
-						style={{
-							padding: 10,
-						}}>
-						Alert
-					</button>
-					<Alert ref={alertRef} />
-				</ThemedContainer>
-			);
-		}}
-	</Story>
-</Canvas>
-
 ### Warning
 
 The Alert component for showing warning.
@@ -242,7 +203,7 @@ The Alert component with icon.
 				funs.alert({
 					title: 'Error',
 					description: 'Error Desc.',
-					type: 'info',
+					type: 'danger',
 					icon: (props) => {
 						return <AlertIcon.Info {...props} />;
 					},
