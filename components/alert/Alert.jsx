@@ -74,9 +74,6 @@ const Alert = forwardRef((props, ref) => {
 			case 'info':
 				Icon = <AlertIcon.Info className={styles.icon} />;
 				break;
-			case 'error':
-				Icon = <AlertIcon.Error className={styles.icon} />;
-				break;
 			case 'warning':
 				Icon = <AlertIcon.Warning className={styles.icon} />;
 				break;

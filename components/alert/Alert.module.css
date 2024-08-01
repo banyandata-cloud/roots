@@ -4,11 +4,9 @@
   justify-content: space-between;
   align-items: flex-start;
   position: fixed;
-  padding: 1rem;
+  padding: 0.938rem;
   width: 37.5rem;
   opacity: 1;
-  background-color: var(--light-color3);
-  border-radius: 0.25rem;
 }
 .root.position-bottom-center {
   left: 50%;
@@ -36,16 +34,11 @@
 }
 .root .left .icons {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 0.5rem;
-  width: 2.5rem;
-  height: 2.5rem;
-  gap: 0.625rem;
+  padding: 0.25rem 0.938rem 0rem 0rem;
   height: auto;
-  border-radius: 0.625rem;
-  background: var(--light-color3);
 }
 .root .left .icons .icon {
   width: 1.5rem;
@@ -56,31 +49,25 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  margin-left: 1.25rem;
   padding: 0.188rem 0.938rem 0rem 0rem;
 }
 .root .left .content .title {
-  color: var(--text-color);
-  font-size: 0.875rem;
-  font-style: normal;
+  font-size: 1rem;
   font-weight: 600;
-  line-height: normal;
+  padding-right: 2px;
 }
 .root .left .content .description {
   word-wrap: break-word;
   height: auto;
-  color: var(--text-color);
-  font-size: 0.875rem;
-  font-style: normal;
+  font-size: 1rem;
   font-weight: 400;
-  line-height: normal;
 }
 .root .actions {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 0.3125rem;
+  gap: 5px;
 }
 .root .actions .button {
   padding: 0.313rem 1rem;
@@ -103,18 +90,38 @@
 .root.border-none {
   border-width: 0rem 0rem 0rem 0.25rem;
 }
-.root.info .icons {
-  box-shadow: 0rem 0rem 10rem 0rem var(--secondary-color2);
+.root.info {
+  border-style: solid;
+  border-color: var(--primary-color4);
+  background-color: var(--background-color5);
 }
-.root.success .icons {
-  box-shadow: 0rem 0rem 10rem 0rem var(--primary-color2);
+.root.info .icon {
+  fill: var(--primary-color4);
 }
-.root.danger .icons, .root.error .icons {
-  box-shadow: 0rem 0rem 10rem 0rem var(--primary-color1);
+.root.success {
+  border-style: solid;
+  border-color: var(--primary-color2);
+  background-color: var(--background-color2);
 }
-.root.warning .icons {
-  box-shadow: 0rem 0rem 10rem 0rem var(--primary-color3);
+.root.success .icon {
+  fill: var(--primary-color2);
+}
+.root.danger {
+  border-style: solid;
+  border-color: var(--primary-color1);
+  background-color: var(--background-color1);
+}
+.root.danger .icon {
+  fill: var(--primary-color1);
+}
+.root.warning {
+  border-style: solid;
+  border-color: var(--primary-color3);
+  background-color: var(--background-color3);
+}
+.root.warning .icon {
+  fill: var(--primary-color3);
 }
 .root.shadow {
-  box-shadow: 0rem 0.0625rem 0.25rem 0rem rgba(0, 0, 0, 0.25), 0rem 0.1875rem 0.25rem 0rem rgba(0, 0, 0, 0.25);
+  box-shadow: 0.125rem 0.5rem 1rem rgba(60, 60, 60, 0.12);
 }/*# sourceMappingURL=Alert.module.css.map */
