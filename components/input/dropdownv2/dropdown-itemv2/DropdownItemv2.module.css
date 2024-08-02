@@ -3,13 +3,14 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  gap: 0.75rem;
+  gap: 2rem;
   width: 100%;
-  padding: 0.75rem 1rem;
+  padding: 0.5rem 0.75rem;
   border-radius: 0.25rem;
   cursor: pointer;
   color: var(--grey);
   outline: none;
+  margin-bottom: 1.25rem;
 }
 .root > .input {
   cursor: pointer;
@@ -39,9 +40,6 @@
 }
 .root:focus {
   background: var(--background-color4);
-}
-.root.selected {
-  background: var(--info-bg);
 }
 .root.disabled {
   filter: opacity(0.25);

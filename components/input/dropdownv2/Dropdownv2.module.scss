@@ -118,12 +118,11 @@
 	background: $light-color3;
 	width: auto;
 	border-radius: 0.3125rem;
-	border: 0.0625rem solid $light-color2;
-	@include boxShadow;
 	padding: 1rem;
 	overflow-y: auto;
 	min-height: 4rem;
 	outline: none;
+	@include boxShadow;
 
 	.multi-options {
 		@include flex(row, space-between);

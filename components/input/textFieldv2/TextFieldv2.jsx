@@ -130,50 +130,94 @@ const TextField = forwardRef((props, inputRef) => {
 	const getRightComponent = () => {
 		if (type === 'password' && inputType === 'password') {
 			return (
-				<Button
-					className={classes(styles.button, feedback?.error ? styles.error : '')}
-					title=''
-					variant='contained'
-					type='button'
-					leftComponent={() => {
-						return (
-							<HidePasswordIcon
+				<>
+					<Button
+						className={classes(styles.button, feedback?.error ? styles.error : '')}
+						title=''
+						variant='contained'
+						type='button'
+						leftComponent={() => {
+							return (
+								<HidePasswordIcon
+									className={classes(
+										styles.icon,
+										feedback?.error ? styles.error : ''
+									)}
+									position='left'
+								/>
+							);
+						}}
+						onClick={() => {
+							setInputType('text');
+						}}
+					/>
+					{feedback && (
+						<Tooltip
+							content={feedback?.info ?? feedback?.error ?? ''}
+							position='top'
+							className={styles.tooltip}
+							variant='light'>
+							<span
 								className={classes(
-									styles.icon,
+									styles.span,
 									feedback?.error ? styles.error : ''
-								)}
-								position='left'
-							/>
-						);
-					}}
-					onClick={() => {
-						setInputType('text');
-					}}
-				/>
+								)}>
+								<InfoIcon
+									className={classes(
+										styles.icon,
+										feedback?.error ? styles.error : ''
+									)}
+								/>
+							</span>
+						</Tooltip>
+					)}
+				</>
 			);
 		}
 		if (type === 'password' && inputType === 'text') {
 			return (
-				<Button
-					className={classes(styles.button, feedback?.error ? styles.error : '')}
-					title=''
-					variant='contained'
-					type='button'
-					leftComponent={() => {
-						return (
-							<ViewPasswordIcon
+				<>
+					<Button
+						className={classes(styles.button, feedback?.error ? styles.error : '')}
+						title=''
+						variant='contained'
+						type='button'
+						leftComponent={() => {
+							return (
+								<ViewPasswordIcon
+									className={classes(
+										styles.icon,
+										feedback?.error ? styles.error : ''
+									)}
+									position='left'
+								/>
+							);
+						}}
+						onClick={() => {
+							setInputType('password');
+						}}
+					/>
+					{feedback && (
+						<Tooltip
+							content={feedback?.info ?? feedback?.error ?? ''}
+							position='top'
+							className={styles.tooltip}
+							variant='light'>
+							<span
 								className={classes(
-									styles.icon,
+									styles.span,
 									feedback?.error ? styles.error : ''
-								)}
-								position='left'
-							/>
-						);
-					}}
-					onClick={() => {
-						setInputType('password');
-					}}
-				/>
+								)}>
+								<InfoIcon
+									className={classes(
+										styles.icon,
+										feedback?.error ? styles.error : ''
+									)}
+								/>
+							</span>
+						</Tooltip>
+					)}
+				</>
 			);
 		}
 		if (feedback) {

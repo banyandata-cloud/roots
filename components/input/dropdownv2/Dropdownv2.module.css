@@ -123,12 +123,11 @@
   background: var(--light-color3);
   width: auto;
   border-radius: 0.3125rem;
-  border: 0.0625rem solid var(--light-color2);
-  box-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);
   padding: 1rem;
   overflow-y: auto;
   min-height: 4rem;
   outline: none;
+  box-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);
 }
 .body .multi-options {
   display: flex;

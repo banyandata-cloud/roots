@@ -110,10 +110,6 @@
 .root label .input-wrapper > [data-elem=component3] .span {
   padding: 0rem 0.5rem;
 }
-.root label .input-wrapper > [data-elem=component3] .span .icon {
-  height: 1rem;
-  width: 1rem;
-}
 .root label .input-wrapper > [data-elem=component3] .span .icon.error.error path {
   stroke: var(--primary-color1);
 }

@@ -476,7 +476,7 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 									</li>
 								)}
 								{items}
-								{multi && (
+								{multi && selectedOptions?.length > 0 && (
 									<div className={styles.footer}>
 										<Button
 											className={styles['multi-clear']}
