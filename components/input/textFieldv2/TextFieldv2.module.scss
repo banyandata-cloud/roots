@@ -27,10 +27,9 @@
 			padding: 0rem 0rem;
 			max-width: 100%;
 			width: 100%;
-			border-color: $grey4;
-			border-style: solid;
 			border-radius: 0.25rem;
 			height: 100%;
+			@include boxShadow;
 
 			.icon {
 				@include flex;

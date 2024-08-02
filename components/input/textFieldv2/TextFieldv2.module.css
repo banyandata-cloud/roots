@@ -33,10 +33,9 @@
   padding: 0rem 0rem;
   max-width: 100%;
   width: 100%;
-  border-color: var(--grey4);
-  border-style: solid;
   border-radius: 0.25rem;
   height: 100%;
+  box-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);
 }
 .root label .input-wrapper .icon {
   display: flex;

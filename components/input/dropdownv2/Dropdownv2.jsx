@@ -471,7 +471,9 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 											}}
 										/>
 										{selectedOptions?.length > 0 && (
-											<span>{selectedOptions?.length} item selected</span>
+											<span className={styles.items}>
+												{selectedOptions?.length} item selected
+											</span>
 										)}
 									</li>
 								)}

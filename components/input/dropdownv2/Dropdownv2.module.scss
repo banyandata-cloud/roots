@@ -21,6 +21,7 @@
 
 	.header {
 		@include flex(row, flex-start);
+		@include boxShadow;
 		max-width: 100%;
 		position: relative;
 		&.error {
@@ -45,15 +46,13 @@
 			width: 25rem;
 			max-width: 100%;
 			gap: 0.5rem;
-			background: $light-color3;
 			outline: none;
 			border-radius: 0.3125rem;
-			border: 0.0625rem solid #dfe0e2;
 			padding: 0.75rem 0.75rem 0.75rem 1rem;
+			background: $light-color3;
 			cursor: pointer;
 			font-weight: 500;
 			@include ellipsis;
-
 			.placeholder {
 				@include ellipsis;
 				color: $text-color;
@@ -126,7 +125,7 @@
 
 	.multi-options {
 		@include flex(row, space-between);
-		margin-bottom: 0.5rem;
+		margin-bottom: 0.9375rem;
 		list-style: none;
 		button[data-elem='base-cell'].button[type='button'] {
 			margin: 0.25rem 0rem 0rem 0rem;
@@ -135,6 +134,11 @@
 			padding: 0%;
 			background-color: transparent;
 			color: $secondary-color2;
+		}
+		.items {
+			font-size: 14px;
+			font-weight: 500;
+			color: $text-color;
 		}
 	}
 

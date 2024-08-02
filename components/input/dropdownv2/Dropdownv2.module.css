@@ -23,6 +23,7 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  box-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);
   max-width: 100%;
   position: relative;
 }
@@ -50,11 +51,10 @@
   width: 25rem;
   max-width: 100%;
   gap: 0.5rem;
-  background: var(--light-color3);
   outline: none;
   border-radius: 0.3125rem;
-  border: 0.0625rem solid #dfe0e2;
   padding: 0.75rem 0.75rem 0.75rem 1rem;
+  background: var(--light-color3);
   cursor: pointer;
   font-weight: 500;
   text-overflow: ellipsis;
@@ -134,7 +134,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.9375rem;
   list-style: none;
 }
 .body .multi-options button[data-elem=base-cell].button[type=button] {
@@ -144,6 +144,11 @@
   padding: 0%;
   background-color: transparent;
   color: var(--secondary-color2);
+}
+.body .multi-options .items {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-color);
 }
 .body .footer {
   display: flex;
