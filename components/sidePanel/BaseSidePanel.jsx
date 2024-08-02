@@ -72,23 +72,25 @@ const BaseSidePanel = (props) => {
 			{tabs.length > 0 && (
 				<Tabs
 					tabs={tabs}
-					className={tabsClassName}
+					className={classes(tabsClassName, styles.tabs)}
 					direction='vertical'
 					selectedTab={selectedTab}
 					setSelectedTab={setSelectedTab}>
-					{renderHeader && (
-						<div data-elem='header' className={styles.header}>
-							{renderHeader}
+					<div className={styles.content}>
+						{renderHeader && (
+							<div data-elem='header' className={styles.header}>
+								{renderHeader}
+							</div>
+						)}
+						<div data-elem='body' className={styles.body}>
+							{children}
 						</div>
-					)}
-					<div data-elem='body' className={styles.body}>
-						{children}
+						{renderFooter && (
+							<div data-elem='footer' className={styles.footer}>
+								{renderFooter}
+							</div>
+						)}
 					</div>
-					{renderFooter && (
-						<div data-elem='footer' className={styles.footer}>
-							{renderFooter}
-						</div>
-					)}
 				</Tabs>
 			)}
 		</div>

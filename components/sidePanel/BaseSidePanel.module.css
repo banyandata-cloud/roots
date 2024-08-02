@@ -14,12 +14,13 @@
 .drawer.close {
   width: 0rem;
 }
-.drawer .header {
-  border: 1px solid red;
-}
 .drawer .body {
   flex: 1;
   overflow-y: auto;
+}
+.drawer .tabs,
+.drawer .content {
+  width: 100%;
 }
 
 .modal {

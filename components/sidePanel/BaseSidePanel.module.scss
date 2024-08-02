@@ -12,12 +12,13 @@
 	&.close {
 		width: 0rem;
 	}
-	.header {
-		@include debug;
-	}
 	.body {
 		flex: 1;
 		overflow-y: auto;
+	}
+	.tabs,
+	.content {
+		width: 100%;
 	}
 }
 
