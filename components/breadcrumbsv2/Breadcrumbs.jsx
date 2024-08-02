@@ -78,7 +78,7 @@ const BreadCrumbs = (props) => {
 					crumbs?.[(crumbs?.length ?? 1) - 1]?.value
 				}`}
 				rightComponent={() => {
-					return <FlowChartIcon className={classes(expand ? styles.icon : '')} />;
+					return <FlowChartIcon className={classes(expand ? '' : styles.icon)} />;
 				}}
 			/>
 			<Popover

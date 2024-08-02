@@ -30,7 +30,8 @@
 			color: $text-color;
 		}
 		> [data-elem='component3'] {
-			@include flex(row, center);
+			padding-left: 1.1563rem;
+			@include flex(row, flex-end, flex-end);
 			.icon {
 				> path {
 					stroke: $side-bar-icon1;
@@ -90,11 +91,12 @@ div.popover {
 				width: 12px;
 				height: 12px;
 				border: 1.5px solid $secondary-color2;
+				background-color: white;
 				border-radius: 50%;
 				margin-left: 10px;
+				z-index: 1000;
 			}
 			.circle-dropdown {
-				// @include debug;
 				@include flex(row, flex-end, flex-end);
 				width: 12px;
 				height: 12px;
@@ -106,6 +108,9 @@ div.popover {
 					margin-bottom: 1.4px;
 					> path {
 						stroke: $secondary-color2;
+						stroke-width: 3px;
+						stroke-linecap: round !important;
+						stroke-linejoin: round;
 					}
 				}
 			}
@@ -120,7 +125,7 @@ div.popover {
 				content: '';
 				width: 0%;
 				height: 26px;
-				border-left: 2px dotted $secondary-color2;
+				border-left: 1.5px dashed $secondary-color2;
 				position: relative;
 				bottom: 100%;
 				right: -3.6px;

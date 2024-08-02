@@ -46,10 +46,11 @@
   color: var(--text-color);
 }
 .root button[data-elem=base-cell].selected[type=submit] > [data-elem=component3] {
+  padding-left: 1.1563rem;
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 .root button[data-elem=base-cell].selected[type=submit] > [data-elem=component3] .icon > path {
   stroke: var(--side-bar-icon1);
@@ -121,8 +122,10 @@ div.popover .crumb-list .right .circle {
   width: 12px;
   height: 12px;
   border: 1.5px solid var(--secondary-color2);
+  background-color: white;
   border-radius: 50%;
   margin-left: 10px;
+  z-index: 1000;
 }
 div.popover .crumb-list .right .circle-dropdown {
   display: flex;
@@ -141,6 +144,9 @@ div.popover .crumb-list .right .circle-dropdown .icon {
 }
 div.popover .crumb-list .right .circle-dropdown .icon > path {
   stroke: var(--secondary-color2);
+  stroke-width: 3px;
+  stroke-linecap: round !important;
+  stroke-linejoin: round;
 }
 div.popover .crumb-list .right .circle-filled {
   width: 12px;
@@ -153,7 +159,7 @@ div.popover .crumb-list .right .circle-dropdown::before {
   content: "";
   width: 0%;
   height: 26px;
-  border-left: 2px dotted var(--secondary-color2);
+  border-left: 1.5px dashed var(--secondary-color2);
   position: relative;
   bottom: 100%;
   right: -3.6px;
