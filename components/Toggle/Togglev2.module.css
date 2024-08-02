@@ -22,15 +22,13 @@
   position: relative;
   z-index: 2;
   background: transparent;
+  border-radius: 1.25rem;
   min-width: 5rem;
   width: auto;
   height: auto;
 }
 .root .toggle > button[data-elem=base-cell].toggle-button > [data-elem=component2] > [data-elem=title] {
   color: var(--black);
-}
-.root .toggle > button[data-elem=base-cell].toggle-button.active {
-  border-radius: 1.25rem;
 }
 .root .toggle > button[data-elem=base-cell].toggle-button.active.highlight {
   background-color: var(--mono-color1);
@@ -39,30 +37,28 @@
   color: var(--white);
 }
 .root .toggle > button[data-elem=base-cell].toggle-button.active.secondary {
-  background-color: #cfdfff;
+  background-color: var(--background-color4);
 }
 .root .toggle > button[data-elem=base-cell].toggle-button.active.secondary > [data-elem=component2] > [data-elem=title] {
-  color: #0f62fe;
+  color: var(--secondary-color2);
 }
 .root .toggle > button[data-elem=base-cell].toggle-button.disabled {
   cursor: not-allowed;
-  border-radius: 1.25rem;
 }
 .root .toggle > button[data-elem=base-cell].toggle-button.disabled > [data-elem=component2] > [data-elem=title] {
   color: var(--mono-color2);
 }
 .root .toggle > button[data-elem=base-cell].toggle-button.all-select {
-  border-radius: 1.25rem;
   background-color: var(--mono-color1);
 }
 .root .toggle > button[data-elem=base-cell].toggle-button.all-select > [data-elem=component2] > [data-elem=title] {
   color: var(--white);
 }
 .root .toggle > button[data-elem=base-cell].toggle-button.all-select.secondary {
-  background-color: #cfdfff;
+  background-color: var(--background-color4);
 }
 .root .toggle > button[data-elem=base-cell].toggle-button.all-select.secondary > [data-elem=component2] > [data-elem=title] {
-  color: #0f62fe;
+  color: var(--secondary-color2);
 }
 .root .toggle .slider {
   position: absolute;

@@ -7,14 +7,16 @@
 
 	button[data-elem='base-cell'].selected[type='submit'] {
 		@include flex(row, flex-start, center);
-		height: 1.9375rem;
+		height: auto;
+		min-height: 1.9375rem;
 		width: auto;
-		background: #f7f7f8;
-		padding: 0.5rem 0.75rem;
+		max-width: 17rem;
+		background: $light-color2;
+		padding: 0.4688rem 0.75rem;
 		gap: 0.625rem;
 		border-radius: 0.25rem;
 		&.expand {
-			border: 0.0313rem solid #0f62fe;
+			border: 0.0313rem solid $secondary-color2;
 		}
 		> [data-elem='component1'] {
 			@include flex(row, flex-start, center);
@@ -24,16 +26,14 @@
 		}
 		> [data-elem='component2'] {
 			@include flex(row, center);
+			@include ellipsis;
 			color: $text-color;
 		}
 		> [data-elem='component3'] {
 			@include flex(row, center);
-			div.flowchart {
-				@include flex(row, center);
-				.icon {
-					> path {
-						stroke: #97979f;
-					}
+			.icon {
+				> path {
+					stroke: $side-bar-icon1;
 				}
 			}
 		}
@@ -43,6 +43,7 @@
 div.popover {
 	height: auto;
 	width: auto;
+	max-width: 17rem;
 	padding: 0.75rem 0.625rem 0rem 0.625rem;
 	background: $white !important;
 	border-color: $white !important;
@@ -53,7 +54,7 @@ div.popover {
 		padding: 0.5rem 0.75rem;
 		margin-bottom: 0.625rem;
 		border-radius: 0.125rem;
-		border: 0.0313rem solid #cdcdcd;
+		border: 0.0313rem solid $side-bar-icon2;
 		background: transparent;
 		font-weight: 500;
 		color: $text-color;
@@ -63,7 +64,7 @@ div.popover {
 			background: $light-color1;
 		}
 		&.active {
-			background: #cfdfff;
+			background: $background-color4;
 		}
 
 		.left {
@@ -75,10 +76,12 @@ div.popover {
 			}
 			.title {
 				color: $text-color;
+				@include ellipsis;
 			}
 
 			.value {
 				color: $text-color;
+				@include ellipsis;
 			}
 		}
 		.right {
@@ -117,7 +120,7 @@ div.popover {
 				content: '';
 				width: 0%;
 				height: 26px;
-				border-left: 2px dotted #007bff;
+				border-left: 2px dotted $secondary-color2;
 				position: relative;
 				bottom: 100%;
 				right: -3.6px;
@@ -128,7 +131,7 @@ div.popover {
 				content: '';
 				width: 2px;
 				height: 26px;
-				background: #007bff;
+				background: $secondary-color2;
 				position: absolute;
 				bottom: 28px;
 				right: 22.6px;

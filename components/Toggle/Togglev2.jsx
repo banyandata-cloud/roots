@@ -1,5 +1,4 @@
 /* eslint-disable no-lonely-if */
-import PropTypes from 'prop-types';
 import { useEffect, useRef, useState } from 'react';
 import { classes } from '../../utils';
 import { Button } from '../buttons';
@@ -8,16 +7,16 @@ import styles from './Togglev2.module.css';
 
 const Togglev2 = (props) => {
 	const {
-		options,
-		multi,
+		options = [],
+		multi = false,
 		defaultValue,
-		theme,
-		value,
+		theme = 'light',
+		value = undefined,
 		onChange,
-		loading,
-		fallback,
-		className,
-		smooth,
+		loading = false,
+		fallback = false,
+		className = '',
+		smooth = false,
 		secondary,
 	} = props;
 	const [sliderLeft, setSliderLeft] = useState(0);
@@ -43,7 +42,6 @@ const Togglev2 = (props) => {
 
 	const { current: isControlled } = useRef(value !== undefined);
 
-	// eslint-disable-next-line no-nested-ternary
 	const inputValue = isControlled ? value ?? '' : uncontrolledValue;
 
 	const allSelected = multi ? options.length === inputValue.length : false;
@@ -113,6 +111,10 @@ const Togglev2 = (props) => {
 		}
 		return input === item;
 	};
+
+	const checkSecondary = () => {
+		return secondary ? classes(styles['all-select'], styles.secondary) : styles['all-select'];
+	};
 	if (loading || fallback) {
 		return <Skeleton theme={theme} fallback={!loading && fallback} v2 />;
 	}
@@ -132,12 +134,7 @@ const Togglev2 = (props) => {
 						variant='text'
 						className={classes(
 							styles['toggle-button'],
-							// eslint-disable-next-line no-nested-ternary
-							allSelected
-								? secondary
-									? classes(styles['all-select'], styles.secondary)
-									: styles['all-select']
-								: ''
+							allSelected ? checkSecondary() : ''
 						)}
 						onClick={onSelectAll}
 						title='All'
@@ -196,28 +193,6 @@ const Togglev2 = (props) => {
 			</div>
 		</div>
 	);
-};
-
-Togglev2.propTypes = {
-	loading: PropTypes.bool,
-	fallback: PropTypes.bool,
-	className: PropTypes.string,
-	theme: PropTypes.oneOf(['dark', 'light']),
-	options: PropTypes.arrayOf(PropTypes.string),
-	value: PropTypes.string,
-	multi: PropTypes.bool,
-	smooth: PropTypes.bool,
-};
-
-Togglev2.defaultProps = {
-	loading: false,
-	fallback: false,
-	className: '',
-	theme: 'light',
-	options: [],
-	value: undefined,
-	multi: false,
-	smooth: false,
 };
 
 export default Togglev2;

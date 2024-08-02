@@ -18,6 +18,7 @@
 			position: relative;
 			z-index: 2;
 			background: transparent;
+			border-radius: 1.25rem;
 			min-width: 5rem;
 			width: auto;
 			height: auto;
@@ -27,8 +28,6 @@
 				}
 			}
 			&.active {
-				border-radius: 1.25rem;
-
 				&.highlight {
 					background-color: $mono-color1;
 				}
@@ -38,10 +37,10 @@
 					}
 				}
 				&.secondary {
-					background-color: #cfdfff;
+					background-color: $background-color4;
 					> [data-elem='component2'] {
 						> [data-elem='title'] {
-							color: #0f62fe;
+							color: $secondary-color2;
 						}
 					}
 				}
@@ -49,7 +48,6 @@
 
 			&.disabled {
 				cursor: not-allowed;
-				border-radius: 1.25rem;
 				> [data-elem='component2'] {
 					> [data-elem='title'] {
 						color: $mono-color2;
@@ -58,7 +56,6 @@
 			}
 
 			&.all-select {
-				border-radius: 1.25rem;
 				background-color: $mono-color1;
 				> [data-elem='component2'] {
 					> [data-elem='title'] {
@@ -66,10 +63,10 @@
 					}
 				}
 				&.secondary {
-					background-color: #cfdfff;
+					background-color: $background-color4;
 					> [data-elem='component2'] {
 						> [data-elem='title'] {
-							color: #0f62fe;
+							color: $secondary-color2;
 						}
 					}
 				}

@@ -1,5 +1,4 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { classes } from '../../utils/utils';
 import Button from '../buttons/button/Button';
@@ -9,10 +8,14 @@ import styles from './Breadcrumbs.module.css';
 import { CaretIcon, FlowChartIcon } from '../icons';
 
 const BreadCrumbs = (props) => {
-	const { crumbs, className } = props;
+	const { crumbs = [], className = '' } = props;
 
 	const [expand, setExpand] = useState(false);
 	const [anchorEl, setAnchorEl] = useState(null);
+
+	if (!crumbs) {
+		return null;
+	}
 
 	const CrumbsDOM =
 		crumbs !== null &&
@@ -53,9 +56,11 @@ const BreadCrumbs = (props) => {
 			<Button
 				ref={setAnchorEl}
 				onClick={() => {
-					setExpand((prev) => {
-						return !prev;
-					});
+					if (crumbs?.length > 1) {
+						setExpand((prev) => {
+							return !prev;
+						});
+					}
 				}}
 				className={classes(styles.selected, expand ? styles.expand : '')}
 				leftComponent={() => {
@@ -71,11 +76,7 @@ const BreadCrumbs = (props) => {
 					crumbs?.[(crumbs?.length ?? 1) - 1]?.value
 				}`}
 				rightComponent={() => {
-					return (
-						<div className={classes(styles.flowchart)}>
-							<FlowChartIcon className={classes(expand ? styles.icon : '')} />
-						</div>
-					);
+					return <FlowChartIcon className={classes(expand ? styles.icon : '')} />;
 				}}
 			/>
 			<Popover
@@ -88,23 +89,6 @@ const BreadCrumbs = (props) => {
 			</Popover>
 		</div>
 	);
-};
-
-BreadCrumbs.propTypes = {
-	crumbs: PropTypes.arrayOf(
-		PropTypes.shape({
-			title: PropTypes.string,
-			value: PropTypes.string,
-			path: PropTypes.string,
-			icon: PropTypes.node,
-		})
-	),
-	className: PropTypes.string,
-};
-
-BreadCrumbs.defaultProps = {
-	crumbs: [],
-	className: '',
 };
 
 export default BreadCrumbs;
