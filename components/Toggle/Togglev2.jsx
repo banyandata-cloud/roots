@@ -1,4 +1,6 @@
+/* eslint-disable react/require-default-props */
 /* eslint-disable no-lonely-if */
+import PropTypes from 'prop-types';
 import { useEffect, useRef, useState } from 'react';
 import { classes } from '../../utils';
 import { Button } from '../buttons';
@@ -193,6 +195,17 @@ const Togglev2 = (props) => {
 			</div>
 		</div>
 	);
+};
+
+Togglev2.propTypes = {
+	loading: PropTypes.bool,
+	fallback: PropTypes.bool,
+	className: PropTypes.string,
+	theme: PropTypes.oneOf(['dark', 'light']),
+	options: PropTypes.arrayOf(PropTypes.string),
+	value: PropTypes.string,
+	multi: PropTypes.bool,
+	smooth: PropTypes.bool,
 };
 
 export default Togglev2;

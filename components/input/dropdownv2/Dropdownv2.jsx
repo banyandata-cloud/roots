@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 /* eslint-disable no-nested-ternary */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import {
@@ -38,21 +39,23 @@ import { Tooltip } from '../../tooltip';
 // eslint-disable-next-line prefer-arrow-callback
 const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 	const {
-		className,
-		popperClassName,
+		className = '',
+		popperClassName = '',
 		value,
 		onChange,
 		onBlur,
 		children,
 		label,
-		placeholder,
+		placeholder = 'Select an option',
 		multi,
 		disabled,
 		error,
 		id,
 		name,
 		feedback,
-		formatter,
+		formatter = (totalSelected) => {
+			return `${totalSelected} options selected`;
+		},
 		custom,
 		newIcon,
 		required,
@@ -522,26 +525,6 @@ Dropdown.propTypes = {
 	formatter: PropTypes.func,
 	required: PropTypes.bool,
 	hideIcon: PropTypes.bool,
-};
-
-Dropdown.defaultProps = {
-	popperClassName: '',
-	className: '',
-	disabled: false,
-	label: null,
-	value: undefined,
-	placeholder: 'Select an option',
-	// search: false,
-	// max: null,
-	multi: false,
-	onChange: null,
-	onBlur: null,
-	feedback: null,
-	formatter: (totalSelected) => {
-		return `${totalSelected} options selected`;
-	},
-	required: false,
-	hideIcon: false,
 };
 
 export default Dropdown;

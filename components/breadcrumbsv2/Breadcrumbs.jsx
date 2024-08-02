@@ -1,4 +1,6 @@
+/* eslint-disable react/require-default-props */
 /* eslint-disable jsx-a11y/anchor-is-valid */
+import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { classes } from '../../utils/utils';
 import Button from '../buttons/button/Button';
@@ -89,6 +91,18 @@ const BreadCrumbs = (props) => {
 			</Popover>
 		</div>
 	);
+};
+
+BreadCrumbs.propTypes = {
+	crumbs: PropTypes.arrayOf(
+		PropTypes.shape({
+			title: PropTypes.string,
+			value: PropTypes.string,
+			path: PropTypes.string,
+			icon: PropTypes.node,
+		})
+	),
+	className: PropTypes.string,
 };
 
 export default BreadCrumbs;

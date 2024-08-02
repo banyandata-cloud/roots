@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 /* eslint-disable no-nested-ternary */
 import PropTypes from 'prop-types';
 import React, { forwardRef, useEffect, useReducer, useRef } from 'react';
@@ -110,16 +111,20 @@ export const usePagination = (props) => {
 
 export const Pagination = forwardRef((props, ref) => {
 	const {
-		className,
+		className = '',
 		floating,
-		customPagination = false,
-		paginationState,
-		paginationDispatch,
+		customPagination,
+		paginationState = {
+			totalPages: null,
+			currentPage: null,
+			step: null,
+		},
+		paginationDispatch = () => {},
 		loading,
 		dataLabel,
 		customLabel,
 		jumpLabel = 'Jump to Page',
-		hideDisabledPages = false,
+		hideDisabledPages,
 		customPageList = [],
 		customPageCallback = () => {},
 	} = props;
@@ -526,16 +531,4 @@ Pagination.propTypes = {
 	}),
 	paginationDispatch: PropTypes.func,
 	onChange: PropTypes.func,
-};
-
-Pagination.defaultProps = {
-	className: '',
-	floating: false,
-	paginationState: {
-		totalPages: null,
-		currentPage: null,
-		step: null,
-	},
-	paginationDispatch: () => {},
-	onChange: () => {},
 };

@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 /* eslint-disable react/forbid-prop-types */
 import PropTypes from 'prop-types';
 import React, { createElement, forwardRef, useRef, useState } from 'react';
@@ -58,30 +59,30 @@ const TextField = forwardRef((props, inputRef) => {
 	const {
 		id,
 		name,
-		label,
-		placeholder,
-		type,
+		label = '',
+		placeholder = '',
+		type = 'text',
 		value,
 		required,
-		defaultValue,
+		defaultValue = '',
 		onFocus,
 		onBlur,
-		onChange,
-		size,
-		border,
-		theme,
+		onChange = () => {},
+		size = 'md',
+		border = 'default',
+		theme = 'light',
 		LeftComponent,
 		RightComponent,
 		className,
 		disabled,
-		inputProps,
+		inputProps = {},
 		feedback,
 		count,
 		feedbackAndCount,
 		maxLength,
-		onKeyDown,
+		onKeyDown = () => {},
 		autocomplete,
-		autocompleteOptions,
+		autocompleteOptions = {},
 		custom,
 	} = props;
 
@@ -324,32 +325,6 @@ TextField.propTypes = {
 	}),
 	theme: PropTypes.oneOf(['light', 'dark']),
 	required: PropTypes.bool,
-};
-
-TextField.defaultProps = {
-	id: null,
-	name: null,
-	disabled: false,
-	label: '',
-	placeholder: '',
-	type: 'text',
-	value: undefined,
-	defaultValue: '',
-	onChange: () => {},
-	size: 'md',
-	border: 'default',
-	LeftComponent: null,
-	RightComponent: null,
-	inputProps: {},
-	count: null,
-	feedback: null,
-	feedbackAndCount: false,
-	maxLength: null,
-	onKeyDown: () => {},
-	autocomplete: false,
-	autocompleteOptions: {},
-	theme: 'light',
-	required: false,
 };
 
 export default TextField;
