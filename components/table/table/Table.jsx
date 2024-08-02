@@ -1,6 +1,6 @@
 /* eslint-disable react/forbid-prop-types */
 import PropTypes from 'prop-types';
-import { useEffect, useRef, useState } from 'react';
+import { isValidElement, useEffect, useRef, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { classes } from '../../../utils';
 import { ErrorBoundaryWrapper } from '../../errorBoundary';
@@ -58,7 +58,7 @@ const Table = (props) => {
 		search,
 		customSearchIcon,
 		setSearch,
-		tableDrawerProps,
+		tableDrawerProps = {},
 	} = props;
 
 	const ref = useRef(null);
@@ -68,7 +68,9 @@ const Table = (props) => {
 	const [hiddenColumns, setHiddenColumns] = useState({});
 	const [toggleTableDrawer, setToggleTableDrawer] = useState({
 		open: false,
-		data: {},
+		data: {
+			index: 0,
+		},
 	});
 
 	const toggleDrawer = ({ data }) => {
@@ -84,9 +86,7 @@ const Table = (props) => {
 		return [null, false, undefined].includes(hiddenColumns?.[header?.id]);
 	});
 
-	const { index } = toggleDrawer.data;
-
-	const Body = tableDrawerProps.renderBody[index];
+	const Body = tableDrawerProps?.renderBody?.[toggleDrawer?.data?.index];
 
 	// for pagination docking using intersection observer
 	useEffect(() => {
@@ -205,9 +205,7 @@ const Table = (props) => {
 						onRowClick,
 						defaultActiveIndex,
 						placeholder,
-						tableDrawerProps,
 						toggleDrawer,
-						v2,
 					}}
 					loading={loading}
 				/>
@@ -227,7 +225,7 @@ const Table = (props) => {
 						hideDisabledPages={hideDisabledPages}
 					/>
 				)}
-				{v2 && (
+				{v2 && tableDrawerProps && (
 					<BaseSidePanel
 						toggle={toggleDrawer}
 						open={toggleTableDrawer.open}
@@ -241,7 +239,9 @@ const Table = (props) => {
 							);
 						}}
 						{...tableDrawerProps}>
-						<Body datum={toggleTableDrawer.data} toggle={toggleDrawer} />
+						{Body && isValidElement(<Body datum={toggleTableDrawer.data} />) && (
+							<Body datum={toggleTableDrawer.data} toggle={toggleDrawer} />
+						)}
 					</BaseSidePanel>
 				)}
 			</div>

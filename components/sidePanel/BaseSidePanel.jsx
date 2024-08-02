@@ -6,6 +6,22 @@ import BaseModal from '../modal/BaseModal';
 import styles from './BaseSidePanel.module.css';
 import Tabs from '../tabs/Tabs';
 
+const Header = ({ children }) => {
+	return (
+		<div data-elem='header' className={styles.header}>
+			{children}
+		</div>
+	);
+};
+
+const Footer = ({ children }) => {
+	return (
+		<div data-elem='footer' className={styles.footer}>
+			{children}
+		</div>
+	);
+};
+
 const BaseSidePanel = (props) => {
 	const {
 		className,
@@ -36,20 +52,8 @@ const BaseSidePanel = (props) => {
 			hideCrossDismiss
 			noDismiss={noDismiss}
 			className={classes(styles.modal, className)}
-			renderHeader={
-				renderHeader && (
-					<div data-elem='header' className={styles.header}>
-						{renderHeader}
-					</div>
-				)
-			}
-			renderFooter={
-				renderFooter && (
-					<div data-elem='footer' className={styles.footer}>
-						{renderFooter}
-					</div>
-				)
-			}
+			renderHeader={renderHeader && <Header>{renderHeader}</Header>}
+			renderFooter={renderFooter && <Footer>{renderFooter}</Footer>}
 			animation={animation}
 			animationProperties={{
 				initial: {
@@ -69,7 +73,7 @@ const BaseSidePanel = (props) => {
 		</BaseModal>
 	) : (
 		<div ref={panelRef} className={classes(styles.drawer, open ? '' : styles.close, className)}>
-			{tabs.length > 0 && (
+			{tabs.length > 0 ? (
 				<Tabs
 					tabs={tabs}
 					className={classes(tabsClassName, styles.tabs)}
@@ -77,21 +81,21 @@ const BaseSidePanel = (props) => {
 					selectedTab={selectedTab}
 					setSelectedTab={setSelectedTab}>
 					<div className={styles.content}>
-						{renderHeader && (
-							<div data-elem='header' className={styles.header}>
-								{renderHeader}
-							</div>
-						)}
+						{renderHeader && <Header>{renderHeader}</Header>}
 						<div data-elem='body' className={styles.body}>
 							{children}
 						</div>
-						{renderFooter && (
-							<div data-elem='footer' className={styles.footer}>
-								{renderFooter}
-							</div>
-						)}
+						{renderFooter && <Footer>{renderFooter}</Footer>}
 					</div>
 				</Tabs>
+			) : (
+				<div>
+					{renderHeader && <Header>{renderHeader}</Header>}
+					<div data-elem='body' className={styles.body}>
+						{children}
+					</div>
+					{renderFooter && <Footer>{renderFooter}</Footer>}
+				</div>
 			)}
 		</div>
 	);

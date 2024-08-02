@@ -1977,6 +1977,22 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 							paginationDispatch,
 						}}
 						customSearchIcon={HomeIcon}
+						tableDrawerProps={{
+							renderBody: <div>Hello</div>,
+							tabsConfig: {
+								tabs: [
+									{
+										id: '1',
+										leftIcon: HomeIcon,
+									},
+									{
+										id: '2',
+										leftIcon: HomeIcon,
+									},
+								],
+								className: '',
+							},
+						}}
 					/>
 				</ThemedContainer>
 			);
