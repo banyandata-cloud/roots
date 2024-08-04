@@ -1,0 +1,155 @@
+@import '../../../styles/_index';
+
+.root {
+	@include flex(column, center, flex-start);
+	gap: 0.5rem;
+	label {
+		width: 100%;
+		max-width: 100%;
+		font-weight: 400;
+		font-size: 0.75rem;
+		line-height: 1.125rem;
+		letter-spacing: 0.32px;
+		color: $grey;
+		height: 100%;
+		@include flex(column, flex-start, flex-start);
+		gap: 0.3125rem;
+		.required {
+			&::after {
+				content: ' *';
+				color: $primary-color1;
+			}
+		}
+
+		.input-wrapper {
+			@include flex(row, space-between, center);
+			gap: 0.625rem;
+			padding: 0.75rem;
+			height: auto;
+			max-width: 100%;
+			width: 100%;
+			border-radius: 0.25rem;
+			box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25);
+
+			.icon {
+				@include flex;
+			}
+			> [data-elem*='component'] {
+				@include flex;
+			}
+			> [data-elem='component1'] {
+				> svg {
+					width: 1.5rem;
+					height: 1.5rem;
+					&.error {
+						path {
+							stroke: $primary-color1;
+						}
+					}
+				}
+			}
+			> [data-elem='component2'] {
+				flex: 1;
+				.input {
+					@include removeArrows;
+					flex: 1;
+					background-color: transparent;
+					border: none;
+					font-weight: 400;
+					font-size: 0.875rem;
+					line-height: 1.3125rem;
+					color: $text-color;
+					width: 100%;
+					&:focus {
+						outline: none;
+					}
+					&:disabled {
+						background: $grey9;
+						color: $grey3;
+					}
+					&.error {
+						color: $primary-color1;
+					}
+					&.sm {
+						padding: 0rem 0.5rem;
+					}
+					&.md {
+						padding: 0rem 0.5rem;
+					}
+					&.lg {
+						padding: 0rem 0.5rem;
+					}
+				}
+			}
+
+			> [data-elem='component3'] {
+				@include flex;
+				gap: 0.75rem;
+				button[data-elem='base-cell'].button[type='button'] {
+					width: auto;
+					height: fit-content;
+					padding: 0;
+					background-color: transparent;
+					&.error {
+						> [data-elem='component1'] {
+							.icon {
+								&.error {
+									&.error {
+										path {
+											stroke: $primary-color1;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				.span {
+					.icon {
+						width: 1.5rem;
+						height: 1.5rem;
+						&.error {
+							&.error {
+								path {
+									stroke: $primary-color1;
+								}
+							}
+						}
+					}
+				}
+			}
+
+			&.type-textarea {
+				padding: 0;
+
+				> [data-elem='component2'] {
+					.input {
+						resize: vertical;
+						&.md {
+							padding: 0.313rem 0.75rem;
+						}
+
+						&.lg {
+							padding: 0.5rem 1rem;
+							font-size: 1rem;
+						}
+					}
+				}
+			}
+
+			&.feedback-error {
+				box-shadow: 0px 0px 2px 0px $primary-color1;
+			}
+
+			&.border-default {
+				border-width: 0.063rem;
+			}
+			&.border-bottom {
+				border-width: 0rem 0rem 0.063rem 0rem;
+			}
+			&.border-none {
+				border-width: 0rem;
+			}
+		}
+	}
+}

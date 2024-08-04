@@ -1,0 +1,144 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+.root label {
+  width: 100%;
+  max-width: 100%;
+  font-weight: 400;
+  font-size: 0.75rem;
+  line-height: 1.125rem;
+  letter-spacing: 0.32px;
+  color: var(--grey);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0.3125rem;
+}
+.root label .required::after {
+  content: " *";
+  color: var(--primary-color1);
+}
+.root label .input-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.75rem;
+  height: auto;
+  max-width: 100%;
+  width: 100%;
+  border-radius: 0.25rem;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25);
+}
+.root label .input-wrapper .icon {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.root label .input-wrapper > [data-elem*=component] {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.root label .input-wrapper > [data-elem=component1] > svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.root label .input-wrapper > [data-elem=component1] > svg.error path {
+  stroke: var(--primary-color1);
+}
+.root label .input-wrapper > [data-elem=component2] {
+  flex: 1;
+}
+.root label .input-wrapper > [data-elem=component2] .input {
+  -moz-appearance: textfield;
+  flex: 1;
+  background-color: transparent;
+  border: none;
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.3125rem;
+  color: var(--text-color);
+  width: 100%;
+}
+.root label .input-wrapper > [data-elem=component2] .input::-webkit-outer-spin-button, .root label .input-wrapper > [data-elem=component2] .input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.root label .input-wrapper > [data-elem=component2] .input:focus {
+  outline: none;
+}
+.root label .input-wrapper > [data-elem=component2] .input:disabled {
+  background: var(--grey9);
+  color: var(--grey3);
+}
+.root label .input-wrapper > [data-elem=component2] .input.error {
+  color: var(--primary-color1);
+}
+.root label .input-wrapper > [data-elem=component2] .input.sm {
+  padding: 0rem 0.5rem;
+}
+.root label .input-wrapper > [data-elem=component2] .input.md {
+  padding: 0rem 0.5rem;
+}
+.root label .input-wrapper > [data-elem=component2] .input.lg {
+  padding: 0rem 0.5rem;
+}
+.root label .input-wrapper > [data-elem=component3] {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+}
+.root label .input-wrapper > [data-elem=component3] button[data-elem=base-cell].button[type=button] {
+  width: auto;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 0;
+  background-color: transparent;
+}
+.root label .input-wrapper > [data-elem=component3] button[data-elem=base-cell].button[type=button].error > [data-elem=component1] .icon.error.error path {
+  stroke: var(--primary-color1);
+}
+.root label .input-wrapper > [data-elem=component3] .span .icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.root label .input-wrapper > [data-elem=component3] .span .icon.error.error path {
+  stroke: var(--primary-color1);
+}
+.root label .input-wrapper.type-textarea {
+  padding: 0;
+}
+.root label .input-wrapper.type-textarea > [data-elem=component2] .input {
+  resize: vertical;
+}
+.root label .input-wrapper.type-textarea > [data-elem=component2] .input.md {
+  padding: 0.313rem 0.75rem;
+}
+.root label .input-wrapper.type-textarea > [data-elem=component2] .input.lg {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+}
+.root label .input-wrapper.feedback-error {
+  box-shadow: 0px 0px 2px 0px var(--primary-color1);
+}
+.root label .input-wrapper.border-default {
+  border-width: 0.063rem;
+}
+.root label .input-wrapper.border-bottom {
+  border-width: 0rem 0rem 0.063rem 0rem;
+}
+.root label .input-wrapper.border-none {
+  border-width: 0rem;
+}/*# sourceMappingURL=TextFieldv2.module.css.map */

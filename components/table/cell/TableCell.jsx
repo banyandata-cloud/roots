@@ -110,7 +110,6 @@ const TableCell = forwardRef(function TableCell(props, ref) {
 TableCell.propTypes = {
 	...BaseCell.propTypes,
 	theme: PropTypes.string,
-	title: PropTypes.string,
 	id: PropTypes.string,
 	size: PropTypes.oneOf(['sm', 'md', 'lg']),
 	flexible: PropTypes.bool,

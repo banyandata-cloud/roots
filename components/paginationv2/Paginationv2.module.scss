@@ -1,0 +1,326 @@
+@import '../../styles/_index';
+
+.root {
+	@include flex(row, space-between, stretch);
+	@include removeScrollbar;
+	padding: 0.4375rem 1rem;
+	background: $light-color1;
+	margin-top: auto;
+	width: 100%;
+	height: 3.5rem;
+	overflow: auto;
+	transition-property: background-color, color, bottom, width;
+	transition-duration: 0.33s;
+	transition-timing-function: ease-out;
+
+	.new-options {
+		@include flex(row);
+		width: 36%;
+		gap: 1rem;
+		@include flex(row, flex-start);
+		.row-switcher {
+			@include flex(row, space-between, center);
+			min-width: 4rem;
+			max-width: 9.5rem;
+			> [data-elem='component2'] {
+				height: 100%;
+				width: 100%;
+			}
+
+			.row-switcher-handle {
+				gap: 0.75rem;
+				padding: 0;
+				border-radius: 0.25rem;
+				height: 100%;
+				width: 100%;
+
+				> [data-elem='component1'] {
+					@include flex(row, flex-start, stretch);
+					height: 100%;
+					&::before {
+						content: '';
+						margin: auto;
+						background: $white;
+						width: 0.0313rem;
+						height: 50%;
+					}
+				}
+			}
+			background-color: transparent;
+			padding: 0;
+			height: 100%;
+
+			.dropdown {
+				height: 100%;
+				& > [data-elem='header'] {
+					height: 100%;
+
+					& > [data-elem='select'] {
+						height: 2.375rem;
+						max-height: 100%;
+						width: auto;
+						min-width: fit-content;
+						padding: 0.625rem;
+						border: 0rem solid transparent;
+						& > [data-elem='placeholder'] {
+							color: $text-color;
+							font-size: 0.875rem;
+							background-color: $secondary-color2;
+						}
+						& > svg {
+							color: $text-color;
+							width: 1rem;
+							height: 1rem;
+						}
+					}
+				}
+			}
+		}
+		.total-data {
+			@include ellipsis;
+			color: $text-color;
+			font-size: 0.875rem;
+			font-weight: 500;
+			line-height: 1.125rem;
+		}
+	}
+
+	&.floating {
+		background: $light-color1;
+		position: absolute;
+		border-radius: 6.25rem;
+		width: 100%;
+		bottom: 3rem;
+	}
+
+	.page-numbers {
+		@include flex(row, flex-start);
+		gap: 1.25rem;
+		width: 50%;
+
+		&.custom-page-number {
+			flex: 1 1;
+			@include flex(row, flex-start);
+		}
+
+		@include lg {
+			// flex: 1 1 25%;
+		}
+
+		& > .button {
+			&.disable {
+				pointer-events: none;
+			}
+			[data-elem='title'] {
+				color: $white;
+			}
+			.icon {
+				width: 1.5rem;
+				height: 1.5rem;
+				fill: $white;
+			}
+		}
+		& > .pageSelect {
+			@include flex(row, space-between, center);
+			gap: 0.625rem;
+			.number {
+				cursor: pointer;
+				border-radius: 50%;
+				font-size: 1rem;
+				&.custom-number {
+					border-radius: 0%;
+					font-size: 0.875rem;
+					padding: 0 5px 0 5px;
+				}
+				background-color: transparent;
+				color: $black;
+				min-width: 2.313rem;
+				line-height: 2.313rem;
+				text-align: center;
+				border: 1px solid transparent;
+
+				&:not([data-active='true']) {
+					display: none;
+				}
+
+				@include md {
+					&:not([data-active='true']) {
+						display: block;
+					}
+				}
+
+				&:hover {
+					border: 1px solid $primary-color4;
+					color: $primary-color4;
+					background: $background-color4;
+				}
+
+				&.active {
+					background-color: $secondary-color2;
+					color: $white;
+				}
+
+				&.disabled {
+					color: $grey2;
+				}
+			}
+		}
+	}
+
+	.options {
+		@include flex(row);
+		gap: 1rem;
+
+		.total-data {
+			@include ellipsis;
+			color: $text-color;
+			font-size: 0.875rem;
+			font-weight: 500;
+			line-height: 1.125rem;
+		}
+
+		.row-switcher {
+			@include flex(row, space-between, center);
+			min-width: 4rem;
+			> [data-elem='component2'] {
+				height: 100%;
+				width: 100%;
+			}
+
+			.row-switcher-handle {
+				gap: 0.75rem;
+				padding: 0;
+				border-radius: 0.25rem;
+				height: 100%;
+				width: 100%;
+
+				> [data-elem='component1'] {
+					@include flex(row, flex-start, stretch);
+					height: 100%;
+					&::before {
+						content: '';
+						margin: auto;
+						background: $white;
+						width: 0.0313rem;
+						height: 50%;
+					}
+				}
+			}
+			background-color: transparent;
+			padding: 0;
+			height: 100%;
+
+			.dropdown {
+				height: 100%;
+
+				& > [data-elem='header'] {
+					height: 100%;
+					& > [data-elem='select'] {
+						height: 2.375rem;
+						max-height: 100%;
+						width: auto;
+						min-width: fit-content;
+						padding: 0.625rem;
+						border: 0rem solid transparent;
+						& > [data-elem='placeholder'] {
+							color: $text-color;
+							font-size: 0.875rem;
+							background-color: $secondary-color2;
+						}
+						& > svg {
+							color: $text-color;
+							width: 1rem;
+							height: 1rem;
+						}
+					}
+				}
+			}
+		}
+
+		.form {
+			@include flex(row, space-between, center);
+			width: auto;
+			min-width: auto;
+			> [data-elem*='component'] {
+				width: 100%;
+				height: 100%;
+				> * {
+					height: 100%;
+				}
+			}
+			padding: 0;
+			flex: 1;
+			background: transparent;
+			.jump-to-page {
+				background: transparent;
+				@include flex(row, center, stretch);
+
+				> [data-elem*='component'] {
+					overflow: hidden;
+					height: 100%;
+				}
+				gap: 0rem;
+				padding: 0rem;
+				height: 100%;
+				border-radius: 0.25rem;
+				border: 0.0313rem solid $mono-color2;
+				box-shadow: 0.1875rem 0.1875rem 0.25rem 0rem rgba(194, 194, 194, 0.12) inset;
+
+				.inputbox {
+					height: 100%;
+
+					> label {
+						height: 100%;
+						font-size: 0.875rem;
+						> [data-elem='base-cell'] {
+							background-color: transparent;
+							color: $white;
+							height: 100%;
+							width: 3rem;
+							flex: 1;
+							padding: 0.625rem;
+							border: none;
+
+							.icon {
+								width: 1.5rem;
+								height: 1.5rem;
+								fill: $grey1;
+							}
+
+							> [data-elem='component2'] {
+								height: 100%;
+							}
+
+							[data-elem='input'] {
+								text-align: center;
+								background-color: transparent;
+								border: none;
+								height: 100%;
+								width: 100%;
+								color: $text-color;
+								font-size: 0.875rem;
+								font-style: normal;
+								font-weight: 600;
+								line-height: normal;
+							}
+						}
+					}
+				}
+
+				.button {
+					border-radius: 0rem 0.25rem 0.25rem 0rem;
+					background-color: $secondary-color2;
+					padding: 0.75rem 0.5rem;
+					height: 100%;
+
+					.icon {
+						width: 1.5rem;
+						height: 1.5rem;
+						fill: $white;
+						flex-shrink: 0;
+					}
+				}
+			}
+		}
+	}
+}

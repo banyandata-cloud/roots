@@ -1,0 +1,348 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+
+import { useState } from 'react';
+import { ThemedContainer } from '../../helpers';
+import Dropdown from './Dropdownv2';
+import DropdownItem from './dropdown-itemv2/DropdownItemv2';
+
+<Meta title='Components/Input/Dropdownv2' parameters={{ options: { showToolbar: true } }} />
+
+export const Template = (args) => (
+	<ThemedContainer theme='light'>
+		<Dropdown {...args}>
+			<DropdownItem title='Option A' value={1} />
+			<DropdownItem title='Option B' value={2} />
+			<DropdownItem title='Option C' value={3} />
+		</Dropdown>
+	</ThemedContainer>
+);
+
+# Dropdown
+
+The Dropdown component provides a versatile dropdown input with support for single and multi-selection. It supports controlled and uncontrolled usage and offers various customization options.
+
+#### Design - [Figma](https://www.figma.com/file/e9opoAtQHBo4vFd6u0Co98/Component-Library?node-id=1%3A6&mode=dev) | Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/components/input/dropdown)
+
+> The Dropdown component offers a flexible and customizable way to include dropdown inputs in your application. It supports both single and multi-selection modes and can be controlled or uncontrolled based on your needs.
+
+## Usage
+
+Basic import and additional information on how to use this component.
+
+```js
+import { Dropdown } from '@banyan_cloud/roots';
+```
+
+-   The multi prop enables multi-selection mode, allowing users to select multiple options.
+-   The onChange function is called when the selection changes. It provides the new selected value(s) as a parameter.
+-   The formatter function allows you to customize how the selected option count is displayed in multi-selection mode.
+
+## Stories
+
+The CSF rendered inside the `Canvas` from which you can see the implementation example.
+
+### Default
+
+The default dropdown component.
+
+<Canvas>
+	<Story
+		name='Default'
+		args={{
+			label: 'Default Dropdown',
+			placeholder: 'Select an option',
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Multi-check
+
+The dropdown component with multiple selections.
+
+<Canvas>
+	<Story name='Multi-check'>
+		{() => {
+			const [value, setValue] = useState([]);
+			return (
+				<div>
+					<Dropdown
+						value={value}
+						multi={true}
+						label='Multi Select Checkbox Dropdown'
+						placeholder='Select an option'
+						onChange={(event, newValue) => {
+							setValue(newValue);
+						}}>
+						{[...Array(4).keys()].map((option) => {
+							return (
+								<DropdownItem
+									key={option}
+									title={`Option ${option + 1}`}
+									value={option + 1}
+									variant='checkbox'
+								/>
+							);
+						})}
+					</Dropdown>
+				</div>
+			);
+		}}
+	</Story>
+</Canvas>
+
+### Radio
+
+The dropdown component with radio buttons.
+
+<Canvas>
+	<Story name='Radio'>
+		{() => {
+			return (
+				<div>
+					<Dropdown label='Multi Select Checkbox Dropdown' placeholder='Select an option'>
+						<DropdownItem title='Option A' value={1} variant='radio' />
+						<DropdownItem title='Option B' value={2} variant='radio' />
+						<DropdownItem title='Option C' value={3} variant='radio' />
+					</Dropdown>
+				</div>
+			);
+		}}
+	</Story>
+</Canvas>
+
+## Try in the Code Editor
+
+This embeded `CodeSandBox` is external third party code editor `iframe` shared publicly. It is advised to create an account with banyancloud mail id to create/fork this sandbox.
+
+## API
+
+**`popperClassName`**
+
+Class name to be applied to the Popper component.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>""</td>
+	</tr>
+</table>
+
+```jsx
+<Dropdown popperClassName='PopperClass' />
+```
+
+**`className`**
+
+Class name to be applied to the root element.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>""</td>
+	</tr>
+</table>
+
+```jsx
+<Dropdown className='additionalClass' />
+```
+
+**`disabled`**
+
+Disables the dropdown input.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<Dropdown disabled={true} />
+```
+
+**`label`**
+
+Text label associated with the dropdown.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>null</td>
+	</tr>
+</table>
+
+```jsx
+<Dropdown label='Label' />
+```
+
+**`value`**
+
+Selected value(s) for controlled usage.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String | Array of strings</td>
+		<td>undefined</td>
+	</tr>
+</table>
+
+```jsx
+<Dropdown value={['value1', 'value2']} />
+```
+
+**`placeholder`**
+
+Placeholder text to display when no option is selected.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>'Select an option'</td>
+	</tr>
+</table>
+
+```jsx
+<Dropdown placeholder='Select' />
+```
+
+**`multi`**
+
+Enables multi-selection mode.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<Dropdown multi={true} />
+```
+
+**`onChange`**
+
+Function to execute when the selection changes.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Function</td>
+		<td>null</td>
+	</tr>
+</table>
+
+```jsx
+<Dropdown
+	onChange={() => {
+		console.log('On change');
+	}}
+/>
+```
+
+**`onBlur`**
+
+Function to execute when the dropdown input loses focus.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Function</td>
+		<td>null</td>
+	</tr>
+</table>
+
+```jsx
+<Dropdown
+	onChange={() => {
+		console.log('On blur');
+	}}
+/>
+```
+
+**`feedback`**
+
+Function to execute when the dropdown input loses focus.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Object</td>
+		<td>null</td>
+	</tr>
+</table>
+
+```jsx
+<Dropdown
+	feedback={{
+		text: Successful,
+		type: 'success',
+	}}
+/>
+```
+
+**`formatter`**
+
+Function to format the selected option count in multi-selection mode.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Function</td>
+		<td>
+			{`(totalSelected) => {
+		return '{totalSelected} options selected';
+		}`}
+		</td>
+	</tr>
+</table>
+
+```jsx
+<Dropdown
+	formatter={(totalSelected) => {
+		return `${totalSelected} options selected`;
+	}}
+/>
+```
