@@ -19,6 +19,7 @@
 		"react/jsx-indent": ["off"], //validates a specific indentation style for JSX.
 		"indent": ["off"],
 		"react/react-in-jsx-scope": "off",
+		"react/require-default-props": "off",
 		"react/jsx-one-expression-per-line": "off", //Limits every line in JSX to one expression each
 		"react/jsx-closing-bracket-location": "off", //Enforce the closing bracket location for JSX multiline elements
 		"linebreak-style": 0,

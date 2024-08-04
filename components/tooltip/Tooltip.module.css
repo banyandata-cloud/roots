@@ -5,7 +5,6 @@
   max-width: auto;
   padding: 0.375rem;
   font-size: 0.875rem;
-  font-family: sans-serif;
   line-height: 1;
   color: var(--light-color3);
   background: var(--text-color);
@@ -16,8 +15,8 @@
 }
 .tooltip .arrow {
   position: absolute;
-  width: 1rem;
-  height: 1rem;
+  width: 0.65rem;
+  height: 0.65rem;
   z-index: -1;
   pointer-events: none;
   transform: rotate(45deg);
