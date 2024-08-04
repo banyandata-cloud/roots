@@ -1,10 +1,10 @@
 const SelectAll = (props) => {
-	const { className } = props;
+	const { className = '' } = props;
 
 	return (
 		<svg
-			width='18'
-			height='18'
+			width='1.125rem'
+			height='1.125rem'
 			viewBox='0 0 18 18'
 			fill='none'
 			className={className}
@@ -15,10 +15,6 @@ const SelectAll = (props) => {
 			/>
 		</svg>
 	);
-};
-
-SelectAll.defaultProps = {
-	className: '',
 };
 
 export default SelectAll;

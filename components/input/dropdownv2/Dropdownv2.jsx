@@ -31,10 +31,10 @@ import { classes } from '../../../utils';
 import Button from '../../buttons/button/Button';
 import { ErrorBoundaryWrapper } from '../../errorBoundary';
 import { CaretIcon, DropdownIcon, InfoIcon } from '../../icons';
-import Popper from '../../popper/Popper';
-import styles from './Dropdownv2.module.css';
 import { SelectAllIcon } from '../../icons/SelectAll';
+import Popper from '../../popper/Popper';
 import { Tooltip } from '../../tooltip';
+import styles from './Dropdownv2.module.css';
 
 // eslint-disable-next-line prefer-arrow-callback
 const Dropdown = forwardRef(function Dropdown(props, inputRef) {
@@ -312,6 +312,14 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 		onChange(event, uncontrolledValue);
 	};
 
+	let selectedItemsLabel = null;
+
+	if (selectedOptions?.length === 1) {
+		selectedItemsLabel = '1 item selected';
+	} else {
+		selectedItemsLabel = `${selectedOptions?.length} items selected`;
+	}
+
 	return (
 		<ErrorBoundary
 			FallbackComponent={(args) => {
@@ -472,7 +480,7 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 										/>
 										{selectedOptions?.length > 0 && (
 											<span className={styles.items}>
-												{selectedOptions?.length} item selected
+												{selectedItemsLabel}
 											</span>
 										)}
 									</li>
