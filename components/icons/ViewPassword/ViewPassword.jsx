@@ -1,10 +1,10 @@
 const ViewPasswordIcon = (props) => {
-	const { className } = props;
+	const { className = '' } = props;
 
 	return (
 		<svg
-			width='24'
-			height='24'
+			width='1.5rem'
+			height='1.5rem'
 			viewBox='0 0 24 24'
 			fill='none'
 			className={className}
@@ -25,10 +25,6 @@ const ViewPasswordIcon = (props) => {
 			/>
 		</svg>
 	);
-};
-
-ViewPasswordIcon.defaultProps = {
-	className: '',
 };
 
 export default ViewPasswordIcon;

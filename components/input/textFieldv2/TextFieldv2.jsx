@@ -5,20 +5,20 @@ import React, { createElement, forwardRef, useRef, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { mergeRefs } from 'react-merge-refs';
 import { classes, inputHelper } from '../../../utils/utils';
+import { Button } from '../../buttons';
 import { BaseCell } from '../../cell';
 import { ErrorBoundaryWrapper } from '../../errorBoundary';
-import { Popover } from '../../popover';
-import styles from './TextFieldv2.module.css';
 import {
 	EmailIcon,
 	HidePasswordIcon,
+	InfoIcon,
 	PasswordIcon,
 	UnlockPasswordIcon,
 	ViewPasswordIcon,
-	InfoIcon,
 } from '../../icons';
-import { Button } from '../../buttons';
+import { Popover } from '../../popover';
 import { Tooltip } from '../../tooltip';
+import styles from './TextFieldv2.module.css';
 
 /**
  * TextField is a functional component that renders a text input field with customizable options.
@@ -77,8 +77,6 @@ const TextField = forwardRef((props, inputRef) => {
 		disabled,
 		inputProps = {},
 		feedback,
-		count,
-		feedbackAndCount,
 		maxLength,
 		onKeyDown = () => {},
 		autocomplete,
@@ -128,7 +126,7 @@ const TextField = forwardRef((props, inputRef) => {
 	};
 
 	const getRightComponent = () => {
-		if (type === 'password' && inputType === 'password') {
+		if (type === 'password') {
 			return (
 				<>
 					<Button
@@ -137,7 +135,7 @@ const TextField = forwardRef((props, inputRef) => {
 						variant='contained'
 						type='button'
 						leftComponent={() => {
-							return (
+							return inputType === 'password' ? (
 								<HidePasswordIcon
 									className={classes(
 										styles.icon,
@@ -145,45 +143,7 @@ const TextField = forwardRef((props, inputRef) => {
 									)}
 									position='left'
 								/>
-							);
-						}}
-						onClick={() => {
-							setInputType('text');
-						}}
-					/>
-					{feedback && (
-						<Tooltip
-							content={feedback?.info ?? feedback?.error ?? ''}
-							position='top'
-							className={styles.tooltip}
-							variant='light'>
-							<span
-								className={classes(
-									styles.span,
-									feedback?.error ? styles.error : ''
-								)}>
-								<InfoIcon
-									className={classes(
-										styles.icon,
-										feedback?.error ? styles.error : ''
-									)}
-								/>
-							</span>
-						</Tooltip>
-					)}
-				</>
-			);
-		}
-		if (type === 'password' && inputType === 'text') {
-			return (
-				<>
-					<Button
-						className={classes(styles.button, feedback?.error ? styles.error : '')}
-						title=''
-						variant='contained'
-						type='button'
-						leftComponent={() => {
-							return (
+							) : (
 								<ViewPasswordIcon
 									className={classes(
 										styles.icon,
@@ -194,13 +154,17 @@ const TextField = forwardRef((props, inputRef) => {
 							);
 						}}
 						onClick={() => {
+							if (inputType === 'password') {
+								setInputType('text');
+								return;
+							}
 							setInputType('password');
 						}}
 					/>
 					{feedback && (
 						<Tooltip
 							content={feedback?.info ?? feedback?.error ?? ''}
-							position='top'
+							position='right'
 							className={styles.tooltip}
 							variant='light'>
 							<span
@@ -224,7 +188,7 @@ const TextField = forwardRef((props, inputRef) => {
 			return (
 				<Tooltip
 					content={feedback?.info ?? feedback?.error ?? ''}
-					position='top'
+					position='right'
 					className={styles.tooltip}
 					variant='light'>
 					<span className={classes(styles.span, feedback?.error ? styles.error : '')}>
@@ -298,20 +262,6 @@ const TextField = forwardRef((props, inputRef) => {
 						}
 					/>
 				</label>
-				{feedbackAndCount && (
-					<div className={styles.bottom}>
-						{count?.limit != null && (
-							<div
-								data-elem='count'
-								className={classes(
-									styles.count,
-									inputValue?.length > count.limit ? styles.exceeded : ''
-								)}>
-								{inputValue.length ?? 0}/{count.limit}
-							</div>
-						)}
-					</div>
-				)}
 				{autocomplete && (
 					<Popover
 						anchorEl={anchorEl}
