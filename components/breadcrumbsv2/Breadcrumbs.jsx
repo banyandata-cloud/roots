@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { classes } from '../../utils/utils';
 import Button from '../buttons/button/Button';
-import { Popover } from '../popover';
-import { Link } from '../link';
-import styles from './Breadcrumbs.module.css';
 import { CaretIcon, FlowChartIcon } from '../icons';
+import { Link } from '../link';
+import { Popover } from '../popover';
+import styles from './Breadcrumbs.module.css';
 
 const BreadCrumbs = (props) => {
 	const { crumbs = [], className = '' } = props;
@@ -15,68 +15,69 @@ const BreadCrumbs = (props) => {
 	const [expand, setExpand] = useState(false);
 	const [anchorEl, setAnchorEl] = useState(null);
 
-	if (!crumbs) {
+	if (!crumbs || crumbs.length === 0) {
 		return null;
 	}
 
-	const CrumbsDOM =
-		crumbs !== null &&
-		crumbs?.map((crumb, index) => {
-			const { title, value, icon, navigate, isDisabled = false } = crumb;
-			const active = index === crumbs.length - 1;
+	const CrumbsDOM = crumbs.map((crumb = {}, index) => {
+		const { title, value, icon, navigate, isDisabled = false } = crumb;
+		const active = index === crumbs.length - 1;
 
-			return (
-				<Link
-					underline='none'
-					key={crumb}
-					onClick={!isDisabled ? navigate : null}
-					className={classes(styles['crumb-list'], active ? styles.active : '')}
-					dataAttrs={{
-						'data-state': active,
-					}}>
-					<div className={styles.left}>
-						{icon && <div className={classes(styles.iconWrapper)}>{icon}</div>}
-						{title && <span className={styles.label}>{title} : </span>}
-						{value && <span className={styles.value}>{value}</span>}
-					</div>
-					<div className={styles.right}>
-						{index === 0 && <div className={styles.circle} />}
-						{index !== 0 && index !== (crumbs?.length ?? 1) - 1 && (
-							<div className={styles['circle-dropdown']}>
-								<CaretIcon className={styles.icon} />
-							</div>
-						)}
-						{index === (crumbs?.length ?? 1) - 1 && (
-							<div className={styles['circle-filled']} />
-						)}
-					</div>
-				</Link>
-			);
-		});
+		return (
+			<Link
+				underline='none'
+				key={crumb}
+				onClick={!isDisabled ? navigate : null}
+				className={classes(styles['crumb-list'], active ? styles.active : '')}
+				dataAttrs={{
+					'data-state': active,
+				}}>
+				<div className={styles.left}>
+					{icon && <div className={classes(styles.iconWrapper)}>{icon}</div>}
+					{value && (
+						<span className={styles.value}>
+							{title && `${title}: `}
+							{value}
+						</span>
+					)}
+				</div>
+				<div className={styles.right}>
+					{index === 0 && <div className={styles.circle} />}
+					{index !== 0 && index !== crumbs.length - 1 && (
+						<div className={styles['circle-dropdown']}>
+							<CaretIcon className={styles.icon} />
+						</div>
+					)}
+					{index === crumbs.length - 1 && <div className={styles['circle-filled']} />}
+				</div>
+			</Link>
+		);
+	});
+
+	const icon = crumbs[crumbs.length - 1]?.icon;
+
 	return (
 		<div className={classes(styles.root, className)}>
 			<Button
 				ref={setAnchorEl}
 				onClick={() => {
-					if (crumbs?.length > 1) {
+					if (crumbs.length > 1) {
 						setExpand((prev) => {
 							return !prev;
 						});
 					}
 				}}
-				className={classes(styles.selected, expand ? styles.expand : '')}
-				leftComponent={() => {
-					return (
-						crumbs?.[(crumbs?.length ?? 1) - 1]?.icon && (
-							<div className={classes(styles.iconWrapper)}>
-								{crumbs?.[(crumbs?.length ?? 1) - 1]?.icon}
-							</div>
-						)
-					);
-				}}
-				title={`${crumbs?.[(crumbs?.length ?? 1) - 1]?.title} : ${
-					crumbs?.[(crumbs?.length ?? 1) - 1]?.value
-				}`}
+				className={classes(
+					styles.selected,
+					expand ? styles.expand : '',
+					icon ? styles.gap : ''
+				)}
+				{...(icon && {
+					leftComponent: () => {
+						return <div className={classes(styles.iconWrapper)}>{icon}</div>;
+					},
+				})}
+				title={`${crumbs[crumbs.length - 1]?.title} : ${crumbs[crumbs.length - 1]?.value}`}
 				rightComponent={() => {
 					return <FlowChartIcon className={classes(expand ? '' : styles.icon)} />;
 				}}

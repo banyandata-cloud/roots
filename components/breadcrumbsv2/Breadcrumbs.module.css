@@ -12,12 +12,12 @@
   justify-content: flex-start;
   align-items: center;
   height: auto;
-  min-height: 1.9375rem;
   width: auto;
   max-width: 17rem;
+  border: 0.0313rem solid transparent;
   background: var(--light-color2);
-  padding: 0.4688rem 0.75rem;
-  gap: 0.625rem;
+  padding: 0.3125rem 0.75rem;
+  gap: 0rem;
   border-radius: 0.25rem;
 }
 .root button[data-elem=base-cell].selected[type=submit].expand {
@@ -35,6 +35,10 @@
   justify-content: center;
   align-items: center;
 }
+.root button[data-elem=base-cell].selected[type=submit] > [data-elem=component1] div.iconWrapper > svg {
+  width: 1rem;
+  height: 1rem;
+}
 .root button[data-elem=base-cell].selected[type=submit] > [data-elem=component2] {
   display: flex;
   flex-direction: row;
@@ -43,10 +47,17 @@
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+}
+.root button[data-elem=base-cell].selected[type=submit] > [data-elem=component2] > [data-elem=title] {
+  font-size: 0.875rem;
   color: var(--text-color);
+  line-height: 1.3125rem;
+}
+.root button[data-elem=base-cell].selected[type=submit].gap > [data-elem=component2] {
+  margin-left: 0.7775rem;
 }
 .root button[data-elem=base-cell].selected[type=submit] > [data-elem=component3] {
-  padding-left: 1.1563rem;
+  margin-left: 1.785rem;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -58,12 +69,10 @@
 
 div.popover {
   height: auto;
-  width: auto;
-  max-width: 17rem;
   padding: 0.75rem 0.625rem 0rem 0.625rem;
   background: var(--white) !important;
   border-color: var(--white) !important;
-  box-shadow: 0rem 0rem 0.125rem 0rem rgba(0, 0, 0, 0.2509803922);
+  box-shadow: 0rem 0rem 0.125rem 0rem rgba(0, 0, 0, 0.25);
 }
 div.popover .crumb-list {
   display: flex;
@@ -75,16 +84,16 @@ div.popover .crumb-list {
   margin-bottom: 0.625rem;
   border-radius: 0.125rem;
   border: 0.0313rem solid var(--side-bar-icon2);
-  background: transparent;
   font-weight: 500;
   color: var(--text-color);
 }
 div.popover .crumb-list:hover {
   cursor: pointer;
-  background: var(--light-color1);
+  background: var(--light-color2);
 }
 div.popover .crumb-list.active {
-  background: var(--background-color4);
+  background: var(--background-color5);
+  border: 0.0313rem solid transparent;
 }
 div.popover .crumb-list .left {
   display: flex;
@@ -99,12 +108,6 @@ div.popover .crumb-list .left .iconWrapper {
   justify-content: flex-start;
   align-items: flex-start;
   color: var(--text-color);
-}
-div.popover .crumb-list .left .title {
-  color: var(--text-color);
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
 }
 div.popover .crumb-list .left .value {
   color: var(--text-color);
@@ -124,7 +127,6 @@ div.popover .crumb-list .right .circle {
   border: 1.5px solid var(--secondary-color2);
   background-color: white;
   border-radius: 50%;
-  margin-left: 10px;
   z-index: 1000;
 }
 div.popover .crumb-list .right .circle-dropdown {
@@ -136,7 +138,9 @@ div.popover .crumb-list .right .circle-dropdown {
   height: 12px;
   border: 1.5px solid var(--secondary-color2);
   border-radius: 50%;
-  margin-left: 8px;
+  background-color: var(--white);
+  background-color: var(--white);
+  z-index: 101;
 }
 div.popover .crumb-list .right .circle-dropdown .icon {
   margin-right: 1.8px;
@@ -148,13 +152,6 @@ div.popover .crumb-list .right .circle-dropdown .icon > path {
   stroke-linecap: round !important;
   stroke-linejoin: round;
 }
-div.popover .crumb-list .right .circle-filled {
-  width: 12px;
-  height: 12px;
-  background-color: var(--secondary-color2);
-  border-radius: 50%;
-  margin-left: 8px;
-}
 div.popover .crumb-list .right .circle-dropdown::before {
   content: "";
   width: 0%;
@@ -164,11 +161,17 @@ div.popover .crumb-list .right .circle-dropdown::before {
   bottom: 100%;
   right: -3.6px;
 }
+div.popover .crumb-list .right .circle-filled {
+  width: 12px;
+  height: 12px;
+  background-color: var(--secondary-color2);
+  border-radius: 50%;
+}
 div.popover .crumb-list .right .circle-filled::before {
   z-index: 100;
   content: "";
   width: 2px;
-  height: 26px;
+  height: 2.5rem;
   background: var(--secondary-color2);
   position: absolute;
   bottom: 28px;

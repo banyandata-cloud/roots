@@ -3,8 +3,8 @@ const FlowChart = (props) => {
 
 	return (
 		<svg
-			width='17'
-			height='17'
+			width='1rem'
+			height='1rem'
 			viewBox='0 0 17 17'
 			fill='none'
 			className={className}
