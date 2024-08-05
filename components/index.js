@@ -1,6 +1,7 @@
 export * from './accordion';
 export * from './alert';
 export * from './breadcrumbs';
+export * from './breadcrumbsv2';
 export * from './buttons';
 export * from './cell';
 export * from './codeSnippet';

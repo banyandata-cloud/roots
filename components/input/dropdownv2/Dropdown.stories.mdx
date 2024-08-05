@@ -2,18 +2,18 @@ import { Meta, Canvas, Story } from '@storybook/addon-docs';
 
 import { useState } from 'react';
 import { ThemedContainer } from '../../helpers';
-import Dropdown from './Dropdownv2';
-import DropdownItem from './dropdown-itemv2/DropdownItemv2';
+import Dropdownv2 from './Dropdownv2';
+import DropdownItemv2 from './dropdown-itemv2/DropdownItemv2';
 
 <Meta title='Components/Input/Dropdownv2' parameters={{ options: { showToolbar: true } }} />
 
 export const Template = (args) => (
 	<ThemedContainer theme='light'>
-		<Dropdown {...args}>
-			<DropdownItem title='Option A' value={1} />
-			<DropdownItem title='Option B' value={2} />
-			<DropdownItem title='Option C' value={3} />
-		</Dropdown>
+		<Dropdownv2 {...args}>
+			<DropdownItemv2 title='Option A' value={1} />
+			<DropdownItemv2 title='Option B' value={2} />
+			<DropdownItemv2 title='Option C' value={3} />
+		</Dropdownv2>
 	</ThemedContainer>
 );
 
@@ -66,7 +66,7 @@ The dropdown component with multiple selections.
 			const [value, setValue] = useState([]);
 			return (
 				<div>
-					<Dropdown
+					<Dropdownv2
 						value={value}
 						multi={true}
 						label='Multi Select Checkbox Dropdown'
@@ -84,7 +84,7 @@ The dropdown component with multiple selections.
 								/>
 							);
 						})}
-					</Dropdown>
+					</Dropdownv2>
 				</div>
 			);
 		}}
@@ -100,11 +100,13 @@ The dropdown component with radio buttons.
 		{() => {
 			return (
 				<div>
-					<Dropdown label='Multi Select Checkbox Dropdown' placeholder='Select an option'>
+					<Dropdownv2
+						label='Multi Select Checkbox Dropdown'
+						placeholder='Select an option'>
 						<DropdownItem title='Option A' value={1} variant='radio' />
 						<DropdownItem title='Option B' value={2} variant='radio' />
 						<DropdownItem title='Option C' value={3} variant='radio' />
-					</Dropdown>
+					</Dropdownv2>
 				</div>
 			);
 		}}
