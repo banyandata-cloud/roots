@@ -1,10 +1,10 @@
 const Info = (props) => {
-	const { className } = props;
+	const { className = '' } = props;
 
 	return (
 		<svg
-			width='22'
-			height='22'
+			width='1.5rem'
+			height='1.5rem'
 			viewBox='0 0 22 22'
 			fill='none'
 			className={className}
@@ -18,10 +18,6 @@ const Info = (props) => {
 			/>
 		</svg>
 	);
-};
-
-Info.defaultProps = {
-	className: '',
 };
 
 export default Info;

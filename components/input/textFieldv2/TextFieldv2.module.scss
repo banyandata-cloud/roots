@@ -23,13 +23,13 @@
 
 		.input-wrapper {
 			@include flex(row, space-between, center);
-			gap: 0.5rem;
-			padding: 0rem 0rem;
+			gap: 0.625rem;
+			padding: 0.75rem;
+			height: auto;
 			max-width: 100%;
 			width: 100%;
 			border-radius: 0.25rem;
-			height: 100%;
-			@include boxShadow;
+			box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25);
 
 			.icon {
 				@include flex;
@@ -38,8 +38,9 @@
 				@include flex;
 			}
 			> [data-elem='component1'] {
-				padding: 0rem 0rem 0rem 0.5rem;
 				> svg {
+					width: 1.5rem;
+					height: 1.5rem;
 					&.error {
 						path {
 							stroke: $primary-color1;
@@ -56,8 +57,7 @@
 					border: none;
 					font-weight: 400;
 					font-size: 0.875rem;
-					line-height: 3rem;
-					letter-spacing: 0.16px;
+					line-height: 1.3125rem;
 					color: $text-color;
 					width: 100%;
 					&:focus {
@@ -83,12 +83,12 @@
 			}
 
 			> [data-elem='component3'] {
-				padding: 0rem 0.5rem;
+				@include flex;
+				gap: 0.75rem;
 				button[data-elem='base-cell'].button[type='button'] {
-					margin: 0.25rem 0rem 0rem 0rem;
-					height: 2rem;
-					width: 2rem;
-					padding: 0%;
+					width: auto;
+					height: fit-content;
+					padding: 0;
 					background-color: transparent;
 					&.error {
 						> [data-elem='component1'] {
@@ -105,8 +105,9 @@
 					}
 				}
 				.span {
-					padding: 0rem 0.5rem;
 					.icon {
+						width: 1.5rem;
+						height: 1.5rem;
 						&.error {
 							&.error {
 								path {
@@ -137,7 +138,7 @@
 			}
 
 			&.feedback-error {
-				border-color: $primary-color1;
+				box-shadow: 0px 0px 2px 0px $primary-color1;
 			}
 
 			&.border-default {
@@ -148,40 +149,6 @@
 			}
 			&.border-none {
 				border-width: 0rem;
-			}
-		}
-	}
-
-	.bottom {
-		@include flex(row, space-between, flex-start);
-		min-height: 2rem;
-		width: 100%;
-		gap: 1rem;
-		color: $grey3;
-		font-size: 0.75rem;
-		user-select: none;
-
-		.feedback {
-			flex: 1;
-			margin-right: auto;
-
-			&.feedback-error {
-				color: $primary-color1;
-				fill: $primary-color1;
-			}
-
-			&.feedback-success {
-				color: $primary-color2;
-				fill: $primary-color2;
-			}
-		}
-
-		.count {
-			text-align: right;
-			margin-left: auto;
-
-			&.exceeded {
-				color: $primary-color1;
 			}
 		}
 	}

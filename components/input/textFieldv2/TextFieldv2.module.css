@@ -29,13 +29,13 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0rem 0rem;
+  gap: 0.625rem;
+  padding: 0.75rem;
+  height: auto;
   max-width: 100%;
   width: 100%;
   border-radius: 0.25rem;
-  height: 100%;
-  box-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25);
 }
 .root label .input-wrapper .icon {
   display: flex;
@@ -49,8 +49,9 @@
   justify-content: center;
   align-items: center;
 }
-.root label .input-wrapper > [data-elem=component1] {
-  padding: 0rem 0rem 0rem 0.5rem;
+.root label .input-wrapper > [data-elem=component1] > svg {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 .root label .input-wrapper > [data-elem=component1] > svg.error path {
   stroke: var(--primary-color1);
@@ -65,8 +66,7 @@
   border: none;
   font-weight: 400;
   font-size: 0.875rem;
-  line-height: 3rem;
-  letter-spacing: 0.16px;
+  line-height: 1.3125rem;
   color: var(--text-color);
   width: 100%;
 }
@@ -94,20 +94,25 @@
   padding: 0rem 0.5rem;
 }
 .root label .input-wrapper > [data-elem=component3] {
-  padding: 0rem 0.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
 }
 .root label .input-wrapper > [data-elem=component3] button[data-elem=base-cell].button[type=button] {
-  margin: 0.25rem 0rem 0rem 0rem;
-  height: 2rem;
-  width: 2rem;
-  padding: 0%;
+  width: auto;
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 0;
   background-color: transparent;
 }
 .root label .input-wrapper > [data-elem=component3] button[data-elem=base-cell].button[type=button].error > [data-elem=component1] .icon.error.error path {
   stroke: var(--primary-color1);
 }
-.root label .input-wrapper > [data-elem=component3] .span {
-  padding: 0rem 0.5rem;
+.root label .input-wrapper > [data-elem=component3] .span .icon {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 .root label .input-wrapper > [data-elem=component3] .span .icon.error.error path {
   stroke: var(--primary-color1);
@@ -126,7 +131,7 @@
   font-size: 1rem;
 }
 .root label .input-wrapper.feedback-error {
-  border-color: var(--primary-color1);
+  box-shadow: 0px 0px 2px 0px var(--primary-color1);
 }
 .root label .input-wrapper.border-default {
   border-width: 0.063rem;
@@ -136,37 +141,4 @@
 }
 .root label .input-wrapper.border-none {
   border-width: 0rem;
-}
-.root .bottom {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: flex-start;
-  min-height: 2rem;
-  width: 100%;
-  gap: 1rem;
-  color: var(--grey3);
-  font-size: 0.75rem;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
-}
-.root .bottom .feedback {
-  flex: 1;
-  margin-right: auto;
-}
-.root .bottom .feedback.feedback-error {
-  color: var(--primary-color1);
-  fill: var(--primary-color1);
-}
-.root .bottom .feedback.feedback-success {
-  color: var(--primary-color2);
-  fill: var(--primary-color2);
-}
-.root .bottom .count {
-  text-align: right;
-  margin-left: auto;
-}
-.root .bottom .count.exceeded {
-  color: var(--primary-color1);
 }/*# sourceMappingURL=TextFieldv2.module.css.map */

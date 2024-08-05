@@ -1,10 +1,10 @@
 const HidePassword = (props) => {
-	const { className } = props;
+	const { className = '' } = props;
 
 	return (
 		<svg
-			width='24'
-			height='24'
+			width='1.5rem'
+			height='1.5rem'
 			className={className}
 			viewBox='0 0 24 24'
 			fill='none'
@@ -25,10 +25,6 @@ const HidePassword = (props) => {
 			</defs>
 		</svg>
 	);
-};
-
-HidePassword.defaultProps = {
-	className: '',
 };
 
 export default HidePassword;

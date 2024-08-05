@@ -45,14 +45,14 @@
   fill: var(--background-color5);
 }
 .root:hover:not(.disabled) .icon rect:nth-of-type(2) {
-  stroke: var(--primary-color4);
+  stroke: var(--secondary-color2);
 }
 .root:hover:not(.disabled) .icon path {
-  stroke: var(--primary-color4);
+  stroke: var(--secondary-color2);
 }
 .root .icon {
   display: inline-block;
-  border-radius: 0.25rem;
+  border-radius: 0.2rem;
 }
 .root .icon.icon-sm {
   width: 1rem;

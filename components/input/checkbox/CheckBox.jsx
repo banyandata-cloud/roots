@@ -1,8 +1,8 @@
-import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
-import styles from './CheckBox.module.css';
-import { CheckboxIcon } from '../../icons';
+import React, { useRef, useState } from 'react';
 import { classes, inputHelper } from '../../../utils/utils';
+import { CheckboxIcon } from '../../icons';
+import styles from './CheckBox.module.css';
 
 const getIcon = (checked, intermediate) => {
 	if (checked) {
@@ -15,15 +15,14 @@ const getIcon = (checked, intermediate) => {
 };
 
 const Checkbox = (props) => {
-	// eslint-disable-next-line object-curly-newline
 	const {
 		label,
-		onChange,
+		onChange = () => {},
 		defaultChecked,
 		checked,
-		position,
-		size,
-		className,
+		position = 'right',
+		size = 'sm',
+		className = '',
 		disabled,
 		intermediate,
 	} = props;
@@ -81,16 +80,6 @@ Checkbox.propTypes = {
 	position: PropTypes.oneOf(['left', 'right']),
 	size: PropTypes.oneOf(['sm', 'md', 'lg']),
 	onChange: PropTypes.func,
-};
-
-Checkbox.defaultProps = {
-	disabled: false,
-	label: null,
-	defaultChecked: false,
-	checked: undefined,
-	position: 'right',
-	size: 'sm',
-	onChange: () => {},
 };
 
 export default Checkbox;
