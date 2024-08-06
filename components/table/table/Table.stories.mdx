@@ -38,10 +38,11 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 		{() => {
 			const onIntersection = (state) => {
 				if (state) {
-					console.log('Make API call for next Page APIS');
+					console.log('Make API call for next Page APIS', state);
 				}
 			};
 			const isFloating = true;
+			const v2 = true;
 			const onRowClick = (datum, setActiveId) => {
 				console.log(datum, setActiveId);
 				setActiveId();
@@ -109,7 +110,7 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					gender: 'M',
 					description:
 						'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta nulla voluptatum consectetur libero, fuga amet earum ducimus quidem aliquam fugit id ipsum, cupiditate dignissimos facilis, repellendus possimus aspernatur tempore! Veniam saepe dolor reprehenderit sunt tenetur quam adipisci quis deleniti, maxime officiis dolorum, iure quia excepturi velit repellendus ad eius iste.',
-					age: 27,
+					age: 28,
 					designation: 'UI Engineer',
 					aColumn:
 						'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ab dicta voluptatum pariatur architecto! Necessitatibus ut reiciendis cumque cum adipisci nesciunt unde veritatis rem consequuntur!',
@@ -389,6 +390,7 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					<Table
 						onIntersection={onIntersection}
 						isFloating={isFloating}
+						v2={v2}
 						onRowClick={onRowClick}
 						headerData={headerData}
 						tableData={tableData}
@@ -415,6 +417,7 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 				}
 			};
 			const isFloating = true;
+			const v2 = true;
 			const onRowClick = (datum, setActiveId) => {
 				console.log(datum, setActiveId);
 				setActiveId();
@@ -762,6 +765,7 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					<Table
 						onIntersection={onIntersection}
 						isFloating={isFloating}
+						v2={v2}
 						onRowClick={onRowClick}
 						headerData={headerData}
 						tableData={tableData}

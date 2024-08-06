@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { classes } from '../../utils';
 import { Button } from '../buttons';
 import { Skeleton } from './Skeleton';
+import Togglev2 from './Togglev2';
 import styles from './Toggle.module.css';
 
 const Toggle = (props) => {
@@ -18,6 +19,7 @@ const Toggle = (props) => {
 		fallback,
 		className,
 		smooth,
+		v2 = false,
 	} = props;
 	const [sliderLeft, setSliderLeft] = useState(0);
 	const [sliderWidth, setSliderWidth] = useState(0);
@@ -113,12 +115,16 @@ const Toggle = (props) => {
 		return input === item;
 	};
 	if (loading || fallback) {
-		return <Skeleton theme={theme} fallback={!loading && fallback} />;
+		return <Skeleton theme={theme} fallback={!loading && fallback} v2 />;
 	}
 
 	useEffect(() => {
 		updateSliderPosition();
 	}, [inputValue, options]);
+
+	if (v2) {
+		return <Togglev2 {...props} />;
+	}
 
 	return (
 		<div className={classes(styles.root, styles[theme], className)}>
@@ -199,6 +205,7 @@ Toggle.propTypes = {
 	value: PropTypes.string,
 	multi: PropTypes.bool,
 	smooth: PropTypes.bool,
+	v2: PropTypes.bool,
 };
 
 Toggle.defaultProps = {
@@ -210,6 +217,7 @@ Toggle.defaultProps = {
 	value: undefined,
 	multi: false,
 	smooth: false,
+	v2: false,
 };
 
 export default Toggle;

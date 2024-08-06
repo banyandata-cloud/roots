@@ -5,6 +5,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { classes } from '../../../utils';
 import { ErrorBoundaryWrapper } from '../../errorBoundary';
 import { Pagination } from '../../pagination';
+import { Pagination as Paginationv2 } from '../../paginationv2';
 import { TableColumn } from '../BaseTable.class';
 import { BaseTable } from '../baseTable';
 import styles from './Table.module.css';
@@ -209,22 +210,38 @@ const Table = (props) => {
 					}}
 					loading={loading}
 				/>
-				{paginationData != null && (
-					<Pagination
-						className={classes(styles.pagination, floating ? styles.floating : '')}
-						ref={paginationRef}
-						customPagination={customPagination}
-						{...paginationData}
-						floating={floating}
-						loading={loading}
-						dataLabel={dataLabel}
-						customLabel={customLabel}
-						jumpLabel={jumpLabel}
-						customPageList={customPageList}
-						customPageCallback={customPageCallback}
-						hideDisabledPages={hideDisabledPages}
-					/>
-				)}
+				{paginationData != null &&
+					(v2 ? (
+						<Paginationv2
+							className={classes(styles.pagination, floating ? styles.floating : '')}
+							ref={paginationRef}
+							customPagination={customPagination}
+							{...paginationData}
+							floating={floating}
+							loading={loading}
+							dataLabel={dataLabel}
+							customLabel={customLabel}
+							jumpLabel={jumpLabel}
+							customPageList={customPageList}
+							customPageCallback={customPageCallback}
+							hideDisabledPages={hideDisabledPages}
+						/>
+					) : (
+						<Pagination
+							className={classes(styles.pagination, floating ? styles.floating : '')}
+							ref={paginationRef}
+							customPagination={customPagination}
+							{...paginationData}
+							floating={floating}
+							loading={loading}
+							dataLabel={dataLabel}
+							customLabel={customLabel}
+							jumpLabel={jumpLabel}
+							customPageList={customPageList}
+							customPageCallback={customPageCallback}
+							hideDisabledPages={hideDisabledPages}
+						/>
+					))}
 				{v2 && tableDrawerProps && (
 					<BaseSidePanel
 						toggle={toggleDrawer}
@@ -282,6 +299,7 @@ Table.propTypes = {
 		...Pagination.propTypes,
 	}),
 	loading: PropTypes.bool,
+	v2: PropTypes.bool,
 	disabledFilterOptions: PropTypes.shape({
 		filterButton: PropTypes.bool,
 		refresh: PropTypes.bool,
@@ -296,7 +314,6 @@ Table.propTypes = {
 	custom: PropTypes.node,
 	onAdvancedFilterClick: PropTypes.func,
 	dataLabel: PropTypes.string,
-	v2: PropTypes.bool,
 };
 
 Table.defaultProps = {
@@ -316,6 +333,7 @@ Table.defaultProps = {
 	filtersData: null,
 	paginationData: null,
 	loading: false,
+	v2: false,
 	disabledFilterOptions: {
 		search: false,
 		columnFilter: false,
@@ -328,7 +346,6 @@ Table.defaultProps = {
 	custom: null,
 	onAdvancedFilterClick: () => {},
 	dataLabel: null,
-	v2: false,
 };
 
 export default Table;

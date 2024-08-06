@@ -46,7 +46,7 @@ const AXIS_COLORS = {
 	},
 	line: {
 		dark: COLORS['theme-dark-mono-color2'],
-		light:  COLORS['theme-dark-mono-color1'],
+		light: COLORS['theme-dark-mono-color1'],
 	},
 	split: {
 		dark: COLORS['dark-grey'],
@@ -375,9 +375,9 @@ BaseVerticalBarChart.defaultProps = {
 	},
 	dataZoom: {},
 	// dataZoom: {
-	// 	moveOnMouseMove: true,
-	// 	moveOnMouseWheel: true,
-	// 	end: 80,
+	// moveOnMouseMove: true,
+	// moveOnMouseWheel: true,
+	// end: 80,
 	// },
 	seriesData: {},
 	onEvents: () => {},

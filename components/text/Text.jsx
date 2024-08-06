@@ -1,6 +1,6 @@
 /* eslint-disable react/forbid-prop-types */
 import PropTypes from 'prop-types';
-import { createElement, isValidElement, forwardRef } from 'react';
+import { createElement, forwardRef, isValidElement } from 'react';
 import { classes } from '../../utils';
 import styles from './Text.module.css';
 

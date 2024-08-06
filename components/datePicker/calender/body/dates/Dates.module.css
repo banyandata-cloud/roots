@@ -216,7 +216,7 @@
   color: var(--text-color);
 }
 .root > div .date.selected {
-  background-color: var(--primary-color4);
+  background-color: var(--secondary-color2);
   color: var(--white);
 }
 .root > div .date.unSelected {

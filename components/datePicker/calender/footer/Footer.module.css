@@ -1,11 +1,21 @@
 .root {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-between;
   align-items: stretch;
-  margin-inline: 1rem;
+  margin-inline: 0.5rem;
+  gap: 0.3rem;
 }
-.root .apply {
+.root button[data-elem=base-cell].apply[type=submit] {
+  background-color: var(--secondary-color2);
   margin-top: auto;
-  width: 100%;
+  flex: 1;
+}
+.root button[data-elem=base-cell].clear[type=submit] {
+  background-color: var(--light-color2);
+  color: var(--mono-color1);
+  flex: 1;
+}
+.root button[data-elem=base-cell].clear[type=submit]:hover {
+  background-color: var(--light-color1);
 }/*# sourceMappingURL=Footer.module.css.map */
