@@ -7,13 +7,12 @@
 	.details {
 		@include flex(column, center, flex-start);
 		gap: 0.5rem;
-		width: 30%;
+		flex: 1 1 30%;
 	}
 	.filters {
 		@include flex(row, flex-end, center);
 		gap: 0.5rem;
-		width: 30%;
-
+		flex: 1 1 30%;
 		button.icon-button {
 			background: transparent;
 			border: 1px solid $mono-color2;
@@ -53,8 +52,7 @@
 		}
 	}
 	.search {
-		width: 30%;
-
+		flex: 1 1 30%;
 		> label {
 			> [data-elem='base-cell'] {
 				.custom-search-icon {

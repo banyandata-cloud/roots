@@ -6,6 +6,7 @@ import Dropdown from '../input/dropdown/Dropdown';
 import DropdownItem from '../input/dropdown/dropdown-item/DropdownItem';
 import { Skeleton } from './Skeleton';
 import styles from './Tabs.module.css';
+import { classes } from '../../utils';
 
 const Tabs = (props) => {
 	const {
@@ -72,9 +73,10 @@ const Tabs = (props) => {
 
 	return (
 		<div
-			className={`${
-				vertical ? styles['tabs-container-vertical'] : styles['tabs-container']
-			} ${className}`}>
+			className={classes(
+				vertical ? styles['tabs-container-vertical'] : styles['tabs-container'],
+				className
+			)}>
 			<div className={vertical ? styles.vertical : styles.tabs}>
 				{tabs.map((tab, index) => {
 					const isActive = tab.id === selectedTab;
@@ -94,9 +96,11 @@ const Tabs = (props) => {
 							ref={(ref) => {
 								tabRefs.current[index] = ref;
 							}}
-							className={`${styles.tab} ${
-								vertical ? styles.vertical : styles.horizontal
-							} ${isActive ? styles.active : ''}`}>
+							className={classes(
+								styles.tab,
+								vertical ? styles.vertical : styles.horizontal,
+								isActive ? styles.active : ''
+							)}>
 							{dropdown ? (
 								<Dropdown
 									className={`${styles.dropdown} ${

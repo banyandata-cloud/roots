@@ -62,7 +62,7 @@
   color: var(--primary-color4) !important;
 }
 .tab.active > [data-elem=base-cell] > [data-elem=component1] > .icon {
-  fill: var(--highlight);
+  fill: var(--secondary-color2);
 }
 .tab .dropdown {
   display: flex;

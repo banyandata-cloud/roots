@@ -89,13 +89,13 @@ const BaseSidePanel = (props) => {
 					</div>
 				</Tabs>
 			) : (
-				<div>
+				<>
 					{renderHeader && <Header>{renderHeader}</Header>}
 					<div data-elem='body' className={styles.body}>
 						{children}
 					</div>
 					{renderFooter && <Footer>{renderFooter}</Footer>}
-				</div>
+				</>
 			)}
 		</div>
 	);

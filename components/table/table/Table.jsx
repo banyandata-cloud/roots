@@ -45,9 +45,7 @@ const Table = (props) => {
 		defaultActiveIndex,
 		placeholder,
 		custom,
-		tableTitleIcon,
-		tableTitleText,
-		tableDescriptionText,
+		tableInfo = {},
 		dataLabel,
 		customLabel,
 		jumpLabel,
@@ -56,14 +54,22 @@ const Table = (props) => {
 		hideDisabledPages,
 		onFilterClear,
 		v2,
-		search,
-		customSearchIcon,
-		setSearch,
 		tableDrawerProps = {},
+		searchProps = {
+			onSearch: () => {},
+			icon: null,
+		},
 	} = props;
 
 	const ref = useRef(null);
 	const paginationRef = useRef(null);
+
+	const { onSearch = () => {}, icon: customSearchIcon = null } = searchProps;
+	const {
+		tableTitleIcon = null,
+		title: tableTitleText = '',
+		description: tableDescriptionText = '',
+	} = tableInfo;
 
 	const [floating, setFloating] = useState(false);
 	const [hiddenColumns, setHiddenColumns] = useState({});
@@ -185,9 +191,8 @@ const Table = (props) => {
 						tableDescriptionText={tableDescriptionText}
 						onClear={onFilterClear}
 						v2={v2}
-						search={search}
 						customSearchIcon={customSearchIcon}
-						setSearch={setSearch}
+						onSearch={onSearch}
 					/>
 				)}
 
