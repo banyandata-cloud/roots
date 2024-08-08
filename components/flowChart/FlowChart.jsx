@@ -342,7 +342,10 @@ const FlowChart = ({
 						.append('svg')
 						.attr('width', 22)
 						.attr('height', 22)
-						.html(getExcludeIcon());
+						.html(
+							// eslint-disable-next-line react/no-this-in-sfc
+							getExcludeIcon(d3.select(this.parentNode).select('circle').attr('fill'))
+						);
 				}
 			})
 			.attr('transform', `translate(${-8}, ${-nodeRadius + 37})`);
