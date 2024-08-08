@@ -5,8 +5,8 @@
 }
 .chart-container .zoom-buttons {
   position: absolute;
-  top: 0.7rem;
-  right: 0.5rem;
+  top: 1.3rem;
+  right: 1rem;
   display: flex;
   flex-direction: column;
 }

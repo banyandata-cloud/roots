@@ -43,7 +43,8 @@ const FlowChart = ({
 	showLeftLegend,
 	leftLegendX,
 	leftLegendY,
-	rightLegendLeight,
+	rightLegendAdjY,
+	rightLegendAdjX,
 	containerBackground,
 	containerBorderRadius,
 	onNodeClick,
@@ -346,50 +347,65 @@ const FlowChart = ({
 			})
 			.attr('transform', `translate(${-8}, ${-nodeRadius + 37})`);
 
+		if (selectedNode) {
+			const nodeElement = container.selectAll('.node').filter((n) => {
+				return n.id === selectedNode.id;
+			});
+			if (!nodeElement.empty()) {
+				const circle = nodeElement.select('circle');
+				if (!circle.empty()) {
+					nodeElement
+						.append('circle')
+						.attr('class', 'hover-circle')
+						.attr('r', nodeRadius + 39) // Slightly larger radius
+						.attr('fill', 'none')
+						.attr('stroke', circle.attr('fill'))
+						.attr('stroke-width', 2);
+
+					container
+						.selectAll('.link')
+						.filter((l) => {
+							return (
+								l.source.id === selectedNode.id || l.target.id === selectedNode.id
+							);
+						})
+						.style('stroke', 'black')
+						.style('stroke-width', 4);
+				}
+			}
+		}
+
 		function handleClick(event, d) {
 			if (d.status !== 'PASS' && d.status !== 'FAIL') {
 				return;
 			}
-
 			setSelectedNode(d);
 			onNodeClick(d);
 
-			// Call the onNodeClick prop with the node ID
-			if (selectedNode && selectedNode.id === d.id) {
-				// Remove any existing hover circles
-				container.selectAll('.hover-circle').remove();
-
-				// Reset all links to their default styles
-				container
-					.selectAll('.link')
-					.style('stroke', '#999')
-					.style('stroke-width', 2.5)
-					.attr('stroke-opacity', 0.5);
-
-				// Clear the selected node
-				setSelectedNode(null);
-				return;
-			}
-
 			// Remove any existing hover circles
 			container.selectAll('.hover-circle').remove();
-			d3.select(this).attr('stroke-width', 2);
-			d3.select(this).append('title').text(d.id);
 
-			// Add circle
-			d3.select(this)
-				.append('circle')
-				.attr('class', 'hover-circle')
-				.attr('r', nodeRadius + 39) // Slightly larger radius
-				.attr('fill', 'none')
-				.attr('stroke', d3.select(this).select('circle').attr('fill'))
-				.attr('stroke-width', 2);
-
+			// Reset all links to their default styles
 			container
 				.selectAll('.link')
 				.style('stroke', '#999')
 				.style('stroke-width', 2.5)
 				.attr('stroke-opacity', 0.5);
+
+			// Set the clicked node as the selected node
+
+			// Add hover circle to the clicked node
+			const nodeElement = d3.select(event.currentTarget);
+			const circle = nodeElement.select('circle');
+			if (!circle.empty()) {
+				nodeElement
+					.append('circle')
+					.attr('class', 'hover-circle')
+					.attr('r', nodeRadius + 39) // Slightly larger radius
+					.attr('fill', 'none')
+					.attr('stroke', circle.attr('fill'))
+					.attr('stroke-width', 2);
+			}
 
 			// Highlight the links connected to the clicked node
 			container
@@ -399,8 +415,6 @@ const FlowChart = ({
 				})
 				.style('stroke', 'black')
 				.style('stroke-width', 4);
-
-			// Set the clicked node as the selected node
 		}
 
 		function handleMouseOver(event, d) {
@@ -411,12 +425,6 @@ const FlowChart = ({
 		}
 
 		function handleMouseOut() {
-			d3.select(this)
-				.attr('stroke', () => {
-					return d3.darker(1);
-				})
-				.attr('stroke-width', 1);
-
 			// Remove popover
 			d3.select(this).select('title').remove();
 		}
@@ -469,7 +477,7 @@ const FlowChart = ({
 		}
 
 		if (showLegend) {
-			const legendMargin = rightLegendLeight; // Margin from the bottom and right edges
+			const legendMargin = rightLegendAdjY; // Margin from the bottom and right edges
 			const legendItemHeight = 8; // Height of each legend item
 			const colorCircleRadius = 6; // Radius of the color circle
 			const innerCircleRadius = 3; // Radius of the inner white circle
@@ -478,7 +486,10 @@ const FlowChart = ({
 			const legendContainer = svg
 				.append('g')
 				.attr('class', 'legend')
-				.attr('transform', `translate(${width - 120}, ${height - legendMargin})`);
+				.attr(
+					'transform',
+					`translate(${width - rightLegendAdjX}, ${height - legendMargin})`
+				);
 
 			// Add legend items
 			const legendItems = legendContainer
@@ -524,19 +535,19 @@ const FlowChart = ({
 		}
 
 		if (showLeftLegend) {
-			const legendMargin = 150; // Margin from the bottom and right edges
+			const legendMargin = 10; // Margin from the top and right edges
 			const legendItemHeight = 8; // Height of each legend item
 
 			const excludeLegendContainer = svg
 				.append('g')
 				.attr('class', 'exclude-legend')
-				.attr('transform', `translate(${legendMargin}, ${height - legendMargin})`);
+				.attr('transform', `translate(${width - rightLegendAdjX + 130}, ${legendMargin})`);
 
 			// Add exclude icon
 			excludeLegendContainer
 				.append('rect')
-				.attr('x', leftLegendX - 25) // Add padding
-				.attr('y', -leftLegendY / 2 + 129) // Add padding
+				.attr('x', leftLegendX - 30) // Add padding
+				.attr('y', leftLegendY + 1) // Add padding
 				.attr('width', 85 + 2 * 9) // Width including padding
 				.attr('height', legendItemHeight + 2 * 3) // Height including padding
 				.attr('fill', 'white') // Background color
@@ -545,8 +556,8 @@ const FlowChart = ({
 
 			excludeLegendContainer
 				.append('text')
-				.attr('x', leftLegendX) // Space between icon and text
-				.attr('y', leftLegendY + 122)
+				.attr('x', leftLegendX - 5) // Space between icon and text
+				.attr('y', leftLegendY + 6)
 				.text('Exclude Resource')
 				.attr('fill', 'black')
 				.style('font-size', labelFontSize)
@@ -555,8 +566,8 @@ const FlowChart = ({
 
 			excludeLegendContainer
 				.append('foreignObject')
-				.attr('x', leftLegendX - 17) // Adjust position
-				.attr('y', -leftLegendY / 2 + 131)
+				.attr('x', leftLegendX - 20) // Adjust position
+				.attr('y', leftLegendY + 4)
 				.attr('width', 10)
 				.attr('height', 10)
 				.append('xhtml:div')
@@ -591,7 +602,8 @@ const FlowChart = ({
 		containerBackground,
 		containerBorderRadius,
 		onNodeClick,
-		rightLegendLeight,
+		rightLegendAdjY,
+		rightLegendAdjX,
 	]);
 
 	const zoomIn = () => {
@@ -644,7 +656,8 @@ FlowChart.propTypes = {
 	containerBackground: PropTypes.string,
 	containerBorderRadius: PropTypes.number,
 	onNodeClick: PropTypes.func,
-	rightLegendLeight: PropTypes.number,
+	rightLegendAdjY: PropTypes.number,
+	rightLegendAdjX: PropTypes.number,
 };
 
 FlowChart.defaultProps = {
@@ -664,7 +677,8 @@ FlowChart.defaultProps = {
 	containerBorderRadius: 14,
 	leftLegendX: -110,
 	leftLegendY: 8,
-	rightLegendLeight: 178,
+	rightLegendAdjY: 178,
+	rightLegendAdjX: 140,
 	onNodeClick: () => {},
 };
 
