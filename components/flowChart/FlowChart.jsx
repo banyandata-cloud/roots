@@ -535,19 +535,19 @@ const FlowChart = ({
 		}
 
 		if (showLeftLegend) {
-			const legendMargin = 150; // Margin from the bottom and right edges
+			const legendMargin = 10; // Margin from the top and right edges
 			const legendItemHeight = 8; // Height of each legend item
 
 			const excludeLegendContainer = svg
 				.append('g')
 				.attr('class', 'exclude-legend')
-				.attr('transform', `translate(${legendMargin}, ${height - legendMargin})`);
+				.attr('transform', `translate(${width - rightLegendAdjX + 130}, ${legendMargin})`);
 
 			// Add exclude icon
 			excludeLegendContainer
 				.append('rect')
-				.attr('x', leftLegendX - 25) // Add padding
-				.attr('y', -leftLegendY / 2 + 129) // Add padding
+				.attr('x', leftLegendX - 30) // Add padding
+				.attr('y', leftLegendY + 1) // Add padding
 				.attr('width', 85 + 2 * 9) // Width including padding
 				.attr('height', legendItemHeight + 2 * 3) // Height including padding
 				.attr('fill', 'white') // Background color
@@ -556,8 +556,8 @@ const FlowChart = ({
 
 			excludeLegendContainer
 				.append('text')
-				.attr('x', leftLegendX) // Space between icon and text
-				.attr('y', leftLegendY + 122)
+				.attr('x', leftLegendX - 5) // Space between icon and text
+				.attr('y', leftLegendY + 6)
 				.text('Exclude Resource')
 				.attr('fill', 'black')
 				.style('font-size', labelFontSize)
@@ -566,8 +566,8 @@ const FlowChart = ({
 
 			excludeLegendContainer
 				.append('foreignObject')
-				.attr('x', leftLegendX - 17) // Adjust position
-				.attr('y', -leftLegendY / 2 + 131)
+				.attr('x', leftLegendX - 20) // Adjust position
+				.attr('y', leftLegendY + 4)
 				.attr('width', 10)
 				.attr('height', 10)
 				.append('xhtml:div')
