@@ -96,7 +96,7 @@ export const rangeSelection = ({ selectedRange, date }) => {
 
 		return {
 			dates: [...selectedRange.dates, `${dateAsNumber} ${month} ${year}`],
-			unix: [...selectedRange.unix, getUnixTime(date)],
+			unix: [...selectedRange.unix, getUnixTime(date.setHours(23, 59, 59, 59))],
 		};
 	}
 	if (
@@ -106,7 +106,7 @@ export const rangeSelection = ({ selectedRange, date }) => {
 	) {
 		return {
 			dates: [selectedRange.dates?.[0], `${dateAsNumber} ${month} ${year}`],
-			unix: [selectedRange.unix?.[0], getUnixTime(date)],
+			unix: [selectedRange.unix?.[0], getUnixTime(date.setHours(23, 59, 59, 59))],
 		};
 	}
 	if (isBefore(date, fromUnixTime(selectedRange.unix?.[0]))) {
