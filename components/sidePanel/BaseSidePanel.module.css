@@ -18,6 +18,10 @@
   flex: 1;
   overflow-y: auto;
 }
+.drawer .tabs,
+.drawer .content {
+  width: 100%;
+}
 
 .modal {
   height: 100%;

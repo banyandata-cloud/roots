@@ -24,6 +24,7 @@ const BaseTable = forwardRef(function BaseTable(props, ref) {
 		theme,
 		placeholder,
 		defaultActiveIndex,
+		toggleDrawer,
 	} = props;
 
 	if (loading) {
@@ -68,6 +69,7 @@ const BaseTable = forwardRef(function BaseTable(props, ref) {
 						rowHeight,
 						onRowClick,
 						defaultActiveIndex,
+						toggleDrawer,
 					}}
 				/>
 			)}

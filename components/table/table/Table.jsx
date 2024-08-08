@@ -1,6 +1,6 @@
 /* eslint-disable react/forbid-prop-types */
 import PropTypes from 'prop-types';
-import { useEffect, useRef, useState } from 'react';
+import { isValidElement, useEffect, useRef, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { classes } from '../../../utils';
 import { ErrorBoundaryWrapper } from '../../errorBoundary';
@@ -11,6 +11,7 @@ import { BaseTable } from '../baseTable';
 import styles from './Table.module.css';
 import { TableChips } from './tableChips';
 import { TableFilters } from './tableFilters';
+import BaseSidePanel from '../../sidePanel/BaseSidePanel';
 
 const INTERSECTION = 1;
 const STEP = 0.05;
@@ -44,8 +45,7 @@ const Table = (props) => {
 		defaultActiveIndex,
 		placeholder,
 		custom,
-		tableTitleIcon,
-		tableTitleText,
+		tableInfo = {},
 		dataLabel,
 		customLabel,
 		jumpLabel,
@@ -54,17 +54,46 @@ const Table = (props) => {
 		hideDisabledPages,
 		onFilterClear,
 		v2,
+		tableDrawerProps = {},
+		searchProps = {
+			onSearch: () => {},
+			icon: null,
+		},
 	} = props;
 
 	const ref = useRef(null);
 	const paginationRef = useRef(null);
 
+	const { onSearch = () => {}, icon: customSearchIcon = null } = searchProps;
+	const {
+		tableTitleIcon = null,
+		title: tableTitleText = '',
+		description: tableDescriptionText = '',
+	} = tableInfo;
+
 	const [floating, setFloating] = useState(false);
 	const [hiddenColumns, setHiddenColumns] = useState({});
+	const [toggleTableDrawer, setToggleTableDrawer] = useState({
+		open: false,
+		data: {
+			index: 0,
+		},
+	});
+
+	const toggleDrawer = ({ data }) => {
+		setToggleTableDrawer((prevState) => {
+			return {
+				open: !prevState.open,
+				data,
+			};
+		});
+	};
 
 	const visibileColumns = headerData.filter((header) => {
 		return [null, false, undefined].includes(hiddenColumns?.[header?.id]);
 	});
+
+	const Body = tableDrawerProps?.renderBody?.[toggleDrawer?.data?.index];
 
 	// for pagination docking using intersection observer
 	useEffect(() => {
@@ -159,9 +188,14 @@ const Table = (props) => {
 						theme={theme}
 						tableTitleIcon={tableTitleIcon}
 						tableTitleText={tableTitleText}
+						tableDescriptionText={tableDescriptionText}
 						onClear={onFilterClear}
+						v2={v2}
+						customSearchIcon={customSearchIcon}
+						onSearch={onSearch}
 					/>
 				)}
+
 				<BaseTable
 					{...{
 						ref,
@@ -177,6 +211,7 @@ const Table = (props) => {
 						onRowClick,
 						defaultActiveIndex,
 						placeholder,
+						toggleDrawer,
 					}}
 					loading={loading}
 				/>
@@ -212,6 +247,25 @@ const Table = (props) => {
 							hideDisabledPages={hideDisabledPages}
 						/>
 					))}
+				{v2 && tableDrawerProps && (
+					<BaseSidePanel
+						toggle={toggleDrawer}
+						open={toggleTableDrawer.open}
+						renderHeader={() => {
+							const DrawerHeader = tableDrawerProps.drawerHeader;
+							return (
+								<DrawerHeader
+									datum={toggleTableDrawer.data}
+									toggle={toggleDrawer}
+								/>
+							);
+						}}
+						{...tableDrawerProps}>
+						{Body && isValidElement(<Body datum={toggleTableDrawer.data} />) && (
+							<Body datum={toggleTableDrawer.data} toggle={toggleDrawer} />
+						)}
+					</BaseSidePanel>
+				)}
 			</div>
 		</ErrorBoundary>
 	);

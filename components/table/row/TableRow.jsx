@@ -20,6 +20,7 @@ const TableRow = forwardRef(function BaseTable(props, ref) {
 		onSort,
 		theme,
 		rowHeight,
+		toggleDrawer,
 	} = props;
 
 	const [expanded, setExpanded] = useState(false);
@@ -62,6 +63,15 @@ const TableRow = forwardRef(function BaseTable(props, ref) {
 			onSort,
 			theme,
 			rowHeight,
+			toggleDrawer: (index) => {
+				toggleDrawer({
+					data: {
+						datum,
+						index,
+						setActiveId,
+					},
+				});
+			},
 		};
 
 		const getCustomCell = customCells?.[type];
