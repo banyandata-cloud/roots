@@ -579,7 +579,7 @@ const FlowChart = ({
 				.style('display', 'flex')
 				.style('align-items', 'center')
 				.style('justify-content', 'center')
-				.html(getExcludeIcon());
+				.html(getExcludeIcon('black'));
 		}
 
 		return () => {
