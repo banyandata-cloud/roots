@@ -112,7 +112,7 @@ const Tooltip = forwardRef(function Tooltip(props, propRef) {
 							top: middlewareData?.arrow?.y ?? '',
 							right: '',
 							bottom: '',
-							[staticSide]: '-0.5rem',
+							[staticSide]: '-0.3rem',
 						}}
 					/>
 					{content}
