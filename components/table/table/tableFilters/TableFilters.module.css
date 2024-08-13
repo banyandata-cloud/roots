@@ -23,7 +23,7 @@
 }
 .v2 .filters button.icon-button {
   background: transparent;
-  border: 1px solid var(--mono-color2);
+  box-shadow: 0rem 0rem 0.125rem 0rem rgba(0, 0, 0, 0.25);
   height: 1.875rem;
 }
 .v2 .filters button.icon-button > [data-elem=component2] > [data-elem=title] {
@@ -105,7 +105,7 @@
   border: 1px solid red;
   height: 100%;
   background: transparent;
-  border: 1px solid var(--mono-color2);
+  box-shadow: 0rem 0rem 0.125rem 0rem rgba(0, 0, 0, 0.25);
   color: var(--text-color);
 }
 .root[data-elem=base-cell] button.clear-button {

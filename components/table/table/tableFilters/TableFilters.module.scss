@@ -15,7 +15,7 @@
 		flex: 1 1 30%;
 		button.icon-button {
 			background: transparent;
-			border: 1px solid $mono-color2;
+			box-shadow: 0rem 0rem 0.125rem 0rem rgba(0, 0, 0, 0.25);
 			height: 1.875rem;
 			& > [data-elem='component2'] {
 				& > [data-elem='title'] {
@@ -100,7 +100,7 @@
 		@include debug;
 		height: 100%;
 		background: transparent;
-		border: 1px solid $mono-color2;
+		box-shadow: 0rem 0rem 0.125rem 0rem rgba(0, 0, 0, 0.25);
 		color: $text-color;
 	}
 
