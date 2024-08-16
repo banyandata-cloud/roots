@@ -24,15 +24,15 @@ const Footer = ({ children }) => {
 
 const BaseSidePanel = (props) => {
 	const {
-		className,
-		renderHeader,
+		className = '',
+		renderHeader = null,
 		children,
-		renderFooter,
-		open,
-		isModal,
-		toggle,
-		noDismiss,
-		animation,
+		renderFooter = null,
+		open = false,
+		isModal = false,
+		toggle = () => {},
+		noDismiss = false,
+		animation = false,
 		tabsConfig = {
 			tabs: [],
 			className: '',
@@ -110,17 +110,6 @@ BaseSidePanel.propTypes = {
 	toggle: PropTypes.func,
 	noDismiss: PropTypes.bool,
 	animation: PropTypes.bool,
-};
-
-BaseSidePanel.defaultProps = {
-	className: '',
-	renderHeader: null,
-	renderFooter: null,
-	open: false,
-	isModal: false,
-	toggle: () => {},
-	noDismiss: false,
-	animation: false,
 };
 
 export default BaseSidePanel;
