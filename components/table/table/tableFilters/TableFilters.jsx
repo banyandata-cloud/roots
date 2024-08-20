@@ -69,55 +69,67 @@ const TableFilters = (props) => {
 	};
 
 	return v2 ? (
-		<div className={styles.v2}>
-			<div className={styles.details}>
-				<Text variant='b1' weight={600}>
-					{tableTitleText}
-				</Text>
-				<Text variant='b2' weight={400}>
-					{tableDescriptionText}
-				</Text>
-			</div>
-			<TextFieldv2
-				className={styles.search}
-				placeholder='Search'
-				value={search}
-				onChange={(e) => {
-					const { fieldValue } = inputHelper(e);
-					setSearch(fieldValue);
-				}}
-				LeftComponent={() => {
-					return (
-						CustomSearchIcon && (
-							<CustomSearchIcon className={styles['custom-search-icon']} />
-						)
-					);
-				}}
-				RightComponent={() => {
-					return (
-						<SearchIcon
-							className={styles['search-icon']}
-							onClick={() => {
-								onSearch(search);
+		<BaseCell
+			flexible
+			className={classes(styles.v2, className)}
+			attrs={{
+				style,
+			}}
+			component1={
+				<div className={styles.details}>
+					<Text variant='b1' weight={600}>
+						{tableTitleText}
+					</Text>
+					<Text variant='b2' weight={400}>
+						{tableDescriptionText}
+					</Text>
+				</div>
+			}
+			component2={
+				<TextFieldv2
+					className={styles.search}
+					placeholder='Search'
+					value={search}
+					onChange={(e) => {
+						const { fieldValue } = inputHelper(e);
+						setSearch(fieldValue);
+					}}
+					LeftComponent={() => {
+						return (
+							CustomSearchIcon && (
+								<CustomSearchIcon className={styles['custom-search-icon']} />
+							)
+						);
+					}}
+					RightComponent={() => {
+						return (
+							<div className={styles['search-icon']}>
+								<SearchIcon
+									className={styles['search-icon']}
+									onClick={() => {
+										onSearch(search);
+									}}
+								/>
+							</div>
+						);
+					}}
+				/>
+			}
+			component3={
+				<div className={styles.filters}>
+					{!disabledSearch && (
+						<Button
+							size='auto'
+							className={styles['icon-button']}
+							color='default'
+							title='Advanced Filter'
+							onClick={onAdvancedFilterClick}
+							leftComponent={() => {
+								return <FilterIcon className={styles.icon} v2 />;
 							}}
 						/>
-					);
-				}}
-			/>
-			<div className={styles.filters}>
-				{!disabledSearch && (
-					<Button
-						size='auto'
-						className={styles['icon-button']}
-						color='default'
-						title='Advanced Filter'
-						onClick={onAdvancedFilterClick}
-						leftComponent={() => {
-							return <FilterIcon className={styles.icon} v2 />;
-						}}
-					/>
-				)}
-				{!disabledColumnFilter && columnFilters.length > 0 && (
+					)}
+					{/* {!disabledColumnFilter && columnFilters.length > 0 && ( */}
 					<Dropdownv2
 						theme={theme}
 						className={styles['column-dropdown']}
@@ -151,9 +163,10 @@ const TableFilters = (props) => {
 							);
 						})}
 					</Dropdownv2>
-				)}
-			</div>
-		</div>
+					{/* )} */}
+				</div>
+			}
+		/>
 	) : (
 		<BaseCell
 			flexible

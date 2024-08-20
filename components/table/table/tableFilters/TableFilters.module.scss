@@ -1,79 +1,97 @@
 @import '../..../../../../../styles/';
 
-.v2 {
+.v2[data-elem='base-cell'] {
 	@include flex(row, space-between, center);
 	padding: 1.25rem;
+	height: auto;
+	width: 100%;
 
-	.details {
-		@include flex(column, center, flex-start);
-		gap: 0.5rem;
-		flex: 1 1 30%;
+	> [data-elem='component1'] {
+		.details {
+			@include flex(column, center, flex-start);
+			gap: 0.5rem;
+		}
 	}
-	.filters {
-		@include flex(row, flex-end, center);
-		gap: 0.5rem;
-		flex: 1 1 30%;
-		button.icon-button {
-			background: transparent;
-			box-shadow: 0rem 0rem 0.125rem 0rem rgba(0, 0, 0, 0.25);
-			height: 1.875rem;
-			& > [data-elem='component2'] {
-				& > [data-elem='title'] {
-					color: $text-color;
-					font-size: 0.875rem;
-					font-weight: 400;
-				}
-			}
-		}
-		.icon {
-			width: 1rem;
-			height: 1rem;
-			flex-shrink: 0;
-		}
 
-		.column-dropdown {
-			@include flex(row, center, center);
-			> [data-elem='header'] {
-				> [data-elem='select'] {
-					background-color: transparent;
-					border: none;
-					color: $text-color;
+	> [data-elem='component2'] {
+		.search {
+			> label {
+				> [data-elem='base-cell'] {
 					padding: 0rem;
-					width: auto;
-				}
-			}
 
-			.item {
-				height: 3rem;
-				> [data-elem='title'] {
-					@include ellipsis;
+					> [data-elem='component1'] {
+						padding: 0.625rem 0rem 0.625rem 0.75rem;
+					}
+
+					> [data-elem='component2'] {
+						padding: 0.625rem 0rem;
+					}
+
+					> [data-elem='component3'] {
+						padding: 0.625rem 0.75rem;
+						border-left: 0.0625rem solid $mono-color3;
+
+						.search-icon {
+							color: $text-color;
+							width: 1.5rem;
+							height: 1.5rem;
+						}
+					}
+
+					.custom-search-icon {
+						width: 1.5625rem;
+						height: 1.5625rem;
+					}
+
+					[data-elem='input'] {
+						color: $mono-color3;
+						font-size: 0.875rem;
+						font-weight: 500;
+					}
 				}
 			}
 		}
 	}
-	.search {
-		flex: 1 1 30%;
-		> label {
-			> [data-elem='base-cell'] {
-				padding: 0.625rem 0.75rem;
 
-				.custom-search-icon {
-					width: 1.5625rem;
-					height: 1.5625rem;
+	> [data-elem='component3'] {
+		.filters {
+			@include flex(row, flex-end, center);
+			gap: 0.5rem;
+			button.icon-button {
+				background: transparent;
+				box-shadow: 0rem 0rem 0.125rem 0rem rgba(0, 0, 0, 0.25);
+				height: 1.875rem;
+				& > [data-elem='component2'] {
+					& > [data-elem='title'] {
+						color: $text-color;
+						font-size: 0.875rem;
+						font-weight: 400;
+					}
+				}
+			}
+			.icon {
+				width: 1rem;
+				height: 1rem;
+				flex-shrink: 0;
+			}
+
+			.column-dropdown {
+				@include flex(row, center, center);
+				> [data-elem='header'] {
+					> [data-elem='select'] {
+						background-color: transparent;
+						border: none;
+						color: $text-color;
+						padding: 0rem;
+						width: auto;
+					}
 				}
 
-				[data-elem='input'] {
-					color: $mono-color3;
-					font-size: 0.875rem;
-					font-weight: 500;
-				}
-
-				.search-icon {
-					color: $text-color;
-					padding-left: 1rem;
-					width: 2.5rem;
-					height: 1.5rem;
-					border-left: 0.0625rem solid $mono-color3;
+				.item {
+					height: 3rem;
+					> [data-elem='title'] {
+						@include ellipsis;
+					}
 				}
 			}
 		}
