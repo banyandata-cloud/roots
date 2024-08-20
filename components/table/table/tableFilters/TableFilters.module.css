@@ -16,6 +16,7 @@
 }
 .v2[data-elem=base-cell] > [data-elem=component2] .search > label > [data-elem=base-cell] {
   padding: 0rem;
+  border-radius: 0.3125rem;
 }
 .v2[data-elem=base-cell] > [data-elem=component2] .search > label > [data-elem=base-cell] > [data-elem=component1] {
   padding: 0.625rem 0rem 0.625rem 0.75rem;

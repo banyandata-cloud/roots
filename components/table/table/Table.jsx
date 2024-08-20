@@ -163,7 +163,9 @@ const Table = (props) => {
 
 	// set the hidden columns state
 	useEffect(() => {
-		setHiddenColumns({});
+		if (headerData.length > 0) {
+			setHiddenColumns({});
+		}
 	}, [headerData]);
 
 	return (
@@ -221,6 +223,7 @@ const Table = (props) => {
 					}}
 					loading={loading}
 				/>
+
 				{paginationData != null &&
 					(v2 ? (
 						<Paginationv2
@@ -257,6 +260,7 @@ const Table = (props) => {
 					<BaseSidePanel
 						toggle={toggleDrawer}
 						open={toggleTableDrawer.open}
+						className={styles.drawer}
 						renderHeader={() => {
 							const DrawerHeader = tableDrawerProps.drawerHeader;
 							return (

@@ -20,6 +20,9 @@
 .root .pagination.floating {
   bottom: 1rem;
 }
+.root .drawer {
+  width: 40%;
+}
 .root .chips,
 .root .filters,
 .root .table > [data-elem=table-header] {

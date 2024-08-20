@@ -129,41 +129,41 @@ const TableFilters = (props) => {
 							}}
 						/>
 					)}
-					{/* {!disabledColumnFilter && columnFilters.length > 0 && ( */}
-					<Dropdownv2
-						theme={theme}
-						className={styles['column-dropdown']}
-						hideIcon
-						placeholder={
-							<Button
-								size='auto'
-								className={styles['icon-button']}
-								color='default'
-								leftComponent={() => {
-									return <ColumnFilter className={styles.icon} v2 />;
-								}}
-								rightComponent={() => {
-									return <CaretIcon className={styles.icon} />;
-								}}
-								title='Columns'
-							/>
-						}
-						multi
-						customButtonTitle='Hide Columns'
-						value={Object.keys(hiddenColumns ?? {})}
-						onChange={handleColumnChange}>
-						{columns?.map((col) => {
-							return (
-								<DropdownItemv2
-									key={col.value}
-									title={col.title}
-									value={col.value}
-									variant='checkbox'
+					{!disabledColumnFilter && columnFilters.length > 0 && (
+						<Dropdownv2
+							theme={theme}
+							className={styles['column-dropdown']}
+							hideIcon
+							placeholder={
+								<Button
+									size='auto'
+									className={styles['icon-button']}
+									color='default'
+									leftComponent={() => {
+										return <ColumnFilter className={styles.icon} v2 />;
+									}}
+									rightComponent={() => {
+										return <CaretIcon className={styles.icon} />;
+									}}
+									title='Columns'
 								/>
-							);
-						})}
-					</Dropdownv2>
-					{/* )} */}
+							}
+							multi
+							customButtonTitle='Hide Columns'
+							value={Object.keys(hiddenColumns ?? {})}
+							onChange={handleColumnChange}>
+							{columns?.map((col) => {
+								return (
+									<DropdownItemv2
+										key={col.value}
+										title={col.title}
+										value={col.value}
+										variant='checkbox'
+									/>
+								);
+							})}
+						</Dropdownv2>
+					)}
 				</div>
 			}
 		/>

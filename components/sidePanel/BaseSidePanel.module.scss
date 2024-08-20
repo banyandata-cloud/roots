@@ -1,16 +1,19 @@
 @import '../../styles/_index';
 
 .drawer {
-	max-height: 100%;
+	position: absolute;
+	right: 0;
+	top: 0;
+	bottom: 0;
 	height: 100%;
+	z-index: 10;
 	width: 30%;
 	@include flex(column, flex-start, stretch);
-	top: 0;
 	background: $light-color3;
 	@include boxShadow;
 	overflow-x: hidden;
 	&.close {
-		width: 0rem;
+		width: 0rem !important;
 	}
 	.body {
 		flex: 1;
