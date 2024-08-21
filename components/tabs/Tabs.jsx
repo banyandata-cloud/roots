@@ -1,4 +1,3 @@
-/* eslint-disable react/no-array-index-key */
 import PropTypes from 'prop-types';
 import React, { useEffect, useRef, useState } from 'react';
 import { Button } from '../buttons';
@@ -8,7 +7,7 @@ import { Skeleton } from './Skeleton';
 import styles from './Tabs.module.css';
 
 const Tabs = (props) => {
-	const { tabs, className, loading, fallback, selectedTab, setSelectedTab } = props;
+	const { tabs = [], className = '', loading, fallback, selectedTab, setSelectedTab } = props;
 
 	const [sliderLeft, setSliderLeft] = useState(0);
 	const [sliderWidth, setSliderWidth] = useState(0);
@@ -155,14 +154,6 @@ Tabs.propTypes = {
 	selectedTab: PropTypes.number,
 	loading: PropTypes.bool,
 	fallback: PropTypes.bool,
-};
-
-Tabs.defaultProps = {
-	className: '',
-	tabs: [],
-	selectedTab: null,
-	loading: false,
-	fallback: false,
 };
 
 export default Tabs;

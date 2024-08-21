@@ -1,12 +1,12 @@
-import PropTypes from 'prop-types';
-import { forwardRef, useEffect, useImperativeHandle, useState } from 'react';
 import { useDismiss, useFloating, useInteractions } from '@floating-ui/react-dom-interactions';
 import { useAnimate } from 'framer-motion';
+import PropTypes from 'prop-types';
+import { forwardRef, useEffect, useImperativeHandle, useState } from 'react';
 import { classes } from '../../utils/utils';
-import styles from './Alert.module.css';
-import { CrossIcon, AlertIcon } from '../icons';
 import { Button } from '../buttons';
+import { AlertIcon, CrossIcon } from '../icons';
 import Popper from '../popper/Popper';
+import styles from './Alert.module.css';
 
 const ALERT_DISMISS_TIME = 2000;
 
@@ -33,8 +33,15 @@ const ANIMATION = {
  * @param {Ref} ref - The ref object used to expose the 'alert' function to the parent component.
  * @returns {JSX.Element} - The rendered alert component.
  */
+
 const Alert = forwardRef((props, ref) => {
-	const { showIcon, border, shadow, position: defaultPosition, animation, className } = props;
+	const {
+		showIcon = true,
+		shadow = true,
+		position: defaultPosition = 'bottom-center',
+		animation = true,
+		className = '',
+	} = props;
 
 	const [open, setOpen] = useState(false);
 	const [alertProps, setAlertProps] = useState({
@@ -154,7 +161,6 @@ const Alert = forwardRef((props, ref) => {
 					className: classes(
 						styles.root,
 						styles[type],
-						styles[`border-${border}`],
 						shadow ? styles.shadow : '',
 						styles[`position-${position}`],
 						className
@@ -162,7 +168,9 @@ const Alert = forwardRef((props, ref) => {
 				})}
 				ref={scope}>
 				<div className={styles.left}>
-					<div className={styles.icons}>{showIcon && Icon}</div>
+					<div className={classes(styles['icon-container'], styles[type])}>
+						{showIcon && Icon}
+					</div>
 					<div className={styles.content}>
 						<span className={styles.title}>{title}</span>
 						<span className={styles.description}>{description}</span>
@@ -197,15 +205,6 @@ Alert.propTypes = {
 	position: PropTypes.oneOf(['bottom-right', 'bottom-center', 'top-right', 'top-center']),
 	animation: PropTypes.bool,
 	className: PropTypes.string,
-};
-
-Alert.defaultProps = {
-	showIcon: true,
-	border: 'none',
-	shadow: true,
-	position: 'bottom-center',
-	animation: true,
-	className: '',
 };
 
 export default Alert;

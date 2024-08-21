@@ -1,5 +1,4 @@
 /* eslint-disable max-len */
-/* eslint-disable react/button-has-type */
 import PropTypes from 'prop-types';
 import { forwardRef } from 'react';
 import { classes } from '../../../utils/utils';
@@ -27,19 +26,19 @@ import styles from './Button.module.css';
  */
 const Button = forwardRef((props, ref) => {
 	const {
-		className,
-		type,
+		className = '',
+		type = 'submit',
 		leftComponent: LeftComponent,
 		title,
 		rightComponent: RightComponent,
-		size,
+		size = 'sm',
 		flexible,
-		radius,
+		radius = 'default',
 		disabled,
-		onClick,
-		blurOnClick,
+		onClick = () => {},
+		blurOnClick = true,
 		variant,
-		color,
+		color = 'primary',
 		id,
 	} = props;
 
@@ -76,14 +75,6 @@ Button.propTypes = {
 	color: PropTypes.oneOf(['primary', 'success', 'danger', 'warning']),
 	leftComponent: PropTypes.node,
 	rightComponent: PropTypes.node,
-};
-
-Button.defaultProps = {
-	...BaseButton.defaultProps,
-	color: 'primary',
-	leftComponent: null,
-	rightComponent: null,
-	radius: 'default',
 };
 
 export default Button;

@@ -1,24 +1,23 @@
 import PropTypes from 'prop-types';
 import { forwardRef } from 'react';
-import styles from './Chip.module.css';
 import { classes } from '../../../utils';
 import { BaseButton } from '../baseButton';
+import styles from './Chip.module.css';
 
-// eslint-disable-next-line prefer-arrow-callback
-const Chip = forwardRef(function Chip(props, ref) {
+const Chip = forwardRef((props, ref) => {
 	const {
-		className,
-		type,
+		className = '',
+		type = 'button',
 		leftComponent: LeftComponent,
 		title,
 		rightComponent: RightComponent,
-		size,
+		size = 'sm',
 		flexible,
-		radius,
+		radius = 'default',
 		disabled,
-		onClick,
-		variant,
-		color,
+		onClick = () => {},
+		variant = 'status',
+		color = 'default',
 	} = props;
 
 	return (
@@ -55,16 +54,6 @@ Chip.propTypes = {
 	color: PropTypes.oneOf(['success', 'info', 'warning', 'danger', 'default']),
 	leftComponent: PropTypes.func,
 	rightComponent: PropTypes.func,
-};
-
-Chip.defaultProps = {
-	...BaseButton.defaultProps,
-	size: 'sm',
-	variant: 'status',
-	color: 'default',
-	leftComponent: null,
-	rightComponent: null,
-	radius: 'default',
 };
 
 export default Chip;
