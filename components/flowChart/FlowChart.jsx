@@ -5,9 +5,9 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-tabs */
 /* eslint-disable no-param-reassign */
-import React, { useRef, useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import * as d3 from 'd3';
+import PropTypes from 'prop-types';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from './FlowChart.module.css';
 import { getCrossIcon, getExcludeIcon, getTickIconSvg } from './assets';
 
@@ -28,26 +28,26 @@ import { getCrossIcon, getExcludeIcon, getTickIconSvg } from './assets';
 
 const FlowChart = ({
 	data,
-	width,
-	height,
-	linkDistance,
-	linkFontSize,
+	width = 900,
+	height = 600,
+	linkDistance = 150,
+	linkFontSize = '8px',
 	linkFontColor,
-	nodeRadius,
-	labelColor,
-	labelFontSize,
-	linkTextColor,
+	nodeRadius = 20,
+	labelColor = 'white',
+	labelFontSize = '8px',
+	linkTextColor = 'black',
 	hideLinkText,
 	showLegend,
-	displayZoomButtons,
-	showLeftLegend,
-	leftLegendX,
-	leftLegendY,
-	rightLegendAdjY,
-	rightLegendAdjX,
-	containerBackground,
-	containerBorderRadius,
-	onNodeClick,
+	displayZoomButtons = true,
+	showLeftLegend = true,
+	leftLegendX = -110,
+	leftLegendY = 8,
+	rightLegendAdjY = 178,
+	rightLegendAdjX = 140,
+	containerBackground = '#f7f7f8',
+	containerBorderRadius = 14,
+	onNodeClick = () => {},
 }) => {
 	const svgRef = useRef(null);
 	const containerRef = useRef(null);
@@ -661,28 +661,6 @@ FlowChart.propTypes = {
 	onNodeClick: PropTypes.func,
 	rightLegendAdjY: PropTypes.number,
 	rightLegendAdjX: PropTypes.number,
-};
-
-FlowChart.defaultProps = {
-	width: 900,
-	height: 600,
-	linkDistance: 150,
-	linkFontSize: '8px',
-	nodeRadius: 20,
-	labelFontSize: '8px',
-	linkTextColor: 'black',
-	labelColor: 'white',
-	hideLinkText: false,
-	showLegend: false,
-	displayZoomButtons: true,
-	showLeftLegend: true,
-	containerBackground: '#F7F7F8',
-	containerBorderRadius: 14,
-	leftLegendX: -110,
-	leftLegendY: 8,
-	rightLegendAdjY: 178,
-	rightLegendAdjX: 140,
-	onNodeClick: () => {},
 };
 
 export default FlowChart;

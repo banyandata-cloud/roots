@@ -84,6 +84,28 @@ const ModalFooter = (props) => {
 	);
 };
 
+const DEFAULT_ANIMATION_PROPS = {
+	initial: {
+		opacity: 0,
+		scale: 0,
+		x: '-50%',
+		y: '-50%',
+	},
+	animate: {
+		opacity: 1,
+		scale: 1,
+		x: '-50%',
+		y: '-50%',
+	},
+	exit: {
+		scale: 0,
+		opacity: 0,
+	},
+	transition: {
+		duration: 0.15,
+	},
+};
+
 /**
  * Renders a modal dialog with customizable header, body, and footer content.
  * Manages the modal's open state and provides a toggle function.
@@ -102,20 +124,20 @@ const ModalFooter = (props) => {
  */
 const BaseModal = (props) => {
 	const {
-		className,
+		className = '',
 		title,
 		description,
-		popperClassName,
+		popperClassName = '',
 		renderHeader,
 		children,
 		renderFooter,
-		toggle,
+		toggle = () => {},
 		open,
 		noDismiss,
 		hideCrossDismiss,
 		footerProps,
-		animation,
-		animationProperties,
+		animation = true,
+		animationProperties = DEFAULT_ANIMATION_PROPS,
 	} = props;
 
 	const { floating, context } = useFloating({
@@ -224,38 +246,6 @@ BaseModal.propTypes = {
 	hideCrossDismiss: PropTypes.bool,
 	animation: PropTypes.bool,
 	animationProperties: PropTypes.object,
-};
-
-BaseModal.defaultProps = {
-	className: '',
-	popperClassName: '',
-	renderHeader: null,
-	renderFooter: null,
-	toggle: () => {},
-	noDismiss: false,
-	hideCrossDismiss: false,
-	animation: true,
-	animationProperties: {
-		initial: {
-			opacity: 0,
-			scale: 0,
-			x: '-50%',
-			y: '-50%',
-		},
-		animate: {
-			opacity: 1,
-			scale: 1,
-			x: '-50%',
-			y: '-50%',
-		},
-		exit: {
-			scale: 0,
-			opacity: 0,
-		},
-		transition: {
-			duration: 0.15,
-		},
-	},
 };
 
 export default BaseModal;

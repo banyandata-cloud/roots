@@ -24,7 +24,7 @@
   align-items: center;
 }
 .root > .header[data-elem=base-cell] > [data-elem=component1] .icon, .root > .header[data-elem=base-cell] > [data-elem=component3] .icon {
-  transform: rotate(-90deg);
+  transform: rotate(90deg);
   width: 1rem;
   height: 1rem;
   fill: var(--text-color);

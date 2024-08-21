@@ -7,8 +7,15 @@ import { CaretIcon } from '../../icons';
 import styles from './HierarchyItem.module.css';
 
 const HierarchyItem = (props) => {
-	// eslint-disable-next-line object-curly-newline
-	const { defaultOpen, iconPlacement, title, children, onClick, onDoubleClick, active } = props;
+	const {
+		defaultOpen,
+		iconPlacement = 'left',
+		title,
+		children,
+		onClick = () => {},
+		onDoubleClick,
+		active,
+	} = props;
 
 	const [open, setOpen] = useState(defaultOpen);
 
@@ -84,14 +91,6 @@ HierarchyItem.propTypes = {
 	defaultOpen: PropTypes.bool,
 	onClick: PropTypes.func,
 	active: PropTypes.bool,
-};
-
-HierarchyItem.defaultProps = {
-	iconPlacement: 'left',
-	title: null,
-	defaultOpen: false,
-	onClick: () => {},
-	active: false,
 };
 
 export default HierarchyItem;
