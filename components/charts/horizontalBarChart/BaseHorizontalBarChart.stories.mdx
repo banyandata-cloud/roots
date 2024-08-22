@@ -160,6 +160,9 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 							return param.name;
 						},
 					},
+					emphasis: {
+						disabled: true,
+					},
 					itemStyle: {
 						borderRadius: [5, 0, 0, 5],
 					},
@@ -174,6 +177,9 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 						formatter: (param) => {
 							return sampleV2Data?.chartData?.[param.name]?.x1;
 						},
+					},
+					emphasis: {
+						disabled: true,
 					},
 					itemStyle: {
 						borderRadius: [0, 5, 5, 0],
