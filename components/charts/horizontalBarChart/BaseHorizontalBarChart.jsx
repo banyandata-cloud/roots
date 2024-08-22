@@ -55,10 +55,24 @@ const BaseHorizontalBarChart = (props) => {
 		theme,
 		fallback,
 		minBarHeight,
+		sort = false,
 	} = props;
 
 	if (loading || fallback) {
 		return <Skeleton theme={theme} fallback={!loading && fallback} />;
+	}
+
+	let sortedSeriesData = {};
+
+	if (sort) {
+		const { chartData } = seriesData;
+		const sortedEntries = Object.entries(chartData).sort(([, a], [, b]) => {
+			return b[sort] - a[sort];
+		});
+		const sortedChartData = Object.fromEntries(sortedEntries);
+		sortedSeriesData = {
+			chartData: sortedChartData,
+		};
 	}
 
 	const seriesOptionObject = {
@@ -82,10 +96,16 @@ const BaseHorizontalBarChart = (props) => {
 		itemStyle: {
 			borderRadius: [0, 2, 2, 0],
 		},
-		name: seriesData?.metaData?.keyData?.x1 ?? '',
-		data: Object.keys(seriesData?.chartData ?? {}).map((key) => {
-			return seriesData?.chartData?.[key]?.x1 ?? '';
-		}),
+		name: sort
+			? sortedSeriesData?.metaData?.keyData?.x1 ?? ''
+			: seriesData?.metaData?.keyData?.x1 ?? '',
+		data: sort
+			? Object.keys(sortedSeriesData?.chartData ?? {}).map((key) => {
+					return sortedSeriesData?.chartData?.[key]?.x1 ?? '';
+			  })
+			: Object.keys(seriesData?.chartData ?? {}).map((key) => {
+					return seriesData?.chartData?.[key]?.x1 ?? '';
+			  }),
 	};
 
 	const calcHeight = (barVal) => {
@@ -111,7 +131,75 @@ const BaseHorizontalBarChart = (props) => {
 					...(objectData?.label ?? {}),
 				},
 				name: seriesName(index),
-				data: seriesOption?.[index]?.maxvalueStyle?.value
+				// eslint-disable-next-line no-nested-ternary
+				data: sort
+					? seriesOption?.[index]?.maxvalueStyle?.value
+						? [
+								{
+									...seriesOption?.[index]?.maxvalueStyle,
+									emphasis: {
+										disabled: true,
+									},
+									tooltip: {
+										show: false,
+									},
+								},
+								...Object.keys(sortedSeriesData?.chartData ?? {}).map(
+									(key, subIndex) => {
+										return {
+											value:
+												sortedSeriesData?.chartData?.[key]?.[
+													`x${index + 1}`
+												] ?? '',
+											itemStyle: {
+												color:
+													typeof (objectData?.color ?? '' ?? {}) !==
+													'string'
+														? new echarts.graphic.LinearGradient(
+																...((objectData?.barColor?.[
+																	subIndex
+																] ??
+																	'') ||
+																	(objectData?.color ?? ''))
+														  )
+														: (objectData?.barColor?.[subIndex] ??
+																'') ||
+														  (objectData?.color ?? ''),
+											},
+											tooltip: {
+												...(seriesOption[subIndex]?.tooltip ?? {}),
+											},
+										};
+									}
+								),
+						  ]
+						: Object.keys(sortedSeriesData?.chartData ?? {}).map((key, subIndex) => {
+								return {
+									value: minBarHeight
+										? calcHeight(
+												sortedSeriesData?.chartData?.[key]?.[
+													`x${index + 1}`
+												] ?? 0
+										  )
+										: sortedSeriesData?.chartData?.[key]?.[`x${index + 1}`] ??
+										  0,
+									itemStyle: {
+										color:
+											typeof (objectData?.color ?? '' ?? {}) !== 'string'
+												? new echarts.graphic.LinearGradient(
+														...((objectData?.barColor?.[subIndex] ??
+															'') ||
+															(objectData?.color ?? ''))
+												  )
+												: (objectData?.barColor?.[subIndex] ?? '') ||
+												  (objectData?.color ?? ''),
+									},
+									tooltip: {
+										...(seriesOption[subIndex]?.tooltip ?? {}),
+									},
+								};
+						  })
+					: seriesOption?.[index]?.maxvalueStyle?.value
 					? [
 							{
 								...seriesOption?.[index]?.maxvalueStyle,
