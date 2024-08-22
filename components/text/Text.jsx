@@ -4,11 +4,18 @@ import { createElement, forwardRef, isValidElement } from 'react';
 import { classes } from '../../utils';
 import styles from './Text.module.css';
 
-// eslint-disable-next-line prefer-arrow-callback
-const Text = forwardRef(function Text(props, ref) {
-	// eslint-disable-next-line object-curly-newline
-	const { variant, component, stroke, weight, italic, underline, children, className, attrs } =
-		props;
+const Text = forwardRef((props, ref) => {
+	const {
+		variant = 'b2',
+		component = 'span',
+		stroke = 'regular',
+		weight,
+		italic,
+		underline,
+		children,
+		className = '',
+		attrs = {},
+	} = props;
 
 	const TextDOM = createElement(
 		component,
@@ -49,14 +56,4 @@ Text.propTypes = {
 	attrs: PropTypes.object,
 };
 
-Text.defaultProps = {
-	variant: 'b2',
-	weight: null,
-	component: 'span',
-	stroke: 'regular',
-	italic: false,
-	underline: false,
-	className: '',
-	attrs: {},
-};
 export default Text;

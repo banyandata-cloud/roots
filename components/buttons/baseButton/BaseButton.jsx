@@ -7,19 +7,19 @@ import styles from './BaseButton.module.css';
 // eslint-disable-next-line prefer-arrow-callback
 const BaseButton = forwardRef(function BaseButton(props, ref) {
 	const {
-		className,
+		className = '',
 		component1,
 		title,
 		component3,
-		size,
+		size = 'sm',
 		flexible,
-		radius,
+		radius = 'default',
 		disabled,
 		id,
-		type,
-		onClick,
-		blurOnClick,
-		variant,
+		type = 'submit',
+		onClick = () => {},
+		blurOnClick = true,
+		variant = 'contained',
 	} = props;
 
 	const Title = title && <span data-elem='title'>{title}</span>;
@@ -60,16 +60,6 @@ BaseButton.propTypes = {
 	onClick: PropTypes.func,
 	blurOnClick: PropTypes.bool,
 	variant: PropTypes.oneOf(['contained', 'outlined', 'text']),
-};
-
-BaseButton.defaultProps = {
-	...BaseCell.defaultProps,
-	title: null,
-	disabled: false,
-	type: 'submit',
-	onClick: () => {},
-	blurOnClick: true,
-	variant: 'contained',
 };
 
 export default BaseButton;

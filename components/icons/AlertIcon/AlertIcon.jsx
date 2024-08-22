@@ -4,15 +4,15 @@ const AlertIcon = {
 		return v2 ? (
 			<svg
 				className={className}
-				viewBox='0 0 23 22'
+				viewBox='0 0 25 24'
 				fill='none'
 				xmlns='http://www.w3.org/2000/svg'>
 				<path
-					d='M11.8691 15L11.8691 11M11.8691 7H11.8591M1.86914 11C1.86914 5.47715 6.34629 1 11.8691 1C17.392 1 21.8691 5.47715 21.8691 11C21.8691 16.5228 17.392 21 11.8691 21C6.34629 21 1.86914 16.5228 1.86914 11Z'
+					d='M12.8691 16L12.8691 12M12.8691 8H12.8591M2.86914 12C2.86914 6.47715 7.34629 2 12.8691 2C18.392 2 22.8691 6.47715 22.8691 12C22.8691 17.5228 18.392 22 12.8691 22C7.34629 22 2.86914 17.5228 2.86914 12Z'
 					stroke='#0F62FE'
-					strokeWidth='2'
-					strokeLinecap='round'
-					strokeLinejoin='round'
+					stroke-width='2'
+					stroke-linecap='round'
+					stroke-linejoin='round'
 				/>
 			</svg>
 		) : (

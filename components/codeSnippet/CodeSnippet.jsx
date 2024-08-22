@@ -1,25 +1,22 @@
 /* eslint-disable no-param-reassign */
 import PropTypes from 'prop-types';
 import React, { useRef, useState } from 'react';
-import { ErrorBoundary } from 'react-error-boundary';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark, oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { classes } from '../../utils';
 import { Alert } from '../alert';
-import { ErrorBoundaryWrapper } from '../errorBoundary';
 import { CopyIcon } from '../icons';
 import styles from './CodeSnippet.module.css';
 
 const CodeSnippet = (props) => {
 	const {
 		copy,
-		code,
-		language,
+		code = '{}',
+		language = 'json',
 		showLineNumbers,
-		theme,
-		className,
-		custom,
-		onClick,
+		theme = 'light',
+		className = '',
+		onClick = () => {},
 		parentKeyToSelect,
 	} = props;
 
@@ -124,16 +121,7 @@ const CodeSnippet = (props) => {
 	};
 
 	return (
-		<ErrorBoundary
-			FallbackComponent={(args) => {
-				return (
-					<ErrorBoundaryWrapper
-						{...args}
-						className={styles['error-boundary']}
-						custom={custom}
-					/>
-				);
-			}}>
+		<>
 			<div className={styles.root}>
 				<SyntaxHighlighter {...syntaxHighlighterProps}>{code}</SyntaxHighlighter>
 				{copy && (
@@ -148,7 +136,7 @@ const CodeSnippet = (props) => {
 				)}
 			</div>
 			<Alert ref={alertRef} />
-		</ErrorBoundary>
+		</>
 	);
 };
 
@@ -161,17 +149,6 @@ CodeSnippet.propTypes = {
 	className: PropTypes.string,
 	onClick: PropTypes.func,
 	parentKeyToSelect: PropTypes.string,
-};
-
-CodeSnippet.defaultProps = {
-	copy: true,
-	code: '{}',
-	language: 'json',
-	showLineNumbers: false,
-	theme: 'light',
-	className: '',
-	onClick: () => {},
-	parentKeyToSelect: null,
 };
 
 export default CodeSnippet;

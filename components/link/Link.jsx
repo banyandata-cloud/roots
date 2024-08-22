@@ -5,20 +5,19 @@ import { classes } from '../../utils/utils';
 import Text from '../text/Text';
 import styles from './Link.module.css';
 
-// eslint-disable-next-line prefer-arrow-callback
-const Link = forwardRef(function Link(props, ref) {
+const Link = forwardRef((props, ref) => {
 	const {
-		variant,
-		component,
-		stroke,
+		variant = 'b2',
+		component = 'a',
+		stroke = 'regular',
 		weight,
 		italic,
 		children,
 		href,
-		target,
-		attrs,
-		className,
-		underline,
+		target = '_self',
+		attrs = {},
+		className = '',
+		underline = 'none',
 		onClick,
 	} = props;
 
@@ -51,16 +50,6 @@ Link.propTypes = {
 	className: PropTypes.string,
 	attrs: PropTypes.object,
 	underline: PropTypes.oneOf(['always', 'hover', 'none']),
-};
-
-Link.defaultProps = {
-	...Text.defaultProps,
-	href: null,
-	target: '_self',
-	component: 'a',
-	className: '',
-	attrs: {},
-	underline: 'always',
 };
 
 export default Link;

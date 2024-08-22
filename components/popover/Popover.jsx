@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import {
 	autoUpdate,
 	flip,
@@ -9,23 +8,23 @@ import {
 	useFloating,
 	useInteractions,
 } from '@floating-ui/react-dom-interactions';
+import PropTypes from 'prop-types';
 import { useEffect, useLayoutEffect } from 'react';
-import { Popper } from '../popper';
 import { classes } from '../../utils';
+import { Popper } from '../popper';
 import styles from './Popover.module.css';
 
 const Popover = (props) => {
-	// eslint-disable-next-line object-curly-newline
 	const {
 		children,
 		anchorEl,
 		open,
 		setOpen,
 		className,
-		transparent,
-		onClose,
-		placement,
-		theme,
+		transparent = true,
+		onClose = () => {},
+		placement = 'bottom',
+		theme = 'light',
 		middlewareOptions,
 	} = props;
 
@@ -110,14 +109,6 @@ Popover.propTypes = {
 		'left-end',
 	]),
 	theme: PropTypes.oneOf(['light', 'dark']),
-};
-
-Popover.defaultProps = {
-	anchorEl: null,
-	transparent: true,
-	onClose: () => {},
-	placement: 'bottom',
-	theme: 'dark',
 };
 
 export default Popover;

@@ -6,36 +6,27 @@ import { Button } from '../buttons';
 import { BaseCell } from '../cell';
 import { CaretIcon, ExpandArrowAltIcon } from '../icons';
 import styles from './Accordion.module.css';
-import { Skeleton } from './Skeleton';
 
 const Accordion = (props) => {
 	const {
 		open,
 		onToggle,
 		defaultOpen,
-		leftComponent: LeftComponent,
+		leftComponent: LeftComponent = CaretIcon,
 		rightComponent: RightComponent,
 		title,
 		description,
 		children,
-		onClick,
-		className,
+		onClick = () => {},
+		className = '',
 		onExpand,
-		loading,
-		fallback,
-		theme,
 	} = props;
 
-	// uncontrolled
 	const [uncontrolledOpen, setUncontrolledOpen] = useState(defaultOpen);
 
 	const { current: isControlled } = useRef(open !== undefined);
 
 	const isOpen = isControlled ? open : uncontrolledOpen;
-
-	if (loading || fallback) {
-		return <Skeleton theme={theme} fallback={!loading && fallback} />;
-	}
 
 	return (
 		<div
@@ -99,8 +90,6 @@ const Accordion = (props) => {
 };
 
 Accordion.propTypes = {
-	loading: PropTypes.bool,
-	fallback: PropTypes.bool,
 	open: PropTypes.bool,
 	onToggle: PropTypes.func,
 	leftComponent: PropTypes.node,
@@ -111,23 +100,6 @@ Accordion.propTypes = {
 	onClick: PropTypes.func,
 	className: PropTypes.string,
 	onExpand: PropTypes.func,
-	theme: PropTypes.oneOf(['light', 'dark']),
-};
-
-Accordion.defaultProps = {
-	loading: false,
-	fallback: false,
-	open: undefined,
-	onToggle: null,
-	leftComponent: CaretIcon,
-	rightComponent: null,
-	title: null,
-	description: null,
-	defaultOpen: false,
-	onClick: () => {},
-	className: '',
-	onExpand: null,
-	theme: 'dark',
 };
 
 export default Accordion;

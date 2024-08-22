@@ -15,8 +15,7 @@ import { classes } from '../../utils';
 import { Popper } from '../popper';
 import styles from './Tooltip.module.css';
 
-// eslint-disable-next-line prefer-arrow-callback
-const Tooltip = forwardRef(function Tooltip(props, propRef) {
+const Tooltip = forwardRef((props, propRef) => {
 	const { children, position = 'top', content, variant = 'light', className = '' } = props;
 
 	const arrowEl = useRef(null);
@@ -112,7 +111,7 @@ const Tooltip = forwardRef(function Tooltip(props, propRef) {
 							top: middlewareData?.arrow?.y ?? '',
 							right: '',
 							bottom: '',
-							[staticSide]: '-0.5rem',
+							[staticSide]: '-0.3rem',
 						}}
 					/>
 					{content}

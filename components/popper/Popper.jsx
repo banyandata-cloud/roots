@@ -1,12 +1,19 @@
-import { FloatingPortal, FloatingOverlay, useId } from '@floating-ui/react-dom-interactions';
-import PropTypes from 'prop-types';
+import { FloatingOverlay, FloatingPortal, useId } from '@floating-ui/react-dom-interactions';
 import { AnimatePresence } from 'framer-motion';
+import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { classes } from '../../utils';
 import styles from './Popper.module.css';
 
 const Popper = (props) => {
-	const { open, children, wrapperId, backdrop, className, transparent } = props;
+	const {
+		open,
+		children,
+		wrapperId = 'default-popper',
+		backdrop = true,
+		className = '',
+		transparent = true,
+	} = props;
 
 	const id = useId();
 
@@ -48,14 +55,6 @@ Popper.propTypes = {
 	backdrop: PropTypes.bool,
 	wrapperId: PropTypes.string,
 	transparent: PropTypes.bool,
-};
-
-Popper.defaultProps = {
-	className: '',
-	open: false,
-	backdrop: true,
-	wrapperId: 'default-popper',
-	transparent: true,
 };
 
 export default Popper;
