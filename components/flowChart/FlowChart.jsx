@@ -337,7 +337,7 @@ const FlowChart = ({
 		node.append('g')
 			.attr('class', 'icon')
 			.each(function (d) {
-				if (d.excluded === 'NO') {
+				if (d.excluded === 'YES') {
 					d3.select(this)
 						.append('svg')
 						.attr('width', 22)
@@ -561,7 +561,7 @@ const FlowChart = ({
 				.append('text')
 				.attr('x', leftLegendX - 5) // Space between icon and text
 				.attr('y', leftLegendY + 6)
-				.text('Exclude Resource')
+				.text('Excluded Resources')
 				.attr('fill', 'black')
 				.style('font-size', labelFontSize)
 				.attr('dy', '0.35em') // Align text vertically in the middle
