@@ -3,7 +3,7 @@ import { Meta, Canvas, Story } from '@storybook/addon-docs';
 import { ThemedContainer } from '../../helpers';
 import BaseAreaChart from './BaseAreaChart';
 
-import { datum1, datum2 } from './BaseAreaChartData.js';
+import { datum1, datum2, datumV2 } from './BaseAreaChartData.js';
 
 <Meta title='Components/AreaChart' parameters={{ options: { showToolbar: false } }} />
 
@@ -19,6 +19,38 @@ export const Template = (args) => (
 				...datum1,
 				metaData: {
 					xAxisData: datum1?.metaData?.xAxisData?.map((key) => {
+						const d = new Date(key * 1000);
+						return `${d.getHours()}:${d.getMinutes()}`;
+					}),
+				},
+			}}
+			tooltip={{
+				show: true,
+				trigger: 'item',
+				axisPointer: {
+					type: 'cross',
+					label: {
+						backgroundColor: '#6a7985',
+					},
+				},
+				triggerOn: 'mousemove',
+			}}
+		/>
+	</ThemedContainer>
+);
+
+export const TemplateV2 = (args) => (
+	<ThemedContainer
+		{...args}
+		style={{
+			height: '400px',
+		}}>
+		<BaseAreaChart
+			{...args}
+			seriesData={{
+				...datumV2,
+				metaData: {
+					xAxisData: datumV2?.metaData?.xAxisData?.map((key) => {
 						const d = new Date(key * 1000);
 						return `${d.getHours()}:${d.getMinutes()}`;
 					}),
@@ -261,6 +293,216 @@ The default Area Chart with Areas Stacked.
 			},
 		}}>
 		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### V2 Area Chart
+
+The default Area Chart with Areas Stacked.
+
+<Canvas>
+	<Story
+		name='V2'
+		args={{
+			title: '',
+			gridOptions: {
+				left: 50,
+				right: 50,
+				bottom: 50,
+				top: 100,
+			},
+			gridContainLabel: true,
+			legend: {
+				show: false,
+			},
+			xAxisLabelShow: true,
+			xSplitLineShow: true,
+			xAxisLineShow: true,
+			xAxisTickShow: true,
+			xAxis: {
+				position: 'top',
+				boundaryGap: false,
+			},
+			splitType: 'dotted',
+			axisSplitColor: '#D8DFE5',
+			smooth: true,
+			stacked: true,
+			yAxisLabelShow: true,
+			ySplitLineShow: true,
+			yAxisLineShow: true,
+			yAxisTickShow: true,
+			yAxis: {
+				max: 500,
+			},
+			cursor: 'default',
+			seriesOption: [
+				{
+					stackIndex: 1,
+					color: '#F8B617',
+					symbol: 'diamond',
+					symbolSize: 10,
+					label: {
+						show: false,
+					},
+					lineStyle: {
+						width: 2,
+					},
+					areaStyle: {
+						color: {
+							type: 'linear',
+							x: 0,
+							y: 0,
+							x2: 0,
+							y2: 1,
+							colorStops: [
+								{
+									offset: 0,
+									color: '#F8B617',
+								},
+								{
+									offset: 1,
+									color: '#FFFFFF',
+								},
+							],
+						},
+						origin: 'auto',
+						shadowBlur: 0,
+						shadowColor: 'white',
+						shadowOffsetX: 0,
+						shadowOffsetY: 0,
+						opacity: 0.5,
+					},
+					emphasis: {
+						focus: 'none',
+					},
+				},
+				{
+					stackIndex: 2,
+					color: '#E5484D',
+					symbol: 'diamond',
+					symbolSize: 10,
+					label: {
+						show: false,
+					},
+					lineStyle: {
+						width: 2,
+					},
+					areaStyle: {
+						color: {
+							type: 'linear',
+							x: 0,
+							y: 0,
+							x2: 0,
+							y2: 1,
+							colorStops: [
+								{
+									offset: 0,
+									color: '#E5484D',
+								},
+								{
+									offset: 1,
+									color: '#FFFFFF',
+								},
+							],
+						},
+						origin: 'auto',
+						shadowBlur: 0,
+						shadowColor: 'white',
+						shadowOffsetX: 0,
+						shadowOffsetY: 0,
+						opacity: 0.5,
+					},
+					emphasis: {
+						focus: 'self',
+					},
+				},
+				{
+					stackIndex: 3,
+					color: '#0693FF',
+					symbol: 'diamond',
+					symbolSize: 10,
+					label: {
+						show: false,
+					},
+					lineStyle: {
+						width: 2,
+					},
+					areaStyle: {
+						color: {
+							type: 'linear',
+							x: 0,
+							y: 0,
+							x2: 0,
+							y2: 1,
+							colorStops: [
+								{
+									offset: 0,
+									color: '#0693FF',
+								},
+								{
+									offset: 1,
+									color: '#FFFFFF',
+								},
+							],
+						},
+						origin: 'auto',
+						shadowBlur: 0,
+						shadowColor: 'white',
+						shadowOffsetX: 0,
+						shadowOffsetY: 0,
+						opacity: 0.5,
+					},
+					emphasis: {
+						focus: 'series',
+					},
+				},
+				{
+					stackIndex: 4,
+					color: '#6E56CF',
+					symbol: 'diamond',
+					symbolSize: 10,
+					label: {
+						show: false,
+					},
+					lineStyle: {
+						width: 2,
+					},
+					areaStyle: {
+						color: {
+							type: 'linear',
+							x: 0,
+							y: 0,
+							x2: 0,
+							y2: 1,
+							colorStops: [
+								{
+									offset: 0,
+									color: '#6E56CF',
+								},
+								{
+									offset: 1,
+									color: '#FFFFFF',
+								},
+							],
+						},
+						origin: 'auto',
+						shadowBlur: 0,
+						shadowColor: 'white',
+						shadowOffsetX: 0,
+						shadowOffsetY: 0,
+						opacity: 0.5,
+						cursor: 'default',
+					},
+					emphasis: {
+						focus: 'series',
+					},
+				},
+			],
+			errorHandle: () => {
+				alert('This will Call Fetch API again');
+			},
+		}}>
+		{TemplateV2.bind({})}
 	</Story>
 </Canvas>
 

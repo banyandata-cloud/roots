@@ -129,6 +129,7 @@ const BaseAreaChart = (props) => {
 
 	const generateSeries = () => {
 		return Object.keys(seriesData?.chartData).map((objectData, index) => {
+			console.log('HERE', seriesOption[index]?.areaStyle?.color);
 			return {
 				...seriesOptionObject,
 				...seriesOption[index],
@@ -161,12 +162,7 @@ const BaseAreaChart = (props) => {
 					...(seriesOptionObject?.areaStyle ?? {}),
 					...(seriesOption[index]?.areaStyle ?? {}),
 					...(seriesOption[index]?.areaStyle?.color && {
-						color:
-							typeof (seriesOption[index]?.areaStyle?.color ?? {}) !== 'string'
-								? new echarts.graphic.LinearGradient(
-										seriesOption[index]?.areaStyle?.color ?? {}
-								  )
-								: seriesOption[index]?.areaStyle?.color ?? {},
+						color: seriesOption[index]?.areaStyle?.color ?? {},
 					}),
 				},
 				emphasis: {
@@ -224,16 +220,21 @@ const BaseAreaChart = (props) => {
 						axisLine: {
 							show: xAxisLineShow,
 							lineStyle: {
-								color: theme === 'dark' ? COLORS[`theme-dark-mono-color2`] : COLORS[`theme-dark-mono-color1`],
+								color:
+									theme === 'dark'
+										? COLORS['theme-dark-mono-color2']
+										: COLORS['theme-dark-mono-color1'],
 							},
 						},
 						axisTick: {
 							show: xAxisTickShow,
 							lineStyle: {
-								color: theme === 'dark' ? COLORS[`theme-${theme}-mono-color2`] : COLORS.grey3,
+								color:
+									theme === 'dark'
+										? COLORS[`theme-${theme}-mono-color2`]
+										: COLORS.grey3,
 							},
 						},
-						boundaryGap: false,
 						...xAxis,
 					},
 				],
@@ -267,16 +268,17 @@ const BaseAreaChart = (props) => {
 							lineStyle: {
 								color:
 									theme === 'dark'
-										?  COLORS[`theme-dark-mono-color2`]
-										: COLORS[`theme-dark-mono-color1`],
+										? COLORS['theme-dark-mono-color2']
+										: COLORS['theme-dark-mono-color1'],
 							},
 						},
 						axisTick: {
 							show: yAxisTickShow,
 							lineStyle: {
-								color: theme === 'dark'
-								?  COLORS[`theme-${theme}-mono-color2`]
-								: COLORS.grey3,
+								color:
+									theme === 'dark'
+										? COLORS[`theme-${theme}-mono-color2`]
+										: COLORS.grey3,
 							},
 						},
 						...yAxis,
