@@ -308,12 +308,15 @@ The default Area Chart with Areas Stacked.
 			gridOptions: {
 				left: 50,
 				right: 50,
-				bottom: 50,
-				top: 100,
+				bottom: 100,
+				top: 50,
 			},
 			gridContainLabel: true,
 			legend: {
-				show: false,
+				show: true,
+				bottom: 50,
+				itemGap: 50,
+				icon: 'circle',
 			},
 			xAxisLabelShow: true,
 			xSplitLineShow: true,
@@ -331,6 +334,7 @@ The default Area Chart with Areas Stacked.
 			ySplitLineShow: true,
 			yAxisLineShow: true,
 			yAxisTickShow: true,
+			axisLabelColor: 'black',
 			yAxis: {
 				max: 500,
 			},
