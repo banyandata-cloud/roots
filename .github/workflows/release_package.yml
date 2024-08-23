@@ -22,9 +22,9 @@ jobs:
 
       # Install dependencies (required by Run tests step)
       - name: Install dependencies
-        run: yarn install
+        run: pnpm install
       - name: Run build  
-        run: yarn build
+        run: pnpm build
 
       # Tests
       #- name: Run tests
