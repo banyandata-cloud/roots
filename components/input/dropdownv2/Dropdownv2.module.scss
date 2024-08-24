@@ -25,6 +25,12 @@
 		max-width: 100%;
 		border-radius: 0.25rem;
 		position: relative;
+
+		&.open {
+			outline: 1px solid $secondary-color2;
+			transition: outline 100ms ease-in-out;
+		}
+
 		&.error {
 			border: 1px solid $primary-color1;
 			border-radius: 0.3125rem;
@@ -71,8 +77,9 @@
 					transition: transform 0.5s;
 					fill: $text-color !important;
 					@include flex(row, space-between);
+					transform: rotate(180deg);
 					&.open {
-						transform: rotate(180deg);
+						transform: rotate(0deg);
 					}
 				}
 				.info-icon {
@@ -149,7 +156,7 @@
 		@include flex(row, space-between);
 		margin-bottom: 0.5rem;
 		list-style: none;
-		gap: 0.5rem;
+		gap: 2.5rem;
 		button[data-elem='base-cell'].multi-apply[type='submit'] {
 			background-color: $secondary-color2;
 			margin-top: 1rem;

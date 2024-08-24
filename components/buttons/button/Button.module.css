@@ -6,22 +6,22 @@
   font-size: 0.875rem;
 }
 .root[data-elem=base-cell].primary.contained {
-  background-color: var(--primary-color4);
+  background-color: var(--secondary-color2);
   color: var(--white);
 }
 .root[data-elem=base-cell].primary.contained:hover {
   opacity: 0.85;
 }
 .root[data-elem=base-cell].primary.text {
-  color: var(--primary-color4);
+  color: var(--secondary-color2);
 }
 .root[data-elem=base-cell].primary.outlined {
   background-color: transparent;
-  border-color: var(--primary-color4);
-  color: var(--primary-color4);
+  border-color: var(--secondary-color2);
+  color: var(--secondary-color2);
 }
 .root[data-elem=base-cell].primary.outlined:hover {
-  background-color: var(--primary-color4);
+  background-color: var(--secondary-color2);
   color: var(--white);
 }
 .root[data-elem=base-cell].primary.outlined:hover:hover {

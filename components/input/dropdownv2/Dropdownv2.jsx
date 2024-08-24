@@ -347,7 +347,11 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 				)}
 				<div
 					data-elem='header'
-					className={classes(styles.header, error ? styles.error : ' ')}
+					className={classes(
+						styles.header,
+						error ? styles.error : ' ',
+						open ? styles.open : ''
+					)}
 					ref={reference}
 					{...getReferenceProps()}>
 					<input
@@ -491,7 +495,7 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 										<Button
 											className={styles['multi-clear']}
 											blurOnClick={false}
-											title='Clear'
+											title='Clear All'
 											size='auto'
 											disabled={selectedOptions?.length === 0}
 											onClick={(event) => {

@@ -11,9 +11,6 @@
 	color: $light-color3;
 	background: $text-color;
 	border-color: $text-color;
-	.arrow {
-		background: $text-color;
-	}
 
 	.arrow {
 		position: absolute;
@@ -22,5 +19,6 @@
 		z-index: -1;
 		pointer-events: none;
 		transform: rotate(45deg);
+		background: $text-color;
 	}
 }

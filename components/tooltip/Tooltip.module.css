@@ -11,13 +11,11 @@
   border-color: var(--text-color);
 }
 .tooltip .arrow {
-  background: var(--text-color);
-}
-.tooltip .arrow {
   position: absolute;
   width: 0.65rem;
   height: 0.65rem;
   z-index: -1;
   pointer-events: none;
   transform: rotate(45deg);
+  background: var(--text-color);
 }/*# sourceMappingURL=Tooltip.module.css.map */

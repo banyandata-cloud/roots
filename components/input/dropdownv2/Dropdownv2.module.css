@@ -28,6 +28,10 @@
   border-radius: 0.25rem;
   position: relative;
 }
+.root .header.open {
+  outline: 1px solid var(--secondary-color2);
+  transition: outline 100ms ease-in-out;
+}
 .root .header.error {
   border: 1px solid var(--primary-color1);
   border-radius: 0.3125rem;
@@ -90,9 +94,10 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  transform: rotate(180deg);
 }
 .root .header .select .icon-bundle .caret-icon.open {
-  transform: rotate(180deg);
+  transform: rotate(0deg);
 }
 .root .header .select .icon-bundle .info-icon path {
   stroke: var(--primary-color1);
@@ -160,7 +165,7 @@
   align-items: center;
   margin-bottom: 0.5rem;
   list-style: none;
-  gap: 0.5rem;
+  gap: 2.5rem;
 }
 .body .footer button[data-elem=base-cell].multi-apply[type=submit] {
   background-color: var(--secondary-color2);

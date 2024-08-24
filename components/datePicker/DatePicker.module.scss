@@ -55,7 +55,7 @@
 			background-color: transparent;
 			border-radius: 0.3125rem;
 			width: auto;
-			border: 0.0625rem solid #dfe0e2;
+			box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25);
 			padding: 0.75rem 1rem;
 			cursor: pointer;
 
@@ -84,7 +84,8 @@
 			}
 
 			&.open {
-				outline: 0.0625rem solid $primary-color4;
+				outline: 1px solid $secondary-color2;
+				transition: outline 100ms ease-in-out;
 			}
 			&.error {
 				outline: 0.0625rem solid $primary-color1;
@@ -136,8 +137,9 @@
 					fill: $text-color;
 				}
 
+				transform: rotate(180deg);
 				&.open {
-					transform: rotate(180deg);
+					transform: rotate(0deg);
 				}
 			}
 		}
@@ -164,8 +166,9 @@
 						fill: $text-color;
 					}
 
+					transform: rotate(180deg);
 					&.open {
-						transform: rotate(180deg);
+						transform: rotate(0deg);
 					}
 				}
 			}
