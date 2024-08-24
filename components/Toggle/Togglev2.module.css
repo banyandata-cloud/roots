@@ -36,9 +36,6 @@
 .root .toggle > button[data-elem=base-cell].toggle-button.active > [data-elem=component2] > [data-elem=title] {
   color: var(--white);
 }
-.root .toggle > button[data-elem=base-cell].toggle-button.active.secondary {
-  background-color: var(--background-color4);
-}
 .root .toggle > button[data-elem=base-cell].toggle-button.active.secondary > [data-elem=component2] > [data-elem=title] {
   color: var(--secondary-color2);
 }

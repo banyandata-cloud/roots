@@ -66,7 +66,7 @@
   background-color: transparent;
   border-radius: 0.3125rem;
   width: auto;
-  border: 0.0625rem solid #dfe0e2;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25);
   padding: 0.75rem 1rem;
   cursor: pointer;
 }
@@ -98,7 +98,8 @@
           user-select: none;
 }
 .root .date-picker .container.open {
-  outline: 0.0625rem solid var(--primary-color4);
+  outline: 1px solid var(--secondary-color2);
+  transition: outline 100ms ease-in-out;
 }
 .root .date-picker .container.error {
   outline: 0.0625rem solid var(--primary-color1);
@@ -150,12 +151,13 @@
   width: 1.5rem;
   height: 1.5rem;
   transition: transform 0.5s;
+  transform: rotate(180deg);
 }
 .root .date-picker .container .icon > path {
   fill: var(--text-color);
 }
 .root .date-picker .container .icon.open {
-  transform: rotate(180deg);
+  transform: rotate(0deg);
 }
 .root .date-picker .container {
   border-color: var(--grey);
@@ -175,12 +177,13 @@
   width: 1.5rem;
   height: 1.5rem;
   transition: transform 0.5s;
+  transform: rotate(180deg);
 }
 .root .date-picker .container.highlight .icon > path {
   fill: var(--text-color);
 }
 .root .date-picker .container.highlight .icon.open {
-  transform: rotate(180deg);
+  transform: rotate(0deg);
 }
 .root .date-picker .error-text {
   font-weight: 400;
