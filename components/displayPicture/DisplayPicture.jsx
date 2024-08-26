@@ -7,7 +7,7 @@ const DisplayPicture = (props) => {
 
 	return (
 		<div className={classes(styles.root, styles[size], className)}>
-			{!url ? (
+			{url ? (
 				<img data-elem='dp-img' src={url} alt={name} />
 			) : (
 				<div>
