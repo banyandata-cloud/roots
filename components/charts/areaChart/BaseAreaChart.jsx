@@ -129,7 +129,6 @@ const BaseAreaChart = (props) => {
 
 	const generateSeries = () => {
 		return Object.keys(seriesData?.chartData).map((objectData, index) => {
-			console.log('HERE', seriesOption[index]?.areaStyle?.color);
 			return {
 				...seriesOptionObject,
 				...seriesOption[index],
