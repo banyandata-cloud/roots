@@ -47,7 +47,7 @@ const FlowChart = ({
 	rightLegendAdjX = 140,
 	containerBackground = '#f7f7f8',
 	containerBorderRadius = 14,
-	onNodeClick = () => {},
+	onNodeClick,
 }) => {
 	const svgRef = useRef(null);
 	const containerRef = useRef(null);
@@ -379,11 +379,8 @@ const FlowChart = ({
 		}
 
 		function handleClick(event, d) {
-			if (d.status !== 'PASS' && d.status !== 'FAIL') {
-				return;
-			}
+			onNodeClick?.(d);
 			setSelectedNode(d);
-			onNodeClick(d);
 
 			// Remove any existing hover circles
 			container.selectAll('.hover-circle').remove();
