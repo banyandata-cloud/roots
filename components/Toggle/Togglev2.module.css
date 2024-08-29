@@ -33,11 +33,17 @@
 .root .toggle > button[data-elem=base-cell].toggle-button.active.highlight {
   background-color: var(--mono-color1);
 }
+.root .toggle > button[data-elem=base-cell].toggle-button.active.highlight svg path {
+  fill: var(--white) !important;
+}
 .root .toggle > button[data-elem=base-cell].toggle-button.active > [data-elem=component2] > [data-elem=title] {
   color: var(--white);
 }
 .root .toggle > button[data-elem=base-cell].toggle-button.active.secondary > [data-elem=component2] > [data-elem=title] {
   color: var(--secondary-color2);
+}
+.root .toggle > button[data-elem=base-cell].toggle-button.active.secondary svg path {
+  fill: var(--secondary-color2) !important;
 }
 .root .toggle > button[data-elem=base-cell].toggle-button.disabled {
   cursor: not-allowed;
