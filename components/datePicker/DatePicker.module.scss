@@ -172,6 +172,18 @@
 					}
 				}
 			}
+			&.highlightOnSelect {
+				background-color: $background-color5;
+				.value {
+					color: $secondary-color2;
+				}
+				svg {
+					fill: $secondary-color2;
+					> path {
+						fill: $secondary-color2 !important;
+					}
+				}
+			}
 		}
 
 		.error-text {

@@ -43,8 +43,10 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 		popperClassName = '',
 		value,
 		onChange,
+		leftComponent: LeftComponent,
 		onBlur,
 		children,
+		highlightOnSelect,
 		label,
 		placeholder = 'Select an option',
 		multi,
@@ -350,7 +352,10 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 					className={classes(
 						styles.header,
 						error ? styles.error : ' ',
-						open ? styles.open : ''
+						open ? styles.open : '',
+						(Array.isArray(value) ? value.length > 0 : !!value) && highlightOnSelect
+							? styles.highlightOnSelect
+							: ''
 					)}
 					ref={reference}
 					{...getReferenceProps()}>
@@ -381,6 +386,7 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 							styles.select,
 							feedback != null ? styles[`feedback-${feedback?.type}`] : ''
 						)}>
+						{LeftComponent && <LeftComponent />}
 						{typeof placeholder === 'string' || placeholder instanceof String ? (
 							(selectedOptions?.length > 1
 								? formatter(selectedOptions.length)
