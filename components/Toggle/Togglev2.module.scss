@@ -30,6 +30,11 @@
 			&.active {
 				&.highlight {
 					background-color: $mono-color1;
+					svg {
+						path {
+							fill: $white !important;
+						}
+					}
 				}
 				> [data-elem='component2'] {
 					> [data-elem='title'] {
@@ -40,6 +45,11 @@
 					> [data-elem='component2'] {
 						> [data-elem='title'] {
 							color: $secondary-color2;
+						}
+					}
+					svg {
+						path {
+							fill: $secondary-color2 !important;
 						}
 					}
 				}
