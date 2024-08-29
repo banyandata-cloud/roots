@@ -26,6 +26,21 @@
 		border-radius: 0.25rem;
 		position: relative;
 
+		&.highlightOnSelect {
+			[data-elem='select'] {
+				background-color: $background-color5;
+				span {
+					color: $secondary-color2;
+				}
+				svg {
+					fill: $secondary-color2;
+					> path {
+						fill: $secondary-color2 !important;
+					}
+				}
+			}
+		}
+
 		&.open {
 			outline: 1px solid $secondary-color2;
 			transition: outline 100ms ease-in-out;

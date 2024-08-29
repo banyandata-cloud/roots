@@ -28,6 +28,18 @@
   border-radius: 0.25rem;
   position: relative;
 }
+.root .header.highlightOnSelect [data-elem=select] {
+  background-color: var(--background-color5);
+}
+.root .header.highlightOnSelect [data-elem=select] span {
+  color: var(--secondary-color2);
+}
+.root .header.highlightOnSelect [data-elem=select] svg {
+  fill: var(--secondary-color2);
+}
+.root .header.highlightOnSelect [data-elem=select] svg > path {
+  fill: var(--secondary-color2) !important;
+}
 .root .header.open {
   outline: 1px solid var(--secondary-color2);
   transition: outline 100ms ease-in-out;

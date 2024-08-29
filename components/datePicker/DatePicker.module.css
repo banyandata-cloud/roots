@@ -185,6 +185,18 @@
 .root .date-picker .container.highlight .icon.open {
   transform: rotate(0deg);
 }
+.root .date-picker .container.highlightOnSelect {
+  background-color: var(--background-color5);
+}
+.root .date-picker .container.highlightOnSelect .value {
+  color: var(--secondary-color2);
+}
+.root .date-picker .container.highlightOnSelect svg {
+  fill: var(--secondary-color2);
+}
+.root .date-picker .container.highlightOnSelect svg > path {
+  fill: var(--secondary-color2) !important;
+}
 .root .date-picker .error-text {
   font-weight: 400;
   font-size: 0.75rem;

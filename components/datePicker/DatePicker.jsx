@@ -20,11 +20,11 @@ import styles from './DatePicker.module.css';
 import { Calender } from './calender';
 import { DateAndTimeCustomRanges } from './customRanges';
 import {
+	calculateZeroHours,
 	getDatePickerDisplayValue,
 	getDateRangeTag,
 	getFloatingReferences,
 	isMaxRangeExceeded,
-	calculateZeroHours,
 } from './utils';
 
 const DatePicker = (props) => {
@@ -42,6 +42,7 @@ const DatePicker = (props) => {
 		onClear,
 		customRanges,
 		custom,
+		highlightOnSelect,
 		valueAsRange, // only for single Date Picker,
 		defaultHourDiff,
 		limitHours,
@@ -272,12 +273,12 @@ const DatePicker = (props) => {
 							openDatePicker ? styles.open : '',
 							error ? styles.error : '',
 							customRanges ? styles['with-custom'] : '',
-
-							displayValue ? styles.highlight : ''
+							displayValue ? styles.highlight : '',
+							highlightOnSelect && value ? styles.highlightOnSelect : ''
 						)}
 						{...datePickerInteractionProps.getReferenceProps()}>
 						<div className={styles.left}>
-							<CalenderIcon className={styles.icon} />
+							<CalenderIcon />
 
 							{!displayValue && (
 								<span className={styles.placeholder}>{placeholder}</span>
