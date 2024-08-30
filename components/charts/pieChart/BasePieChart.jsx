@@ -1,5 +1,3 @@
-/* eslint-disable react/forbid-prop-types */
-import PropTypes from 'prop-types';
 // ReactEcharts from 'echarts-for-react' would import the entire bundle
 import EChartsReactCore from 'echarts-for-react/lib/core';
 import * as echarts from 'echarts/core';
@@ -33,24 +31,48 @@ echarts.use([
 
 const BasePieChart = (props) => {
 	const {
-		loading,
-		title,
-		gridOptions,
-		tooltip,
-		seriesData,
-		startAngle,
-		semiDoughnut,
-		radius,
-		center,
-		cursor,
-		showLabelLine,
-		itemStyle,
-		legend,
-		onEvents,
-		seriesOption,
-		style,
-		className,
-		theme,
+		loading = false,
+		title = '',
+		gridOptions = {
+			left: 0,
+			right: 0,
+			bottom: 20,
+			top: 10,
+		},
+		tooltip = {
+			trigger: 'item',
+		},
+		seriesData = {},
+		startAngle = 90,
+		semiDoughnut = true,
+		radius = ['30%', '60%'],
+		center = ['50%', '50%'],
+		cursor = 'default',
+		showLabelLine = false,
+		itemStyle = {
+			borderWidth: 5,
+			borderColor: 'white',
+			borderType: 'solid',
+		},
+		legend = {
+			top: '80%',
+			left: '30%',
+			orient: 'vertical',
+		},
+		onHoverLegend = () => {},
+		onEvents = () => {},
+		seriesOption = [
+			{
+				stackIndex: 1,
+			},
+		],
+		seriesOptionUpdate = {},
+		style = {
+			width: '100%',
+			height: '100%',
+		},
+		className = '',
+		theme = 'dark',
 		fallback,
 	} = props;
 
@@ -87,7 +109,7 @@ const BasePieChart = (props) => {
 		let semiDoughnutValue = 0;
 		return {
 			...seriesOptionObject,
-			...seriesOption,
+			...seriesOptionUpdate,
 			startAngle: semiDoughnut ? 180 : startAngle,
 			data: semiDoughnut
 				? [
@@ -142,6 +164,15 @@ const BasePieChart = (props) => {
 		};
 	};
 
+	const onChartReady = (chart) => {
+		chart.on('highlight', (e) => {
+			onHoverLegend('onmouseover', e);
+		});
+		chart.on('downplay', (e) => {
+			onHoverLegend('onmouseout', e);
+		});
+	};
+
 	return (
 		<EChartsReactCore
 			option={{
@@ -162,78 +193,10 @@ const BasePieChart = (props) => {
 			notMerge
 			lazyUpdate
 			className={classes(styles.root, className)}
+			onChartReady={onChartReady}
 			style={style}
 		/>
 	);
-};
-
-BasePieChart.propTypes = {
-	loading: PropTypes.bool,
-	fallback: PropTypes.bool,
-	title: PropTypes.string,
-	gridOptions: PropTypes.object,
-	tooltip: PropTypes.object,
-	seriesData: PropTypes.shape({
-		chartData: PropTypes.object,
-		metaData: PropTypes.object,
-	}),
-	startAngle: PropTypes.number,
-	semiDoughnut: PropTypes.bool,
-	cursor: PropTypes.string,
-	radius: PropTypes.arrayOf(PropTypes.string),
-	center: PropTypes.arrayOf(PropTypes.string),
-	showLabelLine: PropTypes.bool,
-	itemStyle: PropTypes.object,
-	legend: PropTypes.object,
-	onEvents: PropTypes.func,
-	seriesOption: PropTypes.arrayOf(PropTypes.shape),
-	style: PropTypes.objectOf(PropTypes.shape),
-	className: PropTypes.string,
-	theme: PropTypes.oneOf(['light', 'dark']),
-};
-
-BasePieChart.defaultProps = {
-	loading: false,
-	fallback: false,
-	title: '',
-	gridOptions: {
-		left: 0,
-		right: 0,
-		bottom: 20,
-		top: 10,
-	},
-	tooltip: {
-		trigger: 'item',
-	},
-	seriesData: {},
-	startAngle: 90,
-	semiDoughnut: true,
-	cursor: 'default',
-	radius: ['30%', '60%'],
-	center: ['50%', '50%'],
-	showLabelLine: false,
-	itemStyle: {
-		borderWidth: 5,
-		borderColor: 'white',
-		borderType: 'solid',
-	},
-	legend: {
-		top: '80%',
-		left: '30%',
-		orient: 'vertical',
-	},
-	onEvents: () => {},
-	seriesOption: [
-		{
-			stackIndex: 1,
-		},
-	],
-	style: {
-		width: '100%',
-		height: '100%',
-	},
-	className: '',
-	theme: 'dark',
 };
 
 export default BasePieChart;

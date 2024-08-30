@@ -149,30 +149,44 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 				width: '100%',
 			},
 			cursor: 'default',
-			radius: ['10%', '60%'],
+			radius: ['18%', '70%'],
 			center: ['50%', '50%'],
 			seriesData: sampleV2Data,
 			semiDoughnut: false,
 			startAngle: 90,
 			tooltip: {
 				trigger: 'item',
-				formatter: (param) => {
-					const index = Object.keys(sampleData.metaData.keyData).find((key) => {
-						return sampleData.metaData.keyData[key] === param.name;
-					});
-					return `${param.marker} ${param.name} ${sampleData.metaData.controlsApplied[index].comp}/${sampleData.metaData.controlsApplied[index].count}`;
-				},
 			},
 			itemStyle: {
 				borderWidth: 0,
 			},
 			legend: {
-				show: true,
 				orient: 'vertical',
 				top: '5%',
 				right: '20%',
-				selectedMode: true,
 				icon: 'path://M30.9,53.2C16.8,53.2,5.3,41.7,5.3,27.6S16.8,2,30.9,2C45,2,56.4,13.5,56.4,27.6S45,53.2,30.9,53.2z M16 28a12 12 0 0 0 30 0a12 12 0 1 0 -30 0',
+				selectedMode: true,
+				selected: {
+					high: true,
+					medium: false,
+				},
+			},
+			seriesOptionUpdate: {
+				legendHoverLink: true,
+			},
+			onHoverLegend: (event, e) => {
+				console.log({
+					event,
+					e,
+				});
+			},
+			onEvents: {
+				mouseover: (e) => {
+					console.log('OVER', e);
+				},
+				mouseout: (e) => {
+					console.log('OUT', e);
+				},
 			},
 			seriesOption: [
 				{
@@ -182,12 +196,20 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					},
 					label: {
 						show: true,
-						fontSize: '20',
+						fontSize: '15',
 						color: 'black',
 						fontWeight: 'bold',
-						position: 'outside',
-						formatter(d) {
-							return d.name !== '' ? `${d.value}%\n${d.name}` : null;
+						position: 'center',
+						formatter() {
+							return `40 \nControls`;
+						},
+					},
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 0, 0.5)',
 						},
 					},
 				},
@@ -196,14 +218,33 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					itemStyle: {
 						color: '#0056C7',
 					},
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 5)',
+						},
+					},
+					emphasis: {
+						scaleSize: 25,
+					},
 				},
 				{
 					stackIndex: 3,
 					itemStyle: {
 						color: '#3076D2',
 					},
-					tooltip: {
-						trigger: 'none',
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 5)',
+						},
+					},
+					emphasis: {
+						scaleSize: 25,
 					},
 				},
 				{
@@ -211,8 +252,16 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					itemStyle: {
 						color: '#6096DD',
 					},
-					tooltip: {
-						trigger: 'none',
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 5)',
+						},
+					},
+					emphasis: {
+						scaleSize: 25,
 					},
 				},
 				{
@@ -220,8 +269,13 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					itemStyle: {
 						color: '#90B6E9',
 					},
-					tooltip: {
-						trigger: 'none',
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 5)',
+						},
 					},
 				},
 				{
@@ -229,8 +283,13 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					itemStyle: {
 						color: '#A8C6EE',
 					},
-					tooltip: {
-						trigger: 'none',
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 5)',
+						},
 					},
 				},
 				{
@@ -238,8 +297,21 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					itemStyle: {
 						color: '#C0D6F4',
 					},
-					tooltip: {
-						trigger: 'none',
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 5)',
+						},
+					},
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 0, 0.5)',
+						},
 					},
 				},
 				{
@@ -247,8 +319,13 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					itemStyle: {
 						color: '#D8E6F9',
 					},
-					tooltip: {
-						trigger: 'none',
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 5)',
+						},
 					},
 				},
 				{
@@ -256,8 +333,13 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					itemStyle: {
 						color: '#F0F6FF',
 					},
-					tooltip: {
-						trigger: 'none',
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 5)',
+						},
 					},
 				},
 				{
@@ -265,8 +347,13 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					itemStyle: {
 						color: '#001128',
 					},
-					tooltip: {
-						trigger: 'none',
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 5)',
+						},
 					},
 				},
 				{
@@ -274,8 +361,13 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					itemStyle: {
 						color: '#001A3C',
 					},
-					tooltip: {
-						trigger: 'none',
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 5)',
+						},
 					},
 				},
 				{
@@ -283,8 +375,13 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					itemStyle: {
 						color: '#001A3C',
 					},
-					tooltip: {
-						trigger: 'none',
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 5)',
+						},
 					},
 				},
 				{
@@ -292,8 +389,13 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					itemStyle: {
 						color: '#002250',
 					},
-					tooltip: {
-						trigger: 'none',
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 5)',
+						},
 					},
 				},
 			],
