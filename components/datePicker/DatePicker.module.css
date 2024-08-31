@@ -7,8 +7,8 @@
 }
 .root .custom-picker[data-elem=base-cell] {
   flex: 1;
-  width: 100%;
-  min-width: 15rem;
+  width: 0% !important;
+  min-width: 0rem !important;
   border-color: var(--grey3);
   border-style: solid;
   border-width: 0.0625rem 0 0.0625rem 0.0625rem;
@@ -48,7 +48,7 @@
   align-items: stretch;
   gap: 0.5rem;
   max-width: 100%;
-  min-width: 15rem;
+  min-width: 20rem;
   overflow: visible;
 }
 .root .date-picker .label {
@@ -169,6 +169,7 @@
 .root .date-picker .container .value {
   color: var(--grey2);
   font-weight: 500;
+  margin-right: 0.625rem;
 }
 .root .date-picker .container.highlight .value {
   color: var(--text-color);
@@ -207,13 +208,20 @@
 .popper {
   display: none;
   background: var(--light-color3);
-  border: 0.0625rem solid #d9d9d9;
   box-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);
   border-radius: 0.25rem;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25);
 }
 .popper.open {
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  position: absolute;
+}
+.popper.open.ranges {
+  display: flex;
+  flex-direction: row;
   justify-content: flex-start;
   align-items: stretch;
   position: absolute;

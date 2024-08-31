@@ -4,10 +4,10 @@
   justify-content: flex-start;
   align-items: center;
   gap: 0.75rem;
-  width: 100%;
   padding: 0.625rem 0.75rem;
   border-radius: 0.25rem;
   cursor: pointer;
+  margin-inline: 1.25rem;
   color: var(--grey);
   outline: none;
   margin-bottom: 1.25rem;
@@ -41,7 +41,7 @@
 .root.error .title .icon path {
   stroke: var(--primary-color1);
 }
-.root:focus {
+.root:hover {
   background: var(--background-color4);
 }
 .root.disabled {

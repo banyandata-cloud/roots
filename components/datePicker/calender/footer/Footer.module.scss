@@ -3,7 +3,6 @@
 .root {
 	@include flex(row, space-between, stretch);
 	margin-inline: 1rem;
-	margin-top: 1.5rem;
 	gap: 2.5rem;
 	button[data-elem='base-cell'].apply[type='submit'] {
 		background-color: $secondary-color2;

@@ -32,7 +32,7 @@
 					background-color: $mono-color1;
 					svg {
 						path {
-							fill: $white !important;
+							fill: $white;
 						}
 					}
 				}
@@ -49,7 +49,7 @@
 					}
 					svg {
 						path {
-							fill: $secondary-color2 !important;
+							fill: $secondary-color2;
 						}
 					}
 				}
@@ -91,7 +91,7 @@
 			background: $mono-color1;
 			border-radius: 1.25rem;
 			&.secondary {
-				background-color: #cfdfff;
+				background-color: $background-color5;
 			}
 			&.smooth {
 				transition: left 0.2s ease-in-out, width 0.2s ease-in-out;

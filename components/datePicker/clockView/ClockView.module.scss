@@ -3,7 +3,7 @@
 .root {
 	width: 100%;
 	@include flex;
-	padding-block: 1rem;
+	padding-block: 1.5rem;
 	.clock {
 		height: 15rem;
 		width: 15rem;
@@ -24,7 +24,7 @@
 				background: $background-color5;
 			}
 			&.selected {
-				background: $primary-color4;
+				background: $secondary-color2;
 				color: $white;
 			}
 			&.disabled {
@@ -40,7 +40,7 @@
 			transform: translate(-50%, -50%);
 			height: 0.625rem;
 			width: 0.625rem;
-			background: $primary-color4;
+			background: $secondary-color2;
 			border-radius: 100%;
 		}
 		.connector {
@@ -49,7 +49,7 @@
 			position: absolute;
 			right: auto;
 			bottom: auto;
-			background-color: $primary-color4;
+			background-color: $secondary-color2;
 			transform: translate(-50%, -50%);
 		}
 	}
