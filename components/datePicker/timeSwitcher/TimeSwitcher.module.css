@@ -27,7 +27,7 @@
 }
 .root .time-counter button[data-elem=base-cell].time:hover {
   background-color: var(--background-color5);
-  color: var(--primary-color4);
+  color: var(--secondary-color2);
 }
 .root .time-counter .meridian-container {
   display: flex;
@@ -53,8 +53,8 @@
 }
 .root .time-counter .meridian-container button[data-elem=base-cell].meridian:hover {
   background-color: var(--background-color5);
-  color: var(--primary-color4);
-  border-color: var(--primary-color4);
+  color: var(--secondary-color2);
+  border-color: var(--secondary-color2);
 }
 .root .time-counter .meridian-container button[data-elem=base-cell].meridian:nth-child(2) {
   border-radius: 0 0 2px 2px;
@@ -64,6 +64,11 @@
 }
 .root .time-counter .meridian-container button[data-elem=base-cell].meridian:nth-child(2):hover {
   background-color: var(--background-color5);
-  color: var(--primary-color4);
-  border-color: var(--primary-color4);
+  color: var(--secondary-color2);
+  border-color: var(--secondary-color2);
+}
+.root .to {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-inline: 0.25rem;
 }/*# sourceMappingURL=TimeSwitcher.module.css.map */

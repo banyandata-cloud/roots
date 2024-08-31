@@ -40,6 +40,10 @@ const DateAndTimeSelection = ({
 		showDateSelectionView((prev) => {
 			return !prev;
 		});
+		if (activeGoToSelection === 'date') {
+			setActiveGoToSelection('');
+			return;
+		}
 		setActiveGoToSelection('date');
 	};
 
@@ -48,8 +52,16 @@ const DateAndTimeSelection = ({
 		showTimeSelectionView((prev) => {
 			return !prev;
 		});
+		if (activeGoToSelection === 'time') {
+			setActiveGoToSelection('');
+			return;
+		}
 		setActiveGoToSelection('time');
 	};
+
+	if (!dateValue) {
+		return null;
+	}
 
 	return (
 		<div className={styles.root}>

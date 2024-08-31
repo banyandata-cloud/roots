@@ -1,0 +1,32 @@
+@import '../../../styles';
+
+.root {
+	@include flex(column, flex-start, flex-start);
+	padding-inline: 1rem;
+	padding-block: 1.25rem;
+	overflow-y: scroll;
+	height: 26.5rem;
+	@include removeScrollbar;
+	border-right: 1px solid $light-color1;
+	gap: 0.25rem;
+	.option[data-elem='base-cell'] {
+		background-color: transparent !important;
+		width: 100%;
+		@include flex(row, flex-start, center);
+		> [data-elem='component2'] {
+			color: $text-color;
+			font-size: 0.875rem;
+			font-weight: 500;
+			line-height: 1.3125rem;
+		}
+		&:hover {
+			background-color: $background-color5 !important;
+		}
+		&.selected {
+			background-color: $secondary-color2 !important;
+			> [data-elem='component2'] {
+				color: $white !important;
+			}
+		}
+	}
+}

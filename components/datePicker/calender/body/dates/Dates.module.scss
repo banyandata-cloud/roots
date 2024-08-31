@@ -14,14 +14,14 @@
 		user-select: none;
 
 		&.minInRange {
-			background-color: $primary-color4;
+			background-color: $secondary-color2;
 			border-radius: 1.5rem 0rem 0rem 1.5rem;
 			.date {
 				color: $white;
 			}
 			&:hover {
 				.date {
-					background: $primary-color4;
+					background: $secondary-color2;
 					color: $white;
 					@include boxShadow;
 				}
@@ -48,7 +48,7 @@
 			}
 		}
 		&.maxInRange {
-			background-color: $primary-color4;
+			background-color: $secondary-color2;
 			border-radius: 0rem 1.5rem 1.5rem 0rem;
 			.date {
 				color: $white;
@@ -76,7 +76,7 @@
 			}
 			&:hover {
 				.date {
-					background: $primary-color4;
+					background: $secondary-color2;
 					color: $white;
 					@include boxShadow;
 				}
@@ -86,7 +86,7 @@
 			background: $background-color5;
 			border-radius: 0rem;
 			.date {
-				color: $primary-color4;
+				color: $secondary-color2;
 			}
 			&.today-selected {
 				@include flex(column, flex-start, center);
@@ -121,7 +121,7 @@
 			background: $background-color5;
 			border-radius: 0rem 1.5rem 1.5rem 0rem;
 			.date {
-				color: $primary-color4;
+				color: $secondary-color2;
 			}
 			&.today-selected {
 				@include flex(column, flex-start, center);
@@ -138,7 +138,7 @@
 			background: $background-color5;
 			border-radius: 1.5rem 0rem 0rem 1.5rem;
 			.date {
-				color: $primary-color4;
+				color: $secondary-color2;
 			}
 
 			&.today-selected {
@@ -156,7 +156,7 @@
 		&.today {
 			@include flex(column, flex-start, center);
 			.date {
-				color: $primary-color4;
+				color: $secondary-color2;
 				font-weight: 500;
 			}
 			.indicator {
@@ -192,7 +192,7 @@
 			}
 			&.unSelected {
 				background-color: $white;
-				border-color: $primary-color4;
+				border-color: $secondary-color2;
 				border-width: 0.125rem;
 				border-style: solid;
 				color: $black;
@@ -210,11 +210,11 @@
 		&:hover {
 			.date {
 				background: $background-color5;
-				color: $primary-color4;
+				color: $secondary-color2;
 				@include boxShadow;
 			}
 			.selected {
-				background-color: $primary-color4;
+				background-color: $secondary-color2;
 				color: $white;
 			}
 			.disabled {

@@ -1,14 +1,14 @@
-import { offset, flip, size, autoUpdate, shift } from '@floating-ui/react-dom-interactions';
+import { autoUpdate, flip, offset, shift, size } from '@floating-ui/react-dom-interactions';
 import {
-	differenceInMinutes,
-	differenceInHours,
 	differenceInDays,
+	differenceInHours,
+	differenceInMinutes,
 	differenceInMonths,
 	fromUnixTime,
 } from 'date-fns';
 import { MONTHS } from '../../../constants';
-import { dateRanges } from '../calender/footer/utils';
 import { doubleDigitted } from '../../../utils';
+import { dateRanges } from '../calender/footer/utils';
 
 export const getFloatingReferences = (open, onOpenChange) => {
 	return {
@@ -128,7 +128,7 @@ export const getDatePickerDisplayValue = ({
 
 		const startDateValue = `${startDate.getDate()} ${
 			MONTHS[startDate.getMonth().toString()?.substring(0, 3)]
-		}`;
+		} ${startDate.getFullYear()}`;
 
 		const endDateValue = `${endDate.getDate()} ${
 			MONTHS[endDate.getMonth().toString()?.substring(0, 3)]
@@ -144,9 +144,9 @@ export const getDatePickerDisplayValue = ({
 			sDate.getMinutes()
 		)} ${sDate.getHours() >= 12 ? 'PM' : 'AM'}`;
 
-		return ` ${sDate.getDate()} ${
+		return `${sDate.getDate()} ${
 			MONTHS[sDate.getMonth().toString()?.substring(0, 3)]
-		} ${sDate.getFullYear()} ${timeValue}`;
+		} ${sDate.getFullYear()}, ${timeValue}`;
 	}
 	if (timeRange) {
 		const sDate = fromUnixTime(value - 3600 * limitHours);
@@ -155,9 +155,9 @@ export const getDatePickerDisplayValue = ({
 			sDate.getMinutes()
 		)} ${sDate.getHours() >= 12 ? 'PM' : 'AM'}`;
 
-		return ` ${sDate.getDate()} ${
+		return `${sDate.getDate()} ${
 			MONTHS[sDate.getMonth().toString()?.substring(0, 3)]
-		} ${sDate.getFullYear()} ${timeValue}`;
+		} ${sDate.getFullYear()}, ${timeValue}`;
 	}
 
 	return '';

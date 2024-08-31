@@ -34,7 +34,7 @@
   background-color: var(--mono-color1);
 }
 .root .toggle > button[data-elem=base-cell].toggle-button.active.highlight svg path {
-  fill: var(--white) !important;
+  fill: var(--white);
 }
 .root .toggle > button[data-elem=base-cell].toggle-button.active > [data-elem=component2] > [data-elem=title] {
   color: var(--white);
@@ -43,7 +43,7 @@
   color: var(--secondary-color2);
 }
 .root .toggle > button[data-elem=base-cell].toggle-button.active.secondary svg path {
-  fill: var(--secondary-color2) !important;
+  fill: var(--secondary-color2);
 }
 .root .toggle > button[data-elem=base-cell].toggle-button.disabled {
   cursor: not-allowed;
@@ -73,7 +73,7 @@
   border-radius: 1.25rem;
 }
 .root .toggle .slider.secondary {
-  background-color: #cfdfff;
+  background-color: var(--background-color5);
 }
 .root .toggle .slider.smooth {
   transition: left 0.2s ease-in-out, width 0.2s ease-in-out;

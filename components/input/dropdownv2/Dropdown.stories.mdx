@@ -41,13 +41,13 @@ import { Dropdown } from '@banyan_cloud/roots';
 
 The CSF rendered inside the `Canvas` from which you can see the implementation example.
 
-### Default
+### Default - Uncontrolled
 
 The default dropdown component.
 
 <Canvas>
 	<Story
-		name='Default'
+		name='Default Uncontrolled'
 		args={{
 			label: 'Default Dropdown',
 			placeholder: 'Select an option',
@@ -56,12 +56,39 @@ The default dropdown component.
 	</Story>
 </Canvas>
 
-### Multi-check
+### Default Dropdown - Controlled
+
+The dropdown component with radio buttons.
+
+<Canvas>
+	<Story name='Default Controlled'>
+		{() => {
+			const [value, setValue] = useState([]);
+			return (
+				<div>
+					<Dropdownv2
+						value={value}
+						label='Default Dropdown With States'
+						onChange={(event, newValue) => {
+							setValue(newValue);
+						}}
+						placeholder='Select an option'>
+						<DropdownItemv2 title='Option A' value={1} />
+						<DropdownItemv2 title='Option B' value={2} />
+						<DropdownItemv2 title='Option C' value={3} />
+					</Dropdownv2>
+				</div>
+			);
+		}}
+	</Story>
+</Canvas>
+
+### Multi Select Dropdown - Controlled
 
 The dropdown component with multiple selections.
 
 <Canvas>
-	<Story name='Multi-check'>
+	<Story name='Multi Select Controlled'>
 		{() => {
 			const [value, setValue] = useState([]);
 			return (
@@ -74,9 +101,9 @@ The dropdown component with multiple selections.
 						onChange={(event, newValue) => {
 							setValue(newValue);
 						}}>
-						{[...Array(4).keys()].map((option) => {
+						{[...Array(50).keys()].map((option) => {
 							return (
-								<DropdownItem
+								<DropdownItemv2
 									key={option}
 									title={`Option ${option + 1}`}
 									value={option + 1}
@@ -91,31 +118,35 @@ The dropdown component with multiple selections.
 	</Story>
 </Canvas>
 
-### Radio
+### Multi Select Dropdown - Unontrolled
 
-The dropdown component with radio buttons.
+The dropdown component with multiple selections.
 
 <Canvas>
-	<Story name='Radio'>
+	<Story name='Multi Select Uncontrolled'>
 		{() => {
 			return (
 				<div>
 					<Dropdownv2
-						label='Multi Select Checkbox Dropdown'
+						multi={true}
+						label='Uncontrolled Multi Select Checkbox Dropdown'
 						placeholder='Select an option'>
-						<DropdownItem title='Option A' value={1} variant='radio' />
-						<DropdownItem title='Option B' value={2} variant='radio' />
-						<DropdownItem title='Option C' value={3} variant='radio' />
+						{[...Array(20).keys()].map((option) => {
+							return (
+								<DropdownItemv2
+									key={option}
+									title={`Option ${option + 1}`}
+									value={option + 1}
+									variant='checkbox'
+								/>
+							);
+						})}
 					</Dropdownv2>
 				</div>
 			);
 		}}
 	</Story>
 </Canvas>
-
-## Try in the Code Editor
-
-This embeded `CodeSandBox` is external third party code editor `iframe` shared publicly. It is advised to create an account with banyancloud mail id to create/fork this sandbox.
 
 ## API
 

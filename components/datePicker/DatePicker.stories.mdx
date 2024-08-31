@@ -101,13 +101,56 @@ The Date picker with custom dropdown to select the pre-defined ranges.
 		args={{
 			placeholder: 'Select Date Range',
 			label: 'Range Date Picker',
-			value: [1674412200, 1675708200],
 			range: true,
 			theme: 'light',
+			value: [1724437800, 1725128999],
+			onApply: (v) => {
+				console.log(v);
+			},
 			customRanges: [
 				{
 					title: 'Last 12 hours',
 					type: 'hours',
+					value: 12,
+				},
+				{
+					title: 'Last 24 hours',
+					type: 'hours',
+					value: 24,
+				},
+				{
+					title: 'Last 1 Week',
+					type: 'days',
+					value: 7,
+				},
+				{
+					title: 'Last 15 Days',
+					type: 'days',
+					value: 15,
+				},
+				{
+					title: 'Last 1 Month',
+					type: 'days',
+					value: 30,
+				},
+				{
+					title: 'Last 2 Months',
+					type: 'months',
+					value: 2,
+				},
+				{
+					title: 'Last 3 Months',
+					type: 'months',
+					value: 3,
+				},
+				{
+					title: 'Last 6 Months',
+					type: 'months',
+					value: 6,
+				},
+				{
+					title: 'Last 1 Year',
+					type: 'months',
 					value: 12,
 				},
 			],

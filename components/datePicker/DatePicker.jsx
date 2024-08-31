@@ -19,6 +19,7 @@ import { Popper } from '../popper';
 import styles from './DatePicker.module.css';
 import { Calender } from './calender';
 import { DateAndTimeCustomRanges } from './customRanges';
+import { CustomDateRanges } from './ranges';
 import {
 	calculateZeroHours,
 	getDatePickerDisplayValue,
@@ -48,6 +49,8 @@ const DatePicker = (props) => {
 		limitHours,
 		showTime,
 		timeRange,
+		popperClassName,
+		showCustomRanges,
 	} = props;
 
 	const [openDatePicker, setOpenDatePicker] = useState(false);
@@ -241,7 +244,7 @@ const DatePicker = (props) => {
 				);
 			}}>
 			<div className={classes(styles.root)} ref={datePickerRef}>
-				{hasCustomRanges && (
+				{hasCustomRanges && !showCustomRanges && (
 					<Button
 						data-elem='custom-header'
 						ref={customRangeFloatingReference.reference}
@@ -299,7 +302,7 @@ const DatePicker = (props) => {
 
 					{error && <div className={styles['error-text']}>{error}</div>}
 
-					<Popper open={openDatePicker} wrapperid='datePicker-popper'>
+					<Popper open={openDatePicker} wrapperId='datePicker-popper'>
 						{openDatePicker && (
 							<motion.div
 								{...datePickerInteractionProps.getFloatingProps({
@@ -326,8 +329,11 @@ const DatePicker = (props) => {
 								}}
 								className={classes(
 									styles.popper,
-									openDatePicker ? styles.open : ''
+									openDatePicker ? styles.open : '',
+									popperClassName,
+									showCustomRanges ? styles.ranges : ''
 								)}>
+								{showCustomRanges && <CustomDateRanges {...customRangesProps} />}
 								<Calender {...calenderProps} />
 							</motion.div>
 						)}
