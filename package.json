@@ -1,6 +1,6 @@
 {
 	"name": "@banyan_cloud/roots",
-	"version": "1.0.280",
+	"version": "1.0.286",
 	"description": "Design System Library which drives the Banyan Cloud products",
 	"main": "dist/cjs/index.js",
 	"module": "dist/esm/index.js",
@@ -18,8 +18,6 @@
 	"dependencies": {
 		"@floating-ui/react-dom": "^1.0.0",
 		"@floating-ui/react-dom-interactions": "^0.10.1",
-		"@googlemaps/markerclusterer": "^2.0.15",
-		"@googlemaps/react-wrapper": "^1.1.35",
 		"d3": "^7.8.5",
 		"@highcharts/map-collection": "^2.1.0",
 		"date-fns": "^2.29.3",
@@ -103,7 +101,7 @@
 	},
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"storybook": "start-storybook -p 6006 -s ./components",
+		"start": "start-storybook -p 6006 -s ./components",
 		"build-storybook": "build-storybook -s ./components",
 		"lint": "eslint --ext js,jsx .",
 		"lint:fix": "eslint --ext js,jsx . --fix",

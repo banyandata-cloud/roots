@@ -25,6 +25,25 @@
 		max-width: 100%;
 		border-radius: 0.25rem;
 		position: relative;
+
+		&.highlightOnSelect {
+			[data-elem='select'] {
+				background-color: $background-color5;
+				color: $secondary-color2;
+				svg {
+					fill: $secondary-color2;
+					> path {
+						fill: $secondary-color2 !important;
+					}
+				}
+			}
+		}
+
+		&.open {
+			outline: 1px solid $secondary-color2;
+			transition: outline 100ms ease-in-out;
+		}
+
 		&.error {
 			border: 1px solid $primary-color1;
 			border-radius: 0.3125rem;
@@ -71,8 +90,9 @@
 					transition: transform 0.5s;
 					fill: $text-color !important;
 					@include flex(row, space-between);
+					transform: rotate(180deg);
 					&.open {
-						transform: rotate(180deg);
+						transform: rotate(0deg);
 					}
 				}
 				.info-icon {
@@ -118,24 +138,34 @@
 	background: $light-color3;
 	width: auto;
 	border-radius: 0.3125rem;
-	padding: 1.25rem 1.25rem 0.75rem 1.25rem;
+	padding: 1.25rem 0rem 1.25rem 0rem;
 	overflow-y: auto;
+	@include removeScrollbar;
 	min-height: 4rem;
+	max-height: 25rem !important;
 	outline: none;
 	box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
 
+	&.multi {
+		padding-top: 0 !important;
+		padding-bottom: 0 !important;
+	}
+
 	.multi-options {
 		@include flex(row, space-between);
-		margin-bottom: 0.625rem;
+		position: sticky;
+		top: 0;
+		background-color: $light-color3;
+		padding-inline: 1.25rem;
+		padding-block: 0.25rem;
 		list-style: none;
-		padding-left: 0.625rem;
 		button[data-elem='base-cell'].button[type='button'] {
 			width: auto;
-			padding: 0%;
+			padding: 0% !important;
 			background-color: transparent;
 			color: $secondary-color2;
 			> [data-elem='component2'] {
-				margin-left: 0.625rem;
+				margin-left: 0.3125rem;
 			}
 		}
 		.items {
@@ -147,18 +177,18 @@
 
 	.footer {
 		@include flex(row, space-between);
-		margin-bottom: 0.5rem;
 		list-style: none;
-		gap: 0.5rem;
+		gap: 2.5rem;
+		position: sticky;
+		background-color: $light-color3;
+		padding: 0rem 1rem 1rem;
+		bottom: 0;
 		button[data-elem='base-cell'].multi-apply[type='submit'] {
-			background-color: $secondary-color2;
-			margin-top: 1rem;
 			flex: 1;
 		}
 		button[data-elem='base-cell'].multi-clear[type='submit'] {
 			background-color: $light-color2;
 			color: $mono-color1;
-			margin-top: 1rem;
 			flex: 1;
 			&:hover {
 				background-color: $light-color1;

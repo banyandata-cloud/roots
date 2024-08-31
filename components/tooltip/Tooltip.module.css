@@ -3,15 +3,12 @@
   border-radius: 0.25rem;
   min-width: 1rem;
   max-width: auto;
-  padding: 0.375rem;
+  padding: 0.5rem 0.75rem;
   font-size: 0.875rem;
-  line-height: 1;
+  line-height: 1.3125rem;
   color: var(--light-color3);
   background: var(--text-color);
   border-color: var(--text-color);
-}
-.tooltip .arrow {
-  background: var(--text-color);
 }
 .tooltip .arrow {
   position: absolute;
@@ -20,4 +17,5 @@
   z-index: -1;
   pointer-events: none;
   transform: rotate(45deg);
+  background: var(--text-color);
 }/*# sourceMappingURL=Tooltip.module.css.map */

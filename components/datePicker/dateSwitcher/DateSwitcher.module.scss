@@ -4,26 +4,34 @@
 	@include flex(row);
 	width: 100%;
 	gap: 0.5rem;
+	padding-inline: 0.75rem;
 	.switch-selector {
 		@include flex;
 		gap: 0.5rem;
+		width: 100%;
 		.value {
-			width: 6.5rem;
-			height: 2rem;
+			width: 100%;
+			padding: 0.9375rem;
 			background-color: $background-color5;
 			border-radius: 4px;
 			@include flex;
+			> span {
+				color: $secondary-color2;
+				font-size: 1rem;
+				font-weight: 500;
+				line-height: 0.7969rem;
+			}
 		}
 		.arrows {
 			@include flex(column, flex-start, flex-start);
 			button[data-elem='base-cell'].arrow {
 				width: 2rem;
-				height: 1rem;
+				height: 1.3rem;
 				border-radius: 4px 4px 0 0;
 				background-color: $light-color2;
 				&:hover {
 					background-color: $background-color5;
-					color: $primary-color4;
+					color: $secondary-color2;
 				}
 				> [data-elem='component2'] {
 					> [data-elem='title'] {
@@ -35,5 +43,10 @@
 				}
 			}
 		}
+	}
+	.to {
+		font-size: 1rem;
+		font-weight: 500;
+		margin-inline: 0.25rem;
 	}
 }

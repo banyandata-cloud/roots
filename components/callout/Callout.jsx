@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import { forwardRef } from 'react';
 import { classes } from '../../utils/utils';
-import styles from './Callout.module.css';
-import { CrossIcon, AlertIcon } from '../icons';
 import { Button } from '../buttons';
+import { AlertIcon, CrossIcon } from '../icons';
+import styles from './Callout.module.css';
 
 /**
  * Renders an alert message with optional icon, title, description, and action button.
@@ -19,10 +19,9 @@ import { Button } from '../buttons';
  */
 const Callout = forwardRef((props) => {
 	const {
-		showIcon,
-		border,
+		showIcon = true,
 		shadow,
-		className,
+		className = '',
 		title,
 		description,
 		icon: CustomIcon,
@@ -38,19 +37,19 @@ const Callout = forwardRef((props) => {
 	} else {
 		switch (type) {
 			case 'info':
-				Icon = <AlertIcon.Info className={styles.icon} />;
+				Icon = <AlertIcon.Info className={styles.icon} v2 />;
 				break;
 			case 'error':
-				Icon = <AlertIcon.Error className={styles.icon} />;
+				Icon = <AlertIcon.Error className={styles.icon} v2 />;
 				break;
 			case 'warning':
-				Icon = <AlertIcon.Warning className={styles.icon} />;
+				Icon = <AlertIcon.Warning className={styles.icon} v2 />;
 				break;
 			case 'success':
-				Icon = <AlertIcon.Success className={styles.icon} />;
+				Icon = <AlertIcon.Success className={styles.icon} v2 />;
 				break;
 			case 'danger':
-				Icon = <AlertIcon.Danger className={styles.icon} />;
+				Icon = <AlertIcon.Danger className={styles.icon} v2 />;
 				break;
 			default:
 				Icon = <CustomIcon />;
@@ -59,16 +58,11 @@ const Callout = forwardRef((props) => {
 	}
 
 	return (
-		<div
-			className={classes(
-				styles.root,
-				styles[type],
-				styles[`border-${border}`],
-				shadow ? styles.shadow : '',
-				className
-			)}>
+		<div className={classes(styles.root, styles[type], shadow ? styles.shadow : '', className)}>
 			<div className={styles.left}>
-				<div className={styles.icons}>{showIcon && Icon}</div>
+				<div className={classes(styles['icon-container'], styles[type])}>
+					{showIcon && Icon}
+				</div>
 				<div className={styles.content}>
 					<span className={styles.title}>{title}</span>
 					<span className={styles.description}>{description}</span>
@@ -99,13 +93,6 @@ Callout.propTypes = {
 	border: PropTypes.oneOf(['default', 'thick-left', 'none']),
 	shadow: PropTypes.bool,
 	className: PropTypes.string,
-};
-
-Callout.defaultProps = {
-	showIcon: true,
-	border: 'none',
-	shadow: false,
-	className: '',
 };
 
 export default Callout;

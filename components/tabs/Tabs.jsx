@@ -1,17 +1,16 @@
-/* eslint-disable react/no-array-index-key */
 import PropTypes from 'prop-types';
 import React, { useEffect, useRef, useState } from 'react';
+import { classes } from '../../utils';
 import { Button } from '../buttons';
 import Dropdown from '../input/dropdown/Dropdown';
 import DropdownItem from '../input/dropdown/dropdown-item/DropdownItem';
 import { Skeleton } from './Skeleton';
 import styles from './Tabs.module.css';
-import { classes } from '../../utils';
 
 const Tabs = (props) => {
 	const {
-		tabs,
-		className,
+		tabs = [],
+		className = '',
 		loading,
 		fallback,
 		selectedTab,
@@ -176,14 +175,6 @@ Tabs.propTypes = {
 	selectedTab: PropTypes.number,
 	loading: PropTypes.bool,
 	fallback: PropTypes.bool,
-};
-
-Tabs.defaultProps = {
-	className: '',
-	tabs: [],
-	selectedTab: null,
-	loading: false,
-	fallback: false,
 };
 
 export default Tabs;

@@ -60,8 +60,9 @@
 				height: 1.5rem;
 				transition: transform 0.5s;
 				fill: $text-color !important;
+				transform: rotate(180deg);
 				&.open {
-					transform: rotate(180deg);
+					transform: rotate(0deg);
 				}
 			}
 

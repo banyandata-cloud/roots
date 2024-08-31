@@ -11,20 +11,25 @@ jobs:
     steps:
       # Checkout project repository
       - name: Checkout
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v4
+        
+      - name: pnpm-setup
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
 
       # Setup Node.js environment
       - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           registry-url: https://registry.npmjs.org/
-          node-version: '16'
+          node-version: 20
 
       # Install dependencies (required by Run tests step)
       - name: Install dependencies
-        run: yarn install
+        run: pnpm install
       - name: Run build  
-        run: yarn build
+        run: pnpm build
 
       # Tests
       #- name: Run tests

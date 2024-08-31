@@ -2,8 +2,8 @@
 
 .root {
 	@include flex(row, space-between, stretch);
-	margin-inline: 0.5rem;
-	gap: 0.3rem;
+	margin-inline: 1rem;
+	gap: 2.5rem;
 	button[data-elem='base-cell'].apply[type='submit'] {
 		background-color: $secondary-color2;
 		margin-top: auto;

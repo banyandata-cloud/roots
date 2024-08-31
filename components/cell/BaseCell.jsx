@@ -1,22 +1,21 @@
-import React, { createElement, forwardRef, isValidElement } from 'react';
 /* eslint-disable react/forbid-prop-types */
 import PropTypes from 'prop-types';
+import React, { createElement, forwardRef, isValidElement } from 'react';
 import { classes } from '../../utils';
 import styles from './BaseCell.module.css';
 
-// eslint-disable-next-line prefer-arrow-callback
-export const BaseCell = forwardRef(function BaseCell(props, ref) {
+export const BaseCell = forwardRef((props, ref) => {
 	const {
-		className,
-		size,
+		className = '',
+		size = 'sm',
 		flexible,
 		rounded,
 		component1,
 		component2,
 		component3,
-		RootDOM,
-		attrs,
-		radius,
+		RootDOM = 'div',
+		attrs = {},
+		radius = 'default',
 	} = props;
 
 	const Component = createElement(
@@ -57,18 +56,6 @@ BaseCell.propTypes = {
 	radius: PropTypes.oneOf(['none', 'default', 'round', 'ellipse']),
 	RootDOM: PropTypes.oneOf(['div', 'span', 'button', 'td']),
 	attrs: PropTypes.object,
-};
-
-BaseCell.defaultProps = {
-	className: '',
-	component1: null,
-	component2: null,
-	component3: null,
-	size: 'sm',
-	flexible: false,
-	radius: 'none',
-	RootDOM: 'div',
-	attrs: {},
 };
 
 export default BaseCell;

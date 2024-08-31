@@ -22,7 +22,7 @@
 			}
 			&:hover {
 				background-color: $background-color5;
-				color: $primary-color4;
+				color: $secondary-color2;
 			}
 		}
 		.meridian-container {
@@ -46,8 +46,8 @@
 				}
 				&:hover {
 					background-color: $background-color5;
-					color: $primary-color4;
-					border-color: $primary-color4;
+					color: $secondary-color2;
+					border-color: $secondary-color2;
 				}
 				&:nth-child(2) {
 					border-radius: 0 0 2px 2px;
@@ -58,11 +58,16 @@
 					}
 					&:hover {
 						background-color: $background-color5;
-						color: $primary-color4;
-						border-color: $primary-color4;
+						color: $secondary-color2;
+						border-color: $secondary-color2;
 					}
 				}
 			}
 		}
+	}
+	.to {
+		font-size: 1rem;
+		font-weight: 500;
+		margin-inline: 0.25rem;
 	}
 }

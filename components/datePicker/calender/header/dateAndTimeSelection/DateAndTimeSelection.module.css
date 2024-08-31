@@ -30,17 +30,18 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  background-color: var(--light-color3) !important;
 }
 .root > div button[data-elem=base-cell].selector.active {
-  background-color: var(--primary-color4);
+  background-color: var(--secondary-color2) !important;
 }
 .root > div button[data-elem=base-cell].selector.active > [data-elem=component2] > [data-elem=title] {
   color: var(--white);
 }
-.root > div button[data-elem=base-cell].selector:hover {
-  border: 1px solid transparent !important;
+.root > div button[data-elem=base-cell].selector:hover.active {
+  background-color: var(--secondary-color2) !important;
 }
-.root > div button[data-elem=base-cell].selector:hover > [data-elem=component2] > [data-elem=title] {
+.root > div button[data-elem=base-cell].selector:hover.active > [data-elem=component2] > [data-elem=title] {
   color: var(--white);
 }
 .root > div button[data-elem=base-cell].selector > [data-elem=component2] > [data-elem=title] {

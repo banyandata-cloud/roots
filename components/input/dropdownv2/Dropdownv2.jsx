@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 /* eslint-disable react/require-default-props */
 /* eslint-disable no-nested-ternary */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
@@ -43,8 +44,10 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 		popperClassName = '',
 		value,
 		onChange,
+		leftComponent: LeftComponent,
 		onBlur,
 		children,
+		highlightOnSelect,
 		label,
 		placeholder = 'Select an option',
 		multi,
@@ -54,7 +57,7 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 		name,
 		feedback,
 		formatter = (totalSelected) => {
-			return `${totalSelected} options selected`;
+			return `${totalSelected} options applied`;
 		},
 		custom,
 		newIcon,
@@ -72,6 +75,7 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 
 	// for uncontrolled input
 	const [uncontrolledValue, setUncontrolledValue] = useState(value);
+	const [appliedMultiUncontrolledValue, setAppliedMultiUncontrolledValue] = useState(null);
 
 	const { x, y, reference, floating, strategy, context } = useFloating({
 		open,
@@ -262,7 +266,7 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 	}, [open, activeIndex, pointer]);
 
 	useEffect(() => {
-		if (multi) {
+		if (multi && isControlled) {
 			setUncontrolledValue(value);
 		}
 	}, [open, multi, value]);
@@ -309,16 +313,54 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 			},
 		});
 
+		if (!isControlled) {
+			setAppliedMultiUncontrolledValue(uncontrolledValue);
+			onChange(event, appliedMultiUncontrolledValue);
+			return;
+		}
+
 		onChange(event, uncontrolledValue);
 	};
 
 	let selectedItemsLabel = null;
 
 	if (selectedOptions?.length === 1) {
-		selectedItemsLabel = '1 item selected';
+		selectedItemsLabel = '1 option selected';
 	} else {
-		selectedItemsLabel = `${selectedOptions?.length} items selected`;
+		selectedItemsLabel = `${selectedOptions?.length} options selected`;
 	}
+
+	const getValueToDisplay = () => {
+		if (value && value.length > 0) {
+			if (value.length === 1) {
+				const selectedItem = items?.find((item) => {
+					return item.props.value == value[0];
+				});
+				return selectedItem?.props?.title;
+			}
+			return formatter(value.length);
+		}
+		if (
+			!isControlled &&
+			appliedMultiUncontrolledValue &&
+			appliedMultiUncontrolledValue.length > 0
+		) {
+			if (appliedMultiUncontrolledValue?.length === 1) {
+				const selectedItem = items?.find((item) => {
+					return item.props.value == appliedMultiUncontrolledValue[0];
+				});
+				return selectedItem?.props?.title;
+			}
+			return formatter(appliedMultiUncontrolledValue.length);
+		}
+		if (!isControlled) {
+			const selectedItem = items?.find((item) => {
+				return item.props.value == uncontrolledValue;
+			});
+			return selectedItem?.props?.title;
+		}
+		return '';
+	};
 
 	return (
 		<ErrorBoundary
@@ -347,7 +389,14 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 				)}
 				<div
 					data-elem='header'
-					className={classes(styles.header, error ? styles.error : ' ')}
+					className={classes(
+						styles.header,
+						error ? styles.error : ' ',
+						open ? styles.open : '',
+						(Array.isArray(value) ? value.length > 0 : !!value) && highlightOnSelect
+							? styles.highlightOnSelect
+							: ''
+					)}
 					ref={reference}
 					{...getReferenceProps()}>
 					<input
@@ -377,10 +426,9 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 							styles.select,
 							feedback != null ? styles[`feedback-${feedback?.type}`] : ''
 						)}>
+						{LeftComponent && <LeftComponent />}
 						{typeof placeholder === 'string' || placeholder instanceof String ? (
-							(selectedOptions?.length > 1
-								? formatter(selectedOptions.length)
-								: selectedOptions?.[0]?.title) ?? (
+							getValueToDisplay() || (
 								<span data-elem='placeholder' className={styles.placeholder}>
 									{placeholder}
 								</span>
@@ -442,7 +490,8 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 									className: classes(
 										styles.body,
 										popperClassName,
-										open ? styles.open : ''
+										open ? styles.open : '',
+										multi ? styles.multi : ''
 									),
 								})}
 								initial={{
@@ -486,16 +535,15 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 									</li>
 								)}
 								{items}
-								{multi && selectedOptions?.length > 0 && (
+								{multi && (
 									<div className={styles.footer}>
 										<Button
 											className={styles['multi-clear']}
 											blurOnClick={false}
-											title='Clear'
+											title='Clear All'
 											size='auto'
 											disabled={selectedOptions?.length === 0}
 											onClick={(event) => {
-												multiOptionsRef?.current?.focus();
 												onSelectAll(event, false);
 											}}
 										/>

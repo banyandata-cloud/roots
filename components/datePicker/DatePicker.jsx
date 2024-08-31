@@ -19,12 +19,13 @@ import { Popper } from '../popper';
 import styles from './DatePicker.module.css';
 import { Calender } from './calender';
 import { DateAndTimeCustomRanges } from './customRanges';
+import { CustomDateRanges } from './ranges';
 import {
+	calculateZeroHours,
 	getDatePickerDisplayValue,
 	getDateRangeTag,
 	getFloatingReferences,
 	isMaxRangeExceeded,
-	calculateZeroHours,
 } from './utils';
 
 const DatePicker = (props) => {
@@ -42,11 +43,14 @@ const DatePicker = (props) => {
 		onClear,
 		customRanges,
 		custom,
+		highlightOnSelect,
 		valueAsRange, // only for single Date Picker,
 		defaultHourDiff,
 		limitHours,
 		showTime,
 		timeRange,
+		popperClassName,
+		showCustomRanges,
 	} = props;
 
 	const [openDatePicker, setOpenDatePicker] = useState(false);
@@ -240,7 +244,7 @@ const DatePicker = (props) => {
 				);
 			}}>
 			<div className={classes(styles.root)} ref={datePickerRef}>
-				{hasCustomRanges && (
+				{hasCustomRanges && !showCustomRanges && (
 					<Button
 						data-elem='custom-header'
 						ref={customRangeFloatingReference.reference}
@@ -272,12 +276,12 @@ const DatePicker = (props) => {
 							openDatePicker ? styles.open : '',
 							error ? styles.error : '',
 							customRanges ? styles['with-custom'] : '',
-
-							displayValue ? styles.highlight : ''
+							displayValue ? styles.highlight : '',
+							highlightOnSelect && value ? styles.highlightOnSelect : ''
 						)}
 						{...datePickerInteractionProps.getReferenceProps()}>
 						<div className={styles.left}>
-							<CalenderIcon className={styles.icon} />
+							<CalenderIcon />
 
 							{!displayValue && (
 								<span className={styles.placeholder}>{placeholder}</span>
@@ -298,7 +302,7 @@ const DatePicker = (props) => {
 
 					{error && <div className={styles['error-text']}>{error}</div>}
 
-					<Popper open={openDatePicker} wrapperid='datePicker-popper'>
+					<Popper open={openDatePicker} wrapperId='datePicker-popper'>
 						{openDatePicker && (
 							<motion.div
 								{...datePickerInteractionProps.getFloatingProps({
@@ -325,8 +329,11 @@ const DatePicker = (props) => {
 								}}
 								className={classes(
 									styles.popper,
-									openDatePicker ? styles.open : ''
+									openDatePicker ? styles.open : '',
+									popperClassName,
+									showCustomRanges ? styles.ranges : ''
 								)}>
+								{showCustomRanges && <CustomDateRanges {...customRangesProps} />}
 								<Calender {...calenderProps} />
 							</motion.div>
 						)}

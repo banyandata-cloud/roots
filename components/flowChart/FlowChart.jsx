@@ -5,9 +5,9 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-tabs */
 /* eslint-disable no-param-reassign */
-import React, { useRef, useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import * as d3 from 'd3';
+import PropTypes from 'prop-types';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from './FlowChart.module.css';
 import { getCrossIcon, getExcludeIcon, getTickIconSvg } from './assets';
 
@@ -28,25 +28,25 @@ import { getCrossIcon, getExcludeIcon, getTickIconSvg } from './assets';
 
 const FlowChart = ({
 	data,
-	width,
-	height,
-	linkDistance,
-	linkFontSize,
+	width = 900,
+	height = 600,
+	linkDistance = 150,
+	linkFontSize = '8px',
 	linkFontColor,
-	nodeRadius,
-	labelColor,
-	labelFontSize,
-	linkTextColor,
+	nodeRadius = 20,
+	labelColor = 'white',
+	labelFontSize = '8px',
+	linkTextColor = 'black',
 	hideLinkText,
 	showLegend,
-	displayZoomButtons,
-	showLeftLegend,
-	leftLegendX,
-	leftLegendY,
-	rightLegendAdjY,
-	rightLegendAdjX,
-	containerBackground,
-	containerBorderRadius,
+	displayZoomButtons = true,
+	showLeftLegend = true,
+	leftLegendX = -110,
+	leftLegendY = 8,
+	rightLegendAdjY = 178,
+	rightLegendAdjX = 140,
+	containerBackground = '#f7f7f8',
+	containerBorderRadius = 14,
 	onNodeClick,
 }) => {
 	const svgRef = useRef(null);
@@ -337,7 +337,7 @@ const FlowChart = ({
 		node.append('g')
 			.attr('class', 'icon')
 			.each(function (d) {
-				if (d.excluded === 'NO') {
+				if (d.excluded === 'YES') {
 					d3.select(this)
 						.append('svg')
 						.attr('width', 22)
@@ -379,11 +379,8 @@ const FlowChart = ({
 		}
 
 		function handleClick(event, d) {
-			if (d.status !== 'PASS' && d.status !== 'FAIL') {
-				return;
-			}
+			onNodeClick?.(d);
 			setSelectedNode(d);
-			onNodeClick(d);
 
 			// Remove any existing hover circles
 			container.selectAll('.hover-circle').remove();
@@ -561,7 +558,7 @@ const FlowChart = ({
 				.append('text')
 				.attr('x', leftLegendX - 5) // Space between icon and text
 				.attr('y', leftLegendY + 6)
-				.text('Exclude Resource')
+				.text('Excluded Resources')
 				.attr('fill', 'black')
 				.style('font-size', labelFontSize)
 				.attr('dy', '0.35em') // Align text vertically in the middle
@@ -661,28 +658,6 @@ FlowChart.propTypes = {
 	onNodeClick: PropTypes.func,
 	rightLegendAdjY: PropTypes.number,
 	rightLegendAdjX: PropTypes.number,
-};
-
-FlowChart.defaultProps = {
-	width: 900,
-	height: 600,
-	linkDistance: 150,
-	linkFontSize: '8px',
-	nodeRadius: 20,
-	labelFontSize: '8px',
-	linkTextColor: 'black',
-	labelColor: 'white',
-	hideLinkText: false,
-	showLegend: false,
-	displayZoomButtons: true,
-	showLeftLegend: true,
-	containerBackground: '#F7F7F8',
-	containerBorderRadius: 14,
-	leftLegendX: -110,
-	leftLegendY: 8,
-	rightLegendAdjY: 178,
-	rightLegendAdjX: 140,
-	onNodeClick: () => {},
 };
 
 export default FlowChart;

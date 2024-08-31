@@ -98,7 +98,9 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					rightComponent: () => {
 						return <TrashIcon />;
 					},
-					leftComponent: null,
+					leftComponent: () => {
+						return <TrashIcon />;
+					},
 				},
 				{
 					value: 'mysql',
@@ -150,7 +152,9 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 				{
 					value: 'pgsql',
 					title: 'PGSQL',
-					leftComponent: null,
+					leftComponent: () => {
+						return <TrashIcon />;
+					},
 				},
 				{
 					value: 'mysql',
