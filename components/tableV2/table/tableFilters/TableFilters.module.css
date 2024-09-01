@@ -1,0 +1,149 @@
+.root[data-elem=base-cell] {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.0625rem 1.25rem;
+  height: auto;
+  width: 100%;
+}
+.root[data-elem=base-cell] > [data-elem=component1] {
+  flex: 1;
+}
+.root[data-elem=base-cell] > [data-elem=component1] .details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+.root[data-elem=base-cell] > [data-elem=component2] {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 3rem;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 0.3125rem;
+}
+.root[data-elem=base-cell] > [data-elem=component2] .search {
+  height: 100%;
+  width: 100%;
+}
+.root[data-elem=base-cell] > [data-elem=component2] .search > label {
+  height: 100%;
+  align-self: stretch;
+}
+.root[data-elem=base-cell] > [data-elem=component2] .search > label > [data-elem=base-cell] {
+  padding: 0rem;
+  height: 100%;
+  border-radius: 0.3125rem;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  outline: none;
+  box-shadow: none;
+}
+.root[data-elem=base-cell] > [data-elem=component2] .search > label > [data-elem=base-cell] > [data-elem=component1] {
+  padding: 0.625rem 0rem 0.625rem 0.75rem;
+}
+.root[data-elem=base-cell] > [data-elem=component2] .search > label > [data-elem=base-cell] > [data-elem=component2] {
+  padding: 0.625rem 0rem;
+}
+.root[data-elem=base-cell] > [data-elem=component2] .search > label > [data-elem=base-cell] .custom-search-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.root[data-elem=base-cell] > [data-elem=component2] .search > label > [data-elem=base-cell] [data-elem=input] {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+.root[data-elem=base-cell] > [data-elem=component2] .search > label > [data-elem=base-cell] [data-elem=input]::-moz-placeholder {
+  font-weight: 500;
+}
+.root[data-elem=base-cell] > [data-elem=component2] .search > label > [data-elem=base-cell] [data-elem=input]::placeholder {
+  font-weight: 500;
+}
+.root[data-elem=base-cell] > [data-elem=component2] .search > label > [data-elem=base-cell] [data-elem=input]::-moz-placeholder {
+  font-weight: 500;
+}
+.root[data-elem=base-cell] > [data-elem=component2] button.search-button[data-elem=base-cell] {
+  background-color: transparent;
+  width: auto;
+  border-left: 0.1px solid var(--mono-color3);
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  height: 100%;
+}
+.root[data-elem=base-cell] > [data-elem=component2] button.search-button[data-elem=base-cell] > [data-elem=component1] > [data-elem=text] {
+  color: var(--text-color);
+}
+.root[data-elem=base-cell] > [data-elem=component2] button.search-button[data-elem=base-cell] > [data-elem=component1] .icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.root[data-elem=base-cell] > [data-elem=component3] {
+  flex: 1;
+}
+.root[data-elem=base-cell] > [data-elem=component3] .filters {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.5rem;
+}
+.root[data-elem=base-cell] > [data-elem=component3] .filters button.adv-filter[data-elem=base-cell] {
+  background: transparent;
+  box-shadow: 0rem 0rem 0.125rem 0rem rgba(0, 0, 0, 0.25);
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 0.625rem 0.5rem;
+}
+.root[data-elem=base-cell] > [data-elem=component3] .filters button.adv-filter[data-elem=base-cell] > [data-elem=component2] > [data-elem=title] {
+  color: var(--text-color);
+  font-family: Poppins;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.3125rem;
+}
+.root[data-elem=base-cell] > [data-elem=component3] .filters button.adv-filter[data-elem=base-cell].filter {
+  background-color: var(--background-color5);
+}
+.root[data-elem=base-cell] > [data-elem=component3] .filters button.adv-filter[data-elem=base-cell].filter > [data-elem=component1] > svg > path {
+  fill: var(--secondary-color2);
+}
+.root[data-elem=base-cell] > [data-elem=component3] .filters button.adv-filter[data-elem=base-cell].filter > [data-elem=component2] > [data-elem=title] {
+  color: var(--secondary-color2);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.3125rem;
+}
+.root[data-elem=base-cell] > [data-elem=component3] .filters .icon {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
+.root[data-elem=base-cell] > [data-elem=component3] .filters .column-dropdown {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.root[data-elem=base-cell] > [data-elem=component3] .filters .column-dropdown > [data-elem=header] > [data-elem=select] {
+  border: none;
+  padding: 0.5rem 0.5rem;
+  width: auto;
+  font-size: 0.875rem;
+}
+.root[data-elem=base-cell] > [data-elem=component3] .filters .column-dropdown .item {
+  height: 3rem;
+}
+.root[data-elem=base-cell] > [data-elem=component3] .filters .column-dropdown .item > [data-elem=title] {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.column-dropdown-popper {
+  width: 20rem !important;
+}/*# sourceMappingURL=TableFilters.module.css.map */

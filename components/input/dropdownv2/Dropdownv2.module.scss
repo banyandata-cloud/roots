@@ -30,9 +30,8 @@
 			[data-elem='select'] {
 				background-color: $background-color5;
 				color: $secondary-color2;
-				svg {
-					fill: $secondary-color2;
-					> path {
+				.icon-bundle {
+					.caret-icon {
 						fill: $secondary-color2 !important;
 					}
 				}

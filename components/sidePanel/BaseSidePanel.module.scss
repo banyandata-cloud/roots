@@ -12,9 +12,16 @@
 	background: $light-color3;
 	@include boxShadow;
 	overflow-x: hidden;
-	&.close {
-		width: 0rem !important;
+
+	&.animation {
+		transform: translateX(0%);
+		transition: transform 250ms ease-in-out;
 	}
+
+	&.close {
+		transform: translateX(100%);
+	}
+
 	.body {
 		flex: 1;
 		overflow-y: auto;

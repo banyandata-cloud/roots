@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { useRef, useState } from 'react';
 import { classes } from '../../utils';
 import BaseModal from '../modal/BaseModal';
-import styles from './BaseSidePanel.module.css';
 import Tabs from '../tabs/Tabs';
+import styles from './BaseSidePanel.module.css';
 
 const Header = ({ children }) => {
 	return (
@@ -72,7 +72,14 @@ const BaseSidePanel = (props) => {
 			{children}
 		</BaseModal>
 	) : (
-		<div ref={panelRef} className={classes(styles.drawer, open ? '' : styles.close, className)}>
+		<div
+			ref={panelRef}
+			className={classes(
+				styles.drawer,
+				open ? '' : styles.close,
+				animation ? styles.animation : '',
+				className
+			)}>
 			{tabs.length > 0 ? (
 				<Tabs
 					tabs={tabs}

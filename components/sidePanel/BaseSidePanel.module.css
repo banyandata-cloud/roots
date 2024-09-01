@@ -14,8 +14,12 @@
   box-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);
   overflow-x: hidden;
 }
+.drawer.animation {
+  transform: translateX(0%);
+  transition: transform 250ms ease-in-out;
+}
 .drawer.close {
-  width: 0rem !important;
+  transform: translateX(100%);
 }
 .drawer .body {
   flex: 1;

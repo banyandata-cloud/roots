@@ -1,12 +1,12 @@
 /* eslint-disable react/require-default-props */
 /* eslint-disable no-nested-ternary */
 import PropTypes from 'prop-types';
-import React, { forwardRef, useEffect, useReducer, useRef } from 'react';
+import React, { forwardRef, useEffect, useReducer, useRef, useState } from 'react';
 import { classes } from '../../utils';
 import { Button } from '../buttons';
 import { BaseCell } from '../cell';
 import { ArrowIcon } from '../icons';
-import { Dropdown, DropdownItem, TextField } from '../input';
+import { DropdownItemv2, Dropdownv2, TextFieldv2 } from '../input';
 import { Text } from '../text';
 import { Tooltip } from '../tooltip';
 import { CustomPaginationList, PaginationList } from './Pagination.class';
@@ -15,27 +15,27 @@ import styles from './Paginationv2.module.css';
 const dropdownOptions = [
 	{
 		title: '10 per page',
-		value: '10',
+		value: 10,
 	},
 	{
 		title: '15 per page',
-		value: '15',
+		value: 15,
 	},
 	{
 		title: '25 per page',
-		value: '25',
+		value: 25,
 	},
 	{
 		title: '35 per page',
-		value: '35',
+		value: 35,
 	},
 	{
 		title: '50 per page',
-		value: '50',
+		value: 50,
 	},
 	{
 		title: '100 per page',
-		value: '100',
+		value: 100,
 	},
 ];
 
@@ -114,6 +114,7 @@ export const Pagination = forwardRef((props, ref) => {
 		className = '',
 		floating,
 		customPagination,
+		enableJumpToPage = true,
 		paginationState = {
 			totalPages: null,
 			currentPage: null,
@@ -174,7 +175,7 @@ export const Pagination = forwardRef((props, ref) => {
 
 	useEffect(() => {
 		if (mountedRef.current) {
-			props.onChange({
+			props.onChange?.({
 				currentPage: currentPage === 0 ? 1 : currentPage,
 				step,
 				totalPages,
@@ -193,6 +194,23 @@ export const Pagination = forwardRef((props, ref) => {
 		return null;
 	}
 
+	const [isDisplayLabelVisible, setDisplayLabelVisible] = useState(false);
+
+	const updateChildVisibility = () => {
+		if (ref.current) {
+			const parentWidth = ref.current.offsetWidth;
+			setDisplayLabelVisible(parentWidth >= 1000);
+		}
+	};
+
+	useEffect(() => {
+		updateChildVisibility();
+		window.addEventListener('resize', updateChildVisibility);
+		return () => {
+			window.removeEventListener('resize', updateChildVisibility);
+		};
+	}, []);
+
 	const showTotalData =
 		totalData && ((currentPage === 0 ? 1 : currentPage) - 1) * step + 1 < totalData;
 
@@ -208,7 +226,7 @@ export const Pagination = forwardRef((props, ref) => {
 				className
 			)}>
 			{!customPagination && (
-				<div className={styles['new-options']}>
+				<div className={styles['left-options']}>
 					{!customPagination && (
 						<BaseCell
 							size='auto'
@@ -220,12 +238,12 @@ export const Pagination = forwardRef((props, ref) => {
 									flexible
 									className={styles['row-switcher-handle']}
 									component1={
-										<Dropdown
+										<Dropdownv2
 											className={styles.dropdown}
 											popperClassName={styles['dropdown-popper']}
 											value={step}
 											placeholder=''
-											onChange={(e, newStep) => {
+											onChange={(_, newStep) => {
 												onChange({
 													type: 'SET_STEP',
 													payload: newStep,
@@ -233,14 +251,14 @@ export const Pagination = forwardRef((props, ref) => {
 											}}>
 											{dropdownOptions.map((item) => {
 												return (
-													<DropdownItem
+													<DropdownItemv2
 														title={item?.title}
 														value={item?.value}
 														key={item?.value}
 													/>
 												);
 											})}
-										</Dropdown>
+										</Dropdownv2>
 									}
 								/>
 							}
@@ -259,22 +277,26 @@ export const Pagination = forwardRef((props, ref) => {
 							<Text>{customLabel ?? ''}</Text>
 						</Text>
 					) : totalData || totalPages ? (
-						<Text
-							variant='b1'
-							stroke='medium'
-							className={styles['total-data']}
-							attrs={{
-								title: `${((currentPage === 0 ? 1 : currentPage) - 1) * step + 1}-${
-									(currentPage === 0 ? 1 : currentPage) * step
-								} of ${totalData}`,
-							}}>
-							<Text>Displaying</Text>{' '}
-							{((currentPage === 0 ? 1 : currentPage) - 1) * step + 1}-
-							{currentPage === totalPages && totalData
-								? totalData
-								: (currentPage === 0 ? 1 : currentPage) * step}{' '}
-							of {totalData ?? 'total'} <Text>{dataLabel ?? 'records'}</Text>
-						</Text>
+						isDisplayLabelVisible && (
+							<Text
+								variant='b1'
+								stroke='medium'
+								className={styles['total-data']}
+								attrs={{
+									title: `${
+										((currentPage === 0 ? 1 : currentPage) - 1) * step + 1
+									}-${
+										(currentPage === 0 ? 1 : currentPage) * step
+									} of ${totalData}`,
+								}}>
+								<Text>Displaying</Text>{' '}
+								{((currentPage === 0 ? 1 : currentPage) - 1) * step + 1}-
+								{currentPage === totalPages && totalData
+									? totalData
+									: (currentPage === 0 ? 1 : currentPage) * step}{' '}
+								of {totalData ?? 'total'} <Text>{dataLabel ?? 'records'}</Text>
+							</Text>
+						)
 					) : (
 						<Text
 							variant='b1'
@@ -291,7 +313,11 @@ export const Pagination = forwardRef((props, ref) => {
 				</div>
 			)}
 			{showPages && !customPagination && (
-				<div className={styles['page-numbers']}>
+				<div
+					className={classes(
+						styles['page-numbers'],
+						!enableJumpToPage ? styles.stretch : ''
+					)}>
 					<div className={styles.pageSelect}>
 						{paginationList.pages.map((page) => {
 							const active = (currentPage === 0 ? 1 : currentPage) === page.number;
@@ -306,7 +332,11 @@ export const Pagination = forwardRef((props, ref) => {
 										});
 									}}
 									data-active={active}
-									className={classes(active ? styles.active : '', styles.number)}>
+									className={classes(
+										active ? styles.active : '',
+										styles.number,
+										page.ellipsis ? styles.ellipsis : ''
+									)}>
 									{page.ellipsis ? '...' : page.number}
 								</span>
 							);
@@ -363,7 +393,7 @@ export const Pagination = forwardRef((props, ref) => {
 									className={classes(
 										active ? styles.active : '',
 										styles.number,
-										customPagination ? styles['custom-number'] : null,
+										customPagination ? styles['custom-number'] : '',
 										hideDisabledPages
 											? !newCustomPageList[page.number - 1]?.enable
 												? styles.disabled
@@ -383,8 +413,56 @@ export const Pagination = forwardRef((props, ref) => {
 					</div>
 				</div>
 			)}
-			<div className={styles.options}>
-				{customPagination && (
+			{!customPagination && showPages && enableJumpToPage && (
+				<div className={styles.options}>
+					<BaseCell
+						flexible
+						className={styles.form}
+						component1={
+							<form
+								onSubmit={(e) => {
+									e.preventDefault();
+									onChange({
+										type: 'SET_PAGE',
+										payload: parseInt(jumpPageRef?.current?.value, 10),
+									});
+								}}>
+								<Tooltip content={jumpLabel} position='top'>
+									<BaseCell
+										size='auto'
+										className={styles['jump-to-page']}
+										component1={
+											<TextFieldv2
+												inputProps={{
+													min: 1,
+													max: totalPages,
+													required: true,
+													placeholder: '',
+												}}
+												ref={jumpPageRef}
+												type='number'
+												className={styles.inputbox}
+											/>
+										}
+										component2={
+											<Button
+												size='auto'
+												variant='contained'
+												className={styles.button}
+												rightComponent={() => {
+													return <ArrowIcon className={styles.icon} />;
+												}}
+											/>
+										}
+									/>
+								</Tooltip>
+							</form>
+						}
+					/>
+				</div>
+			)}
+			{customPagination && (
+				<div className={styles.options}>
 					<Text
 						variant='b1'
 						stroke='medium'
@@ -396,127 +474,88 @@ export const Pagination = forwardRef((props, ref) => {
 						}}>
 						<Text>{customLabel ?? ''}</Text>
 					</Text>
-				)}
-				{showPages && !customPagination && (
-					<BaseCell
-						flexible
-						className={styles.form}
-						component1={
-							<form
-								onSubmit={(e) => {
-									e.preventDefault();
-									onChange({
-										type: 'SET_PAGE',
-										payload: parseInt(jumpPageRef?.current?.value, 10),
-									});
-								}}>
-								<Tooltip content='Jump To Page' position='top'>
-									<BaseCell
-										size='auto'
-										className={styles['jump-to-page']}
-										component1={
-											<TextField
-												inputProps={{
-													min: 1,
-													max: totalPages,
-													required: true,
-													placeholder: '',
-												}}
-												ref={jumpPageRef}
-												type='number'
-												className={styles.inputbox}
-											/>
-										}
-										component2={
-											<Button
-												size='auto'
-												variant='contained'
-												className={styles.button}
-												rightComponent={() => {
-													return <ArrowIcon className={styles.icon} />;
-												}}
-											/>
-										}
-									/>
-								</Tooltip>
-							</form>
-						}
-					/>
-				)}
-				{showPages && customPagination && (
-					<BaseCell
-						flexible
-						className={styles.form}
-						component1={
-							<form
-								onSubmit={(e) => {
-									e.preventDefault();
-									if (!customPageList[jumpPageRef.current.value - 1]?.enable) {
-										customPageCallback(jumpPageRef?.current?.value);
-										return;
-									}
 
-									if (hideDisabledPages) {
-										const enablePageList = customPageList?.filter((pg) => {
-											return pg?.enable;
-										});
-										// eslint-disable-next-line no-restricted-syntax
-										for (
-											let index = 0;
-											index < enablePageList?.length;
-											index++
+					{showPages && (
+						<BaseCell
+							flexible
+							className={styles.form}
+							component1={
+								<form
+									onSubmit={(e) => {
+										e.preventDefault();
+										if (
+											!customPageList[jumpPageRef.current.value - 1]?.enable
 										) {
-											if (
-												enablePageList?.[index]?.pageNumber?.toString() ===
-												jumpPageRef?.current?.value
+											customPageCallback(jumpPageRef?.current?.value);
+											return;
+										}
+
+										if (hideDisabledPages) {
+											const enablePageList = customPageList?.filter((pg) => {
+												return pg?.enable;
+											});
+											// eslint-disable-next-line no-restricted-syntax
+											for (
+												let index = 0;
+												index < enablePageList?.length;
+												index++
 											) {
-												onChange({
-													type: 'SET_PAGE',
-													payload: parseInt(index + 1, 10),
-												});
-												return;
+												if (
+													enablePageList?.[
+														index
+													]?.pageNumber?.toString() ===
+													jumpPageRef?.current?.value
+												) {
+													onChange({
+														type: 'SET_PAGE',
+														payload: parseInt(index + 1, 10),
+													});
+													return;
+												}
 											}
 										}
-									}
-									onChange({
-										type: 'SET_PAGE',
-										payload: parseInt(jumpPageRef?.current?.value, 10),
-									});
-								}}>
-								<Tooltip content={jumpLabel} position='top'>
-									<BaseCell
-										size='auto'
-										className={styles['jump-to-page']}
-										component1={
-											<TextField
-												inputProps={{
-													min: 1,
-													max: totalPages,
-													required: true,
-													placeholder: '',
-												}}
-												ref={jumpPageRef}
-												type='number'
-												className={styles.inputbox}
-											/>
-										}
-										component2={
-											<Button
-												size='auto'
-												variant='contained'
-												className={styles.button}
-												rightComponent={() => {
-													return <ArrowIcon className={styles.icon} />;
-												}}
-											/>
-										}
-									/>
-								</Tooltip>
-							</form>
-						}
-					/>
-				)}
-			</div>
+										onChange({
+											type: 'SET_PAGE',
+											payload: parseInt(jumpPageRef?.current?.value, 10),
+										});
+									}}>
+									<Tooltip content={jumpLabel} position='top'>
+										<BaseCell
+											size='auto'
+											className={styles['jump-to-page']}
+											component1={
+												<TextFieldv2
+													inputProps={{
+														min: 1,
+														max: totalPages,
+														required: true,
+														placeholder: '',
+													}}
+													ref={jumpPageRef}
+													type='number'
+													className={styles.inputbox}
+												/>
+											}
+											component2={
+												<Button
+													size='auto'
+													variant='contained'
+													className={styles.button}
+													rightComponent={() => {
+														return (
+															<ArrowIcon className={styles.icon} />
+														);
+													}}
+												/>
+											}
+										/>
+									</Tooltip>
+								</form>
+							}
+						/>
+					)}
+				</div>
+			)}
 		</div>
 	);
 });

@@ -1,0 +1,26 @@
+@import '../../../../styles/';
+
+.row {
+	@include flex;
+	gap: 1rem;
+	margin-bottom: 1rem;
+	padding: 0rem 0.5rem;
+
+	&.header {
+		height: 3rem;
+		background: $light-color1;
+		.th {
+			@include flex(row, flex-start);
+			.skeleton {
+				background: $light-color2;
+			}
+		}
+	}
+
+	& > .column {
+		width: 100%;
+		.skeleton {
+			height: 2rem;
+		}
+	}
+}

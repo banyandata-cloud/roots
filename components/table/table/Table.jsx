@@ -1,17 +1,14 @@
 /* eslint-disable react/forbid-prop-types */
 import PropTypes from 'prop-types';
-import { isValidElement, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { classes } from '../../../utils';
 import { ErrorBoundaryWrapper } from '../../errorBoundary';
 import { Pagination } from '../../pagination';
-import { Pagination as Paginationv2 } from '../../paginationv2';
 import { TableColumn } from '../BaseTable.class';
 import { BaseTable } from '../baseTable';
 import styles from './Table.module.css';
-import { TableChips } from './tableChips';
 import { TableFilters } from './tableFilters';
-import BaseSidePanel from '../../sidePanel/BaseSidePanel';
 
 const INTERSECTION = 1;
 const STEP = 0.05;
@@ -50,56 +47,26 @@ const Table = (props) => {
 		onAdvancedFilterClick = () => {},
 		defaultActiveIndex,
 		placeholder,
-		custom = null,
-		tableInfo = {},
 		dataLabel = null,
 		customLabel,
 		jumpLabel,
 		customPageList,
 		customPageCallback,
 		hideDisabledPages,
-		onFilterClear = () => {},
-		v2 = false,
-		tableDrawerProps = {},
-		searchProps = {
-			onSearch: () => {},
-			icon: null,
-		},
+		onFilterClear,
+		tableTitleIcon = null,
+		title: tableTitleText = '',
 	} = props;
 
 	const ref = useRef(null);
 	const paginationRef = useRef(null);
 
-	const { onSearch = () => {}, icon: customSearchIcon = null } = searchProps;
-	const {
-		tableTitleIcon = null,
-		title: tableTitleText = '',
-		description: tableDescriptionText = '',
-	} = tableInfo;
-
 	const [floating, setFloating] = useState(false);
 	const [hiddenColumns, setHiddenColumns] = useState({});
-	const [toggleTableDrawer, setToggleTableDrawer] = useState({
-		open: false,
-		data: {
-			index: 0,
-		},
-	});
-
-	const toggleDrawer = ({ data }) => {
-		setToggleTableDrawer((prevState) => {
-			return {
-				open: !prevState.open,
-				data,
-			};
-		});
-	};
 
 	const visibileColumns = headerData.filter((header) => {
 		return [null, false, undefined].includes(hiddenColumns?.[header?.id]);
 	});
-
-	const Body = tableDrawerProps?.renderBody?.[toggleDrawer?.data?.index];
 
 	// for pagination docking using intersection observer
 	useEffect(() => {
@@ -171,13 +138,7 @@ const Table = (props) => {
 	return (
 		<ErrorBoundary
 			FallbackComponent={(args) => {
-				return (
-					<ErrorBoundaryWrapper
-						{...args}
-						className={styles['error-boundary']}
-						custom={custom}
-					/>
-				);
+				return <ErrorBoundaryWrapper {...args} className={styles['error-boundary']} />;
 			}}>
 			<div className={classes(styles.root, className)}>
 				{!Object.keys(disabledFilterOptions).every((key) => {
@@ -196,11 +157,7 @@ const Table = (props) => {
 						theme={theme}
 						tableTitleIcon={tableTitleIcon}
 						tableTitleText={tableTitleText}
-						tableDescriptionText={tableDescriptionText}
 						onClear={onFilterClear}
-						v2={v2}
-						customSearchIcon={customSearchIcon}
-						onSearch={onSearch}
 					/>
 				)}
 
@@ -219,62 +176,25 @@ const Table = (props) => {
 						onRowClick,
 						defaultActiveIndex,
 						placeholder,
-						toggleDrawer,
 					}}
 					loading={loading}
 				/>
 
-				{paginationData != null &&
-					(v2 ? (
-						<Paginationv2
-							className={classes(styles.pagination, floating ? styles.floating : '')}
-							ref={paginationRef}
-							customPagination={customPagination}
-							{...paginationData}
-							floating={floating}
-							loading={loading}
-							dataLabel={dataLabel}
-							customLabel={customLabel}
-							jumpLabel={jumpLabel}
-							customPageList={customPageList}
-							customPageCallback={customPageCallback}
-							hideDisabledPages={hideDisabledPages}
-						/>
-					) : (
-						<Pagination
-							className={classes(styles.pagination, floating ? styles.floating : '')}
-							ref={paginationRef}
-							customPagination={customPagination}
-							{...paginationData}
-							floating={floating}
-							loading={loading}
-							dataLabel={dataLabel}
-							customLabel={customLabel}
-							jumpLabel={jumpLabel}
-							customPageList={customPageList}
-							customPageCallback={customPageCallback}
-							hideDisabledPages={hideDisabledPages}
-						/>
-					))}
-				{v2 && tableDrawerProps && (
-					<BaseSidePanel
-						toggle={toggleDrawer}
-						open={toggleTableDrawer.open}
-						className={styles.drawer}
-						renderHeader={() => {
-							const DrawerHeader = tableDrawerProps.drawerHeader;
-							return (
-								<DrawerHeader
-									datum={toggleTableDrawer.data}
-									toggle={toggleDrawer}
-								/>
-							);
-						}}
-						{...tableDrawerProps}>
-						{Body && isValidElement(<Body datum={toggleTableDrawer.data} />) && (
-							<Body datum={toggleTableDrawer.data} toggle={toggleDrawer} />
-						)}
-					</BaseSidePanel>
+				{paginationData != null && (
+					<Pagination
+						className={classes(styles.pagination, floating ? styles.floating : '')}
+						ref={paginationRef}
+						customPagination={customPagination}
+						{...paginationData}
+						floating={floating}
+						loading={loading}
+						dataLabel={dataLabel}
+						customLabel={customLabel}
+						jumpLabel={jumpLabel}
+						customPageList={customPageList}
+						customPageCallback={customPageCallback}
+						hideDisabledPages={hideDisabledPages}
+					/>
 				)}
 			</div>
 		</ErrorBoundary>
@@ -301,9 +221,6 @@ Table.propTypes = {
 	customCells: PropTypes.shape({
 		header: PropTypes.func,
 		body: PropTypes.func,
-	}),
-	chipsData: PropTypes.shape({
-		...TableChips.propTypes,
 	}),
 	filtersData: PropTypes.shape({
 		...TableFilters.propTypes,
