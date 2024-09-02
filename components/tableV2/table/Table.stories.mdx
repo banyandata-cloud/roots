@@ -1190,6 +1190,9 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 							title: 'Table Title',
 							description: 'Lorem ipsum dolor sit amet consectetur.',
 						}}
+						disabledFilterOptions={{
+							search: false,
+						}}
 						searchProps={{
 							icon: () => {
 								return <HomeIcon />;
@@ -1198,6 +1201,42 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 								console.log(s);
 							},
 							placeholder: 'Search Employees',
+						}}
+						tableDrawerProps={{
+							tabsConfig: {
+								tabs: [
+									{
+										id: 1,
+										leftIcon: {
+											Active: (props) => {
+												return <HomeIcon {...props} />;
+											},
+											InActive: (props) => {
+												return <ServerIcon {...props} />;
+											},
+										},
+									},
+									{
+										id: 2,
+										leftIcon: {
+											Active: (props) => {
+												return <HomeIcon {...props} />;
+											},
+											InActive: (props) => {
+												return <HomeIcon {...props} />;
+											},
+										},
+									},
+								],
+							},
+							renderBody: [
+								() => {
+									return <div>Hello World</div>;
+								},
+								() => {
+									return <div>Hello Everyone</div>;
+								},
+							],
 						}}
 						isFloating={isFloating}
 						onRowClick={onRowClick}

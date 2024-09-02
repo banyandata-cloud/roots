@@ -98,7 +98,7 @@ const Table = (props) => {
 		return [null, false, undefined].includes(hiddenColumns?.[header?.id]);
 	});
 
-	const Body = tableDrawerProps?.renderBody?.[toggleDrawer?.data?.index];
+	const Body = tableDrawerProps?.renderBody?.[toggleTableDrawer?.data?.index];
 
 	// for pagination docking using intersection observer
 	useEffect(() => {
@@ -233,18 +233,16 @@ const Table = (props) => {
 						open={toggleTableDrawer.open}
 						className={styles.drawer}
 						animation
-						renderHeader={() => {
-							const DrawerHeader = tableDrawerProps.drawerHeader;
-							return (
-								<DrawerHeader
-									datum={toggleTableDrawer.data}
-									toggle={toggleDrawer}
-								/>
-							);
-						}}
+						toggleTableDrawer={toggleTableDrawer}
+						setToggleTableDrawer={setToggleTableDrawer}
 						{...tableDrawerProps}>
 						{Body && isValidElement(<Body datum={toggleTableDrawer.data} />) && (
-							<Body datum={toggleTableDrawer.data} toggle={toggleDrawer} />
+							<Body
+								datum={toggleTableDrawer.data}
+								toggle={toggleDrawer}
+								toggleTableDrawer={toggleTableDrawer}
+								setToggleTableDrawer={setToggleTableDrawer}
+							/>
 						)}
 					</BaseSidePanel>
 				)}

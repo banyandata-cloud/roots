@@ -5,8 +5,8 @@
 }
 
 .tabs-container-vertical {
-	width: fit-content;
-	@include flex(row, center, flex-start);
+	@include flex(row, flex-start, flex-start);
+	height: 100%;
 }
 
 .tabs {
@@ -15,17 +15,20 @@
 }
 
 .vertical {
-	@include flex(column, center, flex-start);
+	@include flex(column, flex-start, flex-start);
 	position: relative;
 	width: 3.75rem;
-	border-right: 0.0313rem solid $grey3;
+	border-right: 0.03125rem solid $light-color1;
 	height: 100%;
 }
 
 .tab {
 	width: 100%;
-	@include flex(row, center, center);
-	border-bottom: 0.0313rem solid $side-bar-icon2;
+	@include flex(row, center, flex-start);
+	border-bottom: 0.0313rem solid $light-color1;
+	&.vertical {
+		height: fit-content;
+	}
 	> [data-elem='base-cell'] {
 		padding: 5px !important;
 
