@@ -1,0 +1,10 @@
+@import '../../../../../styles';
+
+.root {
+	@include flex;
+	height: 80%;
+	position: relative;
+	.placeholder {
+		position: absolute;
+	}
+}

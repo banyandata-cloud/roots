@@ -1,20 +1,34 @@
 @import '../../styles/_index';
 
 .drawer {
-	max-height: 100%;
+	position: absolute;
+	right: 0;
+	top: 0;
+	bottom: 0;
 	height: 100%;
+	z-index: 10;
 	width: 30%;
 	@include flex(column, flex-start, stretch);
-	top: 0;
 	background: $light-color3;
 	@include boxShadow;
 	overflow-x: hidden;
-	&.close {
-		width: 0rem;
+
+	&.animation {
+		transform: translateX(0%);
+		transition: transform 250ms ease-in-out;
 	}
+
+	&.close {
+		transform: translateX(100%);
+	}
+
 	.body {
 		flex: 1;
 		overflow-y: auto;
+	}
+	.tabs,
+	.content {
+		width: 100%;
 	}
 }
 

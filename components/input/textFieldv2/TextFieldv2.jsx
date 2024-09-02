@@ -242,7 +242,7 @@ const TextField = forwardRef((props, inputRef) => {
 			}}>
 			<div className={classes(styles.root, className)}>
 				<label>
-					<span className={required ? styles.required : ''}>{label}</span>
+					{label && <span className={required ? styles.required : ''}>{label}</span>}
 					<BaseCell
 						ref={setAnchorEl}
 						className={classes(

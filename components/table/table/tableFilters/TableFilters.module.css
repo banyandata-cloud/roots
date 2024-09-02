@@ -1,3 +1,91 @@
+.v2[data-elem=base-cell] {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem;
+  height: auto;
+  width: 100%;
+}
+.v2[data-elem=base-cell] > [data-elem=component1] .details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+.v2[data-elem=base-cell] > [data-elem=component2] .search > label > [data-elem=base-cell] {
+  padding: 0rem;
+  border-radius: 0.3125rem;
+}
+.v2[data-elem=base-cell] > [data-elem=component2] .search > label > [data-elem=base-cell] > [data-elem=component1] {
+  padding: 0.625rem 0rem 0.625rem 0.75rem;
+}
+.v2[data-elem=base-cell] > [data-elem=component2] .search > label > [data-elem=base-cell] > [data-elem=component2] {
+  padding: 0.625rem 0rem;
+}
+.v2[data-elem=base-cell] > [data-elem=component2] .search > label > [data-elem=base-cell] > [data-elem=component3] {
+  padding: 0.625rem 0.75rem;
+  border-left: 0.0625rem solid var(--mono-color3);
+}
+.v2[data-elem=base-cell] > [data-elem=component2] .search > label > [data-elem=base-cell] > [data-elem=component3] .search-icon {
+  color: var(--text-color);
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.v2[data-elem=base-cell] > [data-elem=component2] .search > label > [data-elem=base-cell] .custom-search-icon {
+  width: 1.5625rem;
+  height: 1.5625rem;
+}
+.v2[data-elem=base-cell] > [data-elem=component2] .search > label > [data-elem=base-cell] [data-elem=input] {
+  color: var(--mono-color3);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+.v2[data-elem=base-cell] > [data-elem=component3] .filters {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.5rem;
+}
+.v2[data-elem=base-cell] > [data-elem=component3] .filters button.icon-button {
+  background: transparent;
+  box-shadow: 0rem 0rem 0.125rem 0rem rgba(0, 0, 0, 0.25);
+  height: 1.875rem;
+}
+.v2[data-elem=base-cell] > [data-elem=component3] .filters button.icon-button > [data-elem=component2] > [data-elem=title] {
+  color: var(--text-color);
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+.v2[data-elem=base-cell] > [data-elem=component3] .filters .icon {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
+.v2[data-elem=base-cell] > [data-elem=component3] .filters .column-dropdown {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.v2[data-elem=base-cell] > [data-elem=component3] .filters .column-dropdown > [data-elem=header] > [data-elem=select] {
+  background-color: transparent;
+  border: none;
+  color: var(--text-color);
+  padding: 0rem;
+  width: auto;
+}
+.v2[data-elem=base-cell] > [data-elem=component3] .filters .column-dropdown .item {
+  height: 3rem;
+}
+.v2[data-elem=base-cell] > [data-elem=component3] .filters .column-dropdown .item > [data-elem=title] {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
 .root[data-elem=base-cell] {
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -23,14 +111,12 @@
   height: 1.5rem;
 }
 .root[data-elem=base-cell] button.icon-button {
-  border: 1px solid red;
   height: 100%;
   background: transparent;
-  border: 1px solid var(--mono-color2);
+  box-shadow: 0rem 0rem 0.125rem 0rem rgba(0, 0, 0, 0.25);
   color: var(--text-color);
 }
 .root[data-elem=base-cell] button.clear-button {
-  border: 1px solid red;
   height: 100%;
   border: 1px solid var(--mono-color2);
   color: var(--text-color);

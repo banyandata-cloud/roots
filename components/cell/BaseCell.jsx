@@ -15,7 +15,7 @@ export const BaseCell = forwardRef((props, ref) => {
 		component3,
 		RootDOM = 'div',
 		attrs = {},
-		radius = 'default',
+		radius,
 	} = props;
 
 	const Component = createElement(
@@ -26,7 +26,7 @@ export const BaseCell = forwardRef((props, ref) => {
 			className: classes(
 				styles.root,
 				styles[size],
-				styles[`border-radius-${radius}`],
+				radius ? styles[`border-radius-${radius}`] : '',
 				flexible ? styles.flexible : '',
 				rounded ? styles.rounded : '',
 				className

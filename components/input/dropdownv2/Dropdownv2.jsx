@@ -31,7 +31,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { classes } from '../../../utils';
 import Button from '../../buttons/button/Button';
 import { ErrorBoundaryWrapper } from '../../errorBoundary';
-import { CaretIcon, DropdownIcon, InfoIcon } from '../../icons';
+import { CaretIcon, InfoIcon } from '../../icons';
 import { SelectAllIcon } from '../../icons/SelectAll';
 import Popper from '../../popper/Popper';
 import { Tooltip } from '../../tooltip';
@@ -60,10 +60,8 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 			return `${totalSelected} options applied`;
 		},
 		custom,
-		newIcon,
 		required,
-		hideIcon,
-		customButtonTitle,
+		multiSelectActionTitle,
 	} = props;
 	const [open, setOpen] = useState(false);
 	const [activeIndex, setActiveIndex] = useState(null);
@@ -331,14 +329,20 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 	}
 
 	const getValueToDisplay = () => {
-		if (value && value.length > 0) {
-			if (value.length === 1) {
-				const selectedItem = items?.find((item) => {
-					return item.props.value == value[0];
-				});
-				return selectedItem?.props?.title;
+		if (value) {
+			if (Array.isArray(value) && value.length > 0) {
+				if (value.length === 1) {
+					const selectedItem = items?.find((item) => {
+						return item.props.value == value[0];
+					});
+					return selectedItem?.props?.title;
+				}
+				return formatter(value.length);
 			}
-			return formatter(value.length);
+			const selectedItem = items?.find((item) => {
+				return item.props.value == value;
+			});
+			return selectedItem?.props?.title;
 		}
 		if (
 			!isControlled &&
@@ -360,6 +364,19 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 			return selectedItem?.props?.title;
 		}
 		return '';
+	};
+
+	const getLeftComponent = () => {
+		if (LeftComponent) {
+			if (LeftComponent.Active || LeftComponent.InActive) {
+				if (highlightOnSelect && value?.length > 0) {
+					return <LeftComponent.Active />;
+				}
+				return <LeftComponent.InActive />;
+			}
+			return <LeftComponent />;
+		}
+		return null;
 	};
 
 	return (
@@ -426,7 +443,7 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 							styles.select,
 							feedback != null ? styles[`feedback-${feedback?.type}`] : ''
 						)}>
-						{LeftComponent && <LeftComponent />}
+						{getLeftComponent()}
 						{typeof placeholder === 'string' || placeholder instanceof String ? (
 							getValueToDisplay() || (
 								<span data-elem='placeholder' className={styles.placeholder}>
@@ -436,33 +453,24 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 						) : (
 							<div data-elem='placeholder'>{placeholder}</div>
 						)}
-						{newIcon && !hideIcon ? (
-							<DropdownIcon
+
+						<div className={styles['icon-bundle']}>
+							{error && (
+								<Tooltip
+									content={error ?? ''}
+									position='top'
+									className={styles.tooltip}
+									variant='light'>
+									<span className={styles.span}>
+										<InfoIcon className={styles['info-icon']} />
+									</span>
+								</Tooltip>
+							)}
+							<CaretIcon
 								data-elem='icon'
-								className={classes(styles.icon, styles['drop-icon'])}
+								className={classes(styles['caret-icon'], open ? styles.open : '')}
 							/>
-						) : !hideIcon ? (
-							<div className={styles['icon-bundle']}>
-								{error && (
-									<Tooltip
-										content={error ?? ''}
-										position='top'
-										className={styles.tooltip}
-										variant='light'>
-										<span className={styles.span}>
-											<InfoIcon className={styles['info-icon']} />
-										</span>
-									</Tooltip>
-								)}
-								<CaretIcon
-									data-elem='icon'
-									className={classes(
-										styles['caret-icon'],
-										open ? styles.open : ''
-									)}
-								/>
-							</div>
-						) : null}
+						</div>
 					</div>
 				</div>
 				<Popper open={open} wrapperId='dropdown-popper'>
@@ -549,7 +557,7 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 										/>
 										<Button
 											className={styles['multi-apply']}
-											title={customButtonTitle ?? 'Apply'}
+											title={multiSelectActionTitle ?? 'Apply'}
 											size='auto'
 											onClick={onApply}
 										/>

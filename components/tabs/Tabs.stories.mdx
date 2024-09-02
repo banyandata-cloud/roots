@@ -2,7 +2,7 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs';
 
 import { useState } from 'react';
 import { ThemedContainer } from '../helpers';
-import { CaretIcon } from '../icons';
+import { CaretIcon, HomeIcon } from '../icons';
 import Tabs from './Tabs';
 
 <Meta title='Components/Tabs' parameters={{ options: { showToolbar: true } }} />
@@ -11,13 +11,26 @@ export const Template = (args) => {
 	const [selectedTab, setSelectedTab] = useState('');
 	return (
 		<ThemedContainer {...args}>
-			<Tabs {...args} selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
-			<span
-				style={{
-					fontSize: '0.875rem',
-				}}>
-				You have selected {selectedTab}
-			</span>
+			<Tabs {...args} selectedTab={selectedTab} setSelectedTab={setSelectedTab}>
+				<div
+					style={{
+						fontSize: '0.875rem',
+					}}>
+					You have selected {selectedTab}
+				</div>
+				<div
+					style={{
+						fontSize: '0.875rem',
+					}}>
+					You have selected {selectedTab}
+				</div>
+				<div
+					style={{
+						fontSize: '0.875rem',
+					}}>
+					You have selected {selectedTab}
+				</div>
+			</Tabs>
 		</ThemedContainer>
 	);
 };
@@ -64,6 +77,31 @@ The default Tabs.
 				},
 			],
 			theme: 'light',
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Vertical
+
+The default Tabs.
+
+<Canvas>
+	<Story
+		name='Vertical'
+		args={{
+			tabs: [
+				{
+					id: '1',
+					leftIcon: HomeIcon,
+				},
+				{
+					id: '2',
+					leftIcon: HomeIcon,
+				},
+			],
+			theme: 'light',
+			direction: 'vertical',
 		}}>
 		{Template.bind({})}
 	</Story>

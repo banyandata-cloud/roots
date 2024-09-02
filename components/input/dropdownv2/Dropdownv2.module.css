@@ -32,10 +32,7 @@
   background-color: var(--background-color5);
   color: var(--secondary-color2);
 }
-.root .header.highlightOnSelect [data-elem=select] svg {
-  fill: var(--secondary-color2);
-}
-.root .header.highlightOnSelect [data-elem=select] svg > path {
+.root .header.highlightOnSelect [data-elem=select] .icon-bundle .caret-icon {
   fill: var(--secondary-color2) !important;
 }
 .root .header.open {

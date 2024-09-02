@@ -1,22 +1,47 @@
 /* eslint-disable object-curly-newline */
 import PropTypes from 'prop-types';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { classes } from '../../utils';
 import BaseModal from '../modal/BaseModal';
+import Tabs from '../tabs/Tabs';
 import styles from './BaseSidePanel.module.css';
+
+const Header = ({ children }) => {
+	return (
+		<div data-elem='header' className={styles.header}>
+			{children}
+		</div>
+	);
+};
+
+const Footer = ({ children }) => {
+	return (
+		<div data-elem='footer' className={styles.footer}>
+			{children}
+		</div>
+	);
+};
 
 const BaseSidePanel = (props) => {
 	const {
-		className,
-		renderHeader,
+		className = '',
+		renderHeader = null,
 		children,
-		renderFooter,
-		open,
-		isModal,
-		toggle,
-		noDismiss,
-		animation,
+		renderFooter = null,
+		open = false,
+		isModal = false,
+		toggle = () => {},
+		noDismiss = false,
+		animation = false,
+		tabsConfig = {
+			tabs: [],
+			className: '',
+		},
 	} = props;
+
+	const { tabs, className: tabsClassName } = tabsConfig;
+
+	const [selectedTab, setSelectedTab] = useState('1');
 
 	const panelRef = useRef();
 
@@ -27,20 +52,8 @@ const BaseSidePanel = (props) => {
 			hideCrossDismiss
 			noDismiss={noDismiss}
 			className={classes(styles.modal, className)}
-			renderHeader={
-				renderHeader && (
-					<div data-elem='header' className={styles.header}>
-						{renderHeader}
-					</div>
-				)
-			}
-			renderFooter={
-				renderFooter && (
-					<div data-elem='footer' className={styles.footer}>
-						{renderFooter}
-					</div>
-				)
-			}
+			renderHeader={renderHeader && <Header>{renderHeader}</Header>}
+			renderFooter={renderFooter && <Footer>{renderFooter}</Footer>}
 			animation={animation}
 			animationProperties={{
 				initial: {
@@ -59,19 +72,37 @@ const BaseSidePanel = (props) => {
 			{children}
 		</BaseModal>
 	) : (
-		<div ref={panelRef} className={classes(styles.drawer, open ? '' : styles.close, className)}>
-			{renderHeader && (
-				<div data-elem='header' className={styles.header}>
-					{renderHeader}
-				</div>
-			)}
-			<div data-elem='body' className={styles.body}>
-				{children}
-			</div>
-			{renderFooter && (
-				<div data-elem='footer' className={styles.footer}>
-					{renderFooter}
-				</div>
+		<div
+			ref={panelRef}
+			className={classes(
+				styles.drawer,
+				open ? '' : styles.close,
+				animation ? styles.animation : '',
+				className
+			)}>
+			{tabs.length > 0 ? (
+				<Tabs
+					tabs={tabs}
+					className={classes(tabsClassName, styles.tabs)}
+					direction='vertical'
+					selectedTab={selectedTab}
+					setSelectedTab={setSelectedTab}>
+					<div className={styles.content}>
+						{renderHeader && <Header>{renderHeader}</Header>}
+						<div data-elem='body' className={styles.body}>
+							{children}
+						</div>
+						{renderFooter && <Footer>{renderFooter}</Footer>}
+					</div>
+				</Tabs>
+			) : (
+				<>
+					{renderHeader && <Header>{renderHeader}</Header>}
+					<div data-elem='body' className={styles.body}>
+						{children}
+					</div>
+					{renderFooter && <Footer>{renderFooter}</Footer>}
+				</>
 			)}
 		</div>
 	);
@@ -86,17 +117,6 @@ BaseSidePanel.propTypes = {
 	toggle: PropTypes.func,
 	noDismiss: PropTypes.bool,
 	animation: PropTypes.bool,
-};
-
-BaseSidePanel.defaultProps = {
-	className: '',
-	renderHeader: null,
-	renderFooter: null,
-	open: false,
-	isModal: false,
-	toggle: () => {},
-	noDismiss: false,
-	animation: false,
 };
 
 export default BaseSidePanel;

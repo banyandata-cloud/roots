@@ -4,7 +4,7 @@ import { ArrowIcon, CopyIcon, ServerIcon } from '../../icons';
 import { usePagination } from '../../pagination';
 import { TableColumn } from '../BaseTable.class';
 import Table from './Table';
-import { TableChip } from './tableChips';
+import { HomeIcon } from '../../icons';
 
 <Meta title='Components/Table/Table' parameters={{ options: { showToolbar: false } }} />
 
@@ -41,7 +41,7 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 				}
 			};
 			const isFloating = true;
-			const v2 = true;
+			const v2 = false;
 			const onRowClick = (datum, setActiveId) => {
 				console.log(datum, setActiveId);
 				setActiveId();
@@ -416,7 +416,7 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 				}
 			};
 			const isFloating = true;
-			const v2 = true;
+			const v2 = false;
 			const onRowClick = (datum, setActiveId) => {
 				console.log(datum, setActiveId);
 				setActiveId();
@@ -1214,43 +1214,6 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					state: 'Delhi',
 				},
 			];
-			const chipsData = {
-				showBack: true,
-				chips: [
-					new TableChip({
-						key: 'something',
-						icon: ArrowIcon,
-						label: 'DB Tech',
-						value: 'PgSQL',
-						disabled: true,
-					}),
-					new TableChip({
-						key: 'something',
-						icon: ArrowIcon,
-						label: 'DB Tech',
-						value: 'MySQL',
-						disabled: true,
-					}),
-					new TableChip({
-						key: 'something',
-						icon: (iconProps) => {
-							return <CopyIcon {...iconProps} />;
-						},
-						label: 'Cloud',
-						value: 'Google',
-						disabled: true,
-					}),
-					new TableChip({
-						key: 'something',
-						icon: (iconProps) => {
-							return <ServerIcon {...iconProps} />;
-						},
-						label: 'Cloud',
-						value: 'Amazon',
-						disabled: true,
-					}),
-				],
-			};
 			const [paginationState, paginationDispatch] = usePagination({
 				totalPages: 20,
 				currentPage: 1,
@@ -1261,7 +1224,6 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 						height: '100%',
 					}}>
 					<Table
-						chipsData={chipsData}
 						onIntersection={onIntersection}
 						isFloating={isFloating}
 						onRowClick={onRowClick}
@@ -1565,43 +1527,6 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					state: 'Delhi',
 				},
 			];
-			const chipsData = {
-				showBack: true,
-				chips: [
-					new TableChip({
-						key: 'something',
-						icon: ArrowIcon,
-						label: 'DB Tech',
-						value: 'PgSQL',
-						disabled: true,
-					}),
-					new TableChip({
-						key: 'something',
-						icon: ArrowIcon,
-						label: 'DB Tech',
-						value: 'MySQL',
-						disabled: true,
-					}),
-					new TableChip({
-						key: 'something',
-						icon: (iconProps) => {
-							return <CopyIcon {...iconProps} />;
-						},
-						label: 'Cloud',
-						value: 'Google',
-						disabled: true,
-					}),
-					new TableChip({
-						key: 'something',
-						icon: (iconProps) => {
-							return <ServerIcon {...iconProps} />;
-						},
-						label: 'Cloud',
-						value: 'Amazon',
-						disabled: true,
-					}),
-				],
-			};
 			const filtersData = {
 				filterValue: {
 					applied: 4,
@@ -1617,7 +1542,6 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 						height: '100%',
 					}}>
 					<Table
-						chipsData={chipsData}
 						filtersData={filtersData}
 						onIntersection={onIntersection}
 						isFloating={isFloating}

@@ -1,22 +1,33 @@
 .drawer {
-  max-height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
   height: 100%;
+  z-index: 10;
   width: 30%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
-  top: 0;
   background: var(--light-color3);
   box-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);
   overflow-x: hidden;
 }
+.drawer.animation {
+  transform: translateX(0%);
+  transition: transform 250ms ease-in-out;
+}
 .drawer.close {
-  width: 0rem;
+  transform: translateX(100%);
 }
 .drawer .body {
   flex: 1;
   overflow-y: auto;
+}
+.drawer .tabs,
+.drawer .content {
+  width: 100%;
 }
 
 .modal {
