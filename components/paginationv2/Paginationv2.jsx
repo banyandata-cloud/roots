@@ -211,6 +211,8 @@ export const Pagination = forwardRef((props, ref) => {
 		};
 	}, []);
 
+	// console.log(isDisplayLabelVisible);
+
 	const showTotalData =
 		totalData && ((currentPage === 0 ? 1 : currentPage) - 1) * step + 1 < totalData;
 

@@ -32,15 +32,13 @@ const Table = (props) => {
 			header: null,
 			body: null,
 		},
-		filtersData = null,
 		customPagination,
 		paginationData = null,
 		loading = false,
 		onIntersection = () => {},
 		isFloating = false,
 		disabledFilterOptions = {
-			search: false,
-			columnFilter: false,
+			search: true,
 		},
 		onSort = () => {},
 		rowHeight = 'md',
@@ -142,7 +140,7 @@ const Table = (props) => {
 		if (tableElem && !loading) {
 			tableElem.style.height = 'calc(100% -  3rem)';
 		}
-	}, [filtersData, loading]);
+	}, [loading]);
 
 	// setting body and header min-width to allow horizontal sticky column beyond viewport width
 	useEffect(() => {
@@ -175,28 +173,24 @@ const Table = (props) => {
 				return <ErrorBoundaryWrapper {...args} className={styles['error-boundary']} />;
 			}}>
 			<div className={classes(styles.root, className)}>
-				{!Object.keys(disabledFilterOptions).every((key) => {
-					return disabledFilterOptions[key] === true;
-				}) && (
-					<TableFilters
-						className={styles.filters}
-						{...{
-							disabledFilterOptions,
-							headerData,
-							hiddenColumns,
-							setHiddenColumns,
-						}}
-						theme={theme}
-						tableTitleIcon={tableTitleIcon}
-						tableTitleText={tableTitle}
-						tableDescriptionText={tableDescription}
-						customSearchIcon={customSearchIcon}
-						onSearch={onSearch}
-						searchPlaceholder={searchPlaceholder}
-						toggleDrawer={toggleDrawer}
-						filtersCount={filtersCount}
-					/>
-				)}
+				<TableFilters
+					className={styles.filters}
+					{...{
+						disabledFilterOptions,
+						headerData,
+						hiddenColumns,
+						setHiddenColumns,
+					}}
+					theme={theme}
+					tableTitleIcon={tableTitleIcon}
+					tableTitleText={tableTitle}
+					tableDescriptionText={tableDescription}
+					customSearchIcon={customSearchIcon}
+					onSearch={onSearch}
+					searchPlaceholder={searchPlaceholder}
+					toggleDrawer={toggleDrawer}
+					filtersCount={filtersCount}
+				/>
 
 				<BaseTableV2
 					{...{
@@ -288,9 +282,7 @@ Table.propTypes = {
 		header: PropTypes.func,
 		body: PropTypes.func,
 	}),
-	filtersData: PropTypes.shape({
-		...TableFilters.propTypes,
-	}),
+
 	onIntersection: PropTypes.func,
 	isFloating: PropTypes.bool,
 	paginationData: PropTypes.shape({

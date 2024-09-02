@@ -1,2 +1,1 @@
-export { default as Table } from './Table';
-export * from './tableFilters';
+export { default as TableV2 } from './Table';

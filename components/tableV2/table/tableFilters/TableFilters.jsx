@@ -15,9 +15,7 @@ const TableFilters = (props) => {
 		headerData,
 		hiddenColumns,
 		setHiddenColumns,
-		disabledFilterOptions = {
-			filterButton: false,
-		},
+		disabledFilterOptions = {},
 		theme = 'light',
 		tableTitleText,
 		tableDescriptionText,
@@ -28,7 +26,7 @@ const TableFilters = (props) => {
 		filtersCount,
 	} = props;
 
-	const { search: disabledSearch } = disabledFilterOptions;
+	const { search: disabledSearch = true } = disabledFilterOptions;
 
 	const [search, setSearch] = useState('');
 
@@ -66,6 +64,8 @@ const TableFilters = (props) => {
 			onSearch(search);
 		}
 	};
+
+	const hideActions = columnFilters.length === 0 && disabledSearch;
 
 	return (
 		<BaseCell
@@ -118,58 +118,66 @@ const TableFilters = (props) => {
 					/>
 				</>
 			}
-			component3={
-				<div className={styles.filters}>
-					{!disabledSearch && (
-						<Button
-							size='auto'
-							className={classes(
-								styles['adv-filter'],
-								filtersCount > 0 ? styles.filter : ''
-							)}
-							title={getAdvancedFilterTitle()}
-							onClick={toggleDrawer}
-							leftComponent={() => {
-								return <FilterIcon className={styles.icon} v2 />;
-							}}
-						/>
-					)}
-					{columnFilters.length > 0 && (
-						<Dropdownv2
-							theme={theme}
-							className={styles['column-dropdown']}
-							popperClassName={styles['column-dropdown-popper']}
-							leftComponent={{
-								Active: () => {
-									return <ColumnFilter className={styles.icon} v2 active />;
-								},
-								InActive: () => {
-									return <ColumnFilter className={styles.icon} v2 />;
-								},
-							}}
-							highlightOnSelect
-							placeholder='Filter Columns'
-							multi
-							multiSelectActionTitle='Hide'
-							formatter={(totalSelected) => {
-								return `${totalSelected} Columns Hidden`;
-							}}
-							value={Object.keys(hiddenColumns ?? {})}
-							onChange={handleColumnChange}>
-							{columns?.map((col) => {
-								return (
-									<DropdownItemv2
-										key={col.value}
-										title={col.title}
-										value={col.value}
-										variant='checkbox'
-									/>
-								);
-							})}
-						</Dropdownv2>
-					)}
-				</div>
-			}
+			{...(!hideActions && {
+				component3: (
+					<div className={styles.filters}>
+						{!disabledSearch && (
+							<Button
+								size='auto'
+								className={classes(
+									styles['adv-filter'],
+									filtersCount > 0 ? styles.filter : ''
+								)}
+								title={getAdvancedFilterTitle()}
+								onClick={() => {
+									toggleDrawer({
+										data: {
+											index: 0,
+										},
+									});
+								}}
+								leftComponent={() => {
+									return <FilterIcon className={styles.icon} v2 />;
+								}}
+							/>
+						)}
+						{columnFilters.length > 0 && (
+							<Dropdownv2
+								theme={theme}
+								className={styles['column-dropdown']}
+								popperClassName={styles['column-dropdown-popper']}
+								leftComponent={{
+									Active: () => {
+										return <ColumnFilter className={styles.icon} v2 active />;
+									},
+									InActive: () => {
+										return <ColumnFilter className={styles.icon} v2 />;
+									},
+								}}
+								highlightOnSelect
+								placeholder='Filter Columns'
+								multi
+								multiSelectActionTitle='Hide'
+								formatter={(totalSelected) => {
+									return `${totalSelected} Columns Hidden`;
+								}}
+								value={Object.keys(hiddenColumns ?? {})}
+								onChange={handleColumnChange}>
+								{columns?.map((col) => {
+									return (
+										<DropdownItemv2
+											key={col.value}
+											title={col.title}
+											value={col.value}
+											variant='checkbox'
+										/>
+									);
+								})}
+							</Dropdownv2>
+						)}
+					</div>
+				),
+			})}
 		/>
 	);
 };
