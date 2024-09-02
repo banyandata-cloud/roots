@@ -18,14 +18,14 @@
           user-select: none;
 }
 .root > div.minInRange {
-  background-color: var(--primary-color4);
+  background-color: var(--secondary-color2);
   border-radius: 1.5rem 0rem 0rem 1.5rem;
 }
 .root > div.minInRange .date {
   color: var(--white);
 }
 .root > div.minInRange:hover .date {
-  background: var(--primary-color4);
+  background: var(--secondary-color2);
   color: var(--white);
   box-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);
 }
@@ -56,7 +56,7 @@
   display: none;
 }
 .root > div.maxInRange {
-  background-color: var(--primary-color4);
+  background-color: var(--secondary-color2);
   border-radius: 0rem 1.5rem 1.5rem 0rem;
 }
 .root > div.maxInRange .date {
@@ -90,7 +90,7 @@
   display: none;
 }
 .root > div.maxInRange:hover .date {
-  background: var(--primary-color4);
+  background: var(--secondary-color2);
   color: var(--white);
   box-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);
 }
@@ -99,7 +99,7 @@
   border-radius: 0rem;
 }
 .root > div.midInRange .date {
-  color: var(--primary-color4);
+  color: var(--secondary-color2);
 }
 .root > div.midInRange.today-selected {
   display: flex;
@@ -139,7 +139,7 @@
   border-radius: 0rem 1.5rem 1.5rem 0rem;
 }
 .root > div.first-hovered .date {
-  color: var(--primary-color4);
+  color: var(--secondary-color2);
 }
 .root > div.first-hovered.today-selected {
   display: flex;
@@ -159,7 +159,7 @@
   border-radius: 1.5rem 0rem 0rem 1.5rem;
 }
 .root > div.last-hovered .date {
-  color: var(--primary-color4);
+  color: var(--secondary-color2);
 }
 .root > div.last-hovered.today-selected {
   display: flex;
@@ -181,7 +181,7 @@
   align-items: center;
 }
 .root > div.today .date {
-  color: var(--primary-color4);
+  color: var(--secondary-color2);
   font-weight: 500;
 }
 .root > div.today .indicator {
@@ -221,7 +221,7 @@
 }
 .root > div .date.unSelected {
   background-color: var(--white);
-  border-color: var(--primary-color4);
+  border-color: var(--secondary-color2);
   border-width: 0.125rem;
   border-style: solid;
   color: var(--black);
@@ -236,11 +236,11 @@
 }
 .root > div:hover .date {
   background: var(--background-color5);
-  color: var(--primary-color4);
+  color: var(--secondary-color2);
   box-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);
 }
 .root > div:hover .selected {
-  background-color: var(--primary-color4);
+  background-color: var(--secondary-color2);
   color: var(--white);
 }
 .root > div:hover .disabled {

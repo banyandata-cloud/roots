@@ -3,6 +3,7 @@ import { Button } from '../buttons';
 import { useState } from 'react';
 import BaseSidePanel from './BaseSidePanel';
 import { ToggleIframeContainer } from '../helpers';
+import { HomeIcon } from '../icons';
 
 <Meta title='Components/SidePanel/BaseSidePanel' parameters={{ options: { showToolbar: false } }} />
 
@@ -60,6 +61,80 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 						}}
 					/>
 					<BaseSidePanel
+						renderHeader={
+							<div
+								style={{
+									background: 'red',
+								}}>
+								<div>Header</div>
+							</div>
+						}
+						renderFooter={
+							<div
+								style={{
+									background: 'orange',
+								}}>
+								Footer
+							</div>
+						}
+						toggle={toggle}
+						open={open}>
+						<div
+							style={{
+								background: 'tomato',
+								height: '500px',
+							}}>
+							<p>Body</p>
+						</div>
+					</BaseSidePanel>
+				</div>
+			);
+		}}
+	</Story>
+</Canvas>
+
+### Base Panel with Tabs
+
+<Canvas>
+	<Story name='With Tabs'>
+		{() => {
+			const [open, setOpen] = useState(true);
+			const toggle = () => {
+				setOpen((prevState) => {
+					return !prevState;
+				});
+			};
+			return (
+				<div
+					style={{
+						display: 'flex',
+						alignItems: 'flex-start',
+						justifyContent: 'space-between',
+						height: '100%',
+					}}>
+					<Button
+						title='Open Drawer'
+						size='auto'
+						onClick={() => {
+							setOpen((prev) => {
+								return !prev;
+							});
+						}}
+					/>
+					<BaseSidePanel
+						tabsConfig={{
+							tabs: [
+								{
+									id: '1',
+									leftIcon: HomeIcon,
+								},
+								{
+									id: '2',
+									leftIcon: HomeIcon,
+								},
+							],
+							className: '',
+						}}
 						renderHeader={
 							<div
 								style={{

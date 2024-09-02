@@ -4,8 +4,8 @@ const Email = (props) => {
 	return (
 		<svg
 			className={className}
-			width='1.5rem'
-			height='1.5rem'
+			width='1rem'
+			height='1rem'
 			viewBox='0 0 24 24'
 			fill='none'
 			xmlns='http://www.w3.org/2000/svg'>

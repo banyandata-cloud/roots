@@ -37,7 +37,7 @@ const Button = forwardRef((props, ref) => {
 		disabled,
 		onClick = () => {},
 		blurOnClick = true,
-		variant,
+		variant = 'contained',
 		color = 'primary',
 		id,
 	} = props;

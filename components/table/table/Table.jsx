@@ -5,11 +5,9 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { classes } from '../../../utils';
 import { ErrorBoundaryWrapper } from '../../errorBoundary';
 import { Pagination } from '../../pagination';
-import { Pagination as Paginationv2 } from '../../paginationv2';
 import { TableColumn } from '../BaseTable.class';
 import { BaseTable } from '../baseTable';
 import styles from './Table.module.css';
-import { TableChips } from './tableChips';
 import { TableFilters } from './tableFilters';
 
 const INTERSECTION = 1;
@@ -22,38 +20,42 @@ for (let i = 0; i < INTERSECTION; i += STEP) {
 
 const Table = (props) => {
 	const {
-		className,
-		headerData,
-		tableData,
-		uniqueKey,
-		activeData,
-		setActiveData,
-		customCells,
-		filtersData,
+		className = '',
+		headerData = [],
+		tableData = [],
+		uniqueKey = [],
+		activeData = {},
+		setActiveData = () => {},
+		customCells = {
+			header: null,
+			body: null,
+		},
+		filtersData = null,
 		customPagination,
-		paginationData,
-		loading,
-		onIntersection,
-		isFloating,
-		disabledFilterOptions,
-		onSort,
-		rowHeight,
-		theme,
-		onRowClick,
-		onAdvancedFilterClick,
+		paginationData = null,
+		loading = false,
+		onIntersection = () => {},
+		isFloating = false,
+		disabledFilterOptions = {
+			search: false,
+			columnFilter: false,
+		},
+		onSort = () => {},
+		rowHeight = 'md',
+		theme = 'light',
+		onRowClick = () => {},
+		onAdvancedFilterClick = () => {},
 		defaultActiveIndex,
 		placeholder,
-		custom,
-		tableTitleIcon,
-		tableTitleText,
-		dataLabel,
+		dataLabel = null,
 		customLabel,
 		jumpLabel,
 		customPageList,
 		customPageCallback,
 		hideDisabledPages,
 		onFilterClear,
-		v2,
+		tableTitleIcon = null,
+		title: tableTitleText = '',
 	} = props;
 
 	const ref = useRef(null);
@@ -128,19 +130,15 @@ const Table = (props) => {
 
 	// set the hidden columns state
 	useEffect(() => {
-		setHiddenColumns({});
+		if (headerData.length > 0) {
+			setHiddenColumns({});
+		}
 	}, [headerData]);
 
 	return (
 		<ErrorBoundary
 			FallbackComponent={(args) => {
-				return (
-					<ErrorBoundaryWrapper
-						{...args}
-						className={styles['error-boundary']}
-						custom={custom}
-					/>
-				);
+				return <ErrorBoundaryWrapper {...args} className={styles['error-boundary']} />;
 			}}>
 			<div className={classes(styles.root, className)}>
 				{!Object.keys(disabledFilterOptions).every((key) => {
@@ -162,6 +160,7 @@ const Table = (props) => {
 						onClear={onFilterClear}
 					/>
 				)}
+
 				<BaseTable
 					{...{
 						ref,
@@ -180,38 +179,23 @@ const Table = (props) => {
 					}}
 					loading={loading}
 				/>
-				{paginationData != null &&
-					(v2 ? (
-						<Paginationv2
-							className={classes(styles.pagination, floating ? styles.floating : '')}
-							ref={paginationRef}
-							customPagination={customPagination}
-							{...paginationData}
-							floating={floating}
-							loading={loading}
-							dataLabel={dataLabel}
-							customLabel={customLabel}
-							jumpLabel={jumpLabel}
-							customPageList={customPageList}
-							customPageCallback={customPageCallback}
-							hideDisabledPages={hideDisabledPages}
-						/>
-					) : (
-						<Pagination
-							className={classes(styles.pagination, floating ? styles.floating : '')}
-							ref={paginationRef}
-							customPagination={customPagination}
-							{...paginationData}
-							floating={floating}
-							loading={loading}
-							dataLabel={dataLabel}
-							customLabel={customLabel}
-							jumpLabel={jumpLabel}
-							customPageList={customPageList}
-							customPageCallback={customPageCallback}
-							hideDisabledPages={hideDisabledPages}
-						/>
-					))}
+
+				{paginationData != null && (
+					<Pagination
+						className={classes(styles.pagination, floating ? styles.floating : '')}
+						ref={paginationRef}
+						customPagination={customPagination}
+						{...paginationData}
+						floating={floating}
+						loading={loading}
+						dataLabel={dataLabel}
+						customLabel={customLabel}
+						jumpLabel={jumpLabel}
+						customPageList={customPageList}
+						customPageCallback={customPageCallback}
+						hideDisabledPages={hideDisabledPages}
+					/>
+				)}
 			</div>
 		</ErrorBoundary>
 	);
@@ -238,9 +222,6 @@ Table.propTypes = {
 		header: PropTypes.func,
 		body: PropTypes.func,
 	}),
-	chipsData: PropTypes.shape({
-		...TableChips.propTypes,
-	}),
 	filtersData: PropTypes.shape({
 		...TableFilters.propTypes,
 	}),
@@ -265,38 +246,6 @@ Table.propTypes = {
 	custom: PropTypes.node,
 	onAdvancedFilterClick: PropTypes.func,
 	dataLabel: PropTypes.string,
-};
-
-Table.defaultProps = {
-	className: '',
-	headerData: [],
-	tableData: [],
-	uniqueKey: [],
-	activeData: {},
-	setActiveData: () => {},
-	onIntersection: () => {},
-	isFloating: false,
-	customCells: {
-		header: null,
-		body: null,
-	},
-	chipsData: null,
-	filtersData: null,
-	paginationData: null,
-	loading: false,
-	v2: false,
-	disabledFilterOptions: {
-		search: false,
-		columnFilter: false,
-	},
-	onSort: () => {},
-	rowHeight: 'md',
-	theme: 'light',
-	onRowClick: () => {},
-	onSearch: () => {},
-	custom: null,
-	onAdvancedFilterClick: () => {},
-	dataLabel: null,
 };
 
 export default Table;

@@ -4,7 +4,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding-block: 1rem;
+  padding-block: 1.5rem;
 }
 .root .clock {
   height: 15rem;
@@ -31,7 +31,7 @@
   background: var(--background-color5);
 }
 .root .clock .number.selected {
-  background: var(--primary-color4);
+  background: var(--secondary-color2);
   color: var(--white);
 }
 .root .clock .number.disabled {
@@ -46,7 +46,7 @@
   transform: translate(-50%, -50%);
   height: 0.625rem;
   width: 0.625rem;
-  background: var(--primary-color4);
+  background: var(--secondary-color2);
   border-radius: 100%;
 }
 .root .clock .connector {
@@ -55,6 +55,6 @@
   position: absolute;
   right: auto;
   bottom: auto;
-  background-color: var(--primary-color4);
+  background-color: var(--secondary-color2);
   transform: translate(-50%, -50%);
 }/*# sourceMappingURL=ClockView.module.css.map */

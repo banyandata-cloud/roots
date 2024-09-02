@@ -12,21 +12,21 @@
 
 	&.primary {
 		&.contained {
-			background-color: $primary-color4;
+			background-color: $secondary-color2;
 			color: $white;
 			&:hover {
 				opacity: 0.85;
 			}
 		}
 		&.text {
-			color: $primary-color4;
+			color: $secondary-color2;
 		}
 		&.outlined {
 			background-color: transparent;
-			border-color: $primary-color4;
-			color: $primary-color4;
+			border-color: $secondary-color2;
+			color: $secondary-color2;
 			&:hover {
-				background-color: $primary-color4;
+				background-color: $secondary-color2;
 				color: $white;
 				&:hover {
 					opacity: 0.85;

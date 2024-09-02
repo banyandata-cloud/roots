@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useRef, useState } from 'react';
+import { classes } from '../../utils';
 import { Button } from '../buttons';
 import Dropdown from '../input/dropdown/Dropdown';
 import DropdownItem from '../input/dropdown/dropdown-item/DropdownItem';
@@ -7,7 +8,18 @@ import { Skeleton } from './Skeleton';
 import styles from './Tabs.module.css';
 
 const Tabs = (props) => {
-	const { tabs = [], className = '', loading, fallback, selectedTab, setSelectedTab } = props;
+	const {
+		tabs = [],
+		className = '',
+		loading,
+		fallback,
+		selectedTab,
+		setSelectedTab,
+		direction = 'horizontal',
+		children = null,
+	} = props;
+
+	const vertical = direction === 'vertical';
 
 	const [sliderLeft, setSliderLeft] = useState(0);
 	const [sliderWidth, setSliderWidth] = useState(0);
@@ -59,8 +71,12 @@ const Tabs = (props) => {
 	}
 
 	return (
-		<div className={`${styles['tabs-container']} ${className}`}>
-			<div className={styles.tabs}>
+		<div
+			className={classes(
+				vertical ? styles['tabs-container-vertical'] : styles['tabs-container'],
+				className
+			)}>
+			<div className={vertical ? styles.vertical : styles.tabs}>
 				{tabs.map((tab, index) => {
 					const isActive = tab.id === selectedTab;
 					const {
@@ -79,7 +95,11 @@ const Tabs = (props) => {
 							ref={(ref) => {
 								tabRefs.current[index] = ref;
 							}}
-							className={`${styles.tab} ${isActive ? styles.active : ''}`}>
+							className={classes(
+								styles.tab,
+								vertical ? styles.vertical : styles.horizontal,
+								isActive ? styles.active : ''
+							)}>
 							{dropdown ? (
 								<Dropdown
 									className={`${styles.dropdown} ${
@@ -134,16 +154,17 @@ const Tabs = (props) => {
 						</div>
 					);
 				})}
-
 				<div
-					className={styles['tab-slider']}
+					className={vertical ? styles['tab-slider-vertical'] : styles['tab-slider']}
 					style={{
 						left: `${sliderLeft}px`,
 						width: `${sliderWidth}px`,
 					}}
 				/>
 			</div>
-			<div className={styles['tab-content']} />
+			<div className={!vertical ? styles['tab-content'] : styles['tab-content-vertical']}>
+				{children}
+			</div>
 		</div>
 	);
 };

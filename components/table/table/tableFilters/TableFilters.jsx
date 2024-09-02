@@ -3,22 +3,27 @@ import { classes } from '../../../../utils';
 import { Button } from '../../../buttons';
 import { BaseCell } from '../../../cell';
 import { AlertIcon, CaretIcon, ColumnFilter, CrossIcon, FilterIcon } from '../../../icons';
-import { Dropdown, DropdownItem } from '../../../input';
+import { DropdownItemv2, Dropdownv2 } from '../../../input';
 import { Text } from '../../../text';
 import { Skeleton } from './Skeleton';
 import styles from './TableFilters.module.css';
 
 const TableFilters = (props) => {
 	const {
-		className,
-		style,
-		onAdvancedFilterClick,
+		className = '',
+		style = {},
+		onAdvancedFilterClick = () => {},
 		headerData,
 		hiddenColumns,
 		setHiddenColumns,
-		loading,
-		disabledFilterOptions,
-		theme,
+		loading = null,
+		disabledFilterOptions = {
+			filterButton: false,
+			refresh: false,
+			columnFilter: false,
+			settings: false,
+		},
+		theme = 'light',
 		tableTitleIcon: TableTitleCustomIcon,
 		tableTitleText,
 		onClear,
@@ -97,7 +102,7 @@ const TableFilters = (props) => {
 			component3={
 				!disabledColumnFilter &&
 				columnFilters.length > 0 && (
-					<Dropdown
+					<Dropdownv2
 						theme={theme}
 						className={styles['column-dropdown']}
 						hideIcon
@@ -121,7 +126,7 @@ const TableFilters = (props) => {
 						onChange={handleColumnChange}>
 						{columns?.map((col) => {
 							return (
-								<DropdownItem
+								<DropdownItemv2
 									key={col.value}
 									title={col.title}
 									value={col.value}
@@ -129,7 +134,7 @@ const TableFilters = (props) => {
 								/>
 							);
 						})}
-					</Dropdown>
+					</Dropdownv2>
 				)
 			}
 		/>
@@ -141,9 +146,6 @@ TableFilters.propTypes = {
 	// eslint-disable-next-line react/forbid-prop-types
 	style: PropTypes.object,
 	onAdvancedFilterClick: PropTypes.func,
-	filterValue: PropTypes.shape({
-		applied: PropTypes.number,
-	}),
 	loading: PropTypes.bool,
 	disabledFilterOptions: PropTypes.shape({
 		filterButton: PropTypes.bool,
@@ -154,25 +156,6 @@ TableFilters.propTypes = {
 	theme: PropTypes.oneOf(['light', 'dark']),
 	tableTitleText: PropTypes.string,
 	tableTitleIcon: PropTypes.node,
-};
-
-TableFilters.defaultProps = {
-	className: '',
-	style: {},
-	onAdvancedFilterClick: () => {},
-	filterValue: {
-		applied: null,
-	},
-	loading: null,
-	disabledFilterOptions: {
-		filterButton: false,
-		refresh: false,
-		columnFilter: false,
-		settings: false,
-	},
-	theme: 'light',
-	tableTitleText: null,
-	tableTitleIcon: null,
 };
 
 export default TableFilters;
