@@ -33,8 +33,8 @@ const BaseSidePanel = (props) => {
 		toggle = () => {},
 		noDismiss = false,
 		animation = false,
-		toggleTableDrawer,
-		setToggleTableDrawer,
+		toggleTableDrawer = {},
+		setToggleTableDrawer = () => {},
 		tabsConfig = {
 			tabs: [],
 			className: '',
