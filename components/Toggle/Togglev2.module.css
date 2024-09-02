@@ -16,19 +16,42 @@
   position: relative;
   gap: 0.3375rem;
   height: 100%;
-  background: transparent;
+  background: var(--light-color2);
+  border-radius: 0.25rem;
+  padding: 0.1875rem;
 }
 .root .toggle > button[data-elem=base-cell].toggle-button {
   position: relative;
   z-index: 2;
   background: transparent;
-  border-radius: 1.25rem;
   min-width: 5rem;
   width: auto;
   height: auto;
+  opacity: 0.4;
 }
 .root .toggle > button[data-elem=base-cell].toggle-button > [data-elem=component2] > [data-elem=title] {
   color: var(--black);
+}
+.root .toggle > button[data-elem=base-cell].toggle-button > [data-elem=component2] > [data-elem=title] {
+  color: var(--mono-color1);
+}
+.root .toggle > button[data-elem=base-cell].toggle-button svg path {
+  fill: var(--white);
+}
+.root .toggle > button[data-elem=base-cell].toggle-button.secondary {
+  opacity: 0.4;
+}
+.root .toggle > button[data-elem=base-cell].toggle-button.secondary:hover {
+  opacity: 1;
+}
+.root .toggle > button[data-elem=base-cell].toggle-button.secondary > [data-elem=component2] > [data-elem=title] {
+  color: var(--secondary-color2);
+}
+.root .toggle > button[data-elem=base-cell].toggle-button.secondary svg path {
+  fill: var(--secondary-color2);
+}
+.root .toggle > button[data-elem=base-cell].toggle-button.active {
+  opacity: 1;
 }
 .root .toggle > button[data-elem=base-cell].toggle-button.active.highlight {
   background-color: var(--mono-color1);
@@ -39,6 +62,9 @@
 .root .toggle > button[data-elem=base-cell].toggle-button.active > [data-elem=component2] > [data-elem=title] {
   color: var(--white);
 }
+.root .toggle > button[data-elem=base-cell].toggle-button.active.secondary {
+  opacity: 1;
+}
 .root .toggle > button[data-elem=base-cell].toggle-button.active.secondary > [data-elem=component2] > [data-elem=title] {
   color: var(--secondary-color2);
 }
@@ -47,9 +73,11 @@
 }
 .root .toggle > button[data-elem=base-cell].toggle-button.disabled {
   cursor: not-allowed;
+  opacity: 0.7;
+  background-color: transparent;
 }
 .root .toggle > button[data-elem=base-cell].toggle-button.disabled > [data-elem=component2] > [data-elem=title] {
-  color: var(--mono-color2);
+  color: var(--side-bar-icon2);
 }
 .root .toggle > button[data-elem=base-cell].toggle-button.all-select {
   background-color: var(--mono-color1);
@@ -58,22 +86,23 @@
   color: var(--white);
 }
 .root .toggle > button[data-elem=base-cell].toggle-button.all-select.secondary {
-  background-color: var(--background-color4);
+  background-color: var(--light-color1);
 }
 .root .toggle > button[data-elem=base-cell].toggle-button.all-select.secondary > [data-elem=component2] > [data-elem=title] {
   color: var(--secondary-color2);
 }
 .root .toggle .slider {
   position: absolute;
-  bottom: 0;
+  bottom: 0.1875rem;
   left: 0;
-  height: 100%;
+  height: 85%;
   font-weight: 500;
   background: var(--mono-color1);
-  border-radius: 1.25rem;
 }
 .root .toggle .slider.secondary {
-  background-color: var(--background-color5);
+  border-radius: 0.25rem;
+  background-color: var(--light-color3);
+  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2509803922);
 }
 .root .toggle .slider.smooth {
   transition: left 0.2s ease-in-out, width 0.2s ease-in-out;

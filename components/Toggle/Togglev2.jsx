@@ -48,17 +48,6 @@ const Togglev2 = (props) => {
 
 	const allSelected = multi ? options.length === inputValue.length : false;
 
-	const onSelectAll = () => {
-		const allValues = options.map((option) => {
-			return option.value;
-		});
-		if (isControlled) {
-			onChange(allValues);
-		} else {
-			setUncontrolledValue(allValues);
-		}
-	};
-
 	const onButtonClick = (newValue, selected) => {
 		// if multi select
 		if (multi) {
@@ -76,8 +65,6 @@ const Togglev2 = (props) => {
 					} else {
 						setUncontrolledValue(newInputValue);
 					}
-				} else {
-					onSelectAll();
 				}
 			} else {
 				// if all are selected, select only the one being clicked
@@ -113,10 +100,6 @@ const Togglev2 = (props) => {
 		}
 		return input === item;
 	};
-
-	const checkSecondary = () => {
-		return secondary ? classes(styles['all-select'], styles.secondary) : styles['all-select'];
-	};
 	if (loading || fallback) {
 		return <Skeleton theme={theme} fallback={!loading && fallback} v2 />;
 	}
@@ -128,20 +111,6 @@ const Togglev2 = (props) => {
 	return (
 		<div className={classes(styles.root, styles[theme], className)}>
 			<div className={styles.toggle}>
-				{multi && (
-					<Button
-						type='button'
-						size='auto'
-						data-elem='toggle'
-						variant='text'
-						className={classes(
-							styles['toggle-button'],
-							allSelected ? checkSecondary() : ''
-						)}
-						onClick={onSelectAll}
-						title='All'
-					/>
-				)}
 				{options.map((tab) => {
 					const {
 						title,
@@ -150,7 +119,7 @@ const Togglev2 = (props) => {
 						disabled,
 						className: itemClassName,
 					} = tab;
-					const isActive = compareSelection(inputValue, tab.value) && !allSelected;
+					const isActive = compareSelection(inputValue, tab.value);
 
 					return (
 						<Button
@@ -158,7 +127,7 @@ const Togglev2 = (props) => {
 							ref={isActive ? sliderRef : null}
 							type='button'
 							onClick={() => {
-								return onButtonClick(tab.value, isActive);
+								onButtonClick(tab.value, isActive);
 							}}
 							size='auto'
 							data-elem='toggle'

@@ -1,6 +1,6 @@
 /* eslint-disable object-curly-newline */
 import PropTypes from 'prop-types';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { classes } from '../../utils';
 import BaseModal from '../modal/BaseModal';
 import Tabs from '../tabs/Tabs';
@@ -33,6 +33,8 @@ const BaseSidePanel = (props) => {
 		toggle = () => {},
 		noDismiss = false,
 		animation = false,
+		toggleTableDrawer,
+		setToggleTableDrawer,
 		tabsConfig = {
 			tabs: [],
 			className: '',
@@ -41,9 +43,19 @@ const BaseSidePanel = (props) => {
 
 	const { tabs, className: tabsClassName } = tabsConfig;
 
-	const [selectedTab, setSelectedTab] = useState('1');
+	const [selectedTab, setSelectedTab] = useState(1);
 
 	const panelRef = useRef();
+
+	useEffect(() => {
+		setToggleTableDrawer({
+			...toggleTableDrawer,
+			data: {
+				...toggleTableDrawer.data,
+				index: selectedTab - 1,
+			},
+		});
+	}, [selectedTab]);
 
 	return isModal ? (
 		<BaseModal
@@ -83,7 +95,7 @@ const BaseSidePanel = (props) => {
 			{tabs.length > 0 ? (
 				<Tabs
 					tabs={tabs}
-					className={classes(tabsClassName, styles.tabs)}
+					className={classes(styles.tabs, tabsClassName)}
 					direction='vertical'
 					selectedTab={selectedTab}
 					setSelectedTab={setSelectedTab}>
