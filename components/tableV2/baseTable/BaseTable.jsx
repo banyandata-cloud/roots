@@ -24,7 +24,7 @@ const BaseTable = forwardRef(function BaseTable(props, ref) {
 		theme,
 		placeholder,
 		defaultActiveIndex,
-		toggleDrawer,
+		toggleDrawer = () => {},
 	} = props;
 
 	if (loading) {

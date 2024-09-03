@@ -28,7 +28,7 @@
 					color: $black;
 				}
 			}
-			opacity: 0.4;
+			opacity: 1;
 			> [data-elem='component2'] {
 				> [data-elem='title'] {
 					color: $mono-color1;
@@ -40,7 +40,7 @@
 				}
 			}
 			&.secondary {
-				opacity: 0.4;
+				opacity: 0.5;
 				&:hover {
 					opacity: 1;
 				}

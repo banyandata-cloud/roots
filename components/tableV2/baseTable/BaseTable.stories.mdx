@@ -2,7 +2,7 @@ import { Meta, Canvas, Story } from '@storybook/addon-docs';
 
 import { TableColumnV2 } from '../BaseTable.class';
 import BaseTable from './BaseTable';
-import { TableCell } from '../cell';
+import { TableCellV2 } from '../cell';
 import { Button } from '../../buttons';
 import { ToggleIframeContainer } from '../../helpers';
 
@@ -218,7 +218,7 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					return {
 						name: ({ datum, expandableProps, ...rest }) => {
 							return (
-								<TableCell
+								<TableCellV2
 									{...rest}
 									component3={
 										!expandableProps.disabled && (
@@ -359,7 +359,7 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					return {
 						name: ({ datum, expandableProps, ...rest }) => {
 							return (
-								<TableCell
+								<TableCellV2
 									{...rest}
 									component3={
 										!expandableProps.disabled && (
@@ -446,19 +446,6 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 		{Template.bind({})}
 	</Story>
 </Canvas>
-
-## Try in the Code Editor
-
-This embeded `CodeSandBox` is external third party code editor `iframe` shared publicly. It is advised to create an account with banyancloud mail id to create/fork this sandbox.
-
-<ToggleIframeContainer>
-	<iframe
-		src='https://codesandbox.io/s/delicate-wood-vrqzpw?file=/src/App.js'
-		style={{ width: '100%', height: 500 }}
-		title='xenodochial-moon-5y668f'
-		allow='accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking'
-		sandbox='allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts'></iframe>
-</ToggleIframeContainer>
 
 ## API
 
