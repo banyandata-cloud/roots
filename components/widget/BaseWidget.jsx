@@ -73,7 +73,7 @@ const generateOptions = (optionData, theme, toggleDrawer) => {
 		case 'filter':
 			return (
 				<Button
-					title={optionData?.title ?? ''}
+					title='Filter'
 					variant='outlined'
 					size='auto'
 					className={styles['filter-button']}
