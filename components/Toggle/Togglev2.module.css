@@ -27,7 +27,7 @@
   min-width: 5rem;
   width: auto;
   height: auto;
-  opacity: 0.4;
+  opacity: 1;
 }
 .root .toggle > button[data-elem=base-cell].toggle-button > [data-elem=component2] > [data-elem=title] {
   color: var(--black);
@@ -39,7 +39,7 @@
   fill: var(--white);
 }
 .root .toggle > button[data-elem=base-cell].toggle-button.secondary {
-  opacity: 0.4;
+  opacity: 0.5;
 }
 .root .toggle > button[data-elem=base-cell].toggle-button.secondary:hover {
   opacity: 1;

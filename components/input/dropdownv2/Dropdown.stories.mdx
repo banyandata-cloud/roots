@@ -90,16 +90,17 @@ The dropdown component with multiple selections.
 <Canvas>
 	<Story name='Multi Select Controlled'>
 		{() => {
-			const [value, setValue] = useState([]);
+			const [value, setValue] = useState('');
+			console.log(value);
 			return (
 				<div>
 					<Dropdownv2
-						value={value}
+						value={value?.split(',')}
 						multi={true}
 						label='Multi Select Checkbox Dropdown'
 						placeholder='Select an option'
 						onChange={(event, newValue) => {
-							setValue(newValue);
+							setValue(newValue.toString());
 						}}>
 						{[...Array(50).keys()].map((option) => {
 							return (

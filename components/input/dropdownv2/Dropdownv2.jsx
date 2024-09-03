@@ -331,13 +331,14 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 	const getValueToDisplay = () => {
 		if (value) {
 			if (Array.isArray(value) && value.length > 0) {
-				if (value.length === 1) {
+				const sanitizedValue = value.filter(Boolean);
+				if (sanitizedValue.length === 1) {
 					const selectedItem = items?.find((item) => {
-						return item.props.value == value[0];
+						return item.props.value == sanitizedValue[0];
 					});
 					return selectedItem?.props?.title;
 				}
-				return formatter(value.length);
+				return formatter(sanitizedValue.length);
 			}
 			const selectedItem = items?.find((item) => {
 				return item.props.value == value;
