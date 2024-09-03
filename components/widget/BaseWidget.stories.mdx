@@ -42,6 +42,16 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 			const onReload = () => {
 				alert('Callback for fallback reload button');
 			};
+			const Body = ({ toggle }) => {
+				return (
+					<div
+						onClick={() => {
+							toggle();
+						}}>
+						HELLO
+					</div>
+				);
+			};
 			const toggle = {
 				options: [
 					{
@@ -94,14 +104,8 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					},
 				},
 				{
-					id: 'datepicker',
-					onApply: () => {
-						alert('Apply Date Picker');
-					},
-					onClear: () => {
-						alert('Clear Date Picker');
-					},
-					date: null,
+					id: 'filter',
+					title: 'Filter',
 				},
 			];
 			const coords = [
@@ -149,6 +153,7 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 						onBack={onBack}
 						onReload={onReload}
 						toggle={toggle}
+						body={Body}
 						options={options.map((option) => {
 							return option.id === 'toggle'
 								? {

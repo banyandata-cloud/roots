@@ -12,9 +12,10 @@ import { classes } from '../../utils';
 import { Toggle } from '../Toggle';
 import { BaseButton, Button } from '../buttons';
 import { DatePicker } from '../datePicker';
-import { ArrowIcon, CaretIcon, MaximizeIcon } from '../icons';
+import { ArrowIcon, CaretIcon, MaximizeIcon, NewFilterIcon } from '../icons';
 import { Dropdown, DropdownItem } from '../input';
 import { Popover } from '../popover';
+import BaseSidePanel from '../sidePanel/BaseSidePanel';
 import { Text } from '../text';
 import styles from './BaseWidget.module.css';
 import { WidgetFallback } from './fallback';
@@ -22,7 +23,7 @@ import { WidgetFallback } from './fallback';
 const renderToggle = (optionData, theme) => {
 	return <Toggle className={styles['toggle-body']} theme={theme} smooth {...optionData} />;
 };
-const generateOptions = (optionData, theme) => {
+const generateOptions = (optionData, theme, toggleDrawer) => {
 	switch (optionData?.id ?? '') {
 		case 'dropdown':
 			return (
@@ -69,6 +70,25 @@ const generateOptions = (optionData, theme) => {
 					value={optionData?.date ?? null}
 				/>
 			);
+		case 'filter':
+			return (
+				<Button
+					title={optionData?.title ?? ''}
+					variant='outlined'
+					size='auto'
+					className={styles['filter-button']}
+					onClick={() => {
+						toggleDrawer({
+							data: {
+								index: 0,
+							},
+						});
+					}}
+					leftComponent={() => {
+						return <NewFilterIcon className={styles['filter-icon']} />;
+					}}
+				/>
+			);
 		case 'custom':
 			return optionData.render({
 				theme,
@@ -102,6 +122,7 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 		onMouseUp,
 		onTouchEnd,
 		titleDesc,
+		body: Body = () => {},
 	} = props;
 
 	const emptyChartData = useMemo(() => {
@@ -117,6 +138,22 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 
 	const [open, setOpen] = useState(false);
 	const [anchorEl, setAnchorEl] = useState(null);
+
+	const [toggleTableDrawer, setToggleTableDrawer] = useState({
+		open: false,
+		data: {
+			index: 0,
+		},
+	});
+
+	const toggleDrawer = ({ data } = {}) => {
+		setToggleTableDrawer((prevState) => {
+			return {
+				open: !prevState.open,
+				data,
+			};
+		});
+	};
 
 	const titleText = (
 		<Text className={styles['title-container']}>
@@ -237,11 +274,30 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 						data-elem='header-options-list'>
 						{(options?.length ?? 0) > 0 &&
 							options?.map((objectData) => {
-								return generateOptions(objectData, theme);
+								return generateOptions(objectData, theme, toggleDrawer);
 							})}
 					</div>
 				</div>
 			</div>
+
+			<BaseSidePanel
+				toggle={toggleDrawer}
+				open={toggleTableDrawer.open}
+				className={styles.drawer}
+				data-elem='panel'
+				animation>
+				{isValidElement(<Body />) && <Body toggle={toggleDrawer} />}
+			</BaseSidePanel>
+
+			{toggleTableDrawer.open && (
+				<div
+					className={styles.overlay}
+					onClick={() => {
+						toggleDrawer();
+					}}
+				/>
+			)}
+
 			<div className={styles.children} data-elem='children'>
 				{showFallback && !loading && emptyChartData && (
 					<WidgetFallback {...fallbackProps} onReload={onReload} theme={theme} />
