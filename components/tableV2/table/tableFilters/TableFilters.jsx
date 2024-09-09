@@ -24,6 +24,8 @@ const TableFilters = (props) => {
 		searchPlaceholder,
 		toggleDrawer,
 		filtersCount,
+		searchDisabled,
+		rightActions,
 	} = props;
 
 	const { search: disabledSearch = true } = disabledFilterOptions;
@@ -52,11 +54,11 @@ const TableFilters = (props) => {
 	const getAdvancedFilterTitle = () => {
 		if (filtersCount > 0) {
 			if (filtersCount === 1) {
-				return `${filtersCount} Filter Applied`;
+				return `${filtersCount}`;
 			}
-			return `${filtersCount} Filters Applied`;
+			return `${filtersCount}`;
 		}
-		return 'Advanced Filters';
+		return '';
 	};
 
 	const handleKeyDown = (event) => {
@@ -85,42 +87,47 @@ const TableFilters = (props) => {
 				</div>
 			}
 			component2={
-				<>
-					<TextFieldv2
-						className={styles.search}
-						placeholder={searchPlaceholder}
-						value={search}
-						onKeyDown={handleKeyDown}
-						onChange={(e) => {
-							const { fieldValue } = inputHelper(e);
-							setSearch(fieldValue);
-						}}
-						{...(CustomSearchIcon && {
-							LeftComponent: () => {
+				!searchDisabled && (
+					<>
+						<TextFieldv2
+							className={styles.search}
+							placeholder={searchPlaceholder}
+							value={search}
+							onKeyDown={handleKeyDown}
+							onChange={(e) => {
+								const { fieldValue } = inputHelper(e);
+								setSearch(fieldValue);
+							}}
+							{...(CustomSearchIcon && {
+								LeftComponent: () => {
+									return (
+										<CustomSearchIcon
+											className={styles['custom-search-icon']}
+										/>
+									);
+								},
+							})}
+						/>
+						<Button
+							className={styles['search-button']}
+							leftComponent={() => {
 								return (
-									<CustomSearchIcon className={styles['custom-search-icon']} />
+									<SearchIcon
+										className={styles.icon}
+										onClick={() => {
+											onSearch(search);
+										}}
+									/>
 								);
-							},
-						})}
-					/>
-					<Button
-						className={styles['search-button']}
-						leftComponent={() => {
-							return (
-								<SearchIcon
-									className={styles.icon}
-									onClick={() => {
-										onSearch(search);
-									}}
-								/>
-							);
-						}}
-					/>
-				</>
+							}}
+						/>
+					</>
+				)
 			}
 			{...(!hideActions && {
 				component3: (
 					<div className={styles.filters}>
+						{rightActions()}
 						{!disabledSearch && (
 							<Button
 								size='auto'
@@ -154,12 +161,21 @@ const TableFilters = (props) => {
 										return <ColumnFilter className={styles.icon} v2 />;
 									},
 								}}
-								highlightOnSelect
-								placeholder='Filter Columns'
+								placeholder=''
 								multi
 								multiSelectActionTitle='Hide'
+								valueAsCount
 								formatter={(totalSelected) => {
-									return `${totalSelected} Columns Hidden`;
+									return (
+										<Text
+											weight={500}
+											className={classes(
+												styles.value,
+												!totalSelected ? styles.hide : ''
+											)}>
+											{totalSelected}
+										</Text>
+									);
 								}}
 								value={Object.keys(hiddenColumns ?? {})}
 								onChange={handleColumnChange}>

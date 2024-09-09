@@ -3,8 +3,8 @@ const Filter = (props) => {
 
 	return v2 ? (
 		<svg
-			width='1rem'
-			height='1rem'
+			width='1.5rem'
+			height='1.5rem'
 			className={className}
 			viewBox='0 0 16 17'
 			fill='none'
