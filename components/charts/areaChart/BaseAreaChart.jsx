@@ -49,6 +49,7 @@ const BaseAreaChart = (props) => {
 		ySplitLineShow,
 		yAxisLineShow,
 		yAxisTickShow,
+		yAxisTick,
 		yAxisLabel,
 		axisLabelColor,
 		axisSplitColor,
@@ -218,6 +219,7 @@ const BaseAreaChart = (props) => {
 						},
 						axisLine: {
 							show: xAxisLineShow,
+							onZero: false,
 							lineStyle: {
 								color:
 									theme === 'dark'
@@ -264,6 +266,7 @@ const BaseAreaChart = (props) => {
 						},
 						axisLine: {
 							show: yAxisLineShow,
+							onZero: false,
 							lineStyle: {
 								color:
 									theme === 'dark'
@@ -279,6 +282,7 @@ const BaseAreaChart = (props) => {
 										? COLORS[`theme-${theme}-mono-color2`]
 										: COLORS.grey3,
 							},
+							...yAxisTick,
 						},
 						...yAxis,
 					},

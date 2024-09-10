@@ -84,6 +84,9 @@ export const sampleV2Data = {
 		'High Availability': {
 			x1: 25,
 		},
+		'Empty Test': {
+			x1: 0,
+		},
 	},
 };
 

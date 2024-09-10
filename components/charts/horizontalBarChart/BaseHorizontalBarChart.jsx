@@ -1,21 +1,18 @@
 /* eslint-disable react/forbid-prop-types */
-import PropTypes from 'prop-types';
 import EChartsReactCore from 'echarts-for-react/lib/core';
-import * as echarts from 'echarts/core';
 import { BarChart } from 'echarts/charts';
 import {
-	GridComponent,
-	TooltipComponent,
-	TitleComponent,
 	DatasetComponent,
+	GridComponent,
+	TitleComponent,
+	TooltipComponent,
 } from 'echarts/components';
+import * as echarts from 'echarts/core';
+import PropTypes from 'prop-types';
 // Import renderer, note that introducing the CanvasRenderer or SVGRenderer is a required step
-import {
-	CanvasRenderer,
-	// SVGRenderer,
-} from 'echarts/renderers';
-import styles from './BaseHorizontalBarChart.module.css';
+import { CanvasRenderer } from 'echarts/renderers';
 import { classes } from '../../../utils';
+import styles from './BaseHorizontalBarChart.module.css';
 import { Skeleton } from './Skeleton';
 
 // Register the required components
@@ -193,6 +190,19 @@ const BaseHorizontalBarChart = (props) => {
 												  )
 												: (objectData?.barColor?.[subIndex] ?? '') ||
 												  (objectData?.color ?? ''),
+										borderRadius:
+											// eslint-disable-next-line no-nested-ternary
+											index === 0
+												? (sortedSeriesData?.chartData?.[key]?.[
+														`x${index + 2}`
+												  ] ?? 0) === 0
+													? [5, 5, 5, 5]
+													: [5, 0, 0, 5]
+												: (sortedSeriesData?.chartData?.[key]?.[
+														`x${index}`
+												  ] ?? 0) === 0
+												? [5, 5, 5, 5]
+												: [0, 5, 5, 0],
 									},
 									tooltip: {
 										...(seriesOption[subIndex]?.tooltip ?? {}),

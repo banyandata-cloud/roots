@@ -320,8 +320,8 @@ The default Area Chart with Areas Stacked.
 			},
 			xAxisLabelShow: true,
 			xSplitLineShow: true,
-			xAxisLineShow: true,
-			xAxisTickShow: true,
+			xAxisLineShow: false,
+			xAxisTickShow: false,
 			xAxis: {
 				position: 'top',
 				boundaryGap: false,
@@ -332,11 +332,24 @@ The default Area Chart with Areas Stacked.
 			stacked: true,
 			yAxisLabelShow: true,
 			ySplitLineShow: true,
-			yAxisLineShow: true,
+			yAxisLineShow: false,
 			yAxisTickShow: true,
 			axisLabelColor: 'black',
 			yAxis: {
-				max: 500,
+				boundaryGap: ['0%', '20%'],
+				axisLabel: {
+					formatter: (value) => {
+						if ([0, 100, 200, 300, 400]?.includes?.(value)) {
+							return value;
+						} else {
+							return '';
+						}
+					},
+				},
+			},
+			yAxisTick: {
+				alignWithLabel: true,
+				customValues: [0, 100, 200, 300, 400],
 			},
 			cursor: 'default',
 			seriesOption: [

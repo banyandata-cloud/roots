@@ -1,21 +1,20 @@
+/* eslint-disable react/forbid-prop-types */
 // ReactEcharts from 'echarts-for-react' would import the entire bundle
 import EChartsReactCore from 'echarts-for-react/lib/core';
-import * as echarts from 'echarts/core';
 import { PieChart } from 'echarts/charts';
 import {
-	GridComponent,
-	TooltipComponent,
-	TitleComponent,
 	DatasetComponent,
+	GridComponent,
 	LegendComponent,
+	TitleComponent,
+	TooltipComponent,
 } from 'echarts/components';
+import * as echarts from 'echarts/core';
 // Import renderer, note that introducing the CanvasRenderer or SVGRenderer is a required step
-import {
-	CanvasRenderer,
-	// SVGRenderer,
-} from 'echarts/renderers';
-import styles from './BasePieChart.module.css';
+import { CanvasRenderer } from 'echarts/renderers';
+import PropTypes from 'prop-types';
 import { classes } from '../../../utils';
+import styles from './BasePieChart.module.css';
 import { Skeleton } from './Skeleton';
 
 // Register the required components
@@ -197,6 +196,31 @@ const BasePieChart = (props) => {
 			style={style}
 		/>
 	);
+};
+
+BasePieChart.propTypes = {
+	loading: PropTypes.bool,
+	fallback: PropTypes.bool,
+	title: PropTypes.string,
+	gridOptions: PropTypes.object,
+	tooltip: PropTypes.object,
+	seriesData: PropTypes.shape({
+		chartData: PropTypes.object,
+		metaData: PropTypes.object,
+	}),
+	startAngle: PropTypes.number,
+	semiDoughnut: PropTypes.bool,
+	cursor: PropTypes.string,
+	radius: PropTypes.arrayOf(PropTypes.string),
+	center: PropTypes.arrayOf(PropTypes.string),
+	showLabelLine: PropTypes.bool,
+	itemStyle: PropTypes.object,
+	legend: PropTypes.object,
+	onEvents: PropTypes.func,
+	seriesOption: PropTypes.arrayOf(PropTypes.shape),
+	style: PropTypes.objectOf(PropTypes.shape),
+	className: PropTypes.string,
+	theme: PropTypes.oneOf(['light', 'dark']),
 };
 
 export default BasePieChart;
