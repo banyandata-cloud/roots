@@ -67,7 +67,46 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					title: 'Third',
 					rightComponent: null,
 					leftComponent: null,
-					disabled: true,
+				},
+				{
+					value: 'Fourth',
+					title: 'Fourthojojojjo',
+					rightComponent: null,
+					leftComponent: null,
+				},
+			],
+			smooth: true,
+			v2: true,
+			theme: 'light',
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Default Toggle - Secondary
+
+<Canvas>
+	<Story
+		name='Default Toggle - Secondary'
+		args={{
+			options: [
+				{
+					value: 'First',
+					title: 'First',
+					rightComponent: null,
+					leftComponent: null,
+				},
+				{
+					value: 'Second',
+					title: 'Second',
+					rightComponent: null,
+					leftComponent: null,
+				},
+				{
+					value: 'Third',
+					title: 'Third',
+					rightComponent: null,
+					leftComponent: null,
 				},
 				{
 					value: 'Fourth',
@@ -152,9 +191,6 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 				{
 					value: 'pgsql',
 					title: 'PGSQL',
-					leftComponent: () => {
-						return <TrashIcon />;
-					},
 				},
 				{
 					value: 'mysql',

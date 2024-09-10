@@ -40,6 +40,7 @@ const Table = (props) => {
 		disabledFilterOptions = {
 			search: true,
 		},
+		rightActions = null,
 		onSort = () => {},
 		rowHeight = 'md',
 		theme = 'light',
@@ -58,6 +59,7 @@ const Table = (props) => {
 			onSearch: () => {},
 			icon: null,
 			placeholder: 'Search',
+			disabled: false,
 		},
 		filtersCount = 0,
 	} = props;
@@ -69,6 +71,7 @@ const Table = (props) => {
 		onSearch = () => {},
 		icon: customSearchIcon = null,
 		placeholder: searchPlaceholder = 'Search',
+		disabled: searchDisabled = false,
 	} = searchProps;
 	const {
 		tableTitleIcon = null,
@@ -98,7 +101,7 @@ const Table = (props) => {
 		return [null, false, undefined].includes(hiddenColumns?.[header?.id]);
 	});
 
-	const Body = tableDrawerProps?.renderBody?.[toggleDrawer?.data?.index];
+	const Body = tableDrawerProps?.renderBody?.[toggleTableDrawer?.data?.index];
 
 	// for pagination docking using intersection observer
 	useEffect(() => {
@@ -187,9 +190,11 @@ const Table = (props) => {
 					tableDescriptionText={tableDescription}
 					customSearchIcon={customSearchIcon}
 					onSearch={onSearch}
+					searchDisabled={searchDisabled}
 					searchPlaceholder={searchPlaceholder}
 					toggleDrawer={toggleDrawer}
 					filtersCount={filtersCount}
+					rightActions={rightActions}
 				/>
 
 				<BaseTableV2
@@ -231,20 +236,18 @@ const Table = (props) => {
 					<BaseSidePanel
 						toggle={toggleDrawer}
 						open={toggleTableDrawer.open}
-						className={styles.drawer}
+						className={classes(styles.drawer, tableDrawerProps.className)}
 						animation
-						renderHeader={() => {
-							const DrawerHeader = tableDrawerProps.drawerHeader;
-							return (
-								<DrawerHeader
-									datum={toggleTableDrawer.data}
-									toggle={toggleDrawer}
-								/>
-							);
-						}}
+						toggleTableDrawer={toggleTableDrawer}
+						setToggleTableDrawer={setToggleTableDrawer}
 						{...tableDrawerProps}>
 						{Body && isValidElement(<Body datum={toggleTableDrawer.data} />) && (
-							<Body datum={toggleTableDrawer.data} toggle={toggleDrawer} />
+							<Body
+								datum={toggleTableDrawer.data}
+								toggle={toggleDrawer}
+								toggleTableDrawer={toggleTableDrawer}
+								setToggleTableDrawer={setToggleTableDrawer}
+							/>
 						)}
 					</BaseSidePanel>
 				)}

@@ -62,6 +62,7 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 		custom,
 		required,
 		multiSelectActionTitle,
+		valueAsCount,
 	} = props;
 	const [open, setOpen] = useState(false);
 	const [activeIndex, setActiveIndex] = useState(null);
@@ -331,13 +332,17 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 	const getValueToDisplay = () => {
 		if (value) {
 			if (Array.isArray(value) && value.length > 0) {
-				if (value.length === 1) {
+				const sanitizedValue = value.filter(Boolean);
+				if (sanitizedValue.length === 0) {
+					return '';
+				}
+				if (sanitizedValue.length === 1 && !valueAsCount) {
 					const selectedItem = items?.find((item) => {
-						return item.props.value == value[0];
+						return item.props.value == sanitizedValue[0];
 					});
 					return selectedItem?.props?.title;
 				}
-				return formatter(value.length);
+				return formatter(sanitizedValue.length);
 			}
 			const selectedItem = items?.find((item) => {
 				return item.props.value == value;
@@ -445,11 +450,12 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 						)}>
 						{getLeftComponent()}
 						{typeof placeholder === 'string' || placeholder instanceof String ? (
-							getValueToDisplay() || (
+							getValueToDisplay() ||
+							(placeholder && (
 								<span data-elem='placeholder' className={styles.placeholder}>
 									{placeholder}
 								</span>
-							)
+							))
 						) : (
 							<div data-elem='placeholder'>{placeholder}</div>
 						)}

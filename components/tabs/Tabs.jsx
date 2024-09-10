@@ -89,6 +89,19 @@ const Tabs = (props) => {
 						dropdownItems,
 					} = tab;
 
+					const getLeftComponent = () => {
+						if (LeftIcon) {
+							if (LeftIcon.Active || LeftIcon.InActive) {
+								if (isActive) {
+									return <LeftIcon.Active />;
+								}
+								return <LeftIcon.InActive />;
+							}
+							return <LeftIcon />;
+						}
+						return null;
+					};
+
 					return (
 						<div
 							key={tab.id}
@@ -137,12 +150,9 @@ const Tabs = (props) => {
 									onClick={() => {
 										return handleTabClick(tab.id, index);
 									}}
-									leftComponent={
-										LeftIcon &&
-										(() => {
-											return <LeftIcon className={styles.icon} />;
-										})
-									}
+									leftComponent={() => {
+										return getLeftComponent();
+									}}
 									rightComponent={
 										RightIcon &&
 										(() => {

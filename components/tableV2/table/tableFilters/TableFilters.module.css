@@ -93,40 +93,33 @@
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1rem;
 }
 .root[data-elem=base-cell] > [data-elem=component3] .filters button.adv-filter[data-elem=base-cell] {
   background: transparent;
   box-shadow: 0rem 0rem 0.125rem 0rem rgba(0, 0, 0, 0.25);
   height: -moz-fit-content;
   height: fit-content;
-  padding: 0.625rem 0.5rem;
+  padding: 0.825rem 0.8rem;
 }
 .root[data-elem=base-cell] > [data-elem=component3] .filters button.adv-filter[data-elem=base-cell]:hover {
   opacity: 0.7;
 }
 .root[data-elem=base-cell] > [data-elem=component3] .filters button.adv-filter[data-elem=base-cell] > [data-elem=component2] > [data-elem=title] {
-  color: var(--text-color);
-  font-family: Poppins;
-  font-size: 0.875rem;
-  font-weight: 400;
-  line-height: 1.3125rem;
-}
-.root[data-elem=base-cell] > [data-elem=component3] .filters button.adv-filter[data-elem=base-cell].filter {
-  background-color: var(--background-color5);
-}
-.root[data-elem=base-cell] > [data-elem=component3] .filters button.adv-filter[data-elem=base-cell].filter > [data-elem=component1] > svg > path {
-  fill: var(--secondary-color2);
-}
-.root[data-elem=base-cell] > [data-elem=component3] .filters button.adv-filter[data-elem=base-cell].filter > [data-elem=component2] > [data-elem=title] {
-  color: var(--secondary-color2);
-  font-size: 0.875rem;
+  color: var(--white) !important;
+  font-size: 0.75rem !important;
   font-weight: 500;
   line-height: 1.3125rem;
+  padding: 0.1rem 0.5rem;
+  background-color: var(--secondary-color2);
+  border-radius: 0.25rem;
+}
+.root[data-elem=base-cell] > [data-elem=component3] .filters button.adv-filter[data-elem=base-cell].filter {
+  padding: 0.7rem 0.7rem;
 }
 .root[data-elem=base-cell] > [data-elem=component3] .filters .icon {
-  width: 1rem;
-  height: 1rem;
+  width: 1.25rem;
+  height: 1.25rem;
   flex-shrink: 0;
 }
 .root[data-elem=base-cell] > [data-elem=component3] .filters .column-dropdown {
@@ -137,12 +130,33 @@
 }
 .root[data-elem=base-cell] > [data-elem=component3] .filters .column-dropdown > [data-elem=header] > [data-elem=select] {
   border: none;
-  padding: 0.5rem 0.5rem;
+  padding: 0.7rem 0.65rem;
   width: auto;
   font-size: 0.875rem;
 }
 .root[data-elem=base-cell] > [data-elem=component3] .filters .column-dropdown > [data-elem=header] > [data-elem=select]:hover {
   opacity: 0.7;
+}
+.root[data-elem=base-cell] > [data-elem=component3] .filters .column-dropdown > [data-elem=header] > [data-elem=select] span.value {
+  background-color: var(--secondary-color2);
+  padding: 0.1rem 0.5rem;
+  background-color: var(--secondary-color2);
+  border-radius: 0.25rem;
+  color: var(--white) !important;
+  font-size: 0.75rem !important;
+}
+.root[data-elem=base-cell] > [data-elem=component3] .filters .column-dropdown > [data-elem=header] > [data-elem=select] span.value.hide {
+  display: none;
+}
+.root[data-elem=base-cell] > [data-elem=component3] .filters .column-dropdown > [data-elem=header] > [data-elem=select] > div {
+  margin-left: -0.3125rem;
+}
+.root[data-elem=base-cell] > [data-elem=component3] .filters .column-dropdown > [data-elem=header] > [data-elem=select] > svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.root[data-elem=base-cell] > [data-elem=component3] .filters .column-dropdown > [data-elem=header] > [data-elem=select] > div {
+  display: none;
 }
 .root[data-elem=base-cell] > [data-elem=component3] .filters .column-dropdown .item {
   height: 3rem;

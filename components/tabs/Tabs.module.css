@@ -4,12 +4,11 @@
 }
 
 .tabs-container-vertical {
-  width: -moz-fit-content;
-  width: fit-content;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-start;
+  height: 100%;
 }
 
 .tabs {
@@ -23,11 +22,11 @@
 .vertical {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-start;
   position: relative;
   width: 3.75rem;
-  border-right: 0.0313rem solid var(--grey3);
+  border-right: 0.03125rem solid var(--light-color1);
   height: 100%;
 }
 
@@ -36,8 +35,12 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
-  border-bottom: 0.0313rem solid var(--side-bar-icon2);
+  align-items: flex-start;
+  border-bottom: 0.0313rem solid var(--light-color1);
+}
+.tab.vertical {
+  height: -moz-fit-content;
+  height: fit-content;
 }
 .tab > [data-elem=base-cell] {
   padding: 5px !important;

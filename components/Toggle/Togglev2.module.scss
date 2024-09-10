@@ -12,13 +12,14 @@
 		position: relative;
 		gap: 0.3375rem;
 		height: 100%;
-		background: transparent;
+		background: $light-color2;
+		border-radius: 0.25rem;
+		padding: 0.2188rem 0.1875rem;
 
 		> button[data-elem='base-cell'].toggle-button {
 			position: relative;
 			z-index: 2;
 			background: transparent;
-			border-radius: 1.25rem;
 			min-width: 5rem;
 			width: auto;
 			height: auto;
@@ -27,13 +28,49 @@
 					color: $black;
 				}
 			}
+			opacity: 1;
+			> [data-elem='component2'] {
+				> [data-elem='title'] {
+					color: $mono-color1;
+				}
+			}
+			svg {
+				path {
+					fill: $white;
+				}
+			}
+			&.secondary {
+				opacity: 0.5;
+				&:hover {
+					opacity: 1;
+				}
+				> [data-elem='component2'] {
+					> [data-elem='title'] {
+						color: $secondary-color2;
+					}
+				}
+				svg {
+					path {
+						fill: $secondary-color2;
+					}
+				}
+			}
 			&.active {
+				opacity: 1;
 				&.highlight {
 					background-color: $mono-color1;
+					border-radius: 0.25rem;
+					box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.25);
 					svg {
 						path {
 							fill: $white;
 						}
+					}
+					&.secondary {
+						opacity: 1;
+						border-radius: 0.25rem;
+						background-color: $light-color3;
+						box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.25);
 					}
 				}
 				> [data-elem='component2'] {
@@ -42,6 +79,7 @@
 					}
 				}
 				&.secondary {
+					opacity: 1;
 					> [data-elem='component2'] {
 						> [data-elem='title'] {
 							color: $secondary-color2;
@@ -57,9 +95,11 @@
 
 			&.disabled {
 				cursor: not-allowed;
+				opacity: 0.7;
+				background-color: transparent;
 				> [data-elem='component2'] {
 					> [data-elem='title'] {
-						color: $mono-color2;
+						color: $side-bar-icon2;
 					}
 				}
 			}
@@ -72,7 +112,7 @@
 					}
 				}
 				&.secondary {
-					background-color: $background-color4;
+					background-color: $light-color1;
 					> [data-elem='component2'] {
 						> [data-elem='title'] {
 							color: $secondary-color2;
@@ -84,14 +124,17 @@
 
 		.slider {
 			position: absolute;
-			bottom: 0;
+			bottom: 0.1875rem;
 			left: 0;
-			height: 100%;
+			height: 85%;
 			font-weight: 500;
 			background: $mono-color1;
-			border-radius: 1.25rem;
+			border-radius: 0.25rem;
+			box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.25);
 			&.secondary {
-				background-color: $background-color5;
+				border-radius: 0.25rem;
+				background-color: $light-color3;
+				box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.251);
 			}
 			&.smooth {
 				transition: left 0.2s ease-in-out, width 0.2s ease-in-out;
