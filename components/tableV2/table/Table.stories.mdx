@@ -4,6 +4,7 @@ import { ArrowIcon, CopyIcon, ServerIcon } from '../../icons';
 import { usePagination } from '../../pagination';
 import { TableColumnV2 } from '../BaseTable.class';
 import Table from './Table';
+import { Button } from '.././../buttons';
 import { HomeIcon } from '../../icons';
 
 <Meta title='Components/TableV2/Table' parameters={{ options: { showToolbar: false } }} />
@@ -1193,6 +1194,10 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 						disabledFilterOptions={{
 							search: false,
 						}}
+						rightActions={() => {
+							return <Button title='Action' />;
+						}}
+						// filtersCount={3}
 						searchProps={{
 							icon: () => {
 								return <HomeIcon />;
@@ -1201,6 +1206,7 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 								console.log(s);
 							},
 							placeholder: 'Search Employees',
+							// disabled: true,
 						}}
 						tableDrawerProps={{
 							tabsConfig: {

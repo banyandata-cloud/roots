@@ -76,6 +76,67 @@ const reducer = (state, { type, payload }) => {
 	}
 };
 
+const PageLabelDisplay = ({
+	currentPage,
+	step,
+	customPagination,
+	customLabel,
+	totalData,
+	totalPages,
+	isDisplayLabelVisible,
+	dataLabel,
+	render,
+	fallback,
+}) => {
+	if (!render) {
+		return null;
+	}
+
+	return customPagination ? (
+		<Text
+			variant='b1'
+			stroke='medium'
+			className={styles['total-data']}
+			attrs={{
+				title: `${((currentPage === 0 ? 1 : currentPage) - 1) * step + 1}-${
+					(currentPage === 0 ? 1 : currentPage) * step
+				} of ${totalData}`,
+			}}>
+			<Text>{customLabel ?? ''}</Text>
+		</Text>
+	) : totalData || totalPages ? (
+		(isDisplayLabelVisible || fallback) && (
+			<Text
+				variant='b1'
+				stroke='medium'
+				className={styles['total-data']}
+				attrs={{
+					title: `${((currentPage === 0 ? 1 : currentPage) - 1) * step + 1}-${
+						(currentPage === 0 ? 1 : currentPage) * step
+					} of ${totalData}`,
+				}}>
+				<Text>Displaying</Text> {((currentPage === 0 ? 1 : currentPage) - 1) * step + 1}-
+				{currentPage === totalPages && totalData
+					? totalData
+					: (currentPage === 0 ? 1 : currentPage) * step}{' '}
+				of {totalData ?? 'total'} <Text>{dataLabel ?? 'records'}</Text>
+			</Text>
+		)
+	) : (
+		<Text
+			variant='b1'
+			stroke='medium'
+			className={styles['total-data']}
+			attrs={{
+				title: `${((currentPage === 0 ? 1 : currentPage) - 1) * step + 1}-${
+					(currentPage === 0 ? 1 : currentPage) * step
+				} of ${totalData}`,
+			}}>
+			<Text>No available {dataLabel ?? 'records'} at the moment</Text>
+		</Text>
+	);
+};
+
 export const usePagination = (props) => {
 	const { totalPages = null, currentPage = null, step = 10, totalData = null } = props;
 	const [paginationState, paginationDispatch] = useReducer(reducer, {
@@ -211,8 +272,6 @@ export const Pagination = forwardRef((props, ref) => {
 		};
 	}, []);
 
-	// console.log(isDisplayLabelVisible);
-
 	const showTotalData =
 		totalData && ((currentPage === 0 ? 1 : currentPage) - 1) * step + 1 < totalData;
 
@@ -266,52 +325,19 @@ export const Pagination = forwardRef((props, ref) => {
 							}
 						/>
 					)}
-					{customPagination ? (
-						<Text
-							variant='b1'
-							stroke='medium'
-							className={styles['total-data']}
-							attrs={{
-								title: `${((currentPage === 0 ? 1 : currentPage) - 1) * step + 1}-${
-									(currentPage === 0 ? 1 : currentPage) * step
-								} of ${totalData}`,
-							}}>
-							<Text>{customLabel ?? ''}</Text>
-						</Text>
-					) : totalData || totalPages ? (
-						isDisplayLabelVisible && (
-							<Text
-								variant='b1'
-								stroke='medium'
-								className={styles['total-data']}
-								attrs={{
-									title: `${
-										((currentPage === 0 ? 1 : currentPage) - 1) * step + 1
-									}-${
-										(currentPage === 0 ? 1 : currentPage) * step
-									} of ${totalData}`,
-								}}>
-								<Text>Displaying</Text>{' '}
-								{((currentPage === 0 ? 1 : currentPage) - 1) * step + 1}-
-								{currentPage === totalPages && totalData
-									? totalData
-									: (currentPage === 0 ? 1 : currentPage) * step}{' '}
-								of {totalData ?? 'total'} <Text>{dataLabel ?? 'records'}</Text>
-							</Text>
-						)
-					) : (
-						<Text
-							variant='b1'
-							stroke='medium'
-							className={styles['total-data']}
-							attrs={{
-								title: `${((currentPage === 0 ? 1 : currentPage) - 1) * step + 1}-${
-									(currentPage === 0 ? 1 : currentPage) * step
-								} of ${totalData}`,
-							}}>
-							<Text>No available {dataLabel ?? 'records'} at the moment</Text>
-						</Text>
-					)}
+					<PageLabelDisplay
+						{...{
+							currentPage,
+							step,
+							customPagination,
+							customLabel,
+							totalData,
+							totalPages,
+							isDisplayLabelVisible,
+							dataLabel,
+							render: enableJumpToPage,
+						}}
+					/>
 				</div>
 			)}
 			{showPages && !customPagination && (
@@ -460,6 +486,24 @@ export const Pagination = forwardRef((props, ref) => {
 								</Tooltip>
 							</form>
 						}
+					/>
+				</div>
+			)}
+			{!enableJumpToPage && (
+				<div className={styles.options}>
+					<PageLabelDisplay
+						{...{
+							currentPage,
+							step,
+							customPagination,
+							customLabel,
+							totalData,
+							totalPages,
+							isDisplayLabelVisible,
+							dataLabel,
+							render: true,
+							fallback: true,
+						}}
 					/>
 				</div>
 			)}

@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 import { format as fnsFormat } from 'date-fns';
 import { DAYS, FULL_MONTHS, MONTHS } from '../constants';
 
@@ -260,4 +261,66 @@ export const getDatesInAMonth = ({ month, year }) => {
 
 export const getCSSVariableValue = (variable) => {
 	return getComputedStyle(document.documentElement).getPropertyValue(variable);
+};
+
+export const sanitizeJSON = (params, aliases = {}, exclusions = []) => {
+	return Object.keys(params).reduce((acc, param) => {
+		const value = params[param];
+		if (
+			value !== '' &&
+			value != null &&
+			value !== 'null' &&
+			value !== 'undefined' &&
+			!exclusions.includes(param)
+		) {
+			const alias = aliases[param];
+			if (alias) {
+				acc[alias] = value;
+			} else {
+				acc[param] = value;
+			}
+		}
+		return acc;
+	}, {});
+};
+
+export const areTwinObjects = (obj1, obj2) => {
+	// Check if both are objects and not null
+	if (typeof obj1 !== 'object' || obj1 === null || typeof obj2 !== 'object' || obj2 === null) {
+		return obj1 === obj2;
+	}
+
+	// Check if both objects have the same number of keys
+	const keys1 = Object.keys(obj1);
+	const keys2 = Object.keys(obj2);
+	if (keys1.length !== keys2.length) {
+		return false;
+	}
+
+	// Check if all keys and values are equal
+	for (const key of keys1) {
+		if (!keys2.includes(key) || !areTwinObjects(obj1[key], obj2[key])) {
+			return false;
+		}
+	}
+
+	return true;
+};
+
+export const getDuplicatesSansArray = ({ array = [], properties = [], hasObjects = true }) => {
+	if (hasObjects) {
+		return array
+			.filter((value, index, self) => {
+				return (
+					index ===
+					self.findIndex((item) => {
+						return properties.every((property) => {
+							return item?.[property] === value?.[property];
+						});
+					})
+				);
+			})
+			.filter(Boolean);
+	}
+	return cloneDeep([...new Set(array)].filter(Boolean));
 };

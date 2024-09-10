@@ -40,6 +40,7 @@ const Table = (props) => {
 		disabledFilterOptions = {
 			search: true,
 		},
+		rightActions = null,
 		onSort = () => {},
 		rowHeight = 'md',
 		theme = 'light',
@@ -58,6 +59,7 @@ const Table = (props) => {
 			onSearch: () => {},
 			icon: null,
 			placeholder: 'Search',
+			disabled: false,
 		},
 		filtersCount = 0,
 	} = props;
@@ -69,6 +71,7 @@ const Table = (props) => {
 		onSearch = () => {},
 		icon: customSearchIcon = null,
 		placeholder: searchPlaceholder = 'Search',
+		disabled: searchDisabled = false,
 	} = searchProps;
 	const {
 		tableTitleIcon = null,
@@ -187,9 +190,11 @@ const Table = (props) => {
 					tableDescriptionText={tableDescription}
 					customSearchIcon={customSearchIcon}
 					onSearch={onSearch}
+					searchDisabled={searchDisabled}
 					searchPlaceholder={searchPlaceholder}
 					toggleDrawer={toggleDrawer}
 					filtersCount={filtersCount}
+					rightActions={rightActions}
 				/>
 
 				<BaseTableV2
@@ -231,7 +236,7 @@ const Table = (props) => {
 					<BaseSidePanel
 						toggle={toggleDrawer}
 						open={toggleTableDrawer.open}
-						className={styles.drawer}
+						className={classes(styles.drawer, tableDrawerProps.className)}
 						animation
 						toggleTableDrawer={toggleTableDrawer}
 						setToggleTableDrawer={setToggleTableDrawer}
