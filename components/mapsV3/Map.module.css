@@ -1,0 +1,43 @@
+.root {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.root button.full-screen[data-elem=base-cell] {
+  background-color: var(--white);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.root button.full-screen[data-elem=base-cell] .icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: var(--text-color);
+}
+.root .zoom {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.25rem;
+  position: absolute;
+  right: 2.5%;
+  top: 2.5%;
+}
+.root .zoom .button {
+  width: 1.875rem;
+  height: 1.875rem;
+}
+.root .zoom .button[data-elem=base-cell] {
+  background-color: #fff;
+  color: #000;
+  border: 0.0625rem solid var(--text-color);
+}
+.root .zoom .button[data-elem=base-cell] > [data-elem=component1] {
+  padding: 0rem;
+}
+.root .zoom .button[data-elem=base-cell] > [data-elem=component1] :hover {
+  background-color: var(--text-color);
+  color: #fff;
+  border-radius: 0.25rem;
+}/*# sourceMappingURL=Map.module.css.map */
