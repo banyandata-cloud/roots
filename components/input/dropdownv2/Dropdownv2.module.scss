@@ -9,8 +9,7 @@
 
 	.label {
 		font-size: 0.75rem;
-		color: $grey;
-		width: auto;
+		color: $text-color;
 		&.required {
 			&::after {
 				content: ' *';

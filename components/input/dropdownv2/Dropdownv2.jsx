@@ -1,7 +1,5 @@
 /* eslint-disable eqeqeq */
-/* eslint-disable react/require-default-props */
 /* eslint-disable no-nested-ternary */
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import {
 	FloatingFocusManager,
 	autoUpdate,
@@ -450,12 +448,15 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 						)}>
 						{getLeftComponent()}
 						{typeof placeholder === 'string' || placeholder instanceof String ? (
-							getValueToDisplay() ||
-							(placeholder && (
-								<span data-elem='placeholder' className={styles.placeholder}>
-									{placeholder}
-								</span>
-							))
+							getValueToDisplay() ? (
+								<span data-elem='value'>{getValueToDisplay()}</span>
+							) : (
+								placeholder && (
+									<span data-elem='placeholder' className={styles.placeholder}>
+										{placeholder}
+									</span>
+								)
+							)
 						) : (
 							<div data-elem='placeholder'>{placeholder}</div>
 						)}
@@ -585,8 +586,6 @@ Dropdown.propTypes = {
 	label: PropTypes.string,
 	value: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]),
 	placeholder: PropTypes.string || PropTypes.node,
-	// search: PropTypes.bool,
-	// max: PropTypes.number,
 	multi: PropTypes.bool,
 	onChange: PropTypes.func,
 	onBlur: PropTypes.func,

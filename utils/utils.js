@@ -263,9 +263,9 @@ export const getCSSVariableValue = (variable) => {
 	return getComputedStyle(document.documentElement).getPropertyValue(variable);
 };
 
-export const sanitizeJSON = (params, aliases = {}, exclusions = []) => {
-	return Object.keys(params).reduce((acc, param) => {
-		const value = params[param];
+export const sanitizeJSON = (obj = {}, aliases = {}, exclusions = []) => {
+	return Object.keys(obj).reduce((acc, param) => {
+		const value = obj[param];
 		if (
 			value !== '' &&
 			value != null &&
