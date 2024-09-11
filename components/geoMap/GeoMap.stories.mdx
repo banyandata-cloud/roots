@@ -3,14 +3,14 @@ import ReactDOMServer from 'react-dom/server';
 import { ThemedContainer } from '../helpers';
 import { useEffect, useState } from 'react';
 import Toggle from '../Toggle/Toggle';
-import Map from './Map';
+import GeoMap from './GeoMap';
 import { MapTooltip } from '../mapsV2/tooltip/Tooltip';
 
-<Meta title='Components/MapV2' parameters={{ options: { showToolbar: true } }} />
+<Meta title='Components/GeoMap' parameters={{ options: { showToolbar: true } }} />
 
 # Map
 
-The Map component is a highcarts wrapper that renders the basic world map JSON by default with markers and clusters optionally. It provides an easy-to-use interface for integrating maps into your React application.
+The GeoMap component is a React Simple Maps wrapper that renders the geo world map JSON by default with markers and clusters optionally. It provides an easy-to-use interface for integrating maps into your React application.
 
 #### Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/components/maps/Map)
 
@@ -54,7 +54,7 @@ The default Map component with tooltip in a point.
 						width: '100%',
 						height: '100%',
 					}}>
-					<Map theme='dark' coordinates={coordinates} zoom={1} />
+					<GeoMap theme='dark' coordinates={coordinates} zoom={1} />
 				</ThemedContainer>
 			);
 		}}

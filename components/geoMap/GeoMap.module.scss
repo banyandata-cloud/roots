@@ -5,7 +5,7 @@
 	height: 100%;
 	position: relative;
 	button.full-screen[data-elem='base-cell'] {
-		background-color: $white;
+		background-color: $light-color3;
 		position: absolute;
 		bottom: 0;
 		right: 0;
@@ -25,14 +25,14 @@
 			width: 1.875rem;
 			height: 1.875rem;
 			&[data-elem='base-cell'] {
-				background-color: #fff;
+				background-color: $light-color3;
 				color: #000;
 				border: 0.0625rem solid $text-color;
 				& > [data-elem='component1'] {
 					padding: 0rem;
 					:hover {
 						background-color: $text-color;
-						color: #fff;
+						color: $light-color3;
 						border-radius: 0.25rem;
 					}
 				}

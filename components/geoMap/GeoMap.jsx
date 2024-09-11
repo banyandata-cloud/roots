@@ -3,18 +3,15 @@ import { ComposableMap, Geographies, Geography, Marker, ZoomableGroup } from 're
 import { classes } from '../../utils';
 import { Button } from '../buttons';
 import { MarkerIcon } from '../icons';
-import { Skeleton } from '../skeleton';
 import { Tooltip } from '../tooltip';
-import styles from './Map.module.css';
+import styles from './GeoMap.module.css';
 import countries from './countries.json';
 
 const Map = (props) => {
 	const {
 		loading,
-		theme,
-		fallback,
-		className,
-		coordinates,
+		className = '',
+		coordinates = [],
 		zoom = 1,
 		customMarker = null,
 		showZoomButton = true,
@@ -50,20 +47,7 @@ const Map = (props) => {
 	};
 
 	if (loading) {
-		return (
-			<div className={styles.root}>
-				<Skeleton
-					width='100%'
-					height='100%'
-					theme={theme}
-					variant='rounded'
-					style={{
-						animationDuration: '4s',
-					}}
-					noAnimation={!loading && fallback}
-				/>
-			</div>
-		);
+		return null;
 	}
 	return (
 		<div className={classes(styles.root, className)}>

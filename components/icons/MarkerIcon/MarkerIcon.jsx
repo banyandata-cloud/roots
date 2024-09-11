@@ -2,8 +2,8 @@ const MarkerIcon = (props) => {
 	const { className = '' } = props;
 	return (
 		<svg
-			width='12'
-			height='12'
+			width='1rem'
+			height='1rem'
 			viewBox='0 0 21 24'
 			fill='none'
 			className={className}
