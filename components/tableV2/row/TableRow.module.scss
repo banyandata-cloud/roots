@@ -28,7 +28,7 @@
 
 		&[data-active='true'] {
 			> [data-elem='base-cell'] {
-				background: $background-color4;
+				background: $light-color2;
 				> [data-elem='component2'] {
 					> [data-elem='text'] {
 						color: $black !important;
