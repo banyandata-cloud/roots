@@ -12,20 +12,19 @@ const TableFilters = (props) => {
 	const {
 		className = '',
 		style = {},
-		headerData,
+		headerData = [],
 		hiddenColumns,
 		setHiddenColumns,
 		disabledFilterOptions = {},
-		theme = 'light',
-		tableTitleText,
-		tableDescriptionText,
+		tableTitleText = '',
+		tableDescriptionText = '',
 		customSearchIcon: CustomSearchIcon,
-		onSearch,
-		searchPlaceholder,
-		toggleDrawer,
+		onSearch = () => {},
+		searchPlaceholder = '',
+		toggleDrawer = () => {},
 		filtersCount,
 		searchDisabled,
-		rightActions,
+		rightActions = () => {},
 	} = props;
 
 	const { search: disabledSearch = true } = disabledFilterOptions;
@@ -140,6 +139,7 @@ const TableFilters = (props) => {
 									toggleDrawer({
 										data: {
 											index: 0,
+											standalone: true,
 										},
 									});
 								}}
@@ -150,7 +150,6 @@ const TableFilters = (props) => {
 						)}
 						{columnFilters.length > 0 && (
 							<Dropdownv2
-								theme={theme}
 								className={styles['column-dropdown']}
 								popperClassName={styles['column-dropdown-popper']}
 								leftComponent={{
