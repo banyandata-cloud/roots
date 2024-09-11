@@ -21,7 +21,7 @@
   color: var(--black) !important;
 }
 .root.body-row[data-active=true] > [data-elem=base-cell] {
-  background: var(--background-color4);
+  background: var(--light-color2);
 }
 .root.body-row[data-active=true] > [data-elem=base-cell] > [data-elem=component2] > [data-elem=text] {
   color: var(--black) !important;
