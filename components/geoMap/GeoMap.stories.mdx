@@ -8,18 +8,18 @@ import { MapTooltip } from '../mapsV2/tooltip/Tooltip';
 
 <Meta title='Components/GeoMap' parameters={{ options: { showToolbar: true } }} />
 
-# Map
+# GeoMap
 
 The GeoMap component is a React Simple Maps wrapper that renders the geo world map JSON by default with markers and clusters optionally. It provides an easy-to-use interface for integrating maps into your React application.
 
-#### Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/components/maps/Map)
+#### Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/components/maps/GeoMap)
 
 ## Usage
 
 Basic import and additional information on how to use this component.
 
 ```js
-import { Map } from '@banyan_cloud/roots';
+import { GeoMap } from '@banyan_cloud/roots';
 ```
 
 -   The markers can be customised with any image or svg or base symbols.
@@ -29,9 +29,9 @@ import { Map } from '@banyan_cloud/roots';
 
 The CSF rendered inside the `Canvas` from which you can see the implementation example.
 
-### Default Map
+### Default GeoMap
 
-The default Map component with tooltip in a point.
+The default GeoMap component with tooltip in a point.
 
 <Canvas>
 	<Story name='Default'>
@@ -79,7 +79,7 @@ If true, displays a loading indicator while the map is being loaded.
 </table>
 
 ```jsx
-<Map loading={true} />
+<GeoMap loading={true} />
 ```
 
 **`fallback`**
@@ -98,7 +98,7 @@ If set to true, the loading animation will not be shown when loading is false.
 </table>
 
 ```jsx
-<Map fallback={true} />
+<GeoMap fallback={true} />
 ```
 
 **`theme`**
@@ -117,7 +117,7 @@ The color theme
 </table>
 
 ```jsx
-<Map theme='light' />
+<GeoMap theme='light' />
 ```
 
 **`coordinates`**
@@ -136,7 +136,7 @@ The coordinates of the map which includes latitude `lat` and longitude `lon` wit
 </table>
 
 ```jsx
-<Map coordinates=[{
+<GeoMap coordinates=[{
    "lat":70,
    "lon":12,
    "tooltip":"Stringified Component"
@@ -159,7 +159,7 @@ Zoom level at the load in the interface.
 </table>
 
 ```jsx
-<Map zoom={1} />
+<GeoMap zoom={1} />
 ```
 
 **`showZoomButton`**
@@ -178,7 +178,7 @@ Show the zoomIn(+)/zoomOut(-) button combo at the top-right corner of the map.
 </table>
 
 ```jsx
-<Map showZoomButton={false} />
+<GeoMap showZoomButton={false} />
 ```
 
 **`customMarker`**
@@ -197,7 +197,7 @@ The custom marker to replace the default marker. The custom marker can ben an `i
 </table>
 
 ```jsx
-<Map customMarker={`url(https://someImage.com)`} />
+<GeoMap customMarker={`url(https://someImage.com)`} />
 ```
 
 **`className`**
@@ -216,5 +216,5 @@ The custom classname to override the parent container's style.
 </table>
 
 ```jsx
-<Map className={styles.custom} />
+<GeoMap className={styles.custom} />
 ```
