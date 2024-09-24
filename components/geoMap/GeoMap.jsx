@@ -54,7 +54,7 @@ const Map = (props) => {
 			{showZoomButton && (
 				<div className={styles.zoom}>
 					<Button
-						className={styles.button}
+						className={classes(styles.button, styles.top)}
 						leftComponent={() => {
 							return (
 								<svg
@@ -72,7 +72,7 @@ const Map = (props) => {
 						onClick={handleZoomIn}
 					/>
 					<Button
-						className={styles.button}
+						className={classes(styles.button, styles.bottom)}
 						leftComponent={() => {
 							return (
 								<svg

@@ -17,22 +17,39 @@
 	}
 	.zoom {
 		@include flex(column, center, center);
-		gap: 0.25rem;
+		// gap: 0.25rem;
 		position: absolute;
 		right: 2.5%;
 		top: 2.5%;
 		.button {
-			width: 1.875rem;
-			height: 1.875rem;
+			width: 2.1875rem;
+			height: 2.1875rem;
 			&[data-elem='base-cell'] {
 				background-color: $light-color3;
-				color: #000;
-				border: 0.0625rem solid $text-color;
+				color: $text-color;
+				border: 0.0625rem solid $light-color1;
 				& > [data-elem='component1'] {
-					padding: 0rem;
 					:hover {
-						background-color: $text-color;
-						color: $light-color3;
+						background-color: $light-color1;
+					}
+				}
+			}
+		}
+		.top {
+			&[data-elem='base-cell'] {
+				border-radius: 0.125rem 0.125rem 0rem 0rem;
+				& > [data-elem='component1'] {
+					:hover {
+						border-radius: 0.25rem;
+					}
+				}
+			}
+		}
+		.bottom {
+			&[data-elem='base-cell'] {
+				border-radius: 0rem 0rem 0.125rem 0.125rem;
+				& > [data-elem='component1'] {
+					:hover {
 						border-radius: 0.25rem;
 					}
 				}
