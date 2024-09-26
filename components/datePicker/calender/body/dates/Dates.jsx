@@ -25,6 +25,7 @@ const Dates = (props) => {
 		setSelectedRange,
 		disabledDates,
 		disableDatesBefore,
+		enableFutureDates,
 	} = props;
 
 	const { monthAsNumber, year } = selectedMonth || {};
@@ -172,7 +173,7 @@ const Dates = (props) => {
 				const isDisabled =
 					disabledDates.includes(date.toDateString()) ||
 					disabledBeforeDate(date) ||
-					disabledAfterDate(date);
+					(!enableFutureDates && disabledAfterDate(date));
 
 				const isHoveringBeforeSelectedDate = isBefore(
 					fromUnixTime(hoveredEndingDate),
