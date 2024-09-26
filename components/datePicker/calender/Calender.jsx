@@ -31,6 +31,7 @@ const Calender = (props) => {
 		limitHours,
 		showTime,
 		valueAsRange,
+		enableFutureDates,
 	} = props;
 
 	const [dateSelectionView, showDateSelectionView] = useState(false);
@@ -233,6 +234,7 @@ const Calender = (props) => {
 					setSelectedMonth={setSelectedMonth}
 					disabledDates={disabledDates}
 					disableDatesBefore={disableDatesBefore}
+					enableFutureDates={enableFutureDates}
 				/>
 			) : (
 				<ClockView
