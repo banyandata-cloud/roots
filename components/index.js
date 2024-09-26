@@ -31,3 +31,4 @@ export * from './text';
 export * from './Toggle';
 export * from './tooltip';
 export * from './widget';
+export * from './chartsV2';
