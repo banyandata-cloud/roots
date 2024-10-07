@@ -41,7 +41,7 @@ const BaseSidePanel = (props) => {
 		},
 	} = props;
 
-	const { tabs, className: tabsClassName } = tabsConfig;
+	const { tabs = [], className: tabsClassName } = tabsConfig ?? {};
 
 	const [selectedTab, setSelectedTab] = useState(1);
 

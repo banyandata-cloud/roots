@@ -35,6 +35,7 @@ const DatePicker = (props) => {
 		range,
 		onApply,
 		disabledDates,
+		enableFutureDates,
 		maxRange,
 		value,
 		disabled,
@@ -191,6 +192,7 @@ const DatePicker = (props) => {
 	const calenderProps = {
 		selectedDate,
 		setSelectedDate,
+		enableFutureDates,
 		selectedRange,
 		setSelectedRange,
 		fixedRange,
@@ -397,6 +399,7 @@ DatePicker.propTypes = {
 	defaultHourDiff: PropTypes.number,
 	limitHours: PropTypes.number,
 	showTime: PropTypes.bool,
+	enableFutureDates: PropTypes.bool,
 };
 
 DatePicker.defaultProps = {
@@ -417,6 +420,7 @@ DatePicker.defaultProps = {
 	defaultHourDiff: null,
 	limitHours: null,
 	showTime: true,
+	enableFutureDates: false,
 };
 
 export default DatePicker;

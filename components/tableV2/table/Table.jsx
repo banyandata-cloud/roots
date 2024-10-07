@@ -235,12 +235,19 @@ const Table = (props) => {
 				{tableDrawerProps && (
 					<BaseSidePanel
 						toggle={toggleDrawer}
-						open={toggleTableDrawer.open}
-						className={classes(styles.drawer, tableDrawerProps.className)}
 						animation
+						{...tableDrawerProps}
+						{...(!toggleTableDrawer.data?.standalone
+							? {
+									tabsConfig: tableDrawerProps.tabsConfig,
+							  }
+							: {
+									tabsConfig: null,
+							  })}
+						open={toggleTableDrawer.open}
 						toggleTableDrawer={toggleTableDrawer}
 						setToggleTableDrawer={setToggleTableDrawer}
-						{...tableDrawerProps}>
+						className={classes(styles.drawer, tableDrawerProps.className)}>
 						{Body && isValidElement(<Body datum={toggleTableDrawer.data} />) && (
 							<Body
 								datum={toggleTableDrawer.data}

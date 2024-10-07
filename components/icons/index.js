@@ -27,6 +27,7 @@ export * from './HidePassword';
 export * from './Home';
 export * from './Info';
 export * from './MagnifyingGlass';
+export * from './MarkerIcon';
 export * from './MaximizeIcon';
 export * from './Nut';
 export * from './Password';

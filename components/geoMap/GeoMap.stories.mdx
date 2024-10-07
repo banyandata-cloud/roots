@@ -1,0 +1,220 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+import ReactDOMServer from 'react-dom/server';
+import { ThemedContainer } from '../helpers';
+import { useEffect, useState } from 'react';
+import Toggle from '../Toggle/Toggle';
+import GeoMap from './GeoMap';
+import { MapTooltip } from '../mapsV2/tooltip/Tooltip';
+
+<Meta title='Components/GeoMap' parameters={{ options: { showToolbar: true } }} />
+
+# GeoMap
+
+The GeoMap component is a React Simple Maps wrapper that renders the geo world map JSON by default with markers and clusters optionally. It provides an easy-to-use interface for integrating maps into your React application.
+
+#### Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/components/maps/GeoMap)
+
+## Usage
+
+Basic import and additional information on how to use this component.
+
+```js
+import { GeoMap } from '@banyan_cloud/roots';
+```
+
+-   The markers can be customised with any image or svg or base symbols.
+-   As this is a highcharts wrapper, some options of highcharts which are provided as props can be passed with additional highctarts' props.
+
+## Stories
+
+The CSF rendered inside the `Canvas` from which you can see the implementation example.
+
+### Default GeoMap
+
+The default GeoMap component with tooltip in a point.
+
+<Canvas>
+	<Story name='Default'>
+		{() => {
+			const coordinates = [
+				{
+					lat: 27,
+					lon: 103,
+					tooltip: <MapTooltip />,
+				},
+				{
+					lat: 22,
+					lon: 78,
+					tooltip: <MapTooltip />,
+				},
+			];
+			return (
+				<ThemedContainer
+					style={{
+						width: '100%',
+						height: '100%',
+					}}>
+					<GeoMap theme='dark' coordinates={coordinates} zoom={1} />
+				</ThemedContainer>
+			);
+		}}
+	</Story>
+</Canvas>
+
+## API
+
+**`loading`**
+
+If true, displays a loading indicator while the map is being loaded.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<GeoMap loading={true} />
+```
+
+**`fallback`**
+
+If set to true, the loading animation will not be shown when loading is false.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>undefined</td>
+	</tr>
+</table>
+
+```jsx
+<GeoMap fallback={true} />
+```
+
+**`theme`**
+
+The color theme
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>'light', 'dark'</td>
+		<td>'dark'</td>
+	</tr>
+</table>
+
+```jsx
+<GeoMap theme='light' />
+```
+
+**`coordinates`**
+
+The coordinates of the map which includes latitude `lat` and longitude `lon` with tooltips optionally. `showMarker` prop has to be true for the coordinates to be visible.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Array of objects</td>
+		<td>[]</td>
+	</tr>
+</table>
+
+```jsx
+<GeoMap coordinates=[{
+   "lat":70,
+   "lon":12,
+   "tooltip":"Stringified Component"
+}] />
+```
+
+**`zoom`**
+
+Zoom level at the load in the interface.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Number</td>
+		<td>null</td>
+	</tr>
+</table>
+
+```jsx
+<GeoMap zoom={1} />
+```
+
+**`showZoomButton`**
+
+Show the zoomIn(+)/zoomOut(-) button combo at the top-right corner of the map.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>true</td>
+	</tr>
+</table>
+
+```jsx
+<GeoMap showZoomButton={false} />
+```
+
+**`customMarker`**
+
+The custom marker to replace the default marker. The custom marker can ben an `image`, `svg` or any predefined symbols such as `circle`, or `triangle`.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>null</td>
+	</tr>
+</table>
+
+```jsx
+<GeoMap customMarker={`url(https://someImage.com)`} />
+```
+
+**`className`**
+
+The custom classname to override the parent container's style.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>''</td>
+	</tr>
+</table>
+
+```jsx
+<GeoMap className={styles.custom} />
+```
