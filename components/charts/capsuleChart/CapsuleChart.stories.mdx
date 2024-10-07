@@ -1,18 +1,12 @@
 import { Meta, Canvas, Story } from '@storybook/addon-docs';
 
-import { COLORS } from '../../../styles';
-import { ThemedContainer, ToggleIframeContainer } from '../../helpers';
-import BaseHorizontalBarChart from './BaseHorizontalBarChart';
+import { COLORS } from '../../../styles/index.js';
+import { ThemedContainer, ToggleIframeContainer } from '../../helpers/index.js';
+import CapsuleChart from './CapsuleChart.jsx';
 
-import {
-	sampleData,
-	sampleData2,
-	onBarClick,
-	sampleV2Data,
-	formatData,
-} from './BaseHorizontalBarChartData.js';
+import { sampleData, sampleStackData, transformToStack, stackData } from './CapsuleChart.js';
 
-<Meta title='Components/HorizontalBarChart' parameters={{ options: { showToolbar: false } }} />
+<Meta title='Components/CapsuleChart' parameters={{ options: { showToolbar: false } }} />
 
 export const Template = (args) => (
 	<ThemedContainer
@@ -20,15 +14,12 @@ export const Template = (args) => (
 		style={{
 			height: '400px',
 		}}>
-		<BaseHorizontalBarChart
+		<CapsuleChart
 			{...args}
-			onEvents={{
-				click: onBarClick,
-			}}
+			seriesData={sampleData}
 			tooltip={{
 				trigger: 'item',
 				formatter: (param) => {
-					// eslint-disable-next-line max-len
 					return `${param.marker} ${param.name} ${
 						sampleData.metaData.controlsApplied[param.name].x1
 					}`;
@@ -38,11 +29,34 @@ export const Template = (args) => (
 	</ThemedContainer>
 );
 
-# Horizontal Bar Chart
+export const StackTemplate = (args) => {
+	return (
+		<ThemedContainer
+			{...args}
+			style={{
+				height: '100%',
+			}}>
+			<CapsuleChart
+				{...args}
+				seriesData={transformToStack(sampleStackData)}
+				tooltip={{
+					trigger: 'item',
+					formatter: (param) => {
+						return `${param.marker} ${param.name} ${
+							sampleData.metaData.controlsApplied[param.name].x1
+						}`;
+					},
+				}}
+			/>
+		</ThemedContainer>
+	);
+};
+
+# Capsule Chart
 
 A visual Representation of Data that compares it with others in similar Category through Bars, where Bar Height represents the count of represented value.
 
-#### Design - [Figma](https://www.figma.com/file/Cx1dHCv47N2i35IP8wNz1u/Charts?type=design&node-id=13-35013&mode=design&t=CHtnZmqsfkOQE9cx-0) | Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/components/charts/horizontalBarChart)
+#### Design - [Figma](https://www.figma.com/file/Cx1dHCv47N2i35IP8wNz1u/Charts?type=design&node-id=13-35013&mode=design&t=CHtnZmqsfkOQE9cx-0) | Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/components/charts/verticalBarChart)
 
 > This components uses the `echarts` utility library to use the Basic Visual Components and properties to customise the same for required use case and `EChartsReactCore` utility library to Wrap the Charts for React Projects.
 
@@ -51,205 +65,83 @@ A visual Representation of Data that compares it with others in similar Category
 Basic import and additional information on how to use this component.
 
 ```js
-import { BaseHorizontalBarChart } from '@banyan_cloud/roots';
+import { BaseVerticalBarChart } from '@banyan_cloud/roots';
 ```
 
--   The Horizontal Bar Chart is just like any other chart with standard `chartData` and `metaData` values alongwith props to control customization.
+-   The Capsule Chart is just like any other chart with standard `chartData` and `metaData` values alongwith props to control customization.
 -   The `className` of the Chart can be adjusted in the implementaion code to match its flexibility with respect to its container.
 
 ## Stories
 
 The CSF rendered inside the `Canvas` from which you can see the implementation example.
 
-### Default Horizontal Bar Chart
+### Default Capsule Chart
 
 <Canvas>
 	<Story
 		name='Default'
 		args={{
-			title: 'Title',
-			gridContainLabel: false,
+			gridContainLabel: true,
 			gridOptions: {
-				left: 10,
-				right: 10,
-				bottom: 50,
-				top: 50,
+				left: 50,
+				right: 50,
+				bottom: 100,
+				top: 15,
 			},
-			xAxisShow: false,
-			seriesData: sampleData,
+			xAxisShow: true,
+			xAxisLabel: {
+				show: false,
+				inside: true,
+				verticalAlign: 'bottom',
+				align: 'left',
+				padding: [0, 0, 0, 0],
+			},
+			xAxisLabelColor: 'black',
 			yAxisLabelShow: false,
 			ySplitLineShow: false,
 			yAxisLineShow: false,
 			yAxisTickShow: false,
-			barWidth: '50%',
+			barWidth: '30%',
 			cursor: 'default',
-			stacked: true,
+			stackCount: 1,
 			seriesOption: [
 				{
 					stackIndex: 1,
+					stack: 1,
 					color: COLORS.success,
-					backgroundStyle: {
-						color: 'transparent',
-					},
-					label: {
-						show: true,
-						formatter(param) {
-							return param.name;
-						},
-					},
-				},
-				{
-					stackIndex: 2,
-					color: COLORS.error,
-					backgroundStyle: {
-						color: 'transparent',
-					},
-					label: {
-						show: false,
-					},
-				},
-				{
-					stackIndex: 3,
-					color: COLORS.warning,
-					backgroundStyle: {
-						color: 'transparent',
-					},
-					label: {
-						show: false,
-					},
-				},
-			],
-		}}>
-		{Template.bind({})}
-	</Story>
-</Canvas>
-
-### V2 Horizontal Bar Chart
-
-<Canvas>
-	<Story
-		name='V2'
-		args={{
-			title: 'Title',
-			gridContainLabel: false,
-			gridOptions: {
-				left: 10,
-				right: 0,
-				bottom: 50,
-				top: 50,
-			},
-			xAxisShow: false,
-			seriesData: formatData(sampleV2Data),
-			yAxisLabelShow: false,
-			ySplitLineShow: false,
-			yAxisLineShow: false,
-			yAxisTickShow: false,
-			barWidth: '50%',
-			cursor: 'default',
-			stacked: true,
-			sort: 'x1',
-			seriesOption: [
-				{
-					stackIndex: 1,
 					showBackground: false,
-					color: '#B6660A',
-					label: {
-						show: true,
-						position: 'insideLeft',
-						color: 'white',
-						formatter(param) {
-							return param.name;
-						},
-					},
-					emphasis: {
-						disabled: true,
-					},
-					itemStyle: {
-						borderRadius: [5, 0, 0, 5],
-					},
-				},
-				{
-					stackIndex: 2,
-					showBackground: false,
-					color: '#F9E5CF',
 					label: {
 						show: true,
 						color: 'black',
-						position: 'insideRight',
+						padding: 4,
+						backgroundColor: 'white',
+						shadowBlur: 2,
+						shadowColor: 'grey',
+						shadowOffsetX: 0,
+						shadowOffsetY: 0,
 						formatter: (param) => {
-							return sampleV2Data?.chartData?.[param.name]?.x1;
+							return param.value === 0.004 ? '0%' : `${param.value}%`;
 						},
 					},
-					emphasis: {
-						disabled: true,
-					},
 					itemStyle: {
-						borderRadius: [0, 5, 5, 0],
+						borderRadius: [100, 100, 0, 0],
 					},
 				},
-			],
-		}}>
-		{Template.bind({})}
-	</Story>
-</Canvas>
-
-### Horizontal Bar Chart ( Gradient )
-
-Horizonatal Bar Chart with Gradient in Bars
-
-<Canvas>
-	<Story
-		name='Bar Gradient'
-		args={{
-			title: 'Title',
-			gridContainLabel: false,
-			gridOptions: {
-				left: 10,
-				right: 10,
-				bottom: 50,
-				top: 50,
-			},
-			xAxisShow: false,
-			seriesData: sampleData2,
-			yAxisLabelShow: false,
-			ySplitLineShow: false,
-			yAxisLineShow: false,
-			yAxisTickShow: false,
-			barWidth: '50%',
-			cursor: 'default',
-			stacked: true,
-			seriesOption: [
 				{
-					stackIndex: 1,
+					stackIndex: 2,
+					stack: 1,
+					color: COLORS.error,
 					showBackground: false,
-					maxvalueStyle: {
-						value: 100,
-						itemStyle: {
-							color: 'white',
-							// opacity: 0,
+					label: {
+						show: true,
+						color: 'black',
+						position: 'bottom',
+						formatter: (param) => {
+							return param.name;
 						},
 					},
-					color: [
-						1,
-						0,
-						0,
-						0,
-						[
-							{
-								offset: 0,
-								color: 'rgb(124, 255, 185)',
-							},
-							{
-								offset: 1,
-								color: 'rgb(26, 165, 91)',
-							},
-						],
-					],
 					itemStyle: {
-						borderRadius: 100,
-					},
-					label: {
-						show: false,
+						borderRadius: [0, 0, 100, 100],
 					},
 				},
 			],
@@ -258,62 +150,64 @@ Horizonatal Bar Chart with Gradient in Bars
 	</Story>
 </Canvas>
 
-### Loading State in Horizontal Bar Chart
+### Loading state
 
 <Canvas>
 	<Story
 		name='Loading State'
 		args={{
 			title: 'Title',
-			gridContainLabel: false,
+			gridContainLabel: true,
 			gridOptions: {
-				left: 10,
-				right: 10,
-				bottom: 50,
-				top: 50,
+				left: 0,
+				right: 0,
+				bottom: 0,
+				top: 15,
 			},
-			xAxisShow: false,
-			seriesData: sampleData,
+			xAxisShow: true,
+			xAxisLabel: {
+				show: true,
+				rotate: 90,
+				color: 'white',
+				inside: true,
+				verticalAlign: 'bottom',
+				padding: [0, 0, 90, 0],
+			},
 			yAxisLabelShow: false,
 			ySplitLineShow: false,
 			yAxisLineShow: false,
 			yAxisTickShow: false,
 			barWidth: '50%',
 			cursor: 'default',
-			stacked: true,
+			stackCount: 1,
 			loading: true,
 			seriesOption: [
 				{
 					stackIndex: 1,
+					stack: 1,
 					color: COLORS.success,
-					backgroundStyle: {
-						color: 'transparent',
-					},
 					label: {
-						show: true,
-						formatter(param) {
-							return param.name;
-						},
+						show: false,
 					},
 				},
 				{
 					stackIndex: 2,
+					stack: 1,
 					color: COLORS.error,
-					backgroundStyle: {
-						color: 'transparent',
-					},
 					label: {
 						show: false,
 					},
 				},
 				{
 					stackIndex: 3,
+					stack: 1,
 					color: COLORS.warning,
-					backgroundStyle: {
-						color: 'transparent',
-					},
 					label: {
-						show: false,
+						color: 'white',
+						show: true,
+						formatter(param) {
+							return sampleData.metaData.controlsApplied[param.name].x1;
+						},
 					},
 				},
 			],
@@ -328,7 +222,7 @@ This embeded `CodeSandBox` is external third party code editor `iframe` shared p
 
 <ToggleIframeContainer>
 	<iframe
-		src='https://codesandbox.io/s/falling-hill-wmr9lx?file=/src/App.js'
+		src='https://codesandbox.io/s/heuristic-fermi-ccqshh?file=/src/App.js'
 		style={{ width: '100%', height: 500 }}
 		title='xenodochial-moon-5y668f'
 		allow='accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking'
@@ -353,26 +247,7 @@ loading indicates the waiting state of chart while data is loading
 </table>
 
 ```jsx
-<BaseHorizontalBarChart loading={false} />
-```
-
-**`fallback`**
-
-The fallback indicates whether to show Skeleton component or not in case of Exception
-
-<table style={{ width: '100%' }}>
-	<tr>
-		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
-		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
-	</tr>
-	<tr>
-		<td>bool</td>
-		<td>false</td>
-	</tr>
-</table>
-
-```jsx
-<BaseHorizontalBarChart fallback={false} />
+<BaseVerticalBarChart loading={false} />
 ```
 
 **`title`**
@@ -391,34 +266,7 @@ An optional Key to give a title to the Chart.
 </table>
 
 ```jsx
-<BaseHorizontalBarChart title='Title' />
-```
-
-**`titleOptions`**
-
-Object that specifies customization of Chart Title.
-
-<table style={{ width: '100%' }}>
-	<tr>
-		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
-		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
-	</tr>
-	<tr>
-		<td>object</td>
-		<td>{}</td>
-	</tr>
-</table>
-
-```jsx
-<BaseHorizontalBarChart
-	titleOptions={{
-		textStyle: {
-			color: '#A6A6A6',
-			fontWeight: 600,
-			fontSize: 14,
-		},
-	}}
-/>
+<BaseVerticalBarChart title='Title' />
 ```
 
 **`gridOptions`**
@@ -444,7 +292,7 @@ Object that set Chart Layout Dimensions from Left, Right, Top and Bottom.
 </table>
 
 ```jsx
-<BaseHorizontalBarChart
+<BaseVerticalBarChart
 	gridOptions={{
 		left: 50,
 		right: 50,
@@ -470,7 +318,7 @@ An optional key to resize the Chart Layout in order to include 'Title' in displa
 </table>
 
 ```jsx
-<BaseHorizontalBarChart gridContainLabel={false} />
+<BaseVerticalBarChart gridContainLabel={false} />
 ```
 
 **`tooltip`**
@@ -489,7 +337,7 @@ Tooltip key can be used to format and display Data in Tooltip for Charts, it can
 </table>
 
 ```jsx
-<BaseHorizontalBarChart
+<BaseVerticalBarChart
 	tooltip={{
 		show: true,
 		trigger: 'item',
@@ -522,7 +370,7 @@ The metaData can have any other required Data.
 </table>
 
 ```jsx
-<BaseHorizontalBarChart
+<BaseVerticalBarChart
 	seriesData={{
 		chartData: {
 			'Audit, Logging and Monitering': {
@@ -549,7 +397,7 @@ Key to decide whether to show or hide Y-Axis Label
 </table>
 
 ```jsx
-<BaseHorizontalBarChart yAxisLabelShow={false} />
+<BaseVerticalBarChart yAxisLabelShow={false} />
 ```
 
 **`xAxisShow`**
@@ -568,7 +416,7 @@ Key to decide whether to show or hide X-Axis Division Line
 </table>
 
 ```jsx
-<BaseHorizontalBarChart xAxisLineShow={false} />
+<BaseVerticalBarChart xAxisLineShow={false} />
 ```
 
 **`ySplitLineShow`**
@@ -587,7 +435,7 @@ Key to decide whether to show or hide Y-Axis Split Line
 </table>
 
 ```jsx
-<BaseHorizontalBarChart ySplitLineShow={false} />
+<BaseVerticalBarChart ySplitLineShow={false} />
 ```
 
 **`yAxisLineShow`**
@@ -606,7 +454,7 @@ Key to decide whether to show or hide Y-Axis Line
 </table>
 
 ```jsx
-<BaseHorizontalBarChart yAxisLineShow={false} />
+<BaseVerticalBarChart yAxisLineShow={false} />
 ```
 
 **`yAxisTickShow`**
@@ -625,7 +473,7 @@ Key to decide whether to show or hide Y-Axis Tick
 </table>
 
 ```jsx
-<BaseHorizontalBarChart yAxisTickShow={false} />
+<BaseVerticalBarChart yAxisTickShow={false} />
 ```
 
 **`onEvents`**
@@ -644,16 +492,16 @@ Callback to control 'Click' event on HeatMap
 </table>
 
 ```jsx
-<BaseHorizontalBarChart
+<BaseVerticalBarChart
 	onEvents={{
 		click: functionName,
 	}}
 />
 ```
 
-**`stacked`**
+**`stackCount`**
 
-Key to decide whether the Bars are stacked or not.
+Key to decide number of stacks that the Bar Chart have.
 
 <table style={{ width: '100%' }}>
 	<tr>
@@ -661,13 +509,13 @@ Key to decide whether the Bars are stacked or not.
 		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
 	</tr>
 	<tr>
-		<td>bool</td>
-		<td>false</td>
+		<td>Number</td>
+		<td>1</td>
 	</tr>
 </table>
 
 ```jsx
-<BaseAreaChart stacked={false} />
+<BaseAreaChart stackCount={2} />
 ```
 
 **`cursor`**
@@ -686,7 +534,7 @@ Key to modify 'cursor' UI, it supports all standard css cursor options.
 </table>
 
 ```jsx
-<BaseHorizontalBarChart cursor='default' />
+<BaseVerticalBarChart cursor='default' />
 ```
 
 **`seriesOption`**
@@ -705,7 +553,7 @@ This key contains an Array of Objects where each Object maps to each Data-Value 
 </table>
 
 ```jsx
-<BaseHorizontalBarChart seriesOption=[
+<BaseVerticalBarChart seriesOption=[
 		{
 			stackIndex: 1,
 			color: COLORS.success,
@@ -720,25 +568,6 @@ This key contains an Array of Objects where each Object maps to each Data-Value 
 			},
 		},
 	] />
-```
-
-**`inverse`**
-
-This option decides whether to show the Data/Bars in reverse Order.
-
-<table style={{ width: '100%' }}>
-	<tr>
-		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
-		<th style={{ textAlign: 'left', width: '50%' }}>REQUIRED</th>
-	</tr>
-	<tr>
-		<td>Bool</td>
-		<td>false</td>
-	</tr>
-</table>
-
-```jsx
-<BaseHorizontalBarChart inverse={false} />
 ```
 
 **`legend`**
@@ -761,7 +590,7 @@ Legend key is used to customise Chart Legend and the it's data.
 </table>
 
 ```jsx
-<BaseHorizontalBarChart
+<BaseVerticalBarChart
 	legend={{
 		show: false,
 	}}
@@ -784,26 +613,7 @@ Optional key to specify any name to the HeatMap series.
 </table>
 
 ```jsx
-<BaseHorizontalBarChart seriesName='Permission Count' />
-```
-
-**`minBarHeight`**
-
-Optional key to give Minimum height to the Bars in pixels if no data is available.
-
-<table style={{ width: '100%' }}>
-	<tr>
-		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
-		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
-	</tr>
-	<tr>
-		<td>Number</td>
-		<td>0</td>
-	</tr>
-</table>
-
-```jsx
-<BaseHorizontalBarChart minBarHeight={2} />
+<BaseVerticalBarChart seriesName='Permission Count' />
 ```
 
 **`style`**
@@ -827,7 +637,7 @@ Key to change styles thorugh standard CSS values.
 </table>
 
 ```jsx
-<BaseHorizontalBarChart style={{ width: '90%' }} />
+<BaseVerticalBarChart style={{ width: '90%' }} />
 ```
 
 **`className`**
@@ -846,7 +656,7 @@ Key to change style through external className.
 </table>
 
 ```jsx
-<BaseHorizontalBarChart className='chart-area' />
+<BaseVerticalBarChart className='chart-area' />
 ```
 
 **`theme`**
@@ -865,5 +675,5 @@ The color theme of the container to select between `light` or `dark` mode.
 </table>
 
 ```jsx
-<BaseHorizontalBarChart theme='light' />
+<BaseVerticalBarChart theme='light' />
 ```

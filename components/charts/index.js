@@ -5,3 +5,4 @@ export * from './regionChart';
 export * from './heatMapChart';
 export * from './areaChart';
 export * from './nestedPieChart';
+export * from './capsuleChart';

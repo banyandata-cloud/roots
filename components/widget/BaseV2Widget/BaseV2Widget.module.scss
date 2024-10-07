@@ -1,13 +1,14 @@
-@import '../../styles/index';
+@import '../../../styles/index';
 
 .root {
 	@include flex(column, flex-start, stretch);
-	@include debug($grey);
 	overflow: hidden;
 	border-radius: 2.5rem;
 	height: 100%;
 	width: 100%;
 	position: relative;
+	background: #fbfbfb;
+	box-shadow: 4px 4px 25px 2px rgba(226, 226, 226, 0.8);
 
 	.header {
 		@include flex(row, space-between, flex-start);
@@ -16,6 +17,21 @@
 		.header-title {
 			@include flex(row, flex-start);
 			gap: 0.5rem;
+			[data-elem='title'],
+			[data-elem='subtitle'] {
+				font-size: 16px;
+				font-weight: 600;
+				line-height: 24px;
+				text-align: left;
+				color: #1a2028;
+			}
+			[data-elem='title-desc'] {
+				font-size: 14px;
+				font-weight: 400;
+				line-height: 21px;
+				text-align: left;
+				color: $text-color;
+			}
 			.back {
 				height: 1.5rem;
 				width: 1.5rem;
@@ -49,7 +65,7 @@
 				.icon {
 					width: 1rem;
 					height: 1rem;
-					fill: $white;
+					fill: $menu-black;
 				}
 			}
 		}
@@ -60,13 +76,6 @@
 				gap: 0.5rem;
 			}
 
-			.header-options-toggle {
-				.toggle-body {
-					padding: 0.125rem 0.25rem;
-					height: auto;
-				}
-			}
-
 			.header-options-list {
 				@include flex(row, flex-end);
 				gap: 0.5rem;
@@ -75,13 +84,16 @@
 
 					[data-elem='select'] {
 						background-color: transparent;
+						border-color: $grey6;
 						width: 100%;
 						padding: 0.07rem 0.5rem;
 						[data-elem='placeholder'] {
 							font-size: 0.875rem;
+							color: $dark-grey;
 						}
 						> svg {
 							width: 0.875rem;
+							fill: $dark-grey;
 						}
 					}
 				}
@@ -89,34 +101,44 @@
 				.expand-button {
 					padding: 0 0.25rem;
 					height: 1.75rem;
+					color: $dark-grey;
+					border-color: $grey6;
 					.expand-icon {
-						height: 1.25rem;
-						width: 1.25rem;
-						fill: $white;
+						height: 0.8331rem;
+						width: 0.8331rem;
+						fill: $dark-grey;
 					}
 				}
 
 				.filter-button {
 					padding: 0 0.25rem;
 					height: 1.75rem;
+					color: $dark-grey;
+					border-color: $grey6;
 					.filter-icon {
 						height: 1.25rem;
 						width: 1.25rem;
-						fill: $white;
+						fill: $dark-grey;
 					}
+				}
+
+				.toggle-body {
+					padding: 0.125rem 0.25rem;
+					height: 1.875rem;
 				}
 
 				.date-picker {
 					min-width: 0;
 					[data-elem='header'] {
 						padding: 0.06rem 0.25rem;
-						border: 1px solid $grey;
+						border: 1px solid $grey6;
 						font-size: 0.875rem;
 						> div {
 							gap: 0.5rem;
 							:nth-child(1) {
 								height: 1.25rem;
 								width: 1.25rem;
+								fill: $dark-grey;
 							}
 						}
 					}
@@ -146,137 +168,12 @@
 	// 	padding: 1.713rem 0 0 0;
 	// }
 
-	&.dark-theme {
-		.header {
-			.header-title {
-				[data-elem='title'],
-				[data-elem='subtitle'] {
-					color: $white;
-				}
-
-				[data-elem='title-desc'] {
-					color: $text-color;
-				}
-
-				.title {
-					.icon {
-						fill: $white;
-					}
-				}
-			}
-
-			.header-options {
-				.dropdown-header {
-					[data-elem='select'] {
-						border-color: $grey;
-						[data-elem='placeholder'] {
-							color: $white;
-						}
-						> svg {
-							fill: $white;
-						}
-					}
-				}
-				.date-picker {
-					[data-elem='header'] {
-						border-color: $grey;
-						:nth-child(1) {
-							fill: $white;
-						}
-					}
-				}
-
-				.expand-button {
-					color: $white;
-					border-color: $grey;
-					.expand-icon {
-						fill: $white;
-					}
-				}
-
-				.filter-button {
-					color: $white;
-					border-color: $grey;
-					.filter-icon {
-						fill: $white;
-					}
-				}
-			}
-		}
-	}
-
-	&.light-theme {
-		background: #fbfbfb;
-		box-shadow: 4px 4px 25px 2px rgba(226, 226, 226, 0.8);
-		.header {
-			.header-title {
-				[data-elem='title'],
-				[data-elem='subtitle'] {
-					color: #1a2028;
-				}
-				[data-elem='title-desc'] {
-					color: $grey3;
-				}
-
-				.title {
-					.icon {
-						fill: $menu-black;
-					}
-				}
-			}
-
-			.header-options {
-				.dropdown-header {
-					[data-elem='select'] {
-						border-color: $grey6;
-						[data-elem='placeholder'] {
-							color: $dark-grey;
-						}
-						> svg {
-							fill: $dark-grey;
-						}
-					}
-				}
-				.date-picker {
-					[data-elem='header'] {
-						border-color: $grey6;
-						:nth-child(1) {
-							fill: $dark-grey;
-						}
-					}
-				}
-
-				.expand-button {
-					color: $dark-grey;
-					border-color: $grey6;
-					.expand-icon {
-						fill: $dark-grey;
-					}
-				}
-
-				.filter-button {
-					color: $dark-grey;
-					border-color: $grey6;
-					.filter-icon {
-						fill: $dark-grey;
-					}
-				}
-			}
-		}
-	}
-
 	.children {
 		flex: 1 1;
 		position: relative;
 		padding: 0.5rem;
 	}
 }
-
-// .chart {
-// 	[data-elem='children'] {
-// 		padding: 3rem 0 0 0;
-// 	}
-// }
 
 .dropdown-popper {
 	padding: 0rem;

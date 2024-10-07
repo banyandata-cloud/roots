@@ -4,7 +4,7 @@ import { COLORS } from '../../../styles';
 import { ThemedContainer, ToggleIframeContainer } from '../../helpers';
 import BasePieChart from './BasePieChart';
 
-import { sampleData, iconData, iconColor } from './BasePieChartData.js';
+import { sampleData, iconData, iconColor, sampleV2Data } from './BasePieChartData.js';
 
 <Meta title='Components/PieChart' parameters={{ options: { showToolbar: false } }} />
 
@@ -129,6 +129,273 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					},
 					tooltip: {
 						trigger: 'none',
+					},
+				},
+			],
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### V2 Pie Chart
+
+<Canvas>
+	<Story
+		name='V2 Pie Chart'
+		args={{
+			title: 'Title',
+			gridOptions: {
+				height: '100%',
+				width: '100%',
+			},
+			cursor: 'default',
+			radius: ['18%', '70%'],
+			center: ['50%', '50%'],
+			seriesData: sampleV2Data,
+			semiDoughnut: false,
+			startAngle: 90,
+			tooltip: {
+				trigger: 'item',
+			},
+			itemStyle: {
+				borderWidth: 0,
+			},
+			legend: {
+				orient: 'vertical',
+				top: '5%',
+				right: '20%',
+				icon: 'path://M30.9,53.2C16.8,53.2,5.3,41.7,5.3,27.6S16.8,2,30.9,2C45,2,56.4,13.5,56.4,27.6S45,53.2,30.9,53.2z M16 28a12 12 0 0 0 30 0a12 12 0 1 0 -30 0',
+				selectedMode: true,
+				selected: {
+					high: true,
+					medium: false,
+				},
+			},
+			seriesOptionUpdate: {
+				legendHoverLink: true,
+			},
+			onHoverLegend: (event, e) => {
+				console.log({
+					event,
+					e,
+				});
+			},
+			onEvents: {
+				mouseover: (e) => {
+					console.log('OVER', e);
+				},
+				mouseout: (e) => {
+					console.log('OUT', e);
+				},
+			},
+			seriesOption: [
+				{
+					stackIndex: 1,
+					itemStyle: {
+						color: '#00459F',
+					},
+					label: {
+						show: true,
+						fontSize: '15',
+						color: 'black',
+						fontWeight: 'bold',
+						position: 'center',
+						formatter() {
+							return `40 \nControls`;
+						},
+					},
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 0, 0.5)',
+						},
+					},
+				},
+				{
+					stackIndex: 2,
+					itemStyle: {
+						color: '#0056C7',
+					},
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 5)',
+						},
+					},
+					emphasis: {
+						scaleSize: 25,
+					},
+				},
+				{
+					stackIndex: 3,
+					itemStyle: {
+						color: '#3076D2',
+					},
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 5)',
+						},
+					},
+					emphasis: {
+						scaleSize: 25,
+					},
+				},
+				{
+					stackIndex: 4,
+					itemStyle: {
+						color: '#6096DD',
+					},
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 5)',
+						},
+					},
+					emphasis: {
+						scaleSize: 25,
+					},
+				},
+				{
+					stackIndex: 5,
+					itemStyle: {
+						color: '#90B6E9',
+					},
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 5)',
+						},
+					},
+				},
+				{
+					stackIndex: 6,
+					itemStyle: {
+						color: '#A8C6EE',
+					},
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 5)',
+						},
+					},
+				},
+				{
+					stackIndex: 7,
+					itemStyle: {
+						color: '#C0D6F4',
+					},
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 5)',
+						},
+					},
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 0, 0.5)',
+						},
+					},
+				},
+				{
+					stackIndex: 8,
+					itemStyle: {
+						color: '#D8E6F9',
+					},
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 5)',
+						},
+					},
+				},
+				{
+					stackIndex: 9,
+					itemStyle: {
+						color: '#F0F6FF',
+					},
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 5)',
+						},
+					},
+				},
+				{
+					stackIndex: 10,
+					itemStyle: {
+						color: '#001128',
+					},
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 5)',
+						},
+					},
+				},
+				{
+					stackIndex: 11,
+					itemStyle: {
+						color: '#001A3C',
+					},
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 5)',
+						},
+					},
+				},
+				{
+					stackIndex: 12,
+					itemStyle: {
+						color: '#001A3C',
+					},
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 5)',
+						},
+					},
+				},
+				{
+					stackIndex: 13,
+					itemStyle: {
+						color: '#002250',
+					},
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 5)',
+						},
 					},
 				},
 			],

@@ -21,7 +21,7 @@
 		"@highcharts/map-collection": "^2.1.0",
 		"d3": "^7.8.5",
 		"date-fns": "^2.29.3",
-		"echarts": "^5.4.0",
+		"echarts": "^5.5.1",
 		"echarts-for-react": "^3.0.2",
 		"fast-equals": "^4.0.3",
 		"framer-motion": "^10.16.4",

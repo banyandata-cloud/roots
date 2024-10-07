@@ -7,26 +7,23 @@ import {
 	useMemo,
 	useState,
 } from 'react';
-import { classes } from '../../utils';
-import { Toggle } from '../Toggle';
-import { BaseButton, Button } from '../buttons';
-import { DatePicker } from '../datePicker';
-import { ArrowIcon, CaretIcon, MaximizeIcon } from '../icons';
-import { Dropdown, DropdownItem } from '../input';
-import { Popover } from '../popover';
-import { Text } from '../text';
-import { BaseV2Widget } from './BaseV2Widget';
-import styles from './BaseWidget.module.css';
-import { WidgetFallback } from './fallback';
+import { classes } from '../../../utils';
+import Togglev2 from '../../Toggle/Togglev2';
+import { BaseButton, Button } from '../../buttons';
+import { DatePicker } from '../../datePicker';
+import { ArrowIcon, CaretIcon, FilterIcon, MaximizeIcon } from '../../icons';
+import { DropdownItemv2, Dropdownv2 } from '../../input';
+import { Popover } from '../../popover';
+import BaseSidePanel from '../../sidePanel/BaseSidePanel';
+import { Text } from '../../text';
+import { WidgetFallback } from '../fallback';
+import styles from './BaseV2Widget.module.css';
 
-const renderToggle = (optionData, theme) => {
-	return <Toggle className={styles['toggle-body']} theme={theme} smooth {...optionData} />;
-};
-const generateOptions = (optionData, theme) => {
+const generateOptions = (optionData, theme, toggleDrawer) => {
 	switch (optionData?.id ?? '') {
 		case 'dropdown':
 			return (
-				<Dropdown
+				<Dropdownv2
 					placeholder={optionData?.placeholder ?? ''}
 					value={optionData?.value ?? ''}
 					onChange={optionData?.onChange ?? ''}
@@ -34,7 +31,7 @@ const generateOptions = (optionData, theme) => {
 					popperClassName={styles['dropdown-popper']}>
 					{(optionData?.selectOption ?? []).map((objectData) => {
 						return (
-							<DropdownItem
+							<DropdownItemv2
 								title={objectData?.title ?? ''}
 								key={objectData?.value ?? ''}
 								value={objectData?.value ?? ''}
@@ -43,7 +40,7 @@ const generateOptions = (optionData, theme) => {
 							/>
 						);
 					})}
-				</Dropdown>
+				</Dropdownv2>
 			);
 		case 'expand':
 			return (
@@ -53,8 +50,8 @@ const generateOptions = (optionData, theme) => {
 					size='auto'
 					className={styles['expand-button']}
 					onClick={optionData?.onClick ?? ''}
-					rightComponent={() => {
-						return <MaximizeIcon className={styles['expand-icon']} />;
+					leftComponent={() => {
+						return <MaximizeIcon v2 className={styles['expand-icon']} />;
 					}}
 				/>
 			);
@@ -67,6 +64,34 @@ const generateOptions = (optionData, theme) => {
 					onApply={optionData?.onApply ?? ''}
 					onClear={optionData?.onClear ?? ''}
 					value={optionData?.date ?? null}
+				/>
+			);
+		case 'filter':
+			return (
+				<Button
+					title='Filter'
+					variant='outlined'
+					size='auto'
+					className={styles['filter-button']}
+					onClick={() => {
+						toggleDrawer({
+							data: {
+								index: 0,
+							},
+						});
+					}}
+					leftComponent={() => {
+						return <FilterIcon v2 className={styles['filter-icon']} />;
+					}}
+				/>
+			);
+		case 'toggle':
+			return (
+				<Togglev2
+					className={styles['toggle-body']}
+					smooth
+					secondary
+					options={optionData.options}
 				/>
 			);
 		case 'custom':
@@ -90,7 +115,6 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 		onBack = () => {},
 		onReload = () => {},
 		options = [],
-		toggle = [],
 		className = '',
 		children,
 		fallbackProps = {
@@ -99,7 +123,6 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 			subtitle:
 				'There could be something happening on our end. Reload this widget to try again.',
 		},
-		theme = 'light',
 		setFallback = () => {},
 		showFallback = false,
 		style,
@@ -107,13 +130,8 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 		onMouseUp,
 		onTouchEnd,
 		titleDesc,
-		v2 = false,
-		body = () => {},
+		body: Body = () => {},
 	} = props;
-
-	if (v2) {
-		return <BaseV2Widget {...props} />;
-	}
 
 	const emptyChartData = useMemo(() => {
 		return Children.toArray(children).every((child) => {
@@ -129,24 +147,34 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 	const [open, setOpen] = useState(false);
 	const [anchorEl, setAnchorEl] = useState(null);
 
+	const [toggleTableDrawer, setToggleTableDrawer] = useState({
+		open: false,
+		data: {
+			index: 0,
+		},
+	});
+
+	const toggleDrawer = ({ data } = {}) => {
+		setToggleTableDrawer((prevState) => {
+			return {
+				open: !prevState.open,
+				data,
+			};
+		});
+	};
+
 	const titleText = (
 		<Text className={styles['title-container']}>
 			<Text className={styles['title-primary']}>
-				{title ? (
+				{title && (
 					<Text
 						variant='h2'
 						stroke='semibold'
 						attrs={{
 							'data-elem': 'title',
 						}}>
-						{title} {subtitle && '-'}
+						{title}
 					</Text>
-				) : (
-					<div
-						className={classes(styles['header-options-toggle'])}
-						data-elem='header-options-toggle'>
-						{(toggle?.options?.length ?? 0) > 0 && renderToggle(toggle, theme)}
-					</div>
 				)}
 				{subtitle && (
 					<Text
@@ -177,7 +205,7 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 	return (
 		<div
 			ref={ref}
-			className={classes(styles.root, className, styles[`${theme}-theme`])}
+			className={classes(styles.root, className)}
 			style={style}
 			onMouseDown={onMouseDown}
 			onMouseUp={onMouseUp}
@@ -213,11 +241,7 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 								component3={<CaretIcon className={styles.icon} />}
 							/>
 							<Popover
-								theme={theme}
-								className={classes(
-									styles['title-popover'],
-									styles[`${theme}-theme`]
-								)}
+								className={classes(styles['title-popover'])}
 								anchorEl={anchorEl}
 								open={open}
 								setOpen={setOpen}
@@ -230,33 +254,39 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 					)}
 				</div>
 
-				<div
-					className={classes(
-						styles['header-options'],
-						(toggle?.options?.length ?? 0) > 0 && styles.toggle
-					)}
-					data-elem='header-options'>
-					{title && (
-						<div
-							className={classes(styles['header-options-toggle'])}
-							data-elem='header-options-toggle'>
-							{(toggle?.options?.length ?? 0) > 0 && renderToggle(toggle, theme)}
-						</div>
-					)}
+				<div className={styles['header-options']} data-elem='header-options'>
 					<div
 						className={classes(styles['header-options-list'])}
 						data-elem='header-options-list'>
 						{(options?.length ?? 0) > 0 &&
 							options?.map((objectData) => {
-								return generateOptions(objectData, theme);
+								return generateOptions(objectData, toggleDrawer);
 							})}
 					</div>
 				</div>
 			</div>
 
+			<BaseSidePanel
+				toggle={toggleDrawer}
+				open={toggleTableDrawer.open}
+				className={styles.drawer}
+				data-elem='panel'
+				animation>
+				{isValidElement(<Body />) && <Body toggle={toggleDrawer} />}
+			</BaseSidePanel>
+
+			{toggleTableDrawer.open && (
+				<div
+					className={styles.overlay}
+					onClick={() => {
+						toggleDrawer();
+					}}
+				/>
+			)}
+
 			<div className={styles.children} data-elem='children'>
 				{showFallback && !loading && emptyChartData && (
-					<WidgetFallback {...fallbackProps} onReload={onReload} theme={theme} />
+					<WidgetFallback {...fallbackProps} onReload={onReload} />
 				)}
 				{Children.map(children, (child) => {
 					if (isValidElement(child)) {
