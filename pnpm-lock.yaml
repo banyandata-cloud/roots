@@ -24,11 +24,11 @@ importers:
         specifier: ^2.29.3
         version: 2.30.0
       echarts:
-        specifier: ^5.4.0
-        version: 5.4.3
+        specifier: ^5.5.1
+        version: 5.5.1
       echarts-for-react:
         specifier: ^3.0.2
-        version: 3.0.2(echarts@5.4.3)(react@18.2.0)
+        version: 3.0.2(echarts@5.5.1)(react@18.2.0)
       fast-equals:
         specifier: ^4.0.3
         version: 4.0.3
@@ -3964,8 +3964,8 @@ packages:
       echarts: ^3.0.0 || ^4.0.0 || ^5.0.0
       react: ^15.0.0 || >=16.0.0
 
-  echarts@5.4.3:
-    resolution: {integrity: sha512-mYKxLxhzy6zyTi/FaEbJMOZU1ULGEQHaeIeuMR5L+JnJTpz+YR03mnnpBhbR4+UYJAgiXgpyTVLffPAjOTLkZA==}
+  echarts@5.5.1:
+    resolution: {integrity: sha512-Fce8upazaAXUVUVsjgV6mBnGuqgO+JNDlcgF79Dksy4+wgGpQB2lmYoO4TSweFg/mZITdpGHomw/cNBJZj1icA==}
 
   ee-first@1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
@@ -8996,7 +8996,6 @@ packages:
 
   workbox-google-analytics@6.6.0:
     resolution: {integrity: sha512-p4DJa6OldXWd6M9zRl0H6vB9lkrmqYFkRQ2xEiNdBFp9U0LhsGO7hsBscVEyH9H2/3eZZt8c97NB2FD9U2NJ+Q==}
-    deprecated: It is not compatible with newer versions of GA starting with v4, as long as you are using GAv3 it should be ok, but the package is not longer being maintained
 
   workbox-navigation-preload@6.6.0:
     resolution: {integrity: sha512-utNEWG+uOfXdaZmvhshrh7KzhDu/1iMHyQOV6Aqup8Mm78D286ugu5k9MFD9SzBT5TcwgwSORVvInaXWbvKz9Q==}
@@ -9143,8 +9142,8 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
 
-  zrender@5.4.4:
-    resolution: {integrity: sha512-0VxCNJ7AGOMCWeHVyTrGzUgrK4asT4ml9PEkeGirAkKNYXYzoPJCLvmyfdoOXcjTHPs10OZVMfD1Rwg16AZyYw==}
+  zrender@5.6.0:
+    resolution: {integrity: sha512-uzgraf4njmmHAbEUxMJ8Oxg+P3fT04O+9p7gY+wJRVxo8Ge+KmYv0WJev945EH4wFuc4OY2NLXz46FZrWS9xJg==}
 
   zwitch@1.0.5:
     resolution: {integrity: sha512-V50KMwwzqJV0NpZIZFwfOD5/lyny3WlSzRiXgA0G7VUnRlqttta1L6UQIHzd6EuBY/cHGfwTIck7w1yH6Q5zUw==}
@@ -11141,7 +11140,7 @@ snapshots:
       case-sensitive-paths-webpack-plugin: 2.4.0
       core-js: 3.34.0
       css-loader: 3.6.0(webpack@4.47.0)
-      file-loader: 6.2.0(webpack@5.89.0)
+      file-loader: 6.2.0(webpack@4.47.0)
       find-up: 5.0.0
       fork-ts-checker-webpack-plugin: 4.1.6(eslint@8.56.0)(typescript@5.3.3)(webpack@4.47.0)
       glob: 7.2.3
@@ -11641,7 +11640,7 @@ snapshots:
       core-js: 3.34.0
       css-loader: 3.6.0(webpack@4.47.0)
       express: 4.21.0
-      file-loader: 6.2.0(webpack@4.47.0)
+      file-loader: 6.2.0(webpack@5.89.0)
       find-up: 5.0.0
       fs-extra: 9.1.0
       html-webpack-plugin: 4.5.2(webpack@4.47.0)
@@ -14464,17 +14463,17 @@ snapshots:
 
   eastasianwidth@0.2.0: {}
 
-  echarts-for-react@3.0.2(echarts@5.4.3)(react@18.2.0):
+  echarts-for-react@3.0.2(echarts@5.5.1)(react@18.2.0):
     dependencies:
-      echarts: 5.4.3
+      echarts: 5.5.1
       fast-deep-equal: 3.1.3
       react: 18.2.0
       size-sensor: 1.0.2
 
-  echarts@5.4.3:
+  echarts@5.5.1:
     dependencies:
       tslib: 2.3.0
-      zrender: 5.4.4
+      zrender: 5.6.0
 
   ee-first@1.1.1: {}
 
@@ -20224,7 +20223,7 @@ snapshots:
       schema-utils: 3.3.0
       webpack: 4.47.0
     optionalDependencies:
-      file-loader: 6.2.0(webpack@4.47.0)
+      file-loader: 6.2.0(webpack@5.89.0)
 
   url-parse-lax@3.0.0:
     dependencies:
@@ -20827,7 +20826,7 @@ snapshots:
 
   yocto-queue@0.1.0: {}
 
-  zrender@5.4.4:
+  zrender@5.6.0:
     dependencies:
       tslib: 2.3.0
 
