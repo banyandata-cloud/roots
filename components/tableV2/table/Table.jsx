@@ -241,20 +241,13 @@ const Table = (props) => {
 						toggle={toggleDrawer}
 						animation
 						{...tableDrawerProps}
-						{...(!toggleTableDrawer.data?.standalone
-							? {
-									tabsConfig: tableDrawerProps.tabsConfig,
-							  }
-							: {
-									tabsConfig: null,
-							  })}
 						activeTab={toggleTableDrawer?.data?.index}
 						open={toggleTableDrawer.open}
 						toggleTableDrawer={toggleTableDrawer}
 						setToggleTableDrawer={setToggleTableDrawer}
 						className={classes(
 							styles.drawer,
-							toggleTableDrawer.data?.standalone && styles.standalone,
+							!tableDrawerProps.tabsConfig && styles.standalone,
 							tableDrawerProps.className
 						)}>
 						{Body && isValidElement(<Body datum={toggleTableDrawer.data} />) && (

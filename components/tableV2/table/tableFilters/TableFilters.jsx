@@ -139,7 +139,6 @@ const TableFilters = (props) => {
 									toggleDrawer({
 										data: {
 											index: 0,
-											standalone: true,
 										},
 									});
 								}}
