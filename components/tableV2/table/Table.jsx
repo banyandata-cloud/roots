@@ -83,10 +83,14 @@ const Table = (props) => {
 	const [hiddenColumns, setHiddenColumns] = useState({});
 	const [toggleTableDrawer, setToggleTableDrawer] = useState({
 		open: false,
-		data: {
-			index: 0,
-		},
+		data: {},
 	});
+
+	useEffect(() => {
+		setToggleTableDrawer({
+			open: false,
+		});
+	}, [tableData, loading]);
 
 	const toggleDrawer = ({ data } = {}) => {
 		setToggleTableDrawer((prevState) => {
@@ -237,7 +241,7 @@ const Table = (props) => {
 						toggle={toggleDrawer}
 						animation
 						{...tableDrawerProps}
-						{...(toggleTableDrawer.data?.standalone
+						{...(!toggleTableDrawer.data?.standalone
 							? {
 									tabsConfig: tableDrawerProps.tabsConfig,
 							  }
@@ -248,7 +252,11 @@ const Table = (props) => {
 						open={toggleTableDrawer.open}
 						toggleTableDrawer={toggleTableDrawer}
 						setToggleTableDrawer={setToggleTableDrawer}
-						className={classes(styles.drawer, tableDrawerProps.className)}>
+						className={classes(
+							styles.drawer,
+							toggleTableDrawer.data?.standalone && styles.standalone,
+							tableDrawerProps.className
+						)}>
 						{Body && isValidElement(<Body datum={toggleTableDrawer.data} />) && (
 							<Body
 								datum={toggleTableDrawer.data}
