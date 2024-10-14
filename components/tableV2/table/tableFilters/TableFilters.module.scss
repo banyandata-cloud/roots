@@ -11,6 +11,9 @@
 		.details {
 			@include flex(column, center, flex-start);
 			gap: 0.5rem;
+			.description {
+				max-width: 30rem;
+			}
 		}
 	}
 

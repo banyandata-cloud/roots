@@ -122,7 +122,9 @@ export function cloneDeep(object) {
 }
 
 export function classes(...args) {
-	return args.join(' ');
+	const sanitizedArgs = args.filter(Boolean);
+
+	return sanitizedArgs.join(' ');
 }
 
 export function inputHelper(event) {

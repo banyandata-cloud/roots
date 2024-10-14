@@ -27,6 +27,56 @@
 
 	.drawer {
 		width: 40%;
+		overflow: hidden;
+		@include removeScrollbar;
+
+		// customizing drawer of table
+
+		&.standalone {
+			> [data-elem='body'] {
+				@include removeScrollbar;
+				height: 100%;
+				> div {
+					@include flex(column, space-between, flex-start);
+					height: 100%;
+					> div {
+						height: auto;
+						&:nth-child(2) {
+							overflow-y: scroll;
+							@include customScrollBar;
+							flex: 1;
+						}
+					}
+				}
+			}
+		}
+
+		> div {
+			> div {
+				&:nth-last-child(1) {
+					height: 100%;
+					> div {
+						height: 100%;
+						> [data-elem='body'] {
+							@include removeScrollbar;
+							height: 100%;
+							> div {
+								@include flex(column, space-between, flex-start);
+								height: 100%;
+								> div {
+									height: auto;
+									&:nth-child(2) {
+										overflow-y: scroll;
+										@include customScrollBar;
+										flex: 1;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 
 	.chips,

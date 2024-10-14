@@ -80,7 +80,7 @@ const TableFilters = (props) => {
 					<Text variant='b1' weight={600}>
 						{tableTitleText}
 					</Text>
-					<Text variant='b2' weight={400}>
+					<Text className={styles.description} variant='b2' weight={400}>
 						{tableDescriptionText}
 					</Text>
 				</div>
@@ -139,7 +139,6 @@ const TableFilters = (props) => {
 									toggleDrawer({
 										data: {
 											index: 0,
-											standalone: true,
 										},
 									});
 								}}
