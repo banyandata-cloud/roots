@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import {
 	Children,
 	cloneElement,
@@ -16,6 +15,7 @@ import { ArrowIcon, CaretIcon, MaximizeIcon } from '../icons';
 import { Dropdown, DropdownItem } from '../input';
 import { Popover } from '../popover';
 import { Text } from '../text';
+import { BaseV2Widget } from './BaseV2Widget';
 import styles from './BaseWidget.module.css';
 import { WidgetFallback } from './fallback';
 
@@ -82,27 +82,38 @@ const generateOptions = (optionData, theme) => {
 const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 	// eslint-disable-next-line object-curly-newline
 	const {
-		loading,
-		title,
-		subtitle,
-		titleOptions,
-		showBack,
-		onBack,
-		onReload,
-		options,
-		toggle,
-		className,
+		loading = false,
+		title = '',
+		subtitle = '',
+		titleOptions = null,
+		showBack = false,
+		onBack = () => {},
+		onReload = () => {},
+		options = [],
+		toggle = [],
+		className = '',
 		children,
-		fallbackProps,
-		theme,
-		setFallback,
-		showFallback,
+		fallbackProps = {
+			className: '',
+			title: "We're having trouble loading this data",
+			subtitle:
+				'There could be something happening on our end. Reload this widget to try again.',
+		},
+		theme = 'light',
+		setFallback = () => {},
+		showFallback = false,
 		style,
 		onMouseDown,
 		onMouseUp,
 		onTouchEnd,
 		titleDesc,
+		v2 = false,
+		body = () => {},
 	} = props;
+
+	if (v2) {
+		return <BaseV2Widget {...props} />;
+	}
 
 	const emptyChartData = useMemo(() => {
 		return Children.toArray(children).every((child) => {
@@ -242,6 +253,7 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 					</div>
 				</div>
 			</div>
+
 			<div className={styles.children} data-elem='children'>
 				{showFallback && !loading && emptyChartData && (
 					<WidgetFallback {...fallbackProps} onReload={onReload} theme={theme} />
@@ -258,49 +270,5 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 		</div>
 	);
 });
-
-BaseWidget.propTypes = {
-	loading: PropTypes.bool,
-	title: PropTypes.string,
-	subtitle: PropTypes.string,
-	titleDesc: PropTypes.string,
-	showBack: PropTypes.bool,
-	onBack: PropTypes.func,
-	onReload: PropTypes.func,
-	options: PropTypes.arrayOf(PropTypes.shape),
-	toggle: PropTypes.arrayOf(PropTypes.shape),
-	className: PropTypes.string,
-	fallbackProps: PropTypes.shape({
-		className: PropTypes.string,
-		title: PropTypes.string,
-		subtitle: PropTypes.string,
-	}),
-	theme: PropTypes.oneOf(['light', 'dark']),
-	setFallback: PropTypes.func,
-	showFallback: PropTypes.bool,
-	titleOptions: PropTypes.node,
-};
-
-BaseWidget.defaultProps = {
-	loading: false,
-	title: '',
-	subtitle: '',
-	titleDesc: '',
-	showBack: false,
-	onBack: () => {},
-	onReload: () => {},
-	options: [],
-	toggle: [],
-	className: '',
-	fallbackProps: {
-		className: '',
-		title: "We're having trouble loading this data",
-		subtitle: 'There could be something happening on our end. Reload this widget to try again.',
-	},
-	theme: 'dark',
-	setFallback: () => {},
-	showFallback: false,
-	titleOptions: null,
-};
 
 export default BaseWidget;

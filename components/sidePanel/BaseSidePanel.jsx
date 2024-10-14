@@ -35,26 +35,42 @@ const BaseSidePanel = (props) => {
 		animation = false,
 		toggleTableDrawer = {},
 		setToggleTableDrawer = () => {},
+		activeTab,
 		tabsConfig = {
 			tabs: [],
 			className: '',
 		},
 	} = props;
 
-	const { tabs, className: tabsClassName } = tabsConfig;
+	const { tabs = [], className: tabsClassName } = tabsConfig ?? {};
 
-	const [selectedTab, setSelectedTab] = useState(1);
+	const [selectedTab, setSelectedTab] = useState();
 
 	const panelRef = useRef();
 
 	useEffect(() => {
-		setToggleTableDrawer({
-			...toggleTableDrawer,
-			data: {
-				...toggleTableDrawer.data,
-				index: selectedTab - 1,
-			},
-		});
+		if (activeTab >= 0) {
+			setToggleTableDrawer({
+				...toggleTableDrawer,
+				data: {
+					...toggleTableDrawer.data,
+					index: activeTab,
+				},
+			});
+			setSelectedTab(activeTab + 1);
+		}
+	}, [activeTab]);
+
+	useEffect(() => {
+		if (selectedTab) {
+			setToggleTableDrawer({
+				...toggleTableDrawer,
+				data: {
+					...toggleTableDrawer.data,
+					index: selectedTab - 1,
+				},
+			});
+		}
 	}, [selectedTab]);
 
 	return isModal ? (

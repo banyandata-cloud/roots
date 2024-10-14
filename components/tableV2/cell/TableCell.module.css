@@ -63,7 +63,7 @@
   visibility: visible;
 }
 .root[data-elem=base-cell].header-cell.sortable.sort-asc > [data-elem=component3] .sort-icon, .root[data-elem=base-cell].header-cell.sortable.sort-desc > [data-elem=component3] .sort-icon {
-  fill: var(--primary-color4);
+  fill: var(--secondary-color2);
   width: 1rem;
   height: 1rem;
 }

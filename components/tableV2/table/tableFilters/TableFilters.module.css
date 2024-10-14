@@ -17,6 +17,9 @@
   align-items: flex-start;
   gap: 0.5rem;
 }
+.root[data-elem=base-cell] > [data-elem=component1] .details .description {
+  max-width: 30rem;
+}
 .root[data-elem=base-cell] > [data-elem=component2] {
   flex: 1;
   display: flex;

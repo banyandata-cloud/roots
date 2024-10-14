@@ -11,8 +11,7 @@
 }
 .root .label {
   font-size: 0.75rem;
-  color: var(--grey);
-  width: auto;
+  color: var(--text-color);
 }
 .root .label.required::after {
   content: " *";

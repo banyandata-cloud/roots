@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable max-len */
 /* eslint-disable func-names */
 /* eslint-disable react/forbid-prop-types */
@@ -142,13 +143,15 @@ const FlowChart = ({
 				'link',
 				d3
 					.forceLink(links)
-					.id((d) => {
-						return d.id;
-					})
+					.id((d) => { return d.id; })
 					.distance(linkDistance)
 			)
 			.force('charge', d3.forceManyBody().strength(-300))
-			.force('center', d3.forceCenter(Width / 2, Height / 2));
+			.force('center', d3.forceCenter(Width / 2, Height / 2))
+			.force(
+				'collision',
+				d3.forceCollide().radius((d) => { return calculateRadius(d.label) + 15; }) // Adding padding to the radius
+			);
 
 		const dragstarted = (event, d) => {
 			if (!event.active) simulation.alphaTarget(0.3).restart();
@@ -245,6 +248,10 @@ const FlowChart = ({
 			'#CBA006',
 			'#4E9F3D',
 			'#FFBF45',
+			'#CD8C89',
+			'#FEE440',
+			'#7F4F24',
+			'#005F73',
 		];
 		const colorMap = {};
 
@@ -481,18 +488,36 @@ const FlowChart = ({
 			const legendItemHeight = 8; // Height of each legend item
 			const colorCircleRadius = 6; // Radius of the color circle
 			const innerCircleRadius = 3; // Radius of the inner white circle
+			const maxVisibleItems = 10; // Maximum number of legend items to show without scrolling
+			let currentScrollIndex = 0; // Track the current scroll position
+
+			// Create a clip path to restrict the visible area to the first 10 items
+			svg.append('defs')
+				.append('clipPath')
+				.attr('id', 'legend-clip')
+				.append('rect')
+				.attr('width', 150)
+				.attr('height', (legendItemHeight + 10) * maxVisibleItems); // Limit height to the first 10 items
 
 			// Create legend container
 			const legendContainer = svg
 				.append('g')
 				.attr('class', 'legend')
+				.attr('width', 150)
+				.attr('height', (legendItemHeight + 10) * maxVisibleItems) // Height restricted to maxVisibleItems
+				.attr('clip-path', 'url(#legend-clip)') // Clip the legend to show only first 10 items
 				.attr(
 					'transform',
 					`translate(${width - rightLegendAdjX}, ${height - legendMargin})`
 				);
 
+			const legendItemsGroup = legendContainer
+				.append('g')
+				.attr('class', 'legend-items')
+				.attr('transform', 'translate(0, 5)');
+
 			// Add legend items
-			const legendItems = legendContainer
+			const legendItems = legendItemsGroup
 				.selectAll('.legend-item')
 				.data(Object.entries(colorMap))
 				.enter()
@@ -508,9 +533,7 @@ const FlowChart = ({
 				.attr('r', colorCircleRadius)
 				.attr('cx', colorCircleRadius)
 				.attr('cy', legendItemHeight / 2) // Center vertically
-				.attr('fill', (d) => {
-					return d[1];
-				}); // Outer color
+				.attr('fill', (d) => { return d[1]; }); // Outer color
 
 			// Add inner white circles
 			legendItems
@@ -525,13 +548,63 @@ const FlowChart = ({
 				.append('text')
 				.attr('x', colorCircleRadius * 2 + 5) // Space between circle and text
 				.attr('y', legendItemHeight / 2)
-				.text((d) => {
-					return d[0];
-				})
+				.text((d) => { return d[0]; })
 				.attr('fill', 'black')
 				.style('font-size', labelFontSize)
 				.attr('dy', '0.35em') // Align text vertically in the middle
 				.attr('alignment-baseline', 'middle');
+
+			// Add arrow buttons for scrolling if there are more than 10 items
+			if (Object.entries(colorMap).length > maxVisibleItems) {
+				const arrowButtonSize = 14;
+
+				// Add down arrow button
+				const downArrow = svg
+					.append('text')
+					.attr('x', width - rightLegendAdjX + 7) // Center below legend
+					.attr(
+						'y',
+						height - legendMargin + (legendItemHeight + 10) * maxVisibleItems + 20
+					) // Below the last item
+					.text('▼')
+					.attr('font-size', arrowButtonSize)
+					.attr('fill', 'black')
+					.attr('cursor', 'pointer')
+					.on('click', () => {
+						if (
+							currentScrollIndex <
+							Object.entries(colorMap).length - maxVisibleItems
+						) {
+							currentScrollIndex++;
+							legendItemsGroup.attr(
+								'transform',
+								`translate(0, ${-currentScrollIndex * (legendItemHeight + 10)})`
+							); // Move items up by the height of one legend item
+						}
+					});
+
+				// Add up arrow button
+				const upArrow = svg
+					.append('text')
+					.attr('x', width - rightLegendAdjX + 30) // Center below legend
+					.attr(
+						'y',
+						height - legendMargin + (legendItemHeight + 10) * maxVisibleItems + 20
+					) // Below the down arrow
+					.text('▲')
+					.attr('font-size', arrowButtonSize)
+					.attr('fill', 'black')
+					.attr('cursor', 'pointer')
+					.on('click', () => {
+						if (currentScrollIndex > 0) {
+							currentScrollIndex--;
+							legendItemsGroup.attr(
+								'transform',
+								`translate(0, ${-currentScrollIndex * (legendItemHeight + 10)})`
+							); // Move items down by the height of one legend item
+						}
+					});
+			}
 		}
 
 		if (showLeftLegend) {

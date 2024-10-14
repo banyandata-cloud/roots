@@ -3,9 +3,11 @@
 .root {
 	@include flex(column, flex-start, stretch);
 	@include debug($grey);
+	overflow: hidden;
 	border-radius: 2.5rem;
 	height: 100%;
 	width: 100%;
+	position: relative;
 
 	.header {
 		@include flex(row, space-between, flex-start);
@@ -93,6 +95,17 @@
 						fill: $white;
 					}
 				}
+
+				.filter-button {
+					padding: 0 0.25rem;
+					height: 1.75rem;
+					.filter-icon {
+						height: 1.25rem;
+						width: 1.25rem;
+						fill: $white;
+					}
+				}
+
 				.date-picker {
 					min-width: 0;
 					[data-elem='header'] {
@@ -110,6 +123,23 @@
 				}
 			}
 		}
+	}
+
+	.drawer {
+		width: 40%;
+		height: inherit;
+		border-radius: 2.5rem;
+	}
+
+	.overlay {
+		background: rgba(0, 0, 0, 0.16);
+		backdrop-filter: blur(5px);
+		height: 100%;
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		z-index: 1;
 	}
 
 	// div.children {
@@ -163,6 +193,14 @@
 						fill: $white;
 					}
 				}
+
+				.filter-button {
+					color: $white;
+					border-color: $grey;
+					.filter-icon {
+						fill: $white;
+					}
+				}
 			}
 		}
 	}
@@ -212,6 +250,14 @@
 					color: $dark-grey;
 					border-color: $grey6;
 					.expand-icon {
+						fill: $dark-grey;
+					}
+				}
+
+				.filter-button {
+					color: $dark-grey;
+					border-color: $grey6;
+					.filter-icon {
 						fill: $dark-grey;
 					}
 				}
