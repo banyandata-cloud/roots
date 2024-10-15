@@ -127,6 +127,7 @@ const Map = (props) => {
 					{coordinates?.map((pos) => {
 						return (
 							<Tooltip
+								className={styles.tooltip}
 								key={pos}
 								content={pos.tooltip}
 								position='left'
