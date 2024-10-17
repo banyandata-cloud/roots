@@ -137,9 +137,8 @@ div.popover .crumb-list .right .circle-dropdown {
   width: 12px;
   height: 12px;
   border: 1.5px solid var(--secondary-color2);
+  background-color: var(--white);
   border-radius: 50%;
-  background-color: var(--white);
-  background-color: var(--white);
   z-index: 101;
 }
 div.popover .crumb-list .right .circle-dropdown .icon {
@@ -162,18 +161,23 @@ div.popover .crumb-list .right .circle-dropdown::before {
   right: -3.6px;
 }
 div.popover .crumb-list .right .circle-filled {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
   width: 12px;
   height: 12px;
+  border: 1.5px solid var(--secondary-color2);
   background-color: var(--secondary-color2);
   border-radius: 50%;
+  z-index: 100;
 }
 div.popover .crumb-list .right .circle-filled::before {
-  z-index: 100;
   content: "";
-  width: 2px;
-  height: 2.5rem;
-  background: var(--secondary-color2);
-  position: absolute;
-  bottom: 28px;
-  right: 22.6px;
+  width: 0%;
+  height: 40px;
+  border-left: 1.5px solid var(--secondary-color2);
+  position: relative;
+  bottom: 200%;
+  right: -3.6px;
 }/*# sourceMappingURL=Breadcrumbs.module.css.map */

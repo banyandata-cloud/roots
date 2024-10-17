@@ -60,6 +60,7 @@ div.popover {
 	background: $white !important;
 	border-color: $white !important;
 	box-shadow: 0rem 0rem 0.125rem 0rem rgba(0, 0, 0, 0.25);
+
 	.crumb-list {
 		@include flex(row, space-between, center);
 		gap: 0.625rem;
@@ -93,6 +94,7 @@ div.popover {
 		}
 		.right {
 			@include flex(row, flex-end, flex-end);
+
 			.circle {
 				width: 12px;
 				height: 12px;
@@ -107,10 +109,9 @@ div.popover {
 				width: 12px;
 				height: 12px;
 				border: 1.5px solid $secondary-color2;
+				background-color: $white;
 				border-radius: 50%;
-				background-color: $white;
 				// margin-left: 8px;
-				background-color: $white;
 				z-index: 101;
 				.icon {
 					margin-right: 1.8px;
@@ -133,20 +134,22 @@ div.popover {
 				}
 			}
 			.circle-filled {
+				@include flex(row, flex-start, center);
 				width: 12px;
 				height: 12px;
+				border: 1.5px solid $secondary-color2;
 				background-color: $secondary-color2;
 				border-radius: 50%;
 				// margin-left: 8px;
+				z-index: 100;
 				&::before {
-					z-index: 100;
 					content: '';
-					width: 2px;
-					height: 2.5rem;
-					background: $secondary-color2;
-					position: absolute;
-					bottom: 28px;
-					right: 22.6px;
+					width: 0%;
+					height: 40px;
+					border-left: 1.5px solid $secondary-color2;
+					position: relative;
+					bottom: 200%;
+					right: -3.6px;
 				}
 			}
 		}
