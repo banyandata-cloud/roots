@@ -150,6 +150,7 @@
   width: 40%;
   height: inherit;
   border-radius: 2.5rem;
+  box-shadow: none !important;
 }
 .root .overlay {
   background: rgba(0, 0, 0, 0.16);
