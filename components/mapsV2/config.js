@@ -1,6 +1,5 @@
 /* eslint-disable max-len */
 import mapBase from '@highcharts/map-collection/custom/world-highres3.topo.json';
-import { MarkerIcon } from '../icons';
 
 const MAP_THEME = {
 	dark: {
@@ -66,9 +65,7 @@ export const mapOptions = (props) => {
 		zoomButtonOptions,
 		mapView,
 		showMarker,
-		defaultMarkeroptions = {
-			symbol: <MarkerIcon />,
-		},
+		defaultMarkeroptions,
 		customMarker,
 		customMarkerOptions,
 		theme,
@@ -81,7 +78,7 @@ export const mapOptions = (props) => {
 
 	if (customMarker) {
 		markerOptions = {
-			symbol: <MarkerIcon />,
+			symbol: customMarker,
 			customMarkerOptions,
 		};
 	} else {
