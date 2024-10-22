@@ -19,7 +19,7 @@ import { Text } from '../../text';
 import { WidgetFallback } from '../fallback';
 import styles from './BaseV2Widget.module.css';
 
-const generateOptions = (optionData, theme, toggleDrawer) => {
+const generateOptions = ({ optionData, toggleDrawer }) => {
 	switch (optionData?.id ?? '') {
 		case 'dropdown':
 			return (
@@ -95,9 +95,7 @@ const generateOptions = (optionData, theme, toggleDrawer) => {
 				/>
 			);
 		case 'custom':
-			return optionData.render({
-				theme,
-			});
+			return optionData.render();
 		default:
 			return null;
 	}
@@ -260,7 +258,10 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 						data-elem='header-options-list'>
 						{(options?.length ?? 0) > 0 &&
 							options?.map((objectData) => {
-								return generateOptions(objectData, toggleDrawer);
+								return generateOptions({
+									optionData: objectData,
+									toggleDrawer,
+								});
 							})}
 					</div>
 				</div>
