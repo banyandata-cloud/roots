@@ -115,6 +115,7 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 		options = [],
 		className = '',
 		children,
+		drawerClassName,
 		fallbackProps = {
 			className: '',
 			title: "We're having trouble loading this data",
@@ -270,7 +271,7 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 			<BaseSidePanel
 				toggle={toggleDrawer}
 				open={toggleTableDrawer.open}
-				className={styles.drawer}
+				className={classes(styles.drawer, drawerClassName)}
 				data-elem='panel'
 				animation>
 				{isValidElement(<Body />) && <Body toggle={toggleDrawer} />}

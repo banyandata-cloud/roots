@@ -12,8 +12,8 @@ const MAP_THEME = {
 		zoomButtonsBackgroundOnHover: '#f0f0f0',
 	},
 	light: {
-		mapBackgroundColor: '#fbfbfb',
-		mapAreaColor: '#dde7f1',
+		mapBackgroundColor: '#FFFFFF',
+		mapAreaColor: '#4867714D',
 		defaultMarkerColor: '#5a6b51',
 		mapAreaBorderColor: '#ffffff',
 		zoomButtonsBackground: '#ffffff',
