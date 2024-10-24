@@ -13,7 +13,7 @@ const MAP_THEME = {
 	},
 	light: {
 		mapBackgroundColor: '#FFFFFF',
-		mapAreaColor: '#4867714D',
+		mapAreaColor: '#486771',
 		defaultMarkerColor: '#5a6b51',
 		mapAreaBorderColor: '#ffffff',
 		zoomButtonsBackground: '#ffffff',
