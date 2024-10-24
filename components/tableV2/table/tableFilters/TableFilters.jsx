@@ -126,7 +126,7 @@ const TableFilters = (props) => {
 			{...(!hideActions && {
 				component3: (
 					<div className={styles.filters}>
-						{rightActions()}
+						{rightActions?.()}
 						{!disabledSearch && (
 							<Button
 								size='auto'

@@ -6,7 +6,7 @@ const COLUMNS = [...Array(4).keys()].map(() => {
 	return Math.floor(Math.random() * 80 + 20);
 });
 
-const ROWS = [...Array(10).keys()];
+const ROWS = [...Array(30).keys()];
 
 const BaseTableSkeleton = ({ theme }) => {
 	return ROWS.map((row, rowIndex) => {

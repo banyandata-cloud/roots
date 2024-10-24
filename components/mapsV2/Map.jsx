@@ -4,8 +4,8 @@ import HighchartsReact from 'highcharts-react-official';
 import highchartsExportData from 'highcharts/modules/export-data';
 import highchartsExporting from 'highcharts/modules/exporting';
 import highchartsMap from 'highcharts/modules/map';
-import TiledWebMap from 'highcharts/modules/tiledwebmap';
 import markerClusters from 'highcharts/modules/marker-clusters';
+import TiledWebMap from 'highcharts/modules/tiledwebmap';
 import PropTypes from 'prop-types';
 import { forwardRef, useRef, useState } from 'react';
 import { classes } from '../../utils';
@@ -54,7 +54,7 @@ Highcharts.AST.allowedAttributes.push('svg');
  * @returns {JSX.Element} The rendered map component.
  */
 const Map = forwardRef((props) => {
-	const { loading, theme, fallback, className } = props;
+	const { loading, theme, fallback, className, enableFullScreen } = props;
 
 	if (loading) {
 		return (
@@ -84,18 +84,20 @@ const Map = forwardRef((props) => {
 		highcharts: Highcharts,
 		options: {
 			...mapOptions(props),
-			exporting: {
-				menuItemDefinitions: {
-					viewFullscreen: {
-						text: isFullScreen ? 'Exit fullscreen' : 'Open fullscreen',
+			...(enableFullScreen && {
+				exporting: {
+					menuItemDefinitions: {
+						viewFullscreen: {
+							text: isFullScreen ? 'Exit fullscreen' : 'Open fullscreen',
+						},
+					},
+					buttons: {
+						contextButton: {
+							menuItems: ['viewFullscreen'],
+						},
 					},
 				},
-				buttons: {
-					contextButton: {
-						menuItems: ['viewFullscreen'],
-					},
-				},
-			},
+			}),
 		},
 		constructorType: 'mapChart', // renders map based highchart
 		containerProps: {
