@@ -174,6 +174,12 @@ const Table = (props) => {
 		}
 	}, [headerData]);
 
+	let tabularData = tableData;
+
+	if (!Array.isArray(tableData)) {
+		tabularData = [];
+	}
+
 	return (
 		<ErrorBoundary
 			FallbackComponent={(args) => {
@@ -205,7 +211,7 @@ const Table = (props) => {
 					{...{
 						ref,
 						headerData: visibileColumns,
-						tableData,
+						tableData: tabularData,
 						uniqueKey,
 						activeData,
 						setActiveData,

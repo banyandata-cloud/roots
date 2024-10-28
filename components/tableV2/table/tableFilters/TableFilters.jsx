@@ -66,7 +66,7 @@ const TableFilters = (props) => {
 		}
 	};
 
-	const hideActions = columnFilters.length === 0 && disabledSearch;
+	const hideActions = columnFilters.length === 0 && disabledSearch && !rightActions;
 
 	return (
 		<BaseCell
