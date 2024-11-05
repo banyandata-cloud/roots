@@ -62,6 +62,7 @@ const Table = (props) => {
 			disabled: false,
 		},
 		filtersCount = 0,
+		emptyPlaceholder = null,
 	} = props;
 
 	const ref = useRef(null);
@@ -223,6 +224,7 @@ const Table = (props) => {
 						defaultActiveIndex,
 						placeholder,
 						toggleDrawer,
+						emptyPlaceholder,
 					}}
 					loading={loading}
 				/>
@@ -240,6 +242,7 @@ const Table = (props) => {
 						customPageList={customPageList}
 						customPageCallback={customPageCallback}
 						hideDisabledPages={hideDisabledPages}
+						loading={loading}
 					/>
 				)}
 				{tableDrawerProps && (
