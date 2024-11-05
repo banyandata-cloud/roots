@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { classes } from '../../utils/utils';
 import Button from '../buttons/button/Button';
-import { CaretIcon, FlowChartIcon } from '../icons';
+import { CaretIcon } from '../icons';
 import { Link } from '../link';
 import { Popover } from '../popover';
 import styles from './Breadcrumbs.module.css';
@@ -79,7 +79,12 @@ const BreadCrumbs = (props) => {
 				})}
 				title={`${crumbs[crumbs.length - 1]?.title} : ${crumbs[crumbs.length - 1]?.value}`}
 				rightComponent={() => {
-					return <FlowChartIcon className={classes(expand ? '' : styles.icon)} />;
+					return (
+						<CaretIcon
+							className={classes(styles.icon, expand && styles.expand)}
+							upDown
+						/>
+					);
 				}}
 			/>
 			<Popover
