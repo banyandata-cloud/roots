@@ -15,7 +15,7 @@ const MAP_THEME = {
 	light: {
 		mapBackgroundColor: '#FFFFFF',
 		mapAreaColor: '#486771',
-		defaultMarkerColor: '#5a6b51',
+		defaultMarkerColor: '#bd3c45',
 		mapAreaBorderColor: '#ffffff',
 		zoomButtonsBackground: '#ffffff',
 		zoomButtonsTextColor: '#000000',
