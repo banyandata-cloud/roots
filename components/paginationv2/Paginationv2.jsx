@@ -251,10 +251,6 @@ export const Pagination = forwardRef((props, ref) => {
 		};
 	}, []);
 
-	if (loading) {
-		return null;
-	}
-
 	const [isDisplayLabelVisible, setDisplayLabelVisible] = useState(false);
 
 	const updateChildVisibility = () => {
@@ -333,7 +329,7 @@ export const Pagination = forwardRef((props, ref) => {
 							customLabel,
 							totalData,
 							totalPages,
-							isDisplayLabelVisible,
+							isDisplayLabelVisible: isDisplayLabelVisible && !loading,
 							dataLabel,
 							render: enableJumpToPage,
 						}}
