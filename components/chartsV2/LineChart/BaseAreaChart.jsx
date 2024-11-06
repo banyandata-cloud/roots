@@ -1,4 +1,3 @@
-/* eslint-disable react/forbid-prop-types */
 import {
 	CategoryScale,
 	Chart as ChartJS,
@@ -32,7 +31,6 @@ const BaseAreaChart = (props) => {
 	const {
 		loading,
 		title,
-		gridOptions,
 		seriesData,
 		tooltip,
 		legend,
@@ -42,21 +40,19 @@ const BaseAreaChart = (props) => {
 		yAxisLabel,
 		axisLabelColor,
 		stacked,
-		cursor,
 		smooth,
-		// opacity,
 		style,
 		className,
 		theme,
 		fallback,
-		isLineChart, // New prop to toggle between line chart and area chart
+		isLineChart,
+		xAxisPosition,
 	} = props;
 
 	if (loading || fallback) {
 		return <Skeleton theme={theme} fallback={!loading && fallback} />;
 	}
 
-	// Define different colors for each dataset
 	const lineColors = [
 		'rgba(255, 99, 132, 0.5)',
 		'rgba(54, 162, 235, 0.5)',
@@ -79,12 +75,10 @@ const BaseAreaChart = (props) => {
  return {
 			label: key,
 			data: seriesData?.chartData[key] ?? [],
-			fill: !isLineChart, // Fill only if it's not a line chart
-			backgroundColor: isLineChart
-				? 'transparent' // No background color for a line chart
-				: lineColors[index % lineColors.length], // Background color for area chart
-			borderColor: borderColors[index % borderColors.length], // Border color matches the line color
-			tension: smooth ? 0.4 : 0, // Controls smoothness of the line
+			fill: !isLineChart,
+			backgroundColor: isLineChart ? 'transparent' : lineColors[index % lineColors.length],
+			borderColor: borderColors[index % borderColors.length],
+			tension: smooth ? 0.4 : 0,
 			borderWidth: 2,
 			pointRadius: 4,
 			pointHoverRadius: 6,
@@ -106,11 +100,14 @@ const BaseAreaChart = (props) => {
 		plugins: {
 			legend: {
 				display: legend?.display ?? true,
-				position: legend?.position ?? 'right',
+				position: legend?.position ?? 'bottom',
 				labels: {
-					color: axisLabelColor !== '' ? axisLabelColor : COLORS.grey,
-					boxWidth: 12, // Decreased width for the legend color box
-					boxHeight: 12,
+					color: axisLabelColor || COLORS.grey,
+					boxWidth: 9, // Width for color box
+					boxHeight: 9, // Height for color box
+					borderRadius: 6, // Circular shape for legend color
+					padding: 10, // Padding around legend items
+					usePointStyle: true,
 				},
 			},
 			tooltip: {
@@ -121,7 +118,7 @@ const BaseAreaChart = (props) => {
 			title: {
 				display: !!title,
 				text: title,
-				color: axisLabelColor !== '' ? axisLabelColor : COLORS.grey,
+				color: axisLabelColor || COLORS.grey,
 				font: {
 					size: 16,
 					weight: 'bold',
@@ -130,38 +127,40 @@ const BaseAreaChart = (props) => {
 		},
 		scales: {
 			x: {
-				display: xAxisLabelShow ?? true,
+				display: xAxisLabelShow,
+				position: xAxisPosition,
 				title: {
 					display: !!xAxisLabel,
 					text: xAxisLabel,
-					color: axisLabelColor !== '' ? axisLabelColor : COLORS.grey,
+					color: axisLabelColor || COLORS.grey,
 					font: {
 						size: 14,
 					},
 				},
 				grid: {
-					display: gridOptions?.xAxisGridShow ?? false,
+					drawOnChartArea: false,
+					display: false,
 				},
 				ticks: {
-					color: axisLabelColor !== '' ? axisLabelColor : COLORS.grey,
+					color: axisLabelColor || COLORS.grey,
 				},
 			},
 			y: {
-				display: yAxisLabelShow ?? true,
+				display: yAxisLabelShow,
 				stacked,
 				title: {
 					display: !!yAxisLabel,
 					text: yAxisLabel,
-					color: axisLabelColor !== '' ? axisLabelColor : COLORS.grey,
+					color: axisLabelColor || COLORS.grey,
 					font: {
 						size: 14,
 					},
 				},
 				grid: {
-					display: gridOptions?.yAxisGridShow ?? true,
+					display: false,
 				},
 				ticks: {
-					color: axisLabelColor !== '' ? axisLabelColor : COLORS.grey,
+					color: axisLabelColor || COLORS.grey,
 				},
 			},
 		},
@@ -170,8 +169,9 @@ const BaseAreaChart = (props) => {
 				tension: smooth ? 0.4 : 0,
 			},
 			point: {
-				pointStyle: 'circle',
-				cursor: cursor ?? 'default',
+				radius: 5, // Size of the diamond points
+				hoverRadius: 7,
+				pointStyle: 'rectRot', // Diamond shape for points
 			},
 		},
 	};
@@ -191,43 +191,51 @@ BaseAreaChart.propTypes = {
 	loading: PropTypes.bool,
 	fallback: PropTypes.bool,
 	title: PropTypes.string,
-	gridOptions: PropTypes.object,
-	seriesData: PropTypes.objectOf(PropTypes.shape),
+	seriesData: PropTypes.shape({
+		metaData: PropTypes.shape({
+			xAxisData: PropTypes.arrayOf(PropTypes.string),
+		}),
+		chartData: PropTypes.objectOf(PropTypes.arrayOf(PropTypes.number)),
+	}),
 	stacked: PropTypes.bool,
 	xAxisLabelShow: PropTypes.bool,
 	yAxisLabelShow: PropTypes.bool,
 	xAxisLabel: PropTypes.string,
 	yAxisLabel: PropTypes.string,
 	axisLabelColor: PropTypes.string,
-	cursor: PropTypes.string,
 	smooth: PropTypes.bool,
-	// opacity: PropTypes.number,
-	legend: PropTypes.object,
-	tooltip: PropTypes.object,
+	legend: PropTypes.shape({
+		display: PropTypes.bool,
+		position: PropTypes.string,
+	}),
+	tooltip: PropTypes.shape({
+		enabled: PropTypes.bool,
+		mode: PropTypes.string,
+		intersect: PropTypes.bool,
+	}),
 	theme: PropTypes.oneOf(['dark', 'light']),
-	style: PropTypes.object,
+	// style: PropTypes.object,
 	className: PropTypes.string,
-	isLineChart: PropTypes.bool, // Added new prop for toggling between line chart and area chart
+	isLineChart: PropTypes.bool,
+	xAxisPosition: PropTypes.string,
 };
 
 BaseAreaChart.defaultProps = {
 	loading: false,
 	fallback: false,
-	gridOptions: {},
 	seriesData: {},
 	stacked: false,
 	xAxisLabelShow: true,
 	yAxisLabelShow: true,
 	axisLabelColor: '',
-	cursor: 'default',
 	smooth: false,
-	// opacity: 0.3,
 	legend: {},
 	tooltip: {},
 	theme: 'light',
-	style: {},
+	// style: {},
 	className: '',
-	isLineChart: false, // Default to false (area chart by default)
+	isLineChart: false,
+	xAxisPosition: 'bottom',
 };
 
 export default BaseAreaChart;

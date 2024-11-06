@@ -90,57 +90,217 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
     borderWidth: 1, // Make the border thin
     selectedMode: true,
   },
-  seriesOption: [
-    {
-      stackIndex: 1,
-      itemStyle: {
-        color: '#0F62FE',
-      },
-      label: {
-        show: true,
-        fontSize: 20,
-        color: 'black',
-        fontWeight: 'bold',
-        position: 'outside',
-        formatter(d) {
-          return d.name !== '' ? `${d.value}%\n${d.name}` : null;
-        },
-      },
-      emphasis: {
-        itemStyle: {
-          shadowBlur: 10, // Increase size on hover
-          shadowOffsetX: 0,
-          shadowColor: 'rgba(0, 0, 0, 0.5)',
-          scale: 1.1, // Slightly increase the size when hovered
-        },
-      },
-    },
-    {
-      stackIndex: 2,
-      itemStyle: {
-        color: '#71EEFF',
-      },
-      emphasis: {
-        itemStyle: {
-          scale: 1.1, // Increase size on hover
-        },
-      },
-    },
-    {
-      stackIndex: 3,
-      itemStyle: {
-        color: '#67F990',
-      },
-      tooltip: {
-        trigger: 'none', // No tooltip for this slice
-      },
-      emphasis: {
-        itemStyle: {
-          scale: 1.1, // Increase size on hover
-        },
-      },
-    },
-  ],
+ seriesOption: [
+				{
+					stackIndex: 1,
+					itemStyle: {
+						color: '#00459F',
+					},
+					label: {
+						show: true,
+						fontSize: '15',
+						color: 'black',
+						fontWeight: 'bold',
+						position: 'center',
+						formatter() {
+							return `40 \nControls`;
+						},
+					},
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 0, 0.5)',
+						},
+					},
+				},
+				{
+					stackIndex: 2,
+					itemStyle: {
+						color: '#0056C7',
+					},
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 5)',
+						},
+					},
+					emphasis: {
+						scaleSize: 25,
+					},
+				},
+				{
+					stackIndex: 3,
+					itemStyle: {
+						color: '#3076D2',
+					},
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 5)',
+						},
+					},
+					emphasis: {
+						scaleSize: 25,
+					},
+				},
+				{
+					stackIndex: 4,
+					itemStyle: {
+						color: '#6096DD',
+					},
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 5)',
+						},
+					},
+					emphasis: {
+						scaleSize: 25,
+					},
+				},
+				{
+					stackIndex: 5,
+					itemStyle: {
+						color: '#90B6E9',
+					},
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 5)',
+						},
+					},
+				},
+				{
+					stackIndex: 6,
+					itemStyle: {
+						color: '#A8C6EE',
+					},
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 5)',
+						},
+					},
+				},
+				{
+					stackIndex: 7,
+					itemStyle: {
+						color: '#C0D6F4',
+					},
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 5)',
+						},
+					},
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 0, 0.5)',
+						},
+					},
+				},
+				{
+					stackIndex: 8,
+					itemStyle: {
+						color: '#D8E6F9',
+					},
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 5)',
+						},
+					},
+				},
+				{
+					stackIndex: 9,
+					itemStyle: {
+						color: '#F0F6FF',
+					},
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 5)',
+						},
+					},
+				},
+				{
+					stackIndex: 10,
+					itemStyle: {
+						color: '#001128',
+					},
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 5)',
+						},
+					},
+				},
+				{
+					stackIndex: 11,
+					itemStyle: {
+						color: '#001A3C',
+					},
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 5)',
+						},
+					},
+				},
+				{
+					stackIndex: 12,
+					itemStyle: {
+						color: '#001A3C',
+					},
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 5)',
+						},
+					},
+				},
+				{
+					stackIndex: 13,
+					itemStyle: {
+						color: '#002250',
+					},
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 5)',
+						},
+					},
+				},
+			],
 }}
 >
 		{Template.bind({})}
@@ -195,6 +355,18 @@ Pie Chart as Icon
 					},
 					itemStyle: {
 						color: 'whitesmoke',
+					},
+					label: {
+						show: false,
+					},
+				},
+				{
+					stackIndex: 3,
+					emphasis: {
+						disabled: true,
+					},
+					itemStyle: {
+						color: 'blue',
 					},
 					label: {
 						show: false,

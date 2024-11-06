@@ -3,7 +3,7 @@ import { Meta, Canvas, Story } from '@storybook/addon-docs';
 import { ThemedContainer } from '../../helpers';
 import BaseAreaChart from './BaseAreaChart';
 
-import { datum1, datum2 } from './BaseAreaChartData.js';
+import { datum1, datum2, datumV2 } from './BaseAreaChartData.js';
 
 <Meta title='Components/ChartsV2/LineChart' parameters={{ options: { showToolbar: false } }} />
 
@@ -19,6 +19,38 @@ export const Template = (args) => (
 				...datum1,
 				metaData: {
 					xAxisData: datum1?.metaData?.xAxisData?.map((key) => {
+						const d = new Date(key * 1000);
+						return `${d.getHours()}:${d.getMinutes()}`;
+					}),
+				},
+			}}
+			tooltip={{
+				show: true,
+				trigger: 'item',
+				axisPointer: {
+					type: 'cross',
+					label: {
+						backgroundColor: '#6a7985',
+					},
+				},
+				triggerOn: 'mousemove',
+			}}
+		/>
+	</ThemedContainer>
+);
+
+export const TemplateV2 = (args) => (
+	<ThemedContainer
+		{...args}
+		style={{
+			height: '400px',
+		}}>
+		<BaseAreaChart
+			{...args}
+			seriesData={{
+				...datumV2,
+				metaData: {
+					xAxisData: datumV2?.metaData?.xAxisData?.map((key) => {
 						const d = new Date(key * 1000);
 						return `${d.getHours()}:${d.getMinutes()}`;
 					}),
@@ -274,17 +306,53 @@ The Line Chart with transparent areas and unstacked Lines.
 		name='Line Stack'
 		args={{
 			title: 'Title',
+			xAxisPosition: 'top',
+			gridOptions: {
+				left: 50,
+				right: 50,
+				bottom: 100,
+				top: 50,
+			},
 			gridContainLabel: true,
 			legend: {
-				show: false,
+				show: true,
+				bottom: 50,
+				itemGap: 50,
+				icon: 'circle',
 			},
-			xAxisShow: true,
-			smooth: false,
-			stacked: false,
-			yAxisLabelShow: false,
-			ySplitLineShow: false,
+			xAxisLabelShow: true,
+			xSplitLineShow: true,
+			xAxisLineShow: false,
+			xAxisTickShow: false,
+			xAxis: {
+				position: 'top',
+				boundaryGap: false,
+			},
+			splitType: 'dotted',
+			axisSplitColor: '#D8DFE5',
+			smooth: true,
+			stacked: true,
+			yAxisLabelShow: true,
+			ySplitLineShow: true,
 			yAxisLineShow: false,
-			yAxisTickShow: false,
+			yAxisTickShow: true,
+			axisLabelColor: 'black',
+			yAxis: {
+				boundaryGap: ['0%', '20%'],
+				axisLabel: {
+					formatter: (value) => {
+						if ([0, 100, 200, 300, 400]?.includes?.(value)) {
+							return value;
+						} else {
+							return '';
+						}
+					},
+				},
+			},
+			yAxisTick: {
+				alignWithLabel: true,
+				customValues: [0, 100, 200, 300, 400],
+			},
 			cursor: 'default',
 			seriesOption: [
 				{
@@ -394,7 +462,7 @@ The Line Chart with transparent areas and unstacked Lines.
 				},
 			],
 		}}>
-		{Template.bind({})}
+		{TemplateV2.bind({})}
 	</Story>
 </Canvas>
 
