@@ -8,6 +8,16 @@ export const getTickIconSvg = () => {
     `;
 };
 
+export const getNAIconSvg = () => {
+	return `
+        <svg width="1.5rem" height="1.5rem" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0.15" y="0.15" width="11.7" height="11.7" rx="5.85" fill="white"/>
+            <rect x="0.15" y="0.15" width="11.7" height="11.7" rx="5.85" stroke="#71839B" stroke-width="0.3"/>
+            <path d="M5.75 8H5.204L3.008 4.67V8H2.462V3.812H3.008L5.204 7.136V3.812H5.75V8ZM9.15275 7.07H7.32875L6.99275 8H6.41675L7.92875 3.842H8.55875L10.0648 8H9.48875L9.15275 7.07ZM8.99675 6.626L8.24075 4.514L7.48475 6.626H8.99675Z" fill="#71839B"/>
+        </svg>
+    `;
+};
+
 export const getCrossIcon = () => {
     return `
         <svg width="1.5rem" height="1.5rem" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
