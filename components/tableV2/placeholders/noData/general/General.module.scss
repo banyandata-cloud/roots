@@ -2,8 +2,8 @@
 
 .root {
 	@include flex;
-	height: 80%;
 	position: relative;
+	margin: auto;
 	.placeholder {
 		position: absolute;
 	}

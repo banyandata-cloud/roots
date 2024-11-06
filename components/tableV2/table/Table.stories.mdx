@@ -375,6 +375,9 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 						onRowClick={onRowClick}
 						headerData={headerData}
 						tableData={tableData}
+						emptyPlaceholder={() => {
+							return <div>Hello Empty</div>;
+						}}
 						dataLabel='items'
 						paginationData={{
 							paginationState,
@@ -1481,6 +1484,7 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 							paginationState,
 							paginationDispatch,
 						}}
+						tableData={[]}
 						loading={true}
 					/>
 				</ThemedContainer>

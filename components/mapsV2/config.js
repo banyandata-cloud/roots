@@ -10,15 +10,17 @@ const MAP_THEME = {
 		zoomButtonsBackground: '#ffffff',
 		zoomButtonsTextColor: '#000000',
 		zoomButtonsBackgroundOnHover: '#f0f0f0',
+		clusterColor: '#D6EAF8',
 	},
 	light: {
-		mapBackgroundColor: '#fbfbfb',
-		mapAreaColor: '#dde7f1',
-		defaultMarkerColor: '#5a6b51',
+		mapBackgroundColor: '#FFFFFF',
+		mapAreaColor: '#486771',
+		defaultMarkerColor: '#bd3c45',
 		mapAreaBorderColor: '#ffffff',
 		zoomButtonsBackground: '#ffffff',
 		zoomButtonsTextColor: '#000000',
 		zoomButtonsBackgroundOnHover: '#00000088',
+		clusterColor: '#bd3c45',
 	},
 };
 
@@ -72,6 +74,7 @@ export const mapOptions = (props) => {
 		type,
 		providerType,
 		providerTheme,
+		animation = true,
 	} = props;
 
 	let markerOptions = {};
@@ -136,7 +139,7 @@ export const mapOptions = (props) => {
 		chart: {
 			backgroundColor: MAP_THEME[theme].mapBackgroundColor, // background color of the map container
 			spacing: [0, 0, 0, 0], // outer spacing around the map. Setting it to 0 to get max ratio.
-			animation: false,
+			animation,
 		},
 		mapNavigation: {
 			enabled: showZoomButton,
@@ -159,10 +162,21 @@ export const mapOptions = (props) => {
 		mapView: mapView ?? {
 			center: [0, 0], // default view of the map (show whole world map)
 		},
+
 		plotOptions: {
 			mappoint: {
 				cluster: {
 					enabled: cluster,
+					zones: [
+						{
+							from: 1,
+							to: 100,
+							marker: {
+								radius: 13,
+								fillColor: MAP_THEME[theme].clusterColor,
+							},
+						},
+					],
 				},
 			},
 		},

@@ -10,6 +10,7 @@ export * from './codeSnippet';
 export * from './datePicker';
 export * from './displayPicture';
 export * from './flowChart';
+export * from './geoMap';
 export * from './hierarchy';
 export * from './icons';
 export * from './input';

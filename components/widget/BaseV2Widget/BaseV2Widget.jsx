@@ -19,7 +19,7 @@ import { Text } from '../../text';
 import { WidgetFallback } from '../fallback';
 import styles from './BaseV2Widget.module.css';
 
-const generateOptions = (optionData, theme, toggleDrawer) => {
+const generateOptions = ({ optionData, toggleDrawer }) => {
 	switch (optionData?.id ?? '') {
 		case 'dropdown':
 			return (
@@ -95,9 +95,7 @@ const generateOptions = (optionData, theme, toggleDrawer) => {
 				/>
 			);
 		case 'custom':
-			return optionData.render({
-				theme,
-			});
+			return optionData.render();
 		default:
 			return null;
 	}
@@ -117,6 +115,7 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 		options = [],
 		className = '',
 		children,
+		drawerClassName,
 		fallbackProps = {
 			className: '',
 			title: "We're having trouble loading this data",
@@ -260,7 +259,10 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 						data-elem='header-options-list'>
 						{(options?.length ?? 0) > 0 &&
 							options?.map((objectData) => {
-								return generateOptions(objectData, toggleDrawer);
+								return generateOptions({
+									optionData: objectData,
+									toggleDrawer,
+								});
 							})}
 					</div>
 				</div>
@@ -269,7 +271,7 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 			<BaseSidePanel
 				toggle={toggleDrawer}
 				open={toggleTableDrawer.open}
-				className={styles.drawer}
+				className={classes(styles.drawer, drawerClassName)}
 				data-elem='panel'
 				animation>
 				{isValidElement(<Body />) && <Body toggle={toggleDrawer} />}

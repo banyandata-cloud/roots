@@ -62,6 +62,7 @@ const Table = (props) => {
 			disabled: false,
 		},
 		filtersCount = 0,
+		emptyPlaceholder = null,
 	} = props;
 
 	const ref = useRef(null);
@@ -174,6 +175,12 @@ const Table = (props) => {
 		}
 	}, [headerData]);
 
+	let tabularData = tableData;
+
+	if (!Array.isArray(tableData)) {
+		tabularData = [];
+	}
+
 	return (
 		<ErrorBoundary
 			FallbackComponent={(args) => {
@@ -205,7 +212,7 @@ const Table = (props) => {
 					{...{
 						ref,
 						headerData: visibileColumns,
-						tableData,
+						tableData: tabularData,
 						uniqueKey,
 						activeData,
 						setActiveData,
@@ -217,6 +224,7 @@ const Table = (props) => {
 						defaultActiveIndex,
 						placeholder,
 						toggleDrawer,
+						emptyPlaceholder,
 					}}
 					loading={loading}
 				/>
@@ -234,6 +242,7 @@ const Table = (props) => {
 						customPageList={customPageList}
 						customPageCallback={customPageCallback}
 						hideDisabledPages={hideDisabledPages}
+						loading={loading}
 					/>
 				)}
 				{tableDrawerProps && (

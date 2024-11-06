@@ -108,6 +108,7 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 		onTouchEnd,
 		titleDesc,
 		v2 = false,
+		// eslint-disable-next-line no-unused-vars
 		body = () => {},
 	} = props;
 
