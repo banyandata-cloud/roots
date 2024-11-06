@@ -10,7 +10,7 @@ import * as d3 from 'd3';
 import PropTypes from 'prop-types';
 import React, { useEffect, useRef, useState } from 'react';
 import styles from './FlowChart.module.css';
-import { getCrossIcon, getExcludeIcon, getTickIconSvg } from './assets';
+import { getCrossIcon, getExcludeIcon, getNAIconSvg, getTickIconSvg } from './assets';
 
 /**
  * Renders a FlowChart that visualizes data as a chart from neo4j Database.
@@ -324,6 +324,19 @@ const FlowChart = ({
 						.attr('width', 22)
 						.attr('height', 22)
 						.html(getTickIconSvg());
+				}
+			})
+			.attr('transform', `translate(${+13}, ${-nodeRadius - 34})`);
+
+		node.append('g')
+			.attr('class', 'status-icon')
+			.each(function (d) {
+				if (d.status === 'Not Applicable') {
+					d3.select(this)
+						.append('svg')
+						.attr('width', 22)
+						.attr('height', 22)
+						.html(getNAIconSvg());
 				}
 			})
 			.attr('transform', `translate(${+13}, ${-nodeRadius - 34})`);
