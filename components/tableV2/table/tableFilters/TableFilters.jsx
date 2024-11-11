@@ -138,7 +138,7 @@ const TableFilters = (props) => {
 								onClick={() => {
 									toggleDrawer({
 										data: {
-											index: 0,
+											index: -1,
 										},
 									});
 								}}
