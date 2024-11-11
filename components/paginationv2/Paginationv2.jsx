@@ -104,8 +104,8 @@ const PageLabelDisplay = ({
 			}}>
 			<Text>{customLabel ?? ''}</Text>
 		</Text>
-	) : totalData || totalPages ? (
-		(isDisplayLabelVisible || fallback) && (
+	) : (
+		(totalData || totalPages) && (isDisplayLabelVisible || fallback) && (
 			<Text
 				variant='b1'
 				stroke='medium'
@@ -122,18 +122,6 @@ const PageLabelDisplay = ({
 				of {totalData ?? 'total'} <Text>{dataLabel ?? 'records'}</Text>
 			</Text>
 		)
-	) : (
-		<Text
-			variant='b1'
-			stroke='medium'
-			className={styles['total-data']}
-			attrs={{
-				title: `${((currentPage === 0 ? 1 : currentPage) - 1) * step + 1}-${
-					(currentPage === 0 ? 1 : currentPage) * step
-				} of ${totalData}`,
-			}}>
-			<Text>No available {dataLabel ?? 'records'} at the moment</Text>
-		</Text>
 	);
 };
 
