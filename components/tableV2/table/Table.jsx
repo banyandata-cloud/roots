@@ -106,6 +106,9 @@ const Table = (props) => {
 		return [null, false, undefined].includes(hiddenColumns?.[header?.id]);
 	});
 
+	const hasSingleBody =
+		toggleTableDrawer?.data?.index === -1 || tableDrawerProps?.renderBody?.length === 1;
+
 	const Body =
 		toggleTableDrawer?.data?.index === -1
 			? tableDrawerProps?.standalone[0]
@@ -253,7 +256,7 @@ const Table = (props) => {
 						toggle={toggleDrawer}
 						animation
 						{...tableDrawerProps}
-						{...(toggleTableDrawer?.data?.index === -1 && {
+						{...(hasSingleBody && {
 							tabsConfig: null,
 						})}
 						activeTab={toggleTableDrawer?.data?.index}
@@ -262,7 +265,7 @@ const Table = (props) => {
 						setToggleTableDrawer={setToggleTableDrawer}
 						className={classes(
 							styles.drawer,
-							toggleTableDrawer?.data?.index === -1 && styles.standalone,
+							hasSingleBody && styles.standalone,
 							tableDrawerProps.className
 						)}>
 						{Body && isValidElement(<Body datum={toggleTableDrawer.data} />) && (

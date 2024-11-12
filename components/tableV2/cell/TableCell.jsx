@@ -41,6 +41,7 @@ const TableCell = forwardRef(function TableCell(props, ref) {
 		sticky,
 		sort,
 		onSort,
+		toggleDrawer,
 	} = props;
 
 	return (
@@ -57,9 +58,13 @@ const TableCell = forwardRef(function TableCell(props, ref) {
 				),
 				attrs: {
 					style,
+					onClick: () => {
+						toggleDrawer(0);
+					},
 					...attrs,
 				},
 				size,
+
 				flexible,
 				rounded,
 				component1,
