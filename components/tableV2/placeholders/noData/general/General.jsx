@@ -134,13 +134,23 @@ const Vector = () => {
 	);
 };
 
-const General = ({ placeholder = 'No Data to display', className }) => {
+const General = ({
+	placeholder = 'No Data to display',
+	className = '',
+	customPlaceholder: CustomPlaceholder,
+}) => {
 	return (
 		<div className={classes(styles.root, className)}>
-			<Vector />
-			<Text className={styles.placeholder} component='span' variant='b1' weight={500}>
-				{placeholder}
-			</Text>
+			{CustomPlaceholder ? (
+				<CustomPlaceholder />
+			) : (
+				<>
+					<Vector />
+					<Text className={styles.placeholder} component='span' variant='b1' weight={500}>
+						{placeholder}
+					</Text>
+				</>
+			)}
 		</div>
 	);
 };

@@ -4,7 +4,6 @@ import { ThemedContainer } from '../helpers';
 import { useEffect, useState } from 'react';
 import Toggle from '../Toggle/Toggle';
 import GeoMap from './GeoMap';
-import { MapTooltip } from '../mapsV2/tooltip/Tooltip';
 
 <Meta title='Components/GeoMap' parameters={{ options: { showToolbar: true } }} />
 
@@ -40,12 +39,10 @@ The default GeoMap component with tooltip in a point.
 				{
 					lat: 27,
 					lon: 103,
-					tooltip: <MapTooltip />,
 				},
 				{
 					lat: 22,
 					lon: 78,
-					tooltip: <MapTooltip />,
 				},
 			];
 			return (

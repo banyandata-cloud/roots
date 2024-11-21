@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import { forwardRef } from 'react';
 import { classes } from '../../../../utils';
+import { InfoIcon } from '../../../icons';
+import { Tooltip } from '../../../tooltip';
 import { Checkbox } from '../../checkbox';
 import { Radio } from '../../radio';
 import styles from './DropdownItemv2.module.css';
-import { InfoIcon } from '../../../icons';
-import { Tooltip } from '../../../tooltip';
 
 // eslint-disable-next-line prefer-arrow-callback
 const DropdownItem = forwardRef(function DropdownItem(props, ref) {
@@ -31,11 +31,7 @@ const DropdownItem = forwardRef(function DropdownItem(props, ref) {
 	switch (variant) {
 		case 'checkbox':
 			action = (
-				<Checkbox
-					className={styles.input}
-					checked={selected}
-					disabled={disabled || error}
-				/>
+				<Checkbox className={styles.input} checked={selected} disabled disabledAsChild />
 			);
 			break;
 		case 'radio':
