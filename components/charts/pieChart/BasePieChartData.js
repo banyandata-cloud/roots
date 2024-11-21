@@ -30,6 +30,68 @@ export const sampleData = {
 	},
 };
 
+export const sampleStackData = {
+	chartData: {
+		MySql: {
+			x1: 40,
+			x2: 0,
+		},
+		PgSql: {
+			x1: 0,
+			x2: 70,
+		},
+		MongoDb: {
+			x1: 70,
+			x2: 30,
+		},
+		MsSql: {
+			x1: 20,
+			x2: 80,
+		},
+		GCP: {
+			x1: 65,
+			x2: 35,
+		},
+		CD1: {
+			x1: 30,
+			x2: 70,
+		},
+		CD2: {
+			x1: 80,
+			x2: 20,
+		},
+		CD3: {
+			x1: 70,
+			x2: 30,
+		},
+		CD4: {
+			x1: 20,
+			x2: 80,
+		},
+	},
+	metaData: {
+		controlsApplied: {
+			MySql: {
+				x1: 18,
+			},
+			PgSql: {
+				x1: 43,
+			},
+			Oracle: {
+				x1: 46,
+			},
+		},
+		keyData: {
+			x1: 'compliant',
+			x2: 'nonCompliant',
+			x3: 'validate',
+		},
+		totalControls: {
+			x1: 61,
+		},
+	},
+};
+
 export const sampleV2Data = {
 	chartData: {
 		x1: 30,
