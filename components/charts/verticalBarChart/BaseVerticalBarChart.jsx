@@ -113,10 +113,6 @@ const BaseVerticalBarChart = (props) => {
 		fallback,
 	} = props;
 
-	console.log({
-		seriesData,
-	});
-
 	if (loading || fallback) {
 		return <Skeleton theme={theme} fallback={!loading && fallback} />;
 	}
