@@ -62,6 +62,7 @@ const Table = (props) => {
 			disabled: false,
 		},
 		filtersCount = 0,
+		emptyPlaceholder = null,
 	} = props;
 
 	const ref = useRef(null);
@@ -105,7 +106,13 @@ const Table = (props) => {
 		return [null, false, undefined].includes(hiddenColumns?.[header?.id]);
 	});
 
-	const Body = tableDrawerProps?.renderBody?.[toggleTableDrawer?.data?.index];
+	const hasSingleBody =
+		toggleTableDrawer?.data?.index === -1 || tableDrawerProps?.renderBody?.length === 1;
+
+	const Body =
+		toggleTableDrawer?.data?.index === -1
+			? tableDrawerProps?.standalone[0]
+			: tableDrawerProps?.renderBody?.[toggleTableDrawer?.data?.index];
 
 	// for pagination docking using intersection observer
 	useEffect(() => {
@@ -174,6 +181,12 @@ const Table = (props) => {
 		}
 	}, [headerData]);
 
+	let tabularData = tableData;
+
+	if (!Array.isArray(tableData)) {
+		tabularData = [];
+	}
+
 	return (
 		<ErrorBoundary
 			FallbackComponent={(args) => {
@@ -205,7 +218,7 @@ const Table = (props) => {
 					{...{
 						ref,
 						headerData: visibileColumns,
-						tableData,
+						tableData: tabularData,
 						uniqueKey,
 						activeData,
 						setActiveData,
@@ -217,6 +230,7 @@ const Table = (props) => {
 						defaultActiveIndex,
 						placeholder,
 						toggleDrawer,
+						emptyPlaceholder,
 					}}
 					loading={loading}
 				/>
@@ -234,6 +248,7 @@ const Table = (props) => {
 						customPageList={customPageList}
 						customPageCallback={customPageCallback}
 						hideDisabledPages={hideDisabledPages}
+						loading={loading}
 					/>
 				)}
 				{tableDrawerProps && (
@@ -241,13 +256,16 @@ const Table = (props) => {
 						toggle={toggleDrawer}
 						animation
 						{...tableDrawerProps}
+						{...(hasSingleBody && {
+							tabsConfig: null,
+						})}
 						activeTab={toggleTableDrawer?.data?.index}
 						open={toggleTableDrawer.open}
 						toggleTableDrawer={toggleTableDrawer}
 						setToggleTableDrawer={setToggleTableDrawer}
 						className={classes(
 							styles.drawer,
-							!tableDrawerProps.tabsConfig && styles.standalone,
+							hasSingleBody && styles.standalone,
 							tableDrawerProps.className
 						)}>
 						{Body && isValidElement(<Body datum={toggleTableDrawer.data} />) && (

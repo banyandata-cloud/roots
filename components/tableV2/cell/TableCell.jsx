@@ -60,6 +60,7 @@ const TableCell = forwardRef(function TableCell(props, ref) {
 					...attrs,
 				},
 				size,
+
 				flexible,
 				rounded,
 				component1,

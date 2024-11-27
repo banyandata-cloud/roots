@@ -46,4 +46,10 @@
 }
 .root .zoom .bottom[data-elem=base-cell] > [data-elem=component1] :hover {
   border-radius: 0.25rem;
+}
+
+.tooltip {
+  background: var(--light-color3);
+  border-color: var(--light-color3);
+  color: var(--text-color);
 }/*# sourceMappingURL=GeoMap.module.css.map */

@@ -1,12 +1,11 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable no-lonely-if */
-import { isNumber } from 'highcharts';
 import { useEffect, useState } from 'react';
 import { classes, doubleDigitted } from '../../../utils';
 import { Text } from '../../text';
+import { calculateMeridian } from '../utils';
 import styles from './ClockView.module.css';
 import { clockConfig } from './config';
-import { calculateMeridian } from '../utils';
 
 const clockHours = new Array(12).fill().map((_, index) => {
 	return index;
@@ -173,7 +172,7 @@ const ClockView = (props = {}) => {
 		};
 	};
 
-	const showConnector = !disabled && isNumber(selectedValue) && selectedValue >= 0;
+	const showConnector = !disabled && !Number.isNaN(selectedValue) && selectedValue >= 0;
 
 	if (isMin) {
 		return (

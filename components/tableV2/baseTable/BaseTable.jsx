@@ -25,6 +25,7 @@ const BaseTable = forwardRef(function BaseTable(props, ref) {
 		placeholder,
 		defaultActiveIndex,
 		toggleDrawer = () => {},
+		emptyPlaceholder,
 	} = props;
 
 	if (loading) {
@@ -57,7 +58,7 @@ const BaseTable = forwardRef(function BaseTable(props, ref) {
 				/>
 			)}
 			{tableData?.length === 0 ? (
-				<NoDataPlaceHolder className={styles.placeholder} placeholder={placeholder} />
+				<NoDataPlaceHolder customPlaceholder={emptyPlaceholder} placeholder={placeholder} />
 			) : (
 				<TableBody
 					{...{

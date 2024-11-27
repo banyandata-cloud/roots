@@ -24,6 +24,7 @@ const Checkbox = (props) => {
 		size = 'sm',
 		className = '',
 		disabled,
+		disabledAsChild,
 		intermediate,
 	} = props;
 
@@ -51,7 +52,7 @@ const Checkbox = (props) => {
 			className={classes(
 				styles.root,
 				styles[`position-${position}`],
-				disabled ? styles.disabled : '',
+				disabled && !disabledAsChild ? styles.disabled : '',
 				isChecked ? styles.selected : '',
 				className
 			)}>
