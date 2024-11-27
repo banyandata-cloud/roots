@@ -307,6 +307,7 @@ The Line Chart with transparent areas and unstacked Lines.
 		args={{
 			title: 'Title',
 			xAxisPosition: 'top',
+			customLegend: true,
 			gridOptions: {
 				left: 50,
 				right: 50,
@@ -314,12 +315,6 @@ The Line Chart with transparent areas and unstacked Lines.
 				top: 50,
 			},
 			gridContainLabel: true,
-			legend: {
-				show: true,
-				bottom: 50,
-				itemGap: 50,
-				icon: 'circle',
-			},
 			xAxisLabelShow: true,
 			xSplitLineShow: true,
 			xAxisLineShow: false,
@@ -352,6 +347,7 @@ The Line Chart with transparent areas and unstacked Lines.
 			yAxisTick: {
 				alignWithLabel: true,
 				customValues: [0, 100, 200, 300, 400],
+				display: true,  // Ensure this is not set to false
 			},
 			cursor: 'default',
 			seriesOption: [

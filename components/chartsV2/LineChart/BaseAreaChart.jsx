@@ -1,3 +1,6 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable react/forbid-prop-types */
 import {
 	CategoryScale,
 	Chart as ChartJS,
@@ -10,9 +13,10 @@ import {
 	Tooltip,
 } from 'chart.js';
 import PropTypes from 'prop-types';
+import React, { useRef, useState } from 'react';
 import { Line } from 'react-chartjs-2';
 import { COLORS } from '../../../styles';
-import { classes } from '../../../utils';
+// import { classes } from '../../../utils';
 import styles from './BaseAreaChart.module.css';
 import { Skeleton } from './Skeleton';
 
@@ -41,12 +45,20 @@ const BaseAreaChart = (props) => {
 		axisLabelColor,
 		stacked,
 		smooth,
-		style,
-		className,
+		// className,
 		theme,
 		fallback,
 		isLineChart,
 		xAxisPosition,
+		// gridOptions,
+		// seriesOption,
+		xSplitLineShow,
+		xAxisLineShow,
+		xAxisTickShow,
+		axisSplitColor,
+		cursor,
+		yAxis,
+		customLegend,
 	} = props;
 
 	if (loading || fallback) {
@@ -68,11 +80,84 @@ const BaseAreaChart = (props) => {
 		'rgba(153, 102, 255, 1)',
 		'rgba(255, 159, 64, 1)',
 	];
+  	const legendRef = useRef(null);
+
+		const [hiddenDatasets, setHiddenDatasets] = useState([]);
+
+		const toggleDatasetVisibility = (index, chart) => {
+			setHiddenDatasets((prevHidden) => {
+				const newHidden = prevHidden.includes(index)
+					? prevHidden.filter((i) => { return i !== index; })
+					: [...prevHidden, index];
+
+				// Update the chart visibility
+				chart.data.datasets[index].hidden = newHidden.includes(index);
+				chart.update();
+
+				return newHidden;
+			});
+		};
+
+		const customLegendPlugin = {
+			id: 'customLegend',
+			afterUpdate(chart) {
+				// Clear existing legend items
+				const ul = legendRef.current;
+				while (ul?.firstChild) {
+					ul.firstChild.remove();
+				}
+
+				// Loop through the datasets and create legend items
+				chart.data.datasets.forEach((dataset, index) => {
+					const li = document.createElement('li');
+					li.style.display = 'flex';
+					li.style.alignItems = 'center';
+					li.style.cursor = 'pointer';
+					li.style.opacity = hiddenDatasets.includes(index) ? '0.5' : '1';
+					li.style.margin = '0 10px';
+
+					const textColor = hiddenDatasets.includes(index) ? 'grey' : 'inherit';
+					const circleColor = hiddenDatasets.includes(index)
+						? 'grey'
+						: dataset.backgroundColor;
+
+					li.onclick = () => {
+						// Toggle visibility of the dataset
+						toggleDatasetVisibility(index, chart);
+
+						// Apply grey-out effect on click
+						if (li.style.color === 'grey') {
+							li.style.color = 'inherit';
+						} else {
+							li.style.color = 'grey';
+						}
+
+						const circle = li.querySelector('circle');
+						if (circle) {
+							if (circle.getAttribute('stroke') === 'grey') {
+								circle.setAttribute('stroke', dataset.backgroundColor);
+							} else {
+								circle.setAttribute('stroke', 'grey');
+							}
+						}
+					};
+
+					li.innerHTML = `
+				<svg width="15" height="15" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<circle cx="15" cy="15" r="12" stroke="${circleColor}" stroke-width="6"/>
+				</svg>
+				<span style="margin-left: 10px; color: ${textColor};">${dataset.label}</span>
+				`;
+
+					ul?.appendChild(li);
+				});
+			},
+		};
 
 	const chartData = {
 		labels: seriesData?.metaData?.xAxisData ?? [],
 		datasets: Object.keys(seriesData?.chartData ?? {}).map((key, index) => {
- return {
+ 		return {
 			label: key,
 			data: seriesData?.chartData[key] ?? [],
 			fill: !isLineChart,
@@ -82,10 +167,12 @@ const BaseAreaChart = (props) => {
 			borderWidth: 2,
 			pointRadius: 4,
 			pointHoverRadius: 6,
-			pointBackgroundColor: 'white',
-			pointBorderColor: borderColors[index % borderColors.length],
-			pointHoverBackgroundColor: borderColors[index % borderColors.length],
-			pointHoverBorderColor: 'white',
+			pointBackgroundColor: borderColors[index % borderColors.length],
+			pointStyle: 'rectRot',
+			datalabels: {
+				display: false, // Disable data labels on points
+			},
+			// ...seriesOption[index], // Add any additional series options here
 		};
 }),
 	};
@@ -99,21 +186,27 @@ const BaseAreaChart = (props) => {
 		},
 		plugins: {
 			legend: {
-				display: legend?.display ?? true,
+				display: false,
 				position: legend?.position ?? 'bottom',
 				labels: {
 					color: axisLabelColor || COLORS.grey,
-					boxWidth: 9, // Width for color box
-					boxHeight: 9, // Height for color box
-					borderRadius: 6, // Circular shape for legend color
+					boxWidth: 9, // Adjust width for a circular appearance
+					boxHeight: 9, // Adjust height for a circular appearance
+					borderRadius: 50, // Ensure the shape is circular
 					padding: 10, // Padding around legend items
-					usePointStyle: true,
+					usePointStyle: true, // Use circular point style for legends
 				},
 			},
 			tooltip: {
-				enabled: tooltip?.enabled ?? true,
-				mode: tooltip?.mode ?? 'nearest',
-				intersect: tooltip?.intersect ?? false,
+				enabled: tooltip?.show ?? true,
+				trigger: tooltip?.trigger ?? 'item',
+				axisPointer: tooltip?.axisPointer ?? {
+					type: 'cross',
+				},
+				triggerOn: tooltip?.triggerOn ?? 'mousemove',
+				label: {
+					backgroundColor: '#6a7985',
+				},
 			},
 			title: {
 				display: !!title,
@@ -138,18 +231,25 @@ const BaseAreaChart = (props) => {
 					},
 				},
 				grid: {
-					drawOnChartArea: false,
-					display: false,
+					display: xSplitLineShow,
+					color: axisSplitColor,
+					lineWidth: 1,
+					drawOnChartArea: true,
+					drawBorder: false, // Disable drawing grid lines on the border to allow full-length lines
+					tickLength: 30, // Adjust this value to control the length of the grid lines
 				},
 				ticks: {
+					display: xAxisTickShow,
 					color: axisLabelColor || COLORS.grey,
 				},
+				borderColor: xAxisLineShow ? 'rgba(0, 0, 0, 0)' : 'rgba(0, 0, 0, 0)',
+				borderWidth: xAxisLineShow ? 1 : 0,
 			},
 			y: {
-				display: yAxisLabelShow,
-				stacked,
+				display: yAxisLabelShow, // Whether to display y-axis labels
+				stacked, // Stack bars if applicable
 				title: {
-					display: !!yAxisLabel,
+					display: !!yAxisLabel, // Display y-axis title if set
 					text: yAxisLabel,
 					color: axisLabelColor || COLORS.grey,
 					font: {
@@ -157,32 +257,55 @@ const BaseAreaChart = (props) => {
 					},
 				},
 				grid: {
-					display: false,
+					display: true,
+					color: axisSplitColor,
 				},
 				ticks: {
 					color: axisLabelColor || COLORS.grey,
+					stepSize: 100,
+					callback:
+						yAxis?.callback ??
+						((value) => {
+							return value;
+						}),
 				},
+				...yAxis,
 			},
 		},
+
 		elements: {
+			display: false,
 			line: {
 				tension: smooth ? 0.4 : 0,
 			},
 			point: {
-				radius: 5, // Size of the diamond points
-				hoverRadius: 7,
-				pointStyle: 'rectRot', // Diamond shape for points
+				display: false,
+				radius: 0,
 			},
 		},
+		cursor: cursor ?? 'default',
 	};
 
 	return (
 		<div
-className={classes(styles.root, className)}
-style={{
- ...style, height: '300px',
-}}>
-			<Line data={chartData} options={chartOptions} />
+			className={styles.main}
+			style={{
+				position: 'relative',
+				height: '300px',
+			}}>
+			<Line data={chartData} options={chartOptions} plugins={[customLegendPlugin]} />
+			{customLegend && (
+				<ul
+					ref={legendRef}
+					style={{
+						listStyle: 'none',
+						padding: 0,
+						margin: '10px auto', // Center horizontally
+						display: 'flex',
+						justifyContent: 'center', // Center items
+					}}
+				/>
+			)}
 		</div>
 	);
 };
@@ -205,37 +328,36 @@ BaseAreaChart.propTypes = {
 	axisLabelColor: PropTypes.string,
 	smooth: PropTypes.bool,
 	legend: PropTypes.shape({
-		display: PropTypes.bool,
+		show: PropTypes.bool,
 		position: PropTypes.string,
+		itemGap: PropTypes.number,
+		icon: PropTypes.string,
 	}),
 	tooltip: PropTypes.shape({
-		enabled: PropTypes.bool,
-		mode: PropTypes.string,
-		intersect: PropTypes.bool,
+		show: PropTypes.bool,
+		trigger: PropTypes.string,
+		axisPointer: PropTypes.object,
+		triggerOn: PropTypes.string,
 	}),
 	theme: PropTypes.oneOf(['dark', 'light']),
 	// style: PropTypes.object,
-	className: PropTypes.string,
+	// className: PropTypes.string,
 	isLineChart: PropTypes.bool,
 	xAxisPosition: PropTypes.string,
-};
-
-BaseAreaChart.defaultProps = {
-	loading: false,
-	fallback: false,
-	seriesData: {},
-	stacked: false,
-	xAxisLabelShow: true,
-	yAxisLabelShow: true,
-	axisLabelColor: '',
-	smooth: false,
-	legend: {},
-	tooltip: {},
-	theme: 'light',
-	// style: {},
-	className: '',
-	isLineChart: false,
-	xAxisPosition: 'bottom',
+	gridOptions: PropTypes.shape({
+		left: PropTypes.number,
+		right: PropTypes.number,
+		top: PropTypes.number,
+		bottom: PropTypes.number,
+	}),
+	// seriesOption: PropTypes.arrayOf(PropTypes.object),
+	xSplitLineShow: PropTypes.bool,
+	xAxisLineShow: PropTypes.bool,
+	xAxisTickShow: PropTypes.bool,
+	axisSplitColor: PropTypes.string,
+	cursor: PropTypes.string,
+	yAxis: PropTypes.object,
+	// yAxisTick: PropTypes.object,
 };
 
 export default BaseAreaChart;
