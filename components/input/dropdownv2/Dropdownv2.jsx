@@ -61,6 +61,7 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 		required,
 		multiSelectActionTitle,
 		valueAsCount,
+		caretAsUpDown,
 	} = props;
 	const [open, setOpen] = useState(false);
 	const [activeIndex, setActiveIndex] = useState(null);
@@ -473,10 +474,23 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 									</span>
 								</Tooltip>
 							)}
-							<CaretIcon
-								data-elem='icon'
-								className={classes(styles['caret-icon'], open ? styles.open : '')}
-							/>
+							{caretAsUpDown ? (
+								<CaretIcon
+									className={classes(
+										styles['caret-icon-upDown'],
+										open ? styles.open : ''
+									)}
+									upDown
+								/>
+							) : (
+								<CaretIcon
+									data-elem='icon'
+									className={classes(
+										styles['caret-icon'],
+										open ? styles.open : ''
+									)}
+								/>
+							)}
 						</div>
 					</div>
 				</div>
