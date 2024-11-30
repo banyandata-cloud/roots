@@ -106,12 +106,17 @@ const Table = (props) => {
 		return [null, false, undefined].includes(hiddenColumns?.[header?.id]);
 	});
 
+	const drawerProps =
+		typeof tableDrawerProps === 'function'
+			? tableDrawerProps(toggleTableDrawer?.data)
+			: tableDrawerProps;
+
 	const hasSingleBody =
-		toggleTableDrawer?.data?.standalone || tableDrawerProps?.renderBody?.length === 1;
+		toggleTableDrawer?.data?.standalone || drawerProps?.renderBody?.length === 1;
 
 	const Body = toggleTableDrawer?.data?.standalone
-		? tableDrawerProps?.standalone[toggleTableDrawer.data.index]
-		: tableDrawerProps?.renderBody?.[toggleTableDrawer?.data?.index];
+		? drawerProps?.standalone[toggleTableDrawer.data.index]
+		: drawerProps?.renderBody?.[toggleTableDrawer?.data?.index];
 
 	// for pagination docking using intersection observer
 	useEffect(() => {
@@ -250,11 +255,11 @@ const Table = (props) => {
 						loading={loading}
 					/>
 				)}
-				{tableDrawerProps && (
+				{drawerProps && (
 					<BaseSidePanel
 						toggle={toggleDrawer}
 						animation
-						{...tableDrawerProps}
+						{...drawerProps}
 						{...(hasSingleBody && {
 							tabsConfig: null,
 						})}
@@ -265,7 +270,7 @@ const Table = (props) => {
 						className={classes(
 							styles.drawer,
 							hasSingleBody && styles.standalone,
-							tableDrawerProps.className
+							drawerProps.className
 						)}>
 						{Body && isValidElement(<Body datum={toggleTableDrawer.data} />) && (
 							<Body

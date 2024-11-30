@@ -73,6 +73,8 @@ const BaseSidePanel = (props) => {
 		}
 	}, [selectedTab]);
 
+	const filteredTabs = Array.isArray(tabs) ? tabs.filter(Boolean) : [];
+
 	return isModal ? (
 		<BaseModal
 			open={open}
@@ -108,9 +110,9 @@ const BaseSidePanel = (props) => {
 				animation ? styles.animation : '',
 				className
 			)}>
-			{tabs.length > 0 ? (
+			{filteredTabs.length > 0 ? (
 				<Tabs
-					tabs={tabs}
+					tabs={filteredTabs}
 					className={classes(styles.tabs, tabsClassName)}
 					direction='vertical'
 					selectedTab={selectedTab}
