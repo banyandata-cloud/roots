@@ -281,6 +281,7 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 				return child?.props?.value?.toString?.();
 			});
 		}
+
 		Object.defineProperty(clonedEvent, 'target', {
 			writable: true,
 			value: {
@@ -289,12 +290,7 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 			},
 		});
 
-		// eslint-disable-next-line no-lonely-if
-		if (selected === true) {
-			setUncontrolledValue(itemValue);
-		} else {
-			setUncontrolledValue(itemValue);
-		}
+		setUncontrolledValue(itemValue);
 
 		setActiveIndex(0);
 	};
@@ -573,6 +569,8 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 											size='auto'
 											disabled={selectedOptions?.length === 0}
 											onClick={(event) => {
+												event.stopPropagation();
+												multiOptionsRef?.current?.focus();
 												onSelectAll(event, false);
 											}}
 										/>

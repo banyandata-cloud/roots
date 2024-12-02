@@ -52,7 +52,6 @@ const BaseTable = forwardRef(function BaseTable(props, ref) {
 						customCells,
 						expandable,
 						onSort,
-						rowHeight,
 						onRowClick,
 					}}
 				/>
