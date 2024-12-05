@@ -1197,8 +1197,20 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 						disabledFilterOptions={{
 							search: false,
 						}}
-						rightActions={() => {
-							return <Button title='Action' />;
+						rightActions={({ toggleDrawer }) => {
+							return (
+								<Button
+									onClick={() => {
+										toggleDrawer({
+											data: {
+												index: 0,
+												standalone: true,
+											},
+										});
+									}}
+									title='Action'
+								/>
+							);
 						}}
 						// filtersCount={3}
 						searchProps={{

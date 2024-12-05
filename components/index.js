@@ -1,5 +1,6 @@
 export * from './accordion';
 export * from './alert';
+export * from './alertV2';
 export * from './breadcrumbs';
 export * from './breadcrumbsv2';
 export * from './buttons';

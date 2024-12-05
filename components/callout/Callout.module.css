@@ -33,12 +33,12 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  gap: 0.3125rem;
   margin-left: 1.25rem;
-  padding: 0.188rem 0.938rem 0rem 0rem;
 }
 .root .left .content .title {
   color: var(--text-color);
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 600;
 }
 .root .left .content .description {
@@ -49,28 +49,28 @@
   font-weight: 400;
 }
 .root.info {
-  box-shadow: 0rem 0rem 0.125rem 0rem var(--secondary-color2);
+  box-shadow: 0rem 0rem 0.125rem 0rem rgba(0, 0, 0, 0.25);
 }
 .root.info .icon-container {
-  box-shadow: 0rem 0rem 0.625rem 0rem var(--secondary-color2);
+  box-shadow: 0rem 0rem 0.4rem 0rem var(--secondary-color2);
 }
 .root.success {
-  box-shadow: 0rem 0rem 0.125rem 0rem var(--primary-color2);
+  box-shadow: 0rem 0rem 0.125rem 0rem rgba(0, 0, 0, 0.25);
 }
 .root.success .icon-container {
-  box-shadow: 0rem 0rem 0.625rem 0rem var(--primary-color2);
+  box-shadow: 0rem 0rem 0.4rem 0rem var(--primary-color2);
 }
 .root.danger, .root.error {
-  box-shadow: 0rem 0rem 0.125rem 0rem var(--primary-color1);
+  box-shadow: 0rem 0rem 0.125rem 0rem rgba(0, 0, 0, 0.25);
 }
 .root.danger .icon-container, .root.error .icon-container {
-  box-shadow: 0rem 0rem 0.625rem 0rem var(--primary-color1);
+  box-shadow: 0rem 0rem 0.4rem 0rem var(--primary-color1);
 }
 .root.warning {
-  box-shadow: 0rem 0rem 0.125rem 0rem var(--primary-color3);
+  box-shadow: 0rem 0rem 0.125rem 0rem rgba(0, 0, 0, 0.25);
 }
 .root.warning .icon-container {
-  box-shadow: 0rem 0rem 0.625rem 0rem var(--primary-color3);
+  box-shadow: 0rem 0rem 0.4rem 0rem var(--primary-color3);
 }
 .root.shadow {
   box-shadow: 0rem 0.0625rem 0.25rem 0rem rgba(0, 0, 0, 0.25), 0rem 0.1875rem 0.25rem 0rem rgba(0, 0, 0, 0.25);

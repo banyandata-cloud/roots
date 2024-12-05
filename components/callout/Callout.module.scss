@@ -26,11 +26,11 @@
 		}
 		.content {
 			@include flex(column, flex-start, flex-start);
+			gap: 0.3125rem;
 			margin-left: 1.25rem;
-			padding: 0.188rem 0.938rem 0rem 0rem;
 			.title {
 				color: $text-color;
-				font-size: 0.875rem;
+				font-size: 1rem;
 				font-weight: 600;
 			}
 			.description {
@@ -44,28 +44,28 @@
 	}
 
 	&.info {
-		box-shadow: 0rem 0rem 0.125rem 0rem $secondary-color2;
+		box-shadow: 0rem 0rem 0.125rem 0rem rgba(0, 0, 0, 0.25);
 		.icon-container {
-			box-shadow: 0rem 0rem 0.625rem 0rem $secondary-color2;
+			box-shadow: 0rem 0rem 0.4rem 0rem $secondary-color2;
 		}
 	}
 	&.success {
-		box-shadow: 0rem 0rem 0.125rem 0rem $primary-color2;
+		box-shadow: 0rem 0rem 0.125rem 0rem rgba(0, 0, 0, 0.25);
 		.icon-container {
-			box-shadow: 0rem 0rem 0.625rem 0rem $primary-color2;
+			box-shadow: 0rem 0rem 0.4rem 0rem $primary-color2;
 		}
 	}
 	&.danger,
 	&.error {
-		box-shadow: 0rem 0rem 0.125rem 0rem $primary-color1;
+		box-shadow: 0rem 0rem 0.125rem 0rem rgba(0, 0, 0, 0.25);
 		.icon-container {
-			box-shadow: 0rem 0rem 0.625rem 0rem $primary-color1;
+			box-shadow: 0rem 0rem 0.4rem 0rem $primary-color1;
 		}
 	}
 	&.warning {
-		box-shadow: 0rem 0rem 0.125rem 0rem $primary-color3;
+		box-shadow: 0rem 0rem 0.125rem 0rem rgba(0, 0, 0, 0.25);
 		.icon-container {
-			box-shadow: 0rem 0rem 0.625rem 0rem $primary-color3;
+			box-shadow: 0rem 0rem 0.4rem 0rem $primary-color3;
 		}
 	}
 
