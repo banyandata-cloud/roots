@@ -4,7 +4,7 @@ import React, { useRef, useState } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark, oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { classes } from '../../utils';
-import { Alert } from '../alert';
+import { AlertV2 as Alert } from '../alertV2';
 import { CopyIcon } from '../icons';
 import styles from './CodeSnippet.module.css';
 
@@ -27,7 +27,8 @@ const CodeSnippet = (props) => {
 	const onCopy = () => {
 		navigator.clipboard.writeText(code);
 		alertRef.current?.alert({
-			title: `The ${language?.toUpperCase()} snippet has been copied to the clipboard`,
+			title: `${language?.toUpperCase()}`,
+			description: 'The snippet has been copied to the clipboard.',
 			type: 'info',
 			icon: (args) => {
 				return <CopyIcon {...args} />;
