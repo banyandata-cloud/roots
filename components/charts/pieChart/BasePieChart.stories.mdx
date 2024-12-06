@@ -213,6 +213,11 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					console.log('OUT', e);
 				},
 			},
+			seriesOptionUpdate: {
+				labelLayout: {
+					x: '45%',
+				},
+			},
 			seriesOption: [
 				{
 					stackIndex: 1,
@@ -224,7 +229,7 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 						fontSize: '15',
 						color: 'black',
 						fontWeight: 'bold',
-						position: 'center',
+						position: 'outside',
 						formatter() {
 							return `40 \nControls`;
 						},
@@ -445,6 +450,7 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 			},
 			cursor: 'default',
 			stackCount: 2,
+			hideValue: 0,
 			radius: ['10%', '70%'],
 			tooltip: {
 				trigger: 'item',
@@ -469,7 +475,8 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					stack: 1,
 					color: COLORS.error,
 					label: {
-						show: false,
+						show: true,
+						color: COLORS.error,
 					},
 					itemStyle: {
 						borderWidth: 1,
