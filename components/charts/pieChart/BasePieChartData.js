@@ -34,19 +34,19 @@ export const sampleStackData = {
 	chartData: {
 		MySql: {
 			x1: 40,
-			x2: 0,
+			x2: 60,
 		},
 		PgSql: {
 			x1: 0,
-			x2: 70,
+			x2: 100,
 		},
 		MongoDb: {
-			x1: 70,
-			x2: 30,
+			x1: 100,
+			x2: 0,
 		},
 		MsSql: {
-			x1: 20,
-			x2: 80,
+			x1: 0,
+			x2: 100,
 		},
 		GCP: {
 			x1: 65,
@@ -57,8 +57,8 @@ export const sampleStackData = {
 			x2: 70,
 		},
 		CD2: {
-			x1: 80,
-			x2: 20,
+			x1: 100,
+			x2: 0,
 		},
 		CD3: {
 			x1: 70,

@@ -477,12 +477,22 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					label: {
 						show: true,
 						color: COLORS.error,
+						padding: 4,
+						backgroundColor: 'white',
+						shadowBlur: 2,
+						shadowColor: 'grey',
+						formatter: (param) => {
+							return `${param.value}%`;
+						},
 					},
 					itemStyle: {
 						borderWidth: 1,
 						borderColor: 'white',
 					},
 					showBackground: false,
+					emphasis: {
+						disabled: true,
+					},
 				},
 			],
 		}}>
