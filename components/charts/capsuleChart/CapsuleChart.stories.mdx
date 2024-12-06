@@ -29,29 +29,6 @@ export const Template = (args) => (
 	</ThemedContainer>
 );
 
-export const StackTemplate = (args) => {
-	return (
-		<ThemedContainer
-			{...args}
-			style={{
-				height: '100%',
-			}}>
-			<CapsuleChart
-				{...args}
-				seriesData={transformToStack(sampleStackData)}
-				tooltip={{
-					trigger: 'item',
-					formatter: (param) => {
-						return `${param.marker} ${param.name} ${
-							sampleData.metaData.controlsApplied[param.name].x1
-						}`;
-					},
-				}}
-			/>
-		</ThemedContainer>
-	);
-};
-
 # Capsule Chart
 
 A visual Representation of Data that compares it with others in similar Category through Bars, where Bar Height represents the count of represented value.
@@ -125,6 +102,23 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					},
 					itemStyle: {
 						borderRadius: [100, 100, 0, 0],
+					},
+				},
+				{
+					stackIndex: 2,
+					stack: 1,
+					color: COLORS.warning,
+					showBackground: false,
+					label: {
+						show: false,
+						color: 'black',
+						position: 'bottom',
+						formatter: (param) => {
+							return param.name;
+						},
+					},
+					itemStyle: {
+						borderRadius: [0, 0, 0, 0],
 					},
 				},
 				{
