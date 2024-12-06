@@ -90,7 +90,6 @@ const Callout = forwardRef((props) => {
 
 Callout.propTypes = {
 	showIcon: PropTypes.bool,
-	border: PropTypes.oneOf(['default', 'thick-left', 'none']),
 	shadow: PropTypes.bool,
 	className: PropTypes.string,
 };

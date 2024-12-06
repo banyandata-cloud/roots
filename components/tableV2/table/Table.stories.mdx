@@ -1197,8 +1197,20 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 						disabledFilterOptions={{
 							search: false,
 						}}
-						rightActions={() => {
-							return <Button title='Action' />;
+						rightActions={({ toggleDrawer }) => {
+							return (
+								<Button
+									onClick={() => {
+										toggleDrawer({
+											data: {
+												index: 0,
+												standalone: true,
+											},
+										});
+									}}
+									title='Action'
+								/>
+							);
 						}}
 						// filtersCount={3}
 						searchProps={{
@@ -1211,120 +1223,127 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 							placeholder: 'Search Employees',
 							// disabled: true,
 						}}
-						tableDrawerProps={{
-							tabsConfig: {
-								tabs: [
-									{
-										id: 1,
-										leftIcon: {
-											Active: (props) => {
-												return <ServerIcon {...props} />;
-											},
-											InActive: (props) => {
-												return <HomeIcon {...props} />;
-											},
-										},
-									},
-									{
-										id: 2,
-										leftIcon: {
-											Active: (props) => {
-												return <ServerIcon {...props} />;
-											},
-											InActive: (props) => {
-												return <HomeIcon {...props} />;
+						tableDrawerProps={() => {
+							return {
+								tabsConfig: {
+									tabs: [
+										{
+											id: 1,
+											leftIcon: {
+												Active: (props) => {
+													return <ServerIcon {...props} />;
+												},
+												InActive: (props) => {
+													return <HomeIcon {...props} />;
+												},
 											},
 										},
+										{
+											id: 2,
+											leftIcon: {
+												Active: (props) => {
+													return <ServerIcon {...props} />;
+												},
+												InActive: (props) => {
+													return <HomeIcon {...props} />;
+												},
+											},
+										},
+									],
+								},
+								standalone: [
+									() => {
+										return (
+											<div data-elem='drawer-child'>
+												Hello World
+												<div data-elem='drawer-child-header'>
+													KKKK
+													<div>djkndk</div>
+												</div>
+												<div data-elem='drawer-child-body'>
+													Nondandlk If the elements actually are siblings
+													in the DOM, and the display of the first element
+													was
+												</div>
+												<div data-elem='drawer-child-body'>Noss</div>
+											</div>
+										);
 									},
 								],
-							},
-							standalone: [
-								() => {
-									return (
-										<div data-elem='drawer-child'>
-											Hello World
-											<div data-elem='drawer-child-header'>
-												KKKK
-												<div>djkndk</div>
+								renderBody: [
+									() => {
+										return (
+											<div data-elem='drawer-child'>
+												Hello World
+												<div data-elem='drawer-child-header'>
+													YES dsdsd dsdsdsdsd
+													<div>djkndk</div>
+												</div>
+												<div data-elem='drawer-child-body'>
+													Nondandlk If the elements actually are siblings
+													in the DOM, and the display of the first element
+													was toggled by something like a class
+													dynamically set/removed via JavaScript, then the
+													rest of this could be handled in CSS alone,
+													using the general sibling combinato If the
+													elements actually are siblings in the DOM, and
+													the display of the first element was toggled by
+													something like a class dynamically set/removed
+													via JavaScript, then the rest of this could be
+													handled in CSS alone, using the general sibling
+													combinato If the elements actually are siblings
+													in the DOM, and the display of the first element
+													was element was toggled by something like a
+													class dynamically set/removed via JavaScript,
+													then the rest of this could be handled in CSS
+													alone, using the general sibling combinato If
+													the elements actually are siblings in the DOM,
+													and the display of the first element was toggled
+													by something like a class dynamically
+													set/removed via JavaScript, then the rest of
+													this could be handled in CSS alone, using the
+													general sibling combinatoggled by something like
+													a class dynamically set/removed via JavaScript,
+													then the rest of this could be handled in CSS
+													alone, using the general sibling combinato If
+													the elements actually are siblings in the DOM,
+													and the display of the first element was toggled
+													by something like a class dynamically
+													set/removed via JavaScript, then the rest of
+													this could be handled in CSS alone, using the
+													general sibling combinato If the elements
+													actually are siblings in the DOM, and the
+													display of the first element was toggled by
+													something like a class dynamically set/removed
+													via JavaScript, then the rest of this could be
+													handled in CSS alone, using the general sibling
+													combinato If the elements actually are siblings
+													in the DOM, and the display of the first element
+													was toggled by something like a class
+													dynamically set/removed via JavaScript, then the
+													rest of this could be handled in CSS alone,
+													using the general sibling combinato If the
+													elements actually are siblings in the DOM, and
+													the display of the first element was toggled by
+													something like a class dynamically set/removed
+													via JavaScript, then the rest of this could be
+													handled in CSS alone, using the general sibling
+													combinato If the elements actually are siblings
+													in the DOM, and the display of the first element
+													was toggled by something like a class
+													dynamically set/removed via JavaScript, then the
+													rest of this could be handled in CSS alone,
+													using the general sibling combinatolkndadklndsa
+												</div>
+												<div data-elem='drawer-child-body'>Noss</div>
 											</div>
-											<div data-elem='drawer-child-body'>
-												Nondandlk If the elements actually are siblings in
-												the DOM, and the display of the first element was
-											</div>
-											<div data-elem='drawer-child-body'>Noss</div>
-										</div>
-									);
-								},
-							],
-							renderBody: [
-								() => {
-									return (
-										<div data-elem='drawer-child'>
-											Hello World
-											<div data-elem='drawer-child-header'>
-												YES dsdsd dsdsdsdsd
-												<div>djkndk</div>
-											</div>
-											<div data-elem='drawer-child-body'>
-												Nondandlk If the elements actually are siblings in
-												the DOM, and the display of the first element was
-												toggled by something like a class dynamically
-												set/removed via JavaScript, then the rest of this
-												could be handled in CSS alone, using the general
-												sibling combinato If the elements actually are
-												siblings in the DOM, and the display of the first
-												element was toggled by something like a class
-												dynamically set/removed via JavaScript, then the
-												rest of this could be handled in CSS alone, using
-												the general sibling combinato If the elements
-												actually are siblings in the DOM, and the display of
-												the first element was element was toggled by
-												something like a class dynamically set/removed via
-												JavaScript, then the rest of this could be handled
-												in CSS alone, using the general sibling combinato If
-												the elements actually are siblings in the DOM, and
-												the display of the first element was toggled by
-												something like a class dynamically set/removed via
-												JavaScript, then the rest of this could be handled
-												in CSS alone, using the general sibling
-												combinatoggled by something like a class dynamically
-												set/removed via JavaScript, then the rest of this
-												could be handled in CSS alone, using the general
-												sibling combinato If the elements actually are
-												siblings in the DOM, and the display of the first
-												element was toggled by something like a class
-												dynamically set/removed via JavaScript, then the
-												rest of this could be handled in CSS alone, using
-												the general sibling combinato If the elements
-												actually are siblings in the DOM, and the display of
-												the first element was toggled by something like a
-												class dynamically set/removed via JavaScript, then
-												the rest of this could be handled in CSS alone,
-												using the general sibling combinato If the elements
-												actually are siblings in the DOM, and the display of
-												the first element was toggled by something like a
-												class dynamically set/removed via JavaScript, then
-												the rest of this could be handled in CSS alone,
-												using the general sibling combinato If the elements
-												actually are siblings in the DOM, and the display of
-												the first element was toggled by something like a
-												class dynamically set/removed via JavaScript, then
-												the rest of this could be handled in CSS alone,
-												using the general sibling combinato If the elements
-												actually are siblings in the DOM, and the display of
-												the first element was toggled by something like a
-												class dynamically set/removed via JavaScript, then
-												the rest of this could be handled in CSS alone,
-												using the general sibling combinatolkndadklndsa
-											</div>
-											<div data-elem='drawer-child-body'>Noss</div>
-										</div>
-									);
-								},
-								() => {
-									return <div>Hello Everyone</div>;
-								},
-							],
+										);
+									},
+									() => {
+										return <div>Hello Everyone</div>;
+									},
+								],
+							};
 						}}
 						isFloating={isFloating}
 						onRowClick={onRowClick}

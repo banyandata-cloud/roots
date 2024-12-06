@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { classes } from '../../../../utils';
 import { Button } from '../../../buttons';
 import { BaseCell } from '../../../cell';
-import { AlertIcon, CaretIcon, ColumnFilter, CrossIcon, FilterIcon } from '../../../icons';
+import { AlertIcon, ColumnFilter, CrossIcon, FilterIcon } from '../../../icons';
 import { DropdownItemv2, Dropdownv2 } from '../../../input';
 import { Text } from '../../../text';
 import { Skeleton } from './Skeleton';
@@ -113,9 +113,6 @@ const TableFilters = (props) => {
 								color='default'
 								leftComponent={() => {
 									return <ColumnFilter className={styles.icon} />;
-								}}
-								rightComponent={() => {
-									return <CaretIcon className={styles.icon} />;
 								}}
 								title='Columns'
 							/>

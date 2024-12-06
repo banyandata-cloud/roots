@@ -64,12 +64,13 @@ const TableRow = forwardRef(function BaseTable(props, ref) {
 			type,
 			onSort,
 			rowHeight,
-			toggleDrawer: (index) => {
+			toggleDrawer: (index, standalone) => {
 				toggleDrawer({
 					data: {
 						datum,
 						index,
 						setActiveId,
+						standalone,
 					},
 				});
 			},

@@ -61,6 +61,7 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 		required,
 		multiSelectActionTitle,
 		valueAsCount,
+		caretAsUpDown,
 	} = props;
 	const [open, setOpen] = useState(false);
 	const [activeIndex, setActiveIndex] = useState(null);
@@ -280,6 +281,7 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 				return child?.props?.value?.toString?.();
 			});
 		}
+
 		Object.defineProperty(clonedEvent, 'target', {
 			writable: true,
 			value: {
@@ -288,12 +290,7 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 			},
 		});
 
-		// eslint-disable-next-line no-lonely-if
-		if (selected === true) {
-			setUncontrolledValue(itemValue);
-		} else {
-			setUncontrolledValue(itemValue);
-		}
+		setUncontrolledValue(itemValue);
 
 		setActiveIndex(0);
 	};
@@ -473,10 +470,23 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 									</span>
 								</Tooltip>
 							)}
-							<CaretIcon
-								data-elem='icon'
-								className={classes(styles['caret-icon'], open ? styles.open : '')}
-							/>
+							{caretAsUpDown ? (
+								<CaretIcon
+									className={classes(
+										styles['caret-icon-upDown'],
+										open ? styles.open : ''
+									)}
+									upDown
+								/>
+							) : (
+								<CaretIcon
+									data-elem='icon'
+									className={classes(
+										styles['caret-icon'],
+										open ? styles.open : ''
+									)}
+								/>
+							)}
 						</div>
 					</div>
 				</div>
@@ -559,6 +569,8 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 											size='auto'
 											disabled={selectedOptions?.length === 0}
 											onClick={(event) => {
+												event.stopPropagation();
+												multiOptionsRef?.current?.focus();
 												onSelectAll(event, false);
 											}}
 										/>
