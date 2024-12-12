@@ -105,6 +105,7 @@ const StackedPieChart = (props) => {
 		theme = 'dark',
 		fallback,
 		hideValue = 0,
+		hideIndex = null,
 	} = props;
 
 	if (loading || fallback) {
@@ -170,7 +171,9 @@ const StackedPieChart = (props) => {
 						tooltip: {
 							...(seriesOption[subIndex]?.tooltip ?? {}),
 						},
-						...(value === hideValue && {
+						...((hideIndex
+							? (seriesData?.chartData?.[key]?.[`x${hideIndex}`] ?? 0) === hideValue
+							: value === hideValue) && {
 							label: {
 								show: false,
 							},
