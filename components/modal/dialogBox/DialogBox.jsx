@@ -104,8 +104,11 @@ const DialogBox = forwardRef((props, ref) => {
 		}),
 		...(onAction && {
 			onAction: () => {
-				onAction();
-				setOpen(false);
+				onAction({
+					dismiss: () => {
+						setOpen(false);
+					},
+				});
 			},
 		}),
 		...(!hideCancel && {
