@@ -31,6 +31,9 @@
   background-color: var(--background-color5);
   color: var(--secondary-color2);
 }
+.root .header.highlightOnSelect [data-elem=select] * {
+  color: var(--secondary-color2);
+}
 .root .header.highlightOnSelect [data-elem=select] .icon-bundle .caret-icon {
   fill: var(--secondary-color2) !important;
 }

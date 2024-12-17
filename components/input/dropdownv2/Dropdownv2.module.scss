@@ -29,6 +29,10 @@
 			[data-elem='select'] {
 				background-color: $background-color5;
 				color: $secondary-color2;
+				// to match all texts below
+				* {
+					color: $secondary-color2;
+				}
 				.icon-bundle {
 					.caret-icon {
 						fill: $secondary-color2 !important;
