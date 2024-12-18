@@ -66,6 +66,7 @@ const DialogBox = forwardRef((props, ref) => {
 		onCancel: null,
 		size: 'md',
 		customAction: null,
+		body: null,
 	});
 
 	const {
@@ -79,6 +80,7 @@ const DialogBox = forwardRef((props, ref) => {
 		customAction,
 		hideCancel = false,
 		noDismiss,
+		body: Body,
 		size: appliedSize,
 	} = dialogProps;
 
@@ -104,8 +106,11 @@ const DialogBox = forwardRef((props, ref) => {
 		}),
 		...(onAction && {
 			onAction: () => {
-				onAction();
-				setOpen(false);
+				onAction({
+					dismiss: () => {
+						setOpen(false);
+					},
+				});
 			},
 		}),
 		...(!hideCancel && {
@@ -127,7 +132,7 @@ const DialogBox = forwardRef((props, ref) => {
 	});
 
 	useEffect(() => {
-		if (dialogProps.title && dialogProps.description) {
+		if (dialogProps.title && (dialogProps.description || dialogProps.body)) {
 			setOpen((prev) => {
 				return !prev;
 			});
@@ -143,6 +148,7 @@ const DialogBox = forwardRef((props, ref) => {
 			className={classes(styles.root, styles[size], className)}
 			renderHeader={title && <Header {...headerProps} />}
 			renderFooter={<Footer {...footerProps} />}>
+			{Body && <Body />}
 			<div className={styles.description}>{description}</div>
 		</BaseModal>
 	);

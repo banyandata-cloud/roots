@@ -1,0 +1,127 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.root .menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0.625rem;
+}
+.root .menu .item {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: transparent !important;
+  box-shadow: 0px 0px 0.125rem 0px rgba(0, 0, 0, 0.1450980392);
+  z-index: 2;
+}
+.root .menu .item.bold [data-elem=title] {
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 2.0194rem;
+  color: var(--mono-color1);
+}
+.root .menu .item.italic [data-elem=title] {
+  font-size: 1.5rem;
+  line-height: 2.0194rem;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--mono-color1);
+  padding-inline: 0.25rem;
+}
+.root .menu .item.strike [data-elem=title] {
+  font-size: 1.5rem;
+  line-height: 2.0194rem;
+  text-decoration: line-through;
+  font-weight: 400;
+  color: var(--mono-color1);
+}
+.root .menu .item.underline [data-elem=title] {
+  font-size: 1.5rem;
+  line-height: 2.0194rem;
+  font-weight: 400;
+  color: var(--mono-color1);
+  text-decoration: underline;
+}
+.root .menu .item.color {
+  cursor: pointer;
+}
+.root .menu .item.color > label {
+  height: 100%;
+}
+.root .menu .item.color > label [data-elem=base-cell] {
+  box-shadow: none;
+  padding: 0.5rem;
+  height: 100%;
+  position: relative;
+}
+.root .menu .item.color [data-elem=component2] {
+  position: absolute;
+}
+.root .menu .item.color [data-elem=component2] [data-elem=input] {
+  opacity: 0;
+  width: 2.5rem;
+}
+.root .menu .item.link [data-elem=component2], .root .menu .item.align [data-elem=component2] {
+  min-width: unset;
+  display: inline-block;
+}
+.root .menu .item.active {
+  background-color: var(--mono-color1) !important;
+}
+.root .menu .item.active [data-elem=title] {
+  color: var(--white);
+}
+.root .menu .dropdown {
+  height: 2.5rem;
+  width: 10rem;
+}
+.root .menu .dropdown [data-elem=header] {
+  height: 100%;
+  box-shadow: 0px 0px 0.125rem 0px rgba(0, 0, 0, 0.1450980392);
+}
+.root .menu .dropdown [data-elem=header] [data-elem=select] {
+  padding: 0 !important;
+  padding-inline: 1rem 0.75rem !important;
+}
+.root .menu .dropdown [data-elem=header] [data-elem=select] [data-elem=value] {
+  color: var(--mono-color1);
+}
+.root .menu .dropdown [data-elem=header] [data-elem=select] svg {
+  fill: var(--mono-color1) !important;
+}
+.root .editor {
+  box-shadow: 0px 0px 0.125rem 0px rgba(0, 0, 0, 0.2509803922);
+  width: 100%;
+  height: 16rem;
+  border-radius: 0.25rem;
+}
+.root .editor > div {
+  border-radius: 0.25rem;
+  height: 100%;
+  padding: 0.75rem 1rem;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.root .editor > div::-webkit-scrollbar {
+  display: none;
+}
+.root .editor > div > p:nth-child(1)::before {
+  color: var(--mono-color2);
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+.root .editor > div:focus-within {
+  outline: var(--secondary-color2) 1px solid;
+}
+
+.popper {
+  min-width: 15rem !important;
+}/*# sourceMappingURL=RichEditor.module.css.map */
