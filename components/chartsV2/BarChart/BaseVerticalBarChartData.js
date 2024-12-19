@@ -9,6 +9,12 @@ export const sampleData = {
 		Oracle: {
 			x1: 46.53,
 		},
+		Oradcdcle: {
+			x1: 46.53,
+		},
+		Oracdcdcle: {
+			x1: 46.53,
+		},
 	},
 	metaData: {
 		controlsApplied: {

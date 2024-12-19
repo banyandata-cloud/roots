@@ -1,9 +1,10 @@
 @import '../../../styles/index';
 
 .root {
-	width: '100%';
-}
-
-.chartjs-legend li span {
-	border: none !important;
+	width: 100%;
+	contain-intrinsic-height: 90%;
+	>canvas{
+		width: fit-content !important;
+		
+	}
 }

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 /* eslint-disable no-nested-ternary */
 /* eslint-disable react/forbid-prop-types */
 import { ArcElement, Chart as ChartJS, Legend, Title, Tooltip } from 'chart.js';
@@ -15,16 +16,22 @@ const BasePieChart = (props) => {
 	const {
 		loading,
 		title,
+		tittleSize,
 		seriesData,
 		semiDoughnut,
 		cursor,
-		// legend,
+		legend,
 		style,
 		className,
 		theme,
 		fallback,
 		seriesOption,
 		customLegend,
+		options: chartOptions,
+		tooltip,
+		width = '100%',
+		height = '100%',
+		customLabel,
 	} = props;
 
 	const [excludedIndices, setExcludedIndices] = useState([]);
@@ -123,18 +130,20 @@ const BasePieChart = (props) => {
 	const totalControlsValue = seriesData?.metaData?.totalControls?.x1 || 0;
 
 	const options = {
-		responsive: true,
-		maintainAspectRatio: false,
+		...chartOptions,
+		responsive: chartOptions?.responsive ?? true,
+		maintainAspectRatio: chartOptions?.maintainAspectRatio ?? false,
 		plugins: {
 			datalabels: {
 				display: false,
 			},
 			legend: customLegend
 				? {
-					display: false,
-				} // Hide default legend if customLegend is true
+						display: false,
+				  }
 				: {
-						display: true,
+						...legend,
+						display: legend?.display ?? true,
 						position: 'right',
 						align: 'center',
 						labels: {
@@ -170,24 +179,27 @@ const BasePieChart = (props) => {
 					bottom: 10,
 				},
 				font: {
-					size: 16,
+					size: tittleSize ?? 16,
 				},
 			},
 			tooltip: {
-				borderWidth: 1,
-				borderColor: (tooltipItem) => {
-					return tooltipItem?.dataset?.borderColor[tooltipItem.dataIndex];
-				},
-				callbacks: {
+				...tooltip,
+				borderWidth: tooltip?.borderWidth ?? 1,
+				borderColor:
+					tooltip?.borderColor ??
+					((tooltipItem) => {
+						return tooltipItem?.dataset?.borderColor[tooltipItem.dataIndex];
+					}),
+				callbacks: tooltip?.callbacks ?? {
 					label: (context) => {
 						const label = context.label || '';
 						const value = context.raw;
 						return `${label}: ${value}`;
 					},
 				},
-				bodySpacing: 5,
-				displayColors: true,
-				usePointStyle: true,
+				bodySpacing: tooltip?.bodySpacing ?? 5,
+				displayColors: tooltip?.displayColors ?? true,
+				usePointStyle: tooltip?.usePointStyle ?? true,
 			},
 		},
 		interaction: {
@@ -233,10 +245,10 @@ const BasePieChart = (props) => {
 				chartArea: { left, right, top, bottom },
 			} = chart;
 			ctx.save();
-			ctx.font = 'bold 23px Poppins'; // Font style and size
+			ctx.font = `${customLabel?.fontStyle} ${customLabel?.fontSize} Poppins`; // Font style and size
 			ctx.textAlign = 'center';
 			ctx.textBaseline = 'middle';
-			ctx.fillStyle = 'black'; // Text color
+			ctx.fillStyle = customLabel?.textColor; // Text color
 
 			// Calculate the center position of the doughnut
 			const centerX = (left + right) / 2;
@@ -310,32 +322,25 @@ const BasePieChart = (props) => {
 				setHoveredIndex(null);
 			}}
 			style={{
+				width,
+				height,
 				display: 'flex',
 				flexDirection: 'row',
 				alignItems: 'center',
 				cursor,
 				...style,
-				width: '70%',
-				height: '70%',
 			}}>
 			<Pie
 				data={data}
-				options={options}
-				plugins={[centerTextPlugin, customLegend && customLegendPlugin].filter(Boolean)}
+				options={{
+					...options,
+				}}
+				plugins={[
+					customLabel?.display && centerTextPlugin,
+					customLegend && customLegendPlugin,
+				].filter(Boolean)}
 			/>
-			{customLegend && (
-				<ul
-					ref={legendRef}
-					style={{
-						listStyle: 'none',
-						padding: 0,
-						width: '30%',
-						display: 'flex',
-						flexDirection: 'column',
-						alignItems: 'flex-start',
-					}}
-				/>
-			)}
+			{customLegend && <ul ref={legendRef} />}
 		</div>
 	);
 };

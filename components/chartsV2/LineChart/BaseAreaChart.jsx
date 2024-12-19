@@ -54,11 +54,13 @@ const BaseAreaChart = (props) => {
 		// seriesOption,
 		xSplitLineShow,
 		xAxisLineShow,
-		xAxisTickShow,
+		// xAxisTickShow,
 		axisSplitColor,
 		cursor,
 		yAxis,
 		customLegend,
+		width,
+		height,
 	} = props;
 
 	if (loading || fallback) {
@@ -222,6 +224,7 @@ const BaseAreaChart = (props) => {
 			x: {
 				display: xAxisLabelShow,
 				position: xAxisPosition,
+				stacked, // Stack bars if applicable
 				title: {
 					display: !!xAxisLabel,
 					text: xAxisLabel,
@@ -239,8 +242,8 @@ const BaseAreaChart = (props) => {
 					tickLength: 30, // Adjust this value to control the length of the grid lines
 				},
 				ticks: {
-					display: xAxisTickShow,
 					color: axisLabelColor || COLORS.grey,
+					stepSize: 100,
 				},
 				borderColor: xAxisLineShow ? 'rgba(0, 0, 0, 0)' : 'rgba(0, 0, 0, 0)',
 				borderWidth: xAxisLineShow ? 1 : 0,
@@ -291,7 +294,8 @@ const BaseAreaChart = (props) => {
 			className={styles.main}
 			style={{
 				position: 'relative',
-				height: '300px',
+				width: width ?? '100%',
+				height: height ?? '300px',
 			}}>
 			<Line data={chartData} options={chartOptions} plugins={[customLegendPlugin]} />
 			{customLegend && (
@@ -299,7 +303,7 @@ const BaseAreaChart = (props) => {
 					ref={legendRef}
 					style={{
 						listStyle: 'none',
-						padding: 0,
+						padding: '0px',
 						margin: '10px auto', // Center horizontally
 						display: 'flex',
 						justifyContent: 'center', // Center items
@@ -353,7 +357,7 @@ BaseAreaChart.propTypes = {
 	// seriesOption: PropTypes.arrayOf(PropTypes.object),
 	xSplitLineShow: PropTypes.bool,
 	xAxisLineShow: PropTypes.bool,
-	xAxisTickShow: PropTypes.bool,
+	// xAxisTickShow: PropTypes.bool,
 	axisSplitColor: PropTypes.string,
 	cursor: PropTypes.string,
 	yAxis: PropTypes.object,

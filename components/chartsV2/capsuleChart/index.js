@@ -1,1 +1,1 @@
-export { default as CapsuleChart } from './CapsuleChart.jsx';
+export { default as CapsuleChartV2 } from './CapsuleChart.jsx';

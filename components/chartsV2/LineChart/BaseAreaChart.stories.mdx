@@ -151,144 +151,6 @@ The default Area Chart with Areas Stacked.
 			yAxisLineShow: false,
 			yAxisTickShow: false,
 			cursor: 'default',
-			seriesOption: [
-				{
-					stackIndex: 1,
-					color: 'green',
-					symbol: 'none',
-					symbolSize: 10,
-					label: {
-						show: false,
-					},
-					lineStyle: {
-						width: 4,
-						type: 'solid',
-						cap: 'butt',
-						join: 'round',
-					},
-					areaStyle: {
-						color: 'lightgreen',
-						origin: 'auto',
-						shadowBlur: 0,
-						shadowColor: 'white',
-						shadowOffsetX: 0,
-						shadowOffsetY: 0,
-						opacity: 0.9,
-					},
-					emphasis: {
-						focus: 'none',
-					},
-				},
-				{
-					stackIndex: 2,
-					color: 'pink',
-					symbol: 'rect',
-					symbolSize: 10,
-					label: {
-						show: false,
-					},
-					lineStyle: {
-						width: 5,
-						type: 'dashed',
-						cap: 'round',
-						join: 'bevel',
-					},
-					areaStyle: {
-						color: 'lightpink',
-						origin: 'auto',
-						shadowBlur: 0,
-						shadowColor: 'white',
-						shadowOffsetX: 0,
-						shadowOffsetY: 0,
-						opacity: 0.9,
-					},
-					emphasis: {
-						focus: 'self',
-					},
-				},
-				{
-					stackIndex: 3,
-					color: 'orange',
-					symbol: 'roundRect',
-					symbolSize: 10,
-					label: {
-						show: false,
-					},
-					lineStyle: {
-						width: 6,
-						type: 'dotted',
-						cap: 'square',
-						join: 'miter',
-					},
-					areaStyle: {
-						color: '#F4D696',
-						origin: 'auto',
-						shadowBlur: 0,
-						shadowColor: 'white',
-						shadowOffsetX: 0,
-						shadowOffsetY: 0,
-						opacity: 0.9,
-					},
-					emphasis: {
-						focus: 'series',
-					},
-				},
-				{
-					stackIndex: 4,
-					color: 'red',
-					symbol: 'roundRect',
-					symbolSize: 10,
-					label: {
-						show: false,
-					},
-					lineStyle: {
-						width: 6,
-						type: 'dotted',
-						cap: 'square',
-						join: 'miter',
-					},
-					areaStyle: {
-						color: '#fd9695',
-						origin: 'auto',
-						shadowBlur: 0,
-						shadowColor: 'white',
-						shadowOffsetX: 0,
-						shadowOffsetY: 0,
-						opacity: 0.9,
-						cursor: 'default',
-					},
-					emphasis: {
-						focus: 'series',
-					},
-				},
-				{
-					stackIndex: 5,
-					color: 'blue',
-					symbol: 'roundRect',
-					symbolSize: 10,
-					label: {
-						show: false,
-					},
-					lineStyle: {
-						width: 6,
-						type: 'dotted',
-						cap: 'square',
-						join: 'miter',
-					},
-					areaStyle: {
-						color: 'lightblue',
-						origin: 'auto',
-						shadowBlur: 0,
-						shadowColor: 'white',
-						shadowOffsetX: 0,
-						shadowOffsetY: 0,
-						opacity: 0.9,
-					},
-					emphasis: {
-						focus: 'series',
-					},
-				},
-			],
 			errorHandle: () => {
 				alert('This will Call Fetch API again');
 			},
@@ -305,6 +167,7 @@ The Line Chart with transparent areas and unstacked Lines.
 	<Story
 		name='Line Stack'
 		args={{
+			width: '100%',
 			title: 'Title',
 			xAxisPosition: 'top',
 			customLegend: true,
@@ -317,7 +180,7 @@ The Line Chart with transparent areas and unstacked Lines.
 			gridContainLabel: true,
 			xAxisLabelShow: true,
 			xSplitLineShow: true,
-			xAxisLineShow: false,
+			xAxisLineShow: true,
 			xAxisTickShow: false,
 			xAxis: {
 				position: 'top',
@@ -350,113 +213,6 @@ The Line Chart with transparent areas and unstacked Lines.
 				display: true,  // Ensure this is not set to false
 			},
 			cursor: 'default',
-			seriesOption: [
-				{
-					stackIndex: 1,
-					color: 'green',
-					symbol: 'circle',
-					symbolSize: 10,
-					label: {
-						show: false,
-					},
-					lineStyle: {
-						width: 4,
-						type: 'solid',
-						cap: 'butt',
-						join: 'round',
-					},
-					areaStyle: {
-						opacity: 0,
-					},
-					emphasis: {
-						focus: 'none',
-					},
-				},
-				{
-					stackIndex: 2,
-					color: 'pink',
-					symbol: 'rect',
-					symbolSize: 10,
-					label: {
-						show: false,
-					},
-					lineStyle: {
-						width: 5,
-						type: 'dashed',
-						cap: 'round',
-						join: 'bevel',
-					},
-					areaStyle: {
-						opacity: 0,
-					},
-					emphasis: {
-						focus: 'self',
-					},
-				},
-				{
-					stackIndex: 3,
-					color: 'orange',
-					symbol: 'roundRect',
-					symbolSize: 10,
-					label: {
-						show: false,
-					},
-					lineStyle: {
-						width: 6,
-						type: 'dotted',
-						cap: 'square',
-						join: 'miter',
-					},
-					areaStyle: {
-						opacity: 0,
-					},
-					emphasis: {
-						focus: 'series',
-					},
-				},
-				{
-					stackIndex: 4,
-					color: 'red',
-					symbol: 'roundRect',
-					symbolSize: 10,
-					label: {
-						show: false,
-					},
-					lineStyle: {
-						width: 6,
-						type: 'dotted',
-						cap: 'square',
-						join: 'miter',
-					},
-					areaStyle: {
-						opacity: 0,
-					},
-					emphasis: {
-						focus: 'series',
-					},
-				},
-				{
-					stackIndex: 5,
-					color: 'blue',
-					symbol: 'roundRect',
-					symbolSize: 10,
-					label: {
-						show: false,
-					},
-					lineStyle: {
-						width: 6,
-						type: 'dotted',
-						cap: 'square',
-						join: 'miter',
-					},
-					areaStyle: {
-						opacity: 0,
-					},
-					emphasis: {
-						focus: 'series',
-					},
-				},
-			],
 		}}>
 		{TemplateV2.bind({})}
 	</Story>

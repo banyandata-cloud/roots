@@ -12,7 +12,7 @@ export const Template = (args) => (
 	<ThemedContainer
 		{...args}
 		style={{
-			height: '500px',
+			height: '600px',
 		}}>
 		<BasePieChart {...args} />
 	</ThemedContainer>
@@ -47,51 +47,51 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 	<Story
 		name='Default'
 		args={{
-  title: 'Title',
-  stackedCharts: true,
-  gridOptions: {
-    height: '50%',
-    width: '50%',
-  },
-  cursor: 'default',
-  radius: ['20%', '40%'],
-  center: ['50%', '50%'],
-  seriesData: sampleData,
-  semiDoughnut: true,
-  startAngle: 90,
-  tooltip: {
-    trigger: 'item',
-    backgroundColor: '#d3d3d3', // Light grey background for the tooltip
-    borderColor: (param) => param.color, // Border same as the pie section color
-    borderWidth: 1,
-    formatter: (param) => {
-      const index = Object.keys(sampleData.metaData.keyData).find((key) => {
-        return sampleData.metaData.keyData[key] === param.name;
-      });
-      return `${param.marker} ${param.name} ${sampleData.metaData.controlsApplied[index].comp}/${sampleData.metaData.controlsApplied[index].count}`;
-    },
-    textStyle: {
-      whiteSpace: 'nowrap', // Ensure text is in a single line
-    },
-  },
-  itemStyle: {
-    borderWidth: 5,
-    borderColor: 'black',
-    borderType: 'solid',
-  },
-  legend: {
-    show: true,
-    orient: 'vertical',
-    left: 'right', // Position the legend to the right of the chart
-    top: 'middle', // Vertically align the legend
-    itemWidth: 10, // Decrease the size of the legend color box
-    itemHeight: 10, // Decrease the size of the legend color box
-    itemGap: 10, // Space between the legend items
-    borderColor: '#ccc', // Thinner border
-    borderWidth: 1, // Make the border thin
-    selectedMode: true,
-  },
- seriesOption: [
+			title: 'Title',
+			stackedCharts: true,
+			gridOptions: {
+				height: '50%',
+				width: '50%',
+			},
+			cursor: 'default',
+			radius: ['20%', '40%'],
+			center: ['50%', '50%'],
+			seriesData: sampleData,
+			semiDoughnut: true,
+			startAngle: 90,
+			tooltip: {
+				trigger: 'item',
+				backgroundColor: '#d3d3d3', // Light grey background for the tooltip
+				borderColor: (param) => param.color, // Border same as the pie section color
+				borderWidth: 1,
+				formatter: (param) => {
+					const index = Object.keys(sampleData.metaData.keyData).find((key) => {
+						return sampleData.metaData.keyData[key] === param.name;
+					});
+					return `${param.marker} ${param.name} ${sampleData.metaData.controlsApplied[index].comp}/${sampleData.metaData.controlsApplied[index].count}`;
+				},
+				textStyle: {
+					whiteSpace: 'nowrap', // Ensure text is in a single line
+				},
+			},
+			itemStyle: {
+				borderWidth: 5,
+				borderColor: 'black',
+				borderType: 'solid',
+			},
+			legend: {
+				show: true,
+				orient: 'vertical',
+				left: 'right', // Position the legend to the right of the chart
+				top: 'middle', // Vertically align the legend
+				itemWidth: 10, // Decrease the size of the legend color box
+				itemHeight: 10, // Decrease the size of the legend color box
+				itemGap: 10, // Space between the legend items
+				borderColor: '#ccc', // Thinner border
+				borderWidth: 1, // Make the border thin
+				selectedMode: true,
+			},
+			seriesOption: [
 				{
 					stackIndex: 1,
 					itemStyle: {
@@ -302,8 +302,7 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					},
 				},
 			],
-}}
->
+		}}>
 		{Template.bind({})}
 	</Story>
 </Canvas>

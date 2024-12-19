@@ -11,13 +11,16 @@ import {
 	stackData,
 } from './BaseVerticalBarChartData.js';
 
-<Meta title='Components/ChartsV2/VerticalBarChart' parameters={{ options: { showToolbar: false } }} />
+<Meta
+	title='Components/ChartsV2/VerticalBarChart'
+	parameters={{ options: { showToolbar: false } }}
+/>
 
 export const Template = (args) => (
 	<ThemedContainer
 		{...args}
 		style={{
-			height: '400px',
+			height: '500px',
 		}}>
 		<BaseVerticalBarChart
 			{...args}
@@ -33,29 +36,6 @@ export const Template = (args) => (
 		/>
 	</ThemedContainer>
 );
-
-export const StackTemplate = (args) => {
-	return (
-		<ThemedContainer
-			{...args}
-			style={{
-				height: '100%',
-			}}>
-			<BaseVerticalBarChart
-				{...args}
-				seriesData={transformToStack(sampleStackData)}
-				tooltip={{
-					trigger: 'item',
-					formatter: (param) => {
-						return `${param.marker} ${param.name} ${
-							sampleData.metaData.controlsApplied[param.name].x1
-						}`;
-					},
-				}}
-			/>
-		</ThemedContainer>
-	);
-};
 
 # Vertical Bar Chart
 
@@ -83,180 +63,48 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 ### Default Vertical Bar Chart
 
 <Canvas>
-  <Story
-    name="Default"
-    args={{
-      title: {
-        text: 'Title',
-        textStyle: {
-          fontSize: 10,
-        },
-        left: 20,
-      },
-      xAxis: {
-        name: 'Aryan',
-        nameLocation: 'center',
-      },
-      yAxis: {
-        name: 'Aryan',
-        nameLocation: 'center',
-      },
-      gridContainLabel: true,
-      gridOptions: {
-        left: 50,
-        right: 50,
-        bottom: 100,
-        top: 15,
-      },
-      xAxisShow: true,
-      xAxisLabel: {
-        show: true,
-        rotate: 90,
-        color: 'white',
-        inside: true,
-        verticalAlign: 'bottom',
-        padding: [0, 0, 90, 0],
-      },
-      yAxisLabelShow: false,
-      ySplitLineShow: false,
-      yAxisLineShow: true,
-      yAxisTickShow: false,
-      barWidth: '50%',
-      cursor: 'default',
-      stackCount: 1,
-      seriesOption: [
-        {
-          color: COLORS.success,
-          label: {
-            show: true,
-            color: 'white',
-            formatter: (param) => {
-              return sampleData.metaData.controlsApplied[param.name].x1;
-            },
-          },
-          itemStyle: {
-            borderRadius: [12, 12, 0, 0],
-          },
-        },
-      ],
-      seriesData: Object.keys(sampleData.chartData).map((key) => ({
-        name: key, // Database name
-        value: sampleData.chartData[key].x1, // Single value from x1
-      })),
-      tooltip: {
-        trigger: 'item',
-        formatter: (param) => {
-          return `${param.marker} ${param.name} ${
-            sampleData.metaData.controlsApplied[param.name].x1
-          }`;
-        },
-      },
-    }}
-  >
-    {Template.bind({})}
-  </Story>
-</Canvas>
-
-
-### Vertical Bar Chart with 2 Stacks
-
-Vertical Bar Chart with 2 Stacks of Bars
-
-<Canvas>
 	<Story
-		name='Stack Series'
+		name='Default'
 		args={{
-			title: 'Title',
-			gridContainLabel: true,
+			xAxisTitle: 'abc',
+			yAxisTitle: 'bca',
 			gridOptions: {
-				left: 0,
-				right: 0,
-				bottom: 0,
+				left: 50,
+				right: 50,
+				bottom: 100,
 				top: 15,
 			},
 			xAxisShow: true,
+			barWidth: 8,
 			xAxisLabel: {
 				show: true,
 				rotate: 90,
+				color: 'white',
 				inside: true,
 				verticalAlign: 'bottom',
 				padding: [0, 0, 90, 0],
 			},
 			yAxisLabelShow: false,
 			ySplitLineShow: false,
-			yAxisLineShow: false,
+			yAxisLineShow: true,
 			yAxisTickShow: false,
-			axisColor: 'grey',
-			splitType: 'dashed',
-			barWidth: '40%',
+			barWidth: '50%',
 			cursor: 'default',
-			stackCount: 2,
-			seriesOption: [
-				{
-					stackIndex: 1,
-					stack: 1,
-					color: COLORS.success,
-					label: {
-						show: false,
-					},
+			stackCount: 1,
+			seriesData: Object.keys(sampleData.chartData).map((key) => ({
+				name: key, // Database name
+				value: sampleData.chartData[key].x1, // Single value from x1
+			})),
+			tooltip: {
+				trigger: 'item',
+				formatter: (param) => {
+					return `${param.marker} ${param.name} ${
+						sampleData.metaData.controlsApplied[param.name].x1
+					}`;
 				},
-				{
-					stackIndex: 2,
-					stack: 1,
-					color: COLORS.error,
-					label: {
-						show: false,
-					},
-				},
-				{
-					stackIndex: 3,
-					stack: 1,
-					color: COLORS.warning,
-					label: {
-						show: true,
-						formatter(param) {
-							return (
-								stackData.chartData[param.name].x1 +
-								stackData.chartData[param.name].x2 +
-								stackData.chartData[param.name].x3
-							);
-						},
-					},
-				},
-				{
-					stackIndex: 4,
-					stack: 2,
-					color: COLORS.success,
-					label: {
-						show: false,
-					},
-				},
-				{
-					stackIndex: 5,
-					stack: 2,
-					color: COLORS.error,
-					label: {
-						show: false,
-					},
-				},
-				{
-					stackIndex: 6,
-					stack: 2,
-					color: COLORS.warning,
-					label: {
-						show: true,
-						formatter(param) {
-							return (
-								stackData.chartData[param.name].x4 +
-								stackData.chartData[param.name].x5 +
-								stackData.chartData[param.name].x6
-							);
-						},
-					},
-				},
-			],
+			},
 		}}>
-		{StackTemplate.bind({})}
+		{Template.bind({})}
 	</Story>
 </Canvas>
 

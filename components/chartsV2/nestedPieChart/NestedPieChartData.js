@@ -1,8 +1,8 @@
 export const sampleData = {
 	chartData: {
 		MySql: {
-			x1: 100,
-			x2: 0,
+			x1: 80,
+			x2: 20,
 		},
 		PgSql: {
 			x1: 30,
