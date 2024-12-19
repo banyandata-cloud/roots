@@ -1,6 +1,6 @@
 {
 	"name": "@banyan_cloud/roots",
-	"version": "1.0.308",
+	"version": "1.0.314",
 	"description": "Design System Library which drives the Banyan Cloud products",
 	"main": "dist/cjs/index.js",
 	"module": "dist/esm/index.js",
@@ -33,7 +33,6 @@
 		"react-chartjs-2": "^5.2.0",
 		"react-error-boundary": "^4.0.10",
 		"react-merge-refs": "^2.0.1",
-		"react-simple-maps": "^3.0.0",
 		"react-syntax-highlighter": "^15.5.0"
 	},
 	"eslintConfig": {

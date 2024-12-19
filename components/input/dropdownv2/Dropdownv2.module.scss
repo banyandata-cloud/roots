@@ -33,6 +33,12 @@
 					.caret-icon {
 						fill: $secondary-color2 !important;
 					}
+					.caret-icon-upDown {
+						fill: transparent;
+						> path {
+							stroke: $secondary-color2;
+						}
+					}
 				}
 			}
 		}
@@ -89,6 +95,20 @@
 					fill: $text-color !important;
 					@include flex(row, space-between);
 					transform: rotate(180deg);
+					&.open {
+						transform: rotate(0deg);
+					}
+				}
+				.caret-icon-upDown {
+					width: 1.5rem;
+					height: 1.5rem;
+					transition: transform 0.5s;
+					fill: transparent !important;
+					@include flex(row, space-between);
+					transform: rotate(180deg);
+					> path {
+						stroke: $text-color;
+					}
 					&.open {
 						transform: rotate(0deg);
 					}

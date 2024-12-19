@@ -1,5 +1,6 @@
 export * from './accordion';
 export * from './alert';
+export * from './alertV2';
 export * from './breadcrumbs';
 export * from './breadcrumbsv2';
 export * from './buttons';
@@ -9,7 +10,6 @@ export * from './charts';
 export * from './codeSnippet';
 export * from './datePicker';
 export * from './displayPicture';
-export * from './geoMap';
 export * from './hierarchy';
 export * from './icons';
 export * from './input';

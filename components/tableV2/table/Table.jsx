@@ -5,7 +5,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { classes } from '../../../utils';
 import { ErrorBoundaryWrapper } from '../../errorBoundary';
 import { Pagination } from '../../pagination';
-import { Pagination as Paginationv2 } from '../../paginationv2';
+import { Pagination as PaginationV2 } from '../../paginationv2';
 import BaseSidePanel from '../../sidePanel/BaseSidePanel';
 import { TableColumnV2 } from '../BaseTable.class';
 import { BaseTableV2 } from '../baseTable';
@@ -102,17 +102,21 @@ const Table = (props) => {
 		});
 	};
 
-	const visibileColumns = headerData.filter((header) => {
+	const visibleColumns = headerData.filter((header) => {
 		return [null, false, undefined].includes(hiddenColumns?.[header?.id]);
 	});
 
-	const hasSingleBody =
-		toggleTableDrawer?.data?.index === -1 || tableDrawerProps?.renderBody?.length === 1;
+	const drawerProps =
+		typeof tableDrawerProps === 'function'
+			? tableDrawerProps(toggleTableDrawer?.data)
+			: tableDrawerProps;
 
-	const Body =
-		toggleTableDrawer?.data?.index === -1
-			? tableDrawerProps?.standalone[0]
-			: tableDrawerProps?.renderBody?.[toggleTableDrawer?.data?.index];
+	const hasSingleBody =
+		toggleTableDrawer?.data?.standalone || drawerProps?.renderBody?.length === 1;
+
+	const Body = toggleTableDrawer?.data?.standalone
+		? drawerProps?.standalone[toggleTableDrawer.data.index]
+		: drawerProps?.renderBody?.[toggleTableDrawer?.data?.index];
 
 	// for pagination docking using intersection observer
 	useEffect(() => {
@@ -165,7 +169,7 @@ const Table = (props) => {
 
 			if (tableHeaderElem && tableBodyElem) {
 				let minWidth = 0;
-				visibileColumns.forEach((header) => {
+				visibleColumns.forEach((header) => {
 					minWidth += new TableColumnV2(header).sizeInRem;
 				});
 				tableHeaderElem.style.minWidth = `${minWidth}rem`;
@@ -217,7 +221,7 @@ const Table = (props) => {
 				<BaseTableV2
 					{...{
 						ref,
-						headerData: visibileColumns,
+						headerData: visibleColumns,
 						tableData: tabularData,
 						uniqueKey,
 						activeData,
@@ -236,7 +240,7 @@ const Table = (props) => {
 				/>
 
 				{paginationData != null && (
-					<Paginationv2
+					<PaginationV2
 						className={classes(styles.pagination, floating ? styles.floating : '')}
 						ref={paginationRef}
 						customPagination={customPagination}
@@ -251,11 +255,11 @@ const Table = (props) => {
 						loading={loading}
 					/>
 				)}
-				{tableDrawerProps && (
+				{drawerProps && (
 					<BaseSidePanel
 						toggle={toggleDrawer}
 						animation
-						{...tableDrawerProps}
+						{...drawerProps}
 						{...(hasSingleBody && {
 							tabsConfig: null,
 						})}
@@ -266,7 +270,7 @@ const Table = (props) => {
 						className={classes(
 							styles.drawer,
 							hasSingleBody && styles.standalone,
-							tableDrawerProps.className
+							drawerProps.className
 						)}>
 						{Body && isValidElement(<Body datum={toggleTableDrawer.data} />) && (
 							<Body

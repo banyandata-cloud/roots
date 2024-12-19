@@ -3,8 +3,15 @@ import { Meta, Canvas, Story } from '@storybook/addon-docs';
 import { COLORS } from '../../../styles';
 import { ThemedContainer, ToggleIframeContainer } from '../../helpers';
 import BasePieChart from './BasePieChart';
+import StackedPieChart from '../stackedPieChart/StackedPieChart.jsx';
 
-import { sampleData, iconData, iconColor, sampleV2Data } from './BasePieChartData.js';
+import {
+	sampleData,
+	sampleStackData,
+	iconData,
+	iconColor,
+	sampleV2Data,
+} from './BasePieChartData.js';
 
 <Meta title='Components/PieChart' parameters={{ options: { showToolbar: false } }} />
 
@@ -17,6 +24,24 @@ export const Template = (args) => (
 		<BasePieChart {...args} />
 	</ThemedContainer>
 );
+
+export const StackTemplate = (args) => {
+	return (
+		<ThemedContainer
+			{...args}
+			style={{
+				height: '400px',
+			}}>
+			<StackedPieChart
+				{...args}
+				seriesData={sampleStackData}
+				tooltip={{
+					trigger: 'item',
+				}}
+			/>
+		</ThemedContainer>
+	);
+};
 
 # Pie Chart
 
@@ -390,6 +415,60 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 			],
 		}}>
 		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Stacked Pie Chart
+
+<Canvas>
+	<Story
+		name='Stacked Pie Chart'
+		args={{
+			title: 'Title',
+			gridContainLabel: true,
+			gridOptions: {
+				left: 0,
+				right: 0,
+				bottom: 0,
+				top: 15,
+			},
+			cursor: 'default',
+			stackCount: 2,
+			radius: ['10%', '70%'],
+			tooltip: {
+				trigger: 'item',
+			},
+			seriesOption: [
+				{
+					stackIndex: 1,
+					stack: 1,
+					color: COLORS.success,
+					barWidth: 120,
+					itemStyle: {
+						borderWidth: 1,
+						borderColor: 'white',
+					},
+					label: {
+						show: false,
+					},
+					showBackground: false,
+				},
+				{
+					stackIndex: 2,
+					stack: 1,
+					color: COLORS.error,
+					label: {
+						show: false,
+					},
+					itemStyle: {
+						borderWidth: 1,
+						borderColor: 'white',
+					},
+					showBackground: false,
+				},
+			],
+		}}>
+		{StackTemplate.bind({})}
 	</Story>
 </Canvas>
 

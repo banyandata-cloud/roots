@@ -1,1 +1,1 @@
-export { default as alertV2 } from './Alert';
+export { default as AlertV2 } from './Alert';

@@ -3,27 +3,24 @@
 import PropTypes from 'prop-types';
 // ReactEcharts from 'echarts-for-react' would import the entire bundle
 import EChartsReactCore from 'echarts-for-react/lib/core';
-import * as echarts from 'echarts/core';
 import { BarChart } from 'echarts/charts';
 import {
-	GridComponent,
-	TooltipComponent,
-	TitleComponent,
 	DataZoomComponent,
 	DataZoomInsideComponent,
 	DataZoomSliderComponent,
 	DatasetComponent,
+	GridComponent,
 	LegendComponent,
+	TitleComponent,
+	TooltipComponent,
 } from 'echarts/components';
+import * as echarts from 'echarts/core';
 // Import renderer, note that introducing the CanvasRenderer or SVGRenderer is a required step
-import {
-	CanvasRenderer,
-	// SVGRenderer,
-} from 'echarts/renderers';
-import styles from './BaseVerticalBarChart.module.css';
-import { classes } from '../../../utils';
-import { Skeleton } from './Skeleton';
+import { CanvasRenderer } from 'echarts/renderers';
 import { COLORS } from '../../../styles';
+import { classes } from '../../../utils';
+import styles from './BaseVerticalBarChart.module.css';
+import { Skeleton } from './Skeleton';
 
 // Register the required components
 echarts.use([

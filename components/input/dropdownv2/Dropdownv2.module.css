@@ -34,6 +34,12 @@
 .root .header.highlightOnSelect [data-elem=select] .icon-bundle .caret-icon {
   fill: var(--secondary-color2) !important;
 }
+.root .header.highlightOnSelect [data-elem=select] .icon-bundle .caret-icon-upDown {
+  fill: transparent;
+}
+.root .header.highlightOnSelect [data-elem=select] .icon-bundle .caret-icon-upDown > path {
+  stroke: var(--secondary-color2);
+}
 .root .header.open {
   outline: 1px solid var(--secondary-color2);
   transition: outline 100ms ease-in-out;
@@ -103,6 +109,23 @@
   transform: rotate(180deg);
 }
 .root .header .select .icon-bundle .caret-icon.open {
+  transform: rotate(0deg);
+}
+.root .header .select .icon-bundle .caret-icon-upDown {
+  width: 1.5rem;
+  height: 1.5rem;
+  transition: transform 0.5s;
+  fill: transparent !important;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  transform: rotate(180deg);
+}
+.root .header .select .icon-bundle .caret-icon-upDown > path {
+  stroke: var(--text-color);
+}
+.root .header .select .icon-bundle .caret-icon-upDown.open {
   transform: rotate(0deg);
 }
 .root .header .select .icon-bundle .info-icon path {
