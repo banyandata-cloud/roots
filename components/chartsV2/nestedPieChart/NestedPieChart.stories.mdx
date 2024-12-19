@@ -2,46 +2,21 @@ import { Meta, Canvas, Story } from '@storybook/addon-docs';
 
 import { COLORS } from '../../../styles';
 import { ThemedContainer, ToggleIframeContainer } from '../../helpers';
-import BasePieChart from './BasePieChart';
-import StackedPieChart from '../stackedPieChart/StackedPieChart.jsx';
+import BasePieChart from './NestedPieChart.jsx';
 
-import {
-	sampleData,
-	sampleStackData,
-	iconData,
-	iconColor,
-	sampleV2Data,
-} from './BasePieChartData.js';
+import { sampleData, iconData, iconColor } from './NestedPieChartData.js';
 
-<Meta title='Components/PieChart' parameters={{ options: { showToolbar: false } }} />
+<Meta title='Components/ChartsV2/NestedPieChart' parameters={{ options: { showToolbar: false } }} />
 
 export const Template = (args) => (
 	<ThemedContainer
 		{...args}
 		style={{
-			height: '400px',
+			height: '600px',
 		}}>
 		<BasePieChart {...args} />
 	</ThemedContainer>
 );
-
-export const StackTemplate = (args) => {
-	return (
-		<ThemedContainer
-			{...args}
-			style={{
-				height: '400px',
-			}}>
-			<StackedPieChart
-				{...args}
-				seriesData={sampleStackData}
-				tooltip={{
-					trigger: 'item',
-				}}
-			/>
-		</ThemedContainer>
-	);
-};
 
 # Pie Chart
 
@@ -73,23 +48,30 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 		name='Default'
 		args={{
 			title: 'Title',
+			stackedCharts: true,
 			gridOptions: {
-				height: '100%',
-				width: '100%',
+				height: '50%',
+				width: '50%',
 			},
 			cursor: 'default',
-			radius: ['30%', '60%'],
+			radius: ['20%', '40%'],
 			center: ['50%', '50%'],
 			seriesData: sampleData,
-			semiDoughnut: false,
+			semiDoughnut: true,
 			startAngle: 90,
 			tooltip: {
 				trigger: 'item',
+				backgroundColor: '#d3d3d3', // Light grey background for the tooltip
+				borderColor: (param) => param.color, // Border same as the pie section color
+				borderWidth: 1,
 				formatter: (param) => {
 					const index = Object.keys(sampleData.metaData.keyData).find((key) => {
 						return sampleData.metaData.keyData[key] === param.name;
 					});
 					return `${param.marker} ${param.name} ${sampleData.metaData.controlsApplied[index].comp}/${sampleData.metaData.controlsApplied[index].count}`;
+				},
+				textStyle: {
+					whiteSpace: 'nowrap', // Ensure text is in a single line
 				},
 			},
 			itemStyle: {
@@ -99,127 +81,19 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 			},
 			legend: {
 				show: true,
-				top: '80%',
-				left: '30%',
 				orient: 'vertical',
+				left: 'right', // Position the legend to the right of the chart
+				top: 'middle', // Vertically align the legend
+				itemWidth: 10, // Decrease the size of the legend color box
+				itemHeight: 10, // Decrease the size of the legend color box
+				itemGap: 10, // Space between the legend items
+				borderColor: '#ccc', // Thinner border
+				borderWidth: 1, // Make the border thin
 				selectedMode: true,
-				// data: [
-				// {
-				// name: 'Compliant',
-				// icon: 'circle',
-				// textStyle: {
-				// color: 'white',
-				// fontSize: '20',
-				// },
-				// },
-				// ],
-				// formatter(name) {
-				// return '214 Safe';
-				// },
-				// icon: 'path://M30.9,53.2C16.8,53.2,5.3,41.7,5.3,27.6S16.8,2,30.9,2C45,2,56.4,13.5,56.4,27.6S45,53.2,30.9,53.2z M30.9,3.5C17.6,3.5,6.8,14.4,6.8,27.6c0,13.3,10.8,24.1,24.101,24.1C44.2,51.7,55,40.9,55,27.6C54.9,14.4,44.1,3.5,30.9,3.5z M36.9,35.8c0,0.601-0.4,1-0.9,1h-1.3c-0.5,0-0.9-0.399-0.9-1V19.5c0-0.6,0.4-1,0.9-1H36c0.5,0,0.9,0.4,0.9,1V35.8z M27.8,35.8 c0,0.601-0.4,1-0.9,1h-1.3c-0.5,0-0.9-0.399-0.9-1V19.5c0-0.6,0.4-1,0.9-1H27c0.5,0,0.9,0.4,0.9,1L27.8,35.8L27.8,35.8z',
-				// icon: '<svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-				// <rect y="0.5" width="16" height="16" rx="4" fill="#FF626A"/>
-				// eslint-disable-next-line max-len
-				// <path d="M11.25 6.5L7 10.75L4.75 8.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-				// </svg>
-				// ',
 			},
 			seriesOption: [
 				{
 					stackIndex: 1,
-					itemStyle: {
-						color: '#0F62FE',
-					},
-					label: {
-						show: true,
-						fontSize: '20',
-						color: 'black',
-						fontWeight: 'bold',
-						position: 'outside',
-						formatter(d) {
-							return d.name !== '' ? `${d.value}%\n${d.name}` : null;
-						},
-					},
-				},
-				{
-					stackIndex: 2,
-					itemStyle: {
-						color: '#71EEFF',
-					},
-				},
-				{
-					stackIndex: 3,
-					itemStyle: {
-						color: '#67F990',
-					},
-					tooltip: {
-						trigger: 'none',
-					},
-				},
-			],
-		}}>
-		{Template.bind({})}
-	</Story>
-</Canvas>
-
-### V2 Pie Chart
-
-<Canvas>
-	<Story
-		name='V2 Pie Chart'
-		args={{
-			title: 'Title',
-			gridOptions: {
-				height: '100%',
-				width: '100%',
-			},
-			cursor: 'default',
-			radius: ['18%', '70%'],
-			center: ['50%', '50%'],
-			seriesData: sampleV2Data,
-			semiDoughnut: false,
-			startAngle: 90,
-			tooltip: {
-				trigger: 'item',
-			},
-			itemStyle: {
-				borderWidth: 0,
-			},
-			legend: {
-				orient: 'vertical',
-				top: '5%',
-				right: '20%',
-				icon: 'path://M30.9,53.2C16.8,53.2,5.3,41.7,5.3,27.6S16.8,2,30.9,2C45,2,56.4,13.5,56.4,27.6S45,53.2,30.9,53.2z M16 28a12 12 0 0 0 30 0a12 12 0 1 0 -30 0',
-				selectedMode: true,
-				selected: {
-					high: true,
-					medium: false,
-				},
-			},
-			seriesOptionUpdate: {
-				legendHoverLink: true,
-			},
-			onHoverLegend: (event, e) => {
-				console.log({
-					event,
-					e,
-				});
-			},
-			onEvents: {
-				mouseover: (e) => {
-					console.log('OVER', e);
-				},
-				mouseout: (e) => {
-					console.log('OUT', e);
-				},
-			},
-			seriesOptionUpdate: {
-				labelLayout: {
-					x: '45%',
-				},
-			},
-			seriesOption: [
-				{
 					itemStyle: {
 						color: '#00459F',
 					},
@@ -228,7 +102,7 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 						fontSize: '15',
 						color: 'black',
 						fontWeight: 'bold',
-						position: 'outside',
+						position: 'center',
 						formatter() {
 							return `40 \nControls`;
 						},
@@ -433,119 +307,6 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 	</Story>
 </Canvas>
 
-### Stacked Pie Chart
-
-<Canvas>
-	<Story
-		name='Stacked Pie Chart'
-		args={{
-			title: 'Title',
-			gridContainLabel: true,
-			gridOptions: {
-				left: 0,
-				right: 0,
-				bottom: 0,
-				top: 15,
-			},
-			cursor: 'default',
-			stackCount: 2,
-			radius: ['10%', '70%'],
-			tooltip: {
-				trigger: 'item',
-			},
-			hideValue: 0,
-			hideIndex: 1,
-			startAngle: 90,
-			seriesOption: [
-				{
-					stackIndex: 1,
-					stack: 1,
-					color: COLORS.success,
-					barWidth: 120,
-					itemStyle: {
-						borderWidth: 1,
-						borderColor: 'white',
-					},
-					label: {
-						show: false,
-					},
-					emphasis: {
-						disabled: true,
-					},
-					showBackground: false,
-				},
-				{
-					stackIndex: 2,
-					stack: 1,
-					color: COLORS.warning,
-					label: {
-						show: false,
-						color: COLORS.error,
-						padding: 4,
-						backgroundColor: 'white',
-						shadowBlur: 2,
-						shadowColor: 'grey',
-						formatter: (param) => {
-							const valueList = Object.entries(sampleStackData?.chartData);
-							console.log({
-								second: valueList,
-								1: valueList?.[param.dataIndex]?.[1]?.x1,
-								2: valueList?.[param.dataIndex]?.[1]?.x2,
-								3: valueList?.[param.dataIndex]?.[1]?.x3,
-							});
-							if (valueList?.[param.dataIndex]?.[1]?.x3 === 0) {
-								return `${valueList?.[param.dataIndex]?.[1]?.x1}%`;
-							}
-							return '';
-						},
-					},
-					itemStyle: {
-						borderWidth: 1,
-						borderColor: 'white',
-					},
-					showBackground: false,
-					emphasis: {
-						disabled: true,
-					},
-				},
-				{
-					stackIndex: 3,
-					stack: 1,
-					color: COLORS.error,
-					label: {
-						show: true,
-						color: COLORS.error,
-						padding: 4,
-						backgroundColor: 'white',
-						shadowBlur: 2,
-						shadowColor: 'grey',
-						formatter: (param) => {
-							const valueList = Object.entries(sampleStackData?.chartData);
-							console.log({
-								third: valueList,
-								1: valueList?.[param.dataIndex]?.[1]?.x1,
-								2: valueList?.[param.dataIndex]?.[1]?.x2,
-								3: valueList?.[param.dataIndex]?.[1]?.x3,
-							});
-							const val = valueList?.[param.dataIndex]?.[1]?.x1;
-							return `${val}%`;
-						},
-					},
-					itemStyle: {
-						borderWidth: 1,
-						borderColor: 'white',
-					},
-					showBackground: false,
-					emphasis: {
-						disabled: true,
-					},
-				},
-			],
-		}}>
-		{StackTemplate.bind({})}
-	</Story>
-</Canvas>
-
 ### Pie Chart as Icon
 
 Pie Chart as Icon
@@ -594,6 +355,18 @@ Pie Chart as Icon
 					},
 					itemStyle: {
 						color: 'whitesmoke',
+					},
+					label: {
+						show: false,
+					},
+				},
+				{
+					stackIndex: 3,
+					emphasis: {
+						disabled: true,
+					},
+					itemStyle: {
+						color: 'blue',
 					},
 					label: {
 						show: false,

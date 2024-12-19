@@ -65,6 +65,9 @@ importers:
       postcss:
         specifier: ^8.4.18
         version: 8.4.38
+      react-chartjs-2:
+        specifier: ^5.2.0
+        version: 5.2.0(chart.js@4.4.4)(react@18.2.0)
       react-error-boundary:
         specifier: ^4.0.10
         version: 4.0.12(react@18.2.0)
@@ -134,7 +137,7 @@ importers:
         version: 6.5.16
       '@storybook/preset-create-react-app':
         specifier: ^4.1.2
-        version: 4.1.2(c6jlemdm2426ohjl3hpoybwhpi)
+        version: 4.1.2(@babel/core@7.23.6)(@storybook/node-logger@6.5.16)(@storybook/react@6.5.16(@babel/core@7.23.6)(@storybook/builder-webpack5@6.5.16(eslint@8.56.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(typescript@5.3.3))(@storybook/manager-webpack5@6.5.16(eslint@8.56.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(typescript@5.3.3))(@types/webpack@4.41.38)(eslint@8.56.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(require-from-string@2.0.2)(type-fest@0.21.3)(typescript@5.3.3)(webpack-dev-server@4.15.1(webpack@5.89.0))(webpack-hot-middleware@2.26.0))(@types/webpack@4.41.38)(react-refresh@0.11.0)(react-scripts@5.0.1(@babel/plugin-syntax-flow@7.23.3(@babel/core@7.23.6))(@babel/plugin-transform-react-jsx@7.23.4(@babel/core@7.23.6))(@types/babel__core@7.20.5)(@types/webpack@4.41.38)(eslint@8.56.0)(react@18.2.0)(sass@1.69.5)(type-fest@0.21.3)(typescript@5.3.3)(webpack-hot-middleware@2.26.0))(type-fest@0.21.3)(typescript@5.3.3)(webpack-dev-server@4.15.1(webpack@5.89.0))(webpack-hot-middleware@2.26.0)(webpack@5.89.0)
       '@storybook/react':
         specifier: ^6.5.12
         version: 6.5.16(@babel/core@7.23.6)(@storybook/builder-webpack5@6.5.16(eslint@8.56.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(typescript@5.3.3))(@storybook/manager-webpack5@6.5.16(eslint@8.56.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(typescript@5.3.3))(@types/webpack@4.41.38)(eslint@8.56.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(require-from-string@2.0.2)(type-fest@0.21.3)(typescript@5.3.3)(webpack-dev-server@4.15.1(webpack@5.89.0))(webpack-hot-middleware@2.26.0)
@@ -1331,6 +1334,9 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.20':
     resolution: {integrity: sha512-R8LcPeWZol2zR8mmH3JeKQ6QRCFb7XgUhV9ZlGhHLGyg4wpPiPZNQOOWhFZhxKw8u//yTbNGI42Bx/3paXEQ+Q==}
+
+  '@kurkle/color@0.3.2':
+    resolution: {integrity: sha512-fuscdXJ9G1qb7W8VdHi+IwRqij3lBkosAm4ydQtEmbY58OzHXqQhvlxqEkoz0yssNVn38bcpRWgA9PP+OGoisw==}
 
   '@leichtgewicht/ip-codec@2.0.4':
     resolution: {integrity: sha512-Hcv+nVC0kZnQ3tD9GVu5xSMR4VVYOteQIr/hwFPVEvPdlXqgGEuRjiheChHgdM+JyqdgNcmzZOX/tnl0JOiI7A==}
@@ -3312,6 +3318,20 @@ packages:
 
   character-reference-invalid@1.1.4:
     resolution: {integrity: sha512-mKKUkUbhPpQlCOfIuZkvSEgktjPFIsZKRRbC6KWVEMvlzblj3i3asQv5ODsrwt0N3pHAEvjP8KTQPHkp0+6jOg==}
+
+  chart.js@4.4.4:
+    resolution: {integrity: sha512-emICKGBABnxhMjUjlYRR12PmOXhJ2eJjEHL2/dZlWjxRAZT1D8xplLFq5M0tMQK8ja+wBS/tuVEJB5C6r7VxJA==}
+    engines: {pnpm: '>=8'}
+
+  chartjs-plugin-annotation@3.0.1:
+    resolution: {integrity: sha512-hlIrXXKqSDgb+ZjVYHefmlZUXK8KbkCPiynSVrTb/HjTMkT62cOInaT1NTQCKtxKKOm9oHp958DY3RTAFKtkHg==}
+    peerDependencies:
+      chart.js: '>=4.0.0'
+
+  chartjs-plugin-datalabels@2.2.0:
+    resolution: {integrity: sha512-14ZU30lH7n89oq+A4bWaJPnAG8a7ZTk7dKf48YAzMvJjQtjrgg5Dpk9f+LbjCF6bpx3RAGTeL13IXpKQYyRvlw==}
+    peerDependencies:
+      chart.js: '>=3.0.0'
 
   check-types@11.2.3:
     resolution: {integrity: sha512-+67P1GkJRaxQD6PKK0Et9DhwQB+vGg3PM5+aavopCpZT1lj9jeqfvpgTLAWErNj8qApkkmXlu/Ug74kmhagkXg==}
@@ -7421,6 +7441,12 @@ packages:
     resolution: {integrity: sha512-sZ41cxiU5llIB003yxxQBYrARBqe0repqPTTYBTmMqTz9szeBbE37BehCE891NZsmdZqqP+xWKdT3eo3vOzN8w==}
     engines: {node: '>=14'}
 
+  react-chartjs-2@5.2.0:
+    resolution: {integrity: sha512-98iN5aguJyVSxp5U3CblRLH67J8gkfyGNbiK3c+l1QI/G4irHMPQw44aEPmjVag+YKTyQ260NcF82GTQ3bdscA==}
+    peerDependencies:
+      chart.js: ^4.1.1
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+
   react-dev-utils@12.0.1:
     resolution: {integrity: sha512-84Ivxmr17KjUupyqzFode6xKhjwuEJDROWKJy/BthkL7Wn6NJ8h4WE6k/exAv6ImS+0oZLRRW5j/aINMHyeGeQ==}
     engines: {node: '>=14'}
@@ -9096,6 +9122,7 @@ packages:
 
   workbox-google-analytics@6.6.0:
     resolution: {integrity: sha512-p4DJa6OldXWd6M9zRl0H6vB9lkrmqYFkRQ2xEiNdBFp9U0LhsGO7hsBscVEyH9H2/3eZZt8c97NB2FD9U2NJ+Q==}
+    deprecated: It is not compatible with newer versions of GA starting with v4, as long as you are using GAv3 it should be ok, but the package is not longer being maintained
 
   workbox-navigation-preload@6.6.0:
     resolution: {integrity: sha512-utNEWG+uOfXdaZmvhshrh7KzhDu/1iMHyQOV6Aqup8Mm78D286ugu5k9MFD9SzBT5TcwgwSORVvInaXWbvKz9Q==}
@@ -10703,6 +10730,8 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.1
       '@jridgewell/sourcemap-codec': 1.4.15
 
+  '@kurkle/color@0.3.2': {}
+
   '@leichtgewicht/ip-codec@2.0.4': {}
 
   '@lit-labs/react@1.2.1': {}
@@ -11852,8 +11881,8 @@ snapshots:
     dependencies:
       core-js: 3.34.0
 
-  '@storybook/preset-create-react-app@4.1.2(c6jlemdm2426ohjl3hpoybwhpi)':
-    dependencies:
+  ? '@storybook/preset-create-react-app@4.1.2(@babel/core@7.23.6)(@storybook/node-logger@6.5.16)(@storybook/react@6.5.16(@babel/core@7.23.6)(@storybook/builder-webpack5@6.5.16(eslint@8.56.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(typescript@5.3.3))(@storybook/manager-webpack5@6.5.16(eslint@8.56.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(typescript@5.3.3))(@types/webpack@4.41.38)(eslint@8.56.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(require-from-string@2.0.2)(type-fest@0.21.3)(typescript@5.3.3)(webpack-dev-server@4.15.1(webpack@5.89.0))(webpack-hot-middleware@2.26.0))(@types/webpack@4.41.38)(react-refresh@0.11.0)(react-scripts@5.0.1(@babel/plugin-syntax-flow@7.23.3(@babel/core@7.23.6))(@babel/plugin-transform-react-jsx@7.23.4(@babel/core@7.23.6))(@types/babel__core@7.20.5)(@types/webpack@4.41.38)(eslint@8.56.0)(react@18.2.0)(sass@1.69.5)(type-fest@0.21.3)(typescript@5.3.3)(webpack-hot-middleware@2.26.0))(type-fest@0.21.3)(typescript@5.3.3)(webpack-dev-server@4.15.1(webpack@5.89.0))(webpack-hot-middleware@2.26.0)(webpack@5.89.0)'
+  : dependencies:
       '@babel/core': 7.23.6
       '@pmmmwh/react-refresh-webpack-plugin': 0.5.11(@types/webpack@4.41.38)(react-refresh@0.11.0)(type-fest@0.21.3)(webpack-dev-server@4.15.1(webpack@5.89.0))(webpack-hot-middleware@2.26.0)(webpack@5.89.0)
       '@storybook/node-logger': 6.5.16
@@ -13805,6 +13834,18 @@ snapshots:
   character-entities@1.2.4: {}
 
   character-reference-invalid@1.1.4: {}
+
+  chart.js@4.4.4:
+    dependencies:
+      '@kurkle/color': 0.3.2
+
+  chartjs-plugin-annotation@3.0.1(chart.js@4.4.4):
+    dependencies:
+      chart.js: 4.4.4
+
+  chartjs-plugin-datalabels@2.2.0(chart.js@4.4.4):
+    dependencies:
+      chart.js: 4.4.4
 
   check-types@11.2.3: {}
 
@@ -18716,6 +18757,11 @@ snapshots:
       regenerator-runtime: 0.13.11
       whatwg-fetch: 3.6.20
 
+  react-chartjs-2@5.2.0(chart.js@4.4.4)(react@18.2.0):
+    dependencies:
+      chart.js: 4.4.4
+      react: 18.2.0
+
   react-dev-utils@12.0.1(eslint@8.56.0)(typescript@5.3.3)(webpack@5.89.0):
     dependencies:
       '@babel/code-frame': 7.23.5
@@ -20425,7 +20471,7 @@ snapshots:
       schema-utils: 3.3.0
       webpack: 4.47.0
     optionalDependencies:
-      file-loader: 6.2.0(webpack@5.89.0)
+      file-loader: 6.2.0(webpack@4.47.0)
 
   url-parse-lax@3.0.0:
     dependencies:
