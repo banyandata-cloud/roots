@@ -154,9 +154,9 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 				setActiveIndex(parseInt(index, 10));
 			} else {
 				if (isControlled) {
-					onChange(clonedEvent, itemValueString.toString());
+					onChange(clonedEvent, itemValueString?.toString());
 				} else {
-					setUncontrolledValue(itemValueString.toString());
+					setUncontrolledValue(itemValueString?.toString());
 				}
 				setActiveIndex(null);
 				setOpen(false);

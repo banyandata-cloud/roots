@@ -32,41 +32,50 @@ export const sampleData = {
 
 export const sampleStackData = {
 	chartData: {
-		MySql: {
-			x1: 40,
-			x2: 0,
-		},
-		PgSql: {
-			x1: 0,
-			x2: 70,
-		},
-		MongoDb: {
-			x1: 70,
-			x2: 30,
-		},
-		MsSql: {
-			x1: 20,
-			x2: 80,
-		},
-		GCP: {
-			x1: 65,
-			x2: 35,
-		},
-		CD1: {
+		'Cloud Database': {
 			x1: 30,
-			x2: 70,
-		},
-		CD2: {
-			x1: 80,
-			x2: 20,
-		},
-		CD3: {
-			x1: 70,
 			x2: 30,
+			x3: 40,
 		},
-		CD4: {
+		Compute: {
+			x1: 0,
+			x2: 0,
+			x3: 100,
+		},
+		'Key Management Service': {
+			x1: 100,
+			x2: 0,
+			x3: 0,
+		},
+		'Logging & Monitoring': {
+			x1: 0,
+			x2: 100,
+			x3: 0,
+		},
+		'Logging & Monitoring2': {
 			x1: 20,
-			x2: 80,
+			x2: 50,
+			x3: 30,
+		},
+		'Logging & Monitoring3': {
+			x1: 20,
+			x2: 50,
+			x3: 30,
+		},
+		'Logging & Monitoring4': {
+			x1: 20,
+			x2: 50,
+			x3: 30,
+		},
+		'Logging & Monitoring5': {
+			x1: 20,
+			x2: 50,
+			x3: 30,
+		},
+		'Logging & Monitoring6': {
+			x1: 20,
+			x2: 50,
+			x3: 30,
 		},
 	},
 	metaData: {

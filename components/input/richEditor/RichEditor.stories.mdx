@@ -1,0 +1,37 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+import { ThemedContainer } from '../../helpers';
+import RichEditor from './RichEditor';
+
+<Meta title='Components/Input/RichEditor' parameters={{ options: { showToolbar: true } }} />
+
+export const Template = (args) => (
+	<ThemedContainer theme='light'>
+		<RichEditor {...args} />
+	</ThemedContainer>
+);
+
+# Radio
+
+#### Design - [Figma](https://www.figma.com/file/e9opoAtQHBo4vFd6u0Co98/Component-Library?node-id=151%3A18731&mode=dev) | Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/components/input/radio)
+
+> The Rich Text Editor component provides an accessible and easily customizable way to rich text editor. It supports both controlled and uncontrolled usage.
+
+## Usage
+
+Basic import and additional information on how to use this component.
+
+```js
+import { RichEditor } from '@banyan_cloud/roots';
+```
+
+## Stories
+
+The CSF rendered inside the `Canvas` from which you can see the implementation example.
+
+### Default
+
+The default Radio input.
+
+<Canvas>
+	<Story name='Default'>{Template.bind({})}</Story>
+</Canvas>

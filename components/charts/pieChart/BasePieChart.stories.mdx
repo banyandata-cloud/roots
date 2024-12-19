@@ -213,10 +213,25 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					console.log('OUT', e);
 				},
 			},
+			seriesOptionUpdate: {
+				labelLayout: {
+					x: '45%',
+				},
+			},
 			seriesOption: [
 				{
 					itemStyle: {
 						color: '#00459F',
+					},
+					label: {
+						show: true,
+						fontSize: '15',
+						color: 'black',
+						fontWeight: 'bold',
+						position: 'outside',
+						formatter() {
+							return `40 \nControls`;
+						},
 					},
 					emphasis: {
 						scaleSize: 25,
@@ -438,6 +453,9 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 			tooltip: {
 				trigger: 'item',
 			},
+			hideValue: 0,
+			hideIndex: 1,
+			startAngle: 90,
 			seriesOption: [
 				{
 					stackIndex: 1,
@@ -451,20 +469,76 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					label: {
 						show: false,
 					},
+					emphasis: {
+						disabled: true,
+					},
 					showBackground: false,
 				},
 				{
 					stackIndex: 2,
 					stack: 1,
-					color: COLORS.error,
+					color: COLORS.warning,
 					label: {
 						show: false,
+						color: COLORS.error,
+						padding: 4,
+						backgroundColor: 'white',
+						shadowBlur: 2,
+						shadowColor: 'grey',
+						formatter: (param) => {
+							const valueList = Object.entries(sampleStackData?.chartData);
+							console.log({
+								second: valueList,
+								1: valueList?.[param.dataIndex]?.[1]?.x1,
+								2: valueList?.[param.dataIndex]?.[1]?.x2,
+								3: valueList?.[param.dataIndex]?.[1]?.x3,
+							});
+							if (valueList?.[param.dataIndex]?.[1]?.x3 === 0) {
+								return `${valueList?.[param.dataIndex]?.[1]?.x1}%`;
+							}
+							return '';
+						},
 					},
 					itemStyle: {
 						borderWidth: 1,
 						borderColor: 'white',
 					},
 					showBackground: false,
+					emphasis: {
+						disabled: true,
+					},
+				},
+				{
+					stackIndex: 3,
+					stack: 1,
+					color: COLORS.error,
+					label: {
+						show: true,
+						color: COLORS.error,
+						padding: 4,
+						backgroundColor: 'white',
+						shadowBlur: 2,
+						shadowColor: 'grey',
+						formatter: (param) => {
+							const valueList = Object.entries(sampleStackData?.chartData);
+							console.log({
+								third: valueList,
+								1: valueList?.[param.dataIndex]?.[1]?.x1,
+								2: valueList?.[param.dataIndex]?.[1]?.x2,
+								3: valueList?.[param.dataIndex]?.[1]?.x3,
+							});
+							const val = valueList?.[param.dataIndex]?.[1]?.x1;
+							return `${val}%`;
+						},
+					},
+					itemStyle: {
+						borderWidth: 1,
+						borderColor: 'white',
+					},
+					showBackground: false,
+					emphasis: {
+						disabled: true,
+					},
 				},
 			],
 		}}>

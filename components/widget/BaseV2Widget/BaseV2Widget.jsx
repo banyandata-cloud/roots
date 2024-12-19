@@ -8,7 +8,7 @@ import {
 	useState,
 } from 'react';
 import { classes } from '../../../utils';
-import Togglev2 from '../../Toggle/Togglev2';
+import { Toggle } from '../../Toggle';
 import { BaseButton, Button } from '../../buttons';
 import { DatePicker } from '../../datePicker';
 import { ArrowIcon, CaretIcon, FilterIcon, MaximizeIcon } from '../../icons';
@@ -87,7 +87,9 @@ const generateOptions = ({ optionData, toggleDrawer }) => {
 			);
 		case 'toggle':
 			return (
-				<Togglev2
+				<Toggle
+					v2
+					{...optionData}
 					className={styles['toggle-body']}
 					smooth
 					secondary

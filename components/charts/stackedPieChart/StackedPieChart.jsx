@@ -104,6 +104,8 @@ const StackedPieChart = (props) => {
 		className = '',
 		theme = 'dark',
 		fallback,
+		hideValue = 0,
+		hideIndex = null,
 	} = props;
 
 	if (loading || fallback) {
@@ -151,8 +153,10 @@ const StackedPieChart = (props) => {
 
 				name: seriesName(index),
 				data: Object.keys(seriesData?.chartData ?? {}).map((key, subIndex) => {
+					const value = seriesData?.chartData?.[key]?.[`x${index + 1}`] ?? '';
+
 					return {
-						value: seriesData?.chartData?.[key]?.[`x${index + 1}`] ?? '',
+						value,
 						...((objectData?.color ?? '') && {
 							itemStyle: {
 								color: determineGradient(
@@ -167,6 +171,13 @@ const StackedPieChart = (props) => {
 						tooltip: {
 							...(seriesOption[subIndex]?.tooltip ?? {}),
 						},
+						...((hideIndex
+							? (seriesData?.chartData?.[key]?.[`x${hideIndex}`] ?? 0) === hideValue
+							: value === hideValue) && {
+							label: {
+								show: false,
+							},
+						}),
 					};
 				}),
 			};
