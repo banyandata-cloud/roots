@@ -48,8 +48,10 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 		name='Default'
 		args={{
 			title: 'Title',
-			height: '100%',
+			height: '90%',
 			width: '100%',
+			semiDoughnut: true,
+			customLegend: true,
 			cursor: 'default',
 			customLabel: {
 				display: true,
@@ -57,10 +59,15 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 				fontSize: '20px',
 				textColor: 'black',
 			},
+			compliance: {
+				fontStyle: 'normal',
+				fontSize: '10px',
+				textColor: 'black',
+				title: 'Strip',
+			},
 			radius: ['20%', '40%'],
 			center: ['50%', '50%'],
 			seriesData: sampleData,
-			semiDoughnut: true,
 			customDoughnut: true,
 			startAngle: 90,
 			options: {
@@ -73,7 +80,6 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 			legend: {
 				display: true,
 			},
-			customLegend: false,
 			seriesOption: [
 				{
 					stackIndex: 1,
@@ -185,6 +191,7 @@ Pie Chart as Icon
 			cursor: 'default',
 			radius: ['30%', '60%'],
 			seriesData: iconData,
+			complianceStrip: false,
 			tooltip: {
 				trigger: 'none',
 			},

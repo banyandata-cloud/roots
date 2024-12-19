@@ -47,6 +47,9 @@ export const sampleData = {
 		totalControls: {
 			x1: 786,
 		},
+		totalPercentage: {
+			x1: 60,
+		},
 	},
 };
 

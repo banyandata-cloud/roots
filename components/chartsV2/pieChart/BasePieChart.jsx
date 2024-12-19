@@ -1,6 +1,5 @@
-/* eslint-disable no-unused-expressions */
-/* eslint-disable no-nested-ternary */
 /* eslint-disable react/forbid-prop-types */
+/* eslint-disable no-nested-ternary */
 import { ArcElement, Chart as ChartJS, Legend, Title, Tooltip } from 'chart.js';
 import PropTypes from 'prop-types';
 import React, { useCallback, useRef, useState } from 'react';
@@ -32,6 +31,10 @@ const BasePieChart = (props) => {
 		width = '100%',
 		height = '100%',
 		customLabel,
+		complianceStrip, // New prop for compliance circle
+		complianceStripRadius = 35,
+		compliance,
+		complianceStripColors,
 	} = props;
 
 	const [excludedIndices, setExcludedIndices] = useState([]);
@@ -113,7 +116,7 @@ const BasePieChart = (props) => {
 								: defaultColors[index % defaultColors.length]; // Normal color for other borders
 					  }),
 				hoverBorderWidth: 7,
-				cutout: semiDoughnut ? '30%' : '0%',
+				cutout: semiDoughnut ? '30%' : complianceStrip ? '40%' : '0%',
 				hoverOffset: (context) => {
 					const index = context.dataIndex;
 					// Set hoverOffset to 30 for the hovered pie slice, whether from the legend or chart hover
@@ -128,6 +131,7 @@ const BasePieChart = (props) => {
 	};
 
 	const totalControlsValue = seriesData?.metaData?.totalControls?.x1 || 0;
+	const totalPercentage = seriesData?.metaData?.totalPercentage?.x1 || 0;
 
 	const options = {
 		...chartOptions,
@@ -244,18 +248,81 @@ const BasePieChart = (props) => {
 				ctx,
 				chartArea: { left, right, top, bottom },
 			} = chart;
+
 			ctx.save();
-			ctx.font = `${customLabel?.fontStyle} ${customLabel?.fontSize} Poppins`; // Font style and size
+
+			// Center text styling and positioning
+			ctx.font = `${customLabel?.fontStyle} ${customLabel?.fontSize} Poppins`;
 			ctx.textAlign = 'center';
 			ctx.textBaseline = 'middle';
-			ctx.fillStyle = customLabel?.textColor; // Text color
+			ctx.fillStyle = customLabel?.textColor;
 
-			// Calculate the center position of the doughnut
+			// Calculate the center position of the chart
 			const centerX = (left + right) / 2;
 			const centerY = (top + bottom) / 2;
 
-			// Render the totalControls value at the calculated center
+			// Render the center text
 			ctx.fillText(`${totalControlsValue}`, centerX, centerY);
+
+			const titleOffset = 20; // Adjust this value to control spacing below the totalControlsValue
+			ctx.font = `${compliance?.fontStyle} ${compliance?.fontSize} Poppins`; // Title font style
+			ctx.fillStyle = `${compliance?.textColor}`; // Title text color (gray)
+			ctx.fillText(`${compliance?.title}`, centerX, centerY + titleOffset);
+
+			// Render compliance strip if `complianceStrip` is true
+			if (complianceStrip) {
+				const radius = complianceStripRadius; // Radius for the outer ring
+				const stripThickness = 8; // Thickness of the strip
+				const compliancePercentage = totalPercentage; // Set compliance percentage
+
+				// Fixed start and end angles
+				const startAngle = (130 * Math.PI) / 180; // Convert degrees to radians
+				const endAngle = (55 * Math.PI) / 180; // Convert degrees to radians
+
+				// Total angle of the arc (adjusting for crossing 360 degrees)
+				let totalAngle = endAngle - startAngle;
+				if (totalAngle < 0) {
+					totalAngle += 2 * Math.PI; // Ensure positive value for angles crossing 360
+				}
+
+				// Calculate the compliance angle based on the percentage
+				const complianceAngle = (compliancePercentage / 100) * totalAngle;
+				const complianceEndAngle = startAngle + complianceAngle;
+
+				// Set line join for rounded edges
+				ctx.lineJoin = 'round';
+
+				// Draw the compliance strip (colored section)
+				const gradient = ctx.createLinearGradient(
+					centerX - radius,
+					centerY - radius,
+					centerX + radius,
+					centerY + radius
+				);
+
+				gradient.addColorStop(0, complianceStripColors?.start ?? '#4CAF50'); // Start color
+				gradient.addColorStop(1, complianceStripColors?.end ?? '#FFC107'); // End color
+
+				ctx.beginPath();
+				ctx.arc(centerX, centerY, radius + stripThickness, startAngle, complianceEndAngle);
+				ctx.lineWidth = stripThickness;
+				ctx.strokeStyle = gradient;
+				ctx.stroke();
+
+				// Draw the remaining section (grey color)
+				ctx.beginPath();
+				ctx.arc(
+					centerX,
+					centerY,
+					radius + stripThickness,
+					complianceEndAngle,
+					startAngle + totalAngle
+				);
+				ctx.lineWidth = stripThickness;
+				ctx.strokeStyle = '#B7CADB'; // Grey color
+				ctx.stroke();
+			}
+
 			ctx.restore();
 		},
 	};
