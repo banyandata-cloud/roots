@@ -135,7 +135,7 @@
   fill: var(--dark-grey);
 }
 .root .header .header-options .header-options-list .toggle-body {
-  padding: 0.125rem 0.25rem;
+  padding: 0rem 0.25rem;
   height: 1.875rem;
 }
 .root .header .header-options .header-options-list .date-picker {
