@@ -1,0 +1,873 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+
+import { COLORS } from '../../../styles';
+import { ThemedContainer, ToggleIframeContainer } from '../../helpers';
+import BasePieChart from './NestedPieChart.jsx';
+
+import { sampleData, iconData, iconColor } from './NestedPieChartData.js';
+
+<Meta title='Components/ChartsV2/NestedPieChart' parameters={{ options: { showToolbar: false } }} />
+
+export const Template = (args) => (
+	<ThemedContainer
+		{...args}
+		style={{
+			height: '600px',
+		}}>
+		<BasePieChart {...args} />
+	</ThemedContainer>
+);
+
+# Pie Chart
+
+A visual represention of Data that is displays division of values as compared to Total amount.
+
+#### Design - [Figma](https://www.figma.com/file/Cx1dHCv47N2i35IP8wNz1u/Charts?type=design&node-id=43-31463&mode=design&t=CHtnZmqsfkOQE9cx-0) | Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/components/charts/pieChart)
+
+> This components uses the `echarts` utility library to use the Basic Visual Components and properties to customise the same for required use case and `EChartsReactCore` utility library to Wrap the Charts for React Projects.
+
+## Usage
+
+Basic import and additional information on how to use this component.
+
+```js
+import { BasePieChart } from '@banyan_cloud/roots';
+```
+
+-   The Pie Chart is just like any other chart with standard `chartData` and `metaData` values alongwith props to control customization.
+-   The `className` of the Chart can be adjusted in the implementaion code to match its flexibility with respect to its container.
+
+## Stories
+
+The CSF rendered inside the `Canvas` from which you can see the implementation example.
+
+### Default Pie Chart
+
+<Canvas>
+	<Story
+		name='Default'
+		args={{
+			title: 'Title',
+			stackedCharts: true,
+			gridOptions: {
+				height: '50%',
+				width: '50%',
+			},
+			cursor: 'default',
+			radius: ['20%', '40%'],
+			center: ['50%', '50%'],
+			seriesData: sampleData,
+			semiDoughnut: true,
+			startAngle: 90,
+			tooltip: {
+				trigger: 'item',
+				backgroundColor: '#d3d3d3', // Light grey background for the tooltip
+				borderColor: (param) => param.color, // Border same as the pie section color
+				borderWidth: 1,
+				formatter: (param) => {
+					const index = Object.keys(sampleData.metaData.keyData).find((key) => {
+						return sampleData.metaData.keyData[key] === param.name;
+					});
+					return `${param.marker} ${param.name} ${sampleData.metaData.controlsApplied[index].comp}/${sampleData.metaData.controlsApplied[index].count}`;
+				},
+				textStyle: {
+					whiteSpace: 'nowrap', // Ensure text is in a single line
+				},
+			},
+			itemStyle: {
+				borderWidth: 5,
+				borderColor: 'black',
+				borderType: 'solid',
+			},
+			legend: {
+				show: true,
+				orient: 'vertical',
+				left: 'right', // Position the legend to the right of the chart
+				top: 'middle', // Vertically align the legend
+				itemWidth: 10, // Decrease the size of the legend color box
+				itemHeight: 10, // Decrease the size of the legend color box
+				itemGap: 10, // Space between the legend items
+				borderColor: '#ccc', // Thinner border
+				borderWidth: 1, // Make the border thin
+				selectedMode: true,
+			},
+			seriesOption: [
+				{
+					stackIndex: 1,
+					itemStyle: {
+						color: '#00459F',
+					},
+					label: {
+						show: true,
+						fontSize: '15',
+						color: 'black',
+						fontWeight: 'bold',
+						position: 'center',
+						formatter() {
+							return `40 \nControls`;
+						},
+					},
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 0, 0.5)',
+						},
+					},
+				},
+				{
+					stackIndex: 2,
+					itemStyle: {
+						color: '#0056C7',
+					},
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 5)',
+						},
+					},
+					emphasis: {
+						scaleSize: 25,
+					},
+				},
+				{
+					stackIndex: 3,
+					itemStyle: {
+						color: '#3076D2',
+					},
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 5)',
+						},
+					},
+					emphasis: {
+						scaleSize: 25,
+					},
+				},
+				{
+					stackIndex: 4,
+					itemStyle: {
+						color: '#6096DD',
+					},
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 5)',
+						},
+					},
+					emphasis: {
+						scaleSize: 25,
+					},
+				},
+				{
+					stackIndex: 5,
+					itemStyle: {
+						color: '#90B6E9',
+					},
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 5)',
+						},
+					},
+				},
+				{
+					stackIndex: 6,
+					itemStyle: {
+						color: '#A8C6EE',
+					},
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 5)',
+						},
+					},
+				},
+				{
+					stackIndex: 7,
+					itemStyle: {
+						color: '#C0D6F4',
+					},
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 5)',
+						},
+					},
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 0, 0.5)',
+						},
+					},
+				},
+				{
+					stackIndex: 8,
+					itemStyle: {
+						color: '#D8E6F9',
+					},
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 5)',
+						},
+					},
+				},
+				{
+					stackIndex: 9,
+					itemStyle: {
+						color: '#F0F6FF',
+					},
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 5)',
+						},
+					},
+				},
+				{
+					stackIndex: 10,
+					itemStyle: {
+						color: '#001128',
+					},
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 5)',
+						},
+					},
+				},
+				{
+					stackIndex: 11,
+					itemStyle: {
+						color: '#001A3C',
+					},
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 5)',
+						},
+					},
+				},
+				{
+					stackIndex: 12,
+					itemStyle: {
+						color: '#001A3C',
+					},
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 5)',
+						},
+					},
+				},
+				{
+					stackIndex: 13,
+					itemStyle: {
+						color: '#002250',
+					},
+					emphasis: {
+						scaleSize: 25,
+						itemStyle: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 5)',
+						},
+					},
+				},
+			],
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Pie Chart as Icon
+
+Pie Chart as Icon
+
+<Canvas>
+	<Story
+		name='Pie Icon'
+		args={{
+			title: 'Title',
+			gridOptions: {
+				height: '100%',
+				width: '100%',
+			},
+			cursor: 'default',
+			radius: ['30%', '60%'],
+			seriesData: iconData,
+			semiDoughnut: true,
+			tooltip: {
+				trigger: 'none',
+			},
+			itemStyle: {
+				borderWidth: 5,
+				borderColor: 'black',
+				borderType: 'solid',
+			},
+			legend: {
+				show: false,
+			},
+			seriesOption: [
+				{
+					stackIndex: 1,
+					emphasis: {
+						disabled: true,
+					},
+					itemStyle: {
+						color: iconColor(iconData?.chartData?.x1),
+					},
+					label: {
+						show: false,
+					},
+				},
+				{
+					stackIndex: 2,
+					emphasis: {
+						disabled: true,
+					},
+					itemStyle: {
+						color: 'whitesmoke',
+					},
+					label: {
+						show: false,
+					},
+				},
+				{
+					stackIndex: 3,
+					emphasis: {
+						disabled: true,
+					},
+					itemStyle: {
+						color: 'blue',
+					},
+					label: {
+						show: false,
+					},
+				},
+			],
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Loading State in Pie Chart Chart
+
+<Canvas>
+	<Story
+		name='Loading State'
+		args={{
+			title: 'Title',
+			gridOptions: {
+				height: '100%',
+				width: '100%',
+			},
+			cursor: 'default',
+			radius: ['30%', '60%'],
+			center: ['50%', '50%'],
+			seriesData: sampleData,
+			semiDoughnut: false,
+			startAngle: 90,
+			loading: true,
+			tooltip: {
+				trigger: 'item',
+				formatter: (param) => {
+					const index = Object.keys(sampleData.metaData.keyData).find((key) => {
+						return sampleData.metaData.keyData[key] === param.name;
+					});
+					return `${param.marker} ${param.name} ${sampleData.metaData.controlsApplied[index].comp}/${sampleData.metaData.controlsApplied[index].count}`;
+				},
+			},
+			itemStyle: {
+				borderWidth: 5,
+				borderColor: 'black',
+				borderType: 'solid',
+			},
+			legend: {
+				show: true,
+				top: '80%',
+				left: '30%',
+				orient: 'vertical',
+				selectedMode: true,
+			},
+			seriesOption: [
+				{
+					stackIndex: 1,
+					itemStyle: {
+						color: '#0F62FE',
+					},
+					label: {
+						show: true,
+						fontSize: '20',
+						color: 'black',
+						fontWeight: 'bold',
+						position: 'outside',
+						formatter(d) {
+							return d.name !== '' ? `${d.value}%\n${d.name}` : null;
+						},
+					},
+				},
+				{
+					stackIndex: 2,
+					itemStyle: {
+						color: '#71EEFF',
+					},
+				},
+				{
+					stackIndex: 3,
+					itemStyle: {
+						color: '#67F990',
+					},
+					tooltip: {
+						trigger: 'none',
+					},
+				},
+			],
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+## Try in the Code Editor
+
+This embeded `CodeSandBox` is external third party code editor `iframe` shared publicly. It is advised to create an account with banyancloud mail id to create/fork this sandbox.
+
+<ToggleIframeContainer>
+	<iframe
+		src='https://codesandbox.io/s/elastic-panini-w59l97?file=/src/App.js'
+		style={{ width: '100%', height: 500 }}
+		title='xenodochial-moon-5y668f'
+		allow='accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking'
+		sandbox='allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts'></iframe>
+</ToggleIframeContainer>
+
+## API
+
+**`loading`**
+
+loading indicates the waiting state of chart while data is loading
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>bool</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<BasePieChart loading={false} />
+```
+
+**`title`**
+
+An optional Key to give a title to the Chart.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>''</td>
+	</tr>
+</table>
+
+```jsx
+<BasePieChart title='Title' />
+```
+
+**`gridOptions`**
+
+Object that set Chart Layout Dimensions from Left, Right, Top and Bottom.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>object</td>
+		<td>
+			{JSON.stringify({
+				left: 0,
+				right: 0,
+				bottom: 0,
+				top: 0,
+			})}
+		</td>
+	</tr>
+</table>
+
+```jsx
+<BasePieChart
+	gridOptions={{
+		left: 50,
+		right: 50,
+		bottom: 50,
+		top: 100,
+	}}
+/>
+```
+
+**`tooltip`**
+
+Tooltip key can be used to format and display Data in Tooltip for Charts, it can be triggered through several events as input by dev.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>object</td>
+		<td>{}</td>
+	</tr>
+</table>
+
+```jsx
+<BasePieChart
+	tooltip={{
+		show: true,
+		trigger: 'item',
+		axisPointer: {
+			type: 'cross',
+			label: {
+				backgroundColor: '#6a7985',
+			},
+		},
+		triggerOn: 'mousemove',
+	}}
+/>
+```
+
+**`seriesData`**
+
+The Actual Data which will be displayed in the Chart. It must have 2 keys - 'chartData' and 'metaData'.
+The chartData can have any number of keys representing Data in object.
+The metaData can have any other required Data.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>REQUIRED</th>
+	</tr>
+	<tr>
+		<td>Object</td>
+		<td>{}</td>
+	</tr>
+</table>
+
+```jsx
+<BasePieChart
+	seriesData={{
+		chartData: {
+			x1: 30,
+			x2: 25,
+			x3: 45,
+		},
+	}}
+/>
+```
+
+**`onEvents`**
+
+Callback to control 'Click' event on Pie Circle
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Function</td>
+		<td>() => {}</td>
+	</tr>
+</table>
+
+```jsx
+<BasePieChart
+	onEvents={{
+		click: functionName,
+	}}
+/>
+```
+
+**`cursor`**
+
+Key to modify 'cursor' UI, it supports all standard css cursor options.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>default</td>
+	</tr>
+</table>
+
+```jsx
+<BasePieChart cursor='default' />
+```
+
+**`seriesOption`**
+
+This key contains an Array of Objects where each Object maps to each Data-Value and allows customization of them individually.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>REQUIRED</th>
+	</tr>
+	<tr>
+		<td>Array</td>
+		<td>[]</td>
+	</tr>
+</table>
+
+```jsx
+<BasePieChart seriesOption=[
+		{
+			stackIndex: 1,
+			color: COLORS.success,
+			backgroundStyle: {
+				color: 'transparent',
+			},
+			label: {
+				show: true,
+				formatter(param) {
+					return param.name;
+				},
+			},
+		},
+	] />
+```
+
+**`radius`**
+
+This key defines the Radius of Inner and Outer circle forming the Pie.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>REQUIRED</th>
+	</tr>
+	<tr>
+		<td>Array</td>
+		<td>['30%', '60%']</td>
+	</tr>
+</table>
+
+```jsx
+<BasePieChart radius={['30%', '60%']} />
+```
+
+**`center`**
+
+This key defines the center Pie with respect to Top and Right.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>REQUIRED</th>
+	</tr>
+	<tr>
+		<td>Array</td>
+		<td>['30%', '60%']</td>
+	</tr>
+</table>
+
+```jsx
+<BasePieChart center={['30%', '60%']} />
+```
+
+**`showLabelLine`**
+
+An optional key to display Line conneting Label to it's Area.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<BasePieChart showLabelLine={false} />
+```
+
+**`startAngle`**
+
+Key to decide starting angle of the Pie Circle.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Number</td>
+		<td>90</td>
+	</tr>
+</table>
+
+```jsx
+<BasePieChart startAngle={180} />
+```
+
+**`itemStyle`**
+
+This key provides Customization of Area Items in Pie Chart.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Object</td>
+		<td>
+			{JSON.stringify({
+				borderWidth: 5,
+				borderColor: 'white',
+				borderType: 'solid',
+			})}
+		</td>
+	</tr>
+</table>
+
+```jsx
+<BasePieChart
+	itemStyle={{
+		borderWidth: 5,
+		borderColor: 'white',
+		borderType: 'solid',
+	}}
+/>
+```
+
+**`legend`**
+
+Legend key is used to customise Chart Legend and the it's data.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Object</td>
+		<td>
+			{JSON.stringify({
+				show: false,
+			})}
+		</td>
+	</tr>
+</table>
+
+```jsx
+<BasePieChart
+	legend={{
+		show: false,
+	}}
+/>
+```
+
+**`style`**
+
+Key to change styles thorugh standard CSS values.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>object</td>
+		<td>
+			{JSON.stringify({
+				width: '100%',
+				height: '100%',
+			})}
+		</td>
+	</tr>
+</table>
+
+```jsx
+<BasePieChart style={{ width: '90%' }} />
+```
+
+**`className`**
+
+Key to change style through external className.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>''</td>
+	</tr>
+</table>
+
+```jsx
+<BasePieChart className='chart-area' />
+```
+
+**`theme`**
+
+The color theme of the container to select between `light` or `dark` mode.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>"dark"</td>
+	</tr>
+</table>
+
+```jsx
+<BasePieChart theme='light' />
+```
