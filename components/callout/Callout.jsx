@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types';
 import { forwardRef } from 'react';
 import { classes } from '../../utils/utils';
-import { Button } from '../buttons';
-import { AlertIcon, CrossIcon } from '../icons';
+import { AlertIcon } from '../icons';
 import styles from './Callout.module.css';
 
 /**
@@ -27,8 +26,6 @@ const Callout = forwardRef((props) => {
 		icon: CustomIcon,
 		action: CustomAction,
 		type,
-		onClose,
-		autoDismiss,
 	} = props;
 
 	let Icon = null;
@@ -64,26 +61,19 @@ const Callout = forwardRef((props) => {
 					{showIcon && Icon}
 				</div>
 				<div className={styles.content}>
-					<span className={styles.title}>{title}</span>
-					<span className={styles.description}>{description}</span>
+					{title && (
+						<span data-elem='title' className={styles.title}>
+							{title}
+						</span>
+					)}
+					{description && (
+						<span data-elem='desc' className={styles.description}>
+							{description}
+						</span>
+					)}
 				</div>
 			</div>
-			<div className={styles.actions}>
-				{CustomAction && <CustomAction />}
-				{onClose && !autoDismiss && (
-					<Button
-						size='auto'
-						variant='text'
-						onClick={() => {
-							onClose();
-						}}
-						className={styles.close}
-						leftComponent={() => {
-							return <CrossIcon className={styles.icon} />;
-						}}
-					/>
-				)}
-			</div>
+			<div className={styles.actions}>{CustomAction && <CustomAction />}</div>
 		</div>
 	);
 });
