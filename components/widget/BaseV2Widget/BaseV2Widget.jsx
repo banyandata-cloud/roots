@@ -109,7 +109,6 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 	const {
 		loading = false,
 		title = '',
-		subtitle = '',
 		titleOptions = null,
 		showBack = false,
 		onBack = () => {},
@@ -121,8 +120,6 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 		fallbackProps = {
 			className: '',
 			title: "We're having trouble loading this data",
-			subtitle:
-				'There could be something happening on our end. Reload this widget to try again.',
 		},
 		setFallback = () => {},
 		showFallback = false,
@@ -132,6 +129,7 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 		onTouchEnd,
 		titleDesc,
 		body: Body = () => {},
+		headerOptions = null,
 	} = props;
 
 	const emptyChartData = useMemo(() => {
@@ -177,16 +175,8 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 						{title}
 					</Text>
 				)}
-				{subtitle && (
-					<Text
-						variant='b1'
-						stroke='medium'
-						attrs={{
-							'data-elem': 'subtitle',
-						}}>
-						{' '}
-						{subtitle}
-					</Text>
+				{headerOptions && (
+					<Toggle v2 className={styles['toggle-body']} smooth {...headerOptions} />
 				)}
 			</Text>
 			{titleDesc && (
