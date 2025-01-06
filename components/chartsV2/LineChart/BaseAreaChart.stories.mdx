@@ -24,17 +24,6 @@ export const Template = (args) => (
 					}),
 				},
 			}}
-			tooltip={{
-				show: true,
-				trigger: 'item',
-				axisPointer: {
-					type: 'cross',
-					label: {
-						backgroundColor: '#6a7985',
-					},
-				},
-				triggerOn: 'mousemove',
-			}}
 		/>
 	</ThemedContainer>
 );
@@ -55,17 +44,6 @@ export const TemplateV2 = (args) => (
 						return `${d.getHours()}:${d.getMinutes()}`;
 					}),
 				},
-			}}
-			tooltip={{
-				show: true,
-				trigger: 'item',
-				axisPointer: {
-					type: 'cross',
-					label: {
-						backgroundColor: '#6a7985',
-					},
-				},
-				triggerOn: 'mousemove',
 			}}
 		/>
 	</ThemedContainer>
@@ -154,6 +132,17 @@ The default Area Chart with Areas Stacked.
 			errorHandle: () => {
 				alert('This will Call Fetch API again');
 			},
+			tooltip: {
+				displayColors: true,
+				colorBoxWidth: 7,
+				colorBoxHeight: 7,
+				bodyFont: {
+					size: 14,
+					weight: 500,
+					textAlign: 'left',
+					family: 'Poppins',
+				},
+			},
 		}}>
 		{Template.bind({})}
 	</Story>
@@ -213,6 +202,17 @@ The Line Chart with transparent areas and unstacked Lines.
 				display: true,  // Ensure this is not set to false
 			},
 			cursor: 'default',
+			tooltip: {
+				displayColors: true,
+				colorBoxWidth: 7,
+				colorBoxHeight: 7,
+				bodyFont: {
+					size: 14,
+					weight: 500,
+					textAlign: 'left',
+					family: 'Poppins',
+				},
+			},
 		}}>
 		{TemplateV2.bind({})}
 	</Story>

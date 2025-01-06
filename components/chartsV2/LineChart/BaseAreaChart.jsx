@@ -82,101 +82,105 @@ const BaseAreaChart = (props) => {
 		'rgba(153, 102, 255, 1)',
 		'rgba(255, 159, 64, 1)',
 	];
-  	const legendRef = useRef(null);
+	const legendRef = useRef(null);
 
-		const [hiddenDatasets, setHiddenDatasets] = useState([]);
+	const [hiddenDatasets, setHiddenDatasets] = useState([]);
 
-		const toggleDatasetVisibility = (index, chart) => {
-			setHiddenDatasets((prevHidden) => {
-				const newHidden = prevHidden.includes(index)
-					? prevHidden.filter((i) => { return i !== index; })
-					: [...prevHidden, index];
+	const toggleDatasetVisibility = (index, chart) => {
+		setHiddenDatasets((prevHidden) => {
+			const newHidden = prevHidden.includes(index)
+				? prevHidden.filter((i) => {
+						return i !== index;
+				  })
+				: [...prevHidden, index];
 
-				// Update the chart visibility
-				chart.data.datasets[index].hidden = newHidden.includes(index);
-				chart.update();
+			// Update the chart visibility
+			chart.data.datasets[index].hidden = newHidden.includes(index);
+			chart.update();
 
-				return newHidden;
-			});
-		};
+			return newHidden;
+		});
+	};
 
-		const customLegendPlugin = {
-			id: 'customLegend',
-			afterUpdate(chart) {
-				// Clear existing legend items
-				const ul = legendRef.current;
-				while (ul?.firstChild) {
-					ul.firstChild.remove();
-				}
+	const customLegendPlugin = {
+		id: 'customLegend',
+		afterUpdate(chart) {
+			// Clear existing legend items
+			const ul = legendRef.current;
+			while (ul?.firstChild) {
+				ul.firstChild.remove();
+			}
 
-				// Loop through the datasets and create legend items
-				chart.data.datasets.forEach((dataset, index) => {
-					const li = document.createElement('li');
-					li.style.display = 'flex';
-					li.style.alignItems = 'center';
-					li.style.cursor = 'pointer';
-					li.style.opacity = hiddenDatasets.includes(index) ? '0.5' : '1';
-					li.style.margin = '0 10px';
+			// Loop through the datasets and create legend items
+			chart.data.datasets.forEach((dataset, index) => {
+				const li = document.createElement('li');
+				li.style.display = 'flex';
+				li.style.alignItems = 'center';
+				li.style.cursor = 'pointer';
+				li.style.opacity = hiddenDatasets.includes(index) ? '0.5' : '1';
+				li.style.margin = '0 10px';
 
-					const textColor = hiddenDatasets.includes(index) ? 'grey' : 'inherit';
-					const circleColor = hiddenDatasets.includes(index)
-						? 'grey'
-						: dataset.backgroundColor;
+				const textColor = hiddenDatasets.includes(index) ? 'grey' : 'inherit';
+				const circleColor = hiddenDatasets.includes(index)
+					? 'grey'
+					: dataset.backgroundColor;
 
-					li.onclick = () => {
-						// Toggle visibility of the dataset
-						toggleDatasetVisibility(index, chart);
+				li.onclick = () => {
+					// Toggle visibility of the dataset
+					toggleDatasetVisibility(index, chart);
 
-						// Apply grey-out effect on click
-						if (li.style.color === 'grey') {
-							li.style.color = 'inherit';
+					// Apply grey-out effect on click
+					if (li.style.color === 'grey') {
+						li.style.color = 'inherit';
+					} else {
+						li.style.color = 'grey';
+					}
+
+					const circle = li.querySelector('circle');
+					if (circle) {
+						if (circle.getAttribute('stroke') === 'grey') {
+							circle.setAttribute('stroke', dataset.backgroundColor);
 						} else {
-							li.style.color = 'grey';
+							circle.setAttribute('stroke', 'grey');
 						}
+					}
+				};
 
-						const circle = li.querySelector('circle');
-						if (circle) {
-							if (circle.getAttribute('stroke') === 'grey') {
-								circle.setAttribute('stroke', dataset.backgroundColor);
-							} else {
-								circle.setAttribute('stroke', 'grey');
-							}
-						}
-					};
-
-					li.innerHTML = `
+				li.innerHTML = `
 				<svg width="15" height="15" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<circle cx="15" cy="15" r="12" stroke="${circleColor}" stroke-width="6"/>
 				</svg>
 				<span style="margin-left: 10px; color: ${textColor};">${dataset.label}</span>
 				`;
 
-					ul?.appendChild(li);
-				});
-			},
-		};
+				ul?.appendChild(li);
+			});
+		},
+	};
 
 	const chartData = {
 		labels: seriesData?.metaData?.xAxisData ?? [],
 		datasets: Object.keys(seriesData?.chartData ?? {}).map((key, index) => {
- 		return {
-			label: key,
-			data: seriesData?.chartData[key] ?? [],
-			fill: !isLineChart,
-			backgroundColor: isLineChart ? 'transparent' : lineColors[index % lineColors.length],
-			borderColor: borderColors[index % borderColors.length],
-			tension: smooth ? 0.4 : 0,
-			borderWidth: 2,
-			pointRadius: 4,
-			pointHoverRadius: 6,
-			pointBackgroundColor: borderColors[index % borderColors.length],
-			pointStyle: 'rectRot',
-			datalabels: {
-				display: false, // Disable data labels on points
-			},
-			// ...seriesOption[index], // Add any additional series options here
-		};
-}),
+			return {
+				label: key,
+				data: seriesData?.chartData[key] ?? [],
+				fill: !isLineChart,
+				backgroundColor: isLineChart
+					? 'transparent'
+					: lineColors[index % lineColors.length],
+				borderColor: borderColors[index % borderColors.length],
+				tension: smooth ? 0.4 : 0,
+				borderWidth: 2,
+				pointRadius: 4,
+				pointHoverRadius: 6,
+				pointBackgroundColor: borderColors[index % borderColors.length],
+				pointStyle: 'rectRot',
+				datalabels: {
+					display: false, // Disable data labels on points
+				},
+				// ...seriesOption[index], // Add any additional series options here
+			};
+		}),
 	};
 
 	const chartOptions = {
@@ -197,17 +201,44 @@ const BaseAreaChart = (props) => {
 					borderRadius: 50, // Ensure the shape is circular
 					padding: 10, // Padding around legend items
 					usePointStyle: true, // Use circular point style for legends
+					font: {
+						family: 'Poppins',
+					},
 				},
 			},
 			tooltip: {
-				enabled: tooltip?.show ?? true,
-				trigger: tooltip?.trigger ?? 'item',
-				axisPointer: tooltip?.axisPointer ?? {
-					type: 'cross',
+				...tooltip,
+				borderWidth: tooltip?.borderWidth ?? 1,
+				borderColor: (context) => {
+					const segmentColor = context?.tooltipItems[0]?.dataset?.backgroundColor;
+
+					return segmentColor || 'black';
 				},
-				triggerOn: tooltip?.triggerOn ?? 'mousemove',
-				label: {
-					backgroundColor: '#6a7985',
+				backgroundColor: 'rgba(255, 255, 255, 1)',
+				callbacks: tooltip?.callbacks ?? {
+					label: (context) => {
+						const label = context?.dataset?.label || '';
+						const value = context?.formattedValue;
+						return `${label}: ${value}`;
+					},
+					title: tooltip.displayTitle
+						? (tooltipItems) => {
+								return tooltipItems[0]?.label || '';
+						  }
+						: () => {
+								return '';
+						  },
+				},
+				bodySpacing: tooltip?.bodySpacing ?? 5,
+				displayColors: tooltip?.displayColors ?? true,
+				boxWidth: tooltip?.colorBoxWidth ?? 5,
+				boxHeight: tooltip?.colorBoxHeight ?? 5,
+				boxPadding: 5,
+				usePointStyle: tooltip?.usePointStyle ?? true,
+				titleColor: tooltip?.bodyFont?.titleColor ?? '#000',
+				bodyColor: tooltip?.bodyFont?.color ?? '#000',
+				bodyFont: {
+					...tooltip.bodyFont,
 				},
 			},
 			title: {
@@ -217,6 +248,7 @@ const BaseAreaChart = (props) => {
 				font: {
 					size: 16,
 					weight: 'bold',
+					family: 'Poppins',
 				},
 			},
 		},
@@ -231,6 +263,7 @@ const BaseAreaChart = (props) => {
 					color: axisLabelColor || COLORS.grey,
 					font: {
 						size: 14,
+						family: 'Poppins',
 					},
 				},
 				grid: {
@@ -243,6 +276,9 @@ const BaseAreaChart = (props) => {
 				},
 				ticks: {
 					color: axisLabelColor || COLORS.grey,
+					font: {
+						family: 'Poppins',
+					},
 					stepSize: 100,
 				},
 				borderColor: xAxisLineShow ? 'rgba(0, 0, 0, 0)' : 'rgba(0, 0, 0, 0)',
@@ -257,6 +293,7 @@ const BaseAreaChart = (props) => {
 					color: axisLabelColor || COLORS.grey,
 					font: {
 						size: 14,
+						family: 'Poppins',
 					},
 				},
 				grid: {
@@ -266,6 +303,9 @@ const BaseAreaChart = (props) => {
 				ticks: {
 					color: axisLabelColor || COLORS.grey,
 					stepSize: 100,
+					font: {
+						family: 'Poppins',
+					},
 					callback:
 						yAxis?.callback ??
 						((value) => {

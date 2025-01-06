@@ -31,6 +31,7 @@ const BaseVerticalBarChart = ({
 	xAxisTitle,
 	yAxisTitle,
 	dataLabels,
+	tooltip,
 }) => {
 	if (loading) {
 		return <Skeleton />;
@@ -74,6 +75,7 @@ const BaseVerticalBarChart = ({
 				display: true,
 				font: {
 					size: title?.textStyle?.fontSize || 12,
+					family: 'Poppins',
 				},
 				align: 'start',
 				padding: {
@@ -81,11 +83,34 @@ const BaseVerticalBarChart = ({
 				},
 			},
 			tooltip: {
+				...tooltip,
+				borderWidth: tooltip?.borderWidth ?? 1,
+				borderColor: tooltip?.borderColor ?? COLORS.success,
+				backgroundColor: 'rgba(255, 255, 255, 1)',
+				bodySpacing: tooltip?.bodySpacing ?? 5,
+				displayColors: tooltip?.displayColors ?? true,
+				boxWidth: tooltip?.colorBoxWidth ?? 5,
+				boxHeight: tooltip?.colorBoxHeight ?? 5,
+				boxPadding: 5,
+				usePointStyle: tooltip?.usePointStyle ?? true,
+				titleColor: tooltip?.bodyFont?.titleColor ?? '#000',
+				bodyColor: tooltip?.bodyFont?.color ?? '#000',
+				bodyFont: {
+					...tooltip.bodyFont,
+					family: 'Poppins',
+				},
 				callbacks: {
 					label: (tooltipItem) => {
 						const label = seriesData.metaData.controlsApplied[tooltipItem.label]?.x1;
 						return `${tooltipItem.dataset.label}: ${label}`;
 					},
+					title: tooltip.displayTitle
+						? (tooltipItems) => {
+								return tooltipItems[0]?.label || '';
+						  }
+						: () => {
+								return '';
+						  },
 				},
 			},
 			legend: {
@@ -100,6 +125,7 @@ const BaseVerticalBarChart = ({
 				font: {
 					// weight: 'bold',
 					size: 12,
+					family: 'Poppins',
 				},
 				offset: 4, // Space between the bar and the label
 				formatter: (value, context) => {
@@ -118,11 +144,17 @@ const BaseVerticalBarChart = ({
 					callback: (value, index) => {
 						return seriesData.chartData[labels[index]]?.x1;
 					},
+					font: {
+						family: 'Poppins',
+					},
 				},
 				title: {
 					display: true,
 					text: xAxisTitle,
 					color: 'black',
+					font: {
+						family: 'Poppins',
+					},
 				},
 			},
 			y: {
@@ -133,11 +165,17 @@ const BaseVerticalBarChart = ({
 				ticks: {
 					color: 'black',
 					beginAtZero: true,
+					font: {
+						family: 'Poppins',
+					},
 				},
 				title: {
 					display: true,
 					text: yAxisTitle,
 					color: 'black',
+					font: {
+						family: 'Poppins',
+					},
 				},
 			},
 		},

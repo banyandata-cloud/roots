@@ -22,18 +22,7 @@ export const Template = (args) => (
 		style={{
 			height: '500px',
 		}}>
-		<BaseVerticalBarChart
-			{...args}
-			seriesData={sampleData}
-			tooltip={{
-				trigger: 'item',
-				formatter: (param) => {
-					return `${param.marker} ${param.name} ${
-						sampleData.metaData.controlsApplied[param.name].x1
-					}`;
-				},
-			}}
-		/>
+		<BaseVerticalBarChart {...args} seriesData={sampleData} />
 	</ThemedContainer>
 );
 
@@ -96,11 +85,14 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 				value: sampleData.chartData[key].x1, // Single value from x1
 			})),
 			tooltip: {
-				trigger: 'item',
-				formatter: (param) => {
-					return `${param.marker} ${param.name} ${
-						sampleData.metaData.controlsApplied[param.name].x1
-					}`;
+				displayColors: true,
+				colorBoxWidth: 7,
+				colorBoxHeight: 7,
+				bodyFont: {
+					size: 14,
+					weight: 500,
+					textAlign: 'left',
+					family: 'Poppins',
 				},
 			},
 		}}>

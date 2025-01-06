@@ -1,7 +1,9 @@
 .root {
-  width: "100%";
+  width: 100%;
+  contain-intrinsic-height: 90%;
+  font-family: Poppins !important;
 }
-
-.chartjs-legend li span {
-  border: none !important;
+.root > canvas {
+  width: -moz-fit-content !important;
+  width: fit-content !important;
 }/*# sourceMappingURL=BasePieChart.module.css.map */
