@@ -71,6 +71,9 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					],
 				},
 				{
+					id: 'filter',
+				},
+				{
 					id: 'dropdown',
 					placeholder: 'Region',
 					selectOption: [
@@ -101,9 +104,6 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					onClick: () => {
 						alert('This will open the Modal or a new Page with Expanded chart');
 					},
-				},
-				{
-					id: 'filter',
 				},
 			];
 			const coords = [
@@ -151,6 +151,30 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 						onBack={onBack}
 						onReload={onReload}
 						body={Body}
+						headerOptions={{
+							options: [
+								{
+									id: '1',
+									leftCompoenent: '',
+									rightCompoenent: '',
+									title: 'Option 1',
+									value: 'Option 1',
+								},
+								{
+									id: '2',
+									leftCompoenent: '',
+									rightCompoenent: '',
+									title: 'Option 2',
+									value: 'Option 2',
+								},
+							],
+							value: 'Option 1',
+							onChange: (newValue) => {
+								console.log({
+									HERE: newValue,
+								});
+							},
+						}}
 						options={options.map((option) => {
 							return option.id === 'dropdown'
 								? {
