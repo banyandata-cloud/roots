@@ -3,8 +3,8 @@
 .root {
 	width: 100%;
 	contain-intrinsic-height: 90%;
-	>canvas{
+	font-family: Poppins !important;
+	> canvas {
 		width: fit-content !important;
-		
 	}
 }

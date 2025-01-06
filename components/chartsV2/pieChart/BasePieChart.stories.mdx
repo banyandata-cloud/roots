@@ -47,7 +47,6 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 	<Story
 		name='Default'
 		args={{
-			title: 'Title',
 			height: '90%',
 			width: '100%',
 			semiDoughnut: true,
@@ -75,8 +74,16 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 				maintainAspectRatio: true,
 			},
 			tooltip: {
-				displayColors: false,
-			},
+				displayColors: true,
+				colorBoxWidth: 7,
+				colorBoxHeight: 7,
+				bodyFont: {
+					size: 14,
+					weight: 500,
+					textAlign: 'left',
+					family: 'Poppins',
+    			},
+    		},
 			legend: {
 				display: true,
 			},

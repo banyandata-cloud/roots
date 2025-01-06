@@ -163,6 +163,9 @@ const BasePieChart = (props) => {
 									? '#D3D3D3'
 									: 'black';
 							},
+							font: {
+								family: 'Poppins',
+							},
 						},
 						onClick: (event, legendItem) => {
 							handleLegendClick(event, legendItem);
@@ -183,27 +186,45 @@ const BasePieChart = (props) => {
 					bottom: 10,
 				},
 				font: {
+					family: 'Poppins',
 					size: tittleSize ?? 16,
 				},
 			},
 			tooltip: {
 				...tooltip,
 				borderWidth: tooltip?.borderWidth ?? 1,
-				borderColor:
-					tooltip?.borderColor ??
-					((tooltipItem) => {
-						return tooltipItem?.dataset?.borderColor[tooltipItem.dataIndex];
-					}),
+				borderColor: (context) => {
+					const index = context?.tooltipItems[0]?.dataIndex;
+					const segmentColor = context?.tooltipItems[0]?.dataset?.borderColor[index];
+
+					return segmentColor || 'black';
+				},
+				backgroundColor: 'rgba(255, 255, 255, 1)',
 				callbacks: tooltip?.callbacks ?? {
 					label: (context) => {
 						const label = context.label || '';
 						const value = context.raw;
 						return `${label}: ${value}`;
 					},
+					title: tooltip.displayTitle
+						? (tooltipItems) => {
+								return tooltipItems[0]?.label || '';
+						  }
+						: () => {
+								return '';
+						  },
 				},
 				bodySpacing: tooltip?.bodySpacing ?? 5,
 				displayColors: tooltip?.displayColors ?? true,
+				boxWidth: tooltip?.colorBoxWidth ?? 5,
+				boxHeight: tooltip?.colorBoxHeight ?? 5,
+				boxPadding: 5,
 				usePointStyle: tooltip?.usePointStyle ?? true,
+				titleColor: tooltip?.bodyFont?.titleColor ?? '#000',
+				bodyColor: tooltip?.bodyFont?.color ?? '#000',
+				bodyFont: {
+					...tooltip.bodyFont,
+				},
 			},
 		},
 		interaction: {
@@ -229,9 +250,7 @@ const BasePieChart = (props) => {
 			},
 		},
 		layout: {
-			padding: {
-				bottom: 20,
-			},
+			padding: 15,
 		},
 		elements: {
 			arc: {
