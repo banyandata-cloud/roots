@@ -1,6 +1,6 @@
 /* eslint-disable react/forbid-prop-types */
 import PropTypes from 'prop-types';
-import { forwardRef } from 'react';
+import { forwardRef, useState } from 'react';
 import { classes } from '../../../utils';
 import { TableColumnV2 } from '../BaseTable.class';
 import { TableBody } from '../body';
@@ -26,6 +26,8 @@ const BaseTable = forwardRef(function BaseTable(props, ref) {
 		defaultActiveIndex,
 		toggleDrawer = () => {},
 		emptyPlaceholder,
+		onCheck,
+		uniqueKey,
 	} = props;
 
 	if (loading) {
@@ -35,6 +37,8 @@ const BaseTable = forwardRef(function BaseTable(props, ref) {
 	const transformedHeaderData = headerData.map((header) => {
 		return new TableColumnV2(header);
 	});
+
+	const [checkedRows, setCheckedRows] = useState([]);
 
 	return (
 		<table
@@ -53,6 +57,10 @@ const BaseTable = forwardRef(function BaseTable(props, ref) {
 						expandable,
 						onSort,
 						onRowClick,
+						onCheck,
+						checkedRows,
+						setCheckedRows,
+						tableData,
 					}}
 				/>
 			)}
@@ -70,6 +78,10 @@ const BaseTable = forwardRef(function BaseTable(props, ref) {
 						onRowClick,
 						defaultActiveIndex,
 						toggleDrawer,
+						onCheck,
+						checkedRows,
+						setCheckedRows,
+						uniqueKey,
 					}}
 				/>
 			)}

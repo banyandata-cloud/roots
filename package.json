@@ -18,7 +18,6 @@
 	"dependencies": {
 		"@floating-ui/react-dom": "^1.0.0",
 		"@floating-ui/react-dom-interactions": "^0.10.1",
-		"@highcharts/map-collection": "^2.1.0",
 		"chart.js": "^4.4.4",
 		"chartjs-plugin-annotation": "^3.0.1",
 		"chartjs-plugin-datalabels": "^2.2.0",

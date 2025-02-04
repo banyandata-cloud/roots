@@ -17,6 +17,10 @@ const TableBody = (props) => {
 		onRowClick,
 		defaultActiveIndex,
 		toggleDrawer,
+		onCheck,
+		checkedRows,
+		setCheckedRows,
+		uniqueKey,
 	} = props;
 
 	const listRef = useRef([]);
@@ -62,6 +66,10 @@ const TableBody = (props) => {
 							rowHeight,
 							onRowClick,
 							toggleDrawer,
+							onCheck,
+							checkedRows,
+							setCheckedRows,
+							uniqueKey,
 						}}
 					/>
 				);

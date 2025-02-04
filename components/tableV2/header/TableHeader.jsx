@@ -4,19 +4,35 @@ import { TableRow } from '../row';
 import styles from './TableHeader.module.css';
 
 const TableHeader = (props) => {
-	const { headerData, customCells, expandable, onSort, rowHeight, theme, onRowClick } = props;
+	const {
+		headerData,
+		customCells,
+		expandable,
+		onSort,
+		rowHeight,
+		theme = '',
+		onRowClick,
+		onCheck,
+		checkedRows,
+		setCheckedRows,
+		tableData,
+	} = props;
 
 	return (
 		<thead data-elem='table-header' className={styles.root}>
 			<TableRow
 				type='header'
 				headerData={headerData}
+				tableData={tableData}
 				customCells={customCells}
 				expandable={expandable}
 				onSort={onSort}
 				rowHeight={rowHeight}
 				onRowClick={onRowClick}
 				theme={theme}
+				onCheck={onCheck}
+				checkedRows={checkedRows}
+				setCheckedRows={setCheckedRows}
 			/>
 		</thead>
 	);

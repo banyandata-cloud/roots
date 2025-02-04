@@ -2,6 +2,7 @@
 import PropTypes from 'prop-types';
 import { forwardRef, useState } from 'react';
 import { classes } from '../../../utils';
+import { Checkbox } from '../../input';
 import { TableCellV2 } from '../cell';
 import styles from './TableRow.module.css';
 
@@ -10,6 +11,7 @@ const TableRow = forwardRef(function BaseTable(props, ref) {
 	const {
 		type = 'body',
 		headerData = [],
+		tableData = [],
 		datum = {},
 		_index,
 		customCells = {
@@ -23,6 +25,10 @@ const TableRow = forwardRef(function BaseTable(props, ref) {
 		onSort = () => {},
 		rowHeight = 'md',
 		toggleDrawer,
+		onCheck,
+		checkedRows = [],
+		setCheckedRows = () => {},
+		uniqueKey = '',
 	} = props;
 
 	const [expanded, setExpanded] = useState(false);
@@ -90,28 +96,100 @@ const TableRow = forwardRef(function BaseTable(props, ref) {
 		);
 	});
 
+	let tableCellsToRender = tableCells;
+
+	const existingInChecked = checkedRows?.find((checkedItem) => {
+		return checkedItem[uniqueKey] === datum[uniqueKey];
+	});
+
+	let checkStatus = !!existingInChecked;
+	let intermediate = false;
+
+	if (onCheck && type === 'header') {
+		checkStatus =
+			tableData?.length === checkedRows?.length ||
+			(tableData?.length > checkedRows?.length && checkedRows?.length > 0);
+		intermediate = tableData?.length > checkedRows?.length && checkedRows?.length > 0;
+	}
+
+	if (onCheck) {
+		const checkboxCellProps = {
+			...props,
+			_index,
+			expandableProps,
+			setActiveId,
+			datum,
+			cellContent: (
+				<Checkbox
+					intermediate={intermediate}
+					onChange={() => {
+						if (type === 'header') {
+							if (tableData?.length === checkedRows?.length) {
+								setCheckedRows([]);
+								onCheck([]);
+								return;
+							}
+
+							setCheckedRows(tableData);
+							onCheck(tableData);
+							return;
+						}
+
+						if (existingInChecked) {
+							const checkedSansSelection = checkedRows?.filter((checkedItem) => {
+								return checkedItem[uniqueKey] !== datum[uniqueKey];
+							});
+							setCheckedRows(checkedSansSelection);
+							onCheck(checkedSansSelection);
+							return;
+						}
+
+						setCheckedRows([...checkedRows, datum]);
+						onCheck([...checkedRows, datum]);
+					}}
+					checked={checkStatus}
+				/>
+			),
+			cellTitle: null,
+			type,
+			onSort,
+			rowHeight,
+			style: {
+				width: '3rem',
+			},
+		};
+		tableCellsToRender = [
+			<TableCellV2 key='default-checkbox' {...checkboxCellProps} />,
+			...tableCells,
+		];
+	}
+
 	return (
 		<>
 			<tr
 				ref={ref}
 				tabIndex={-1}
 				data-elem='table-row'
-				onClick={() => {
-					return onRowClick(props);
-				}}
+				{...(!onCheck && {
+					onClick: () => {
+						return onRowClick(props);
+					},
+				})}
 				className={classes(
 					styles.root,
 					styles[`${type}-row`],
 					styles[`row-height-${rowHeight}`],
 					className
 				)}>
-				{tableCells}
+				{tableCellsToRender}
 			</tr>
 			{Expandable && expanded && (
 				<tr
-					onClick={() => {
-						return onRowClick(datum, setActiveId);
-					}}>
+					{...(!onCheck && {
+						onClick: () => {
+							return onRowClick(datum, setActiveId);
+						},
+					})}>
 					<Expandable datum={datum} index={_index} />
 				</tr>
 			)}

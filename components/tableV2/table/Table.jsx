@@ -25,7 +25,7 @@ const Table = (props) => {
 		className = '',
 		headerData = [],
 		tableData = [],
-		uniqueKey = [],
+		uniqueKey = '',
 		activeData = {},
 		setActiveData = () => {},
 		customCells = {
@@ -63,6 +63,7 @@ const Table = (props) => {
 		},
 		filtersCount = 0,
 		emptyPlaceholder = null,
+		onCheck,
 	} = props;
 
 	const ref = useRef(null);
@@ -235,6 +236,7 @@ const Table = (props) => {
 						placeholder,
 						toggleDrawer,
 						emptyPlaceholder,
+						onCheck,
 					}}
 					loading={loading}
 				/>
