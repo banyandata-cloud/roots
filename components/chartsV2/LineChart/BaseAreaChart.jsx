@@ -61,27 +61,27 @@ const BaseAreaChart = (props) => {
 		customLegend,
 		width,
 		height,
+		chartOptionsProps,
+		lineColors = [
+			'rgba(255, 99, 132, 0.5)',
+			'rgba(54, 162, 235, 0.5)',
+			'rgba(75, 192, 192, 0.5)',
+			'rgba(153, 102, 255, 0.5)',
+			'rgba(255, 159, 64, 0.5)',
+		],
+		borderColors = [
+			'rgba(255, 99, 132, 1)',
+			'rgba(54, 162, 235, 1)',
+			'rgba(75, 192, 192, 1)',
+			'rgba(153, 102, 255, 1)',
+			'rgba(255, 159, 64, 1)',
+		],
 	} = props;
 
 	if (loading || fallback) {
 		return <Skeleton theme={theme} fallback={!loading && fallback} />;
 	}
 
-	const lineColors = [
-		'rgba(255, 99, 132, 0.5)',
-		'rgba(54, 162, 235, 0.5)',
-		'rgba(75, 192, 192, 0.5)',
-		'rgba(153, 102, 255, 0.5)',
-		'rgba(255, 159, 64, 0.5)',
-	];
-
-	const borderColors = [
-		'rgba(255, 99, 132, 1)',
-		'rgba(54, 162, 235, 1)',
-		'rgba(75, 192, 192, 1)',
-		'rgba(153, 102, 255, 1)',
-		'rgba(255, 159, 64, 1)',
-	];
 	const legendRef = useRef(null);
 
 	const [hiddenDatasets, setHiddenDatasets] = useState([]);
@@ -170,11 +170,11 @@ const BaseAreaChart = (props) => {
 					: lineColors[index % lineColors.length],
 				borderColor: borderColors[index % borderColors.length],
 				tension: smooth ? 0.4 : 0,
-				borderWidth: 2,
-				pointRadius: 4,
-				pointHoverRadius: 6,
+				borderWidth: chartOptionsProps?.borderWidth ?? 2,
+				pointRadius: chartOptionsProps?.pointRadius ?? 4,
+				pointHoverRadius: chartOptionsProps?.pointHoverRadius ?? 6,
 				pointBackgroundColor: borderColors[index % borderColors.length],
-				pointStyle: 'rectRot',
+				pointStyle: chartOptionsProps?.pointStyle ?? 'rectRot',
 				datalabels: {
 					display: false, // Disable data labels on points
 				},
@@ -184,12 +184,9 @@ const BaseAreaChart = (props) => {
 	};
 
 	const chartOptions = {
+		...chartOptionsProps,
 		responsive: true,
 		maintainAspectRatio: false,
-		interaction: {
-			mode: 'index',
-			intersect: false,
-		},
 		plugins: {
 			legend: {
 				display: false,

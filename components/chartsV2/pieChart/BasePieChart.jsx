@@ -283,15 +283,18 @@ const BasePieChart = (props) => {
 			// Render the center text
 			ctx.fillText(`${totalControlsValue}`, centerX, centerY);
 
-			const titleOffset = 20; // Adjust this value to control spacing below the totalControlsValue
+			// Render the compliance title with bottom margin
+			const titleBottomMargin = compliance.margin ?? 10; // Adjust this value for bottom margin
+			const position = compliance.position ?? 5;
+			const titleYPosition = centerY + position; // Default title Y position
 			ctx.font = `${compliance?.fontStyle} ${compliance?.fontSize} Poppins`; // Title font style
 			ctx.fillStyle = `${compliance?.textColor}`; // Title text color (gray)
-			ctx.fillText(`${compliance?.title}`, centerX, centerY + titleOffset);
+			ctx.fillText(`${compliance?.title}`, centerX, titleYPosition + titleBottomMargin);
 
 			// Render compliance strip if `complianceStrip` is true
 			if (complianceStrip) {
 				const radius = complianceStripRadius; // Radius for the outer ring
-				const stripThickness = 8; // Thickness of the strip
+				const stripThickness = compliance?.stripWidth ?? 7; // Thickness of the strip
 				const compliancePercentage = totalPercentage; // Set compliance percentage
 
 				// Fixed start and end angles

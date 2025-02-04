@@ -45,6 +45,20 @@ export const TemplateV2 = (args) => (
 					}),
 				},
 			}}
+			lineColors={[
+				'rgba(255, 99, 132, 0.5)',
+				'rgba(54, 162, 235, 0.5)',
+				'rgba(75, 192, 192, 0.5)',
+				'rgba(153, 102, 255, 0.5)',
+				'rgba(255, 159, 64, 0.5)',
+			]}
+			borderColors={[
+				'rgba(255, 99, 132, 1)',
+				'rgba(54, 162, 235, 1)',
+				'rgba(75, 192, 192, 1)',
+				'rgba(153, 102, 255, 1)',
+				'rgba(255, 159, 64, 1)',
+			]}
 		/>
 	</ThemedContainer>
 );
@@ -184,6 +198,15 @@ The Line Chart with transparent areas and unstacked Lines.
 			yAxisLineShow: false,
 			yAxisTickShow: true,
 			axisLabelColor: 'black',
+			chartOptionsProps: {
+				interaction: {
+					mode: 'point',
+					intersect: true,
+				},
+				borderWidth: 4,
+				pointRadius: 4,
+				pointStyle: 'rectRot',
+			},
 			yAxis: {
 				boundaryGap: ['0%', '20%'],
 				axisLabel: {
@@ -199,7 +222,7 @@ The Line Chart with transparent areas and unstacked Lines.
 			yAxisTick: {
 				alignWithLabel: true,
 				customValues: [0, 100, 200, 300, 400],
-				display: true,  // Ensure this is not set to false
+				display: true, // Ensure this is not set to false
 			},
 			cursor: 'default',
 			tooltip: {
