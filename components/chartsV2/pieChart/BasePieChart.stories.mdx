@@ -49,13 +49,15 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 		args={{
 			height: '90%',
 			width: '100%',
-			semiDoughnut: true,
-			customLegend: true,
+			
+			customDoughnut: true,
+			complianceStrip: true,
+			customLegend: false,
 			cursor: 'default',
 			customLabel: {
 				display: true,
 				fontStyle: 'bold',
-				fontSize: '20px',
+				fontSize: '1.5rem',
 				textColor: 'black',
 			},
 			compliance: {
@@ -63,6 +65,7 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 				fontSize: '10px',
 				textColor: 'black',
 				title: 'Strip',
+				position: 3,
 			},
 			radius: ['20%', '40%'],
 			center: ['50%', '50%'],
@@ -85,7 +88,7 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
     			},
     		},
 			legend: {
-				display: true,
+				display: false,
 			},
 			seriesOption: [
 				{
@@ -190,7 +193,6 @@ Pie Chart as Icon
 	<Story
 		name='Pie Icon'
 		args={{
-			title: 'Title',
 			gridOptions: {
 				height: '100%',
 				width: '100%',
