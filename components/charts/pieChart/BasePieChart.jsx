@@ -14,8 +14,8 @@ import * as echarts from 'echarts/core';
 import { CanvasRenderer } from 'echarts/renderers';
 import PropTypes from 'prop-types';
 import { classes } from '../../../utils';
+import { PieChartIcon } from '../../icons';
 import styles from './BasePieChart.module.css';
-import { Skeleton } from './Skeleton';
 
 // Register the required components
 echarts.use([
@@ -30,7 +30,6 @@ echarts.use([
 
 const BasePieChart = (props) => {
 	const {
-		loading = false,
 		title = '',
 		gridOptions = {
 			left: 0,
@@ -71,12 +70,26 @@ const BasePieChart = (props) => {
 			height: '100%',
 		},
 		className = '',
-		theme = 'dark',
-		fallback,
+		isEmpty = {
+			show: false,
+			className: '',
+			title: 'No Data Found',
+			description: '',
+		},
 	} = props;
 
-	if (loading || fallback) {
-		return <Skeleton theme={theme} fallback={!loading && fallback} />;
+	if (isEmpty?.show) {
+		return (
+			<div className={classes(styles.empty, isEmpty?.className)}>
+				<div className={styles.icon}>
+					<PieChartIcon />
+				</div>
+				<div className={styles.text}>
+					<div className={styles.title}>{isEmpty?.title ?? 'No Data Found'}</div>
+					<div className={styles.description}>{isEmpty?.description}</div>
+				</div>
+			</div>
+		);
 	}
 
 	const seriesOptionObject = {
@@ -199,8 +212,6 @@ const BasePieChart = (props) => {
 };
 
 BasePieChart.propTypes = {
-	loading: PropTypes.bool,
-	fallback: PropTypes.bool,
 	title: PropTypes.string,
 	gridOptions: PropTypes.object,
 	tooltip: PropTypes.object,
@@ -220,7 +231,6 @@ BasePieChart.propTypes = {
 	seriesOption: PropTypes.arrayOf(PropTypes.shape),
 	style: PropTypes.objectOf(PropTypes.shape),
 	className: PropTypes.string,
-	theme: PropTypes.oneOf(['light', 'dark']),
 };
 
 export default BasePieChart;

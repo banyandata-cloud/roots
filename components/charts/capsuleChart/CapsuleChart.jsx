@@ -1,27 +1,24 @@
 /* eslint-disable no-nested-ternary */
 // ReactEcharts from 'echarts-for-react' would import the entire bundle
 import EChartsReactCore from 'echarts-for-react/lib/core';
-import * as echarts from 'echarts/core';
 import { BarChart } from 'echarts/charts';
 import {
-	GridComponent,
-	TooltipComponent,
-	TitleComponent,
 	DataZoomComponent,
 	DataZoomInsideComponent,
 	DataZoomSliderComponent,
 	DatasetComponent,
+	GridComponent,
 	LegendComponent,
+	TitleComponent,
+	TooltipComponent,
 } from 'echarts/components';
+import * as echarts from 'echarts/core';
 // Import renderer, note that introducing the CanvasRenderer or SVGRenderer is a required step
-import {
-	CanvasRenderer,
-	// SVGRenderer,
-} from 'echarts/renderers';
-import styles from './CapsuleChart.module.css';
-import { classes } from '../../../utils';
-import { Skeleton } from './Skeleton';
+import { CanvasRenderer } from 'echarts/renderers';
 import { COLORS } from '../../../styles';
+import { classes } from '../../../utils';
+import { CapsuleChartIcon } from '../../icons';
+import styles from './CapsuleChart.module.css';
 
 // Register the required components
 echarts.use([
@@ -77,7 +74,6 @@ const determineGradient = (seriesData, objectData, index, subIndex, key) => {
 
 const CapsuleChart = (props) => {
 	const {
-		loading = false,
 		title = '',
 		gridContainLabel = false,
 		gridOptions = {
@@ -133,12 +129,28 @@ const CapsuleChart = (props) => {
 		},
 		className = '',
 		theme = 'dark',
-		fallback,
+		isEmpty = {
+			show: false,
+			className: '',
+			title: 'No Data Found',
+			description: '',
+		},
 	} = props;
 
-	if (loading || fallback) {
-		return <Skeleton theme={theme} fallback={!loading && fallback} />;
+	if (isEmpty?.show) {
+		return (
+			<div className={classes(styles.empty, isEmpty?.className)}>
+				<div className={styles.icon}>
+					<CapsuleChartIcon />
+				</div>
+				<div className={styles.text}>
+					<div className={styles.title}>{isEmpty?.title ?? 'No Data Found'}</div>
+					<div className={styles.description}>{isEmpty?.description}</div>
+				</div>
+			</div>
+		);
 	}
+
 	const minHeightCheck = !Object.keys(seriesData?.chartData ?? 0)?.some((obj1) => {
 		return seriesOption.some((obj, index) => {
 			return seriesData?.chartData?.[obj1]?.[`x${index + 1}`];

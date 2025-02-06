@@ -19,8 +19,8 @@ import * as echarts from 'echarts/core';
 import { CanvasRenderer } from 'echarts/renderers';
 import { COLORS } from '../../../styles';
 import { classes } from '../../../utils';
+import { BarChartIcon } from '../../icons';
 import styles from './BaseVerticalBarChart.module.css';
-import { Skeleton } from './Skeleton';
 
 // Register the required components
 echarts.use([
@@ -76,7 +76,6 @@ const determineGradient = (seriesData, objectData, index, subIndex, key) => {
 
 const BaseVerticalBarChart = (props) => {
 	const {
-		loading,
 		title,
 		gridContainLabel,
 		gridOptions,
@@ -110,12 +109,28 @@ const BaseVerticalBarChart = (props) => {
 		style,
 		className,
 		theme,
-		fallback,
+		isEmpty = {
+			show: false,
+			className: '',
+			title: 'No Data Found',
+			description: '',
+		},
 	} = props;
 
-	if (loading || fallback) {
-		return <Skeleton theme={theme} fallback={!loading && fallback} />;
+	if (isEmpty?.show) {
+		return (
+			<div className={classes(styles.empty, isEmpty?.className)}>
+				<div className={styles.icon}>
+					<BarChartIcon />
+				</div>
+				<div className={styles.text}>
+					<div className={styles.title}>{isEmpty?.title ?? 'No Data Found'}</div>
+					<div className={styles.description}>{isEmpty?.description}</div>
+				</div>
+			</div>
+		);
 	}
+
 	const minHeightCheck = !Object.keys(seriesData?.chartData ?? 0)?.some((obj1) => {
 		return seriesOption.some((obj, index) => {
 			return seriesData?.chartData?.[obj1]?.[`x${index + 1}`];
@@ -312,7 +327,6 @@ const BaseVerticalBarChart = (props) => {
 };
 
 BaseVerticalBarChart.propTypes = {
-	loading: PropTypes.bool,
 	title: PropTypes.string,
 	gridContainLabel: PropTypes.bool,
 	gridOptions: PropTypes.object,
@@ -348,7 +362,6 @@ BaseVerticalBarChart.propTypes = {
 };
 
 BaseVerticalBarChart.defaultProps = {
-	loading: false,
 	title: '',
 	gridContainLabel: false,
 	gridOptions: {
