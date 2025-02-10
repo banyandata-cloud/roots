@@ -64,6 +64,7 @@ const Table = (props) => {
 		filtersCount = 0,
 		emptyPlaceholder = null,
 		onCheck,
+		checkAsRadio,
 	} = props;
 
 	const ref = useRef(null);
@@ -237,6 +238,7 @@ const Table = (props) => {
 						toggleDrawer,
 						emptyPlaceholder,
 						onCheck,
+						checkAsRadio,
 					}}
 					loading={loading}
 				/>
