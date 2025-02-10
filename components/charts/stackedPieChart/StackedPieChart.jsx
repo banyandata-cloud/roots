@@ -13,7 +13,7 @@ import * as echarts from 'echarts/core';
 import { CanvasRenderer } from 'echarts/renderers';
 import { COLORS } from '../../../styles';
 import { classes } from '../../../utils';
-import { Skeleton } from '../pieChart/Skeleton';
+import { StackedPieChartIcon } from '../../icons';
 import styles from './StackedPieChart.module.css';
 
 // Register the required components
@@ -41,7 +41,6 @@ const determineGradient = (seriesData, objectData, index, subIndex, key) => {
 
 const StackedPieChart = (props) => {
 	const {
-		loading = false,
 		title = '',
 		gridContainLabel = false,
 		gridOptions = {
@@ -103,13 +102,28 @@ const StackedPieChart = (props) => {
 		},
 		className = '',
 		theme = 'dark',
-		fallback,
+		isEmpty = {
+			show: false,
+			className: '',
+			title: 'No Data Found',
+			description: '',
+		},
 		hideValue = 0,
 		hideIndex = null,
 	} = props;
 
-	if (loading || fallback) {
-		return <Skeleton theme={theme} fallback={!loading && fallback} />;
+	if (isEmpty?.show) {
+		return (
+			<div className={classes(styles.empty, isEmpty?.className)}>
+				<div className={styles.icon}>
+					<StackedPieChartIcon />
+				</div>
+				<div className={styles.text}>
+					<div className={styles.title}>{isEmpty?.title ?? 'No Data Found'}</div>
+					<div className={styles.description}>{isEmpty?.description}</div>
+				</div>
+			</div>
+		);
 	}
 
 	const seriesOptionObject = {

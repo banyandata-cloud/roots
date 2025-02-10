@@ -15,8 +15,8 @@ import PropTypes from 'prop-types';
 import { CanvasRenderer } from 'echarts/renderers';
 import { COLORS } from '../../../styles';
 import { classes } from '../../../utils';
+import { AreaChartIcon, LineChartIcon } from '../../icons';
 import styles from './BaseAreaChart.module.css';
-import { Skeleton } from './Skeleton';
 
 // Register the required components
 echarts.use([
@@ -31,7 +31,6 @@ echarts.use([
 
 const BaseAreaChart = (props) => {
 	const {
-		loading,
 		title,
 		gridOptions,
 		gridContainLabel,
@@ -66,19 +65,25 @@ const BaseAreaChart = (props) => {
 		style,
 		className,
 		theme,
-		fallback,
+		isEmpty = {
+			show: false,
+			className: '',
+			title: 'No Data Found',
+			description: '',
+		},
 	} = props;
 
-	if (loading || fallback) {
-		// const filled = seriesOption.some((series) => {
-		// return series?.areaStyle.opacity > 0;
-		// });
+	if (isEmpty?.show) {
 		return (
-			<Skeleton
-				//  filled={filled}
-				theme={theme}
-				fallback={!loading && fallback}
-			/>
+			<div className={classes(styles.empty, isEmpty?.className)}>
+				<div className={styles.icon}>
+					{isEmpty?.type === 'line' ? <LineChartIcon /> : <AreaChartIcon />}
+				</div>
+				<div className={styles.text}>
+					<div className={styles.title}>{isEmpty?.title ?? 'No Data Found'}</div>
+					<div className={styles.description}>{isEmpty?.description}</div>
+				</div>
+			</div>
 		);
 	}
 
@@ -299,8 +304,6 @@ const BaseAreaChart = (props) => {
 };
 
 BaseAreaChart.propTypes = {
-	loading: PropTypes.bool,
-	fallback: PropTypes.bool,
 	title: PropTypes.string,
 	gridOptions: PropTypes.object,
 	xAxis: PropTypes.object,
@@ -337,8 +340,6 @@ BaseAreaChart.propTypes = {
 };
 
 BaseAreaChart.defaultProps = {
-	loading: false,
-	fallback: false,
 	title: '',
 	gridOptions: {
 		left: 0,
