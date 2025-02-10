@@ -117,6 +117,7 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 		className = '',
 		children,
 		drawerClassName,
+		overlayClassName,
 		fallbackProps = {
 			className: '',
 			title: "We're having trouble loading this data",
@@ -271,7 +272,7 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 
 			{toggleTableDrawer.open && (
 				<div
-					className={styles.overlay}
+					className={classes(styles.overlay, overlayClassName)}
 					onClick={() => {
 						toggleDrawer();
 					}}
