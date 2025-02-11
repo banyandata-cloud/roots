@@ -51,7 +51,6 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 			width: '100%',
 			
 			customDoughnut: true,
-			complianceStrip: true,
 			customLegend: false,
 			cursor: 'default',
 			customLabel: {
@@ -60,12 +59,14 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 				fontSize: '1.5rem',
 				textColor: 'black',
 			},
-			compliance: {
+			strip: {
 				fontStyle: 'normal',
 				fontSize: '10px',
 				textColor: 'black',
 				title: 'Strip',
 				position: 3,
+				display: true,
+				stripSize: 40,
 			},
 			radius: ['20%', '40%'],
 			center: ['50%', '50%'],
@@ -201,6 +202,22 @@ Pie Chart as Icon
 			radius: ['30%', '60%'],
 			seriesData: iconData,
 			complianceStrip: false,
+			semiDoughnut: true,
+			customLabel: {
+				display: true,
+				fontStyle: 'bold',
+				fontSize: '1.5rem',
+				textColor: 'black',
+			},
+			strip: {
+				fontStyle: 'normal',
+				fontSize: '10px',
+				textColor: 'black',
+				title: 'Strip',
+				position: 3,
+				display: false,
+				stripSize: 40,
+			},
 			tooltip: {
 				trigger: 'none',
 			},

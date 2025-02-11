@@ -31,10 +31,7 @@ const BasePieChart = (props) => {
 		width = '100%',
 		height = '100%',
 		customLabel,
-		complianceStrip, // New prop for compliance circle
-		complianceStripRadius = 35,
-		compliance,
-		complianceStripColors,
+		strip,
 	} = props;
 
 	const [excludedIndices, setExcludedIndices] = useState([]);
@@ -116,7 +113,7 @@ const BasePieChart = (props) => {
 								: defaultColors[index % defaultColors.length]; // Normal color for other borders
 					  }),
 				hoverBorderWidth: 7,
-				cutout: semiDoughnut ? '30%' : complianceStrip ? '40%' : '0%',
+				cutout: semiDoughnut ? '30%' : strip?.display ? '40%' : '0%',
 				hoverOffset: (context) => {
 					const index = context.dataIndex;
 					// Set hoverOffset to 30 for the hovered pie slice, whether from the legend or chart hover
@@ -284,17 +281,17 @@ const BasePieChart = (props) => {
 			ctx.fillText(`${totalControlsValue}`, centerX, centerY);
 
 			// Render the compliance title with bottom margin
-			const titleBottomMargin = compliance.margin ?? 10; // Adjust this value for bottom margin
-			const position = compliance.position ?? 5;
+			const titleBottomMargin = strip.margin ?? 10; // Adjust this value for bottom margin
+			const position = strip.position ?? 5;
 			const titleYPosition = centerY + position; // Default title Y position
-			ctx.font = `${compliance?.fontStyle} ${compliance?.fontSize} Poppins`; // Title font style
-			ctx.fillStyle = `${compliance?.textColor}`; // Title text color (gray)
-			ctx.fillText(`${compliance?.title}`, centerX, titleYPosition + titleBottomMargin);
+			ctx.font = `${strip?.fontStyle} ${strip?.fontSize} Poppins`; // Title font style
+			ctx.fillStyle = `${strip?.textColor}`; // Title text color (gray)
+			ctx.fillText(`${strip?.title}`, centerX, titleYPosition + titleBottomMargin);
 
 			// Render compliance strip if `complianceStrip` is true
-			if (complianceStrip) {
-				const radius = complianceStripRadius; // Radius for the outer ring
-				const stripThickness = compliance?.stripWidth ?? 7; // Thickness of the strip
+			if (strip?.display) {
+				const radius = strip?.stripSize ?? 35; // Radius for the outer ring
+				const stripThickness = strip?.stripWidth ?? 7; // Thickness of the strip
 				const compliancePercentage = totalPercentage; // Set compliance percentage
 
 				// Fixed start and end angles
@@ -322,8 +319,8 @@ const BasePieChart = (props) => {
 					centerY + radius
 				);
 
-				gradient.addColorStop(0, complianceStripColors?.start ?? '#4CAF50'); // Start color
-				gradient.addColorStop(1, complianceStripColors?.end ?? '#FFC107'); // End color
+				gradient.addColorStop(0, strip?.startColor ?? '#4CAF50'); // Start color
+				gradient.addColorStop(1, strip?.endColor ?? '#FFC107'); // End color
 
 				ctx.beginPath();
 				ctx.arc(centerX, centerY, radius + stripThickness, startAngle, complianceEndAngle);
