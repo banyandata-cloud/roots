@@ -4,6 +4,7 @@ export * from './Arrow';
 export * from './BreadcrumbSeperator';
 export * from './Calender';
 export * from './Caret';
+export * from './ChartsIcon';
 export * from './CheckboxIcon';
 export * from './Chevron';
 export * from './Clock';

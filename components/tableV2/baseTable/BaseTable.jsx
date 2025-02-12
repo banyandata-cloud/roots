@@ -28,6 +28,7 @@ const BaseTable = forwardRef(function BaseTable(props, ref) {
 		emptyPlaceholder,
 		onCheck,
 		uniqueKey,
+		checkAsRadio,
 	} = props;
 
 	if (loading) {
@@ -61,6 +62,7 @@ const BaseTable = forwardRef(function BaseTable(props, ref) {
 						checkedRows,
 						setCheckedRows,
 						tableData,
+						checkAsRadio,
 					}}
 				/>
 			)}
@@ -82,6 +84,7 @@ const BaseTable = forwardRef(function BaseTable(props, ref) {
 						checkedRows,
 						setCheckedRows,
 						uniqueKey,
+						checkAsRadio,
 					}}
 				/>
 			)}

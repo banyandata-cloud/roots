@@ -1,3 +1,31 @@
 .root {
   width: "100%";
+}
+
+.empty {
+  gap: 1rem;
+  height: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.empty .text {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.empty .text .title {
+  font-family: Poppins;
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1.875rem;
+}
+.empty .text .description {
+  font-family: Poppins;
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.3125rem;
 }/*# sourceMappingURL=BasePieChart.module.css.map */

@@ -21,6 +21,7 @@ const TableBody = (props) => {
 		checkedRows,
 		setCheckedRows,
 		uniqueKey,
+		checkAsRadio,
 	} = props;
 
 	const listRef = useRef([]);
@@ -70,6 +71,7 @@ const TableBody = (props) => {
 							checkedRows,
 							setCheckedRows,
 							uniqueKey,
+							checkAsRadio,
 						}}
 					/>
 				);

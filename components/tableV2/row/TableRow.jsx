@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 import { forwardRef, useState } from 'react';
 import { classes } from '../../../utils';
-import { Checkbox } from '../../input';
+import { Checkbox, Radio } from '../../input';
 import { TableCellV2 } from '../cell';
 import styles from './TableRow.module.css';
 
@@ -29,6 +29,7 @@ const TableRow = forwardRef(function BaseTable(props, ref) {
 		checkedRows = [],
 		setCheckedRows = () => {},
 		uniqueKey = '',
+		checkAsRadio,
 	} = props;
 
 	const [expanded, setExpanded] = useState(false);
@@ -112,6 +113,62 @@ const TableRow = forwardRef(function BaseTable(props, ref) {
 		intermediate = tableData?.length > checkedRows?.length && checkedRows?.length > 0;
 	}
 
+	let cellContent = '';
+
+	if (type !== 'header' && checkAsRadio) {
+		cellContent = (
+			<Radio
+				onChange={() => {
+					if (type === 'header') {
+						return;
+					}
+
+					if (existingInChecked) {
+						setCheckedRows([]);
+						onCheck([]);
+						return;
+					}
+
+					setCheckedRows([datum]);
+					onCheck([datum]);
+				}}
+				checked={checkStatus}
+			/>
+		);
+	} else if (!checkAsRadio) {
+		cellContent = (
+			<Checkbox
+				intermediate={intermediate}
+				onChange={() => {
+					if (type === 'header') {
+						if (tableData?.length === checkedRows?.length) {
+							setCheckedRows([]);
+							onCheck([]);
+							return;
+						}
+
+						setCheckedRows(tableData);
+						onCheck(tableData);
+						return;
+					}
+
+					if (existingInChecked) {
+						const checkedSansSelection = checkedRows?.filter((checkedItem) => {
+							return checkedItem[uniqueKey] !== datum[uniqueKey];
+						});
+						setCheckedRows(checkedSansSelection);
+						onCheck(checkedSansSelection);
+						return;
+					}
+
+					setCheckedRows([...checkedRows, datum]);
+					onCheck([...checkedRows, datum]);
+				}}
+				checked={checkStatus}
+			/>
+		);
+	}
+
 	if (onCheck) {
 		const checkboxCellProps = {
 			...props,
@@ -119,37 +176,7 @@ const TableRow = forwardRef(function BaseTable(props, ref) {
 			expandableProps,
 			setActiveId,
 			datum,
-			cellContent: (
-				<Checkbox
-					intermediate={intermediate}
-					onChange={() => {
-						if (type === 'header') {
-							if (tableData?.length === checkedRows?.length) {
-								setCheckedRows([]);
-								onCheck([]);
-								return;
-							}
-
-							setCheckedRows(tableData);
-							onCheck(tableData);
-							return;
-						}
-
-						if (existingInChecked) {
-							const checkedSansSelection = checkedRows?.filter((checkedItem) => {
-								return checkedItem[uniqueKey] !== datum[uniqueKey];
-							});
-							setCheckedRows(checkedSansSelection);
-							onCheck(checkedSansSelection);
-							return;
-						}
-
-						setCheckedRows([...checkedRows, datum]);
-						onCheck([...checkedRows, datum]);
-					}}
-					checked={checkStatus}
-				/>
-			),
+			cellContent,
 			cellTitle: null,
 			type,
 			onSort,
