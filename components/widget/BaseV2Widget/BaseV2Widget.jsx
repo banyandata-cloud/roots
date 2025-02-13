@@ -287,6 +287,7 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 					if (isValidElement(child)) {
 						return cloneElement(child, {
 							fallback: !loading && emptyChartData,
+							toggleDrawer,
 						});
 					}
 					return null;
