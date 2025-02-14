@@ -30,6 +30,7 @@ const TableRow = forwardRef(function BaseTable(props, ref) {
 		setCheckedRows = () => {},
 		uniqueKey = '',
 		checkAsRadio,
+		disableCheck = () => {},
 	} = props;
 
 	const [expanded, setExpanded] = useState(false);
@@ -115,6 +116,8 @@ const TableRow = forwardRef(function BaseTable(props, ref) {
 
 	let cellContent = '';
 
+	const disabledChecking = disableCheck(datum);
+
 	if (type !== 'header' && checkAsRadio) {
 		cellContent = (
 			<Radio
@@ -132,7 +135,9 @@ const TableRow = forwardRef(function BaseTable(props, ref) {
 					setCheckedRows([datum]);
 					onCheck([datum]);
 				}}
+				disabled={disabledChecking}
 				checked={checkStatus}
+				className={disabledChecking && styles.disabled}
 			/>
 		);
 	} else if (!checkAsRadio) {
@@ -141,9 +146,19 @@ const TableRow = forwardRef(function BaseTable(props, ref) {
 				intermediate={intermediate}
 				onChange={() => {
 					if (type === 'header') {
-						if (tableData?.length === checkedRows?.length) {
+						const filteredTableData = tableData?.filter((rowDatum) => {
+							return !disableCheck(rowDatum);
+						});
+
+						if (checkedRows?.length === filteredTableData?.length) {
 							setCheckedRows([]);
 							onCheck([]);
+							return;
+						}
+
+						if (disableCheck) {
+							setCheckedRows(filteredTableData);
+							onCheck(filteredTableData);
 							return;
 						}
 
@@ -164,7 +179,9 @@ const TableRow = forwardRef(function BaseTable(props, ref) {
 					setCheckedRows([...checkedRows, datum]);
 					onCheck([...checkedRows, datum]);
 				}}
+				disabled={disabledChecking}
 				checked={checkStatus}
+				className={disabledChecking && styles.disabled}
 			/>
 		);
 	}

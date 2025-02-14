@@ -17,6 +17,7 @@ const TableHeader = (props) => {
 		setCheckedRows,
 		tableData,
 		checkAsRadio,
+		disableCheck,
 	} = props;
 
 	return (
@@ -35,6 +36,7 @@ const TableHeader = (props) => {
 				checkedRows={checkedRows}
 				setCheckedRows={setCheckedRows}
 				checkAsRadio={checkAsRadio}
+				disableCheck={disableCheck}
 			/>
 		</thead>
 	);

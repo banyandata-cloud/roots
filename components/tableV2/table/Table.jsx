@@ -65,6 +65,7 @@ const Table = (props) => {
 		emptyPlaceholder = null,
 		onCheck,
 		checkAsRadio,
+		disableCheck = () => {},
 	} = props;
 
 	const ref = useRef(null);
@@ -239,6 +240,7 @@ const Table = (props) => {
 						emptyPlaceholder,
 						onCheck,
 						checkAsRadio,
+						disableCheck,
 					}}
 					loading={loading}
 				/>

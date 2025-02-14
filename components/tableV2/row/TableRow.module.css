@@ -61,4 +61,7 @@
 }
 .root .expanded .button .icon {
   transform: rotate(180deg);
+}
+.root .disabled {
+  cursor: not-allowed;
 }/*# sourceMappingURL=TableRow.module.css.map */
