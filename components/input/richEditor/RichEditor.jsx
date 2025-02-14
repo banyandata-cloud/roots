@@ -271,6 +271,12 @@ const RichEditor = ({
 		},
 	});
 
+	useEffect(() => {
+		if (editor && defaultContent === '') {
+			editor.commands.clearContent();
+		}
+	}, [defaultContent, editor]);
+
 	const dialogRef = useRef();
 
 	const textfieldRef = useRef(null);
