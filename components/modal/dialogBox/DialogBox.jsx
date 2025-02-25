@@ -107,6 +107,9 @@ const DialogBox = forwardRef((props, ref) => {
 				customAction: () => {
 					return customAction({
 						setNoDismissEnabled,
+						dismiss: () => {
+							setOpen(false);
+						},
 					});
 				},
 			}),
