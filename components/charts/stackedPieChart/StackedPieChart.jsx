@@ -108,8 +108,6 @@ const StackedPieChart = (props) => {
 			title: 'No Data Found',
 			description: '',
 		},
-		hideValue = 0,
-		hideIndex = null,
 	} = props;
 
 	if (isEmpty?.show) {
@@ -185,9 +183,7 @@ const StackedPieChart = (props) => {
 						tooltip: {
 							...(seriesOption[subIndex]?.tooltip ?? {}),
 						},
-						...((hideIndex
-							? (seriesData?.chartData?.[key]?.[`x${hideIndex}`] ?? 0) === hideValue
-							: value === hideValue) && {
+						...(seriesData?.chartData?.[key]?.[`x${1}`] === 100 && {
 							label: {
 								show: false,
 							},

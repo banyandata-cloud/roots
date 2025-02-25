@@ -32,71 +32,128 @@ export const sampleData = {
 
 export const sampleStackData = {
 	chartData: {
-		'Cloud Database': {
-			x1: 30,
-			x2: 30,
-			x3: 40,
+		Configuration: {
+			x1: 50,
+			x2: 33.33,
+			x3: 16.67,
 		},
-		Compute: {
-			x1: 0,
-			x2: 0,
-			x3: 100,
+		'IAM and Policy': {
+			x1: 36,
+			x2: 48,
+			x3: 16,
 		},
-		'Key Management Service': {
+		Network: {
+			x1: 66.67,
+			x2: 33.33,
+			x3: 0,
+		},
+		'Audit and logging': {
 			x1: 100,
 			x2: 0,
 			x3: 0,
 		},
-		'Logging & Monitoring': {
-			x1: 0,
-			x2: 100,
-			x3: 0,
-		},
-		'Logging & Monitoring2': {
-			x1: 20,
-			x2: 50,
-			x3: 30,
-		},
-		'Logging & Monitoring3': {
-			x1: 20,
-			x2: 50,
-			x3: 30,
-		},
-		'Logging & Monitoring4': {
-			x1: 20,
-			x2: 50,
-			x3: 30,
-		},
-		'Logging & Monitoring5': {
-			x1: 20,
-			x2: 50,
-			x3: 30,
-		},
-		'Logging & Monitoring6': {
-			x1: 20,
-			x2: 50,
-			x3: 30,
-		},
 	},
 	metaData: {
-		controlsApplied: {
-			MySql: {
-				x1: 18,
-			},
-			PgSql: {
-				x1: 43,
-			},
-			Oracle: {
-				x1: 46,
-			},
-		},
 		keyData: {
-			x1: 'compliant',
-			x2: 'nonCompliant',
-			x3: 'validate',
+			x1: 'Pass',
+			x2: 'Fail',
+			x3: 'Validate',
 		},
-		totalControls: {
-			x1: 61,
+		seriesData: {
+			Configuration: {
+				x1: [
+					{
+						title: 'Default',
+						cloud: ['AWS'],
+						compliance: '50.00% Pass',
+					},
+				],
+				x2: [
+					{
+						title: 'Default',
+						cloud: ['AWS'],
+						compliance: '16.67% Fail',
+					},
+					{
+						title: 'Finance',
+						cloud: ['Azure'],
+						compliance: '16.67% Fail',
+					},
+				],
+				x3: [
+					{
+						title: 'Finance',
+						cloud: ['Azure'],
+						compliance: '16.67% Validate',
+					},
+				],
+			},
+			'IAM and Policy': {
+				x1: [
+					{
+						title: 'Default',
+						cloud: ['AWS'],
+						compliance: '24.00% Pass',
+					},
+					{
+						title: 'Finance',
+						cloud: ['Azure'],
+						compliance: '12.00% Pass',
+					},
+				],
+				x2: [
+					{
+						title: 'Default',
+						cloud: ['AWS'],
+						compliance: '44.00% Fail',
+					},
+					{
+						title: 'Finance',
+						cloud: ['Azure'],
+						compliance: '4.00% Fail',
+					},
+				],
+				x3: [
+					{
+						title: 'Default',
+						cloud: ['AWS'],
+						compliance: '12.00% Validate',
+					},
+					{
+						title: 'Finance',
+						cloud: ['Azure'],
+						compliance: '4.00% Validate',
+					},
+				],
+			},
+			Network: {
+				x1: [
+					{
+						title: 'Default',
+						cloud: ['AWS'],
+						compliance: '66.67% Pass',
+					},
+				],
+				x2: [
+					{
+						title: 'Default',
+						cloud: ['AWS'],
+						compliance: '33.33% Fail',
+					},
+				],
+				x3: [],
+			},
+			'Audit and logging': {
+				x1: [
+					{
+						title: 'Default',
+						cloud: ['AWS'],
+						compliance: '100.00% Pass',
+					},
+				],
+				x2: [],
+				x3: [],
+			},
 		},
 	},
 };
