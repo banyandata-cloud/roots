@@ -79,9 +79,10 @@ const DialogBox = forwardRef((props, ref) => {
 		onCancel,
 		customAction,
 		hideCancel = false,
-		noDismiss,
+		noDismiss = false,
 		body: Body,
 		size: appliedSize,
+		hideCrossDismiss,
 	} = dialogProps;
 
 	const size = appliedSize || defaultSize;
@@ -95,27 +96,33 @@ const DialogBox = forwardRef((props, ref) => {
 		title,
 	};
 
-	const footerProps = {
-		action: actionText,
-		cancel: cancelText,
-		hideCancel,
-		variant,
-		setOpen,
-		...(customAction && {
-			customAction,
-		}),
-		...(onAction && {
-			onAction: () => {
-				onAction({
-					dismiss: () => {
-						setOpen(false);
-					},
-				});
-			},
-		}),
-		...(!hideCancel && {
-			onCancel: toggle,
-		}),
+	const footerProps = ({ setNoDismissEnabled }) => {
+		return {
+			action: actionText,
+			cancel: cancelText,
+			hideCancel,
+			variant,
+			setOpen,
+			...(customAction && {
+				customAction: () => {
+					return customAction({
+						setNoDismissEnabled,
+					});
+				},
+			}),
+			...(onAction && {
+				onAction: () => {
+					onAction({
+						dismiss: () => {
+							setOpen(false);
+						},
+					});
+				},
+			}),
+			...(!hideCancel && {
+				onCancel: toggle,
+			}),
+		};
 	};
 
 	const dialog = (appliedDialogProps) => {
@@ -139,16 +146,28 @@ const DialogBox = forwardRef((props, ref) => {
 		}
 	}, [dialogProps]);
 
+	const [dismissEnabled, setNoDismissEnabled] = useState(false);
+
+	useEffect(() => {
+		setNoDismissEnabled(noDismiss);
+	}, [noDismiss]);
+
 	return (
 		<BaseModal
 			open={open}
 			toggle={toggle}
-			hideCrossDismiss
-			noDismiss={noDismiss}
+			hideCrossDismiss={hideCrossDismiss}
+			noDismiss={dismissEnabled}
 			className={classes(styles.root, styles[size], className)}
 			renderHeader={title && <Header {...headerProps} />}
-			renderFooter={<Footer {...footerProps} />}>
-			{Body && <Body />}
+			renderFooter={
+				<Footer
+					{...footerProps({
+						setNoDismissEnabled,
+					})}
+				/>
+			}>
+			{Body && <Body setNoDismissEnabled={setNoDismissEnabled} />}
 			<div className={styles.description}>{description}</div>
 		</BaseModal>
 	);
