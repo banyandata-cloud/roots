@@ -2,7 +2,10 @@
 import PropTypes from 'prop-types';
 import React, { useRef, useState } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { oneDark, oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import {
+	coldarkDark as darkTheme,
+	coldarkCold as lightTheme,
+} from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { classes } from '../../utils';
 import { AlertV2 as Alert } from '../alertV2';
 import { CopyIcon } from '../icons';
@@ -115,7 +118,7 @@ const CodeSnippet = (props) => {
 		codeTagProps: {
 			className: classes(styles.code, className),
 		},
-		style: theme === 'light' ? oneLight : oneDark,
+		style: theme === 'light' ? lightTheme : darkTheme,
 		onClick: (event) => {
 			return onClick(event, handleCodeClick);
 		},
