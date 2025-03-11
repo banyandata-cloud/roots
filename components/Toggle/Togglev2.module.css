@@ -35,9 +35,6 @@
 .root .toggle > button[data-elem=base-cell].toggle-button > [data-elem=component2] > [data-elem=title] {
   color: var(--mono-color1);
 }
-.root .toggle > button[data-elem=base-cell].toggle-button svg path {
-  fill: var(--white);
-}
 .root .toggle > button[data-elem=base-cell].toggle-button.secondary {
   opacity: 0.5;
 }
@@ -46,9 +43,6 @@
 }
 .root .toggle > button[data-elem=base-cell].toggle-button.secondary > [data-elem=component2] > [data-elem=title] {
   color: var(--secondary-color2);
-}
-.root .toggle > button[data-elem=base-cell].toggle-button.secondary svg path {
-  fill: var(--secondary-color2);
 }
 .root .toggle > button[data-elem=base-cell].toggle-button.active {
   opacity: 1;

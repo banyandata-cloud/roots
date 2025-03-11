@@ -44,7 +44,7 @@ const Table = (props) => {
 		onSort = () => {},
 		rowHeight = 'md',
 		theme = 'light',
-		onRowClick = () => {},
+		onRowClick,
 		defaultActiveIndex,
 		placeholder,
 		tableInfo = {},

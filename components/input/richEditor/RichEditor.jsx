@@ -229,6 +229,7 @@ const RichEditor = ({
 	setContent = () => {},
 	placeholder = 'Your text here...',
 	hiddenMenu = {},
+	editable = true,
 }) => {
 	const [textType, setTextType] = useState('p');
 
@@ -255,6 +256,7 @@ const RichEditor = ({
 			}),
 		],
 		content: defaultContent,
+		editable,
 		onUpdate: (event) => {
 			const htmlValue = event.editor.getHTML();
 

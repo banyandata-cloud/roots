@@ -34,11 +34,7 @@
 					color: $mono-color1;
 				}
 			}
-			svg {
-				path {
-					fill: $white;
-				}
-			}
+
 			&.secondary {
 				opacity: 0.5;
 				&:hover {
@@ -47,11 +43,6 @@
 				> [data-elem='component2'] {
 					> [data-elem='title'] {
 						color: $secondary-color2;
-					}
-				}
-				svg {
-					path {
-						fill: $secondary-color2;
 					}
 				}
 			}
