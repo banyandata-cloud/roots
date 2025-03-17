@@ -20,7 +20,7 @@ const TableRow = forwardRef(function BaseTable(props, ref) {
 		},
 		className = '',
 		setActiveId = () => {},
-		onRowClick = () => {},
+		onRowClick,
 		expandable: Expandable,
 		onSort = () => {},
 		rowHeight = 'md',
@@ -214,11 +214,12 @@ const TableRow = forwardRef(function BaseTable(props, ref) {
 				ref={ref}
 				tabIndex={-1}
 				data-elem='table-row'
-				{...(!onCheck && {
-					onClick: () => {
-						return onRowClick(props);
-					},
-				})}
+				{...(!onCheck &&
+					onRowClick && {
+						onClick: () => {
+							return onRowClick(props);
+						},
+					})}
 				className={classes(
 					styles.root,
 					styles[`${type}-row`],
