@@ -6,6 +6,7 @@ import React, { useCallback, useRef, useState } from 'react';
 import { Pie } from 'react-chartjs-2';
 import { classes } from '../../../utils';
 import styles from './BasePieChart.module.css';
+// import { stripSampleData } from './BasePieChartData';
 import { Skeleton } from './Skeleton';
 
 // Register components for Chart.js
@@ -17,7 +18,6 @@ const BasePieChart = (props) => {
 		title,
 		tittleSize,
 		seriesData,
-		semiDoughnut,
 		cursor,
 		legend,
 		style,
@@ -32,6 +32,7 @@ const BasePieChart = (props) => {
 		height = '100%',
 		customLabel,
 		strip,
+		cutout = '40%',
 	} = props;
 
 	const [excludedIndices, setExcludedIndices] = useState([]);
@@ -113,12 +114,12 @@ const BasePieChart = (props) => {
 								: defaultColors[index % defaultColors.length]; // Normal color for other borders
 					  }),
 				hoverBorderWidth: 7,
-				cutout: semiDoughnut ? '30%' : strip?.display ? '40%' : '0%',
 				hoverOffset: (context) => {
 					const index = context.dataIndex;
 					// Set hoverOffset to 30 for the hovered pie slice, whether from the legend or chart hover
 					return hoveredIndex === index ? 30 : 0;
 				},
+				cutout, // Strip should be an outer ring
 			},
 		],
 	};
@@ -127,12 +128,12 @@ const BasePieChart = (props) => {
 		setHoveredIndex(index);
 	};
 
-	const totalControlsValue = seriesData?.metaData?.totalControls?.x1 || 0;
-	const totalPercentage = seriesData?.metaData?.totalPercentage?.x1 || 0;
+	const totalControlsValue = seriesData?.metaData?.[strip.value].x1 || 0;
+	const totalPercentage = seriesData?.metaData?.[strip.id]?.x1 || 0;
 
 	const options = {
 		...chartOptions,
-		responsive: chartOptions?.responsive ?? true,
+				responsive: chartOptions?.responsive ?? true,
 		maintainAspectRatio: chartOptions?.maintainAspectRatio ?? false,
 		plugins: {
 			datalabels: {
@@ -290,7 +291,7 @@ const BasePieChart = (props) => {
 
 			// Render compliance strip if `complianceStrip` is true
 			if (strip?.display) {
-				const radius = strip?.stripSize ?? 35; // Radius for the outer ring
+				const stripRadius = strip?.stripSize ?? 35; // Radius for the outer ring
 				const stripThickness = strip?.stripWidth ?? 7; // Thickness of the strip
 				const compliancePercentage = totalPercentage; // Set compliance percentage
 
@@ -313,17 +314,23 @@ const BasePieChart = (props) => {
 
 				// Draw the compliance strip (colored section)
 				const gradient = ctx.createLinearGradient(
-					centerX - radius,
-					centerY - radius,
-					centerX + radius,
-					centerY + radius
+					centerX - stripRadius,
+					centerY - stripRadius,
+					centerX + stripRadius,
+					centerY + stripRadius
 				);
 
 				gradient.addColorStop(0, strip?.startColor ?? '#4CAF50'); // Start color
 				gradient.addColorStop(1, strip?.endColor ?? '#FFC107'); // End color
 
 				ctx.beginPath();
-				ctx.arc(centerX, centerY, radius + stripThickness, startAngle, complianceEndAngle);
+				ctx.arc(
+					centerX,
+					centerY,
+					stripRadius + stripThickness,
+					startAngle,
+					complianceEndAngle
+				);
 				ctx.lineWidth = stripThickness;
 				ctx.strokeStyle = gradient;
 				ctx.stroke();
@@ -333,7 +340,7 @@ const BasePieChart = (props) => {
 				ctx.arc(
 					centerX,
 					centerY,
-					radius + stripThickness,
+					stripRadius + stripThickness,
 					complianceEndAngle,
 					startAngle + totalAngle
 				);
@@ -409,7 +416,7 @@ const BasePieChart = (props) => {
 			}}
 			style={{
 				width,
-				height,
+				height: height === '100%' ? '90%' : height,
 				display: 'flex',
 				flexDirection: 'row',
 				alignItems: 'center',
@@ -439,7 +446,7 @@ BasePieChart.propTypes = {
 		chartData: PropTypes.object,
 		metaData: PropTypes.object,
 	}),
-	semiDoughnut: PropTypes.bool,
+	cutout: PropTypes.string,
 	cursor: PropTypes.string,
 	style: PropTypes.object,
 	className: PropTypes.string,
