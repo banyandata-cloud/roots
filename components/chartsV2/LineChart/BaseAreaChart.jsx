@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable no-param-reassign */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable react/forbid-prop-types */
@@ -17,7 +18,6 @@ import React, { useRef, useState } from 'react';
 import { Line } from 'react-chartjs-2';
 import { COLORS } from '../../../styles';
 // import { classes } from '../../../utils';
-import styles from './BaseAreaChart.module.css';
 import { Skeleton } from './Skeleton';
 
 ChartJS.register(
@@ -76,6 +76,8 @@ const BaseAreaChart = (props) => {
 			'rgba(153, 102, 255, 1)',
 			'rgba(255, 159, 64, 1)',
 		],
+		customLegendPosition = 'bottom',
+		legendStyle,
 	} = props;
 
 	if (loading || fallback) {
@@ -118,7 +120,11 @@ const BaseAreaChart = (props) => {
 				li.style.alignItems = 'center';
 				li.style.cursor = 'pointer';
 				li.style.opacity = hiddenDatasets.includes(index) ? '0.5' : '1';
-				li.style.margin = '0 10px';
+				li.style.margin = '5px 10px';
+				li.style.maxWidth = '120px';
+				li.style.whiteSpace = 'nowrap';
+				li.style.overflow = 'hidden';
+				li.style.textOverflow = 'ellipsis';
 
 				const textColor = hiddenDatasets.includes(index) ? 'grey' : 'inherit';
 				const circleColor = hiddenDatasets.includes(index)
@@ -147,9 +153,9 @@ const BaseAreaChart = (props) => {
 				};
 
 				li.innerHTML = `
-				<svg width="15" height="15" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-					<circle cx="15" cy="15" r="12" stroke="${circleColor}" stroke-width="6"/>
-				</svg>
+					<svg width="15" height="15" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<circle cx="15" cy="15" r="12" stroke="${circleColor}" stroke-width="6"/>
+					</svg>
 				<span style="margin-left: 10px; color: ${textColor};">${dataset.label}</span>
 				`;
 
@@ -189,7 +195,7 @@ const BaseAreaChart = (props) => {
 		maintainAspectRatio: false,
 		plugins: {
 			legend: {
-				display: false,
+				display: legend?.display ?? false,
 				position: legend?.position ?? 'bottom',
 				labels: {
 					color: axisLabelColor || COLORS.grey,
@@ -326,26 +332,48 @@ const BaseAreaChart = (props) => {
 		cursor: cursor ?? 'default',
 	};
 
+	const legendStyles = {
+		display: 'flex',
+		listStyle: 'none',
+		padding: '0px',
+		margin: '10px auto',
+		justifyContent:
+			customLegendPosition === 'left'
+				? 'flex-start'
+				: customLegendPosition === 'right'
+				? 'flex-end'
+				: 'center',
+		flexDirection:
+			customLegendPosition === 'top' || customLegendPosition === 'bottom' ? 'row' : 'column',
+		// alignItems: 'center',
+		position: 'relative',
+		...legendStyle,
+	};
+
 	return (
 		<div
-			className={styles.main}
 			style={{
 				position: 'relative',
 				width: width ?? '100%',
 				height: height ?? '300px',
+				display: 'flex',
+				flexDirection:
+					customLegendPosition === 'top'
+						? 'column-reverse'
+						: customLegendPosition === 'bottom'
+						? 'column'
+						: 'row',
+				alignItems: 'center',
+				// justifyContent: 'center',
 			}}>
+			{customLegend && customLegendPosition === 'top' && (
+				<ul ref={legendRef} style={legendStyles} />
+			)}
+
 			<Line data={chartData} options={chartOptions} plugins={[customLegendPlugin]} />
-			{customLegend && (
-				<ul
-					ref={legendRef}
-					style={{
-						listStyle: 'none',
-						padding: '0px',
-						margin: '10px auto', // Center horizontally
-						display: 'flex',
-						justifyContent: 'center', // Center items
-					}}
-				/>
+
+			{customLegend && customLegendPosition !== 'top' && (
+				<ul ref={legendRef} style={legendStyles} />
 			)}
 		</div>
 	);

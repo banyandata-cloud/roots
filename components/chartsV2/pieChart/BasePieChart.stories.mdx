@@ -47,9 +47,8 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 	<Story
 		name='Default'
 		args={{
-			height: '90%',
+			height: '100%',
 			width: '100%',
-			
 			customDoughnut: true,
 			customLegend: false,
 			cursor: 'default',
@@ -66,10 +65,12 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 				title: 'Strip',
 				position: 3,
 				display: true,
-				stripSize: 40,
+				stripSize: 45,
+				stripWidth: 5,
+				id: 'totalPercentage',
+				value: 'totalControls',
+				
 			},
-			radius: ['20%', '40%'],
-			center: ['50%', '50%'],
 			seriesData: sampleData,
 			customDoughnut: true,
 			startAngle: 90,
@@ -195,8 +196,8 @@ Pie Chart as Icon
 		name='Pie Icon'
 		args={{
 			gridOptions: {
-				height: '100%',
-				width: '100%',
+				height: '50%',
+				width: '50%',
 			},
 			cursor: 'default',
 			radius: ['30%', '60%'],
