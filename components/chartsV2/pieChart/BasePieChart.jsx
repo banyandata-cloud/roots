@@ -32,7 +32,9 @@ const BasePieChart = (props) => {
 		height = '100%',
 		customLabel,
 		strip,
-		cutout = '40%',
+		cutout = '0%',
+		doughnut,
+		hoverBorderWidth,
 	} = props;
 
 	const [excludedIndices, setExcludedIndices] = useState([]);
@@ -113,13 +115,13 @@ const BasePieChart = (props) => {
 								? '#D3D3D3' // Grey for excluded items
 								: defaultColors[index % defaultColors.length]; // Normal color for other borders
 					  }),
-				hoverBorderWidth: 7,
+				hoverBorderWidth,
 				hoverOffset: (context) => {
 					const index = context.dataIndex;
 					// Set hoverOffset to 30 for the hovered pie slice, whether from the legend or chart hover
 					return hoveredIndex === index ? 30 : 0;
 				},
-				cutout, // Strip should be an outer ring
+				cutout: doughnut ? '40%' : cutout, // Strip should be an outer ring
 			},
 		],
 	};
@@ -128,12 +130,12 @@ const BasePieChart = (props) => {
 		setHoveredIndex(index);
 	};
 
-	const totalControlsValue = seriesData?.metaData?.[strip.value].x1 || 0;
-	const totalPercentage = seriesData?.metaData?.[strip.id]?.x1 || 0;
+	const totalControlsValue = seriesData?.metaData?.[strip?.value]?.x1 || 0;
+	const totalPercentage = seriesData?.metaData?.[strip?.id]?.x1 || 0;
 
 	const options = {
 		...chartOptions,
-				responsive: chartOptions?.responsive ?? true,
+		responsive: chartOptions?.responsive ?? true,
 		maintainAspectRatio: chartOptions?.maintainAspectRatio ?? false,
 		plugins: {
 			datalabels: {
@@ -246,9 +248,6 @@ const BasePieChart = (props) => {
 				duration: 500,
 				easing: 'easeOutBounce',
 			},
-		},
-		layout: {
-			padding: 15,
 		},
 		elements: {
 			arc: {
@@ -453,6 +452,8 @@ BasePieChart.propTypes = {
 	theme: PropTypes.string,
 	seriesOption: PropTypes.array,
 	customLegend: PropTypes.bool, // Add PropType for customLegend
+	doughnut: PropTypes.bool,
+	hoverBorderWidth: PropTypes.string,
 };
 
 export default BasePieChart;
