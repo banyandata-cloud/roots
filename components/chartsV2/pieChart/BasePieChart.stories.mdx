@@ -52,6 +52,7 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 			customDoughnut: true,
 			customLegend: false,
 			cursor: 'default',
+			doughnut: true,
 			customLabel: {
 				display: true,
 				fontStyle: 'bold',
@@ -69,14 +70,16 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 				stripWidth: 5,
 				id: 'totalPercentage',
 				value: 'totalControls',
-				
 			},
 			seriesData: sampleData,
-			customDoughnut: true,
+			customDoughnut: false,
 			startAngle: 90,
 			options: {
 				responsive: true,
 				maintainAspectRatio: true,
+				layout: {
+					padding: 15,
+				},
 			},
 			tooltip: {
 				displayColors: true,
@@ -87,8 +90,8 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					weight: 500,
 					textAlign: 'left',
 					family: 'Poppins',
-    			},
-    		},
+				},
+			},
 			legend: {
 				display: false,
 			},
@@ -203,13 +206,6 @@ Pie Chart as Icon
 			radius: ['30%', '60%'],
 			seriesData: iconData,
 			complianceStrip: false,
-			semiDoughnut: true,
-			customLabel: {
-				display: true,
-				fontStyle: 'bold',
-				fontSize: '1.5rem',
-				textColor: 'black',
-			},
 			strip: {
 				fontStyle: 'normal',
 				fontSize: '10px',
