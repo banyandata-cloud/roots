@@ -35,9 +35,6 @@
 .root .toggle > button[data-elem=base-cell].toggle-button > [data-elem=component2] > [data-elem=title] {
   color: var(--mono-color1);
 }
-.root .toggle > button[data-elem=base-cell].toggle-button svg path {
-  fill: var(--white);
-}
 .root .toggle > button[data-elem=base-cell].toggle-button.secondary {
   opacity: 0.5;
 }
@@ -47,9 +44,6 @@
 .root .toggle > button[data-elem=base-cell].toggle-button.secondary > [data-elem=component2] > [data-elem=title] {
   color: var(--secondary-color2);
 }
-.root .toggle > button[data-elem=base-cell].toggle-button.secondary svg path {
-  fill: var(--secondary-color2);
-}
 .root .toggle > button[data-elem=base-cell].toggle-button.active {
   opacity: 1;
 }
@@ -57,9 +51,6 @@
   background-color: var(--mono-color1);
   border-radius: 0.25rem;
   box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.25);
-}
-.root .toggle > button[data-elem=base-cell].toggle-button.active.highlight svg path {
-  fill: var(--white);
 }
 .root .toggle > button[data-elem=base-cell].toggle-button.active.highlight.secondary {
   opacity: 1;
@@ -75,9 +66,6 @@
 }
 .root .toggle > button[data-elem=base-cell].toggle-button.active.secondary > [data-elem=component2] > [data-elem=title] {
   color: var(--secondary-color2);
-}
-.root .toggle > button[data-elem=base-cell].toggle-button.active.secondary svg path {
-  fill: var(--secondary-color2);
 }
 .root .toggle > button[data-elem=base-cell].toggle-button.disabled {
   cursor: not-allowed;
