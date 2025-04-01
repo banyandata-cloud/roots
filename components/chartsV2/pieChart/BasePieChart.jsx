@@ -1,7 +1,6 @@
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable no-nested-ternary */
 import { ArcElement, Chart as ChartJS, Legend, Title, Tooltip } from 'chart.js';
-import PropTypes from 'prop-types';
 import React, { useCallback, useRef, useState } from 'react';
 import { Pie } from 'react-chartjs-2';
 import { classes } from '../../../utils';
@@ -32,9 +31,9 @@ const BasePieChart = (props) => {
 		height = '100%',
 		customLabel,
 		strip,
-		cutout = '0%',
-		doughnut,
+		doughnut = '0%',
 		hoverBorderWidth,
+		legendStyles,
 	} = props;
 
 	const [excludedIndices, setExcludedIndices] = useState([]);
@@ -121,7 +120,7 @@ const BasePieChart = (props) => {
 					// Set hoverOffset to 30 for the hovered pie slice, whether from the legend or chart hover
 					return hoveredIndex === index ? 30 : 0;
 				},
-				cutout: doughnut ? '40%' : cutout, // Strip should be an outer ring
+				cutout: doughnut ?? '0%', // Strip should be an outer ring
 			},
 		],
 	};
@@ -130,13 +129,12 @@ const BasePieChart = (props) => {
 		setHoveredIndex(index);
 	};
 
-	const totalControlsValue = seriesData?.metaData?.[strip?.value]?.x1 || 0;
-	const totalPercentage = seriesData?.metaData?.[strip?.id]?.x1 || 0;
+	const stripValue = seriesData?.metaData?.[customLabel?.value]?.x1 || 0;
+	const stripAngle = seriesData?.metaData?.[customLabel?.id]?.x1 || 0;
 
 	const options = {
-		...chartOptions,
 		responsive: chartOptions?.responsive ?? true,
-		maintainAspectRatio: chartOptions?.maintainAspectRatio ?? false,
+		maintainAspectRatio: false,
 		plugins: {
 			datalabels: {
 				display: false,
@@ -146,7 +144,6 @@ const BasePieChart = (props) => {
 						display: false,
 				  }
 				: {
-						...legend,
 						display: legend?.display ?? true,
 						position: 'right',
 						align: 'center',
@@ -177,6 +174,7 @@ const BasePieChart = (props) => {
 						onLeave: () => {
 							setHoveredIndex(null);
 						},
+						...legend,
 				  },
 			title: {
 				display: !!title,
@@ -191,7 +189,6 @@ const BasePieChart = (props) => {
 				},
 			},
 			tooltip: {
-				...tooltip,
 				borderWidth: tooltip?.borderWidth ?? 1,
 				borderColor: (context) => {
 					const index = context?.tooltipItems[0]?.dataIndex;
@@ -225,6 +222,7 @@ const BasePieChart = (props) => {
 				bodyFont: {
 					...tooltip.bodyFont,
 				},
+				...tooltip,
 			},
 		},
 		interaction: {
@@ -255,6 +253,15 @@ const BasePieChart = (props) => {
 				hoverOffset: 30,
 			},
 		},
+		layout: {
+			padding: {
+				top: 50,
+				bottom: 50,
+				left: 50,
+				right: 50,
+			},
+		},
+		...chartOptions,
 	};
 
 	const centerTextPlugin = {
@@ -268,31 +275,31 @@ const BasePieChart = (props) => {
 			ctx.save();
 
 			// Center text styling and positioning
-			ctx.font = `${customLabel?.fontStyle} ${customLabel?.fontSize} Poppins`;
+			ctx.font = `${customLabel?.valueFontStyle} ${customLabel?.ValueFontSize} Poppins`;
 			ctx.textAlign = 'center';
 			ctx.textBaseline = 'middle';
-			ctx.fillStyle = customLabel?.textColor;
+			ctx.fillStyle = customLabel?.ValueColor;
 
 			// Calculate the center position of the chart
 			const centerX = (left + right) / 2;
 			const centerY = (top + bottom) / 2;
 
 			// Render the center text
-			ctx.fillText(`${totalControlsValue}`, centerX, centerY);
+			ctx.fillText(`${stripValue}`, centerX, centerY);
 
 			// Render the compliance title with bottom margin
-			const titleBottomMargin = strip.margin ?? 10; // Adjust this value for bottom margin
-			const position = strip.position ?? 5;
+			const titleBottomMargin = customLabel.margin ?? 10; // Adjust this value for bottom margin
+			const position = customLabel.labelPosition ?? 5;
 			const titleYPosition = centerY + position; // Default title Y position
-			ctx.font = `${strip?.fontStyle} ${strip?.fontSize} Poppins`; // Title font style
-			ctx.fillStyle = `${strip?.textColor}`; // Title text color (gray)
-			ctx.fillText(`${strip?.title}`, centerX, titleYPosition + titleBottomMargin);
+			ctx.font = `${customLabel?.labelFontStyle} ${customLabel?.labelFontSize} Poppins`; // Title font style
+			ctx.fillStyle = `${customLabel?.labelColor}`; // Title text color (gray)
+			ctx.fillText(`${customLabel?.label}`, centerX, titleYPosition + titleBottomMargin);
 
 			// Render compliance strip if `complianceStrip` is true
-			if (strip?.display) {
+			if (strip) {
 				const stripRadius = strip?.stripSize ?? 35; // Radius for the outer ring
 				const stripThickness = strip?.stripWidth ?? 7; // Thickness of the strip
-				const compliancePercentage = totalPercentage; // Set compliance percentage
+				const compliancePercentage = stripAngle; // Set compliance percentage
 
 				// Fixed start and end angles
 				const startAngle = (130 * Math.PI) / 180; // Convert degrees to radians
@@ -428,32 +435,20 @@ const BasePieChart = (props) => {
 					...options,
 				}}
 				plugins={[
-					customLabel?.display && centerTextPlugin,
+					customLabel && centerTextPlugin,
 					customLegend && customLegendPlugin,
 				].filter(Boolean)}
 			/>
-			{customLegend && <ul ref={legendRef} />}
+			{customLegend && (
+				<ul
+					style={{
+						...legendStyles,
+					}}
+					ref={legendRef}
+				/>
+			)}
 		</div>
 	);
-};
-
-BasePieChart.propTypes = {
-	loading: PropTypes.bool,
-	fallback: PropTypes.bool,
-	title: PropTypes.string,
-	seriesData: PropTypes.shape({
-		chartData: PropTypes.object,
-		metaData: PropTypes.object,
-	}),
-	cutout: PropTypes.string,
-	cursor: PropTypes.string,
-	style: PropTypes.object,
-	className: PropTypes.string,
-	theme: PropTypes.string,
-	seriesOption: PropTypes.array,
-	customLegend: PropTypes.bool, // Add PropType for customLegend
-	doughnut: PropTypes.bool,
-	hoverBorderWidth: PropTypes.string,
 };
 
 export default BasePieChart;

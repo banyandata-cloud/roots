@@ -52,22 +52,174 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 			customDoughnut: true,
 			customLegend: false,
 			cursor: 'default',
-			doughnut: true,
+			doughnut: '40%',
 			customLabel: {
-				display: true,
-				fontStyle: 'bold',
-				fontSize: '1.5rem',
-				textColor: 'black',
+				valueFontStyle: 'bold',
+				ValueFontSize: '1.5rem',
+				ValueColor: 'black',
+				label: 'Strip',
+				labelFontSize: '0.81rem',
+				labelFontStyle: 'normal',
+				labelColor: 'black',
+				labelPosition: 3,
+				id: 'totalPercentage',
+				value: 'totalControls',
 			},
 			strip: {
-				fontStyle: 'normal',
-				fontSize: '10px',
-				textColor: 'black',
-				title: 'Strip',
-				position: 3,
-				display: true,
 				stripSize: 45,
 				stripWidth: 5,
+			},
+			seriesData: sampleData,
+			customDoughnut: false,
+			startAngle: 90,
+			options: {
+				responsive: true,
+				maintainAspectRatio: true,
+				layout: {
+					padding: 15,
+				},
+			},
+			tooltip: {
+				displayColors: true,
+				colorBoxWidth: 7,
+				colorBoxHeight: 7,
+				bodyFont: {
+					size: 14,
+					weight: 500,
+					textAlign: 'left',
+					family: 'Poppins',
+				},
+			},
+			legend: {
+				display: false,
+			},
+			seriesOption: [
+				{
+					stackIndex: 1,
+					itemStyle: {
+						color: '#00459F',
+					},
+					label: {
+						show: true,
+						fontSize: '15',
+						color: 'black',
+						fontWeight: 'bold',
+						position: 'center',
+						formatter() {
+							return `40 \nControls`;
+						},
+					},
+				},
+				{
+					stackIndex: 2,
+					itemStyle: {
+						color: '#0056C7',
+					},
+				},
+				{
+					stackIndex: 3,
+					itemStyle: {
+						color: '#3076D2',
+					},
+				},
+				{
+					stackIndex: 4,
+					itemStyle: {
+						color: '#6096DD',
+					},
+				},
+				{
+					stackIndex: 5,
+					itemStyle: {
+						color: '#90B6E9',
+					},
+				},
+				{
+					stackIndex: 6,
+					itemStyle: {
+						color: '#A8C6EE',
+					},
+				},
+				{
+					stackIndex: 7,
+					itemStyle: {
+						color: '#C0D6F4',
+					},
+				},
+				{
+					stackIndex: 8,
+					itemStyle: {
+						color: '#D8E6F9',
+					},
+				},
+				{
+					stackIndex: 9,
+					itemStyle: {
+						color: '#F0F6FF',
+					},
+				},
+				{
+					stackIndex: 10,
+					itemStyle: {
+						color: '#001128',
+					},
+				},
+				{
+					stackIndex: 11,
+					itemStyle: {
+						color: '#001A3C',
+					},
+				},
+				{
+					stackIndex: 12,
+					itemStyle: {
+						color: '#001A3C',
+					},
+				},
+				{
+					stackIndex: 13,
+					itemStyle: {
+						color: '#002250',
+					},
+				},
+			],
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Pie Chart Custom Legend
+
+<Canvas>
+	<Story
+		name='Custom Legend'
+		args={{
+			height: '80%',
+			width: '100%',
+			customDoughnut: true,
+			customLegend: true,
+			cursor: 'default',
+			doughnut: '40%',
+			style: {
+				flexDirection: 'column',
+			},
+			legendStyles: {
+				display: 'flex',
+				flexDirection: 'row',
+				flexWrap: 'wrap',
+				maxWidth: '60rem',
+				rowGap: '1rem',
+				columnGap: '1.5rem',
+			},
+			customLabel: {
+				valueFontStyle: 'bold',
+				ValueFontSize: '1.5rem',
+				ValueColor: 'black',
+				label: 'Strip',
+				labelFontSize: '0.81rem',
+				labelFontStyle: 'normal',
+				labelColor: 'black',
+				labelPosition: 3,
 				id: 'totalPercentage',
 				value: 'totalControls',
 			},

@@ -173,7 +173,95 @@ The Line Chart with transparent areas and unstacked Lines.
 			width: '100%',
 			title: 'Title',
 			xAxisPosition: 'top',
+			gridOptions: {
+				left: 50,
+				right: 50,
+				bottom: 100,
+				top: 50,
+			},
+			gridContainLabel: true,
+			xAxisLabelShow: true,
+			xSplitLineShow: true,
+			xAxisLineShow: true,
+			xAxisTickShow: false,
+			xAxis: {
+				position: 'top',
+				boundaryGap: false,
+			},
+			splitType: 'dotted',
+			axisSplitColor: '#D8DFE5',
+			smooth: true,
+			stacked: true,
+			yAxisLabelShow: true,
+			ySplitLineShow: true,
+			yAxisLineShow: false,
+			yAxisTickShow: true,
+			axisLabelColor: 'black',
+			chartOptionsProps: {
+				interaction: {
+					mode: 'point',
+					intersect: true,
+				},
+				borderWidth: 4,
+				pointRadius: 4,
+				pointStyle: 'rectRot',
+			},
+			yAxis: {
+				boundaryGap: ['0%', '20%'],
+				axisLabel: {
+					formatter: (value) => {
+						if ([0, 100, 200, 300, 400]?.includes?.(value)) {
+							return value;
+						} else {
+							return '';
+						}
+					},
+				},
+			},
+			yAxisTick: {
+				alignWithLabel: true,
+				customValues: [0, 100, 200, 300, 400],
+				display: true, // Ensure this is not set to false
+			},
+			cursor: 'default',
+			tooltip: {
+				displayColors: true,
+				colorBoxWidth: 7,
+				colorBoxHeight: 7,
+				bodyFont: {
+					size: 14,
+					weight: 500,
+					textAlign: 'left',
+					family: 'Poppins',
+				},
+			},
+		}}>
+		{TemplateV2.bind({})}
+	</Story>
+</Canvas>
+
+### Line Stack Area Chart With Custom Legends
+
+<Canvas>
+	<Story
+		name='Line Stack With Custom Legend'
+		args={{
+			width: '100%',
+			title: 'Title',
+			xAxisPosition: 'top',
 			customLegend: true,
+			style: {
+				flexDirection: 'row',
+				width: '80%',
+				gap: '1.5rem',
+			},
+			legendStyles: {
+				display: 'flex',
+				flexDirection: 'column',
+				flexWrap: 'wrap',
+				maxWidth: '60rem',
+				gap: '0.5rem',
+			},
 			gridOptions: {
 				left: 50,
 				right: 50,

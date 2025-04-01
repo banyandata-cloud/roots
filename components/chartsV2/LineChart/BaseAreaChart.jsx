@@ -13,7 +13,6 @@ import {
 	Title,
 	Tooltip,
 } from 'chart.js';
-import PropTypes from 'prop-types';
 import React, { useRef, useState } from 'react';
 import { Line } from 'react-chartjs-2';
 import { COLORS } from '../../../styles';
@@ -58,6 +57,7 @@ const BaseAreaChart = (props) => {
 		axisSplitColor,
 		cursor,
 		yAxis,
+		xAxis,
 		customLegend,
 		width,
 		height,
@@ -76,8 +76,8 @@ const BaseAreaChart = (props) => {
 			'rgba(153, 102, 255, 1)',
 			'rgba(255, 159, 64, 1)',
 		],
-		customLegendPosition = 'bottom',
-		legendStyle,
+		legendStyles,
+		style,
 	} = props;
 
 	if (loading || fallback) {
@@ -184,13 +184,11 @@ const BaseAreaChart = (props) => {
 				datalabels: {
 					display: false, // Disable data labels on points
 				},
-				// ...seriesOption[index], // Add any additional series options here
 			};
 		}),
 	};
 
 	const chartOptions = {
-		...chartOptionsProps,
 		responsive: true,
 		maintainAspectRatio: false,
 		plugins: {
@@ -210,7 +208,6 @@ const BaseAreaChart = (props) => {
 				},
 			},
 			tooltip: {
-				...tooltip,
 				borderWidth: tooltip?.borderWidth ?? 1,
 				borderColor: (context) => {
 					const segmentColor = context?.tooltipItems[0]?.dataset?.backgroundColor;
@@ -243,6 +240,7 @@ const BaseAreaChart = (props) => {
 				bodyFont: {
 					...tooltip.bodyFont,
 				},
+				...tooltip,
 			},
 			title: {
 				display: !!title,
@@ -286,6 +284,7 @@ const BaseAreaChart = (props) => {
 				},
 				borderColor: xAxisLineShow ? 'rgba(0, 0, 0, 0)' : 'rgba(0, 0, 0, 0)',
 				borderWidth: xAxisLineShow ? 1 : 0,
+				...xAxis,
 			},
 			y: {
 				display: yAxisLabelShow, // Whether to display y-axis labels
@@ -330,103 +329,31 @@ const BaseAreaChart = (props) => {
 			},
 		},
 		cursor: cursor ?? 'default',
+		...chartOptionsProps,
 	};
 
-	const legendStyles = {
+	const legendStyle = {
 		display: 'flex',
 		listStyle: 'none',
 		padding: '0px',
 		margin: '10px auto',
-		justifyContent:
-			customLegendPosition === 'left'
-				? 'flex-start'
-				: customLegendPosition === 'right'
-				? 'flex-end'
-				: 'center',
-		flexDirection:
-			customLegendPosition === 'top' || customLegendPosition === 'bottom' ? 'row' : 'column',
-		// alignItems: 'center',
-		position: 'relative',
-		...legendStyle,
+		...legendStyles,
 	};
 
 	return (
 		<div
 			style={{
-				position: 'relative',
 				width: width ?? '100%',
 				height: height ?? '300px',
 				display: 'flex',
-				flexDirection:
-					customLegendPosition === 'top'
-						? 'column-reverse'
-						: customLegendPosition === 'bottom'
-						? 'column'
-						: 'row',
 				alignItems: 'center',
-				// justifyContent: 'center',
+				...style,
 			}}>
-			{customLegend && customLegendPosition === 'top' && (
-				<ul ref={legendRef} style={legendStyles} />
-			)}
-
 			<Line data={chartData} options={chartOptions} plugins={[customLegendPlugin]} />
 
-			{customLegend && customLegendPosition !== 'top' && (
-				<ul ref={legendRef} style={legendStyles} />
-			)}
+			{customLegend && <ul ref={legendRef} style={legendStyle} />}
 		</div>
 	);
-};
-
-BaseAreaChart.propTypes = {
-	loading: PropTypes.bool,
-	fallback: PropTypes.bool,
-	title: PropTypes.string,
-	seriesData: PropTypes.shape({
-		metaData: PropTypes.shape({
-			xAxisData: PropTypes.arrayOf(PropTypes.string),
-		}),
-		chartData: PropTypes.objectOf(PropTypes.arrayOf(PropTypes.number)),
-	}),
-	stacked: PropTypes.bool,
-	xAxisLabelShow: PropTypes.bool,
-	yAxisLabelShow: PropTypes.bool,
-	xAxisLabel: PropTypes.string,
-	yAxisLabel: PropTypes.string,
-	axisLabelColor: PropTypes.string,
-	smooth: PropTypes.bool,
-	legend: PropTypes.shape({
-		show: PropTypes.bool,
-		position: PropTypes.string,
-		itemGap: PropTypes.number,
-		icon: PropTypes.string,
-	}),
-	tooltip: PropTypes.shape({
-		show: PropTypes.bool,
-		trigger: PropTypes.string,
-		axisPointer: PropTypes.object,
-		triggerOn: PropTypes.string,
-	}),
-	theme: PropTypes.oneOf(['dark', 'light']),
-	// style: PropTypes.object,
-	// className: PropTypes.string,
-	isLineChart: PropTypes.bool,
-	xAxisPosition: PropTypes.string,
-	gridOptions: PropTypes.shape({
-		left: PropTypes.number,
-		right: PropTypes.number,
-		top: PropTypes.number,
-		bottom: PropTypes.number,
-	}),
-	// seriesOption: PropTypes.arrayOf(PropTypes.object),
-	xSplitLineShow: PropTypes.bool,
-	xAxisLineShow: PropTypes.bool,
-	// xAxisTickShow: PropTypes.bool,
-	axisSplitColor: PropTypes.string,
-	cursor: PropTypes.string,
-	yAxis: PropTypes.object,
-	// yAxisTick: PropTypes.object,
 };
 
 export default BaseAreaChart;
