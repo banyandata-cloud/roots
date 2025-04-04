@@ -353,7 +353,7 @@ const BaseAreaChart = (props) => {
 			}}>
 			<Line data={chartData} options={chartOptions} plugins={[customLegendPlugin]} />
 
-			{legend?.icon && <ul ref={legendRef} style={legendStyle} />}
+			{legend?.icon && legend?.display && <ul ref={legendRef} style={legendStyle} />}
 		</div>
 	);
 };
