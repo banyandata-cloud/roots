@@ -32,7 +32,6 @@ const BasePieChart = (props) => {
 		strip,
 		doughnut = ['90%', '0%'],
 		hoverBorderWidth,
-		legendStyles,
 	} = props;
 
 	const [excludedIndices, setExcludedIndices] = useState([]);
@@ -431,13 +430,13 @@ const BasePieChart = (props) => {
 				}}
 				plugins={[
 					customLabel && centerTextPlugin,
-					legend?.icon && customLegendPlugin,
+					legend?.icon && legend?.display && customLegendPlugin,
 				].filter(Boolean)}
 			/>
-			{legend?.icon && (
+			{legend?.icon && legend?.display && (
 				<ul
 					style={{
-						...legendStyles,
+						...legend?.legendStyles,
 					}}
 					ref={legendRef}
 				/>
