@@ -58,7 +58,6 @@ const BaseAreaChart = (props) => {
 		cursor,
 		yAxis,
 		xAxis,
-		customLegend,
 		width,
 		height,
 		chartOptionsProps,
@@ -192,21 +191,26 @@ const BaseAreaChart = (props) => {
 		responsive: true,
 		maintainAspectRatio: false,
 		plugins: {
-			legend: {
-				display: legend?.display ?? false,
-				position: legend?.position ?? 'bottom',
-				labels: {
-					color: axisLabelColor || COLORS.grey,
-					boxWidth: 9, // Adjust width for a circular appearance
-					boxHeight: 9, // Adjust height for a circular appearance
-					borderRadius: 50, // Ensure the shape is circular
-					padding: 10, // Padding around legend items
-					usePointStyle: true, // Use circular point style for legends
-					font: {
-						family: 'Poppins',
-					},
-				},
-			},
+			legend: legend?.icon
+				? {
+						display: false,
+				  }
+				: {
+						display: legend?.display ?? true,
+						position: legend?.position ?? 'bottom',
+						labels: {
+							color: axisLabelColor || COLORS.grey,
+							boxWidth: 9, // Adjust width for a circular appearance
+							boxHeight: 9, // Adjust height for a circular appearance
+							borderRadius: 50, // Ensure the shape is circular
+							padding: 10, // Padding around legend items
+							usePointStyle: true, // Use circular point style for legends
+							font: {
+								family: 'Poppins',
+							},
+						},
+						...legend,
+				  },
 			tooltip: {
 				borderWidth: tooltip?.borderWidth ?? 1,
 				borderColor: (context) => {
@@ -351,7 +355,7 @@ const BaseAreaChart = (props) => {
 			}}>
 			<Line data={chartData} options={chartOptions} plugins={[customLegendPlugin]} />
 
-			{customLegend && <ul ref={legendRef} style={legendStyle} />}
+			{legend?.icon && <ul ref={legendRef} style={legendStyle} />}
 		</div>
 	);
 };
