@@ -24,14 +24,13 @@ const BasePieChart = (props) => {
 		theme,
 		fallback,
 		seriesOption,
-		customLegend,
 		options: chartOptions,
 		tooltip,
 		width = '100%',
 		height = '100%',
 		customLabel,
 		strip,
-		doughnut = '0%',
+		doughnut = ['90%', '0%'],
 		hoverBorderWidth,
 		legendStyles,
 	} = props;
@@ -120,7 +119,8 @@ const BasePieChart = (props) => {
 					// Set hoverOffset to 30 for the hovered pie slice, whether from the legend or chart hover
 					return hoveredIndex === index ? 30 : 0;
 				},
-				cutout: doughnut ?? '0%', // Strip should be an outer ring
+				radius: doughnut?.[0] ?? '100%',
+				cutout: doughnut?.[1] ?? '0%',
 			},
 		],
 	};
@@ -129,9 +129,6 @@ const BasePieChart = (props) => {
 		setHoveredIndex(index);
 	};
 
-	const stripValue = seriesData?.metaData?.[customLabel?.value]?.x1 || 0;
-	const stripAngle = seriesData?.metaData?.[customLabel?.id]?.x1 || 0;
-
 	const options = {
 		responsive: chartOptions?.responsive ?? true,
 		maintainAspectRatio: false,
@@ -139,7 +136,7 @@ const BasePieChart = (props) => {
 			datalabels: {
 				display: false,
 			},
-			legend: customLegend
+			legend: legend?.icon
 				? {
 						display: false,
 				  }
@@ -150,8 +147,8 @@ const BasePieChart = (props) => {
 						labels: {
 							boxWidth: 10,
 							padding: 10,
-							borderWidth: 3,
-							borderColor: 'white',
+							// borderWidth: 0,
+							// borderColor: 'white',
 							color: (context) => {
 								const { index } = context;
 								return hoveredIndex !== null && hoveredIndex !== index
@@ -242,10 +239,8 @@ const BasePieChart = (props) => {
 			setHoveredIndex(null);
 		},
 		animations: {
-			animateRotate: {
-				duration: 500,
-				easing: 'easeOutBounce',
-			},
+			animateRotate: false,
+			animateScale: false,
 		},
 		elements: {
 			arc: {
@@ -255,10 +250,10 @@ const BasePieChart = (props) => {
 		},
 		layout: {
 			padding: {
-				top: 50,
-				bottom: 50,
-				left: 50,
-				right: 50,
+				top: 10,
+				bottom: 10,
+				left: 10,
+				right: 10,
 			},
 		},
 		...chartOptions,
@@ -275,31 +270,31 @@ const BasePieChart = (props) => {
 			ctx.save();
 
 			// Center text styling and positioning
-			ctx.font = `${customLabel?.valueFontStyle} ${customLabel?.ValueFontSize} Poppins`;
+			ctx.font = `${customLabel?.valueStyles?.fontStyle} ${customLabel?.valueStyles?.fontSize} Poppins`;
 			ctx.textAlign = 'center';
 			ctx.textBaseline = 'middle';
-			ctx.fillStyle = customLabel?.ValueColor;
+			ctx.fillStyle = customLabel?.valueStyles?.color;
 
 			// Calculate the center position of the chart
 			const centerX = (left + right) / 2;
 			const centerY = (top + bottom) / 2;
 
 			// Render the center text
-			ctx.fillText(`${stripValue}`, centerX, centerY);
+			ctx.fillText(`${customLabel?.id}`, centerX, centerY);
 
 			// Render the compliance title with bottom margin
 			const titleBottomMargin = customLabel.margin ?? 10; // Adjust this value for bottom margin
-			const position = customLabel.labelPosition ?? 5;
+			const position = customLabel?.labelStyles?.position ?? 5;
 			const titleYPosition = centerY + position; // Default title Y position
-			ctx.font = `${customLabel?.labelFontStyle} ${customLabel?.labelFontSize} Poppins`; // Title font style
-			ctx.fillStyle = `${customLabel?.labelColor}`; // Title text color (gray)
-			ctx.fillText(`${customLabel?.label}`, centerX, titleYPosition + titleBottomMargin);
+			ctx.font = `${customLabel?.labelStyles?.fontStyle} ${customLabel?.labelStyles?.fontSize} Poppins`; // Title font style
+			ctx.fillStyle = `${customLabel?.labelStyles?.color}`; // Title text color (gray)
+			ctx.fillText(`${customLabel?.title}`, centerX, titleYPosition + titleBottomMargin);
 
 			// Render compliance strip if `complianceStrip` is true
 			if (strip) {
 				const stripRadius = strip?.stripSize ?? 35; // Radius for the outer ring
 				const stripThickness = strip?.stripWidth ?? 7; // Thickness of the strip
-				const compliancePercentage = stripAngle; // Set compliance percentage
+				const compliancePercentage = customLabel?.value; // Set compliance percentage
 
 				// Fixed start and end angles
 				const startAngle = (130 * Math.PI) / 180; // Convert degrees to radians
@@ -436,10 +431,10 @@ const BasePieChart = (props) => {
 				}}
 				plugins={[
 					customLabel && centerTextPlugin,
-					customLegend && customLegendPlugin,
+					legend?.icon && customLegendPlugin,
 				].filter(Boolean)}
 			/>
-			{customLegend && (
+			{legend?.icon && (
 				<ul
 					style={{
 						...legendStyles,

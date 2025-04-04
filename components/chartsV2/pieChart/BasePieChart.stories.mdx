@@ -49,28 +49,29 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 		args={{
 			height: '100%',
 			width: '100%',
-			customDoughnut: true,
-			customLegend: false,
 			cursor: 'default',
-			doughnut: '40%',
+			doughnut: ['100%', '40%'],
 			customLabel: {
-				valueFontStyle: 'bold',
-				ValueFontSize: '1.5rem',
-				ValueColor: 'black',
-				label: 'Strip',
-				labelFontSize: '0.81rem',
-				labelFontStyle: 'normal',
-				labelColor: 'black',
-				labelPosition: 3,
-				id: 'totalPercentage',
-				value: 'totalControls',
+				labelStyles: {
+					fontSize: '0.81rem',
+					fontStyle: 'normal',
+					color: 'black',
+					position: 3,
+				},
+				valueStyles: {
+					fontSize: '1.5rem',
+					fontStyle: 'bold',
+					color: 'black',
+				},
+				title: 'Strip',
+				id: 400,
+				value: 60,
 			},
 			strip: {
 				stripSize: 45,
 				stripWidth: 5,
 			},
 			seriesData: sampleData,
-			customDoughnut: false,
 			startAngle: 90,
 			options: {
 				responsive: true,
@@ -196,10 +197,8 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 		args={{
 			height: '80%',
 			width: '100%',
-			customDoughnut: true,
-			customLegend: true,
 			cursor: 'default',
-			doughnut: '40%',
+			doughnut: ['100%', '30%'],
 			style: {
 				flexDirection: 'column',
 			},
@@ -212,23 +211,26 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 				columnGap: '1.5rem',
 			},
 			customLabel: {
-				valueFontStyle: 'bold',
-				ValueFontSize: '1.5rem',
-				ValueColor: 'black',
-				label: 'Strip',
-				labelFontSize: '0.81rem',
-				labelFontStyle: 'normal',
-				labelColor: 'black',
-				labelPosition: 3,
-				id: 'totalPercentage',
-				value: 'totalControls',
+				labelStyles: {
+					fontSize: '0.81rem',
+					fontStyle: 'normal',
+					color: 'black',
+					position: 3,
+				},
+				valueStyles: {
+					fontSize: '1.5rem',
+					fontStyle: 'bold',
+					color: 'black',
+				},
+				title: 'Strip',
+				id: 400,
+				value: 60,
 			},
 			seriesData: sampleData,
 			customDoughnut: false,
 			startAngle: 90,
 			options: {
 				responsive: true,
-				maintainAspectRatio: true,
 				layout: {
 					padding: 15,
 				},
@@ -245,7 +247,13 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 				},
 			},
 			legend: {
-				display: false,
+				display: true,
+				icon: true,
+				position: 'bottom',
+				labels: {
+					boxWidth: 10,
+					padding: 10,
+				},
 			},
 			seriesOption: [
 				{
@@ -436,7 +444,6 @@ Pie Chart as Icon
 			radius: ['30%', '60%'],
 			center: ['50%', '50%'],
 			seriesData: sampleData,
-			semiDoughnut: false,
 			startAngle: 90,
 			loading: true,
 			tooltip: {
