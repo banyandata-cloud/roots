@@ -75,7 +75,6 @@ const BaseAreaChart = (props) => {
 			'rgba(153, 102, 255, 1)',
 			'rgba(255, 159, 64, 1)',
 		],
-		legendStyles,
 		style,
 	} = props;
 
@@ -340,8 +339,7 @@ const BaseAreaChart = (props) => {
 		display: 'flex',
 		listStyle: 'none',
 		padding: '0px',
-		margin: '10px auto',
-		...legendStyles,
+		...legend?.legendStyles,
 	};
 
 	return (
