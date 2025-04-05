@@ -2,7 +2,6 @@ import { Meta, Canvas, Story } from '@storybook/addon-docs';
 import { Button } from '../buttons';
 import { useState } from 'react';
 import BaseSidePanel from './BaseSidePanel';
-import { ToggleIframeContainer } from '../helpers';
 import { HomeIcon } from '../icons';
 
 <Meta title='Components/SidePanel/BaseSidePanel' parameters={{ options: { showToolbar: false } }} />
@@ -230,19 +229,6 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 	</Story>
 </Canvas>
 
-## Try in the Code Editor
-
-This embeded `CodeSandBox` is external third party code editor `iframe` shared publicly. It is advised to create an account with banyancloud mail id to create/fork this sandbox.
-
-<ToggleIframeContainer>
-	<iframe
-		src='https://codesandbox.io/s/summer-shadow-g2nmvp?file=/src/App.js'
-		style={{ width: '100%', height: 500 }}
-		title='xenodochial-moon-5y668f'
-		allow='accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking'
-		sandbox='allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts'></iframe>
-</ToggleIframeContainer>
-
 ## API
 
 **`renderHeader`**
@@ -322,13 +308,13 @@ Key to change style through external className.
 ```import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { useState } from 'react';
 import { Button } from '../buttons';
-import { ToggleIframeContainer } from '../helpers';
+
 import BaseSidePanel from './BaseSidePanel';
 
 ````import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { useState } from 'react';
 import { Button } from '../buttons';
-import { ToggleIframeContainer } from '../helpers';
+
 import BaseSidePanel from './BaseSidePanel';
 
 `````
