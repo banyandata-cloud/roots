@@ -59,12 +59,10 @@ const Togglev2 = (props) => {
 
 				// if total selected after removal is greater than 0, set that
 				// else select all
-				if (newInputValue.length > 0) {
-					if (isControlled) {
-						onChange(newInputValue);
-					} else {
-						setUncontrolledValue(newInputValue);
-					}
+				if (isControlled) {
+					onChange(newInputValue);
+				} else {
+					setUncontrolledValue(newInputValue);
 				}
 			} else {
 				// if all are selected, select only the one being clicked
