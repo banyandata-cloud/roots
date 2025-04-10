@@ -1,6 +1,6 @@
 /* eslint-disable react/forbid-prop-types */
 import PropTypes from 'prop-types';
-import { forwardRef, useState } from 'react';
+import { forwardRef, useEffect, useState } from 'react';
 import { classes } from '../../../utils';
 import { TableColumnV2 } from '../BaseTable.class';
 import { TableBody } from '../body';
@@ -41,6 +41,10 @@ const BaseTable = forwardRef(function BaseTable(props, ref) {
 	});
 
 	const [checkedRows, setCheckedRows] = useState([]);
+
+	useEffect(() => {
+		setCheckedRows([]);
+	}, [tableData]);
 
 	return (
 		<table
