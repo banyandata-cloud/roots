@@ -7,20 +7,24 @@
   font-size: 1rem;
 }
 .root .copy {
+  visibility: hidden;
+}
+.root:hover .copy {
+  visibility: visible;
   position: absolute;
   right: 1rem;
   top: 0.5rem;
   cursor: pointer;
 }
-.root .copy .icon {
+.root:hover .copy .icon {
   width: 1.5rem;
   height: 1.5rem;
   fill: var(--text-color);
 }
-.root .copy .notCopied {
+.root:hover .copy .notCopied {
   display: none;
 }
-.root .copy .copied {
+.root:hover .copy .copied {
   position: absolute;
   right: 1.375rem;
   top: 2.188rem;

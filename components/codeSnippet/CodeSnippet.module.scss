@@ -8,27 +8,33 @@
 		font-size: 1rem;
 	}
 	.copy {
-		position: absolute;
-		right: 1rem;
-		top: 0.5rem;
-		cursor: pointer;
-		.icon {
-			width: 1.5rem;
-			height: 1.5rem;
-			fill: $text-color;
-		}
-
-		.notCopied {
-			display: none;
-		}
-		.copied {
+		visibility: hidden;
+	}
+	&:hover {
+		.copy {
+			visibility: visible;
 			position: absolute;
-			right: 1.375rem;
-			top: 2.188rem;
-			padding: 0.5rem;
-			border-radius: 0.25rem;
-			background-color: $primary-color4;
-			color: $mono-color3;
+			right: 1rem;
+			top: 0.5rem;
+			cursor: pointer;
+			.icon {
+				width: 1.5rem;
+				height: 1.5rem;
+				fill: $text-color;
+			}
+
+			.notCopied {
+				display: none;
+			}
+			.copied {
+				position: absolute;
+				right: 1.375rem;
+				top: 2.188rem;
+				padding: 0.5rem;
+				border-radius: 0.25rem;
+				background-color: $primary-color4;
+				color: $mono-color3;
+			}
 		}
 	}
 }

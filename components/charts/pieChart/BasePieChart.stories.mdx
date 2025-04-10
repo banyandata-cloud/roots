@@ -487,12 +487,6 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 						shadowColor: 'grey',
 						formatter: (param) => {
 							const valueList = Object.entries(sampleStackData?.chartData);
-							console.log({
-								second: valueList,
-								1: valueList?.[param.dataIndex]?.[1]?.x1,
-								2: valueList?.[param.dataIndex]?.[1]?.x2,
-								3: valueList?.[param.dataIndex]?.[1]?.x3,
-							});
 							if (valueList?.[param.dataIndex]?.[1]?.x3 === 0) {
 								return `${valueList?.[param.dataIndex]?.[1]?.x1}%`;
 							}
@@ -521,12 +515,6 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 						shadowColor: 'grey',
 						formatter: (param) => {
 							const valueList = Object.entries(sampleStackData?.chartData);
-							console.log({
-								third: valueList,
-								1: valueList?.[param.dataIndex]?.[1]?.x1,
-								2: valueList?.[param.dataIndex]?.[1]?.x2,
-								3: valueList?.[param.dataIndex]?.[1]?.x3,
-							});
 							const val = valueList?.[param.dataIndex]?.[1]?.x1;
 							return `${val}%`;
 						},
