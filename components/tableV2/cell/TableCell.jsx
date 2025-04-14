@@ -41,7 +41,40 @@ const TableCell = forwardRef(function TableCell(props, ref) {
 		sticky,
 		sort,
 		onSort,
+		html,
 	} = props;
+
+	let spanElement = (
+		<span
+			{...{
+				...(cellTitle != null
+					? {
+							title: cellTitle,
+					  }
+					: {}),
+				className: classes(styles['cell-text'], multiLine ? styles['multi-line'] : ''),
+				style,
+				'data-elem': 'text',
+			}}>
+			{[null, false, true].includes(cellContent) ? JSON.stringify(cellContent) : cellContent}
+		</span>
+	);
+
+	if (html) {
+		spanElement = (
+			<span
+				{...{
+					className: classes(styles['cell-text'], multiLine ? styles['multi-line'] : ''),
+					style,
+					'data-elem': 'text',
+
+					dangerouslySetInnerHTML: {
+						__html: cellContent,
+					},
+				}}
+			/>
+		);
+	}
 
 	return (
 		<BaseCell
@@ -64,26 +97,7 @@ const TableCell = forwardRef(function TableCell(props, ref) {
 				flexible,
 				rounded,
 				component1,
-				component2: (
-					<span
-						{...{
-							...(cellTitle != null
-								? {
-										title: cellTitle,
-								  }
-								: {}),
-							className: classes(
-								styles['cell-text'],
-								multiLine ? styles['multi-line'] : ''
-							),
-							style,
-							'data-elem': 'text',
-						}}>
-						{[null, false, true].includes(cellContent)
-							? JSON.stringify(cellContent)
-							: cellContent}
-					</span>
-				),
+				component2: spanElement,
 				component3:
 					type === 'header' && sort ? (
 						<Button

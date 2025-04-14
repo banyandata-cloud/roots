@@ -56,7 +56,7 @@ const TableRow = forwardRef(function BaseTable(props, ref) {
 		if (type === 'header') {
 			cellContent = item.title;
 		} else if (type === 'body') {
-			cellContent = datum?.[item.id] ?? item?.fallbackValue;
+			cellContent = datum?.[item.id] || item?.fallbackValue;
 		}
 
 		const cellProps = {

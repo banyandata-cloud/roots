@@ -8,7 +8,7 @@ export class TableColumnV2 {
 	constructor({
 		title = '',
 		id = '',
-		fallbackValue = '-',
+		fallbackValue = '',
 		sort = false,
 		size = 'md',
 		flexible = false,
@@ -16,6 +16,7 @@ export class TableColumnV2 {
 		multiLine = false,
 		sticky = null,
 		columnFilter = false,
+		html = false,
 	}) {
 		this.title = title;
 		this.id = id;
@@ -32,5 +33,6 @@ export class TableColumnV2 {
 		this.multiLine = multiLine;
 		this.sticky = sticky;
 		this.columnFilter = columnFilter;
+		this.html = html;
 	}
 }
