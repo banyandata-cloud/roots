@@ -23,6 +23,7 @@ const TableRow = forwardRef(function BaseTable(props, ref) {
 		onRowClick,
 		expandable: Expandable,
 		onSort = () => {},
+		sortValue,
 		rowHeight = 'md',
 		toggleDrawer,
 		onCheck,
@@ -71,6 +72,7 @@ const TableRow = forwardRef(function BaseTable(props, ref) {
 			cellTitle: cellContent,
 			type,
 			onSort,
+			sortValue,
 			rowHeight,
 			toggleDrawer: (index, standalone) => {
 				toggleDrawer({

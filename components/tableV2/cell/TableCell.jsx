@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { forwardRef, useState } from 'react';
+import { forwardRef, useEffect, useState } from 'react';
 import { classes } from '../../../utils';
 import { Button } from '../../buttons';
 import { BaseCell } from '../../cell';
@@ -41,11 +41,16 @@ const TableCell = forwardRef(function TableCell(props, ref) {
 		sticky,
 		sort,
 		onSort,
+		sortValue,
 		html,
 		json,
 	} = props;
 
 	const [sortState, setSortState] = useState('asc');
+
+	useEffect(() => {
+		setSortState(sortValue?.[id] || 'default');
+	}, [sortValue]);
 
 	let spanElement = (
 		<span
@@ -89,8 +94,8 @@ const TableCell = forwardRef(function TableCell(props, ref) {
 					styles.root,
 					styles[`${type}-cell`],
 					styles[`sticky-${sticky}`],
-					styles[`sort-${sort}`],
-					sort != null ? styles.sortable : '',
+					styles[`sort-${sortState}`],
+					sortState != null ? styles.sortable : '',
 					className
 				),
 				attrs: {
