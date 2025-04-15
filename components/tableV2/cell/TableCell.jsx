@@ -46,7 +46,7 @@ const TableCell = forwardRef(function TableCell(props, ref) {
 		json,
 	} = props;
 
-	const [sortState, setSortState] = useState('asc');
+	const [sortState, setSortState] = useState('default');
 
 	useEffect(() => {
 		setSortState(sortValue?.[id] || 'default');
