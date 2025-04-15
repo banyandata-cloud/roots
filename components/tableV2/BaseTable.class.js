@@ -17,6 +17,7 @@ export class TableColumnV2 {
 		sticky = null,
 		columnFilter = false,
 		html = false,
+		json = false,
 	}) {
 		this.title = title;
 		this.id = id;
@@ -34,5 +35,6 @@ export class TableColumnV2 {
 		this.sticky = sticky;
 		this.columnFilter = columnFilter;
 		this.html = html;
+		this.json = json;
 	}
 }

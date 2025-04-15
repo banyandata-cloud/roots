@@ -42,6 +42,7 @@ const TableCell = forwardRef(function TableCell(props, ref) {
 		sort,
 		onSort,
 		html,
+		json,
 	} = props;
 
 	let spanElement = (
@@ -56,7 +57,9 @@ const TableCell = forwardRef(function TableCell(props, ref) {
 				style,
 				'data-elem': 'text',
 			}}>
-			{[null, false, true].includes(cellContent) ? JSON.stringify(cellContent) : cellContent}
+			{[null, false, true].includes(cellContent) || json
+				? JSON.stringify(cellContent)
+				: cellContent}
 		</span>
 	);
 
