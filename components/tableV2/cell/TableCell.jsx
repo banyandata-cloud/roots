@@ -1,15 +1,15 @@
 import PropTypes from 'prop-types';
-import { forwardRef } from 'react';
+import { forwardRef, useState } from 'react';
 import { classes } from '../../../utils';
 import { Button } from '../../buttons';
 import { BaseCell } from '../../cell';
 import { SortIcon } from '../../icons';
 import styles from './TableCell.module.css';
 
-const SORT_ICONS = {
-	asc: <SortIcon className={styles['sort-icon']} position='az' />,
-	desc: <SortIcon className={styles['sort-icon']} position='za' />,
-	default: <SortIcon className={styles['sort-icon']} position='az' />,
+const SORT_ICONS_ORDER = {
+	asc: 'az',
+	desc: 'za',
+	default: 'az',
 };
 
 const getNextSortState = (currentSort) => {
@@ -44,6 +44,8 @@ const TableCell = forwardRef(function TableCell(props, ref) {
 		html,
 		json,
 	} = props;
+
+	const [sortState, setSortState] = useState('asc');
 
 	let spanElement = (
 		<span
@@ -106,11 +108,18 @@ const TableCell = forwardRef(function TableCell(props, ref) {
 						<Button
 							className={styles.sort}
 							size='auto'
+							value='Text'
 							onClick={() => {
-								onSort(id, getNextSortState(sort));
+								onSort(id, getNextSortState(sortState));
+								setSortState(getNextSortState(sortState));
 							}}
-							leftComponent={() => {
-								return SORT_ICONS[sort];
+							rightComponent={() => {
+								return (
+									<SortIcon
+										className={styles['sort-icon']}
+										position={SORT_ICONS_ORDER[sortState]}
+									/>
+								);
 							}}
 						/>
 					) : (

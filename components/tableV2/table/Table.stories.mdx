@@ -53,6 +53,7 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					id: 'name',
 					size: 'md',
 					flexible: true,
+					sort: true,
 				}),
 				new TableColumnV2({
 					title: 'Description',
@@ -366,6 +367,9 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 						onIntersection={onIntersection}
 						isFloating={isFloating}
 						v2={v2}
+						onSort={(a, b) => {
+							console.log('SORT', a, b);
+						}}
 						tableInfo={{
 							title: 'Table Title',
 							description: 'Lorem ipsum dolor sit amet consectetur.',
