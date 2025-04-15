@@ -8,6 +8,7 @@
 }
 .root .copy {
   visibility: hidden;
+  position: absolute;
 }
 .root:hover .copy {
   visibility: visible;
@@ -20,16 +21,4 @@
   width: 1.5rem;
   height: 1.5rem;
   fill: var(--text-color);
-}
-.root:hover .copy .notCopied {
-  display: none;
-}
-.root:hover .copy .copied {
-  position: absolute;
-  right: 1.375rem;
-  top: 2.188rem;
-  padding: 0.5rem;
-  border-radius: 0.25rem;
-  background-color: var(--primary-color4);
-  color: var(--mono-color3);
 }/*# sourceMappingURL=CodeSnippet.module.css.map */
