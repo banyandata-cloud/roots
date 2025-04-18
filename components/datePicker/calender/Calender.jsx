@@ -19,6 +19,7 @@ const Calender = (props) => {
 		onClear,
 		disabledDates,
 		disableDatesBefore,
+		disableDatesAfter,
 		value,
 		setFixedRange,
 		fixedRange,
@@ -234,6 +235,7 @@ const Calender = (props) => {
 					setSelectedMonth={setSelectedMonth}
 					disabledDates={disabledDates}
 					disableDatesBefore={disableDatesBefore}
+					disableDatesAfter={disableDatesAfter}
 					enableFutureDates={enableFutureDates}
 				/>
 			) : (

@@ -26,6 +26,7 @@ const Dates = (props) => {
 		disabledDates,
 		disableDatesBefore,
 		enableFutureDates,
+		disableDatesAfter,
 	} = props;
 
 	const { monthAsNumber, year } = selectedMonth || {};
@@ -128,6 +129,10 @@ const Dates = (props) => {
 	};
 
 	const disabledAfterDate = (date) => {
+		if (disableDatesAfter) {
+			return disableDatesAfter?.length > 0 && isAfter(date, fromUnixTime(disableDatesAfter));
+		}
+
 		const dObj = new Date();
 		dObj.setDate(dObj.getDate() + 1);
 		dObj.setHours(0, 0, 0, 0);
