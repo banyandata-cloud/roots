@@ -23,6 +23,7 @@ const TableRow = forwardRef(function BaseTable(props, ref) {
 		onRowClick,
 		expandable: Expandable,
 		onSort = () => {},
+		sortValue,
 		rowHeight = 'md',
 		toggleDrawer,
 		onCheck,
@@ -56,7 +57,7 @@ const TableRow = forwardRef(function BaseTable(props, ref) {
 		if (type === 'header') {
 			cellContent = item.title;
 		} else if (type === 'body') {
-			cellContent = datum?.[item.id] ?? item?.fallbackValue;
+			cellContent = datum?.[item.id] || item?.fallbackValue;
 		}
 
 		const cellProps = {
@@ -71,6 +72,7 @@ const TableRow = forwardRef(function BaseTable(props, ref) {
 			cellTitle: cellContent,
 			type,
 			onSort,
+			sortValue,
 			rowHeight,
 			toggleDrawer: (index, standalone) => {
 				toggleDrawer({

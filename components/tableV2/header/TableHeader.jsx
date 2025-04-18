@@ -9,6 +9,7 @@ const TableHeader = (props) => {
 		customCells,
 		expandable,
 		onSort,
+		sortValue,
 		rowHeight,
 		theme = '',
 		onRowClick,
@@ -29,6 +30,7 @@ const TableHeader = (props) => {
 				customCells={customCells}
 				expandable={expandable}
 				onSort={onSort}
+				sortValue={sortValue}
 				rowHeight={rowHeight}
 				onRowClick={onRowClick}
 				theme={theme}

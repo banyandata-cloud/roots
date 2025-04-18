@@ -31,7 +31,7 @@ const CodeSnippet = (props) => {
 		navigator.clipboard.writeText(code);
 		alertRef.current?.alert({
 			title: `${language?.toUpperCase()}`,
-			description: 'The snippet has been copied to the clipboard.',
+			description: 'The snippet has been copied to the clipboard',
 			type: 'info',
 			icon: (args) => {
 				return <CopyIcon {...args} />;
@@ -130,12 +130,7 @@ const CodeSnippet = (props) => {
 				<SyntaxHighlighter {...syntaxHighlighterProps}>{code}</SyntaxHighlighter>
 				{copy && (
 					<div className={styles.copy} onClick={onCopy}>
-						<CopyIcon
-							className={classes(
-								styles.icon,
-								theme === 'dark' ? styles.dark : styles.light
-							)}
-						/>
+						<CopyIcon className={classes(styles.icon)} />
 					</div>
 				)}
 			</div>

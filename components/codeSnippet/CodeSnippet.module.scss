@@ -9,6 +9,7 @@
 	}
 	.copy {
 		visibility: hidden;
+		position: absolute;
 	}
 	&:hover {
 		.copy {
@@ -21,19 +22,6 @@
 				width: 1.5rem;
 				height: 1.5rem;
 				fill: $text-color;
-			}
-
-			.notCopied {
-				display: none;
-			}
-			.copied {
-				position: absolute;
-				right: 1.375rem;
-				top: 2.188rem;
-				padding: 0.5rem;
-				border-radius: 0.25rem;
-				background-color: $primary-color4;
-				color: $mono-color3;
 			}
 		}
 	}
