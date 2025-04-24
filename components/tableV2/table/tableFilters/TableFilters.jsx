@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { classes, inputHelper } from '../../../../utils';
 import { Button } from '../../../buttons';
 import { BaseCell } from '../../../cell';
-import { ColumnFilter, FilterIcon, SearchIcon } from '../../../icons';
+import { ColumnFilter, CrossIcon, FilterIcon, SearchIcon } from '../../../icons';
 import { DropdownItemv2, Dropdownv2, TextFieldv2 } from '../../../input';
 import { Text } from '../../../text';
 import styles from './TableFilters.module.css';
@@ -20,6 +20,7 @@ const TableFilters = (props) => {
 		tableDescriptionText = '',
 		customSearchIcon: CustomSearchIcon,
 		onSearch = () => {},
+		onClear,
 		searchPlaceholder = '',
 		toggleDrawer = () => {},
 		filtersCount,
@@ -110,6 +111,17 @@ const TableFilters = (props) => {
 						<Button
 							className={styles['search-button']}
 							leftComponent={() => {
+								if (onClear) {
+									return (
+										<CrossIcon
+											className={styles.icon}
+											onClick={() => {
+												onSearch('');
+											}}
+										/>
+									);
+								}
+
 								return (
 									<SearchIcon
 										className={styles.icon}
