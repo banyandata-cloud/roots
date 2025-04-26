@@ -109,27 +109,21 @@ const TableFilters = (props) => {
 							})}
 						/>
 						<Button
-							className={styles['search-button']}
+							className={classes(styles['search-button'], onClear && styles.clear)}
+							onClick={() => {
+								if (onClear) {
+									onClear();
+									setSearch('');
+									return;
+								}
+								onSearch(search);
+							}}
 							leftComponent={() => {
 								if (onClear) {
-									return (
-										<CrossIcon
-											className={styles.icon}
-											onClick={() => {
-												onSearch('');
-											}}
-										/>
-									);
+									return <CrossIcon className={styles.icon} />;
 								}
 
-								return (
-									<SearchIcon
-										className={styles.icon}
-										onClick={() => {
-											onSearch(search);
-										}}
-									/>
-								);
+								return <SearchIcon className={styles.icon} />;
 							}}
 						/>
 					</>
