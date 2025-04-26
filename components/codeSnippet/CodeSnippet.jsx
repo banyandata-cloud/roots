@@ -31,7 +31,7 @@ const CodeSnippet = (props) => {
 		navigator.clipboard.writeText(code);
 		alertRef.current?.alert({
 			title: `${language?.toUpperCase()}`,
-			description: 'The snippet has been copied to the clipboard',
+			description: 'The code has been copied to the clipboard',
 			type: 'info',
 			icon: (args) => {
 				return <CopyIcon {...args} />;

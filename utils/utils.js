@@ -326,3 +326,109 @@ export const getDuplicatesSansArray = ({ array = [], properties = [], hasObjects
 	}
 	return cloneDeep([...new Set(array)].filter(Boolean));
 };
+
+export const generateColors = ({
+	count = 1,
+	excludedColors = [],
+	exclusionThreshold = 30,
+	minPerceptualDistance = 25,
+}) => {
+	const colors = [];
+
+	const minLightness = 25;
+	const maxLightness = 75;
+
+	const normalizedExcludedColors = excludedColors.map((color) => {
+		return color.startsWith('#') ? color : `#${color}`;
+	});
+
+	const hexToRGB = (hex) => {
+		const r = parseInt(hex.slice(1, 3), 16);
+		const g = parseInt(hex.slice(3, 5), 16);
+		const b = parseInt(hex.slice(5, 7), 16);
+		return [r, g, b];
+	};
+
+	const colorDistance = (hex1, hex2) => {
+		const rgb1 = hexToRGB(hex1);
+		const rgb2 = hexToRGB(hex2);
+
+		const rDiff = rgb1[0] - rgb2[0];
+		const gDiff = rgb1[1] - rgb2[1];
+		const bDiff = rgb1[2] - rgb2[2];
+
+		return Math.sqrt(rDiff * rDiff * 0.299 + gDiff * gDiff * 0.587 + bDiff * bDiff * 0.114);
+	};
+
+	function hslToHex(h, s, l) {
+		// eslint-disable-next-line no-param-reassign
+		l /= 100;
+		const a = (s * Math.min(l, 1 - l)) / 100;
+		const f = (n) => {
+			const k = (n + h / 30) % 12;
+			const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+			return Math.round(255 * color)
+				.toString(16)
+				.padStart(2, '0');
+		};
+		return `#${f(0)}${f(8)}${f(4)}`;
+	}
+
+	const isTooSimilarToExcluded = (hexColor) => {
+		for (const excludedColor of normalizedExcludedColors) {
+			if (colorDistance(hexColor, excludedColor) < exclusionThreshold) {
+				return true;
+			}
+		}
+		return false;
+	};
+
+	const generateDistinctColor = () => {
+		let attempts = 0;
+		const maxAttempts = 150;
+
+		while (attempts < maxAttempts) {
+			const h = Math.floor(Math.random() * 360);
+			const s = Math.floor(Math.random() * 40) + 60;
+			const l = Math.floor(Math.random() * (maxLightness - minLightness)) + minLightness;
+
+			const hexColor = hslToHex(h, s, l);
+
+			if (isTooSimilarToExcluded(hexColor)) {
+				attempts++;
+				// eslint-disable-next-line no-continue
+				continue;
+			}
+
+			let isDistinct = true;
+			for (const existingColor of colors) {
+				if (colorDistance(hexColor, existingColor) < minPerceptualDistance) {
+					isDistinct = false;
+					break;
+				}
+			}
+
+			if (isDistinct || attempts >= maxAttempts - 1) {
+				return hexColor;
+			}
+
+			attempts++;
+		}
+
+		const h = Math.floor(Math.random() * 360);
+		const s = Math.floor(Math.random() * 40) + 60;
+		const l = Math.floor(Math.random() * (maxLightness - minLightness)) + minLightness;
+		return hslToHex(h, s, l);
+	};
+
+	for (let i = 0; i < count; i++) {
+		colors.push(generateDistinctColor());
+	}
+
+	return colors;
+};
+
+export const isEmptyHtmlString = (htmlString) => {
+	const textContent = htmlString.replace(/<[^>]*>/g, '');
+	return textContent.trim() === '';
+};
