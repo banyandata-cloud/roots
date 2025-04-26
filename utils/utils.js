@@ -1,3 +1,5 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-continue */
 /* eslint-disable no-restricted-syntax */
 import { format as fnsFormat } from 'date-fns';
 import { DAYS, FULL_MONTHS, MONTHS } from '../constants';
@@ -331,12 +333,16 @@ export const generateColors = ({
 	count = 1,
 	excludedColors = [],
 	exclusionThreshold = 30,
-	minPerceptualDistance = 25,
+	distinctionThreshold = 40,
+	excludedHueRanges = [],
 }) => {
 	const colors = [];
 
-	const minLightness = 25;
-	const maxLightness = 75;
+	const minLightness = 30;
+	const maxLightness = 70;
+
+	const minSaturation = 65;
+	const maxSaturation = 100;
 
 	const normalizedExcludedColors = excludedColors.map((color) => {
 		return color.startsWith('#') ? color : `#${color}`;
@@ -349,21 +355,66 @@ export const generateColors = ({
 		return [r, g, b];
 	};
 
+	const hexToHSL = (hex) => {
+		const r = parseInt(hex.slice(1, 3), 16) / 255;
+		const g = parseInt(hex.slice(3, 5), 16) / 255;
+		const b = parseInt(hex.slice(5, 7), 16) / 255;
+
+		const cmin = Math.min(r, g, b);
+		const cmax = Math.max(r, g, b);
+		const delta = cmax - cmin;
+
+		let h = 0;
+		let s = 0;
+		let l = 0;
+
+		if (delta === 0) {
+			h = 0;
+		} else if (cmax === r) {
+			h = ((g - b) / delta) % 6;
+		} else if (cmax === g) {
+			h = (b - r) / delta + 2;
+		} else {
+			h = (r - g) / delta + 4;
+		}
+
+		h = Math.round(h * 60);
+		if (h < 0) h += 360;
+
+		l = (cmax + cmin) / 2;
+
+		s = delta === 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
+
+		s = Math.round(s * 100);
+		l = Math.round(l * 100);
+
+		return [h, s, l];
+	};
+
 	const colorDistance = (hex1, hex2) => {
 		const rgb1 = hexToRGB(hex1);
 		const rgb2 = hexToRGB(hex2);
 
-		const rDiff = rgb1[0] - rgb2[0];
-		const gDiff = rgb1[1] - rgb2[1];
-		const bDiff = rgb1[2] - rgb2[2];
+		const rMean = (rgb1[0] + rgb2[0]) / 2;
+		const r = rgb1[0] - rgb2[0];
+		const g = rgb1[1] - rgb2[1];
+		const b = rgb1[2] - rgb2[2];
 
-		return Math.sqrt(rDiff * rDiff * 0.299 + gDiff * gDiff * 0.587 + bDiff * bDiff * 0.114);
+		const weightR = 2 + rMean / 256;
+		const weightG = 4.0;
+		const weightB = 2 + (255 - rMean) / 256;
+
+		return Math.sqrt(weightR * r * r + weightG * g * g + weightB * b * b);
 	};
 
 	function hslToHex(h, s, l) {
-		// eslint-disable-next-line no-param-reassign
+		h = ((h % 360) + 360) % 360;
+		s = Math.max(0, Math.min(100, s));
+		l = Math.max(0, Math.min(100, l));
+
 		l /= 100;
 		const a = (s * Math.min(l, 1 - l)) / 100;
+
 		const f = (n) => {
 			const k = (n + h / 30) % 12;
 			const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
@@ -371,38 +422,58 @@ export const generateColors = ({
 				.toString(16)
 				.padStart(2, '0');
 		};
+
 		return `#${f(0)}${f(8)}${f(4)}`;
 	}
 
+	const isHueExcluded = (hue) => {
+		return excludedHueRanges.some((range) => {
+			if (range.min > range.max) {
+				return hue >= range.min || hue <= range.max;
+			}
+			return hue >= range.min && hue <= range.max;
+		});
+	};
+
 	const isTooSimilarToExcluded = (hexColor) => {
+		const [hue] = hexToHSL(hexColor);
+		if (isHueExcluded(hue)) {
+			return true;
+		}
+
 		for (const excludedColor of normalizedExcludedColors) {
 			if (colorDistance(hexColor, excludedColor) < exclusionThreshold) {
 				return true;
 			}
 		}
+
 		return false;
 	};
 
 	const generateDistinctColor = () => {
 		let attempts = 0;
-		const maxAttempts = 150;
+		const maxAttempts = 300;
 
 		while (attempts < maxAttempts) {
 			const h = Math.floor(Math.random() * 360);
-			const s = Math.floor(Math.random() * 40) + 60;
+			const s = Math.floor(Math.random() * (maxSaturation - minSaturation)) + minSaturation;
 			const l = Math.floor(Math.random() * (maxLightness - minLightness)) + minLightness;
+
+			if (isHueExcluded(h)) {
+				attempts++;
+				continue;
+			}
 
 			const hexColor = hslToHex(h, s, l);
 
 			if (isTooSimilarToExcluded(hexColor)) {
 				attempts++;
-				// eslint-disable-next-line no-continue
 				continue;
 			}
 
 			let isDistinct = true;
 			for (const existingColor of colors) {
-				if (colorDistance(hexColor, existingColor) < minPerceptualDistance) {
+				if (colorDistance(hexColor, existingColor) < distinctionThreshold) {
 					isDistinct = false;
 					break;
 				}
@@ -415,14 +486,46 @@ export const generateColors = ({
 			attempts++;
 		}
 
-		const h = Math.floor(Math.random() * 360);
-		const s = Math.floor(Math.random() * 40) + 60;
-		const l = Math.floor(Math.random() * (maxLightness - minLightness)) + minLightness;
-		return hslToHex(h, s, l);
+		for (let adjustedAttempts = 0; adjustedAttempts < 50; adjustedAttempts++) {
+			const h = Math.floor(Math.random() * 360);
+
+			if (isHueExcluded(h)) {
+				continue;
+			}
+
+			const s = 90;
+			const l = 50;
+
+			const hexColor = hslToHex(h, s, l);
+
+			if (!isTooSimilarToExcluded(hexColor)) {
+				let mostDistinct = true;
+				let minDistance = Infinity;
+
+				for (const existingColor of colors) {
+					const distance = colorDistance(hexColor, existingColor);
+					minDistance = Math.min(minDistance, distance);
+					if (distance < distinctionThreshold * 0.7) {
+						mostDistinct = false;
+					}
+				}
+
+				if (mostDistinct || adjustedAttempts >= 49) {
+					return hexColor;
+				}
+			}
+		}
+
+		return hslToHex(Math.floor(Math.random() * 360), 80, 50);
 	};
 
-	for (let i = 0; i < count; i++) {
-		colors.push(generateDistinctColor());
+	let failsafeCounter = 0;
+	const maxFailsafe = count * 3;
+
+	while (colors.length < count && failsafeCounter < maxFailsafe) {
+		const newColor = generateDistinctColor();
+		colors.push(newColor);
+		failsafeCounter++;
 	}
 
 	return colors;

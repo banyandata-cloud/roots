@@ -3,6 +3,12 @@ import { generateColors } from '../../../utils';
 const randomColors = generateColors({
 	count: 10,
 	excludedColors: ['#487349', '#BD3C45'],
+	excludedHueRanges: [
+		{
+			min: 75,
+			max: 165,
+		}, //
+	],
 });
 export const sampleData = {
 	chartData: {
