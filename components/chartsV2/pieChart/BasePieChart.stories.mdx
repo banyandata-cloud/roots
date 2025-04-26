@@ -4,7 +4,7 @@ import { COLORS } from '../../../styles';
 import { ThemedContainer } from '../../helpers';
 import BasePieChart from './BasePieChart';
 
-import { sampleData, iconData, iconColor } from './BasePieChartData.js';
+import { sampleData, iconData, iconColor, piechartRandomColors } from './BasePieChartData.js';
 
 <Meta title='Components/ChartsV2/PieChart' parameters={{ options: { showToolbar: false } }} />
 
@@ -116,25 +116,25 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 				{
 					stackIndex: 2,
 					itemStyle: {
-						color: '#0056C7',
+						color: piechartRandomColors[0],
 					},
 				},
 				{
 					stackIndex: 3,
 					itemStyle: {
-						color: '#3076D2',
+						color: piechartRandomColors[1],
 					},
 				},
 				{
 					stackIndex: 4,
 					itemStyle: {
-						color: '#6096DD',
+						color: piechartRandomColors[2],
 					},
 				},
 				{
 					stackIndex: 5,
 					itemStyle: {
-						color: '#90B6E9',
+						color: piechartRandomColors[3],
 					},
 				},
 				{

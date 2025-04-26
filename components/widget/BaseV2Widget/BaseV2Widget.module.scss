@@ -30,11 +30,10 @@
 					}
 					.toggle-body {
 						padding: 0rem 0.25rem;
-						height: 1.875rem;
+						height: 2.8rem;
 						width: auto;
 						background: none !important;
 						[data-elem='base-cell'] {
-							box-shadow: 0px 2.5px 2.5px -2px rgba(0, 0, 0, 0.15);
 							[data-elem='component2'] {
 								[data-elem='title'] {
 									font-size: 0.875rem;
@@ -100,20 +99,26 @@
 				@include flex(row, flex-end);
 				gap: 0.5rem;
 				.dropdown-header {
-					height: 1.75rem;
-
-					[data-elem='select'] {
-						background-color: transparent;
-						border-color: $grey6;
-						width: 100%;
-						padding: 0.07rem 0.5rem;
-						[data-elem='placeholder'] {
-							font-size: 0.875rem;
-							color: $dark-grey;
-						}
-						> svg {
-							width: 0.875rem;
-							fill: $dark-grey;
+					border-radius: 0.25rem;
+					background-color: transparent !important;
+					box-shadow: 0rem 0rem 0.125rem 0rem rgba(0, 0, 0, 0.25);
+					height: auto;
+					width: fit-content;
+					cursor: pointer;
+					> [data-elem='header'] {
+						box-shadow: none !important;
+						[data-elem='select'] {
+							padding: 0.4375rem 0.5rem !important;
+							width: fit-content;
+							border: none !important;
+							> svg {
+								width: 1.5rem;
+								aspect-ratio: 1;
+							}
+							> [data-elem='value'] {
+								max-width: 12.5rem;
+								@include ellipsis;
+							}
 						}
 					}
 				}
@@ -134,41 +139,46 @@
 					}
 				}
 
-				.filter-button {
-					padding: 0 0.25rem;
-					height: 1.75rem;
-					color: $dark-grey;
-					border-color: $grey6;
-					font-size: 0.875rem;
-					font-weight: 400;
-					line-height: 1.3125rem;
-					text-align: left;
-					.filter-icon {
-						height: 0.875rem;
-						width: 0.875rem;
-						fill: $dark-grey;
+				button.filter-button[data-elem='base-cell'] {
+					border-radius: 0.25rem;
+					border: none !important;
+					height: 2.4rem;
+					background-color: transparent !important;
+					box-shadow: 0rem 0rem 0.125rem 0rem rgba(0, 0, 0, 0.25);
+					width: fit-content;
+					@include flex(row, flex-start);
+					> [data-elem='component2'] {
+						> [data-elem='title'] {
+							color: $text-color;
+							font-size: 1rem;
+						}
+					}
+					> [data-elem='component1'] {
+						> svg {
+							width: 1.5rem;
+							height: 1.5rem;
+							fill: $secondary-color2;
+						}
 					}
 				}
 
 				.toggle-body {
-					@include debug;
 					padding: 0rem 0.25rem;
-					height: 1.875rem;
 				}
 
 				.date-picker {
-					min-width: 0;
+					min-width: 12rem;
 					[data-elem='header'] {
-						padding: 0.06rem 0.25rem;
-						border: 1px solid $grey6;
-						font-size: 0.875rem;
+						height: 2.4rem;
 						> div {
 							gap: 0.5rem;
-							:nth-child(1) {
-								height: 1.25rem;
-								width: 1.25rem;
-								fill: $dark-grey;
-							}
+						}
+						span[class*='placeholder'] {
+							font-size: 1rem;
+							color: $text-color;
+						}
+						span[class*='value'] {
+							font-size: 1rem;
 						}
 					}
 				}
@@ -202,26 +212,5 @@
 		flex: 1 1;
 		position: relative;
 		padding: 0.5rem;
-	}
-}
-
-.dropdown-popper {
-	padding: 0rem;
-	background: $grey1;
-
-	.dropdown-item {
-		height: 2.25rem;
-		color: $white;
-		background: $grey;
-
-		&:hover,
-		&:focus {
-			color: $dark-grey;
-			background: $grey2;
-			label > svg {
-				border: 1px solid $dark-grey;
-				border-radius: 0.25rem;
-			}
-		}
 	}
 }

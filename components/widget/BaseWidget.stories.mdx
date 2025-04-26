@@ -98,12 +98,22 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 						cb(data);
 					},
 				},
+				// {
+				// 	id: 'expand',
+				// 	title: 'Expand',
+				// 	onClick: () => {
+				// 		alert('This will open the Modal or a new Page with Expanded chart');
+				// 	},
+				// },
 				{
-					id: 'expand',
-					title: 'Expand',
-					onClick: () => {
-						alert('This will open the Modal or a new Page with Expanded chart');
+					id: 'datepicker',
+					onApply: () => {
+						alert('Apply Date Picker');
 					},
+					onClear: () => {
+						alert('Clear Date Picker');
+					},
+					date: null,
 				},
 			];
 			const coords = [

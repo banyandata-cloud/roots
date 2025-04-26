@@ -1,3 +1,9 @@
+import { generateColors } from '../../../utils';
+
+const randomColors = generateColors({
+	count: 10,
+	excludedColors: ['#487349', '#BD3C45'],
+});
 export const sampleData = {
 	chartData: {
 		x1: 30,
@@ -69,3 +75,5 @@ export const iconColor = (data) => {
 	}
 	return 'red';
 };
+
+export const piechartRandomColors = randomColors;
