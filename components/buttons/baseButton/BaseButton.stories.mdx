@@ -1,6 +1,6 @@
 import { Meta, Canvas, Story } from '@storybook/addon-docs';
 
-import { ThemedContainer, ToggleIframeContainer } from '../../helpers';
+import { ThemedContainer } from '../../helpers';
 
 import BaseButton from './BaseButton';
 
@@ -52,25 +52,6 @@ The default Base Button.
 		{Template.bind({})}
 	</Story>
 </Canvas>
-
-## Try in the Code Editor
-
-This embeded `CodeSandBox` is external third party code editor `iframe` shared publicly. It is advised to create an account with banyancloud mail id to create/fork this sandbox.
-
-<ToggleIframeContainer>
-	<iframe
-		src='https://codesandbox.io/embed/banyancloud-basebutton-2m9sk7?fontsize=14&hidenavigation=1&theme=dark'
-		style={{
-			width: '100%',
-			height: '500px',
-			border: 0,
-			borderRadius: '4px',
-			overflow: 'hidden',
-		}}
-		title='BanyanCloud - BaseButton'
-		allow='accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking'
-		sandbox='allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts'></iframe>
-</ToggleIframeContainer>
 
 ## API
 
@@ -171,7 +152,7 @@ The size of the button, affecting its dimensions.
 
 **`flexible`**
 
-Make the button button flexible. It adds the following styles: {flex-grow: 1;flex-shrink: 1;min-width: 3rem;}
+Make the button button flexible. It adds the following styles: flex-grow: 1;flex-shrink: 1;min-width: 3rem;
 
 <table style={{ width: '100%' }}>
 	<tr>

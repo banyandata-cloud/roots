@@ -1,7 +1,7 @@
 import { Meta, Canvas, Story } from '@storybook/addon-docs';
 
 import { COLORS } from '../../../styles';
-import { ThemedContainer, ToggleIframeContainer } from '../../helpers';
+import { ThemedContainer } from '../../helpers';
 import BasePieChart from './BasePieChart';
 import StackedPieChart from '../stackedPieChart/StackedPieChart.jsx';
 
@@ -487,12 +487,6 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 						shadowColor: 'grey',
 						formatter: (param) => {
 							const valueList = Object.entries(sampleStackData?.chartData);
-							console.log({
-								second: valueList,
-								1: valueList?.[param.dataIndex]?.[1]?.x1,
-								2: valueList?.[param.dataIndex]?.[1]?.x2,
-								3: valueList?.[param.dataIndex]?.[1]?.x3,
-							});
 							if (valueList?.[param.dataIndex]?.[1]?.x3 === 0) {
 								return `${valueList?.[param.dataIndex]?.[1]?.x1}%`;
 							}
@@ -521,12 +515,6 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 						shadowColor: 'grey',
 						formatter: (param) => {
 							const valueList = Object.entries(sampleStackData?.chartData);
-							console.log({
-								third: valueList,
-								1: valueList?.[param.dataIndex]?.[1]?.x1,
-								2: valueList?.[param.dataIndex]?.[1]?.x2,
-								3: valueList?.[param.dataIndex]?.[1]?.x3,
-							});
 							const val = valueList?.[param.dataIndex]?.[1]?.x1;
 							return `${val}%`;
 						},
@@ -681,19 +669,6 @@ Pie Chart as Icon
 		{Template.bind({})}
 	</Story>
 </Canvas>
-
-## Try in the Code Editor
-
-This embeded `CodeSandBox` is external third party code editor `iframe` shared publicly. It is advised to create an account with banyancloud mail id to create/fork this sandbox.
-
-<ToggleIframeContainer>
-	<iframe
-		src='https://codesandbox.io/s/elastic-panini-w59l97?file=/src/App.js'
-		style={{ width: '100%', height: 500 }}
-		title='xenodochial-moon-5y668f'
-		allow='accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking'
-		sandbox='allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts'></iframe>
-</ToggleIframeContainer>
 
 ## API
 

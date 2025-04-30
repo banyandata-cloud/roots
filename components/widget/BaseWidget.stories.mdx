@@ -2,7 +2,7 @@ import { Meta, Canvas, Story } from '@storybook/addon-docs';
 import { useState } from 'react';
 import BaseVerticalBarChart from '../charts/verticalBarChart/BaseVerticalBarChart';
 import BaseWidget from './BaseWidget';
-import { ThemedContainer, ToggleIframeContainer } from '../helpers';
+import { ThemedContainer } from '../helpers';
 import { CHART_DATA } from './BaseWidgetStoriesData.js';
 
 <Meta title='Components/Widget' parameters={{ options: { showToolbar: false } }} />
@@ -886,19 +886,6 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 		}}
 	</Story>
 </Canvas>
-
-## Try in the Code Editor
-
-This embeded `CodeSandBox` is external third party code editor `iframe` shared publicly. It is advised to create an account with banyancloud mail id to create/fork this sandbox.
-
-<ToggleIframeContainer>
-	<iframe
-		src='https://codesandbox.io/s/dazzling-torvalds-kwr7yy?file=/src/App.js'
-		style={{ width: '100%', height: 500 }}
-		title='xenodochial-moon-5y668f'
-		allow='accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking'
-		sandbox='allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts'></iframe>
-</ToggleIframeContainer>
 
 ## API
 

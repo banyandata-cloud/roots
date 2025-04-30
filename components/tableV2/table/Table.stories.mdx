@@ -53,6 +53,7 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					id: 'name',
 					size: 'md',
 					flexible: true,
+					sort: true,
 				}),
 				new TableColumnV2({
 					title: 'Description',
@@ -64,7 +65,10 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 				new TableColumnV2({
 					title: 'Gender',
 					id: 'gender',
+					html: true,
 					size: 'sm',
+					fallbackValue: 'MS',
+					// json: true,
 				}),
 				new TableColumnV2({
 					title: 'Age',
@@ -78,8 +82,8 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 			];
 			const tableData = [
 				{
-					name: '-',
-					gender: 'M',
+					name: 'Ghee',
+					gender: '',
 					description:
 						'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta nulla voluptatum consectetur libero, fuga amet earum ducimus quidem aliquam fugit id ipsum, cupiditate dignissimos facilis, repellendus possimus aspernatur tempore! Veniam saepe dolor reprehenderit sunt tenetur quam adipisci quis deleniti, maxime officiis dolorum, iure quia excepturi velit repellendus ad eius iste.',
 					age: 28,
@@ -96,7 +100,7 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 				},
 				{
 					name: 'Pradeep Annadurai',
-					gender: 'M',
+					gender: '<div>AA</div>',
 					description:
 						'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta nulla voluptatum consectetur libero, fuga amet earum ducimus quidem aliquam fugit id ipsum, cupiditate dignissimos facilis, repellendus possimus aspernatur tempore! Veniam saepe dolor reprehenderit sunt tenetur quam adipisci quis deleniti, maxime officiis dolorum, iure quia excepturi velit repellendus ad eius iste.',
 					age: 24,
@@ -363,6 +367,9 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 						onIntersection={onIntersection}
 						isFloating={isFloating}
 						v2={v2}
+						onSort={(a, b) => {
+							console.log('SORT', a, b);
+						}}
 						tableInfo={{
 							title: 'Table Title',
 							description: 'Lorem ipsum dolor sit amet consectetur.',

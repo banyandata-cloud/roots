@@ -7,25 +7,18 @@
   font-size: 1rem;
 }
 .root .copy {
+  visibility: hidden;
+  position: absolute;
+}
+.root:hover .copy {
+  visibility: visible;
   position: absolute;
   right: 1rem;
   top: 0.5rem;
   cursor: pointer;
 }
-.root .copy .icon {
+.root:hover .copy .icon {
   width: 1.5rem;
   height: 1.5rem;
   fill: var(--text-color);
-}
-.root .copy .notCopied {
-  display: none;
-}
-.root .copy .copied {
-  position: absolute;
-  right: 1.375rem;
-  top: 2.188rem;
-  padding: 0.5rem;
-  border-radius: 0.25rem;
-  background-color: var(--primary-color4);
-  color: var(--mono-color3);
 }/*# sourceMappingURL=CodeSnippet.module.css.map */
