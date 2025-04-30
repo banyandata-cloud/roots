@@ -35,7 +35,6 @@ const generateOptions = ({ optionData, toggleDrawer }) => {
 								title={objectData?.title ?? ''}
 								key={objectData?.value ?? ''}
 								value={objectData?.value ?? ''}
-								variant='checkbox'
 								className={styles['dropdown-item']}
 							/>
 						);
@@ -69,7 +68,7 @@ const generateOptions = ({ optionData, toggleDrawer }) => {
 		case 'filter':
 			return (
 				<Button
-					title='Filter'
+					title={optionData?.title ?? 'Filter'}
 					variant='outlined'
 					size='auto'
 					className={styles['filter-button']}

@@ -177,6 +177,9 @@
   padding-top: 0 !important;
   padding-bottom: 0 !important;
 }
+.body.multi li:nth-child(1) {
+  padding-left: 1.875rem;
+}
 .body .multi-options {
   display: flex;
   flex-direction: row;

@@ -514,9 +514,9 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 									},
 									className: classes(
 										styles.body,
-										popperClassName,
 										open ? styles.open : '',
-										multi ? styles.multi : ''
+										multi ? styles.multi : '',
+										popperClassName
 									),
 								})}
 								initial={{

@@ -42,6 +42,7 @@ const Table = (props) => {
 		},
 		rightActions = null,
 		onSort = () => {},
+		sortValue = 'asc',
 		rowHeight = 'md',
 		theme = 'light',
 		onRowClick,
@@ -76,6 +77,7 @@ const Table = (props) => {
 		icon: customSearchIcon = null,
 		placeholder: searchPlaceholder = 'Search',
 		disabled: searchDisabled = false,
+		onClear,
 	} = searchProps;
 	const {
 		tableTitleIcon = null,
@@ -214,6 +216,7 @@ const Table = (props) => {
 					tableDescriptionText={tableDescription}
 					customSearchIcon={customSearchIcon}
 					onSearch={onSearch}
+					onClear={onClear}
 					searchDisabled={searchDisabled}
 					searchPlaceholder={searchPlaceholder}
 					toggleDrawer={toggleDrawer}
@@ -232,6 +235,7 @@ const Table = (props) => {
 						customCells,
 						className: styles.table,
 						onSort,
+						sortValue,
 						rowHeight,
 						onRowClick,
 						defaultActiveIndex,

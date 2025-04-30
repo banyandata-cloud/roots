@@ -6,6 +6,7 @@ import { TableColumnV2 } from '../BaseTable.class';
 import Table from './Table';
 import { Button } from '.././../buttons';
 import { HomeIcon } from '../../icons';
+import { useState } from 'react';
 
 <Meta title='Components/TableV2/Table' parameters={{ options: { showToolbar: false } }} />
 
@@ -54,6 +55,9 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					size: 'md',
 					flexible: true,
 					sort: true,
+					style: {
+						width: '10rem',
+					},
 				}),
 				new TableColumnV2({
 					title: 'Description',
@@ -369,6 +373,9 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 						v2={v2}
 						onSort={(a, b) => {
 							console.log('SORT', a, b);
+						}}
+						sortValue={{
+							name: 'asc',
 						}}
 						tableInfo={{
 							title: 'Table Title',
@@ -1463,6 +1470,7 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 				totalPages: 20,
 				currentPage: 1,
 			});
+			const [sea, setSea] = useState('');
 			return (
 				<ThemedContainer
 					style={{
@@ -1498,8 +1506,13 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 							icon: () => {
 								return <HomeIcon />;
 							},
+							...(sea && {
+								onClear: () => {
+									setSea('');
+								},
+							}),
 							onSearch: (s) => {
-								console.log(s);
+								setSea(s);
 							},
 							placeholder: 'Search Employees',
 							// disabled: true,

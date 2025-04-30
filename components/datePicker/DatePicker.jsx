@@ -41,6 +41,7 @@ const DatePicker = (props) => {
 		disabled,
 		className,
 		disableDatesBefore,
+		disableDatesAfter,
 		onClear,
 		customRanges,
 		custom,
@@ -209,6 +210,7 @@ const DatePicker = (props) => {
 		},
 		disabledDates,
 		disableDatesBefore,
+		disableDatesAfter,
 		value,
 		setFixedRange,
 		customRanges,
@@ -386,7 +388,8 @@ DatePicker.propTypes = {
 		type: PropTypes.string,
 	}),
 	className: PropTypes.string,
-	disableDatesBefore: PropTypes.arrayOf(PropTypes.string),
+	disableDatesBefore: PropTypes.arrayOf(PropTypes.number),
+	disableDatesAfter: PropTypes.arrayOf(PropTypes.number),
 	defaultRangeSelection: PropTypes.arrayOf(PropTypes.number),
 	customRanges: PropTypes.arrayOf(
 		PropTypes.shape({

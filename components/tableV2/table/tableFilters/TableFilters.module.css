@@ -88,6 +88,9 @@
 .root[data-elem=base-cell] > [data-elem=component2] button.search-button[data-elem=base-cell]:hover {
   background-color: var(--light-color2);
 }
+.root[data-elem=base-cell] > [data-elem=component2] button.search-button[data-elem=base-cell].clear {
+  background-color: var(--light-color2);
+}
 .root[data-elem=base-cell] > [data-elem=component3] {
   flex: 1;
 }

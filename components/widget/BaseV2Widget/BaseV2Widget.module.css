@@ -41,12 +41,9 @@
 }
 .root .header .header-title .title-container .title-primary .toggle-body {
   padding: 0rem 0.25rem;
-  height: 1.875rem;
+  height: 2.8rem;
   width: auto;
   background: none !important;
-}
-.root .header .header-title .title-container .title-primary .toggle-body [data-elem=base-cell] {
-  box-shadow: 0px 2.5px 2.5px -2px rgba(0, 0, 0, 0.15);
 }
 .root .header .header-title .title-container .title-primary .toggle-body [data-elem=base-cell] [data-elem=component2] [data-elem=title] {
   font-size: 0.875rem;
@@ -107,21 +104,32 @@
   gap: 0.5rem;
 }
 .root .header .header-options .header-options-list .dropdown-header {
-  height: 1.75rem;
+  border-radius: 0.25rem;
+  background-color: transparent !important;
+  box-shadow: 0rem 0rem 0.125rem 0rem rgba(0, 0, 0, 0.25);
+  height: auto;
+  width: -moz-fit-content;
+  width: fit-content;
+  cursor: pointer;
 }
-.root .header .header-options .header-options-list .dropdown-header [data-elem=select] {
-  background-color: transparent;
-  border-color: var(--grey6);
-  width: 100%;
-  padding: 0.07rem 0.5rem;
+.root .header .header-options .header-options-list .dropdown-header > [data-elem=header] {
+  box-shadow: none !important;
 }
-.root .header .header-options .header-options-list .dropdown-header [data-elem=select] [data-elem=placeholder] {
-  font-size: 0.875rem;
-  color: var(--dark-grey);
+.root .header .header-options .header-options-list .dropdown-header > [data-elem=header] [data-elem=select] {
+  padding: 0.4375rem 0.5rem !important;
+  width: -moz-fit-content;
+  width: fit-content;
+  border: none !important;
 }
-.root .header .header-options .header-options-list .dropdown-header [data-elem=select] > svg {
-  width: 0.875rem;
-  fill: var(--dark-grey);
+.root .header .header-options .header-options-list .dropdown-header > [data-elem=header] [data-elem=select] > svg {
+  width: 1.5rem;
+  aspect-ratio: 1;
+}
+.root .header .header-options .header-options-list .dropdown-header > [data-elem=header] [data-elem=select] > [data-elem=value] {
+  max-width: 12.5rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 .root .header .header-options .header-options-list .expand-button {
   padding: 0 0.25rem;
@@ -138,41 +146,46 @@
   width: 0.8331rem;
   fill: var(--dark-grey);
 }
-.root .header .header-options .header-options-list .filter-button {
-  padding: 0 0.25rem;
-  height: 1.75rem;
-  color: var(--dark-grey);
-  border-color: var(--grey6);
-  font-size: 0.875rem;
-  font-weight: 400;
-  line-height: 1.3125rem;
-  text-align: left;
+.root .header .header-options .header-options-list button.filter-button[data-elem=base-cell] {
+  border-radius: 0.25rem;
+  border: none !important;
+  height: 2.4rem;
+  background-color: transparent !important;
+  box-shadow: 0rem 0rem 0.125rem 0rem rgba(0, 0, 0, 0.25);
+  width: -moz-fit-content;
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
 }
-.root .header .header-options .header-options-list .filter-button .filter-icon {
-  height: 0.875rem;
-  width: 0.875rem;
-  fill: var(--dark-grey);
+.root .header .header-options .header-options-list button.filter-button[data-elem=base-cell] > [data-elem=component2] > [data-elem=title] {
+  color: var(--text-color);
+  font-size: 1rem;
+}
+.root .header .header-options .header-options-list button.filter-button[data-elem=base-cell] > [data-elem=component1] > svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: var(--secondary-color2);
 }
 .root .header .header-options .header-options-list .toggle-body {
-  border: 1px solid red;
   padding: 0rem 0.25rem;
-  height: 1.875rem;
 }
 .root .header .header-options .header-options-list .date-picker {
-  min-width: 0;
+  min-width: 12rem;
 }
 .root .header .header-options .header-options-list .date-picker [data-elem=header] {
-  padding: 0.06rem 0.25rem;
-  border: 1px solid var(--grey6);
-  font-size: 0.875rem;
+  height: 2.4rem;
 }
 .root .header .header-options .header-options-list .date-picker [data-elem=header] > div {
   gap: 0.5rem;
 }
-.root .header .header-options .header-options-list .date-picker [data-elem=header] > div :nth-child(1) {
-  height: 1.25rem;
-  width: 1.25rem;
-  fill: var(--dark-grey);
+.root .header .header-options .header-options-list .date-picker [data-elem=header] span[class*=placeholder] {
+  font-size: 1rem;
+  color: var(--text-color);
+}
+.root .header .header-options .header-options-list .date-picker [data-elem=header] span[class*=value] {
+  font-size: 1rem;
 }
 .root .drawer {
   width: 40%;
@@ -195,22 +208,4 @@
   flex: 1 1;
   position: relative;
   padding: 0.5rem;
-}
-
-.dropdown-popper {
-  padding: 0rem;
-  background: var(--grey1);
-}
-.dropdown-popper .dropdown-item {
-  height: 2.25rem;
-  color: var(--white);
-  background: var(--grey);
-}
-.dropdown-popper .dropdown-item:hover, .dropdown-popper .dropdown-item:focus {
-  color: var(--dark-grey);
-  background: var(--grey2);
-}
-.dropdown-popper .dropdown-item:hover label > svg, .dropdown-popper .dropdown-item:focus label > svg {
-  border: 1px solid var(--dark-grey);
-  border-radius: 0.25rem;
 }/*# sourceMappingURL=BaseV2Widget.module.css.map */
