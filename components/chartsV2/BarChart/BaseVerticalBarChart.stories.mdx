@@ -65,6 +65,62 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 			},
 			xAxisShow: true,
 			barWidth: 8,
+			barColor1: [
+				'#FF6384',
+				'#36A2EB',
+				'#FFCE56',
+				'#4BC0C0',
+				'#9966FF',
+				'#FF9F40',
+				'#8AFFC1',
+				'#E96B6B',
+			],
+			chartOptions: {
+				datalabels: {
+					formatter: (value, context) => {
+						return `${value}`;
+					},
+					borderColor: 'black',
+					borderWidth: 1,
+					borderRadius: 3,
+					padding: {
+						top: 2,
+						bottom: 2,
+						left: 4,
+						right: 4,
+					},
+					align: 'top',
+					anchor: 'end',
+					color: 'black',
+					font: {
+						size: 12,
+						family: 'Poppins',
+					},
+				},
+			},
+			xAxis: {
+				ticks: {
+					color: 'black',
+					callback: (value, index) => {
+						const labels = Object.keys(sampleData?.chartData);
+						return labels[index];
+					},
+					font: {
+						family: 'Poppins',
+					},
+				},
+			},
+			chartDatasets: {
+				backgroundColor: Object.keys(sampleData.chartData).map((cloud) => {
+					const colorMap = {
+						MySql: 'black',
+						PgSql: 'green',
+						Oracle: 'red',
+						Oradcdcle: 'yellow',
+					};
+					return colorMap[cloud] || 'gray';
+				}),
+			},
 			xAxisLabel: {
 				show: true,
 				rotate: 90,

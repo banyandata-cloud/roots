@@ -30,8 +30,13 @@ const BaseVerticalBarChart = ({
 	barColor2,
 	xAxisTitle,
 	yAxisTitle,
-	dataLabels,
 	tooltip,
+	legends,
+	chartOptions,
+	chartDatasets,
+	xAxis,
+	yAxis,
+	styles,
 }) => {
 	if (loading) {
 		return <Skeleton />;
@@ -57,13 +62,13 @@ const BaseVerticalBarChart = ({
 						? barColor2 ?? COLORS.error
 						: COLORS.warning,
 				data: labels.map((label) => {
-					// Only include data if it's defined
 					return seriesData.chartData[label][key] !== undefined
 						? seriesData.chartData[label][key]
 						: null;
 				}),
 				borderRadius,
 				barThickness,
+				...chartDatasets,
 			};
 		});
 
@@ -83,7 +88,6 @@ const BaseVerticalBarChart = ({
 				},
 			},
 			tooltip: {
-				...tooltip,
 				borderWidth: tooltip?.borderWidth ?? 1,
 				borderColor: tooltip?.borderColor ?? COLORS.success,
 				backgroundColor: 'rgba(255, 255, 255, 1)',
@@ -102,7 +106,7 @@ const BaseVerticalBarChart = ({
 				callbacks: {
 					label: (tooltipItem) => {
 						const label = seriesData.metaData.controlsApplied[tooltipItem.label]?.x1;
-						return `${tooltipItem.dataset.label}: ${label}`;
+						return `${tooltipItem.label}: ${label}`;
 					},
 					title: tooltip.displayTitle
 						? (tooltipItems) => {
@@ -112,13 +116,14 @@ const BaseVerticalBarChart = ({
 								return '';
 						  },
 				},
+				...tooltip,
 			},
 			legend: {
 				display: false,
+				...legends,
 			},
 			// Enable the datalabels plugin
 			datalabels: {
-				...dataLabels,
 				anchor: 'end',
 				align: 'top', // Align the labels above the bars
 				color: 'black',
@@ -132,6 +137,7 @@ const BaseVerticalBarChart = ({
 					return context.chart.data.labels[context.dataIndex];
 				},
 			},
+			...chartOptions,
 		},
 		scales: {
 			x: {
@@ -156,6 +162,7 @@ const BaseVerticalBarChart = ({
 						family: 'Poppins',
 					},
 				},
+				...xAxis,
 			},
 			y: {
 				grid: {
@@ -177,6 +184,7 @@ const BaseVerticalBarChart = ({
 						family: 'Poppins',
 					},
 				},
+				...yAxis,
 			},
 		},
 	};
@@ -185,7 +193,8 @@ const BaseVerticalBarChart = ({
 		<div
 			style={{
 				width: width || '100%', // Default to full width if not provided
-				height: height || '100%', // Default to full height if not provided
+				height: height || '100%',
+				...styles,
 			}}>
 			<Bar
 				data={{
