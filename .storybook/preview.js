@@ -1,9 +1,9 @@
-import React from 'react';
-import '../styles/main.scss';
 import { DocsContainer } from '@storybook/addon-docs';
 import { themes } from '@storybook/theming';
-import banyanTheme from './banyanTheme';
+import React from 'react';
 import { useDarkMode } from 'storybook-dark-mode';
+import '../src/styles/main.scss';
+import banyanTheme from './banyanTheme';
 
 export const parameters = {
 	actions: { argTypesRegex: '^on[A-Z].*' },

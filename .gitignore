@@ -37,3 +37,4 @@ yarn-error.log*
 stats.html
 
 .bun
+.vscode
