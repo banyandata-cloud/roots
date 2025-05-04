@@ -105,7 +105,7 @@ const PageLabelDisplay = ({
 			<Text>{customLabel ?? ''}</Text>
 		</Text>
 	) : (
-		(totalData || totalPages) && (isDisplayLabelVisible || fallback) && (
+		(totalData > 0 || totalPages > 0) && (isDisplayLabelVisible || fallback) && (
 			<Text
 				variant='b1'
 				stroke='medium'
@@ -116,7 +116,7 @@ const PageLabelDisplay = ({
 					} of ${totalData}`,
 				}}>
 				<Text>Displaying</Text> {((currentPage === 0 ? 1 : currentPage) - 1) * step + 1}-
-				{currentPage === totalPages && totalData
+				{currentPage === totalPages
 					? totalData
 					: (currentPage === 0 ? 1 : currentPage) * step}{' '}
 				of {totalData ?? 'total'} <Text>{dataLabel ?? 'records'}</Text>
