@@ -75,6 +75,9 @@ jobs:
                   git commit -m "chore: release ${{ env.NEW_VERSION }}"
                   git tag ${{ env.NEW_VERSION }}
 
+            - name: Set up npm authentication for Bun
+              run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPMJS_ACCESS_TOKEN }}" > ~/.npmrc
+
             # Publish version
             - name: Publish
               run: bun publish --verbose --access public --tag ${{ env.RELEASE_TAG }}
