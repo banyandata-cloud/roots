@@ -54,7 +54,7 @@ const reducer = (state, { type, payload }) => {
 		case 'SET_PAGE':
 			return {
 				...state,
-				currentPage: payload,
+				currentPage: payload || 1,
 			};
 		case 'SET_STEP':
 			return {
@@ -133,6 +133,8 @@ export const usePagination = (props) => {
 		step,
 		totalData,
 	});
+
+	console.log(paginationState, totalPages, currentPage);
 
 	useEffect(() => {
 		if (paginationState.currentPage > totalPages && totalPages != null) {

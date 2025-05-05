@@ -18,7 +18,7 @@ export * from './link';
 export * from './modal';
 export * from './modal/dialogBox';
 export * from './pageHeader';
-export * from './pagination';
+export * from './paginationv2';
 export * from './popover';
 export * from './popper';
 export * from './sidePanel';
