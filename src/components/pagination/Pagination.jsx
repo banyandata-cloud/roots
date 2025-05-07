@@ -61,8 +61,6 @@ export const usePagination = (props) => {
 		totalData,
 	});
 
-	console.log(paginationState, totalPages, currentPage);
-
 	useEffect(() => {
 		if (paginationState.currentPage > totalPages && totalPages != null) {
 			paginationDispatch({

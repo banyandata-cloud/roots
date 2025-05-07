@@ -8,8 +8,6 @@ const Sort = ({ className, position = 'az' }) => {
 		rightArrowColor = '#0F62FE';
 	}
 
-	console.log(position);
-
 	return (
 		<svg
 			width='1.5rem'
