@@ -6,6 +6,8 @@ import {
 	DateRange,
 	GetDatesInMonthParams,
 	DatesInMonthResult,
+	ColorOptions,
+	HSL,
 } from '../types/utils';
 
 export const sumArrayOfObjects = (
@@ -307,27 +309,231 @@ export const getCSSVariableValue = (variable: string): string => {
 };
 
 export const sanitizeJSON = (
-  obj: Record<string, any> = {},
-  aliases: Record<string, string> = {},
-  exclusions: string[] = []
+	obj: Record<string, any> = {},
+	aliases: Record<string, string> = {},
+	exclusions: string[] = []
 ): Record<string, any> => {
-  return Object.keys(obj).reduce((acc: Record<string, any>, param: string) => {
-    const value = obj[param];
-    if (
-      value !== '' &&
-      value != null &&
-      value !== 'null' &&
-      value !== 'undefined' &&
-      !exclusions.includes(param)
-    ) {
-      const alias = aliases[param];
-      if (alias) {
-        acc[alias] = value;
-      } else {
-        acc[param] = value;
-      }
-    }
-    return acc;
-  }, {});
+	return Object.keys(obj).reduce((acc: Record<string, any>, param: string) => {
+		const value = obj[param];
+		if (
+			value !== '' &&
+			value != null &&
+			value !== 'null' &&
+			value !== 'undefined' &&
+			!exclusions.includes(param)
+		) {
+			const alias = aliases[param];
+			if (alias) {
+				acc[alias] = value;
+			} else {
+				acc[param] = value;
+			}
+		}
+		return acc;
+	}, {});
 };
 
+export const areTwinObjects = (obj1: any, obj2: any): boolean => {
+	// Check if both are objects and not null
+	if (typeof obj1 !== 'object' || obj1 === null || typeof obj2 !== 'object' || obj2 === null) {
+		return obj1 === obj2;
+	}
+
+	// Check if both objects have the same number of keys
+	const keys1 = Object.keys(obj1);
+	const keys2 = Object.keys(obj2);
+	if (keys1.length !== keys2.length) {
+		return false;
+	}
+
+	// Check if all keys and values are equal
+	for (const key of keys1) {
+		if (!keys2.includes(key) || !areTwinObjects(obj1[key], obj2[key])) {
+			return false;
+		}
+	}
+
+	return true;
+};
+
+export function getDuplicatesSansArray<T extends Record<string, any>>({
+	array = [],
+	properties = [],
+	hasObjects = true,
+}: {
+	array?: T[];
+	properties?: (keyof T)[];
+	hasObjects?: boolean;
+}): T[] {
+	if (hasObjects) {
+		return array.filter(
+			(value, index, self) =>
+				index ===
+				self.findIndex((item) => properties.every((prop) => item[prop] === value[prop]))
+		);
+	}
+
+	// For primitive types
+	return Array.from(new Set(array as unknown[])) as T[];
+}
+
+export const generateColors = (options: ColorOptions = {}): string[] => {
+	const {
+		count = 1,
+		excludedColors = [],
+		exclusionThreshold = 30,
+		distinctionThreshold = 40,
+		excludedHueRanges = [],
+	} = options;
+
+	const colors: string[] = [];
+	const minLightness = 30;
+	const maxLightness = 70;
+	const minSaturation = 65;
+	const maxSaturation = 100;
+
+	const normalizedExcludedColors = excludedColors.map((color) =>
+		color.startsWith('#') ? color : `#${color}`
+	);
+
+	// Hex to RGB conversion
+	const hexToRGB = (hex: string): [number, number, number] => {
+		const r = parseInt(hex.slice(1, 3), 16);
+		const g = parseInt(hex.slice(3, 5), 16);
+		const b = parseInt(hex.slice(5, 7), 16);
+		return [r, g, b];
+	};
+
+	// Hex to HSL conversion
+	const hexToHSL = (hex: string): HSL => {
+		const [r, g, b] = hexToRGB(hex).map((v) => v / 255);
+		const cmin = Math.min(r, g, b);
+		const cmax = Math.max(r, g, b);
+		const delta = cmax - cmin;
+
+		let h = 0;
+		if (delta !== 0) {
+			if (cmax === r) h = ((g - b) / delta) % 6;
+			else if (cmax === g) h = (b - r) / delta + 2;
+			else h = (r - g) / delta + 4;
+			h = Math.round(h * 60);
+			if (h < 0) h += 360;
+		}
+
+		const l = (cmax + cmin) / 2;
+		const s = delta === 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
+
+		return {
+			h,
+			s: Math.round(s * 100),
+			l: Math.round(l * 100),
+		};
+	};
+
+	// Color distance calculation
+	const colorDistance = (hex1: string, hex2: string): number => {
+		const [r1, g1, b1] = hexToRGB(hex1);
+		const [r2, g2, b2] = hexToRGB(hex2);
+		const rMean = (r1 + r2) / 2;
+		const r = r1 - r2;
+		const g = g1 - g2;
+		const b = b1 - b2;
+		const weightR = 2 + rMean / 256;
+		const weightG = 4.0;
+		const weightB = 2 + (255 - rMean) / 256;
+		return Math.sqrt(weightR * r * r + weightG * g * g + weightB * b * b);
+	};
+
+	// HSL to Hex conversion
+	const hslToHex = (h: number, s: number, l: number): string => {
+		h = ((h % 360) + 360) % 360;
+		s = Math.max(0, Math.min(100, s));
+		l = Math.max(0, Math.min(100, l));
+
+		l /= 100;
+		const a = (s * Math.min(l, 1 - l)) / 100;
+
+		const f = (n: number): string => {
+			const k = (n + h / 30) % 12;
+			const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+			return Math.round(255 * color)
+				.toString(16)
+				.padStart(2, '0');
+		};
+
+		return `#${f(0)}${f(8)}${f(4)}`;
+	};
+
+	// Hue range exclusion check
+	const isHueExcluded = (hue: number): boolean => {
+		return excludedHueRanges.some((range) =>
+			range.min > range.max
+				? hue >= range.min || hue <= range.max
+				: hue >= range.min && hue <= range.max
+		);
+	};
+
+	// Color similarity check
+	const isTooSimilarToExcluded = (hexColor: string): boolean => {
+		const { h } = hexToHSL(hexColor);
+		if (isHueExcluded(h)) return true;
+
+		return normalizedExcludedColors.some(
+			(excludedColor) => colorDistance(hexColor, excludedColor) < exclusionThreshold
+		);
+	};
+
+	// Main color generation with all fallback logic
+	const generateDistinctColor = (): string => {
+		// Primary generation attempt
+		for (let attempts = 0; attempts < 300; attempts++) {
+			const h = Math.floor(Math.random() * 360);
+			const s = Math.floor(Math.random() * (maxSaturation - minSaturation)) + minSaturation;
+			const l = Math.floor(Math.random() * (maxLightness - minLightness)) + minLightness;
+
+			if (isHueExcluded(h)) continue;
+
+			const hexColor = hslToHex(h, s, l);
+			if (isTooSimilarToExcluded(hexColor)) continue;
+
+			const isDistinct = colors.every(
+				(existing) => colorDistance(hexColor, existing) >= distinctionThreshold
+			);
+			if (isDistinct) return hexColor;
+		}
+
+		// Fallback generation attempt
+		for (let adjustedAttempts = 0; adjustedAttempts < 50; adjustedAttempts++) {
+			const h = Math.floor(Math.random() * 360);
+			if (isHueExcluded(h)) continue;
+
+			const hexColor = hslToHex(h, 90, 50);
+			if (isTooSimilarToExcluded(hexColor)) continue;
+
+			const minDistance = Math.min(
+				...colors.map((existing) => colorDistance(hexColor, existing))
+			);
+			if (minDistance >= distinctionThreshold * 0.7) return hexColor;
+		}
+
+		// Final fallback
+		return hslToHex(Math.floor(Math.random() * 360), 80, 50);
+	};
+
+	// Generate the requested colors with failsafe
+	let failsafeCounter = 0;
+	const maxFailsafe = count * 3;
+
+	while (colors.length < count && failsafeCounter < maxFailsafe) {
+		const newColor = generateDistinctColor();
+		colors.push(newColor);
+		failsafeCounter++;
+	}
+
+	return colors;
+};
+
+export const isEmptyHtmlString = (htmlString: string): boolean => {
+	const textContent = htmlString.replace(/<[^>]*>/g, '');
+	return textContent.trim() === '';
+};

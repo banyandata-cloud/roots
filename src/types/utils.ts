@@ -33,3 +33,18 @@ export interface DatesInMonthResult {
   dates: number[];
   days: number[];
 }
+
+
+export interface ColorOptions {
+  count?: number;
+  excludedColors?: string[];
+  exclusionThreshold?: number;
+  distinctionThreshold?: number;
+  excludedHueRanges?: { min: number; max: number }[];
+}
+
+export interface HSL {
+  h: number;
+  s: number;
+  l: number;
+}
