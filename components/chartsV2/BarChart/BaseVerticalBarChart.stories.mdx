@@ -2,7 +2,6 @@ import { Meta, Canvas, Story } from '@storybook/addon-docs';
 
 import { COLORS } from '../../../styles';
 import { ThemedContainer } from '../../helpers';
-import BaseVerticalBarChart from './BaseVerticalBarChart';
 
 import {
 	sampleData,
@@ -10,9 +9,10 @@ import {
 	transformToStack,
 	stackData,
 } from './BaseVerticalBarChartData.js';
+import BaseBarChart from './BaseVerticalBarChart.jsx';
 
 <Meta
-	title='Components/ChartsV2/VerticalBarChart'
+	title='Components/ChartsV2/BarChart'
 	parameters={{ options: { showToolbar: false } }}
 />
 
@@ -22,11 +22,11 @@ export const Template = (args) => (
 		style={{
 			height: '500px',
 		}}>
-		<BaseVerticalBarChart {...args} seriesData={sampleData} />
+		<BaseBarChart {...args} seriesData={sampleData} />
 	</ThemedContainer>
 );
 
-# Vertical Bar Chart
+# Bar Chart
 
 A visual Representation of Data that compares it with others in similar Category through Bars, where Bar Height represents the count of represented value.
 
@@ -39,7 +39,7 @@ A visual Representation of Data that compares it with others in similar Category
 Basic import and additional information on how to use this component.
 
 ```js
-import { BaseVerticalBarChart } from '@banyan_cloud/roots';
+import { BaseBarChartV2 } from '@banyan_cloud/roots';
 ```
 
 -   The Vertical Bar Chart is just like any other chart with standard `chartData` and `metaData` values alongwith props to control customization.
@@ -120,6 +120,162 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					};
 					return colorMap[cloud] || 'gray';
 				}),
+			},
+			xAxisLabel: {
+				show: true,
+				rotate: 90,
+				color: 'white',
+				inside: true,
+				verticalAlign: 'bottom',
+				padding: [0, 0, 90, 0],
+			},
+			yAxisLabelShow: false,
+			ySplitLineShow: false,
+			yAxisLineShow: true,
+			yAxisTickShow: false,
+			barWidth: '50%',
+			cursor: 'default',
+			stackCount: 1,
+			seriesData: Object.keys(sampleData.chartData).map((key) => ({
+				name: key, // Database name
+				value: sampleData.chartData[key].x1, // Single value from x1
+			})),
+			tooltip: {
+				displayColors: true,
+				colorBoxWidth: 7,
+				colorBoxHeight: 7,
+				bodyFont: {
+					size: 14,
+					weight: 500,
+					textAlign: 'left',
+					family: 'Poppins',
+				},
+			},
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Default Horizontal Bar Chart
+
+<Canvas>
+	<Story
+		name='Horizontal'
+		args={{
+			xAxisTitle: 'abc',
+			yAxisTitle: 'bca',
+			vertical: false,
+			gridOptions: {
+				left: 50,
+				right: 50,
+				bottom: 100,
+				top: 15,
+			},
+			xAxis: {
+				borderWidth: 0,
+				stacked: true,
+				type: 'linear',
+				min: 0,
+				max: 50,
+				grid: {
+					display: false,
+				},
+				ticks: {
+					stepSize: 5,
+					maxTicksLimit: 10,
+					color: 'black',
+					font: {
+						family: 'Poppins',
+					},
+				},
+				title: {
+					display: true,
+					text: 'abc',
+					color: 'black',
+					font: {
+						family: 'Poppins',
+					},
+				},
+			},
+			yAxis: {
+				borderWidth: 0,
+				grid: {
+					display: false,
+				},
+				type: 'category',
+				ticks: {
+					color: 'black', // Axis label color
+					font: {
+						family: 'Poppins',
+					},
+					callback: (value) => {
+						return `${Object.keys(sampleData.chartData)?.[value]} -` || '';
+					},
+				},
+			},
+			xAxisShow: true,
+			barWidth: 8,
+			barColor1: [
+				'#FF6384',
+				'#36A2EB',
+				'#FFCE56',
+				'#4BC0C0',
+				'#9966FF',
+				'#FF9F40',
+				'#8AFFC1',
+				'#E96B6B',
+			],
+			chartOptions: {
+				datalabels: {
+					display: false,
+					formatter: (value, context) => {
+						return `${value}`;
+					},
+					borderColor: 'black',
+					borderWidth: 1,
+					borderRadius: 3,
+					padding: {
+						top: 2,
+						bottom: 2,
+						left: 4,
+						right: 4,
+					},
+					align: 'top',
+					anchor: 'end',
+					color: 'black',
+					font: {
+						size: 12,
+						family: 'Poppins',
+					},
+				},
+			},
+			chartDatasets: {
+				backgroundColor: Object.keys(sampleData.chartData).map((cloud) => {
+					const colorMap = {
+						MySql: 'black',
+						PgSql: 'green',
+						Oracle: 'red',
+						Oradcdcle: 'yellow',
+					};
+					return colorMap[cloud] || 'gray';
+				}),
+				stack: 'Stack 0',
+			},
+			stacked: {
+				label: 'Remaining',
+				backgroundColor: '#D3D3D3',
+				data: Object.keys(sampleData.chartData)?.map((label, i) => {
+					const used = Object.keys(sampleData.metaData.keyData).reduce((sum, key) => {
+						return sum + (sampleData.chartData[label]?.[key] || 0);
+					}, 0);
+					return 50 - used;
+				}),
+				barThickness: 50,
+				borderRadius: 1,
+				stack: 'Stack 0',
+				datalabels: {
+					display: false,
+				},
 			},
 			xAxisLabel: {
 				show: true,
@@ -240,7 +396,7 @@ loading indicates the waiting state of chart while data is loading
 </table>
 
 ```jsx
-<BaseVerticalBarChart loading={false} />
+<BaseBarChartV2 loading={false} />
 ```
 
 **`title`**
@@ -259,7 +415,7 @@ An optional Key to give a title to the Chart.
 </table>
 
 ```jsx
-<BaseVerticalBarChart title='Title' />
+<BaseBarChartV2 title='Title' />
 ```
 
 **`gridOptions`**
@@ -285,7 +441,7 @@ Object that set Chart Layout Dimensions from Left, Right, Top and Bottom.
 </table>
 
 ```jsx
-<BaseVerticalBarChart
+<BaseBarChartV2
 	gridOptions={{
 		left: 50,
 		right: 50,
@@ -311,7 +467,7 @@ An optional key to resize the Chart Layout in order to include 'Title' in displa
 </table>
 
 ```jsx
-<BaseVerticalBarChart gridContainLabel={false} />
+<BaseBarChartV2 gridContainLabel={false} />
 ```
 
 **`tooltip`**
@@ -330,7 +486,7 @@ Tooltip key can be used to format and display Data in Tooltip for Charts, it can
 </table>
 
 ```jsx
-<BaseVerticalBarChart
+<BaseBarChartV2
 	tooltip={{
 		show: true,
 		trigger: 'item',
@@ -363,7 +519,7 @@ The metaData can have any other required Data.
 </table>
 
 ```jsx
-<BaseVerticalBarChart
+<BaseBarChartV2
 	seriesData={{
 		chartData: {
 			'Audit, Logging and Monitering': {
@@ -390,7 +546,7 @@ Key to decide whether to show or hide Y-Axis Label
 </table>
 
 ```jsx
-<BaseVerticalBarChart yAxisLabelShow={false} />
+<BaseBarChartV2 yAxisLabelShow={false} />
 ```
 
 **`xAxisShow`**
@@ -409,7 +565,7 @@ Key to decide whether to show or hide X-Axis Division Line
 </table>
 
 ```jsx
-<BaseVerticalBarChart xAxisLineShow={false} />
+<BaseBarChartV2 xAxisLineShow={false} />
 ```
 
 **`ySplitLineShow`**
@@ -428,7 +584,7 @@ Key to decide whether to show or hide Y-Axis Split Line
 </table>
 
 ```jsx
-<BaseVerticalBarChart ySplitLineShow={false} />
+<BaseBarChartV2 ySplitLineShow={false} />
 ```
 
 **`yAxisLineShow`**
@@ -447,7 +603,7 @@ Key to decide whether to show or hide Y-Axis Line
 </table>
 
 ```jsx
-<BaseVerticalBarChart yAxisLineShow={false} />
+<BaseBarChartV2 yAxisLineShow={false} />
 ```
 
 **`yAxisTickShow`**
@@ -466,7 +622,7 @@ Key to decide whether to show or hide Y-Axis Tick
 </table>
 
 ```jsx
-<BaseVerticalBarChart yAxisTickShow={false} />
+<BaseBarChartV2 yAxisTickShow={false} />
 ```
 
 **`onEvents`**
@@ -485,7 +641,7 @@ Callback to control 'Click' event on HeatMap
 </table>
 
 ```jsx
-<BaseVerticalBarChart
+<BaseBarChartV2
 	onEvents={{
 		click: functionName,
 	}}
@@ -527,7 +683,7 @@ Key to modify 'cursor' UI, it supports all standard css cursor options.
 </table>
 
 ```jsx
-<BaseVerticalBarChart cursor='default' />
+<BaseBarChartV2 cursor='default' />
 ```
 
 **`seriesOption`**
@@ -546,7 +702,7 @@ This key contains an Array of Objects where each Object maps to each Data-Value 
 </table>
 
 ```jsx
-<BaseVerticalBarChart seriesOption=[
+<BaseBarChartV2 seriesOption=[
 		{
 			stackIndex: 1,
 			color: COLORS.success,
@@ -583,7 +739,7 @@ Legend key is used to customise Chart Legend and the it's data.
 </table>
 
 ```jsx
-<BaseVerticalBarChart
+<BaseBarChartV2
 	legend={{
 		show: false,
 	}}
@@ -606,7 +762,7 @@ Optional key to specify any name to the HeatMap series.
 </table>
 
 ```jsx
-<BaseVerticalBarChart seriesName='Permission Count' />
+<BaseBarChartV2 seriesName='Permission Count' />
 ```
 
 **`style`**
@@ -630,7 +786,7 @@ Key to change styles thorugh standard CSS values.
 </table>
 
 ```jsx
-<BaseVerticalBarChart style={{ width: '90%' }} />
+<BaseBarChartV2 style={{ width: '90%' }} />
 ```
 
 **`className`**
@@ -649,7 +805,7 @@ Key to change style through external className.
 </table>
 
 ```jsx
-<BaseVerticalBarChart className='chart-area' />
+<BaseBarChartV2 className='chart-area' />
 ```
 
 **`theme`**
@@ -668,5 +824,5 @@ The color theme of the container to select between `light` or `dark` mode.
 </table>
 
 ```jsx
-<BaseVerticalBarChart theme='light' />
+<BaseBarChartV2 theme='light' />
 ```

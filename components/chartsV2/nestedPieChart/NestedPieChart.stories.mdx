@@ -49,9 +49,19 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 		args={{
 			title: 'Title',
 			stackedCharts: true,
-			gridOptions: {
-				height: '50%',
-				width: '50%',
+			styles: {
+				height: '100%',
+			},
+			donutProps: {
+				radius: 15,
+				backgroundColor: '#fff',
+			},
+			chartDataOptions: {
+				backgroundColor: 'rgba(0, 128, 0, 0.6)',
+				borderColor: '#fff',
+				borderWidth: 5,
+				hoverBorderWidth: 0,
+				hoverBorderColor: 'transparent',
 			},
 			cursor: 'default',
 			radius: ['20%', '40%'],

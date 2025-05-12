@@ -88,6 +88,78 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 				bottom: 100,
 				top: 15,
 			},
+			chartOptions: {
+				plugins: {
+					legend: {
+						display: false,
+					},
+					annotation: {
+						annotations: {
+							horizontalLine: {
+								type: 'line',
+								yMin: 0,
+								yMax: 0,
+								borderColor: '#d5d5db',
+								borderWidth: 1,
+							},
+						},
+					},
+					datalabels: {
+						color: 'black',
+						font: {
+							size: 14,
+							family: 'Poppins',
+						},
+						formatter: (value, context) => {
+							if (context.datasetIndex === 0) {
+								return `${value}%`; // Show the value for x1 with a percentage
+							}
+							if (context.datasetIndex === 1) {
+								return context.chart.data.labels[context.dataIndex]; // Display the database name
+							}
+							return ''; // Don't show for other cases
+						},
+						anchor: (context) => {
+							return context.datasetIndex === 0 ? 'end' : 'start';
+						},
+						align: (context) => {
+							return context.datasetIndex === 0 ? 'end' : 'start';
+						},
+						offset: 5,
+						padding: 4,
+						borderColor: (context) =>
+							context.datasetIndex === 0 ? 'black' : 'transparent',
+						borderWidth: (context) => (context.datasetIndex === 0 ? 1 : 0),
+						borderRadius: (context) => (context.datasetIndex === 0 ? 4 : 0),
+						backgroundColor: 'white',
+					},
+				},
+			},
+			dataSetsOptions: {
+				labels: Object.keys(sampleData.chartData),
+				datasets: [
+					{
+						label: sampleData?.metaData?.keyData?.x1,
+						data: Object.keys(sampleData.chartData)?.map((label) => {
+							return sampleData.chartData[label]?.x1 || 0;
+						}),
+						backgroundColor: 'green',
+						stack: 'Stack 0',
+						borderRadius: 18,
+						barThickness: 30,
+					},
+					{
+						label: sampleData?.metaData?.keyData?.x2,
+						data: Object.keys(sampleData.chartData)?.map((label) => {
+							return -sampleData.chartData[label]?.x2 || 0;
+						}),
+						backgroundColor: 'red',
+						stack: 'Stack 0',
+						borderRadius: 18,
+						barThickness: 30,
+					},
+				],
+			},
 			tooltip: {
 				displayColors: true,
 				colorBoxWidth: 7,
@@ -99,63 +171,7 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					family: 'Poppins',
 				},
 			},
-			xAxisShow: true,
-			xAxisLabel: {
-				show: false,
-				inside: true,
-				verticalAlign: 'bottom',
-				align: 'left',
-				padding: [0, 0, 0, 0],
-			},
-			xAxisLabelColor: 'black',
-			yAxisLabelShow: false,
-			ySplitLineShow: false,
-			yAxisLineShow: false,
-			yAxisTickShow: false,
-			barWidth: '30%',
 			cursor: 'default',
-			stackCount: 1,
-			seriesOption: [
-				{
-					stackIndex: 1,
-					stack: 1,
-					color: COLORS.success,
-					showBackground: false,
-					label: {
-						show: true,
-						color: 'black',
-						padding: 4,
-						backgroundColor: 'white',
-						shadowBlur: 2,
-						shadowColor: 'grey',
-						shadowOffsetX: 0,
-						shadowOffsetY: 0,
-						formatter: (param) => {
-							return param.value === 0.004 ? '0%' : `${param.value}%`;
-						},
-					},
-					itemStyle: {
-						borderRadius: [100, 100, 0, 0],
-					},
-				},
-				{
-					stackIndex: 2,
-					stack: 1,
-					color: COLORS.error,
-					showBackground: false,
-					label: {
-						show: true,
-						color: 'black',
-						position: 'bottom',
-						formatter: (param) => {
-							return param.name;
-						},
-					},
-					itemStyle: {
-						borderRadius: [0, 0, 100, 100],
-					},
-				},
-			],
 		}}>
 		{Template.bind({})}
 	</Story>

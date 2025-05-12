@@ -1,9 +1,18 @@
 @import '../../../../styles/';
 
-.root {
+.vertical {
 	@include flex(row, space-between, flex-end);
 	gap: 1rem;
 	height: 100%;
 	width: 100%;
 	padding: 2rem;
+}
+
+.horizontal {
+	@include flex(column, flex-start, flex-start);
+	gap: 1rem;
+	height: 100%;
+	width: 100%;
+	padding: 2rem;
+	padding-bottom: 3rem;
 }

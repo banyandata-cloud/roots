@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 /* eslint-disable no-nested-ternary */
 /* eslint-disable react/forbid-prop-types */
 import {
@@ -9,7 +10,6 @@ import {
 	Tooltip,
 } from 'chart.js';
 import ChartDataLabels from 'chartjs-plugin-datalabels'; // Import the data labels plugin
-import PropTypes from 'prop-types';
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
 import { COLORS } from '../../../styles';
@@ -17,13 +17,13 @@ import { Skeleton } from './Skeleton'; // Assuming this is your custom loading c
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend, ChartDataLabels);
 
-const BaseVerticalBarChart = ({
+const BaseBarChart = ({
 	loading,
 	seriesData,
 	title,
 	gridOptions,
-	width,
-	height,
+	width = '100%',
+	height = '100%',
 	barThickness = 50,
 	borderRadius = 5,
 	barColor1,
@@ -37,15 +37,18 @@ const BaseVerticalBarChart = ({
 	xAxis,
 	yAxis,
 	styles,
+	vertical = true,
+	stacked,
+	extra,
 }) => {
 	if (loading) {
-		return <Skeleton />;
+		return <Skeleton vertical={vertical} />;
 	}
 
 	// Mapping the data for Chart.js
 	const labels = Object.keys(seriesData.chartData);
 
-	const datasets = Object.keys(seriesData.metaData.keyData)
+	const barDatasets = Object.keys(seriesData.metaData.keyData)
 		.filter((key) => {
 			// Include only keys that have data in seriesData.chartData
 			return labels.some((label) => {
@@ -72,9 +75,12 @@ const BaseVerticalBarChart = ({
 			};
 		});
 
+	const datasets = stacked ? [...barDatasets, stacked] : [...barDatasets];
+
 	const options = {
 		responsive: true,
 		maintainAspectRatio: false, // To allow custom height and width
+		indexAxis: !vertical && 'y',
 		plugins: {
 			title: {
 				display: true,
@@ -89,7 +95,6 @@ const BaseVerticalBarChart = ({
 			},
 			tooltip: {
 				borderWidth: tooltip?.borderWidth ?? 1,
-				borderColor: tooltip?.borderColor ?? COLORS.success,
 				backgroundColor: 'rgba(255, 255, 255, 1)',
 				bodySpacing: tooltip?.bodySpacing ?? 5,
 				displayColors: tooltip?.displayColors ?? true,
@@ -202,42 +207,10 @@ const BaseVerticalBarChart = ({
 					datasets,
 				}}
 				options={options}
+				{...extra}
 			/>
 		</div>
 	);
 };
 
-BaseVerticalBarChart.propTypes = {
-	loading: PropTypes.bool,
-	seriesData: PropTypes.shape({
-		chartData: PropTypes.object.isRequired,
-		metaData: PropTypes.object.isRequired,
-	}).isRequired,
-	title: PropTypes.shape({
-		text: PropTypes.string,
-		textStyle: PropTypes.shape({
-			fontSize: PropTypes.number,
-		}),
-		left: PropTypes.number,
-	}),
-	gridOptions: PropTypes.object,
-	width: PropTypes.string, // Width of the chart container
-	height: PropTypes.string, // Height of the chart container
-};
-
-BaseVerticalBarChart.defaultProps = {
-	loading: false,
-	title: {
-		textStyle: {
-			fontSize: 12,
-		},
-		left: 0,
-	},
-	gridOptions: {
-		gridContainLabel: true,
-	},
-	width: '100%',
-	height: '100%',
-};
-
-export default BaseVerticalBarChart;
+export default BaseBarChart;

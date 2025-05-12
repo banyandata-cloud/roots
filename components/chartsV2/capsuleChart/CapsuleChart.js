@@ -42,21 +42,9 @@ export const sampleData = {
 		},
 	},
 	metaData: {
-		controlsApplied: {
-			MySql: {
-				x1: 18,
-			},
-			PgSql: {
-				x1: 43,
-			},
-			Oracle: {
-				x1: 46,
-			},
-		},
 		keyData: {
 			x1: 'compliant',
 			x2: 'nonCompliant',
-			x3: 'validate',
 		},
 		totalControls: {
 			x1: 61,
