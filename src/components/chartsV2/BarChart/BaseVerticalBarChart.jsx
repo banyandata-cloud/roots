@@ -48,32 +48,33 @@ const BaseBarChart = ({
 	// Mapping the data for Chart.js
 	const labels = Object.keys(seriesData.chartData);
 
-	const barDatasets = Object.keys(seriesData.metaData.keyData)
-		.filter((key) => {
-			// Include only keys that have data in seriesData.chartData
-			return labels.some((label) => {
-				return seriesData.chartData[label][key] !== undefined;
-			});
-		})
-		.map((key) => {
-			return {
-				label: seriesData.metaData.keyData[key],
-				backgroundColor:
-					key === 'x1'
-						? barColor1 ?? COLORS.success
-						: key === 'x2'
-						? barColor2 ?? COLORS.error
-						: COLORS.warning,
-				data: labels.map((label) => {
-					return seriesData.chartData[label][key] !== undefined
-						? seriesData.chartData[label][key]
-						: null;
-				}),
-				borderRadius,
-				barThickness,
-				...chartDatasets,
-			};
+	const allKeys = new Set();
+
+	Object.values(seriesData.chartData).forEach((data) => {
+		Object.keys(data).forEach((key) => {
+			allKeys.add(key);
 		});
+	});
+
+	const barDatasets = Array.from(allKeys).map((key) => {
+		return {
+			label: key,
+			backgroundColor:
+				key === 'x1'
+					? barColor1 ?? COLORS.success
+					: key === 'x2'
+					? barColor2 ?? COLORS.error
+					: COLORS.warning,
+			data: labels.map((label) => {
+				return seriesData.chartData[label][key] !== undefined
+					? seriesData.chartData[label][key]
+					: null;
+			}),
+			borderRadius,
+			barThickness,
+			...chartDatasets,
+		};
+	});
 
 	const datasets = stacked ? [...barDatasets, stacked] : [...barDatasets];
 
@@ -107,19 +108,6 @@ const BaseBarChart = ({
 				bodyFont: {
 					...tooltip.bodyFont,
 					family: 'Poppins',
-				},
-				callbacks: {
-					label: (tooltipItem) => {
-						const label = seriesData.metaData.controlsApplied[tooltipItem.label]?.x1;
-						return `${tooltipItem.label}: ${label}`;
-					},
-					title: tooltip.displayTitle
-						? (tooltipItems) => {
-								return tooltipItems[0]?.label || '';
-						  }
-						: () => {
-								return '';
-						  },
 				},
 				...tooltip,
 			},

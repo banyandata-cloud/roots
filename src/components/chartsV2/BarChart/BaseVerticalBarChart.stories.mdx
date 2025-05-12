@@ -11,10 +11,7 @@ import {
 } from './BaseVerticalBarChartData.js';
 import BaseBarChart from './BaseVerticalBarChart.jsx';
 
-<Meta
-	title='Components/ChartsV2/BarChart'
-	parameters={{ options: { showToolbar: false } }}
-/>
+<Meta title='Components/ChartsV2/BarChart' parameters={{ options: { showToolbar: false } }} />
 
 export const Template = (args) => (
 	<ThemedContainer
@@ -264,11 +261,12 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 			stacked: {
 				label: 'Remaining',
 				backgroundColor: '#D3D3D3',
-				data: Object.keys(sampleData.chartData)?.map((label, i) => {
-					const used = Object.keys(sampleData.metaData.keyData).reduce((sum, key) => {
-						return sum + (sampleData.chartData[label]?.[key] || 0);
+				data: Object.keys(sampleData.chartData).map((label) => {
+					const keys = Object.keys(sampleData.chartData[label] || {});
+					const used = keys.reduce((sum, key) => {
+						return sum + (sampleData.chartData[label][key] || 0);
 					}, 0);
-					return 50 - used;
+					return (sampleData.metaData.totalControls?.x1 ?? 0) - used;
 				}),
 				barThickness: 50,
 				borderRadius: 1,
