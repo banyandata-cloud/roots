@@ -144,19 +144,40 @@ export function cloneDeep<T>(object: T): T {
 	return safeJSONParse(JSON.stringify(object));
 }
 
-export function inputHelper(event: React.ChangeEvent<HTMLInputElement>): InputHelperResult {
-	const { dataset, type } = event.target;
-	const fieldName = event.target.name;
-	const fieldValue = ['checkbox', 'radio'].includes(type)
-		? event.target.checked
-		: event.target.value;
-
-	return {
-		fieldName,
-		fieldValue,
-		dataset,
-	};
+export function classes(...args: (string | false | null | undefined)[]): string {
+	const sanitizedArgs = args.filter(Boolean);
+	return sanitizedArgs.join(' ');
 }
+
+// export function inputHelper(
+// 	event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+// ): InputHelperResult {
+// 	const { dataset, type } = event.target;
+// 	const fieldName = event.target.name;
+// 	const fieldValue = ['checkbox', 'radio'].includes(type)
+// 		? event.target.checked
+// 		: event.target.value;
+
+// 	return {
+// 		fieldName,
+// 		fieldValue,
+// 		dataset,
+// 	};
+// }
+
+
+
+export function inputHelper(
+	event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ): { fieldName?: string; fieldValue: string; dataset?: DOMStringMap } {
+	const { dataset, name, value } = event.target;
+	return {
+	  fieldName: name,
+	  fieldValue: value, // Always a string for text/email/password/textarea
+	  dataset,
+	};
+  }
+  
 
 export const getCurrentSearchParams = (searchParams?: URLSearchParams): Record<string, string> => {
 	const currentSearchParams: Record<string, string> = {};
