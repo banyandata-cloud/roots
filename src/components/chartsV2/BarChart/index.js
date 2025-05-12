@@ -1,1 +1,1 @@
-export { default as BaseVerticalBarChartV2 } from './BaseVerticalBarChart';
+export { default as BaseBarChartV2 } from './BaseVerticalBarChart';

@@ -26,7 +26,19 @@ ChartJS.register(
 );
 
 const CapsuleChart = (props) => {
-	const { loading = false, fallback, seriesData = {}, showLegends = false, tooltip } = props;
+	const {
+		loading = false,
+		fallback,
+		seriesData = {},
+		showLegends = false,
+		tooltip,
+		dataSetsOptions,
+		chartOptions,
+		xAxis,
+		yAxis,
+		extra,
+		styles,
+	} = props;
 
 	if (loading || fallback) {
 		return <Skeleton theme='dark' fallback={!loading && fallback} />;
@@ -48,7 +60,7 @@ const CapsuleChart = (props) => {
 		labels,
 		datasets: [
 			{
-				label: 'Compliant',
+				label: seriesData?.metaData?.keyData?.x1,
 				data: dataX1,
 				backgroundColor: activeDatasets[0] ? 'green' : 'grey', // Change to grey if not active
 				stack: 'Stack 0',
@@ -56,7 +68,7 @@ const CapsuleChart = (props) => {
 				barThickness: 30,
 			},
 			{
-				label: 'Non-Compliant',
+				label: seriesData?.metaData?.keyData?.x2,
 				data: dataX2.map((value) => {
 					return -value;
 				}), // Negate values to stack downwards
@@ -66,6 +78,7 @@ const CapsuleChart = (props) => {
 				barThickness: 30,
 			},
 		],
+		...dataSetsOptions,
 	};
 
 	// Chart options configuration
@@ -121,6 +134,7 @@ const CapsuleChart = (props) => {
 						return `${datasetLabel}: ${value >= 0 ? value : -value}`;
 					},
 				},
+				...tooltip,
 			},
 			annotation: {
 				annotations: {
@@ -178,6 +192,7 @@ const CapsuleChart = (props) => {
 					drawBorder: false,
 				},
 				display: false,
+				...xAxis,
 			},
 			y: {
 				stacked: true,
@@ -194,16 +209,19 @@ const CapsuleChart = (props) => {
 					drawBorder: false,
 				},
 				display: false,
+				...yAxis,
 			},
 		},
+		...chartOptions,
 	};
 
 	return (
 		<div
 			style={{
 				position: 'relative',
+				...styles,
 			}}>
-			<Bar data={data} options={options} plugins={[ChartDataLabels]} />
+			<Bar data={data} options={options} plugins={[ChartDataLabels]} {...extra} />
 		</div>
 	);
 };
