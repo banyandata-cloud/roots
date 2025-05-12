@@ -1,10 +1,25 @@
-/* eslint-disable react/forbid-prop-types */
-import PropTypes from 'prop-types';
-import { createElement, forwardRef, isValidElement } from 'react';
+import { createElement, forwardRef, HTMLAttributes, isValidElement } from 'react';
 import { classes } from '../../utils';
 import styles from './Text.module.css';
 
-const Text = forwardRef((props, ref) => {
+type Variant = 'h1' | 'h2' | 'b1' | 'b2' | 'b3';
+type ComponentType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span' | 'a';
+type Stroke = 'regular' | 'medium' | 'semibold' | 'bold';
+type FontWeight = 100 | 200 | 300 | 400 | 500 | 600;
+
+interface TextProps {
+	variant?: Variant;
+	component?: ComponentType;
+	stroke?: Stroke;
+	weight?: FontWeight;
+	italic?: boolean;
+	underline?: boolean;
+	children?: React.ReactNode;
+	className?: string;
+	attrs?: HTMLAttributes<HTMLElement>;
+}
+
+const Text = forwardRef<HTMLElement, TextProps>((props, ref): React.ReactElement | null => {
 	const {
 		variant = 'b2',
 		component = 'span',
@@ -44,16 +59,5 @@ const Text = forwardRef((props, ref) => {
 
 	return null;
 });
-
-Text.propTypes = {
-	variant: PropTypes.oneOf(['h1', 'h2', 'b1', 'b2', 'b3']),
-	component: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'span', 'a']),
-	weight: PropTypes.oneOf([100, 200, 300, 400, 500, 600]),
-	stroke: PropTypes.oneOf(['regular', 'medium', 'semibold', 'bold']),
-	italic: PropTypes.bool,
-	underline: PropTypes.bool,
-	className: PropTypes.string,
-	attrs: PropTypes.object,
-};
 
 export default Text;

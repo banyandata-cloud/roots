@@ -1,7 +1,7 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { ThemedContainer } from '../../helpers';
 import { ArrowIcon, CopyIcon, ServerIcon } from '../../icons';
-import { usePagination } from '../../pagination';
+import { usePagination } from '../../paginationv2';
 import { TableColumnV2 } from '../BaseTable.class';
 import Table from './Table';
 import { Button } from '.././../buttons';
@@ -55,9 +55,6 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					size: 'md',
 					flexible: true,
 					sort: true,
-					style: {
-						width: '10rem',
-					},
 				}),
 				new TableColumnV2({
 					title: 'Description',
@@ -374,9 +371,6 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 						onSort={(a, b) => {
 							console.log('SORT', a, b);
 						}}
-						sortValue={{
-							name: 'asc',
-						}}
 						tableInfo={{
 							title: 'Table Title',
 							description: 'Lorem ipsum dolor sit amet consectetur.',
@@ -634,7 +628,8 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 				},
 			];
 			const [paginationState, paginationDispatch] = usePagination({
-				totalPages: 20,
+				totalPages: 0,
+				totalData: 0,
 				currentPage: 1,
 			});
 			return (

@@ -9,14 +9,14 @@ import styles from './TableCell.module.css';
 const SORT_ICONS_ORDER = {
 	asc: 'az',
 	desc: 'za',
-	default: 'az',
+	default: 'default',
 };
 
 const getNextSortState = (currentSort) => {
 	return {
-		asc: 'desc',
-		desc: 'default',
-		default: 'asc',
+		asc: 'default',
+		desc: 'asc',
+		default: 'desc',
 	}?.[currentSort];
 };
 
