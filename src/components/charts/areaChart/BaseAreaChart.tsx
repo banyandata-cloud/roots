@@ -77,7 +77,7 @@ interface BaseAreaChartProps {
 function getLinearGradient(color: any): echarts.graphic.LinearGradient | string {
 	if (typeof color === 'string') return color;
 
-	// Expecting full LinearGradient format: x, y, x2, y2, colorStops, [globalCoord]
+	// linearGradient format: x, y, x2, y2, colorStops, [globalCoord] should have all params to avoid type error
 	if (
 		Array.isArray(color) &&
 		color.length >= 5 &&
@@ -88,7 +88,6 @@ function getLinearGradient(color: any): echarts.graphic.LinearGradient | string 
 		return new echarts.graphic.LinearGradient(x, y, x2, y2, colorStops, globalCoord ?? false);
 	}
 
-	// Fallback
 	return '';
 }
 

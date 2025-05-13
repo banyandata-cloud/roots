@@ -1,6 +1,3 @@
-/* eslint-disable no-nested-ternary */
-/* eslint-disable no-param-reassign */
-/* eslint-disable import/no-extraneous-dependencies */
 import {
 	CategoryScale,
 	ChartData,
@@ -31,7 +28,6 @@ ChartJS.register(
 	Filler
 );
 
-// -------- Types --------
 type ChartDataType = {
 	metaData: {
 		xAxisData: string[];
@@ -78,7 +74,6 @@ type ChartProps = {
 	extra?: any;
 };
 
-// -------- Component --------
 const BaseAreaChart: React.FC<ChartProps> = (props) => {
 	const {
 		loading,
