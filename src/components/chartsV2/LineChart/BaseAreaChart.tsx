@@ -1,10 +1,11 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable no-param-reassign */
 /* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable react/forbid-prop-types */
 import {
 	CategoryScale,
+	ChartData,
 	Chart as ChartJS,
+	ChartOptions,
 	Filler,
 	Legend,
 	LinearScale,
@@ -12,11 +13,11 @@ import {
 	PointElement,
 	Title,
 	Tooltip,
+	TooltipItem,
 } from 'chart.js';
 import React, { useRef, useState } from 'react';
 import { Line } from 'react-chartjs-2';
 import { COLORS } from '../../../styles';
-// import { classes } from '../../../utils';
 import { Skeleton } from './Skeleton';
 
 ChartJS.register(
@@ -30,7 +31,55 @@ ChartJS.register(
 	Filler
 );
 
-const BaseAreaChart = (props) => {
+// -------- Types --------
+type ChartDataType = {
+	metaData: {
+		xAxisData: string[];
+	};
+	chartData: {
+		[key: string]: number[];
+	};
+};
+
+type ChartProps = {
+	loading?: boolean;
+	title?: string;
+	seriesData: ChartDataType;
+	tooltip?: any;
+	legend?: {
+		display?: boolean;
+		position?: 'top' | 'left' | 'bottom' | 'right';
+		icon?: boolean;
+		legendStyles?: React.CSSProperties;
+	};
+	xAxisLabelShow?: boolean;
+	yAxisLabelShow?: boolean;
+	xAxisLabel?: string;
+	yAxisLabel?: string;
+	axisLabelColor?: string;
+	stacked?: boolean;
+	smooth?: boolean;
+	theme?: string;
+	fallback?: boolean;
+	isLineChart?: boolean;
+	xAxisPosition?: 'top' | 'bottom';
+	xSplitLineShow?: boolean;
+	xAxisLineShow?: boolean;
+	axisSplitColor?: string;
+	cursor?: string;
+	yAxis?: any;
+	xAxis?: any;
+	width?: string | number;
+	height?: string | number;
+	chartOptionsProps?: any;
+	lineColors?: string[];
+	borderColors?: string[];
+	style?: React.CSSProperties;
+	extra?: any;
+};
+
+// -------- Component --------
+const BaseAreaChart: React.FC<ChartProps> = (props) => {
 	const {
 		loading,
 		title,
@@ -44,16 +93,12 @@ const BaseAreaChart = (props) => {
 		axisLabelColor,
 		stacked,
 		smooth,
-		// className,
 		theme,
 		fallback,
 		isLineChart,
 		xAxisPosition,
-		// gridOptions,
-		// seriesOption,
 		xSplitLineShow,
 		xAxisLineShow,
-		// xAxisTickShow,
 		axisSplitColor,
 		cursor,
 		yAxis,
@@ -79,23 +124,19 @@ const BaseAreaChart = (props) => {
 		extra,
 	} = props;
 
+	const legendRef = useRef<HTMLUListElement | null>(null);
+	const [hiddenDatasets, setHiddenDatasets] = useState<number[]>([]);
+
 	if (loading || fallback) {
 		return <Skeleton theme={theme} fallback={!loading && fallback} />;
 	}
 
-	const legendRef = useRef(null);
-
-	const [hiddenDatasets, setHiddenDatasets] = useState([]);
-
-	const toggleDatasetVisibility = (index, chart) => {
+	const toggleDatasetVisibility = (index: number, chart: any) => {
 		setHiddenDatasets((prevHidden) => {
 			const newHidden = prevHidden.includes(index)
-				? prevHidden.filter((i) => {
-						return i !== index;
-				  })
+				? prevHidden.filter((i) => i !== index)
 				: [...prevHidden, index];
 
-			// Update the chart visibility
 			chart.data.datasets[index].hidden = newHidden.includes(index);
 			chart.update();
 
@@ -105,15 +146,13 @@ const BaseAreaChart = (props) => {
 
 	const customLegendPlugin = {
 		id: 'customLegend',
-		afterUpdate(chart) {
-			// Clear existing legend items
+		afterUpdate(chart: any) {
 			const ul = legendRef.current;
 			while (ul?.firstChild) {
 				ul.firstChild.remove();
 			}
 
-			// Loop through the datasets and create legend items
-			chart.data.datasets.forEach((dataset, index) => {
+			chart.data.datasets.forEach((dataset: any, index: number) => {
 				const li = document.createElement('li');
 				li.style.display = 'flex';
 				li.style.alignItems = 'center';
@@ -131,23 +170,17 @@ const BaseAreaChart = (props) => {
 					: dataset.backgroundColor;
 
 				li.onclick = () => {
-					// Toggle visibility of the dataset
 					toggleDatasetVisibility(index, chart);
-
-					// Apply grey-out effect on click
-					if (li.style.color === 'grey') {
-						li.style.color = 'inherit';
-					} else {
-						li.style.color = 'grey';
-					}
+					li.style.color = li.style.color === 'grey' ? 'inherit' : 'grey';
 
 					const circle = li.querySelector('circle');
 					if (circle) {
-						if (circle.getAttribute('stroke') === 'grey') {
-							circle.setAttribute('stroke', dataset.backgroundColor);
-						} else {
-							circle.setAttribute('stroke', 'grey');
-						}
+						circle.setAttribute(
+							'stroke',
+							circle.getAttribute('stroke') === 'grey'
+								? dataset.backgroundColor
+								: 'grey'
+						);
 					}
 				};
 
@@ -163,75 +196,62 @@ const BaseAreaChart = (props) => {
 		},
 	};
 
-	const chartData = {
+	const chartData: ChartData<'line'> = {
 		labels: seriesData?.metaData?.xAxisData ?? [],
-		datasets: Object.keys(seriesData?.chartData ?? {}).map((key, index) => {
-			return {
-				label: key,
-				data: seriesData?.chartData[key] ?? [],
-				fill: !isLineChart,
-				backgroundColor: isLineChart
-					? 'transparent'
-					: lineColors[index % lineColors.length],
-				borderColor: borderColors[index % borderColors.length],
-				tension: smooth ? 0.4 : 0,
-				borderWidth: chartOptionsProps?.borderWidth ?? 2,
-				pointRadius: chartOptionsProps?.pointRadius ?? 4,
-				pointHoverRadius: chartOptionsProps?.pointHoverRadius ?? 6,
-				pointBackgroundColor: borderColors[index % borderColors.length],
-				pointStyle: chartOptionsProps?.pointStyle ?? 'rectRot',
-				datalabels: {
-					display: false, // Disable data labels on points
-				},
-			};
-		}),
+		datasets: Object.keys(seriesData?.chartData ?? {}).map((key, index) => ({
+			label: key,
+			data: seriesData.chartData[key] ?? [],
+			fill: !isLineChart,
+			backgroundColor: isLineChart ? 'transparent' : lineColors[index % lineColors.length],
+			borderColor: borderColors[index % borderColors.length],
+			tension: smooth ? 0.4 : 0,
+			borderWidth: chartOptionsProps?.borderWidth ?? 2,
+			pointRadius: chartOptionsProps?.pointRadius ?? 4,
+			pointHoverRadius: chartOptionsProps?.pointHoverRadius ?? 6,
+			pointBackgroundColor: borderColors[index % borderColors.length],
+			pointStyle: chartOptionsProps?.pointStyle ?? 'rectRot',
+			datalabels: {
+				display: false,
+			},
+		})),
 	};
 
-	const chartOptions = {
+	const chartOptions: ChartOptions<'line'> = {
 		responsive: true,
 		maintainAspectRatio: false,
 		plugins: {
 			legend: legend?.icon
-				? {
-						display: false,
-				  }
+				? { display: false }
 				: {
 						display: legend?.display ?? true,
 						position: legend?.position ?? 'bottom',
 						labels: {
 							color: axisLabelColor || COLORS.grey,
-							boxWidth: 9, // Adjust width for a circular appearance
-							boxHeight: 9, // Adjust height for a circular appearance
-							borderRadius: 50, // Ensure the shape is circular
-							padding: 10, // Padding around legend items
-							usePointStyle: true, // Use circular point style for legends
-							font: {
-								family: 'Poppins',
-							},
+							boxWidth: 9,
+							boxHeight: 9,
+							borderRadius: 50,
+							padding: 10,
+							usePointStyle: true,
+							font: { family: 'Poppins' },
 						},
 						...legend,
 				  },
 			tooltip: {
 				borderWidth: tooltip?.borderWidth ?? 1,
-				borderColor: (context) => {
-					const segmentColor = context?.tooltipItems[0]?.dataset?.backgroundColor;
-
-					return segmentColor || 'black';
-				},
+				borderColor: (context: any) =>
+					context?.tooltipItems[0]?.dataset?.backgroundColor || 'black',
 				backgroundColor: 'rgba(255, 255, 255, 1)',
 				callbacks: tooltip?.callbacks ?? {
-					label: (context) => {
+					label: (context: TooltipItem<'line'>) => {
 						const label = context?.dataset?.label || '';
 						const value = context?.formattedValue;
 						return `${label}: ${value}`;
 					},
-					title: tooltip.displayTitle
-						? (tooltipItems) => {
+					title: tooltip?.displayTitle
+						? (tooltipItems: TooltipItem<'line'>[]) => {
 								return tooltipItems[0]?.label || '';
 						  }
-						: () => {
-								return '';
-						  },
+						: () => '',
 				},
 				bodySpacing: tooltip?.bodySpacing ?? 5,
 				displayColors: tooltip?.displayColors ?? true,
@@ -242,7 +262,7 @@ const BaseAreaChart = (props) => {
 				titleColor: tooltip?.bodyFont?.titleColor ?? '#000',
 				bodyColor: tooltip?.bodyFont?.color ?? '#000',
 				bodyFont: {
-					...tooltip.bodyFont,
+					...(tooltip?.bodyFont || {}),
 				},
 				...tooltip,
 			},
@@ -261,46 +281,39 @@ const BaseAreaChart = (props) => {
 			x: {
 				display: xAxisLabelShow,
 				position: xAxisPosition,
-				stacked, // Stack bars if applicable
+				stacked,
 				title: {
 					display: !!xAxisLabel,
 					text: xAxisLabel,
 					color: axisLabelColor || COLORS.grey,
-					font: {
-						size: 14,
-						family: 'Poppins',
-					},
+					font: { size: 14, family: 'Poppins' },
 				},
 				grid: {
 					display: xSplitLineShow,
 					color: axisSplitColor,
 					lineWidth: 1,
-					drawOnChartArea: true,
-					drawBorder: false, // Disable drawing grid lines on the border to allow full-length lines
-					tickLength: 30, // Adjust this value to control the length of the grid lines
+					tickLength: 30,
 				},
 				ticks: {
 					color: axisLabelColor || COLORS.grey,
-					font: {
-						family: 'Poppins',
-					},
 					stepSize: 100,
+					font: { family: 'Poppins' },
 				},
-				borderColor: xAxisLineShow ? 'rgba(0, 0, 0, 0)' : 'rgba(0, 0, 0, 0)',
-				borderWidth: xAxisLineShow ? 1 : 0,
+				border: {
+					display: !!xAxisLineShow,
+					color: 'rgba(0, 0, 0, 0)',
+					width: xAxisLineShow ? 1 : 0,
+				},
 				...xAxis,
 			},
 			y: {
-				display: yAxisLabelShow, // Whether to display y-axis labels
-				stacked, // Stack bars if applicable
+				display: yAxisLabelShow,
+				stacked,
 				title: {
-					display: !!yAxisLabel, // Display y-axis title if set
+					display: !!yAxisLabel,
 					text: yAxisLabel,
 					color: axisLabelColor || COLORS.grey,
-					font: {
-						size: 14,
-						family: 'Poppins',
-					},
+					font: { size: 14, family: 'Poppins' },
 				},
 				grid: {
 					display: true,
@@ -309,34 +322,25 @@ const BaseAreaChart = (props) => {
 				ticks: {
 					color: axisLabelColor || COLORS.grey,
 					stepSize: 100,
-					font: {
-						family: 'Poppins',
-					},
+					font: { family: 'Poppins' },
 					callback:
 						yAxis?.callback ??
-						((value) => {
+						((value: number | string) => {
 							return value;
 						}),
 				},
 				...yAxis,
 			},
 		},
-
 		elements: {
-			display: false,
-			line: {
-				tension: smooth ? 0.4 : 0,
-			},
-			point: {
-				display: false,
-				radius: 0,
-			},
+			line: { tension: smooth ? 0.4 : 0 },
+			point: { radius: 0 },
 		},
-		cursor: cursor ?? 'default',
+		...(cursor ? { cursor } : {}),
 		...chartOptionsProps,
 	};
 
-	const legendStyle = {
+	const legendStyle: React.CSSProperties = {
 		display: 'flex',
 		listStyle: 'none',
 		padding: '0px',
@@ -358,7 +362,6 @@ const BaseAreaChart = (props) => {
 				plugins={[customLegendPlugin]}
 				{...extra}
 			/>
-
 			{legend?.icon && legend?.display && <ul ref={legendRef} style={legendStyle} />}
 		</div>
 	);
