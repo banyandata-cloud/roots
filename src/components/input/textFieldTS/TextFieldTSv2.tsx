@@ -40,7 +40,7 @@ interface TextFieldProps {
 	name?: string;
 	label?: string | number;
 	placeholder?: string; // changed to string only
-	type?: 'text' | 'email' | 'password' | 'number' | 'textarea';
+	type?: React.HTMLInputTypeAttribute | 'textarea';
 	value?: string | number;
 	defaultValue?: string;
 	required?: boolean;
@@ -71,7 +71,7 @@ interface TextFieldProps {
 }
 
 const TextField = forwardRef<HTMLInputElement | HTMLTextAreaElement, TextFieldProps>(
-	(props, inputRef) => {
+	(props, inputRef): React.ReactElement | null => {
 		const {
 			id,
 			name,
@@ -224,30 +224,6 @@ const TextField = forwardRef<HTMLInputElement | HTMLTextAreaElement, TextFieldPr
 		};
 
 		const inputValue = isControlled ? value ?? '' : uncontrolledValue;
-
-		// const Input = createElement(type === 'textarea' ? 'textarea' : 'input', {
-		// 	id,
-		// 	name,
-		// 	disabled,
-		// 	type: inputType,
-		// 	defaultValue,
-		// 	placeholder,
-		// 	...(maxLength !== undefined ? { maxLength } : {}),
-
-		// 	onFocus: () => {
-		//         checkAndOpenAutocomplete(String(inputValue));
-		// 		onFocus?.();
-		// 	},
-		// 	onBlur,
-		// 	onKeyDown,
-		// 	required,
-		// 	'data-elem': 'input',
-		// 	ref: mergeRefs([inputRef]),
-		// 	value: inputValue,
-		// 	onChange: handleChange,
-		// 	className: classes(styles[size], styles.input, feedback?.error ? styles.error : ''),
-		// 	...inputProps,
-		// });
 
 		const Input = createElement(type === 'textarea' ? 'textarea' : 'input', {
 			id,

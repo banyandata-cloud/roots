@@ -1,1 +1,1 @@
-export { default as HierarchyItem } from './HierarchyItem';
+export { default as HierarchyItem } from './HierarchyItem.tsx';

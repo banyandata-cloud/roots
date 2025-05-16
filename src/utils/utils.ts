@@ -26,17 +26,15 @@ export const sumArrayOfObjects = (
 	}, {} as Record<string, number>);
 };
 
-export const getSpacedDisplayName = (string: string | undefined): string | undefined => {
-	return string?.replace(/-/g, ' ').replace(/\b\w/g, (s) => {
-		return s.toUpperCase();
-	});
+export const getSpacedDisplayName = (string: string = ''): string => {
+	return string.replace(/-/g, ' ').replace(/\b\w/g, (s) => s.toUpperCase());
 };
 
-export const doubleDigitted = (number: number | undefined): string | undefined => {
-	return number?.toString().slice(-2)?.padStart(2, '0');
+export const doubleDigitted = (number: number = 0): string => {
+	return number.toString().slice(-2).padStart(2, '0');
 };
 
-export const getJSDateFromEpoch = (epoch: number) => {
+export const getJSDateFromEpoch = (epoch: number): Date => {
 	const date = new Date(0);
 	date.setUTCSeconds(epoch);
 	return date;
@@ -149,35 +147,18 @@ export function classes(...args: (string | false | null | undefined)[]): string 
 	return sanitizedArgs.join(' ');
 }
 
-// export function inputHelper(
-// 	event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-// ): InputHelperResult {
-// 	const { dataset, type } = event.target;
-// 	const fieldName = event.target.name;
-// 	const fieldValue = ['checkbox', 'radio'].includes(type)
-// 		? event.target.checked
-// 		: event.target.value;
-
-// 	return {
-// 		fieldName,
-// 		fieldValue,
-// 		dataset,
-// 	};
-// }
-
-
-
-export function inputHelper(
-	event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ): { fieldName?: string; fieldValue: string; dataset?: DOMStringMap } {
+export function inputHelper(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>): {
+	fieldName?: string;
+	fieldValue: string;
+	dataset?: DOMStringMap;
+} {
 	const { dataset, name, value } = event.target;
 	return {
-	  fieldName: name,
-	  fieldValue: value, // Always a string for text/email/password/textarea
-	  dataset,
+		fieldName: name,
+		fieldValue: value, // Always a string for text/email/password/textarea
+		dataset,
 	};
-  }
-  
+}
 
 export const getCurrentSearchParams = (searchParams?: URLSearchParams): Record<string, string> => {
 	const currentSearchParams: Record<string, string> = {};
@@ -354,28 +335,29 @@ export const sanitizeJSON = (
 	}, {});
 };
 
-export const areTwinObjects = (obj1: any, obj2: any): boolean => {
-	// Check if both are objects and not null
-	if (typeof obj1 !== 'object' || obj1 === null || typeof obj2 !== 'object' || obj2 === null) {
-		return obj1 === obj2;
+export const areTwinObjects = (
+	obj1: Record<string | number, any>,
+	obj2: Record<string | number, any>
+  ): boolean => {
+	if (typeof obj1 !== 'object' || typeof obj2 !== 'object') {
+	  return obj1 === obj2;
 	}
-
-	// Check if both objects have the same number of keys
+  
 	const keys1 = Object.keys(obj1);
 	const keys2 = Object.keys(obj2);
+  
 	if (keys1.length !== keys2.length) {
-		return false;
+	  return false;
 	}
-
-	// Check if all keys and values are equal
+  
 	for (const key of keys1) {
-		if (!keys2.includes(key) || !areTwinObjects(obj1[key], obj2[key])) {
-			return false;
-		}
+	  if (!keys2.includes(key) || !areTwinObjects(obj1[key], obj2[key])) {
+		return false;
+	  }
 	}
-
-	return true;
-};
+  
+  };
+  
 
 export function getDuplicatesSansArray<T extends Record<string, any>>({
 	array = [],
