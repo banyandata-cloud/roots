@@ -1,1 +1,1 @@
-export { default as HierarchyBrowser } from './HierarchyBrowser';
+export { default as HierarchyBrowser } from './HierarchyBrowser.tsx';
