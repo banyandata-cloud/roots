@@ -8,11 +8,11 @@
 		"plugin:react/recommended",
 		"airbnb",
 		"eslint:recommended",
-		// "plugin:@typescript-eslint/recommended",
+		"plugin:@typescript-eslint/recommended",
 		"plugin:react-hooks/recommended",
 		"plugin:jsx-a11y/recommended"
 	],
-	// "parser": "@typescript-eslint/parser",
+	"parser": "@typescript-eslint/parser",
 	"overrides": [],
 	"parserOptions": {
 		"ecmaVersion": "latest",
@@ -73,8 +73,8 @@
 		"arrow-body-style": ["error", "always"],
 		"operator-linebreak": ["error", "after", { "overrides": { "?": "before", ":": "before" } }],
 		"no-bitwise": ["error", { "allow": ["&", ">>", "|"] }],
-		"no-use-before-define": ["error", { "functions": false }] //Disallow the use of variables before they are defined
-		// "@typescript-eslint/explicit-module-boundary-types": "off",
-		// "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }]
+		"no-use-before-define": ["error", { "functions": false }], //Disallow the use of variables before they are defined
+		"@typescript-eslint/explicit-module-boundary-types": "off",
+		"@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }]
 	}
 }

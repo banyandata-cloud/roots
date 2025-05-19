@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { classes, getSpacedDisplayName } from '../../utils/utils';
 import Button from '../buttons/button/Button';
-import { Popover } from '../popover';
 import { ArrowIcon, HomeIcon } from '../icons';
 import BreadcrumbSeparator from '../icons/BreadcrumbSeperator/BreadcrumbSeperator';
 import { Link } from '../link';
+import { Popover } from '../popover';
 import styles from './Breadcrumbs.module.css';
 
 const BreadCrumbs = (props) => {

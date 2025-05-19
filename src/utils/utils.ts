@@ -1,12 +1,13 @@
+/* eslint-disable no-continue */
+/* eslint-disable no-param-reassign */
 import { format as fnsFormat } from 'date-fns';
 import { DAYS, FULL_MONTHS, MONTHS } from '../constants';
-import {
-	InputHelperResult,
-	DayInfo,
-	DateRange,
-	GetDatesInMonthParams,
-	DatesInMonthResult,
+import type {
 	ColorOptions,
+	DateRange,
+	DatesInMonthResult,
+	DayInfo,
+	GetDatesInMonthParams,
 	HSL,
 } from '../types/utils';
 
@@ -26,11 +27,13 @@ export const sumArrayOfObjects = (
 	}, {} as Record<string, number>);
 };
 
-export const getSpacedDisplayName = (string: string = ''): string => {
-	return string.replace(/-/g, ' ').replace(/\b\w/g, (s) => s.toUpperCase());
+export const getSpacedDisplayName = (string = ''): string => {
+	return string.replace(/-/g, ' ').replace(/\b\w/g, (s) => {
+		return s.toUpperCase();
+	});
 };
 
-export const doubleDigitted = (number: number = 0): string => {
+export const doubleDigitted = (number = 0): string => {
 	return number.toString().slice(-2).padStart(2, '0');
 };
 
@@ -117,11 +120,16 @@ export const uniqueArrayOfObjects = <T extends Record<string, any>>(
 	key: keyof T
 ): T[] => {
 	return array.filter((value, index, self) => {
-		return index === self.findIndex((t) => t[key] === value[key]);
+		return (
+			index ===
+			self.findIndex((t) => {
+				return t[key] === value[key];
+			})
+		);
 	});
 };
 
-export const getInitialsOfName = (name: string = ''): string => {
+export const getInitialsOfName = (name = ''): string => {
 	const names = name.split(' ');
 	let initials = names[0].substring(0, 1).toUpperCase();
 	if (names.length > 1) {
@@ -170,9 +178,9 @@ export const getCurrentSearchParams = (searchParams?: URLSearchParams): Record<s
 	return currentSearchParams;
 };
 
-const rePropName: RegExp =
+const rePropName =
 	/[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g;
-const reEscapeChar: RegExp = /\\(\\)?/g;
+const reEscapeChar = /\\(\\)?/g;
 
 /**
  * Converts 'string' to a property path array
@@ -338,26 +346,26 @@ export const sanitizeJSON = (
 export const areTwinObjects = (
 	obj1: Record<string | number, any>,
 	obj2: Record<string | number, any>
-  ): boolean => {
+): boolean => {
 	if (typeof obj1 !== 'object' || typeof obj2 !== 'object') {
-	  return obj1 === obj2;
+		return obj1 === obj2;
 	}
-  
+
 	const keys1 = Object.keys(obj1);
 	const keys2 = Object.keys(obj2);
-  
+
 	if (keys1.length !== keys2.length) {
-	  return false;
-	}
-  
-	for (const key of keys1) {
-	  if (!keys2.includes(key) || !areTwinObjects(obj1[key], obj2[key])) {
 		return false;
-	  }
 	}
-  
-  };
-  
+
+	// eslint-disable-next-line no-restricted-syntax
+	for (const key of keys1) {
+		if (!keys2.includes(key) || !areTwinObjects(obj1[key], obj2[key])) {
+			return false;
+		}
+	}
+	return false;
+};
 
 export function getDuplicatesSansArray<T extends Record<string, any>>({
 	array = [],
@@ -369,11 +377,16 @@ export function getDuplicatesSansArray<T extends Record<string, any>>({
 	hasObjects?: boolean;
 }): T[] {
 	if (hasObjects) {
-		return array.filter(
-			(value, index, self) =>
+		return array.filter((value, index, self) => {
+			return (
 				index ===
-				self.findIndex((item) => properties.every((prop) => item[prop] === value[prop]))
-		);
+				self.findIndex((item) => {
+					return properties.every((prop) => {
+						return item[prop] === value[prop];
+					});
+				})
+			);
+		});
 	}
 
 	// For primitive types
@@ -395,9 +408,9 @@ export const generateColors = (options: ColorOptions = {}): string[] => {
 	const minSaturation = 65;
 	const maxSaturation = 100;
 
-	const normalizedExcludedColors = excludedColors.map((color) =>
-		color.startsWith('#') ? color : `#${color}`
-	);
+	const normalizedExcludedColors = excludedColors.map((color) => {
+		return color.startsWith('#') ? color : `#${color}`;
+	});
 
 	// Hex to RGB conversion
 	const hexToRGB = (hex: string): [number, number, number] => {
@@ -409,7 +422,9 @@ export const generateColors = (options: ColorOptions = {}): string[] => {
 
 	// Hex to HSL conversion
 	const hexToHSL = (hex: string): HSL => {
-		const [r, g, b] = hexToRGB(hex).map((v) => v / 255);
+		const [r, g, b] = hexToRGB(hex).map((v) => {
+			return v / 255;
+		});
 		const cmin = Math.min(r, g, b);
 		const cmax = Math.max(r, g, b);
 		const delta = cmax - cmin;
@@ -469,11 +484,11 @@ export const generateColors = (options: ColorOptions = {}): string[] => {
 
 	// Hue range exclusion check
 	const isHueExcluded = (hue: number): boolean => {
-		return excludedHueRanges.some((range) =>
-			range.min > range.max
+		return excludedHueRanges.some((range) => {
+			return range.min > range.max
 				? hue >= range.min || hue <= range.max
-				: hue >= range.min && hue <= range.max
-		);
+				: hue >= range.min && hue <= range.max;
+		});
 	};
 
 	// Color similarity check
@@ -481,9 +496,9 @@ export const generateColors = (options: ColorOptions = {}): string[] => {
 		const { h } = hexToHSL(hexColor);
 		if (isHueExcluded(h)) return true;
 
-		return normalizedExcludedColors.some(
-			(excludedColor) => colorDistance(hexColor, excludedColor) < exclusionThreshold
-		);
+		return normalizedExcludedColors.some((excludedColor) => {
+			return colorDistance(hexColor, excludedColor) < exclusionThreshold;
+		});
 	};
 
 	// Main color generation with all fallback logic
@@ -499,9 +514,9 @@ export const generateColors = (options: ColorOptions = {}): string[] => {
 			const hexColor = hslToHex(h, s, l);
 			if (isTooSimilarToExcluded(hexColor)) continue;
 
-			const isDistinct = colors.every(
-				(existing) => colorDistance(hexColor, existing) >= distinctionThreshold
-			);
+			const isDistinct = colors.every((existing) => {
+				return colorDistance(hexColor, existing) >= distinctionThreshold;
+			});
 			if (isDistinct) return hexColor;
 		}
 
@@ -514,7 +529,9 @@ export const generateColors = (options: ColorOptions = {}): string[] => {
 			if (isTooSimilarToExcluded(hexColor)) continue;
 
 			const minDistance = Math.min(
-				...colors.map((existing) => colorDistance(hexColor, existing))
+				...colors.map((existing) => {
+					return colorDistance(hexColor, existing);
+				})
 			);
 			if (minDistance >= distinctionThreshold * 0.7) return hexColor;
 		}
