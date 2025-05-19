@@ -77,6 +77,7 @@ const BaseAreaChart = (props) => {
 		],
 		style,
 		extra,
+		dataSetOptions,
 	} = props;
 
 	if (loading || fallback) {
@@ -185,6 +186,7 @@ const BaseAreaChart = (props) => {
 				},
 			};
 		}),
+		...dataSetOptions,
 	};
 
 	const chartOptions = {
