@@ -15,7 +15,6 @@ import {
 import React, { useRef, useState } from 'react';
 import { Line } from 'react-chartjs-2';
 import { COLORS } from '../../../styles';
-import { Skeleton } from './Skeleton';
 
 ChartJS.register(
 	CategoryScale,
@@ -38,7 +37,6 @@ type ChartDataType = {
 };
 
 type ChartProps = {
-	loading?: boolean;
 	title?: string;
 	seriesData: ChartDataType;
 	tooltip?: any;
@@ -56,7 +54,6 @@ type ChartProps = {
 	stacked?: boolean;
 	smooth?: boolean;
 	theme?: string;
-	fallback?: boolean;
 	isLineChart?: boolean;
 	xAxisPosition?: 'top' | 'bottom';
 	xSplitLineShow?: boolean;
@@ -74,9 +71,8 @@ type ChartProps = {
 	extra?: any;
 };
 
-const BaseAreaChart: React.FC<ChartProps> = (props) => {
+const BaseAreaChart: React.FC<ChartProps> = (props): React.ReactElement => {
 	const {
-		loading,
 		title,
 		seriesData,
 		tooltip,
@@ -88,8 +84,6 @@ const BaseAreaChart: React.FC<ChartProps> = (props) => {
 		axisLabelColor,
 		stacked,
 		smooth,
-		theme,
-		fallback,
 		isLineChart,
 		xAxisPosition,
 		xSplitLineShow,
@@ -121,10 +115,6 @@ const BaseAreaChart: React.FC<ChartProps> = (props) => {
 
 	const legendRef = useRef<HTMLUListElement | null>(null);
 	const [hiddenDatasets, setHiddenDatasets] = useState<number[]>([]);
-
-	if (loading || fallback) {
-		return <Skeleton theme={theme} fallback={!loading && fallback} />;
-	}
 
 	const toggleDatasetVisibility = (index: number, chart: any) => {
 		setHiddenDatasets((prevHidden) => {

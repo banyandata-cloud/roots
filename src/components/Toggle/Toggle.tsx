@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { classes } from '../../utils';
 import { Button } from '../buttons';
-import { Skeleton } from './Skeleton';
 import styles from './Toggle.module.css';
 
 interface ToggleOption {
@@ -20,8 +19,6 @@ interface ToggleProps {
 	theme?: 'light' | 'dark';
 	value?: string | string[];
 	onChange?: (value: string | string[]) => void;
-	loading?: boolean;
-	fallback?: boolean;
 	className?: string;
 	smooth?: boolean;
 	secondary?: boolean;
@@ -29,17 +26,15 @@ interface ToggleProps {
 
 const Toggle = ({
 	options = [],
-	multi = false,
+	multi,
 	defaultValue,
 	theme = 'light',
 	value = undefined,
 	onChange,
-	loading = false,
-	fallback = false,
 	className = '',
-	smooth = false,
+	smooth,
 	secondary,
-}: ToggleProps) => {
+}: ToggleProps): React.ReactElement => {
 	const [sliderLeft, setSliderLeft] = useState(0);
 	const [sliderWidth, setSliderWidth] = useState(0);
 
@@ -96,10 +91,6 @@ const Toggle = ({
 	useEffect(() => {
 		updateSliderPosition();
 	}, [inputValue, options]);
-
-	if (loading || fallback) {
-		return <Skeleton theme={theme} fallback={!loading && fallback} v2 />;
-	}
 
 	return (
 		<div className={classes(styles.root, styles[theme], className)}>

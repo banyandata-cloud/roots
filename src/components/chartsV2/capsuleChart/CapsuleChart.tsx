@@ -11,12 +11,12 @@ import {
 	ScriptableContext,
 	Title,
 	Tooltip,
+	TooltipItem,
 } from 'chart.js';
 import annotationPlugin from 'chartjs-plugin-annotation';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import React, { FC, useState } from 'react';
 import { Bar } from 'react-chartjs-2';
-import { Skeleton } from './Skeleton';
 
 ChartJS.register(
 	Title,
@@ -48,8 +48,6 @@ interface TooltipConfig {
 }
 
 interface CapsuleChartProps {
-	loading?: boolean;
-	fallback?: boolean;
 	seriesData: SeriesData;
 	showLegends?: boolean;
 	tooltip?: TooltipConfig;
@@ -62,10 +60,8 @@ interface CapsuleChartProps {
 }
 
 const CapsuleChart: FC<CapsuleChartProps> = ({
-	loading = false,
-	fallback = false,
 	seriesData,
-	showLegends = false,
+	showLegends,
 	tooltip = {},
 	dataSetsOptions = {},
 	chartOptions = {},
@@ -73,12 +69,8 @@ const CapsuleChart: FC<CapsuleChartProps> = ({
 	yAxis = {},
 	extra = {},
 	styles = {},
-}) => {
+}): React.ReactElement => {
 	const [active, setActive] = useState<[boolean, boolean]>([true, true]);
-
-	if (loading || fallback) {
-		return <Skeleton theme='dark' fallback={!loading && !!fallback} />;
-	}
 
 	const labels = Object.keys(seriesData.chartData);
 	const dataX1 = labels.map((l) => seriesData.chartData[l].x1);
@@ -131,12 +123,14 @@ const CapsuleChart: FC<CapsuleChartProps> = ({
 				bodyColor: tooltip.bodyColor ?? '#000',
 				bodyFont: (tooltip.bodyFont ?? {}) as any,
 				borderWidth: tooltip.borderWidth ?? 1,
-				borderColor: (ctx) =>
+				borderColor: (ctx: any) =>
 					(ctx.tooltip?.getActiveElements()[0]?.element.options
 						.backgroundColor as string) || 'black',
 				callbacks: {
-					title: tooltip.displayTitle ? (items) => items[0].label || '' : () => '',
-					label: (ctx) => {
+					title: tooltip.displayTitle
+						? (items: TooltipItem<'line'>[]) => items[0].label || ''
+						: () => '',
+					label: (ctx: TooltipItem<'line'>) => {
 						const lbl = ctx.dataset.label || '';
 						const val = ctx.raw as number;
 						return `${lbl}: ${Math.abs(val)}`;

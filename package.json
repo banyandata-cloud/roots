@@ -40,7 +40,6 @@
 	"dependencies": {
 		"@floating-ui/react-dom": "^1.0.0",
 		"@floating-ui/react-dom-interactions": "^0.10.1",
-		"bun": "^1.2.12",
 		"date-fns": "^2.29.3",
 		"path": "^0.12.7",
 		"postcss": "^8.4.18",
