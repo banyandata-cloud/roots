@@ -46,11 +46,6 @@
 						padding: 0.625rem 0rem;
 					}
 
-					.custom-search-icon {
-						width: 1.5rem;
-						height: 1.5rem;
-					}
-
 					[data-elem='input'] {
 						font-size: 0.875rem;
 						font-weight: 500;
@@ -79,6 +74,10 @@
 				.icon {
 					width: 1.5rem;
 					height: 1.5rem;
+					&.arrow {
+						width: 1.75rem;
+						height: 1.75rem;
+					}
 				}
 			}
 			&:hover {

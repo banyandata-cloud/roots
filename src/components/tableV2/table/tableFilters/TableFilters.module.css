@@ -53,10 +53,6 @@
 .root[data-elem=base-cell] > [data-elem=component2] .search > label > [data-elem=base-cell] > [data-elem=component2] {
   padding: 0.625rem 0rem;
 }
-.root[data-elem=base-cell] > [data-elem=component2] .search > label > [data-elem=base-cell] .custom-search-icon {
-  width: 1.5rem;
-  height: 1.5rem;
-}
 .root[data-elem=base-cell] > [data-elem=component2] .search > label > [data-elem=base-cell] [data-elem=input] {
   font-size: 0.875rem;
   font-weight: 500;
@@ -84,6 +80,10 @@
 .root[data-elem=base-cell] > [data-elem=component2] button.search-button[data-elem=base-cell] > [data-elem=component1] .icon {
   width: 1.5rem;
   height: 1.5rem;
+}
+.root[data-elem=base-cell] > [data-elem=component2] button.search-button[data-elem=base-cell] > [data-elem=component1] .icon.arrow {
+  width: 1.75rem;
+  height: 1.75rem;
 }
 .root[data-elem=base-cell] > [data-elem=component2] button.search-button[data-elem=base-cell]:hover {
   background-color: var(--light-color2);

@@ -1,5 +1,5 @@
 import { fromUnixTime, getUnixTime, isBefore } from 'date-fns';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FULL_MONTHS } from '../../../constants';
 import { getDatesInStringFormat, getDayInfo } from '../../../utils';
 import { ClockView } from '../clockView';
@@ -67,7 +67,7 @@ const Calender = (props) => {
 			return;
 		}
 
-		if (range && value?.filter(Boolean)?.length > 0) {
+		if (range && value?.filter?.(Boolean)?.length > 0) {
 			setSelectedRange({
 				dates: getDatesInStringFormat({
 					startingDate: fromUnixTime(value[0]),
