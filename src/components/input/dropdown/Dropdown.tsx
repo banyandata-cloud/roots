@@ -84,6 +84,13 @@ interface LeftComponentProps {
 	InActive?: React.ComponentType;
 }
 
+type LeftComponentType =
+	| React.ComponentType<any>
+	| {
+			Active?: React.ComponentType<any>;
+			InActive?: React.ComponentType<any>;
+	  };
+
 const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(
 	props,
 	inputRef
@@ -194,7 +201,7 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(
 	};
 
 	const onSelect = (child: ReactElement<DropdownItemProps>, selected: boolean) => {
-		return (event: React.MouseEvent<HTMLElement>):void => {
+		return (event: React.MouseEvent<HTMLElement>): void => {
 			if (event.currentTarget.getAttribute('data-elem') !== 'dropdown-item') {
 				return;
 			}
@@ -347,7 +354,7 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(
 		}
 	}, [open, multi, value, isControlled]);
 
-	const onSelectAll = (event: React.MouseEvent, selected: boolean):void => {
+	const onSelectAll = (event: React.MouseEvent, selected: boolean): void => {
 		// to support form libraries which require name and value on the event
 		const nativeEvent = event.nativeEvent || event;
 		const clonedEvent = new InputEvent(nativeEvent.type, nativeEvent);
@@ -373,7 +380,7 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(
 		setActiveIndex(0);
 	};
 
-	const onApply = (event: React.MouseEvent<HTMLElement>):void => {
+	const onApply = (event: React.MouseEvent<HTMLElement>): void => {
 		// Create a proper React synthetic event instead of cloning
 		const syntheticEvent = {
 			...event,
@@ -407,7 +414,7 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(
 		selectedItemsLabel = `${selectedOptions?.length} options selected`;
 	}
 
-	const getValueToDisplay = (): string| ReactNode => {
+	const getValueToDisplay = (): string | ReactNode => {
 		if (value) {
 			if (Array.isArray(value) && value.length > 0) {
 				const sanitizedValue = value.filter(Boolean);
@@ -449,21 +456,28 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(
 		return '';
 	};
 
-	const getLeftComponent = () => {
+	const getLeftComponent = (): React.ReactNode => {
 		if (!LeftComponent) return null;
 
 		if (isLeftComponentObject(LeftComponent)) {
-			// Handle object case
+			const hasValue = multi
+				? (value?.length ?? uncontrolledValue?.length ?? 0) > 0
+				: !!(value ?? uncontrolledValue);
+
+			const ComponentToRender = hasValue ? LeftComponent.Active : LeftComponent.InActive;
+
+			return <ComponentToRender />;
 		} else {
-			// Handle component case
+			const Component = LeftComponent as React.ComponentType<any>;
+			return <Component />;
 		}
 	};
 
-	// Type guard function
+	// Type guard
 	function isLeftComponentObject(
-		component: React.ComponentType | LeftComponentProps
-	): component is LeftComponentProps {
-		return typeof component === 'object' && ('Active' in component || 'InActive' in component);
+		component: LeftComponentType
+	): component is { Active: React.ComponentType<any>; InActive: React.ComponentType<any> } {
+		return typeof component === 'object' && 'Active' in component && 'InActive' in component;
 	}
 
 	return (
