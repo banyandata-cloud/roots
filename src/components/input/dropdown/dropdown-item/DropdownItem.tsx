@@ -4,7 +4,9 @@ import { InfoIcon } from '../../../icons';
 import { Tooltip } from '../../../tooltip';
 import { Checkbox } from '../../checkbox';
 import { Radio } from '../../radio';
-import styles from './DropdownItemv2.module.css';
+import styles from './DropdownItem.module.css';
+import type { ReactElement } from 'react';
+
 
 type Variant = 'default' | 'checkbox' | 'radio';
 
@@ -27,7 +29,7 @@ interface DropdownItemProps {
 const DropdownItem = forwardRef<HTMLLIElement, DropdownItemProps>(function DropdownItem(
   props,
   ref
-) {
+):ReactElement {
   const {
     title = '',
     value,

@@ -11,8 +11,8 @@ import { useEffect, useRef, useState } from 'react';
 import { classes } from '../../../utils';
 import { Button } from '../../buttons';
 import DialogBox from '../../modal/dialogBox/DialogBox';
-import { Dropdownv2 as Dropdown, DropdownItemv2 as DropdownItem } from '../dropdownv2';
-import { TextFieldv2 as TextField } from '../textFieldv2';
+import { Dropdown as Dropdown, DropdownItem as DropdownItem } from '../dropdown';
+import { TextField as TextField } from '../textField';
 import styles from './RichEditor.module.css';
 import { ColorHighlightIcon, ColorPalletteIcon, TextAlignIcon, TextLinkIcon } from './assets';
 

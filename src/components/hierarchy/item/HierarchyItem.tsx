@@ -4,6 +4,8 @@ import { Button } from '../../buttons';
 import { BaseCell } from '../../cell';
 import { CaretIcon } from '../../icons';
 import styles from './HierarchyItem.module.css';
+import type { ReactElement } from 'react';
+
 
 type IconPlacement = 'left' | 'right' | 'none';
 
@@ -17,7 +19,7 @@ interface HierarchyItemProps {
     active?: boolean;
 }
 
-const HierarchyItem = (props: HierarchyItemProps) => {
+const HierarchyItem = (props: HierarchyItemProps): ReactElement => {
     const {
         defaultOpen = false,
         iconPlacement = 'left',

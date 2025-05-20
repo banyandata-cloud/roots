@@ -12,6 +12,7 @@ import { CrossIcon } from '../icons';
 import { Popper } from '../popper';
 import { Text } from '../text';
 import styles from './BaseModal.module.css';
+import type { ReactElement } from 'react';
 
 interface FooterAnimations {
 	initial: {
@@ -46,16 +47,11 @@ interface ModalHeaderProps {
 	description?: string;
 }
 
-// interface MotionFooterProps extends MotionProps {
-//     'data-elem'?: string;
-//     className?: string;
-// }
 const MotionFooter = motion.footer as React.FC<
-  React.HTMLAttributes<HTMLElement> & import('framer-motion').MotionProps
+	React.HTMLAttributes<HTMLElement> & import('framer-motion').MotionProps
 >;
 
-
-const ModalHeader = ({ title, description }: ModalHeaderProps) => {
+const ModalHeader = ({ title, description }: ModalHeaderProps): ReactElement => {
 	return (
 		<>
 			<Text component='h2' variant='h2' weight={600}>
@@ -83,7 +79,7 @@ interface ModalFooterProps {
 	loading?: boolean;
 }
 
-const ModalFooter = (props: ModalFooterProps) => {
+const ModalFooter = (props: ModalFooterProps): ReactElement => {
 	const {
 		actionTitle = 'Save',
 		disabled = {},
@@ -201,7 +197,7 @@ interface BaseModalProps {
  * @param {boolean} hideCrossDismiss - If true, it will hide the cross close button from the top right of the modal.
  * @returns {ReactElement} The rendered modal dialog.
  */
-const BaseModal = (props: BaseModalProps) => {
+const BaseModal = (props: BaseModalProps): ReactElement => {
 	const {
 		className = '',
 		title,

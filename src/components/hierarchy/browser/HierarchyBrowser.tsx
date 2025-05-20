@@ -4,6 +4,7 @@ import { classes } from '../../../utils';
 import { ServerIcon } from '../../icons';
 import { HierarchyItem } from '../item';
 import styles from './HierarchyBrowser.module.css';
+import type { ReactElement } from 'react';
 
 interface Item {
 	id?: string;
@@ -64,7 +65,7 @@ const HierarchyBrowser = ({
 	resizable,
 	setItemProps = () => ({}),
 	title = 'Browser',
-}: HierarchyBrowserProps) => {
+}: HierarchyBrowserProps): ReactElement => {
 	const browserRef = useRef<HTMLDivElement>(null);
 
 	useResize({
@@ -77,14 +78,14 @@ const HierarchyBrowser = ({
 		enabled: resizable,
 	});
 
-	const handleItemClick = (item: Item, pathString: string) => {
-		return (open: boolean) => {
+	const handleItemClick = (item: Item, pathString: string): ((open: boolean) => void) => {
+		return (open: boolean): void => {
 			onItemClick(item, pathString, open);
 		};
 	};
 
-	const handleItemDoubleClick = (item: Item, pathString: string) => {
-		return (open: boolean) => {
+	const handleItemDoubleClick = (item: Item, pathString: string): ((open: boolean) => void) => {
+		return (open: boolean): void => {
 			onItemDoubleClick(item, pathString, open);
 		};
 	};

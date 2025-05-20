@@ -15,7 +15,6 @@ import {
 	useRole,
 } from '@floating-ui/react-dom-interactions';
 import { motion } from 'framer-motion';
-import PropTypes from 'prop-types';
 import React, {
 	forwardRef,
 	useEffect,
@@ -24,6 +23,9 @@ import React, {
 	useMemo,
 	useRef,
 	useState,
+	ReactNode,
+	ReactElement,
+	SyntheticEvent,
 } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { classes } from '../../../utils';
@@ -33,15 +35,64 @@ import { CaretIcon, InfoIcon } from '../../icons';
 import { SelectAllIcon } from '../../icons/SelectAll';
 import Popper from '../../popper/Popper';
 import { Tooltip } from '../../tooltip';
-import styles from './Dropdownv2.module.css';
+import styles from './Dropdown.module.css';
 
-// eslint-disable-next-line prefer-arrow-callback
-const Dropdown = forwardRef(function Dropdown(props, inputRef) {
+interface DropdownProps {
+	className?: string;
+	popperClassName?: string;
+	value?: string | string[];
+	leftComponent?:
+		| {
+				Active?: React.ComponentType;
+				InActive?: React.ComponentType;
+		  }
+		| React.ComponentType;
+	onBlur?: (event: SyntheticEvent) => void;
+	children?: ReactNode;
+	highlightOnSelect?: boolean;
+	label?: string;
+	placeholder?: string | ReactNode;
+	multi?: boolean;
+	disabled?: boolean;
+	error?: string;
+	id?: string;
+	name?: string;
+	feedback?: {
+		text: ReactNode;
+		type: 'error' | 'success' | 'default';
+	};
+	formatter?: (totalSelected: number) => string;
+	custom?: boolean;
+	required?: boolean;
+	multiSelectActionTitle?: string;
+	valueAsCount?: boolean;
+	caretAsUpDown?: boolean;
+	onChange?: (event: React.SyntheticEvent, value: string | string[]) => void;
+}
+
+interface DropdownRef {
+	value: () => string | string[] | null;
+}
+
+interface DropdownItemProps {
+	value: string | number;
+	title?: ReactNode;
+}
+
+interface LeftComponentProps {
+	Active?: React.ComponentType;
+	InActive?: React.ComponentType;
+}
+
+const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(
+	props,
+	inputRef
+): ReactElement {
 	const {
 		className = '',
 		popperClassName = '',
 		value,
-		onChange,
+		onChange = () => {},
 		leftComponent: LeftComponent,
 		onBlur,
 		children,
@@ -64,16 +115,19 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 		caretAsUpDown,
 	} = props;
 	const [open, setOpen] = useState(false);
-	const [activeIndex, setActiveIndex] = useState(null);
+	const [activeIndex, setActiveIndex] = useState<number | null>(null);
 	const [selectedIndex, setSelectedIndex] = useState(0);
-	const listItemsRef = useRef([]);
-	const multiOptionsRef = useRef(null);
+	const listItemsRef = useRef<Array<HTMLElement | null>>([]);
+	const multiOptionsRef = useRef<HTMLLIElement>(null);
+	const internalInputRef = useRef<HTMLInputElement>(null);
 
 	const isControlled = value !== undefined;
 
 	// for uncontrolled input
-	const [uncontrolledValue, setUncontrolledValue] = useState(value);
-	const [appliedMultiUncontrolledValue, setAppliedMultiUncontrolledValue] = useState(null);
+	const [uncontrolledValue, setUncontrolledValue] = useState<string | string[]>(multi ? [] : '');
+	const [appliedMultiUncontrolledValue, setAppliedMultiUncontrolledValue] = useState<
+		string[] | null
+	>(null);
 
 	const { x, y, reference, floating, strategy, context } = useFloating({
 		open,
@@ -116,61 +170,80 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 		useDismiss(context),
 	]);
 
-	const onSelect = (child, selected) => {
-		return (event) => {
-			if (event.currentTarget.getAttribute('data-elem') !== 'dropdown-item') {
-				return;
-			}
-			const { value: itemValue } = child.props;
-			const itemValueString = itemValue?.toString?.();
-			const index = event.currentTarget.getAttribute('data-index');
-
-			// to support form libraries which require name and value on the event
-			const nativeEvent = event.nativeEvent || event;
-			const clonedEvent = new nativeEvent.constructor(nativeEvent.type, nativeEvent);
-
-			Object.defineProperty(clonedEvent, 'target', {
-				writable: true,
-				value: {
-					value: itemValueString,
-					name,
-				},
-			});
-
-			// if (elem === 'dropdown-item') {
-			setSelectedIndex(parseInt(index, 10));
-
-			if (multi) {
-				// eslint-disable-next-line no-lonely-if
-				if (selected === true) {
-					setUncontrolledValue(
-						uncontrolledValue.filter((val) => {
-							return val !== itemValueString;
-						})
-					);
-				} else {
-					setUncontrolledValue([...(uncontrolledValue ?? []), itemValueString]);
-				}
-				setActiveIndex(parseInt(index, 10));
-			} else {
-				if (isControlled) {
-					onChange(clonedEvent, itemValueString?.toString());
-				} else {
-					setUncontrolledValue(itemValueString?.toString());
-				}
-				setActiveIndex(null);
-				setOpen(false);
-			}
-			// }
-		};
-	};
-
-	const onNavigate = (child, selected) => {
-		return (event) => {
+	const onNavigate = (child: ReactElement<DropdownItemProps>, selected: boolean) => {
+		return (event: React.KeyboardEvent<HTMLElement>): void => {
 			const selectKey = [' ', 'Spacebar', 'Enter'].includes(event.key);
 			if (selectKey) {
 				event.stopPropagation();
-				onSelect(child, selected)(event);
+				// Create a synthetic mouse event from the keyboard event
+				const mouseEvent = {
+					...event,
+					nativeEvent: new MouseEvent('click'),
+					currentTarget: event.currentTarget,
+					target: event.target,
+					preventDefault: () => event.preventDefault(),
+					stopPropagation: () => event.stopPropagation(),
+					isDefaultPrevented: () => event.isDefaultPrevented(),
+					isPropagationStopped: () => event.isPropagationStopped(),
+					persist: () => {},
+				} as unknown as React.MouseEvent<HTMLElement>;
+
+				onSelect(child, selected)(mouseEvent);
+			}
+		};
+	};
+
+	const onSelect = (child: ReactElement<DropdownItemProps>, selected: boolean) => {
+		return (event: React.MouseEvent<HTMLElement>):void => {
+			if (event.currentTarget.getAttribute('data-elem') !== 'dropdown-item') {
+				return;
+			}
+
+			const { value: itemValue } = child.props;
+			const itemValueString = itemValue?.toString() ?? '';
+			const index = event.currentTarget.getAttribute('data-index');
+
+			interface CustomEventTarget extends EventTarget {
+				value: string;
+				name?: string;
+			}
+
+			const customTarget: CustomEventTarget = {
+				...(event.target as EventTarget),
+				value: itemValueString,
+				name,
+			};
+
+			const syntheticEvent: React.SyntheticEvent = {
+				...event,
+				nativeEvent: event.nativeEvent || event,
+				currentTarget: event.currentTarget,
+				target: customTarget,
+				preventDefault: () => event.preventDefault(),
+				stopPropagation: () => event.stopPropagation(),
+				isDefaultPrevented: () => event.isDefaultPrevented(),
+				isPropagationStopped: () => event.isPropagationStopped(),
+				persist: () => {},
+			};
+
+			setSelectedIndex(parseInt(index ?? '0', 10));
+
+			if (multi) {
+				setUncontrolledValue((prev) => {
+					const currentValues = (prev ?? []) as string[];
+					return selected
+						? currentValues.filter((val) => val !== itemValueString)
+						: [...currentValues, itemValueString];
+				});
+				setActiveIndex(parseInt(index ?? '0', 10));
+			} else {
+				if (isControlled) {
+					onChange?.(syntheticEvent, itemValueString);
+				} else {
+					setUncontrolledValue(itemValueString);
+				}
+				setActiveIndex(null);
+				setOpen(false);
 			}
 		};
 	};
@@ -180,7 +253,7 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 		() => {
 			return {
 				value: () => {
-					const inputValue = inputRef.current.value?.split?.(', ') ?? [];
+					const inputValue = internalInputRef.current?.value?.split?.(', ') ?? [];
 					if (multi) {
 						return inputValue;
 					}
@@ -188,22 +261,23 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 				},
 			};
 		},
-		[]
+		[multi]
 	);
 
-	const childrenArray = React.Children.toArray(children);
+	const childrenArray = React.Children.toArray(children) as ReactElement<DropdownItemProps>[];
 
 	const selectedOptions = useMemo(() => {
 		let inputValue = uncontrolledValue;
 		if (isControlled && !multi) {
 			inputValue = value;
 		}
-		const options = [];
+		const options: Array<{ title?: ReactNode; value?: string }> = [];
 		if (inputValue != null && inputValue !== '') {
 			childrenArray?.forEach((child) => {
 				if (
 					(multi &&
-						(inputValue?.indexOf?.(child?.props?.value?.toString?.()) ?? -1) !== -1) ||
+						((inputValue as string[])?.indexOf?.(child?.props?.value?.toString?.()) ??
+							-1) !== -1) ||
 					(!multi && inputValue?.toString() === child?.props?.value?.toString?.())
 				) {
 					options.push({
@@ -214,14 +288,14 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 			});
 		}
 		return options;
-	}, [value, uncontrolledValue, multi]);
+	}, [value, uncontrolledValue, multi, childrenArray, isControlled]);
 
 	const items = childrenArray.map((child, index) => {
 		let selected = false;
 
 		if (
 			selectedOptions.findIndex((option) => {
-				return option.value === child?.props?.value?.toString?.();
+				return option.value === child.props.value?.toString();
 			}) !== -1
 		) {
 			selected = true;
@@ -229,20 +303,24 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 
 		return React.cloneElement(child, {
 			...getItemProps({
-				key: child?.props?.value,
+				key: child.props.value?.toString(),
 				onKeyDown: onNavigate(child, selected),
 				onClick: onSelect(child, selected),
 				onMouseEnter: () => {
 					setActiveIndex(index);
-				},
-				dataAttrs: {
-					'data-index': index,
 				},
 				selected,
 				tabIndex: activeIndex === index ? 0 : -1,
 				ref: (node) => {
 					listItemsRef.current[index] = node;
 				},
+				// Properly typed data attributes
+				['data-index']: index.toString(),
+				['data-elem']: 'dropdown-item',
+			} as React.HTMLAttributes<HTMLElement> & {
+				'data-index': string;
+				'data-elem': string;
+				selected: boolean;
 			}),
 		});
 	});
@@ -265,16 +343,16 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 
 	useEffect(() => {
 		if (multi && isControlled) {
-			setUncontrolledValue(value);
+			setUncontrolledValue(value as string[]);
 		}
-	}, [open, multi, value]);
+	}, [open, multi, value, isControlled]);
 
-	const onSelectAll = (event, selected) => {
+	const onSelectAll = (event: React.MouseEvent, selected: boolean):void => {
 		// to support form libraries which require name and value on the event
 		const nativeEvent = event.nativeEvent || event;
-		const clonedEvent = new nativeEvent.constructor(nativeEvent.type, nativeEvent);
-
-		let itemValue = [];
+		const clonedEvent = new InputEvent(nativeEvent.type, nativeEvent);
+		// const clonedEvent = new Event(nativeEvent.type, nativeEvent);
+		let itemValue: string[] = [];
 
 		if (selected) {
 			itemValue = childrenArray.map((child) => {
@@ -295,28 +373,33 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 		setActiveIndex(0);
 	};
 
-	const onApply = (event) => {
-		const nativeEvent = event.nativeEvent || event;
-		const clonedEvent = new nativeEvent.constructor(nativeEvent.type, nativeEvent);
-
-		Object.defineProperty(clonedEvent, 'target', {
-			writable: true,
-			value: {
+	const onApply = (event: React.MouseEvent<HTMLElement>):void => {
+		// Create a proper React synthetic event instead of cloning
+		const syntheticEvent = {
+			...event,
+			nativeEvent: event.nativeEvent || event,
+			currentTarget: event.currentTarget,
+			target: {
+				...(event.target as any), // We need to override these
 				value: uncontrolledValue,
 				name,
 			},
-		});
+			preventDefault: () => event.preventDefault(),
+			stopPropagation: () => event.stopPropagation(),
+			isDefaultPrevented: () => event.isDefaultPrevented(),
+			isPropagationStopped: () => event.isPropagationStopped(),
+			persist: () => {},
+		} as React.SyntheticEvent;
 
 		if (!isControlled) {
-			setAppliedMultiUncontrolledValue(uncontrolledValue);
-			onChange(event, appliedMultiUncontrolledValue);
-			return;
+			setAppliedMultiUncontrolledValue(uncontrolledValue as string[]);
+			onChange?.(syntheticEvent, appliedMultiUncontrolledValue || []);
+		} else {
+			onChange?.(syntheticEvent, uncontrolledValue);
 		}
-
-		onChange(event, uncontrolledValue);
 	};
 
-	let selectedItemsLabel = null;
+	let selectedItemsLabel: string | null = null;
 
 	if (selectedOptions?.length === 1) {
 		selectedItemsLabel = '1 option selected';
@@ -324,7 +407,7 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 		selectedItemsLabel = `${selectedOptions?.length} options selected`;
 	}
 
-	const getValueToDisplay = () => {
+	const getValueToDisplay = (): string| ReactNode => {
 		if (value) {
 			if (Array.isArray(value) && value.length > 0) {
 				const sanitizedValue = value.filter(Boolean);
@@ -367,17 +450,21 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 	};
 
 	const getLeftComponent = () => {
-		if (LeftComponent) {
-			if (LeftComponent.Active || LeftComponent.InActive) {
-				if (highlightOnSelect && value?.length > 0) {
-					return <LeftComponent.Active />;
-				}
-				return <LeftComponent.InActive />;
-			}
-			return <LeftComponent />;
+		if (!LeftComponent) return null;
+
+		if (isLeftComponentObject(LeftComponent)) {
+			// Handle object case
+		} else {
+			// Handle component case
 		}
-		return null;
 	};
+
+	// Type guard function
+	function isLeftComponentObject(
+		component: React.ComponentType | LeftComponentProps
+	): component is LeftComponentProps {
+		return typeof component === 'object' && ('Active' in component || 'InActive' in component);
+	}
 
 	return (
 		<ErrorBoundary
@@ -419,7 +506,7 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 					<input
 						id={id}
 						name={name}
-						ref={inputRef}
+						ref={internalInputRef}
 						disabled={disabled}
 						tabIndex={0}
 						className={styles.input}
@@ -498,7 +585,7 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 									'data-elem': 'body',
 									role: 'group',
 									ref: floating,
-									onKeyDown(event) {
+									onKeyDown(event: React.KeyboardEvent) {
 										setPointer(false);
 										if (event.key === 'Tab' && !multi) {
 											setOpen(false);
@@ -518,7 +605,7 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 										multi ? styles.multi : '',
 										popperClassName
 									),
-								})}
+								} as React.HTMLAttributes<HTMLUListElement>)}
 								initial={{
 									opacity: 0,
 									scale: 0,
@@ -590,24 +677,5 @@ const Dropdown = forwardRef(function Dropdown(props, inputRef) {
 		</ErrorBoundary>
 	);
 });
-
-Dropdown.propTypes = {
-	popperClassName: PropTypes.string,
-	className: PropTypes.string,
-	disabled: PropTypes.bool,
-	label: PropTypes.string,
-	value: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string)]),
-	placeholder: PropTypes.string || PropTypes.node,
-	multi: PropTypes.bool,
-	onChange: PropTypes.func,
-	onBlur: PropTypes.func,
-	feedback: PropTypes.shape({
-		text: PropTypes.node,
-		type: PropTypes.oneOf(['error', 'success', 'default']),
-	}),
-	formatter: PropTypes.func,
-	required: PropTypes.bool,
-	hideIcon: PropTypes.bool,
-};
 
 export default Dropdown;

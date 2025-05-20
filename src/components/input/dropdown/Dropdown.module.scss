@@ -9,8 +9,7 @@
 
 	.label {
 		font-size: 0.75rem;
-		color: $grey;
-		width: auto;
+		color: $text-color;
 		&.required {
 			&::after {
 				content: ' *';
@@ -21,8 +20,42 @@
 
 	.header {
 		@include flex(row, flex-start);
+		box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25);
 		max-width: 100%;
+		border-radius: 0.25rem;
 		position: relative;
+
+		&.highlightOnSelect {
+			[data-elem='select'] {
+				background-color: $background-color5;
+				color: $secondary-color2;
+				// to match all texts below
+				* {
+					color: $secondary-color2;
+				}
+				.icon-bundle {
+					.caret-icon {
+						fill: $secondary-color2 !important;
+					}
+					.caret-icon-upDown {
+						fill: transparent;
+						> path {
+							stroke: $secondary-color2;
+						}
+					}
+				}
+			}
+		}
+
+		&.open {
+			outline: 1px solid $secondary-color2;
+			transition: outline 100ms ease-in-out;
+		}
+
+		&.error {
+			border: 1px solid $primary-color1;
+			border-radius: 0.3125rem;
+		}
 		.input {
 			position: absolute;
 			opacity: 0;
@@ -41,28 +74,62 @@
 			width: 25rem;
 			max-width: 100%;
 			gap: 0.5rem;
-			background: $light-color3;
 			outline: none;
 			border-radius: 0.3125rem;
-			border: 0.0625rem solid #dfe0e2;
 			padding: 0.75rem 0.75rem 0.75rem 1rem;
+			background: $light-color3;
 			cursor: pointer;
 			font-weight: 500;
 			@include ellipsis;
-
 			.placeholder {
 				@include ellipsis;
 				color: $text-color;
 			}
 
+			.info-icon {
+				@include flex(row, space-between);
+			}
+			.icon-bundle {
+				@include flex(row, space-between);
+				gap: 1rem;
+				.caret-icon {
+					width: 1.5rem;
+					height: 1.5rem;
+					transition: transform 0.5s;
+					fill: $text-color !important;
+					@include flex(row, space-between);
+					transform: rotate(180deg);
+					&.open {
+						transform: rotate(0deg);
+					}
+				}
+				.caret-icon-upDown {
+					width: 1.5rem;
+					height: 1.5rem;
+					transition: transform 0.5s;
+					fill: transparent !important;
+					@include flex(row, space-between);
+					transform: rotate(180deg);
+					> path {
+						stroke: $text-color;
+					}
+					&.open {
+						transform: rotate(0deg);
+					}
+				}
+				.info-icon {
+					path {
+						stroke: $primary-color1;
+					}
+				}
+			}
 			.icon {
 				width: 1.5rem;
 				height: 1.5rem;
 				transition: transform 0.5s;
 				fill: $text-color !important;
-				transform: rotate(180deg);
 				&.open {
-					transform: rotate(0deg);
+					transform: rotate(180deg);
 				}
 			}
 
@@ -84,40 +151,6 @@
 			cursor: not-allowed;
 		}
 	}
-
-	.bottom {
-		@include flex(row, space-between, flex-start);
-		min-height: 2rem;
-		width: 100%;
-		gap: 1rem;
-		color: $grey3;
-		font-size: 0.75rem;
-		user-select: none;
-
-		.feedback {
-			flex: 1;
-			margin-right: auto;
-
-			&.feedback-error {
-				color: $primary-color1;
-				fill: $primary-color1;
-			}
-
-			&.feedback-success {
-				color: $primary-color2;
-				fill: $primary-color2;
-			}
-		}
-
-		.count {
-			text-align: right;
-			margin-left: auto;
-
-			&.exceeded {
-				color: $primary-color1;
-			}
-		}
-	}
 }
 
 .body {
@@ -127,21 +160,67 @@
 	background: $light-color3;
 	width: auto;
 	border-radius: 0.3125rem;
-	border: 0.0625rem solid $light-color2;
-	@include boxShadow;
-	padding: 1rem;
+	padding: 1.25rem 0rem 1.25rem 0rem;
 	overflow-y: auto;
+	@include removeScrollbar;
 	min-height: 4rem;
+	max-height: 25rem !important;
 	outline: none;
+	box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+
+	&.multi {
+		padding-top: 0 !important;
+		padding-bottom: 0 !important;
+		li {
+			&:nth-child(1) {
+				padding-left: 1.875rem;
+			}
+		}
+	}
 
 	.multi-options {
 		@include flex(row, space-between);
-		margin-bottom: 0.5rem;
+		position: sticky;
+		top: 0;
+		background-color: $light-color3;
+		padding-inline: 1.25rem;
+		padding-block: 0.25rem;
 		list-style: none;
+		button[data-elem='base-cell'].button[type='button'] {
+			width: auto;
+			padding: 0% !important;
+			background-color: transparent;
+			color: $secondary-color2;
+			> [data-elem='component2'] {
+				margin-left: 0.3125rem;
+			}
+		}
+		.items {
+			font-size: 0.875rem;
+			font-weight: 500;
+			color: $text-color;
+		}
 	}
 
-	.multi-apply {
-		margin-top: 0.5rem;
+	.footer {
+		@include flex(row, space-between);
+		list-style: none;
+		gap: 2.5rem;
+		position: sticky;
+		background-color: $light-color3;
+		padding: 0rem 1rem 1rem;
+		bottom: 0;
+		button[data-elem='base-cell'].multi-apply[type='submit'] {
+			flex: 1;
+		}
+		button[data-elem='base-cell'].multi-clear[type='submit'] {
+			background-color: $light-color2;
+			color: $mono-color1;
+			flex: 1;
+			&:hover {
+				background-color: $light-color1;
+			}
+		}
 	}
 
 	&.open {
