@@ -1,9 +1,9 @@
+/* eslint-disable max-len */
 import React, { createElement, forwardRef, useRef, useState } from 'react';
 import { mergeRefs } from 'react-merge-refs';
 import { classes, inputHelper } from '../../../utils/utils';
 import { Button } from '../../buttons';
 import { BaseCell } from '../../cell';
-import { ErrorBoundaryWrapper } from '../../errorBoundary';
 import {
 	EmailIcon,
 	HidePasswordIcon,
@@ -12,9 +12,8 @@ import {
 	UnlockPasswordIcon,
 	ViewPasswordIcon,
 } from '../../icons';
-import { Popover } from '../../popover';
 import { Tooltip } from '../../tooltip';
-import styles from './TextFieldv2.module.css';
+import styles from './TextField.module.css';
 
 interface Feedback {
 	error?: string;
@@ -22,24 +21,11 @@ interface Feedback {
 	type?: 'error' | 'success' | 'default';
 }
 
-interface AutocompleteOptions {
-	open: boolean;
-	setOpen: (open: boolean) => void;
-	render: React.ComponentType<{ name: string; value: string | number }>;
-	predicate?: (inputString: string) => boolean;
-	placement?: string;
-	middlewareOptions?: {
-		offset: { [key: string]: any };
-		shift: { [key: string]: any };
-		flip: { [key: string]: any };
-	};
-}
-
 interface TextFieldProps {
 	id?: string;
 	name?: string;
 	label?: string | number;
-	placeholder?: string; // changed to string only
+	placeholder?: string;
 	type?: React.HTMLInputTypeAttribute | 'textarea';
 	value?: string | number;
 	defaultValue?: string;
@@ -52,22 +38,14 @@ interface TextFieldProps {
 	) => void;
 	size?: 'sm' | 'md' | 'lg';
 	border?: 'default' | 'bottom' | 'none';
-	theme?: 'light' | 'dark';
-	LeftComponent?: React.ElementType; // changed to ElementType
-	RightComponent?: React.ElementType; // changed to ElementType
+	LeftComponent?: React.ElementType;
+	RightComponent?: React.ElementType;
 	className?: string;
 	disabled?: boolean;
 	inputProps?: React.InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement>;
 	feedback?: Feedback;
 	maxLength?: number;
 	onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
-	autocomplete?: boolean;
-	autocompleteOptions?: AutocompleteOptions;
-	custom?: boolean;
-	count?: {
-		limit: number;
-	};
-	feedbackAndCount?: boolean;
 }
 
 const TextField = forwardRef<HTMLInputElement | HTMLTextAreaElement, TextFieldProps>(
@@ -86,7 +64,6 @@ const TextField = forwardRef<HTMLInputElement | HTMLTextAreaElement, TextFieldPr
 			onChange = () => {},
 			size = 'md',
 			border = 'default',
-			theme = 'light',
 			LeftComponent,
 			RightComponent,
 			className,
@@ -95,9 +72,6 @@ const TextField = forwardRef<HTMLInputElement | HTMLTextAreaElement, TextFieldPr
 			feedback,
 			maxLength,
 			onKeyDown = () => {},
-			autocomplete,
-			autocompleteOptions = {} as AutocompleteOptions,
-			custom,
 		} = props;
 
 		const { current: isControlled } = useRef(value !== undefined);
@@ -105,20 +79,8 @@ const TextField = forwardRef<HTMLInputElement | HTMLTextAreaElement, TextFieldPr
 		const [uncontrolledValue, setUncontrolledValue] = useState<string>(defaultValue);
 		const [inputType, setInputType] = useState<string>(type ?? 'textarea');
 
-		const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
-
-		const checkAndOpenAutocomplete = (inputString: string) => {
-			if (autocomplete) {
-				autocompleteOptions?.setOpen?.(
-					autocompleteOptions?.predicate?.(inputString) ?? inputString?.length > 0
-				);
-			}
-		};
-
 		const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
 			const { fieldValue } = inputHelper(event);
-
-			checkAndOpenAutocomplete(fieldValue);
 
 			if (isControlled) {
 				onChange(event, fieldValue);
@@ -128,7 +90,6 @@ const TextField = forwardRef<HTMLInputElement | HTMLTextAreaElement, TextFieldPr
 		};
 
 		const getLeftComponent = () => {
-			console.log('leftttty');
 			if (type === 'email') {
 				return <EmailIcon className={feedback?.error ? styles.error : ''} />;
 			}
@@ -232,10 +193,13 @@ const TextField = forwardRef<HTMLInputElement | HTMLTextAreaElement, TextFieldPr
 			type: inputType,
 			defaultValue,
 			placeholder,
-			...(maxLength !== undefined ? { maxLength } : {}),
+			...(maxLength !== undefined
+				? {
+						maxLength,
+				  }
+				: {}),
 
 			onFocus: () => {
-				checkAndOpenAutocomplete(String(inputValue));
 				onFocus?.();
 			},
 			onBlur,
@@ -249,14 +213,11 @@ const TextField = forwardRef<HTMLInputElement | HTMLTextAreaElement, TextFieldPr
 			...inputProps,
 		} as React.InputHTMLAttributes<HTMLInputElement> & React.TextareaHTMLAttributes<HTMLTextAreaElement>);
 
-		const AutocompletePopover = autocompleteOptions?.render;
-
 		return (
 			<div className={classes(styles.root, className)}>
 				<label>
 					{label && <span className={required ? styles.required : ''}>{label}</span>}
 					<BaseCell
-						ref={setAnchorEl}
 						className={classes(
 							styles['input-wrapper'],
 							styles[`border-${border}`],
@@ -274,19 +235,6 @@ const TextField = forwardRef<HTMLInputElement | HTMLTextAreaElement, TextFieldPr
 						}
 					/>
 				</label>
-				{autocomplete && (
-					<Popover
-						anchorEl={anchorEl}
-						open={autocompleteOptions?.open}
-						setOpen={autocompleteOptions?.setOpen}
-						theme={theme}
-						placement={autocompleteOptions?.placement}
-						middlewareOptions={autocompleteOptions?.middlewareOptions}>
-						{AutocompletePopover && value !== undefined && (
-							<AutocompletePopover name={name ?? ''} value={value} />
-						)}
-					</Popover>
-				)}
 			</div>
 		);
 	}
