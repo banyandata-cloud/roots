@@ -8,7 +8,7 @@ import {
 import { getUnixTime } from 'date-fns';
 import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useOutsideClickListener } from '../../hooks';
 import { classes } from '../../utils';
@@ -85,7 +85,7 @@ const DatePicker = (props) => {
 
 	const displayValue = getDatePickerDisplayValue({
 		value,
-		rangePicker: range && value?.filter(Boolean)?.length > 0,
+		rangePicker: range && value?.filter?.(Boolean)?.length > 0,
 		singlePicker: !range && value,
 		timeRange,
 		limitHours,

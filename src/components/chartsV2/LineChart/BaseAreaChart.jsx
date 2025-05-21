@@ -76,6 +76,8 @@ const BaseAreaChart = (props) => {
 			'rgba(255, 159, 64, 1)',
 		],
 		style,
+		extra,
+		dataSetOptions,
 	} = props;
 
 	if (loading || fallback) {
@@ -184,6 +186,7 @@ const BaseAreaChart = (props) => {
 				},
 			};
 		}),
+		...dataSetOptions,
 	};
 
 	const chartOptions = {
@@ -351,7 +354,12 @@ const BaseAreaChart = (props) => {
 				alignItems: 'center',
 				...style,
 			}}>
-			<Line data={chartData} options={chartOptions} plugins={[customLegendPlugin]} />
+			<Line
+				data={chartData}
+				options={chartOptions}
+				plugins={[customLegendPlugin]}
+				{...extra}
+			/>
 
 			{legend?.icon && legend?.display && <ul ref={legendRef} style={legendStyle} />}
 		</div>

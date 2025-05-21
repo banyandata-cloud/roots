@@ -94,66 +94,77 @@ The date picker allows to select the range of date from the popever.
 The Date picker with custom dropdown to select the pre-defined ranges.
 
 <Canvas>
-	<Story
-		name='Custom Range Date Picker'
-		args={{
-			placeholder: 'Select Date Range',
-			label: 'Range Date Picker',
-			range: true,
-			theme: 'light',
-			value: [1724437800, 1725128999],
-			onApply: (v) => {
-				console.log(v);
-			},
-			customRanges: [
-				{
-					title: 'Last 12 hours',
-					type: 'hours',
-					value: 12,
-				},
-				{
-					title: 'Last 24 hours',
-					type: 'hours',
-					value: 24,
-				},
-				{
-					title: 'Last 1 Week',
-					type: 'days',
-					value: 7,
-				},
-				{
-					title: 'Last 15 Days',
-					type: 'days',
-					value: 15,
-				},
-				{
-					title: 'Last 1 Month',
-					type: 'days',
-					value: 30,
-				},
-				{
-					title: 'Last 2 Months',
-					type: 'months',
-					value: 2,
-				},
-				{
-					title: 'Last 3 Months',
-					type: 'months',
-					value: 3,
-				},
-				{
-					title: 'Last 6 Months',
-					type: 'months',
-					value: 6,
-				},
-				{
-					title: 'Last 1 Year',
-					type: 'months',
-					value: 12,
-				},
-			],
-		}}>
-		{Template.bind({})}
+	<Story name='Custom Range Date Picker'>
+		{() => {
+			const [value, setValue] = useState(null);
+			return (
+				<ThemedContainer style={{ width: '40rem' }}>
+					<DatePicker
+						{...{
+							placeholder: 'Select Date Range',
+							label: 'Range Date Picker',
+							range: true,
+							theme: 'light',
+							value: value,
+							onApply: (v) => {
+								setValue(v);
+							},
+							onClear: () => {
+								setValue(null);
+							},
+							showCustomRanges: true,
+							customRanges: [
+								{
+									title: 'Last 12 hours',
+									type: 'hours',
+									value: 12,
+								},
+								{
+									title: 'Last 24 hours',
+									type: 'hours',
+									value: 24,
+								},
+								{
+									title: 'Last 1 Week',
+									type: 'days',
+									value: 7,
+								},
+								{
+									title: 'Last 15 Days',
+									type: 'days',
+									value: 15,
+								},
+								{
+									title: 'Last 1 Month',
+									type: 'days',
+									value: 30,
+								},
+								{
+									title: 'Last 2 Months',
+									type: 'months',
+									value: 2,
+								},
+								{
+									title: 'Last 3 Months',
+									type: 'months',
+									value: 3,
+								},
+								{
+									title: 'Last 6 Months',
+									type: 'months',
+									value: 6,
+								},
+								{
+									title: 'Last 1 Year',
+									type: 'months',
+									value: 12,
+								},
+							],
+						}}
+					/>
+				</ThemedContainer>
+			);
+		}}
 	</Story>
 </Canvas>
 
