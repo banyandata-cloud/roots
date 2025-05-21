@@ -1,4 +1,4 @@
-import { createElement, forwardRef, HTMLAttributes, isValidElement } from 'react';
+import { createElement, forwardRef, type HTMLAttributes, isValidElement } from 'react';
 import { classes } from '../../utils';
 import styles from './Text.module.css';
 
