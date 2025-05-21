@@ -1,3 +1,4 @@
+import type { ReactElement } from 'react';
 import { classes, getInitialsOfName } from '../../utils';
 import styles from './DisplayPicture.module.css';
 
@@ -10,7 +11,7 @@ interface DisplayPictureProps {
 	size?: Size;
 }
 
-const DisplayPicture = (props: DisplayPictureProps): React.ReactElement => {
+const DisplayPicture = (props: DisplayPictureProps): ReactElement => {
 	const { name = '', className = '', url = '', size = 'sm' } = props;
 
 	return (
