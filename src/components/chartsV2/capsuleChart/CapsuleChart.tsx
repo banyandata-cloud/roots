@@ -2,16 +2,16 @@
 import {
 	BarElement,
 	CategoryScale,
-	ChartData,
-	ChartEvent,
+	type ChartData,
+	type ChartEvent,
 	Chart as ChartJS,
-	ChartOptions,
+	type ChartOptions,
 	Legend,
 	LinearScale,
-	ScriptableContext,
+	type ScriptableContext,
 	Title,
 	Tooltip,
-	TooltipItem,
+	type TooltipItem,
 } from 'chart.js';
 import annotationPlugin from 'chartjs-plugin-annotation';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
