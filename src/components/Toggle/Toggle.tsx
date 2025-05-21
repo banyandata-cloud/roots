@@ -35,12 +35,12 @@ const Toggle = ({
 	smooth,
 	secondary,
 }: ToggleProps): React.ReactElement => {
-	const [sliderLeft, setSliderLeft] = useState(0);
-	const [sliderWidth, setSliderWidth] = useState(0);
+	const [sliderLeft, setSliderLeft] = useState<Number>(0);
+	const [sliderWidth, setSliderWidth] = useState<Number>(0);
 
 	const sliderRef = useRef<HTMLButtonElement | null>(null);
 
-	const updateSliderPosition = () => {
+	const updateSliderPosition = (): void => {
 		const activeTabElement = sliderRef.current;
 		if (activeTabElement) {
 			setSliderLeft(activeTabElement.offsetLeft);
@@ -60,7 +60,7 @@ const Toggle = ({
 	const allSelected =
 		multi && Array.isArray(inputValue) ? options.length === inputValue.length : false;
 
-	const onButtonClick = (newValue: string, selected: boolean) => {
+	const onButtonClick = (newValue: string, selected: boolean): void => {
 		if (multi) {
 			const currentValue = inputValue as string[];
 
@@ -81,7 +81,7 @@ const Toggle = ({
 		}
 	};
 
-	const compareSelection = (input: string | string[], item: string) => {
+	const compareSelection = (input: string | string[], item: string): boolean => {
 		if (Array.isArray(input)) {
 			return input.includes(item);
 		}
