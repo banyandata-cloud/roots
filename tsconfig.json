@@ -43,7 +43,7 @@
 
 		/* Module Resolution Options */
 		"moduleResolution": "node" /* Specify module resolution strategy */,
-		"baseUrl": "./src" /* Base directory to resolve non-absolute module names */,
+		"baseUrl": "." /* Base directory to resolve non-absolute module names */,
 		"paths": {
 			"@/*": ["src/*"] /* Path mapping for src imports */,
 			"@types/*": ["types/*"] /* Path mapping for types folder */
@@ -59,7 +59,7 @@
 		"verbatimModuleSyntax": true /* Use 'import type' and 'export type' */,
 		"exactOptionalPropertyTypes": true /* Interpret optional property types as written */
 	},
-	"include": ["src/**/*.ts", "src/**/*.tsx", "types/**/*.ts", "types/**/*.d.ts"],
+	"include": ["src/**/*", "src/**/*", "types/**/*.ts", "types/**/*.d.ts", "*.js"],
 	"exclude": [
 		"node_modules",
 		"dist",
@@ -67,6 +67,7 @@
 		"**/*.test.tsx",
 		".storybook",
 		"**/*.stories.tsx",
-		"**/*.stories.ts"
+		"**/*.stories.ts",
+		"*.js"
 	]
 }
