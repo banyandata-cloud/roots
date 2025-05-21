@@ -47,6 +47,8 @@ export default [
 			typescript({
 				tsconfig: './tsconfig.json',
 				declaration: false,
+				declarationDir: 'dist/esm',
+				rootDir: 'src',
 			}),
 			pluginBabel({
 				extensions: ['.jsx', '.js', '.tsx', '.ts'],
