@@ -66,8 +66,7 @@
 		"**/*.test.ts",
 		"**/*.test.tsx",
 		".storybook",
-		"**/*.stories.tsx",
-		"**/*.stories.ts",
+		"**/*.stories.mdx",
 		"*.js"
 	]
 }
