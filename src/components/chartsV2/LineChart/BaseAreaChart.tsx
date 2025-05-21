@@ -111,6 +111,7 @@ const BaseAreaChart: React.FC<ChartProps> = (props): React.ReactElement => {
 		],
 		style,
 		extra,
+		dataSetOptions,
 	} = props;
 
 	const legendRef = useRef<HTMLUListElement | null>(null);
@@ -183,22 +184,27 @@ const BaseAreaChart: React.FC<ChartProps> = (props): React.ReactElement => {
 
 	const chartData: ChartData<'line'> = {
 		labels: seriesData?.metaData?.xAxisData ?? [],
-		datasets: Object.keys(seriesData?.chartData ?? {}).map((key, index) => ({
-			label: key,
-			data: seriesData.chartData[key] ?? [],
-			fill: !isLineChart,
-			backgroundColor: isLineChart ? 'transparent' : lineColors[index % lineColors.length],
-			borderColor: borderColors[index % borderColors.length],
-			tension: smooth ? 0.4 : 0,
-			borderWidth: chartOptionsProps?.borderWidth ?? 2,
-			pointRadius: chartOptionsProps?.pointRadius ?? 4,
-			pointHoverRadius: chartOptionsProps?.pointHoverRadius ?? 6,
-			pointBackgroundColor: borderColors[index % borderColors.length],
-			pointStyle: chartOptionsProps?.pointStyle ?? 'rectRot',
-			datalabels: {
-				display: false,
-			},
-		})),
+		datasets: Object.keys(seriesData?.chartData ?? {}).map((key, index) => {
+			return {
+				label: key,
+				data: seriesData?.chartData[key] ?? [],
+				fill: !isLineChart,
+				backgroundColor: isLineChart
+					? 'transparent'
+					: lineColors[index % lineColors.length],
+				borderColor: borderColors[index % borderColors.length],
+				tension: smooth ? 0.4 : 0,
+				borderWidth: chartOptionsProps?.borderWidth ?? 2,
+				pointRadius: chartOptionsProps?.pointRadius ?? 4,
+				pointHoverRadius: chartOptionsProps?.pointHoverRadius ?? 6,
+				pointBackgroundColor: borderColors[index % borderColors.length],
+				pointStyle: chartOptionsProps?.pointStyle ?? 'rectRot',
+				datalabels: {
+					display: false, // Disable data labels on points
+				},
+			};
+		}),
+		...dataSetOptions,
 	};
 
 	const chartOptions: ChartOptions<'line'> = {
