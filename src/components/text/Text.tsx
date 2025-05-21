@@ -1,4 +1,11 @@
-import { createElement, forwardRef, type HTMLAttributes, isValidElement } from 'react';
+import {
+	createElement,
+	forwardRef,
+	type HTMLAttributes,
+	isValidElement,
+	type ReactElement,
+	type ReactNode,
+} from 'react';
 import { classes } from '../../utils';
 import styles from './Text.module.css';
 
@@ -14,12 +21,12 @@ interface TextProps {
 	weight?: FontWeight;
 	italic?: boolean;
 	underline?: boolean;
-	children?: React.ReactNode;
+	children?: ReactNode;
 	className?: string;
 	attrs?: HTMLAttributes<HTMLElement>;
 }
 
-const Text = forwardRef<HTMLElement, TextProps>((props, ref): React.ReactElement | null => {
+const Text = forwardRef<HTMLElement, TextProps>((props, ref): ReactElement | null => {
 	const {
 		variant = 'b2',
 		component = 'span',
