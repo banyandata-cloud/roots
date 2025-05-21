@@ -1,7 +1,7 @@
 /* eslint-disable react/require-default-props */
 /* eslint-disable no-nested-ternary */
 import PropTypes from 'prop-types';
-import React, { forwardRef, useEffect, useReducer, useRef, useState } from 'react';
+import { forwardRef, useEffect, useReducer, useRef, useState } from 'react';
 import { classes } from '../../utils';
 import { Button } from '../buttons';
 import { BaseCell } from '../cell';
@@ -134,8 +134,6 @@ export const usePagination = (props) => {
 		totalData,
 	});
 
-	console.log(paginationState, totalPages, currentPage);
-
 	useEffect(() => {
 		if (paginationState.currentPage > totalPages && totalPages != null) {
 			paginationDispatch({
@@ -193,11 +191,11 @@ export const Pagination = forwardRef((props, ref) => {
 				total: hideDisabledPages ? newCustomPageList?.length : totalPages,
 				hideDisabledPages,
 				customPageList: hideDisabledPages ? newCustomPageList : customPageList,
-		  })
+			})
 		: new PaginationList({
 				curr: currentPage === 0 ? 1 : currentPage,
 				total: totalPages,
-		  });
+			});
 
 	let activePage = 0;
 
@@ -368,13 +366,13 @@ export const Pagination = forwardRef((props, ref) => {
 									currentPage === 0 || currentPage === 1
 										? activeCutomPage === page.number
 										: currentPage === page.number &&
-										  newCustomPageList?.[page.number - 1]?.enable;
+											newCustomPageList?.[page.number - 1]?.enable;
 							} else {
 								active =
 									currentPage === 0 || currentPage === 1
 										? activePage === page.number
 										: currentPage === page.number &&
-										  customPageList?.[page.number - 1]?.enable;
+											customPageList?.[page.number - 1]?.enable;
 							}
 
 							return (
@@ -413,14 +411,14 @@ export const Pagination = forwardRef((props, ref) => {
 												? styles.disabled
 												: null
 											: !customPageList[page.number - 1]?.enable
-											? styles.disabled
-											: null
+												? styles.disabled
+												: null
 									)}>
 									{page.ellipsis
 										? '...'
 										: hideDisabledPages
-										? newCustomPageList[page.number - 1]?.label
-										: customPageList[page.number - 1]?.label}
+											? newCustomPageList[page.number - 1]?.label
+											: customPageList[page.number - 1]?.label}
 								</span>
 							);
 						})}

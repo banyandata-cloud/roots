@@ -32,6 +32,7 @@ const BasePieChart = (props) => {
 		strip,
 		doughnut = ['90%', '0%'],
 		hoverBorderWidth,
+		dataSetOptions,
 		extra,
 	} = props;
 
@@ -121,6 +122,7 @@ const BasePieChart = (props) => {
 				},
 				radius: doughnut?.[0] ?? '100%',
 				cutout: doughnut?.[1] ?? '0%',
+				...dataSetOptions,
 			},
 		],
 	};
@@ -397,12 +399,18 @@ const BasePieChart = (props) => {
 				const isGreyedOut = hoveredIndex !== null && hoveredIndex !== index;
 				const displayColor = isGreyedOut ? '#D3D3D3' : sliceColor;
 
+				const value = chart.data.datasets[0].data[index];
+
 				li.innerHTML = `
-				<svg width="15" height="15" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-					<circle cx="15" cy="15" r="12" stroke="${displayColor}" stroke-width="6"/>
-				</svg>
-				<span style="margin-left: 10px;">${label}</span>
-			`;
+					<svg width="15" height="15" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<circle cx="15" cy="15" r="12" stroke="${displayColor}" stroke-width="6"/>
+					</svg>
+					
+					<span style="margin-left: 10px;">
+						<span>${label}</span>
+						<span style="margin-left: 14px;">${value}</span>
+					</span>
+				`;
 
 				ul.appendChild(li);
 			});

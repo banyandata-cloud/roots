@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { classes, inputHelper } from '../../../../utils';
 import { Button } from '../../../buttons';
 import { BaseCell } from '../../../cell';
-import { ColumnFilter, CrossIcon, FilterIcon, SearchIcon } from '../../../icons';
+import { ArrowIcon, ColumnFilter, CrossIcon, FilterIcon, SearchIcon } from '../../../icons';
 import { DropdownItemv2, Dropdownv2, TextFieldv2 } from '../../../input';
 import { Text } from '../../../text';
 import styles from './TableFilters.module.css';
@@ -18,7 +18,6 @@ const TableFilters = (props) => {
 		disabledFilterOptions = {},
 		tableTitleText = '',
 		tableDescriptionText = '',
-		customSearchIcon: CustomSearchIcon,
 		onSearch = () => {},
 		onClear,
 		searchPlaceholder = '',
@@ -98,15 +97,9 @@ const TableFilters = (props) => {
 								const { fieldValue } = inputHelper(e);
 								setSearch(fieldValue);
 							}}
-							{...(CustomSearchIcon && {
-								LeftComponent: () => {
-									return (
-										<CustomSearchIcon
-											className={styles['custom-search-icon']}
-										/>
-									);
-								},
-							})}
+							LeftComponent={() => {
+								return <SearchIcon className={styles.icon} />;
+							}}
 						/>
 						<Button
 							className={classes(styles['search-button'], onClear && styles.clear)}
@@ -123,7 +116,7 @@ const TableFilters = (props) => {
 									return <CrossIcon className={styles.icon} />;
 								}
 
-								return <SearchIcon className={styles.icon} />;
+								return <ArrowIcon className={classes(styles.icon, styles.arrow)} />;
 							}}
 						/>
 					</>
