@@ -1,4 +1,4 @@
-export const MONTHS = [
+export const MONTHS: string[] = [
 	'Jan',
 	'Feb',
 	'Mar',
@@ -13,7 +13,7 @@ export const MONTHS = [
 	'Dec',
 ];
 
-export const FULL_MONTHS = [
+export const FULL_MONTHS: string[] = [
 	'January',
 	'February',
 	'March',
@@ -28,4 +28,4 @@ export const FULL_MONTHS = [
 	'December',
 ];
 
-export const DAYS = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
+export const DAYS: string[] = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];

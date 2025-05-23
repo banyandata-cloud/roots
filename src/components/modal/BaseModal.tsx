@@ -1,6 +1,4 @@
 /* eslint-disable no-nested-ternary */
-/* eslint-disable react/forbid-prop-types */
-/* eslint-disable max-len */
 import {
 	FloatingFocusManager,
 	useDismiss,
@@ -8,15 +6,29 @@ import {
 	useInteractions,
 } from '@floating-ui/react-dom-interactions';
 import { AnimatePresence, motion } from 'framer-motion';
-import PropTypes from 'prop-types';
 import { classes } from '../../utils';
 import { Button } from '../buttons';
 import { CrossIcon } from '../icons';
 import { Popper } from '../popper';
 import { Text } from '../text';
 import styles from './BaseModal.module.css';
+import type { ReactElement } from 'react';
 
-const footerAnimations = {
+interface FooterAnimations {
+	initial: {
+		opacity: number;
+		y: string;
+	};
+	animate: {
+		opacity: number;
+		y: number;
+	};
+	transition: {
+		duration: number;
+	};
+}
+
+const footerAnimations: FooterAnimations = {
 	initial: {
 		opacity: 0,
 		y: '50%',
@@ -30,20 +42,44 @@ const footerAnimations = {
 	},
 };
 
-const ModalHeader = ({ title, description }) => {
+interface ModalHeaderProps {
+	title: string;
+	description?: string | undefined;
+}
+
+const MotionFooter = motion.footer as React.FC<
+	React.HTMLAttributes<HTMLElement> & import('framer-motion').MotionProps
+>;
+
+const ModalHeader = ({ title, description }: ModalHeaderProps): ReactElement => {
 	return (
 		<>
 			<Text component='h2' variant='h2' weight={600}>
 				{title}
 			</Text>
-			<Text component='span' variant='b1' weight={400}>
-				{description}
-			</Text>
+			{description && (
+				<Text component='span' variant='b1' weight={400}>
+					{description}
+				</Text>
+			)}
 		</>
 	);
 };
 
-const ModalFooter = (props) => {
+interface ModalFooterProps {
+	actionTitle?: string;
+	disabled?: {
+		action?: boolean;
+		cancel?: boolean;
+	};
+	cancelTitle?: string;
+	onAction?: () => void;
+	onDismiss?: () => void;
+	toggle?: (open: boolean) => void;
+	loading?: boolean;
+}
+
+const ModalFooter = (props: ModalFooterProps): ReactElement => {
 	const {
 		actionTitle = 'Save',
 		disabled = {},
@@ -52,7 +88,7 @@ const ModalFooter = (props) => {
 		onDismiss,
 		toggle,
 		loading,
-	} = props ?? {};
+	} = props;
 
 	const handleAction = () => {
 		if (loading) {
@@ -63,7 +99,7 @@ const ModalFooter = (props) => {
 
 	const handleDismiss = () => {
 		onDismiss?.();
-		toggle?.();
+		toggle?.(false);
 	};
 
 	return (
@@ -72,19 +108,41 @@ const ModalFooter = (props) => {
 				className={styles.dismiss}
 				title={cancelTitle}
 				onClick={handleDismiss}
-				disabled={disabled.cancel}
+				disabled={disabled?.cancel}
 			/>
 			<Button
 				className={styles.action}
 				title={actionTitle}
 				onClick={handleAction}
-				disabled={disabled.action}
+				disabled={disabled?.action}
 			/>
 		</>
 	);
 };
 
-const DEFAULT_ANIMATION_PROPS = {
+interface AnimationProps {
+	initial: {
+		opacity: number;
+		scale: number;
+		x: string;
+		y: string;
+	};
+	animate: {
+		opacity: number;
+		scale: number;
+		x: string;
+		y: string;
+	};
+	exit: {
+		scale: number;
+		opacity: number;
+	};
+	transition: {
+		duration: number;
+	};
+}
+
+const DEFAULT_ANIMATION_PROPS: AnimationProps = {
 	initial: {
 		opacity: 0,
 		scale: 0,
@@ -106,6 +164,23 @@ const DEFAULT_ANIMATION_PROPS = {
 	},
 };
 
+interface BaseModalProps {
+	className?: string;
+	title?: string;
+	description?: string;
+	popperClassName?: string;
+	renderHeader?: React.ReactNode | ((props: any) => React.ReactNode);
+	children?: React.ReactNode;
+	renderFooter?: React.ReactNode | ((props: any) => React.ReactNode);
+	toggle?: (open: boolean) => void;
+	open: boolean;
+	noDismiss?: boolean;
+	hideCrossDismiss?: boolean;
+	footerProps?: ModalFooterProps;
+	animation?: boolean;
+	animationProperties?: AnimationProps;
+}
+
 /**
  * Renders a modal dialog with customizable header, body, and footer content.
  * Manages the modal's open state and provides a toggle function.
@@ -122,7 +197,7 @@ const DEFAULT_ANIMATION_PROPS = {
  * @param {boolean} hideCrossDismiss - If true, it will hide the cross close button from the top right of the modal.
  * @returns {ReactElement} The rendered modal dialog.
  */
-const BaseModal = (props) => {
+const BaseModal = (props: BaseModalProps): ReactElement => {
 	const {
 		className = '',
 		title,
@@ -142,7 +217,7 @@ const BaseModal = (props) => {
 
 	const { floating, context } = useFloating({
 		open,
-		onOpenChange: toggle,
+		onOpenChange: (isOpen) => toggle(isOpen),
 	});
 
 	const { getFloatingProps } = useInteractions([
@@ -151,7 +226,7 @@ const BaseModal = (props) => {
 		}),
 	]);
 
-	const { props: bodyProps } = children ?? {};
+	const { props: bodyProps } = (children as any) ?? {};
 
 	return (
 		<AnimatePresence>
@@ -169,51 +244,45 @@ const BaseModal = (props) => {
 								...(animation && {
 									...animationProperties,
 								}),
-							})}>
+							} as any)}>
 							{renderHeader ? (
 								<header data-elem='header' className={styles.header}>
-									{(() => {
-										if (typeof renderHeader !== 'function') {
-											return renderHeader;
-										}
-										return renderHeader({
-											...bodyProps,
-										});
-									})()}
+									{typeof renderHeader === 'function'
+										? renderHeader({
+												...bodyProps,
+										  })
+										: renderHeader}
 								</header>
 							) : (
 								<header data-elem='header' className={styles.header}>
-									<ModalHeader title={title} description={description} />
+									<ModalHeader title={title || ''} description={description} />
 								</header>
 							)}
 							<div data-elem='body' className={styles.body}>
 								{children}
 							</div>
 							{renderFooter ? (
-								<motion.footer
+								<MotionFooter
 									{...(animation && {
 										...footerAnimations,
 									})}
 									data-elem='footer'
 									className={styles.footer}>
-									{(() => {
-										if (typeof renderFooter !== 'function') {
-											return renderFooter;
-										}
-										return renderFooter({
-											...bodyProps,
-										});
-									})()}
-								</motion.footer>
+									{typeof renderFooter === 'function'
+										? renderFooter({
+												...bodyProps,
+										  })
+										: renderFooter}
+								</MotionFooter>
 							) : footerProps ? (
-								<motion.footer
+								<MotionFooter
 									{...(animation && {
 										...footerAnimations,
 									})}
 									data-elem='footer'
 									className={styles.footer}>
 									<ModalFooter {...footerProps} />
-								</motion.footer>
+								</MotionFooter>
 							) : null}
 							{!hideCrossDismiss && (
 								<Button
@@ -234,18 +303,6 @@ const BaseModal = (props) => {
 			</Popper>
 		</AnimatePresence>
 	);
-};
-
-BaseModal.propTypes = {
-	className: PropTypes.string,
-	popperClassName: PropTypes.string,
-	renderHeader: PropTypes.element,
-	renderFooter: PropTypes.element,
-	toggle: PropTypes.func,
-	noDismiss: PropTypes.bool,
-	hideCrossDismiss: PropTypes.bool,
-	animation: PropTypes.bool,
-	animationProperties: PropTypes.object,
 };
 
 export default BaseModal;

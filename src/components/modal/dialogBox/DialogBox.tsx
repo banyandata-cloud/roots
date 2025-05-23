@@ -1,13 +1,57 @@
-/* eslint-disable object-curly-newline */
-import PropTypes from 'prop-types';
 import { forwardRef, useEffect, useImperativeHandle, useState } from 'react';
 import { classes } from '../../../utils';
 import { Button } from '../../buttons';
 import { Text } from '../../text';
 import BaseModal from '../BaseModal';
 import styles from './Dialog.module.css';
+import type { ReactElement } from 'react';
 
-const Header = ({ title }) => {
+interface DialogProps {
+	className?: string;
+	size?: 'sm' | 'md';
+}
+
+interface DialogHeaderProps {
+	title: string;
+}
+
+interface DialogFooterProps {
+	action?: string;
+	cancel?: string;
+	onAction?: (props: { dismiss: () => void }) => void;
+	onCancel?: () => void;
+	hideCancel?: boolean;
+	variant?: string;
+	setOpen: (open: boolean) => void;
+	customAction?: React.ComponentType<{ dismiss: () => void }>;
+}
+
+interface DialogBoxHandle {
+	dialog: (props: DialogOptions) => void;
+}
+
+interface DialogOptions {
+	title?: string | null;
+	description?: string | null;
+	actionText?: string;
+	cancelText?: string;
+	variant?: string;
+	onAction?: ((props: { dismiss: () => void }) => void) | null | undefined;
+	onCancel?: (() => void) | null | undefined;
+	size?: 'sm' | 'md';
+	customAction?:
+		| React.ComponentType<{
+				setNoDismissEnabled?: (enabled: boolean) => void;
+				dismiss: () => void;
+		  }>
+		| undefined; // Explicitly allow undefined
+	body?: React.ComponentType<{ setNoDismissEnabled: (enabled: boolean) => void }> | undefined;
+	hideCancel?: boolean;
+	noDismiss?: boolean;
+	hideCrossDismiss?: boolean;
+}
+
+const Header = ({ title }: DialogHeaderProps): ReactElement => {
 	return (
 		<Text component='h2' variant='b1' weight={600}>
 			{title}
@@ -24,7 +68,7 @@ const Footer = ({
 	variant,
 	setOpen,
 	customAction: CustomAction,
-}) => {
+}: DialogFooterProps): ReactElement => {
 	return (
 		<div className={styles.footer}>
 			{!hideCancel && (
@@ -46,27 +90,32 @@ const Footer = ({
 			)}
 
 			{onAction && (
-				<Button onClick={onAction} className={styles.save} title={action} color={variant} />
+				<Button
+					onClick={() => onAction({ dismiss: () => setOpen(false) })}
+					className={styles.save}
+					title={action}
+					color={variant}
+				/>
 			)}
 		</div>
 	);
 };
 
-const DialogBox = forwardRef((props, ref) => {
-	const { size: defaultSize, className } = props;
+const DialogBox = forwardRef<DialogBoxHandle, DialogProps>((props, ref) => {
+	const { size: defaultSize = 'md', className = '' } = props;
 
 	const [open, setOpen] = useState(false);
-	const [dialogProps, setDialogProps] = useState({
+	const [dialogProps, setDialogProps] = useState<DialogOptions>({
 		title: null,
 		description: null,
 		actionText: 'Done',
 		cancelText: 'Dismiss',
 		variant: 'primary',
 		onAction: null,
-		onCancel: null,
+		onCancel: undefined,
 		size: 'md',
-		customAction: null,
-		body: null,
+		customAction: undefined,
+		body: undefined,
 	});
 
 	const {
@@ -96,21 +145,26 @@ const DialogBox = forwardRef((props, ref) => {
 		title,
 	};
 
-	const footerProps = ({ setNoDismissEnabled }) => {
+	const footerProps = ({
+		setNoDismissEnabled,
+	}: {
+		setNoDismissEnabled: (enabled: boolean) => void;
+	}): DialogFooterProps => {
 		return {
-			action: actionText,
-			cancel: cancelText,
+			action: actionText ?? 'Done',
+			cancel: cancelText ?? 'Dismiss',
 			hideCancel,
-			variant,
+			variant: variant ?? 'primary',
 			setOpen,
 			...(customAction && {
 				customAction: () => {
-					return customAction({
-						setNoDismissEnabled,
-						dismiss: () => {
-							setOpen(false);
-						},
-					});
+					const CustomActionComponent = customAction;
+					return (
+						<CustomActionComponent
+							setNoDismissEnabled={setNoDismissEnabled}
+							dismiss={() => setOpen(false)}
+						/>
+					);
 				},
 			}),
 			...(onAction && {
@@ -128,7 +182,7 @@ const DialogBox = forwardRef((props, ref) => {
 		};
 	};
 
-	const dialog = (appliedDialogProps) => {
+	const dialog = (appliedDialogProps: DialogOptions) => {
 		setDialogProps({
 			...dialogProps,
 			...appliedDialogProps,
@@ -159,10 +213,10 @@ const DialogBox = forwardRef((props, ref) => {
 		<BaseModal
 			open={open}
 			toggle={toggle}
-			hideCrossDismiss={hideCrossDismiss}
+			hideCrossDismiss={hideCrossDismiss ?? false}
 			noDismiss={dismissEnabled}
 			className={classes(styles.root, styles[size], className)}
-			renderHeader={title && <Header {...headerProps} />}
+			renderHeader={title ? <Header title={title} /> : undefined}
 			renderFooter={
 				<Footer
 					{...footerProps({
@@ -175,15 +229,5 @@ const DialogBox = forwardRef((props, ref) => {
 		</BaseModal>
 	);
 });
-
-DialogBox.propTypes = {
-	className: PropTypes.string,
-	size: PropTypes.oneOf(['sm', 'md']),
-};
-
-DialogBox.defaultProps = {
-	className: '',
-	size: 'md',
-};
 
 export default DialogBox;

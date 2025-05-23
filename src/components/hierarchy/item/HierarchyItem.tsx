@@ -1,20 +1,32 @@
-import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { classes } from '../../../utils';
 import { Button } from '../../buttons';
 import { BaseCell } from '../../cell';
 import { CaretIcon } from '../../icons';
 import styles from './HierarchyItem.module.css';
+import type { ReactElement, ReactNode } from 'react';
 
-const HierarchyItem = (props) => {
+type IconPlacement = 'left' | 'right' | 'none';
+
+interface HierarchyItemProps {
+	defaultOpen?: boolean;
+	iconPlacement?: IconPlacement;
+	title: ReactNode;
+	children: ReactNode;
+	onClick?: (state: boolean) => void;
+	onDoubleClick?: (state: boolean) => void;
+	active?: boolean;
+}
+
+const HierarchyItem = (props: HierarchyItemProps): ReactElement => {
 	const {
-		defaultOpen,
+		defaultOpen = false,
 		iconPlacement = 'left',
 		title,
 		children,
-		onClick = () => {},
+		onClick,
 		onDoubleClick,
-		active,
+		active = false,
 	} = props;
 
 	const [open, setOpen] = useState(defaultOpen);
@@ -45,7 +57,7 @@ const HierarchyItem = (props) => {
 				flexible
 				size='auto'
 				className={styles.header}
-				component1={iconPlacement === 'left' && icon}
+				component1={iconPlacement === 'left' ? icon : undefined}
 				component2={
 					<Button
 						className={styles.title}
@@ -53,7 +65,7 @@ const HierarchyItem = (props) => {
 						size='auto'
 						variant='text'
 						color='default'
-						onClick={(event) => {
+						onClick={(event: React.MouseEvent) => {
 							const { detail } = event;
 
 							// single click
@@ -73,7 +85,7 @@ const HierarchyItem = (props) => {
 						}}
 					/>
 				}
-				component3={iconPlacement === 'right' && icon}
+				component3={iconPlacement === 'right' ? icon : undefined}
 			/>
 			<BaseCell
 				size='auto'
@@ -83,14 +95,6 @@ const HierarchyItem = (props) => {
 			/>
 		</div>
 	);
-};
-
-HierarchyItem.propTypes = {
-	iconPlacement: PropTypes.oneOf(['left', 'right', 'none']),
-	title: PropTypes.node,
-	defaultOpen: PropTypes.bool,
-	onClick: PropTypes.func,
-	active: PropTypes.bool,
 };
 
 export default HierarchyItem;

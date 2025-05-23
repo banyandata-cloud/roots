@@ -2,7 +2,7 @@ import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { useState } from 'react';
 import ThemedContainer from '../helpers/themedContainer/ThemedContainer';
 import { PlusIcon } from '../icons';
-import Accordion from './Accordion';
+import Accordion from './Accordion.tsx';
 
 <Meta title='Components/Accordian' parameters={{ options: { showToolbar: true } }} />
 
@@ -96,7 +96,7 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 							<Accordion
 								open={key === open}
 								onToggle={(active) => {
-									if (active) {
+									if (open) {
 										setOpen(null);
 									} else {
 										setOpen(key);
