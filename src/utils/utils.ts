@@ -19,7 +19,7 @@ export const sumArrayOfObjects = (
 
 		keysOfCurrentObject.forEach((key) => {
 			if (Object.prototype.hasOwnProperty.call(cur, key)) {
-				acc[key] = (acc[key] || 0) + cur[key];
+				acc[key] = (acc[key] || 0) + (cur[key] || 0);
 			}
 		});
 
@@ -47,7 +47,7 @@ export const getDateFromEpoch = (epoch: number): string => {
 	const date = new Date(0);
 	date.setUTCSeconds(epoch);
 	const paddedDate: string = date.getDate().toString().padStart(2, '0');
-	const month: string = MONTHS[date.getMonth()];
+	const month: string = MONTHS[date.getMonth()]!;
 	const year: number = date.getFullYear();
 	return `${month} ${paddedDate}, ${year}`;
 };
@@ -93,7 +93,7 @@ export const epochToFormattedDate = (
 			12: `${hours12}:${minutes}:${seconds} ${meridian}`,
 		};
 
-		return timeFormat[typeof format === 'number' ? format : 12];
+		return timeFormat[typeof format === 'number' ? format : 12]!;
 	}
 
 	if (type === 'date') {
@@ -131,9 +131,9 @@ export const uniqueArrayOfObjects = <T extends Record<string, any>>(
 
 export const getInitialsOfName = (name = ''): string => {
 	const names = name.split(' ');
-	let initials = names[0].substring(0, 1).toUpperCase();
+	let initials = names[0] ? names[0].substring(0, 1).toUpperCase() : '';
 	if (names.length > 1) {
-		initials += names[names.length - 1].substring(0, 1).toUpperCase();
+		initials += names[names.length - 1]?.substring(0, 1).toUpperCase() || '';
 	}
 	return initials;
 };
@@ -240,7 +240,9 @@ export const get = <T = any, U = any>(
 
 	while (srcObject != null && index < length) {
 		const key = pathArr[index++];
-		srcObject = srcObject?.[key?.toString()];
+		if (key !== undefined) {
+			srcObject = srcObject?.[key.toString()];
+		}
 		if (srcObject == null) {
 			break;
 		}
@@ -250,11 +252,11 @@ export const get = <T = any, U = any>(
 };
 
 export const getDayInfo = (date: Date): DayInfo => {
-	const month = FULL_MONTHS[date.getMonth()];
+	const month = FULL_MONTHS[date.getMonth()]!;
 	const monthAsNumber = date.getMonth();
 	const year = date.getFullYear();
 	const dateAsNumber = date.getDate();
-	const day = DAYS[date.getDay()];
+	const day = DAYS[date.getDay()]!;
 	const dayAsNumber = date.getDay();
 	const hoursIn12 = date.getHours();
 	const hours = ((date.getHours() + 11) % 12) + 1;
@@ -282,11 +284,11 @@ export const getDatesInStringFormat = ({
 	endingDate,
 }: DateRange): [string, string] => {
 	return [
-		`${startingDate.getDate()} ${MONTHS[startingDate.getMonth()].substring(
+		`${startingDate.getDate()} ${MONTHS[startingDate.getMonth()]!.substring(
 			0,
 			3
 		)} ${startingDate.getFullYear()}`,
-		`${endingDate.getDate()} ${MONTHS[endingDate.getMonth()].substring(
+		`${endingDate.getDate()} ${MONTHS[endingDate.getMonth()]!.substring(
 			0,
 			3
 		)} ${endingDate.getFullYear()}`,
@@ -422,9 +424,8 @@ export const generateColors = (options: ColorOptions = {}): string[] => {
 
 	// Hex to HSL conversion
 	const hexToHSL = (hex: string): HSL => {
-		const [r, g, b] = hexToRGB(hex).map((v) => {
-			return v / 255;
-		});
+		const [r, g, b] = hexToRGB(hex).map((v) => v / 255) as [number, number, number];
+
 		const cmin = Math.min(r, g, b);
 		const cmax = Math.max(r, g, b);
 		const delta = cmax - cmin;

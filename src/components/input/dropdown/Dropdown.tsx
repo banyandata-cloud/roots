@@ -23,10 +23,10 @@ import React, {
 	useMemo,
 	useRef,
 	useState,
-	ReactNode,
-	ReactElement,
-	SyntheticEvent,
 } from 'react';
+
+import type { ReactNode, ReactElement, SyntheticEvent } from 'react';
+
 import { ErrorBoundary } from 'react-error-boundary';
 import { classes } from '../../../utils';
 import Button from '../../buttons/button/Button';
@@ -218,7 +218,7 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(
 			const customTarget: CustomEventTarget = {
 				...(event.target as EventTarget),
 				value: itemValueString,
-				name,
+				name: name!,
 			};
 
 			const syntheticEvent: React.SyntheticEvent = {
@@ -318,7 +318,7 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(
 				},
 				selected,
 				tabIndex: activeIndex === index ? 0 : -1,
-				ref: (node) => {
+				ref: (node: HTMLElement | null) => {
 					listItemsRef.current[index] = node;
 				},
 				// Properly typed data attributes
@@ -647,7 +647,9 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(
 													/>
 												);
 											}}
-											onClick={(event) => {
+											onClick={(
+												event: React.MouseEvent<HTMLButtonElement>
+											) => {
 												event.stopPropagation();
 												multiOptionsRef?.current?.focus();
 												onSelectAll(event, true);
@@ -669,7 +671,9 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(
 											title='Clear All'
 											size='auto'
 											disabled={selectedOptions?.length === 0}
-											onClick={(event) => {
+											onClick={(
+												event: React.MouseEvent<HTMLButtonElement>
+											) => {
 												event.stopPropagation();
 												multiOptionsRef?.current?.focus();
 												onSelectAll(event, false);

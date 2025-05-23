@@ -1,10 +1,10 @@
-import { useRef, ReactNode } from 'react';
+import { useRef } from 'react';
+import type { ReactNode, ReactElement } from 'react';
 import { useResize } from '../../../hooks';
 import { classes } from '../../../utils';
 import { ServerIcon } from '../../icons';
 import { HierarchyItem } from '../item';
 import styles from './HierarchyBrowser.module.css';
-import type { ReactElement } from 'react';
 
 interface Item {
 	id?: string;

@@ -1,12 +1,13 @@
-import { motion, HTMLMotionProps } from 'framer-motion';
-import { ReactNode, useRef, useState } from 'react';
+import { motion } from 'framer-motion';
+import type { HTMLMotionProps } from 'framer-motion';
+
+import { useRef, useState } from 'react';
+import type { ReactNode, ReactElement } from 'react';
 import { classes } from '../../utils/utils';
 import { Button } from '../buttons';
 import { BaseCell } from '../cell';
 import { CaretIcon, ExpandArrowAltIcon } from '../icons';
 import styles from './Accordion.module.css';
-import type { ReactElement } from 'react';
-
 
 interface AccordionProps {
 	open?: boolean;
@@ -22,7 +23,7 @@ interface AccordionProps {
 	onExpand?: () => void;
 }
 
-const Accordion = (props: AccordionProps):ReactElement => {
+const Accordion = (props: AccordionProps): ReactElement => {
 	const {
 		open,
 		onToggle,
@@ -70,9 +71,13 @@ const Accordion = (props: AccordionProps):ReactElement => {
 						}
 					},
 				}}
-				component1={LeftComponent && <LeftComponent className={styles.icon} />}
+				component1={
+					LeftComponent ? <LeftComponent className={styles.icon ?? ''} /> : undefined
+				}
 				component2={<span className={styles.title}>{title}</span>}
-				component3={RightComponent && <RightComponent className={styles.icon} />}
+				component3={
+					RightComponent ? <RightComponent className={styles.icon ?? ''} /> : undefined
+				}
 			/>
 
 			{isOpen && (

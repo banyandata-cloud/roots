@@ -6,7 +6,6 @@ import BaseModal from '../BaseModal';
 import styles from './Dialog.module.css';
 import type { ReactElement } from 'react';
 
-
 interface DialogProps {
 	className?: string;
 	size?: 'sm' | 'md';
@@ -37,14 +36,16 @@ interface DialogOptions {
 	actionText?: string;
 	cancelText?: string;
 	variant?: string;
-	onAction?: ((props: { dismiss: () => void }) => void) | null;
-	onCancel?: () => void;
+	onAction?: ((props: { dismiss: () => void }) => void) | null | undefined;
+	onCancel?: (() => void) | null | undefined;
 	size?: 'sm' | 'md';
-	customAction?: React.ComponentType<{
-		setNoDismissEnabled?: (enabled: boolean) => void;
-		dismiss: () => void;
-	}>;
-	body?: React.ComponentType<{ setNoDismissEnabled: (enabled: boolean) => void }>;
+	customAction?:
+		| React.ComponentType<{
+				setNoDismissEnabled?: (enabled: boolean) => void;
+				dismiss: () => void;
+		  }>
+		| undefined; // Explicitly allow undefined
+	body?: React.ComponentType<{ setNoDismissEnabled: (enabled: boolean) => void }> | undefined;
 	hideCancel?: boolean;
 	noDismiss?: boolean;
 	hideCrossDismiss?: boolean;
@@ -100,7 +101,7 @@ const Footer = ({
 	);
 };
 
-const DialogBox = forwardRef<DialogBoxHandle, DialogProps>((props, ref): ReactElement => {
+const DialogBox = forwardRef<DialogBoxHandle, DialogProps>((props, ref) => {
 	const { size: defaultSize = 'md', className = '' } = props;
 
 	const [open, setOpen] = useState(false);
@@ -148,16 +149,15 @@ const DialogBox = forwardRef<DialogBoxHandle, DialogProps>((props, ref): ReactEl
 		setNoDismissEnabled,
 	}: {
 		setNoDismissEnabled: (enabled: boolean) => void;
-	}) => {
+	}): DialogFooterProps => {
 		return {
-			action: actionText,
-			cancel: cancelText,
+			action: actionText ?? 'Done',
+			cancel: cancelText ?? 'Dismiss',
 			hideCancel,
-			variant,
+			variant: variant ?? 'primary',
 			setOpen,
 			...(customAction && {
 				customAction: () => {
-					// Render the component instead of calling it
 					const CustomActionComponent = customAction;
 					return (
 						<CustomActionComponent
@@ -213,7 +213,7 @@ const DialogBox = forwardRef<DialogBoxHandle, DialogProps>((props, ref): ReactEl
 		<BaseModal
 			open={open}
 			toggle={toggle}
-			hideCrossDismiss={hideCrossDismiss}
+			hideCrossDismiss={hideCrossDismiss ?? false}
 			noDismiss={dismissEnabled}
 			className={classes(styles.root, styles[size], className)}
 			renderHeader={title ? <Header title={title} /> : undefined}

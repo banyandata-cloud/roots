@@ -44,7 +44,7 @@ const footerAnimations: FooterAnimations = {
 
 interface ModalHeaderProps {
 	title: string;
-	description?: string;
+	description?: string | undefined;
 }
 
 const MotionFooter = motion.footer as React.FC<
@@ -173,7 +173,7 @@ interface BaseModalProps {
 	children?: React.ReactNode;
 	renderFooter?: React.ReactNode | ((props: any) => React.ReactNode);
 	toggle?: (open: boolean) => void;
-	open?: boolean;
+	open: boolean;
 	noDismiss?: boolean;
 	hideCrossDismiss?: boolean;
 	footerProps?: ModalFooterProps;
