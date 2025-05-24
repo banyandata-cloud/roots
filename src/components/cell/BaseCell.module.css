@@ -36,6 +36,9 @@
 .root.border-radius-ellipse {
   border-radius: 1.563rem;
 }
+.root.border-radius-none {
+  border-radius: 0rem;
+}
 .root.flexible {
   flex-grow: 1;
   flex-shrink: 1;
