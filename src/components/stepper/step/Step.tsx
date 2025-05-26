@@ -18,7 +18,7 @@ export interface StepProps {
 	renderDescription?: React.ComponentType<StepProps>;
 }
 
-const Step = (props: StepProps) => {
+const Step = (props: StepProps): React.ReactElement => {
 	const {
 		title,
 		description,

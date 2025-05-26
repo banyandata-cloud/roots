@@ -49,7 +49,7 @@ interface PopoverProps {
 	middlewareOptions?: MiddlewareOptions;
 }
 
-const Popover = (props: PopoverProps) => {
+const Popover = (props: PopoverProps): React.ReactElement => {
 	const {
 		children,
 		anchorEl,

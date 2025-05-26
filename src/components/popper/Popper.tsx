@@ -14,7 +14,7 @@ interface PopperProps {
 	transparent?: boolean;
 }
 
-const Popper = (props: PopperProps) => {
+const Popper = (props: PopperProps): React.ReactElement => {
 	const {
 		open,
 		children,

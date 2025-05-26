@@ -12,7 +12,11 @@ interface StepperProps {
 	className?: string;
 }
 
-const Stepper: React.FC<StepperProps> = ({ steps = [], orientation = 'horizontal', className }) => {
+const Stepper: React.FC<StepperProps> = ({
+	steps = [],
+	orientation = 'horizontal',
+	className,
+}): React.ReactElement => {
 	return (
 		<div className={classes(styles.root, styles[orientation], className)}>
 			{steps.map((step, index) => {
