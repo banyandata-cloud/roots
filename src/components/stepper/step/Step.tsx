@@ -1,20 +1,33 @@
-/* eslint-disable object-curly-newline */
-import PropTypes from 'prop-types';
 import { COLORS } from '../../../styles';
 import { classes } from '../../../utils';
 import { CrossIcon, TickIcon } from '../../icons';
 import styles from './Step.module.css';
 
-const Step = (props) => {
+export interface StepProps {
+	title?: string | null;
+	description?: string;
+	active?: boolean;
+	completion?: number;
+	error?: boolean;
+	index?: number;
+	noTail?: boolean;
+	orientation?: 'horizontal' | 'vertical';
+	total?: number;
+	renderIcon?: React.ComponentType<StepProps>;
+	renderTitle?: React.ComponentType<StepProps>;
+	renderDescription?: React.ComponentType<StepProps>;
+}
+
+const Step = (props: StepProps) => {
 	const {
 		title,
 		description,
-		active,
-		completion,
-		error,
-		index,
-		noTail,
-		orientation,
+		active = false,
+		completion = 0,
+		error = false,
+		index = 0,
+		noTail = false,
+		orientation = 'horizontal',
 		renderIcon: RenderIcon,
 		renderTitle: RenderTitle,
 		renderDescription: RenderDescription,
@@ -43,9 +56,9 @@ const Step = (props) => {
 				<div
 					className={styles.progress}
 					style={{
-						backgroundImage: `conic-gradient(${COLORS.highlight}, ${
-							completion * 100
-						}%, transparent 0%)`,
+						backgroundImage: `conic-gradient(${
+							(COLORS as Record<string, string>).highlight
+						}, ${completion * 100}%, transparent 0%)`,
 					}}
 				/>
 			)}
@@ -88,20 +101,6 @@ const Step = (props) => {
 			</div>
 		</div>
 	);
-};
-
-Step.propTypes = {
-	title: PropTypes.string,
-	description: PropTypes.string,
-	active: PropTypes.bool,
-	completion: PropTypes.number,
-	error: PropTypes.bool,
-	index: PropTypes.number,
-	noTail: PropTypes.bool,
-	orientation: PropTypes.oneOf(['horizontal', 'vertical']),
-	renderIcon: PropTypes.func,
-	renderTitle: PropTypes.func,
-	renderDescription: PropTypes.func,
 };
 
 Step.defaultProps = {

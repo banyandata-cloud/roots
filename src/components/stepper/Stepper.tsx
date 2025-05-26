@@ -1,12 +1,18 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styles from './Stepper.module.css';
 import { Step } from './step';
+import type { StepProps } from './step';
 import { classes } from '../../utils';
 
-const Stepper = (props) => {
-	const { steps, orientation, className } = props;
+export type StepperOrientation = 'horizontal' | 'vertical';
 
+interface StepperProps {
+	steps: StepProps[];
+	orientation?: StepperOrientation;
+	className?: string;
+}
+
+const Stepper: React.FC<StepperProps> = ({ steps = [], orientation = 'horizontal', className }) => {
 	return (
 		<div className={classes(styles.root, styles[orientation], className)}>
 			{steps.map((step, index) => {
@@ -22,20 +28,6 @@ const Stepper = (props) => {
 			})}
 		</div>
 	);
-};
-
-Stepper.propTypes = {
-	steps: PropTypes.arrayOf(
-		PropTypes.shape({
-			...Step.propTypes,
-		})
-	),
-	orientation: PropTypes.oneOf(['horizontal', 'vertical']),
-};
-
-Stepper.defaultProps = {
-	steps: [],
-	orientation: 'horizontal',
 };
 
 export default Stepper;
