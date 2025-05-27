@@ -1,5 +1,3 @@
-/* eslint-disable no-param-reassign */
-import PropTypes from 'prop-types';
 import React, { useRef, useState } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import {
@@ -11,7 +9,18 @@ import { AlertV2 as Alert } from '../alertV2';
 import { CopyIcon } from '../icons';
 import styles from './CodeSnippet.module.css';
 
-const CodeSnippet = (props) => {
+interface CodeSnippetProps {
+	copy?: boolean;
+	code?: string;
+	language?: string;
+	showLineNumbers?: boolean;
+	theme?: 'light' | 'dark';
+	className?: string;
+	onClick?: (event: React.MouseEvent, keyPath: string | null | Error) => void;
+	parentKeyToSelect?: string;
+}
+
+const CodeSnippet: React.FC<CodeSnippetProps> = (props): React.ReactElement => {
 	const {
 		copy,
 		code = '{}',
@@ -23,9 +32,8 @@ const CodeSnippet = (props) => {
 		parentKeyToSelect,
 	} = props;
 
-	const [parentNode, setParentNode] = useState(null);
-
-	const alertRef = useRef(Alert);
+	const [parentNode, setParentNode] = useState<HTMLElement | null>(null);
+	const alertRef = useRef<React.ElementRef<typeof Alert>>(null);
 
 	const onCopy = () => {
 		navigator.clipboard.writeText(code);
@@ -33,20 +41,18 @@ const CodeSnippet = (props) => {
 			title: `${language?.toUpperCase()}`,
 			description: 'The code has been copied to the clipboard',
 			type: 'info',
-			icon: (args) => {
+			icon: (args: React.ComponentProps<typeof CopyIcon>) => {
 				return <CopyIcon {...args} />;
 			},
 		});
 	};
 
-	function findKeyPath(obj, targetKey, currentPath = '') {
+	function findKeyPath(obj: any, targetKey: string, currentPath = ''): string {
 		const keys = Object.keys(obj);
-		// eslint-disable-next-line no-restricted-syntax
 		for (const key of keys) {
 			const newPath = currentPath ? `${currentPath}/${key}` : key;
 
 			if (key === targetKey) {
-				// Display the full path of the key from the object
 				return newPath;
 			}
 			if (parentKeyToSelect && !currentPath) {
@@ -60,7 +66,6 @@ const CodeSnippet = (props) => {
 				}
 			}
 			if (obj[key] && typeof obj[key] === 'object') {
-				// Recursively search nested keys
 				const nestedPath = findKeyPath(obj[key], targetKey, newPath);
 				if (nestedPath) {
 					return nestedPath;
@@ -71,14 +76,15 @@ const CodeSnippet = (props) => {
 		return '';
 	}
 
-	const handleCodeClick = (event) => {
-		const hasNoChildren = event.target.children?.length === 0;
+	const handleCodeClick = (event: React.MouseEvent<HTMLElement>): string | null | Error => {
+		const target = event.target as HTMLElement;
+		const hasNoChildren = target.children?.length === 0;
+
 		if (language === 'json' && hasNoChildren) {
 			try {
 				const parsedCode = JSON.parse(code);
-				const clickedKey = event.target.textContent.replace(/"/g, '').trim();
+				const clickedKey = target.textContent?.replace(/"/g, '').trim() || '';
 
-				// Check for a direct match in top-level keys
 				const matchingKey = Object.keys(parsedCode).find((key) => {
 					return String(parsedCode[key]) === clickedKey;
 				});
@@ -86,25 +92,25 @@ const CodeSnippet = (props) => {
 				if (matchingKey) {
 					return matchingKey;
 				}
-				// Check for nested keys
+
 				const keyPath = findKeyPath(parsedCode, clickedKey);
 
 				if (keyPath) {
-					event.target.parentNode.style.backgroundColor =
+					target.parentElement!.style.backgroundColor =
 						theme === 'light' ? '#333' : 'white';
 					if (parentNode) {
 						parentNode.style.backgroundColor = '';
-						if (event.target.parentNode === parentNode) {
+						if (target.parentElement === parentNode) {
 							setParentNode(null);
 							return null;
 						}
 					}
-					setParentNode(event.target.parentNode);
+					setParentNode(target.parentElement);
 					return keyPath;
 				}
 				return clickedKey;
 			} catch (error) {
-				return error;
+				return error as Error;
 			}
 		}
 		return null;
@@ -119,8 +125,8 @@ const CodeSnippet = (props) => {
 			className: classes(styles.code, className),
 		},
 		style: theme === 'light' ? lightTheme : darkTheme,
-		onClick: (event) => {
-			return onClick(event, handleCodeClick);
+		onClick: (event: React.MouseEvent<HTMLElement>) => {
+			return onClick(event, handleCodeClick(event));
 		},
 	};
 
@@ -137,17 +143,6 @@ const CodeSnippet = (props) => {
 			<Alert ref={alertRef} />
 		</>
 	);
-};
-
-CodeSnippet.propTypes = {
-	copy: PropTypes.bool,
-	code: PropTypes.string,
-	language: PropTypes.string,
-	showLineNumbers: PropTypes.bool,
-	theme: PropTypes.string,
-	className: PropTypes.string,
-	onClick: PropTypes.func,
-	parentKeyToSelect: PropTypes.string,
 };
 
 export default CodeSnippet;

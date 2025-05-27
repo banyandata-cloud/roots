@@ -1,18 +1,22 @@
 /* eslint-disable react/require-default-props */
 /* eslint-disable no-nested-ternary */
-import PropTypes from 'prop-types';
 import { forwardRef, useEffect, useReducer, useRef, useState } from 'react';
 import { classes } from '../../utils';
 import { Button } from '../buttons';
 import { BaseCell } from '../cell';
 import { ArrowIcon } from '../icons';
-import { DropdownItemv2, Dropdownv2, TextFieldv2 } from '../input';
+import { DropdownItem, Dropdown, TextField } from '../input';
 import { Text } from '../text';
 import { Tooltip } from '../tooltip';
 import { CustomPaginationList, PaginationList } from './Pagination.class';
 import styles from './Paginationv2.module.css';
 
-const dropdownOptions = [
+interface DropdownOption {
+	title: string;
+	value: number;
+}
+
+const dropdownOptions: DropdownOption[] = [
 	{
 		title: '10 per page',
 		value: 10,
@@ -39,44 +43,72 @@ const dropdownOptions = [
 	},
 ];
 
-const reducer = (state, { type, payload }) => {
-	switch (type) {
+interface PaginationState {
+	currentPage: number | null;
+	step: number | null;
+	totalPages: number | null;
+	totalData: number | null;
+}
+
+type PaginationAction =
+	| { type: 'NEXT_PAGE' }
+	| { type: 'PREV_PAGE' }
+	| { type: 'SET_PAGE'; payload: number }
+	| { type: 'SET_STEP'; payload: number }
+	| { type: 'SET_TOTAL_PAGES'; payload: number }
+	| { type: 'SET_TOTAL_DATA'; payload: number };
+
+const reducer = (state: PaginationState, action: PaginationAction): PaginationState => {
+	switch (action.type) {
 		case 'NEXT_PAGE':
 			return {
 				...state,
-				currentPage: state.currentPage + 1,
+				currentPage: (state.currentPage || 0) + 1,
 			};
 		case 'PREV_PAGE':
 			return {
 				...state,
-				currentPage: state.currentPage - 1,
+				currentPage: Math.max((state.currentPage || 1) - 1, 1),
 			};
 		case 'SET_PAGE':
 			return {
 				...state,
-				currentPage: payload || 1,
+				currentPage: action.payload || 1,
 			};
 		case 'SET_STEP':
 			return {
 				...state,
-				step: payload,
+				step: action.payload,
 			};
 		case 'SET_TOTAL_PAGES':
 			return {
 				...state,
-				totalPages: payload,
+				totalPages: action.payload,
 			};
 		case 'SET_TOTAL_DATA':
 			return {
 				...state,
-				totalData: payload,
+				totalData: action.payload,
 			};
 		default:
 			return state;
 	}
 };
 
-const PageLabelDisplay = ({
+interface PageLabelDisplayProps {
+	currentPage: number | null;
+	step: number | null;
+	customPagination?: boolean;
+	customLabel?: string | null; // Accept both undefined and null
+	totalData: number | null;
+	totalPages: number | null;
+	isDisplayLabelVisible?: boolean;
+	dataLabel?: string | null; // Accept both undefined and null
+	render?: boolean;
+	fallback?: boolean;
+}
+
+const PageLabelDisplay: React.FC<PageLabelDisplayProps> = ({
 	currentPage,
 	step,
 	customPagination,
@@ -92,40 +124,50 @@ const PageLabelDisplay = ({
 		return null;
 	}
 
+	const safeCurrentPage = currentPage || 1;
+	const safeStep = step || 10;
+	const safeTotalData = totalData || 0;
+	const safeTotalPages = totalPages || 0;
+
 	return customPagination ? (
 		<Text
 			variant='b1'
 			stroke='medium'
-			className={styles['total-data']}
+			className={styles['total-data'] || ''}
 			attrs={{
-				title: `${((currentPage === 0 ? 1 : currentPage) - 1) * step + 1}-${
-					(currentPage === 0 ? 1 : currentPage) * step
-				} of ${totalData}`,
+				title: `${(safeCurrentPage - 1) * safeStep + 1}-${
+					safeCurrentPage * safeStep
+				} of ${safeTotalData}`,
 			}}>
 			<Text>{customLabel ?? ''}</Text>
 		</Text>
 	) : (
-		(totalData > 0 || totalPages > 0) && (isDisplayLabelVisible || fallback) && (
+		(safeTotalData > 0 || safeTotalPages > 0) && (isDisplayLabelVisible || fallback) && (
 			<Text
 				variant='b1'
 				stroke='medium'
-				className={styles['total-data']}
+				className={styles['total-data'] || ''}
 				attrs={{
-					title: `${((currentPage === 0 ? 1 : currentPage) - 1) * step + 1}-${
-						(currentPage === 0 ? 1 : currentPage) * step
-					} of ${totalData}`,
+					title: `${(safeCurrentPage - 1) * safeStep + 1}-${
+						safeCurrentPage * safeStep
+					} of ${safeTotalData}`,
 				}}>
-				<Text>Displaying</Text> {((currentPage === 0 ? 1 : currentPage) - 1) * step + 1}-
-				{currentPage === totalPages
-					? totalData
-					: (currentPage === 0 ? 1 : currentPage) * step}{' '}
-				of {totalData ?? 'total'} <Text>{dataLabel ?? 'records'}</Text>
+				<Text>Displaying</Text> {(safeCurrentPage - 1) * safeStep + 1}-
+				{safeCurrentPage === safeTotalPages ? safeTotalData : safeCurrentPage * safeStep} of{' '}
+				{safeTotalData ?? 'total'} <Text>{dataLabel ?? 'records'}</Text>
 			</Text>
 		)
 	);
 };
 
-export const usePagination = (props) => {
+interface UsePaginationProps {
+	totalPages?: number | null;
+	currentPage?: number | null;
+	step?: number;
+	totalData?: number | null;
+}
+
+export const usePagination = (props: UsePaginationProps = {}): React.ReactElement => {
 	const { totalPages = null, currentPage = null, step = 10, totalData = null } = props;
 	const [paginationState, paginationDispatch] = useReducer(reducer, {
 		totalPages,
@@ -135,30 +177,63 @@ export const usePagination = (props) => {
 	});
 
 	useEffect(() => {
-		if (paginationState.currentPage > totalPages && totalPages != null) {
+		if (
+			paginationState.currentPage &&
+			paginationState.totalPages &&
+			paginationState.currentPage > paginationState.totalPages
+		) {
 			paginationDispatch({
 				type: 'SET_PAGE',
-				payload: totalPages,
+				payload: paginationState.totalPages,
 			});
 		}
 
 		if (paginationState.totalData !== totalData) {
 			paginationDispatch({
 				type: 'SET_TOTAL_DATA',
-				payload: totalData,
+				payload: totalData || 0,
 			});
 		}
 
-		paginationDispatch({
-			type: 'SET_TOTAL_PAGES',
-			payload: totalPages,
-		});
+		if (totalPages !== undefined) {
+			paginationDispatch({
+				type: 'SET_TOTAL_PAGES',
+				payload: totalPages || 0,
+			});
+		}
 	}, [totalPages, totalData]);
 
-	return [paginationState, paginationDispatch];
+	return [paginationState, paginationDispatch] as const;
 };
 
-export const Pagination = forwardRef((props, ref) => {
+interface CustomPageItem {
+	enable: boolean;
+	label?: string;
+	pageNumber?: number;
+}
+
+interface PaginationProps {
+	className?: string;
+	floating?: boolean;
+	customPagination?: boolean;
+	enableJumpToPage?: boolean;
+	paginationState?: PaginationState;
+	paginationDispatch?: React.Dispatch<PaginationAction>;
+	loading?: boolean;
+	dataLabel?: string;
+	customLabel?: string;
+	jumpLabel?: string;
+	hideDisabledPages?: boolean;
+	customPageList?: CustomPageItem[];
+	customPageCallback?: (page: number) => void;
+	onChange?: (state: {
+		currentPage: number;
+		step: number | null;
+		totalPages: number | null;
+	}) => void;
+}
+
+export const Pagination = forwardRef<HTMLDivElement, PaginationProps>((props, ref) => {
 	const {
 		className = '',
 		floating,
@@ -168,6 +243,7 @@ export const Pagination = forwardRef((props, ref) => {
 			totalPages: null,
 			currentPage: null,
 			step: null,
+			totalData: null,
 		},
 		paginationDispatch = () => {},
 		loading,
@@ -177,6 +253,7 @@ export const Pagination = forwardRef((props, ref) => {
 		hideDisabledPages,
 		customPageList = [],
 		customPageCallback = () => {},
+		onChange: onChangeProp,
 	} = props;
 
 	const { totalPages, currentPage, step, totalData } = paginationState;
@@ -187,15 +264,17 @@ export const Pagination = forwardRef((props, ref) => {
 
 	const paginationList = customPagination
 		? new CustomPaginationList({
-				curr: currentPage === 0 ? 1 : currentPage,
-				total: hideDisabledPages ? newCustomPageList?.length : totalPages,
-				hideDisabledPages,
-				customPageList: hideDisabledPages ? newCustomPageList : customPageList,
-			})
+				curr: currentPage === 0 ? 1 : currentPage || 1,
+				total: hideDisabledPages ? newCustomPageList?.length : totalPages || 0,
+				...(hideDisabledPages !== undefined && { hideDisabledPages }),
+				customPageList: (hideDisabledPages ? newCustomPageList : customPageList)
+					.map((item) => item.pageNumber || 0)
+					.filter((pageNumber) => pageNumber > 0),
+		  })
 		: new PaginationList({
-				curr: currentPage === 0 ? 1 : currentPage,
-				total: totalPages,
-			});
+				curr: currentPage === 0 ? 1 : currentPage || 1,
+				total: totalPages || 0,
+		  });
 
 	let activePage = 0;
 
@@ -215,16 +294,16 @@ export const Pagination = forwardRef((props, ref) => {
 		}
 	}
 
-	const jumpPageRef = useRef(null);
+	const jumpPageRef = useRef<HTMLInputElement>(null);
 	const mountedRef = useRef(false);
 
-	const onChange = (action) => {
+	const onChange = (action: PaginationAction) => {
 		paginationDispatch(action);
 	};
 
 	useEffect(() => {
-		if (mountedRef.current) {
-			props.onChange?.({
+		if (mountedRef.current && currentPage !== null && step !== null) {
+			onChangeProp?.({
 				currentPage: currentPage === 0 ? 1 : currentPage,
 				step,
 				totalPages,
@@ -242,7 +321,7 @@ export const Pagination = forwardRef((props, ref) => {
 	const [isDisplayLabelVisible, setDisplayLabelVisible] = useState(false);
 
 	const updateChildVisibility = () => {
-		if (ref.current) {
+		if (ref && typeof ref !== 'function' && ref.current) {
 			const parentWidth = ref.current.offsetWidth;
 			setDisplayLabelVisible(parentWidth >= 1000);
 		}
@@ -256,10 +335,13 @@ export const Pagination = forwardRef((props, ref) => {
 		};
 	}, []);
 
-	const showTotalData =
-		totalData && ((currentPage === 0 ? 1 : currentPage) - 1) * step + 1 < totalData;
+	const safeCurrentPage = currentPage || 1;
+	const safeStep = step || 10;
+	const safeTotalData = totalData || 0;
+	const safeTotalPages = totalPages || 0;
 
-	const showPages = totalPages > 1;
+	const showTotalData = safeTotalData && (safeCurrentPage - 1) * safeStep + 1 < safeTotalData;
+	const showPages = safeTotalPages > 1;
 
 	return (
 		<div
@@ -283,44 +365,42 @@ export const Pagination = forwardRef((props, ref) => {
 									flexible
 									className={styles['row-switcher-handle']}
 									component1={
-										<Dropdownv2
-											className={styles.dropdown}
-											popperClassName={styles['dropdown-popper']}
-											value={step}
+										<Dropdown
+											className={styles.dropdown ?? ''}
+											popperClassName={styles['dropdown-popper'] ?? ''}
+											value={step ? step.toString() : '10'}
 											placeholder=''
 											onChange={(_, newStep) => {
 												onChange({
 													type: 'SET_STEP',
-													payload: newStep,
+													payload: Number(newStep),
 												});
 											}}>
 											{dropdownOptions.map((item) => {
 												return (
-													<DropdownItemv2
-														title={item?.title}
-														value={item?.value}
-														key={item?.value}
+													<DropdownItem
+														title={item.title}
+														value={item.value}
+														key={item.value}
 													/>
 												);
 											})}
-										</Dropdownv2>
+										</Dropdown>
 									}
 								/>
 							}
 						/>
 					)}
 					<PageLabelDisplay
-						{...{
-							currentPage,
-							step,
-							customPagination,
-							customLabel,
-							totalData,
-							totalPages,
-							isDisplayLabelVisible: isDisplayLabelVisible && !loading,
-							dataLabel,
-							render: enableJumpToPage,
-						}}
+						currentPage={currentPage}
+						step={step}
+						customPagination={customPagination ?? false}
+						customLabel={customLabel ?? null} // Explicitly convert undefined to null
+						totalData={totalData}
+						totalPages={totalPages}
+						isDisplayLabelVisible={isDisplayLabelVisible && !loading}
+						dataLabel={dataLabel ?? null} // Explicitly convert undefined to null
+						render={enableJumpToPage}
 					/>
 				</div>
 			)}
@@ -332,7 +412,7 @@ export const Pagination = forwardRef((props, ref) => {
 					)}>
 					<div className={styles.pageSelect}>
 						{paginationList.pages.map((page) => {
-							const active = (currentPage === 0 ? 1 : currentPage) === page.number;
+							const active = safeCurrentPage === page.number;
 							return (
 								<span
 									title={`Page ${page.number}`}
@@ -365,14 +445,16 @@ export const Pagination = forwardRef((props, ref) => {
 								active =
 									currentPage === 0 || currentPage === 1
 										? activeCutomPage === page.number
-										: currentPage === page.number &&
-											newCustomPageList?.[page.number - 1]?.enable;
+										: (currentPage === page.number &&
+												newCustomPageList?.[page.number - 1]?.enable) ??
+										  false;
 							} else {
 								active =
 									currentPage === 0 || currentPage === 1
 										? activePage === page.number
-										: currentPage === page.number &&
-											customPageList?.[page.number - 1]?.enable;
+										: (currentPage === page.number &&
+												customPageList?.[page.number - 1]?.enable) ??
+										  false;
 							}
 
 							return (
@@ -409,16 +491,16 @@ export const Pagination = forwardRef((props, ref) => {
 										hideDisabledPages
 											? !newCustomPageList[page.number - 1]?.enable
 												? styles.disabled
-												: null
+												: ''
 											: !customPageList[page.number - 1]?.enable
-												? styles.disabled
-												: null
+											? styles.disabled
+											: ''
 									)}>
 									{page.ellipsis
 										? '...'
 										: hideDisabledPages
-											? newCustomPageList[page.number - 1]?.label
-											: customPageList[page.number - 1]?.label}
+										? newCustomPageList[page.number - 1]?.label
+										: customPageList[page.number - 1]?.label}
 								</span>
 							);
 						})}
@@ -434,20 +516,22 @@ export const Pagination = forwardRef((props, ref) => {
 							<form
 								onSubmit={(e) => {
 									e.preventDefault();
-									onChange({
-										type: 'SET_PAGE',
-										payload: parseInt(jumpPageRef?.current?.value, 10),
-									});
+									if (jumpPageRef.current?.value) {
+										onChange({
+											type: 'SET_PAGE',
+											payload: parseInt(jumpPageRef.current.value, 10),
+										});
+									}
 								}}>
 								<Tooltip content={jumpLabel} position='top'>
 									<BaseCell
 										size='auto'
 										className={styles['jump-to-page']}
 										component1={
-											<TextFieldv2
+											<TextField
 												inputProps={{
 													min: 1,
-													max: totalPages,
+													max: safeTotalPages,
 													required: true,
 													placeholder: '',
 												}}
@@ -476,18 +560,16 @@ export const Pagination = forwardRef((props, ref) => {
 			{!enableJumpToPage && (
 				<div className={styles.options}>
 					<PageLabelDisplay
-						{...{
-							currentPage,
-							step,
-							customPagination,
-							customLabel,
-							totalData,
-							totalPages,
-							isDisplayLabelVisible,
-							dataLabel,
-							render: true,
-							fallback: true,
-						}}
+						currentPage={currentPage}
+						step={step}
+						customPagination={customPagination ?? false}
+						customLabel={customLabel ?? null}
+						totalData={totalData}
+						totalPages={totalPages}
+						isDisplayLabelVisible={isDisplayLabelVisible}
+						dataLabel={dataLabel ?? null}
+						render={true}
+						fallback={true}
 					/>
 				</div>
 			)}
@@ -496,11 +578,11 @@ export const Pagination = forwardRef((props, ref) => {
 					<Text
 						variant='b1'
 						stroke='medium'
-						className={styles['total-data']}
+						className={styles['total-data'] ?? ''}
 						attrs={{
-							title: `${((currentPage === 0 ? 1 : currentPage) - 1) * step + 1}-${
-								(currentPage === 0 ? 1 : currentPage) * step
-							} of ${totalData}`,
+							title: `${(safeCurrentPage - 1) * safeStep + 1}-${
+								safeCurrentPage * safeStep
+							} of ${safeTotalData}`,
 						}}>
 						<Text>{customLabel ?? ''}</Text>
 					</Text>
@@ -513,10 +595,16 @@ export const Pagination = forwardRef((props, ref) => {
 								<form
 									onSubmit={(e) => {
 										e.preventDefault();
+										if (!jumpPageRef.current?.value) return;
+
 										if (
-											!customPageList[jumpPageRef.current.value - 1]?.enable
+											!customPageList[
+												parseInt(jumpPageRef.current.value, 10) - 1
+											]?.enable
 										) {
-											customPageCallback(jumpPageRef?.current?.value);
+											customPageCallback(
+												parseInt(jumpPageRef.current.value, 10)
+											);
 											return;
 										}
 
@@ -524,7 +612,6 @@ export const Pagination = forwardRef((props, ref) => {
 											const enablePageList = customPageList?.filter((pg) => {
 												return pg?.enable;
 											});
-											// eslint-disable-next-line no-restricted-syntax
 											for (
 												let index = 0;
 												index < enablePageList?.length;
@@ -534,11 +621,11 @@ export const Pagination = forwardRef((props, ref) => {
 													enablePageList?.[
 														index
 													]?.pageNumber?.toString() ===
-													jumpPageRef?.current?.value
+													jumpPageRef.current.value
 												) {
 													onChange({
 														type: 'SET_PAGE',
-														payload: parseInt(index + 1, 10),
+														payload: index + 1,
 													});
 													return;
 												}
@@ -546,7 +633,7 @@ export const Pagination = forwardRef((props, ref) => {
 										}
 										onChange({
 											type: 'SET_PAGE',
-											payload: parseInt(jumpPageRef?.current?.value, 10),
+											payload: parseInt(jumpPageRef.current.value, 10),
 										});
 									}}>
 									<Tooltip content={jumpLabel} position='top'>
@@ -554,16 +641,16 @@ export const Pagination = forwardRef((props, ref) => {
 											size='auto'
 											className={styles['jump-to-page']}
 											component1={
-												<TextFieldv2
+												<TextField
 													inputProps={{
 														min: 1,
-														max: totalPages,
+														max: safeTotalPages,
 														required: true,
 														placeholder: '',
 													}}
 													ref={jumpPageRef}
 													type='number'
-													className={styles.inputbox}
+													className={styles.inputbox ?? ''}
 												/>
 											}
 											component2={
@@ -590,14 +677,4 @@ export const Pagination = forwardRef((props, ref) => {
 	);
 });
 
-Pagination.propTypes = {
-	className: PropTypes.string,
-	floating: PropTypes.bool,
-	paginationState: PropTypes.shape({
-		totalPages: PropTypes.number,
-		currentPage: PropTypes.number,
-		step: PropTypes.number,
-	}),
-	paginationDispatch: PropTypes.func,
-	onChange: PropTypes.func,
-};
+Pagination.displayName = 'Pagination';

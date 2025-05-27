@@ -1,19 +1,38 @@
 /* eslint-disable max-classes-per-file */
+
+interface PageParams {
+	number: number;
+	active?: boolean;
+	ellipsis?: boolean;
+}
+
 class Page {
-	constructor({ number, active = false, ellipsis = false }) {
+	number: number;
+	ellipsis: boolean;
+	active: boolean;
+
+	constructor({ number, active = false, ellipsis = false }: PageParams) {
 		this.number = number;
 		this.ellipsis = ellipsis;
 		this.active = active;
 	}
 }
 
+interface PaginationListParams {
+	curr: number;
+	total: number;
+	limit?: number;
+}
+
 export class PaginationList {
-	constructor({ curr, total, limit = 7 }) {
+	pages: Page[];
+
+	constructor({ curr, total, limit = 7 }: PaginationListParams) {
 		this.pages = getPagination(curr, total, limit);
 	}
 }
 
-export function getPagination(curr, total, limit) {
+export function getPagination(curr: number, total: number, limit: number = 7): Page[] {
 	if (total <= limit) {
 		return [...Array(total).keys()].map((page) => {
 			return new Page({
@@ -22,11 +41,13 @@ export function getPagination(curr, total, limit) {
 			});
 		});
 	}
-	const pages = [
+
+	const pages: Page[] = [
 		new Page({
 			number: 1,
 		}),
 	];
+
 	if (curr - 1 <= limit - 3) {
 		for (let i = 1; i <= limit - 3; i++) {
 			pages.push(
@@ -87,21 +108,50 @@ export function getPagination(curr, total, limit) {
 			}
 		}
 	}
+
 	pages.push(
 		new Page({
 			number: total,
 		})
 	);
+
 	return pages;
+}
+interface CustomPageItem {
+	enable: boolean;
+	label?: string;
+	pageNumber?: number;
+}
+
+interface CustomPaginationListParams {
+	curr: number;
+	total: number;
+	limit?: number;
+	hideDisabledPages?: boolean;
+	customPageList?: number[];
 }
 
 export class CustomPaginationList {
-	constructor({ curr, total, limit = 11, hideDisabledPages = false, customPageList = [] }) {
+	pages: Page[];
+
+	constructor({
+		curr,
+		total,
+		limit = 11,
+		hideDisabledPages = false,
+		customPageList = [],
+	}: CustomPaginationListParams) {
 		this.pages = getCustomPagination(curr, total, limit, hideDisabledPages, customPageList);
 	}
 }
 
-export function getCustomPagination(curr, total, limit) {
+export function getCustomPagination(
+	curr: number,
+	total: number,
+	limit: number = 11,
+	hideDisabledPages: boolean = false,
+	customPageList: number[] = []
+): Page[] {
 	if (total <= limit) {
 		return [...Array(total).keys()].map((page) => {
 			return new Page({
@@ -111,7 +161,7 @@ export function getCustomPagination(curr, total, limit) {
 		});
 	}
 
-	const pages = [
+	const pages: Page[] = [
 		new Page({
 			number: 1,
 		}),
@@ -188,6 +238,7 @@ export function getCustomPagination(curr, total, limit) {
 			);
 		}
 	}
+
 	pages.push(
 		new Page({
 			number: total,
@@ -195,7 +246,7 @@ export function getCustomPagination(curr, total, limit) {
 	);
 
 	// Solution 2 it to remove redundant pages from the array and return new array
-	const pages_set = {};
+	const pages_set: Record<number, boolean> = {};
 	return pages.filter((obj) => {
 		const value = obj.number;
 		if (pages_set[value]) {
@@ -205,6 +256,4 @@ export function getCustomPagination(curr, total, limit) {
 			return true;
 		}
 	});
-
-	return pages;
 }

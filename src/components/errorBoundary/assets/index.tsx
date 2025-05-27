@@ -1,4 +1,6 @@
-export const ErrorBoundaryVector = () => {
+import React from 'react';
+
+export const ErrorBoundaryVector: React.FC = () => {
 	return (
 		<svg
 			width='30rem'
