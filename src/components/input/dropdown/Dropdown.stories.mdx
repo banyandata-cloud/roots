@@ -41,13 +41,13 @@ import { Dropdown } from '@banyan_cloud/roots';
 
 The CSF rendered inside the `Canvas` from which you can see the implementation example.
 
-### Default
+### Default - Uncontrolled
 
 The default dropdown component.
 
 <Canvas>
 	<Story
-		name='Default'
+		name='Default Uncontrolled'
 		args={{
 			label: 'Default Dropdown',
 			placeholder: 'Select an option',
@@ -56,32 +56,60 @@ The default dropdown component.
 	</Story>
 </Canvas>
 
-### Multi-check
+### Default Dropdown - Controlled
 
-The dropdown component with multiple selections.
+The dropdown component with radio buttons.
 
 <Canvas>
-	<Story name='Multi-check'>
+	<Story name='Default Controlled'>
 		{() => {
 			const [value, setValue] = useState([]);
 			return (
 				<div>
 					<Dropdown
 						value={value}
+						highlightOnSelect
+						label='Default Dropdown With States'
+						onChange={(event, newValue) => {
+							setValue(newValue);
+						}}
+						placeholder='Select an option'>
+						<DropdownItem title='Option A' value={1} />
+						<DropdownItem title='Option B' value={2} />
+						<DropdownItem title='Option C' value={3} />
+					</Dropdown>
+				</div>
+			);
+		}}
+	</Story>
+</Canvas>
+
+### Multi Select Dropdown - Controlled
+
+The dropdown component with multiple selections.
+
+<Canvas>
+	<Story name='Multi Select Controlled'>
+		{() => {
+			const [value, setValue] = useState('');
+			console.log(value);
+			return (
+				<div>
+					<Dropdown
+						value={value?.split(',')}
 						multi={true}
 						label='Multi Select Checkbox Dropdown'
 						placeholder='Select an option'
 						onChange={(event, newValue) => {
-							setValue(newValue);
+							setValue(newValue.toString());
 						}}>
-						{[...Array(4).keys()].map((option) => {
+						{[...Array(50).keys()].map((option) => {
 							return (
 								<DropdownItem
 									key={option}
 									title={`Option ${option + 1}`}
 									value={option + 1}
 									variant='checkbox'
-									disabled={true}
 								/>
 							);
 						})}
@@ -92,19 +120,29 @@ The dropdown component with multiple selections.
 	</Story>
 </Canvas>
 
-### Radio
+### Multi Select Dropdown - Unontrolled
 
-The dropdown component with radio buttons.
+The dropdown component with multiple selections.
 
 <Canvas>
-	<Story name='Radio'>
+	<Story name='Multi Select Uncontrolled'>
 		{() => {
 			return (
 				<div>
-					<Dropdown label='Multi Select Checkbox Dropdown' placeholder='Select an option'>
-						<DropdownItem title='Option A' value={1} variant='radio' />
-						<DropdownItem title='Option B' value={2} variant='radio' />
-						<DropdownItem title='Option C' value={3} variant='radio' />
+					<Dropdown
+						multi={true}
+						label='Uncontrolled Multi Select Checkbox Dropdown'
+						placeholder='Select an option'>
+						{[...Array(20).keys()].map((option) => {
+							return (
+								<DropdownItem
+									key={option}
+									title={`Option ${option + 1}`}
+									value={option + 1}
+									variant='checkbox'
+								/>
+							);
+						})}
 					</Dropdown>
 				</div>
 			);

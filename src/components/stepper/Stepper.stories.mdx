@@ -8,11 +8,14 @@ import { epochToFormattedDate } from '../../utils';
 
 <Meta title='Components/Stepper' parameters={{ options: { showToolbar: true } }} />
 
-export const Template = (args) => (
-	<ThemedContainer theme='light'>
-		<Stepper {...args} />
-	</ThemedContainer>
-);
+export const Template = (args) => {
+	console.log(Stepper);
+	return (
+		<ThemedContainer theme='light'>
+			<Stepper {...args} />
+		</ThemedContainer>
+	);
+};
 
 # Stepper
 

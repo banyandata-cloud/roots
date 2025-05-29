@@ -1,12 +1,12 @@
-import PropTypes from 'prop-types';
-import { forwardRef, useEffect, useImperativeHandle, useState } from 'react';
 import { useDismiss, useFloating, useInteractions } from '@floating-ui/react-dom-interactions';
 import { useAnimate } from 'framer-motion';
+import PropTypes from 'prop-types';
+import { forwardRef, useEffect, useImperativeHandle, useState } from 'react';
 import { classes } from '../../utils/utils';
-import styles from './Alert.module.css';
-import { CrossIcon, AlertIcon } from '../icons';
 import { Button } from '../buttons';
+import { AlertIcon, CrossIcon } from '../icons';
 import Popper from '../popper/Popper';
+import styles from './Alert.module.css';
 
 const ALERT_DISMISS_TIME = 2000;
 
