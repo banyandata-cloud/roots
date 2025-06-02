@@ -7,8 +7,15 @@
   font-size: 0.875rem;
   line-height: 1.3125rem;
   color: var(--light-color3);
-  background: var(--text-color);
-  border-color: var(--text-color);
+  background-color: var(--text-color);
+}
+.tooltip.light {
+  background-color: var(--black);
+  color: var(--white);
+}
+.tooltip.dark {
+  background-color: var(--white);
+  color: var(--black);
 }
 .tooltip .arrow {
   position: absolute;
