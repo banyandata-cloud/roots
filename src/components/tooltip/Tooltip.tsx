@@ -22,6 +22,22 @@ import { Popper } from '../popper';
 import styles from './Tooltip.module.css';
 import type { ReactElementWithRef, TooltipPosition, TooltipProps } from './types';
 
+/**
+ * Tooltip - A tooltip component to be used as a wrapper to show the customised tooltip for the component
+ *
+ * @returns A React component
+ *
+ * @example
+ * ```tsx
+ * <Tooltip
+ *   position='top'
+ *   showPointer={false}
+ *   content="Hello"
+ * >
+ *   <div>Some Element</div>
+ * </Tooltip>
+ * ```
+ */
 const Tooltip = forwardRef<RefObject<HTMLElement>, TooltipProps>((props, propRef): ReactElement => {
 	const {
 		children,
@@ -36,31 +52,38 @@ const Tooltip = forwardRef<RefObject<HTMLElement>, TooltipProps>((props, propRef
 
 	const [open, setOpen] = useState(false);
 
-	// eslint-disable-next-line object-curly-newline
-	const { x, y, reference, floating, strategy, context, middlewareData, placement } = useFloating(
-		{
-			open,
-			onOpenChange: setOpen,
-			placement: position,
-			// Make sure the tooltip stays on the screen
-			whileElementsMounted: autoUpdate,
-			middleware: [
-				offset(12),
-				flip(),
-				shift(),
-				arrow({
-					element: arrowEl,
-				}),
-			],
-		}
-	);
+	const {
+		x,
+		y,
+		reference,
+		floating,
+		strategy,
+		context,
+		middlewareData,
+		placement = 'top',
+	} = useFloating({
+		open,
+		onOpenChange: setOpen,
+		placement: position,
+		whileElementsMounted: autoUpdate, // Make sure the tooltip stays on the screen
+		middleware: [
+			offset(12),
+			flip(),
+			shift(),
+			arrow({
+				element: arrowEl,
+			}),
+		],
+	});
 
 	// Event listeners to change the open state
 	const hover = useHover(context, {
 		move: true,
 	});
+
 	const focus = useFocus(context);
 	const dismiss = useDismiss(context);
+
 	// Role props for screen readers
 	const role = useRole(context, {
 		role: 'tooltip',
