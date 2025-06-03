@@ -1,5 +1,7 @@
 /* eslint-disable no-continue */
 /* eslint-disable no-param-reassign */
+import React from 'react';
+
 import { format as fnsFormat } from 'date-fns';
 import { DAYS, FULL_MONTHS, MONTHS } from '../constants';
 import type {
@@ -11,20 +13,13 @@ import type {
 	HSL,
 } from '../types/utils';
 
-export const sumArrayOfObjects = (
-	objects: Array<Record<string, number>>
-): Record<string, number> => {
-	return objects.reduce((acc, cur) => {
-		const keysOfCurrentObject = Object.keys(cur) as Array<keyof typeof cur>;
-
-		keysOfCurrentObject.forEach((key) => {
-			if (Object.prototype.hasOwnProperty.call(cur, key)) {
-				acc[key] = (acc[key] || 0) + (cur[key] || 0);
-			}
+export const sumArrayOfObjects = (objects: Record<string, number>[]): Record<string, number> => {
+	return objects.reduce<Record<string, number>>((acc, cur) => {
+		Object.keys(cur).forEach((key) => {
+			acc[key] = (acc[key] ?? 0) + (cur[key] ?? 0);
 		});
-
 		return acc;
-	}, {} as Record<string, number>);
+	}, {});
 };
 
 export const getSpacedDisplayName = (string = ''): string => {
@@ -46,10 +41,10 @@ export const getJSDateFromEpoch = (epoch: number): Date => {
 export const getDateFromEpoch = (epoch: number): string => {
 	const date = new Date(0);
 	date.setUTCSeconds(epoch);
-	const paddedDate: string = date.getDate().toString().padStart(2, '0');
-	const month: string = MONTHS[date.getMonth()]!;
-	const year: number = date.getFullYear();
-	return `${month} ${paddedDate}, ${year}`;
+	const paddedDate = date.getDate().toString().padStart(2, '0');
+	const month = MONTHS[date.getMonth()] ?? 'InvalidMonth';
+	const year = date.getFullYear();
+	return `${month} ${paddedDate}, ${year.toString()}`;
 };
 
 export const getTimeFromEpoch = (epoch: number): string => {
@@ -88,37 +83,31 @@ export const epochToFormattedDate = (
 		const hours12 = ((date.getHours() + 11) % 12) + 1;
 		const meridian = date.getHours() >= 12 ? 'PM' : 'AM';
 
-		const timeFormat: { [key: number]: string } = {
-			24: `${hours}:${minutes}:${seconds} Hrs`,
-			12: `${hours12}:${minutes}:${seconds} ${meridian}`,
+		const timeFormat: Record<number, string> = {
+			24: `${hours.toString()}:${minutes.toString()}:${seconds.toString()} Hrs`,
+			12: `${hours12.toString()}:${minutes.toString()}:${seconds.toString()} ${meridian}`,
 		};
 
-		return timeFormat[typeof format === 'number' ? format : 12]!;
+		const resolvedFormat = typeof format === 'number' ? format : 12;
+		return timeFormat[resolvedFormat] ?? 'AM';
 	}
 
-	if (type === 'date') {
-		if (typeof format === 'string') {
-			return fnsFormat(date, format);
-		}
-
-		const paddedDate = date.getDate().toString().padStart(2, '0');
-		const month = MONTHS[date.getMonth()];
-		const year = date.getFullYear();
-
-		return `${month} ${paddedDate}, ${year}`;
+	if (typeof format === 'string') {
+		return fnsFormat(date, format);
 	}
 
-	return null;
+	const paddedDate = date.getDate().toString().padStart(2, '0');
+	const month = MONTHS[date.getMonth()];
+	const year = date.getFullYear();
+
+	return `${month ?? 'Unknown'} ${paddedDate}, ${year.toString()}`;
 };
 
 export const uniqueArray = <T>(array: T[]): T[] => {
 	return [...new Set(array)];
 };
 
-export const uniqueArrayOfObjects = <T extends Record<string, any>>(
-	array: T[] = [],
-	key: keyof T
-): T[] => {
+export const uniqueArrayOfObjects = <T extends object>(array: T[] = [], key: keyof T): T[] => {
 	return array.filter((value, index, self) => {
 		return (
 			index ===
@@ -133,21 +122,21 @@ export const getInitialsOfName = (name = ''): string => {
 	const names = name.split(' ');
 	let initials = names[0] ? names[0].substring(0, 1).toUpperCase() : '';
 	if (names.length > 1) {
-		initials += names[names.length - 1]?.substring(0, 1).toUpperCase() || '';
+		initials += names[names.length - 1]?.substring(0, 1).toUpperCase() ?? '';
 	}
 	return initials;
 };
 
-export const safeJSONParse = (object: string): any | null => {
+export const safeJSONParse = (object: string): unknown => {
 	try {
 		return JSON.parse(object);
-	} catch (error) {
+	} catch {
 		return null;
 	}
 };
 
-export function cloneDeep<T>(object: T): T {
-	return safeJSONParse(JSON.stringify(object));
+export function cloneDeep<T extends object>(object: T): T {
+	return JSON.parse(JSON.stringify(object)) as T;
 }
 
 export function classes(...args: (string | false | null | undefined)[]): string {
@@ -215,13 +204,12 @@ export const stringToPath = (string: string): string[] => {
  * @returns {*} Returns the resolved value.
  */
 
-export const get = <T = any, U = any>(
-	object: T,
+export const get = <U = unknown>(
+	object: unknown,
 	path: string | string[],
 	defaultValue?: U
 ): U | undefined => {
-	let pathArr: string[] | null = null;
-	let srcObject: any = object;
+	let pathArr: string[];
 
 	if (Array.isArray(path)) {
 		pathArr = [...path];
@@ -231,51 +219,43 @@ export const get = <T = any, U = any>(
 		return defaultValue;
 	}
 
-	if (!pathArr) {
-		return defaultValue;
-	}
-
+	let srcObject: unknown = object;
 	let index = 0;
 	const { length } = pathArr;
 
-	while (srcObject != null && index < length) {
+	while (index < length) {
 		const key = pathArr[index++];
-		if (key !== undefined) {
-			srcObject = srcObject?.[key.toString()];
+
+		if (typeof srcObject === 'object' && srcObject !== null && key !== undefined) {
+			srcObject = (srcObject as Record<string, unknown>)[key.toString()];
+		} else {
+			srcObject = undefined;
 		}
+
 		if (srcObject == null) {
 			break;
 		}
 	}
 
-	return index && index === length && srcObject !== undefined ? srcObject : defaultValue;
+	return index === length && srcObject !== undefined ? (srcObject as U) : defaultValue;
 };
 
 export const getDayInfo = (date: Date): DayInfo => {
-	const month = FULL_MONTHS[date.getMonth()]!;
-	const monthAsNumber = date.getMonth();
-	const year = date.getFullYear();
-	const dateAsNumber = date.getDate();
-	const day = DAYS[date.getDay()]!;
-	const dayAsNumber = date.getDay();
-	const hoursIn12 = date.getHours();
-	const hours = ((date.getHours() + 11) % 12) + 1;
-	const minutes = date.getMinutes();
-	const seconds = date.getSeconds();
-	const meridian = hoursIn12 >= 12 ? 'PM' : 'AM';
+	const monthIndex = date.getMonth();
+	const dayIndex = date.getDay();
 
 	return {
-		month,
-		monthAsNumber,
-		year,
-		dateAsNumber,
-		day,
-		dayAsNumber,
-		hoursIn12,
-		hours,
-		minutes,
-		seconds,
-		meridian,
+		month: FULL_MONTHS[monthIndex] ?? 'InvalidMonth',
+		monthAsNumber: monthIndex,
+		year: date.getFullYear(),
+		dateAsNumber: date.getDate(),
+		day: DAYS[dayIndex] ?? 'InvalidDay',
+		dayAsNumber: dayIndex,
+		hoursIn12: date.getHours(),
+		hours: ((date.getHours() + 11) % 12) + 1,
+		minutes: date.getMinutes(),
+		seconds: date.getSeconds(),
+		meridian: date.getHours() >= 12 ? 'PM' : 'AM',
 	};
 };
 
@@ -283,16 +263,14 @@ export const getDatesInStringFormat = ({
 	startingDate,
 	endingDate,
 }: DateRange): [string, string] => {
-	return [
-		`${startingDate.getDate()} ${MONTHS[startingDate.getMonth()]!.substring(
-			0,
-			3
-		)} ${startingDate.getFullYear()}`,
-		`${endingDate.getDate()} ${MONTHS[endingDate.getMonth()]!.substring(
-			0,
-			3
-		)} ${endingDate.getFullYear()}`,
-	];
+	const formatDate = (date: Date) => {
+		const day = date.getDate().toString();
+		const month = MONTHS[date.getMonth()]?.substring(0, 3) ?? 'Jan';
+		const year = date.getFullYear().toString();
+		return `${day} ${month} ${year}`;
+	};
+
+	return [formatDate(startingDate), formatDate(endingDate)];
 };
 
 export const getDatesInAMonth = ({ month, year }: GetDatesInMonthParams): DatesInMonthResult => {
@@ -320,12 +298,12 @@ export const getCSSVariableValue = (variable: string): string => {
 	return getComputedStyle(document.documentElement).getPropertyValue(variable).trim();
 };
 
-export const sanitizeJSON = (
-	obj: Record<string, any> = {},
+export const sanitizeJSON = <T extends Record<string, unknown>>(
+	obj: T = {} as T,
 	aliases: Record<string, string> = {},
 	exclusions: string[] = []
-): Record<string, any> => {
-	return Object.keys(obj).reduce((acc: Record<string, any>, param: string) => {
+): Record<string, unknown> => {
+	return Object.keys(obj).reduce((acc: Record<string, unknown>, param: string) => {
 		const value = obj[param];
 		if (
 			value !== '' &&
@@ -334,22 +312,15 @@ export const sanitizeJSON = (
 			value !== 'undefined' &&
 			!exclusions.includes(param)
 		) {
-			const alias = aliases[param];
-			if (alias) {
-				acc[alias] = value;
-			} else {
-				acc[param] = value;
-			}
+			const key = aliases[param] ?? param;
+			acc[key] = value;
 		}
 		return acc;
 	}, {});
 };
 
-export const areTwinObjects = (
-	obj1: Record<string | number, any>,
-	obj2: Record<string | number, any>
-): boolean => {
-	if (typeof obj1 !== 'object' || typeof obj2 !== 'object') {
+export const areTwinObjects = (obj1: unknown, obj2: unknown): boolean => {
+	if (typeof obj1 !== 'object' || typeof obj2 !== 'object' || obj1 === null || obj2 === null) {
 		return obj1 === obj2;
 	}
 
@@ -360,16 +331,18 @@ export const areTwinObjects = (
 		return false;
 	}
 
-	// eslint-disable-next-line no-restricted-syntax
-	for (const key of keys1) {
-		if (!keys2.includes(key) || !areTwinObjects(obj1[key], obj2[key])) {
+	return keys1.every((key) => {
+		if (!Object.prototype.hasOwnProperty.call(obj2, key)) {
 			return false;
 		}
-	}
-	return false;
+
+		const val1 = (obj1 as Record<string, unknown>)[key];
+		const val2 = (obj2 as Record<string, unknown>)[key];
+		return areTwinObjects(val1, val2);
+	});
 };
 
-export function getDuplicatesSansArray<T extends Record<string, any>>({
+export function getDuplicatesSansArray<T extends Record<string, unknown>>({
 	array = [],
 	properties = [],
 	hasObjects = true,
@@ -424,7 +397,9 @@ export const generateColors = (options: ColorOptions = {}): string[] => {
 
 	// Hex to HSL conversion
 	const hexToHSL = (hex: string): HSL => {
-		const [r, g, b] = hexToRGB(hex).map((v) => v / 255) as [number, number, number];
+		const [r, g, b] = hexToRGB(hex).map((v) => {
+			return v / 255;
+		}) as [number, number, number];
 
 		const cmin = Math.min(r, g, b);
 		const cmax = Math.max(r, g, b);
