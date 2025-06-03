@@ -61,7 +61,7 @@ const TextField = forwardRef<HTMLInputElement | HTMLTextAreaElement, TextFieldPr
 			defaultValue = '',
 			onFocus,
 			onBlur,
-			onChange = () => {},
+			onChange,
 			size = 'md',
 			border = 'default',
 			LeftComponent,
@@ -71,19 +71,19 @@ const TextField = forwardRef<HTMLInputElement | HTMLTextAreaElement, TextFieldPr
 			inputProps = {},
 			feedback,
 			maxLength,
-			onKeyDown = () => {},
+			onKeyDown,
 		} = props;
 
 		const { current: isControlled } = useRef(value !== undefined);
 
 		const [uncontrolledValue, setUncontrolledValue] = useState<string>(defaultValue);
-		const [inputType, setInputType] = useState<string>(type ?? 'textarea');
+		const [inputType, setInputType] = useState<string>(type);
 
 		const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
 			const { fieldValue } = inputHelper(event);
 
 			if (isControlled) {
-				onChange(event, fieldValue);
+				onChange?.(event, fieldValue);
 			} else {
 				setUncontrolledValue(fieldValue);
 			}
@@ -142,19 +142,19 @@ const TextField = forwardRef<HTMLInputElement | HTMLTextAreaElement, TextFieldPr
 						/>
 						{feedback && (
 							<Tooltip
-								content={feedback?.info ?? feedback?.error ?? ''}
+								content={feedback.info ?? feedback.error ?? ''}
 								position='right'
 								className={styles.tooltip}
 								variant='light'>
 								<span
 									className={classes(
 										styles.span,
-										feedback?.error ? styles.error : ''
+										feedback.error ? styles.error : ''
 									)}>
 									<InfoIcon
 										className={classes(
 											styles.icon,
-											feedback?.error ? styles.error : ''
+											feedback.error ? styles.error : ''
 										)}
 									/>
 								</span>
@@ -166,16 +166,13 @@ const TextField = forwardRef<HTMLInputElement | HTMLTextAreaElement, TextFieldPr
 			if (feedback) {
 				return (
 					<Tooltip
-						content={feedback?.info ?? feedback?.error ?? ''}
+						content={feedback.info ?? feedback.error ?? ''}
 						position='right'
 						className={styles.tooltip}
 						variant='light'>
-						<span className={classes(styles.span, feedback?.error ? styles.error : '')}>
+						<span className={classes(styles.span, feedback.error ? styles.error : '')}>
 							<InfoIcon
-								className={classes(
-									styles.icon,
-									feedback?.error ? styles.error : ''
-								)}
+								className={classes(styles.icon, feedback.error ? styles.error : '')}
 							/>
 						</span>
 					</Tooltip>
@@ -184,7 +181,7 @@ const TextField = forwardRef<HTMLInputElement | HTMLTextAreaElement, TextFieldPr
 			return RightComponent ? <RightComponent /> : null;
 		};
 
-		const inputValue = isControlled ? value ?? '' : uncontrolledValue;
+		const inputValue = isControlled ? (value ?? '') : uncontrolledValue;
 
 		const Input = createElement(type === 'textarea' ? 'textarea' : 'input', {
 			id,
@@ -196,7 +193,7 @@ const TextField = forwardRef<HTMLInputElement | HTMLTextAreaElement, TextFieldPr
 			...(maxLength !== undefined
 				? {
 						maxLength,
-				  }
+					}
 				: {}),
 
 			onFocus: () => {
@@ -211,7 +208,8 @@ const TextField = forwardRef<HTMLInputElement | HTMLTextAreaElement, TextFieldPr
 			onChange: handleChange,
 			className: classes(styles[size], styles.input, feedback?.error ? styles.error : ''),
 			...inputProps,
-		} as React.InputHTMLAttributes<HTMLInputElement> & React.TextareaHTMLAttributes<HTMLTextAreaElement>);
+		} as React.InputHTMLAttributes<HTMLInputElement> &
+			React.TextareaHTMLAttributes<HTMLTextAreaElement>);
 
 		return (
 			<div className={classes(styles.root, className)}>
@@ -225,12 +223,12 @@ const TextField = forwardRef<HTMLInputElement | HTMLTextAreaElement, TextFieldPr
 							feedback?.error ? styles['feedback-error'] : ''
 						)}
 						component1={
-							(LeftComponent || type === 'password' || type === 'email') &&
+							(LeftComponent != null || type === 'password' || type === 'email') &&
 							getLeftComponent()
 						}
 						component2={Input}
 						component3={
-							(RightComponent || type === 'password' || feedback) &&
+							(RightComponent != null || type === 'password' || feedback) &&
 							getRightComponent()
 						}
 					/>
