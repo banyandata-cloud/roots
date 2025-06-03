@@ -1,18 +1,18 @@
-import type { HTMLAttributes, ReactNode } from 'react';
+import type { ComponentProps, JSX, ReactNode } from 'react';
 
-type Variant = 'h1' | 'h2' | 'b1' | 'b2' | 'b3';
+export type TextVariant = 'h1' | 'h2' | 'b1' | 'b2' | 'b3';
+export type TextStroke = 'regular' | 'medium' | 'semibold' | 'bold';
+export type TextFontWeight = 100 | 200 | 300 | 400 | 500 | 600;
 type ComponentType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span' | 'a';
-type Stroke = 'regular' | 'medium' | 'semibold' | 'bold';
-type FontWeight = 100 | 200 | 300 | 400 | 500 | 600;
 
-export interface TextProps {
-	variant?: Variant;
+export interface TextProps<T extends keyof JSX.IntrinsicElements> {
+	variant?: TextVariant;
 	component?: ComponentType;
-	stroke?: Stroke;
-	weight?: FontWeight;
+	stroke?: TextStroke;
+	weight?: TextFontWeight;
 	italic?: boolean;
 	underline?: boolean;
 	children?: ReactNode;
 	className?: string;
-	attrs?: HTMLAttributes<HTMLElement>;
+	attrs?: ComponentProps<T>;
 }
