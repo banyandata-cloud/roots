@@ -194,10 +194,10 @@ const CapsuleChart = (props) => {
 			? 0 -
 					((seriesData?.chartData?.[key]?.[`x${index + 1}`] ?? 0) === 0
 						? 0.004
-						: seriesData?.chartData?.[key]?.[`x${index + 1}`] ?? 0)
+						: (seriesData?.chartData?.[key]?.[`x${index + 1}`] ?? 0))
 			: (seriesData?.chartData?.[key]?.[`x${index + 1}`] ?? 0) === 0
-			? 0.004
-			: seriesData?.chartData?.[key]?.[`x${index + 1}`] ?? 0;
+				? 0.004
+				: (seriesData?.chartData?.[key]?.[`x${index + 1}`] ?? 0);
 	};
 
 	const generateSeries = () => {
