@@ -1,4 +1,4 @@
-import type { HTMLAttributes, ReactElement } from 'react';
+import type { ComponentProps, JSX, ReactElement } from 'react';
 
 /**
  * Defines the possible size values for the cell component.
@@ -27,9 +27,16 @@ type RootDOMTypes = 'div' | 'span' | 'button';
 type RadiusTypes = 'none' | 'default' | 'round' | 'ellipse';
 
 /**
+ * Specifies the Component Type to be rendered as it is dynamic.
+ * - 'button': default as button
+ * - 'div': Otherwise as div
+ */
+export type BaseCellComponentType = 'button' | 'div';
+
+/**
  * Props for the base cell component.
  */
-export interface BaseCellProps {
+export interface BaseCellProps<T extends keyof JSX.IntrinsicElements> {
 	/**
 	 * Additional CSS class names to apply to the cell.
 	 */
@@ -43,12 +50,12 @@ export interface BaseCellProps {
 	/**
 	 * If true, the cell will be flexible and expand to fill available space.
 	 */
-	flexible?: boolean;
+	flexible?: boolean | undefined;
 
 	/**
 	 * An optional React element to render inside the cell.
 	 */
-	component1?: ReactElement;
+	component1?: ReactElement | undefined;
 
 	/**
 	 * The main secondary React element to render inside the cell.
@@ -58,7 +65,7 @@ export interface BaseCellProps {
 	/**
 	 * An optional tertiary React element to render inside the cell.
 	 */
-	component3?: ReactElement;
+	component3?: ReactElement | undefined;
 
 	/**
 	 * The root DOM element type for the cell. Can be 'div', 'span', or 'button'.
@@ -68,7 +75,7 @@ export interface BaseCellProps {
 	/**
 	 * Additional HTML attributes to apply to the root element.
 	 */
-	attrs?: HTMLAttributes<ReactElement>;
+	attrs?: ComponentProps<T>;
 
 	/**
 	 * Border radius style for the cell. Can be 'none', 'default', 'round', or 'ellipse'.

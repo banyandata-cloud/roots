@@ -29,7 +29,6 @@ const Link = forwardRef<RefObject<HTMLElement>, LinkProps>((props, ref) => {
 			italic={italic}
 			className={classes(styles.root, styles[`underline-${underline}`], className)}
 			attrs={{
-				to: href,
 				href,
 				target,
 				onClick,

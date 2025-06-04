@@ -1,5 +1,5 @@
 import { useEffect, useState, type CSSProperties, type ReactElement } from 'react';
-import { COLORS } from 'styles';
+import { COLORS } from '../../../styles';
 import { Toggle } from '../../Toggle';
 
 type ThemeType = 'light' | 'dark';
