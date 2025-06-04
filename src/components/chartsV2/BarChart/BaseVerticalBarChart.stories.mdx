@@ -9,7 +9,7 @@ import {
 	transformToStack,
 	stackData,
 } from './BaseVerticalBarChartData.js';
-import BaseBarChart from './BaseVerticalBarChart.jsx';
+import BaseBarChart from './BaseVerticalBarChart';
 
 <Meta title='Components/ChartsV2/BarChart' parameters={{ options: { showToolbar: false } }} />
 
@@ -73,25 +73,31 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 				'#E96B6B',
 			],
 			chartOptions: {
-				datalabels: {
-					formatter: (value, context) => {
-						return `${value}`;
+				plugins: {
+					legend: {
+						display: false,
 					},
-					borderColor: 'black',
-					borderWidth: 1,
-					borderRadius: 3,
-					padding: {
-						top: 2,
-						bottom: 2,
-						left: 4,
-						right: 4,
-					},
-					align: 'top',
-					anchor: 'end',
-					color: 'black',
-					font: {
-						size: 12,
-						family: 'Poppins',
+					datalabels: {
+						display: false,
+						formatter: (value, context) => {
+							return `${value}`;
+						},
+						borderColor: 'black',
+						borderWidth: 1,
+						borderRadius: 3,
+						padding: {
+							top: 2,
+							bottom: 2,
+							left: 4,
+							right: 4,
+						},
+						align: 'top',
+						anchor: 'end',
+						color: 'black',
+						font: {
+							size: 12,
+							family: 'Poppins',
+						},
 					},
 				},
 			},
@@ -223,26 +229,31 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 				'#E96B6B',
 			],
 			chartOptions: {
-				datalabels: {
-					display: false,
-					formatter: (value, context) => {
-						return `${value}`;
+				plugins: {
+					legend: {
+						display: false,
 					},
-					borderColor: 'black',
-					borderWidth: 1,
-					borderRadius: 3,
-					padding: {
-						top: 2,
-						bottom: 2,
-						left: 4,
-						right: 4,
-					},
-					align: 'top',
-					anchor: 'end',
-					color: 'black',
-					font: {
-						size: 12,
-						family: 'Poppins',
+					datalabels: {
+						display: false,
+						formatter: (value, context) => {
+							return `${value}`;
+						},
+						borderColor: 'black',
+						borderWidth: 1,
+						borderRadius: 3,
+						padding: {
+							top: 2,
+							bottom: 2,
+							left: 4,
+							right: 4,
+						},
+						align: 'top',
+						anchor: 'end',
+						color: 'black',
+						font: {
+							size: 12,
+							family: 'Poppins',
+						},
 					},
 				},
 			},

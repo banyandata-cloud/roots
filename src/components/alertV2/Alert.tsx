@@ -1,7 +1,13 @@
 import { useDismiss, useFloating, useInteractions } from '@floating-ui/react-dom-interactions';
 import { useAnimate } from 'framer-motion';
-import PropTypes from 'prop-types';
-import { forwardRef, useEffect, useImperativeHandle, useState } from 'react';
+import {
+	forwardRef,
+	ForwardRefRenderFunction,
+	ReactNode,
+	useEffect,
+	useImperativeHandle,
+	useState,
+} from 'react';
 import { classes } from '../../utils/utils';
 import { Button } from '../buttons';
 import { AlertIcon, CrossIcon } from '../icons';
@@ -34,31 +40,59 @@ const ANIMATION = {
  * @returns {JSX.Element} - The rendered alert component.
  */
 
-const Alert = forwardRef((props, ref) => {
-	const {
+type AlertType = 'info' | 'error' | 'warning' | 'success' | 'danger';
+type AlertPosition = 'bottom-right' | 'bottom-center' | 'top-right' | 'top-center';
+
+interface AlertProps {
+	showIcon?: boolean;
+	shadow?: boolean;
+	position?: AlertPosition;
+	animation?: boolean;
+	className?: string;
+}
+
+interface AlertConfig {
+	title: string | null;
+	description: string | null;
+	icon?: React.ComponentType<{ className?: string }>;
+	type: AlertType;
+	action?: React.ComponentType;
+	position?: AlertPosition | null;
+	onClose?: () => void;
+	autoDismiss?: boolean;
+	dismissTime?: number;
+}
+
+export interface AlertHandle {
+	alert: (props: Partial<AlertConfig>) => void;
+}
+
+const Alert: ForwardRefRenderFunction<AlertHandle, AlertProps> = (
+	{
 		showIcon = true,
 		shadow = true,
 		position: defaultPosition = 'bottom-center',
 		animation = true,
 		className = '',
-	} = props;
-
+	},
+	ref
+) => {
 	const [open, setOpen] = useState(false);
-	const [alertProps, setAlertProps] = useState({
+
+	const [alertProps, setAlertProps] = useState<AlertConfig>({
 		title: null,
 		description: null,
-		icon: null,
+		icon: undefined,
 		type: 'info',
-		action: null,
+		action: undefined,
 		position: null,
 		onClose: () => {
-			setOpen((prev) => {
-				return !prev;
-			});
+			setOpen((prev) => !prev);
 		},
 		autoDismiss: true,
 		dismissTime: ALERT_DISMISS_TIME,
 	});
+
 	const {
 		title,
 		description,
@@ -73,7 +107,7 @@ const Alert = forwardRef((props, ref) => {
 
 	const position = appliedPosition ?? defaultPosition;
 
-	let Icon = null;
+	let Icon: ReactNode = null;
 	if (CustomIcon != null) {
 		Icon = <CustomIcon className={styles.icon} />;
 	} else {
@@ -94,8 +128,7 @@ const Alert = forwardRef((props, ref) => {
 				Icon = <AlertIcon.Danger className={styles.icon} v2 />;
 				break;
 			default:
-				Icon = <CustomIcon />;
-				break;
+				Icon = CustomIcon ? <CustomIcon /> : null;
 		}
 	}
 
@@ -105,27 +138,18 @@ const Alert = forwardRef((props, ref) => {
 	});
 	const [scope, animate] = useAnimate();
 
-	const alert = (appliedAlertProps) => {
-		setAlertProps({
-			...alertProps,
+	const alert = (appliedAlertProps: Partial<AlertConfig>) => {
+		setAlertProps((prev) => ({
+			...prev,
 			...appliedAlertProps,
-		});
+		}));
 	};
 
-	useImperativeHandle(ref, () => {
-		return {
-			/**
-			 * methods to get exposed
-			 */
-			alert,
-		};
-	});
+	useImperativeHandle(ref, () => ({ alert }));
 
 	useEffect(() => {
 		if (alertProps.title) {
-			setOpen((prev) => {
-				return !prev;
-			});
+			setOpen((prev) => !prev);
 		}
 	}, [alertProps]);
 
@@ -133,21 +157,19 @@ const Alert = forwardRef((props, ref) => {
 		if (scope.current && animation) {
 			const [positionType, staticPosition] = position.split('-');
 			animate(scope.current, {
-				y: ANIMATION.transform[positionType],
-				x: ANIMATION.static[staticPosition],
+				y: ANIMATION.transform[positionType as keyof typeof ANIMATION.transform],
+				x: ANIMATION.static[staticPosition as keyof typeof ANIMATION.static],
 			});
 		}
-	});
+	}, [animation, position, scope]);
 
-	// eslint-disable-next-line consistent-return
 	useEffect(() => {
 		if (alertProps.title && autoDismiss) {
 			const timer = setTimeout(() => {
 				setOpen(false);
 			}, dismissTime);
-			return () => {
-				return clearTimeout(timer);
-			};
+
+			return () => clearTimeout(timer);
 		}
 	}, [alertProps]);
 
@@ -183,28 +205,17 @@ const Alert = forwardRef((props, ref) => {
 							size='auto'
 							variant='text'
 							onClick={() => {
-								onClose();
+								onClose?.();
 								setOpen(false);
 							}}
 							className={styles.close}
-							leftComponent={() => {
-								return <CrossIcon className={styles.icon} />;
-							}}
+							leftComponent={() => <CrossIcon className={styles.icon} />}
 						/>
 					)}
 				</div>
 			</div>
 		</Popper>
 	);
-});
-
-Alert.propTypes = {
-	showIcon: PropTypes.bool,
-	border: PropTypes.oneOf(['default', 'thick-left', 'none']),
-	shadow: PropTypes.bool,
-	position: PropTypes.oneOf(['bottom-right', 'bottom-center', 'top-right', 'top-center']),
-	animation: PropTypes.bool,
-	className: PropTypes.string,
 };
 
-export default Alert;
+export default forwardRef(Alert);

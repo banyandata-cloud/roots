@@ -95,6 +95,7 @@ div.popover {
 				color: $text-color;
 			}
 			.value {
+				font-size: .875rem;
 				color: $text-color;
 				@include ellipsis;
 			}
