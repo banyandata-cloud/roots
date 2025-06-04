@@ -9,8 +9,17 @@
 	font-size: 0.875rem;
 	line-height: 1.3125rem;
 	color: $light-color3;
-	background: $text-color;
-	border-color: $text-color;
+	background-color: $text-color;
+
+	&.light {
+		background-color: $black;
+		color: $white;
+	}
+
+	&.dark {
+		background-color: $white;
+		color: $black;
+	}
 
 	.arrow {
 		position: absolute;

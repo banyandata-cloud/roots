@@ -42,8 +42,8 @@
 		"noPropertyAccessFromIndexSignature": false /* Require undeclared properties from index signatures to use element access */,
 
 		/* Module Resolution Options */
-		"moduleResolution": "node" /* Specify module resolution strategy */,
-		"baseUrl": "." /* Base directory to resolve non-absolute module names */,
+		"moduleResolution": "bundler" /* Specify module resolution strategy */,
+		"baseUrl": "./src" /* Base directory to resolve non-absolute module names */,
 		"paths": {
 			"@/*": ["src/*"] /* Path mapping for src imports */,
 			"@types/*": ["types/*"] /* Path mapping for types folder */

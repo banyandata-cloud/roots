@@ -1,32 +1,15 @@
 import {
 	createElement,
 	forwardRef,
-	type HTMLAttributes,
 	isValidElement,
 	type ReactElement,
-	type ReactNode,
+	type RefObject,
 } from 'react';
 import { classes } from '../../utils';
 import styles from './Text.module.css';
+import type { TextProps } from './types';
 
-type Variant = 'h1' | 'h2' | 'b1' | 'b2' | 'b3';
-type ComponentType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span' | 'a';
-type Stroke = 'regular' | 'medium' | 'semibold' | 'bold';
-type FontWeight = 100 | 200 | 300 | 400 | 500 | 600;
-
-interface TextProps {
-	variant?: Variant;
-	component?: ComponentType;
-	stroke?: Stroke;
-	weight?: FontWeight;
-	italic?: boolean;
-	underline?: boolean;
-	children?: ReactNode;
-	className?: string;
-	attrs?: HTMLAttributes<HTMLElement>;
-}
-
-const Text = forwardRef<HTMLElement, TextProps>((props, ref): ReactElement | null => {
+const Text = forwardRef<RefObject<HTMLElement>, TextProps>((props, ref): ReactElement | null => {
 	const {
 		variant = 'b2',
 		component = 'span',

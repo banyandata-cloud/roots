@@ -43,6 +43,10 @@
 		border-radius: 1.563rem;
 	}
 
+	&.border-radius-none {
+		border-radius: 0rem;
+	}
+
 	&.flexible {
 		flex-grow: 1;
 		flex-shrink: 1;

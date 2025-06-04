@@ -1,27 +1,36 @@
-import { useEffect, useState } from 'react';
-import { COLORS } from '../../../styles';
+import { useEffect, useState, type CSSProperties, type ReactElement } from 'react';
+import { COLORS } from 'styles';
 import { Toggle } from '../../Toggle';
 
-const ThemedContainer = (props) => {
-	const { theme, style, className, children } = props;
-	const [colorMode, setColorMode] = useState('light');
+type ThemeType = 'light' | 'dark';
 
-	const themeOptions = [
-		{
-			title: 'Light mode',
-			value: 'light',
-		},
-		{
-			title: 'Dark mode',
-			value: 'dark',
-		},
-	];
+interface ThemedContainerProps {
+	theme?: ThemeType;
+	style?: CSSProperties;
+	className?: string;
+	children: ReactElement;
+}
+
+const themeOptions = [
+	{
+		title: 'Light mode',
+		value: 'light',
+	},
+	{
+		title: 'Dark mode',
+		value: 'dark',
+	},
+];
+
+const ThemedContainer = (props: ThemedContainerProps): ReactElement => {
+	const { theme, style, className, children } = props;
+	const [colorMode, setColorMode] = useState<ThemeType>('light');
 
 	useEffect(() => {
 		document.documentElement.setAttribute('data-theme', colorMode);
 	}, [colorMode]);
 
-	const updateColorMode = (value) => {
+	const updateColorMode = (value: ThemeType) => {
 		setColorMode(value);
 	};
 
@@ -51,12 +60,6 @@ const ThemedContainer = (props) => {
 			{children}
 		</div>
 	);
-};
-
-ThemedContainer.defaultProps = {
-	theme: 'light',
-	style: {},
-	className: '',
 };
 
 export default ThemedContainer;
