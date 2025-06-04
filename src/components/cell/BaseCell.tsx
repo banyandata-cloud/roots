@@ -1,7 +1,7 @@
 import { createElement, forwardRef, isValidElement, type ReactElement } from 'react';
 import { classes } from '../../utils';
 import styles from './BaseCell.module.css';
-import type { BaseCellProps } from './types';
+import type { BaseCellComponentType, BaseCellProps } from './types';
 
 /**
  * BaseCell - A flexible container component for displaying up to three components in a structured layout
@@ -17,7 +17,7 @@ import type { BaseCellProps } from './types';
  * />
  * ```
  */
-export const BaseCell = forwardRef<HTMLElement, BaseCellProps>(
+export const BaseCell = forwardRef<HTMLElement, BaseCellProps<BaseCellComponentType>>(
 	(props, ref): ReactElement | null => {
 		const {
 			className,
