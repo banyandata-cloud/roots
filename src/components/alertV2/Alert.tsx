@@ -1,18 +1,13 @@
 import { useDismiss, useFloating, useInteractions } from '@floating-ui/react-dom-interactions';
 import { useAnimate } from 'framer-motion';
-import {
-	forwardRef,
-	ForwardRefRenderFunction,
-	ReactNode,
-	useEffect,
-	useImperativeHandle,
-	useState,
-} from 'react';
+import type { ForwardRefRenderFunction, ReactNode } from 'react';
+import { forwardRef, useEffect, useImperativeHandle, useState } from 'react';
 import { classes } from '../../utils/utils';
 import { Button } from '../buttons';
 import { AlertIcon, CrossIcon } from '../icons';
 import Popper from '../popper/Popper';
 import styles from './Alert.module.css';
+import type { AlertConfig, AlertHandle, AlertProps } from './types';
 
 const ALERT_DISMISS_TIME = 2000;
 
@@ -40,33 +35,6 @@ const ANIMATION = {
  * @returns {JSX.Element} - The rendered alert component.
  */
 
-type AlertType = 'info' | 'error' | 'warning' | 'success' | 'danger';
-type AlertPosition = 'bottom-right' | 'bottom-center' | 'top-right' | 'top-center';
-
-interface AlertProps {
-	showIcon?: boolean;
-	shadow?: boolean;
-	position?: AlertPosition;
-	animation?: boolean;
-	className?: string;
-}
-
-interface AlertConfig {
-	title: string | null;
-	description: string | null;
-	icon?: React.ComponentType<{ className?: string }>;
-	type: AlertType;
-	action?: React.ComponentType;
-	position?: AlertPosition | null;
-	onClose?: () => void;
-	autoDismiss?: boolean;
-	dismissTime?: number;
-}
-
-export interface AlertHandle {
-	alert: (props: Partial<AlertConfig>) => void;
-}
-
 const Alert: ForwardRefRenderFunction<AlertHandle, AlertProps> = (
 	{
 		showIcon = true,
@@ -80,12 +48,12 @@ const Alert: ForwardRefRenderFunction<AlertHandle, AlertProps> = (
 	const [open, setOpen] = useState(false);
 
 	const [alertProps, setAlertProps] = useState<AlertConfig>({
-		title: null,
-		description: null,
+		title: undefined,
+		description: undefined,
 		icon: undefined,
 		type: 'info',
 		action: undefined,
-		position: null,
+		position: undefined,
 		onClose: () => {
 			setOpen((prev) => !prev);
 		},
@@ -109,7 +77,7 @@ const Alert: ForwardRefRenderFunction<AlertHandle, AlertProps> = (
 
 	let Icon: ReactNode = null;
 	if (CustomIcon != null) {
-		Icon = <CustomIcon className={styles.icon} />;
+		Icon = <CustomIcon className={styles.icon as string} />;
 	} else {
 		switch (type) {
 			case 'info':
@@ -128,7 +96,7 @@ const Alert: ForwardRefRenderFunction<AlertHandle, AlertProps> = (
 				Icon = <AlertIcon.Danger className={styles.icon} v2 />;
 				break;
 			default:
-				Icon = CustomIcon ? <CustomIcon /> : null;
+				Icon = null;
 		}
 	}
 
@@ -171,6 +139,7 @@ const Alert: ForwardRefRenderFunction<AlertHandle, AlertProps> = (
 
 			return () => clearTimeout(timer);
 		}
+		return;
 	}, [alertProps]);
 
 	const { getFloatingProps } = useInteractions([useDismiss(context)]);

@@ -1,7 +1,7 @@
 /* eslint-disable no-restricted-globals */
 /* eslint-disable no-nested-ternary */
 /* eslint-disable react/forbid-prop-types */
-import type { ChartData, ChartOptions } from 'chart.js';
+import type { ChartData, ChartDataset, ChartOptions } from 'chart.js';
 import {
 	BarElement,
 	CategoryScale,
@@ -15,78 +15,9 @@ import React from 'react';
 import { Bar } from 'react-chartjs-2';
 import { COLORS } from '../../../styles';
 import { Skeleton } from './Skeleton'; // Assuming this is your custom loading component
+import type { BaseBarChartProps } from './types';
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend, ChartDataLabels);
-
-interface ChartDataItem {
-	[key: string]: number | null;
-}
-
-interface SeriesData {
-	chartData: Record<string, ChartDataItem>;
-}
-
-interface FontOptions {
-	size?: number;
-	family?: string;
-	weight?: string;
-	color?: string;
-	titleColor?: string;
-}
-
-interface TooltipConfig {
-	borderWidth?: number;
-	bodySpacing?: number;
-	displayColors?: boolean;
-	colorBoxWidth?: number;
-	colorBoxHeight?: number;
-	usePointStyle?: boolean;
-	bodyFont?: FontOptions;
-	titleColor?: string;
-	bodyColor?: string;
-	[key: string]: any;
-}
-
-interface TitleConfig {
-	text?: string;
-	left?: number;
-	textStyle?: {
-		fontSize?: number;
-	};
-}
-
-interface GridOptions {
-	gridContainLabel?: boolean;
-}
-
-interface AxisOptions {
-	[key: string]: any;
-}
-
-interface BaseBarChartProps {
-	loading?: boolean;
-	seriesData: SeriesData;
-	title?: TitleConfig;
-	gridOptions?: GridOptions;
-	width?: string | number;
-	height?: string | number;
-	barThickness?: number;
-	borderRadius?: number;
-	barColor1?: string;
-	barColor2?: string;
-	xAxisTitle?: string;
-	yAxisTitle?: string;
-	tooltip?: TooltipConfig;
-	legends?: object;
-	chartOptions?: ChartOptions<'bar'>;
-	chartDatasets?: Partial<ChartDataset<'bar'>>;
-	xAxis?: AxisOptions;
-	yAxis?: AxisOptions;
-	styles?: React.CSSProperties;
-	vertical?: boolean;
-	stacked?: ChartDataset<'bar'>;
-	extra?: object;
-}
 
 const BaseBarChart: React.FC<BaseBarChartProps> = ({
 	loading,
@@ -113,7 +44,7 @@ const BaseBarChart: React.FC<BaseBarChartProps> = ({
 	extra,
 }) => {
 	if (loading) {
-		return <Skeleton vertical={vertical} />;
+		return <Skeleton />;
 	}
 
 	const labels = Object.keys(seriesData.chartData);
@@ -125,7 +56,7 @@ const BaseBarChart: React.FC<BaseBarChartProps> = ({
 		});
 	});
 
-	const barDatasets: ChartDataset<'bar'>[] = Array.from(allKeys).map((key, index) => ({
+	const barDatasets: ChartDataset<'bar'>[] = Array.from(allKeys).map((key) => ({
 		label: key,
 		backgroundColor:
 			key === 'x1'
@@ -133,9 +64,7 @@ const BaseBarChart: React.FC<BaseBarChartProps> = ({
 				: key === 'x2'
 				? barColor2 ?? COLORS.error
 				: COLORS.warning,
-		data: labels.map((label) =>
-			seriesData.chartData[label][key] !== undefined ? seriesData.chartData[label][key] : null
-		),
+		data: labels.map((label) => seriesData.chartData[label]?.[key] ?? null),
 		borderRadius,
 		barThickness,
 		...chartDatasets,
@@ -151,9 +80,7 @@ const BaseBarChart: React.FC<BaseBarChartProps> = ({
 			title: {
 				display: true,
 				align: 'start',
-				padding: {
-					left: title?.left ?? 0,
-				},
+				padding: 0,
 				font: {
 					size: title?.textStyle?.fontSize ?? 12,
 					family: 'Poppins',
@@ -172,7 +99,7 @@ const BaseBarChart: React.FC<BaseBarChartProps> = ({
 				bodyColor: tooltip?.bodyFont?.color ?? '#000',
 				bodyFont: {
 					family: 'Poppins',
-					...tooltip?.bodyFont,
+					...(tooltip?.bodyFont as any),
 				},
 				...tooltip,
 			},
@@ -204,7 +131,8 @@ const BaseBarChart: React.FC<BaseBarChartProps> = ({
 				ticks: {
 					color: 'black',
 					callback: (_value: string | number, index: number) => {
-						return seriesData.chartData[labels[index]]?.x1;
+						const label = labels[index];
+						return label ? seriesData.chartData[label]?.x1 ?? null : null;
 					},
 					font: {
 						family: 'Poppins',
@@ -227,7 +155,6 @@ const BaseBarChart: React.FC<BaseBarChartProps> = ({
 				},
 				ticks: {
 					color: 'black',
-					beginAtZero: true,
 					font: {
 						family: 'Poppins',
 					},

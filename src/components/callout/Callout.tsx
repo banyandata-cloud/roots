@@ -1,20 +1,9 @@
-import { ComponentType, forwardRef, ReactElement, ReactNode } from 'react';
+import type { ReactElement, ReactNode } from 'react';
+import { forwardRef } from 'react';
 import { classes } from '../../utils/utils';
 import { AlertIcon } from '../icons';
 import styles from './Callout.module.css';
-
-type CalloutType = 'info' | 'error' | 'warning' | 'success' | 'danger';
-
-interface CalloutProps {
-	showIcon?: boolean;
-	shadow?: boolean;
-	className?: string;
-	title?: ReactNode;
-	description?: ReactNode;
-	icon?: ComponentType<{ className?: string }>;
-	action?: ComponentType;
-	type: CalloutType;
-}
+import type { CalloutProps } from './types';
 
 const Callout = forwardRef<HTMLDivElement, CalloutProps>((props, ref): ReactElement | null => {
 	const {
@@ -31,7 +20,7 @@ const Callout = forwardRef<HTMLDivElement, CalloutProps>((props, ref): ReactElem
 	let Icon: ReactNode = null;
 
 	if (CustomIcon != null) {
-		Icon = <CustomIcon className={styles.icon} />;
+		Icon = <CustomIcon className={styles.icon as string} />;
 	} else {
 		switch (type) {
 			case 'info':
@@ -50,8 +39,7 @@ const Callout = forwardRef<HTMLDivElement, CalloutProps>((props, ref): ReactElem
 				Icon = <AlertIcon.Danger className={styles.icon} v2 />;
 				break;
 			default:
-				Icon = CustomIcon ? <CustomIcon className={styles.icon} /> : null;
-				break;
+				Icon = null;
 		}
 	}
 

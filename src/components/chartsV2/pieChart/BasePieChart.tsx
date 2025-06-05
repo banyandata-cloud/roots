@@ -1,6 +1,6 @@
 /* eslint-disable no-nested-ternary */
-import { ArcElement, Chart as ChartJS, Legend, Title, Tooltip } from 'chart.js';
 import type { ChartData, ChartEvent, ChartOptions } from 'chart.js';
+import { ArcElement, Chart as ChartJS, Legend, Title, Tooltip } from 'chart.js';
 import React, { useCallback, useRef, useState } from 'react';
 import { Pie } from 'react-chartjs-2';
 import { classes } from '../../../utils';
@@ -229,12 +229,16 @@ const BasePieChart: React.FC<BasePieChartProps> = (props) => {
 							},
 							font: { family: 'Poppins' },
 						},
-						onClick: (event, legendItem) => {
+						onClick: (event, legendItem: LegendItem) => {
 							handleLegendClick(event, legendItem);
-							handleHover(legendItem.index);
+							if (legendItem.index !== undefined) {
+								handleHover(legendItem.index);
+							}
 						},
 						onHover: (_, legendItem) => {
-							handleHover(legendItem.index);
+							if (legendItem.index !== undefined) {
+								handleHover(legendItem.index);
+							}
 						},
 						onLeave: () => setHoveredIndex(null),
 						...legend,
@@ -252,7 +256,8 @@ const BasePieChart: React.FC<BasePieChartProps> = (props) => {
 				borderWidth: tooltip?.borderWidth ?? 1,
 				borderColor: (ctx) => {
 					const index = ctx.tooltipItems?.[0]?.dataIndex;
-					const color = ctx.tooltipItems?.[0]?.dataset?.borderColor[index];
+					const color =
+						ctx.tooltipItems?.[0]?.dataset?.borderColor?.[index] ?? 'transparent';
 					return color || 'black';
 				},
 				backgroundColor: 'rgba(255, 255, 255, 1)',
@@ -281,8 +286,9 @@ const BasePieChart: React.FC<BasePieChartProps> = (props) => {
 			intersect: true,
 		},
 		onHover: (_: ChartEvent, chartElement) => {
-			if (chartElement.length > 0) {
-				handleHover(chartElement[0].index);
+			const index = chartElement[0]?.index;
+			if (index !== undefined) {
+				handleHover(index);
 			} else {
 				setHoveredIndex(null);
 			}
