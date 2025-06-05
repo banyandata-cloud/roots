@@ -13,7 +13,8 @@
 		"plugin:@typescript-eslint/strict-type-checked",
 		"plugin:@typescript-eslint/stylistic-type-checked",
 		"airbnb",
-		"prettier"
+		"prettier",
+		"plugin:import/typescript"
 	],
 	"parser": "@typescript-eslint/parser",
 	"parserOptions": {
@@ -22,6 +23,14 @@
 		"project": ["./tsconfig.json"]
 	},
 	"plugins": ["react", "react-hooks", "@typescript-eslint", "jsx-a11y"],
+	"settings": {
+		"import/resolver": {
+			"typescript": {
+				"alwaysTryTypes": true // Always try to resolve types under `<root>@types` directory even it doesn't contain any source code, like `@types/unist`
+			}
+		},
+		"import/extensions": [".ts", ".tsx", ".js", ".jsx"]
+	},
 	"rules": {
 		"import/prefer-default-export": 0, //when there is only a single export from a module, prefer using default export over named export
 		"default-param-last": 0, //putting default parameter at last allows function calls to omit optional tail arguments
@@ -78,6 +87,16 @@
 		"no-bitwise": ["error", { "allow": ["&", ">>", "|"] }],
 		"no-use-before-define": ["error", { "functions": false }], //Disallow the use of variables before they are defined
 		"@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
-		"@typescript-eslint/explicit-module-boundary-types": "off"
+		"@typescript-eslint/explicit-module-boundary-types": "off",
+		"import/extensions": [
+			"error",
+			"ignorePackages",
+			{
+				"js": "never",
+				"jsx": "never",
+				"ts": "never",
+				"tsx": "never"
+			}
+		]
 	}
 }

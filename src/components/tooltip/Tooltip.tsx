@@ -8,14 +8,37 @@ import {
 	useRole,
 } from '@floating-ui/react-dom-interactions';
 import { motion } from 'framer-motion';
-import PropTypes from 'prop-types';
-import React, { cloneElement, forwardRef, useRef, useState } from 'react';
+import React, {
+	cloneElement,
+	forwardRef,
+	useRef,
+	useState,
+	type ReactElement,
+	type RefObject,
+} from 'react';
 import { mergeRefs } from 'react-merge-refs';
 import { classes } from '../../utils';
 import { Popper } from '../popper';
 import styles from './Tooltip.module.css';
+import type { ReactElementWithRef, TooltipPosition, TooltipProps } from './types';
 
-const Tooltip = forwardRef((props, propRef) => {
+/**
+ * Tooltip - A tooltip component to be used as a wrapper to show the customised tooltip for the component
+ *
+ * @returns A React component
+ *
+ * @example
+ * ```tsx
+ * <Tooltip
+ *   position='top'
+ *   showPointer={false}
+ *   content="Hello"
+ * >
+ *   <div>Some Element</div>
+ * </Tooltip>
+ * ```
+ */
+const Tooltip = forwardRef<RefObject<HTMLElement>, TooltipProps>((props, propRef): ReactElement => {
 	const {
 		children,
 		position = 'top',
@@ -29,32 +52,38 @@ const Tooltip = forwardRef((props, propRef) => {
 
 	const [open, setOpen] = useState(false);
 
-	// eslint-disable-next-line object-curly-newline
-	const { x, y, reference, floating, strategy, context, middlewareData, placement } = useFloating(
-		{
-			open,
-			onOpenChange: setOpen,
-			// strategy: 'fixed',
-			placement: position,
-			// Make sure the tooltip stays on the screen
-			whileElementsMounted: autoUpdate,
-			middleware: [
-				offset(12),
-				flip(),
-				shift(),
-				arrow({
-					element: arrowEl,
-				}),
-			],
-		}
-	);
+	const {
+		x,
+		y,
+		reference,
+		floating,
+		strategy,
+		context,
+		middlewareData,
+		placement = 'top',
+	} = useFloating({
+		open,
+		onOpenChange: setOpen,
+		placement: position,
+		whileElementsMounted: autoUpdate, // Make sure the tooltip stays on the screen
+		middleware: [
+			offset(12),
+			flip(),
+			shift(),
+			arrow({
+				element: arrowEl,
+			}),
+		],
+	});
 
 	// Event listeners to change the open state
 	const hover = useHover(context, {
 		move: true,
 	});
+
 	const focus = useFocus(context);
 	const dismiss = useDismiss(context);
+
 	// Role props for screen readers
 	const role = useRole(context, {
 		role: 'tooltip',
@@ -63,28 +92,30 @@ const Tooltip = forwardRef((props, propRef) => {
 	// Merge all the interactions into prop getters
 	const { getReferenceProps, getFloatingProps } = useInteractions([hover, focus, dismiss, role]);
 
-	const childrenRef = children.ref;
+	const typedChildren = children as ReactElementWithRef;
+
+	const { ref: childrenRef } = typedChildren;
 
 	const ref = React.useMemo(() => {
 		return mergeRefs([reference, childrenRef, propRef]);
-	}, [reference, childrenRef]);
+	}, [reference, childrenRef, propRef]);
 
 	const clonedChildren = cloneElement(
 		children,
 		getReferenceProps({
 			ref,
-			...children.props,
+			...(typedChildren.props as object),
 		})
 	);
 
-	const side = placement.split('-')[0];
+	const side = placement.split('-')[0] as TooltipPosition;
 
-	const staticSide = {
+	const { [side]: staticSide }: Record<TooltipPosition, TooltipPosition> = {
 		top: 'bottom',
 		right: 'left',
 		bottom: 'top',
 		left: 'right',
-	}[side];
+	};
 
 	return (
 		<>
@@ -115,8 +146,8 @@ const Tooltip = forwardRef((props, propRef) => {
 							className={styles.arrow}
 							ref={arrowEl}
 							style={{
-								left: middlewareData?.arrow?.x ?? '',
-								top: middlewareData?.arrow?.y ?? '',
+								left: middlewareData.arrow?.x ?? '',
+								top: middlewareData.arrow?.y ?? '',
 								right: '',
 								bottom: '',
 								[staticSide]: '-0.3rem',
@@ -129,12 +160,5 @@ const Tooltip = forwardRef((props, propRef) => {
 		</>
 	);
 });
-
-Tooltip.propTypes = {
-	variant: PropTypes.oneOf(['light', 'dark']),
-	content: PropTypes.node,
-	position: PropTypes.oneOf(['right', 'top', 'bottom', 'left']),
-	className: PropTypes.string,
-};
 
 export default Tooltip;

@@ -1,14 +1,12 @@
-/* eslint-disable react/forbid-prop-types */
-import PropTypes from 'prop-types';
-import { forwardRef } from 'react';
+import { forwardRef, type RefObject } from 'react';
 import { classes } from '../../utils/utils';
 import Text from '../text/Text';
 import styles from './Link.module.css';
+import type { LinkProps } from './types';
 
-const Link = forwardRef((props, ref) => {
+const Link = forwardRef<RefObject<HTMLElement>, LinkProps>((props, ref) => {
 	const {
 		variant = 'b2',
-		component = 'a',
 		stroke = 'regular',
 		weight,
 		italic,
@@ -25,13 +23,12 @@ const Link = forwardRef((props, ref) => {
 		<Text
 			ref={ref}
 			variant={variant}
-			component={component}
+			component='a'
 			stroke={stroke}
 			weight={weight}
 			italic={italic}
 			className={classes(styles.root, styles[`underline-${underline}`], className)}
 			attrs={{
-				to: href,
 				href,
 				target,
 				onClick,
@@ -41,15 +38,5 @@ const Link = forwardRef((props, ref) => {
 		</Text>
 	);
 });
-
-Link.propTypes = {
-	...Text.propTypes,
-	href: PropTypes.string,
-	target: PropTypes.oneOf(['_self', '_blank', '_parent', '_top']),
-	component: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-	className: PropTypes.string,
-	attrs: PropTypes.object,
-	underline: PropTypes.oneOf(['always', 'hover', 'none']),
-};
 
 export default Link;

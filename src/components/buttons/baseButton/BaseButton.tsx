@@ -1,11 +1,10 @@
-import PropTypes from 'prop-types';
-import { forwardRef } from 'react';
+import { forwardRef, type MouseEvent, type RefObject } from 'react';
 import { classes } from '../../../utils';
 import { BaseCell } from '../../cell';
 import styles from './BaseButton.module.css';
+import type { BaseButtonProps } from './types';
 
-// eslint-disable-next-line prefer-arrow-callback
-const BaseButton = forwardRef(function BaseButton(props, ref) {
+const BaseButton = forwardRef<RefObject<HTMLElement>, BaseButtonProps>((props, ref) => {
 	const {
 		className = '',
 		component1,
@@ -17,12 +16,12 @@ const BaseButton = forwardRef(function BaseButton(props, ref) {
 		disabled,
 		id,
 		type = 'submit',
-		onClick = () => {},
+		onClick,
 		blurOnClick = true,
 		variant = 'contained',
 	} = props;
 
-	const Title = title && <span data-elem='title'>{title}</span>;
+	const Title = <span data-elem='title'>{title}</span>;
 
 	return (
 		<BaseCell
@@ -40,9 +39,9 @@ const BaseButton = forwardRef(function BaseButton(props, ref) {
 				disabled,
 				type,
 				id,
-				onClick: (event) => {
+				onClick: (event: MouseEvent<HTMLButtonElement>): void => {
 					if (blurOnClick) {
-						event?.currentTarget?.blur();
+						event.currentTarget.blur();
 					}
 					onClick(event);
 				},
@@ -51,15 +50,5 @@ const BaseButton = forwardRef(function BaseButton(props, ref) {
 		/>
 	);
 });
-
-BaseButton.propTypes = {
-	...BaseCell.propTypes,
-	title: PropTypes.string,
-	disabled: PropTypes.bool,
-	type: PropTypes.oneOf(['button', 'submit', 'reset']),
-	onClick: PropTypes.func,
-	blurOnClick: PropTypes.bool,
-	variant: PropTypes.oneOf(['contained', 'outlined', 'text']),
-};
 
 export default BaseButton;

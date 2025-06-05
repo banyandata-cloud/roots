@@ -1,70 +1,60 @@
 import {
 	createElement,
 	forwardRef,
-	type HTMLAttributes,
 	isValidElement,
 	type ReactElement,
-	type ReactNode,
+	type RefObject,
 } from 'react';
 import { classes } from '../../utils';
 import styles from './Text.module.css';
+import type { TextComponentType, TextProps } from './types';
 
-type Variant = 'h1' | 'h2' | 'b1' | 'b2' | 'b3';
-type ComponentType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span' | 'a';
-type Stroke = 'regular' | 'medium' | 'semibold' | 'bold';
-type FontWeight = 100 | 200 | 300 | 400 | 500 | 600;
+const Text = forwardRef<RefObject<HTMLElement>, TextProps<TextComponentType>>(
+	(props, ref): ReactElement | null => {
+		const {
+			variant = 'b2',
+			component = 'span',
+			stroke = 'regular',
+			weight,
+			italic,
+			underline,
+			children,
+			className = '',
+			attrs = {},
+		} = props;
 
-interface TextProps {
-	variant?: Variant;
-	component?: ComponentType;
-	stroke?: Stroke;
-	weight?: FontWeight;
-	italic?: boolean;
-	underline?: boolean;
-	children?: ReactNode;
-	className?: string;
-	attrs?: HTMLAttributes<HTMLElement>;
-}
-
-const Text = forwardRef<HTMLElement, TextProps>((props, ref): ReactElement | null => {
-	const {
-		variant = 'b2',
-		component = 'span',
-		stroke = 'regular',
-		weight,
-		italic,
-		underline,
-		children,
-		className = '',
-		attrs = {},
-	} = props;
-
-	const TextDOM = createElement(
-		component,
-		{
-			ref,
-			style: {
-				...(italic && {
-					fontStyle: 'italic',
-				}),
-				...(underline && {
-					textDecoration: 'underline',
-				}),
-				...(weight && {
-					fontWeight: weight,
-				}),
+		const TextDOM = createElement(
+			component,
+			{
+				ref,
+				style: {
+					...(italic && {
+						fontStyle: 'italic',
+					}),
+					...(underline && {
+						textDecoration: 'underline',
+					}),
+					...(weight && {
+						fontWeight: weight,
+					}),
+				},
+				className: classes(
+					styles.root,
+					styles[variant],
+					styles[`${stroke}-stroke`],
+					className
+				),
+				...attrs,
 			},
-			className: classes(styles.root, styles[variant], styles[`${stroke}-stroke`], className),
-			...attrs,
-		},
-		children
-	);
+			children
+		);
 
-	if (isValidElement(TextDOM)) {
-		return TextDOM;
+		if (isValidElement(TextDOM)) {
+			return TextDOM;
+		}
+
+		return null;
 	}
-
-	return null;
-});
+);
 
 export default Text;
