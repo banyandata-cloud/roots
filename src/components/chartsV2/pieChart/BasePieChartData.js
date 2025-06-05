@@ -15,16 +15,6 @@ export const sampleData = {
 		x1: 30,
 		x2: 30,
 		x3: 30,
-		x4: 30,
-		x5: 30,
-		x6: 30,
-		x7: 30,
-		x8: 30,
-		x9: 30,
-		x10: 30,
-		x11: 30,
-		x12: 30,
-		x13: 30,
 	},
 	metaData: {
 		controlsApplied: {

@@ -13,11 +13,12 @@ import {
 	Title,
 	Tooltip,
 } from 'chart.js';
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { Line } from 'react-chartjs-2';
 import { COLORS } from '../../../styles';
 // import { classes } from '../../../utils';
-import { Skeleton } from './Skeleton';
+import { borderColorsStack, lineColorsStack } from './config/config';
+import { getCustomLegendPlugin } from './utils';
 
 ChartJS.register(
 	CategoryScale,
@@ -32,7 +33,6 @@ ChartJS.register(
 
 const BaseAreaChart = (props) => {
 	const {
-		loading,
 		title,
 		seriesData,
 		tooltip,
@@ -45,8 +45,6 @@ const BaseAreaChart = (props) => {
 		stacked,
 		smooth,
 		// className,
-		theme,
-		fallback,
 		isLineChart,
 		xAxisPosition,
 		// gridOptions,
@@ -61,28 +59,12 @@ const BaseAreaChart = (props) => {
 		width,
 		height,
 		chartOptionsProps,
-		lineColors = [
-			'rgba(255, 99, 132, 0.5)',
-			'rgba(54, 162, 235, 0.5)',
-			'rgba(75, 192, 192, 0.5)',
-			'rgba(153, 102, 255, 0.5)',
-			'rgba(255, 159, 64, 0.5)',
-		],
-		borderColors = [
-			'rgba(255, 99, 132, 1)',
-			'rgba(54, 162, 235, 1)',
-			'rgba(75, 192, 192, 1)',
-			'rgba(153, 102, 255, 1)',
-			'rgba(255, 159, 64, 1)',
-		],
+		lineColors = lineColorsStack,
+		borderColors = borderColorsStack,
 		style,
 		extra,
 		dataSetOptions,
 	} = props;
-
-	if (loading || fallback) {
-		return <Skeleton theme={theme} fallback={!loading && fallback} />;
-	}
 
 	const legendRef = useRef(null);
 
@@ -93,7 +75,7 @@ const BaseAreaChart = (props) => {
 			const newHidden = prevHidden.includes(index)
 				? prevHidden.filter((i) => {
 						return i !== index;
-				  })
+					})
 				: [...prevHidden, index];
 
 			// Update the chart visibility
@@ -102,66 +84,6 @@ const BaseAreaChart = (props) => {
 
 			return newHidden;
 		});
-	};
-
-	const customLegendPlugin = {
-		id: 'customLegend',
-		afterUpdate(chart) {
-			// Clear existing legend items
-			const ul = legendRef.current;
-			while (ul?.firstChild) {
-				ul.firstChild.remove();
-			}
-
-			// Loop through the datasets and create legend items
-			chart.data.datasets.forEach((dataset, index) => {
-				const li = document.createElement('li');
-				li.style.display = 'flex';
-				li.style.alignItems = 'center';
-				li.style.cursor = 'pointer';
-				li.style.opacity = hiddenDatasets.includes(index) ? '0.5' : '1';
-				li.style.margin = '5px 10px';
-				li.style.maxWidth = '120px';
-				li.style.whiteSpace = 'nowrap';
-				li.style.overflow = 'hidden';
-				li.style.textOverflow = 'ellipsis';
-
-				const textColor = hiddenDatasets.includes(index) ? 'grey' : 'inherit';
-				const circleColor = hiddenDatasets.includes(index)
-					? 'grey'
-					: dataset.backgroundColor;
-
-				li.onclick = () => {
-					// Toggle visibility of the dataset
-					toggleDatasetVisibility(index, chart);
-
-					// Apply grey-out effect on click
-					if (li.style.color === 'grey') {
-						li.style.color = 'inherit';
-					} else {
-						li.style.color = 'grey';
-					}
-
-					const circle = li.querySelector('circle');
-					if (circle) {
-						if (circle.getAttribute('stroke') === 'grey') {
-							circle.setAttribute('stroke', dataset.backgroundColor);
-						} else {
-							circle.setAttribute('stroke', 'grey');
-						}
-					}
-				};
-
-				li.innerHTML = `
-					<svg width="15" height="15" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<circle cx="15" cy="15" r="12" stroke="${circleColor}" stroke-width="6"/>
-					</svg>
-				<span style="margin-left: 10px; color: ${textColor};">${dataset.label}</span>
-				`;
-
-				ul?.appendChild(li);
-			});
-		},
 	};
 
 	const chartData = {
@@ -196,7 +118,7 @@ const BaseAreaChart = (props) => {
 			legend: legend?.icon
 				? {
 						display: false,
-				  }
+					}
 				: {
 						display: legend?.display ?? true,
 						position: legend?.position ?? 'bottom',
@@ -212,7 +134,7 @@ const BaseAreaChart = (props) => {
 							},
 						},
 						...legend,
-				  },
+					},
 			tooltip: {
 				borderWidth: tooltip?.borderWidth ?? 1,
 				borderColor: (context) => {
@@ -227,13 +149,13 @@ const BaseAreaChart = (props) => {
 						const value = context?.formattedValue;
 						return `${label}: ${value}`;
 					},
-					title: tooltip.displayTitle
+					title: tooltip?.displayTitle
 						? (tooltipItems) => {
 								return tooltipItems[0]?.label || '';
-						  }
+							}
 						: () => {
 								return '';
-						  },
+							},
 				},
 				bodySpacing: tooltip?.bodySpacing ?? 5,
 				displayColors: tooltip?.displayColors ?? true,
@@ -244,7 +166,7 @@ const BaseAreaChart = (props) => {
 				titleColor: tooltip?.bodyFont?.titleColor ?? '#000',
 				bodyColor: tooltip?.bodyFont?.color ?? '#000',
 				bodyFont: {
-					...tooltip.bodyFont,
+					...tooltip?.bodyFont,
 				},
 				...tooltip,
 			},
@@ -357,7 +279,13 @@ const BaseAreaChart = (props) => {
 			<Line
 				data={chartData}
 				options={chartOptions}
-				plugins={[customLegendPlugin]}
+				plugins={[
+					getCustomLegendPlugin({
+						toggleDatasetVisibility,
+						hiddenDatasets,
+						legendRef,
+					}),
+				]}
 				{...extra}
 			/>
 

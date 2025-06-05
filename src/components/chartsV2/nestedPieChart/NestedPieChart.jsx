@@ -2,13 +2,11 @@
 import { ArcElement, Chart as ChartJS, Legend, RadialLinearScale, Tooltip } from 'chart.js';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import { PolarArea } from 'react-chartjs-2';
-import { Skeleton } from './Skeleton';
+import { getCenterHolePlugin } from './utils';
 
 ChartJS.register(RadialLinearScale, ArcElement, Tooltip, Legend, ChartDataLabels);
 
 const CapsulePolarChart = ({
-	loading,
-	fallback,
 	seriesData = {},
 	showLegends = false,
 	chartDataOptions,
@@ -134,31 +132,6 @@ const CapsulePolarChart = ({
 		...chartOptions,
 	};
 
-	if (loading || fallback) {
-		return <Skeleton fallback={!loading && fallback} />;
-	}
-
-	const centerHolePlugin = {
-		id: 'centerHolePlugin',
-		afterDatasetsDraw(chart) {
-			const { ctx, chartArea } = chart;
-
-			const centerX = (chartArea.left + chartArea.right) / 2;
-			const centerY = (chartArea.top + chartArea.bottom) / 2;
-
-			const radius =
-				Math.min(chartArea.right - chartArea.left, chartArea.bottom - chartArea.top) /
-				(donutProps?.radius ?? 15);
-
-			ctx.save();
-			ctx.beginPath();
-			ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
-			ctx.fillStyle = donutProps?.backgroundColor;
-			ctx.fill();
-			ctx.restore();
-		},
-	};
-
 	return (
 		<div
 			style={{
@@ -170,7 +143,10 @@ const CapsulePolarChart = ({
 			<PolarArea
 				data={chartData}
 				options={options}
-				plugins={[ChartDataLabels, !!donutProps && centerHolePlugin]}
+				plugins={[
+					ChartDataLabels,
+					...(donutProps ? [getCenterHolePlugin(donutProps)] : []),
+				]}
 				{...extra}
 			/>
 		</div>
