@@ -7,7 +7,7 @@ type ButtonVariant = 'contained' | 'outlined' | 'text';
 export interface BaseButtonProps extends BaseCellProps<'button', false> {
 	title: ReactElement;
 	disabled?: boolean | undefined;
-	id?: string;
+	id?: string | undefined;
 	type?: ButtonType;
 	onClick: (event: MouseEvent<HTMLElement>) => void;
 	blurOnClick?: boolean;
