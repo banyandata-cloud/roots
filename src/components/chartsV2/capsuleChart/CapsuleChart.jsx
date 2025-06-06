@@ -9,9 +9,8 @@ import {
 } from 'chart.js';
 import annotationPlugin from 'chartjs-plugin-annotation';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Bar } from 'react-chartjs-2';
-import { Skeleton } from './Skeleton';
 
 // Register necessary components
 ChartJS.register(
@@ -27,8 +26,6 @@ ChartJS.register(
 
 const CapsuleChart = (props) => {
 	const {
-		loading = false,
-		fallback,
 		seriesData = {},
 		showLegends = false,
 		tooltip,
@@ -39,10 +36,6 @@ const CapsuleChart = (props) => {
 		extra,
 		styles,
 	} = props;
-
-	if (loading || fallback) {
-		return <Skeleton theme='dark' fallback={!loading && fallback} />;
-	}
 
 	// Prepare labels and data
 	const labels = Object.keys(seriesData.chartData);
@@ -124,10 +117,10 @@ const CapsuleChart = (props) => {
 					title: tooltip.displayTitle
 						? (tooltipItems) => {
 								return tooltipItems[0]?.label || '';
-						  }
+							}
 						: () => {
 								return '';
-						  },
+							},
 					label: (tooltipItem) => {
 						const datasetLabel = tooltipItem.dataset.label || '';
 						const value = tooltipItem.raw;
