@@ -43,7 +43,7 @@ export type BaseCellProps<
 	/**
 	 * Additional CSS class names to apply to the cell.
 	 */
-	className?: string;
+	className?: string | undefined;
 
 	/**
 	 * Size of the cell. Can be 'sm', 'md', 'lg', or 'auto'.

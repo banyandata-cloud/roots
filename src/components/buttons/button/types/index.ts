@@ -5,6 +5,6 @@ type ButtonColors = 'primary' | 'success' | 'danger' | 'warning';
 
 export interface ButtonProps extends BaseButtonProps {
 	color?: ButtonColors;
-	leftComponent?: ComponentType;
-	rightComponent?: ComponentType;
+	leftComponent?: ComponentType | undefined;
+	rightComponent?: ComponentType | undefined;
 }
