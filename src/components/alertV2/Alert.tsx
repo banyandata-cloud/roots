@@ -1,12 +1,13 @@
 import { useDismiss, useFloating, useInteractions } from '@floating-ui/react-dom-interactions';
 import { useAnimate } from 'framer-motion';
-import PropTypes from 'prop-types';
+import type { ForwardRefRenderFunction, ReactNode } from 'react';
 import { forwardRef, useEffect, useImperativeHandle, useState } from 'react';
 import { classes } from '../../utils/utils';
 import { Button } from '../buttons';
 import { AlertIcon, CrossIcon } from '../icons';
 import Popper from '../popper/Popper';
 import styles from './Alert.module.css';
+import type { AlertConfig, AlertHandle, AlertProps } from './types';
 
 const ALERT_DISMISS_TIME = 2000;
 
@@ -34,31 +35,32 @@ const ANIMATION = {
  * @returns {JSX.Element} - The rendered alert component.
  */
 
-const Alert = forwardRef((props, ref) => {
-	const {
+const Alert: ForwardRefRenderFunction<AlertHandle, AlertProps> = (
+	{
 		showIcon = true,
 		shadow = true,
 		position: defaultPosition = 'bottom-center',
 		animation = true,
 		className = '',
-	} = props;
-
+	},
+	ref
+) => {
 	const [open, setOpen] = useState(false);
-	const [alertProps, setAlertProps] = useState({
-		title: null,
-		description: null,
-		icon: null,
+
+	const [alertProps, setAlertProps] = useState<AlertConfig>({
+		title: undefined,
+		description: undefined,
+		icon: undefined,
 		type: 'info',
-		action: null,
-		position: null,
+		action: undefined,
+		position: undefined,
 		onClose: () => {
-			setOpen((prev) => {
-				return !prev;
-			});
+			setOpen((prev) => !prev);
 		},
 		autoDismiss: true,
 		dismissTime: ALERT_DISMISS_TIME,
 	});
+
 	const {
 		title,
 		description,
@@ -73,9 +75,9 @@ const Alert = forwardRef((props, ref) => {
 
 	const position = appliedPosition ?? defaultPosition;
 
-	let Icon = null;
+	let Icon: ReactNode = null;
 	if (CustomIcon != null) {
-		Icon = <CustomIcon className={styles.icon} />;
+		Icon = <CustomIcon className={styles.icon as string} />;
 	} else {
 		switch (type) {
 			case 'info':
@@ -94,8 +96,7 @@ const Alert = forwardRef((props, ref) => {
 				Icon = <AlertIcon.Danger className={styles.icon} v2 />;
 				break;
 			default:
-				Icon = <CustomIcon />;
-				break;
+				Icon = null;
 		}
 	}
 
@@ -105,27 +106,18 @@ const Alert = forwardRef((props, ref) => {
 	});
 	const [scope, animate] = useAnimate();
 
-	const alert = (appliedAlertProps) => {
-		setAlertProps({
-			...alertProps,
+	const alert = (appliedAlertProps: Partial<AlertConfig>) => {
+		setAlertProps((prev) => ({
+			...prev,
 			...appliedAlertProps,
-		});
+		}));
 	};
 
-	useImperativeHandle(ref, () => {
-		return {
-			/**
-			 * methods to get exposed
-			 */
-			alert,
-		};
-	});
+	useImperativeHandle(ref, () => ({ alert }));
 
 	useEffect(() => {
 		if (alertProps.title) {
-			setOpen((prev) => {
-				return !prev;
-			});
+			setOpen((prev) => !prev);
 		}
 	}, [alertProps]);
 
@@ -133,22 +125,21 @@ const Alert = forwardRef((props, ref) => {
 		if (scope.current && animation) {
 			const [positionType, staticPosition] = position.split('-');
 			animate(scope.current, {
-				y: ANIMATION.transform[positionType],
-				x: ANIMATION.static[staticPosition],
+				y: ANIMATION.transform[positionType as keyof typeof ANIMATION.transform],
+				x: ANIMATION.static[staticPosition as keyof typeof ANIMATION.static],
 			});
 		}
-	});
+	}, [animation, position, scope]);
 
-	// eslint-disable-next-line consistent-return
 	useEffect(() => {
 		if (alertProps.title && autoDismiss) {
 			const timer = setTimeout(() => {
 				setOpen(false);
 			}, dismissTime);
-			return () => {
-				return clearTimeout(timer);
-			};
+
+			return () => clearTimeout(timer);
 		}
+		return;
 	}, [alertProps]);
 
 	const { getFloatingProps } = useInteractions([useDismiss(context)]);
@@ -183,28 +174,17 @@ const Alert = forwardRef((props, ref) => {
 							size='auto'
 							variant='text'
 							onClick={() => {
-								onClose();
+								onClose?.();
 								setOpen(false);
 							}}
 							className={styles.close}
-							leftComponent={() => {
-								return <CrossIcon className={styles.icon} />;
-							}}
+							leftComponent={() => <CrossIcon className={styles.icon} />}
 						/>
 					)}
 				</div>
 			</div>
 		</Popper>
 	);
-});
-
-Alert.propTypes = {
-	showIcon: PropTypes.bool,
-	border: PropTypes.oneOf(['default', 'thick-left', 'none']),
-	shadow: PropTypes.bool,
-	position: PropTypes.oneOf(['bottom-right', 'bottom-center', 'top-right', 'top-center']),
-	animation: PropTypes.bool,
-	className: PropTypes.string,
 };
 
-export default Alert;
+export default forwardRef(Alert);
