@@ -1,10 +1,10 @@
-import PropTypes from 'prop-types';
-import { forwardRef } from 'react';
+import { forwardRef, type RefObject } from 'react';
 import { classes } from '../../../utils';
 import { BaseButton } from '../baseButton';
 import styles from './Chip.module.css';
+import type { ChipProps } from './types';
 
-const Chip = forwardRef((props, ref) => {
+const Chip = forwardRef<RefObject<HTMLElement>, ChipProps>((props, ref) => {
 	const {
 		className = '',
 		type = 'button',
@@ -15,7 +15,7 @@ const Chip = forwardRef((props, ref) => {
 		flexible,
 		radius = 'default',
 		disabled,
-		onClick = () => {},
+		onClick,
 		variant = 'status',
 		color = 'default',
 	} = props;
@@ -46,14 +46,5 @@ const Chip = forwardRef((props, ref) => {
 		/>
 	);
 });
-
-Chip.propTypes = {
-	...BaseButton.propTypes,
-	size: PropTypes.oneOf(['sm', 'md']),
-	variant: PropTypes.oneOf(['status', 'input']),
-	color: PropTypes.oneOf(['success', 'info', 'warning', 'danger', 'default']),
-	leftComponent: PropTypes.func,
-	rightComponent: PropTypes.func,
-};
 
 export default Chip;

@@ -36,7 +36,10 @@ export type BaseCellComponentType = 'button' | 'div';
 /**
  * Props for the base cell component.
  */
-export interface BaseCellProps<T extends keyof JSX.IntrinsicElements> {
+export type BaseCellProps<
+	T extends keyof JSX.IntrinsicElements,
+	TComponent2 extends boolean = true,
+> = {
 	/**
 	 * Additional CSS class names to apply to the cell.
 	 */
@@ -58,11 +61,6 @@ export interface BaseCellProps<T extends keyof JSX.IntrinsicElements> {
 	component1?: ReactElement | undefined;
 
 	/**
-	 * The main secondary React element to render inside the cell.
-	 */
-	component2: ReactElement;
-
-	/**
 	 * An optional tertiary React element to render inside the cell.
 	 */
 	component3?: ReactElement | undefined;
@@ -81,4 +79,6 @@ export interface BaseCellProps<T extends keyof JSX.IntrinsicElements> {
 	 * Border radius style for the cell. Can be 'none', 'default', 'round', or 'ellipse'.
 	 */
 	radius?: RadiusTypes;
-}
+} & (TComponent2 extends true
+	? { component2: ReactElement }
+	: { component2?: ReactElement | undefined });
