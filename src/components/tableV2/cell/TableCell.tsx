@@ -1,10 +1,10 @@
-import PropTypes from 'prop-types';
-import { forwardRef, useEffect, useState } from 'react';
+import { forwardRef, isValidElement, useEffect, useState, type RefObject } from 'react';
 import { classes } from '../../../utils';
 import { Button } from '../../buttons';
 import { BaseCell } from '../../cell';
 import { SortIcon } from '../../icons';
 import styles from './TableCell.module.css';
+import type { SortType, TableCellProps } from './types';
 
 const SORT_ICONS_ORDER = {
 	asc: 'az',
@@ -12,30 +12,28 @@ const SORT_ICONS_ORDER = {
 	default: 'default',
 };
 
-const getNextSortState = (currentSort) => {
+const getNextSortState = (currentSort: string): SortType => {
 	return {
 		asc: 'default',
 		desc: 'asc',
 		default: 'desc',
-	}?.[currentSort];
+	}[currentSort] as SortType;
 };
 
-// eslint-disable-next-line prefer-arrow-callback
-const TableCell = forwardRef(function TableCell(props, ref) {
+const TableCell = forwardRef<RefObject<HTMLElement>, TableCellProps>((props, ref) => {
 	const {
 		id,
 		className,
-		size,
+		size = 'sm',
 		flexible,
-		rounded,
 		component1,
 		component3,
-		RootDOM,
+		RootDOM = 'td',
 		attrs,
-		radius,
+		radius = 'none',
 		style,
 		multiLine,
-		type,
+		type = 'body',
 		cellContent,
 		cellTitle,
 		sticky,
@@ -43,14 +41,13 @@ const TableCell = forwardRef(function TableCell(props, ref) {
 		onSort,
 		sortValue,
 		html,
-		json,
 	} = props;
 
-	const [sortState, setSortState] = useState('default');
+	const [sortState, setSortState] = useState<SortType>('default');
 
 	useEffect(() => {
-		setSortState(sortValue?.[id] || 'default');
-	}, [sortValue]);
+		setSortState(sortValue?.[id] ?? 'default');
+	}, [id, sortValue]);
 
 	let spanElement = (
 		<span
@@ -58,15 +55,15 @@ const TableCell = forwardRef(function TableCell(props, ref) {
 				...(cellTitle != null
 					? {
 							title: cellTitle,
-					  }
+						}
 					: {}),
 				className: classes(styles['cell-text'], multiLine ? styles['multi-line'] : ''),
 				style,
 				'data-elem': 'text',
 			}}>
-			{[null, false, true].includes(cellContent) || json
-				? JSON.stringify(cellContent)
-				: cellContent}
+			{typeof cellContent === 'string' || isValidElement(cellContent)
+				? cellContent
+				: JSON.stringify(cellContent)}
 		</span>
 	);
 
@@ -77,9 +74,8 @@ const TableCell = forwardRef(function TableCell(props, ref) {
 					className: classes(styles['cell-text'], multiLine ? styles['multi-line'] : ''),
 					style,
 					'data-elem': 'text',
-
 					dangerouslySetInnerHTML: {
-						__html: cellContent,
+						__html: cellContent as string,
 					},
 				}}
 			/>
@@ -93,9 +89,9 @@ const TableCell = forwardRef(function TableCell(props, ref) {
 				className: classes(
 					styles.root,
 					styles[`${type}-cell`],
-					styles[`sticky-${sticky}`],
+					styles[`sticky-${String(sticky)}`],
 					styles[`sort-${sortState}`],
-					sortState != null ? styles.sortable : '',
+					sortState !== 'default' ? styles.sortable : '',
 					className
 				),
 				attrs: {
@@ -103,9 +99,7 @@ const TableCell = forwardRef(function TableCell(props, ref) {
 					...attrs,
 				},
 				size,
-
 				flexible,
-				rounded,
 				component1,
 				component2: spanElement,
 				component3:
@@ -113,7 +107,6 @@ const TableCell = forwardRef(function TableCell(props, ref) {
 						<Button
 							className={styles.sort}
 							size='auto'
-							value='Text'
 							onClick={() => {
 								onSort(id, getNextSortState(sortState));
 								setSortState(getNextSortState(sortState));
@@ -136,28 +129,5 @@ const TableCell = forwardRef(function TableCell(props, ref) {
 		/>
 	);
 });
-
-TableCell.propTypes = {
-	...BaseCell.propTypes,
-	id: PropTypes.string,
-	size: PropTypes.oneOf(['sm', 'md', 'lg']),
-	flexible: PropTypes.bool,
-	sort: PropTypes.oneOf(['default', 'asc', 'desc']),
-	// eslint-disable-next-line react/forbid-prop-types
-	style: PropTypes.object,
-	multiLine: PropTypes.bool,
-	sticky: PropTypes.oneOf(['left', 'right', 'none']),
-	cellContent: PropTypes.node,
-	cellTitle: PropTypes.string,
-	onSort: PropTypes.func,
-};
-
-TableCell.defaultProps = {
-	...BaseCell.defaultProps,
-	cellContent: null,
-	cellTitle: null,
-	RootDOM: 'td',
-	onSort: () => {},
-};
 
 export default TableCell;

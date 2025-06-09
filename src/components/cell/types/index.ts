@@ -15,7 +15,7 @@ type ElementSizeTypes = 'sm' | 'md' | 'lg' | 'auto';
  * - 'span': Inline container
  * - 'button': Button element
  */
-type RootDOMTypes = 'div' | 'span' | 'button';
+type RootDOMTypes = 'div' | 'span' | 'button' | 'td';
 
 /**
  * Specifies the border radius options for the cell.
