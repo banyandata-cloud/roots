@@ -10,9 +10,8 @@ import {
 	Tooltip,
 } from 'chart.js';
 import ChartDataLabels from 'chartjs-plugin-datalabels'; // Import the data labels plugin
-import React from 'react';
 import { Bar } from 'react-chartjs-2';
-import { COLORS } from '../../../styles';
+import { getColorGradient } from '../utils';
 import { Skeleton } from './Skeleton'; // Assuming this is your custom loading component
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend, ChartDataLabels);
@@ -26,8 +25,6 @@ const BaseBarChart = ({
 	height = '100%',
 	barThickness = 50,
 	borderRadius = 5,
-	barColor1,
-	barColor2,
 	xAxisTitle,
 	yAxisTitle,
 	tooltip,
@@ -40,6 +37,7 @@ const BaseBarChart = ({
 	vertical = true,
 	stacked,
 	extra,
+	barColors,
 }) => {
 	if (loading) {
 		return <Skeleton vertical={vertical} />;
@@ -59,12 +57,16 @@ const BaseBarChart = ({
 	const barDatasets = Array.from(allKeys).map((key) => {
 		return {
 			label: key,
-			backgroundColor:
-				key === 'x1'
-					? barColor1 ?? COLORS.success
-					: key === 'x2'
-					? barColor2 ?? COLORS.error
-					: COLORS.warning,
+			backgroundColor: (ctx) => {
+				const color = barColors?.[key];
+				if (!color) return 'grey';
+
+				if (color.startsWith('linear-gradient')) {
+					return getColorGradient(ctx, color);
+				}
+
+				return color;
+			},
 			data: labels.map((label) => {
 				return seriesData.chartData[label][key] !== undefined
 					? seriesData.chartData[label][key]
@@ -106,7 +108,7 @@ const BaseBarChart = ({
 				titleColor: tooltip?.bodyFont?.titleColor ?? '#000',
 				bodyColor: tooltip?.bodyFont?.color ?? '#000',
 				bodyFont: {
-					...tooltip.bodyFont,
+					...tooltip?.bodyFont,
 					family: 'Poppins',
 				},
 				...tooltip,
