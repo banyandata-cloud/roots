@@ -1,14 +1,13 @@
 /* eslint-disable react/forbid-prop-types */
-import PropTypes from 'prop-types';
-import { isValidElement, useEffect, useRef, useState } from 'react';
+import { isValidElement, useEffect, useRef, useState, type ReactElement } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { classes } from '../../../utils';
 import { ErrorBoundaryWrapper } from '../../errorBoundary';
-import { Pagination } from '../../pagination';
 import { Pagination as PaginationV2 } from '../../paginationv2';
 import BaseSidePanel from '../../sidePanel/BaseSidePanel';
 import { TableColumnV2 } from '../BaseTable.class';
 import { BaseTableV2 } from '../baseTable';
+import type { TableProps } from '../types';
 import styles from './Table.module.css';
 import { TableFilters } from './tableFilters';
 
@@ -20,19 +19,16 @@ for (let i = 0; i < INTERSECTION; i += STEP) {
 	THRESHOLD.push(i);
 }
 
-const Table = (props) => {
+const Table = (props: TableProps): ReactElement => {
 	const {
 		className = '',
 		headerData = [],
 		tableData = [],
 		uniqueKey = '',
-		activeData = {},
-		setActiveData = () => {},
 		customCells = {
 			header: null,
 			body: null,
 		},
-		customPagination,
 		paginationData = null,
 		loading = false,
 		onIntersection = () => {},
@@ -48,42 +44,33 @@ const Table = (props) => {
 		onRowClick,
 		defaultActiveIndex,
 		placeholder,
-		tableInfo = {},
-		dataLabel = null,
+		tableInfo,
+		dataLabel,
 		customLabel,
 		jumpLabel,
 		customPageList,
 		customPageCallback,
 		hideDisabledPages,
 		tableDrawerProps = {},
-		searchProps = {
-			onSearch: () => {},
-			icon: null,
-			placeholder: 'Search',
-			disabled: false,
-		},
+		searchProps,
 		filtersCount = 0,
 		emptyPlaceholder = null,
 		onCheck,
 		checkAsRadio,
-		disableCheck = () => {},
+		disableCheck,
 	} = props;
 
 	const ref = useRef(null);
 	const paginationRef = useRef(null);
 
 	const {
-		onSearch = () => {},
-		icon: customSearchIcon = null,
+		onSearch,
 		placeholder: searchPlaceholder = 'Search',
 		disabled: searchDisabled = false,
 		onClear,
-	} = searchProps;
-	const {
-		tableTitleIcon = null,
-		title: tableTitle = '',
-		description: tableDescription = '',
-	} = tableInfo;
+	} = searchProps ?? {};
+
+	const { title: tableTitle = '', description: tableDescription = '' } = tableInfo;
 
 	const [floating, setFloating] = useState(false);
 	const [hiddenColumns, setHiddenColumns] = useState({});
@@ -211,10 +198,8 @@ const Table = (props) => {
 						setHiddenColumns,
 					}}
 					theme={theme}
-					tableTitleIcon={tableTitleIcon}
 					tableTitleText={tableTitle}
 					tableDescriptionText={tableDescription}
-					customSearchIcon={customSearchIcon}
 					onSearch={onSearch}
 					onClear={onClear}
 					searchDisabled={searchDisabled}
@@ -230,8 +215,7 @@ const Table = (props) => {
 						headerData: visibleColumns,
 						tableData: tabularData,
 						uniqueKey,
-						activeData,
-						setActiveData,
+
 						customCells,
 						className: styles.table,
 						onSort,
@@ -253,15 +237,10 @@ const Table = (props) => {
 					<PaginationV2
 						className={classes(styles.pagination, floating ? styles.floating : '')}
 						ref={paginationRef}
-						customPagination={customPagination}
 						{...paginationData}
 						floating={floating}
 						dataLabel={dataLabel}
-						customLabel={customLabel}
 						jumpLabel={jumpLabel}
-						customPageList={customPageList}
-						customPageCallback={customPageCallback}
-						hideDisabledPages={hideDisabledPages}
 						loading={loading}
 					/>
 				)}
@@ -303,51 +282,6 @@ const Table = (props) => {
 			</div>
 		</ErrorBoundary>
 	);
-};
-
-Table.propTypes = {
-	className: PropTypes.string,
-	headerData: PropTypes.arrayOf(
-		PropTypes.shape({
-			title: PropTypes.string,
-			id: PropTypes.string,
-			size: PropTypes.oneOf(['sm', 'md', 'lg']),
-			flexible: PropTypes.bool,
-			sort: PropTypes.bool,
-			style: PropTypes.object,
-			multiLine: PropTypes.bool,
-		})
-	),
-	tableData: PropTypes.arrayOf(PropTypes.object),
-	uniqueKey: PropTypes.arrayOf(PropTypes.string),
-	activeData: PropTypes.object,
-	setActiveData: PropTypes.func,
-	customCells: PropTypes.shape({
-		header: PropTypes.func,
-		body: PropTypes.func,
-	}),
-
-	onIntersection: PropTypes.func,
-	isFloating: PropTypes.bool,
-	paginationData: PropTypes.shape({
-		...Pagination.propTypes,
-	}),
-	loading: PropTypes.bool,
-	v2: PropTypes.bool,
-	disabledFilterOptions: PropTypes.shape({
-		filterButton: PropTypes.bool,
-		refresh: PropTypes.bool,
-		columnFilter: PropTypes.bool,
-		settings: PropTypes.bool,
-	}),
-	onSort: PropTypes.func,
-	rowHeight: PropTypes.oneOf(['md', 'lg']),
-	onRowClick: PropTypes.func,
-	onSearch: PropTypes.func,
-	theme: PropTypes.oneOf(['light', 'dark']),
-	custom: PropTypes.node,
-	onAdvancedFilterClick: PropTypes.func,
-	dataLabel: PropTypes.string,
 };
 
 export default Table;

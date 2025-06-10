@@ -51,13 +51,16 @@ const TableFilters = (props) => {
 	};
 
 	const getAdvancedFilterTitle = () => {
+		if (!filtersCount) {
+			return;
+		}
+
 		if (filtersCount > 0) {
 			if (filtersCount === 1) {
 				return `${filtersCount}`;
 			}
 			return `${filtersCount}`;
 		}
-		return '';
 	};
 
 	const handleKeyDown = (event) => {
