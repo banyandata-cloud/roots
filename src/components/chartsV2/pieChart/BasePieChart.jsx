@@ -1,11 +1,12 @@
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable no-nested-ternary */
 import { ArcElement, Chart as ChartJS, Legend, Title, Tooltip } from 'chart.js';
-import React, { useCallback, useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { Pie } from 'react-chartjs-2';
 import { classes } from '../../../utils';
 import styles from './BasePieChart.module.css';
 // import { stripSampleData } from './BasePieChartData';
+import { getColorGradient } from '../utils';
 import { Skeleton } from './Skeleton';
 
 // Register components for Chart.js
@@ -63,44 +64,60 @@ const BasePieChart = (props) => {
 		labels: seriesData?.metaData?.keyData
 			? Object.keys(seriesData.chartData).map((key) => {
 					return seriesData.metaData.keyData[key];
-			  })
+				})
 			: [],
 		datasets: [
 			{
 				data: Object.keys(seriesData?.chartData ?? {}).map((key) => {
 					return seriesData?.chartData?.[key];
 				}),
-				backgroundColor: seriesOption
-					? seriesOption.map((option, index) => {
-							if (hoveredIndex !== null && hoveredIndex !== index) {
-								return '#D3D3D3'; // Grey out others when hovering a legend item
-							}
-							return excludedIndices.includes(index)
-								? '#D3D3D3' // Grey for excluded items
-								: option.itemStyle.color; // Normal color for other slices
-					  })
-					: Object.keys(seriesData?.chartData ?? {}).map((_, index) => {
-							const defaultColors = [
-								'#FF6384',
-								'#36A2EB',
-								'#FFCE56',
-								'#4BC0C0',
-								'#9966FF',
-								'#FF9F40',
-							];
-							if (hoveredIndex !== null && hoveredIndex !== index) {
-								return '#D3D3D3'; // Grey out others when hovering a legend item
-							}
-							return excludedIndices.includes(index)
-								? '#D3D3D3' // Grey for excluded items
-								: defaultColors[index % defaultColors.length]; // Normal color for other slices
-					  }),
+				backgroundColor: (ctx) => {
+					return seriesOption
+						? seriesOption.map((option, index) => {
+								if (hoveredIndex !== null && hoveredIndex !== index) {
+									return '#D3D3D3';
+								}
+
+								if (excludedIndices.includes(index)) {
+									return '#D3D3D3';
+								}
+
+								const color = option?.itemStyle?.color;
+								if (
+									typeof color === 'string' &&
+									color.startsWith('linear-gradient')
+								) {
+									return getColorGradient(ctx, color);
+								}
+
+								return color || '#000'; // Fallback solid color
+							})
+						: Object.keys(seriesData?.chartData ?? {}).map((_, index) => {
+								const defaultColors = [
+									'#FF6384',
+									'#36A2EB',
+									'#FFCE56',
+									'#4BC0C0',
+									'#9966FF',
+									'#FF9F40',
+								];
+
+								if (hoveredIndex !== null && hoveredIndex !== index) {
+									return '#D3D3D3';
+								}
+
+								return excludedIndices.includes(index)
+									? '#D3D3D3'
+									: defaultColors[index % defaultColors.length];
+							});
+				},
+
 				borderColor: seriesOption
 					? seriesOption.map((option, index) => {
 							return excludedIndices.includes(index)
 								? '#D3D3D3' // Grey for excluded items
 								: option.itemStyle.color; // Normal color for other borders
-					  })
+						})
 					: Object.keys(seriesData?.chartData ?? {}).map((_, index) => {
 							const defaultColors = [
 								'#FF6384',
@@ -113,7 +130,7 @@ const BasePieChart = (props) => {
 							return excludedIndices.includes(index)
 								? '#D3D3D3' // Grey for excluded items
 								: defaultColors[index % defaultColors.length]; // Normal color for other borders
-					  }),
+						}),
 				hoverBorderWidth,
 				hoverOffset: (context) => {
 					const index = context.dataIndex;
@@ -127,7 +144,10 @@ const BasePieChart = (props) => {
 		],
 	};
 
+	const hoveredIndexRef = useRef(null);
+
 	const handleHover = (index) => {
+		hoveredIndexRef.current = index;
 		setHoveredIndex(index);
 	};
 
@@ -141,7 +161,7 @@ const BasePieChart = (props) => {
 			legend: legend?.icon
 				? {
 						display: false,
-				  }
+					}
 				: {
 						display: legend?.display ?? true,
 						position: 'right',
@@ -156,8 +176,8 @@ const BasePieChart = (props) => {
 								return hoveredIndex !== null && hoveredIndex !== index
 									? '#D3D3D3'
 									: excludedIndices.includes(index)
-									? '#D3D3D3'
-									: 'black';
+										? '#D3D3D3'
+										: 'black';
 							},
 							font: {
 								family: 'Poppins',
@@ -172,9 +192,10 @@ const BasePieChart = (props) => {
 						},
 						onLeave: () => {
 							setHoveredIndex(null);
+							hoveredIndexRef.current = null;
 						},
 						...legend,
-				  },
+					},
 			title: {
 				display: !!title,
 				text: title,
@@ -205,10 +226,10 @@ const BasePieChart = (props) => {
 					title: tooltip.displayTitle
 						? (tooltipItems) => {
 								return tooltipItems[0]?.label || '';
-						  }
+							}
 						: () => {
 								return '';
-						  },
+							},
 				},
 				bodySpacing: tooltip?.bodySpacing ?? 5,
 				displayColors: tooltip?.displayColors ?? true,
@@ -235,10 +256,12 @@ const BasePieChart = (props) => {
 				handleHover(hoveredIndexx);
 			} else {
 				setHoveredIndex(null);
+				hoveredIndexRef.current = null;
 			}
 		},
 		onLeave: () => {
 			setHoveredIndex(null);
+			hoveredIndexRef.current = null;
 		},
 		animations: {
 			animateRotate: false,
@@ -356,6 +379,22 @@ const BasePieChart = (props) => {
 		},
 	};
 
+	const legendColors = seriesOption
+		? seriesOption.map((option) => {
+				const color = option?.itemStyle?.color;
+				if (typeof color !== 'string' || !color.startsWith('linear-gradient')) {
+					return color; // return as-is if not a gradient
+				}
+
+				const colorStops = color.match(/#(?:[0-9a-fA-F]{3}){1,2}/g);
+
+				// Return the first color stop as fallback
+				return colorStops?.[0] || '#000'; // Fallback to black
+			})
+		: [];
+
+	console.log(legendColors);
+
 	const customLegendPlugin = {
 		id: 'customLegend',
 		afterUpdate(chart) {
@@ -369,9 +408,6 @@ const BasePieChart = (props) => {
 				li.style.display = 'flex';
 				li.style.alignItems = 'center';
 				li.style.cursor = 'pointer';
-
-				// Get the color for the current pie slice
-				const sliceColor = chart.data.datasets[0].backgroundColor[index];
 
 				// Handle click for excluding/un-excluding slices
 				li.onclick = (event) => {
@@ -391,13 +427,15 @@ const BasePieChart = (props) => {
 
 				// Handle leave event to remove hover effect
 				li.onmouseleave = () => {
-					setHoveredIndex(null);
-					chart.update('none');
+					setHoveredIndex(null); // Reset hover index on leave
+					hoveredIndexRef.current = null;
+					chart.update('none'); // Update the chart without animation
 				};
 
 				// Apply grey color dynamically based on the hovered state
-				const isGreyedOut = hoveredIndex !== null && hoveredIndex !== index;
-				const displayColor = isGreyedOut ? '#D3D3D3' : sliceColor;
+				const isGreyedOut =
+					hoveredIndexRef.current !== null && hoveredIndexRef.current !== index;
+				const displayColor = isGreyedOut ? '#D3D3D3' : legendColors[index];
 
 				const value = chart.data.datasets[0].data[index];
 
@@ -422,6 +460,7 @@ const BasePieChart = (props) => {
 			className={classes(styles.root, className)}
 			onMouseLeave={() => {
 				setHoveredIndex(null);
+				hoveredIndexRef.current = null;
 			}}
 			style={{
 				width,
