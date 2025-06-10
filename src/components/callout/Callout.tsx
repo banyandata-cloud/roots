@@ -20,7 +20,7 @@ const Callout = forwardRef<HTMLDivElement, CalloutProps>((props, ref): ReactElem
 	let Icon: ReactNode = null;
 
 	if (CustomIcon != null) {
-		Icon = <CustomIcon className={styles.icon as string} />;
+		Icon = <CustomIcon className={styles.icon} />;
 	} else {
 		switch (type) {
 			case 'info':

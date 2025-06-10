@@ -55,7 +55,9 @@ const Alert: ForwardRefRenderFunction<AlertHandle, AlertProps> = (
 		action: undefined,
 		position: undefined,
 		onClose: () => {
-			setOpen((prev) => !prev);
+			setOpen((prev) => {
+				return !prev;
+			});
 		},
 		autoDismiss: true,
 		dismissTime: ALERT_DISMISS_TIME,
@@ -77,7 +79,7 @@ const Alert: ForwardRefRenderFunction<AlertHandle, AlertProps> = (
 
 	let Icon: ReactNode = null;
 	if (CustomIcon != null) {
-		Icon = <CustomIcon className={styles.icon as string} />;
+		Icon = <CustomIcon className={styles.icon ?? ''} />;
 	} else {
 		switch (type) {
 			case 'info':
@@ -107,17 +109,25 @@ const Alert: ForwardRefRenderFunction<AlertHandle, AlertProps> = (
 	const [scope, animate] = useAnimate();
 
 	const alert = (appliedAlertProps: Partial<AlertConfig>) => {
-		setAlertProps((prev) => ({
-			...prev,
-			...appliedAlertProps,
-		}));
+		setAlertProps((prev) => {
+			return {
+				...prev,
+				...appliedAlertProps,
+			};
+		});
 	};
 
-	useImperativeHandle(ref, () => ({ alert }));
+	useImperativeHandle(ref, () => {
+		return {
+			alert,
+		};
+	});
 
 	useEffect(() => {
 		if (alertProps.title) {
-			setOpen((prev) => !prev);
+			setOpen((prev) => {
+				return !prev;
+			});
 		}
 	}, [alertProps]);
 
@@ -129,7 +139,7 @@ const Alert: ForwardRefRenderFunction<AlertHandle, AlertProps> = (
 				x: ANIMATION.static[staticPosition as keyof typeof ANIMATION.static],
 			});
 		}
-	}, [animation, position, scope]);
+	}, [animate, animation, position, scope]);
 
 	useEffect(() => {
 		if (alertProps.title && autoDismiss) {
@@ -137,10 +147,12 @@ const Alert: ForwardRefRenderFunction<AlertHandle, AlertProps> = (
 				setOpen(false);
 			}, dismissTime);
 
-			return () => clearTimeout(timer);
+			return () => {
+				clearTimeout(timer);
+			};
 		}
-		return;
-	}, [alertProps]);
+		return undefined;
+	}, [alertProps, autoDismiss, dismissTime]);
 
 	const { getFloatingProps } = useInteractions([useDismiss(context)]);
 
@@ -174,11 +186,13 @@ const Alert: ForwardRefRenderFunction<AlertHandle, AlertProps> = (
 							size='auto'
 							variant='text'
 							onClick={() => {
-								onClose?.();
+								onClose();
 								setOpen(false);
 							}}
 							className={styles.close}
-							leftComponent={() => <CrossIcon className={styles.icon} />}
+							leftComponent={() => {
+								return <CrossIcon className={styles.icon} />;
+							}}
 						/>
 					)}
 				</div>

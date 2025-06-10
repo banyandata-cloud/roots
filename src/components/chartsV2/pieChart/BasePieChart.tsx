@@ -155,9 +155,9 @@ const BasePieChart: React.FC<BasePieChartProps> = (props) => {
 							hoveredIndex !== null && hoveredIndex !== i
 								? '#D3D3D3'
 								: excludedIndices.includes(i)
-								? '#D3D3D3'
-								: opt.itemStyle.color
-					  )
+									? '#D3D3D3'
+									: opt.itemStyle.color
+						)
 					: Object.keys(seriesData?.chartData ?? {}).map((_, i) => {
 							const defaultColors = [
 								'#FF6384',
@@ -170,13 +170,13 @@ const BasePieChart: React.FC<BasePieChartProps> = (props) => {
 							return hoveredIndex !== null && hoveredIndex !== i
 								? '#D3D3D3'
 								: excludedIndices.includes(i)
-								? '#D3D3D3'
-								: defaultColors[i % defaultColors.length];
-					  }),
+									? '#D3D3D3'
+									: defaultColors[i % defaultColors.length];
+						}),
 				borderColor: seriesOption
 					? seriesOption.map((opt, i) =>
 							excludedIndices.includes(i) ? '#D3D3D3' : opt.itemStyle.color
-					  )
+						)
 					: Object.keys(seriesData?.chartData ?? {}).map((_, i) => {
 							const defaultColors = [
 								'#FF6384',
@@ -189,7 +189,7 @@ const BasePieChart: React.FC<BasePieChartProps> = (props) => {
 							return excludedIndices.includes(i)
 								? '#D3D3D3'
 								: defaultColors[i % defaultColors.length];
-					  }),
+						}),
 				hoverBorderWidth,
 				hoverOffset: (context: any) => (hoveredIndex === context.dataIndex ? 30 : 0),
 				radius: doughnut?.[0] ?? '100%',
@@ -224,8 +224,8 @@ const BasePieChart: React.FC<BasePieChartProps> = (props) => {
 								return hoveredIndex !== null && hoveredIndex !== idx
 									? '#D3D3D3'
 									: excludedIndices.includes(idx)
-									? '#D3D3D3'
-									: 'black';
+										? '#D3D3D3'
+										: 'black';
 							},
 							font: { family: 'Poppins' },
 						},
@@ -242,7 +242,7 @@ const BasePieChart: React.FC<BasePieChartProps> = (props) => {
 						},
 						onLeave: () => setHoveredIndex(null),
 						...legend,
-				  },
+					},
 			title: {
 				display: !!title,
 				text: title,
@@ -494,7 +494,7 @@ const BasePieChart: React.FC<BasePieChartProps> = (props) => {
 			{legend?.icon && legend?.display && (
 				<ul
 					style={{
-						...(legend as any)?.legendStyles,
+						...(legend?.legendStyles as React.CSSProperties),
 					}}
 					ref={legendRef}
 				/>

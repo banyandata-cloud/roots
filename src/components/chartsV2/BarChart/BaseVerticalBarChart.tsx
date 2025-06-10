@@ -56,19 +56,23 @@ const BaseBarChart: React.FC<BaseBarChartProps> = ({
 		});
 	});
 
-	const barDatasets: ChartDataset<'bar'>[] = Array.from(allKeys).map((key) => ({
-		label: key,
-		backgroundColor:
-			key === 'x1'
-				? barColor1 ?? COLORS.success
-				: key === 'x2'
-				? barColor2 ?? COLORS.error
-				: COLORS.warning,
-		data: labels.map((label) => seriesData.chartData[label]?.[key] ?? null),
-		borderRadius,
-		barThickness,
-		...chartDatasets,
-	}));
+	const barDatasets: ChartDataset<'bar'>[] = Array.from(allKeys).map((key) => {
+		return {
+			label: key,
+			backgroundColor:
+				key === 'x1'
+					? (barColor1 ?? COLORS.success)
+					: key === 'x2'
+						? (barColor2 ?? COLORS.error)
+						: COLORS.warning,
+			data: labels.map((label) => {
+				return seriesData.chartData[label]?.[key] ?? null;
+			}),
+			borderRadius,
+			barThickness,
+			...chartDatasets,
+		};
+	});
 
 	const datasets = stacked ? [...barDatasets, stacked] : [...barDatasets];
 
@@ -99,8 +103,9 @@ const BaseBarChart: React.FC<BaseBarChartProps> = ({
 				bodyColor: tooltip?.bodyFont?.color ?? '#000',
 				bodyFont: {
 					family: 'Poppins',
-					...(tooltip?.bodyFont as any),
+					...(typeof tooltip?.bodyFont === 'object' ? tooltip.bodyFont : {}),
 				},
+
 				...tooltip,
 			},
 			legend: {
@@ -116,8 +121,19 @@ const BaseBarChart: React.FC<BaseBarChartProps> = ({
 					family: 'Poppins',
 				},
 				offset: 4,
-				formatter: (_value: number, context: any) => {
-					return context.chart.data.labels[context.dataIndex];
+				formatter: (
+					_value: number,
+					context: {
+						chart: {
+							data: {
+								labels?: (string | number)[];
+							};
+						};
+						dataIndex: number;
+					}
+				) => {
+					const label = context.chart.data.labels?.[context.dataIndex];
+					return typeof label === 'string' ? label : String(label ?? '');
 				},
 			},
 			...chartOptions?.plugins,
@@ -132,7 +148,7 @@ const BaseBarChart: React.FC<BaseBarChartProps> = ({
 					color: 'black',
 					callback: (_value: string | number, index: number) => {
 						const label = labels[index];
-						return label ? seriesData.chartData[label]?.x1 ?? null : null;
+						return label ? (seriesData.chartData[label]?.x1 ?? null) : null;
 					},
 					font: {
 						family: 'Poppins',

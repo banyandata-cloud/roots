@@ -1,34 +1,11 @@
-import type { ChartDataset, ChartOptions } from 'chart.js';
+import type { ChartDataset, ChartOptions, TooltipOptions } from 'chart.js';
+import React from 'react';
 
-export interface ChartDataItem {
-	[key: string]: number | null;
-}
+export type ChartDataItem = Record<string, number | null>;
 
 interface SeriesData {
 	chartData: Record<string, ChartDataItem>;
 }
-
-interface FontOptions {
-	size?: number;
-	family?: string;
-	weight?: string;
-	color?: string;
-	titleColor?: string;
-}
-
-interface TooltipConfig {
-	borderWidth?: number;
-	bodySpacing?: number;
-	displayColors?: boolean;
-	colorBoxWidth?: number;
-	colorBoxHeight?: number;
-	usePointStyle?: boolean;
-	bodyFont?: FontOptions;
-	titleColor?: string;
-	bodyColor?: string;
-	[key: string]: any;
-}
-
 interface TitleConfig {
 	text?: string;
 	left?: number;
@@ -41,8 +18,33 @@ interface GridOptions {
 	gridContainLabel?: boolean;
 }
 
-interface AxisOptions {
-	[key: string]: any;
+export type AxisOptions = Record<string, string | number | boolean | object | undefined>;
+
+type BarChartType = 'bar';
+
+// CustomFontOptions compatible with Chart.js FontSpec
+interface CustomFontOptions {
+	size?: number;
+	weight?: 'normal' | 'bold' | 'lighter' | 'bolder' | number;
+	family?: string;
+	style?: string;
+	lineHeight?: number | string;
+	color?: string;
+}
+
+// Complete tooltip configuration type for bar charts
+interface CustomTooltipOptions {
+	borderWidth?: number;
+	backgroundColor?: string;
+	bodySpacing?: number;
+	displayColors?: boolean;
+	colorBoxWidth?: number;
+	colorBoxHeight?: number;
+	usePointStyle?: boolean;
+	titleColor?: string;
+	bodyColor?: string;
+	bodyFont?: CustomFontOptions;
+	callbacks?: TooltipOptions<BarChartType>['callbacks'];
 }
 
 export interface BaseBarChartProps {
@@ -58,7 +60,7 @@ export interface BaseBarChartProps {
 	barColor2?: string;
 	xAxisTitle?: string;
 	yAxisTitle?: string;
-	tooltip?: TooltipConfig;
+	tooltip?: CustomTooltipOptions;
 	legends?: object;
 	chartOptions?: ChartOptions<'bar'>;
 	chartDatasets?: Partial<ChartDataset<'bar'>>;

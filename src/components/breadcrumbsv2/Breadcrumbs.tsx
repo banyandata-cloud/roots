@@ -1,38 +1,27 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable react/require-default-props */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { ReactNode, useState } from 'react';
+import React, { useState } from 'react';
 import { classes } from '../../utils/utils';
 import Button from '../buttons/button/Button';
 import { CaretIcon } from '../icons';
 import { Popover } from '../popover';
 import styles from './Breadcrumbs.module.css';
-
-interface Crumb {
-	title?: string;
-	value?: string | number;
-	icon?: ReactNode;
-	navigate?: () => void;
-	isDisabled?: boolean;
-}
-
-interface BreadCrumbsProps {
-	crumbs?: Crumb[];
-	className?: string;
-}
+import type { BreadCrumbsProps } from './types';
 
 const BreadCrumbs: React.FC<BreadCrumbsProps> = ({ crumbs = [], className = '' }) => {
 	const [expand, setExpand] = useState(false);
 	const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
-	if (!crumbs || crumbs.length === 0) return null;
+	if (!Array.isArray(crumbs) || crumbs.length === 0) return null;
 
-	const CrumbsDOM = crumbs.map((crumb = {}, index) => {
+	const CrumbsDOM = crumbs.map((crumb, index) => {
 		const { title, value, icon, navigate, isDisabled = false } = crumb;
 		const active = index === crumbs.length - 1;
 
 		return (
 			<div
-				key={`${title}-${index}`}
+				key={`${title}-${index.toString()}`}
 				className={classes(styles['crumb-list'], active ? styles.active : '')}
 				onClick={!isDisabled ? navigate : undefined}
 				data-state={active}>
@@ -60,14 +49,19 @@ const BreadCrumbs: React.FC<BreadCrumbsProps> = ({ crumbs = [], className = '' }
 
 	const lastCrumb = crumbs[crumbs.length - 1];
 	const icon = lastCrumb?.icon;
-	const buttonTitle = `${lastCrumb?.title} : ${lastCrumb?.value}`;
+	const buttonTitle = `${lastCrumb?.title ?? ''} : ${String(lastCrumb?.value)}`;
 
 	return (
 		<div className={classes(styles.root, className)}>
 			<Button
-				ref={(el) => setAnchorEl(el)}
+				ref={(el: HTMLDivElement | null) => {
+					setAnchorEl(el);
+				}}
 				onClick={() => {
-					if (crumbs.length > 1) setExpand((prev) => !prev);
+					if (crumbs.length > 1)
+						setExpand((prev) => {
+							return !prev;
+						});
 				}}
 				className={classes(
 					styles.selected,
@@ -76,11 +70,20 @@ const BreadCrumbs: React.FC<BreadCrumbsProps> = ({ crumbs = [], className = '' }
 				)}
 				title={buttonTitle}
 				leftComponent={
-					icon ? () => <div className={styles.iconWrapper}>{icon}</div> : undefined
+					icon
+						? () => {
+								return <div className={styles.iconWrapper}>{icon}</div>;
+							}
+						: undefined
 				}
-				rightComponent={() => (
-					<CaretIcon className={classes(styles.icon, expand && styles.expand)} upDown />
-				)}
+				rightComponent={() => {
+					return (
+						<CaretIcon
+							className={classes(styles.icon, expand && styles.expand)}
+							upDown
+						/>
+					);
+				}}
 			/>
 			<Popover
 				className={styles.popover}
