@@ -135,7 +135,7 @@ const TableFilters = (props) => {
 									styles['adv-filter'],
 									filtersCount > 0 ? styles.filter : ''
 								)}
-								title={getAdvancedFilterTitle()}
+								title={<FilterIcon className={styles.icon} v2 />}
 								onClick={() => {
 									toggleDrawer({
 										data: {
@@ -144,9 +144,11 @@ const TableFilters = (props) => {
 										},
 									});
 								}}
-								leftComponent={() => {
-									return <FilterIcon className={styles.icon} v2 />;
-								}}
+								{...(getAdvancedFilterTitle() && {
+									rightComponent: () => {
+										return getAdvancedFilterTitle();
+									},
+								})}
 							/>
 						)}
 						{columnFilters.length > 0 && (
