@@ -1,18 +1,22 @@
-import PropTypes from 'prop-types';
-import React, { useEffect, useRef, useState } from 'react';
+import {
+	useCallback,
+	useEffect,
+	useRef,
+	useState,
+	type ChangeEvent,
+	type ReactElement,
+} from 'react';
 import { classes } from '../../utils';
 import { Button } from '../buttons';
 import Dropdown from '../input/dropdown/Dropdown';
 import DropdownItem from '../input/dropdown/dropdown-item/DropdownItem';
-import { Skeleton } from './Skeleton';
 import styles from './Tabs.module.css';
+import type { TabsProps } from './types';
 
-const Tabs = (props) => {
+const Tabs = (props: TabsProps): ReactElement => {
 	const {
 		tabs = [],
 		className = '',
-		loading,
-		fallback,
 		selectedTab,
 		setSelectedTab,
 		direction = 'horizontal',
@@ -21,11 +25,11 @@ const Tabs = (props) => {
 
 	const vertical = direction === 'vertical';
 
-	const [sliderLeft, setSliderLeft] = useState(0);
-	const [sliderWidth, setSliderWidth] = useState(0);
-	const tabRefs = useRef([]);
+	const [sliderLeft, setSliderLeft] = useState<number>(0);
+	const [sliderWidth, setSliderWidth] = useState<number>(0);
+	const tabRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-	const tabIndex = tabs?.findIndex((tab) => {
+	const tabIndex = tabs.findIndex((tab) => {
 		if (tab.dropdown) {
 			const dropdownItem = tab.dropdownItems?.find((item) => {
 				return item.id === selectedTab;
@@ -37,38 +41,34 @@ const Tabs = (props) => {
 
 	const selectedTabIndex = tabIndex !== -1 ? tabIndex : 0;
 
-	const [activeTab, setActiveTab] = useState();
+	const [activeTab, setActiveTab] = useState<number>(0);
 
 	useEffect(() => {
 		setActiveTab(selectedTabIndex);
 	}, [selectedTabIndex]);
 
-	const updateSliderPosition = () => {
+	const updateSliderPosition = useCallback(() => {
 		const activeTabElement = tabRefs.current[activeTab];
 
 		if (activeTabElement) {
 			setSliderLeft(activeTabElement.offsetLeft);
 			setSliderWidth(activeTabElement.offsetWidth);
 		}
-	};
+	}, [activeTab]);
 
 	useEffect(() => {
 		updateSliderPosition();
-	}, [activeTab, tabs, selectedTab]);
+	}, [activeTab, tabs, selectedTab, updateSliderPosition]);
 
-	const handleTabClick = (id, index) => {
+	const handleTabClick = (id: string, index: number) => {
 		setSelectedTab(id);
 		setActiveTab(index);
 	};
 
-	const handleDropClick = (selectedValue) => {
+	const handleDropClick = (selectedValue: string) => {
 		setSelectedTab(selectedValue);
 		updateSliderPosition();
 	};
-
-	if (loading || fallback) {
-		return <Skeleton fallback={!loading && fallback} />;
-	}
 
 	return (
 		<div
@@ -91,13 +91,20 @@ const Tabs = (props) => {
 
 					const getLeftComponent = () => {
 						if (LeftIcon) {
-							if (LeftIcon.Active || LeftIcon.InActive) {
-								if (isActive) {
+							if (
+								typeof LeftIcon === 'object' &&
+								(LeftIcon.Active || LeftIcon.InActive)
+							) {
+								if (isActive && LeftIcon.Active) {
 									return <LeftIcon.Active />;
 								}
-								return <LeftIcon.InActive />;
+								if (LeftIcon.InActive) {
+									return <LeftIcon.InActive />;
+								}
 							}
-							return <LeftIcon />;
+							if (typeof LeftIcon === 'function') {
+								return <LeftIcon />;
+							}
 						}
 						return null;
 					};
@@ -115,19 +122,17 @@ const Tabs = (props) => {
 							)}>
 							{dropdown ? (
 								<Dropdown
-									className={`${styles.dropdown} ${
-										isActive ? styles.active : ''
-									}`}
-									onChange={(event) => {
+									className={`${String(styles.dropdown)} ${String(
+										isActive && styles.active
+									)}`}
+									onChange={(event: ChangeEvent<HTMLInputElement>) => {
 										const selectedValue = event.target.value;
 										handleDropClick(selectedValue);
 										setActiveTab(index);
 									}}
 									value={selectedTab}
-									placeholder={title}
-									// value={!isActive ? title : undefined}
-								>
-									{dropdownItems.map((option) => {
+									placeholder={title}>
+									{dropdownItems?.map((option) => {
 										return (
 											<DropdownItem
 												key={option.id}
@@ -140,7 +145,6 @@ const Tabs = (props) => {
 							) : (
 								<Button
 									size='auto'
-									color='default'
 									radius='none'
 									key={id}
 									variant='text'
@@ -148,7 +152,7 @@ const Tabs = (props) => {
 									className={isActive ? styles.active : ''}
 									title={title}
 									onClick={() => {
-										return handleTabClick(tab.id, index);
+										handleTabClick(tab.id, index);
 									}}
 									leftComponent={() => {
 										return getLeftComponent();
@@ -167,8 +171,8 @@ const Tabs = (props) => {
 				<div
 					className={vertical ? styles['tab-slider-vertical'] : styles['tab-slider']}
 					style={{
-						left: `${sliderLeft}px`,
-						width: `${sliderWidth}px`,
+						left: `${String(sliderLeft)}px`,
+						width: `${String(sliderWidth)}px`,
 					}}
 				/>
 			</div>
@@ -177,14 +181,6 @@ const Tabs = (props) => {
 			</div>
 		</div>
 	);
-};
-
-Tabs.propTypes = {
-	className: PropTypes.string,
-	tabs: PropTypes.arrayOf(PropTypes.string),
-	selectedTab: PropTypes.number,
-	loading: PropTypes.bool,
-	fallback: PropTypes.bool,
 };
 
 export default Tabs;
