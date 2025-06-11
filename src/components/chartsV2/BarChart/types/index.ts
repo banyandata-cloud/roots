@@ -1,4 +1,5 @@
 import type { ChartDataset, ChartOptions, TooltipOptions } from 'chart.js';
+import type { Context } from 'chartjs-plugin-datalabels';
 import React from 'react';
 
 export type ChartDataItem = Record<string, number | null>;
@@ -27,7 +28,6 @@ interface CustomFontOptions {
 	size?: number;
 	weight?: 'normal' | 'bold' | 'lighter' | 'bolder' | number;
 	family?: string;
-	style?: string;
 	lineHeight?: number | string;
 	color?: string;
 }
@@ -45,6 +45,30 @@ interface CustomTooltipOptions {
 	bodyColor?: string;
 	bodyFont?: CustomFontOptions;
 	callbacks?: TooltipOptions<BarChartType>['callbacks'];
+}
+
+export interface ChartDataLabelsOptions {
+	anchor?: 'start' | 'center' | 'end';
+	align?: 'start' | 'center' | 'end' | 'left' | 'right' | 'top' | 'bottom';
+	backgroundColor?: string | CanvasGradient | CanvasPattern | ((context: Context) => string);
+	borderColor?: string;
+	borderRadius?: number;
+	borderWidth?: number;
+	clamp?: boolean;
+	clip?: boolean;
+	color?: string | ((context: Context) => string);
+	display?: boolean | ((context: Context) => boolean);
+	font?: Partial<CustomFontOptions>;
+	formatter?: (value: unknown, context: Context) => string | number;
+	offset?: number;
+	opacity?: number;
+	padding?: number | { top?: number; right?: number; bottom?: number; left?: number };
+	rotation?: number;
+	textAlign?: 'left' | 'right' | 'center' | 'start' | 'end';
+	textStrokeColor?: string;
+	textStrokeWidth?: number;
+	textShadowColor?: string;
+	textShadowBlur?: number;
 }
 
 export interface BaseBarChartProps {
@@ -70,4 +94,5 @@ export interface BaseBarChartProps {
 	vertical?: boolean;
 	stacked?: ChartDataset<'bar'>;
 	extra?: object;
+	dataLabelsOptions?: ChartDataLabelsOptions;
 }

@@ -183,6 +183,7 @@ const Alert: ForwardRefRenderFunction<AlertHandle, AlertProps> = (
 					{CustomAction && <CustomAction />}
 					{onClose && !autoDismiss && (
 						<Button
+							title=''
 							size='auto'
 							variant='text'
 							onClick={() => {

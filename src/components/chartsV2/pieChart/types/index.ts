@@ -1,71 +1,101 @@
-import type { ChartDataset, ChartOptions } from 'chart.js';
+import type { ChartDataset, ChartOptions, ChartType, TooltipCallbacks } from 'chart.js';
+import React from 'react';
 
-export interface ChartDataItem {
-	[key: string]: number | null;
+interface ChartSeriesOption {
+	itemStyle: {
+		color: string;
+	};
 }
 
 interface SeriesData {
-	chartData: Record<string, ChartDataItem>;
+	chartData: Record<string, number>;
+	metaData?: {
+		keyData: Record<string, string>;
+	};
 }
 
-interface FontOptions {
+export interface TooltipCallbackContext {
+	label: string;
+	raw: number;
+	dataset: ChartDataset<'bar'>;
+	radius?: string;
+}
+
+export interface LegendItem {
+	index: number;
+}
+
+interface CustomLabel {
+	id?: string;
+	title?: string;
+	value?: number;
+	margin?: number;
+	labelStyles?: {
+		fontStyle: string;
+		fontSize: string;
+		color: string;
+		position?: number;
+	};
+	valueStyles?: {
+		fontStyle: string;
+		fontSize: string;
+		color: string;
+	};
+}
+
+interface StripProps {
+	stripSize?: number;
+	stripWidth?: number;
+	circumference?: number;
+}
+
+interface TooltipFontOptions {
+	titleColor?: string;
+	color?: string;
 	size?: number;
 	family?: string;
-	weight?: string;
-	color?: string;
-	titleColor?: string;
 }
 
-interface TooltipConfig {
+export interface TooltipProps<TType extends ChartType = 'bar'> {
 	borderWidth?: number;
+	displayTitle?: boolean;
+	callbacks?: Partial<TooltipCallbacks<TType>>;
 	bodySpacing?: number;
 	displayColors?: boolean;
 	colorBoxWidth?: number;
 	colorBoxHeight?: number;
 	usePointStyle?: boolean;
-	bodyFont?: FontOptions;
-	titleColor?: string;
-	bodyColor?: string;
-	[key: string]: any;
+	bodyFont?: TooltipFontOptions;
+	extraOptions?: Record<string, unknown>;
 }
 
-interface TitleConfig {
-	text?: string;
-	left?: number;
-	textStyle?: {
-		fontSize?: number;
-	};
+interface LegendProps {
+	display?: boolean;
+	icon?: boolean;
+	legendStyles?: string;
 }
 
-interface GridOptions {
-	gridContainLabel?: boolean;
-}
-
-interface AxisOptions {
-	[key: string]: any;
-}
-
-export interface BaseBarChartProps {
+export interface BasePieChartProps {
 	loading?: boolean;
+	fallback?: boolean;
+	title?: string;
+	tittleSize?: number;
 	seriesData: SeriesData;
-	title?: TitleConfig;
-	gridOptions?: GridOptions;
+	cursor?: string;
+	legend?: LegendProps;
+	style?: React.CSSProperties;
+	className?: string;
+	theme?: string;
+	seriesOption?: ChartSeriesOption[];
+	options?: ChartOptions<'pie'>;
+	tooltip?: TooltipProps;
 	width?: string | number;
 	height?: string | number;
-	barThickness?: number;
-	borderRadius?: number;
-	barColor1?: string;
-	barColor2?: string;
-	xAxisTitle?: string;
-	yAxisTitle?: string;
-	tooltip?: TooltipConfig;
-	legends?: object;
-	chartOptions?: ChartOptions<'bar'>;
-	chartDatasets?: Partial<ChartDataset<'bar'>>;
-	xAxis?: AxisOptions;
-	yAxis?: AxisOptions;
-	styles?: React.CSSProperties;
-	vertical?: boolean;
-	stacked?: ChartDataset<'bar'>;
-	extra?: object;
+	customLabel?: CustomLabel;
+	strip?: StripProps;
+	doughnut?: [string, string];
+	hoverBorderWidth?: number;
+	dataSetOptions?: Record<string, unknown>;
+	extra?: React.ReactNode;
+	radius?: string;
 }

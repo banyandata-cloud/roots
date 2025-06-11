@@ -10,17 +10,16 @@ import {
 	LinearScale,
 	Tooltip,
 } from 'chart.js';
+import type { Context } from 'chartjs-plugin-datalabels';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
 import { COLORS } from '../../../styles';
-import { Skeleton } from './Skeleton'; // Assuming this is your custom loading component
 import type { BaseBarChartProps } from './types';
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend, ChartDataLabels);
 
 const BaseBarChart: React.FC<BaseBarChartProps> = ({
-	loading,
 	seriesData,
 	title,
 	gridOptions,
@@ -43,10 +42,6 @@ const BaseBarChart: React.FC<BaseBarChartProps> = ({
 	stacked,
 	extra,
 }) => {
-	if (loading) {
-		return <Skeleton />;
-	}
-
 	const labels = Object.keys(seriesData.chartData);
 	const allKeys = new Set<string>();
 
@@ -121,20 +116,16 @@ const BaseBarChart: React.FC<BaseBarChartProps> = ({
 					family: 'Poppins',
 				},
 				offset: 4,
-				formatter: (
-					_value: number,
-					context: {
-						chart: {
-							data: {
-								labels?: (string | number)[];
-							};
-						};
-						dataIndex: number;
-					}
-				) => {
+				formatter: (_value: number, context: Context) => {
 					const label = context.chart.data.labels?.[context.dataIndex];
-					return typeof label === 'string' ? label : String(label ?? '');
+
+					if (typeof label === 'string' || typeof label === 'number') {
+						return String(label);
+					}
+					return '';
 				},
+
+				...chartOptions?.plugins?.datalabels,
 			},
 			...chartOptions?.plugins,
 		},
