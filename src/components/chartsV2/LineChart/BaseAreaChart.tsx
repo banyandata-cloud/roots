@@ -1,15 +1,24 @@
 import {
 	CategoryScale,
 	type ChartData,
+	type ChartDataset,
 	Chart as ChartJS,
+	type Chart as ChartJSInstance,
 	type ChartOptions,
+	type Color,
 	Filler,
 	Legend,
 	LinearScale,
 	LineElement,
 	PointElement,
+	type PointStyle,
+	Scale,
+	type Scriptable,
+	type ScriptableContext,
+	type ScriptableTooltipContext,
 	Title,
 	Tooltip,
+	type TooltipCallbacks,
 	type TooltipItem,
 } from 'chart.js';
 import React, { useRef, useState } from 'react';
@@ -27,19 +36,41 @@ ChartJS.register(
 	Filler
 );
 
-type ChartDataType = {
+interface ChartDataType {
 	metaData: {
 		xAxisData: string[];
 	};
-	chartData: {
-		[key: string]: number[];
-	};
-};
+	chartData: Record<string, number[]>;
+}
 
-type ChartProps = {
+interface TooltipConfig {
+	bodySpacing?: number;
+	displayColors?: boolean;
+	colorBoxWidth?: number;
+	colorBoxHeight?: number;
+	usePointStyle?: boolean;
+	displayTitle?: boolean;
+	bodyFont?: Record<string, string>;
+	titleColor?: string;
+	bodyColor?: string;
+	borderWidth?: number;
+	callbacks?: Partial<TooltipCallbacks<'line'>>;
+}
+
+type PointStyleOption = Scriptable<PointStyle, ScriptableContext<'line'>>;
+
+interface ChartOptionsProps {
+	pointStyle?: PointStyleOption;
+	pointRadius?: number;
+	pointHoverRadius?: number;
+	borderWidth?: number;
+	// Add more props as needed
+}
+
+interface ChartProps {
 	title?: string;
 	seriesData: ChartDataType;
-	tooltip?: any;
+	tooltip?: TooltipConfig;
 	legend?: {
 		display?: boolean;
 		position?: 'top' | 'left' | 'bottom' | 'right';
@@ -60,17 +91,18 @@ type ChartProps = {
 	xAxisLineShow?: boolean;
 	axisSplitColor?: string;
 	cursor?: string;
-	yAxis?: any;
-	xAxis?: any;
+	xAxis?: Record<string, string>;
+	yAxis?: Record<string, string>;
 	width?: string | number;
 	height?: string | number;
-	chartOptionsProps?: any;
+	chartOptions?: Partial<ChartOptions<'line'>>;
+	chartOptionsProps?: Partial<ChartOptions<'line'>>;
+	extra?: Record<string, string>;
+	dataSetOptions?: Partial<ChartData<'line'>>;
 	lineColors?: string[];
 	borderColors?: string[];
 	style?: React.CSSProperties;
-	extra?: any;
-	dataSetOptions?: {};
-};
+}
 
 const BaseAreaChart: React.FC<ChartProps> = (props): React.ReactElement => {
 	const {
@@ -95,7 +127,7 @@ const BaseAreaChart: React.FC<ChartProps> = (props): React.ReactElement => {
 		xAxis,
 		width,
 		height,
-		chartOptionsProps,
+		// chartOptionsProps,
 		lineColors = [
 			'rgba(255, 99, 132, 0.5)',
 			'rgba(54, 162, 235, 0.5)',
@@ -115,31 +147,42 @@ const BaseAreaChart: React.FC<ChartProps> = (props): React.ReactElement => {
 		dataSetOptions,
 	} = props;
 
+	const chartOptionsProps: ChartOptionsProps = {
+		pointStyle: 'rectRot',
+		pointRadius: 4,
+		pointHoverRadius: 6,
+		borderWidth: 2,
+	};
+
 	const legendRef = useRef<HTMLUListElement | null>(null);
 	const [hiddenDatasets, setHiddenDatasets] = useState<number[]>([]);
 
-	const toggleDatasetVisibility = (index: number, chart: any) => {
+	const toggleDatasetVisibility = (index: number, chart: ChartJSInstance<'line'>) => {
 		setHiddenDatasets((prevHidden) => {
 			const newHidden = prevHidden.includes(index)
-				? prevHidden.filter((i) => i !== index)
+				? prevHidden.filter((i) => {
+						return i !== index;
+					})
 				: [...prevHidden, index];
 
-			chart.data.datasets[index].hidden = newHidden.includes(index);
+			const dataset = chart.data.datasets[index];
+			if (dataset) {
+				dataset.hidden = newHidden.includes(index);
+			}
 			chart.update();
-
 			return newHidden;
 		});
 	};
 
 	const customLegendPlugin = {
 		id: 'customLegend',
-		afterUpdate(chart: any) {
+		afterUpdate(chart: ChartJSInstance<'line'>) {
 			const ul = legendRef.current;
 			while (ul?.firstChild) {
 				ul.firstChild.remove();
 			}
 
-			chart.data.datasets.forEach((dataset: any, index: number) => {
+			chart.data.datasets.forEach((dataset: ChartDataset<'line'>, index: number) => {
 				const li = document.createElement('li');
 				li.style.display = 'flex';
 				li.style.alignItems = 'center';
@@ -152,22 +195,49 @@ const BaseAreaChart: React.FC<ChartProps> = (props): React.ReactElement => {
 				li.style.textOverflow = 'ellipsis';
 
 				const textColor = hiddenDatasets.includes(index) ? 'grey' : 'inherit';
-				const circleColor = hiddenDatasets.includes(index)
-					? 'grey'
-					: dataset.backgroundColor;
+				const bgColor = dataset.backgroundColor;
+				const circleColor = typeof bgColor === 'string' ? bgColor : 'grey';
+
+				const labelText = typeof dataset.label === 'string' ? dataset.label : '';
 
 				li.onclick = () => {
 					toggleDatasetVisibility(index, chart);
 					li.style.color = li.style.color === 'grey' ? 'inherit' : 'grey';
 
+					function resolveStrokeColor(
+						color: ChartDataset<'line'>['backgroundColor']
+					): string {
+						if (typeof color === 'string') return color;
+
+						if (Array.isArray(color)) {
+							const firstColor = color[0] as unknown;
+							if (typeof firstColor === 'string') return firstColor;
+							if (
+								firstColor !== null &&
+								typeof firstColor === 'object' &&
+								'toString' in firstColor &&
+								typeof (firstColor as { toString: unknown }).toString === 'function'
+							) {
+								return (firstColor as { toString: () => string }).toString();
+							}
+						}
+
+						if (
+							typeof color === 'object' &&
+							'toString' in color &&
+							typeof (color as { toString: unknown }).toString === 'function'
+						) {
+							return (color as { toString: () => string }).toString();
+						}
+
+						return 'grey';
+					}
+
 					const circle = li.querySelector('circle');
 					if (circle) {
-						circle.setAttribute(
-							'stroke',
-							circle.getAttribute('stroke') === 'grey'
-								? dataset.backgroundColor
-								: 'grey'
-						);
+						const stroke = circle.getAttribute('stroke');
+						const resolvedColor = resolveStrokeColor(dataset.backgroundColor);
+						circle.setAttribute('stroke', stroke === 'grey' ? resolvedColor : 'grey');
 					}
 				};
 
@@ -175,7 +245,7 @@ const BaseAreaChart: React.FC<ChartProps> = (props): React.ReactElement => {
 					<svg width="15" height="15" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<circle cx="15" cy="15" r="12" stroke="${circleColor}" stroke-width="6"/>
 					</svg>
-				<span style="margin-left: 10px; color: ${textColor};">${dataset.label}</span>
+				<span style="margin-left: 10px; color: ${textColor};">${labelText}</span>
 				`;
 
 				ul?.appendChild(li);
@@ -184,22 +254,22 @@ const BaseAreaChart: React.FC<ChartProps> = (props): React.ReactElement => {
 	};
 
 	const chartData: ChartData<'line'> = {
-		labels: seriesData?.metaData?.xAxisData ?? [],
-		datasets: Object.keys(seriesData?.chartData ?? {}).map((key, index) => {
+		labels: seriesData.metaData.xAxisData,
+		datasets: Object.keys(seriesData.chartData).map((key, index) => {
 			return {
 				label: key,
-				data: seriesData?.chartData[key] ?? [],
+				data: seriesData.chartData[key] ?? [],
 				fill: !isLineChart,
 				backgroundColor: isLineChart
 					? 'transparent'
 					: lineColors[index % lineColors.length],
 				borderColor: borderColors[index % borderColors.length],
 				tension: smooth ? 0.4 : 0,
-				borderWidth: chartOptionsProps?.borderWidth ?? 2,
-				pointRadius: chartOptionsProps?.pointRadius ?? 4,
-				pointHoverRadius: chartOptionsProps?.pointHoverRadius ?? 6,
+				pointStyle: chartOptionsProps.pointStyle ?? 'rectRot',
+				pointRadius: chartOptionsProps.pointRadius ?? 4,
+				pointHoverRadius: chartOptionsProps.pointHoverRadius ?? 6,
+				borderWidth: chartOptionsProps.borderWidth ?? 2,
 				pointBackgroundColor: borderColors[index % borderColors.length],
-				pointStyle: chartOptionsProps?.pointStyle ?? 'rectRot',
 				datalabels: {
 					display: false, // Disable data labels on points
 				},
@@ -213,37 +283,50 @@ const BaseAreaChart: React.FC<ChartProps> = (props): React.ReactElement => {
 		maintainAspectRatio: false,
 		plugins: {
 			legend: legend?.icon
-				? { display: false }
+				? {
+						display: false,
+					}
 				: {
 						display: legend?.display ?? true,
 						position: legend?.position ?? 'bottom',
 						labels: {
-							color: axisLabelColor || COLORS.grey,
+							color: axisLabelColor ?? COLORS.grey,
 							boxWidth: 9,
 							boxHeight: 9,
 							borderRadius: 50,
 							padding: 10,
 							usePointStyle: true,
-							font: { family: 'Poppins' },
+							font: {
+								family: 'Poppins',
+							},
 						},
 						...legend,
-				  },
+					},
 			tooltip: {
 				borderWidth: tooltip?.borderWidth ?? 1,
-				borderColor: (context: any) =>
-					context?.tooltipItems[0]?.dataset?.backgroundColor || 'black',
+				borderColor: (ctx: ScriptableTooltipContext<'line'>): Color => {
+					const tooltipItem = ctx.tooltip.dataPoints[0];
+					const color = tooltipItem?.dataset.backgroundColor;
+
+					// Ensure it's a string; fallback to 'black'
+					if (typeof color === 'string') return color;
+					if (Array.isArray(color) && typeof color[0] === 'string') return color[0];
+					return 'black';
+				},
 				backgroundColor: 'rgba(255, 255, 255, 1)',
 				callbacks: tooltip?.callbacks ?? {
 					label: (context: TooltipItem<'line'>) => {
-						const label = context?.dataset?.label || '';
-						const value = context?.formattedValue;
+						const label = context.dataset.label ?? '';
+						const value = context.formattedValue;
 						return `${label}: ${value}`;
 					},
 					title: tooltip?.displayTitle
 						? (tooltipItems: TooltipItem<'line'>[]) => {
-								return tooltipItems[0]?.label || '';
-						  }
-						: () => '',
+								return tooltipItems[0]?.label ?? '';
+							}
+						: () => {
+								return '';
+							},
 				},
 				bodySpacing: tooltip?.bodySpacing ?? 5,
 				displayColors: tooltip?.displayColors ?? true,
@@ -254,14 +337,14 @@ const BaseAreaChart: React.FC<ChartProps> = (props): React.ReactElement => {
 				titleColor: tooltip?.bodyFont?.titleColor ?? '#000',
 				bodyColor: tooltip?.bodyFont?.color ?? '#000',
 				bodyFont: {
-					...(tooltip?.bodyFont || {}),
+					...(tooltip?.bodyFont ?? {}),
 				},
 				...tooltip,
 			},
 			title: {
 				display: !!title,
 				text: title,
-				color: axisLabelColor || COLORS.grey,
+				color: axisLabelColor ?? COLORS.grey,
 				font: {
 					size: 16,
 					weight: 'bold',
@@ -277,8 +360,11 @@ const BaseAreaChart: React.FC<ChartProps> = (props): React.ReactElement => {
 				title: {
 					display: !!xAxisLabel,
 					text: xAxisLabel,
-					color: axisLabelColor || COLORS.grey,
-					font: { size: 14, family: 'Poppins' },
+					color: axisLabelColor ?? COLORS.grey,
+					font: {
+						size: 14,
+						family: 'Poppins',
+					},
 				},
 				grid: {
 					display: xSplitLineShow,
@@ -287,9 +373,11 @@ const BaseAreaChart: React.FC<ChartProps> = (props): React.ReactElement => {
 					tickLength: 30,
 				},
 				ticks: {
-					color: axisLabelColor || COLORS.grey,
+					color: axisLabelColor ?? COLORS.grey,
 					stepSize: 100,
-					font: { family: 'Poppins' },
+					font: {
+						family: 'Poppins',
+					},
 				},
 				border: {
 					display: !!xAxisLineShow,
@@ -304,31 +392,48 @@ const BaseAreaChart: React.FC<ChartProps> = (props): React.ReactElement => {
 				title: {
 					display: !!yAxisLabel,
 					text: yAxisLabel,
-					color: axisLabelColor || COLORS.grey,
-					font: { size: 14, family: 'Poppins' },
+					color: axisLabelColor ?? COLORS.grey,
+					font: {
+						size: 14,
+						family: 'Poppins',
+					},
 				},
 				grid: {
 					display: true,
 					color: axisSplitColor,
 				},
 				ticks: {
-					color: axisLabelColor || COLORS.grey,
+					color: axisLabelColor ?? COLORS.grey,
 					stepSize: 100,
-					font: { family: 'Poppins' },
+					font: {
+						family: 'Poppins',
+					},
 					callback:
-						yAxis?.callback ??
-						((value: number | string) => {
-							return value;
-						}),
+						typeof yAxis?.callback === 'function'
+							? yAxis.callback
+							: function defaultTickCallback(
+									this: Scale,
+									tickValue: string | number
+								): string | number {
+									return tickValue;
+								},
 				},
 				...yAxis,
 			},
 		},
 		elements: {
-			line: { tension: smooth ? 0.4 : 0 },
-			point: { radius: 0 },
+			line: {
+				tension: smooth ? 0.4 : 0,
+			},
+			point: {
+				radius: 0,
+			},
 		},
-		...(cursor ? { cursor } : {}),
+		...(cursor
+			? {
+					cursor,
+				}
+			: {}),
 		...chartOptionsProps,
 	};
 
@@ -354,7 +459,7 @@ const BaseAreaChart: React.FC<ChartProps> = (props): React.ReactElement => {
 				plugins={[customLegendPlugin]}
 				{...extra}
 			/>
-			{legend?.icon && legend?.display && <ul ref={legendRef} style={legendStyle} />}
+			{legend?.icon && legend.display && <ul ref={legendRef} style={legendStyle} />}
 		</div>
 	);
 };

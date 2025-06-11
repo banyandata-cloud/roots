@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { classes } from '../../utils';
 import { Button } from '../buttons';
 import styles from './Toggle.module.css';
@@ -35,8 +35,8 @@ const Toggle = ({
 	smooth,
 	secondary,
 }: ToggleProps): React.ReactElement => {
-	const [sliderLeft, setSliderLeft] = useState<Number>(0);
-	const [sliderWidth, setSliderWidth] = useState<Number>(0);
+	const [sliderLeft, setSliderLeft] = useState<number>(0);
+	const [sliderWidth, setSliderWidth] = useState<number>(0);
 
 	const sliderRef = useRef<HTMLButtonElement | null>(null);
 
@@ -50,34 +50,45 @@ const Toggle = ({
 
 	const [uncontrolledValue, setUncontrolledValue] = useState<string | string[]>(() => {
 		if (multi) {
-			return (defaultValue as string[]) ?? options?.[0]?.value ?? [];
+			// eslint-disable-next-line no-nested-ternary
+			return Array.isArray(defaultValue)
+				? defaultValue
+				: options[0]?.value
+					? [options[0].value]
+					: [];
 		}
-		return (defaultValue as string) ?? options?.[0]?.value ?? '';
+		return typeof defaultValue === 'string' ? defaultValue : (options[0]?.value ?? '');
 	});
 
 	const isControlled = useRef(value !== undefined).current;
-	const inputValue = isControlled ? value ?? '' : uncontrolledValue;
+	const inputValue = isControlled ? (value ?? '') : uncontrolledValue;
 	const allSelected =
 		multi && Array.isArray(inputValue) ? options.length === inputValue.length : false;
 
 	const onButtonClick = (newValue: string, selected: boolean): void => {
 		if (multi) {
 			const currentValue = inputValue as string[];
+			let newInputValue: string[];
 
 			if (selected) {
-				const newInputValue = currentValue.filter((val) => val !== newValue);
-				isControlled ? onChange?.(newInputValue) : setUncontrolledValue(newInputValue);
+				newInputValue = currentValue.filter((val) => {
+					return val !== newValue;
+				});
+			} else if (allSelected) {
+				newInputValue = [newValue];
 			} else {
-				if (allSelected) {
-					const newInputValue = [newValue];
-					isControlled ? onChange?.(newInputValue) : setUncontrolledValue(newInputValue);
-				} else {
-					const newInputValue = [...currentValue, newValue];
-					isControlled ? onChange?.(newInputValue) : setUncontrolledValue(newInputValue);
-				}
+				newInputValue = [...currentValue, newValue];
 			}
+
+			if (isControlled) {
+				onChange?.(newInputValue);
+			} else {
+				setUncontrolledValue(newInputValue);
+			}
+		} else if (isControlled) {
+			onChange?.(newValue);
 		} else {
-			isControlled ? onChange?.(newValue) : setUncontrolledValue(newValue);
+			setUncontrolledValue(newValue);
 		}
 	};
 
@@ -108,9 +119,19 @@ const Toggle = ({
 					return (
 						<Button
 							key={title}
-							ref={isActive ? sliderRef : null}
+							ref={
+								isActive
+									? (el) => {
+											if (el instanceof HTMLButtonElement) {
+												sliderRef.current = el;
+											}
+										}
+									: null
+							}
 							type='button'
-							onClick={() => onButtonClick(tab.value, isActive)}
+							onClick={() => {
+								onButtonClick(tab.value, isActive);
+							}}
 							size='auto'
 							data-elem='toggle'
 							disabled={disabled}
@@ -124,8 +145,20 @@ const Toggle = ({
 								!smooth ? styles.highlight : '',
 								itemClassName
 							)}
-							leftComponent={leftComponent}
-							rightComponent={rightComponent}
+							leftComponent={
+								typeof leftComponent === 'function'
+									? leftComponent
+									: () => {
+											return leftComponent;
+										}
+							}
+							rightComponent={
+								typeof rightComponent === 'function'
+									? rightComponent
+									: () => {
+											return rightComponent;
+										}
+							}
 						/>
 					);
 				})}
@@ -138,8 +171,8 @@ const Toggle = ({
 							styles.smooth
 						)}
 						style={{
-							left: `${sliderLeft}px`,
-							width: `${sliderWidth}px`,
+							left: `${sliderLeft.toString()}px`,
+							width: `${sliderWidth.toString()}px`,
 						}}
 					/>
 				)}
