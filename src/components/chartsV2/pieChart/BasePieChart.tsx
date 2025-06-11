@@ -1,11 +1,10 @@
 /* eslint-disable no-nested-ternary */
-import type { ChartData, ChartEvent, ChartOptions } from 'chart.js';
+import type { ChartData, ChartEvent, ChartOptions, ScriptableContext } from 'chart.js';
 import { ArcElement, Chart as ChartJS, Legend, Title, Tooltip } from 'chart.js';
 import React, { useCallback, useRef, useState } from 'react';
 import { Pie } from 'react-chartjs-2';
 import { classes } from '../../../utils';
 import styles from './BasePieChart.module.css';
-import { Skeleton } from './Skeleton';
 import type { BasePieChartProps, LegendItem, TooltipCallbackContext } from './types';
 
 // Register ChartJS components
@@ -13,14 +12,11 @@ ChartJS.register(ArcElement, Tooltip, Legend, Title);
 
 const BasePieChart: React.FC<BasePieChartProps> = (props) => {
 	const {
-		loading,
-		fallback,
 		title,
 		tittleSize,
 		seriesData,
 		legend,
 		style,
-		theme,
 		seriesOption,
 		options: chartOptions,
 		tooltip,
@@ -38,11 +34,7 @@ const BasePieChart: React.FC<BasePieChartProps> = (props) => {
 	const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 	const legendRef = useRef<HTMLDivElement>(null);
 
-	if (loading || fallback) {
-		return <Skeleton theme={theme} fallback={!loading && fallback} />;
-	}
-
-	const handleLegendClick = useCallback((_: any, legendItem: LegendItem) => {
+	const handleLegendClick = useCallback((_event: unknown, legendItem: LegendItem) => {
 		const { index } = legendItem;
 		setExcludedIndices((prev) => {
 			return prev.includes(index)
@@ -53,12 +45,19 @@ const BasePieChart: React.FC<BasePieChartProps> = (props) => {
 		});
 	}, []);
 
+	let labels: string[] = [];
+
+	if (seriesData.metaData?.keyData) {
+		const { keyData } = seriesData.metaData;
+		labels = Object.keys(seriesData.chartData).map((key) => {
+			return keyData[key] ?? key;
+		});
+	} else {
+		labels = [];
+	}
+
 	const data: ChartData<'pie'> = {
-		labels: seriesData.metaData?.keyData
-			? Object.keys(seriesData.chartData).map((key) => {
-					return seriesData.metaData?.keyData.[key] ?? key;
-				})
-			: [],
+		labels,
 		datasets: [
 			{
 				data: Object.values(seriesData.chartData),
@@ -89,7 +88,7 @@ const BasePieChart: React.FC<BasePieChartProps> = (props) => {
 					? seriesOption.map((opt, i) => {
 							return excludedIndices.includes(i) ? '#D3D3D3' : opt.itemStyle.color;
 						})
-					: Object.keys(seriesData?.chartData ?? {}).map((_, i) => {
+					: Object.keys(seriesData.chartData).map((_, i) => {
 							const defaultColors = [
 								'#FF6384',
 								'#36A2EB',
@@ -103,7 +102,7 @@ const BasePieChart: React.FC<BasePieChartProps> = (props) => {
 								: defaultColors[i % defaultColors.length];
 						}),
 				hoverBorderWidth,
-				hoverOffset: (context: any) => {
+				hoverOffset: (context: ScriptableContext<'pie'>) => {
 					return hoveredIndex === context.dataIndex ? 30 : 0;
 				},
 				radius: doughnut?.[0] ?? '100%',
