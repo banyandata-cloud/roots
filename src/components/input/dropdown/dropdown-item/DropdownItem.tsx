@@ -1,4 +1,4 @@
-import type { KeyboardEventHandler, MouseEventHandler, ReactNode } from 'react';
+import type { KeyboardEventHandler, MouseEventHandler, ReactNode, ReactElement } from 'react';
 import { forwardRef } from 'react';
 import { classes } from '../../../../utils';
 import { InfoIcon } from '../../../icons';
@@ -6,7 +6,6 @@ import { Tooltip } from '../../../tooltip';
 import { Checkbox } from '../../checkbox';
 import { Radio } from '../../radio';
 import styles from './DropdownItem.module.css';
-import type { ReactElement } from 'react';
 
 type Variant = 'default' | 'checkbox' | 'radio';
 
@@ -26,10 +25,7 @@ interface DropdownItemProps {
 	customComponent?: ReactNode;
 }
 
-const DropdownItem = forwardRef<HTMLLIElement, DropdownItemProps>(function DropdownItem(
-	props,
-	ref
-): ReactElement {
+const DropdownItem = forwardRef<HTMLLIElement, DropdownItemProps>((props, ref): ReactElement => {
 	const {
 		title = '',
 		value,

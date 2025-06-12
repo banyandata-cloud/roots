@@ -13,6 +13,7 @@ import { Popper } from '../popper';
 import { Text } from '../text';
 import styles from './BaseModal.module.css';
 import type { ReactElement } from 'react';
+import React from 'react';
 
 interface FooterAnimations {
 	initial: {
@@ -108,13 +109,13 @@ const ModalFooter = (props: ModalFooterProps): ReactElement => {
 				className={styles.dismiss}
 				title={cancelTitle}
 				onClick={handleDismiss}
-				disabled={disabled?.cancel}
+				disabled={disabled.cancel}
 			/>
 			<Button
 				className={styles.action}
 				title={actionTitle}
 				onClick={handleAction}
-				disabled={disabled?.action}
+				disabled={disabled.action}
 			/>
 		</>
 	);
@@ -141,6 +142,7 @@ interface AnimationProps {
 		duration: number;
 	};
 }
+type BaseModalRenderProps = Record<string, unknown>;
 
 const DEFAULT_ANIMATION_PROPS: AnimationProps = {
 	initial: {
@@ -169,9 +171,9 @@ interface BaseModalProps {
 	title?: string;
 	description?: string;
 	popperClassName?: string;
-	renderHeader?: React.ReactNode | ((props: any) => React.ReactNode);
+	renderHeader?: React.ReactNode | ((props: BaseModalRenderProps) => React.ReactNode);
 	children?: React.ReactNode;
-	renderFooter?: React.ReactNode | ((props: any) => React.ReactNode);
+	renderFooter?: React.ReactNode | ((props: BaseModalRenderProps) => React.ReactNode);
 	toggle?: (open: boolean) => void;
 	open: boolean;
 	noDismiss?: boolean;
@@ -197,6 +199,11 @@ interface BaseModalProps {
  * @param {boolean} hideCrossDismiss - If true, it will hide the cross close button from the top right of the modal.
  * @returns {ReactElement} The rendered modal dialog.
  */
+
+const noop = () => {
+	return undefined;
+};
+
 const BaseModal = (props: BaseModalProps): ReactElement => {
 	const {
 		className = '',
@@ -206,7 +213,7 @@ const BaseModal = (props: BaseModalProps): ReactElement => {
 		renderHeader,
 		children,
 		renderFooter,
-		toggle = () => {},
+		toggle = noop,
 		open,
 		noDismiss,
 		hideCrossDismiss,
@@ -217,7 +224,9 @@ const BaseModal = (props: BaseModalProps): ReactElement => {
 
 	const { floating, context } = useFloating({
 		open,
-		onOpenChange: (isOpen) => toggle(isOpen),
+		onOpenChange: (isOpen) => {
+			toggle(isOpen);
+		},
 	});
 
 	const { getFloatingProps } = useInteractions([
@@ -226,7 +235,15 @@ const BaseModal = (props: BaseModalProps): ReactElement => {
 		}),
 	]);
 
-	const { props: bodyProps } = (children as any) ?? {};
+	const bodyProps = React.isValidElement(children) ? children.props : {};
+
+	const motionProps: React.HTMLProps<HTMLElement> & import('framer-motion').MotionProps = {
+		className: classes(styles.root, className),
+		ref: floating,
+		...(animation ? animationProperties : {}),
+	};
+
+	const safeBodyProps = typeof bodyProps === 'object' && bodyProps !== null ? bodyProps : {};
 
 	return (
 		<AnimatePresence>
@@ -237,25 +254,18 @@ const BaseModal = (props: BaseModalProps): ReactElement => {
 				wrapperId='base-modal-popper'>
 				{open && (
 					<FloatingFocusManager context={context}>
-						<motion.div
-							{...getFloatingProps({
-								className: classes(styles.root, className),
-								ref: floating,
-								...(animation && {
-									...animationProperties,
-								}),
-							} as any)}>
+						<motion.div {...getFloatingProps(motionProps)}>
 							{renderHeader ? (
 								<header data-elem='header' className={styles.header}>
 									{typeof renderHeader === 'function'
 										? renderHeader({
-												...bodyProps,
-										  })
+												...safeBodyProps,
+											})
 										: renderHeader}
 								</header>
 							) : (
 								<header data-elem='header' className={styles.header}>
-									<ModalHeader title={title || ''} description={description} />
+									<ModalHeader title={title ?? ''} description={description} />
 								</header>
 							)}
 							<div data-elem='body' className={styles.body}>
@@ -270,8 +280,8 @@ const BaseModal = (props: BaseModalProps): ReactElement => {
 									className={styles.footer}>
 									{typeof renderFooter === 'function'
 										? renderFooter({
-												...bodyProps,
-										  })
+												...safeBodyProps,
+											})
 										: renderFooter}
 								</MotionFooter>
 							) : footerProps ? (

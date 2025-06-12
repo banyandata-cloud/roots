@@ -1,10 +1,10 @@
-import { forwardRef, useEffect, useImperativeHandle, useState } from 'react';
+import React, { forwardRef, useEffect, useImperativeHandle, useState } from 'react';
+import type { ReactElement } from 'react';
 import { classes } from '../../../utils';
 import { Button } from '../../buttons';
 import { Text } from '../../text';
 import BaseModal from '../BaseModal';
 import styles from './Dialog.module.css';
-import type { ReactElement } from 'react';
 
 interface DialogProps {
 	className?: string;
@@ -25,11 +25,6 @@ interface DialogFooterProps {
 	setOpen: (open: boolean) => void;
 	customAction?: React.ComponentType<{ dismiss: () => void }>;
 }
-
-interface DialogBoxHandle {
-	dialog: (props: DialogOptions) => void;
-}
-
 interface DialogOptions {
 	title?: string | null;
 	description?: string | null;
@@ -49,6 +44,10 @@ interface DialogOptions {
 	hideCancel?: boolean;
 	noDismiss?: boolean;
 	hideCrossDismiss?: boolean;
+}
+
+interface DialogBoxHandle {
+	dialog: (props: DialogOptions) => void;
 }
 
 const Header = ({ title }: DialogHeaderProps): ReactElement => {
@@ -91,7 +90,13 @@ const Footer = ({
 
 			{onAction && (
 				<Button
-					onClick={() => onAction({ dismiss: () => setOpen(false) })}
+					onClick={() => {
+						onAction({
+							dismiss: () => {
+								setOpen(false);
+							},
+						});
+					}}
 					className={styles.save}
 					title={action}
 					color={variant}
@@ -134,22 +139,17 @@ const DialogBox = forwardRef<DialogBoxHandle, DialogProps>((props, ref) => {
 		hideCrossDismiss,
 	} = dialogProps;
 
-	const size = appliedSize || defaultSize;
+	const size = appliedSize ?? defaultSize;
 
 	const toggle = () => {
 		onCancel?.();
 		setOpen(false);
 	};
 
-	const headerProps = {
-		title,
-	};
-
-	const footerProps = ({
-		setNoDismissEnabled,
-	}: {
+	const footerProps = (ftProps: {
 		setNoDismissEnabled: (enabled: boolean) => void;
 	}): DialogFooterProps => {
+		const { setNoDismissEnabled } = ftProps;
 		return {
 			action: actionText ?? 'Done',
 			cancel: cancelText ?? 'Dismiss',
@@ -162,7 +162,9 @@ const DialogBox = forwardRef<DialogBoxHandle, DialogProps>((props, ref) => {
 					return (
 						<CustomActionComponent
 							setNoDismissEnabled={setNoDismissEnabled}
-							dismiss={() => setOpen(false)}
+							dismiss={() => {
+								setOpen(false);
+							}}
 						/>
 					);
 				},

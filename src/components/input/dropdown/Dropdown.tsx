@@ -1,5 +1,3 @@
-/* eslint-disable eqeqeq */
-/* eslint-disable no-nested-ternary */
 import {
 	FloatingFocusManager,
 	autoUpdate,
@@ -23,10 +21,9 @@ import React, {
 	useMemo,
 	useRef,
 	useState,
+	type HTMLAttributes,
+	type ReactElement,
 } from 'react';
-
-import type { ReactNode, ReactElement, SyntheticEvent } from 'react';
-
 import { ErrorBoundary } from 'react-error-boundary';
 import { classes } from '../../../utils';
 import Button from '../../buttons/button/Button';
@@ -41,25 +38,23 @@ interface DropdownProps {
 	className?: string;
 	popperClassName?: string;
 	value?: string | string[];
+	onChange?: (event: React.SyntheticEvent, value: string | string[]) => void;
 	leftComponent?:
-		| {
-				Active?: React.ComponentType;
-				InActive?: React.ComponentType;
-		  }
-		| React.ComponentType;
-	onBlur?: (event: SyntheticEvent) => void;
-	children?: ReactNode;
+		| React.ComponentType
+		| { Active: React.ComponentType; InActive: React.ComponentType };
+	onBlur?: (event: React.FocusEvent) => void;
+	children?: React.ReactNode;
 	highlightOnSelect?: boolean;
 	label?: string;
-	placeholder?: string | ReactNode;
+	placeholder?: string | React.ReactNode;
 	multi?: boolean;
 	disabled?: boolean;
 	error?: string;
 	id?: string;
 	name?: string;
 	feedback?: {
-		text: ReactNode;
-		type: 'error' | 'success' | 'default';
+		text?: React.ReactNode;
+		type?: 'error' | 'success' | 'default';
 	};
 	formatter?: (totalSelected: number) => string;
 	custom?: boolean;
@@ -67,39 +62,24 @@ interface DropdownProps {
 	multiSelectActionTitle?: string;
 	valueAsCount?: boolean;
 	caretAsUpDown?: boolean;
-	onChange?: (event: React.SyntheticEvent, value: string | string[]) => void;
 }
 
 interface DropdownRef {
 	value: () => string | string[] | null;
 }
 
-interface DropdownItemProps {
-	value: string | number;
-	title?: ReactNode;
+interface SelectedOption {
+	title?: string;
+	value?: string;
 }
 
-interface LeftComponentProps {
-	Active?: React.ComponentType;
-	InActive?: React.ComponentType;
-}
-
-type LeftComponentType =
-	| React.ComponentType<any>
-	| {
-			Active?: React.ComponentType<any>;
-			InActive?: React.ComponentType<any>;
-	  };
-
-const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(
-	props,
-	inputRef
-): ReactElement {
+// eslint-disable-next-line prefer-arrow-callback
+const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(props, inputRef) {
 	const {
 		className = '',
 		popperClassName = '',
 		value,
-		onChange = () => {},
+		onChange,
 		leftComponent: LeftComponent,
 		onBlur,
 		children,
@@ -113,7 +93,7 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(
 		name,
 		feedback,
 		formatter = (totalSelected) => {
-			return `${totalSelected} options applied`;
+			return `${totalSelected.toString()} options applied`;
 		},
 		custom,
 		required,
@@ -124,14 +104,15 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(
 	const [open, setOpen] = useState(false);
 	const [activeIndex, setActiveIndex] = useState<number | null>(null);
 	const [selectedIndex, setSelectedIndex] = useState(0);
-	const listItemsRef = useRef<Array<HTMLElement | null>>([]);
+	const listItemsRef = useRef<(HTMLElement | null)[]>([]);
 	const multiOptionsRef = useRef<HTMLLIElement>(null);
-	const internalInputRef = useRef<HTMLInputElement>(null);
 
 	const isControlled = value !== undefined;
 
 	// for uncontrolled input
-	const [uncontrolledValue, setUncontrolledValue] = useState<string | string[]>(multi ? [] : '');
+	const [uncontrolledValue, setUncontrolledValue] = useState<string | string[] | undefined>(
+		value
+	);
 	const [appliedMultiUncontrolledValue, setAppliedMultiUncontrolledValue] = useState<
 		string[] | null
 	>(null);
@@ -151,9 +132,9 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(
 			size({
 				apply({ rects, availableHeight, elements }) {
 					Object.assign(elements.floating.style, {
-						width: `${rects.reference.width}px`,
+						width: `${rects.reference.width.toString()}px`,
 						minWidth: 'fit-content',
-						maxHeight: `${availableHeight}px`,
+						maxHeight: `${availableHeight.toString()}px`,
 					});
 				},
 				padding: 8,
@@ -177,77 +158,48 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(
 		useDismiss(context),
 	]);
 
-	const onNavigate = (child: ReactElement<DropdownItemProps>, selected: boolean) => {
-		return (event: React.KeyboardEvent<HTMLElement>): void => {
-			const selectKey = [' ', 'Spacebar', 'Enter'].includes(event.key);
-			if (selectKey) {
-				event.stopPropagation();
-				// Create a synthetic mouse event from the keyboard event
-				const mouseEvent = {
-					...event,
-					nativeEvent: new MouseEvent('click'),
-					currentTarget: event.currentTarget,
-					target: event.target,
-					preventDefault: () => event.preventDefault(),
-					stopPropagation: () => event.stopPropagation(),
-					isDefaultPrevented: () => event.isDefaultPrevented(),
-					isPropagationStopped: () => event.isPropagationStopped(),
-					persist: () => {},
-				} as unknown as React.MouseEvent<HTMLElement>;
-
-				onSelect(child, selected)(mouseEvent);
-			}
-		};
-	};
-
-	const onSelect = (child: ReactElement<DropdownItemProps>, selected: boolean) => {
-		return (event: React.MouseEvent<HTMLElement>): void => {
+	const onSelect = (child: React.ReactElement, selected: boolean) => {
+		return (event: React.MouseEvent) => {
 			if (event.currentTarget.getAttribute('data-elem') !== 'dropdown-item') {
 				return;
 			}
-
-			const { value: itemValue } = child.props;
-			const itemValueString = itemValue?.toString() ?? '';
+			const { value: itemValue } = (child as React.ReactElement<{ value: string }>).props;
+			const itemValueString = itemValue.toString();
 			const index = event.currentTarget.getAttribute('data-index');
 
-			interface CustomEventTarget extends EventTarget {
-				value: string;
-				name?: string;
-			}
+			// to support form libraries which require name and value on the event
+			const { nativeEvent } = event;
+			const clonedEvent = new MouseEvent(nativeEvent.type, nativeEvent as MouseEventInit);
 
-			const customTarget: CustomEventTarget = {
-				...(event.target as EventTarget),
-				value: itemValueString,
-				name: name!,
-			};
-
-			const syntheticEvent: React.SyntheticEvent = {
-				...event,
-				nativeEvent: event.nativeEvent || event,
-				currentTarget: event.currentTarget,
-				target: customTarget,
-				preventDefault: () => event.preventDefault(),
-				stopPropagation: () => event.stopPropagation(),
-				isDefaultPrevented: () => event.isDefaultPrevented(),
-				isPropagationStopped: () => event.isPropagationStopped(),
-				persist: () => {},
-			};
+			Object.defineProperty(clonedEvent, 'target', {
+				writable: true,
+				value: {
+					value: itemValueString,
+					name,
+				},
+			});
 
 			setSelectedIndex(parseInt(index ?? '0', 10));
 
 			if (multi) {
-				setUncontrolledValue((prev) => {
-					const currentValues = (prev ?? []) as string[];
-					return selected
-						? currentValues.filter((val) => val !== itemValueString)
-						: [...currentValues, itemValueString];
-				});
+				if (selected) {
+					setUncontrolledValue(
+						(uncontrolledValue as string[]).filter((val) => {
+							return val !== itemValueString;
+						})
+					);
+				} else {
+					setUncontrolledValue([
+						...((uncontrolledValue ?? []) as string[]),
+						itemValueString,
+					]);
+				}
 				setActiveIndex(parseInt(index ?? '0', 10));
 			} else {
 				if (isControlled) {
-					onChange?.(syntheticEvent, itemValueString);
+					onChange?.(event, itemValueString.toString());
 				} else {
-					setUncontrolledValue(itemValueString);
+					setUncontrolledValue(itemValueString.toString());
 				}
 				setActiveIndex(null);
 				setOpen(false);
@@ -255,41 +207,57 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(
 		};
 	};
 
-	useImperativeHandle(
-		inputRef,
-		() => {
-			return {
-				value: () => {
-					const inputValue = internalInputRef.current?.value?.split?.(', ') ?? [];
-					if (multi) {
-						return inputValue;
-					}
-					return inputValue?.[0] ?? null;
-				},
-			};
-		},
-		[multi]
-	);
+	const onNavigate = (child: React.ReactElement, selected: boolean) => {
+		return (event: React.KeyboardEvent) => {
+			const selectKey = [' ', 'Spacebar', 'Enter'].includes(event.key);
+			if (selectKey) {
+				event.stopPropagation();
+				onSelect(child, selected)(event as unknown as React.MouseEvent);
+			}
+		};
+	};
 
-	const childrenArray = React.Children.toArray(children) as ReactElement<DropdownItemProps>[];
+	useImperativeHandle(inputRef, () => {
+		return {
+			value: () => {
+				const inputElement = (inputRef as unknown as React.RefObject<HTMLInputElement>)
+					.current;
+				const inputValue = (inputElement.value || '').split(', ');
+				if (multi) {
+					return inputValue;
+				}
+				return inputValue[0] ?? null;
+			},
+		};
+	}, [inputRef, multi]);
 
-	const selectedOptions = useMemo(() => {
+	const childrenArray = React.Children.toArray(children);
+
+	interface DropdownChildProps {
+		value: string | number;
+		title?: string;
+	}
+
+	const selectedOptions = useMemo<SelectedOption[]>(() => {
 		let inputValue = uncontrolledValue;
 		if (isControlled && !multi) {
 			inputValue = value;
 		}
-		const options: Array<{ title?: ReactNode; value?: string }> = [];
+		const options: SelectedOption[] = [];
 		if (inputValue != null && inputValue !== '') {
-			childrenArray?.forEach((child) => {
+			childrenArray.forEach((child) => {
+				if (!React.isValidElement(child)) return;
+
+				const childProps = child.props as DropdownChildProps;
+				const childValueString = childProps.value.toString();
+
 				if (
-					(multi &&
-						((inputValue as string[])?.indexOf?.(child?.props?.value?.toString?.()) ??
-							-1) !== -1) ||
-					(!multi && inputValue?.toString() === child?.props?.value?.toString?.())
+					(multi && (inputValue as string[]).includes(childValueString)) ||
+					(!multi && inputValue.toString() === childValueString)
 				) {
 					options.push({
-						title: child?.props?.title,
-						value: child?.props?.value?.toString?.(),
+						title: childProps.title ?? '',
+						value: childValueString,
 					});
 				}
 			});
@@ -298,38 +266,40 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(
 	}, [value, uncontrolledValue, multi, childrenArray, isControlled]);
 
 	const items = childrenArray.map((child, index) => {
+		if (!React.isValidElement(child)) return child;
+
 		let selected = false;
 
 		if (
 			selectedOptions.findIndex((option) => {
-				return option.value === child.props.value?.toString();
+				return (
+					option.value ===
+					String((child as React.ReactElement<{ value: string }>).props.value)
+				);
 			}) !== -1
 		) {
 			selected = true;
 		}
 
-		return React.cloneElement(child, {
-			...getItemProps({
-				key: child.props.value?.toString(),
-				onKeyDown: onNavigate(child, selected),
-				onClick: onSelect(child, selected),
-				onMouseEnter: () => {
-					setActiveIndex(index);
-				},
-				selected,
-				tabIndex: activeIndex === index ? 0 : -1,
-				ref: (node: HTMLElement | null) => {
-					listItemsRef.current[index] = node;
-				},
-				// Properly typed data attributes
-				['data-index']: index.toString(),
-				['data-elem']: 'dropdown-item',
-			} as React.HTMLAttributes<HTMLElement> & {
-				'data-index': string;
-				'data-elem': string;
-				selected: boolean;
-			}),
-		});
+		return React.cloneElement(
+			child as ReactElement,
+			{
+				'data-index': index,
+				...getItemProps({
+					key: (child as React.ReactElement<{ value: string | number }>).props.value,
+					onKeyDown: onNavigate(child, selected),
+					onClick: onSelect(child, selected),
+					onMouseEnter: () => {
+						setActiveIndex(index);
+					},
+					selected,
+					tabIndex: activeIndex === index ? 0 : -1,
+					ref: (node: HTMLElement | null) => {
+						listItemsRef.current[index] = node;
+					},
+				}),
+			} as Record<string, unknown>
+		);
 	});
 
 	const [pointer, setPointer] = useState(false);
@@ -350,21 +320,29 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(
 
 	useEffect(() => {
 		if (multi && isControlled) {
-			setUncontrolledValue(value as string[]);
+			setUncontrolledValue(value);
 		}
 	}, [open, multi, value, isControlled]);
 
-	const onSelectAll = (event: React.MouseEvent, selected: boolean): void => {
+	const onSelectAll = (event: React.MouseEvent, selected: boolean) => {
 		// to support form libraries which require name and value on the event
-		const nativeEvent = event.nativeEvent || event;
-		const clonedEvent = new InputEvent(nativeEvent.type, nativeEvent);
-		// const clonedEvent = new Event(nativeEvent.type, nativeEvent);
+		const nativeEvent =
+			'nativeEvent' in event ? (event as React.SyntheticEvent).nativeEvent : event;
+		const clonedEvent = new (nativeEvent.constructor as new (
+			type: string,
+			eventInitDict?: EventInit
+		) => Event)(nativeEvent.type, nativeEvent);
+
 		let itemValue: string[] = [];
 
 		if (selected) {
-			itemValue = childrenArray.map((child) => {
-				return child?.props?.value?.toString?.();
-			});
+			itemValue = childrenArray
+				.filter((child): child is React.ReactElement<{ value: string | number }> => {
+					return React.isValidElement(child);
+				})
+				.map((child) => {
+					return String(child.props.value);
+				});
 		}
 
 		Object.defineProperty(clonedEvent, 'target', {
@@ -380,105 +358,109 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(
 		setActiveIndex(0);
 	};
 
-	const onApply = (event: React.MouseEvent<HTMLElement>): void => {
-		// Create a proper React synthetic event instead of cloning
-		const syntheticEvent = {
+	const onApply = (event: React.MouseEvent) => {
+		const customEvent = {
 			...event,
-			nativeEvent: event.nativeEvent || event,
-			currentTarget: event.currentTarget,
 			target: {
-				...(event.target as any), // We need to override these
 				value: uncontrolledValue,
 				name,
 			},
-			preventDefault: () => event.preventDefault(),
-			stopPropagation: () => event.stopPropagation(),
-			isDefaultPrevented: () => event.isDefaultPrevented(),
-			isPropagationStopped: () => event.isPropagationStopped(),
-			persist: () => {},
-		} as React.SyntheticEvent;
+		} as unknown as React.ChangeEvent<HTMLInputElement>;
 
 		if (!isControlled) {
 			setAppliedMultiUncontrolledValue(uncontrolledValue as string[]);
-			onChange?.(syntheticEvent, appliedMultiUncontrolledValue || []);
-		} else {
-			onChange?.(syntheticEvent, uncontrolledValue);
+			onChange?.(customEvent, appliedMultiUncontrolledValue ?? []);
+			return;
 		}
+
+		onChange?.(customEvent, uncontrolledValue as string[]);
 	};
 
-	let selectedItemsLabel: string | null = null;
+	let selectedItemsLabel = null;
 
-	if (selectedOptions?.length === 1) {
+	if (selectedOptions.length === 1) {
 		selectedItemsLabel = '1 option selected';
 	} else {
-		selectedItemsLabel = `${selectedOptions?.length} options selected`;
+		selectedItemsLabel = `${selectedOptions.length.toString()} options selected`;
 	}
 
-	const getValueToDisplay = (): string | ReactNode => {
+	const getValueToDisplay = (): string | React.ReactNode => {
 		if (value) {
 			if (Array.isArray(value) && value.length > 0) {
 				const sanitizedValue = value.filter(Boolean);
+
+				console.log('sanitizedValue', sanitizedValue);
+				console.log('sanitizedValue Length', sanitizedValue.length);
+				console.log('valueAsCount', valueAsCount);
+
 				if (sanitizedValue.length === 0) {
 					return '';
 				}
 				if (sanitizedValue.length === 1 && !valueAsCount) {
-					const selectedItem = items?.find((item) => {
-						return item.props.value == sanitizedValue[0];
+					const selectedItem = items.find((item) => {
+						return (
+							React.isValidElement(item) &&
+							React.isValidElement<{ value: string | number }>(item) &&
+							item.props.value === sanitizedValue[0]
+						);
 					});
-					return selectedItem?.props?.title;
+					if (React.isValidElement<{ title?: React.ReactNode }>(selectedItem)) {
+						return selectedItem.props.title;
+					}
+					return '';
 				}
 				return formatter(sanitizedValue.length);
 			}
-			const selectedItem = items?.find((item) => {
-				return item.props.value == value;
+
+			const selectedItem = items.find((item) => {
+				return (
+					React.isValidElement(item) &&
+					String((item.props as { value: string | number }).value) === String(value)
+				);
 			});
-			return selectedItem?.props?.title;
+			if (React.isValidElement(selectedItem)) {
+				return (selectedItem.props as { title: string | React.ReactNode }).title;
+			}
+			return '';
 		}
 		if (
 			!isControlled &&
 			appliedMultiUncontrolledValue &&
 			appliedMultiUncontrolledValue.length > 0
 		) {
-			if (appliedMultiUncontrolledValue?.length === 1) {
-				const selectedItem = items?.find((item) => {
-					return item.props.value == appliedMultiUncontrolledValue[0];
+			if (appliedMultiUncontrolledValue.length === 1) {
+				const selectedItem = items.find((item) => {
+					return (
+						React.isValidElement(item) &&
+						item.props.value == appliedMultiUncontrolledValue[0]
+					);
 				});
-				return selectedItem?.props?.title;
+				return (selectedItem as React.ReactElement)?.props?.title;
 			}
 			return formatter(appliedMultiUncontrolledValue.length);
 		}
 		if (!isControlled) {
-			const selectedItem = items?.find((item) => {
-				return item.props.value == uncontrolledValue;
+			const selectedItem = items.find((item) => {
+				return React.isValidElement(item) && item.props.value == uncontrolledValue;
 			});
-			return selectedItem?.props?.title;
+			return (selectedItem as React.ReactElement)?.props?.title;
 		}
 		return '';
 	};
 
 	const getLeftComponent = (): React.ReactNode => {
-		if (!LeftComponent) return null;
+		if (LeftComponent) {
+			if ('Active' in LeftComponent && 'InActive' in LeftComponent) {
+				if (highlightOnSelect && Array.isArray(value) && value.length > 0) {
+					return <LeftComponent.Active />;
+				}
 
-		if (isLeftComponentObject(LeftComponent)) {
-			const hasValue = multi
-				? (value?.length ?? uncontrolledValue?.length ?? 0) > 0
-				: !!(value ?? uncontrolledValue);
-
-			const ComponentToRender = hasValue ? LeftComponent.Active : LeftComponent.InActive;
-
-			return <ComponentToRender />;
-		} else {
-			const Component = LeftComponent as React.ComponentType<any>;
-			return <Component />;
+				return <LeftComponent.InActive />;
+			}
+			return <LeftComponent />;
 		}
+		return null;
 	};
-
-	// Type guard
-	function isLeftComponentObject(
-		component: LeftComponentType
-	): component is { Active: React.ComponentType<any>; InActive: React.ComponentType<any> } {
-		return typeof component === 'object' && 'Active' in component && 'InActive' in component;
-	}
 
 	return (
 		<ErrorBoundary
@@ -486,7 +468,7 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(
 				return (
 					<ErrorBoundaryWrapper
 						{...args}
-						className={styles['error-boundary']}
+						className={styles['error-boundary'] ?? ''}
 						custom={custom}
 					/>
 				);
@@ -520,7 +502,7 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(
 					<input
 						id={id}
 						name={name}
-						ref={internalInputRef}
+						ref={inputRef as React.Ref<HTMLInputElement>}
 						disabled={disabled}
 						tabIndex={0}
 						className={styles.input}
@@ -532,37 +514,44 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(
 						}}
 						onBlur={onBlur}
 						value={selectedOptions
-							?.map((option) => {
-								return option?.value;
+							.map((option) => {
+								return option.value;
 							})
-							?.join(', ')}
+							.join(', ')}
 					/>
 					<div
 						data-elem='select'
 						role='button'
 						className={classes(
 							styles.select,
-							feedback != null ? styles[`feedback-${feedback?.type}`] : ''
+							feedback != null ? styles[`feedback-${feedback.type ?? ''}`] : ''
 						)}>
 						{getLeftComponent()}
-						{typeof placeholder === 'string' || placeholder instanceof String ? (
-							getValueToDisplay() ? (
-								<span data-elem='value'>{getValueToDisplay()}</span>
-							) : (
-								placeholder && (
-									<span data-elem='placeholder' className={styles.placeholder}>
-										{placeholder}
-									</span>
-								)
-							)
-						) : (
-							<div data-elem='placeholder'>{placeholder}</div>
-						)}
+						{(() => {
+							if (typeof placeholder === 'string' || placeholder instanceof String) {
+								const valueToDisplay = getValueToDisplay();
+								if (valueToDisplay) {
+									return <span data-elem='value'>{valueToDisplay}</span>;
+								}
+								if (placeholder) {
+									return (
+										<span
+											data-elem='placeholder'
+											className={styles.placeholder}>
+											{placeholder}
+										</span>
+									);
+								}
+							} else {
+								return <div data-elem='placeholder'>{placeholder}</div>;
+							}
+							return null;
+						})()}
 
 						<div className={styles['icon-bundle']}>
 							{error && (
 								<Tooltip
-									content={error ?? ''}
+									content={error}
 									position='top'
 									className={styles.tooltip}
 									variant='light'>
@@ -596,7 +585,10 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(
 						<FloatingFocusManager context={context} initialFocus={-1} modal={false}>
 							<motion.ul
 								{...getFloatingProps({
-									'data-elem': 'body',
+									...({
+										'data-elem': 'body',
+									} as Record<'data-elem', string>),
+
 									role: 'group',
 									ref: floating,
 									onKeyDown(event: React.KeyboardEvent) {
@@ -615,11 +607,11 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(
 									},
 									className: classes(
 										styles.body,
-										open ? styles.open : '',
+										styles.open,
 										multi ? styles.multi : '',
 										popperClassName
 									),
-								} as React.HTMLAttributes<HTMLUListElement>)}
+								})}
 								initial={{
 									opacity: 0,
 									scale: 0,
@@ -651,11 +643,11 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(
 												event: React.MouseEvent<HTMLButtonElement>
 											) => {
 												event.stopPropagation();
-												multiOptionsRef?.current?.focus();
+												multiOptionsRef.current?.focus();
 												onSelectAll(event, true);
 											}}
 										/>
-										{selectedOptions?.length > 0 && (
+										{selectedOptions.length > 0 && (
 											<span className={styles.items}>
 												{selectedItemsLabel}
 											</span>
@@ -670,12 +662,12 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(
 											blurOnClick={false}
 											title='Clear All'
 											size='auto'
-											disabled={selectedOptions?.length === 0}
+											disabled={selectedOptions.length === 0}
 											onClick={(
 												event: React.MouseEvent<HTMLButtonElement>
 											) => {
 												event.stopPropagation();
-												multiOptionsRef?.current?.focus();
+												multiOptionsRef.current?.focus();
 												onSelectAll(event, false);
 											}}
 										/>

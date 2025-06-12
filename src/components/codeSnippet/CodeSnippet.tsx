@@ -23,7 +23,7 @@ interface CodeSnippetProps {
 const CodeSnippet: React.FC<CodeSnippetProps> = (props): React.ReactElement => {
 	const {
 		copy,
-		code = '{}',
+		code = '',
 		language = 'json',
 		showLineNumbers,
 		theme = 'light',
