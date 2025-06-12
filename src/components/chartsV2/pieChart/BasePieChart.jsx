@@ -1,7 +1,7 @@
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable no-nested-ternary */
 import { ArcElement, Chart as ChartJS, Legend, Title, Tooltip } from 'chart.js';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { Pie } from 'react-chartjs-2';
 import { classes } from '../../../utils';
 import styles from './BasePieChart.module.css';
@@ -37,15 +37,9 @@ const BasePieChart = (props) => {
 		extra,
 	} = props;
 
-	const [modCustomLabel, setModCustomLabel] = useState(customLabel);
-
 	const [excludedIndices, setExcludedIndices] = useState([]);
 	const [hoveredIndex, setHoveredIndex] = useState(null); // Track the hovered legend index
 	const legendRef = useRef(null); // Reference to hold the custom legend
-
-	useEffect(() => {
-		setModCustomLabel(customLabel);
-	}, [customLabel?.id]);
 
 	if (loading || fallback) {
 		return <Skeleton theme={theme} fallback={!loading && fallback} />;
@@ -301,31 +295,31 @@ const BasePieChart = (props) => {
 			ctx.save();
 
 			// Center text styling and positioning
-			ctx.font = `${modCustomLabel?.valueStyles?.fontStyle} ${modCustomLabel?.valueStyles?.fontSize} Poppins`;
+			ctx.font = `${customLabel?.valueStyles?.fontStyle} ${customLabel?.valueStyles?.fontSize} Poppins`;
 			ctx.textAlign = 'center';
 			ctx.textBaseline = 'middle';
-			ctx.fillStyle = modCustomLabel?.valueStyles?.color;
+			ctx.fillStyle = customLabel?.valueStyles?.color;
 
 			// Calculate the center position of the chart
 			const centerX = (left + right) / 2;
 			const centerY = (top + bottom) / 2;
 
 			// Render the center text
-			ctx.fillText(`${modCustomLabel?.id}`, centerX, centerY);
+			ctx.fillText(`${customLabel?.id}`, centerX, centerY);
 
 			// Render the compliance title with bottom margin
-			const titleBottomMargin = modCustomLabel.margin ?? 10; // Adjust this value for bottom margin
-			const position = modCustomLabel?.labelStyles?.position ?? 5;
+			const titleBottomMargin = customLabel.margin ?? 10; // Adjust this value for bottom margin
+			const position = customLabel?.labelStyles?.position ?? 5;
 			const titleYPosition = centerY + position; // Default title Y position
-			ctx.font = `${modCustomLabel?.labelStyles?.fontStyle} ${modCustomLabel?.labelStyles?.fontSize} Poppins`; // Title font style
-			ctx.fillStyle = `${modCustomLabel?.labelStyles?.color}`; // Title text color (gray)
-			ctx.fillText(`${modCustomLabel?.title}`, centerX, titleYPosition + titleBottomMargin);
+			ctx.font = `${customLabel?.labelStyles?.fontStyle} ${customLabel?.labelStyles?.fontSize} Poppins`; // Title font style
+			ctx.fillStyle = `${customLabel?.labelStyles?.color}`; // Title text color (gray)
+			ctx.fillText(`${customLabel?.title}`, centerX, titleYPosition + titleBottomMargin);
 
 			// Render compliance strip if `complianceStrip` is true
 			if (strip) {
 				const stripRadius = strip?.stripSize ?? 35; // Radius for the outer ring
 				const stripThickness = strip?.stripWidth ?? 7; // Thickness of the strip
-				const compliancePercentage = modCustomLabel?.value; // Set compliance percentage
+				const compliancePercentage = customLabel?.value; // Set compliance percentage
 
 				// Fixed start and end angles
 				const startAngle = (130 * Math.PI) / 180; // Convert degrees to radians
@@ -481,7 +475,7 @@ const BasePieChart = (props) => {
 					...options,
 				}}
 				plugins={[
-					modCustomLabel && centerTextPlugin,
+					customLabel && centerTextPlugin,
 					legend?.icon && legend?.display && customLegendPlugin,
 				].filter(Boolean)}
 				{...extra}
