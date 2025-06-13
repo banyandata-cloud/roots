@@ -393,8 +393,6 @@ const BasePieChart = (props) => {
 			})
 		: [];
 
-	console.log(legendColors);
-
 	const customLegendPlugin = {
 		id: 'customLegend',
 		afterUpdate(chart) {
