@@ -27,8 +27,8 @@ Basic import and additional information on how to use this component.
 import { DatePicker } from '@banyan_cloud/roots';
 ```
 
--   Treat Date Picker as another dropdown(select) element in terms of HTML, as both uses the same `<PopOver` Wrapper.
--   The `width` of the date picker has to adjusted in the implementaion code to match its flexibility with respect to its container.
+- Treat Date Picker as another dropdown(select) element in terms of HTML, as both uses the same `<PopOver` Wrapper.
+- The `width` of the date picker has to adjusted in the implementaion code to match its flexibility with respect to its container.
 
 ## Stories
 
@@ -57,6 +57,31 @@ The date picker which allows to select a date from the popover.
 		}}>
 		{Template.bind({})}
 	</Story>
+</Canvas>
+
+### Single V2 Date Picker
+
+The date picker which allows to select a date from the popover.
+
+<Canvas>
+	<Story
+		name='Default Singe Date Picker'
+		args={{
+			placeholder: 'Select Date',
+			theme: 'light',
+			value: [1743489604, 1744699204],
+			disableDatesBefore: [1743489604],
+			disableDatesAfter: [1744699204],
+    		onApply: (v) => {
+    			console.log(new Date(v[0] * 1000), new Date(v[1] * 1000), v);
+    		},
+    		onClear: (v) => {
+    			console.log('On Clear');
+    		},
+    	}}>
+    	{Template.bind({})}
+    </Story>
+
 </Canvas>
 
 ### Range Date Picker

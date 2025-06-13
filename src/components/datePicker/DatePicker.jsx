@@ -5,6 +5,7 @@ import {
 	useFloating,
 	useInteractions,
 } from '@floating-ui/react-dom-interactions';
+import { DatePickerV2 } from 'components/datePickerV2';
 import { getUnixTime } from 'date-fns';
 import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
@@ -53,7 +54,12 @@ const DatePicker = (props) => {
 		timeRange,
 		popperClassName,
 		showCustomRanges,
+		v2,
 	} = props;
+
+	if (v2) {
+		return <DatePickerV2 />;
+	}
 
 	const [openDatePicker, setOpenDatePicker] = useState(false);
 	const [openCustomRange, setOpenCustomRange] = useState(false);
@@ -150,7 +156,7 @@ const DatePicker = (props) => {
 							: calculateZeroHours(
 									timeRangeSelection.previous?.HOURS,
 									timeRangeSelection.previous?.MER
-							  ),
+								),
 
 						timeRangeSelection.previous?.MINS
 					)
@@ -166,7 +172,7 @@ const DatePicker = (props) => {
 							: calculateZeroHours(
 									timeRangeSelection.next?.HOURS,
 									timeRangeSelection.next?.MER
-							  ),
+								),
 						timeRangeSelection.next?.MINS
 					)
 				);
@@ -402,6 +408,7 @@ DatePicker.propTypes = {
 	defaultHourDiff: PropTypes.number,
 	limitHours: PropTypes.number,
 	showTime: PropTypes.bool,
+	v2: PropTypes.bool,
 	enableFutureDates: PropTypes.bool,
 };
 
@@ -424,6 +431,7 @@ DatePicker.defaultProps = {
 	limitHours: null,
 	showTime: true,
 	enableFutureDates: false,
+	v2: false,
 };
 
 export default DatePicker;
