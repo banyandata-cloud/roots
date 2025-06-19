@@ -2,6 +2,7 @@ import { Meta, Canvas, Story } from '@storybook/addon-docs';
 
 import { ThemedContainer } from '../../helpers';
 import HierarchyBrowser from './HierarchyBrowser';
+import { SortIcon } from '../../icons/Sort';
 
 <Meta title='Components/Hierarchy/Browser' parameters={{ options: { showToolbar: true } }} />
 
@@ -27,7 +28,7 @@ Basic import and additional information on how to use this component.
 import { HierarchyBrowser } from '@banyan_cloud/roots';
 ```
 
--   This HierarchyBrowser component provides an organized and interactive way to display and navigate through hierarchical data structures, enhancing the user experience and aiding in data exploration within your React application.
+- This HierarchyBrowser component provides an organized and interactive way to display and navigate through hierarchical data structures, enhancing the user experience and aiding in data exploration within your React application.
 
 ## Stories
 
@@ -41,121 +42,139 @@ The default Hierarchy Browser.
 	<Story
 		name='Default Hierarchy Browser'
 		args={{
-			metadata: {
-				title: 'database',
-				id: 'database',
-				count: 2,
-				list: [
-					{
-						title: 'test1',
-						id: 'schema',
-						count: 2,
-						list: [
-							{
-								title: 'first',
-								id: 'object',
-								count: 10,
-								list: [
-									{
-										title: 'Tables',
-										count: 10,
-									},
-									{
-										title: 'Indexes',
-										count: 10,
-									},
-									{
-										title: 'Views',
-										count: 5,
-									},
-									{
-										title: 'Trigger',
-										count: 7,
-									},
-								],
-							},
-							{
-								title: 'second',
-								id: 'object',
-								count: 10,
-								list: [
-									{
-										title: 'Tables',
-										count: 3,
-									},
-									{
-										title: 'Indexes',
-										count: 1,
-									},
-									{
-										title: 'Views',
-										count: 2,
-									},
-									{
-										title: 'Trigger',
-										count: 1,
-									},
-								],
-							},
-						],
-					},
-					{
-						title: 'test2',
-						id: 'schema',
-						count: 2,
-						list: [
-							{
-								title: 'first',
-								id: 'object',
-								count: 10,
-								list: [
-									{
-										id: 'tables',
-										title: 'Tables',
-										count: 10,
-										list: [],
-									},
-									{
-										title: 'Indexes',
-										count: 10,
-									},
-									{
-										title: 'Views',
-										count: 5,
-									},
-									{
-										title: 'Trigger',
-										count: 7,
-									},
-								],
-							},
-							{
-								title: 'second',
-								id: 'object',
-								count: 10,
-								list: [
-									{
-										title: 'Tables',
-										count: 3,
-									},
-									{
-										title: 'Indexes',
-										count: 1,
-									},
-									{
-										title: 'Views',
-										count: 2,
-									},
-									{
-										title: 'Trigger',
-										count: 1,
-									},
-								],
-							},
-						],
-					},
-				],
+			setItemProps: (data) => {
+				const itemProps = {};
+				itemProps.rightComponent = data.count;
+				itemProps.leftComponent = <SortIcon />;
+				itemProps.title = data.title;
+				itemProps.count = data.count;
+				return itemProps;
 			},
+			metadata: [
+				{
+					title: 'DB1',
+					id: 'db1',
+					count: 2,
+					list: [
+						{
+							title: 'SchemaX',
+							id: 'schemaX',
+							count: 1,
+							list: [
+								{
+									title: 'ObjectA',
+									id: 'objectA',
+									count: 3,
+									list: [
+										{ title: 'Tables', count: 5 },
+										{ title: 'Views', count: 3 },
+										{ title: 'Indexes', count: 2 },
+									],
+								},
+							],
+						},
+						{
+							title: 'SchemaZ',
+							id: 'schemaZ',
+							count: 1,
+							list: [
+								{
+									title: 'ObjectZ',
+									id: 'objectZ',
+									count: 3,
+									list: [
+										{ title: 'Tables' },
+										{ title: 'Views' },
+										{ title: 'Indexes' },
+									],
+								},
+							],
+						},
+					],
+				},
+				{
+					title: 'DB1',
+					id: 'db1',
+					count: 2,
+					list: [
+						{
+							title: 'Schemas',
+							id: 'schemas',
+							count: 2,
+							list: [
+								{
+									title: 'ObjectA',
+									id: 'objectA',
+									count: 3,
+									list: [
+										{ title: 'Tables', count: 5 },
+										{ title: 'Views', count: 3 },
+										{ title: 'Indexes', count: 2 },
+									],
+								},
+							],
+						},
+						{
+							title: 'SchemaZ',
+							id: 'schemaZ',
+							count: 1,
+							list: [
+								{
+									title: 'ObjectZ',
+									id: 'objectZ',
+									count: 3,
+									list: [
+										{ title: 'Tables' },
+										{ title: 'Views' },
+										{ title: 'Indexes' },
+									],
+								},
+							],
+						},
+					],
+				},
+				{
+					title: 'DB1',
+					id: 'db1',
+					count: 2,
+					list: [
+						{
+							title: 'Schemas',
+							id: 'schemas',
+							count: 2,
+							list: [
+								{
+									title: 'ObjectA',
+									id: 'objectA',
+									count: 3,
+									list: [
+										{ title: 'Tables', count: 5 },
+										{ title: 'Views', count: 3 },
+										{ title: 'Indexes', count: 2 },
+									],
+								},
+							],
+						},
+						{
+							title: 'SchemaZ',
+							id: 'schemaZ',
+							count: 1,
+							list: [
+								{
+									title: 'ObjectZ',
+									id: 'objectZ',
+									count: 3,
+									list: [
+										{ title: 'Tables' },
+										{ title: 'Views' },
+										{ title: 'Indexes' },
+									],
+								},
+							],
+						},
+					],
+				},
+			],
 		}}>
 		{Template.bind({})}
 	</Story>

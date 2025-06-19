@@ -3,17 +3,27 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
-  flex: 1;
+}
+.root.searching > .header:hover {
+  background: none;
+}
+.root.searching > .header:hover .icon,
+.root.searching > .header:hover .title,
+.root.searching > .header:hover .title svg {
+  color: inherit;
+  fill: inherit;
+}
+.root.searching > .header:hover .searchWrapper {
+  display: none !important;
 }
 .root .header {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  gap: 0.25rem;
-  min-height: 2rem;
   height: auto;
-  padding: 0rem 0.5rem;
+  width: 100%;
+  padding: 0rem 0rem !important;
   cursor: pointer;
 }
 .root .header > [data-elem=component1], .root .header > [data-elem=component3] {
@@ -24,14 +34,13 @@
 }
 .root .header > [data-elem=component1] .expand, .root .header > [data-elem=component3] .expand {
   padding: 0;
-  height: auto;
   width: 1rem;
   height: 1rem;
 }
 .root .header > [data-elem=component1] .expand .icon, .root .header > [data-elem=component3] .expand .icon {
-  transform: rotate(-180deg);
   width: 1rem;
-  height: 1rem;
+  margin-left: -0.07rem;
+  height: 1.49rem;
   fill: var(--text-color);
 }
 .root .header > [data-elem=component2] {
@@ -48,15 +57,113 @@
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
+  margin-top: 2px;
+}
+.root .header > [data-elem=component2] .searchFieldWrapper {
+  display: flex;
+  align-items: center;
+  background: white;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 0.25rem;
+  height: 2.3rem;
+  margin-left: -28px;
+  margin-bottom: 2px;
+  margin-top: 1px;
+  padding: 0 !important;
+}
+.root .header > [data-elem=component2] .searchFieldWrapper .searchInput {
+  width: 100%;
+  padding-left: 12px;
+  height: 100%;
+  gap: 0.25rem;
+}
+.root .header > [data-elem=component2] .searchFieldWrapper .searchInput [data-elem=base-cell] {
+  box-shadow: none !important;
+}
+.root .header > [data-elem=component2] .searchFieldWrapper .searchInput [data-elem=base-cell]:focus-within {
+  outline: none !important;
+}
+.root .header > [data-elem=component2] .searchFieldWrapper .searchInput [data-elem=base-cell] > [data-elem=component3] > button {
+  margin-top: 1px;
+  padding: 0;
+  height: auto;
+}
+.root .header > [data-elem=component2] .searchFieldWrapper .searchInput [data-elem=base-cell] > [data-elem=component3] > button [data-elem=title] {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.root .header > [data-elem=component2] .searchFieldWrapper .searchInput [data-elem=base-cell] > [data-elem=component1] {
+  width: 1.244rem;
+  margin-left: 7px;
+  margin-top: 2.9px;
+}
+.root .header > [data-elem=component2] .searchFieldWrapper .searchInput label {
+  display: contents;
+}
+.root .header > [data-elem=component2] .searchFieldWrapper .searchInput input {
+  outline: none;
+  font-size: 0.875rem;
+  height: 100%;
+}
+.root .header .searchWrapper {
+  height: 100%;
+  display: none;
+  transition: opacity 0.2s ease;
+  padding-block: 0 !important;
+  padding-inline: 0.75rem !important;
+  height: 2.25rem;
+}
+.root .header .searchWrapper [data-elem=title] {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 .root .header:hover {
   background: var(--background-color4);
+  border-radius: 4px;
 }
 .root .header:hover .icon,
 .root .header:hover .title,
 .root .header:hover .title svg {
   color: var(--primary-color4);
   fill: var(--primary-color4);
+}
+.root .header:hover .searchWrapper {
+  height: 100%;
+  display: block;
+}
+.root .expand-container {
+  margin-left: 10px;
+  position: relative;
+  width: 1rem;
+  height: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.root .expand-container .collapsed-tail {
+  position: absolute;
+  top: 120%;
+  left: 0.2rem;
+  width: 1px;
+  height: 1.25rem;
+  background: var(--grey1);
+  pointer-events: none;
+}
+.root .expand-container .dashed-connector {
+  height: 1.2rem;
+  border-left: 0.0825rem dashed #cccccc;
+  margin-top: 30px;
+  margin-left: 2.18rem;
+}
+.root .expand-container .hidden-connector {
+  border-left: none !important;
+}
+.root .collapsed-tail-spacer {
+  height: 0.3rem;
 }
 .root .body {
   display: none;
@@ -71,33 +178,64 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  width: 1.6rem;
+  width: 1rem;
   height: 100%;
 }
 .root .body > [data-elem=component1] .tail::after {
   content: "";
   display: block;
   margin: auto;
+  margin-top: -0.525rem;
   width: 1px;
   flex: 1;
   background: var(--grey1);
+  margin-bottom: -0.55rem;
+  margin-left: 9px;
+  z-index: 1;
+}
+.root .body > [data-elem=component1] .highlight-tail {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 1rem;
+  height: 100%;
+}
+.root .body > [data-elem=component1] .highlight-tail::after {
+  content: "";
+  display: block;
+  margin: auto;
+  margin-top: -0.525rem;
+  width: 1px;
+  flex: 1;
+  background: blue;
+  margin-bottom: -0.55rem;
+  margin-left: 9px;
+  z-index: 1;
 }
 .root .body > [data-elem=component2] {
   flex: 1 0 auto;
 }
 .root .body > [data-elem=component2] .children {
   flex: 1 0 auto;
+  width: 100%;
 }
 .root.open > .header .expand .icon {
   transform: none;
+  height: 0.7625rem;
+  width: 0rem;
+  margin-left: 1.4rem;
 }
 .root.open > .body {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: stretch;
-  gap: 0.25rem;
+  gap: 0rem;
   height: auto;
+}
+.root.open > .collapsed-tail {
+  display: none;
 }
 .root.active > .header {
   background: var(--background-color4);
