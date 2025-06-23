@@ -1,9 +1,9 @@
 import { Meta, Canvas, Story } from '@storybook/addon-docs';
 
 import { ThemedContainer } from '../../helpers';
-import BaseAreaChart from './BaseAreaChart';
+import BaseAreaChart from './BaseAreaChart.tsx';
 
-import { datum1, datum2, datumV2 } from './BaseAreaChartData.js';
+import { datum1, datum2, datumV2 } from './BaseAreaChartData.ts';
 
 <Meta title='Components/ChartsV2/LineChart' parameters={{ options: { showToolbar: false } }} />
 
@@ -105,8 +105,8 @@ Basic import and additional information on how to use this component.
 import { BaseAreaChart } from '@banyan_cloud/roots';
 ```
 
--   The Area Chart is just like any other chart with standard `chartData` and `metaData` values alongwith props to control customization.
--   The `className` of the Area Chart can be adjusted in the implementaion code to match its flexibility with respect to its container.
+- The Area Chart is just like any other chart with standard `chartData` and `metaData` values alongwith props to control customization.
+- The `className` of the Area Chart can be adjusted in the implementaion code to match its flexibility with respect to its container.
 
 ## Stories
 
