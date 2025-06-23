@@ -15,8 +15,6 @@ export const Template = (args) => (
 
 A select component to get a single date or a date range which is either a predefined custom fixed range or manual selection.
 
-#### Design - [Figma](https://www.figma.com/file/e9opoAtQHBo4vFd6u0Co98/Component-Library?type=design&node-id=1111-30539&mode=design&t=Afx8B20v4RpJy0j6-0) | Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/components/datePicker)
-
 > This components uses the `date-fns` utility library to use date related methods with respect to comparision and sorting.
 
 ## Usage
@@ -61,27 +59,25 @@ The date picker which allows to select a date from the popover.
 
 ### Single V2 Date Picker
 
-The date picker which allows to select a date from the popover.
-
 <Canvas>
 	<Story
-		name='Default Singe Date Picker'
+		name='Default Single Date Picker V2 New Modal'
 		args={{
 			placeholder: 'Select Date',
 			theme: 'light',
 			value: [1743489604, 1744699204],
 			disableDatesBefore: [1743489604],
 			disableDatesAfter: [1744699204],
-    		onApply: (v) => {
-    			console.log(new Date(v[0] * 1000), new Date(v[1] * 1000), v);
-    		},
-    		onClear: (v) => {
-    			console.log('On Clear');
-    		},
-    	}}>
-    	{Template.bind({})}
-    </Story>
-
+			v2: true,
+			onApply: (v) => {
+				console.log(new Date(v[0] * 1000), new Date(v[1] * 1000), v);
+			},
+			onClear: (v) => {
+				console.log('On Clear');
+			},
+		}}>
+		{Template.bind({})}
+	</Story>
 </Canvas>
 
 ### Range Date Picker

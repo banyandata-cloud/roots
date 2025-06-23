@@ -5,7 +5,6 @@ import {
 	useFloating,
 	useInteractions,
 } from '@floating-ui/react-dom-interactions';
-import { DatePickerV2 } from 'components/datePickerV2';
 import { getUnixTime } from 'date-fns';
 import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
@@ -14,6 +13,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { useOutsideClickListener } from '../../hooks';
 import { classes } from '../../utils';
 import { Button } from '../buttons';
+import { DatePickerV2 } from '../datePickerV2';
 import { ErrorBoundaryWrapper } from '../errorBoundary';
 import { CalenderIcon, CaretIcon, ClockIcon } from '../icons';
 import { Popper } from '../popper';
@@ -58,7 +58,7 @@ const DatePicker = (props) => {
 	} = props;
 
 	if (v2) {
-		return <DatePickerV2 />;
+		return <DatePickerV2 {...props} />;
 	}
 
 	const [openDatePicker, setOpenDatePicker] = useState(false);
