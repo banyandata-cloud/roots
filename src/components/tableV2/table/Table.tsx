@@ -1,4 +1,3 @@
-/* eslint-disable react/forbid-prop-types */
 import { isValidElement, useEffect, useRef, useState, type ReactElement } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { classes } from '../../../utils';
@@ -7,61 +6,50 @@ import { Pagination as PaginationV2 } from '../../paginationv2';
 import BaseSidePanel from '../../sidePanel/BaseSidePanel';
 import { TableColumnV2 } from '../BaseTable.class';
 import { BaseTableV2 } from '../baseTable';
-import type { TableProps } from '../types';
+import type { TableDrawerToggle, TableProps } from '../types';
 import styles from './Table.module.css';
 import { TableFilters } from './tableFilters';
 
 const INTERSECTION = 1;
 const STEP = 0.05;
-const THRESHOLD = [];
+const THRESHOLD: number[] = [];
 
 for (let i = 0; i < INTERSECTION; i += STEP) {
 	THRESHOLD.push(i);
 }
 
-const Table = (props: TableProps): ReactElement => {
-	const {
-		className = '',
-		headerData = [],
-		tableData = [],
-		uniqueKey = '',
-		customCells = {
-			header: null,
-			body: null,
-		},
-		paginationData = null,
-		loading = false,
-		onIntersection = () => {},
-		isFloating = false,
-		disabledFilterOptions = {
-			search: true,
-		},
-		rightActions = null,
-		onSort = () => {},
-		sortValue = 'asc',
-		rowHeight = 'md',
-		theme = 'light',
-		onRowClick,
-		defaultActiveIndex,
-		placeholder,
-		tableInfo,
-		dataLabel,
-		customLabel,
-		jumpLabel,
-		customPageList,
-		customPageCallback,
-		hideDisabledPages,
-		tableDrawerProps = {},
-		searchProps,
-		filtersCount = 0,
-		emptyPlaceholder = null,
-		onCheck,
-		checkAsRadio,
-		disableCheck,
-	} = props;
-
-	const ref = useRef(null);
-	const paginationRef = useRef(null);
+const Table = <TDatum extends Record<string, unknown>>({
+	className = '',
+	headerData = [],
+	tableData = [],
+	uniqueKey = '',
+	customCells = {},
+	paginationData = null,
+	loading = false,
+	onIntersection,
+	isFloating = false,
+	disabledFilterOptions = {
+		search: true,
+	},
+	rightActions = null,
+	onSort,
+	sortValue,
+	rowHeight = 'md',
+	onRowClick,
+	defaultActiveIndex,
+	tableInfo,
+	dataLabel,
+	jumpLabel,
+	tableDrawerProps,
+	searchProps,
+	filtersCount = 0,
+	emptyPlaceholder = null,
+	onCheck,
+	checkAsRadio,
+	disableCheck,
+}: TableProps<TDatum>): ReactElement => {
+	const ref = useRef<HTMLDivElement | null>(null);
+	const paginationRef = useRef<HTMLDivElement | null>(null);
 
 	const {
 		onSearch,
@@ -70,11 +58,11 @@ const Table = (props: TableProps): ReactElement => {
 		onClear,
 	} = searchProps ?? {};
 
-	const { title: tableTitle = '', description: tableDescription = '' } = tableInfo;
+	const { title: tableTitle = '', description: tableDescription = '' } = tableInfo ?? {};
 
-	const [floating, setFloating] = useState(false);
-	const [hiddenColumns, setHiddenColumns] = useState({});
-	const [toggleTableDrawer, setToggleTableDrawer] = useState({
+	const [floating, setFloating] = useState<boolean>(false);
+	const [hiddenColumns, setHiddenColumns] = useState<Record<string, boolean | null>>({});
+	const [toggleTableDrawer, setToggleTableDrawer] = useState<TableDrawerToggle<TDatum>>({
 		open: false,
 		data: {},
 	});
@@ -82,10 +70,11 @@ const Table = (props: TableProps): ReactElement => {
 	useEffect(() => {
 		setToggleTableDrawer({
 			open: false,
+			data: {},
 		});
 	}, [tableData, loading]);
 
-	const toggleDrawer = ({ data } = {}) => {
+	const toggleDrawer = ({ data = {} }: { data?: Record<string, unknown> } = {}) => {
 		setToggleTableDrawer((prevState) => {
 			return {
 				open: !prevState.open,
@@ -95,64 +84,71 @@ const Table = (props: TableProps): ReactElement => {
 	};
 
 	const visibleColumns = headerData.filter((header) => {
-		return [null, false, undefined].includes(hiddenColumns?.[header?.id]);
+		return [null, false, undefined].includes(hiddenColumns[header.id]);
 	});
 
 	const drawerProps =
 		typeof tableDrawerProps === 'function'
-			? tableDrawerProps(toggleTableDrawer?.data)
+			? tableDrawerProps(toggleTableDrawer.data)
 			: tableDrawerProps;
 
 	const hasSingleBody =
-		toggleTableDrawer?.data?.standalone || drawerProps?.renderBody?.length === 1;
+		toggleTableDrawer.data.standalone ?? drawerProps?.renderBody?.length === 1;
 
-	const Body = toggleTableDrawer?.data?.standalone
-		? drawerProps?.standalone[toggleTableDrawer.data.index]
-		: drawerProps?.renderBody?.[toggleTableDrawer?.data?.index];
+	let Body = drawerProps?.standalone?.[toggleTableDrawer.data.index ?? 0] ?? null;
 
-	// for pagination docking using intersection observer
+	if (toggleTableDrawer.data.standalone) {
+		Body = drawerProps?.renderBody?.[toggleTableDrawer.data.index ?? 0] ?? null;
+	}
+
 	useEffect(() => {
+		let observer: IntersectionObserver;
 		const tableElem = ref.current;
 		if (tableElem && !loading) {
 			const lastRow = tableElem.querySelector(
 				'[data-elem="table-body"] [data-elem="table-row"]:last-child'
 			);
+
 			if (lastRow) {
 				const lastRowHeight = parseInt(getComputedStyle(lastRow).height.slice(0, -2), 10);
-				const handleIntersect = (entries) => {
+
+				const handleIntersect: IntersectionObserverCallback = (entries) => {
 					entries.forEach((entry) => {
-						// if the target is visibile
 						if (
 							(entry.isIntersecting && entry.intersectionRatio >= INTERSECTION) ||
-							entry?.intersectionRect?.height >= lastRowHeight
+							entry.intersectionRect.height >= lastRowHeight
 						) {
 							setFloating(false);
-							onIntersection(true);
+							onIntersection?.(true);
 						} else {
 							setFloating(isFloating);
 						}
 					});
 				};
 
-				const options = {
+				observer = new IntersectionObserver(handleIntersect, {
 					threshold: THRESHOLD,
-				};
-
-				const observer = new IntersectionObserver(handleIntersect, options);
+				});
 				observer.observe(lastRow);
+
+				// Cleanup
+				return () => {
+					observer.disconnect();
+				};
 			}
 		}
-	}, [tableData, loading]);
+		return () => {
+			observer.disconnect();
+		};
+	}, [tableData, loading, onIntersection, isFloating]);
 
-	// for dynamically resizing table vertically acc to provided addons
 	useEffect(() => {
 		const tableElem = ref.current;
 		if (tableElem && !loading) {
-			tableElem.style.height = 'calc(100% -  3rem)';
+			tableElem.style.height = 'calc(100% - 3rem)';
 		}
 	}, [loading]);
 
-	// setting body and header min-width to allow horizontal sticky column beyond viewport width
 	useEffect(() => {
 		const tableElem = ref.current;
 		if (tableElem && !loading) {
@@ -170,18 +166,13 @@ const Table = (props: TableProps): ReactElement => {
 		}
 	}, [hiddenColumns, headerData, loading]);
 
-	// set the hidden columns state
 	useEffect(() => {
 		if (headerData.length > 0) {
 			setHiddenColumns({});
 		}
 	}, [headerData]);
 
-	let tabularData = tableData;
-
-	if (!Array.isArray(tableData)) {
-		tabularData = [];
-	}
+	const tabularData = Array.isArray(tableData) ? tableData : [];
 
 	return (
 		<ErrorBoundary
@@ -197,7 +188,6 @@ const Table = (props: TableProps): ReactElement => {
 						hiddenColumns,
 						setHiddenColumns,
 					}}
-					theme={theme}
 					tableTitleText={tableTitle}
 					tableDescriptionText={tableDescription}
 					onSearch={onSearch}
@@ -215,7 +205,6 @@ const Table = (props: TableProps): ReactElement => {
 						headerData: visibleColumns,
 						tableData: tabularData,
 						uniqueKey,
-
 						customCells,
 						className: styles.table,
 						onSort,
@@ -223,7 +212,6 @@ const Table = (props: TableProps): ReactElement => {
 						rowHeight,
 						onRowClick,
 						defaultActiveIndex,
-						placeholder,
 						toggleDrawer,
 						emptyPlaceholder,
 						onCheck,
@@ -244,6 +232,7 @@ const Table = (props: TableProps): ReactElement => {
 						loading={loading}
 					/>
 				)}
+
 				{drawerProps && (
 					<BaseSidePanel
 						toggle={toggleDrawer}
@@ -252,7 +241,7 @@ const Table = (props: TableProps): ReactElement => {
 						{...(hasSingleBody && {
 							tabsConfig: null,
 						})}
-						activeTab={toggleTableDrawer?.data?.index}
+						activeTab={toggleTableDrawer.data.index}
 						open={toggleTableDrawer.open}
 						toggleTableDrawer={toggleTableDrawer}
 						setToggleTableDrawer={setToggleTableDrawer}
@@ -271,6 +260,7 @@ const Table = (props: TableProps): ReactElement => {
 						)}
 					</BaseSidePanel>
 				)}
+
 				{toggleTableDrawer.open && (
 					<div
 						className={styles.overlay}

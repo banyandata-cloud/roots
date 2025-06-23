@@ -1,0 +1,121 @@
+import { forwardRef, useEffect, useState, type ForwardedRef, type ReactElement } from 'react';
+import { classes } from '../../../utils';
+import { TableBody } from '../body';
+import { TableHeader } from '../header';
+import { NoDataPlaceHolder } from '../placeholders/noData/general';
+import type { TableProps } from '../types';
+import styles from './BaseTable.module.css';
+import { Skeleton } from './Skeleton';
+
+interface BaseTableProps<TDatum extends object>
+	extends Pick<
+		TableProps<TDatum>,
+		| 'headerData'
+		| 'customCells'
+		| 'tableData'
+		| 'className'
+		| 'loading'
+		| 'onRowClick'
+		| 'onSort'
+		| 'sortValue'
+		| 'rowHeight'
+		| 'defaultActiveIndex'
+		| 'emptyPlaceholder'
+		| 'onCheck'
+		| 'uniqueKey'
+		| 'checkAsRadio'
+		| 'disableCheck'
+	> {
+	expandable?: (params: { datum: TDatum; index: number }) => boolean;
+	toggleDrawer: () => void;
+}
+
+const BaseTable = forwardRef(
+	<TDatum extends object>(
+		{
+			headerData,
+			customCells,
+			tableData,
+			className,
+			loading,
+			onRowClick,
+			expandable,
+			onSort,
+			sortValue,
+			rowHeight,
+			defaultActiveIndex,
+			toggleDrawer,
+			emptyPlaceholder,
+			onCheck,
+			uniqueKey,
+			checkAsRadio,
+			disableCheck,
+		}: BaseTableProps<TDatum>,
+		ref: ForwardedRef<HTMLTableElement>
+	): ReactElement => {
+		const [checkedRows, setCheckedRows] = useState<Record<string, unknown>[]>([]);
+
+		useEffect(() => {
+			setCheckedRows([]);
+		}, [tableData]);
+
+		if (loading) {
+			return <Skeleton />;
+		}
+
+		return (
+			<table
+				ref={ref}
+				data-elem='table'
+				className={classes(
+					styles.root,
+					tableData.length === 0 ? styles['no-scroll'] : '',
+					className
+				)}>
+				{tableData.length > 0 && (
+					<TableHeader
+						{...{
+							headerData,
+							customCells,
+							expandable,
+							onSort,
+							sortValue,
+							onRowClick,
+							onCheck,
+							checkedRows,
+							setCheckedRows,
+							tableData,
+							disableCheck,
+							checkAsRadio,
+						}}
+					/>
+				)}
+				{tableData.length === 0 ? (
+					<NoDataPlaceHolder customPlaceholder={emptyPlaceholder} />
+				) : (
+					<TableBody
+						{...{
+							ref,
+							headerData,
+							customCells,
+							tableData,
+							expandable,
+							rowHeight,
+							onRowClick,
+							defaultActiveIndex,
+							toggleDrawer,
+							onCheck,
+							checkedRows,
+							setCheckedRows,
+							uniqueKey,
+							checkAsRadio,
+							disableCheck,
+						}}
+					/>
+				)}
+			</table>
+		);
+	}
+);
+
+export default BaseTable;

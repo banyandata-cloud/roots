@@ -1,3 +1,4 @@
+import type { ReactElement } from 'react';
 import { classes } from '../../../../utils';
 import { Skeleton } from '../../../skeleton';
 import styles from './Skeleton.module.css';
@@ -8,7 +9,7 @@ const COLUMNS = [...Array(4).keys()].map(() => {
 
 const ROWS = [...Array(30).keys()];
 
-const BaseTableSkeleton = ({ theme }) => {
+const BaseTableSkeleton = (): ReactElement[] => {
 	return ROWS.map((row, rowIndex) => {
 		return (
 			<div className={classes(styles.row, rowIndex === 0 ? styles.header : '')} key={row}>
@@ -25,7 +26,6 @@ const BaseTableSkeleton = ({ theme }) => {
 								width={rowIndex === 0 ? '60%' : '100%'}
 								variant='rounded'
 								className={styles.skeleton}
-								theme={theme}
 							/>
 						</div>
 					);
