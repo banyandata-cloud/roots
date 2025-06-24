@@ -3,7 +3,7 @@ import type { ReactElement, ReactNode } from 'react';
 import { classes } from '../../../utils';
 import { Button } from '../../buttons';
 import { BaseCell } from '../../cell';
-import { SearchButton, ExpandCollapseIcon } from '../../icons';
+import { ExpandCollapseIcon, MagnifyingGlassIcon } from '../../icons';
 import styles from './HierarchyItem.module.css';
 import { TextFieldv2 as TextField } from '../../input/textFieldv2';
 
@@ -24,6 +24,9 @@ interface HierarchyItemProps {
 	name: string;
 	onSearchSubmit?: (text: string, path: string) => void;
 	pathString: string;
+	lastActive?: boolean;
+	isSearching: boolean; // ✅ Added
+	onSearchStart?: () => void; // ✅ Added
 }
 
 const HierarchyItem = (props: HierarchyItemProps): ReactElement => {
@@ -42,10 +45,12 @@ const HierarchyItem = (props: HierarchyItemProps): ReactElement => {
 		name,
 		onSearchSubmit,
 		pathString,
+		lastActive,
+		isSearching,
+		onSearchStart,
 	} = props;
 
 	const [open, setOpen] = useState(defaultOpen);
-	const [isSearching, setIsSearching] = useState(false);
 	const [searchText, setSearchText] = useState('');
 
 	const icon = (
@@ -56,8 +61,6 @@ const HierarchyItem = (props: HierarchyItemProps): ReactElement => {
 				variant='text'
 				color='default'
 				onClick={() => {
-					setIsSearching(false);
-
 					setOpen((prevState) => {
 						const newState = !prevState;
 						onClick?.(newState);
@@ -78,23 +81,13 @@ const HierarchyItem = (props: HierarchyItemProps): ReactElement => {
 				}}
 			/>
 			{!open && !isLastItem && <span className={styles['collapsed-tail']} />}
-			{open && (
-				<div
-					className={classes(
-						styles['dashed-connector']
-						// isLastItem && styles['hidden-connector']
-					)}
-				/>
-			)}
+			{open && <div className={classes(styles['dashed-connector'])} />}
 		</div>
 	);
 
 	const handleSearchSubmit = () => {
-		setIsSearching(false);
 		onSearchSubmit?.(searchText, pathString);
 	};
-
-	console.log('isLastItem', isLastItem, 'name', name);
 
 	return (
 		<div
@@ -103,12 +96,11 @@ const HierarchyItem = (props: HierarchyItemProps): ReactElement => {
 				open && styles.open,
 				active && styles.active,
 				isSearching && styles.searching
-				// isLastItem && styles.isLastItem
 			)}>
 			<BaseCell
 				flexible
 				size='auto'
-				className={styles.header}
+				className={classes(styles.header, !count && styles.headerNoCount)}
 				component1={iconPlacement === 'left' ? icon : undefined}
 				component2={
 					isSearching && open ? (
@@ -123,13 +115,22 @@ const HierarchyItem = (props: HierarchyItemProps): ReactElement => {
 								onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
 									setSearchText(e.target.value);
 								}}
+								onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
+									if (e.key === 'Enter') {
+										handleSearchSubmit();
+									}
+								}}
 								LeftComponent={() => {
 									return leftComponent;
 								}}
 								RightComponent={() => {
 									return (
 										<Button
-											title={<SearchButton />}
+											title={
+												<MagnifyingGlassIcon
+													className={styles.searchButton}
+												/>
+											}
 											onClick={handleSearchSubmit}
 											variant='text'
 											size='auto'
@@ -171,27 +172,29 @@ const HierarchyItem = (props: HierarchyItemProps): ReactElement => {
 							color='default'
 							className={styles.searchWrapper}
 							onClick={() => {
-								setIsSearching(true);
+								onSearchStart?.(); // ✅ trigger search state in parent
 							}}
-							title={<SearchButton />}
+							title={<MagnifyingGlassIcon className={styles.searchButton} />}
 						/>
 					) : undefined
 				}
 			/>
 			{!open && !isLastItem && <div className={styles['collapsed-tail-spacer']} />}
-			<BaseCell
-				size='auto'
-				className={styles.body}
-				component1={
-					<div
-						style={{
-							display: isLastItem ? 'none' : 'flex',
-						}}
-						className={styles.tail}
-					/>
-				}
-				component2={<div className={styles.children}>{children}</div>}
-			/>
+			{open && (
+				<BaseCell
+					size='auto'
+					className={styles.body}
+					component1={
+						<div
+							style={{
+								display: isLastItem ? 'none' : 'flex',
+							}}
+							className={classes(lastActive ? styles['highlight-tail'] : styles.tail)}
+						/>
+					}
+					component2={<div className={styles.children}>{children}</div>}
+				/>
+			)}
 		</div>
 	);
 };

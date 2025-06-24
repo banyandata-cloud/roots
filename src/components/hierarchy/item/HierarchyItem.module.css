@@ -16,6 +16,9 @@
 .root.searching > .header:hover .searchWrapper {
   display: none !important;
 }
+.root .headerNoCount {
+  margin-left: 7px;
+}
 .root .header {
   display: flex;
   flex-direction: row;
@@ -71,6 +74,11 @@
   margin-top: 1px;
   padding: 0 !important;
 }
+.root .header > [data-elem=component2] .searchFieldWrapper .searchButton {
+  width: 20px;
+  margin: 0 !important;
+  padding: 0 !important;
+}
 .root .header > [data-elem=component2] .searchFieldWrapper .searchInput {
   width: 100%;
   padding-left: 12px;
@@ -121,6 +129,9 @@
   justify-content: center;
   align-items: center;
 }
+.root .header .searchWrapper .searchButton {
+  width: 20px;
+}
 .root .header:hover {
   background: var(--background-color4);
   border-radius: 4px;
@@ -132,7 +143,7 @@
   fill: var(--primary-color4);
 }
 .root .header:hover .searchWrapper {
-  height: 100%;
+  height: 2.5rem;
   display: block;
 }
 .root .expand-container {
@@ -208,7 +219,7 @@
   margin-top: -0.525rem;
   width: 1px;
   flex: 1;
-  background: blue;
+  background: #0f62fe;
   margin-bottom: -0.55rem;
   margin-left: 9px;
   z-index: 1;

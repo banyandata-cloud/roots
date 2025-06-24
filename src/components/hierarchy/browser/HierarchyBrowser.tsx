@@ -77,6 +77,56 @@ const HierarchyBrowser = ({
 		enabled: resizable,
 	});
 
+	const [lastOpenedPath, setLastOpenedPath] = useState<string | null>(null);
+	const [lastOpenedItem, setLastOpenedItem] = useState<Item | null>(null);
+	const [openPaths, setOpenPaths] = useState<Set<string>>(new Set());
+	const [searchingPath, setSearchingPath] = useState<string | null>(null);
+
+	const getParentPath = (path: string): string | null => {
+		const parts = path.split('.list[');
+		if (parts.length <= 1) return null;
+		parts.pop();
+		return parts.join('.list[');
+	};
+
+	const trackOpenState = (item: Item, pathString: string, open: boolean) => {
+		setOpenPaths((prevPaths) => {
+			const newPaths = new Set(prevPaths);
+
+			if (open) {
+				newPaths.add(pathString);
+				setLastOpenedPath(pathString);
+				setLastOpenedItem(item);
+			} else {
+				Array.from(newPaths).forEach((p) => {
+					if (p === pathString || p.startsWith(`${pathString}.`)) {
+						newPaths.delete(p);
+					}
+				});
+
+				if (lastOpenedPath === pathString || lastOpenedPath?.startsWith(`${pathString}.`)) {
+					const parent = getParentPath(pathString);
+					if (parent && newPaths.has(parent)) {
+						setLastOpenedPath(parent);
+					} else {
+						const sorted = Array.from(newPaths).sort((a, b) => {
+							return b.length - a.length;
+						});
+						const fallback = sorted[0];
+						if (fallback) {
+							setLastOpenedPath(fallback);
+						} else {
+							setLastOpenedPath(null);
+							setLastOpenedItem(null);
+						}
+					}
+				}
+			}
+
+			return newPaths;
+		});
+	};
+
 	const handleItemClick = (item: Item, pathString: string) => {
 		return (open: boolean): void => {
 			onItemClick(item, pathString, open);
@@ -146,15 +196,25 @@ const HierarchyBrowser = ({
 					/>
 				}
 				iconPlacement={children.length ? 'left' : 'none'}
-				onClick={handleItemClick(data, currentPath)}
-				onDoubleClick={handleItemDoubleClick(data, currentPath)}
+				onClick={(open) => {
+					handleItemClick(data, currentPath)(open);
+					trackOpenState(data, currentPath, open);
+				}}
+				onDoubleClick={(open) => {
+					handleItemDoubleClick(data, currentPath)(open);
+					trackOpenState(data, currentPath, open);
+				}}
+				lastActive={lastOpenedPath === currentPath}
 				isLastItem={isLast}
 				isSingleItem={isSingleItem}
 				count={count}
 				name={title}
 				leftComponent={leftComponent}
+				isSearching={searchingPath === currentPath}
+				onSearchStart={() => setSearchingPath(currentPath)}
 				onSearchSubmit={(text) => {
 					handleSearchSubmit(text, currentPath);
+					setSearchingPath(null);
 				}}>
 				{filteredChildren.map((child: Item, index: number) => {
 					const isLastItem = index === filteredChildren.length - 1;

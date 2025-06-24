@@ -32,6 +32,10 @@
 		}
 	}
 
+	.headerNoCount {
+		margin-left: 7px;
+	}
+
 	.header {
 		@include flex(row, flex-start);
 		// gap: 0.25rem;
@@ -62,6 +66,8 @@
 			flex: 1 1 auto;
 
 			.title {
+				// @include debug;
+
 				@include flex(row, flex-start);
 				width: 100%;
 				height: auto;
@@ -72,6 +78,7 @@
 
 			.searchFieldWrapper {
 				// @include debug;
+
 				display: flex;
 				align-items: center;
 				background: white;
@@ -82,6 +89,12 @@
 				margin-bottom: 2px;
 				margin-top: 1px;
 				padding: 0 !important;
+
+				.searchButton {
+					width: 20px;
+					margin: 0 !important;
+					padding: 0 !important;
+				}
 
 				.searchInput {
 					// padding: 18px;
@@ -135,6 +148,9 @@
 			[data-elem='title'] {
 				@include flex;
 			}
+			.searchButton {
+				width: 20px;
+			}
 		}
 
 		&:hover {
@@ -145,7 +161,7 @@
 				fill: $primary-color4;
 			}
 			.searchWrapper {
-				height: 100%;
+				height: 2.5rem;
 
 				display: block;
 			}
@@ -225,7 +241,7 @@
 					margin-top: -0.525rem;
 					width: 1px;
 					flex: 1;
-					background: blue;
+					background: #0f62fe;
 					margin-bottom: -0.55rem;
 					margin-left: 9px;
 					z-index: 1;
