@@ -1,11 +1,16 @@
 import { Meta, Canvas, Story } from '@storybook/addon-docs';
 
 import Text from './Text';
+import Text2 from './Text2';
 
 <Meta title='Components/Text' parameters={{ options: { showToolbar: false } }} />
 
 export const Template = (args) => {
 	return <Text {...args}>This is just some sample text.</Text>;
+};
+
+export const Template2 = (args) => {
+	return <Text2 {...args}>This is just some sample text.</Text2>;
 };
 
 # Text
@@ -36,6 +41,18 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 			stroke: 'semibold',
 		}}>
 		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Tailwind
+
+<Canvas>
+	<Story
+		name='Tailwind'
+		args={{
+			title: 'THIS IS TAILWIND TEXT',
+		}}>
+		{Template2.bind({})}
 	</Story>
 </Canvas>
 

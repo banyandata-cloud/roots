@@ -2,7 +2,8 @@ import { DocsContainer } from '@storybook/addon-docs';
 import { themes } from '@storybook/theming';
 import React from 'react';
 import { useDarkMode } from 'storybook-dark-mode';
-import '../src/styles/main.scss';
+// import '../src/styles/main.scss';
+import '../src/styles/tailwind.css';
 import banyanTheme from './banyanTheme';
 
 export const parameters = {

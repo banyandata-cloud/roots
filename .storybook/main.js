@@ -43,10 +43,20 @@ module.exports = {
 		// You can change the configuration based on that.
 		// 'PRODUCTION' is used when building the static version of storybook.
 
-		// Make whatever fine-grained changes you need
+		// Tailwind / PostCSS support
 		config.module.rules.push({
-			test: /\.scss$/,
-			use: ['style-loader', 'css-loader', 'sass-loader'],
+			test: /\.css$/,
+			exclude: /\.scss$/,
+			use: [
+				'style-loader',
+				{
+					loader: 'css-loader',
+					options: {
+						importLoaders: 1,
+					},
+				},
+				'postcss-loader',
+			],
 			include: path.resolve(__dirname, '../'),
 		});
 

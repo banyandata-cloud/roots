@@ -1,4 +1,3 @@
-// Light Mode Colors
 $light-primary-color1: #bd3c45;
 $light-primary-color2: #487349;
 $light-primary-color3: #cba006;
@@ -81,7 +80,6 @@ $dark-side-bar-icon2: #bcbcc2;
 	--grey10: #f7f7f7;
 	--skeleton: #e0e1e9;
 
-	//Base colors
 	--highlight: #0f62fe;
 	--dark-blue: #001833;
 	--background: #d0e2ff;
@@ -96,7 +94,6 @@ $dark-side-bar-icon2: #bcbcc2;
 		var(--banyan-orange) 99.57%
 	);
 
-	// Alert colors
 	--error: #ff626a;
 	--error-bg: #fff1f1;
 	--error-outline: rgba(218, 30, 40, 0.08);
@@ -197,7 +194,6 @@ $dark-side-bar-icon2: #bcbcc2;
 	grey9: --grey9;
 	grey10: --grey10;
 
-	//  Base colors
 	highlight: --highlight;
 	dark-blue: --dark-blue;
 	background: --background;
@@ -208,7 +204,6 @@ $dark-side-bar-icon2: #bcbcc2;
 	banyan-pink: --banyan-pink;
 	banyan-gradient: --banyan-gradient;
 
-	// Alert colors
 	error: --error;
 	error-bg: --error-bg;
 	error-outline: --error-outline;
