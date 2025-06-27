@@ -144,8 +144,6 @@ const HierarchyBrowser = ({
 
 	const handleItemDoubleClick = (item: Item, pathString: string) => {
 		return (open: boolean): void => {
-			console.log('handleItemDoubleClick called', item.title, pathString, open);
-
 			onItemDoubleClick(item, pathString, open);
 		};
 	};

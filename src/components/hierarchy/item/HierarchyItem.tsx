@@ -25,8 +25,8 @@ interface HierarchyItemProps {
 	onSearchSubmit?: (text: string, path: string) => void;
 	pathString: string;
 	lastActive?: boolean;
-	isSearching: boolean; // ✅ Added
-	onSearchStart?: () => void; // ✅ Added
+	isSearching: boolean;
+	onSearchStart?: () => void;
 }
 
 const HierarchyItem = (props: HierarchyItemProps): ReactElement => {
@@ -172,7 +172,7 @@ const HierarchyItem = (props: HierarchyItemProps): ReactElement => {
 							color='default'
 							className={styles.searchWrapper}
 							onClick={() => {
-								onSearchStart?.(); // ✅ trigger search state in parent
+								onSearchStart?.(); // trigger search state in parent
 							}}
 							title={<MagnifyingGlassIcon className={styles.searchButton} />}
 						/>
