@@ -161,30 +161,33 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 						onBack={onBack}
 						onReload={onReload}
 						body={Body}
-						headerOptions={{
-							options: [
-								{
-									id: '1',
-									leftCompoenent: '',
-									rightCompoenent: '',
-									title: 'Option 1',
-									value: 'Option 1',
+						headerOptions={[
+							{
+								id: 'toggle',
+								options: [
+									{
+										id: '1',
+										leftCompoenent: '',
+										rightCompoenent: '',
+										title: 'Option Test',
+										value: 'Option 1',
+									},
+									{
+										id: '2',
+										leftCompoenent: '',
+										rightCompoenent: '',
+										title: 'Option 2',
+										value: 'Option 2',
+									},
+								],
+								value: 'Option 1',
+								onChange: (newValue) => {
+									console.log({
+										HERE: newValue,
+									});
 								},
-								{
-									id: '2',
-									leftCompoenent: '',
-									rightCompoenent: '',
-									title: 'Option 2',
-									value: 'Option 2',
-								},
-							],
-							value: 'Option 1',
-							onChange: (newValue) => {
-								console.log({
-									HERE: newValue,
-								});
 							},
-						}}
+						]}
 						options={options.map((option) => {
 							return option.id === 'dropdown'
 								? {
@@ -193,7 +196,7 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 										onChange: (event) => {
 											setDropValue(event.target.value);
 										},
-								  }
+									}
 								: option;
 						})}>
 						<BaseVerticalBarChart
@@ -344,16 +347,16 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 										onChange: (data) => {
 											setSelectedValue(data);
 										},
-								  }
+									}
 								: option.id === 'dropdown'
-								? {
-										...option,
-										value: dropValue,
-										onChange: (event) => {
-											setDropValue(event.target.value);
-										},
-								  }
-								: option;
+									? {
+											...option,
+											value: dropValue,
+											onChange: (event) => {
+												setDropValue(event.target.value);
+											},
+										}
+									: option;
 						})}>
 						<BaseVerticalBarChart
 							yAxisLabelShow
@@ -503,16 +506,16 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 										onChange: (data) => {
 											setSelectedValue(data);
 										},
-								  }
+									}
 								: option.id === 'dropdown'
-								? {
-										...option,
-										value: dropValue,
-										onChange: (event) => {
-											setDropValue(event.target.value);
-										},
-								  }
-								: option;
+									? {
+											...option,
+											value: dropValue,
+											onChange: (event) => {
+												setDropValue(event.target.value);
+											},
+										}
+									: option;
 						})}>
 						<BaseVerticalBarChart
 							yAxisLabelShow
@@ -662,16 +665,16 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 										onChange: (data) => {
 											setSelectedValue(data);
 										},
-								  }
+									}
 								: option.id === 'dropdown'
-								? {
-										...option,
-										value: dropValue,
-										onChange: (event) => {
-											setDropValue(event.target.value);
-										},
-								  }
-								: option;
+									? {
+											...option,
+											value: dropValue,
+											onChange: (event) => {
+												setDropValue(event.target.value);
+											},
+										}
+									: option;
 						})}>
 						<BaseVerticalBarChart
 							yAxisLabelShow
@@ -828,7 +831,7 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 										onChange: (event) => {
 											setDropValue(event.target.value);
 										},
-								  }
+									}
 								: option;
 						})}>
 						<BaseVerticalBarChart
