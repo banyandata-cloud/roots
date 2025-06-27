@@ -25,7 +25,7 @@ const Title = ({ leftComponent, title, rightComponent }: TitleProps) => {
 		<span className={styles.item}>
 			{leftComponent && <span className={styles['item-icon']}>{leftComponent}</span>}
 			<span className={styles['item-title']}>{title}</span>
-			{rightComponent && (
+			{rightComponent !== undefined && Number(rightComponent) !== 0 && (
 				<span className={styles['item-count']}>
 					<span className={styles['count-bg']}>
 						<span className={styles['count-text']}>{rightComponent}</span>
