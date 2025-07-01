@@ -2,7 +2,6 @@ import { Meta, Canvas, Story } from '@storybook/addon-docs';
 
 import { ThemedContainer } from '../../helpers';
 import HierarchyBrowser from './HierarchyBrowser';
-import { SortIcon } from '../../icons/Sort';
 
 <Meta title='Components/Hierarchy/Browser' parameters={{ options: { showToolbar: true } }} />
 
@@ -42,112 +41,121 @@ The default Hierarchy Browser.
 	<Story
 		name='Default Hierarchy Browser'
 		args={{
-			setItemProps: (data) => {
-				const itemProps = {};
-				itemProps.rightComponent = data.count;
-				itemProps.leftComponent = <SortIcon />;
-				itemProps.title = data.title;
-				itemProps.count = data.count;
-				return itemProps;
+			metadata: {
+				title: 'database',
+				id: 'database',
+				count: 2,
+				list: [
+					{
+						title: 'test1',
+						id: 'schema',
+						count: 2,
+						list: [
+							{
+								title: 'first',
+								id: 'object',
+								count: 10,
+								list: [
+									{
+										title: 'Tables',
+										count: 10,
+									},
+									{
+										title: 'Indexes',
+										count: 10,
+									},
+									{
+										title: 'Views',
+										count: 5,
+									},
+									{
+										title: 'Trigger',
+										count: 7,
+									},
+								],
+							},
+							{
+								title: 'second',
+								id: 'object',
+								count: 10,
+								list: [
+									{
+										title: 'Tables',
+										count: 3,
+									},
+									{
+										title: 'Indexes',
+										count: 1,
+									},
+									{
+										title: 'Views',
+										count: 2,
+									},
+									{
+										title: 'Trigger',
+										count: 1,
+									},
+								],
+							},
+						],
+					},
+					{
+						title: 'test2',
+						id: 'schema',
+						count: 2,
+						list: [
+							{
+								title: 'first',
+								id: 'object',
+								count: 10,
+								list: [
+									{
+										id: 'tables',
+										title: 'Tables',
+										count: 10,
+										list: [],
+									},
+									{
+										title: 'Indexes',
+										count: 10,
+									},
+									{
+										title: 'Views',
+										count: 5,
+									},
+									{
+										title: 'Trigger',
+										count: 7,
+									},
+								],
+							},
+							{
+								title: 'second',
+								id: 'object',
+								count: 10,
+								list: [
+									{
+										title: 'Tables',
+										count: 3,
+									},
+									{
+										title: 'Indexes',
+										count: 1,
+									},
+									{
+										title: 'Views',
+										count: 2,
+									},
+									{
+										title: 'Trigger',
+										count: 1,
+									},
+								],
+							},
+						],
+					},
+				],
 			},
-			metadata: [
-				{
-					title: 'Database',
-					id: 'databaseList',
-					count: 0,
-					list: [
-						{
-							title: 'apitst',
-							id: 'database',
-							count: 1,
-							list: [
-								{
-									title: 'Schemas',
-									id: 'schemasList',
-									count: 0,
-									list: [],
-								},
-							],
-						},
-						{
-							title: 'bdopcfl',
-							id: 'database',
-							count: 10,
-							list: [
-								{
-									title: 'Schemas',
-									id: 'schemasList',
-									count: 10,
-									list: [
-										{
-											title: 'bc_auth',
-											id: 'schema',
-											count: 0,
-											list: [],
-										},
-										{
-											title: 'auth_schema',
-											id: 'schema',
-											count: 2,
-											list: [
-												{ title: 'Procedures' },
-												{ title: 'Tables' },
-												{ title: 'Tables' },
-												{ title: 'Tables' },
-											],
-										},
-									],
-								},
-							],
-						},
-					],
-				},
-				{
-					title: 'Config management',
-					id: 'databaseList',
-					count: 4,
-					list: [
-						{
-							title: 'apitst',
-							id: 'database',
-							count: 1,
-							list: [
-								{
-									title: 'Schemas',
-									id: 'schemasList',
-									list: [],
-								},
-							],
-						},
-						{
-							title: 'bdopcfl',
-							id: 'database',
-							count: 1,
-							list: [
-								{
-									title: 'Schemas',
-									id: 'schemasList',
-									count: 2,
-									list: [
-										{
-											title: 'auth_schema',
-											id: 'schema',
-											count: 2,
-											list: [{ title: 'Procedures' }, { title: 'Tables' }],
-										},
-										{
-											title: 'bc_auth',
-											id: 'schema',
-											count: 2,
-											list: [{ title: 'Procedures' }, { title: 'Tables' }],
-										},
-									],
-								},
-							],
-						},
-					],
-				},
-			],
 		}}>
 		{Template.bind({})}
 	</Story>
