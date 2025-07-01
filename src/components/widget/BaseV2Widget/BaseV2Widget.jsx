@@ -130,6 +130,7 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 		titleDesc,
 		body: Body = () => {},
 		headerOptions = null,
+		rightActions = null,
 	} = props;
 
 	const emptyChartData = useMemo(() => {
@@ -263,6 +264,25 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 							})}
 					</div>
 				</div>
+				{rightActions && (
+					<div className={styles['header-options']} data-elem='header-options'>
+						<div
+							className={classes(styles['header-options-list'])}
+							data-elem='header-options-list'>
+							{options && (
+								<div
+									className={styles['header-options']}
+									data-elem='header-options'>
+									<div
+										className={classes(styles['header-options-list'])}
+										data-elem='header-options-list'>
+										{rightActions}
+									</div>
+								</div>
+							)}
+						</div>
+					</div>
+				)}
 			</div>
 
 			<BaseSidePanel
