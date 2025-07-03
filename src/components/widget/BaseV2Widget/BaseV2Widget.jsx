@@ -271,19 +271,10 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 						<div
 							className={classes(styles['header-options-list'])}
 							data-elem='header-options-list'>
-							{rightActions && (
-								<div
-									className={styles['header-options']}
-									data-elem='header-options'>
-									<div
-										className={classes(styles['header-options-list'])}
-										data-elem='header-options-list'>
-										{rightActions({
-											toggleDrawer,
-										})}
-									</div>
-								</div>
-							)}
+							{rightActions &&
+								rightActions({
+									toggleDrawer,
+								})}
 						</div>
 					</div>
 				)}
