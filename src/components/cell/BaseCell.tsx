@@ -30,12 +30,21 @@ export const BaseCell = forwardRef<RefObject<HTMLElement>, BaseCellProps<BaseCel
 			size = 'sm',
 			flexible,
 			component1,
-			component2,
+			component2 = '',
 			component3,
 			RootDOM = 'div',
 			attrs = {},
 			radius = 'none',
 		} = props;
+
+		let mainComponent: ReactElement | undefined | string | null = null;
+
+		if (!component2) {
+			if (component1 && component3) {
+				mainComponent = null;
+			}
+			mainComponent = component1 ?? component3;
+		}
 
 		const Component = createElement(
 			RootDOM,
@@ -46,15 +55,16 @@ export const BaseCell = forwardRef<RefObject<HTMLElement>, BaseCellProps<BaseCel
 					styles.root,
 					styles[size],
 					styles[`border-radius-${radius}`],
-					flexible ? styles.flexible : '',
+					flexible && styles.flexible,
+					mainComponent && styles.centered,
 					className
 				),
 				...attrs,
 			},
 			<>
-				{component1 && <span data-elem='component1'>{component1}</span>}
-				<span data-elem='component2'>{component2}</span>
-				{component3 && <span data-elem='component3'>{component3}</span>}
+				{!mainComponent && component1 && <span data-elem='component1'>{component1}</span>}
+				<span data-elem='component2'>{mainComponent ?? component2}</span>
+				{!mainComponent && component3 && <span data-elem='component3'>{component3}</span>}
 			</>
 		);
 

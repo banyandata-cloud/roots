@@ -21,7 +21,7 @@ const BaseButton = forwardRef<RefObject<HTMLElement>, BaseButtonProps>((props, r
 		variant = 'contained',
 	} = props;
 
-	const Title = <span data-elem='title'>{title}</span>;
+	const Title = title && <span data-elem='title'>{title}</span>;
 
 	return (
 		<BaseCell

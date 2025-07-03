@@ -8,3 +8,8 @@
 		width: fit-content !important;
 	}
 }
+
+.legend {
+	@include flex(row, center, center);
+	gap: 0.625rem;
+}

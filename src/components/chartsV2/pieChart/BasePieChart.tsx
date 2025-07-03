@@ -1,11 +1,15 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable react/forbid-prop-types */
 /* eslint-disable no-nested-ternary */
 import type { ChartData, ChartEvent, ChartOptions, ScriptableContext } from 'chart.js';
 import { ArcElement, Chart as ChartJS, Legend, Title, Tooltip } from 'chart.js';
-import React, { useCallback, useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { Pie } from 'react-chartjs-2';
 import { classes } from '../../../utils';
 import styles from './BasePieChart.module.css';
 import type { BasePieChartProps, LegendItem, TooltipCallbackContext } from './types';
+// import { stripSampleData } from './BasePieChartData';
+import { getColorGradient } from '../utils';
 
 // Register ChartJS components
 ChartJS.register(ArcElement, Tooltip, Legend, Title);
@@ -45,50 +49,87 @@ const BasePieChart: React.FC<BasePieChartProps> = (props) => {
 		});
 	}, []);
 
-	let labels: string[] = [];
+	const labels = seriesData?.metaData?.keyData
+		? Object.keys(seriesData.chartData).map((key) => {
+				return seriesData.metaData.keyData[key];
+			})
+		: [];
 
-	if (seriesData.metaData?.keyData) {
-		const { keyData } = seriesData.metaData;
-		labels = Object.keys(seriesData.chartData).map((key) => {
-			return keyData[key] ?? key;
-		});
-	} else {
-		labels = [];
-	}
+	const values = Object.keys(seriesData?.chartData ?? {}).map((key) => {
+		return seriesData.chartData[key];
+	});
 
-	const data: ChartData<'pie'> = {
-		labels,
+	const legendColors = seriesOption
+		? seriesOption.map((option) => {
+				const color = option?.itemStyle?.color;
+				if (typeof color !== 'string' || !color.startsWith('linear-gradient')) {
+					return color;
+				}
+				const stops = color.match(/#(?:[0-9a-fA-F]{3}){1,2}/g);
+				return stops?.[0] || '#000';
+			})
+		: [];
+
+	// Data for the Pie Chart
+	const data = {
+		labels: seriesData?.metaData?.keyData
+			? Object.keys(seriesData.chartData).map((key) => {
+					return seriesData.metaData.keyData[key];
+				})
+			: [],
 		datasets: [
 			{
-				data: Object.values(seriesData.chartData),
-				backgroundColor: seriesOption
-					? seriesOption.map((opt, i) => {
-							return hoveredIndex !== null && hoveredIndex !== i
-								? '#D3D3D3'
-								: excludedIndices.includes(i)
+				data: Object.keys(seriesData?.chartData ?? {}).map((key) => {
+					return seriesData?.chartData?.[key];
+				}),
+				backgroundColor: (ctx) => {
+					return seriesOption
+						? seriesOption.map((option, index) => {
+								if (hoveredIndex !== null && hoveredIndex !== index) {
+									return '#D3D3D3';
+								}
+
+								if (excludedIndices.includes(index)) {
+									return '#D3D3D3';
+								}
+
+								const color = option?.itemStyle?.color;
+								if (
+									typeof color === 'string' &&
+									color.startsWith('linear-gradient')
+								) {
+									return getColorGradient(ctx, color);
+								}
+
+								return color || '#000'; // Fallback solid color
+							})
+						: Object.keys(seriesData?.chartData ?? {}).map((_, index) => {
+								const defaultColors = [
+									'#FF6384',
+									'#36A2EB',
+									'#FFCE56',
+									'#4BC0C0',
+									'#9966FF',
+									'#FF9F40',
+								];
+
+								if (hoveredIndex !== null && hoveredIndex !== index) {
+									return '#D3D3D3';
+								}
+
+								return excludedIndices.includes(index)
 									? '#D3D3D3'
-									: opt.itemStyle.color;
-						})
-					: Object.keys(seriesData.chartData).map((_, i) => {
-							const defaultColors = [
-								'#FF6384',
-								'#36A2EB',
-								'#FFCE56',
-								'#4BC0C0',
-								'#9966FF',
-								'#FF9F40',
-							];
-							return hoveredIndex !== null && hoveredIndex !== i
-								? '#D3D3D3'
-								: excludedIndices.includes(i)
-									? '#D3D3D3'
-									: defaultColors[i % defaultColors.length];
-						}),
+									: defaultColors[index % defaultColors.length];
+							});
+				},
+
 				borderColor: seriesOption
-					? seriesOption.map((opt, i) => {
-							return excludedIndices.includes(i) ? '#D3D3D3' : opt.itemStyle.color;
+					? seriesOption.map((option, index) => {
+							return excludedIndices.includes(index)
+								? '#D3D3D3' // Grey for excluded items
+								: option.itemStyle.color; // Normal color for other borders
 						})
-					: Object.keys(seriesData.chartData).map((_, i) => {
+					: Object.keys(seriesData?.chartData ?? {}).map((_, index) => {
 							const defaultColors = [
 								'#FF6384',
 								'#36A2EB',
@@ -97,9 +138,9 @@ const BasePieChart: React.FC<BasePieChartProps> = (props) => {
 								'#9966FF',
 								'#FF9F40',
 							];
-							return excludedIndices.includes(i)
-								? '#D3D3D3'
-								: defaultColors[i % defaultColors.length];
+							return excludedIndices.includes(index)
+								? '#D3D3D3' // Grey for excluded items
+								: defaultColors[index % defaultColors.length]; // Normal color for other borders
 						}),
 				hoverBorderWidth,
 				hoverOffset: (context: ScriptableContext<'pie'>) => {
@@ -112,7 +153,10 @@ const BasePieChart: React.FC<BasePieChartProps> = (props) => {
 		],
 	};
 
-	const handleHover = (index: number) => {
+	const hoveredIndexRef = useRef(null);
+
+	const handleHover = (index) => {
+		hoveredIndexRef.current = index;
 		setHoveredIndex(index);
 	};
 
@@ -159,6 +203,7 @@ const BasePieChart: React.FC<BasePieChartProps> = (props) => {
 						},
 						onLeave: () => {
 							setHoveredIndex(null);
+							hoveredIndexRef.current = null;
 						},
 						...legend,
 					},
@@ -219,10 +264,12 @@ const BasePieChart: React.FC<BasePieChartProps> = (props) => {
 				handleHover(index);
 			} else {
 				setHoveredIndex(null);
+				hoveredIndexRef.current = null;
 			}
 		},
 		onLeave: () => {
 			setHoveredIndex(null);
+			hoveredIndexRef.current = null;
 		},
 		animations: {
 			animateRotate: false,
@@ -340,72 +387,12 @@ const BasePieChart: React.FC<BasePieChartProps> = (props) => {
 		},
 	};
 
-	const customLegendPlugin = {
-		id: 'customLegend',
-		afterUpdate(chart) {
-			const ul = legendRef.current;
-			while (ul?.firstChild) {
-				ul.firstChild.remove();
-			}
-
-			chart.data.labels.forEach((label, index) => {
-				const li = document.createElement('li');
-				li.style.display = 'flex';
-				li.style.alignItems = 'center';
-				li.style.cursor = 'pointer';
-
-				// Get the color for the current pie slice
-				const sliceColor = chart.data.datasets[0].backgroundColor[index];
-
-				// Handle click for excluding/un-excluding slices
-				li.onclick = (event) => {
-					const legendItem = {
-						index,
-					}; // Simulate legend item
-					handleLegendClick(event, legendItem); // Handle click
-					handleHover(index); // Set hover on legend click
-					chart.update('none'); // Update the chart without animation
-				};
-
-				// Handle hover on the legend item
-				li.onmouseenter = () => {
-					handleHover(index); // Set hover on legend hover
-					chart.update('none'); // Update the chart without animation
-				};
-
-				// Handle leave event to remove hover effect
-				li.onmouseleave = () => {
-					setHoveredIndex(null);
-					chart.update('none');
-				};
-
-				// Apply grey color dynamically based on the hovered state
-				const isGreyedOut = hoveredIndex !== null && hoveredIndex !== index;
-				const displayColor = isGreyedOut ? '#D3D3D3' : sliceColor;
-
-				const value = chart.data.datasets[0].data[index];
-
-				li.innerHTML = `
-					<svg width="15" height="15" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<circle cx="15" cy="15" r="12" stroke="${displayColor}" stroke-width="6"/>
-					</svg>
-					
-					<span style="margin-left: 10px;">
-						<span>${label}</span>
-						<span style="margin-left: 14px;">${value}</span>
-					</span>
-				`;
-
-				ul?.appendChild(li);
-			});
-		},
-	};
-
 	return (
 		<div
 			className={classes(styles.root, className)}
 			onMouseLeave={() => {
 				setHoveredIndex(null);
+				hoveredIndexRef.current = null;
 			}}
 			style={{
 				width,
@@ -420,19 +407,87 @@ const BasePieChart: React.FC<BasePieChartProps> = (props) => {
 				options={{
 					...options,
 				}}
-				plugins={[
-					customLabel && centerTextPlugin,
-					legend?.icon && legend?.display && customLegendPlugin,
-				].filter(Boolean)}
-				{...(extra as object)}
+				plugins={[customLabel && centerTextPlugin].filter(Boolean)}
+				{...extra}
 			/>
 			{legend?.icon && legend?.display && (
 				<ul
 					style={{
-						...(legend?.legendStyles as React.CSSProperties),
-					}}
-					ref={legendRef}
-				/>
+						...legend?.legendStyles,
+					}}>
+					{labels.map((label, index) => {
+						const value = values[index];
+						const color =
+							hoveredIndex !== null && hoveredIndex !== index
+								? '#D3D3D3'
+								: excludedIndices.includes(index)
+									? '#D3D3D3'
+									: (legendColors[index] ?? '#000');
+
+						return (
+							<li
+								key={index}
+								style={{
+									display: 'flex',
+									alignItems: 'center',
+									cursor: 'pointer',
+								}}
+								onClick={(e) => {
+									handleLegendClick(e, {
+										index,
+									});
+									handleHover(index);
+								}}
+								onMouseEnter={() => {
+									handleHover(index);
+								}}
+								onMouseLeave={() => {
+									setHoveredIndex(null);
+									hoveredIndexRef.current = null;
+								}}>
+								{(legend?.circle ?? true) && (
+									<svg width='15' height='15' viewBox='0 0 30 30' fill='none'>
+										<circle
+											cx='15'
+											cy='15'
+											r='12'
+											stroke={color}
+											strokeWidth='6'
+										/>
+									</svg>
+								)}
+								<div
+									style={{
+										marginLeft: 10,
+									}}>
+									{legend?.customLabels ? (
+										legend?.customLabels({
+											label,
+											value,
+											index,
+											color,
+										})
+									) : (
+										<div className={styles.legend}>
+											<span
+												style={{
+													color: '#333',
+												}}>
+												{label}
+											</span>
+											<span
+												style={{
+													marginLeft: 10,
+												}}>
+												{value}
+											</span>
+										</div>
+									)}
+								</div>
+							</li>
+						);
+					})}
+				</ul>
 			)}
 		</div>
 	);

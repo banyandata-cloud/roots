@@ -38,8 +38,8 @@ Basic import and additional information on how to use this component.
 import { BaseBarChartV2 } from '@banyan_cloud/roots';
 ```
 
--   The Vertical Bar Chart is just like any other chart with standard `chartData` and `metaData` values alongwith props to control customization.
--   The `className` of the Chart can be adjusted in the implementaion code to match its flexibility with respect to its container.
+- The Vertical Bar Chart is just like any other chart with standard `chartData` and `metaData` values alongwith props to control customization.
+- The `className` of the Chart can be adjusted in the implementaion code to match its flexibility with respect to its container.
 
 ## Stories
 
@@ -61,6 +61,9 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 			},
 			xAxisShow: true,
 			barWidth: 8,
+			barColors: {
+				x1: 'linear-gradient(0deg, #EE0004 49.99%, #770002 100%)',
+			},
 			barColor1: [
 				'#FF6384',
 				'#36A2EB',
@@ -111,17 +114,6 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 						family: 'Poppins',
 					},
 				},
-			},
-			chartDatasets: {
-				backgroundColor: Object.keys(sampleData.chartData).map((cloud) => {
-					const colorMap = {
-						MySql: 'black',
-						PgSql: 'green',
-						Oracle: 'red',
-						Oradcdcle: 'yellow',
-					};
-					return colorMap[cloud] || 'gray';
-				}),
 			},
 			xAxisLabel: {
 				show: true,
@@ -178,7 +170,7 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 				stacked: true,
 				type: 'linear',
 				min: 0,
-				max: 50,
+				max: 100,
 				grid: {
 					display: false,
 				},

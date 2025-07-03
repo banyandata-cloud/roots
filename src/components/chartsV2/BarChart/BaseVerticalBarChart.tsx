@@ -14,7 +14,7 @@ import type { Context } from 'chartjs-plugin-datalabels';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
-import { COLORS } from '../../../styles';
+import { getColorGradient } from '../utils';
 import type { BaseBarChartProps } from './types';
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend, ChartDataLabels);
@@ -27,8 +27,6 @@ const BaseBarChart: React.FC<BaseBarChartProps> = ({
 	height = '100%',
 	barThickness = 50,
 	borderRadius = 5,
-	barColor1,
-	barColor2,
 	xAxisTitle,
 	yAxisTitle,
 	tooltip,
@@ -41,6 +39,7 @@ const BaseBarChart: React.FC<BaseBarChartProps> = ({
 	vertical = true,
 	stacked,
 	extra,
+	barColors,
 }) => {
 	const labels = Object.keys(seriesData.chartData);
 	const allKeys = new Set<string>();
@@ -54,12 +53,16 @@ const BaseBarChart: React.FC<BaseBarChartProps> = ({
 	const barDatasets: ChartDataset<'bar'>[] = Array.from(allKeys).map((key) => {
 		return {
 			label: key,
-			backgroundColor:
-				key === 'x1'
-					? (barColor1 ?? COLORS.success)
-					: key === 'x2'
-						? (barColor2 ?? COLORS.error)
-						: COLORS.warning,
+			backgroundColor: (ctx) => {
+				const color = barColors?.[key];
+				if (!color) return 'grey';
+
+				if (color.startsWith('linear-gradient')) {
+					return getColorGradient(ctx, color);
+				}
+
+				return color;
+			},
 			data: labels.map((label) => {
 				return seriesData.chartData[label]?.[key] ?? null;
 			}),
@@ -97,6 +100,7 @@ const BaseBarChart: React.FC<BaseBarChartProps> = ({
 				titleColor: tooltip?.titleColor ?? '#000',
 				bodyColor: tooltip?.bodyFont?.color ?? '#000',
 				bodyFont: {
+					...tooltip?.bodyFont,
 					family: 'Poppins',
 					...(typeof tooltip?.bodyFont === 'object' ? tooltip.bodyFont : {}),
 				},
