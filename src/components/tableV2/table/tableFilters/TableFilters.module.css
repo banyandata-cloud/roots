@@ -5,7 +5,7 @@
   align-items: center;
   padding: 1.0625rem 1.25rem;
   height: auto;
-  width: 100%;
+  width: 100% !important;
 }
 .root[data-elem=base-cell] > [data-elem=component1] {
   flex: 1;
@@ -74,14 +74,14 @@
   border-bottom-left-radius: 0;
   height: 100%;
 }
-.root[data-elem=base-cell] > [data-elem=component2] button.search-button[data-elem=base-cell] > [data-elem=component1] > [data-elem=text] {
+.root[data-elem=base-cell] > [data-elem=component2] button.search-button[data-elem=base-cell] > [data-elem=component2] > [data-elem=text] {
   color: var(--text-color);
 }
-.root[data-elem=base-cell] > [data-elem=component2] button.search-button[data-elem=base-cell] > [data-elem=component1] .icon {
+.root[data-elem=base-cell] > [data-elem=component2] button.search-button[data-elem=base-cell] > [data-elem=component2] .icon {
   width: 1.5rem;
   height: 1.5rem;
 }
-.root[data-elem=base-cell] > [data-elem=component2] button.search-button[data-elem=base-cell] > [data-elem=component1] .icon.arrow {
+.root[data-elem=base-cell] > [data-elem=component2] button.search-button[data-elem=base-cell] > [data-elem=component2] .icon.arrow {
   width: 1.75rem;
   height: 1.75rem;
 }

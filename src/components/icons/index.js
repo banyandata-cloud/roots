@@ -45,3 +45,5 @@ export * from './Trash';
 export * from './UnlockPassword';
 export * from './View';
 export * from './ViewPassword';
+export * from './ExpandCollapseIcon';
+export * from './SearchButton';

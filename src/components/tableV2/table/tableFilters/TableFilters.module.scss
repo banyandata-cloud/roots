@@ -4,7 +4,7 @@
 	@include flex(row, space-between, center);
 	padding: 1.0625rem 1.25rem;
 	height: auto;
-	width: 100%;
+	width: 100% !important;
 
 	> [data-elem='component1'] {
 		flex: 1;
@@ -67,7 +67,7 @@
 			border-top-left-radius: 0;
 			border-bottom-left-radius: 0;
 			height: 100%;
-			> [data-elem='component1'] {
+			> [data-elem='component2'] {
 				> [data-elem='text'] {
 					color: $text-color;
 				}
