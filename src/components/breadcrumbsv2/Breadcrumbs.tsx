@@ -1,39 +1,32 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable react/require-default-props */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { classes } from '../../utils/utils';
 import Button from '../buttons/button/Button';
 import { CaretIcon } from '../icons';
-import { Link } from '../link';
 import { Popover } from '../popover';
 import styles from './Breadcrumbs.module.css';
+import type { BreadCrumbsProps } from './types';
 
-const BreadCrumbs = (props) => {
-	const { crumbs = [], className = '' } = props;
-
+const BreadCrumbs: React.FC<BreadCrumbsProps> = ({ crumbs = [], className = '' }) => {
 	const [expand, setExpand] = useState(false);
-	const [anchorEl, setAnchorEl] = useState(null);
+	const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
-	if (!crumbs || crumbs.length === 0) {
-		return null;
-	}
+	if (!Array.isArray(crumbs) || crumbs.length === 0) return null;
 
-	const CrumbsDOM = crumbs.map((crumb = {}, index) => {
+	const CrumbsDOM = crumbs.map((crumb, index) => {
 		const { title, value, icon, navigate, isDisabled = false } = crumb;
 		const active = index === crumbs.length - 1;
 
 		return (
-			<Link
-				underline='none'
-				key={crumb}
-				onClick={!isDisabled ? navigate : null}
+			<div
+				key={`${title}-${index.toString()}`}
 				className={classes(styles['crumb-list'], active ? styles.active : '')}
-				dataAttrs={{
-					'data-state': active,
-				}}>
+				onClick={!isDisabled ? navigate : undefined}
+				data-state={active}>
 				<div className={styles.left}>
-					{icon && <div className={classes(styles.iconWrapper)}>{icon}</div>}
+					{icon && <div className={styles.iconWrapper}>{icon}</div>}
 					{value && (
 						<span className={styles.value}>
 							{title && `${title}: `}
@@ -50,34 +43,39 @@ const BreadCrumbs = (props) => {
 					)}
 					{index === crumbs.length - 1 && <div className={styles['circle-filled']} />}
 				</div>
-			</Link>
+			</div>
 		);
 	});
 
-	const icon = crumbs[crumbs.length - 1]?.icon;
+	const lastCrumb = crumbs[crumbs.length - 1];
+	const icon = lastCrumb?.icon;
+	const buttonTitle = `${lastCrumb?.title ?? ''} : ${String(lastCrumb?.value)}`;
 
 	return (
 		<div className={classes(styles.root, className)}>
 			<Button
-				ref={setAnchorEl}
+				ref={(el: HTMLDivElement | null) => {
+					setAnchorEl(el);
+				}}
 				onClick={() => {
-					if (crumbs.length > 1) {
+					if (crumbs.length > 1)
 						setExpand((prev) => {
 							return !prev;
 						});
-					}
 				}}
 				className={classes(
 					styles.selected,
 					expand ? styles.expand : '',
 					icon ? styles.gap : ''
 				)}
-				{...(icon && {
-					leftComponent: () => {
-						return <div className={classes(styles.iconWrapper)}>{icon}</div>;
-					},
-				})}
-				title={`${crumbs[crumbs.length - 1]?.title} : ${crumbs[crumbs.length - 1]?.value}`}
+				title={buttonTitle}
+				leftComponent={
+					icon
+						? () => {
+								return <div className={styles.iconWrapper}>{icon}</div>;
+							}
+						: undefined
+				}
 				rightComponent={() => {
 					return (
 						<CaretIcon
@@ -88,7 +86,7 @@ const BreadCrumbs = (props) => {
 				}}
 			/>
 			<Popover
-				className={classes(styles.popover)}
+				className={styles.popover}
 				anchorEl={anchorEl}
 				open={expand}
 				placement='bottom-start'
@@ -97,18 +95,6 @@ const BreadCrumbs = (props) => {
 			</Popover>
 		</div>
 	);
-};
-
-BreadCrumbs.propTypes = {
-	crumbs: PropTypes.arrayOf(
-		PropTypes.shape({
-			title: PropTypes.string,
-			value: PropTypes.string,
-			path: PropTypes.string,
-			icon: PropTypes.node,
-		})
-	),
-	className: PropTypes.string,
 };
 
 export default BreadCrumbs;
