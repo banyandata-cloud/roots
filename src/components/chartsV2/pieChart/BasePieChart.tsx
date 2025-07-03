@@ -292,7 +292,7 @@ const BasePieChart: React.FC<BasePieChartProps> = (props) => {
 		...chartOptions,
 	};
 
-	const centerTextPlugin = {
+		const centerTextPlugin = {
 		id: 'centerText',
 		afterDatasetsDraw(chart) {
 			const {
@@ -316,7 +316,7 @@ const BasePieChart: React.FC<BasePieChartProps> = (props) => {
 			ctx.fillText(`${customLabel?.id}`, centerX, centerY);
 
 			// Render the compliance title with bottom margin
-			const titleBottomMargin = customLabel?.margin ?? 10; // Adjust this value for bottom margin
+			const titleBottomMargin = customLabel.margin ?? 10; // Adjust this value for bottom margin
 			const position = customLabel?.labelStyles?.position ?? 5;
 			const titleYPosition = centerY + position; // Default title Y position
 			ctx.font = `${customLabel?.labelStyles?.fontStyle} ${customLabel?.labelStyles?.fontSize} Poppins`; // Title font style
@@ -340,7 +340,7 @@ const BasePieChart: React.FC<BasePieChartProps> = (props) => {
 				}
 
 				// Calculate the compliance angle based on the percentage
-				const complianceAngle = (compliancePercentage ?? 0 / 100) * totalAngle;
+				const complianceAngle = (compliancePercentage / 100) * totalAngle;
 				const complianceEndAngle = startAngle + complianceAngle;
 
 				// Set line join for rounded edges
