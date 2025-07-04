@@ -130,6 +130,7 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 		titleDesc,
 		body: Body = () => {},
 		headerOptions = null,
+		rightActions = null,
 	} = props;
 
 	const emptyChartData = useMemo(() => {
@@ -250,19 +251,33 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 					)}
 				</div>
 
-				<div className={styles['header-options']} data-elem='header-options'>
-					<div
-						className={classes(styles['header-options-list'])}
-						data-elem='header-options-list'>
-						{(options?.length ?? 0) > 0 &&
-							options?.map((objectData) => {
-								return generateOptions({
-									optionData: objectData,
-									toggleDrawer,
-								});
-							})}
+				{options?.length > 0 && (
+					<div className={styles['header-options']} data-elem='header-options'>
+						<div
+							className={classes(styles['header-options-list'])}
+							data-elem='header-options-list'>
+							{(options?.length ?? 0) > 0 &&
+								options?.map((objectData) => {
+									return generateOptions({
+										optionData: objectData,
+										toggleDrawer,
+									});
+								})}
+						</div>
 					</div>
-				</div>
+				)}
+				{rightActions && (
+					<div className={styles['header-options']} data-elem='header-options'>
+						<div
+							className={classes(styles['header-options-list'])}
+							data-elem='header-options-list'>
+							{rightActions &&
+								rightActions({
+									toggleDrawer,
+								})}
+						</div>
+					</div>
+				)}
 			</div>
 
 			<BaseSidePanel
