@@ -105,13 +105,13 @@ const DatePicker = (props) => {
 		getFloatingReferences(openCustomRange, setOpenCustomRange)
 	);
 
-	useOutsideClickListener(datePickerFloatingReference.floating, () => {
+	useOutsideClickListener(() => {
 		return setOpenDatePicker(false);
-	});
+	}, datePickerFloatingReference.floating);
 
-	useOutsideClickListener(customRangeFloatingReference.floating, () => {
+	useOutsideClickListener(() => {
 		return setOpenDatePicker(false);
-	});
+	}, customRangeFloatingReference.floating);
 
 	const datePickerInteractionProps = useInteractions([
 		useClick(datePickerFloatingReference.context, {
