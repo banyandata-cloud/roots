@@ -2,6 +2,7 @@
 
 .root {
 	@include flex(column, flex-start, stretch);
+	position: relative;
 	// @include flex: 1;
 	// margin-left: 10px;
 
@@ -14,6 +15,14 @@
 	// 		}
 	// 	}
 	// }
+	.dashed-connector {
+		position: absolute;
+		height: 1.2rem;
+		border-left: 0.0825rem dashed #cccccc;
+		margin-top: 2.2rem;
+		margin-left: 0.97rem;
+		z-index: 9;
+	}
 
 	&.searching {
 		> .header:hover {
@@ -74,6 +83,9 @@
 				padding: 0.25rem 0rem;
 				user-select: none;
 				margin-top: 2px;
+				white-space: nowrap; /* Prevents text from wrapping */
+				overflow: hidden; /* Hides overflow content */
+				text-overflow: ellipsis;
 			}
 
 			.searchFieldWrapper {
@@ -185,14 +197,15 @@
 			width: 1px;
 			height: 1.25rem;
 			background: $grey1;
-			// z-index: 1;
+			z-index: 1;
 			pointer-events: none;
 		}
-		.dashed-connector {
+		.dashed-connector-for-button {
 			height: 1.2rem;
 			border-left: 0.0825rem dashed #cccccc;
 			margin-top: 30px;
 			margin-left: 2.18rem;
+			z-index: 9;
 		}
 		.hidden-connector {
 			border-left: none !important;

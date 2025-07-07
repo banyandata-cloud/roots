@@ -3,6 +3,15 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
+  position: relative;
+}
+.root .dashed-connector {
+  position: absolute;
+  height: 1.2rem;
+  border-left: 0.0825rem dashed #cccccc;
+  margin-top: 2.2rem;
+  margin-left: 0.97rem;
+  z-index: 9;
 }
 .root.searching > .header:hover {
   background: none;
@@ -61,6 +70,9 @@
      -moz-user-select: none;
           user-select: none;
   margin-top: 2px;
+  white-space: nowrap; /* Prevents text from wrapping */
+  overflow: hidden; /* Hides overflow content */
+  text-overflow: ellipsis;
 }
 .root .header > [data-elem=component2] .searchFieldWrapper {
   display: flex;
@@ -162,13 +174,15 @@
   width: 1px;
   height: 1.25rem;
   background: var(--grey1);
+  z-index: 1;
   pointer-events: none;
 }
-.root .expand-container .dashed-connector {
+.root .expand-container .dashed-connector-for-button {
   height: 1.2rem;
   border-left: 0.0825rem dashed #cccccc;
   margin-top: 30px;
   margin-left: 2.18rem;
+  z-index: 9;
 }
 .root .expand-container .hidden-connector {
   border-left: none !important;

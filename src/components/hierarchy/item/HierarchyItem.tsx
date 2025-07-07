@@ -13,7 +13,7 @@ interface HierarchyItemProps {
 	defaultOpen?: boolean;
 	iconPlacement?: IconPlacement;
 	title: ReactNode;
-	count: string;
+	count?: string;
 	children: ReactNode;
 	onClick?: (state: boolean) => void;
 	onDoubleClick?: (state: boolean) => void;
@@ -81,13 +81,19 @@ const HierarchyItem = (props: HierarchyItemProps): ReactElement => {
 				}}
 			/>
 			{!open && !isLastItem && <span className={styles['collapsed-tail']} />}
-			{open && <div className={classes(styles['dashed-connector'])} />}
+			{open && <div className={classes(styles['dashed-connector-for-button'])} />}
 		</div>
 	);
 
 	const handleSearchSubmit = () => {
 		onSearchSubmit?.(searchText, pathString);
 	};
+
+	// console.log('isSingleItem', isSingleItem, name);
+	// console.log('isLastItem', isLastItem, name);
+	// console.log('icon', icon, name);
+	// console.log('iconPlacement', iconPlacement, name);
+	console.log('count === undefined', count === undefined, name);
 
 	return (
 		<div
@@ -165,7 +171,7 @@ const HierarchyItem = (props: HierarchyItemProps): ReactElement => {
 					)
 				}
 				component3={
-					!isSearching && count && open ? (
+					!isSearching && open ? (
 						<Button
 							size='auto'
 							variant='text'
@@ -180,6 +186,9 @@ const HierarchyItem = (props: HierarchyItemProps): ReactElement => {
 				}
 			/>
 			{!open && !isLastItem && <div className={styles['collapsed-tail-spacer']} />}
+			{!isLastItem && (count === undefined || iconPlacement !== 'left') && (
+				<div data-elem='connector-dot' className={classes(styles['dashed-connector'])} />
+			)}
 			{open && (
 				<BaseCell
 					size='auto'
