@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
 import type { ReactElement, ReactNode } from 'react';
+import React, { useState } from 'react';
 import { classes } from '../../../utils';
 import { Button } from '../../buttons';
 import { BaseCell } from '../../cell';
 import { ExpandCollapseIcon, MagnifyingGlassIcon } from '../../icons';
-import styles from './HierarchyItem.module.css';
 import { TextFieldv2 as TextField } from '../../input/textFieldv2';
+import styles from './HierarchyItem.module.css';
 
 type IconPlacement = 'left' | 'right' | 'none';
 

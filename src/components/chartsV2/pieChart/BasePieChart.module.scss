@@ -8,3 +8,15 @@
 		width: fit-content !important;
 	}
 }
+
+.legend {
+	@include flex(row, center, center);
+	gap: 0.625rem;
+	> span {
+		width: 5rem !important;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		display: inline-block;
+	}
+}

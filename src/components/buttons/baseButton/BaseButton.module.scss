@@ -41,5 +41,6 @@ button.root[data-elem='base-cell'] {
 
 	[data-elem='title'] {
 		@include ellipsis;
+		@include flex;
 	}
 }
