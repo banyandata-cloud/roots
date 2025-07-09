@@ -1,7 +1,6 @@
 import {
 	CategoryScale,
 	type ChartData,
-	type ChartDataset,
 	Chart as ChartJS,
 	type Chart as ChartJSInstance,
 	type ChartOptions,
@@ -21,9 +20,11 @@ import {
 	type TooltipCallbacks,
 	type TooltipItem,
 } from 'chart.js';
-import React, { useRef, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { Line } from 'react-chartjs-2';
 import { COLORS } from '../../../styles';
+import { getColorGradient } from '../utils';
+import styles from './BaseAreaChart.module.css';
 
 ChartJS.register(
 	CategoryScale,
@@ -102,6 +103,7 @@ interface ChartProps {
 	lineColors?: string[];
 	borderColors?: string[];
 	style?: React.CSSProperties;
+	hoverEffect?: boolean;
 }
 
 const BaseAreaChart: React.FC<ChartProps> = (props): React.ReactElement => {
@@ -145,7 +147,24 @@ const BaseAreaChart: React.FC<ChartProps> = (props): React.ReactElement => {
 		style,
 		extra,
 		dataSetOptions,
+		hoverEffect = false,
 	} = props;
+
+	const [excludedIndices, setExcludedIndices] = useState([]);
+	const [hoveredIndex, setHoveredIndex] = useState(null);
+
+	const handleLegendClick = useCallback((event, legendItem) => {
+		const { index } = legendItem;
+		setExcludedIndices((prevIndices) => {
+			const newIndices = [...prevIndices];
+			if (newIndices.includes(index)) {
+				newIndices.splice(newIndices.indexOf(index), 1); // Un-exclude
+			} else {
+				newIndices.push(index); // Exclude
+			}
+			return newIndices;
+		});
+	}, []);
 
 	const chartOptionsProps: ChartOptionsProps = {
 		pointStyle: 'rectRot',
@@ -153,6 +172,12 @@ const BaseAreaChart: React.FC<ChartProps> = (props): React.ReactElement => {
 		pointHoverRadius: 6,
 		borderWidth: 2,
 	};
+
+	const labels = seriesData?.chartData
+		? Object.keys(seriesData.chartData).map((key) => {
+				return key;
+			})
+		: [];
 
 	const legendRef = useRef<HTMLUListElement | null>(null);
 	const [hiddenDatasets, setHiddenDatasets] = useState<number[]>([]);
@@ -174,109 +199,84 @@ const BaseAreaChart: React.FC<ChartProps> = (props): React.ReactElement => {
 		});
 	};
 
-	const customLegendPlugin = {
-		id: 'customLegend',
-		afterUpdate(chart: ChartJSInstance<'line'>) {
-			const ul = legendRef.current;
-			while (ul?.firstChild) {
-				ul.firstChild.remove();
-			}
-
-			chart.data.datasets.forEach((dataset: ChartDataset<'line'>, index: number) => {
-				const li = document.createElement('li');
-				li.style.display = 'flex';
-				li.style.alignItems = 'center';
-				li.style.cursor = 'pointer';
-				li.style.opacity = hiddenDatasets.includes(index) ? '0.5' : '1';
-				li.style.margin = '5px 10px';
-				li.style.maxWidth = '120px';
-				li.style.whiteSpace = 'nowrap';
-				li.style.overflow = 'hidden';
-				li.style.textOverflow = 'ellipsis';
-
-				const textColor = hiddenDatasets.includes(index) ? 'grey' : 'inherit';
-				const bgColor = dataset.backgroundColor;
-				const circleColor = typeof bgColor === 'string' ? bgColor : 'grey';
-
-				const labelText = typeof dataset.label === 'string' ? dataset.label : '';
-
-				li.onclick = () => {
-					toggleDatasetVisibility(index, chart);
-					li.style.color = li.style.color === 'grey' ? 'inherit' : 'grey';
-
-					function resolveStrokeColor(
-						color: ChartDataset<'line'>['backgroundColor']
-					): string {
-						if (typeof color === 'string') return color;
-
-						if (Array.isArray(color)) {
-							const firstColor = color[0] as unknown;
-							if (typeof firstColor === 'string') return firstColor;
-							if (
-								firstColor !== null &&
-								typeof firstColor === 'object' &&
-								'toString' in firstColor &&
-								typeof (firstColor as { toString: unknown }).toString === 'function'
-							) {
-								return (firstColor as { toString: () => string }).toString();
-							}
-						}
-
-						if (
-							typeof color === 'object' &&
-							'toString' in color &&
-							typeof (color as { toString: unknown }).toString === 'function'
-						) {
-							return (color as { toString: () => string }).toString();
-						}
-
-						return 'grey';
-					}
-
-					const circle = li.querySelector('circle');
-					if (circle) {
-						const stroke = circle.getAttribute('stroke');
-						const resolvedColor = resolveStrokeColor(dataset.backgroundColor);
-						circle.setAttribute('stroke', stroke === 'grey' ? resolvedColor : 'grey');
-					}
-				};
-
-				li.innerHTML = `
-					<svg width="15" height="15" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<circle cx="15" cy="15" r="12" stroke="${circleColor}" stroke-width="6"/>
-					</svg>
-				<span style="margin-left: 10px; color: ${textColor};">${labelText}</span>
-				`;
-
-				ul?.appendChild(li);
-			});
-		},
-	};
+	console.log(excludedIndices);
 
 	const chartData: ChartData<'line'> = {
 		labels: seriesData.metaData.xAxisData,
 		datasets: Object.keys(seriesData.chartData).map((key, index) => {
+			console.log(index);
+			const isHovered = !hoverEffect || hoveredIndex === null || hoveredIndex === index;
 			return {
 				label: key,
 				data: seriesData.chartData[key] ?? [],
 				fill: !isLineChart,
-				backgroundColor: isLineChart
+				backgroundColor: (ctx) => {
+					return isLineChart
+						? 'transparent'
+						: lineColors.map((option, index) => {
+								if (hoveredIndex !== null && hoveredIndex !== index) {
+									return 'rgba(211, 211, 211, 0.2)';
+								}
+
+								if (excludedIndices.includes(index)) {
+									return 'transparent';
+								}
+
+								const color = option;
+								if (
+									typeof color === 'string' &&
+									color.startsWith('linear-gradient')
+								) {
+									return getColorGradient(ctx, color);
+								}
+
+								return color || '#000'; // Fallback solid color
+							});
+				},
+
+				borderColor: excludedIndices.includes(index)
 					? 'transparent'
-					: lineColors[index % lineColors.length],
-				borderColor: borderColors[index % borderColors.length],
+					: isHovered
+						? borderColors[index % borderColors.length]
+						: 'rgba(211, 211, 211, 0.3)',
+
+				pointBackgroundColor: excludedIndices.includes(index)
+					? 'transparent'
+					: isHovered
+						? borderColors[index % borderColors.length]
+						: 'rgba(211, 211, 211, 0.3)',
+
 				tension: smooth ? 0.4 : 0,
 				pointStyle: chartOptionsProps.pointStyle ?? 'rectRot',
 				pointRadius: chartOptionsProps.pointRadius ?? 4,
 				pointHoverRadius: chartOptionsProps.pointHoverRadius ?? 6,
 				borderWidth: chartOptionsProps.borderWidth ?? 2,
-				pointBackgroundColor: borderColors[index % borderColors.length],
 				datalabels: {
-					display: false, // Disable data labels on points
+					display: false,
 				},
 			};
 		}),
 		...dataSetOptions,
 	};
+
+	const hoveredIndexRef = useRef(null);
+
+	const handleHover = (index) => {
+		if (!hoverEffect) return;
+		hoveredIndexRef.current = index;
+		setHoveredIndex(index);
+	};
+
+	const legendColors = lineColors
+		? lineColors.map((option) => {
+				const color = option;
+				if (typeof color !== 'string' || !color.startsWith('linear-gradient')) {
+					return color;
+				}
+				const stops = color.match(/#(?:[0-9a-fA-F]{3}){1,2}/g);
+				return stops?.[0] || '#000';
+			})
+		: [];
 
 	const chartOptions: ChartOptions<'line'> = {
 		responsive: true,
@@ -299,6 +299,18 @@ const BaseAreaChart: React.FC<ChartProps> = (props): React.ReactElement => {
 							font: {
 								family: 'Poppins',
 							},
+						},
+						onClick: (event, legendItem) => {
+							handleLegendClick(event, legendItem);
+							handleHover(legendItem.index); // Set hover on legend click
+						},
+						onHover: (event, legendItem) => {
+							handleHover(legendItem.index);
+						},
+						onLeave: () => {
+							if (!hoverEffect) return;
+							setHoveredIndex(null);
+							hoveredIndexRef.current = null;
 						},
 						...legend,
 					},
@@ -453,13 +465,78 @@ const BaseAreaChart: React.FC<ChartProps> = (props): React.ReactElement => {
 				alignItems: 'center',
 				...style,
 			}}>
-			<Line
-				data={chartData}
-				options={chartOptions}
-				plugins={[customLegendPlugin]}
-				{...extra}
-			/>
-			{legend?.icon && legend.display && <ul ref={legendRef} style={legendStyle} />}
+			<Line data={chartData} options={chartOptions} {...extra} />
+			{legend?.icon && legend?.display && (
+				<ul
+					style={{
+						...legend?.legendStyles,
+					}}>
+					{labels.map((label, index) => {
+						const color =
+							hoveredIndex !== null && hoveredIndex !== index
+								? '#D3D3D3'
+								: excludedIndices.includes(index)
+									? '#D3D3D3'
+									: (legendColors[index] ?? '#000');
+
+						return (
+							<li
+								key={index}
+								style={{
+									display: 'flex',
+									alignItems: 'center',
+									cursor: 'pointer',
+								}}
+								onClick={(e) => {
+									handleLegendClick(e, {
+										index,
+									});
+									handleHover(index);
+								}}
+								onMouseEnter={() => {
+									handleHover(index);
+								}}
+								onMouseLeave={() => {
+									setHoveredIndex(null);
+									hoveredIndexRef.current = null;
+								}}>
+								{(legend?.circle ?? true) && (
+									<svg width='15' height='15' viewBox='0 0 30 30' fill='none'>
+										<circle
+											cx='15'
+											cy='15'
+											r='12'
+											stroke={color}
+											strokeWidth='6'
+										/>
+									</svg>
+								)}
+								<div
+									style={{
+										marginLeft: 10,
+									}}>
+									{legend?.customLabels ? (
+										legend?.customLabels({
+											label,
+											index,
+											color,
+										})
+									) : (
+										<div className={styles.legend}>
+											<span
+												style={{
+													color: '#333',
+												}}>
+												{label}
+											</span>
+										</div>
+									)}
+								</div>
+							</li>
+						);
+					})}
+				</ul>
+			)}{' '}
 		</div>
 	);
 };

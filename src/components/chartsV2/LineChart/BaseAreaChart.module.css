@@ -2,6 +2,17 @@
   width: "100%";
 }
 
-li {
-  margin-left: 1rem;
+.legend {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
+}
+.legend > span {
+  width: 8rem !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: inline-block;
 }/*# sourceMappingURL=BaseAreaChart.module.css.map */
