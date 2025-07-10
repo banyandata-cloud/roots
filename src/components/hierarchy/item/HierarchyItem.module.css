@@ -4,6 +4,7 @@
   justify-content: flex-start;
   align-items: stretch;
   position: relative;
+  min-width: 300px;
 }
 .root .dashed-connector {
   position: absolute;
@@ -33,8 +34,10 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  min-width: 220px;
   height: auto;
-  width: 100%;
+  width: -moz-fit-content;
+  width: fit-content;
   padding: 0rem 0rem !important;
   cursor: pointer;
 }
@@ -70,9 +73,6 @@
      -moz-user-select: none;
           user-select: none;
   margin-top: 2px;
-  white-space: nowrap; /* Prevents text from wrapping */
-  overflow: hidden; /* Hides overflow content */
-  text-overflow: ellipsis;
 }
 .root .header > [data-elem=component2] .searchFieldWrapper {
   display: flex;

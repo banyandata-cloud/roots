@@ -185,6 +185,7 @@ const HierarchyBrowser = ({
 			currentPath
 		);
 
+		console.log('data', data);
 		return (
 			<HierarchyItem
 				key={currentPath}
@@ -209,6 +210,7 @@ const HierarchyBrowser = ({
 				isSingleItem={isSingleItem}
 				count={count}
 				name={title}
+				list={data.list}
 				leftComponent={leftComponent}
 				isSearching={searchingPath === currentPath}
 				onSearchStart={() => setSearchingPath(currentPath)}
@@ -225,6 +227,8 @@ const HierarchyBrowser = ({
 			</HierarchyItem>
 		);
 	};
+
+	console.log('metadata', metadata);
 
 	return (
 		<div
