@@ -24,9 +24,10 @@ interface HierarchyItemProps {
 	name: string;
 	onSearchSubmit?: (text: string, path: string) => void;
 	pathString: string;
-	lastActive?: boolean;
+	lastActive?: list;
 	isSearching: boolean;
 	onSearchStart?: () => void;
+	list?: boolean;
 }
 
 const HierarchyItem = (props: HierarchyItemProps): ReactElement => {
@@ -48,6 +49,7 @@ const HierarchyItem = (props: HierarchyItemProps): ReactElement => {
 		lastActive,
 		isSearching,
 		onSearchStart,
+		list,
 	} = props;
 
 	const [open, setOpen] = useState(defaultOpen);
@@ -89,6 +91,7 @@ const HierarchyItem = (props: HierarchyItemProps): ReactElement => {
 		onSearchSubmit?.(searchText, pathString);
 	};
 
+	console.log('list', list);
 	// console.log('isSingleItem', isSingleItem, name);
 	// console.log('isLastItem', isLastItem, name);
 	// console.log('icon', icon, name);
@@ -107,7 +110,8 @@ const HierarchyItem = (props: HierarchyItemProps): ReactElement => {
 				flexible
 				size='auto'
 				className={classes(styles.header, count === undefined && styles.headerNoCount)}
-				component1={iconPlacement === 'left' ? icon : undefined}
+				// component1={iconPlacement === 'left' ? icon : undefined}
+				component1={list ? icon : undefined}
 				component2={
 					isSearching && open ? (
 						<div className={styles.searchFieldWrapper}>
@@ -156,7 +160,7 @@ const HierarchyItem = (props: HierarchyItemProps): ReactElement => {
 							onClick={(event: React.MouseEvent) => {
 								const { detail } = event;
 								if (detail === 1) onClick?.(open);
-								else if (detail === 2 && count) {
+								else if (detail === 2) {
 									setOpen((prevState) => {
 										const newState = !prevState;
 										onDoubleClick?.(newState);

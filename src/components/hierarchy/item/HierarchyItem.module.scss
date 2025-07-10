@@ -3,6 +3,7 @@
 .root {
 	@include flex(column, flex-start, stretch);
 	position: relative;
+	min-width: 300px;
 	// @include flex: 1;
 	// margin-left: 10px;
 
@@ -49,8 +50,9 @@
 		@include flex(row, flex-start);
 		// gap: 0.25rem;
 		// min-height: 2rem;
+		min-width: 220px;
 		height: auto;
-		width: 100%;
+		width: fit-content;
 		padding: 0rem 0rem !important;
 		cursor: pointer;
 
@@ -83,9 +85,6 @@
 				padding: 0.25rem 0rem;
 				user-select: none;
 				margin-top: 2px;
-				white-space: nowrap; /* Prevents text from wrapping */
-				overflow: hidden; /* Hides overflow content */
-				text-overflow: ellipsis;
 			}
 
 			.searchFieldWrapper {
