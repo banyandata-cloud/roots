@@ -4,6 +4,14 @@
 	width: '100%';
 }
 
-li{
-	margin-left: 1rem;
+.legend {
+	@include flex(row, center, center);
+	gap: 0.625rem;
+	> span {
+		width: 8rem !important;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		display: inline-block;
+	}
 }

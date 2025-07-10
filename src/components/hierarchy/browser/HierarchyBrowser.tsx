@@ -1,5 +1,5 @@
+import type { ReactElement, ReactNode } from 'react';
 import React, { useRef, useState } from 'react';
-import type { ReactNode, ReactElement } from 'react';
 import { useResize } from '../../../hooks';
 import { classes } from '../../../utils';
 import { HierarchyItem } from '../item';

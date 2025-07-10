@@ -192,7 +192,7 @@
 		.collapsed-tail {
 			position: absolute;
 			top: 120%;
-			left: 0.2rem;
+			left: 0.4rem;
 			width: 1px;
 			height: 1.25rem;
 			background: $grey1;
@@ -218,7 +218,7 @@
 	.body {
 		display: none;
 		flex: 1 0 auto;
-		padding: 0px 0rem 0px 0.25rem;
+		padding: 0px 0rem 0px 0.5rem;
 
 		& > [data-elem='component1'] {
 			flex: 0 0 1.6rem;

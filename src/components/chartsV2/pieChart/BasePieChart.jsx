@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable no-nested-ternary */
 import { ArcElement, Chart as ChartJS, Legend, Title, Tooltip } from 'chart.js';
@@ -58,6 +59,27 @@ const BasePieChart = (props) => {
 			return newIndices;
 		});
 	}, []);
+
+	const labels = seriesData?.metaData?.keyData
+		? Object.keys(seriesData.chartData).map((key) => {
+				return seriesData.metaData.keyData[key];
+			})
+		: [];
+
+	const values = Object.keys(seriesData?.chartData ?? {}).map((key) => {
+		return seriesData.chartData[key];
+	});
+
+	const legendColors = seriesOption
+		? seriesOption.map((option) => {
+				const color = option?.itemStyle?.color;
+				if (typeof color !== 'string' || !color.startsWith('linear-gradient')) {
+					return color;
+				}
+				const stops = color.match(/#(?:[0-9a-fA-F]{3}){1,2}/g);
+				return stops?.[0] || '#000';
+			})
+		: [];
 
 	// Data for the Pie Chart
 	const data = {
@@ -379,82 +401,6 @@ const BasePieChart = (props) => {
 		},
 	};
 
-	const legendColors = seriesOption
-		? seriesOption.map((option) => {
-				const color = option?.itemStyle?.color;
-				if (typeof color !== 'string' || !color.startsWith('linear-gradient')) {
-					return color; // return as-is if not a gradient
-				}
-
-				const colorStops = color.match(/#(?:[0-9a-fA-F]{3}){1,2}/g);
-
-				// Return the first color stop as fallback
-				return colorStops?.[0] || '#000'; // Fallback to black
-			})
-		: [];
-
-	console.log(legendColors);
-
-	const customLegendPlugin = {
-		id: 'customLegend',
-		afterUpdate(chart) {
-			const ul = legendRef.current;
-			while (ul?.firstChild) {
-				ul.firstChild.remove();
-			}
-
-			chart.data.labels.forEach((label, index) => {
-				const li = document.createElement('li');
-				li.style.display = 'flex';
-				li.style.alignItems = 'center';
-				li.style.cursor = 'pointer';
-
-				// Handle click for excluding/un-excluding slices
-				li.onclick = (event) => {
-					const legendItem = {
-						index,
-					}; // Simulate legend item
-					handleLegendClick(event, legendItem); // Handle click
-					handleHover(index); // Set hover on legend click
-					chart.update('none'); // Update the chart without animation
-				};
-
-				// Handle hover on the legend item
-				li.onmouseenter = () => {
-					handleHover(index); // Set hover on legend hover
-					chart.update('none'); // Update the chart without animation
-				};
-
-				// Handle leave event to remove hover effect
-				li.onmouseleave = () => {
-					setHoveredIndex(null); // Reset hover index on leave
-					hoveredIndexRef.current = null;
-					chart.update('none'); // Update the chart without animation
-				};
-
-				// Apply grey color dynamically based on the hovered state
-				const isGreyedOut =
-					hoveredIndexRef.current !== null && hoveredIndexRef.current !== index;
-				const displayColor = isGreyedOut ? '#D3D3D3' : legendColors[index];
-
-				const value = chart.data.datasets[0].data[index];
-
-				li.innerHTML = `
-					<svg width="15" height="15" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<circle cx="15" cy="15" r="12" stroke="${displayColor}" stroke-width="6"/>
-					</svg>
-					
-					<span style="margin-left: 10px;">
-						<span>${label}</span>
-						<span style="margin-left: 14px;">${value}</span>
-					</span>
-				`;
-
-				ul.appendChild(li);
-			});
-		},
-	};
-
 	return (
 		<div
 			className={classes(styles.root, className)}
@@ -476,19 +422,87 @@ const BasePieChart = (props) => {
 				options={{
 					...options,
 				}}
-				plugins={[
-					customLabel && centerTextPlugin,
-					legend?.icon && legend?.display && customLegendPlugin,
-				].filter(Boolean)}
+				plugins={[customLabel && centerTextPlugin].filter(Boolean)}
 				{...extra}
 			/>
 			{legend?.icon && legend?.display && (
 				<ul
 					style={{
 						...legend?.legendStyles,
-					}}
-					ref={legendRef}
-				/>
+					}}>
+					{labels.map((label, index) => {
+						const value = values[index];
+						const color =
+							hoveredIndex !== null && hoveredIndex !== index
+								? '#D3D3D3'
+								: excludedIndices.includes(index)
+									? '#D3D3D3'
+									: (legendColors[index] ?? '#000');
+
+						return (
+							<li
+								key={index}
+								style={{
+									display: 'flex',
+									alignItems: 'center',
+									cursor: 'pointer',
+								}}
+								onClick={(e) => {
+									handleLegendClick(e, {
+										index,
+									});
+									handleHover(index);
+								}}
+								onMouseEnter={() => {
+									handleHover(index);
+								}}
+								onMouseLeave={() => {
+									setHoveredIndex(null);
+									hoveredIndexRef.current = null;
+								}}>
+								{(legend?.circle ?? true) && (
+									<svg width='15' height='15' viewBox='0 0 30 30' fill='none'>
+										<circle
+											cx='15'
+											cy='15'
+											r='12'
+											stroke={color}
+											strokeWidth='6'
+										/>
+									</svg>
+								)}
+								<div
+									style={{
+										marginLeft: 10,
+									}}>
+									{legend?.customLabels ? (
+										legend?.customLabels({
+											label,
+											value,
+											index,
+											color,
+										})
+									) : (
+										<div className={styles.legend}>
+											<span
+												style={{
+													color: '#333',
+												}}>
+												{label}
+											</span>
+											<span
+												style={{
+													marginLeft: 10,
+												}}>
+												{value}
+											</span>
+										</div>
+									)}
+								</div>
+							</li>
+						);
+					})}
+				</ul>
 			)}
 		</div>
 	);

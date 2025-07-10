@@ -80,5 +80,5 @@ export type BaseCellProps<
 	 */
 	radius?: RadiusTypes;
 } & (TComponent2 extends true
-	? { component2: ReactElement }
+	? { component2: ReactElement | string }
 	: { component2?: ReactElement | undefined });

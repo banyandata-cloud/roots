@@ -1,5 +1,3 @@
-/* eslint-disable no-nested-ternary */
-/* eslint-disable react/forbid-prop-types */
 import EChartsReactCore from 'echarts-for-react/lib/core';
 import { LineChart } from 'echarts/charts';
 import {
@@ -10,15 +8,13 @@ import {
 	TooltipComponent,
 } from 'echarts/components';
 import * as echarts from 'echarts/core';
-import PropTypes from 'prop-types';
-// Import renderer, note that introducing the CanvasRenderer or SVGRenderer is a required step
 import { CanvasRenderer } from 'echarts/renderers';
+import { CSSProperties } from 'react';
 import { COLORS } from '../../../styles';
 import { classes } from '../../../utils';
 import { AreaChartIcon, LineChartIcon } from '../../icons';
 import styles from './BaseAreaChart.module.css';
 
-// Register the required components
 echarts.use([
 	TitleComponent,
 	LegendComponent,
@@ -29,50 +25,117 @@ echarts.use([
 	CanvasRenderer,
 ]);
 
-const BaseAreaChart = (props) => {
-	const {
-		title,
-		gridOptions,
-		gridContainLabel,
-		seriesData,
-		tooltip,
-		legend,
-		xAxis,
-		xAxisLabelShow,
-		xSplitLineShow,
-		xAxisLineShow,
-		xAxisTickShow,
-		xAxisLabel,
-		yAxis,
-		yAxisLabelShow,
-		ySplitLineShow,
-		yAxisLineShow,
-		yAxisTickShow,
-		yAxisTick,
-		yAxisLabel,
-		axisLabelColor,
-		axisSplitColor,
-		splitType,
-		seriesOption,
-		lineStyleWidth,
-		lineStyleType,
-		lineStyleCap,
-		lineStyleJoin,
-		stacked,
-		cursor,
-		smooth,
-		opacity,
-		style,
-		className,
-		theme,
-		isEmpty = {
-			show: false,
-			className: '',
-			title: 'No Data Found',
-			description: '',
-		},
-	} = props;
+interface BaseAreaChartProps {
+	title?: string;
+	gridOptions?: Record<string, any>;
+	gridContainLabel?: boolean;
+	seriesData: {
+		chartData: Record<string, number[]>;
+		metaData?: {
+			xAxisData?: string[];
+		};
+	};
+	tooltip?: Record<string, any>;
+	legend?: Record<string, any>;
+	xAxis?: Record<string, any>;
+	yAxis?: Record<string, any>;
+	xAxisLabelShow?: boolean;
+	xSplitLineShow?: boolean;
+	xAxisLineShow?: boolean;
+	xAxisTickShow?: boolean;
+	xAxisLabel?: Record<string, any>;
+	yAxisLabelShow?: boolean;
+	ySplitLineShow?: boolean;
+	yAxisLineShow?: boolean;
+	yAxisTickShow?: boolean;
+	yAxisTick?: Record<string, any>;
+	yAxisLabel?: Record<string, any>;
+	axisLabelColor?: string;
+	axisSplitColor?: string;
+	splitType?: 'dashed' | 'solid' | 'dotted';
+	seriesOption?: Array<Record<string, any>>;
+	lineStyleWidth?: number;
+	lineStyleType?: 'dashed' | 'solid' | 'dotted';
+	lineStyleCap?: 'butt' | 'round' | 'square';
+	lineStyleJoin?: 'round' | 'bevel' | 'miter';
+	stacked?: boolean | string;
+	cursor?: string;
+	smooth?: boolean;
+	opacity?: number;
+	style?: CSSProperties;
+	className?: string;
+	theme?: 'light' | 'dark';
+	isEmpty?: {
+		show: boolean;
+		className?: string;
+		title?: string;
+		description?: string;
+		type?: 'line' | 'area';
+	};
+}
 
+function getLinearGradient(color: any): echarts.graphic.LinearGradient | string {
+	if (typeof color === 'string') return color;
+
+	// linearGradient format: x, y, x2, y2, colorStops, [globalCoord] should have all params to avoid type error
+	if (
+		Array.isArray(color) &&
+		color.length >= 5 &&
+		typeof color[0] === 'number' &&
+		typeof color[4] === 'object'
+	) {
+		const [x, y, x2, y2, colorStops, globalCoord] = color;
+		return new echarts.graphic.LinearGradient(x, y, x2, y2, colorStops, globalCoord ?? false);
+	}
+
+	return '';
+}
+
+const BaseAreaChart = ({
+	title = '',
+	gridOptions = { left: 0, right: 0, bottom: 0, top: 0 },
+	gridContainLabel = false,
+	seriesData = { chartData: {} },
+	tooltip = {},
+	legend = {},
+	xAxis = {},
+	yAxis = {},
+	xAxisLabelShow = false,
+	xSplitLineShow = false,
+	xAxisLineShow = false,
+	xAxisTickShow = false,
+	xAxisLabel = {},
+	yAxisLabelShow = false,
+	ySplitLineShow = false,
+	yAxisLineShow = false,
+	yAxisTickShow = false,
+	yAxisTick = {},
+	yAxisLabel = {},
+	axisLabelColor = '',
+	axisSplitColor = '',
+	splitType = 'solid',
+	seriesOption = [],
+	lineStyleWidth = 4,
+	lineStyleType = 'solid',
+	lineStyleCap = 'butt',
+	lineStyleJoin = 'round',
+	stacked = false,
+	cursor = 'default',
+	smooth = false,
+	opacity = 1,
+	style = {
+		width: '100%',
+		height: '100%',
+	},
+	className = '',
+	theme = 'dark',
+	isEmpty = {
+		show: false,
+		className: '',
+		title: 'No Data Found',
+		description: '',
+	},
+}: BaseAreaChartProps) => {
 	if (isEmpty?.show) {
 		return (
 			<div className={classes(styles.empty, isEmpty?.className)}>
@@ -107,7 +170,7 @@ const BaseAreaChart = (props) => {
 			offset: [0, 0],
 			show: false,
 			position: 'top',
-			formatter(param) {
+			formatter(param: any) {
 				return param.value;
 			},
 		},
@@ -135,46 +198,37 @@ const BaseAreaChart = (props) => {
 
 	const generateSeries = () => {
 		return Object.keys(seriesData?.chartData).map((objectData, index) => {
+			const option = seriesOption[index] ?? {};
 			return {
 				...seriesOptionObject,
-				...seriesOption[index],
-				name: Object.keys(seriesData?.chartData ?? {})?.[index] ?? '',
-				...(seriesOption[index]?.color && {
-					color:
-						typeof (seriesOption[index]?.color ?? {}) !== 'string'
-							? new echarts.graphic.LinearGradient(
-									...(seriesOption[index]?.color ?? [])
-							  )
-							: seriesOption[index]?.color ?? {},
+				...option,
+				name: objectData,
+				...(option?.color && {
+					color: getLinearGradient(option.color),
 				}),
 				label: {
-					...(seriesOptionObject?.label ?? {}),
-					...(seriesOption[index]?.label ?? {}),
+					...(seriesOptionObject.label ?? {}),
+					...(option.label ?? {}),
 				},
 				lineStyle: {
-					...(seriesOptionObject?.lineStyle ?? {}),
-					...(seriesOption[index]?.lineStyle ?? {}),
-					...(seriesOption[index]?.lineStyle?.color && {
-						color:
-							typeof (seriesOption[index]?.lineStyle?.color ?? {}) !== 'string'
-								? new echarts.graphic.LinearGradient(
-										...(seriesOption[index]?.lineStyle?.color ?? {})
-								  )
-								: seriesOption[index]?.lineStyle?.color ?? {},
+					...(seriesOptionObject.lineStyle ?? {}),
+					...(option.lineStyle ?? {}),
+					...(option.lineStyle?.color && {
+						color: getLinearGradient(option.color),
 					}),
 				},
 				areaStyle: {
-					...(seriesOptionObject?.areaStyle ?? {}),
-					...(seriesOption[index]?.areaStyle ?? {}),
-					...(seriesOption[index]?.areaStyle?.color && {
-						color: seriesOption[index]?.areaStyle?.color ?? {},
+					...(seriesOptionObject.areaStyle ?? {}),
+					...(option.areaStyle ?? {}),
+					...(option.areaStyle?.color && {
+						color: option.areaStyle.color,
 					}),
 				},
 				emphasis: {
-					...(seriesOptionObject?.emphasis ?? {}),
-					...(seriesOption[index]?.emphasis ?? {}),
+					...(seriesOptionObject.emphasis ?? {}),
+					...(option.emphasis ?? {}),
 				},
-				data: Object.values(seriesData?.chartData ?? {})?.[index] ?? '',
+				data: seriesData.chartData[objectData] ?? [],
 			};
 		});
 	};
@@ -182,16 +236,9 @@ const BaseAreaChart = (props) => {
 	return (
 		<EChartsReactCore
 			option={{
-				title: {
-					text: title,
-				},
-				grid: {
-					containLabel: gridContainLabel,
-					...gridOptions,
-				},
-				tooltip: {
-					...tooltip,
-				},
+				title: { text: title },
+				grid: { containLabel: gridContainLabel, ...gridOptions },
+				tooltip,
 				legend: {
 					...legend,
 					data: Object.keys(seriesData?.chartData ?? []),
@@ -301,86 +348,6 @@ const BaseAreaChart = (props) => {
 			style={style}
 		/>
 	);
-};
-
-BaseAreaChart.propTypes = {
-	title: PropTypes.string,
-	gridOptions: PropTypes.object,
-	xAxis: PropTypes.object,
-	yAxis: PropTypes.object,
-	gridContainLabel: PropTypes.bool,
-	tooltip: PropTypes.object,
-	legend: PropTypes.object,
-	xAxisLabelShow: PropTypes.bool,
-	xSplitLineShow: PropTypes.bool,
-	xAxisLineShow: PropTypes.bool,
-	xAxisTickShow: PropTypes.bool,
-	xAxisLabel: PropTypes.object,
-	axisLabelColor: PropTypes.string,
-	axisSplitColor: PropTypes.string,
-	splitType: PropTypes.oneOf(['dashed', 'solid', 'dotted']),
-	seriesData: PropTypes.objectOf(PropTypes.shape),
-	stacked: PropTypes.bool,
-	yAxisLabelShow: PropTypes.bool,
-	ySplitLineShow: PropTypes.bool,
-	yAxisLineShow: PropTypes.bool,
-	yAxisTickShow: PropTypes.bool,
-	yAxisLabel: PropTypes.object,
-	cursor: PropTypes.string,
-	seriesOption: PropTypes.arrayOf(PropTypes.object),
-	lineStyleWidth: PropTypes.number,
-	lineStyleType: PropTypes.oneOf(['dashed', 'solid', 'dotted']),
-	lineStyleCap: PropTypes.oneOf(['butt', 'round', 'square']),
-	lineStyleJoin: PropTypes.oneOf(['round', 'bevel', 'miter']),
-	smooth: PropTypes.bool,
-	opacity: PropTypes.number,
-	style: PropTypes.objectOf(PropTypes.shape),
-	className: PropTypes.string,
-	theme: PropTypes.oneOf(['light', 'dark']),
-};
-
-BaseAreaChart.defaultProps = {
-	title: '',
-	gridOptions: {
-		left: 0,
-		right: 0,
-		bottom: 0,
-		top: 0,
-	},
-	xAxis: {},
-	yAxis: {},
-	gridContainLabel: false,
-	tooltip: {},
-	stacked: false,
-	legend: {},
-	xAxisLabelShow: false,
-	xSplitLineShow: false,
-	xAxisLineShow: false,
-	xAxisTickShow: false,
-	xAxisLabel: {},
-	axisLabelColor: '',
-	axisSplitColor: '',
-	splitType: 'solid',
-	seriesData: {},
-	yAxisLabelShow: false,
-	ySplitLineShow: false,
-	yAxisLineShow: false,
-	yAxisTickShow: false,
-	yAxisLabel: {},
-	cursor: 'default',
-	seriesOption: [],
-	lineStyleWidth: 4,
-	lineStyleType: 'solid',
-	lineStyleCap: 'butt',
-	lineStyleJoin: 'round',
-	smooth: false,
-	opacity: 1,
-	style: {
-		width: '100%',
-		height: '100%',
-	},
-	className: '',
-	theme: 'dark',
 };
 
 export default BaseAreaChart;

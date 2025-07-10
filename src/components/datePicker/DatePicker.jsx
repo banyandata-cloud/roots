@@ -13,6 +13,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { useOutsideClickListener } from '../../hooks';
 import { classes } from '../../utils';
 import { Button } from '../buttons';
+import { DatePickerV2 } from '../datePickerV2';
 import { ErrorBoundaryWrapper } from '../errorBoundary';
 import { CalenderIcon, CaretIcon, ClockIcon } from '../icons';
 import { Popper } from '../popper';
@@ -53,7 +54,12 @@ const DatePicker = (props) => {
 		timeRange,
 		popperClassName,
 		showCustomRanges,
+		v2,
 	} = props;
+
+	if (v2) {
+		return <DatePickerV2 {...props} />;
+	}
 
 	const [openDatePicker, setOpenDatePicker] = useState(false);
 	const [openCustomRange, setOpenCustomRange] = useState(false);
@@ -99,13 +105,13 @@ const DatePicker = (props) => {
 		getFloatingReferences(openCustomRange, setOpenCustomRange)
 	);
 
-	useOutsideClickListener(datePickerFloatingReference.floating, () => {
+	useOutsideClickListener(() => {
 		return setOpenDatePicker(false);
-	});
+	}, datePickerFloatingReference.floating);
 
-	useOutsideClickListener(customRangeFloatingReference.floating, () => {
+	useOutsideClickListener(() => {
 		return setOpenDatePicker(false);
-	});
+	}, customRangeFloatingReference.floating);
 
 	const datePickerInteractionProps = useInteractions([
 		useClick(datePickerFloatingReference.context, {
@@ -150,7 +156,7 @@ const DatePicker = (props) => {
 							: calculateZeroHours(
 									timeRangeSelection.previous?.HOURS,
 									timeRangeSelection.previous?.MER
-							  ),
+								),
 
 						timeRangeSelection.previous?.MINS
 					)
@@ -166,7 +172,7 @@ const DatePicker = (props) => {
 							: calculateZeroHours(
 									timeRangeSelection.next?.HOURS,
 									timeRangeSelection.next?.MER
-							  ),
+								),
 						timeRangeSelection.next?.MINS
 					)
 				);
@@ -402,6 +408,7 @@ DatePicker.propTypes = {
 	defaultHourDiff: PropTypes.number,
 	limitHours: PropTypes.number,
 	showTime: PropTypes.bool,
+	v2: PropTypes.bool,
 	enableFutureDates: PropTypes.bool,
 };
 
@@ -424,6 +431,7 @@ DatePicker.defaultProps = {
 	limitHours: null,
 	showTime: true,
 	enableFutureDates: false,
+	v2: false,
 };
 
 export default DatePicker;

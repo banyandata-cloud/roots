@@ -44,4 +44,8 @@ button.root[data-elem=base-cell] [data-elem=title] {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }/*# sourceMappingURL=BaseButton.module.css.map */
