@@ -185,7 +185,6 @@ const HierarchyBrowser = ({
 			currentPath
 		);
 
-		console.log('data', data);
 		return (
 			<HierarchyItem
 				key={currentPath}
@@ -227,8 +226,6 @@ const HierarchyBrowser = ({
 			</HierarchyItem>
 		);
 	};
-
-	console.log('metadata', metadata);
 
 	return (
 		<div

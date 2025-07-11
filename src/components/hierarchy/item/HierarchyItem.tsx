@@ -91,13 +91,6 @@ const HierarchyItem = (props: HierarchyItemProps): ReactElement => {
 		onSearchSubmit?.(searchText, pathString);
 	};
 
-	console.log('list', list);
-	// console.log('isSingleItem', isSingleItem, name);
-	// console.log('isLastItem', isLastItem, name);
-	// console.log('icon', icon, name);
-	// console.log('iconPlacement', iconPlacement, name);
-	console.log('count === undefined', count === undefined, name);
-
 	return (
 		<div
 			className={classes(
