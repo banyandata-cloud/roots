@@ -1,30 +1,26 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable no-nested-ternary */
+import type { ChartData, ChartEvent, ChartOptions, ScriptableContext } from 'chart.js';
 import { ArcElement, Chart as ChartJS, Legend, Title, Tooltip } from 'chart.js';
 import { useCallback, useRef, useState } from 'react';
 import { Pie } from 'react-chartjs-2';
 import { classes } from '../../../utils';
 import styles from './BasePieChart.module.css';
+import type { BasePieChartProps, LegendItem, TooltipCallbackContext } from './types';
 // import { stripSampleData } from './BasePieChartData';
 import { getColorGradient } from '../utils';
-import { Skeleton } from './Skeleton';
 
-// Register components for Chart.js
+// Register ChartJS components
 ChartJS.register(ArcElement, Tooltip, Legend, Title);
 
-const BasePieChart = (props) => {
+const BasePieChart: React.FC<BasePieChartProps> = (props) => {
 	const {
-		loading,
 		title,
 		tittleSize,
 		seriesData,
-		cursor,
 		legend,
 		style,
-		className,
-		theme,
-		fallback,
 		seriesOption,
 		options: chartOptions,
 		tooltip,
@@ -36,27 +32,20 @@ const BasePieChart = (props) => {
 		hoverBorderWidth,
 		dataSetOptions,
 		extra,
+		className,
 	} = props;
+	const [excludedIndices, setExcludedIndices] = useState<number[]>([]);
+	const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+	const legendRef = useRef<HTMLDivElement>(null);
 
-	const [excludedIndices, setExcludedIndices] = useState([]);
-	const [hoveredIndex, setHoveredIndex] = useState(null); // Track the hovered legend index
-	const legendRef = useRef(null); // Reference to hold the custom legend
-
-	if (loading || fallback) {
-		return <Skeleton theme={theme} fallback={!loading && fallback} />;
-	}
-
-	// Handle legend item click (exclude or un-exclude)
-	const handleLegendClick = useCallback((event, legendItem) => {
+	const handleLegendClick = useCallback((_event: unknown, legendItem: LegendItem) => {
 		const { index } = legendItem;
-		setExcludedIndices((prevIndices) => {
-			const newIndices = [...prevIndices];
-			if (newIndices.includes(index)) {
-				newIndices.splice(newIndices.indexOf(index), 1); // Un-exclude
-			} else {
-				newIndices.push(index); // Exclude
-			}
-			return newIndices;
+		setExcludedIndices((prev) => {
+			return prev.includes(index)
+				? prev.filter((i) => {
+						return i !== index;
+					})
+				: [...prev, index];
 		});
 	}, []);
 
@@ -154,10 +143,8 @@ const BasePieChart = (props) => {
 								: defaultColors[index % defaultColors.length]; // Normal color for other borders
 						}),
 				hoverBorderWidth,
-				hoverOffset: (context) => {
-					const index = context.dataIndex;
-					// Set hoverOffset to 30 for the hovered pie slice, whether from the legend or chart hover
-					return hoveredIndex === index ? 30 : 0;
+				hoverOffset: (context: ScriptableContext<'pie'>) => {
+					return hoveredIndex === context.dataIndex ? 30 : 0;
 				},
 				radius: doughnut?.[0] ?? '100%',
 				cutout: doughnut?.[1] ?? '0%',
@@ -173,7 +160,7 @@ const BasePieChart = (props) => {
 		setHoveredIndex(index);
 	};
 
-	const options = {
+	const options: ChartOptions<'pie'> = {
 		responsive: chartOptions?.responsive ?? true,
 		maintainAspectRatio: false,
 		plugins: {
@@ -191,13 +178,11 @@ const BasePieChart = (props) => {
 						labels: {
 							boxWidth: 10,
 							padding: 10,
-							// borderWidth: 0,
-							// borderColor: 'white',
-							color: (context) => {
-								const { index } = context;
-								return hoveredIndex !== null && hoveredIndex !== index
+							color: (ctx) => {
+								const idx = ctx.index;
+								return hoveredIndex !== null && hoveredIndex !== idx
 									? '#D3D3D3'
-									: excludedIndices.includes(index)
+									: excludedIndices.includes(idx)
 										? '#D3D3D3'
 										: 'black';
 							},
@@ -205,12 +190,16 @@ const BasePieChart = (props) => {
 								family: 'Poppins',
 							},
 						},
-						onClick: (event, legendItem) => {
+						onClick: (event, legendItem: LegendItem) => {
 							handleLegendClick(event, legendItem);
-							handleHover(legendItem.index); // Set hover on legend click
+							if (legendItem.index !== undefined) {
+								handleHover(legendItem.index);
+							}
 						},
-						onHover: (event, legendItem) => {
-							handleHover(legendItem.index);
+						onHover: (_, legendItem) => {
+							if (legendItem.index !== undefined) {
+								handleHover(legendItem.index);
+							}
 						},
 						onLeave: () => {
 							setHoveredIndex(null);
@@ -232,22 +221,20 @@ const BasePieChart = (props) => {
 			},
 			tooltip: {
 				borderWidth: tooltip?.borderWidth ?? 1,
-				borderColor: (context) => {
-					const index = context?.tooltipItems[0]?.dataIndex;
-					const segmentColor = context?.tooltipItems[0]?.dataset?.borderColor[index];
-
-					return segmentColor || 'black';
+				borderColor: (ctx) => {
+					const index = ctx.tooltipItems?.[0]?.dataIndex;
+					const color =
+						ctx.tooltipItems?.[0]?.dataset?.borderColor?.[index] ?? 'transparent';
+					return color || 'black';
 				},
 				backgroundColor: 'rgba(255, 255, 255, 1)',
 				callbacks: tooltip?.callbacks ?? {
-					label: (context) => {
-						const label = context.label || '';
-						const value = context.raw;
-						return `${label}: ${value}`;
+					label: (ctx: TooltipCallbackContext) => {
+						return `${ctx.label}: ${ctx.raw}`;
 					},
-					title: tooltip.displayTitle
-						? (tooltipItems) => {
-								return tooltipItems[0]?.label || '';
+					title: tooltip?.displayTitle
+						? (items: any[]) => {
+								return items[0]?.label ?? '';
 							}
 						: () => {
 								return '';
@@ -257,12 +244,11 @@ const BasePieChart = (props) => {
 				displayColors: tooltip?.displayColors ?? true,
 				boxWidth: tooltip?.colorBoxWidth ?? 5,
 				boxHeight: tooltip?.colorBoxHeight ?? 5,
-				boxPadding: 5,
 				usePointStyle: tooltip?.usePointStyle ?? true,
 				titleColor: tooltip?.bodyFont?.titleColor ?? '#000',
 				bodyColor: tooltip?.bodyFont?.color ?? '#000',
 				bodyFont: {
-					...tooltip.bodyFont,
+					...tooltip?.bodyFont,
 				},
 				...tooltip,
 			},
@@ -272,10 +258,10 @@ const BasePieChart = (props) => {
 			axis: 'x',
 			intersect: true,
 		},
-		onHover: (event, chartElement) => {
-			if (chartElement[0]) {
-				const hoveredIndexx = chartElement[0].index;
-				handleHover(hoveredIndexx);
+		onHover: (_: ChartEvent, chartElement) => {
+			const index = chartElement[0]?.index;
+			if (index !== undefined) {
+				handleHover(index);
 			} else {
 				setHoveredIndex(null);
 				hoveredIndexRef.current = null;
@@ -306,7 +292,7 @@ const BasePieChart = (props) => {
 		...chartOptions,
 	};
 
-	const centerTextPlugin = {
+		const centerTextPlugin = {
 		id: 'centerText',
 		afterDatasetsDraw(chart) {
 			const {
@@ -414,7 +400,6 @@ const BasePieChart = (props) => {
 				display: 'flex',
 				flexDirection: 'row',
 				alignItems: 'center',
-				cursor,
 				...style,
 			}}>
 			<Pie
