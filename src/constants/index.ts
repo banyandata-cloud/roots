@@ -11,7 +11,7 @@ export const MONTHS = [
 	'Oct',
 	'Nov',
 	'Dec',
-];
+] as const;
 
 export const FULL_MONTHS = [
 	'January',
@@ -26,6 +26,6 @@ export const FULL_MONTHS = [
 	'October',
 	'November',
 	'December',
-];
+] as const;
 
-export const DAYS = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
+export const DAYS = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'] as const;
