@@ -58,12 +58,12 @@ export type BaseCellProps<
 	/**
 	 * An optional React element to render inside the cell.
 	 */
-	component1?: ReactElement | undefined;
+	component1?: ReactElement | undefined | null;
 
 	/**
 	 * An optional tertiary React element to render inside the cell.
 	 */
-	component3?: ReactElement | undefined;
+	component3?: ReactElement | undefined | null;
 
 	/**
 	 * The root DOM element type for the cell. Can be 'div', 'span', or 'button'.
