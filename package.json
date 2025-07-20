@@ -2,9 +2,8 @@
 	"name": "@banyan_cloud/roots",
 	"version": "2.0.24",
 	"description": "Design System Library which drives the Banyan Cloud products",
-	"main": "dist/cjs/index.js",
-	"module": "dist/esm/index.js",
-	"types": "dist/esm/index.d.ts",
+	"main": "dist/index.js",
+	"types": "dist/types/src/index.d.ts",
 	"files": [
 		"dist",
 		"src/styles"
@@ -30,7 +29,7 @@
 		"echarts": "^5.6.0",
 		"echarts-for-react": "^3.0.2",
 		"fast-equals": "^4.0.3",
-		"framer-motion": "^10.16.4",
+		"framer-motion": "^12.23.6",
 		"react": "^18.2.0",
 		"react-chartjs-2": "^5.2.0",
 		"react-dom": "^18.2.0",
