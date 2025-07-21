@@ -1,6 +1,6 @@
 import { format as fnsFormat } from 'date-fns';
-import { doubleDigitted } from 'utils/stringUtils';
 import { DAYS, FULL_MONTHS, MONTHS } from '../../constants';
+import { doubleDigitted } from '../stringUtils';
 
 export const getJSDateFromEpoch = (epoch: number): Date => {
 	const date = new Date(0);
@@ -13,10 +13,10 @@ export const getDateFromEpoch = (epoch: number): string => {
 	date.setUTCSeconds(epoch);
 
 	const paddedDate = date.getUTCDate().toString().padStart(2, '0');
-	const month = MONTHS[date.getUTCMonth()];
+	const month = MONTHS[date.getUTCMonth()] ?? 'Jan';
 	const year = date.getUTCFullYear();
 
-	return `${month} ${paddedDate}, ${year}`;
+	return `${month} ${paddedDate}, ${year.toString()}`;
 };
 
 export const getTimeFromEpoch = (epoch: number): string => {
@@ -36,7 +36,7 @@ type DateFormat = string;
 export const epochToFormattedDate = (
 	epoch: number,
 	type: 'time' | 'date',
-	format?: TimeFormat | DateFormat
+	format: TimeFormat | DateFormat = 12
 ): string | null => {
 	const date = new Date(0);
 	date.setUTCSeconds(epoch);
@@ -51,25 +51,20 @@ export const epochToFormattedDate = (
 
 		const timeFormat: Record<TimeFormat, string> = {
 			24: `${hours}:${minutes}:${seconds} Hrs`,
-			12: `${hours12}:${minutes}:${seconds} ${meridian}`,
+			12: `${hours12.toString()}:${minutes}:${seconds} ${meridian}`,
 		};
 
-		return timeFormat[(format as TimeFormat) ?? 12];
+		return timeFormat[format as TimeFormat];
+	}
+	if (format && typeof format === 'string' && format !== '12' && format !== '24') {
+		return fnsFormat(date, format);
 	}
 
-	if (type === 'date') {
-		if (format && typeof format === 'string' && format !== '12' && format !== '24') {
-			return fnsFormat(date, format);
-		}
+	const paddedDate = date.getUTCDate().toString().padStart(2, '0');
+	const month = MONTHS[date.getUTCMonth()] ?? 'Jan';
+	const year = date.getUTCFullYear();
 
-		const paddedDate = date.getUTCDate().toString().padStart(2, '0');
-		const month = MONTHS[date.getUTCMonth()];
-		const year = date.getUTCFullYear();
-
-		return `${month} ${paddedDate}, ${year}`;
-	}
-
-	return null;
+	return `${month} ${paddedDate}, ${year.toString()}`;
 };
 
 export interface DayInfo {
@@ -87,8 +82,8 @@ export interface DayInfo {
 }
 
 export const getDayInfo = (date: Date): DayInfo => {
-	const month = FULL_MONTHS[date.getMonth()] || 'January';
-	const day = DAYS[date.getDay()] || 'Su';
+	const month = FULL_MONTHS[date.getMonth()] ?? 'January';
+	const day = DAYS[date.getDay()] ?? 'Su';
 
 	const monthAsNumber = date.getMonth();
 	const dayAsNumber = date.getDay();
@@ -127,10 +122,10 @@ export const getDatesInStringFormat = ({
 }: DateRange): [string, string] => {
 	const format = (date: Date): string => {
 		const day = date.getDate();
-		const month = MONTHS[date.getMonth()]?.substring(0, 3);
+		const month = MONTHS[date.getMonth()] ?? 'Jan';
 		const year = date.getFullYear();
 
-		return `${day} ${month} ${year}`;
+		return `${day.toString()} ${month} ${year.toString()}`;
 	};
 
 	return [format(startingDate), format(endingDate)];
