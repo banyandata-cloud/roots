@@ -170,7 +170,14 @@ const DialogBox = forwardRef((props, ref) => {
 					})}
 				/>
 			}>
-			{Body && <Body setNoDismissEnabled={setNoDismissEnabled} />}
+			{Body && (
+				<Body
+					dismiss={() => {
+						setOpen(false);
+					}}
+					setNoDismissEnabled={setNoDismissEnabled}
+				/>
+			)}
 			<div className={styles.description}>{description}</div>
 		</BaseModal>
 	);
