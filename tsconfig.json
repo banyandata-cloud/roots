@@ -12,10 +12,10 @@
 		"checkJs": true /* Report errors in .js files */,
 		"jsx": "react-jsx" /* Specify JSX code generation for library compatibility */,
 		"declaration": true /* Generate corresponding .d.ts file - crucial for a library */,
+		"declarationDir": "./dist/esm" /* Output directory for generated declarations */,
 		"declarationMap": true /* Generate a sourcemap for each corresponding '.d.ts' file */,
 		"sourceMap": true /* Generate corresponding .map file */,
-		"declarationDir": "./dist/types",
-		"outDir": "./dist" /* Redirect output structure to the directory */,
+		"outDir": "./dist/esm" /* Redirect output structure to the directory */,
 		"rootDir": "./" /* Specify the root directory of input files */,
 		"removeComments": false /* Keep comments in output for better documentation */,
 		"isolatedModules": true /* Transpile each file as a separate module */,
@@ -46,7 +46,7 @@
 		"baseUrl": "./src" /* Base directory to resolve non-absolute module names */,
 		"paths": {
 			"@/*": ["src/*"] /* Path mapping for src imports */,
-			"@types/*": ["src/types/*"] /* Path mapping for types folder */
+			"@types/*": ["types/*"] /* Path mapping for types folder */
 		},
 		"esModuleInterop": true /* Enables emit interoperability between CommonJS and ES Modules */,
 		"allowSyntheticDefaultImports": true /* Allow default imports from modules with no default export */,
@@ -59,7 +59,7 @@
 		"verbatimModuleSyntax": true /* Use 'import type' and 'export type' */,
 		"exactOptionalPropertyTypes": true /* Interpret optional property types as written */
 	},
-	"include": ["src/**/*"],
+	"include": ["src/**/*", "src/**/*", "types/**/*.ts", "types/**/*.d.ts", "*.js"],
 	"exclude": [
 		"node_modules",
 		"dist",
@@ -67,7 +67,6 @@
 		"**/*.test.tsx",
 		".storybook",
 		"**/*.stories.mdx",
-		"**/*.stories.tsx",
 		"*.js"
 	]
 }

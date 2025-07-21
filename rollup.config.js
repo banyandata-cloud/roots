@@ -7,22 +7,17 @@ import typescript from '@rollup/plugin-typescript';
 import pluginPeerDepsExternal from 'rollup-plugin-peer-deps-external';
 import pluginStyles from 'rollup-plugin-styles';
 import { visualizer } from 'rollup-plugin-visualizer';
+import packageJson from './package.json';
 
 export default [
 	{
 		input: 'src/index.ts',
-		output: [
-			{
-				file: 'dist/index.js',
-				format: 'cjs',
-				sourcemap: true,
-			},
-			{
-				file: 'dist/index.esm.js',
-				format: 'esm',
-				sourcemap: true,
-			},
-		],
+		output: {
+			file: packageJson.module,
+			format: 'esm',
+			sourcemap: true,
+			inlineDynamicImports: true,
+		},
 		external: [
 			'react',
 			'react-dom',
@@ -52,6 +47,10 @@ export default [
 			pluginPeerDepsExternal(),
 			typescript({
 				tsconfig: './tsconfig.json',
+				declaration: true,
+				declarationMap: false,
+				outDir: 'dist/esm', // Required when using declarationDir
+				sourceMap: true,
 				exclude: [
 					'node_modules/**',
 					'**/*.test.ts',
