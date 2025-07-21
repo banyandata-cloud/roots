@@ -1,6 +1,6 @@
 {
 	"name": "@banyan_cloud/roots",
-	"version": "2.0.25",
+	"version": "2.0.26",
 	"description": "Design System Library which drives the Banyan Cloud products",
 	"main": "dist/index.js",
 	"types": "dist/types/src/index.d.ts",
