@@ -9,25 +9,30 @@ import styles from './HierarchyItem.module.css';
 
 type IconPlacement = 'left' | 'right' | 'none';
 
+interface Item {
+	id?: string;
+	title?: string;
+	count?: number;
+}
+
 interface HierarchyItemProps {
 	defaultOpen?: boolean;
 	iconPlacement?: IconPlacement;
 	title: ReactNode;
-	count?: string;
+	count?: string | number;
 	children: ReactNode;
 	onClick?: (state: boolean) => void;
 	onDoubleClick?: (state: boolean) => void;
 	active?: boolean;
 	isLastItem?: boolean;
-	isSingleItem?: boolean;
 	leftComponent: ReactNode;
 	name: string;
-	onSearchSubmit?: (text: string, path: string) => void;
+	onSearchSubmit?: (text: string | undefined, path: string) => void;
 	pathString: string;
-	lastActive?: list;
+	lastActive?: boolean;
 	isSearching: boolean;
 	onSearchStart?: () => void;
-	list?: boolean;
+	list?: Item[] | boolean;
 }
 
 const HierarchyItem = (props: HierarchyItemProps): ReactElement => {
@@ -40,7 +45,6 @@ const HierarchyItem = (props: HierarchyItemProps): ReactElement => {
 		onDoubleClick,
 		active = false,
 		isLastItem,
-		isSingleItem,
 		count,
 		leftComponent,
 		name,
@@ -59,9 +63,9 @@ const HierarchyItem = (props: HierarchyItemProps): ReactElement => {
 		<div className={styles['expand-container']}>
 			<Button
 				className={styles.expand}
+				title=''
 				size='auto'
 				variant='text'
-				color='default'
 				onClick={() => {
 					setOpen((prevState) => {
 						const newState = !prevState;
@@ -103,14 +107,12 @@ const HierarchyItem = (props: HierarchyItemProps): ReactElement => {
 				flexible
 				size='auto'
 				className={classes(styles.header, count === undefined && styles.headerNoCount)}
-				// component1={iconPlacement === 'left' ? icon : undefined}
 				component1={list ? icon : undefined}
 				component2={
 					isSearching && open ? (
 						<div className={styles.searchFieldWrapper}>
 							<TextField
-								label={null}
-								className={styles.searchInput}
+								className={styles.searchInput} // Error because textField is in JSX
 								placeholder={`Search ${name}`}
 								size='md'
 								type='text'
@@ -137,7 +139,6 @@ const HierarchyItem = (props: HierarchyItemProps): ReactElement => {
 											onClick={handleSearchSubmit}
 											variant='text'
 											size='auto'
-											color='default'
 										/>
 									);
 								}}
@@ -149,7 +150,7 @@ const HierarchyItem = (props: HierarchyItemProps): ReactElement => {
 							flexible
 							size='auto'
 							variant='text'
-							color='default'
+							title=''
 							onClick={(event: React.MouseEvent) => {
 								const { detail } = event;
 								if (detail === 1) onClick?.(open);
@@ -172,7 +173,6 @@ const HierarchyItem = (props: HierarchyItemProps): ReactElement => {
 						<Button
 							size='auto'
 							variant='text'
-							color='default'
 							className={styles.searchWrapper}
 							onClick={() => {
 								onSearchStart?.(); // trigger search state in parent
