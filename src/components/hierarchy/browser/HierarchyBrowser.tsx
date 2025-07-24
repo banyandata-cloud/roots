@@ -73,6 +73,7 @@ const HierarchyBrowser = ({
 }: HierarchyBrowserProps): ReactElement => {
 	const browserRef = useRef<HTMLDivElement>(null);
 	const [searchResults, setSearchResults] = useState<Record<string, string>>({});
+	const [activePath, setActivePath] = useState<string | null>(null);
 
 	useResize({
 		ref: browserRef as React.RefObject<HTMLElement>,
@@ -134,6 +135,7 @@ const HierarchyBrowser = ({
 	const handleItemClick = (item: Item, pathString: string) => {
 		return (open: boolean): void => {
 			onItemClick(item, pathString, open);
+			setActivePath(pathString);
 			if (!open) {
 				setSearchResults((prev) => {
 					return Object.fromEntries(
@@ -206,6 +208,7 @@ const HierarchyBrowser = ({
 					handleItemDoubleClick(data, currentPath)(open);
 					trackOpenState(data, currentPath, open);
 				}}
+				active={activePath === currentPath}
 				lastActive={lastOpenedPath === currentPath}
 				isLastItem={isLast}
 				count={count ?? 0}
