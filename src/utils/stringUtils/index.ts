@@ -45,5 +45,9 @@ export const getCSSVariableValue = (variable: `--${string}`): string => {
 };
 
 export const doubleDigitted = (number: number): string => {
+	if (!number) {
+		return '';
+	}
+
 	return number.toString().slice(-2).padStart(2, '0');
 };
