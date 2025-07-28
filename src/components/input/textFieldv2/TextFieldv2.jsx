@@ -202,7 +202,7 @@ const TextField = forwardRef((props, inputRef) => {
 		return <RightComponent />;
 	};
 
-	const inputValue = isControlled ? value ?? '' : uncontrolledValue;
+	const inputValue = isControlled ? (value ?? '') : uncontrolledValue;
 
 	const Input = createElement(type === 'textarea' ? 'textarea' : 'input', {
 		id,
