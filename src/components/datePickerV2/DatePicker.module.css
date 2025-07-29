@@ -172,7 +172,174 @@
 
 div.modal {
   border-radius: 0.25rem;
+  width: 51rem;
 }
-div.modal [data-elem=header] {
-  height: 4.625rem;
+div.modal .header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+div.modal .header .left {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+div.modal .header .left .title {
+  font-weight: 500;
+  font-size: 1.25rem;
+}
+div.modal .header .left .desc {
+  font-family: Poppins;
+  font-weight: 400;
+  font-size: 0.875rem;
+}
+div.modal .header .right {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  height: 2.6875rem;
+  gap: 1.25rem;
+}
+div.modal .header .right [data-elem=select] {
+  width: 6.375rem;
+  height: 2.6875rem;
+  font-weight: 400;
+  font-size: 0.875rem;
+}
+div.modal .header .right [data-elem=select] [data-elem=placeholder] {
+  font-weight: 400;
+  font-size: 0.875rem;
+}
+div.modal .header .right [data-elem=select] > div > svg {
+  width: 1.25rem;
+}
+div.modal .header .right .dropdown [data-elem=select] {
+  width: -moz-fit-content;
+  width: fit-content;
+}
+div.modal [data-elem=body] {
+  height: 100%;
+  padding: 0%;
+}
+div.modal [data-elem=body] .body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+}
+div.modal [data-elem=body] .body .top {
+  padding: 0rem 1rem;
+  flex: 7;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+div.modal [data-elem=body] .body .bottom {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid #d5d5db;
+  flex: 3;
+}
+div.modal [data-elem=body] .body .bottom .dropdown-selection {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+div.modal [data-elem=body] .body .bottom .dropdown-selection .dropdown [data-elem=select] {
+  display: flex;
+  flex-direction: "row";
+  justify-content: "";
+  align-items: center;
+  width: 13.5625rem;
+  height: 2.6875rem;
+}
+div.modal [data-elem=body] .body .bottom .dropdown-selection .dropdown [data-elem=select] [data-elem=placeholder] {
+  font-weight: 500;
+  font-size: 1rem;
+  margin-right: 1rem;
+}
+div.modal [data-elem=body] .body .bottom .dropdown-selection .dropdown [data-elem=select] > div {
+  margin-left: auto;
+  margin-right: 0;
+}
+div.modal [data-elem=body] .body .bottom .dropdown-selection .dropdown [data-elem=select] > svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0rem;
+}
+div.modal [data-elem=body] .body .bottom .dropdown-selection .dropdown [data-elem=select] > svg path {
+  stroke: var(--text-color);
+}
+div.modal [data-elem=body] .body .bottom .fixed-selection {
+  gap: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1rem;
+}
+div.modal [data-elem=body] .body .bottom .fixed-selection button.custom[data-elem=base-cell] {
+  height: 2.125rem;
+  width: 4.75rem;
+  background-color: transparent;
+  color: var(--secondary-color2);
+  border: none;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25);
+}
+div.modal [data-elem=footer] {
+  border-top: 1px solid #d5d5db;
+}
+div.modal [data-elem=footer] div.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 0 1rem;
+}
+div.modal [data-elem=footer] div.footer .left {
+  flex: 1;
+}
+div.modal [data-elem=footer] div.footer .left > div > label [data-elem=base-cell] [data-elem=component2] [data-elem=input] {
+  font-weight: 400;
+  font-size: 1rem;
+  color: var(--text-color);
+}
+div.modal [data-elem=footer] div.footer .right {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  height: 2.6875rem;
+  gap: 1.25rem;
+  flex: 1;
+}
+div.modal [data-elem=footer] div.footer .right button.cancel[data-elem=base-cell] {
+  background-color: transparent;
+  color: var(--grey);
+  border: none;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25);
+}
+div.modal [data-elem=footer] div.footer .right button.confirm[data-elem=base-cell] {
+  background-color: var(--secondary-color2) !important;
+}
+
+.dropdown-item {
+  font-weight: 400;
+  font-size: 0.875rem;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0%;
+}
+.dropdown-item.selected {
+  color: var(--primary-color4);
 }/*# sourceMappingURL=DatePicker.module.css.map */

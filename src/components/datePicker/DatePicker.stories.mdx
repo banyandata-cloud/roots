@@ -110,6 +110,37 @@ The date picker allows to select the range of date from the popever.
 	</Story>
 </Canvas>
 
+### Range V2 Date Picker
+
+The date picker allows to select the range of date from the popever.
+
+<Canvas>
+	<Story name='Range Date Picker V2 New Modal'>
+		{() => {
+			const [value, setValue] = useState(null);
+			return (
+				<ThemedContainer style={{ width: '40rem' }}>
+					<DatePicker
+						{...{
+							placeholder: 'Select Date Range',
+							label: 'Range Date Picker',
+							value,
+							range: true,
+							v2: true,
+							onApply: (v) => {
+								setValue(v);
+							},
+							onClear: () => {
+								setValue(null);
+							},
+						}}
+					/>
+				</ThemedContainer>
+			);
+		}}
+	</Story>
+</Canvas>
+
 ### Custom Range Date Picker
 
 The Date picker with custom dropdown to select the pre-defined ranges.
