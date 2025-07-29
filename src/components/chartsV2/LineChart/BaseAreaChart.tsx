@@ -2,7 +2,6 @@ import {
 	CategoryScale,
 	type ChartData,
 	Chart as ChartJS,
-	type Chart as ChartJSInstance,
 	type ChartOptions,
 	type Color,
 	Filler,
@@ -129,7 +128,7 @@ const BaseAreaChart: React.FC<ChartProps> = (props): React.ReactElement => {
 		xAxis,
 		width,
 		height,
-		// chartOptionsProps,
+		chartOptionsProps: chartOptionsOverrideProps,
 		lineColors = [
 			'rgba(255, 99, 132, 0.5)',
 			'rgba(54, 162, 235, 0.5)',
@@ -171,6 +170,7 @@ const BaseAreaChart: React.FC<ChartProps> = (props): React.ReactElement => {
 		pointRadius: 4,
 		pointHoverRadius: 6,
 		borderWidth: 2,
+		...chartOptionsOverrideProps,
 	};
 
 	const labels = seriesData?.chartData
@@ -178,26 +178,6 @@ const BaseAreaChart: React.FC<ChartProps> = (props): React.ReactElement => {
 				return key;
 			})
 		: [];
-
-	const legendRef = useRef<HTMLUListElement | null>(null);
-	const [hiddenDatasets, setHiddenDatasets] = useState<number[]>([]);
-
-	const toggleDatasetVisibility = (index: number, chart: ChartJSInstance<'line'>) => {
-		setHiddenDatasets((prevHidden) => {
-			const newHidden = prevHidden.includes(index)
-				? prevHidden.filter((i) => {
-						return i !== index;
-					})
-				: [...prevHidden, index];
-
-			const dataset = chart.data.datasets[index];
-			if (dataset) {
-				dataset.hidden = newHidden.includes(index);
-			}
-			chart.update();
-			return newHidden;
-		});
-	};
 
 	console.log(excludedIndices);
 
