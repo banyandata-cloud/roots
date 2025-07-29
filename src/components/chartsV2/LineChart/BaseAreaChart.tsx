@@ -6,6 +6,7 @@ import {
 	type Color,
 	Filler,
 	Legend,
+	type LegendItem,
 	LinearScale,
 	LineElement,
 	PointElement,
@@ -149,17 +150,19 @@ const BaseAreaChart: React.FC<ChartProps> = (props): React.ReactElement => {
 		hoverEffect = false,
 	} = props;
 
-	const [excludedIndices, setExcludedIndices] = useState([]);
+	const [excludedIndices, setExcludedIndices] = useState<number[]>([]);
 	const [hoveredIndex, setHoveredIndex] = useState(null);
 
-	const handleLegendClick = useCallback((event, legendItem) => {
+	const handleLegendClick = useCallback((_event: unknown, legendItem: LegendItem) => {
 		const { index } = legendItem;
 		setExcludedIndices((prevIndices) => {
 			const newIndices = [...prevIndices];
-			if (newIndices.includes(index)) {
-				newIndices.splice(newIndices.indexOf(index), 1); // Un-exclude
-			} else {
-				newIndices.push(index); // Exclude
+			if (index !== undefined) {
+				if (newIndices.includes(index)) {
+					newIndices.splice(newIndices.indexOf(index), 1); // Un-exclude
+				} else {
+					newIndices.push(index); // Exclude
+				}
 			}
 			return newIndices;
 		});
@@ -173,18 +176,13 @@ const BaseAreaChart: React.FC<ChartProps> = (props): React.ReactElement => {
 		...chartOptionsOverrideProps,
 	};
 
-	const labels = seriesData?.chartData
-		? Object.keys(seriesData.chartData).map((key) => {
-				return key;
-			})
-		: [];
-
-	console.log(excludedIndices);
+	const labels = Object.keys(seriesData.chartData).map((key) => {
+		return key;
+	});
 
 	const chartData: ChartData<'line'> = {
 		labels: seriesData.metaData.xAxisData,
 		datasets: Object.keys(seriesData.chartData).map((key, index) => {
-			console.log(index);
 			const isHovered = !hoverEffect || hoveredIndex === null || hoveredIndex === index;
 			return {
 				label: key,
@@ -427,13 +425,6 @@ const BaseAreaChart: React.FC<ChartProps> = (props): React.ReactElement => {
 				}
 			: {}),
 		...chartOptionsProps,
-	};
-
-	const legendStyle: React.CSSProperties = {
-		display: 'flex',
-		listStyle: 'none',
-		padding: '0px',
-		...legend?.legendStyles,
 	};
 
 	return (
