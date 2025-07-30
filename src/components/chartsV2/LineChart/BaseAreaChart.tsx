@@ -2,11 +2,11 @@ import {
 	CategoryScale,
 	type ChartData,
 	Chart as ChartJS,
-	type Chart as ChartJSInstance,
 	type ChartOptions,
 	type Color,
 	Filler,
 	Legend,
+	type LegendItem,
 	LinearScale,
 	LineElement,
 	PointElement,
@@ -129,7 +129,7 @@ const BaseAreaChart: React.FC<ChartProps> = (props): React.ReactElement => {
 		xAxis,
 		width,
 		height,
-		// chartOptionsProps,
+		chartOptionsProps: chartOptionsOverrideProps,
 		lineColors = [
 			'rgba(255, 99, 132, 0.5)',
 			'rgba(54, 162, 235, 0.5)',
@@ -150,17 +150,19 @@ const BaseAreaChart: React.FC<ChartProps> = (props): React.ReactElement => {
 		hoverEffect = false,
 	} = props;
 
-	const [excludedIndices, setExcludedIndices] = useState([]);
+	const [excludedIndices, setExcludedIndices] = useState<number[]>([]);
 	const [hoveredIndex, setHoveredIndex] = useState(null);
 
-	const handleLegendClick = useCallback((event, legendItem) => {
+	const handleLegendClick = useCallback((_event: unknown, legendItem: LegendItem) => {
 		const { index } = legendItem;
 		setExcludedIndices((prevIndices) => {
 			const newIndices = [...prevIndices];
-			if (newIndices.includes(index)) {
-				newIndices.splice(newIndices.indexOf(index), 1); // Un-exclude
-			} else {
-				newIndices.push(index); // Exclude
+			if (index !== undefined) {
+				if (newIndices.includes(index)) {
+					newIndices.splice(newIndices.indexOf(index), 1); // Un-exclude
+				} else {
+					newIndices.push(index); // Exclude
+				}
 			}
 			return newIndices;
 		});
@@ -171,40 +173,16 @@ const BaseAreaChart: React.FC<ChartProps> = (props): React.ReactElement => {
 		pointRadius: 4,
 		pointHoverRadius: 6,
 		borderWidth: 2,
+		...chartOptionsOverrideProps,
 	};
 
-	const labels = seriesData?.chartData
-		? Object.keys(seriesData.chartData).map((key) => {
-				return key;
-			})
-		: [];
-
-	const legendRef = useRef<HTMLUListElement | null>(null);
-	const [hiddenDatasets, setHiddenDatasets] = useState<number[]>([]);
-
-	const toggleDatasetVisibility = (index: number, chart: ChartJSInstance<'line'>) => {
-		setHiddenDatasets((prevHidden) => {
-			const newHidden = prevHidden.includes(index)
-				? prevHidden.filter((i) => {
-						return i !== index;
-					})
-				: [...prevHidden, index];
-
-			const dataset = chart.data.datasets[index];
-			if (dataset) {
-				dataset.hidden = newHidden.includes(index);
-			}
-			chart.update();
-			return newHidden;
-		});
-	};
-
-	console.log(excludedIndices);
+	const labels = Object.keys(seriesData.chartData).map((key) => {
+		return key;
+	});
 
 	const chartData: ChartData<'line'> = {
 		labels: seriesData.metaData.xAxisData,
 		datasets: Object.keys(seriesData.chartData).map((key, index) => {
-			console.log(index);
 			const isHovered = !hoverEffect || hoveredIndex === null || hoveredIndex === index;
 			return {
 				label: key,
@@ -447,13 +425,6 @@ const BaseAreaChart: React.FC<ChartProps> = (props): React.ReactElement => {
 				}
 			: {}),
 		...chartOptionsProps,
-	};
-
-	const legendStyle: React.CSSProperties = {
-		display: 'flex',
-		listStyle: 'none',
-		padding: '0px',
-		...legend?.legendStyles,
 	};
 
 	return (
