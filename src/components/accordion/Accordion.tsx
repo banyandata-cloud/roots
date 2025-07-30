@@ -1,13 +1,20 @@
 import { motion } from 'framer-motion';
-import PropTypes from 'prop-types';
 import { useRef, useState } from 'react';
-import { classes } from '../../utils/utils';
+import { classes } from '../../utils';
 import { Button } from '../buttons';
 import { BaseCell } from '../cell';
 import { CaretIcon, ExpandArrowAltIcon } from '../icons';
 import styles from './Accordion.module.css';
+import type { AccordionProps } from './types';
 
-const Accordion = (props) => {
+/**
+ * Accordion – A simple disclosure component with an optional left and right icon.
+ *
+ * This component works in both **controlled** and **uncontrolled** modes.
+ * - In controlled mode supply the `open` prop and handle the state change in `onToggle`.
+ * - In uncontrolled mode omit the `open` prop and optionally set `defaultOpen`.
+ */
+export function Accordion(props: AccordionProps) {
 	const {
 		open,
 		onToggle,
@@ -17,14 +24,16 @@ const Accordion = (props) => {
 		title,
 		description,
 		children,
-		onClick = () => {},
+		onClick,
 		className = '',
 		onExpand,
 	} = props;
 
-	const [uncontrolledOpen, setUncontrolledOpen] = useState(defaultOpen);
+	// Internal state only used when the component is uncontrolled.
+	const [uncontrolledOpen, setUncontrolledOpen] = useState<boolean | undefined>(defaultOpen);
 
-	const { current: isControlled } = useRef(open !== undefined);
+	// Capture whether the component is controlled only once in the first render.
+	const { current: isControlled } = useRef<boolean>(open !== undefined);
 
 	const isOpen = isControlled ? open : uncontrolledOpen;
 
@@ -35,29 +44,28 @@ const Accordion = (props) => {
 			<BaseCell
 				flexible
 				size='auto'
-				rootDOM='button'
+				RootDOM='button'
 				className={styles.header}
 				attrs={{
 					onClick: () => {
 						if (isControlled) {
-							onToggle(open);
+							onToggle?.(open);
 						} else {
 							setUncontrolledOpen((prevState) => {
 								const newState = !prevState;
-								onClick(newState);
+								onClick?.(newState);
 								return newState;
 							});
 						}
 					},
 				}}
-				component1={LeftComponent && <LeftComponent className={styles.icon} />}
+				component1={LeftComponent && <LeftComponent />}
 				component2={<span className={styles.title}>{title}</span>}
-				component3={RightComponent && <RightComponent className={styles.icon} />}
+				component3={RightComponent && <RightComponent />}
 			/>
 
 			{isOpen && (
 				<motion.div
-					key={title + description}
 					initial={{
 						opacity: 0,
 					}}
@@ -78,28 +86,13 @@ const Accordion = (props) => {
 							onClick={() => {
 								onExpand();
 							}}
-							rightComponent={() => {
-								return <ExpandArrowAltIcon className={styles.expand} />;
-							}}
+							title={<ExpandArrowAltIcon className={styles.expand} />}
 						/>
 					)}
 				</motion.div>
 			)}
 		</div>
 	);
-};
-
-Accordion.propTypes = {
-	open: PropTypes.bool,
-	onToggle: PropTypes.func,
-	leftComponent: PropTypes.node,
-	rightComponent: PropTypes.node,
-	title: PropTypes.node,
-	description: PropTypes.string,
-	defaultOpen: PropTypes.bool,
-	onClick: PropTypes.func,
-	className: PropTypes.string,
-	onExpand: PropTypes.func,
-};
+}
 
 export default Accordion;
