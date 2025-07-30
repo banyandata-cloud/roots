@@ -1,6 +1,7 @@
 /* eslint-disable no-restricted-globals */
 /* eslint-disable no-nested-ternary */
 /* eslint-disable react/forbid-prop-types */
+import type { ChartData, ChartDataset, ChartOptions } from 'chart.js';
 import {
 	BarElement,
 	CategoryScale,
@@ -9,15 +10,16 @@ import {
 	LinearScale,
 	Tooltip,
 } from 'chart.js';
-import ChartDataLabels from 'chartjs-plugin-datalabels'; // Import the data labels plugin
+import type { Context } from 'chartjs-plugin-datalabels';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
+import React from 'react';
 import { Bar } from 'react-chartjs-2';
 import { getColorGradient } from '../utils';
-import { Skeleton } from './Skeleton'; // Assuming this is your custom loading component
+import type { BaseBarChartProps } from './types';
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend, ChartDataLabels);
 
-const BaseBarChart = ({
-	loading,
+const BaseBarChart: React.FC<BaseBarChartProps> = ({
 	seriesData,
 	title,
 	gridOptions,
@@ -39,14 +41,8 @@ const BaseBarChart = ({
 	extra,
 	barColors,
 }) => {
-	if (loading) {
-		return <Skeleton vertical={vertical} />;
-	}
-
-	// Mapping the data for Chart.js
 	const labels = Object.keys(seriesData.chartData);
-
-	const allKeys = new Set();
+	const allKeys = new Set<string>();
 
 	Object.values(seriesData.chartData).forEach((data) => {
 		Object.keys(data).forEach((key) => {
@@ -54,7 +50,7 @@ const BaseBarChart = ({
 		});
 	});
 
-	const barDatasets = Array.from(allKeys).map((key) => {
+	const barDatasets: ChartDataset<'bar'>[] = Array.from(allKeys).map((key) => {
 		return {
 			label: key,
 			backgroundColor: (ctx) => {
@@ -68,9 +64,7 @@ const BaseBarChart = ({
 				return color;
 			},
 			data: labels.map((label) => {
-				return seriesData.chartData[label][key] !== undefined
-					? seriesData.chartData[label][key]
-					: null;
+				return seriesData.chartData[label]?.[key] ?? null;
 			}),
 			borderRadius,
 			barThickness,
@@ -80,21 +74,20 @@ const BaseBarChart = ({
 
 	const datasets = stacked ? [...barDatasets, stacked] : [...barDatasets];
 
-	const options = {
+	const options: ChartOptions<'bar'> = {
 		responsive: true,
-		maintainAspectRatio: false, // To allow custom height and width
-		indexAxis: !vertical && 'y',
+		maintainAspectRatio: false,
+		indexAxis: !vertical ? 'y' : 'x',
 		plugins: {
 			title: {
 				display: true,
+				align: 'start',
+				padding: 0,
 				font: {
-					size: title?.textStyle?.fontSize || 12,
+					size: title?.textStyle?.fontSize ?? 12,
 					family: 'Poppins',
 				},
-				align: 'start',
-				padding: {
-					left: title?.left || 0,
-				},
+				text: title?.text,
 			},
 			tooltip: {
 				borderWidth: tooltip?.borderWidth ?? 1,
@@ -103,47 +96,54 @@ const BaseBarChart = ({
 				displayColors: tooltip?.displayColors ?? true,
 				boxWidth: tooltip?.colorBoxWidth ?? 5,
 				boxHeight: tooltip?.colorBoxHeight ?? 5,
-				boxPadding: 5,
 				usePointStyle: tooltip?.usePointStyle ?? true,
-				titleColor: tooltip?.bodyFont?.titleColor ?? '#000',
+				titleColor: tooltip?.titleColor ?? '#000',
 				bodyColor: tooltip?.bodyFont?.color ?? '#000',
 				bodyFont: {
 					...tooltip?.bodyFont,
 					family: 'Poppins',
+					...(typeof tooltip?.bodyFont === 'object' ? tooltip.bodyFont : {}),
 				},
+
 				...tooltip,
 			},
 			legend: {
 				display: false,
 				...legends,
 			},
-			// Enable the datalabels plugin
 			datalabels: {
 				anchor: 'end',
-				align: 'top', // Align the labels above the bars
+				align: 'top',
 				color: 'black',
 				font: {
-					// weight: 'bold',
 					size: 12,
 					family: 'Poppins',
 				},
-				offset: 4, // Space between the bar and the label
-				formatter: (value, context) => {
-					return context.chart.data.labels[context.dataIndex];
+				offset: 4,
+				formatter: (_value: number, context: Context) => {
+					const label = context.chart.data.labels?.[context.dataIndex];
+
+					if (typeof label === 'string' || typeof label === 'number') {
+						return String(label);
+					}
+					return '';
 				},
+
+				...chartOptions?.plugins?.datalabels,
 			},
-			...chartOptions,
+			...chartOptions?.plugins,
 		},
 		scales: {
 			x: {
 				grid: {
-					display: gridOptions?.gridContainLabel || true,
+					display: gridOptions?.gridContainLabel ?? true,
 					color: 'rgba(255, 255, 255, 0.2)',
 				},
 				ticks: {
 					color: 'black',
-					callback: (value, index) => {
-						return seriesData.chartData[labels[index]]?.x1;
+					callback: (_value: string | number, index: number) => {
+						const label = labels[index];
+						return label ? (seriesData.chartData[label]?.x1 ?? null) : null;
 					},
 					font: {
 						family: 'Poppins',
@@ -166,7 +166,6 @@ const BaseBarChart = ({
 				},
 				ticks: {
 					color: 'black',
-					beginAtZero: true,
 					font: {
 						family: 'Poppins',
 					},
@@ -182,23 +181,22 @@ const BaseBarChart = ({
 				...yAxis,
 			},
 		},
+		...chartOptions,
+	};
+
+	const data: ChartData<'bar'> = {
+		labels,
+		datasets,
 	};
 
 	return (
 		<div
 			style={{
-				width: width || '100%', // Default to full width if not provided
-				height: height || '100%',
+				width,
+				height,
 				...styles,
 			}}>
-			<Bar
-				data={{
-					labels,
-					datasets,
-				}}
-				options={options}
-				{...extra}
-			/>
+			<Bar data={data} options={options} {...extra} />
 		</div>
 	);
 };

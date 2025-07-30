@@ -1,22 +1,11 @@
-import PropTypes from 'prop-types';
+import type { ReactElement, ReactNode } from 'react';
 import { forwardRef } from 'react';
 import { classes } from '../../utils/utils';
 import { AlertIcon } from '../icons';
 import styles from './Callout.module.css';
+import type { CalloutProps } from './types';
 
-/**
- * Renders an alert message with optional icon, title, description, and action button.
- *
- * @param {Object} props - The props object containing the following properties:
- *   - showIcon (boolean): Determines whether to show the alert icon.
- *   - border (string): Specifies the border style of the alert.
- *   - shadow (boolean): Determines whether to apply a shadow effect to the alert.
- *   - position (string): Specifies the position of the alert on the screen.
- *   - animation (boolean): Determines whether to apply the animation effect.
- * @param {Ref} ref - The ref object used to expose the 'alert' function to the parent component.
- * @returns {JSX.Element} - The rendered alert component.
- */
-const Callout = forwardRef((props) => {
+const Callout = forwardRef<HTMLDivElement, CalloutProps>((props, ref): ReactElement | null => {
 	const {
 		showIcon = true,
 		shadow,
@@ -28,7 +17,8 @@ const Callout = forwardRef((props) => {
 		type,
 	} = props;
 
-	let Icon = null;
+	let Icon: ReactNode = null;
+
 	if (CustomIcon != null) {
 		Icon = <CustomIcon className={styles.icon} />;
 	} else {
@@ -49,13 +39,14 @@ const Callout = forwardRef((props) => {
 				Icon = <AlertIcon.Danger className={styles.icon} v2 />;
 				break;
 			default:
-				Icon = <CustomIcon />;
-				break;
+				Icon = null;
 		}
 	}
 
 	return (
-		<div className={classes(styles.root, styles[type], shadow ? styles.shadow : '', className)}>
+		<div
+			ref={ref}
+			className={classes(styles.root, styles[type], shadow && styles.shadow, className)}>
 			<div className={styles.left}>
 				<div className={classes(styles['icon-container'], styles[type])}>
 					{showIcon && Icon}
@@ -78,10 +69,6 @@ const Callout = forwardRef((props) => {
 	);
 });
 
-Callout.propTypes = {
-	showIcon: PropTypes.bool,
-	shadow: PropTypes.bool,
-	className: PropTypes.string,
-};
+Callout.displayName = 'Callout';
 
 export default Callout;

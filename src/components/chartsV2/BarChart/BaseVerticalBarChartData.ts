@@ -122,37 +122,3 @@ export const sampleStackData = {
 		},
 	},
 };
-
-export const transformToStack = (sampleStackDataTemp) => {
-	const initStack = {
-		x1: 0,
-		x2: 0,
-		x3: 0,
-		x4: 0,
-		x5: 0,
-		x6: 0,
-	};
-
-	const finalData = {};
-
-	Object.keys(sampleStackDataTemp.chartData).forEach((cd) => {
-		let dbIndex = 1;
-		const listStack = {
-			...initStack,
-		};
-		Object.keys(sampleStackDataTemp.chartData[cd]).forEach((db) => {
-			Object.values(sampleStackDataTemp.chartData[cd][db]).forEach((coord) => {
-				listStack[`x${dbIndex}`] = coord;
-				dbIndex++;
-			});
-			finalData[cd] = listStack;
-		});
-	});
-
-	return {
-		...sampleStackDataTemp,
-		chartData: finalData,
-	};
-};
-
-export const stackData = transformToStack(sampleStackData);
