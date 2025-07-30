@@ -95,4 +95,5 @@ export interface BaseBarChartProps {
 	stacked?: ChartDataset<'bar'>;
 	extra?: object;
 	dataLabelsOptions?: ChartDataLabelsOptions;
+	barColors?: Record<string, string>;
 }

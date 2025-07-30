@@ -22,7 +22,7 @@ export interface TooltipCallbackContext {
 }
 
 export interface LegendItem {
-	index: number;
+	index?: number; // optional
 }
 
 interface CustomLabel {
@@ -47,6 +47,8 @@ interface StripProps {
 	stripSize?: number;
 	stripWidth?: number;
 	circumference?: number;
+	startColor?: string;
+	endColor?: string;
 }
 
 interface TooltipFontOptions {
@@ -73,6 +75,13 @@ interface LegendProps {
 	display?: boolean;
 	icon?: boolean;
 	legendStyles?: string;
+	circle?: boolean;
+	customLabels?: (args: {
+		label: string;
+		value: string;
+		index: number;
+		color: string;
+	}) => React.ReactNode; // ✅ use this if you return JSX
 }
 
 export interface BasePieChartProps {
@@ -88,7 +97,7 @@ export interface BasePieChartProps {
 	theme?: string;
 	seriesOption?: ChartSeriesOption[];
 	options?: ChartOptions<'pie'>;
-	tooltip?: TooltipProps;
+	tooltip?: TooltipProps<'pie'>; // ✅ Fix the typing mismatch
 	width?: string | number;
 	height?: string | number;
 	customLabel?: CustomLabel;
