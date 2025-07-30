@@ -35,9 +35,6 @@
 .root .toggle > button[data-elem=base-cell].toggle-button > [data-elem=component2] > [data-elem=title] {
   color: var(--mono-color1);
 }
-.root .toggle > button[data-elem=base-cell].toggle-button.secondary {
-  opacity: 0.5;
-}
 .root .toggle > button[data-elem=base-cell].toggle-button.secondary:hover {
   opacity: 1;
 }
@@ -69,7 +66,7 @@
 }
 .root .toggle > button[data-elem=base-cell].toggle-button.disabled {
   cursor: not-allowed;
-  opacity: 0.7;
+  opacity: 0.5;
   background-color: transparent;
 }
 .root .toggle > button[data-elem=base-cell].toggle-button.disabled > [data-elem=component2] > [data-elem=title] {

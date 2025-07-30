@@ -1,11 +1,11 @@
 /* eslint-disable max-len */
-import { forwardRef, type RefObject } from 'react';
+import { forwardRef } from 'react';
 import { classes } from '../../../utils/utils';
 import { BaseButton } from '../baseButton';
 import styles from './Button.module.css';
 import type { ButtonProps } from './types';
 
-const Button = forwardRef<RefObject<HTMLElement>, ButtonProps>((props, ref) => {
+const Button = forwardRef<HTMLElement, ButtonProps>((props, ref) => {
 	const {
 		className = '',
 		type = 'submit',

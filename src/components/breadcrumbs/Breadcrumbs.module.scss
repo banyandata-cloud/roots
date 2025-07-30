@@ -2,110 +2,60 @@
 
 .root {
 	@include flex(row, flex-start, center);
-	gap: 1rem;
-	width: auto;
-	overflow: auto;
-	width: 100%;
+	height: 100%;
 
-	[data-elem='breadcrumb-separator-icon'] {
-		@include flex(row, center, center);
-		stroke: $text-color;
-		fill: $text-color;
-		width: 1.5rem;
-		height: 1.5rem;
-	}
+	width: fit-content;
+	border-radius: 0.25rem;
 
-	button.expand[data-elem='base-cell'] {
-		background: $grey6;
-		color: $text-color;
-		height: 0.75rem;
-		padding: 0.25rem;
-
-		[data-elem='title'] {
-			margin-bottom: 0.4rem;
-		}
-	}
-
-	.crumb-actions[data-elem='base-cell'] {
-		height: 2rem;
-		width: 2rem;
-		background-color: $mono-color1 !important;
-		> [data-elem='component1'] {
-			> svg {
-				margin-left: 0.125rem;
-				fill: $white;
-			}
-		}
-		.icon {
-			width: 1.25rem;
-			height: 1.25rem;
-			fill: $light-color3;
-		}
-		&.home {
-			width: fit-content;
-			border-radius: 4px;
-			background-color: $mono-color2 !important;
-			color: $text-color;
-			.icon {
-				width: 1.25rem;
-				height: 1.25rem;
-				fill: $text-color;
-			}
-			&.highlight {
-				background-color: $mono-color1 !important;
-				color: $light-color3;
-				.icon {
-					width: 1.25rem;
-					height: 1.25rem;
-					fill: $light-color3;
-				}
-			}
-		}
-	}
-
-	.crumb {
-		@include flex(row, center, center);
-		gap: 0.5rem;
-		padding: 0.5rem 0.5rem;
+	button[data-elem='base-cell'].selected[type='submit'] {
+		@include flex(row, flex-start, center);
+		height: auto;
+		width: auto;
+		max-width: 17rem;
+		border: 0.0313rem solid transparent;
+		background: $light-color2;
+		padding: 0.625rem 0.75rem;
+		gap: 0rem;
 		border-radius: 0.25rem;
-		background: $mono-color2;
-		font-weight: 500;
-
-		&:hover:not(.active) {
-			cursor: pointer;
-			background: $light-color1;
+		border: 0.0938rem solid transparent;
+		&.expand {
+			border: 0.0938rem solid $secondary-color2;
 		}
-
-		&.active {
-			background-color: $mono-color1;
-			.title {
-				color: $white;
-			}
-
-			.value {
-				color: $white;
-			}
-			.iconWrapper {
-				svg {
-					fill: $white;
+		> [data-elem='component1'] {
+			@include flex(row, flex-start, center);
+			div.iconWrapper {
+				@include flex(row, center);
+				> svg {
+					width: 1rem;
+					height: 1rem;
 				}
 			}
 		}
-
-		.title {
-			color: $text-color;
+		> [data-elem='component2'] {
+			@include flex(row, center);
+			@include ellipsis;
+			> [data-elem='title'] {
+				font-size: 0.875rem;
+				color: $text-color;
+				line-height: 1.3125rem;
+			}
 		}
-
-		.value {
-			color: $text-color;
+		&.gap {
+			> [data-elem='component2'] {
+				margin-left: 0.7775rem;
+			}
 		}
-
-		.iconWrapper {
-			@include flex(row, center, center);
-			width: 1rem;
-			height: 1rem;
-			svg {
-				fill: $primary-color4;
+		> [data-elem='component3'] {
+			margin-left: 1.785rem;
+			@include flex(row, flex-end, flex-end);
+			.icon {
+				width: 1rem;
+				height: 1rem;
+				&.expand {
+					path {
+						stroke: $secondary-color2;
+					}
+				}
 			}
 		}
 	}
@@ -113,63 +63,102 @@
 
 div.popover {
 	height: auto;
-	width: auto;
-	padding: 0.07rem 0.5rem;
-	[data-elem='placeholder'] {
-		font-size: 0.875rem;
-	}
-	@include flex(column);
+	padding: 0.75rem 0.625rem 0rem 0.625rem;
+	background: $white !important;
+	border-color: $white !important;
+	box-shadow: 0rem 0rem 0.125rem 0rem rgba(0, 0, 0, 0.25);
+
 	.crumb-list {
-		@include flex(row, center, center);
-		gap: 0.5rem;
-		padding: 0.5rem 0.5rem;
-		border-radius: 0.25rem;
-		background: transparent;
+		@include flex(row, space-between, center);
+		gap: 0.625rem;
+		padding: 0.5rem 0.75rem;
+		margin-bottom: 0.625rem;
+		border-radius: 0.125rem;
+		border: 0.0313rem solid $side-bar-icon2;
 		font-weight: 500;
+		color: $text-color;
 
 		&:hover {
 			cursor: pointer;
-			background: $light-color1;
+			background: $light-color2;
+		}
+		&.active {
+			background: $background-color5;
+			border: 0.0313rem solid transparent;
 		}
 
-		.title {
-			color: $text-color;
-		}
-
-		.value {
-			color: $text-color;
-		}
-	}
-}
-
-div.popover-light {
-	background: $white !important;
-	border-color: $white !important;
-	[data-elem='placeholder'] {
-		color: $white;
-	}
-	> svg {
-		fill: $dark-grey;
-	}
-
-	.body-light {
-		@include flex(row, space-between);
-
-		> [data-elem='component2'] {
-			flex: 1;
-			.content-light {
-				color: #7c7c7c;
+		.left {
+			@include flex(row, flex-start, flex-start);
+			gap: 0.625rem;
+			.iconWrapper {
+				@include flex(row, flex-start, flex-start);
+				color: $text-color;
+			}
+			.value {
+				font-size: .875rem;
+				color: $text-color;
+				@include ellipsis;
 			}
 		}
+		.right {
+			@include flex(row, flex-end, flex-end);
 
-		.content-light {
-			color: #7c7c7c;
-			button.option-light {
-				color: #7c7c7c;
+			.circle {
+				width: 12px;
+				height: 12px;
+				border: 1.5px solid $secondary-color2;
+				background-color: white;
+				border-radius: 50%;
+				// margin-left: 10px;
+				z-index: 1000;
 			}
-
-			.expand-icon-light {
-				fill: $dark-grey;
+			.circle-dropdown {
+				@include flex(row, flex-end, flex-end);
+				width: 12px;
+				height: 12px;
+				border: 1.5px solid $secondary-color2;
+				background-color: $white;
+				border-radius: 50%;
+				z-index: 101;
+				.icon {
+					margin-right: 1.8px;
+					margin-bottom: 1.4px;
+					transform: rotate(180deg);
+					> path {
+						fill: $secondary-color2;
+						stroke: $secondary-color2;
+						stroke-width: 0.2rem;
+						stroke-linecap: round !important;
+						stroke-linejoin: round;
+					}
+				}
+				&::before {
+					content: '';
+					width: 0%;
+					height: 26px;
+					border-left: 1.5px dashed $secondary-color2;
+					position: relative;
+					bottom: 100%;
+					right: -3.6px;
+				}
+			}
+			.circle-filled {
+				@include flex(row, flex-start, center);
+				width: 12px;
+				height: 12px;
+				border: 1.5px solid $secondary-color2;
+				background-color: $secondary-color2;
+				border-radius: 50%;
+				z-index: 100;
+				&::before {
+					content: '';
+					width: 0%;
+					height: 40px;
+					border-left: 1.5px solid $secondary-color2;
+					position: relative;
+					bottom: 200%;
+					right: -3.6px;
+				}
 			}
 		}
 	}
