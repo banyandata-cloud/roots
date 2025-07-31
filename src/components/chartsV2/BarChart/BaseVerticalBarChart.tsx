@@ -1,6 +1,3 @@
-/* eslint-disable no-restricted-globals */
-/* eslint-disable no-nested-ternary */
-/* eslint-disable react/forbid-prop-types */
 import type { ChartData, ChartDataset, ChartOptions } from 'chart.js';
 import {
 	BarElement,
