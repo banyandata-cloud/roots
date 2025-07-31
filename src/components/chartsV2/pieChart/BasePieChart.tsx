@@ -1,17 +1,12 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable react/forbid-prop-types */
-/* eslint-disable no-nested-ternary */
 import type { ChartEvent, ChartOptions, Plugin, ScriptableContext, TooltipItem } from 'chart.js';
 import { ArcElement, Chart as ChartJS, Legend, Title, Tooltip } from 'chart.js';
 import { useCallback, useRef, useState } from 'react';
 import { Pie } from 'react-chartjs-2';
 import { classes } from '../../../utils';
+import { getColorGradient } from '../utils';
 import styles from './BasePieChart.module.css';
 import type { BasePieChartProps, LegendItem } from './types';
-// import { stripSampleData } from './BasePieChartData';
-import { getColorGradient } from '../utils';
 
-// Register ChartJS components
 ChartJS.register(ArcElement, Tooltip, Legend, Title);
 
 const BasePieChart: React.FC<BasePieChartProps> = (props) => {
