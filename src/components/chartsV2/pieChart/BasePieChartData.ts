@@ -72,7 +72,7 @@ export const iconData = {
 	},
 };
 
-export const iconColor = (data) => {
+export const iconColor = (data: number) => {
 	if (data <= 30) {
 		return 'green';
 	}
