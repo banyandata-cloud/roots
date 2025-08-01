@@ -5,7 +5,7 @@ import { Button } from '../../../buttons';
 import { ChevronIcon } from '../../../icons';
 import styles from './Header.module.css';
 
-const CarouselSwitch = ({ onMonthChange, selectedMonth }) => {
+const CarouselSwitch = ({ onMonthChange, selectedMonth, displayMonthRight }) => {
 	return (
 		<div className={styles['title-container']}>
 			<div className={styles['left-container']}>
@@ -31,7 +31,7 @@ const CarouselSwitch = ({ onMonthChange, selectedMonth }) => {
 				<span
 					className={
 						styles.title
-					}>{`${selectedMonth?.month} ${selectedMonth?.year}`}</span>
+					}>{`${displayMonthRight?.month} ${displayMonthRight?.year}`}</span>
 				<Button
 					size='auto'
 					variant='text'
@@ -52,6 +52,10 @@ const CarouselSwitch = ({ onMonthChange, selectedMonth }) => {
 const Header = (props) => {
 	const { range, dateSelectionView, defaultHourDiff, timeSelectionView, selectedDate } =
 		props ?? {};
+
+	console.log({
+		header: props,
+	});
 
 	const showCarouselSwitcher = !dateSelectionView && !timeSelectionView;
 

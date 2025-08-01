@@ -1,4 +1,4 @@
-import { fromUnixTime, getUnixTime, isBefore } from 'date-fns';
+import { addMonths, fromUnixTime, getUnixTime, isBefore } from 'date-fns';
 import { useEffect, useState } from 'react';
 import { FULL_MONTHS } from '../../../constants';
 import { getDatesInStringFormat, getDayInfo } from '../../../utils';
@@ -24,6 +24,8 @@ const Calender = (props) => {
 		customRanges,
 		selectedMonth,
 		setSelectedMonth,
+		displayMonthRight,
+		setDisplayMonthRight,
 		valueAsRange,
 		enableFutureDates,
 	} = props;
@@ -46,9 +48,19 @@ const Calender = (props) => {
 				dayAsNumber: selectedDayInfo.dayAsNumber,
 			};
 			setSelectedMonth({
-				month: getDayInfo(fromUnixTime(selectedRange?.unix?.[0])).month,
+				month: getDayInfo(fromUnixTime(selectedRange?.unix?.[0] + 2592000)).month,
 				monthAsNumber: getDayInfo(fromUnixTime(selectedRange?.unix?.[0])).monthAsNumber,
-				year: getDayInfo(fromUnixTime(selectedRange?.unix?.[0])).year,
+				year: getDayInfo(fromUnixTime(selectedRange?.unix?.[0] + 2592000)).year,
+			});
+			console.log('1', {
+				month: getDayInfo(fromUnixTime(selectedRange?.unix?.[0] + 2592000)).month,
+				monthAsNumber: getDayInfo(fromUnixTime(selectedRange?.unix?.[0])).monthAsNumber + 1,
+				year: getDayInfo(fromUnixTime(selectedRange?.unix?.[0] + 2592000)).year,
+			});
+			setDisplayMonthRight({
+				month: getDayInfo(fromUnixTime(selectedRange?.unix?.[0] + 2592000)).month,
+				monthAsNumber: getDayInfo(fromUnixTime(selectedRange?.unix?.[0])).monthAsNumber + 1,
+				year: getDayInfo(fromUnixTime(selectedRange?.unix?.[0] + 2592000)).year,
 			});
 			setSelectedDate({
 				...selectedDate,
@@ -82,6 +94,16 @@ const Calender = (props) => {
 				monthAsNumber: getDayInfo(fromUnixTime(value[0])).monthAsNumber,
 				year: getDayInfo(fromUnixTime(value[0])).year,
 			});
+			console.log('2', {
+				month: getDayInfo(fromUnixTime(value[0] + 2592000)).month,
+				monthAsNumber: getDayInfo(fromUnixTime(value[0])).monthAsNumber + 1,
+				year: getDayInfo(fromUnixTime(value[0] + 2592000)).year,
+			});
+			setDisplayMonthRight({
+				month: getDayInfo(fromUnixTime(value[0] + 2592000)).month,
+				monthAsNumber: getDayInfo(fromUnixTime(value[0])).monthAsNumber + 1,
+				year: getDayInfo(fromUnixTime(value[0] + 2592000)).year,
+			});
 			setSelectedDate({
 				...selectedDate,
 				month: selectedDateMonth.month,
@@ -94,18 +116,33 @@ const Calender = (props) => {
 
 		if (!range && value) {
 			const date = fromUnixTime(value);
+			const oneMonthLater = fromUnixTime(value);
+
 			const dateAsNumber = date.getDate();
 			const selectedDayInfo = getDayInfo(date);
+			const nextMonthInfo = getDayInfo(addMonths(oneMonthLater, 1));
+
 			const selectedDateMonth = {
 				month: selectedDayInfo.month,
 				monthAsNumber: selectedDayInfo.monthAsNumber,
 				year: selectedDayInfo.year,
 				dayAsNumber: selectedDayInfo.dayAsNumber,
 			};
+
 			setSelectedMonth({
 				month: selectedDayInfo.month,
 				monthAsNumber: selectedDayInfo.monthAsNumber,
 				year: selectedDayInfo.year,
+			});
+			console.log('3', {
+				month: selectedDayInfo.month,
+				monthAsNumber: selectedDayInfo.monthAsNumber + 1,
+				year: selectedDayInfo.year,
+			});
+			setDisplayMonthRight({
+				month: nextMonthInfo.month,
+				monthAsNumber: nextMonthInfo.monthAsNumber,
+				year: nextMonthInfo.year,
 			});
 			setSelectedDate({
 				...selectedDate,
@@ -139,6 +176,16 @@ const Calender = (props) => {
 				monthAsNumber: selectedDayInfo.monthAsNumber,
 				year: selectedDayInfo.year,
 			});
+			console.log('4', {
+				month: selectedDayInfo.month,
+				monthAsNumber: selectedDayInfo.monthAsNumber + 1,
+				year: selectedDayInfo.year,
+			});
+			setDisplayMonthRight({
+				month: selectedDayInfo.month,
+				monthAsNumber: selectedDayInfo.monthAsNumber + 1,
+				year: selectedDayInfo.year,
+			});
 		}
 	};
 
@@ -155,34 +202,79 @@ const Calender = (props) => {
 					monthAsNumber: 11,
 					year: selectedMonth.year - 1,
 				});
+				console.log('5', {
+					month: previousMonth,
+					monthAsNumber: 11,
+					year: selectedMonth.year - 1,
+				});
+				setDisplayMonthRight({
+					month: previousMonth,
+					monthAsNumber: 11,
+					year: selectedMonth.year - 1,
+				});
 				return;
 			}
-			const previousMonthNumber = selectedMonth.monthAsNumber - 1;
+			const previousMonthNumber = selectedMonth.monthAsNumber - 2;
+			const previousRightMonthNumber = displayMonthRight.monthAsNumber - 2;
 			const previousMonth = FULL_MONTHS[previousMonthNumber];
+			const previousRightMonth = FULL_MONTHS[previousRightMonthNumber];
 			setSelectedMonth({
 				month: previousMonth,
 				monthAsNumber: previousMonthNumber,
 				year: selectedMonth.year,
 			});
+			console.log('6', {
+				month: previousMonth,
+				monthAsNumber: previousMonthNumber,
+				year: selectedMonth.year,
+			});
+			setDisplayMonthRight({
+				month: previousRightMonth,
+				monthAsNumber: previousRightMonthNumber,
+				year: displayMonthRight.year,
+			});
 			return;
 		}
 
 		if (switchSide === 'next') {
-			if (selectedMonth.monthAsNumber === 11) {
+			if (selectedMonth.monthAsNumber + 2 >= 11) {
 				const nextMonth = FULL_MONTHS[0];
 				setSelectedMonth({
+					month: FULL_MONTHS[12 - (selectedMonth.monthAsNumber + 2)],
+					monthAsNumber: 12 - selectedMonth.monthAsNumber + 2,
+					year: selectedMonth.year,
+				});
+				console.log('7', {
+					month: nextMonth,
+					monthAsNumber: 0,
+					year: selectedMonth.year + 1,
+				});
+				setDisplayMonthRight({
 					month: nextMonth,
 					monthAsNumber: 0,
 					year: selectedMonth.year + 1,
 				});
 				return;
 			}
-			const nextMonthNumber = selectedMonth.monthAsNumber + 1;
+			const nextMonthNumber = selectedMonth.monthAsNumber + 2;
+			const nextRightMonthNumber = displayMonthRight.monthAsNumber + 2;
 			const nextMonth = FULL_MONTHS[nextMonthNumber];
+			const nextRightMonth = FULL_MONTHS[nextRightMonthNumber];
 			setSelectedMonth({
 				month: nextMonth,
 				monthAsNumber: nextMonthNumber,
 				year: selectedMonth.year,
+			});
+			console.log('8', {
+				selectedMonth,
+				month: nextMonth,
+				monthAsNumber: nextMonthNumber,
+				year: selectedMonth.year,
+			});
+			setDisplayMonthRight({
+				month: nextRightMonth,
+				monthAsNumber: nextRightMonthNumber,
+				year: displayMonthRight.year,
 			});
 		}
 	};
@@ -203,6 +295,8 @@ const Calender = (props) => {
 				selectedMonth={selectedMonth}
 				onMonthChange={onMonthChange}
 				setSelectedMonth={setSelectedMonth}
+				displayMonthRight={displayMonthRight}
+				setDisplayMonthRight={setDisplayMonthRight}
 				showDateSelectionView={showDateSelectionView}
 				showTimeSelectionView={showTimeSelectionView}
 				dateSelectionView={dateSelectionView}
@@ -218,6 +312,8 @@ const Calender = (props) => {
 				{...commonCalenderProps}
 				selectedMonth={selectedMonth}
 				setSelectedMonth={setSelectedMonth}
+				displayMonthRight={displayMonthRight}
+				setDisplayMonthRight={setDisplayMonthRight}
 				disabledDates={disabledDates}
 				disableDatesBefore={disableDatesBefore}
 				disableDatesAfter={disableDatesAfter}

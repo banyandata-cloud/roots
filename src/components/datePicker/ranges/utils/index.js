@@ -23,9 +23,6 @@ const getDateAndUnixRange = (duration) => {
 };
 
 export const dateRanges = (customRanges = []) => {
-	console.log({
-		customRanges,
-	});
 	if (customRanges?.length > 0) {
 		return customRanges.map((range) => {
 			return {
