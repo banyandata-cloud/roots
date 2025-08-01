@@ -4,6 +4,7 @@
 	@include flex(column, flex-start, stretch);
 	position: relative;
 	min-width: 300px;
+
 	// @include flex: 1;
 	// margin-left: 10px;
 
@@ -16,6 +17,12 @@
 	// 		}
 	// 	}
 	// }
+
+	span[data-elem='component2'] {
+		button {
+			padding-left: 0.5rem;
+		}
+	}
 	.dashed-connector {
 		position: absolute;
 		height: 1.2rem;
@@ -28,7 +35,6 @@
 	&.searching {
 		> .header:hover {
 			background: none;
-
 			.icon,
 			.title,
 			.title svg {
@@ -74,17 +80,20 @@
 		}
 
 		& > [data-elem='component2'] {
+			padding-left: 0.5rem;
 			flex: 1 1 auto;
 
 			.title {
-				// @include debug;
-
 				@include flex(row, flex-start);
+
 				width: 100%;
 				height: auto;
 				padding: 0.25rem 0rem;
 				user-select: none;
 				margin-top: 2px;
+			}
+			.titleNoList {
+				padding-left: 0.625rem;
 			}
 
 			.searchFieldWrapper {

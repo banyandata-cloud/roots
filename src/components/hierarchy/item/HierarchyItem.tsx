@@ -59,6 +59,8 @@ const HierarchyItem = (props: HierarchyItemProps): ReactElement => {
 	const [open, setOpen] = useState(defaultOpen);
 	const [searchText, setSearchText] = useState('');
 
+	console.log('isLastItem', name, list);
+
 	const icon = (
 		<div className={styles['expand-container']}>
 			<Button
@@ -146,7 +148,7 @@ const HierarchyItem = (props: HierarchyItemProps): ReactElement => {
 						</div>
 					) : (
 						<Button
-							className={styles.title}
+							className={classes(styles.title, list === false && styles.titleNoList)}
 							flexible
 							size='auto'
 							variant='text'
