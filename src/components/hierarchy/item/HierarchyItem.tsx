@@ -59,8 +59,6 @@ const HierarchyItem = (props: HierarchyItemProps): ReactElement => {
 	const [open, setOpen] = useState(defaultOpen);
 	const [searchText, setSearchText] = useState('');
 
-	console.log('isLastItem', name, list);
-
 	const icon = (
 		<div className={styles['expand-container']}>
 			<Button
@@ -102,7 +100,7 @@ const HierarchyItem = (props: HierarchyItemProps): ReactElement => {
 			className={classes(
 				styles.root,
 				open && styles.open,
-				active && styles.active,
+				active && !isSearching && open && styles.active,
 				isSearching && styles.searching
 			)}>
 			<BaseCell
@@ -114,7 +112,7 @@ const HierarchyItem = (props: HierarchyItemProps): ReactElement => {
 					isSearching && open ? (
 						<div className={styles.searchFieldWrapper}>
 							<TextField
-								className={styles.searchInput} // Error because textField is in JSX
+								className={styles.searchInput}
 								placeholder={`Search ${name}`}
 								size='md'
 								type='text'
