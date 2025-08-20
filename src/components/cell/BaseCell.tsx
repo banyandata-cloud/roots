@@ -1,10 +1,4 @@
-import {
-	createElement,
-	forwardRef,
-	isValidElement,
-	type ReactElement,
-	type RefObject,
-} from 'react';
+import { createElement, forwardRef, isValidElement, type ReactElement } from 'react';
 import { classes } from '../../utils';
 import styles from './BaseCell.module.css';
 import type { BaseCellComponentType, BaseCellProps } from './types';
@@ -23,7 +17,7 @@ import type { BaseCellComponentType, BaseCellProps } from './types';
  * />
  * ```
  */
-export const BaseCell = forwardRef<RefObject<HTMLElement>, BaseCellProps<BaseCellComponentType>>(
+export const BaseCell = forwardRef<HTMLElement, BaseCellProps<BaseCellComponentType>>(
 	(props, ref): ReactElement | null => {
 		const {
 			className,

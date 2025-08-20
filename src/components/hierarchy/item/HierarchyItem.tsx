@@ -9,24 +9,30 @@ import styles from './HierarchyItem.module.css';
 
 type IconPlacement = 'left' | 'right' | 'none';
 
+interface Item {
+	id?: string;
+	title?: string;
+	count?: number;
+}
+
 interface HierarchyItemProps {
 	defaultOpen?: boolean;
 	iconPlacement?: IconPlacement;
 	title: ReactNode;
-	count?: string;
+	count?: string | number;
 	children: ReactNode;
 	onClick?: (state: boolean) => void;
 	onDoubleClick?: (state: boolean) => void;
 	active?: boolean;
 	isLastItem?: boolean;
-	isSingleItem?: boolean;
 	leftComponent: ReactNode;
 	name: string;
-	onSearchSubmit?: (text: string, path: string) => void;
+	onSearchSubmit?: (text: string | undefined, path: string) => void;
 	pathString: string;
 	lastActive?: boolean;
 	isSearching: boolean;
 	onSearchStart?: () => void;
+	list?: Item[] | boolean;
 }
 
 const HierarchyItem = (props: HierarchyItemProps): ReactElement => {
@@ -39,7 +45,6 @@ const HierarchyItem = (props: HierarchyItemProps): ReactElement => {
 		onDoubleClick,
 		active = false,
 		isLastItem,
-		isSingleItem,
 		count,
 		leftComponent,
 		name,
@@ -48,6 +53,7 @@ const HierarchyItem = (props: HierarchyItemProps): ReactElement => {
 		lastActive,
 		isSearching,
 		onSearchStart,
+		list,
 	} = props;
 
 	const [open, setOpen] = useState(defaultOpen);
@@ -57,9 +63,9 @@ const HierarchyItem = (props: HierarchyItemProps): ReactElement => {
 		<div className={styles['expand-container']}>
 			<Button
 				className={styles.expand}
+				title=''
 				size='auto'
 				variant='text'
-				color='default'
 				onClick={() => {
 					setOpen((prevState) => {
 						const newState = !prevState;
@@ -89,30 +95,23 @@ const HierarchyItem = (props: HierarchyItemProps): ReactElement => {
 		onSearchSubmit?.(searchText, pathString);
 	};
 
-	// console.log('isSingleItem', isSingleItem, name);
-	// console.log('isLastItem', isLastItem, name);
-	// console.log('icon', icon, name);
-	// console.log('iconPlacement', iconPlacement, name);
-	console.log('count === undefined', count === undefined, name);
-
 	return (
 		<div
 			className={classes(
 				styles.root,
 				open && styles.open,
-				active && styles.active,
+				active && !isSearching && open && styles.active,
 				isSearching && styles.searching
 			)}>
 			<BaseCell
 				flexible
 				size='auto'
 				className={classes(styles.header, count === undefined && styles.headerNoCount)}
-				component1={iconPlacement === 'left' ? icon : undefined}
+				component1={list ? icon : undefined}
 				component2={
 					isSearching && open ? (
 						<div className={styles.searchFieldWrapper}>
 							<TextField
-								label={null}
 								className={styles.searchInput}
 								placeholder={`Search ${name}`}
 								size='md'
@@ -140,7 +139,6 @@ const HierarchyItem = (props: HierarchyItemProps): ReactElement => {
 											onClick={handleSearchSubmit}
 											variant='text'
 											size='auto'
-											color='default'
 										/>
 									);
 								}}
@@ -148,15 +146,15 @@ const HierarchyItem = (props: HierarchyItemProps): ReactElement => {
 						</div>
 					) : (
 						<Button
-							className={styles.title}
+							className={classes(styles.title, list === false && styles.titleNoList)}
 							flexible
 							size='auto'
 							variant='text'
-							color='default'
+							title=''
 							onClick={(event: React.MouseEvent) => {
 								const { detail } = event;
 								if (detail === 1) onClick?.(open);
-								else if (detail === 2 && count) {
+								else if (detail === 2) {
 									setOpen((prevState) => {
 										const newState = !prevState;
 										onDoubleClick?.(newState);
@@ -175,7 +173,6 @@ const HierarchyItem = (props: HierarchyItemProps): ReactElement => {
 						<Button
 							size='auto'
 							variant='text'
-							color='default'
 							className={styles.searchWrapper}
 							onClick={() => {
 								onSearchStart?.(); // trigger search state in parent

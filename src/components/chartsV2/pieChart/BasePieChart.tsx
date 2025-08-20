@@ -1,137 +1,21 @@
-/* eslint-disable react/no-array-index-key */
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable react/forbid-prop-types */
-/* eslint-disable no-nested-ternary */
-import {
-	ArcElement,
-	Chart as ChartJS,
-	Legend,
-	Title,
-	Tooltip,
-	type ActiveElement,
-	type ChartEvent,
-	type ChartOptions,
-	type LegendItem,
-	type Plugin,
-} from 'chart.js';
-import React, { useCallback, useRef, useState } from 'react';
+import type { ChartEvent, ChartOptions, Plugin, ScriptableContext, TooltipItem } from 'chart.js';
+import { ArcElement, Chart as ChartJS, Legend, Title, Tooltip } from 'chart.js';
+import { useCallback, useRef, useState } from 'react';
 import { Pie } from 'react-chartjs-2';
 import { classes } from '../../../utils';
 import { getColorGradient } from '../utils';
 import styles from './BasePieChart.module.css';
+import type { BasePieChartProps, LegendItem } from './types';
 
 ChartJS.register(ArcElement, Tooltip, Legend, Title);
-
-interface MetaData {
-	keyData: Record<string, string>;
-}
-
-interface SeriesData {
-	chartData: Record<string, string>;
-	metaData?: MetaData;
-}
-
-interface SeriesOption {
-	itemStyle: {
-		color: string;
-	};
-}
-
-interface CustomLabelStyles {
-	fontSize: string;
-	fontStyle: string;
-	color: string;
-	position?: number;
-}
-
-interface CustomLabel {
-	id: string;
-	title: string;
-	value: number;
-	margin?: number;
-	valueStyles: CustomLabelStyles;
-	labelStyles: CustomLabelStyles;
-}
-
-interface StripConfig {
-	stripSize?: number;
-	stripWidth?: number;
-	startColor?: string;
-	endColor?: string;
-}
-
-interface TooltipCallbacks {
-	label?: (context: { label: string; raw: number }) => string;
-	title?: (
-		tooltipItems: {
-			label?: string;
-		}[]
-	) => string;
-}
-
-interface CustomTooltipConfig {
-	borderWidth?: number;
-	bodySpacing?: number;
-	displayColors?: boolean;
-	colorBoxWidth?: number;
-	colorBoxHeight?: number;
-	usePointStyle?: boolean;
-	displayTitle?: boolean;
-	callbacks?: TooltipCallbacks;
-	bodyFont?: {
-		titleColor?: string;
-		color?: string;
-		[key: string]: unknown;
-	};
-}
-
-interface LegendConfig {
-	display?: boolean;
-	icon?: boolean;
-	circle?: boolean;
-	legendStyles?: Record<string, string>;
-	customLabels?: (params: {
-		label: string;
-		value: number;
-		index: number;
-		color: string;
-	}) => React.ReactNode;
-	[key: string]: unknown;
-}
-
-interface BasePieChartProps {
-	loading: boolean;
-	title?: string;
-	tittleSize?: number;
-	seriesData: SeriesData;
-	cursor?: string;
-	legend?: LegendConfig;
-	style?: React.CSSProperties;
-	className?: string;
-	theme?: string;
-	fallback?: boolean;
-	seriesOption?: SeriesOption[];
-	options?: Partial<ChartOptions<'pie'>>;
-	tooltip?: CustomTooltipConfig;
-	width?: string | number;
-	height?: string | number;
-	customLabel?: CustomLabel;
-	strip?: StripConfig;
-	doughnut?: [string, string];
-	hoverBorderWidth?: number;
-	dataSetOptions?: Record<string, unknown>;
-	extra?: Record<string, unknown>;
-}
 
 const BasePieChart: React.FC<BasePieChartProps> = (props) => {
 	const {
 		title,
 		tittleSize,
 		seriesData,
-		cursor,
 		legend,
 		style,
-		className,
 		seriesOption,
 		options: chartOptions,
 		tooltip,
@@ -143,134 +27,78 @@ const BasePieChart: React.FC<BasePieChartProps> = (props) => {
 		hoverBorderWidth,
 		dataSetOptions,
 		extra,
+		className,
 	} = props;
-
 	const [excludedIndices, setExcludedIndices] = useState<number[]>([]);
 	const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-	const legendRef = useRef<HTMLUListElement>(null);
 
-	// Handle legend item click (exclude or un-exclude)
-	const handleLegendClick = useCallback(
-		(event: React.MouseEvent | MouseEvent, legendItem: { index: number }) => {
-			const { index } = legendItem;
-			setExcludedIndices((prevIndices) => {
-				const newIndices = [...prevIndices];
-				if (newIndices.includes(index)) {
-					newIndices.splice(newIndices.indexOf(index), 1); // Un-exclude
-				} else {
-					newIndices.push(index); // Exclude
-				}
-				return newIndices;
-			});
-		},
-		[]
-	);
+	const handleLegendClick = useCallback((_event: unknown, legendItem: LegendItem) => {
+		const { index } = legendItem;
+		if (typeof index === 'number') {
+			setExcludedIndices((prev) =>
+				prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
+			);
+		}
+	}, []);
 
-	const labels = seriesData.metaData?.keyData
-		? Object.keys(seriesData.chartData).map((key) => {
-				return seriesData.metaData?.keyData[key] ?? key;
-			})
-		: [];
+	const { chartData = {}, metaData } = seriesData ?? {};
+	const { keyData = {} } = metaData ?? {};
 
-	const values = Object.keys(seriesData.chartData).map((key) => {
+	const labels = Object.keys(chartData).map((key) => keyData[key] ?? {});
+
+	const values = Object.keys(seriesData?.chartData ?? {}).map((key) => {
 		return seriesData.chartData[key];
 	});
 
 	const legendColors = seriesOption
 		? seriesOption.map((option) => {
-				const {
-					itemStyle: { color },
-				} = option;
+				const color = option?.itemStyle?.color;
 				if (typeof color !== 'string' || !color.startsWith('linear-gradient')) {
 					return color;
 				}
 				const stops = color.match(/#(?:[0-9a-fA-F]{3}){1,2}/g);
-				return stops?.[0] ?? '#000';
+				return stops?.[0] || '#000';
 			})
 		: [];
 
 	// Data for the Pie Chart
 	const data = {
-		labels: seriesData.metaData?.keyData
-			? Object.keys(seriesData.chartData).map((key) => {
-					return seriesData.metaData?.keyData[key] ?? key;
-				})
-			: [],
+		labels: Object.keys(chartData).map((key) => keyData[key]),
 		datasets: [
 			{
-				data: Object.keys(seriesData.chartData).map((key) => {
-					return seriesData.chartData[key];
+				data: Object.keys(seriesData?.chartData ?? {}).map((key) => {
+					return seriesData?.chartData?.[key];
 				}),
-				backgroundColor: (ctx: { canvas: HTMLCanvasElement }) => {
-					return seriesOption
-						? seriesOption.map((option, index) => {
-								if (hoveredIndex !== null && hoveredIndex !== index) {
-									return '#D3D3D3';
-								}
+				backgroundColor: (ctx: ScriptableContext<'doughnut'>) => {
+					const index = ctx.dataIndex;
 
-								if (excludedIndices.includes(index)) {
-									return '#D3D3D3';
-								}
+					if (hoveredIndex !== null && hoveredIndex !== index) {
+						return '#D3D3D3';
+					}
 
-								const {
-									itemStyle: { color },
-								} = option;
-								if (
-									typeof color === 'string' &&
-									color.startsWith('linear-gradient')
-								) {
-									return getColorGradient(ctx, color) as string;
-								}
+					if (excludedIndices.includes(index)) {
+						return '#D3D3D3';
+					}
 
-								return color || '#000'; // Fallback solid color
-							})
-						: Object.keys(seriesData.chartData).map((_, index) => {
-								const defaultColors = [
-									'#FF6384',
-									'#36A2EB',
-									'#FFCE56',
-									'#4BC0C0',
-									'#9966FF',
-									'#FF9F40',
-								];
+					const color = seriesOption?.[index]?.itemStyle?.color;
 
-								if (hoveredIndex !== null && hoveredIndex !== index) {
-									return '#D3D3D3';
-								}
+					if (typeof color === 'string' && color.startsWith('linear-gradient')) {
+						return getColorGradient(ctx, color); // must return a CanvasGradient or valid color string
+					}
 
-								return excludedIndices.includes(index)
-									? '#D3D3D3'
-									: defaultColors[index % defaultColors.length];
-							});
+					return color ?? '#000';
 				},
-
-				borderColor: seriesOption
-					? seriesOption.map((option, index) => {
-							return excludedIndices.includes(index)
-								? '#D3D3D3' // Grey for excluded items
-								: option.itemStyle.color; // Normal color for other borders
-						})
-					: Object.keys(seriesData.chartData).map((_, index) => {
-							const defaultColors = [
-								'#FF6384',
-								'#36A2EB',
-								'#FFCE56',
-								'#4BC0C0',
-								'#9966FF',
-								'#FF9F40',
-							];
-							return excludedIndices.includes(index)
-								? '#D3D3D3' // Grey for excluded items
-								: defaultColors[index % defaultColors.length]; // Normal color for other borders
-						}),
-				hoverBorderWidth,
-				hoverOffset: (context: { dataIndex: number }) => {
-					const index = context.dataIndex;
-					// Set hoverOffset to 30 for the hovered pie slice, whether from the legend or chart hover
-					return hoveredIndex === index ? 30 : 0;
+				borderColor: (ctx: ScriptableContext<'doughnut'>) => {
+					const index = ctx.dataIndex;
+					return excludedIndices.includes(index)
+						? '#D3D3D3'
+						: (seriesOption?.[index]?.itemStyle?.color ?? '#000');
 				},
-				radius: doughnut[0],
-				cutout: doughnut[1],
+				hoverBorderWidth: hoverBorderWidth,
+				hoverOffset: (ctx: ScriptableContext<'doughnut'>) =>
+					hoveredIndex === ctx.dataIndex ? 30 : 0,
+				radius: doughnut?.[0] ?? '100%',
+				cutout: doughnut?.[1] ?? '0%',
 				...dataSetOptions,
 			},
 		],
@@ -301,32 +129,34 @@ const BasePieChart: React.FC<BasePieChartProps> = (props) => {
 						labels: {
 							boxWidth: 10,
 							padding: 10,
-							color: (context: { index: number }) => {
-								const { index } = context;
-								return hoveredIndex !== null && hoveredIndex !== index
+							color: ((ctx: ScriptableContext<'pie'>) => {
+								const idx = ctx.dataIndex;
+								return hoveredIndex !== null && hoveredIndex !== idx
 									? '#D3D3D3'
-									: excludedIndices.includes(index)
+									: excludedIndices.includes(idx)
 										? '#D3D3D3'
 										: 'black';
-							},
+							}) as any,
 							font: {
 								family: 'Poppins',
 							},
 						},
-						onClick: (event: ChartEvent, legendItem: LegendItem) => {
-							handleLegendClick(
-								event.native as MouseEvent,
-								legendItem as { index: number }
-							);
-							handleHover((legendItem as { index: number }).index);
+						onClick: (event, legendItem: LegendItem) => {
+							handleLegendClick(event, legendItem);
+							if (legendItem.index !== undefined) {
+								handleHover(legendItem.index);
+							}
 						},
-						onHover: (event: ChartEvent, legendItem: LegendItem) => {
-							handleHover((legendItem as { index: number }).index);
+						onHover: (_, legendItem) => {
+							if (legendItem.index !== undefined) {
+								handleHover(legendItem.index);
+							}
 						},
 						onLeave: () => {
 							setHoveredIndex(null);
 							hoveredIndexRef.current = null;
 						},
+						...legend,
 					},
 			title: {
 				display: !!title,
@@ -342,48 +172,42 @@ const BasePieChart: React.FC<BasePieChartProps> = (props) => {
 			},
 			tooltip: {
 				borderWidth: tooltip?.borderWidth ?? 1,
-				borderColor: (context: {
-					tooltipItems: { dataIndex: number; dataset: { borderColor: string[] } }[];
-				}) => {
-					const index = context.tooltipItems[0]?.dataIndex;
-					if (typeof index !== 'number') return 'black';
+				borderColor: (ctx) => {
+					const index = ctx.tooltipItems?.[0]?.dataIndex;
+					const dataset = ctx.tooltipItems?.[0]?.dataset;
 
-					const segmentColor = context.tooltipItems[0]?.dataset.borderColor[index];
-					return typeof segmentColor === 'string' ? segmentColor : 'black';
+					if (typeof index !== 'number') return 'transparent';
+
+					const borderColor = dataset?.borderColor;
+
+					if (Array.isArray(borderColor)) {
+						return borderColor[index] ?? 'transparent';
+					}
+
+					return typeof borderColor === 'string' ? borderColor : 'transparent';
 				},
 				backgroundColor: 'rgba(255, 255, 255, 1)',
-				callbacks: tooltip?.callbacks ?? {
-					label: (context: { label: string; raw: number }) => {
-						const label = context.label || '';
-						const value = context.raw;
-						return `${label}: ${String(value)}`;
+				callbacks: {
+					label: (ctx: TooltipItem<'pie'>) => {
+						return `${ctx.label}: ${ctx.raw}`;
 					},
 					title: tooltip?.displayTitle
-						? (tooltipItems: { label?: string }[]) => {
-								return tooltipItems[0]?.label ?? '';
+						? (items: TooltipItem<'pie'>[]) => {
+								return items[0]?.label ?? '';
 							}
-						: () => {
-								return '';
-							},
+						: () => '',
 				},
 				bodySpacing: tooltip?.bodySpacing ?? 5,
 				displayColors: tooltip?.displayColors ?? true,
 				boxWidth: tooltip?.colorBoxWidth ?? 5,
 				boxHeight: tooltip?.colorBoxHeight ?? 5,
-				boxPadding: 5,
 				usePointStyle: tooltip?.usePointStyle ?? true,
 				titleColor: tooltip?.bodyFont?.titleColor ?? '#000',
 				bodyColor: tooltip?.bodyFont?.color ?? '#000',
 				bodyFont: {
-					family: tooltip?.bodyFont?.family ?? 'Poppins',
-					size: tooltip?.bodyFont?.size,
-					weight: tooltip?.bodyFont?.weight as
-						| 'normal'
-						| 'bold'
-						| 'lighter'
-						| 'bolder'
-						| undefined,
+					...tooltip?.bodyFont,
 				},
+				...tooltip,
 			},
 		},
 		interaction: {
@@ -391,10 +215,10 @@ const BasePieChart: React.FC<BasePieChartProps> = (props) => {
 			axis: 'x',
 			intersect: true,
 		},
-		onHover: (event: ChartEvent, chartElement: ActiveElement[]) => {
-			if (chartElement[0]) {
-				const hoveredIndexx = (chartElement[0] as { index: number }).index;
-				handleHover(hoveredIndexx);
+		onHover: (_: ChartEvent, chartElement) => {
+			const index = chartElement[0]?.index;
+			if (index !== undefined) {
+				handleHover(index);
 			} else {
 				setHoveredIndex(null);
 				hoveredIndexRef.current = null;
@@ -421,11 +245,9 @@ const BasePieChart: React.FC<BasePieChartProps> = (props) => {
 		...chartOptions,
 	};
 
-	const centerTextPlugin: Plugin<'pie'> = {
+	const centerTextPlugin: Plugin = {
 		id: 'centerText',
-		afterDatasetsDraw(chart) {
-			if (!customLabel) return;
-
+		afterDatasetsDraw(chart: ChartJS) {
 			const {
 				ctx,
 				chartArea: { left, right, top, bottom },
@@ -434,41 +256,40 @@ const BasePieChart: React.FC<BasePieChartProps> = (props) => {
 			ctx.save();
 
 			// Center text styling and positioning
-			const valueStyle = `${customLabel.valueStyles.fontStyle || 'normal'} ${customLabel.valueStyles.fontSize || '16px'}`;
-			ctx.font = `${valueStyle} Poppins`;
+			ctx.font = `${customLabel?.valueStyles?.fontStyle} ${customLabel?.valueStyles?.fontSize} Poppins`;
 			ctx.textAlign = 'center';
 			ctx.textBaseline = 'middle';
-			ctx.fillStyle = customLabel.valueStyles.color;
+			ctx.fillStyle = customLabel?.valueStyles?.color ?? '#000';
 
 			// Calculate the center position of the chart
 			const centerX = (left + right) / 2;
 			const centerY = (top + bottom) / 2;
 
 			// Render the center text
-			ctx.fillText(customLabel.id || '', centerX, centerY);
+			ctx.fillText(`${customLabel?.id}`, centerX, centerY);
 
 			// Render the compliance title with bottom margin
-			const titleBottomMargin = customLabel.margin ?? 10;
-			const position = customLabel.labelStyles.position ?? 5;
-			const titleYPosition = centerY + position;
-			ctx.font = `${customLabel.labelStyles.fontStyle} ${customLabel.labelStyles.fontSize} Poppins`;
-			ctx.fillStyle = customLabel.labelStyles.color || 'black';
-			ctx.fillText(customLabel.title || '', centerX, titleYPosition + titleBottomMargin);
+			const titleBottomMargin = customLabel?.margin ?? 10; // Adjust this value for bottom margin
+			const position = customLabel?.labelStyles?.position ?? 5;
+			const titleYPosition = centerY + position; // Default title Y position
+			ctx.font = `${customLabel?.labelStyles?.fontStyle} ${customLabel?.labelStyles?.fontSize} Poppins`; // Title font style
+			ctx.fillStyle = `${customLabel?.labelStyles?.color}`; // Title text color (gray)
+			ctx.fillText(`${customLabel?.title}`, centerX, titleYPosition + titleBottomMargin);
 
-			// Render compliance strip if `strip` is true
+			// Render compliance strip if `complianceStrip` is true
 			if (strip) {
-				const stripRadius = strip.stripSize ?? 35;
-				const stripThickness = strip.stripWidth ?? 7;
-				const compliancePercentage = customLabel.value;
+				const stripRadius = strip?.stripSize ?? 35; // Radius for the outer ring
+				const stripThickness = strip?.stripWidth ?? 7; // Thickness of the strip
+				const compliancePercentage = customLabel?.value ?? 0;
 
 				// Fixed start and end angles
-				const startAngle = (130 * Math.PI) / 180;
-				const endAngle = (55 * Math.PI) / 180;
+				const startAngle = (130 * Math.PI) / 180; // Convert degrees to radians
+				const endAngle = (55 * Math.PI) / 180; // Convert degrees to radians
 
 				// Total angle of the arc (adjusting for crossing 360 degrees)
 				let totalAngle = endAngle - startAngle;
 				if (totalAngle < 0) {
-					totalAngle += 2 * Math.PI;
+					totalAngle += 2 * Math.PI; // Ensure positive value for angles crossing 360
 				}
 
 				// Calculate the compliance angle based on the percentage
@@ -486,8 +307,8 @@ const BasePieChart: React.FC<BasePieChartProps> = (props) => {
 					centerY + stripRadius
 				);
 
-				gradient.addColorStop(0, strip.startColor ?? '#4CAF50');
-				gradient.addColorStop(1, strip.endColor ?? '#FFC107');
+				gradient.addColorStop(0, strip?.startColor ?? '#4CAF50'); // Start color
+				gradient.addColorStop(1, strip?.endColor ?? '#FFC107'); // End color
 
 				ctx.beginPath();
 				ctx.arc(
@@ -511,13 +332,15 @@ const BasePieChart: React.FC<BasePieChartProps> = (props) => {
 					startAngle + totalAngle
 				);
 				ctx.lineWidth = stripThickness;
-				ctx.strokeStyle = '#B7CADB';
+				ctx.strokeStyle = '#B7CADB'; // Grey color
 				ctx.stroke();
 			}
 
 			ctx.restore();
 		},
 	};
+
+	const plugins = [customLabel ? centerTextPlugin : undefined].filter(Boolean) as Plugin<'pie'>[];
 
 	return (
 		<div
@@ -532,7 +355,6 @@ const BasePieChart: React.FC<BasePieChartProps> = (props) => {
 				display: 'flex',
 				flexDirection: 'row',
 				alignItems: 'center',
-				cursor,
 				...style,
 			}}>
 			<Pie
@@ -540,18 +362,16 @@ const BasePieChart: React.FC<BasePieChartProps> = (props) => {
 				options={{
 					...options,
 				}}
-				plugins={[customLabel && centerTextPlugin].filter(
-					(plugin): plugin is Plugin<'pie', Record<string, unknown>> => {
-						return Boolean(plugin);
-					}
-				)}
-				{...extra}
+				plugins={plugins}
+				{...(typeof extra === 'object' && extra !== null ? extra : {})}
 			/>
-			{legend?.icon && legend.display && (
+			{legend?.icon && legend?.display && (
 				<ul
-					ref={legendRef}
 					style={{
-						...legend.legendStyles,
+						...(typeof legend?.legendStyles === 'object' &&
+						legend?.legendStyles !== null
+							? legend.legendStyles
+							: {}),
 					}}>
 					{labels.map((label, index) => {
 						const value = values[index];
@@ -563,7 +383,6 @@ const BasePieChart: React.FC<BasePieChartProps> = (props) => {
 									: (legendColors[index] ?? '#000');
 
 						return (
-							// eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
 							<li
 								key={index}
 								style={{
@@ -584,7 +403,7 @@ const BasePieChart: React.FC<BasePieChartProps> = (props) => {
 									setHoveredIndex(null);
 									hoveredIndexRef.current = null;
 								}}>
-								{(legend.circle ?? true) && (
+								{(legend?.circle ?? true) && (
 									<svg width='15' height='15' viewBox='0 0 30 30' fill='none'>
 										<circle
 											cx='15'
@@ -599,27 +418,19 @@ const BasePieChart: React.FC<BasePieChartProps> = (props) => {
 									style={{
 										marginLeft: 10,
 									}}>
-									{legend.customLabels ? (
+									{legend?.customLabels ? (
 										legend.customLabels({
-											label,
-											value: typeof value === 'number' ? value : 0,
+											label: typeof label === 'string' ? label : '',
+											value: typeof value === 'string' ? value : '',
 											index,
 											color,
 										})
 									) : (
 										<div className={styles.legend}>
-											<span
-												style={{
-													color: '#333',
-												}}>
-												{label}
+											<span style={{ color: '#333' }}>
+												{typeof label === 'string' ? label : ''}
 											</span>
-											<span
-												style={{
-													marginLeft: 10,
-												}}>
-												{value}
-											</span>
+											<span style={{ marginLeft: 10 }}>{value}</span>
 										</div>
 									)}
 								</div>

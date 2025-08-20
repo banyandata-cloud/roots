@@ -21,7 +21,7 @@
 	.item {
 		display: flex;
 		align-items: center;
-		gap: 0.25rem;
+		gap: 0.625rem;
 		width: 100%;
 
 		.item-icon {
@@ -33,7 +33,7 @@
 		}
 
 		.item-title {
-			font-size: 1.25rem;
+			font-size: 0.875rem;
 			font-weight: 500;
 			color: #1e1e1e;
 		}
@@ -46,9 +46,9 @@
 			.count-bg {
 				background-color: #b7cadb;
 				padding: 0.3125rem;
-				border-radius: 4px;
-				min-width: 1.75rem;
-				height: 1.75rem;
+				border-radius: 0.125rem;
+				min-width: 1.125rem;
+				height: 1.125rem;
 				display: flex;
 				align-items: center;
 				justify-content: center;
@@ -57,7 +57,7 @@
 			.count-text {
 				color: #ffffff;
 				font-weight: 500;
-				font-size: 1.125rem;
+				font-size: 0.8rem;
 				line-height: 1;
 			}
 		}

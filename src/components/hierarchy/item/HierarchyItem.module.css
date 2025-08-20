@@ -4,14 +4,14 @@
   justify-content: flex-start;
   align-items: stretch;
   position: relative;
+  min-width: 300px;
 }
-.root .dashed-connector {
-  position: absolute;
-  height: 1.2rem;
-  border-left: 0.0825rem dashed #cccccc;
-  margin-top: 2.2rem;
-  margin-left: 0.97rem;
-  z-index: 9;
+.root span[data-elem=component2] label > div[data-elem=base-cell] > span[data-elem=component1] {
+  margin-top: 0 !important;
+  margin-left: 0.525rem !important;
+}
+.root span[data-elem=component3] button {
+  max-height: 10px;
 }
 .root.searching > .header:hover {
   background: none;
@@ -33,8 +33,10 @@
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  min-width: 220px;
   height: auto;
-  width: 100%;
+  width: -moz-fit-content;
+  width: fit-content;
   padding: 0rem 0rem !important;
   cursor: pointer;
 }
@@ -51,11 +53,12 @@
 }
 .root .header > [data-elem=component1] .expand .icon, .root .header > [data-elem=component3] .expand .icon {
   width: 1rem;
-  margin-left: -0.07rem;
+  margin-left: -0.04rem;
   height: 1.49rem;
   fill: var(--text-color);
 }
 .root .header > [data-elem=component2] {
+  padding-left: 0.5rem;
   flex: 1 1 auto;
 }
 .root .header > [data-elem=component2] .title {
@@ -64,15 +67,16 @@
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  height: auto;
+  height: 2rem;
   padding: 0.25rem 0rem;
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
-  margin-top: 2px;
-  white-space: nowrap; /* Prevents text from wrapping */
-  overflow: hidden; /* Hides overflow content */
-  text-overflow: ellipsis;
+  margin-bottom: 2px;
+  margin-top: 1px;
+}
+.root .header > [data-elem=component2] .titleNoList {
+  padding-left: 0.5rem;
 }
 .root .header > [data-elem=component2] .searchFieldWrapper {
   display: flex;
@@ -80,14 +84,14 @@
   background: white;
   box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25);
   border-radius: 0.25rem;
-  height: 2.3rem;
+  height: 2rem;
   margin-left: -28px;
   margin-bottom: 2px;
   margin-top: 1px;
   padding: 0 !important;
 }
 .root .header > [data-elem=component2] .searchFieldWrapper .searchButton {
-  width: 20px;
+  width: 1.25rem;
   margin: 0 !important;
   padding: 0 !important;
 }
@@ -142,7 +146,7 @@
   align-items: center;
 }
 .root .header .searchWrapper .searchButton {
-  width: 20px;
+  width: 1.25rem;
 }
 .root .header:hover {
   background: var(--background-color4);
@@ -159,7 +163,7 @@
   display: block;
 }
 .root .expand-container {
-  margin-left: 10px;
+  margin-left: 4px;
   position: relative;
   width: 1rem;
   height: 1rem;
@@ -169,17 +173,18 @@
 }
 .root .expand-container .collapsed-tail {
   position: absolute;
-  top: 120%;
-  left: 0.4rem;
+  top: 128%;
+  left: 0.45rem;
   width: 1px;
-  height: 1.25rem;
+  height: 1rem;
   background: var(--grey1);
   z-index: 1;
   pointer-events: none;
 }
 .root .expand-container .dashed-connector-for-button {
-  height: 1.2rem;
-  border-left: 0.0825rem dashed #cccccc;
+  height: 1.3rem;
+  border-left: 0.0313rem dashed #cccccc;
+  transform: translateX(0.45rem);
   margin-top: 30px;
   margin-left: 2.18rem;
   z-index: 9;
@@ -205,18 +210,18 @@
   align-items: center;
   width: 1rem;
   height: 100%;
+  margin-left: -0.2rem;
+  z-index: -99;
 }
 .root .body > [data-elem=component1] .tail::after {
   content: "";
   display: block;
   margin: auto;
-  margin-top: -0.525rem;
+  margin-top: -0.325rem;
   width: 1px;
   flex: 1;
   background: var(--grey1);
   margin-bottom: -0.55rem;
-  margin-left: 9px;
-  z-index: 1;
 }
 .root .body > [data-elem=component1] .highlight-tail {
   display: flex;
@@ -225,18 +230,17 @@
   align-items: center;
   width: 1rem;
   height: 100%;
+  margin-left: -0.2rem;
 }
 .root .body > [data-elem=component1] .highlight-tail::after {
   content: "";
   display: block;
   margin: auto;
-  margin-top: -0.525rem;
+  margin-top: -0.325rem;
   width: 1px;
   flex: 1;
   background: #0f62fe;
   margin-bottom: -0.55rem;
-  margin-left: 9px;
-  z-index: 1;
 }
 .root .body > [data-elem=component2] {
   flex: 1 0 auto;
@@ -247,7 +251,7 @@
 }
 .root.open > .header .expand .icon {
   transform: none;
-  height: 0.7625rem;
+  height: 0.8rem;
   width: 0rem;
   margin-left: 1.4rem;
 }
@@ -264,6 +268,7 @@
 }
 .root.active > .header {
   background: var(--background-color4);
+  border-radius: 0.25rem;
 }
 .root.active > .header .icon,
 .root.active > .header .title,

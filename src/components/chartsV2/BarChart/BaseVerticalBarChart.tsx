@@ -1,3 +1,4 @@
+import type { ChartData, ChartDataset, ChartOptions } from 'chart.js';
 import {
 	BarElement,
 	CategoryScale,
@@ -5,92 +6,15 @@ import {
 	Legend,
 	LinearScale,
 	Tooltip,
-	type ChartDataset,
-	type ChartOptions,
-	type LegendOptions,
 } from 'chart.js';
+import type { Context } from 'chartjs-plugin-datalabels';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
 import { getColorGradient } from '../utils';
+import type { BaseBarChartProps } from './types';
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend, ChartDataLabels);
-
-interface ChartDataItem {
-	x1?: string;
-	[key: string]: string | number | undefined;
-}
-
-interface SeriesData {
-	chartData: Record<string, ChartDataItem>;
-}
-
-interface TitleStyle {
-	textStyle?: {
-		fontSize?: number;
-	};
-	left?: number;
-	paddingTop?: number;
-}
-
-interface CustomTooltipFont {
-	titleColor?: string;
-	color?: string;
-	family?: string;
-	size?: number;
-	weight?: 'normal' | 'bold' | 'lighter' | 'bolder' | number;
-}
-
-interface TooltipConfig {
-	borderWidth?: number;
-	bodySpacing?: number;
-	displayColors?: boolean;
-	colorBoxWidth?: number;
-	colorBoxHeight?: number;
-	usePointStyle?: boolean;
-	bodyFont?: CustomTooltipFont;
-	titleColor?: string;
-	bodyColor?: string;
-	color?: string;
-}
-
-interface GridOptions {
-	gridContainLabel?: boolean;
-}
-
-interface BaseBarChartProps {
-	loading: boolean;
-	seriesData: SeriesData;
-	title?: TitleStyle;
-	gridOptions?: GridOptions;
-	width?: string | number;
-	height?: string | number;
-	barThickness?: number;
-	borderRadius?: number;
-	xAxisTitle?: string;
-	yAxisTitle?: string;
-	tooltip?: TooltipConfig;
-	legends?: Partial<LegendOptions<'bar'>>;
-	chartOptions?: Partial<ChartOptions<'bar'>['plugins']>;
-	chartDatasets?: Partial<ChartDataset<'bar'>>;
-	xAxis?: Partial<ChartOptions<'bar'>['scales']>;
-	yAxis?: Partial<ChartOptions<'bar'>['scales']>;
-	styles?: React.CSSProperties;
-	vertical?: boolean;
-	stacked?: ChartDataset<'bar'>;
-	extra?: Record<string, unknown>;
-	barColors?: Record<string, string>;
-}
-
-function isCustomTooltipFont(font: unknown): font is CustomTooltipFont {
-	return (
-		font !== null &&
-		typeof font === 'object' &&
-		'family' in font &&
-		'size' in font &&
-		'weight' in font
-	);
-}
 
 const BaseBarChart: React.FC<BaseBarChartProps> = ({
 	seriesData,
@@ -115,82 +39,70 @@ const BaseBarChart: React.FC<BaseBarChartProps> = ({
 	barColors,
 }) => {
 	const labels = Object.keys(seriesData.chartData);
-
 	const allKeys = new Set<string>();
-	Object.values(seriesData.chartData).forEach((item) => {
-		Object.keys(item).forEach((key) => {
+
+	Object.values(seriesData.chartData).forEach((data) => {
+		Object.keys(data).forEach((key) => {
 			allKeys.add(key);
 		});
 	});
 
 	const barDatasets: ChartDataset<'bar'>[] = Array.from(allKeys).map((key) => {
-		const backgroundColor = (ctx: CanvasRenderingContext2D): string => {
-			const color = barColors?.[key];
-			if (!color) return 'grey';
-
-			return color.startsWith('linear-gradient')
-				? (getColorGradient(ctx, color) as string)
-				: color;
-		};
-
-		const data = labels.map((label) => {
-			const value = seriesData.chartData[label]?.[key];
-			return typeof value === 'number' ? value : null;
-		});
-
 		return {
 			label: key,
-			backgroundColor,
-			data,
+			backgroundColor: (ctx) => {
+				const color = barColors?.[key];
+				if (!color) return 'grey';
+
+				if (color.startsWith('linear-gradient')) {
+					return getColorGradient(ctx, color);
+				}
+
+				return color;
+			},
+			data: labels.map((label) => {
+				return seriesData.chartData[label]?.[key] ?? null;
+			}),
 			borderRadius,
 			barThickness,
 			...chartDatasets,
-		} as ChartDataset<'bar'>;
+		};
 	});
 
 	const datasets = stacked ? [...barDatasets, stacked] : [...barDatasets];
 
-	const bodyFont: CustomTooltipFont = isCustomTooltipFont(tooltip?.bodyFont)
-		? {
-				size: typeof tooltip.bodyFont.size === 'number' ? tooltip.bodyFont.size : 12,
-				weight: tooltip.bodyFont.weight ?? 'normal',
-				family: tooltip.bodyFont.family ?? 'Poppins',
-			}
-		: {
-				size: 12,
-				weight: 'normal',
-				family: 'Poppins',
-			};
-
 	const options: ChartOptions<'bar'> = {
 		responsive: true,
 		maintainAspectRatio: false,
-		indexAxis: vertical ? 'x' : 'y',
+		indexAxis: !vertical ? 'y' : 'x',
 		plugins: {
 			title: {
 				display: true,
+				align: 'start',
+				padding: 0,
 				font: {
 					size: title?.textStyle?.fontSize ?? 12,
 					family: 'Poppins',
 				},
-				align: 'start',
-				padding: {
-					top: title?.paddingTop ?? 0,
-				},
+				text: title?.text,
 			},
 			tooltip: {
-				...(tooltip ?? {}),
 				borderWidth: tooltip?.borderWidth ?? 1,
 				backgroundColor: 'rgba(255, 255, 255, 1)',
 				bodySpacing: tooltip?.bodySpacing ?? 5,
 				displayColors: tooltip?.displayColors ?? true,
 				boxWidth: tooltip?.colorBoxWidth ?? 5,
 				boxHeight: tooltip?.colorBoxHeight ?? 5,
-				boxPadding: 5,
 				usePointStyle: tooltip?.usePointStyle ?? true,
-				titleColor: tooltip?.bodyFont?.titleColor ?? '#000',
+				titleColor: tooltip?.titleColor ?? '#000',
 				bodyColor: tooltip?.bodyFont?.color ?? '#000',
-				bodyFont,
+				bodyFont: {
+					...tooltip?.bodyFont,
+					family: 'Poppins',
+					...(typeof tooltip?.bodyFont === 'object' ? tooltip.bodyFont : {}),
+				},
+
+				...tooltip,
 			},
 			legend: {
 				display: false,
@@ -205,13 +117,18 @@ const BaseBarChart: React.FC<BaseBarChartProps> = ({
 					family: 'Poppins',
 				},
 				offset: 4,
-				formatter: (_value, context) => {
-					const index = context.dataIndex;
-					const label = labels[index];
-					return typeof label === 'string' ? label : '';
+				formatter: (_value: number, context: Context) => {
+					const label = context.chart.data.labels?.[context.dataIndex];
+
+					if (typeof label === 'string' || typeof label === 'number') {
+						return String(label);
+					}
+					return '';
 				},
+
+				...chartOptions?.plugins?.datalabels,
 			},
-			...chartOptions,
+			...chartOptions?.plugins,
 		},
 		scales: {
 			x: {
@@ -221,18 +138,16 @@ const BaseBarChart: React.FC<BaseBarChartProps> = ({
 				},
 				ticks: {
 					color: 'black',
-					callback: (_val, index) => {
+					callback: (_value: string | number, index: number) => {
 						const label = labels[index];
-						return typeof label === 'string'
-							? (seriesData.chartData[label]?.x1 ?? '')
-							: '';
+						return label ? (seriesData.chartData[label]?.x1 ?? null) : null;
 					},
 					font: {
 						family: 'Poppins',
 					},
 				},
 				title: {
-					display: Boolean(xAxisTitle),
+					display: true,
 					text: xAxisTitle,
 					color: 'black',
 					font: {
@@ -253,7 +168,7 @@ const BaseBarChart: React.FC<BaseBarChartProps> = ({
 					},
 				},
 				title: {
-					display: Boolean(yAxisTitle),
+					display: true,
 					text: yAxisTitle,
 					color: 'black',
 					font: {
@@ -263,6 +178,12 @@ const BaseBarChart: React.FC<BaseBarChartProps> = ({
 				...yAxis,
 			},
 		},
+		...chartOptions,
+	};
+
+	const data: ChartData<'bar'> = {
+		labels,
+		datasets,
 	};
 
 	return (
@@ -272,14 +193,7 @@ const BaseBarChart: React.FC<BaseBarChartProps> = ({
 				height,
 				...styles,
 			}}>
-			<Bar
-				data={{
-					labels,
-					datasets,
-				}}
-				options={options}
-				{...extra}
-			/>
+			<Bar data={data} options={options} {...extra} />
 		</div>
 	);
 };
