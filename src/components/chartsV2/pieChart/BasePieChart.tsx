@@ -421,7 +421,7 @@ const BasePieChart: React.FC<BasePieChartProps> = (props) => {
 									{legend?.customLabels ? (
 										legend.customLabels({
 											label: typeof label === 'string' ? label : '',
-											value: typeof value === 'string' ? value : '',
+											value: typeof value === 'number' ? value : '',
 											index,
 											color,
 										})
