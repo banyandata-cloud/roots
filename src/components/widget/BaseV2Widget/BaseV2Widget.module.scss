@@ -98,6 +98,7 @@
 			.header-options-list {
 				@include flex(row, flex-end);
 				gap: 0.5rem;
+				height: 2.4rem;
 				.dropdown-header {
 					border-radius: 0.25rem;
 					background-color: transparent !important;

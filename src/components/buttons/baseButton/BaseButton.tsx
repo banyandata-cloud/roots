@@ -1,10 +1,10 @@
-import { forwardRef, type MouseEvent, type RefObject } from 'react';
+import { forwardRef, type MouseEvent } from 'react';
 import { classes } from '../../../utils';
 import { BaseCell } from '../../cell';
 import styles from './BaseButton.module.css';
 import type { BaseButtonProps } from './types';
 
-const BaseButton = forwardRef<RefObject<HTMLElement>, BaseButtonProps>((props, ref) => {
+const BaseButton = forwardRef<HTMLElement, BaseButtonProps>((props, ref) => {
 	const {
 		className = '',
 		component1,
@@ -21,7 +21,7 @@ const BaseButton = forwardRef<RefObject<HTMLElement>, BaseButtonProps>((props, r
 		variant = 'contained',
 	} = props;
 
-	const Title = <span data-elem='title'>{title}</span>;
+	const Title = title && <span data-elem='title'>{title}</span>;
 
 	return (
 		<BaseCell

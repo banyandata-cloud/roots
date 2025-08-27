@@ -13,8 +13,9 @@
   gap: 0.5rem;
   padding: 0.5rem 1rem;
   cursor: pointer;
+  border: none;
 }
-.root > .header[data-elem=base-cell] > [data-elem=component1] .icon {
+.root > .header[data-elem=base-cell] > [data-elem=component1] svg {
   transition: all 0.3s ease-in-out;
 }
 .root > .header[data-elem=base-cell] > [data-elem=component1], .root > .header[data-elem=base-cell] > [data-elem=component3] {
@@ -23,10 +24,10 @@
   justify-content: center;
   align-items: center;
 }
-.root > .header[data-elem=base-cell] > [data-elem=component1] .icon, .root > .header[data-elem=base-cell] > [data-elem=component3] .icon {
+.root > .header[data-elem=base-cell] > [data-elem=component1] svg, .root > .header[data-elem=base-cell] > [data-elem=component3] svg {
   transform: rotate(90deg);
-  width: 1rem;
-  height: 1rem;
+  width: 1.5rem;
+  height: 1.5rem;
   fill: var(--text-color);
 }
 .root > .header[data-elem=base-cell] > [data-elem=component3] {
@@ -42,15 +43,16 @@
 .root > .header[data-elem=base-cell]:hover {
   background: var(--background-color4);
 }
-.root > .header[data-elem=base-cell]:hover .icon,
 .root > .header[data-elem=base-cell]:hover .title {
   color: var(--secondary-color1);
+}
+.root > .header[data-elem=base-cell]:hover svg {
   fill: var(--secondary-color1);
 }
 .root > .body {
   padding: 0.5rem 2.5rem;
 }
-.root.open > .header[data-elem=base-cell] [data-elem=component1] .icon {
+.root.open > .header[data-elem=base-cell] [data-elem=component1] svg {
   transform: none;
 }
 .root.open > .body {

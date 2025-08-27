@@ -6,10 +6,9 @@ import { ThemedContainer } from '../../helpers';
 import {
 	sampleData,
 	sampleStackData,
-	transformToStack,
 	stackData,
-} from './BaseVerticalBarChartData.js';
-import BaseBarChart from './BaseVerticalBarChart.jsx';
+} from './BaseVerticalBarChartData.ts';
+import BaseBarChart from './BaseVerticalBarChart';
 
 <Meta title='Components/ChartsV2/BarChart' parameters={{ options: { showToolbar: false } }} />
 
@@ -39,8 +38,8 @@ Basic import and additional information on how to use this component.
 import { BaseBarChartV2 } from '@banyan_cloud/roots';
 ```
 
--   The Vertical Bar Chart is just like any other chart with standard `chartData` and `metaData` values alongwith props to control customization.
--   The `className` of the Chart can be adjusted in the implementaion code to match its flexibility with respect to its container.
+- The Vertical Bar Chart is just like any other chart with standard `chartData` and `metaData` values alongwith props to control customization.
+- The `className` of the Chart can be adjusted in the implementaion code to match its flexibility with respect to its container.
 
 ## Stories
 
@@ -62,6 +61,9 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 			},
 			xAxisShow: true,
 			barWidth: 8,
+			barColors: {
+				x1: 'linear-gradient(0deg, #EE0004 49.99%, #770002 100%)',
+			},
 			barColor1: [
 				'#FF6384',
 				'#36A2EB',
@@ -73,25 +75,31 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 				'#E96B6B',
 			],
 			chartOptions: {
-				datalabels: {
-					formatter: (value, context) => {
-						return `${value}`;
+				plugins: {
+					legend: {
+						display: false,
 					},
-					borderColor: 'black',
-					borderWidth: 1,
-					borderRadius: 3,
-					padding: {
-						top: 2,
-						bottom: 2,
-						left: 4,
-						right: 4,
-					},
-					align: 'top',
-					anchor: 'end',
-					color: 'black',
-					font: {
-						size: 12,
-						family: 'Poppins',
+					datalabels: {
+						display: false,
+						formatter: (value, context) => {
+							return `${value}`;
+						},
+						borderColor: 'black',
+						borderWidth: 1,
+						borderRadius: 3,
+						padding: {
+							top: 2,
+							bottom: 2,
+							left: 4,
+							right: 4,
+						},
+						align: 'top',
+						anchor: 'end',
+						color: 'black',
+						font: {
+							size: 12,
+							family: 'Poppins',
+						},
 					},
 				},
 			},
@@ -106,17 +114,6 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 						family: 'Poppins',
 					},
 				},
-			},
-			chartDatasets: {
-				backgroundColor: Object.keys(sampleData.chartData).map((cloud) => {
-					const colorMap = {
-						MySql: 'black',
-						PgSql: 'green',
-						Oracle: 'red',
-						Oradcdcle: 'yellow',
-					};
-					return colorMap[cloud] || 'gray';
-				}),
 			},
 			xAxisLabel: {
 				show: true,
@@ -173,7 +170,7 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 				stacked: true,
 				type: 'linear',
 				min: 0,
-				max: 50,
+				max: 100,
 				grid: {
 					display: false,
 				},
@@ -223,26 +220,31 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 				'#E96B6B',
 			],
 			chartOptions: {
-				datalabels: {
-					display: false,
-					formatter: (value, context) => {
-						return `${value}`;
+				plugins: {
+					legend: {
+						display: false,
 					},
-					borderColor: 'black',
-					borderWidth: 1,
-					borderRadius: 3,
-					padding: {
-						top: 2,
-						bottom: 2,
-						left: 4,
-						right: 4,
-					},
-					align: 'top',
-					anchor: 'end',
-					color: 'black',
-					font: {
-						size: 12,
-						family: 'Poppins',
+					datalabels: {
+						display: false,
+						formatter: (value, context) => {
+							return `${value}`;
+						},
+						borderColor: 'black',
+						borderWidth: 1,
+						borderRadius: 3,
+						padding: {
+							top: 2,
+							bottom: 2,
+							left: 4,
+							right: 4,
+						},
+						align: 'top',
+						anchor: 'end',
+						color: 'black',
+						font: {
+							size: 12,
+							family: 'Poppins',
+						},
 					},
 				},
 			},

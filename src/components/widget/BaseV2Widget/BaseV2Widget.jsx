@@ -19,7 +19,7 @@ import { Text } from '../../text';
 import { WidgetFallback } from '../fallback';
 import styles from './BaseV2Widget.module.css';
 
-const generateOptions = ({ optionData, toggleDrawer }) => {
+const generateOptions = ({ optionData, toggleDrawer, header = false }) => {
 	switch (optionData?.id ?? '') {
 		case 'dropdown':
 			return (
@@ -91,7 +91,7 @@ const generateOptions = ({ optionData, toggleDrawer }) => {
 					{...optionData}
 					className={styles['toggle-body']}
 					smooth
-					secondary
+					secondary={!header}
 					options={optionData.options}
 				/>
 			);
@@ -130,6 +130,7 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 		titleDesc,
 		body: Body = () => {},
 		headerOptions = null,
+		rightActions = null,
 	} = props;
 
 	const emptyChartData = useMemo(() => {
@@ -175,9 +176,14 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 						{title}
 					</Text>
 				)}
-				{headerOptions && (
-					<Toggle v2 className={styles['toggle-body']} smooth {...headerOptions} />
-				)}
+				{(headerOptions?.length ?? 0) > 0 &&
+					headerOptions?.map((objectData) => {
+						return generateOptions({
+							optionData: objectData,
+							toggleDrawer,
+							header: true,
+						});
+					})}
 			</Text>
 			{titleDesc && (
 				<Text
@@ -245,19 +251,33 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 					)}
 				</div>
 
-				<div className={styles['header-options']} data-elem='header-options'>
-					<div
-						className={classes(styles['header-options-list'])}
-						data-elem='header-options-list'>
-						{(options?.length ?? 0) > 0 &&
-							options?.map((objectData) => {
-								return generateOptions({
-									optionData: objectData,
-									toggleDrawer,
-								});
-							})}
+				{options?.length > 0 && (
+					<div className={styles['header-options']} data-elem='header-options'>
+						<div
+							className={classes(styles['header-options-list'])}
+							data-elem='header-options-list'>
+							{(options?.length ?? 0) > 0 &&
+								options?.map((objectData) => {
+									return generateOptions({
+										optionData: objectData,
+										toggleDrawer,
+									});
+								})}
+						</div>
 					</div>
-				</div>
+				)}
+				{rightActions && (
+					<div className={styles['header-options']} data-elem='header-options'>
+						<div
+							className={classes(styles['header-options-list'])}
+							data-elem='header-options-list'>
+							{rightActions &&
+								rightActions({
+									toggleDrawer,
+								})}
+						</div>
+					</div>
+				)}
 			</div>
 
 			<BaseSidePanel

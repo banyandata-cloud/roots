@@ -52,4 +52,7 @@
 }
 .root.flexible.lg {
   min-width: 21.875rem;
+}
+.root.centered {
+  justify-content: center;
 }/*# sourceMappingURL=BaseCell.module.css.map */
