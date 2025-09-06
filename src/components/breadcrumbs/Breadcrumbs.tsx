@@ -1,6 +1,3 @@
-/* eslint-disable react/no-array-index-key */
-/* eslint-disable react/require-default-props */
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react';
 import { classes } from '../../utils/utils';
 import Button from '../buttons/button/Button';
