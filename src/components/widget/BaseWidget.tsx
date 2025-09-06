@@ -1,4 +1,4 @@
-import {
+import React, {
 	Children,
 	cloneElement,
 	forwardRef,
@@ -6,35 +6,111 @@ import {
 	useEffect,
 	useMemo,
 	useState,
+	type ReactNode,
+	type CSSProperties,
 } from 'react';
-import { classes } from '../../../utils';
-import { Toggle } from '../../Toggle';
-import { BaseButton, Button } from '../../buttons';
-import { DatePicker } from '../../datePicker';
-import { ArrowIcon, CaretIcon, FilterIcon, MaximizeIcon } from '../../icons';
-import { DropdownItemv2, Dropdownv2 } from '../../input';
-import { Popover } from '../../popover';
-import BaseSidePanel from '../../sidePanel/BaseSidePanel';
-import { Text } from '../../text';
-import { WidgetFallback } from '../fallback';
-import styles from './BaseV2Widget.module.css';
+import { classes } from '../../utils';
+import { Toggle } from '../Toggle';
+import { BaseButton, Button } from '../buttons';
+import { DatePicker } from '../datePicker';
+import { ArrowIcon, CaretIcon, FilterIcon, MaximizeIcon } from '../icons';
+import { DropdownItemv2, Dropdownv2 } from '../input';
+import { Popover } from '../popover';
+import BaseSidePanel from '../sidePanel/BaseSidePanel';
+import { Text } from '../text';
+import { WidgetFallback } from './fallback';
+import styles from './BaseWidget.module.css';
 
-const generateOptions = ({ optionData, toggleDrawer, header = false }) => {
-	switch (optionData?.id ?? '') {
+interface OptionData {
+	id: string;
+	title?: string;
+	placeholder?: string;
+	value?: string;
+	onChange?: (val: string) => void;
+	onClick?: () => void;
+	onApply?: (val?: unknown) => void;
+	onClear?: () => void;
+	date?: unknown;
+	range?: boolean;
+	options?: { label: string; value: string }[];
+	render?: () => ReactNode;
+	selectOption?: { title: string; value: string }[];
+}
+
+interface ToggleDrawerData {
+	index: number;
+}
+
+interface ToggleDrawerState {
+	open: boolean;
+	data: ToggleDrawerData;
+}
+
+interface BaseWidgetProps {
+	loading?: boolean;
+	title?: string;
+	titleOptions?: ReactNode;
+	showBack?: boolean;
+	onBack?: () => void;
+	onReload?: () => void;
+	options?: OptionData[];
+	className?: string;
+	children?: ReactNode;
+	drawerClassName?: string;
+	overlayClassName?: string;
+	fallbackProps?: {
+		className?: string;
+		title?: string;
+	};
+	setFallback?: (val: boolean) => void;
+	showFallback?: boolean;
+	style?: CSSProperties;
+	onMouseDown?: (e: React.MouseEvent) => void;
+	onMouseUp?: (e: React.MouseEvent) => void;
+	onTouchEnd?: (e: React.TouchEvent) => void;
+	titleDesc?: string;
+	body?: React.ComponentType<{ toggle: (drawerArgs?: { data?: ToggleDrawerData }) => void }>;
+	headerOptions?: OptionData[];
+	rightActions?: (options: {
+		toggleDrawer: (drawerArgs?: { data?: ToggleDrawerData }) => void;
+	}) => ReactNode;
+}
+
+interface ChartChildProps {
+	seriesData?: {
+		chartData?: Record<string, unknown>;
+	};
+}
+
+interface ChildWithExtraProps {
+	fallback?: boolean;
+	toggleDrawer?: () => void;
+}
+
+const generateOptions = ({
+	optionData,
+	toggleDrawer,
+	header = false,
+}: {
+	optionData: OptionData;
+	toggleDrawer: (params?: { data?: ToggleDrawerData }) => void;
+	header?: boolean;
+}) => {
+	switch (optionData.id || '') {
 		case 'dropdown':
 			return (
 				<Dropdownv2
-					placeholder={optionData?.placeholder ?? ''}
-					value={optionData?.value ?? ''}
-					onChange={optionData?.onChange ?? ''}
+					placeholder={optionData.placeholder ?? ''}
+					value={optionData.value ?? ''}
+					onChange={optionData.onChange}
 					className={classes(styles['dropdown-header'])}
 					popperClassName={styles['dropdown-popper']}>
-					{(optionData?.selectOption ?? []).map((objectData) => {
+					{(optionData.selectOption ?? []).map((objectData) => {
 						return (
 							<DropdownItemv2
-								title={objectData?.title ?? ''}
-								key={objectData?.value ?? ''}
-								value={objectData?.value ?? ''}
+								title={objectData.title}
+								key={objectData.value}
+								value={objectData.value}
 								className={styles['dropdown-item']}
 							/>
 						);
@@ -44,11 +120,11 @@ const generateOptions = ({ optionData, toggleDrawer, header = false }) => {
 		case 'expand':
 			return (
 				<Button
-					title={optionData?.title ?? ''}
+					title={optionData.title ?? ''}
 					variant='outlined'
 					size='auto'
 					className={styles['expand-button']}
-					onClick={optionData?.onClick ?? ''}
+					onClick={optionData.onClick}
 					leftComponent={() => {
 						return <MaximizeIcon v2 className={styles['expand-icon']} />;
 					}}
@@ -58,17 +134,17 @@ const generateOptions = ({ optionData, toggleDrawer, header = false }) => {
 			return (
 				<DatePicker
 					className={styles['date-picker']}
-					placeholder={optionData?.placeholder ?? 'Select Date'}
-					range={optionData?.range ?? false}
-					onApply={optionData?.onApply ?? ''}
-					onClear={optionData?.onClear ?? ''}
-					value={optionData?.date ?? null}
+					placeholder={optionData.placeholder ?? 'Select Date'}
+					range={optionData.range ?? false}
+					onApply={optionData.onApply}
+					onClear={optionData.onClear}
+					value={optionData.date ?? null}
 				/>
 			);
 		case 'filter':
 			return (
 				<Button
-					title={optionData?.title ?? 'Filter'}
+					title={optionData.title ?? 'Filter'}
 					variant='outlined'
 					size='auto'
 					className={styles['filter-button']}
@@ -96,22 +172,20 @@ const generateOptions = ({ optionData, toggleDrawer, header = false }) => {
 				/>
 			);
 		case 'custom':
-			return optionData.render();
+			return optionData.render ? optionData.render() : null;
 		default:
 			return null;
 	}
 };
 
-// eslint-disable-next-line prefer-arrow-callback
-const BaseWidget = forwardRef(function BaseWidget(props, ref) {
-	// eslint-disable-next-line object-curly-newline
+const BaseWidget = forwardRef<HTMLDivElement, BaseWidgetProps>((props, ref) => {
 	const {
 		loading = false,
 		title = '',
 		titleOptions = null,
 		showBack = false,
-		onBack = () => {},
-		onReload = () => {},
+		onBack,
+		onReload,
 		options = [],
 		className = '',
 		children,
@@ -121,44 +195,51 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 			className: '',
 			title: "We're having trouble loading this data",
 		},
-		setFallback = () => {},
+		setFallback = () => {
+			/* no-op */
+		},
 		showFallback = false,
 		style,
 		onMouseDown,
 		onMouseUp,
 		onTouchEnd,
 		titleDesc,
-		body: Body = () => {},
+		body: Body = () => {
+			return null;
+		},
 		headerOptions = null,
 		rightActions = null,
 	} = props;
 
 	const emptyChartData = useMemo(() => {
 		return Children.toArray(children).every((child) => {
-			const chartData = child.props?.seriesData?.chartData ?? {};
-			return chartData && Object.keys(chartData).length === 0;
+			if (isValidElement<ChartChildProps>(child)) {
+				const chartData = child.props.seriesData?.chartData ?? {};
+				return Object.keys(chartData).length === 0;
+			}
+			return true;
 		});
 	}, [children]);
 
 	useEffect(() => {
 		setFallback(emptyChartData);
-	}, [emptyChartData]);
+	}, [emptyChartData, setFallback]);
 
 	const [open, setOpen] = useState(false);
-	const [anchorEl, setAnchorEl] = useState(null);
+	const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
-	const [toggleTableDrawer, setToggleTableDrawer] = useState({
+	const [toggleTableDrawer, setToggleTableDrawer] = useState<ToggleDrawerState>({
 		open: false,
 		data: {
 			index: 0,
 		},
 	});
 
-	const toggleDrawer = ({ data } = {}) => {
+	const toggleDrawer = ({ data }: { data?: ToggleDrawerData } = {}) => {
 		setToggleTableDrawer((prevState) => {
 			return {
 				open: !prevState.open,
-				data,
+				data: data ?? prevState.data,
 			};
 		});
 	};
@@ -176,6 +257,7 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 						{title}
 					</Text>
 				)}
+
 				{(headerOptions?.length ?? 0) > 0 &&
 					headerOptions?.map((objectData) => {
 						return generateOptions({
@@ -192,7 +274,6 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 					attrs={{
 						'data-elem': 'title-desc',
 					}}>
-					{' '}
 					{titleDesc}
 				</Text>
 			)}
@@ -211,7 +292,7 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 				<div
 					className={classes(
 						styles['header-title'],
-						(options?.length ?? 0) === 0 ? styles['no-options'] : '',
+						options.length === 0 ? styles['no-options'] : '',
 						titleOptions == null ? styles['no-title-options'] : ''
 					)}
 					data-elem='header-title'>
@@ -233,7 +314,11 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 								ref={setAnchorEl}
 								size='auto'
 								className={styles.title}
-								onClick={setOpen}
+								onClick={() => {
+									setOpen((prev) => {
+										return !prev;
+									});
+								}}
 								title={titleText}
 								component3={<CaretIcon className={styles.icon} />}
 							/>
@@ -251,30 +336,29 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 					)}
 				</div>
 
-				{options?.length > 0 && (
+				{options.length > 0 && (
 					<div className={styles['header-options']} data-elem='header-options'>
 						<div
 							className={classes(styles['header-options-list'])}
 							data-elem='header-options-list'>
-							{(options?.length ?? 0) > 0 &&
-								options?.map((objectData) => {
-									return generateOptions({
-										optionData: objectData,
-										toggleDrawer,
-									});
-								})}
+							{options.map((objectData) => {
+								return generateOptions({
+									optionData: objectData,
+									toggleDrawer,
+								});
+							})}
 						</div>
 					</div>
 				)}
+
 				{rightActions && (
 					<div className={styles['header-options']} data-elem='header-options'>
 						<div
 							className={classes(styles['header-options-list'])}
 							data-elem='header-options-list'>
-							{rightActions &&
-								rightActions({
-									toggleDrawer,
-								})}
+							{rightActions({
+								toggleDrawer,
+							})}
 						</div>
 					</div>
 				)}
@@ -286,7 +370,7 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 				className={classes(styles.drawer, drawerClassName)}
 				data-elem='panel'
 				animation>
-				{isValidElement(<Body />) && <Body toggle={toggleDrawer} />}
+				<Body toggle={toggleDrawer} />
 			</BaseSidePanel>
 
 			{toggleTableDrawer.open && (
@@ -303,7 +387,7 @@ const BaseWidget = forwardRef(function BaseWidget(props, ref) {
 					<WidgetFallback {...fallbackProps} onReload={onReload} />
 				)}
 				{Children.map(children, (child) => {
-					if (isValidElement(child)) {
+					if (isValidElement<ChildWithExtraProps>(child)) {
 						return cloneElement(child, {
 							fallback: !loading && emptyChartData,
 							toggleDrawer,
