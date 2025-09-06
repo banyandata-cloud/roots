@@ -4,11 +4,16 @@ import { classes } from '../../../utils';
 import { ErrorBoundaryWrapper } from '../../errorBoundary';
 import { Pagination as PaginationV2 } from '../../paginationv2';
 import BaseSidePanel from '../../sidePanel/BaseSidePanel';
-import { TableColumnV2 } from '../BaseTable.class';
 import { BaseTableV2 } from '../baseTable';
 import type { TableDrawerToggle, TableProps } from '../types';
 import styles from './Table.module.css';
 import { TableFilters } from './tableFilters';
+
+const SIZE_MAP = {
+	sm: 9.063,
+	md: 15.625,
+	lg: 21.875,
+};
 
 const INTERSECTION = 1;
 const STEP = 0.05;
@@ -18,7 +23,7 @@ for (let i = 0; i < INTERSECTION; i += STEP) {
 	THRESHOLD.push(i);
 }
 
-const Table = <TDatum extends Record<string, unknown>>({
+const Table = ({
 	className = '',
 	headerData = [],
 	tableData = [],
@@ -43,12 +48,12 @@ const Table = <TDatum extends Record<string, unknown>>({
 	tableDrawerProps,
 	searchProps,
 	filtersCount = 0,
-	emptyPlaceholder = null,
+	emptyPlaceholder,
 	onCheck,
 	checkAsRadio,
 	disableCheck,
-}: TableProps<TDatum>): ReactElement => {
-	const ref = useRef<HTMLDivElement | null>(null);
+}: TableProps): ReactElement => {
+	const ref = useRef<HTMLTableElement | null>(null);
 	const paginationRef = useRef<HTMLDivElement | null>(null);
 
 	const {
@@ -61,8 +66,8 @@ const Table = <TDatum extends Record<string, unknown>>({
 	const { title: tableTitle = '', description: tableDescription = '' } = tableInfo ?? {};
 
 	const [floating, setFloating] = useState<boolean>(false);
-	const [hiddenColumns, setHiddenColumns] = useState<Record<string, boolean | null>>({});
-	const [toggleTableDrawer, setToggleTableDrawer] = useState<TableDrawerToggle<TDatum>>({
+	const [hiddenColumns, setHiddenColumns] = useState<Record<string, boolean | null>>();
+	const [toggleTableDrawer, setToggleTableDrawer] = useState<TableDrawerToggle>({
 		open: false,
 		data: {},
 	});
@@ -84,7 +89,7 @@ const Table = <TDatum extends Record<string, unknown>>({
 	};
 
 	const visibleColumns = headerData.filter((header) => {
-		return [null, false, undefined].includes(hiddenColumns[header.id]);
+		return [null, false, undefined].includes(hiddenColumns?.[header.id]);
 	});
 
 	const drawerProps =
@@ -102,7 +107,7 @@ const Table = <TDatum extends Record<string, unknown>>({
 	}
 
 	useEffect(() => {
-		let observer: IntersectionObserver;
+		let observer: IntersectionObserver | undefined;
 		const tableElem = ref.current;
 		if (tableElem && !loading) {
 			const lastRow = tableElem.querySelector(
@@ -133,12 +138,12 @@ const Table = <TDatum extends Record<string, unknown>>({
 
 				// Cleanup
 				return () => {
-					observer.disconnect();
+					observer?.disconnect();
 				};
 			}
 		}
 		return () => {
-			observer.disconnect();
+			observer?.disconnect();
 		};
 	}, [tableData, loading, onIntersection, isFloating]);
 
@@ -152,19 +157,21 @@ const Table = <TDatum extends Record<string, unknown>>({
 	useEffect(() => {
 		const tableElem = ref.current;
 		if (tableElem && !loading) {
-			const tableHeaderElem = tableElem.querySelector('[data-elem="table-header"]');
-			const tableBodyElem = tableElem.querySelector('[data-elem="table-body"]');
+			const tableHeaderElem = tableElem.querySelector<HTMLElement>(
+				'[data-elem="table-header"]'
+			);
+			const tableBodyElem = tableElem.querySelector<HTMLElement>('[data-elem="table-body"]');
 
 			if (tableHeaderElem && tableBodyElem) {
 				let minWidth = 0;
 				visibleColumns.forEach((header) => {
-					minWidth += new TableColumnV2(header).sizeInRem;
+					minWidth += SIZE_MAP[header.size ?? 'md'];
 				});
-				tableHeaderElem.style.minWidth = `${minWidth}rem`;
-				tableBodyElem.style.minWidth = `${minWidth}rem`;
+				tableHeaderElem.style.minWidth = `${minWidth.toString()}rem`;
+				tableBodyElem.style.minWidth = `${minWidth.toString()}rem`;
 			}
 		}
-	}, [hiddenColumns, headerData, loading]);
+	}, [hiddenColumns, headerData, loading, visibleColumns]);
 
 	useEffect(() => {
 		if (headerData.length > 0) {

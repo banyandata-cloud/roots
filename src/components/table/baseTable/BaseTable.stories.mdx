@@ -25,8 +25,8 @@ Basic import and additional information on how to use this component.
 import { BaseTable } from '@banyan_cloud/roots';
 ```
 
--   The Table component accept 2 major keys `data` and `header` values alongwith props to control customization.
--   The `className` of the Table can be adjusted in the implementaion code to match its flexibility with respect to its container.
+- The Table component accept 2 major keys `data` and `header` values alongwith props to control customization.
+- The `className` of the Table can be adjusted in the implementaion code to match its flexibility with respect to its container.
 
 ## Stories
 
@@ -220,12 +220,12 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 								<TableCellV2
 									{...rest}
 									component3={
-										!expandableProps.disabled && (
+										!expandableProps?.disabled && (
 											<Button
 												{...expandableProps}
 												// eslint-disable-next-line no-underscore-dangle
 												title={
-													expandableProps._expanded
+													expandableProps?._expanded
 														? 'Collapse'
 														: 'Expand'
 												}
@@ -361,12 +361,12 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 								<TableCellV2
 									{...rest}
 									component3={
-										!expandableProps.disabled && (
+										!expandableProps?.disabled && (
 											<Button
 												{...expandableProps}
 												// eslint-disable-next-line no-underscore-dangle
 												title={
-													expandableProps._expanded
+													expandableProps?._expanded
 														? 'Collapse'
 														: 'Expand'
 												}

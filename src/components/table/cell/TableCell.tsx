@@ -1,4 +1,4 @@
-import { forwardRef, isValidElement, useEffect, useState, type RefObject } from 'react';
+import { forwardRef, isValidElement, useEffect, useState, type ForwardedRef } from 'react';
 import { classes } from '../../../utils';
 import { Button } from '../../buttons';
 import { BaseCell } from '../../cell';
@@ -20,7 +20,7 @@ const getNextSortState = (currentSort: string): SortType => {
 	}[currentSort] as SortType;
 };
 
-const TableCell = forwardRef<RefObject<HTMLElement>, TableCellProps>((props, ref) => {
+const TableCell = forwardRef((props: TableCellProps, ref: ForwardedRef<HTMLTableCellElement>) => {
 	const {
 		id,
 		className,
@@ -108,7 +108,7 @@ const TableCell = forwardRef<RefObject<HTMLElement>, TableCellProps>((props, ref
 							className={styles.sort}
 							size='auto'
 							onClick={() => {
-								onSort(id, getNextSortState(sortState));
+								onSort?.(id, getNextSortState(sortState));
 								setSortState(getNextSortState(sortState));
 							}}
 							rightComponent={() => {

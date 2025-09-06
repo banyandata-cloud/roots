@@ -1,6 +1,33 @@
 import type { ReactElement } from 'react';
 import { TableRow } from '../row';
+import type { TableProps } from '../types';
 import styles from './TableHeader.module.css';
+
+interface TableHeaderProps
+	extends Pick<
+		TableProps,
+		| 'headerData'
+		| 'customCells'
+		| 'tableData'
+		| 'className'
+		| 'loading'
+		| 'onRowClick'
+		| 'onSort'
+		| 'sortValue'
+		| 'rowHeight'
+		| 'defaultActiveIndex'
+		| 'emptyPlaceholder'
+		| 'onCheck'
+		| 'uniqueKey'
+		| 'checkAsRadio'
+		| 'disableCheck'
+	> {
+	expandable?:
+		| ((params: { datum: Record<string, unknown>; index: number | undefined }) => ReactElement)
+		| undefined;
+	checkedRows: Record<string, unknown>[];
+	setCheckedRows: (rows: Record<string, unknown>[]) => void;
+}
 
 const TableHeader = ({
 	headerData,
@@ -8,8 +35,7 @@ const TableHeader = ({
 	expandable,
 	onSort,
 	sortValue,
-	rowHeight,
-	theme = '',
+	rowHeight = 'md',
 	onRowClick,
 	onCheck,
 	checkedRows,
@@ -17,7 +43,7 @@ const TableHeader = ({
 	tableData,
 	checkAsRadio,
 	disableCheck,
-}): ReactElement => {
+}: TableHeaderProps): ReactElement => {
 	return (
 		<thead data-elem='table-header' className={styles.root}>
 			<TableRow
@@ -30,12 +56,14 @@ const TableHeader = ({
 				sortValue={sortValue}
 				rowHeight={rowHeight}
 				onRowClick={onRowClick}
-				theme={theme}
 				onCheck={onCheck}
 				checkedRows={checkedRows}
 				setCheckedRows={setCheckedRows}
 				checkAsRadio={checkAsRadio}
 				disableCheck={disableCheck}
+				datum={{
+					header: '__table_header__',
+				}}
 			/>
 		</thead>
 	);

@@ -7,9 +7,9 @@ import type { TableProps } from '../types';
 import styles from './BaseTable.module.css';
 import { Skeleton } from './Skeleton';
 
-interface BaseTableProps<TDatum extends object>
+interface BaseTableProps
 	extends Pick<
-		TableProps<TDatum>,
+		TableProps,
 		| 'headerData'
 		| 'customCells'
 		| 'tableData'
@@ -26,12 +26,14 @@ interface BaseTableProps<TDatum extends object>
 		| 'checkAsRadio'
 		| 'disableCheck'
 	> {
-	expandable?: (params: { datum: TDatum; index: number }) => boolean;
+	expandable?:
+		| ((params: { datum: Record<number, unknown>; index: number | undefined }) => ReactElement)
+		| undefined;
 	toggleDrawer: () => void;
 }
 
 const BaseTable = forwardRef(
-	<TDatum extends object>(
+	(
 		{
 			headerData,
 			customCells,
@@ -42,15 +44,15 @@ const BaseTable = forwardRef(
 			expandable,
 			onSort,
 			sortValue,
-			rowHeight,
+			rowHeight = 'md',
 			defaultActiveIndex,
 			toggleDrawer,
 			emptyPlaceholder,
 			onCheck,
-			uniqueKey,
+			uniqueKey = '',
 			checkAsRadio,
 			disableCheck,
-		}: BaseTableProps<TDatum>,
+		}: BaseTableProps,
 		ref: ForwardedRef<HTMLTableElement>
 	): ReactElement => {
 		const [checkedRows, setCheckedRows] = useState<Record<string, unknown>[]>([]);
@@ -76,8 +78,8 @@ const BaseTable = forwardRef(
 					<TableHeader
 						{...{
 							headerData,
-							customCells,
 							expandable,
+							customCells,
 							onSort,
 							sortValue,
 							onRowClick,
@@ -87,6 +89,7 @@ const BaseTable = forwardRef(
 							tableData,
 							disableCheck,
 							checkAsRadio,
+							rowHeight,
 						}}
 					/>
 				)}
