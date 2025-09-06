@@ -1,10 +1,10 @@
-import React, { forwardRef, useState } from 'react';
 import type { ReactElement, ReactNode } from 'react';
+import React, { forwardRef, useState } from 'react';
 import { classes } from '../../../utils';
 import { Button } from '../../buttons';
 import { BaseCell } from '../../cell';
 import { ExpandCollapseIcon, MagnifyingGlassIcon } from '../../icons';
-import { TextFieldv2 as TextField } from '../../input/textFieldv2';
+import { TextFieldv2 as TextField } from '../../input/textField';
 import styles from './HierarchyItem.module.css';
 
 type IconPlacement = 'left' | 'right' | 'none';

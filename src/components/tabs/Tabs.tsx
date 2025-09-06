@@ -8,8 +8,8 @@ import {
 } from 'react';
 import { classes } from '../../utils';
 import { Button } from '../buttons';
-import Dropdown from '../input/dropdownv2/Dropdownv2';
-import DropdownItem from '../input/dropdownv2/dropdown-itemv2/DropdownItemv2';
+import Dropdown from '../input/dropdown/Dropdownv2';
+import DropdownItem from '../input/dropdown/dropdown-itemv2/DropdownItemv2';
 import styles from './Tabs.module.css';
 import type { TabsProps } from './types';
 
