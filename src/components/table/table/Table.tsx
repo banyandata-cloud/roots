@@ -2,7 +2,7 @@ import { isValidElement, useEffect, useRef, useState, type ReactElement } from '
 import { ErrorBoundary } from 'react-error-boundary';
 import { classes } from '../../../utils';
 import { ErrorBoundaryWrapper } from '../../errorBoundary';
-import { Pagination as PaginationV2 } from '../../paginationv2';
+import { Pagination as PaginationV2 } from '../../pagination';
 import BaseSidePanel from '../../sidePanel/BaseSidePanel';
 import { BaseTableV2 } from '../baseTable';
 import type { TableDrawerToggle, TableProps } from '../types';
