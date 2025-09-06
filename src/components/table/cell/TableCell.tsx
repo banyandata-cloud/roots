@@ -82,6 +82,7 @@ const TableCell = forwardRef((props: TableCellProps, ref: ForwardedRef<HTMLTable
 		);
 	}
 
+	const isCentered = style?.justifyContent === 'center';
 	return (
 		<BaseCell
 			{...{
@@ -90,8 +91,8 @@ const TableCell = forwardRef((props: TableCellProps, ref: ForwardedRef<HTMLTable
 					styles.root,
 					styles[`${type}-cell`],
 					styles[`sticky-${String(sticky)}`],
-					styles[`sort-${sortState}`],
-					sortState !== 'default' ? styles.sortable : '',
+					sort && styles.sortable,
+					isCentered && styles.centered,
 					className
 				),
 				attrs: {
@@ -107,17 +108,15 @@ const TableCell = forwardRef((props: TableCellProps, ref: ForwardedRef<HTMLTable
 						<Button
 							className={styles.sort}
 							size='auto'
+							title={
+								<SortIcon
+									className={styles['sort-icon']}
+									position={SORT_ICONS_ORDER[sortState]}
+								/>
+							}
 							onClick={() => {
 								onSort?.(id, getNextSortState(sortState));
 								setSortState(getNextSortState(sortState));
-							}}
-							rightComponent={() => {
-								return (
-									<SortIcon
-										className={styles['sort-icon']}
-										position={SORT_ICONS_ORDER[sortState]}
-									/>
-								);
 							}}
 						/>
 					) : (

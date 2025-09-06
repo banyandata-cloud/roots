@@ -61,6 +61,7 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					size: 'lg',
 					flexible: true,
 					multiLine: true,
+					sort: true,
 				},
 				{
 					title: 'Gender',
@@ -68,12 +69,22 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					html: true,
 					size: 'sm',
 					fallbackValue: 'MS',
+					sort: true,
+					style: {
+						display: 'flex',
+						justifyContent: 'center',
+					},
 					// json: true,
 				},
 				{
 					title: 'Age',
 					id: 'age',
 					size: 'sm',
+					sort: true,
+					style: {
+						display: 'flex',
+						justifyContent: 'center',
+					},
 				},
 				{
 					title: 'Designation',
