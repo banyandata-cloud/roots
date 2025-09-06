@@ -24,7 +24,7 @@ const TableCell = forwardRef((props: TableCellProps, ref: ForwardedRef<HTMLTable
 	const {
 		id,
 		className,
-		size = 'sm',
+		size = 'md',
 		flexible,
 		component1,
 		component3,

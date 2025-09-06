@@ -1,6 +1,4 @@
 import { Meta, Canvas, Story } from '@storybook/addon-docs';
-
-import { TableColumnV2 } from '../BaseTable.class';
 import BaseTable from './BaseTable';
 import { TableCellV2 } from '../cell';
 import { Button } from '../../buttons';
@@ -39,32 +37,32 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 		name='Default'
 		args={{
 			headerData: [
-				new TableColumnV2({
+				{
 					title: 'Name',
 					id: 'name',
 					size: 'lg',
 					flexible: true,
-				}),
-				new TableColumnV2({
+				},
+				{
 					title: 'Gender',
 					id: 'gender',
 					size: 'sm',
-				}),
-				new TableColumnV2({
+				},
+				{
 					title: 'Age',
 					id: 'age',
 					size: 'sm',
-				}),
-				new TableColumnV2({
+				},
+				{
 					title: 'Designation',
 					id: 'designation',
 					fallbackValue: 'NA',
-				}),
-				new TableColumnV2({
+				},
+				{
 					title: 'State',
 					id: 'state',
 					size: 'sm',
-				}),
+				},
 			],
 			tableData: [
 				{
@@ -103,31 +101,31 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 		name='Expandable'
 		args={{
 			headerData: [
-				new TableColumnV2({
+				{
 					title: 'Name',
 					id: 'name',
 					size: 'lg',
 					flexible: true,
-				}),
-				new TableColumnV2({
+				},
+				{
 					title: 'Gender',
 					id: 'gender',
 					size: 'sm',
-				}),
-				new TableColumnV2({
+				},
+				{
 					title: 'Age',
 					id: 'age',
 					size: 'sm',
-				}),
-				new TableColumnV2({
+				},
+				{
 					title: 'Designation',
 					id: 'designation',
-				}),
-				new TableColumnV2({
+				},
+				{
 					title: 'State',
 					id: 'state',
 					size: 'sm',
-				}),
+				},
 			],
 			tableData: [
 				{
@@ -158,31 +156,31 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 				return (
 					<BaseTable
 						headerData={[
-							new TableColumnV2({
+							{
 								title: 'Name',
 								id: 'name',
 								size: 'lg',
 								flexible: true,
-							}),
-							new TableColumnV2({
+							},
+							{
 								title: 'Gender',
 								id: 'gender',
 								size: 'sm',
-							}),
-							new TableColumnV2({
+							},
+							{
 								title: 'Age',
 								id: 'age',
 								size: 'sm',
-							}),
-							new TableColumnV2({
+							},
+							{
 								title: 'Designation',
 								id: 'designation',
-							}),
-							new TableColumnV2({
+							},
+							{
 								title: 'State',
 								id: 'state',
 								size: 'sm',
-							}),
+							},
 						]}
 						tableData={[
 							{
@@ -251,31 +249,31 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 		name='Conditional Expandable'
 		args={{
 			headerData: [
-				new TableColumnV2({
+				{
 					title: 'Name',
 					id: 'name',
 					size: 'lg',
 					flexible: true,
-				}),
-				new TableColumnV2({
+				},
+				{
 					title: 'Gender',
 					id: 'gender',
 					size: 'sm',
-				}),
-				new TableColumnV2({
+				},
+				{
 					title: 'Age',
 					id: 'age',
 					size: 'sm',
-				}),
-				new TableColumnV2({
+				},
+				{
 					title: 'Designation',
 					id: 'designation',
-				}),
-				new TableColumnV2({
+				},
+				{
 					title: 'State',
 					id: 'state',
 					size: 'sm',
-				}),
+				},
 			],
 			tableData: [
 				{
@@ -306,31 +304,31 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 				return (
 					<BaseTable
 						headerData={[
-							new TableColumnV2({
+							{
 								title: 'Name',
 								id: 'name',
 								size: 'lg',
 								flexible: true,
-							}),
-							new TableColumnV2({
+							},
+							{
 								title: 'Gender',
 								id: 'gender',
 								size: 'sm',
-							}),
-							new TableColumnV2({
+							},
+							{
 								title: 'Age',
 								id: 'age',
 								size: 'sm',
-							}),
-							new TableColumnV2({
+							},
+							{
 								title: 'Designation',
 								id: 'designation',
-							}),
-							new TableColumnV2({
+							},
+							{
 								title: 'State',
 								id: 'state',
 								size: 'sm',
-							}),
+							},
 						]}
 						tableData={[
 							{
@@ -387,31 +385,31 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 				return (
 					<BaseTable
 						headerData={[
-							new TableColumnV2({
+							{
 								title: 'Name',
 								id: 'name',
 								size: 'lg',
 								flexible: true,
-							}),
-							new TableColumnV2({
+							},
+							{
 								title: 'Gender',
 								id: 'gender',
 								size: 'sm',
-							}),
-							new TableColumnV2({
+							},
+							{
 								title: 'Age',
 								id: 'age',
 								size: 'sm',
-							}),
-							new TableColumnV2({
+							},
+							{
 								title: 'Designation',
 								id: 'designation',
-							}),
-							new TableColumnV2({
+							},
+							{
 								title: 'State',
 								id: 'state',
 								size: 'sm',
-							}),
+							},
 						]}
 						tableData={[
 							{
