@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import { forwardRef } from 'react';
 import { classes } from '../../../utils/utils';
 import { BaseButton } from '../baseButton';
