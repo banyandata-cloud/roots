@@ -21,7 +21,7 @@ const BaseButton = forwardRef<HTMLElement, BaseButtonProps>((props, ref) => {
 		variant = 'contained',
 	} = props;
 
-	const Title = title && <span data-elem='title'>{title}</span>;
+	const Title = <span data-elem='title'>{title}</span>;
 
 	return (
 		<BaseCell
@@ -43,7 +43,7 @@ const BaseButton = forwardRef<HTMLElement, BaseButtonProps>((props, ref) => {
 					if (blurOnClick) {
 						event.currentTarget.blur();
 					}
-					onClick(event);
+					onClick?.(event);
 				},
 			}}
 			RootDOM='button'

@@ -9,7 +9,7 @@ export interface BaseButtonProps extends BaseCellProps<'button', false> {
 	disabled?: boolean | undefined;
 	id?: string | undefined;
 	type?: ButtonType;
-	onClick: (event: MouseEvent<HTMLElement>) => void;
+	onClick?: ((event: MouseEvent<HTMLElement>) => void) | undefined;
 	blurOnClick?: boolean;
 	variant?: ButtonVariant;
 }

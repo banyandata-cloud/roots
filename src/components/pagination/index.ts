@@ -1,2 +1,2 @@
-export * from './Paginationv2';
+export * from './Pagination';
 export * from './Pagination.class';
