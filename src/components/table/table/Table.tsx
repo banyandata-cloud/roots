@@ -36,7 +36,7 @@ const Table = ({
 	disabledFilterOptions = {
 		search: true,
 	},
-	rightActions = null,
+	rightActions,
 	onSort,
 	sortValue,
 	rowHeight = 'md',
@@ -56,12 +56,7 @@ const Table = ({
 	const ref = useRef<HTMLTableElement | null>(null);
 	const paginationRef = useRef<HTMLDivElement | null>(null);
 
-	const {
-		onSearch,
-		placeholder: searchPlaceholder = 'Search',
-		disabled: searchDisabled = false,
-		onClear,
-	} = searchProps ?? {};
+	const { onSearch, placeholder: searchPlaceholder = 'Search', onClear } = searchProps ?? {};
 
 	const { title: tableTitle = '', description: tableDescription = '' } = tableInfo ?? {};
 
@@ -199,7 +194,6 @@ const Table = ({
 					tableDescriptionText={tableDescription}
 					onSearch={onSearch}
 					onClear={onClear}
-					searchDisabled={searchDisabled}
 					searchPlaceholder={searchPlaceholder}
 					toggleDrawer={toggleDrawer}
 					filtersCount={filtersCount}

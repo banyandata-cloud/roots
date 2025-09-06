@@ -1,4 +1,11 @@
-import type { ComponentType, CSSProperties, Dispatch, FC, ReactNode, SetStateAction } from 'react';
+import type {
+	ComponentType,
+	CSSProperties,
+	Dispatch,
+	FC,
+	ReactElement,
+	SetStateAction,
+} from 'react';
 import type { TableCellProps } from '../cell/types';
 
 export type RowHeight = 'md' | 'lg';
@@ -73,7 +80,6 @@ export interface PaginationData {
 export interface SearchProps {
 	onSearch?: (value: string) => void;
 	placeholder?: string;
-	disabled?: boolean;
 	onClear?: () => void;
 }
 
@@ -96,7 +102,7 @@ export interface TableProps {
 		search?: boolean;
 	};
 
-	rightActions?: ReactNode;
+	rightActions?: ((props: Record<string, unknown>) => ReactElement) | undefined;
 
 	onSort?: ((columnId: string, direction: SortType) => void) | undefined;
 	sortValue?: Record<string, SortType> | undefined;

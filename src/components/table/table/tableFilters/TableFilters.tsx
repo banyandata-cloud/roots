@@ -1,5 +1,12 @@
-import PropTypes from 'prop-types';
-import { useState } from 'react';
+import type { TableProps } from 'components/table/types';
+import {
+	useState,
+	type Dispatch,
+	type KeyboardEvent,
+	type ReactElement,
+	type ReactNode,
+	type SetStateAction,
+} from 'react';
 import { classes, inputHelper } from '../../../../utils';
 import { Button } from '../../../buttons';
 import { BaseCell } from '../../../cell';
@@ -8,34 +15,50 @@ import { DropdownItemv2, Dropdownv2, TextFieldv2 } from '../../../input';
 import { Text } from '../../../text';
 import styles from './TableFilters.module.css';
 
-const TableFilters = (props) => {
+interface TableFiltersProps extends Pick<TableProps, 'headerData' | 'className'> {
+	hiddenColumns?: Record<string, boolean | null> | undefined;
+	setHiddenColumns: Dispatch<SetStateAction<Record<string, boolean | null> | undefined>>;
+	tableTitleText: string;
+	tableDescriptionText?: string | ReactNode | undefined;
+	filtersCount?: number | undefined;
+	searchPlaceholder?: string | undefined;
+	toggleDrawer?: ((props: Record<string, unknown>) => void) | undefined;
+	rightActions?: ((props: Record<string, unknown>) => ReactElement) | undefined;
+	onClear?: (() => void) | undefined;
+	onSearch?: ((search: string) => void) | undefined;
+	disabledFilterOptions?:
+		| {
+				search?: boolean;
+		  }
+		| undefined;
+}
+
+const TableFilters = (props: TableFiltersProps) => {
 	const {
 		className = '',
-		style = {},
 		headerData = [],
 		hiddenColumns,
 		setHiddenColumns,
-		disabledFilterOptions = {},
+		disabledFilterOptions,
 		tableTitleText = '',
 		tableDescriptionText = '',
-		onSearch = () => {},
+		onSearch,
 		onClear,
 		searchPlaceholder = '',
-		toggleDrawer = () => {},
-		filtersCount,
-		searchDisabled,
-		rightActions = () => {},
+		toggleDrawer,
+		filtersCount = 0,
+		rightActions,
 	} = props;
 
-	const { search: disabledSearch = true } = disabledFilterOptions;
+	const { search: disabledSearch = true } = disabledFilterOptions ?? {};
 
-	const [search, setSearch] = useState('');
+	const [search, setSearch] = useState<string>('');
 
-	const columnFilters = headerData?.filter((datum) => {
+	const columnFilters = headerData.filter((datum) => {
 		return datum.columnFilter;
 	});
 
-	const columns = columnFilters?.map((datum) => {
+	const columns = columnFilters.map((datum) => {
 		return {
 			title: datum.title,
 			value: datum.id,
@@ -52,20 +75,21 @@ const TableFilters = (props) => {
 
 	const getAdvancedFilterTitle = () => {
 		if (!filtersCount) {
-			return;
+			return '';
 		}
 
 		if (filtersCount > 0) {
 			if (filtersCount === 1) {
-				return `${filtersCount}`;
+				return filtersCount;
 			}
-			return `${filtersCount}`;
+			return filtersCount;
 		}
+		return '';
 	};
 
-	const handleKeyDown = (event) => {
+	const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
 		if (event.key === 'Enter') {
-			onSearch(search);
+			onSearch?.(search);
 		}
 	};
 
@@ -75,9 +99,6 @@ const TableFilters = (props) => {
 		<BaseCell
 			flexible
 			className={classes(styles.root, className)}
-			attrs={{
-				style,
-			}}
 			component1={
 				<div className={styles.details}>
 					<Text variant='b1' weight={600}>
@@ -89,41 +110,39 @@ const TableFilters = (props) => {
 				</div>
 			}
 			component2={
-				!searchDisabled && (
-					<>
-						<TextFieldv2
-							className={styles.search}
-							placeholder={searchPlaceholder}
-							value={search}
-							onKeyDown={handleKeyDown}
-							onChange={(e) => {
-								const { fieldValue } = inputHelper(e);
-								setSearch(fieldValue);
-							}}
-							LeftComponent={() => {
-								return <SearchIcon className={styles.icon} />;
-							}}
-						/>
-						<Button
-							className={classes(styles['search-button'], onClear && styles.clear)}
-							onClick={() => {
-								if (onClear) {
-									onClear();
-									setSearch('');
-									return;
-								}
-								onSearch(search);
-							}}
-							leftComponent={() => {
-								if (onClear) {
-									return <CrossIcon className={styles.icon} />;
-								}
+				<>
+					<TextFieldv2
+						className={styles.search}
+						placeholder={searchPlaceholder}
+						value={search}
+						onKeyDown={handleKeyDown}
+						onChange={(e) => {
+							const { fieldValue } = inputHelper(e);
+							setSearch(fieldValue as string);
+						}}
+						LeftComponent={() => {
+							return <SearchIcon className={styles.icon} />;
+						}}
+					/>
+					<Button
+						className={classes(styles['search-button'], onClear && styles.clear)}
+						onClick={() => {
+							if (onClear) {
+								onClear();
+								setSearch('');
+								return;
+							}
+							onSearch?.(search);
+						}}
+						leftComponent={() => {
+							if (onClear) {
+								return <CrossIcon className={styles.icon} />;
+							}
 
-								return <ArrowIcon className={classes(styles.icon, styles.arrow)} />;
-							}}
-						/>
-					</>
-				)
+							return <ArrowIcon className={classes(styles.icon, styles.arrow)} />;
+						}}
+					/>
+				</>
 			}
 			{...(!hideActions && {
 				component3: (
@@ -140,7 +159,7 @@ const TableFilters = (props) => {
 								)}
 								title={<FilterIcon className={styles.icon} v2 />}
 								onClick={() => {
-									toggleDrawer({
+									toggleDrawer?.({
 										data: {
 											index: 0,
 											standalone: true,
@@ -184,7 +203,7 @@ const TableFilters = (props) => {
 								}}
 								value={Object.keys(hiddenColumns ?? {})}
 								onChange={handleColumnChange}>
-								{columns?.map((col) => {
+								{columns.map((col) => {
 									return (
 										<DropdownItemv2
 											key={col.value}
@@ -201,21 +220,6 @@ const TableFilters = (props) => {
 			})}
 		/>
 	);
-};
-
-TableFilters.propTypes = {
-	className: PropTypes.string,
-	// eslint-disable-next-line react/forbid-prop-types
-	style: PropTypes.object,
-	onAdvancedFilterClick: PropTypes.func,
-	disabledFilterOptions: PropTypes.shape({
-		filterButton: PropTypes.bool,
-		refresh: PropTypes.bool,
-		columnFilter: PropTypes.bool,
-		settings: PropTypes.bool,
-	}),
-	theme: PropTypes.oneOf(['light', 'dark']),
-	tableTitleText: PropTypes.string,
 };
 
 export default TableFilters;
