@@ -147,9 +147,9 @@ export type PaginationProps = {
 	paginationState?: Pick<PaginationState, 'totalPages' | 'currentPage' | 'step' | 'totalData'>;
 	paginationDispatch?: React.Dispatch<PaginationAction>;
 	loading?: boolean;
-	dataLabel?: string;
+	dataLabel?: string | undefined;
 	customLabel?: string | null;
-	jumpLabel?: string;
+	jumpLabel?: string | undefined;
 	hideDisabledPages?: boolean;
 	customPageList?: CustomPageItem[];
 	customPageCallback?: (pageNumber: number | string) => void;
