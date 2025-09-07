@@ -17,7 +17,7 @@ export interface CheckboxProps {
 	position?: Position;
 	size?: Size;
 	className?: string | undefined;
-	disabled?: boolean;
+	disabled?: boolean | undefined;
 	/** If true, apply disabled styles to children only (keeps label container visually enabled) */
 	disabledAsChild?: boolean;
 	/** Shows the intermediate (indeterminate) icon when true */

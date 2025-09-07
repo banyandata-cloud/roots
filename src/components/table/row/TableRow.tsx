@@ -175,7 +175,7 @@ const TableRow = forwardRef((props: TableRowProps, ref: ForwardedRef<HTMLTableRo
 				}}
 				disabled={disabledChecking}
 				checked={checkStatus}
-				className={disabledChecking && styles.disabled}
+				className={disabledChecking ? styles.disabled : undefined}
 			/>
 		);
 	} else if (!checkAsRadio) {
@@ -219,7 +219,7 @@ const TableRow = forwardRef((props: TableRowProps, ref: ForwardedRef<HTMLTableRo
 				}}
 				disabled={disabledChecking}
 				checked={checkStatus}
-				className={disabledChecking && styles.disabled}
+				className={disabledChecking ? styles.disabled : undefined}
 			/>
 		);
 	}

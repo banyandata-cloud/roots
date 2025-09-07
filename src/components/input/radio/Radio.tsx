@@ -20,7 +20,7 @@ export interface RadioProps {
 	position?: Position;
 	size?: Size;
 	className?: string | undefined;
-	disabled?: boolean;
+	disabled?: boolean | undefined;
 }
 
 const Radio: React.FC<RadioProps> = (props) => {
