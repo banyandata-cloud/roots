@@ -6,6 +6,7 @@ import {
 	type ReactElement,
 	type ReactNode,
 	type SetStateAction,
+	type SyntheticEvent,
 } from 'react';
 import { classes, inputHelper } from '../../../../utils';
 import { Button } from '../../../buttons';
@@ -65,11 +66,13 @@ const TableFilters = (props: TableFiltersProps) => {
 		};
 	});
 
-	const handleColumnChange = (_, col) => {
-		const items = {};
-		col.forEach((column) => {
-			items[column] = true;
-		});
+	const handleColumnChange = (_: SyntheticEvent, col: string | string[] | null | undefined) => {
+		const items: SetStateAction<Record<string, boolean | null> | undefined> = {};
+		if (Array.isArray(col)) {
+			col.forEach((column: string) => {
+				items[column] = true;
+			});
+		}
 		setHiddenColumns(items);
 	};
 

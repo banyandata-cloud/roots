@@ -44,14 +44,16 @@ interface Feedback {
 	message?: string;
 }
 
-type LeftComponentWithVariants = React.ComponentType & {
-	Active?: React.ComponentType;
-	InActive?: React.ComponentType;
-};
+type LeftComponentWithVariants =
+	| React.ComponentType
+	| {
+			Active?: React.ComponentType;
+			InActive?: React.ComponentType;
+	  };
 
 export interface DropdownProps {
-	className?: string;
-	popperClassName?: string;
+	className?: string | undefined;
+	popperClassName?: string | undefined;
 
 	/** Controlled value: string for single, string[] for multi. Omit for uncontrolled */
 	value?: string | string[];
@@ -76,7 +78,7 @@ export interface DropdownProps {
 	feedback?: Feedback;
 
 	/** Format the summary text when multiple values are selected */
-	formatter?: (totalSelected: number) => string;
+	formatter?: (totalSelected: number) => ReactNode;
 
 	/** Pass-through to ErrorBoundaryWrapper for custom rendering */
 	custom?: boolean;
@@ -447,13 +449,18 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(props,
 
 	const getLeftComponent = (): ReactNode => {
 		if (LeftComponent) {
-			if (LeftComponent.Active || LeftComponent.InActive) {
+			if (
+				typeof LeftComponent === 'object' &&
+				(LeftComponent.Active || LeftComponent.InActive)
+			) {
 				if (highlightOnSelect && (Array.isArray(value) ? value.length > 0 : !!value)) {
 					return LeftComponent.Active ? <LeftComponent.Active /> : null;
 				}
 				return LeftComponent.InActive ? <LeftComponent.InActive /> : null;
 			}
-			return <LeftComponent />;
+			if (typeof LeftComponent === 'function') {
+				return <LeftComponent />;
+			}
 		}
 		return null;
 	};
