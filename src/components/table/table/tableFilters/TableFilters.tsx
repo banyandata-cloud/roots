@@ -96,8 +96,6 @@ const TableFilters = (props: TableFiltersProps) => {
 		}
 	};
 
-	const hideActions = columnFilters.length === 0 && disabledSearch && !rightActions;
-
 	return (
 		<BaseCell
 			flexible
@@ -112,44 +110,49 @@ const TableFilters = (props: TableFiltersProps) => {
 					</Text>
 				</div>
 			}
-			component2={
-				<>
-					<TextFieldv2
-						className={styles.search}
-						placeholder={searchPlaceholder}
-						value={search}
-						onKeyDown={handleKeyDown}
-						onChange={(e) => {
-							const { fieldValue } = inputHelper(e);
-							setSearch(fieldValue as string);
-						}}
-						LeftComponent={() => {
-							return <SearchIcon className={styles.icon} />;
-						}}
-					/>
-					<Button
-						className={classes(styles['search-button'], onClear && styles.clear)}
-						onClick={() => {
-							if (onClear) {
-								onClear();
-								setSearch('');
-								return;
-							}
-							onSearch?.(search);
-						}}
-						leftComponent={() => {
-							if (onClear) {
-								return <CrossIcon className={styles.icon} />;
-							}
-
-							return <ArrowIcon className={classes(styles.icon, styles.arrow)} />;
-						}}
-					/>
-				</>
-			}
-			{...(!hideActions && {
-				component3: (
+			{...{
+				component2: (
 					<div className={styles.filters}>
+						{onSearch && (
+							<div className={styles.searchContainer}>
+								<TextFieldv2
+									className={styles.search}
+									placeholder={searchPlaceholder}
+									value={search}
+									onKeyDown={handleKeyDown}
+									onChange={(e) => {
+										const { fieldValue } = inputHelper(e);
+										setSearch(fieldValue as string);
+									}}
+									LeftComponent={() => {
+										return <SearchIcon className={styles.icon} />;
+									}}
+								/>
+								<Button
+									className={classes(
+										styles['search-button'],
+										onClear && styles.clear
+									)}
+									onClick={() => {
+										if (onClear) {
+											onClear();
+											setSearch('');
+											return;
+										}
+										onSearch?.(search);
+									}}
+									title={
+										onClear ? (
+											<CrossIcon className={styles.icon} />
+										) : (
+											<ArrowIcon
+												className={classes(styles.icon, styles.arrow)}
+											/>
+										)
+									}
+								/>
+							</div>
+						)}
 						{rightActions?.({
 							toggleDrawer,
 						})}
@@ -220,7 +223,7 @@ const TableFilters = (props: TableFiltersProps) => {
 						)}
 					</div>
 				),
-			})}
+			}}
 		/>
 	);
 };

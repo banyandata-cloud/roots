@@ -19,6 +19,7 @@ export * from './Edit';
 export * from './Email';
 export * from './ExpandArrowAlt';
 export * from './ExpandCollapseIcon';
+export * from './Filter';
 export * from './FilterIcon';
 export * from './FlowChart';
 export * from './fullScreen';

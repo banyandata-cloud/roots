@@ -1,4 +1,10 @@
-const Sort = ({ className, position = 'az' }) => {
+const Sort = ({
+	className,
+	position = 'az',
+}: {
+	className?: string | undefined;
+	position: 'az' | 'za';
+}) => {
 	let leftArrowColor = '#97979F';
 	let rightArrowColor = '#97979F';
 	if (position === 'za') {
