@@ -59,7 +59,7 @@ export interface TextFieldProps {
 	onBlur?: () => void;
 	onChange?: (
 		event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-		value: string
+		value?: string
 	) => void;
 	size?: 'sm' | 'md' | 'lg' | (string & {});
 	border?: 'default' | 'none' | (string & {});
