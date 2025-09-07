@@ -1,7 +1,5 @@
 import { isValidElement, useEffect, useRef, useState, type ReactElement } from 'react';
-import { ErrorBoundary } from 'react-error-boundary';
 import { classes } from '../../../utils';
-import { ErrorBoundaryWrapper } from '../../errorBoundary';
 import { Pagination } from '../../pagination';
 import BaseSidePanel from '../../sidePanel/BaseSidePanel';
 import { BaseTableV2 } from '../baseTable';
@@ -177,101 +175,96 @@ const Table = ({
 	const tabularData = Array.isArray(tableData) ? tableData : [];
 
 	return (
-		<ErrorBoundary
-			FallbackComponent={(args) => {
-				return <ErrorBoundaryWrapper {...args} className={styles['error-boundary']} />;
-			}}>
-			<div className={classes(styles.root, className)}>
-				<TableFilters
-					className={styles.filters}
-					{...{
-						disabledFilterOptions,
-						headerData,
-						hiddenColumns,
-						setHiddenColumns,
-					}}
-					tableTitleText={tableTitle}
-					tableDescriptionText={tableDescription}
-					onSearch={onSearch}
-					onClear={onClear}
-					searchPlaceholder={searchPlaceholder}
-					toggleDrawer={toggleDrawer}
-					filtersCount={filtersCount}
-					rightActions={rightActions}
-				/>
+		<div className={classes(styles.root, className)}>
+			<TableFilters
+				className={styles.filters}
+				{...{
+					disabledFilterOptions,
+					headerData,
+					hiddenColumns,
+					setHiddenColumns,
+				}}
+				tableTitleText={tableTitle}
+				tableDescriptionText={tableDescription}
+				onSearch={onSearch}
+				onClear={onClear}
+				searchPlaceholder={searchPlaceholder}
+				toggleDrawer={toggleDrawer}
+				filtersCount={filtersCount}
+				rightActions={rightActions}
+			/>
 
-				<BaseTableV2
-					{...{
-						ref,
-						headerData: visibleColumns,
-						tableData: tabularData,
-						uniqueKey,
-						customCells,
-						className: styles.table,
-						onSort,
-						sortValue,
-						rowHeight,
-						onRowClick,
-						defaultActiveIndex,
-						toggleDrawer,
-						emptyPlaceholder,
-						onCheck,
-						checkAsRadio,
-						disableCheck,
-					}}
+			<BaseTableV2
+				{...{
+					ref,
+					headerData: visibleColumns,
+					tableData: tabularData,
+					uniqueKey,
+					customCells,
+					className: styles.table,
+					onSort,
+					sortValue,
+					rowHeight,
+					onRowClick,
+					defaultActiveIndex,
+					toggleDrawer,
+					emptyPlaceholder,
+					onCheck,
+					checkAsRadio,
+					disableCheck,
+				}}
+				loading={loading}
+			/>
+
+			{paginationData != null && (
+				<Pagination
+					className={classes(styles.pagination, floating ? styles.floating : '')}
+					ref={paginationRef}
+					{...paginationData}
+					floating={floating}
+					dataLabel={dataLabel}
+					jumpLabel={jumpLabel}
 					loading={loading}
 				/>
+			)}
 
-				{paginationData != null && (
-					<Pagination
-						className={classes(styles.pagination, floating ? styles.floating : '')}
-						ref={paginationRef}
-						{...paginationData}
-						floating={floating}
-						dataLabel={dataLabel}
-						jumpLabel={jumpLabel}
-						loading={loading}
-					/>
-				)}
+			{drawerProps && (
+				<BaseSidePanel
+					toggle={toggleDrawer}
+					animation
+					{...drawerProps}
+					{...(hasSingleBody && {
+						tabsConfig: null,
+					})}
+					activeTab={toggleTableDrawer.data.index}
+					open={toggleTableDrawer.open}
+					toggleTableDrawer={toggleTableDrawer}
+					setToggleTableDrawer={setToggleTableDrawer}
+					className={classes(
+						styles.drawer,
+						hasSingleBody && styles.standalone,
+						drawerProps.className
+					)}>
+					{Body && isValidElement(<Body datum={toggleTableDrawer.data} />) && (
+						<Body
+							datum={toggleTableDrawer.data}
+							toggle={toggleDrawer}
+							toggleTableDrawer={toggleTableDrawer}
+							setToggleTableDrawer={setToggleTableDrawer}
+						/>
+					)}
+				</BaseSidePanel>
+			)}
 
-				{drawerProps && (
-					<BaseSidePanel
-						toggle={toggleDrawer}
-						animation
-						{...drawerProps}
-						{...(hasSingleBody && {
-							tabsConfig: null,
-						})}
-						activeTab={toggleTableDrawer.data.index}
-						open={toggleTableDrawer.open}
-						toggleTableDrawer={toggleTableDrawer}
-						setToggleTableDrawer={setToggleTableDrawer}
-						className={classes(
-							styles.drawer,
-							hasSingleBody && styles.standalone,
-							drawerProps.className
-						)}>
-						{Body && isValidElement(<Body datum={toggleTableDrawer.data} />) && (
-							<Body
-								datum={toggleTableDrawer.data}
-								toggle={toggleDrawer}
-								toggleTableDrawer={toggleTableDrawer}
-								setToggleTableDrawer={setToggleTableDrawer}
-							/>
-						)}
-					</BaseSidePanel>
-				)}
-
-				{toggleTableDrawer.open && (
-					<div
-						className={styles.overlay}
-						onClick={() => {
-							toggleDrawer();
-						}}
-					/>
-				)}
-			</div>
-		</ErrorBoundary>
+			{toggleTableDrawer.open && (
+				<div
+					className={styles.overlay}
+					onClick={() => {
+						toggleDrawer();
+					}}
+				/>
+			)}
+		</div>
 	);
 };
 
