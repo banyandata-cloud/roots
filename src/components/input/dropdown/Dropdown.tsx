@@ -27,10 +27,8 @@ import React, {
 	type ReactNode,
 	type SyntheticEvent,
 } from 'react';
-import { ErrorBoundary } from 'react-error-boundary';
 import { classes } from '../../../utils';
 import Button from '../../buttons/button/Button';
-import { ErrorBoundaryWrapper } from '../../errorBoundary';
 import { CaretIcon, InfoIcon } from '../../icons';
 import { SelectAllIcon } from '../../icons/SelectAll';
 import Popper from '../../popper/Popper';
@@ -80,8 +78,6 @@ export interface DropdownProps {
 	/** Format the summary text when multiple values are selected */
 	formatter?: (totalSelected: number) => ReactNode;
 
-	/** Pass-through to ErrorBoundaryWrapper for custom rendering */
-	custom?: boolean;
 	required?: boolean;
 	multiSelectActionTitle?: string;
 
@@ -122,7 +118,6 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(props,
 		formatter = (totalSelected: number) => {
 			return `${totalSelected.toString()} options applied`;
 		},
-		custom,
 		required,
 		multiSelectActionTitle,
 		valueAsCount,
@@ -472,203 +467,187 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(props,
 	}
 
 	return (
-		<ErrorBoundary
-			FallbackComponent={(args) => {
-				return (
-					<ErrorBoundaryWrapper
-						{...args}
-						className={styles['error-boundary']}
-						custom={custom}
-					/>
-				);
-			}}>
+		<div
+			className={classes(
+				styles.root,
+				open ? styles.open : '',
+				disabled || error ? styles.disabled : '',
+				className
+			)}>
+			{label && (
+				<div
+					data-elem='label'
+					className={classes(styles.label, required ? styles.required : '')}>
+					<span>{label}</span>
+				</div>
+			)}
+
 			<div
+				data-elem='header'
 				className={classes(
-					styles.root,
+					styles.header,
+					error ? styles.error : ' ',
 					open ? styles.open : '',
-					disabled || error ? styles.disabled : '',
-					className
-				)}>
-				{label && (
-					<div
-						data-elem='label'
-						className={classes(styles.label, required ? styles.required : '')}>
-						<span>{label}</span>
-					</div>
+					(Array.isArray(value) ? value.length > 0 : !!value) && highlightOnSelect
+						? styles.highlightOnSelect
+						: ''
 				)}
+				ref={reference}
+				{...getReferenceProps()}>
+				<input
+					id={id}
+					name={name}
+					ref={inputElRef}
+					disabled={disabled}
+					tabIndex={0}
+					className={styles.input}
+					onKeyDown={(event) => {
+						const validKey = [' ', 'Spacebar', 'Enter'].includes(event.key);
+						if (validKey) setOpen(true);
+					}}
+					onBlur={onBlur}
+					value={selectedOptions
+						.map((o) => {
+							return o.value;
+						})
+						.join(', ')}
+					readOnly
+				/>
 
 				<div
-					data-elem='header'
+					data-elem='select'
+					role='button'
 					className={classes(
-						styles.header,
-						error ? styles.error : ' ',
-						open ? styles.open : '',
-						(Array.isArray(value) ? value.length > 0 : !!value) && highlightOnSelect
-							? styles.highlightOnSelect
-							: ''
-					)}
-					ref={reference}
-					{...getReferenceProps()}>
-					<input
-						id={id}
-						name={name}
-						ref={inputElRef}
-						disabled={disabled}
-						tabIndex={0}
-						className={styles.input}
-						onKeyDown={(event) => {
-							const validKey = [' ', 'Spacebar', 'Enter'].includes(event.key);
-							if (validKey) setOpen(true);
-						}}
-						onBlur={onBlur}
-						value={selectedOptions
-							.map((o) => {
-								return o.value;
-							})
-							.join(', ')}
-						readOnly
-					/>
-
-					<div
-						data-elem='select'
-						role='button'
-						className={classes(
-							styles.select,
-							feedback != null ? styles[`feedback-${feedback.type}` as const] : ''
-						)}>
-						{getLeftComponent()}
-						{content}
-						<div className={styles['icon-bundle']}>
-							{error && (
-								<Tooltip
-									content={error.toString()}
-									position='top'
-									className={styles.tooltip}
-									variant='light'>
-									<span className={styles.span}>
-										<InfoIcon className={styles['info-icon']} />
-									</span>
-								</Tooltip>
-							)}
-							{caretAsUpDown ? (
-								<CaretIcon
-									className={classes(
-										styles['caret-icon-upDown'],
-										open ? styles.open : ''
-									)}
-									upDown
-								/>
-							) : (
-								<CaretIcon
-									data-elem='icon'
-									className={classes(
-										styles['caret-icon'],
-										open ? styles.open : ''
-									)}
-								/>
-							)}
-						</div>
+						styles.select,
+						feedback != null ? styles[`feedback-${feedback.type}` as const] : ''
+					)}>
+					{getLeftComponent()}
+					{content}
+					<div className={styles['icon-bundle']}>
+						{error && (
+							<Tooltip
+								content={error.toString()}
+								position='top'
+								className={styles.tooltip}
+								variant='light'>
+								<span className={styles.span}>
+									<InfoIcon className={styles['info-icon']} />
+								</span>
+							</Tooltip>
+						)}
+						{caretAsUpDown ? (
+							<CaretIcon
+								className={classes(
+									styles['caret-icon-upDown'],
+									open ? styles.open : ''
+								)}
+								upDown
+							/>
+						) : (
+							<CaretIcon
+								data-elem='icon'
+								className={classes(styles['caret-icon'], open ? styles.open : '')}
+							/>
+						)}
 					</div>
 				</div>
-
-				<Popper open={open} wrapperId='dropdown-popper'>
-					{open && (
-						<FloatingFocusManager context={context} initialFocus={-1} modal={false}>
-							<motion.ul
-								data-elem='body'
-								{...getFloatingProps({
-									role: 'group',
-									ref: floating,
-									onKeyDown(event: KeyboardEvent<HTMLUListElement>) {
-										setPointer(false);
-										if (event.key === 'Tab' && !multi) setOpen(false);
-									},
-									onPointerMove() {
-										setPointer(true);
-									},
-									style: {
-										position: strategy,
-										top: y ?? 0,
-										left: x ?? 0,
-									} as React.CSSProperties,
-									className: classes(
-										styles.body,
-										styles.open,
-										multi ? styles.multi : '',
-										popperClassName
-									),
-								})}
-								initial={{
-									opacity: 0,
-									scale: 0,
-								}}
-								animate={{
-									opacity: 1,
-									scale: 1,
-								}}>
-								{multi && (
-									<li
-										ref={multiOptionsRef}
-										className={styles['multi-options']}
-										tabIndex={-1}>
-										<Button
-											className={styles.button}
-											blurOnClick={false}
-											title='Select All'
-											variant='contained'
-											type='button'
-											leftComponent={() => {
-												return (
-													<SelectAllIcon
-														className={styles.icon}
-														position='left'
-													/>
-												);
-											}}
-											onClick={(event) => {
-												event.stopPropagation();
-												multiOptionsRef.current?.focus();
-												onSelectAll(event, true);
-											}}
-										/>
-										{selectedOptions.length > 0 && (
-											<span className={styles.items}>
-												{selectedItemsLabel}
-											</span>
-										)}
-									</li>
-								)}
-
-								{items}
-
-								{multi && (
-									<div className={styles.footer}>
-										<Button
-											className={styles['multi-clear']}
-											blurOnClick={false}
-											title='Clear All'
-											size='auto'
-											disabled={selectedOptions.length === 0}
-											onClick={(event) => {
-												event.stopPropagation();
-												multiOptionsRef.current?.focus();
-												onSelectAll(event, false);
-											}}
-										/>
-										<Button
-											className={styles['multi-apply']}
-											title={multiSelectActionTitle ?? 'Apply'}
-											size='auto'
-											onClick={onApply}
-										/>
-									</div>
-								)}
-							</motion.ul>
-						</FloatingFocusManager>
-					)}
-				</Popper>
 			</div>
-		</ErrorBoundary>
+
+			<Popper open={open} wrapperId='dropdown-popper'>
+				{open && (
+					<FloatingFocusManager context={context} initialFocus={-1} modal={false}>
+						<motion.ul
+							data-elem='body'
+							{...getFloatingProps({
+								role: 'group',
+								ref: floating,
+								onKeyDown(event: KeyboardEvent<HTMLUListElement>) {
+									setPointer(false);
+									if (event.key === 'Tab' && !multi) setOpen(false);
+								},
+								onPointerMove() {
+									setPointer(true);
+								},
+								style: {
+									position: strategy,
+									top: y ?? 0,
+									left: x ?? 0,
+								} as React.CSSProperties,
+								className: classes(
+									styles.body,
+									styles.open,
+									multi ? styles.multi : '',
+									popperClassName
+								),
+							})}
+							initial={{
+								opacity: 0,
+								scale: 0,
+							}}
+							animate={{
+								opacity: 1,
+								scale: 1,
+							}}>
+							{multi && (
+								<li
+									ref={multiOptionsRef}
+									className={styles['multi-options']}
+									tabIndex={-1}>
+									<Button
+										className={styles.button}
+										blurOnClick={false}
+										title='Select All'
+										variant='contained'
+										type='button'
+										leftComponent={() => {
+											return (
+												<SelectAllIcon
+													className={styles.icon}
+													position='left'
+												/>
+											);
+										}}
+										onClick={(event) => {
+											event.stopPropagation();
+											multiOptionsRef.current?.focus();
+											onSelectAll(event, true);
+										}}
+									/>
+									{selectedOptions.length > 0 && (
+										<span className={styles.items}>{selectedItemsLabel}</span>
+									)}
+								</li>
+							)}
+
+							{items}
+
+							{multi && (
+								<div className={styles.footer}>
+									<Button
+										className={styles['multi-clear']}
+										blurOnClick={false}
+										title='Clear All'
+										size='auto'
+										disabled={selectedOptions.length === 0}
+										onClick={(event) => {
+											event.stopPropagation();
+											multiOptionsRef.current?.focus();
+											onSelectAll(event, false);
+										}}
+									/>
+									<Button
+										className={styles['multi-apply']}
+										title={multiSelectActionTitle ?? 'Apply'}
+										size='auto'
+										onClick={onApply}
+									/>
+								</div>
+							)}
+						</motion.ul>
+					</FloatingFocusManager>
+				)}
+			</Popper>
+		</div>
 	);
 });
 
