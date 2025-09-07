@@ -1,29 +1,36 @@
-import PropTypes from 'prop-types';
 import React, { useRef, useState } from 'react';
 import styles from './Slider.module.css';
 import RangeSlider from './rangeslider/RangeSlider';
+import type { SliderProps } from './types';
 
-const Slider = (props) => {
-	// eslint-disable-next-line object-curly-newline
-	const { disabled, value, onChange, min, max, step, range, label, node1, node2, percent } =
-		props;
-
+const Slider: React.FC<SliderProps> = ({
+	disabled,
+	value,
+	onChange,
+	min = 0,
+	max = 100,
+	step = 1,
+	range,
+	label,
+	node1,
+	node2,
+	percent,
+}) => {
 	const { current: isControlled } = useRef(value !== undefined);
-
-	const [uncontrolledValue, setUncontrolledValue] = useState(value);
+	const [uncontrolledValue, setUncontrolledValue] = useState<number | undefined>(value);
 	const [isTooltipVisible, setTooltipVisible] = useState(false);
 
-	const handleChange = (event) => {
+	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const fieldValue = parseInt(event.target.value, 10);
 
 		if (isControlled) {
-			onChange(event, fieldValue);
+			onChange?.(event, fieldValue);
 		} else {
 			setUncontrolledValue(fieldValue);
 		}
 	};
 
-	const valueOfSlider = isControlled ? value : uncontrolledValue;
+	const valueOfSlider = isControlled ? value : (uncontrolledValue ?? min);
 
 	if (range) {
 		return (
@@ -31,11 +38,12 @@ const Slider = (props) => {
 				className={styles['range-slider']}
 				min={min}
 				max={max}
-				node1={node1}
-				node2={node2}
+				node1={node1 ?? min}
+				node2={node2 ?? max}
 				step={step}
-				value={value}
-				onChange={onChange}
+				onChange={(ranges) => {
+					onChange?.(null, ranges);
+				}}
 				disabled={disabled}
 				label={label}
 				percent={percent}
@@ -53,9 +61,9 @@ const Slider = (props) => {
 
 	const tooltipTop = label ? -10 : -24;
 
-	const tooltipStyle = {
-		left: `calc(${(valueOfSlider / 100) * 30}% - 58px)`,
-		top: `${tooltipTop}px`,
+	const tooltipStyle: React.CSSProperties = {
+		left: `calc(${((Number(valueOfSlider) / 100) * 30).toString()}% - 58px)`,
+		top: `${tooltipTop.toString()}px`,
 		visibility: isTooltipVisible ? 'visible' : 'hidden',
 	};
 
@@ -84,30 +92,6 @@ const Slider = (props) => {
 			</div>
 		</label>
 	);
-};
-
-Slider.propTypes = {
-	value: PropTypes.oneOfType([PropTypes.number, PropTypes.arrayOf(PropTypes.number)]),
-	onChange: PropTypes.func,
-	min: PropTypes.number,
-	max: PropTypes.number,
-	step: PropTypes.number,
-	range: PropTypes.bool,
-	disabled: PropTypes.bool,
-	label: PropTypes.string,
-	percent: PropTypes.bool,
-};
-
-Slider.defaultProps = {
-	value: undefined,
-	onChange: () => {},
-	min: 0,
-	max: 100,
-	step: 1,
-	range: false,
-	disabled: false,
-	label: '',
-	percent: false,
 };
 
 export default Slider;
