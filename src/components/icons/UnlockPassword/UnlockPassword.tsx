@@ -1,4 +1,4 @@
-const UnlockPassword = (props) => {
+const UnlockPassword = (props: { className?: string | undefined }) => {
 	const { className = '' } = props;
 
 	return (

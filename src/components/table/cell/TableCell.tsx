@@ -111,7 +111,9 @@ const TableCell = forwardRef((props: TableCellProps, ref: ForwardedRef<HTMLTable
 							title={
 								<SortIcon
 									className={styles['sort-icon']}
-									position={SORT_ICONS_ORDER[sortState]}
+									position={
+										SORT_ICONS_ORDER[sortState] as 'az' | 'za' | 'default'
+									}
 								/>
 							}
 							onClick={() => {

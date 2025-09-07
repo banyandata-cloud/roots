@@ -1,4 +1,4 @@
-const Trash = (props) => {
+const Trash = (props: { className?: string | undefined }) => {
 	const { className } = props;
 
 	return (

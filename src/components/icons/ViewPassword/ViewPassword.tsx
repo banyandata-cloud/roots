@@ -1,4 +1,4 @@
-const ViewPasswordIcon = (props) => {
+const ViewPasswordIcon = (props: { className?: string | undefined }) => {
 	const { className = '' } = props;
 
 	return (

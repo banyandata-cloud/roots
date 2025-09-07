@@ -1,4 +1,4 @@
-const Tick = (props) => {
+const Tick = (props: { className?: string | undefined }) => {
 	const { className } = props;
 
 	return (
@@ -17,10 +17,6 @@ const Tick = (props) => {
 			</defs>
 		</svg>
 	);
-};
-
-Tick.defaultProps = {
-	className: '',
 };
 
 export default Tick;

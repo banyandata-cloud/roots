@@ -1,4 +1,4 @@
-const Info = (props) => {
+const Info = (props: { className?: string | undefined }) => {
 	const { className = '' } = props;
 
 	return (

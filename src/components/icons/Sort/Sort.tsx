@@ -3,7 +3,7 @@ const Sort = ({
 	position = 'az',
 }: {
 	className?: string | undefined;
-	position: 'az' | 'za';
+	position: 'az' | 'za' | 'default';
 }) => {
 	let leftArrowColor = '#97979F';
 	let rightArrowColor = '#97979F';

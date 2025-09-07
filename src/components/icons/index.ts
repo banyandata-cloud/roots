@@ -43,5 +43,4 @@ export * from './Sort';
 export * from './Tick';
 export * from './Trash';
 export * from './UnlockPassword';
-export * from './View';
 export * from './ViewPassword';
