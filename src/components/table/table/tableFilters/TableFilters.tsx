@@ -87,7 +87,7 @@ const TableFilters = (props: TableFiltersProps) => {
 		return '';
 	};
 
-	const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+	const handleKeyDown = (event: KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) => {
 		if (event.key === 'Enter') {
 			onSearch?.(search);
 		}
