@@ -16,7 +16,7 @@ import { Text } from '../text';
 import { Tooltip } from '../tooltip';
 import type { PaginationListInit, Page as PaginationPage } from './Pagination.class';
 import { PaginationList } from './Pagination.class';
-import styles from './Paginationv2.module.css';
+import styles from './Pagination.module.css';
 
 type Nullable<T> = T | null;
 
