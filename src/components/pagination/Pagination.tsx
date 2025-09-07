@@ -1,4 +1,12 @@
-import { forwardRef, useEffect, useReducer, useRef, useState } from 'react';
+import {
+	forwardRef,
+	useEffect,
+	useReducer,
+	useRef,
+	useState,
+	type Dispatch,
+	type RefObject,
+} from 'react';
 import { classes } from '../../utils';
 import { Button } from '../buttons';
 import { BaseCell } from '../cell';
@@ -12,12 +20,12 @@ import styles from './Paginationv2.module.css';
 
 type Nullable<T> = T | null;
 
-export type PaginationState = {
+export interface PaginationState {
 	totalPages: Nullable<number>;
 	currentPage: Nullable<number>;
 	step: number;
 	totalData: Nullable<number>;
-};
+}
 
 type PaginationAction =
 	| { type: 'NEXT_PAGE' }
@@ -30,17 +38,35 @@ type PaginationAction =
 const reducer = (state: PaginationState, action: PaginationAction): PaginationState => {
 	switch (action.type) {
 		case 'NEXT_PAGE':
-			return { ...state, currentPage: (state.currentPage ?? 0) + 1 };
+			return {
+				...state,
+				currentPage: (state.currentPage ?? 0) + 1,
+			};
 		case 'PREV_PAGE':
-			return { ...state, currentPage: (state.currentPage ?? 0) - 1 };
+			return {
+				...state,
+				currentPage: (state.currentPage ?? 0) - 1,
+			};
 		case 'SET_PAGE':
-			return { ...state, currentPage: action.payload ?? 1 };
+			return {
+				...state,
+				currentPage: action.payload ?? 1,
+			};
 		case 'SET_STEP':
-			return { ...state, step: action.payload };
+			return {
+				...state,
+				step: action.payload,
+			};
 		case 'SET_TOTAL_PAGES':
-			return { ...state, totalPages: action.payload };
+			return {
+				...state,
+				totalPages: action.payload,
+			};
 		case 'SET_TOTAL_DATA':
-			return { ...state, totalData: action.payload };
+			return {
+				...state,
+				totalData: action.payload,
+			};
 		default:
 			return state;
 	}
@@ -65,14 +91,23 @@ export const usePagination = (props: UsePaginationArgs) => {
 			totalPages != null &&
 			paginationState.currentPage > totalPages
 		) {
-			paginationDispatch({ type: 'SET_PAGE', payload: totalPages });
+			paginationDispatch({
+				type: 'SET_PAGE',
+				payload: totalPages,
+			});
 		}
 
 		if (paginationState.totalData !== totalData) {
-			paginationDispatch({ type: 'SET_TOTAL_DATA', payload: totalData });
+			paginationDispatch({
+				type: 'SET_TOTAL_DATA',
+				payload: totalData,
+			});
 		}
 
-		paginationDispatch({ type: 'SET_TOTAL_PAGES', payload: totalPages });
+		paginationDispatch({
+			type: 'SET_TOTAL_PAGES',
+			payload: totalPages,
+		});
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [totalPages, totalData]);
 
@@ -80,15 +115,33 @@ export const usePagination = (props: UsePaginationArgs) => {
 };
 
 const dropdownOptions = [
-	{ title: '10 per page', value: 10 },
-	{ title: '15 per page', value: 15 },
-	{ title: '25 per page', value: 25 },
-	{ title: '35 per page', value: 35 },
-	{ title: '50 per page', value: 50 },
-	{ title: '100 per page', value: 100 },
+	{
+		title: '10 per page',
+		value: 10,
+	},
+	{
+		title: '15 per page',
+		value: 15,
+	},
+	{
+		title: '25 per page',
+		value: 25,
+	},
+	{
+		title: '35 per page',
+		value: 35,
+	},
+	{
+		title: '50 per page',
+		value: 50,
+	},
+	{
+		title: '100 per page',
+		value: 100,
+	},
 ] as const;
 
-type PageLabelDisplayProps = {
+interface PageLabelDisplayProps {
 	currentPage: number | null;
 	step: number;
 	totalData: number | null;
@@ -97,7 +150,7 @@ type PageLabelDisplayProps = {
 	dataLabel?: string | undefined;
 	render?: boolean;
 	fallback?: boolean;
-};
+}
 
 const PageLabelDisplay = ({
 	currentPage,
@@ -122,7 +175,9 @@ const PageLabelDisplay = ({
 				variant='b1'
 				stroke='medium'
 				className={styles['total-data']}
-				attrs={{ title: `${start}-${end} of ${totalData ?? 0}` }}>
+				attrs={{
+					title: `${start.toString()}-${end.toString()} of ${(totalData ?? 0).toString()}`,
+				}}>
 				<Text>Displaying</Text> {start}-
 				{currentPage != null && totalPages != null && currentPage === totalPages
 					? (totalData ?? 0)
@@ -133,36 +188,30 @@ const PageLabelDisplay = ({
 	);
 };
 
-type CustomPageItem = {
-	label: string;
-	enable: boolean;
-	pageNumber?: number;
-};
-
-export type PaginationProps = {
+export interface PaginationProps {
 	className?: string;
 	floating?: boolean;
-	customPagination?: boolean;
 	enableJumpToPage?: boolean;
 	paginationState?: Pick<PaginationState, 'totalPages' | 'currentPage' | 'step' | 'totalData'>;
-	paginationDispatch?: React.Dispatch<PaginationAction>;
+	paginationDispatch?: Dispatch<PaginationAction>;
 	loading?: boolean;
 	dataLabel?: string | undefined;
-	customLabel?: string | null;
 	jumpLabel?: string | undefined;
-	hideDisabledPages?: boolean;
-	customPageList?: CustomPageItem[];
-	customPageCallback?: (pageNumber: number | string) => void;
 	onChange?: (args: { currentPage: number; step: number; totalPages: number | null }) => void;
-};
+}
 
 export const Pagination = forwardRef<HTMLDivElement, PaginationProps>((props, ref) => {
 	const {
 		className = '',
 		floating,
 		enableJumpToPage = true,
-		paginationState = { totalPages: null, currentPage: null, step: 10, totalData: null },
-		paginationDispatch = () => {},
+		paginationState = {
+			totalPages: null,
+			currentPage: null,
+			step: 10,
+			totalData: null,
+		},
+		paginationDispatch,
 		loading,
 		dataLabel,
 		jumpLabel = 'Jump to Page',
@@ -179,17 +228,19 @@ export const Pagination = forwardRef<HTMLDivElement, PaginationProps>((props, re
 	const jumpPageRef = useRef<HTMLInputElement | null>(null);
 	const mountedRef = useRef(false);
 
-	const dispatch = (action: PaginationAction) => paginationDispatch(action);
+	const dispatch = (action: PaginationAction) => {
+		paginationDispatch?.(action);
+	};
 
 	useEffect(() => {
 		if (mountedRef.current && onChange) {
 			onChange({
-				currentPage: !currentPage ? 1 : currentPage,
+				currentPage: currentPage ?? 1,
 				step,
 				totalPages,
 			});
 		}
-	}, [currentPage, step]);
+	}, [currentPage, onChange, step, totalPages]);
 
 	useEffect(() => {
 		mountedRef.current = true;
@@ -201,22 +252,22 @@ export const Pagination = forwardRef<HTMLDivElement, PaginationProps>((props, re
 	const [isDisplayLabelVisible, setDisplayLabelVisible] = useState(false);
 
 	const updateChildVisibility = () => {
-		const parent = (ref as React.RefObject<HTMLDivElement>)?.current;
-		if (parent) {
-			const parentWidth = parent.offsetWidth;
-			setDisplayLabelVisible(parentWidth >= 1000);
-		}
+		const parent = (ref as RefObject<HTMLDivElement>).current;
+		const parentWidth = parent.offsetWidth;
+		setDisplayLabelVisible(parentWidth >= 1000);
 	};
 
 	useEffect(() => {
 		updateChildVisibility();
 		window.addEventListener('resize', updateChildVisibility);
-		return () => window.removeEventListener('resize', updateChildVisibility);
+		return () => {
+			window.removeEventListener('resize', updateChildVisibility);
+		};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	const showTotalData =
-		typeof totalData === 'number' &&
-		((!currentPage ? 1 : currentPage) - 1) * step + 1 < totalData;
+		typeof totalData === 'number' && ((currentPage ?? 1) - 1) * step + 1 < totalData;
 
 	const showPages = (totalPages ?? 0) > 1;
 
@@ -229,53 +280,53 @@ export const Pagination = forwardRef<HTMLDivElement, PaginationProps>((props, re
 				showTotalData ? '' : styles['no-total-data'],
 				className
 			)}>
-			{
-				<div className={styles['left-options']}>
-					<BaseCell
-						size='auto'
-						flexible
-						className={styles['row-switcher']}
-						component2={
-							<BaseCell
-								size='auto'
-								flexible
-								className={styles['row-switcher-handle']}
-								component2={
-									<Dropdownv2
-										className={styles.dropdown}
-										popperClassName={styles['dropdown-popper']}
-										value={step}
-										placeholder=''
-										onChange={(_, newStep) => {
-											dispatch({
-												type: 'SET_STEP',
-												payload: newStep as number,
-											});
-										}}>
-										{dropdownOptions.map((item) => (
+			<div className={styles['left-options']}>
+				<BaseCell
+					size='auto'
+					flexible
+					className={styles['row-switcher']}
+					component2={
+						<BaseCell
+							size='auto'
+							flexible
+							className={styles['row-switcher-handle']}
+							component2={
+								<Dropdownv2
+									className={styles.dropdown}
+									popperClassName={styles['dropdown-popper']}
+									value={step.toString()}
+									placeholder=''
+									onChange={(_, newStep) => {
+										dispatch({
+											type: 'SET_STEP',
+											payload: Number(newStep ?? 1),
+										});
+									}}>
+									{dropdownOptions.map((item) => {
+										return (
 											<DropdownItemv2
 												title={item.title}
 												value={item.value}
 												key={item.value}
 											/>
-										))}
-									</Dropdownv2>
-								}
-							/>
-						}
-					/>
+										);
+									})}
+								</Dropdownv2>
+							}
+						/>
+					}
+				/>
 
-					<PageLabelDisplay
-						currentPage={currentPage}
-						step={step}
-						totalData={totalData}
-						totalPages={totalPages}
-						isDisplayLabelVisible={isDisplayLabelVisible && !loading}
-						dataLabel={dataLabel}
-						render={enableJumpToPage}
-					/>
-				</div>
-			}
+				<PageLabelDisplay
+					currentPage={currentPage}
+					step={step}
+					totalData={totalData}
+					totalPages={totalPages}
+					isDisplayLabelVisible={isDisplayLabelVisible && !loading}
+					dataLabel={dataLabel}
+					render={enableJumpToPage}
+				/>
+			</div>
 
 			{showPages && (
 				<div
@@ -288,11 +339,14 @@ export const Pagination = forwardRef<HTMLDivElement, PaginationProps>((props, re
 							const active = (currentPage === 0 ? 1 : currentPage) === page.number;
 							return (
 								<span
-									title={`Page ${page.number}`}
+									title={`Page ${page.number.toString()}`}
 									key={page.number}
-									onClick={() =>
-										dispatch({ type: 'SET_PAGE', payload: page.number })
-									}
+									onClick={() => {
+										dispatch({
+											type: 'SET_PAGE',
+											payload: page.number,
+										});
+									}}
 									data-active={active}
 									className={classes(
 										active ? styles.active : '',
@@ -320,7 +374,10 @@ export const Pagination = forwardRef<HTMLDivElement, PaginationProps>((props, re
 									if (!v) return;
 									const next = parseInt(v, 10);
 									if (Number.isNaN(next)) return;
-									dispatch({ type: 'SET_PAGE', payload: next });
+									dispatch({
+										type: 'SET_PAGE',
+										payload: next,
+									});
 								}}>
 								<Tooltip content={jumpLabel} position='top'>
 									<BaseCell
@@ -344,9 +401,9 @@ export const Pagination = forwardRef<HTMLDivElement, PaginationProps>((props, re
 												size='auto'
 												variant='contained'
 												className={styles.button}
-												rightComponent={() => (
-													<ArrowIcon className={styles.icon} />
-												)}
+												rightComponent={() => {
+													return <ArrowIcon className={styles.icon} />;
+												}}
 											/>
 										}
 									/>
