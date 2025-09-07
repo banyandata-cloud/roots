@@ -4,7 +4,7 @@ import { BaseCell } from '../../cell';
 import styles from './BaseButton.module.css';
 import type { BaseButtonProps } from './types';
 
-const BaseButton = forwardRef<HTMLElement, BaseButtonProps>((props, ref) => {
+const BaseButton = forwardRef<HTMLButtonElement, BaseButtonProps>((props, ref) => {
 	const {
 		className = '',
 		component1,

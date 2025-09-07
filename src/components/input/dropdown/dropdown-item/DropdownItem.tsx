@@ -1,15 +1,13 @@
-import PropTypes from 'prop-types';
-import { forwardRef } from 'react';
+import { forwardRef, type ReactNode } from 'react';
 import { classes } from '../../../../utils';
 import { InfoIcon } from '../../../icons';
 import { Tooltip } from '../../../tooltip';
 import { Checkbox } from '../../checkbox';
 import { Radio } from '../../radio';
-import styles from './DropdownItemv2.module.css';
+import styles from './DropdownItem.module.css';
+import type { DropdownItemProps } from './types';
 
-// eslint-disable-next-line prefer-arrow-callback
-const DropdownItem = forwardRef(function DropdownItem(props, ref) {
-	// eslint-disable-next-line object-curly-newline
+const DropdownItem = forwardRef<HTMLLIElement, DropdownItemProps>((props, ref) => {
 	const {
 		title,
 		value,
@@ -26,17 +24,21 @@ const DropdownItem = forwardRef(function DropdownItem(props, ref) {
 		customComponent,
 	} = props;
 
-	let action = null;
+	let action: ReactNode = null;
 
 	switch (variant) {
 		case 'checkbox':
 			action = (
-				<Checkbox className={styles.input} checked={selected} disabled disabledAsChild />
+				<Checkbox className={styles.input} checked={!!selected} disabled disabledAsChild />
 			);
 			break;
 		case 'radio':
 			action = (
-				<Radio className={styles.input} checked={selected} disabled={disabled || error} />
+				<Radio
+					className={styles.input}
+					checked={!!selected}
+					disabled={!!disabled || !!error}
+				/>
 			);
 			break;
 		default:
@@ -57,14 +59,12 @@ const DropdownItem = forwardRef(function DropdownItem(props, ref) {
 			data-variant={variant}
 			data-value={value}
 			data-selected={selected}
-			onClick={!disabled && !error ? onClick : ''}
+			onClick={!disabled && !error ? onClick : undefined}
 			onMouseEnter={onMouseEnter}
-			{...{
-				...dataAttrs,
-			}}
+			{...(dataAttrs ?? {})}
 			tabIndex={tabIndex}
 			role='option'
-			aria-selected={selected}
+			aria-selected={!!selected}
 			onKeyDown={onKeyDown}>
 			{action}
 			{customComponent ?? (
@@ -72,7 +72,7 @@ const DropdownItem = forwardRef(function DropdownItem(props, ref) {
 					<span>{title}</span>
 					{error && (
 						<Tooltip
-							content={error ?? ''}
+							content={error}
 							position='top'
 							className={styles.tooltip}
 							variant='light'>
@@ -86,24 +86,5 @@ const DropdownItem = forwardRef(function DropdownItem(props, ref) {
 		</li>
 	);
 });
-
-DropdownItem.propTypes = {
-	className: PropTypes.string,
-	title: PropTypes.node,
-	variant: PropTypes.oneOf(['default', 'checkbox', 'radio']),
-	selected: PropTypes.bool,
-	// eslint-disable-next-line react/forbid-prop-types
-	dataAttrs: PropTypes.object,
-	customComponent: PropTypes.node,
-};
-
-DropdownItem.defaultProps = {
-	className: '',
-	title: '',
-	variant: 'default',
-	dataAttrs: {},
-	selected: false,
-	customComponent: null,
-};
 
 export default DropdownItem;
