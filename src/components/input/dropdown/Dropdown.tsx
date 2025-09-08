@@ -600,12 +600,7 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(props,
 										variant='contained'
 										type='button'
 										leftComponent={() => {
-											return (
-												<SelectAllIcon
-													className={styles.icon}
-													position='left'
-												/>
-											);
+											return <SelectAllIcon className={styles.icon} />;
 										}}
 										onClick={(event) => {
 											event.stopPropagation();
@@ -626,7 +621,7 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(props,
 									<Button
 										className={styles['multi-clear']}
 										blurOnClick={false}
-										title='Clear All'
+										title='Clear Selections'
 										size='auto'
 										disabled={selectedOptions.length === 0}
 										onClick={(event) => {
@@ -637,7 +632,11 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(props,
 									/>
 									<Button
 										className={styles['multi-apply']}
-										title={multiSelectActionTitle ?? 'Apply'}
+										title={
+											selectedOptions.length === 0
+												? 'Apply'
+												: (multiSelectActionTitle ?? 'Apply')
+										}
 										size='auto'
 										onClick={onApply}
 									/>

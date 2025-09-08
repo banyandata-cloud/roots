@@ -199,7 +199,10 @@
   color: var(--secondary-color2);
 }
 .body .multi-options button[data-elem=base-cell].button[type=button] > [data-elem=component2] {
-  margin-left: 0.3125rem;
+  margin-left: 0.1rem;
+}
+.body .multi-options button[data-elem=base-cell].button[type=button] > [data-elem=component1] > svg {
+  fill: var(--secondary-color2);
 }
 .body .multi-options .items {
   font-size: 0.875rem;
@@ -212,7 +215,7 @@
   justify-content: space-between;
   align-items: center;
   list-style: none;
-  gap: 2.5rem;
+  gap: 1rem;
   position: sticky;
   background-color: var(--light-color3);
   padding: 0rem 1rem 1rem;

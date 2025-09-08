@@ -192,7 +192,12 @@
 			background-color: transparent;
 			color: $secondary-color2;
 			> [data-elem='component2'] {
-				margin-left: 0.3125rem;
+				margin-left: 0.1rem;
+			}
+			> [data-elem='component1'] {
+				> svg {
+					fill: $secondary-color2;
+				}
 			}
 		}
 		.items {
@@ -205,7 +210,7 @@
 	.footer {
 		@include flex(row, space-between);
 		list-style: none;
-		gap: 2.5rem;
+		gap: 1rem;
 		position: sticky;
 		background-color: $light-color3;
 		padding: 0rem 1rem 1rem;
