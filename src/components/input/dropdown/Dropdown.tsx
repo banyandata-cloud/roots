@@ -621,7 +621,7 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(props,
 									<Button
 										className={styles['multi-clear']}
 										blurOnClick={false}
-										title='Clear Selections'
+										title='Clear'
 										size='auto'
 										disabled={selectedOptions.length === 0}
 										onClick={(event) => {
