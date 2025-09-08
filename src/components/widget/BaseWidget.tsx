@@ -37,7 +37,7 @@ interface DropdownOption {
 	id: 'dropdown';
 	placeholder?: string;
 	value?: string;
-	onChange?: (value: string) => void;
+	onChange: (event: React.SyntheticEvent, value: string | string[] | null | undefined) => void;
 	selectOption?: SelectOption[];
 }
 
@@ -143,7 +143,7 @@ const generateOptions = (optionData: WidgetOption, theme: Theme): ReactNode => {
 								key={objectData.value}
 								value={objectData.value}
 								variant='checkbox'
-								className={styles['dropdown-item']}
+								className={styles['dropdown-item'] ?? ''}
 							/>
 						);
 					})}
