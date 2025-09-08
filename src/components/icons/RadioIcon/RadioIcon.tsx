@@ -1,5 +1,5 @@
 const RadioIcon = {
-	Checked: (props) => {
+	Checked: (props: { className?: string | undefined }) => {
 		const { className } = props;
 		return (
 			<svg
@@ -14,7 +14,7 @@ const RadioIcon = {
 		);
 	},
 
-	UnChecked: (props) => {
+	UnChecked: (props: { className?: string | undefined }) => {
 		const { className } = props;
 		return (
 			<svg
@@ -26,13 +26,6 @@ const RadioIcon = {
 			</svg>
 		);
 	},
-};
-
-RadioIcon.Checked.defaultProps = {
-	className: '',
-};
-RadioIcon.UnChecked.defaultProps = {
-	className: '',
 };
 
 export default RadioIcon;
