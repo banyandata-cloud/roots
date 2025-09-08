@@ -13,7 +13,6 @@ import React, {
 	useState,
 } from 'react';
 import { classes } from '../../../utils';
-import { Toggle } from '../../Toggle';
 import { BaseButton, Button } from '../../buttons';
 import { DatePicker } from '../../datePicker';
 import { ArrowIcon, CaretIcon, FilterIcon, MaximizeIcon } from '../../icons';
@@ -21,6 +20,7 @@ import { DropdownItemv2, Dropdownv2 } from '../../input';
 import { Popover } from '../../popover';
 import BaseSidePanel from '../../sidePanel/BaseSidePanel';
 import { Text } from '../../text';
+import { Toggle } from '../../toggle';
 import { WidgetFallback } from '../fallback';
 import styles from './BaseV2Widget.module.css';
 
@@ -44,7 +44,7 @@ interface BaseOptionData {
 
 interface DropdownOptionData extends BaseOptionData {
 	id: 'dropdown';
-	onChange: (value: string) => void;
+	onChange: (event: React.SyntheticEvent, value: string | string[] | null | undefined) => void;
 	selectOption: SelectOption[];
 }
 
@@ -158,17 +158,17 @@ const generateOptions = ({
 			return (
 				<Dropdownv2
 					placeholder={optionData.placeholder ?? ''}
-					value={(optionData.value as string) ?? ''}
+					value={optionData.value as string}
 					onChange={optionData.onChange}
 					className={classes(styles['dropdown-header'])}
 					popperClassName={styles['dropdown-popper']}>
-					{(optionData.selectOption ?? []).map((objectData: SelectOption) => {
+					{optionData.selectOption.map((objectData: SelectOption) => {
 						return (
 							<DropdownItemv2
 								title={objectData.title}
 								key={objectData.value}
 								value={objectData.value}
-								className={styles['dropdown-item']}
+								className={styles['dropdown-item'] ?? ''}
 							/>
 						);
 					})}
