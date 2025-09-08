@@ -7,7 +7,7 @@ import type { ComponentProps, JSX, ReactElement } from 'react';
  * - 'lg': Large size
  * - 'auto': Automatic sizing based on content
  */
-type ElementSizeTypes = 'sm' | 'md' | 'lg' | 'auto';
+export type ElementSizeTypes = 'sm' | 'md' | 'lg' | 'auto';
 
 /**
  * Specifies the allowed root DOM element types for the cell.
@@ -15,7 +15,7 @@ type ElementSizeTypes = 'sm' | 'md' | 'lg' | 'auto';
  * - 'span': Inline container
  * - 'button': Button element
  */
-type RootDOMTypes = 'div' | 'span' | 'button';
+type RootDOMTypes = 'div' | 'span' | 'button' | 'td';
 
 /**
  * Specifies the border radius options for the cell.

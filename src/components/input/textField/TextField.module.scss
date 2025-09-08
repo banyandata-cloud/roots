@@ -8,12 +8,11 @@
 		max-width: 100%;
 		font-weight: 400;
 		font-size: 0.75rem;
-		line-height: 1.125rem;
-		letter-spacing: 0.32px;
-		color: $grey;
-		height: 100%;
+		letter-spacing: 0.02rem;
+		color: $text-color;
+		letter-spacing: 0.3199999928474426px;
 		@include flex(column, flex-start, flex-start);
-		gap: 0.3125rem;
+		gap: 0.5rem;
 		.required {
 			&::after {
 				content: ' *';
@@ -23,14 +22,17 @@
 
 		.input-wrapper {
 			@include flex(row, space-between, center);
-			gap: 0.5rem;
-			padding: 0rem 0.5rem;
+			gap: 0.625rem;
+			padding: 0.75rem;
+			height: auto;
 			max-width: 100%;
 			width: 100%;
-			border-color: $grey4;
-			border-style: solid;
 			border-radius: 0.25rem;
-			height: 100%;
+			box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25);
+
+			&:focus-within {
+				outline: 1px solid $secondary-color2;
+			}
 
 			.icon {
 				@include flex;
@@ -38,19 +40,31 @@
 			> [data-elem*='component'] {
 				@include flex;
 			}
+			> [data-elem='component1'] {
+				> svg {
+					width: 1.5rem;
+					height: 1.5rem;
+					&.error {
+						path {
+							stroke: $primary-color1;
+						}
+					}
+				}
+			}
 			> [data-elem='component2'] {
 				flex: 1;
 				.input {
 					@include removeArrows;
 					flex: 1;
-					background-color: transparent;
+					background-color: $light-color3 !important;
 					border: none;
 					font-weight: 400;
+					color: $text-color;
+
 					font-size: 0.875rem;
 					line-height: 1.125rem;
-					letter-spacing: 0.16px;
-					color: $text-color;
-					width: 100%;
+					letter-spacing: 0.01rem;
+
 					&:focus {
 						outline: none;
 					}
@@ -58,14 +72,89 @@
 						background: $grey9;
 						color: $grey3;
 					}
+					&.error {
+						color: $primary-color1;
+					}
 					&.sm {
-						padding: 0.5rem 0rem;
+						padding: 0rem 0.5rem;
 					}
 					&.md {
-						padding: 0.688rem 0rem;
+						padding: 0rem 0.5rem;
 					}
 					&.lg {
-						padding: 1rem 0rem;
+						padding: 0rem 0.5rem;
+					}
+
+					&::placeholder {
+						font-size: 0.875rem;
+						font-weight: 400;
+						line-height: 1.125rem;
+						letter-spacing: 0.01rem;
+						color: $mono-color2;
+						opacity: 1;
+					}
+
+					&::-moz-placeholder {
+						font-size: 0.875rem;
+						font-weight: 400;
+						line-height: 1.125rem;
+						letter-spacing: 0.01rem;
+						color: $mono-color2;
+						opacity: 1;
+					}
+
+					&:-webkit-autofill,
+					&:-webkit-autofill:hover,
+					&:-webkit-autofill:focus,
+					&:-webkit-autofill:active {
+						-webkit-box-shadow: 0 0 0 30px $light-color3 inset !important;
+						-webkit-text-fill-color: initial !important;
+					}
+
+					// For Firefox
+					&:autofill,
+					&:autofill:hover,
+					&:autofill:focus,
+					&:autofill:active {
+						box-shadow: 0 0 0 30px $light-color3 inset !important;
+						-moz-text-fill-color: initial !important;
+					}
+				}
+			}
+
+			> [data-elem='component3'] {
+				@include flex;
+				gap: 0.75rem;
+				button[data-elem='base-cell'].button[type='button'] {
+					width: auto;
+					height: fit-content;
+					padding: 0;
+					background-color: transparent;
+					&.error {
+						> [data-elem='component1'] {
+							.icon {
+								&.error {
+									&.error {
+										path {
+											stroke: $primary-color1;
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+				.span {
+					.icon {
+						width: 1rem;
+						height: 1rem;
+						&.error {
+							&.error {
+								path {
+									stroke: $primary-color1;
+								}
+							}
+						}
 					}
 				}
 			}
@@ -88,11 +177,8 @@
 				}
 			}
 
-			&:focus-within {
-				border: 0.063rem solid $primary-color4;
-				&.feedback-error {
-					border-color: $primary-color1;
-				}
+			&.feedback-error {
+				box-shadow: 0px 0px 2px 0px $primary-color1;
 			}
 
 			&.border-default {
@@ -103,40 +189,6 @@
 			}
 			&.border-none {
 				border-width: 0rem;
-			}
-		}
-	}
-
-	.bottom {
-		@include flex(row, space-between, flex-start);
-		min-height: 2rem;
-		width: 100%;
-		gap: 1rem;
-		color: $grey3;
-		font-size: 0.75rem;
-		user-select: none;
-
-		.feedback {
-			flex: 1;
-			margin-right: auto;
-
-			&.feedback-error {
-				color: $primary-color1;
-				fill: $primary-color1;
-			}
-
-			&.feedback-success {
-				color: $primary-color2;
-				fill: $primary-color2;
-			}
-		}
-
-		.count {
-			text-align: right;
-			margin-left: auto;
-
-			&.exceeded {
-				color: $primary-color1;
 			}
 		}
 	}

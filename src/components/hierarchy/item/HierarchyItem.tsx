@@ -1,10 +1,10 @@
-import type { ReactElement, ReactNode } from 'react';
-import React, { useState } from 'react';
+import type { ChangeEvent, ReactElement, ReactNode } from 'react';
+import React, { forwardRef, useState } from 'react';
 import { classes } from '../../../utils';
 import { Button } from '../../buttons';
 import { BaseCell } from '../../cell';
 import { ExpandCollapseIcon, MagnifyingGlassIcon } from '../../icons';
-import { TextFieldv2 as TextField } from '../../input/textFieldv2';
+import { TextFieldv2 as TextField } from '../../input/textField';
 import styles from './HierarchyItem.module.css';
 
 type IconPlacement = 'left' | 'right' | 'none';
@@ -35,7 +35,7 @@ interface HierarchyItemProps {
 	list?: Item[] | boolean;
 }
 
-const HierarchyItem = (props: HierarchyItemProps): ReactElement => {
+const HierarchyItem = forwardRef<HTMLDivElement, HierarchyItemProps>((props, ref): ReactElement => {
 	const {
 		defaultOpen = false,
 		iconPlacement = 'left',
@@ -58,6 +58,10 @@ const HierarchyItem = (props: HierarchyItemProps): ReactElement => {
 
 	const [open, setOpen] = useState(defaultOpen);
 	const [searchText, setSearchText] = useState('');
+
+	const handleSearchSubmit = () => {
+		onSearchSubmit?.(searchText, pathString);
+	};
 
 	const icon = (
 		<div className={styles['expand-container']}>
@@ -91,12 +95,9 @@ const HierarchyItem = (props: HierarchyItemProps): ReactElement => {
 		</div>
 	);
 
-	const handleSearchSubmit = () => {
-		onSearchSubmit?.(searchText, pathString);
-	};
-
 	return (
 		<div
+			ref={ref}
 			className={classes(
 				styles.root,
 				open && styles.open,
@@ -117,13 +118,15 @@ const HierarchyItem = (props: HierarchyItemProps): ReactElement => {
 								size='md'
 								type='text'
 								value={searchText}
-								onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+								onChange={(
+									e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+								) => {
 									setSearchText(e.target.value);
 								}}
-								onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
-									if (e.key === 'Enter') {
-										handleSearchSubmit();
-									}
+								onKeyDown={(
+									e: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>
+								) => {
+									if (e.key === 'Enter') handleSearchSubmit();
 								}}
 								LeftComponent={() => {
 									return leftComponent;
@@ -175,17 +178,19 @@ const HierarchyItem = (props: HierarchyItemProps): ReactElement => {
 							variant='text'
 							className={styles.searchWrapper}
 							onClick={() => {
-								onSearchStart?.(); // trigger search state in parent
+								return onSearchStart?.();
 							}}
 							title={<MagnifyingGlassIcon className={styles.searchButton} />}
 						/>
 					) : undefined
 				}
 			/>
+
 			{!open && !isLastItem && <div className={styles['collapsed-tail-spacer']} />}
 			{!isLastItem && (count === undefined || iconPlacement !== 'left') && (
 				<div data-elem='connector-dot' className={classes(styles['dashed-connector'])} />
 			)}
+
 			{open && (
 				<BaseCell
 					size='auto'
@@ -203,6 +208,6 @@ const HierarchyItem = (props: HierarchyItemProps): ReactElement => {
 			)}
 		</div>
 	);
-};
+});
 
 export default HierarchyItem;

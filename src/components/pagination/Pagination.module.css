@@ -25,26 +25,103 @@
   width: 100%;
   bottom: 3rem;
 }
-.root .copyrightText {
+.root .left-options {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
 }
-.root .copyrightText > .text {
-  color: var(--mono-color1);
+.root .left-options .row-switcher {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 0;
+  max-width: 9.5rem;
+  background-color: transparent;
+  padding: 0;
+  height: 100%;
+}
+.root .left-options .row-switcher > [data-elem=component2] {
+  height: 100%;
+  width: 100%;
+}
+.root .left-options .row-switcher .row-switcher-handle {
+  gap: 0.75rem;
+  padding: 0;
+  border-radius: 0.25rem;
+  height: 100%;
+  width: -moz-fit-content !important;
+  width: fit-content !important;
+}
+.root .left-options .row-switcher .row-switcher-handle > [data-elem=component1] {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: stretch;
+  height: 100%;
+}
+.root .left-options .row-switcher .row-switcher-handle > [data-elem=component1]::before {
+  content: "";
+  margin: auto;
+  background: var(--white);
+  width: 0.0313rem;
+  height: 50%;
+}
+.root .left-options .row-switcher .dropdown {
+  height: 100%;
+}
+.root .left-options .row-switcher .dropdown > [data-elem=header] {
+  height: 100%;
+}
+.root .left-options .row-switcher .dropdown > [data-elem=header] > [data-elem=select] {
+  height: 2.375rem;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 0.625rem;
+  border: 0rem solid transparent;
+}
+.root .left-options .row-switcher .dropdown > [data-elem=header] > [data-elem=select] > [data-elem=placeholder] {
+  color: var(--text-color);
   font-size: 0.875rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.125rem;
+  background-color: var(--secondary-color2);
+}
+.root .left-options .row-switcher .dropdown > [data-elem=header] > [data-elem=select] > svg {
+  color: var(--text-color);
+  width: 1rem;
+  height: 1rem;
+}
+.root .left-options .total-data {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  color: var(--text-color);
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+.root .left-options .total-data span {
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 .root .page-numbers {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  gap: 1.25rem;
-  flex: 1 1;
+  flex: 1;
+}
+.root .page-numbers.stretch {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
 }
 .root .page-numbers.custom-page-number {
   display: flex;
@@ -68,50 +145,67 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  gap: 0.625rem;
+  gap: 1rem;
 }
 .root .page-numbers > .pageSelect .number {
   cursor: pointer;
-  border-radius: 50%;
-  font-size: 1rem;
-  background-color: #e0e0e0;
-  color: var(--black);
-  min-width: 2.313rem;
-  line-height: 2.313rem;
+  border-radius: 100%;
+  font-size: 0.875rem;
+  line-height: 1.125rem;
+  font-weight: 500;
+  height: 2.5rem;
+  width: 2.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
   text-align: center;
   border: 1px solid transparent;
 }
 .root .page-numbers > .pageSelect .number.custom-number {
-  border-radius: 0%;
+  border-radius: 0;
   font-size: 0.875rem;
-  padding: 0 5px 0 5px;
+  width: auto;
+  white-space: nowrap;
+  padding-inline: 0.3125rem;
 }
 .root .page-numbers > .pageSelect .number:not([data-active=true]) {
   display: none;
 }
 @media (min-width: 768px) {
   .root .page-numbers > .pageSelect .number:not([data-active=true]) {
-    display: block;
+    display: inline-flex;
   }
 }
 .root .page-numbers > .pageSelect .number:hover {
-  border: 1px solid var(--primary-color4);
-  color: var(--primary-color4);
-  background: var(--background-color4);
+  color: var(--secondary-color2);
+  background: var(--background-color5);
 }
 .root .page-numbers > .pageSelect .number.active {
-  background-color: var(--primary-color4);
+  background-color: var(--secondary-color2);
   color: var(--white);
 }
 .root .page-numbers > .pageSelect .number.disabled {
-  color: var(--grey2);
+  color: var(--light-color2);
+  cursor: not-allowed;
+}
+.root .page-numbers > .pageSelect .number.ellipsis {
+  font-size: 1.8rem;
+  padding-top: 0.125rem;
+  font-weight: 600;
+  align-items: unset;
+}
+.root .page-numbers > .pageSelect .number.ellipsis:hover {
+  color: var(--secondary-color2);
+  background: transparent;
 }
 .root .options {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   gap: 1rem;
+  flex: 1;
 }
 .root .options .total-data {
   text-overflow: ellipsis;
@@ -122,70 +216,13 @@
   font-weight: 500;
   line-height: 1.125rem;
 }
-.root .options .row-switcher {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  min-width: 4rem;
-  background-color: transparent;
-  padding: 0;
-  height: 100%;
-}
-.root .options .row-switcher > [data-elem=component2] {
-  height: 100%;
-  width: 100%;
-}
-.root .options .row-switcher .row-switcher-handle {
-  gap: 0.75rem;
-  padding: 0;
-  border-radius: 0.25rem;
-  height: 100%;
-  width: 100%;
-}
-.root .options .row-switcher .row-switcher-handle > [data-elem=component1] {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: stretch;
-  height: 100%;
-}
-.root .options .row-switcher .row-switcher-handle > [data-elem=component1]::before {
-  content: "";
-  margin: auto;
-  background: var(--white);
-  width: 0.0313rem;
-  height: 50%;
-}
-.root .options .row-switcher .dropdown {
-  height: 100%;
-}
-.root .options .row-switcher .dropdown > [data-elem=header] {
-  height: 100%;
-}
-.root .options .row-switcher .dropdown > [data-elem=header] > [data-elem=select] {
-  height: 2.375rem;
-  max-height: 100%;
-  width: auto;
-  min-width: -moz-fit-content;
-  min-width: fit-content;
-  padding: 0.625rem;
-  border: 0rem solid transparent;
-}
-.root .options .row-switcher .dropdown > [data-elem=header] > [data-elem=select] > [data-elem=placeholder] {
-  color: #1a2028;
-  font-size: 0.875rem;
-  background-color: #2f2fc6;
-}
-.root .options .row-switcher .dropdown > [data-elem=header] > [data-elem=select] > svg {
-  fill: #1a2028;
-  width: 1rem;
-  height: 1rem;
+.root .options > [data-elem=base-cell] {
+  flex: 0 !important;
 }
 .root .options .form {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   width: auto;
   min-width: auto;
@@ -202,16 +239,14 @@
 }
 .root .options .form .jump-to-page {
   background: transparent;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: stretch;
-  gap: 0rem;
   padding: 0rem;
   height: 100%;
+  width: -moz-fit-content;
+  width: fit-content;
   border-radius: 0.25rem;
-  border: 0.0313rem solid var(--mono-color2);
+  border: 0.0313rem solid var(--secondary-color2);
   box-shadow: 0.1875rem 0.1875rem 0.25rem 0rem rgba(194, 194, 194, 0.12) inset;
+  gap: 0;
 }
 .root .options .form .jump-to-page > [data-elem*=component] {
   overflow: hidden;
@@ -227,11 +262,11 @@
 .root .options .form .jump-to-page .inputbox > label > [data-elem=base-cell] {
   background-color: transparent;
   color: var(--white);
-  height: 100%;
   width: 3rem;
   flex: 1;
-  padding: 0.625rem;
+  padding: 0rem !important;
   border: none;
+  border-radius: 0rem;
 }
 .root .options .form .jump-to-page .inputbox > label > [data-elem=base-cell] .icon {
   width: 1.5rem;
@@ -243,7 +278,7 @@
 }
 .root .options .form .jump-to-page .inputbox > label > [data-elem=base-cell] [data-elem=input] {
   text-align: center;
-  background-color: transparent;
+  background-color: transparent !important;
   border: none;
   height: 100%;
   width: 100%;
@@ -254,14 +289,14 @@
   line-height: normal;
 }
 .root .options .form .jump-to-page .button {
-  border-radius: 0rem 0.25rem 0.25rem 0rem;
-  background-color: var(--mono-color2);
+  border-radius: 0rem;
+  background-color: var(--secondary-color2);
   padding: 0.75rem 0.5rem;
   height: 100%;
 }
 .root .options .form .jump-to-page .button .icon {
   width: 1.5rem;
   height: 1.5rem;
-  fill: var(--mono-color1);
+  fill: var(--white);
   flex-shrink: 0;
 }/*# sourceMappingURL=Pagination.module.css.map */

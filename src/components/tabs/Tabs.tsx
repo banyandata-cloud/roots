@@ -3,8 +3,8 @@ import {
 	useEffect,
 	useRef,
 	useState,
-	type ChangeEvent,
 	type ReactElement,
+	type SyntheticEvent,
 } from 'react';
 import { classes } from '../../utils';
 import { Button } from '../buttons';
@@ -125,9 +125,8 @@ const Tabs = (props: TabsProps): ReactElement => {
 									className={`${String(styles.dropdown)} ${String(
 										isActive && styles.active
 									)}`}
-									onChange={(event: ChangeEvent<HTMLInputElement>) => {
-										const selectedValue = event.target.value;
-										handleDropClick(selectedValue);
+									onChange={(_: SyntheticEvent, selectedValue) => {
+										handleDropClick(selectedValue?.toString() ?? '');
 										setActiveTab(index);
 									}}
 									value={selectedTab}
