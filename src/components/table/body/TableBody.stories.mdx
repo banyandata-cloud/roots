@@ -1,0 +1,300 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+import TableBody from './TableBody';
+
+<Meta title='Components/Table/Body' parameters={{ options: { showToolbar: false } }} />
+
+export const Template = (args) => <TableBody {...args} />;
+
+# Table Body
+
+Just extends the Base Cell with the property of text overflow ellipsis.
+
+#### Design - [Figma](https://www.figma.com/file/e9opoAtQHBo4vFd6u0Co98/Component-Library?type=design&node-id=1-5&mode=design&t=tXbQWENNIzmFNTVU-0) | Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/components/table/body)
+
+## Usage
+
+Basic import and additional information on how to use this component.
+
+```js
+import { TableBody } from '@banyan_cloud/roots';
+```
+
+- The Table component accept 2 major keys `data` and `header` values alongwith props to control customization.
+- The `className` of the Table can be adjusted in the implementaion code to match its flexibility with respect to its container.
+
+## Stories
+
+The CSF rendered inside the `Canvas` from which you can see the implementation example.
+
+### Default
+
+<Canvas>
+	<Story
+		name='Default'
+		args={{
+			headerData: [
+				{
+					title: 'Name',
+					id: 'name',
+					size: 'lg',
+					flexible: true,
+				},
+				{
+					title: 'Gender',
+					id: 'gender',
+					size: 'sm',
+				},
+				{
+					title: 'Age',
+					id: 'age',
+					size: 'sm',
+				},
+				{
+					title: 'Designation',
+					id: 'designation',
+				},
+				{
+					title: 'State',
+					id: 'state',
+					size: 'sm',
+				},
+			],
+			tableData: [
+				{
+					name: 'Aryan Dixit',
+					gender: 'M',
+					age: 27,
+					designation: 'UI Engineer',
+					state: 'Uttar Pradesh',
+				},
+				{
+					name: 'Pradeep Annadurai',
+					gender: 'M',
+					age: 24,
+					designation: 'UI Engineer',
+					state: 'Tamil Nadu',
+				},
+			],
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+## API
+
+**`loading`**
+
+loading indicates the waiting state of chart while data is loading
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>bool</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<BaseTable loading={false} />
+```
+
+**`headerData`**
+
+The key that holds details of all headers of the Table mapped to the Data with key.
+It has following shape - `title`, `id`, `size`, `flexible`, `sort`, `style` and `multiline`.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Array</td>
+		<td>[]</td>
+	</tr>
+</table>
+
+```jsx
+<BaseTable
+	headerData={[
+		{
+			title: 'Name',
+			id: 'name',
+			size: 'lg',
+			flexible: true,
+		},
+		{
+			title: 'Gender',
+			id: 'gender',
+			size: 'sm',
+		},
+		{
+			title: 'Age',
+			id: 'age',
+			size: 'sm',
+		},
+		{
+			title: 'Designation',
+			id: 'designation',
+		},
+		{
+			title: 'State',
+			id: 'state',
+			size: 'sm',
+		},
+	]}
+/>
+```
+
+**`tableData`**
+
+The Fundamental data which is displayed in Table and mapped againt header.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Array</td>
+		<td>[]</td>
+	</tr>
+</table>
+
+```jsx
+<BaseTable
+	tableData={[
+		{
+			name: 'Aryan Dixit',
+			gender: 'M',
+			age: 27,
+			designation: 'UI Engineer',
+			state: 'UP',
+		},
+	]}
+/>
+```
+
+**`customCells`**
+
+Any additional UI or funcationlity that is required in either Header or Body except data Mapping.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Object</td>
+		<td>
+			{`{
+				header: null,
+				body: null,
+			}`}
+		</td>
+	</tr>
+</table>
+
+```jsx
+<BaseTable
+	customCells={{
+		body: BodyCells({
+			datum,
+			selectedResources,
+			setSelectedResources,
+		}),
+		header: HeaderCells({
+			datum,
+			selectedResources,
+			setSelectedResources,
+			resourcesList,
+		}),
+	}}
+/>
+```
+
+**`expandable`**
+A callback function to capture Expand event.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Function</td>
+		<td>() => {}</td>
+	</tr>
+</table>
+
+```jsx
+<BaseTable
+	expandable={() => {
+		// Reset some Data
+	}}
+/>
+```
+
+**`onRowClick`**
+
+A callback function to capture Row Click event.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Function</td>
+		<td>() => {}</td>
+	</tr>
+</table>
+
+```jsx
+<BaseTable
+	onRowClick={() => {
+		// Reset some Data
+	}}
+/>
+```
+
+**`className`**
+
+Key to change style through external className.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>''</td>
+	</tr>
+</table>
+
+```jsx
+<BaseTable className='chart-area' />
+```
+
+**`rowHeight`**
+
+Key to decide height of Row to select between `md` or `lg` mode.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>"md"</td>
+	</tr>
+</table>
+
+```jsx
+<BaseTable rowHeight='lg' />
+```

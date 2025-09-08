@@ -2,18 +2,18 @@ import { Meta, Canvas, Story } from '@storybook/addon-docs';
 
 import { useState } from 'react';
 import { ThemedContainer } from '../../helpers';
-import Dropdown from './Dropdown';
-import DropdownItem from './dropdown-item/DropdownItem';
+import Dropdownv2 from './Dropdown';
+import DropdownItemv2 from './dropdown-item/DropdownItem';
 
 <Meta title='Components/Input/Dropdown' parameters={{ options: { showToolbar: true } }} />
 
 export const Template = (args) => (
 	<ThemedContainer theme='light'>
-		<Dropdown {...args}>
-			<DropdownItem title='Option A' value={1} />
-			<DropdownItem title='Option B' value={2} />
-			<DropdownItem title='Option C' value={3} />
-		</Dropdown>
+		<Dropdownv2 {...args}>
+			<DropdownItemv2 title='Option A' value={1} />
+			<DropdownItemv2 title='Option B' value={2} />
+			<DropdownItemv2 title='Option C' value={3} />
+		</Dropdownv2>
 	</ThemedContainer>
 );
 
@@ -33,21 +33,21 @@ Basic import and additional information on how to use this component.
 import { Dropdown } from '@banyan_cloud/roots';
 ```
 
--   The multi prop enables multi-selection mode, allowing users to select multiple options.
--   The onChange function is called when the selection changes. It provides the new selected value(s) as a parameter.
--   The formatter function allows you to customize how the selected option count is displayed in multi-selection mode.
+- The multi prop enables multi-selection mode, allowing users to select multiple options.
+- The onChange function is called when the selection changes. It provides the new selected value(s) as a parameter.
+- The formatter function allows you to customize how the selected option count is displayed in multi-selection mode.
 
 ## Stories
 
 The CSF rendered inside the `Canvas` from which you can see the implementation example.
 
-### Default
+### Default - Uncontrolled
 
 The default dropdown component.
 
 <Canvas>
 	<Story
-		name='Default'
+		name='Default Uncontrolled'
 		args={{
 			label: 'Default Dropdown',
 			placeholder: 'Select an option',
@@ -56,56 +56,94 @@ The default dropdown component.
 	</Story>
 </Canvas>
 
-### Multi-check
+### Default Dropdown - Controlled
 
-The dropdown component with multiple selections.
+The dropdown component with radio buttons.
 
 <Canvas>
-	<Story name='Multi-check'>
+	<Story name='Default Controlled'>
 		{() => {
 			const [value, setValue] = useState([]);
 			return (
 				<div>
-					<Dropdown
+					<Dropdownv2
 						value={value}
-						multi={true}
-						label='Multi Select Checkbox Dropdown'
-						placeholder='Select an option'
+						highlightOnSelect
+						label='Default Dropdown With States'
 						onChange={(event, newValue) => {
 							setValue(newValue);
-						}}>
-						{[...Array(4).keys()].map((option) => {
-							return (
-								<DropdownItem
-									key={option}
-									title={`Option ${option + 1}`}
-									value={option + 1}
-									variant='checkbox'
-									disabled={true}
-								/>
-							);
-						})}
-					</Dropdown>
+						}}
+						placeholder='Select an option'>
+						<DropdownItemv2 title='Option A' value={1} />
+						<DropdownItemv2 title='Option B' value={2} />
+						<DropdownItemv2 title='Option C' value={3} />
+					</Dropdownv2>
 				</div>
 			);
 		}}
 	</Story>
 </Canvas>
 
-### Radio
+### Multi Select Dropdown - Controlled
 
-The dropdown component with radio buttons.
+The dropdown component with multiple selections.
 
 <Canvas>
-	<Story name='Radio'>
+	<Story name='Multi Select Controlled'>
+		{() => {
+			const [value, setValue] = useState('');
+			console.log(value);
+			return (
+				<div>
+					<Dropdownv2
+						value={value?.split(',')}
+						multi={true}
+						label='Multi Select Checkbox Dropdown'
+						placeholder='Select an option'
+						onChange={(event, newValue) => {
+							setValue(newValue.toString());
+						}}>
+						{[...Array(50).keys()].map((option) => {
+							return (
+								<DropdownItemv2
+									key={option}
+									title={`Option ${option + 1}`}
+									value={option + 1}
+									variant='checkbox'
+								/>
+							);
+						})}
+					</Dropdownv2>
+				</div>
+			);
+		}}
+	</Story>
+</Canvas>
+
+### Multi Select Dropdown - Unontrolled
+
+The dropdown component with multiple selections.
+
+<Canvas>
+	<Story name='Multi Select Uncontrolled'>
 		{() => {
 			return (
 				<div>
-					<Dropdown label='Multi Select Checkbox Dropdown' placeholder='Select an option'>
-						<DropdownItem title='Option A' value={1} variant='radio' />
-						<DropdownItem title='Option B' value={2} variant='radio' />
-						<DropdownItem title='Option C' value={3} variant='radio' />
-					</Dropdown>
+					<Dropdownv2
+						multi={true}
+						label='Uncontrolled Multi Select Checkbox Dropdown'
+						placeholder='Select an option'>
+						{[...Array(20).keys()].map((option) => {
+							return (
+								<DropdownItemv2
+									key={option}
+									title={`Option ${option + 1}`}
+									value={option + 1}
+									variant='checkbox'
+								/>
+							);
+						})}
+					</Dropdownv2>
 				</div>
 			);
 		}}

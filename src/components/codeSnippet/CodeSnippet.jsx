@@ -1,13 +1,13 @@
 /* eslint-disable no-param-reassign */
 import PropTypes from 'prop-types';
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import {
 	coldarkDark as darkTheme,
 	coldarkCold as lightTheme,
 } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { classes } from '../../utils';
-import { AlertV2 as Alert } from '../alertV2';
+import { Alert } from '../alert';
 import { CopyIcon } from '../icons';
 import styles from './CodeSnippet.module.css';
 

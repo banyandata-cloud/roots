@@ -21,104 +21,15 @@
 		bottom: 3rem;
 	}
 
-	.copyrightText {
-		@include flex(row, flex-start, center);
-		> .text {
-			color: $mono-color1;
-			font-size: 0.875rem;
-			font-style: normal;
-			font-weight: 400;
-			line-height: 1.125rem;
-		}
-	}
-
-	.page-numbers {
-		@include flex;
-		gap: 1.25rem;
-		flex: 1 1;
-
-		&.custom-page-number {
-			@include flex(row, flex-start);
-		}
-
-		@include lg {
-			// flex: 1 1 25%;
-		}
-
-		& > .button {
-			&.disable {
-				pointer-events: none;
-			}
-			[data-elem='title'] {
-				color: $white;
-			}
-			.icon {
-				width: 1.5rem;
-				height: 1.5rem;
-				fill: $white;
-			}
-		}
-		& > .pageSelect {
-			@include flex(row, space-between, center);
-			gap: 0.625rem;
-			.number {
-				cursor: pointer;
-				border-radius: 50%;
-				font-size: 1rem;
-				&.custom-number {
-					border-radius: 0%;
-					font-size: 0.875rem;
-					padding: 0 5px 0 5px;
-				}
-				background-color: #e0e0e0;
-				color: $black;
-				min-width: 2.313rem;
-				line-height: 2.313rem;
-				text-align: center;
-				border: 1px solid transparent;
-
-				&:not([data-active='true']) {
-					display: none;
-				}
-
-				@include md {
-					&:not([data-active='true']) {
-						display: block;
-					}
-				}
-
-				&:hover {
-					border: 1px solid $primary-color4;
-					color: $primary-color4;
-					background: $background-color4;
-				}
-
-				&.active {
-					background-color: $primary-color4;
-					color: $white;
-				}
-
-				&.disabled {
-					color: $grey2;
-				}
-			}
-		}
-	}
-
-	.options {
+	.left-options {
 		@include flex(row);
 		gap: 1rem;
-		.total-data {
-			@include ellipsis;
-			color: $text-color;
-			font-size: 0.875rem;
-			font-weight: 500;
-			line-height: 1.125rem;
-		}
-
+		flex: 1;
+		@include flex(row, flex-start);
 		.row-switcher {
 			@include flex(row, space-between, center);
-			min-width: 4rem;
+			flex-grow: 0;
+			max-width: 9.5rem;
 			> [data-elem='component2'] {
 				height: 100%;
 				width: 100%;
@@ -129,8 +40,7 @@
 				padding: 0;
 				border-radius: 0.25rem;
 				height: 100%;
-				width: 100%;
-
+				width: fit-content !important;
 				> [data-elem='component1'] {
 					@include flex(row, flex-start, stretch);
 					height: 100%;
@@ -149,23 +59,21 @@
 
 			.dropdown {
 				height: 100%;
-
 				& > [data-elem='header'] {
 					height: 100%;
+
 					& > [data-elem='select'] {
 						height: 2.375rem;
-						max-height: 100%;
-						width: auto;
-						min-width: fit-content;
+						width: fit-content;
 						padding: 0.625rem;
 						border: 0rem solid transparent;
 						& > [data-elem='placeholder'] {
-							color: #1a2028;
+							color: $text-color;
 							font-size: 0.875rem;
-							background-color: #2f2fc6;
+							background-color: $secondary-color2;
 						}
 						& > svg {
-							fill: #1a2028;
+							color: $text-color;
 							width: 1rem;
 							height: 1rem;
 						}
@@ -173,9 +81,125 @@
 				}
 			}
 		}
+		.total-data {
+			@include ellipsis;
+			color: $text-color;
+			font-weight: 500;
+			font-size: 1rem;
+			line-height: 1.5rem;
+			span {
+				font-size: 1rem;
+				line-height: 1.5rem;
+			}
+		}
+	}
+
+	.page-numbers {
+		@include flex;
+		flex: 1;
+
+		&.stretch {
+			@include flex(row, flex-end);
+		}
+		&.custom-page-number {
+			@include flex(row, flex-start);
+		}
+
+		& > .button {
+			&.disable {
+				pointer-events: none;
+			}
+			[data-elem='title'] {
+				color: $white;
+			}
+			.icon {
+				width: 1.5rem;
+				height: 1.5rem;
+				fill: $white;
+			}
+		}
+		& > .pageSelect {
+			@include flex(row, space-between, center);
+			gap: 1rem;
+			.number {
+				cursor: pointer;
+				border-radius: 100%;
+				font-size: 0.875rem;
+				line-height: 1.125rem;
+				font-weight: 500;
+				height: 2.5rem;
+				width: 2.5rem;
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				&.custom-number {
+					border-radius: 0;
+					font-size: 0.875rem;
+					width: auto;
+					white-space: nowrap;
+					padding-inline: 0.3125rem;
+				}
+				background-color: transparent;
+				text-align: center;
+				border: 1px solid transparent;
+
+				&:not([data-active='true']) {
+					display: none;
+				}
+
+				@include md {
+					&:not([data-active='true']) {
+						display: inline-flex;
+					}
+				}
+
+				&:hover {
+					color: $secondary-color2;
+					background: $background-color5;
+				}
+
+				&.active {
+					background-color: $secondary-color2;
+					color: $white;
+				}
+
+				&.disabled {
+					color: $light-color2;
+					cursor: not-allowed;
+				}
+				&.ellipsis {
+					font-size: 1.8rem;
+					padding-top: 0.125rem;
+					font-weight: 600;
+					align-items: unset;
+					&:hover {
+						color: $secondary-color2;
+						background: transparent;
+					}
+				}
+			}
+		}
+	}
+
+	.options {
+		@include flex(row, flex-end);
+		gap: 1rem;
+		flex: 1;
+
+		.total-data {
+			@include ellipsis;
+			color: $text-color;
+			font-size: 0.875rem;
+			font-weight: 500;
+			line-height: 1.125rem;
+		}
+
+		> [data-elem='base-cell'] {
+			flex: 0 !important;
+		}
 
 		.form {
-			@include flex(row, space-between, center);
+			@include flex(row, flex-end, center);
 			width: auto;
 			min-width: auto;
 			> [data-elem*='component'] {
@@ -190,18 +214,17 @@
 			background: transparent;
 			.jump-to-page {
 				background: transparent;
-				@include flex(row, center, stretch);
-
 				> [data-elem*='component'] {
 					overflow: hidden;
 					height: 100%;
 				}
-				gap: 0rem;
 				padding: 0rem;
 				height: 100%;
+				width: fit-content;
 				border-radius: 0.25rem;
-				border: 0.0313rem solid $mono-color2;
+				border: 0.0313rem solid $secondary-color2;
 				box-shadow: 0.1875rem 0.1875rem 0.25rem 0rem rgba(194, 194, 194, 0.12) inset;
+				gap: 0;
 
 				.inputbox {
 					height: 100%;
@@ -212,11 +235,11 @@
 						> [data-elem='base-cell'] {
 							background-color: transparent;
 							color: $white;
-							height: 100%;
 							width: 3rem;
 							flex: 1;
-							padding: 0.625rem;
+							padding: 0rem !important;
 							border: none;
+							border-radius: 0rem;
 
 							.icon {
 								width: 1.5rem;
@@ -230,7 +253,7 @@
 
 							[data-elem='input'] {
 								text-align: center;
-								background-color: transparent;
+								background-color: transparent !important;
 								border: none;
 								height: 100%;
 								width: 100%;
@@ -245,15 +268,15 @@
 				}
 
 				.button {
-					border-radius: 0rem 0.25rem 0.25rem 0rem;
-					background-color: $mono-color2;
+					border-radius: 0rem;
+					background-color: $secondary-color2;
 					padding: 0.75rem 0.5rem;
 					height: 100%;
 
 					.icon {
 						width: 1.5rem;
 						height: 1.5rem;
-						fill: $mono-color1;
+						fill: $white;
 						flex-shrink: 0;
 					}
 				}

@@ -8,7 +8,6 @@ import {
 	useState,
 } from 'react';
 import { classes } from '../../../utils';
-import { Toggle } from '../../Toggle';
 import { BaseButton, Button } from '../../buttons';
 import { DatePicker } from '../../datePicker';
 import { ArrowIcon, CaretIcon, FilterIcon, MaximizeIcon } from '../../icons';
@@ -16,6 +15,7 @@ import { DropdownItemv2, Dropdownv2 } from '../../input';
 import { Popover } from '../../popover';
 import BaseSidePanel from '../../sidePanel/BaseSidePanel';
 import { Text } from '../../text';
+import { Toggle } from '../../toggle';
 import { WidgetFallback } from '../fallback';
 import styles from './BaseV2Widget.module.css';
 

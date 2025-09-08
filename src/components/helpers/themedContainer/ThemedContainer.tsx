@@ -1,6 +1,6 @@
 import { useEffect, useState, type CSSProperties, type ReactElement } from 'react';
 import { COLORS } from '../../../styles';
-import { Toggle } from '../../Toggle';
+import { Toggle } from '../../toggle';
 
 type ThemeType = 'light' | 'dark';
 
@@ -24,13 +24,13 @@ const themeOptions = [
 
 const ThemedContainer = (props: ThemedContainerProps): ReactElement => {
 	const { theme, style, className, children } = props;
-	const [colorMode, setColorMode] = useState<ThemeType>('light');
+	const [colorMode, setColorMode] = useState<string | string[]>('light');
 
 	useEffect(() => {
-		document.documentElement.setAttribute('data-theme', colorMode);
+		document.documentElement.setAttribute('data-theme', colorMode as string);
 	}, [colorMode]);
 
-	const updateColorMode = (value: ThemeType) => {
+	const updateColorMode = (value: string | string[]) => {
 		setColorMode(value);
 	};
 

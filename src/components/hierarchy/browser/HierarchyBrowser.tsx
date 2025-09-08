@@ -183,7 +183,7 @@ const HierarchyBrowser = ({
 				})
 			: children;
 
-		const { leftComponent, rightComponent, title, count } = setItemProps(
+		const { leftComponent, rightComponent, title, count, ref } = setItemProps(
 			data,
 			currentPath
 		) as SetItemPropsResult;
@@ -191,6 +191,7 @@ const HierarchyBrowser = ({
 		return (
 			<HierarchyItem
 				// key={currentPath}
+				ref={ref}
 				pathString={currentPath}
 				title={
 					<Title

@@ -13,6 +13,6 @@ export interface TextProps {
 	italic?: boolean;
 	underline?: boolean;
 	children?: ReactNode;
-	className?: string;
+	className?: string | undefined;
 	attrs?: unknown;
 }
