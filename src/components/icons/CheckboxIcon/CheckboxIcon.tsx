@@ -1,5 +1,5 @@
 const CheckboxIcon = {
-	Checked: (props) => {
+	Checked: (props: { className?: string | undefined }) => {
 		const { className } = props;
 		return (
 			<svg
@@ -18,7 +18,7 @@ const CheckboxIcon = {
 		);
 	},
 
-	UnChecked: (props) => {
+	UnChecked: (props: { className?: string | undefined }) => {
 		const { className } = props;
 		return (
 			<svg
@@ -41,7 +41,8 @@ const CheckboxIcon = {
 		);
 	},
 
-	Intermediate: ({ className }) => {
+	Intermediate: (props: { className?: string | undefined }) => {
+		const { className } = props;
 		return (
 			<svg
 				className={className}
@@ -62,13 +63,6 @@ const CheckboxIcon = {
 			</svg>
 		);
 	},
-};
-
-CheckboxIcon.Checked.defaultProps = {
-	className: '',
-};
-CheckboxIcon.UnChecked.defaultProps = {
-	className: '',
 };
 
 export default CheckboxIcon;

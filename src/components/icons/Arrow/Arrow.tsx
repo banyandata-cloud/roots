@@ -3,7 +3,7 @@ import styles from './Arrow.module.css';
 
 interface ArrowIconProps {
 	className?: string | undefined;
-	position: 'right' | 'left' | 'top' | 'bottom';
+	position?: 'right' | 'left' | 'top' | 'bottom';
 	width?: number | string;
 	height?: number | string;
 	color?: string;
