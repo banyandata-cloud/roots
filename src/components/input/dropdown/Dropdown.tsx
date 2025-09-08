@@ -342,7 +342,7 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(props,
 		if (multi && isControlled) {
 			setUncontrolledValue(value);
 		}
-	}, [open, multi, value, isControlled]);
+	}, [open, multi, value]);
 
 	const onSelectAll = (event: React.MouseEvent<HTMLElement>, selected: boolean) => {
 		const nativeEvent = event.nativeEvent as Event;
