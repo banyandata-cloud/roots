@@ -7,7 +7,7 @@ import {
 	coldarkCold as lightTheme,
 } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { classes } from '../../utils';
-import { AlertV2 as Alert } from '../alert';
+import { Alert } from '../alert';
 import { CopyIcon } from '../icons';
 import styles from './CodeSnippet.module.css';
 
