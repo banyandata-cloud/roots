@@ -1,5 +1,4 @@
 export * from './AlertIcon';
-export * from './AngleDouble';
 export * from './Arrow';
 export * from './BreadcrumbSeperator';
 export * from './Calender';
