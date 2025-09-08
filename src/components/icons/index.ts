@@ -1,6 +1,5 @@
 export * from './AlertIcon';
 export * from './Arrow';
-export * from './BreadcrumbSeperator';
 export * from './Calender';
 export * from './Caret';
 export * from './ChartsIcon';

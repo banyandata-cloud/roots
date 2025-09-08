@@ -1,5 +1,5 @@
-const Caret = (props) => {
-	const { className = '', upDown } = props;
+const Caret = (props: { className?: string | undefined; upDown?: boolean }) => {
+	const { className = '', upDown = false } = props;
 
 	if (upDown) {
 		return (
