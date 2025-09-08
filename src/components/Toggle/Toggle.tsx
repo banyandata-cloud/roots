@@ -12,7 +12,7 @@ interface ToggleOption {
 	className?: string;
 }
 
-interface ToggleProps {
+export interface ToggleProps {
 	options?: ToggleOption[];
 	multi?: boolean;
 	defaultValue?: string | string[];

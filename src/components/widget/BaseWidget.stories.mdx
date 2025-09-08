@@ -1,7 +1,7 @@
 import { Meta, Canvas, Story } from '@storybook/addon-docs';
 import { useState } from 'react';
 import BaseVerticalBarChart from '../charts/verticalBarChart/BaseVerticalBarChart';
-import BaseWidget from './BaseWidget';
+import BaseWidget from './BaseWidget.tsx';
 import { ThemedContainer } from '../helpers';
 import { Toggle } from '../Toggle';
 import { Button } from '../buttons';
@@ -102,13 +102,13 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 						cb(data);
 					},
 				},
-				// {
-				// 	id: 'expand',
-				// 	title: 'Expand',
-				// 	onClick: () => {
-				// 		alert('This will open the Modal or a new Page with Expanded chart');
-				// 	},
-				// },
+				{
+					id: 'expand',
+					title: 'Expand',
+					onClick: () => {
+						alert('This will open the Modal or a new Page with Expanded chart');
+					},
+				},
 				{
 					id: 'datepicker',
 					onApply: () => {
@@ -160,7 +160,6 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					}}>
 					<BaseWidget
 						title={title}
-						v2={true}
 						titleDesc='Compliance & non-compliance score by control domain category'
 						onBack={onBack}
 						onReload={onReload}
@@ -384,7 +383,10 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 										]}
 										value={dropValue}
 										onChange={(event) => {
-											setDropValue(event.target.value);
+											console.log({
+												event,
+											});
+											setDropValue(event);
 										}}
 									/>
 									<Dropdownv2
