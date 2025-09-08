@@ -24,6 +24,6 @@ export * from './stepper';
 export * from './table';
 export * from './tabs';
 export * from './text';
-export * from './Toggle';
+export * from './toggle';
 export * from './tooltip';
 export * from './widget';
