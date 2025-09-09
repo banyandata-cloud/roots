@@ -240,7 +240,7 @@ export const Pagination = forwardRef<HTMLDivElement, PaginationProps>((props, re
 				totalPages,
 			});
 		}
-	}, [currentPage, onChange, step, totalPages]);
+	}, [currentPage, step, totalPages]);
 
 	useEffect(() => {
 		mountedRef.current = true;
