@@ -56,7 +56,7 @@ const TableBody = (props: TableBodyProps) => {
 	return (
 		<tbody data-elem='table-body' className={classes(styles.root, className)}>
 			{tableData.map((datum, _index) => {
-				let key = null;
+				let key = _index.toString() as Key;
 
 				if (uniqueKey) {
 					key = datum[uniqueKey] as Key;

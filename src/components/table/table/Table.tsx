@@ -95,7 +95,7 @@ const Table = ({
 
 	let Body = drawerProps?.standalone?.[toggleTableDrawer.data.index ?? 0] ?? null;
 
-	if (toggleTableDrawer.data.standalone) {
+	if (!toggleTableDrawer.data.standalone) {
 		Body = drawerProps?.renderBody?.[toggleTableDrawer.data.index ?? 0] ?? null;
 	}
 
