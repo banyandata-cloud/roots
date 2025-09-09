@@ -5,8 +5,8 @@ import {
 	useFloating,
 	useInteractions,
 } from '@floating-ui/react-dom-interactions';
-import { fromUnixTime } from 'date-fns';
-import { useState } from 'react';
+import { fromUnixTime, getUnixTime, subHours, subMinutes } from 'date-fns';
+import { useEffect, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { Button } from '../../components/buttons';
 import {
@@ -36,11 +36,13 @@ const DatePicker = (props) => {
 		highlightOnSelect,
 		limitHours = null,
 		timeRange,
-
+		onClear,
+		onApply,
 		enableFutureDates,
 		disabledDates,
 		disableDatesBefore,
 		disableDatesAfter,
+		defaultHourDiff,
 		valueAsRange,
 		startingYear = 1970,
 	} = props;
@@ -100,15 +102,89 @@ const DatePicker = (props) => {
 		};
 	});
 
+	console.log({
+		selectedDate,
+	});
+
 	const [fixedRange, setFixedRange] = useState(() => {
 		return null;
 	});
 
 	const [selectedMonth, setSelectedMonth] = useState();
 	const [displayMonthRight, setDisplayMonthRight] = useState();
+	const [timeRangeSelection, setTimeRangeSelection] = useState({});
 
 	const date = fromUnixTime(value);
 	const selectedDayInfo = getDayInfo(date);
+
+	const apply = ({ rangeSelected }) => {
+		if (rangeSelected.dates?.length === 2) {
+			if (
+				maxRange !== null &&
+				!isMaxRangeExceeded({
+					maxRange,
+					rangeSelected,
+				})
+			) {
+				setError('Invalid range of dates');
+				setOpenDatePicker(false);
+				return;
+			}
+			setError('');
+			onApply?.(rangeSelected.unix, fixedRange, getDateRangeTag(rangeSelected.unix));
+			setOpenDatePicker(false);
+		} else {
+			if (valueAsRange) {
+				const fromUnix = getUnixTime(
+					new Date(
+						selectedDate.year,
+						selectedMonth?.monthAsNumber,
+						selectedDate.date,
+						timeRangeSelection.previous?.MER === 'PM' &&
+						timeRangeSelection.previous?.HOURS < 12
+							? timeRangeSelection.previous?.HOURS + 12
+							: calculateZeroHours(
+									timeRangeSelection.previous?.HOURS,
+									timeRangeSelection.previous?.MER
+								),
+
+						timeRangeSelection.previous?.MINS
+					)
+				);
+
+				const toUnix = getUnixTime(
+					new Date(
+						selectedDate.year,
+						selectedMonth?.monthAsNumber,
+						selectedDate.date,
+						timeRangeSelection.next?.MER === 'PM' && timeRangeSelection.next?.HOURS < 12
+							? timeRangeSelection.next?.HOURS + 12
+							: calculateZeroHours(
+									timeRangeSelection.next?.HOURS,
+									timeRangeSelection.next?.MER
+								),
+						timeRangeSelection.next?.MINS
+					)
+				);
+				onApply?.([fromUnix, toUnix], fixedRange, getDateRangeTag([fromUnix, toUnix]));
+				setOpenDatePicker(false);
+				return;
+			}
+			const singleDateUnix = getUnixTime(
+				new Date(
+					selectedDate.year,
+					selectedMonth?.monthAsNumber,
+					selectedDate.date,
+					timeRangeSelection.next?.MER === 'PM' && timeRangeSelection.next?.HOURS < 12
+						? timeRangeSelection.next?.HOURS + 12
+						: timeRangeSelection.next?.HOURS,
+					timeRangeSelection.next?.MINS
+				)
+			);
+			onApply?.(singleDateUnix);
+			setOpenDatePicker(false);
+		}
+	};
 
 	const calenderProps = {
 		selectedDate,
@@ -124,10 +200,6 @@ const DatePicker = (props) => {
 				dateSelected: selectedDate,
 			});
 		},
-		onClear: () => {
-			onClear();
-			setOpenDatePicker(false);
-		},
 		disabledDates,
 		disableDatesBefore,
 		disableDatesAfter,
@@ -140,6 +212,42 @@ const DatePicker = (props) => {
 		setDisplayMonthRight,
 		valueAsRange,
 	};
+
+	let currentTime = getDayInfo(new Date());
+	if (selectedDate.unix !== undefined) {
+		currentTime = getDayInfo(new Date(selectedDate.unix * 1000));
+	}
+
+	const prevTime = getDayInfo(
+		subMinutes(
+			subHours(
+				new Date(
+					currentTime.year,
+					currentTime.monthAsNumber,
+					currentTime.dateAsNumber,
+					currentTime.hoursIn12,
+					currentTime.minutes
+				),
+				defaultHourDiff ?? currentTime.hoursIn12
+			),
+			defaultHourDiff ? 0 : currentTime.minutes
+		)
+	);
+
+	useEffect(() => {
+		setTimeRangeSelection({
+			next: {
+				HOURS: currentTime.hours,
+				MINS: currentTime.minutes,
+				MER: currentTime.meridian,
+			},
+			previous: {
+				HOURS: prevTime.hours,
+				MINS: prevTime.minutes,
+				MER: prevTime.meridian,
+			},
+		});
+	}, [selectedDate.unix]);
 
 	return (
 		<ErrorBoundary
@@ -265,14 +373,22 @@ const DatePicker = (props) => {
 								color='default'
 								variant='outlined'
 								className={styles.cancel}
-								onClick={toggle}
+								onClick={() => {
+									onClear();
+									toggle();
+								}}
 							/>
 							<Button
 								title='Apply'
 								color='primary'
 								size='sm'
 								className={styles.confirm}
-								// onClick={onConfirm}
+								onClick={() => {
+									apply({
+										rangeSelected: selectedRange,
+										dateSelected: selectedDate,
+									});
+								}}
 							/>
 						</div>
 					</div>
