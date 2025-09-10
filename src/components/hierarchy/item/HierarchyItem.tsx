@@ -1,5 +1,5 @@
+import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import type { ChangeEvent, ReactElement, ReactNode } from 'react';
-import React, { forwardRef, useState } from 'react';
 import { classes } from '../../../utils';
 import { Button } from '../../buttons';
 import { BaseCell } from '../../cell';
@@ -14,7 +14,21 @@ interface Item {
 	title?: string;
 	count?: number;
 }
+interface OnScrollPayload {
+	name: string;
+	pathString: string;
+}
 
+type CallbackOnScroll = (payload: OnScrollPayload) => Promise<void> | void;
+
+interface ChildrenContainerProps {
+	isLastItem?: boolean | undefined;
+	lastActive?: boolean | undefined;
+	children: ReactNode;
+	name: string;
+	pathString: string;
+	callbackOnScroll?: CallbackOnScroll | undefined;
+}
 interface HierarchyItemProps {
 	defaultOpen?: boolean;
 	iconPlacement?: IconPlacement;
@@ -24,16 +38,79 @@ interface HierarchyItemProps {
 	onClick?: (state: boolean) => void;
 	onDoubleClick?: (state: boolean) => void;
 	active?: boolean;
-	isLastItem?: boolean;
+	isLastItem?: boolean | undefined;
 	leftComponent: ReactNode;
 	name: string;
 	onSearchSubmit?: (text: string | undefined, path: string) => void;
 	pathString: string;
-	lastActive?: boolean;
+	lastActive?: boolean | undefined;
 	isSearching: boolean;
 	onSearchStart?: () => void;
 	list?: Item[] | boolean;
+	callbackOnScroll?: CallbackOnScroll;
 }
+
+const ChildrenContainer = ({
+	isLastItem,
+	children,
+	lastActive,
+	callbackOnScroll,
+	name,
+	pathString,
+}: ChildrenContainerProps) => {
+	const containerRef = useRef<HTMLDivElement | null>(null);
+
+	const handleScroll = async () => {
+		const el = containerRef.current;
+		if (!el) return;
+
+		if (el.scrollTop + el.clientHeight >= el.scrollHeight) {
+			await callbackOnScroll?.({
+				name,
+				pathString,
+			});
+		}
+	};
+
+	useEffect(() => {
+		const el = containerRef.current;
+		if (el) {
+			el.addEventListener('scroll', () => {
+				handleScroll().catch((err: unknown) => {
+					return err;
+				});
+			});
+		}
+
+		return () => {
+			el?.removeEventListener('scroll', () => {
+				handleScroll().catch((err: unknown) => {
+					return err;
+				});
+			});
+		};
+	}, []);
+
+	return (
+		<BaseCell
+			size='auto'
+			className={styles.body}
+			component1={
+				<div
+					style={{
+						display: isLastItem ? 'none' : 'flex',
+					}}
+					className={classes(lastActive ? styles['highlight-tail'] : styles.tail)}
+				/>
+			}
+			component2={
+				<div ref={containerRef} data-elem='Hwllo' className={styles.children}>
+					{children}
+				</div>
+			}
+		/>
+	);
+};
 
 const HierarchyItem = forwardRef<HTMLDivElement, HierarchyItemProps>((props, ref): ReactElement => {
 	const {
@@ -53,6 +130,7 @@ const HierarchyItem = forwardRef<HTMLDivElement, HierarchyItemProps>((props, ref
 		lastActive,
 		isSearching,
 		onSearchStart,
+		callbackOnScroll,
 		list,
 	} = props;
 
@@ -192,19 +270,14 @@ const HierarchyItem = forwardRef<HTMLDivElement, HierarchyItemProps>((props, ref
 			)}
 
 			{open && (
-				<BaseCell
-					size='auto'
-					className={styles.body}
-					component1={
-						<div
-							style={{
-								display: isLastItem ? 'none' : 'flex',
-							}}
-							className={classes(lastActive ? styles['highlight-tail'] : styles.tail)}
-						/>
-					}
-					component2={<div className={styles.children}>{children}</div>}
-				/>
+				<ChildrenContainer
+					name={name}
+					pathString={pathString}
+					callbackOnScroll={callbackOnScroll}
+					isLastItem={isLastItem}
+					lastActive={lastActive}>
+					{children}
+				</ChildrenContainer>
 			)}
 		</div>
 	);

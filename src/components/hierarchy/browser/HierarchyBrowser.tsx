@@ -25,6 +25,10 @@ interface SetItemPropsResult {
 	count?: number | string;
 	[key: string]: unknown;
 }
+interface OnScrollPayload {
+	name: string;
+	pathString: string;
+}
 
 const Title = ({ leftComponent, title, rightComponent }: TitleProps) => {
 	return (
@@ -52,6 +56,7 @@ interface HierarchyBrowserProps {
 	borderSize?: number;
 	resizable?: boolean;
 	setItemProps?: (item: Item, pathString: string) => Record<string, unknown>;
+	callbackOnScroll?: (payload: OnScrollPayload) => Promise<void> | void;
 }
 
 const HierarchyBrowser = ({
@@ -63,6 +68,7 @@ const HierarchyBrowser = ({
 	onItemDoubleClick = () => {
 		//  left blank
 	},
+	callbackOnScroll,
 	minWidth = 220,
 	maxWidth,
 	borderSize,
@@ -191,6 +197,7 @@ const HierarchyBrowser = ({
 		return (
 			<HierarchyItem
 				// key={currentPath}
+				callbackOnScroll={callbackOnScroll}
 				ref={ref}
 				pathString={currentPath}
 				title={

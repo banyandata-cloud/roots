@@ -262,6 +262,11 @@
 			.children {
 				flex: 1 0 auto;
 				width: 100%;
+
+				height: auto;
+				max-height: 200px;
+				overflow-y: auto;
+				scrollbar-width: none;
 			}
 		}
 	}
