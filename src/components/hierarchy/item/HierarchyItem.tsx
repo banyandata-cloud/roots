@@ -72,10 +72,6 @@ const ChildrenContainer = ({
 		}
 	};
 
-	console.log({
-		children,
-	});
-
 	useEffect(() => {
 		const el = containerRef.current;
 		if (el) {
