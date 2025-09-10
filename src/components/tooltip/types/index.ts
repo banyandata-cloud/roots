@@ -48,7 +48,7 @@ export interface TooltipProps {
 	/**
 	 * Additional CSS class names to apply to the tooltip.
 	 */
-	className?: string;
+	className?: string | undefined;
 	/**
 	 * Whether to show a pointer (arrow) on the tooltip.
 	 */

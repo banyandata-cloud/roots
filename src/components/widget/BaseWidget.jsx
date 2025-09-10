@@ -8,13 +8,13 @@ import {
 	useState,
 } from 'react';
 import { classes } from '../../utils';
-import { Toggle } from '../Toggle';
 import { BaseButton, Button } from '../buttons';
 import { DatePicker } from '../datePicker';
 import { ArrowIcon, CaretIcon, MaximizeIcon } from '../icons';
-import { Dropdown, DropdownItem } from '../input';
+import { Dropdownv2 as Dropdown, DropdownItemv2 as DropdownItem } from '../input';
 import { Popover } from '../popover';
 import { Text } from '../text';
+import { Toggle } from '../toggle';
 import { BaseV2Widget } from './BaseV2Widget';
 import styles from './BaseWidget.module.css';
 import { WidgetFallback } from './fallback';

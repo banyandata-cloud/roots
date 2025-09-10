@@ -4,7 +4,7 @@ import { BaseCell } from '../../cell';
 import styles from './BaseButton.module.css';
 import type { BaseButtonProps } from './types';
 
-const BaseButton = forwardRef<HTMLElement, BaseButtonProps>((props, ref) => {
+const BaseButton = forwardRef<HTMLButtonElement, BaseButtonProps>((props, ref) => {
 	const {
 		className = '',
 		component1,
@@ -21,7 +21,7 @@ const BaseButton = forwardRef<HTMLElement, BaseButtonProps>((props, ref) => {
 		variant = 'contained',
 	} = props;
 
-	const Title = title && <span data-elem='title'>{title}</span>;
+	const Title = <span data-elem='title'>{title}</span>;
 
 	return (
 		<BaseCell
@@ -43,7 +43,7 @@ const BaseButton = forwardRef<HTMLElement, BaseButtonProps>((props, ref) => {
 					if (blurOnClick) {
 						event.currentTarget.blur();
 					}
-					onClick(event);
+					onClick?.(event);
 				},
 			}}
 			RootDOM='button'

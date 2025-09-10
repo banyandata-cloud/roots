@@ -1,10 +1,10 @@
 import React, { forwardRef, useEffect, useRef, useState } from 'react';
-import type { ReactElement, ReactNode } from 'react';
+import type { ChangeEvent, ReactElement, ReactNode } from 'react';
 import { classes } from '../../../utils';
 import { Button } from '../../buttons';
 import { BaseCell } from '../../cell';
 import { ExpandCollapseIcon, MagnifyingGlassIcon } from '../../icons';
-import { TextFieldv2 as TextField } from '../../input/textFieldv2';
+import { TextFieldv2 as TextField } from '../../input/textField';
 import styles from './HierarchyItem.module.css';
 
 type IconPlacement = 'left' | 'right' | 'none';
@@ -200,10 +200,14 @@ const HierarchyItem = forwardRef<HTMLDivElement, HierarchyItemProps>((props, ref
 								size='md'
 								type='text'
 								value={searchText}
-								onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+								onChange={(
+									e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+								) => {
 									setSearchText(e.target.value);
 								}}
-								onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
+								onKeyDown={(
+									e: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>
+								) => {
 									if (e.key === 'Enter') handleSearchSubmit();
 								}}
 								LeftComponent={() => {

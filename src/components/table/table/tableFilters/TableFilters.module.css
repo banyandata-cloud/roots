@@ -1,0 +1,185 @@
+.root[data-elem=base-cell] {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.0625rem 1.25rem;
+  height: auto;
+  width: 100% !important;
+}
+.root[data-elem=base-cell] > [data-elem=component1] {
+  flex: 1;
+}
+.root[data-elem=base-cell] > [data-elem=component1] .details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+.root[data-elem=base-cell] > [data-elem=component1] .details .description {
+  max-width: 30rem;
+}
+.root[data-elem=base-cell] > [data-elem=component2] {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  height: 3rem;
+}
+.root[data-elem=base-cell] > [data-elem=component2] .filters {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+}
+.root[data-elem=base-cell] > [data-elem=component2] .filters .searchContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 0.3125rem;
+}
+.root[data-elem=base-cell] > [data-elem=component2] .filters .searchContainer .search {
+  height: 100%;
+  width: 100%;
+}
+.root[data-elem=base-cell] > [data-elem=component2] .filters .searchContainer .search > label {
+  height: 100%;
+  align-self: stretch;
+}
+.root[data-elem=base-cell] > [data-elem=component2] .filters .searchContainer .search > label > [data-elem=base-cell] {
+  padding: 0rem;
+  height: 100%;
+  border-radius: 0.3125rem;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  outline: none;
+  box-shadow: none;
+}
+.root[data-elem=base-cell] > [data-elem=component2] .filters .searchContainer .search > label > [data-elem=base-cell] > [data-elem=component1] {
+  padding: 0.625rem 0rem 0.625rem 0.75rem;
+}
+.root[data-elem=base-cell] > [data-elem=component2] .filters .searchContainer .search > label > [data-elem=base-cell] > [data-elem=component2] {
+  padding: 0.625rem 0rem;
+}
+.root[data-elem=base-cell] > [data-elem=component2] .filters .searchContainer .search > label > [data-elem=base-cell] [data-elem=input] {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+.root[data-elem=base-cell] > [data-elem=component2] .filters .searchContainer .search > label > [data-elem=base-cell] [data-elem=input]::-moz-placeholder {
+  font-weight: 500;
+}
+.root[data-elem=base-cell] > [data-elem=component2] .filters .searchContainer .search > label > [data-elem=base-cell] [data-elem=input]::placeholder {
+  font-weight: 500;
+}
+.root[data-elem=base-cell] > [data-elem=component2] .filters .searchContainer .search > label > [data-elem=base-cell] [data-elem=input]::-moz-placeholder {
+  font-weight: 500;
+}
+.root[data-elem=base-cell] > [data-elem=component2] .filters .searchContainer button.search-button[data-elem=base-cell] {
+  background-color: transparent;
+  width: auto;
+  border-left: 0.1px solid var(--mono-color3);
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.root[data-elem=base-cell] > [data-elem=component2] .filters .searchContainer button.search-button[data-elem=base-cell] > [data-elem=component2] > [data-elem=text] {
+  color: var(--text-color);
+}
+.root[data-elem=base-cell] > [data-elem=component2] .filters .searchContainer button.search-button[data-elem=base-cell] > [data-elem=component2] .icon {
+  width: 1.75rem;
+  height: 1.5rem;
+}
+.root[data-elem=base-cell] > [data-elem=component2] .filters .searchContainer button.search-button[data-elem=base-cell] > [data-elem=component2] .icon.arrow {
+  width: 1.75rem;
+  height: 1.75rem;
+}
+.root[data-elem=base-cell] > [data-elem=component2] .filters .searchContainer button.search-button[data-elem=base-cell]:hover {
+  background-color: var(--light-color2);
+}
+.root[data-elem=base-cell] > [data-elem=component2] .filters .searchContainer button.search-button[data-elem=base-cell].clear {
+  background-color: var(--light-color2);
+}
+.root[data-elem=base-cell] > [data-elem=component2] .filters button.adv-filter[data-elem=base-cell] {
+  background: transparent;
+  box-shadow: 0rem 0rem 0.125rem 0rem rgba(0, 0, 0, 0.25);
+  height: -moz-fit-content;
+  height: fit-content;
+  padding: 0.82rem 0.8rem !important;
+}
+.root[data-elem=base-cell] > [data-elem=component2] .filters button.adv-filter[data-elem=base-cell]:hover {
+  opacity: 0.7;
+}
+.root[data-elem=base-cell] > [data-elem=component2] .filters button.adv-filter[data-elem=base-cell] > [data-elem=component3] {
+  color: var(--white) !important;
+  font-size: 0.75rem !important;
+  font-weight: 500;
+  padding: 0.1rem 0.5rem;
+  background-color: var(--secondary-color2);
+  border-radius: 0.25rem;
+}
+.root[data-elem=base-cell] > [data-elem=component2] .filters button.adv-filter[data-elem=base-cell] > [data-elem=component2] > [data-elem=title] {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.root[data-elem=base-cell] > [data-elem=component2] .filters button.adv-filter[data-elem=base-cell].filter {
+  padding: 0.7rem 0.7rem;
+}
+.root[data-elem=base-cell] > [data-elem=component2] .filters .icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+}
+.root[data-elem=base-cell] > [data-elem=component2] .filters .column-dropdown {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.root[data-elem=base-cell] > [data-elem=component2] .filters .column-dropdown > [data-elem=header] > [data-elem=select] {
+  border: none;
+  padding: 0.7rem 0.65rem;
+  width: auto;
+  font-size: 0.875rem;
+}
+.root[data-elem=base-cell] > [data-elem=component2] .filters .column-dropdown > [data-elem=header] > [data-elem=select]:hover {
+  opacity: 0.7;
+}
+.root[data-elem=base-cell] > [data-elem=component2] .filters .column-dropdown > [data-elem=header] > [data-elem=select] span.value {
+  background-color: var(--secondary-color2);
+  padding: 0.1rem 0.5rem;
+  background-color: var(--secondary-color2);
+  border-radius: 0.25rem;
+  color: var(--white) !important;
+  font-size: 0.75rem !important;
+}
+.root[data-elem=base-cell] > [data-elem=component2] .filters .column-dropdown > [data-elem=header] > [data-elem=select] span.value.hide {
+  display: none;
+}
+.root[data-elem=base-cell] > [data-elem=component2] .filters .column-dropdown > [data-elem=header] > [data-elem=select] > div {
+  margin-left: -0.3125rem;
+}
+.root[data-elem=base-cell] > [data-elem=component2] .filters .column-dropdown > [data-elem=header] > [data-elem=select] > svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.root[data-elem=base-cell] > [data-elem=component2] .filters .column-dropdown > [data-elem=header] > [data-elem=select] > div {
+  display: none;
+}
+.root[data-elem=base-cell] > [data-elem=component2] .filters .column-dropdown .item {
+  height: 3rem;
+}
+.root[data-elem=base-cell] > [data-elem=component2] .filters .column-dropdown .item > [data-elem=title] {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.column-dropdown-popper {
+  width: 20rem !important;
+}/*# sourceMappingURL=TableFilters.module.css.map */

@@ -4,7 +4,7 @@ import Text from '../text/Text';
 import styles from './Link.module.css';
 import type { LinkProps } from './types';
 
-const Link = forwardRef<RefObject<HTMLElement>, LinkProps>((props, ref) => {
+const Link = forwardRef<RefObject<HTMLAnchorElement>, LinkProps>((props, ref) => {
 	const {
 		variant = 'b2',
 		stroke = 'regular',
