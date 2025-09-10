@@ -58,7 +58,7 @@ const ChildrenContainer = ({
 	name,
 	pathString,
 }: ChildrenContainerProps) => {
-	const containerRef = useRef<HTMLElement | null>(null);
+	const containerRef = useRef<HTMLDivElement | null>(null);
 
 	const handleScroll = async () => {
 		const el = containerRef.current;
@@ -98,7 +98,6 @@ const ChildrenContainer = ({
 	return (
 		<BaseCell
 			size='auto'
-			ref={containerRef}
 			className={styles.body}
 			component1={
 				<div
@@ -109,7 +108,7 @@ const ChildrenContainer = ({
 				/>
 			}
 			component2={
-				<div data-elem='Hwllo' className={styles.children}>
+				<div ref={containerRef} data-elem='Hwllo' className={styles.children}>
 					{children}
 				</div>
 			}

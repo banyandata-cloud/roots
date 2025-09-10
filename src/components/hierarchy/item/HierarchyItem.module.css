@@ -199,10 +199,6 @@
   display: none;
   flex: 1 0 auto;
   padding: 0px 0rem 0px 0.5rem;
-  height: auto;
-  max-height: 200px;
-  overflow-y: auto;
-  scrollbar-width: none;
 }
 .root .body > [data-elem=component1] {
   flex: 0 0 1.6rem;
@@ -252,6 +248,10 @@
 .root .body > [data-elem=component2] .children {
   flex: 1 0 auto;
   width: 100%;
+  height: auto;
+  max-height: 200px;
+  overflow-y: auto;
+  scrollbar-width: none;
 }
 .root.open > .header .expand .icon {
   transform: none;
