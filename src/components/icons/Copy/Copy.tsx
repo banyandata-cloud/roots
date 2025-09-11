@@ -1,4 +1,11 @@
-const Copy = (props) => {
+interface CopyProps {
+	className?: string | undefined;
+	width?: number | string | undefined;
+	height?: number | string | undefined;
+	color?: string | undefined;
+}
+
+const Copy = (props: CopyProps) => {
 	const { className, width, height, color } = props;
 	return (
 		<svg
@@ -15,10 +22,6 @@ const Copy = (props) => {
 			/>
 		</svg>
 	);
-};
-
-Copy.defaultProps = {
-	className: '',
 };
 
 export default Copy;

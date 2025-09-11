@@ -2,9 +2,5 @@
 
 .root {
 	@include flex;
-	position: relative;
 	margin: auto;
-	.placeholder {
-		position: absolute;
-	}
 }

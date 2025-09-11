@@ -10,7 +10,7 @@ interface GeneralPlaceholderProps {
 }
 
 const General = ({
-	placeholder = 'No Data to display',
+	placeholder = 'No data to display',
 	className = '',
 	customPlaceholder: CustomPlaceholder,
 }: GeneralPlaceholderProps) => {

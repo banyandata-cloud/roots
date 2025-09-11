@@ -37,7 +37,7 @@ const BaseTable = forwardRef(
 		{
 			headerData,
 			customCells,
-			tableData,
+			tableData = [],
 			className,
 			loading,
 			onRowClick,
@@ -65,16 +65,18 @@ const BaseTable = forwardRef(
 			return <Skeleton />;
 		}
 
+		const tabularData = Array.isArray(tableData) ? tableData : [];
+
 		return (
 			<table
 				ref={ref}
 				data-elem='table'
 				className={classes(
 					styles.root,
-					tableData.length === 0 ? styles['no-scroll'] : '',
+					tabularData.length === 0 ? styles['no-scroll'] : '',
 					className
 				)}>
-				{tableData.length > 0 && (
+				{tabularData.length > 0 && (
 					<TableHeader
 						{...{
 							headerData,
@@ -86,14 +88,14 @@ const BaseTable = forwardRef(
 							onCheck,
 							checkedRows,
 							setCheckedRows,
-							tableData,
+							tableData: tabularData,
 							disableCheck,
 							checkAsRadio,
 							rowHeight,
 						}}
 					/>
 				)}
-				{tableData.length === 0 ? (
+				{tabularData.length === 0 ? (
 					<NoDataPlaceHolder customPlaceholder={emptyPlaceholder} />
 				) : (
 					<TableBody
@@ -101,7 +103,7 @@ const BaseTable = forwardRef(
 							ref,
 							headerData,
 							customCells,
-							tableData,
+							tableData: tabularData,
 							expandable,
 							rowHeight,
 							onRowClick,
