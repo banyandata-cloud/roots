@@ -1,4 +1,4 @@
-const Filter = (props) => {
+const Filter = (props: { className?: string | undefined; v2?: boolean | undefined }) => {
 	const { className, v2 } = props;
 
 	return v2 ? (

@@ -252,8 +252,8 @@ export const Pagination = forwardRef<HTMLDivElement, PaginationProps>((props, re
 	const [isDisplayLabelVisible, setDisplayLabelVisible] = useState(false);
 
 	const updateChildVisibility = () => {
-		const parent = (ref as RefObject<HTMLDivElement>).current;
-		const parentWidth = parent.offsetWidth;
+		const parent = (ref as RefObject<HTMLDivElement>)?.current;
+		const parentWidth = parent?.offsetWidth;
 		setDisplayLabelVisible(parentWidth >= 1000);
 	};
 

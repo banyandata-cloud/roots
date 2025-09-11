@@ -1,4 +1,4 @@
-const Password = (props) => {
+const Password = (props: { className?: string | undefined }) => {
 	const { className = '' } = props;
 
 	return (

@@ -98,6 +98,7 @@ const TableRow = forwardRef((props: TableRowProps, ref: ForwardedRef<HTMLTableRo
 						cellTitle: cellContent,
 					})}
 					{...cellProps}
+					expandableProps={expandableProps}
 					toggleDrawer={(index: number, standalone: boolean) => {
 						toggleDrawer?.({
 							data: {

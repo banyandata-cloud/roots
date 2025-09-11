@@ -62,7 +62,9 @@ const Table = ({
 	const [hiddenColumns, setHiddenColumns] = useState<Record<string, boolean | null>>();
 	const [toggleTableDrawer, setToggleTableDrawer] = useState<TableDrawerToggle>({
 		open: false,
-		data: {},
+		data: {
+			datum: {},
+		},
 	});
 
 	useEffect(() => {

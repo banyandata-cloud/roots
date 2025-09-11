@@ -1,6 +1,4 @@
-import React from 'react';
-
-const ExpandArrowAlt = (props) => {
+const ExpandArrowAlt = (props: { className?: string | undefined }) => {
 	const { className } = props;
 	return (
 		<svg
