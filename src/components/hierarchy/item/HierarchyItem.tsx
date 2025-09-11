@@ -104,7 +104,7 @@ const ChildrenContainer = ({
 				/>
 			}
 			component2={
-				<div ref={containerRef} data-elem='Hwllo' className={styles.children}>
+				<div ref={containerRef} className={styles.children}>
 					{children}
 				</div>
 			}
