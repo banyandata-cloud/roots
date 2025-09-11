@@ -156,7 +156,7 @@ const TableFilters = (props: TableFiltersProps) => {
 						{rightActions?.({
 							toggleDrawer,
 						})}
-						{disabledSearch && (
+						{!disabledSearch && (
 							<Button
 								size='auto'
 								className={classes(
