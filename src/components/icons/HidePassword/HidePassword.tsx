@@ -1,4 +1,4 @@
-const HidePassword = (props) => {
+const HidePassword = (props: { className?: string | undefined }) => {
 	const { className = '' } = props;
 
 	return (

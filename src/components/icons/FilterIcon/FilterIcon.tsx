@@ -1,6 +1,4 @@
-import React from 'react';
-
-const FilterIcon = (props) => {
+const FilterIcon = (props: { className?: string | undefined }) => {
 	const { className } = props;
 	return (
 		<svg
