@@ -1,7 +1,7 @@
 import { Meta, Canvas, Story } from '@storybook/addon-docs';
 import { useState } from 'react';
 import BaseVerticalBarChart from '../charts/verticalBarChart/BaseVerticalBarChart';
-import BaseWidget from './BaseWidget';
+import BaseWidget from './BaseWidget.tsx';
 import { ThemedContainer } from '../helpers';
 import { Toggle } from '../toggle';
 import { Button } from '../buttons';
@@ -33,228 +33,6 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 
 <Canvas>
 	<Story name='Default'>
-		{() => {
-			const [dropValue, setDropValue] = useState(0);
-			const [selectedValue, setSelectedValue] = useState('Option 1');
-			const title = 'Compliance by Control Domain';
-			const showBack = true;
-			const onBack = () => {
-				alert('This will bring you back');
-			};
-			const onReload = () => {
-				alert('Callback for fallback reload button');
-			};
-			const Body = ({ toggle }) => {
-				return (
-					<div
-						onClick={() => {
-							toggle();
-						}}>
-						Filter Body
-					</div>
-				);
-			};
-			const options = [
-				{
-					id: 'toggle',
-					options: [
-						{
-							id: '1',
-							leftCompoenent: '',
-							rightCompoenent: '',
-							title: 'Option 1',
-							value: 'Option 1',
-						},
-						{
-							id: '2',
-							leftCompoenent: '',
-							rightCompoenent: '',
-							title: 'Option 2',
-							value: 'Option 2',
-						},
-					],
-				},
-				{
-					id: 'filter',
-				},
-				{
-					id: 'dropdown',
-					placeholder: 'Region',
-					selectOption: [
-						{
-							title: 'India',
-							value: '1',
-						},
-						{
-							title: 'USA',
-							value: '2',
-						},
-						{
-							title: 'UAE',
-							value: '3',
-						},
-						{
-							title: 'UK',
-							value: '4',
-						},
-					],
-					onChange: (cb, data) => {
-						cb(data);
-					},
-				},
-				// {
-				// 	id: 'expand',
-				// 	title: 'Expand',
-				// 	onClick: () => {
-				// 		alert('This will open the Modal or a new Page with Expanded chart');
-				// 	},
-				// },
-				{
-					id: 'datepicker',
-					onApply: () => {
-						alert('Apply Date Picker');
-					},
-					onClear: () => {
-						alert('Clear Date Picker');
-					},
-					date: null,
-				},
-			];
-			const coords = [
-				{
-					lat: 28,
-					lon: 120,
-				},
-				{
-					lat: 28.5,
-					lon: 120,
-				},
-				{
-					lat: 28.2,
-					lon: 120,
-				},
-				{
-					lat: 27,
-					lon: 103,
-				},
-				{
-					lat: 22,
-					lon: 125,
-				},
-				{
-					lat: 22,
-					lon: 78,
-				},
-				{ lon: 77.73, lat: 12.96 },
-				{
-					lon: -121,
-					lat: 37,
-				},
-			];
-			const [theme, setTheme] = useState('dark');
-			return (
-				<ThemedContainer
-					style={{
-						height: '100%',
-						width: '100%',
-					}}>
-					<BaseWidget
-						title={title}
-						v2={true}
-						titleDesc='Compliance & non-compliance score by control domain category'
-						onBack={onBack}
-						onReload={onReload}
-						body={Body}
-						headerOptions={[
-							{
-								id: 'toggle',
-								options: [
-									{
-										id: '1',
-										leftCompoenent: '',
-										rightCompoenent: '',
-										title: 'Option Test',
-										value: 'Option 1',
-									},
-									{
-										id: '2',
-										leftCompoenent: '',
-										rightCompoenent: '',
-										title: 'Option 2',
-										value: 'Option 2',
-									},
-								],
-								value: 'Option 1',
-								onChange: (newValue) => {
-									console.log({
-										HERE: newValue,
-									});
-								},
-							},
-						]}
-						options={options.map((option) => {
-							return option.id === 'dropdown'
-								? {
-										...option,
-										value: dropValue,
-										onChange: (event) => {
-											setDropValue(event.target.value);
-										},
-									}
-								: option;
-						})}>
-						<BaseVerticalBarChart
-							yAxisLabelShow
-							ySplitLineShow
-							xAxisShow
-							xAxisLabel={{
-								show: true,
-								rotate: 90,
-								inside: true,
-								color: 'white',
-								verticalAlign: 'bottom',
-								padding: [0, 0, 20, -5],
-							}}
-							barWidth='15%'
-							seriesData={{
-								chartData:
-									selectedValue === 'Option 1' ? CHART_DATA[1] : CHART_DATA[2],
-							}}
-							seriesOption={[
-								{
-									stackIndex: 1,
-									color: 'orange',
-									showBackground: false,
-									label: {
-										color: 'white',
-										show: false,
-										formatter(param) {
-											return param.name;
-										},
-									},
-								},
-								{
-									stackIndex: 2,
-									showBackground: false,
-									color: 'blue',
-									label: {
-										show: true,
-										color: 'white',
-									},
-								},
-							]}
-						/>
-					</BaseWidget>
-				</ThemedContainer>
-			);
-		}}
-	</Story>
-</Canvas>
-
-### Default V2
-
-<Canvas>
-	<Story name='Default V2'>
 		{() => {
 			const [dropValue, setDropValue] = useState('Option 1');
 			const [selectedValue, setSelectedValue] = useState('Option 1');
@@ -315,7 +93,6 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 						width: '100%',
 					}}>
 					<BaseWidget
-						v2
 						title={title}
 						titleDesc='Compliance & non-compliance score by control domain category'
 						onBack={onBack}
@@ -384,7 +161,10 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 										]}
 										value={dropValue}
 										onChange={(event) => {
-											setDropValue(event.target.value);
+											console.log({
+												event,
+											});
+											setDropValue(event);
 										}}
 									/>
 									<Dropdownv2
