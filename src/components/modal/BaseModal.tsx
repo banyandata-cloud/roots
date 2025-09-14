@@ -1,6 +1,3 @@
-/* eslint-disable no-nested-ternary */
-/* eslint-disable react/forbid-prop-types */
-/* eslint-disable max-len */
 import {
 	FloatingFocusManager,
 	useDismiss,
@@ -8,13 +5,16 @@ import {
 	useInteractions,
 } from '@floating-ui/react-dom-interactions';
 import { AnimatePresence, motion } from 'framer-motion';
-import PropTypes from 'prop-types';
+import type { ComponentType, FC } from 'react';
 import { classes } from '../../utils';
 import { Button } from '../buttons';
 import { CrossIcon } from '../icons';
 import { Popper } from '../popper';
 import { Text } from '../text';
 import styles from './BaseModal.module.css';
+import type { BaseModalProps, FooterProps, ModalFooterProps } from './types';
+
+const MotionFooter = motion.footer as ComponentType<FooterProps>;
 
 const footerAnimations = {
 	initial: {
@@ -28,9 +28,12 @@ const footerAnimations = {
 	transition: {
 		duration: 0.5,
 	},
-};
+} as const;
 
-const ModalHeader = ({ title, description }) => {
+const ModalHeader: FC<{ title?: string | undefined; description?: string | undefined }> = ({
+	title,
+	description,
+}) => {
 	return (
 		<>
 			<Text component='h2' variant='h2' weight={600}>
@@ -43,7 +46,7 @@ const ModalHeader = ({ title, description }) => {
 	);
 };
 
-const ModalFooter = (props) => {
+const ModalFooter: FC<ModalFooterProps> = (props) => {
 	const {
 		actionTitle = 'Save',
 		disabled = {},
@@ -52,7 +55,7 @@ const ModalFooter = (props) => {
 		onDismiss,
 		toggle,
 		loading,
-	} = props ?? {};
+	} = props;
 
 	const handleAction = () => {
 		if (loading) {
@@ -104,25 +107,15 @@ const DEFAULT_ANIMATION_PROPS = {
 	transition: {
 		duration: 0.15,
 	},
-};
+} as const;
 
 /**
  * Renders a modal dialog with customizable header, body, and footer content.
  * Manages the modal's open state and provides a toggle function.
  * Handles dismiss interactions, such as clicking outside the modal or pressing the Escape key.
- *
- * @param {string} className - The CSS class name for the modal container.
- * @param {string} popperClassName - The CSS class name for the popper container.
- * @param {ReactElement|Function} renderHeader - The content to render in the modal header.
- * @param {ReactElement} children - The content to render in the modal body.
- * @param {ReactElement|Function} renderFooter - The content to render in the modal footer.
- * @param {Function} toggle - A function to toggle the modal's open state.
- * @param {boolean} open - The open state of the modal.
- * @param {boolean} noDismiss - If true, the modal cannot be dismissed by clicking outside or pressing the Escape key.
- * @param {boolean} hideCrossDismiss - If true, it will hide the cross close button from the top right of the modal.
- * @returns {ReactElement} The rendered modal dialog.
  */
-const BaseModal = (props) => {
+// eslint-disable-next-line react/function-component-definition
+const BaseModal: FC<BaseModalProps> = (props) => {
 	const {
 		className = '',
 		title,
@@ -131,7 +124,7 @@ const BaseModal = (props) => {
 		renderHeader,
 		children,
 		renderFooter,
-		toggle = () => {},
+		toggle,
 		open,
 		noDismiss,
 		hideCrossDismiss,
@@ -142,7 +135,9 @@ const BaseModal = (props) => {
 
 	const { floating, context } = useFloating({
 		open,
-		onOpenChange: toggle,
+		...(toggle && {
+			onOpenChange: toggle,
+		}),
 	});
 
 	const { getFloatingProps } = useInteractions([
@@ -151,7 +146,17 @@ const BaseModal = (props) => {
 		}),
 	]);
 
-	const { props: bodyProps } = children ?? {};
+	const bodyProps = ((): unknown => {
+		if (
+			children &&
+			typeof children === 'object' &&
+			'props' in (children as unknown as Record<string, unknown>)
+		) {
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-return
+			return (children as unknown as Record<string, unknown>).props;
+		}
+		return undefined;
+	})();
 
 	return (
 		<AnimatePresence>
@@ -172,14 +177,11 @@ const BaseModal = (props) => {
 							})}>
 							{renderHeader ? (
 								<header data-elem='header' className={styles.header}>
-									{(() => {
-										if (typeof renderHeader !== 'function') {
-											return renderHeader;
-										}
-										return renderHeader({
-											...bodyProps,
-										});
-									})()}
+									{typeof renderHeader !== 'function'
+										? renderHeader
+										: renderHeader({
+												...(bodyProps as Record<string, unknown>),
+											})}
 								</header>
 							) : (
 								<header data-elem='header' className={styles.header}>
@@ -190,42 +192,39 @@ const BaseModal = (props) => {
 								{children}
 							</div>
 							{renderFooter ? (
-								<motion.footer
+								<MotionFooter
 									{...(animation && {
 										...footerAnimations,
 									})}
 									data-elem='footer'
 									className={styles.footer}>
-									{(() => {
-										if (typeof renderFooter !== 'function') {
-											return renderFooter;
-										}
-										return renderFooter({
-											...bodyProps,
-										});
-									})()}
-								</motion.footer>
-							) : footerProps ? (
-								<motion.footer
-									{...(animation && {
-										...footerAnimations,
-									})}
-									data-elem='footer'
-									className={styles.footer}>
-									<ModalFooter {...footerProps} />
-								</motion.footer>
-							) : null}
+									{typeof renderFooter !== 'function'
+										? renderFooter
+										: renderFooter({
+												...(bodyProps as Record<string, unknown>),
+											})}
+								</MotionFooter>
+							) : (
+								footerProps && (
+									<MotionFooter
+										{...(animation && {
+											...footerAnimations,
+										})}
+										data-elem='footer'
+										className={styles.footer}>
+										<ModalFooter {...footerProps} />
+									</MotionFooter>
+								)
+							)}
 							{!hideCrossDismiss && (
 								<Button
 									size='auto'
 									variant='text'
 									className={styles.close}
 									onClick={() => {
-										toggle(false);
+										toggle?.(false);
 									}}
-									rightComponent={() => {
-										return <CrossIcon className={styles.icon} />;
-									}}
+									title={<CrossIcon className={styles.icon} />}
 								/>
 							)}
 						</motion.div>
@@ -234,18 +233,6 @@ const BaseModal = (props) => {
 			</Popper>
 		</AnimatePresence>
 	);
-};
-
-BaseModal.propTypes = {
-	className: PropTypes.string,
-	popperClassName: PropTypes.string,
-	renderHeader: PropTypes.element,
-	renderFooter: PropTypes.element,
-	toggle: PropTypes.func,
-	noDismiss: PropTypes.bool,
-	hideCrossDismiss: PropTypes.bool,
-	animation: PropTypes.bool,
-	animationProperties: PropTypes.object,
 };
 
 export default BaseModal;
