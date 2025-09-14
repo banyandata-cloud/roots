@@ -1,7 +1,7 @@
 import type { BaseButtonProps } from 'components/buttons/baseButton/types';
 import type { ComponentType } from 'react';
 
-type ButtonColors = 'primary' | 'success' | 'danger' | 'warning';
+export type ButtonColors = 'primary' | 'success' | 'danger' | 'warning';
 
 export interface ButtonProps extends BaseButtonProps {
 	color?: ButtonColors;

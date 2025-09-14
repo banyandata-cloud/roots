@@ -22,19 +22,19 @@ export interface ModalFooterProps {
  * BaseModal component prop types.
  */
 export interface BaseModalProps {
-	className?: string;
+	className?: string | undefined;
 	title?: string | undefined;
 	description?: string | undefined;
-	popperClassName?: string;
-	renderHeader?: ReactNode | ((bodyProps?: unknown) => ReactNode);
+	popperClassName?: string | undefined;
+	renderHeader?: (ReactNode | ((bodyProps?: unknown) => ReactNode)) | undefined;
 	children?: ReactNode;
-	renderFooter?: ReactNode | ((bodyProps?: unknown) => ReactNode);
-	toggle?: (open?: boolean) => void;
+	renderFooter?: (ReactNode | ((bodyProps?: unknown) => ReactNode)) | undefined;
+	toggle?: ((open?: boolean) => void) | undefined;
 	open: boolean;
-	noDismiss?: boolean;
-	hideCrossDismiss?: boolean;
-	footerProps?: ModalFooterProps;
-	animation?: boolean;
+	noDismiss?: boolean | undefined;
+	hideCrossDismiss?: boolean | undefined;
+	footerProps?: ModalFooterProps | undefined;
+	animation?: boolean | undefined;
 	animationProperties?: typeof DEFAULT_ANIMATION_PROPS;
 }
 
