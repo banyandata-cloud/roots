@@ -1,5 +1,5 @@
-import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import type { ChangeEvent, ReactElement, ReactNode } from 'react';
+import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import { classes } from '../../../utils';
 import { Button } from '../../buttons';
 import { BaseCell } from '../../cell';
@@ -47,7 +47,7 @@ interface HierarchyItemProps {
 	isSearching: boolean;
 	onSearchStart?: () => void;
 	list?: Item[] | boolean;
-	callbackOnScroll?: CallbackOnScroll;
+	callbackOnScroll?: CallbackOnScroll | undefined;
 }
 
 const ChildrenContainer = ({
