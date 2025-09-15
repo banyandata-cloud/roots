@@ -1,4 +1,4 @@
-const Close = ({ className }) => {
+const Close = ({ className }: { className?: string | undefined }) => {
 	return (
 		<svg
 			className={className}

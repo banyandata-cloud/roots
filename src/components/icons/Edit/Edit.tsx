@@ -1,4 +1,4 @@
-const Edit = (props) => {
+const Edit = (props: { className?: string | undefined }) => {
 	const { className } = props;
 
 	return (
@@ -35,10 +35,6 @@ const Edit = (props) => {
 			</defs>
 		</svg>
 	);
-};
-
-Edit.defaultProps = {
-	className: '',
 };
 
 export default Edit;
