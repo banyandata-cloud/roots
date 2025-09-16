@@ -27,6 +27,8 @@ const Dates = (props) => {
 		disableDatesBefore,
 		enableFutureDates,
 		disableDatesAfter,
+		hoveredEndingDate,
+		setHoveredEndingDate,
 	} = props;
 
 	const { monthAsNumber, year } = selectedMonth || {};
@@ -36,10 +38,6 @@ const Dates = (props) => {
 	});
 
 	const [unSelectedDate, setUnSelectedDate] = useState(() => {
-		return null;
-	});
-
-	const [hoveredEndingDate, setHoveredEndingDate] = useState(() => {
 		return null;
 	});
 
@@ -115,6 +113,7 @@ const Dates = (props) => {
 			fromUnixTime(selectedRange?.unix?.[0]),
 			fromUnixTime(selectedRange?.unix?.[1])
 		);
+
 		if (selectedRange.unix?.length === 2 && sameDay) {
 			setHoveredEndingDate(getUnixTime(date));
 			return;
@@ -159,6 +158,7 @@ const Dates = (props) => {
 						fromUnixTime(firstItem).setHours(0, 0, 0, 0),
 						date.setHours(0, 0, 0, 0)
 					);
+
 				const isLastItem =
 					!isSameDayRange &&
 					isEqual(
@@ -169,6 +169,7 @@ const Dates = (props) => {
 				const isFirstItemHovered =
 					isBefore(date, fromUnixTime(firstItem)) &&
 					hoveredEndingDate === getUnixTime(date);
+
 				const isLastItemHovered = hoveredEndingDate === getUnixTime(date);
 
 				const notSameMonth = date.getMonth() !== monthAsNumber;

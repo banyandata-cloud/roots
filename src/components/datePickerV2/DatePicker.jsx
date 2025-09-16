@@ -11,6 +11,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { Button } from '../../components/buttons';
 import {
 	getDatePickerDisplayValue,
+	getDateRangeTag,
 	getFloatingReferences,
 } from '../../components/datePicker/utils';
 import { DropdownItemv2, Dropdownv2, TextFieldv2 } from '../../components/input';
@@ -39,6 +40,7 @@ const DatePicker = (props) => {
 		onClear,
 		onApply,
 		enableFutureDates,
+		maxRange,
 		disabledDates,
 		disableDatesBefore,
 		disableDatesAfter,
@@ -73,13 +75,11 @@ const DatePicker = (props) => {
 	);
 
 	useOutsideClickListener(datePickerFloatingReference.floating, () => {
-		console.log('CLICKED1');
 		toggle();
 		return setOpenDatePicker(false);
 	});
 
 	useOutsideClickListener(customRangeFloatingReference.floating, () => {
-		console.log('CLICKED2');
 		toggle();
 		return setOpenDatePicker(false);
 	});
@@ -102,10 +102,6 @@ const DatePicker = (props) => {
 		};
 	});
 
-	console.log({
-		selectedDate,
-	});
-
 	const [fixedRange, setFixedRange] = useState(() => {
 		return null;
 	});
@@ -114,7 +110,7 @@ const DatePicker = (props) => {
 	const [displayMonthRight, setDisplayMonthRight] = useState();
 	const [timeRangeSelection, setTimeRangeSelection] = useState({});
 
-	const date = fromUnixTime(value);
+	const date = range ? fromUnixTime(value?.[0]) : fromUnixTime(value);
 	const selectedDayInfo = getDayInfo(date);
 
 	const apply = ({ rangeSelected }) => {
@@ -126,11 +122,9 @@ const DatePicker = (props) => {
 					rangeSelected,
 				})
 			) {
-				setError('Invalid range of dates');
 				setOpenDatePicker(false);
 				return;
 			}
-			setError('');
 			onApply?.(rangeSelected.unix, fixedRange, getDateRangeTag(rangeSelected.unix));
 			setOpenDatePicker(false);
 		} else {
@@ -263,7 +257,6 @@ const DatePicker = (props) => {
 			<div
 				className={styles.root}
 				onClick={() => {
-					console.log('CLICKED');
 					toggle();
 				}}>
 				<div className={classes(styles['date-picker'], className)}>
@@ -388,6 +381,7 @@ const DatePicker = (props) => {
 										rangeSelected: selectedRange,
 										dateSelected: selectedDate,
 									});
+									toggle();
 								}}
 							/>
 						</div>

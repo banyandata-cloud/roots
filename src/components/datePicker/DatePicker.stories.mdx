@@ -164,18 +164,21 @@ The date picker allows to select the range of date from the popever.
 <Canvas>
 	<Story name='Range Date Picker V2 New Modal'>
 		{() => {
-			const [value, setValue] = useState(null);
+			const [value, setValue] = useState([1756665000, 1757183399]);
 			return (
 				<ThemedContainer style={{ width: '40rem' }}>
 					<DatePicker
 						{...{
 							placeholder: 'Select Date Range',
-							label: 'Range Date Picker',
+							label: 'Range Date Picker V2',
 							value,
 							range: true,
 							v2: true,
 							onApply: (v) => {
 								setValue(v);
+								console.log({
+									range: v,
+								});
 							},
 							onClear: () => {
 								setValue(null);

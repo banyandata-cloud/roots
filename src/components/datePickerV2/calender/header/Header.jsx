@@ -53,10 +53,6 @@ const Header = (props) => {
 	const { range, dateSelectionView, defaultHourDiff, timeSelectionView, selectedDate } =
 		props ?? {};
 
-	console.log({
-		header: props,
-	});
-
 	const showCarouselSwitcher = !dateSelectionView && !timeSelectionView;
 
 	let currentTime = getDayInfo(new Date());
