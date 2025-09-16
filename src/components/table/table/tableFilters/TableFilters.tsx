@@ -185,10 +185,10 @@ const TableFilters = (props: TableFiltersProps) => {
 								popperClassName={styles['column-dropdown-popper']}
 								leftComponent={{
 									Active: () => {
-										return <ColumnFilter className={styles.icon} v2 active />;
+										return <ColumnFilter className={styles.icon} active />;
 									},
 									InActive: () => {
-										return <ColumnFilter className={styles.icon} v2 />;
+										return <ColumnFilter className={styles.icon} />;
 									},
 								}}
 								placeholder=''

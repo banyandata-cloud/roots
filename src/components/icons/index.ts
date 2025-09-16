@@ -8,7 +8,6 @@ export * from './Chevron';
 export * from './Clock';
 export * from './Close';
 export * from './ColumnFilter';
-export * from './Columns';
 export * from './Copy';
 export * from './Cross';
 export * from './Delete';

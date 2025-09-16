@@ -1,4 +1,4 @@
-const Email = (props) => {
+const Email = (props: { className?: string | undefined }) => {
 	const { className = '' } = props;
 
 	return (
