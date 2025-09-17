@@ -16,6 +16,7 @@ interface TitleProps {
 	leftComponent?: React.ReactNode;
 	title: string | React.ReactNode;
 	rightComponent?: React.ReactNode;
+	highlight?: boolean | undefined;
 }
 
 interface SetItemPropsResult {
@@ -31,11 +32,13 @@ interface OnScrollPayload {
 	pathString: string;
 }
 
-const Title = ({ leftComponent, title, rightComponent }: TitleProps) => {
+const Title = ({ leftComponent, title, rightComponent, highlight }: TitleProps) => {
 	return (
 		<span className={styles.item}>
 			{leftComponent && <span className={styles['item-icon']}>{leftComponent}</span>}
-			<span className={styles['item-title']}>{title}</span>
+			<span className={classes(styles['item-title'], highlight && styles.highlight)}>
+				{title}
+			</span>
 			{rightComponent !== undefined && Number(rightComponent) !== 0 && (
 				<span className={styles['item-count']}>
 					<span className={styles['count-bg']}>
@@ -103,7 +106,7 @@ const HierarchyBrowser = ({
 		return parts.join('.list[');
 	};
 
-	const trackOpenState = (item: Item, pathString: string, open: boolean) => {
+	const trackOpenState = (pathString: string, open: boolean) => {
 		setOpenPaths((prevPaths) => {
 			const newPaths = new Set(prevPaths);
 
@@ -175,12 +178,7 @@ const HierarchyBrowser = ({
 		return item.title?.toLowerCase().includes(searchText) ?? false;
 	};
 
-	const renderTree = (
-		data: Item,
-		pathString = '',
-		isFirstChild: boolean,
-		isLast = false
-	): ReactNode => {
+	const renderTree = (data: Item, pathString = '', isLast = false): ReactNode => {
 		const children = Array.isArray(data.list) ? data.list : [];
 		const currentPath = pathString || 'metadata';
 		const searchText = searchResults[currentPath] ?? '';
@@ -195,27 +193,33 @@ const HierarchyBrowser = ({
 			currentPath
 		) as SetItemPropsResult;
 
+		const childrenToRender = filteredChildren.length > 0 ? filteredChildren : children;
+
 		return (
 			<HierarchyItem
-				// key={currentPath}
+				key={currentPath}
 				callbackOnScroll={callbackOnScroll}
 				ref={ref}
 				pathString={currentPath}
 				title={
-					<Title
-						leftComponent={leftComponent}
-						title={title}
-						rightComponent={rightComponent}
-					/>
+					searchText ? (
+						<Title title={searchText} highlight />
+					) : (
+						<Title
+							leftComponent={leftComponent}
+							title={title}
+							rightComponent={rightComponent}
+						/>
+					)
 				}
 				iconPlacement={children.length ? 'left' : 'none'}
 				onClick={(open) => {
 					handleItemClick(data, currentPath)(open);
-					trackOpenState(data, currentPath, open);
+					trackOpenState(currentPath, open);
 				}}
 				onDoubleClick={(open) => {
 					handleItemDoubleClick(data, currentPath)(open);
-					trackOpenState(data, currentPath, open);
+					trackOpenState(currentPath, open);
 				}}
 				active={activePath === currentPath}
 				lastActive={lastOpenedPath === currentPath}
@@ -228,14 +232,15 @@ const HierarchyBrowser = ({
 				onSearchStart={() => {
 					setSearchingPath(currentPath);
 				}}
+				searchedText={searchText}
 				onSearchSubmit={(text) => {
 					handleSearchSubmit(text, currentPath);
 					setSearchingPath(null);
 				}}>
-				{filteredChildren.map((child: Item, idx: number) => {
+				{childrenToRender.map((child: Item, idx: number) => {
 					const isLastChild = idx === filteredChildren.length - 1;
 					const nextPath = `${currentPath}.list[${String(idx)}]`;
-					return renderTree(child, nextPath, idx === 0, isLastChild);
+					return renderTree(child, nextPath, isLastChild);
 				})}
 			</HierarchyItem>
 		);
@@ -248,7 +253,7 @@ const HierarchyBrowser = ({
 			<div className={styles.body} data-elem='body'>
 				{metadata.map((item, index) => {
 					const isLastItem = index === metadata.length - 1;
-					return renderTree(item, `metadata[${String(index)}]`, index === 0, isLastItem);
+					return renderTree(item, `metadata[${String(index)}]`, isLastItem);
 				})}
 			</div>
 		</div>
