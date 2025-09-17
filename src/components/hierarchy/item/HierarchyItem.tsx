@@ -49,6 +49,7 @@ interface HierarchyItemProps {
 	searchedText?: string | undefined;
 	list?: Item[] | boolean;
 	callbackOnScroll?: CallbackOnScroll | undefined;
+	controlledOpen?: boolean;
 }
 
 const ChildrenContainer = ({
@@ -135,6 +136,7 @@ const HierarchyItem = forwardRef<HTMLDivElement, HierarchyItemProps>((props, ref
 		searchedText,
 		callbackOnScroll,
 		list,
+		controlledOpen,
 	} = props;
 
 	const [open, setOpen] = useState(defaultOpen);
@@ -143,6 +145,10 @@ const HierarchyItem = forwardRef<HTMLDivElement, HierarchyItemProps>((props, ref
 	const handleSearchSubmit = () => {
 		onSearchSubmit?.(searchText, pathString);
 	};
+
+	useEffect(() => {
+		if (typeof controlledOpen === 'boolean') setOpen(controlledOpen);
+	}, [controlledOpen]);
 
 	const icon = (
 		<div className={styles['expand-container']}>
