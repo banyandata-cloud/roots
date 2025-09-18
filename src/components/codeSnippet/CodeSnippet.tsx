@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { useState, type ComponentType } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { Prism as SyntaxHighlighter, type SyntaxHighlighterProps } from 'react-syntax-highlighter';
 import {
 	coldarkDark as darkTheme,
 	coldarkCold as lightTheme,
@@ -102,7 +102,7 @@ const CodeSnippet = (props: CodeSnippetProps) => {
 			className: classes(styles.code, className),
 		},
 		style: theme === 'light' ? lightTheme : darkTheme,
-	};
+	} as SyntaxHighlighterProps;
 
 	return (
 		<div className={styles.root}>
