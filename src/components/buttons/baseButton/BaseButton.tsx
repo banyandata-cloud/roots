@@ -39,11 +39,12 @@ const BaseButton = forwardRef<HTMLButtonElement, BaseButtonProps>((props, ref) =
 				disabled,
 				type,
 				id,
-				onClick: (event: MouseEvent<HTMLButtonElement>): void => {
+				onClick: (event: MouseEvent<HTMLButtonElement>) => {
 					if (blurOnClick) {
 						event.currentTarget.blur();
 					}
-					onClick?.(event);
+
+					void onClick?.(event);
 				},
 			}}
 			RootDOM='button'
