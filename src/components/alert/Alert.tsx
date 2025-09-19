@@ -83,19 +83,19 @@ const Alert: ForwardRefRenderFunction<AlertHandle, AlertProps> = (
 	} else {
 		switch (type) {
 			case 'info':
-				Icon = <AlertIcon.Info className={styles.icon} v2 />;
+				Icon = <AlertIcon.Info className={styles.icon} />;
 				break;
 			case 'error':
 				Icon = <AlertIcon.Error className={styles.icon} />;
 				break;
 			case 'warning':
-				Icon = <AlertIcon.Warning className={styles.icon} v2 />;
+				Icon = <AlertIcon.Warning className={styles.icon} />;
 				break;
 			case 'success':
-				Icon = <AlertIcon.Success className={styles.icon} v2 />;
+				Icon = <AlertIcon.Success className={styles.icon} />;
 				break;
 			case 'danger':
-				Icon = <AlertIcon.Danger className={styles.icon} v2 />;
+				Icon = <AlertIcon.Danger className={styles.icon} />;
 				break;
 			default:
 				Icon = null;
@@ -157,7 +157,7 @@ const Alert: ForwardRefRenderFunction<AlertHandle, AlertProps> = (
 	const { getFloatingProps } = useInteractions([useDismiss(context)]);
 
 	return (
-		<Popper open={open} className={styles.popper} id='alert-popper'>
+		<Popper open={open} className={styles.popper} wrapperId='alert-popper' lockScroll={false}>
 			<div
 				{...getFloatingProps({
 					ref: floating,
