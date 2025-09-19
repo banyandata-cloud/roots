@@ -77,8 +77,13 @@ const TableRow = forwardRef((props: TableRowProps, ref: ForwardedRef<HTMLTableRo
 		let cellContent = null;
 		if (type === 'header') {
 			cellContent = item.title;
-		} else {
-			cellContent = (datum[item.id] as ReactNode) ?? item.fallbackValue;
+		}
+		if (type === 'body') {
+			if (item.formatter) {
+				cellContent = item.formatter(datum[item.id] as string, _index, datum);
+			} else {
+				cellContent = (datum[item.id] as ReactNode) ?? item.fallbackValue;
+			}
 		}
 
 		const cellProps = {

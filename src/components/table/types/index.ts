@@ -32,6 +32,9 @@ export interface TableColumn {
 	columnFilter?: boolean;
 	html?: boolean;
 	json?: boolean;
+	formatter?:
+		| ((value: string, index: number | undefined, datum: Record<string, unknown>) => string)
+		| undefined;
 }
 
 export interface TableDrawerData {
