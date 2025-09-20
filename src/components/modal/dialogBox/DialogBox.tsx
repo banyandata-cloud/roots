@@ -1,4 +1,11 @@
-import { forwardRef, useEffect, useImperativeHandle, useState, type ComponentType } from 'react';
+import {
+	forwardRef,
+	useEffect,
+	useImperativeHandle,
+	useState,
+	type ComponentType,
+	type FC,
+} from 'react';
 import { classes } from '../../../utils';
 import { Button, type ButtonColors } from '../../buttons';
 import { Text } from '../../text';
@@ -45,11 +52,7 @@ export interface DialogBoxHandle {
 	dialog: (options: DialogOpenOptions) => void;
 }
 
-/* -------------------------------------------------------------------------- */
-/*                              Helper components                              */
-/* -------------------------------------------------------------------------- */
-
-const Header: React.FC<{ title?: string | null }> = ({ title }) => {
+const Header: FC<{ title?: string | null }> = ({ title }) => {
 	return (
 		<Text component='h2' variant='b1' weight={600}>
 			{title}
@@ -68,7 +71,7 @@ interface FooterInnerProps {
 	onCancel?: (() => void) | undefined;
 }
 
-const Footer: React.FC<FooterInnerProps> = ({
+const Footer: FC<FooterInnerProps> = ({
 	action,
 	cancel,
 	variant,
@@ -99,7 +102,13 @@ const Footer: React.FC<FooterInnerProps> = ({
 
 			{onAction && (
 				<Button
-					onClick={() => onAction({ dismiss: () => setOpen(false) })}
+					onClick={() => {
+						onAction({
+							dismiss: () => {
+								setOpen(false);
+							},
+						});
+					}}
 					className={styles.save}
 					title={action}
 					color={variant}
@@ -145,7 +154,7 @@ const DialogBox = forwardRef<DialogBoxHandle, DialogBoxProps>(
 			hideCrossDismiss,
 		} = dialogProps;
 
-		const size = appliedSize || defaultSize;
+		const size = appliedSize ?? defaultSize;
 
 		const toggle = () => {
 			onCancel?.();
@@ -155,11 +164,18 @@ const DialogBox = forwardRef<DialogBoxHandle, DialogBoxProps>(
 		// function exposed through ref
 		const dialog = (appliedDialogProps: DialogOpenOptions) => {
 			setDialogProps((prev) => {
-				return { ...prev, ...appliedDialogProps };
+				return {
+					...prev,
+					...appliedDialogProps,
+				};
 			});
 		};
 
-		useImperativeHandle(ref, () => ({ dialog }));
+		useImperativeHandle(ref, () => {
+			return {
+				dialog,
+			};
+		});
 
 		// open modal when dialogProps are populated
 		useEffect(() => {
@@ -170,7 +186,7 @@ const DialogBox = forwardRef<DialogBoxHandle, DialogBoxProps>(
 
 		const [dismissEnabled, setNoDismissEnabled] = useState(false);
 		useEffect(() => {
-			setNoDismissEnabled(noDismiss ?? false);
+			setNoDismissEnabled(noDismiss);
 		}, [noDismiss]);
 
 		return (
@@ -195,7 +211,9 @@ const DialogBox = forwardRef<DialogBoxHandle, DialogBoxProps>(
 				}>
 				{Body && (
 					<Body
-						dismiss={() => setOpen(false)}
+						dismiss={() => {
+							setOpen(false);
+						}}
 						setNoDismissEnabled={setNoDismissEnabled}
 					/>
 				)}

@@ -7,16 +7,53 @@ import TextStyle from '@tiptap/extension-text-style';
 import Underline from '@tiptap/extension-underline';
 import { EditorContent, useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
-import { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
+
 import { classes } from '../../../utils';
 import { Button } from '../../buttons';
-import DialogBox from '../../modal/dialogBox/DialogBox';
+import DialogBox, { type DialogBoxHandle } from '../../modal/dialogBox/DialogBox';
 import { Dropdownv2 as Dropdown, DropdownItemv2 as DropdownItem } from '../dropdown';
 import { TextFieldv2 as TextField } from '../textField';
 import styles from './RichEditor.module.css';
 import { ColorHighlightIcon, ColorPalletteIcon, TextAlignIcon, TextLinkIcon } from './assets';
+import type {
+	HeadingLevel,
+	LinkDialogContextValue,
+	RichEditorProps,
+	TextType,
+	ToolBarProps,
+} from './types';
 
-const ToolBar = ({ editor, textType, onTextTypeDropdownChange, setLink, hiddenMenu }) => {
+const LinkDialogContext = React.createContext<LinkDialogContextValue | null>(null);
+
+const LinkDialogBody: React.FC<{
+	dismiss: () => void;
+	setNoDismissEnabled: (enabled: boolean) => void;
+}> = () => {
+	const ctx = useContext(LinkDialogContext);
+	if (!ctx) return null;
+	const { linkDraft, setLinkDraft } = ctx;
+
+	return (
+		<TextField
+			placeholder='Enter or Paste URL'
+			value={linkDraft}
+			onChange={(e, v) => {
+				setLinkDraft(typeof v === 'string' ? v : (e.target as HTMLInputElement).value);
+			}}
+		/>
+	);
+};
+
+const ToolBar: React.FC<ToolBarProps> = ({
+	editor,
+	textType,
+	onTextTypeDropdownChange,
+	setLink,
+	hiddenMenu,
+}) => {
+	if (!editor) return null;
+
 	const showBold = !hiddenMenu.bold;
 	const showItalic = !hiddenMenu.italic;
 	const showUnderline = !hiddenMenu.underline;
@@ -26,13 +63,16 @@ const ToolBar = ({ editor, textType, onTextTypeDropdownChange, setLink, hiddenMe
 	const showAlign = !hiddenMenu.align;
 	const showLink = !hiddenMenu.link;
 
+	const currentTextColor = editor.getAttributes('textStyle').color as string;
+	const currentHighlight = editor.getAttributes('highlight').color as string;
+
 	return (
 		<div className={styles.menu}>
 			{showBold && (
 				<Button
 					title='B'
 					onClick={() => {
-						return editor.chain().focus().toggleBold().run();
+						editor.chain().focus().toggleBold().run();
 					}}
 					className={classes(
 						styles.item,
@@ -45,7 +85,7 @@ const ToolBar = ({ editor, textType, onTextTypeDropdownChange, setLink, hiddenMe
 				<Button
 					title='I'
 					onClick={() => {
-						return editor.chain().focus().toggleItalic().run();
+						editor.chain().focus().toggleItalic().run();
 					}}
 					className={classes(
 						styles.item,
@@ -58,7 +98,7 @@ const ToolBar = ({ editor, textType, onTextTypeDropdownChange, setLink, hiddenMe
 				<Button
 					title='U'
 					onClick={() => {
-						return editor.chain().focus().toggleUnderline().run();
+						editor.chain().focus().toggleUnderline().run();
 					}}
 					className={classes(
 						styles.item,
@@ -67,12 +107,11 @@ const ToolBar = ({ editor, textType, onTextTypeDropdownChange, setLink, hiddenMe
 					)}
 				/>
 			)}
-
 			{showStrike && (
 				<Button
 					title='S'
 					onClick={() => {
-						return editor.chain().focus().toggleStrike().run();
+						editor.chain().focus().toggleStrike().run();
 					}}
 					className={classes(
 						styles.item,
@@ -88,41 +127,33 @@ const ToolBar = ({ editor, textType, onTextTypeDropdownChange, setLink, hiddenMe
 						type='color'
 						className={classes(styles.item, styles.color)}
 						inputProps={{
-							onInput: (event) => {
-								return editor.chain().focus().setColor(event.target.value).run();
+							onInput: (event: React.FormEvent<HTMLInputElement>) => {
+								editor.chain().focus().setColor(event.currentTarget.value).run();
 							},
 						}}
 						LeftComponent={() => {
-							return (
-								<ColorPalletteIcon
-									color={editor.getAttributes('textStyle').color}
-								/>
-							);
+							return <ColorPalletteIcon color={currentTextColor} />;
 						}}
-						value={editor.getAttributes('textStyle').color}
+						value={currentTextColor}
 					/>
 					<TextField
 						type='color'
 						className={classes(styles.item, styles.color)}
 						inputProps={{
-							onInput: (event) => {
-								return editor
+							onInput: (event: React.FormEvent<HTMLInputElement>) => {
+								editor
 									.chain()
 									.focus()
 									.toggleHighlight({
-										color: event.target.value,
+										color: event.currentTarget.value,
 									})
 									.run();
 							},
 						}}
 						LeftComponent={() => {
-							return (
-								<ColorHighlightIcon
-									color={editor.getAttributes('highlight').color}
-								/>
-							);
+							return <ColorHighlightIcon color={currentHighlight} />;
 						}}
-						value={editor.getAttributes('highlight').color}
+						value={currentHighlight}
 					/>
 				</>
 			)}
@@ -132,8 +163,7 @@ const ToolBar = ({ editor, textType, onTextTypeDropdownChange, setLink, hiddenMe
 					value={textType}
 					className={styles.dropdown}
 					onChange={onTextTypeDropdownChange}
-					popperClassName={styles.popper}
-					label={null}>
+					popperClassName={styles.popper}>
 					<DropdownItem title='Paragraph' value='p' />
 					<DropdownItem title='Heading 1' value='h1' />
 					<DropdownItem title='Heading 2' value='h2' />
@@ -149,12 +179,14 @@ const ToolBar = ({ editor, textType, onTextTypeDropdownChange, setLink, hiddenMe
 								color={
 									editor.isActive({
 										textAlign: 'left',
-									}) && 'white'
+									})
+										? 'white'
+										: undefined
 								}
 							/>
 						}
 						onClick={() => {
-							return editor.chain().focus().setTextAlign('left').run();
+							editor.chain().focus().setTextAlign('left').run();
 						}}
 						className={classes(
 							styles.item,
@@ -170,12 +202,14 @@ const ToolBar = ({ editor, textType, onTextTypeDropdownChange, setLink, hiddenMe
 								color={
 									editor.isActive({
 										textAlign: 'center',
-									}) && 'white'
+									})
+										? 'white'
+										: undefined
 								}
 							/>
 						}
 						onClick={() => {
-							return editor.chain().focus().setTextAlign('center').run();
+							editor.chain().focus().setTextAlign('center').run();
 						}}
 						className={classes(
 							styles.item,
@@ -191,12 +225,14 @@ const ToolBar = ({ editor, textType, onTextTypeDropdownChange, setLink, hiddenMe
 								color={
 									editor.isActive({
 										textAlign: 'right',
-									}) && 'white'
+									})
+										? 'white'
+										: undefined
 								}
 							/>
 						}
 						onClick={() => {
-							return editor.chain().focus().setTextAlign('right').run();
+							editor.chain().focus().setTextAlign('right').run();
 						}}
 						className={classes(
 							styles.item,
@@ -208,9 +244,10 @@ const ToolBar = ({ editor, textType, onTextTypeDropdownChange, setLink, hiddenMe
 					/>
 				</>
 			)}
+
 			{showLink && (
 				<Button
-					title={<TextLinkIcon color={editor.isActive('link') && 'white'} />}
+					title={<TextLinkIcon color={editor.isActive('link') ? 'white' : undefined} />}
 					onClick={setLink}
 					className={classes(
 						styles.item,
@@ -223,15 +260,21 @@ const ToolBar = ({ editor, textType, onTextTypeDropdownChange, setLink, hiddenMe
 	);
 };
 
-const RichEditor = ({
+const levelToTextType = (level: HeadingLevel): TextType => {
+	if (level === 1) return 'h1';
+	if (level === 2) return 'h2';
+	if (level === 3) return 'h3';
+	return 'p';
+};
+const RichEditor: React.FC<RichEditorProps> = ({
 	className = '',
 	defaultContent = '',
-	setContent = () => {},
+	setContent,
 	placeholder = 'Your text here...',
 	hiddenMenu = {},
 	editable = true,
 }) => {
-	const [textType, setTextType] = useState('p');
+	const [textType, setTextType] = useState<TextType>('p');
 
 	const editor = useEditor({
 		extensions: [
@@ -257,16 +300,13 @@ const RichEditor = ({
 		],
 		content: defaultContent,
 		editable,
-		onUpdate: (event) => {
-			const htmlValue = event.editor.getHTML();
-
-			setContent(htmlValue);
+		onUpdate: ({ editor: mEditor }) => {
+			setContent?.(mEditor.getHTML());
 		},
-		onSelectionUpdate: (event) => {
-			const currentNode = event.editor.state.selection.$head.parent;
+		onSelectionUpdate: ({ editor: mEditor }) => {
+			const currentNode = mEditor.state.selection.$head.parent;
 			if (currentNode.type.name === 'heading') {
-				const headingLevel = currentNode.attrs.level;
-				setTextType(`h${headingLevel}`);
+				setTextType(levelToTextType(currentNode.attrs.level as HeadingLevel));
 			} else {
 				setTextType('p');
 			}
@@ -274,105 +314,100 @@ const RichEditor = ({
 	});
 
 	useEffect(() => {
-		if (editor && defaultContent === '') {
-			editor.commands.clearContent();
-		}
+		if (editor && defaultContent === '') editor.commands.clearContent();
 	}, [defaultContent, editor]);
 
-	const dialogRef = useRef();
+	const dialogRef = useRef<DialogBoxHandle | null>(null);
 
-	const textfieldRef = useRef(null);
+	// linkDraft state + ref (so onAction always sees latest)
+	const [linkDraftState, setLinkDraftState] = useState<string>('');
+	const linkDraftRef = useRef<string>('');
+	const setLinkDraft = useCallback((v: string) => {
+		linkDraftRef.current = v;
+		setLinkDraftState(v);
+	}, []);
+	const linkDialogCtxValue = useMemo<LinkDialogContextValue>(() => {
+		return {
+			linkDraft: linkDraftState,
+			setLinkDraft,
+		};
+	}, [linkDraftState, setLinkDraft]);
 
 	const setLink = () => {
-		const previousUrl = editor.getAttributes('link').href;
+		if (!editor) return;
+		const previousUrl = (editor.getAttributes('link').href as string | undefined) ?? '';
+		setLinkDraft(previousUrl);
 
-		dialogRef.current.dialog({
+		dialogRef.current?.dialog({
 			title: 'URL To Link',
-			body: () => {
-				const [link, setLinkValue] = useState('');
-
-				useEffect(() => {
-					setLinkValue(previousUrl || '');
-				}, []);
-				return (
-					<TextField
-						ref={textfieldRef}
-						placeholder='Enter or Paste URL'
-						value={link}
-						onChange={(e) => {
-							setLinkValue(e.target.value);
-						}}
-					/>
-				);
-			},
-
+			body: LinkDialogBody, // stable component type
 			actionText: 'Link',
 			cancelText: 'Cancel',
 			variant: 'primary',
-			onAction: ({ dismiss = () => {} }) => {
+			onAction: ({ dismiss }) => {
 				dismiss();
+				const focussed = editor.chain().focus();
+				const nextHref = linkDraftRef.current.trim();
 
-				const focussedEditor = editor.chain().focus();
-				if (!textfieldRef.current?.value) {
-					focussedEditor.extendMarkRange('link').unsetLink().run();
+				if (!nextHref) {
+					focussed.extendMarkRange('link').unsetLink().run();
 					return;
 				}
-
-				focussedEditor
+				focussed
 					.extendMarkRange('link')
 					.setLink({
-						href: textfieldRef.current?.value,
+						href: nextHref,
 					})
 					.run();
 			},
 		});
 	};
 
-	const onTextTypeDropdownChange = (e) => {
-		const focussesEditor = editor.chain().focus();
-		const textTypeValue = e.target.value;
-		setTextType(e.target.value);
-		if (textTypeValue === 'h1') {
-			focussesEditor
+	// Match DropdownProps.onChange signature
+	const onTextTypeDropdownChange = (
+		_: React.SyntheticEvent,
+		value: string | string[] | null | undefined
+	) => {
+		if (!editor) return;
+		const next: TextType = (typeof value === 'string' ? value : 'p') as TextType;
+		setTextType(next);
+
+		const chain = editor.chain().focus();
+		if (next === 'h1')
+			void chain
 				.toggleHeading({
 					level: 1,
 				})
 				.run();
-			return;
-		}
-		if (textTypeValue === 'h2') {
-			focussesEditor
+		if (next === 'h2')
+			void chain
 				.toggleHeading({
 					level: 2,
 				})
 				.run();
-			return;
-		}
-		if (textTypeValue === 'h3') {
-			focussesEditor
+		if (next === 'h3')
+			void chain
 				.toggleHeading({
 					level: 3,
 				})
 				.run();
-			return;
-		}
-		if (textTypeValue === 'p') {
-			focussesEditor.setParagraph().run();
-		}
+		if (next === 'p') void chain.setParagraph().run();
 	};
 
 	return (
-		<div className={classes(styles.root, className)}>
-			<ToolBar
-				editor={editor}
-				textType={textType}
-				onTextTypeDropdownChange={onTextTypeDropdownChange}
-				setLink={setLink}
-				hiddenMenu={hiddenMenu}
-			/>
-			<EditorContent className={styles.editor} editor={editor} />
-			<DialogBox ref={dialogRef} />
-		</div>
+		<LinkDialogContext.Provider value={linkDialogCtxValue}>
+			<div className={classes(styles.root, className)}>
+				<ToolBar
+					editor={editor}
+					textType={textType}
+					onTextTypeDropdownChange={onTextTypeDropdownChange}
+					setLink={setLink}
+					hiddenMenu={hiddenMenu}
+				/>
+				<EditorContent className={styles.editor} editor={editor} />
+				<DialogBox ref={dialogRef} />
+			</div>
+		</LinkDialogContext.Provider>
 	);
 };
 
