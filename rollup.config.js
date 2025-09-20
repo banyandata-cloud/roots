@@ -49,7 +49,7 @@ export default [
 				tsconfig: './tsconfig.json',
 				declaration: true,
 				declarationMap: false,
-				outDir: 'dist/esm', // Required when using declarationDir
+				outDir: 'dist/esm',
 				sourceMap: true,
 				exclude: [
 					'node_modules/**',
@@ -66,7 +66,6 @@ export default [
 			}),
 			pluginResolve({
 				extensions: ['.jsx', '.js', '.tsx', '.ts'],
-				exclude: 'node_modules/**',
 			}),
 			pluginStyles({
 				modules: true,
@@ -76,7 +75,7 @@ export default [
 			image(),
 			visualizer({
 				open: true,
-				template: 'treemap', // Options: treemap, sunburst, network
+				template: 'flamegraph',
 				gzipSize: true,
 				brotliSize: true,
 			}),
