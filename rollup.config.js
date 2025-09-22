@@ -5,6 +5,7 @@ import pluginJSON from '@rollup/plugin-json';
 import pluginResolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
 import pluginPeerDepsExternal from 'rollup-plugin-peer-deps-external';
+import postcss from 'rollup-plugin-postcss';
 import pluginStyles from 'rollup-plugin-styles';
 import { visualizer } from 'rollup-plugin-visualizer';
 import packageJson from './package.json';
@@ -69,6 +70,20 @@ export default [
 			}),
 			pluginStyles({
 				modules: true,
+			}),
+			// Extract ONLY .scss / .module.scss imports from components
+			postcss({
+				// Any SCSS Modules imported inside components will be bundled here:
+				extract: path.resolve('dist/roots-modules.css'),
+				minimize: true,
+				modules: {
+					generateScopedName: '[local]__[hash:base64:5]',
+				},
+				use: {
+					sass: {},
+				},
+				// IMPORTANT: do NOT run Tailwind here.
+				// Tailwind is compiled by "build:css" to dist/roots.css
 			}),
 			pluginCommonjs(),
 			pluginJSON(),

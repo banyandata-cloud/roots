@@ -42,7 +42,6 @@
 		"@floating-ui/react-dom-interactions": "^0.10.1",
 		"date-fns": "^2.29.3",
 		"path": "^0.12.7",
-		"postcss": "^8.4.18",
 		"react-merge-refs": "^2.0.1"
 	},
 	"devDependencies": {
@@ -70,6 +69,8 @@
 		"@storybook/react": "^6.5.12",
 		"@storybook/testing-library": "^0.0.13",
 		"@storybook/theming": "^6.5.12",
+		"@tailwindcss/forms": "^0.5.9",
+		"@tailwindcss/typography": "^0.5.12",
 		"@types/glob": "^9.0.0",
 		"@types/minimatch": "^6.0.0",
 		"@types/react": "^19.1.2",
@@ -77,8 +78,7 @@
 		"@types/react-syntax-highlighter": "^15.5.13",
 		"@typescript-eslint/eslint-plugin": "^8.32.1",
 		"@typescript-eslint/parser": "^8.32.1",
-		"babel-plugin-named-exports-order": "^0.0.2",
-		"babel-plugin-syntax-dynamic-import": "^6.18.0",
+		"autoprefixer": "^10.4.20",
 		"css-loader": "^6.8.1",
 		"eslint": "^8.2.0",
 		"eslint-config-airbnb": "19.0.4",
@@ -89,38 +89,42 @@
 		"eslint-plugin-prettier": "^5.4.0",
 		"eslint-plugin-react": "^7.37.5",
 		"eslint-plugin-react-hooks": "^5.2.0",
+		"postcss": "^8.4.47",
+		"postcss-cli": "^11",
+		"postcss-import": "^16.1.1",
 		"prettier": "^3.5.3",
 		"prop-types": "^15.8.1",
 		"rollup": "^3.2.3",
+		"rollup-plugin-dts": "^6.1.1",
 		"rollup-plugin-peer-deps-external": "^2.2.4",
-		"rollup-plugin-styles": "^4.0.0",
+		"rollup-plugin-postcss": "^4.0.2",
 		"rollup-plugin-visualizer": "^5.14.0",
-		"sass": "^1.55.0",
-		"sass-loader": "^13.1.0",
+		"sass": "^1.72.0",
 		"storybook": "^6.5.12",
 		"storybook-addon-designs": "^6.3.1",
 		"storybook-dark-mode": "^1.1.2",
 		"style-loader": "^3.3.3",
+		"tailwindcss": "^3.4.14",
 		"tslib": "^2.8.1",
 		"typescript": "^5.8.3"
 	},
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"start": "start-storybook -p 6006 -s ./src/components",
-		"build-storybook": "build-storybook -s ./src/components",
+		"start": "bun run build:css && start-storybook -p 6006 -s ./src/components",
+		"build-storybook": "bun run build:css && build-storybook -s ./src/components",
 		"lint": "eslint --ext js,jsx,ts,tsx .",
 		"lint:fix": "eslint --ext js,jsx,ts,tsx . --fix",
 		"format": "prettier --write './**/*.{js,jsx,ts,tsx,md,json}' --config ./.prettierrc",
-		"build": "rollup -c --bundleConfigAsCjs"
+		"build:css": "NODE_ENV=production postcss src/styles/tailwind.css -o dist/roots.css",
+		"build:js": "rollup -c --bundleConfigAsCjs",
+		"build": "bun run build:css && bun run build:js"
 	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/banyandata-cloud/roots.git"
 	},
-	"author": "",
-	"license": "ISC",
 	"bugs": {
 		"url": "https://github.com/banyandata-cloud/roots/issues"
 	},
-	"homepage": "https://github.com/banyandata-cloud/roots#readme"
+	"homepage": "https://github.com/banyandata-cloud/roots#readme",
+	"license": "ISC"
 }

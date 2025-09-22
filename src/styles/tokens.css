@@ -1,0 +1,12 @@
+@layer base {
+	:root {
+		--bn-primary: 59 130 246;
+		--bn-surface: 255 255 255;
+		--bn-text: 17 24 39;
+	}
+
+	[data-theme='dark'] {
+		--bn-surface: 17 24 39;
+		--bn-text: 243 244 246;
+	}
+}

@@ -2,6 +2,7 @@ import { DocsContainer } from '@storybook/addon-docs';
 import { themes } from '@storybook/theming';
 import React from 'react';
 import { useDarkMode } from 'storybook-dark-mode';
+import '../dist/roots.css'; // raw Tailwind for dev in SB
 import '../src/styles/main.scss';
 import banyanTheme from './banyanTheme';
 

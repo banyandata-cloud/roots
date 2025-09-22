@@ -1,0 +1,21 @@
+@import './tokens.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+	.bn-focus-ring {
+		@apply bn-outline-none bn-ring-2 bn-ring-offset-2 bn-ring-primary/50;
+	}
+	.bn-stroke-regular {
+		-webkit-text-stroke-width: 0;
+		text-shadow: none;
+	}
+	.bn-stroke-medium {
+		-webkit-text-stroke: 0.5px currentColor;
+	}
+	.bn-stroke-strong {
+		-webkit-text-stroke: 1px currentColor;
+	}
+}
