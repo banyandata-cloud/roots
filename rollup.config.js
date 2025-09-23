@@ -22,7 +22,6 @@ export default [
 			'react',
 			'react-dom',
 			'framer-motion',
-			'd3',
 			'echarts',
 			'@tiptap/react',
 			'@tiptap/starter-kit',
