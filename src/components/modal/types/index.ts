@@ -1,6 +1,5 @@
 import type { MotionProps } from 'framer-motion';
 import type { ComponentPropsWithoutRef, ReactNode } from 'react';
-import type { DEFAULT_ANIMATION_PROPS } from '../constants';
 
 /**
  * Footer props available for the default `ModalFooter` component.
@@ -35,7 +34,7 @@ export interface BaseModalProps {
 	hideCrossDismiss?: boolean | undefined;
 	footerProps?: ModalFooterProps | undefined;
 	animation?: boolean | undefined;
-	animationProperties?: typeof DEFAULT_ANIMATION_PROPS;
+	animationProperties?: Record<string, object>;
 }
 
 export type FooterProps = ComponentPropsWithoutRef<'footer'> & MotionProps;

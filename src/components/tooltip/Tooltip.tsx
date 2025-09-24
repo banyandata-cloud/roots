@@ -121,7 +121,11 @@ const Tooltip = forwardRef<RefObject<HTMLElement>, TooltipProps>((props, propRef
 		<>
 			{/* Wrapping */}
 			{clonedChildren}
-			<Popper open={open && content != null} backdrop={false} wrapperId='tooltip'>
+			<Popper
+				open={open && content != null}
+				backdrop={false}
+				lockScroll={false}
+				wrapperId='tooltip'>
 				<motion.div
 					{...getFloatingProps({
 						ref: floating,

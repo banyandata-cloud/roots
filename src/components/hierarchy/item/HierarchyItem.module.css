@@ -130,6 +130,7 @@
   outline: none;
   font-size: 0.875rem;
   height: 100%;
+  width: 120px;
 }
 .root .header .searchWrapper {
   height: 100%;
@@ -249,7 +250,6 @@
   flex: 1 0 auto;
   width: 100%;
   height: auto;
-  max-height: 200px;
   overflow-y: auto;
   scrollbar-width: none;
 }

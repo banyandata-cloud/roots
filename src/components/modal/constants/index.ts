@@ -18,4 +18,4 @@ export const DEFAULT_ANIMATION_PROPS = {
 	transition: {
 		duration: 0.15,
 	},
-} as const;
+};

@@ -3,7 +3,7 @@ import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import { classes } from '../../../utils';
 import { Button } from '../../buttons';
 import { BaseCell } from '../../cell';
-import { ExpandCollapseIcon, MagnifyingGlassIcon } from '../../icons';
+import { EditIcon, ExpandCollapseIcon, SearchIcon } from '../../icons';
 import { TextFieldv2 as TextField } from '../../input/textField';
 import styles from './HierarchyItem.module.css';
 
@@ -46,8 +46,10 @@ interface HierarchyItemProps {
 	lastActive?: boolean | undefined;
 	isSearching: boolean;
 	onSearchStart?: () => void;
+	searchedText?: string | undefined;
 	list?: Item[] | boolean;
 	callbackOnScroll?: CallbackOnScroll | undefined;
+	controlledOpen?: boolean;
 }
 
 const ChildrenContainer = ({
@@ -89,6 +91,7 @@ const ChildrenContainer = ({
 				});
 			});
 		};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	return (
@@ -130,8 +133,10 @@ const HierarchyItem = forwardRef<HTMLDivElement, HierarchyItemProps>((props, ref
 		lastActive,
 		isSearching,
 		onSearchStart,
+		searchedText,
 		callbackOnScroll,
 		list,
+		controlledOpen,
 	} = props;
 
 	const [open, setOpen] = useState(defaultOpen);
@@ -140,6 +145,10 @@ const HierarchyItem = forwardRef<HTMLDivElement, HierarchyItemProps>((props, ref
 	const handleSearchSubmit = () => {
 		onSearchSubmit?.(searchText, pathString);
 	};
+
+	useEffect(() => {
+		if (typeof controlledOpen === 'boolean') setOpen(controlledOpen);
+	}, [controlledOpen]);
 
 	const icon = (
 		<div className={styles['expand-container']}>
@@ -212,11 +221,7 @@ const HierarchyItem = forwardRef<HTMLDivElement, HierarchyItemProps>((props, ref
 								RightComponent={() => {
 									return (
 										<Button
-											title={
-												<MagnifyingGlassIcon
-													className={styles.searchButton}
-												/>
-											}
+											title={<SearchIcon className={styles.searchButton} />}
 											onClick={handleSearchSubmit}
 											variant='text'
 											size='auto'
@@ -258,7 +263,13 @@ const HierarchyItem = forwardRef<HTMLDivElement, HierarchyItemProps>((props, ref
 							onClick={() => {
 								return onSearchStart?.();
 							}}
-							title={<MagnifyingGlassIcon className={styles.searchButton} />}
+							title={
+								searchedText ? (
+									<EditIcon className={styles.searchButton} />
+								) : (
+									<SearchIcon className={styles.searchButton} />
+								)
+							}
 						/>
 					) : undefined
 				}

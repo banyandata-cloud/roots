@@ -12,6 +12,7 @@ import {
 	ViewPasswordIcon,
 } from '../../icons';
 import { Popover } from '../../popover';
+import type { MiddlewareOptions, Placement } from '../../popover/Popover';
 import { Tooltip } from '../../tooltip';
 import styles from './TextField.module.css';
 
@@ -29,16 +30,12 @@ type LeftComponentType = React.ComponentType<LeftRightIconProps>;
 type RightComponentType = React.ComponentType<LeftRightIconProps>;
 
 interface AutocompleteOptions {
-	/** Whether popover is open */
-	open?: boolean;
-	/** Control open state */
-	setOpen?: (open: boolean) => void;
 	/** Decide when to open based on the current input */
 	predicate?: (input: string) => boolean;
 	/** Popover placement (kept broad to avoid coupling to the popper types) */
-	placement?: string;
+	placement?: Placement;
 	/** Popover middleware options (library-specific) */
-	middlewareOptions?: unknown;
+	middlewareOptions?: MiddlewareOptions;
 	/** Renderer for the autocomplete content */
 	render?: React.ComponentType<{
 		name?: string | undefined;
@@ -76,7 +73,6 @@ export interface TextFieldProps {
 	maxLength?: number;
 	onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 	/** Whether to enable autocomplete popover */
-	autocomplete?: boolean | undefined;
 	autocompleteOptions?: AutocompleteOptions | undefined;
 }
 
@@ -104,7 +100,6 @@ const TextField = forwardRef<HTMLInputElement | HTMLTextAreaElement, TextFieldPr
 			feedback,
 			maxLength,
 			onKeyDown,
-			autocomplete,
 			autocompleteOptions,
 		} = props;
 
@@ -113,20 +108,12 @@ const TextField = forwardRef<HTMLInputElement | HTMLTextAreaElement, TextFieldPr
 		const [uncontrolledValue, setUncontrolledValue] = useState<string>(defaultValue);
 		const [inputType, setInputType] = useState<InputType>(type);
 
-		const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+		const [showAutocompleteOptions, setShowAutocompleteOptions] = useState<boolean>(false);
 
-		const checkAndOpenAutocomplete = (inputString: string) => {
-			if (autocomplete) {
-				const shouldOpen =
-					autocompleteOptions?.predicate?.(inputString) ?? inputString.length > 0;
-				autocompleteOptions?.setOpen?.(!!shouldOpen);
-			}
-		};
+		const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
 		const handleChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
 			const { fieldValue } = inputHelper(event) as { fieldValue: string };
-
-			checkAndOpenAutocomplete(fieldValue);
 
 			if (isControlled) {
 				onChange?.(event, fieldValue);
@@ -167,7 +154,6 @@ const TextField = forwardRef<HTMLInputElement | HTMLTextAreaElement, TextFieldPr
 											styles.icon,
 											feedback?.error ? styles.error : ''
 										)}
-										position='left'
 									/>
 								) : (
 									<ViewPasswordIcon
@@ -175,7 +161,6 @@ const TextField = forwardRef<HTMLInputElement | HTMLTextAreaElement, TextFieldPr
 											styles.icon,
 											feedback?.error ? styles.error : ''
 										)}
-										position='left'
 									/>
 								);
 							}}
@@ -226,6 +211,11 @@ const TextField = forwardRef<HTMLInputElement | HTMLTextAreaElement, TextFieldPr
 			return RightComponent ? <RightComponent /> : null;
 		};
 
+		const handleOnBlur = () => {
+			onBlur?.();
+			setShowAutocompleteOptions(false);
+		};
+
 		const inputValue = isControlled ? String(value ?? '') : uncontrolledValue;
 
 		const commonProps = {
@@ -234,10 +224,10 @@ const TextField = forwardRef<HTMLInputElement | HTMLTextAreaElement, TextFieldPr
 			disabled,
 			placeholder,
 			onFocus: () => {
-				checkAndOpenAutocomplete(inputValue);
 				onFocus?.();
+				setShowAutocompleteOptions(true);
 			},
-			onBlur,
+			onBlur: handleOnBlur,
 			onKeyDown,
 			required,
 			'data-elem': 'input' as const,
@@ -290,13 +280,14 @@ const TextField = forwardRef<HTMLInputElement | HTMLTextAreaElement, TextFieldPr
 						})}
 					/>
 				</label>
-				{autocomplete && (
+				{autocompleteOptions && (
 					<Popover
 						anchorEl={anchorEl}
-						open={autocompleteOptions?.open}
-						setOpen={autocompleteOptions?.setOpen}
-						placement={autocompleteOptions?.placement}
-						middlewareOptions={autocompleteOptions?.middlewareOptions}>
+						open={showAutocompleteOptions}
+						placement={autocompleteOptions.placement}
+						middlewareOptions={autocompleteOptions.middlewareOptions}
+						withOverlay={false}
+						lockScroll={false}>
 						{AutocompletePopover && <AutocompletePopover name={name} value={value} />}
 					</Popover>
 				)}

@@ -2,7 +2,7 @@
 
 .root {
 	@include flex(column, flex-start, stretch);
-	width: 20rem;
+	min-width: 20rem;
 	position: relative;
 
 	.header {
@@ -35,7 +35,10 @@
 		.item-title {
 			font-size: 0.875rem;
 			font-weight: 500;
-			color: #1e1e1e;
+			color: black;
+			&.highlight {
+				color: #0f62fe;
+			}
 		}
 
 		.item-count {

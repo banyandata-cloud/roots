@@ -91,7 +91,7 @@ const TableCell = forwardRef((props: TableCellProps, ref: ForwardedRef<HTMLTable
 					styles.root,
 					styles[`${type}-cell`],
 					styles[`sticky-${String(sticky)}`],
-					sort && styles.sortable,
+					type === 'header' && sort && styles.sortable,
 					isCentered && styles.centered,
 					className
 				),
