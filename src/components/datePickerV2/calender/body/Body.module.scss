@@ -1,0 +1,16 @@
+@import '../../../../styles/';
+
+.root {
+	@include flex(row, space-between, stretch);
+	.body-left {
+		width: 50%;
+		@include flex(column, space-between, stretch);
+		border-right: 1px solid #d5d5db;
+		padding: 0.25rem 1rem;
+	}
+	.body-right {
+		width: 50%;
+		@include flex(column, space-between, stretch);
+		padding: 0.25rem 1rem;
+	}
+}
