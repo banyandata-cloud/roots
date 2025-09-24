@@ -22,16 +22,11 @@ export default [
 			'react',
 			'react-dom',
 			'framer-motion',
-			'd3',
-			'chart.js',
 			'echarts',
 			'@tiptap/react',
 			'@tiptap/starter-kit',
 			'@tiptap/pm',
-			'react-chartjs-2',
 			'echarts-for-react',
-			'chartjs-plugin-annotation',
-			'chartjs-plugin-datalabels',
 			'fast-equals',
 			'react-error-boundary',
 			'@tiptap/extension-color',
@@ -49,7 +44,7 @@ export default [
 				tsconfig: './tsconfig.json',
 				declaration: true,
 				declarationMap: false,
-				outDir: 'dist/esm', // Required when using declarationDir
+				outDir: 'dist/esm',
 				sourceMap: true,
 				exclude: [
 					'node_modules/**',
@@ -66,7 +61,6 @@ export default [
 			}),
 			pluginResolve({
 				extensions: ['.jsx', '.js', '.tsx', '.ts'],
-				exclude: 'node_modules/**',
 			}),
 			pluginStyles({
 				modules: true,
@@ -76,7 +70,7 @@ export default [
 			image(),
 			visualizer({
 				open: true,
-				template: 'treemap', // Options: treemap, sunburst, network
+				template: 'flamegraph',
 				gzipSize: true,
 				brotliSize: true,
 			}),

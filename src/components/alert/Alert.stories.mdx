@@ -4,7 +4,7 @@ import { ThemedContainer } from '../helpers';
 import { AlertIcon } from '../icons';
 import Alert from './Alert';
 
-<Meta title='Components/AlertV2' parameters={{ options: { showToolbar: true } }} />
+<Meta title='Components/Alert' parameters={{ options: { showToolbar: true } }} />
 
 # Alert
 
@@ -20,9 +20,9 @@ Basic import and additional information on how to use this component.
 import { Alert } from '@banyan_cloud/roots';
 ```
 
--   The icon prop can be a custom icon component or one of the predefined icons for different alert types.
--   The toggle prop can be used to control the visibility of the alert.
--   The position prop determines where the alert will be displayed on the screen.
+- The icon prop can be a custom icon component or one of the predefined icons for different alert types.
+- The toggle prop can be used to control the visibility of the alert.
+- The position prop determines where the alert will be displayed on the screen.
 
 ## Stories
 
@@ -46,8 +46,7 @@ The default Alert component showing info.
 			const toggle = () => {
 				funs.alert({
 					title: 'Information',
-					description:
-						'BasicInfoInfoInfoInfoInfoInfoInfoInfoInfoInfoInfoInfoInfoInfo InfoInfoInfoInfoInfoInfooInfoInfoInfoInfoInfoInfoInfoInfoInfoInfoInfoInfoInfoInfoInfoInfoInfoInfoInfoInfoInfoInfoInfoInfoInfoInfoInfoInfoInfoInfoInfoInfoInfoInfoInfoInfoInfoInfoInfoInf',
+					description: 'Basic Info is Here',
 					type: 'info',
 				});
 			};

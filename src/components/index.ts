@@ -5,7 +5,6 @@ export * from './buttons';
 export * from './callout';
 export * from './cell';
 export * from './charts';
-export * from './chartsV2';
 export * from './codeSnippet';
 export * from './datePicker';
 export * from './displayPicture';

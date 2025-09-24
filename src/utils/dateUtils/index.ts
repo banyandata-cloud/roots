@@ -4,28 +4,28 @@ import { doubleDigitted } from '../stringUtils';
 
 export const getJSDateFromEpoch = (epoch: number): Date => {
 	const date = new Date(0);
-	date.setUTCSeconds(epoch);
+	date.setSeconds(epoch);
 	return date;
 };
 
 export const getDateFromEpoch = (epoch: number): string => {
 	const date = new Date(0);
-	date.setUTCSeconds(epoch);
+	date.setSeconds(epoch);
 
-	const paddedDate = date.getUTCDate().toString().padStart(2, '0');
-	const month = MONTHS[date.getUTCMonth()] ?? 'Jan';
-	const year = date.getUTCFullYear();
+	const paddedDate = date.getDate().toString().padStart(2, '0');
+	const month = MONTHS[date.getMonth()] ?? 'Jan';
+	const year = date.getFullYear();
 
 	return `${month} ${paddedDate}, ${year.toString()}`;
 };
 
 export const getTimeFromEpoch = (epoch: number): string => {
 	const date = new Date(0);
-	date.setUTCSeconds(epoch);
+	date.setSeconds(epoch);
 
-	const hours = doubleDigitted(date.getUTCHours());
-	const minutes = doubleDigitted(date.getUTCMinutes());
-	const seconds = doubleDigitted(date.getUTCSeconds());
+	const hours = doubleDigitted(date.getHours());
+	const minutes = doubleDigitted(date.getMinutes());
+	const seconds = doubleDigitted(date.getSeconds());
 
 	return `${hours}:${minutes}:${seconds}`;
 };
@@ -36,18 +36,26 @@ type DateFormat = string;
 export const epochToFormattedDate = (
 	epoch: number,
 	type: 'time' | 'date',
-	format: TimeFormat | DateFormat = 12
+	format: TimeFormat | DateFormat = 12,
+	universal = false
 ): string | null => {
 	const date = new Date(0);
 	date.setUTCSeconds(epoch);
 
 	if (type === 'time') {
-		const hours = doubleDigitted(date.getUTCHours());
-		const minutes = doubleDigitted(date.getUTCMinutes());
-		const seconds = doubleDigitted(date.getUTCSeconds());
+		const hours = doubleDigitted(universal ? date.getUTCHours() : date.getHours());
+		const minutes = doubleDigitted(universal ? date.getUTCMinutes() : date.getMinutes());
+		const seconds = doubleDigitted(universal ? date.getUTCSeconds() : date.getSeconds());
 
-		const hours12 = ((date.getUTCHours() + 11) % 12) + 1;
-		const meridian = date.getUTCHours() >= 12 ? 'PM' : 'AM';
+		const hours12 = universal
+			? ((date.getUTCHours() + 11) % 12) + 1
+			: ((date.getHours() + 11) % 12) + 1;
+
+		let meridian = date.getUTCHours() >= 12 ? 'PM' : 'AM';
+
+		if (universal) {
+			meridian = date.getHours() >= 12 ? 'PM' : 'AM';
+		}
 
 		const timeFormat: Record<TimeFormat, string> = {
 			24: `${hours}:${minutes}:${seconds} Hrs`,
@@ -60,9 +68,11 @@ export const epochToFormattedDate = (
 		return fnsFormat(date, format);
 	}
 
-	const paddedDate = date.getUTCDate().toString().padStart(2, '0');
-	const month = MONTHS[date.getUTCMonth()] ?? 'Jan';
-	const year = date.getUTCFullYear();
+	const paddedDate = universal
+		? date.getUTCDate().toString().padStart(2, '0')
+		: date.getDate().toString().padStart(2, '0');
+	const month = MONTHS[universal ? date.getUTCMonth() : date.getMonth()] ?? 'Jan';
+	const year = universal ? date.getUTCFullYear() : date.getFullYear();
 
 	return `${month} ${paddedDate}, ${year.toString()}`;
 };

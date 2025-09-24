@@ -1,8 +1,8 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { useState } from 'react';
 import { ThemedContainer } from '../helpers';
-import { TrashIcon } from '../icons';
-import Toggle from '../toggle/Toggle';
+import Toggle from './Toggle';
+import { ClockIcon } from '../icons';
 
 <Meta title='Components/Toggle' parameters={{ options: { showToolbar: true } }} />
 
@@ -134,38 +134,23 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 			options: [
 				{
 					value: 'pgsql',
-					title: <TrashIcon />,
-					rightComponent: () => {
-						return <TrashIcon />;
-					},
+					title: <ClockIcon width='2rem' height='2rem' />,
 				},
 				{
 					value: 'mysql',
-					title: <TrashIcon />,
-					rightComponent: () => {
-						return <TrashIcon />;
-					},
+					title: <ClockIcon width='2rem' height='2rem' />,
 				},
 				{
 					value: 'oracle',
-					title: <TrashIcon />,
-					rightComponent: () => {
-						return <TrashIcon />;
-					},
+					title: <ClockIcon width='2rem' height='2rem' />,
 				},
 				{
 					value: 'mongodb',
-					title: <TrashIcon />,
-					rightComponent: () => {
-						return <TrashIcon />;
-					},
+					title: <ClockIcon width='2rem' height='2rem' />,
 				},
 				{
 					value: 'mssql',
-					title: <TrashIcon />,
-					rightComponent: () => {
-						return <TrashIcon />;
-					},
+					title: <ClockIcon width='2rem' height='2rem' />,
 				},
 			],
 			v2: true,

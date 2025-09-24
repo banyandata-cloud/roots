@@ -74,6 +74,7 @@
 				"imports": "only-multiline"
 			}
 		],
+		"no-void": ["error", { "allowAsStatement": true }],
 		"jsx-quotes": ["error", "prefer-single"], //Use single quotes for jsx
 		"object-curly-newline": [
 			"error",

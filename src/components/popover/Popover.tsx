@@ -1,3 +1,4 @@
+import type { ReferenceType } from '@floating-ui/react-dom';
 import {
 	autoUpdate,
 	flip,
@@ -13,7 +14,7 @@ import { classes } from '../../utils';
 import { Popper } from '../popper';
 import styles from './Popover.module.css';
 
-type Placement =
+export type Placement =
 	| 'top'
 	| 'top-start'
 	| 'top-end'
@@ -27,14 +28,14 @@ type Placement =
 	| 'left-start'
 	| 'left-end';
 
-type VirtualElement = {
+interface VirtualElement {
 	getBoundingClientRect: () => DOMRect;
 	contextElement?: Element | null;
-};
+}
 
 type ReferenceEl = Element | VirtualElement | null;
 
-interface MiddlewareOptions {
+export interface MiddlewareOptions {
 	offset?: Parameters<typeof offset>[0];
 	shift?: Parameters<typeof shift>[0];
 	flip?: Parameters<typeof flip>[0];
@@ -43,21 +44,30 @@ interface MiddlewareOptions {
 export interface PopoverProps {
 	children: React.ReactNode;
 	anchorEl: ReferenceEl;
-	open: boolean;
-	setOpen: (open: boolean) => void;
+	open?: boolean | undefined;
+	setOpen?: ((open: boolean) => void) | undefined;
 	className?: string;
 	transparent?: boolean;
 	onClose?: () => void;
-	placement?: Placement;
+	placement?: Placement | undefined;
 	theme?: 'light' | 'dark';
-	middlewareOptions?: MiddlewareOptions;
+	middlewareOptions?: MiddlewareOptions | undefined;
+	lockScroll?: boolean;
+	withOverlay?: boolean;
 }
 
 type OffsetArg = Parameters<typeof offset>[0];
+
 const resolveOffset = (user?: OffsetArg): OffsetArg => {
-	if (user == null) return { mainAxis: 5 };
+	if (user == null)
+		return {
+			mainAxis: 5,
+		};
 	if (typeof user === 'number' || typeof user === 'function') return user;
-	return { mainAxis: 5, ...user };
+	return {
+		mainAxis: 5,
+		...user,
+	};
 };
 
 const Popover: React.FC<PopoverProps> = ({
@@ -67,20 +77,30 @@ const Popover: React.FC<PopoverProps> = ({
 	setOpen,
 	className,
 	transparent = true,
-	onClose = () => {},
+	onClose,
 	placement = 'bottom',
 	theme = 'light',
 	middlewareOptions,
+	lockScroll,
+	withOverlay = true,
 }) => {
 	const offsetArg = resolveOffset(middlewareOptions?.offset);
 	const flipArg: Parameters<typeof flip>[0] = {
 		padding: 8,
-		...(middlewareOptions?.flip ?? {}),
+		...(middlewareOptions?.flip && typeof middlewareOptions.flip === 'object'
+			? {
+					...middlewareOptions.flip,
+				}
+			: {}),
 	};
 
 	const { x, y, reference, floating, strategy, context } = useFloating({
-		open,
-		onOpenChange: setOpen,
+		...(open && {
+			open,
+		}),
+		...(setOpen && {
+			onOpenChange: setOpen,
+		}),
 		placement,
 		whileElementsMounted: autoUpdate,
 		middleware: [
@@ -90,9 +110,9 @@ const Popover: React.FC<PopoverProps> = ({
 			size({
 				apply({ rects, availableHeight, elements }) {
 					Object.assign(elements.floating.style, {
-						width: `${rects.reference.width}px`,
+						width: `${rects.reference.width.toString()}px`,
 						minWidth: 'fit-content',
-						maxHeight: `${availableHeight}px`,
+						maxHeight: `${availableHeight.toString()}px`,
 					});
 				},
 				padding: 8,
@@ -103,15 +123,20 @@ const Popover: React.FC<PopoverProps> = ({
 	const { getFloatingProps } = useInteractions([useDismiss(context)]);
 
 	useEffect(() => {
-		if (!open) onClose();
+		if (!open) onClose?.();
 	}, [open, onClose]);
 
 	useLayoutEffect(() => {
-		reference(anchorEl as any);
+		reference(anchorEl as ReferenceType);
 	}, [anchorEl, reference]);
 
 	return (
-		<Popper open={open} wrapperId='popover' transparent={transparent}>
+		<Popper
+			open={open}
+			wrapperId='popover'
+			transparent={transparent}
+			lockScroll={lockScroll}
+			withOverlay={withOverlay}>
 			<div
 				{...getFloatingProps({
 					ref: floating,

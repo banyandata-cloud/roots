@@ -342,6 +342,7 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(props,
 		if (multi && isControlled) {
 			setUncontrolledValue(value);
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [open, multi, value]);
 
 	const onSelectAll = (event: React.MouseEvent<HTMLElement>, selected: boolean) => {

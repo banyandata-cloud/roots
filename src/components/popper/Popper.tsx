@@ -15,12 +15,14 @@ const FloatingOverlay = FUOverlay as unknown as React.ForwardRefExoticComponent<
 >;
 
 export interface PopperProps {
-	open: boolean;
+	open?: boolean | undefined;
 	children: React.ReactNode;
 	wrapperId?: string;
 	backdrop?: boolean;
-	className?: string;
+	className?: string | undefined;
 	transparent?: boolean;
+	lockScroll?: boolean | undefined;
+	withOverlay?: boolean | undefined;
 }
 
 const Popper: React.FC<PopperProps> = ({
@@ -30,6 +32,8 @@ const Popper: React.FC<PopperProps> = ({
 	backdrop = true,
 	className = '',
 	transparent = true,
+	lockScroll,
+	withOverlay = true,
 }) => {
 	const id = useId();
 	const portalId = `${wrapperId}${id}`;
@@ -43,21 +47,26 @@ const Popper: React.FC<PopperProps> = ({
 		};
 	}, [portalId]);
 
+	const resolvedLock = lockScroll ?? withOverlay;
+
 	return (
 		<FloatingPortal id={portalId}>
 			<AnimatePresence>
-				{open && (
-					<FloatingOverlay
-						lockScroll
-						className={classes(
-							styles.backdrop,
-							transparent ? styles.transparent : '',
-							backdrop ? '' : styles['hide-backdrop'],
-							className
-						)}>
-						{children}
-					</FloatingOverlay>
-				)}
+				{open &&
+					(withOverlay ? (
+						<FloatingOverlay
+							lockScroll={resolvedLock}
+							className={classes(
+								styles.backdrop,
+								transparent ? styles.transparent : '',
+								backdrop ? '' : styles['hide-backdrop'],
+								className
+							)}>
+							{children}
+						</FloatingOverlay>
+					) : (
+						<div className={className}>{children}</div>
+					))}
 			</AnimatePresence>
 		</FloatingPortal>
 	);

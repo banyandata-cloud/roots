@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
-  width: 20rem;
+  min-width: 20rem;
   position: relative;
 }
 .root .header {
@@ -38,7 +38,10 @@
 .root .item .item-title {
   font-size: 0.875rem;
   font-weight: 500;
-  color: #1e1e1e;
+  color: black;
+}
+.root .item .item-title.highlight {
+  color: #0f62fe;
 }
 .root .item .item-count {
   display: flex;

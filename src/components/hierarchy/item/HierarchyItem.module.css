@@ -53,7 +53,7 @@
 }
 .root .header > [data-elem=component1] .expand .icon, .root .header > [data-elem=component3] .expand .icon {
   width: 1rem;
-  margin-left: -0.04rem;
+  margin-left: 0.4rem;
   height: 1.49rem;
   fill: var(--text-color);
 }
@@ -130,6 +130,7 @@
   outline: none;
   font-size: 0.875rem;
   height: 100%;
+  width: 120px;
 }
 .root .header .searchWrapper {
   height: 100%;
@@ -248,12 +249,15 @@
 .root .body > [data-elem=component2] .children {
   flex: 1 0 auto;
   width: 100%;
+  height: auto;
+  overflow-y: auto;
+  scrollbar-width: none;
 }
 .root.open > .header .expand .icon {
   transform: none;
   height: 0.8rem;
   width: 0rem;
-  margin-left: 1.4rem;
+  margin-left: 1.8rem;
 }
 .root.open > .body {
   display: flex;
