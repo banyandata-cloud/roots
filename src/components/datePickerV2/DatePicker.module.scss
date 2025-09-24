@@ -168,6 +168,9 @@
 div.modal {
 	border-radius: 0.25rem;
 	width: 51rem;
+	&.bottom-remove {
+		height: 35rem;
+	}
 	.header {
 		@include flex(row, space-between, center);
 		.left {
@@ -223,6 +226,10 @@ div.modal {
 				@include flex(column, center, center);
 				border-top: 1px solid #d5d5db;
 				flex: 3;
+				&.bottom-remove {
+					flex: 0;
+				}
+
 				.dropdown-selection {
 					@include flex(row, center, center);
 					gap: 1rem;
@@ -262,6 +269,10 @@ div.modal {
 						color: $secondary-color2;
 						border: none;
 						box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25);
+						&.selected[data-elem='base-cell'] {
+							background-color: $secondary-color2;
+							color: $white;
+						}
 					}
 				}
 			}

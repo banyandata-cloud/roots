@@ -29,6 +29,8 @@ const Dates = (props) => {
 		disableDatesAfter,
 		hoveredEndingDate,
 		setHoveredEndingDate,
+		setFixedTime,
+		setFixedTimeRange,
 	} = props;
 
 	const { monthAsNumber, year } = selectedMonth || {};
@@ -74,6 +76,8 @@ const Dates = (props) => {
 	}, [days]);
 
 	const dateSelection = (date) => {
+		setFixedTime(0);
+		setFixedTimeRange([0, 0]);
 		if (range) {
 			setHoveredEndingDate(null);
 			setSelectedRange(

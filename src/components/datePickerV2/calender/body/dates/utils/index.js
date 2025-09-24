@@ -78,7 +78,11 @@ export const rangeSelection = ({ selectedRange, date }) => {
 			dates: [`${dateAsNumber} ${month} ${year}`, `${dateAsNumber} ${month} ${year}`],
 			unix: [
 				getUnixTime(date.setHours(0, 0, 0, 0)),
-				getUnixTime(date.setHours(23, 59, 59, 59)),
+				getUnixTime(
+					date.toDateString() === new Date().toDateString()
+						? new Date()
+						: date.setHours(23, 59, 59, 59)
+				),
 			],
 		};
 	}
@@ -96,7 +100,14 @@ export const rangeSelection = ({ selectedRange, date }) => {
 
 		return {
 			dates: [...selectedRange.dates, `${dateAsNumber} ${month} ${year}`],
-			unix: [...selectedRange.unix, getUnixTime(date.setHours(23, 59, 59, 59))],
+			unix: [
+				...selectedRange.unix,
+				getUnixTime(
+					date.toDateString() === new Date().toDateString()
+						? new Date()
+						: date.setHours(23, 59, 59, 59)
+				),
+			],
 		};
 	}
 	if (
@@ -106,7 +117,14 @@ export const rangeSelection = ({ selectedRange, date }) => {
 	) {
 		return {
 			dates: [selectedRange.dates?.[0], `${dateAsNumber} ${month} ${year}`],
-			unix: [selectedRange.unix?.[0], getUnixTime(date.setHours(23, 59, 59, 59))],
+			unix: [
+				selectedRange.unix?.[0],
+				getUnixTime(
+					date.toDateString() === new Date().toDateString()
+						? new Date()
+						: date.setHours(23, 59, 59, 59)
+				),
+			],
 		};
 	}
 	if (isBefore(date, fromUnixTime(selectedRange.unix?.[0]))) {

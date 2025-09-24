@@ -24,6 +24,8 @@ const Calender = (props) => {
 		setDisplayMonthRight,
 		valueAsRange,
 		enableFutureDates,
+		setFixedTime,
+		setFixedTimeRange,
 	} = props;
 
 	const [dateSelectionView, showDateSelectionView] = useState(false);
@@ -171,28 +173,28 @@ const Calender = (props) => {
 
 	const onMonthChange = (switchSide) => {
 		if (switchSide === 'prev') {
-			if (selectedMonth.monthAsNumber - 2 < 0) {
-				const nextMonth = FULL_MONTHS[(selectedMonth.monthAsNumber + 12 - 1) % 12];
+			if (Number(selectedMonth.monthAsNumber) - 2 < 0) {
+				const nextMonth = FULL_MONTHS[(Number(selectedMonth.monthAsNumber) + 12 - 1) % 12];
 				setSelectedMonth({
-					month: FULL_MONTHS[(selectedMonth.monthAsNumber + 12 - 2) % 12],
-					monthAsNumber: (selectedMonth.monthAsNumber + 12 - 2) % 12,
+					month: FULL_MONTHS[(Number(selectedMonth.monthAsNumber) + 12 - 2) % 12],
+					monthAsNumber: (Number(selectedMonth.monthAsNumber) + 12 - 2) % 12,
 					year:
-						(selectedMonth.monthAsNumber + 12 - 2) % 12 > 0
-							? selectedMonth.year - 1
-							: selectedMonth.year,
+						(Number(selectedMonth.monthAsNumber) + 12 - 2) % 12 > 0
+							? Number(selectedMonth.year) - 1
+							: Number(selectedMonth.year),
 				});
 				setDisplayMonthRight({
 					month: nextMonth,
-					monthAsNumber: (selectedMonth.monthAsNumber + 12 - 1) % 12,
+					monthAsNumber: (Number(selectedMonth.monthAsNumber) + 12 - 1) % 12,
 					year:
-						(selectedMonth.monthAsNumber + 12 - 1) % 12 > 0
-							? selectedMonth.year - 1
-							: selectedMonth.year,
+						(Number(selectedMonth.monthAsNumber) + 12 - 1) % 12 > 0
+							? Number(selectedMonth.year) - 1
+							: Number(selectedMonth.year),
 				});
 				return;
 			}
-			const previousMonthNumber = selectedMonth.monthAsNumber - 2;
-			const previousRightMonthNumber = selectedMonth.monthAsNumber - 1;
+			const previousMonthNumber = Number(selectedMonth.monthAsNumber) - 2;
+			const previousRightMonthNumber = Number(selectedMonth.monthAsNumber) - 1;
 			const previousMonth = FULL_MONTHS[previousMonthNumber];
 			const previousRightMonth = FULL_MONTHS[previousRightMonthNumber];
 			setSelectedMonth({
@@ -209,25 +211,25 @@ const Calender = (props) => {
 		}
 
 		if (switchSide === 'next') {
-			if (selectedMonth.monthAsNumber + 2 >= 11) {
-				const nextMonth = FULL_MONTHS[(selectedMonth.monthAsNumber + 3) % 12];
+			if (Number(selectedMonth.monthAsNumber) + 2 >= 11) {
+				const nextMonth = FULL_MONTHS[(Number(selectedMonth.monthAsNumber) + 3) % 12];
 				setSelectedMonth({
-					month: FULL_MONTHS[(selectedMonth.monthAsNumber + 2) % 12],
-					monthAsNumber: (selectedMonth.monthAsNumber + 2) % 12,
+					month: FULL_MONTHS[(Number(selectedMonth.monthAsNumber) + 2) % 12],
+					monthAsNumber: (Number(selectedMonth.monthAsNumber) + 2) % 12,
 					year:
-						(selectedMonth.monthAsNumber + 3) % 12 > 0
-							? selectedMonth.year + 1
-							: selectedMonth.year,
+						(Number(selectedMonth.monthAsNumber) + 3) % 12 > 0
+							? Number(selectedMonth.year) + 1
+							: Number(selectedMonth.year),
 				});
 				setDisplayMonthRight({
 					month: nextMonth,
-					monthAsNumber: (selectedMonth.monthAsNumber + 3) % 12,
-					year: selectedMonth.year + 1,
+					monthAsNumber: (Number(selectedMonth.monthAsNumber) + 3) % 12,
+					year: Number(selectedMonth.year) + 1,
 				});
 				return;
 			}
-			const nextMonthNumber = selectedMonth.monthAsNumber + 2;
-			const nextRightMonthNumber = displayMonthRight.monthAsNumber + 2;
+			const nextMonthNumber = Number(selectedMonth.monthAsNumber) + 2;
+			const nextRightMonthNumber = Number(displayMonthRight.monthAsNumber) + 2;
 			const nextMonth = FULL_MONTHS[nextMonthNumber];
 			const nextRightMonth = FULL_MONTHS[nextRightMonthNumber];
 			setSelectedMonth({
@@ -250,6 +252,8 @@ const Calender = (props) => {
 		setSelectedRange,
 		range,
 		selectedMonth,
+		setFixedTime,
+		setFixedTimeRange,
 	};
 
 	return (

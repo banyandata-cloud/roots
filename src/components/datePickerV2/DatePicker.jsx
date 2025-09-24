@@ -19,6 +19,7 @@ import { BaseModal } from '../../components/modal';
 import { FULL_MONTHS_INDEX } from '../../constants';
 import { useOutsideClickListener } from '../../hooks';
 import { classes, getDayInfo } from '../../utils';
+import { dateRanges, timeRanges } from '../datePicker/ranges/utils';
 import { ErrorBoundaryWrapper } from '../errorBoundary';
 import { CalenderIcon, CaretIcon, ClockIcon } from '../icons';
 import styles from './DatePicker.module.css';
@@ -51,6 +52,11 @@ const DatePicker = (props) => {
 
 	const [openDatePicker, setOpenDatePicker] = useState(false);
 	const [openCustomRange, setOpenCustomRange] = useState(false);
+	const [selectedCustomRange, setSelectedCustomRange] = useState('');
+	const [startTime, setStartTime] = useState(0);
+	const [endTime, setEndTime] = useState(0);
+	const [fixedTime, setFixedTime] = useState(0);
+	const [fixedTimeRange, setFixedTimeRange] = useState([0, 0]);
 	const [open, setOpen] = useState(false);
 	const toggle = () => {
 		setOpen((prevState) => {
@@ -113,7 +119,20 @@ const DatePicker = (props) => {
 	const date = range ? fromUnixTime(value?.[0]) : fromUnixTime(value);
 	const selectedDayInfo = getDayInfo(date);
 
+	const activeDate = new Date(selectedDate.unix * 1000);
+	const activeEndDate = new Date(selectedRange.unix?.[1] * 1000);
+	const currentDate = new Date();
+
 	const apply = ({ rangeSelected }) => {
+		if (fixedTime) {
+			onApply?.(fixedTimeRange, fixedRange, getDateRangeTag(fixedTimeRange));
+			setOpenDatePicker(false);
+			setStartTime(0);
+			setEndTime(0);
+			setFixedTime(0);
+			setFixedTimeRange([0, 0]);
+			return;
+		}
 		if (rangeSelected.dates?.length === 2) {
 			if (
 				maxRange !== null &&
@@ -125,43 +144,41 @@ const DatePicker = (props) => {
 				setOpenDatePicker(false);
 				return;
 			}
-			onApply?.(rangeSelected.unix, fixedRange, getDateRangeTag(rangeSelected.unix));
+
+			onApply?.(
+				[
+					Number(rangeSelected.unix?.[0]) + Number(startTime),
+					Number(rangeSelected.unix?.[1]) - (86399 - Number(endTime)),
+				],
+				fixedRange,
+				getDateRangeTag(rangeSelected.unix)
+			);
 			setOpenDatePicker(false);
+			setStartTime(0);
+			setEndTime(0);
+			setFixedTime(0);
+			setFixedTimeRange([0, 0]);
 		} else {
 			if (valueAsRange) {
-				const fromUnix = getUnixTime(
-					new Date(
-						selectedDate.year,
-						selectedMonth?.monthAsNumber,
-						selectedDate.date,
-						timeRangeSelection.previous?.MER === 'PM' &&
-						timeRangeSelection.previous?.HOURS < 12
-							? timeRangeSelection.previous?.HOURS + 12
-							: calculateZeroHours(
-									timeRangeSelection.previous?.HOURS,
-									timeRangeSelection.previous?.MER
-								),
+				const clickedDate = new Date(selectedDate.unix * 1000);
+				const currentDate = new Date();
 
-						timeRangeSelection.previous?.MINS
-					)
-				);
+				clickedDate.setHours(0, 0, 0, 0);
 
-				const toUnix = getUnixTime(
-					new Date(
-						selectedDate.year,
-						selectedMonth?.monthAsNumber,
-						selectedDate.date,
-						timeRangeSelection.next?.MER === 'PM' && timeRangeSelection.next?.HOURS < 12
-							? timeRangeSelection.next?.HOURS + 12
-							: calculateZeroHours(
-									timeRangeSelection.next?.HOURS,
-									timeRangeSelection.next?.MER
-								),
-						timeRangeSelection.next?.MINS
-					)
-				);
+				const fromUnix =
+					Number(Math.floor(clickedDate.getTime() / 1000)) + Number(startTime);
+
+				const toUnix =
+					clickedDate.toDateString() === currentDate.toDateString()
+						? getUnixTime(currentDate)
+						: Number(Math.floor(clickedDate.getTime() / 1000)) + Number(endTime);
+
 				onApply?.([fromUnix, toUnix], fixedRange, getDateRangeTag([fromUnix, toUnix]));
 				setOpenDatePicker(false);
+				setStartTime(0);
+				setEndTime(0);
+				setFixedTime(0);
+				setFixedTimeRange([0, 0]);
 				return;
 			}
 			const singleDateUnix = getUnixTime(
@@ -177,6 +194,10 @@ const DatePicker = (props) => {
 			);
 			onApply?.(singleDateUnix);
 			setOpenDatePicker(false);
+			setStartTime(0);
+			setEndTime(0);
+			setFixedTime(0);
+			setFixedTimeRange([0, 0]);
 		}
 	};
 
@@ -205,6 +226,8 @@ const DatePicker = (props) => {
 		displayMonthRight,
 		setDisplayMonthRight,
 		valueAsRange,
+		setFixedTime,
+		setFixedTimeRange,
 	};
 
 	let currentTime = getDayInfo(new Date());
@@ -299,7 +322,26 @@ const DatePicker = (props) => {
 						<div className={styles.right}>
 							<Dropdownv2
 								placeholder={selectedDayInfo.month}
-								className={styles.dropdown}>
+								className={styles.dropdown}
+								value={selectedMonth?.monthAsNumber ?? ''}
+								onChange={(_, newMonth) => {
+									setSelectedMonth({
+										...selectedMonth,
+										month: FULL_MONTHS_INDEX?.[Number(newMonth)]?.label,
+										monthAsNumber: Number(newMonth),
+									});
+									setDisplayMonthRight({
+										month:
+											Number(newMonth) === 11
+												? FULL_MONTHS_INDEX?.[0]?.label
+												: FULL_MONTHS_INDEX?.[Number(newMonth) + 1]?.label,
+										monthAsNumber: Number(newMonth) + 1,
+										year:
+											Number(newMonth) === 11
+												? Number(selectedMonth?.year) + 1
+												: Number(selectedMonth?.year),
+									});
+								}}>
 								{FULL_MONTHS_INDEX?.map(({ value, label }) => {
 									return (
 										<DropdownItemv2
@@ -316,10 +358,24 @@ const DatePicker = (props) => {
 									);
 								})}
 							</Dropdownv2>
-							<Dropdownv2 placeholder={selectedDayInfo.year}>
+							<Dropdownv2
+								value={selectedMonth?.year ?? ''}
+								onChange={(_, newYear) => {
+									setSelectedMonth({
+										...selectedMonth,
+										year: newYear,
+									});
+									setDisplayMonthRight({
+										...displayMonthRight,
+										year:
+											Number(selectedMonth?.monthAsNumber) === 11
+												? Number(newYear) + 1
+												: Number(newYear),
+									});
+								}}>
 								{Array.from(
-									{ length: selectedDayInfo.year - startingYear + 1 },
-									(_, i) => selectedDayInfo.year - i
+									{ length: selectedMonth?.year - startingYear + 1 },
+									(_, i) => selectedMonth?.year - i
 								)?.map((year) => {
 									return (
 										<DropdownItemv2
@@ -328,20 +384,43 @@ const DatePicker = (props) => {
 											key={year}
 											className={classes(
 												styles['dropdown-item'],
-												year === selectedDayInfo.year ? styles.selected : ''
+												year === selectedMonth?.year ? styles.selected : ''
 											)}
 										/>
 									);
 								})}
 							</Dropdownv2>
-							{showCustomRanges && (
-								<Dropdownv2 placeholder='Last 24 hours' className={styles.dropdown}>
-									{customRanges?.map((range) => {
+							{showCustomRanges && range && (
+								<Dropdownv2
+									placeholder='Select Custom Time'
+									value={selectedCustomRange ?? ''}
+									onChange={(_, customTime) => {
+										const [
+											dateRangeStartLabel,
+											dateRangeEndLabel,
+											dateRangeStartUnix,
+											dateRangeEndUnix,
+											customType,
+										] = customTime?.split(',');
+										setSelectedRange({
+											dates: [dateRangeStartLabel, dateRangeEndLabel],
+											unix: [dateRangeStartUnix, dateRangeEndUnix],
+										});
+										setSelectedCustomRange(
+											`${dateRangeStartLabel},${dateRangeEndLabel},${dateRangeStartUnix},${dateRangeEndUnix},${customType}`
+										);
+										setStartTime(0);
+										setEndTime(0);
+										setFixedTime(0);
+										setFixedTimeRange([0, 0]);
+									}}
+									className={styles.dropdown}>
+									{dateRanges(customRanges)?.map(({ dateRange, title }) => {
 										return (
 											<DropdownItemv2
-												title={range?.title}
-												value={range?.value}
-												key={range?.value}
+												title={title}
+												value={`${dateRange?.dates?.[0]},${dateRange?.dates?.[1]},${dateRange?.unix?.[0]},${dateRange?.unix?.[1]},${title}`}
+												key={title}
 												className={styles['dropdown-item']}
 											/>
 										);
@@ -356,7 +435,17 @@ const DatePicker = (props) => {
 						<div className={styles.left}>
 							<TextFieldv2
 								className={styles.input}
-								value={`Selected Date: ${displayValue}`}
+								value={
+									fixedTime === 0
+										? `Selected Date: ${displayValue}`
+										: `Selected Date: ${getDatePickerDisplayValue({
+												value: fixedTimeRange?.[0],
+												singlePicker: true,
+											})} - ${getDatePickerDisplayValue({
+												value: fixedTimeRange?.[1],
+												singlePicker: true,
+											})}`
+								}
 								disabled
 							/>
 						</div>
@@ -387,7 +476,10 @@ const DatePicker = (props) => {
 						</div>
 					</div>
 				}
-				className={styles.modal}
+				className={classes(
+					styles.modal,
+					!range && !valueAsRange ? styles['bottom-remove'] : ''
+				)}
 				open={open}
 				hideCrossDismiss
 				toggle={toggle}>
@@ -395,102 +487,175 @@ const DatePicker = (props) => {
 					<div className={styles.top}>
 						<Calender {...calenderProps} />
 					</div>
-					<div className={styles.bottom}>
-						<div className={styles['dropdown-selection']}>
-							<Dropdownv2
-								label='Start Time'
-								placeholder='00:00'
-								leftComponent={() => {
-									return <ClockIcon className={classes(styles.icon)} />;
-								}}
-								className={styles.dropdown}>
-								{['00:00', '00:30', '01:00', '01:30', '02:00']?.map((time) => {
+					<div
+						className={classes(
+							styles.bottom,
+							!range && !valueAsRange ? styles['bottom-remove'] : ''
+						)}>
+						{(range || (!range && valueAsRange)) && (
+							<div className={styles['dropdown-selection']}>
+								<Dropdownv2
+									label='Start Time'
+									placeholder='00:00'
+									value={startTime ?? 0}
+									leftComponent={() => {
+										return <ClockIcon className={classes(styles.icon)} />;
+									}}
+									onChange={(_, customTimeStart) => {
+										setFixedTime(0);
+										setFixedTimeRange([]);
+										setStartTime(customTimeStart);
+									}}
+									className={styles.dropdown}>
+									{timeRanges()?.map((time) => {
+										if (
+											!range &&
+											activeDate.toDateString() ===
+												currentDate.toDateString() &&
+											Number(time?.value) >
+												Number(currentDate.getHours()) * 3600 +
+													Number(currentDate.getMinutes()) * 60
+										) {
+											return;
+										}
+										return (
+											<DropdownItemv2
+												title={time?.label}
+												value={time?.value}
+												key={time?.value}
+												className={classes(
+													styles['dropdown-item'],
+													time?.value === startTime ? styles.selected : ''
+												)}
+											/>
+										);
+									})}
+								</Dropdownv2>
+								<Dropdownv2
+									label='End Time'
+									placeholder={
+										!range &&
+										activeDate.toDateString() === currentDate.toDateString()
+											? currentDate.getMinutes() < 10
+												? `${currentDate.getHours()} : 0${currentDate.getMinutes()}`
+												: `${currentDate.getHours()} : ${currentDate.getMinutes()}`
+											: '23:59'
+									}
+									value={endTime ?? 0}
+									leftComponent={() => {
+										return <ClockIcon className={classes(styles.icon)} />;
+									}}
+									disabled={
+										!range &&
+										activeDate.toDateString() === currentDate.toDateString()
+									}
+									onChange={(_, customTimeEnd) => {
+										setFixedTime(0);
+										setFixedTimeRange([]);
+										setEndTime(customTimeEnd);
+									}}
+									className={styles.dropdown}>
+									{timeRanges()?.map((time) => {
+										if (!range && Number(time?.value) <= Number(startTime)) {
+											return;
+										}
+										if (
+											!range &&
+											activeDate.toDateString() ===
+												currentDate.toDateString() &&
+											Number(time?.value) >
+												Number(currentDate.getHours()) * 3600 +
+													Number(currentDate.getMinutes()) * 60
+										) {
+											return;
+										}
+										if (
+											range &&
+											activeEndDate.toDateString() ===
+												currentDate.toDateString() &&
+											Number(time?.value) >
+												Number(currentDate.getHours()) * 3600 +
+													Number(currentDate.getMinutes()) * 60
+										) {
+											return;
+										}
+										return (
+											<DropdownItemv2
+												title={time?.label}
+												value={time?.value}
+												key={time?.value}
+												className={classes(
+													styles['dropdown-item'],
+													time?.value === endTime ? styles.selected : ''
+												)}
+											/>
+										);
+									})}
+								</Dropdownv2>
+							</div>
+						)}
+						{!range && valueAsRange && (
+							<div className={styles['fixed-selection']}>
+								{[
+									{
+										label: '1 hour',
+										value: 1,
+									},
+									{
+										label: '2 hour',
+										value: 2,
+									},
+									{
+										label: '5 hour',
+										value: 5,
+									},
+									{
+										label: '8 hour',
+										value: 8,
+									},
+									{
+										label: '11 hour',
+										value: 11,
+									},
+									{
+										label: '14 hour',
+										value: 14,
+									},
+									{
+										label: '17 hour',
+										value: 17,
+									},
+									{
+										label: '20 hour',
+										value: 20,
+									},
+									{
+										label: '24 hour',
+										value: 24,
+									},
+								]?.map((custom) => {
 									return (
-										<DropdownItemv2
-											title={time}
-											value={time}
-											key={time}
+										<Button
+											key={custom?.value}
+											title={custom?.label}
+											color='default'
+											variant='outlined'
 											className={classes(
-												styles['dropdown-item'],
-												time === '01:00' ? styles.selected : ''
+												styles.custom,
+												fixedTime === custom?.value ? styles.selected : ''
 											)}
+											onClick={() => {
+												setFixedTime(custom?.value);
+												const endUnix = getUnixTime(currentDate);
+												const startUnix =
+													Number(endUnix) - Number(custom.value) * 3600;
+												setFixedTimeRange([startUnix, endUnix]);
+											}}
 										/>
 									);
 								})}
-							</Dropdownv2>
-							<Dropdownv2
-								label='End Time'
-								placeholder='02:00'
-								leftComponent={() => {
-									return <ClockIcon className={classes(styles.icon)} />;
-								}}
-								className={styles.dropdown}>
-								{['00:00', '00:30', '01:00', '01:30', '02:00']?.map((time) => {
-									return (
-										<DropdownItemv2
-											title={time}
-											value={time}
-											key={time}
-											className={classes(
-												styles['dropdown-item'],
-												time === '02:00' ? styles.selected : ''
-											)}
-										/>
-									);
-								})}
-							</Dropdownv2>
-						</div>
-						<div className={styles['fixed-selection']}>
-							{[
-								{
-									label: '1 hour',
-									value: 1,
-								},
-								{
-									label: '2 hour',
-									value: 2,
-								},
-								{
-									label: '5 hour',
-									value: 5,
-								},
-								{
-									label: '8 hour',
-									value: 8,
-								},
-								{
-									label: '11 hour',
-									value: 11,
-								},
-								{
-									label: '14 hour',
-									value: 14,
-								},
-								{
-									label: '17 hour',
-									value: 17,
-								},
-								{
-									label: '20 hour',
-									value: 20,
-								},
-								{
-									label: '24 hour',
-									value: 24,
-								},
-							]?.map((custom) => {
-								return (
-									<Button
-										key={custom?.value}
-										title={custom?.label}
-										color='default'
-										variant='outlined'
-										className={styles.custom}
-										// onClick={onCancel}
-									/>
-								);
-							})}
-						</div>
+							</div>
+						)}
 					</div>
 				</div>
 			</BaseModal>
