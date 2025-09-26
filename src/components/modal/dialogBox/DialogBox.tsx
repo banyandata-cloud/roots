@@ -25,6 +25,7 @@ export interface DialogBoxProps {
 
 export interface DialogActionHandlers {
 	dismiss: () => void;
+	setNoDismissEnabled?: ((enabled: boolean) => void) | undefined;
 }
 
 export type DialogActionCallback = (handlers: DialogActionHandlers) => void;
@@ -41,7 +42,7 @@ export interface DialogOpenOptions {
 	customAction?: ComponentType<DialogActionHandlers> | null;
 	body?: ComponentType<{
 		dismiss: () => void;
-		setNoDismissEnabled: (enabled: boolean) => void;
+		setNoDismissEnabled?: (enabled: boolean) => void;
 	}> | null;
 	hideCancel?: boolean;
 	noDismiss?: boolean;
@@ -64,11 +65,18 @@ interface FooterInnerProps {
 	action: string;
 	cancel: string;
 	variant: ButtonColors;
-	customAction?: ComponentType<{ dismiss: () => void }> | null | undefined;
+	customAction?:
+		| ComponentType<{
+				dismiss: () => void;
+				setNoDismissEnabled?: ((enabled: boolean) => void) | undefined;
+		  }>
+		| null
+		| undefined;
 	setOpen: (open: boolean) => void;
 	hideCancel: boolean;
 	onAction?: DialogActionCallback | undefined;
 	onCancel?: (() => void) | undefined;
+	setNoDismissEnabled?: ((enabled: boolean) => void) | undefined;
 }
 
 const Footer: FC<FooterInnerProps> = ({
@@ -80,6 +88,7 @@ const Footer: FC<FooterInnerProps> = ({
 	hideCancel,
 	onAction,
 	onCancel,
+	setNoDismissEnabled,
 }) => {
 	return (
 		<div className={styles.footer}>
@@ -97,6 +106,7 @@ const Footer: FC<FooterInnerProps> = ({
 					dismiss={() => {
 						setOpen(false);
 					}}
+					setNoDismissEnabled={setNoDismissEnabled}
 				/>
 			)}
 
@@ -184,7 +194,7 @@ const DialogBox = forwardRef<DialogBoxHandle, DialogBoxProps>(
 			}
 		}, [dialogProps]);
 
-		const [dismissEnabled, setNoDismissEnabled] = useState(false);
+		const [dismissEnabled, setNoDismissEnabled] = useState<boolean>(false);
 		useEffect(() => {
 			setNoDismissEnabled(noDismiss);
 		}, [noDismiss]);
@@ -205,6 +215,7 @@ const DialogBox = forwardRef<DialogBoxHandle, DialogBoxProps>(
 						setOpen={setOpen}
 						hideCancel={hideCancel}
 						customAction={customAction}
+						setNoDismissEnabled={setNoDismissEnabled}
 						onAction={onAction ?? undefined}
 						onCancel={!hideCancel ? toggle : undefined}
 					/>
