@@ -1,57 +1,29 @@
-import {
-	forwardRef,
-	useEffect,
-	useImperativeHandle,
-	useState,
-	type ComponentType,
-	type FC,
-} from 'react';
+import { forwardRef, useEffect, useImperativeHandle, useState, type FC } from 'react';
 import { classes } from '../../../utils';
-import { Button, type ButtonColors } from '../../buttons';
+import { Button } from '../../buttons';
 import { Text } from '../../text';
 import BaseModal from '../BaseModal';
 import styles from './Dialog.module.css';
+import type {
+	DialogBoxHandle,
+	DialogBoxProps,
+	DialogOpenOptions,
+	DialogSize,
+	FooterInnerProps,
+} from './types';
 
-/* -------------------------------------------------------------------------- */
-/*                                    Types                                   */
-/* -------------------------------------------------------------------------- */
-
-export type DialogSize = 'sm' | 'md';
-
-export interface DialogBoxProps {
-	className?: string;
-	size?: DialogSize;
-}
-
-export interface DialogActionHandlers {
-	dismiss: () => void;
-	setNoDismissEnabled?: ((enabled: boolean) => void) | undefined;
-}
-
-export type DialogActionCallback = (handlers: DialogActionHandlers) => void;
-
-export interface DialogOpenOptions {
-	title?: string | null;
-	description?: string | null;
-	actionText?: string;
-	cancelText?: string;
-	variant?: ButtonColors;
-	onAction?: DialogActionCallback | null;
-	onCancel?: (() => void) | null;
-	size?: DialogSize;
-	customAction?: ComponentType<DialogActionHandlers> | null;
-	body?: ComponentType<{
-		dismiss: () => void;
-		setNoDismissEnabled?: (enabled: boolean) => void;
-	}> | null;
-	hideCancel?: boolean;
-	noDismiss?: boolean;
-	hideCrossDismiss?: boolean;
-}
-
-export interface DialogBoxHandle {
-	dialog: (options: DialogOpenOptions) => void;
-}
+const DIALOG_DEFAULTS: DialogOpenOptions = {
+	title: null,
+	description: null,
+	actionText: 'Done',
+	cancelText: 'Dismiss',
+	variant: 'primary',
+	onAction: null,
+	onCancel: null,
+	size: 'md',
+	customAction: null,
+	body: null,
+};
 
 const Header: FC<{ title?: string | null }> = ({ title }) => {
 	return (
@@ -60,24 +32,6 @@ const Header: FC<{ title?: string | null }> = ({ title }) => {
 		</Text>
 	);
 };
-
-interface FooterInnerProps {
-	action: string;
-	cancel: string;
-	variant: ButtonColors;
-	customAction?:
-		| ComponentType<{
-				dismiss: () => void;
-				setNoDismissEnabled?: ((enabled: boolean) => void) | undefined;
-		  }>
-		| null
-		| undefined;
-	setOpen: (open: boolean) => void;
-	hideCancel: boolean;
-	onAction?: DialogActionCallback | undefined;
-	onCancel?: (() => void) | undefined;
-	setNoDismissEnabled?: ((enabled: boolean) => void) | undefined;
-}
 
 const Footer: FC<FooterInnerProps> = ({
 	action,
@@ -128,25 +82,12 @@ const Footer: FC<FooterInnerProps> = ({
 	);
 };
 
-/* -------------------------------------------------------------------------- */
-/*                             Main Dialog component                           */
-/* -------------------------------------------------------------------------- */
-
 const DialogBox = forwardRef<DialogBoxHandle, DialogBoxProps>(
 	({ className = '', size: defaultSize = 'md' }, ref) => {
 		const [open, setOpen] = useState(false);
-		const [dialogProps, setDialogProps] = useState<DialogOpenOptions & { size?: DialogSize }>({
-			title: null,
-			description: null,
-			actionText: 'Done',
-			cancelText: 'Dismiss',
-			variant: 'primary',
-			onAction: null,
-			onCancel: null,
-			size: 'md',
-			customAction: null,
-			body: null,
-		});
+		const [dialogProps, setDialogProps] = useState<DialogOpenOptions & { size?: DialogSize }>(
+			DIALOG_DEFAULTS
+		);
 
 		const {
 			description,
@@ -169,6 +110,7 @@ const DialogBox = forwardRef<DialogBoxHandle, DialogBoxProps>(
 		const toggle = () => {
 			onCancel?.();
 			setOpen(false);
+			setDialogProps(DIALOG_DEFAULTS);
 		};
 
 		// function exposed through ref
@@ -187,7 +129,6 @@ const DialogBox = forwardRef<DialogBoxHandle, DialogBoxProps>(
 			};
 		});
 
-		// open modal when dialogProps are populated
 		useEffect(() => {
 			if (dialogProps.title && (dialogProps.description || dialogProps.body)) {
 				setOpen(true);
