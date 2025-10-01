@@ -37,7 +37,7 @@ interface BaseOptionData {
 	id: string;
 	title?: string;
 	placeholder?: string;
-	value?: string | number | boolean | Date | null;
+	value?: string | string[] | number | null;
 	className?: string;
 }
 
@@ -67,7 +67,7 @@ interface FilterOptionData extends BaseOptionData {
 interface ToggleOptionData extends BaseOptionData {
 	id: 'toggle';
 	options: ToggleOption[];
-	onChange?: (value: string | number | boolean) => void;
+	onChange?: (value: string | string[]) => void;
 }
 
 interface CustomOptionData extends BaseOptionData {
@@ -174,7 +174,7 @@ const generateOptions = ({
 					className={styles['expand-button']}
 					onClick={optionData.onClick}
 					leftComponent={() => {
-						return <MaximizeIcon v2 className={styles['expand-icon']} />;
+						return <MaximizeIcon className={styles['expand-icon']} />;
 					}}
 				/>
 			);
@@ -218,6 +218,8 @@ const generateOptions = ({
 					smooth
 					secondary={!header}
 					options={optionData.options}
+					value={optionData.value ?? null}
+					{...(optionData.onChange && { onChange: optionData.onChange })}
 				/>
 			);
 		}
