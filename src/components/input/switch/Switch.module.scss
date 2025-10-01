@@ -1,28 +1,28 @@
 @import '../../../styles';
 
 .root {
-	cursor: pointer;
-	gap: 0.625rem;
-	position: relative;
-	height: 1.5rem;
-	&.disabled {
-		cursor: default;
-	}
+	// cursor: pointer;
+	// gap: 0.625rem;
+	// position: relative;
+	// height: 1.5rem;
+	// &.disabled {
+	// 	cursor: default;
+	// }
 
-	&.position-left {
-		@include flex(row, flex-start);
-	}
-	&.position-right {
-		@include flex(row-reverse, flex-end);
-	}
+	// &.position-left {
+	// 	@include flex(row, flex-start);
+	// }
+	// &.position-right {
+	// 	@include flex(row-reverse, flex-end);
+	// }
 
-	input[type='checkbox'] {
-		opacity: 0;
-		z-index: 1;
-		position: absolute;
-		width: 1px;
-		height: 1px;
-	}
+	// input[type='checkbox'] {
+	// 	opacity: 0;
+	// 	z-index: 1;
+	// 	position: absolute;
+	// 	width: 1px;
+	// 	height: 1px;
+	// }
 
 	.pill {
 		position: relative;

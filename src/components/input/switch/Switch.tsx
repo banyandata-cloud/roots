@@ -51,12 +51,18 @@ const Switch: React.FC<SwitchProps> = (props) => {
 
 	const isChecked: boolean | undefined = isControlled ? checked : uncontrolledChecked;
 
+	const positionClass =
+		position === 'left'
+			? 'bn-flex-row bn-justify-start bn-items-center'
+			: 'bn-flex-row-reverse bn-justify-end bn-items-center';
+
 	return (
 		<label
 			className={classes(
 				styles.root,
-				styles[`position-${position}`],
-				disabled ? styles.disabled : '',
+				'bn-relative bn-cursor-pointer bn-gap-2 bn-h-6 bn-flex',
+				positionClass,
+				disabled ? 'bn-cursor-default' : '',
 				className
 			)}>
 			<input
@@ -64,6 +70,7 @@ const Switch: React.FC<SwitchProps> = (props) => {
 				type='checkbox'
 				checked={isChecked}
 				onChange={handleChange}
+				className='bn-absolute bn-w-[1px] bn-h-[1px] bn-opacity-0 bn-z-10'
 			/>
 			<div className={classes(styles.pill)} />
 			{label && <span data-elem='label'>{label}</span>}

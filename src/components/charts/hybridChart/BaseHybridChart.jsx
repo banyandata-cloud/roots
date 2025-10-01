@@ -15,7 +15,6 @@ import {
 	// SVGRenderer,
 } from 'echarts/renderers';
 
-import styles from './BaseHybridChart.module.css';
 import { classes } from '../../../utils';
 
 // Register the required components
@@ -88,7 +87,7 @@ const BaseHybridChart = (props) => {
 				},
 				data: Object.keys(chart.data ?? {})
 					.map((key) => {
-						return type === 'line' ? chart.data?.[key] ?? [] : chart.data?.[key]?.x1;
+						return type === 'line' ? (chart.data?.[key] ?? []) : chart.data?.[key]?.x1;
 					})
 					.flat(),
 			};
@@ -136,7 +135,7 @@ const BaseHybridChart = (props) => {
 			echarts={echarts}
 			notMerge
 			lazyUpdate
-			className={classes(styles.root, className)}
+			className={classes('bn-w-full', className)}
 			style={style}
 		/>
 	);

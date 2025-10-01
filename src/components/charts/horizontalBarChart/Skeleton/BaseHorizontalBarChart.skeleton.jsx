@@ -1,5 +1,4 @@
 import { Skeleton } from '../../../skeleton';
-import styles from './Skeleton.module.css';
 
 const BARS = [...Array(8).keys()].map(() => {
 	return Math.random() * 80 + 20;
@@ -7,7 +6,7 @@ const BARS = [...Array(8).keys()].map(() => {
 
 const ChartSkeleton = ({ theme, fallback }) => {
 	return (
-		<div className={styles.root}>
+		<div className='bn-flex bn-flex-col bn-justify-between bn-items-start bn-h-full bn-w-full bn-gap-4 bn-p-8'>
 			{BARS.map((bar) => {
 				return (
 					<Skeleton

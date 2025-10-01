@@ -1,24 +1,3 @@
-.root {
-  cursor: pointer;
-  gap: 10px;
-  color: var(--grey1);
-}
-.root.position-left {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-}
-.root.position-right {
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: flex-end;
-  align-items: center;
-}
-.root.disabled {
-  cursor: default;
-  color: var(--grey4);
-}
 .root.disabled .icon rect:nth-of-type(1) {
   stroke: var(--grey5);
   fill: var(--grey10);
@@ -32,38 +11,9 @@
 .root.selected {
   color: var(--text-color);
 }
-.root:hover:not(.disabled) {
-  color: var(--text-color);
-}
 .root:hover:not(.disabled) .icon rect:nth-of-type(1) {
   stroke: var(--primary-color4);
   fill: var(--background-color5);
-}
-.root input[type=radio] {
-  opacity: 0;
-  z-index: 1;
-  position: absolute;
-  width: 1px;
-  height: 1px;
-}
-.root .icon {
-  display: inline-block;
-  border-radius: 50%;
-}
-.root .icon.icon-sm {
-  width: 1rem;
-  height: 1rem;
-}
-.root .icon.icon-md {
-  width: 1.25rem;
-  height: 1.25rem;
-}
-.root .icon.icon-lg {
-  width: 1.5rem;
-  height: 2rem;
-}
-.root input:focus + .icon {
-  box-shadow: 0px 0px 0px 0.25rem rgba(15, 98, 254, 0.125);
 }
 .root [data-elem=label] {
   -webkit-user-select: none;

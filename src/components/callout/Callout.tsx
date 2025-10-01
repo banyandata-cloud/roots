@@ -2,8 +2,33 @@ import type { ReactElement, ReactNode } from 'react';
 import { forwardRef } from 'react';
 import { classes } from '../../utils/utils';
 import { AlertIcon } from '../icons';
-import styles from './Callout.module.css';
 import type { CalloutProps } from './types';
+
+const typeShadows: Record<string, { parent: string; icon: string }> = {
+	info: {
+		parent: 'bn-shadow-[0_0_0.125rem_0_rgba(0,0,0,0.25)]',
+		icon: 'bn-shadow-[0_0_0.4rem_0_rgba(0,128,255,0.25)]',
+	},
+	success: {
+		parent: 'bn-shadow-[0_0_0.125rem_0_rgba(0,0,0,0.25)]',
+		icon: 'bn-shadow-[0_0_0.4rem_0_rgba(0,128,0,0.25)]',
+	},
+	danger: {
+		parent: 'bn-shadow-[0_0_0.125rem_0_rgba(0,0,0,0.25)]',
+		icon: 'bn-shadow-[0_0_0.4rem_0_rgba(255,0,0,0.25)]',
+	},
+	error: {
+		parent: 'bn-shadow-[0_0_0.125rem_0_rgba(0,0,0,0.25)]',
+		icon: 'bn-shadow-[0_0_0.4rem_0_rgba(255,0,0,0.25)]',
+	},
+	warning: {
+		parent: 'bn-shadow-[0_0_0.125rem_0_rgba(0,0,0,0.25)]',
+		icon: 'bn-shadow-[0_0_0.4rem_0_rgba(255,165,0,0.25)]',
+	},
+};
+
+const shadowClass =
+	'bn-shadow-[0_0_0.0625rem_0_rgba(0,0,0,0.25)] bn-shadow-[0_0_0.25rem_0_rgba(0,0,0,0.25)] bn-shadow-[0_0_0.1875rem_0_rgba(0,0,0,0.25)]';
 
 const Callout = forwardRef<HTMLDivElement, CalloutProps>((props, ref): ReactElement | null => {
 	const {
@@ -14,29 +39,29 @@ const Callout = forwardRef<HTMLDivElement, CalloutProps>((props, ref): ReactElem
 		description,
 		icon: CustomIcon,
 		action: CustomAction,
-		type,
+		type = '',
 	} = props;
 
 	let Icon: ReactNode = null;
 
 	if (CustomIcon != null) {
-		Icon = <CustomIcon className={styles.icon} />;
+		Icon = <CustomIcon className='bn-w-6 bn-h-6' />;
 	} else {
 		switch (type) {
 			case 'info':
-				Icon = <AlertIcon.Info className={styles.icon} />;
+				Icon = <AlertIcon.Info className='bn-w-6 bn-h-6' />;
 				break;
 			case 'error':
-				Icon = <AlertIcon.Error className={styles.icon} />;
+				Icon = <AlertIcon.Error className='bn-w-6 bn-h-6' />;
 				break;
 			case 'warning':
-				Icon = <AlertIcon.Warning className={styles.icon} />;
+				Icon = <AlertIcon.Warning className='bn-w-6 bn-h-6' />;
 				break;
 			case 'success':
-				Icon = <AlertIcon.Success className={styles.icon} />;
+				Icon = <AlertIcon.Success className='bn-w-6 bn-h-6' />;
 				break;
 			case 'danger':
-				Icon = <AlertIcon.Danger className={styles.icon} />;
+				Icon = <AlertIcon.Danger className='bn-w-6 bn-h-6' />;
 				break;
 			default:
 				Icon = null;
@@ -46,25 +71,38 @@ const Callout = forwardRef<HTMLDivElement, CalloutProps>((props, ref): ReactElem
 	return (
 		<div
 			ref={ref}
-			className={classes(styles.root, styles[type], shadow && styles.shadow, className)}>
-			<div className={styles.left}>
-				<div className={classes(styles['icon-container'], styles[type])}>
+			className={classes(
+				'bn-flex bn-flex-row bn-justify-between bn-items-start bn-p-4 bn-w-full bn-bg-light-color3 bn-rounded-sm',
+				type ? typeShadows[type]?.parent : '',
+				shadow ? shadowClass : '',
+				className
+			)}>
+			<div className='bn-flex bn-flex-row bn-justify-start bn-items-start'>
+				<div
+					className={classes(
+						'bn-p-2 bn-w-10 bn-h-10 bn-rounded-[0.625rem] bn-bg-light-color3 bn-transition-shadow bn-duration-500',
+						type ? typeShadows[type]?.icon : ''
+					)}>
 					{showIcon && Icon}
 				</div>
-				<div className={styles.content}>
+				<div className='bn-flex bn-flex-col bn-justify-start bn-items-start bn-gap-1 bn-ml-5'>
 					{title && (
-						<span data-elem='title' className={styles.title}>
+						<span
+							data-elem='title'
+							className='bn-text-text-color bn-text-sm bn-font-semibold'>
 							{title}
 						</span>
 					)}
 					{description && (
-						<span data-elem='desc' className={styles.description}>
+						<span
+							data-elem='desc'
+							className='bn-text-text-color bn-text-sm bn-font-normal bn-break-words'>
 							{description}
 						</span>
 					)}
 				</div>
 			</div>
-			<div className={styles.actions}>{CustomAction && <CustomAction />}</div>
+			<div>{CustomAction && <CustomAction />}</div>
 		</div>
 	);
 });

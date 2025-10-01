@@ -64,14 +64,26 @@ const Radio: React.FC<RadioProps> = (props) => {
 	const CheckedIcon = RadioIcon.Checked as IconType;
 	const UncheckedIcon = RadioIcon.UnChecked as IconType;
 
+	const positionClass =
+		position === 'left'
+			? 'bn-flex bn-flex-row bn-justify-start bn-items-center'
+			: 'bn-flex bn-flex-row-reverse bn-justify-end bn-items-center';
+
+	const sizeClass =
+		size === 'sm' ? 'bn-w-4 bn-h-4' : size === 'md' ? 'bn-w-5 bn-h-5' : 'bn-w-6 bn-h-8';
+
 	return (
 		<label
 			className={classes(
 				styles.root,
-				styles[`position-${position}`],
-				disabled ? styles.disabled : '',
-				isChecked ? styles.selected : '',
-				className
+				'bn-cursor-pointer bn-gap-[0.625rem] bn-relative',
+				positionClass,
+				disabled
+					? 'bn-cursor-default bn-text-grey4'
+					: 'bn-text-grey1 hover:bn-text-text-color',
+				isChecked && !disabled ? 'bn-text-text-color' : '',
+				className,
+				disabled ? styles.disabled : ''
 			)}>
 			<input
 				disabled={disabled}
@@ -79,21 +91,32 @@ const Radio: React.FC<RadioProps> = (props) => {
 				// Preserve original pattern: always pass checked (undefined keeps it uncontrolled)
 				checked={isChecked}
 				onChange={handleChange}
+				className='bn-opacity-0 bn-w-[1px] bn-h-[1px] bn-z-10 bn-absolute bn-focus-visible:bn-ring bn-focus-visible:bn-ring-primary-color4 bn-focus-visible:bn-ring-opacity-25'
 			/>
 
 			{isChecked ? (
 				<CheckedIcon
 					data-elem='icon'
-					className={classes(styles[`icon-${size}`], styles.icon)}
+					className={classes(sizeClass, styles.icon, 'bn-inline-block bn-rounded-full')}
 				/>
 			) : (
 				<UncheckedIcon
 					data-elem='icon'
-					className={classes(styles[`icon-${size}`], styles.icon)}
+					className={classes(
+						styles[`icon-${size}`],
+						sizeClass,
+						'bn-inline-block bn-rounded-full',
+						sizeClass,
+						styles.icon
+					)}
 				/>
 			)}
 
-			{label && <span data-elem='label'>{label}</span>}
+			{label && (
+				<span data-elem='label' className='bn-select-none'>
+					{label}
+				</span>
+			)}
 		</label>
 	);
 };

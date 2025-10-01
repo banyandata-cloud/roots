@@ -1,18 +1,3 @@
-.root {
-  width: 100%;
-  height: 100%;
-  background: var(--grey6);
-  background-repeat: no-repeat;
-  background-size: cover;
-  display: inline-block;
-}
-.root.light-theme {
-  background-color: var(--skeleton);
-}
-.root.dark-theme {
-  background-color: var(--grey2);
-  opacity: 0.2;
-}
 .root.animated {
   animation-duration: 1.25s;
   animation-fill-mode: forwards;

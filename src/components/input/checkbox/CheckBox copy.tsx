@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { classes, inputHelper } from '../../../utils/utils';
 import { CheckboxIcon } from '../../icons';
+import styles from './CheckBox.module.css';
 import type { CheckboxProps, IconType } from './types';
 
 const getIcon = (checked?: boolean, intermediate?: boolean): IconType => {
@@ -25,13 +26,16 @@ const Checkbox: React.FC<CheckboxProps> = (props) => {
 		intermediate,
 	} = props;
 
+	// Track controlled/uncontrolled mode once on first render
 	const { current: isControlled } = useRef<boolean>(checked !== undefined);
 
+	// Uncontrolled state
 	const [uncontrolledChecked, setUncontrolledChecked] = useState<boolean | undefined>(
 		defaultChecked
 	);
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		// Prefer your helper if present; fall back to standard target.checked for type safety
 		const helperResult = (
 			inputHelper as unknown as (
 				e: React.ChangeEvent<HTMLInputElement>
@@ -49,39 +53,18 @@ const Checkbox: React.FC<CheckboxProps> = (props) => {
 	const isChecked: boolean | undefined = isControlled ? checked : uncontrolledChecked;
 	const Icon = getIcon(isChecked, intermediate);
 
-	const baseClasses = `
-  bn-cursor-pointer 
-  bn-gap-[10px] 
-  bn-text-mono-color1 
-  bn-inline-flex
-  ${!(disabled && !disabledAsChild) ? 'hover:bn-text-text-color hover:[&_svg>rect]:bn-fill-background-color5 hover:[&_svg>rect]:bn-stroke-secondary-color2 hover:[&_svg>path]:bn-stroke-secondary-color2' : ''}
-`;
-
-	const posClasses =
-		position === 'left'
-			? 'bn-flex-row bn-justify-start bn-items-center'
-			: 'bn-flex-row-reverse bn-justify-end bn-items-center';
-	const disabledClasses =
-		disabled && !disabledAsChild ? 'bn-cursor-default bn-text-mono-color2' : '';
-	const selectedClasses = isChecked ? 'bn-text-text-color' : '';
-
-	// Icon size mapping
-	const iconSizeClasses =
-		size === 'sm' ? 'bn-w-4 bn-h-4' : size === 'md' ? 'bn-w-5 bn-h-5' : 'bn-w-6 bn-h-6';
-
 	return (
 		<label
 			className={classes(
-				baseClasses,
-				posClasses,
-				disabledClasses,
-				selectedClasses,
+				styles.root,
+				styles[`position-${position}`],
+				disabled && !disabledAsChild ? styles.disabled : '',
+				isChecked ? styles.selected : '',
 				className
 			)}>
 			<input
 				disabled={disabled}
 				type='checkbox'
-				className='bn-opacity-0 bn-absolute bn-w-px bn-h-px bn-z-10 focus:bn-outline-none focus:[&+svg]:bn-shadow-[0_0_0_4px_rgba(15,98,254,0.125)]'
 				defaultChecked={defaultChecked}
 				{...(isControlled
 					? {
@@ -90,17 +73,8 @@ const Checkbox: React.FC<CheckboxProps> = (props) => {
 					: {})}
 				onChange={handleChange}
 			/>
-			<Icon
-				className={classes(
-					`bn-inline-block bn-rounded-[0.2rem] ${iconSizeClasses}`,
-					'bn-transition-colors '
-				)}
-			/>
-			{label && (
-				<span data-elem='label' className='bn-select-none'>
-					{label}
-				</span>
-			)}
+			<Icon className={classes(styles[`icon-${size}`], styles.icon)} />
+			{label && <span data-elem='label'>{label}</span>}
 		</label>
 	);
 };

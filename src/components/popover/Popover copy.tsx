@@ -12,7 +12,7 @@ import {
 import React, { useEffect, useLayoutEffect } from 'react';
 import { classes } from '../../utils';
 import { Popper } from '../popper';
-// import styles from './Popover.module.css';
+import styles from './Popover.module.css';
 
 export type Placement =
 	| 'top'
@@ -130,12 +130,6 @@ const Popover: React.FC<PopoverProps> = ({
 		reference(anchorEl as ReferenceType);
 	}, [anchorEl, reference]);
 
-	// Tailwind colors mapping
-	const themeClasses =
-		theme === 'dark'
-			? 'bn-bg-dark-grey bn-text-white bn-border-grey bn-shadow-lg'
-			: 'bn-bg-white bn-text-dark-grey bn-border-grey4 bn-shadow-lg';
-
 	return (
 		<Popper
 			open={open}
@@ -151,11 +145,7 @@ const Popover: React.FC<PopoverProps> = ({
 						top: y ?? 0,
 						left: x ?? 0,
 					},
-					className: classes(
-						'bn-p-2 bn-rounded bn-border-grey bn-z-10',
-						themeClasses,
-						className
-					),
+					className: classes(styles.root, styles[`${theme}-theme`], className),
 				})}>
 				{children}
 			</div>

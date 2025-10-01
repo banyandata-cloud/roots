@@ -18,7 +18,7 @@ import {
 	CanvasRenderer,
 	// SVGRenderer,
 } from 'echarts/renderers';
-import styles from './HeatMapChart.module.css';
+// import styles from './HeatMapChart.module.css';
 import { classes } from '../../../utils';
 import { Skeleton } from './Skeleton';
 import { COLORS } from '../../../styles';
@@ -133,13 +133,13 @@ const HeatMapChart = (props) => {
 										defaultColor !== ''
 											? defaultColor
 											: theme === 'dark'
-											? COLORS['dark-grey']
-											: COLORS.grey5,
+												? COLORS['dark-grey']
+												: COLORS.grey5,
 								},
 								emphasis: {
 									disabled: true,
 								},
-						  }
+							}
 						: {}),
 				});
 			}
@@ -224,7 +224,7 @@ const HeatMapChart = (props) => {
 			echarts={echarts}
 			notMerge
 			lazyUpdate
-			className={classes(styles.root, className)}
+			className={classes('bn-w-full', className)}
 			style={style}
 		/>
 	);

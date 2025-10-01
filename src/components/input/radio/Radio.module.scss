@@ -1,20 +1,20 @@
 @import '../../../styles';
 
 .root {
-	cursor: pointer;
-	gap: 10px;
-	color: $grey1;
+	// cursor: pointer;
+	// gap: 10px;
+	// color: $grey1;
 
-	&.position-left {
-		@include flex(row, flex-start);
-	}
-	&.position-right {
-		@include flex(row-reverse, flex-end);
-	}
+	// &.position-left {
+	// 	@include flex(row, flex-start);
+	// }
+	// &.position-right {
+	// 	@include flex(row-reverse, flex-end);
+	// }
 
 	&.disabled {
-		cursor: default;
-		color: $grey4;
+		// cursor: default;
+		// color: $grey4;
 		.icon {
 			rect {
 				&:nth-of-type(1) {
@@ -36,7 +36,7 @@
 	}
 
 	&:hover:not(.disabled) {
-		color: $text-color;
+		// color: $text-color;
 		.icon {
 			rect {
 				&:nth-of-type(1) {
@@ -47,41 +47,41 @@
 		}
 	}
 
-	input[type='radio'] {
-		opacity: 0;
-		z-index: 1;
-		position: absolute;
-		width: 1px;
-		height: 1px;
-	}
+	// input[type='radio'] {
+	// 	opacity: 0;
+	// 	z-index: 1;
+	// 	position: absolute;
+	// 	width: 1px;
+	// 	height: 1px;
+	// }
 
-	.icon {
-		display: inline-block;
-		border-radius: 50%;
-		&.icon-sm {
-			width: 1rem;
-			height: 1rem;
-		}
-		&.icon-md {
-			width: 1.25rem;
-			height: 1.25rem;
-		}
-		&.icon-lg {
-			width: 1.5rem;
-			height: 2rem;
-		}
-	}
+	// .icon {
+	// 	display: inline-block;
+	// 	border-radius: 50%;
+	// 	&.icon-sm {
+	// 		width: 1rem;
+	// 		height: 1rem;
+	// 	}
+	// 	&.icon-md {
+	// 		width: 1.25rem;
+	// 		height: 1.25rem;
+	// 	}
+	// 	&.icon-lg {
+	// 		width: 1.5rem;
+	// 		height: 2rem;
+	// 	}
+	// }
 
-	input {
-		&:focus {
-			+ .icon {
-				// border-radius: 50%;
-				box-shadow: 0px 0px 0px 0.25rem rgba(15, 98, 254, 0.125);
-			}
-		}
-	}
+	// input {
+	// 	&:focus {
+	// 		+ .icon {
+	// 			// border-radius: 50%;
+	// 			box-shadow: 0px 0px 0px 0.25rem rgba(15, 98, 254, 0.125);
+	// 		}
+	// 	}
+	// }
 
-	[data-elem='label'] {
-		user-select: none;
-	}
+	// [data-elem='label'] {
+	// 	user-select: none;
+	// }
 }

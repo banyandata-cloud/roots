@@ -1,21 +1,21 @@
 @import '../../styles';
 
 .root {
-	width: 100%;
-	height: 100%;
-	background: $grey6;
-	background-repeat: no-repeat;
-	background-size: cover;
-	display: inline-block;
+	// width: 100%;
+	// height: 100%;
+	// background: $grey6;
+	// background-repeat: no-repeat;
+	// background-size: cover;
+	// display: inline-block;
 
-	&.light-theme {
-		background-color: $skeleton;
-	}
+	// &.light-theme {
+	// 	background-color: $skeleton;
+	// }
 
-	&.dark-theme {
-		background-color: $grey2;
-		opacity: 0.2;
-	}
+	// &.dark-theme {
+	// 	background-color: $grey2;
+	// 	opacity: 0.2;
+	// }
 
 	&.animated {
 		&.light-theme {

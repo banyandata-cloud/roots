@@ -18,7 +18,6 @@ import {
 	CanvasRenderer,
 	// SVGRenderer,
 } from 'echarts/renderers';
-import styles from './BaseRegionChart.module.css';
 import { classes } from '../../../utils';
 
 // Register the required components
@@ -69,7 +68,7 @@ const BaseRegionChart = (props) => {
 			echarts={echarts}
 			notMerge
 			lazyUpdate
-			className={classes(styles.root, className)}
+			className={classes('bn-w-full', className)}
 			style={style}
 		/>
 	);

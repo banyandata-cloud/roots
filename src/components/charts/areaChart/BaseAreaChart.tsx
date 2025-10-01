@@ -13,7 +13,7 @@ import { CSSProperties } from 'react';
 import { COLORS } from '../../../styles';
 import { classes } from '../../../utils';
 import { AreaChartIcon, LineChartIcon } from '../../icons';
-import styles from './BaseAreaChart.module.css';
+// import styles from './BaseAreaChart.module.css';
 
 echarts.use([
 	TitleComponent,
@@ -138,13 +138,21 @@ const BaseAreaChart = ({
 }: BaseAreaChartProps) => {
 	if (isEmpty?.show) {
 		return (
-			<div className={classes(styles.empty, isEmpty?.className)}>
+			<div
+				className={classes(
+					'bn-flex bn-flex-row bn-items-center bn-justify-center bn-gap-4 bn-h-[90%]',
+					isEmpty?.className
+				)}>
 				<div className={styles.icon}>
 					{isEmpty?.type === 'line' ? <LineChartIcon /> : <AreaChartIcon />}
 				</div>
-				<div className={styles.text}>
-					<div className={styles.title}>{isEmpty?.title ?? 'No Data Found'}</div>
-					<div className={styles.description}>{isEmpty?.description}</div>
+				<div className='bn-flex bn-flex-col bn-items-start bn-gap-4'>
+					<div className='bn-font-poppins bn-text-[1.75rem] bn-font-semibold bn-leading-[1.875rem]'>
+						{isEmpty?.title ?? 'No Data Found'}
+					</div>
+					<div className='bn-font-poppins bn-text-[1.25rem] bn-font-normal bn-leading-[1.3125rem]'>
+						{isEmpty?.description}
+					</div>
 				</div>
 			</div>
 		);
@@ -253,8 +261,8 @@ const BaseAreaChart = ({
 								axisLabelColor !== ''
 									? axisLabelColor
 									: theme === 'dark'
-									? COLORS[`theme-${theme}-mono-color3`]
-									: COLORS.grey,
+										? COLORS[`theme-${theme}-mono-color3`]
+										: COLORS.grey,
 							...xAxisLabel,
 						},
 						splitLine: {
@@ -264,8 +272,8 @@ const BaseAreaChart = ({
 									axisSplitColor !== ''
 										? axisSplitColor
 										: theme === 'dark'
-										? COLORS['dark-grey']
-										: COLORS['mono-color2'],
+											? COLORS['dark-grey']
+											: COLORS['mono-color2'],
 								type: splitType,
 							},
 						},
@@ -300,8 +308,8 @@ const BaseAreaChart = ({
 								axisLabelColor !== ''
 									? axisLabelColor
 									: theme === 'dark'
-									? COLORS[`theme-${theme}-mono-color3`]
-									: COLORS.grey,
+										? COLORS[`theme-${theme}-mono-color3`]
+										: COLORS.grey,
 							...yAxisLabel,
 						},
 						splitLine: {
@@ -311,8 +319,8 @@ const BaseAreaChart = ({
 									axisSplitColor !== ''
 										? axisSplitColor
 										: theme === 'dark'
-										? COLORS['dark-grey']
-										: COLORS['mono-color2'],
+											? COLORS['dark-grey']
+											: COLORS['mono-color2'],
 								type: splitType,
 							},
 						},
@@ -344,7 +352,7 @@ const BaseAreaChart = ({
 			echarts={echarts}
 			notMerge
 			lazyUpdate
-			className={classes(styles.root, className)}
+			className={classes('bn-w-full', className)}
 			style={style}
 		/>
 	);

@@ -461,18 +461,24 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(props,
 		return null;
 	};
 
-	let content = <div data-elem='placeholder'>{placeholder}</div>;
+	let content = (
+		<div
+			data-elem='placeholder'
+			className='bn-text-text-color bn-truncate bn-overflow-hidden bn-whitespace-nowrap'>
+			{placeholder}
+		</div>
+	);
 
 	if (getValueToDisplay()) {
 		content = <span data-elem='value'>{getValueToDisplay()}</span>;
 	}
 
+	console.log('selectedOptions', selectedOptions);
 	return (
 		<div
 			className={classes(
+				'bn-flex bn-flex-col bn-justify-start bn-items-start bn-gap-2 bn-relative bn-w-fit bn-max-w-full',
 				styles.root,
-				open ? styles.open : '',
-				disabled || error ? styles.disabled : '',
 				className
 			)}>
 			{label && (
@@ -487,11 +493,13 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(props,
 				data-elem='header'
 				className={classes(
 					styles.header,
-					error ? styles.error : ' ',
-					open ? styles.open : '',
-					(Array.isArray(value) ? value.length > 0 : !!value) && highlightOnSelect
-						? styles.highlightOnSelect
-						: ''
+					'bn-flex bn-flex-row bn-justify-start bn-items-center bn-shadow-[0_0_2px_0_rgba(0,0,0,0.25)] bn-max-w-full bn-rounded-sm bn-relative',
+					error ? 'bn-border bn-border-primary-color1 bn-rounded-[0.3125rem]' : '',
+					open
+						? 'bn-outline bn-outline-[1px] bn-outline-secondary-color2 bn-transition-[outline] bn-duration-100 bn-ease-in-out'
+						: '',
+
+					className
 				)}
 				ref={reference}
 				{...getReferenceProps()}>
@@ -501,7 +509,10 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(props,
 					ref={inputElRef}
 					disabled={disabled}
 					tabIndex={0}
-					className={styles.input}
+					className={classes(
+						styles.input,
+						'peer bn-absolute bn-w-[1px] bn-h-[1px] bn-opacity-0'
+					)}
 					onKeyDown={(event) => {
 						const validKey = [' ', 'Spacebar', 'Enter'].includes(event.key);
 						if (validKey) setOpen(true);
@@ -520,11 +531,24 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(props,
 					role='button'
 					className={classes(
 						styles.select,
-						feedback != null ? styles[`feedback-${feedback.type}` as const] : ''
+						'bn-flex bn-flex-row bn-justify-between bn-items-center bn-w-[25rem] bn-max-w-full bn-gap-2 bn-outline-none bn-rounded-[0.3125rem] bn-py-3 bn-pr-3 bn-pl-4 bn-bg-light-color3 bn-cursor-pointer bn-font-medium bn-truncate',
+						(Array.isArray(value) ? value.length > 0 : !!value) && highlightOnSelect
+							? 'bn-bg-background-color5 bn-text-secondary-color2'
+							: '',
+						'bn-border bn-rounded p-2',
+						'peer-focus:bn-border-primary-color4',
+						feedback?.type === 'error'
+							? 'bn-border-primary-color1 peer-focus:bn-border-primary-color1'
+							: ''
 					)}>
 					{getLeftComponent()}
 					{content}
-					<div className={styles['icon-bundle']}>
+					<div
+						className={
+							styles[
+								'bn-flex bn-flex-row bn-justify-between bn-items-center bn-gap-4'
+							]
+						}>
 						{error && (
 							<Tooltip
 								content={error.toString()}
@@ -532,22 +556,39 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(props,
 								className={styles.tooltip}
 								variant='light'>
 								<span className={styles.span}>
-									<InfoIcon className={styles['info-icon']} />
+									<InfoIcon
+										className={
+											styles[
+												'bn-flex bn-flex-row bn-justify-between bn-items-center [&_path]:bn-stroke-primary-color1'
+											]
+										}
+									/>
 								</span>
 							</Tooltip>
 						)}
 						{caretAsUpDown ? (
 							<CaretIcon
 								className={classes(
-									styles['caret-icon-upDown'],
-									open ? styles.open : ''
+									'bn-w-[1.5rem] bn-h-[1.5rem] bn-transition-transform bn-flex bn-flex-row bn-justify-between bn-items-center bn-fill-transparent bn-rotate-[180deg] [&>path]:bn-stroke-text-color',
+									open ? 'bn-rotate-[0deg]' : '',
+									(Array.isArray(value) ? value.length > 0 : !!value) &&
+										highlightOnSelect
+										? 'bn-fill-transparent [&_path]:bn-stroke-secondary-color2 '
+										: ''
 								)}
 								upDown
 							/>
 						) : (
 							<CaretIcon
 								data-elem='icon'
-								className={classes(styles['caret-icon'], open ? styles.open : '')}
+								className={classes(
+									'bn-w-[1.5rem] bn-h-[1.5rem] bn-transition-transform bn-fill-text-color bn-flex bn-flex-row bn-justify-between bn-items-center bn-rotate-[180deg]',
+									(Array.isArray(value) ? value.length > 0 : !!value) &&
+										highlightOnSelect
+										? 'bn-fill-secondary-color2'
+										: '',
+									open ? styles.open : ''
+								)}
 							/>
 						)}
 					</div>
@@ -576,7 +617,9 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(props,
 								} as React.CSSProperties,
 								className: classes(
 									styles.body,
+									'bn-hidden bn-absolute bn-top-[calc(100%+0.5rem)] bn-bg-light-color3 bn-w-auto bn-rounded-[0.3125rem] bn-py-5 bn-overflow-y-auto bn-min-h-[4rem] bn-max-h-[25rem] bn-outline-none bn-shadow-[0_0_4px_0_rgba(0,0,0,0.25)] [&::-webkit-scrollbar]:bn-hidden [-ms-overflow-style:none] [scrollbar-width:none]',
 									styles.open,
+
 									multi ? styles.multi : '',
 									popperClassName
 								),
@@ -592,16 +635,25 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(props,
 							{multi && (
 								<li
 									ref={multiOptionsRef}
-									className={styles['multi-options']}
+									className={classes(
+										styles['multi-options'],
+										'bn-flex bn-flex-row bn-justify-between bn-items-center bn-sticky bn-top-0 bn-bg-light-color3 bn-py-1 bn-px-5 bn-list-none'
+									)}
 									tabIndex={-1}>
 									<Button
-										className={styles.button}
+										className={classes(styles.button)}
 										blurOnClick={false}
 										title='Select All'
 										variant='contained'
 										type='button'
 										leftComponent={() => {
-											return <SelectAllIcon className={styles.icon} />;
+											return (
+												<SelectAllIcon
+													className={classes(
+														'bn-w-[1.5rem] bn-h-[1.5rem] bn-transition-transform bn-fill-text-color'
+													)}
+												/>
+											);
 										}}
 										onClick={(event) => {
 											event.stopPropagation();
@@ -610,7 +662,12 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(props,
 										}}
 									/>
 									{selectedOptions.length > 0 && (
-										<span className={styles.items}>{selectedItemsLabel}</span>
+										<span
+											className={
+												'bn-text-text-color bn-font-medium bn-text-sm' //styles.item
+											}>
+											{selectedItemsLabel}
+										</span>
 									)}
 								</li>
 							)}
@@ -618,9 +675,16 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(props,
 							{items}
 
 							{multi && (
-								<div className={styles.footer}>
+								<div
+									className={classes(
+										styles.footer,
+										'bn-flex bn-flex-row bn-justify-between bn-items-center bn-gap-4 bn-list-none bn-sticky bn-bottom-0  bn-bg-light-color3 bn-px-4 bn-pb-4'
+									)}>
 									<Button
-										className={styles['multi-clear']}
+										className={classes(
+											styles['multi-clear'],
+											'bn-flex-1 bn-bg-light-color2 bn-text-mono-color1 hover:bn-bg-light-color1 '
+										)}
 										blurOnClick={false}
 										title='Clear'
 										size='auto'
@@ -632,7 +696,7 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(props,
 										}}
 									/>
 									<Button
-										className={styles['multi-apply']}
+										className={classes(styles['multi-apply'], 'bn-flex-1')}
 										title={
 											selectedOptions.length === 0
 												? 'Apply'

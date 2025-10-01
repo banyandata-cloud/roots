@@ -16,7 +16,6 @@ import {
 	CanvasRenderer,
 	// SVGRenderer,
 } from 'echarts/renderers';
-import styles from './NestedPieChart.module.css';
 import { classes } from '../../../utils';
 import { Skeleton } from '../pieChart/Skeleton';
 import { COLORS } from '../../../styles';
@@ -91,7 +90,7 @@ const NestedPieChart = (props) => {
 				...objectData,
 				startAngle: objectData?.semiDoughnut ? 180 : objectData?.startAngle,
 				data:
-					objectData?.complete ?? 0
+					(objectData?.complete ?? 0)
 						? [
 								...Object.keys(objectData?.seriesData?.chartData ?? {}).map(
 									(key, subIndex) => {
@@ -137,9 +136,9 @@ const NestedPieChart = (props) => {
 											tooltip: {
 												show: false,
 											},
-									  }
+										}
 									: {},
-						  ]
+							]
 						: [
 								...Object.keys(objectData?.seriesData?.chartData ?? {}).map(
 									(key, subIndex) => {
@@ -173,9 +172,9 @@ const NestedPieChart = (props) => {
 											tooltip: {
 												show: false,
 											},
-									  }
+										}
 									: {},
-						  ],
+							],
 			};
 		});
 	};
@@ -198,7 +197,7 @@ const NestedPieChart = (props) => {
 			echarts={echarts}
 			notMerge
 			lazyUpdate
-			className={classes(styles.root, className)}
+			className={classes('bn-w-full', className)}
 			style={style}
 		/>
 	);

@@ -12,7 +12,7 @@ import PropTypes from 'prop-types';
 // Import renderer, note that introducing the CanvasRenderer or SVGRenderer is a required step
 import { CanvasRenderer } from 'echarts/renderers';
 import { classes } from '../../../utils';
-import styles from './BaseHorizontalBarChart.module.css';
+// import styles from './BaseHorizontalBarChart.module.css';
 import { Skeleton } from './Skeleton';
 
 // Register the required components
@@ -94,15 +94,15 @@ const BaseHorizontalBarChart = (props) => {
 			borderRadius: [0, 2, 2, 0],
 		},
 		name: sort
-			? sortedSeriesData?.metaData?.keyData?.x1 ?? ''
-			: seriesData?.metaData?.keyData?.x1 ?? '',
+			? (sortedSeriesData?.metaData?.keyData?.x1 ?? '')
+			: (seriesData?.metaData?.keyData?.x1 ?? ''),
 		data: sort
 			? Object.keys(sortedSeriesData?.chartData ?? {}).map((key) => {
 					return sortedSeriesData?.chartData?.[key]?.x1 ?? '';
-			  })
+				})
 			: Object.keys(seriesData?.chartData ?? {}).map((key) => {
 					return seriesData?.chartData?.[key]?.x1 ?? '';
-			  }),
+				}),
 	};
 
 	const calcHeight = (barVal) => {
@@ -158,10 +158,10 @@ const BaseHorizontalBarChart = (props) => {
 																] ??
 																	'') ||
 																	(objectData?.color ?? ''))
-														  )
+															)
 														: (objectData?.barColor?.[subIndex] ??
 																'') ||
-														  (objectData?.color ?? ''),
+															(objectData?.color ?? ''),
 											},
 											tooltip: {
 												...(seriesOption[subIndex]?.tooltip ?? {}),
@@ -169,7 +169,7 @@ const BaseHorizontalBarChart = (props) => {
 										};
 									}
 								),
-						  ]
+							]
 						: Object.keys(sortedSeriesData?.chartData ?? {}).map((key, subIndex) => {
 								return {
 									value: minBarHeight
@@ -177,9 +177,9 @@ const BaseHorizontalBarChart = (props) => {
 												sortedSeriesData?.chartData?.[key]?.[
 													`x${index + 1}`
 												] ?? 0
-										  )
-										: sortedSeriesData?.chartData?.[key]?.[`x${index + 1}`] ??
-										  0,
+											)
+										: (sortedSeriesData?.chartData?.[key]?.[`x${index + 1}`] ??
+											0),
 									itemStyle: {
 										color:
 											typeof (objectData?.color ?? '' ?? {}) !== 'string'
@@ -187,42 +187,67 @@ const BaseHorizontalBarChart = (props) => {
 														...((objectData?.barColor?.[subIndex] ??
 															'') ||
 															(objectData?.color ?? ''))
-												  )
+													)
 												: (objectData?.barColor?.[subIndex] ?? '') ||
-												  (objectData?.color ?? ''),
+													(objectData?.color ?? ''),
 										borderRadius:
 											// eslint-disable-next-line no-nested-ternary
 											index === 0
 												? (sortedSeriesData?.chartData?.[key]?.[
 														`x${index + 2}`
-												  ] ?? 0) === 0
+													] ?? 0) === 0
 													? [5, 5, 5, 5]
 													: [5, 0, 0, 5]
 												: (sortedSeriesData?.chartData?.[key]?.[
-														`x${index}`
-												  ] ?? 0) === 0
-												? [5, 5, 5, 5]
-												: [0, 5, 5, 0],
+															`x${index}`
+													  ] ?? 0) === 0
+													? [5, 5, 5, 5]
+													: [0, 5, 5, 0],
 									},
 									tooltip: {
 										...(seriesOption[subIndex]?.tooltip ?? {}),
 									},
 								};
-						  })
+							})
 					: seriesOption?.[index]?.maxvalueStyle?.value
-					? [
-							{
-								...seriesOption?.[index]?.maxvalueStyle,
-								emphasis: {
-									disabled: true,
+						? [
+								{
+									...seriesOption?.[index]?.maxvalueStyle,
+									emphasis: {
+										disabled: true,
+									},
+									tooltip: {
+										show: false,
+									},
 								},
-								tooltip: {
-									show: false,
-								},
-							},
-							...Object.keys(seriesData?.chartData ?? {}).map((key, subIndex) => {
+								...Object.keys(seriesData?.chartData ?? {}).map((key, subIndex) => {
+									return {
+										value:
+											seriesData?.chartData?.[key]?.[`x${index + 1}`] ?? '',
+										itemStyle: {
+											color:
+												typeof (objectData?.color ?? '' ?? {}) !== 'string'
+													? new echarts.graphic.LinearGradient(
+															...((objectData?.barColor?.[subIndex] ??
+																'') ||
+																(objectData?.color ?? ''))
+														)
+													: (objectData?.barColor?.[subIndex] ?? '') ||
+														(objectData?.color ?? ''),
+										},
+										tooltip: {
+											...(seriesOption[subIndex]?.tooltip ?? {}),
+										},
+									};
+								}),
+							]
+						: Object.keys(seriesData?.chartData ?? {}).map((key, subIndex) => {
 								return {
-									value: seriesData?.chartData?.[key]?.[`x${index + 1}`] ?? '',
+									value: minBarHeight
+										? calcHeight(
+												seriesData?.chartData?.[key]?.[`x${index + 1}`] ?? 0
+											)
+										: (seriesData?.chartData?.[key]?.[`x${index + 1}`] ?? 0),
 									itemStyle: {
 										color:
 											typeof (objectData?.color ?? '' ?? {}) !== 'string'
@@ -230,38 +255,15 @@ const BaseHorizontalBarChart = (props) => {
 														...((objectData?.barColor?.[subIndex] ??
 															'') ||
 															(objectData?.color ?? ''))
-												  )
+													)
 												: (objectData?.barColor?.[subIndex] ?? '') ||
-												  (objectData?.color ?? ''),
+													(objectData?.color ?? ''),
 									},
 									tooltip: {
 										...(seriesOption[subIndex]?.tooltip ?? {}),
 									},
 								};
 							}),
-					  ]
-					: Object.keys(seriesData?.chartData ?? {}).map((key, subIndex) => {
-							return {
-								value: minBarHeight
-									? calcHeight(
-											seriesData?.chartData?.[key]?.[`x${index + 1}`] ?? 0
-									  )
-									: seriesData?.chartData?.[key]?.[`x${index + 1}`] ?? 0,
-								itemStyle: {
-									color:
-										typeof (objectData?.color ?? '' ?? {}) !== 'string'
-											? new echarts.graphic.LinearGradient(
-													...((objectData?.barColor?.[subIndex] ?? '') ||
-														(objectData?.color ?? ''))
-											  )
-											: (objectData?.barColor?.[subIndex] ?? '') ||
-											  (objectData?.color ?? ''),
-								},
-								tooltip: {
-									...(seriesOption[subIndex]?.tooltip ?? {}),
-								},
-							};
-					  }),
 			};
 		});
 	};
@@ -311,7 +313,7 @@ const BaseHorizontalBarChart = (props) => {
 			echarts={echarts}
 			notMerge
 			lazyUpdate
-			className={classes(styles.root, className)}
+			className={classes('bn-w-full', className)}
 			style={style}
 		/>
 	);

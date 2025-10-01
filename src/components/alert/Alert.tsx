@@ -6,7 +6,7 @@ import { classes } from '../../utils/utils';
 import { Button } from '../buttons';
 import { AlertIcon, CrossIcon } from '../icons';
 import Popper from '../popper/Popper';
-import styles from './Alert.module.css';
+// import styles from './Alert.module.css';
 import type { AlertConfig, AlertHandle, AlertProps } from './types';
 
 const ALERT_DISMISS_TIME = 2000;
@@ -22,18 +22,18 @@ const ANIMATION = {
 	},
 };
 
-/**
- * Renders an alert message with optional icon, title, description, and action button.
- *
- * @param {Object} props - The props object containing the following properties:
- *   - showIcon (boolean): Determines whether to show the alert icon.
- *   - border (string): Specifies the border style of the alert.
- *   - shadow (boolean): Determines whether to apply a shadow effect to the alert.
- *   - position (string): Specifies the position of the alert on the screen.
- *   - animation (boolean): Determines whether to apply the animation effect.
- * @param {Ref} ref - The ref object used to expose the 'alert' function to the parent component.
- * @returns {JSX.Element} - The rendered alert component.
- */
+// Tailwind Classes
+const ROOT_CLASSES =
+	'bn-flex bn-flex-row bn-justify-between bn-items-start bn-fixed bn-p-4 bn-w-[37.5rem] bn-rounded bn-opacity-100';
+const ICON_CONTAINER_CLASSES =
+	'bn-flex bn-items-center bn-justify-center bn-w-10 bn-h-10 bn-rounded-lg bn-bg-light-color3';
+const CONTENT_CLASSES = 'bn-flex bn-flex-col bn-items-start bn-gap-1 bn-ml-5';
+const TITLE_CLASSES = 'bn-text-text-color bn-text-base bn-font-semibold';
+const DESCRIPTION_CLASSES =
+	'bn-text-text-color bn-text-base bn-font-normal bn-leading-[1.3125rem] bn-break-words';
+const ACTIONS_CLASSES = 'bn-flex bn-flex-row bn-gap-1';
+const CLOSE_ICON_CLASSES = 'bn-w-5 bn-h-5 bn-fill-text-color';
+const BUTTON_CLOSE_CLASSES = 'bn-h-auto';
 
 const Alert: ForwardRefRenderFunction<AlertHandle, AlertProps> = (
 	{
@@ -54,11 +54,7 @@ const Alert: ForwardRefRenderFunction<AlertHandle, AlertProps> = (
 		type: 'info',
 		action: undefined,
 		position: undefined,
-		onClose: () => {
-			setOpen((prev) => {
-				return !prev;
-			});
-		},
+		onClose: () => setOpen((prev) => !prev),
 		autoDismiss: true,
 		dismissTime: ALERT_DISMISS_TIME,
 	});
@@ -78,24 +74,24 @@ const Alert: ForwardRefRenderFunction<AlertHandle, AlertProps> = (
 	const position = appliedPosition ?? defaultPosition;
 
 	let Icon: ReactNode = null;
-	if (CustomIcon != null) {
-		Icon = <CustomIcon className={styles.icon ?? ''} />;
+	if (CustomIcon) {
+		Icon = <CustomIcon className='bn-w-6 bn-h-6' />;
 	} else {
 		switch (type) {
 			case 'info':
-				Icon = <AlertIcon.Info className={styles.icon} />;
+				Icon = <AlertIcon.Info className='bn-w-6 bn-h-6' />;
 				break;
 			case 'error':
-				Icon = <AlertIcon.Error className={styles.icon} />;
+				Icon = <AlertIcon.Error className='bn-w-6 bn-h-6' />;
 				break;
 			case 'warning':
-				Icon = <AlertIcon.Warning className={styles.icon} />;
+				Icon = <AlertIcon.Warning className='bn-w-6 bn-h-6' />;
 				break;
 			case 'success':
-				Icon = <AlertIcon.Success className={styles.icon} />;
+				Icon = <AlertIcon.Success className='bn-w-6 bn-h-6' />;
 				break;
 			case 'danger':
-				Icon = <AlertIcon.Danger className={styles.icon} />;
+				Icon = <AlertIcon.Danger className='bn-w-6 bn-h-6' />;
 				break;
 			default:
 				Icon = null;
@@ -109,26 +105,13 @@ const Alert: ForwardRefRenderFunction<AlertHandle, AlertProps> = (
 	const [scope, animate] = useAnimate();
 
 	const alert = (appliedAlertProps: Partial<AlertConfig>) => {
-		setAlertProps((prev) => {
-			return {
-				...prev,
-				...appliedAlertProps,
-			};
-		});
+		setAlertProps((prev) => ({ ...prev, ...appliedAlertProps }));
 	};
 
-	useImperativeHandle(ref, () => {
-		return {
-			alert,
-		};
-	});
+	useImperativeHandle(ref, () => ({ alert }));
 
 	useEffect(() => {
-		if (alertProps.title) {
-			setOpen((prev) => {
-				return !prev;
-			});
-		}
+		if (alertProps.title) setOpen((prev) => !prev);
 	}, [alertProps]);
 
 	useEffect(() => {
@@ -143,43 +126,61 @@ const Alert: ForwardRefRenderFunction<AlertHandle, AlertProps> = (
 
 	useEffect(() => {
 		if (alertProps.title && autoDismiss) {
-			const timer = setTimeout(() => {
-				setOpen(false);
-			}, dismissTime);
-
-			return () => {
-				clearTimeout(timer);
-			};
+			const timer = setTimeout(() => setOpen(false), dismissTime);
+			return () => clearTimeout(timer);
 		}
 		return undefined;
 	}, [alertProps, autoDismiss, dismissTime]);
 
 	const { getFloatingProps } = useInteractions([useDismiss(context)]);
 
+	const typeBg = {
+		info: 'bn-bg-[#e6edff]',
+		error: 'bn-bg-[#ffebec]',
+		danger: 'bn-bg-[#ffebec]',
+		success: 'bn-bg-[#edffed]',
+		warning: 'bn-bg-[#fff6d4]',
+	}[type];
+
+	const positionClasses = {
+		'bottom-center': 'bn-left-1/2 bn-bottom-4 bn--translate-x-1/2',
+		'top-center': 'bn-left-1/2 bn-top-4 bn--translate-x-1/2',
+		'top-right': 'bn-right-4 bn-top-4',
+		'bottom-right': 'bn-right-4 bn-bottom-4',
+	}[position];
+
+	const iconShadow = {
+		info: 'bn-shadow-[0_0_0.6rem_0_#0f62fe]',
+		error: 'bn-shadow-[0_0_0.6rem_0_#bd3c45]',
+		danger: 'bn-shadow-[0_0_0.6rem_0_#bd3c45]',
+		success: 'bn-shadow-[0_0_0.6rem_0_#487349]',
+		warning: 'bn-shadow-[0_0_0.6rem_0_#cba006]',
+	}[type];
+
 	return (
-		<Popper open={open} className={styles.popper} wrapperId='alert-popper' lockScroll={false}>
+		<Popper open={open} wrapperId='alert-popper' lockScroll={false}>
 			<div
 				{...getFloatingProps({
 					ref: floating,
 					className: classes(
-						styles.root,
-						styles[type],
-						shadow ? styles.shadow : '',
-						styles[`position-${position}`],
+						ROOT_CLASSES,
+						type ? typeBg : 'bn-bg-light-color3',
+						shadow ? 'bn-shadow-[0_0_0.5rem_0_rgba(0,0,0,0.25)]' : '',
+						positionClasses,
 						className
 					),
 				})}
 				ref={scope}>
-				<div className={styles.left}>
-					<div className={classes(styles['icon-container'], styles[type])}>
+				<div className={classes('bn-flex bn-flex-row bn-items-start')}>
+					<div className={classes(ICON_CONTAINER_CLASSES, iconShadow)}>
 						{showIcon && Icon}
 					</div>
-					<div className={styles.content}>
-						<span className={styles.title}>{title}</span>
-						<span className={styles.description}>{description}</span>
+					<div className={CONTENT_CLASSES}>
+						<span className={TITLE_CLASSES}>{title}</span>
+						<span className={DESCRIPTION_CLASSES}>{description}</span>
 					</div>
 				</div>
-				<div className={styles.actions}>
+				<div className={ACTIONS_CLASSES}>
 					{CustomAction && <CustomAction />}
 					{onClose && !autoDismiss && (
 						<Button
@@ -190,10 +191,8 @@ const Alert: ForwardRefRenderFunction<AlertHandle, AlertProps> = (
 								onClose();
 								setOpen(false);
 							}}
-							className={styles.close}
-							leftComponent={() => {
-								return <CrossIcon className={styles.icon} />;
-							}}
+							className={BUTTON_CLOSE_CLASSES}
+							leftComponent={() => <CrossIcon className={CLOSE_ICON_CLASSES} />}
 						/>
 					)}
 				</div>

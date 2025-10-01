@@ -80,13 +80,21 @@ const BasePieChart = (props) => {
 
 	if (isEmpty?.show) {
 		return (
-			<div className={classes(styles.empty, isEmpty?.className)}>
+			<div
+				className={classes(
+					'bn-flex bn-flex-row bn-justify-center bn-items-center bn-gap-4 bn-h-[90%]',
+					isEmpty?.className
+				)}>
 				<div className={styles.icon}>
 					<PieChartIcon />
 				</div>
-				<div className={styles.text}>
-					<div className={styles.title}>{isEmpty?.title ?? 'No Data Found'}</div>
-					<div className={styles.description}>{isEmpty?.description}</div>
+				<div className='bn-flex bn-flex-col bn-justify-start bn-items-start bn-gap-4'>
+					<div className='bn-font-poppins bn-text-[1.75rem] bn-font-semibold bn-leading-[1.875rem]'>
+						{isEmpty?.title ?? 'No Data Found'}
+					</div>
+					<div className='bn-font-poppins bn-text-[1.25rem] bn-font-normal bn-leading-[1.3125rem]'>
+						{isEmpty?.description}
+					</div>
 				</div>
 			</div>
 		);
@@ -154,7 +162,7 @@ const BasePieChart = (props) => {
 								show: false,
 							},
 						},
-				  ]
+					]
 				: Object.keys(seriesData?.chartData ?? {}).map((key, subIndex) => {
 						return {
 							value: seriesData?.chartData?.[key],
@@ -172,7 +180,7 @@ const BasePieChart = (props) => {
 								...seriesOption?.[subIndex]?.emphasis,
 							},
 						};
-				  }),
+					}),
 		};
 	};
 
@@ -204,7 +212,7 @@ const BasePieChart = (props) => {
 			echarts={echarts}
 			notMerge
 			lazyUpdate
-			className={classes(styles.root, className)}
+			className={classes('bn-w-full', className)}
 			onChartReady={onChartReady}
 			style={style}
 		/>

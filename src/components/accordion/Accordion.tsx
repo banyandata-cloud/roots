@@ -4,7 +4,7 @@ import { classes } from '../../utils';
 import { Button } from '../buttons';
 import { BaseCell } from '../cell';
 import { CaretIcon, ExpandArrowAltIcon } from '../icons';
-import styles from './Accordion.module.css';
+// import styles from './Accordion.module.css';
 import type { AccordionProps } from './types';
 
 /**
@@ -37,15 +37,27 @@ export function Accordion(props: AccordionProps) {
 
 	const isOpen = isControlled ? open : uncontrolledOpen;
 
+	const baseCellClasses = classes(
+		'bn-flex bn-flex-row bn-items-start bn-gap-2 bn-px-4 bn-py-4 bn-cursor-pointer bn-border-none bn-bg-white',
+		'hover:bn-bg-background-color4',
+		'[&>[data-elem="component3"]]:bn-ml-auto',
+		'[&:hover>[data-elem="component1"]>svg]:bn-fill-secondary-color1',
+		'[&:hover>[data-elem="component3"]>svg]:bn-fill-secondary-color1',
+		'[&:hover>[data-elem="component2"]>span]:bn-text-secondary-color1'
+	);
+
 	return (
 		<div
-			className={classes(styles.root, isOpen ? styles.open : '', className)}
+			className={classes(
+				'bn-flex bn-flex-col bn-justify-start bn-items-stretch bn-w-full',
+				className
+			)}
 			data-state-open={isOpen}>
 			<BaseCell
 				flexible
 				size='auto'
 				RootDOM='button'
-				className={styles.header}
+				className={baseCellClasses}
 				attrs={{
 					onClick: () => {
 						if (isControlled) {
@@ -59,9 +71,24 @@ export function Accordion(props: AccordionProps) {
 						}
 					},
 				}}
-				component1={LeftComponent && <LeftComponent />}
-				component2={<span className={styles.title}>{title}</span>}
-				component3={RightComponent && <RightComponent />}
+				component1={
+					LeftComponent && (
+						<LeftComponent
+							className={classes(
+								' bn-w-6 bn-h-6 bn-fill-text-color bn-transition-transform bn-duration-300 bn-ease-in-out',
+								isOpen ? 'bn-rotate-0' : 'bn-rotate-90'
+							)}
+						/>
+					)
+				}
+				component2={
+					<span className='bn-flex-1 bn-select-none bn-text-text-color '>{title}</span>
+				}
+				component3={
+					RightComponent && (
+						<RightComponent className='bn-w-6 bn-h-6 bn-fill-text-color ' />
+					)
+				}
 			/>
 
 			{isOpen && (
@@ -76,7 +103,7 @@ export function Accordion(props: AccordionProps) {
 						duration: 0.2,
 					}}
 					data-elem='body'
-					className={styles.body}>
+					className='bn-flex bn-flex-col bn-items-start bn-px-10 bn-py-2 bn-w-full'>
 					{description && <p>{description}</p>}
 					{children}
 					{onExpand && (
@@ -86,7 +113,7 @@ export function Accordion(props: AccordionProps) {
 							onClick={() => {
 								onExpand();
 							}}
-							title={<ExpandArrowAltIcon className={styles.expand} />}
+							title={<ExpandArrowAltIcon className='bn-w-6 bn-h-6' />}
 						/>
 					)}
 				</motion.div>

@@ -1,7 +1,7 @@
 import { forwardRef, type RefObject } from 'react';
 import { classes } from '../../utils/utils';
 import Text from '../text/Text';
-import styles from './Link.module.css';
+// import styles from './Link.module.css';
 import type { LinkProps } from './types';
 
 const Link = forwardRef<RefObject<HTMLAnchorElement>, LinkProps>((props, ref) => {
@@ -27,7 +27,13 @@ const Link = forwardRef<RefObject<HTMLAnchorElement>, LinkProps>((props, ref) =>
 			stroke={stroke}
 			weight={weight}
 			italic={italic}
-			className={classes(styles.root, styles[`underline-${underline}`], className)}
+			className={classes(
+				'bn-text-blue-600 no-underline ',
+				underline === 'none' && 'no-underline',
+				underline === 'hover' && 'hover:underline',
+				underline === 'always' && 'underline',
+				className
+			)}
 			attrs={{
 				href,
 				target,

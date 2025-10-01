@@ -8,31 +8,58 @@ import {
 import { classes } from '../../utils';
 import { Button } from '../buttons';
 import { CopyIcon, TickIcon } from '../icons';
+import styles from './CodeSnippet.module.css';
 import type { CodeSnippetProps, MotionSpanProps } from './types';
 
 const MotionSpan = motion.span as ComponentType<MotionSpanProps>;
 
 const copyIconProps = {
-	initial: { opacity: 0, y: 5 },
-	animate: { opacity: 1, y: 0 },
-	exit: { opacity: 0, y: -5 },
-	transition: { duration: 0.2 },
+	initial: {
+		opacity: 0,
+		y: 5,
+	},
+	animate: {
+		opacity: 1,
+		y: 0,
+	},
+	exit: {
+		opacity: 0,
+		y: -5,
+	},
+	transition: {
+		duration: 0.2,
+	},
 };
 
 const tickIconProps = {
-	initial: { scale: 0, opacity: 0 },
-	animate: { scale: 1.2, opacity: 1 },
-	exit: { scale: 0, opacity: 0 },
-	transition: { type: 'spring', stiffness: 400, damping: 15 },
+	initial: {
+		scale: 0,
+		opacity: 0,
+	},
+	animate: {
+		scale: 1.2,
+		opacity: 1,
+	},
+	exit: {
+		scale: 0,
+		opacity: 0,
+	},
+	transition: {
+		type: 'spring',
+		stiffness: 400,
+		damping: 15,
+	},
 };
 
 const CopyButton = ({ code }: { code: string }) => {
-	const [copied, setCopied] = useState(false);
+	const [copied, setCopied] = useState<boolean>(false);
 
 	const onCopy = async () => {
 		setCopied(true);
 		await navigator.clipboard.writeText(code);
-		setTimeout(() => setCopied(false), 1000);
+		setTimeout(() => {
+			setCopied(false);
+		}, 1000);
 	};
 
 	return (
@@ -41,22 +68,16 @@ const CopyButton = ({ code }: { code: string }) => {
 				<AnimatePresence mode='popLayout' initial={false}>
 					{!copied ? (
 						<MotionSpan key='copy' title='Copy' {...copyIconProps}>
-							<CopyIcon className='bn-w-5 bn-h-5 bn-fill-[rgba(0,0,0,0.75)]' />
+							<CopyIcon className={styles.icon} />
 						</MotionSpan>
 					) : (
-						<MotionSpan
-							key='tick'
-							{...tickIconProps}
-							className='bn-flex bn-items-center'>
-							<TickIcon className='bn-w-5 bn-h-5' />
+						<MotionSpan key='tick' {...tickIconProps} className='flex items-center'>
+							<TickIcon className={styles.tick} />
 						</MotionSpan>
 					)}
 				</AnimatePresence>
 			}
-			className={classes(
-				'bn-invisible group-hover:bn-visible bn-absolute bn-top-[2rem] bn-right-[-1rem] bn-w-9 bn-h-9 bn-bg-transparent bn-p-0',
-				'[&_[data-elem=title]]:bn-shadow-[0_0_2px_0_rgba(0,0,0,0.35)] [&_[data-elem=title]]:bn-rounded [&_[data-elem=title]]:bn-p-[0.35rem] [&_[data-elem=title]>span]:bn-inline-flex'
-			)}
+			className={styles.copy}
 			onClick={onCopy}
 		/>
 	);
@@ -78,13 +99,13 @@ const CodeSnippet = (props: CodeSnippetProps) => {
 		wrapLines: true,
 		wrapLongLines: true,
 		codeTagProps: {
-			className: classes('bn-font-mono bn-text-base', className),
+			className: classes(styles.code, className),
 		},
 		style: theme === 'light' ? lightTheme : darkTheme,
 	} as SyntaxHighlighterProps;
 
 	return (
-		<div className='bn-relative bn-group bn-px-4 bn-py-2'>
+		<div className={styles.root}>
 			<SyntaxHighlighter {...syntaxHighlighterProps}>{code}</SyntaxHighlighter>
 			{copy && <CopyButton code={code} />}
 		</div>

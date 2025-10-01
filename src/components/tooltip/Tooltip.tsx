@@ -19,7 +19,7 @@ import React, {
 import { mergeRefs } from 'react-merge-refs';
 import { classes } from '../../utils';
 import { Popper } from '../popper';
-import styles from './Tooltip.module.css';
+// import styles from './Tooltip.module.css';
 import type { ReactElementWithRef, TooltipPosition, TooltipProps } from './types';
 
 /**
@@ -129,7 +129,11 @@ const Tooltip = forwardRef<RefObject<HTMLElement>, TooltipProps>((props, propRef
 				<motion.div
 					{...getFloatingProps({
 						ref: floating,
-						className: classes(styles.tooltip, styles[variant], className),
+						className: classes(
+							'text-center rounded min-w-4 max-w-fit px-3 py-2 text-lg leading-[1.3125rem] text-white-200 bg-gray-800',
+							variant === 'light' ? 'bg-black' : 'bg-white',
+							className
+						),
 						style: {
 							position: strategy,
 							top: y ?? 0,
@@ -147,7 +151,7 @@ const Tooltip = forwardRef<RefObject<HTMLElement>, TooltipProps>((props, propRef
 					}}>
 					{showPointer && (
 						<div
-							className={styles.arrow}
+							className='absolute w-[0.65rem] h-[0.65rem] -z-10 pointer-events-none rotate-45 bg-gray-800'
 							ref={arrowEl}
 							style={{
 								left: middlewareData.arrow?.x ?? '',
