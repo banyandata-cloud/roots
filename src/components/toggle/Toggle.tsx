@@ -17,7 +17,7 @@ export interface ToggleProps {
 	multi?: boolean;
 	defaultValue?: string | string[];
 	theme?: 'light' | 'dark';
-	value?: string | string[];
+	value?: string | string[] | number | null;
 	onChange?: (value: string | string[]) => void;
 	className?: string;
 	smooth?: boolean;
@@ -92,7 +92,7 @@ const Toggle = ({
 		}
 	};
 
-	const compareSelection = (input: string | string[], item: string): boolean => {
+	const compareSelection = (input: string | string[] | number, item: string): boolean => {
 		if (Array.isArray(input)) {
 			return input.includes(item);
 		}
