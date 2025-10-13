@@ -44,10 +44,9 @@ export const getCSSVariableValue = (variable: `--${string}`): string => {
 	return getComputedStyle(document.documentElement).getPropertyValue(variable).trim();
 };
 
-export const doubleDigitted = (number: number): string => {
-	if (!number) {
+export const doubleDigitted = (number?: number): string => {
+	if (number === undefined) {
 		return '';
 	}
-
-	return number.toString().slice(-2).padStart(2, '0');
+	return number.toString().padStart(2, '0');
 };
