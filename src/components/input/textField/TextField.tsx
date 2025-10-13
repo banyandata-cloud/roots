@@ -32,6 +32,7 @@ type RightComponentType = React.ComponentType<LeftRightIconProps>;
 interface AutocompleteOptions {
 	/** Decide when to open based on the current input */
 	predicate?: (input: string) => boolean;
+	open?: (input: string) => boolean;
 	/** Popover placement (kept broad to avoid coupling to the popper types) */
 	placement?: Placement;
 	/** Popover middleware options (library-specific) */
@@ -283,7 +284,13 @@ const TextField = forwardRef<HTMLInputElement | HTMLTextAreaElement, TextFieldPr
 				{autocompleteOptions && (
 					<Popover
 						anchorEl={anchorEl}
-						open={showAutocompleteOptions}
+						open={
+							autocompleteOptions && 'open' in autocompleteOptions
+								? typeof autocompleteOptions.open === 'function'
+									? autocompleteOptions.open(String(value ?? ''))
+									: autocompleteOptions.open
+								: showAutocompleteOptions
+						}
 						placement={autocompleteOptions.placement}
 						middlewareOptions={autocompleteOptions.middlewareOptions}
 						withOverlay={false}
