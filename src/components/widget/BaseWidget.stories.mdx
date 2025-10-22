@@ -3,7 +3,7 @@ import { useState } from 'react';
 import BaseVerticalBarChart from '../charts/verticalBarChart/BaseVerticalBarChart';
 import BaseWidget from './BaseWidget.tsx';
 import { ThemedContainer } from '../helpers';
-import { Toggle } from '../toggle';
+import { Toggle } from '../toggle/index.ts';
 import { Button } from '../buttons';
 import { FilterIcon } from '../icons';
 import { DropdownItemv2, Dropdownv2 } from '../input';
@@ -86,6 +86,7 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 				},
 			];
 			const [theme, setTheme] = useState('dark');
+			const [headerToggle, setHeaderToggle] = useState('Option Test');
 			return (
 				<ThemedContainer
 					style={{
@@ -107,7 +108,7 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 										leftCompoenent: '',
 										rightCompoenent: '',
 										title: 'Option Test',
-										value: 'Option 1',
+										value: 'Option Test',
 									},
 									{
 										id: '2',
@@ -117,11 +118,12 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 										value: 'Option 2',
 									},
 								],
-								value: 'Option 1',
-								onChange: (newValue) => {
+								value: headerToggle,
+								onChange: (event) => {
 									console.log({
-										HERE: newValue,
+										HERE: event,
 									});
+									setHeaderToggle(event);
 								},
 							},
 						]}
