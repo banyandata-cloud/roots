@@ -1,0 +1,23 @@
+.root {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+}
+.root .body-left {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  border-right: 1px solid #d5d5db;
+  padding: 0.25rem 1rem;
+}
+.root .body-right {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  padding: 0.25rem 1rem;
+}/*# sourceMappingURL=Body.module.css.map */
