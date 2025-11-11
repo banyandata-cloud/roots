@@ -64,14 +64,6 @@ const DatePicker = (props) => {
 		});
 	};
 
-	const displayValue = getDatePickerDisplayValue({
-		value,
-		rangePicker: range && value?.filter?.(Boolean)?.length > 0,
-		singlePicker: !range && value,
-		timeRange,
-		limitHours,
-	});
-
 	const datePickerFloatingReference = useFloating(
 		getFloatingReferences(openDatePicker, setOpenDatePicker)
 	);
@@ -122,6 +114,27 @@ const DatePicker = (props) => {
 	const activeDate = new Date(selectedDate.unix * 1000);
 	const activeEndDate = new Date(selectedRange.unix?.[1] * 1000);
 	const currentDate = new Date();
+
+	const displayValue = getDatePickerDisplayValue({
+		value,
+		rangePicker: range && value?.filter?.(Boolean)?.length > 0,
+		singlePicker: !range && value,
+		timeRange,
+		limitHours,
+	});
+
+	const activeDisplay = getDatePickerDisplayValue({
+		value:
+			!range && value
+				? selectedDate.unix
+				: selectedRange?.unix?.length > 0
+					? selectedRange?.unix
+					: value,
+		rangePicker: range && value?.filter?.(Boolean)?.length > 0,
+		singlePicker: !range && value,
+		timeRange,
+		limitHours,
+	});
 
 	const apply = ({ rangeSelected }) => {
 		if (fixedTime) {
@@ -325,6 +338,16 @@ const DatePicker = (props) => {
 								className={styles.dropdown}
 								value={selectedMonth?.monthAsNumber ?? ''}
 								onChange={(_, newMonth) => {
+									const newSelectedData = new Date(
+										selectedMonth?.year,
+										Number(newMonth),
+										selectedDate?.date
+									);
+									setSelectedDate({
+										...selectedDate,
+										month: getDayInfo(newSelectedData).month,
+										unix: getUnixTime(newSelectedData.setHours(23, 59, 59, 59)),
+									});
 									setSelectedMonth({
 										...selectedMonth,
 										month: FULL_MONTHS_INDEX?.[Number(newMonth)]?.label,
@@ -350,7 +373,7 @@ const DatePicker = (props) => {
 											key={value}
 											className={classes(
 												styles['dropdown-item'],
-												value === selectedDayInfo.monthAsNumber
+												value === selectedMonth?.monthAsNumber
 													? styles.selected
 													: ''
 											)}
@@ -374,8 +397,8 @@ const DatePicker = (props) => {
 									});
 								}}>
 								{Array.from(
-									{ length: selectedMonth?.year - startingYear + 1 },
-									(_, i) => selectedMonth?.year - i
+									{ length: currentDate.getFullYear() - startingYear + 1 },
+									(_, i) => currentDate.getFullYear() - i
 								)?.map((year) => {
 									return (
 										<DropdownItemv2
@@ -384,7 +407,7 @@ const DatePicker = (props) => {
 											key={year}
 											className={classes(
 												styles['dropdown-item'],
-												year === selectedMonth?.year ? styles.selected : ''
+												year == selectedMonth?.year ? styles.selected : ''
 											)}
 										/>
 									);
@@ -437,7 +460,7 @@ const DatePicker = (props) => {
 								className={styles.input}
 								value={
 									fixedTime === 0
-										? `Selected Date: ${displayValue}`
+										? `Selected Date: ${activeDisplay}`
 										: `Selected Date: ${getDatePickerDisplayValue({
 												value: fixedTimeRange?.[0],
 												singlePicker: true,
@@ -490,7 +513,8 @@ const DatePicker = (props) => {
 					<div
 						className={classes(
 							styles.bottom,
-							!range && !valueAsRange ? styles['bottom-remove'] : ''
+							!range && !valueAsRange ? styles['bottom-remove'] : '',
+							range ? styles['bottom-border'] : ''
 						)}>
 						{(range || (!range && valueAsRange)) && (
 							<div className={styles['dropdown-selection']}>

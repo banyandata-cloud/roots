@@ -247,11 +247,13 @@ div.modal [data-elem=body] .body .bottom {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-top: 1px solid #d5d5db;
   flex: 3;
 }
 div.modal [data-elem=body] .body .bottom.bottom-remove {
   flex: 0;
+}
+div.modal [data-elem=body] .body .bottom.bottom-border {
+  border-top: 1px solid #d5d5db;
 }
 div.modal [data-elem=body] .body .bottom .dropdown-selection {
   display: flex;
@@ -351,5 +353,9 @@ div.modal [data-elem=footer] div.footer .right button.confirm[data-elem=base-cel
   padding: 0%;
 }
 .dropdown-item.selected {
+  color: var(--primary-color4);
+}
+.dropdown-item:hover {
+  background-color: transparent;
   color: var(--primary-color4);
 }/*# sourceMappingURL=DatePicker.module.css.map */

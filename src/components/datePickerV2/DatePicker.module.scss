@@ -224,10 +224,12 @@ div.modal {
 			}
 			.bottom {
 				@include flex(column, center, center);
-				border-top: 1px solid #d5d5db;
 				flex: 3;
 				&.bottom-remove {
 					flex: 0;
+				}
+				&.bottom-border {
+					border-top: 1px solid #d5d5db;
 				}
 
 				.dropdown-selection {
@@ -326,6 +328,10 @@ div.modal {
 	width: fit-content;
 	padding: 0%;
 	&.selected {
+		color: $primary-color4;
+	}
+	&:hover {
+		background-color: transparent;
 		color: $primary-color4;
 	}
 }

@@ -98,6 +98,7 @@ const Dates = (props) => {
 			return;
 		}
 		setUnSelectedDate(null);
+
 		setSelectedDate({
 			...selectedDate,
 			month: getDayInfo(date).month,
