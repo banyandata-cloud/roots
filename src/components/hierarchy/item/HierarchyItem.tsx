@@ -146,6 +146,15 @@ const HierarchyItem = forwardRef<HTMLDivElement, HierarchyItemProps>((props, ref
 		onSearchSubmit?.(searchText, pathString);
 	};
 
+	const searchInputRef = useRef<HTMLInputElement | null>(null);
+
+	// Focus the TextField whenever search starts
+	useEffect(() => {
+		if (isSearching && open && searchInputRef.current) {
+			searchInputRef.current.focus();
+		}
+	}, [isSearching, open]);
+
 	useEffect(() => {
 		if (typeof controlledOpen === 'boolean') setOpen(controlledOpen);
 	}, [controlledOpen]);
@@ -200,6 +209,7 @@ const HierarchyItem = forwardRef<HTMLDivElement, HierarchyItemProps>((props, ref
 					isSearching && open ? (
 						<div className={styles.searchFieldWrapper}>
 							<TextField
+								ref={searchInputRef}
 								className={styles.searchInput}
 								placeholder={`Search ${name}`}
 								size='md'
