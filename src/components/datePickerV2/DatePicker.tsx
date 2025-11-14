@@ -1,4 +1,3 @@
-/* eslint-disable no-unsafe-optional-chaining */
 import {
 	useClick,
 	useDismiss,
@@ -6,7 +5,7 @@ import {
 	useInteractions,
 } from '@floating-ui/react-dom-interactions';
 import { fromUnixTime, getUnixTime, subHours, subMinutes } from 'date-fns';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type ReactElement } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { Button } from '../../components/buttons';
 import {
@@ -25,7 +24,90 @@ import { CalenderIcon, CaretIcon, ClockIcon } from '../icons';
 import styles from './DatePicker.module.css';
 import { Calender } from './calender';
 
-const DatePicker = (props) => {
+interface SelectedDate {
+	month?: string;
+	year?: number;
+	date?: number;
+	unix?: number;
+}
+
+interface SelectedRange {
+	dates?: string[];
+	unix?: number[];
+}
+
+interface SelectedMonth {
+	month: string;
+	monthAsNumber: number;
+	year: number;
+}
+
+interface TimeSelection {
+	HOURS?: number;
+	MINS?: number;
+	MER?: string;
+}
+
+interface TimeRangeSelection {
+	previous?: TimeSelection;
+	next?: TimeSelection;
+}
+
+interface CustomRange {
+	title: string;
+	dateRange: {
+		dates: string[];
+		unix: number[];
+	};
+}
+
+interface DatePickerProps {
+	placeholder?: string;
+	range?: boolean;
+	value?: number | number[] | null;
+	disabled?: boolean;
+	className?: string;
+	customRanges?: CustomRange[] | null;
+	showCustomRanges?: boolean;
+	custom?: boolean;
+	highlightOnSelect?: boolean;
+	limitHours?: number | null;
+	timeRange?: boolean;
+	onClear?: () => void;
+	onApply?: (value: number | number[], fixedRange: string | null, tag?: string) => void;
+	enableFutureDates?: boolean;
+	maxRange?: number | null;
+	disabledDates?: string[];
+	disableDatesBefore?: number[];
+	disableDatesAfter?: number[];
+	defaultHourDiff?: number;
+	valueAsRange?: boolean;
+	startingYear?: number;
+}
+
+interface ApplyParams {
+	rangeSelected: SelectedRange;
+	dateSelected?: SelectedDate;
+}
+
+interface MaxRangeParams {
+	maxRange: number;
+	rangeSelected: SelectedRange;
+}
+
+const isMaxRangeExceeded = ({ maxRange, rangeSelected }: MaxRangeParams): boolean => {
+	const firstUnix = rangeSelected.unix?.[0];
+	const secondUnix = rangeSelected.unix?.[1];
+
+	if (firstUnix === undefined || secondUnix === undefined) {
+		return false;
+	}
+
+	const daysDifference = Math.abs(secondUnix - firstUnix) / 86400;
+	return daysDifference > maxRange;
+};
+
+const DatePicker = (props: DatePickerProps): ReactElement => {
 	const {
 		placeholder = '',
 		range = false,
@@ -42,24 +124,24 @@ const DatePicker = (props) => {
 		onApply,
 		enableFutureDates,
 		maxRange,
-		disabledDates,
-		disableDatesBefore,
-		disableDatesAfter,
+		disabledDates = [],
+		disableDatesBefore = [],
+		disableDatesAfter = [],
 		defaultHourDiff,
 		valueAsRange,
 		startingYear = 1970,
 	} = props;
 
-	const [openDatePicker, setOpenDatePicker] = useState(false);
-	const [openCustomRange, setOpenCustomRange] = useState(false);
-	const [selectedCustomRange, setSelectedCustomRange] = useState('');
-	const [startTime, setStartTime] = useState(0);
-	const [endTime, setEndTime] = useState(0);
-	const [fixedTime, setFixedTime] = useState(0);
-	const [fixedTimeRange, setFixedTimeRange] = useState([0, 0]);
-	const [open, setOpen] = useState(false);
-	const toggle = () => {
-		setOpen((prevState) => {
+	const [openDatePicker, setOpenDatePicker] = useState<boolean>(false);
+	const [openCustomRange, setOpenCustomRange] = useState<boolean>(false);
+	const [selectedCustomRange, setSelectedCustomRange] = useState<string>('');
+	const [startTime, setStartTime] = useState<number>(0);
+	const [endTime, setEndTime] = useState<number>(0);
+	const [fixedTime, setFixedTime] = useState<number>(0);
+	const [fixedTimeRange, setFixedTimeRange] = useState<number[]>([0, 0]);
+	const [open, setOpen] = useState<boolean>(false);
+	const toggle = (): void => {
+		setOpen((prevState: boolean) => {
 			return !prevState;
 		});
 	};
@@ -72,15 +154,15 @@ const DatePicker = (props) => {
 		getFloatingReferences(openCustomRange, setOpenCustomRange)
 	);
 
-	useOutsideClickListener(datePickerFloatingReference.floating, () => {
+	useOutsideClickListener(() => {
 		toggle();
-		return setOpenDatePicker(false);
-	});
+		setOpenDatePicker(false);
+	}, datePickerFloatingReference.refs.floating);
 
-	useOutsideClickListener(customRangeFloatingReference.floating, () => {
+	useOutsideClickListener(() => {
 		toggle();
-		return setOpenDatePicker(false);
-	});
+		setOpenDatePicker(false);
+	}, customRangeFloatingReference.refs.floating);
 
 	const datePickerInteractionProps = useInteractions([
 		useClick(datePickerFloatingReference.context, {
@@ -89,55 +171,75 @@ const DatePicker = (props) => {
 		useDismiss(datePickerFloatingReference.context),
 	]);
 
-	const [selectedDate, setSelectedDate] = useState(() => {
-		return '';
+	const [selectedDate, setSelectedDate] = useState<SelectedDate>(() => {
+		return {};
 	});
 
-	const [selectedRange, setSelectedRange] = useState(() => {
+	const [selectedRange, setSelectedRange] = useState<SelectedRange>(() => {
 		return {
 			dates: [],
 			unix: [],
 		};
 	});
 
-	const [fixedRange, setFixedRange] = useState(() => {
+	const [fixedRange, setFixedRange] = useState<string | null>(() => {
 		return null;
 	});
 
-	const [selectedMonth, setSelectedMonth] = useState();
-	const [displayMonthRight, setDisplayMonthRight] = useState();
-	const [timeRangeSelection, setTimeRangeSelection] = useState({});
+	const [selectedMonth, setSelectedMonth] = useState<SelectedMonth | undefined>(undefined);
+	const [displayMonthRight, setDisplayMonthRight] = useState<SelectedMonth | undefined>(
+		undefined
+	);
+	const [timeRangeSelection, setTimeRangeSelection] = useState<TimeRangeSelection>({});
 
-	const date = range ? fromUnixTime(value?.[0]) : fromUnixTime(value);
+	const valueArray = Array.isArray(value) ? value : [value];
+	const firstValue = valueArray[0];
+	const date =
+		range && firstValue !== null && firstValue !== undefined
+			? fromUnixTime(firstValue)
+			: value !== null && value !== undefined && !Array.isArray(value)
+				? fromUnixTime(value)
+				: new Date();
 	const selectedDayInfo = getDayInfo(date);
 
-	const activeDate = new Date(selectedDate.unix * 1000);
-	const activeEndDate = new Date(selectedRange.unix?.[1] * 1000);
+	const selectedDateUnix = selectedDate.unix;
+	const activeDate =
+		selectedDateUnix !== undefined ? new Date(selectedDateUnix * 1000) : new Date();
+	const selectedRangeUnixSecond = selectedRange.unix?.[1];
+	const activeEndDate =
+		selectedRangeUnixSecond !== undefined
+			? new Date(selectedRangeUnixSecond * 1000)
+			: new Date();
 	const currentDate = new Date();
+
+	const isRangePicker = range && Array.isArray(value) && value.filter(Boolean).length > 0;
+	const isSinglePicker = !range && value !== null;
 
 	const displayValue = getDatePickerDisplayValue({
 		value,
-		rangePicker: range && value?.filter?.(Boolean)?.length > 0,
-		singlePicker: !range && value,
+		rangePicker: isRangePicker,
+		singlePicker: isSinglePicker,
 		timeRange,
 		limitHours,
 	});
+
+	const activeDisplayValue =
+		!range && value !== null
+			? selectedDate.unix
+			: selectedRange.unix !== undefined && selectedRange.unix.length > 0
+				? selectedRange.unix
+				: value;
 
 	const activeDisplay = getDatePickerDisplayValue({
-		value:
-			!range && value
-				? selectedDate.unix
-				: selectedRange?.unix?.length > 0
-					? selectedRange?.unix
-					: value,
-		rangePicker: range && value?.filter?.(Boolean)?.length > 0,
-		singlePicker: !range && value,
+		value: activeDisplayValue,
+		rangePicker: isRangePicker,
+		singlePicker: isSinglePicker,
 		timeRange,
 		limitHours,
 	});
 
-	const apply = ({ rangeSelected }) => {
-		if (fixedTime) {
+	const apply = ({ rangeSelected }: ApplyParams): void => {
+		if (fixedTime !== 0) {
 			onApply?.(fixedTimeRange, fixedRange, getDateRangeTag(fixedTimeRange));
 			setOpenDatePicker(false);
 			setStartTime(0);
@@ -146,9 +248,10 @@ const DatePicker = (props) => {
 			setFixedTimeRange([0, 0]);
 			return;
 		}
-		if (rangeSelected.dates?.length === 2) {
+		if (rangeSelected.dates !== undefined && rangeSelected.dates.length === 2) {
 			if (
 				maxRange !== null &&
+				maxRange !== undefined &&
 				!isMaxRangeExceeded({
 					maxRange,
 					rangeSelected,
@@ -158,14 +261,19 @@ const DatePicker = (props) => {
 				return;
 			}
 
-			onApply?.(
-				[
-					Number(rangeSelected.unix?.[0]) + Number(startTime),
-					Number(rangeSelected.unix?.[1]) - (86399 - Number(endTime)),
-				],
-				fixedRange,
-				getDateRangeTag(rangeSelected.unix)
-			);
+			const firstUnix = rangeSelected.unix?.[0];
+			const secondUnix = rangeSelected.unix?.[1];
+
+			if (firstUnix !== undefined && secondUnix !== undefined) {
+				onApply?.(
+					[
+						Number(firstUnix) + Number(startTime),
+						Number(secondUnix) - (86399 - Number(endTime)),
+					],
+					fixedRange,
+					getDateRangeTag(rangeSelected.unix)
+				);
+			}
 			setOpenDatePicker(false);
 			setStartTime(0);
 			setEndTime(0);
@@ -173,39 +281,50 @@ const DatePicker = (props) => {
 			setFixedTimeRange([0, 0]);
 		} else {
 			if (valueAsRange) {
-				const clickedDate = new Date(selectedDate.unix * 1000);
-				const currentDate = new Date();
+				if (selectedDate.unix !== undefined) {
+					const clickedDate = new Date(selectedDate.unix * 1000);
+					const currentDate = new Date();
 
-				clickedDate.setHours(0, 0, 0, 0);
+					clickedDate.setHours(0, 0, 0, 0);
 
-				const fromUnix =
-					Number(Math.floor(clickedDate.getTime() / 1000)) + Number(startTime);
+					const fromUnix =
+						Number(Math.floor(clickedDate.getTime() / 1000)) + Number(startTime);
 
-				const toUnix =
-					clickedDate.toDateString() === currentDate.toDateString()
-						? getUnixTime(currentDate)
-						: Number(Math.floor(clickedDate.getTime() / 1000)) + Number(endTime);
+					const toUnix =
+						clickedDate.toDateString() === currentDate.toDateString()
+							? getUnixTime(currentDate)
+							: Number(Math.floor(clickedDate.getTime() / 1000)) + Number(endTime);
 
-				onApply?.([fromUnix, toUnix], fixedRange, getDateRangeTag([fromUnix, toUnix]));
-				setOpenDatePicker(false);
-				setStartTime(0);
-				setEndTime(0);
-				setFixedTime(0);
-				setFixedTimeRange([0, 0]);
-				return;
+					onApply?.([fromUnix, toUnix], fixedRange, getDateRangeTag([fromUnix, toUnix]));
+					setOpenDatePicker(false);
+					setStartTime(0);
+					setEndTime(0);
+					setFixedTime(0);
+					setFixedTimeRange([0, 0]);
+					return;
+				}
 			}
-			const singleDateUnix = getUnixTime(
-				new Date(
-					selectedDate.year,
-					selectedMonth?.monthAsNumber,
-					selectedDate.date,
-					timeRangeSelection.next?.MER === 'PM' && timeRangeSelection.next?.HOURS < 12
-						? timeRangeSelection.next?.HOURS + 12
-						: timeRangeSelection.next?.HOURS,
-					timeRangeSelection.next?.MINS
-				)
-			);
-			onApply?.(singleDateUnix);
+			const nextHours = timeRangeSelection.next?.HOURS;
+			const nextMins = timeRangeSelection.next?.MINS;
+			const nextMer = timeRangeSelection.next?.MER;
+
+			if (
+				selectedDate.year !== undefined &&
+				selectedDate.date !== undefined &&
+				nextHours !== undefined &&
+				nextMins !== undefined
+			) {
+				const singleDateUnix = getUnixTime(
+					new Date(
+						selectedDate.year,
+						selectedMonth?.monthAsNumber ?? 0,
+						selectedDate.date,
+						nextMer === 'PM' && nextHours < 12 ? nextHours + 12 : nextHours,
+						nextMins
+					)
+				);
+				onApply?.(singleDateUnix, fixedRange);
+			}
 			setOpenDatePicker(false);
 			setStartTime(0);
 			setEndTime(0);
@@ -222,7 +341,7 @@ const DatePicker = (props) => {
 		setSelectedRange,
 		fixedRange,
 		range,
-		onApply: () => {
+		onApply: (): void => {
 			apply({
 				rangeSelected: selectedRange,
 				dateSelected: selectedDate,
@@ -260,7 +379,7 @@ const DatePicker = (props) => {
 				),
 				defaultHourDiff ?? currentTime.hoursIn12
 			),
-			defaultHourDiff ? 0 : currentTime.minutes
+			defaultHourDiff !== undefined ? 0 : currentTime.minutes
 		)
 	);
 
@@ -277,11 +396,19 @@ const DatePicker = (props) => {
 				MER: prevTime.meridian,
 			},
 		});
-	}, [selectedDate.unix]);
+	}, [
+		selectedDate.unix,
+		currentTime.hours,
+		currentTime.minutes,
+		currentTime.meridian,
+		prevTime.hours,
+		prevTime.minutes,
+		prevTime.meridian,
+	]);
 
 	return (
 		<ErrorBoundary
-			FallbackComponent={(args) => {
+			FallbackComponent={(args): ReactElement => {
 				return (
 					<ErrorBoundaryWrapper
 						{...args}
@@ -292,7 +419,7 @@ const DatePicker = (props) => {
 			}}>
 			<div
 				className={styles.root}
-				onClick={() => {
+				onClick={(): void => {
 					toggle();
 				}}>
 				<div className={classes(styles['date-picker'], className)}>
@@ -305,9 +432,9 @@ const DatePicker = (props) => {
 							styles.container,
 							disabled ? styles.disabled : '',
 							openDatePicker ? styles.open : '',
-							customRanges ? styles['with-custom'] : '',
+							customRanges !== null ? styles['with-custom'] : '',
 							displayValue ? styles.highlight : '',
-							highlightOnSelect && value ? styles.highlightOnSelect : ''
+							highlightOnSelect && value !== null ? styles.highlightOnSelect : ''
 						)}
 						{...datePickerInteractionProps.getReferenceProps()}>
 						<div className={styles.left}>
@@ -320,7 +447,7 @@ const DatePicker = (props) => {
 							{displayValue && <span className={styles.value}>{displayValue}</span>}
 						</div>
 
-						<input className={styles.input} value={displayValue} />
+						<input className={styles.input} value={displayValue ?? ''} readOnly />
 						<CaretIcon className={classes(styles.icon)} />
 					</div>
 				</div>
@@ -336,33 +463,46 @@ const DatePicker = (props) => {
 							<Dropdownv2
 								placeholder={selectedDayInfo.month}
 								className={styles.dropdown}
-								value={selectedMonth?.monthAsNumber ?? ''}
-								onChange={(_, newMonth) => {
-									const newSelectedData = new Date(
-										selectedMonth?.year,
-										Number(newMonth),
-										selectedDate?.date
-									);
-									setSelectedDate({
-										...selectedDate,
-										month: getDayInfo(newSelectedData).month,
-										unix: getUnixTime(newSelectedData.setHours(23, 59, 59, 59)),
-									});
+								value={String(selectedMonth?.monthAsNumber ?? '')}
+								onChange={(_: unknown, newMonth: unknown): void => {
+									const monthNumber = Number(newMonth);
+									if (
+										!range &&
+										selectedMonth?.year !== undefined &&
+										selectedDate.date !== undefined
+									) {
+										const newSelectedData = new Date(
+											selectedMonth.year,
+											monthNumber,
+											selectedDate.date
+										);
+										setSelectedDate({
+											...selectedDate,
+											month: getDayInfo(newSelectedData).month,
+											unix: getUnixTime(
+												newSelectedData.setHours(23, 59, 59, 59)
+											),
+										});
+									}
+									const fullMonthLabel = FULL_MONTHS_INDEX?.[monthNumber]?.label;
+									const nextMonthIndex = monthNumber === 11 ? 0 : monthNumber + 1;
+									const nextMonthLabel =
+										FULL_MONTHS_INDEX?.[nextMonthIndex]?.label;
+
 									setSelectedMonth({
 										...selectedMonth,
-										month: FULL_MONTHS_INDEX?.[Number(newMonth)]?.label,
-										monthAsNumber: Number(newMonth),
+										month: fullMonthLabel ?? '',
+										monthAsNumber: monthNumber,
+										year: selectedMonth?.year ?? new Date().getFullYear(),
 									});
 									setDisplayMonthRight({
-										month:
-											Number(newMonth) === 11
-												? FULL_MONTHS_INDEX?.[0]?.label
-												: FULL_MONTHS_INDEX?.[Number(newMonth) + 1]?.label,
-										monthAsNumber: Number(newMonth) + 1,
+										month: nextMonthLabel ?? '',
+										monthAsNumber: nextMonthIndex,
 										year:
-											Number(newMonth) === 11
-												? Number(selectedMonth?.year) + 1
-												: Number(selectedMonth?.year),
+											monthNumber === 11
+												? (selectedMonth?.year ??
+														new Date().getFullYear()) + 1
+												: (selectedMonth?.year ?? new Date().getFullYear()),
 									});
 								}}>
 								{FULL_MONTHS_INDEX?.map(({ value, label }) => {
@@ -382,18 +522,23 @@ const DatePicker = (props) => {
 								})}
 							</Dropdownv2>
 							<Dropdownv2
-								value={selectedMonth?.year ?? ''}
-								onChange={(_, newYear) => {
+								value={String(selectedMonth?.year ?? '')}
+								onChange={(_: unknown, newYear: unknown): void => {
+									const yearNumber = Number(newYear);
 									setSelectedMonth({
 										...selectedMonth,
-										year: newYear,
+										month: selectedMonth?.month ?? '',
+										monthAsNumber: selectedMonth?.monthAsNumber ?? 0,
+										year: yearNumber,
 									});
 									setDisplayMonthRight({
 										...displayMonthRight,
+										month: displayMonthRight?.month ?? '',
+										monthAsNumber: displayMonthRight?.monthAsNumber ?? 0,
 										year:
-											Number(selectedMonth?.monthAsNumber) === 11
-												? Number(newYear) + 1
-												: Number(newYear),
+											(selectedMonth?.monthAsNumber ?? 0) === 11
+												? yearNumber + 1
+												: yearNumber,
 									});
 								}}>
 								{Array.from(
@@ -402,12 +547,12 @@ const DatePicker = (props) => {
 								)?.map((year) => {
 									return (
 										<DropdownItemv2
-											title={year}
+											title={String(year)}
 											value={year}
 											key={year}
 											className={classes(
 												styles['dropdown-item'],
-												year == selectedMonth?.year ? styles.selected : ''
+												year === selectedMonth?.year ? styles.selected : ''
 											)}
 										/>
 									);
@@ -416,21 +561,28 @@ const DatePicker = (props) => {
 							{showCustomRanges && range && (
 								<Dropdownv2
 									placeholder='Select Custom Time'
-									value={selectedCustomRange ?? ''}
-									onChange={(_, customTime) => {
+									value={selectedCustomRange}
+									onChange={(_: unknown, customTime: unknown): void => {
+										const customTimeStr = String(customTime);
 										const [
 											dateRangeStartLabel,
 											dateRangeEndLabel,
 											dateRangeStartUnix,
 											dateRangeEndUnix,
 											customType,
-										] = customTime?.split(',');
+										] = customTimeStr.split(',');
 										setSelectedRange({
-											dates: [dateRangeStartLabel, dateRangeEndLabel],
-											unix: [dateRangeStartUnix, dateRangeEndUnix],
+											dates: [
+												dateRangeStartLabel ?? '',
+												dateRangeEndLabel ?? '',
+											],
+											unix: [
+												Number(dateRangeStartUnix),
+												Number(dateRangeEndUnix),
+											],
 										});
 										setSelectedCustomRange(
-											`${dateRangeStartLabel},${dateRangeEndLabel},${dateRangeStartUnix},${dateRangeEndUnix},${customType}`
+											`${dateRangeStartLabel ?? ''},${dateRangeEndLabel ?? ''},${dateRangeStartUnix ?? ''},${dateRangeEndUnix ?? ''},${customType ?? ''}`
 										);
 										setStartTime(0);
 										setEndTime(0);
@@ -438,16 +590,21 @@ const DatePicker = (props) => {
 										setFixedTimeRange([0, 0]);
 									}}
 									className={styles.dropdown}>
-									{dateRanges(customRanges)?.map(({ dateRange, title }) => {
-										return (
-											<DropdownItemv2
-												title={title}
-												value={`${dateRange?.dates?.[0]},${dateRange?.dates?.[1]},${dateRange?.unix?.[0]},${dateRange?.unix?.[1]},${title}`}
-												key={title}
-												className={styles['dropdown-item']}
-											/>
-										);
-									})}
+									{dateRanges(customRanges ?? undefined)?.map(
+										({ dateRange, title }) => {
+											const firstDate = dateRange?.dates?.[0];
+											const secondDate = dateRange?.dates?.[1];
+											const firstUnix = dateRange?.unix?.[0];
+											const secondUnix = dateRange?.unix?.[1];
+											return (
+												<DropdownItemv2
+													title={title}
+													value={`${firstDate ?? ''},${secondDate ?? ''},${firstUnix ?? ''},${secondUnix ?? ''},${title}`}
+													key={title}
+												/>
+											);
+										}
+									)}
 								</Dropdownv2>
 							)}
 						</div>
@@ -462,11 +619,17 @@ const DatePicker = (props) => {
 									fixedTime === 0
 										? `Selected Date: ${activeDisplay}`
 										: `Selected Date: ${getDatePickerDisplayValue({
-												value: fixedTimeRange?.[0],
+												value: fixedTimeRange[0],
+												rangePicker: false,
 												singlePicker: true,
+												timeRange: false,
+												limitHours: null,
 											})} - ${getDatePickerDisplayValue({
-												value: fixedTimeRange?.[1],
+												value: fixedTimeRange[1],
+												rangePicker: false,
 												singlePicker: true,
+												timeRange: false,
+												limitHours: null,
 											})}`
 								}
 								disabled
@@ -475,11 +638,10 @@ const DatePicker = (props) => {
 						<div className={styles.right}>
 							<Button
 								title='Cancel'
-								color='default'
 								variant='outlined'
 								className={styles.cancel}
-								onClick={() => {
-									onClear();
+								onClick={(): void => {
+									onClear?.();
 									toggle();
 								}}
 							/>
@@ -488,7 +650,7 @@ const DatePicker = (props) => {
 								color='primary'
 								size='sm'
 								className={styles.confirm}
-								onClick={() => {
+								onClick={(): void => {
 									apply({
 										rangeSelected: selectedRange,
 										dateSelected: selectedDate,
@@ -521,35 +683,37 @@ const DatePicker = (props) => {
 								<Dropdownv2
 									label='Start Time'
 									placeholder='00:00'
-									value={startTime ?? 0}
-									leftComponent={() => {
+									value={String(startTime)}
+									leftComponent={(): ReactElement => {
 										return <ClockIcon className={classes(styles.icon)} />;
 									}}
-									onChange={(_, customTimeStart) => {
+									onChange={(_: unknown, customTimeStart: unknown): void => {
 										setFixedTime(0);
 										setFixedTimeRange([]);
-										setStartTime(customTimeStart);
+										setStartTime(Number(customTimeStart));
 									}}
 									className={styles.dropdown}>
 									{timeRanges()?.map((time) => {
+										const timeValue = time?.value;
+										const timeLabel = time?.label;
 										if (
 											!range &&
 											activeDate.toDateString() ===
 												currentDate.toDateString() &&
-											Number(time?.value) >
+											Number(timeValue) >
 												Number(currentDate.getHours()) * 3600 +
 													Number(currentDate.getMinutes()) * 60
 										) {
-											return;
+											return null;
 										}
 										return (
 											<DropdownItemv2
-												title={time?.label}
-												value={time?.value}
-												key={time?.value}
+												title={timeLabel ?? ''}
+												value={timeValue}
+												key={timeValue}
 												className={classes(
 													styles['dropdown-item'],
-													time?.value === startTime ? styles.selected : ''
+													timeValue === startTime ? styles.selected : ''
 												)}
 											/>
 										);
@@ -561,56 +725,58 @@ const DatePicker = (props) => {
 										!range &&
 										activeDate.toDateString() === currentDate.toDateString()
 											? currentDate.getMinutes() < 10
-												? `${currentDate.getHours()} : 0${currentDate.getMinutes()}`
-												: `${currentDate.getHours()} : ${currentDate.getMinutes()}`
+												? `${String(currentDate.getHours())} : 0${String(currentDate.getMinutes())}`
+												: `${String(currentDate.getHours())} : ${String(currentDate.getMinutes())}`
 											: '23:59'
 									}
-									value={endTime ?? 0}
-									leftComponent={() => {
+									value={String(endTime)}
+									leftComponent={(): ReactElement => {
 										return <ClockIcon className={classes(styles.icon)} />;
 									}}
 									disabled={
 										!range &&
 										activeDate.toDateString() === currentDate.toDateString()
 									}
-									onChange={(_, customTimeEnd) => {
+									onChange={(_: unknown, customTimeEnd: unknown): void => {
 										setFixedTime(0);
 										setFixedTimeRange([]);
-										setEndTime(customTimeEnd);
+										setEndTime(Number(customTimeEnd));
 									}}
 									className={styles.dropdown}>
 									{timeRanges()?.map((time) => {
-										if (!range && Number(time?.value) <= Number(startTime)) {
-											return;
+										const timeValue = time?.value;
+										const timeLabel = time?.label;
+										if (!range && Number(timeValue) <= Number(startTime)) {
+											return null;
 										}
 										if (
 											!range &&
 											activeDate.toDateString() ===
 												currentDate.toDateString() &&
-											Number(time?.value) >
+											Number(timeValue) >
 												Number(currentDate.getHours()) * 3600 +
 													Number(currentDate.getMinutes()) * 60
 										) {
-											return;
+											return null;
 										}
 										if (
 											range &&
 											activeEndDate.toDateString() ===
 												currentDate.toDateString() &&
-											Number(time?.value) >
+											Number(timeValue) >
 												Number(currentDate.getHours()) * 3600 +
 													Number(currentDate.getMinutes()) * 60
 										) {
-											return;
+											return null;
 										}
 										return (
 											<DropdownItemv2
-												title={time?.label}
-												value={time?.value}
-												key={time?.value}
+												title={timeLabel ?? ''}
+												value={timeValue}
+												key={timeValue}
 												className={classes(
 													styles['dropdown-item'],
-													time?.value === endTime ? styles.selected : ''
+													timeValue === endTime ? styles.selected : ''
 												)}
 											/>
 										);
@@ -658,21 +824,22 @@ const DatePicker = (props) => {
 										value: 24,
 									},
 								]?.map((custom) => {
+									const customValue = custom.value;
+									const customLabel = custom.label;
 									return (
 										<Button
-											key={custom?.value}
-											title={custom?.label}
-											color='default'
+											key={customValue}
+											title={customLabel}
 											variant='outlined'
 											className={classes(
 												styles.custom,
-												fixedTime === custom?.value ? styles.selected : ''
+												fixedTime === customValue ? styles.selected : ''
 											)}
-											onClick={() => {
-												setFixedTime(custom?.value);
+											onClick={(): void => {
+												setFixedTime(customValue);
 												const endUnix = getUnixTime(currentDate);
 												const startUnix =
-													Number(endUnix) - Number(custom.value) * 3600;
+													Number(endUnix) - Number(customValue) * 3600;
 												setFixedTimeRange([startUnix, endUnix]);
 											}}
 										/>

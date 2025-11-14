@@ -1,11 +1,48 @@
 import { subHours, subMinutes } from 'date-fns';
-import { DateSwitcher } from '../../../../components/datePicker/dateSwitcher';
+import { type ReactElement } from 'react';
 import { classes, getDayInfo } from '../../../../utils';
 import { Button } from '../../../buttons';
 import { ChevronIcon } from '../../../icons';
+import DateSwitcher from '../../dateSwitcher/DateSwitcher';
 import styles from './Header.module.css';
 
-const CarouselSwitch = ({ onMonthChange, selectedMonth, displayMonthRight }) => {
+interface SelectedMonth {
+	month: string;
+	monthAsNumber: number;
+	year: number;
+}
+
+interface SelectedDate {
+	month?: string;
+	year?: number;
+	date?: number;
+	unix?: number;
+}
+
+interface CarouselSwitchProps {
+	onMonthChange: (direction: 'prev' | 'next') => void;
+	selectedMonth: SelectedMonth;
+	displayMonthRight: SelectedMonth;
+}
+
+interface HeaderProps {
+	range?: boolean;
+	dateSelectionView?: boolean;
+	defaultHourDiff?: number;
+	timeSelectionView?: boolean;
+	selectedDate: SelectedDate;
+	selectedMonth: SelectedMonth;
+	setSelectedMonth: (month: SelectedMonth) => void;
+	setSelectedDate: (date: SelectedDate) => void;
+	displayMonthRight: SelectedMonth;
+	onMonthChange: (direction: 'prev' | 'next') => void;
+}
+
+const CarouselSwitch = ({
+	onMonthChange,
+	selectedMonth,
+	displayMonthRight,
+}: CarouselSwitchProps): ReactElement => {
 	return (
 		<div className={styles['title-container']}>
 			<div className={styles['left-container']}>
@@ -14,33 +51,33 @@ const CarouselSwitch = ({ onMonthChange, selectedMonth, displayMonthRight }) => 
 					variant='text'
 					data-elem='left'
 					className={styles['left-button']}
-					onClick={() => {
+					onClick={(): void => {
 						onMonthChange('prev');
 					}}
-					rightComponent={() => {
+					rightComponent={(): ReactElement => {
 						return <ChevronIcon className={classes(styles.icon)} position='left' />;
 					}}
 				/>
 				<span
 					className={
 						styles.title
-					}>{`${selectedMonth?.month} ${selectedMonth?.year}`}</span>
+					}>{`${selectedMonth?.month} ${String(selectedMonth?.year)}`}</span>
 			</div>
 
 			<div className={styles['right-container']}>
 				<span
 					className={
 						styles.title
-					}>{`${displayMonthRight?.month} ${displayMonthRight?.year}`}</span>
+					}>{`${displayMonthRight?.month} ${String(displayMonthRight?.year)}`}</span>
 				<Button
 					size='auto'
 					variant='text'
 					data-elem='right'
 					className={styles['right-button']}
-					onClick={() => {
+					onClick={(): void => {
 						onMonthChange('next');
 					}}
-					rightComponent={() => {
+					rightComponent={(): ReactElement => {
 						return <ChevronIcon className={classes(styles.icon)} position='right' />;
 					}}
 				/>
@@ -49,11 +86,10 @@ const CarouselSwitch = ({ onMonthChange, selectedMonth, displayMonthRight }) => 
 	);
 };
 
-const Header = (props) => {
-	const { range, dateSelectionView, defaultHourDiff, timeSelectionView, selectedDate } =
-		props ?? {};
+const Header = (props: HeaderProps): ReactElement => {
+	const { range, dateSelectionView, defaultHourDiff, timeSelectionView, selectedDate } = props;
 
-	const showCarouselSwitcher = !dateSelectionView && !timeSelectionView;
+	const showCarouselSwitcher: boolean = !dateSelectionView && !timeSelectionView;
 
 	let currentTime = getDayInfo(new Date());
 	if (selectedDate.unix !== undefined) {
@@ -72,7 +108,7 @@ const Header = (props) => {
 				),
 				defaultHourDiff ?? currentTime.hoursIn12
 			),
-			defaultHourDiff ? 0 : currentTime.minutes
+			defaultHourDiff !== undefined ? 0 : currentTime.minutes
 		)
 	);
 

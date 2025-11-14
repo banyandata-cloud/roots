@@ -6,6 +6,7 @@ import styles from './Calender.module.css';
 import { CalenderBody } from './body';
 import { CalenderHeader } from './header';
 
+// @ts-ignore
 const Calender = (props) => {
 	const {
 		range,
@@ -171,6 +172,7 @@ const Calender = (props) => {
 		setSelectedValues();
 	}, []);
 
+	// @ts-ignore
 	const onMonthChange = (switchSide) => {
 		if (switchSide === 'prev') {
 			if (Number(selectedMonth.monthAsNumber) - 2 < 0) {
@@ -264,6 +266,7 @@ const Calender = (props) => {
 				onMonthChange={onMonthChange}
 				setSelectedMonth={setSelectedMonth}
 				displayMonthRight={displayMonthRight}
+				// @ts-ignore
 				setDisplayMonthRight={setDisplayMonthRight}
 				showDateSelectionView={showDateSelectionView}
 				showTimeSelectionView={showTimeSelectionView}
