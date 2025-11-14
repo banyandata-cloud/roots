@@ -209,6 +209,15 @@
   font-weight: 500;
   color: var(--text-color);
 }
+.body .search {
+  width: 100%;
+  margin-bottom: 1rem;
+  position: sticky;
+  top: 0;
+}
+.body .search label div {
+  border-radius: 0rem !important;
+}
 .body .footer {
   display: flex;
   flex-direction: row;

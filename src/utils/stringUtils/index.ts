@@ -1,15 +1,33 @@
-export const getSpacedDisplayName = (input: string | undefined | null): string => {
-	if (!input) {
-		return '';
-	}
+export const getSpacedDisplayName = (input = '') => {
+	if (!input) return '';
 
-	const sanitized = input
-		.replace(/([a-z0-9])([A-Z])/g, '$1 $2')
-		.replace(/[-_]/g, ' ')
-		.replace(/\s+/g, ' ')
-		.trim();
+	// 1) trim
+	let str = input.trim();
 
-	const words = sanitized.split(' ').map((word) => {
+	// 2) remove leading "_" or "-" (bounded, not greedy)
+	str = str.replace(/^[_-]+/, '');
+
+	// 3) normalize "_" and "-" to space
+	// simple character class, global, safe
+	str = str.replace(/[_-]+/g, ' ');
+
+	// 4) camelCase: fooBar -> foo Bar
+	str = str.replace(/([a-z])([A-Z])/g, '$1 $2');
+
+	// 5) acronym-to-word: APIResponse -> API Response
+	// (ALLCAPS)(Cap+lower) -> split
+	str = str.replace(/([A-Z]+)([A-Z][a-z])/g, '$1 $2');
+
+	// 6) collapse multiple spaces (in case we had "_-")
+	str = str.replace(/\s+/g, ' ').trim();
+
+	// 7) smart-capitalize: keep ALLCAPS as-is, title-case others
+	const words = str.split(' ').map((word) => {
+		// preserve abbreviations like API, DB, GPT
+		if (/^[A-Z]{2,}$/.test(word)) {
+			return word;
+		}
+		// normal word → Capitalize
 		return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
 	});
 

@@ -1,4 +1,4 @@
-@import '../../../styles/index';
+@import '../../styles/';
 
 .root {
 	@include flex(column, flex-start, stretch);
@@ -54,8 +54,8 @@
 			.back {
 				height: 1.5rem;
 				width: 1.5rem;
-				[data-elem='component1'] {
-					.icon {
+				> [data-elem='component2'] {
+					svg {
 						width: 1.5rem;
 						height: 1.5rem;
 						fill: $white;

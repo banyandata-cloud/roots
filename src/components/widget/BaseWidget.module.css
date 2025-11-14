@@ -60,7 +60,7 @@
   height: 1.5rem;
   width: 1.5rem;
 }
-.root .header .header-title .back [data-elem=component1] .icon {
+.root .header .header-title .back > [data-elem=component2] svg {
   width: 1.5rem;
   height: 1.5rem;
   fill: var(--white);
@@ -209,4 +209,4 @@
   flex: 1 1;
   position: relative;
   padding: 0.5rem;
-}/*# sourceMappingURL=BaseV2Widget.module.css.map */
+}/*# sourceMappingURL=BaseWidget.module.css.map */

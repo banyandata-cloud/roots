@@ -92,7 +92,11 @@ The dropdown component with multiple selections.
 	<Story name='Multi Select Controlled'>
 		{() => {
 			const [value, setValue] = useState('');
-			console.log(value);
+			const [options, setOptions] = useState([...Array(50).keys()]);
+			const [searchValue, setSearchValue] = useState('');
+			const filteredOptions = options.filter((option) => {
+				return option.toString().includes(searchValue);
+			});
 			return (
 				<div>
 					<Dropdownv2
@@ -100,10 +104,17 @@ The dropdown component with multiple selections.
 						multi={true}
 						label='Multi Select Checkbox Dropdown'
 						placeholder='Select an option'
+						search={{
+							placeholder: 'Search Something',
+							value: searchValue,
+							onChange: (value) => {
+								setSearchValue(value);
+							},
+						}}
 						onChange={(event, newValue) => {
 							setValue(newValue.toString());
 						}}>
-						{[...Array(50).keys()].map((option) => {
+						{filteredOptions.map((option) => {
 							return (
 								<DropdownItemv2
 									key={option}

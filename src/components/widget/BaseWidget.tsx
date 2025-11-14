@@ -219,7 +219,9 @@ const generateOptions = ({
 					secondary={!header}
 					options={optionData.options}
 					value={optionData.value ?? null}
-					{...(optionData.onChange && { onChange: optionData.onChange })}
+					{...(optionData.onChange && {
+						onChange: optionData.onChange,
+					})}
 				/>
 			);
 		}
@@ -350,13 +352,10 @@ const BaseWidget = forwardRef<HTMLDivElement, BaseWidgetProps>((props, ref) => {
 					data-elem='header-title'>
 					{showBack && (
 						<Button
-							title=''
+							title={<ArrowIcon className={styles.icon} position='left' />}
 							size='auto'
 							radius='round'
 							className={styles.back}
-							leftComponent={() => {
-								return <ArrowIcon className={styles.icon} position='left' />;
-							}}
 							onClick={() => {
 								return onBack?.();
 							}}

@@ -207,6 +207,18 @@
 		}
 	}
 
+	.search {
+		width: 100%;
+		margin-bottom: 1rem;
+		position: sticky;
+		top: 0;
+		label {
+			div {
+				border-radius: 0rem !important;
+			}
+		}
+	}
+
 	.footer {
 		@include flex(row, space-between);
 		list-style: none;

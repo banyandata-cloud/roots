@@ -35,6 +35,7 @@ import Popper from '../../popper/Popper';
 import { Tooltip } from '../../tooltip';
 import styles from './Dropdown.module.css';
 import type { DropdownItemProps } from './dropdown-item/types';
+import { TextFieldv2 } from '../textField';
 
 type FeedbackType = 'success' | 'warning' | 'info' | 'error';
 interface Feedback {
@@ -86,6 +87,11 @@ export interface DropdownProps {
 
 	/** Show caret as up/down variant */
 	caretAsUpDown?: boolean;
+	search?: {
+		placeholder: string;
+		value: string | number;
+		onChange: (value: string | number) => void;
+	};
 }
 
 /** What parent components can call on the ref */
@@ -122,6 +128,7 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(props,
 		multiSelectActionTitle,
 		valueAsCount,
 		caretAsUpDown,
+		search,
 	} = props;
 
 	const [open, setOpen] = useState(false);
@@ -210,7 +217,7 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(props,
 				const childVal = child.props.value?.toString() ?? '';
 				if (
 					(multi && (inputValue as string[]).includes(childVal)) ||
-					(!multi && (inputValue as string).toString() === childVal)
+					(!multi && (inputValue as string) === childVal)
 				) {
 					options.push({
 						title: child.props.title,
@@ -609,10 +616,21 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(props,
 											onSelectAll(event, true);
 										}}
 									/>
+
 									{selectedOptions.length > 0 && (
 										<span className={styles.items}>{selectedItemsLabel}</span>
 									)}
 								</li>
+							)}
+							{search && (
+								<TextFieldv2
+									className={styles.search}
+									placeholder={search.placeholder}
+									value={search.value}
+									onChange={(e) => {
+										search.onChange(e.target.value);
+									}}
+								/>
 							)}
 
 							{items}
