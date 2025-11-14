@@ -1,0 +1,60 @@
+.root {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 0.5rem;
+  padding-inline: 0.75rem;
+}
+.root .switch-selector {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+.root .switch-selector .value {
+  width: 100%;
+  padding: 0.9375rem;
+  background-color: var(--background-color5);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.root .switch-selector .value > span {
+  color: var(--secondary-color2);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 0.7969rem;
+}
+.root .switch-selector .arrows {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.root .switch-selector .arrows button[data-elem=base-cell].arrow {
+  width: 2rem;
+  height: 1.3rem;
+  border-radius: 4px 4px 0 0;
+  background-color: var(--light-color2);
+}
+.root .switch-selector .arrows button[data-elem=base-cell].arrow:hover {
+  background-color: var(--background-color5);
+  color: var(--secondary-color2);
+}
+.root .switch-selector .arrows button[data-elem=base-cell].arrow > [data-elem=component2] > [data-elem=title] {
+  color: var(--text-color);
+}
+.root .switch-selector .arrows button[data-elem=base-cell].arrow:nth-child(2) {
+  border-radius: 0 0 4px 4px;
+}
+.root .to {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-inline: 0.25rem;
+}/*# sourceMappingURL=DateSwitcher.module.css.map */
