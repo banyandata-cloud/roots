@@ -225,7 +225,9 @@ const DatePicker = (props: DatePickerProps): ReactElement => {
 
 	const activeDisplayValue =
 		!range && value !== null
-			? selectedDate.unix
+			? selectedDate.unix !== undefined
+				? selectedDate.unix
+				: value
 			: selectedRange.unix !== undefined && selectedRange.unix.length > 0
 				? selectedRange.unix
 				: value;
@@ -476,6 +478,7 @@ const DatePicker = (props: DatePickerProps): ReactElement => {
 											monthNumber,
 											selectedDate.date
 										);
+
 										setSelectedDate({
 											...selectedDate,
 											month: getDayInfo(newSelectedData).month,
@@ -490,7 +493,6 @@ const DatePicker = (props: DatePickerProps): ReactElement => {
 										FULL_MONTHS_INDEX?.[nextMonthIndex]?.label;
 
 									setSelectedMonth({
-										...selectedMonth,
 										month: fullMonthLabel ?? '',
 										monthAsNumber: monthNumber,
 										year: selectedMonth?.year ?? new Date().getFullYear(),
@@ -542,8 +544,12 @@ const DatePicker = (props: DatePickerProps): ReactElement => {
 									});
 								}}>
 								{Array.from(
-									{ length: currentDate.getFullYear() - startingYear + 1 },
-									(_, i) => currentDate.getFullYear() - i
+									{
+										length: selectedMonth
+											? selectedMonth?.year - startingYear + 1
+											: 0,
+									},
+									(_, i) => selectedMonth!.year - i
 								)?.map((year) => {
 									return (
 										<DropdownItemv2
