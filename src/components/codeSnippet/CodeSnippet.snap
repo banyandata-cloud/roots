@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
-exports[`CodeSnippet – Snapshot Tests basic render snapshot 1`] = `
+exports[`CodeSnippet — Snapshot Rendering basic render snapshot 1`] = `
 <div>
   <div
     class="root"
@@ -12,7 +12,7 @@ exports[`CodeSnippet – Snapshot Tests basic render snapshot 1`] = `
 </div>
 `;
 
-exports[`CodeSnippet – Snapshot Tests render with copy button snapshot 1`] = `
+exports[`CodeSnippet — Snapshot Rendering render with copy button snapshot 1`] = `
 <div>
   <div
     class="root"

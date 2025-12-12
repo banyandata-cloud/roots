@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
-exports[`Accordion – Snapshot Tests closed accordion snapshot 1`] = `
+exports[`CodeSnippet — Snapshot Rendering closed accordion snapshot 1`] = `
 <div>
   <div
     class="root"
@@ -22,7 +22,7 @@ exports[`Accordion – Snapshot Tests closed accordion snapshot 1`] = `
 </div>
 `;
 
-exports[`Accordion – Snapshot Tests open accordion snapshot 1`] = `
+exports[`CodeSnippet — Snapshot Rendering open accordion snapshot 1`] = `
 <div>
   <div
     class="root open"

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
-exports[`DisplayPicture – Snapshot Tests snapshot with image URL 1`] = `
+exports[`CodeSnippet — Snapshot Rendering snapshot with image URL 1`] = `
 <div>
   <div
     class="root md"
@@ -14,7 +14,7 @@ exports[`DisplayPicture – Snapshot Tests snapshot with image URL 1`] = `
 </div>
 `;
 
-exports[`DisplayPicture – Snapshot Tests snapshot without URL 1`] = `
+exports[`CodeSnippet — Snapshot Rendering snapshot without URL 1`] = `
 <div>
   <div
     class="root sm"
