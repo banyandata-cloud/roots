@@ -9,7 +9,7 @@ jest.mock('../../utils', () => ({
 }));
 
 //   HAPPY PATH TESTS
-describe('DisplayPicture – Happy Path', () => {
+describe('DisplayPicture – Rendering Behaviour', () => {
 	test('renders image when URL is provided', () => {
 		render(
 			<DisplayPicture
@@ -33,7 +33,7 @@ describe('DisplayPicture – Happy Path', () => {
 });
 
 //    MEDIUM PATH TESTS
-describe('DisplayPicture – Medium Path', () => {
+describe('DisplayPicture – Styling Behaviour', () => {
 	test('applies correct size class based on size prop', () => {
 		const { container } = render(<DisplayPicture name='Test' url='' size='md' className='' />);
 
@@ -50,7 +50,7 @@ describe('DisplayPicture – Medium Path', () => {
 });
 
 //    RISKY PATH TESTS
-describe('DisplayPicture – Risky Path', () => {
+describe('DisplayPicture – Edge Case Behaviour', () => {
 	test('should NOT crash when name is empty', () => {
 		const { container } = render(<DisplayPicture name='' url='' size='sm' className='' />);
 
@@ -74,7 +74,7 @@ describe('DisplayPicture – Risky Path', () => {
 });
 
 //    SNAPSHOT TESTS
-describe('DisplayPicture – Snapshot Tests', () => {
+describe('CodeSnippet — Snapshot Rendering', () => {
 	test('snapshot without URL', () => {
 		const { container } = render(
 			<DisplayPicture name='Snapshot User' url='' size='sm' className='' />

@@ -14,7 +14,7 @@ jest.mock('react-syntax-highlighter', () => ({
 }));
 
 // HAPPY PATH TESTS
-describe('CodeSnippet - Happy Path', () => {
+describe('CodeSnippet — Rendering & Basic Behaviour', () => {
 	test('renders provided code text with required props', () => {
 		render(
 			<CodeSnippet
@@ -90,7 +90,7 @@ describe('CodeSnippet - Happy Path', () => {
 });
 
 // MEDIUM PATH TESTS
-describe('CodeSnippet - Medium Path', () => {
+describe('CodeSnippet — Behaviour With Extended Props', () => {
 	test('does NOT show copy button when copy=false (explicit props)', () => {
 		render(
 			<CodeSnippet
@@ -142,7 +142,7 @@ describe('CodeSnippet - Medium Path', () => {
 
 // RISKY PATH TESTS
 // ------------------------------
-describe('CodeSnippet - Risky Path', () => {
+describe('CodeSnippet — Edge Case Handling', () => {
 	test('invalid language should NOT crash component', () => {
 		render(
 			<CodeSnippet
@@ -211,7 +211,7 @@ describe('CodeSnippet - Risky Path', () => {
 });
 
 // Snapshot tests (add to CodeSnippet.test.tsx)
-describe('CodeSnippet – Snapshot Tests', () => {
+describe('CodeSnippet — Snapshot Rendering', () => {
 	test('basic render snapshot', () => {
 		const { container } = render(
 			<CodeSnippet

@@ -38,7 +38,7 @@ jest.mock('framer-motion', () => ({
 }));
 
 // HAPPY PATH TESTS
-describe('Accordion – Happy Path', () => {
+describe('Accordion — Rendering & Interaction Behaviour', () => {
 	test('renders title and closed body when defaultOpen=false', () => {
 		render(<Accordion title='Hello' description='desc' defaultOpen={false} />);
 
@@ -56,7 +56,7 @@ describe('Accordion – Happy Path', () => {
 });
 
 // MEDIUM PATH TESTS
-describe('Accordion – Medium Path', () => {
+describe('Accordion — Controlled Mode & Customisation Behaviour', () => {
 	test('controlled mode → onToggle should be called', () => {
 		const mockToggle = jest.fn();
 
@@ -86,7 +86,7 @@ describe('Accordion – Medium Path', () => {
 });
 
 // RISKY PATH TESTS
-describe('Accordion – Risky Path', () => {
+describe('Accordion — Edge Case Handling', () => {
 	test('should NOT crash when title is empty', () => {
 		render(<Accordion title='' description='desc' defaultOpen={false} />);
 
@@ -102,7 +102,7 @@ describe('Accordion – Risky Path', () => {
 });
 
 // SNAPSHOT TESTS
-describe('Accordion – Snapshot Tests', () => {
+describe('CodeSnippet — Snapshot Rendering', () => {
 	test('closed accordion snapshot', () => {
 		const { container } = render(
 			<Accordion title='Snap Title' description='Snap Desc' defaultOpen={false} />
