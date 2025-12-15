@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`CodeSnippet — Snapshot Rendering basic render snapshot 1`] = `
+<div>
+  <div
+    class="root"
+  >
+    <pre>
+      console.log('snap')
+    </pre>
+  </div>
+</div>
+`;
+
+exports[`CodeSnippet — Snapshot Rendering render with copy button snapshot 1`] = `
+<div>
+  <div
+    class="root"
+  >
+    <pre>
+      copy snap
+    </pre>
+    <button
+      class="root sm border-radius-default root contained root radius-default contained primary copy"
+      data-elem="base-cell"
+      type="submit"
+    >
+      <span
+        data-elem="component2"
+      >
+        <span
+          data-elem="title"
+        >
+          <span
+            style="opacity: 1; transform: none;"
+            title="Copy"
+          >
+            <div
+              data-testid="copy-icon"
+            />
+          </span>
+        </span>
+      </span>
+    </button>
+  </div>
+</div>
+`;

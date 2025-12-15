@@ -62,7 +62,13 @@
 				"checkFragmentShorthand": true
 			}
 		],
-		"import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
+		"import/no-extraneous-dependencies": [
+			"error",
+			{
+				"devDependencies": true,
+				"include": ["**/*.test.tsx", "**/*.test.ts"]
+			}
+		],
 		"no-tabs": ["error", { "allowIndentationTabs": true }],
 		"react/jsx-filename-extension": [1, { "extensions": [".tsx", ".ts", ".jsx", ".js"] }],
 		"comma-dangle": [
