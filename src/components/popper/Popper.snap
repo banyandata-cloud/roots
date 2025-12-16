@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Popper Component — Snapshot Rendering matches snapshot when closed 1`] = `
+<div>
+  <div
+    data-portal-id="default-popper:re:"
+    data-testid="portal"
+  />
+</div>
+`;
+
+exports[`Popper Component — Snapshot Rendering matches snapshot when open with overlay 1`] = `
+<div>
+  <div
+    data-portal-id="default-popper:rc:"
+    data-testid="portal"
+  >
+    <div
+      class="backdrop transparent"
+      data-lockscroll="true"
+      data-testid="overlay"
+    >
+      Snapshot
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Popper Component — Snapshot Rendering matches snapshot when open without overlay 1`] = `
+<div>
+  <div
+    data-portal-id="default-popper:rd:"
+    data-testid="portal"
+  >
+    <div
+      class=""
+    >
+      Snapshot2
+    </div>
+  </div>
+</div>
+`;

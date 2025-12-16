@@ -19,6 +19,7 @@ export interface BaseSidePanelProps {
 	renderHeader?: React.ReactNode;
 	renderFooter?: React.ReactNode;
 	children?: React.ReactNode;
+	tabsOrientation?: 'horizontal' | 'vertical';
 
 	/** When true, render inside BaseModal; otherwise render as a drawer div */
 	isModal?: boolean;
@@ -69,6 +70,7 @@ const BaseSidePanel: React.FC<BaseSidePanelProps> = (props) => {
 		setToggleTableDrawer = () => {},
 		activeTab,
 		tabsConfig = { tabs: [], className: '' },
+		tabsOrientation = 'vertical',
 	} = props;
 
 	const { tabs = [], className: tabsClassName } = tabsConfig ?? {};
@@ -152,7 +154,7 @@ const BaseSidePanel: React.FC<BaseSidePanelProps> = (props) => {
 				<Tabs
 					tabs={filteredTabs as any} // passthrough; Tabs defines the exact item shape
 					className={classes(styles.tabs, tabsClassName)}
-					direction='vertical'
+					direction={tabsOrientation}
 					selectedTab={selectedTab as any}
 					setSelectedTab={setSelectedTab as any}>
 					<div className={styles.content}>

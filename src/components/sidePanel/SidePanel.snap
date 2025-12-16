@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`BaseSidePanel — Snapshots drawer snapshot 1`] = `
+<div>
+  <div
+    class="drawer"
+  >
+    <div
+      class="body"
+      data-elem="body"
+    >
+      Body
+    </div>
+  </div>
+</div>
+`;
+
+exports[`BaseSidePanel — Snapshots modal snapshot 1`] = `
+<div>
+  <div
+    data-testid="base-modal"
+  >
+    <div
+      data-testid="modal-header"
+    />
+    <div
+      data-testid="modal-body"
+    >
+      Body
+    </div>
+    <div
+      data-testid="modal-footer"
+    />
+  </div>
+</div>
+`;
+
+exports[`BaseSidePanel — Snapshots tabs snapshot 1`] = `
+<div>
+  <div
+    class="drawer"
+  >
+    <div
+      data-testid="tabs"
+    >
+      <button
+        data-testid="tab-1"
+      >
+        Tab 1
+      </button>
+      <button
+        data-testid="tab-2"
+      >
+        Tab 2
+      </button>
+      <div
+        data-testid="tabs-children"
+      >
+        <div
+          class="content"
+        >
+          <div
+            class="body"
+            data-elem="body"
+          >
+            Body
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
