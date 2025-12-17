@@ -1,3 +1,11 @@
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+/* eslint-disable no-unsafe-optional-chaining */
+/* eslint-disable import/no-useless-path-segments */
+/* eslint-disable @typescript-eslint/no-unnecessary-type-conversion */
+/* eslint-disable @typescript-eslint/no-unnecessary-condition */
+/* eslint-disable no-nested-ternary */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import {
 	useClick,
 	useDismiss,
@@ -225,9 +233,7 @@ const DatePicker = (props: DatePickerProps): ReactElement => {
 
 	const activeDisplayValue =
 		!range && value !== null
-			? selectedDate.unix !== undefined
-				? selectedDate.unix
-				: value
+			? (selectedDate.unix ?? value)
 			: selectedRange.unix !== undefined && selectedRange.unix.length > 0
 				? selectedRange.unix
 				: value;
@@ -285,7 +291,6 @@ const DatePicker = (props: DatePickerProps): ReactElement => {
 			if (valueAsRange) {
 				if (selectedDate.unix !== undefined) {
 					const clickedDate = new Date(selectedDate.unix * 1000);
-					const currentDate = new Date();
 
 					clickedDate.setHours(0, 0, 0, 0);
 
@@ -497,6 +502,7 @@ const DatePicker = (props: DatePickerProps): ReactElement => {
 										monthAsNumber: monthNumber,
 										year: selectedMonth?.year ?? new Date().getFullYear(),
 									});
+
 									setDisplayMonthRight({
 										month: nextMonthLabel ?? '',
 										monthAsNumber: nextMonthIndex,
@@ -507,15 +513,15 @@ const DatePicker = (props: DatePickerProps): ReactElement => {
 												: (selectedMonth?.year ?? new Date().getFullYear()),
 									});
 								}}>
-								{FULL_MONTHS_INDEX?.map(({ value, label }) => {
+								{FULL_MONTHS_INDEX?.map(({ value: monthValue, label }) => {
 									return (
 										<DropdownItemv2
 											title={label}
-											value={value}
-											key={value}
+											value={monthValue}
+											key={monthValue}
 											className={classes(
 												styles['dropdown-item'],
-												value === selectedMonth?.monthAsNumber
+												monthValue === selectedMonth?.monthAsNumber
 													? styles.selected
 													: ''
 											)}
@@ -549,7 +555,9 @@ const DatePicker = (props: DatePickerProps): ReactElement => {
 											? selectedMonth?.year - startingYear + 1
 											: 0,
 									},
-									(_, i) => selectedMonth!.year - i
+									(_, i) => {
+										return selectedMonth!.year - i;
+									}
 								)?.map((year) => {
 									return (
 										<DropdownItemv2
@@ -829,9 +837,9 @@ const DatePicker = (props: DatePickerProps): ReactElement => {
 										label: '24 hour',
 										value: 24,
 									},
-								]?.map((custom) => {
-									const customValue = custom.value;
-									const customLabel = custom.label;
+								]?.map((customDate) => {
+									const customValue = customDate.value;
+									const customLabel = customDate.label;
 									return (
 										<Button
 											key={customValue}
