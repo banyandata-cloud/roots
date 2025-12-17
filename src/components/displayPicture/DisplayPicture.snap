@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`CodeSnippet — Snapshot Rendering snapshot with image URL 1`] = `
+<div>
+  <div
+    class="root md"
+  >
+    <img
+      alt="Pic User"
+      data-elem="dp-img"
+      src="https://image.com/photo.png"
+    />
+  </div>
+</div>
+`;
+
+exports[`CodeSnippet — Snapshot Rendering snapshot without URL 1`] = `
+<div>
+  <div
+    class="root sm"
+  >
+    <div
+      data-elem="dp-name-container"
+    >
+      <span
+        data-elem="dp-name"
+      >
+        SN
+      </span>
+    </div>
+  </div>
+</div>
+`;

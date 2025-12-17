@@ -56,16 +56,9 @@
 		"importHelpers": true /* Import helpers from tslib - reduces bundle size */,
 		"skipLibCheck": true /* Skip type checking of declaration files */,
 		"verbatimModuleSyntax": true /* Use 'import type' and 'export type' */,
-		"exactOptionalPropertyTypes": true /* Interpret optional property types as written */
+		"exactOptionalPropertyTypes": true /* Interpret optional property types as written */,
+		"types": ["jest", "@testing-library/jest-dom"]
 	},
 	"include": ["src/**/*", "src/**/*", "types/**/*.ts", "types/**/*.d.ts", "*.js"],
-	"exclude": [
-		"node_modules",
-		"dist",
-		"**/*.test.ts",
-		"**/*.test.tsx",
-		".storybook",
-		"**/*.stories.mdx",
-		"*.js"
-	]
+	"exclude": ["node_modules", "dist", ".storybook", "**/*.stories.mdx", "*.js"]
 }
