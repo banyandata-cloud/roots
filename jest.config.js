@@ -13,6 +13,8 @@ module.exports = {
 
 		// *** FINAL WORKING FIX ***
 		'^react-syntax-highlighter(/.*)?$': '<rootDir>/__mocks__/react-syntax-highlighter.js',
+
+		'^react-merge-refs$': '<rootDir>/__mocks__/react-merge-refs.js',
 	},
 
 	setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],

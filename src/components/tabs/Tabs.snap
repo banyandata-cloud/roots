@@ -1,0 +1,121 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Tabs — Snapshots default horizontal snapshot 1`] = `
+<div>
+  <div
+    class="tabs-container"
+  >
+    <div
+      class="tabs"
+    >
+      <div
+        class="tab horizontal active"
+      >
+        <button
+          data-testid="btn-Tab1"
+        >
+          Tab1
+        </button>
+      </div>
+      <div
+        class="tab horizontal"
+      >
+        <button
+          data-testid="btn-Tab2"
+        >
+          Tab2
+        </button>
+      </div>
+      <div
+        class="tab-slider"
+        style="left: 20px; width: 80px;"
+      />
+    </div>
+    <div
+      class="tab-content"
+    />
+  </div>
+</div>
+`;
+
+exports[`Tabs — Snapshots dropdown snapshot 1`] = `
+<div>
+  <div
+    class="tabs-container"
+  >
+    <div
+      class="tabs"
+    >
+      <div
+        class="tab horizontal active"
+      >
+        <button
+          data-testid="btn-Tab1"
+        >
+          Tab1
+        </button>
+      </div>
+      <div
+        class="tab horizontal"
+      >
+        <div
+          data-testid="dropdown"
+        >
+          <div
+            data-testid="dropdown-item-5"
+          >
+            <div>
+              Opt1
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="tab-slider"
+        style="left: 20px; width: 80px;"
+      />
+    </div>
+    <div
+      class="tab-content"
+    />
+  </div>
+</div>
+`;
+
+exports[`Tabs — Snapshots vertical snapshot 1`] = `
+<div>
+  <div
+    class="tabs-container-vertical"
+  >
+    <div
+      class="vertical"
+    >
+      <div
+        class="tab vertical active"
+      >
+        <button
+          data-testid="btn-Tab1"
+        >
+          Tab1
+        </button>
+      </div>
+      <div
+        class="tab vertical"
+      >
+        <button
+          data-testid="btn-Tab2"
+        >
+          Tab2
+        </button>
+      </div>
+      <div
+        class="tab-slider-vertical"
+        style="left: 20px; width: 80px;"
+      />
+    </div>
+    <div
+      class="tab-content-vertical"
+    />
+  </div>
+</div>
+`;

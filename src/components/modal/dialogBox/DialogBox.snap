@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`DialogBox — Snapshot Testing matches snapshot structure 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="modal"
+  >
+    <div
+      data-testid="header"
+    >
+      <h2
+        class="root b1 regular-stroke"
+        style="font-weight: 600;"
+      >
+        Snap
+      </h2>
+    </div>
+    <div
+      data-testid="body"
+    >
+      <div
+        class="description"
+      >
+        Snapshot
+      </div>
+    </div>
+    <div
+      data-testid="footer"
+    >
+      <div
+        class="footer"
+      >
+        <button
+          class="root sm border-radius-default root outlined root radius-default outlined primary cancel"
+          data-elem="base-cell"
+          type="submit"
+        >
+          <span
+            data-elem="component2"
+          >
+            <span
+              data-elem="title"
+            >
+              Dismiss
+            </span>
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Alert — Snapshot Rendering snapshot: alert closed state 1`] = `<DocumentFragment />`;
+
+exports[`Alert — Snapshot Rendering snapshot: alert open state 1`] = `
+<DocumentFragment>
+  <div
+    data-testid="mock-popper"
+  >
+    <div
+      class="root info shadow position-bottom-center"
+    >
+      <div
+        class="left"
+      >
+        <div
+          class="icon-container info"
+        >
+          <div
+            class="icon"
+            data-testid="icon-info"
+          />
+        </div>
+        <div
+          class="content"
+        >
+          <span
+            class="title"
+          >
+            Snapshot Title
+          </span>
+          <span
+            class="description"
+          >
+            Snap Desc
+          </span>
+        </div>
+      </div>
+      <div
+        class="actions"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;

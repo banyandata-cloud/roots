@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Callout — Snapshot Rendering matches snapshot with full data 1`] = `
+<div>
+  <div
+    class="root error shadow"
+  >
+    <div
+      class="left"
+    >
+      <div
+        class="icon-container error"
+      >
+        <div
+          class="icon"
+          data-testid="icon-error"
+        />
+      </div>
+      <div
+        class="content"
+      >
+        <span
+          class="title"
+          data-elem="title"
+        >
+          Snapshot Title
+        </span>
+        <span
+          class="description"
+          data-elem="desc"
+        >
+          Snapshot description
+        </span>
+      </div>
+    </div>
+    <div
+      class="actions"
+    />
+  </div>
+</div>
+`;
