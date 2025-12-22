@@ -1,56 +1,64 @@
-const path = require('path');
-
+/** @type { import('@storybook/react-webpack5').StorybookConfig } */
 module.exports = {
-	stories: [
-		'../src/components/**/*.stories.mdx',
-		'../src/components/**/*.stories.@(js|jsx|ts|tsx)',
-	],
-	addons: [
-		'@storybook/addon-links',
-		'@storybook/addon-essentials',
-		'@storybook/addon-interactions',
-		'@storybook/addon-a11y',
-		'storybook-addon-designs',
-		'@storybook/addon-backgrounds',
-		'storybook-dark-mode',
-	],
-	framework: '@storybook/react',
-	features: {
-		interactionsDebugger: true,
-		buildStoriesJson: true,
+	framework: {
+		name: '@storybook/react-webpack5',
+		options: {},
 	},
-	core: {
-		builder: '@storybook/builder-webpack5',
-	},
-	typescript: {
-		reactDocgen: 'react-docgen',
-	},
-	babel: async (options) => ({
-		...options,
-		presets: [
-			...options.presets,
-			[
-				'@babel/preset-react',
-				{
-					runtime: 'automatic',
-				},
-				'preset-react-jsx-transform', // Can name this anything, just an arbitrary alias to avoid duplicate presets'
-			],
-		],
-	}),
-	webpackFinal: async (config, { configType }) => {
-		// `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
-		// You can change the configuration based on that.
-		// 'PRODUCTION' is used when building the static version of storybook.
 
-		// Make whatever fine-grained changes you need
+	stories: ['../src/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
+
+	addons: ['@storybook/addon-a11y'],
+
+	docs: {
+		autodocs: true,
+	},
+
+	webpackFinal: async (config) => {
+		config.module.rules = config.module.rules.filter(
+			(rule) => !rule.test?.toString().includes('mdx')
+		);
+		// ✅ MDX + TS support
+		config.module.rules.push({
+			test: /\.mdx$/,
+			exclude: [/node_modules/, /\.storybook/],
+			use: [
+				{
+					loader: require.resolve('babel-loader'),
+					options: {
+						presets: [
+							require.resolve('@babel/preset-env'),
+							[require.resolve('@babel/preset-react'), { runtime: 'automatic' }],
+						],
+					},
+				},
+				{
+					loader: require.resolve('@mdx-js/loader'),
+				},
+			],
+		});
+
+		config.module.rules.push({
+			test: /\.(js|jsx|ts|tsx)$/,
+			exclude: /node_modules/,
+			use: {
+				loader: require.resolve('babel-loader'),
+				options: {
+					presets: [
+						require.resolve('@babel/preset-env'),
+						[require.resolve('@babel/preset-react'), { runtime: 'automatic' }],
+					],
+				},
+			},
+		});
+
+		config.resolve.extensions.push('.ts', '.tsx');
+
+		// SCSS support
 		config.module.rules.push({
 			test: /\.scss$/,
 			use: ['style-loader', 'css-loader', 'sass-loader'],
-			include: path.resolve(__dirname, '../'),
 		});
 
-		// Return the altered config
 		return config;
 	},
 };

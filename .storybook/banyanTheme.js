@@ -1,6 +1,6 @@
-import { create } from '@storybook/theming';
+import { create } from 'storybook/theming';
 
-export default create({
+export const banyanTheme = create({
 	base: 'light',
 	appBg: 'red',
 	appBorderRadius: 10,
