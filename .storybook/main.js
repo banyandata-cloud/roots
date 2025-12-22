@@ -17,7 +17,6 @@ module.exports = {
 		config.module.rules = config.module.rules.filter(
 			(rule) => !rule.test?.toString().includes('mdx')
 		);
-		// ✅ MDX + TS support
 		config.module.rules.push({
 			test: /\.mdx$/,
 			exclude: [/node_modules/, /\.storybook/],
