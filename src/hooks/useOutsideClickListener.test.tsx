@@ -1,114 +1,115 @@
-import { useRef } from 'react';
 import { render, fireEvent, cleanup } from '@testing-library/react';
-import useOutsideClickListener from './useOutsideClickListener';
+import { useRef, useState, useEffect } from 'react';
+import Popover from '../components/popover/Popover';
 
-const TestComponent = ({ onOutsideClick }: { onOutsideClick: () => void }) => {
-	// JSX expects HTMLDivElement
-	const divRef = useRef<HTMLDivElement | null>(null);
+//  Test wrapper using a Popover
 
-	// Hook expects HTMLElement
-	const elementRef = useRef<HTMLElement | null>(null);
+const PopoverTestWrapper = ({ onClose }: { onClose: () => void }) => {
+	const anchorRef = useRef<HTMLButtonElement | null>(null);
+	const [anchorReady, setAnchorReady] = useState(false);
+	const [open, setOpen] = useState(true);
 
-	// Bridge both refs safely
-	const setRef = (node: HTMLDivElement | null) => {
-		divRef.current = node;
-		elementRef.current = node;
-	};
-
-	useOutsideClickListener(onOutsideClick, elementRef);
+	useEffect(() => {
+		if (anchorRef.current) {
+			setAnchorReady(true);
+		}
+	}, []);
 
 	return (
-		<div>
-			<div ref={setRef} data-testid='inside'>
-				Inside
-			</div>
-			<div data-testid='outside'>Outside</div>
-		</div>
+		<>
+			<button ref={anchorRef}>Anchor</button>
+
+			{anchorReady && (
+				<Popover
+					open={open}
+					setOpen={setOpen}
+					onClose={onClose}
+					anchorEl={anchorRef.current}>
+					<div>Popover Content</div>
+				</Popover>
+			)}
+		</>
 	);
 };
 
 // HAPPY PATH
-describe('useOutsideClickListener — initializes and registers listeners', () => {
-	test('registers mousedown listener on document', () => {
-		const spy = jest.spyOn(document, 'addEventListener');
-		const cb = jest.fn();
 
-		render(<TestComponent onOutsideClick={cb} />);
+describe('useOutsideClickListener — initialization via Popover', () => {
+	test('registers dismiss behaviour when Popover is mounted', () => {
+		const onClose = jest.fn();
 
-		expect(spy).toHaveBeenCalledWith('mousedown', expect.any(Function));
+		render(<PopoverTestWrapper onClose={onClose} />);
 
-		spy.mockRestore();
+		fireEvent.keyDown(document, { key: 'Escape' });
+
+		expect(onClose).toHaveBeenCalledTimes(1);
 	});
 
-	test('removes mousedown listener on unmount', () => {
-		const spy = jest.spyOn(document, 'removeEventListener');
-		const cb = jest.fn();
+	test('cleans up dismiss behaviour on unmount', () => {
+		const onClose = jest.fn();
 
-		const { unmount } = render(<TestComponent onOutsideClick={cb} />);
+		const { unmount } = render(<PopoverTestWrapper onClose={onClose} />);
 
 		unmount();
 
-		expect(spy).toHaveBeenCalledWith('mousedown', expect.any(Function));
+		fireEvent.keyDown(document, { key: 'Escape' });
 
-		spy.mockRestore();
+		expect(onClose).not.toHaveBeenCalled();
 	});
 });
 
-// MEDIUM PATH
-describe('useOutsideClickListener — detects outside clicks correctly', () => {
-	test('does not call callback when clicking inside the element', () => {
-		const cb = jest.fn();
-		const { getByTestId } = render(<TestComponent onOutsideClick={cb} />);
+//  MEDIUM PATH
 
-		fireEvent.mouseDown(getByTestId('inside'));
+describe('useOutsideClickListener — interaction behaviour via Popover', () => {
+	test('does not close when clicking inside popover content', () => {
+		const onClose = jest.fn();
 
-		expect(cb).not.toHaveBeenCalled();
+		const { getByText } = render(<PopoverTestWrapper onClose={onClose} />);
+
+		fireEvent.mouseDown(getByText('Popover Content'));
+
+		expect(onClose).not.toHaveBeenCalled();
 	});
 
-	test('calls callback when clicking outside the element', () => {
-		const cb = jest.fn();
-		const { getByTestId } = render(<TestComponent onOutsideClick={cb} />);
+	test('closes popover when dismissed using Escape key', () => {
+		const onClose = jest.fn();
 
-		fireEvent.mouseDown(getByTestId('outside'));
+		render(<PopoverTestWrapper onClose={onClose} />);
 
-		expect(cb).toHaveBeenCalledTimes(1);
+		fireEvent.keyDown(document, { key: 'Escape' });
+
+		expect(onClose).toHaveBeenCalledTimes(1);
 	});
 });
 
-// RISKY PATH
-describe('useOutsideClickListener — handles edge cases safely', () => {
-	test('does not throw when ref is null', () => {
-		const cb = jest.fn();
+//  RISKY PATH
 
-		const NullRefComponent = () => {
-			const ref = useRef<HTMLElement | null>(null);
-			useOutsideClickListener(cb, ref);
-			return <div data-testid='outside' />;
-		};
-
-		const { getByTestId } = render(<NullRefComponent />);
+describe('useOutsideClickListener — edge cases via Popover', () => {
+	test('does not throw when anchorEl is initially null', () => {
+		const onClose = jest.fn();
 
 		expect(() => {
-			fireEvent.mouseDown(getByTestId('outside'));
+			render(<PopoverTestWrapper onClose={onClose} />);
 		}).not.toThrow();
 	});
 
-	test('uses latest callback after re-render', () => {
-		const firstCb = jest.fn();
-		const secondCb = jest.fn();
+	test('uses latest onClose callback after re-render', () => {
+		const firstOnClose = jest.fn();
+		const secondOnClose = jest.fn();
 
-		const { rerender, getByTestId } = render(<TestComponent onOutsideClick={firstCb} />);
+		const { rerender } = render(<PopoverTestWrapper onClose={firstOnClose} />);
 
-		rerender(<TestComponent onOutsideClick={secondCb} />);
+		rerender(<PopoverTestWrapper onClose={secondOnClose} />);
 
-		fireEvent.mouseDown(getByTestId('outside'));
+		fireEvent.keyDown(document, { key: 'Escape' });
 
-		expect(firstCb).not.toHaveBeenCalled();
-		expect(secondCb).toHaveBeenCalledTimes(1);
+		expect(firstOnClose).not.toHaveBeenCalled();
+		expect(secondOnClose).toHaveBeenCalledTimes(1);
 	});
 });
 
 // CLEANUP
+
 afterEach(() => {
 	cleanup();
 	jest.restoreAllMocks();
