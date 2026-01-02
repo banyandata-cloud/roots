@@ -1,0 +1,62 @@
+.root {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.root .title-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.root .title-container .left-container {
+  align-self: stretch;
+  width: 50%;
+  gap: 5rem;
+  border-right: 1px solid #d5d5db;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.root .title-container .left-container .title {
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: var(--text-color);
+  line-height: 1.3125rem;
+}
+.root .title-container .left-container .left-button .icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  stroke: var(--text-color);
+  stroke-width: 0.5px;
+  cursor: pointer;
+}
+.root .title-container .right-container {
+  align-self: stretch;
+  width: 50%;
+  gap: 5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+.root .title-container .right-container .title {
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: var(--text-color);
+  line-height: 1.3125rem;
+}
+.root .title-container .right-container .right-button .icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  stroke: var(--text-color);
+  stroke-width: 0.5px;
+  cursor: pointer;
+}
+.root .date-time-switch {
+  width: 100%;
+}/*# sourceMappingURL=Header.module.css.map */
