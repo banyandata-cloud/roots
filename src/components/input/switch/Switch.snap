@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`matches snapshot 1`] = `
+<DocumentFragment>
+  <label
+    class="root position-right"
+  >
+    <input
+      checked=""
+      type="checkbox"
+    />
+    <div
+      class="pill"
+    />
+    <span
+      data-elem="label"
+    >
+      Snapshot Test
+    </span>
+  </label>
+</DocumentFragment>
+`;

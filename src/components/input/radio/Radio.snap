@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Radio Component Snapshot matches snapshot 1`] = `
+<DocumentFragment>
+  <label
+    class="root position-left selected"
+  >
+    <input
+      checked=""
+      type="radio"
+    />
+    <svg
+      class="icon-sm icon"
+      fill="none"
+      viewBox="0 0 20 20"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <rect
+        fill="#EDF5FF"
+        height="19"
+        rx="9.5"
+        width="19"
+        x="0.5"
+        y="0.5"
+      />
+      <circle
+        cx="10"
+        cy="10"
+        fill="#0F62FE"
+        r="4"
+      />
+      <rect
+        height="19"
+        rx="9.5"
+        stroke="#0F62FE"
+        width="19"
+        x="0.5"
+        y="0.5"
+      />
+    </svg>
+    <span
+      data-elem="label"
+    >
+      Radio
+    </span>
+  </label>
+</DocumentFragment>
+`;

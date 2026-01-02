@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`matches snapshot 1`] = `
+<DocumentFragment>
+  <label
+    class="slider-container"
+  >
+    <div
+      class="tooltip"
+      style="left: calc(15% - 58px); top: -10px; visibility: hidden;"
+    >
+      50
+    </div>
+    <p
+      class="label"
+    >
+      Snapshot Test
+    </p>
+    <input
+      class="slider"
+      max="100"
+      min="0"
+      step="1"
+      type="range"
+      value="50"
+    />
+    <div
+      class="minMaxContainer"
+    >
+      <span
+        class="min"
+      >
+        0
+      </span>
+      <span
+        class="max"
+      >
+        100
+      </span>
+    </div>
+  </label>
+</DocumentFragment>
+`;
