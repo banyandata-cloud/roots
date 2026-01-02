@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Stepper — Snapshot Rendering default stepper snapshot 1`] = `
+<div>
+  <div
+    class="root horizontal"
+  >
+    <div
+      data-testid="step"
+    >
+      <span
+        data-testid="step-title"
+      >
+        Step A
+      </span>
+      <span
+        data-testid="step-index"
+      >
+        0
+      </span>
+      <span
+        data-testid="step-orientation"
+      >
+        horizontal
+      </span>
+    </div>
+    <div
+      data-testid="step"
+    >
+      <span
+        data-testid="step-title"
+      >
+        Step B
+      </span>
+      <span
+        data-testid="step-index"
+      >
+        1
+      </span>
+      <span
+        data-testid="step-orientation"
+      >
+        horizontal
+      </span>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Stepper — Snapshot Rendering vertical stepper snapshot 1`] = `
+<div>
+  <div
+    class="root vertical"
+  >
+    <div
+      data-testid="step"
+    >
+      <span
+        data-testid="step-title"
+      >
+        Step A
+      </span>
+      <span
+        data-testid="step-index"
+      >
+        0
+      </span>
+      <span
+        data-testid="step-orientation"
+      >
+        vertical
+      </span>
+    </div>
+    <div
+      data-testid="step"
+    >
+      <span
+        data-testid="step-title"
+      >
+        Step B
+      </span>
+      <span
+        data-testid="step-index"
+      >
+        1
+      </span>
+      <span
+        data-testid="step-orientation"
+      >
+        vertical
+      </span>
+    </div>
+  </div>
+</div>
+`;
