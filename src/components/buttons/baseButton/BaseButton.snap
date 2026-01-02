@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`BaseButton — Snapshot Rendering base button with components snapshot 1`] = `
+<div>
+  <button
+    class="root outlined"
+    data-testid="base-cell"
+    type="submit"
+  >
+    <span>
+      L
+    </span>
+    <span
+      data-elem="title"
+    >
+      Snapshot
+    </span>
+    <span>
+      R
+    </span>
+  </button>
+</div>
+`;
+
+exports[`BaseButton — Snapshot Rendering default base button snapshot 1`] = `
+<div>
+  <button
+    class="root contained"
+    data-testid="base-cell"
+    type="submit"
+  >
+    <span
+      data-elem="title"
+    >
+      Snapshot Button
+    </span>
+  </button>
+</div>
+`;

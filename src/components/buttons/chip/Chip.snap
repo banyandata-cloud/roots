@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Chip — Snapshot Rendering chip with icons snapshot 1`] = `
+<div>
+  <button
+    class="root radius-default status success md"
+    data-testid="base-button"
+    type="button"
+  >
+    <span>
+      L
+    </span>
+    <span
+      data-testid="title"
+    >
+      Snapshot
+    </span>
+    <span>
+      R
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Chip — Snapshot Rendering default chip snapshot 1`] = `
+<div>
+  <button
+    class="root radius-default status default sm"
+    data-testid="base-button"
+    type="button"
+  >
+    <span
+      data-testid="title"
+    >
+      Snapshot Chip
+    </span>
+  </button>
+</div>
+`;

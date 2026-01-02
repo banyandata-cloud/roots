@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`TableCell — Snapshot Rendering matches snapshot for default cell 1`] = `
+<div>
+  <td
+    data-testid="base-cell"
+  >
+    <span
+      class="cell-text"
+      data-elem="text"
+    >
+      Cell Value
+    </span>
+  </td>
+</div>
+`;

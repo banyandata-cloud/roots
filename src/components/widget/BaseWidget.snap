@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`BaseWidget — Snapshot Rendering matches snapshot for default widget 1`] = `
+<div>
+  <div
+    class="root"
+  >
+    <div
+      class="header"
+      data-elem="header"
+    >
+      <div
+        class="header-title no-options no-title-options"
+        data-elem="header-title"
+      >
+        <span
+          class="title-container"
+        >
+          <span
+            class="title-primary"
+          >
+            <span
+              attrs="[object Object]"
+              stroke="semibold"
+              variant="h2"
+            >
+              Test Widget
+            </span>
+          </span>
+        </span>
+      </div>
+    </div>
+    <div
+      class="children"
+      data-elem="children"
+    >
+      <div
+        data-testid="child"
+      >
+        Child
+      </div>
+    </div>
+  </div>
+</div>
+`;

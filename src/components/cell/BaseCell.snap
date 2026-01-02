@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`BaseCell — Snapshot Rendering centered base cell snapshot (single component) 1`] = `
+<div>
+  <div
+    class="root sm border-radius-none"
+    data-elem="base-cell"
+  >
+    <span
+      data-elem="component2"
+    >
+      <span>
+        Center
+      </span>
+    </span>
+  </div>
+</div>
+`;
+
+exports[`BaseCell — Snapshot Rendering default base cell snapshot 1`] = `
+<div>
+  <div
+    class="root sm border-radius-none"
+    data-elem="base-cell"
+  >
+    <span
+      data-elem="component1"
+    >
+      <span>
+        1
+      </span>
+    </span>
+    <span
+      data-elem="component2"
+    >
+      <span>
+        2
+      </span>
+    </span>
+    <span
+      data-elem="component3"
+    >
+      <span>
+        3
+      </span>
+    </span>
+  </div>
+</div>
+`;
