@@ -3,7 +3,7 @@ import Checkbox from './CheckBox';
 
 describe('Checkbox Component', () => {
 	// HAPPY PATH TESTS
-	describe('Happy Path – expected and common usage scenarios', () => {
+	describe('Expected and common usage scenarios', () => {
 		it('renders checkbox with label', () => {
 			render(<Checkbox label='Accept Terms' />);
 			expect(screen.getByText('Accept Terms')).toBeInTheDocument();
@@ -34,7 +34,7 @@ describe('Checkbox Component', () => {
 	});
 
 	// MEDIUM PATH TESTS
-	describe('Medium Path – valid but less common configurations', () => {
+	describe('Valid but less common configurations', () => {
 		it('renders intermediate state icon', () => {
 			const { container } = render(<Checkbox intermediate />);
 			expect(container.querySelector('svg')).toBeInTheDocument();
@@ -58,7 +58,7 @@ describe('Checkbox Component', () => {
 	});
 
 	// RISKY PATH TESTS
-	describe('Risky Path – edge cases and conflicting props', () => {
+	describe('Edge cases and conflicting props', () => {
 		it('does not change checked state when disabled (controlled)', () => {
 			const handleChange = jest.fn();
 

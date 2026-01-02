@@ -5,7 +5,7 @@ import Radio from './Radio';
 
 describe('Radio Component', () => {
 	// HAPPY PATH TESTS
-	describe('Happy Path – standard user interactions', () => {
+	describe('Standard user interactions', () => {
 		test('renders radio with label', () => {
 			render(<Radio label='Radio' defaultChecked={false} />);
 
@@ -46,7 +46,7 @@ describe('Radio Component', () => {
 	});
 
 	// MEDIUM PATH TESTS
-	describe('Medium Path – variants and configuration behavior', () => {
+	describe('Variants and configuration behavior', () => {
 		test('respects defaultChecked in uncontrolled mode', () => {
 			render(<Radio defaultChecked label='Radio' />);
 			const radio = screen.getByRole('radio') as HTMLInputElement;
@@ -66,7 +66,7 @@ describe('Radio Component', () => {
 	});
 
 	// RISKY PATH TESTS
-	describe('Risky Path – edge cases and safeguards', () => {
+	describe('Edge cases and safeguards', () => {
 		test('does not change checked state when disabled (controlled)', () => {
 			const handleChange = jest.fn();
 

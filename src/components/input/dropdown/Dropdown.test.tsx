@@ -8,7 +8,7 @@ import DropdownItem from './dropdown-item/DropdownItem';
 
 describe('Dropdown Component', () => {
 	// HAPPY PATH TESTS
-	describe('Happy Path – standard user interactions', () => {
+	describe('Standard user interactions', () => {
 		it('renders dropdown with placeholder', () => {
 			render(
 				<Dropdown placeholder='Select option' onChange={jest.fn()}>
@@ -52,7 +52,7 @@ describe('Dropdown Component', () => {
 	});
 
 	// MEDIUM PATH TESTS
-	describe('Medium Path – multi-select & formatter behavior', () => {
+	describe('Multi-select & formatter behavior', () => {
 		it('supports multi-select selection', () => {
 			render(
 				<Dropdown multi onChange={jest.fn()}>
@@ -87,7 +87,7 @@ describe('Dropdown Component', () => {
 	});
 
 	// RISKY PATH TESTS
-	describe('Risky Path – edge cases and safeguards', () => {
+	describe('Edge cases and safeguards', () => {
 		it('does not open when disabled', () => {
 			render(
 				<Dropdown disabled onChange={jest.fn()}>
