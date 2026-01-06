@@ -1,0 +1,56 @@
+@import '../../../../styles/';
+
+.root {
+	width: 100%;
+	@include flex(column, flex-start, flex-start);
+	.title-container {
+		@include flex(row, space-between, center);
+		width: 100%;
+		.left-container {
+			align-self: stretch;
+			width: 50%;
+			gap: 5rem;
+			border-right: 1px solid #d5d5db;
+			@include flex(row, flex-start, center);
+			.title {
+				font-weight: 500;
+				font-size: 0.875rem;
+				color: $text-color;
+				line-height: 1.3125rem;
+			}
+			.left-button {
+				.icon {
+					width: 1.5rem;
+					height: 1.5rem;
+					stroke: $text-color;
+					stroke-width: 0.5px;
+					cursor: pointer;
+				}
+			}
+		}
+		.right-container {
+			align-self: stretch;
+			width: 50%;
+			gap: 5rem;
+			@include flex(row, flex-end, center);
+			.title {
+				font-weight: 500;
+				font-size: 0.875rem;
+				color: $text-color;
+				line-height: 1.3125rem;
+			}
+			.right-button {
+				.icon {
+					width: 1.5rem;
+					height: 1.5rem;
+					stroke: $text-color;
+					stroke-width: 0.5px;
+					cursor: pointer;
+				}
+			}
+		}
+	}
+	.date-time-switch {
+		width: 100%;
+	}
+}
