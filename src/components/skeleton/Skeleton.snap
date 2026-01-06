@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Skeleton — Snapshot Rendering circle skeleton without animation snapshot 1`] = `
+<div>
+  <span
+    class="root circle light-theme"
+    data-elem="skeleton"
+    style="width: 100%;"
+  />
+</div>
+`;
+
+exports[`Skeleton — Snapshot Rendering default skeleton snapshot 1`] = `
+<div>
+  <span
+    class="root text dark-theme animated"
+    data-elem="skeleton"
+    style="width: 100%;"
+  />
+</div>
+`;
