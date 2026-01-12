@@ -22,4 +22,5 @@ export interface CheckboxProps {
 	disabledAsChild?: boolean;
 	/** Shows the intermediate (indeterminate) icon when true */
 	intermediate?: boolean;
+	v2?: boolean;
 }
