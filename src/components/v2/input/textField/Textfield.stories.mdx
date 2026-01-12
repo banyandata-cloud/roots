@@ -41,148 +41,220 @@ import { TextFieldv2 } from '@banyan_cloud/roots';
 
 The CSF rendered inside the `Canvas` from which you can see the implementation example.
 
-### With error
-
-The TextField with error.
+### Sizes
 
 <Canvas>
-	<Story
-		name='error'
-		args={{
-			label: 'Enter Password',
-			type: 'password',
-			placeholder: 'Type Here...',
-			feedback: {
-				error: 'ERROR',
-			},
-			onChange: () => {},
-			size: 'md',
-			helperText: 'Helper Text',
-			forgotPasswordLink: 'https://banyancloud.io/',
-		}}>
-		{Template.bind({})}
+	<Story name='Sizes'>
+		{() => (
+			<ThemedContainer theme='light'>
+				<div
+					style={{
+						display: 'flex',
+						flexDirection: 'column',
+						gap: '16px',
+						maxWidth: '100%',
+					}}>
+					<TextFieldv2 label='Small' placeholder='sm size' size='sm' />
+					<TextFieldv2 label='Medium' placeholder='md size' size='md' />
+					<TextFieldv2 label='Large' placeholder='lg size' size='lg' />
+				</div>
+			</ThemedContainer>
+		)}
 	</Story>
 </Canvas>
 
-### With right icon
-
-The TextField input with right icon.
+### Types
 
 <Canvas>
-	<Story
-		name='With right icon'
-		args={{
-			label: 'Label',
-			placeholder: 'Type Here...',
-			type: 'text',
-			onChange: () => {},
-			size: 'lg',
-			RightComponent: () => {
-				return <ArrowIcon active height='12' width='12' color='#0aa6ee' />;
-			},
-			helperText: 'Helper Text',
-			maxLength: 50,
-		}}>
-		{Template.bind({})}
+	<Story name='Types'>
+		{() => (
+			<ThemedContainer theme='light'>
+				<div
+					style={{
+						display: 'flex',
+						flexDirection: 'column',
+						gap: '16px',
+						maxWidth: '100%',
+					}}>
+					<TextFieldv2 label='Text' placeholder='Text input' type='text' />
+					<TextFieldv2 label='Email' placeholder='Email input' type='email' />
+					<TextFieldv2 label='Password' placeholder='Password input' type='password' />
+					<TextFieldv2
+						label='Textarea'
+						placeholder='Textarea input'
+						type='textarea'
+						maxLength={100}
+					/>
+				</div>
+			</ThemedContainer>
+		)}
 	</Story>
 </Canvas>
 
-### Disabled TextField
-
-Disabled TextField .
+### Icons
 
 <Canvas>
-	<Story
-		name='Disabled TextField'
-		args={{
-			label: 'Label',
-			placeholder: 'Type Here...',
-			type: 'text',
-			onChange: () => {},
-			size: 'md',
-			LeftComponent: () => {
-				return <CopyIcon height='18' width='18' color='#0aa6ee' />;
-			},
-			disabled: true,
-		}}>
-		{Template.bind({})}
+	<Story name='Icons'>
+		{() => (
+			<ThemedContainer theme='light'>
+				<div
+					style={{
+						display: 'flex',
+						flexDirection: 'column',
+						gap: '16px',
+						maxWidth: '100%',
+					}}>
+					<TextFieldv2
+						label='Left Icon'
+						placeholder='Left icon'
+						LeftComponent={() => <CopyIcon height='16' width='16' />}
+					/>
+					<TextFieldv2
+						label='Right Icon'
+						placeholder='Right icon'
+						RightComponent={() => <ArrowIcon height='12' width='12' />}
+					/>
+					<TextFieldv2
+						label='Both Icons'
+						placeholder='Both icons'
+						LeftComponent={() => <CopyIcon height='16' width='16' />}
+						RightComponent={() => <ArrowIcon height='12' width='12' />}
+					/>
+				</div>
+			</ThemedContainer>
+		)}
 	</Story>
 </Canvas>
 
-### With both side icon
-
-The TextField input with both side icon.
+### Feedback
 
 <Canvas>
-	<Story
-		name='With both side icon'
-		args={{
-			label: 'Label',
-			placeholder: 'Type Here...',
-			type: 'text',
-			onChange: () => {},
-			size: 'lg',
-			LeftComponent: () => {
-				return <CopyIcon height='18' width='18' color='#0aa6ee' />;
-			},
-			RightComponent: () => {
-				return <ArrowIcon active height='12' width='12' color='#0aa6ee' />;
-			},
-		}}>
-		{Template.bind({})}
+	<Story name='Feedback'>
+		{() => (
+			<ThemedContainer theme='light'>
+				<div
+					style={{
+						display: 'flex',
+						flexDirection: 'column',
+						gap: '16px',
+						maxWidth: '100%',
+					}}>
+					<TextFieldv2
+						label='Error'
+						type='password'
+						placeholder='Error state'
+						feedback={{ error: 'Invalid password' }}
+						helperText='Helper text'
+					/>
+					<TextFieldv2
+						label='Info'
+						placeholder='Info state'
+						feedback={{ info: 'This is info' }}
+						helperText='Helper text'
+					/>
+					<TextFieldv2
+						label='Textarea Error'
+						type='textarea'
+						placeholder='Enter description'
+						maxLength={100}
+						feedback={{ error: 'Maximum length exceeded' }}
+						helperText='Helper text'
+					/>
+					<TextFieldv2
+						label='Textarea Info'
+						type='textarea'
+						placeholder='Enter description'
+						maxLength={100}
+						feedback={{ info: 'This is info' }}
+						helperText='Helper text'
+					/>
+				</div>
+			</ThemedContainer>
+		)}
 	</Story>
 </Canvas>
 
-### With right side icon label
-
-The TextField input with right side icon label.
+### Disabled
 
 <Canvas>
-	<Story
-		name='With right side icon label'
-		args={{
-			label: 'Label',
-			placeholder: 'Type Here...',
-			type: 'text',
-			onChange: () => {},
-			size: 'md',
-			LeftComponent: () => {
-				return <CopyIcon height='18' width='18' color='#0aa6ee' />;
-			},
-			RightComponent: () => {
-				return (
-					<>
-						<span>Label</span>
-						<ArrowIcon active height='12' width='12' color='#0aa6ee' />
-					</>
-				);
-			},
-		}}>
-		{Template.bind({})}
+	<Story name='Disabled'>
+		{() => (
+			<ThemedContainer theme='light'>
+				<div
+					style={{
+						display: 'flex',
+						flexDirection: 'column',
+						gap: '16px',
+						maxWidth: '100%',
+					}}>
+					<TextFieldv2 label='Disabled Text' placeholder='Disabled' disabled />
+					<TextFieldv2
+						label='Disabled Email'
+						type='email'
+						placeholder='Disabled'
+						disabled
+					/>
+					<TextFieldv2
+						label='Disabled Password'
+						type='password'
+						placeholder='Disabled'
+						disabled
+					/>
+				</div>
+			</ThemedContainer>
+		)}
 	</Story>
 </Canvas>
 
-### With input icon field icon
-
-The TextField input with input icon field icon.
+### ReadOnly
 
 <Canvas>
-	<Story
-		name='With input icon field icon'
-		args={{
-			label: 'Label',
-			placeholder: 'Type Here...',
-			type: 'text',
-			onChange: () => {},
-			size: 'md',
-			rightIconLabel: 'Label',
-			fieldIcon: () => {
-				return <ArrowIcon active height='12' width='12' color='#0aa6ee' />;
-			},
-			fieldInfo: 'Some Text',
-			readOnly: true,
-		}}>
-		{Template.bind({})}
+	<Story name='ReadOnly'>
+		{() => (
+			<ThemedContainer theme='light'>
+				<div
+					style={{
+						display: 'flex',
+						flexDirection: 'column',
+						gap: '16px',
+						maxWidth: '320px',
+					}}>
+					<TextFieldv2
+						label='ReadOnly Text'
+						placeholder='Read only'
+						value='Read only value'
+						readOnly
+					/>
+					<TextFieldv2
+						label='ReadOnly Textarea'
+						type='textarea'
+						value='This is a read-only textarea'
+						readOnly
+						maxLength={100}
+					/>
+				</div>
+			</ThemedContainer>
+		)}
+	</Story>
+</Canvas>
+
+### Forgot Password
+
+<Canvas>
+	<Story name='Forgot Password'>
+		{() => (
+			<ThemedContainer theme='light'>
+				{/* Password with error + forgot password */}
+				<TextFieldv2
+					label='Password Error'
+					type='password'
+					placeholder='Enter password'
+					feedback={{ error: 'Invalid password' }}
+					helperText='Helper text'
+					forgotPasswordLink='https://banyancloud.io/'
+				/>
+			</ThemedContainer>
+		)}
 	</Story>
 </Canvas>
 

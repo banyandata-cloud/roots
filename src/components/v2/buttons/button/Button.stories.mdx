@@ -34,140 +34,121 @@ import { Button } from '@banyan_cloud/roots';
 
 The CSF rendered inside the `Canvas` from which you can see the implementation example.
 
-### Primary Button (md Text)
-
-The Primary button component.
+### Primary Variant[V2]
 
 <Canvas>
-	<Story
-		name='Primary Button'
-		args={{
-			title: 'Button Name1',
-			variant: 'primary',
-			size: 'xs',
-			textSize: 'md',
-		}}>
-		{Template.bind({})}
+	<Story name='Primary Button'>
+		{() => (
+			<ThemedContainer theme='light'>
+				<div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+					<Buttonv2 title='Primary XS' variant='primary' size='xs' textSize='sm' />
+					<Buttonv2 title='Primary SM' variant='primary' size='sm' textSize='md' />
+					<Buttonv2 title='Primary MD' variant='primary' size='md' textSize='md' />
+					<Buttonv2 title='Primary LG' variant='primary' size='lg' textSize='md' />
+				</div>
+			</ThemedContainer>
+		)}
 	</Story>
 </Canvas>
 
-### Primary Button (sm Text + lg size + Disabled)
-
-The Primary button component.
+### Secondary Variant
 
 <Canvas>
-	<Story
-		name='Primary Button lg'
-		args={{
-			title: 'Button Name1',
-			variant: 'primary',
-			size: 'lg',
-			textSize: 'md',
-			disabled: true,
-		}}>
-		{Template.bind({})}
+	<Story name='Secondary Button'>
+		{() => (
+			<ThemedContainer theme='light'>
+				<div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+					<Buttonv2 title='Secondary XS' variant='secondary' size='xs' />
+					<Buttonv2 title='Secondary SM' variant='secondary' size='sm' />
+					<Buttonv2 title='Secondary MD' variant='secondary' size='md' />
+					<Buttonv2 title='Secondary LG' variant='secondary' size='lg' />
+				</div>
+			</ThemedContainer>
+		)}
 	</Story>
 </Canvas>
 
-### Secondary Button (sm Text + xs Size)
-
-The default button component.
+### Soft Variant
 
 <Canvas>
-	<Story
-		name='Secondary Button'
-		args={{
-			title: 'Sec button',
-			variant: 'secondary',
-			size: 'xs',
-			textSize: 'sm',
-		}}>
-		{Template.bind({})}
+	<Story name='Soft Button'>
+		{() => (
+			<ThemedContainer theme='light'>
+				<div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+					<Buttonv2 title='Soft Button XS' variant='soft' size='xs' textSize='sm' />
+					<Buttonv2 title='Soft Button SM' variant='soft' size='sm' textSize='md' />
+					<Buttonv2 title='Soft Button MD' variant='soft' size='md' textSize='md' />
+					<Buttonv2 title='Soft Button LG' variant='soft' size='lg' textSize='md' />
+				</div>
+			</ThemedContainer>
+		)}
 	</Story>
 </Canvas>
 
-### Soft Button (md Text + sm size)
-
-The Soft button component.
+### Outlined Variant
 
 <Canvas>
-	<Story
-		name='Soft Button – XS (14px)'
-		args={{
-			title: 'Soft Button',
-			variant: 'soft',
-			size: 'sm',
-			textSize: 'md',
-		}}>
-		{Template.bind({})}
+	<Story name='Outlined Button'>
+		{() => (
+			<ThemedContainer theme='light'>
+				<div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+					<Buttonv2 title='Outlined XS' variant='outlined' size='xs' textSize='sm' />
+					<Buttonv2 title='Outlined SM' variant='outlined' size='sm' textSize='md' />
+					<Buttonv2 title='Outlined MD' variant='outlined' size='md' textSize='md' />
+					<Buttonv2 title='Outlined LG' variant='outlined' size='lg' textSize='md' />
+				</div>
+			</ThemedContainer>
+		)}
 	</Story>
 </Canvas>
 
-### Outlined Button (Outlined)
-
-The Outlined button component.
+### Ghost Variant
 
 <Canvas>
-	<Story
-		name='Button - Contained'
-		args={{
-			title: 'Button Name',
-			variant: 'outlined',
-			size: 'sm',
-		}}>
-		{Template.bind({})}
+	<Story name='Ghost Button'>
+		{() => (
+			<ThemedContainer theme='light'>
+				<div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+					<Buttonv2 title='Ghost XS' variant='ghost' size='xs' />
+					<Buttonv2 title='Ghost SM' variant='ghost' size='sm' />
+					<Buttonv2 title='Ghost MD' variant='ghost' size='md' />
+					<Buttonv2 title='Ghost LG' variant='ghost' size='lg' />
+				</div>
+			</ThemedContainer>
+		)}
 	</Story>
 </Canvas>
 
-### With Right Icon
-
-Button with icon on the right of the title.
+### Text Size
 
 <Canvas>
-	<Story
-		name='With right icon'
-		args={{
-			title: 'Button Name',
-			variant: 'primary',
-			size: 'md',
-			rightComponent: () => {
-				return <ArrowIcon height='24' width='24' color='#ffffff' />;
-			},
-		}}>
-		{Template.bind({})}
+	<Story name='Text Size'>
+		{() => (
+			<ThemedContainer theme='light'>
+				<div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+					<Buttonv2 title='Text SM(14px)' variant='primary' size='md' textSize='sm' />
+					<Buttonv2 title='Text MD(16px)' variant='primary' size='md' textSize='md' />
+				</div>
+			</ThemedContainer>
+		)}
 	</Story>
 </Canvas>
 
-### Ghost
-
-Ghost button .
+### Disabled State (All Variants)
 
 <Canvas>
-	<Story
-		name='Ghost'
-		args={{
-			title: 'Button Name',
-			variant: 'ghost',
-			size: 'md',
-		}}>
-		{Template.bind({})}
-	</Story>
-</Canvas>
-
-### Ghost
-
-Disabled Ghost button .
-
-<Canvas>
-	<Story
-		name='Disabled Ghost'
-		args={{
-			title: 'Disabled Ghost',
-			variant: 'ghost',
-			size: 'md',
-			disabled: true,
-		}}>
-		{Template.bind({})}
+	<Story name='Disabled Button'>
+		{() => (
+			<ThemedContainer theme='light'>
+				<div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+					<Buttonv2 title='Primary' variant='primary' size='sm' disabled />
+					<Buttonv2 title='Secondary' variant='secondary' size='sm' disabled />
+					<Buttonv2 title='Soft' variant='soft' size='sm' disabled />
+					<Buttonv2 title='Outlined' variant='outlined' size='sm' disabled />
+					<Buttonv2 title='Ghost' variant='ghost' size='sm' disabled />
+				</div>
+			</ThemedContainer>
+		)}
 	</Story>
 </Canvas>
 
