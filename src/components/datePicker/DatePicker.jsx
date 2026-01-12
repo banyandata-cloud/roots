@@ -8,10 +8,10 @@ import {
 import { getUnixTime } from 'date-fns';
 import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useOutsideClickListener } from '../../hooks';
-import { classes } from '../../utils';
+import { classes, getDayInfo } from '../../utils';
 import { Button } from '../buttons';
 import { DatePickerV2 } from '../datePickerV2';
 import { ErrorBoundaryWrapper } from '../errorBoundary';
@@ -28,6 +28,29 @@ import {
 	getFloatingReferences,
 	isMaxRangeExceeded,
 } from './utils';
+
+const getDefaultTimeRangeSelection = (isToday) => {
+	const now = getDayInfo(new Date());
+
+	return {
+		previous: {
+			HOURS: 12,
+			MINS: 0,
+			MER: 'AM',
+		},
+		next: isToday
+			? {
+					HOURS: now.hours,
+					MINS: now.minutes,
+					MER: now.meridian,
+				}
+			: {
+					HOURS: 11,
+					MINS: 59,
+					MER: 'PM',
+				},
+	};
+};
 
 const DatePicker = (props) => {
 	const {
@@ -85,7 +108,30 @@ const DatePicker = (props) => {
 		return '';
 	});
 
+	const isToday = (selectedDate) => {
+		if (!selectedDate) return false;
+
+		const today = new Date();
+		return (
+			selectedDate.date === today.getDate() &&
+			selectedDate.year === today.getFullYear() &&
+			selectedDate.month === today.toLocaleString('default', { month: 'long' })
+		);
+	};
+
 	const [timeRangeSelection, setTimeRangeSelection] = useState({});
+
+	useEffect(() => {
+		if (!selectedDate?.date) return;
+
+		const today = isToday(selectedDate);
+
+		setTimeRangeSelection((prev) => {
+			if (prev?.previous && prev?.next) return prev;
+
+			return getDefaultTimeRangeSelection(today);
+		});
+	}, [selectedDate]);
 
 	const datePickerRef = useRef();
 
@@ -212,6 +258,7 @@ const DatePicker = (props) => {
 		},
 		onClear: () => {
 			onClear();
+			setTimeRangeSelection({});
 			setOpenDatePicker(false);
 		},
 		disabledDates,
