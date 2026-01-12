@@ -33,3 +33,6 @@ export * from './Sort';
 export * from './Tick';
 export * from './UnlockPassword';
 export * from './ViewPassword';
+export * from './ButtonCaret';
+export * from './error';
+export * from './warning';

@@ -1,0 +1,406 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+
+import { ThemedContainer } from '../../../helpers';
+import Buttonv2 from './Button';
+import { CopyIcon, ArrowIcon } from '../../../icons';
+
+<Meta title='Components/Buttons/v2/Button' parameters={{ options: { showToolbar: true } }} />
+
+export const Template = (args) => (
+	<ThemedContainer theme='light'>
+		<Buttonv2 {...args} />
+	</ThemedContainer>
+);
+
+# Button
+
+A versatile and customizable button component designed for enabling interactive user experiences with configurable appearance and behavior.
+
+#### Design - [Figma](https://www.figma.com/file/e9opoAtQHBo4vFd6u0Co98/Component-Library?type=design&node-id=1-2&mode=design&t=doFoJhh78NiStend-0) | Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/components/buttons/button)
+
+> The Button component builds upon the BaseButton component, adding more flexibility and visual customization. It allows you to include custom components (leftComponent and rightComponent) beside the button's main content. You can adjust the radius of the button, its size, and even its color using the color prop.
+
+## Usage
+
+Basic import and additional information on how to use this component.
+
+```js
+import { Button } from '@banyan_cloud/roots';
+```
+
+- This Button component enhances the capabilities of the BaseButton and can be effectively used across the application's UI to provide interactive elements with varying styles and behaviors.
+
+## Stories
+
+The CSF rendered inside the `Canvas` from which you can see the implementation example.
+
+### Primary Button (md Text)
+
+The Primary button component.
+
+<Canvas>
+	<Story
+		name='Primary Button'
+		args={{
+			title: 'Button Name1',
+			variant: 'primary',
+			size: 'xs',
+			textSize: 'md',
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Primary Button (sm Text + lg size + Disabled)
+
+The Primary button component.
+
+<Canvas>
+	<Story
+		name='Primary Button lg'
+		args={{
+			title: 'Button Name1',
+			variant: 'primary',
+			size: 'lg',
+			textSize: 'md',
+			disabled: true,
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Secondary Button (sm Text + xs Size)
+
+The default button component.
+
+<Canvas>
+	<Story
+		name='Secondary Button'
+		args={{
+			title: 'Sec button',
+			variant: 'secondary',
+			size: 'xs',
+			textSize: 'sm',
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Soft Button (md Text + sm size)
+
+The Soft button component.
+
+<Canvas>
+	<Story
+		name='Soft Button – XS (14px)'
+		args={{
+			title: 'Soft Button',
+			variant: 'soft',
+			size: 'sm',
+			textSize: 'md',
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Outlined Button (Outlined)
+
+The Outlined button component.
+
+<Canvas>
+	<Story
+		name='Button - Contained'
+		args={{
+			title: 'Button Name',
+			variant: 'outlined',
+			size: 'sm',
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### With Right Icon
+
+Button with icon on the right of the title.
+
+<Canvas>
+	<Story
+		name='With right icon'
+		args={{
+			title: 'Button Name',
+			variant: 'primary',
+			size: 'md',
+			rightComponent: () => {
+				return <ArrowIcon height='24' width='24' color='#ffffff' />;
+			},
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Ghost
+
+Ghost button .
+
+<Canvas>
+	<Story
+		name='Ghost'
+		args={{
+			title: 'Button Name',
+			variant: 'ghost',
+			size: 'md',
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Ghost
+
+Disabled Ghost button .
+
+<Canvas>
+	<Story
+		name='Disabled Ghost'
+		args={{
+			title: 'Disabled Ghost',
+			variant: 'ghost',
+			size: 'md',
+			disabled: true,
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+## API
+
+**`className`**
+
+Additional CSS class names to be applied to the button.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>""</td>
+	</tr>
+</table>
+
+```jsx
+<Button className='additionalClass' />
+```
+
+**`component1`**
+
+The first component on the left of the title. Accepts JSX element.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>JSX</td>
+		<td>null</td>
+	</tr>
+</table>
+
+```jsx
+<Button component1={<p>Some text</p>} />
+```
+
+**`title`**
+
+The text to be displayed within the button.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>""</td>
+	</tr>
+</table>
+
+```jsx
+<Button title='Submit' />
+```
+
+**`component3`**
+
+The third component on the right of the title. Accepts JSX element.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>JSX</td>
+		<td>null</td>
+	</tr>
+</table>
+
+```jsx
+<Button component3={<p>Some text</p>} />
+```
+
+**`size`**
+
+The size of the button, affecting its dimensions.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>'sm', 'md', 'lg', 'auto'</td>
+		<td>'sm'</td>
+	</tr>
+</table>
+
+```jsx
+<Button size='sm' />
+```
+
+**`flexible`**
+
+Make the button button flexible. It adds the following styles: flex-grow: 1;flex-shrink: 1;min-width: 3rem;
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<Button flexible={false} />
+```
+
+**`radius`**
+
+For applying border radius to the button.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>'none', 'default', 'round', 'ellipse'</td>
+		<td>'default'</td>
+	</tr>
+</table>
+
+```jsx
+<Button radius='none' />
+```
+
+**`disabled`**
+
+If true, the button is disabled and cannot be interacted with.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<Button disabled={false} />
+```
+
+**`type`**
+
+The type of the button.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>'button', 'submit', 'reset'</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<Button type='submit' />
+```
+
+**`onClick`**
+
+Callback function to be executed when the button is clicked.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Function</td>
+		<td>{`() => {}`}</td>
+	</tr>
+</table>
+
+```jsx
+<Button
+	onClick={() => {
+		console.log('Button clicked');
+	}}
+/>
+```
+
+**`blurOnClick`**
+
+If true, the button will lose focus after being clicked.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>true</td>
+	</tr>
+</table>
+
+```jsx
+<Button blurOnClick={false} />
+```
+
+**`variant`**
+
+For applying visual style to the button.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>'contained', 'outlined', 'text'</td>
+		<td>'contained'</td>
+	</tr>
+</table>
+
+```jsx
+<Button variant='outlined' />
+```

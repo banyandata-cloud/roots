@@ -3,6 +3,7 @@ import { classes } from '../../../utils/utils';
 import { BaseButton } from '../baseButton';
 import styles from './Button.module.css';
 import type { ButtonProps } from './types';
+import { Buttonv2 } from '../../v2/buttons';
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 	const {
@@ -20,7 +21,28 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 		variant = 'contained',
 		color = 'primary',
 		id,
+		textSize = 'sm',
+		v2 = false,
 	} = props;
+
+	if (v2) {
+		return (
+			<Buttonv2
+				ref={ref}
+				className={className}
+				title={title}
+				rightComponent={RightComponent}
+				variant={variant}
+				size={size}
+				textSize={textSize}
+				disabled={disabled}
+				onClick={onClick}
+				blurOnClick={blurOnClick}
+				id={id}
+				type={type}
+			/>
+		);
+	}
 
 	return (
 		<BaseButton
