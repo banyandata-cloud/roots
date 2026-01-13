@@ -3,7 +3,7 @@ import { classes } from '../../../utils/utils';
 import { BaseButton } from '../baseButton';
 import styles from './Button.module.css';
 import type { ButtonProps } from './types';
-import { Buttonv2 } from '../../v2/buttons';
+import { Button as Buttonv2 } from '../../v2/buttons';
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 	const {

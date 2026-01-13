@@ -2,23 +2,14 @@ import React, { createElement, forwardRef, useRef, useState } from 'react';
 import { mergeRefs } from 'react-merge-refs';
 import { classes, inputHelper } from '../../../../utils/utils';
 import { BaseCell } from '../../../cell';
-import {
-	EmailIcon,
-	ErrorIcon,
-	HidePasswordIcon,
-	PasswordIcon,
-	UnlockPasswordIcon,
-	ViewPasswordIcon,
-	WarningIcon,
-} from '../../../icons';
+import { ErrorIcon, WarningIcon } from '../../icons';
 import { Popover } from '../../../popover';
 import type { MiddlewareOptions, Placement } from '../../../popover/Popover';
 import { Tooltip } from '../../../tooltip';
 import styles from './TextField.module.css';
-import { Button } from '../../../buttons/button';
 import { Text } from '../../../text';
 
-type InputType = 'text' | 'email' | 'password' | 'textarea' | (string & {});
+type InputType = 'text' | 'textarea' | (string & {});
 
 interface Feedback {
 	error?: string | undefined;
@@ -115,7 +106,6 @@ const TextField = forwardRef<HTMLInputElement | HTMLTextAreaElement, TextFieldPr
 		const { current: isControlled } = useRef<boolean>(value !== undefined);
 
 		const [uncontrolledValue, setUncontrolledValue] = useState<string>(defaultValue);
-		const [inputType, setInputType] = useState<InputType>(type);
 
 		const [showAutocompleteOptions, setShowAutocompleteOptions] = useState<boolean>(false);
 
@@ -132,88 +122,20 @@ const TextField = forwardRef<HTMLInputElement | HTMLTextAreaElement, TextFieldPr
 		};
 
 		const getLeftComponent = () => {
-			const leftIconClass = classes(
-				feedback?.error && styles.error,
-				disabled && styles.leftIconDisabled
+			if (!LeftComponent) return null;
+
+			return (
+				<LeftComponent
+					className={classes(
+						feedback?.error && styles.error,
+						disabled && styles.leftIconDisabled
+					)}
+				/>
 			);
-
-			if (type === 'email') {
-				return <EmailIcon className={leftIconClass} />;
-			}
-
-			if (type === 'password' && inputType === 'password') {
-				return <PasswordIcon className={leftIconClass} />;
-			}
-
-			if (type === 'password' && inputType === 'text') {
-				return <UnlockPasswordIcon className={leftIconClass} />;
-			}
-
-			if (LeftComponent) {
-				return <LeftComponent className={leftIconClass} />;
-			}
-
-			return null;
 		};
 
 		const getRightComponent = () => {
-			if (disabled) {
-				return null;
-			}
-			if (type === 'password') {
-				return (
-					<>
-						{feedback && (
-							<Tooltip
-								content={feedback.info ?? feedback.error ?? ''}
-								position='right'
-								className={styles.tooltip}
-								variant='light'>
-								<span
-									className={classes(
-										styles.span,
-										feedback.error ? styles.error : ''
-									)}>
-									<ErrorIcon
-										className={classes(
-											styles.icon,
-											feedback.error ? styles.error : ''
-										)}
-									/>
-								</span>
-							</Tooltip>
-						)}
-						<Button
-							className={classes(styles.button, feedback?.error ? styles.error : '')}
-							title=''
-							variant='contained'
-							type='button'
-							leftComponent={() => {
-								return inputType === 'password' ? (
-									<HidePasswordIcon
-										className={classes(
-											styles.icon,
-											feedback?.error ? styles.error : ''
-										)}
-									/>
-								) : (
-									<ViewPasswordIcon
-										className={classes(
-											styles.icon,
-											feedback?.error ? styles.error : ''
-										)}
-									/>
-								);
-							}}
-							onClick={() => {
-								setInputType((prev) => {
-									return prev === 'password' ? 'text' : 'password';
-								});
-							}}
-						/>
-					</>
-				);
-			}
+			if (disabled) return null;
 
 			if (feedback) {
 				const Icon = feedback.error ? ErrorIcon : WarningIcon;
@@ -278,7 +200,6 @@ const TextField = forwardRef<HTMLInputElement | HTMLTextAreaElement, TextFieldPr
 					})
 				: createElement('input', {
 						...commonProps,
-						type: inputType,
 						defaultValue,
 						...(inputProps as React.InputHTMLAttributes<HTMLInputElement>),
 					});
@@ -321,11 +242,11 @@ const TextField = forwardRef<HTMLInputElement | HTMLTextAreaElement, TextFieldPr
 							readOnly && styles.readOnly,
 							feedback?.error ? styles['feedback-error'] : ''
 						)}
-						{...((LeftComponent ?? (type === 'password' || type === 'email')) && {
+						{...(LeftComponent && {
 							component1: getLeftComponent(),
 						})}
 						component2={Input}
-						{...((RightComponent ?? (type === 'password' || feedback)) && {
+						{...((RightComponent || feedback) && {
 							component3: getRightComponent(),
 						})}
 					/>

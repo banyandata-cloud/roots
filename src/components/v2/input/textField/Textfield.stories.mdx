@@ -2,13 +2,13 @@ import { Meta, Canvas, Story } from '@storybook/addon-docs';
 
 import { ThemedContainer } from '../../../helpers';
 import { ArrowIcon, CopyIcon } from '../../../icons';
-import TextFieldv2 from './TextField';
+import TextField from './TextField';
 
 <Meta title='Components/Input/V2/TextField' parameters={{ options: { showToolbar: true } }} />
 
 export const Template = (args) => (
 	<ThemedContainer theme='light'>
-		<TextFieldv2 {...args} autocomplete />
+		<TextField {...args} autocomplete />
 	</ThemedContainer>
 );
 
@@ -25,7 +25,7 @@ The TextField component is a versatile text input component that supports variou
 Basic import and additional information on how to use this component.
 
 ```js
-import { TextFieldv2 } from '@banyan_cloud/roots';
+import { TextField } from '@banyan_cloud/roots';
 ```
 
 - The onChange function is called when the input value changes. It provides the new value as a parameter.
@@ -54,9 +54,9 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 						gap: '16px',
 						maxWidth: '100%',
 					}}>
-					<TextFieldv2 label='Small' placeholder='sm size' size='sm' />
-					<TextFieldv2 label='Medium' placeholder='md size' size='md' />
-					<TextFieldv2 label='Large' placeholder='lg size' size='lg' />
+					<TextField label='Small' placeholder='sm size' size='sm' />
+					<TextField label='Medium' placeholder='md size' size='md' />
+					<TextField label='Large' placeholder='lg size' size='lg' />
 				</div>
 			</ThemedContainer>
 		)}
@@ -76,10 +76,8 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 						gap: '16px',
 						maxWidth: '100%',
 					}}>
-					<TextFieldv2 label='Text' placeholder='Text input' type='text' />
-					<TextFieldv2 label='Email' placeholder='Email input' type='email' />
-					<TextFieldv2 label='Password' placeholder='Password input' type='password' />
-					<TextFieldv2
+					<TextField label='Text' placeholder='Text input' type='text' />
+					<TextField
 						label='Textarea'
 						placeholder='Textarea input'
 						type='textarea'
@@ -104,17 +102,17 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 						gap: '16px',
 						maxWidth: '100%',
 					}}>
-					<TextFieldv2
+					<TextField
 						label='Left Icon'
 						placeholder='Left icon'
 						LeftComponent={() => <CopyIcon height='16' width='16' />}
 					/>
-					<TextFieldv2
+					<TextField
 						label='Right Icon'
 						placeholder='Right icon'
 						RightComponent={() => <ArrowIcon height='12' width='12' />}
 					/>
-					<TextFieldv2
+					<TextField
 						label='Both Icons'
 						placeholder='Both icons'
 						LeftComponent={() => <CopyIcon height='16' width='16' />}
@@ -139,20 +137,21 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 						gap: '16px',
 						maxWidth: '100%',
 					}}>
-					<TextFieldv2
+					<TextField
 						label='Error'
 						type='password'
 						placeholder='Error state'
 						feedback={{ error: 'Invalid password' }}
 						helperText='Helper text'
 					/>
-					<TextFieldv2
+					<TextField
 						label='Info'
 						placeholder='Info state'
 						feedback={{ info: 'This is info' }}
 						helperText='Helper text'
+						LeftComponent={() => <CopyIcon height='16' width='16' />}
 					/>
-					<TextFieldv2
+					<TextField
 						label='Textarea Error'
 						type='textarea'
 						placeholder='Enter description'
@@ -160,7 +159,7 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 						feedback={{ error: 'Maximum length exceeded' }}
 						helperText='Helper text'
 					/>
-					<TextFieldv2
+					<TextField
 						label='Textarea Info'
 						type='textarea'
 						placeholder='Enter description'
@@ -187,14 +186,14 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 						gap: '16px',
 						maxWidth: '100%',
 					}}>
-					<TextFieldv2 label='Disabled Text' placeholder='Disabled' disabled />
-					<TextFieldv2
+					<TextField label='Disabled Text' placeholder='Disabled' disabled />
+					<TextField
 						label='Disabled Email'
 						type='email'
 						placeholder='Disabled'
 						disabled
 					/>
-					<TextFieldv2
+					<TextField
 						label='Disabled Password'
 						type='password'
 						placeholder='Disabled'
@@ -219,13 +218,13 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 						gap: '16px',
 						maxWidth: '320px',
 					}}>
-					<TextFieldv2
+					<TextField
 						label='ReadOnly Text'
 						placeholder='Read only'
 						value='Read only value'
 						readOnly
 					/>
-					<TextFieldv2
+					<TextField
 						label='ReadOnly Textarea'
 						type='textarea'
 						value='This is a read-only textarea'
@@ -245,7 +244,7 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 		{() => (
 			<ThemedContainer theme='light'>
 				{/* Password with error + forgot password */}
-				<TextFieldv2
+				<TextField
 					label='Password Error'
 					type='password'
 					placeholder='Enter password'

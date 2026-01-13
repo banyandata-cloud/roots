@@ -3,7 +3,6 @@ import { classes } from '../../../../utils/utils';
 import { BaseButton } from '../baseButton';
 import styles from './Button.module.css';
 import type { ButtonProps } from './types';
-import { ButtonCaret } from '../../../icons';
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 	const {
@@ -25,7 +24,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 		md: '16',
 	} as const;
 
-	const RightIcon = RightComponent ?? ButtonCaret;
 	const resolvedTextSize = TEXT_SIZE_MAP[textSize];
 
 	return (
@@ -33,7 +31,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 			ref={ref}
 			type={type}
 			title={title}
-			component3={<RightIcon />}
+			component3={RightComponent ? <RightComponent /> : null}
 			disabled={disabled}
 			onClick={onClick}
 			blurOnClick={blurOnClick}
