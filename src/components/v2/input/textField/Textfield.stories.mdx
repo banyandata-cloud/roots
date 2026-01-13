@@ -139,7 +139,6 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					}}>
 					<TextField
 						label='Error'
-						type='password'
 						placeholder='Error state'
 						feedback={{ error: 'Invalid password' }}
 						helperText='Helper text'
@@ -179,27 +178,7 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 	<Story name='Disabled'>
 		{() => (
 			<ThemedContainer theme='light'>
-				<div
-					style={{
-						display: 'flex',
-						flexDirection: 'column',
-						gap: '16px',
-						maxWidth: '100%',
-					}}>
-					<TextField label='Disabled Text' placeholder='Disabled' disabled />
-					<TextField
-						label='Disabled Email'
-						type='email'
-						placeholder='Disabled'
-						disabled
-					/>
-					<TextField
-						label='Disabled Password'
-						type='password'
-						placeholder='Disabled'
-						disabled
-					/>
-				</div>
+				<TextField label='Disabled Text' placeholder='Disabled' disabled />
 			</ThemedContainer>
 		)}
 	</Story>
@@ -246,7 +225,6 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 				{/* Password with error + forgot password */}
 				<TextField
 					label='Password Error'
-					type='password'
 					placeholder='Enter password'
 					feedback={{ error: 'Invalid password' }}
 					helperText='Helper text'
