@@ -5,7 +5,7 @@ import {
 	useFloating,
 	useInteractions,
 } from '@floating-ui/react-dom-interactions';
-import { getUnixTime } from 'date-fns';
+import { fromUnixTime, getUnixTime } from 'date-fns';
 import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
 import { useEffect, useRef, useState } from 'react';
@@ -29,26 +29,24 @@ import {
 	isMaxRangeExceeded,
 } from './utils';
 
-const getDefaultTimeRangeSelection = (isToday) => {
-	const now = getDayInfo(new Date());
+const getDefaultTimeRangeSelection = (value, limitHours) => {
+	const sDate = fromUnixTime(value - 3600 * limitHours);
+	const eDate = fromUnixTime(value);
+
+	const startDateInfo = getDayInfo(sDate);
+	const endDateInfo = getDayInfo(eDate);
 
 	return {
 		previous: {
-			HOURS: 12,
-			MINS: 0,
+			HOURS: startDateInfo.hours,
+			MINS: startDateInfo.minutes,
 			MER: 'AM',
 		},
-		next: isToday
-			? {
-					HOURS: now.hours,
-					MINS: now.minutes,
-					MER: now.meridian,
-				}
-			: {
-					HOURS: 11,
-					MINS: 59,
-					MER: 'PM',
-				},
+		next: {
+			HOURS: endDateInfo.hours,
+			MINS: endDateInfo.minutes,
+			MER: endDateInfo.meridian,
+		},
 	};
 };
 
@@ -108,28 +106,11 @@ const DatePicker = (props) => {
 		return '';
 	});
 
-	const isToday = (selectedDate) => {
-		if (!selectedDate) return false;
-
-		const today = new Date();
-		return (
-			selectedDate.date === today.getDate() &&
-			selectedDate.year === today.getFullYear() &&
-			selectedDate.month === today.toLocaleString('default', { month: 'long' })
-		);
-	};
-
 	const [timeRangeSelection, setTimeRangeSelection] = useState({});
 
 	useEffect(() => {
-		if (!selectedDate?.date) return;
-
-		const today = isToday(selectedDate);
-
-		setTimeRangeSelection((prev) => {
-			if (prev?.previous && prev?.next) return prev;
-
-			return getDefaultTimeRangeSelection(today);
+		setTimeRangeSelection(() => {
+			return getDefaultTimeRangeSelection(value, limitHours);
 		});
 	}, [selectedDate]);
 
