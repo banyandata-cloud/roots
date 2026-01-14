@@ -1,129 +1,184 @@
 import { render, screen } from '@testing-library/react';
 import Step from './Step';
 
-// MOCKS
-
-// Mock COLORS
-jest.mock('../../../styles', () => ({
-	COLORS: {
-		highlight: '#00ff00',
-	},
-}));
-
-// Mock icons
-jest.mock('../../icons', () => ({
-	CrossIcon: ({ className }: any) => (
-		<span data-testid='cross-icon' className={className}>
-			X
-		</span>
-	),
-	TickIcon: ({ className }: any) => (
-		<span data-testid='tick-icon' className={className}>
-			✓
-		</span>
-	),
-}));
-
-// BASE PROPS
-const baseProps = {
-	title: 'Step title',
-	description: 'Step description',
-	index: 0,
-	orientation: 'horizontal' as const,
-};
-
-// HAPPY PATH TESTS
-describe('Step — Rendering & Basic Behaviour', () => {
-	test('renders step index when not completed or errored', () => {
-		render(<Step {...baseProps} />);
-
-		expect(screen.getByText('1')).toBeInTheDocument();
+describe('Step Component — Default Rendering Behavior', () => {
+	test('renders index number when no completion or error is applied', () => {
+		render(
+			<Step index={2} total={4} orientation='horizontal' title={null} description={null} />
+		);
+		expect(screen.getByText('3')).toBeInTheDocument();
 	});
 
-	test('renders title and description', () => {
-		render(<Step {...baseProps} />);
-
-		expect(screen.getByText('Step title')).toBeInTheDocument();
+	test('renders title and description when provided', () => {
+		render(
+			<Step
+				index={0}
+				total={3}
+				orientation='horizontal'
+				title='Step Title'
+				description='Step description'
+			/>
+		);
+		expect(screen.getByText('Step Title')).toBeInTheDocument();
 		expect(screen.getByText('Step description')).toBeInTheDocument();
 	});
 
-	test('renders tick icon when completion is 1', () => {
-		render(<Step {...baseProps} completion={1} />);
+	test('shows tick icon when completion is 1', () => {
+		render(
+			<Step
+				index={0}
+				total={3}
+				orientation='horizontal'
+				title={null}
+				description={null}
+				completion={1}
+			/>
+		);
 
-		expect(screen.getByTestId('tick-icon')).toBeInTheDocument();
+		// FIX: target icon by its CSS class instead of data-testid
+		expect(document.querySelector('.completion-icon')).toBeInTheDocument();
+	});
+
+	test('applies active styling when active is true', () => {
+		const { container } = render(
+			<Step
+				index={0}
+				total={3}
+				orientation='horizontal'
+				title={null}
+				description={null}
+				active
+			/>
+		);
+		expect(container.querySelector('[data-elem="step"]')).toHaveClass('active');
 	});
 });
 
-// MEDIUM PATH TESTS
-describe('Step — Behaviour With State & Customisation', () => {
-	test('renders error icon when error=true', () => {
-		render(<Step {...baseProps} error />);
+describe('Step Component — Custom Rendering Behavior', () => {
+	test('renders custom icon component when renderIcon is provided', () => {
+		const CustomIcon = () => <div>Custom Icon</div>;
 
-		expect(screen.getByTestId('cross-icon')).toBeInTheDocument();
+		render(
+			<Step
+				index={0}
+				total={3}
+				orientation='horizontal'
+				title={null}
+				description={null}
+				renderIcon={CustomIcon}
+			/>
+		);
+
+		expect(screen.getByText('Custom Icon')).toBeInTheDocument();
 	});
 
-	test('renders progress indicator when active and partially completed', () => {
-		const { container } = render(<Step {...baseProps} active completion={0.5} />);
+	test('renders custom title when renderTitle is provided', () => {
+		const CustomTitle = () => <span>My Title</span>;
 
-		expect(container.querySelector(`.${'progress'}`)).toBeTruthy();
+		render(
+			<Step
+				index={0}
+				total={3}
+				orientation='horizontal'
+				title={null}
+				description={null}
+				renderTitle={CustomTitle}
+			/>
+		);
+
+		expect(screen.getByText('My Title')).toBeInTheDocument();
 	});
 
-	test('uses custom renderIcon when provided', () => {
-		const RenderIcon = () => <span data-testid='custom-icon'>ICON</span>;
+	test('renders custom description when renderDescription is provided', () => {
+		const CustomDescription = () => <span>My Description</span>;
 
-		render(<Step {...baseProps} renderIcon={RenderIcon} />);
+		render(
+			<Step
+				index={0}
+				total={3}
+				orientation='horizontal'
+				title={null}
+				description={null}
+				renderDescription={CustomDescription}
+			/>
+		);
 
-		expect(screen.getByTestId('custom-icon')).toBeInTheDocument();
-	});
-
-	test('uses custom renderTitle when provided', () => {
-		const RenderTitle = () => <span data-testid='custom-title'>Custom Title</span>;
-
-		render(<Step {...baseProps} renderTitle={RenderTitle} />);
-
-		expect(screen.getByTestId('custom-title')).toBeInTheDocument();
-	});
-
-	test('uses custom renderDescription when provided', () => {
-		const RenderDescription = () => <span data-testid='custom-description'>Custom Desc</span>;
-
-		render(<Step {...baseProps} renderDescription={RenderDescription} />);
-
-		expect(screen.getByTestId('custom-description')).toBeInTheDocument();
-	});
-});
-
-// RISKY PATH TESTS
-describe('Step — Edge Case Handling', () => {
-	test('should NOT crash when title and description are null', () => {
-		render(<Step index={0} title={null} description={null} orientation='horizontal' />);
-
-		expect(screen.getByText('1')).toBeInTheDocument();
-	});
-
-	test('applies noTail class when noTail=true', () => {
-		const { container } = render(<Step {...baseProps} noTail />);
-
-		expect(container.querySelector('[data-elem="step"]')?.className).toContain('no-tail');
-	});
-
-	test('supports vertical orientation', () => {
-		const { container } = render(<Step {...baseProps} orientation='vertical' />);
-
-		expect(container.querySelector('[data-elem="step"]')?.className).toContain('vertical');
+		expect(screen.getByText('My Description')).toBeInTheDocument();
 	});
 });
 
-// SNAPSHOT TESTS
-describe('Step — Snapshot Rendering', () => {
-	test('default step snapshot', () => {
-		const { container } = render(<Step {...baseProps} />);
-		expect(container).toMatchSnapshot();
+describe('Step Component — Edge Case States', () => {
+	test('renders error icon when error is true', () => {
+		render(
+			<Step
+				index={0}
+				total={3}
+				orientation='horizontal'
+				title={null}
+				description={null}
+				error
+			/>
+		);
+
+		expect(document.querySelector('.error-icon')).toBeInTheDocument();
 	});
 
-	test('completed active step snapshot', () => {
-		const { container } = render(<Step {...baseProps} active completion={1} />);
+	test('shows progress ring when active and completion is between 0 and 1', () => {
+		const { container } = render(
+			<Step
+				index={0}
+				total={3}
+				orientation='horizontal'
+				title={null}
+				description={null}
+				active
+				completion={0.5}
+			/>
+		);
 
-		expect(container).toMatchSnapshot();
+		expect(container.querySelector('.progress')).toBeInTheDocument();
+	});
+
+	test('applies no-tail class when noTail is true', () => {
+		const { container } = render(
+			<Step
+				index={0}
+				total={3}
+				orientation='horizontal'
+				title={null}
+				description={null}
+				noTail
+			/>
+		);
+
+		expect(container.querySelector('[data-elem="step"]')).toHaveClass('no-tail');
+	});
+
+	test('applies proper orientation class when orientation is provided', () => {
+		const { container } = render(
+			<Step index={0} total={3} orientation='vertical' title={null} description={null} />
+		);
+
+		expect(container.querySelector('[data-elem="step"]')).toHaveClass('vertical');
+	});
+});
+
+//  SNAPSHOT RENDERING
+
+describe('Step Component — Snapshot Rendering', () => {
+	test('matches visual snapshot for a fully populated step', () => {
+		const { asFragment } = render(
+			<Step
+				index={1}
+				total={4}
+				orientation='horizontal'
+				title='Snapshot Title'
+				description='Snapshot Description'
+				active
+				completion={0.75}
+			/>
+		);
+
+		expect(asFragment()).toMatchSnapshot();
 	});
 });
