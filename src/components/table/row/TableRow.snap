@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`TableRow — Snapshot Rendering matches snapshot for default row 1`] = `
+<div>
+  <table>
+    <tbody>
+      <tr
+        class="root body-row row-height-md"
+        data-elem="table-row"
+        tabindex="-1"
+      >
+        <td
+          data-testid="table-cell"
+        >
+          Aryan
+        </td>
+        <td
+          data-testid="table-cell"
+        >
+          27
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;

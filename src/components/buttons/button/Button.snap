@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Button — Snapshot Rendering button with icons snapshot 1`] = `
+<div>
+  <button
+    class="root radius-default outlined primary"
+    data-testid="base-button"
+    type="submit"
+  >
+    <span>
+      L
+    </span>
+    <span
+      data-testid="title"
+    >
+      Snapshot
+    </span>
+    <span>
+      R
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Button — Snapshot Rendering default button snapshot 1`] = `
+<div>
+  <button
+    class="root radius-default contained primary"
+    data-testid="base-button"
+    type="submit"
+  >
+    <span
+      data-testid="title"
+    >
+      Snapshot Button
+    </span>
+  </button>
+</div>
+`;

@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`HierarchyBrowser — Snapshot Rendering matches snapshot for initial render 1`] = `
+<div>
+  <div
+    class="root"
+  >
+    <div
+      class="body"
+      data-elem="body"
+    >
+      <div>
+        <div
+          data-testid="hierarchy-item"
+        >
+          Title
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

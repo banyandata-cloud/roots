@@ -1,6 +1,4 @@
-import { subHours, subMinutes } from 'date-fns';
-import React, { useEffect } from 'react';
-import { classes, getDayInfo } from '../../../../utils';
+import { classes } from '../../../../utils';
 import { Button } from '../../../buttons';
 import { ChevronIcon } from '../../../icons';
 import { DateSwitcher } from '../../dateSwitcher';
@@ -41,52 +39,9 @@ const CarouselSwitch = ({ onMonthChange, selectedMonth }) => {
 };
 
 const Header = (props) => {
-	const {
-		range,
-		dateSelectionView,
-		defaultHourDiff,
-		timeSelectionView,
-		setTimeRangeSelection,
-		selectedDate,
-	} = props ?? {};
+	const { range, dateSelectionView, timeSelectionView } = props ?? {};
 
 	const showCarouselSwitcher = !dateSelectionView && !timeSelectionView;
-
-	let currentTime = getDayInfo(new Date());
-	if (selectedDate.unix !== undefined) {
-		currentTime = getDayInfo(new Date(selectedDate.unix * 1000));
-	}
-
-	const prevTime = getDayInfo(
-		subMinutes(
-			subHours(
-				new Date(
-					currentTime.year,
-					currentTime.monthAsNumber,
-					currentTime.dateAsNumber,
-					currentTime.hoursIn12,
-					currentTime.minutes
-				),
-				defaultHourDiff ?? currentTime.hoursIn12
-			),
-			defaultHourDiff ? 0 : currentTime.minutes
-		)
-	);
-
-	useEffect(() => {
-		setTimeRangeSelection({
-			next: {
-				HOURS: currentTime.hours,
-				MINS: currentTime.minutes,
-				MER: currentTime.meridian,
-			},
-			previous: {
-				HOURS: prevTime.hours,
-				MINS: prevTime.minutes,
-				MER: prevTime.meridian,
-			},
-		});
-	}, [selectedDate.unix]);
 
 	return (
 		<div className={styles.root}>

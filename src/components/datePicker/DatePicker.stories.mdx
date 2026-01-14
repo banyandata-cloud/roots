@@ -37,23 +37,32 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 The date picker which allows to select a date from the popover.
 
 <Canvas>
-	<Story
-		name='Default Singe Date Picker'
-		args={{
-			placeholder: 'Select Date',
-			theme: 'light',
-			value: [1743489604, 1744699204],
-			disableDatesBefore: [1743489604],
-			disableDatesAfter: [1744699204],
-			range: true,
-			onApply: (v) => {
-				console.log(new Date(v[0] * 1000), new Date(v[1] * 1000), v);
-			},
-			onClear: (v) => {
-				console.log('On Clear');
-			},
-		}}>
-		{Template.bind({})}
+	<Story name='Default Singe Date Picker'>
+		{() => {
+			const [value, setValue] = useState(1767649320);
+			return (
+				<ThemedContainer style={{ width: '40rem' }}>
+					<DatePicker
+						{...{
+							placeholder: 'Select Date Range',
+							label: 'Range Date Picker',
+							value: value,
+							limitHours: 1,
+							valueAsRange: true,
+							showTime: true,
+							timeRange: true,
+							onApply: (v) => {
+								console.log(v);
+								setValue(v?.[1]);
+							},
+							onClear: () => {
+								setValue(null);
+							},
+						}}
+					/>
+				</ThemedContainer>
+			);
+		}}
 	</Story>
 </Canvas>
 

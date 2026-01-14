@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Breadcrumbs — Snapshot Rendering collapsed breadcrumbs snapshot 1`] = `
+<div>
+  <div
+    class="root"
+  >
+    <button
+      data-testid="breadcrumbs-button"
+    >
+      <span>
+        section-2 : test-2
+      </span>
+      <div
+        class="icon"
+        data-testid="caret-icon"
+      />
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Breadcrumbs — Snapshot Rendering expanded breadcrumbs snapshot 1`] = `
+<div>
+  <div
+    class="root"
+  >
+    <button
+      data-testid="breadcrumbs-button"
+    >
+      <span>
+        section-2 : test-2
+      </span>
+      <div
+        class="icon expand"
+        data-testid="caret-icon"
+      />
+    </button>
+    <div
+      data-testid="popover"
+    >
+      <div
+        class="crumb-list"
+        data-state="false"
+      >
+        <div
+          class="left"
+        >
+          <span
+            class="value"
+          >
+            section-1: 
+            test
+          </span>
+        </div>
+        <div
+          class="right"
+        >
+          <div
+            class="circle"
+          />
+        </div>
+      </div>
+      <div
+        class="crumb-list active"
+        data-state="true"
+      >
+        <div
+          class="left"
+        >
+          <span
+            class="value"
+          >
+            section-2: 
+            test-2
+          </span>
+        </div>
+        <div
+          class="right"
+        >
+          <div
+            class="circle-filled"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

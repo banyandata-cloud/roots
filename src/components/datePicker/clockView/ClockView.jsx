@@ -96,12 +96,13 @@ const ClockView = (props = {}) => {
 									next: {
 										...timeRangeSelection.next,
 										HOURS: item === 0 ? 1 : item + limitHours,
+										MINS: timeRangeSelection.previous.MINS,
 										MER:
 											item + limitHours >= 12
 												? calculateMeridian(
 														timeRangeSelection.previous.MER,
 														timeRangeSelection.next.MER
-												  )
+													)
 												: timeRangeSelection.previous.MER,
 									},
 									previous: {
@@ -120,7 +121,7 @@ const ClockView = (props = {}) => {
 												? calculateMeridian(
 														timeRangeSelection.previous.MER,
 														timeRangeSelection.next.MER
-												  )
+													)
 												: timeRangeSelection.previous.MER,
 									},
 									next: {
@@ -163,11 +164,11 @@ const ClockView = (props = {}) => {
 					? {
 							top: '29%',
 							left: '49%',
-					  }
+						}
 					: {
 							top: '30%',
 							left: '50%',
-					  }),
+						}),
 			},
 		};
 	};
