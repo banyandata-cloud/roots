@@ -1,51 +1,9 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
-exports[`Step — Snapshot Rendering completed active step snapshot 1`] = `
-<div>
+exports[`Step Component — Snapshot Rendering matches visual snapshot for a fully populated step 1`] = `
+<DocumentFragment>
   <div
-    class="root active completed horizontal"
-    data-elem="step"
-  >
-    <div
-      class="left"
-    >
-      <div
-        class="icon-container"
-      >
-        <span
-          class="icon completion-icon active"
-          data-testid="tick-icon"
-        >
-          ✓
-        </span>
-        <div
-          class="progress"
-          style="background-image: conic-gradient(#00ff00, 100%, transparent 0%);"
-        />
-      </div>
-    </div>
-    <div
-      class="right"
-    >
-      <span
-        class="title"
-      >
-        Step title
-      </span>
-      <span
-        class="description"
-      >
-        Step description
-      </span>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`Step — Snapshot Rendering default step snapshot 1`] = `
-<div>
-  <div
-    class="root horizontal"
+    class="root active horizontal"
     data-elem="step"
   >
     <div
@@ -57,8 +15,11 @@ exports[`Step — Snapshot Rendering default step snapshot 1`] = `
         <span
           class="text"
         >
-          1
+          2
         </span>
+        <div
+          class="progress"
+        />
       </div>
     </div>
     <div
@@ -67,14 +28,14 @@ exports[`Step — Snapshot Rendering default step snapshot 1`] = `
       <span
         class="title"
       >
-        Step title
+        Snapshot Title
       </span>
       <span
         class="description"
       >
-        Step description
+        Snapshot Description
       </span>
     </div>
   </div>
-</div>
+</DocumentFragment>
 `;

@@ -75,9 +75,56 @@ The date picker which allows to select a date from the popover.
 			placeholder: 'Select Date',
 			theme: 'light',
 			value: 1743489604,
-			disableDatesBefore: [1743489604],
-			disableDatesAfter: [1744699204],
 			v2: true,
+			startingYear: 2020,
+			showCustomRanges: true,
+			customRanges: [
+				{
+					title: 'Last 12 hours',
+					type: 'hours',
+					value: 12,
+				},
+				{
+					title: 'Last 24 hours',
+					type: 'hours',
+					value: 24,
+				},
+				{
+					title: 'Last 1 Week',
+					type: 'days',
+					value: 7,
+				},
+				{
+					title: 'Last 15 Days',
+					type: 'days',
+					value: 15,
+				},
+				{
+					title: 'Last 1 Month',
+					type: 'days',
+					value: 30,
+				},
+				{
+					title: 'Last 2 Months',
+					type: 'months',
+					value: 2,
+				},
+				{
+					title: 'Last 3 Months',
+					type: 'months',
+					value: 3,
+				},
+				{
+					title: 'Last 6 Months',
+					type: 'months',
+					value: 6,
+				},
+				{
+					title: 'Last 1 Year',
+					type: 'months',
+					value: 12,
+				},
+			],
 			onApply: (v) => {
 				console.log(new Date(v[0] * 1000), new Date(v[1] * 1000), v);
 			},
@@ -107,6 +154,85 @@ The date picker allows to select the range of date from the popever.
 							range: true,
 							onApply: (v) => {
 								setValue(v);
+							},
+							onClear: () => {
+								setValue(null);
+							},
+						}}
+					/>
+				</ThemedContainer>
+			);
+		}}
+	</Story>
+</Canvas>
+
+### Range V2 Date Picker
+
+The date picker allows to select the range of date from the popever.
+
+<Canvas>
+	<Story name='Range Date Picker V2 New Modal'>
+		{() => {
+			const [value, setValue] = useState([1756665000, 1757183399]);
+			return (
+				<ThemedContainer style={{ width: '40rem' }}>
+					<DatePicker
+						{...{
+							placeholder: 'Select Date Range',
+							label: 'Range Date Picker V2',
+							value,
+							range: true,
+							showCustomRanges: true,
+							customRanges: [
+								{
+									title: 'Last 24 hours',
+									type: 'hours',
+									value: 24,
+								},
+								{
+									title: 'Last 1 Week',
+									type: 'days',
+									value: 7,
+								},
+								{
+									title: 'Last 15 Days',
+									type: 'days',
+									value: 15,
+								},
+								{
+									title: 'Last 1 Month',
+									type: 'days',
+									value: 30,
+								},
+								{
+									title: 'Last 2 Months',
+									type: 'months',
+									value: 2,
+								},
+								{
+									title: 'Last 3 Months',
+									type: 'months',
+									value: 3,
+								},
+								{
+									title: 'Last 6 Months',
+									type: 'months',
+									value: 6,
+								},
+								{
+									title: 'Last 1 Year',
+									type: 'months',
+									value: 12,
+								},
+							],
+							v2: true,
+							onApply: (x, y, z) => {
+								setValue(x);
+								console.log({
+									range: x,
+									y,
+									z,
+								});
 							},
 							onClear: () => {
 								setValue(null);

@@ -1,94 +1,181 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
-exports[`Stepper — Snapshot Rendering default stepper snapshot 1`] = `
+exports[`Stepper — Snapshot Rendering matches snapshot for horizontal stepper 1`] = `
 <div>
   <div
     class="root horizontal"
   >
     <div
-      data-testid="step"
+      class="root completed horizontal"
+      data-elem="step"
     >
-      <span
-        data-testid="step-title"
+      <div
+        class="left"
       >
-        Step A
-      </span>
-      <span
-        data-testid="step-index"
+        <div
+          class="icon-container"
+        >
+          <svg
+            class="icon completion-icon"
+            fill="green"
+            viewBox="0 0 13 12"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g
+              clip-path="url(#clip0_638_154)"
+            >
+              <path
+                d="M11.6911 1.6875H10.7549C10.6237 1.6875 10.4991 1.74777 10.4188 1.85089L4.89691 8.84598L2.24914 5.49107C2.20908 5.44022 2.15803 5.3991 2.09981 5.3708C2.04159 5.3425 1.97771 5.32776 1.91298 5.32768H0.976817C0.887085 5.32768 0.837531 5.4308 0.892442 5.50045L4.56075 10.1478C4.73217 10.3647 5.06164 10.3647 5.23441 10.1478L11.7755 1.85893C11.8304 1.79063 11.7808 1.6875 11.6911 1.6875Z"
+              />
+            </g>
+            <defs>
+              <clippath
+                id="clip0_638_154"
+              >
+                <rect
+                  fill="white"
+                  height="12"
+                  transform="translate(0.333344)"
+                  width="12"
+                />
+              </clippath>
+            </defs>
+          </svg>
+        </div>
+      </div>
+      <div
+        class="right"
       >
-        0
-      </span>
-      <span
-        data-testid="step-orientation"
-      >
-        horizontal
-      </span>
+        <span
+          class="title"
+        >
+          Step A
+        </span>
+      </div>
     </div>
     <div
-      data-testid="step"
+      class="root active horizontal"
+      data-elem="step"
     >
-      <span
-        data-testid="step-title"
+      <div
+        class="left"
       >
-        Step B
-      </span>
-      <span
-        data-testid="step-index"
+        <div
+          class="icon-container"
+        >
+          <span
+            class="text"
+          >
+            2
+          </span>
+          <div
+            class="progress"
+          />
+        </div>
+      </div>
+      <div
+        class="right"
       >
-        1
-      </span>
-      <span
-        data-testid="step-orientation"
-      >
-        horizontal
-      </span>
+        <span
+          class="title"
+        >
+          Step B
+        </span>
+        <span
+          class="description"
+        >
+          Some description
+        </span>
+      </div>
     </div>
   </div>
 </div>
 `;
 
-exports[`Stepper — Snapshot Rendering vertical stepper snapshot 1`] = `
+exports[`Stepper — Snapshot Rendering matches snapshot for vertical stepper 1`] = `
 <div>
   <div
     class="root vertical"
   >
     <div
-      data-testid="step"
+      class="root active vertical"
+      data-elem="step"
     >
-      <span
-        data-testid="step-title"
+      <div
+        class="left"
       >
-        Step A
-      </span>
-      <span
-        data-testid="step-index"
+        <div
+          class="icon-container"
+        >
+          <span
+            class="text"
+          >
+            1
+          </span>
+        </div>
+      </div>
+      <div
+        class="right"
       >
-        0
-      </span>
-      <span
-        data-testid="step-orientation"
-      >
-        vertical
-      </span>
+        <span
+          class="title"
+        >
+          Vertical 1
+        </span>
+      </div>
     </div>
     <div
-      data-testid="step"
+      class="root completed vertical"
+      data-elem="step"
     >
-      <span
-        data-testid="step-title"
+      <div
+        class="left"
       >
-        Step B
-      </span>
-      <span
-        data-testid="step-index"
+        <div
+          class="icon-container"
+        >
+          <svg
+            class="icon completion-icon"
+            fill="green"
+            viewBox="0 0 13 12"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g
+              clip-path="url(#clip0_638_154)"
+            >
+              <path
+                d="M11.6911 1.6875H10.7549C10.6237 1.6875 10.4991 1.74777 10.4188 1.85089L4.89691 8.84598L2.24914 5.49107C2.20908 5.44022 2.15803 5.3991 2.09981 5.3708C2.04159 5.3425 1.97771 5.32776 1.91298 5.32768H0.976817C0.887085 5.32768 0.837531 5.4308 0.892442 5.50045L4.56075 10.1478C4.73217 10.3647 5.06164 10.3647 5.23441 10.1478L11.7755 1.85893C11.8304 1.79063 11.7808 1.6875 11.6911 1.6875Z"
+              />
+            </g>
+            <defs>
+              <clippath
+                id="clip0_638_154"
+              >
+                <rect
+                  fill="white"
+                  height="12"
+                  transform="translate(0.333344)"
+                  width="12"
+                />
+              </clippath>
+            </defs>
+          </svg>
+        </div>
+      </div>
+      <div
+        class="right"
       >
-        1
-      </span>
-      <span
-        data-testid="step-orientation"
-      >
-        vertical
-      </span>
+        <span
+          class="title"
+        >
+          Vertical 2
+        </span>
+        <span
+          class="description"
+        >
+          Desc
+        </span>
+      </div>
     </div>
   </div>
 </div>
