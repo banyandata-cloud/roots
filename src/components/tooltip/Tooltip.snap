@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Tooltip — Snapshot Rendering default snapshot 1`] = `
+<div>
+  <div>
+    Hover
+  </div>
+  <div
+    data-testid="popper"
+  >
+    <div
+      class="tooltip light"
+      style="position: absolute; top: 50px; left: 50px; z-index: 100; opacity: 0; transform: scale(0) translateZ(0);"
+    >
+      <div
+        class="arrow"
+        style="left: 10px; top: 5px; bottom: -0.3rem;"
+      />
+      Snapshot Test
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Tooltip — Snapshot Rendering variant snapshot 1`] = `
+<div>
+  <div>
+    Hover
+  </div>
+  <div
+    data-testid="popper"
+  >
+    <div
+      class="tooltip light"
+      style="position: absolute; top: 50px; left: 50px; z-index: 100; opacity: 0; transform: scale(0) translateZ(0);"
+    >
+      <div
+        class="arrow"
+        style="left: 10px; top: 5px; bottom: -0.3rem;"
+      />
+      Snapshot
+    </div>
+  </div>
+</div>
+`;

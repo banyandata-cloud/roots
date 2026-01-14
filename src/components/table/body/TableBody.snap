@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`TableBody — Snapshot Rendering matches snapshot for default body 1`] = `
+<div>
+  <table>
+    <tbody
+      class="root"
+      data-elem="table-body"
+    >
+      <tr
+        data-testid="table-row"
+      />
+      <tr
+        data-testid="table-row"
+      />
+    </tbody>
+  </table>
+</div>
+`;

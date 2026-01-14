@@ -30,10 +30,14 @@ const DateAndTimeSelection = ({
 
 	const [timeValue, setTimeValue] = useState();
 
+	console.log({
+		H: defaultTime,
+	});
+
 	useEffect(() => {
 		setDateValue(defaultDate);
 		setTimeValue(defaultTime);
-	}, [selectedDate, timeRangeSelection]);
+	}, [defaultDate, defaultTime]);
 
 	const onDateSelectorClick = () => {
 		showTimeSelectionView(false);

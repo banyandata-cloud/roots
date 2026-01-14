@@ -5,13 +5,13 @@ import {
 	useFloating,
 	useInteractions,
 } from '@floating-ui/react-dom-interactions';
-import { getUnixTime } from 'date-fns';
+import { fromUnixTime, getUnixTime } from 'date-fns';
 import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useOutsideClickListener } from '../../hooks';
-import { classes } from '../../utils';
+import { classes, getDayInfo } from '../../utils';
 import { Button } from '../buttons';
 import { DatePickerV2 } from '../datePickerV2';
 import { ErrorBoundaryWrapper } from '../errorBoundary';
@@ -28,6 +28,27 @@ import {
 	getFloatingReferences,
 	isMaxRangeExceeded,
 } from './utils';
+
+const getDefaultTimeRangeSelection = (value, limitHours) => {
+	const sDate = fromUnixTime(value - 3600 * limitHours);
+	const eDate = fromUnixTime(value);
+
+	const startDateInfo = getDayInfo(sDate);
+	const endDateInfo = getDayInfo(eDate);
+
+	return {
+		previous: {
+			HOURS: startDateInfo.hours,
+			MINS: startDateInfo.minutes,
+			MER: 'AM',
+		},
+		next: {
+			HOURS: endDateInfo.hours,
+			MINS: endDateInfo.minutes,
+			MER: endDateInfo.meridian,
+		},
+	};
+};
 
 const DatePicker = (props) => {
 	const {
@@ -86,6 +107,12 @@ const DatePicker = (props) => {
 	});
 
 	const [timeRangeSelection, setTimeRangeSelection] = useState({});
+
+	useEffect(() => {
+		setTimeRangeSelection(() => {
+			return getDefaultTimeRangeSelection(value, limitHours);
+		});
+	}, [selectedDate]);
 
 	const datePickerRef = useRef();
 
@@ -212,6 +239,7 @@ const DatePicker = (props) => {
 		},
 		onClear: () => {
 			onClear();
+			setTimeRangeSelection({});
 			setOpenDatePicker(false);
 		},
 		disabledDates,

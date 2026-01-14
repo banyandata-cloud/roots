@@ -150,10 +150,13 @@ export const getDatePickerDisplayValue = ({
 	}
 	if (timeRange) {
 		const sDate = fromUnixTime(value - 3600 * limitHours);
+		const eDate = fromUnixTime(value);
 
 		const timeValue = `${doubleDigitted(((sDate.getHours() + 11) % 12) + 1)}:${doubleDigitted(
 			sDate.getMinutes()
-		)} ${sDate.getHours() >= 12 ? 'PM' : 'AM'}`;
+		)} ${sDate.getHours() >= 12 ? 'PM' : 'AM'} - ${doubleDigitted(((eDate.getHours() + 11) % 12) + 1)}:${doubleDigitted(
+			eDate.getMinutes()
+		)} ${eDate.getHours() >= 12 ? 'PM' : 'AM'}`;
 
 		return `${sDate.getDate()} ${
 			MONTHS[sDate.getMonth().toString()?.substring(0, 3)]

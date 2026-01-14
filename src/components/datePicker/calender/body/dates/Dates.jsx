@@ -99,7 +99,7 @@ const Dates = (props) => {
 		setSelectedDate({
 			...selectedDate,
 			month: getDayInfo(date).month,
-			year: selectedMonth.year,
+			year: getDayInfo(date).year,
 			date: dateAsNumber,
 			unix: getUnixTime(date.setHours(23, 59, 59, 59)),
 		});

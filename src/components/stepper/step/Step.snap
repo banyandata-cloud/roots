@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Step Component — Snapshot Rendering matches visual snapshot for a fully populated step 1`] = `
+<DocumentFragment>
+  <div
+    class="root active horizontal"
+    data-elem="step"
+  >
+    <div
+      class="left"
+    >
+      <div
+        class="icon-container"
+      >
+        <span
+          class="text"
+        >
+          2
+        </span>
+        <div
+          class="progress"
+        />
+      </div>
+    </div>
+    <div
+      class="right"
+    >
+      <span
+        class="title"
+      >
+        Snapshot Title
+      </span>
+      <span
+        class="description"
+      >
+        Snapshot Description
+      </span>
+    </div>
+  </div>
+</DocumentFragment>
+`;
