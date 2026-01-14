@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Button — Snapshots matches default snapshot 1`] = `
+<div>
+  <button
+    class="root sm border-radius-default root contained root primary size-sm text-14"
+    data-elem="base-cell"
+    type="submit"
+  >
+    <span
+      data-elem="component2"
+    >
+      <span
+        data-elem="title"
+      >
+        Snapshot Button
+      </span>
+    </span>
+  </button>
+</div>
+`;
+
+exports[`Button — Snapshots matches snapshot with multiple props 1`] = `
+<div>
+  <button
+    class="root sm border-radius-default root contained root outlined size-lg text-16 extra-class"
+    data-elem="base-cell"
+    disabled=""
+    type="button"
+  >
+    <span
+      data-elem="component2"
+    >
+      <span
+        data-elem="title"
+      >
+        Complex Button
+      </span>
+    </span>
+    <span
+      data-elem="component3"
+    >
+      <span>
+        →
+      </span>
+    </span>
+  </button>
+</div>
+`;
