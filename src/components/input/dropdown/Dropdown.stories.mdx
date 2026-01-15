@@ -17,6 +17,16 @@ export const Template = (args) => (
 	</ThemedContainer>
 );
 
+export const Template2 = (args) => (
+	<ThemedContainer theme='light'>
+		<Dropdownv2 {...args}>
+			<DropdownItemv2 title='Option A' value={1} v2 />
+			<DropdownItemv2 title='Option B' value={2} v2 />
+			<DropdownItemv2 title='Option C' value={3} v2 />
+		</Dropdownv2>
+	</ThemedContainer>
+);
+
 # Dropdown
 
 The Dropdown component provides a versatile dropdown input with support for single and multi-selection. It supports controlled and uncontrolled usage and offers various customization options.
@@ -53,6 +63,62 @@ The default dropdown component.
 			placeholder: 'Select an option',
 		}}>
 		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Default - Uncontrolled V2
+
+The default dropdown component.
+
+<Canvas>
+	<Story
+		name='Default Uncontrolled V2'
+		args={{
+			label: 'Default Dropdown',
+			placeholder: 'Select an option',
+			v2: true,
+		}}>
+		{Template2.bind({})}
+	</Story>
+</Canvas>
+
+### Multi Select Dropdown V2
+
+The dropdown component with multiple selections.
+
+<Canvas>
+	<Story name='Multi Select V2'>
+		{() => {
+			return (
+				<ThemedContainer theme='light'>
+					<div>
+						<Dropdownv2
+							multi={true}
+							v2={true}
+							label='Uncontrolled Multi Select Checkbox Dropdown'
+							placeholder='Select an option'
+							onChange={(event, newValue) => {
+								console.log({
+									V2: newValue,
+								});
+								setValue(newValue);
+							}}>
+							{[...Array(13).keys()].map((option) => {
+								return (
+									<DropdownItemv2
+										key={option}
+										title={`Option ${option + 1}`}
+										value={option + 1}
+										variant='checkbox'
+										v2={true}
+									/>
+								);
+							})}
+						</Dropdownv2>
+					</div>
+				</ThemedContainer>
+			);
+		}}
 	</Story>
 </Canvas>
 

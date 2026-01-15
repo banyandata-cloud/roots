@@ -9,7 +9,6 @@ export interface DropdownItemProps {
 	error?: string | undefined;
 	selected?: boolean;
 	intermediate?: boolean;
-	v2?: boolean;
 
 	onKeyDown?: KeyboardEventHandler<HTMLLIElement>;
 	onMouseEnter?: MouseEventHandler<HTMLLIElement>;

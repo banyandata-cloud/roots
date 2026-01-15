@@ -4,6 +4,7 @@ export * from './Calender';
 export * from './Caret';
 export * from './ChartsIcon';
 export * from './CheckboxIcon';
+export * from './Checked';
 export * from './Chevron';
 export * from './Clock';
 export * from './Close';
