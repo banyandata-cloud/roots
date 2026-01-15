@@ -19,6 +19,10 @@ const DateAndTimeSelection = ({
 	let defaultTime = `${doubleDigitted(timeRangeSelection.next?.HOURS)}:${doubleDigitted(
 		timeRangeSelection.next?.MINS
 	)} ${timeRangeSelection.next?.MER}`;
+
+	console.log({
+		defaultTime,
+	});
 	if (valueAsRange) {
 		defaultTime = `${doubleDigitted(timeRangeSelection.previous?.HOURS)}:${doubleDigitted(
 			timeRangeSelection.previous?.MINS
@@ -29,10 +33,6 @@ const DateAndTimeSelection = ({
 	const [dateValue, setDateValue] = useState();
 
 	const [timeValue, setTimeValue] = useState();
-
-	console.log({
-		H: defaultTime,
-	});
 
 	useEffect(() => {
 		setDateValue(defaultDate);
