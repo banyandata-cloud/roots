@@ -1,0 +1,433 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+
+import { ThemedContainer } from '../../../helpers';
+import Button from './Button';
+import { CopyIcon, ArrowIcon } from '../../../icons';
+
+<Meta title='Components/Buttons/v2/Button' parameters={{ options: { showToolbar: true } }} />
+
+export const Template = (args) => (
+	<ThemedContainer theme='light'>
+		<Button {...args} />
+	</ThemedContainer>
+);
+
+# Button
+
+A versatile and customizable button component designed for enabling interactive user experiences with configurable appearance and behavior.
+
+#### Design - [Figma](https://www.figma.com/file/e9opoAtQHBo4vFd6u0Co98/Component-Library?type=design&node-id=1-2&mode=design&t=doFoJhh78NiStend-0) | Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/components/buttons/button)
+
+> The Button component builds upon the BaseButton component, adding more flexibility and visual customization. It allows you to include custom components (leftComponent and rightComponent) beside the button's main content. You can adjust the radius of the button, its size, and even its color using the color prop.
+
+## Usage
+
+Basic import and additional information on how to use this component.
+
+```js
+import { Button } from '@banyan_cloud/roots';
+```
+
+- This Button component enhances the capabilities of the BaseButton and can be effectively used across the application's UI to provide interactive elements with varying styles and behaviors.
+
+## Stories
+
+The CSF rendered inside the `Canvas` from which you can see the implementation example.
+
+### Primary Variant[V2]
+
+<Canvas>
+	<Story name='Primary Button'>
+		{() => (
+			<ThemedContainer theme='light'>
+				<div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+					<Button title='Primary XS' variant='primary' size='xs' textSize='sm' />
+					<Button title='Primary SM' variant='primary' size='sm' textSize='md' />
+					<Button title='Primary MD' variant='primary' size='md' textSize='md' />
+					<Button title='Primary LG' variant='primary' size='lg' textSize='md' />
+				</div>
+			</ThemedContainer>
+		)}
+	</Story>
+</Canvas>
+
+### Secondary Variant
+
+<Canvas>
+	<Story name='Secondary Button'>
+		{() => (
+			<ThemedContainer theme='light'>
+				<div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+					<Button title='Secondary XS' variant='secondary' size='xs' textSize='sm' />
+					<Button title='Secondary SM' variant='secondary' size='sm' textSize='md' />
+					<Button title='Secondary MD' variant='secondary' size='md' textSize='md' />
+					<Button title='Secondary LG' variant='secondary' size='lg' textSize='md' />
+				</div>
+			</ThemedContainer>
+		)}
+	</Story>
+</Canvas>
+
+### Soft Variant
+
+<Canvas>
+	<Story name='Soft Button'>
+		{() => (
+			<ThemedContainer theme='light'>
+				<div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+					<Button title='Soft Button XS' variant='soft' size='xs' textSize='sm' />
+					<Button title='Soft Button SM' variant='soft' size='sm' textSize='md' />
+					<Button title='Soft Button MD' variant='soft' size='md' textSize='md' />
+					<Button title='Soft Button LG' variant='soft' size='lg' textSize='md' />
+				</div>
+			</ThemedContainer>
+		)}
+	</Story>
+</Canvas>
+
+### Outlined Variant
+
+<Canvas>
+	<Story name='Outlined Button'>
+		{() => (
+			<ThemedContainer theme='light'>
+				<div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+					<Button title='Outlined XS' variant='outlined' size='xs' textSize='sm' />
+					<Button title='Outlined SM' variant='outlined' size='sm' textSize='md' />
+					<Button title='Outlined MD' variant='outlined' size='md' textSize='md' />
+					<Button title='Outlined LG' variant='outlined' size='lg' textSize='md' />
+				</div>
+			</ThemedContainer>
+		)}
+	</Story>
+</Canvas>
+
+### Ghost Variant
+
+<Canvas>
+	<Story name='Ghost Button'>
+		{() => (
+			<ThemedContainer theme='light'>
+				<div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+					<Button title='Ghost XS' variant='ghost' size='xs' />
+					<Button title='Ghost SM' variant='ghost' size='sm' textSize='md' />
+					<Button title='Ghost MD' variant='ghost' size='md' textSize='md' />
+					<Button title='Ghost LG' variant='ghost' size='lg' textSize='md' />
+				</div>
+			</ThemedContainer>
+		)}
+	</Story>
+</Canvas>
+
+### Right Icon Variant
+
+<Canvas>
+	<Story name='Button with Right Icon'>
+		{() => (
+			<ThemedContainer theme='light'>
+				<div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+					<Button
+						title='Primary with Icon'
+						variant='primary'
+						size='md'
+						rightComponent={() => <ArrowIcon height='12' width='12' />}
+					/>
+					<Button
+						title='Secondary with Icon'
+						variant='secondary'
+						size='md'
+						textSize='md'
+						rightComponent={() => <ArrowIcon height='12' width='12' />}
+					/>
+					<Button
+						title='Outlined with Icon'
+						variant='outlined'
+						size='md'
+						textSize='md'
+						rightComponent={() => <ArrowIcon height='12' width='12' />}
+					/>
+					<Button
+						title='Soft with Icon'
+						variant='soft'
+						size='md'
+						textSize='md'
+						rightComponent={() => <ArrowIcon height='12' width='12' />}
+					/>
+				</div>
+			</ThemedContainer>
+		)}
+	</Story>
+</Canvas>
+
+### Text Size
+
+<Canvas>
+	<Story name='Text Size'>
+		{() => (
+			<ThemedContainer theme='light'>
+				<div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+					<Button title='Text SM(14px)' variant='primary' size='md' textSize='sm' />
+					<Button title='Text MD(16px)' variant='primary' size='md' textSize='md' />
+				</div>
+			</ThemedContainer>
+		)}
+	</Story>
+</Canvas>
+
+### Disabled State (All Variants)
+
+<Canvas>
+	<Story name='Disabled Button'>
+		{() => (
+			<ThemedContainer theme='light'>
+				<div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+					<Button title='Primary' variant='primary' size='sm' disabled />
+					<Button
+						title='Secondary'
+						variant='secondary'
+						size='sm'
+						textSize='md'
+						disabled
+					/>
+					<Button title='Soft' variant='soft' size='sm' textSize='md' disabled />
+					<Button title='Outlined' variant='outlined' size='sm' textSize='md' disabled />
+					<Button title='Ghost' variant='ghost' size='sm' textSize='md' disabled />
+				</div>
+			</ThemedContainer>
+		)}
+	</Story>
+</Canvas>
+
+## API
+
+**`className`**
+
+Additional CSS class names to be applied to the button.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>""</td>
+	</tr>
+</table>
+
+```jsx
+<Button className='additionalClass' />
+```
+
+**`component1`**
+
+The first component on the left of the title. Accepts JSX element.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>JSX</td>
+		<td>null</td>
+	</tr>
+</table>
+
+```jsx
+<Button component1={<p>Some text</p>} />
+```
+
+**`title`**
+
+The text to be displayed within the button.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>""</td>
+	</tr>
+</table>
+
+```jsx
+<Button title='Submit' />
+```
+
+**`component3`**
+
+The third component on the right of the title. Accepts JSX element.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>JSX</td>
+		<td>null</td>
+	</tr>
+</table>
+
+```jsx
+<Button component3={<p>Some text</p>} />
+```
+
+**`size`**
+
+The size of the button, affecting its dimensions.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>'sm', 'md', 'lg', 'auto'</td>
+		<td>'sm'</td>
+	</tr>
+</table>
+
+```jsx
+<Button size='sm' />
+```
+
+**`flexible`**
+
+Make the button button flexible. It adds the following styles: flex-grow: 1;flex-shrink: 1;min-width: 3rem;
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<Button flexible={false} />
+```
+
+**`radius`**
+
+For applying border radius to the button.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>'none', 'default', 'round', 'ellipse'</td>
+		<td>'default'</td>
+	</tr>
+</table>
+
+```jsx
+<Button radius='none' />
+```
+
+**`disabled`**
+
+If true, the button is disabled and cannot be interacted with.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<Button disabled={false} />
+```
+
+**`type`**
+
+The type of the button.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>'button', 'submit', 'reset'</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<Button type='submit' />
+```
+
+**`onClick`**
+
+Callback function to be executed when the button is clicked.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Function</td>
+		<td>{`() => {}`}</td>
+	</tr>
+</table>
+
+```jsx
+<Button
+	onClick={() => {
+		console.log('Button clicked');
+	}}
+/>
+```
+
+**`blurOnClick`**
+
+If true, the button will lose focus after being clicked.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>true</td>
+	</tr>
+</table>
+
+```jsx
+<Button blurOnClick={false} />
+```
+
+**`variant`**
+
+For applying visual style to the button.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>'contained', 'outlined', 'text'</td>
+		<td>'contained'</td>
+	</tr>
+</table>
+
+```jsx
+<Button variant='outlined' />
+```

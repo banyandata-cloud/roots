@@ -1,0 +1,134 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`TextField — Snapshots matches default snapshot 1`] = `
+<div>
+  <div
+    class="root"
+  >
+    <label>
+      <div
+        class="labelRow"
+      >
+        <span
+          class=""
+        >
+          Snapshot
+        </span>
+      </div>
+      <div
+        class="root sm border-radius-none md input-wrapper border-default type-text"
+        data-elem="base-cell"
+      >
+        <span
+          data-elem="component2"
+        >
+          <input
+            class="input"
+            data-elem="input"
+            placeholder="snapshot"
+            value=""
+          />
+        </span>
+      </div>
+      <div
+        class="helperTextWrapper"
+      />
+    </label>
+  </div>
+</div>
+`;
+
+exports[`TextField — Snapshots matches snapshot with complex props 1`] = `
+<div>
+  <div
+    class="root"
+  >
+    <label>
+      <div
+        class="labelRow"
+      >
+        <span
+          class=""
+        >
+          Complex
+        </span>
+        <span
+          class="textCount"
+        >
+          0
+          /
+          50
+        </span>
+      </div>
+      <div
+        class="root sm border-radius-none lg input-wrapper border-none type-textarea readOnly"
+        data-elem="base-cell"
+      >
+        <span
+          data-elem="component1"
+        >
+          <span>
+            L
+          </span>
+        </span>
+        <span
+          data-elem="component2"
+        >
+          <textarea
+            class="input"
+            data-elem="input"
+            maxlength="50"
+            placeholder=""
+            readonly=""
+          />
+        </span>
+        <span
+          data-elem="component3"
+        >
+          <span
+            class="span"
+          >
+            <svg
+              class="icon"
+              fill="none"
+              height="16"
+              viewBox="0 0 16 16"
+              width="16"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <g
+                clip-path="url(#clip0_124_824)"
+              >
+                <path
+                  d="M5.00006 0.0500021C4.90631 0.0750027 4.72193 0.143752 4.59381 0.206252C4.36881 0.315627 4.28131 0.396877 2.34068 2.34063C0.396935 4.28125 0.315685 4.36875 0.20631 4.59375C-0.00931499 5.04375 6e-05 4.9 6e-05 8C6e-05 11.1 -0.00931499 10.9563 0.20631 11.4063C0.315685 11.6313 0.396935 11.7188 2.34068 13.6594C4.28131 15.6031 4.36881 15.6844 4.59381 15.7938C5.04381 16.0094 4.90006 16 8.00006 16C11.1001 16 10.9563 16.0094 11.4063 15.7938C11.6313 15.6844 11.7188 15.6031 13.6594 13.6594C15.6032 11.7188 15.6844 11.6313 15.7938 11.4063C16.0094 10.9563 16.0001 11.1 16.0001 8C16.0001 4.9 16.0094 5.04375 15.7938 4.59375C15.6844 4.36875 15.6032 4.28125 13.6594 2.34063C11.7188 0.396877 11.6313 0.315627 11.4063 0.206252C10.9563 -0.00937271 11.1032 1.90735e-06 7.98443 0.0031271C5.63756 0.0031271 5.14381 0.0125027 5.00006 0.0500021ZM8.65631 6.32813V8.65625H8.00006H7.34381V6.32813V4H8.00006H8.65631V6.32813ZM8.46256 10.1406C8.64693 10.2406 8.77818 10.375 8.88131 10.5719C8.94068 10.6813 8.95319 10.7531 8.95319 11C8.95319 11.3406 8.90006 11.475 8.68756 11.6875C8.47506 11.9 8.34068 11.9531 8.00006 11.9531C7.75318 11.9531 7.68131 11.9406 7.57193 11.8813C7.24068 11.7063 7.06256 11.4375 7.03756 11.0813C7.02193 10.8125 7.06256 10.6469 7.19693 10.4469C7.30006 10.2906 7.53131 10.1156 7.70006 10.0625C7.75318 10.0469 7.90943 10.0375 8.04694 10.0406C8.25318 10.05 8.32506 10.0656 8.46256 10.1406Z"
+                  fill="#F1C21B"
+                />
+              </g>
+              <defs>
+                <clippath
+                  id="clip0_124_824"
+                >
+                  <rect
+                    fill="white"
+                    height="16"
+                    width="16"
+                  />
+                </clippath>
+              </defs>
+            </svg>
+          </span>
+        </span>
+      </div>
+      <div
+        class="helperTextWrapper"
+      >
+        <span
+          class="root b2 regular-stroke helperText"
+        >
+          Helper
+        </span>
+      </div>
+    </label>
+  </div>
+</div>
+`;

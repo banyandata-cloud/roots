@@ -106,6 +106,17 @@ const DatePicker = (props) => {
 		return '';
 	});
 
+	const isToday = (selectedDate) => {
+		if (!selectedDate) return false;
+
+		const today = new Date();
+		return (
+			selectedDate.date === today.getDate() &&
+			selectedDate.year === today.getFullYear() &&
+			selectedDate.month === today.toLocaleString('default', { month: 'long' })
+		);
+	};
+
 	const [timeRangeSelection, setTimeRangeSelection] = useState({});
 
 	useEffect(() => {

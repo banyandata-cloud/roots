@@ -1,0 +1,394 @@
+@import '../../../../styles/';
+@import '../../../../styles/colors';
+
+/* Motion durations */
+$duration-fast-01: 70ms; // press / active
+$duration-fast-02: 110ms; // hover / focus
+$duration-moderate-01: 150ms; // enable / disable
+$duration-moderate-02: 240ms; // loading / system
+
+/* Easing – Productive */
+$ease-standard: cubic-bezier(0.2, 0, 0.38, 0.9);
+$ease-entrance: cubic-bezier(0, 0, 0.38, 0.9);
+$ease-exit: cubic-bezier(0.2, 0, 1, 0.9);
+
+$button-sizes: (
+	xs: (
+		height: 24px,
+		gap: 4px,
+		radius: 4px,
+	),
+	sm: (
+		height: 32px,
+		gap: 8px,
+		radius: 8px,
+	),
+	md: (
+		height: 40px,
+		gap: 8px,
+		radius: 8px,
+	),
+	lg: (
+		height: 48px,
+		gap: 8px,
+		radius: 10px,
+	),
+);
+
+$text-sizes: (
+	14: (
+		font-size: 14px,
+		line-height: 18px,
+		letter-spacing: 0.16px,
+	),
+	16: (
+		font-size: 16px,
+		line-height: 22px,
+	),
+);
+
+button.root[data-elem='base-cell'] {
+	transition:
+		background-color $duration-fast-02 $ease-standard,
+		border-color $duration-fast-02 $ease-standard,
+		color $duration-fast-02 $ease-standard,
+		box-shadow $duration-fast-02 $ease-standard;
+
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 4px;
+	border-radius: 4px;
+	cursor: pointer;
+	position: relative;
+
+	// size variant
+	@each $size, $values in $button-sizes {
+		&.size-#{$size} {
+			height: map-get($values, height);
+			gap: map-get($values, gap);
+			border-radius: map-get($values, radius);
+			padding: 0 16px;
+			width: fit-content;
+		}
+	}
+	// TYPOGRAPHY VARIANTS
+	@each $size, $values in $text-sizes {
+		&.text-#{$size} {
+			[data-elem='title'] {
+				font-family: Poppins;
+				font-weight: 400;
+				font-size: map-get($values, font-size);
+				line-height: map-get($values, line-height);
+
+				@if map-has-key($values, letter-spacing) {
+					letter-spacing: map-get($values, letter-spacing);
+				}
+			}
+		}
+	}
+
+	// primary
+	&.primary {
+		background: $button-primary;
+		color: $text-on-color;
+
+		&:hover:not(:disabled) {
+			background: $button-primary-hover;
+		}
+
+		&:active:not(:disabled) {
+			background: $button-primary-active;
+		}
+
+		// Hover → Active
+		&:active:not(:disabled) {
+			transition-duration: $duration-fast-01;
+			transition-timing-function: $ease-entrance;
+		}
+
+		// Active → Hover
+		&:not(:active):hover {
+			transition-duration: $duration-fast-01;
+			transition-timing-function: $ease-exit;
+		}
+
+		&:focus-visible:not(:active) {
+			outline: none;
+			box-shadow: 0 0 0 1px $focus-primary;
+
+			&::after {
+				content: '';
+				position: absolute;
+				inset: 0;
+				border-radius: inherit;
+				border: 1px solid $focus-inset;
+				pointer-events: none;
+			}
+		}
+	}
+
+	// secondary
+	&.secondary {
+		background: $button-secondary;
+		color: $text-on-color;
+
+		// Hover → Active
+		&:active:not(:disabled) {
+			transition-duration: $duration-fast-01;
+			transition-timing-function: $ease-entrance;
+		}
+
+		// Active → Hover
+		&:not(:active):hover {
+			transition-duration: $duration-fast-01;
+			transition-timing-function: $ease-exit;
+		}
+
+		&:hover:not(:disabled) {
+			background: $button-secondary-hover;
+		}
+
+		&:active:not(:disabled) {
+			background: $button-secondary-active;
+		}
+
+		&:focus-visible:not(:active) {
+			outline: none;
+			box-shadow: 0 0 0 1px $focus-primary;
+
+			&::after {
+				content: '';
+				position: absolute;
+				inset: 0;
+				border-radius: inherit;
+				border: 1px solid $focus-inset;
+				pointer-events: none;
+			}
+		}
+	}
+
+	// soft
+	&.soft {
+		background: $button-soft-bg;
+		color: $soft-text-color;
+
+		// Hover → Active
+		&:active:not(:disabled) {
+			transition-duration: $duration-fast-01;
+			transition-timing-function: $ease-entrance;
+		}
+
+		// Active → Hover
+		&:not(:active):hover {
+			transition-duration: $duration-fast-01;
+			transition-timing-function: $ease-exit;
+		}
+
+		svg {
+			fill: $soft-svg-color;
+		}
+
+		&:hover:not(:disabled) {
+			background: $button-soft-bg-hover;
+		}
+
+		&:active:not(:disabled) {
+			background: $button-soft-bg-active;
+		}
+
+		&:focus-visible:not(:active) {
+			outline: none;
+			box-shadow: 0 0 0 1px $focus-primary;
+
+			&::after {
+				content: '';
+				position: absolute;
+				inset: 0;
+				border-radius: inherit;
+				border: 1px solid $focus-inset;
+				pointer-events: none;
+			}
+		}
+	}
+
+	// outlined
+	&.outlined {
+		background: transparent;
+		border: 1px solid var(--button-button-outline, #1f5fcc);
+		color: var(--button-button-outline, #1f5fcc);
+
+		// Hover → Active
+		&:active:not(:disabled) {
+			transition-duration: $duration-fast-01;
+			transition-timing-function: $ease-entrance;
+		}
+
+		// Active → Hover
+		&:not(:active):hover {
+			transition-duration: $duration-fast-01;
+			transition-timing-function: $ease-exit;
+		}
+
+		/* icon default */
+		svg {
+			fill: var(--icon-icon-interactive, #2563eb);
+		}
+
+		/* hover */
+		&:hover:not(:disabled) {
+			background: var(--button-button-outline-hover, #1b55b5);
+			color: var(--text-text-inverse, #fff);
+
+			svg {
+				fill: var(--text-text-inverse, #fff);
+			}
+		}
+
+		/* focus */
+		&:focus-visible:not(:active) {
+			outline: none;
+			box-shadow: 0 0 0 1px $focus-primary;
+			background: var(--button-button-outline-hover, #1b55b5);
+			color: var(--text-text-inverse, #fff);
+			border: none;
+
+			&::after {
+				content: '';
+				position: absolute;
+				inset: 0;
+				border-radius: inherit;
+				border: 1px solid $focus-inset;
+				pointer-events: none;
+			}
+		}
+
+		/* active */
+		&:active:not(:disabled) {
+			background: $button-primary-active;
+			color: $text-on-color;
+			border: 1px solid transparent;
+
+			// box-shadow: none;
+
+			// &::after {
+			// 	content: none;
+			// }
+
+			svg {
+				fill: $text-on-color;
+			}
+		}
+
+		&:disabled {
+			background: transparent;
+			border: 1px solid $button-disabled;
+			color: $text-disabled;
+			cursor: not-allowed;
+			pointer-events: none;
+			box-shadow: none;
+
+			[data-elem='title'],
+			svg {
+				fill: $text-disabled;
+				opacity: 0.25;
+			}
+		}
+	}
+
+	// ghost
+	&.ghost {
+		background: transparent;
+		border: none;
+		border-radius: 0;
+		color: $button-primary;
+
+		// Hover → Active
+		&:active:not(:disabled) {
+			transition-duration: $duration-fast-01;
+			transition-timing-function: $ease-entrance;
+		}
+
+		// Active → Hover
+		&:not(:active):hover {
+			transition-duration: $duration-fast-01;
+			transition-timing-function: $ease-exit;
+		}
+
+		svg {
+			fill: $button-primary;
+		}
+
+		/* hover */
+		&:hover:not(:disabled) {
+			background: rgba(130, 130, 130, 0.12);
+			color: $button-primary-hover;
+
+			svg {
+				fill: $button-primary-hover;
+			}
+		}
+
+		/* active */
+		&:active:not(:disabled) {
+			background: rgba(130, 130, 130, 0.5);
+			color: $button-primary-hover;
+
+			svg {
+				fill: $button-primary-hover;
+			}
+		}
+
+		/* focus (optional – ghost usually minimal) */
+		&:focus-visible {
+			outline: none;
+			box-shadow: 0 0 0 1px $focus-primary;
+
+			&::after {
+				content: '';
+				position: absolute;
+				inset: 0;
+				border-radius: inherit;
+				border: 1px solid $focus-inset;
+				pointer-events: none;
+			}
+		}
+
+		/* disabled */
+		&:disabled {
+			background: transparent;
+			color: $text-disabled;
+			cursor: not-allowed;
+			pointer-events: none;
+
+			[data-elem='title'],
+			svg {
+				fill: $text-disabled;
+				opacity: 0.25;
+			}
+		}
+	}
+
+	&:disabled {
+		transition:
+			background-color $duration-moderate-01 $ease-standard,
+			color $duration-moderate-01 $ease-standard,
+			opacity $duration-moderate-01 $ease-standard;
+
+		background: $button-disabled;
+		color: $text-disabled;
+		cursor: not-allowed;
+		pointer-events: none;
+		box-shadow: none;
+
+		[data-elem='title'],
+		svg {
+			fill: $text-disabled;
+			opacity: 0.25;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		transition: none !important;
+	}
+}

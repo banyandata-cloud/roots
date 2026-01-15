@@ -1,0 +1,312 @@
+@import '../../../../styles/_index';
+
+/* Motion tokens */
+$duration-fast-01: 70ms;
+$duration-fast-02: 110ms;
+$duration-moderate-01: 150ms;
+$duration-moderate-02: 240ms;
+
+$ease-standard-productive: cubic-bezier(0.2, 0, 0.38, 0.9);
+$ease-entrance-productive: cubic-bezier(0, 0, 0.38, 0.9);
+$ease-exit-productive: cubic-bezier(0.2, 0, 1, 0.9);
+
+.root {
+	@include flex(column, center, flex-start);
+	gap: 0.5rem;
+
+	.helperTextWrapper {
+		min-height: 16px;
+		align-self: stretch;
+		display: flex;
+		align-items: center;
+	}
+
+	.helperText {
+		color: #646464;
+	}
+
+	.helperTextError {
+		color: #da1e28;
+	}
+
+	.helperTextDisabled {
+		color: #161616;
+		opacity: 0.25;
+	}
+
+	label {
+		width: 100%;
+		max-width: 100%;
+		font-weight: 400;
+		font-size: 0.75rem;
+		letter-spacing: 0.02rem;
+		color: $text-color;
+		letter-spacing: 0.3199999928474426px;
+		@include flex(column, flex-start, flex-start);
+		gap: 0.5rem;
+
+		.labelRow {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			width: 100%;
+
+			.required {
+				&::after {
+					content: ' *';
+					color: $primary-color1;
+				}
+			}
+
+			.labelDisabled {
+				color: #484848;
+				opacity: 0.25;
+			}
+
+			.forgotPassword {
+				font-family: Poppins;
+				font-size: 12px;
+				font-weight: 400;
+				line-height: 15px;
+				letter-spacing: 0.32px;
+				color: #1f5fcc;
+				text-decoration: underline;
+				cursor: pointer;
+
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+
+			.textCount {
+				font-family: Poppins;
+				font-size: 12px;
+				font-weight: 400;
+				line-height: 16px;
+				letter-spacing: 0.32px;
+				color: #484848;
+			}
+
+			// Motion effect
+			.textCount,
+			.forgotPassword {
+				transition:
+					color $duration-fast-02 $ease-standard-productive,
+					opacity $duration-fast-02 $ease-standard-productive;
+			}
+		}
+
+		.input-wrapper {
+			background-color: #f7f7f7;
+			@include flex(row, space-between, center);
+			gap: 0.625rem;
+			height: 40px;
+			max-width: 100%;
+			width: 100%;
+			border-radius: 0.25rem;
+			box-sizing: border-box;
+			position: relative;
+			padding: 0.625rem 1rem;
+			border: 1px solid #828282;
+
+			&:focus-within {
+				outline: none;
+				border-color: #3b82f6 !important;
+				box-shadow: 0 0 0 1px #3b82f6 !important;
+				transition:
+					border-color $duration-fast-02 $ease-standard-productive,
+					box-shadow $duration-fast-02 $ease-standard-productive;
+			}
+
+			&.readOnly {
+				border: none !important;
+				border-bottom: 1px solid #828282 !important;
+				border-radius: 0;
+				box-shadow: none !important;
+				background-color: transparent;
+			}
+
+			&.readOnly > [data-elem='component2'] .input {
+				background-color: transparent !important;
+			}
+
+			&.sm {
+				height: 2rem;
+			}
+			&.md {
+				height: 2.5rem;
+			}
+			&.lg {
+				height: 3rem;
+			}
+
+			&.type-textarea {
+				height: auto;
+				min-height: 48px;
+				align-items: stretch;
+			}
+
+			.icon {
+				@include flex;
+			}
+			> [data-elem*='component'] {
+				@include flex;
+			}
+
+			.leftIconDisabled path {
+				stroke: #161616;
+				opacity: 0.25;
+			}
+
+			> [data-elem='component2'] {
+				flex: 1;
+				.input {
+					@include removeArrows;
+					flex: 1;
+					border: none;
+					border-radius: 0.25rem;
+
+					font-weight: 400;
+					color: $text-color;
+					font-size: 0.875rem;
+					line-height: 1.125rem !important;
+					letter-spacing: 0.01rem;
+					background-color: #f7f7f7;
+
+					&:focus {
+						outline: none;
+					}
+					&:disabled {
+						background: #f7f7f7;
+						color: $grey3;
+					}
+					&.error {
+						color: $primary-color1;
+					}
+
+					&:disabled {
+						color: #161616;
+					}
+
+					&:disabled::placeholder {
+						color: #161616;
+						opacity: 0.25;
+					}
+
+					&::placeholder {
+						font-size: 0.875rem;
+						font-weight: 400;
+						line-height: 1.125rem;
+						letter-spacing: 0.01rem;
+						color: $mono-color2;
+						opacity: 1;
+					}
+
+					&::-moz-placeholder {
+						font-size: 0.875rem;
+						font-weight: 400;
+						line-height: 1.125rem;
+						letter-spacing: 0.01rem;
+						color: $mono-color2;
+						opacity: 1;
+					}
+
+					&:-webkit-autofill,
+					&:-webkit-autofill:hover,
+					&:-webkit-autofill:focus,
+					&:-webkit-autofill:active {
+						-webkit-box-shadow: 0 0 0 30px $light-color3 inset !important;
+						-webkit-text-fill-color: initial !important;
+					}
+
+					// For Firefox
+					&:autofill,
+					&:autofill:hover,
+					&:autofill:focus,
+					&:autofill:active {
+						box-shadow: 0 0 0 30px $light-color3 inset !important;
+						-moz-text-fill-color: initial !important;
+					}
+				}
+			}
+
+			> [data-elem='component3'] {
+				@include flex;
+				gap: 0.75rem;
+				button[data-elem='base-cell'].button[type='button'] {
+					width: auto;
+					height: fit-content;
+					padding: 0;
+					background-color: transparent;
+				}
+			}
+
+			&.type-textarea {
+				padding: 0;
+
+				> [data-elem='component2'] {
+					.input {
+						min-height: 48px;
+						resize: vertical;
+						padding: 12px 16px;
+					}
+				}
+
+				> [data-elem='component3'] {
+					position: absolute;
+					right: 12px;
+					top: 12px;
+					align-self: flex-end;
+				}
+			}
+
+			&.feedback-error {
+				border-color: $primary-color1;
+				box-shadow: 0 0 0 1px $primary-color1;
+			}
+
+			&.border-bottom {
+				border-width: 0rem 0rem 0.063rem 0rem;
+			}
+			&.border-none {
+				border-width: 0rem;
+			}
+
+			// motion spec
+			transition:
+				background-color $duration-fast-02 $ease-standard-productive,
+				border-color $duration-fast-02 $ease-standard-productive,
+				box-shadow $duration-fast-02 $ease-standard-productive,
+				opacity $duration-moderate-01 $ease-standard-productive;
+
+			&:active {
+				transition-duration: $duration-fast-01;
+				transition-timing-function: $ease-entrance-productive;
+			}
+
+			&:has(input:disabled),
+			&:has(textarea:disabled) {
+				opacity: 0.6;
+				transition:
+					opacity $duration-moderate-01 $ease-standard-productive,
+					border-color $duration-moderate-01 $ease-standard-productive;
+			}
+
+			button:active {
+				transition-duration: $duration-fast-01;
+				transition-timing-function: $ease-entrance-productive;
+			}
+		}
+		.input-wrapper:has(input:disabled),
+		.input-wrapper:has(textarea:disabled) {
+			border: none !important;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		* {
+			transition-duration: 1ms !important;
+			animation-duration: 1ms !important;
+		}
+	}
+}

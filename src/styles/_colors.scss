@@ -73,3 +73,31 @@ $warning-outline: var(--warning-outline);
 $info: var(--info);
 $info-bg: var(--info-bg);
 $info-outline: var(--info-outline);
+
+// Button - Primary (V2)
+$button-primary: #1f5fcc;
+$button-primary-hover: #1b55b5;
+$button-primary-active: #0f1f3d;
+$button-disabled: #dcdcdc;
+
+$text-on-color: #ffffff;
+$text-disabled: #161616;
+
+$focus-primary: #3b82f6;
+$focus-inset: #ffffff;
+
+// Button - Secondary (V2)
+$button-secondary: #323232;
+$button-secondary-hover: #3e3e3e;
+$button-secondary-active: #646464;
+
+// Button Soft (V2)
+$button-soft-bg: #fef3c7;
+$button-soft-bg-hover: #f3e9bd;
+$button-soft-bg-active: #fcd34d;
+
+$soft-text-color: #b34700;
+$soft-svg-color: #b34700;
+
+// Text Field
+$text-warning: #da1e28;

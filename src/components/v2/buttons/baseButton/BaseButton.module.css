@@ -1,0 +1,51 @@
+button.root[data-elem=base-cell] {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  border: none;
+  background: none;
+  padding: 0.5rem 0.75rem;
+}
+button.root[data-elem=base-cell]:focus {
+  outline: 1px solid var(--primary-color4);
+}
+button.root[data-elem=base-cell]:active {
+  outline: none;
+}
+button.root[data-elem=base-cell]:disabled {
+  cursor: not-allowed;
+}
+button.root[data-elem=base-cell].contained {
+  background: var(--text-color);
+  color: var(--light-color3);
+}
+button.root[data-elem=base-cell].outlined {
+  color: var(--text-color);
+  border: 1px solid var(--text-color);
+}
+button.root[data-elem=base-cell].text {
+  color: var(--text-color);
+}
+button.root[data-elem=base-cell] [data-elem*=component] {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+button.root[data-elem=base-cell] [data-elem=component2] {
+  min-width: 0;
+}
+button.root[data-elem=base-cell] [data-elem=title] {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}/*# sourceMappingURL=BaseButton.module.css.map */
