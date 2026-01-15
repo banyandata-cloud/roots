@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Link — Snapshot Tests matches default snapshot 1`] = `
+<a
+  class="root b2 regular-stroke root underline-none"
+  href="#"
+  target="_self"
+>
+  <span>
+    Snapshot Default
+  </span>
+</a>
+`;
+
+exports[`Link — Snapshot Tests matches underline="always" snapshot 1`] = `
+<a
+  class="root b2 regular-stroke root underline-always"
+  href="#"
+  target="_self"
+>
+  <span>
+    Snapshot Always
+  </span>
+</a>
+`;

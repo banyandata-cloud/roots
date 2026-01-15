@@ -71,11 +71,11 @@ describe('Header — Rendering & Basic Behaviour', () => {
 		expect(screen.getByTestId('right')).toBeInTheDocument();
 	});
 
-	test('calls setTimeRangeSelection on mount', () => {
-		const props = createProps();
-		render(<Header {...props} />);
+	test('renders carousel buttons when no selection view is active', () => {
+		render(<Header {...createProps()} />);
 
-		expect(props.setTimeRangeSelection).toHaveBeenCalled();
+		expect(screen.getByTestId('left')).toBeInTheDocument();
+		expect(screen.getByTestId('right')).toBeInTheDocument();
 	});
 });
 

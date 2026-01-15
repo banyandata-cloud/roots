@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Popover — Snapshot Rendering matches snapshot when closed 1`] = `<div />`;
+
+exports[`Popover — Snapshot Rendering matches snapshot when open 1`] = `
+<div>
+  <div
+    data-testid="mock-popper"
+  >
+    <div
+      class="root light-theme"
+      style="position: absolute; top: 0px; left: 0px;"
+      tabindex="-1"
+    >
+      Snapshot Content
+    </div>
+  </div>
+</div>
+`;

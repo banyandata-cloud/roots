@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Toggle — Snapshots default snapshot 1`] = `
+<div>
+  <div
+    class="root light"
+  >
+    <div
+      class="toggle"
+    >
+      <button
+        class="toggle-button light active"
+        data-testid="btn-A"
+      >
+        A
+      </button>
+      <button
+        class="toggle-button light"
+        data-testid="btn-B"
+      >
+        B
+      </button>
+      <div
+        class="slider light smooth"
+        style="left: 10px; width: 60px;"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Toggle — Snapshots multi snapshot 1`] = `
+<div>
+  <div
+    class="root light"
+  >
+    <div
+      class="toggle"
+    >
+      <button
+        class="toggle-button light active"
+        data-testid="btn-A"
+      >
+        A
+      </button>
+      <button
+        class="toggle-button light"
+        data-testid="btn-B"
+      >
+        B
+      </button>
+    </div>
+  </div>
+</div>
+`;

@@ -1,123 +1,189 @@
 import { render, screen } from '@testing-library/react';
 import Stepper from './Stepper';
 
-// MOCKS
+// Mock classes utility so CSS modules do not interfere
+jest.mock('../../utils', () => ({
+	classes: (...args: string[]) => args.filter(Boolean).join(' '),
+}));
 
-// Mock Step component
-jest.mock('./step/Step', () => {
-	return ({ title, index, orientation }: any) => (
-		<div data-testid='step'>
-			<span data-testid='step-title'>{title}</span>
-			<span data-testid='step-index'>{index}</span>
-			<span data-testid='step-orientation'>{orientation}</span>
-		</div>
-	);
-});
-
-// TEST DATA
-const stepsMock = [
-	{
-		title: 'Step A',
-		description: null,
-		active: false,
-		completion: 1,
-		error: false,
-	},
-	{
-		title: 'Step B',
-		description: 'Desc',
-		active: true,
-		completion: 0.5,
-		error: false,
-	},
-];
-
-// HAPPY PATH TESTS
-describe('Stepper — Rendering & Basic Behaviour', () => {
-	test('renders correct number of steps', () => {
-		render(<Stepper steps={stepsMock} orientation='horizontal' />);
-
-		expect(screen.getAllByTestId('step')).toHaveLength(2);
-	});
-
-	test('passes correct index to each Step', () => {
-		render(<Stepper steps={stepsMock} orientation='horizontal' />);
-
-		const indices = screen.getAllByTestId('step-index');
-		expect(indices[0]).toHaveTextContent('0');
-		expect(indices[1]).toHaveTextContent('1');
-	});
-
-	test('renders step titles correctly', () => {
-		render(<Stepper steps={stepsMock} orientation='horizontal' />);
-
-		expect(screen.getByText('Step A')).toBeInTheDocument();
-		expect(screen.getByText('Step B')).toBeInTheDocument();
-	});
-});
-
-// MEDIUM PATH TESTS
-describe('Stepper — Behaviour With Orientation & Customisation', () => {
-	test('passes horizontal orientation to steps by default', () => {
-		render(<Stepper steps={stepsMock} orientation='horizontal' />);
-
-		const orientations = screen.getAllByTestId('step-orientation');
-		orientations.forEach((node) => {
-			expect(node).toHaveTextContent('horizontal');
-		});
-	});
-
-	test('passes vertical orientation to steps', () => {
-		render(<Stepper steps={stepsMock} orientation='vertical' />);
-
-		const orientations = screen.getAllByTestId('step-orientation');
-		orientations.forEach((node) => {
-			expect(node).toHaveTextContent('vertical');
-		});
-	});
-
-	test('applies custom className to root container', () => {
-		const { container } = render(
-			<Stepper steps={stepsMock} orientation='horizontal' className='custom-stepper' />
-		);
-
-		expect(container.firstChild?.className).toContain('custom-stepper');
-	});
-});
-
-// RISKY PATH TESTS
-describe('Stepper — Edge Case Handling', () => {
-	test('renders nothing when steps array is empty', () => {
-		render(<Stepper steps={[]} orientation='horizontal' />);
-
-		expect(screen.queryByTestId('step')).toBeNull();
-	});
-
-	test('does NOT crash when steps have duplicate titles', () => {
+// Happy path
+describe('Stepper — Rendering Behaviour', () => {
+	test('renders all steps based on steps array', () => {
 		render(
 			<Stepper
 				orientation='horizontal'
 				steps={[
-					{ title: 'Step', completion: 0, active: false, error: false },
-					{ title: 'Step', completion: 1, active: false, error: false },
+					{ title: 'A', description: null, active: false, completion: 1, error: false },
+					{
+						title: 'B',
+						description: 'Desc',
+						active: true,
+						completion: 0.3,
+						error: false,
+					},
+					{ title: 'C', description: null, active: false, completion: 0, error: true },
 				]}
 			/>
 		);
 
-		expect(screen.getAllByTestId('step')).toHaveLength(2);
+		expect(screen.getByText('A')).toBeInTheDocument();
+		expect(screen.getByText('B')).toBeInTheDocument();
+		expect(screen.getByText('C')).toBeInTheDocument();
+	});
+
+	test('renders descriptions when provided', () => {
+		render(
+			<Stepper
+				orientation='horizontal'
+				steps={[
+					{
+						title: 'Step 1',
+						description: 'Description text',
+						active: true,
+						completion: 0,
+						error: false,
+					},
+				]}
+			/>
+		);
+
+		expect(screen.getByText('Description text')).toBeInTheDocument();
 	});
 });
 
-// SNAPSHOT TESTS
+// Medium path
+
+describe('Stepper — Styling Behaviour', () => {
+	test('applies correct orientation class', () => {
+		const { container } = render(
+			<Stepper
+				orientation='vertical'
+				steps={[
+					{ title: 'One', description: null, active: false, completion: 0, error: false },
+				]}
+			/>
+		);
+
+		expect(container.firstChild).toHaveClass('vertical');
+	});
+
+	test('applies custom className', () => {
+		const { container } = render(
+			<Stepper
+				className='custom-class'
+				orientation='horizontal'
+				steps={[
+					{ title: 'X', description: null, active: false, completion: 0, error: false },
+				]}
+			/>
+		);
+
+		expect(container.firstChild).toHaveClass('custom-class');
+	});
+});
+
+// Risky path
+
+describe('Stepper — Edge Case Behaviour', () => {
+	test('handles empty steps array without crashing', () => {
+		const { container } = render(<Stepper steps={[]} orientation='horizontal' />);
+		expect(container.firstChild).toBeInTheDocument();
+		expect(container.querySelectorAll('[data-elem="step"]').length).toBe(0);
+	});
+
+	test('renders steps with error state correctly', () => {
+		const { container } = render(
+			<Stepper
+				orientation='horizontal'
+				steps={[
+					{
+						title: 'Error Step',
+						description: null,
+						active: false,
+						completion: 0,
+						error: true,
+					},
+				]}
+			/>
+		);
+
+		// Step will contain class "error"
+		const stepElem = container.querySelector('[data-elem="step"]');
+		expect(stepElem).toHaveClass('error');
+	});
+
+	test('renders completed steps correctly', () => {
+		const { container } = render(
+			<Stepper
+				orientation='horizontal'
+				steps={[
+					{
+						title: 'Done',
+						description: null,
+						active: false,
+						completion: 1,
+						error: false,
+					},
+				]}
+			/>
+		);
+
+		const stepElem = container.querySelector('[data-elem="step"]');
+		expect(stepElem).toHaveClass('completed');
+	});
+});
+
+//  SNAPSHOT TESTS
+
 describe('Stepper — Snapshot Rendering', () => {
-	test('default stepper snapshot', () => {
-		const { container } = render(<Stepper steps={stepsMock} orientation='horizontal' />);
+	test('matches snapshot for horizontal stepper', () => {
+		const { container } = render(
+			<Stepper
+				orientation='horizontal'
+				steps={[
+					{
+						title: 'Step A',
+						description: null,
+						active: false,
+						completion: 1,
+						error: false,
+					},
+					{
+						title: 'Step B',
+						description: 'Some description',
+						active: true,
+						completion: 0.5,
+						error: false,
+					},
+				]}
+			/>
+		);
 
 		expect(container).toMatchSnapshot();
 	});
 
-	test('vertical stepper snapshot', () => {
-		const { container } = render(<Stepper steps={stepsMock} orientation='vertical' />);
+	test('matches snapshot for vertical stepper', () => {
+		const { container } = render(
+			<Stepper
+				orientation='vertical'
+				steps={[
+					{
+						title: 'Vertical 1',
+						description: null,
+						active: true,
+						completion: 0,
+						error: false,
+					},
+					{
+						title: 'Vertical 2',
+						description: 'Desc',
+						active: false,
+						completion: 1,
+						error: false,
+					},
+				]}
+			/>
+		);
 
 		expect(container).toMatchSnapshot();
 	});

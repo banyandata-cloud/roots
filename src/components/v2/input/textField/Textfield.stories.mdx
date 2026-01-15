@@ -1,0 +1,681 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+
+import { ThemedContainer } from '../../../helpers';
+import { ArrowIcon, CopyIcon } from '../../../icons';
+import TextField from './TextField';
+
+<Meta title='Components/Input/V2/TextField' parameters={{ options: { showToolbar: true } }} />
+
+export const Template = (args) => (
+	<ThemedContainer theme='light'>
+		<TextField {...args} autocomplete />
+	</ThemedContainer>
+);
+
+# TextField
+
+The TextField component is a versatile text input component that supports various customization options. It provides both controlled and uncontrolled modes and can be used to create single-line or multi-line text inputs.
+
+#### Design - [Figma](https://www.figma.com/file/e9opoAtQHBo4vFd6u0Co98/Component-Library?node-id=1%3A10&mode=dev) | Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/components/input/textField)
+
+> The TextField component provides a flexible and customizable way to implement text inputs in your application. It supports various input types, sizes, and customization options to match your UI requirements.
+
+## Usage
+
+Basic import and additional information on how to use this component.
+
+```js
+import { TextField } from '@banyan_cloud/roots';
+```
+
+- The onChange function is called when the input value changes. It provides the new value as a parameter.
+- The type prop determines the type of the input element (text, email, password, number, textarea).
+- The size prop specifies the size of the input element (small, medium, large).
+- The border prop controls the border style of the input element.
+- The feedback prop can be used to provide visual feedback on the input.
+- The count prop configures character count functionality for the input.
+- The feedbackAndCount prop enables displaying both feedback and character count.
+- The autocomplete prop enables autocomplete functionality for the input.
+
+## Stories
+
+The CSF rendered inside the `Canvas` from which you can see the implementation example.
+
+### Sizes
+
+<Canvas>
+	<Story name='Sizes'>
+		{() => (
+			<ThemedContainer theme='light'>
+				<div
+					style={{
+						display: 'flex',
+						flexDirection: 'column',
+						gap: '16px',
+						maxWidth: '100%',
+					}}>
+					<TextField label='Small' placeholder='sm size' size='sm' />
+					<TextField label='Medium' placeholder='md size' size='md' />
+					<TextField label='Large' placeholder='lg size' size='lg' />
+				</div>
+			</ThemedContainer>
+		)}
+	</Story>
+</Canvas>
+
+### Types
+
+<Canvas>
+	<Story name='Types'>
+		{() => (
+			<ThemedContainer theme='light'>
+				<div
+					style={{
+						display: 'flex',
+						flexDirection: 'column',
+						gap: '16px',
+						maxWidth: '100%',
+					}}>
+					<TextField label='Text' placeholder='Text input' type='text' />
+					<TextField
+						label='Textarea'
+						placeholder='Textarea input'
+						type='textarea'
+						maxLength={100}
+					/>
+				</div>
+			</ThemedContainer>
+		)}
+	</Story>
+</Canvas>
+
+### Icons
+
+<Canvas>
+	<Story name='Icons'>
+		{() => (
+			<ThemedContainer theme='light'>
+				<div
+					style={{
+						display: 'flex',
+						flexDirection: 'column',
+						gap: '16px',
+						maxWidth: '100%',
+					}}>
+					<TextField
+						label='Left Icon'
+						placeholder='Left icon'
+						LeftComponent={() => <CopyIcon height='16' width='16' />}
+					/>
+					<TextField
+						label='Right Icon'
+						placeholder='Right icon'
+						RightComponent={() => <ArrowIcon height='12' width='12' />}
+					/>
+					<TextField
+						label='Both Icons'
+						placeholder='Both icons'
+						LeftComponent={() => <CopyIcon height='16' width='16' />}
+						RightComponent={() => <ArrowIcon height='12' width='12' />}
+					/>
+				</div>
+			</ThemedContainer>
+		)}
+	</Story>
+</Canvas>
+
+### Feedback
+
+<Canvas>
+	<Story name='Feedback'>
+		{() => (
+			<ThemedContainer theme='light'>
+				<div
+					style={{
+						display: 'flex',
+						flexDirection: 'column',
+						gap: '16px',
+						maxWidth: '100%',
+					}}>
+					<TextField
+						label='Error'
+						placeholder='Error state'
+						feedback={{ error: 'Invalid password' }}
+						helperText='Helper text'
+					/>
+					<TextField
+						label='Info'
+						placeholder='Info state'
+						feedback={{ info: 'This is info' }}
+						helperText='Helper text'
+						LeftComponent={() => <CopyIcon height='16' width='16' />}
+					/>
+					<TextField
+						label='Textarea Error'
+						type='textarea'
+						placeholder='Enter description'
+						maxLength={100}
+						feedback={{ error: 'Maximum length exceeded' }}
+						helperText='Helper text'
+					/>
+					<TextField
+						label='Textarea Info'
+						type='textarea'
+						placeholder='Enter description'
+						maxLength={100}
+						feedback={{ info: 'This is info' }}
+						helperText='Helper text'
+					/>
+				</div>
+			</ThemedContainer>
+		)}
+	</Story>
+</Canvas>
+
+### Disabled
+
+<Canvas>
+	<Story name='Disabled'>
+		{() => (
+			<ThemedContainer theme='light'>
+				<TextField label='Disabled Text' placeholder='Disabled' disabled />
+			</ThemedContainer>
+		)}
+	</Story>
+</Canvas>
+
+### ReadOnly
+
+<Canvas>
+	<Story name='ReadOnly'>
+		{() => (
+			<ThemedContainer theme='light'>
+				<div
+					style={{
+						display: 'flex',
+						flexDirection: 'column',
+						gap: '16px',
+						maxWidth: '320px',
+					}}>
+					<TextField
+						label='ReadOnly Text'
+						placeholder='Read only'
+						value='Read only value'
+						readOnly
+					/>
+					<TextField
+						label='ReadOnly Textarea'
+						type='textarea'
+						value='This is a read-only textarea'
+						readOnly
+						maxLength={100}
+					/>
+				</div>
+			</ThemedContainer>
+		)}
+	</Story>
+</Canvas>
+
+### Forgot Password
+
+<Canvas>
+	<Story name='Forgot Password'>
+		{() => (
+			<ThemedContainer theme='light'>
+				{/* Password with error + forgot password */}
+				<TextField
+					label='Password Error'
+					placeholder='Enter password'
+					feedback={{ error: 'Invalid password' }}
+					helperText='Helper text'
+					forgotPasswordLink='https://banyancloud.io/'
+				/>
+			</ThemedContainer>
+		)}
+	</Story>
+</Canvas>
+
+## API
+
+**`id`**
+
+The HTML id attribute for the input element.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>null</td>
+	</tr>
+</table>
+
+```jsx
+<TextField id='someId' />
+```
+
+**`name`**
+
+The HTML name attribute for the input element.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>null</td>
+	</tr>
+</table>
+
+```jsx
+<TextField name='someName' />
+```
+
+**`disabled`**
+
+Disables the text input.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<TextField disabled={true} />
+```
+
+**`label`**
+
+The label associated with the text input.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String | Number</td>
+		<td>''</td>
+	</tr>
+</table>
+
+```jsx
+<TextField label='Some Label' />
+```
+
+**`placeholder`**
+
+Placeholder text for the input.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String | Number</td>
+		<td>''</td>
+	</tr>
+</table>
+
+```jsx
+<TextField placeholder='Some placeholder' />
+```
+
+**`type`**
+
+The type of the input
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>'text', 'email', 'password', 'number', 'textarea'</td>
+		<td>'text'</td>
+	</tr>
+</table>
+
+```jsx
+<TextField type='text' />
+```
+
+**`value`**
+
+The current value of the input.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String | Number</td>
+		<td>undefined</td>
+	</tr>
+</table>
+
+```jsx
+<TextField value='Some value' />
+```
+
+**`defaultValue`**
+
+The initial value of the input.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>''</td>
+	</tr>
+</table>
+
+```jsx
+<TextField defaultValue='Default value' />
+```
+
+**`onChange`**
+
+Function to execute when the input value changes.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Function</td>
+		<td>{`() => {}`}</td>
+	</tr>
+</table>
+
+```jsx
+<TextField
+	onChange={() => {
+		console.log('On change');
+	}}
+/>
+```
+
+**`size`**
+
+The size of the input.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>'sm', 'md', 'lg'</td>
+		<td>'md'</td>
+	</tr>
+</table>
+
+```jsx
+<TextField size='lg' />
+```
+
+**`border`**
+
+The border style of the input.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>'default', 'bottom', 'none'</td>
+		<td>'default'</td>
+	</tr>
+</table>
+
+```jsx
+<TextField border='bottom' />
+```
+
+**`LeftComponent`**
+
+A component to render on the left side of the input.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>JSX</td>
+		<td>null</td>
+	</tr>
+</table>
+
+```jsx
+<TextField
+	LeftComponent={() => {
+		return <p>Left component</p>;
+	}}
+/>
+```
+
+**`RightComponent`**
+
+A component to render on the right side of the input.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>JSX</td>
+		<td>null</td>
+	</tr>
+</table>
+
+```jsx
+<TextField
+	RightComponent={() => {
+		return <p>Right component</p>;
+	}}
+/>
+```
+
+**`inputProps`**
+
+Additional props to be passed to the input element.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Object</td>
+		<td>{}</td>
+	</tr>
+</table>
+
+```jsx
+<TextField inputProps={{}} />
+```
+
+**`feedback`**
+
+Feedback configuration for the input.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Object</td>
+		<td>{}</td>
+	</tr>
+</table>
+
+```jsx
+<TextField
+	feedback={{
+		text: <p>Right component</p>,
+		type: 'error',
+	}}
+/>
+```
+
+**`count`**
+
+Character count configuration for the input.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Object</td>
+		<td>{}</td>
+	</tr>
+</table>
+
+```jsx
+<TextField
+	count={{
+		limit: 10,
+	}}
+/>
+```
+
+**`feedbackAndCount`**
+
+Whether to display feedback and character count.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<TextField feedbackAndCount={true} />
+```
+
+**`maxLength`**
+
+Maximum number of characters allowed in the input.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Number</td>
+		<td>null</td>
+	</tr>
+</table>
+
+```jsx
+<TextField maxLength={10} />
+```
+
+**`onKeyDown`**
+
+Function to execute on key down event.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Function</td>
+		<td>{`() => {}`}</td>
+	</tr>
+</table>
+
+```jsx
+<TextField
+	onKeyDown={() => {
+		console.log('On key down');
+	}}
+/>
+```
+
+**`autocomplete`**
+
+Enable autocomplete functionality.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<TextField false={true} />
+```
+
+**`autocompleteOptions`**
+
+Configuration options for autocomplete.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Object</td>
+		<td>{}</td>
+	</tr>
+</table>
+
+```jsx
+<TextField autocompleteOptions={{}} />
+```
+
+**`theme`**
+
+The theme of the text field.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>'light', 'dark'</td>
+		<td>'light'</td>
+	</tr>
+</table>
+
+```jsx
+<TextField theme='dark' />
+```
