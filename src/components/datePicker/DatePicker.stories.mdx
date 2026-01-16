@@ -32,12 +32,12 @@ import { DatePicker } from '@banyan_cloud/roots';
 
 The CSF rendered inside the `Canvas` from which you can see the implementation example.
 
-### Single Date Picker
+### Single Date Picker With Time Selection
 
 The date picker which allows to select a date from the popover.
 
 <Canvas>
-	<Story name='Default Singe Date Picker'>
+	<Story name='Default Singe Date Picker With Time Selection'>
 		{() => {
 			const [value, setValue] = useState(1767649320);
 			return (
@@ -54,6 +54,36 @@ The date picker which allows to select a date from the popover.
 							onApply: (v) => {
 								console.log(v);
 								setValue(v?.[1]);
+							},
+							onClear: () => {
+								setValue(null);
+							},
+						}}
+					/>
+				</ThemedContainer>
+			);
+		}}
+	</Story>
+</Canvas>
+
+### Single Date Picker
+
+The date picker which allows to select a date from the popover.
+
+<Canvas>
+	<Story name='Default Singe Date Picker'>
+		{() => {
+			const [value, setValue] = useState();
+			return (
+				<ThemedContainer style={{ width: '40rem' }}>
+					<DatePicker
+						{...{
+							placeholder: 'Select Date Range',
+							label: 'Range Date Picker',
+							value: value,
+							onApply: (v) => {
+								console.log(v);
+								setValue(v);
 							},
 							onClear: () => {
 								setValue(null);

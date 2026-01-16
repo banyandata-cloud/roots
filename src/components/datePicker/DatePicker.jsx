@@ -121,9 +121,24 @@ const DatePicker = (props) => {
 
 	useEffect(() => {
 		setTimeRangeSelection(() => {
-			return getDefaultTimeRangeSelection(value, limitHours);
+			if (valueAsRange) {
+				return getDefaultTimeRangeSelection(value, limitHours);
+			}
+			const selected = getDayInfo(fromUnixTime(value));
+			return {
+				previous: {
+					HOURS: null,
+					MINS: null,
+					MER: 'AM',
+				},
+				next: {
+					HOURS: value ? selected.hours : new Date().getHours(),
+					MINS: value ? selected.minutes : new Date().getMinutes(),
+					MER: value ? selected.meridian : new Date().getHours() >= 12 ? 'PM' : 'AM',
+				},
+			};
 		});
-	}, [selectedDate]);
+	}, [selectedDate, value, limitHours]);
 
 	const datePickerRef = useRef();
 
@@ -218,6 +233,7 @@ const DatePicker = (props) => {
 				setOpenDatePicker(false);
 				return;
 			}
+			console.log(timeRangeSelection);
 			const singleDateUnix = getUnixTime(
 				new Date(
 					selectedDate.year,
@@ -229,6 +245,9 @@ const DatePicker = (props) => {
 					timeRangeSelection.next?.MINS
 				)
 			);
+			console.log({
+				selectedDate,
+			});
 			onApply?.(singleDateUnix);
 			setOpenDatePicker(false);
 		}
