@@ -28,8 +28,9 @@ import React, {
 	type SyntheticEvent,
 } from 'react';
 import { classes } from '../../../../utils';
-import { CaretIcon, InfoHexIcon } from '../../../icons';
+import { CaretIcon, CrossIcon, InfoHexIcon } from '../../../icons';
 import Popper from '../../../popper/Popper';
+import { BaseButton } from '../../../v2/buttons/baseButton';
 import { TextFieldv2 } from '../../textField';
 import { DropdownItemv2 } from '../dropdown-item';
 import type { DropdownItemProps } from '../dropdown-item/types';
@@ -386,29 +387,28 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(props,
 		onChange(clonedEvent as unknown as React.SyntheticEvent, nextValue);
 	};
 
-	let selectedItemsLabel: string | null = null;
-	selectedItemsLabel =
-		selectedOptions.length === 1
-			? '1 option selected'
-			: `${selectedOptions.length.toString()} options selected`;
+	console.log({
+		selectedOptions,
+	});
 
 	const getValueToDisplay = (): ReactNode => {
-		if (value) {
-			if (Array.isArray(value) && value.length > 0) {
-				const sanitized = value.filter(Boolean);
-				if (sanitized.length === 0) return '';
-				if (sanitized.length === 1 && !valueAsCount) {
-					const selectedItem = items.find((i) => {
-						return i.props.value == sanitized[0];
-					});
-					return selectedItem?.props.title;
-				}
-				return formatter(sanitized.length);
-			}
-			const selectedItem = items.find((i) => {
-				return i.props.value == value;
-			});
-			return selectedItem?.props.title;
+		if (selectedOptions?.length > 0) {
+			return (
+				<div className={styles.title}>
+					<BaseButton
+						className={styles.chip}
+						title={selectedOptions?.length?.toString()}
+						onClick={(event) => {
+							event.stopPropagation();
+							return onSelectAll(event, false);
+						}}
+						component3={<CrossIcon className={styles['cross-icon']} />}
+					/>
+					<div data-elem='placeholder' className={styles.placeholder}>
+						Choose options
+					</div>
+				</div>
+			);
 		}
 		if (
 			!isControlled &&
@@ -459,7 +459,7 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(props,
 	);
 
 	if (getValueToDisplay()) {
-		content = <span data-elem='value'>{getValueToDisplay()}</span>;
+		content = <div data-elem='value'>{getValueToDisplay()}</div>;
 	}
 
 	return (
