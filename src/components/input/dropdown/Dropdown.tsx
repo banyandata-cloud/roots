@@ -92,6 +92,7 @@ export interface DropdownProps {
 		value: string | number;
 		onChange: (value: string | number) => void;
 	};
+	hideValueOnSelect?: boolean;
 }
 
 /** What parent components can call on the ref */
@@ -129,6 +130,7 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(props,
 		valueAsCount,
 		caretAsUpDown,
 		search,
+		hideValueOnSelect,
 	} = props;
 
 	const [open, setOpen] = useState(false);
@@ -468,9 +470,12 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(props,
 		return null;
 	};
 
+	const shouldHideValue =
+		hideValueOnSelect && !multi && (Array.isArray(value) ? value.length > 0 : !!value);
+
 	let content = <div data-elem='placeholder'>{placeholder}</div>;
 
-	if (getValueToDisplay()) {
+	if (!shouldHideValue && getValueToDisplay()) {
 		content = <span data-elem='value'>{getValueToDisplay()}</span>;
 	}
 
