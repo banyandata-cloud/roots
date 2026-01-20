@@ -42,6 +42,8 @@ const Alert: ForwardRefRenderFunction<AlertHandle, AlertProps> = (
 		position: defaultPosition = 'bottom-center',
 		animation = true,
 		className = '',
+		variant = 'inline',
+		theme = 'light',
 	},
 	ref
 ) => {
@@ -50,6 +52,7 @@ const Alert: ForwardRefRenderFunction<AlertHandle, AlertProps> = (
 	const [alertProps, setAlertProps] = useState<AlertConfig>({
 		title: undefined,
 		description: undefined,
+		tag: undefined,
 		icon: undefined,
 		type: 'info',
 		action: undefined,
@@ -66,6 +69,7 @@ const Alert: ForwardRefRenderFunction<AlertHandle, AlertProps> = (
 	const {
 		title,
 		description,
+		tag,
 		icon: CustomIcon,
 		action: CustomAction,
 		type,
@@ -164,6 +168,8 @@ const Alert: ForwardRefRenderFunction<AlertHandle, AlertProps> = (
 					className: classes(
 						styles.root,
 						styles[type],
+						styles[variant],
+						styles[theme],
 						shadow ? styles.shadow : '',
 						styles[`position-${position}`],
 						className
@@ -171,12 +177,20 @@ const Alert: ForwardRefRenderFunction<AlertHandle, AlertProps> = (
 				})}
 				ref={scope}>
 				<div className={styles.left}>
-					<div className={classes(styles['icon-container'], styles[type])}>
-						{showIcon && Icon}
-					</div>
+					{showIcon && (
+						<div className={classes(styles['icon-container'], styles[type])}>
+							{Icon}
+						</div>
+					)}
+
 					<div className={styles.content}>
 						<span className={styles.title}>{title}</span>
-						<span className={styles.description}>{description}</span>
+
+						{variant === 'card' && description && (
+							<span className={styles.description}>{description}</span>
+						)}
+
+						{variant === 'card' && tag && <span className={styles.time}>{tag}</span>}
 					</div>
 				</div>
 				<div className={styles.actions}>
