@@ -470,13 +470,14 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(props,
 		return null;
 	};
 
-	const shouldHideValue =
-		hideValueOnSelect && !multi && (Array.isArray(value) ? value.length > 0 : !!value);
+	let content: ReactNode = null;
 
-	let content = <div data-elem='placeholder'>{placeholder}</div>;
+	if (!hideValueOnSelect) {
+		content = <div data-elem='placeholder'>{placeholder}</div>;
 
-	if (!shouldHideValue && getValueToDisplay()) {
-		content = <span data-elem='value'>{getValueToDisplay()}</span>;
+		if (getValueToDisplay()) {
+			content = <span data-elem='value'>{getValueToDisplay()}</span>;
+		}
 	}
 
 	return (
