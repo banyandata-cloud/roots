@@ -164,7 +164,6 @@ $ease-exit-productive: cubic-bezier(0.2, 0, 1, 0.9);
 					@include removeArrows;
 					flex: 1;
 					border: none;
-					border-radius: 0.25rem;
 
 					font-weight: 400;
 					color: $text-color;

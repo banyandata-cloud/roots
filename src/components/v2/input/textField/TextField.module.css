@@ -145,7 +145,6 @@
   -moz-appearance: textfield;
   flex: 1;
   border: none;
-  border-radius: 0.25rem;
   font-weight: 400;
   color: var(--text-color);
   font-size: 0.875rem;
