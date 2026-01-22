@@ -105,6 +105,150 @@
 .root .header .input:focus + .select.feedback-error {
   border-color: var(--primary-color1);
 }
+.root .header .search {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 25rem;
+  max-width: 100%;
+  gap: 0.5rem;
+  outline: none;
+  border-radius: 0.3125rem;
+  background: #f7f7f7;
+  cursor: pointer;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.root .header .search [data-elem=base-cell] {
+  width: 23rem;
+  background: #f7f7f7;
+  box-shadow: none;
+}
+.root .header .search [data-elem=base-cell]:hover {
+  background-color: #e4e4e4 !important;
+}
+.root .header .search [data-elem=base-cell] [data-elem=component2] {
+  padding: 0%;
+}
+.root .header .search [data-elem=base-cell] [data-elem=component2] [data-elem=input] {
+  padding: 0%;
+  border: 1px solid red;
+  background: #f7f7f7;
+}
+.root .header .search:hover {
+  background-color: #e4e4e4 !important;
+}
+.root .header .search.disabled:hover {
+  background-color: #f7f7f7 !important;
+}
+.root .header .search.read-only:hover {
+  background-color: transparent !important;
+}
+.root .header .search .placeholder {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  color: #161616;
+  font-size: 1.16667rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.5rem;
+  letter-spacing: 0.01333rem;
+}
+.root .header .search .placeholder.disabled {
+  color: rgba(22, 22, 22, 0.3019607843);
+}
+.root .header .search .title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+.root .header .search .title .chip {
+  height: 1.6rem;
+  width: 4rem;
+  padding: 0 0.33333rem 0 0.66667rem;
+  gap: 0.66667rem;
+  border-radius: 2.08333rem;
+  background: #323232;
+}
+.root .header .search .title .chip .cross-icon {
+  height: 1.25rem;
+  width: 1.25rem;
+  fill: var(--white);
+}
+.root .header .search .info-icon {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.root .header .search .icon-bundle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+.root .header .search .icon-bundle .caret-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  transition: transform 0.5s;
+  fill: var(--text-color) !important;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  transform: rotate(180deg);
+}
+.root .header .search .icon-bundle .caret-icon.open {
+  transform: rotate(0deg);
+}
+.root .header .search .icon-bundle .caret-icon.disabled {
+  fill: rgba(22, 22, 22, 0.3019607843) !important;
+}
+.root .header .search .icon-bundle .caret-icon-upDown {
+  width: 1.5rem;
+  height: 1.5rem;
+  transition: transform 0.5s;
+  fill: transparent !important;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  transform: rotate(180deg);
+}
+.root .header .search .icon-bundle .caret-icon-upDown > path {
+  stroke: var(--text-color);
+}
+.root .header .search .icon-bundle .caret-icon-upDown.open {
+  transform: rotate(0deg);
+}
+.root .header .search .icon-bundle .info-icon path {
+  stroke: white;
+}
+.root .header .search .icon-bundle .info-icon.error-icon path {
+  fill: #da1e28;
+}
+.root .header .search .icon-bundle .info-icon.warning-icon path {
+  fill: #f1c21b;
+}
+.root .header .search .icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  transition: transform 0.5s;
+  fill: var(--text-color) !important;
+}
+.root .header .search .icon.open {
+  transform: rotate(180deg);
+}
+.root .header .search.feedback-error {
+  border-color: var(--primary-color1);
+}
 .root .header .select {
   display: flex;
   flex-direction: row;

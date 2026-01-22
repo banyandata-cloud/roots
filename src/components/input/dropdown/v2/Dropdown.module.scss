@@ -115,6 +115,143 @@
 			}
 		}
 
+		.search {
+			@include flex(row, space-between);
+			width: 25rem;
+			max-width: 100%;
+			gap: 0.5rem;
+			outline: none;
+			border-radius: 0.3125rem;
+			background: #f7f7f7;
+			cursor: pointer;
+			font-weight: 500;
+			@include ellipsis;
+			[data-elem='base-cell'] {
+				width: 23rem;
+				background: #f7f7f7;
+				box-shadow: none;
+				&:hover {
+					background-color: #e4e4e4 !important;
+				}
+				[data-elem='component2'] {
+					padding: 0%;
+					[data-elem='input'] {
+						padding: 0%;
+						@include debug;
+						background: #f7f7f7;
+					}
+				}
+			}
+			&:hover {
+				background-color: #e4e4e4 !important;
+			}
+			&.disabled {
+				&:hover {
+					background-color: #f7f7f7 !important;
+				}
+			}
+			&.read-only {
+				&:hover {
+					background-color: transparent !important;
+				}
+			}
+			.placeholder {
+				@include ellipsis;
+				color: #161616;
+				&.disabled {
+					color: #1616164d;
+				}
+				font-size: 1.16667rem;
+				font-style: normal;
+				font-weight: 400;
+				line-height: 1.5rem;
+				letter-spacing: 0.01333rem;
+			}
+
+			.title {
+				@include flex(row, space-between);
+				gap: 1rem;
+				.chip {
+					height: 1.6rem;
+					width: 4rem;
+					padding: 0 0.33333rem 0 0.66667rem;
+					gap: 0.66667rem;
+					border-radius: 2.08333rem;
+					background: #323232;
+					.cross-icon {
+						height: 1.25rem;
+						width: 1.25rem;
+						fill: $white;
+					}
+				}
+			}
+
+			.info-icon {
+				@include flex(row, space-between);
+			}
+			.icon-bundle {
+				@include flex(row, space-between);
+				gap: 1rem;
+				.caret-icon {
+					width: 1.5rem;
+					height: 1.5rem;
+					transition: transform 0.5s;
+					fill: $text-color !important;
+					@include flex(row, space-between);
+					transform: rotate(180deg);
+					&.open {
+						transform: rotate(0deg);
+					}
+					&.disabled {
+						fill: #1616164d !important;
+					}
+				}
+				.caret-icon-upDown {
+					width: 1.5rem;
+					height: 1.5rem;
+					transition: transform 0.5s;
+					fill: transparent !important;
+					@include flex(row, space-between);
+					transform: rotate(180deg);
+					> path {
+						stroke: $text-color;
+					}
+					&.open {
+						transform: rotate(0deg);
+					}
+				}
+				.info-icon {
+					path {
+						stroke: white;
+					}
+					&.error-icon {
+						path {
+							fill: #da1e28;
+						}
+					}
+
+					&.warning-icon {
+						path {
+							fill: #f1c21b;
+						}
+					}
+				}
+			}
+			.icon {
+				width: 1.5rem;
+				height: 1.5rem;
+				transition: transform 0.5s;
+				fill: $text-color !important;
+				&.open {
+					transform: rotate(180deg);
+				}
+			}
+
+			&.feedback-error {
+				border-color: $primary-color1;
+			}
+		}
+
 		.select {
 			@include flex(row, space-between);
 			width: 25rem;

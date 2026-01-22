@@ -517,59 +517,124 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(props,
 					readOnly
 				/>
 
-				<div
-					data-elem='select'
-					role='button'
-					className={classes(
-						styles.select,
-						disabled ? styles.disabled : '',
-						readOnly ? styles['read-only'] : '',
-						feedback != null ? styles[`feedback-${feedback.type}` as const] : ''
-					)}>
-					{getLeftComponent()}
-					{content}
-					<div className={styles['icon-bundle']}>
-						{error && (
-							<span className={styles.span}>
-								<InfoHexIcon
+				{search ? (
+					<div
+						className={classes(
+							styles.search,
+							disabled ? styles.disabled : '',
+							readOnly ? styles['read-only'] : '',
+							feedback != null ? styles[`feedback-${feedback.type}` as const] : ''
+						)}>
+						<TextFieldv2
+							className={classes(
+								styles['text-field'],
+								disabled ? styles.disabled : '',
+								readOnly ? styles['read-only'] : '',
+								feedback != null ? styles[`feedback-${feedback.type}` as const] : ''
+							)}
+							placeholder={search.placeholder}
+							value={search.value}
+							onChange={(e) => {
+								search.onChange(e.target.value);
+							}}
+						/>
+						<div className={styles['icon-bundle']}>
+							{error && (
+								<span className={styles.span}>
+									<InfoHexIcon
+										className={classes(
+											styles['info-icon'],
+											error ? styles['error-icon'] : ''
+										)}
+									/>
+								</span>
+							)}
+							{warning && (
+								<span className={styles.span}>
+									<InfoHexIcon
+										className={classes(
+											styles['info-icon'],
+											warning ? styles['warning-icon'] : ''
+										)}
+									/>
+								</span>
+							)}
+							{caretAsUpDown ? (
+								<CaretIcon
 									className={classes(
-										styles['info-icon'],
-										error ? styles['error-icon'] : ''
+										styles['caret-icon-upDown'],
+										open ? styles.open : '',
+										disabled ? styles.disabled : ''
+									)}
+									upDown
+								/>
+							) : (
+								<CaretIcon
+									data-elem='icon'
+									className={classes(
+										styles['caret-icon'],
+										open ? styles.open : '',
+										disabled ? styles.disabled : ''
 									)}
 								/>
-							</span>
-						)}
-						{warning && (
-							<span className={styles.span}>
-								<InfoHexIcon
-									className={classes(
-										styles['info-icon'],
-										warning ? styles['warning-icon'] : ''
-									)}
-								/>
-							</span>
-						)}
-						{caretAsUpDown ? (
-							<CaretIcon
-								className={classes(
-									styles['caret-icon-upDown'],
-									open ? styles.open : '',
-									disabled ? styles.disabled : ''
-								)}
-								upDown
-							/>
-						) : (
-							<CaretIcon
-								data-elem='icon'
-								className={classes(
-									styles['caret-icon'],
-									open ? styles.open : '',
-									disabled ? styles.disabled : ''
-								)}
-							/>
-						)}
+							)}
+						</div>
 					</div>
-				</div>
+				) : (
+					<div
+						data-elem='select'
+						role='button'
+						className={classes(
+							styles.select,
+							disabled ? styles.disabled : '',
+							readOnly ? styles['read-only'] : '',
+							feedback != null ? styles[`feedback-${feedback.type}` as const] : ''
+						)}>
+						{getLeftComponent()}
+						{content}
+						<div className={styles['icon-bundle']}>
+							{error && (
+								<span className={styles.span}>
+									<InfoHexIcon
+										className={classes(
+											styles['info-icon'],
+											error ? styles['error-icon'] : ''
+										)}
+									/>
+								</span>
+							)}
+							{warning && (
+								<span className={styles.span}>
+									<InfoHexIcon
+										className={classes(
+											styles['info-icon'],
+											warning ? styles['warning-icon'] : ''
+										)}
+									/>
+								</span>
+							)}
+							{caretAsUpDown ? (
+								<CaretIcon
+									className={classes(
+										styles['caret-icon-upDown'],
+										open ? styles.open : '',
+										disabled ? styles.disabled : ''
+									)}
+									upDown
+								/>
+							) : (
+								<CaretIcon
+									data-elem='icon'
+									className={classes(
+										styles['caret-icon'],
+										open ? styles.open : '',
+										disabled ? styles.disabled : ''
+									)}
+								/>
+							)}
+						</div>
+					</div>
+				)}
 			</div>
 
 			{(error || warning) && (
@@ -643,16 +708,6 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(props,
 											return item?.props?.selected;
 										})?.length !== items?.length
 									}
-								/>
-							)}
-							{search && (
-								<TextFieldv2
-									className={styles.search}
-									placeholder={search.placeholder}
-									value={search.value}
-									onChange={(e) => {
-										search.onChange(e.target.value);
-									}}
 								/>
 							)}
 
