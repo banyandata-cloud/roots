@@ -68,7 +68,7 @@ export function Accordion(props: AccordionProps) {
 					'aria-disabled': disabled,
 				}}
 				component2={<span className={styles.title}>{title}</span>}
-				component3={<LeftComponent />}
+				component3={LeftComponent && <LeftComponent />}
 			/>
 
 			{isOpen && (

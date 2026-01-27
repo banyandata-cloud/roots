@@ -18,7 +18,7 @@ export interface AccordionProps {
 	 * Optional component rendered on the very left side of the header.
 	 * Usually an Icon. Receives the `className` needed for styling.
 	 */
-	leftComponent?: ComponentType<{ className?: string }>;
+	leftComponent?: ComponentType<{ className?: string }> | null;
 	/**
 	 * Optional component rendered on the very right side of the header.
 	 * Usually an Icon. Receives the `className` needed for styling.
