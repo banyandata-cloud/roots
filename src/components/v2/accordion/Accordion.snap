@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`CodeSnippet — Snapshot Rendering closed accordion snapshot 1`] = `
+<div>
+  <div
+    class="root"
+    data-state-open="false"
+  >
+    <button
+      data-testid="base-cell"
+    >
+      <div
+        data-testid="caret-icon"
+      />
+      <span
+        class="title"
+      >
+        Snap Title
+      </span>
+    </button>
+  </div>
+</div>
+`;
+
+exports[`CodeSnippet — Snapshot Rendering open accordion snapshot 1`] = `
+<div>
+  <div
+    class="root open"
+    data-state-open="true"
+  >
+    <button
+      data-testid="base-cell"
+    >
+      <div
+        data-testid="caret-icon"
+      />
+      <span
+        class="title"
+      >
+        Snap Title
+      </span>
+    </button>
+    <div
+      animate="[object Object]"
+      class="body"
+      data-elem="body"
+      initial="[object Object]"
+      transition="[object Object]"
+    >
+      <p>
+        Snap Desc
+      </p>
+    </div>
+  </div>
+</div>
+`;

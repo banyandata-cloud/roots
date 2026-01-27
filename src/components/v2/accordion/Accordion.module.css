@@ -1,0 +1,82 @@
+.root {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: stretch;
+	width: 100%;
+}
+.root > .header[data-elem='base-cell'] {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.5rem 1rem;
+	cursor: pointer;
+	border: none;
+}
+.root > .header[data-elem='base-cell'] > [data-elem='component1'] svg {
+	transition: all 0.3s ease-in-out;
+}
+.root > .header[data-elem='base-cell'] > [data-elem='component1'],
+.root > .header[data-elem='base-cell'] > [data-elem='component3'] {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+.root > .header[data-elem='base-cell'] > [data-elem='component1'] svg,
+.root > .header[data-elem='base-cell'] > [data-elem='component3'] svg {
+	transform: rotate(90deg);
+	width: 1.5rem;
+	height: 1.5rem;
+	fill: var(--text-color);
+}
+.root > .header[data-elem='base-cell'] > [data-elem='component3'] {
+	margin-left: auto;
+}
+.root > .header[data-elem='base-cell'] .title {
+	flex: 1 1 auto;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+	color: var(--text-color);
+}
+.root > .header[data-elem='base-cell']:hover {
+	background: var(--background-color4);
+}
+.root > .header[data-elem='base-cell']:hover .title {
+	color: var(--secondary-color1);
+}
+.root > .header[data-elem='base-cell']:hover svg {
+	fill: var(--secondary-color1);
+}
+.root > .body {
+	padding: 0.5rem 2.5rem;
+}
+.root.open > .header[data-elem='base-cell'] {
+	border-top: 1px solid #ededed;
+}
+.root.open > .header[data-elem='base-cell'] [data-elem='component1'] svg {
+	transform: none;
+}
+.root.open > .body {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: stretch;
+	border-bottom: 1px solid #ededed;
+}
+.root.open > .body > button[data-elem='base-cell'] {
+	width: -moz-fit-content;
+	width: fit-content;
+	align-self: flex-end;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-items: center;
+}
+.root.open > .body > button[data-elem='base-cell'] .expand {
+	height: 1.5rem;
+	width: 1.5rem;
+} /*# sourceMappingURL=Accordion.module.css.map */
