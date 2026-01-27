@@ -1,118 +1,138 @@
+import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import Accordion from './Accordion';
 
-// MOCKS
-
-// Mock icons
-jest.mock('../icons', () => ({
-	CaretIcon: () => <div data-testid='caret-icon' />,
-	ExpandArrowAltIcon: () => <div data-testid='expand-icon' />,
-}));
-
-// Mock BaseCell (clickable container)
-jest.mock('../cell', () => ({
-	BaseCell: ({ attrs, component1, component2, component3 }: any) => (
-		<button data-testid='base-cell' onClick={attrs?.onClick}>
-			{component1}
-			{component2}
-			{component3}
-		</button>
-	),
-}));
-
-// Mock Button used in onExpand
-jest.mock('../buttons', () => ({
-	Button: ({ onClick, title }: any) => (
-		<button data-testid='expand-btn' onClick={onClick}>
-			{title}
-		</button>
-	),
-}));
-
-// Mock framer-motion so animations don't break Jest
-jest.mock('framer-motion', () => ({
-	motion: {
-		div: ({ children, ...rest }: any) => <div {...rest}>{children}</div>,
-	},
-}));
-
-// HAPPY PATH TESTS
-describe('Accordion — Rendering & Interaction Behaviour', () => {
-	test('renders title and closed body when defaultOpen=false', () => {
-		render(<Accordion title='Hello' description='desc' defaultOpen={false} />);
-
-		expect(screen.getByText('Hello')).toBeInTheDocument();
-		expect(screen.queryByText('desc')).toBeNull();
-	});
-
-	test('opens when clicked in uncontrolled mode', () => {
-		render(<Accordion title='Click Me' description='Body Content' defaultOpen={false} />);
-
-		fireEvent.click(screen.getByTestId('base-cell'));
-
-		expect(screen.getByText('Body Content')).toBeInTheDocument();
-	});
-});
-
-// MEDIUM PATH TESTS
-describe('Accordion — Controlled Mode & Customisation Behaviour', () => {
-	test('controlled mode → onToggle should be called', () => {
-		const mockToggle = jest.fn();
-
+// HAPPY PATH
+describe('Accordion — Basic Rendering', () => {
+	test('renders accordion with title', () => {
 		render(
-			<Accordion title='Controlled' open={false} onToggle={mockToggle} description='Body' />
+			<Accordion title='Accordion Title'>
+				<div>Content</div>
+			</Accordion>
 		);
 
-		fireEvent.click(screen.getByTestId('base-cell'));
-
-		expect(mockToggle).toHaveBeenCalledWith(false);
+		expect(screen.getByText('Accordion Title')).toBeInTheDocument();
 	});
 
-	test('renders left & right custom components', () => {
-		const CustomIcon = () => <div data-testid='custom-icon' />;
-
+	test('does not render body content by default when closed', () => {
 		render(
-			<Accordion
-				title='Icons'
-				description='test'
-				leftComponent={CustomIcon}
-				rightComponent={CustomIcon}
-			/>
+			<Accordion title='Closed Accordion'>
+				<div data-testid='accordion-body'>Hidden Content</div>
+			</Accordion>
 		);
 
-		expect(screen.getAllByTestId('custom-icon').length).toBe(2);
+		expect(screen.queryByTestId('accordion-body')).not.toBeInTheDocument();
 	});
 });
 
-// RISKY PATH TESTS
-describe('Accordion — Edge Case Handling', () => {
-	test('should NOT crash when title is empty', () => {
-		render(<Accordion title='' description='desc' defaultOpen={false} />);
+// MEDIUM PATH
+describe('Accordion — Prop-driven behavior', () => {
+	test('opens accordion when defaultOpen is true', () => {
+		render(
+			<Accordion title='Open Accordion' defaultOpen>
+				<div data-testid='accordion-body'>Visible Content</div>
+			</Accordion>
+		);
 
-		expect(screen.getByTestId('base-cell')).toBeInTheDocument();
+		expect(screen.getByTestId('accordion-body')).toBeInTheDocument();
 	});
 
-	test('should NOT crash when description is omitted', () => {
-		render(<Accordion title='No Desc' defaultOpen />);
+	test('toggles accordion open state when clicked in uncontrolled mode', () => {
+		render(
+			<Accordion title='Toggle Accordion'>
+				<div data-testid='accordion-body'>Toggled Content</div>
+			</Accordion>
+		);
 
-		// Body still renders, children may be empty
-		expect(screen.getByTestId('base-cell')).toBeInTheDocument();
+		const headerButton = screen.getByRole('button');
+
+		fireEvent.click(headerButton);
+		expect(screen.getByTestId('accordion-body')).toBeInTheDocument();
+
+		fireEvent.click(headerButton);
+		expect(screen.queryByTestId('accordion-body')).not.toBeInTheDocument();
+	});
+
+	test('renders description when provided', () => {
+		render(
+			<Accordion title='With Description' defaultOpen description='Accordion description'>
+				<div>Content</div>
+			</Accordion>
+		);
+
+		expect(screen.getByText('Accordion description')).toBeInTheDocument();
 	});
 });
 
-// SNAPSHOT TESTS
-describe('CodeSnippet — Snapshot Rendering', () => {
-	test('closed accordion snapshot', () => {
+// RISKY PATH
+describe('Accordion — Controlled and edge-case behavior', () => {
+	test('respects controlled open prop', () => {
+		const { rerender } = render(
+			<Accordion title='Controlled Accordion' open={false}>
+				<div data-testid='accordion-body'>Controlled Content</div>
+			</Accordion>
+		);
+
+		expect(screen.queryByTestId('accordion-body')).not.toBeInTheDocument();
+
+		rerender(
+			<Accordion title='Controlled Accordion' open>
+				<div data-testid='accordion-body'>Controlled Content</div>
+			</Accordion>
+		);
+
+		expect(screen.getByTestId('accordion-body')).toBeInTheDocument();
+	});
+
+	test('calls onToggle when clicked in controlled mode', () => {
+		const onToggle = jest.fn();
+
+		render(
+			<Accordion title='Controlled Toggle' open={false} onToggle={onToggle}>
+				<div>Content</div>
+			</Accordion>
+		);
+
+		fireEvent.click(screen.getByRole('button'));
+		expect(onToggle).toHaveBeenCalledWith(false);
+	});
+
+	test('is disabled when disabled prop is true', () => {
+		render(
+			<Accordion title='Disabled Accordion' disabled>
+				<div>Content</div>
+			</Accordion>
+		);
+
+		const headerButton = screen.getByRole('button');
+		expect(headerButton).toBeDisabled();
+	});
+});
+
+// SNAPSHOT TESTING
+describe('Accordion — Snapshots', () => {
+	test('matches default snapshot', () => {
 		const { container } = render(
-			<Accordion title='Snap Title' description='Snap Desc' defaultOpen={false} />
+			<Accordion title='Snapshot Accordion'>
+				<div>Snapshot Content</div>
+			</Accordion>
 		);
 
 		expect(container).toMatchSnapshot();
 	});
 
-	test('open accordion snapshot', () => {
+	test('matches snapshot when open with description and expand button', () => {
+		const onExpand = jest.fn();
+
 		const { container } = render(
-			<Accordion title='Snap Title' description='Snap Desc' defaultOpen />
+			<Accordion
+				title='Complex Accordion'
+				defaultOpen
+				description='Detailed description'
+				onExpand={onExpand}
+				className='extra-class'>
+				<div>Complex Content</div>
+			</Accordion>
 		);
 
 		expect(container).toMatchSnapshot();

@@ -18,7 +18,7 @@ export interface AccordionProps {
 	 * Optional component rendered on the very left side of the header.
 	 * Usually an Icon. Receives the `className` needed for styling.
 	 */
-	leftComponent?: ComponentType<{ className?: string }> | null;
+	leftComponent?: ComponentType<{ className?: string }>;
 	/**
 	 * Optional component rendered on the very right side of the header.
 	 * Usually an Icon. Receives the `className` needed for styling.
@@ -49,4 +49,5 @@ export interface AccordionProps {
 	 * If provided, a *See More* button will be shown that triggers this callback when clicked.
 	 */
 	onExpand?: () => void;
+	disabled?: boolean;
 }

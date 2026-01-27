@@ -66,65 +66,17 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 	</Story>
 </Canvas>
 
-### Custom Icon
+### Disabled
 
 <Canvas>
 	<Story
-		name='Custom Icon'
+		name='Disabled'
 		args={{
 			title: 'Click to Expand',
 			description:
 				"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
 			defaultOpen: false,
-			leftComponent: PlusIcon,
-			rightComponent: PlusIcon,
-		}}>
-		{Template.bind({})}
-	</Story>
-</Canvas>
-
-### Controlled
-
-<Canvas>
-	<Story name='Controlled'>
-		{() => {
-			const [open, setOpen] = useState(null);
-			return (
-				<ThemedContainer>
-					{[...Array(4).keys()].map((key) => {
-						return (
-							<Accordion
-								open={key === open}
-								onToggle={(active) => {
-									if (active) {
-										setOpen(null);
-									} else {
-										setOpen(key);
-									}
-								}}
-								key={key}
-								title={`Item ${key + 1}`}
-								description={`This is the decription for Item ${key + 1}`}
-							/>
-						);
-					})}
-				</ThemedContainer>
-			);
-		}}
-	</Story>
-</Canvas>
-
-### Loading State
-
-<Canvas>
-	<Story
-		name='Loading State'
-		args={{
-			title: 'Click to Expand',
-			description:
-				"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-			defaultOpen: false,
-			loading: true,
+			disabled: true,
 		}}>
 		{Template.bind({})}
 	</Story>
