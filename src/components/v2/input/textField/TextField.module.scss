@@ -43,13 +43,13 @@ $ease-exit-productive: cubic-bezier(0.2, 0, 1, 0.9);
 		color: #484848;
 		letter-spacing: 0.3199999928474426px;
 		@include flex(column, flex-start, flex-start);
-		gap: 8px;
 
 		.labelRow {
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
 			width: 100%;
+			margin-bottom: 8px;
 
 			.required {
 				&::after {
@@ -108,6 +108,7 @@ $ease-exit-productive: cubic-bezier(0.2, 0, 1, 0.9);
 			position: relative;
 			padding: 10px 16px;
 			border: 1px solid #828282;
+			margin-bottom: 4px;
 
 			&:focus-within {
 				outline: none;
