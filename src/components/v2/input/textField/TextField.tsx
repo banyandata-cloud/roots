@@ -69,8 +69,9 @@ export interface TextFieldProps {
 	/** Whether to enable autocomplete popover */
 	autocompleteOptions?: AutocompleteOptions | undefined;
 	helperText?: string;
-	forgotPasswordLink?: string | (() => void);
+	linkAction?: string | (() => void);
 	readOnly?: boolean;
+	linkText?: string;
 }
 
 const TextField = forwardRef<HTMLInputElement | HTMLTextAreaElement, TextFieldProps>(
@@ -99,7 +100,8 @@ const TextField = forwardRef<HTMLInputElement | HTMLTextAreaElement, TextFieldPr
 			onKeyDown,
 			autocompleteOptions,
 			helperText,
-			forgotPasswordLink,
+			linkText = 'Link',
+			linkAction,
 			readOnly,
 		} = props;
 
@@ -206,13 +208,13 @@ const TextField = forwardRef<HTMLInputElement | HTMLTextAreaElement, TextFieldPr
 
 		const AutocompletePopover = autocompleteOptions?.render;
 
-		const handleForgotPassword = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+		const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
 			e.preventDefault();
 
-			if (typeof forgotPasswordLink === 'function') {
-				forgotPasswordLink();
-			} else if (typeof forgotPasswordLink === 'string') {
-				window.location.href = forgotPasswordLink;
+			if (typeof linkAction === 'function') {
+				linkAction();
+			} else if (typeof linkAction === 'string') {
+				window.location.href = linkAction;
 			}
 		};
 
@@ -236,12 +238,9 @@ const TextField = forwardRef<HTMLInputElement | HTMLTextAreaElement, TextFieldPr
 							</span>
 						)}
 
-						{type === 'password' && !disabled && forgotPasswordLink && (
-							<a
-								href='#'
-								onClick={handleForgotPassword}
-								className={styles.forgotPassword}>
-								Forgot password
+						{type === 'password' && !disabled && linkAction && (
+							<a href='#' onClick={handleLinkClick} className={styles.forgotPassword}>
+								{linkText}
 							</a>
 						)}
 					</div>
