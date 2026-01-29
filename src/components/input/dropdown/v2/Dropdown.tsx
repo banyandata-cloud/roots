@@ -180,6 +180,7 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(props,
 	const { getReferenceProps, getFloatingProps, getItemProps } = useInteractions([
 		useClick(context, {
 			enabled: !disabled && !readOnly,
+			keyboardHandlers: false,
 		}),
 		useRole(context, {
 			role: 'listbox',
@@ -303,7 +304,33 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(props,
 		};
 	};
 
-	const items = childrenArray.map((child, index) => {
+	const searchInputRef = useRef<HTMLInputElement>(null);
+
+	useEffect(() => {
+		if (open && searchInputRef.current) {
+			setTimeout(() => {
+				//  search input is focused when dropdown is opened
+				searchInputRef.current?.focus();
+			}, 100); // ensure dropdown is fully rendered before focusing
+		}
+	}, [open]);
+
+	const filteredChildren = useMemo(() => {
+		if (!search?.value) return childrenArray;
+
+		const query = search.value.toString().toLowerCase();
+
+		return childrenArray.filter((child) => {
+			const title =
+				typeof child.props.title === 'string' ? child.props.title.toLowerCase() : '';
+
+			const value = child.props.value?.toString().toLowerCase() ?? '';
+
+			return title.includes(query) || value.includes(query);
+		});
+	}, [childrenArray, search?.value]);
+
+	const items = filteredChildren.map((child, index) => {
 		let isSelected = false;
 		if (
 			selectedOptions.findIndex((o) => {
@@ -387,10 +414,6 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(props,
 		onChange(clonedEvent as unknown as React.SyntheticEvent, nextValue);
 	};
 
-	console.log({
-		selectedOptions,
-	});
-
 	const getValueToDisplay = (): ReactNode => {
 		if (selectedOptions?.length > 0) {
 			return (
@@ -462,6 +485,21 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(props,
 		content = <div data-elem='value'>{getValueToDisplay()}</div>;
 	}
 
+	const isSearchSelected = (): boolean => {
+		return selectedOptions?.length > 0 && selectedOptions[0]?.value != null;
+	};
+
+	const clearSelections = (event: React.MouseEvent<HTMLElement>) => {
+		event.stopPropagation();
+
+		setUncontrolledValue(null);
+		setAppliedMultiUncontrolledValue(null);
+		setSelectedIndex(0);
+		setActiveIndex(null);
+
+		onChange(event as unknown as React.SyntheticEvent, null);
+	};
+
 	return (
 		<div
 			className={classes(
@@ -525,19 +563,34 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(props,
 							readOnly ? styles['read-only'] : '',
 							feedback != null ? styles[`feedback-${feedback.type}` as const] : ''
 						)}>
-						<TextFieldv2
-							className={classes(
-								styles['text-field'],
-								disabled ? styles.disabled : '',
-								readOnly ? styles['read-only'] : '',
-								feedback != null ? styles[`feedback-${feedback.type}` as const] : ''
-							)}
-							placeholder={search.placeholder}
-							value={search.value}
-							onChange={(e) => {
-								search.onChange(e.target.value);
-							}}
-						/>
+						{isSearchSelected() && (
+							<div className={styles.selected}>
+								<span>{selectedOptions[0]?.title}</span>
+							</div>
+						)}
+						{!isSearchSelected() && (
+							<TextFieldv2
+								v2
+								disabled={readOnly || disabled}
+								ref={searchInputRef}
+								className={classes(
+									styles['text-field'],
+									disabled ? styles.disabled : '',
+									readOnly ? styles['read-only'] : '',
+									feedback != null
+										? styles[`feedback-${feedback.type}` as const]
+										: ''
+								)}
+								placeholder={search.placeholder}
+								value={search.value}
+								onKeyDown={(e) => {
+									e.stopPropagation();
+								}}
+								onChange={(e) => {
+									search.onChange(e.target.value);
+								}}
+							/>
+						)}
 						<div className={styles['icon-bundle']}>
 							{error && (
 								<span className={styles.span}>
@@ -548,6 +601,11 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(props,
 										)}
 									/>
 								</span>
+							)}
+							{isSearchSelected() && (
+								<div onClick={clearSelections}>
+									<CrossIcon className={classes(styles['crossIcon'])} />
+								</div>
 							)}
 							{warning && (
 								<span className={styles.span}>
@@ -645,7 +703,7 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(props,
 				</div>
 			)}
 
-			<Popper open={open} wrapperId='dropdown-popper'>
+			<Popper open={open && items.length > 0} wrapperId='dropdown-popper'>
 				{open && (
 					<FloatingFocusManager context={context} initialFocus={-1} modal={false}>
 						<motion.ul

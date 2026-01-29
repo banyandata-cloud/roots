@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { ThemedContainer } from '../../helpers';
 import Dropdownv2 from './Dropdown';
 import DropdownItemv2 from './dropdown-item/DropdownItem';
+import { warning } from 'framer-motion';
 
 <Meta title='Components/Input/Dropdown' parameters={{ options: { showToolbar: true } }} />
 
@@ -77,6 +78,7 @@ The default dropdown component.
 			label: 'Default Dropdown',
 			placeholder: 'Select an option',
 			v2: true,
+			error: 'hiiiis',
 		}}>
 		{Template2.bind({})}
 	</Story>
@@ -129,18 +131,23 @@ The dropdown component with search.
 <Canvas>
 	<Story name='Search V2'>
 		{() => {
+			const [searchValue, setSearchValue] = useState('');
 			return (
 				<ThemedContainer theme='light'>
 					<div>
 						<Dropdownv2
-							search={true}
+							multi={false}
+							search={{
+								placeholder: 'Type to search...',
+								value: searchValue,
+								onChange: (value) => {
+									setSearchValue(value);
+								},
+							}}
 							v2={true}
 							label='Search Checkbox Dropdown'
 							placeholder='Select an option'
 							onChange={(event, newValue) => {
-								console.log({
-									V2: newValue,
-								});
 								setValue(newValue);
 							}}>
 							{[...Array(13).keys()].map((option) => {
@@ -149,7 +156,6 @@ The dropdown component with search.
 										key={option}
 										title={`Option ${option + 1}`}
 										value={option + 1}
-										variant='checkbox'
 										v2={true}
 									/>
 								);

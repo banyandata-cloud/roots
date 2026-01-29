@@ -5,6 +5,7 @@
 	gap: 0.5rem;
 	position: relative;
 	width: fit-content;
+
 	max-width: 100%;
 
 	.label {
@@ -39,7 +40,7 @@
 
 	.header {
 		@include flex(row, flex-start);
-		max-width: 100%;
+		min-width: 163px;
 		border-radius: 0.33333rem;
 		position: relative;
 		display: flex;
@@ -49,6 +50,7 @@
 		align-self: stretch;
 		border: 1px solid #828282;
 		background: #f7f7f7;
+
 		&:hover {
 			background-color: #e4e4e4 !important;
 		}
@@ -117,7 +119,7 @@
 
 		.search {
 			@include flex(row, space-between);
-			width: 25rem;
+			width: 100%;
 			max-width: 100%;
 			gap: 0.5rem;
 			outline: none;
@@ -126,6 +128,10 @@
 			cursor: pointer;
 			font-weight: 500;
 			@include ellipsis;
+			box-sizing: border-box;
+			height: 100% !important;
+			min-width: 163px !important;
+
 			[data-elem='base-cell'] {
 				width: 23rem;
 				background: #f7f7f7;
@@ -137,22 +143,72 @@
 					padding: 0%;
 					[data-elem='input'] {
 						padding: 0%;
-						@include debug;
 						background: #f7f7f7;
 					}
 				}
 			}
+
+			.selected {
+				margin: 11px 0 11px 16px;
+				span {
+					color: var(--text-text-primary, #161616);
+					font-family: var(--font-font-family, Poppins);
+					font-size: var(--font-font-size-14, 14px);
+					font-style: normal;
+					font-weight: var(--font-font-weight-Regular, 400);
+					line-height: var(--font-font-height-18, 18px);
+					letter-spacing: var(--font-font-spacing-small, 0.16px);
+				}
+			}
+			.text-field {
+				[data-elem='base-cell'] {
+					border: none !important;
+					box-shadow: none !important;
+					outline: none;
+					width: auto !important;
+				}
+
+				[data-elem='input'] {
+					border: none !important;
+					background: transparent !important;
+					height: auto !important;
+				}
+			}
+
 			&:hover {
 				background-color: #e4e4e4 !important;
+				.text-field {
+					[data-elem='base-cell'] {
+						background-color: #e4e4e4 !important;
+					}
+				}
 			}
 			&.disabled {
 				&:hover {
-					background-color: #f7f7f7 !important;
+					background-color: transparent !important;
+				}
+				.text-field {
+					[data-elem='base-cell'] {
+						background-color: transparent !important;
+					}
 				}
 			}
 			&.read-only {
-				&:hover {
-					background-color: transparent !important;
+				border: none !important;
+				background-color: transparent !important;
+				.text-field {
+					[data-elem='base-cell'] {
+						background-color: transparent !important;
+					}
+				}
+
+				.icon-bundle {
+					.caret-icon {
+						opacity: 0.25;
+					}
+					> div {
+						opacity: 0.25;
+					}
 				}
 			}
 			.placeholder {
@@ -205,7 +261,14 @@
 					&.disabled {
 						fill: #1616164d !important;
 					}
+					margin-right: 16px;
 				}
+
+				> div {
+					height: 16px;
+					width: 16px;
+				}
+
 				.caret-icon-upDown {
 					width: 1.5rem;
 					height: 1.5rem;
