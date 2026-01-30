@@ -160,12 +160,16 @@
 					letter-spacing: var(--font-font-spacing-small, 0.16px);
 				}
 			}
+
 			.text-field {
+				padding-top: 5%;
+
 				[data-elem='base-cell'] {
 					border: none !important;
 					box-shadow: none !important;
 					outline: none;
 					width: auto !important;
+					transition: none !important;
 				}
 
 				[data-elem='input'] {
