@@ -15,6 +15,7 @@ import { Popover } from '../../popover';
 import type { MiddlewareOptions, Placement } from '../../popover/Popover';
 import { Tooltip } from '../../tooltip';
 import styles from './TextField.module.css';
+import { TextField as TextFieldV2 } from '../../v2/input/textField';
 
 type InputType = 'text' | 'email' | 'password' | 'textarea' | (string & {});
 
@@ -75,6 +76,7 @@ export interface TextFieldProps {
 	onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 	/** Whether to enable autocomplete popover */
 	autocompleteOptions?: AutocompleteOptions | undefined;
+	v2?: boolean;
 }
 
 const TextField = forwardRef<HTMLInputElement | HTMLTextAreaElement, TextFieldProps>(
@@ -102,7 +104,13 @@ const TextField = forwardRef<HTMLInputElement | HTMLTextAreaElement, TextFieldPr
 			maxLength,
 			onKeyDown,
 			autocompleteOptions,
+			v2,
 		} = props;
+
+		if (v2) {
+			const { v2, ...rest } = props;
+			return <TextFieldV2 ref={inputRef} {...rest} />;
+		}
 
 		const { current: isControlled } = useRef<boolean>(value !== undefined);
 

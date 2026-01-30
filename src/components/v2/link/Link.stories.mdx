@@ -1,0 +1,253 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+import { ThemedContainer } from '../../helpers';
+import Link from './Link';
+
+<Meta
+	title='Components/Link/v2/Link'
+	parameters={{ options: { showToolbar: false } }}
+	decorators={[
+		(Story) => (
+			<ThemedContainer theme='light'>
+				<Story />
+			</ThemedContainer>
+		),
+	]}
+/>
+
+# Link
+
+The **Link** component is a text-based navigational element that supports
+different sizes, optional icons, disabled state, and standard anchor behavior.
+It is built on top of the `Text` component and styled to match the Banyan design system.
+
+#### Design -
+
+[Figma](https://www.figma.com/file/e9opoAtQHBo4vFd6u0Co98/Component-Library?type=design&node-id=1-5&mode=design&t=tXbQWENNIzmFNTVU-0)
+| Code -
+[Github](https://github.com/banyandata-cloud/roots/tree/main/components/link)
+
+---
+
+## Usage
+
+```js
+import { Link } from '@banyan_cloud/roots';
+```
+
+```jsx
+<Link href='https://banyancloud.io'>Visit Banyan</Link>
+```
+
+---
+
+## Stories
+
+### Default Link
+
+<Canvas>
+	<Story name='Default'>{() => <Link size='lg'>Default Link</Link>}</Story>
+</Canvas>
+
+---
+
+### Sizes
+
+<Canvas>
+	<Story name='Sizes'>
+		{() => (
+			<div
+				style={{
+					display: 'flex',
+					flexWrap: 'wrap',
+					justifyContent: 'space-around',
+				}}>
+				<Link size='sm'>Small Link</Link>
+				<Link size='md'>Medium Link</Link>
+				<Link size='lg'>Large Link</Link>
+			</div>
+		)}
+	</Story>
+</Canvas>
+
+---
+
+### With Icon
+
+<Canvas>
+	<Story name='With Icon'>
+		{() => (
+			<div
+				style={{
+					display: 'flex',
+					flexWrap: 'wrap',
+					justifyContent: 'space-around',
+				}}>
+				{' '}
+				<Link withIcon>Link with Icon</Link>
+				<Link size='lg' withIcon>
+					Large Link with Icon
+				</Link>
+			</div>
+		)}
+	</Story>
+</Canvas>
+
+---
+
+### Disabled
+
+<Canvas>
+	<Story name='Disabled'>
+		{() => (
+			<div
+				style={{
+					display: 'flex',
+					flexWrap: 'wrap',
+					justifyContent: 'space-around',
+				}}>
+				{' '}
+				<Link disabled>Disabled Link</Link>
+				<Link withIcon disabled>
+					Disabled Link with Icon
+				</Link>
+			</div>
+		)}
+	</Story>
+</Canvas>
+
+---
+
+### Visited Variants
+
+<Canvas>
+	<Story name='Visited'>
+		{() => (
+			<div
+				style={{
+					display: 'flex',
+					flexWrap: 'wrap',
+					justifyContent: 'space-around',
+				}}>
+				{' '}
+				<Link href='https://banyancloud.io' target='_self'>
+					Open in Same Tab
+				</Link>
+				<Link href='https://banyancloud.io' target='_blank'>
+					Open in New Tab
+				</Link>
+			</div>
+		)}
+	</Story>
+</Canvas>
+
+---
+
+## API
+
+### `children`
+
+Content rendered inside the link.
+
+---
+
+### `href`
+
+URL the link points to.
+
+| TYPE   | DEFAULT |
+| ------ | ------- |
+| string | —       |
+
+```jsx
+<Link href='/dashboard'>Go to Dashboard</Link>
+```
+
+---
+
+### `target`
+
+Specifies where to open the linked document.
+
+| TYPE                         | DEFAULT |
+| ---------------------------- | ------- |
+| `_self`, `_blank`, `_parent` | `_self` |
+
+```jsx
+<Link href='https://example.com' target='_blank'>
+	Open External Link
+</Link>
+```
+
+---
+
+### `size`
+
+Controls font size and spacing.
+
+| TYPE             | DEFAULT |
+| ---------------- | ------- |
+| `sm`, `md`, `lg` | `md`    |
+
+```jsx
+<Link size='lg'>Large Link</Link>
+```
+
+---
+
+### `withIcon`
+
+Shows arrow icon next to text.
+
+| TYPE    | DEFAULT |
+| ------- | ------- |
+| boolean | false   |
+
+```jsx
+<Link withIcon>Link with Icon</Link>
+```
+
+---
+
+### `disabled`
+
+Disables interaction and navigation.
+
+| TYPE    | DEFAULT |
+| ------- | ------- |
+| boolean | false   |
+
+```jsx
+<Link disabled>Disabled Link</Link>
+```
+
+---
+
+### `className`
+
+Apply custom styles.
+
+| TYPE   | DEFAULT |
+| ------ | ------- |
+| string | `''`    |
+
+```jsx
+<Link className='my-custom-link'>Styled Link</Link>
+```
+
+---
+
+### `attrs`
+
+Additional HTML attributes forwarded to `<a>`.
+
+```jsx
+<Link attrs={{ 'aria-label': 'custom-link' }}>Accessible Link</Link>
+```
+
+---
+
+## Notes
+
+- Disabled links prevent navigation and keyboard focus.
+- Icons automatically scale based on `size`.
+- Fully keyboard accessible with `:focus-visible`.

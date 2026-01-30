@@ -16,4 +16,5 @@ export interface LinkProps {
 	className: string;
 	underline: LinkUnderline;
 	onClick: () => void;
+	v2?: boolean;
 }
