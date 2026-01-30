@@ -12,7 +12,7 @@ $ease-exit-productive: cubic-bezier(0.2, 0, 1, 0.9);
 
 .root {
 	@include flex(column, center, flex-start);
-	gap: 0.5rem;
+	gap: 8px;
 
 	.helperTextWrapper {
 		min-height: 16px;
@@ -38,18 +38,18 @@ $ease-exit-productive: cubic-bezier(0.2, 0, 1, 0.9);
 		width: 100%;
 		max-width: 100%;
 		font-weight: 400;
-		font-size: 0.75rem;
-		letter-spacing: 0.02rem;
-		color: $text-color;
+		font-size: 12px;
+		letter-spacing: 0.32px;
+		color: #484848;
 		letter-spacing: 0.3199999928474426px;
 		@include flex(column, flex-start, flex-start);
-		gap: 0.5rem;
 
 		.labelRow {
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
 			width: 100%;
+			margin-bottom: 8px;
 
 			.required {
 				&::after {
@@ -99,15 +99,16 @@ $ease-exit-productive: cubic-bezier(0.2, 0, 1, 0.9);
 		.input-wrapper {
 			background-color: #f7f7f7;
 			@include flex(row, space-between, center);
-			gap: 0.625rem;
+			gap: 10px;
 			height: 40px;
 			max-width: 100%;
 			width: 100%;
-			border-radius: 0.25rem;
+			border-radius: 4px;
 			box-sizing: border-box;
 			position: relative;
-			padding: 0.625rem 1rem;
+			padding: 10px 16px;
 			border: 1px solid #828282;
+			margin-bottom: 4px;
 
 			&:focus-within {
 				outline: none;
@@ -128,16 +129,18 @@ $ease-exit-productive: cubic-bezier(0.2, 0, 1, 0.9);
 
 			&.readOnly > [data-elem='component2'] .input {
 				background-color: transparent !important;
+
+				resize: none !important;
 			}
 
 			&.sm {
-				height: 2rem;
+				height: 32px;
 			}
 			&.md {
-				height: 2.5rem;
+				height: 40px;
 			}
 			&.lg {
-				height: 3rem;
+				height: 48px;
 			}
 
 			&.type-textarea {
@@ -167,9 +170,9 @@ $ease-exit-productive: cubic-bezier(0.2, 0, 1, 0.9);
 
 					font-weight: 400;
 					color: $text-color;
-					font-size: 0.875rem;
-					line-height: 1.125rem !important;
-					letter-spacing: 0.01rem;
+					font-size: 14px;
+					line-height: 18px !important;
+					letter-spacing: 0.16px;
 					background-color: #f7f7f7;
 
 					&:focus {
@@ -193,19 +196,19 @@ $ease-exit-productive: cubic-bezier(0.2, 0, 1, 0.9);
 					}
 
 					&::placeholder {
-						font-size: 0.875rem;
+						font-size: 14px;
 						font-weight: 400;
-						line-height: 1.125rem;
-						letter-spacing: 0.01rem;
+						line-height: 18px;
+						letter-spacing: 0.16px;
 						color: $mono-color2;
 						opacity: 1;
 					}
 
 					&::-moz-placeholder {
-						font-size: 0.875rem;
+						font-size: 14px;
 						font-weight: 400;
-						line-height: 1.125rem;
-						letter-spacing: 0.01rem;
+						line-height: 18px;
+						letter-spacing: 0.16px;
 						color: $mono-color2;
 						opacity: 1;
 					}
@@ -231,7 +234,7 @@ $ease-exit-productive: cubic-bezier(0.2, 0, 1, 0.9);
 
 			> [data-elem='component3'] {
 				@include flex;
-				gap: 0.75rem;
+				gap: 12px;
 				button[data-elem='base-cell'].button[type='button'] {
 					width: auto;
 					height: fit-content;
@@ -265,10 +268,10 @@ $ease-exit-productive: cubic-bezier(0.2, 0, 1, 0.9);
 			}
 
 			&.border-bottom {
-				border-width: 0rem 0rem 0.063rem 0rem;
+				border-width: 0px 0px 1.008px 0px;
 			}
 			&.border-none {
-				border-width: 0rem;
+				border-width: 0px;
 			}
 
 			// motion spec
