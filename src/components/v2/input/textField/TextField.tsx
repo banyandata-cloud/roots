@@ -173,6 +173,7 @@ const TextField = forwardRef<HTMLInputElement | HTMLTextAreaElement, TextFieldPr
 			disabled,
 			readOnly,
 			placeholder,
+			type,
 			onFocus: () => {
 				onFocus?.();
 				setShowAutocompleteOptions(true);
