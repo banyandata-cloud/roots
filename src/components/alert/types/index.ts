@@ -1,7 +1,9 @@
-import type { ComponentType } from 'react';
+import type { ComponentType, ReactNode } from 'react';
 
 type AlertType = 'info' | 'error' | 'warning' | 'success' | 'danger';
 type AlertPosition = 'bottom-right' | 'bottom-center' | 'top-right' | 'top-center';
+export type AlertVariant = 'inline' | 'card';
+export type AlertTheme = 'light' | 'dark';
 
 export interface AlertProps {
 	showIcon?: boolean;
@@ -9,11 +11,14 @@ export interface AlertProps {
 	position?: AlertPosition;
 	animation?: boolean;
 	className?: string;
+	variant?: AlertVariant;
+	theme?: AlertTheme;
 }
 
 export interface AlertConfig {
 	title: string | null | undefined;
 	description: string | null | undefined;
+	tag?: ReactNode;
 	icon?: ComponentType<{ className?: string }> | undefined;
 	type: AlertType;
 	action?: ComponentType | undefined;
