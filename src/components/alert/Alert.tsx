@@ -42,7 +42,7 @@ const Alert: ForwardRefRenderFunction<AlertHandle, AlertProps> = (
 		position: defaultPosition = 'bottom-center',
 		animation = true,
 		className = '',
-		variant = 'inline',
+		variant = 'card',
 		theme = 'light',
 	},
 	ref
