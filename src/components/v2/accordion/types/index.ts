@@ -49,5 +49,5 @@ export interface AccordionProps {
 	 * If provided, a *See More* button will be shown that triggers this callback when clicked.
 	 */
 	onExpand?: () => void;
-	v2?: boolean;
+	disabled?: boolean;
 }

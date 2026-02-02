@@ -1,0 +1,108 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  width: 100%;
+}
+.root > .header[data-elem=base-cell] {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border: 0;
+  border: 2px solid transparent;
+  border-top: 1px solid #ededed;
+}
+.root > .header[data-elem=base-cell] > [data-elem=component3] svg {
+  transition: all 0.3s ease-in-out;
+}
+.root > .header[data-elem=base-cell] > [data-elem=component1], .root > .header[data-elem=base-cell] > [data-elem=component3] {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.root > .header[data-elem=base-cell] > [data-elem=component1] svg, .root > .header[data-elem=base-cell] > [data-elem=component3] svg {
+  transform: rotate(180deg);
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: var(--text-color);
+}
+.root > .header[data-elem=base-cell] > [data-elem=component3] {
+  margin-left: auto;
+}
+.root > .header[data-elem=base-cell] .title {
+  flex: 1 1 auto;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  color: var(--text-color);
+}
+.root > .header[data-elem=base-cell]:hover {
+  border-left-color: #e86a00;
+  background: #e4e4e4;
+}
+.root > .header[data-elem=base-cell] :focus-visible {
+  border-color: #3b82f6;
+}
+.root:not(.open):not(:has(+ .root)) > .header[data-elem=base-cell] {
+  border-bottom: 1px solid #ededed;
+}
+.root.open > .header[data-elem=base-cell] {
+  border-top: 0;
+}
+.root.open + .root > .header[data-elem=base-cell] {
+  border-top: 0;
+}
+.root > .body {
+  padding: 0.5rem 2.5rem;
+}
+.root.open {
+  border-bottom: 1px solid #ededed;
+  border-top: 1px solid #ededed;
+}
+.root.open > .header[data-elem=base-cell] {
+  border-left-color: #e86a00;
+}
+.root.open > .header[data-elem=base-cell] [data-elem=component3] svg {
+  transform: none;
+}
+.root.open > .body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+.root.open > .body > button[data-elem=base-cell] {
+  width: -moz-fit-content;
+  width: fit-content;
+  align-self: flex-end;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+.root.open > .body > button[data-elem=base-cell] .expand {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+.root.disabled > .header[data-elem=base-cell] {
+  cursor: not-allowed;
+  pointer-events: none;
+  background: transparent;
+  border-top: 1px solid #ededed;
+}
+.root.disabled > .header[data-elem=base-cell] .title {
+  color: #161616;
+  opacity: 25%;
+}
+.root.disabled > .header[data-elem=base-cell] svg {
+  opacity: 0.25;
+}
+.root.disabled > .body {
+  display: none;
+}/*# sourceMappingURL=Accordion.module.css.map */

@@ -1,12 +1,11 @@
 import { motion } from 'framer-motion';
 import { useRef, useState } from 'react';
-import { classes } from '../../utils';
+import { classes } from '../../../utils';
 import { Button } from '../buttons';
-import { BaseCell } from '../cell';
-import { CaretIcon, ExpandArrowAltIcon } from '../icons';
+import { BaseCell } from '../../cell';
+import { CaretIcon, ExpandArrowAltIcon } from '../../icons';
 import styles from './Accordion.module.css';
 import type { AccordionProps } from './types';
-import { Accordion as Accordionv2 } from '../v2/accordion';
 
 /**
  * Accordion – A simple disclosure component with an optional left and right icon.
@@ -16,22 +15,19 @@ import { Accordion as Accordionv2 } from '../v2/accordion';
  * - In uncontrolled mode omit the `open` prop and optionally set `defaultOpen`.
  */
 export function Accordion(props: AccordionProps) {
-	if (props.v2) {
-		return <Accordionv2 {...props} />;
-	}
-
 	const {
 		open,
 		onToggle,
 		defaultOpen,
 		leftComponent: LeftComponent = CaretIcon,
-		rightComponent: RightComponent,
+		// rightComponent: RightComponent,
 		title,
 		description,
 		children,
 		onClick,
 		className = '',
 		onExpand,
+		disabled = false,
 	} = props;
 
 	// Internal state only used when the component is uncontrolled.
@@ -44,7 +40,12 @@ export function Accordion(props: AccordionProps) {
 
 	return (
 		<div
-			className={classes(styles.root, isOpen ? styles.open : '', className)}
+			className={classes(
+				styles.root,
+				isOpen ? styles.open : '',
+				className,
+				disabled ? styles.disabled : ''
+			)}
 			data-state-open={isOpen}>
 			<BaseCell
 				flexible
@@ -63,10 +64,11 @@ export function Accordion(props: AccordionProps) {
 							});
 						}
 					},
+					disabled,
+					'aria-disabled': disabled,
 				}}
-				component1={LeftComponent && <LeftComponent />}
 				component2={<span className={styles.title}>{title}</span>}
-				component3={RightComponent && <RightComponent />}
+				component3={LeftComponent && <LeftComponent />}
 			/>
 
 			{isOpen && (
