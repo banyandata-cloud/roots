@@ -1,12 +1,11 @@
 import { forwardRef, type ReactNode } from 'react';
-import { classes } from '../../../../utils';
-import { InfoIcon } from '../../../icons';
-import { Tooltip } from '../../../tooltip';
-import { Checkbox } from '../../checkbox';
-import { Radio } from '../../radio';
+import { classes } from '../../../../../utils';
+import { CheckedIcon, InfoIcon } from '../../../../icons';
+import { Tooltip } from '../../../../tooltip';
+import { Checkbox } from '../../../checkbox';
+import { Radio } from '../../../radio';
 import styles from './DropdownItem.module.css';
 import type { DropdownItemProps } from './types';
-import { DropdownItemv3 } from './v2';
 
 const DropdownItem = forwardRef<HTMLLIElement, DropdownItemProps>((props, ref) => {
 	const {
@@ -22,20 +21,22 @@ const DropdownItem = forwardRef<HTMLLIElement, DropdownItemProps>((props, ref) =
 		className,
 		tabIndex,
 		disabled,
+		intermediate = false,
 		customComponent,
-		v2 = false,
 	} = props;
-
-	if (v2) {
-		return <DropdownItemv3 {...props} />;
-	}
 
 	let action: ReactNode = null;
 
 	switch (variant) {
 		case 'checkbox':
 			action = (
-				<Checkbox className={styles.input} checked={!!selected} disabled disabledAsChild />
+				<Checkbox
+					v2
+					className={styles.input}
+					checked={!!selected}
+					intermediate={intermediate}
+					disabledAsChild
+				/>
 			);
 			break;
 		case 'radio':
@@ -76,6 +77,11 @@ const DropdownItem = forwardRef<HTMLLIElement, DropdownItemProps>((props, ref) =
 			{customComponent ?? (
 				<span className={styles.title} data-elem='title'>
 					<span>{title}</span>
+					{selected && variant !== 'checkbox' && (
+						<span className={styles.icon}>
+							<CheckedIcon className={styles['info-icon']} />
+						</span>
+					)}
 					{error && (
 						<Tooltip
 							content={error}

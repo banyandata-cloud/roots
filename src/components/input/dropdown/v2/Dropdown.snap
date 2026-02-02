@@ -1,0 +1,107 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Dropdown — Snapshot Tests (UI regression protection) matches snapshot for default dropdown 1`] = `
+<div>
+  <div
+    class="root"
+  >
+    <div
+      class="label"
+      data-elem="label"
+    >
+      <span>
+        City
+      </span>
+    </div>
+    <div
+      aria-expanded="false"
+      aria-haspopup="listbox"
+      class="header  "
+      data-elem="header"
+      role="combobox"
+    >
+      <input
+        class="input"
+        readonly=""
+        tabindex="0"
+        value=""
+      />
+      <div
+        class="select"
+        data-elem="select"
+        role="button"
+      >
+        <div
+          class="placeholder"
+          data-elem="placeholder"
+        >
+          Choose an option
+        </div>
+        <div
+          class="icon-bundle"
+        >
+          <svg
+            class="caret-icon"
+            fill="#141920"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M16.9999 13.4099L12.7099 9.16994C12.617 9.07622 12.5064 9.00182 12.3845 8.95105C12.2627 8.90028 12.132 8.87415 11.9999 8.87415C11.8679 8.87415 11.7372 8.90028 11.6154 8.95105C11.4935 9.00182 11.3829 9.07622 11.2899 9.16994L7.04995 13.4099C6.95622 13.5029 6.88183 13.6135 6.83106 13.7354C6.78029 13.8572 6.75415 13.9879 6.75415 14.1199C6.75415 14.252 6.78029 14.3827 6.83106 14.5045C6.88183 14.6264 6.95622 14.737 7.04995 14.8299C7.23731 15.0162 7.49076 15.1207 7.75495 15.1207C8.01913 15.1207 8.27259 15.0162 8.45995 14.8299L11.9999 11.2899L15.5399 14.8299C15.7262 15.0147 15.9776 15.1188 16.2399 15.1199C16.3716 15.1207 16.502 15.0955 16.6239 15.0457C16.7457 14.996 16.8565 14.9226 16.9499 14.8299C17.047 14.7403 17.1254 14.6324 17.1805 14.5123C17.2356 14.3922 17.2664 14.2624 17.271 14.1304C17.2757 13.9983 17.2541 13.8667 17.2076 13.743C17.161 13.6194 17.0905 13.5062 16.9999 13.4099Z"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Dropdown — Snapshot Tests (UI regression protection) matches snapshot for multi-select dropdown 1`] = `
+<div>
+  <div
+    class="root"
+  >
+    <div
+      aria-expanded="false"
+      aria-haspopup="listbox"
+      class="header  "
+      data-elem="header"
+      role="combobox"
+    >
+      <input
+        class="input"
+        readonly=""
+        tabindex="0"
+        value=""
+      />
+      <div
+        class="select"
+        data-elem="select"
+        role="button"
+      >
+        <div
+          class="placeholder"
+          data-elem="placeholder"
+        >
+          Choose an option
+        </div>
+        <div
+          class="icon-bundle"
+        >
+          <svg
+            class="caret-icon"
+            fill="#141920"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M16.9999 13.4099L12.7099 9.16994C12.617 9.07622 12.5064 9.00182 12.3845 8.95105C12.2627 8.90028 12.132 8.87415 11.9999 8.87415C11.8679 8.87415 11.7372 8.90028 11.6154 8.95105C11.4935 9.00182 11.3829 9.07622 11.2899 9.16994L7.04995 13.4099C6.95622 13.5029 6.88183 13.6135 6.83106 13.7354C6.78029 13.8572 6.75415 13.9879 6.75415 14.1199C6.75415 14.252 6.78029 14.3827 6.83106 14.5045C6.88183 14.6264 6.95622 14.737 7.04995 14.8299C7.23731 15.0162 7.49076 15.1207 7.75495 15.1207C8.01913 15.1207 8.27259 15.0162 8.45995 14.8299L11.9999 11.2899L15.5399 14.8299C15.7262 15.0147 15.9776 15.1188 16.2399 15.1199C16.3716 15.1207 16.502 15.0955 16.6239 15.0457C16.7457 14.996 16.8565 14.9226 16.9499 14.8299C17.047 14.7403 17.1254 14.6324 17.1805 14.5123C17.2356 14.3922 17.2664 14.2624 17.271 14.1304C17.2757 13.9983 17.2541 13.8667 17.2076 13.743C17.161 13.6194 17.0905 13.5062 16.9999 13.4099Z"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
