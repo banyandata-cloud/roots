@@ -173,6 +173,7 @@ const TextField = forwardRef<HTMLInputElement | HTMLTextAreaElement, TextFieldPr
 			disabled,
 			readOnly,
 			placeholder,
+			type,
 			onFocus: () => {
 				onFocus?.();
 				setShowAutocompleteOptions(true);
@@ -238,7 +239,7 @@ const TextField = forwardRef<HTMLInputElement | HTMLTextAreaElement, TextFieldPr
 							</span>
 						)}
 
-						{type === 'password' && !disabled && linkAction && (
+						{!disabled && linkAction && (
 							<a href='#' onClick={handleLinkClick} className={styles.forgotPassword}>
 								{linkText}
 							</a>
