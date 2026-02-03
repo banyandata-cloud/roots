@@ -218,7 +218,7 @@ $ease-exit-productive: cubic-bezier(0.2, 0, 1, 0.9);
 					&:-webkit-autofill:hover,
 					&:-webkit-autofill:focus,
 					&:-webkit-autofill:active {
-						-webkit-box-shadow: 0 0 0 30px $light-color3 inset !important;
+						-webkit-box-shadow: 0 0 0 30px #f7f7f7 inset !important;
 						-webkit-text-fill-color: initial !important;
 					}
 
@@ -227,7 +227,7 @@ $ease-exit-productive: cubic-bezier(0.2, 0, 1, 0.9);
 					&:autofill:hover,
 					&:autofill:focus,
 					&:autofill:active {
-						box-shadow: 0 0 0 30px $light-color3 inset !important;
+						box-shadow: 0 0 0 30px #f7f7f7 inset !important;
 						-moz-text-fill-color: initial !important;
 					}
 				}

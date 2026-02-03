@@ -205,11 +205,11 @@
   opacity: 1;
 }
 .root label .input-wrapper > [data-elem=component2] .input:-webkit-autofill, .root label .input-wrapper > [data-elem=component2] .input:-webkit-autofill:hover, .root label .input-wrapper > [data-elem=component2] .input:-webkit-autofill:focus, .root label .input-wrapper > [data-elem=component2] .input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px var(--light-color3) inset !important;
+  -webkit-box-shadow: 0 0 0 30px #f7f7f7 inset !important;
   -webkit-text-fill-color: initial !important;
 }
 .root label .input-wrapper > [data-elem=component2] .input:autofill, .root label .input-wrapper > [data-elem=component2] .input:autofill:hover, .root label .input-wrapper > [data-elem=component2] .input:autofill:focus, .root label .input-wrapper > [data-elem=component2] .input:autofill:active {
-  box-shadow: 0 0 0 30px var(--light-color3) inset !important;
+  box-shadow: 0 0 0 30px #f7f7f7 inset !important;
   -moz-text-fill-color: initial !important;
 }
 .root label .input-wrapper > [data-elem=component3] {
