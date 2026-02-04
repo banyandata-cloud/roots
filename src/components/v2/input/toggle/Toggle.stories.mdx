@@ -1,0 +1,236 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+
+import { ThemedContainer } from '../../../helpers';
+import Toggle from './Toggle';
+import { size } from '@floating-ui/react-dom';
+
+<Meta title='Components/Input/V2/Toggle' parameters={{ options: { showToolbar: true } }} />
+
+export const Template = (args) => (
+	<ThemedContainer theme='light'>
+		<Toggle {...args} />
+	</ThemedContainer>
+);
+
+# Toggle
+
+The Toggle component provides a customizable toggle Toggle input. It supports controlled and uncontrolled usage and offers various customization options.
+
+#### Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/components/input/Toggle)
+
+> The Toggle component provides a sleek and accessible way to implement toggle switches in your application. It supports both controlled and uncontrolled usage and offers options for positioning the Toggle input.
+
+## Usage
+
+Basic import and additional information on how to use this component.
+
+```js
+import { Toggle } from '@banyan_cloud/roots';
+```
+
+- The onChange function is called when the Toggle input state changes. It provides the new checked value as a parameter.
+- The position prop determines the position of the Toggle input relative to the label.
+
+## Stories
+
+The CSF rendered inside the `Canvas` from which you can see the implementation example.
+
+### Default
+
+The default Toggle input with size S.
+
+<Canvas>
+	<Story
+		name='Default(S)'
+		args={{
+			label: 'Toggle',
+			position: 'left',
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### L Size
+
+Toggle with size L.
+
+<Canvas>
+	<Story
+		name='Default (size s)'
+		args={{
+			label: 'Toggle',
+			defaultChecked: false,
+			size: 'l',
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Default Checked
+
+Default Checked Toggle.
+
+<Canvas>
+	<Story
+		name='defaultChecked'
+		args={{
+			label: 'Toggle',
+			position: 'left',
+			size: 'l',
+			defaultChecked: true,
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Disabled
+
+Toggle with Disabled true.
+
+<Canvas>
+	<Story
+		name='Disabled'
+		args={{
+			label: 'Disabled',
+			disabled: true,
+			size: 'l',
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Read Only
+
+Toggle with Readonly true.
+
+<Canvas>
+	<Story
+		name='Readonly'
+		args={{
+			label: 'Readonly',
+			readonly: true,
+			size: 'l',
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+## API
+
+**`disabled`**
+
+Disables the Toggle input.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<Toggle disabled={true} />
+```
+
+**`label`**
+
+Text label associated with the Toggle input.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>null</td>
+	</tr>
+</table>
+
+```jsx
+<Toggle label='Toggle label' />
+```
+
+**`checked`**
+
+Specifies whether the Toggle is checked (controlled mode).
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>undefined</td>
+	</tr>
+</table>
+
+```jsx
+<Toggle checked={true} />
+```
+
+**`defaultChecked`**
+
+Specifies the initial checked state (uncontrolled mode).
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<Toggle defaultChecked={true} />
+```
+
+**`position`**
+
+Position of the Toggle input relative to the label.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>'left', 'right'</td>
+		<td>'left'</td>
+	</tr>
+</table>
+
+```jsx
+<Toggle position='right' />
+```
+
+**`onChange`**
+
+Function to execute when the Toggle input state changes.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Function</td>
+		<td>{`() => {}`}</td>
+	</tr>
+</table>
+
+```jsx
+<Toggle
+	onChange={() => {
+		console.log('On change');
+	}}
+/>
+```

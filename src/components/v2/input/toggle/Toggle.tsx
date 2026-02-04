@@ -1,36 +1,32 @@
 import React, { useRef, useState } from 'react';
-import { classes, inputHelper } from '../../../utils';
-import styles from './Switch.module.css';
-import { Toggle } from '../../v2/input';
+import { classes, inputHelper } from '../../../../utils';
+import styles from './Toggle.module.css';
+import { TickIcon } from '../../icons';
 
-type Position = 'left' | 'right';
+type Size = 'l' | 's';
 
-export interface SwitchProps {
+export interface ToggleProps {
 	label?: React.ReactNode;
 	checked?: boolean;
 	defaultChecked?: boolean;
 	onChange?: (event: React.ChangeEvent<HTMLInputElement>, value: boolean) => void;
-	position?: Position;
-	className?: string | undefined;
+	className?: string;
 	disabled?: boolean;
-	v2?: boolean;
+	size?: Size;
+	readonly?: boolean;
 }
 
-const Switch: React.FC<SwitchProps> = (props) => {
+const Toggle: React.FC<ToggleProps> = (props) => {
 	const {
 		label,
 		checked,
 		defaultChecked,
 		onChange,
-		position = 'right',
 		className,
 		disabled,
-		v2,
+		size = 's',
+		readonly,
 	} = props;
-
-	if (v2) {
-		return <Toggle {...props} />;
-	}
 
 	// Freeze controlled vs uncontrolled mode on first render
 	const { current: isControlled } = useRef<boolean>(checked !== undefined);
@@ -41,6 +37,11 @@ const Switch: React.FC<SwitchProps> = (props) => {
 	);
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		if (readonly || disabled) {
+			event.preventDefault();
+			return;
+		}
+
 		// Safely extract fieldValue; fall back to event.target.checked
 		const helperResult = (
 			inputHelper as unknown as
@@ -62,20 +63,27 @@ const Switch: React.FC<SwitchProps> = (props) => {
 		<label
 			className={classes(
 				styles.root,
-				styles[`position-${position}`],
+				styles[`size-${size}`],
+				readonly ? styles.readonly : '',
 				disabled ? styles.disabled : '',
 				className
 			)}>
+			{label && <span data-elem='label'>{label}</span>}
 			<input
-				disabled={disabled}
+				disabled={disabled || readonly}
 				type='checkbox'
 				checked={isChecked}
 				onChange={handleChange}
 			/>
-			<div className={classes(styles.pill)} />
-			{label && <span data-elem='label'>{label}</span>}
+			<div className={styles.pill}>
+				{size === 's' && (
+					<span className={classes(styles.tick, !isChecked && styles['hide-tick'])}>
+						<TickIcon />
+					</span>
+				)}
+			</div>
 		</label>
 	);
 };
 
-export default Switch;
+export default Toggle;

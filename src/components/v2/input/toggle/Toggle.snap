@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Toggle — Snapshots matches default snapshot 1`] = `
+<div>
+  <label
+    class="root size-s"
+  >
+    <span
+      data-elem="label"
+    >
+      Snapshot toggle
+    </span>
+    <input
+      type="checkbox"
+    />
+    <div
+      class="pill"
+    >
+      <span
+        class="tick hide-tick"
+      >
+        <svg
+          fill="none"
+          height="3"
+          viewBox="0 0 4 3"
+          width="4"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            class=""
+            d="M0.176777 1.21846L1.42678 2.46846L3.71844 0.176788"
+            stroke="#24A148"
+            stroke-width="0.5"
+          />
+        </svg>
+      </span>
+    </div>
+  </label>
+</div>
+`;
+
+exports[`Toggle — Snapshots matches snapshot with complex props 1`] = `
+<div>
+  <label
+    class="root size-l custom-class"
+  >
+    <span
+      data-elem="label"
+    >
+      Complex toggle
+    </span>
+    <input
+      checked=""
+      type="checkbox"
+    />
+    <div
+      class="pill"
+    />
+  </label>
+</div>
+`;
