@@ -253,6 +253,7 @@ const TextField = forwardRef<HTMLInputElement | HTMLTextAreaElement, TextFieldPr
 							styles[`border-${border}`],
 							styles[`type-${type}`],
 							readOnly && styles.readOnly,
+							disabled && styles.leftIconDisabled,
 							feedback?.error ? styles['feedback-error'] : ''
 						)}
 						{...(LeftComponent && {

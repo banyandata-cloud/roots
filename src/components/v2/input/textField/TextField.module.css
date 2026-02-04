@@ -136,8 +136,8 @@
   justify-content: center;
   align-items: center;
 }
-.root label .input-wrapper .leftIconDisabled path {
-  stroke: #161616;
+.root label .input-wrapper.leftIconDisabled > [data-elem=component1] > svg {
+  fill: #161616;
   opacity: 0.25;
 }
 .root label .input-wrapper > [data-elem=component2] {

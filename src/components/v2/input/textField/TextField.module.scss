@@ -156,9 +156,13 @@ $ease-exit-productive: cubic-bezier(0.2, 0, 1, 0.9);
 				@include flex;
 			}
 
-			.leftIconDisabled path {
-				stroke: #161616;
-				opacity: 0.25;
+			&.leftIconDisabled {
+				> [data-elem='component1'] {
+					> svg {
+						fill: #161616;
+						opacity: 0.25;
+					}
+				}
 			}
 
 			> [data-elem='component2'] {
