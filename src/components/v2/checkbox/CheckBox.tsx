@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
-import { classes, inputHelper } from '../../../../utils/utils';
-import { CheckboxIcon } from '../../../icons';
-import type { CheckboxProps, IconType } from '../types';
+import { classes, inputHelper } from '../../../utils/utils';
+import { CheckboxIcon } from '../../icons';
+import type { CheckboxProps, IconType } from '../../input/checkbox/types';
 import styles from './CheckBox.module.css';
 
 const getIcon = (checked?: boolean, intermediate?: boolean): IconType => {
