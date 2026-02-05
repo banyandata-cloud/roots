@@ -4,7 +4,6 @@ import { CheckboxIcon } from '../../icons';
 import { CheckboxV2 } from '../../v2/checkbox';
 import styles from './CheckBox.module.css';
 import type { CheckboxProps, IconType } from './types';
-import { CheckboxV2 } from './v2';
 
 const getIcon = (checked?: boolean, intermediate?: boolean): IconType => {
 	if (checked) {
