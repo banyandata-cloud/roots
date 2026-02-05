@@ -26,6 +26,7 @@ exports[`TextField — Snapshots matches default snapshot 1`] = `
             class="input"
             data-elem="input"
             placeholder="snapshot"
+            type="text"
             value=""
           />
         </span>
@@ -80,6 +81,7 @@ exports[`TextField — Snapshots matches snapshot with complex props 1`] = `
             maxlength="50"
             placeholder=""
             readonly=""
+            type="textarea"
           />
         </span>
         <span
