@@ -1,0 +1,138 @@
+.root {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-03, 8px);
+  cursor: pointer;
+  position: relative;
+}
+.root input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+.root [data-elem=label] {
+  color: var(--text-text-secondary, #484848);
+  font-family: var(--font-font-family, Poppins);
+  font-size: var(--font-font-size-12, 12px);
+  font-weight: var(--font-font-weight-Regular, 400);
+  line-height: var(--font-font-height-16, 16px);
+  letter-spacing: var(--font-font-spacing-large, 0.32px);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.root.size-l {
+  width: 48px;
+}
+.root.size-l .pill {
+  width: 48px;
+  height: 24px;
+  border-radius: 20px;
+  background: var(--Miscellaneous-toggle-off, #bfbfbf);
+  position: relative;
+  transition: background 0.2s ease;
+}
+.root.size-l .pill::before {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 18px;
+  background: var(--icon-icon-on-color, #fff);
+  top: 3px;
+  left: 3px;
+  transition: transform 0.2s ease;
+}
+.root.size-l input:checked + .pill {
+  background: var(--support-support-success, #24a148);
+}
+.root.size-l input:checked + .pill::before {
+  transform: translateX(24px);
+}
+.root.size-s {
+  width: 34px;
+}
+.root.size-s .pill {
+  width: 32px;
+  height: 16px;
+  border-radius: 20px;
+  background: var(--Miscellaneous-toggle-off, #bfbfbf);
+  position: relative;
+  transition: background 0.2s ease;
+}
+.root.size-s .pill::before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+  background: var(--icon-icon-on-color, #fff);
+  top: 3px;
+  left: 3px;
+  transition: transform 0.2s ease;
+  z-index: 1;
+}
+.root.size-s .pill .tick {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  top: 3px;
+  left: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  pointer-events: none;
+  transition: transform 0.2s ease;
+}
+.root.size-s .pill .tick.hide-tick {
+  visibility: hidden !important;
+}
+.root.size-s input:checked + .pill {
+  background: var(--support-support-success, #24a148);
+}
+.root.size-s input:checked + .pill::before {
+  transform: translateX(16px);
+}
+.root.size-s input:checked + .pill .tick {
+  transform: translateX(16px);
+}
+.root.readonly {
+  cursor: not-allowed;
+}
+.root.readonly .pill {
+  background: transparent;
+  border: 1px solid var(--border-border-subtle, #ededed);
+}
+.root.readonly .pill::before {
+  top: 2px;
+  left: 2px;
+  background: var(--icon-icon-primary, #161616);
+}
+.root.disabled {
+  cursor: not-allowed;
+}
+.root.disabled [data-elem=label] {
+  color: var(--text-text-disabled, #161616);
+  font-family: var(--font-font-family, Poppins);
+  font-size: var(--font-font-size-12, 12px);
+  font-style: normal;
+  font-weight: var(--font-font-weight-Regular, 400);
+  line-height: var(--font-font-height-16, 16px);
+  letter-spacing: var(--font-font-spacing-large, 0.32px);
+  opacity: 0.25;
+}
+.root.disabled [data-elem=label] {
+  color: var(--text-text-disabled, #161616);
+}
+.root.disabled .pill {
+  background: var(--button-button-disabled, #dcdcdc);
+}
+.root.disabled .pill::before {
+  background: var(--icon-icon-on-color-disable, #828282);
+}
+.root input:focus-visible + .pill {
+  box-shadow: 0 0 0 0.5px #fff, 0 0 0 2px var(--focus-focus-primary, #3b82f6);
+}/*# sourceMappingURL=Toggle.module.css.map */

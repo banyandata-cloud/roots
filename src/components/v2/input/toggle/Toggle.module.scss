@@ -1,0 +1,173 @@
+@import '../../../../styles';
+
+.root {
+	display: inline-flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: var(--spacing-03, 8px);
+	cursor: pointer;
+	position: relative;
+
+	input {
+		position: absolute;
+		opacity: 0;
+		width: 1px;
+		height: 1px;
+	}
+
+	[data-elem='label'] {
+		color: var(--text-text-secondary, #484848);
+		font-family: var(--font-font-family, Poppins);
+		font-size: var(--font-font-size-12, 12px);
+		font-weight: var(--font-font-weight-Regular, 400);
+		line-height: var(--font-font-height-16, 16px);
+		letter-spacing: var(--font-font-spacing-large, 0.32px);
+		user-select: none;
+	}
+
+	// SIZE — LARGE
+
+	&.size-l {
+		width: 48px;
+
+		.pill {
+			width: 48px;
+			height: 24px;
+			border-radius: 20px;
+			background: var(--Miscellaneous-toggle-off, #bfbfbf);
+			position: relative;
+			transition: background 0.2s ease;
+
+			&::before {
+				content: '';
+				position: absolute;
+				width: 18px;
+				height: 18px;
+				border-radius: 18px;
+				background: var(--icon-icon-on-color, #fff);
+				top: 3px;
+				left: 3px;
+				transition: transform 0.2s ease;
+			}
+		}
+
+		input:checked + .pill {
+			background: var(--support-support-success, #24a148);
+
+			&::before {
+				transform: translateX(24px);
+			}
+		}
+	}
+
+	// SIZE — SMALL
+
+	&.size-s {
+		width: 34px;
+
+		.pill {
+			width: 32px;
+			height: 16px;
+			border-radius: 20px;
+			background: var(--Miscellaneous-toggle-off, #bfbfbf);
+			position: relative;
+			transition: background 0.2s ease;
+
+			&::before {
+				content: '';
+				position: absolute;
+				width: 10px;
+				height: 10px;
+				border-radius: 10px;
+				background: var(--icon-icon-on-color, #fff);
+				top: 3px;
+				left: 3px;
+				transition: transform 0.2s ease;
+				z-index: 1;
+			}
+
+			.tick {
+				position: absolute;
+				width: 10px;
+				height: 10px;
+				top: 3px;
+				left: 3px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				z-index: 2;
+				pointer-events: none;
+				transition: transform 0.2s ease;
+				&.hide-tick {
+					visibility: hidden !important;
+				}
+			}
+		}
+
+		input:checked + .pill {
+			background: var(--support-support-success, #24a148);
+
+			&::before {
+				transform: translateX(16px);
+			}
+
+			.tick {
+				transform: translateX(16px);
+			}
+		}
+	}
+
+	// READONLY
+
+	&.readonly {
+		cursor: not-allowed;
+
+		.pill {
+			background: transparent;
+			border: 1px solid var(--border-border-subtle, #ededed);
+
+			&::before {
+				top: 2px;
+				left: 2px;
+				background: var(--icon-icon-primary, #161616);
+			}
+		}
+	}
+
+	// DISABLED
+
+	&.disabled {
+		cursor: not-allowed;
+
+		[data-elem='label'] {
+			color: var(--text-text-disabled, #161616);
+			font-family: var(--font-font-family, Poppins);
+			font-size: var(--font-font-size-12, 12px);
+			font-style: normal;
+			font-weight: var(--font-font-weight-Regular, 400);
+			line-height: var(--font-font-height-16, 16px);
+			letter-spacing: var(--font-font-spacing-large, 0.32px);
+			opacity: 0.25;
+		}
+
+		[data-elem='label'] {
+			color: var(--text-text-disabled, #161616);
+		}
+
+		.pill {
+			background: var(--button-button-disabled, #dcdcdc);
+
+			&::before {
+				background: var(--icon-icon-on-color-disable, #828282);
+			}
+		}
+	}
+
+	// FOCUS
+
+	input:focus-visible + .pill {
+		box-shadow:
+			0 0 0 0.5px #fff,
+			0 0 0 2px var(--focus-focus-primary, #3b82f6);
+	}
+}
