@@ -44,6 +44,8 @@ exports[`BaseModal — Snapshot matches snapshot structure 1`] = `
           <button
             class="root sm border-radius-default root contained root radius-default contained primary dismiss"
             data-elem="base-cell"
+            data-testid="Cancel-test"
+            title="Cancel"
             type="submit"
           >
             <span
@@ -59,6 +61,8 @@ exports[`BaseModal — Snapshot matches snapshot structure 1`] = `
           <button
             class="root sm border-radius-default root contained root radius-default contained primary action"
             data-elem="base-cell"
+            data-testid="Save-test"
+            title="Save"
             type="submit"
           >
             <span
