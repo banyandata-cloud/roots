@@ -79,6 +79,8 @@ export type BaseCellProps<
 	 * Border radius style for the cell. Can be 'none', 'default', 'round', or 'ellipse'.
 	 */
 	radius?: RadiusTypes;
+	dataTestId?: string | undefined;
+	title?: ReactElement | string | undefined;
 } & (TComponent2 extends true
 	? { component2: ReactElement | string }
 	: { component2?: ReactElement | undefined });

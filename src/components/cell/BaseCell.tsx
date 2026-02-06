@@ -29,6 +29,8 @@ export const BaseCell = forwardRef<HTMLElement, BaseCellProps<BaseCellComponentT
 			RootDOM = 'div',
 			attrs = {},
 			radius = 'none',
+			dataTestId,
+			title,
 		} = props;
 
 		let mainComponent: ReactElement | undefined | string | null = null;
@@ -44,7 +46,11 @@ export const BaseCell = forwardRef<HTMLElement, BaseCellProps<BaseCellComponentT
 			RootDOM,
 			{
 				'data-elem': 'base-cell',
+				'data-testid': dataTestId ?? (typeof title === 'string' ? `${title}-test` : null),
 				ref,
+				...(typeof title === 'string' && {
+					title,
+				}),
 				className: classes(
 					styles.root,
 					styles[size],

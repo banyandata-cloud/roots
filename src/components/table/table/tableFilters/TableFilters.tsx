@@ -1,5 +1,6 @@
 import type { TableProps } from 'components/table/types';
 import {
+	useEffect,
 	useState,
 	type Dispatch,
 	type KeyboardEvent,
@@ -25,6 +26,7 @@ interface TableFiltersProps extends Pick<TableProps, 'headerData' | 'className'>
 	searchPlaceholder?: string | undefined;
 	toggleDrawer?: ((props: Record<string, unknown>) => void) | undefined;
 	rightActions?: ((props: Record<string, unknown>) => ReactElement) | undefined;
+	clearSearch?: boolean | undefined;
 	onClear?: (() => void) | undefined;
 	onSearch?: ((search: string) => void) | undefined;
 	disabledFilterOptions?:
@@ -49,12 +51,18 @@ const TableFilters = (props: TableFiltersProps) => {
 		toggleDrawer,
 		filtersCount = 0,
 		rightActions,
+		clearSearch,
 	} = props;
 
 	const { search: disabledSearch = true } = disabledFilterOptions ?? {};
 
 	const [search, setSearch] = useState<string>('');
 
+	useEffect(() => {
+		if (clearSearch) {
+			setSearch('');
+		}
+	}, [clearSearch]);
 	const columnFilters = headerData.filter((datum) => {
 		return datum.columnFilter;
 	});
