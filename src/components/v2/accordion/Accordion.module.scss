@@ -1,0 +1,138 @@
+@import '../../../styles/index';
+
+.root {
+	@include flex(column, flex-start, stretch);
+	width: 100%;
+
+	// border-top: 2px solid red;
+
+	& > .header[data-elem='base-cell'] {
+		@include flex(row, flex-start);
+		gap: 0.5rem;
+		padding: 0.5rem 1rem;
+		cursor: pointer;
+		// border: none;
+		border: 0;
+		border: 2px solid transparent;
+
+		border-top: 1px solid #ededed;
+
+		& > [data-elem='component3'] {
+			svg {
+				transition: all 0.3s ease-in-out;
+			}
+		}
+
+		& > [data-elem='component1'],
+		& > [data-elem='component3'] {
+			@include flex;
+			svg {
+				transform: rotate(180deg);
+				width: 1.5rem;
+				height: 1.5rem;
+				fill: $text-color;
+			}
+		}
+
+		& > [data-elem='component3'] {
+			margin-left: auto;
+		}
+
+		.title {
+			flex: 1 1 auto;
+			user-select: none;
+			color: $text-color;
+		}
+
+		&:hover {
+			// .title {
+			// color: $secondary-color1;
+			// }
+			// svg {
+			// fill: $secondary-color1;
+			// }
+			border-left-color: #e86a00;
+
+			background: #e4e4e4;
+		}
+
+		:focus-visible {
+			border-color: #3b82f6;
+		}
+	}
+
+	&:not(.open):not(:has(+ .root)) {
+		> .header[data-elem='base-cell'] {
+			border-bottom: 1px solid #ededed;
+		}
+	}
+	&.open {
+		> .header[data-elem='base-cell'] {
+			border-top: 0;
+		}
+	}
+
+	&.open + .root {
+		> .header[data-elem='base-cell'] {
+			border-top: 0;
+		}
+	}
+
+	& > .body {
+		padding: 0.5rem 2.5rem;
+	}
+
+	&.open {
+		& > .header[data-elem='base-cell'] {
+			border-left-color: #e86a00;
+
+			[data-elem='component3'] {
+				svg {
+					transform: none;
+				}
+			}
+		}
+
+		border-bottom: 1px solid #ededed;
+		border-top: 1px solid #ededed;
+
+		& > .body {
+			@include flex(column, flex-start, stretch);
+			> button[data-elem='base-cell'] {
+				width: fit-content;
+				align-self: flex-end;
+				@include flex(row, flex-end);
+				.expand {
+					height: 1.5rem;
+					width: 1.5rem;
+				}
+			}
+		}
+	}
+
+	&.disabled {
+		> .header[data-elem='base-cell'] {
+			cursor: not-allowed;
+			pointer-events: none;
+			background: transparent;
+			border-top: 1px solid #ededed;
+
+			// &::before {
+			// background-color: transparent;
+			// }
+
+			.title {
+				color: #161616;
+				opacity: 25%;
+			}
+
+			svg {
+				opacity: 0.25;
+			}
+		}
+
+		> .body {
+			display: none;
+		}
+	}
+}

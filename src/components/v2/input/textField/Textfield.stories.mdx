@@ -187,6 +187,13 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 					}}>
 					<TextField label='Disabled Text' placeholder='Disabled' disabled />
 				</div>
+				<TextField
+					label='Disabled Text'
+					placeholder='Disabled'
+					disabled
+					LeftComponent={() => <CopyIcon height='16' width='16' />}
+					RightComponent={() => <ArrowIcon height='12' width='12' />}
+				/>
 			</ThemedContainer>
 		)}
 	</Story>
@@ -232,12 +239,12 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 			<ThemedContainer theme='light'>
 				{/* Password with error + forgot password */}
 				<TextField
-					type='password'
+					type='text'
 					label='Password Error'
 					placeholder='Enter password'
 					// feedback={{ error: 'Invalid password' }}
 					helperText='Helper text'
-					forgotPasswordLink={() => alert('Forgot Password Clicked')}
+					linkAction={() => alert('Forgot Password Clicked')}
 				/>
 			</ThemedContainer>
 		)}

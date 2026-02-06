@@ -122,7 +122,7 @@ export interface TableProps {
 
 	dataLabel?: string;
 	jumpLabel?: string;
-
+	clearSearch?: boolean | undefined;
 	tableDrawerProps?:
 		| TableDrawerProps
 		| ((data: Partial<TableDrawerData>) => TableDrawerProps)

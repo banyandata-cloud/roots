@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { classes, inputHelper } from '../../../utils/utils';
 import { CheckboxIcon } from '../../icons';
+import { CheckboxV2 } from '../../v2/checkbox';
 import styles from './CheckBox.module.css';
 import type { CheckboxProps, IconType } from './types';
 
@@ -24,6 +25,7 @@ const Checkbox: React.FC<CheckboxProps> = (props) => {
 		disabled,
 		disabledAsChild,
 		intermediate,
+		v2 = false,
 	} = props;
 
 	// Track controlled/uncontrolled mode once on first render
@@ -33,6 +35,10 @@ const Checkbox: React.FC<CheckboxProps> = (props) => {
 	const [uncontrolledChecked, setUncontrolledChecked] = useState<boolean | undefined>(
 		defaultChecked
 	);
+
+	if (v2) {
+		return <CheckboxV2 {...props} />;
+	}
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		// Prefer your helper if present; fall back to standard target.checked for type safety

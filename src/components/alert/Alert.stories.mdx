@@ -67,6 +67,46 @@ The default Alert component showing info.
 	</Story>
 </Canvas>
 
+### Info Card
+
+The default Alert component showing info Card.
+
+<Canvas>
+	<Story name='Info Card'>
+		{() => {
+			const alertRef = useRef();
+			const [funs, setFuns] = useState({});
+			useEffect(() => {
+				setFuns({
+					...funs,
+					alert: alertRef.current.alert,
+				});
+			}, []);
+			const toggle = () => {
+				funs.alert({
+					title: 'Information',
+					description: 'Basic Info is Here',
+					tag: '02:39:05 AM',
+					type: 'info',
+				});
+			};
+			return (
+				<ThemedContainer theme='light'>
+					<button
+						type='button'
+						onClick={toggle}
+						style={{
+							padding: 10,
+						}}>
+						Alert
+					</button>
+					<Alert ref={alertRef} variant='card' theme='light' />
+				</ThemedContainer>
+			);
+		}}
+	</Story>
+</Canvas>
+
 ### Error
 
 The Alert component for showing warning.

@@ -6,6 +6,7 @@ import { Checkbox } from '../../checkbox';
 import { Radio } from '../../radio';
 import styles from './DropdownItem.module.css';
 import type { DropdownItemProps } from './types';
+import { DropdownItemv3 } from './v2';
 
 const DropdownItem = forwardRef<HTMLLIElement, DropdownItemProps>((props, ref) => {
 	const {
@@ -22,7 +23,12 @@ const DropdownItem = forwardRef<HTMLLIElement, DropdownItemProps>((props, ref) =
 		tabIndex,
 		disabled,
 		customComponent,
+		v2 = false,
 	} = props;
+
+	if (v2) {
+		return <DropdownItemv3 {...props} />;
+	}
 
 	let action: ReactNode = null;
 

@@ -12,4 +12,5 @@ export interface BaseButtonProps extends BaseCellProps<'button', false> {
 	onClick?: ((event: MouseEvent<HTMLElement>) => void | Promise<void>) | undefined;
 	blurOnClick?: boolean;
 	variant?: ButtonVariant;
+	dataTestId?: string | undefined;
 }

@@ -19,6 +19,7 @@ const BaseButton = forwardRef<HTMLButtonElement, BaseButtonProps>((props, ref) =
 		onClick,
 		blurOnClick = true,
 		variant = 'contained',
+		dataTestId,
 	} = props;
 
 	const Title = <span data-elem='title'>{title}</span>;
@@ -47,6 +48,8 @@ const BaseButton = forwardRef<HTMLButtonElement, BaseButtonProps>((props, ref) =
 					void onClick?.(event);
 				},
 			}}
+			title={title}
+			dataTestId={dataTestId}
 			RootDOM='button'
 		/>
 	);

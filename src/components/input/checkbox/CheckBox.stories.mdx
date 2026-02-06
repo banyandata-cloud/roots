@@ -11,6 +11,18 @@ export const Template = (args) => (
 	</ThemedContainer>
 );
 
+export const TemplateChecked = (args) => (
+	<ThemedContainer theme='light'>
+		<CheckBox {...args} />
+	</ThemedContainer>
+);
+
+export const TemplateIntermediate = (args) => (
+	<ThemedContainer theme='light'>
+		<CheckBox {...args} />
+	</ThemedContainer>
+);
+
 # CheckBox
 
 The Checkbox component provides a customizable checkbox input with an optional label. It supports controlled and uncontrolled usage, allowing you to manage the checked state through its onChange handler.
@@ -27,8 +39,8 @@ Basic import and additional information on how to use this component.
 import { CheckBox } from '@banyan_cloud/roots';
 ```
 
--   The position prop allows you to control the positioning of the checkbox relative to the label.
--   The onChange function is called when the checkbox's state changes. It provides the new checked state as a parameter.
+- The position prop allows you to control the positioning of the checkbox relative to the label.
+- The onChange function is called when the checkbox's state changes. It provides the new checked state as a parameter.
 
 ## Stories
 
@@ -45,6 +57,83 @@ The default CheckBox.
 			label: 'Checkbox',
 			position: 'right',
 			size: 'sm',
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Checkbox V2
+
+The default CheckBox v2
+
+<Canvas>
+	<Story
+		name='Checkbox V2'
+		args={{
+			label: 'Checkbox',
+			position: 'right',
+			size: 'sm',
+			v2: true,
+			intermediate: true,
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+<Canvas>
+	<Story
+		name='Checkbox V2 disbled'
+		args={{
+			label: 'Checkbox',
+			position: 'right',
+			size: 'sm',
+			v2: true,
+			disabled: true,
+			checked: true,
+			intermediate: true,
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+<Canvas>
+	<Story
+		name='Checkbox V2 Read Only'
+		args={{
+			label: 'Checkbox',
+			position: 'right',
+			size: 'sm',
+			v2: true,
+			readOnly: true,
+			checked: true,
+			intermediate: true,
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+<Canvas>
+	<Story
+		name='Checkbox V2 Error'
+		args={{
+			label: 'Checkbox',
+			position: 'right',
+			size: 'sm',
+			v2: true,
+			error: true,
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+<Canvas>
+	<Story
+		name='Checkbox V2 Focus'
+		args={{
+			label: 'Checkbox',
+			position: 'right',
+			size: 'sm',
+			v2: true,
 		}}>
 		{Template.bind({})}
 	</Story>
