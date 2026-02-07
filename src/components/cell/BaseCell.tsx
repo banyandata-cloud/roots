@@ -46,7 +46,11 @@ export const BaseCell = forwardRef<HTMLElement, BaseCellProps<BaseCellComponentT
 			RootDOM,
 			{
 				'data-elem': 'base-cell',
-				'data-testid': dataTestId ?? (typeof title === 'string' ? `${title}-test` : null),
+				'data-testid':
+					dataTestId ??
+					(typeof title === 'string'
+						? `${title.toLowerCase().split(' ').join('-')}-test`
+						: null),
 				ref,
 				...(typeof title === 'string' && {
 					title,
