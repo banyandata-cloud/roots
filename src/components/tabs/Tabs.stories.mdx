@@ -51,8 +51,8 @@ Basic import and additional information on how to use this component.
 import { Tabs } from '@banyan_cloud/roots';
 ```
 
--   The tabs prop should be an array of tab objects, where each tab object contains properties like id, title, leftIcon, rightIcon, and disabled.
--   The setSelectedTab function allows you to change the selected tab when a tab is clicked.
+- The tabs prop should be an array of tab objects, where each tab object contains properties like id, title, leftIcon, rightIcon, and disabled.
+- The setSelectedTab function allows you to change the selected tab when a tab is clicked.
 
 ## Stories
 
@@ -143,6 +143,7 @@ Tabs with with only left icon.
 					leftIcon: (props) => {
 						return <CaretIcon {...props} />;
 					},
+					disabled: true,
 				},
 			],
 			theme: 'light',
