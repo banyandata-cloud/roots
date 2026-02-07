@@ -33,6 +33,8 @@ exports[`DialogBox — Snapshot Testing matches snapshot structure 1`] = `
         <button
           class="root sm border-radius-default root outlined root radius-default outlined primary cancel"
           data-elem="base-cell"
+          data-testid="Dismiss-test"
+          title="Dismiss"
           type="submit"
         >
           <span

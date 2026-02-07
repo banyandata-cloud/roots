@@ -93,6 +93,7 @@ export interface DropdownProps {
 		value: string | number;
 		onChange: (value: string | number) => void;
 	};
+	hideValueOnSelect?: boolean;
 
 	v2?: boolean;
 }
@@ -132,6 +133,7 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(props,
 		valueAsCount,
 		caretAsUpDown,
 		search,
+		hideValueOnSelect,
 		v2 = false,
 	} = props;
 
@@ -476,10 +478,14 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(props,
 		return null;
 	};
 
-	let content = <div data-elem='placeholder'>{placeholder}</div>;
+	let content: ReactNode = null;
 
-	if (getValueToDisplay()) {
-		content = <span data-elem='value'>{getValueToDisplay()}</span>;
+	if (!hideValueOnSelect) {
+		content = <div data-elem='placeholder'>{placeholder}</div>;
+
+		if (getValueToDisplay()) {
+			content = <span data-elem='value'>{getValueToDisplay()}</span>;
+		}
 	}
 
 	return (
