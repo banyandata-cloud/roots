@@ -49,7 +49,7 @@ export const BaseCell = forwardRef<HTMLElement, BaseCellProps<BaseCellComponentT
 				'data-testid':
 					dataTestId ??
 					(typeof title === 'string'
-						? `${title.toLowerCase().split(' ').join('-')}-test`
+						? `${title.toLowerCase().split(' ').join('-')}-btn-test`
 						: null),
 				ref,
 				...(typeof title === 'string' && {
