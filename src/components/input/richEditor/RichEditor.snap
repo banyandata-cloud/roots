@@ -11,7 +11,7 @@ exports[`RichEditor – Snapshot matches snapshot for default state 1`] = `
       <button
         class="root sm border-radius-default root contained root radius-default contained primary item bold"
         data-elem="base-cell"
-        data-testid="B-test"
+        data-testid="b-btn-test"
         title="B"
         type="submit"
       >
@@ -28,7 +28,7 @@ exports[`RichEditor – Snapshot matches snapshot for default state 1`] = `
       <button
         class="root sm border-radius-default root contained root radius-default contained primary item italic"
         data-elem="base-cell"
-        data-testid="I-test"
+        data-testid="i-btn-test"
         title="I"
         type="submit"
       >
@@ -45,7 +45,7 @@ exports[`RichEditor – Snapshot matches snapshot for default state 1`] = `
       <button
         class="root sm border-radius-default root contained root radius-default contained primary item underline"
         data-elem="base-cell"
-        data-testid="U-test"
+        data-testid="u-btn-test"
         title="U"
         type="submit"
       >
@@ -62,7 +62,7 @@ exports[`RichEditor – Snapshot matches snapshot for default state 1`] = `
       <button
         class="root sm border-radius-default root contained root radius-default contained primary item strike"
         data-elem="base-cell"
-        data-testid="S-test"
+        data-testid="s-btn-test"
         title="S"
         type="submit"
       >

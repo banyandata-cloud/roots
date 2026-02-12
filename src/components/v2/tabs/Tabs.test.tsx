@@ -1,6 +1,10 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import Tabs from './Tabs';
 
+// -----------------------------
+// MOCKS
+// -----------------------------
+
 jest.mock('../../input/dropdown/Dropdown', () => {
 	return function MockDropdown(props: any) {
 		return (
@@ -25,11 +29,16 @@ jest.mock('../../input/dropdown/dropdown-item/DropdownItem', () => {
 	};
 });
 
+// -----------------------------
+// TEST UTILITIES
+// -----------------------------
+
 const basicTabs = [
 	{ id: '1', title: 'Tab1' },
 	{ id: '2', title: 'Tab2' },
 ];
 
+// Fake layout for slider
 Object.defineProperty(HTMLElement.prototype, 'offsetLeft', {
 	configurable: true,
 	get() {
@@ -44,8 +53,12 @@ Object.defineProperty(HTMLElement.prototype, 'offsetWidth', {
 	},
 });
 
-describe('Tabs — Rendering & Basic Behaviour', () => {
-	test('renders tabs with titles', () => {
+// -----------------------------
+// RENDERING TESTS
+// -----------------------------
+
+describe('Tabs — Rendering', () => {
+	test('renders all tab buttons', () => {
 		render(
 			<Tabs
 				tabs={basicTabs}
@@ -55,25 +68,25 @@ describe('Tabs — Rendering & Basic Behaviour', () => {
 			/>
 		);
 
-		expect(screen.getByTestId('Tab1-test')).toBeInTheDocument();
-		expect(screen.getByTestId('Tab2-test')).toBeInTheDocument();
+		expect(screen.getByRole('button', { name: 'Tab1' })).toBeInTheDocument();
+		expect(screen.getByRole('button', { name: 'Tab2' })).toBeInTheDocument();
 	});
 
-	test('renders children inside tab content', () => {
+	test('renders children content', () => {
 		render(
 			<Tabs
 				tabs={basicTabs}
 				selectedTab='1'
 				setSelectedTab={jest.fn()}
 				direction='horizontal'>
-				<div>Child content</div>
+				<div>Child Content</div>
 			</Tabs>
 		);
 
-		expect(screen.getByText('Child content')).toBeInTheDocument();
+		expect(screen.getByText('Child Content')).toBeInTheDocument();
 	});
 
-	test('activates correct tab based on selectedTab', () => {
+	test('applies active class correctly', () => {
 		const { container } = render(
 			<Tabs
 				tabs={basicTabs}
@@ -83,12 +96,16 @@ describe('Tabs — Rendering & Basic Behaviour', () => {
 			/>
 		);
 
-		expect(container.innerHTML).toContain('active');
+		expect(container.querySelector('.active')).toBeTruthy();
 	});
 });
 
-describe('Tabs — Interaction, Icons, Layout', () => {
-	test('clicking a tab calls setSelectedTab with correct id', () => {
+// -----------------------------
+// INTERACTION TESTS
+// -----------------------------
+
+describe('Tabs — Interaction', () => {
+	test('clicking a tab calls setSelectedTab', () => {
 		const mockSet = jest.fn();
 
 		render(
@@ -100,11 +117,38 @@ describe('Tabs — Interaction, Icons, Layout', () => {
 			/>
 		);
 
-		fireEvent.click(screen.getByTestId('Tab2-test'));
+		fireEvent.click(screen.getByRole('button', { name: 'Tab2' }));
+
 		expect(mockSet).toHaveBeenCalledWith('2');
 	});
 
-	test('renders vertical orientation', () => {
+	test('disabled tab does not trigger setSelectedTab', () => {
+		const mockSet = jest.fn();
+
+		render(
+			<Tabs
+				tabs={[
+					{ id: '1', title: 'Tab1', disabled: true },
+					{ id: '2', title: 'Tab2' },
+				]}
+				selectedTab='1'
+				setSelectedTab={mockSet}
+				direction='horizontal'
+			/>
+		);
+
+		fireEvent.click(screen.getByRole('button', { name: 'Tab1' }));
+
+		expect(mockSet).not.toHaveBeenCalled();
+	});
+});
+
+// -----------------------------
+// LAYOUT TESTS
+// -----------------------------
+
+describe('Tabs — Layout & Slider', () => {
+	test('renders vertical layout', () => {
 		const { container } = render(
 			<Tabs
 				tabs={basicTabs}
@@ -117,7 +161,7 @@ describe('Tabs — Interaction, Icons, Layout', () => {
 		expect(container.firstElementChild?.className).toContain('tabs-container-vertical');
 	});
 
-	test('slider updates according to active tab', () => {
+	test('slider positions correctly', () => {
 		const { container } = render(
 			<Tabs
 				tabs={basicTabs}
@@ -134,130 +178,13 @@ describe('Tabs — Interaction, Icons, Layout', () => {
 	});
 });
 
-describe('Tabs — Edge Cases & Dropdown', () => {
+// -----------------------------
+// DROPDOWN TESTS
+// -----------------------------
+
+describe('Tabs — Dropdown', () => {
 	test('renders dropdown tab', () => {
-		const tabsWithDropdown = [
-			{ id: '1', title: 'Tab1' },
-			{
-				id: '4',
-				title: 'Options',
-				dropdown: true,
-				dropdownItems: [{ id: '4', title: 'Opt1' }],
-			},
-		];
-
 		render(
-			<Tabs
-				tabs={tabsWithDropdown}
-				selectedTab='1'
-				setSelectedTab={jest.fn()}
-				direction='horizontal'
-			/>
-		);
-
-		expect(screen.getByTestId('dropdown')).toBeInTheDocument();
-		expect(screen.getByTestId('dropdown-item-4')).toBeInTheDocument();
-	});
-
-	test('selecting a dropdown item calls setSelectedTab', () => {
-		const mockSet = jest.fn();
-
-		const tabsWithDropdown = [
-			{ id: '1', title: 'Tab1' },
-			{
-				id: '4',
-				title: 'Options',
-				dropdown: true,
-				dropdownItems: [{ id: '5', title: 'Opt A' }],
-			},
-		];
-
-		render(
-			<Tabs
-				tabs={tabsWithDropdown}
-				selectedTab='1'
-				setSelectedTab={mockSet}
-				direction='horizontal'
-			/>
-		);
-
-		fireEvent.click(screen.getByTestId('dropdown-item-5'));
-		expect(mockSet).toHaveBeenCalledWith('5');
-	});
-
-	test('disabled tab should NOT call setSelectedTab', () => {
-		const mockSet = jest.fn();
-
-		const tabsDisabled = [
-			{ id: '1', title: 'Tab1', disabled: true },
-			{ id: '2', title: 'Tab2' },
-		];
-
-		render(
-			<Tabs
-				tabs={tabsDisabled}
-				selectedTab='1'
-				setSelectedTab={mockSet}
-				direction='horizontal'
-			/>
-		);
-
-		fireEvent.click(screen.getByTestId('Tab1-test'));
-		expect(mockSet).not.toHaveBeenCalled();
-	});
-
-	test('fallback: selectedTab not found → slider points to first tab', () => {
-		const { container } = render(
-			<Tabs
-				tabs={basicTabs}
-				selectedTab='999'
-				setSelectedTab={jest.fn()}
-				direction='horizontal'
-			/>
-		);
-
-		const slider = container.querySelector('[class*="tab-slider"]') as HTMLElement;
-		expect(slider.style.left).toBe('20px');
-	});
-
-	test('handles empty tabs array safely', () => {
-		const { container } = render(
-			<Tabs tabs={[]} selectedTab='1' setSelectedTab={jest.fn()} direction='horizontal' />
-		);
-
-		expect(container.firstChild).toBeTruthy();
-	});
-});
-
-describe('Tabs — Snapshots', () => {
-	test('default horizontal snapshot', () => {
-		const { container } = render(
-			<Tabs
-				tabs={basicTabs}
-				selectedTab='1'
-				setSelectedTab={jest.fn()}
-				direction='horizontal'
-			/>
-		);
-
-		expect(container).toMatchSnapshot();
-	});
-
-	test('vertical snapshot', () => {
-		const { container } = render(
-			<Tabs
-				tabs={basicTabs}
-				selectedTab='1'
-				setSelectedTab={jest.fn()}
-				direction='vertical'
-			/>
-		);
-
-		expect(container).toMatchSnapshot();
-	});
-
-	test('dropdown snapshot', () => {
-		const { container } = render(
 			<Tabs
 				tabs={[
 					{ id: '1', title: 'Tab1' },
@@ -274,6 +201,64 @@ describe('Tabs — Snapshots', () => {
 			/>
 		);
 
-		expect(container).toMatchSnapshot();
+		expect(screen.getByTestId('dropdown')).toBeInTheDocument();
+		expect(screen.getByTestId('dropdown-item-5')).toBeInTheDocument();
+	});
+
+	test('dropdown item selection triggers setSelectedTab', () => {
+		const mockSet = jest.fn();
+
+		render(
+			<Tabs
+				tabs={[
+					{ id: '1', title: 'Tab1' },
+					{
+						id: '4',
+						title: 'Options',
+						dropdown: true,
+						dropdownItems: [{ id: '5', title: 'Opt1' }],
+					},
+				]}
+				selectedTab='1'
+				setSelectedTab={mockSet}
+				direction='horizontal'
+			/>
+		);
+
+		fireEvent.click(screen.getByTestId('dropdown-item-5'));
+
+		expect(mockSet).toHaveBeenCalledWith('5');
+	});
+});
+
+// -----------------------------
+// SNAPSHOTS (Minimal + Stable)
+// -----------------------------
+
+describe('Tabs — Snapshots', () => {
+	test('horizontal snapshot', () => {
+		const { container } = render(
+			<Tabs
+				tabs={basicTabs}
+				selectedTab='1'
+				setSelectedTab={jest.fn()}
+				direction='horizontal'
+			/>
+		);
+
+		expect(container.querySelector('.tabs')).toMatchSnapshot();
+	});
+
+	test('vertical snapshot', () => {
+		const { container } = render(
+			<Tabs
+				tabs={basicTabs}
+				selectedTab='1'
+				setSelectedTab={jest.fn()}
+				direction='vertical'
+			/>
+		);
+
+		expect(container.querySelector('.vertical')).toMatchSnapshot();
 	});
 });

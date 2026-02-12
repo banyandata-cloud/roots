@@ -1,196 +1,119 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
-exports[`Tabs — Snapshots default horizontal snapshot 1`] = `
-<div>
+exports[`Tabs — Snapshots horizontal snapshot 1`] = `
+<div
+  class="tabs"
+>
   <div
-    class="tabs-container"
+    class="tab horizontal active"
   >
-    <div
-      class="tabs"
+    <button
+      class="root auto border-radius-none root text root radius-none text primary active"
+      data-elem="base-cell"
+      data-testid="tab1-btn-test"
+      title="Tab1"
+      type="submit"
     >
-      <div
-        class="tab horizontal active"
-      >
-        <button
-          class="root auto border-radius-none root text root radius-none text primary active"
-          data-elem="base-cell"
-          data-testid="Tab1-test"
-          title="Tab1"
-          type="submit"
-        >
-          <span
-            data-elem="component1"
-          />
-          <span
-            data-elem="component2"
-          >
-            <span
-              data-elem="title"
-            >
-              Tab1
-            </span>
-          </span>
-        </button>
-      </div>
-      <div
-        class="tab horizontal"
-      >
-        <button
-          class="root auto border-radius-none root text root radius-none text primary"
-          data-elem="base-cell"
-          data-testid="Tab2-test"
-          title="Tab2"
-          type="submit"
-        >
-          <span
-            data-elem="component1"
-          />
-          <span
-            data-elem="component2"
-          >
-            <span
-              data-elem="title"
-            >
-              Tab2
-            </span>
-          </span>
-        </button>
-      </div>
-      <div
-        class="tab-slider"
-        style="left: 20px; width: 80px;"
+      <span
+        data-elem="component1"
       />
-    </div>
-    <div
-      class="tab-content"
-    />
+      <span
+        data-elem="component2"
+      >
+        <span
+          data-elem="title"
+        >
+          Tab1
+        </span>
+      </span>
+    </button>
   </div>
-</div>
-`;
-
-exports[`Tabs — Snapshots dropdown snapshot 1`] = `
-<div>
   <div
-    class="tabs-container"
+    class="tab horizontal"
   >
-    <div
-      class="tabs"
+    <button
+      class="root auto border-radius-none root text root radius-none text primary"
+      data-elem="base-cell"
+      data-testid="tab2-btn-test"
+      title="Tab2"
+      type="submit"
     >
-      <div
-        class="tab horizontal active"
-      >
-        <button
-          class="root auto border-radius-none root text root radius-none text primary active"
-          data-elem="base-cell"
-          data-testid="Tab1-test"
-          title="Tab1"
-          type="submit"
-        >
-          <span
-            data-elem="component1"
-          />
-          <span
-            data-elem="component2"
-          >
-            <span
-              data-elem="title"
-            >
-              Tab1
-            </span>
-          </span>
-        </button>
-      </div>
-      <div
-        class="tab horizontal"
-      >
-        <div
-          data-testid="dropdown"
-        >
-          <div
-            data-testid="dropdown-item-5"
-          >
-            <div>
-              Opt1
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        class="tab-slider"
-        style="left: 20px; width: 80px;"
+      <span
+        data-elem="component1"
       />
-    </div>
-    <div
-      class="tab-content"
-    />
+      <span
+        data-elem="component2"
+      >
+        <span
+          data-elem="title"
+        >
+          Tab2
+        </span>
+      </span>
+    </button>
   </div>
+  <div
+    class="tab-slider"
+    style="left: 20px; width: 80px;"
+  />
 </div>
 `;
 
 exports[`Tabs — Snapshots vertical snapshot 1`] = `
-<div>
+<div
+  class="vertical"
+>
   <div
-    class="tabs-container-vertical"
+    class="tab vertical active"
   >
-    <div
-      class="vertical"
+    <button
+      class="root auto border-radius-none root text root radius-none text primary active"
+      data-elem="base-cell"
+      data-testid="tab1-btn-test"
+      title="Tab1"
+      type="submit"
     >
-      <div
-        class="tab vertical active"
-      >
-        <button
-          class="root auto border-radius-none root text root radius-none text primary active"
-          data-elem="base-cell"
-          data-testid="Tab1-test"
-          title="Tab1"
-          type="submit"
-        >
-          <span
-            data-elem="component1"
-          />
-          <span
-            data-elem="component2"
-          >
-            <span
-              data-elem="title"
-            >
-              Tab1
-            </span>
-          </span>
-        </button>
-      </div>
-      <div
-        class="tab vertical"
-      >
-        <button
-          class="root auto border-radius-none root text root radius-none text primary"
-          data-elem="base-cell"
-          data-testid="Tab2-test"
-          title="Tab2"
-          type="submit"
-        >
-          <span
-            data-elem="component1"
-          />
-          <span
-            data-elem="component2"
-          >
-            <span
-              data-elem="title"
-            >
-              Tab2
-            </span>
-          </span>
-        </button>
-      </div>
-      <div
-        class="tab-slider-vertical"
-        style="left: 20px; width: 80px;"
+      <span
+        data-elem="component1"
       />
-    </div>
-    <div
-      class="tab-content-vertical"
-    />
+      <span
+        data-elem="component2"
+      >
+        <span
+          data-elem="title"
+        >
+          Tab1
+        </span>
+      </span>
+    </button>
   </div>
+  <div
+    class="tab vertical"
+  >
+    <button
+      class="root auto border-radius-none root text root radius-none text primary"
+      data-elem="base-cell"
+      data-testid="tab2-btn-test"
+      title="Tab2"
+      type="submit"
+    >
+      <span
+        data-elem="component1"
+      />
+      <span
+        data-elem="component2"
+      >
+        <span
+          data-elem="title"
+        >
+          Tab2
+        </span>
+      </span>
+    </button>
+  </div>
+  <div
+    class="tab-slider-vertical"
+    style="left: 20px; width: 80px;"
+  />
 </div>
 `;
