@@ -19,7 +19,7 @@ export function Accordion(props: AccordionProps) {
 	if (props.v2) {
 		return <Accordionv2 {...props} />;
 	}
- 
+
 	const {
 		open,
 		onToggle,
