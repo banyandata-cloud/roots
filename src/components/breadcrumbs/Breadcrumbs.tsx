@@ -83,7 +83,7 @@ const BreadCrumbs: React.FC<BreadCrumbsProps> = ({ crumbs = [], className = '' }
 				}}
 			/>
 			<Popover
-				className={styles.popover || ''}
+				className={styles.popover}
 				anchorEl={anchorEl}
 				open={expand}
 				placement='bottom-start'
