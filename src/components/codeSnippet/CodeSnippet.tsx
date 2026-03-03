@@ -29,7 +29,7 @@ const copyIconProps = {
 	transition: {
 		duration: 0.2,
 	},
-};
+} as any;
 
 const tickIconProps = {
 	initial: {
@@ -45,11 +45,11 @@ const tickIconProps = {
 		opacity: 0,
 	},
 	transition: {
-		type: 'spring',
+		type: 'spring' as any,
 		stiffness: 400,
 		damping: 15,
 	},
-};
+} as any;
 
 const CopyButton = ({ code }: { code: string }) => {
 	const [copied, setCopied] = useState<boolean>(false);

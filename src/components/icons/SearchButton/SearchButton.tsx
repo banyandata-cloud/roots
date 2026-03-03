@@ -1,5 +1,10 @@
-const SearchButton = (props) => {
-	const { className = '' } = props;
+import React from 'react';
+
+interface SearchButtonProps {
+	className?: string;
+}
+
+const SearchButton: React.FC<SearchButtonProps> = ({ className = '' }) => {
 	return (
 		<svg
 			width='20'

@@ -10,4 +10,5 @@ export interface ButtonProps extends BaseButtonProps {
 	rightComponent?: ComponentType | undefined;
 	textSize?: ButtonTextSize;
 	dataTestId?: string | undefined;
+	v2?: boolean;
 }

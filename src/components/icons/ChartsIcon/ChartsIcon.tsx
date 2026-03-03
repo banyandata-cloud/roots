@@ -1,6 +1,10 @@
-export const CapsuleChartIcon = (props) => {
-	const { className } = props;
+import React from 'react';
 
+interface ChartIconProps {
+	className?: string;
+}
+
+export const CapsuleChartIcon: React.FC<ChartIconProps> = ({ className }) => {
 	return (
 		<svg
 			width='248'
@@ -61,9 +65,7 @@ export const CapsuleChartIcon = (props) => {
 	);
 };
 
-export const BarChartIcon = (props) => {
-	const { className } = props;
-
+export const BarChartIcon: React.FC<ChartIconProps> = ({ className }) => {
 	return (
 		<svg
 			width='177'
@@ -89,9 +91,7 @@ export const BarChartIcon = (props) => {
 	);
 };
 
-export const AreaChartIcon = (props) => {
-	const { className } = props;
-
+export const AreaChartIcon: React.FC<ChartIconProps> = ({ className }) => {
 	return (
 		<svg
 			width='255'
@@ -128,9 +128,7 @@ export const AreaChartIcon = (props) => {
 	);
 };
 
-export const LineChartIcon = (props) => {
-	const { className } = props;
-
+export const LineChartIcon: React.FC<ChartIconProps> = ({ className }) => {
 	return (
 		<svg
 			width='247'
@@ -156,9 +154,7 @@ export const LineChartIcon = (props) => {
 	);
 };
 
-export const PieChartIcon = (props) => {
-	const { className } = props;
-
+export const PieChartIcon: React.FC<ChartIconProps> = ({ className }) => {
 	return (
 		<svg
 			width='250'
@@ -198,9 +194,7 @@ export const PieChartIcon = (props) => {
 	);
 };
 
-export const StackedPieChartIcon = (props) => {
-	const { className } = props;
-
+export const StackedPieChartIcon: React.FC<ChartIconProps> = ({ className }) => {
 	return (
 		<svg
 			width='250'
@@ -213,7 +207,7 @@ export const StackedPieChartIcon = (props) => {
 				<mask
 					id='mask0_6284_50970'
 					style={{
-						'mask-type': 'luminance',
+						maskType: 'luminance',
 					}}
 					maskUnits='userSpaceOnUse'
 					x='3'
@@ -236,7 +230,7 @@ export const StackedPieChartIcon = (props) => {
 				<mask
 					id='mask1_6284_50970'
 					style={{
-						'mask-type': 'luminance',
+						maskType: 'luminance',
 					}}
 					maskUnits='userSpaceOnUse'
 					x='81'
@@ -259,7 +253,7 @@ export const StackedPieChartIcon = (props) => {
 				<mask
 					id='mask2_6284_50970'
 					style={{
-						'mask-type': 'luminance',
+						maskType: 'luminance',
 					}}
 					maskUnits='userSpaceOnUse'
 					x='141'
@@ -282,7 +276,7 @@ export const StackedPieChartIcon = (props) => {
 				<mask
 					id='mask3_6284_50970'
 					style={{
-						'mask-type': 'luminance',
+						maskType: 'luminance',
 					}}
 					maskUnits='userSpaceOnUse'
 					x='152'
@@ -305,7 +299,7 @@ export const StackedPieChartIcon = (props) => {
 				<mask
 					id='mask4_6284_50970'
 					style={{
-						'mask-type': 'luminance',
+						maskType: 'luminance',
 					}}
 					maskUnits='userSpaceOnUse'
 					x='145'
@@ -328,7 +322,7 @@ export const StackedPieChartIcon = (props) => {
 				<mask
 					id='mask5_6284_50970'
 					style={{
-						'mask-type': 'luminance',
+						maskType: 'luminance',
 					}}
 					maskUnits='userSpaceOnUse'
 					x='179'
@@ -351,7 +345,7 @@ export const StackedPieChartIcon = (props) => {
 				<mask
 					id='mask6_6284_50970'
 					style={{
-						'mask-type': 'luminance',
+						maskType: 'luminance',
 					}}
 					maskUnits='userSpaceOnUse'
 					x='133'
@@ -374,7 +368,7 @@ export const StackedPieChartIcon = (props) => {
 				<mask
 					id='mask7_6284_50970'
 					style={{
-						'mask-type': 'luminance',
+						maskType: 'luminance',
 					}}
 					maskUnits='userSpaceOnUse'
 					x='122'
@@ -397,7 +391,7 @@ export const StackedPieChartIcon = (props) => {
 				<mask
 					id='mask8_6284_50970'
 					style={{
-						'mask-type': 'luminance',
+						maskType: 'luminance',
 					}}
 					maskUnits='userSpaceOnUse'
 					x='65'
@@ -420,7 +414,7 @@ export const StackedPieChartIcon = (props) => {
 				<mask
 					id='mask9_6284_50970'
 					style={{
-						'mask-type': 'luminance',
+						maskType: 'luminance',
 					}}
 					maskUnits='userSpaceOnUse'
 					x='14'
@@ -443,7 +437,7 @@ export const StackedPieChartIcon = (props) => {
 				<mask
 					id='mask10_6284_50970'
 					style={{
-						'mask-type': 'luminance',
+						maskType: 'luminance',
 					}}
 					maskUnits='userSpaceOnUse'
 					x='0'
@@ -466,7 +460,7 @@ export const StackedPieChartIcon = (props) => {
 				<mask
 					id='mask11_6284_50970'
 					style={{
-						'mask-type': 'luminance',
+						maskType: 'luminance',
 					}}
 					maskUnits='userSpaceOnUse'
 					x='3'
@@ -489,7 +483,7 @@ export const StackedPieChartIcon = (props) => {
 				<mask
 					id='mask12_6284_50970'
 					style={{
-						'mask-type': 'luminance',
+						maskType: 'luminance',
 					}}
 					maskUnits='userSpaceOnUse'
 					x='3'
@@ -512,7 +506,7 @@ export const StackedPieChartIcon = (props) => {
 				<mask
 					id='mask13_6284_50970'
 					style={{
-						'mask-type': 'luminance',
+						maskType: 'luminance',
 					}}
 					maskUnits='userSpaceOnUse'
 					x='81'
@@ -535,7 +529,7 @@ export const StackedPieChartIcon = (props) => {
 				<mask
 					id='mask14_6284_50970'
 					style={{
-						'mask-type': 'luminance',
+						maskType: 'luminance',
 					}}
 					maskUnits='userSpaceOnUse'
 					x='167'
@@ -558,7 +552,7 @@ export const StackedPieChartIcon = (props) => {
 				<mask
 					id='mask15_6284_50970'
 					style={{
-						'mask-type': 'luminance',
+						maskType: 'luminance',
 					}}
 					maskUnits='userSpaceOnUse'
 					x='197'
@@ -581,7 +575,7 @@ export const StackedPieChartIcon = (props) => {
 				<mask
 					id='mask16_6284_50970'
 					style={{
-						'mask-type': 'luminance',
+						maskType: 'luminance',
 					}}
 					maskUnits='userSpaceOnUse'
 					x='146'
@@ -604,7 +598,7 @@ export const StackedPieChartIcon = (props) => {
 				<mask
 					id='mask17_6284_50970'
 					style={{
-						'mask-type': 'luminance',
+						maskType: 'luminance',
 					}}
 					maskUnits='userSpaceOnUse'
 					x='122'
@@ -627,7 +621,7 @@ export const StackedPieChartIcon = (props) => {
 				<mask
 					id='mask18_6284_50970'
 					style={{
-						'mask-type': 'luminance',
+						maskType: 'luminance',
 					}}
 					maskUnits='userSpaceOnUse'
 					x='65'
@@ -650,7 +644,7 @@ export const StackedPieChartIcon = (props) => {
 				<mask
 					id='mask19_6284_50970'
 					style={{
-						'mask-type': 'luminance',
+						maskType: 'luminance',
 					}}
 					maskUnits='userSpaceOnUse'
 					x='13'
@@ -673,7 +667,7 @@ export const StackedPieChartIcon = (props) => {
 				<mask
 					id='mask20_6284_50970'
 					style={{
-						'mask-type': 'luminance',
+						maskType: 'luminance',
 					}}
 					maskUnits='userSpaceOnUse'
 					x='0'
