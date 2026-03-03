@@ -32,9 +32,9 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 				ref={ref}
 				className={className}
 				title={title}
-				rightComponent={RightComponent}
-				variant={variant}
-				size={size}
+				rightComponent={RightComponent as any}
+				variant={'primary'}
+				size={size as any}
 				textSize={textSize}
 				disabled={disabled}
 				onClick={onClick}
