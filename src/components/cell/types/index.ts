@@ -7,7 +7,7 @@ import type { ComponentProps, JSX, ReactElement } from 'react';
  * - 'lg': Large size
  * - 'auto': Automatic sizing based on content
  */
-export type ElementSizeTypes = 'sm' | 'md' | 'lg' | 'auto';
+export type ElementSizeTypes = 'xs' | 'sm' | 'md' | 'lg' | 'auto';
 
 /**
  * Specifies the allowed root DOM element types for the cell.

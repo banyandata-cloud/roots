@@ -1,10 +1,10 @@
-import { forwardRef, type RefObject } from 'react';
+import { forwardRef } from 'react';
 import { classes } from '../../../utils';
 import { BaseButton } from '../baseButton';
 import styles from './Chip.module.css';
 import type { ChipProps } from './types';
 
-const Chip = forwardRef<RefObject<HTMLElement>, ChipProps>((props, ref) => {
+const Chip = forwardRef<HTMLButtonElement, ChipProps>((props, ref) => {
 	const {
 		className = '',
 		type = 'button',

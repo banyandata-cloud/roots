@@ -6,8 +6,8 @@ export type ButtonTextSize = 'sm' | 'md';
 export type ButtonSize = 'xs' | 'sm' | 'md' | 'lg';
 
 export interface ButtonProps extends Omit<BaseButtonProps, 'variant' | 'size' | 'component1'> {
-	variant?: ButtonVariant;
+	variant?: ButtonVariant | undefined;
 	size?: ButtonSize;
 	textSize?: ButtonTextSize;
-	rightComponent?: ComponentType;
+	rightComponent?: ComponentType | undefined;
 }
