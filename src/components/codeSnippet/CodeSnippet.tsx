@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, type AnimationGeneratorType } from 'framer-motion';
 import { useState, type ComponentType } from 'react';
 import { Prism as SyntaxHighlighter, type SyntaxHighlighterProps } from 'react-syntax-highlighter';
 import {
@@ -29,7 +29,7 @@ const copyIconProps = {
 	transition: {
 		duration: 0.2,
 	},
-} as any;
+};
 
 const tickIconProps = {
 	initial: {
@@ -45,11 +45,11 @@ const tickIconProps = {
 		opacity: 0,
 	},
 	transition: {
-		type: 'spring' as any,
+		type: 'spring' as AnimationGeneratorType,
 		stiffness: 400,
 		damping: 15,
 	},
-} as any;
+};
 
 const CopyButton = ({ code }: { code: string }) => {
 	const [copied, setCopied] = useState<boolean>(false);
