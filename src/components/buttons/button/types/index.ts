@@ -9,7 +9,7 @@ export interface ButtonProps extends BaseButtonProps {
     color?: ButtonColors;
     leftComponent?: ComponentType | undefined;
     rightComponent?: ComponentType | undefined;
-    size: 'xs' | 'sm' | 'md' | 'lg';
+    size?: 'xs' | 'sm' | 'md' | 'lg';
     textSize?: ButtonTextSize;
     dataTestId?: string | undefined;
     v2?: boolean;
