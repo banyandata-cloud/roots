@@ -1,3 +1,4 @@
+import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import BaseWidget from './BaseWidget';
 
@@ -8,8 +9,6 @@ jest.mock('../../utils', () => ({
 }));
 
 jest.mock('../buttons', () => {
-	const React = require('react');
-
 	return {
 		BaseButton: React.forwardRef(({ title, onClick }: any, ref: any) => (
 			<button ref={ref} data-testid='base-button' onClick={onClick}>

@@ -46,7 +46,7 @@ export interface PopoverProps {
 	anchorEl: ReferenceEl;
 	open?: boolean | undefined;
 	setOpen?: ((open: boolean) => void) | undefined;
-	className?: string;
+	className?: string | undefined; // ← fixed: explicit undefined for exactOptionalPropertyTypes
 	transparent?: boolean;
 	onClose?: () => void;
 	placement?: Placement | undefined;
