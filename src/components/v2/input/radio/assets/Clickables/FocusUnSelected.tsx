@@ -1,0 +1,27 @@
+import React from 'react';
+
+const FocusUnSelected: React.FC<{ className?: string }> = ({ className }) => {
+	return (
+		<svg
+			xmlns='http://www.w3.org/2000/svg'
+			width='20'
+			height='20'
+			viewBox='0 0 20 20'
+			fill='none'
+			style={{ aspectRatio: '1 / 1' }}
+			className={className}>
+			<rect
+				x='0.75'
+				y='0.75'
+				width='18.5'
+				height='18.5'
+				rx='9.25'
+				stroke='var(--Bordercolor-border-brand, #2E90FA)'
+				strokeWidth='1.5'
+			/>
+			<circle cx='10' cy='10' r='7.5' stroke='#D5D7DA' />
+		</svg>
+	);
+};
+
+export default FocusUnSelected;
