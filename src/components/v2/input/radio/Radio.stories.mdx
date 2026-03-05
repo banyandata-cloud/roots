@@ -14,8 +14,7 @@ export const Template = (args) => (
 # Radio
 
 The Radio component provides a customizable radio input for single-selection options. It supports controlled and uncontrolled usage, and covers all interaction states: Enable, Focus, Read-only, Error, Warning, and Disabled.
-
-#### Design - [Figma](https://www.figma.com/file/e9opoAtQHBo4vFd6u0Co98/Component-Library?node-id=151%3A18731&mode=dev) | Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/components/input/radio)
+#### Design - [Figma](https://www.figma.com/design/IfmLQrA0AAZVYwt6vRxqCe/Design-System--26?node-id=899-2405&p=f&m=dev) | Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/components/input/radio)
 
 > The Radio component provides an accessible and easily customizable way to implement radio inputs in your application. It supports both controlled and uncontrolled usage, with options for positioning, sizing, and feedback states.
 
@@ -25,7 +24,7 @@ The Radio component provides a customizable radio input for single-selection opt
 import { Radio } from '@banyan_cloud/roots';
 ```
 
-- The `onChange` function fires when the radio state changes, receiving `(event, value)`.
+ The `onChange` function fires when the radio state changes, receiving `(event, value)`.
 - The `position` prop places the radio icon left or right of the label.
 - The `size` prop controls the icon size.
 - The `readOnly` prop blocks interaction without the full disabled greying.
@@ -38,22 +37,20 @@ import { Radio } from '@banyan_cloud/roots';
 
 ### Enable - Unselected
 
-Uses `UnSelected` SVG — `stroke: var(--Foregroundcolor-fg-quaternary, #A4A7AE)`.
-
 <Canvas>
 	<Story
 		name='Enable - Unselected'
 		args={{
 			label: 'Unselected',
 			position: 'left',
+			checked: false,
+			onChange: () => {},
 		}}>
 		{Template.bind({})}
 	</Story>
 </Canvas>
 
 ### Enable - Selected
-
-Uses `Selected` SVG — `fill: var(--Foregroundcolor-fg-brand-primary, #1570EF)` with white inner dot.
 
 <Canvas>
 	<Story
@@ -71,22 +68,21 @@ Uses `Selected` SVG — `fill: var(--Foregroundcolor-fg-brand-primary, #1570EF)`
 
 ### Focus - Unselected
 
-Tab into the radio to see the `FocusUnSelected` SVG — blue outer ring `stroke: var(--Bordercolor-border-brand, #2E90FA)` with `strokeWidth: 1.5`.
-
 <Canvas>
 	<Story
 		name='Focus - Unselected'
 		args={{
 			label: 'Unselected + Focus',
 			position: 'left',
+			checked: false,
+			focused: true,
+			onChange: () => {},
 		}}>
 		{Template.bind({})}
 	</Story>
 </Canvas>
 
 ### Focus - Selected
-
-Tab into a selected radio to see the blue focus ring with the selected state preserved.
 
 <Canvas>
 	<Story
@@ -95,6 +91,7 @@ Tab into a selected radio to see the blue focus ring with the selected state pre
 			label: 'Selected + Focus',
 			position: 'left',
 			checked: true,
+			focused: true,
 		}}>
 		{Template.bind({})}
 	</Story>
@@ -103,8 +100,6 @@ Tab into a selected radio to see the blue focus ring with the selected state pre
 ---
 
 ### Read-only - Unselected
-
-Radio is visible but non-interactive. Visually muted. `pointer-events: none` prevents all interaction.
 
 <Canvas>
 	<Story
@@ -137,23 +132,21 @@ Radio is visible but non-interactive. Visually muted. `pointer-events: none` pre
 
 ### Error - Unselected
 
-Red badge icon with black error message text below the radio.
-
 <Canvas>
 	<Story
 		name='Error - Unselected'
 		args={{
 			label: 'Unselected + error',
 			position: 'left',
+			checked: false,
 			error: 'Error message',
+			onChange: () => {},
 		}}>
 		{Template.bind({})}
 	</Story>
 </Canvas>
 
 ### Error - Selected
-
-Uses `SelectedError` SVG — `fill: var(--Foregroundcolor-fg-error-primary, #D92D20)` with white inner dot.
 
 <Canvas>
 	<Story
@@ -172,15 +165,15 @@ Uses `SelectedError` SVG — `fill: var(--Foregroundcolor-fg-error-primary, #D92
 
 ### Warning - Unselected
 
-Yellow badge icon with black warning message text below the radio.
-
 <Canvas>
 	<Story
 		name='Warning - Unselected'
 		args={{
 			label: 'Unselected + warning',
 			position: 'left',
-			warning: 'warning message',
+			checked: false,
+			warning: 'Warning message',
+			onChange: () => {},
 		}}>
 		{Template.bind({})}
 	</Story>
@@ -195,7 +188,7 @@ Yellow badge icon with black warning message text below the radio.
 			label: 'Selected + warning',
 			position: 'left',
 			checked: true,
-			warning: 'warning message',
+			warning: 'Warning message',
 		}}>
 		{Template.bind({})}
 	</Story>
@@ -204,8 +197,6 @@ Yellow badge icon with black warning message text below the radio.
 ---
 
 ### Disable - Unselected
-
-Fully non-interactive. Icon uses `DisabledUnSelected` SVG with `#D5D7DA` border and label uses `#A4A7AE` text color.
 
 <Canvas>
 	<Story
@@ -220,8 +211,6 @@ Fully non-interactive. Icon uses `DisabledUnSelected` SVG with `#D5D7DA` border 
 </Canvas>
 
 ### Disable - Selected
-
-Fully non-interactive. Icon uses `DisabledSelected` SVG with `#D5D7DA` border and `#A4A7AE` fill.
 
 <Canvas>
 	<Story
@@ -240,7 +229,25 @@ Fully non-interactive. Icon uses `DisabledSelected` SVG with `#D5D7DA` border an
 
 ## API
 
-**`disabled`**
+### focused 
+Forces the focused visual state
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<Radio focused={true} />
+```
+
+### disabled
 
 Disables the radio input completely.
 
@@ -259,7 +266,7 @@ Disables the radio input completely.
 <Radio disabled={true} />
 ```
 
-**`readOnly`**
+### readOnly
 
 Makes the radio non-interactive without full disabled greying.
 
@@ -278,7 +285,7 @@ Makes the radio non-interactive without full disabled greying.
 <Radio readOnly={true} />
 ```
 
-**`error`**
+### error
 
 Shows a red badge icon with a black error message below the radio.
 
@@ -297,7 +304,7 @@ Shows a red badge icon with a black error message below the radio.
 <Radio error='This field is required' />
 ```
 
-**`warning`**
+### warning
 
 Shows a yellow badge icon with a black warning message below the radio.
 
@@ -316,7 +323,7 @@ Shows a yellow badge icon with a black warning message below the radio.
 <Radio warning='Please double-check your selection' />
 ```
 
-**`label`**
+### label
 
 Text label associated with the radio input.
 
@@ -335,7 +342,7 @@ Text label associated with the radio input.
 <Radio label='Radio label' />
 ```
 
-**`checked`**
+### checked
 
 Specifies whether the radio is checked (controlled mode).
 
@@ -354,7 +361,7 @@ Specifies whether the radio is checked (controlled mode).
 <Radio checked={true} />
 ```
 
-**`defaultChecked`**
+### defaultChecked 
 
 Specifies the initial checked state (uncontrolled mode).
 
@@ -373,7 +380,7 @@ Specifies the initial checked state (uncontrolled mode).
 <Radio defaultChecked={true} />
 ```
 
-**`position`**
+### position
 
 Position of the radio icon relative to the label.
 
@@ -392,7 +399,7 @@ Position of the radio icon relative to the label.
 <Radio position='right' />
 ```
 
-**`size`**
+### size
 
 Size of the radio icon.
 
@@ -411,7 +418,7 @@ Size of the radio icon.
 <Radio size='md' />
 ```
 
-**`onChange`**
+### onChange
 
 Callback fired when the radio state changes.
 

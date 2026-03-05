@@ -1,39 +1,37 @@
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { classes, inputHelper } from '../../../../utils';
 import styles from './Radio.module.css';
+
 import StatusIndicatorError from './assets/Status/StatusIndicatorError';
 import StatusIndicatorWarning from './assets/Status/StatusIndicatorWarning';
-import DisabledSelected from './assets/Clickables/DisabledSelected';
-import DisabledUnSelected from './assets/Clickables/DisabledUnSelected';
-import ReadOnlySelected from './assets/Clickables/ReadOnlySelected';
-import ReadOnlyUnSelected from './assets/Clickables/ReadOnlyUnSelected';
-import Selected from './assets/Clickables/Selected';
-import SelectedError from './assets/Clickables/SelectedError';
-import UnSelected from './assets/Clickables/UnSelected';
-import UnSelectedError from './assets/Clickables/UnSelectedError';
-import FocusUnSelected from './assets/Clickables/FocusUnSelected';
+
+import DisableSelected from './assets/Clickables/Disable/DisableSelected';
+import DisableUnSelected from './assets/Clickables/Disable/DisableUnSelected';
+import ReadOnlySelected from './assets/Clickables/Read-Only/ReadOnlySelected';
+import ReadOnlyUnSelected from './assets/Clickables/Read-Only/ReadOnlyUnSelected';
+
+import Selected from './assets/Clickables/Enable/EnableSelected';
+import SelectedError from './assets/Clickables/Error/SelectedError';
+
+import UnSelected from './assets/Clickables/Enable/EnableUnselected';
+import UnSelectedError from './assets/Clickables/Error/UnSelectedError';
+import FocusUnSelected from './assets/Clickables/Focus/FocusUnSelected';
+import FocusSelected from './assets/Clickables/Focus/FocusSelected';
 
 type Position = 'left' | 'right';
-type Size = 'sm' | 'md' | 'lg';
 
 export interface RadioProps {
 	label?: React.ReactNode;
-	/** Controlled state */
 	checked?: boolean;
-	/** Uncontrolled default */
 	defaultChecked?: boolean;
-	/** Fires with (event, value) where value is the boolean checked state */
 	onChange?: (event: React.ChangeEvent<HTMLInputElement>, value: boolean) => void;
 	position?: Position;
-	size?: Size;
 	className?: string | undefined;
 	disabled?: boolean | undefined;
-	/** Makes the radio non-interactive but visually distinct from disabled */
 	readOnly?: boolean;
-	/** Error message — renders below the radio with a red error icon */
 	error?: string;
-	/** Warning message — renders below the radio with a yellow warning icon */
 	warning?: string;
+	focused?: boolean;
 }
 
 const Radio: React.FC<RadioProps> = (props) => {
@@ -43,32 +41,31 @@ const Radio: React.FC<RadioProps> = (props) => {
 		defaultChecked,
 		onChange,
 		position = 'left',
-		size = 'sm',
 		className,
 		disabled,
 		readOnly,
 		error,
 		warning,
+		focused = false,
 	} = props;
 
-	// Lock controlled vs uncontrolled on first render
 	const { current: isControlled } = useRef<boolean>(checked !== undefined);
 
-	// Uncontrolled state
 	const [uncontrolledChecked, setUncontrolledChecked] = useState<boolean | undefined>(
 		defaultChecked
 	);
 
+	const [isFocused, setIsFocused] = useState(false);
+
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-		// Prevent change if readOnly
 		if (readOnly) return;
 
-		// Safely extract fieldValue; fall back to event.target.checked
 		const helperResult = (
 			inputHelper as unknown as
 				| ((e: React.ChangeEvent<HTMLInputElement>) => { fieldValue?: boolean })
 				| undefined
 		)?.(event);
+
 		const fieldValue = helperResult?.fieldValue ?? event.target.checked;
 
 		if (isControlled) {
@@ -80,10 +77,32 @@ const Radio: React.FC<RadioProps> = (props) => {
 
 	const isChecked: boolean | undefined = isControlled ? checked : uncontrolledChecked;
 
-	const iconClassName = classes(styles[`icon-${size}`], styles.icon);
-
 	const hasError = Boolean(error);
 	const hasWarning = Boolean(warning);
+
+	const renderIcon = () => {
+		if (disabled) {
+			return isChecked ? <DisableSelected /> : <DisableUnSelected />;
+		}
+
+		if (readOnly) {
+			return isChecked ? <ReadOnlySelected /> : <ReadOnlyUnSelected />;
+		}
+
+		if (hasError) {
+			return isChecked ? <SelectedError /> : <UnSelectedError />;
+		}
+
+		if (hasWarning) {
+			return isChecked ? <Selected /> : <UnSelected />;
+		}
+
+		if (isFocused || focused) {
+			return isChecked ? <FocusSelected /> : <FocusUnSelected />;
+		}
+
+		return isChecked ? <Selected /> : <UnSelected />;
+	};
 
 	return (
 		<div className={classes(styles.container, className)}>
@@ -102,65 +121,25 @@ const Radio: React.FC<RadioProps> = (props) => {
 					type='radio'
 					checked={isChecked}
 					onChange={handleChange}
+					onFocus={() => setIsFocused(true)}
+					onBlur={() => setIsFocused(false)}
 				/>
 
-				{/* Disabled states */}
-				{disabled && isChecked && (
-					<DisabledSelected className={iconClassName} />
-				)}
-				{disabled && !isChecked && (
-					<DisabledUnSelected className={iconClassName} />
-				)}
-
-				{/* ReadOnly states */}
-				{!disabled && readOnly && isChecked && (
-					<ReadOnlySelected className={iconClassName} />
-				)}
-				{!disabled && readOnly && !isChecked && (
-					<ReadOnlyUnSelected className={iconClassName} />
-				)}
-
-				{/* Error states */}
-				{!disabled && !readOnly && hasError && isChecked && (
-					<SelectedError data-elem='icon' className={iconClassName} />
-				)}
-				{!disabled && !readOnly && hasError && !isChecked && (
-					<UnSelectedError data-elem='icon' className={iconClassName} />
-				)}
-
-				{/* Warning unselected state */}
-				{!disabled && !readOnly && hasWarning && !isChecked && (
-					<UnSelected data-elem='icon' className={iconClassName} />
-				)}
-
-				{/* Focus unselected — UnSelected hides on focus, FocusUnSelected shows */}
-				{!disabled && !readOnly && !hasError && !hasWarning && !isChecked && (
-					<>
-						<UnSelected data-elem='icon' className={classes(iconClassName, styles.iconDefault)} />
-						<FocusUnSelected data-elem='icon' className={classes(iconClassName, styles.iconFocus)} />
-					</>
-				)}
-
-				{/* Normal selected state */}
-				{!disabled && !readOnly && !hasError && isChecked && (
-					<Selected data-elem='icon' className={iconClassName} />
-				)}
+				{renderIcon()}
 
 				{label && <span data-elem='label'>{label}</span>}
 			</label>
 
-			{/* Error feedback message */}
 			{hasError && (
 				<div className={styles.feedback} data-elem='error-message'>
-				<StatusIndicatorError className={styles.feedbackIcon || ''} />
+					<StatusIndicatorError />
 					<span className={styles.feedbackTextError}>{error}</span>
 				</div>
 			)}
 
-			{/* Warning feedback message */}
 			{hasWarning && (
 				<div className={styles.feedback} data-elem='warning-message'>
-				<StatusIndicatorWarning className={styles.feedbackIcon || ''} />
+					<StatusIndicatorWarning />
 					<span className={styles.feedbackTextWarning}>{warning}</span>
 				</div>
 			)}

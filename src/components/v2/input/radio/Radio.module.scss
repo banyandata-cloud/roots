@@ -1,6 +1,5 @@
 @import '../../../styles';
 
-/* ── Container ───────────────────────────────────────────── */
 .container {
 	display: flex;
 	flex-direction: column;
@@ -8,7 +7,6 @@
 	align-items: flex-start;
 }
 
-/* ── Root label ──────────────────────────────────────────── */
 .root {
 	cursor: pointer;
 	gap: 8px;
@@ -16,45 +14,40 @@
 
 	&.position-left {
 		@include flex(row, flex-start);
+		align-items: center;
 	}
 	&.position-right {
 		@include flex(row-reverse, flex-end);
+		align-items: center;
 	}
 
-	// ── Disabled ──────────────────────────────────────────────
 	&.disabled {
 		cursor: default;
 		color: $grey4;
 	}
 
-	// ── Read-only ─────────────────────────────────────────────
 	&.readonly {
 		cursor: default;
 		pointer-events: none;
 		color: $grey3;
 	}
 
-	// ── Selected ──────────────────────────────────────────────
 	&.selected {
 		color: $text-color;
 	}
 
-	// ── Error ─────────────────────────────────────────────────
 	&.error {
 		color: $text-color;
 	}
 
-	// ── Warning ───────────────────────────────────────────────
 	&.warning {
 		color: $text-color;
 	}
 
-	// ── Hover ─────────────────────────────────────────────────
 	&:hover:not(.disabled):not(.readonly) {
 		color: $text-color;
 	}
 
-	// ── Hidden native input ────────────────────────────────────
 	input[type='radio'] {
 		opacity: 0;
 		z-index: 1;
@@ -63,46 +56,12 @@
 		height: 1px;
 	}
 
-	// ── Icon sizing ────────────────────────────────────────────
-	.icon {
-		display: inline-block;
-		border-radius: 50%;
-		flex-shrink: 0;
-
-		&.icon-sm {
-			width: 1rem;
-			height: 1rem;
-		}
-		&.icon-md {
-			width: 1.25rem;
-			height: 1.25rem;
-		}
-		&.icon-lg {
-			width: 1.5rem;
-			height: 2rem;
-		}
-	}
-
-	// ── Focus ring via CSS :focus-within ───────────────────────
-	.icon--focus {
-		display: none;
-	}
-
-	&:focus-within {
-		.icon--default {
-			display: none;
-		}
-		.icon--focus {
-			display: inline-block;
-		}
-	}
-
 	[data-elem='label'] {
 		user-select: none;
+		line-height: 1.5;
 	}
 }
 
-// ── Feedback messages ──────────────────────────────────────────
 .feedback {
 	display: flex;
 	flex-direction: row;
@@ -110,22 +69,14 @@
 	gap: 8px;
 }
 
-.feedback-icon {
-	width: 1rem;
-	height: 1rem;
-	flex-shrink: 0;
+.feedbackTextError {
+	font-size: 0.75rem;
+	line-height: 1rem;
+	color: $text-color;
 }
 
-.feedback-text {
-	&--error {
-		font-size: 0.75rem;
-		line-height: 1rem;
-		color: $text-color;
-	}
-
-	&--warning {
-		font-size: 0.75rem;
-		line-height: 1rem;
-		color: $text-color;
-	}
+.feedbackTextWarning {
+	font-size: 0.75rem;
+	line-height: 1rem;
+	color: $text-color;
 }
