@@ -50,7 +50,7 @@ const reducer = (state: PaginationState, action: PaginationAction): PaginationSt
 		case 'SET_PAGE':
 			return {
 				...state,
-				currentPage: action.payload ?? 1,
+				currentPage: action.payload || 1,
 			};
 		case 'SET_STEP':
 			return {

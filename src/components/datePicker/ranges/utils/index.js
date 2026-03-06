@@ -1,24 +1,44 @@
-import { getUnixTime, sub } from 'date-fns';
-import { getDatesInStringFormat } from '../../../../utils';
+import { getUnixTime } from 'date-fns';
 
-export const getDateAndUnixRange = (duration) => {
-	const startingDate = sub(new Date(), duration);
+import { subDays, subHours, subMonths } from 'date-fns';
 
-	const endingDate = new Date();
+export const getDateAndUnixRange = (rangeObj = {}) => {
+	const now = new Date();
+	const nowUnix = getUnixTime(now);
 
-	const dates = getDatesInStringFormat({
-		startingDate,
-		endingDate,
-	});
+	if (rangeObj.hours) {
+		const startDate = subHours(now, rangeObj.hours);
+		const startUnix = getUnixTime(startDate);
 
-	const unix = [
-		getUnixTime(startingDate.setHours(0, 0, 0, 0)),
-		getUnixTime(endingDate.setHours(23, 59, 59, 59)),
-	];
+		return {
+			dates: [startDate, now],
+			unix: [startUnix, nowUnix],
+		};
+	}
+
+	if (rangeObj.days) {
+		const startDate = subDays(now, rangeObj.days);
+		const startUnix = getUnixTime(startDate);
+
+		return {
+			dates: [startDate, now],
+			unix: [startUnix, nowUnix],
+		};
+	}
+
+	if (rangeObj.months) {
+		const startDate = subMonths(now, rangeObj.months);
+		const startUnix = getUnixTime(startDate);
+
+		return {
+			dates: [startDate, now],
+			unix: [startUnix, nowUnix],
+		};
+	}
 
 	return {
-		dates,
-		unix,
+		dates: [],
+		unix: [],
 	};
 };
 
