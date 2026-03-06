@@ -93,6 +93,12 @@ body {
 	src: url('../../fonts/Poppins-Black.ttf') format('truetype');
 }
 
+@font-face {
+	font-family: Jakarta;
+	font-style: normal;
+	src: url('../../fonts/Plus-Jakarta.ttf') format('truetype');
+}
+
 .app-container {
 	display: flex;
 	height: 100%;

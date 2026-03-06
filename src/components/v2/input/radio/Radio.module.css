@@ -10,60 +10,52 @@
   gap: 8px;
   color: var(--grey1);
 }
-
 .root.position-left {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  align-items: center;
 }
-
 .root.position-right {
   display: flex;
   flex-direction: row-reverse;
   justify-content: flex-end;
   align-items: center;
+  align-items: center;
 }
-
 .root.disabled {
   cursor: default;
   color: var(--grey4);
 }
-
 .root.readonly {
   cursor: default;
   pointer-events: none;
   color: var(--grey3);
 }
-
 .root.selected {
   color: var(--text-color);
 }
-
 .root.error {
   color: var(--text-color);
 }
-
 .root.warning {
   color: var(--text-color);
 }
-
 .root:hover:not(.disabled):not(.readonly) {
   color: var(--text-color);
 }
-
-.root input[type="radio"] {
+.root input[type=radio] {
   opacity: 0;
   z-index: 1;
   position: absolute;
   width: 1px;
   height: 1px;
 }
-
-.root [data-elem="label"] {
-  user-select: none;
+.root [data-elem=label] {
   -webkit-user-select: none;
-  -moz-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   line-height: 1.5;
 }
 
@@ -77,11 +69,12 @@
 .feedbackTextError {
   font-size: 0.75rem;
   line-height: 1rem;
-  color: var(--text-color, #161616);
+  color: var(--text-color);
 }
 
 .feedbackTextWarning {
   font-size: 0.75rem;
   line-height: 1rem;
-  color: var(--text-color, #161616);
-}
+  color: var(--text-color);
+  font-family: Jakarta;
+}/*# sourceMappingURL=Radio.module.css.map */
