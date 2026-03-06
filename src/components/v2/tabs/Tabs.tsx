@@ -122,9 +122,10 @@ const Tabs = (props: TabsProps): ReactElement => {
 							)}>
 							{dropdown ? (
 								<Dropdown
-									className={`${String(styles.dropdown)} ${String(
-										isActive && styles.active
-									)}`}
+									className={classes(
+										styles.dropdown,
+										isActive ? styles.active : ''
+									)}
 									onChange={(_: SyntheticEvent, selectedValue) => {
 										handleDropClick(selectedValue?.toString() ?? '');
 										setActiveTab(index);
