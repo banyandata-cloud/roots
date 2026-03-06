@@ -5,9 +5,19 @@ import { Text } from '../text';
 import styles from './ErrorBoundaryWrapper.module.css';
 import { ErrorBoundaryVector } from './assets';
 
-const ErrorBoundaryWrapper = (props) => {
-	const { resetErrorBoundary, className, custom, error } = props;
+interface ErrorBoundaryWrapperProps {
+	resetErrorBoundary: () => void;
+	className?: string;
+	custom?: React.ReactNode;
+	error: Error;
+}
 
+const ErrorBoundaryWrapper = ({
+	resetErrorBoundary,
+	className,
+	custom,
+	error,
+}: ErrorBoundaryWrapperProps) => {
 	return (
 		custom ?? (
 			<div className={classes(styles.root, className)}>
@@ -31,12 +41,6 @@ const ErrorBoundaryWrapper = (props) => {
 			</div>
 		)
 	);
-};
-
-ErrorBoundaryWrapper.defaultProps = {
-	custom: null,
-	className: '',
-	resetErrorBoundary: () => {},
 };
 
 export default ErrorBoundaryWrapper;

@@ -3,7 +3,7 @@ import { Button } from '../../buttons';
 import styles from './Ranges.module.css';
 import { dateRanges } from './utils';
 
-const CustomRanges = ({ customRanges, selectedRange, setSelectedRange, setFixedRange }) => {
+const CustomRanges = ({ customRanges, setSelectedRange, setFixedRange, fixedRange }) => {
 	const selectFixedDateRange = (dateRange, title) => {
 		setSelectedRange(dateRange);
 		setFixedRange(title);
@@ -12,8 +12,7 @@ const CustomRanges = ({ customRanges, selectedRange, setSelectedRange, setFixedR
 	return (
 		<div className={styles.root}>
 			{dateRanges(customRanges)?.map(({ dateRange, title }) => {
-				const selectedFixedDateRange =
-					dateRange.unix.toString() === selectedRange?.unix?.toString();
+				const selectedFixedDateRange = fixedRange === title;
 
 				return (
 					<Button

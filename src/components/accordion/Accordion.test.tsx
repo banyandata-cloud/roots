@@ -1,5 +1,6 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import Accordion from './Accordion';
+import { pre } from 'framer-motion/client';
 
 // MOCKS
 

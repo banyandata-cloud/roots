@@ -1,5 +1,10 @@
-const MagnifyingGlass = (props) => {
-	const { className } = props;
+import React from 'react';
+
+interface MagnifyingGlassProps {
+	className?: string;
+}
+
+const MagnifyingGlass: React.FC<MagnifyingGlassProps> = ({ className = '' }) => {
 	return (
 		<svg
 			className={className}
@@ -24,10 +29,6 @@ const MagnifyingGlass = (props) => {
 			/>
 		</svg>
 	);
-};
-
-MagnifyingGlass.defaultProps = {
-	className: '',
 };
 
 export default MagnifyingGlass;
