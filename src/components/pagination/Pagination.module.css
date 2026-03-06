@@ -3,6 +3,11 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: stretch;
+}
+.root::-webkit-scrollbar {
+  display: none;
+}
+.root {
   -ms-overflow-style: none;
   scrollbar-width: none;
   padding: 0.4375rem 1rem;
@@ -14,9 +19,6 @@
   transition-property: background-color, color, bottom, width;
   transition-duration: 0.33s;
   transition-timing-function: ease-out;
-}
-.root::-webkit-scrollbar {
-  display: none;
 }
 .root.floating {
   background: var(--light-color1);
@@ -44,9 +46,6 @@
   align-items: center;
   flex-grow: 0;
   max-width: 9.5rem;
-  background-color: transparent;
-  padding: 0;
-  height: 100%;
 }
 .root .left-options .row-switcher > [data-elem=component2] {
   height: 100%;
@@ -73,6 +72,11 @@
   background: var(--white);
   width: 0.0313rem;
   height: 50%;
+}
+.root .left-options .row-switcher {
+  background-color: transparent;
+  padding: 0;
+  height: 100%;
 }
 .root .left-options .row-switcher .dropdown {
   height: 100%;
@@ -158,9 +162,6 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: transparent;
-  text-align: center;
-  border: 1px solid transparent;
 }
 .root .page-numbers > .pageSelect .number.custom-number {
   border-radius: 0;
@@ -168,6 +169,11 @@
   width: auto;
   white-space: nowrap;
   padding-inline: 0.3125rem;
+}
+.root .page-numbers > .pageSelect .number {
+  background-color: transparent;
+  text-align: center;
+  border: 1px solid transparent;
 }
 .root .page-numbers > .pageSelect .number:not([data-active=true]) {
   display: none;
@@ -226,9 +232,6 @@
   align-items: center;
   width: auto;
   min-width: auto;
-  padding: 0;
-  flex: 1;
-  background: transparent;
 }
 .root .options .form > [data-elem*=component] {
   width: 100%;
@@ -237,8 +240,19 @@
 .root .options .form > [data-elem*=component] > * {
   height: 100%;
 }
+.root .options .form {
+  padding: 0;
+  flex: 1;
+  background: transparent;
+}
 .root .options .form .jump-to-page {
   background: transparent;
+}
+.root .options .form .jump-to-page > [data-elem*=component] {
+  overflow: hidden;
+  height: 100%;
+}
+.root .options .form .jump-to-page {
   padding: 0rem;
   height: 100%;
   width: -moz-fit-content;
@@ -247,10 +261,6 @@
   border: 0.0313rem solid var(--secondary-color2);
   box-shadow: 0.1875rem 0.1875rem 0.25rem 0rem rgba(194, 194, 194, 0.12) inset;
   gap: 0;
-}
-.root .options .form .jump-to-page > [data-elem*=component] {
-  overflow: hidden;
-  height: 100%;
 }
 .root .options .form .jump-to-page .inputbox {
   height: 100%;

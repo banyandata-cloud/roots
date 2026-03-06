@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { classes, inputHelper } from '../../../../utils/utils';
 import { CheckboxIcon } from '../../../icons';
 import type { CheckboxProps, IconType } from '../types';
@@ -28,6 +28,10 @@ const Checkbox: React.FC<CheckboxProps> = (props) => {
 		error,
 	} = props;
 
+	const [keyboardFocused, setKeyboardFocused] = useState(false);
+	const isKeyboardNav = useRef(false);
+	const isSelfClick = useRef(false);
+
 	// Track controlled/uncontrolled mode once on first render
 	const { current: isControlled } = useRef<boolean>(checked !== undefined);
 
@@ -36,8 +40,24 @@ const Checkbox: React.FC<CheckboxProps> = (props) => {
 		defaultChecked
 	);
 
+	useEffect(() => {
+		// Set keyboard nav flag when Tab is pressed
+		const handleKeyDown = (e: KeyboardEvent) => {
+			if (e.key === 'Tab') isKeyboardNav.current = true;
+		};
+		// Reset keyboard nav flag on any mouse click anywhere
+		const handleMouseDown = () => {
+			isKeyboardNav.current = false;
+		};
+		document.addEventListener('keydown', handleKeyDown);
+		document.addEventListener('mousedown', handleMouseDown);
+		return () => {
+			document.removeEventListener('keydown', handleKeyDown);
+			document.removeEventListener('mousedown', handleMouseDown);
+		};
+	}, []);
+
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-		// Prefer your helper if present; fall back to standard target.checked for type safety
 		const helperResult = (
 			inputHelper as unknown as (
 				e: React.ChangeEvent<HTMLInputElement>
@@ -57,6 +77,10 @@ const Checkbox: React.FC<CheckboxProps> = (props) => {
 
 	return (
 		<label
+			onMouseDown={() => {
+				// If already keyboard focused and clicking self, keep ring
+				if (keyboardFocused) isSelfClick.current = true;
+			}}
 			className={classes(
 				styles.root,
 				styles[`position-${position}`],
@@ -66,17 +90,29 @@ const Checkbox: React.FC<CheckboxProps> = (props) => {
 				error ? styles.error : '',
 				error && isChecked ? styles['error-checked'] : '',
 				isChecked ? styles.selected : '',
+				keyboardFocused ? styles['keyboard-focused'] : '',
 				className
 			)}>
 			<input
 				disabled={disabled || readOnly}
 				type='checkbox'
+				tabIndex={0}
 				defaultChecked={defaultChecked}
-				{...(isControlled
-					? {
-							checked: !!checked,
-						}
-					: {})}
+				onFocus={() => {
+					if (isKeyboardNav.current) {
+						setKeyboardFocused(true);
+					}
+				}}
+				onBlur={() => {
+					if (isSelfClick.current) {
+						// Clicking self — keep ring, reset flag
+						isSelfClick.current = false;
+						return;
+					}
+					// Tabbing away or clicking elsewhere — remove ring
+					setKeyboardFocused(false);
+				}}
+				{...(isControlled ? { checked: !!checked } : {})}
 				onChange={handleChange}
 			/>
 			<Icon className={classes(styles[`icon-${size}`], styles.icon)} />

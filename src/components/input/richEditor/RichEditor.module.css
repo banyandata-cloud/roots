@@ -105,11 +105,13 @@
   height: 100%;
   padding: 0.75rem 1rem;
   overflow-y: scroll;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
 }
 .root .editor > div::-webkit-scrollbar {
   display: none;
+}
+.root .editor > div {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 .root .editor > div > p:nth-child(1)::before {
   color: var(--mono-color2);

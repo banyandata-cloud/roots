@@ -3,7 +3,7 @@ import type { ComponentType } from 'react';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'Soft' | 'outlined' | 'ghost';
 export type ButtonTextSize = 'sm' | 'md';
-export type ButtonSize = 'xs' | 'sm' | 'md' | 'lg';
+export type ButtonSize = 'xs' | 'sm' | 'md' | 'lg' | 'auto';
 
 export interface ButtonProps extends Omit<BaseButtonProps, 'variant' | 'size' | 'component1'> {
 	variant?: ButtonVariant | undefined;

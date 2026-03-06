@@ -149,10 +149,6 @@
 .root .header .searchWrapper .searchButton {
   width: 1.25rem;
 }
-.root .header:hover {
-  background: var(--background-color4);
-  border-radius: 4px;
-}
 .root .header:hover .icon,
 .root .header:hover .title,
 .root .header:hover .title svg {
@@ -162,6 +158,10 @@
 .root .header:hover .searchWrapper {
   height: 2.5rem;
   display: block;
+}
+.root .header:hover {
+  background: var(--background-color4);
+  border-radius: 4px;
 }
 .root .expand-container {
   margin-left: 4px;
@@ -270,13 +270,13 @@
 .root.open > .collapsed-tail {
   display: none;
 }
-.root.active > .header {
-  background: var(--background-color4);
-  border-radius: 0.25rem;
-}
 .root.active > .header .icon,
 .root.active > .header .title,
 .root.active > .header .title svg {
   color: var(--primary-color4);
   fill: var(--primary-color4);
+}
+.root.active > .header {
+  background: var(--background-color4);
+  border-radius: 0.25rem;
 }/*# sourceMappingURL=HierarchyItem.module.css.map */

@@ -1,0 +1,11 @@
+@import '../../../../styles/_index';
+
+.root {
+	@include flex(column, flex-start, stretch);
+	background: $light-color3;
+	overflow: auto;
+	@include customScrollBar;
+	&.no-scroll {
+		overflow: hidden;
+	}
+}

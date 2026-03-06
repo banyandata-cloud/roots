@@ -166,7 +166,7 @@ const TableFilters = (props: TableFiltersProps) => {
 						})}
 						{!disabledSearch && (
 							<Button
-								size='auto'
+								size='md'
 								className={classes(
 									styles['adv-filter'],
 									filtersCount > 0 ? styles.filter : ''

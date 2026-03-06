@@ -12,10 +12,6 @@
 .root .label {
   font-size: 1rem;
   color: #484848;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.33333rem;
-  letter-spacing: 0.02667rem;
 }
 .root .label.required::after {
   content: " *";
@@ -24,16 +20,24 @@
 .root .label.disabled {
   color: rgba(22, 22, 22, 0.3019607843);
 }
-.root .info {
-  font-size: 1rem;
-  color: #484848;
+.root .label {
   font-style: normal;
   font-weight: 400;
   line-height: 1.33333rem;
   letter-spacing: 0.02667rem;
 }
+.root .info {
+  font-size: 1rem;
+  color: #484848;
+}
 .root .info.error-info {
   color: #da1e28;
+}
+.root .info {
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.33333rem;
+  letter-spacing: 0.02667rem;
 }
 .root .header {
   display: flex;
@@ -197,14 +201,16 @@
   overflow: hidden;
   white-space: nowrap;
   color: #161616;
+}
+.root .header .search .placeholder.disabled {
+  color: rgba(22, 22, 22, 0.3019607843);
+}
+.root .header .search .placeholder {
   font-size: 1.16667rem;
   font-style: normal;
   font-weight: 400;
   line-height: 1.5rem;
   letter-spacing: 0.01333rem;
-}
-.root .header .search .placeholder.disabled {
-  color: rgba(22, 22, 22, 0.3019607843);
 }
 .root .header .search .title {
   display: flex;
@@ -249,13 +255,15 @@
   justify-content: space-between;
   align-items: center;
   transform: rotate(180deg);
-  margin-right: 16px;
 }
 .root .header .search .icon-bundle .caret-icon.open {
   transform: rotate(0deg);
 }
 .root .header .search .icon-bundle .caret-icon.disabled {
   fill: rgba(22, 22, 22, 0.3019607843) !important;
+}
+.root .header .search .icon-bundle .caret-icon {
+  margin-right: 16px;
 }
 .root .header .search .icon-bundle > div {
   height: 16px;
@@ -331,14 +339,16 @@
   overflow: hidden;
   white-space: nowrap;
   color: #161616;
+}
+.root .header .select .placeholder.disabled {
+  color: rgba(22, 22, 22, 0.3019607843);
+}
+.root .header .select .placeholder {
   font-size: 1.16667rem;
   font-style: normal;
   font-weight: 400;
   line-height: 1.5rem;
   letter-spacing: 0.01333rem;
-}
-.root .header .select .placeholder.disabled {
-  color: rgba(22, 22, 22, 0.3019607843);
 }
 .root .header .select .title {
   display: flex;
@@ -448,15 +458,17 @@
   width: auto;
   border-radius: 0.3125rem;
   overflow-y: auto;
+}
+.body::-webkit-scrollbar {
+  display: none;
+}
+.body {
   -ms-overflow-style: none;
   scrollbar-width: none;
   min-height: 4rem;
   max-height: 25rem !important;
   outline: none;
   box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
-}
-.body::-webkit-scrollbar {
-  display: none;
 }
 .body.multi {
   padding-top: 0 !important;

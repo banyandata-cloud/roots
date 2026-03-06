@@ -63,6 +63,12 @@
 }
 .root label .input-wrapper > [data-elem=component2] .input {
   -moz-appearance: textfield;
+}
+.root label .input-wrapper > [data-elem=component2] .input::-webkit-outer-spin-button, .root label .input-wrapper > [data-elem=component2] .input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.root label .input-wrapper > [data-elem=component2] .input {
   flex: 1;
   background-color: var(--light-color3) !important;
   border: none;
@@ -71,10 +77,6 @@
   font-size: 0.875rem;
   line-height: 1.125rem;
   letter-spacing: 0.01rem;
-}
-.root label .input-wrapper > [data-elem=component2] .input::-webkit-outer-spin-button, .root label .input-wrapper > [data-elem=component2] .input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
 }
 .root label .input-wrapper > [data-elem=component2] .input:focus {
   outline: none;

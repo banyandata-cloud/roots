@@ -1,6 +1,6 @@
 import { forwardRef, isValidElement, useEffect, useState, type ForwardedRef } from 'react';
 import { classes } from '../../../utils';
-import { Button } from '../../buttons';
+import { Button } from '../../v2/buttons';
 import { BaseCell } from '../../cell';
 import { SortIcon } from '../../icons';
 import styles from './TableCell.module.css';
