@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Text — Snapshots matches default snapshot 1`] = `
+<div>
+  <span
+    class="root b2 regular-stroke"
+  >
+    Snapshot text
+  </span>
+</div>
+`;
+
+exports[`Text — Snapshots matches snapshot with multiple props 1`] = `
+<div>
+  <p
+    class="root h2 bold-stroke extra"
+    role="note"
+    style="font-style: italic; text-decoration: underline; font-weight: 600;"
+  >
+    Complex text
+  </p>
+</div>
+`;

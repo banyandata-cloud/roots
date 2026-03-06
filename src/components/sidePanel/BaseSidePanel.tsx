@@ -11,8 +11,9 @@ type TabsConfig = {
 };
 
 type ToggleTableDrawer = {
-	data?: { index?: number } & Record<string, unknown>;
-} & Record<string, unknown>;
+    open: boolean;
+    data: { index?: number } & Record<string, unknown>;
+};
 
 export interface BaseSidePanelProps {
 	className?: string;
@@ -37,10 +38,10 @@ export interface BaseSidePanelProps {
 	setToggleTableDrawer?: (next: ToggleTableDrawer) => void;
 
 	/** Zero-based active tab index to sync from parent */
-	activeTab?: number;
+	activeTab?: number | undefined;
 
 	/** Tabs configuration passed to <Tabs> */
-	tabsConfig?: TabsConfig;
+	tabsConfig?: TabsConfig | null | undefined;
 }
 
 const Header: React.FC<{ children?: React.ReactNode }> = ({ children }) => (

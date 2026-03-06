@@ -1,0 +1,6 @@
+.root.order-az {
+  transform: none;
+}
+.root.order-za {
+  transform: rotate(180deg);
+}/*# sourceMappingURL=Sort.module.css.map */

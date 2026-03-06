@@ -181,6 +181,7 @@ const TableRow = forwardRef((props: TableRowProps, ref: ForwardedRef<HTMLTableRo
 				}}
 				disabled={disabledChecking}
 				checked={checkStatus}
+				size='sm'
 				className={disabledChecking ? styles.disabled : undefined}
 			/>
 		);
@@ -225,6 +226,7 @@ const TableRow = forwardRef((props: TableRowProps, ref: ForwardedRef<HTMLTableRo
 				}}
 				disabled={disabledChecking}
 				checked={checkStatus}
+				size='sm'
 				className={disabledChecking ? styles.disabled : undefined}
 			/>
 		);

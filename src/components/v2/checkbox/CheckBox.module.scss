@@ -1,4 +1,4 @@
-@import '../../../../styles';
+@import '../../../styles';
 
 .root {
 	cursor: pointer;
@@ -192,7 +192,7 @@
 			+ .icon {
 				box-shadow: 0 0 0 0;
 				outline: 1px solid #3b82f6;
-				outline-offset: 1px;
+				outline-offset: 2px;
 				border-radius: 0px;
 			}
 		}

@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Pagination — Snapshot Rendering matches snapshot for initial render 1`] = `
+<div>
+  <div
+    class="root"
+  >
+    <div
+      class="left-options"
+    >
+      <div
+        data-testid="base-cell"
+      >
+        <div
+          data-testid="base-cell"
+        >
+          <div
+            data-testid="dropdown"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="page-numbers"
+    >
+      <div
+        class="pageSelect"
+      >
+        <span
+          class="active number"
+          data-active="true"
+          title="Page 1"
+        >
+          1
+        </span>
+        <span
+          class="number"
+          data-active="false"
+          title="Page 2"
+        >
+          2
+        </span>
+        <span
+          class="number"
+          data-active="false"
+          title="Page 3"
+        >
+          3
+        </span>
+        <span
+          class="number"
+          data-active="false"
+          title="Page 4"
+        >
+          4
+        </span>
+        <span
+          class="number"
+          data-active="false"
+          title="Page 5"
+        >
+          5
+        </span>
+      </div>
+    </div>
+    <div
+      class="options"
+    >
+      <div
+        data-testid="base-cell"
+      >
+        <form>
+          <div
+            data-testid="base-cell"
+          >
+            <input
+              class="inputbox"
+              data-testid="jump-input"
+              type="number"
+            />
+            <button
+              type="button"
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+`;
