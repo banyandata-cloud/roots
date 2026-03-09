@@ -21,6 +21,7 @@ interface TableHeaderProps
 		| 'uniqueKey'
 		| 'checkAsRadio'
 		| 'disableCheck'
+		| 'hideColumnLines'
 	> {
 	expandable?:
 		| ((params: { datum: Record<string, unknown>; index: number | undefined }) => ReactElement)
@@ -44,6 +45,7 @@ const TableHeader = ({
 	uniqueKey,
 	checkAsRadio,
 	disableCheck,
+	hideColumnLines,
 }: TableHeaderProps): ReactElement => {
 	return (
 		<thead data-elem='table-header' className={styles.root}>
@@ -63,6 +65,7 @@ const TableHeader = ({
 				uniqueKey={uniqueKey ?? ''}
 				checkAsRadio={checkAsRadio}
 				disableCheck={disableCheck}
+				{...(hideColumnLines !== undefined && { hideColumnLines: hideColumnLines! })}
 				datum={{
 					header: '__table_header__',
 				}}

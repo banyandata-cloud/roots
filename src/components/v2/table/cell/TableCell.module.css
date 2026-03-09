@@ -50,6 +50,9 @@
   font-weight: 600;
   line-height: 20px;
 }
+.root[data-elem=base-cell].header-cell.no-column-lines {
+  border-right: none !important;
+}
 .root[data-elem=base-cell].header-cell:not(:has(.sort-btn--active)):hover {
   background: #f5f5f5;
 }
@@ -159,6 +162,9 @@
   font-style: normal;
   font-weight: 400;
   line-height: 20px;
+}
+.root[data-elem=base-cell].body-cell.no-column-lines {
+  border-right: none !important;
 }
 .root[data-elem=base-cell].body-cell:hover .cell-text {
   color: #181d27 !important;

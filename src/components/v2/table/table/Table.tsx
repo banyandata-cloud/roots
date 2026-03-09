@@ -1,11 +1,10 @@
 import { isValidElement, useEffect, useRef, useState, type ReactElement } from 'react';
 import { classes } from '../../../../utils';
-import { Pagination } from '../../../pagination';
+import { Pagination } from '../../pagination';
 import BaseSidePanel from '../../../sidePanel/BaseSidePanel';
 import { BaseTableV2 } from '../baseTable';
 import type { TableDrawerToggle, TableProps } from '../types';
 import styles from './Table.module.css';
-import { TableFilters } from './TableFilters';
 
 const SIZE_MAP = {
 	sm: 9.063,
@@ -31,34 +30,24 @@ const Table = ({
 	loading = false,
 	onIntersection,
 	isFloating = false,
-	disabledFilterOptions = {
-		search: true,
-	},
-	rightActions,
 	onSort,
 	sortValue,
 	rowHeight = 'md',
 	onRowClick,
 	defaultActiveIndex,
-	tableInfo,
 	dataLabel,
-	jumpLabel,
 	tableDrawerProps,
-	searchProps,
-	filtersCount = 0,
 	emptyPlaceholder,
 	onCheck,
 	checkAsRadio,
+	tableHeader,
+	hideColumnLines = false,
 	disableCheck,
-	clearSearch,
+
 	defaultCheckedRows,
 }: TableProps): ReactElement => {
 	const ref = useRef<HTMLTableElement | null>(null);
 	const paginationRef = useRef<HTMLDivElement | null>(null);
-
-	const { onSearch, placeholder: searchPlaceholder = 'Search', onClear } = searchProps ?? {};
-
-	const { title: tableTitle = '', description: tableDescription = '' } = tableInfo ?? {};
 
 	const [floating, setFloating] = useState<boolean>(false);
 	const [hiddenColumns, setHiddenColumns] = useState<Record<string, boolean | null>>();
@@ -179,25 +168,7 @@ const Table = ({
 
 	return (
 		<div className={classes(styles.root, className)}>
-			<TableFilters
-				className={styles.filters}
-				{...{
-					disabledFilterOptions,
-					headerData,
-					hiddenColumns,
-					setHiddenColumns,
-				}}
-				tableTitleText={tableTitle}
-				tableDescriptionText={tableDescription}
-				onSearch={onSearch}
-				onClear={onClear}
-				searchPlaceholder={searchPlaceholder}
-				toggleDrawer={toggleDrawer}
-				filtersCount={filtersCount}
-				rightActions={rightActions}
-				clearSearch={clearSearch}
-			/>
-
+			{tableHeader}
 			<BaseTableV2
 				{...{
 					ref,
@@ -216,6 +187,7 @@ const Table = ({
 					onCheck,
 					checkAsRadio,
 					disableCheck,
+					hideColumnLines,
 					...(defaultCheckedRows !== undefined && { defaultCheckedRows }),
 				}}
 				loading={loading}
@@ -228,7 +200,6 @@ const Table = ({
 					{...paginationData}
 					floating={floating}
 					dataLabel={dataLabel}
-					jumpLabel={jumpLabel}
 					loading={loading}
 				/>
 			)}

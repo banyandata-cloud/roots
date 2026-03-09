@@ -4,6 +4,7 @@ import type {
 	Dispatch,
 	FC,
 	ReactElement,
+	ReactNode,
 	SetStateAction,
 } from 'react';
 import type { TableCellProps } from '../cell/types';
@@ -109,6 +110,8 @@ export interface TableProps {
 	loading?: boolean;
 	onIntersection?: (isVisible: boolean) => void;
 	isFloating?: boolean;
+	tableHeader?: ReactNode;
+	hideColumnLines?: boolean;
 	disabledFilterOptions?: {
 		search?: boolean;
 	};
@@ -129,7 +132,6 @@ export interface TableProps {
 	};
 
 	dataLabel?: string;
-	jumpLabel?: string;
 	clearSearch?: boolean | undefined;
 	tableDrawerProps?:
 		| TableDrawerProps

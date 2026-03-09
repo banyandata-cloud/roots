@@ -29,6 +29,7 @@ interface TableRowProps
 		| 'uniqueKey'
 		| 'checkAsRadio'
 		| 'disableCheck'
+		| 'hideColumnLines'
 	> {
 	tableData?: Record<string, unknown>[] | undefined;
 	expandable?:
@@ -61,6 +62,7 @@ const TableRow = forwardRef((props: TableRowProps, ref: ForwardedRef<HTMLTableRo
 		uniqueKey = '',
 		checkAsRadio,
 		disableCheck,
+		hideColumnLines,
 	} = props;
 
 	const { sortValue, onSort } = props;
@@ -172,6 +174,9 @@ const TableRow = forwardRef((props: TableRowProps, ref: ForwardedRef<HTMLTableRo
 			...item,
 		};
 
+		const { hideColumnLines: hideColumnLinesProp, ...cellPropsWithoutHideColumnLines } =
+			cellProps;
+
 		const getCustomCell = customCells?.[type];
 		const CustomCell = typeof getCustomCell === 'function' ? getCustomCell()[item.id] : null;
 
@@ -183,7 +188,7 @@ const TableRow = forwardRef((props: TableRowProps, ref: ForwardedRef<HTMLTableRo
 					{...(typeof cellContent === 'string' && {
 						cellTitle: cellContent,
 					})}
-					{...cellProps}
+					{...cellPropsWithoutHideColumnLines}
 					expandableProps={expandableProps}
 					toggleDrawer={(i: number, standalone: boolean) => {
 						toggleDrawer?.({
@@ -197,7 +202,7 @@ const TableRow = forwardRef((props: TableRowProps, ref: ForwardedRef<HTMLTableRo
 		return (
 			<TableCellV2
 				key={item.id}
-				{...cellProps}
+				{...cellPropsWithoutHideColumnLines}
 				tabIndex={type === 'body' ? 0 : item.sort || item.columnFilter ? -1 : 0}
 				id={item.id}
 				_index={_index}
@@ -212,6 +217,7 @@ const TableRow = forwardRef((props: TableRowProps, ref: ForwardedRef<HTMLTableRo
 				sortValue={sortValue}
 				rowHeight={rowHeight}
 				component1={component1}
+				{...(hideColumnLines !== undefined && { hideColumnLines })}
 				toggleDrawer={(i: number, standalone: boolean) => {
 					toggleDrawer?.({
 						data: { datum, index: i, standalone },

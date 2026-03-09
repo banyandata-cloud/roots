@@ -32,6 +32,7 @@ interface BaseTableProps
 		| 'uniqueKey'
 		| 'checkAsRadio'
 		| 'disableCheck'
+		| 'hideColumnLines'
 	> {
 	expandable?:
 		| ((params: { datum: Record<number, unknown>; index: number | undefined }) => ReactElement)
@@ -61,6 +62,7 @@ const BaseTable = forwardRef(
 			checkAsRadio,
 			disableCheck,
 			defaultCheckedRows,
+			hideColumnLines,
 		}: BaseTableProps,
 		ref: ForwardedRef<HTMLTableElement>
 	): ReactElement => {
@@ -109,6 +111,9 @@ const BaseTable = forwardRef(
 							checkAsRadio,
 							rowHeight,
 							uniqueKey,
+							...(hideColumnLines !== undefined && {
+								hideColumnLines: hideColumnLines!,
+							}),
 						}}
 					/>
 				)}
@@ -132,6 +137,9 @@ const BaseTable = forwardRef(
 							uniqueKey,
 							checkAsRadio,
 							disableCheck,
+							...(hideColumnLines !== undefined && {
+								hideColumnLines: hideColumnLines!,
+							}),
 						}}
 					/>
 				)}

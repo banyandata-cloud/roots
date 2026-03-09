@@ -67,6 +67,7 @@ const TableCell = forwardRef((props: TableCellProps, ref: ForwardedRef<HTMLTable
 		onFilter,
 		filterValue = [],
 		tabIndex,
+		hideColumnLines,
 	} = props;
 
 	const [sortState, setSortState] = useState<SortType>('default');
@@ -134,6 +135,7 @@ const TableCell = forwardRef((props: TableCellProps, ref: ForwardedRef<HTMLTable
 					styles[`sticky-${String(sticky)}`],
 					type === 'header' && (sort || columnFilter) && styles.sortable,
 					isCentered && styles.centered,
+					hideColumnLines && styles['no-column-lines'],
 					className
 				),
 				attrs: {

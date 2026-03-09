@@ -24,6 +24,7 @@ export interface TableCellProps
 	onFilter?: (id: string, selected: string[]) => void;
 	filterValue?: string[];
 	tabIndex?: number | undefined;
+    hideColumnLines?: boolean;
 	expandableProps?:
 		| ((params: { datum: Record<string, unknown>; index: number }) => boolean)
 		| Record<string, unknown>

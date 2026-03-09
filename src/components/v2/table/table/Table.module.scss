@@ -30,8 +30,6 @@
 		overflow: hidden;
 		@include removeScrollbar;
 
-		// customizing drawer of table
-
 		&.standalone {
 			> [data-elem='body'] {
 				@include removeScrollbar;

@@ -8,4 +8,11 @@
 	&.no-scroll {
 		overflow: hidden;
 	}
+
+	&.hide-column-lines {
+		[data-elem='table-header'] [data-elem='base-cell'],
+		[data-elem='table-body'] [data-elem='base-cell'] {
+			border-right: none !important;
+		}
+	}
 }
