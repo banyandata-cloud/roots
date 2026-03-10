@@ -51,7 +51,7 @@ const BreadCrumbs: React.FC<BreadCrumbsProps> = ({ crumbs = [], className = '' }
 	return (
 		<div className={classes(styles.root, className)}>
 			<Button
-				ref={(el: HTMLDivElement | null) => {
+				ref={(el: HTMLButtonElement | null) => {
 					setAnchorEl(el);
 				}}
 				onClick={() => {

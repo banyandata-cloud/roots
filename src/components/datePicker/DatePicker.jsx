@@ -13,7 +13,6 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { useOutsideClickListener } from '../../hooks';
 import { classes, getDayInfo } from '../../utils';
 import { Button } from '../buttons';
-import { DatePickerV2 } from '../datePickerV2';
 import { ErrorBoundaryWrapper } from '../errorBoundary';
 import { CalenderIcon, CaretIcon, ClockIcon } from '../icons';
 import { Popper } from '../popper';
@@ -77,10 +76,6 @@ const DatePicker = (props) => {
 		showCustomRanges,
 		v2,
 	} = props;
-
-	if (v2) {
-		return <DatePickerV2 {...props} />;
-	}
 
 	const [openDatePicker, setOpenDatePicker] = useState(false);
 	const [openCustomRange, setOpenCustomRange] = useState(false);

@@ -113,7 +113,7 @@ exports[`TextField — Snapshot Tests (UI regression protection) matches snapsho
           <button
             class="root sm border-radius-default root contained root radius-default contained primary button error"
             data-elem="base-cell"
-            data-testid="-test"
+            data-testid="-btn-test"
             title=""
             type="button"
           >
