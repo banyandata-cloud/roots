@@ -63,7 +63,7 @@ export const epochToFormattedDate = (
 
 		const timeFormat: Record<TimeFormat, string> = {
 			24: `${hours}:${minutes}:${seconds} Hrs`,
-			12: `${hours12}:${minutes}:${seconds} ${meridian}`,
+			12: `${hours12.toString()}:${minutes}:${seconds} ${meridian}`,
 		};
 
 		return timeFormat[format as TimeFormat];
