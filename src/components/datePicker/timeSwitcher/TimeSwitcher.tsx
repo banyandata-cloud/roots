@@ -5,7 +5,7 @@ import { Text } from '../../text';
 import { calculateMeridian } from '../utils';
 import styles from './TimeSwitcher.module.css';
 
-// --- Types ---
+// Types
 
 interface TimeSlot {
 	HOURS?: number | undefined;
@@ -43,7 +43,7 @@ interface TimeSwitcherProps {
 	valueAsRange?: boolean | undefined;
 }
 
-// --- TimeCounter ---
+// TimeCounter
 
 const TimeCounter = ({
 	activeTimeSelection = {},
@@ -156,7 +156,7 @@ const TimeCounter = ({
 	);
 };
 
-// --- TimeSwitcher ---
+// TimeSwitcher
 
 const TimeSwitcher = (props: TimeSwitcherProps): React.JSX.Element => {
 	const { valueAsRange } = props;

@@ -8,8 +8,6 @@ import { CalenderBody } from './body';
 import { CalenderFooter } from './footer';
 import { CalenderHeader } from './header';
 
-// --- Types ---
-
 export interface SelectedDate {
 	date?: number;
 	month?: string;
@@ -35,8 +33,8 @@ export interface TimeSlot {
 }
 
 export interface TimeRangeSelection {
-	next?: TimeSlot | undefined;
-	previous?: TimeSlot | undefined;
+	next?: TimeSlot;
+	previous?: TimeSlot;
 }
 
 export interface CustomRange {
@@ -294,6 +292,7 @@ const Calender = (props: CalenderProps): React.JSX.Element => {
 					disableDatesBefore={disableDatesBefore}
 					disableDatesAfter={disableDatesAfter}
 					enableFutureDates={enableFutureDates}
+					setFixedRange={setFixedRange}
 				/>
 			) : (
 				<ClockView
@@ -311,6 +310,8 @@ const Calender = (props: CalenderProps): React.JSX.Element => {
 				value={value}
 				customRanges={customRanges}
 				setFixedRange={setFixedRange}
+				setSelectedRange={setSelectedRange}
+				setSelectedDate={setSelectedDate}
 			/>
 		</div>
 	);

@@ -49,6 +49,7 @@ export interface DatesProps {
 	disableDatesBefore?: number | undefined;
 	enableFutureDates?: boolean | undefined;
 	disableDatesAfter?: number | undefined;
+	setFixedRange?: ((value: boolean) => void) | undefined;
 }
 
 const Dates = (props: DatesProps): React.JSX.Element => {
@@ -64,6 +65,7 @@ const Dates = (props: DatesProps): React.JSX.Element => {
 		disableDatesBefore,
 		enableFutureDates,
 		disableDatesAfter,
+		setFixedRange,
 	} = props;
 
 	const { monthAsNumber, year } = selectedMonth || {};
@@ -75,7 +77,10 @@ const Dates = (props: DatesProps): React.JSX.Element => {
 		() => getDatesInAMonth({ month: monthAsNumber, year }) as DatesInMonth
 	);
 
-	const [firstItem, lastItem] = selectedRange.unix ?? [];
+	const unixArr = selectedRange.unix ?? [];
+	const firstItem = unixArr[0];
+	const lastItem = unixArr[unixArr.length - 1];
+
 	const { days, dateObj } = datesInMonth;
 
 	useEffect(() => {
@@ -88,6 +93,8 @@ const Dates = (props: DatesProps): React.JSX.Element => {
 	}, [days]);
 
 	const dateSelection = (date: Date): void => {
+		setFixedRange?.(false);
+
 		if (range) {
 			setHoveredEndingDate(null);
 			setSelectedRange(rangeSelection({ selectedRange, date }));
@@ -169,8 +176,8 @@ const Dates = (props: DatesProps): React.JSX.Element => {
 				const isLastItem =
 					!isSameDayRange &&
 					isEqual(
-						fromUnixTime(lastItem!).setHours(23, 59, 59, 59),
-						new Date(date).setHours(23, 59, 59, 59)
+						fromUnixTime(lastItem!).setHours(0, 0, 0, 0),
+						new Date(date).setHours(0, 0, 0, 0)
 					);
 
 				const isFirstItemHovered =
@@ -192,12 +199,6 @@ const Dates = (props: DatesProps): React.JSX.Element => {
 						fromUnixTime(firstItem!)
 					);
 				}
-
-				console.log({
-					hoveredEndingDate,
-					firstItem: fromUnixTime(firstItem!),
-					isHoveringBeforeSelectedDate,
-				});
 
 				let isMidItem: boolean;
 				if (hoveredEndingDate) {
@@ -226,10 +227,10 @@ const Dates = (props: DatesProps): React.JSX.Element => {
 						: '',
 					isLastItem ? styles.maxInRange : '',
 					(isSameDayRange && isLastItemHovered) || isLastItemHovered
-						? styles['first-hovered']
+						? styles['last-hovered']
 						: '',
 					(isSameDayRange && isFirstItemHovered) || isFirstItemHovered
-						? styles['last-hovered']
+						? styles['first-hovered']
 						: '',
 					today ? styles.today : '',
 					todaySelected ? styles['today-selected'] : ''

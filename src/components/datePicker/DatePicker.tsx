@@ -39,8 +39,8 @@ interface CustomRange {
 }
 
 interface TimeSlot {
-	HOURS?: number | null | undefined;
-	MINS?: number | null | undefined;
+	HOURS?: number | undefined;
+	MINS?: number | undefined;
 	MER?: string | undefined;
 }
 
@@ -100,7 +100,7 @@ interface DatePickerProps {
 	enableFutureDates?: boolean;
 }
 
-// --- Constants ---
+// Constants
 
 const MONTH_NAMES: string[] = [
 	'January',
@@ -147,7 +147,7 @@ const getDefaultTimeRangeSelection = (value: number, limitHours: number): TimeRa
 	};
 };
 
-// --- Component ---
+// Component
 
 const DatePicker = (props: DatePickerProps): React.JSX.Element => {
 	const {
@@ -204,8 +204,8 @@ const DatePicker = (props: DatePickerProps): React.JSX.Element => {
 			const selected = getDayInfo(fromUnixTime(value as number));
 			return {
 				previous: {
-					HOURS: null,
-					MINS: null,
+					HOURS: undefined,
+					MINS: undefined,
 					MER: 'AM',
 				},
 				next: {

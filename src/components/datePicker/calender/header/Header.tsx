@@ -76,9 +76,6 @@ const CarouselSwitch = ({
 const Header = (props: HeaderProps): React.JSX.Element => {
 	const { range, dateSelectionView, timeSelectionView, setTimeRangeSelection } = props;
 	const showCarouselSwitcher = !dateSelectionView && !timeSelectionView;
-
-	// FIX: TimeSwitcher requires setTimeRangeSelection as non-optional.
-	// Provide a safe no-op fallback so it always receives a function, never undefined.
 	const safeSetTimeRangeSelection = (value: TimeRangeSelection): void => {
 		setTimeRangeSelection?.(value);
 	};
@@ -93,7 +90,7 @@ const Header = (props: HeaderProps): React.JSX.Element => {
 			{!range && <DateAndTimeSelection {...sanitizedProps} />}
 			{showCarouselSwitcher && <CarouselSwitch {...props} />}
 			<div className={styles['date-time-switch']}>
-				x{dateSelectionView && <DateSwitcher {...sanitizedProps} />}
+				{dateSelectionView && <DateSwitcher {...sanitizedProps} />}
 				{timeSelectionView && <TimeSwitcher {...sanitizedProps} />}
 			</div>
 		</div>
