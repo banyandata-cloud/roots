@@ -19,13 +19,23 @@
 }
 .root > div.minInRange {
   background-color: var(--secondary-color2);
-  border-radius: 1.5rem 0rem 0rem 1.5rem;
+  border-top-left-radius: 1.5rem;
+  border-bottom-left-radius: 1.5rem;
+  border-top-right-radius: 0rem;
+  border-bottom-right-radius: 0rem;
 }
 .root > div.minInRange .date {
   color: var(--white);
+  background-color: transparent;
+  border-radius: 0;
+}
+.root > div.minInRange .date.selected {
+  background-color: transparent;
+  border-radius: 0;
+  color: var(--white);
 }
 .root > div.minInRange:hover .date {
-  background: var(--secondary-color2);
+  background: transparent;
   color: var(--white);
   box-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);
 }
@@ -57,10 +67,21 @@
 }
 .root > div.maxInRange {
   background-color: var(--secondary-color2);
-  border-radius: 0rem 1.5rem 1.5rem 0rem;
+  border-top-left-radius: 0rem;
+  border-bottom-left-radius: 0rem;
+  border-top-right-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
 }
 .root > div.maxInRange .date {
   color: var(--white);
+  background-color: transparent;
+  border-radius: 0;
+}
+.root > div.maxInRange .date.selected {
+  background-color: var(--secondary-color2);
+  border-radius: 1.5rem;
+  color: var(--white);
+  z-index: 1;
 }
 .root > div.maxInRange.today-selected {
   display: flex;
@@ -90,7 +111,7 @@
   display: none;
 }
 .root > div.maxInRange:hover .date {
-  background: var(--secondary-color2);
+  background: transparent;
   color: var(--white);
   box-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);
 }
@@ -136,7 +157,10 @@
 }
 .root > div.first-hovered {
   background: var(--background-color5);
-  border-radius: 0rem 1.5rem 1.5rem 0rem;
+  border-top-left-radius: 1.5rem;
+  border-bottom-left-radius: 1.5rem;
+  border-top-right-radius: 0rem;
+  border-bottom-right-radius: 0rem;
 }
 .root > div.first-hovered .date {
   color: var(--secondary-color2);
@@ -156,7 +180,10 @@
 }
 .root > div.last-hovered {
   background: var(--background-color5);
-  border-radius: 1.5rem 0rem 0rem 1.5rem;
+  border-top-left-radius: 0rem;
+  border-bottom-left-radius: 0rem;
+  border-top-right-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
 }
 .root > div.last-hovered .date {
   color: var(--secondary-color2);

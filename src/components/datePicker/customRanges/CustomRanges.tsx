@@ -1,7 +1,33 @@
+import React from 'react';
 import styles from './CustomRanges.module.css';
 import { Button } from '../../buttons';
 import { dateRanges } from './utils';
 import { classes } from '../../../utils';
+
+interface DateRange {
+	dates: string[];
+	unix: number[];
+}
+
+interface CustomRange {
+	title: string;
+	type: string;
+	value: number;
+}
+
+interface SelectedRange {
+	dates?: string[];
+	unix?: number[];
+}
+
+interface CustomRangesProps {
+	customRanges?: CustomRange[] | undefined;
+	selectedRange?: SelectedRange | undefined;
+	setSelectedRange: (range: DateRange) => void;
+	setFixedRange: (title: string) => void;
+	setOpenCustomRange: (open: boolean) => void;
+	apply: (args: { rangeSelected: DateRange }) => void;
+}
 
 const CustomRanges = ({
 	customRanges,
@@ -10,8 +36,8 @@ const CustomRanges = ({
 	setFixedRange,
 	setOpenCustomRange,
 	apply,
-}) => {
-	const selectFixedDateRange = (dateRange, title) => {
+}: CustomRangesProps): React.JSX.Element => {
+	const selectFixedDateRange = (dateRange: DateRange, title: string): void => {
 		setSelectedRange(dateRange);
 		setFixedRange(title);
 		apply({
@@ -27,7 +53,6 @@ const CustomRanges = ({
 					dateRange.unix.toString() === selectedRange?.unix?.toString();
 				return (
 					<Button
-						size='auto'
 						key={title}
 						onClick={() => {
 							selectFixedDateRange(dateRange, title);

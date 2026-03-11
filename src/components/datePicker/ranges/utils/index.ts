@@ -1,15 +1,43 @@
 import { getUnixTime, sub } from 'date-fns';
 import { getDatesInStringFormat } from '../../../../utils';
 
-export const getDateAndUnixRange = (duration) => {
-	const startingDate = sub(new Date(), duration);
+// --- Types ---
 
+interface Duration {
+	[key: string]: number;
+}
+
+interface DateRange {
+	dates: string[];
+	unix: number[];
+}
+
+interface CustomRange {
+	title: string;
+	type: string;
+	value: number;
+}
+
+interface DateRangeResult {
+	title: string;
+	dateRange: DateRange;
+}
+
+interface TimeSlot {
+	label: string;
+	value: number;
+}
+
+// --- Utils ---
+
+export const getDateAndUnixRange = (duration: Duration): DateRange => {
+	const startingDate = sub(new Date(), duration);
 	const endingDate = new Date();
 
 	const dates = getDatesInStringFormat({
 		startingDate,
 		endingDate,
-	});
+	}) as string[];
 
 	const unix = [
 		getUnixTime(startingDate.setHours(0, 0, 0, 0)),
@@ -22,7 +50,7 @@ export const getDateAndUnixRange = (duration) => {
 	};
 };
 
-export const dateRanges = (customRanges = []) => {
+export const dateRanges = (customRanges: CustomRange[] = []): DateRangeResult[] => {
 	if (customRanges?.length > 0) {
 		return customRanges.map((range) => {
 			return {
@@ -36,8 +64,8 @@ export const dateRanges = (customRanges = []) => {
 	return [];
 };
 
-export const timeRanges = () => {
-	const timeArray = [];
+export const timeRanges = (): TimeSlot[] => {
+	const timeArray: TimeSlot[] = [];
 	const HALF_HOUR_IN_SECONDS = 30 * 60;
 	const TOTAL_HALF_HOURS = 48;
 

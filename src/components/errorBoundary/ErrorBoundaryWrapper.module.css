@@ -25,11 +25,11 @@
   align-items: center;
   gap: 0.625rem;
 }
-.root .actions > button[data-elem=base-cell].action {
-  gap: 1rem;
-}
 .root .actions > button[data-elem=base-cell].action:nth-child(1) {
   background-color: var(--mono-color1);
+}
+.root .actions > button[data-elem=base-cell].action {
+  gap: 1rem;
 }
 .root .actions > button[data-elem=base-cell].action > [data-elem=component1] .icon {
   width: 1.5rem;

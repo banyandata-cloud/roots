@@ -1,8 +1,8 @@
-.root[data-elem=base-cell] {
-  background: var(--light-color3);
-}
 .root[data-elem=base-cell] > [data-elem*=component] {
   overflow: hidden;
+}
+.root[data-elem=base-cell] {
+  background: var(--light-color3);
 }
 .root[data-elem=base-cell] > [data-elem*=component] {
   display: flex;
@@ -56,9 +56,6 @@
 .root[data-elem=base-cell].sortable.centered > [data-elem=component3] {
   margin-right: 0;
 }
-.root[data-elem=base-cell].body-cell {
-  background: var(--light-color3);
-}
 .root[data-elem=base-cell].body-cell .cell-text.multi-line {
   white-space: normal;
   display: -webkit-box;
@@ -66,6 +63,9 @@
   -webkit-line-clamp: 2;
   line-clamp: 2;
   font-size: 0.9rem;
+}
+.root[data-elem=base-cell].body-cell {
+  background: var(--light-color3);
 }
 .root[data-elem=base-cell].body-cell .cell-text {
   color: var(--text-color);

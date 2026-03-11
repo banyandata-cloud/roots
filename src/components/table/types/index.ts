@@ -9,7 +9,7 @@ import type {
 import type { TableCellProps } from '../cell/types';
 
 export type RowHeight = 'md' | 'lg';
-export type CellSize = 'sm' | 'md' | 'lg';
+export type CellSize = 'sm' | 'md' | 'lg' | 'auto';
 export type SortType = 'asc' | 'desc' | 'default';
 export type StickyType = 'right' | 'left';
 export interface SizeInRem {

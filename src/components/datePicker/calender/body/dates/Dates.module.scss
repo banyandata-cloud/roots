@@ -15,13 +15,23 @@
 
 		&.minInRange {
 			background-color: $secondary-color2;
-			border-radius: 1.5rem 0rem 0rem 1.5rem;
+			border-top-left-radius: 1.5rem;
+			border-bottom-left-radius: 1.5rem;
+			border-top-right-radius: 0rem;
+			border-bottom-right-radius: 0rem;
 			.date {
+				color: $white;
+				background-color: transparent;
+				border-radius: 0;
+			}
+			.date.selected {
+				background-color: transparent;
+				border-radius: 0;
 				color: $white;
 			}
 			&:hover {
 				.date {
-					background: $secondary-color2;
+					background: transparent;
 					color: $white;
 					@include boxShadow;
 				}
@@ -47,11 +57,23 @@
 				}
 			}
 		}
+
 		&.maxInRange {
 			background-color: $secondary-color2;
-			border-radius: 0rem 1.5rem 1.5rem 0rem;
+			border-top-left-radius: 0rem;
+			border-bottom-left-radius: 0rem;
+			border-top-right-radius: 1.5rem;
+			border-bottom-right-radius: 1.5rem;
 			.date {
 				color: $white;
+				background-color: transparent;
+				border-radius: 0;
+			}
+			.date.selected {
+				background-color: $secondary-color2;
+				border-radius: 1.5rem;
+				color: $white;
+				z-index: 1;
 			}
 			&.today-selected {
 				@include flex(column, flex-start, center);
@@ -76,12 +98,13 @@
 			}
 			&:hover {
 				.date {
-					background: $secondary-color2;
+					background: transparent;
 					color: $white;
 					@include boxShadow;
 				}
 			}
 		}
+
 		&.midInRange {
 			background: $background-color5;
 			border-radius: 0rem;
@@ -99,6 +122,7 @@
 				}
 			}
 		}
+
 		&.midInRangeSelected {
 			background: $background-color5;
 			border-radius: 0rem;
@@ -116,10 +140,12 @@
 				}
 			}
 		}
-
 		&.first-hovered {
 			background: $background-color5;
-			border-radius: 0rem 1.5rem 1.5rem 0rem;
+			border-top-left-radius: 1.5rem;
+			border-bottom-left-radius: 1.5rem;
+			border-top-right-radius: 0rem;
+			border-bottom-right-radius: 0rem;
 			.date {
 				color: $secondary-color2;
 			}
@@ -136,11 +162,13 @@
 		}
 		&.last-hovered {
 			background: $background-color5;
-			border-radius: 1.5rem 0rem 0rem 1.5rem;
+			border-top-left-radius: 0rem;
+			border-bottom-left-radius: 0rem;
+			border-top-right-radius: 1.5rem;
+			border-bottom-right-radius: 1.5rem;
 			.date {
 				color: $secondary-color2;
 			}
-
 			&.today-selected {
 				@include flex(column, flex-start, center);
 				.date {

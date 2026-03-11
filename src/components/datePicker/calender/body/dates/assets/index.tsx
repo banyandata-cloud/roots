@@ -1,4 +1,10 @@
-export const TodayIndicator = ({ className }) => {
+import type { JSX } from 'react';
+
+interface TodayIndicatorProps {
+	className?: string;
+}
+
+export const TodayIndicator = ({ className }: TodayIndicatorProps): JSX.Element => {
 	return (
 		<svg
 			width='0.3125rem'
