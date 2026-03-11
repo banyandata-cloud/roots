@@ -331,40 +331,62 @@
   display: flex;
   width: 36px;
   height: 36px;
-  padding: 8px;
   justify-content: center;
   align-items: center;
+  aspect-ratio: 1/1;
   flex-shrink: 0;
   border-radius: 8px;
-  border: 1px solid #d5d7da;
-  background: #ffffff;
-  color: #414651;
+  border: 1px solid #d5d7da !important;
+  background: #ffffff !important;
+  color: #414651 !important;
   cursor: pointer;
   box-sizing: border-box;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
+.nav-btn [data-elem=base-cell] {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 100% !important;
+  height: 100% !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  min-width: unset !important;
+  gap: 0 !important;
+}
+.nav-btn [data-elem=title] {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 16px !important;
+  height: 16px !important;
+  overflow: visible !important;
+}
 .nav-btn svg {
-  width: 16px;
-  height: 16px;
+  width: 16px !important;
+  height: 16px !important;
   pointer-events: none;
   flex-shrink: 0;
+  color: #414651;
 }
 .nav-btn:hover:not(:disabled) {
-  background: #fafafa;
-  border-color: #d5d7da;
-  box-shadow: 0 2px 5px 0 rgba(46, 144, 250, 0.08), 0 0 0 1px rgba(46, 144, 250, 0.4), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  background: #fafafa !important;
+  border-color: #d5d7da !important;
+  box-shadow: 0 2px 5px 0 rgba(46, 144, 250, 0.08), 0 0 0 1px rgba(46, 144, 250, 0.4), 0 1px 1px 0 rgba(0, 0, 0, 0.12) !important;
 }
 .nav-btn:active:not(:disabled) {
-  background: #f0f1f2;
-  border-color: #d5d7da;
-  box-shadow: none;
+  background: #f0f1f2 !important;
+  border-color: #d5d7da !important;
+  box-shadow: none !important;
 }
 .nav-btn:disabled {
-  background: #f5f5f5;
-  border-color: #d5d7da;
-  color: #a4a7ae;
-  cursor: not-allowed;
-  box-shadow: none;
+  background: #f5f5f5 !important;
+  border-color: #d5d7da !important;
+  color: #a4a7ae !important;
+  cursor: not-allowed !important;
+  box-shadow: none !important;
 }
 .nav-btn:disabled svg {
   color: #a4a7ae;

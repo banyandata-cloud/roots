@@ -77,7 +77,7 @@ const BaseTable = forwardRef(
 				return;
 			}
 			setCheckedRows(defaultCheckedRows ?? []);
-		}, [tableData]);
+		}, [tableData, defaultCheckedRows]);
 
 		if (loading) {
 			return <Skeleton />;

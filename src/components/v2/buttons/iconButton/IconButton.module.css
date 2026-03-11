@@ -1,0 +1,195 @@
+button.root[data-elem=base-cell] {
+  transition: background-color 110ms cubic-bezier(0.2, 0, 0.38, 0.9), border-color 110ms cubic-bezier(0.2, 0, 0.38, 0.9), box-shadow 110ms cubic-bezier(0.2, 0, 0.38, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  border-radius: 6px;
+  aspect-ratio: 1/1;
+}
+button.root[data-elem=base-cell].size-xs {
+  width: 32px;
+  height: 32px;
+}
+button.root[data-elem=base-cell].size-xs svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+button.root[data-elem=base-cell].size-sm {
+  width: 40px;
+  height: 40px;
+}
+button.root[data-elem=base-cell].size-sm svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+button.root[data-elem=base-cell].size-md {
+  width: 44px;
+  height: 44px;
+}
+button.root[data-elem=base-cell].size-md svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+button.root[data-elem=base-cell].size-lg {
+  width: 52px;
+  height: 52px;
+}
+button.root[data-elem=base-cell].size-lg svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+button.root[data-elem=base-cell].primary {
+  background: #1570ef;
+  color: #ffffff;
+  box-shadow: 0 2px 5px 0 rgba(103, 110, 118, 0.08), 0 0 0 1px rgba(103, 110, 118, 0.16), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+}
+button.root[data-elem=base-cell].primary:hover:not(:disabled) {
+  background: #175cd3;
+  box-shadow: 0 2px 5px 0 rgba(46, 144, 250, 0.08), 0 0 0 1px rgba(46, 144, 250, 0.4), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  transition-duration: 70ms;
+  transition-timing-function: cubic-bezier(0.2, 0, 1, 0.9);
+}
+button.root[data-elem=base-cell].primary:active:not(:disabled) {
+  background: #1849a9;
+  box-shadow: 0 2px 5px 0 rgba(103, 110, 118, 0.08), 0 0 0 1px rgba(103, 110, 118, 0.16), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  transition-duration: 70ms;
+  transition-timing-function: cubic-bezier(0, 0, 0.38, 0.9);
+}
+button.root[data-elem=base-cell].primary:focus-visible:not(:disabled) {
+  outline: none;
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #1570ef;
+}
+button.root[data-elem=base-cell].secondary {
+  background: #252b37;
+  color: #ffffff;
+  box-shadow: 0 2px 5px 0 rgba(103, 110, 118, 0.08), 0 0 0 1px rgba(103, 110, 118, 0.16), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+}
+button.root[data-elem=base-cell].secondary:hover:not(:disabled) {
+  background: #414651;
+  box-shadow: 0 2px 5px 0 rgba(103, 110, 118, 0.08), 0 0 0 1px rgba(103, 110, 118, 0.3), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  transition-duration: 70ms;
+  transition-timing-function: cubic-bezier(0.2, 0, 1, 0.9);
+}
+button.root[data-elem=base-cell].secondary:active:not(:disabled) {
+  background: #181d27;
+  box-shadow: 0 2px 5px 0 rgba(103, 110, 118, 0.08), 0 0 0 1px rgba(103, 110, 118, 0.16), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  transition-duration: 70ms;
+  transition-timing-function: cubic-bezier(0, 0, 0.38, 0.9);
+}
+button.root[data-elem=base-cell].secondary:focus-visible:not(:disabled) {
+  outline: none;
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #a4a7ae;
+}
+button.root[data-elem=base-cell].soft {
+  background: #fafafa;
+  color: #414651;
+  box-shadow: 0 2px 5px 0 rgba(103, 110, 118, 0.08), 0 0 0 1px rgba(103, 110, 118, 0.16), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+}
+button.root[data-elem=base-cell].soft:not(:disabled) svg {
+  color: #414651;
+}
+button.root[data-elem=base-cell].soft:hover:not(:disabled) {
+  background: #f5f5f5;
+  color: #252b37;
+  box-shadow: 0 2px 5px 0 rgba(103, 110, 118, 0.08), 0 0 0 1px rgba(103, 110, 118, 0.3), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  transition-duration: 70ms;
+  transition-timing-function: cubic-bezier(0.2, 0, 1, 0.9);
+}
+button.root[data-elem=base-cell].soft:active:not(:disabled) {
+  background: #f5f5f5;
+  color: #252b37;
+  box-shadow: 0 2px 5px 0 rgba(103, 110, 118, 0.08), 0 0 0 1px rgba(103, 110, 118, 0.16), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  transition-duration: 70ms;
+  transition-timing-function: cubic-bezier(0, 0, 0.38, 0.9);
+}
+button.root[data-elem=base-cell].soft:focus-visible:not(:disabled) {
+  outline: none;
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #a4a7ae;
+}
+button.root[data-elem=base-cell].outline {
+  background: transparent;
+  color: #414651;
+  box-shadow: 0 0 0 1px #d5d7da;
+}
+button.root[data-elem=base-cell].outline:hover:not(:disabled) {
+  background: #fafafa;
+  box-shadow: 0 2px 5px 0 rgba(103, 110, 118, 0.08), 0 0 0 1px rgba(103, 110, 118, 0.3), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  transition-duration: 70ms;
+  transition-timing-function: cubic-bezier(0.2, 0, 1, 0.9);
+}
+button.root[data-elem=base-cell].outline:active:not(:disabled) {
+  background: #f5f5f5;
+  box-shadow: 0 0 0 1px #d5d7da;
+  transition-duration: 70ms;
+  transition-timing-function: cubic-bezier(0, 0, 0.38, 0.9);
+}
+button.root[data-elem=base-cell].outline:focus-visible:not(:disabled) {
+  outline: none;
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #535862;
+}
+button.root[data-elem=base-cell].ghost {
+  background: transparent;
+  color: #414651;
+  box-shadow: none;
+}
+button.root[data-elem=base-cell].ghost:hover:not(:disabled) {
+  background: #fafafa;
+  box-shadow: 0 2px 5px 0 rgba(103, 110, 118, 0.08), 0 0 0 1px rgba(103, 110, 118, 0.16), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  transition-duration: 70ms;
+  transition-timing-function: cubic-bezier(0.2, 0, 1, 0.9);
+}
+button.root[data-elem=base-cell].ghost:active:not(:disabled) {
+  background: #f5f5f5;
+  box-shadow: none;
+  transition-duration: 70ms;
+  transition-timing-function: cubic-bezier(0, 0, 0.38, 0.9);
+}
+button.root[data-elem=base-cell].ghost:focus-visible:not(:disabled) {
+  outline: none;
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #a4a7ae;
+}
+button.root[data-elem=base-cell].critical {
+  background: #d92d20;
+  color: #ffffff;
+  box-shadow: 0 2px 5px 0 rgba(103, 110, 118, 0.08), 0 0 0 1px rgba(103, 110, 118, 0.16), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+}
+button.root[data-elem=base-cell].critical:hover:not(:disabled) {
+  background: #b42318;
+  box-shadow: 0 2px 5px 0 rgba(217, 45, 32, 0.08), 0 0 0 1px rgba(217, 45, 32, 0.4), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  transition-duration: 70ms;
+  transition-timing-function: cubic-bezier(0.2, 0, 1, 0.9);
+}
+button.root[data-elem=base-cell].critical:active:not(:disabled) {
+  background: #912018;
+  box-shadow: 0 2px 5px 0 rgba(103, 110, 118, 0.08), 0 0 0 1px rgba(103, 110, 118, 0.16), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  transition-duration: 70ms;
+  transition-timing-function: cubic-bezier(0, 0, 0.38, 0.9);
+}
+button.root[data-elem=base-cell].critical:focus-visible:not(:disabled) {
+  outline: none;
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #f04438;
+}
+button.root[data-elem=base-cell]:disabled {
+  transition: background-color 150ms cubic-bezier(0.2, 0, 0.38, 0.9), color 150ms cubic-bezier(0.2, 0, 0.38, 0.9), opacity 150ms cubic-bezier(0.2, 0, 0.38, 0.9);
+  background: #f5f5f5;
+  color: #a4a7ae;
+  cursor: not-allowed;
+  pointer-events: none;
+  box-shadow: none;
+}
+button.root[data-elem=base-cell]:disabled svg {
+  opacity: 0.6;
+}
+@media (prefers-reduced-motion: reduce) {
+  button.root[data-elem=base-cell] {
+    transition: none !important;
+  }
+}/*# sourceMappingURL=IconButton.module.css.map */

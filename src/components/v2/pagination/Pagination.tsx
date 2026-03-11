@@ -1,6 +1,7 @@
 import { forwardRef, useEffect, useReducer, useRef, useState, type Dispatch } from 'react';
 import { classes } from '../../../utils';
 import { DropdownItemv2, Dropdownv2 } from '../../input';
+import { Button } from '../../v2/buttons';
 import styles from './Pagination.module.css';
 
 type Nullable<T> = T | null;
@@ -75,7 +76,6 @@ export const usePagination = (props: UsePaginationArgs) => {
 			paginationDispatch({ type: 'SET_TOTAL_DATA', payload: totalData });
 		}
 		paginationDispatch({ type: 'SET_TOTAL_PAGES', payload: totalPages });
-
 	}, [totalPages, totalData]);
 
 	return [paginationState, paginationDispatch] as const;
@@ -177,7 +177,6 @@ export const Pagination = forwardRef<HTMLDivElement, PaginationProps>((props, re
 		return totalData > prevOption.value;
 	});
 
-
 	const handlePageInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setPageInputValue(e.target.value);
 	};
@@ -261,21 +260,21 @@ export const Pagination = forwardRef<HTMLDivElement, PaginationProps>((props, re
 				</div>
 
 				<div className={styles['nav-buttons']}>
-					<button
+					<Button
 						className={styles['nav-btn']}
 						disabled={!canGoPrev}
 						onClick={() => dispatch({ type: 'PREV_PAGE' })}
-						aria-label='Previous page'>
-						<ChevronLeft />
-					</button>
+						title={<ChevronLeft />}
+						type='button'
+					/>
 
-					<button
+					<Button
 						className={styles['nav-btn']}
 						disabled={!canGoNext}
 						onClick={() => dispatch({ type: 'NEXT_PAGE' })}
-						aria-label='Next page'>
-						<ChevronRight />
-					</button>
+						title={<ChevronRight />}
+						type='button'
+					/>
 				</div>
 			</div>
 		</div>
