@@ -1,8 +1,33 @@
-import { getUnixTime } from 'date-fns';
+import { getUnixTime, subDays, subHours, subMonths } from 'date-fns';
 
-import { subDays, subHours, subMonths } from 'date-fns';
+interface RangeObj {
+	hours?: number;
+	days?: number;
+	months?: number;
+}
 
-export const getDateAndUnixRange = (rangeObj = {}) => {
+interface DateUnixRange {
+	dates: Date[];
+	unix: number[];
+}
+
+interface CustomRange {
+	title: string;
+	type: 'hours' | 'days' | 'months';
+	value: number;
+}
+
+interface DateRange {
+	title: string;
+	dateRange: DateUnixRange;
+}
+
+interface TimeRange {
+	label: string;
+	value: number;
+}
+
+export const getDateAndUnixRange = (rangeObj: RangeObj = {}): DateUnixRange => {
 	const now = new Date();
 	const nowUnix = getUnixTime(now);
 
@@ -42,7 +67,7 @@ export const getDateAndUnixRange = (rangeObj = {}) => {
 	};
 };
 
-export const dateRanges = (customRanges = []) => {
+export const dateRanges = (customRanges: CustomRange[] = []): DateRange[] => {
 	if (customRanges?.length > 0) {
 		return customRanges.map((range) => {
 			return {
@@ -56,8 +81,8 @@ export const dateRanges = (customRanges = []) => {
 	return [];
 };
 
-export const timeRanges = () => {
-	const timeArray = [];
+export const timeRanges = (): TimeRange[] => {
+	const timeArray: TimeRange[] = [];
 	const HALF_HOUR_IN_SECONDS = 30 * 60;
 	const TOTAL_HALF_HOURS = 48;
 
