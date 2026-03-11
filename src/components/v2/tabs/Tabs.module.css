@@ -1,0 +1,157 @@
+.tabs-container {
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.tabs-container-vertical {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 100%;
+}
+
+.tabs {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+}
+
+.vertical {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: auto;
+  border-right: 0.0625rem solid var(--light-color1);
+}
+
+.tab {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  height: 40px;
+  padding: 0 1rem;
+  cursor: pointer;
+  position: relative;
+  border-bottom: 1px solid var(--grey3) !important;
+}
+.tab.vertical {
+  height: -moz-fit-content;
+  height: fit-content;
+}
+.tab > [data-elem=base-cell] {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 0 !important;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-color);
+  height: 40px;
+}
+.tab > [data-elem=base-cell].active {
+  color: var(--primary-color4) !important;
+}
+.tab > [data-elem=base-cell] > [data-elem=component1] > .icon,
+.tab > [data-elem=base-cell] > [data-elem=component3] > .icon {
+  fill: var(--text-color);
+  width: 1.5rem;
+  height: 1.5rem;
+  opacity: 0.7;
+}
+.tab > [data-elem=base-cell] > [data-elem=component2] > [data-elem=title] {
+  color: var(--text-color) !important;
+  font-size: 0.875rem !important;
+  font-weight: 400 !important;
+}
+.tab:has(> [data-elem=base-cell]:disabled) {
+  opacity: 0.25;
+  border-bottom: 0.1875rem solid var(--border-border-disable, #dcdcdc);
+}
+.tab:focus-visible {
+  outline: 1px solid var(--primary-color4);
+  outline-offset: 0.1563rem;
+}
+.tab:hover:not(:has(:disabled)) {
+  border-bottom: 0.1875rem solid var(--grey1) !important;
+}
+.tab:hover:not(:has(:disabled)) > [data-elem=base-cell] > [data-elem=component1] > .icon {
+  fill: var(--text-color);
+  width: 1.5rem;
+  height: 1.5rem;
+  opacity: 0.8;
+}
+.tab:hover:not(:has(:disabled)) > [data-elem=base-cell] > [data-elem=component2] > [data-elem=title] {
+  color: var(--text-color) !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+}
+.tab.active > [data-elem=base-cell] > [data-elem=component1] > .icon {
+  fill: var(--text-color);
+  width: 1.5rem;
+  height: 1.5rem;
+  opacity: 1;
+}
+.tab.active > [data-elem=base-cell] > [data-elem=component2] > [data-elem=title] {
+  color: var(--text-color) !important;
+  font-size: 0.875rem !important;
+  font-weight: 600 !important;
+}
+.tab .dropdown {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.tab .dropdown [data-elem=base-cell] {
+  height: 2.3125rem;
+}
+.tab .dropdown [data-elem=base-cell].active {
+  color: var(--primary-color4) !important;
+}
+.tab .dropdown > [data-elem=header] > [data-elem=select] {
+  background-color: transparent;
+  border: none;
+  padding: 5px !important;
+  width: auto;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.tab-slider {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background-color: var(--primary-color4);
+  transition: left 0.3s ease, width 0.3s ease;
+}
+
+.tab-slider-vertical {
+  position: absolute;
+  right: 0;
+  width: 0.0313rem;
+  background-color: var(--primary-color4);
+  transition: left 0.3s ease-in-out, width 0.3s ease-in-out;
+  width: 100%;
+}
+
+.tab-content {
+  padding-top: 10px;
+  z-index: -1;
+}
+
+.tab-content-vertical {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}/*# sourceMappingURL=Tabs.module.css.map */

@@ -1,56 +1,48 @@
-import { getUnixTime, sub } from 'date-fns';
-import { getDatesInStringFormat } from '../../../../utils';
+import { getUnixTime } from 'date-fns';
 
-// --- Types ---
+import { subDays, subHours, subMonths } from 'date-fns';
 
-interface Duration {
-	[key: string]: number;
-}
+export const getDateAndUnixRange = (rangeObj = {}) => {
+	const now = new Date();
+	const nowUnix = getUnixTime(now);
 
-interface DateRange {
-	dates: string[];
-	unix: number[];
-}
+	if (rangeObj.hours) {
+		const startDate = subHours(now, rangeObj.hours);
+		const startUnix = getUnixTime(startDate);
 
-interface CustomRange {
-	title: string;
-	type: string;
-	value: number;
-}
+		return {
+			dates: [startDate, now],
+			unix: [startUnix, nowUnix],
+		};
+	}
 
-interface DateRangeResult {
-	title: string;
-	dateRange: DateRange;
-}
+	if (rangeObj.days) {
+		const startDate = subDays(now, rangeObj.days);
+		const startUnix = getUnixTime(startDate);
 
-interface TimeSlot {
-	label: string;
-	value: number;
-}
+		return {
+			dates: [startDate, now],
+			unix: [startUnix, nowUnix],
+		};
+	}
 
-// --- Utils ---
+	if (rangeObj.months) {
+		const startDate = subMonths(now, rangeObj.months);
+		const startUnix = getUnixTime(startDate);
 
-export const getDateAndUnixRange = (duration: Duration): DateRange => {
-	const startingDate = sub(new Date(), duration);
-	const endingDate = new Date();
-
-	const dates = getDatesInStringFormat({
-		startingDate,
-		endingDate,
-	}) as string[];
-
-	const unix = [
-		getUnixTime(startingDate.setHours(0, 0, 0, 0)),
-		getUnixTime(endingDate.setHours(23, 59, 59, 59)),
-	];
+		return {
+			dates: [startDate, now],
+			unix: [startUnix, nowUnix],
+		};
+	}
 
 	return {
-		dates,
-		unix,
+		dates: [],
+		unix: [],
 	};
 };
 
-export const dateRanges = (customRanges: CustomRange[] = []): DateRangeResult[] => {
+export const dateRanges = (customRanges = []) => {
 	if (customRanges?.length > 0) {
 		return customRanges.map((range) => {
 			return {
@@ -64,8 +56,8 @@ export const dateRanges = (customRanges: CustomRange[] = []): DateRangeResult[] 
 	return [];
 };
 
-export const timeRanges = (): TimeSlot[] => {
-	const timeArray: TimeSlot[] = [];
+export const timeRanges = () => {
+	const timeArray = [];
 	const HALF_HOUR_IN_SECONDS = 30 * 60;
 	const TOTAL_HALF_HOURS = 48;
 
