@@ -51,15 +51,19 @@ export const epochToFormattedDate = (
 			? ((date.getUTCHours() + 11) % 12) + 1
 			: ((date.getHours() + 11) % 12) + 1;
 
-		let meridian = date.getUTCHours() >= 12 ? 'PM' : 'AM';
+		let hoursForMeridian;
 
 		if (universal) {
-			meridian = date.getHours() >= 12 ? 'PM' : 'AM';
+			hoursForMeridian = date.getUTCHours();
+		} else {
+			hoursForMeridian = date.getHours();
 		}
+
+		const meridian = hoursForMeridian >= 12 ? 'PM' : 'AM';
 
 		const timeFormat: Record<TimeFormat, string> = {
 			24: `${hours}:${minutes}:${seconds} Hrs`,
-			12: `${hours12.toString()}:${minutes}:${seconds} ${meridian}`,
+			12: `${hours12}:${minutes}:${seconds} ${meridian}`,
 		};
 
 		return timeFormat[format as TimeFormat];
