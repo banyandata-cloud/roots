@@ -1,181 +1,801 @@
 import { Meta, Canvas, Story } from '@storybook/addon-docs';
-
 import { ThemedContainer } from '../../helpers';
-import CheckBox from './CheckBox';
+import Checkbox from './CheckBox';
 
-<Meta title='Components/Input/v2/CheckBox' parameters={{ options: { showToolbar: true } }} />
+<Meta title='Components/v2/Checkbox' parameters={{ options: { showToolbar: true } }} />
 
-export const Template = (args) => (
-	<ThemedContainer theme='light'>
-		<CheckBox {...args} />
-	</ThemedContainer>
-);
+# Checkbox
 
-export const TemplateChecked = (args) => (
-	<ThemedContainer theme='light'>
-		<CheckBox {...args} />
-	</ThemedContainer>
-);
+A fully accessible checkbox component with support for checked, unchecked, and indeterminate states across 4 sizes and 7 visual states.
 
-export const TemplateIntermediate = (args) => (
-	<ThemedContainer theme='light'>
-		<CheckBox {...args} />
-	</ThemedContainer>
-);
-
-# CheckBox
-
-The Checkbox component provides a customizable checkbox input with an optional label. It supports controlled and uncontrolled usage, allowing you to manage the checked state through its onChange handler.
-
-#### Design - [Figma](https://www.figma.com/file/e9opoAtQHBo4vFd6u0Co98/Component-Library?node-id=151%3A18733&mode=dev) | Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/components/input/checkbox)
-
-> The Checkbox component offers a simple and customizable way to include checkbox inputs in your application. It supports both controlled and uncontrolled usage, making it suitable for various scenarios.
+#### Design - [Figma](https://www.figma.com/file/e9opoAtQHBo4vFd6u0Co98/Component-Library) | Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/components/v2/checkbox)
 
 ## Usage
 
-Basic import and additional information on how to use this component.
-
 ```js
-import { CheckBox } from '@banyan_cloud/roots';
+import { Checkbox } from '@banyan_cloud/roots';
 ```
-
-- The position prop allows you to control the positioning of the checkbox relative to the label.
-- The onChange function is called when the checkbox's state changes. It provides the new checked state as a parameter.
 
 ## Stories
 
-The CSF rendered inside the `Canvas` from which you can see the implementation example.
-
-### Default
-
-The default CheckBox.
+### Default State
 
 <Canvas>
-	<Story
-		name='Default'
-		args={{
-			label: 'Checkbox',
-			position: 'right',
-			size: 'sm',
-		}}>
-		{Template.bind({})}
+	<Story name='Default'>
+		{() => (
+			<ThemedContainer theme='light'>
+				<div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							sm
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Checkbox size='sm' checked={false} onChange={() => {}} />
+							<Checkbox size='sm' checked={true} onChange={() => {}} />
+							<Checkbox size='sm' indeterminate={true} onChange={() => {}} />
+						</div>
+					</div>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							md
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Checkbox size='md' checked={false} onChange={() => {}} />
+							<Checkbox size='md' checked={true} onChange={() => {}} />
+							<Checkbox size='md' indeterminate={true} onChange={() => {}} />
+						</div>
+					</div>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							lg
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Checkbox size='lg' checked={false} onChange={() => {}} />
+							<Checkbox size='lg' checked={true} onChange={() => {}} />
+							<Checkbox size='lg' indeterminate={true} onChange={() => {}} />
+						</div>
+					</div>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							xlg
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Checkbox size='xlg' checked={false} onChange={() => {}} />
+							<Checkbox size='xlg' checked={true} onChange={() => {}} />
+							<Checkbox size='xlg' indeterminate={true} onChange={() => {}} />
+						</div>
+					</div>
+				</div>
+			</ThemedContainer>
+		)}
 	</Story>
 </Canvas>
 
-### Checkbox V2
-
-The default CheckBox v2
+### Disabled State
 
 <Canvas>
-	<Story
-		name='Checkbox V2'
-		args={{
-			label: 'Checkbox',
-			position: 'right',
-			size: 'sm',
-			v2: true,
-			intermediate: true,
-		}}>
-		{Template.bind({})}
+	<Story name='Disabled'>
+		{() => (
+			<ThemedContainer theme='light'>
+				<div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							sm
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Checkbox size='sm' checked={false} disabled />
+							<Checkbox size='sm' checked={true} disabled />
+							<Checkbox size='sm' indeterminate={true} disabled />
+						</div>
+					</div>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							md
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Checkbox size='md' checked={false} disabled />
+							<Checkbox size='md' checked={true} disabled />
+							<Checkbox size='md' indeterminate={true} disabled />
+						</div>
+					</div>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							lg
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Checkbox size='lg' checked={false} disabled />
+							<Checkbox size='lg' checked={true} disabled />
+							<Checkbox size='lg' indeterminate={true} disabled />
+						</div>
+					</div>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							xlg
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Checkbox size='xlg' checked={false} disabled />
+							<Checkbox size='xlg' checked={true} disabled />
+							<Checkbox size='xlg' indeterminate={true} disabled />
+						</div>
+					</div>
+				</div>
+			</ThemedContainer>
+		)}
 	</Story>
 </Canvas>
 
+### Read-only State
+
 <Canvas>
-	<Story
-		name='Checkbox V2 disbled'
-		args={{
-			label: 'Checkbox',
-			position: 'right',
-			size: 'sm',
-			v2: true,
-			disabled: true,
-			checked: true,
-			intermediate: true,
-		}}>
-		{Template.bind({})}
+	<Story name='Read-only'>
+		{() => (
+			<ThemedContainer theme='light'>
+				<div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							sm
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Checkbox size='sm' checked={false} readOnly />
+							<Checkbox size='sm' checked={true} readOnly />
+							<Checkbox size='sm' indeterminate={true} readOnly />
+						</div>
+					</div>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							md
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Checkbox size='md' checked={false} readOnly />
+							<Checkbox size='md' checked={true} readOnly />
+							<Checkbox size='md' indeterminate={true} readOnly />
+						</div>
+					</div>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							lg
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Checkbox size='lg' checked={false} readOnly />
+							<Checkbox size='lg' checked={true} readOnly />
+							<Checkbox size='lg' indeterminate={true} readOnly />
+						</div>
+					</div>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							xlg
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Checkbox size='xlg' checked={false} readOnly />
+							<Checkbox size='xlg' checked={true} readOnly />
+							<Checkbox size='xlg' indeterminate={true} readOnly />
+						</div>
+					</div>
+				</div>
+			</ThemedContainer>
+		)}
 	</Story>
 </Canvas>
 
+### Error State
+
 <Canvas>
-	<Story
-		name='Checkbox V2 Read Only'
-		args={{
-			label: 'Checkbox',
-			position: 'right',
-			size: 'sm',
-			v2: true,
-			readOnly: true,
-			checked: true,
-			intermediate: true,
-		}}>
-		{Template.bind({})}
+	<Story name='Error'>
+		{() => (
+			<ThemedContainer theme='light'>
+				<div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							sm
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Checkbox size='sm' checked={false} error />
+							<Checkbox size='sm' checked={true} error />
+							<Checkbox size='sm' indeterminate={true} error />
+						</div>
+					</div>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							md
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Checkbox size='md' checked={false} error />
+							<Checkbox size='md' checked={true} error />
+							<Checkbox size='md' indeterminate={true} error />
+						</div>
+					</div>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							lg
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Checkbox size='lg' checked={false} error />
+							<Checkbox size='lg' checked={true} error />
+							<Checkbox size='lg' indeterminate={true} error />
+						</div>
+					</div>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							xlg
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Checkbox size='xlg' checked={false} error />
+							<Checkbox size='xlg' checked={true} error />
+							<Checkbox size='xlg' indeterminate={true} error />
+						</div>
+					</div>
+				</div>
+			</ThemedContainer>
+		)}
 	</Story>
 </Canvas>
 
-<Canvas>
-	<Story
-		name='Checkbox V2 Error'
-		args={{
-			label: 'Checkbox',
-			position: 'right',
-			size: 'sm',
-			v2: true,
-			error: true,
-		}}>
-		{Template.bind({})}
-	</Story>
-</Canvas>
+### With Text
+
+export const withTextStyles = {
+	outer: { display: 'flex', flexDirection: 'column', gap: '0px' },
+	colHeaders: { display: 'flex', paddingLeft: '96px', marginBottom: '8px' },
+	colHeader: { fontSize: '11px', color: '#535862', width: '320px', flexShrink: 0 },
+	box: { padding: '16px 16px 16px 0px' },
+	stateRow: { display: 'flex', alignItems: 'flex-start', marginBottom: '24px' },
+	stateRowLast: { display: 'flex', alignItems: 'flex-start' },
+	stateLabelWrap: { width: '80px', paddingTop: '4px', flexShrink: 0 },
+	stateLabel: { fontSize: '12px', color: '#535862' },
+	checkboxCol: { display: 'flex', gap: '0px' },
+	checkboxWrap: { width: '320px', flexShrink: 0 },
+};
 
 <Canvas>
-	<Story
-		name='Checkbox V2 Focus'
-		args={{
-			label: 'Checkbox',
-			position: 'right',
-			size: 'sm',
-			v2: true,
-		}}>
-		{Template.bind({})}
-	</Story>
-</Canvas>
-
-### Intermediate
-
-The intermediate CheckBox component.
-
-<Canvas>
-	<Story
-		name='Intermediate'
-		args={{
-			label: 'Checkbox',
-			position: 'right',
-			size: 'sm',
-			intermediate: true,
-		}}>
-		{Template.bind({})}
-	</Story>
-</Canvas>
-
-### Disabled
-
-The disabled CheckBox component.
-
-<Canvas>
-	<Story
-		name='Disabled'
-		args={{
-			label: 'Checkbox',
-			position: 'right',
-			size: 'sm',
-			disabled: true,
-		}}>
-		{Template.bind({})}
+	<Story name='With Text'>
+		{() => (
+			<ThemedContainer theme='light'>
+				<div style={withTextStyles.outer}>
+					<div style={withTextStyles.colHeaders}>
+						<span style={withTextStyles.colHeader}>unselected</span>
+						<span style={withTextStyles.colHeader}>selected</span>
+						<span style={withTextStyles.colHeader}>intermediate</span>
+						<span style={withTextStyles.colHeader}>unselected</span>
+						<span style={withTextStyles.colHeader}>selected</span>
+						<span style={withTextStyles.colHeader}>intermediate</span>
+					</div>
+					<div style={{ display: 'flex', paddingLeft: '96px' }}>
+						<span
+							style={{
+								fontSize: '12px',
+								fontWeight: '600',
+								color: '#181D27',
+								width: '960px',
+								flexShrink: 0,
+							}}>
+							sm
+						</span>
+						<span
+							style={{
+								fontSize: '12px',
+								fontWeight: '600',
+								color: '#181D27',
+								width: '960px',
+								flexShrink: 0,
+							}}>
+							md
+						</span>
+					</div>
+					<div style={withTextStyles.box}>
+						<div style={withTextStyles.stateRow}>
+							<div style={withTextStyles.stateLabelWrap}>
+								<span style={withTextStyles.stateLabel}>Default</span>
+							</div>
+							<div style={withTextStyles.checkboxCol}>
+								<div style={withTextStyles.checkboxWrap}>
+									<Checkbox
+										size='md'
+										checked={false}
+										onChange={() => {}}
+										label='Remember me'
+										subLabel='Save my login details for next time.'
+									/>
+								</div>
+								<div style={withTextStyles.checkboxWrap}>
+									<Checkbox
+										size='md'
+										checked={true}
+										onChange={() => {}}
+										label='Remember me'
+										subLabel='Save my login details for next time.'
+									/>
+								</div>
+								<div style={withTextStyles.checkboxWrap}>
+									<Checkbox
+										size='md'
+										indeterminate={true}
+										onChange={() => {}}
+										label='Remember me'
+										subLabel='Save my login details for next time.'
+									/>
+								</div>
+								<div style={withTextStyles.checkboxWrap}>
+									<Checkbox
+										size='xlg'
+										checked={false}
+										onChange={() => {}}
+										label='Remember me'
+										subLabel='Save my login details for next time.'
+									/>
+								</div>
+								<div style={withTextStyles.checkboxWrap}>
+									<Checkbox
+										size='xlg'
+										checked={true}
+										onChange={() => {}}
+										label='Remember me'
+										subLabel='Save my login details for next time.'
+									/>
+								</div>
+								<div style={withTextStyles.checkboxWrap}>
+									<Checkbox
+										size='xlg'
+										indeterminate={true}
+										onChange={() => {}}
+										label='Remember me'
+										subLabel='Save my login details for next time.'
+									/>
+								</div>
+							</div>
+						</div>
+						<div style={withTextStyles.stateRow}>
+							<div style={withTextStyles.stateLabelWrap}>
+								<span style={withTextStyles.stateLabel}>Hover</span>
+							</div>
+							<div style={withTextStyles.checkboxCol}>
+								<div style={withTextStyles.checkboxWrap}>
+									<Checkbox
+										size='md'
+										checked={false}
+										onChange={() => {}}
+										label='Remember me'
+										subLabel='Save my login details for next time.'
+									/>
+								</div>
+								<div style={withTextStyles.checkboxWrap}>
+									<Checkbox
+										size='md'
+										checked={true}
+										onChange={() => {}}
+										label='Remember me'
+										subLabel='Save my login details for next time.'
+									/>
+								</div>
+								<div style={withTextStyles.checkboxWrap}>
+									<Checkbox
+										size='md'
+										indeterminate={true}
+										onChange={() => {}}
+										label='Remember me'
+										subLabel='Save my login details for next time.'
+									/>
+								</div>
+								<div style={withTextStyles.checkboxWrap}>
+									<Checkbox
+										size='xlg'
+										checked={false}
+										onChange={() => {}}
+										label='Remember me'
+										subLabel='Save my login details for next time.'
+									/>
+								</div>
+								<div style={withTextStyles.checkboxWrap}>
+									<Checkbox
+										size='xlg'
+										checked={true}
+										onChange={() => {}}
+										label='Remember me'
+										subLabel='Save my login details for next time.'
+									/>
+								</div>
+								<div style={withTextStyles.checkboxWrap}>
+									<Checkbox
+										size='xlg'
+										indeterminate={true}
+										onChange={() => {}}
+										label='Remember me'
+										subLabel='Save my login details for next time.'
+									/>
+								</div>
+							</div>
+						</div>
+						<div style={withTextStyles.stateRow}>
+							<div style={withTextStyles.stateLabelWrap}>
+								<span style={withTextStyles.stateLabel}>Focus</span>
+							</div>
+							<div style={withTextStyles.checkboxCol}>
+								<div style={withTextStyles.checkboxWrap}>
+									<Checkbox
+										size='md'
+										checked={false}
+										onChange={() => {}}
+										label='Remember me'
+										subLabel='Save my login details for next time.'
+									/>
+								</div>
+								<div style={withTextStyles.checkboxWrap}>
+									<Checkbox
+										size='md'
+										checked={true}
+										onChange={() => {}}
+										label='Remember me'
+										subLabel='Save my login details for next time.'
+									/>
+								</div>
+								<div style={withTextStyles.checkboxWrap}>
+									<Checkbox
+										size='md'
+										indeterminate={true}
+										onChange={() => {}}
+										label='Remember me'
+										subLabel='Save my login details for next time.'
+									/>
+								</div>
+								<div style={withTextStyles.checkboxWrap}>
+									<Checkbox
+										size='xlg'
+										checked={false}
+										onChange={() => {}}
+										label='Remember me'
+										subLabel='Save my login details for next time.'
+									/>
+								</div>
+								<div style={withTextStyles.checkboxWrap}>
+									<Checkbox
+										size='xlg'
+										checked={true}
+										onChange={() => {}}
+										label='Remember me'
+										subLabel='Save my login details for next time.'
+									/>
+								</div>
+								<div style={withTextStyles.checkboxWrap}>
+									<Checkbox
+										size='xlg'
+										indeterminate={true}
+										onChange={() => {}}
+										label='Remember me'
+										subLabel='Save my login details for next time.'
+									/>
+								</div>
+							</div>
+						</div>
+						<div style={withTextStyles.stateRow}>
+							<div style={withTextStyles.stateLabelWrap}>
+								<span style={withTextStyles.stateLabel}>Disable</span>
+							</div>
+							<div style={withTextStyles.checkboxCol}>
+								<div style={withTextStyles.checkboxWrap}>
+									<Checkbox
+										size='md'
+										checked={false}
+										disabled
+										label='Remember me'
+										subLabel='Save my login details for next time.'
+									/>
+								</div>
+								<div style={withTextStyles.checkboxWrap}>
+									<Checkbox
+										size='md'
+										checked={true}
+										disabled
+										label='Remember me'
+										subLabel='Save my login details for next time.'
+									/>
+								</div>
+								<div style={withTextStyles.checkboxWrap}>
+									<Checkbox
+										size='md'
+										indeterminate={true}
+										disabled
+										label='Remember me'
+										subLabel='Save my login details for next time.'
+									/>
+								</div>
+								<div style={withTextStyles.checkboxWrap}>
+									<Checkbox
+										size='xlg'
+										checked={false}
+										disabled
+										label='Remember me'
+										subLabel='Save my login details for next time.'
+									/>
+								</div>
+								<div style={withTextStyles.checkboxWrap}>
+									<Checkbox
+										size='xlg'
+										checked={true}
+										disabled
+										label='Remember me'
+										subLabel='Save my login details for next time.'
+									/>
+								</div>
+								<div style={withTextStyles.checkboxWrap}>
+									<Checkbox
+										size='xlg'
+										indeterminate={true}
+										disabled
+										label='Remember me'
+										subLabel='Save my login details for next time.'
+									/>
+								</div>
+							</div>
+						</div>
+						<div style={withTextStyles.stateRow}>
+							<div style={withTextStyles.stateLabelWrap}>
+								<span style={withTextStyles.stateLabel}>Read-only</span>
+							</div>
+							<div style={withTextStyles.checkboxCol}>
+								<div style={withTextStyles.checkboxWrap}>
+									<Checkbox
+										size='md'
+										checked={false}
+										readOnly
+										label='Remember me'
+										subLabel='Save my login details for next time.'
+									/>
+								</div>
+								<div style={withTextStyles.checkboxWrap}>
+									<Checkbox
+										size='md'
+										checked={true}
+										readOnly
+										label='Remember me'
+										subLabel='Save my login details for next time.'
+									/>
+								</div>
+								<div style={withTextStyles.checkboxWrap}>
+									<Checkbox
+										size='md'
+										indeterminate={true}
+										readOnly
+										label='Remember me'
+										subLabel='Save my login details for next time.'
+									/>
+								</div>
+								<div style={withTextStyles.checkboxWrap}>
+									<Checkbox
+										size='xlg'
+										checked={false}
+										readOnly
+										label='Remember me'
+										subLabel='Save my login details for next time.'
+									/>
+								</div>
+								<div style={withTextStyles.checkboxWrap}>
+									<Checkbox
+										size='xlg'
+										checked={true}
+										readOnly
+										label='Remember me'
+										subLabel='Save my login details for next time.'
+									/>
+								</div>
+								<div style={withTextStyles.checkboxWrap}>
+									<Checkbox
+										size='xlg'
+										indeterminate={true}
+										readOnly
+										label='Remember me'
+										subLabel='Save my login details for next time.'
+									/>
+								</div>
+							</div>
+						</div>
+						<div style={withTextStyles.stateRow}>
+							<div style={withTextStyles.stateLabelWrap}>
+								<span style={withTextStyles.stateLabel}>Error</span>
+							</div>
+							<div style={withTextStyles.checkboxCol}>
+								<div style={withTextStyles.checkboxWrap}>
+									<Checkbox
+										size='md'
+										checked={false}
+										error
+										errorMessage='Error message'
+										label='Remember me'
+										subLabel='Save my login details for next time.'
+									/>
+								</div>
+								<div style={withTextStyles.checkboxWrap}>
+									<Checkbox
+										size='md'
+										checked={true}
+										error
+										errorMessage='Error message'
+										label='Remember me'
+										subLabel='Save my login details for next time.'
+									/>
+								</div>
+								<div style={withTextStyles.checkboxWrap}>
+									<Checkbox
+										size='md'
+										indeterminate={true}
+										error
+										errorMessage='Error message'
+										label='Remember me'
+										subLabel='Save my login details for next time.'
+									/>
+								</div>
+								<div style={withTextStyles.checkboxWrap}>
+									<Checkbox
+										size='xlg'
+										checked={false}
+										error
+										errorMessage='Error message'
+										label='Remember me'
+										subLabel='Save my login details for next time.'
+									/>
+								</div>
+								<div style={withTextStyles.checkboxWrap}>
+									<Checkbox
+										size='xlg'
+										checked={true}
+										error
+										errorMessage='Error message'
+										label='Remember me'
+										subLabel='Save my login details for next time.'
+									/>
+								</div>
+								<div style={withTextStyles.checkboxWrap}>
+									<Checkbox
+										size='xlg'
+										indeterminate={true}
+										error
+										errorMessage='Error message'
+										label='Remember me'
+										subLabel='Save my login details for next time.'
+									/>
+								</div>
+							</div>
+						</div>
+						<div style={withTextStyles.stateRowLast}>
+							<div style={withTextStyles.stateLabelWrap}>
+								<span style={withTextStyles.stateLabel}>Warning</span>
+							</div>
+							<div style={withTextStyles.checkboxCol}>
+								<div style={withTextStyles.checkboxWrap}>
+									<Checkbox
+										size='md'
+										checked={false}
+										warning
+										errorMessage='Error message'
+										label='Remember me'
+										subLabel='Save my login details for next time.'
+									/>
+								</div>
+								<div style={withTextStyles.checkboxWrap}>
+									<Checkbox
+										size='md'
+										checked={true}
+										warning
+										errorMessage='Error message'
+										label='Remember me'
+										subLabel='Save my login details for next time.'
+									/>
+								</div>
+								<div style={withTextStyles.checkboxWrap}>
+									<Checkbox
+										size='md'
+										indeterminate={true}
+										warning
+										errorMessage='Error message'
+										label='Remember me'
+										subLabel='Save my login details for next time.'
+									/>
+								</div>
+								<div style={withTextStyles.checkboxWrap}>
+									<Checkbox
+										size='xlg'
+										checked={false}
+										warning
+										errorMessage='Error message'
+										label='Remember me'
+										subLabel='Save my login details for next time.'
+									/>
+								</div>
+								<div style={withTextStyles.checkboxWrap}>
+									<Checkbox
+										size='xlg'
+										checked={true}
+										warning
+										errorMessage='Error message'
+										label='Remember me'
+										subLabel='Save my login details for next time.'
+									/>
+								</div>
+								<div style={withTextStyles.checkboxWrap}>
+									<Checkbox
+										size='xlg'
+										indeterminate={true}
+										warning
+										errorMessage='Error message'
+										label='Remember me'
+										subLabel='Save my login details for next time.'
+									/>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</ThemedContainer>
+		)}
 	</Story>
 </Canvas>
 
 ## API
 
-**`disabled`**
+### size
+
+The size of the checkbox.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '33%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '33%' }}>DEFAULT</th>
+		<th style={{ textAlign: 'left', width: '33%' }}>OPTIONS</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>'md'</td>
+		<td>'sm' | 'md' | 'lg' | 'xlg'</td>
+	</tr>
+</table>
+
+| Size | Dimensions |
+| ---- | ---------- |
+| sm   | 14×14px    |
+| md   | 16×16px    |
+| lg   | 18×18px    |
+| xlg  | 20×20px    |
+
+```jsx
+<Checkbox size='lg' />
+```
+
+### checked
+
+Whether the checkbox is checked.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<Checkbox checked={true} />
+```
+
+### indeterminate
+
+Whether the checkbox is in an indeterminate state (dash icon).
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<Checkbox indeterminate={true} />
+```
+
+### disabled
 
 Disables the checkbox.
 
@@ -191,31 +811,12 @@ Disables the checkbox.
 </table>
 
 ```jsx
-<CheckBox disabled={true} />
+<Checkbox disabled />
 ```
 
-**`label`**
+### readOnly
 
-Text label associated with the checkbox.
-
-<table style={{ width: '100%' }}>
-	<tr>
-		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
-		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
-	</tr>
-	<tr>
-		<td>String</td>
-		<td>null</td>
-	</tr>
-</table>
-
-```jsx
-<CheckBox label='Checkbox title' />
-```
-
-**`defaultChecked`**
-
-Initial checked state for uncontrolled usage.
+Makes the checkbox read-only (grey background, no interaction).
 
 <table style={{ width: '100%' }}>
 	<tr>
@@ -229,12 +830,12 @@ Initial checked state for uncontrolled usage.
 </table>
 
 ```jsx
-<CheckBox defaultChecked={true} />
+<Checkbox readOnly />
 ```
 
-**`checked`**
+### error
 
-Checked state for controlled usage.
+Applies error styling (red border/fill).
 
 <table style={{ width: '100%' }}>
 	<tr>
@@ -243,17 +844,55 @@ Checked state for controlled usage.
 	</tr>
 	<tr>
 		<td>Boolean</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<Checkbox error errorMessage='This field is required' />
+```
+
+### warning
+
+Applies warning styling (orange message, blue fill when checked).
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<Checkbox warning errorMessage='Please review this' />
+```
+
+### label
+
+Primary label text displayed next to the checkbox.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>ReactNode</td>
 		<td>undefined</td>
 	</tr>
 </table>
 
 ```jsx
-<CheckBox checked={true} />
+<Checkbox label='Remember me' />
 ```
 
-**`position`**
+### subLabel
 
-Position of the checkbox relative to the label.
+Secondary label text displayed below the primary label.
 
 <table style={{ width: '100%' }}>
 	<tr>
@@ -261,18 +900,18 @@ Position of the checkbox relative to the label.
 		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
 	</tr>
 	<tr>
-		<td>'left', 'right'</td>
-		<td>'right'</td>
+		<td>ReactNode</td>
+		<td>undefined</td>
 	</tr>
 </table>
 
 ```jsx
-<CheckBox position='left' />
+<Checkbox label='Remember me' subLabel='Save my login details for next time.' />
 ```
 
-**`size`**
+### errorMessage
 
-Size of the checkbox.
+Message shown below the checkbox when error or warning is true.
 
 <table style={{ width: '100%' }}>
 	<tr>
@@ -280,18 +919,18 @@ Size of the checkbox.
 		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
 	</tr>
 	<tr>
-		<td>'sm', 'md', 'lg'</td>
-		<td>'sm'</td>
+		<td>ReactNode</td>
+		<td>undefined</td>
 	</tr>
 </table>
 
 ```jsx
-<CheckBox size='lg' />
+<Checkbox error errorMessage='This field is required' />
 ```
 
-**`onChange`**
+### onChange
 
-Function to execute when the checkbox state changes.
+Callback fired when the checkbox value changes.
 
 <table style={{ width: '100%' }}>
 	<tr>
@@ -305,9 +944,5 @@ Function to execute when the checkbox state changes.
 </table>
 
 ```jsx
-<CheckBox
-	onChange={() => {
-		console.log('On change');
-	}}
-/>
+<Checkbox onChange={(e) => console.log(e.target.checked)} />
 ```
