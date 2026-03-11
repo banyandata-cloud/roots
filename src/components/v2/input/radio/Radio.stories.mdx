@@ -11,9 +11,24 @@ export const Template = (args) => (
 	</ThemedContainer>
 );
 
+export const InteractiveTemplate = () => {
+	const [checked, setChecked] = React.useState(false);
+	return (
+		<ThemedContainer theme='light'>
+			<Radio
+				label={checked ? 'Selected' : 'Unselected'}
+				checked={checked}
+				onChange={(event, value) => setChecked(!checked)}
+				position='left'
+			/>
+		</ThemedContainer>
+	);
+};
+
 # Radio
 
 The Radio component provides a customizable radio input for single-selection options. It supports controlled and uncontrolled usage, and covers all interaction states: Enable, Focus, Read-only, Error, Warning, and Disabled.
+
 #### Design - [Figma](https://www.figma.com/design/IfmLQrA0AAZVYwt6vRxqCe/Design-System--26?node-id=899-2405&p=f&m=dev) | Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/components/input/radio)
 
 > The Radio component provides an accessible and easily customizable way to implement radio inputs in your application. It supports both controlled and uncontrolled usage, with options for positioning, sizing, and feedback states.
@@ -24,12 +39,26 @@ The Radio component provides a customizable radio input for single-selection opt
 import { Radio } from '@banyan_cloud/roots';
 ```
 
- The `onChange` function fires when the radio state changes, receiving `(event, value)`.
+- The `onChange` function fires when the radio state changes, receiving `(event, value)`.
 - The `position` prop places the radio icon left or right of the label.
 - The `size` prop controls the icon size.
 - The `readOnly` prop blocks interaction without the full disabled greying.
 - The `error` prop shows a red badge icon with a black message below the radio.
 - The `warning` prop shows a yellow badge icon with a black message below the radio.
+
+---
+
+## Functionalities
+
+### Toggle Selection
+
+Click the radio button to **select** it.
+
+<Canvas>
+	<Story name='Functionalities'>{InteractiveTemplate.bind({})}</Story>
+</Canvas>
+
+---
 
 ## Stories
 
@@ -229,7 +258,8 @@ import { Radio } from '@banyan_cloud/roots';
 
 ## API
 
-### focused 
+### focused
+
 Forces the focused visual state
 
 <table style={{ width: '100%' }}>
@@ -242,7 +272,6 @@ Forces the focused visual state
 		<td>false</td>
 	</tr>
 </table>
-
 ```jsx
 <Radio focused={true} />
 ```
@@ -261,7 +290,6 @@ Disables the radio input completely.
 		<td>false</td>
 	</tr>
 </table>
-
 ```jsx
 <Radio disabled={true} />
 ```
@@ -280,7 +308,6 @@ Makes the radio non-interactive without full disabled greying.
 		<td>false</td>
 	</tr>
 </table>
-
 ```jsx
 <Radio readOnly={true} />
 ```
@@ -299,7 +326,6 @@ Shows a red badge icon with a black error message below the radio.
 		<td>undefined</td>
 	</tr>
 </table>
-
 ```jsx
 <Radio error='This field is required' />
 ```
@@ -318,7 +344,6 @@ Shows a yellow badge icon with a black warning message below the radio.
 		<td>undefined</td>
 	</tr>
 </table>
-
 ```jsx
 <Radio warning='Please double-check your selection' />
 ```
@@ -337,7 +362,6 @@ Text label associated with the radio input.
 		<td>null</td>
 	</tr>
 </table>
-
 ```jsx
 <Radio label='Radio label' />
 ```
@@ -356,12 +380,11 @@ Specifies whether the radio is checked (controlled mode).
 		<td>undefined</td>
 	</tr>
 </table>
-
 ```jsx
 <Radio checked={true} />
 ```
 
-### defaultChecked 
+### defaultChecked
 
 Specifies the initial checked state (uncontrolled mode).
 
@@ -375,7 +398,6 @@ Specifies the initial checked state (uncontrolled mode).
 		<td>false</td>
 	</tr>
 </table>
-
 ```jsx
 <Radio defaultChecked={true} />
 ```
@@ -394,7 +416,6 @@ Position of the radio icon relative to the label.
 		<td>'left'</td>
 	</tr>
 </table>
-
 ```jsx
 <Radio position='right' />
 ```
@@ -413,7 +434,6 @@ Size of the radio icon.
 		<td>'sm'</td>
 	</tr>
 </table>
-
 ```jsx
 <Radio size='md' />
 ```
@@ -432,7 +452,6 @@ Callback fired when the radio state changes.
 		<td>{`() => {}`}</td>
 	</tr>
 </table>
-
 ```jsx
 <Radio
 	onChange={(event, value) => {

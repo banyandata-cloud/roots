@@ -15,24 +15,8 @@ import SelectedError from './assets/Clickables/Error/SelectedError';
 
 import UnSelected from './assets/Clickables/Enable/EnableUnselected';
 import UnSelectedError from './assets/Clickables/Error/UnSelectedError';
-import FocusUnSelected from './assets/Clickables/Focus/FocusUnSelected';
-import FocusSelected from './assets/Clickables/Focus/FocusSelected';
 
-type Position = 'left' | 'right';
-
-export interface RadioProps {
-	label?: React.ReactNode;
-	checked?: boolean;
-	defaultChecked?: boolean;
-	onChange?: (event: React.ChangeEvent<HTMLInputElement>, value: boolean) => void;
-	position?: Position;
-	className?: string | undefined;
-	disabled?: boolean | undefined;
-	readOnly?: boolean;
-	error?: string;
-	warning?: string;
-	focused?: boolean;
-}
+import type { RadioProps } from './types';
 
 const Radio: React.FC<RadioProps> = (props) => {
 	const {
@@ -55,7 +39,7 @@ const Radio: React.FC<RadioProps> = (props) => {
 		defaultChecked
 	);
 
-	const [isFocused, setIsFocused] = useState(false);
+	const [isFocused, setIsFocused] = useState<boolean>(false);
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		if (readOnly) return;
@@ -97,10 +81,6 @@ const Radio: React.FC<RadioProps> = (props) => {
 			return isChecked ? <Selected /> : <UnSelected />;
 		}
 
-		if (isFocused || focused) {
-			return isChecked ? <FocusSelected /> : <FocusUnSelected />;
-		}
-
 		return isChecked ? <Selected /> : <UnSelected />;
 	};
 
@@ -110,22 +90,33 @@ const Radio: React.FC<RadioProps> = (props) => {
 				className={classes(
 					styles.root,
 					styles[`position-${position}`],
-					disabled ? styles.disabled : '',
-					readOnly ? styles.readonly : '',
-					isChecked ? styles.selected : '',
-					hasError ? styles.error : '',
-					hasWarning ? styles.warning : ''
+					disabled && styles.disabled,
+					readOnly && styles.readonly,
+					isChecked && styles.selected,
+					hasError && styles.error,
+					hasWarning && styles.warning
 				)}>
 				<input
 					disabled={disabled}
 					type='radio'
 					checked={isChecked}
 					onChange={handleChange}
-					onFocus={() => setIsFocused(true)}
+					onFocus={(e) => {
+						if (e.target.matches(':focus-visible')) {
+							setIsFocused(true);
+						}
+					}}
 					onBlur={() => setIsFocused(false)}
 				/>
 
-				{renderIcon()}
+				<span
+					className={classes(
+						styles['radio-icon'],
+						(isFocused || focused) && !hasError && styles['focus'],
+						(isFocused || focused) && hasError && styles['focus-error']
+					)}>
+					{renderIcon()}
+				</span>
 
 				{label && <span data-elem='label'>{label}</span>}
 			</label>

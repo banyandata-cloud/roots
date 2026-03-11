@@ -23,19 +23,21 @@
 .root .drawer {
   width: 40%;
   overflow: hidden;
+}
+.root .drawer::-webkit-scrollbar {
+  display: none;
+}
+.root .drawer {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
-.root .drawer::-webkit-scrollbar {
+.root .drawer.standalone > [data-elem=body]::-webkit-scrollbar {
   display: none;
 }
 .root .drawer.standalone > [data-elem=body] {
   -ms-overflow-style: none;
   scrollbar-width: none;
   height: 100%;
-}
-.root .drawer.standalone > [data-elem=body]::-webkit-scrollbar {
-  display: none;
 }
 .root .drawer.standalone > [data-elem=body] > div {
   display: flex;
@@ -51,7 +53,6 @@
   overflow-y: scroll;
   -ms-overflow-style: none;
   scrollbar-width: thin;
-  flex: 1;
 }
 .root .drawer.standalone > [data-elem=body] > div > div:nth-child(2)::-webkit-scrollbar {
   width: 0.25rem;
@@ -63,19 +64,22 @@
 .root .drawer.standalone > [data-elem=body] > div > div:nth-child(2)::-webkit-scrollbar-thumb {
   background: var(--grey6);
 }
+.root .drawer.standalone > [data-elem=body] > div > div:nth-child(2) {
+  flex: 1;
+}
 .root .drawer > div > div:nth-last-child(1) {
   height: 100%;
 }
 .root .drawer > div > div:nth-last-child(1) > div {
   height: 100%;
 }
+.root .drawer > div > div:nth-last-child(1) > div > [data-elem=body]::-webkit-scrollbar {
+  display: none;
+}
 .root .drawer > div > div:nth-last-child(1) > div > [data-elem=body] {
   -ms-overflow-style: none;
   scrollbar-width: none;
   height: 100%;
-}
-.root .drawer > div > div:nth-last-child(1) > div > [data-elem=body]::-webkit-scrollbar {
-  display: none;
 }
 .root .drawer > div > div:nth-last-child(1) > div > [data-elem=body] > div {
   display: flex;
@@ -91,7 +95,6 @@
   overflow-y: scroll;
   -ms-overflow-style: none;
   scrollbar-width: thin;
-  flex: 1;
 }
 .root .drawer > div > div:nth-last-child(1) > div > [data-elem=body] > div > div:nth-child(2)::-webkit-scrollbar {
   width: 0.25rem;
@@ -103,6 +106,9 @@
 .root .drawer > div > div:nth-last-child(1) > div > [data-elem=body] > div > div:nth-child(2)::-webkit-scrollbar-thumb {
   background: var(--grey6);
 }
+.root .drawer > div > div:nth-last-child(1) > div > [data-elem=body] > div > div:nth-child(2) {
+  flex: 1;
+}
 .root .chips,
 .root .filters,
 .root .table > [data-elem=table-header] {
@@ -112,8 +118,7 @@
 }
 .root .overlay {
   background: rgba(0, 0, 0, 0.16);
-  -webkit-backdrop-filter: blur(5px);
-          backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
   height: 100%;
   position: absolute;
   left: 0;

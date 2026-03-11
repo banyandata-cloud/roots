@@ -40,14 +40,14 @@
           user-select: none;
   color: var(--text-color);
 }
-.root > .header[data-elem=base-cell]:hover {
-  background: var(--background-color4);
-}
 .root > .header[data-elem=base-cell]:hover .title {
   color: var(--secondary-color1);
 }
 .root > .header[data-elem=base-cell]:hover svg {
   fill: var(--secondary-color1);
+}
+.root > .header[data-elem=base-cell]:hover {
+  background: var(--background-color4);
 }
 .root > .body {
   padding: 0.5rem 2.5rem;

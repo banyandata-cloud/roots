@@ -92,11 +92,31 @@ body {
 	font-weight: 900;
 	src: url('../../fonts/Poppins-Black.ttf') format('truetype');
 }
+@font-face {
+	font-family: Jakarta;
+	font-style: normal;
+	font-weight: 400;
+	src: url('../../fonts/Jakarta-Regular.ttf') format('truetype');
+}
 
 @font-face {
 	font-family: Jakarta;
 	font-style: normal;
-	src: url('../../fonts/Plus-Jakarta.ttf') format('truetype');
+	font-weight: 500;
+	src: url('../../fonts/Jakarta-Medium.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: Jakarta;
+	font-style: normal;
+	font-weight: 600;
+	src: url('../../fonts/Jakarta-SemiBold.ttf') format('truetype');
+}
+@font-face {
+	font-family: Jakarta;
+	font-style: normal;
+	font-weight: 700;
+	src: url('../../fonts/Jakarta-Bold.ttf') format('truetype');
 }
 
 .app-container {

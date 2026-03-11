@@ -9,6 +9,8 @@
   cursor: pointer;
   gap: 8px;
   color: var(--grey1);
+  font-family: Jakarta;
+  font-size: 14px;
 }
 .root.position-left {
   display: flex;
@@ -59,6 +61,18 @@
   line-height: 1.5;
 }
 
+.radio-icon {
+  display: inline-flex;
+  border-radius: 50%;
+  line-height: 0;
+}
+.radio-icon.focus {
+  box-shadow: 0 0 0 2px var(--Foregroundcolor-fg-brand-primary, #1570ef);
+}
+.radio-icon.focus-error {
+  box-shadow: 0 0 0 2px var(--Foregroundcolor-fg-error-primary, #d92d20);
+}
+
 .feedback {
   display: flex;
   flex-direction: row;
@@ -67,13 +81,14 @@
 }
 
 .feedbackTextError {
-  font-size: 0.75rem;
+  font-size: 14px;
   line-height: 1rem;
   color: var(--text-color);
+  font-family: Jakarta;
 }
 
 .feedbackTextWarning {
-  font-size: 0.75rem;
+  font-size: 14px;
   line-height: 1rem;
   color: var(--text-color);
   font-family: Jakarta;
