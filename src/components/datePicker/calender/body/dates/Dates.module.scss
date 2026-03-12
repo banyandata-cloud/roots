@@ -13,6 +13,10 @@
 		align-self: center;
 		user-select: none;
 
+		&.date-disabled {
+			pointer-events: none;
+		}
+
 		&.minInRange {
 			background-color: $secondary-color2;
 			border-radius: 1.5rem 0rem 0rem 1.5rem;
@@ -119,6 +123,7 @@
 				}
 			}
 		}
+
 		&.first-hovered {
 			background: $background-color5;
 			border-top-left-radius: 1.5rem;
@@ -146,6 +151,7 @@
 				}
 			}
 		}
+
 		&.last-hovered {
 			background: $background-color5;
 			border-top-left-radius: 0rem;

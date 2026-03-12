@@ -183,7 +183,11 @@ const Dates = (props: DatesProps): React.JSX.Element => {
 				const isFirstItemHovered =
 					isBefore(date, fromUnixTime(firstItem!)) &&
 					hoveredEndingDate === getUnixTime(date);
-				const isLastItemHovered = hoveredEndingDate === getUnixTime(date);
+
+				const isLastItemHovered =
+					hoveredEndingDate === getUnixTime(date) &&
+					!isBefore(date, fromUnixTime(firstItem!));
+
 				const notSameMonth = date.getMonth() !== monthAsNumber;
 				const isUnSelected = unSelectedDate === date.toISOString();
 				const isDisabled =
@@ -233,7 +237,8 @@ const Dates = (props: DatesProps): React.JSX.Element => {
 						? styles['first-hovered']
 						: '',
 					today ? styles.today : '',
-					todaySelected ? styles['today-selected'] : ''
+					todaySelected ? styles['today-selected'] : '',
+					isDisabled ? styles['date-disabled'] : ''
 				);
 
 				const childClassNames = classes(

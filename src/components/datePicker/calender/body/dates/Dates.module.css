@@ -17,6 +17,9 @@
      -moz-user-select: none;
           user-select: none;
 }
+.root > div.date-disabled {
+  pointer-events: none;
+}
 .root > div.minInRange {
   background-color: var(--secondary-color2);
   border-radius: 1.5rem 0rem 0rem 1.5rem;
