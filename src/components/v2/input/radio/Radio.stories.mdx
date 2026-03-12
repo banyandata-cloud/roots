@@ -1,0 +1,461 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+
+import { ThemedContainer } from '../../../helpers';
+import Radio from './Radio';
+
+<Meta title='Components/Input/v2/Radio' parameters={{ options: { showToolbar: true } }} />
+
+export const Template = (args) => (
+	<ThemedContainer theme='light'>
+		<Radio {...args} />
+	</ThemedContainer>
+);
+
+export const InteractiveTemplate = () => {
+	const [checked, setChecked] = React.useState(false);
+	return (
+		<ThemedContainer theme='light'>
+			<Radio
+				label={checked ? 'Selected' : 'Unselected'}
+				checked={checked}
+				onChange={(event, value) => setChecked(!checked)}
+				position='left'
+			/>
+		</ThemedContainer>
+	);
+};
+
+# Radio
+
+The Radio component provides a customizable radio input for single-selection options. It supports controlled and uncontrolled usage, and covers all interaction states: Enable, Focus, Read-only, Error, Warning, and Disabled.
+
+#### Design - [Figma](https://www.figma.com/design/IfmLQrA0AAZVYwt6vRxqCe/Design-System--26?node-id=899-2405&p=f&m=dev) | Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/components/input/radio)
+
+> The Radio component provides an accessible and easily customizable way to implement radio inputs in your application. It supports both controlled and uncontrolled usage, with options for positioning, sizing, and feedback states.
+
+## Usage
+
+```js
+import { Radio } from '@banyan_cloud/roots';
+```
+
+- The `onChange` function fires when the radio state changes, receiving `(event, value)`.
+- The `position` prop places the radio icon left or right of the label.
+- The `size` prop controls the icon size.
+- The `readOnly` prop blocks interaction without the full disabled greying.
+- The `error` prop shows a red badge icon with a black message below the radio.
+- The `warning` prop shows a yellow badge icon with a black message below the radio.
+
+---
+
+## Functionalities
+
+### Toggle Selection
+
+Click the radio button to **select** it.
+
+<Canvas>
+	<Story name='Functionalities'>{InteractiveTemplate.bind({})}</Story>
+</Canvas>
+
+---
+
+## Stories
+
+---
+
+### Enable - Unselected
+
+<Canvas>
+	<Story
+		name='Enable - Unselected'
+		args={{
+			label: 'Unselected',
+			position: 'left',
+			checked: false,
+			onChange: () => {},
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Enable - Selected
+
+<Canvas>
+	<Story
+		name='Enable - Selected'
+		args={{
+			label: 'Selected',
+			position: 'left',
+			checked: true,
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+---
+
+### Focus - Unselected
+
+<Canvas>
+	<Story
+		name='Focus - Unselected'
+		args={{
+			label: 'Unselected + Focus',
+			position: 'left',
+			checked: false,
+			focused: true,
+			onChange: () => {},
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Focus - Selected
+
+<Canvas>
+	<Story
+		name='Focus - Selected'
+		args={{
+			label: 'Selected + Focus',
+			position: 'left',
+			checked: true,
+			focused: true,
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+---
+
+### Read-only - Unselected
+
+<Canvas>
+	<Story
+		name='Read-only - Unselected'
+		args={{
+			label: 'Unselected + Read-only',
+			position: 'left',
+			readOnly: true,
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Read-only - Selected
+
+<Canvas>
+	<Story
+		name='Read-only - Selected'
+		args={{
+			label: 'Selected + Read-only',
+			position: 'left',
+			checked: true,
+			readOnly: true,
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+---
+
+### Error - Unselected
+
+<Canvas>
+	<Story
+		name='Error - Unselected'
+		args={{
+			label: 'Unselected + error',
+			position: 'left',
+			checked: false,
+			error: 'Error message',
+			onChange: () => {},
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Error - Selected
+
+<Canvas>
+	<Story
+		name='Error - Selected'
+		args={{
+			label: 'Selected + error',
+			position: 'left',
+			checked: true,
+			error: 'Error message',
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+---
+
+### Warning - Unselected
+
+<Canvas>
+	<Story
+		name='Warning - Unselected'
+		args={{
+			label: 'Unselected + warning',
+			position: 'left',
+			checked: false,
+			warning: 'Warning message',
+			onChange: () => {},
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Warning - Selected
+
+<Canvas>
+	<Story
+		name='Warning - Selected'
+		args={{
+			label: 'Selected + warning',
+			position: 'left',
+			checked: true,
+			warning: 'Warning message',
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+---
+
+### Disable - Unselected
+
+<Canvas>
+	<Story
+		name='Disable - Unselected'
+		args={{
+			label: 'Unselected + Disable',
+			position: 'left',
+			disabled: true,
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Disable - Selected
+
+<Canvas>
+	<Story
+		name='Disable - Selected'
+		args={{
+			label: 'Selected + Disable',
+			position: 'left',
+			checked: true,
+			disabled: true,
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+---
+
+## API
+
+### focused
+
+Forces the focused visual state
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>false</td>
+	</tr>
+</table>
+```jsx
+<Radio focused={true} />
+```
+
+### disabled
+
+Disables the radio input completely.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>false</td>
+	</tr>
+</table>
+```jsx
+<Radio disabled={true} />
+```
+
+### readOnly
+
+Makes the radio non-interactive without full disabled greying.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>false</td>
+	</tr>
+</table>
+```jsx
+<Radio readOnly={true} />
+```
+
+### error
+
+Shows a red badge icon with a black error message below the radio.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>undefined</td>
+	</tr>
+</table>
+```jsx
+<Radio error='This field is required' />
+```
+
+### warning
+
+Shows a yellow badge icon with a black warning message below the radio.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>undefined</td>
+	</tr>
+</table>
+```jsx
+<Radio warning='Please double-check your selection' />
+```
+
+### label
+
+Text label associated with the radio input.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>null</td>
+	</tr>
+</table>
+```jsx
+<Radio label='Radio label' />
+```
+
+### checked
+
+Specifies whether the radio is checked (controlled mode).
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>undefined</td>
+	</tr>
+</table>
+```jsx
+<Radio checked={true} />
+```
+
+### defaultChecked
+
+Specifies the initial checked state (uncontrolled mode).
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Boolean</td>
+		<td>false</td>
+	</tr>
+</table>
+```jsx
+<Radio defaultChecked={true} />
+```
+
+### position
+
+Position of the radio icon relative to the label.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>'left' | 'right'</td>
+		<td>'left'</td>
+	</tr>
+</table>
+```jsx
+<Radio position='right' />
+```
+
+### size
+
+Size of the radio icon.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>'sm' | 'md' | 'lg'</td>
+		<td>'sm'</td>
+	</tr>
+</table>
+```jsx
+<Radio size='md' />
+```
+
+### onChange
+
+Callback fired when the radio state changes.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Function</td>
+		<td>{`() => {}`}</td>
+	</tr>
+</table>
+```jsx
+<Radio
+	onChange={(event, value) => {
+		console.log('Checked:', value);
+	}}
+/>
+```

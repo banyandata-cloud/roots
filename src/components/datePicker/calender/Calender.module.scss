@@ -3,4 +3,6 @@
 .root {
 	padding: 1rem 0rem;
 	user-select: none;
+	@include flex(column, flex-start, stretch);
+	gap: 1rem;
 }

@@ -22,7 +22,6 @@ export const getDateFromEpoch = (epoch: number): string => {
 export const getTimeFromEpoch = (epoch: number): string => {
 	const date = new Date(0);
 	date.setSeconds(epoch);
-
 	const hours = doubleDigitted(date.getHours());
 	const minutes = doubleDigitted(date.getMinutes());
 	const seconds = doubleDigitted(date.getSeconds());
@@ -51,11 +50,15 @@ export const epochToFormattedDate = (
 			? ((date.getUTCHours() + 11) % 12) + 1
 			: ((date.getHours() + 11) % 12) + 1;
 
-		let meridian = date.getUTCHours() >= 12 ? 'PM' : 'AM';
+		let hoursForMeridian;
 
 		if (universal) {
-			meridian = date.getHours() >= 12 ? 'PM' : 'AM';
+			hoursForMeridian = date.getUTCHours();
+		} else {
+			hoursForMeridian = date.getHours();
 		}
+
+		const meridian = hoursForMeridian >= 12 ? 'PM' : 'AM';
 
 		const timeFormat: Record<TimeFormat, string> = {
 			24: `${hours}:${minutes}:${seconds} Hrs`,
