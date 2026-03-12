@@ -1,4 +1,4 @@
-import type { MouseEvent, ReactElement, JSXElementConstructor, ComponentType } from 'react';
+import type { ComponentType, JSXElementConstructor, MouseEvent, ReactElement } from 'react';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'soft' | 'outline' | 'ghost' | 'critical';
 export type ButtonSize = 'xs' | 'sm' | 'md' | 'lg';
@@ -12,9 +12,9 @@ export interface ButtonProps {
 	variant?: ButtonVariant;
 	size?: ButtonSize;
 	textSize?: ButtonTextSize;
-	disabled?: boolean;
-	id?: string;
+	disabled?: boolean | undefined;
+	id?: string | undefined;
 	type?: 'button' | 'submit' | 'reset';
-	onClick?: (event: MouseEvent<HTMLElement>) => void | Promise<void>;
-	blurOnClick?: boolean;
+	onClick?: (event: MouseEvent<HTMLElement>) => void | Promise<void> | undefined;
+	blurOnClick?: boolean | undefined;
 }

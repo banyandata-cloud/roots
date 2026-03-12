@@ -1,33 +1,16 @@
-import { forwardRef, useEffect, useRef } from 'react';
+import { forwardRef, useEffect, useRef, type RefObject } from 'react';
 import { classes } from '../../../utils';
-import styles from './CheckBox.module.scss';
 import ErrorIcon from '../icons/error/Error';
 import WarningIcon from '../icons/warning/Warning';
 import type { CheckboxProps } from './';
-
-const CheckIcon = () => (
-	<svg viewBox='0 0 10 8' fill='none' xmlns='http://www.w3.org/2000/svg'>
-		<path
-			d='M1 4L3.5 6.5L9 1'
-			stroke='currentColor'
-			strokeWidth='1.5'
-			strokeLinecap='round'
-			strokeLinejoin='round'
-		/>
-	</svg>
-);
-
-const IndeterminateIcon = () => (
-	<svg viewBox='0 0 10 2' fill='none' xmlns='http://www.w3.org/2000/svg'>
-		<path d='M1 1H9' stroke='currentColor' strokeWidth='1.5' strokeLinecap='round' />
-	</svg>
-);
+import { CheckIcon, IndeterminateIcon } from './assets';
+import styles from './CheckBox.module.scss';
 
 const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
 	const {
 		className = '',
 		size = 'md',
-		checked = false,
+		checked,
 		indeterminate = false,
 		disabled = false,
 		readOnly = false,
@@ -42,7 +25,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
 	} = props;
 
 	const innerRef = useRef<HTMLInputElement>(null);
-	const resolvedRef = (ref as React.RefObject<HTMLInputElement>) ?? innerRef;
+	const resolvedRef = (ref as RefObject<HTMLInputElement>) ?? innerRef;
 
 	// Set indeterminate via DOM since HTML doesn't support it as attribute
 	useEffect(() => {
@@ -51,13 +34,17 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
 		}
 	}, [indeterminate, resolvedRef]);
 
-	const stateClass = error
-		? styles.error
-		: warning
-			? styles.warning
-			: readOnly
-				? styles.readOnly
-				: '';
+	// Uncontrolled when checked is undefined, controlled otherwise
+	const isChecked = checked !== undefined ? checked : (resolvedRef.current?.checked ?? false);
+
+	let stateClass: string | undefined = '';
+	if (error) {
+		stateClass = styles.error;
+	} else if (warning) {
+		stateClass = styles.warning;
+	} else if (readOnly) {
+		stateClass = styles.readOnly;
+	}
 
 	const wrapperClass = classes(
 		styles.wrapper,
@@ -75,16 +62,16 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
 					type='checkbox'
 					id={id}
 					name={name}
-					checked={checked}
+					{...(checked !== undefined ? { checked } : { defaultChecked: false })}
 					disabled={disabled}
 					readOnly={readOnly || indeterminate}
 					onChange={readOnly || indeterminate ? undefined : (onChange ?? (() => {}))}
 					onClick={indeterminate ? (e) => e.preventDefault() : undefined}
 					className={styles.input}
-					aria-checked={indeterminate ? 'mixed' : checked}
+					aria-checked={indeterminate ? 'mixed' : isChecked}
 				/>
 				<span className={styles.box}>
-					{indeterminate ? <IndeterminateIcon /> : checked ? <CheckIcon /> : null}
+					{indeterminate ? <IndeterminateIcon /> : isChecked ? <CheckIcon /> : null}
 				</span>
 				{(label || subLabel) && (
 					<span className={styles.labelWrap}>

@@ -12,7 +12,7 @@ export type CheckboxState =
 export type CheckboxValue = 'checked' | 'unchecked' | 'indeterminate';
 
 export interface CheckboxProps {
-	className?: string;
+	className?: string | undefined;
 	size?: CheckboxSize;
 	checked?: boolean;
 	indeterminate?: boolean;
@@ -20,10 +20,10 @@ export interface CheckboxProps {
 	readOnly?: boolean;
 	error?: boolean;
 	warning?: boolean;
-	label?: ReactNode;
-	subLabel?: ReactNode;
-	errorMessage?: ReactNode;
-	id?: string;
-	name?: string;
-	onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+	label?: ReactNode | undefined;
+	subLabel?: ReactNode | undefined;
+	errorMessage?: ReactNode | undefined;
+	id?: string | undefined;
+	name?: string | undefined;
+	onChange?: (event: ChangeEvent<HTMLInputElement>) => void | undefined;
 }
