@@ -1,51 +1,67 @@
 @import '../../../../styles/';
 @import '../../../../styles/colors';
 
-/* Motion durations */
-$duration-fast-01: 70ms; // press / active
-$duration-fast-02: 110ms; // hover / focus
-$duration-moderate-01: 150ms; // enable / disable
-$duration-moderate-02: 240ms; // loading / system
+$duration-fast-01: 70ms;
+$duration-fast-02: 110ms;
+$duration-moderate-01: 150ms;
 
-/* Easing – Productive */
 $ease-standard: cubic-bezier(0.2, 0, 0.38, 0.9);
 $ease-entrance: cubic-bezier(0, 0, 0.38, 0.9);
 $ease-exit: cubic-bezier(0.2, 0, 1, 0.9);
 
 $button-sizes: (
 	xs: (
-		height: 24px,
+		height: 32px,
+		padding: 12px,
 		gap: 4px,
-		radius: 4px,
+		radius: 6px,
 	),
 	sm: (
-		height: 32px,
-		gap: 8px,
-		radius: 8px,
+		height: 36px,
+		padding: 14px,
+		gap: 4px,
+		radius: 6px,
 	),
 	md: (
 		height: 40px,
-		gap: 8px,
-		radius: 8px,
+		padding: 16px,
+		gap: 6px,
+		radius: 6px,
 	),
 	lg: (
-		height: 48px,
-		gap: 8px,
-		radius: 10px,
+		height: 44px,
+		padding: 18px,
+		gap: 6px,
+		radius: 6px,
 	),
 );
 
-$text-sizes: (
-	14: (
-		font-size: 14px,
-		line-height: 18px,
-		letter-spacing: 0.16px,
-	),
-	16: (
-		font-size: 16px,
-		line-height: 22px,
-	),
+$icon-sizes: (
+	xs: 18px,
+	sm: 18px,
+	md: 18px,
+	lg: 20px,
 );
+
+$shadow-normal:
+	0 2px 5px 0 rgba(103, 110, 118, 0.08),
+	0 0 0 1px rgba(103, 110, 118, 0.16),
+	0 1px 1px 0 rgba(0, 0, 0, 0.12);
+
+$shadow-hover-primary:
+	0 2px 5px 0 rgba(46, 144, 250, 0.08),
+	0 0 0 1px rgba(46, 144, 250, 0.4),
+	0 1px 1px 0 rgba(0, 0, 0, 0.12);
+
+$shadow-hover-secondary:
+	0 2px 5px 0 rgba(103, 110, 118, 0.08),
+	0 0 0 1px rgba(103, 110, 118, 0.16),
+	0 1px 1px 0 rgba(0, 0, 0, 0.12);
+
+$shadow-hover-critical:
+	0 2px 5px 0 rgba(217, 45, 32, 0.08),
+	0 0 0 1px rgba(217, 45, 32, 0.4),
+	0 1px 1px 0 rgba(0, 0, 0, 0.12);
 
 button.root[data-elem='base-cell'] {
 	transition:
@@ -57,338 +73,240 @@ button.root[data-elem='base-cell'] {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	gap: 4px;
-	border-radius: 4px;
+	border: none;
 	cursor: pointer;
 	position: relative;
+	width: fit-content;
 
-	// size variant
+	[data-elem='title'] {
+		font-family: Jakarta, sans-serif;
+		font-weight: 600;
+		font-size: 14px;
+		line-height: 20px;
+	}
+
 	@each $size, $values in $button-sizes {
 		&.size-#{$size} {
 			height: map-get($values, height);
+			padding: 0 map-get($values, padding);
 			gap: map-get($values, gap);
 			border-radius: map-get($values, radius);
-			padding: 0 16px;
-			width: fit-content;
-		}
-	}
-	// TYPOGRAPHY VARIANTS
-	@each $size, $values in $text-sizes {
-		&.text-#{$size} {
-			[data-elem='title'] {
-				font-family: Poppins;
-				font-weight: 400;
-				font-size: map-get($values, font-size);
-				line-height: map-get($values, line-height);
-
-				@if map-has-key($values, letter-spacing) {
-					letter-spacing: map-get($values, letter-spacing);
-				}
-			}
 		}
 	}
 
-	// primary
 	&.primary {
-		background: $button-primary;
-		color: $text-on-color;
+		background: #1570ef;
+		color: #ffffff;
+		box-shadow: $shadow-normal;
 
 		&:hover:not(:disabled) {
-			background: $button-primary-hover;
-		}
-
-		&:active:not(:disabled) {
-			background: $button-primary-active;
-		}
-
-		// Hover → Active
-		&:active:not(:disabled) {
-			transition-duration: $duration-fast-01;
-			transition-timing-function: $ease-entrance;
-		}
-
-		// Active → Hover
-		&:not(:active):hover {
+			background: #175cd3;
+			box-shadow: $shadow-hover-primary;
 			transition-duration: $duration-fast-01;
 			transition-timing-function: $ease-exit;
 		}
 
-		&:focus-visible:not(:active) {
-			outline: none;
-			box-shadow: 0 0 0 1px $focus-primary;
+		&:active:not(:disabled) {
+			background: #1849a9;
+			box-shadow: $shadow-normal;
+			transition-duration: $duration-fast-01;
+			transition-timing-function: $ease-entrance;
+		}
 
-			&::after {
-				content: '';
-				position: absolute;
-				inset: 0;
-				border-radius: inherit;
-				border: 1px solid $focus-inset;
-				pointer-events: none;
-			}
+		&:focus-visible:not(:disabled) {
+			outline: none;
+			box-shadow:
+				0 0 0 2px #ffffff,
+				0 0 0 4px #1570ef;
 		}
 	}
 
-	// secondary
 	&.secondary {
-		background: $button-secondary;
-		color: $text-on-color;
+		background: #252b37;
+		color: #ffffff;
+		box-shadow: $shadow-normal;
 
-		// Hover → Active
-		&:active:not(:disabled) {
-			transition-duration: $duration-fast-01;
-			transition-timing-function: $ease-entrance;
-		}
-
-		// Active → Hover
-		&:not(:active):hover {
+		&:hover:not(:disabled) {
+			background: #414651;
+			box-shadow: $shadow-hover-secondary;
 			transition-duration: $duration-fast-01;
 			transition-timing-function: $ease-exit;
 		}
 
-		&:hover:not(:disabled) {
-			background: $button-secondary-hover;
-		}
-
 		&:active:not(:disabled) {
-			background: $button-secondary-active;
+			background: #181d27;
+			box-shadow: $shadow-normal;
+			transition-duration: $duration-fast-01;
+			transition-timing-function: $ease-entrance;
 		}
 
-		&:focus-visible:not(:active) {
+		&:focus-visible:not(:disabled) {
 			outline: none;
-			box-shadow: 0 0 0 1px $focus-primary;
-
-			&::after {
-				content: '';
-				position: absolute;
-				inset: 0;
-				border-radius: inherit;
-				border: 1px solid $focus-inset;
-				pointer-events: none;
-			}
+			box-shadow:
+				0 0 0 2px #ffffff,
+				0 0 0 4px #a4a7ae;
 		}
 	}
 
-	// soft
 	&.soft {
-		background: $button-soft-bg;
-		color: $soft-text-color;
+		background: #fafafa;
+		color: #414651;
+		box-shadow: $shadow-normal;
 
-		// Hover → Active
-		&:active:not(:disabled) {
-			transition-duration: $duration-fast-01;
-			transition-timing-function: $ease-entrance;
+		&:not(:disabled) svg {
+			color: #414651;
 		}
 
-		// Active → Hover
-		&:not(:active):hover {
+		&:hover:not(:disabled) {
+			background: #f5f5f5;
+			color: #252b37;
+			box-shadow: $shadow-hover-secondary;
 			transition-duration: $duration-fast-01;
 			transition-timing-function: $ease-exit;
 		}
 
-		svg {
-			fill: $soft-svg-color;
-		}
-
-		&:hover:not(:disabled) {
-			background: $button-soft-bg-hover;
-		}
-
 		&:active:not(:disabled) {
-			background: $button-soft-bg-active;
+			background: #f5f5f5;
+			color: #252b37;
+			box-shadow: $shadow-normal;
+			transition-duration: $duration-fast-01;
+			transition-timing-function: $ease-entrance;
 		}
 
-		&:focus-visible:not(:active) {
+		&:focus-visible:not(:disabled) {
 			outline: none;
-			box-shadow: 0 0 0 1px $focus-primary;
-
-			&::after {
-				content: '';
-				position: absolute;
-				inset: 0;
-				border-radius: inherit;
-				border: 1px solid $focus-inset;
-				pointer-events: none;
-			}
+			box-shadow:
+				0 0 0 2px #ffffff,
+				0 0 0 4px #a4a7ae;
 		}
 	}
 
-	// outlined
-	&.outlined {
+	&.outline {
 		background: transparent;
-		border: 1px solid var(--button-button-outline, #1f5fcc);
-		color: var(--button-button-outline, #1f5fcc);
-
-		// Hover → Active
-		&:active:not(:disabled) {
-			transition-duration: $duration-fast-01;
-			transition-timing-function: $ease-entrance;
-		}
-
-		// Active → Hover
-		&:not(:active):hover {
+		color: #414651;
+		box-shadow:
+			0 2px 5px 0 rgba(103, 110, 118, 0.08),
+			0 0 0 1px rgba(103, 110, 118, 0.16),
+			0 1px 1px 0 rgba(0, 0, 0, 0.12);
+		&:hover:not(:disabled) {
+			background: #fafafa;
+			box-shadow: $shadow-hover-secondary;
 			transition-duration: $duration-fast-01;
 			transition-timing-function: $ease-exit;
 		}
 
-		/* icon default */
-		svg {
-			fill: var(--icon-icon-interactive, #2563eb);
-		}
-
-		/* hover */
-		&:hover:not(:disabled) {
-			background: var(--button-button-outline-hover, #1b55b5);
-			color: var(--text-text-inverse, #fff);
-
-			svg {
-				fill: var(--text-text-inverse, #fff);
-			}
-		}
-
-		/* focus */
-		&:focus-visible:not(:active) {
-			outline: none;
-			box-shadow: 0 0 0 1px $focus-primary;
-			background: var(--button-button-outline-hover, #1b55b5);
-			color: var(--text-text-inverse, #fff);
-			border: none;
-
-			&::after {
-				content: '';
-				position: absolute;
-				inset: 0;
-				border-radius: inherit;
-				border: 1px solid $focus-inset;
-				pointer-events: none;
-			}
-		}
-
-		/* active */
 		&:active:not(:disabled) {
-			background: $button-primary-active;
-			color: $text-on-color;
-			border: 1px solid transparent;
-
-			// box-shadow: none;
-
-			// &::after {
-			// 	content: none;
-			// }
-
-			svg {
-				fill: $text-on-color;
-			}
+			background: #f5f5f5;
+			box-shadow: 0 0 0 1px #d5d7da;
+			transition-duration: $duration-fast-01;
+			transition-timing-function: $ease-entrance;
 		}
 
-		&:disabled {
-			background: transparent;
-			border: 1px solid $button-disabled;
-			color: $text-disabled;
-			cursor: not-allowed;
-			pointer-events: none;
-			box-shadow: none;
-
-			[data-elem='title'],
-			svg {
-				fill: $text-disabled;
-				opacity: 0.25;
-			}
+		&:focus-visible:not(:disabled) {
+			outline: none;
+			box-shadow:
+				0 0 0 2px #ffffff,
+				0 0 0 4px #535862;
 		}
 	}
 
-	// ghost
 	&.ghost {
 		background: transparent;
-		border: none;
-		border-radius: 0;
-		color: $button-primary;
+		color: #414651;
+		box-shadow: none;
 
-		// Hover → Active
-		&:active:not(:disabled) {
-			transition-duration: $duration-fast-01;
-			transition-timing-function: $ease-entrance;
-		}
-
-		// Active → Hover
-		&:not(:active):hover {
+		&:hover:not(:disabled) {
+			background: #fafafa;
+			box-shadow: $shadow-normal;
 			transition-duration: $duration-fast-01;
 			transition-timing-function: $ease-exit;
 		}
 
-		svg {
-			fill: $button-primary;
-		}
-
-		/* hover */
-		&:hover:not(:disabled) {
-			background: rgba(130, 130, 130, 0.12);
-			color: $button-primary-hover;
-
-			svg {
-				fill: $button-primary-hover;
-			}
-		}
-
-		/* active */
 		&:active:not(:disabled) {
-			background: rgba(130, 130, 130, 0.5);
-			color: $button-primary-hover;
-
-			svg {
-				fill: $button-primary-hover;
-			}
+			background: #f5f5f5;
+			box-shadow: none;
+			transition-duration: $duration-fast-01;
+			transition-timing-function: $ease-entrance;
 		}
 
-		/* focus (optional – ghost usually minimal) */
-		&:focus-visible {
+		&:focus-visible:not(:disabled) {
 			outline: none;
-			box-shadow: 0 0 0 1px $focus-primary;
-
-			&::after {
-				content: '';
-				position: absolute;
-				inset: 0;
-				border-radius: inherit;
-				border: 1px solid $focus-inset;
-				pointer-events: none;
-			}
-		}
-
-		/* disabled */
-		&:disabled {
-			background: transparent;
-			color: $text-disabled;
-			cursor: not-allowed;
-			pointer-events: none;
-
-			[data-elem='title'],
-			svg {
-				fill: $text-disabled;
-				opacity: 0.25;
-			}
+			box-shadow:
+				0 0 0 2px #ffffff,
+				0 0 0 4px #a4a7ae;
 		}
 	}
 
+	&.critical {
+		background: #d92d20;
+		color: #ffffff;
+		box-shadow: $shadow-normal;
+
+		&:hover:not(:disabled) {
+			background: #b42318;
+			box-shadow: $shadow-hover-critical;
+			transition-duration: $duration-fast-01;
+			transition-timing-function: $ease-exit;
+		}
+
+		&:active:not(:disabled) {
+			background: #912018;
+			box-shadow: $shadow-normal;
+			transition-duration: $duration-fast-01;
+			transition-timing-function: $ease-entrance;
+		}
+
+		&:focus-visible:not(:disabled) {
+			outline: none;
+			box-shadow:
+				0 0 0 2px #ffffff,
+				0 0 0 4px #f04438;
+		}
+	}
+
+	$icon-button-sizes: (
+		xs: 32px,
+		sm: 40px,
+		md: 44px,
+		lg: 52px,
+	);
+
+	&.icon-only {
+		padding: 0 !important;
+		aspect-ratio: 1 / 1;
+
+		@each $size, $px in $icon-button-sizes {
+			&.size-#{$size} {
+				width: $px;
+				height: $px;
+			}
+		}
+	}
 	&:disabled {
 		transition:
 			background-color $duration-moderate-01 $ease-standard,
 			color $duration-moderate-01 $ease-standard,
 			opacity $duration-moderate-01 $ease-standard;
 
-		background: $button-disabled;
-		color: $text-disabled;
+		background: #f5f5f5;
+		color: #a4a7ae;
 		cursor: not-allowed;
-		pointer-events: none;
 		box-shadow: none;
-
 		[data-elem='title'],
 		svg {
-			fill: $text-disabled;
-			opacity: 0.25;
+			opacity: 0.6;
 		}
 	}
 
 	@media (prefers-reduced-motion: reduce) {
 		transition: none !important;
+	}
+}
+
+@each $size, $icon-size in $icon-sizes {
+	.icon-#{$size} {
+		width: $icon-size !important;
+		height: $icon-size !important;
+		flex-shrink: 0;
 	}
 }

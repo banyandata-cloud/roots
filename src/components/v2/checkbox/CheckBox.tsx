@@ -1,88 +1,105 @@
-import React, { useRef, useState } from 'react';
-import { classes, inputHelper } from '../../../utils/utils';
-import { CheckboxIcon } from '../../icons';
-import type { CheckboxProps, IconType } from '../../input/checkbox/types';
-import styles from './CheckBox.module.css';
+import { forwardRef, useEffect, useRef, useState, type RefObject } from 'react';
+import { classes } from '../../../utils';
+import ErrorIcon from '../icons/error/Error';
+import WarningIcon from '../icons/warning/Warning';
+import type { CheckboxProps } from './';
+import { CheckIcon, IndeterminateIcon } from './assets';
+import styles from './CheckBox.module.scss';
 
-const getIcon = (checked?: boolean, intermediate?: boolean): IconType => {
-	if (checked) {
-		if (intermediate) return CheckboxIcon.Intermediate as IconType;
-		return CheckboxIcon.Checked as IconType;
-	}
-	return CheckboxIcon.UnChecked as IconType;
-};
-
-const Checkbox: React.FC<CheckboxProps> = (props) => {
+const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
 	const {
-		label,
-		onChange,
-		defaultChecked,
-		checked,
-		position = 'right',
-		size = 'sm',
 		className = '',
-		disabled,
-		disabledAsChild,
-		intermediate,
-		readOnly,
-		error,
+		size = 'md',
+		checked,
+		defaultChecked = false,
+		indeterminate = false,
+		disabled = false,
+		readOnly = false,
+		error = false,
+		warning = false,
+		label,
+		subLabel,
+		errorMessage,
+		id,
+		name,
+		onChange,
 	} = props;
 
-	// Track controlled/uncontrolled mode once on first render
 	const { current: isControlled } = useRef<boolean>(checked !== undefined);
+	const innerRef = useRef<HTMLInputElement>(null);
+	const resolvedRef = (ref as RefObject<HTMLInputElement>) ?? innerRef;
 
-	// Uncontrolled state
-	const [uncontrolledChecked, setUncontrolledChecked] = useState<boolean | undefined>(
-		defaultChecked
-	);
+	const [uncontrolledChecked, setUncontrolledChecked] = useState<boolean>(defaultChecked);
+
+	useEffect(() => {
+		if (resolvedRef.current) {
+			resolvedRef.current.indeterminate = indeterminate;
+		}
+	}, [indeterminate, resolvedRef]);
+
+	const isChecked = isControlled ? (checked ?? false) : uncontrolledChecked;
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-		// Prefer your helper if present; fall back to standard target.checked for type safety
-		const helperResult = (
-			inputHelper as unknown as (
-				e: React.ChangeEvent<HTMLInputElement>
-			) => { fieldValue?: boolean } | undefined
-		)(event);
-		const fieldValue = helperResult?.fieldValue ?? event.target.checked;
-
-		if (isControlled) {
-			onChange?.(event, fieldValue);
-		} else {
-			setUncontrolledChecked(fieldValue);
+		if (!isControlled) {
+			setUncontrolledChecked(event.target.checked);
 		}
+		onChange?.(event);
 	};
 
-	const isChecked: boolean | undefined = isControlled ? checked : uncontrolledChecked;
-	const Icon = getIcon(isChecked, intermediate);
+	let stateClass: string | undefined = '';
+	if (error) {
+		stateClass = styles.error;
+	} else if (warning) {
+		stateClass = styles.warning;
+	} else if (readOnly) {
+		stateClass = styles.readOnly;
+	}
+
+	const wrapperClass = classes(
+		styles.wrapper,
+		styles[size],
+		stateClass,
+		disabled && styles.disabled,
+		className
+	);
 
 	return (
-		<label
-			className={classes(
-				styles.root,
-				styles[`position-${position}`],
-				disabled && !disabledAsChild ? styles.disabled : '',
-				disabled && isChecked ? styles['disabled-checked'] : '',
-				readOnly ? styles['read-only'] : '',
-				error ? styles.error : '',
-				error && isChecked ? styles['error-checked'] : '',
-				isChecked ? styles.selected : '',
-				className
-			)}>
-			<input
-				disabled={disabled || readOnly}
-				type='checkbox'
-				defaultChecked={defaultChecked}
-				{...(isControlled
-					? {
-							checked: !!checked,
-						}
-					: {})}
-				onChange={handleChange}
-			/>
-			<Icon className={classes(styles[`icon-${size}`], styles.icon)} />
-			{label && <span data-elem='label'>{label}</span>}
+		<label className={wrapperClass} htmlFor={id}>
+			<span className={styles.checkboxWrap}>
+				<input
+					ref={resolvedRef}
+					type='checkbox'
+					id={id}
+					name={name}
+					checked={isChecked}
+					disabled={disabled}
+					readOnly={readOnly || indeterminate}
+					onChange={readOnly || indeterminate ? undefined : handleChange}
+					onClick={indeterminate ? (e) => e.preventDefault() : undefined}
+					className={styles.input}
+					aria-checked={indeterminate ? 'mixed' : isChecked}
+				/>
+				<span className={styles.box}>
+					{indeterminate ? <IndeterminateIcon /> : isChecked ? <CheckIcon /> : null}
+				</span>
+				{(label || subLabel) && (
+					<span className={styles.labelWrap}>
+						{label && <span className={styles.label}>{label}</span>}
+						{subLabel && <span className={styles.subLabel}>{subLabel}</span>}
+					</span>
+				)}
+			</span>
+			{(error || warning) && errorMessage && (
+				<span className={styles.message}>
+					{error && <ErrorIcon />}
+					{warning && <WarningIcon />}
+					{errorMessage}
+				</span>
+			)}
 		</label>
 	);
-};
+});
+
+Checkbox.displayName = 'Checkbox';
 
 export default Checkbox;

@@ -1,1 +1,3 @@
-export { default as CheckboxV2 } from './CheckBox';
+export { CheckIcon, IndeterminateIcon } from './assets';
+export { default as Checkbox } from './CheckBox';
+export type { CheckboxProps, CheckboxSize, CheckboxValue } from './types';
