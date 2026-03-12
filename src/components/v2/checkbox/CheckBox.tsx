@@ -1,4 +1,4 @@
-import { forwardRef, useEffect, useRef, type RefObject } from 'react';
+import { forwardRef, useEffect, useRef, useState, type RefObject } from 'react';
 import { classes } from '../../../utils';
 import ErrorIcon from '../icons/error/Error';
 import WarningIcon from '../icons/warning/Warning';
@@ -11,6 +11,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
 		className = '',
 		size = 'md',
 		checked,
+		defaultChecked = false,
 		indeterminate = false,
 		disabled = false,
 		readOnly = false,
@@ -24,18 +25,26 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
 		onChange,
 	} = props;
 
+	const { current: isControlled } = useRef<boolean>(checked !== undefined);
 	const innerRef = useRef<HTMLInputElement>(null);
 	const resolvedRef = (ref as RefObject<HTMLInputElement>) ?? innerRef;
 
-	// Set indeterminate via DOM since HTML doesn't support it as attribute
+	const [uncontrolledChecked, setUncontrolledChecked] = useState<boolean>(defaultChecked);
+
 	useEffect(() => {
 		if (resolvedRef.current) {
 			resolvedRef.current.indeterminate = indeterminate;
 		}
 	}, [indeterminate, resolvedRef]);
 
-	// Uncontrolled when checked is undefined, controlled otherwise
-	const isChecked = checked !== undefined ? checked : (resolvedRef.current?.checked ?? false);
+	const isChecked = isControlled ? (checked ?? false) : uncontrolledChecked;
+
+	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		if (!isControlled) {
+			setUncontrolledChecked(event.target.checked);
+		}
+		onChange?.(event);
+	};
 
 	let stateClass: string | undefined = '';
 	if (error) {
@@ -62,10 +71,10 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
 					type='checkbox'
 					id={id}
 					name={name}
-					{...(checked !== undefined ? { checked } : { defaultChecked: false })}
+					checked={isChecked}
 					disabled={disabled}
 					readOnly={readOnly || indeterminate}
-					onChange={readOnly || indeterminate ? undefined : (onChange ?? (() => {}))}
+					onChange={readOnly || indeterminate ? undefined : handleChange}
 					onClick={indeterminate ? (e) => e.preventDefault() : undefined}
 					className={styles.input}
 					aria-checked={indeterminate ? 'mixed' : isChecked}

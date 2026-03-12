@@ -15,6 +15,7 @@ export interface CheckboxProps {
 	className?: string | undefined;
 	size?: CheckboxSize;
 	checked?: boolean;
+	defaultChecked?: boolean;
 	indeterminate?: boolean;
 	disabled?: boolean;
 	readOnly?: boolean;
