@@ -13,6 +13,5 @@ export interface ButtonProps extends BaseButtonProps {
     textSize?: ButtonTextSize;
     dataTestId?: string | undefined;
     v2?: boolean;
-	v2ButtonVariant?: ButtonVariant
-
+	  v2ButtonVariant?: ButtonVariant
 }

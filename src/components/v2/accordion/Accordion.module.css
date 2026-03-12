@@ -61,15 +61,15 @@
 .root > .body {
   padding: 0.5rem 2.5rem;
 }
-.root.open {
-  border-bottom: 1px solid #ededed;
-  border-top: 1px solid #ededed;
-}
 .root.open > .header[data-elem=base-cell] {
   border-left-color: #e86a00;
 }
 .root.open > .header[data-elem=base-cell] [data-elem=component3] svg {
   transform: none;
+}
+.root.open {
+  border-bottom: 1px solid #ededed;
+  border-top: 1px solid #ededed;
 }
 .root.open > .body {
   display: flex;

@@ -7,13 +7,15 @@
   padding-block: 1.25rem;
   overflow-y: scroll;
   height: 26.5rem;
+}
+.root::-webkit-scrollbar {
+  display: none;
+}
+.root {
   -ms-overflow-style: none;
   scrollbar-width: none;
   border-right: 1px solid var(--light-color1);
   gap: 0.25rem;
-}
-.root::-webkit-scrollbar {
-  display: none;
 }
 .root .option[data-elem=base-cell] {
   background-color: transparent !important;
