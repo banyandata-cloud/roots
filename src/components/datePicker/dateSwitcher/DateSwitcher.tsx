@@ -6,36 +6,11 @@ import { Button } from '../../buttons';
 import { ChevronIcon } from '../../icons';
 import { Text } from '../../text';
 import styles from './DateSwitcher.module.css';
+import type { DateSwitcherProps, SwitchSelectorProps } from './types';
 
-interface SelectedMonth {
-	month: string;
-	monthAsNumber: number;
-	year: number;
-}
+export type { DateSwitcherProps };
 
-interface SelectedDate {
-	date?: number;
-	month?: string;
-	year?: number;
-	unix?: number;
-}
-
-interface SwitchSelectorProps {
-	selectedMonth: SelectedMonth;
-	setSelectedMonth: (month: SelectedMonth) => void;
-	selectedDate: SelectedDate;
-	setSelectedDate: (date: SelectedDate) => void;
-	type: 'month' | 'year';
-}
-
-interface DateSwitcherProps {
-	selectedMonth: SelectedMonth;
-	setSelectedMonth: (month: SelectedMonth) => void;
-	selectedDate: SelectedDate;
-	setSelectedDate: (date: SelectedDate) => void;
-}
-
-// --- SwitchSelector ---
+// SwitchSelector
 
 const SwitchSelector = ({
 	selectedMonth,

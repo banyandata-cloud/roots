@@ -1,5 +1,5 @@
 export interface DateRange {
-	dates: string[];
+	dates: Date[];
 	unix: number[];
 }
 

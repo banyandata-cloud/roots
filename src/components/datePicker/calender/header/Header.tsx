@@ -6,43 +6,10 @@ import { DateSwitcher } from '../../dateSwitcher';
 import { TimeSwitcher } from '../../timeSwitcher';
 import styles from './Header.module.css';
 import DateAndTimeSelection from './dateAndTimeSelection/DateAndTimeSelection';
-import type {
-	SelectedDate,
-	SelectedMonth,
-	SelectedRange,
-	TimeRangeSelection,
-	ActiveTimeSelection,
-} from '../Calender';
+import type { HeaderProps, CarouselSwitchProps } from './types';
+import type { TimeRangeSelection } from '../Calender';
 
-export interface HeaderProps {
-	range?: boolean | undefined;
-	selectedDate: SelectedDate;
-	setSelectedDate: (date: SelectedDate) => void;
-	selectedRange: SelectedRange;
-	setSelectedRange: (range: SelectedRange) => void;
-	selectedMonth: SelectedMonth;
-	setSelectedMonth: (month: SelectedMonth) => void;
-	onMonthChange: (direction: 'prev' | 'next') => void;
-	showDateSelectionView: (value: boolean | ((prev: boolean) => boolean)) => void;
-	showTimeSelectionView: (value: boolean | ((prev: boolean) => boolean)) => void;
-	dateSelectionView: boolean;
-	timeSelectionView: boolean;
-	activeGoToSelection?: string | undefined;
-	setActiveGoToSelection: (value: string) => void;
-	activeTimeSelection?: ActiveTimeSelection | undefined;
-	setActiveTimeSelection: (value: ActiveTimeSelection | undefined) => void;
-	timeRangeSelection?: TimeRangeSelection | undefined;
-	setTimeRangeSelection?: ((value: TimeRangeSelection) => void) | undefined;
-	defaultHourDiff?: number | undefined;
-	limitHours?: number | undefined;
-	showTime?: boolean | undefined;
-	valueAsRange?: boolean | undefined;
-}
-
-interface CarouselSwitchProps {
-	onMonthChange: (direction: 'prev' | 'next') => void;
-	selectedMonth: SelectedMonth;
-}
+export type { HeaderProps };
 
 const CarouselSwitch = ({
 	onMonthChange,
@@ -51,7 +18,7 @@ const CarouselSwitch = ({
 	return (
 		<div className={styles['title-container']}>
 			<Button
-				size='sm'
+				size='auto'
 				variant='text'
 				data-elem='left'
 				onClick={() => onMonthChange('prev')}
@@ -61,7 +28,7 @@ const CarouselSwitch = ({
 			/>
 			<span className={styles.title}>{`${selectedMonth?.month} ${selectedMonth?.year}`}</span>
 			<Button
-				size='sm'
+				size='auto'
 				variant='text'
 				data-elem='right'
 				onClick={() => onMonthChange('next')}
@@ -76,6 +43,7 @@ const CarouselSwitch = ({
 const Header = (props: HeaderProps): React.JSX.Element => {
 	const { range, dateSelectionView, timeSelectionView, setTimeRangeSelection } = props;
 	const showCarouselSwitcher = !dateSelectionView && !timeSelectionView;
+
 	const safeSetTimeRangeSelection = (value: TimeRangeSelection): void => {
 		setTimeRangeSelection?.(value);
 	};

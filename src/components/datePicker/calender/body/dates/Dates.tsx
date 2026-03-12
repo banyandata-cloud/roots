@@ -12,45 +12,10 @@ import React, { useEffect, useState } from 'react';
 import { classes, getDatesInAMonth, getDayInfo } from '../../../../../utils';
 import { TodayIndicator } from './assets';
 import styles from './Dates.module.css';
+import type { DatesInMonth, DatesProps } from './types';
 import { getDatesToDisplay, rangeSelection } from './utils';
 
-interface SelectedMonth {
-	month: string;
-	monthAsNumber: number;
-	year: number;
-}
-
-interface SelectedDate {
-	date?: number;
-	month?: string;
-	year?: number;
-	unix?: number;
-}
-
-interface SelectedRange {
-	dates?: string[];
-	unix?: number[];
-}
-
-interface DatesInMonth {
-	days: number[];
-	dateObj: Date[];
-}
-
-export interface DatesProps {
-	selectedMonth: SelectedMonth;
-	setSelectedMonth: (month: SelectedMonth) => void;
-	selectedDate: SelectedDate;
-	setSelectedDate: (date: SelectedDate) => void;
-	range?: boolean | undefined;
-	selectedRange: SelectedRange;
-	setSelectedRange: (range: SelectedRange) => void;
-	disabledDates: string[];
-	disableDatesBefore?: number | undefined;
-	enableFutureDates?: boolean | undefined;
-	disableDatesAfter?: number | undefined;
-	setFixedRange?: ((value: boolean) => void) | undefined;
-}
+export type { DatesProps };
 
 const Dates = (props: DatesProps): React.JSX.Element => {
 	const {

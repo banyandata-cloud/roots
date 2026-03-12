@@ -2,34 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { classes, doubleDigitted } from '../../../../../utils';
 import { Button } from '../../../../buttons';
 import styles from './DateAndTimeSelection.module.css';
+import type { DateAndTimeSelectionProps } from './types';
 
-interface TimeSlot {
-	HOURS?: number | undefined;
-	MINS?: number | undefined;
-	MER?: string | undefined;
-}
-
-interface TimeRangeSelection {
-	next?: TimeSlot | undefined;
-	previous?: TimeSlot | undefined;
-}
-
-interface SelectedDate {
-	date?: number;
-	month?: string;
-	year?: number;
-}
-
-interface DateAndTimeSelectionProps {
-	selectedDate?: SelectedDate | undefined;
-	setActiveGoToSelection: (value: string) => void;
-	activeGoToSelection?: string | undefined;
-	showDateSelectionView: (value: boolean | ((prev: boolean) => boolean)) => void;
-	showTimeSelectionView: (value: boolean | ((prev: boolean) => boolean)) => void;
-	timeRangeSelection?: TimeRangeSelection | undefined;
-	showTime?: boolean | undefined;
-	valueAsRange?: boolean | undefined;
-}
+export type { DateAndTimeSelectionProps };
 
 const DateAndTimeSelection = ({
 	selectedDate,
@@ -49,8 +24,6 @@ const DateAndTimeSelection = ({
 		timeRangeSelection.next?.MINS
 	)} ${timeRangeSelection.next?.MER}`;
 
-	console.log({ defaultTime });
-
 	if (valueAsRange) {
 		defaultTime = `${doubleDigitted(timeRangeSelection.previous?.HOURS)}:${doubleDigitted(
 			timeRangeSelection.previous?.MINS
@@ -60,7 +33,6 @@ const DateAndTimeSelection = ({
 	}
 
 	const [dateValue, setDateValue] = useState<string | undefined>();
-
 	const [timeValue, setTimeValue] = useState<string | undefined>();
 
 	useEffect(() => {

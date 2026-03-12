@@ -3,29 +3,9 @@ import { classes } from '../../../utils';
 import { Button } from '../../buttons';
 import styles from './Ranges.module.css';
 import { dateRanges } from './utils';
+import type { CustomRangesProps, DateRange } from './types';
 
-interface DateRange {
-	dates: string[];
-	unix: number[];
-}
-
-interface CustomRange {
-	title: string;
-	type: string;
-	value: number;
-}
-
-interface SelectedRange {
-	dates?: string[];
-	unix?: number[];
-}
-
-interface CustomRangesProps {
-	customRanges?: CustomRange[] | undefined;
-	selectedRange?: SelectedRange | undefined;
-	setSelectedRange: (range: DateRange) => void;
-	setFixedRange: (title: string) => void;
-}
+export type { CustomRangesProps };
 
 const CustomRanges = ({
 	customRanges,

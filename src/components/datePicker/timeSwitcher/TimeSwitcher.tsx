@@ -4,44 +4,9 @@ import { Button } from '../../buttons';
 import { Text } from '../../text';
 import { calculateMeridian } from '../utils';
 import styles from './TimeSwitcher.module.css';
+import type { TimeCounterProps, TimeSwitcherProps } from './types';
 
-// Types
-
-interface TimeSlot {
-	HOURS?: number | undefined;
-	MINS?: number | undefined;
-	MER?: string | undefined;
-}
-
-interface TimeRangeSelection {
-	next?: TimeSlot | undefined;
-	previous?: TimeSlot | undefined;
-}
-
-type RangeType = 'previous' | 'next';
-
-interface ActiveTimeSelection {
-	previous?: 'HR' | 'MIN' | undefined;
-	next?: 'HR' | 'MIN' | undefined;
-}
-
-interface TimeCounterProps {
-	activeTimeSelection?: ActiveTimeSelection | undefined;
-	setActiveTimeSelection: (value: ActiveTimeSelection) => void;
-	setTimeRangeSelection: (value: TimeRangeSelection) => void;
-	timeRangeSelection?: TimeRangeSelection | undefined;
-	type: RangeType;
-	limitHours?: number | undefined;
-}
-
-interface TimeSwitcherProps {
-	activeTimeSelection?: ActiveTimeSelection | undefined;
-	setActiveTimeSelection: (value: ActiveTimeSelection) => void;
-	setTimeRangeSelection: (value: TimeRangeSelection) => void;
-	timeRangeSelection?: TimeRangeSelection | undefined;
-	limitHours?: number | undefined;
-	valueAsRange?: boolean | undefined;
-}
+export type { TimeSwitcherProps };
 
 // TimeCounter
 

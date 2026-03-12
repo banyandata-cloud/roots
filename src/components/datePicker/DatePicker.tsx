@@ -7,7 +7,7 @@ import {
 } from '@floating-ui/react-dom-interactions';
 import { fromUnixTime, getUnixTime } from 'date-fns';
 import { motion } from 'framer-motion';
-import { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useOutsideClickListener } from '../../hooks';
 import { classes, getDayInfo } from '../../utils';
@@ -19,6 +19,14 @@ import styles from './DatePicker.module.css';
 import { Calender } from './calender';
 import { DateAndTimeCustomRanges } from './customRanges';
 import { CustomDateRanges } from './ranges';
+import type {
+	ApplyArgs,
+	DatePickerProps,
+	SelectedDate,
+	SelectedMonth,
+	SelectedRange,
+	TimeRangeSelection,
+} from './types';
 import {
 	calculateZeroHours,
 	getDatePickerDisplayValue,
@@ -26,79 +34,6 @@ import {
 	getFloatingReferences,
 	isMaxRangeExceeded,
 } from './utils';
-
-interface MaxRange {
-	value: number;
-	type: 'months' | 'days';
-}
-
-interface CustomRange {
-	title: string;
-	type: string;
-	value: number;
-}
-
-interface TimeSlot {
-	HOURS?: number | undefined;
-	MINS?: number | undefined;
-	MER?: string | undefined;
-}
-
-interface TimeRangeSelection {
-	next?: TimeSlot;
-	previous?: TimeSlot;
-}
-
-interface SelectedDate {
-	date?: number;
-	month?: string;
-	year?: number;
-	unix?: number;
-}
-
-interface SelectedRange {
-	dates?: string[];
-	unix?: number[];
-}
-
-interface SelectedMonth {
-	month: string;
-	monthAsNumber: number;
-	year: number;
-}
-
-interface ApplyArgs {
-	rangeSelected: SelectedRange;
-	dateSelected?: SelectedDate;
-}
-
-interface DatePickerProps {
-	placeholder?: string;
-	label?: string;
-	range?: boolean;
-	onApply?: ((value: number | number[], fixedRange: string | null, tag: string) => void) | null;
-	onClear?: () => void;
-	value?: number | number[] | null;
-	disabled?: boolean;
-	disabledDates?: string[];
-	maxRange?: MaxRange | null;
-	className?: string;
-	disableDatesBefore?: number[];
-	disableDatesAfter?: number[];
-	defaultRangeSelection?: number[] | null;
-	customRanges?: CustomRange[] | null;
-	custom?: boolean;
-	highlightOnSelect?: boolean;
-	valueAsRange?: boolean;
-	defaultHourDiff?: number | null;
-	limitHours?: number | null;
-	showTime?: boolean;
-	timeRange?: boolean;
-	popperClassName?: string;
-	showCustomRanges?: boolean;
-	v2?: boolean;
-	enableFutureDates?: boolean;
-}
 
 // Constants
 
@@ -332,7 +267,6 @@ const DatePicker = (props: DatePickerProps): React.JSX.Element => {
 				setOpenDatePicker(false);
 				return;
 			}
-			console.log(timeRangeSelection);
 			const sd = selectedDate as SelectedDate;
 			const singleDateUnix = getUnixTime(
 				new Date(
@@ -346,7 +280,6 @@ const DatePicker = (props: DatePickerProps): React.JSX.Element => {
 					timeRangeSelection.next?.MINS ?? undefined
 				)
 			);
-			console.log({ selectedDate });
 			onApply?.(singleDateUnix, fixedRange!, getDateRangeTag([singleDateUnix]));
 			setOpenDatePicker(false);
 		}

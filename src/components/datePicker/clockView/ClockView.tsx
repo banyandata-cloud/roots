@@ -7,16 +7,7 @@ import type { TextComponentType, TextVariant } from '../../text/types';
 import { calculateMeridian } from '../utils';
 import styles from './ClockView.module.css';
 import { clockConfig } from './config';
-import type { ActiveTimeSelection, TimeRangeSelection } from '../calender/Calender';
-
-interface ClockViewProps {
-	activeTimeSelection?: ActiveTimeSelection | undefined;
-	timeRangeSelection?: TimeRangeSelection | undefined;
-	setTimeRangeSelection?: ((value: TimeRangeSelection) => void) | undefined;
-	limitHours?: number | undefined;
-}
-
-type RangeType = 'previous' | 'next';
+import type { ClockViewProps, RangeType } from './types';
 
 // Constants
 const clockHours: number[] = new Array(12).fill(null).map((_: null, index: number) => index);
