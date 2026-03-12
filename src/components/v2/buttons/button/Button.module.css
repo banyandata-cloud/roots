@@ -67,7 +67,7 @@ button.root[data-elem=base-cell].secondary {
 }
 button.root[data-elem=base-cell].secondary:hover:not(:disabled) {
   background: #414651;
-  box-shadow: 0 2px 5px 0 rgba(103, 110, 118, 0.08), 0 0 0 1px rgba(103, 110, 118, 0.3), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 5px 0 rgba(103, 110, 118, 0.08), 0 0 0 1px rgba(103, 110, 118, 0.16), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
   transition-duration: 70ms;
   transition-timing-function: cubic-bezier(0.2, 0, 1, 0.9);
 }
@@ -92,7 +92,7 @@ button.root[data-elem=base-cell].soft:not(:disabled) svg {
 button.root[data-elem=base-cell].soft:hover:not(:disabled) {
   background: #f5f5f5;
   color: #252b37;
-  box-shadow: 0 2px 5px 0 rgba(103, 110, 118, 0.08), 0 0 0 1px rgba(103, 110, 118, 0.3), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 5px 0 rgba(103, 110, 118, 0.08), 0 0 0 1px rgba(103, 110, 118, 0.16), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
   transition-duration: 70ms;
   transition-timing-function: cubic-bezier(0.2, 0, 1, 0.9);
 }
@@ -110,11 +110,11 @@ button.root[data-elem=base-cell].soft:focus-visible:not(:disabled) {
 button.root[data-elem=base-cell].outline {
   background: transparent;
   color: #414651;
-  box-shadow: 0 0 0 1px #d5d7da;
+  box-shadow: 0 2px 5px 0 rgba(103, 110, 118, 0.08), 0 0 0 1px rgba(103, 110, 118, 0.16), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
 }
 button.root[data-elem=base-cell].outline:hover:not(:disabled) {
   background: #fafafa;
-  box-shadow: 0 2px 5px 0 rgba(103, 110, 118, 0.08), 0 0 0 1px rgba(103, 110, 118, 0.3), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: 0 2px 5px 0 rgba(103, 110, 118, 0.08), 0 0 0 1px rgba(103, 110, 118, 0.16), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
   transition-duration: 70ms;
   transition-timing-function: cubic-bezier(0.2, 0, 1, 0.9);
 }
@@ -195,7 +195,6 @@ button.root[data-elem=base-cell]:disabled {
   background: #f5f5f5;
   color: #a4a7ae;
   cursor: not-allowed;
-  pointer-events: none;
   box-shadow: none;
 }
 button.root[data-elem=base-cell]:disabled [data-elem=title],

@@ -9,7 +9,6 @@
 }
 .wrapper.disabled {
   cursor: not-allowed;
-  pointer-events: none;
 }
 
 .checkboxWrap {
