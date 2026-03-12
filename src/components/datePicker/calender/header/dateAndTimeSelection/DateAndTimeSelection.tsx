@@ -1,7 +1,10 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { classes, doubleDigitted } from '../../../../../utils';
 import { Button } from '../../../../buttons';
 import styles from './DateAndTimeSelection.module.css';
+import type { DateAndTimeSelectionProps } from './types';
+
+export type { DateAndTimeSelectionProps };
 
 const DateAndTimeSelection = ({
 	selectedDate,
@@ -12,17 +15,15 @@ const DateAndTimeSelection = ({
 	timeRangeSelection = {},
 	showTime,
 	valueAsRange,
-}) => {
+}: DateAndTimeSelectionProps): React.JSX.Element | null => {
 	const { date, month, year } = selectedDate || {};
 
 	const defaultDate = date ? `${doubleDigitted(date)} ${month?.substring(0, 3)} ${year}` : '';
+
 	let defaultTime = `${doubleDigitted(timeRangeSelection.next?.HOURS)}:${doubleDigitted(
 		timeRangeSelection.next?.MINS
 	)} ${timeRangeSelection.next?.MER}`;
 
-	console.log({
-		defaultTime,
-	});
 	if (valueAsRange) {
 		defaultTime = `${doubleDigitted(timeRangeSelection.previous?.HOURS)}:${doubleDigitted(
 			timeRangeSelection.previous?.MINS
@@ -30,20 +31,18 @@ const DateAndTimeSelection = ({
 			timeRangeSelection.next?.HOURS
 		)}:${doubleDigitted(timeRangeSelection.next?.MINS)} ${timeRangeSelection.next?.MER}`;
 	}
-	const [dateValue, setDateValue] = useState();
 
-	const [timeValue, setTimeValue] = useState();
+	const [dateValue, setDateValue] = useState<string | undefined>();
+	const [timeValue, setTimeValue] = useState<string | undefined>();
 
 	useEffect(() => {
 		setDateValue(defaultDate);
 		setTimeValue(defaultTime);
 	}, [defaultDate, defaultTime]);
 
-	const onDateSelectorClick = () => {
+	const onDateSelectorClick = (): void => {
 		showTimeSelectionView(false);
-		showDateSelectionView((prev) => {
-			return !prev;
-		});
+		showDateSelectionView((prev) => !prev);
 		if (activeGoToSelection === 'date') {
 			setActiveGoToSelection('');
 			return;
@@ -51,11 +50,9 @@ const DateAndTimeSelection = ({
 		setActiveGoToSelection('date');
 	};
 
-	const onTimeSelectorClick = () => {
+	const onTimeSelectorClick = (): void => {
 		showDateSelectionView(false);
-		showTimeSelectionView((prev) => {
-			return !prev;
-		});
+		showTimeSelectionView((prev) => !prev);
 		if (activeGoToSelection === 'time') {
 			setActiveGoToSelection('');
 			return;

@@ -1,4 +1,10 @@
-export const clockConfig = {
+interface ClockPosition {
+	top: string;
+	left?: string;
+	right?: string;
+}
+
+export const clockConfig: Record<number, ClockPosition> = {
 	0: {
 		top: '0.5rem',
 		left: '6.5rem',

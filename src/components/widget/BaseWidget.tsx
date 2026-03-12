@@ -55,9 +55,9 @@ interface ExpandOptionData extends BaseOptionData {
 interface DatePickerOptionData extends BaseOptionData {
 	id: 'datepicker';
 	range?: boolean;
-	onApply: (date: Date | Date[] | null) => void;
+	onApply: (value: number | number[], fixedRange: string | null, tag: string) => void;
 	onClear: () => void;
-	date: Date | Date[] | null;
+	date: number | number[] | null;
 }
 
 interface FilterOptionData extends BaseOptionData {

@@ -22,7 +22,6 @@ export const getDateFromEpoch = (epoch: number): string => {
 export const getTimeFromEpoch = (epoch: number): string => {
 	const date = new Date(0);
 	date.setSeconds(epoch);
-
 	const hours = doubleDigitted(date.getHours());
 	const minutes = doubleDigitted(date.getMinutes());
 	const seconds = doubleDigitted(date.getSeconds());

@@ -2,11 +2,15 @@
 
 .root {
 	@include flex(column, flex-start, flex-start);
-	gap: 1rem;
+	gap: 0rem;
 	.title-container {
 		align-self: stretch;
 		@include flex(row, space-between, center);
-		padding: 0rem 1.5625rem;
+		padding: 0rem 0rem;
+		padding-bottom: 0rem;
+		margin-left: calc(-2rem + 1px);
+		margin-right: calc(-2rem + 1px);
+		width: calc(100% + 4rem - 2px);
 		.title {
 			font-weight: 500;
 			font-size: 0.875rem;

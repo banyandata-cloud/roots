@@ -1,11 +1,16 @@
 import { getUnixTime } from 'date-fns';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { FULL_MONTHS } from '../../../constants';
 import { getDayInfo } from '../../../utils';
 import { Button } from '../../buttons';
 import { ChevronIcon } from '../../icons';
 import { Text } from '../../text';
 import styles from './DateSwitcher.module.css';
+import type { DateSwitcherProps, SwitchSelectorProps } from './types';
+
+export type { DateSwitcherProps };
+
+// SwitchSelector
 
 const SwitchSelector = ({
 	selectedMonth,
@@ -13,13 +18,14 @@ const SwitchSelector = ({
 	setSelectedDate,
 	selectedDate,
 	type,
-}) => {
-	const [monthValue, setMonthValue] = useState(selectedMonth.monthAsNumber);
-	const [yearValue, setYearValue] = useState(selectedMonth.year ?? new Date().getFullYear());
+}: SwitchSelectorProps): React.JSX.Element => {
+	const [monthValue, setMonthValue] = useState<number>(selectedMonth.monthAsNumber);
+	const [yearValue, setYearValue] = useState<number>(
+		selectedMonth.year ?? new Date().getFullYear()
+	);
 
-	const goToDate = (year, month, date) => {
+	const goToDate = (year: number, month: number, date: number | undefined): void => {
 		const passedDate = new Date(year, month, date);
-
 		const dayInfo = getDayInfo(passedDate);
 
 		setSelectedMonth({
@@ -36,11 +42,15 @@ const SwitchSelector = ({
 		});
 	};
 
-	const onPrev = () => {
+	const onPrev = (): void => {
 		if (type === 'month') {
 			if (monthValue > 0) {
 				setMonthValue(monthValue - 1);
-				goToDate(selectedDate.year, monthValue - 1, selectedDate.date);
+				goToDate(
+					selectedDate.year ?? new Date().getFullYear(),
+					monthValue - 1,
+					selectedDate.date
+				);
 			}
 		} else {
 			setYearValue(yearValue - 1);
@@ -48,11 +58,15 @@ const SwitchSelector = ({
 		}
 	};
 
-	const onNext = () => {
+	const onNext = (): void => {
 		if (type === 'month') {
 			if (monthValue < 11) {
 				setMonthValue(monthValue + 1);
-				goToDate(selectedDate.year, monthValue + 1, selectedDate.date);
+				goToDate(
+					selectedDate.year ?? new Date().getFullYear(),
+					monthValue + 1,
+					selectedDate.date
+				);
 			}
 		} else {
 			setYearValue(yearValue + 1);
@@ -85,7 +99,7 @@ const SwitchSelector = ({
 	);
 };
 
-const DateSwitcher = (props) => {
+const DateSwitcher = (props: DateSwitcherProps): React.JSX.Element => {
 	return (
 		<div className={styles.root}>
 			<SwitchSelector type='month' {...props} />

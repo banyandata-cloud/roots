@@ -1,5 +1,5 @@
 import { fromUnixTime, getUnixTime, isBefore } from 'date-fns';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FULL_MONTHS } from '../../../constants';
 import { getDatesInStringFormat, getDayInfo } from '../../../utils';
 import { ClockView } from '../clockView';
@@ -7,8 +7,28 @@ import styles from './Calender.module.css';
 import { CalenderBody } from './body';
 import { CalenderFooter } from './footer';
 import { CalenderHeader } from './header';
+import type {
+	SelectedDate,
+	SelectedMonth,
+	SelectedRange,
+	TimeSlot,
+	TimeRangeSelection,
+	CustomRange,
+	ActiveTimeSelection,
+	CalenderProps,
+} from './types';
 
-const Calender = (props) => {
+export type {
+	SelectedDate,
+	SelectedMonth,
+	SelectedRange,
+	TimeSlot,
+	TimeRangeSelection,
+	CustomRange,
+	ActiveTimeSelection,
+};
+
+const Calender = (props: CalenderProps): React.JSX.Element => {
 	const {
 		range,
 		selectedDate,
@@ -35,64 +55,63 @@ const Calender = (props) => {
 		enableFutureDates,
 	} = props;
 
-	const [dateSelectionView, showDateSelectionView] = useState(false);
-	const [timeSelectionView, showTimeSelectionView] = useState(false);
+	const [dateSelectionView, showDateSelectionView] = useState<boolean>(false);
+	const [timeSelectionView, showTimeSelectionView] = useState<boolean>(false);
+	const [activeGoToSelection, setActiveGoToSelection] = useState<string | undefined>();
+	const [activeTimeSelection, setActiveTimeSelection] = useState<
+		ActiveTimeSelection | undefined
+	>();
 
-	const [activeGoToSelection, setActiveGoToSelection] = useState();
-	const [activeTimeSelection, setActiveTimeSelection] = useState();
-
-	const setSelectedValues = () => {
+	const setSelectedValues = (): void => {
 		if (fixedRange) {
 			const date = new Date();
 			const dateAsNumber = date.getDate();
 			const selectedDayInfo = getDayInfo(date);
-			const selectedDateMonth = {
-				month: selectedDayInfo.month,
-				monthAsNumber: selectedDayInfo.monthAsNumber,
-				year: selectedDayInfo.year,
-				dayAsNumber: selectedDayInfo.dayAsNumber,
-			};
-			setSelectedMonth({
-				month: getDayInfo(fromUnixTime(selectedRange?.unix?.[0])).month,
-				monthAsNumber: getDayInfo(fromUnixTime(selectedRange?.unix?.[0])).monthAsNumber,
-				year: getDayInfo(fromUnixTime(selectedRange?.unix?.[0])).year,
-			});
+			const firstUnix = selectedRange?.unix?.[0];
+			if (firstUnix !== undefined) {
+				const dayInfo = getDayInfo(fromUnixTime(firstUnix));
+				setSelectedMonth({
+					month: dayInfo.month,
+					monthAsNumber: dayInfo.monthAsNumber,
+					year: dayInfo.year,
+				});
+			}
 			setSelectedDate({
 				...selectedDate,
-				month: selectedDateMonth.month,
-				year: selectedDateMonth.year,
+				month: selectedDayInfo.month,
+				year: selectedDayInfo.year,
 				date: dateAsNumber,
 				unix: getUnixTime(date),
 			});
 			return;
 		}
 
-		if (range && value?.filter?.(Boolean)?.length > 0) {
-			setSelectedRange({
-				dates: getDatesInStringFormat({
-					startingDate: fromUnixTime(value[0]),
-					endingDate: fromUnixTime(value[1]),
-				}),
-				unix: [value[0], value[1]],
-			});
+		if (range && (value as number[])?.filter?.(Boolean)?.length > 0) {
+			const rangeValue = value as number[];
+			const startUnix = rangeValue[0];
+			const endUnix = rangeValue[1];
+			if (startUnix !== undefined && endUnix !== undefined) {
+				setSelectedRange({
+					dates: getDatesInStringFormat({
+						startingDate: fromUnixTime(startUnix),
+						endingDate: fromUnixTime(endUnix),
+					}) as string[],
+					unix: [startUnix, endUnix],
+				});
+				const firstDayInfo = getDayInfo(fromUnixTime(startUnix));
+				setSelectedMonth({
+					month: firstDayInfo.month,
+					monthAsNumber: firstDayInfo.monthAsNumber,
+					year: firstDayInfo.year,
+				});
+			}
 			const date = new Date();
 			const dateAsNumber = date.getDate();
 			const selectedDayInfo = getDayInfo(date);
-			const selectedDateMonth = {
-				month: selectedDayInfo.month,
-				monthAsNumber: selectedDayInfo.monthAsNumber,
-				year: selectedDayInfo.year,
-				dayAsNumber: selectedDayInfo.dayAsNumber,
-			};
-			setSelectedMonth({
-				month: getDayInfo(fromUnixTime(value[0])).month,
-				monthAsNumber: getDayInfo(fromUnixTime(value[0])).monthAsNumber,
-				year: getDayInfo(fromUnixTime(value[0])).year,
-			});
 			setSelectedDate({
 				...selectedDate,
-				month: selectedDateMonth.month,
-				year: selectedDateMonth.year,
+				month: selectedDayInfo.month,
+				year: selectedDayInfo.year,
 				date: dateAsNumber,
 				unix: getUnixTime(date),
 			});
@@ -100,38 +119,35 @@ const Calender = (props) => {
 		}
 
 		if (!range && value) {
-			const date = fromUnixTime(value);
-			const dateAsNumber = date.getDate();
-			const selectedDayInfo = getDayInfo(date);
-			const selectedDateMonth = {
-				month: selectedDayInfo.month,
-				monthAsNumber: selectedDayInfo.monthAsNumber,
-				year: selectedDayInfo.year,
-				dayAsNumber: selectedDayInfo.dayAsNumber,
-			};
-			setSelectedMonth({
-				month: selectedDayInfo.month,
-				monthAsNumber: selectedDayInfo.monthAsNumber,
-				year: selectedDayInfo.year,
-			});
-			setSelectedDate({
-				...selectedDate,
-				month: selectedDateMonth.month,
-				year: selectedDateMonth.year,
-				date: dateAsNumber,
-				unix: getUnixTime(date),
-			});
+			const singleValue = typeof value === 'number' ? value : undefined;
+			if (singleValue !== undefined) {
+				const date = fromUnixTime(singleValue);
+				const dateAsNumber = date.getDate();
+				const selectedDayInfo = getDayInfo(date);
+				setSelectedMonth({
+					month: selectedDayInfo.month,
+					monthAsNumber: selectedDayInfo.monthAsNumber,
+					year: selectedDayInfo.year,
+				});
+				setSelectedDate({
+					...selectedDate,
+					month: selectedDayInfo.month,
+					year: selectedDayInfo.year,
+					date: dateAsNumber,
+					unix: getUnixTime(date),
+				});
+			}
 			return;
 		}
+
 		const date = new Date();
 		if (
-			(range && !value && disableDatesBefore?.length === 0) ||
-			(!range && !isBefore(date, disableDatesBefore))
+			(range && !value && (disableDatesBefore ?? 0) === 0) ||
+			(!range &&
+				(disableDatesBefore === undefined ||
+					!isBefore(date, fromUnixTime(disableDatesBefore))))
 		) {
-			setSelectedRange({
-				dates: [],
-				unix: [],
-			});
+			setSelectedRange({ dates: [], unix: [] });
 			const dateAsNumber = date.getDate();
 			const selectedDayInfo = getDayInfo(date);
 			setSelectedDate({
@@ -153,21 +169,19 @@ const Calender = (props) => {
 		setSelectedValues();
 	}, []);
 
-	const onMonthChange = (switchSide) => {
+	const onMonthChange = (switchSide: 'prev' | 'next'): void => {
 		if (switchSide === 'prev') {
 			if (selectedMonth.monthAsNumber === 0) {
-				const previousMonth = FULL_MONTHS[11];
 				setSelectedMonth({
-					month: previousMonth,
+					month: FULL_MONTHS[11] ?? '',
 					monthAsNumber: 11,
 					year: selectedMonth.year - 1,
 				});
 				return;
 			}
 			const previousMonthNumber = selectedMonth.monthAsNumber - 1;
-			const previousMonth = FULL_MONTHS[previousMonthNumber];
 			setSelectedMonth({
-				month: previousMonth,
+				month: FULL_MONTHS[previousMonthNumber] ?? '',
 				monthAsNumber: previousMonthNumber,
 				year: selectedMonth.year,
 			});
@@ -176,18 +190,16 @@ const Calender = (props) => {
 
 		if (switchSide === 'next') {
 			if (selectedMonth.monthAsNumber === 11) {
-				const nextMonth = FULL_MONTHS[0];
 				setSelectedMonth({
-					month: nextMonth,
+					month: FULL_MONTHS[0] ?? '',
 					monthAsNumber: 0,
 					year: selectedMonth.year + 1,
 				});
 				return;
 			}
 			const nextMonthNumber = selectedMonth.monthAsNumber + 1;
-			const nextMonth = FULL_MONTHS[nextMonthNumber];
 			setSelectedMonth({
-				month: nextMonth,
+				month: FULL_MONTHS[nextMonthNumber] ?? '',
 				monthAsNumber: nextMonthNumber,
 				year: selectedMonth.year,
 			});
@@ -199,8 +211,9 @@ const Calender = (props) => {
 		setSelectedDate,
 		selectedRange,
 		setSelectedRange,
-		range,
+		range: range ?? false,
 		selectedMonth,
+		setSelectedMonth,
 	};
 
 	const showCalender = !timeSelectionView;
@@ -209,9 +222,7 @@ const Calender = (props) => {
 		<div className={styles.root}>
 			<CalenderHeader
 				{...commonCalenderProps}
-				selectedMonth={selectedMonth}
 				onMonthChange={onMonthChange}
-				setSelectedMonth={setSelectedMonth}
 				showDateSelectionView={showDateSelectionView}
 				showTimeSelectionView={showTimeSelectionView}
 				dateSelectionView={dateSelectionView}
@@ -231,23 +242,21 @@ const Calender = (props) => {
 			{showCalender ? (
 				<CalenderBody
 					{...commonCalenderProps}
-					selectedMonth={selectedMonth}
-					setSelectedMonth={setSelectedMonth}
-					disabledDates={disabledDates}
+					disabledDates={disabledDates ?? []}
 					disableDatesBefore={disableDatesBefore}
 					disableDatesAfter={disableDatesAfter}
 					enableFutureDates={enableFutureDates}
+					setFixedRange={setFixedRange}
 				/>
 			) : (
 				<ClockView
-					{...commonCalenderProps}
-					setSelectedMonth={setSelectedMonth}
-					activeTimeSelection={activeTimeSelection}
+					activeTimeSelection={activeTimeSelection ?? {}}
 					timeRangeSelection={timeRangeSelection}
 					setTimeRangeSelection={setTimeRangeSelection}
 					limitHours={limitHours}
 				/>
 			)}
+
 			<CalenderFooter
 				{...commonCalenderProps}
 				onApply={onApply}
@@ -255,6 +264,8 @@ const Calender = (props) => {
 				value={value}
 				customRanges={customRanges}
 				setFixedRange={setFixedRange}
+				setSelectedRange={setSelectedRange}
+				setSelectedDate={setSelectedDate}
 			/>
 		</div>
 	);

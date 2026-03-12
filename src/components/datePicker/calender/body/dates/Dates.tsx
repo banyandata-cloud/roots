@@ -8,13 +8,16 @@ import {
 	isSameDay,
 	isToday,
 } from 'date-fns';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { classes, getDatesInAMonth, getDayInfo } from '../../../../../utils';
 import { TodayIndicator } from './assets';
 import styles from './Dates.module.css';
+import type { DatesInMonth, DatesProps } from './types';
 import { getDatesToDisplay, rangeSelection } from './utils';
 
-const Dates = (props) => {
+export type { DatesProps };
+
+const Dates = (props: DatesProps): React.JSX.Element => {
 	const {
 		selectedMonth,
 		setSelectedMonth,
@@ -27,74 +30,49 @@ const Dates = (props) => {
 		disableDatesBefore,
 		enableFutureDates,
 		disableDatesAfter,
+		setFixedRange,
 	} = props;
 
 	const { monthAsNumber, year } = selectedMonth || {};
 
-	const [datesToDisplay, setDatesToDisplay] = useState(() => {
-		return [];
-	});
+	const [datesToDisplay, setDatesToDisplay] = useState<Date[]>(() => []);
+	const [unSelectedDate, setUnSelectedDate] = useState<string | null>(() => null);
+	const [hoveredEndingDate, setHoveredEndingDate] = useState<number | null>(() => null);
+	const [datesInMonth, setDatesInMonth] = useState<DatesInMonth>(
+		() => getDatesInAMonth({ month: monthAsNumber, year }) as DatesInMonth
+	);
 
-	const [unSelectedDate, setUnSelectedDate] = useState(() => {
-		return null;
-	});
-
-	const [hoveredEndingDate, setHoveredEndingDate] = useState(() => {
-		return null;
-	});
-
-	const [datesInMonth, setDatesInMonth] = useState(() => {
-		return getDatesInAMonth({
-			month: monthAsNumber,
-			year,
-		});
-	});
-
-	const [firstItem, lastItem] = selectedRange.unix ?? [];
+	const unixArr = selectedRange.unix ?? [];
+	const firstItem = unixArr[0];
+	const lastItem = unixArr[unixArr.length - 1];
 
 	const { days, dateObj } = datesInMonth;
 
 	useEffect(() => {
-		setDatesInMonth(
-			getDatesInAMonth({
-				month: monthAsNumber,
-				year,
-			})
-		);
+		setDatesInMonth(getDatesInAMonth({ month: monthAsNumber, year }) as DatesInMonth);
 		setUnSelectedDate(null);
 	}, [selectedMonth]);
 
 	useEffect(() => {
-		setDatesToDisplay(
-			getDatesToDisplay({
-				monthAsNumber,
-				year,
-				days,
-				dateObj,
-			})
-		);
+		setDatesToDisplay(getDatesToDisplay({ monthAsNumber, year, days, dateObj }));
 	}, [days]);
 
-	const dateSelection = (date) => {
+	const dateSelection = (date: Date): void => {
+		setFixedRange?.(false);
+
 		if (range) {
 			setHoveredEndingDate(null);
-			setSelectedRange(
-				rangeSelection({
-					selectedMonth,
-					selectedRange,
-					date,
-				})
-			);
+			setSelectedRange(rangeSelection({ selectedRange, date }));
 			return;
 		}
 
 		const dateAsNumber = date.getDate();
-
 		if (selectedDate.date === dateAsNumber) {
 			setSelectedDate({});
 			setUnSelectedDate(date.toISOString());
 			return;
 		}
+
 		setUnSelectedDate(null);
 		setSelectedDate({
 			...selectedDate,
@@ -110,10 +88,10 @@ const Dates = (props) => {
 		});
 	};
 
-	const onMouseEnterADate = (date) => {
+	const onMouseEnterADate = (date: Date): void => {
 		const sameDay = isSameDay(
-			fromUnixTime(selectedRange?.unix?.[0]),
-			fromUnixTime(selectedRange?.unix?.[1])
+			fromUnixTime(selectedRange?.unix?.[0] as number),
+			fromUnixTime(selectedRange?.unix?.[1] as number)
 		);
 		if (selectedRange.unix?.length === 2 && sameDay) {
 			setHoveredEndingDate(getUnixTime(date));
@@ -124,15 +102,17 @@ const Dates = (props) => {
 		}
 	};
 
-	const disabledBeforeDate = (date) => {
-		return disableDatesBefore?.length > 0 && isBefore(date, fromUnixTime(disableDatesBefore));
+	const disabledBeforeDate = (date: Date): boolean => {
+		return (
+			(disableDatesBefore ?? 0) > 0 &&
+			isBefore(date, fromUnixTime(disableDatesBefore as number))
+		);
 	};
 
-	const disabledAfterDate = (date) => {
+	const disabledAfterDate = (date: Date): boolean => {
 		if (disableDatesAfter) {
-			return disableDatesAfter?.length > 0 && isAfter(date, fromUnixTime(disableDatesAfter));
+			return (disableDatesAfter ?? 0) > 0 && isAfter(date, fromUnixTime(disableDatesAfter));
 		}
-
 		const dObj = new Date();
 		dObj.setDate(dObj.getDate() + 1);
 		dObj.setHours(0, 0, 0, 0);
@@ -141,63 +121,66 @@ const Dates = (props) => {
 
 	return (
 		<div className={styles.root}>
-			{datesToDisplay.map((date) => {
+			{datesToDisplay.map((date: Date) => {
 				const dateNumber = date?.getDate();
 				const today = isToday(date);
-
-				const selectedSingleDate = isSameDay(fromUnixTime(selectedDate.unix), date);
-
+				const selectedSingleDate = isSameDay(
+					fromUnixTime(selectedDate.unix as number),
+					date
+				);
 				const isSameDayRange =
-					isSameDay(fromUnixTime(firstItem), date) &&
-					isSameDay(fromUnixTime(firstItem), fromUnixTime(lastItem));
-
-				const todaySelected = today & selectedSingleDate;
-
+					isSameDay(fromUnixTime(firstItem!), date) &&
+					isSameDay(fromUnixTime(firstItem!), fromUnixTime(lastItem!));
+				const todaySelected = today && selectedSingleDate;
 				const isFirstItem =
 					!isSameDayRange &&
 					isEqual(
-						fromUnixTime(firstItem).setHours(0, 0, 0, 0),
-						date.setHours(0, 0, 0, 0)
+						fromUnixTime(firstItem!).setHours(0, 0, 0, 0),
+						new Date(date).setHours(0, 0, 0, 0)
 					);
 				const isLastItem =
 					!isSameDayRange &&
 					isEqual(
-						fromUnixTime(lastItem).setHours(23, 59, 59, 59),
-						date.setHours(23, 59, 59, 59)
+						fromUnixTime(lastItem!).setHours(0, 0, 0, 0),
+						new Date(date).setHours(0, 0, 0, 0)
 					);
 
 				const isFirstItemHovered =
-					isBefore(date, fromUnixTime(firstItem)) &&
+					isBefore(date, fromUnixTime(firstItem!)) &&
 					hoveredEndingDate === getUnixTime(date);
-				const isLastItemHovered = hoveredEndingDate === getUnixTime(date);
+
+				const isLastItemHovered =
+					hoveredEndingDate === getUnixTime(date) &&
+					!isBefore(date, fromUnixTime(firstItem!));
 
 				const notSameMonth = date.getMonth() !== monthAsNumber;
-
 				const isUnSelected = unSelectedDate === date.toISOString();
-
 				const isDisabled =
 					disabledDates.includes(date.toDateString()) ||
 					disabledBeforeDate(date) ||
 					(!enableFutureDates && disabledAfterDate(date));
 
-				const isHoveringBeforeSelectedDate = isBefore(
-					fromUnixTime(hoveredEndingDate),
-					fromUnixTime(firstItem)
-				);
+				let isHoveringBeforeSelectedDate: boolean | null = null;
 
-				let isMidItem;
+				if (hoveredEndingDate) {
+					isHoveringBeforeSelectedDate = isBefore(
+						fromUnixTime(hoveredEndingDate),
+						fromUnixTime(firstItem!)
+					);
+				}
 
+				let isMidItem: boolean;
 				if (hoveredEndingDate) {
 					isMidItem =
 						(!isSameDayRange &&
 							isBefore(date, fromUnixTime(hoveredEndingDate)) &&
-							isAfter(date, fromUnixTime(firstItem))) ||
+							isAfter(date, fromUnixTime(firstItem!))) ||
 						(isAfter(date, fromUnixTime(hoveredEndingDate)) &&
-							isBefore(date, fromUnixTime(firstItem)));
+							isBefore(date, fromUnixTime(firstItem!)));
 				} else {
 					isMidItem =
-						isBefore(date, fromUnixTime(lastItem).setHours(0, 0, 0, 0)) &&
-						isAfter(date, fromUnixTime(firstItem).setHours(23, 59, 59, 59));
+						isBefore(date, fromUnixTime(lastItem!).setHours(0, 0, 0, 0)) &&
+						isAfter(date, fromUnixTime(firstItem!).setHours(23, 59, 59, 59));
 				}
 
 				const parentClassNames = classes(
@@ -213,13 +196,14 @@ const Dates = (props) => {
 						: '',
 					isLastItem ? styles.maxInRange : '',
 					(isSameDayRange && isLastItemHovered) || isLastItemHovered
-						? styles['first-hovered']
-						: '',
-					(isSameDayRange && isFirstItemHovered) || isFirstItemHovered
 						? styles['last-hovered']
 						: '',
+					(isSameDayRange && isFirstItemHovered) || isFirstItemHovered
+						? styles['first-hovered']
+						: '',
 					today ? styles.today : '',
-					todaySelected ? styles['today-selected'] : ''
+					todaySelected ? styles['today-selected'] : '',
+					isDisabled ? styles['date-disabled'] : ''
 				);
 
 				const childClassNames = classes(
@@ -234,16 +218,14 @@ const Dates = (props) => {
 					<div
 						className={parentClassNames}
 						onClick={() => {
-							if (!isDisabled) {
-								dateSelection(date);
-							}
+							if (!isDisabled) dateSelection(date);
 						}}
 						onMouseEnter={() => {
 							onMouseEnterADate(date);
 						}}
 						key={date.toDateString()}>
 						<span className={childClassNames}>{dateNumber}</span>
-						{today && <TodayIndicator className={styles.indicator} />}
+						{today && <TodayIndicator className={styles.indicator ?? ''} />}
 					</div>
 				);
 			})}
