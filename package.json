@@ -101,7 +101,7 @@
 		"rollup-plugin-visualizer": "^5.14.0",
 		"sass": "^1.55.0",
 		"sass-loader": "^13.1.0",
-		"storybook": "^6.5.12",
+		"storybook": "^10.2.19",
 		"storybook-addon-designs": "^6.3.1",
 		"storybook-dark-mode": "^1.1.2",
 		"style-loader": "^3.3.3",
