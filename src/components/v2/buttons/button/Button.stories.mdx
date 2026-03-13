@@ -5,31 +5,33 @@ import Button from './Button';
 
 <Meta title='Components/Buttons/v2/Button' parameters={{ options: { showToolbar: true } }} />
 
-export const MailIcon = ({ className }) => (
-	<svg className={className} viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'>
-		<path
-			d='M2 12.2V5C2 3.89543 2.89543 3 4 3H14C15.1046 3 16 3.89543 16 5V12.2C16 13.3046 15.1046 14.2 14 14.2H4C2.89543 14.2 2 13.3046 2 12.2Z'
-			stroke='currentColor'
-			strokeWidth='1.5'
-		/>
-		<path
-			d='M16 5.25854L10 8.72265C9.3812 9.07991 8.6188 9.07991 8 8.72265L2 5.25854'
-			stroke='currentColor'
-			strokeWidth='1.5'
-		/>
-	</svg>
+const MailIcon = ({ className }) => (
+
+<svg className={className} viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'>
+	<path
+		d='M2 12.2V5C2 3.89543 2.89543 3 4 3H14C15.1046 3 16 3.89543 16 5V12.2C16 13.3046 15.1046 14.2 14 14.2H4C2.89543 14.2 2 13.3046 2 12.2Z'
+		stroke='currentColor'
+		strokeWidth='1.5'
+	/>
+	<path
+		d='M16 5.25854L10 8.72265C9.3812 9.07991 8.6188 9.07991 8 8.72265L2 5.25854'
+		stroke='currentColor'
+		strokeWidth='1.5'
+	/>
+</svg>
 );
 
-export const ArrowIcon = ({ className }) => (
-	<svg className={className} viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
-		<path
-			d='M5 12H19M19 12L12 5M19 12L12 19'
-			stroke='currentColor'
-			strokeWidth='1.5'
-			strokeLinecap='round'
-			strokeLinejoin='round'
-		/>
-	</svg>
+const ArrowIcon = ({ className }) => (
+
+<svg className={className} viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+	<path
+		d='M5 12H19M19 12L12 5M19 12L12 19'
+		stroke='currentColor'
+		strokeWidth='1.5'
+		strokeLinecap='round'
+		strokeLinejoin='round'
+	/>
+</svg>
 );
 
 export const colStyle = { display: 'flex', flexDirection: 'column', gap: '16px' };

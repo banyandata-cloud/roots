@@ -1,6 +1,6 @@
 import { forwardRef, useState, type ForwardedRef, type ReactElement, type ReactNode } from 'react';
+import { Checkbox } from '../../../../components/v2/checkbox';
 import { classes } from '../../../../utils';
-import { CheckboxV2 as Checkbox } from '../../../input/checkbox/v2';
 import { Radio } from '../../../input';
 import { TableCellV2 } from '../cell';
 import type { TableProps } from '../types';
