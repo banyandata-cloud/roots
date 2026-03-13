@@ -1,0 +1,142 @@
+.root {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.root:focus {
+  outline: none;
+}
+.root.header-row > th[data-elem=base-cell] {
+  background: #fafafa;
+  border-bottom: 1px solid #f5f5f5;
+}
+.root.header-row > th[data-elem=base-cell] > [data-elem=component2] > [data-elem=text] {
+  color: #717680;
+}
+.root.header-row > th[data-elem=base-cell]:hover {
+  background: #f5f5f5 !important;
+}
+.root.header-row > th[data-elem=base-cell]:hover > [data-elem=component2] > [data-elem=text] {
+  color: #535862;
+}
+.root.header-row > [data-elem=base-cell].expandable-cell {
+  background: transparent;
+}
+.root.header-row > [data-elem=base-cell].expandable-cell > [data-elem=component2] {
+  width: 48px;
+  visibility: hidden;
+}
+.root.body-row {
+  background: var(--light-color3);
+}
+.root.body-row > td[data-elem=base-cell]:hover {
+  background: #fafafa !important;
+  border-color: #f5f5f5 !important;
+}
+.root.body-row > td[data-elem=base-cell]:hover > [data-elem=component2] > [data-elem=text] {
+  color: #181d27;
+}
+.root.body-row[data-disabled=true] > td[data-elem=base-cell]:hover > [data-elem=component2] > [data-elem=text] {
+  color: #a4a7ae !important;
+}
+.root.body-row[data-active=true] > [data-elem=base-cell] {
+  background: var(--light-color2);
+}
+.root.body-row[data-active=true] > [data-elem=base-cell] > [data-elem=component2] > [data-elem=text] {
+  color: var(--black) !important;
+}
+.root.body-row > td[data-elem=base-cell]:focus-visible {
+  outline: 1.5px solid #3b82f6 !important;
+  outline-offset: 2px;
+  border-radius: 2px;
+  background: #ffffff !important;
+}
+.root > [data-elem=base-cell]:first-child {
+  padding-left: 24px;
+}
+.root > [data-elem=base-cell]:last-child {
+  padding-right: 24px;
+}
+.root.row-height-md > td[data-elem=base-cell] {
+  min-height: 56px;
+}
+.root.row-height-lg > td[data-elem=base-cell] {
+  min-height: 73px;
+}
+.root > [data-elem=base-cell].expandable-cell {
+  padding-left: 14.4px;
+  padding-right: 1.6px;
+  overflow: visible;
+}
+.root > [data-elem=base-cell].expandable-cell > [data-elem=component2] {
+  overflow: visible;
+}
+.root > [data-elem=base-cell].expandable-cell > [data-elem=component2] > [data-elem=text] {
+  overflow: visible;
+}
+.root button.button[data-elem=base-cell] .icon {
+  width: 24px;
+  height: 24px;
+}
+.root button.button[data-elem=base-cell]:disabled {
+  cursor: default;
+}
+.root button.button[data-elem=base-cell]:disabled .icon {
+  visibility: hidden;
+}
+.root .expanded .button .icon {
+  transform: rotate(180deg);
+}
+.root .disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+.root td label,
+.root th label {
+  background: transparent !important;
+}
+.root input[type=checkbox]:focus {
+  outline: none;
+}
+.root.body-row[data-selected=true] > td[data-elem=base-cell] {
+  background: #fafafa !important;
+  border-color: #f5f5f5 !important;
+}
+.root.body-row[data-selected=true] > td[data-elem=base-cell] > [data-elem=component2] > [data-elem=text] {
+  color: #181d27 !important;
+}
+.root .root[data-disabled=true] {
+  background: #f5f5f5;
+}
+.root {
+  /* body cell background */
+}
+.root .root[data-disabled=true] td {
+  background: #f5f5f5 !important;
+}
+.root {
+  /* text color */
+}
+.root .root[data-disabled=true] .cell-text {
+  color: #a4a7ae !important;
+}
+.root {
+  /* icons */
+}
+.root .root[data-disabled=true] svg path {
+  stroke: #ffffff !important;
+  fill: #ffffff !important;
+}
+.root {
+  /* disable pointer interaction */
+}
+.root .root[data-disabled=true] {
+  pointer-events: none;
+}
+.root .disabled .cell-text {
+  color: #a4a7ae !important;
+}
+.root .disabled:hover .cell-text {
+  color: #a4a7ae !important;
+}/*# sourceMappingURL=TableRow.module.css.map */

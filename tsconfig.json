@@ -57,7 +57,7 @@
 		"skipLibCheck": true /* Skip type checking of declaration files */,
 		"verbatimModuleSyntax": true /* Use 'import type' and 'export type' */,
 		"exactOptionalPropertyTypes": true /* Interpret optional property types as written */,
-		"types": ["jest", "@testing-library/jest-dom"]
+		"types": ["jest", "@testing-library/jest-dom", "node"]
 	},
 	"include": ["src/**/*", "src/**/*", "types/**/*.ts", "types/**/*.d.ts", "*.js"],
 	"exclude": [
