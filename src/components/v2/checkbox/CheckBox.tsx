@@ -73,9 +73,8 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>((props, ref) => {
 					name={name}
 					checked={isChecked}
 					disabled={disabled}
-					readOnly={readOnly || indeterminate}
-					onChange={readOnly || indeterminate ? undefined : handleChange}
-					onClick={indeterminate ? (e) => e.preventDefault() : undefined}
+					readOnly={readOnly}
+					onChange={readOnly ? undefined : handleChange}
 					className={styles.input}
 					aria-checked={indeterminate ? 'mixed' : isChecked}
 				/>

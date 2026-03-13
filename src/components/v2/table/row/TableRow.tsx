@@ -78,11 +78,20 @@ const TableRow = forwardRef((props: TableRowProps, ref: ForwardedRef<HTMLTableRo
 
 	const disabledChecking = disableCheck?.(datum);
 
-	const headerCheckStatus =
-		tableData.length === checkedRows.length ||
-		(tableData.length > checkedRows.length && checkedRows.length > 0);
-	const headerIntermediate = tableData.length > checkedRows.length && checkedRows.length > 0;
+	const selectableRows = tableData.filter((row) => !disableCheck?.(row));
 
+	const headerCheckStatus =
+		selectableRows.length > 0 &&
+		selectableRows.every((row) =>
+			checkedRows.some((checked) => checked[uniqueKey] === row[uniqueKey])
+		);
+
+	const headerIndeterminate =
+		checkedRows.length > 0 &&
+		!headerCheckStatus &&
+		selectableRows.some((row) =>
+			checkedRows.some((checked) => checked[uniqueKey] === row[uniqueKey])
+		);
 	const tableCells = headerData.map((item, index) => {
 		let cellContent: ReactNode = null;
 
@@ -100,7 +109,7 @@ const TableRow = forwardRef((props: TableRowProps, ref: ForwardedRef<HTMLTableRo
 		let component1: ReactElement | null = null;
 		if (index === 0 && onCheck) {
 			const checkStatus = type === 'header' ? headerCheckStatus : !!existingInChecked;
-			const intermediate = type === 'header' ? headerIntermediate : false;
+			const indeterminate = type === 'header' ? headerIndeterminate : false;
 
 			if (type !== 'header' && checkAsRadio) {
 				component1 = (
@@ -122,24 +131,29 @@ const TableRow = forwardRef((props: TableRowProps, ref: ForwardedRef<HTMLTableRo
 			} else {
 				component1 = (
 					<Checkbox
-						intermediate={intermediate}
+						indeterminate={indeterminate}
 						onChange={() => {
 							if (type === 'header') {
-								const filteredTableData = tableData.filter((rowDatum) => {
-									return !disableCheck?.(rowDatum);
-								});
-								if (checkedRows.length === filteredTableData.length) {
+								const selectableRows = tableData.filter(
+									(rowDatum) => !disableCheck?.(rowDatum)
+								);
+
+								const allSelected = selectableRows.every((row) =>
+									checkedRows.some(
+										(checked) => checked[uniqueKey] === row[uniqueKey]
+									)
+								);
+
+								console.log(allSelected);
+
+								if (allSelected) {
 									setCheckedRows([]);
 									onCheck?.([]);
-									return;
+								} else {
+									setCheckedRows(selectableRows);
+									onCheck?.(selectableRows);
 								}
-								if (disableCheck) {
-									setCheckedRows(filteredTableData);
-									onCheck?.(filteredTableData);
-									return;
-								}
-								setCheckedRows(tableData);
-								onCheck?.(tableData);
+
 								return;
 							}
 							if (existingInChecked) {

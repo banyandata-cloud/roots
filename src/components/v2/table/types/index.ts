@@ -110,7 +110,9 @@ export interface TableProps {
 	loading?: boolean;
 	onIntersection?: (isVisible: boolean) => void;
 	isFloating?: boolean;
-	tableHeader?: ReactNode;
+	tableHeader?: (props: {
+		toggleDrawer?: (({ data }: { data?: Record<string, unknown> }) => void) | undefined;
+	}) => ReactNode | undefined;
 	hideColumnLines?: boolean;
 	disabledFilterOptions?: {
 		search?: boolean;

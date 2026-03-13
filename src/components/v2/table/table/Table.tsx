@@ -1,7 +1,7 @@
 import { isValidElement, useEffect, useRef, useState, type ReactElement } from 'react';
 import { classes } from '../../../../utils';
-import { Pagination } from '../../pagination';
 import BaseSidePanel from '../../../sidePanel/BaseSidePanel';
+import { Pagination } from '../../pagination';
 import { BaseTableV2 } from '../baseTable';
 import type { TableDrawerToggle, TableProps } from '../types';
 import styles from './Table.module.css';
@@ -43,7 +43,6 @@ const Table = ({
 	tableHeader,
 	hideColumnLines = false,
 	disableCheck,
-
 	defaultCheckedRows,
 }: TableProps): ReactElement => {
 	const ref = useRef<HTMLTableElement | null>(null);
@@ -168,7 +167,9 @@ const Table = ({
 
 	return (
 		<div className={classes(styles.root, className)}>
-			{tableHeader}
+			{tableHeader?.({
+				toggleDrawer,
+			})}
 			<BaseTableV2
 				{...{
 					ref,

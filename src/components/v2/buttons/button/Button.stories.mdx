@@ -1,38 +1,9 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import { ThemedContainer } from '../../../helpers';
-import { ArrowIcon, CopyIcon } from '../../../icons';
+import { CalenderIcon, CloseIcon, CopyIcon } from '../../../icons';
 import Button from './Button';
 
 <Meta title='Components/Buttons/v2/Button' parameters={{ options: { showToolbar: true } }} />
-
-const MailIcon = ({ className }) => (
-
-<svg className={className} viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'>
-	<path
-		d='M2 12.2V5C2 3.89543 2.89543 3 4 3H14C15.1046 3 16 3.89543 16 5V12.2C16 13.3046 15.1046 14.2 14 14.2H4C2.89543 14.2 2 13.3046 2 12.2Z'
-		stroke='currentColor'
-		strokeWidth='1.5'
-	/>
-	<path
-		d='M16 5.25854L10 8.72265C9.3812 9.07991 8.6188 9.07991 8 8.72265L2 5.25854'
-		stroke='currentColor'
-		strokeWidth='1.5'
-	/>
-</svg>
-);
-
-const ArrowIcon = ({ className }) => (
-
-<svg className={className} viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
-	<path
-		d='M5 12H19M19 12L12 5M19 12L12 19'
-		stroke='currentColor'
-		strokeWidth='1.5'
-		strokeLinecap='round'
-		strokeLinejoin='round'
-	/>
-</svg>
-);
 
 export const colStyle = { display: 'flex', flexDirection: 'column', gap: '16px' };
 export const rowStyle = { display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center' };
@@ -69,36 +40,76 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 							title='Verb + noun'
 							variant='primary'
 							size='xs'
-							leftComponent={MailIcon}
-							rightComponent={ArrowIcon}
+							leftComponent={() => {
+								return <CalenderIcon color='white' />;
+							}}
+							rightComponent={() => {
+								return <CloseIcon color='white' />;
+							}}
 						/>
 						<Button
 							title='Verb + noun'
 							variant='primary'
 							size='sm'
-							leftComponent={MailIcon}
-							rightComponent={ArrowIcon}
+							leftComponent={() => {
+								return <CalenderIcon color='white' />;
+							}}
+							rightComponent={() => {
+								return <CloseIcon color='white' />;
+							}}
 						/>
 						<Button
 							title='Verb + noun'
 							variant='primary'
 							size='md'
-							leftComponent={MailIcon}
-							rightComponent={ArrowIcon}
+							leftComponent={() => {
+								return <CalenderIcon color='white' />;
+							}}
+							rightComponent={() => {
+								return <CloseIcon color='white' />;
+							}}
 						/>
 						<Button
 							title='Verb + noun'
 							variant='primary'
 							size='lg'
-							leftComponent={MailIcon}
-							rightComponent={ArrowIcon}
+							leftComponent={() => {
+								return <CalenderIcon color='white' />;
+							}}
+							rightComponent={() => {
+								return <CloseIcon color='white' />;
+							}}
 						/>
 					</div>
 					<div style={rowStyle}>
-						<Button variant='primary' size='xs' leftComponent={MailIcon} />
-						<Button variant='primary' size='sm' leftComponent={MailIcon} />
-						<Button variant='primary' size='md' leftComponent={MailIcon} />
-						<Button variant='primary' size='lg' leftComponent={MailIcon} />
+						<Button
+							variant='primary'
+							size='xs'
+							leftComponent={() => {
+								return <CalenderIcon color='white' />;
+							}}
+						/>
+						<Button
+							variant='primary'
+							size='sm'
+							leftComponent={() => {
+								return <CalenderIcon color='white' />;
+							}}
+						/>
+						<Button
+							variant='primary'
+							size='md'
+							leftComponent={() => {
+								return <CalenderIcon color='white' />;
+							}}
+						/>
+						<Button
+							variant='primary'
+							size='lg'
+							leftComponent={() => {
+								return <CalenderIcon color='white' />;
+							}}
+						/>
 					</div>
 				</div>
 			</ThemedContainer>
@@ -118,36 +129,76 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 							title='Verb + noun'
 							variant='secondary'
 							size='xs'
-							leftComponent={MailIcon}
-							rightComponent={ArrowIcon}
+							leftComponent={() => {
+								return <CalenderIcon color='white' />;
+							}}
+							rightComponent={() => {
+								return <CloseIcon color='white' />;
+							}}
 						/>
 						<Button
 							title='Verb + noun'
 							variant='secondary'
 							size='sm'
-							leftComponent={MailIcon}
-							rightComponent={ArrowIcon}
+							leftComponent={() => {
+								return <CalenderIcon color='white' />;
+							}}
+							rightComponent={() => {
+								return <CloseIcon color='white' />;
+							}}
 						/>
 						<Button
 							title='Verb + noun'
 							variant='secondary'
 							size='md'
-							leftComponent={MailIcon}
-							rightComponent={ArrowIcon}
+							leftComponent={() => {
+								return <CalenderIcon color='white' />;
+							}}
+							rightComponent={() => {
+								return <CloseIcon color='white' />;
+							}}
 						/>
 						<Button
 							title='Verb + noun'
 							variant='secondary'
 							size='lg'
-							leftComponent={MailIcon}
-							rightComponent={ArrowIcon}
+							leftComponent={() => {
+								return <CalenderIcon color='white' />;
+							}}
+							rightComponent={() => {
+								return <CloseIcon color='white' />;
+							}}
 						/>
 					</div>
 					<div style={rowStyle}>
-						<Button variant='secondary' size='xs' leftComponent={MailIcon} />
-						<Button variant='secondary' size='sm' leftComponent={MailIcon} />
-						<Button variant='secondary' size='md' leftComponent={MailIcon} />
-						<Button variant='secondary' size='lg' leftComponent={MailIcon} />
+						<Button
+							variant='secondary'
+							size='xs'
+							leftComponent={() => {
+								return <CalenderIcon color='white' />;
+							}}
+						/>
+						<Button
+							variant='secondary'
+							size='sm'
+							leftComponent={() => {
+								return <CalenderIcon color='white' />;
+							}}
+						/>
+						<Button
+							variant='secondary'
+							size='md'
+							leftComponent={() => {
+								return <CalenderIcon color='white' />;
+							}}
+						/>
+						<Button
+							variant='secondary'
+							size='lg'
+							leftComponent={() => {
+								return <CalenderIcon color='white' />;
+							}}
+						/>
 					</div>
 				</div>
 			</ThemedContainer>
@@ -167,36 +218,76 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 							title='Verb + noun'
 							variant='soft'
 							size='xs'
-							leftComponent={MailIcon}
-							rightComponent={ArrowIcon}
+							leftComponent={() => {
+								return <CalenderIcon color='black' />;
+							}}
+							rightComponent={() => {
+								return <CloseIcon color='black' />;
+							}}
 						/>
 						<Button
 							title='Verb + noun'
 							variant='soft'
 							size='sm'
-							leftComponent={MailIcon}
-							rightComponent={ArrowIcon}
+							leftComponent={() => {
+								return <CalenderIcon color='black' />;
+							}}
+							rightComponent={() => {
+								return <CloseIcon color='black' />;
+							}}
 						/>
 						<Button
 							title='Verb + noun'
 							variant='soft'
 							size='md'
-							leftComponent={MailIcon}
-							rightComponent={ArrowIcon}
+							leftComponent={() => {
+								return <CalenderIcon color='black' />;
+							}}
+							rightComponent={() => {
+								return <CloseIcon color='black' />;
+							}}
 						/>
 						<Button
 							title='Verb + noun'
 							variant='soft'
 							size='lg'
-							leftComponent={MailIcon}
-							rightComponent={ArrowIcon}
+							leftComponent={() => {
+								return <CalenderIcon color='black' />;
+							}}
+							rightComponent={() => {
+								return <CloseIcon color='black' />;
+							}}
 						/>
 					</div>
 					<div style={rowStyle}>
-						<Button variant='soft' size='xs' leftComponent={MailIcon} />
-						<Button variant='soft' size='sm' leftComponent={MailIcon} />
-						<Button variant='soft' size='md' leftComponent={MailIcon} />
-						<Button variant='soft' size='lg' leftComponent={MailIcon} />
+						<Button
+							variant='soft'
+							size='xs'
+							leftComponent={() => {
+								return <CalenderIcon color='black' />;
+							}}
+						/>
+						<Button
+							variant='soft'
+							size='sm'
+							leftComponent={() => {
+								return <CalenderIcon color='black' />;
+							}}
+						/>
+						<Button
+							variant='soft'
+							size='md'
+							leftComponent={() => {
+								return <CalenderIcon color='black' />;
+							}}
+						/>
+						<Button
+							variant='soft'
+							size='lg'
+							leftComponent={() => {
+								return <CalenderIcon color='black' />;
+							}}
+						/>
 					</div>
 				</div>
 			</ThemedContainer>
@@ -216,36 +307,76 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 							title='Verb + noun'
 							variant='outline'
 							size='xs'
-							leftComponent={MailIcon}
-							rightComponent={ArrowIcon}
+							leftComponent={() => {
+								return <CalenderIcon color='black' />;
+							}}
+							rightComponent={() => {
+								return <CloseIcon color='black' />;
+							}}
 						/>
 						<Button
 							title='Verb + noun'
 							variant='outline'
 							size='sm'
-							leftComponent={MailIcon}
-							rightComponent={ArrowIcon}
+							leftComponent={() => {
+								return <CalenderIcon color='black' />;
+							}}
+							rightComponent={() => {
+								return <CloseIcon color='black' />;
+							}}
 						/>
 						<Button
 							title='Verb + noun'
 							variant='outline'
 							size='md'
-							leftComponent={MailIcon}
-							rightComponent={ArrowIcon}
+							leftComponent={() => {
+								return <CalenderIcon color='black' />;
+							}}
+							rightComponent={() => {
+								return <CloseIcon color='black' />;
+							}}
 						/>
 						<Button
 							title='Verb + noun'
 							variant='outline'
 							size='lg'
-							leftComponent={MailIcon}
-							rightComponent={ArrowIcon}
+							leftComponent={() => {
+								return <CalenderIcon color='black' />;
+							}}
+							rightComponent={() => {
+								return <CloseIcon color='black' />;
+							}}
 						/>
 					</div>
 					<div style={rowStyle}>
-						<Button variant='outline' size='xs' leftComponent={MailIcon} />
-						<Button variant='outline' size='sm' leftComponent={MailIcon} />
-						<Button variant='outline' size='md' leftComponent={MailIcon} />
-						<Button variant='outline' size='lg' leftComponent={MailIcon} />
+						<Button
+							variant='outline'
+							size='xs'
+							leftComponent={() => {
+								return <CalenderIcon color='black' />;
+							}}
+						/>
+						<Button
+							variant='outline'
+							size='sm'
+							leftComponent={() => {
+								return <CalenderIcon color='black' />;
+							}}
+						/>
+						<Button
+							variant='outline'
+							size='md'
+							leftComponent={() => {
+								return <CalenderIcon color='black' />;
+							}}
+						/>
+						<Button
+							variant='outline'
+							size='lg'
+							leftComponent={() => {
+								return <CalenderIcon color='black' />;
+							}}
+						/>
 					</div>
 				</div>
 			</ThemedContainer>
@@ -265,36 +396,76 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 							title='Verb + noun'
 							variant='ghost'
 							size='xs'
-							leftComponent={MailIcon}
-							rightComponent={ArrowIcon}
+							leftComponent={() => {
+								return <CalenderIcon color='black' />;
+							}}
+							rightComponent={() => {
+								return <CloseIcon color='black' />;
+							}}
 						/>
 						<Button
 							title='Verb + noun'
 							variant='ghost'
 							size='sm'
-							leftComponent={MailIcon}
-							rightComponent={ArrowIcon}
+							leftComponent={() => {
+								return <CalenderIcon color='black' />;
+							}}
+							rightComponent={() => {
+								return <CloseIcon color='black' />;
+							}}
 						/>
 						<Button
 							title='Verb + noun'
 							variant='ghost'
 							size='md'
-							leftComponent={MailIcon}
-							rightComponent={ArrowIcon}
+							leftComponent={() => {
+								return <CalenderIcon color='black' />;
+							}}
+							rightComponent={() => {
+								return <CloseIcon color='black' />;
+							}}
 						/>
 						<Button
 							title='Verb + noun'
 							variant='ghost'
 							size='lg'
-							leftComponent={MailIcon}
-							rightComponent={ArrowIcon}
+							leftComponent={() => {
+								return <CalenderIcon color='black' />;
+							}}
+							rightComponent={() => {
+								return <CloseIcon color='black' />;
+							}}
 						/>
 					</div>
 					<div style={rowStyle}>
-						<Button variant='ghost' size='xs' leftComponent={MailIcon} />
-						<Button variant='ghost' size='sm' leftComponent={MailIcon} />
-						<Button variant='ghost' size='md' leftComponent={MailIcon} />
-						<Button variant='ghost' size='lg' leftComponent={MailIcon} />
+						<Button
+							variant='ghost'
+							size='xs'
+							leftComponent={() => {
+								return <CalenderIcon color='black' />;
+							}}
+						/>
+						<Button
+							variant='ghost'
+							size='sm'
+							leftComponent={() => {
+								return <CalenderIcon color='black' />;
+							}}
+						/>
+						<Button
+							variant='ghost'
+							size='md'
+							leftComponent={() => {
+								return <CalenderIcon color='black' />;
+							}}
+						/>
+						<Button
+							variant='ghost'
+							size='lg'
+							leftComponent={() => {
+								return <CalenderIcon color='black' />;
+							}}
+						/>
 					</div>
 				</div>
 			</ThemedContainer>
@@ -314,36 +485,76 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 							title='Verb + noun'
 							variant='critical'
 							size='xs'
-							leftComponent={MailIcon}
-							rightComponent={ArrowIcon}
+							leftComponent={() => {
+								return <CalenderIcon color='white' />;
+							}}
+							rightComponent={() => {
+								return <CloseIcon color='white' />;
+							}}
 						/>
 						<Button
 							title='Verb + noun'
 							variant='critical'
 							size='sm'
-							leftComponent={MailIcon}
-							rightComponent={ArrowIcon}
+							leftComponent={() => {
+								return <CalenderIcon color='white' />;
+							}}
+							rightComponent={() => {
+								return <CloseIcon color='white' />;
+							}}
 						/>
 						<Button
 							title='Verb + noun'
 							variant='critical'
 							size='md'
-							leftComponent={MailIcon}
-							rightComponent={ArrowIcon}
+							leftComponent={() => {
+								return <CalenderIcon color='white' />;
+							}}
+							rightComponent={() => {
+								return <CloseIcon color='white' />;
+							}}
 						/>
 						<Button
 							title='Verb + noun'
 							variant='critical'
 							size='lg'
-							leftComponent={MailIcon}
-							rightComponent={ArrowIcon}
+							leftComponent={() => {
+								return <CalenderIcon color='white' />;
+							}}
+							rightComponent={() => {
+								return <CloseIcon color='white' />;
+							}}
 						/>
 					</div>
 					<div style={rowStyle}>
-						<Button variant='critical' size='xs' leftComponent={MailIcon} />
-						<Button variant='critical' size='sm' leftComponent={MailIcon} />
-						<Button variant='critical' size='md' leftComponent={MailIcon} />
-						<Button variant='critical' size='lg' leftComponent={MailIcon} />
+						<Button
+							variant='critical'
+							size='xs'
+							leftComponent={() => {
+								return <CalenderIcon color='white' />;
+							}}
+						/>
+						<Button
+							variant='critical'
+							size='sm'
+							leftComponent={() => {
+								return <CalenderIcon color='white' />;
+							}}
+						/>
+						<Button
+							variant='critical'
+							size='md'
+							leftComponent={() => {
+								return <CalenderIcon color='white' />;
+							}}
+						/>
+						<Button
+							variant='critical'
+							size='lg'
+							leftComponent={() => {
+								return <CalenderIcon color='white' />;
+							}}
+						/>
 					</div>
 				</div>
 			</ThemedContainer>
@@ -363,13 +574,24 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 							title='Verb + noun'
 							variant='primary'
 							size='sm'
-							leftComponent={MailIcon}
-							rightComponent={ArrowIcon}
+							leftComponent={() => {
+								return <CalenderIcon color='black' />;
+							}}
+							rightComponent={() => {
+								return <CloseIcon color='black' />;
+							}}
 							disabled
 						/>
 					</div>
 					<div style={rowStyle}>
-						<Button variant='primary' size='sm' leftComponent={MailIcon} disabled />
+						<Button
+							variant='primary'
+							size='sm'
+							leftComponent={() => {
+								return <CalenderIcon color='black' />;
+							}}
+							disabled
+						/>
 					</div>
 				</div>
 			</ThemedContainer>
@@ -433,7 +655,11 @@ Component to render as the left icon. Receives `className` for sizing. When used
 </table>
 
 ```jsx
-<Button leftComponent={MailIcon} />
+<Button
+	leftComponent={() => {
+		return <CalenderIcon color='white' />;
+	}}
+/>
 ```
 
 ### rightComponent
@@ -452,7 +678,11 @@ Component to render as the right icon. Receives `className` for sizing.
 </table>
 
 ```jsx
-<Button rightComponent={ArrowIcon} />
+<Button
+	rightComponent={() => {
+		return <CloseIcon color='white' />;
+	}}
+/>
 ```
 
 ### variant

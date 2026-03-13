@@ -1,11 +1,11 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { useState } from 'react';
+import { Button } from '../../../buttons';
+import { HomeIcon } from '../../../icons';
 import { ThemedContainer } from '../../helpers';
 import { ArrowIcon, CopyIcon, ServerIcon } from '../../icons';
 import { usePagination } from '../../pagination';
 import Table from './Table';
-import { Button } from '../../../buttons';
-import { HomeIcon } from '../../../icons';
-import { useState } from 'react';
 
 <Meta title='Components/v2/Table/Table' parameters={{ options: { showToolbar: false } }} />
 
@@ -1038,21 +1038,50 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 				<ThemedContainer style={{ height: '100%' }}>
 					<Table
 						onRowClick={onRowClick}
-						tableHeader={
-							<div
-								style={{
-									display: 'flex',
-									justifyContent: 'space-between',
-									alignItems: 'center',
-									padding: '17px 20px',
-									borderBottom: '1px solid #F5F5F5',
-								}}>
-								<span>Cloud</span>
-								<Button title='Verb+noun' onClick={() => {}} />
-							</div>
-						}
+						tableHeader={({ toggleDrawer }) => {
+							return (
+								<div
+									style={{
+										display: 'flex',
+										justifyContent: 'space-between',
+										alignItems: 'center',
+										padding: '17px 20px',
+										borderBottom: '1px solid #F5F5F5',
+									}}>
+									<span>Cloud</span>
+									<Button
+										title='Verb+noun'
+										onClick={() => {
+											toggleDrawer({
+												data: {
+													index: 0,
+												},
+											});
+										}}
+									/>
+								</div>
+							);
+						}}
 						headerData={headerData}
 						tableData={tableData}
+						tableDrawerProps={() => ({
+							renderBody: [
+								() => (
+									<div data-elem='drawer-child'>
+										Hello World
+										<div data-elem='drawer-child-header'>YES</div>
+										<div data-elem='drawer-child-body'>
+											Nondandlk If the elements actually are siblings in the
+											DOM, and the display of the first element was toggled by
+											something like a class dynamically set/removed via
+											JavaScript.
+										</div>
+										<div data-elem='drawer-child-body'>Noss</div>
+									</div>
+								),
+								() => <div>Hello Everyone</div>,
+							],
+						})}
 						dataLabel='cloud'
 						paginationData={{
 							paginationState,

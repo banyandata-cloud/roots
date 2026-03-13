@@ -1,2 +1,2 @@
 export { default as CheckIcon } from './CheckIcon';
-export { default as IndeterminateIcon } from './IntermediateIcon';
+export { default as IndeterminateIcon } from './IndeterminateIcon';
