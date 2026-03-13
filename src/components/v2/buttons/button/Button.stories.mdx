@@ -5,11 +5,35 @@ import Button from './Button';
 
 <Meta title='Components/Buttons/v2/Button' parameters={{ options: { showToolbar: true } }} />
 
-export const Template = (args) => (
-	<ThemedContainer theme='light'>
-		<Button {...args} />
-	</ThemedContainer>
+export const MailIcon = ({ className }) => (
+	<svg className={className} viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'>
+		<path
+			d='M2 12.2V5C2 3.89543 2.89543 3 4 3H14C15.1046 3 16 3.89543 16 5V12.2C16 13.3046 15.1046 14.2 14 14.2H4C2.89543 14.2 2 13.3046 2 12.2Z'
+			stroke='currentColor'
+			strokeWidth='1.5'
+		/>
+		<path
+			d='M16 5.25854L10 8.72265C9.3812 9.07991 8.6188 9.07991 8 8.72265L2 5.25854'
+			stroke='currentColor'
+			strokeWidth='1.5'
+		/>
+	</svg>
 );
+
+export const ArrowIcon = ({ className }) => (
+	<svg className={className} viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
+		<path
+			d='M5 12H19M19 12L12 5M19 12L12 19'
+			stroke='currentColor'
+			strokeWidth='1.5'
+			strokeLinecap='round'
+			strokeLinejoin='round'
+		/>
+	</svg>
+);
+
+export const colStyle = { display: 'flex', flexDirection: 'column', gap: '16px' };
+export const rowStyle = { display: 'flex', gap: '12px', flexWrap: 'wrap', alignItems: 'center' };
 
 # Button
 
@@ -17,11 +41,9 @@ A versatile and customizable button component designed for enabling interactive 
 
 #### Design - [Figma](https://www.figma.com/file/e9opoAtQHBo4vFd6u0Co98/Component-Library?type=design&node-id=1-2&mode=design&t=doFoJhh78NiStend-0) | Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/components/buttons/button)
 
-> The Button component builds upon the BaseButton component, adding more flexibility and visual customization. It allows you to include custom components (leftComponent and rightComponent) beside the button's main content. You can adjust the radius of the button, its size, and even its color using the color prop.
+> The Button component builds upon the BaseButton component, adding more flexibility and visual customization. Pass `leftComponent` and `rightComponent` to render icons inside the button. When only `leftComponent` is passed with no `title`, the button renders as a square icon-only button.
 
 ## Usage
-
-Basic import and additional information on how to use this component.
 
 ```js
 import { Button } from '@banyan_cloud/roots';
@@ -33,17 +55,49 @@ import { Button } from '@banyan_cloud/roots';
 
 The CSF rendered inside the `Canvas` from which you can see the implementation example.
 
-### Primary Variant[V2]
+### Primary Variant
 
 <Canvas>
 	<Story name='Primary Button'>
 		{() => (
 			<ThemedContainer theme='light'>
-				<div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-					<Button title='Primary XS' variant='primary' size='xs' textSize='sm' />
-					<Button title='Primary SM' variant='primary' size='sm' textSize='md' />
-					<Button title='Primary MD' variant='primary' size='md' textSize='md' />
-					<Button title='Primary LG' variant='primary' size='lg' textSize='md' />
+				<div style={colStyle}>
+					<div style={rowStyle}>
+						<Button
+							title='Verb + noun'
+							variant='primary'
+							size='xs'
+							leftComponent={MailIcon}
+							rightComponent={ArrowIcon}
+						/>
+						<Button
+							title='Verb + noun'
+							variant='primary'
+							size='sm'
+							leftComponent={MailIcon}
+							rightComponent={ArrowIcon}
+						/>
+						<Button
+							title='Verb + noun'
+							variant='primary'
+							size='md'
+							leftComponent={MailIcon}
+							rightComponent={ArrowIcon}
+						/>
+						<Button
+							title='Verb + noun'
+							variant='primary'
+							size='lg'
+							leftComponent={MailIcon}
+							rightComponent={ArrowIcon}
+						/>
+					</div>
+					<div style={rowStyle}>
+						<Button variant='primary' size='xs' leftComponent={MailIcon} />
+						<Button variant='primary' size='sm' leftComponent={MailIcon} />
+						<Button variant='primary' size='md' leftComponent={MailIcon} />
+						<Button variant='primary' size='lg' leftComponent={MailIcon} />
+					</div>
 				</div>
 			</ThemedContainer>
 		)}
@@ -56,11 +110,43 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 	<Story name='Secondary Button'>
 		{() => (
 			<ThemedContainer theme='light'>
-				<div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-					<Button title='Secondary XS' variant='secondary' size='xs' textSize='sm' />
-					<Button title='Secondary SM' variant='secondary' size='sm' textSize='md' />
-					<Button title='Secondary MD' variant='secondary' size='md' textSize='md' />
-					<Button title='Secondary LG' variant='secondary' size='lg' textSize='md' />
+				<div style={colStyle}>
+					<div style={rowStyle}>
+						<Button
+							title='Verb + noun'
+							variant='secondary'
+							size='xs'
+							leftComponent={MailIcon}
+							rightComponent={ArrowIcon}
+						/>
+						<Button
+							title='Verb + noun'
+							variant='secondary'
+							size='sm'
+							leftComponent={MailIcon}
+							rightComponent={ArrowIcon}
+						/>
+						<Button
+							title='Verb + noun'
+							variant='secondary'
+							size='md'
+							leftComponent={MailIcon}
+							rightComponent={ArrowIcon}
+						/>
+						<Button
+							title='Verb + noun'
+							variant='secondary'
+							size='lg'
+							leftComponent={MailIcon}
+							rightComponent={ArrowIcon}
+						/>
+					</div>
+					<div style={rowStyle}>
+						<Button variant='secondary' size='xs' leftComponent={MailIcon} />
+						<Button variant='secondary' size='sm' leftComponent={MailIcon} />
+						<Button variant='secondary' size='md' leftComponent={MailIcon} />
+						<Button variant='secondary' size='lg' leftComponent={MailIcon} />
+					</div>
 				</div>
 			</ThemedContainer>
 		)}
@@ -73,28 +159,92 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 	<Story name='Soft Button'>
 		{() => (
 			<ThemedContainer theme='light'>
-				<div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-					<Button title='Soft Button XS' variant='soft' size='xs' textSize='sm' />
-					<Button title='Soft Button SM' variant='soft' size='sm' textSize='md' />
-					<Button title='Soft Button MD' variant='soft' size='md' textSize='md' />
-					<Button title='Soft Button LG' variant='soft' size='lg' textSize='md' />
+				<div style={colStyle}>
+					<div style={rowStyle}>
+						<Button
+							title='Verb + noun'
+							variant='soft'
+							size='xs'
+							leftComponent={MailIcon}
+							rightComponent={ArrowIcon}
+						/>
+						<Button
+							title='Verb + noun'
+							variant='soft'
+							size='sm'
+							leftComponent={MailIcon}
+							rightComponent={ArrowIcon}
+						/>
+						<Button
+							title='Verb + noun'
+							variant='soft'
+							size='md'
+							leftComponent={MailIcon}
+							rightComponent={ArrowIcon}
+						/>
+						<Button
+							title='Verb + noun'
+							variant='soft'
+							size='lg'
+							leftComponent={MailIcon}
+							rightComponent={ArrowIcon}
+						/>
+					</div>
+					<div style={rowStyle}>
+						<Button variant='soft' size='xs' leftComponent={MailIcon} />
+						<Button variant='soft' size='sm' leftComponent={MailIcon} />
+						<Button variant='soft' size='md' leftComponent={MailIcon} />
+						<Button variant='soft' size='lg' leftComponent={MailIcon} />
+					</div>
 				</div>
 			</ThemedContainer>
 		)}
 	</Story>
 </Canvas>
 
-### Outlined Variant
+### Outline Variant
 
 <Canvas>
-	<Story name='Outlined Button'>
+	<Story name='Outline Button'>
 		{() => (
 			<ThemedContainer theme='light'>
-				<div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-					<Button title='Outlined XS' variant='outlined' size='xs' textSize='sm' />
-					<Button title='Outlined SM' variant='outlined' size='sm' textSize='md' />
-					<Button title='Outlined MD' variant='outlined' size='md' textSize='md' />
-					<Button title='Outlined LG' variant='outlined' size='lg' textSize='md' />
+				<div style={colStyle}>
+					<div style={rowStyle}>
+						<Button
+							title='Verb + noun'
+							variant='outline'
+							size='xs'
+							leftComponent={MailIcon}
+							rightComponent={ArrowIcon}
+						/>
+						<Button
+							title='Verb + noun'
+							variant='outline'
+							size='sm'
+							leftComponent={MailIcon}
+							rightComponent={ArrowIcon}
+						/>
+						<Button
+							title='Verb + noun'
+							variant='outline'
+							size='md'
+							leftComponent={MailIcon}
+							rightComponent={ArrowIcon}
+						/>
+						<Button
+							title='Verb + noun'
+							variant='outline'
+							size='lg'
+							leftComponent={MailIcon}
+							rightComponent={ArrowIcon}
+						/>
+					</div>
+					<div style={rowStyle}>
+						<Button variant='outline' size='xs' leftComponent={MailIcon} />
+						<Button variant='outline' size='sm' leftComponent={MailIcon} />
+						<Button variant='outline' size='md' leftComponent={MailIcon} />
+						<Button variant='outline' size='lg' leftComponent={MailIcon} />
+					</div>
 				</div>
 			</ThemedContainer>
 		)}
@@ -107,90 +257,118 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 	<Story name='Ghost Button'>
 		{() => (
 			<ThemedContainer theme='light'>
-				<div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-					<Button title='Ghost XS' variant='ghost' size='xs' />
-					<Button title='Ghost SM' variant='ghost' size='sm' textSize='md' />
-					<Button title='Ghost MD' variant='ghost' size='md' textSize='md' />
-					<Button title='Ghost LG' variant='ghost' size='lg' textSize='md' />
+				<div style={colStyle}>
+					<div style={rowStyle}>
+						<Button
+							title='Verb + noun'
+							variant='ghost'
+							size='xs'
+							leftComponent={MailIcon}
+							rightComponent={ArrowIcon}
+						/>
+						<Button
+							title='Verb + noun'
+							variant='ghost'
+							size='sm'
+							leftComponent={MailIcon}
+							rightComponent={ArrowIcon}
+						/>
+						<Button
+							title='Verb + noun'
+							variant='ghost'
+							size='md'
+							leftComponent={MailIcon}
+							rightComponent={ArrowIcon}
+						/>
+						<Button
+							title='Verb + noun'
+							variant='ghost'
+							size='lg'
+							leftComponent={MailIcon}
+							rightComponent={ArrowIcon}
+						/>
+					</div>
+					<div style={rowStyle}>
+						<Button variant='ghost' size='xs' leftComponent={MailIcon} />
+						<Button variant='ghost' size='sm' leftComponent={MailIcon} />
+						<Button variant='ghost' size='md' leftComponent={MailIcon} />
+						<Button variant='ghost' size='lg' leftComponent={MailIcon} />
+					</div>
 				</div>
 			</ThemedContainer>
 		)}
 	</Story>
 </Canvas>
 
-### Right Icon Variant
+### Critical Variant
 
 <Canvas>
-	<Story name='Button with Right Icon'>
+	<Story name='Critical Button'>
 		{() => (
 			<ThemedContainer theme='light'>
-				<div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-					<Button
-						title='Primary with Icon'
-						variant='primary'
-						size='md'
-						rightComponent={() => <ArrowIcon height='12' width='12' />}
-					/>
-					<Button
-						title='Secondary with Icon'
-						variant='secondary'
-						size='md'
-						textSize='md'
-						rightComponent={() => <ArrowIcon height='12' width='12' />}
-					/>
-					<Button
-						title='Outlined with Icon'
-						variant='outlined'
-						size='md'
-						textSize='md'
-						rightComponent={() => <ArrowIcon height='12' width='12' />}
-					/>
-					<Button
-						title='Soft with Icon'
-						variant='soft'
-						size='md'
-						textSize='md'
-						rightComponent={() => <ArrowIcon height='12' width='12' />}
-					/>
+				<div style={colStyle}>
+					<div style={rowStyle}>
+						<Button
+							title='Verb + noun'
+							variant='critical'
+							size='xs'
+							leftComponent={MailIcon}
+							rightComponent={ArrowIcon}
+						/>
+						<Button
+							title='Verb + noun'
+							variant='critical'
+							size='sm'
+							leftComponent={MailIcon}
+							rightComponent={ArrowIcon}
+						/>
+						<Button
+							title='Verb + noun'
+							variant='critical'
+							size='md'
+							leftComponent={MailIcon}
+							rightComponent={ArrowIcon}
+						/>
+						<Button
+							title='Verb + noun'
+							variant='critical'
+							size='lg'
+							leftComponent={MailIcon}
+							rightComponent={ArrowIcon}
+						/>
+					</div>
+					<div style={rowStyle}>
+						<Button variant='critical' size='xs' leftComponent={MailIcon} />
+						<Button variant='critical' size='sm' leftComponent={MailIcon} />
+						<Button variant='critical' size='md' leftComponent={MailIcon} />
+						<Button variant='critical' size='lg' leftComponent={MailIcon} />
+					</div>
 				</div>
 			</ThemedContainer>
 		)}
 	</Story>
 </Canvas>
 
-### Text Size
-
-<Canvas>
-	<Story name='Text Size'>
-		{() => (
-			<ThemedContainer theme='light'>
-				<div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-					<Button title='Text SM(14px)' variant='primary' size='md' textSize='sm' />
-					<Button title='Text MD(16px)' variant='primary' size='md' textSize='md' />
-				</div>
-			</ThemedContainer>
-		)}
-	</Story>
-</Canvas>
-
-### Disabled State (All Variants)
+### Disabled State
 
 <Canvas>
 	<Story name='Disabled Button'>
 		{() => (
 			<ThemedContainer theme='light'>
-				<div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
-					<Button title='Primary' variant='primary' size='sm' disabled />
-					<Button
-						title='Secondary'
-						variant='secondary'
-						size='sm'
-						textSize='md'
-						disabled
-					/>
-					<Button title='Soft' variant='soft' size='sm' textSize='md' disabled />
-					<Button title='Outlined' variant='outlined' size='sm' textSize='md' disabled />
-					<Button title='Ghost' variant='ghost' size='sm' textSize='md' disabled />
+				<div style={colStyle}>
+					<div style={rowStyle}>
+						<Button
+							title='Verb + noun'
+							variant='primary'
+							size='sm'
+							leftComponent={MailIcon}
+							rightComponent={ArrowIcon}
+							disabled
+						/>
+					</div>
+					<div style={rowStyle}>
+						<Button variant='primary' size='sm' leftComponent={MailIcon} disabled />
+					</div>
 				</div>
 			</ThemedContainer>
 		)}
@@ -199,7 +377,7 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 
 ## API
 
-**`className`**
+### className
 
 Additional CSS class names to be applied to the button.
 
@@ -218,28 +396,9 @@ Additional CSS class names to be applied to the button.
 <Button className='additionalClass' />
 ```
 
-**`component1`**
+### title
 
-The first component on the left of the title. Accepts JSX element.
-
-<table style={{ width: '100%' }}>
-	<tr>
-		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
-		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
-	</tr>
-	<tr>
-		<td>JSX</td>
-		<td>null</td>
-	</tr>
-</table>
-
-```jsx
-<Button component1={<p>Some text</p>} />
-```
-
-**`title`**
-
-The text to be displayed within the button.
+The text to be displayed within the button. When omitted with only `leftComponent` provided, renders as a square icon-only button.
 
 <table style={{ width: '100%' }}>
 	<tr>
@@ -256,9 +415,9 @@ The text to be displayed within the button.
 <Button title='Submit' />
 ```
 
-**`component3`**
+### leftComponent
 
-The third component on the right of the title. Accepts JSX element.
+Component to render as the left icon. Receives `className` for sizing. When used alone without `title`, renders the button as icon-only.
 
 <table style={{ width: '100%' }}>
 	<tr>
@@ -266,16 +425,54 @@ The third component on the right of the title. Accepts JSX element.
 		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
 	</tr>
 	<tr>
-		<td>JSX</td>
-		<td>null</td>
+		<td>ComponentType</td>
+		<td>undefined</td>
 	</tr>
 </table>
 
 ```jsx
-<Button component3={<p>Some text</p>} />
+<Button leftComponent={MailIcon} />
 ```
 
-**`size`**
+### rightComponent
+
+Component to render as the right icon. Receives `className` for sizing.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>ComponentType</td>
+		<td>undefined</td>
+	</tr>
+</table>
+
+```jsx
+<Button rightComponent={ArrowIcon} />
+```
+
+### variant
+
+For applying visual style to the button.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>'primary', 'secondary', 'soft', 'outline', 'ghost', 'critical'</td>
+		<td>'primary'</td>
+	</tr>
+</table>
+
+```jsx
+<Button variant='secondary' />
+```
+
+### size
 
 The size of the button, affecting its dimensions.
 
@@ -285,54 +482,16 @@ The size of the button, affecting its dimensions.
 		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
 	</tr>
 	<tr>
-		<td>'sm', 'md', 'lg', 'auto'</td>
+		<td>'xs', 'sm', 'md', 'lg'</td>
 		<td>'sm'</td>
 	</tr>
 </table>
 
 ```jsx
-<Button size='sm' />
+<Button size='md' />
 ```
 
-**`flexible`**
-
-Make the button button flexible. It adds the following styles: flex-grow: 1;flex-shrink: 1;min-width: 3rem;
-
-<table style={{ width: '100%' }}>
-	<tr>
-		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
-		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
-	</tr>
-	<tr>
-		<td>Boolean</td>
-		<td>false</td>
-	</tr>
-</table>
-
-```jsx
-<Button flexible={false} />
-```
-
-**`radius`**
-
-For applying border radius to the button.
-
-<table style={{ width: '100%' }}>
-	<tr>
-		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
-		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
-	</tr>
-	<tr>
-		<td>'none', 'default', 'round', 'ellipse'</td>
-		<td>'default'</td>
-	</tr>
-</table>
-
-```jsx
-<Button radius='none' />
-```
-
-**`disabled`**
+### disabled
 
 If true, the button is disabled and cannot be interacted with.
 
@@ -348,10 +507,10 @@ If true, the button is disabled and cannot be interacted with.
 </table>
 
 ```jsx
-<Button disabled={false} />
+<Button disabled />
 ```
 
-**`type`**
+### type
 
 The type of the button.
 
@@ -362,15 +521,15 @@ The type of the button.
 	</tr>
 	<tr>
 		<td>'button', 'submit', 'reset'</td>
-		<td>false</td>
+		<td>'submit'</td>
 	</tr>
 </table>
 
 ```jsx
-<Button type='submit' />
+<Button type='button' />
 ```
 
-**`onClick`**
+### onClick
 
 Callback function to be executed when the button is clicked.
 
@@ -388,12 +547,12 @@ Callback function to be executed when the button is clicked.
 ```jsx
 <Button
 	onClick={() => {
-		console.log('Button clicked');
+		console.log('clicked');
 	}}
 />
 ```
 
-**`blurOnClick`**
+### blurOnClick
 
 If true, the button will lose focus after being clicked.
 
@@ -410,23 +569,4 @@ If true, the button will lose focus after being clicked.
 
 ```jsx
 <Button blurOnClick={false} />
-```
-
-**`variant`**
-
-For applying visual style to the button.
-
-<table style={{ width: '100%' }}>
-	<tr>
-		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
-		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
-	</tr>
-	<tr>
-		<td>'contained', 'outlined', 'text'</td>
-		<td>'contained'</td>
-	</tr>
-</table>
-
-```jsx
-<Button variant='outlined' />
 ```

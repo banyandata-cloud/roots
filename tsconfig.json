@@ -60,5 +60,13 @@
 		"types": ["jest", "@testing-library/jest-dom", "node"]
 	},
 	"include": ["src/**/*", "src/**/*", "types/**/*.ts", "types/**/*.d.ts", "*.js"],
-	"exclude": ["node_modules", "dist", ".storybook", "**/*.stories.mdx", "*.js"]
+	"exclude": [
+		"node_modules",
+		"dist",
+		".storybook",
+		"**/*.stories.*",
+		"**/*.test.*",
+		"**/__tests__/**",
+		"*.js"
+	]
 }
