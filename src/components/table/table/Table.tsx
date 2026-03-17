@@ -50,6 +50,7 @@ const Table = ({
 	onCheck,
 	checkAsRadio,
 	disableCheck,
+	clearSearch,
 }: TableProps): ReactElement => {
 	const ref = useRef<HTMLTableElement | null>(null);
 	const paginationRef = useRef<HTMLDivElement | null>(null);
@@ -194,6 +195,7 @@ const Table = ({
 				toggleDrawer={toggleDrawer}
 				filtersCount={filtersCount}
 				rightActions={rightActions}
+				clearSearch={clearSearch}
 			/>
 
 			<BaseTableV2

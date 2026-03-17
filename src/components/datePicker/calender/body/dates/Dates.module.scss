@@ -13,6 +13,10 @@
 		align-self: center;
 		user-select: none;
 
+		&.date-disabled {
+			pointer-events: none;
+		}
+
 		&.minInRange {
 			background-color: $secondary-color2;
 			border-radius: 1.5rem 0rem 0rem 1.5rem;
@@ -47,6 +51,7 @@
 				}
 			}
 		}
+
 		&.maxInRange {
 			background-color: $secondary-color2;
 			border-radius: 0rem 1.5rem 1.5rem 0rem;
@@ -82,6 +87,7 @@
 				}
 			}
 		}
+
 		&.midInRange {
 			background: $background-color5;
 			border-radius: 0rem;
@@ -99,6 +105,7 @@
 				}
 			}
 		}
+
 		&.midInRangeSelected {
 			background: $background-color5;
 			border-radius: 0rem;
@@ -119,9 +126,19 @@
 
 		&.first-hovered {
 			background: $background-color5;
-			border-radius: 0rem 1.5rem 1.5rem 0rem;
+			border-top-left-radius: 1.5rem;
+			border-bottom-left-radius: 1.5rem;
+			border-top-right-radius: 0rem;
+			border-bottom-right-radius: 0rem;
 			.date {
-				color: $secondary-color2;
+				background-color: $secondary-color2;
+				border-radius: 1.5rem;
+				color: $white;
+				min-height: 2.5rem;
+				min-width: 2.5rem;
+				height: 2.5rem;
+				width: 2.5rem;
+				flex-shrink: 0;
 			}
 			&.today-selected {
 				@include flex(column, flex-start, center);
@@ -134,13 +151,23 @@
 				}
 			}
 		}
+
 		&.last-hovered {
 			background: $background-color5;
-			border-radius: 1.5rem 0rem 0rem 1.5rem;
+			border-top-left-radius: 0rem;
+			border-bottom-left-radius: 0rem;
+			border-top-right-radius: 1.5rem;
+			border-bottom-right-radius: 1.5rem;
 			.date {
-				color: $secondary-color2;
+				background-color: $secondary-color2;
+				border-radius: 1.5rem;
+				color: $white;
+				min-height: 2.5rem;
+				min-width: 2.5rem;
+				height: 2.5rem;
+				width: 2.5rem;
+				flex-shrink: 0;
 			}
-
 			&.today-selected {
 				@include flex(column, flex-start, center);
 				.date {
@@ -183,6 +210,9 @@
 			border-radius: 1.5rem;
 			height: 2.5rem;
 			width: 2.5rem;
+			min-height: 2.5rem;
+			min-width: 2.5rem;
+			flex-shrink: 0;
 			font-weight: 400;
 			font-size: 0.875rem;
 			color: $text-color;

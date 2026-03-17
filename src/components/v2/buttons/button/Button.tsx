@@ -8,10 +8,10 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 	const {
 		className = '',
 		title,
+		leftComponent: LeftComponent,
 		rightComponent: RightComponent,
 		variant = 'primary',
 		size = 'sm',
-		textSize = 'sm',
 		disabled,
 		onClick,
 		blurOnClick = true,
@@ -19,19 +19,29 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 		type = 'submit',
 	} = props;
 
-	const TEXT_SIZE_MAP = {
-		sm: '14',
-		md: '16',
-	} as const;
-
-	const resolvedTextSize = TEXT_SIZE_MAP[textSize];
+	const isIconOnly = !title && !!LeftComponent;
 
 	return (
 		<BaseButton
 			ref={ref}
 			type={type}
-			title={title}
-			component3={RightComponent ? <RightComponent /> : null}
+			title={
+				isIconOnly ? (
+					<LeftComponent className={styles[`icon-${size}`]} />
+				) : (
+					title || undefined
+				)
+			}
+			component1={
+				!isIconOnly && LeftComponent ? (
+					<LeftComponent className={styles[`icon-${size}`]} />
+				) : undefined
+			}
+			component3={
+				!isIconOnly && RightComponent ? (
+					<RightComponent className={styles[`icon-${size}`]} />
+				) : undefined
+			}
 			disabled={disabled}
 			onClick={onClick}
 			blurOnClick={blurOnClick}
@@ -40,7 +50,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 				styles.root,
 				styles[variant],
 				styles[`size-${size}`],
-				styles[`text-${resolvedTextSize}`],
+				isIconOnly && styles['icon-only'],
 				className
 			)}
 		/>

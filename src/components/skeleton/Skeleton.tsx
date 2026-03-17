@@ -5,11 +5,11 @@ import styles from './Skeleton.module.css';
 interface SkeletonProps {
 	height?: number | string | undefined;
 	width?: number | string | undefined;
-	variant: 'text' | 'circle' | 'rounded' | 'ellipse';
-	theme: 'light' | 'dark';
+	variant?: 'text' | 'circle' | 'rounded' | 'ellipse';
+	theme?: 'light' | 'dark';
 	className?: string | undefined;
-	style: CSSProperties;
-	noAnimation: boolean;
+	style?: CSSProperties;
+	noAnimation?: boolean;
 }
 
 const Skeleton = (props: SkeletonProps) => {

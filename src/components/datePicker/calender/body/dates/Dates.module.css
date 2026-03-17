@@ -17,6 +17,9 @@
      -moz-user-select: none;
           user-select: none;
 }
+.root > div.date-disabled {
+  pointer-events: none;
+}
 .root > div.minInRange {
   background-color: var(--secondary-color2);
   border-radius: 1.5rem 0rem 0rem 1.5rem;
@@ -136,10 +139,20 @@
 }
 .root > div.first-hovered {
   background: var(--background-color5);
-  border-radius: 0rem 1.5rem 1.5rem 0rem;
+  border-top-left-radius: 1.5rem;
+  border-bottom-left-radius: 1.5rem;
+  border-top-right-radius: 0rem;
+  border-bottom-right-radius: 0rem;
 }
 .root > div.first-hovered .date {
-  color: var(--secondary-color2);
+  background-color: var(--secondary-color2);
+  border-radius: 1.5rem;
+  color: var(--white);
+  min-height: 2.5rem;
+  min-width: 2.5rem;
+  height: 2.5rem;
+  width: 2.5rem;
+  flex-shrink: 0;
 }
 .root > div.first-hovered.today-selected {
   display: flex;
@@ -156,10 +169,20 @@
 }
 .root > div.last-hovered {
   background: var(--background-color5);
-  border-radius: 1.5rem 0rem 0rem 1.5rem;
+  border-top-left-radius: 0rem;
+  border-bottom-left-radius: 0rem;
+  border-top-right-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
 }
 .root > div.last-hovered .date {
-  color: var(--secondary-color2);
+  background-color: var(--secondary-color2);
+  border-radius: 1.5rem;
+  color: var(--white);
+  min-height: 2.5rem;
+  min-width: 2.5rem;
+  height: 2.5rem;
+  width: 2.5rem;
+  flex-shrink: 0;
 }
 .root > div.last-hovered.today-selected {
   display: flex;
@@ -211,6 +234,9 @@
   border-radius: 1.5rem;
   height: 2.5rem;
   width: 2.5rem;
+  min-height: 2.5rem;
+  min-width: 2.5rem;
+  flex-shrink: 0;
   font-weight: 400;
   font-size: 0.875rem;
   color: var(--text-color);

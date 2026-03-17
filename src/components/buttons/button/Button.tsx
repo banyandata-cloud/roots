@@ -1,9 +1,9 @@
 import { forwardRef } from 'react';
 import { classes } from '../../../utils/utils';
+import { Button as Buttonv2 } from '../../v2/buttons';
 import { BaseButton } from '../baseButton';
 import styles from './Button.module.css';
 import type { ButtonProps } from './types';
-import { Button as Buttonv2 } from '../../v2/buttons';
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 	const {
@@ -23,6 +23,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 		id,
 		textSize = 'sm',
 		v2 = false,
+		v2ButtonVariant,
+		dataTestId,
 	} = props;
 
 	if (v2) {
@@ -32,7 +34,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 				className={className}
 				title={title}
 				rightComponent={RightComponent}
-				variant={variant}
+				variant={v2ButtonVariant}
 				size={size}
 				textSize={textSize}
 				disabled={disabled}
@@ -60,6 +62,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 				onClick,
 				blurOnClick,
 				variant,
+				dataTestId,
 			}}
 			className={classes(
 				styles.root,

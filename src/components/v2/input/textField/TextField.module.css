@@ -91,7 +91,6 @@
   padding: 10px 16px;
   border: 1px solid #828282;
   margin-bottom: 4px;
-  transition: background-color 110ms cubic-bezier(0.2, 0, 0.38, 0.9), border-color 110ms cubic-bezier(0.2, 0, 0.38, 0.9), box-shadow 110ms cubic-bezier(0.2, 0, 0.38, 0.9), opacity 150ms cubic-bezier(0.2, 0, 0.38, 0.9);
 }
 .root label .input-wrapper:focus-within {
   outline: none;
@@ -145,19 +144,20 @@
 }
 .root label .input-wrapper > [data-elem=component2] .input {
   -moz-appearance: textfield;
+}
+.root label .input-wrapper > [data-elem=component2] .input::-webkit-outer-spin-button, .root label .input-wrapper > [data-elem=component2] .input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.root label .input-wrapper > [data-elem=component2] .input {
   flex: 1;
   border: none;
-  border-radius: 4px;
   font-weight: 400;
   color: var(--text-color);
   font-size: 14px;
   line-height: 18px !important;
   letter-spacing: 0.16px;
   background-color: #f7f7f7;
-}
-.root label .input-wrapper > [data-elem=component2] .input::-webkit-outer-spin-button, .root label .input-wrapper > [data-elem=component2] .input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
 }
 .root label .input-wrapper > [data-elem=component2] .input:focus {
   outline: none;
@@ -249,6 +249,9 @@
 }
 .root label .input-wrapper.border-none {
   border-width: 0px;
+}
+.root label .input-wrapper {
+  transition: background-color 110ms cubic-bezier(0.2, 0, 0.38, 0.9), border-color 110ms cubic-bezier(0.2, 0, 0.38, 0.9), box-shadow 110ms cubic-bezier(0.2, 0, 0.38, 0.9), opacity 150ms cubic-bezier(0.2, 0, 0.38, 0.9);
 }
 .root label .input-wrapper:active {
   transition-duration: 70ms;

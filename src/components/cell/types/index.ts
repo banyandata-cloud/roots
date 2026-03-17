@@ -7,7 +7,7 @@ import type { ComponentProps, JSX, ReactElement } from 'react';
  * - 'lg': Large size
  * - 'auto': Automatic sizing based on content
  */
-export type ElementSizeTypes = 'sm' | 'md' | 'lg' | 'auto';
+export type ElementSizeTypes = 'xs' | 'sm' | 'md' | 'lg' | 'auto';
 
 /**
  * Specifies the allowed root DOM element types for the cell.
@@ -79,6 +79,8 @@ export type BaseCellProps<
 	 * Border radius style for the cell. Can be 'none', 'default', 'round', or 'ellipse'.
 	 */
 	radius?: RadiusTypes;
+	dataTestId?: string | undefined;
+	title?: ReactElement | string | undefined;
 } & (TComponent2 extends true
 	? { component2: ReactElement | string }
 	: { component2?: ReactElement | undefined });

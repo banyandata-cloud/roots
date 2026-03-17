@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## Unreleased
 
+## 2.0.62 - 2026-03-11
+
+## 2.0.61 - 2026-03-05
+
+## 2.0.60 - 2026-02-09
+
+## 2.0.59 - 2026-02-07
+
 ## 2.0.57 - 2026-02-02
 
 ## 2.0.56 - 2026-01-29

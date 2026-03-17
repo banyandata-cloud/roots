@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, type AnimationGeneratorType } from 'framer-motion';
 import { useState, type ComponentType } from 'react';
 import { Prism as SyntaxHighlighter, type SyntaxHighlighterProps } from 'react-syntax-highlighter';
 import {
@@ -45,7 +45,7 @@ const tickIconProps = {
 		opacity: 0,
 	},
 	transition: {
-		type: 'spring',
+		type: 'spring' as AnimationGeneratorType,
 		stiffness: 400,
 		damping: 15,
 	},
