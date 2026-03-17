@@ -2,19 +2,31 @@
 
 .root {
 	@include flex(column, flex-start, stretch);
+	position: fixed;
 	top: 50%;
 	left: 50%;
-	right: auto;
-	bottom: auto;
 	transform: translate(-50%, -50%);
-	max-height: 100%;
 	height: 43.75rem;
-	width: 62.5rem;
-	position: fixed;
+	max-height: 100%;
 	background: $light-color3;
 	box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.13);
 	border-radius: 8px;
 	outline: none;
+	width: 96%;
+
+	@media (min-width: 768px) {
+		width: 72%;
+	}
+
+	@media (min-width: 1024px) {
+		width: 60%;
+		max-width: 84%;
+	}
+
+	@media (min-width: 1280px) {
+		width: 48%;
+		max-width: 62.5rem;
+	}
 
 	.body {
 		overflow-y: scroll;
@@ -60,10 +72,6 @@
 		padding: 0.25rem;
 		height: auto;
 		background: $light-color3;
-		box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.25);
-		&:hover {
-			box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25);
-		}
 
 		.icon {
 			width: 1.5rem;
