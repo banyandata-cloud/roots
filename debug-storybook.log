@@ -1,0 +1,23 @@
+[15:31:58.245] [INFO] storybook v10.2.19
+[15:31:58.491] [DEBUG] Getting package.json info for /Users/praveen/Desktop/Web Dev/roots/package.json...
+[15:31:58.910] [INFO] Starting...
+[15:31:59.037] [DEBUG] Starting preview..
+[15:31:59.045] [INFO] Addon-docs: using MDX3
+[15:31:59.062] [INFO] Using implicit CSS loaders
+[15:31:59.065] [WARN] Storybook support for Create React App is now a separate preset.
+[15:31:59.066] [WARN] To use the new preset, install `@storybook/preset-create-react-app` and add it to the list of `addons` in your `.storybook/main.js` config file.
+[15:31:59.067] [WARN] The built-in preset has been disabled in Storybook 6.0.
+[15:31:59.068] [ERROR] Failed to build the preview
+[15:31:59.071] [ERROR] [38;2;241;97;97mReferenceError: __dirname is not defined[39m
+    at Object.webpackFinal (file:///Users/praveen/Desktop/Web%20Dev/roots/.storybook/main.ts:20:37)
+    at file:///Users/praveen/Desktop/Web%20Dev/roots/node_modules/storybook/dist/_node-chunks/chunk-2RKLK4B2.js:10114:36
+    at async Object.webpack (file:///Users/praveen/Desktop/Web%20Dev/roots/node_modules/@storybook/react-webpack5/node_modules/@storybook/builder-webpack5/dist/presets/custom-webpack-preset.js:282:28)
+    at async starter (file:///Users/praveen/Desktop/Web%20Dev/roots/node_modules/@storybook/react-webpack5/node_modules/@storybook/builder-webpack5/dist/index.js:753:16)
+    at async Module.start (file:///Users/praveen/Desktop/Web%20Dev/roots/node_modules/@storybook/react-webpack5/node_modules/@storybook/builder-webpack5/dist/index.js:857:14)
+    at async storybookDevServer (file:///Users/praveen/Desktop/Web%20Dev/roots/node_modules/storybook/dist/core-server/index.js:7295:83)
+    at async buildOrThrow (file:///Users/praveen/Desktop/Web%20Dev/roots/node_modules/storybook/dist/core-server/index.js:4506:12)
+    at async buildDevStandalone (file:///Users/praveen/Desktop/Web%20Dev/roots/node_modules/storybook/dist/core-server/index.js:7710:41)
+    at async withTelemetry (file:///Users/praveen/Desktop/Web%20Dev/roots/node_modules/storybook/dist/_node-chunks/chunk-FJZ625UU.js:218:12)
+    at async dev (file:///Users/praveen/Desktop/Web%20Dev/roots/node_modules/storybook/dist/bin/core.js:2734:3)
+[15:31:59.072] [WARN] Broken build, fix the error above.
+You may need to refresh the browser.
