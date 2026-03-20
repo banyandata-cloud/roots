@@ -1,0 +1,101 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+import { useState } from 'react';
+import TableBody from './TableBody';
+
+<Meta title='Components/v2/Table/Body' parameters={{ options: { showToolbar: false } }} />
+
+export const Template = (args) => {
+	const [checkedRows, setCheckedRows] = useState([]);
+	return <TableBody {...args} checkedRows={checkedRows} setCheckedRows={setCheckedRows} />;
+};
+
+# Table Body
+
+> Container for table body rows.
+
+## Usage
+
+```js
+import { TableBody } from '@banyan_cloud/roots';
+```
+
+## Stories
+
+#### Default
+
+<Canvas>
+	<Story
+		name='Default'
+		args={{
+			headerData: [
+				{ title: 'Name', id: 'name', size: 'lg', flexible: true },
+				{ title: 'Gender', id: 'gender', size: 'md' },
+				{ title: 'Age', id: 'age', size: 'md' },
+				{ title: 'Designation', id: 'designation' },
+				{ title: 'State', id: 'state', size: 'sm' },
+			],
+			tableData: [
+				{
+					id: 1,
+					name: 'Aryan Dixit',
+					gender: 'M',
+					age: 27,
+					designation: 'UI Engineer',
+					state: 'Uttar Pradesh',
+				},
+				{
+					id: 2,
+					name: 'Pradeep Annadurai',
+					gender: 'M',
+					age: 24,
+					designation: 'UI Engineer',
+					state: 'Tamil Nadu',
+				},
+			],
+			uniqueKey: 'id',
+			onCheck: (rows) => console.log('checked:', rows),
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+## API
+
+### headerData
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Array</td>
+		<td>[]</td>
+	</tr>
+</table>
+
+### tableData
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>Array</td>
+		<td>[]</td>
+	</tr>
+</table>
+
+### rowHeight
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>String</td>
+		<td>"md"</td>
+	</tr>
+</table>

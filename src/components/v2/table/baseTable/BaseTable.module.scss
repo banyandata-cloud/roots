@@ -1,0 +1,18 @@
+@import '../../../../styles/_index';
+
+.root {
+	@include flex(column, flex-start, stretch);
+	background: $light-color3;
+	overflow: auto;
+	@include customScrollBar;
+	&.no-scroll {
+		overflow: hidden;
+	}
+
+	&.hide-column-lines {
+		[data-elem='table-header'] [data-elem='base-cell'],
+		[data-elem='table-body'] [data-elem='base-cell'] {
+			border-right: none !important;
+		}
+	}
+}

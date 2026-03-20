@@ -36,7 +36,6 @@ import { Tooltip } from '../../tooltip';
 import { TextFieldv2 } from '../textField';
 import styles from './Dropdown.module.css';
 import type { DropdownItemProps } from './dropdown-item/types';
-import { Dropdownv3 } from './v2';
 
 type FeedbackType = 'success' | 'warning' | 'info' | 'error';
 interface Feedback {
@@ -134,7 +133,6 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(props,
 		caretAsUpDown,
 		search,
 		hideValueOnSelect,
-		v2 = false,
 	} = props;
 
 	const [open, setOpen] = useState(false);
@@ -357,10 +355,6 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(props,
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [open, multi, value]);
-
-	if (v2) {
-		return <Dropdownv3 {...props} />;
-	}
 
 	const onSelectAll = (event: React.MouseEvent<HTMLElement>, selected: boolean) => {
 		const nativeEvent = event.nativeEvent as Event;
