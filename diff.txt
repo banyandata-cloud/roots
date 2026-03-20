@@ -1,0 +1,3172 @@
+diff --git a/debug-storybook.log b/debug-storybook.log
+new file mode 100644
+index 00000000..52bf85f5
+--- /dev/null
++++ b/debug-storybook.log
+@@ -0,0 +1,23 @@
++[15:31:58.245] [INFO] storybook v10.2.19
++[15:31:58.491] [DEBUG] Getting package.json info for /Users/praveen/Desktop/Web Dev/roots/package.json...
++[15:31:58.910] [INFO] Starting...
++[15:31:59.037] [DEBUG] Starting preview..
++[15:31:59.045] [INFO] Addon-docs: using MDX3
++[15:31:59.062] [INFO] Using implicit CSS loaders
++[15:31:59.065] [WARN] Storybook support for Create React App is now a separate preset.
++[15:31:59.066] [WARN] To use the new preset, install `@storybook/preset-create-react-app` and add it to the list of `addons` in your `.storybook/main.js` config file.
++[15:31:59.067] [WARN] The built-in preset has been disabled in Storybook 6.0.
++[15:31:59.068] [ERROR] Failed to build the preview
++[15:31:59.071] [ERROR] [38;2;241;97;97mReferenceError: __dirname is not defined[39m
++    at Object.webpackFinal (file:///Users/praveen/Desktop/Web%20Dev/roots/.storybook/main.ts:20:37)
++    at file:///Users/praveen/Desktop/Web%20Dev/roots/node_modules/storybook/dist/_node-chunks/chunk-2RKLK4B2.js:10114:36
++    at async Object.webpack (file:///Users/praveen/Desktop/Web%20Dev/roots/node_modules/@storybook/react-webpack5/node_modules/@storybook/builder-webpack5/dist/presets/custom-webpack-preset.js:282:28)
++    at async starter (file:///Users/praveen/Desktop/Web%20Dev/roots/node_modules/@storybook/react-webpack5/node_modules/@storybook/builder-webpack5/dist/index.js:753:16)
++    at async Module.start (file:///Users/praveen/Desktop/Web%20Dev/roots/node_modules/@storybook/react-webpack5/node_modules/@storybook/builder-webpack5/dist/index.js:857:14)
++    at async storybookDevServer (file:///Users/praveen/Desktop/Web%20Dev/roots/node_modules/storybook/dist/core-server/index.js:7295:83)
++    at async buildOrThrow (file:///Users/praveen/Desktop/Web%20Dev/roots/node_modules/storybook/dist/core-server/index.js:4506:12)
++    at async buildDevStandalone (file:///Users/praveen/Desktop/Web%20Dev/roots/node_modules/storybook/dist/core-server/index.js:7710:41)
++    at async withTelemetry (file:///Users/praveen/Desktop/Web%20Dev/roots/node_modules/storybook/dist/_node-chunks/chunk-FJZ625UU.js:218:12)
++    at async dev (file:///Users/praveen/Desktop/Web%20Dev/roots/node_modules/storybook/dist/bin/core.js:2734:3)
++[15:31:59.072] [WARN] Broken build, fix the error above.
++You may need to refresh the browser.
+\ No newline at end of file
+diff --git a/src/components/v2/stepper/Stepper.module.css b/src/components/v2/stepper/Stepper.module.css
+new file mode 100644
+index 00000000..33654e4b
+--- /dev/null
++++ b/src/components/v2/stepper/Stepper.module.css
+@@ -0,0 +1,263 @@
++.root.horizontal {
++  display: flex;
++  flex-direction: row;
++  justify-content: flex-start;
++  align-items: flex-start;
++  gap: 1rem;
++}
++.root.vertical {
++  display: flex;
++  flex-direction: column;
++  justify-content: flex-start;
++  align-items: flex-start;
++  height: 100%;
++  gap: 0.5rem;
++}
++
++.stepper {
++  display: flex;
++  width: 100%;
++  max-width: 1000px;
++  margin: 0 auto;
++}
++.stepper--horizontal {
++  flex-direction: row;
++  justify-content: space-between;
++}
++.stepper--vertical {
++  flex-direction: column;
++}
++.stepper--progressBar {
++  gap: 33px;
++}
++
++.stepWrapper {
++  display: flex;
++  flex: 1;
++  position: relative;
++}
++.stepper--horizontal .stepWrapper {
++  flex-direction: column;
++  align-items: center;
++  min-width: 160px;
++  text-align: center;
++}
++.stepper--vertical .stepWrapper {
++  flex-direction: row;
++  align-items: stretch;
++  text-align: left;
++}
++
++.verticalIconCol {
++  display: flex;
++  flex-direction: column;
++  align-items: center;
++  flex-shrink: 0;
++  align-self: stretch;
++}
++
++.verticalLine {
++  flex: 1;
++  min-height: 24px;
++  width: 2px;
++  margin-top: 4px;
++  margin-bottom: 4px;
++}
++.verticalLine--solid {
++  background-color: #e9eaeb;
++}
++.verticalLine--dotted {
++  width: 0;
++  border-left: 2px dotted #e9eaeb;
++}
++.verticalLine--completed.verticalLine--solid {
++  background-color: #1570ef;
++}
++.verticalLine--completed.verticalLine--dotted {
++  border-left-color: #e9eaeb;
++}
++
++.iconSection {
++  position: relative;
++  display: flex;
++  align-items: center;
++  justify-content: center;
++}
++.stepper--horizontal .iconSection {
++  width: 100%;
++  margin-bottom: 12px;
++}
++.stepper--horizontal .iconSection.hasLine::after {
++  content: "";
++  position: absolute;
++  z-index: 1;
++  top: 50%;
++  transform: translateY(-50%);
++  pointer-events: none;
++  left: calc(50% + 12px);
++  right: calc(-50% + 12px);
++  height: 2px;
++}
++.stepper--horizontal .iconSection:has(.stepIcon--md).hasLine::after {
++  left: calc(50% + 16px);
++  right: calc(-50% + 16px);
++}
++.stepper--horizontal .iconSection.isIcon.hasLine::after {
++  background-color: #e9eaeb;
++}
++.stepper--horizontal .iconSection.isIcon.line--completed::after {
++  background-color: #1570ef;
++}
++.stepper--horizontal .iconSection.isNumbered.hasLine::after {
++  border-top: 2px dotted #e9eaeb;
++  background-color: transparent;
++}
++.stepper--horizontal .iconSection.isNumbered.line--completed::after {
++  border-top-color: #e9eaeb;
++}
++
++.stepIcon {
++  position: relative;
++  z-index: 2;
++  display: inline-flex;
++  align-items: center;
++  justify-content: center;
++  background-color: #ffffff;
++  border-radius: 50%;
++  overflow: visible;
++  flex-shrink: 0;
++}
++.stepIcon--sm {
++  width: 24px;
++  height: 24px;
++}
++.stepIcon--md {
++  width: 32px;
++  height: 32px;
++}
++
++.isIcon .stepIcon--current {
++  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #1570ef;
++}
++
++.stepper--vertical .stepIcon--current {
++  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #1570ef;
++}
++
++.progressBarWrapper {
++  display: flex;
++  flex-direction: column;
++  align-items: flex-start;
++  flex: 1;
++  min-width: 0;
++}
++
++.progressBarTrack {
++  width: 100%;
++  border-top: 4px solid #e9eaeb;
++}
++.progressBarTrack--sm {
++  padding-top: 12px;
++}
++.progressBarTrack--md {
++  padding-top: 16px;
++}
++.progressBarTrack--active {
++  border-top-color: #1570ef;
++}
++.progressBarTrack--completed {
++  border-top-color: #1570ef;
++}
++
++.content {
++  display: flex;
++  flex-direction: column;
++  gap: 0;
++}
++.stepper--horizontal .content {
++  width: 100%;
++  padding: 0 12px;
++  align-items: center;
++  text-align: center;
++}
++.stepper--vertical .content {
++  width: 100%;
++  align-items: flex-start;
++  padding-bottom: 32px;
++}
++.stepper--vertical .content--sm {
++  padding-left: 12px;
++}
++.stepper--vertical .content--md {
++  padding-left: 16px;
++}
++.content--sm .label,
++.content--sm .description {
++  font-size: 14px;
++  line-height: 20px;
++}
++.content--md .label,
++.content--md .description {
++  font-size: 16px;
++  line-height: 24px;
++}
++.content--icon .label--incomplete,
++.content--icon .description--incomplete {
++  color: #717680;
++}
++.content--icon .label--current,
++.content--icon .description--current {
++  color: #1570ef;
++}
++.content--icon .label--completed,
++.content--icon .description--completed {
++  color: #181d27;
++}
++.content--noIcon .label--incomplete,
++.content--noIcon .description--incomplete {
++  color: #717680;
++}
++.content--noIcon .label--current,
++.content--noIcon .description--current {
++  color: #181d27;
++}
++.content--noIcon .label--completed,
++.content--noIcon .description--completed {
++  color: #181d27;
++}
++.content--progressBar {
++  padding: 0;
++  align-items: flex-start !important;
++  text-align: left !important;
++}
++.content--progressBar .label--incomplete,
++.content--progressBar .description--incomplete {
++  color: #717680;
++}
++.content--progressBar .label--current,
++.content--progressBar .description--current {
++  color: #1570ef;
++}
++.content--progressBar .label--completed,
++.content--progressBar .description--completed {
++  color: #181d27;
++}
++
++.label {
++  font-family: "Jakarta", sans-serif;
++  font-weight: 600;
++  color: #181d27;
++}
++.stepper--horizontal .label {
++  white-space: nowrap;
++}
++.stepper--vertical .label {
++  white-space: normal;
++}
++
++.description {
++  font-family: "Jakarta", sans-serif;
++  font-weight: 400;
++  color: #717680;
++  margin-top: 0;
++}/*# sourceMappingURL=Stepper.module.css.map */
+\ No newline at end of file
+diff --git a/src/components/v2/stepper/Stepper.module.scss b/src/components/v2/stepper/Stepper.module.scss
+new file mode 100644
+index 00000000..df8850ea
+--- /dev/null
++++ b/src/components/v2/stepper/Stepper.module.scss
+@@ -0,0 +1,339 @@
++@import '../../../styles';
++
++$primary-blue: #1570ef;
++$gray-200: #e9eaeb;
++$border-secondary: #e9eaeb;
++$gray-500: #717680;
++$gray-900: #181d27;
++$white: #ffffff;
++
++$text-heading: #414651;
++$below-text: #535862;
++$text-heading2: #175cd3;
++$below-text2: #1570ef;
++
++$space-00: 0px;
++$space-02: 2px;
++$space-04: 4px;
++$space-08: 8px;
++$space-12: 12px;
++$space-16: 16px;
++$space-24: 24px;
++$space-32: 32px;
++$space-33: 33px;
++$space-48: 48px;
++
++.root {
++	&.horizontal {
++		@include flex(row, flex-start, flex-start);
++		gap: 1rem;
++	}
++	&.vertical {
++		@include flex(column, flex-start, flex-start);
++		height: 100%;
++		gap: 0.5rem;
++	}
++}
++
++.stepper {
++	display: flex;
++	width: 100%;
++	max-width: 1000px;
++	margin: 0 auto;
++
++	&--horizontal {
++		flex-direction: row;
++		justify-content: space-between;
++	}
++
++	&--vertical {
++		flex-direction: column;
++	}
++
++	&--progressBar {
++		gap: $space-33;
++	}
++}
++
++.stepWrapper {
++	display: flex;
++	flex: 1;
++	position: relative;
++
++	.stepper--horizontal & {
++		flex-direction: column;
++		align-items: center;
++		min-width: 160px;
++		text-align: center;
++		gap: $space-02;
++	}
++
++	.stepper--vertical & {
++		flex-direction: row;
++		align-items: stretch;
++		text-align: left;
++	}
++}
++
++.verticalIconCol {
++	display: flex;
++	flex-direction: column;
++	align-items: center;
++	flex-shrink: 0;
++	align-self: stretch;
++}
++
++.verticalLine {
++	flex: 1;
++	min-height: $space-24;
++	width: $space-02;
++	margin-top: $space-04;
++	margin-bottom: $space-04;
++
++	&--solid {
++		background-color: $border-secondary;
++	}
++
++	&--dotted {
++		width: $space-00;
++		border-left: $space-02 dotted $border-secondary;
++	}
++
++	&--completed {
++		&.verticalLine--solid {
++			background-color: $primary-blue;
++		}
++		&.verticalLine--dotted {
++			border-left-color: $border-secondary;
++		}
++	}
++}
++
++.iconSection {
++	position: relative;
++	display: flex;
++	align-items: center;
++	justify-content: center;
++
++	.stepper--horizontal & {
++		width: 100%;
++		margin-bottom: $space-12;
++
++		&.hasLine::after {
++			content: '';
++			position: absolute;
++			z-index: 1;
++			top: 50%;
++			transform: translateY(-50%);
++			pointer-events: none;
++			left: calc(50% + #{$space-12});
++			right: calc(-50% + #{$space-12});
++			height: $space-02;
++		}
++
++		&:has(.stepIcon--md).hasLine::after {
++			left: calc(50% + #{$space-16});
++			right: calc(-50% + #{$space-16});
++		}
++
++		&.isIcon.hasLine::after {
++			background-color: $gray-200;
++		}
++		&.isIcon.line--completed::after {
++			background-color: $primary-blue;
++		}
++
++		&.isNumbered.hasLine::after {
++			border-top: $space-02 dotted $gray-200;
++			background-color: transparent;
++		}
++		&.isNumbered.line--completed::after {
++			border-top-color: $gray-200;
++		}
++	}
++}
++
++.stepIcon {
++	position: relative;
++	z-index: 2;
++	display: inline-flex;
++	align-items: center;
++	justify-content: center;
++	background-color: $white;
++	border-radius: 50%;
++	overflow: visible;
++	flex-shrink: 0;
++
++	&--sm {
++		width: $space-24;
++		height: $space-24;
++	}
++	&--md {
++		width: $space-32;
++		height: $space-32;
++	}
++}
++
++.isIcon {
++	.stepIcon--current {
++		box-shadow:
++			0 0 0 $space-02 $white,
++			0 0 0 $space-04 $primary-blue;
++	}
++}
++
++.stepper--vertical {
++	.stepIcon--current {
++		box-shadow:
++			0 0 0 $space-02 $white,
++			0 0 0 $space-04 $primary-blue;
++	}
++}
++
++.progressBarWrapper {
++	display: flex;
++	flex-direction: column;
++	align-items: flex-start;
++	flex: 1;
++	min-width: 0;
++	gap: $space-02;
++
++	.content {
++		padding: $space-00 !important;
++	}
++}
++
++.progressBarTrack {
++	width: 100%;
++	border-top: $space-04 solid $gray-200;
++
++	&--sm {
++		padding-top: $space-12;
++	}
++	&--md {
++		padding-top: $space-16;
++	}
++	&--active {
++		border-top-color: $primary-blue;
++	}
++	&--completed {
++		border-top-color: $primary-blue;
++	}
++}
++
++.content {
++	display: flex;
++	flex-direction: column;
++	gap: $space-00;
++
++	.stepper--horizontal & {
++		width: 100%;
++		padding: $space-00 $space-12;
++		align-items: center;
++		text-align: center;
++	}
++
++	.stepper--vertical & {
++		width: 100%;
++		align-items: flex-start;
++		padding-bottom: $space-32;
++	}
++
++	.stepper--vertical &--sm {
++		padding-left: $space-12;
++	}
++
++	.stepper--vertical &--md {
++		padding-left: $space-16;
++	}
++
++	&--sm {
++		.label,
++		.description {
++			font-size: 14px;
++			line-height: 20px;
++		}
++	}
++	&--md {
++		.label,
++		.description {
++			font-size: 16px;
++			line-height: 24px;
++		}
++	}
++
++	&--icon {
++		.label--incomplete,
++		.label--completed {
++			color: $text-heading;
++		}
++		.description--incomplete,
++		.description--completed {
++			color: $below-text;
++		}
++		.label--current {
++			color: $text-heading2;
++		}
++		.description--current {
++			color: $below-text2;
++		}
++	}
++
++	&--noIcon {
++		.label--incomplete,
++		.description--incomplete {
++			color: $text-heading;
++			opacity: 0.6;
++		}
++		.label--current,
++		.label--completed {
++			color: $text-heading;
++			opacity: 1;
++		}
++		.description--current,
++		.description--completed {
++			color: $below-text;
++			opacity: 1;
++		}
++	}
++
++	&--progressBar {
++		padding: $space-00;
++		align-items: flex-start !important;
++		text-align: left !important;
++
++		.label--incomplete,
++		.description--incomplete {
++			color: $gray-500;
++		}
++		.label--current,
++		.description--current {
++			color: $primary-blue;
++		}
++		.label--completed,
++		.description--completed {
++			color: $gray-900;
++		}
++	}
++}
++
++.label {
++	font-family: 'Jakarta', sans-serif;
++	font-weight: 600;
++	color: $text-heading;
++
++	.stepper--horizontal & {
++		white-space: nowrap;
++	}
++
++	.stepper--vertical & {
++		white-space: normal;
++	}
++}
++
++.description {
++	font-family: 'Jakarta', sans-serif;
++	font-weight: 400;
++	color: $below-text;
++	margin-top: $space-00;
++}
+diff --git a/src/components/v2/stepper/Stepper.stories.mdx b/src/components/v2/stepper/Stepper.stories.mdx
+new file mode 100644
+index 00000000..9163ca8b
+--- /dev/null
++++ b/src/components/v2/stepper/Stepper.stories.mdx
+@@ -0,0 +1,638 @@
++import { Canvas, Meta, Story } from '@storybook/addon-docs';
++import { ThemedContainer } from '../../helpers';
++import Stepper from './Stepper';
++import StepperInteractive from './StepperInteractive';
++
++<Meta title='Components/Input/v2/Stepper' />
++
++export const Template = (args) => (
++	<ThemedContainer theme='light'>
++		<Stepper {...args} />
++	</ThemedContainer>
++);
++
++export const InteractiveTemplate = (args) => (
++	<ThemedContainer theme='light'>
++		<StepperInteractive {...args} />
++	</ThemedContainer>
++);
++
++# Stepper
++
++---
++
++## Horizontal - Icon
++
++### Icon (sm)
++
++<Canvas>
++	<Story
++		name='Icon-sm'
++		args={{
++			size: 'sm',
++			variant: 'icon',
++			orientation: 'horizontal',
++			steps: [
++				{
++					label: 'Your details',
++					description: 'Please provide your name and email',
++					status: 'completed',
++				},
++				{
++					label: 'Your details',
++					description: 'Please provide your name and email',
++					status: 'current',
++				},
++				{
++					label: 'Your details',
++					description: 'Please provide your name and email',
++					status: 'incomplete',
++				},
++				{
++					label: 'Your details',
++					description: 'Please provide your name and email',
++					status: 'incomplete',
++				},
++			],
++		}}>
++		{Template.bind({})}
++	</Story>
++</Canvas>
++
++### Icon (md)
++
++<Canvas>
++	<Story
++		name='Icon-md'
++		args={{
++			size: 'md',
++			variant: 'icon',
++			orientation: 'horizontal',
++			steps: [
++				{
++					label: 'Your details',
++					description: 'Please provide your name and email',
++					status: 'completed',
++				},
++				{
++					label: 'Your details',
++					description: 'Please provide your name and email',
++					status: 'current',
++				},
++				{
++					label: 'Your details',
++					description: 'Please provide your name and email',
++					status: 'incomplete',
++				},
++				{
++					label: 'Your details',
++					description: 'Please provide your name and email',
++					status: 'incomplete',
++				},
++			],
++		}}>
++		{Template.bind({})}
++	</Story>
++</Canvas>
++
++---
++
++## Horizontal - Number
++
++### Number (sm)
++
++<Canvas>
++	<Story
++		name='Number-sm'
++		args={{
++			size: 'sm',
++			variant: 'noIcon',
++			orientation: 'horizontal',
++			steps: [
++				{
++					label: 'Your details',
++					description: 'Please provide your name and email',
++					status: 'completed',
++					step: 1,
++				},
++				{
++					label: 'Your details',
++					description: 'Please provide your name and email',
++					status: 'current',
++					step: 2,
++				},
++				{
++					label: 'Your details',
++					description: 'Please provide your name and email',
++					status: 'incomplete',
++					step: 3,
++				},
++				{
++					label: 'Your details',
++					description: 'Please provide your name and email',
++					status: 'incomplete',
++					step: 4,
++				},
++			],
++		}}>
++		{Template.bind({})}
++	</Story>
++</Canvas>
++
++### Number (md)
++
++<Canvas>
++	<Story
++		name='Number-md'
++		args={{
++			size: 'md',
++			variant: 'noIcon',
++			orientation: 'horizontal',
++			steps: [
++				{
++					label: 'Your details',
++					description: 'Please provide your name and email',
++					status: 'completed',
++					step: 1,
++				},
++				{
++					label: 'Your details',
++					description: 'Please provide your name and email',
++					status: 'current',
++					step: 2,
++				},
++				{
++					label: 'Your details',
++					description: 'Please provide your name and email',
++					status: 'incomplete',
++					step: 3,
++				},
++				{
++					label: 'Your details',
++					description: 'Please provide your name and email',
++					status: 'incomplete',
++					step: 4,
++				},
++			],
++		}}>
++		{Template.bind({})}
++	</Story>
++</Canvas>
++
++---
++
++## Horizontal - Progress Bar
++
++### Progress Bar (sm)
++
++<Canvas>
++	<Story
++		name='ProgressBar-sm'
++		args={{
++			size: 'sm',
++			variant: 'progressBar',
++			orientation: 'horizontal',
++			steps: [
++				{
++					label: 'Your details',
++					description: 'Please provide your name and email',
++					status: 'completed',
++				},
++				{
++					label: 'Your details',
++					description: 'Please provide your name and email',
++					status: 'current',
++				},
++				{
++					label: 'Your details',
++					description: 'Please provide your name and email',
++					status: 'incomplete',
++				},
++				{
++					label: 'Your details',
++					description: 'Please provide your name and email',
++					status: 'incomplete',
++				},
++			],
++		}}>
++		{Template.bind({})}
++	</Story>
++</Canvas>
++
++### Progress Bar (md)
++
++<Canvas>
++	<Story
++		name='ProgressBar-md'
++		args={{
++			size: 'md',
++			variant: 'progressBar',
++			orientation: 'horizontal',
++			steps: [
++				{
++					label: 'Your details',
++					description: 'Please provide your name and email',
++					status: 'completed',
++				},
++				{
++					label: 'Your details',
++					description: 'Please provide your name and email',
++					status: 'current',
++				},
++				{
++					label: 'Your details',
++					description: 'Please provide your name and email',
++					status: 'incomplete',
++				},
++				{
++					label: 'Your details',
++					description: 'Please provide your name and email',
++					status: 'incomplete',
++				},
++			],
++		}}>
++		{Template.bind({})}
++	</Story>
++</Canvas>
++
++---
++
++## Vertical - Icon
++
++### Icon Incomplete (sm)
++
++<Canvas>
++	<Story
++		name='Icon-Vertical-Incomplete-sm'
++		args={{
++			size: 'sm',
++			variant: 'icon',
++			orientation: 'vertical',
++			steps: [
++				{
++					label: 'Your details',
++					description: 'Please provide your name and email',
++					status: 'incomplete',
++				},
++			],
++		}}>
++		{Template.bind({})}
++	</Story>
++</Canvas>
++
++### Icon Incomplete (md)
++
++<Canvas>
++	<Story
++		name='Icon-Vertical-Incomplete-md'
++		args={{
++			size: 'md',
++			variant: 'icon',
++			orientation: 'vertical',
++			steps: [
++				{
++					label: 'Your details',
++					description: 'Please provide your name and email',
++					status: 'incomplete',
++				},
++			],
++		}}>
++		{Template.bind({})}
++	</Story>
++</Canvas>
++
++### Icon Current (sm)
++
++<Canvas>
++	<Story
++		name='Icon-Vertical-Current-sm'
++		args={{
++			size: 'sm',
++			variant: 'icon',
++			orientation: 'vertical',
++			steps: [
++				{
++					label: 'Your details',
++					description: 'Please provide your name and email',
++					status: 'current',
++				},
++			],
++		}}>
++		{Template.bind({})}
++	</Story>
++</Canvas>
++
++### Icon Current (md)
++
++<Canvas>
++	<Story
++		name='Icon-Vertical-Current-md'
++		args={{
++			size: 'md',
++			variant: 'icon',
++			orientation: 'vertical',
++			steps: [
++				{
++					label: 'Your details',
++					description: 'Please provide your name and email',
++					status: 'current',
++				},
++			],
++		}}>
++		{Template.bind({})}
++	</Story>
++</Canvas>
++
++### Icon Completed (sm)
++
++<Canvas>
++	<Story
++		name='Icon-Vertical-Completed-sm'
++		args={{
++			size: 'sm',
++			variant: 'icon',
++			orientation: 'vertical',
++			steps: [
++				{
++					label: 'Your details',
++					description: 'Please provide your name and email',
++					status: 'completed',
++				},
++			],
++		}}>
++		{Template.bind({})}
++	</Story>
++</Canvas>
++
++### Icon Completed (md)
++
++<Canvas>
++	<Story
++		name='Icon-Vertical-Completed-md'
++		args={{
++			size: 'md',
++			variant: 'icon',
++			orientation: 'vertical',
++			steps: [
++				{
++					label: 'Your details',
++					description: 'Please provide your name and email',
++					status: 'completed',
++				},
++			],
++		}}>
++		{Template.bind({})}
++	</Story>
++</Canvas>
++
++---
++
++## Vertical - Number
++
++### Number Incomplete (sm)
++
++<Canvas>
++	<Story
++		name='Number-Vertical-Incomplete-sm'
++		args={{
++			size: 'sm',
++			variant: 'noIcon',
++			orientation: 'vertical',
++			steps: [
++				{
++					label: 'Your details',
++					description: 'Please provide your name and email',
++					status: 'incomplete',
++					step: 1,
++				},
++			],
++		}}>
++		{Template.bind({})}
++	</Story>
++</Canvas>
++
++### Number Incomplete (md)
++
++<Canvas>
++	<Story
++		name='Number-Vertical-Incomplete-md'
++		args={{
++			size: 'md',
++			variant: 'noIcon',
++			orientation: 'vertical',
++			steps: [
++				{
++					label: 'Your details',
++					description: 'Please provide your name and email',
++					status: 'incomplete',
++					step: 1,
++				},
++			],
++		}}>
++		{Template.bind({})}
++	</Story>
++</Canvas>
++
++### Number Current (sm)
++
++<Canvas>
++	<Story
++		name='Number-Vertical-Current-sm'
++		args={{
++			size: 'sm',
++			variant: 'noIcon',
++			orientation: 'vertical',
++			steps: [
++				{
++					label: 'Your details',
++					description: 'Please provide your name and email',
++					status: 'current',
++					step: 1,
++				},
++			],
++		}}>
++		{Template.bind({})}
++	</Story>
++</Canvas>
++
++### Number Current (md)
++
++<Canvas>
++	<Story
++		name='Number-Vertical-Current-md'
++		args={{
++			size: 'md',
++			variant: 'noIcon',
++			orientation: 'vertical',
++			steps: [
++				{
++					label: 'Your details',
++					description: 'Please provide your name and email',
++					status: 'current',
++					step: 1,
++				},
++			],
++		}}>
++		{Template.bind({})}
++	</Story>
++</Canvas>
++
++### Number Completed (sm)
++
++<Canvas>
++	<Story
++		name='Number-Vertical-Completed-sm'
++		args={{
++			size: 'sm',
++			variant: 'noIcon',
++			orientation: 'vertical',
++			steps: [
++				{
++					label: 'Your details',
++					description: 'Please provide your name and email',
++					status: 'completed',
++					step: 1,
++				},
++			],
++		}}>
++		{Template.bind({})}
++	</Story>
++</Canvas>
++
++### Number Completed
++
++<Canvas>
++	<Story
++		name='Number-Vertical-Completed-md'
++		args={{
++			size: 'md',
++			variant: 'noIcon',
++			orientation: 'vertical',
++			steps: [
++				{
++					label: 'Your details',
++					description: 'Please provide your name and email',
++					status: 'completed',
++					step: 1,
++				},
++			],
++		}}>
++		{Template.bind({})}
++	</Story>
++</Canvas>
++
++---
++
++## Interactive
++
++### Icon
++
++<Canvas>
++	<Story
++		name='Interactive-Icon-sm'
++		args={{
++			size: 'sm',
++			variant: 'icon',
++			orientation: 'horizontal',
++			steps: [
++				{
++					label: 'Your details',
++					description: 'Please provide your name and email',
++					status: 'current',
++				},
++				{
++					label: 'Your details',
++					description: 'Please provide your name and email',
++					status: 'incomplete',
++				},
++				{
++					label: 'Your details',
++					description: 'Please provide your name and email',
++					status: 'incomplete',
++				},
++				{
++					label: 'Your details',
++					description: 'Please provide your name and email',
++					status: 'incomplete',
++				},
++			],
++		}}>
++		{InteractiveTemplate.bind({})}
++	</Story>
++</Canvas>
++
++### Number
++
++<Canvas>
++	<Story
++		name='Interactive-Number-sm'
++		args={{
++			size: 'sm',
++			variant: 'noIcon',
++			orientation: 'horizontal',
++			steps: [
++				{
++					label: 'Your details',
++					description: 'Please provide your name and email',
++					status: 'current',
++					step: 1,
++				},
++				{
++					label: 'Your details',
++					description: 'Please provide your name and email',
++					status: 'incomplete',
++					step: 2,
++				},
++				{
++					label: 'Your details',
++					description: 'Please provide your name and email',
++					status: 'incomplete',
++					step: 3,
++				},
++				{
++					label: 'Your details',
++					description: 'Please provide your name and email',
++					status: 'incomplete',
++					step: 4,
++				},
++			],
++		}}>
++		{InteractiveTemplate.bind({})}
++	</Story>
++</Canvas>
++
++### Progress Bar
++
++<Canvas>
++	<Story
++		name='Interactive-ProgressBar-sm'
++		args={{
++			size: 'sm',
++			variant: 'progressBar',
++			orientation: 'horizontal',
++			steps: [
++				{
++					label: 'Your details',
++					description: 'Please provide your name and email',
++					status: 'current',
++				},
++				{
++					label: 'Your details',
++					description: 'Please provide your name and email',
++					status: 'incomplete',
++				},
++				{
++					label: 'Your details',
++					description: 'Please provide your name and email',
++					status: 'incomplete',
++				},
++				{
++					label: 'Your details',
++					description: 'Please provide your name and email',
++					status: 'incomplete',
++				},
++			],
++		}}>
++		{InteractiveTemplate.bind({})}
++	</Story>
++</Canvas>
+diff --git a/src/components/v2/stepper/Stepper.tsx b/src/components/v2/stepper/Stepper.tsx
+new file mode 100644
+index 00000000..c831adc2
+--- /dev/null
++++ b/src/components/v2/stepper/Stepper.tsx
+@@ -0,0 +1,261 @@
++import React from 'react';
++import { classes } from '../../../utils';
++import styles from './Stepper.module.scss';
++import Step from './step/Step';
++import type { StepperProps, StepperSize, StepperVariant, StepStatus } from './types';
++
++import CompletedIconMd from './assets/Icons-md/CompletedIconMd';
++import CurrentIconMd from './assets/Icons-md/CurrentIconMd';
++import IncompleteIconMd from './assets/Icons-md/IncompleteIconMd';
++import CompletedIconSm from './assets/Icons-sm/CompletedIconSm';
++import CurrentIconSm from './assets/Icons-sm/CurrentIconSm';
++import IncompleteIconSm from './assets/Icons-sm/IncompleteIconSm';
++import CompletedNoIconMd from './assets/NumberIcon-md/CompletedNoIconMd';
++import CurrentNoIconMd from './assets/NumberIcon-md/CurrentNoIconMd';
++import IncompleteNoIconMd from './assets/NumberIcon-md/IncompleteNoIconMd';
++import CompletedNoIconSm from './assets/NumberIcon-sm/CompletedNoIconSm';
++import CurrentNoIconSm from './assets/NumberIcon-sm/CurrentNoIconSm';
++import IncompleteNoIconSm from './assets/NumberIcon-sm/IncompleteNoIconSm';
++
++const resolveIcon = (
++	status: StepStatus,
++	size: StepperSize,
++	variant: StepperVariant,
++	step?: number
++) => {
++	const isSm = size === 'sm';
++	if (variant === 'icon') {
++		if (status === 'incomplete') return isSm ? <IncompleteIconSm /> : <IncompleteIconMd />;
++		if (status === 'current') return isSm ? <CurrentIconSm /> : <CurrentIconMd />;
++		return isSm ? <CompletedIconSm /> : <CompletedIconMd />;
++	}
++	if (status === 'incomplete')
++		return isSm ? <IncompleteNoIconSm step={step} /> : <IncompleteNoIconMd step={step} />;
++	if (status === 'current')
++		return isSm ? <CurrentNoIconSm step={step} /> : <CurrentNoIconMd step={step} />;
++	return isSm ? <CompletedNoIconSm /> : <CompletedNoIconMd />;
++};
++
++const Stepper: React.FC<StepperProps> = ({
++	steps,
++	size = 'sm',
++	variant = 'icon',
++	legacySteps,
++	orientation = 'horizontal',
++	className,
++	style,
++}) => {
++	if (legacySteps && legacySteps.length > 0) {
++		return (
++			<div className={classes(styles.root, styles[orientation], className)}>
++				{legacySteps.map((step, index) => (
++					<Step
++						key={typeof step.title === 'string' ? step.title : index.toString()}
++						{...step}
++						index={index}
++						total={legacySteps.length}
++						orientation={orientation}
++					/>
++				))}
++			</div>
++		);
++	}
++
++	if (variant === 'progressBar') {
++		return (
++			<div
++				className={[
++					styles.stepper,
++					styles['stepper--horizontal'],
++					styles['stepper--progressBar'],
++					className,
++				]
++					.filter(Boolean)
++					.join(' ')}
++				style={style}>
++				{steps?.map((step, index) => (
++					<div key={index} className={styles.progressBarWrapper}>
++						<div
++							className={[
++								styles.progressBarTrack,
++								styles[`progressBarTrack--${size}`],
++								step.status === 'completed'
++									? styles['progressBarTrack--completed']
++									: '',
++								step.status === 'current' ? styles['progressBarTrack--active'] : '',
++							]
++								.filter(Boolean)
++								.join(' ')}
++						/>
++						<div
++							className={[
++								styles.content,
++								styles[`content--${size}`],
++								styles[`content--${variant}`],
++								styles['content--progressBar'],
++							]
++								.filter(Boolean)
++								.join(' ')}>
++							<span
++								className={[styles.label, styles[`label--${step.status}`]].join(
++									' '
++								)}>
++								{step.label}
++							</span>
++							{step.description && (
++								<span
++									className={[
++										styles.description,
++										styles[`description--${step.status}`],
++									].join(' ')}>
++									{step.description}
++								</span>
++							)}
++						</div>
++					</div>
++				))}
++			</div>
++		);
++	}
++
++	if (orientation === 'vertical') {
++		return (
++			<div
++				className={[styles.stepper, styles['stepper--vertical'], className]
++					.filter(Boolean)
++					.join(' ')}
++				style={style}>
++				{steps?.map((step, index) => {
++					const lineStatus = step.status === 'completed' ? 'completed' : 'incomplete';
++
++					return (
++						<div key={index} className={styles.stepWrapper}>
++							<div className={styles.verticalIconCol}>
++								<div
++									className={[
++										styles.stepIcon,
++										styles[`stepIcon--${size}`],
++										step.status === 'current' && variant === 'icon'
++											? styles['stepIcon--current']
++											: '',
++									]
++										.filter(Boolean)
++										.join(' ')}>
++									{resolveIcon(
++										step.status,
++										size,
++										variant,
++										step.step ?? index + 1
++									)}
++								</div>
++								<div
++									className={[
++										styles.verticalLine,
++										variant === 'noIcon'
++											? styles['verticalLine--dotted']
++											: styles['verticalLine--solid'],
++										lineStatus === 'completed'
++											? styles['verticalLine--completed']
++											: '',
++									]
++										.filter(Boolean)
++										.join(' ')}
++								/>
++							</div>
++
++							<div
++								className={[
++									styles.content,
++									styles[`content--${size}`],
++									styles[`content--${variant}`],
++								]
++									.filter(Boolean)
++									.join(' ')}>
++								<span
++									className={[styles.label, styles[`label--${step.status}`]].join(
++										' '
++									)}>
++									{step.label}
++								</span>
++								{step.description && (
++									<span
++										className={[
++											styles.description,
++											styles[`description--${step.status}`],
++										].join(' ')}>
++										{step.description}
++									</span>
++								)}
++							</div>
++						</div>
++					);
++				})}
++			</div>
++		);
++	}
++
++	return (
++		<div
++			className={[styles.stepper, styles['stepper--horizontal'], className]
++				.filter(Boolean)
++				.join(' ')}
++			style={style}>
++			{steps?.map((step, index) => {
++				const isLast = index === (steps?.length ?? 0) - 1;
++				const lineStatus = step.status === 'completed' ? 'completed' : 'incomplete';
++
++				return (
++					<div key={index} className={styles.stepWrapper}>
++						<div
++							className={[
++								styles.iconSection,
++								!isLast ? styles.hasLine : '',
++								!isLast ? styles[`line--${lineStatus}`] : '',
++								variant === 'noIcon' ? styles.isNumbered : styles.isIcon,
++							].join(' ')}>
++							<div
++								className={[
++									styles.stepIcon,
++									styles[`stepIcon--${size}`],
++									step.status === 'current' && variant === 'icon'
++										? styles['stepIcon--current']
++										: '',
++								]
++									.filter(Boolean)
++									.join(' ')}>
++								{resolveIcon(step.status, size, variant, step.step ?? index + 1)}
++							</div>
++						</div>
++
++						<div
++							className={[
++								styles.content,
++								styles[`content--${size}`],
++								styles[`content--${variant}`],
++							]
++								.filter(Boolean)
++								.join(' ')}>
++							<span
++								className={[styles.label, styles[`label--${step.status}`]].join(
++									' '
++								)}>
++								{step.label}
++							</span>
++							{step.description && (
++								<span
++									className={[
++										styles.description,
++										styles[`description--${step.status}`],
++									].join(' ')}>
++									{step.description}
++								</span>
++							)}
++						</div>
++					</div>
++				);
++			})}
++		</div>
++	);
++};
++
++export default Stepper;
+diff --git a/src/components/v2/stepper/StepperInteractive.tsx b/src/components/v2/stepper/StepperInteractive.tsx
+new file mode 100644
+index 00000000..518d2574
+--- /dev/null
++++ b/src/components/v2/stepper/StepperInteractive.tsx
+@@ -0,0 +1,90 @@
++import React, { useState } from 'react';
++import Button from '../../v2/buttons/button/Button';
++import Stepper from './Stepper';
++import type { Step } from './types';
++
++interface StepperInteractiveProps {
++	steps: Step[];
++	size?: 'sm' | 'md';
++	variant?: 'icon' | 'noIcon' | 'progressBar';
++	orientation?: 'horizontal' | 'vertical';
++	className?: string;
++	style?: React.CSSProperties;
++}
++
++const StepperInteractive: React.FC<StepperInteractiveProps> = ({
++	steps: initialSteps,
++	size = 'sm',
++	variant = 'icon',
++	orientation = 'horizontal',
++	className,
++	style,
++}) => {
++	const [currentIndex, setCurrentIndex] = useState<number>(
++		() => initialSteps.findIndex((s) => s.status === 'current') ?? 0
++	);
++
++	const computedSteps: Step[] = initialSteps.map((step, index) => ({
++		...step,
++		status:
++			index < currentIndex ? 'completed' : index === currentIndex ? 'current' : 'incomplete',
++	}));
++
++	const handleNext = () => {
++		if (currentIndex < initialSteps.length - 1) {
++			setCurrentIndex((prev) => prev + 1);
++		}
++	};
++
++	const handlePrevious = () => {
++		if (currentIndex > 0) {
++			setCurrentIndex((prev) => prev - 1);
++		}
++	};
++
++	const stepperProps = {
++		steps: computedSteps,
++		size,
++		variant,
++		orientation,
++		...(className !== undefined && { className }),
++		...(style !== undefined && { style }),
++	};
++
++	return (
++		<div
++			style={{
++				display: 'flex',
++				flexDirection: 'column',
++				gap: '24px',
++				width: '100%',
++			}}>
++			<Stepper {...stepperProps} />
++			<div
++				style={{
++					display: 'flex',
++					gap: '12px',
++					justifyContent: 'flex-start',
++				}}>
++				<Button
++					title='Previous'
++					variant='secondary'
++					size='sm'
++					disabled={currentIndex === 0}
++					onClick={handlePrevious}
++					type='button'
++				/>
++				<Button
++					title={currentIndex === initialSteps.length - 1 ? 'Finish' : 'Next'}
++					variant='primary'
++					size='sm'
++					disabled={currentIndex === initialSteps.length - 1}
++					onClick={handleNext}
++					type='button'
++				/>
++			</div>
++		</div>
++	);
++};
++
++export default StepperInteractive;
+diff --git a/src/components/v2/stepper/assets/Icons-md/CompletedIconMd.tsx b/src/components/v2/stepper/assets/Icons-md/CompletedIconMd.tsx
+new file mode 100644
+index 00000000..3804bc1f
+--- /dev/null
++++ b/src/components/v2/stepper/assets/Icons-md/CompletedIconMd.tsx
+@@ -0,0 +1,45 @@
++import React from 'react';
++
++interface CompletedIconMdProps {
++	width?: number | string;
++	height?: number | string;
++	bgBrandSolid?: string;
++	checkColor?: string;
++	className?: string;
++	style?: React.CSSProperties;
++}
++
++const CompletedIconMd: React.FC<CompletedIconMdProps> = ({
++	width = 32,
++	height = 32,
++	bgBrandSolid = '#1570EF',
++	checkColor = '#FFFFFF',
++	className,
++	style,
++}) => {
++	return (
++		<svg
++			xmlns='http://www.w3.org/2000/svg'
++			width={width}
++			height={height}
++			viewBox='0 0 32 32'
++			fill='none'
++			className={className}
++			style={{
++				aspectRatio: '1 / 1',
++				...style,
++			}}>
++			<circle cx='16' cy='16' r='16' fill={bgBrandSolid} />
++
++			<path
++				d='M10.6667 15.5701L14.1058 19.4391L21.3333 12.5609'
++				stroke={checkColor}
++				strokeWidth='2.28936'
++				strokeLinecap='round'
++				strokeLinejoin='round'
++			/>
++		</svg>
++	);
++};
++
++export default CompletedIconMd;
+diff --git a/src/components/v2/stepper/assets/Icons-md/CurrentIconMd.tsx b/src/components/v2/stepper/assets/Icons-md/CurrentIconMd.tsx
+new file mode 100644
+index 00000000..17196fbe
+--- /dev/null
++++ b/src/components/v2/stepper/assets/Icons-md/CurrentIconMd.tsx
+@@ -0,0 +1,35 @@
++import React from 'react';
++
++interface CurrentIconMdProps {
++	width?: number | string;
++	height?: number | string;
++	bgBrandSolid?: string;
++	bgPrimary?: string;
++	className?: string;
++	style?: React.CSSProperties;
++}
++
++const CurrentIconMd: React.FC<CurrentIconMdProps> = ({
++	width = 32,
++	height = 32,
++	bgBrandSolid = '#1570EF',
++	bgPrimary = '#FFFFFF',
++	className,
++	style,
++}) => {
++	return (
++		<svg
++			xmlns='http://www.w3.org/2000/svg'
++			width={width}
++			height={height}
++			viewBox='0 0 32 32'
++			fill='none'
++			className={className}
++			style={{ aspectRatio: '1 / 1', ...style }}>
++			<circle cx='16' cy='16' r='16' fill={bgBrandSolid} />
++			<circle cx='16' cy='16' r='5' fill={bgPrimary} />
++		</svg>
++	);
++};
++
++export default CurrentIconMd;
+diff --git a/src/components/v2/stepper/assets/Icons-md/IncompleteIconMd.tsx b/src/components/v2/stepper/assets/Icons-md/IncompleteIconMd.tsx
+new file mode 100644
+index 00000000..673817e9
+--- /dev/null
++++ b/src/components/v2/stepper/assets/Icons-md/IncompleteIconMd.tsx
+@@ -0,0 +1,55 @@
++import React from 'react';
++
++interface IncompleteIconMdProps {
++	width?: number | string;
++	height?: number | string;
++	bgPrimary?: string;
++	borderDisabledSubtle?: string;
++	fgDisabledSubtle?: string;
++	className?: string;
++	style?: React.CSSProperties;
++}
++
++const IncompleteIconMd: React.FC<IncompleteIconMdProps> = ({
++	width = 32,
++	height = 32,
++	bgPrimary = '#FFFFFF',
++	borderDisabledSubtle = '#E9EAEB',
++	fgDisabledSubtle = '#D5D7DA',
++	className,
++	style,
++}) => {
++	return (
++		<svg
++			xmlns='http://www.w3.org/2000/svg'
++			width={width}
++			height={height}
++			viewBox='0 0 32 32'
++			fill='none'
++			className={className}
++			style={{
++				aspectRatio: '1 / 1',
++				...style,
++			}}>
++			<g clipPath='url(#clip0_IncompleteIconMd)'>
++				<circle
++					cx='16'
++					cy='16'
++					r='15'
++					fill={bgPrimary}
++					stroke={borderDisabledSubtle}
++					strokeWidth='2'
++				/>
++				<circle cx='16' cy='16' r='5' fill={fgDisabledSubtle} />
++			</g>
++
++			<defs>
++				<clipPath id='clip0_IncompleteIconMd'>
++					<rect width='32' height='32' fill={bgPrimary} />
++				</clipPath>
++			</defs>
++		</svg>
++	);
++};
++
++export default IncompleteIconMd;
+diff --git a/src/components/v2/stepper/assets/Icons-sm/CompletedIconSm.tsx b/src/components/v2/stepper/assets/Icons-sm/CompletedIconSm.tsx
+new file mode 100644
+index 00000000..fbde98e0
+--- /dev/null
++++ b/src/components/v2/stepper/assets/Icons-sm/CompletedIconSm.tsx
+@@ -0,0 +1,41 @@
++import React from 'react';
++
++interface CompletedIconProps {
++	width?: number | string;
++	height?: number | string;
++	bgBrandSolid?: string;
++	checkColor?: string;
++	className?: string;
++	style?: React.CSSProperties;
++}
++
++const CompletedIconSm: React.FC<CompletedIconProps> = ({
++	width = 24,
++	height = 24,
++	bgBrandSolid = '#1570EF',
++	checkColor = '#FFFFFF',
++	className,
++	style,
++}) => {
++	return (
++		<svg
++			xmlns='http://www.w3.org/2000/svg'
++			width={width}
++			height={height}
++			viewBox='0 0 24 24'
++			fill='none'
++			className={className}
++			style={{ aspectRatio: '1 / 1', ...style }}>
++			<circle cx='12' cy='12' r='12' fill={bgBrandSolid} />
++			<path
++				d='M7.858 12.115L10.438 15.017L16.858 8.858'
++				stroke={checkColor}
++				strokeWidth='1.717'
++				strokeLinecap='round'
++				strokeLinejoin='round'
++			/>
++		</svg>
++	);
++};
++
++export default CompletedIconSm;
+diff --git a/src/components/v2/stepper/assets/Icons-sm/CurrentIconSm.tsx b/src/components/v2/stepper/assets/Icons-sm/CurrentIconSm.tsx
+new file mode 100644
+index 00000000..f37019fb
+--- /dev/null
++++ b/src/components/v2/stepper/assets/Icons-sm/CurrentIconSm.tsx
+@@ -0,0 +1,35 @@
++import React from 'react';
++
++interface CurrentIconProps {
++	width?: number | string;
++	height?: number | string;
++	bgBrandSolid?: string;
++	bgPrimary?: string;
++	className?: string;
++	style?: React.CSSProperties;
++}
++
++const CurrentIconSm: React.FC<CurrentIconProps> = ({
++	width = 24,
++	height = 24,
++	bgBrandSolid = '#1570EF',
++	bgPrimary = '#FFFFFF',
++	className,
++	style,
++}) => {
++	return (
++		<svg
++			xmlns='http://www.w3.org/2000/svg'
++			width={width}
++			height={height}
++			viewBox='0 0 24 24'
++			fill='none'
++			className={className}
++			style={{ aspectRatio: '1 / 1', ...style }}>
++			<circle cx='12' cy='12' r='12' fill={bgBrandSolid} />
++			<circle cx='12' cy='12' r='4' fill={bgPrimary} />
++		</svg>
++	);
++};
++
++export default CurrentIconSm;
+diff --git a/src/components/v2/stepper/assets/Icons-sm/IncompleteIconSm.tsx b/src/components/v2/stepper/assets/Icons-sm/IncompleteIconSm.tsx
+new file mode 100644
+index 00000000..42704964
+--- /dev/null
++++ b/src/components/v2/stepper/assets/Icons-sm/IncompleteIconSm.tsx
+@@ -0,0 +1,41 @@
++import React from 'react';
++
++interface IncompleteIconProps {
++	width?: number | string;
++	height?: number | string;
++	fgDisabledSubtle?: string;
++	borderDisabledSubtle?: string;
++	bgPrimary?: string;
++	className?: string;
++	style?: React.CSSProperties;
++}
++
++const IncompleteIconSm: React.FC<IncompleteIconProps> = ({
++	width = 24,
++	height = 24,
++	fgDisabledSubtle = '#D5D7DA',
++	borderDisabledSubtle = '#E9EAEB',
++	bgPrimary = '#FFFFFF',
++	className,
++	style,
++}) => {
++	return (
++		<svg
++			xmlns='http://www.w3.org/2000/svg'
++			width={width}
++			height={height}
++			viewBox='0 0 24 24'
++			fill='none'
++			className={className}
++			style={{ aspectRatio: '1 / 1', ...style }}>
++			{/* Outer border ring — full 24px diameter */}
++			<circle cx='12' cy='12' r='12' fill={borderDisabledSubtle} />
++			{/* Inner white fill — inset by 1.5px to simulate the border */}
++			<circle cx='12' cy='12' r='10.5' fill={bgPrimary} />
++			{/* Center dot */}
++			<circle cx='12' cy='12' r='4' fill={fgDisabledSubtle} />
++		</svg>
++	);
++};
++
++export default IncompleteIconSm;
+diff --git a/src/components/v2/stepper/assets/NumberIcon-md/CompletedNoIconMd.tsx b/src/components/v2/stepper/assets/NumberIcon-md/CompletedNoIconMd.tsx
+new file mode 100644
+index 00000000..351342d7
+--- /dev/null
++++ b/src/components/v2/stepper/assets/NumberIcon-md/CompletedNoIconMd.tsx
+@@ -0,0 +1,45 @@
++import React from 'react';
++
++interface CompletedNoIconMdProps {
++	width?: number | string;
++	height?: number | string;
++	bgSuccessSolid?: string;
++	checkColor?: string;
++	className?: string;
++	style?: React.CSSProperties;
++}
++
++const CompletedNoIconMd: React.FC<CompletedNoIconMdProps> = ({
++	width = 32,
++	height = 32,
++	bgSuccessSolid = '#039855',
++	checkColor = '#FFFFFF',
++	className,
++	style,
++}) => {
++	return (
++		<svg
++			xmlns='http://www.w3.org/2000/svg'
++			width={width}
++			height={height}
++			viewBox='0 0 32 32'
++			fill='none'
++			className={className}
++			style={{
++				aspectRatio: '1 / 1',
++				...style,
++			}}>
++			<circle cx='16' cy='16' r='16' fill={bgSuccessSolid} />
++
++			<path
++				d='M10.6667 15.5701L14.1058 19.4391L21.3333 12.5609'
++				stroke={checkColor}
++				strokeWidth='2.28936'
++				strokeLinecap='round'
++				strokeLinejoin='round'
++			/>
++		</svg>
++	);
++};
++
++export default CompletedNoIconMd;
+diff --git a/src/components/v2/stepper/assets/NumberIcon-md/CurrentNoIconMd.tsx b/src/components/v2/stepper/assets/NumberIcon-md/CurrentNoIconMd.tsx
+new file mode 100644
+index 00000000..c0d59e87
+--- /dev/null
++++ b/src/components/v2/stepper/assets/NumberIcon-md/CurrentNoIconMd.tsx
+@@ -0,0 +1,61 @@
++import React from 'react';
++
++interface CurrentNoIconMdProps {
++	width?: number | string;
++	height?: number | string;
++	bgPrimary?: string;
++	borderSecondary?: string;
++	textColor?: string;
++	step?: number | string | undefined;
++	className?: string;
++	style?: React.CSSProperties;
++}
++
++const CurrentNoIconMd: React.FC<CurrentNoIconMdProps> = ({
++	width = 32,
++	height = 32,
++	bgPrimary = '#FFFFFF',
++	borderSecondary = '#E9EAEB',
++	textColor = '#414651',
++	step,
++	className,
++	style,
++}) => {
++	return (
++		<svg
++			xmlns='http://www.w3.org/2000/svg'
++			width={width}
++			height={height}
++			viewBox='0 0 32 32'
++			fill='none'
++			className={className}
++			style={{
++				aspectRatio: '1 / 1',
++				...style,
++			}}>
++			<circle
++				cx='16'
++				cy='16'
++				r='15.3333'
++				fill={bgPrimary}
++				stroke={borderSecondary}
++				strokeWidth='1.33333'
++			/>
++			{step !== undefined && (
++				<text
++					x='16'
++					y='16'
++					textAnchor='middle'
++					dominantBaseline='central'
++					fill={textColor}
++					fontFamily='"Plus Jakarta Sans", sans-serif'
++					fontSize='14'
++					fontWeight='600'>
++					{step}
++				</text>
++			)}
++		</svg>
++	);
++};
++
++export default CurrentNoIconMd;
+diff --git a/src/components/v2/stepper/assets/NumberIcon-md/IncompleteNoIconMd.tsx b/src/components/v2/stepper/assets/NumberIcon-md/IncompleteNoIconMd.tsx
+new file mode 100644
+index 00000000..27459719
+--- /dev/null
++++ b/src/components/v2/stepper/assets/NumberIcon-md/IncompleteNoIconMd.tsx
+@@ -0,0 +1,64 @@
++import React from 'react';
++
++interface IncompleteNoIconMdProps {
++	width?: number | string;
++	height?: number | string;
++	bgPrimary?: string;
++	borderSecondary?: string;
++	textDisabled?: string;
++	step?: number | string | undefined;
++	className?: string;
++	style?: React.CSSProperties;
++}
++
++const IncompleteNoIconMd: React.FC<IncompleteNoIconMdProps> = ({
++	width = 32,
++	height = 32,
++	bgPrimary = '#FFFFFF',
++	borderSecondary = '#E9EAEB',
++	textDisabled = '#A4A7AE',
++	step,
++	className,
++	style,
++}) => {
++	return (
++		<svg
++			xmlns='http://www.w3.org/2000/svg'
++			width={width}
++			height={height}
++			viewBox='0 0 32 32'
++			fill='none'
++			className={className}
++			style={{
++				aspectRatio: '1 / 1',
++				...style,
++			}}>
++			{/* Circle — white fill + 1.333px border */}
++			<circle
++				cx='16'
++				cy='16'
++				r='15.3333'
++				fill={bgPrimary}
++				stroke={borderSecondary}
++				strokeWidth='1.33333'
++			/>
++
++			{/* Step number — centered inside the SVG */}
++			{step !== undefined && (
++				<text
++					x='16'
++					y='16'
++					textAnchor='middle'
++					dominantBaseline='central'
++					fill={textDisabled}
++					fontFamily='"Plus Jakarta Sans", sans-serif'
++					fontSize='14'
++					fontWeight='600'>
++					{step}
++				</text>
++			)}
++		</svg>
++	);
++};
++
++export default IncompleteNoIconMd;
+diff --git a/src/components/v2/stepper/assets/NumberIcon-sm/CompletedNoIconSm.tsx b/src/components/v2/stepper/assets/NumberIcon-sm/CompletedNoIconSm.tsx
+new file mode 100644
+index 00000000..b65048b2
+--- /dev/null
++++ b/src/components/v2/stepper/assets/NumberIcon-sm/CompletedNoIconSm.tsx
+@@ -0,0 +1,47 @@
++import React from 'react';
++
++interface CompletedNoIconSmProps {
++	width?: number | string;
++	height?: number | string;
++	bgSuccessSolid?: string;
++	checkColor?: string;
++	className?: string;
++	style?: React.CSSProperties;
++}
++
++const CompletedNoIconSm: React.FC<CompletedNoIconSmProps> = ({
++	width = 24,
++	height = 24,
++	bgSuccessSolid = '#039855',
++	checkColor = '#FFFFFF',
++	className,
++	style,
++}) => {
++	return (
++		<svg
++			xmlns='http://www.w3.org/2000/svg'
++			width={width}
++			height={height}
++			viewBox='0 0 24 24'
++			fill='none'
++			className={className}
++			style={{
++				aspectRatio: '1 / 1',
++				...style,
++			}}>
++			{/* Full filled circle */}
++			<circle cx='12' cy='12' r='12' fill={bgSuccessSolid} />
++
++			{/* Checkmark — centered inside the circle */}
++			<path
++				d='M7.858 12.115L10.438 15.017L16.858 8.858'
++				stroke={checkColor}
++				strokeWidth='1.717'
++				strokeLinecap='round'
++				strokeLinejoin='round'
++			/>
++		</svg>
++	);
++};
++
++export default CompletedNoIconSm;
+diff --git a/src/components/v2/stepper/assets/NumberIcon-sm/CurrentNoIconSm.tsx b/src/components/v2/stepper/assets/NumberIcon-sm/CurrentNoIconSm.tsx
+new file mode 100644
+index 00000000..d195600d
+--- /dev/null
++++ b/src/components/v2/stepper/assets/NumberIcon-sm/CurrentNoIconSm.tsx
+@@ -0,0 +1,61 @@
++import React from 'react';
++
++interface CurrentNumberIconSmProps {
++	width?: number | string;
++	height?: number | string;
++	bgPrimary?: string;
++	borderSecondary?: string;
++	textColor?: string;
++	step?: number | string | undefined;
++	className?: string;
++	style?: React.CSSProperties;
++}
++
++const CurrentNoIconSm: React.FC<CurrentNumberIconSmProps> = ({
++	width = 24,
++	height = 24,
++	bgPrimary = '#FFFFFF',
++	borderSecondary = '#E9EAEB',
++	textColor = '#414651',
++	step,
++	className,
++	style,
++}) => {
++	return (
++		<svg
++			xmlns='http://www.w3.org/2000/svg'
++			width={width}
++			height={height}
++			viewBox='0 0 24 24'
++			fill='none'
++			className={className}
++			style={{
++				aspectRatio: '1 / 1',
++				...style,
++			}}>
++			<circle
++				cx='12'
++				cy='12'
++				r='11.5'
++				fill={bgPrimary}
++				stroke={borderSecondary}
++				strokeWidth='1'
++			/>
++			{step !== undefined && (
++				<text
++					x='12'
++					y='12'
++					textAnchor='middle'
++					dominantBaseline='central'
++					fill={textColor}
++					fontFamily='"Plus Jakarta Sans", sans-serif'
++					fontSize='12'
++					fontWeight='600'>
++					{step}
++				</text>
++			)}
++		</svg>
++	);
++};
++
++export default CurrentNoIconSm;
+diff --git a/src/components/v2/stepper/assets/NumberIcon-sm/IncompleteNoIconSm.tsx b/src/components/v2/stepper/assets/NumberIcon-sm/IncompleteNoIconSm.tsx
+new file mode 100644
+index 00000000..939933a3
+--- /dev/null
++++ b/src/components/v2/stepper/assets/NumberIcon-sm/IncompleteNoIconSm.tsx
+@@ -0,0 +1,64 @@
++import React from 'react';
++
++interface IncompleteNoIconSmProps {
++	width?: number | string;
++	height?: number | string;
++	bgPrimary?: string;
++	borderSecondary?: string;
++	textDisabled?: string;
++	step?: number | string | undefined;
++	className?: string;
++	style?: React.CSSProperties;
++}
++
++const IncompleteNoIconSm: React.FC<IncompleteNoIconSmProps> = ({
++	width = 24,
++	height = 24,
++	bgPrimary = '#FFFFFF',
++	borderSecondary = '#E9EAEB',
++	textDisabled = '#A4A7AE',
++	step,
++	className,
++	style,
++}) => {
++	return (
++		<svg
++			xmlns='http://www.w3.org/2000/svg'
++			width={width}
++			height={height}
++			viewBox='0 0 24 24'
++			fill='none'
++			className={className}
++			style={{
++				aspectRatio: '1 / 1',
++				...style,
++			}}>
++			{/* Circle — white fill + 1px border */}
++			<circle
++				cx='12'
++				cy='12'
++				r='11.5'
++				fill={bgPrimary}
++				stroke={borderSecondary}
++				strokeWidth='1'
++			/>
++
++			{/* Step number — centered inside the SVG */}
++			{step !== undefined && (
++				<text
++					x='12'
++					y='12'
++					textAnchor='middle'
++					dominantBaseline='central'
++					fill={textDisabled}
++					fontFamily='"Plus Jakarta Sans", sans-serif'
++					fontSize='12'
++					fontWeight='600'>
++					{step}
++				</text>
++			)}
++		</svg>
++	);
++};
++
++export default IncompleteNoIconSm;
+diff --git a/src/components/v2/stepper/assets/ProgressBar/ProgressBar.module.css b/src/components/v2/stepper/assets/ProgressBar/ProgressBar.module.css
+new file mode 100644
+index 00000000..0c1af10d
+--- /dev/null
++++ b/src/components/v2/stepper/assets/ProgressBar/ProgressBar.module.css
+@@ -0,0 +1,55 @@
++.progressBar {
++  display: flex;
++  width: 100%;
++  flex-direction: column;
++  align-items: flex-start;
++  gap: 33px;
++  border-top: 4px solid #e9eaeb;
++}
++.progressBar--sm {
++  padding-top: 12px;
++}
++.progressBar--md {
++  padding-top: 16px;
++}
++.progressBar--active {
++  border-top: 4px solid #1570ef;
++}
++.progressBar--completed {
++  border-top: 4px solid #1570ef;
++}
++
++.label {
++  font-family: "Jakarta", sans-serif;
++  font-weight: 600;
++  color: #181d27;
++}
++.label--sm {
++  font-size: 14px;
++  line-height: 20px;
++}
++.label--md {
++  font-size: 16px;
++  line-height: 24px;
++}
++.label--active {
++  color: #1570ef;
++}
++
++.description {
++  font-family: "Jakarta", sans-serif;
++  font-weight: 400;
++  color: #717680;
++  margin-top: 0;
++}
++.description--sm {
++  font-size: 14px;
++  line-height: 20px;
++}
++.description--md {
++  font-size: 16px;
++  line-height: 24px;
++}
++.description--active {
++  color: #1570ef;
++}/*# sourceMappingURL=ProgressBar.module.css.map */
+\ No newline at end of file
+diff --git a/src/components/v2/stepper/assets/ProgressBar/ProgressBar.module.scss b/src/components/v2/stepper/assets/ProgressBar/ProgressBar.module.scss
+new file mode 100644
+index 00000000..79be793a
+--- /dev/null
++++ b/src/components/v2/stepper/assets/ProgressBar/ProgressBar.module.scss
+@@ -0,0 +1,92 @@
++$text-heading: #414651;
++$below-text: #535862;
++$text-heading2: #175cd3;
++$below-text2: #1570ef;
++
++$fg-brand-primary-alt: #1570ef;
++$gray-200: #e9eaeb;
++
++$sm-font-size: 14px;
++$sm-line-height: 20px;
++$sm-padding-top: 12px;
++$md-font-size: 16px;
++$md-line-height: 24px;
++$md-padding-top: 16px;
++$progress-bar-border-height: 4px;
++
++.progressBar {
++	display: flex;
++	width: 100%;
++	flex-direction: column;
++	align-items: flex-start;
++	gap: 0;
++	border-top: $progress-bar-border-height solid $gray-200;
++	padding-left: 0;
++	margin-left: 0;
++
++	&--sm {
++		padding-top: $sm-padding-top;
++	}
++	&--md {
++		padding-top: $md-padding-top;
++	}
++
++	&--active {
++		border-top: $progress-bar-border-height solid $fg-brand-primary-alt;
++	}
++	&--completed {
++		border-top: $progress-bar-border-height solid $fg-brand-primary-alt;
++	}
++}
++
++.label {
++	font-family: 'Jakarta', sans-serif;
++	font-weight: 600;
++	color: $text-heading;
++	padding: 0;
++	margin: 0;
++
++	&--sm {
++		font-size: $sm-font-size;
++		line-height: $sm-line-height;
++	}
++	&--md {
++		font-size: $md-font-size;
++		line-height: $md-line-height;
++	}
++	&--completed {
++		color: $text-heading;
++	}
++	&--current {
++		color: $text-heading2;
++	}
++	&--incomplete {
++		color: $text-heading;
++	}
++}
++
++.description {
++	font-family: 'Jakarta', sans-serif;
++	font-weight: 400;
++	color: $below-text;
++	margin-top: 0;
++	padding: 0;
++
++	&--sm {
++		font-size: $sm-font-size;
++		line-height: $sm-line-height;
++	}
++	&--md {
++		font-size: $md-font-size;
++		line-height: $md-line-height;
++	}
++	&--completed {
++		color: $below-text;
++	}
++	&--current {
++		color: $below-text2;
++	}
++	&--incomplete {
++		color: $below-text;
++	}
++}
+diff --git a/src/components/v2/stepper/assets/ProgressBar/ProgressBar.tsx b/src/components/v2/stepper/assets/ProgressBar/ProgressBar.tsx
+new file mode 100644
+index 00000000..013e9eef
+--- /dev/null
++++ b/src/components/v2/stepper/assets/ProgressBar/ProgressBar.tsx
+@@ -0,0 +1,65 @@
++import React from 'react';
++import styles from './ProgressBar.module.scss';
++
++export type ProgressBarSize = 'sm' | 'md';
++
++interface ProgressBarProps {
++	label?: string;
++	description?: string;
++	isActive?: boolean;
++	isCompleted?: boolean;
++	size?: ProgressBarSize;
++	className?: string;
++	style?: React.CSSProperties;
++}
++
++const ProgressBar: React.FC<ProgressBarProps> = ({
++	label,
++	description,
++	isActive = false,
++	isCompleted = false,
++	size = 'sm',
++	className,
++	style,
++}) => {
++	return (
++		<div
++			className={[
++				styles.progressBar,
++				styles[`progressBar--${size}`],
++				isActive ? styles['progressBar--active'] : '',
++				isCompleted ? styles['progressBar--completed'] : '',
++				className,
++			]
++				.filter(Boolean)
++				.join(' ')}
++			style={style}>
++			{label && (
++				<span
++					className={[
++						styles.label,
++						styles[`label--${size}`],
++						isActive ? styles['label--active'] : '',
++					]
++						.filter(Boolean)
++						.join(' ')}>
++					{label}
++				</span>
++			)}
++			{description && (
++				<span
++					className={[
++						styles.description,
++						styles[`description--${size}`],
++						isActive ? styles['description--active'] : '',
++					]
++						.filter(Boolean)
++						.join(' ')}>
++					{description}
++				</span>
++			)}
++		</div>
++	);
++};
++
++export default ProgressBar;
+diff --git a/src/components/v2/stepper/index.ts b/src/components/v2/stepper/index.ts
+new file mode 100644
+index 00000000..55b05b39
+--- /dev/null
++++ b/src/components/v2/stepper/index.ts
+@@ -0,0 +1,19 @@
++// ─── Main component ───────────────────────────────────────────────────────────
++export { default as Stepper } from './Stepper';
++
++// ─── All types (old + new) ────────────────────────────────────────────────────
++export type {
++	// Shared
++	Orientation, // ← renamed to avoid conflict with Step component
++	StepperProps,
++	StepperSize,
++	StepperVariant,
++	// Old types
++	StepProps,
++	StepStatus,
++	// New types
++	Step as StepType,
++} from './types';
++
++// ─── Old Step sub-component (for direct use if needed) ────────────────────────
++export { Step } from './step';
+diff --git a/src/components/v2/stepper/step/Step.module.css b/src/components/v2/stepper/step/Step.module.css
+new file mode 100644
+index 00000000..a71d739a
+--- /dev/null
++++ b/src/components/v2/stepper/step/Step.module.css
+@@ -0,0 +1,149 @@
++.root {
++  display: flex;
++  flex-direction: row;
++  justify-content: flex-start;
++  align-items: flex-start;
++  position: relative;
++  z-index: 1;
++  gap: 0.5rem;
++  flex: 1 0 auto;
++  cursor: default;
++}
++.root:last-child {
++  flex: 0 1 auto;
++}
++.root:last-child .title::after {
++  display: none;
++}
++.root:last-child .left::after {
++  display: none;
++}
++.root .left {
++  display: flex;
++  flex-direction: column;
++  justify-content: flex-start;
++  align-items: center;
++}
++.root .left .icon-container {
++  display: flex;
++  flex-direction: row;
++  justify-content: center;
++  align-items: center;
++  width: 1.5rem;
++  height: 1.5rem;
++  border-radius: 2rem;
++  font-size: 1rem;
++  border: 0.063rem solid var(--grey2);
++  background: var(--light-color3);
++  color: var(--grey2);
++  position: relative;
++}
++.root .left .icon-container .icon {
++  width: 0.75rem;
++  height: 0.75rem;
++}
++.root .left .icon-container .icon.error-icon {
++  fill: var(--primary-color1);
++}
++.root .left .icon-container .icon.completion-icon {
++  fill: var(--primary-color4);
++}
++.root .left .icon-container .icon.completion-icon.active {
++  fill: var(--light-color3);
++}
++.root .left .progress {
++  position: absolute;
++  z-index: -1;
++  inset: -0.3rem;
++  border-radius: 2rem;
++}
++.root .left .progress::after {
++  position: absolute;
++  content: "";
++  inset: 0.15rem;
++  background: var(--light-color3);
++  border-radius: 2rem;
++}
++.root .right {
++  display: flex;
++  flex-direction: column;
++  justify-content: flex-start;
++  align-items: flex-start;
++  flex: 1;
++}
++.root .right .title {
++  display: flex;
++  flex-direction: row;
++  justify-content: flex-start;
++  align-items: flex-start;
++  gap: 0.75rem;
++  width: 100%;
++  font-size: 1rem;
++  color: var(--mono-color1);
++}
++.root .right .title::after {
++  content: "";
++  flex: 1;
++  min-width: 1.5rem;
++  border-bottom: 0.063rem solid;
++  margin-top: 0.75rem;
++  border-bottom-color: var(--mono-color2);
++}
++.root .right .description {
++  font-size: 0.75rem;
++  color: var(--mono-color2);
++}
++.root.no-tail .right .title::after {
++  display: none;
++}
++.root.active .left .icon-container {
++  background: var(--primary-color4);
++  color: var(--white);
++}
++.root.active .left .icon-container, .root.completed .left .icon-container {
++  border-color: var(--primary-color4);
++}
++.root.active .right .title, .root.completed .right .title {
++  color: var(--text-color);
++}
++.root.active .right .description, .root.completed .right .description {
++  color: var(--mono-color1);
++}
++.root.completed .right .title::after {
++  border-bottom-color: var(--primary-color4);
++}
++.root.error .left .icon-container {
++  background: var(--white);
++  border-color: var(--primary-color1);
++  color: var(--primary-color1);
++}
++.root.error .right .title {
++  color: var(--primary-color1);
++}
++.root.error .right .description {
++  color: rgba(var(--primary-color1), 0.6);
++}
++.root.vertical {
++  height: 100%;
++  flex: 1;
++}
++.root.vertical .left {
++  height: 100%;
++  gap: 0.5rem;
++}
++.root.vertical .left::after {
++  content: "";
++  border-right: 1px solid var(--grey2);
++  height: 100%;
++  min-height: 1.5rem;
++  flex: 1 1 auto;
++}
++.root.vertical .left .icon-container {
++  flex: 0 0 auto;
++}
++.root.vertical .right .title::after {
++  display: none;
++}
++.root.vertical.completed .left::after {
++  border-right-color: var(--primary-color4);
++}/*# sourceMappingURL=Step.module.css.map */
+\ No newline at end of file
+diff --git a/src/components/v2/stepper/step/Step.module.scss b/src/components/v2/stepper/step/Step.module.scss
+new file mode 100644
+index 00000000..c2bba140
+--- /dev/null
++++ b/src/components/v2/stepper/step/Step.module.scss
+@@ -0,0 +1,191 @@
++@import '../../../../styles';
++
++.root {
++	@include flex(row, flex-start, flex-start);
++	position: relative;
++	z-index: 1;
++	gap: 0.5rem;
++	flex: 1 0 auto;
++	cursor: default;
++
++	&:last-child {
++		flex: 0 1 auto;
++
++		.title::after {
++			display: none;
++		}
++
++		.left::after {
++			display: none;
++		}
++	}
++
++	.left {
++		@include flex(column, flex-start);
++
++		.icon-container {
++			@include flex;
++			width: 1.5rem;
++			height: 1.5rem;
++			border-radius: 2rem;
++			font-size: 1rem;
++			border: 0.063rem solid $grey2;
++			background: $light-color3;
++			color: $grey2;
++			position: relative;
++			.icon {
++				width: 0.75rem;
++				height: 0.75rem;
++				&.error-icon {
++					fill: $primary-color1;
++				}
++
++				&.completion-icon {
++					fill: $primary-color4;
++					&.active {
++						fill: $light-color3;
++					}
++				}
++			}
++		}
++
++		.progress {
++			position: absolute;
++			z-index: -1;
++			inset: -0.3rem;
++			border-radius: 2rem;
++
++			&::after {
++				position: absolute;
++				content: '';
++				inset: 0.15rem;
++				background: $light-color3;
++				border-radius: 2rem;
++			}
++		}
++	}
++
++	.right {
++		@include flex(column, flex-start, flex-start);
++
++		flex: 1;
++
++		.title {
++			@include flex(row, flex-start, flex-start);
++			gap: 0.75rem;
++			width: 100%;
++			font-size: 1rem;
++			color: $mono-color1;
++
++			&::after {
++				content: '';
++				flex: 1;
++				min-width: 1.5rem;
++				border-bottom: 0.063rem solid;
++				margin-top: 0.75rem;
++				border-bottom-color: $mono-color2;
++			}
++		}
++
++		.description {
++			font-size: 0.75rem;
++			color: $mono-color2;
++		}
++	}
++
++	&.no-tail {
++		.right {
++			.title {
++				&::after {
++					display: none;
++				}
++			}
++		}
++	}
++
++	&.active {
++		.left {
++			.icon-container {
++				background: $primary-color4;
++				color: $white;
++			}
++		}
++	}
++
++	&.active,
++	&.completed {
++		.left {
++			.icon-container {
++				border-color: $primary-color4;
++			}
++		}
++
++		.right {
++			.title {
++				color: $text-color;
++			}
++
++			.description {
++				color: $mono-color1;
++			}
++		}
++	}
++
++	&.completed {
++		.right {
++			.title::after {
++				border-bottom-color: $primary-color4;
++			}
++		}
++	}
++
++	&.error {
++		.left {
++			.icon-container {
++				background: $white;
++				border-color: $primary-color1;
++				color: $primary-color1;
++			}
++		}
++
++		.right {
++			.title {
++				color: $primary-color1;
++			}
++			.description {
++				color: rgba($primary-color1, 0.6);
++			}
++		}
++	}
++
++	&.vertical {
++		height: 100%;
++		flex: 1;
++		.left {
++			height: 100%;
++			gap: 0.5rem;
++			&::after {
++				content: '';
++				border-right: 1px solid $grey2;
++				height: 100%;
++				min-height: 1.5rem;
++				flex: 1 1 auto;
++			}
++			.icon-container {
++				flex: 0 0 auto;
++			}
++		}
++		.right {
++			.title::after {
++				display: none;
++			}
++		}
++		&.completed {
++			.left {
++				&::after {
++					border-right-color: $primary-color4;
++				}
++			}
++		}
++	}
++}
+diff --git a/src/components/v2/stepper/step/Step.tsx b/src/components/v2/stepper/step/Step.tsx
+new file mode 100644
+index 00000000..d7c3cc53
+--- /dev/null
++++ b/src/components/v2/stepper/step/Step.tsx
+@@ -0,0 +1,86 @@
++import React from 'react';
++import { COLORS } from '../../../../styles';
++import { classes } from '../../../../utils';
++import { ErrorIcon, TickIcon } from '../../icons';
++import styles from './Step.module.css';
++import type { StepProps } from './types';
++
++export const Step: React.FC<StepProps> = (props) => {
++	const {
++		title,
++		description,
++		active = false,
++		completion = 0,
++		error = false,
++		index,
++		noTail,
++		orientation,
++		renderIcon: RenderIcon,
++		renderTitle: RenderTitle,
++		renderDescription: RenderDescription,
++	} = props;
++
++	let display: React.ReactNode = <span className={styles.text}>{index + 1}</span>;
++
++	if (error) {
++		display = <ErrorIcon className={classes(styles.icon, styles['error-icon'])} />;
++	} else if (completion === 1) {
++		display = (
++			<TickIcon
++				className={classes(
++					styles.icon,
++					styles['completion-icon'],
++					active ? styles.active : ''
++				)}
++			/>
++		);
++	}
++
++	let IconContainer: React.ReactNode = (
++		<div className={styles['icon-container']}>
++			{display}
++			{active && completion > 0 && completion <= 1 && (
++				<div
++					className={styles.progress}
++					style={{
++						backgroundImage: `conic-gradient(${COLORS.highlight?.toString() ?? ''}, ${(
++							completion * 100
++						).toString()}%, transparent 0%)`,
++					}}
++				/>
++			)}
++		</div>
++	);
++
++	if (RenderIcon) {
++		IconContainer = <RenderIcon {...props} />;
++	}
++
++	let Title: React.ReactNode = <span className={classes(styles.title)}>{title}</span>;
++	if (RenderTitle) Title = <RenderTitle {...props} />;
++
++	let Description: React.ReactNode =
++		description != null ? <span className={styles.description}>{description}</span> : null;
++	if (RenderDescription) Description = <RenderDescription {...props} />;
++
++	return (
++		<div
++			className={classes(
++				styles.root,
++				active ? styles.active : '',
++				completion === 1 ? styles.completed : '',
++				error ? styles.error : '',
++				noTail ? styles['no-tail'] : '',
++				styles[orientation]
++			)}
++			data-elem='step'>
++			<div className={styles.left}>{IconContainer}</div>
++			<div className={styles.right}>
++				{Title}
++				{Description}
++			</div>
++		</div>
++	);
++};
++
++export default Step;
+diff --git a/src/components/v2/stepper/step/index.ts b/src/components/v2/stepper/step/index.ts
+new file mode 100644
+index 00000000..be12c5d4
+--- /dev/null
++++ b/src/components/v2/stepper/step/index.ts
+@@ -0,0 +1,2 @@
++export { default as Step } from './Step';
++export * from './types';
+diff --git a/src/components/v2/stepper/step/types/index.ts b/src/components/v2/stepper/step/types/index.ts
+new file mode 100644
+index 00000000..e312e5cf
+--- /dev/null
++++ b/src/components/v2/stepper/step/types/index.ts
+@@ -0,0 +1,2 @@
++// Re-exports from central types — do not add types here directly
++export type { Orientation, StepProps } from '../../types';
+diff --git a/src/components/v2/stepper/types/index.ts b/src/components/v2/stepper/types/index.ts
+new file mode 100644
+index 00000000..7d764c4c
+--- /dev/null
++++ b/src/components/v2/stepper/types/index.ts
+@@ -0,0 +1,61 @@
++import type { ReactElement, ReactNode } from 'react';
++
++// ─── Shared ───────────────────────────────────────────────────────────────────
++
++export type Orientation = 'horizontal' | 'vertical';
++
++// ─── New variant types ────────────────────────────────────────────────────────
++
++export type StepStatus = 'incomplete' | 'current' | 'completed';
++export type StepperSize = 'sm' | 'md';
++export type StepperVariant = 'icon' | 'noIcon' | 'progressBar';
++
++export interface Step {
++	label?: string;
++	description?: string;
++	status: StepStatus;
++	/** Override auto-index with a custom step number */
++	step?: number;
++}
++
++// ─── Old Step types (kept for backwards compatibility) ────────────────────────
++
++export interface StepProps {
++	/** Main label of the step */
++	title: ReactNode;
++	/** Optional secondary text */
++	description?: ReactNode;
++	/** Whether this step is the one currently in focus */
++	active?: boolean;
++	/** 0 → 1 indicating progress of the active step */
++	completion?: number;
++	/** Mark the step as error — type kept, not yet implemented visually */
++	error?: boolean;
++	/** Zero-based index of this step in the list (supplied by Stepper) */
++	index: number;
++	/** Total number of steps (supplied by Stepper) */
++	total: number;
++	/** Hide the tail/connector behind this step */
++	noTail?: boolean;
++	/** Layout direction */
++	orientation: Orientation;
++	/** Render overrides — types kept, not yet implemented visually */
++	renderIcon?: (p: StepProps) => ReactElement | null;
++	renderTitle?: (p: StepProps) => ReactElement | null;
++	renderDescription?: (p: StepProps) => ReactElement | null;
++}
++
++export interface StepperProps {
++	// New API
++	steps?: Step[];
++	size?: StepperSize;
++	variant?: StepperVariant;
++
++	// Old API
++	legacySteps?: Omit<StepProps, 'index' | 'total' | 'orientation'>[];
++
++	// Shared
++	orientation?: Orientation;
++	className?: string;
++	style?: React.CSSProperties;
++}
+diff --git a/src/styles/main.css b/src/styles/main.css
+index 10460235..3ffa7f02 100644
+--- a/src/styles/main.css
++++ b/src/styles/main.css
+@@ -21,14 +21,6 @@ body {
+   background-color: #ffffff;
+ }
+ 
+-/**************************************************************
+-                     font-family- Poppins
+-   Incase of adding new font follow the steps:
+-   ---> Download the respective font from Google fonts
+-   ---> Save to assets/font
+-   ---> Add the font face in this page
+-   ---> Create a variable in scss/_common.scss
+- **************************************************************/
+ @font-face {
+   font-family: Poppins;
+   font-style: normal;
+@@ -107,6 +99,30 @@ body {
+   font-weight: 700;
+   src: url("../../fonts/Jakarta-Bold.ttf") format("truetype");
+ }
++@font-face {
++  font-family: Jakarta;
++  font-style: normal;
++  font-weight: 400;
++  src: url("../../fonts/Jakarta-Regular.ttf") format("truetype");
++}
++@font-face {
++  font-family: Jakarta;
++  font-style: normal;
++  font-weight: 500;
++  src: url("../../fonts/Jakarta-Medium.ttf") format("truetype");
++}
++@font-face {
++  font-family: Jakarta;
++  font-style: normal;
++  font-weight: 600;
++  src: url("../../fonts/Jakarta-SemiBold.ttf") format("truetype");
++}
++@font-face {
++  font-family: Jakarta;
++  font-style: normal;
++  font-weight: 700;
++  src: url("../../fonts/Jakarta-Bold.ttf") format("truetype");
++}
+ .app-container {
+   display: flex;
+   height: 100%;
+diff --git a/src/styles/main.scss b/src/styles/main.scss
+index 5bd1748b..b586a4db 100644
+--- a/src/styles/main.scss
++++ b/src/styles/main.scss
+@@ -21,15 +21,6 @@ body {
+ 	background-color: #ffffff;
+ }
+ 
+-/**************************************************************
+-                     font-family- Poppins
+-   Incase of adding new font follow the steps:
+-   ---> Download the respective font from Google fonts
+-   ---> Save to assets/font
+-   ---> Add the font face in this page
+-   ---> Create a variable in scss/_common.scss
+- **************************************************************/
+-
+ @font-face {
+ 	font-family: Poppins;
+ 	font-style: normal;
