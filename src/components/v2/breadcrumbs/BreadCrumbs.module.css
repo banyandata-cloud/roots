@@ -1,0 +1,229 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap");
+.inlineWrapper {
+  display: inline-flex;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  outline: none;
+  box-sizing: border-box;
+  overflow: visible;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.textWithLine.root {
+  height: 36px;
+  padding: 0 8px;
+  gap: var(--spacing-md, 8px);
+  border-top: 1px solid var(--Bordercolor-border-Secondary, #e9eaeb);
+  border-bottom: 1px solid var(--Bordercolor-border-Secondary, #e9eaeb);
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.crumbItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  outline: none;
+}
+.crumbItem.focused .crumbContent {
+  border-color: #1570ef;
+  border-radius: 6px;
+}
+.crumbItem.active .crumbLabel {
+  color: #175cd3;
+  font-weight: 600;
+}
+.crumbItem.disabled {
+  pointer-events: none;
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.crumbContent {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px;
+  border-radius: 6px;
+  border: 1.5px solid transparent;
+  box-sizing: border-box;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.crumbLabel {
+  display: inline-flex;
+  width: 57px;
+  height: 20px;
+  color: #717680;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: var(--font-size-14, 14px);
+  font-style: normal;
+  font-weight: var(--font-weight-Semibold, 600);
+  line-height: var(--Line-height-20, 20px);
+  white-space: nowrap;
+  transition: color 0.15s ease;
+}
+.crumbItem:hover .crumbLabel {
+  color: #414651;
+}
+
+.crumbEllipsis {
+  display: inline-flex;
+  width: 15px;
+  height: 20px;
+  align-items: center;
+  justify-content: center;
+  color: #717680;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: var(--font-size-14, 14px);
+  font-style: normal;
+  font-weight: var(--font-weight-Semibold, 600);
+  line-height: var(--Line-height-20, 20px);
+  white-space: nowrap;
+  transition: color 0.15s ease;
+}
+.crumbItem:hover .crumbEllipsis {
+  color: #414651;
+}
+
+.separator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin: 0;
+}
+
+.iconWrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.dropdownWrapper {
+  position: relative;
+}
+
+.text .crumbContent {
+  padding: 4px;
+  background: transparent;
+}
+.text .crumbItem:hover .crumbContent {
+  background: transparent;
+}
+.text .crumbItem.active .crumbContent {
+  background: transparent;
+}
+.text .crumbItem.focused .crumbContent {
+  border-color: #1570ef;
+  background: transparent;
+}
+
+.textWithLine .crumbItem {
+  align-self: center;
+}
+.textWithLine .crumbContent {
+  padding: 4px;
+  background: transparent;
+  border: 1.5px solid transparent;
+  border-radius: 6px;
+}
+.textWithLine .crumbItem:hover .crumbContent {
+  background: transparent;
+}
+.textWithLine .crumbItem.active .crumbContent {
+  background: transparent;
+}
+.textWithLine .crumbItem.focused .crumbContent {
+  border: 1.5px solid #1570ef;
+  border-radius: 6px;
+  background: transparent;
+}
+
+.button .crumbContent {
+  padding: 4px 8px;
+  background: transparent;
+  border-color: transparent;
+}
+.button .crumbLabel {
+  color: #717680;
+  font-weight: var(--font-weight-Semibold, 600);
+}
+.button .crumbItem:hover .crumbContent {
+  background: #fafafa;
+  border-color: transparent;
+}
+.button .crumbItem:hover .crumbLabel {
+  color: #414651;
+}
+.button .crumbItem.active .crumbContent {
+  background: #fafafa;
+  border-color: transparent;
+}
+.button .crumbItem.active .crumbLabel {
+  color: #535862;
+  font-weight: var(--font-weight-Semibold, 600);
+}
+.button .crumbItem.active:hover .crumbLabel {
+  color: #535862;
+}
+.button .crumbItem.focused .crumbContent {
+  border-color: #1570ef;
+  background: transparent;
+}
+.button .crumbItem.focused.active .crumbContent {
+  border-color: #1570ef;
+  background: #fafafa;
+}
+
+.dropdown {
+  position: fixed;
+  z-index: 9999;
+  background: #ffffff;
+  border: 1px solid #e4e7ec;
+  border-radius: 8px;
+  box-shadow: 0px 4px 16px rgba(16, 24, 40, 0.1);
+  min-width: 160px;
+  padding: 4px 0;
+  animation: dropdownIn 0.15s ease;
+}
+@keyframes dropdownIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdownItem {
+  display: flex;
+  align-items: center;
+  padding: 8px 14px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #344054;
+  cursor: pointer;
+  transition: background 0.15s ease;
+  white-space: nowrap;
+}
+.dropdownItem:hover {
+  background: #f9fafb;
+  color: #1570ef;
+}/*# sourceMappingURL=BreadCrumbs.module.css.map */
