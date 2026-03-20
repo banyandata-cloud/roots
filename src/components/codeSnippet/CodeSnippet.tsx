@@ -31,7 +31,7 @@ const copyIconProps = {
 	},
 };
 
-const tickIconProps  = {
+const tickIconProps = {
 	initial: {
 		scale: 0,
 		opacity: 0,
