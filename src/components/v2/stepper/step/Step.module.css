@@ -1,0 +1,149 @@
+.root {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  position: relative;
+  z-index: 1;
+  gap: 0.5rem;
+  flex: 1 0 auto;
+  cursor: default;
+}
+.root:last-child {
+  flex: 0 1 auto;
+}
+.root:last-child .title::after {
+  display: none;
+}
+.root:last-child .left::after {
+  display: none;
+}
+.root .left {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.root .left .icon-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 2rem;
+  font-size: 1rem;
+  border: 0.063rem solid var(--grey2);
+  background: var(--light-color3);
+  color: var(--grey2);
+  position: relative;
+}
+.root .left .icon-container .icon {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+.root .left .icon-container .icon.error-icon {
+  fill: var(--primary-color1);
+}
+.root .left .icon-container .icon.completion-icon {
+  fill: var(--primary-color4);
+}
+.root .left .icon-container .icon.completion-icon.active {
+  fill: var(--light-color3);
+}
+.root .left .progress {
+  position: absolute;
+  z-index: -1;
+  inset: -0.3rem;
+  border-radius: 2rem;
+}
+.root .left .progress::after {
+  position: absolute;
+  content: "";
+  inset: 0.15rem;
+  background: var(--light-color3);
+  border-radius: 2rem;
+}
+.root .right {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex: 1;
+}
+.root .right .title {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0.75rem;
+  width: 100%;
+  font-size: 1rem;
+  color: var(--mono-color1);
+}
+.root .right .title::after {
+  content: "";
+  flex: 1;
+  min-width: 1.5rem;
+  border-bottom: 0.063rem solid;
+  margin-top: 0.75rem;
+  border-bottom-color: var(--mono-color2);
+}
+.root .right .description {
+  font-size: 0.75rem;
+  color: var(--mono-color2);
+}
+.root.no-tail .right .title::after {
+  display: none;
+}
+.root.active .left .icon-container {
+  background: var(--primary-color4);
+  color: var(--white);
+}
+.root.active .left .icon-container, .root.completed .left .icon-container {
+  border-color: var(--primary-color4);
+}
+.root.active .right .title, .root.completed .right .title {
+  color: var(--text-color);
+}
+.root.active .right .description, .root.completed .right .description {
+  color: var(--mono-color1);
+}
+.root.completed .right .title::after {
+  border-bottom-color: var(--primary-color4);
+}
+.root.error .left .icon-container {
+  background: var(--white);
+  border-color: var(--primary-color1);
+  color: var(--primary-color1);
+}
+.root.error .right .title {
+  color: var(--primary-color1);
+}
+.root.error .right .description {
+  color: rgba(var(--primary-color1), 0.6);
+}
+.root.vertical {
+  height: 100%;
+  flex: 1;
+}
+.root.vertical .left {
+  height: 100%;
+  gap: 0.5rem;
+}
+.root.vertical .left::after {
+  content: "";
+  border-right: 1px solid var(--grey2);
+  height: 100%;
+  min-height: 1.5rem;
+  flex: 1 1 auto;
+}
+.root.vertical .left .icon-container {
+  flex: 0 0 auto;
+}
+.root.vertical .right .title::after {
+  display: none;
+}
+.root.vertical.completed .left::after {
+  border-right-color: var(--primary-color4);
+}/*# sourceMappingURL=Step.module.css.map */

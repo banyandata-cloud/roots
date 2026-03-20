@@ -1,0 +1,638 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ThemedContainer } from '../../helpers';
+import Stepper from './Stepper';
+import StepperInteractive from './StepperInteractive';
+
+<Meta title='Components/v2/Stepper' />
+
+export const Template = (args) => (
+	<ThemedContainer theme='light'>
+		<Stepper {...args} />
+	</ThemedContainer>
+);
+
+export const InteractiveTemplate = (args) => (
+	<ThemedContainer theme='light'>
+		<StepperInteractive {...args} />
+	</ThemedContainer>
+);
+
+# Stepper
+
+---
+
+## Horizontal - Icon
+
+### Icon (sm)
+
+<Canvas>
+	<Story
+		name='Icon-sm'
+		args={{
+			size: 'sm',
+			variant: 'icon',
+			orientation: 'horizontal',
+			steps: [
+				{
+					label: 'Your details',
+					description: 'Please provide your name and email',
+					status: 'completed',
+				},
+				{
+					label: 'Your details',
+					description: 'Please provide your name and email',
+					status: 'current',
+				},
+				{
+					label: 'Your details',
+					description: 'Please provide your name and email',
+					status: 'incomplete',
+				},
+				{
+					label: 'Your details',
+					description: 'Please provide your name and email',
+					status: 'incomplete',
+				},
+			],
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Icon (md)
+
+<Canvas>
+	<Story
+		name='Icon-md'
+		args={{
+			size: 'md',
+			variant: 'icon',
+			orientation: 'horizontal',
+			steps: [
+				{
+					label: 'Your details',
+					description: 'Please provide your name and email',
+					status: 'completed',
+				},
+				{
+					label: 'Your details',
+					description: 'Please provide your name and email',
+					status: 'current',
+				},
+				{
+					label: 'Your details',
+					description: 'Please provide your name and email',
+					status: 'incomplete',
+				},
+				{
+					label: 'Your details',
+					description: 'Please provide your name and email',
+					status: 'incomplete',
+				},
+			],
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+---
+
+## Horizontal - Number
+
+### Number (sm)
+
+<Canvas>
+	<Story
+		name='Number-sm'
+		args={{
+			size: 'sm',
+			variant: 'noIcon',
+			orientation: 'horizontal',
+			steps: [
+				{
+					label: 'Your details',
+					description: 'Please provide your name and email',
+					status: 'completed',
+					step: 1,
+				},
+				{
+					label: 'Your details',
+					description: 'Please provide your name and email',
+					status: 'current',
+					step: 2,
+				},
+				{
+					label: 'Your details',
+					description: 'Please provide your name and email',
+					status: 'incomplete',
+					step: 3,
+				},
+				{
+					label: 'Your details',
+					description: 'Please provide your name and email',
+					status: 'incomplete',
+					step: 4,
+				},
+			],
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Number (md)
+
+<Canvas>
+	<Story
+		name='Number-md'
+		args={{
+			size: 'md',
+			variant: 'noIcon',
+			orientation: 'horizontal',
+			steps: [
+				{
+					label: 'Your details',
+					description: 'Please provide your name and email',
+					status: 'completed',
+					step: 1,
+				},
+				{
+					label: 'Your details',
+					description: 'Please provide your name and email',
+					status: 'current',
+					step: 2,
+				},
+				{
+					label: 'Your details',
+					description: 'Please provide your name and email',
+					status: 'incomplete',
+					step: 3,
+				},
+				{
+					label: 'Your details',
+					description: 'Please provide your name and email',
+					status: 'incomplete',
+					step: 4,
+				},
+			],
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+---
+
+## Horizontal - Progress Bar
+
+### Progress Bar (sm)
+
+<Canvas>
+	<Story
+		name='ProgressBar-sm'
+		args={{
+			size: 'sm',
+			variant: 'progressBar',
+			orientation: 'horizontal',
+			steps: [
+				{
+					label: 'Your details',
+					description: 'Please provide your name and email',
+					status: 'completed',
+				},
+				{
+					label: 'Your details',
+					description: 'Please provide your name and email',
+					status: 'current',
+				},
+				{
+					label: 'Your details',
+					description: 'Please provide your name and email',
+					status: 'incomplete',
+				},
+				{
+					label: 'Your details',
+					description: 'Please provide your name and email',
+					status: 'incomplete',
+				},
+			],
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Progress Bar (md)
+
+<Canvas>
+	<Story
+		name='ProgressBar-md'
+		args={{
+			size: 'md',
+			variant: 'progressBar',
+			orientation: 'horizontal',
+			steps: [
+				{
+					label: 'Your details',
+					description: 'Please provide your name and email',
+					status: 'completed',
+				},
+				{
+					label: 'Your details',
+					description: 'Please provide your name and email',
+					status: 'current',
+				},
+				{
+					label: 'Your details',
+					description: 'Please provide your name and email',
+					status: 'incomplete',
+				},
+				{
+					label: 'Your details',
+					description: 'Please provide your name and email',
+					status: 'incomplete',
+				},
+			],
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+---
+
+## Vertical - Icon
+
+### Icon Incomplete (sm)
+
+<Canvas>
+	<Story
+		name='Icon-Vertical-Incomplete-sm'
+		args={{
+			size: 'sm',
+			variant: 'icon',
+			orientation: 'vertical',
+			steps: [
+				{
+					label: 'Your details',
+					description: 'Please provide your name and email',
+					status: 'incomplete',
+				},
+			],
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Icon Incomplete (md)
+
+<Canvas>
+	<Story
+		name='Icon-Vertical-Incomplete-md'
+		args={{
+			size: 'md',
+			variant: 'icon',
+			orientation: 'vertical',
+			steps: [
+				{
+					label: 'Your details',
+					description: 'Please provide your name and email',
+					status: 'incomplete',
+				},
+			],
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Icon Current (sm)
+
+<Canvas>
+	<Story
+		name='Icon-Vertical-Current-sm'
+		args={{
+			size: 'sm',
+			variant: 'icon',
+			orientation: 'vertical',
+			steps: [
+				{
+					label: 'Your details',
+					description: 'Please provide your name and email',
+					status: 'current',
+				},
+			],
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Icon Current (md)
+
+<Canvas>
+	<Story
+		name='Icon-Vertical-Current-md'
+		args={{
+			size: 'md',
+			variant: 'icon',
+			orientation: 'vertical',
+			steps: [
+				{
+					label: 'Your details',
+					description: 'Please provide your name and email',
+					status: 'current',
+				},
+			],
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Icon Completed (sm)
+
+<Canvas>
+	<Story
+		name='Icon-Vertical-Completed-sm'
+		args={{
+			size: 'sm',
+			variant: 'icon',
+			orientation: 'vertical',
+			steps: [
+				{
+					label: 'Your details',
+					description: 'Please provide your name and email',
+					status: 'completed',
+				},
+			],
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Icon Completed (md)
+
+<Canvas>
+	<Story
+		name='Icon-Vertical-Completed-md'
+		args={{
+			size: 'md',
+			variant: 'icon',
+			orientation: 'vertical',
+			steps: [
+				{
+					label: 'Your details',
+					description: 'Please provide your name and email',
+					status: 'completed',
+				},
+			],
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+---
+
+## Vertical - Number
+
+### Number Incomplete (sm)
+
+<Canvas>
+	<Story
+		name='Number-Vertical-Incomplete-sm'
+		args={{
+			size: 'sm',
+			variant: 'noIcon',
+			orientation: 'vertical',
+			steps: [
+				{
+					label: 'Your details',
+					description: 'Please provide your name and email',
+					status: 'incomplete',
+					step: 1,
+				},
+			],
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Number Incomplete (md)
+
+<Canvas>
+	<Story
+		name='Number-Vertical-Incomplete-md'
+		args={{
+			size: 'md',
+			variant: 'noIcon',
+			orientation: 'vertical',
+			steps: [
+				{
+					label: 'Your details',
+					description: 'Please provide your name and email',
+					status: 'incomplete',
+					step: 1,
+				},
+			],
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Number Current (sm)
+
+<Canvas>
+	<Story
+		name='Number-Vertical-Current-sm'
+		args={{
+			size: 'sm',
+			variant: 'noIcon',
+			orientation: 'vertical',
+			steps: [
+				{
+					label: 'Your details',
+					description: 'Please provide your name and email',
+					status: 'current',
+					step: 1,
+				},
+			],
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Number Current (md)
+
+<Canvas>
+	<Story
+		name='Number-Vertical-Current-md'
+		args={{
+			size: 'md',
+			variant: 'noIcon',
+			orientation: 'vertical',
+			steps: [
+				{
+					label: 'Your details',
+					description: 'Please provide your name and email',
+					status: 'current',
+					step: 1,
+				},
+			],
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Number Completed (sm)
+
+<Canvas>
+	<Story
+		name='Number-Vertical-Completed-sm'
+		args={{
+			size: 'sm',
+			variant: 'noIcon',
+			orientation: 'vertical',
+			steps: [
+				{
+					label: 'Your details',
+					description: 'Please provide your name and email',
+					status: 'completed',
+					step: 1,
+				},
+			],
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Number Completed
+
+<Canvas>
+	<Story
+		name='Number-Vertical-Completed-md'
+		args={{
+			size: 'md',
+			variant: 'noIcon',
+			orientation: 'vertical',
+			steps: [
+				{
+					label: 'Your details',
+					description: 'Please provide your name and email',
+					status: 'completed',
+					step: 1,
+				},
+			],
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+---
+
+## Interactive
+
+### Icon
+
+<Canvas>
+	<Story
+		name='Interactive-Icon-sm'
+		args={{
+			size: 'sm',
+			variant: 'icon',
+			orientation: 'horizontal',
+			steps: [
+				{
+					label: 'Your details',
+					description: 'Please provide your name and email',
+					status: 'current',
+				},
+				{
+					label: 'Your details',
+					description: 'Please provide your name and email',
+					status: 'incomplete',
+				},
+				{
+					label: 'Your details',
+					description: 'Please provide your name and email',
+					status: 'incomplete',
+				},
+				{
+					label: 'Your details',
+					description: 'Please provide your name and email',
+					status: 'incomplete',
+				},
+			],
+		}}>
+		{InteractiveTemplate.bind({})}
+	</Story>
+</Canvas>
+
+### Number
+
+<Canvas>
+	<Story
+		name='Interactive-Number-sm'
+		args={{
+			size: 'sm',
+			variant: 'noIcon',
+			orientation: 'horizontal',
+			steps: [
+				{
+					label: 'Your details',
+					description: 'Please provide your name and email',
+					status: 'current',
+					step: 1,
+				},
+				{
+					label: 'Your details',
+					description: 'Please provide your name and email',
+					status: 'incomplete',
+					step: 2,
+				},
+				{
+					label: 'Your details',
+					description: 'Please provide your name and email',
+					status: 'incomplete',
+					step: 3,
+				},
+				{
+					label: 'Your details',
+					description: 'Please provide your name and email',
+					status: 'incomplete',
+					step: 4,
+				},
+			],
+		}}>
+		{InteractiveTemplate.bind({})}
+	</Story>
+</Canvas>
+
+### Progress Bar
+
+<Canvas>
+	<Story
+		name='Interactive-ProgressBar-sm'
+		args={{
+			size: 'sm',
+			variant: 'progressBar',
+			orientation: 'horizontal',
+			steps: [
+				{
+					label: 'Your details',
+					description: 'Please provide your name and email',
+					status: 'current',
+				},
+				{
+					label: 'Your details',
+					description: 'Please provide your name and email',
+					status: 'incomplete',
+				},
+				{
+					label: 'Your details',
+					description: 'Please provide your name and email',
+					status: 'incomplete',
+				},
+				{
+					label: 'Your details',
+					description: 'Please provide your name and email',
+					status: 'incomplete',
+				},
+			],
+		}}>
+		{InteractiveTemplate.bind({})}
+	</Story>
+</Canvas>

@@ -1,0 +1,339 @@
+@import '../../../styles';
+
+$primary-blue: #1570ef;
+$gray-200: #e9eaeb;
+$border-secondary: #e9eaeb;
+$gray-500: #717680;
+$gray-900: #181d27;
+$white: #ffffff;
+
+$text-heading: #414651;
+$below-text: #535862;
+$text-heading2: #175cd3;
+$below-text2: #1570ef;
+
+$space-00: 0px;
+$space-02: 2px;
+$space-04: 4px;
+$space-08: 8px;
+$space-12: 12px;
+$space-16: 16px;
+$space-24: 24px;
+$space-32: 32px;
+$space-33: 33px;
+$space-48: 48px;
+
+.root {
+	&.horizontal {
+		@include flex(row, flex-start, flex-start);
+		gap: 1rem;
+	}
+	&.vertical {
+		@include flex(column, flex-start, flex-start);
+		height: 100%;
+		gap: 0.5rem;
+	}
+}
+
+.stepper {
+	display: flex;
+	width: 100%;
+	max-width: 1000px;
+	margin: 0 auto;
+
+	&--horizontal {
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+	&--vertical {
+		flex-direction: column;
+	}
+
+	&--progressBar {
+		gap: $space-33;
+	}
+}
+
+.stepWrapper {
+	display: flex;
+	flex: 1;
+	position: relative;
+
+	.stepper--horizontal & {
+		flex-direction: column;
+		align-items: center;
+		min-width: 160px;
+		text-align: center;
+		gap: $space-02;
+	}
+
+	.stepper--vertical & {
+		flex-direction: row;
+		align-items: stretch;
+		text-align: left;
+	}
+}
+
+.verticalIconCol {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	flex-shrink: 0;
+	align-self: stretch;
+}
+
+.verticalLine {
+	flex: 1;
+	min-height: $space-24;
+	width: $space-02;
+	margin-top: $space-04;
+	margin-bottom: $space-04;
+
+	&--solid {
+		background-color: $border-secondary;
+	}
+
+	&--dotted {
+		width: $space-00;
+		border-left: $space-02 dotted $border-secondary;
+	}
+
+	&--completed {
+		&.verticalLine--solid {
+			background-color: $primary-blue;
+		}
+		&.verticalLine--dotted {
+			border-left-color: $border-secondary;
+		}
+	}
+}
+
+.iconSection {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	.stepper--horizontal & {
+		width: 100%;
+		margin-bottom: $space-12;
+
+		&.hasLine::after {
+			content: '';
+			position: absolute;
+			z-index: 1;
+			top: 50%;
+			transform: translateY(-50%);
+			pointer-events: none;
+			left: calc(50% + #{$space-12});
+			right: calc(-50% + #{$space-12});
+			height: $space-02;
+		}
+
+		&:has(.stepIcon--md).hasLine::after {
+			left: calc(50% + #{$space-16});
+			right: calc(-50% + #{$space-16});
+		}
+
+		&.isIcon.hasLine::after {
+			background-color: $gray-200;
+		}
+		&.isIcon.line--completed::after {
+			background-color: $primary-blue;
+		}
+
+		&.isNumbered.hasLine::after {
+			border-top: $space-02 dotted $gray-200;
+			background-color: transparent;
+		}
+		&.isNumbered.line--completed::after {
+			border-top-color: $gray-200;
+		}
+	}
+}
+
+.stepIcon {
+	position: relative;
+	z-index: 2;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	background-color: $white;
+	border-radius: 50%;
+	overflow: visible;
+	flex-shrink: 0;
+
+	&--sm {
+		width: $space-24;
+		height: $space-24;
+	}
+	&--md {
+		width: $space-32;
+		height: $space-32;
+	}
+}
+
+.isIcon {
+	.stepIcon--current {
+		box-shadow:
+			0 0 0 $space-02 $white,
+			0 0 0 $space-04 $primary-blue;
+	}
+}
+
+.stepper--vertical {
+	.stepIcon--current {
+		box-shadow:
+			0 0 0 $space-02 $white,
+			0 0 0 $space-04 $primary-blue;
+	}
+}
+
+.progressBarWrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	flex: 1;
+	min-width: 0;
+	gap: $space-02;
+
+	.content {
+		padding: $space-00 !important;
+	}
+}
+
+.progressBarTrack {
+	width: 100%;
+	border-top: $space-04 solid $gray-200;
+
+	&--sm {
+		padding-top: $space-12;
+	}
+	&--md {
+		padding-top: $space-16;
+	}
+	&--active {
+		border-top-color: $primary-blue;
+	}
+	&--completed {
+		border-top-color: $primary-blue;
+	}
+}
+
+.content {
+	display: flex;
+	flex-direction: column;
+	gap: $space-00;
+
+	.stepper--horizontal & {
+		width: 100%;
+		padding: $space-00 $space-12;
+		align-items: center;
+		text-align: center;
+	}
+
+	.stepper--vertical & {
+		width: 100%;
+		align-items: flex-start;
+		padding-bottom: $space-32;
+	}
+
+	.stepper--vertical &--sm {
+		padding-left: $space-12;
+	}
+
+	.stepper--vertical &--md {
+		padding-left: $space-16;
+	}
+
+	&--sm {
+		.label,
+		.description {
+			font-size: 14px;
+			line-height: 20px;
+		}
+	}
+	&--md {
+		.label,
+		.description {
+			font-size: 16px;
+			line-height: 24px;
+		}
+	}
+
+	&--icon {
+		.label--incomplete,
+		.label--completed {
+			color: $text-heading;
+		}
+		.description--incomplete,
+		.description--completed {
+			color: $below-text;
+		}
+		.label--current {
+			color: $text-heading2;
+		}
+		.description--current {
+			color: $below-text2;
+		}
+	}
+
+	&--noIcon {
+		.label--incomplete,
+		.description--incomplete {
+			color: $text-heading;
+			opacity: 0.6;
+		}
+		.label--current,
+		.label--completed {
+			color: $text-heading;
+			opacity: 1;
+		}
+		.description--current,
+		.description--completed {
+			color: $below-text;
+			opacity: 1;
+		}
+	}
+
+	&--progressBar {
+		padding: $space-00;
+		align-items: flex-start !important;
+		text-align: left !important;
+
+		.label--incomplete,
+		.description--incomplete {
+			color: $gray-500;
+		}
+		.label--current,
+		.description--current {
+			color: $primary-blue;
+		}
+		.label--completed,
+		.description--completed {
+			color: $gray-900;
+		}
+	}
+}
+
+.label {
+	font-family: 'Jakarta', sans-serif;
+	font-weight: 600;
+	color: $text-heading;
+
+	.stepper--horizontal & {
+		white-space: nowrap;
+	}
+
+	.stepper--vertical & {
+		white-space: normal;
+	}
+}
+
+.description {
+	font-family: 'Jakarta', sans-serif;
+	font-weight: 400;
+	color: $below-text;
+	margin-top: $space-00;
+}

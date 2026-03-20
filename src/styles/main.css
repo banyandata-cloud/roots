@@ -21,14 +21,6 @@ body {
   background-color: #ffffff;
 }
 
-/**************************************************************
-                     font-family- Poppins
-   Incase of adding new font follow the steps:
-   ---> Download the respective font from Google fonts
-   ---> Save to assets/font
-   ---> Add the font face in this page
-   ---> Create a variable in scss/_common.scss
- **************************************************************/
 @font-face {
   font-family: Poppins;
   font-style: normal;
@@ -88,6 +80,30 @@ body {
   font-style: normal;
   font-weight: 400;
   src: url("../../fonts/Jakarta-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: Jakarta;
+  font-style: normal;
+  font-weight: 400;
+  src: url("../../fonts/Jakarta-Regular.ttf") format("truetype");
+}
+@font-face {
+  font-family: Jakarta;
+  font-style: normal;
+  font-weight: 500;
+  src: url("../../fonts/Jakarta-Medium.ttf") format("truetype");
+}
+@font-face {
+  font-family: Jakarta;
+  font-style: normal;
+  font-weight: 600;
+  src: url("../../fonts/Jakarta-SemiBold.ttf") format("truetype");
+}
+@font-face {
+  font-family: Jakarta;
+  font-style: normal;
+  font-weight: 700;
+  src: url("../../fonts/Jakarta-Bold.ttf") format("truetype");
 }
 @font-face {
   font-family: Jakarta;
