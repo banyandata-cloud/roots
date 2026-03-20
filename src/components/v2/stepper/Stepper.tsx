@@ -1,7 +1,6 @@
 import React from 'react';
 import { classes } from '../../../utils';
 import styles from './Stepper.module.scss';
-import Step from './step/Step';
 import type { StepperProps, StepperSize, StepperVariant, StepStatus } from './types';
 
 import CompletedIconMd from './assets/Icons-md/CompletedIconMd';
@@ -40,74 +39,48 @@ const Stepper: React.FC<StepperProps> = ({
 	steps,
 	size = 'sm',
 	variant = 'icon',
-	legacySteps,
 	orientation = 'horizontal',
 	className,
 	style,
 }) => {
-	if (legacySteps && legacySteps.length > 0) {
-		return (
-			<div className={classes(styles.root, styles[orientation], className)}>
-				{legacySteps.map((step, index) => (
-					<Step
-						key={typeof step.title === 'string' ? step.title : index.toString()}
-						{...step}
-						index={index}
-						total={legacySteps.length}
-						orientation={orientation}
-					/>
-				))}
-			</div>
-		);
-	}
-
 	if (variant === 'progressBar') {
 		return (
 			<div
-				className={[
+				className={classes(
 					styles.stepper,
 					styles['stepper--horizontal'],
 					styles['stepper--progressBar'],
-					className,
-				]
-					.filter(Boolean)
-					.join(' ')}
+					className
+				)}
 				style={style}>
 				{steps?.map((step, index) => (
 					<div key={index} className={styles.progressBarWrapper}>
 						<div
-							className={[
+							className={classes(
 								styles.progressBarTrack,
 								styles[`progressBarTrack--${size}`],
-								step.status === 'completed'
-									? styles['progressBarTrack--completed']
-									: '',
-								step.status === 'current' ? styles['progressBarTrack--active'] : '',
-							]
-								.filter(Boolean)
-								.join(' ')}
+								step.status === 'completed' &&
+									styles['progressBarTrack--completed'],
+								step.status === 'current' && styles['progressBarTrack--active']
+							)}
 						/>
 						<div
-							className={[
+							className={classes(
 								styles.content,
 								styles[`content--${size}`],
 								styles[`content--${variant}`],
-								styles['content--progressBar'],
-							]
-								.filter(Boolean)
-								.join(' ')}>
+								styles['content--progressBar']
+							)}>
 							<span
-								className={[styles.label, styles[`label--${step.status}`]].join(
-									' '
-								)}>
+								className={classes(styles.label, styles[`label--${step.status}`])}>
 								{step.label}
 							</span>
 							{step.description && (
 								<span
-									className={[
+									className={classes(
 										styles.description,
-										styles[`description--${step.status}`],
-									].join(' ')}>
+										styles[`description--${step.status}`]
+									)}>
 									{step.description}
 								</span>
 							)}
@@ -121,9 +94,7 @@ const Stepper: React.FC<StepperProps> = ({
 	if (orientation === 'vertical') {
 		return (
 			<div
-				className={[styles.stepper, styles['stepper--vertical'], className]
-					.filter(Boolean)
-					.join(' ')}
+				className={classes(styles.stepper, styles['stepper--vertical'], className)}
 				style={style}>
 				{steps?.map((step, index) => {
 					const lineStatus = step.status === 'completed' ? 'completed' : 'incomplete';
@@ -132,15 +103,13 @@ const Stepper: React.FC<StepperProps> = ({
 						<div key={index} className={styles.stepWrapper}>
 							<div className={styles.verticalIconCol}>
 								<div
-									className={[
+									className={classes(
 										styles.stepIcon,
 										styles[`stepIcon--${size}`],
-										step.status === 'current' && variant === 'icon'
-											? styles['stepIcon--current']
-											: '',
-									]
-										.filter(Boolean)
-										.join(' ')}>
+										step.status === 'current' &&
+											variant === 'icon' &&
+											styles['stepIcon--current']
+									)}>
 									{resolveIcon(
 										step.status,
 										size,
@@ -149,40 +118,36 @@ const Stepper: React.FC<StepperProps> = ({
 									)}
 								</div>
 								<div
-									className={[
+									className={classes(
 										styles.verticalLine,
 										variant === 'noIcon'
 											? styles['verticalLine--dotted']
 											: styles['verticalLine--solid'],
-										lineStatus === 'completed'
-											? styles['verticalLine--completed']
-											: '',
-									]
-										.filter(Boolean)
-										.join(' ')}
+										lineStatus === 'completed' &&
+											styles['verticalLine--completed']
+									)}
 								/>
 							</div>
 
 							<div
-								className={[
+								className={classes(
 									styles.content,
 									styles[`content--${size}`],
-									styles[`content--${variant}`],
-								]
-									.filter(Boolean)
-									.join(' ')}>
+									styles[`content--${variant}`]
+								)}>
 								<span
-									className={[styles.label, styles[`label--${step.status}`]].join(
-										' '
+									className={classes(
+										styles.label,
+										styles[`label--${step.status}`]
 									)}>
 									{step.label}
 								</span>
 								{step.description && (
 									<span
-										className={[
+										className={classes(
 											styles.description,
-											styles[`description--${step.status}`],
-										].join(' ')}>
+											styles[`description--${step.status}`]
+										)}>
 										{step.description}
 									</span>
 								)}
@@ -196,9 +161,7 @@ const Stepper: React.FC<StepperProps> = ({
 
 	return (
 		<div
-			className={[styles.stepper, styles['stepper--horizontal'], className]
-				.filter(Boolean)
-				.join(' ')}
+			className={classes(styles.stepper, styles['stepper--horizontal'], className)}
 			style={style}>
 			{steps?.map((step, index) => {
 				const isLast = index === (steps?.length ?? 0) - 1;
@@ -207,46 +170,40 @@ const Stepper: React.FC<StepperProps> = ({
 				return (
 					<div key={index} className={styles.stepWrapper}>
 						<div
-							className={[
+							className={classes(
 								styles.iconSection,
-								!isLast ? styles.hasLine : '',
-								!isLast ? styles[`line--${lineStatus}`] : '',
-								variant === 'noIcon' ? styles.isNumbered : styles.isIcon,
-							].join(' ')}>
+								!isLast && styles.hasLine,
+								!isLast && styles[`line--${lineStatus}`],
+								variant === 'noIcon' ? styles.isNumbered : styles.isIcon
+							)}>
 							<div
-								className={[
+								className={classes(
 									styles.stepIcon,
 									styles[`stepIcon--${size}`],
-									step.status === 'current' && variant === 'icon'
-										? styles['stepIcon--current']
-										: '',
-								]
-									.filter(Boolean)
-									.join(' ')}>
+									step.status === 'current' &&
+										variant === 'icon' &&
+										styles['stepIcon--current']
+								)}>
 								{resolveIcon(step.status, size, variant, step.step ?? index + 1)}
 							</div>
 						</div>
 
 						<div
-							className={[
+							className={classes(
 								styles.content,
 								styles[`content--${size}`],
-								styles[`content--${variant}`],
-							]
-								.filter(Boolean)
-								.join(' ')}>
+								styles[`content--${variant}`]
+							)}>
 							<span
-								className={[styles.label, styles[`label--${step.status}`]].join(
-									' '
-								)}>
+								className={classes(styles.label, styles[`label--${step.status}`])}>
 								{step.label}
 							</span>
 							{step.description && (
 								<span
-									className={[
+									className={classes(
 										styles.description,
-										styles[`description--${step.status}`],
-									].join(' ')}>
+										styles[`description--${step.status}`]
+									)}>
 									{step.description}
 								</span>
 							)}
