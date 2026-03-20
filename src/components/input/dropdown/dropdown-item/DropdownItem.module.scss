@@ -7,7 +7,9 @@
 	border-radius: 0.25rem;
 	cursor: pointer;
 	color: $grey;
+	margin-inline: 1.25rem;
 	outline: none;
+	margin-bottom: 1.25rem;
 
 	&:nth-last-child(1) {
 		margin-bottom: 0rem;

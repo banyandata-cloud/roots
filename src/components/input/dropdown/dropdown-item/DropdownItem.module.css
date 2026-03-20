@@ -8,7 +8,9 @@
   border-radius: 0.25rem;
   cursor: pointer;
   color: var(--grey);
+  margin-inline: 1.25rem;
   outline: none;
+  margin-bottom: 1.25rem;
 }
 .root:nth-last-child(1) {
   margin-bottom: 0rem;

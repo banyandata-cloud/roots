@@ -5,7 +5,7 @@ export type ButtonTextSize = 'sm' | 'md';
 export type ButtonSize = 'xs' | 'sm' | 'md' | 'lg' | 'auto';
 
 export interface ButtonProps {
-	className?: string;
+	className?: string | undefined;
 	title?: string | ReactElement<unknown, string | JSXElementConstructor<unknown>>;
 	leftComponent?: ComponentType<Record<string, unknown>>;
 	rightComponent?: ComponentType<Record<string, unknown>>;
