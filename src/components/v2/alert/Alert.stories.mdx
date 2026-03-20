@@ -1,10 +1,10 @@
 import { Meta, Canvas, Story } from '@storybook/addon-docs';
 import { useState, useRef, useEffect } from 'react';
-import { ThemedContainer } from '../helpers';
+import { ThemedContainer } from '../../helpers';
 import { AlertIcon } from '../icons';
 import Alert from './Alert';
 
-<Meta title='Components/Alert' parameters={{ options: { showToolbar: true } }} />
+<Meta title='Components/v2/Alert' parameters={{ options: { showToolbar: true } }} />
 
 # Alert
 
@@ -61,6 +61,46 @@ The default Alert component showing info.
 						Alert
 					</button>
 					<Alert ref={alertRef} />
+				</ThemedContainer>
+			);
+		}}
+	</Story>
+</Canvas>
+
+### Info Card
+
+The default Alert component showing info Card.
+
+<Canvas>
+	<Story name='Info Card'>
+		{() => {
+			const alertRef = useRef();
+			const [funs, setFuns] = useState({});
+			useEffect(() => {
+				setFuns({
+					...funs,
+					alert: alertRef.current.alert,
+				});
+			}, []);
+			const toggle = () => {
+				funs.alert({
+					title: 'Information',
+					description: 'Basic Info is Here',
+					tag: '02:39:05 AM',
+					type: 'info',
+				});
+			};
+			return (
+				<ThemedContainer theme='light'>
+					<button
+						type='button'
+						onClick={toggle}
+						style={{
+							padding: 10,
+						}}>
+						Alert
+					</button>
+					<Alert ref={alertRef} variant='card' theme='light' />
 				</ThemedContainer>
 			);
 		}}

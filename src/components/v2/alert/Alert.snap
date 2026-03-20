@@ -8,7 +8,7 @@ exports[`Alert — Snapshot Rendering snapshot: alert open state 1`] = `
     data-testid="mock-popper"
   >
     <div
-      class="root info shadow position-bottom-center"
+      class="root info card light shadow position-bottom-center"
     >
       <div
         class="left"

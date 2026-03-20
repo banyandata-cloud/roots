@@ -1,0 +1,82 @@
+@import '../../styles/_index';
+
+.root {
+	@include flex(column, flex-start, stretch);
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	height: 43.75rem;
+	max-height: 100%;
+	background: $light-color3;
+	box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.13);
+	border-radius: 8px;
+	outline: none;
+	width: 96%;
+
+	@media (min-width: 768px) {
+		width: 72%;
+	}
+
+	@media (min-width: 1024px) {
+		width: 60%;
+		max-width: 84%;
+	}
+
+	@media (min-width: 1280px) {
+		width: 48%;
+		max-width: 62.5rem;
+	}
+
+	.body {
+		overflow-y: scroll;
+		padding: 1rem;
+		@include removeScrollbar;
+		color: $text-color;
+	}
+
+	.header,
+	.footer {
+		padding: 1rem;
+		color: $text-color;
+	}
+
+	.header {
+		font-weight: 500;
+		font-size: 1.375rem;
+		@include boxShadow(0.1px, 2px);
+	}
+
+	.footer {
+		margin-top: auto;
+		border-radius: 0 0 8px 8px;
+		@include flex(row, flex-end);
+		gap: 1rem;
+		button.dismiss[data-elem='base-cell'] {
+			@include flex(row, center, stretch);
+			color: $mono-color1;
+			background-color: $light-color2;
+			border-radius: 0.25rem;
+			outline: 1px solid $light-color2 !important;
+			border: none;
+			&:hover {
+				background-color: $light-color1;
+			}
+		}
+	}
+
+	button.close[data-elem='base-cell'] {
+		position: absolute;
+		right: 1rem;
+		top: 1rem;
+		padding: 0.25rem;
+		height: auto;
+		background: $light-color3;
+
+		.icon {
+			width: 1.5rem;
+			height: 1.5rem;
+			fill: $text-color;
+		}
+	}
+}
