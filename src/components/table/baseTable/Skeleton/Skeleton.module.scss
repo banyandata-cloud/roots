@@ -2,12 +2,12 @@
 
 .row {
 	@include flex;
-	gap: 16px;
-	margin-bottom: 16px;
-	padding: 0px, 8px;
+	gap: 1rem;
+	margin-bottom: 1rem;
+	padding: 0px 0.5rem;
 
 	&.header {
-		height: 48px;
+		height: 3rem;
 		background: $light-color1;
 		.th {
 			@include flex(row, flex-start);
@@ -20,7 +20,7 @@
 	& > .column {
 		width: 100%;
 		.skeleton {
-			height: 32px;
+			height: 2rem;
 		}
 	}
 }
