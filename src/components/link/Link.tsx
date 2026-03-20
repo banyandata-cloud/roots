@@ -3,14 +3,9 @@ import { classes } from '../../utils/utils';
 import Text from '../text/Text';
 import styles from './Link.module.css';
 import type { LinkProps } from './types';
-import { Link as Linkv2 } from '../v2/link';
 
 const Link = forwardRef<RefObject<HTMLAnchorElement>, LinkProps>((props, ref) => {
 	const { v2, ...rest } = props;
-
-	if (v2) {
-		return <Linkv2 {...rest} ref={ref} />;
-	}
 
 	const {
 		variant = 'b2',
