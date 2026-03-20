@@ -1,0 +1,128 @@
+.root {
+  position: relative;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  overflow: hidden;
+  box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.25);
+}
+.root .table {
+  height: calc(100% - 96px);
+  padding-bottom: 56px;
+}
+.root .pagination {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.root .pagination.floating {
+  bottom: 16px;
+}
+.root .drawer {
+  width: 40%;
+  overflow: hidden;
+}
+.root .drawer::-webkit-scrollbar {
+  display: none;
+}
+.root .drawer {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.root .drawer.standalone > [data-elem=body]::-webkit-scrollbar {
+  display: none;
+}
+.root .drawer.standalone > [data-elem=body] {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  height: 100%;
+}
+.root .drawer.standalone > [data-elem=body] > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: 100%;
+}
+.root .drawer.standalone > [data-elem=body] > div > div {
+  height: auto;
+}
+.root .drawer.standalone > [data-elem=body] > div > div:nth-child(2) {
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: thin;
+}
+.root .drawer.standalone > [data-elem=body] > div > div:nth-child(2)::-webkit-scrollbar {
+  width: 0.25rem;
+  background: transparent;
+}
+.root .drawer.standalone > [data-elem=body] > div > div:nth-child(2)::-webkit-scrollbar-thumb {
+  border-radius: 0.25rem;
+}
+.root .drawer.standalone > [data-elem=body] > div > div:nth-child(2)::-webkit-scrollbar-thumb {
+  background: var(--grey6);
+}
+.root .drawer.standalone > [data-elem=body] > div > div:nth-child(2) {
+  flex: 1;
+}
+.root .drawer > div > div:nth-last-child(1) {
+  height: 100%;
+}
+.root .drawer > div > div:nth-last-child(1) > div {
+  height: 100%;
+}
+.root .drawer > div > div:nth-last-child(1) > div > [data-elem=body]::-webkit-scrollbar {
+  display: none;
+}
+.root .drawer > div > div:nth-last-child(1) > div > [data-elem=body] {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  height: 100%;
+}
+.root .drawer > div > div:nth-last-child(1) > div > [data-elem=body] > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: 100%;
+}
+.root .drawer > div > div:nth-last-child(1) > div > [data-elem=body] > div > div {
+  height: auto;
+}
+.root .drawer > div > div:nth-last-child(1) > div > [data-elem=body] > div > div:nth-child(2) {
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: thin;
+}
+.root .drawer > div > div:nth-last-child(1) > div > [data-elem=body] > div > div:nth-child(2)::-webkit-scrollbar {
+  width: 0.25rem;
+  background: transparent;
+}
+.root .drawer > div > div:nth-last-child(1) > div > [data-elem=body] > div > div:nth-child(2)::-webkit-scrollbar-thumb {
+  border-radius: 0.25rem;
+}
+.root .drawer > div > div:nth-last-child(1) > div > [data-elem=body] > div > div:nth-child(2)::-webkit-scrollbar-thumb {
+  background: var(--grey6);
+}
+.root .drawer > div > div:nth-last-child(1) > div > [data-elem=body] > div > div:nth-child(2) {
+  flex: 1;
+}
+.root .chips,
+.root .filters,
+.root .table > [data-elem=table-header] {
+  position: sticky;
+  z-index: 1;
+  top: 0;
+}
+.root .overlay {
+  background: rgba(0, 0, 0, 0.16);
+  backdrop-filter: blur(5px);
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}/*# sourceMappingURL=Table.module.css.map */

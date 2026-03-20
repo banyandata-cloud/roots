@@ -7,8 +7,8 @@
   padding: 0.625rem 0.75rem;
   border-radius: 0.25rem;
   cursor: pointer;
-  margin-inline: 1.25rem;
   color: var(--grey);
+  margin-inline: 1.25rem;
   outline: none;
   margin-bottom: 1.25rem;
 }

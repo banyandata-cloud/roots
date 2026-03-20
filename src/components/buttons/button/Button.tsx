@@ -1,6 +1,5 @@
 import { forwardRef } from 'react';
 import { classes } from '../../../utils/utils';
-import { Button as Buttonv2 } from '../../v2/buttons';
 import { BaseButton } from '../baseButton';
 import styles from './Button.module.css';
 import type { ButtonProps } from './types';
@@ -21,30 +20,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 		variant = 'contained',
 		color = 'primary',
 		id,
-		textSize = 'sm',
-		v2 = false,
-		v2ButtonVariant,
 		dataTestId,
 	} = props;
-
-	if (v2) {
-		return (
-			<Buttonv2
-				ref={ref}
-				className={className}
-				title={title}
-				rightComponent={RightComponent}
-				variant={v2ButtonVariant}
-				size={size}
-				textSize={textSize}
-				disabled={disabled}
-				onClick={onClick}
-				blurOnClick={blurOnClick}
-				id={id}
-				type={type}
-			/>
-		);
-	}
 
 	return (
 		<BaseButton
