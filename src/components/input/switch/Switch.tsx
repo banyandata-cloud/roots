@@ -1,7 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { classes, inputHelper } from '../../../utils';
 import styles from './Switch.module.css';
-import { Toggle } from '../../v2/input';
 
 type Position = 'left' | 'right';
 
@@ -25,12 +24,7 @@ const Switch: React.FC<SwitchProps> = (props) => {
 		position = 'right',
 		className,
 		disabled,
-		v2,
 	} = props;
-
-	if (v2) {
-		return <Toggle {...props} />;
-	}
 
 	// Freeze controlled vs uncontrolled mode on first render
 	const { current: isControlled } = useRef<boolean>(checked !== undefined);

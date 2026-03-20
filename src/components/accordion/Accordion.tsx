@@ -6,7 +6,6 @@ import { BaseCell } from '../cell';
 import { CaretIcon, ExpandArrowAltIcon } from '../icons';
 import styles from './Accordion.module.css';
 import type { AccordionProps } from './types';
-import { Accordion as Accordionv2 } from '../v2/accordion';
 
 /**
  * Accordion – A simple disclosure component with an optional left and right icon.
@@ -16,10 +15,6 @@ import { Accordion as Accordionv2 } from '../v2/accordion';
  * - In uncontrolled mode omit the `open` prop and optionally set `defaultOpen`.
  */
 export function Accordion(props: AccordionProps) {
-	if (props.v2) {
-		return <Accordionv2 {...props} />;
-	}
-
 	const {
 		open,
 		onToggle,
