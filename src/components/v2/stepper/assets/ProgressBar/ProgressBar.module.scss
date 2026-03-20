@@ -1,0 +1,92 @@
+$text-heading: #414651;
+$below-text: #535862;
+$text-heading2: #175cd3;
+$below-text2: #1570ef;
+
+$fg-brand-primary-alt: #1570ef;
+$gray-200: #e9eaeb;
+
+$sm-font-size: 14px;
+$sm-line-height: 20px;
+$sm-padding-top: 12px;
+$md-font-size: 16px;
+$md-line-height: 24px;
+$md-padding-top: 16px;
+$progress-bar-border-height: 4px;
+
+.progressBar {
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 0;
+	border-top: $progress-bar-border-height solid $gray-200;
+	padding-left: 0;
+	margin-left: 0;
+
+	&--sm {
+		padding-top: $sm-padding-top;
+	}
+	&--md {
+		padding-top: $md-padding-top;
+	}
+
+	&--active {
+		border-top: $progress-bar-border-height solid $fg-brand-primary-alt;
+	}
+	&--completed {
+		border-top: $progress-bar-border-height solid $fg-brand-primary-alt;
+	}
+}
+
+.label {
+	font-family: 'Jakarta', sans-serif;
+	font-weight: 600;
+	color: $text-heading;
+	padding: 0;
+	margin: 0;
+
+	&--sm {
+		font-size: $sm-font-size;
+		line-height: $sm-line-height;
+	}
+	&--md {
+		font-size: $md-font-size;
+		line-height: $md-line-height;
+	}
+	&--completed {
+		color: $text-heading;
+	}
+	&--current {
+		color: $text-heading2;
+	}
+	&--incomplete {
+		color: $text-heading;
+	}
+}
+
+.description {
+	font-family: 'Jakarta', sans-serif;
+	font-weight: 400;
+	color: $below-text;
+	margin-top: 0;
+	padding: 0;
+
+	&--sm {
+		font-size: $sm-font-size;
+		line-height: $sm-line-height;
+	}
+	&--md {
+		font-size: $md-font-size;
+		line-height: $md-line-height;
+	}
+	&--completed {
+		color: $below-text;
+	}
+	&--current {
+		color: $below-text2;
+	}
+	&--incomplete {
+		color: $below-text;
+	}
+}
