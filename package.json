@@ -5,6 +5,18 @@
 	"main": "dist/cjs/index.js",
 	"module": "dist/esm/index.js",
 	"types": "dist/esm/src/index.d.ts",
+	"exports": {
+		".": {
+			"import": "./dist/esm/index.js",
+			"require": "./dist/cjs/index.js",
+			"types": "./dist/esm/src/index.d.ts"
+		},
+		"./v2": {
+			"import": "./dist/esm/v2/index.js",
+			"require": "./dist/cjs/v2/index.js",
+			"types": "./dist/esm/src/components/v2/index.d.ts"
+		}
+	},
 	"files": [
 		"dist",
 		"src/styles"
