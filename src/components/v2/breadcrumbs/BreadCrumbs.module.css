@@ -1,4 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap");
 .inlineWrapper {
   display: inline-flex;
   width: -moz-fit-content;
@@ -39,7 +38,8 @@
   outline: none;
 }
 .crumbItem.focused .crumbContent {
-  border-color: #1570ef;
+  outline: 2px solid #1570ef;
+  outline-offset: 4px;
   border-radius: 6px;
 }
 .crumbItem.active .crumbLabel {
@@ -55,12 +55,11 @@
 .crumbContent {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 4px;
+  gap: 8px;
+  padding: 0;
   border-radius: 6px;
-  border: 1.5px solid transparent;
   box-sizing: border-box;
-  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  transition: background 0.15s ease, color 0.15s ease;
 }
 
 .crumbLabel {
@@ -68,7 +67,7 @@
   width: 57px;
   height: 20px;
   color: #717680;
-  font-family: "Plus Jakarta Sans", sans-serif;
+  font-family: "Jakarta", sans-serif;
   font-size: var(--font-size-14, 14px);
   font-style: normal;
   font-weight: var(--font-weight-Semibold, 600);
@@ -87,7 +86,7 @@
   align-items: center;
   justify-content: center;
   color: #717680;
-  font-family: "Plus Jakarta Sans", sans-serif;
+  font-family: "Jakarta", sans-serif;
   font-size: var(--font-size-14, 14px);
   font-style: normal;
   font-weight: var(--font-weight-Semibold, 600);
@@ -112,14 +111,18 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  width: 20px;
+  height: 20px;
 }
 
 .dropdownWrapper {
   position: relative;
+  display: inline-flex;
+  align-items: center;
 }
 
 .text .crumbContent {
-  padding: 4px;
+  padding: 0;
   background: transparent;
 }
 .text .crumbItem:hover .crumbContent {
@@ -129,7 +132,8 @@
   background: transparent;
 }
 .text .crumbItem.focused .crumbContent {
-  border-color: #1570ef;
+  outline: 2px solid #1570ef;
+  outline-offset: 4px;
   background: transparent;
 }
 
@@ -137,9 +141,8 @@
   align-self: center;
 }
 .textWithLine .crumbContent {
-  padding: 4px;
+  padding: 0;
   background: transparent;
-  border: 1.5px solid transparent;
   border-radius: 6px;
 }
 .textWithLine .crumbItem:hover .crumbContent {
@@ -149,7 +152,8 @@
   background: transparent;
 }
 .textWithLine .crumbItem.focused .crumbContent {
-  border: 1.5px solid #1570ef;
+  outline: 2px solid #1570ef;
+  outline-offset: 4px;
   border-radius: 6px;
   background: transparent;
 }
@@ -157,7 +161,6 @@
 .button .crumbContent {
   padding: 4px 8px;
   background: transparent;
-  border-color: transparent;
 }
 .button .crumbLabel {
   color: #717680;
@@ -165,14 +168,12 @@
 }
 .button .crumbItem:hover .crumbContent {
   background: #fafafa;
-  border-color: transparent;
 }
 .button .crumbItem:hover .crumbLabel {
   color: #414651;
 }
 .button .crumbItem.active .crumbContent {
   background: #fafafa;
-  border-color: transparent;
 }
 .button .crumbItem.active .crumbLabel {
   color: #535862;
@@ -182,11 +183,13 @@
   color: #535862;
 }
 .button .crumbItem.focused .crumbContent {
-  border-color: #1570ef;
+  outline: 2px solid #1570ef;
+  outline-offset: 4px;
   background: transparent;
 }
 .button .crumbItem.focused.active .crumbContent {
-  border-color: #1570ef;
+  outline: 2px solid #1570ef;
+  outline-offset: 4px;
   background: #fafafa;
 }
 
