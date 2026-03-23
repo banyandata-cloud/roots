@@ -12,8 +12,6 @@
 		"checkJs": true /* Report errors in .js files */,
 		"jsx": "react-jsx" /* Specify JSX code generation for library compatibility */,
 		"declaration": true /* Generate corresponding .d.ts file - crucial for a library */,
-		"declarationDir": "./dist/esm" /* Output directory for generated declarations */,
-		"declarationMap": true /* Generate a sourcemap for each corresponding '.d.ts' file */,
 		"sourceMap": true /* Generate corresponding .map file */,
 		"outDir": "./dist/esm" /* Redirect output structure to the directory */,
 		"rootDir": "./" /* Specify the root directory of input files */,
