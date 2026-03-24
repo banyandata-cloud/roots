@@ -15,7 +15,15 @@
 			"import": "./dist/esm/v2/index.js",
 			"require": "./dist/cjs/v2/index.js",
 			"types": "./dist/esm/src/components/v2/index.d.ts"
-		}
+		},
+		"./styles": {
+			"import": "./src/styles/index.ts",
+			"require": "./src/styles/index.ts",
+			"types": "./dist/esm/src/styles/index.d.ts"
+		},
+		"./package.json": "./package.json",
+		"./dist/*": null,
+		"./src/*": null
 	},
 	"files": [
 		"dist",
