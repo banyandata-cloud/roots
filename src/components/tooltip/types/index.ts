@@ -53,4 +53,9 @@ export interface TooltipProps {
 	 * Whether to show a pointer (arrow) on the tooltip.
 	 */
 	showPointer?: boolean;
+
+	/**
+	 * Keeps tooltip open on mouse leave and closes it only on outside click.
+	 */
+	clickOutsideToClose?: boolean;
 }
