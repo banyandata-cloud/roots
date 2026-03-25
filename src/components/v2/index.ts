@@ -16,3 +16,4 @@ export * from './table';
 export * from './tabs';
 export * from './text';
 export * from './inlineLoader';
+export * from './tooltip';
