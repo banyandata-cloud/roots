@@ -46,6 +46,7 @@ const Tooltip = forwardRef<RefObject<HTMLElement>, TooltipProps>((props, propRef
 		variant = 'light',
 		className = '',
 		showPointer = true,
+		clickOutsideToClose = false,
 	} = props;
 
 	const arrowEl = useRef(null);
@@ -79,18 +80,41 @@ const Tooltip = forwardRef<RefObject<HTMLElement>, TooltipProps>((props, propRef
 	// Event listeners to change the open state
 	const hover = useHover(context, {
 		move: true,
+		enabled: !clickOutsideToClose,
 	});
 
-	const focus = useFocus(context);
-	const dismiss = useDismiss(context);
+	const focus = useFocus(context, {
+		enabled: !clickOutsideToClose,
+	});
+	const dismiss = useDismiss(context, {
+		escapeKey: !clickOutsideToClose,
+	});
 
 	// Role props for screen readers
 	const role = useRole(context, {
 		role: 'tooltip',
 	});
 
+	const hoverOpen = React.useMemo(() => {
+		return {
+			reference: {
+				onMouseEnter: () => {
+					if (clickOutsideToClose) {
+						setOpen(true);
+					}
+				},
+			},
+		};
+	}, [clickOutsideToClose]);
+
 	// Merge all the interactions into prop getters
-	const { getReferenceProps, getFloatingProps } = useInteractions([hover, focus, dismiss, role]);
+	const { getReferenceProps, getFloatingProps } = useInteractions([
+		hover,
+		focus,
+		dismiss,
+		role,
+		hoverOpen,
+	]);
 
 	const typedChildren = children as ReactElementWithRef;
 

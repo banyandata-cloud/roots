@@ -1,0 +1,8 @@
+{
+	"name": "@banyan_cloud/roots/v2",
+	"version": "2.0.64",
+	"main": "index.js",
+	"module": "index.esm.js",
+	"types": "index.d.ts",
+	"sideEffects": false
+}
