@@ -187,22 +187,20 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 								/>
 							</div>
 
-							{/* Trailing Icons Area - only show if no trailing button */}
-							{!trailingButton && (
-								<div className={styles.trailingArea}>
-									{/* Status Icon (Error/Warning) */}
-									{showStatusIcon() && (
-										<div className={styles.statusIcon}>{getStatusIcon()}</div>
-									)}
+							{/* Trailing Icons Area */}
+							<div className={styles.trailingArea}>
+								{/* Status Icon (Error/Warning) */}
+								{showStatusIcon() && (
+									<div className={styles.statusIcon}>{getStatusIcon()}</div>
+								)}
 
-									{/* Help Icon */}
-									{helpIcon && actualState !== 'warning' && (
-										<div className={styles.helpIcon}>
-											<HelpIcon />
-										</div>
-									)}
-								</div>
-							)}
+								{/* Help Icon */}
+								{helpIcon && actualState !== 'warning' && (
+									<div className={styles.helpIcon}>
+										<HelpIcon />
+									</div>
+								)}
+							</div>
 						</div>
 					</div>
 
