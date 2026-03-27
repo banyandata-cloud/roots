@@ -38,3 +38,5 @@ stats.html
 
 .bun
 .vscode
+*storybook.log
+storybook-static

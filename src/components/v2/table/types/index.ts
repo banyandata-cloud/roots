@@ -117,35 +117,25 @@ export interface TableProps {
 	disabledFilterOptions?: {
 		search?: boolean;
 	};
-
 	rightActions?: ((props: Record<string, unknown>) => ReactElement) | undefined;
-
 	onSort?: ((columnId: string, direction: SortType) => void) | undefined;
 	sortValue?: Record<string, SortType> | undefined;
-
 	rowHeight?: RowHeight;
 	onRowClick?: ((datum: Record<string, unknown>, setActiveId?: () => void) => void) | undefined;
-
 	defaultActiveIndex?: number | undefined;
-
 	tableInfo?: {
 		title?: string;
 		description?: string;
 	};
-
 	dataLabel?: string;
 	clearSearch?: boolean | undefined;
 	tableDrawerProps?:
 		| TableDrawerProps
 		| ((data: Partial<TableDrawerData>) => TableDrawerProps)
 		| undefined;
-
 	searchProps?: SearchProps;
-
 	filtersCount?: number;
-
 	emptyPlaceholder?: ComponentType | undefined;
-
 	onCheck?: ((checkedRows: Record<string, unknown>[]) => void) | undefined;
 	defaultCheckedRows?: Record<string, unknown>[];
 	checkAsRadio?: boolean | undefined;

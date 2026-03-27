@@ -1,25 +1,13 @@
-import { forwardRef, useEffect, useReducer, useRef, useState, type Dispatch } from 'react';
+import { forwardRef, useEffect, useReducer, useRef, useState } from 'react';
 import { classes } from '../../../utils';
 import { DropdownItemv2, Dropdownv2 } from '../../input';
 import { Button } from '../../v2/buttons';
+import type { PaginationAction, PaginationProps, PaginationState } from '../pagination/types/index';
 import styles from './Pagination.module.css';
 
-type Nullable<T> = T | null;
-
-export interface PaginationState {
-	totalPages: Nullable<number>;
-	currentPage: Nullable<number>;
-	step: number;
-	totalData: Nullable<number>;
-}
-
-type PaginationAction =
-	| { type: 'NEXT_PAGE' }
-	| { type: 'PREV_PAGE' }
-	| { type: 'SET_PAGE'; payload: number | undefined }
-	| { type: 'SET_STEP'; payload: number }
-	| { type: 'SET_TOTAL_PAGES'; payload: Nullable<number> }
-	| { type: 'SET_TOTAL_DATA'; payload: Nullable<number> };
+type UsePaginationArgs = Partial<
+	Pick<PaginationState, 'totalPages' | 'currentPage' | 'step' | 'totalData'>
+>;
 
 const reducer = (state: PaginationState, action: PaginationAction): PaginationState => {
 	switch (action.type) {
@@ -29,7 +17,7 @@ const reducer = (state: PaginationState, action: PaginationAction): PaginationSt
 			return { ...state, currentPage: (state.currentPage ?? 0) - 1 };
 		case 'SET_PAGE':
 			return { ...state, currentPage: action.payload ?? 1 };
-		case 'SET_STEP':
+		case 'SET_STEP': {
 			const firstRow = ((state.currentPage ?? 1) - 1) * state.step + 1;
 			const newPage = Math.ceil(firstRow / action.payload);
 			const newTotalPages =
@@ -42,6 +30,7 @@ const reducer = (state: PaginationState, action: PaginationAction): PaginationSt
 				currentPage: newPage,
 				totalPages: newTotalPages,
 			};
+		}
 		case 'SET_TOTAL_PAGES':
 			return { ...state, totalPages: action.payload };
 		case 'SET_TOTAL_DATA':
@@ -51,10 +40,6 @@ const reducer = (state: PaginationState, action: PaginationAction): PaginationSt
 	}
 };
 
-type UsePaginationArgs = Partial<
-	Pick<PaginationState, 'totalPages' | 'currentPage' | 'step' | 'totalData'>
->;
-
 export const usePagination = (props: UsePaginationArgs) => {
 	const { totalPages = null, currentPage = null, step = 10, totalData = null } = props;
 	const [paginationState, paginationDispatch] = useReducer(reducer, {
@@ -62,7 +47,7 @@ export const usePagination = (props: UsePaginationArgs) => {
 		currentPage,
 		step,
 		totalData,
-	} as PaginationState);
+	});
 
 	useEffect(() => {
 		if (
@@ -111,16 +96,6 @@ const ChevronRight = () => (
 		/>
 	</svg>
 );
-
-export interface PaginationProps {
-	className?: string;
-	floating?: boolean;
-	paginationState?: Pick<PaginationState, 'totalPages' | 'currentPage' | 'step' | 'totalData'>;
-	paginationDispatch?: Dispatch<PaginationAction>;
-	loading?: boolean;
-	dataLabel?: string | undefined;
-	onChange?: (args: { currentPage: number; step: number; totalPages: number | null }) => void;
-}
 
 export const Pagination = forwardRef<HTMLDivElement, PaginationProps>((props, ref) => {
 	const {

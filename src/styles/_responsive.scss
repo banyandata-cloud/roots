@@ -35,7 +35,7 @@ $screen-xl-min: 1200px;
 }
 
 @mixin rwd($screen) {
-	@media (min-width: $screen+'px') {
+	@media (min-width: #{$screen}px) {
 		@content;
 	}
 }
