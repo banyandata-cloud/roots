@@ -1,6 +1,7 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs';
 import ThemedContainer from '../../helpers/themedContainer/ThemedContainer';
 import Breadcrumbs from './Breadcrumbs';
+import InteractiveBreadcrumbs from './InteractiveBreadcrumbs';
 
 <Meta title='Components/v2/Breadcrumbs' parameters={{ options: { showToolbar: true } }} />
 
@@ -16,15 +17,18 @@ A breadcrumb navigation component for React applications that helps users track 
 
 #### Design - [Figma](https://www.figma.com/design/IfmLQrA0AAZVYwt6vRxqCe/Design-System--26?node-id=1018-697&p=f&m=dev) | Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/components/breadcrumbs)
 
-> The Breadcrumbs component renders a navigation bar that displays breadcrumb items. It supports three visual types -`text`, `text-with-line`, and `button` - along with two separator styles -`chevron` and `slash`. Each crumb can have an optional dropdown with selectable options.
+> The Breadcrumbs component renders a navigation bar that displays breadcrumb items. It supports three visual types — `text`, `text-with-line`, and `button` — along with two separator styles — `chevron` and `slash`. Each crumb can have an optional dropdown with selectable options.
 
 ## Usage
 
 Basic import and additional information on how to use this component.
 
+<div>
 ```js
 import { Breadcrumbs } from '@banyan_cloud/roots';
 ```
+
+</div>
 
 - This Breadcrumbs component provides users with a clear visual representation of their current navigation path.
 - It supports `text`, `text-with-line`, and `button` types with `chevron` or `slash` separators.
@@ -370,7 +374,7 @@ The Breadcrumbs with top and bottom line highlight and slash separator.
 	</Story>
 </Canvas>
 
-### Button / Chevron
+### Button - Chevron
 
 The Breadcrumbs with button type and chevron separator.
 
@@ -538,6 +542,16 @@ The Breadcrumbs with button type and slash separator.
 	</Story>
 </Canvas>
 
+---
+
+### Interactive
+
+<Canvas>
+	<Story name='Interactive'>{() => <InteractiveBreadcrumbs />}</Story>
+</Canvas>
+
+---
+
 ## API
 
 **`type`**
@@ -555,10 +569,6 @@ The visual type of the breadcrumbs.
 	</tr>
 </table>
 
-```jsx
-<Breadcrumbs type='button' />
-```
-
 **`separator`**
 
 The separator icon between breadcrumb items.
@@ -574,10 +584,6 @@ The separator icon between breadcrumb items.
 	</tr>
 </table>
 
-```jsx
-<Breadcrumbs separator='slash' />
-```
-
 **`crumbs`**
 
 An array of breadcrumb items with properties.
@@ -588,30 +594,10 @@ An array of breadcrumb items with properties.
 		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
 	</tr>
 	<tr>
-		<td>{`[{label: string, onClick: func, isDisabled: bool, dropdownOptions: array}]`}</td>
+		<td>{`[{ label: string, onClick: func, isDisabled: bool, dropdownOptions: array }]`}</td>
 		<td>[]</td>
 	</tr>
 </table>
-
-```jsx
-<Breadcrumbs
-	crumbs={[
-		{
-			label: 'Home',
-		},
-		{
-			label: 'Projects',
-			dropdownOptions: [
-				{ label: 'Option 1', value: 'option-1' },
-				{ label: 'Option 2', value: 'option-2' },
-			],
-		},
-		{
-			label: 'Current Page',
-		},
-	]}
-/>
-```
 
 **`className`**
 
@@ -628,6 +614,9 @@ Additional CSS class for the breadcrumb container.
 	</tr>
 </table>
 
+<div>
 ```jsx
 <Breadcrumbs className='custom-breadcrumbs' />
 ```
+
+</div>

@@ -1,16 +1,17 @@
-import { forwardRef, type RefObject } from 'react';
+import { forwardRef } from 'react';
 import { classes } from '../../../utils/utils';
 import Text from '../../text/Text';
 import { ArrowIcon } from '../icons';
 import styles from './Link.module.scss';
 import type { LinkProps } from './types';
 
-const Link = forwardRef<RefObject<HTMLAnchorElement>, LinkProps>((props, ref) => {
+const Link = forwardRef<HTMLAnchorElement, LinkProps>((props, ref) => {
 	const {
 		children,
 		href,
 		target = '_self',
 		onClick,
+		variant = 'styled',
 		size = 'md',
 		withIcon = false,
 		disabled = false,
@@ -26,6 +27,22 @@ const Link = forwardRef<RefObject<HTMLAnchorElement>, LinkProps>((props, ref) =>
 		onClick?.();
 	};
 
+	if (variant === 'unstyled') {
+		return (
+			<a
+				ref={ref}
+				className={classes(styles.unstyled, className)}
+				href={disabled ? undefined : href}
+				target={target}
+				onClick={handleClick}
+				aria-disabled={disabled}
+				tabIndex={disabled ? -1 : 0}
+				{...attrs}>
+				{children}
+			</a>
+		);
+	}
+
 	return (
 		<div
 			className={classes(
@@ -34,7 +51,7 @@ const Link = forwardRef<RefObject<HTMLAnchorElement>, LinkProps>((props, ref) =>
 				disabled && styles.disabled
 			)}>
 			<Text
-				ref={ref}
+				ref={ref as React.Ref<never>}
 				component='a'
 				variant='b2'
 				className={classes(styles.link, withIcon && styles.withIcon, className)}

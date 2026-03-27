@@ -41,6 +41,7 @@
   align-items: center;
   min-width: 160px;
   text-align: center;
+  gap: 2px;
 }
 .stepper--vertical .stepWrapper {
   flex-direction: row;
@@ -67,7 +68,7 @@
   background-color: #e9eaeb;
 }
 .verticalLine--dotted {
-  width: 0;
+  width: 0px;
   border-left: 2px dotted #e9eaeb;
 }
 .verticalLine--completed.verticalLine--solid {
@@ -150,6 +151,10 @@
   align-items: flex-start;
   flex: 1;
   min-width: 0;
+  gap: 2px;
+}
+.progressBarWrapper .content {
+  padding: 0px !important;
 }
 
 .progressBarTrack {
@@ -172,11 +177,11 @@
 .content {
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 0px;
 }
 .stepper--horizontal .content {
   width: 100%;
-  padding: 0 12px;
+  padding: 0px 12px;
   align-items: center;
   text-align: center;
 }
@@ -202,31 +207,36 @@
   line-height: 24px;
 }
 .content--icon .label--incomplete,
-.content--icon .description--incomplete {
-  color: #717680;
+.content--icon .label--completed {
+  color: #414651;
 }
-.content--icon .label--current,
+.content--icon .description--incomplete,
+.content--icon .description--completed {
+  color: #535862;
+}
+.content--icon .label--current {
+  color: #175cd3;
+}
 .content--icon .description--current {
   color: #1570ef;
 }
-.content--icon .label--completed,
-.content--icon .description--completed {
-  color: #181d27;
-}
 .content--noIcon .label--incomplete,
 .content--noIcon .description--incomplete {
-  color: #717680;
+  color: #414651;
+  opacity: 0.6;
 }
 .content--noIcon .label--current,
-.content--noIcon .description--current {
-  color: #181d27;
+.content--noIcon .label--completed {
+  color: #414651;
+  opacity: 1;
 }
-.content--noIcon .label--completed,
+.content--noIcon .description--current,
 .content--noIcon .description--completed {
-  color: #181d27;
+  color: #535862;
+  opacity: 1;
 }
 .content--progressBar {
-  padding: 0;
+  padding: 0px;
   align-items: flex-start !important;
   text-align: left !important;
 }
@@ -246,7 +256,7 @@
 .label {
   font-family: "Jakarta", sans-serif;
   font-weight: 600;
-  color: #181d27;
+  color: #414651;
 }
 .stepper--horizontal .label {
   white-space: nowrap;
@@ -258,6 +268,6 @@
 .description {
   font-family: "Jakarta", sans-serif;
   font-weight: 400;
-  color: #717680;
-  margin-top: 0;
+  color: #535862;
+  margin-top: 0px;
 }/*# sourceMappingURL=Stepper.module.css.map */

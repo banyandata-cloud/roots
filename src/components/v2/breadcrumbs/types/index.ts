@@ -1,25 +1,23 @@
 export type BreadcrumbSeparator = 'chevron' | 'slash';
 
 export type BreadcrumbType = 'text' | 'text-with-line' | 'button';
-
 export interface BreadcrumbItem {
 	id: string;
 	label: string;
-	href?: string | undefined;
-	onClick?: (() => void) | undefined;
-	isDisabled?: boolean | undefined;
-	dropdownOptions?: BreadcrumbDropdownOption[] | undefined;
+	href?: string;
+	onClick?: () => void;
+	isDisabled?: boolean;
+	dropdownOptions?: BreadcrumbDropdownOption[];
 }
-
 export interface BreadcrumbDropdownOption {
 	label: string;
 	value: string;
-	onClick?: (() => void) | undefined;
+	onClick?: () => void;
 }
-
 export interface BreadcrumbsProps {
 	crumbs: BreadcrumbItem[];
-	type?: BreadcrumbType | undefined;
-	separator?: BreadcrumbSeparator | undefined;
-	className?: string | undefined;
+	type?: BreadcrumbType;
+	separator?: BreadcrumbSeparator;
+	className?: string;
+	activeIndex?: number;
 }
