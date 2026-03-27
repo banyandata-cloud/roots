@@ -1,0 +1,598 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+
+import { TextField } from './index';
+import { EmailIcon, CopyIcon } from '../../../icons';
+
+<Meta title='Components/v2/Input/TextField' parameters={{ options: { showToolbar: false } }} />
+
+export const Template = (args) => {
+	return <TextField {...args} />;
+};
+
+export const DefaultVariantTemplate = () => {
+	return (
+		<div style={{ display: 'flex', flexWrap: 'wrap', gap: '24px' }}>
+			<div style={{ minWidth: '320px', width: '320px' }}>
+				<TextField
+					label='Default'
+					placeholder='Enter Email Address'
+					helperText='Helper text'
+					required={true}
+					leadingIcon={true}
+					leadingIconComponent={EmailIcon}
+					helpIcon={true}
+				/>
+			</div>
+			<div style={{ minWidth: '320px', width: '320px' }}>
+				<TextField
+					label='Active Typing'
+					placeholder='Enter Email Address'
+					helperText='Helper text'
+					state='active-typing'
+					required={true}
+					leadingIcon={true}
+					leadingIconComponent={EmailIcon}
+					helpIcon={true}
+				/>
+			</div>
+			<div style={{ minWidth: '320px', width: '320px' }}>
+				<TextField
+					label='Filled'
+					value='balaji@banyancloud.io'
+					helperText='Helper text'
+					state='filled'
+					required={true}
+					leadingIcon={true}
+					leadingIconComponent={EmailIcon}
+					helpIcon={true}
+				/>
+			</div>
+			<div style={{ minWidth: '320px', width: '320px' }}>
+				<TextField
+					label='Filled Focus'
+					value='balaji@banyancloud.io'
+					helperText='Helper text'
+					state='filled-focus'
+					required={true}
+					leadingIcon={true}
+					leadingIconComponent={EmailIcon}
+					helpIcon={true}
+				/>
+			</div>
+			<div style={{ minWidth: '320px', width: '320px' }}>
+				<TextField
+					label='Error'
+					value='balaji@banyancloud.io'
+					helperText='Helper text'
+					state='error-filled'
+					required={true}
+					leadingIcon={true}
+					leadingIconComponent={EmailIcon}
+					helpIcon={true}
+				/>
+			</div>
+			<div style={{ minWidth: '320px', width: '320px' }}>
+				<TextField
+					label='Error Focus'
+					value='balaji@banyancloud.io'
+					helperText='Helper text'
+					state='error-focus'
+					required={true}
+					leadingIcon={true}
+					leadingIconComponent={EmailIcon}
+					helpIcon={true}
+				/>
+			</div>
+			<div style={{ minWidth: '320px', width: '320px' }}>
+				<TextField
+					label='Warning'
+					value='balaji@banyancloud.io'
+					helperText='Helper text'
+					state='warning'
+					required={true}
+					leadingIcon={true}
+					leadingIconComponent={EmailIcon}
+					helpIcon={true}
+				/>
+			</div>
+			<div style={{ minWidth: '320px', width: '320px' }}>
+				<TextField
+					label='Disabled'
+					value='balaji@banyancloud.io'
+					helperText='Helper text'
+					state='disable'
+					disabled={true}
+					required={true}
+					leadingIcon={true}
+					leadingIconComponent={EmailIcon}
+					helpIcon={true}
+				/>
+			</div>
+		</div>
+	);
+};
+
+export const LeadingTextVariantTemplate = () => {
+	return (
+		<div style={{ display: 'flex', flexWrap: 'wrap', gap: '24px' }}>
+			<div style={{ minWidth: '320px', width: '320px' }}>
+				<TextField
+					label='Default'
+					placeholder='Enter website URL'
+					helperText='Helper text'
+					required={true}
+					leadingText='https://'
+					helpIcon={true}
+					type='leading-text'
+				/>
+			</div>
+			<div style={{ minWidth: '320px', width: '320px' }}>
+				<TextField
+					label='Active Typing'
+					placeholder='Enter website URL'
+					helperText='Helper text'
+					state='active-typing'
+					required={true}
+					leadingText='https://'
+					helpIcon={true}
+					type='leading-text'
+				/>
+			</div>
+			<div style={{ minWidth: '320px', width: '320px' }}>
+				<TextField
+					label='Filled'
+					value='app.banyancloud.io'
+					helperText='Helper text'
+					state='filled'
+					required={true}
+					leadingText='https://'
+					helpIcon={true}
+					type='leading-text'
+				/>
+			</div>
+			<div style={{ minWidth: '320px', width: '320px' }}>
+				<TextField
+					label='Filled Focus'
+					value='app.banyancloud.io'
+					helperText='Helper text'
+					state='filled-focus'
+					required={true}
+					leadingText='https://'
+					helpIcon={true}
+					type='leading-text'
+				/>
+			</div>
+			<div style={{ minWidth: '320px', width: '320px' }}>
+				<TextField
+					label='Error'
+					value='app.banyancloud.io'
+					helperText='Helper text'
+					state='error-filled'
+					required={true}
+					leadingText='https://'
+					helpIcon={true}
+					type='leading-text'
+				/>
+			</div>
+			<div style={{ minWidth: '320px', width: '320px' }}>
+				<TextField
+					label='Error Focus'
+					value='app.banyancloud.io'
+					helperText='Helper text'
+					state='error-focus'
+					required={true}
+					leadingText='https://'
+					helpIcon={true}
+					type='leading-text'
+				/>
+			</div>
+			<div style={{ minWidth: '320px', width: '320px' }}>
+				<TextField
+					label='Warning'
+					value='app.banyancloud.io'
+					helperText='Helper text'
+					state='warning'
+					required={true}
+					leadingText='https://'
+					helpIcon={true}
+					type='leading-text'
+				/>
+			</div>
+			<div style={{ minWidth: '320px', width: '320px' }}>
+				<TextField
+					label='Disabled'
+					value='app.banyancloud.io'
+					helperText='Helper text'
+					state='disable'
+					disabled={true}
+					required={true}
+					leadingText='https://'
+					helpIcon={true}
+					type='leading-text'
+				/>
+			</div>
+		</div>
+	);
+};
+
+export const TrailingButtonVariantTemplate = () => {
+	return (
+		<div style={{ display: 'flex', flexWrap: 'wrap', gap: '24px' }}>
+			<div style={{ minWidth: '320px', width: '320px' }}>
+				<TextField
+					label='Default'
+					placeholder='Enter Email Address'
+					helperText='Helper text'
+					required={true}
+					leadingIcon={true}
+					leadingIconComponent={EmailIcon}
+					trailingButton={true}
+					trailingButtonText='Copy'
+					trailingButtonIcon={true}
+					trailingButtonIconComponent={CopyIcon}
+					type='trailing-button'
+				/>
+			</div>
+			<div style={{ minWidth: '320px', width: '320px' }}>
+				<TextField
+					label='Active Typing'
+					placeholder='Enter Email Address'
+					helperText='Helper text'
+					state='active-typing'
+					required={true}
+					leadingIcon={true}
+					leadingIconComponent={EmailIcon}
+					trailingButton={true}
+					trailingButtonText='Copy'
+					trailingButtonIcon={true}
+					trailingButtonIconComponent={CopyIcon}
+					type='trailing-button'
+				/>
+			</div>
+			<div style={{ minWidth: '320px', width: '320px' }}>
+				<TextField
+					label='Filled'
+					value='balaji@banyancloud.io'
+					helperText='Helper text'
+					state='filled'
+					required={true}
+					leadingIcon={true}
+					leadingIconComponent={EmailIcon}
+					trailingButton={true}
+					trailingButtonText='Copy'
+					trailingButtonIcon={true}
+					trailingButtonIconComponent={CopyIcon}
+					type='trailing-button'
+				/>
+			</div>
+			<div style={{ minWidth: '320px', width: '320px' }}>
+				<TextField
+					label='Filled Focus'
+					value='balaji@banyancloud.io'
+					helperText='Helper text'
+					state='filled-focus'
+					required={true}
+					leadingIcon={true}
+					leadingIconComponent={EmailIcon}
+					trailingButton={true}
+					trailingButtonText='Copy'
+					trailingButtonIcon={true}
+					trailingButtonIconComponent={CopyIcon}
+					type='trailing-button'
+				/>
+			</div>
+			<div style={{ minWidth: '320px', width: '320px' }}>
+				<TextField
+					label='Error'
+					value='balaji@banyancloud.io'
+					helperText='Helper text'
+					state='error-filled'
+					required={true}
+					leadingIcon={true}
+					leadingIconComponent={EmailIcon}
+					trailingButton={true}
+					trailingButtonText='Copy'
+					trailingButtonIcon={true}
+					trailingButtonIconComponent={CopyIcon}
+					type='trailing-button'
+				/>
+			</div>
+			<div style={{ minWidth: '320px', width: '320px' }}>
+				<TextField
+					label='Error Focus'
+					value='balaji@banyancloud.io'
+					helperText='Helper text'
+					state='error-focus'
+					required={true}
+					leadingIcon={true}
+					leadingIconComponent={EmailIcon}
+					trailingButton={true}
+					trailingButtonText='Copy'
+					trailingButtonIcon={true}
+					trailingButtonIconComponent={CopyIcon}
+					type='trailing-button'
+				/>
+			</div>
+			<div style={{ minWidth: '320px', width: '320px' }}>
+				<TextField
+					label='Warning'
+					value='balaji@banyancloud.io'
+					helperText='Helper text'
+					state='warning'
+					required={true}
+					leadingIcon={true}
+					leadingIconComponent={EmailIcon}
+					trailingButton={true}
+					trailingButtonText='Copy'
+					trailingButtonIcon={true}
+					trailingButtonIconComponent={CopyIcon}
+					type='trailing-button'
+				/>
+			</div>
+			<div style={{ minWidth: '320px', width: '320px' }}>
+				<TextField
+					label='Disabled'
+					value='balaji@banyancloud.io'
+					helperText='Helper text'
+					state='disable'
+					disabled={true}
+					required={true}
+					leadingIcon={true}
+					leadingIconComponent={EmailIcon}
+					trailingButton={true}
+					trailingButtonText='Copy'
+					trailingButtonIcon={true}
+					trailingButtonIconComponent={CopyIcon}
+					type='trailing-button'
+				/>
+			</div>
+		</div>
+	);
+};
+
+# TextField
+
+Text input field component with multiple states from the Figma design system.
+
+#### Design - [Figma](https://www.figma.com/design/IfmLQrA0AAZVYwt6vRxqCe/Design-System--26?node-id=1981-3711&m=dev) | Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/src/components/v2/input/textfield)
+
+## Usage
+
+Basic import and additional information on how to use this component.
+
+```js
+import { TextField } from '@banyan_cloud/roots';
+```
+
+## Stories
+
+The CSF rendered inside the `Canvas` from which you can see the implementation example.
+
+### Default Variant
+
+<Canvas>
+	<Story name='AllDefaultStates'>{() => <DefaultVariantTemplate />}</Story>
+</Canvas>
+
+### Leading Text Variant
+
+<Canvas>
+	<Story name='AllLeadingTextStates'>{() => <LeadingTextVariantTemplate />}</Story>
+</Canvas>
+
+### Trailing Button Variant
+
+<Canvas>
+	<Story name='AllTrailingButtonStates'>{() => <TrailingButtonVariantTemplate />}</Story>
+</Canvas>
+
+## API
+
+**`label`**
+
+Label text displayed above the input field.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>undefined</td>
+	</tr>
+</table>
+
+```jsx
+<TextField label='Email Address' />
+```
+
+**`placeholder`**
+
+Placeholder text shown when input is empty.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>'Optional placeholder text'</td>
+	</tr>
+</table>
+
+```jsx
+<TextField placeholder='Enter your email' />
+```
+
+**`helperText`**
+
+Helper text displayed below the input field.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>'Helper text'</td>
+	</tr>
+</table>
+
+```jsx
+<TextField helperText='This field is required' />
+```
+
+**`state`**
+
+Current state of the input field. One of `default`, `filled`, `active-typing`, `filled-focus`, `error-focus`, `error-filled`, `warning`, `disable`.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>'default'</td>
+	</tr>
+</table>
+
+```jsx
+<TextField state='error-filled' />
+```
+
+**`size`**
+
+Size variant. One of `sm` and `md`.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>'sm'</td>
+	</tr>
+</table>
+
+```jsx
+<TextField size='md' />
+```
+
+**`required`**
+
+Shows required asterisk (\*) after label.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>bool</td>
+		<td>true</td>
+	</tr>
+</table>
+
+```jsx
+<TextField required={false} />
+```
+
+**`leadingIcon`**
+
+Shows leading email icon.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>bool</td>
+		<td>true</td>
+	</tr>
+</table>
+
+```jsx
+<TextField leadingIcon={false} />
+```
+
+**`leadingText`**
+
+Text displayed at the beginning of the input field. Replaces leadingIcon when present.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>undefined</td>
+	</tr>
+</table>
+
+```jsx
+<TextField leadingText='Http://' />
+```
+
+**`helpIcon`**
+
+Shows help icon on the right side.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>bool</td>
+		<td>true</td>
+	</tr>
+</table>
+
+```jsx
+<TextField helpIcon={false} />
+```
+
+**`disabled`**
+
+Disables the input field.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>bool</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<TextField disabled={true} />
+```
+
+**`className`**
+
+Key to change style through external className.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>''</td>
+	</tr>
+</table>
+
+```jsx
+<TextField className='custom-textfield' />
+```

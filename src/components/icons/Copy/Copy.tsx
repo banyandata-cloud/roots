@@ -9,16 +9,26 @@ const Copy = (props: CopyProps) => {
 	const { className, width, height, color } = props;
 	return (
 		<svg
-			width={width ?? '1.5rem'}
-			height={height ?? '1.5rem'}
-			fill={color ?? 'black'}
+			width={width ?? '20'}
+			height={height ?? '20'}
 			className={className}
-			viewBox='0 0 16 17'
+			viewBox='0 0 20 20'
+			fill='none'
 			xmlns='http://www.w3.org/2000/svg'>
 			<path
-				fillRule='evenodd'
-				clipRule='evenodd'
-				d='M2 9.5H1V2.5C1 1.94772 1.44772 1.5 2 1.5H9V2.5H2V9.5ZM14 5.5V14.5H5V5.5H14ZM5 4.5H14C14.5523 4.5 15 4.94772 15 5.5V14.5C15 15.0523 14.5523 15.5 14 15.5H5C4.44772 15.5 4 15.0523 4 14.5V5.5C4 4.94772 4.44772 4.5 5 4.5Z'
+				d='M12.4997 5.41667V4.5C12.4997 3.39543 11.6042 2.5 10.4997 2.5H5.33301C4.22844 2.5 3.33301 3.39543 3.33301 4.5V10.5C3.33301 11.6046 4.22844 12.5 5.33301 12.5H5.41634'
+				stroke={color ?? '#A4A7AE'}
+				stroke-width='1.67'
+				stroke-linecap='round'
+			/>
+			<rect
+				x='7.5'
+				y='7.5'
+				width='9.16667'
+				height='10'
+				rx='2'
+				stroke={color ?? '#A4A7AE'}
+				stroke-width='1.67'
 			/>
 		</svg>
 	);
