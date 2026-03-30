@@ -96,8 +96,26 @@ const Tooltip = forwardRef<RefObject<HTMLElement>, TooltipProps>((props, propRef
 		role: 'tooltip',
 	});
 
+	const hoverOpen = React.useMemo(() => {
+		return {
+			reference: {
+				onMouseEnter: () => {
+					if (clickOutsideToClose) {
+						setOpen(true);
+					}
+				},
+			},
+		};
+	}, [clickOutsideToClose]);
+
 	// Merge all the interactions into prop getters
-	const { getReferenceProps, getFloatingProps } = useInteractions([hover, focus, dismiss, role]);
+	const { getReferenceProps, getFloatingProps } = useInteractions([
+		hover,
+		focus,
+		dismiss,
+		role,
+		hoverOpen,
+	]);
 
 	const typedChildren = children as ReactElementWithRef;
 
