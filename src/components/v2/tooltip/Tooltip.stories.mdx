@@ -48,6 +48,42 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
   </Story>
 </Canvas>
 
+### Pointer Position at Top (Start / Center / End)
+
+<Canvas>
+  <Story name="Top Pointer Positions">
+    <div style={{ padding: '60px', display: 'flex', justifyContent: 'center', gap: '16px', flexWrap: 'wrap' }}>
+      <Tooltip content="Top Start Pointer" position="top" pointerPosition="start">
+        <div style={{ padding: '8px 16px', background: '#eaeaea', borderRadius: '4px', cursor: 'default' }}>Top Start</div>
+      </Tooltip>
+      <Tooltip content="Top Center Pointer" position="top" pointerPosition="center">
+        <div style={{ padding: '8px 16px', background: '#eaeaea', borderRadius: '4px', cursor: 'default' }}>Top Center</div>
+      </Tooltip>
+      <Tooltip content="Top End Pointer" position="top" pointerPosition="end">
+        <div style={{ padding: '8px 16px', background: '#eaeaea', borderRadius: '4px', cursor: 'default' }}>Top End</div>
+      </Tooltip>
+    </div>
+  </Story>
+</Canvas>
+
+### Pointer Position at Bottom (Start / Center / End)
+
+<Canvas>
+  <Story name="Bottom Pointer Positions">
+    <div style={{ padding: '60px', display: 'flex', justifyContent: 'center', gap: '16px', flexWrap: 'wrap' }}>
+      <Tooltip content="Bottom Start Pointer" position="bottom" pointerPosition="start">
+        <div style={{ padding: '8px 16px', background: '#eaeaea', borderRadius: '4px', cursor: 'default' }}>Bottom Start</div>
+      </Tooltip>
+      <Tooltip content="Bottom Center Pointer" position="bottom" pointerPosition="center">
+        <div style={{ padding: '8px 16px', background: '#eaeaea', borderRadius: '4px', cursor: 'default' }}>Bottom Center</div>
+      </Tooltip>
+      <Tooltip content="Bottom End Pointer" position="bottom" pointerPosition="end">
+        <div style={{ padding: '8px 16px', background: '#eaeaea', borderRadius: '4px', cursor: 'default' }}>Bottom End</div>
+      </Tooltip>
+    </div>
+  </Story>
+</Canvas>
+
 ### Tooltip at Left
 
 <Canvas>
@@ -150,6 +186,25 @@ Whether the tooltip allows pointer events and hovering inside its body to native
 
 ```jsx
 <Tooltip interactive={true} />
+```
+
+**`pointerPosition`**
+
+Controls where the pointer appears along the active side (`start`, `center`, `end`).
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>'start' | 'center' | 'end'</td>
+		<td>'center'</td>
+	</tr>
+</table>
+
+```jsx
+<Tooltip pointerPosition='start' />
 ```
 
 **`showPointer`**

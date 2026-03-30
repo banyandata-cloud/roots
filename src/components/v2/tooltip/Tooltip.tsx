@@ -8,21 +8,50 @@ import {
   useRole,
 } from '@floating-ui/react-dom-interactions';
 import { motion, AnimatePresence } from 'framer-motion';
-import React, { cloneElement, forwardRef, useRef, useState, type ReactElement, type RefObject } from 'react';
+import React, { cloneElement, forwardRef, useRef, useState, type CSSProperties, type RefObject } from 'react';
 import { mergeRefs } from 'react-merge-refs';
 import { classes } from '../../../utils';
 import { Popper } from '../../popper';
 import { Text } from '../text';
 import styles from './Tooltip.module.css';
-import type { TooltipPosition, TooltipProps } from './types';
+import type { ReactElementWithRef, TooltipPointerPosition, TooltipPosition, TooltipProps } from './types';
 
-// V1 types usually export ReactElementWithRef, we define here just in case:
-type ReactElementWithRef<T = unknown> = ReactElement & { ref?: React.Ref<T> | null };
+const POINTER_EDGE_OFFSET = '12px';
+
+const getPointerStyle = ({
+  side,
+  pointerPosition,
+  arrowX,
+  arrowY,
+}: {
+  side: TooltipPosition;
+  pointerPosition: TooltipPointerPosition;
+  arrowX?: number;
+  arrowY?: number;
+}): Pick<CSSProperties, 'left' | 'top'> => {
+  if (pointerPosition === 'center') {
+    return {
+      left: arrowX != null ? `${arrowX}px` : undefined,
+      top: arrowY != null ? `${arrowY}px` : undefined,
+    };
+  }
+
+  const isHorizontalSide = side === 'top' || side === 'bottom';
+  const edgeValue =
+    pointerPosition === 'start'
+      ? POINTER_EDGE_OFFSET
+      : `calc(100% - ${POINTER_EDGE_OFFSET})`;
+
+  return isHorizontalSide
+    ? { left: edgeValue, top: undefined }
+    : { left: undefined, top: edgeValue };
+};
 
 export const Tooltip = forwardRef<RefObject<HTMLElement>, TooltipProps>((props, propRef) => {
   const {
     children,
     position = 'top',
+    pointerPosition = 'center',
     content,
     interactive = false,
     className = '',
@@ -122,10 +151,14 @@ export const Tooltip = forwardRef<RefObject<HTMLElement>, TooltipProps>((props, 
                   className={styles.arrow}
                   ref={arrowEl}
                   style={{
-                    left: middlewareData.arrow?.x != null ? `${middlewareData.arrow.x}px` : '',
-                    top: middlewareData.arrow?.y != null ? `${middlewareData.arrow.y}px` : '',
-                    right: '',
-                    bottom: '',
+                    ...getPointerStyle({
+                      side,
+                      pointerPosition,
+                      arrowX: middlewareData.arrow?.x,
+                      arrowY: middlewareData.arrow?.y,
+                    }),
+                    right: undefined,
+                    bottom: undefined,
                     [staticSide]: '-4px', // Shift it precisely halfway out of the tooltip edge
                   }}
                 />

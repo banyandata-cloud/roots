@@ -1,7 +1,8 @@
 /// <reference types="jest" />
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { Tooltip } from './Tooltip';
+import styles from './Tooltip.module.css';
 
 // HAPPY PATH
 describe('Tooltip — Basic Rendering', () => {
@@ -33,5 +34,37 @@ describe('Tooltip — Snapshots', () => {
 			</Tooltip>
 		);
 		expect(container).toMatchSnapshot();
+	});
+});
+
+describe('Tooltip — Pointer Position Variants', () => {
+	test('applies start pointer positioning on top placement', async () => {
+		render(
+			<Tooltip content='Top Start Pointer' position='top' pointerPosition='start'>
+				<button>Hover Top Start</button>
+			</Tooltip>
+		);
+
+		fireEvent.focus(screen.getByRole('button', { name: 'Hover Top Start' }));
+
+		const tooltip = await screen.findByRole('tooltip');
+		const arrow = tooltip.querySelector(`.${styles.arrow}`);
+
+		expect(arrow).toHaveStyle('left: 12px');
+	});
+
+	test('applies end pointer positioning on bottom placement', async () => {
+		render(
+			<Tooltip content='Bottom End Pointer' position='bottom' pointerPosition='end'>
+				<button>Hover Bottom End</button>
+			</Tooltip>
+		);
+
+		fireEvent.focus(screen.getByRole('button', { name: 'Hover Bottom End' }));
+
+		const tooltip = await screen.findByRole('tooltip');
+		const arrow = tooltip.querySelector(`.${styles.arrow}`);
+
+		expect(arrow).toHaveStyle('left: calc(100% - 12px)');
 	});
 });
