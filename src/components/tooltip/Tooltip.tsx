@@ -1,5 +1,6 @@
 import { arrow, autoUpdate, flip, offset, shift } from '@floating-ui/react-dom';
 import {
+	safePolygon,
 	useDismiss,
 	useFloating,
 	useFocus,
@@ -80,7 +81,7 @@ const Tooltip = forwardRef<RefObject<HTMLElement>, TooltipProps>((props, propRef
 	// Event listeners to change the open state
 	const hover = useHover(context, {
 		move: true,
-		enabled: !clickOutsideToClose,
+		handleClose: clickOutsideToClose ? safePolygon() : undefined,
 	});
 
 	const focus = useFocus(context, {
@@ -95,26 +96,8 @@ const Tooltip = forwardRef<RefObject<HTMLElement>, TooltipProps>((props, propRef
 		role: 'tooltip',
 	});
 
-	const hoverOpen = React.useMemo(() => {
-		return {
-			reference: {
-				onMouseEnter: () => {
-					if (clickOutsideToClose) {
-						setOpen(true);
-					}
-				},
-			},
-		};
-	}, [clickOutsideToClose]);
-
 	// Merge all the interactions into prop getters
-	const { getReferenceProps, getFloatingProps } = useInteractions([
-		hover,
-		focus,
-		dismiss,
-		role,
-		hoverOpen,
-	]);
+	const { getReferenceProps, getFloatingProps } = useInteractions([hover, focus, dismiss, role]);
 
 	const typedChildren = children as ReactElementWithRef;
 

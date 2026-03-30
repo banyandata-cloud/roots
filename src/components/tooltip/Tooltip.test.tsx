@@ -13,6 +13,7 @@ const mockUseHover = jest.fn(() => ({
 		onMouseLeave: () => (mockOpen = false),
 	},
 }));
+const mockSafePolygon = jest.fn(() => jest.fn());
 const mockUseFocus = jest.fn(() => ({ props: {} }));
 const mockUseDismiss = jest.fn(() => ({ props: {} }));
 
@@ -39,6 +40,7 @@ jest.mock('@floating-ui/react-dom-interactions', () => {
 		}),
 
 		useHover: (...args: any[]) => mockUseHover(...args),
+		safePolygon: (...args: any[]) => mockSafePolygon(...args),
 
 		useFocus: (...args: any[]) => mockUseFocus(...args),
 		useDismiss: (...args: any[]) => mockUseDismiss(...args),
@@ -138,8 +140,8 @@ describe('Tooltip — Behaviour With Extended Props', () => {
 		expect(mockUseHover).toHaveBeenCalledWith(
 			expect.anything(),
 			expect.objectContaining({
-				enabled: false,
 				move: true,
+				handleClose: expect.any(Function),
 			})
 		);
 		expect(mockUseFocus).toHaveBeenCalledWith(
