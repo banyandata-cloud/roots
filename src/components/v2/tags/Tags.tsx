@@ -67,6 +67,7 @@ const Tag = forwardRef<HTMLInputElement, TagProps>(
 
 		const isControlled = inputValue !== undefined;
 		const [internalValue, setInternalValue] = useState<string>(defaultInputValue);
+		const [isTagHovered, setIsTagHovered] = useState(false);
 		const resolvedValue = isControlled ? inputValue : internalValue;
 
 		const internalInputRef = useRef<HTMLInputElement>(null);
@@ -124,7 +125,9 @@ const Tag = forwardRef<HTMLInputElement, TagProps>(
 						styles[`tag--${size}`],
 						styles[`tag--${size}--textfield`],
 					].join(' ')}
-					onClick={focusInput}>
+					onClick={focusInput}
+					onMouseEnter={() => setIsTagHovered(true)}
+					onMouseLeave={() => setIsTagHovered(false)}>
 					<span className={styles.tag__textfield_label}>{label}</span>
 					<span
 						ref={sizerRef}
@@ -155,15 +158,17 @@ const Tag = forwardRef<HTMLInputElement, TagProps>(
 							.filter(Boolean)
 							.join(' ')}
 					/>
-					<span
-						className={styles.tag__textfield_closer}
-						onClick={(e) => {
-							e.stopPropagation();
-							handleClear();
-							focusInput();
-						}}>
-						{CLOSER_MAP[size]}
-					</span>
+					{isTagHovered && (
+						<span
+							className={styles.tag__textfield_closer}
+							onClick={(e) => {
+								e.stopPropagation();
+								handleClear();
+								focusInput();
+							}}>
+							{CLOSER_MAP[size]}
+						</span>
+					)}
 				</span>
 			);
 		}
