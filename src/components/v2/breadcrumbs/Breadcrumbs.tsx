@@ -14,6 +14,10 @@ interface DropdownProps {
 	anchorRef: React.RefObject<HTMLSpanElement | null>;
 }
 
+interface SeparatorProps {
+	separator: BreadcrumbSeparator;
+}
+
 const CrumbDropdown: React.FC<DropdownProps> = ({ options, onClose, anchorRef }) => {
 	const ref = useRef<HTMLDivElement>(null);
 	const [position, setPosition] = useState<{ top: number; left: number }>({ top: 0, left: 0 });
@@ -64,10 +68,6 @@ const CrumbDropdown: React.FC<DropdownProps> = ({ options, onClose, anchorRef })
 		</div>
 	);
 };
-
-interface SeparatorProps {
-	separator: BreadcrumbSeparator;
-}
 
 const Separator: React.FC<SeparatorProps> = ({ separator }) => (
 	<span className={styles.separator} aria-hidden='true'>
@@ -190,7 +190,6 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
 							onKeyDown={handleKeyDown}
 							{...focusHandlers}>
 							{isFirst ? (
-								// ── Home icon: Link for text variants, Button for button variant ──
 								isTextVariant ? (
 									<Link
 										variant='unstyled'
