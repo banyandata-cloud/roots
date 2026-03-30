@@ -3,8 +3,10 @@
   width: 100%;
   flex-direction: column;
   align-items: flex-start;
-  gap: 33px;
+  gap: 0;
   border-top: 4px solid #e9eaeb;
+  padding-left: 0;
+  margin-left: 0;
 }
 .progressBar--sm {
   padding-top: 12px;
@@ -22,7 +24,9 @@
 .label {
   font-family: "Jakarta", sans-serif;
   font-weight: 600;
-  color: #181d27;
+  color: #414651;
+  padding: 0;
+  margin: 0;
 }
 .label--sm {
   font-size: 14px;
@@ -32,15 +36,22 @@
   font-size: 16px;
   line-height: 24px;
 }
-.label--active {
-  color: #1570ef;
+.label--completed {
+  color: #414651;
+}
+.label--current {
+  color: #175cd3;
+}
+.label--incomplete {
+  color: #414651;
 }
 
 .description {
   font-family: "Jakarta", sans-serif;
   font-weight: 400;
-  color: #717680;
+  color: #535862;
   margin-top: 0;
+  padding: 0;
 }
 .description--sm {
   font-size: 14px;
@@ -50,6 +61,12 @@
   font-size: 16px;
   line-height: 24px;
 }
-.description--active {
+.description--completed {
+  color: #535862;
+}
+.description--current {
   color: #1570ef;
+}
+.description--incomplete {
+  color: #535862;
 }/*# sourceMappingURL=ProgressBar.module.css.map */
