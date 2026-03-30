@@ -190,6 +190,7 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
 							onKeyDown={handleKeyDown}
 							{...focusHandlers}>
 							{isFirst ? (
+								// ── Home icon: Link for text variants, Button for button variant ──
 								isTextVariant ? (
 									<Link
 										variant='unstyled'
@@ -221,52 +222,16 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
 										/>
 									</span>
 								)
-							) : isTextVariant ? (
-								<>
-									<Link
-										variant='unstyled'
-										href={crumb.href ?? 'javascript:void(0)'}
-										disabled={crumb.isDisabled ?? false}
-										onClick={(e) => {
-											if (hasDropdown || !crumb.href) {
-												e?.preventDefault();
-											}
-
-											if (hasDropdown) {
-												handleDropdownToggle();
-											} else {
-												crumb.onClick?.();
-											}
-										}}
-										className={classes(
-											styles.crumbLink,
-											isActive ? styles.activeLink : ''
-										)}
-										attrs={{ id: crumbId }}>
-										<span
-											className={
-												crumb.label === '...'
-													? styles.crumbEllipsis
-													: styles.crumbLabel
-											}>
-											{crumb.label}
-										</span>
-									</Link>
-									{hasDropdown && isDropdownOpen && (
-										<CrumbDropdown
-											options={crumb.dropdownOptions ?? []}
-											onClose={() => setOpenDropdownId(null)}
-											anchorRef={crumbRef}
-										/>
-									)}
-								</>
 							) : (
 								<>
 									<Button
 										id={crumbId}
 										type='button'
 										variant='unstyled'
-										className={breadcrumbBtnClass}
+										className={classes(
+											breadcrumbBtnClass,
+											isActive ? styles.activeLink : ''
+										)}
 										disabled={crumb.isDisabled}
 										blurOnClick={false}
 										onClick={() => {

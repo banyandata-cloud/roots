@@ -20,7 +20,7 @@ Basic import and additional information on how to use this component.
 import { Tooltip } from '@banyan_cloud/roots';
 ```
 
--   The `className` of the Tooltip can be adjusted in the implementaion code to match its flexibility with respect to its container.
+- The `className` of the Tooltip can be adjusted in the implementaion code to match its flexibility with respect to its container.
 
 ## Stories
 
@@ -90,7 +90,7 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 	</Story>
 </Canvas>
 
-### Tooltip at Top
+### Tooltip at Top and click outside to close
 
 <Canvas>
 	<Story name='Tooltip Top'>
@@ -103,7 +103,7 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 						justifyContent: 'center',
 						marginTop: 150,
 					}}>
-					<Tooltip content='Tooltip Info' position='top'>
+					<Tooltip content='Tooltip Info' position='top' clickOutsideToClose={true}>
 						<div
 							style={{
 								width: '70%',

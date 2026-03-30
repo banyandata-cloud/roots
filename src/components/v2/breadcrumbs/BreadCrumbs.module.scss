@@ -23,8 +23,8 @@ $color-dropdown-item-hover-bg: #f9fafb;
 $transition-default: 0.15s ease;
 $border-radius-default: 6px;
 $border-radius-dropdown: 8px;
-$spacing-xs: 4px; // vertical padding for button (top/bottom)
-$spacing-md: 8px; // horizontal padding for button (left/right)
+$spacing-xs: 4px;
+$spacing-md: 8px;
 $font-family: 'Jakarta', sans-serif;
 
 .inlineWrapper {
@@ -35,7 +35,7 @@ $font-family: 'Jakarta', sans-serif;
 .root {
 	display: inline-flex;
 	align-items: center;
-	gap: 4px; // default gap (button variant = 4px)
+	gap: 4px;
 	position: relative;
 	outline: none;
 	box-sizing: border-box;
@@ -178,7 +178,6 @@ $font-family: 'Jakarta', sans-serif;
 }
 
 .text {
-	// Text variant gap: 8px
 	&.root {
 		gap: 8px;
 	}
@@ -239,14 +238,11 @@ $font-family: 'Jakarta', sans-serif;
 }
 
 .button {
-	// Button variant gap: 4px
 	&.root {
 		gap: 4px;
 	}
-
-	// Text crumb: padding 4px top/bottom, 8px left/right
 	.breadcrumbBtn {
-		padding: $spacing-xs $spacing-md !important; // 4px 8px
+		padding: $spacing-xs $spacing-md !important;
 		border-radius: $border-radius-default !important;
 		transition: background $transition-default !important;
 	}
@@ -256,11 +252,10 @@ $font-family: 'Jakarta', sans-serif;
 		height: 28px;
 	}
 
-	// Icon crumb: padding 4px on all sides
 	.iconCrumbItem .iconCrumbWrapper .breadcrumbBtn {
 		width: 28px !important;
 		height: 28px !important;
-		padding: 4px !important; // 4px 4px
+		padding: 4px !important;
 		margin: 0 !important;
 		border-radius: $border-radius-default !important;
 		display: inline-flex !important;
@@ -285,7 +280,6 @@ $font-family: 'Jakarta', sans-serif;
 		background: transparent !important;
 	}
 
-	// Icon color change on hover for button variant
 	.iconCrumbItem:hover .iconCrumbWrapper {
 		color: $color-label-hover;
 	}

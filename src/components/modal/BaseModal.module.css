@@ -20,14 +20,12 @@
 .root .body {
   overflow-y: scroll;
   padding: 1rem;
-}
-.root .body::-webkit-scrollbar {
-  display: none;
-}
-.root .body {
   -ms-overflow-style: none;
   scrollbar-width: none;
   color: var(--text-color);
+}
+.root .body::-webkit-scrollbar {
+  display: none;
 }
 .root .header,
 .root .footer {

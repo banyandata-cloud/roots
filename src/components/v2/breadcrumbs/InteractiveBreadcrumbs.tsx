@@ -80,10 +80,8 @@ const InteractiveBreadcrumbs: React.FC<Props> = ({ type = 'text' }) => {
 				id: node.id,
 				label: node.label,
 
-				// navigate back
 				onClick: !isLast ? () => setPath(path.slice(0, index + 1)) : undefined,
 
-				// dropdown for non-last
 				dropdownOptions: !isLast
 					? node.children?.map((child) => ({
 							label: child.label,
@@ -95,17 +93,19 @@ const InteractiveBreadcrumbs: React.FC<Props> = ({ type = 'text' }) => {
 		});
 	}, [path, handleChildSelect]);
 
-	// 🔹 Next
 	const handleNext = useCallback(() => {
-		const lastNode = findNode(NAVIGATION_TREE, path[path.length - 1]);
+		const lastId = path[path.length - 1];
+		if (!lastId) return;
 
+		const lastNode = findNode(NAVIGATION_TREE, lastId);
 		if (!lastNode?.children?.length) return;
 
 		const nextChild = lastNode.children[0];
+		if (!nextChild) return;
+
 		setPath([...path, nextChild.id]);
 	}, [path]);
 
-	// 🔹 Previous
 	const handlePrevious = useCallback(() => {
 		if (path.length === 1) return;
 		setPath(path.slice(0, -1));
@@ -114,12 +114,11 @@ const InteractiveBreadcrumbs: React.FC<Props> = ({ type = 'text' }) => {
 	return (
 		<ThemedContainer theme='light'>
 			<div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-				{/* 🔥 KEY CHANGE: activeIndex added */}
 				<Breadcrumbs
 					crumbs={crumbs}
 					type={type}
 					separator='chevron'
-					activeIndex={path.length - 1} // 👈 THIS FIXES EVERYTHING
+					activeIndex={path.length - 1}
 				/>
 
 				<div style={{ display: 'flex', gap: '12px' }}>
@@ -137,7 +136,8 @@ const InteractiveBreadcrumbs: React.FC<Props> = ({ type = 'text' }) => {
 						variant='primary'
 						size='sm'
 						disabled={
-							!findNode(NAVIGATION_TREE, path[path.length - 1])?.children?.length
+							!findNode(NAVIGATION_TREE, path[path.length - 1] ?? '')?.children
+								?.length
 						}
 						onClick={handleNext}
 						type='button'

@@ -10,7 +10,7 @@ exports[`Tooltip — Snapshot Rendering default snapshot 1`] = `
   >
     <div
       class="tooltip light"
-      style="position: absolute; top: 50px; left: 50px; z-index: 100; opacity: 0; transform: scale(0) translateZ(0);"
+      style="position: absolute; top: 50px; left: 50px; z-index: 100; opacity: 0; transform: scale(0);"
     >
       <div
         class="arrow"
@@ -32,7 +32,7 @@ exports[`Tooltip — Snapshot Rendering variant snapshot 1`] = `
   >
     <div
       class="tooltip light"
-      style="position: absolute; top: 50px; left: 50px; z-index: 100; opacity: 0; transform: scale(0) translateZ(0);"
+      style="position: absolute; top: 50px; left: 50px; z-index: 100; opacity: 0; transform: scale(0);"
     >
       <div
         class="arrow"
