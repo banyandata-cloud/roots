@@ -2,7 +2,7 @@
  * Type definitions for Tooltip component and related types.
  * Provides typings for tooltip position, variant, and props.
  */
-import type { ReactElement, ReactNode, Ref } from 'react';
+import type { ReactElement, ReactNode, Ref } from 'react';     
 
 /**
  * A ReactElement that optionally includes a ref of type T.

@@ -1,0 +1,67 @@
+import { useState } from 'react';
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+import { ThemedContainer } from '../../../helpers';
+import RichTextEditor from './RichTextEditor';
+
+<Meta title='Components/v2/Input/RichTextEditor' parameters={{ options: { showToolbar: true } }} />
+
+export const Template = (args) => (
+	<ThemedContainer theme='light'>
+		<RichTextEditor {...args} />
+	</ThemedContainer>
+);
+
+export const InteractiveTemplate = () => {
+	const [content, setContent] = useState('<p></p>');
+	return (
+		<ThemedContainer theme='light'>
+			<RichTextEditor
+				content={content}
+				setContent={setContent}
+				maxCharacters={964}
+				onInsertImage={() => {
+					console.log('Insert image clicked');
+				}}
+				onAttachFile={() => {
+					console.log('Attach file clicked');
+				}}
+			/>
+		</ThemedContainer>
+	);
+};
+
+# Rich Text Editor (V2)
+
+#### Design - [Figma](https://www.figma.com/design/IfmLQrA0AAZVYwt6vRxqCe/Design-System--26?node-id=2139-3177&m=dev) | Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/src/components/v2/input/richEditor)
+
+> The Rich Text Editor component provides an accessible and easily customizable way to edit rich text. It supports both controlled and uncontrolled usage.
+
+## Usage
+
+Basic import and additional information on how to use this component.
+
+```js
+import { RichTextEditor } from '@banyan_cloud/roots/v2';
+```
+
+## Stories
+
+### Default
+
+<Canvas>
+	<Story
+		name='Default'
+		args={{
+			defaultContent:
+				'<p>We need another and a wiser and perhaps a more mystical concept of animals.</p>',
+			maxCharacters: 964,
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Interactive
+
+<Canvas>
+	<Story name='Interactive'>{InteractiveTemplate.bind({})}</Story>
+</Canvas>

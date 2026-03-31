@@ -1,7 +1,7 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
-exports[`InlineLoader v2 Component safely renders the error state and strictly matches the layout snapshot 1`] = `
-<DocumentFragment>
+exports[`InlineLoader — Snapshots matches error snapshot 1`] = `
+<div>
   <div
     class="container"
     data-testid="inline-loader"
@@ -29,16 +29,16 @@ exports[`InlineLoader v2 Component safely renders the error state and strictly m
       </svg>
     </div>
     <span
-      class="textContent"
+      class="root b2 regular-stroke text"
     >
       Network Failure
     </span>
   </div>
-</DocumentFragment>
+</div>
 `;
 
-exports[`InlineLoader v2 Component safely renders the loading state and strictly matches the layout snapshot 1`] = `
-<DocumentFragment>
+exports[`InlineLoader — Snapshots matches loading snapshot 1`] = `
+<div>
   <div
     class="container"
     data-testid="inline-loader"
@@ -51,11 +51,11 @@ exports[`InlineLoader v2 Component safely renders the loading state and strictly
       />
     </div>
   </div>
-</DocumentFragment>
+</div>
 `;
 
-exports[`InlineLoader v2 Component safely renders the success state and strictly matches the layout snapshot 1`] = `
-<DocumentFragment>
+exports[`InlineLoader — Snapshots matches success snapshot 1`] = `
+<div>
   <div
     class="container"
     data-testid="inline-loader"
@@ -85,10 +85,10 @@ exports[`InlineLoader v2 Component safely renders the success state and strictly
       </svg>
     </div>
     <span
-      class="textContent"
+      class="root b2 regular-stroke text"
     >
       Upload Complete
     </span>
   </div>
-</DocumentFragment>
+</div>
 `;

@@ -85,7 +85,7 @@ exports[`Accordion — Snapshots matches snapshot when open with description and
         Complex Content
       </div>
       <button
-        class="root sm border-radius-default root contained root text size-auto text-14"
+        class="root sm border-radius-default root contained root text size-auto"
         data-elem="base-cell"
         type="submit"
       >
