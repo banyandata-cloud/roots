@@ -1,0 +1,619 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import ThemedContainer from '../../helpers/themedContainer/ThemedContainer';
+import Breadcrumbs from './Breadcrumbs';
+import InteractiveBreadcrumbs from './InteractiveBreadcrumbs';
+
+<Meta title='Components/v2/Breadcrumbs' parameters={{ options: { showToolbar: true } }} />
+
+export const Template = (args) => (
+	<ThemedContainer theme='light'>
+		<Breadcrumbs {...args} />
+	</ThemedContainer>
+);
+
+# Breadcrumbs
+
+A breadcrumb navigation component for React applications that helps users track their current location within a hierarchical structure. The component supports multiple visual types, separator styles, and dropdown options per crumb.
+
+#### Design - [Figma](https://www.figma.com/design/IfmLQrA0AAZVYwt6vRxqCe/Design-System--26?node-id=1018-697&p=f&m=dev) | Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/components/breadcrumbs)
+
+> The Breadcrumbs component renders a navigation bar that displays breadcrumb items. It supports three visual types - `text`, `text-with-line`, and `button` - along with two separator styles - `chevron` and `slash`. Each crumb can have an optional dropdown with selectable options.
+
+## Usage
+
+Basic import and additional information on how to use this component.
+
+```js
+import { Breadcrumbs } from '@banyan_cloud/roots';
+```
+
+- This Breadcrumbs component provides users with a clear visual representation of their current navigation path.
+- It supports `text`, `text-with-line`, and `button` types with `chevron` or `slash` separators.
+- Each crumb supports a dropdown with clickable options for contextual navigation.
+
+## Stories
+
+The CSF rendered inside the `Canvas` from which you can see the implementation example.
+
+### Text - Chevron
+
+The default Breadcrumbs with text type and chevron separator.
+
+<Canvas>
+	<Story
+		name='Text - Chevron'
+		args={{
+			type: 'text',
+			separator: 'chevron',
+			crumbs: [
+				{
+					label: 'Home',
+					onClick: function () {
+						return console.log('Home clicked');
+					},
+				},
+				{
+					label: 'Projects',
+					onClick: function () {
+						return console.log('Projects clicked');
+					},
+					dropdownOptions: [
+						{
+							label: 'Option 1',
+							value: 'option-1',
+							onClick: function () {
+								return console.log('Option 1');
+							},
+						},
+						{
+							label: 'Option 2',
+							value: 'option-2',
+							onClick: function () {
+								return console.log('Option 2');
+							},
+						},
+						{
+							label: 'Option 3',
+							value: 'option-3',
+							onClick: function () {
+								return console.log('Option 3');
+							},
+						},
+					],
+				},
+				{
+					label: '...',
+					dropdownOptions: [
+						{
+							label: 'Option 1',
+							value: 'option-1',
+							onClick: function () {
+								return console.log('Option 1');
+							},
+						},
+						{
+							label: 'Option 2',
+							value: 'option-2',
+							onClick: function () {
+								return console.log('Option 2');
+							},
+						},
+						{
+							label: 'Option 3',
+							value: 'option-3',
+							onClick: function () {
+								return console.log('Option 3');
+							},
+						},
+					],
+				},
+				{
+					label: 'Projects',
+					onClick: function () {
+						return console.log('Current clicked');
+					},
+				},
+			],
+		}}>
+		{(args) => Template(args)}
+	</Story>
+</Canvas>
+
+### Text - Slash
+
+The Breadcrumbs with text type and slash separator.
+
+<Canvas>
+	<Story
+		name='Text - Slash'
+		args={{
+			type: 'text',
+			separator: 'slash',
+			crumbs: [
+				{
+					label: 'Home',
+					onClick: function () {
+						return console.log('Home clicked');
+					},
+				},
+				{
+					label: 'Projects',
+					onClick: function () {
+						return console.log('Projects clicked');
+					},
+					dropdownOptions: [
+						{
+							label: 'Option 1',
+							value: 'option-1',
+							onClick: function () {
+								return console.log('Option 1');
+							},
+						},
+						{
+							label: 'Option 2',
+							value: 'option-2',
+							onClick: function () {
+								return console.log('Option 2');
+							},
+						},
+						{
+							label: 'Option 3',
+							value: 'option-3',
+							onClick: function () {
+								return console.log('Option 3');
+							},
+						},
+					],
+				},
+				{
+					label: '...',
+					dropdownOptions: [
+						{
+							label: 'Option 1',
+							value: 'option-1',
+							onClick: function () {
+								return console.log('Option 1');
+							},
+						},
+						{
+							label: 'Option 2',
+							value: 'option-2',
+							onClick: function () {
+								return console.log('Option 2');
+							},
+						},
+						{
+							label: 'Option 3',
+							value: 'option-3',
+							onClick: function () {
+								return console.log('Option 3');
+							},
+						},
+					],
+				},
+				{
+					label: 'Projects',
+					onClick: function () {
+						return console.log('Current clicked');
+					},
+				},
+			],
+		}}>
+		{(args) => Template(args)}
+	</Story>
+</Canvas>
+
+### Text With Line - Chevron
+
+The Breadcrumbs with top and bottom line highlight and chevron separator.
+
+<Canvas>
+	<Story
+		name='Text With Line - Chevron'
+		args={{
+			type: 'text-with-line',
+			separator: 'chevron',
+			crumbs: [
+				{
+					label: 'Home',
+					onClick: function () {
+						return console.log('Home clicked');
+					},
+				},
+				{
+					label: 'Projects',
+					onClick: function () {
+						return console.log('Projects clicked');
+					},
+					dropdownOptions: [
+						{
+							label: 'Option 1',
+							value: 'option-1',
+							onClick: function () {
+								return console.log('Option 1');
+							},
+						},
+						{
+							label: 'Option 2',
+							value: 'option-2',
+							onClick: function () {
+								return console.log('Option 2');
+							},
+						},
+						{
+							label: 'Option 3',
+							value: 'option-3',
+							onClick: function () {
+								return console.log('Option 3');
+							},
+						},
+					],
+				},
+				{
+					label: '...',
+					dropdownOptions: [
+						{
+							label: 'Option 1',
+							value: 'option-1',
+							onClick: function () {
+								return console.log('Option 1');
+							},
+						},
+						{
+							label: 'Option 2',
+							value: 'option-2',
+							onClick: function () {
+								return console.log('Option 2');
+							},
+						},
+						{
+							label: 'Option 3',
+							value: 'option-3',
+							onClick: function () {
+								return console.log('Option 3');
+							},
+						},
+					],
+				},
+				{
+					label: 'Projects',
+					onClick: function () {
+						return console.log('Current clicked');
+					},
+				},
+			],
+		}}>
+		{(args) => Template(args)}
+	</Story>
+</Canvas>
+
+### Text With Line - Slash
+
+The Breadcrumbs with top and bottom line highlight and slash separator.
+
+<Canvas>
+	<Story
+		name='Text With Line - Slash'
+		args={{
+			type: 'text-with-line',
+			separator: 'slash',
+			crumbs: [
+				{
+					label: 'Home',
+					onClick: function () {
+						return console.log('Home clicked');
+					},
+				},
+				{
+					label: 'Projects',
+					onClick: function () {
+						return console.log('Projects clicked');
+					},
+					dropdownOptions: [
+						{
+							label: 'Option 1',
+							value: 'option-1',
+							onClick: function () {
+								return console.log('Option 1');
+							},
+						},
+						{
+							label: 'Option 2',
+							value: 'option-2',
+							onClick: function () {
+								return console.log('Option 2');
+							},
+						},
+						{
+							label: 'Option 3',
+							value: 'option-3',
+							onClick: function () {
+								return console.log('Option 3');
+							},
+						},
+					],
+				},
+				{
+					label: '...',
+					dropdownOptions: [
+						{
+							label: 'Option 1',
+							value: 'option-1',
+							onClick: function () {
+								return console.log('Option 1');
+							},
+						},
+						{
+							label: 'Option 2',
+							value: 'option-2',
+							onClick: function () {
+								return console.log('Option 2');
+							},
+						},
+						{
+							label: 'Option 3',
+							value: 'option-3',
+							onClick: function () {
+								return console.log('Option 3');
+							},
+						},
+					],
+				},
+				{
+					label: 'Projects',
+					onClick: function () {
+						return console.log('Current clicked');
+					},
+				},
+			],
+		}}>
+		{(args) => Template(args)}
+	</Story>
+</Canvas>
+
+### Button - Chevron
+
+The Breadcrumbs with button type and chevron separator.
+
+<Canvas>
+	<Story
+		name='Button - Chevron'
+		args={{
+			type: 'button',
+			separator: 'chevron',
+			crumbs: [
+				{
+					label: 'Home',
+					onClick: function () {
+						return console.log('Home clicked');
+					},
+				},
+				{
+					label: 'Projects',
+					onClick: function () {
+						return console.log('Projects clicked');
+					},
+					dropdownOptions: [
+						{
+							label: 'Option 1',
+							value: 'option-1',
+							onClick: function () {
+								return console.log('Option 1');
+							},
+						},
+						{
+							label: 'Option 2',
+							value: 'option-2',
+							onClick: function () {
+								return console.log('Option 2');
+							},
+						},
+						{
+							label: 'Option 3',
+							value: 'option-3',
+							onClick: function () {
+								return console.log('Option 3');
+							},
+						},
+					],
+				},
+				{
+					label: '...',
+					dropdownOptions: [
+						{
+							label: 'Option 1',
+							value: 'option-1',
+							onClick: function () {
+								return console.log('Option 1');
+							},
+						},
+						{
+							label: 'Option 2',
+							value: 'option-2',
+							onClick: function () {
+								return console.log('Option 2');
+							},
+						},
+						{
+							label: 'Option 3',
+							value: 'option-3',
+							onClick: function () {
+								return console.log('Option 3');
+							},
+						},
+					],
+				},
+				{
+					label: 'Projects',
+					onClick: function () {
+						return console.log('Current clicked');
+					},
+				},
+			],
+		}}>
+		{(args) => Template(args)}
+	</Story>
+</Canvas>
+
+### Button - Slash
+
+The Breadcrumbs with button type and slash separator.
+
+<Canvas>
+	<Story
+		name='Button - Slash'
+		args={{
+			type: 'button',
+			separator: 'slash',
+			crumbs: [
+				{
+					label: 'Home',
+					onClick: function () {
+						return console.log('Home clicked');
+					},
+				},
+				{
+					label: 'Projects',
+					onClick: function () {
+						return console.log('Projects clicked');
+					},
+					dropdownOptions: [
+						{
+							label: 'Option 1',
+							value: 'option-1',
+							onClick: function () {
+								return console.log('Option 1');
+							},
+						},
+						{
+							label: 'Option 2',
+							value: 'option-2',
+							onClick: function () {
+								return console.log('Option 2');
+							},
+						},
+						{
+							label: 'Option 3',
+							value: 'option-3',
+							onClick: function () {
+								return console.log('Option 3');
+							},
+						},
+					],
+				},
+				{
+					label: '...',
+					dropdownOptions: [
+						{
+							label: 'Option 1',
+							value: 'option-1',
+							onClick: function () {
+								return console.log('Option 1');
+							},
+						},
+						{
+							label: 'Option 2',
+							value: 'option-2',
+							onClick: function () {
+								return console.log('Option 2');
+							},
+						},
+						{
+							label: 'Option 3',
+							value: 'option-3',
+							onClick: function () {
+								return console.log('Option 3');
+							},
+						},
+					],
+				},
+				{
+					label: 'Projects',
+					onClick: function () {
+						return console.log('Current clicked');
+					},
+				},
+			],
+		}}>
+		{(args) => Template(args)}
+	</Story>
+</Canvas>
+
+---
+
+### Interactive
+
+<Canvas>
+	<Story name='Interactive'>{() => <InteractiveBreadcrumbs />}</Story>
+</Canvas>
+
+---
+
+## API
+
+**`type`**
+
+The visual type of the breadcrumbs.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>'text', 'text-with-line', 'button'</td>
+		<td>'text'</td>
+	</tr>
+</table>
+
+**`separator`**
+
+The separator icon between breadcrumb items.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>'chevron', 'slash'</td>
+		<td>'chevron'</td>
+	</tr>
+</table>
+
+**`crumbs`**
+
+An array of breadcrumb items with properties.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>{`[{ label: string, onClick: func, isDisabled: bool, dropdownOptions: array }]`}</td>
+		<td>[]</td>
+	</tr>
+</table>
+
+**`className`**
+
+Additional CSS class for the breadcrumb container.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>''</td>
+	</tr>
+</table>
+
+<div>
+```jsx
+<Breadcrumbs className='custom-breadcrumbs' />
+```
+
+</div>

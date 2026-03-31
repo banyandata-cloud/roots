@@ -1,263 +1,272 @@
 .root.horizontal {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-start;
-  gap: 1rem;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: flex-start;
+	gap: 1rem;
 }
 .root.vertical {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  height: 100%;
-  gap: 0.5rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	height: 100%;
+	gap: 0.5rem;
 }
 
 .stepper {
-  display: flex;
-  width: 100%;
-  max-width: 1000px;
-  margin: 0 auto;
+	display: flex;
+	width: 100%;
+	max-width: 1000px;
+	margin: 0 auto;
 }
 .stepper--horizontal {
-  flex-direction: row;
-  justify-content: space-between;
+	flex-direction: row;
+	justify-content: space-between;
 }
 .stepper--vertical {
-  flex-direction: column;
+	flex-direction: column;
 }
 .stepper--progressBar {
-  gap: 33px;
+	gap: 33px;
 }
 
 .stepWrapper {
-  display: flex;
-  flex: 1;
-  position: relative;
+	display: flex;
+	flex: 1;
+	position: relative;
 }
 .stepper--horizontal .stepWrapper {
-  flex-direction: column;
-  align-items: center;
-  min-width: 160px;
-  text-align: center;
+	flex-direction: column;
+	align-items: center;
+	min-width: 160px;
+	text-align: center;
+	gap: 2px;
 }
 .stepper--vertical .stepWrapper {
-  flex-direction: row;
-  align-items: stretch;
-  text-align: left;
+	flex-direction: row;
+	align-items: stretch;
+	text-align: left;
 }
 
 .verticalIconCol {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex-shrink: 0;
-  align-self: stretch;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	flex-shrink: 0;
+	align-self: stretch;
 }
 
 .verticalLine {
-  flex: 1;
-  min-height: 24px;
-  width: 2px;
-  margin-top: 4px;
-  margin-bottom: 4px;
+	flex: 1;
+	min-height: 24px;
+	width: 2px;
+	margin-top: 4px;
+	margin-bottom: 4px;
 }
 .verticalLine--solid {
-  background-color: #e9eaeb;
+	background-color: #e9eaeb;
 }
 .verticalLine--dotted {
-  width: 0;
-  border-left: 2px dotted #e9eaeb;
+	width: 0px;
+	border-left: 2px dotted #e9eaeb;
 }
 .verticalLine--completed.verticalLine--solid {
-  background-color: #1570ef;
+	background-color: #1570ef;
 }
 .verticalLine--completed.verticalLine--dotted {
-  border-left-color: #e9eaeb;
+	border-left-color: #e9eaeb;
 }
 
 .iconSection {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 .stepper--horizontal .iconSection {
-  width: 100%;
-  margin-bottom: 12px;
+	width: 100%;
+	margin-bottom: 12px;
 }
 .stepper--horizontal .iconSection.hasLine::after {
-  content: "";
-  position: absolute;
-  z-index: 1;
-  top: 50%;
-  transform: translateY(-50%);
-  pointer-events: none;
-  left: calc(50% + 12px);
-  right: calc(-50% + 12px);
-  height: 2px;
+	content: '';
+	position: absolute;
+	z-index: 1;
+	top: 50%;
+	transform: translateY(-50%);
+	pointer-events: none;
+	left: calc(50% + 12px);
+	right: calc(-50% + 12px);
+	height: 2px;
 }
 .stepper--horizontal .iconSection:has(.stepIcon--md).hasLine::after {
-  left: calc(50% + 16px);
-  right: calc(-50% + 16px);
+	left: calc(50% + 16px);
+	right: calc(-50% + 16px);
 }
 .stepper--horizontal .iconSection.isIcon.hasLine::after {
-  background-color: #e9eaeb;
+	background-color: #e9eaeb;
 }
 .stepper--horizontal .iconSection.isIcon.line--completed::after {
-  background-color: #1570ef;
+	background-color: #1570ef;
 }
 .stepper--horizontal .iconSection.isNumbered.hasLine::after {
-  border-top: 2px dotted #e9eaeb;
-  background-color: transparent;
+	border-top: 2px dotted #e9eaeb;
+	background-color: transparent;
 }
 .stepper--horizontal .iconSection.isNumbered.line--completed::after {
-  border-top-color: #e9eaeb;
+	border-top-color: #e9eaeb;
 }
 
 .stepIcon {
-  position: relative;
-  z-index: 2;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #ffffff;
-  border-radius: 50%;
-  overflow: visible;
-  flex-shrink: 0;
+	position: relative;
+	z-index: 2;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #ffffff;
+	border-radius: 50%;
+	overflow: visible;
+	flex-shrink: 0;
 }
 .stepIcon--sm {
-  width: 24px;
-  height: 24px;
+	width: 24px;
+	height: 24px;
 }
 .stepIcon--md {
-  width: 32px;
-  height: 32px;
+	width: 32px;
+	height: 32px;
 }
 
 .isIcon .stepIcon--current {
-  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #1570ef;
+	box-shadow:
+		0 0 0 2px #ffffff,
+		0 0 0 4px #1570ef;
 }
 
 .stepper--vertical .stepIcon--current {
-  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #1570ef;
+	box-shadow:
+		0 0 0 2px #ffffff,
+		0 0 0 4px #1570ef;
 }
 
 .progressBarWrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  flex: 1;
-  min-width: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	flex: 1;
+	min-width: 0;
+	gap: 2px;
+}
+.progressBarWrapper .content {
+	padding: 0px !important;
 }
 
 .progressBarTrack {
-  width: 100%;
-  border-top: 4px solid #e9eaeb;
+	width: 100%;
+	border-top: 4px solid #e9eaeb;
 }
 .progressBarTrack--sm {
-  padding-top: 12px;
+	padding-top: 12px;
 }
 .progressBarTrack--md {
-  padding-top: 16px;
+	padding-top: 16px;
 }
 .progressBarTrack--active {
-  border-top-color: #1570ef;
+	border-top-color: #1570ef;
 }
 .progressBarTrack--completed {
-  border-top-color: #1570ef;
+	border-top-color: #1570ef;
 }
 
 .content {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 0px;
 }
 .stepper--horizontal .content {
-  width: 100%;
-  padding: 0 12px;
-  align-items: center;
-  text-align: center;
+	width: 100%;
+	padding: 0px 12px;
+	align-items: center;
+	text-align: center;
 }
 .stepper--vertical .content {
-  width: 100%;
-  align-items: flex-start;
-  padding-bottom: 32px;
+	width: 100%;
+	align-items: flex-start;
+	padding-bottom: 32px;
 }
 .stepper--vertical .content--sm {
-  padding-left: 12px;
+	padding-left: 12px;
 }
 .stepper--vertical .content--md {
-  padding-left: 16px;
+	padding-left: 16px;
 }
 .content--sm .label,
 .content--sm .description {
-  font-size: 14px;
-  line-height: 20px;
+	font-size: 14px;
+	line-height: 20px;
 }
 .content--md .label,
 .content--md .description {
-  font-size: 16px;
-  line-height: 24px;
+	font-size: 16px;
+	line-height: 24px;
 }
 .content--icon .label--incomplete,
 .content--icon .description--incomplete {
-  color: #717680;
+	color: #717680;
 }
 .content--icon .label--current,
 .content--icon .description--current {
-  color: #1570ef;
+	color: #1570ef;
 }
 .content--icon .label--completed,
 .content--icon .description--completed {
-  color: #181d27;
+	color: #181d27;
 }
 .content--noIcon .label--incomplete,
 .content--noIcon .description--incomplete {
-  color: #717680;
+	color: #717680;
 }
 .content--noIcon .label--current,
 .content--noIcon .description--current {
-  color: #181d27;
+	color: #181d27;
 }
 .content--noIcon .label--completed,
 .content--noIcon .description--completed {
-  color: #181d27;
+	color: #181d27;
 }
 .content--progressBar {
-  padding: 0;
-  align-items: flex-start !important;
-  text-align: left !important;
+	padding: 0;
+	align-items: flex-start !important;
+	text-align: left !important;
 }
 .content--progressBar .label--incomplete,
 .content--progressBar .description--incomplete {
-  color: #717680;
+	color: #717680;
 }
 .content--progressBar .label--current,
 .content--progressBar .description--current {
-  color: #1570ef;
+	color: #1570ef;
 }
 .content--progressBar .label--completed,
 .content--progressBar .description--completed {
-  color: #181d27;
+	color: #181d27;
 }
 
 .label {
-  font-family: "Jakarta", sans-serif;
-  font-weight: 600;
-  color: #181d27;
+	font-family: 'Jakarta', sans-serif;
+	font-weight: 600;
+	color: #181d27;
 }
 .stepper--horizontal .label {
-  white-space: nowrap;
+	white-space: nowrap;
 }
 .stepper--vertical .label {
-  white-space: normal;
+	white-space: normal;
 }
 
 .description {
-  font-family: "Jakarta", sans-serif;
-  font-weight: 400;
-  color: #717680;
-  margin-top: 0;
-}/*# sourceMappingURL=Stepper.module.css.map */
+	font-family: 'Jakarta', sans-serif;
+	font-weight: 400;
+	color: #717680;
+	margin-top: 0;
+} /*# sourceMappingURL=Stepper.module.css.map */

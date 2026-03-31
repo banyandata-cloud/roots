@@ -55,7 +55,7 @@ export interface TooltipProps {
 	showPointer?: boolean;
 
 	/**
-	 * Keeps tooltip open on mouse leave and closes it only on outside click.
+	 * Enables interactive hover behavior so users can move from trigger to tooltip content before it closes.
 	 */
 	clickOutsideToClose?: boolean;
 }

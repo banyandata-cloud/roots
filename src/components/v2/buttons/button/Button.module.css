@@ -206,6 +206,24 @@ button.root[data-elem=base-cell]:disabled svg {
     transition: none !important;
   }
 }
+button.root[data-elem=base-cell].unstyled {
+  all: unset !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  cursor: pointer !important;
+  background: transparent !important;
+  padding: 4px !important;
+  margin: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 4px !important;
+  height: auto !important;
+  width: auto !important;
+  min-width: unset !important;
+  font: inherit !important;
+  color: inherit !important;
+  outline: none !important;
+}
 
 .icon-xs {
   width: 18px !important;
