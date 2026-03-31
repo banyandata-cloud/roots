@@ -1,0 +1,532 @@
+// Dropdown Component Styles - Based on Figma Design System
+
+.dropdown {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	width: 100%;
+	min-width: 297px;
+}
+
+// Label Container
+.labelContainer {
+	display: flex;
+	gap: 2px;
+	align-items: center;
+
+	.label {
+		font-family: Jakarta;
+		font-weight: 500;
+		font-size: 14px;
+		line-height: 20px;
+		color: #414651;
+	}
+
+	.required {
+		font-family: Jakarta;
+		font-weight: 500;
+		font-size: 14px;
+		line-height: 20px;
+		color: #175cd3;
+	}
+}
+
+// Help Icon in Label
+.helpIcon {
+	width: 16px;
+	height: 16px;
+	flex-shrink: 0;
+
+	svg {
+		width: 100%;
+		height: 100%;
+		color: #535862;
+	}
+}
+
+// Button Wrapper for Focus Handling
+.buttonWrapper {
+	display: contents; // Makes the wrapper invisible
+	outline: none;
+
+	&:focus {
+		outline: none;
+	}
+
+	&:focus-visible {
+		outline: none;
+	}
+}
+
+// Dropdown Container Base - Override Button component styles
+.dropdownContainer {
+	// Reset Button component defaults and apply dropdown styling
+	position: relative !important;
+	display: flex !important;
+	align-items: center !important;
+	justify-content: flex-start !important;
+	gap: 0px !important;
+	padding: 8px 12px !important;
+	border-radius: 8px !important;
+	border: 1px solid #d5d7da !important;
+	background: white !important;
+	cursor: pointer !important;
+	transition: all 0.2s ease-in-out !important;
+	box-shadow:
+		0px 0px 1px 0px rgba(0, 0, 0, 0.04),
+		0px 1px 2px 0px rgba(0, 0, 0, 0.06) !important;
+	text-decoration: none !important;
+	text-align: left !important;
+	width: 100% !important;
+	min-width: unset !important;
+	max-width: unset !important;
+
+	// Override Button's title content layout
+	[data-elem='component2'] {
+		display: flex !important;
+		align-items: center !important;
+		justify-content: space-between !important;
+		width: 100% !important;
+		gap: 8px !important;
+		flex: 1 !important;
+	}
+
+	// Ensure the title span inside component2 also takes full width
+	[data-elem='component2'] [data-elem='title'] {
+		display: flex !important;
+		align-items: center !important;
+		justify-content: space-between !important;
+		width: 100% !important;
+		gap: 8px !important;
+		flex: 1 !important;
+	}
+
+	&:focus {
+		outline: none !important;
+		text-decoration: none !important;
+	}
+
+	&:focus-visible {
+		outline: none !important;
+	}
+
+	&:focus:not(.focus) {
+		outline: none !important;
+		border: 1px solid #d5d7da !important;
+	}
+
+	&:hover {
+		text-decoration: none !important;
+	}
+
+	&:active {
+		text-decoration: none !important;
+	}
+
+	// Size variants
+	&.sm {
+		height: 40px !important;
+		padding: 8px 12px !important;
+	}
+
+	&.md {
+		height: 44px !important;
+		padding: 8px 12px !important;
+	}
+}
+
+// Content and Trailing Areas
+.contentArea {
+	display: flex !important;
+	align-items: center !important;
+	gap: 8px !important;
+	flex: 1 !important;
+	min-width: 0 !important;
+	position: relative !important;
+}
+
+// Leading Icon
+.leadingIcon {
+	width: 20px;
+	height: 20px;
+	flex-shrink: 0;
+
+	svg {
+		width: 100%;
+		height: 100%;
+	}
+}
+
+.trailingArea {
+	display: flex !important;
+	align-items: center !important;
+	gap: 8px !important;
+	flex-shrink: 0 !important;
+}
+
+// Dropdown Text
+.dropdownText {
+	flex: 1 !important;
+	font-family: Jakarta !important;
+	font-weight: 500 !important;
+	font-size: 16px !important;
+	line-height: 24px !important;
+	color: #181d27 !important;
+	white-space: nowrap !important;
+	overflow: hidden !important;
+	text-overflow: ellipsis !important;
+	text-align: left !important;
+	text-decoration: none !important;
+
+	&.placeholder {
+		font-weight: 400 !important;
+		color: #a4a7ae !important;
+	}
+}
+
+// Status Icon
+.statusIcon {
+	width: 16px;
+	height: 16px;
+	flex-shrink: 0;
+
+	svg {
+		width: 100%;
+		height: 100%;
+	}
+}
+
+// Dropdown Arrow Icon
+.dropdownIcon {
+	width: 16px;
+	height: 16px;
+	flex-shrink: 0;
+
+	svg {
+		width: 100%;
+		height: 100%;
+		color: #535862;
+		transition: color 0.2s ease-in-out;
+	}
+}
+
+// Helper Text
+.helperText {
+	font-family: Jakarta;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 20px;
+}
+
+.helperDefault {
+	color: #535862;
+}
+
+.helperError {
+	color: #d92d20;
+}
+
+.helperWarning {
+	color: #dc6803;
+}
+
+// State-specific styles
+
+// 1. Default State (placeholder)
+.dropdownContainer.default {
+	border: 1px solid #d5d7da !important;
+	background: white !important;
+
+	&:hover {
+		border-color: #b2b5bb !important;
+		text-decoration: none !important;
+	}
+}
+
+// 2. Selected State
+.dropdownContainer.selected {
+	border: 1px solid #d5d7da !important;
+	background: white !important;
+
+	&:hover {
+		border-color: #b2b5bb !important;
+		text-decoration: none !important;
+	}
+}
+
+// 3. Focus State (blue border)
+.dropdown .dropdownContainer.focus,
+.dropdownContainer.focus {
+	background: white !important;
+	border: 2px solid #2e90fa !important;
+	padding: 7px 11px !important; // Adjust for thicker border
+	box-shadow: none !important;
+	outline: none !important;
+
+	&:hover {
+		text-decoration: none !important;
+		border: 2px solid #2e90fa !important;
+	}
+
+	&:focus {
+		outline: none !important;
+		border: 2px solid #2e90fa !important;
+	}
+
+	&:focus-visible {
+		outline: none !important;
+		border: 2px solid #2e90fa !important;
+	}
+
+	// Adjust size-specific padding for focus state
+	&.sm {
+		padding: 7px 11px !important;
+	}
+
+	&.md {
+		padding: 7px 11px !important;
+	}
+}
+
+// 4. Disabled State
+.dropdownContainer.disabled {
+	background: #fafafa !important;
+	border: 1px solid #d5d7da !important;
+	cursor: not-allowed !important;
+	box-shadow: none !important;
+
+	.dropdownText {
+		color: #a4a7ae !important;
+	}
+
+	.dropdownIcon svg {
+		color: #a4a7ae !important;
+	}
+
+	&:hover {
+		background: #fafafa !important;
+		border-color: #d5d7da !important;
+		cursor: not-allowed !important;
+		text-decoration: none !important;
+	}
+}
+
+// 5. Error State (red border + error icon)
+.dropdownContainer.error {
+	background: white !important;
+	border: 2px solid #f04438 !important;
+	padding: 7px 11px !important; // Adjust for thicker border
+	box-shadow: none !important;
+
+	.statusIcon svg {
+		color: #f04438 !important;
+		fill: #f04438 !important;
+	}
+
+	&:hover {
+		text-decoration: none !important;
+	}
+}
+
+// 6. Warning State (warning icon)
+.dropdownContainer.warning {
+	background: white !important;
+	border: 1px solid #d5d7da !important;
+
+	.statusIcon svg {
+		color: #dc6803 !important;
+		fill: #dc6803 !important;
+	}
+
+	&:hover {
+		border-color: #b2b5bb !important;
+		text-decoration: none !important;
+	}
+}
+
+// 7. Read-only State (subtle styling)
+.dropdownContainer.readOnly,
+.dropdownContainer.read-only {
+	background: white !important;
+	border: 1px solid #f5f5f5 !important;
+	cursor: default !important;
+
+	.dropdownIcon svg {
+		color: #a4a7ae !important;
+	}
+
+	&:hover {
+		background: white !important;
+		border-color: #f5f5f5 !important;
+		cursor: default !important;
+		text-decoration: none !important;
+	}
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+	.dropdown {
+		min-width: 100%;
+		max-width: 100%;
+	}
+}
+
+// Dropdown Menu Styles
+.dropdownMenuPopover {
+	// Remove default popover background/shadows as we'll style the menu itself
+	background: none !important;
+	box-shadow: none !important;
+	border: none !important;
+	padding: 0 !important;
+}
+
+.dropdownMenu {
+	background: white;
+	border: 1px solid #e9eaeb;
+	border-radius: 8px;
+	padding: 4px 0;
+	box-shadow:
+		0px 10px 15px 0px rgba(0, 0, 0, 0.1),
+		0px 4px 6px 0px rgba(0, 0, 0, 0.06);
+	min-width: 100%;
+	max-height: 300px;
+	overflow-y: auto;
+}
+
+.dropdownMenuItem {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 8px 12px;
+	margin: 1px 6px;
+	border-radius: 6px;
+	cursor: pointer;
+	transition: background-color 0.2s ease-in-out;
+	gap: 8px;
+
+	&:hover {
+		background: #fafafa;
+	}
+
+	&:active {
+		background: #f5f5f5;
+	}
+}
+
+.dropdownMenuItemContent {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	flex: 1;
+	min-width: 0;
+}
+
+.dropdownMenuItemIcon {
+	width: 20px;
+	height: 20px;
+	flex-shrink: 0;
+
+	svg {
+		width: 100%;
+		height: 100%;
+	}
+}
+
+.dropdownMenuItemSelected {
+	background: #fafafa;
+}
+
+.dropdownMenuItemText {
+	flex: 1;
+	font-family: Jakarta;
+	font-weight: 500;
+	font-size: 16px;
+	line-height: 24px;
+	color: #414651;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+
+	.dropdownMenuItemSelected & {
+		color: #181d27;
+	}
+}
+
+.dropdownMenuItemCheck {
+	width: 16px;
+	height: 16px;
+	flex-shrink: 0;
+
+	svg {
+		width: 100%;
+		height: 100%;
+		> path {
+			stroke: #2e90fa !important;
+		}
+	}
+}
+
+// Multi-Select Specific Styles
+
+// Count Badge
+.countBadge {
+	display: flex !important;
+	align-items: center !important;
+	background: #2e90fa !important;
+	border-radius: 16px !important;
+	padding: 2px 8px !important;
+	gap: 6px !important;
+	height: 24px !important;
+}
+
+.countText {
+	font-family: Jakarta !important;
+	font-weight: 500 !important;
+	font-size: 14px !important;
+	line-height: 20px !important;
+	color: white !important;
+}
+
+.countCloseButton {
+	display: flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	background: none !important;
+	border: none !important;
+	cursor: pointer !important;
+	padding: 0 !important;
+	width: 16px !important;
+	height: 16px !important;
+	border-radius: 50% !important;
+	transition: background-color 0.2s ease-in-out !important;
+
+	&:hover:not(:disabled) {
+		background: rgba(255, 255, 255, 0.2) !important;
+	}
+
+	&:disabled {
+		cursor: not-allowed !important;
+		opacity: 0.6 !important;
+	}
+
+	svg {
+		width: 12px !important;
+		height: 12px !important;
+		color: white !important;
+		fill: white !important;
+	}
+}
+
+// Multi-select menu item styles
+.dropdownMenuItemMultiSelect {
+	// No special styling needed for now, checkboxes handle the selection state
+}
+
+.dropdownMenuItemCheckbox {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 20px;
+	height: 20px;
+	flex-shrink: 0;
+}
