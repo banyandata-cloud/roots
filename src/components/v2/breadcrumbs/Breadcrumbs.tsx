@@ -6,17 +6,7 @@ import BreadcrumbsArrow from './assets/breadcrumbsArrow';
 import BreadcrumbsHome from './assets/breadcrumbsHome';
 import BreadcrumbsSplash from './assets/breadcrumbsSplash';
 import styles from './BreadCrumbs.module.scss';
-import type { BreadcrumbDropdownOption, BreadcrumbSeparator, BreadcrumbsProps } from './types';
-
-interface DropdownProps {
-	options: BreadcrumbDropdownOption[];
-	onClose: () => void;
-	anchorRef: React.RefObject<HTMLSpanElement | null>;
-}
-
-interface SeparatorProps {
-	separator: BreadcrumbSeparator;
-}
+import type { BreadcrumbsProps, DropdownProps, SeparatorProps } from './types';
 
 const CrumbDropdown: React.FC<DropdownProps> = ({ options, onClose, anchorRef }) => {
 	const ref = useRef<HTMLDivElement>(null);
