@@ -32,32 +32,4 @@
 }
 .root.bold-stroke {
   font-weight: 800;
-}
-.root .unstyled {
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-  background: transparent;
-  border: none;
-  outline: none;
-  padding: 0;
-  margin: 0;
-  width: 100%;
-  color: inherit;
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  display: block;
-  min-width: 0;
-}
-.root .unstyled::-moz-placeholder {
-  color: currentColor;
-  opacity: 0.5;
-}
-.root .unstyled::placeholder {
-  color: currentColor;
-  opacity: 0.5;
-}
-.root .unstyled:focus {
-  outline: none;
 }/*# sourceMappingURL=Text.module.css.map */

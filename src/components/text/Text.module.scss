@@ -43,34 +43,4 @@
 	&.bold-stroke {
 		font-weight: 800;
 	}
-	// ... existing typography classes (.h1, .b1, etc.)
-
-	.unstyled {
-		appearance: none;
-		background: transparent;
-		border: none;
-		outline: none;
-		padding: 0;
-		margin: 0;
-		width: 100%;
-
-		// Inherits typography from the Tag container
-		color: inherit;
-		font-family: inherit;
-		font-size: inherit;
-		line-height: inherit;
-
-		// Critical for vertical alignment in Tag flexbox
-		display: block;
-		min-width: 0;
-
-		&::placeholder {
-			color: currentColor;
-			opacity: 0.5;
-		}
-
-		&:focus {
-			outline: none; // Let the Tag handle the focus ring via :focus-within
-		}
-	}
 }
