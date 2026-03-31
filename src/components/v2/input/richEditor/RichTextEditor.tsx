@@ -10,6 +10,14 @@ import StarterKit from '@tiptap/starter-kit';
 import type { Editor } from '@tiptap/core';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { classes } from '../../../../utils';
+import {
+	BulletListIcon,
+	CodeIcon,
+	ImageIcon,
+	TextColorIcon,
+	TextAlignIcon,
+	TextLinkIcon,
+} from './assets';
 import styles from './RichTextEditor.module.css';
 import type { HeadingLevel, HiddenMenu, RichTextEditorProps, TextType } from './types';
 
@@ -78,127 +86,6 @@ const ToolbarButton: React.FC<{
 	);
 };
 
-const BarIcon: React.FC<{ align: 'left' | 'center' | 'right' | 'justify' }> = ({ align }) => {
-	if (align === 'left') {
-		return (
-			<svg width='12' height='12' viewBox='0 0 12 12' fill='none' aria-hidden='true'>
-				<rect x='1' y='2' width='8' height='1.2' rx='0.6' fill='currentColor' />
-				<rect x='1' y='5.4' width='6.5' height='1.2' rx='0.6' fill='currentColor' />
-				<rect x='1' y='8.8' width='8' height='1.2' rx='0.6' fill='currentColor' />
-			</svg>
-		);
-	}
-	if (align === 'center') {
-		return (
-			<svg width='12' height='12' viewBox='0 0 12 12' fill='none' aria-hidden='true'>
-				<rect x='1.5' y='2' width='9' height='1.2' rx='0.6' fill='currentColor' />
-				<rect x='2.5' y='5.4' width='7' height='1.2' rx='0.6' fill='currentColor' />
-				<rect x='1.5' y='8.8' width='9' height='1.2' rx='0.6' fill='currentColor' />
-			</svg>
-		);
-	}
-	if (align === 'right') {
-		return (
-			<svg width='12' height='12' viewBox='0 0 12 12' fill='none' aria-hidden='true'>
-				<rect x='3' y='2' width='8' height='1.2' rx='0.6' fill='currentColor' />
-				<rect x='4.5' y='5.4' width='6.5' height='1.2' rx='0.6' fill='currentColor' />
-				<rect x='3' y='8.8' width='8' height='1.2' rx='0.6' fill='currentColor' />
-			</svg>
-		);
-	}
-	return (
-		<svg width='12' height='12' viewBox='0 0 12 12' fill='none' aria-hidden='true'>
-			<rect x='1' y='2' width='10' height='1.2' rx='0.6' fill='currentColor' />
-			<rect x='1' y='5.4' width='10' height='1.2' rx='0.6' fill='currentColor' />
-			<rect x='1' y='8.8' width='10' height='1.2' rx='0.6' fill='currentColor' />
-		</svg>
-	);
-};
-
-const BulletListIcon: React.FC = () => {
-	return (
-		<svg width='12' height='12' viewBox='0 0 12 12' fill='none' aria-hidden='true'>
-			<circle cx='2' cy='2.5' r='0.8' fill='currentColor' />
-			<circle cx='2' cy='6' r='0.8' fill='currentColor' />
-			<circle cx='2' cy='9.5' r='0.8' fill='currentColor' />
-			<rect x='4' y='1.9' width='7' height='1.2' rx='0.6' fill='currentColor' />
-			<rect x='4' y='5.4' width='7' height='1.2' rx='0.6' fill='currentColor' />
-			<rect x='4' y='8.9' width='7' height='1.2' rx='0.6' fill='currentColor' />
-		</svg>
-	);
-};
-
-const LinkIcon: React.FC = () => {
-	return (
-		<svg width='12' height='12' viewBox='0 0 12 12' fill='none' aria-hidden='true'>
-			<path
-				d='M5.1 7.2L6.9 5.4M4.1 8.3L3.3 9.1C2.7 9.7 1.7 9.7 1.1 9.1C0.5 8.5 0.5 7.5 1.1 6.9L2.5 5.5C3.1 4.9 4.1 4.9 4.7 5.5M7.9 3.7L8.7 2.9C9.3 2.3 10.3 2.3 10.9 2.9C11.5 3.5 11.5 4.5 10.9 5.1L9.5 6.5C8.9 7.1 7.9 7.1 7.3 6.5'
-				stroke='currentColor'
-				strokeWidth='1.1'
-				strokeLinecap='round'
-				strokeLinejoin='round'
-			/>
-		</svg>
-	);
-};
-
-const ImageIcon: React.FC = () => {
-	return (
-		<svg width='12' height='12' viewBox='0 0 12 12' fill='none' aria-hidden='true'>
-			<rect
-				x='1.1'
-				y='2'
-				width='9.8'
-				height='8'
-				rx='1.2'
-				stroke='currentColor'
-				strokeWidth='1.1'
-			/>
-			<circle cx='4' cy='4.2' r='0.9' fill='currentColor' />
-			<path
-				d='M2.2 8.8L4.8 6.5L6.6 8L8.2 6.8L9.8 8.8'
-				stroke='currentColor'
-				strokeWidth='1.1'
-			/>
-		</svg>
-	);
-};
-
-const AttachmentIcon: React.FC = () => {
-	return (
-		<svg width='12' height='12' viewBox='0 0 12 12' fill='none' aria-hidden='true'>
-			<path
-				d='M4 6.8L6.7 4.1C7.5 3.3 8.8 3.3 9.6 4.1C10.4 4.9 10.4 6.2 9.6 7L6.1 10.5C4.9 11.7 3 11.7 1.8 10.5C0.6 9.3 0.6 7.4 1.8 6.2L5.2 2.8'
-				stroke='currentColor'
-				strokeWidth='1.1'
-				strokeLinecap='round'
-			/>
-		</svg>
-	);
-};
-
-const CodeIcon: React.FC = () => {
-	return (
-		<svg width='12' height='12' viewBox='0 0 12 12' fill='none' aria-hidden='true'>
-			<path
-				d='M4.4 3.1L2 6L4.4 8.9M7.6 3.1L10 6L7.6 8.9M6.8 2L5.2 10'
-				stroke='currentColor'
-				strokeWidth='1.1'
-				strokeLinecap='round'
-				strokeLinejoin='round'
-			/>
-		</svg>
-	);
-};
-
-const DotIcon: React.FC<{ color: string }> = ({ color }) => {
-	return (
-		<span className={styles.dotIconWrap} aria-hidden='true'>
-			<span className={styles.dotIcon} style={{ backgroundColor: color }} />
-		</span>
-	);
-};
-
 const RichTextEditor: React.FC<RichTextEditorProps> = ({
 	className = '',
 	defaultContent = '',
@@ -211,14 +98,12 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({
 	showCharacterCount = true,
 	headingLevels = [1, 2, 3],
 	onInsertImage,
-	onAttachFile,
 }) => {
 	const [textType, setTextType] = useState<TextType>('p');
 	const [textLength, setTextLength] = useState<number>(0);
 	const [isColorMenuOpen, setIsColorMenuOpen] = useState<boolean>(false);
 	const [customColor, setCustomColor] = useState<string>('#7F56D9');
 	const colorMenuRef = useRef<HTMLDivElement | null>(null);
-	const textColorInputRef = useRef<HTMLInputElement | null>(null);
 	const highlightInputRef = useRef<HTMLInputElement | null>(null);
 
 	const normalizedHeadingLevels = useMemo<HeadingLevel[]>(() => {
@@ -301,7 +186,6 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({
 	}
 
 	const toolbarMenu: HiddenMenu = hiddenMenu ?? {};
-	const currentTextColor = (editor.getAttributes('textStyle').color as string) || '#71839b';
 	const currentHighlight = (editor.getAttributes('highlight').color as string) || '#161616';
 	const charactersLeft = maxCharacters - textLength;
 
@@ -397,41 +281,16 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({
 						</ToolbarButton>
 					)}
 
-					{!toolbarMenu.textColor && (
-						<ToolbarButton
-							ariaLabel='Text color'
-							onClick={() => {
-								textColorInputRef.current?.click();
-							}}
-							active={Boolean(editor.getAttributes('textStyle').color)}
-						>
-							<DotIcon color={currentTextColor} />
-							<input
-								ref={textColorInputRef}
-								type='color'
-								className={styles.hiddenColorInput}
-								aria-label='Text color picker'
-								value={currentTextColor}
-								onInput={(event) => {
-									editor
-										.chain()
-										.focus()
-										.setColor(event.currentTarget.value)
-										.run();
-								}}
-							/>
-						</ToolbarButton>
-					)}
-					{!toolbarMenu.highlight && (
+					{!toolbarMenu.textColor && !toolbarMenu.highlight && (
 						<div className={styles.colorMenuTrigger} ref={colorMenuRef}>
 							<ToolbarButton
-								ariaLabel='Highlight color'
+								ariaLabel='Text color'
 								onClick={() => {
 									setIsColorMenuOpen((prev) => !prev);
 								}}
 								active={editor.isActive('highlight')}
 							>
-								<DotIcon color={currentHighlight} />
+								<TextColorIcon color={currentHighlight} />
 							</ToolbarButton>
 
 							{isColorMenuOpen && (
@@ -540,7 +399,7 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({
 								}}
 								active={editor.isActive({ textAlign: 'left' })}
 							>
-								<BarIcon align='left' />
+								<TextAlignIcon.Left />
 							</ToolbarButton>
 							<ToolbarButton
 								ariaLabel='Align center'
@@ -549,7 +408,7 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({
 								}}
 								active={editor.isActive({ textAlign: 'center' })}
 							>
-								<BarIcon align='center' />
+								<TextAlignIcon.Center />
 							</ToolbarButton>
 							<ToolbarButton
 								ariaLabel='Align right'
@@ -558,7 +417,7 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({
 								}}
 								active={editor.isActive({ textAlign: 'right' })}
 							>
-								<BarIcon align='right' />
+								<TextAlignIcon.Right />
 							</ToolbarButton>
 							{!toolbarMenu.justify && (
 								<ToolbarButton
@@ -568,7 +427,7 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({
 									}}
 									active={editor.isActive({ textAlign: 'justify' })}
 								>
-									<BarIcon align='justify' />
+									<TextAlignIcon.Justify />
 								</ToolbarButton>
 							)}
 						</>
@@ -580,7 +439,7 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({
 							onClick={setLink}
 							active={editor.isActive('link')}
 						>
-							<LinkIcon />
+							<TextLinkIcon />
 						</ToolbarButton>
 					)}
 					{!toolbarMenu.image && (
@@ -589,20 +448,8 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({
 							onClick={() => {
 								onInsertImage?.();
 							}}
-							disabled={!onInsertImage}
 						>
 							<ImageIcon />
-						</ToolbarButton>
-					)}
-					{!toolbarMenu.attachment && (
-						<ToolbarButton
-							ariaLabel='Attach file'
-							onClick={() => {
-								onAttachFile?.();
-							}}
-							disabled={!onAttachFile}
-						>
-							<AttachmentIcon />
 						</ToolbarButton>
 					)}
 					{!toolbarMenu.code && (
@@ -667,7 +514,7 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({
 							}}
 							active={editor.isActive({ textAlign: 'left' })}
 						>
-							<BarIcon align='left' />
+							<TextAlignIcon.Left />
 						</ToolbarButton>
 						<ToolbarButton
 							ariaLabel='Bubble align center'
@@ -676,7 +523,7 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({
 							}}
 							active={editor.isActive({ textAlign: 'center' })}
 						>
-							<BarIcon align='center' />
+							<TextAlignIcon.Center />
 						</ToolbarButton>
 						<ToolbarButton
 							ariaLabel='Bubble align right'
@@ -685,7 +532,7 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({
 							}}
 							active={editor.isActive({ textAlign: 'right' })}
 						>
-							<BarIcon align='right' />
+							<TextAlignIcon.Right />
 						</ToolbarButton>
 						<ToolbarButton
 							ariaLabel='Bubble justify'
@@ -694,7 +541,7 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({
 							}}
 							active={editor.isActive({ textAlign: 'justify' })}
 						>
-							<BarIcon align='justify' />
+							<TextAlignIcon.Justify />
 						</ToolbarButton>
 					</div>
 				</BubbleMenu>

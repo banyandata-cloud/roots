@@ -80,6 +80,7 @@ describe('RichTextEditor – rendering and actions', () => {
 		expect(screen.getByLabelText('Strike')).toBeInTheDocument();
 		expect(screen.getByLabelText('Bullet list')).toBeInTheDocument();
 		expect(screen.getByLabelText('Inline code')).toBeInTheDocument();
+		expect(screen.getByLabelText('Insert image')).not.toBeDisabled();
 	});
 
 	test('applies bold format on click', () => {
@@ -161,13 +162,10 @@ describe('RichTextEditor – state and callbacks', () => {
 		expect(mockChain.setTextAlign).toHaveBeenCalledWith('justify');
 	});
 
-	test('triggers image and attachment callbacks', () => {
+	test('triggers image callback', () => {
 		const onInsertImage = jest.fn();
-		const onAttachFile = jest.fn();
-		render(<RichTextEditor onInsertImage={onInsertImage} onAttachFile={onAttachFile} />);
+		render(<RichTextEditor onInsertImage={onInsertImage} />);
 		fireEvent.click(screen.getByLabelText('Insert image'));
-		fireEvent.click(screen.getByLabelText('Attach file'));
 		expect(onInsertImage).toHaveBeenCalledTimes(1);
-		expect(onAttachFile).toHaveBeenCalledTimes(1);
 	});
 });
