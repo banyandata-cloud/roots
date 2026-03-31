@@ -1,5 +1,6 @@
 import { arrow, autoUpdate, flip, offset, shift } from '@floating-ui/react-dom';
 import {
+	safePolygon,
 	useDismiss,
 	useFloating,
 	useFocus,
@@ -80,7 +81,7 @@ const Tooltip = forwardRef<RefObject<HTMLElement>, TooltipProps>((props, propRef
 	// Event listeners to change the open state
 	const hover = useHover(context, {
 		move: true,
-		enabled: !clickOutsideToClose,
+		handleClose: clickOutsideToClose ? safePolygon() : undefined,
 	});
 
 	const focus = useFocus(context, {
