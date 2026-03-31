@@ -1,55 +1,68 @@
 .progressBar {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 33px;
-  border-top: 4px solid #e9eaeb;
+	display: flex;
+	width: 100%;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 33px;
+	border-top: 4px solid #e9eaeb;
 }
 .progressBar--sm {
-  padding-top: 12px;
+	padding-top: 12px;
 }
 .progressBar--md {
-  padding-top: 16px;
+	padding-top: 16px;
 }
 .progressBar--active {
-  border-top: 4px solid #1570ef;
+	border-top: 4px solid #1570ef;
 }
 .progressBar--completed {
-  border-top: 4px solid #1570ef;
+	border-top: 4px solid #1570ef;
 }
 
 .label {
-  font-family: "Jakarta", sans-serif;
-  font-weight: 600;
-  color: #181d27;
+	font-family: 'Jakarta', sans-serif;
+	font-weight: 600;
+	color: #181d27;
 }
 .label--sm {
-  font-size: 14px;
-  line-height: 20px;
+	font-size: 14px;
+	line-height: 20px;
 }
 .label--md {
-  font-size: 16px;
-  line-height: 24px;
+	font-size: 16px;
+	line-height: 24px;
 }
-.label--active {
-  color: #1570ef;
+.label--completed {
+	color: #414651;
+}
+.label--current {
+	color: #175cd3;
+}
+.label--incomplete {
+	color: #414651;
 }
 
 .description {
-  font-family: "Jakarta", sans-serif;
-  font-weight: 400;
-  color: #717680;
-  margin-top: 0;
+	font-family: 'Jakarta', sans-serif;
+	font-weight: 400;
+	color: #535862;
+	margin-top: 0;
+	padding: 0;
 }
 .description--sm {
-  font-size: 14px;
-  line-height: 20px;
+	font-size: 14px;
+	line-height: 20px;
 }
 .description--md {
-  font-size: 16px;
-  line-height: 24px;
+	font-size: 16px;
+	line-height: 24px;
 }
-.description--active {
-  color: #1570ef;
-}/*# sourceMappingURL=ProgressBar.module.css.map */
+.description--completed {
+	color: #535862;
+}
+.description--current {
+	color: #1570ef;
+}
+.description--incomplete {
+	color: #535862;
+} /*# sourceMappingURL=ProgressBar.module.css.map */
