@@ -65,6 +65,6 @@ describe('Tooltip — Pointer Position Variants', () => {
 		const tooltip = await screen.findByRole('tooltip');
 		const arrow = tooltip.querySelector(`.${styles.arrow}`);
 
-		expect(arrow).toHaveStyle('left: calc(100% - 12px)');
+		expect(arrow).toHaveStyle('left: calc(100% - 12px - 8px)');
 	});
 });

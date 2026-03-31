@@ -17,6 +17,7 @@ import styles from './Tooltip.module.css';
 import type { ReactElementWithRef, TooltipPointerPosition, TooltipPosition, TooltipProps } from './types';
 
 const POINTER_EDGE_OFFSET = '12px';
+const POINTER_SIZE = '8px';
 
 const getPointerStyle = ({
   side,
@@ -40,7 +41,7 @@ const getPointerStyle = ({
   const edgeValue =
     pointerPosition === 'start'
       ? POINTER_EDGE_OFFSET
-      : `calc(100% - ${POINTER_EDGE_OFFSET})`;
+      : `calc(100% - ${POINTER_EDGE_OFFSET} - ${POINTER_SIZE})`;
 
   return isHorizontalSide
     ? { left: edgeValue, top: undefined }
