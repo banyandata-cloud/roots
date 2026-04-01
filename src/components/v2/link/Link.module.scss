@@ -107,3 +107,29 @@
 		height: 20px;
 	}
 }
+
+.unstyled {
+	all: unset;
+	display: inline-flex;
+	align-items: center;
+	cursor: pointer;
+	background: transparent;
+	border: none;
+	box-shadow: none;
+	outline: none;
+	padding: 0;
+	margin: 0;
+	text-decoration: none;
+	color: inherit;
+	font: inherit;
+
+	&:focus-visible {
+		outline: none;
+	}
+
+	&:disabled {
+		opacity: 0.25;
+		pointer-events: none;
+		cursor: not-allowed;
+	}
+}

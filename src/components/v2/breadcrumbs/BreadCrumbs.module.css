@@ -1,0 +1,329 @@
+.inlineWrapper {
+  display: inline-flex;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  position: relative;
+  outline: none;
+  box-sizing: border-box;
+  overflow: visible;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.crumbItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  outline: none;
+}
+.crumbItem.disabled {
+  pointer-events: none;
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.focusTarget {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+}
+
+.crumbContent {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  border-radius: 6px;
+  box-sizing: border-box;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.crumbLabel {
+  display: inline-flex;
+  align-items: center;
+  height: 20px;
+  color: #717680;
+  font-family: "Jakarta", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
+  white-space: nowrap;
+  transition: color 0.15s ease;
+}
+.crumbItem:hover .crumbLabel {
+  color: #414651;
+}
+
+.crumbEllipsis {
+  display: inline-flex;
+  width: 15px;
+  height: 20px;
+  align-items: center;
+  justify-content: center;
+  color: #717680;
+  font-family: "Jakarta", sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  white-space: nowrap;
+  transition: color 0.15s ease;
+}
+.crumbItem:hover .crumbEllipsis {
+  color: #414651;
+}
+
+.separator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin: 0;
+}
+
+.iconWrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  line-height: 0;
+  color: #717680;
+  transition: color 0.15s ease;
+}
+.crumbItem:hover .iconWrapper {
+  color: #414651;
+}
+.crumbItem.active .iconWrapper {
+  color: #175cd3;
+}
+
+.iconCrumbWrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  transition: background 0.15s ease, color 0.15s ease;
+  cursor: pointer;
+  color: #717680;
+}
+.crumbItem:hover .iconCrumbWrapper {
+  color: #414651;
+}
+.crumbItem.active .iconCrumbWrapper {
+  color: #175cd3;
+}
+
+.dropdownWrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.breadcrumbBtn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  line-height: 0 !important;
+}
+
+.text.root {
+  gap: 8px;
+}
+.text .crumbItem.active .crumbLabel {
+  color: #175cd3;
+  font-weight: 600;
+}
+.text .crumbItem.focused a,
+.text .crumbItem.focused .breadcrumbBtn {
+  outline: 2px solid #1570ef;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+.text .iconCrumbItem.focused a,
+.text .iconCrumbItem.focused .breadcrumbBtn {
+  outline: 2px solid #1570ef;
+  outline-offset: 2px;
+  border-radius: 1px;
+}
+
+.textWithLine.root {
+  height: 36px;
+  padding: 0 8px;
+  gap: 8px;
+  border-top: 1px solid #e9eaeb;
+  border-bottom: 1px solid #e9eaeb;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.textWithLine .crumbItem {
+  align-self: center;
+}
+.textWithLine .crumbContent {
+  border-radius: 6px;
+}
+.textWithLine .crumbItem.active .crumbLabel {
+  color: #175cd3;
+  font-weight: 600;
+}
+.textWithLine .crumbItem.focused a,
+.textWithLine .crumbItem.focused .breadcrumbBtn {
+  outline: 2px solid #1570ef;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+.textWithLine .iconCrumbItem.focused a,
+.textWithLine .iconCrumbItem.focused .breadcrumbBtn {
+  outline: 2px solid #1570ef;
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+.button.root {
+  gap: 4px;
+}
+.button .breadcrumbBtn {
+  padding: 4px 8px !important;
+  border-radius: 6px !important;
+  transition: background 0.15s ease !important;
+}
+.button .iconCrumbWrapper {
+  width: 28px;
+  height: 28px;
+}
+.button .iconCrumbItem .iconCrumbWrapper .breadcrumbBtn {
+  width: 28px !important;
+  height: 28px !important;
+  padding: 4px !important;
+  margin: 0 !important;
+  border-radius: 6px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.button .crumbLabel {
+  color: #717680;
+  font-weight: 600;
+}
+.button .crumbItem:hover .breadcrumbBtn {
+  background: #fafafa !important;
+}
+.button .crumbItem:hover .iconCrumbWrapper {
+  background: #fafafa;
+}
+.button .iconCrumbItem:hover .breadcrumbBtn {
+  background: transparent !important;
+}
+.button .iconCrumbItem:hover .iconCrumbWrapper {
+  color: #414651;
+}
+.button .iconCrumbItem.active .iconCrumbWrapper {
+  color: #175cd3;
+}
+.button .crumbItem:hover .crumbLabel {
+  color: #414651;
+}
+.button .crumbItem.active .breadcrumbBtn {
+  background: #fafafa !important;
+}
+.button .crumbItem.active .iconCrumbWrapper {
+  background: #fafafa;
+}
+.button .iconCrumbItem.active .breadcrumbBtn {
+  background: transparent !important;
+}
+.button .crumbItem.active .crumbLabel {
+  color: #535862;
+  font-weight: 600;
+}
+.button .crumbItem.active:hover .crumbLabel {
+  color: #535862;
+}
+.button .crumbItem:not(.iconCrumbItem).focused .breadcrumbBtn {
+  outline: 2px solid #1570ef !important;
+  outline-offset: 2px !important;
+  border-radius: 6px !important;
+  box-shadow: none !important;
+}
+.button .crumbItem:not(.iconCrumbItem).focused.active .breadcrumbBtn {
+  outline: 2px solid #1570ef !important;
+  outline-offset: 2px !important;
+  border-radius: 6px !important;
+  box-shadow: none !important;
+  background: #fafafa !important;
+}
+.button .iconCrumbItem.focused .iconCrumbWrapper {
+  outline: 2px solid #1570ef;
+  outline-offset: 2px;
+  border-radius: 8px;
+  box-shadow: none;
+}
+.button .iconCrumbItem.focused .breadcrumbBtn {
+  box-shadow: none !important;
+  outline: none !important;
+}
+.button .iconCrumbItem.focused.active .iconCrumbWrapper {
+  outline: 2px solid #1570ef;
+  outline-offset: 2px;
+  border-radius: 8px;
+  box-shadow: none;
+  background: #fafafa;
+}
+.button .iconCrumbItem.focused.active .breadcrumbBtn {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.dropdown {
+  position: fixed;
+  z-index: 9999;
+  background: #ffffff;
+  border: 1px solid #e4e7ec;
+  border-radius: 8px;
+  box-shadow: 0px 8px 24px rgba(16, 24, 40, 0.12);
+  min-width: 180px;
+  padding: 6px 0;
+  animation: dropdownIn 0.15s ease;
+}
+@keyframes dropdownIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdownItem {
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #344054;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.dropdownItem:hover {
+  background: #f9fafb;
+  color: #1570ef;
+}/*# sourceMappingURL=BreadCrumbs.module.css.map */

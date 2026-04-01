@@ -1,0 +1,33 @@
+.tooltip {
+  position: relative;
+  background-color: #1c1c1c; /* Deep dark rich grey from the Canva spec */
+  color: #ffffff;
+  padding: 8px 12px;
+  border-radius: 6px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15), 0 0 1px rgba(255, 255, 255, 0.1);
+  max-width: 320px;
+  pointer-events: none; /* By default allow mouse to click straight through into the app */
+  will-change: transform, opacity;
+  box-sizing: border-box;
+}
+
+.tooltip.interactive {
+  pointer-events: auto; /* Required exclusively if they want to click links inside */
+}
+
+/* Enforce the text styling purely for the component text */
+.textContent {
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  line-height: 1.4 !important;
+  color: inherit !important;
+}
+
+.arrow {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: #1c1c1c;
+  transform: rotate(45deg);
+  border-radius: 1px;
+}
