@@ -1,9 +1,9 @@
 import React, { forwardRef, useEffect, useRef, useState } from 'react';
+import Logo1 from '../../icons/Email/Email';
 import TextField from '../../input/textField/TextField';
 import Checkbox from '../checkbox/CheckBox';
 import Indicator from '../tags/assets/Indicator/Indicator';
 import type { TagProps, TagSize } from '../tags/types';
-import Logo from './assets/Logo/Logo1';
 import TagCloserLg from './assets/TagCloser/TagCloserLg';
 import TagCloserMd from './assets/TagCloser/TagCloserMd';
 import TagCloserSm from './assets/TagCloser/TagCloserSm';
@@ -129,19 +129,7 @@ const Tag = forwardRef<HTMLInputElement, TagProps>(
 					onMouseEnter={() => setIsTagHovered(true)}
 					onMouseLeave={() => setIsTagHovered(false)}>
 					<span className={styles.tag__textfield_label}>{label}</span>
-					<span
-						ref={sizerRef}
-						aria-hidden
-						style={{
-							position: 'absolute',
-							visibility: 'hidden',
-							whiteSpace: 'pre',
-							fontSize: 'inherit',
-							fontWeight: 'inherit',
-							fontFamily: 'inherit',
-							letterSpacing: 'inherit',
-							pointerEvents: 'none',
-						}}>
+					<span ref={sizerRef} aria-hidden className={styles.tag__textfield_sizer}>
 						{resolvedValue || inputPlaceholder || '\u200b'}
 					</span>
 					<TextField
@@ -233,7 +221,7 @@ const Tag = forwardRef<HTMLInputElement, TagProps>(
 						styles[`tag--${size}--checkbox-indicator-count`],
 					].join(' ')}>
 					<Checkbox size={size} />
-					<Logo
+					<Logo1
 						className={[styles.tag__logo, styles[`tag__logo--checkbox-count-${size}`]]
 							.filter(Boolean)
 							.join(' ')}
@@ -259,7 +247,7 @@ const Tag = forwardRef<HTMLInputElement, TagProps>(
 						styles[`tag--${size}--checkbox-indicator-closable`],
 					].join(' ')}>
 					<Checkbox size={size} />
-					<Logo
+					<Logo1
 						className={[
 							styles.tag__logo,
 							styles[`tag__logo--checkbox-closable-${size}`],
@@ -282,7 +270,7 @@ const Tag = forwardRef<HTMLInputElement, TagProps>(
 						styles[`tag--${size}--checkbox-indicator`],
 					].join(' ')}>
 					<Checkbox size={size} />
-					<Logo
+					<Logo1
 						className={[styles.tag__logo, styles[`tag__logo--checkbox-${size}`]]
 							.filter(Boolean)
 							.join(' ')}
@@ -300,7 +288,7 @@ const Tag = forwardRef<HTMLInputElement, TagProps>(
 						styles[`tag--${size}`],
 						styles[`tag--${size}--indicator-count`],
 					].join(' ')}>
-					<Logo
+					<Logo1
 						className={[styles.tag__logo, styles[`tag__logo--count-${size}`]]
 							.filter(Boolean)
 							.join(' ')}
@@ -321,7 +309,7 @@ const Tag = forwardRef<HTMLInputElement, TagProps>(
 						styles[`tag--${size}`],
 						styles[`tag--${size}--indicator-closable`],
 					].join(' ')}>
-					<Logo
+					<Logo1
 						className={[styles.tag__logo, styles[`tag__logo--closable-${size}`]]
 							.filter(Boolean)
 							.join(' ')}
@@ -340,7 +328,7 @@ const Tag = forwardRef<HTMLInputElement, TagProps>(
 						styles[`tag--${size}`],
 						styles[`tag--${size}--indicator`],
 					].join(' ')}>
-					<Logo className={styles.tag__logo} />
+					<Logo1 className={styles.tag__logo} />
 					{label}
 				</span>
 			);

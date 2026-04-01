@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Tooltip — Snapshots matches interactive tooltip extended snapshot 1`] = `
+<div>
+  <button>
+    Click Me
+  </button>
+</div>
+`;
+
+exports[`Tooltip — Snapshots matches standard tooltip baseline snapshot 1`] = `
+<div>
+  <div>
+    Hover Me
+  </div>
+</div>
+`;

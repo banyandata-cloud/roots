@@ -1,9 +1,9 @@
 import React from 'react';
 
 interface TagCountSmProps {
-	count?: number;
-	bgColor?: string;
-	textColor?: string;
+	count?: number | undefined;
+	bgColor?: string | undefined;
+	textColor?: string | undefined;
 }
 
 const TagCountSm: React.FC<TagCountSmProps> = ({
@@ -15,10 +15,10 @@ const TagCountSm: React.FC<TagCountSmProps> = ({
 		display: 'inline-flex',
 		height: '16px',
 		padding: '0 4px',
-		flexDirection: 'column',
+		flexDirection: 'row',
+		gap: '10px',
 		justifyContent: 'center',
 		alignItems: 'center',
-		gap: '10px',
 		borderRadius: '3px',
 		background: bgColor,
 		color: textColor,

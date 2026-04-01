@@ -1,9 +1,9 @@
 import React from 'react';
 
 interface TagCountLgProps {
-	count?: number;
-	bgColor?: string;
-	textColor?: string;
+	count?: number | undefined;
+	bgColor?: string | undefined;
+	textColor?: string | undefined;
 }
 
 const TagCountLg: React.FC<TagCountLgProps> = ({
@@ -15,10 +15,9 @@ const TagCountLg: React.FC<TagCountLgProps> = ({
 		display: 'inline-flex',
 		height: '20px',
 		padding: '0 6px',
-		flexDirection: 'column',
+		flexDirection: 'row',
 		justifyContent: 'center',
 		alignItems: 'center',
-		gap: '10px',
 		borderRadius: '3px',
 		background: bgColor,
 		color: textColor,

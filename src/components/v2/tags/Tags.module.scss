@@ -399,6 +399,17 @@ $tag-lg-textfield-gap: 4px;
 		}
 	}
 
+	&__textfield_sizer {
+		position: absolute;
+		visibility: hidden;
+		white-space: pre;
+		font-size: inherit;
+		font-weight: inherit;
+		font-family: inherit;
+		letter-spacing: inherit;
+		pointer-events: none;
+	}
+
 	&__textfield_label {
 		flex-shrink: 0;
 		white-space: nowrap;

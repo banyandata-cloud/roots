@@ -1,9 +1,9 @@
 import React from 'react';
 
 interface TagCountMdProps {
-	count?: number;
-	bgColor?: string;
-	textColor?: string;
+	count?: number | undefined;
+	bgColor?: string | undefined;
+	textColor?: string | undefined;
 }
 
 const TagCountMd: React.FC<TagCountMdProps> = ({
@@ -15,10 +15,9 @@ const TagCountMd: React.FC<TagCountMdProps> = ({
 		display: 'inline-flex',
 		height: '18px',
 		padding: '0 5px',
-		flexDirection: 'column',
+		flexDirection: 'row',
 		justifyContent: 'center',
 		alignItems: 'center',
-		gap: '10px',
 		borderRadius: '3px',
 		background: bgColor,
 		color: textColor,

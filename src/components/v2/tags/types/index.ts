@@ -22,8 +22,10 @@ export interface TagProps {
 	checkboxLogoCount?: boolean | undefined;
 	textField?: boolean | undefined;
 	inputValue?: string | undefined;
-	onInputChange?: (value: string, event: React.ChangeEvent<HTMLInputElement>) => void | undefined;
+	onInputChange?:
+		| ((value: string, event: React.ChangeEvent<HTMLInputElement>) => void)
+		| undefined;
 	defaultInputValue?: string | undefined;
 	inputPlaceholder?: string | undefined;
-	onInputClear?: () => void | undefined;
+	onInputClear?: (() => void) | undefined;
 }

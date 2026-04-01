@@ -1,41 +1,15 @@
 import { forwardRef } from 'react';
+import { classes } from '../../../utils';
 import ArrowIcon from '../badges/assets/ArrowRightIcon';
 import UpArrowIcon from '../badges/assets/ArrowUpIcon';
 import DotIcon from '../badges/assets/DotIcon';
 import PlusIcon from '../badges/assets/PlusIcon';
+import { DOT_SIZE, ICON_SIZE } from '../badges/constants';
+import type { BadgeProps } from '../badges/types';
+import Button from '../buttons/button/Button';
 import CrossIcon from '../tags/assets/TagCloser/TagCloserSm';
+import Text from '../text/Text';
 import styles from './Badge.module.scss';
-
-export type BadgeVariant = 'pill' | 'badge' | 'modern';
-export type BadgeSize = 'sm' | 'md' | 'lg';
-
-const ICON_SIZE: Record<BadgeSize, number> = {
-	sm: 12,
-	md: 12,
-	lg: 14,
-};
-
-const DOT_SIZE: Record<BadgeSize, number> = {
-	sm: 8,
-	md: 8,
-	lg: 8,
-};
-
-interface BadgeProps {
-	label?: string | undefined;
-	variant?: BadgeVariant | undefined;
-	size?: BadgeSize | undefined;
-	onClose?: () => void | undefined;
-	dot?: boolean | undefined;
-	dotColor?: string | undefined;
-	arrow?: boolean | undefined;
-	arrowColor?: string | undefined;
-	upArrow?: boolean | undefined;
-	upArrowColor?: string | undefined;
-	plus?: boolean | undefined;
-	plusColor?: string | undefined;
-	className?: string | undefined;
-}
 
 const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
 	(
@@ -56,19 +30,17 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
 		},
 		ref
 	) => {
-		const classNames = [
+		const classNames = classes(
 			styles.badge,
 			styles[`badge--${size}`],
 			styles[`badge--${variant}`],
-			dot ? styles['badge--has-dot'] : '',
-			arrow ? styles['badge--has-arrow'] : '',
-			upArrow ? styles['badge--has-up-arrow'] : '',
-			plus ? styles['badge--has-plus'] : '',
-			onClose ? styles['badge--has-closer'] : '',
-			className,
-		]
-			.filter(Boolean)
-			.join(' ');
+			dot && styles['badge--has-dot'],
+			arrow && styles['badge--has-arrow'],
+			upArrow && styles['badge--has-up-arrow'],
+			plus && styles['badge--has-plus'],
+			onClose && styles['badge--has-closer'],
+			className
+		);
 
 		return (
 			<span ref={ref} className={classNames}>
@@ -93,7 +65,11 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
 						className={styles.badge__icon}
 					/>
 				)}
-				{label && <span className={styles.badge__label}>{label}</span>}
+				{label && (
+					<Text component='span' className={styles.badge__label}>
+						{label}
+					</Text>
+				)}
 				{arrow && (
 					<ArrowIcon
 						size={ICON_SIZE[size]}
@@ -102,13 +78,13 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
 					/>
 				)}
 				{onClose && (
-					<button
+					<Button
 						type='button'
+						variant='unstyled'
 						className={styles.badge__closer}
 						onClick={onClose}
-						aria-label={`Remove ${label}`}>
-						<CrossIcon size={ICON_SIZE[size]} />
-					</button>
+						title={<CrossIcon size={ICON_SIZE[size]} />}
+					/>
 				)}
 			</span>
 		);
