@@ -468,58 +468,140 @@
 
 // Multi-Select Specific Styles
 
-// Count Badge
+// Filters dropdown - matching Figma design
+.filtersDropdown {
+	background: white;
+	border: 1px solid #e2e8f0;
+	border-radius: 8px;
+	padding: 0;
+	box-shadow:
+		0px 10px 15px -3px rgba(0, 0, 0, 0.1),
+		0px 4px 6px -2px rgba(0, 0, 0, 0.05);
+	min-width: 200px;
+	max-height: 300px;
+	overflow: hidden;
+}
+
+.filtersHeader {
+	padding: 12px 16px;
+	border-bottom: 1px solid #f1f5f9;
+	background: #f8fafc;
+
+	.filtersTitle {
+		font-family: Jakarta;
+		font-size: 12px;
+		line-height: 16px;
+		font-weight: 600;
+		color: #374151;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
+}
+
+.filtersOptions {
+	max-height: 240px;
+	overflow-y: auto;
+}
+
+.filterOption {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	padding: 8px 16px;
+	background: none;
+	border: none;
+	text-align: left;
+	cursor: pointer;
+	transition: background-color 0.2s ease-in-out;
+
+	.filterLabel {
+		font-family: Jakarta;
+		font-size: 14px;
+		line-height: 20px;
+		font-weight: 500;
+		color: #374151;
+	}
+
+	&:hover {
+		background: #f9fafb;
+
+		.filterLabel {
+			color: #1f2937;
+		}
+	}
+
+	&:active {
+		background: #f3f4f6;
+	}
+}
+
+// Count Badge - Dark variant matching Figma design using element targeting
 .countBadge {
-	display: flex !important;
-	align-items: center !important;
-	background: #2e90fa !important;
-	border-radius: 16px !important;
-	padding: 2px 8px !important;
-	gap: 6px !important;
-	height: 24px !important;
-}
+	background-color: #0a0d12 !important;
+	border-radius: 4px !important;
+	border-color: transparent !important;
 
-.countText {
-	font-family: Jakarta !important;
-	font-weight: 500 !important;
-	font-size: 14px !important;
-	line-height: 20px !important;
-	color: white !important;
-}
-
-.countCloseButton {
-	display: flex !important;
-	align-items: center !important;
-	justify-content: center !important;
-	background: none !important;
-	border: none !important;
-	cursor: pointer !important;
-	padding: 0 !important;
-	width: 16px !important;
-	height: 16px !important;
-	border-radius: 50% !important;
-	transition: background-color 0.2s ease-in-out !important;
-
-	&:hover:not(:disabled) {
-		background: rgba(255, 255, 255, 0.2) !important;
+	// Target the label span directly
+	> span {
+		color: #ffffff !important;
+		font-weight: 500 !important;
+		font-size: 14px !important;
+		line-height: 20px !important;
 	}
 
-	&:disabled {
-		cursor: not-allowed !important;
-		opacity: 0.6 !important;
-	}
+	// Target the close button directly
+	> button {
+		color: #ffffff !important;
+		opacity: 0.7 !important;
 
-	svg {
-		width: 12px !important;
-		height: 12px !important;
-		color: white !important;
-		fill: white !important;
+		&:hover {
+			opacity: 1 !important;
+			background-color: rgba(255, 255, 255, 0.1) !important;
+		}
+
+		svg {
+			color: #ffffff !important;
+			fill: #ffffff !important;
+		}
 	}
 }
 
-// Multi-select menu item styles
-.dropdownMenuItemMultiSelect {
-	// No special styling needed for now, checkboxes handle the selection state
+// Count Badge Disabled State - Light variant matching Figma design
+.countBadgeDisabled {
+	background-color: #ffffff !important;
+	border: 1px solid #d5d7da !important;
+	border-radius: 4px !important;
+
+	// Target the label span directly
+	> span {
+		color: #a4a7ae !important; // Placeholder text color from Figma
+		font-weight: 500 !important;
+		font-size: 14px !important;
+		line-height: 20px !important;
+	}
+
+	// Target the close button directly
+	> button {
+		color: #a4a7ae !important; // Same placeholder color
+		opacity: 0.7 !important;
+		cursor: not-allowed !important; // Show disabled cursor
+		pointer-events: none !important; // Disable all interactions
+
+		&:hover {
+			opacity: 0.7 !important; // No hover effect when disabled
+			background-color: transparent !important;
+		}
+
+		svg {
+			color: #a4a7ae !important;
+			fill: #a4a7ae !important;
+		}
+	}
+}
+
+// Selected text styling (shows alongside badge in multi-select)
+.selectedText {
+	margin-left: 8px !important; // Space between badge and text
 }
 
 .dropdownMenuItemCheckbox {
@@ -529,4 +611,22 @@
 	width: 20px;
 	height: 20px;
 	flex-shrink: 0;
+}
+
+.shortcutHint {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: white;
+	color: #a4a7ae;
+	font-family: Jakarta;
+	font-size: 12px;
+	font-weight: 500;
+	border: 1px solid #e9eaeb;
+	border-radius: 4px;
+	padding: 1px 4px;
+	user-select: none;
+	line-height: 16px;
+	height: 20px;
+	min-width: 20px;
 }

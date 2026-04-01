@@ -400,49 +400,117 @@
   stroke: #2e90fa !important;
 }
 
-.countBadge {
-  display: flex !important;
-  align-items: center !important;
-  background: #2e90fa !important;
-  border-radius: 16px !important;
-  padding: 2px 8px !important;
-  gap: 6px !important;
-  height: 24px !important;
+.filtersDropdown {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 0;
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1), 0px 4px 6px -2px rgba(0, 0, 0, 0.05);
+  min-width: 200px;
+  max-height: 300px;
+  overflow: hidden;
 }
 
-.countText {
-  font-family: Jakarta !important;
+.filtersHeader {
+  padding: 12px 16px;
+  border-bottom: 1px solid #f1f5f9;
+  background: #f8fafc;
+}
+.filtersHeader .filtersTitle {
+  font-family: Jakarta;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  color: #374151;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.filtersOptions {
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.filterOption {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 8px 16px;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+.filterOption .filterLabel {
+  font-family: Jakarta;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  color: #374151;
+}
+.filterOption:hover {
+  background: #f9fafb;
+}
+.filterOption:hover .filterLabel {
+  color: #1f2937;
+}
+.filterOption:active {
+  background: #f3f4f6;
+}
+
+.countBadge {
+  background-color: #0a0d12 !important;
+  border-radius: 4px !important;
+  border-color: transparent !important;
+}
+.countBadge > span {
+  color: #ffffff !important;
   font-weight: 500 !important;
   font-size: 14px !important;
   line-height: 20px !important;
-  color: white !important;
+}
+.countBadge > button {
+  color: #ffffff !important;
+  opacity: 0.7 !important;
+}
+.countBadge > button:hover {
+  opacity: 1 !important;
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+.countBadge > button svg {
+  color: #ffffff !important;
+  fill: #ffffff !important;
 }
 
-.countCloseButton {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  background: none !important;
-  border: none !important;
-  cursor: pointer !important;
-  padding: 0 !important;
-  width: 16px !important;
-  height: 16px !important;
-  border-radius: 50% !important;
-  transition: background-color 0.2s ease-in-out !important;
+.countBadgeDisabled {
+  background-color: #ffffff !important;
+  border: 1px solid #d5d7da !important;
+  border-radius: 4px !important;
 }
-.countCloseButton:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.2) !important;
+.countBadgeDisabled > span {
+  color: #a4a7ae !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  line-height: 20px !important;
 }
-.countCloseButton:disabled {
+.countBadgeDisabled > button {
+  color: #a4a7ae !important;
+  opacity: 0.7 !important;
   cursor: not-allowed !important;
-  opacity: 0.6 !important;
+  pointer-events: none !important;
 }
-.countCloseButton svg {
-  width: 12px !important;
-  height: 12px !important;
-  color: white !important;
-  fill: white !important;
+.countBadgeDisabled > button:hover {
+  opacity: 0.7 !important;
+  background-color: transparent !important;
+}
+.countBadgeDisabled > button svg {
+  color: #a4a7ae !important;
+  fill: #a4a7ae !important;
+}
+
+.selectedText {
+  margin-left: 8px !important;
 }
 
 .dropdownMenuItemCheckbox {
@@ -452,4 +520,24 @@
   width: 20px;
   height: 20px;
   flex-shrink: 0;
+}
+
+.shortcutHint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  color: #a4a7ae;
+  font-family: Jakarta;
+  font-size: 12px;
+  font-weight: 500;
+  border: 1px solid #e9eaeb;
+  border-radius: 4px;
+  padding: 1px 4px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  line-height: 16px;
+  height: 20px;
+  min-width: 20px;
 }/*# sourceMappingURL=Dropdown.module.css.map */

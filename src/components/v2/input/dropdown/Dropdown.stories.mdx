@@ -8,26 +8,6 @@ export const Template = (args) => {
 	return <Dropdown {...args} />;
 };
 
-export const DropdownWithOptions = () => {
-	return (
-		<Dropdown
-			label='Focus With Options'
-			value='admin'
-			state='focus'
-			helperText='This is a hint text to help user.'
-			required={true}
-			helpIcon={true}
-			options={[
-				{ value: 'admin', label: 'Admin User' },
-				{ value: 'editor', label: 'Editor User' },
-				{ value: 'viewer', label: 'Viewer User' },
-				{ value: 'guest', label: 'Guest User' },
-				{ value: 'moderator', label: 'Moderator User' },
-			]}
-		/>
-	);
-};
-
 export const SimpleVariantTemplate = () => {
 	return (
 		<div style={{ display: 'flex', flexWrap: 'wrap', gap: '24px' }}>
@@ -77,9 +57,6 @@ export const SimpleVariantTemplate = () => {
 						{ value: 'guest', label: 'Guest User' },
 					]}
 				/>
-			</div>
-			<div style={{ minWidth: '320px', width: '320px', position: 'relative', zIndex: 10 }}>
-				<DropdownWithOptions />
 			</div>
 			<div style={{ minWidth: '320px', width: '320px' }}>
 				<Dropdown
@@ -202,24 +179,6 @@ export const IconVariantTemplate = () => {
 					]}
 				/>
 			</div>
-			<div style={{ minWidth: '320px', width: '320px', position: 'relative', zIndex: 10 }}>
-				<Dropdown
-					label='Focus With Options'
-					value='admin'
-					state='focus'
-					helperText='This is a hint text to help user.'
-					required={true}
-					helpIcon={true}
-					icon={Email}
-					options={[
-						{ value: 'admin', label: 'Admin User', icon: Email },
-						{ value: 'editor', label: 'Editor User', icon: Email },
-						{ value: 'viewer', label: 'Viewer User', icon: Email },
-						{ value: 'guest', label: 'Guest User', icon: Email },
-						{ value: 'moderator', label: 'Moderator User', icon: Email },
-					]}
-				/>
-			</div>
 			<div style={{ minWidth: '320px', width: '320px' }}>
 				<Dropdown
 					label='Error'
@@ -297,12 +256,40 @@ export const MultiSelectTemplate = () => {
 		<div style={{ display: 'flex', flexWrap: 'wrap', gap: '24px' }}>
 			<div style={{ minWidth: '320px', width: '320px' }}>
 				<Dropdown
+					label='Multi-select Default (Empty)'
+					placeholder='Select users'
+					helperText='You can select multiple users.'
+					variant='multi-select'
+					required={true}
+					helpIcon={true}
+					dataLabel={{
+						singular: 'User',
+						plural: 'Users',
+					}}
+					options={[
+						{ value: 'admin', label: 'Admin User' },
+						{ value: 'editor', label: 'Editor User' },
+						{ value: 'viewer', label: 'Viewer User' },
+						{ value: 'guest', label: 'Guest User' },
+						{ value: 'moderator', label: 'Moderator User' },
+					]}
+					onMultiSelectChange={(values) =>
+						console.log('Empty multi-select changed:', values)
+					}
+				/>
+			</div>
+			<div style={{ minWidth: '320px', width: '320px' }}>
+				<Dropdown
 					label='Multi-select (Uncontrolled)'
 					placeholder='Select users'
 					helperText='You can select multiple users.'
 					variant='multi-select'
 					required={true}
 					helpIcon={true}
+					dataLabel={{
+						singular: 'User',
+						plural: 'Users',
+					}}
 					defaultSelectedValues={['admin']}
 					options={[
 						{ value: 'admin', label: 'Admin User' },
@@ -323,6 +310,10 @@ export const MultiSelectTemplate = () => {
 					helperText='Focus state with 2 selected.'
 					required={true}
 					helpIcon={true}
+					dataLabel={{
+						singular: 'User',
+						plural: 'Users',
+					}}
 					options={[
 						{ value: 'admin', label: 'Admin User' },
 						{ value: 'editor', label: 'Editor User' },
@@ -342,6 +333,10 @@ export const MultiSelectTemplate = () => {
 					helperText='Please select at least one user.'
 					required={true}
 					helpIcon={true}
+					dataLabel={{
+						singular: 'User',
+						plural: 'Users',
+					}}
 					options={[
 						{ value: 'admin', label: 'Admin User' },
 						{ value: 'editor', label: 'Editor User' },
@@ -353,6 +348,28 @@ export const MultiSelectTemplate = () => {
 			</div>
 			<div style={{ minWidth: '320px', width: '320px' }}>
 				<Dropdown
+					label='Multi-select Warning'
+					defaultSelectedValues={['admin']}
+					state='warning'
+					variant='multi-select'
+					helperText='This is a hint text to help user.'
+					required={true}
+					helpIcon={true}
+					dataLabel={{
+						singular: 'User',
+						plural: 'Users',
+					}}
+					options={[
+						{ value: 'admin', label: 'Admin User' },
+						{ value: 'editor', label: 'Editor User' },
+						{ value: 'viewer', label: 'Viewer User' },
+						{ value: 'guest', label: 'Guest User' },
+					]}
+					onMultiSelectChange={(values) => console.log('Warning multi-select:', values)}
+				/>
+			</div>
+			<div style={{ minWidth: '320px', width: '320px' }}>
+				<Dropdown
 					label='Multi-select Disabled'
 					defaultSelectedValues={['admin', 'editor']}
 					variant='multi-select'
@@ -360,6 +377,10 @@ export const MultiSelectTemplate = () => {
 					disabled={true}
 					required={true}
 					helpIcon={true}
+					dataLabel={{
+						singular: 'User',
+						plural: 'Users',
+					}}
 					options={[
 						{ value: 'admin', label: 'Admin User' },
 						{ value: 'editor', label: 'Editor User' },
@@ -367,6 +388,210 @@ export const MultiSelectTemplate = () => {
 						{ value: 'guest', label: 'Guest User' },
 					]}
 					onMultiSelectChange={(values) => console.log('Disabled multi-select:', values)}
+				/>
+			</div>
+			<div style={{ minWidth: '320px', width: '320px' }}>
+				<Dropdown
+					label='Multi-select Read Only'
+					defaultSelectedValues={['admin', 'editor']}
+					variant='multi-select'
+					helperText='This is a hint text to help user.'
+					readOnly={true}
+					required={true}
+					helpIcon={true}
+					dataLabel={{
+						singular: 'User',
+						plural: 'Users',
+					}}
+					options={[
+						{ value: 'admin', label: 'Admin User' },
+						{ value: 'editor', label: 'Editor User' },
+						{ value: 'viewer', label: 'Viewer User' },
+						{ value: 'guest', label: 'Guest User' },
+					]}
+					onMultiSelectChange={(values) => console.log('ReadOnly multi-select:', values)}
+				/>
+			</div>
+		</div>
+	);
+};
+
+export const MultiSelectWithIconTemplate = () => {
+	return (
+		<div style={{ display: 'flex', flexWrap: 'wrap', gap: '24px' }}>
+			<div style={{ minWidth: '320px', width: '320px' }}>
+				<Dropdown
+					label='Multi-select with Icon (Default)'
+					placeholder='Select users'
+					helperText='You can select multiple users.'
+					variant='multi-select'
+					required={true}
+					helpIcon={true}
+					icon={Email}
+					dataLabel={{
+						singular: 'User',
+						plural: 'Users',
+					}}
+					options={[
+						{ value: 'admin', label: 'Admin User', icon: Email },
+						{ value: 'editor', label: 'Editor User', icon: Email },
+						{ value: 'viewer', label: 'Viewer User', icon: Email },
+						{ value: 'guest', label: 'Guest User', icon: Email },
+						{ value: 'moderator', label: 'Moderator User', icon: Email },
+					]}
+					onMultiSelectChange={(values) =>
+						console.log('Icon multi-select changed:', values)
+					}
+				/>
+			</div>
+			<div style={{ minWidth: '320px', width: '320px' }}>
+				<Dropdown
+					label='Multi-select with Icon (Selected)'
+					defaultSelectedValues={['admin', 'editor']}
+					variant='multi-select'
+					helperText='2 users selected.'
+					required={true}
+					helpIcon={true}
+					icon={Email}
+					dataLabel={{
+						singular: 'User',
+						plural: 'Users',
+					}}
+					options={[
+						{ value: 'admin', label: 'Admin User', icon: Email },
+						{ value: 'editor', label: 'Editor User', icon: Email },
+						{ value: 'viewer', label: 'Viewer User', icon: Email },
+						{ value: 'guest', label: 'Guest User', icon: Email },
+						{ value: 'moderator', label: 'Moderator User', icon: Email },
+					]}
+					onMultiSelectChange={(values) =>
+						console.log('Icon multi-select with selection:', values)
+					}
+				/>
+			</div>
+			<div style={{ minWidth: '320px', width: '320px' }}>
+				<Dropdown
+					label='Multi-select with Icon (Focus)'
+					defaultSelectedValues={['admin']}
+					state='focus'
+					variant='multi-select'
+					helperText='Focus state with icon.'
+					required={true}
+					helpIcon={true}
+					icon={Email}
+					dataLabel={{
+						singular: 'User',
+						plural: 'Users',
+					}}
+					options={[
+						{ value: 'admin', label: 'Admin User', icon: Email },
+						{ value: 'editor', label: 'Editor User', icon: Email },
+						{ value: 'viewer', label: 'Viewer User', icon: Email },
+						{ value: 'guest', label: 'Guest User', icon: Email },
+					]}
+					onMultiSelectChange={(values) =>
+						console.log('Focus icon multi-select:', values)
+					}
+				/>
+			</div>
+			<div style={{ minWidth: '320px', width: '320px' }}>
+				<Dropdown
+					label='Multi-select with Icon (Disabled)'
+					defaultSelectedValues={['admin', 'editor']}
+					variant='multi-select'
+					helperText='You cannot change the selection.'
+					disabled={true}
+					required={true}
+					helpIcon={true}
+					icon={Email}
+					dataLabel={{
+						singular: 'User',
+						plural: 'Users',
+					}}
+					options={[
+						{ value: 'admin', label: 'Admin User', icon: Email },
+						{ value: 'editor', label: 'Editor User', icon: Email },
+						{ value: 'viewer', label: 'Viewer User', icon: Email },
+						{ value: 'guest', label: 'Guest User', icon: Email },
+					]}
+					onMultiSelectChange={(values) =>
+						console.log('Disabled icon multi-select:', values)
+					}
+				/>
+			</div>
+			<div style={{ minWidth: '320px', width: '320px' }}>
+				<Dropdown
+					label='Multi-select with Icon (Error)'
+					defaultSelectedValues={[]}
+					state='error'
+					variant='multi-select'
+					helperText='Please select at least one user.'
+					required={true}
+					helpIcon={true}
+					icon={Email}
+					dataLabel={{
+						singular: 'User',
+						plural: 'Users',
+					}}
+					options={[
+						{ value: 'admin', label: 'Admin User', icon: Email },
+						{ value: 'editor', label: 'Editor User', icon: Email },
+						{ value: 'viewer', label: 'Viewer User', icon: Email },
+						{ value: 'guest', label: 'Guest User', icon: Email },
+					]}
+					onMultiSelectChange={(values) =>
+						console.log('Error icon multi-select:', values)
+					}
+				/>
+			</div>
+			<div style={{ minWidth: '320px', width: '320px' }}>
+				<Dropdown
+					label='Multi-select with Icon (Warning)'
+					defaultSelectedValues={['admin']}
+					state='warning'
+					variant='multi-select'
+					helperText='This is a hint text to help user.'
+					required={true}
+					helpIcon={true}
+					icon={Email}
+					dataLabel={{
+						singular: 'User',
+						plural: 'Users',
+					}}
+					options={[
+						{ value: 'admin', label: 'Admin User', icon: Email },
+						{ value: 'editor', label: 'Editor User', icon: Email },
+						{ value: 'viewer', label: 'Viewer User', icon: Email },
+						{ value: 'guest', label: 'Guest User', icon: Email },
+					]}
+					onMultiSelectChange={(values) =>
+						console.log('Warning icon multi-select:', values)
+					}
+				/>
+			</div>
+			<div style={{ minWidth: '320px', width: '320px' }}>
+				<Dropdown
+					label='Multi-select with Icon (Read Only)'
+					defaultSelectedValues={['admin', 'editor']}
+					variant='multi-select'
+					helperText='This is a hint text to help user.'
+					readOnly={true}
+					required={true}
+					helpIcon={true}
+					icon={Email}
+					dataLabel={{
+						singular: 'User',
+						plural: 'Users',
+					}}
+					options={[
+						{ value: 'admin', label: 'Admin User', icon: Email },
+						{ value: 'editor', label: 'Editor User', icon: Email },
+						{ value: 'viewer', label: 'Viewer User', icon: Email },
+						{ value: 'guest', label: 'Guest User', icon: Email },
+					]}
+					onMultiSelectChange={(values) =>
+						console.log('ReadOnly icon multi-select:', values)
+					}
 				/>
 			</div>
 		</div>
@@ -403,6 +628,12 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 
 <Canvas>
 	<Story name='MultiSelectStates'>{() => <MultiSelectTemplate />}</Story>
+</Canvas>
+
+### Multi-Select with Icon Variant
+
+<Canvas>
+	<Story name='MultiSelectWithIcon'>{() => <MultiSelectWithIconTemplate />}</Story>
 </Canvas>
 
 ## API
@@ -499,7 +730,7 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 | `options`               | `DropdownOption[]`                                                                        | `[]`                                  | Array of dropdown options                            |
 | `state`                 | `'default' \| 'selected' \| 'focus' \| 'disabled' \| 'error' \| 'warning' \| 'read-only'` | `'default'`                           | Visual state of the dropdown                         |
 | `size`                  | `'sm' \| 'md'`                                                                            | `'sm'`                                | Size variant                                         |
-| `variant`               | `'simple' \| 'multi-select' \| 'with-icon' \| 'search'`                                   | `'simple'`                            | Dropdown variant                                     |
+| `variant`               | `'simple' \| 'multi-select' \| 'with-icon'`                                               | `'simple'`                            | Dropdown variant                                     |
 | `required`              | `boolean`                                                                                 | `true`                                | Whether the field is required                        |
 | `disabled`              | `boolean`                                                                                 | `false`                               | Whether the dropdown is disabled                     |
 | `readOnly`              | `boolean`                                                                                 | `false`                               | Whether the dropdown is read-only                    |

@@ -5,7 +5,7 @@ export interface BadgeProps {
 	label: string;
 	variant?: BadgeVariant | undefined;
 	size?: BadgeSize | undefined;
-	onClose?: () => void | undefined;
+	onClose?: ((e: React.MouseEvent) => void) | undefined;
 	dot?: boolean | undefined;
 	dotColor?: string | undefined;
 	arrow?: boolean | undefined;

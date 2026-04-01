@@ -1,8 +1,8 @@
-import React, { forwardRef, useRef, useState } from 'react';
+import React, { forwardRef, useImperativeHandle, useRef, useState } from 'react';
 import { classes } from '../../../../utils';
-import { CrossIcon } from '../../../icons';
 import { Popover } from '../../../popover';
 import { Checkbox } from '../../../v2/checkbox';
+import Badge from '../../badges/Badge';
 import { Button } from '../../buttons/button';
 import { HelpIcon } from '../../icons';
 import { ChevronDownIcon } from '../../icons/chevron-down';
@@ -10,9 +10,9 @@ import { ErrorIcon } from '../../icons/error';
 import { TickIcon } from '../../icons/tickIcon';
 import { WarningIcon } from '../../icons/warning';
 import styles from './Dropdown.module.scss';
-import type { DropdownProps } from './types';
+import type { DropdownProps, DropdownRef } from './types';
 
-const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
+const Dropdown = forwardRef<DropdownRef, DropdownProps>(
 	(
 		{
 			label,
@@ -23,6 +23,8 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
 			selectedValues,
 			defaultSelectedValues,
 			options = [],
+			dataLabel = 'option',
+			customAllLabel = 'All',
 			state = 'default',
 			size = 'sm',
 			variant = 'simple',
@@ -40,6 +42,7 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
 			className,
 			id,
 			name,
+
 			...props
 		},
 		ref
@@ -54,8 +57,27 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
 		const [isOpen, setIsOpen] = useState(false);
 		const dropdownButtonRef = useRef<HTMLButtonElement>(null);
 
+		// Expose focus method via ref
+		useImperativeHandle(ref, () => ({
+			focus: () => {
+				if (dropdownButtonRef.current && !disabled && !readOnly) {
+					dropdownButtonRef.current.focus();
+					setIsOpen(true); // Open the dropdown to show options
+					setIsFocused(true);
+				}
+			},
+		}));
+
 		// Check if multi-select mode
 		const isMultiSelect = variant === 'multi-select';
+
+		// Create enhanced options with "All" option for multi-select
+		const enhancedOptions = isMultiSelect
+			? [{ value: '__all__', label: customAllLabel }, ...options]
+			: options;
+
+		// Get actual options (excluding "All" option) for value filtering
+		const actualOptions = options;
 
 		// Determine current display value and selection
 		const displayValue = value !== undefined ? value : internalValue;
@@ -63,16 +85,35 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
 			selectedValues !== undefined ? selectedValues : internalSelectedValues;
 
 		// For single select
-		const selectedOption = options.find((opt) => opt.value === displayValue);
+		const selectedOption = actualOptions.find((opt) => opt.value === displayValue);
 		const isSelected = isMultiSelect ? currentSelectedValues.length > 0 : !!selectedOption;
 
-		// Generate display text based on mode
+		// Check if "All" is selected (all actual options are selected)
+		const isAllSelected =
+			isMultiSelect &&
+			actualOptions.length > 0 &&
+			actualOptions.every((option) => currentSelectedValues.includes(option.value));
+
+		// Generate display text based on mode and dataLabel
 		const getDisplayText = () => {
 			if (isMultiSelect) {
 				if (currentSelectedValues.length === 0) {
 					return placeholder;
 				}
-				return `${currentSelectedValues.length} selected`;
+
+				if (!dataLabel) {
+					return `${currentSelectedValues.length} selected`;
+				}
+
+				// Handle dataLabel (string or object with singular/plural)
+				if (typeof dataLabel === 'string') {
+					return `Selected ${dataLabel}`;
+				}
+
+				// Handle object with singular/plural
+				const labelText =
+					currentSelectedValues.length === 1 ? dataLabel.singular : dataLabel.plural;
+				return `Selected ${labelText}`;
 			}
 			return selectedOption?.label || placeholder;
 		};
@@ -171,29 +212,33 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
 			if (disabled || readOnly) return;
 
 			let newValues: string[];
-			if (currentSelectedValues.includes(optionValue)) {
-				// Remove from selection
-				newValues = currentSelectedValues.filter((val) => val !== optionValue);
+
+			if (optionValue === '__all__') {
+				// Handle "All" option
+				if (isAllSelected) {
+					// Unselect all
+					newValues = [];
+				} else {
+					// Select all actual options (excluding "All")
+					newValues = actualOptions.map((option) => option.value);
+				}
 			} else {
-				// Add to selection
-				newValues = [...currentSelectedValues, optionValue];
+				// Handle individual option
+				if (currentSelectedValues.includes(optionValue)) {
+					// Remove from selection
+					newValues = currentSelectedValues.filter((val) => val !== optionValue);
+				} else {
+					// Add to selection
+					newValues = [...currentSelectedValues, optionValue];
+				}
 			}
 
 			// Update state
 			if (selectedValues === undefined) {
 				setInternalSelectedValues(newValues);
 			}
-			onMultiSelectChange?.(newValues);
-		};
 
-		// Handle removing a specific selected value (for count badge close)
-		const handleRemoveValue = (valueToRemove: string) => {
-			if (disabled || readOnly) return;
-			const newValues = currentSelectedValues.filter((val) => val !== valueToRemove);
-
-			if (selectedValues === undefined) {
-				setInternalSelectedValues(newValues);
-			}
+			// Always exclude "All" option from onChange callback - only pass actual option values
 			onMultiSelectChange?.(newValues);
 		};
 
@@ -208,8 +253,11 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
 			onMultiSelectChange?.([]);
 		};
 
+		// Determine the icon to use
+		const resolvedIcon = icon;
+
 		return (
-			<div className={classes(styles.dropdown, className)} ref={ref} {...props}>
+			<div className={classes(styles.dropdown, className)} {...props}>
 				{/* Label */}
 				{label && (
 					<div className={styles.labelContainer}>
@@ -244,26 +292,38 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
 							<>
 								<div className={styles.contentArea}>
 									{/* Leading Icon */}
-									{icon && (
+									{resolvedIcon && (
 										<div className={styles.leadingIcon}>
-											{React.createElement(icon)}
+											{React.createElement(resolvedIcon)}
 										</div>
 									)}
 
-									{/* Multi-select count badge or regular text */}
+									{/* Multi-select: badge + text, or single select: regular text */}
 									{isMultiSelect && currentSelectedValues.length > 0 ? (
-										<div className={styles.countBadge}>
-											<span className={styles.countText}>
-												{currentSelectedValues.length}
+										<>
+											<Badge
+												label={currentSelectedValues.length.toString()}
+												variant='badge'
+												size='sm'
+												className={classes(
+													styles.countBadge,
+													(disabled || readOnly) &&
+														styles.countBadgeDisabled
+												)}
+												onClose={
+													disabled || readOnly
+														? () => {} // Show button but make it non-functional when disabled
+														: handleClearAll
+												}
+											/>
+											<span
+												className={classes(
+													styles.dropdownText,
+													styles.selectedText
+												)}>
+												{displayText}
 											</span>
-											<button
-												type='button'
-												className={styles.countCloseButton}
-												onClick={handleClearAll}
-												disabled={disabled || readOnly}>
-												<CrossIcon />
-											</button>
-										</div>
+										</>
 									) : (
 										<span
 											className={classes(
@@ -279,6 +339,7 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
 									{showStatusIcon() && (
 										<div className={styles.statusIcon}>{getStatusIcon()}</div>
 									)}
+
 									{/* Dropdown Arrow */}
 									<div className={styles.dropdownIcon}>
 										<ChevronDownIcon />
@@ -300,7 +361,7 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
 				{/* Dropdown Menu with Popover */}
 				<Popover
 					anchorEl={dropdownButtonRef.current}
-					open={isOpen && options.length > 0}
+					open={isOpen && enhancedOptions.length > 0}
 					setOpen={handlePopoverClose}
 					placement='bottom-start'
 					theme='light'
@@ -312,10 +373,20 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
 						flip: { padding: 8 },
 					}}>
 					<div className={styles.dropdownMenu} data-dropdown-menu>
-						{options.map((option) => {
-							const isOptionSelected = isMultiSelect
-								? currentSelectedValues.includes(option.value)
-								: option.value === displayValue;
+						{enhancedOptions.map((option) => {
+							// For "All" option, determine its state (checked/indeterminate/unchecked)
+							const isOptionSelected =
+								option.value === '__all__'
+									? isAllSelected
+									: isMultiSelect
+										? currentSelectedValues.includes(option.value)
+										: option.value === displayValue;
+
+							// For "All" option, show indeterminate state when some (but not all) items are selected
+							const isIndeterminate =
+								option.value === '__all__' &&
+								currentSelectedValues.length > 0 &&
+								!isAllSelected;
 
 							return (
 								<div
@@ -350,18 +421,21 @@ const Dropdown = forwardRef<HTMLDivElement, DropdownProps>(
 												<Checkbox
 													size={size === 'sm' ? 'sm' : 'md'}
 													checked={isOptionSelected}
+													indeterminate={isIndeterminate}
 													onChange={() => {}} // Handled by parent click
 													disabled={disabled || readOnly}
 												/>
 											</div>
 										)}
 
-										{/* Option Icon */}
-										{option.icon && !isMultiSelect && (
-											<div className={styles.dropdownMenuItemIcon}>
-												{React.createElement(option.icon)}
-											</div>
-										)}
+										{/* Option Icon - Only for actual options (not "All") */}
+										{option.icon &&
+											!isMultiSelect &&
+											option.value !== '__all__' && (
+												<div className={styles.dropdownMenuItemIcon}>
+													{React.createElement(option.icon)}
+												</div>
+											)}
 										<span className={styles.dropdownMenuItemText}>
 											{option.label}
 										</span>

@@ -1,9 +1,18 @@
 import React from 'react';
 
+export interface DropdownRef {
+	focus: () => void;
+}
+
 export interface DropdownOption {
 	value: string;
 	label: string;
 	icon?: React.ComponentType<any> | undefined;
+}
+
+export interface DataLabel {
+	singular: string;
+	plural: string;
 }
 
 export interface DropdownProps {
@@ -16,6 +25,8 @@ export interface DropdownProps {
 	selectedValues?: string[] | undefined; // For multi-select
 	defaultSelectedValues?: string[] | undefined; // For multi-select
 	options?: DropdownOption[] | undefined;
+	dataLabel?: string | DataLabel | undefined; // For multi-select display text (e.g., "Selected Item/Items")
+	customAllLabel?: string | undefined; // For multi-select "All" option label
 
 	// State props
 	state?:
@@ -28,7 +39,7 @@ export interface DropdownProps {
 		| 'read-only'
 		| undefined;
 	size?: 'sm' | 'md' | undefined;
-	variant?: 'simple' | 'multi-select' | 'with-icon' | 'search' | undefined;
+	variant?: 'simple' | 'multi-select' | 'with-icon' | undefined;
 
 	// Control props
 	required?: boolean | undefined;
@@ -44,6 +55,7 @@ export interface DropdownProps {
 	// Event handlers
 	onChange?: ((value: string) => void) | undefined;
 	onMultiSelectChange?: ((values: string[]) => void) | undefined; // For multi-select
+
 	onFocus?: ((e: React.FocusEvent<HTMLElement>) => void) | undefined;
 	onBlur?: ((e: React.FocusEvent<HTMLElement>) => void) | undefined;
 
