@@ -1,126 +1,126 @@
 * {
-  padding: 0px;
-  margin: 0px;
-  box-sizing: border-box;
-  font-family: inherit;
+	padding: 0px;
+	margin: 0px;
+	box-sizing: border-box;
+	font-family: inherit;
 }
 
 html,
 body,
 #root {
-  min-height: 100%;
-  height: 100%;
-  scroll-behavior: smooth;
-  font-size: 12.5px;
+	min-height: 100%;
+	height: 100%;
+	scroll-behavior: smooth;
+	font-size: 12.5px;
 }
 
 body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-family: "Poppins", sans-serif;
-  background-color: #ffffff;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-family: 'Poppins', sans-serif;
+	background-color: #ffffff;
 }
 
 @font-face {
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: 100;
-  src: url("../../fonts/Poppins-Thin.ttf") format("truetype");
+	font-family: Poppins;
+	font-style: normal;
+	font-weight: 100;
+	src: url('../../fonts/Poppins-Thin.ttf') format('truetype');
 }
 @font-face {
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: 200;
-  src: url("../../fonts/Poppins-ExtraLight.ttf") format("truetype");
+	font-family: Poppins;
+	font-style: normal;
+	font-weight: 200;
+	src: url('../../fonts/Poppins-ExtraLight.ttf') format('truetype');
 }
 @font-face {
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: 300;
-  src: url("../../fonts/Poppins-Light.ttf") format("truetype");
+	font-family: Poppins;
+	font-style: normal;
+	font-weight: 300;
+	src: url('../../fonts/Poppins-Light.ttf') format('truetype');
 }
 @font-face {
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: 400;
-  src: url("../../fonts/Poppins-Regular.ttf") format("truetype");
+	font-family: Poppins;
+	font-style: normal;
+	font-weight: 400;
+	src: url('../../fonts/Poppins-Regular.ttf') format('truetype');
 }
 @font-face {
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: 500;
-  src: url("../../fonts/Poppins-Medium.ttf") format("truetype");
+	font-family: Poppins;
+	font-style: normal;
+	font-weight: 500;
+	src: url('../../fonts/Poppins-Medium.ttf') format('truetype');
 }
 @font-face {
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: 600;
-  src: url("../../fonts/Poppins-SemiBold.ttf") format("truetype");
+	font-family: Poppins;
+	font-style: normal;
+	font-weight: 600;
+	src: url('../../fonts/Poppins-SemiBold.ttf') format('truetype');
 }
 @font-face {
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: 700;
-  src: url("../../fonts/Poppins-Bold.ttf") format("truetype");
+	font-family: Poppins;
+	font-style: normal;
+	font-weight: 700;
+	src: url('../../fonts/Poppins-Bold.ttf') format('truetype');
 }
 @font-face {
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: 800;
-  src: url("../../fonts/Poppins-ExtraBold.ttf") format("truetype");
+	font-family: Poppins;
+	font-style: normal;
+	font-weight: 800;
+	src: url('../../fonts/Poppins-ExtraBold.ttf') format('truetype');
 }
 @font-face {
-  font-family: Poppins;
-  font-style: normal;
-  font-weight: 900;
-  src: url("../../fonts/Poppins-Black.ttf") format("truetype");
+	font-family: Poppins;
+	font-style: normal;
+	font-weight: 900;
+	src: url('../../fonts/Poppins-Black.ttf') format('truetype');
 }
 @font-face {
-  font-family: Jakarta;
-  font-style: normal;
-  font-weight: 400;
-  src: url("../../fonts/Jakarta-Regular.ttf") format("truetype");
+	font-family: Jakarta;
+	font-style: normal;
+	font-weight: 400;
+	src: url('../../fonts/Jakarta-Regular.ttf') format('truetype');
 }
 @font-face {
-  font-family: Jakarta;
-  font-style: normal;
-  font-weight: 400;
-  src: url("../../fonts/Jakarta-Regular.ttf") format("truetype");
+	font-family: Jakarta;
+	font-style: normal;
+	font-weight: 400;
+	src: url('../../fonts/Jakarta-Regular.ttf') format('truetype');
 }
 @font-face {
-  font-family: Jakarta;
-  font-style: normal;
-  font-weight: 500;
-  src: url("../../fonts/Jakarta-Medium.ttf") format("truetype");
+	font-family: Jakarta;
+	font-style: normal;
+	font-weight: 500;
+	src: url('../../fonts/Jakarta-Medium.ttf') format('truetype');
 }
 @font-face {
-  font-family: Jakarta;
-  font-style: normal;
-  font-weight: 600;
-  src: url("../../fonts/Jakarta-SemiBold.ttf") format("truetype");
+	font-family: Jakarta;
+	font-style: normal;
+	font-weight: 600;
+	src: url('../../fonts/Jakarta-SemiBold.ttf') format('truetype');
 }
 @font-face {
-  font-family: Jakarta;
-  font-style: normal;
-  font-weight: 700;
-  src: url("../../fonts/Jakarta-Bold.ttf") format("truetype");
+	font-family: Jakarta;
+	font-style: normal;
+	font-weight: 700;
+	src: url('../../fonts/Jakarta-Bold.ttf') format('truetype');
 }
 .app-container {
-  display: flex;
-  height: 100%;
+	display: flex;
+	height: 100%;
 }
 
 .table {
-  border-collapse: collapse;
-  border-spacing: 0px;
-  width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0px;
+	width: 100%;
 }
 .table > tr > td,
 .table > tr th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
+	border: 1px solid #dddddd;
+	text-align: left;
+	padding: 8px;
 }
 .table > tr:nth-child(even) {
-  background-color: #dddddd;
-}/*# sourceMappingURL=main.css.map */
+	background-color: #dddddd;
+} /*# sourceMappingURL=main.css.map */
