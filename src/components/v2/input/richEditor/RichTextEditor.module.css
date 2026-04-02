@@ -1,11 +1,12 @@
 .root {
-	width: 100%;
 	display: flex;
 	flex-direction: column;
-	justify-content: flex-start;
 	align-items: flex-start;
-	gap: 1rem;
+	gap: 8px;
+	align-self: stretch;
+	width: 100%;
 }
+
 
 .toolbarWrap {
 	position: relative;
@@ -13,14 +14,72 @@
 
 .toolbar {
 	display: flex;
-	align-items: flex-start;
+	align-items: center;
 	flex-wrap: nowrap;
-	gap: 0.625rem;
-	background-color: #ffffff;
+	gap: 2px;
+	background-color: transparent;
+	padding: 0.5rem;
+	border-radius: 0.25rem;
+}
+
+.toolbarModern {
+	background: var(--Backgroundcolor-Bg-primary, #FFF);
+	border-radius: var(--radius-xl, 12px);
+	border: 1px solid var(--Bordercolor-border-Secondary_alt, rgba(255, 255, 255, 0.08));
+	box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.10), 0 4px 6px -2px rgba(0, 0, 0, 0.06);
+}
+
+.toolbarDivider {
+	width: 1px;
+	height: 1.25rem;
+	background-color: #E4E7EC;
+	margin: 0 0.25rem;
 }
 
 .headingSelectWrap {
-	margin-right: 0.125rem;
+	margin-right: 12px;
+	display: flex;
+	align-items: center;
+}
+
+.headingDropdown {
+	width: 8.5rem;
+}
+
+.headingDropdown [data-elem='header'] {
+	background-color: var(--Backgroundcolor-Bg-primary, #FFF) !important;
+	box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.04), 0 1px 2px 0 rgba(0, 0, 0, 0.06) !important;
+	border: 1px solid var(--Bordercolor-border-primary, #D5D7DA) !important;
+	border-radius: var(--radius-md, 8px) !important;
+	display: flex !important;
+	padding: 8px 12px !important;
+	align-items: center !important;
+	gap: 8px !important;
+	align-self: stretch !important;
+	color: var(--Textcolor-Text-primary, #181D27) !important;
+	font-family: var(--font-font-family, "Plus Jakarta Sans") !important;
+	font-size: var(--font-size-14, 14px) !important;
+	font-style: normal !important;
+	font-weight: var(--font-weight-Medium, 500) !important;
+	line-height: var(--Line-height-24, 24px) !important;
+}
+
+.headingDropdown [data-elem='header'] [data-elem='select'] {
+	padding: 0 !important;
+}
+
+.headingDropdown [data-elem='header'] [data-elem='select'] svg {
+	fill: #71839b !important;
+}
+
+.headingDropdown [data-elem='select'] {
+	color: var(--Textcolor-Text-primary, #181D27);
+	font-family: var(--font-font-family, "Plus Jakarta Sans");
+	font-size: var(--font-size-14, 14px);
+	font-style: normal;
+	font-weight: var(--font-weight-Medium, 500);
+	line-height: var(--Line-height-24, 24px);
+	flex: initial !important;
 }
 
 .headingSelect {
@@ -35,6 +94,7 @@
 	box-shadow: 0 0 0.125rem 0 #00000025;
 	outline: none;
 	background-color: #ffffff;
+	transition: background-color 0.2s, color 0.2s;
 }
 
 .headingSelect:focus-visible {
@@ -48,6 +108,7 @@
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
+	gap: 2px;
 	border: 0;
 	border-radius: 0.25rem;
 	background: transparent;
@@ -55,39 +116,25 @@
 	cursor: pointer;
 	font-size: 1rem;
 	line-height: 1;
-	box-shadow: 0 0 0.125rem 0 #00000025;
+	box-shadow: none;
 	position: relative;
 }
 
 .toolbarButton strong {
-	font-size: 1.3rem;
-	font-weight: 700;
-	line-height: 2.0194rem;
-	color: #71839b;
+	font-size: 1.35rem;
+	/* slightly larger to match icon volume */
+	font-weight: 500;
+	/* non-heavy bold style */
+	line-height: 1;
+	color: inherit;
 }
 
-.toolbarButton em {
-	font-size: 1.5rem;
-	line-height: 2.0194rem;
-	font-style: italic;
-	font-weight: 300;
-	padding-inline: 0.25rem;
-	color: #71839b;
-}
 
-.underlineText,
 .strikeText {
-	font-size: 1.5rem;
-	line-height: 2.0194rem;
+	font-size: 1.35rem;
 	font-weight: 400;
-	color: #71839b;
-}
-
-.underlineText {
-	text-decoration: underline;
-}
-
-.strikeText {
+	line-height: 1;
+	color: inherit;
 	text-decoration: line-through;
 }
 
@@ -107,10 +154,8 @@
 	color: #ffffff;
 }
 
-.toolbarButton.active .underlineText,
 .toolbarButton.active .strikeText,
-.toolbarButton.active strong,
-.toolbarButton.active em {
+.toolbarButton.active strong {
 	color: #ffffff;
 }
 
@@ -137,6 +182,16 @@
 	font-size: 1rem;
 	line-height: 1.45;
 	overflow-y: scroll;
+
+	/* Highlight Styling */
+	mark {
+		background-color: var(--utilitycolor-utility-brand-600, #1570EF) !important;
+		opacity: 0.1 !important;
+		height: 24px;
+		align-self: stretch;
+		display: inline-flex;
+		align-items: center;
+	}
 }
 
 .editor :global(.ProseMirror::-webkit-scrollbar) {
@@ -149,6 +204,16 @@
 }
 
 .editor :global(.ProseMirror p) {
+	margin: 0;
+}
+
+.editor :global(.ProseMirror h1) {
+	color: var(--Textcolor-Text-primary, #181D27);
+	font-family: inherit;
+	font-size: 1rem;
+	font-style: normal;
+	font-weight: var(--font-weight-Medium, 500);
+	line-height: var(--Line-height-24, 24px);
 	margin: 0;
 }
 
@@ -188,9 +253,13 @@
 }
 
 .characterCount {
-	font-size: 0.75rem;
-	line-height: 1rem;
-	color: #667085;
+	color: var(--Textcolor-Text-tertiary, #535862);
+	font-family: var(--font-font-family, "Plus Jakarta Sans");
+	font-size: 10px;
+	font-style: normal;
+	font-weight: var(--font-weight-Regular, 400);
+	line-height: var(--Line-height-16, 16px);
+	align-self: stretch;
 }
 
 .characterCount.overLimit {
@@ -207,6 +276,31 @@
 
 .colorMenuTrigger {
 	position: relative;
+}
+
+.colorToolbarButton,
+.colorToolbarButton.active,
+.colorToolbarButton.active:hover {
+	display: flex;
+	width: 20px;
+	height: 20px;
+	padding: 2px;
+	justify-content: center;
+	align-items: center;
+	flex-shrink: 0;
+	border-radius: 25px;
+	background: var(--Backgroundcolor-Bg-primary, #FFF) !important;
+}
+
+.linkToolbarButton,
+.codeToolbarButton {
+	display: flex;
+	width: 32px;
+	height: 32px;
+	padding: 6px;
+	justify-content: center;
+	align-items: center;
+	aspect-ratio: 1/1;
 }
 
 .colorPopover {
@@ -279,7 +373,7 @@
 .bubbleMenu {
 	display: inline-flex;
 	align-items: center;
-	gap: 0.125rem;
+	gap: 2px;
 	padding: 0.25rem;
 	background: #101828;
 	border-radius: 0.45rem;
@@ -295,6 +389,23 @@
 .bubbleMenu .toolbarButton:hover {
 	background-color: rgba(255, 255, 255, 0.12);
 	color: #ffffff;
+}
+
+.editorWrap {
+	position: relative;
+	width: 100%;
+}
+
+.resizeHandle {
+	position: absolute;
+	right: 1px;
+	bottom: 1px;
+	width: 12px;
+	height: 12px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	pointer-events: none;
 }
 
 .bubbleMenu .toolbarButton.active {

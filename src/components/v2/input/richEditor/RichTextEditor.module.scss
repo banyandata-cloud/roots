@@ -7,16 +7,29 @@
 	gap: 1rem;
 }
 
+.variantContained {
+	gap: 0.25rem;
+}
+
 .toolbarWrap {
 	position: relative;
 }
 
 .toolbar {
 	display: flex;
-	align-items: flex-start;
+	align-items: center;
 	flex-wrap: nowrap;
-	gap: 0.625rem;
-	background-color: #ffffff;
+	gap: 0.35rem;
+	background-color: transparent;
+	padding: 0.5rem;
+	border-radius: 0.25rem;
+}
+
+.toolbarDivider {
+	width: 1px;
+	height: 1.25rem;
+	background-color: #E4E7EC;
+	margin: 0 0.25rem;
 }
 
 .headingSelectWrap {
@@ -35,6 +48,35 @@
 	box-shadow: 0 0 0.125rem 0 #00000025;
 	outline: none;
 	background-color: #ffffff;
+	transition: background-color 0.2s, color 0.2s;
+}
+
+.headingDropdown {
+	width: 10rem;
+}
+
+.headingDropdown [data-elem='header'] {
+	height: 2.5rem;
+	background-color: #ffffff !important;
+	box-shadow: 0px 0px 0.125rem 0px rgba(0, 0, 0, 0.1450980392) !important;
+	border: none !important;
+	border-radius: 0.25rem !important;
+	padding-inline: 0 !important;
+}
+
+.headingDropdown [data-elem='header'] [data-elem='select'] {
+	padding: 0 !important;
+	padding-inline: 1rem 0.75rem !important;
+}
+
+.headingDropdown [data-elem='header'] [data-elem='select'] svg {
+	fill: #71839b !important;
+}
+
+.headingDropdown [data-elem='select'] {
+	font-size: 0.875rem;
+	font-weight: 500;
+	color: #334155;
 }
 
 .headingSelect:focus-visible {
@@ -55,32 +97,35 @@
 	cursor: pointer;
 	font-size: 1rem;
 	line-height: 1;
-	box-shadow: 0 0 0.125rem 0 #00000025;
+	box-shadow: none;
 	position: relative;
 }
 
 .toolbarButton strong {
-	font-size: 1.3rem;
-	font-weight: 700;
-	line-height: 2.0194rem;
-	color: #71839b;
+	font-size: 1.35rem;
+	/* slightly larger to match icon volume */
+	font-weight: 500;
+	/* non-heavy bold style */
+	line-height: 1;
+	color: inherit;
 }
 
 .toolbarButton em {
-	font-size: 1.5rem;
-	line-height: 2.0194rem;
+	font-size: 1.35rem;
 	font-style: italic;
-	font-weight: 300;
-	padding-inline: 0.25rem;
-	color: #71839b;
+	font-family: 'Times New Roman', Times, serif;
+	font-weight: 400;
+	padding-inline: 0.125rem;
+	line-height: 1;
+	color: inherit;
 }
 
 .underlineText,
 .strikeText {
-	font-size: 1.5rem;
-	line-height: 2.0194rem;
+	font-size: 1.35rem;
 	font-weight: 400;
-	color: #71839b;
+	line-height: 1;
+	color: inherit;
 }
 
 .underlineText {
@@ -110,7 +155,8 @@
 .toolbarButton.active .underlineText,
 .toolbarButton.active .strikeText,
 .toolbarButton.active strong,
-.toolbarButton.active em {
+.toolbarButton.active em,
+.toolbarButton.active svg {
 	color: #ffffff;
 }
 

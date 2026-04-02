@@ -1,17 +1,80 @@
-import React from 'react';
+export const BoldIcon = ({ color = 'currentColor' }: { color?: string }) => {
+	return (
+		<svg
+			xmlns='http://www.w3.org/2000/svg'
+			width='10.831px'
+			height='13.33px'
+			viewBox='0 0 13 15'
+			fill='none'
+			style={{ aspectRatio: '13/16' }}
+			aria-hidden='true'
+		>
+			<path
+				d='M0.834961 7.50002H8.33309C9.21692 7.50002 10.0646 7.85112 10.6895 8.47609C11.3145 9.10105 11.6656 9.94869 11.6656 10.8325C11.6656 11.7164 11.3145 12.564 10.6895 13.189C10.0646 13.8139 9.21692 14.165 8.33309 14.165H1.66809C1.44713 14.165 1.23522 14.0772 1.07898 13.921C0.922737 13.7648 0.834961 13.5529 0.834961 13.3319V1.66815C0.834961 1.44719 0.922737 1.23528 1.07898 1.07904C1.23522 0.922798 1.44713 0.835022 1.66809 0.835022H7.49996C8.38379 0.835022 9.23143 1.18612 9.85639 1.81109C10.4814 2.43605 10.8325 3.28369 10.8325 4.16752C10.8325 5.05136 10.4814 5.89899 9.85639 6.52396C9.23143 7.14892 8.38379 7.50002 7.49996 7.50002'
+				stroke={color}
+				strokeWidth='1.67'
+				strokeLinecap='round'
+				strokeLinejoin='round'
+			/>
+		</svg>
+	);
+};
 
+export const ItalicIcon = ({ color = 'currentColor' }: { color?: string }) => {
+	return (
+		<svg
+			xmlns='http://www.w3.org/2000/svg'
+			width='20'
+			height='20'
+			viewBox='0 0 20 20'
+			fill='none'
+			style={{ flexShrink: 0, aspectRatio: '1/1' }}
+			aria-hidden='true'
+		>
+			<path
+				d='M15.832 3.33502H8.33384M11.6663 16.665H4.16821M12.4995 3.33502L7.50071 16.665'
+				stroke={color}
+				strokeWidth='1.67'
+				strokeLinecap='round'
+				strokeLinejoin='round'
+			/>
+		</svg>
+	);
+};
+
+export const UnderlineIcon = ({ color = 'currentColor' }: { color?: string }) => {
+	return (
+		<svg
+			xmlns='http://www.w3.org/2000/svg'
+			width='20'
+			height='20'
+			viewBox='0 0 20 20'
+			fill='none'
+			style={{ flexShrink: 0, aspectRatio: '1/1' }}
+			aria-hidden='true'
+		>
+			<path
+				d='M5.00121 3.33502V8.33377C5.00121 9.65952 5.52786 10.931 6.46531 11.8684C7.40276 12.8059 8.67421 13.3325 9.99996 13.3325C11.3257 13.3325 12.5972 12.8059 13.5346 11.8684C14.4721 10.931 14.9987 9.65952 14.9987 8.33377V3.33502M3.33496 16.665H16.665'
+				stroke={color}
+				strokeWidth='1.67'
+				strokeLinecap='round'
+				strokeLinejoin='round'
+			/>
+		</svg>
+	);
+};
 export const TextColorIcon = ({ color = 'currentColor' }: { color?: string }) => {
 	return (
 		<svg
-			width='1.5rem'
-			height='1.5rem'
-			viewBox='0 0 24 24'
+			width='100%'
+			height='100%'
+			viewBox='0 0 20 20'
 			fill='none'
 			xmlns='http://www.w3.org/2000/svg'
 			aria-hidden='true'
 		>
-			<circle cx='12' cy='12' r='5' fill={color} />
-			<circle cx='12' cy='12' r='5' stroke='rgba(0, 0, 0, 0.12)' />
+			<circle cx='10' cy='10' r='10' fill={color} />
+			<circle cx='10' cy='10' r='9.5' stroke='rgba(0, 0, 0, 0.15)' />
 		</svg>
 	);
 };
@@ -20,16 +83,20 @@ export const TextAlignIcon = {
 	Left: ({ color = 'currentColor' }: { color?: string }) => {
 		return (
 			<svg
-				width='1.5rem'
-				height='1.5rem'
-				viewBox='0 0 22 22'
+				width='20'
+				height='20'
+				viewBox='0 0 20 20'
 				fill='none'
 				xmlns='http://www.w3.org/2000/svg'
+				style={{ flexShrink: 0, aspectRatio: '1/1' }}
 				aria-hidden='true'
 			>
 				<path
-					d='M2.8079 6.6025H18.9629C19.2009 6.6025 19.4292 6.50794 19.5975 6.33962C19.7658 6.17131 19.8604 5.94303 19.8604 5.705C19.8604 5.46696 19.7658 5.23868 19.5975 5.07037C19.4292 4.90205 19.2009 4.8075 18.9629 4.8075H2.8079C2.56987 4.8075 2.34159 4.90205 2.17327 5.07037C2.00496 5.23868 1.9104 5.46696 1.9104 5.705C1.9104 5.94303 2.00496 6.17131 2.17327 6.33962C2.34159 6.50794 2.56987 6.6025 2.8079 6.6025V6.6025ZM2.8079 10.1925H15.3729C15.6109 10.1925 15.8392 10.0979 16.0075 9.92962C16.1758 9.76131 16.2704 9.53303 16.2704 9.295C16.2704 9.05696 16.1758 8.82868 16.0075 8.66037C15.8392 8.49205 15.6109 8.3975 15.3729 8.3975H2.8079C2.56987 8.3975 2.34159 8.49205 2.17327 8.66037C2.00496 8.82868 1.9104 9.05696 1.9104 9.295C1.9104 9.53303 2.00496 9.76131 2.17327 9.92962C2.34159 10.0979 2.56987 10.1925 2.8079 10.1925V10.1925ZM18.9629 11.9875H2.8079C2.56987 11.9875 2.34159 12.0821 2.17327 12.2504C2.00496 12.4187 1.9104 12.647 1.9104 12.885C1.9104 13.123 2.00496 13.3513 2.17327 13.5196C2.34159 13.6879 2.56987 13.7825 2.8079 13.7825H18.9629C19.2009 13.7825 19.4292 13.6879 19.5975 13.5196C19.7658 13.3513 19.8604 13.123 19.8604 12.885C19.8604 12.647 19.7658 12.4187 19.5975 12.2504C19.4292 12.0821 19.2009 11.9875 18.9629 11.9875ZM15.3729 15.5775H2.8079C2.56987 15.5775 2.34159 15.6721 2.17327 15.8404C2.00496 16.0087 1.9104 16.237 1.9104 16.475C1.9104 16.713 2.00496 16.9413 2.17327 17.1096C2.34159 17.2779 2.56987 17.3725 2.8079 17.3725H15.3729C15.6109 17.3725 15.8392 17.2779 16.0075 17.1096C16.1758 16.9413 16.2704 16.713 16.2704 16.475C16.2704 16.237 16.1758 16.0087 16.0075 15.8404C15.8392 15.6721 15.6109 15.5775 15.3729 15.5775Z'
-					fill={color}
+					d='M17 4.55554H3M12.3333 9.99999H3M13.8889 15.4444H3'
+					stroke={color}
+					strokeWidth='1.67'
+					strokeLinecap='round'
+					strokeLinejoin='round'
 				/>
 			</svg>
 		);
@@ -37,16 +104,20 @@ export const TextAlignIcon = {
 	Center: ({ color = 'currentColor' }: { color?: string }) => {
 		return (
 			<svg
-				width='1.5rem'
-				height='1.5rem'
-				viewBox='0 0 22 22'
+				width='20'
+				height='20'
+				viewBox='0 0 20 20'
 				fill='none'
 				xmlns='http://www.w3.org/2000/svg'
+				style={{ flexShrink: 0, aspectRatio: '1/1' }}
 				aria-hidden='true'
 			>
 				<path
-					d='M2.87797 6.6025H19.033C19.271 6.6025 19.4993 6.50794 19.6676 6.33962C19.8359 6.17131 19.9305 5.94303 19.9305 5.705C19.9305 5.46696 19.8359 5.23868 19.6676 5.07037C19.4993 4.90205 19.271 4.8075 19.033 4.8075H2.87797C2.63994 4.8075 2.41165 4.90205 2.24334 5.07037C2.07503 5.23868 1.98047 5.46696 1.98047 5.705C1.98047 5.94303 2.07503 6.17131 2.24334 6.33962C2.41165 6.50794 2.63994 6.6025 2.87797 6.6025ZM6.46797 8.3975C6.22994 8.3975 6.00165 8.49205 5.83334 8.66037C5.66503 8.82868 5.57047 9.05696 5.57047 9.29499C5.57047 9.53303 5.66503 9.76131 5.83334 9.92962C6.00165 10.0979 6.22994 10.1925 6.46797 10.1925H15.443C15.681 10.1925 15.9093 10.0979 16.0776 9.92962C16.2459 9.76131 16.3405 9.53303 16.3405 9.29499C16.3405 9.05696 16.2459 8.82868 16.0776 8.66037C15.9093 8.49205 15.681 8.3975 15.443 8.3975H6.46797ZM19.033 11.9875H2.87797C2.63994 11.9875 2.41165 12.0821 2.24334 12.2504C2.07503 12.4187 1.98047 12.647 1.98047 12.885C1.98047 13.123 2.07503 13.3513 2.24334 13.5196C2.41165 13.6879 2.63994 13.7825 2.87797 13.7825H19.033C19.271 13.7825 19.4993 13.6879 19.6676 13.5196C19.8359 13.3513 19.9305 13.123 19.9305 12.885C19.9305 12.647 19.8359 12.4187 19.6676 12.2504C19.4993 12.0821 19.271 11.9875 19.033 11.9875ZM15.443 15.5775H6.46797C6.22994 15.5775 6.00165 15.6721 5.83334 15.8404C5.66503 16.0087 5.57047 16.237 5.57047 16.475C5.57047 16.713 5.66503 16.9413 5.83334 17.1096C6.00165 17.2779 6.22994 17.3725 6.46797 17.3725H15.443C15.681 17.3725 15.9093 17.2779 16.0776 17.1096C16.2459 16.9413 16.3405 16.713 16.3405 16.475C16.3405 16.237 16.2459 16.0087 16.0776 15.8404C15.9093 15.6721 15.681 15.5775 15.443 15.5775Z'
-					fill={color}
+					d='M17 4.55554H3M13.8889 9.99999H6.11111M15.4444 15.4444H4.55556'
+					stroke={color}
+					strokeWidth='1.67'
+					strokeLinecap='round'
+					strokeLinejoin='round'
 				/>
 			</svg>
 		);
@@ -54,16 +125,20 @@ export const TextAlignIcon = {
 	Right: ({ color = 'currentColor' }: { color?: string }) => {
 		return (
 			<svg
-				width='1.5rem'
-				height='1.5rem'
-				viewBox='0 0 22 22'
+				width='20'
+				height='20'
+				viewBox='0 0 20 20'
 				fill='none'
 				xmlns='http://www.w3.org/2000/svg'
+				style={{ flexShrink: 0, aspectRatio: '1/1' }}
 				aria-hidden='true'
 			>
 				<path
-					d='M2.94804 6.6025H19.103C19.3411 6.6025 19.5694 6.50794 19.7377 6.33962C19.906 6.17131 20.0005 5.94303 20.0005 5.705C20.0005 5.46696 19.906 5.23868 19.7377 5.07037C19.5694 4.90205 19.3411 4.8075 19.103 4.8075H2.94804C2.71001 4.8075 2.48172 4.90205 2.31341 5.07037C2.14509 5.23868 2.05054 5.46696 2.05054 5.705C2.05054 5.94303 2.14509 6.17131 2.31341 6.33962C2.48172 6.50794 2.71001 6.6025 2.94804 6.6025ZM19.103 15.5775H6.53804C6.3 15.5775 6.07172 15.6721 5.90341 15.8404C5.73509 16.0087 5.64054 16.237 5.64054 16.475C5.64054 16.713 5.73509 16.9413 5.90341 17.1096C6.07172 17.2779 6.3 17.3725 6.53804 17.3725H19.103C19.3411 17.3725 19.5694 17.2779 19.7377 17.1096C19.906 16.9413 20.0005 16.713 20.0005 16.475C20.0005 16.237 19.906 16.0087 19.7377 15.8404C19.5694 15.6721 19.3411 15.5775 19.103 15.5775ZM19.103 8.3975H6.53804C6.3 8.3975 6.07172 8.49205 5.90341 8.66037C5.73509 8.82868 5.64054 9.05696 5.64054 9.29499C5.64054 9.53303 5.73509 9.76131 5.90341 9.92962C6.07172 10.0979 6.3 10.1925 6.53804 10.1925H19.103C19.3411 10.1925 19.5694 10.0979 19.7377 9.92962C19.906 9.76131 20.0005 9.53303 20.0005 9.29499C20.0005 9.05696 19.906 8.82868 19.7377 8.66037C19.5694 8.49205 19.3411 8.3975 19.103 8.3975ZM19.103 11.9875H2.94804C2.71001 11.9875 2.48172 12.0821 2.31341 12.2504C2.14509 12.4187 2.05054 12.647 2.05054 12.885C2.05054 13.123 2.14509 13.3513 2.31341 13.5196C2.48172 13.6879 2.71001 13.7825 2.94804 13.7825H19.103C19.3411 13.7825 19.5694 13.6879 19.7377 13.5196C19.906 13.3513 20.0005 13.123 20.0005 12.885C20.0005 12.647 19.906 12.4187 19.7377 12.2504C19.5694 12.0821 19.3411 11.9875 19.103 11.9875Z'
-					fill={color}
+					d='M17 4.55554H3M17 9.99999H7.66667M17 15.4444H6.11111'
+					stroke={color}
+					strokeWidth='1.67'
+					strokeLinecap='round'
+					strokeLinejoin='round'
 				/>
 			</svg>
 		);
@@ -71,11 +146,12 @@ export const TextAlignIcon = {
 	Justify: ({ color = 'currentColor' }: { color?: string }) => {
 		return (
 			<svg
-				width='1.5rem'
-				height='1.5rem'
-				viewBox='0 0 22 22'
+				width='20'
+				height='20'
+				viewBox='0 0 20 20'
 				fill='none'
 				xmlns='http://www.w3.org/2000/svg'
+				style={{ flexShrink: 0, aspectRatio: '1/1' }}
 				aria-hidden='true'
 			>
 				<path
@@ -90,47 +166,51 @@ export const TextAlignIcon = {
 export const TextLinkIcon = ({ color = 'currentColor' }: { color?: string }) => {
 	return (
 		<svg
-			width='1.5rem'
-			height='1.5rem'
 			xmlns='http://www.w3.org/2000/svg'
-			viewBox='0 0 256 256'
+			width='20'
+			height='20'
+			viewBox='0 0 20 20'
+			fill='none'
+			style={{ flexShrink: 0, aspectRatio: '1/1' }}
 			aria-hidden='true'
 		>
-			<rect width='256' height='256' fill='none' />
 			<path
-				d='M141.38,64.68l11-11a46.62,46.62,0,0,1,65.94,0h0a46.62,46.62,0,0,1,0,65.94L193.94,144,183.6,154.34a46.63,46.63,0,0,1-66-.05h0A46.48,46.48,0,0,1,104,120.06'
-				fill='none'
+				d='M11.0605 14.2427L9.99987 15.3033C9.29661 16.0066 8.34278 16.4017 7.34822 16.4017C6.35366 16.4017 5.39983 16.0066 4.69657 15.3033C3.99331 14.6001 3.59822 13.6462 3.59822 12.6517C3.59822 11.6571 3.99331 10.7033 4.69657 10L5.75723 8.93936M8.93921 5.75738L9.99987 4.69672C10.7031 3.99346 11.657 3.59837 12.6515 3.59837C13.6461 3.59837 14.5999 3.99346 15.3032 4.69672C16.0064 5.39998 16.4015 6.35381 16.4015 7.34837C16.4015 8.34293 16.0064 9.29676 15.3032 10L14.2425 11.0607M7.87855 12.1213L12.1212 7.8787'
 				stroke={color}
+				strokeWidth='1.67'
 				strokeLinecap='round'
 				strokeLinejoin='round'
-				strokeWidth='16'
-			/>
-			<path
-				d='M114.62,191.32l-11,11a46.63,46.63,0,0,1-66-.05h0a46.63,46.63,0,0,1,.06-65.89L72.4,101.66a46.62,46.62,0,0,1,65.94,0h0A46.45,46.45,0,0,1,152,135.94'
-				fill='none'
-				stroke={color}
-				strokeLinecap='round'
-				strokeLinejoin='round'
-				strokeWidth='16'
 			/>
 		</svg>
 	);
 };
 
-export const BulletListIcon: React.FC = () => {
+export const BulletListIcon = ({ color = 'currentColor' }: { color?: string }) => {
 	return (
-		<svg width='1.5rem' height='1.5rem' viewBox='0 0 22 22' fill='none' aria-hidden='true'>
-			<circle cx='4' cy='5.2' r='1.2' fill='currentColor' />
-			<circle cx='4' cy='11' r='1.2' fill='currentColor' />
-			<circle cx='4' cy='16.8' r='1.2' fill='currentColor' />
-			<rect x='7' y='4.3' width='11' height='1.8' rx='0.9' fill='currentColor' />
-			<rect x='7' y='10.1' width='11' height='1.8' rx='0.9' fill='currentColor' />
-			<rect x='7' y='15.9' width='11' height='1.8' rx='0.9' fill='currentColor' />
+		<svg
+			xmlns='http://www.w3.org/2000/svg'
+			width='20'
+			height='20'
+			viewBox='0 0 20 20'
+			fill='none'
+			style={{ flexShrink: 0, aspectRatio: '1/1' }}
+			aria-hidden='true'
+		>
+			<path
+				d='M8.02417 4.89771H17.4999M8.02417 10H17.4999M8.02417 15.1024H17.4999'
+				stroke={color}
+				strokeWidth='1.67'
+				strokeLinecap='round'
+				strokeLinejoin='round'
+			/>
+			<circle cx='4.20792' cy='4.89767' r='0.872916' stroke={color} strokeWidth='1.67' />
+			<circle cx='4.20792' cy='10' r='0.872916' stroke={color} strokeWidth='1.67' />
+			<circle cx='4.20792' cy='15.1023' r='0.872916' stroke={color} strokeWidth='1.67' />
 		</svg>
 	);
 };
 
-export const ImageIcon: React.FC = () => {
+export const ImageIcon = ({ color = 'currentColor' }: { color?: string }) => {
 	return (
 		<svg width='1.5rem' height='1.5rem' viewBox='0 0 22 22' fill='none' aria-hidden='true'>
 			<rect
@@ -139,13 +219,13 @@ export const ImageIcon: React.FC = () => {
 				width='17.6'
 				height='14.4'
 				rx='2'
-				stroke='currentColor'
+				stroke={color}
 				strokeWidth='1.8'
 			/>
-			<circle cx='7.2' cy='7.5' r='1.4' fill='currentColor' />
+			<circle cx='7.2' cy='7.5' r='1.4' fill={color} />
 			<path
 				d='M4.1 15.8L8.8 11.6L12 14.3L14.9 12.1L17.8 15.8'
-				stroke='currentColor'
+				stroke={color}
 				strokeWidth='1.8'
 				strokeLinecap='round'
 			/>
@@ -153,12 +233,12 @@ export const ImageIcon: React.FC = () => {
 	);
 };
 
-export const AttachmentIcon: React.FC = () => {
+export const AttachmentIcon = ({ color = 'currentColor' }: { color?: string }) => {
 	return (
 		<svg width='20' height='20' viewBox='0 0 20 20' fill='none' aria-hidden='true'>
 			<path
 				d='M8 11.6L12.4 7.2C13.6 6 15.6 6 16.8 7.2C18 8.4 18 10.4 16.8 11.6L10.9 17.5C8.9 19.5 5.6 19.5 3.6 17.5C1.6 15.5 1.6 12.2 3.6 10.2L9.3 4.5'
-				stroke='currentColor'
+				stroke={color}
 				strokeWidth='1.8'
 				strokeLinecap='round'
 				strokeLinejoin='round'
@@ -167,16 +247,41 @@ export const AttachmentIcon: React.FC = () => {
 	);
 };
 
-export const CodeIcon: React.FC = () => {
+export const CodeIcon = ({ color = 'currentColor' }: { color?: string }) => {
 	return (
-		<svg width='20' height='20' viewBox='0 0 20 20' fill='none' aria-hidden='true'>
+		<svg
+			xmlns='http://www.w3.org/2000/svg'
+			width='20'
+			height='20'
+			viewBox='0 0 20 20'
+			fill='none'
+			style={{ flexShrink: 0, aspectRatio: '1/1' }}
+			aria-hidden='true'
+		>
 			<path
-				d='M7 5.8L3.2 10L7 14.2M13 5.8L16.8 10L13 14.2M11 4.2L9 15.8'
-				stroke='currentColor'
-				strokeWidth='1.9'
+				d='M14.5 13L17.5 10L14.5 7M5.5 7L2.5 10L5.5 13M11.875 4L8.125 16'
+				stroke={color}
+				strokeWidth='1.67'
 				strokeLinecap='round'
 				strokeLinejoin='round'
 			/>
+		</svg>
+	);
+};
+
+export const ResizeHandleIcon = ({ color = '#A4A7AE' }: { color?: string }) => {
+	return (
+		<svg
+			xmlns='http://www.w3.org/2000/svg'
+			width='12'
+			height='12'
+			viewBox='0 0 12 12'
+			fill='none'
+			style={{ aspectRatio: '1/1' }}
+			aria-hidden='true'
+		>
+			<line x1='2.64645' y1='8.1755' x2='8.17553' y2='2.64641' stroke={color} />
+			<line x1='5.01608' y1='8.64645' x2='8.64647' y2='5.01605' stroke={color} />
 		</svg>
 	);
 };

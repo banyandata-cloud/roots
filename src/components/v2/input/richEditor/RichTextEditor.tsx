@@ -7,56 +7,28 @@ import TextStyle from '@tiptap/extension-text-style';
 import Underline from '@tiptap/extension-underline';
 import { BubbleMenu, EditorContent, useEditor } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
-import type { Editor } from '@tiptap/core';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { classes } from '../../../../utils';
 import {
+	BoldIcon,
+	ItalicIcon,
+	UnderlineIcon,
 	BulletListIcon,
 	CodeIcon,
 	ImageIcon,
 	TextColorIcon,
 	TextAlignIcon,
 	TextLinkIcon,
+	ResizeHandleIcon,
 } from './assets';
 import styles from './RichTextEditor.module.css';
 import type { HeadingLevel, HiddenMenu, RichTextEditorProps, TextType } from './types';
 
-const TEXT_TYPE_LABEL: Record<TextType, string> = {
-	p: 'Paragraph',
-	h1: 'Heading 1',
-	h2: 'Heading 2',
-	h3: 'Heading 3',
-};
-
-const SWATCH_COLORS = [
-	'#161616',
-	'#697586',
-	'#A4A7AE',
-	'#D0D5DD',
-	'#E4E7EC',
-	'#12B76A',
-	'#1D9BF0',
-	'#F04438',
-	'#E67000',
-	'#175CD3',
-	'#7F56D9',
-	'#CA2C92',
-];
-
-const levelToTextType = (level: HeadingLevel): TextType => {
-	if (level === 1) return 'h1';
-	if (level === 2) return 'h2';
-	if (level === 3) return 'h3';
-	return 'p';
-};
-
-const getSelectionTextType = (editor: Editor): TextType => {
-	const currentNode = editor.state.selection.$head.parent;
-	if (currentNode.type.name === 'heading') {
-		return levelToTextType(currentNode.attrs.level as HeadingLevel);
-	}
-	return 'p';
-};
+import { SWATCH_COLORS, TEXT_TYPE_LABEL } from './constants';
+import { getSelectionTextType } from './utils';
+import Dropdown from '../../../input/dropdown/Dropdown';
+import DropdownItem from '../../../input/dropdown/dropdown-item/DropdownItem';
+import CharacterCount from './components/CharacterCount';
 
 const ToolbarButton: React.FC<{
 	ariaLabel: string;
@@ -64,7 +36,8 @@ const ToolbarButton: React.FC<{
 	children: React.ReactNode;
 	active?: boolean;
 	disabled?: boolean;
-}> = ({ ariaLabel, onClick, children, active = false, disabled = false }) => {
+	className?: string | undefined;
+}> = ({ ariaLabel, onClick, children, active = false, disabled = false, className = '' }) => {
 	return (
 		<button
 			type='button'
@@ -78,7 +51,8 @@ const ToolbarButton: React.FC<{
 			className={classes(
 				styles.toolbarButton,
 				active && styles.active,
-				disabled && styles.disabled
+				disabled && styles.disabled,
+				className
 			)}
 		>
 			{children}
@@ -88,6 +62,7 @@ const ToolbarButton: React.FC<{
 
 const RichTextEditor: React.FC<RichTextEditorProps> = ({
 	className = '',
+	variant = 'distinct',
 	defaultContent = '',
 	content,
 	setContent,
@@ -98,6 +73,7 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({
 	showCharacterCount = true,
 	headingLevels = [1, 2, 3],
 	onInsertImage,
+	toolbarClassName = '',
 }) => {
 	const [textType, setTextType] = useState<TextType>('p');
 	const [textLength, setTextLength] = useState<number>(0);
@@ -186,7 +162,7 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({
 	}
 
 	const toolbarMenu: HiddenMenu = hiddenMenu ?? {};
-	const currentHighlight = (editor.getAttributes('highlight').color as string) || '#161616';
+	const currentTextColor = (editor.getAttributes('textStyle').color as string) || '#181D27';
 	const charactersLeft = maxCharacters - textLength;
 
 	const applyTextType = (nextType: TextType) => {
@@ -204,14 +180,8 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({
 		editor.chain().focus().setTextAlign(align).run();
 	};
 
-	const applyHighlight = (color: string) => {
-		editor
-			.chain()
-			.focus()
-			.toggleHighlight({
-				color,
-			})
-			.run();
+	const applyTextColor = (color: string) => {
+		editor.chain().focus().setColor(color).run();
 	};
 
 	const setLink = () => {
@@ -233,42 +203,228 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({
 	};
 
 	return (
-		<div className={classes(styles.root, className)}>
+		<div className={classes(styles.root, variant === 'contained' && styles.variantContained, className)}>
 			<div className={styles.toolbarWrap}>
-				<div className={styles.toolbar} data-elem='toolbar'>
+				<div className={classes(styles.toolbar, toolbarClassName)} data-elem='toolbar'>
+					{/* Heading Group */}
+					{!toolbarMenu.heading && (
+						<div className={styles.headingSelectWrap}>
+							<Dropdown
+								value={textType}
+								className={styles.headingDropdown}
+								onChange={(_event, value) => {
+									applyTextType(value as TextType);
+								}}
+							>
+								<DropdownItem title={TEXT_TYPE_LABEL.p} value='p' />
+								{normalizedHeadingLevels.includes(1) && (
+									<DropdownItem title={TEXT_TYPE_LABEL.h1} value='h1' />
+								)}
+								{normalizedHeadingLevels.includes(2) && (
+									<DropdownItem title={TEXT_TYPE_LABEL.h2} value='h2' />
+								)}
+								{normalizedHeadingLevels.includes(3) && (
+									<DropdownItem title={TEXT_TYPE_LABEL.h3} value='h3' />
+								)}
+							</Dropdown>
+						</div>
+					)}
+
+					{/* Text Formatting Group */}
 					{!toolbarMenu.bold && (
 						<ToolbarButton
-							ariaLabel='Bold'
+							ariaLabel='Bold ⌘B'
 							onClick={() => {
 								editor.chain().focus().toggleBold().run();
 							}}
 							active={editor.isActive('bold')}
 						>
-							<strong>B</strong>
+							<BoldIcon color={editor.isActive('bold') ? 'white' : 'currentColor'} />
 						</ToolbarButton>
 					)}
 					{!toolbarMenu.italic && (
 						<ToolbarButton
-							ariaLabel='Italic'
+							ariaLabel='Italic ⌘I'
 							onClick={() => {
 								editor.chain().focus().toggleItalic().run();
 							}}
 							active={editor.isActive('italic')}
 						>
-							<em>I</em>
+							<ItalicIcon color={editor.isActive('italic') ? 'white' : 'currentColor'} />
 						</ToolbarButton>
 					)}
 					{!toolbarMenu.underline && (
 						<ToolbarButton
-							ariaLabel='Underline'
+							ariaLabel='Underline ⌘U'
 							onClick={() => {
 								editor.chain().focus().toggleUnderline().run();
 							}}
 							active={editor.isActive('underline')}
 						>
-							<span className={styles.underlineText}>U</span>
+							<UnderlineIcon color={editor.isActive('underline') ? 'white' : 'currentColor'} />
 						</ToolbarButton>
 					)}
+
+					{(!toolbarMenu.bold || !toolbarMenu.italic || !toolbarMenu.underline) && (
+						<div className={styles.toolbarDivider} />
+					)}
+
+					{/* Color Group */}
+					{!toolbarMenu.textColor && !toolbarMenu.highlight && (
+						<>
+							<div className={styles.colorMenuTrigger} ref={colorMenuRef}>
+								<ToolbarButton
+									ariaLabel='Text color'
+									className={styles.colorToolbarButton}
+									onClick={() => {
+										setIsColorMenuOpen((prev) => !prev);
+									}}
+									active={editor.isActive('textStyle')}
+								>
+									<TextColorIcon color={currentTextColor} />
+								</ToolbarButton>
+
+								{isColorMenuOpen && (
+									<div className={styles.colorPopover}>
+										<div className={styles.swatchGrid}>
+											{SWATCH_COLORS.map((color) => {
+												return (
+													<button
+														key={color}
+														type='button'
+														aria-label={`Select text color ${color}`}
+														className={classes(
+															styles.swatch,
+															currentTextColor === color &&
+															styles.swatchActive
+														)}
+														style={{ backgroundColor: color }}
+														onClick={() => {
+															applyTextColor(color);
+															setCustomColor(color);
+														}}
+													/>
+												);
+											})}
+										</div>
+										<div className={styles.customRow}>
+											<span className={styles.customLabel}>Custom</span>
+											<input
+												ref={highlightInputRef}
+												type='color'
+												aria-label='Custom text color'
+												value={customColor}
+												onChange={(event) => {
+													const color = event.target.value;
+													setCustomColor(color);
+													applyTextColor(color);
+												}}
+											/>
+											<input
+												type='text'
+												className={styles.hexInput}
+												aria-label='Hex text color input'
+												value={customColor.toUpperCase()}
+												onChange={(event) => {
+													const value = event.target.value.trim();
+													setCustomColor(
+														value.startsWith('#') ? value : `#${value}`
+													);
+												}}
+												onBlur={() => {
+													const nextColor = customColor.startsWith('#')
+														? customColor
+														: `#${customColor}`;
+													if (/^#[0-9a-fA-F]{6}$/.test(nextColor)) {
+														setCustomColor(nextColor);
+														applyTextColor(nextColor);
+													}
+												}}
+											/>
+										</div>
+									</div>
+								)}
+							</div>
+							<div className={styles.toolbarDivider} />
+						</>
+					)}
+
+					{/* Alignment & List Group */}
+					{!toolbarMenu.align && (
+						<>
+							<ToolbarButton
+								ariaLabel='Left align'
+								onClick={() => {
+									applyAlign('left');
+								}}
+								active={editor.isActive({ textAlign: 'left' })}
+							>
+								<TextAlignIcon.Left color={editor.isActive({ textAlign: 'left' }) ? 'white' : 'currentColor'} />
+							</ToolbarButton>
+							<ToolbarButton
+								ariaLabel='Center align'
+								onClick={() => {
+									applyAlign('center');
+								}}
+								active={editor.isActive({ textAlign: 'center' })}
+							>
+								<TextAlignIcon.Center color={editor.isActive({ textAlign: 'center' }) ? 'white' : 'currentColor'} />
+							</ToolbarButton>
+							<ToolbarButton
+								ariaLabel='Right align'
+								onClick={() => {
+									applyAlign('right');
+								}}
+								active={editor.isActive({ textAlign: 'right' })}
+							>
+								<TextAlignIcon.Right color={editor.isActive({ textAlign: 'right' }) ? 'white' : 'currentColor'} />
+							</ToolbarButton>
+						</>
+					)}
+					{!toolbarMenu.bulletList && (
+						<ToolbarButton
+							ariaLabel='Dot points'
+							onClick={() => {
+								editor.chain().focus().toggleBulletList().run();
+							}}
+							active={editor.isActive('bulletList')}
+						>
+							<BulletListIcon color={editor.isActive('bulletList') ? 'white' : 'currentColor'} />
+						</ToolbarButton>
+					)}
+
+					{(!toolbarMenu.align || !toolbarMenu.bulletList) &&
+						(!toolbarMenu.link ||
+							!toolbarMenu.code ||
+							!toolbarMenu.strike ||
+							!toolbarMenu.justify ||
+							!toolbarMenu.image) && <div className={styles.toolbarDivider} />}
+
+					{/* Link & Code Group */}
+					{!toolbarMenu.link && (
+						<ToolbarButton
+							ariaLabel='Link ⌘K'
+							className={styles.linkToolbarButton}
+							onClick={setLink}
+							active={editor.isActive('link')}
+						>
+							<TextLinkIcon color={editor.isActive('link') ? 'white' : 'currentColor'} />
+						</ToolbarButton>
+					)}
+					{!toolbarMenu.code && (
+						<ToolbarButton
+							ariaLabel='Insert code'
+							className={styles.codeToolbarButton}
+							onClick={() => {
+								editor.chain().focus().toggleCode().run();
+							}}
+							active={editor.isActive('code')}
+						>
+							<CodeIcon color={editor.isActive('code') ? 'white' : 'currentColor'} />
+						</ToolbarButton>
+					)}
+
+					{/* Remaining Tools (Hidden by default or in Interactive via hiddenMenu prop) */}
 					{!toolbarMenu.strike && (
 						<ToolbarButton
 							ariaLabel='Strike'
@@ -280,167 +436,15 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({
 							<span className={styles.strikeText}>S</span>
 						</ToolbarButton>
 					)}
-
-					{!toolbarMenu.textColor && !toolbarMenu.highlight && (
-						<div className={styles.colorMenuTrigger} ref={colorMenuRef}>
-							<ToolbarButton
-								ariaLabel='Text color'
-								onClick={() => {
-									setIsColorMenuOpen((prev) => !prev);
-								}}
-								active={editor.isActive('highlight')}
-							>
-								<TextColorIcon color={currentHighlight} />
-							</ToolbarButton>
-
-							{isColorMenuOpen && (
-								<div className={styles.colorPopover}>
-									<div className={styles.swatchGrid}>
-										{SWATCH_COLORS.map((color) => {
-											return (
-												<button
-													key={color}
-													type='button'
-													aria-label={`Select color ${color}`}
-													className={classes(
-														styles.swatch,
-														currentHighlight === color &&
-															styles.swatchActive
-													)}
-													style={{ backgroundColor: color }}
-													onClick={() => {
-														applyHighlight(color);
-														setCustomColor(color);
-													}}
-												/>
-											);
-										})}
-									</div>
-									<div className={styles.customRow}>
-										<span className={styles.customLabel}>Custom</span>
-										<input
-											ref={highlightInputRef}
-											type='color'
-											aria-label='Custom highlight color'
-											value={customColor}
-											onChange={(event) => {
-												const color = event.target.value;
-												setCustomColor(color);
-												applyHighlight(color);
-											}}
-										/>
-										<input
-											type='text'
-											className={styles.hexInput}
-											aria-label='Hex color input'
-											value={customColor.toUpperCase()}
-											onChange={(event) => {
-												const value = event.target.value.trim();
-												setCustomColor(
-													value.startsWith('#') ? value : `#${value}`
-												);
-											}}
-											onBlur={() => {
-												const nextColor = customColor.startsWith('#')
-													? customColor
-													: `#${customColor}`;
-												if (/^#[0-9a-fA-F]{6}$/.test(nextColor)) {
-													setCustomColor(nextColor);
-													applyHighlight(nextColor);
-												}
-											}}
-										/>
-									</div>
-								</div>
-							)}
-						</div>
-					)}
-					{!toolbarMenu.bulletList && (
+					{!toolbarMenu.align && !toolbarMenu.justify && (
 						<ToolbarButton
-							ariaLabel='Bullet list'
+							ariaLabel='Justify'
 							onClick={() => {
-								editor.chain().focus().toggleBulletList().run();
+								applyAlign('justify');
 							}}
-							active={editor.isActive('bulletList')}
+							active={editor.isActive({ textAlign: 'justify' })}
 						>
-							<BulletListIcon />
-						</ToolbarButton>
-					)}
-
-					{!toolbarMenu.heading && (
-						<div className={styles.headingSelectWrap}>
-							<select
-								aria-label='Text style'
-								className={styles.headingSelect}
-								value={textType}
-								onChange={(event) => {
-									applyTextType(event.target.value as TextType);
-								}}
-							>
-								<option value='p'>{TEXT_TYPE_LABEL.p}</option>
-								{normalizedHeadingLevels.includes(1) && (
-									<option value='h1'>{TEXT_TYPE_LABEL.h1}</option>
-								)}
-								{normalizedHeadingLevels.includes(2) && (
-									<option value='h2'>{TEXT_TYPE_LABEL.h2}</option>
-								)}
-								{normalizedHeadingLevels.includes(3) && (
-									<option value='h3'>{TEXT_TYPE_LABEL.h3}</option>
-								)}
-							</select>
-						</div>
-					)}
-
-					{!toolbarMenu.align && (
-						<>
-							<ToolbarButton
-								ariaLabel='Align left'
-								onClick={() => {
-									applyAlign('left');
-								}}
-								active={editor.isActive({ textAlign: 'left' })}
-							>
-								<TextAlignIcon.Left />
-							</ToolbarButton>
-							<ToolbarButton
-								ariaLabel='Align center'
-								onClick={() => {
-									applyAlign('center');
-								}}
-								active={editor.isActive({ textAlign: 'center' })}
-							>
-								<TextAlignIcon.Center />
-							</ToolbarButton>
-							<ToolbarButton
-								ariaLabel='Align right'
-								onClick={() => {
-									applyAlign('right');
-								}}
-								active={editor.isActive({ textAlign: 'right' })}
-							>
-								<TextAlignIcon.Right />
-							</ToolbarButton>
-							{!toolbarMenu.justify && (
-								<ToolbarButton
-									ariaLabel='Justify'
-									onClick={() => {
-										applyAlign('justify');
-									}}
-									active={editor.isActive({ textAlign: 'justify' })}
-								>
-									<TextAlignIcon.Justify />
-								</ToolbarButton>
-							)}
-						</>
-					)}
-
-					{!toolbarMenu.link && (
-						<ToolbarButton
-							ariaLabel='Link'
-							onClick={setLink}
-							active={editor.isActive('link')}
-						>
-							<TextLinkIcon />
+							<TextAlignIcon.Justify color={editor.isActive({ textAlign: 'justify' }) ? 'white' : 'currentColor'} />
 						</ToolbarButton>
 					)}
 					{!toolbarMenu.image && (
@@ -450,24 +454,18 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({
 								onInsertImage?.();
 							}}
 						>
-							<ImageIcon />
-						</ToolbarButton>
-					)}
-					{!toolbarMenu.code && (
-						<ToolbarButton
-							ariaLabel='Inline code'
-							onClick={() => {
-								editor.chain().focus().toggleCode().run();
-							}}
-							active={editor.isActive('code')}
-						>
-							<CodeIcon />
+							<ImageIcon color='currentColor' />
 						</ToolbarButton>
 					)}
 				</div>
 			</div>
 
-			<EditorContent className={styles.editor} editor={editor} />
+			<div className={styles.editorWrap}>
+				<EditorContent className={styles.editor} editor={editor} />
+				<div className={styles.resizeHandle}>
+					<ResizeHandleIcon />
+				</div>
+			</div>
 
 			{!toolbarMenu.bubbleMenu && editable && (
 				<BubbleMenu editor={editor} tippyOptions={{ duration: 150 }}>
@@ -479,7 +477,7 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({
 							}}
 							active={editor.isActive('bold')}
 						>
-							<strong>B</strong>
+							<BoldIcon color={editor.isActive('bold') ? 'white' : 'currentColor'} />
 						</ToolbarButton>
 						<ToolbarButton
 							ariaLabel='Bubble italic'
@@ -488,7 +486,7 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({
 							}}
 							active={editor.isActive('italic')}
 						>
-							<em>I</em>
+							<ItalicIcon color={editor.isActive('italic') ? 'white' : 'currentColor'} />
 						</ToolbarButton>
 						<ToolbarButton
 							ariaLabel='Bubble underline'
@@ -497,16 +495,7 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({
 							}}
 							active={editor.isActive('underline')}
 						>
-							<span className={styles.underlineText}>U</span>
-						</ToolbarButton>
-						<ToolbarButton
-							ariaLabel='Bubble strike'
-							onClick={() => {
-								editor.chain().focus().toggleStrike().run();
-							}}
-							active={editor.isActive('strike')}
-						>
-							<span className={styles.strikeText}>S</span>
+							<UnderlineIcon color={editor.isActive('underline') ? 'white' : 'currentColor'} />
 						</ToolbarButton>
 						<ToolbarButton
 							ariaLabel='Bubble align left'
@@ -535,30 +524,11 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({
 						>
 							<TextAlignIcon.Right />
 						</ToolbarButton>
-						<ToolbarButton
-							ariaLabel='Bubble justify'
-							onClick={() => {
-								applyAlign('justify');
-							}}
-							active={editor.isActive({ textAlign: 'justify' })}
-						>
-							<TextAlignIcon.Justify />
-						</ToolbarButton>
 					</div>
 				</BubbleMenu>
 			)}
 
-			{showCharacterCount && (
-				<div
-					className={classes(
-						styles.characterCount,
-						charactersLeft < 0 && styles.overLimit
-					)}
-					data-elem='character-count'
-				>
-					{charactersLeft} characters left
-				</div>
-			)}
+			{showCharacterCount && <CharacterCount charactersLeft={charactersLeft} />}
 		</div>
 	);
 };
