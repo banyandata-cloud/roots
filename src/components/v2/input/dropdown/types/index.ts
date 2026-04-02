@@ -39,7 +39,7 @@ export interface DropdownProps {
 		| 'read-only'
 		| undefined;
 	size?: 'sm' | 'md' | undefined;
-	variant?: 'simple' | 'multi-select' | 'with-icon' | undefined;
+	variant?: 'simple' | 'multi-select' | 'with-icon' | 'borderless' | undefined;
 
 	// Control props
 	required?: boolean | undefined;
@@ -58,6 +58,10 @@ export interface DropdownProps {
 
 	onFocus?: ((e: React.FocusEvent<HTMLElement>) => void) | undefined;
 	onBlur?: ((e: React.FocusEvent<HTMLElement>) => void) | undefined;
+
+	// Popover positioning
+	popoverOffset?: number | undefined; // Custom offset for popover positioning
+	popoverClassName?: string | undefined; // Custom class for popover container
 
 	// Standard HTML props
 	className?: string | undefined;

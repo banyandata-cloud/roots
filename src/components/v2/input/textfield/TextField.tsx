@@ -4,6 +4,7 @@ import { Button } from '../../buttons/button';
 import { HelpIcon } from '../../icons';
 import { ErrorIcon } from '../../icons/error';
 import { WarningIcon } from '../../icons/warning';
+import { Dropdown } from '../dropdown';
 import styles from './TextField.module.scss';
 import type { TextFieldProps } from './types';
 
@@ -29,9 +30,22 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 			trailingButtonIconComponent: TrailingButtonIconComponent,
 			trailingButtonOnClick,
 			helpIcon = true,
+			// Dropdown props
+			leadingDropdown,
+			leadingDropdownOptions = [],
+			leadingDropdownValue,
+			leadingDropdownDefaultValue,
+			leadingDropdownPlaceholder = 'Select',
+			trailingDropdown,
+			trailingDropdownOptions = [],
+			trailingDropdownValue,
+			trailingDropdownDefaultValue,
+			trailingDropdownPlaceholder = 'Select',
 			onChange,
 			onFocus,
 			onBlur,
+			onLeadingDropdownChange,
+			onTrailingDropdownChange,
 			className,
 			id,
 			name,
@@ -45,8 +59,24 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 		const [internalValue, setInternalValue] = useState(defaultValue || '');
 		const [isFocused, setIsFocused] = useState(false);
 
-		// Determine current display value
+		// Dropdown state management
+		const [internalLeadingDropdownValue, setInternalLeadingDropdownValue] = useState(
+			leadingDropdownDefaultValue || ''
+		);
+		const [internalTrailingDropdownValue, setInternalTrailingDropdownValue] = useState(
+			trailingDropdownDefaultValue || ''
+		);
+
+		// Determine current display values
 		const displayValue = value !== undefined ? value : internalValue;
+		const displayLeadingDropdownValue =
+			leadingDropdownValue !== undefined
+				? leadingDropdownValue
+				: internalLeadingDropdownValue;
+		const displayTrailingDropdownValue =
+			trailingDropdownValue !== undefined
+				? trailingDropdownValue
+				: internalTrailingDropdownValue;
 
 		// Determine actual state based on props and internal state
 		const getActualState = () => {
@@ -120,6 +150,21 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 			onBlur?.(e);
 		};
 
+		// Handle dropdown changes
+		const handleLeadingDropdownChange = (dropdownValue: string) => {
+			if (leadingDropdownValue === undefined) {
+				setInternalLeadingDropdownValue(dropdownValue);
+			}
+			onLeadingDropdownChange?.(dropdownValue);
+		};
+
+		const handleTrailingDropdownChange = (dropdownValue: string) => {
+			if (trailingDropdownValue === undefined) {
+				setInternalTrailingDropdownValue(dropdownValue);
+			}
+			onTrailingDropdownChange?.(dropdownValue);
+		};
+
 		return (
 			<div className={classes(styles.textField, className)}>
 				{/* Label */}
@@ -147,6 +192,28 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 							styles[size],
 							trailingButton && styles.inputContainerWithTrailingButton
 						)}>
+						{/* Leading Dropdown - using proper Dropdown component */}
+						{leadingDropdown && (
+							<div className={styles.leadingDropdownWrapper}>
+								<Dropdown
+									options={leadingDropdownOptions}
+									value={displayLeadingDropdownValue}
+									placeholder={leadingDropdownPlaceholder}
+									onChange={handleLeadingDropdownChange}
+									variant='borderless'
+									size={size}
+									state={actualState === 'disable' ? 'disabled' : 'default'}
+									disabled={disabled}
+									readOnly={readOnly}
+									helpIcon={false}
+									label=''
+									helperText=''
+									className={styles.inlineDropdown}
+									popoverClassName={styles.leadingDropdownPopover}
+								/>
+							</div>
+						)}
+
 						{/* Leading Text */}
 						{leadingText && (
 							<div className={styles.leadingText}>
@@ -154,20 +221,25 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 							</div>
 						)}
 
+						{/* Input Field Area - takes remaining space */}
 						<div
 							className={classes(
-								styles.inputInner,
-								leadingText && styles.inputInnerWithLeadingText
+								styles.inputFieldArea,
+								leadingDropdown && styles.inputFieldAreaWithLeadingDropdown,
+								leadingText && styles.inputFieldAreaWithLeadingText
 							)}>
-							<div className={styles.contentArea}>
-								{/* Leading Icon - only show if no leading text */}
-								{!leadingText && leadingIcon && LeadingIconComponent && (
-									<div className={styles.leadingIcon}>
-										<LeadingIconComponent />
-									</div>
-								)}
+							<div className={styles.inputContent}>
+								{/* Leading Icon - only show if no leading text or leading dropdown */}
+								{!leadingText &&
+									!leadingDropdown &&
+									leadingIcon &&
+									LeadingIconComponent && (
+										<div className={styles.leadingIcon}>
+											<LeadingIconComponent />
+										</div>
+									)}
 
-								{/* Single input with custom styling */}
+								{/* Input field */}
 								<input
 									ref={ref}
 									type='text'
@@ -198,6 +270,30 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 								{helpIcon && actualState !== 'warning' && (
 									<div className={styles.helpIcon}>
 										<HelpIcon />
+									</div>
+								)}
+
+								{/* Trailing Dropdown */}
+								{trailingDropdown && (
+									<div className={styles.trailingDropdown}>
+										<Dropdown
+											options={trailingDropdownOptions}
+											value={displayTrailingDropdownValue}
+											placeholder={trailingDropdownPlaceholder}
+											onChange={handleTrailingDropdownChange}
+											variant='borderless'
+											size={size}
+											state={
+												actualState === 'disable' ? 'disabled' : 'default'
+											}
+											disabled={disabled}
+											readOnly={readOnly}
+											helpIcon={false}
+											label=''
+											helperText=''
+											className={styles.inlineDropdown}
+											popoverClassName={styles.trailingDropdownPopover}
+										/>
 									</div>
 								)}
 							</div>

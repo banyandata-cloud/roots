@@ -1,4 +1,11 @@
 import React from 'react';
+
+export interface DropdownOption {
+	value: string;
+	label: string;
+	icon?: React.ComponentType<any> | undefined;
+}
+
 export interface TextFieldProps {
 	// Content props
 	label?: string;
@@ -18,7 +25,12 @@ export interface TextFieldProps {
 		| 'warning'
 		| 'disable';
 	size?: 'sm' | 'md';
-	type?: 'default' | 'leading-text' | 'trailing-button';
+	type?:
+		| 'default'
+		| 'leading-text'
+		| 'trailing-button'
+		| 'leading-dropdown'
+		| 'trailing-dropdown';
 
 	// Control props
 	required?: boolean;
@@ -34,11 +46,25 @@ export interface TextFieldProps {
 	trailingButtonIconComponent?: React.ComponentType<Record<string, unknown>>;
 	helpIcon?: boolean;
 
+	// Dropdown props
+	leadingDropdown?: boolean;
+	leadingDropdownOptions?: DropdownOption[];
+	leadingDropdownValue?: string;
+	leadingDropdownDefaultValue?: string;
+	leadingDropdownPlaceholder?: string;
+	trailingDropdown?: boolean;
+	trailingDropdownOptions?: DropdownOption[];
+	trailingDropdownValue?: string;
+	trailingDropdownDefaultValue?: string;
+	trailingDropdownPlaceholder?: string;
+
 	// Event handlers
 	onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 	onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
 	onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
 	trailingButtonOnClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+	onLeadingDropdownChange?: (value: string) => void;
+	onTrailingDropdownChange?: (value: string) => void;
 
 	// Standard HTML input props
 	className?: string;

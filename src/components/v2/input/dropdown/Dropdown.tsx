@@ -39,6 +39,8 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(
 			onMultiSelectChange,
 			onFocus,
 			onBlur,
+			popoverOffset,
+			popoverClassName,
 			className,
 			id,
 			name,
@@ -352,7 +354,8 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(
 						className={classes(
 							styles.dropdownContainer,
 							styles[actualState],
-							styles[size]
+							styles[size],
+							variant === 'borderless' && styles.borderless
 						)}
 						id={id}
 					/>
@@ -366,9 +369,9 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(
 					placement='bottom-start'
 					theme='light'
 					withOverlay={false}
-					className={styles.dropdownMenuPopover}
+					className={classes(styles.dropdownMenuPopover, popoverClassName)}
 					middlewareOptions={{
-						offset: 4,
+						offset: popoverOffset ?? 4,
 						shift: { padding: 8 },
 						flip: { padding: 8 },
 					}}>

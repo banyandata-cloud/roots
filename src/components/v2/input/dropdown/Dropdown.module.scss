@@ -371,6 +371,67 @@
 	}
 }
 
+// Borderless variant - removes all borders, background, shadow, and padding
+.borderless {
+	border: 0 !important;
+	border-width: 0 !important;
+	border-style: none !important;
+	border-color: transparent !important;
+	background: none !important;
+	box-shadow: none !important;
+	padding: 0 !important;
+
+	&:hover,
+	&:focus,
+	&.focus,
+	&.selected,
+	&.default,
+	&.filled,
+	&.activeTyping,
+	&.active-typing,
+	&.filledFocus,
+	&.filled-focus,
+	&.errorFocus,
+	&.error-focus,
+	&.errorFilled,
+	&.error-filled,
+	&.warning,
+	&.disabled {
+		border: 0 !important;
+		border-width: 0 !important;
+		border-style: none !important;
+		border-color: transparent !important;
+		background: none !important;
+		box-shadow: none !important;
+		padding: 0 !important;
+	}
+
+	// Override focus state padding specifically for borderless
+	&.focus {
+		padding: 0 !important;
+	}
+
+	// Override size-specific focus padding for borderless
+	&.focus.sm {
+		padding: 0 !important;
+	}
+
+	&.focus.md {
+		padding: 0 !important;
+	}
+}
+
+// Higher specificity override for dropdown with borderless focus
+.dropdown .dropdownContainer.borderless.focus {
+	border: 0 !important;
+	border-width: 0 !important;
+	border-style: none !important;
+	border-color: transparent !important;
+	background: none !important;
+	box-shadow: none !important;
+	padding: 0 !important;
+}
+
 // Dropdown Menu Styles
 .dropdownMenuPopover {
 	// Remove default popover background/shadows as we'll style the menu itself

@@ -350,6 +350,267 @@ export const TrailingButtonVariantTemplate = () => {
 	);
 };
 
+export const LeadingDropdownVariantTemplate = () => {
+	const countryOptions = [
+		{ value: 'us', label: 'US' },
+		{ value: 'uk', label: 'UK' },
+		{ value: 'ca', label: 'CA' },
+		{ value: 'au', label: 'AU' },
+		{ value: 'in', label: 'IN' },
+	];
+	return (
+		<div style={{ display: 'flex', flexWrap: 'wrap', gap: '24px' }}>
+			<div style={{ minWidth: '320px', width: '320px' }}>
+				<TextField
+					label='Phone Number'
+					placeholder='Enter Phone Number'
+					helperText='Helper text'
+					required={true}
+					leadingDropdown={true}
+					leadingDropdownOptions={countryOptions}
+					leadingDropdownDefaultValue='us'
+					leadingDropdownPlaceholder='US'
+					helpIcon={true}
+					type='leading-dropdown'
+				/>
+			</div>
+			<div style={{ minWidth: '320px', width: '320px' }}>
+				<TextField
+					label='Active Typing'
+					placeholder='Enter Phone Number'
+					helperText='Helper text'
+					state='active-typing'
+					required={true}
+					leadingDropdown={true}
+					leadingDropdownOptions={countryOptions}
+					leadingDropdownDefaultValue='us'
+					leadingDropdownPlaceholder='US'
+					helpIcon={true}
+					type='leading-dropdown'
+				/>
+			</div>
+			<div style={{ minWidth: '320px', width: '320px' }}>
+				<TextField
+					label='Filled'
+					value='9876543210'
+					helperText='Helper text'
+					state='filled'
+					required={true}
+					leadingDropdown={true}
+					leadingDropdownOptions={countryOptions}
+					leadingDropdownDefaultValue='us'
+					leadingDropdownPlaceholder='US'
+					helpIcon={true}
+					type='leading-dropdown'
+				/>
+			</div>
+			<div style={{ minWidth: '320px', width: '320px' }}>
+				<TextField
+					label='Filled Focus'
+					value='9876543210'
+					helperText='Helper text'
+					state='filled-focus'
+					required={true}
+					leadingDropdown={true}
+					leadingDropdownOptions={countryOptions}
+					leadingDropdownDefaultValue='us'
+					leadingDropdownPlaceholder='US'
+					helpIcon={true}
+					type='leading-dropdown'
+				/>
+			</div>
+			<div style={{ minWidth: '320px', width: '320px' }}>
+				<TextField
+					label='Error'
+					value='9876543210'
+					helperText='Helper text'
+					state='error-filled'
+					required={true}
+					leadingDropdown={true}
+					leadingDropdownOptions={countryOptions}
+					leadingDropdownDefaultValue='us'
+					leadingDropdownPlaceholder='US'
+					helpIcon={true}
+					type='leading-dropdown'
+				/>
+			</div>
+			<div style={{ minWidth: '320px', width: '320px' }}>
+				<TextField
+					label='Error Focus'
+					value='9876543210'
+					helperText='Helper text'
+					state='error-focus'
+					required={true}
+					leadingDropdown={true}
+					leadingDropdownOptions={countryOptions}
+					leadingDropdownDefaultValue='us'
+					leadingDropdownPlaceholder='US'
+					helpIcon={true}
+					type='leading-dropdown'
+				/>
+			</div>
+			<div style={{ minWidth: '320px', width: '320px' }}>
+				<TextField
+					label='Warning'
+					value='9876543210'
+					helperText='Helper text'
+					state='warning'
+					required={true}
+					leadingDropdown={true}
+					leadingDropdownOptions={countryOptions}
+					leadingDropdownDefaultValue='us'
+					leadingDropdownPlaceholder='US'
+					helpIcon={true}
+					type='leading-dropdown'
+				/>
+			</div>
+			<div style={{ minWidth: '320px', width: '320px' }}>
+				<TextField
+					label='Disabled'
+					value='9876543210'
+					helperText='Helper text'
+					state='disable'
+					disabled={true}
+					required={true}
+					leadingDropdown={true}
+					leadingDropdownOptions={countryOptions}
+					leadingDropdownDefaultValue='us'
+					leadingDropdownPlaceholder='US'
+					helpIcon={true}
+					type='leading-dropdown'
+				/>
+			</div>
+		</div>
+	);
+};
+
+export const TrailingDropdownVariantTemplate = () => {
+	const currencyOptions = [
+		{ value: 'USD', label: 'USD' },
+		{ value: 'EUR', label: 'EUR' },
+		{ value: 'GBP', label: 'GBP' },
+		{ value: 'INR', label: 'INR' },
+		{ value: 'JPY', label: 'JPY' },
+		{ value: 'CAD', label: 'CAD' },
+	];
+	return (
+		<div style={{ display: 'flex', flexWrap: 'wrap', gap: '24px' }}>
+			<div style={{ minWidth: '320px', width: '320px' }}>
+				<TextField
+					label='Amount'
+					placeholder='Enter amount'
+					helperText='Helper text'
+					required={true}
+					trailingDropdown={true}
+					trailingDropdownOptions={currencyOptions}
+					trailingDropdownDefaultValue='USD'
+					helpIcon={true}
+					type='trailing-dropdown'
+				/>
+			</div>
+			<div style={{ minWidth: '320px', width: '320px' }}>
+				<TextField
+					label='Price'
+					placeholder='Enter price'
+					helperText='Helper text'
+					state='active-typing'
+					required={true}
+					trailingDropdown={true}
+					trailingDropdownOptions={currencyOptions}
+					trailingDropdownDefaultValue='USD'
+					helpIcon={true}
+					type='trailing-dropdown'
+				/>
+			</div>
+			<div style={{ minWidth: '320px', width: '320px' }}>
+				<TextField
+					label='Budget'
+					value='1500'
+					helperText='Helper text'
+					state='filled'
+					required={true}
+					trailingDropdown={true}
+					trailingDropdownOptions={currencyOptions}
+					trailingDropdownDefaultValue='USD'
+					helpIcon={true}
+					type='trailing-dropdown'
+				/>
+			</div>
+			<div style={{ minWidth: '320px', width: '320px' }}>
+				<TextField
+					label='Cost'
+					value='2500'
+					helperText='Helper text'
+					state='filled-focus'
+					required={true}
+					trailingDropdown={true}
+					trailingDropdownOptions={currencyOptions}
+					trailingDropdownDefaultValue='USD'
+					helpIcon={true}
+					type='trailing-dropdown'
+				/>
+			</div>
+			<div style={{ minWidth: '320px', width: '320px' }}>
+				<TextField
+					label='Fee'
+					value='99'
+					helperText='Helper text'
+					state='error-filled'
+					required={true}
+					trailingDropdown={true}
+					trailingDropdownOptions={currencyOptions}
+					trailingDropdownDefaultValue='USD'
+					helpIcon={true}
+					type='trailing-dropdown'
+				/>
+			</div>
+			<div style={{ minWidth: '320px', width: '320px' }}>
+				<TextField
+					label='Salary'
+					value='65000'
+					helperText='Helper text'
+					state='error-focus'
+					required={true}
+					trailingDropdown={true}
+					trailingDropdownOptions={currencyOptions}
+					trailingDropdownDefaultValue='USD'
+					helpIcon={true}
+					type='trailing-dropdown'
+				/>
+			</div>
+			<div style={{ minWidth: '320px', width: '320px' }}>
+				<TextField
+					label='Revenue'
+					value='128000'
+					helperText='Helper text'
+					state='warning'
+					required={true}
+					trailingDropdown={true}
+					trailingDropdownOptions={currencyOptions}
+					trailingDropdownDefaultValue='USD'
+					helpIcon={true}
+					type='trailing-dropdown'
+				/>
+			</div>
+			<div style={{ minWidth: '320px', width: '320px' }}>
+				<TextField
+					label='Balance'
+					value='8500'
+					helperText='Helper text'
+					state='disable'
+					disabled={true}
+					required={true}
+					trailingDropdown={true}
+					trailingDropdownOptions={currencyOptions}
+					trailingDropdownDefaultValue='USD'
+					helpIcon={true}
+					type='trailing-dropdown'
+				/>
+			</div>
+		</div>
+	);
+};
+
 # TextField
 
 Text input field component with multiple states from the Figma design system.
@@ -371,19 +632,31 @@ The CSF rendered inside the `Canvas` from which you can see the implementation e
 ### Default Variant
 
 <Canvas>
-	<Story name='AllDefaultStates'>{() => <DefaultVariantTemplate />}</Story>
+	<Story name='Default'>{() => <DefaultVariantTemplate />}</Story>
 </Canvas>
 
 ### Leading Text Variant
 
 <Canvas>
-	<Story name='AllLeadingTextStates'>{() => <LeadingTextVariantTemplate />}</Story>
+	<Story name='Leading Text'>{() => <LeadingTextVariantTemplate />}</Story>
 </Canvas>
 
 ### Trailing Button Variant
 
 <Canvas>
-	<Story name='AllTrailingButtonStates'>{() => <TrailingButtonVariantTemplate />}</Story>
+	<Story name='Trailing Button'>{() => <TrailingButtonVariantTemplate />}</Story>
+</Canvas>
+
+### Leading Dropdown Variant
+
+<Canvas>
+	<Story name='Leading Dropdown'>{() => <LeadingDropdownVariantTemplate />}</Story>
+</Canvas>
+
+### Trailing Dropdown Variant
+
+<Canvas>
+	<Story name='Trailing Dropdown'>{() => <TrailingDropdownVariantTemplate />}</Story>
 </Canvas>
 
 ## API

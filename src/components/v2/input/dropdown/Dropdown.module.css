@@ -314,6 +314,44 @@
     max-width: 100%;
   }
 }
+.borderless {
+  border: 0 !important;
+  border-width: 0 !important;
+  border-style: none !important;
+  border-color: transparent !important;
+  background: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+.borderless:hover, .borderless:focus, .borderless.focus, .borderless.selected, .borderless.default, .borderless.filled, .borderless.activeTyping, .borderless.active-typing, .borderless.filledFocus, .borderless.filled-focus, .borderless.errorFocus, .borderless.error-focus, .borderless.errorFilled, .borderless.error-filled, .borderless.warning, .borderless.disabled {
+  border: 0 !important;
+  border-width: 0 !important;
+  border-style: none !important;
+  border-color: transparent !important;
+  background: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+.borderless.focus {
+  padding: 0 !important;
+}
+.borderless.focus.sm {
+  padding: 0 !important;
+}
+.borderless.focus.md {
+  padding: 0 !important;
+}
+
+.dropdown .dropdownContainer.borderless.focus {
+  border: 0 !important;
+  border-width: 0 !important;
+  border-style: none !important;
+  border-color: transparent !important;
+  background: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
 .dropdownMenuPopover {
   background: none !important;
   box-shadow: none !important;
