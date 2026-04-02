@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
 .root {
 	display: flex;
 	flex-direction: column;
@@ -43,7 +45,7 @@
 }
 
 .headingDropdown {
-	width: 8.5rem;
+	width: 9.375rem;
 }
 
 .headingDropdown [data-elem='header'] {
@@ -54,6 +56,7 @@
 	display: flex !important;
 	padding: 8px 12px !important;
 	align-items: center !important;
+	justify-content: space-between !important;
 	gap: 8px !important;
 	align-self: stretch !important;
 	color: var(--Textcolor-Text-primary, #181D27) !important;
@@ -70,6 +73,9 @@
 
 .headingDropdown [data-elem='header'] [data-elem='select'] svg {
 	fill: #71839b !important;
+	min-width: 12px !important;
+	width: 12px !important;
+	height: 12px !important;
 }
 
 .headingDropdown [data-elem='select'] {
@@ -179,6 +185,7 @@
 	box-sizing: border-box;
 	outline: none;
 	color: #1d2939;
+	font-family: var(--font-font-family, "Plus Jakarta Sans");
 	font-size: 1rem;
 	line-height: 1.45;
 	overflow-y: scroll;
@@ -205,15 +212,36 @@
 
 .editor :global(.ProseMirror p) {
 	margin: 0;
+	font-family: var(--font-font-family, "Plus Jakarta Sans");
 }
 
 .editor :global(.ProseMirror h1) {
 	color: var(--Textcolor-Text-primary, #181D27);
-	font-family: inherit;
-	font-size: 1rem;
+	font-family: var(--font-font-family, "Plus Jakarta Sans");
+	font-size: 1.5rem;
 	font-style: normal;
 	font-weight: var(--font-weight-Medium, 500);
-	line-height: var(--Line-height-24, 24px);
+	line-height: 1.3;
+	margin: 0;
+}
+
+.editor :global(.ProseMirror h2) {
+	color: var(--Textcolor-Text-primary, #181D27);
+	font-family: var(--font-font-family, "Plus Jakarta Sans");
+	font-size: 1.25rem;
+	font-style: normal;
+	font-weight: var(--font-weight-Medium, 500);
+	line-height: 1.3;
+	margin: 0;
+}
+
+.editor :global(.ProseMirror h3) {
+	color: var(--Textcolor-Text-primary, #181D27);
+	font-family: var(--font-font-family, "Plus Jakarta Sans");
+	font-size: 1.125rem;
+	font-style: normal;
+	font-weight: var(--font-weight-Medium, 500);
+	line-height: 1.3;
 	margin: 0;
 }
 
@@ -237,6 +265,11 @@
 .editor :global(.ProseMirror ol) {
 	padding-left: 1.25rem;
 	margin: 0.5rem 0;
+	font-family: var(--font-font-family, "Plus Jakarta Sans");
+}
+
+.editor :global(.ProseMirror li) {
+	font-family: var(--font-font-family, "Plus Jakarta Sans");
 }
 
 .editor :global(.ProseMirror code) {

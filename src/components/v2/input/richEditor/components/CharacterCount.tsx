@@ -3,11 +3,13 @@ import { classes } from '../../../../../utils';
 import styles from '../RichTextEditor.module.css';
 
 interface CharacterCountProps {
-	charactersLeft: number;
+	textLength: number;
+	maxCharacters: number;
 }
 
-const CharacterCount: React.FC<CharacterCountProps> = ({ charactersLeft }) => {
-	const limitReached = charactersLeft < 0;
+const CharacterCount: React.FC<CharacterCountProps> = ({ textLength, maxCharacters }) => {
+	const charactersLeft = maxCharacters - textLength;
+	const limitReached = charactersLeft <= 0;
 
 	return (
 		<div

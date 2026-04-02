@@ -5,7 +5,8 @@ import Placeholder from '@tiptap/extension-placeholder';
 import TextAlign from '@tiptap/extension-text-align';
 import TextStyle from '@tiptap/extension-text-style';
 import Underline from '@tiptap/extension-underline';
-import { BubbleMenu, EditorContent, useEditor } from '@tiptap/react';
+import { BubbleMenu, EditorContent, useEditor, Extension } from '@tiptap/react';
+import { Plugin } from '@tiptap/pm/state';
 import StarterKit from '@tiptap/starter-kit';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { classes } from '../../../../utils';
@@ -69,7 +70,7 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({
 	placeholder = 'Your text here...',
 	hiddenMenu = {},
 	editable = true,
-	maxCharacters = 1000,
+	maxCharacters = 1816,
 	showCharacterCount = true,
 	headingLevels = [1, 2, 3],
 	onInsertImage,
@@ -92,8 +93,8 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({
 		return Array.from(new Set(validLevels));
 	}, [headingLevels]);
 
-	const editor = useEditor({
-		extensions: [
+	const extensions = useMemo(() => {
+		return [
 			StarterKit,
 			Underline,
 			TextStyle,
@@ -113,21 +114,75 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({
 			Placeholder.configure({
 				placeholder,
 			}),
-		],
+			Extension.create({
+				name: 'characterLimit',
+				addOptions() {
+					return {
+						limit: 1816,
+					};
+				},
+				addProseMirrorPlugins() {
+					return [
+						new Plugin({
+							filterTransaction: (transaction, state) => {
+								const limit = this.options.limit;
+								if (!limit) return true;
+
+								const nextLength = transaction.doc.textBetween(
+									0,
+									transaction.doc.content.size,
+									'\n',
+									'\n'
+								).length;
+								const previousLength = state.doc.textBetween(
+									0,
+									state.doc.content.size,
+									'\n',
+									'\n'
+								).length;
+
+								// Allow if within limit OR if the transaction reduces the length
+								return nextLength <= limit || nextLength < previousLength;
+							},
+						}),
+					];
+				},
+			}).configure({
+				limit: maxCharacters,
+			}),
+		];
+	}, [maxCharacters, placeholder]);
+
+	const editor = useEditor({
+		extensions,
 		content: content ?? defaultContent,
 		editable,
 		onCreate: ({ editor: mEditor }) => {
 			setTextType(getSelectionTextType(mEditor));
-			setTextLength(mEditor.getText().length);
+			const currentText = mEditor.state.doc.textBetween(0, mEditor.state.doc.content.size, '\n', '\n');
+			setTextLength(currentText.length);
 		},
 		onUpdate: ({ editor: mEditor }) => {
-			setTextLength(mEditor.getText().length);
+			const currentText = mEditor.state.doc.textBetween(0, mEditor.state.doc.content.size, '\n', '\n');
+			setTextLength(currentText.length);
 			setContent?.(mEditor.getHTML());
 		},
 		onSelectionUpdate: ({ editor: mEditor }) => {
 			setTextType(getSelectionTextType(mEditor));
+			const currentText = mEditor.state.doc.textBetween(0, mEditor.state.doc.content.size, '\n', '\n');
+			setTextLength(currentText.length);
 		},
 	});
+
+
+
+
+
+	useEffect(() => {
+		if (editor && maxCharacters !== undefined) {
+			(editor as any).setOptions('characterLimit', { limit: maxCharacters });
+		}
+	}, [editor, maxCharacters]);
 
 	useEffect(() => {
 		if (!editor || content === undefined) return;
@@ -163,7 +218,6 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({
 
 	const toolbarMenu: HiddenMenu = hiddenMenu ?? {};
 	const currentTextColor = (editor.getAttributes('textStyle').color as string) || '#181D27';
-	const charactersLeft = maxCharacters - textLength;
 
 	const applyTextType = (nextType: TextType) => {
 		const chain = editor.chain().focus();
@@ -528,7 +582,7 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({
 				</BubbleMenu>
 			)}
 
-			{showCharacterCount && <CharacterCount charactersLeft={charactersLeft} />}
+			{showCharacterCount && <CharacterCount textLength={textLength} maxCharacters={maxCharacters} />}
 		</div>
 	);
 };
