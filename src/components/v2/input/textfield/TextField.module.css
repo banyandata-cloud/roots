@@ -9,7 +9,7 @@
 .labelContainer {
   display: flex;
   gap: 2px;
-  align-items: flex-start;
+  align-items: center;
 }
 .labelContainer .label {
   font-family: Jakarta;
@@ -24,6 +24,16 @@
   font-size: 14px;
   line-height: 20px;
   color: #175cd3;
+}
+.labelContainer .helpIcon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+.labelContainer .helpIcon svg {
+  width: 100%;
+  height: 100%;
+  color: #535862;
 }
 
 .inputContainer {
@@ -176,39 +186,33 @@
 .inlineDropdown .helperText {
   display: none;
 }
-.inlineDropdown .buttonWrapper {
-  width: -moz-fit-content;
-  width: fit-content;
-  min-width: -moz-fit-content;
-  min-width: fit-content;
+.inlineDropdown div > button > span > span > div > span {
+  font-size: 16px !important;
+  line-height: 24px !important;
+  color: #535862 !important;
+  font-weight: 400 !important;
+  white-space: nowrap !important;
 }
-.inlineDropdown .dropdownContainer {
-  min-width: -moz-fit-content;
-  min-width: fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  max-width: none;
-  height: 40px;
+.inlineDropdown div > button {
+  min-width: -moz-fit-content !important;
+  min-width: fit-content !important;
+  width: -moz-fit-content !important;
+  width: fit-content !important;
+  max-width: none !important;
+  height: 40px !important;
+  padding: 10px 12px !important;
 }
-.inlineDropdown .dropdownContainer .contentArea {
-  gap: 1px;
-  flex-shrink: 0;
+.inlineDropdown div > button > span > span > div:first-child {
+  gap: 1px !important;
+  flex-shrink: 0 !important;
 }
-.inlineDropdown .dropdownContainer .dropdownText {
-  font-size: 16px;
-  line-height: 24px;
-  color: #535862;
-  font-weight: 400;
-  white-space: nowrap;
+.inlineDropdown div > button > span > span[data-elem=title] {
+  gap: 1px !important;
+  flex-shrink: 0 !important;
 }
-.inlineDropdown .dropdownContainer .trailingArea {
-  gap: 1px;
-  flex-shrink: 0;
-}
-.inlineDropdown .dropdownContainer .dropdownIcon {
-  width: 16px;
-  height: 16px;
-  flex-shrink: 0;
+.inlineDropdown div > button > span > span[data-elem=title] div svg {
+  width: 16px !important;
+  height: 16px !important;
 }
 
 .leadingDropdownPopover {
@@ -219,14 +223,22 @@
   transform: translateX(-24px);
 }
 
-.helpIcon,
-.statusIcon {
+.trailingArea .helpIcon,
+.trailingArea .rightIcon,
+.trailingArea .statusIcon {
   width: 16px;
   height: 16px;
   flex-shrink: 0;
 }
-.helpIcon svg,
-.statusIcon svg {
+.trailingArea .helpIcon svg,
+.trailingArea .rightIcon svg,
+.trailingArea .statusIcon svg {
+  width: 100%;
+  height: 100%;
+}
+.trailingArea .helpIcon .iconComponent,
+.trailingArea .rightIcon .iconComponent,
+.trailingArea .statusIcon .iconComponent {
   width: 100%;
   height: 100%;
 }
@@ -414,8 +426,9 @@
   cursor: not-allowed;
 }
 .inputContainer.disable .leadingIcon,
-.inputContainer.disable .helpIcon,
-.inputContainer.disable .statusIcon {
+.inputContainer.disable .trailingArea .helpIcon,
+.inputContainer.disable .trailingArea .rightIcon,
+.inputContainer.disable .trailingArea .statusIcon {
   opacity: 0.5;
 }
 .inputContainer.disable .hiddenInput {

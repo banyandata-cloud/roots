@@ -34,6 +34,10 @@ $sizes: (
 	box-sizing: border-box;
 	white-space: nowrap;
 	border: 1px solid transparent;
+	font-family:
+		Jakarta Sans,
+		sans-serif;
+
 	&__icon {
 		display: block;
 		flex-shrink: 0;

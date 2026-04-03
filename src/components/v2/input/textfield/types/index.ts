@@ -45,6 +45,8 @@ export interface TextFieldProps {
 	trailingButtonIcon?: boolean;
 	trailingButtonIconComponent?: React.ComponentType<Record<string, unknown>>;
 	helpIcon?: boolean;
+	helpText?: string; // Tooltip content for help icon beside label
+	rightIcon?: React.ComponentType<{ className?: string }>; // Right icon component
 
 	// Dropdown props
 	leadingDropdown?: boolean;
@@ -73,4 +75,7 @@ export interface TextFieldProps {
 	autoComplete?: string;
 	autoFocus?: boolean;
 	readOnly?: boolean;
+
+	// Styling props
+	unstyled?: boolean;
 }

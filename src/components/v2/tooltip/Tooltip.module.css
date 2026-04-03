@@ -18,9 +18,10 @@
 /* Enforce the text styling purely for the component text */
 .textContent {
   font-size: 13px !important;
-  font-weight: 500 !important;
+  font-weight: 600 !important;
   line-height: 1.4 !important;
   color: inherit !important;
+  font-family: Jakarta Sans, sans-serif;
 }
 
 .arrow {
@@ -30,4 +31,4 @@
   background-color: #1c1c1c;
   transform: rotate(45deg);
   border-radius: 1px;
-}
+}/*# sourceMappingURL=Tooltip.module.css.map */

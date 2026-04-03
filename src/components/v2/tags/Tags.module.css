@@ -9,11 +9,11 @@
   cursor: default;
   transition: all 0.2s ease;
   border-radius: var(--radius-sm, 6px);
-  border: 1px solid var(--Bordercolor-border-primary, #d5d7da);
-  background: var(--Backgroundcolor-Bg-primary, #fff);
-  color: var(--Textcolor-Text-Secondary, #414651);
+  border: 1px solid var(--bordercolor-border-primary, #d5d7da);
+  background: var(--backgroundcolor-bg-primary, #fff);
+  color: var(--textcolor-text-secondary, #414651);
   font-style: normal;
-  font-weight: var(--font-weight-Medium, 500);
+  font-weight: var(--font-weight-medium, 500);
 }
 .tag__indicator {
   flex-shrink: 0;
@@ -212,29 +212,60 @@
   position: absolute;
   visibility: hidden;
   white-space: pre;
-  font-size: inherit;
-  font-weight: inherit;
-  font-family: inherit;
-  letter-spacing: inherit;
+  font-style: normal;
+  font-weight: var(--font-weight-Medium, 500);
+  font-family: Jakarta Sans, sans-serif;
   pointer-events: none;
+  top: -9999px;
+  left: -9999px;
+  max-width: none;
+  width: auto;
+}
+.tag__textfield_sizer--sm {
+  font-size: var(--font-size-12, 12px);
+  line-height: var(--Line-height-16, 16px);
+}
+.tag__textfield_sizer--md {
+  font-size: var(--font-size-14, 14px);
+  line-height: var(--Line-height-20, 20px);
+}
+.tag__textfield_sizer--lg {
+  font-size: var(--font-size-14, 14px);
+  line-height: var(--Line-height-20, 20px);
 }
 .tag__textfield_label {
   flex-shrink: 0;
   white-space: nowrap;
+  color: var(--textcolor-text-quanternary, #717680);
+  font-style: normal;
+  font-weight: var(--font-weight-medium, 500);
+  font-family: Jakarta Sans, sans-serif;
+}
+.tag__textfield_label--sm {
+  font-size: var(--font-size-12, 12px);
+  line-height: var(--Line-height-16, 16px);
+}
+.tag__textfield_label--md {
+  font-size: var(--font-size-14, 14px);
+  line-height: var(--Line-height-20, 20px);
+}
+.tag__textfield_label--lg {
+  font-size: var(--font-size-14, 14px);
+  line-height: var(--Line-height-20, 20px);
 }
 .tag__textfield_input {
-  min-width: 1px;
-  width: 0;
-  flex: 1 1 auto;
+  min-width: 20px;
+  width: 20px;
+  flex: 0 0 auto;
   border: none;
   outline: none;
   background: transparent;
   padding: 0;
   margin: 0;
-  color: var(--Textcolor-Text-Secondary, #414651);
+  color: var(--textcolor-text-secondary, #414651);
   font-style: normal;
-  font-weight: var(--font-weight-Medium, 500);
-  font-family: inherit;
+  font-weight: var(--font-weight-medium, 500);
+  font-family: Jakarta Sans, sans-serif;
 }
 .tag__textfield_input::-moz-placeholder {
   color: var(--Textcolor-Text-Placeholder, #9aa0ab);
@@ -352,14 +383,25 @@
 }
 .tag--sm--textfield {
   padding: 0 4px 0 8px;
-  gap: 4px;
+  gap: 3px;
   cursor: text;
   width: -moz-max-content;
   width: max-content;
+  height: 24px;
+  /* Consistent styling regardless of focus state */
+  border: 1px solid var(--bordercolor-border-primary, #d5d7da);
+  background: var(--backgroundcolor-bg-primary, #fff);
 }
-.tag--sm--textfield:focus-within {
-  border-color: var(--Bordercolor-border-focus, #84adff);
-  box-shadow: 0 0 0 2px rgba(132, 173, 255, 0.2);
+.tag--sm--textfield-readonly {
+  cursor: default;
+  /* Readonly state looks exactly like Figma static design */
+  border: 1px solid var(--bordercolor-border-primary, #d5d7da);
+  background: var(--backgroundcolor-bg-primary, #fff);
+}
+.tag--sm--textfield-readonly .tag__textfield_input {
+  pointer-events: none;
+  cursor: default;
+  color: var(--textcolor-text-secondary, #414651) !important;
 }
 .tag--md {
   height: 24px;
