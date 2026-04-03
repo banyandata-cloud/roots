@@ -1,7 +1,7 @@
 import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import Logo1 from '../../icons/Email/Email';
-import TextField from '../../input/textField/TextField';
 import Checkbox from '../checkbox/CheckBox';
+import { TextField } from '../input/textfield';
 import Indicator from '../tags/assets/Indicator/Indicator';
 import type { TagProps, TagSize } from '../tags/types';
 import TagCloserLg from './assets/TagCloser/TagCloserLg';
@@ -51,10 +51,14 @@ const Tag = forwardRef<HTMLInputElement, TagProps>(
 			checkboxLogoClosable = false,
 			checkboxLogoCount = false,
 			textField = false,
+			readOnly = false,
 			inputValue,
 			onInputChange,
+			onInputBlur,
+			onInputEnter,
 			defaultInputValue = '',
 			inputPlaceholder = '',
+			onClick,
 			onInputClear,
 		},
 		ref
@@ -67,7 +71,6 @@ const Tag = forwardRef<HTMLInputElement, TagProps>(
 
 		const isControlled = inputValue !== undefined;
 		const [internalValue, setInternalValue] = useState<string>(defaultInputValue);
-		const [isTagHovered, setIsTagHovered] = useState(false);
 		const resolvedValue = isControlled ? inputValue : internalValue;
 
 		const internalInputRef = useRef<HTMLInputElement>(null);
@@ -79,23 +82,146 @@ const Tag = forwardRef<HTMLInputElement, TagProps>(
 		};
 
 		useEffect(() => {
-			if (sizerRef.current && resolvedRef.current) {
-				resolvedRef.current.style.width = sizerRef.current.offsetWidth + 'px';
-			}
-		}, [resolvedValue, inputPlaceholder]);
+			const updateWidth = () => {
+				// Since TextField doesn't properly forward refs, find the input element directly
+				const inputElement =
+					resolvedRef.current ||
+					sizerRef.current?.parentElement?.querySelector('input[type="text"]') ||
+					sizerRef.current?.parentElement?.querySelector('input') ||
+					sizerRef.current?.nextElementSibling?.querySelector('input');
 
-		const handleChange = (
-			e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-			val?: string
-		) => {
-			const next = val ?? '';
+				if (sizerRef.current && inputElement) {
+					// Force reflow to ensure accurate measurements
+					sizerRef.current.offsetHeight;
+
+					const sizerWidth = sizerRef.current.offsetWidth;
+					const buffer = size === 'sm' ? 4 : size === 'md' ? 4 : 6; // Minimal buffer for cursor space
+					const minWidth = size === 'sm' ? 10 : size === 'md' ? 35 : 40;
+
+					// Calculate available space in container, leaving room for close button
+					const tagContainer = inputElement.closest(
+						'[class*="tag--"][class*="textfield"]'
+					);
+					let maxInputWidth = 120; // Conservative maximum for input field
+
+					if (tagContainer) {
+						// Get all elements in the tag to calculate reserved space
+						const closeButton = tagContainer.querySelector(
+							'[class*="textfield_closer"]'
+						);
+						const label = tagContainer.querySelector('[class*="textfield_label"]');
+
+						// Calculate space used by other elements (more conservative)
+						let reservedSpace = 16; // padding and gaps
+
+						if (label) {
+							reservedSpace += label.getBoundingClientRect().width + 4; // label + gap
+						}
+						if (closeButton) {
+							reservedSpace += closeButton.getBoundingClientRect().width + 4; // close button + gap
+						}
+
+						// Don't let tags get too wide - reasonable maximum
+						const maxTagWidth = 180;
+						maxInputWidth = Math.max(maxTagWidth - reservedSpace, minWidth);
+
+						// Further constrain if current container is smaller
+						const currentContainerWidth = tagContainer.getBoundingClientRect().width;
+						if (currentContainerWidth > 0) {
+							maxInputWidth = Math.min(
+								maxInputWidth,
+								currentContainerWidth - reservedSpace
+							);
+						}
+					}
+
+					const idealWidth = Math.max(sizerWidth + buffer, minWidth);
+					const finalWidth = Math.min(idealWidth, maxInputWidth);
+
+					// Apply constrained width to input
+					(inputElement as HTMLInputElement).style.setProperty(
+						'width',
+						`${finalWidth}px`,
+						'important'
+					);
+					(inputElement as HTMLInputElement).style.setProperty(
+						'max-width',
+						`${finalWidth}px`,
+						'important'
+					);
+					(inputElement as HTMLInputElement).style.setProperty(
+						'min-width',
+						`${minWidth}px`,
+						'important'
+					);
+
+					// Update tag container to fit content but with strict bounds
+					if (tagContainer) {
+						(tagContainer as HTMLElement).style.setProperty(
+							'width',
+							'auto',
+							'important'
+						);
+						(tagContainer as HTMLElement).style.setProperty(
+							'max-width',
+							'180px',
+							'important'
+						);
+						(tagContainer as HTMLElement).style.setProperty(
+							'min-width',
+							'max-content',
+							'important'
+						);
+						(tagContainer as HTMLElement).style.setProperty(
+							'overflow',
+							'hidden',
+							'important'
+						);
+					}
+				}
+			};
+
+			// Run with delays to handle complex DOM updates
+			updateWidth();
+			const timeout1 = setTimeout(updateWidth, 10);
+			const timeout2 = setTimeout(updateWidth, 50);
+			const timeout3 = setTimeout(updateWidth, 100);
+
+			return () => {
+				clearTimeout(timeout1);
+				clearTimeout(timeout2);
+				clearTimeout(timeout3);
+			};
+		}, [resolvedValue, inputPlaceholder, size]);
+
+		const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+			const next = e.target.value;
 			if (!isControlled) setInternalValue(next);
-			onInputChange?.(next, e as React.ChangeEvent<HTMLInputElement>);
+			onInputChange?.(next, e);
+		};
+
+		const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+			if (e.key === 'Enter' || e.key === 'Tab') {
+				e.preventDefault();
+				onInputEnter?.();
+			} else if (e.key === 'Backspace' && resolvedValue === '') {
+				e.preventDefault();
+				onInputClear?.();
+			}
+		};
+
+		const handleBlur = () => {
+			onInputBlur?.();
 		};
 
 		const handleClear = () => {
 			if (!isControlled) setInternalValue('');
 			onInputClear?.();
+		};
+
+		// Map TagSize to TextField size (v2 only supports sm/md)
+		const getTextFieldSize = (tagSize: TagSize): 'sm' | 'md' => {
+			return tagSize === 'lg' ? 'md' : tagSize;
 		};
 
 		const CloserSpan = ({ extraClass }: { extraClass?: string }) => (
@@ -124,29 +250,47 @@ const Tag = forwardRef<HTMLInputElement, TagProps>(
 						styles.tag,
 						styles[`tag--${size}`],
 						styles[`tag--${size}--textfield`],
-					].join(' ')}
-					onClick={focusInput}
-					onMouseEnter={() => setIsTagHovered(true)}
-					onMouseLeave={() => setIsTagHovered(false)}>
-					<span className={styles.tag__textfield_label}>{label}</span>
-					<span ref={sizerRef} aria-hidden className={styles.tag__textfield_sizer}>
+						readOnly && styles[`tag--${size}--textfield-readonly`],
+					]
+						.filter(Boolean)
+						.join(' ')}
+					onClick={
+						readOnly
+							? () => {
+									// Handle click for readonly tags
+									onClick?.();
+								}
+							: focusInput
+					}>
+					<span
+						className={`${styles.tag__textfield_label} ${styles[`tag__textfield_label--${size}`]}`}>
+						{label}
+					</span>
+					<span
+						ref={sizerRef}
+						aria-hidden
+						className={`${styles.tag__textfield_sizer} ${styles[`tag__textfield_sizer--${size}`]}`}>
 						{resolvedValue || inputPlaceholder || '\u200b'}
 					</span>
 					<TextField
-						ref={resolvedRef as any}
-						unstyled
-						size={size}
+						ref={resolvedRef}
+						unstyled={true}
+						size={getTextFieldSize(size)}
 						value={resolvedValue}
-						onChange={handleChange}
+						onChange={readOnly ? undefined : handleChange}
+						onBlur={readOnly ? undefined : handleBlur}
+						readOnly={readOnly}
 						placeholder={inputPlaceholder}
+						disabled={readOnly}
 						className={[
 							styles.tag__textfield_input,
 							styles[`tag__textfield_input--${size}`],
 						]
 							.filter(Boolean)
 							.join(' ')}
+						{...({ onKeyDown: handleKeyDown } as any)}
 					/>
-					{isTagHovered && (
+					{closable && (
 						<span
 							className={styles.tag__textfield_closer}
 							onClick={(e) => {

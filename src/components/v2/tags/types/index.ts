@@ -21,11 +21,15 @@ export interface TagProps {
 	checkboxLogoClosable?: boolean | undefined;
 	checkboxLogoCount?: boolean | undefined;
 	textField?: boolean | undefined;
+	readOnly?: boolean | undefined;
 	inputValue?: string | undefined;
 	onInputChange?:
 		| ((value: string, event: React.ChangeEvent<HTMLInputElement>) => void)
 		| undefined;
+	onInputBlur?: (() => void) | undefined;
+	onInputEnter?: (() => void) | undefined;
 	defaultInputValue?: string | undefined;
 	inputPlaceholder?: string | undefined;
+	onClick?: (() => void) | undefined;
 	onInputClear?: (() => void) | undefined;
 }

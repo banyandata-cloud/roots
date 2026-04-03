@@ -4,6 +4,7 @@ import { Button } from '../../buttons/button';
 import { HelpIcon } from '../../icons';
 import { ErrorIcon } from '../../icons/error';
 import { WarningIcon } from '../../icons/warning';
+import { Tooltip } from '../../tooltip';
 import { Dropdown } from '../dropdown';
 import styles from './TextField.module.scss';
 import type { TextFieldProps } from './types';
@@ -30,6 +31,8 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 			trailingButtonIconComponent: TrailingButtonIconComponent,
 			trailingButtonOnClick,
 			helpIcon = true,
+			helpText,
+			rightIcon,
 			// Dropdown props
 			leadingDropdown,
 			leadingDropdownOptions = [],
@@ -52,6 +55,7 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 			autoComplete,
 			autoFocus,
 			readOnly,
+			unstyled = false,
 			...props
 		},
 		ref
@@ -165,6 +169,29 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 			onTrailingDropdownChange?.(dropdownValue);
 		};
 
+		// Return unstyled input if requested
+		if (unstyled) {
+			return (
+				<input
+					ref={ref}
+					type='text'
+					value={displayValue}
+					placeholder={placeholder}
+					onChange={handleChange}
+					onFocus={handleFocus}
+					onBlur={handleBlur}
+					disabled={disabled}
+					readOnly={readOnly}
+					className={className}
+					id={id}
+					name={name}
+					autoComplete={autoComplete}
+					autoFocus={autoFocus}
+					{...props}
+				/>
+			);
+		}
+
 		return (
 			<div className={classes(styles.textField, className)}>
 				{/* Label */}
@@ -172,6 +199,15 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 					<div className={styles.labelContainer}>
 						<span className={styles.label}>{label}</span>
 						{required && <span className={styles.required}>*</span>}
+						{helpIcon && (
+							<Tooltip
+								content={helpText || 'Additional information about this field'}
+								position='top'>
+								<div className={styles.helpIcon}>
+									<HelpIcon />
+								</div>
+							</Tooltip>
+						)}
 					</div>
 				)}
 
@@ -266,10 +302,12 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 									<div className={styles.statusIcon}>{getStatusIcon()}</div>
 								)}
 
-								{/* Help Icon */}
-								{helpIcon && actualState !== 'warning' && (
-									<div className={styles.helpIcon}>
-										<HelpIcon />
+								{/* Right Icon - configurable */}
+								{rightIcon && (
+									<div className={styles.rightIcon}>
+										{React.createElement(rightIcon, {
+											className: styles.iconComponent || '',
+										})}
 									</div>
 								)}
 

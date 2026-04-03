@@ -1,7 +1,8 @@
 import { Meta, Canvas, Story } from '@storybook/addon-docs';
 
 import { TextField } from './index';
-import { EmailIcon, CopyIcon } from '../../../icons';
+import { EmailIcon, CopyIcon, PasswordIcon } from '../../../icons';
+import { SearchIcon } from '../../icons';
 
 <Meta title='Components/v2/Input/TextField' parameters={{ options: { showToolbar: false } }} />
 
@@ -26,10 +27,11 @@ export const DefaultVariantTemplate = () => {
 			<div style={{ minWidth: '320px', width: '320px' }}>
 				<TextField
 					label='Active Typing'
-					placeholder='Enter Email Address'
+					placeholder='Enter Password'
 					helperText='Helper text'
 					state='active-typing'
 					required={true}
+					rightIcon={PasswordIcon}
 					leadingIcon={true}
 					leadingIconComponent={EmailIcon}
 					helpIcon={true}

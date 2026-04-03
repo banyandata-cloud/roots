@@ -4,6 +4,7 @@
   box-sizing: border-box;
   white-space: nowrap;
   border: 1px solid transparent;
+  font-family: Jakarta Sans, sans-serif;
 }
 .badge__icon {
   display: block;
