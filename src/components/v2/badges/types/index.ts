@@ -10,6 +10,8 @@ export interface BadgeProps {
 	dotColor?: string | undefined;
 	arrow?: boolean | undefined;
 	arrowColor?: string | undefined;
+	arrowLead?: boolean | undefined;
+	arrowLeadColor?: string | undefined;
 	upArrow?: boolean | undefined;
 	upArrowColor?: string | undefined;
 	plus?: boolean | undefined;

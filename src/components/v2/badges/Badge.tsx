@@ -1,5 +1,6 @@
 import { forwardRef } from 'react';
 import { classes } from '../../../utils';
+import ArrowLeftIcon from '../badges/assets/ArrowLeftIcon';
 import ArrowIcon from '../badges/assets/ArrowRightIcon';
 import UpArrowIcon from '../badges/assets/ArrowUpIcon';
 import DotIcon from '../badges/assets/DotIcon';
@@ -22,6 +23,8 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
 			dotColor = '#717680',
 			arrow = false,
 			arrowColor = '#717680',
+			arrowLead = false,
+			arrowLeadColor = '#717680',
 			upArrow = false,
 			upArrowColor = '#717680',
 			plus = false,
@@ -36,6 +39,7 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
 			styles[`badge--${variant}`],
 			dot && styles['badge--has-dot'],
 			arrow && styles['badge--has-arrow'],
+			arrowLead && styles['badge--has-lead'],
 			upArrow && styles['badge--has-up-arrow'],
 			plus && styles['badge--has-plus'],
 			onClose && styles['badge--has-closer'],
@@ -48,6 +52,13 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
 					<DotIcon
 						size={DOT_SIZE[size]}
 						color={dotColor}
+						className={styles.badge__icon}
+					/>
+				)}
+				{arrowLead && (
+					<ArrowLeftIcon
+						size={ICON_SIZE[size]}
+						color={arrowLeadColor}
 						className={styles.badge__icon}
 					/>
 				)}

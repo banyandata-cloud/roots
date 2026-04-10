@@ -1,9 +1,9 @@
 import type { BadgeSize } from '../types';
 
 export const ICON_SIZE: Record<BadgeSize, number> = {
-	sm: 12,
-	md: 12,
-	lg: 14,
+	sm: 16,
+	md: 16,
+	lg: 16,
 };
 
 export const DOT_SIZE: Record<BadgeSize, number> = {
