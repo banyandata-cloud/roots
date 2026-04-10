@@ -54,7 +54,7 @@
   display: inline-flex;
   align-items: center;
   height: 20px;
-  color: #717680;
+  color: #717680 !important;
   font-family: "Jakarta", sans-serif;
   font-size: 14px;
   font-style: normal;
@@ -64,7 +64,7 @@
   transition: color 0.15s ease;
 }
 .crumbItem:hover .crumbLabel {
-  color: #414651;
+  color: #414651 !important;
 }
 
 .crumbEllipsis {
@@ -73,7 +73,7 @@
   height: 20px;
   align-items: center;
   justify-content: center;
-  color: #717680;
+  color: #717680 !important;
   font-family: "Jakarta", sans-serif;
   font-size: 14px;
   font-weight: 600;
@@ -82,7 +82,7 @@
   transition: color 0.15s ease;
 }
 .crumbItem:hover .crumbEllipsis {
-  color: #414651;
+  color: #414651 !important;
 }
 
 .separator {
@@ -139,26 +139,32 @@
   justify-content: center !important;
   cursor: pointer !important;
   line-height: 0 !important;
+  padding: 0 !important;
 }
 
 .text.root {
   gap: 8px;
 }
+.text .crumbItem .breadcrumbBtn,
+.text .crumbItem a {
+  color: #717680 !important;
+  padding: 0 !important;
+}
 .text .crumbItem.active .crumbLabel {
-  color: #175cd3;
+  color: #175cd3 !important;
   font-weight: 600;
 }
 .text .crumbItem.focused a,
 .text .crumbItem.focused .breadcrumbBtn {
-  outline: 2px solid #1570ef;
-  outline-offset: 2px;
-  border-radius: 6px;
+  outline: 2px solid #1570ef !important;
+  outline-offset: 2px !important;
+  border-radius: 6px !important;
 }
 .text .iconCrumbItem.focused a,
 .text .iconCrumbItem.focused .breadcrumbBtn {
-  outline: 2px solid #1570ef;
-  outline-offset: 2px;
-  border-radius: 1px;
+  outline: 2px solid #1570ef !important;
+  outline-offset: 2px !important;
+  border-radius: 6px !important;
 }
 
 .textWithLine.root {
@@ -177,27 +183,35 @@
 .textWithLine .crumbContent {
   border-radius: 6px;
 }
+.textWithLine .crumbItem .breadcrumbBtn,
+.textWithLine .crumbItem a {
+  color: #717680 !important;
+  padding: 0 !important;
+}
 .textWithLine .crumbItem.active .crumbLabel {
-  color: #175cd3;
+  color: #175cd3 !important;
   font-weight: 600;
 }
 .textWithLine .crumbItem.focused a,
 .textWithLine .crumbItem.focused .breadcrumbBtn {
-  outline: 2px solid #1570ef;
-  outline-offset: 2px;
-  border-radius: 6px;
+  outline: 2px solid #1570ef !important;
+  outline-offset: 2px !important;
+  border-radius: 6px !important;
 }
 .textWithLine .iconCrumbItem.focused a,
 .textWithLine .iconCrumbItem.focused .breadcrumbBtn {
-  outline: 2px solid #1570ef;
-  outline-offset: 2px;
-  border-radius: 3px;
+  outline: 2px solid #1570ef !important;
+  outline-offset: 2px !important;
+  border-radius: 3px !important;
 }
 
 .button.root {
   gap: 4px;
 }
 .button .breadcrumbBtn {
+  height: 28px !important;
+  min-width: 28px !important;
+  box-sizing: border-box !important;
   padding: 4px 8px !important;
   border-radius: 6px !important;
   transition: background 0.15s ease !important;
@@ -217,7 +231,7 @@
   justify-content: center !important;
 }
 .button .crumbLabel {
-  color: #717680;
+  color: #717680 !important;
   font-weight: 600;
 }
 .button .crumbItem:hover .breadcrumbBtn {
@@ -236,23 +250,25 @@
   color: #175cd3;
 }
 .button .crumbItem:hover .crumbLabel {
-  color: #414651;
+  color: #414651 !important;
 }
 .button .crumbItem.active .breadcrumbBtn {
   background: #fafafa !important;
+  padding: 4px 8px !important;
 }
 .button .crumbItem.active .iconCrumbWrapper {
   background: #fafafa;
 }
 .button .iconCrumbItem.active .breadcrumbBtn {
   background: transparent !important;
+  padding: 4px !important;
 }
 .button .crumbItem.active .crumbLabel {
-  color: #535862;
+  color: #535862 !important;
   font-weight: 600;
 }
 .button .crumbItem.active:hover .crumbLabel {
-  color: #535862;
+  color: #535862 !important;
 }
 .button .crumbItem:not(.iconCrumbItem).focused .breadcrumbBtn {
   outline: 2px solid #1570ef !important;
@@ -268,20 +284,20 @@
   background: #fafafa !important;
 }
 .button .iconCrumbItem.focused .iconCrumbWrapper {
-  outline: 2px solid #1570ef;
-  outline-offset: 2px;
-  border-radius: 8px;
-  box-shadow: none;
+  outline: 2px solid #1570ef !important;
+  outline-offset: 2px !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
 }
 .button .iconCrumbItem.focused .breadcrumbBtn {
   box-shadow: none !important;
   outline: none !important;
 }
 .button .iconCrumbItem.focused.active .iconCrumbWrapper {
-  outline: 2px solid #1570ef;
-  outline-offset: 2px;
-  border-radius: 8px;
-  box-shadow: none;
+  outline: 2px solid #1570ef !important;
+  outline-offset: 2px !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
   background: #fafafa;
 }
 .button .iconCrumbItem.focused.active .breadcrumbBtn {
