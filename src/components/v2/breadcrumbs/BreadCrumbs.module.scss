@@ -82,7 +82,7 @@ $font-family: 'Jakarta', sans-serif;
 	display: inline-flex;
 	align-items: center;
 	height: 20px;
-	color: $color-label-default;
+	color: $color-label-default !important;
 	font-family: $font-family;
 	font-size: 14px;
 	font-style: normal;
@@ -92,7 +92,7 @@ $font-family: 'Jakarta', sans-serif;
 	transition: color $transition-default;
 
 	.crumbItem:hover & {
-		color: $color-label-hover;
+		color: $color-label-hover !important;
 	}
 }
 
@@ -102,7 +102,7 @@ $font-family: 'Jakarta', sans-serif;
 	height: 20px;
 	align-items: center;
 	justify-content: center;
-	color: $color-label-default;
+	color: $color-label-default !important;
 	font-family: $font-family;
 	font-size: 14px;
 	font-weight: 600;
@@ -111,7 +111,7 @@ $font-family: 'Jakarta', sans-serif;
 	transition: color $transition-default;
 
 	.crumbItem:hover & {
-		color: $color-label-hover;
+		color: $color-label-hover !important;
 	}
 }
 
@@ -175,29 +175,35 @@ $font-family: 'Jakarta', sans-serif;
 	justify-content: center !important;
 	cursor: pointer !important;
 	line-height: 0 !important;
+	padding: 0 !important;
 }
 
 .text {
 	&.root {
 		gap: 8px;
 	}
+	.crumbItem .breadcrumbBtn,
+	.crumbItem a {
+		color: $color-label-default !important;
+		padding: 0 !important;
+	}
 
 	.crumbItem.active .crumbLabel {
-		color: $color-label-active;
+		color: $color-label-active !important;
 		font-weight: 600;
 	}
-
 	.crumbItem.focused a,
 	.crumbItem.focused .breadcrumbBtn {
-		outline: 2px solid $color-border-focus;
-		outline-offset: 2px;
-		border-radius: $border-radius-default;
+		outline: 2px solid $color-border-focus !important;
+		outline-offset: 2px !important;
+		border-radius: $border-radius-default !important;
 	}
+
 	.iconCrumbItem.focused a,
 	.iconCrumbItem.focused .breadcrumbBtn {
-		outline: 2px solid $color-border-focus;
-		outline-offset: 2px;
-		border-radius: 1px;
+		outline: 2px solid $color-border-focus !important;
+		outline-offset: 2px !important;
+		border-radius: $border-radius-default !important;
 	}
 }
 
@@ -219,21 +225,29 @@ $font-family: 'Jakarta', sans-serif;
 		border-radius: $border-radius-default;
 	}
 
+	.crumbItem .breadcrumbBtn,
+	.crumbItem a {
+		color: $color-label-default !important;
+		padding: 0 !important;
+	}
+
 	.crumbItem.active .crumbLabel {
-		color: $color-label-active;
+		color: $color-label-active !important;
 		font-weight: 600;
 	}
+
 	.crumbItem.focused a,
 	.crumbItem.focused .breadcrumbBtn {
-		outline: 2px solid $color-border-focus;
-		outline-offset: 2px;
-		border-radius: $border-radius-default;
+		outline: 2px solid $color-border-focus !important;
+		outline-offset: 2px !important;
+		border-radius: $border-radius-default !important;
 	}
+
 	.iconCrumbItem.focused a,
 	.iconCrumbItem.focused .breadcrumbBtn {
-		outline: 2px solid $color-border-focus;
-		outline-offset: 2px;
-		border-radius: 3px;
+		outline: 2px solid $color-border-focus !important;
+		outline-offset: 2px !important;
+		border-radius: 3px !important;
 	}
 }
 
@@ -241,7 +255,11 @@ $font-family: 'Jakarta', sans-serif;
 	&.root {
 		gap: 4px;
 	}
+
 	.breadcrumbBtn {
+		height: 28px !important;
+		min-width: 28px !important;
+		box-sizing: border-box !important;
 		padding: $spacing-xs $spacing-md !important;
 		border-radius: $border-radius-default !important;
 		transition: background $transition-default !important;
@@ -264,7 +282,7 @@ $font-family: 'Jakarta', sans-serif;
 	}
 
 	.crumbLabel {
-		color: $gray-500;
+		color: $gray-500 !important;
 		font-weight: 600;
 	}
 
@@ -289,11 +307,12 @@ $font-family: 'Jakarta', sans-serif;
 	}
 
 	.crumbItem:hover .crumbLabel {
-		color: $gray-700;
+		color: $gray-700 !important;
 	}
 
 	.crumbItem.active .breadcrumbBtn {
 		background: $color-bg-active-button !important;
+		padding: $spacing-xs $spacing-md !important;
 	}
 
 	.crumbItem.active .iconCrumbWrapper {
@@ -302,15 +321,16 @@ $font-family: 'Jakarta', sans-serif;
 
 	.iconCrumbItem.active .breadcrumbBtn {
 		background: transparent !important;
+		padding: 4px !important;
 	}
 
 	.crumbItem.active .crumbLabel {
-		color: $gray-600;
+		color: $gray-600 !important;
 		font-weight: 600;
 	}
 
 	.crumbItem.active:hover .crumbLabel {
-		color: $gray-600;
+		color: $gray-600 !important;
 	}
 
 	.crumbItem:not(.iconCrumbItem).focused .breadcrumbBtn {
@@ -327,11 +347,12 @@ $font-family: 'Jakarta', sans-serif;
 		box-shadow: none !important;
 		background: $color-bg-active-button !important;
 	}
+
 	.iconCrumbItem.focused .iconCrumbWrapper {
-		outline: 2px solid $color-border-focus;
-		outline-offset: 2px;
-		border-radius: 8px;
-		box-shadow: none;
+		outline: 2px solid $color-border-focus !important;
+		outline-offset: 2px !important;
+		border-radius: 8px !important;
+		box-shadow: none !important;
 	}
 
 	.iconCrumbItem.focused .breadcrumbBtn {
@@ -340,10 +361,10 @@ $font-family: 'Jakarta', sans-serif;
 	}
 
 	.iconCrumbItem.focused.active .iconCrumbWrapper {
-		outline: 2px solid $color-border-focus;
-		outline-offset: 2px;
-		border-radius: 8px;
-		box-shadow: none;
+		outline: 2px solid $color-border-focus !important;
+		outline-offset: 2px !important;
+		border-radius: 8px !important;
+		box-shadow: none !important;
 		background: $color-bg-active-button;
 	}
 
