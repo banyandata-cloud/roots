@@ -1,0 +1,43 @@
+.container {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: inherit;
+  color: inherit;
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+}
+
+.spinner {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 0, 0, 0.08); /* Faint placeholder track */
+  border-top-color: #2563EB; /* Primary branding blue */
+  animation: roots-inline-spin 0.85s linear infinite;
+}
+
+@keyframes roots-inline-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.successIcon, .errorIcon {
+  width: 16px;
+  height: 16px;
+}
+
+.text {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+}/*# sourceMappingURL=InlineLoader.module.css.map */

@@ -30,14 +30,10 @@ type LeftComponentType = React.ComponentType<LeftRightIconProps>;
 type RightComponentType = React.ComponentType<LeftRightIconProps>;
 
 interface AutocompleteOptions {
-	/** Decide when to open based on the current input */
 	predicate?: (input: string) => boolean;
 	open?: (input: string) => boolean;
-	/** Popover placement (kept broad to avoid coupling to the popper types) */
 	placement?: Placement;
-	/** Popover middleware options (library-specific) */
 	middlewareOptions?: MiddlewareOptions;
-	/** Renderer for the autocomplete content */
 	render?: React.ComponentType<{
 		name?: string | undefined;
 		value?: string | number | undefined;
@@ -66,15 +62,15 @@ export interface TextFieldProps {
 	RightComponent?: RightComponentType;
 	className?: string | undefined;
 	disabled?: boolean;
-	/** Extra HTML attributes to forward to the input/textarea */
 	inputProps?:
 		| React.InputHTMLAttributes<HTMLInputElement>
 		| React.TextareaHTMLAttributes<HTMLTextAreaElement>;
 	feedback?: Feedback | undefined;
 	maxLength?: number;
 	onKeyDown?: (event: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
-	/** Whether to enable autocomplete popover */
 	autocompleteOptions?: AutocompleteOptions | undefined;
+	/** When true, only the raw input/textarea is returned without wrappers or labels */
+	unstyled?: boolean;
 }
 
 const TextField = forwardRef<HTMLInputElement | HTMLTextAreaElement, TextFieldProps>(
@@ -102,6 +98,7 @@ const TextField = forwardRef<HTMLInputElement | HTMLTextAreaElement, TextFieldPr
 			maxLength,
 			onKeyDown,
 			autocompleteOptions,
+			unstyled = false,
 		} = props;
 
 		const { current: isControlled } = useRef<boolean>(value !== undefined);
@@ -237,12 +234,10 @@ const TextField = forwardRef<HTMLInputElement | HTMLTextAreaElement, TextFieldPr
 			]),
 			value: inputValue,
 			onChange: handleChange,
-			className: classes(styles[size], styles.input, feedback?.error ? styles.error : ''),
-			...(typeof maxLength === 'number'
-				? {
-						maxLength,
-					}
-				: {}),
+			className: unstyled
+				? classes(styles.unstyled, className)
+				: classes(styles[size], styles.input, feedback?.error ? styles.error : ''),
+			...(typeof maxLength === 'number' ? { maxLength } : {}),
 		};
 
 		const Input =
@@ -258,6 +253,12 @@ const TextField = forwardRef<HTMLInputElement | HTMLTextAreaElement, TextFieldPr
 						...(inputProps as React.InputHTMLAttributes<HTMLInputElement>),
 					});
 
+		// ── Unstyled Return Path ─────────────────────────────────────────────
+		if (unstyled) {
+			return Input;
+		}
+
+		// ── Standard Return Path ─────────────────────────────────────────────
 		const AutocompletePopover = autocompleteOptions?.render;
 
 		return (

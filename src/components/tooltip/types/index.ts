@@ -53,4 +53,9 @@ export interface TooltipProps {
 	 * Whether to show a pointer (arrow) on the tooltip.
 	 */
 	showPointer?: boolean;
+
+	/**
+	 * Enables interactive hover behavior so users can move from trigger to tooltip content before it closes.
+	 */
+	clickOutsideToClose?: boolean;
 }

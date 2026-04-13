@@ -78,4 +78,28 @@
 .wrapper .size-lg .icon {
   width: 20px;
   height: 20px;
+}
+
+.unstyled {
+  all: unset;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  color: inherit;
+  font: inherit;
+}
+.unstyled:focus-visible {
+  outline: none;
+}
+.unstyled:disabled {
+  opacity: 0.25;
+  pointer-events: none;
+  cursor: not-allowed;
 }/*# sourceMappingURL=Link.module.css.map */

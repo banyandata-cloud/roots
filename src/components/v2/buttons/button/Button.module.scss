@@ -188,6 +188,7 @@ button.root[data-elem='base-cell'] {
 			0 2px 5px 0 rgba(103, 110, 118, 0.08),
 			0 0 0 1px rgba(103, 110, 118, 0.16),
 			0 1px 1px 0 rgba(0, 0, 0, 0.12);
+
 		&:hover:not(:disabled) {
 			background: #fafafa;
 			box-shadow: $shadow-hover-secondary;
@@ -282,6 +283,7 @@ button.root[data-elem='base-cell'] {
 			}
 		}
 	}
+
 	&:disabled {
 		transition:
 			background-color $duration-moderate-01 $ease-standard,
@@ -292,6 +294,7 @@ button.root[data-elem='base-cell'] {
 		color: #a4a7ae;
 		cursor: not-allowed;
 		box-shadow: none;
+
 		[data-elem='title'],
 		svg {
 			opacity: 0.6;
@@ -300,6 +303,24 @@ button.root[data-elem='base-cell'] {
 
 	@media (prefers-reduced-motion: reduce) {
 		transition: none !important;
+	}
+	&.unstyled {
+		all: unset !important;
+		display: inline-flex !important;
+		align-items: center !important;
+		cursor: pointer !important;
+		background: transparent !important;
+		padding: 4px !important;
+		margin: 0 !important;
+		border: none !important;
+		box-shadow: none !important;
+		border-radius: 4px !important;
+		height: auto !important;
+		width: auto !important;
+		min-width: unset !important;
+		font: inherit !important;
+		color: inherit !important;
+		outline: none !important;
 	}
 }
 

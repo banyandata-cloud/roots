@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 import ThemedContainer from '../../helpers/themedContainer/ThemedContainer';
-import AccordionDoc from '../accordion/Story/AccordionDoc'; // Import the doc component you created
+import AccordionDoc from '../accordion/Story/AccordionDoc';
 import Accordion from './Accordion';
 
 const meta: Meta<typeof Accordion> = {
@@ -10,7 +10,7 @@ const meta: Meta<typeof Accordion> = {
 	tags: ['autodocs'],
 	parameters: {
 		docs: {
-			page: AccordionDoc, // This links the Doc component to the Docs tab
+			page: AccordionDoc,
 		},
 		layout: 'padded',
 		options: { showToolbar: true },
@@ -34,48 +34,70 @@ const sectionStyle = {
 	gap: '8px',
 };
 
-const TemplateStory = (args: React.ComponentProps<typeof Accordion>) => {
+const headingStyle = {
+	fontSize: '14px',
+	fontWeight: 600,
+	color: '#6B7280',
+	textTransform: 'uppercase' as const,
+	letterSpacing: '0.05em',
+	margin: '0 0 8px 0',
+};
+
+const sectionWrapperStyle = {
+	display: 'flex',
+	flexDirection: 'column' as const,
+	gap: '24px',
+};
+
+const AllVariants = (args: React.ComponentProps<typeof Accordion>) => {
 	return (
-		<div style={sectionStyle}>
-			{[...Array(4).keys()].map((key) => {
-				return <Accordion key={key} {...args} />;
-			})}
+		<div style={sectionWrapperStyle}>
+			<div>
+				<p style={headingStyle}>Default</p>
+				<div style={sectionStyle}>
+					{[...Array(4).keys()].map((key) => (
+						<Accordion key={key} {...args} />
+					))}
+				</div>
+			</div>
+
+			<div>
+				<p style={headingStyle}>Disabled</p>
+				<div style={sectionStyle}>
+					{[...Array(4).keys()].map((key) => (
+						<Accordion
+							key={key}
+							{...args}
+							title='Disabled Accordion'
+							description='This content is hidden by default and the accordion cannot be interacted with.'
+							defaultOpen={false}
+							disabled={true}
+						/>
+					))}
+				</div>
+			</div>
+
+			<div>
+				<p style={headingStyle}>Nested</p>
+				<Accordion title='Parent' description='This is the parent description'>
+					<Accordion
+						title='Child'
+						description='This is the child description'
+						onExpand={() => {}}
+					/>
+				</Accordion>
+			</div>
 		</div>
 	);
 };
 
-export const Default: Story = {
-	name: 'Default',
-	render: (args) => <TemplateStory {...args} />,
+export const All: Story = {
+	name: 'All Variants',
+	render: (args) => <AllVariants {...args} />,
 	args: {
 		title: 'Click to Expand',
 		description:
 			"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
 		defaultOpen: false,
 	},
-};
-
-export const Disabled: Story = {
-	name: 'Disabled',
-	render: (args) => <TemplateStory {...args} />,
-	args: {
-		title: 'Disabled Accordion',
-		description:
-			'This content is hidden by default and the accordion cannot be interacted with.',
-		defaultOpen: false,
-		disabled: true,
-	},
-};
-
-export const Nested: Story = {
-	name: 'Nested',
-	render: () => (
-		<Accordion title='Parent' description='This is the parent description'>
-			<Accordion
-				title='Child'
-				description='This is the child description'
-				onExpand={() => {}}
-			/>
-		</Accordion>
-	),
 };

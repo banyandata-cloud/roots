@@ -7,6 +7,15 @@ jest.mock('../popper', () => ({
 
 //    MOCK floating-ui with internal open state
 let mockOpen = false;
+const mockUseHover = jest.fn(() => ({
+	props: {
+		onMouseEnter: () => (mockOpen = true),
+		onMouseLeave: () => (mockOpen = false),
+	},
+}));
+const mockSafePolygon = jest.fn(() => jest.fn());
+const mockUseFocus = jest.fn(() => ({ props: {} }));
+const mockUseDismiss = jest.fn(() => ({ props: {} }));
 
 jest.mock('@floating-ui/react-dom-interactions', () => {
 	return {
@@ -30,15 +39,11 @@ jest.mock('@floating-ui/react-dom-interactions', () => {
 			},
 		}),
 
-		useHover: () => ({
-			props: {
-				onMouseEnter: () => (mockOpen = true),
-				onMouseLeave: () => (mockOpen = false),
-			},
-		}),
+		useHover: (...args: any[]) => mockUseHover(...args),
+		safePolygon: (...args: any[]) => mockSafePolygon(...args),
 
-		useFocus: () => ({ props: {} }),
-		useDismiss: () => ({ props: {} }),
+		useFocus: (...args: any[]) => mockUseFocus(...args),
+		useDismiss: (...args: any[]) => mockUseDismiss(...args),
 		useRole: () => ({ props: {} }),
 
 		useInteractions: () => ({
@@ -52,6 +57,9 @@ jest.mock('@floating-ui/react-dom-interactions', () => {
 describe('Tooltip — Rendering & Basic Behaviour', () => {
 	beforeEach(() => {
 		mockOpen = false;
+		mockUseHover.mockClear();
+		mockUseFocus.mockClear();
+		mockUseDismiss.mockClear();
 	});
 
 	test('renders the child component', () => {
@@ -82,6 +90,9 @@ describe('Tooltip — Rendering & Basic Behaviour', () => {
 describe('Tooltip — Behaviour With Extended Props', () => {
 	beforeEach(() => {
 		mockOpen = false;
+		mockUseHover.mockClear();
+		mockUseFocus.mockClear();
+		mockUseDismiss.mockClear();
 	});
 
 	test('shows pointer arrow when enabled', () => {
@@ -118,12 +129,43 @@ describe('Tooltip — Behaviour With Extended Props', () => {
 		const tooltip = screen.getByTestId('popper').firstElementChild!;
 		expect(tooltip.className).toContain('light');
 	});
+
+	test('uses outside click close mode when clickOutsideToClose is true', () => {
+		render(
+			<Tooltip content='Info' clickOutsideToClose>
+				<div data-testid='child'>Hover</div>
+			</Tooltip>
+		);
+
+		expect(mockUseHover).toHaveBeenCalledWith(
+			expect.anything(),
+			expect.objectContaining({
+				move: true,
+				handleClose: expect.any(Function),
+			})
+		);
+		expect(mockUseFocus).toHaveBeenCalledWith(
+			expect.anything(),
+			expect.objectContaining({
+				enabled: false,
+			})
+		);
+		expect(mockUseDismiss).toHaveBeenCalledWith(
+			expect.anything(),
+			expect.objectContaining({
+				escapeKey: false,
+			})
+		);
+	});
 });
 
 //  RISKY PATH
 describe('Tooltip — Edge Case Handling', () => {
 	beforeEach(() => {
 		mockOpen = false;
+		mockUseHover.mockClear();
+		mockUseFocus.mockClear();
+		mockUseDismiss.mockClear();
 	});
 
 	test('does not render tooltip body when content=null', () => {
@@ -164,6 +206,9 @@ describe('Tooltip — Edge Case Handling', () => {
 describe('Tooltip — Snapshot Rendering', () => {
 	beforeEach(() => {
 		mockOpen = false;
+		mockUseHover.mockClear();
+		mockUseFocus.mockClear();
+		mockUseDismiss.mockClear();
 	});
 
 	test('default snapshot', () => {

@@ -1,5 +1,5 @@
 import { Heading, Source, Subheading, Subtitle, Title } from '@storybook/addon-docs/blocks';
-import { LinkHeader, PropsTable } from '../../../../components/docs';
+import { LinkHeader, PropsTable } from '../../../docs';
 
 const BASIC_USAGE_CODE = `
 import { Stepper } from '@banyan_cloud/roots';

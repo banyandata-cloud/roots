@@ -1,25 +1,33 @@
 {
 	"name": "@banyan_cloud/roots",
-	"version": "2.0.62",
+	"version": "2.0.66",
 	"description": "Design System Library which drives the Banyan Cloud products",
 	"main": "dist/cjs/index.js",
 	"module": "dist/esm/index.js",
-	"types": "dist/esm/src/index.d.ts",
+	"types": "dist/esm/index.d.ts",
+	"typesVersions": {
+		"*": {
+			"v2": [
+				"v2/index.d.ts"
+			]
+		}
+	},
 	"exports": {
 		".": {
 			"import": "./dist/esm/index.js",
 			"require": "./dist/cjs/index.js",
-			"types": "./dist/esm/src/index.d.ts"
+			"types": "./dist/esm/index.d.ts"
 		},
 		"./v2": {
-			"import": "./dist/esm/v2/index.js",
-			"require": "./dist/cjs/v2/index.js",
-			"types": "./dist/esm/src/components/v2/index.d.ts"
+			"import": "./v2/index.esm.js",
+			"require": "./v2/index.js",
+			"types": "./v2/index.d.ts"
 		}
 	},
 	"files": [
 		"dist",
-		"src/styles"
+		"src/styles",
+		"v2"
 	],
 	"publishConfig": {
 		"registry": "https://registry.npmjs.org"

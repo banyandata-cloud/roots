@@ -17,7 +17,7 @@ const MyComponent = () => {
     >
       <div>This is the internal content of the accordion.</div>
     </Accordion>
-  );
+  ); 
 };
 `;
 
@@ -99,7 +99,7 @@ const AccordionDoc = () => (
 		</Subtitle>
 		<LinkHeader
 			figmaLink='https://www.figma.com/design/IfmLQrA0AAZVYwt6vRxqCe/Design-System--26?node-id=144-45&p=f&m=dev'
-			githubLink='https://github.com/banyandata-cloud/aerials/tree/main/src/components/v2/Accordion/Accordion.tsx'
+			githubLink='https://github.com/banyandata-cloud/roots/tree/main/src/components/accordion'
 		/>
 		<Heading>API</Heading>
 		<p>

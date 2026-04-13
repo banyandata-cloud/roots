@@ -1,0 +1,397 @@
+$gray-500: #717680;
+$gray-600: #535862;
+$gray-700: #414651;
+$brand-600: #1570ef;
+$brand-700: #175cd3;
+
+$color-label-default: $gray-500;
+$color-label-hover: $gray-700;
+$color-label-active: $brand-700;
+
+$color-border-secondary: #e9eaeb;
+$color-border-focus: #1570ef;
+
+$color-bg-hover-button: #fafafa;
+$color-bg-active-button: #fafafa;
+
+$color-dropdown-bg: #ffffff;
+$color-dropdown-border: #e4e7ec;
+$color-dropdown-label: #344054;
+$color-dropdown-label-hover: $brand-600;
+$color-dropdown-item-hover-bg: #f9fafb;
+
+$transition-default: 0.15s ease;
+$border-radius-default: 6px;
+$border-radius-dropdown: 8px;
+$spacing-xs: 4px;
+$spacing-md: 8px;
+$font-family: 'Jakarta', sans-serif;
+
+.inlineWrapper {
+	display: inline-flex;
+	width: fit-content;
+}
+
+.root {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	position: relative;
+	outline: none;
+	box-sizing: border-box;
+	overflow: visible;
+	width: fit-content;
+}
+
+.crumbItem {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	position: relative;
+	cursor: pointer;
+	user-select: none;
+	outline: none;
+
+	&.disabled {
+		pointer-events: none;
+		opacity: 0.4;
+		cursor: not-allowed;
+	}
+}
+
+.focusTarget {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: $border-radius-default;
+}
+
+.crumbContent {
+	display: inline-flex;
+	align-items: center;
+	gap: $spacing-md;
+	padding: 0;
+	border-radius: $border-radius-default;
+	box-sizing: border-box;
+	transition:
+		background $transition-default,
+		color $transition-default;
+}
+
+.crumbLabel {
+	display: inline-flex;
+	align-items: center;
+	height: 20px;
+	color: $color-label-default;
+	font-family: $font-family;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 20px;
+	white-space: nowrap;
+	transition: color $transition-default;
+
+	.crumbItem:hover & {
+		color: $color-label-hover;
+	}
+}
+
+.crumbEllipsis {
+	display: inline-flex;
+	width: 15px;
+	height: 20px;
+	align-items: center;
+	justify-content: center;
+	color: $color-label-default;
+	font-family: $font-family;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 20px;
+	white-space: nowrap;
+	transition: color $transition-default;
+
+	.crumbItem:hover & {
+		color: $color-label-hover;
+	}
+}
+
+.separator {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	margin: 0;
+}
+
+.iconWrapper {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	width: 20px;
+	height: 20px;
+	line-height: 0;
+	color: $color-label-default;
+	transition: color $transition-default;
+
+	.crumbItem:hover & {
+		color: $color-label-hover;
+	}
+
+	.crumbItem.active & {
+		color: $color-label-active;
+	}
+}
+
+.iconCrumbWrapper {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: $border-radius-default;
+	transition:
+		background $transition-default,
+		color $transition-default;
+	cursor: pointer;
+	color: $color-label-default;
+
+	.crumbItem:hover & {
+		color: $color-label-hover;
+	}
+
+	.crumbItem.active & {
+		color: $color-label-active;
+	}
+}
+
+.dropdownWrapper {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+}
+
+.breadcrumbBtn {
+	display: inline-flex !important;
+	align-items: center !important;
+	justify-content: center !important;
+	cursor: pointer !important;
+	line-height: 0 !important;
+}
+
+.text {
+	&.root {
+		gap: 8px;
+	}
+
+	.crumbItem.active .crumbLabel {
+		color: $color-label-active;
+		font-weight: 600;
+	}
+
+	.crumbItem.focused a,
+	.crumbItem.focused .breadcrumbBtn {
+		outline: 2px solid $color-border-focus;
+		outline-offset: 2px;
+		border-radius: $border-radius-default;
+	}
+	.iconCrumbItem.focused a,
+	.iconCrumbItem.focused .breadcrumbBtn {
+		outline: 2px solid $color-border-focus;
+		outline-offset: 2px;
+		border-radius: 1px;
+	}
+}
+
+.textWithLine.root {
+	height: 36px;
+	padding: 0 $spacing-md;
+	gap: $spacing-md;
+	border-top: 1px solid $color-border-secondary;
+	border-bottom: 1px solid $color-border-secondary;
+	width: fit-content;
+}
+
+.textWithLine {
+	.crumbItem {
+		align-self: center;
+	}
+
+	.crumbContent {
+		border-radius: $border-radius-default;
+	}
+
+	.crumbItem.active .crumbLabel {
+		color: $color-label-active;
+		font-weight: 600;
+	}
+	.crumbItem.focused a,
+	.crumbItem.focused .breadcrumbBtn {
+		outline: 2px solid $color-border-focus;
+		outline-offset: 2px;
+		border-radius: $border-radius-default;
+	}
+	.iconCrumbItem.focused a,
+	.iconCrumbItem.focused .breadcrumbBtn {
+		outline: 2px solid $color-border-focus;
+		outline-offset: 2px;
+		border-radius: 3px;
+	}
+}
+
+.button {
+	&.root {
+		gap: 4px;
+	}
+	.breadcrumbBtn {
+		padding: $spacing-xs $spacing-md !important;
+		border-radius: $border-radius-default !important;
+		transition: background $transition-default !important;
+	}
+
+	.iconCrumbWrapper {
+		width: 28px;
+		height: 28px;
+	}
+
+	.iconCrumbItem .iconCrumbWrapper .breadcrumbBtn {
+		width: 28px !important;
+		height: 28px !important;
+		padding: 4px !important;
+		margin: 0 !important;
+		border-radius: $border-radius-default !important;
+		display: inline-flex !important;
+		align-items: center !important;
+		justify-content: center !important;
+	}
+
+	.crumbLabel {
+		color: $gray-500;
+		font-weight: 600;
+	}
+
+	.crumbItem:hover .breadcrumbBtn {
+		background: $color-bg-hover-button !important;
+	}
+
+	.crumbItem:hover .iconCrumbWrapper {
+		background: $color-bg-hover-button;
+	}
+
+	.iconCrumbItem:hover .breadcrumbBtn {
+		background: transparent !important;
+	}
+
+	.iconCrumbItem:hover .iconCrumbWrapper {
+		color: $color-label-hover;
+	}
+
+	.iconCrumbItem.active .iconCrumbWrapper {
+		color: $color-label-active;
+	}
+
+	.crumbItem:hover .crumbLabel {
+		color: $gray-700;
+	}
+
+	.crumbItem.active .breadcrumbBtn {
+		background: $color-bg-active-button !important;
+	}
+
+	.crumbItem.active .iconCrumbWrapper {
+		background: $color-bg-active-button;
+	}
+
+	.iconCrumbItem.active .breadcrumbBtn {
+		background: transparent !important;
+	}
+
+	.crumbItem.active .crumbLabel {
+		color: $gray-600;
+		font-weight: 600;
+	}
+
+	.crumbItem.active:hover .crumbLabel {
+		color: $gray-600;
+	}
+
+	.crumbItem:not(.iconCrumbItem).focused .breadcrumbBtn {
+		outline: 2px solid $color-border-focus !important;
+		outline-offset: 2px !important;
+		border-radius: $border-radius-default !important;
+		box-shadow: none !important;
+	}
+
+	.crumbItem:not(.iconCrumbItem).focused.active .breadcrumbBtn {
+		outline: 2px solid $color-border-focus !important;
+		outline-offset: 2px !important;
+		border-radius: $border-radius-default !important;
+		box-shadow: none !important;
+		background: $color-bg-active-button !important;
+	}
+	.iconCrumbItem.focused .iconCrumbWrapper {
+		outline: 2px solid $color-border-focus;
+		outline-offset: 2px;
+		border-radius: 8px;
+		box-shadow: none;
+	}
+
+	.iconCrumbItem.focused .breadcrumbBtn {
+		box-shadow: none !important;
+		outline: none !important;
+	}
+
+	.iconCrumbItem.focused.active .iconCrumbWrapper {
+		outline: 2px solid $color-border-focus;
+		outline-offset: 2px;
+		border-radius: 8px;
+		box-shadow: none;
+		background: $color-bg-active-button;
+	}
+
+	.iconCrumbItem.focused.active .breadcrumbBtn {
+		box-shadow: none !important;
+		outline: none !important;
+	}
+}
+
+.dropdown {
+	position: fixed;
+	z-index: 9999;
+	background: $color-dropdown-bg;
+	border: 1px solid $color-dropdown-border;
+	border-radius: $border-radius-dropdown;
+	box-shadow: 0px 8px 24px rgba(16, 24, 40, 0.12);
+	min-width: 180px;
+	padding: 6px 0;
+	animation: dropdownIn 0.15s ease;
+
+	@keyframes dropdownIn {
+		from {
+			opacity: 0;
+			transform: translateY(-6px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+}
+
+.dropdownItem {
+	display: flex;
+	align-items: center;
+	padding: 10px 16px;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 20px;
+	color: $color-dropdown-label;
+	cursor: pointer;
+	white-space: nowrap;
+	transition:
+		background $transition-default,
+		color $transition-default;
+
+	&:hover {
+		background: $color-dropdown-item-hover-bg;
+		color: $color-dropdown-label-hover;
+	}
+}

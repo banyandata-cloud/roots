@@ -1,0 +1,126 @@
+$sizes: (
+	sm: (
+		padding-v: 2px,
+		padding-h: 8px,
+		gap: 4px,
+		font-size: 12px,
+		line-height: 18px,
+		icon-padding-reduction: 4px,
+		plus-padding: 5px,
+	),
+	md: (
+		padding-v: 2px,
+		padding-h: 10px,
+		gap: 4px,
+		font-size: 14px,
+		line-height: 20px,
+		icon-padding-reduction: 4px,
+		plus-padding: 6px,
+	),
+	lg: (
+		padding-v: 4px,
+		padding-h: 12px,
+		gap: 4px,
+		font-size: 14px,
+		line-height: 20px,
+		icon-padding-reduction: 4px,
+		plus-padding: 8px,
+	),
+);
+
+.badge {
+	display: inline-flex;
+	align-items: center;
+	box-sizing: border-box;
+	white-space: nowrap;
+	border: 1px solid transparent;
+	font-family:
+		Jakarta Sans,
+		sans-serif;
+
+	&__icon {
+		display: block;
+		flex-shrink: 0;
+	}
+	&__label {
+		display: inline-block;
+		font-weight: 500;
+		font-family: inherit;
+	}
+	&__closer {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+		padding: 0;
+		background: transparent;
+		border: none;
+		cursor: pointer;
+		color: inherit;
+		opacity: 0.45;
+		transition: opacity 0.15s ease;
+
+		&:hover {
+			opacity: 1;
+		}
+
+		&:focus-visible {
+			outline: 2px solid currentColor;
+			outline-offset: 1px;
+			border-radius: 2px;
+		}
+	}
+	@each $size, $map in $sizes {
+		&--#{$size} {
+			padding: map-get($map, padding-v) map-get($map, padding-h);
+			gap: map-get($map, gap);
+
+			.badge__label {
+				font-size: map-get($map, font-size);
+				line-height: map-get($map, line-height);
+			}
+
+			&.badge--has-dot {
+				padding-left: calc(
+					map-get($map, padding-h) - map-get($map, icon-padding-reduction)
+				);
+			}
+			&.badge--has-up-arrow {
+				padding-left: calc(
+					map-get($map, padding-h) - map-get($map, icon-padding-reduction)
+				);
+			}
+
+			&.badge--has-arrow {
+				padding-right: calc(
+					map-get($map, padding-h) - map-get($map, icon-padding-reduction)
+				);
+			}
+			&.badge--has-plus {
+				padding: map-get($map, plus-padding);
+			}
+		}
+	}
+
+	&--pill {
+		border-radius: 999px;
+		background-color: #f2f4f7;
+		border-color: #d0d5dd;
+		color: #414651;
+	}
+
+	&--badge {
+		border-radius: 6px;
+		background-color: #f2f4f7;
+		border-color: #d0d5dd;
+		color: #414651;
+	}
+
+	&--modern {
+		border-radius: 6px;
+		background-color: #ffffff;
+		border-color: #d0d5dd;
+		box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
+		color: #344054;
+	}
+}
