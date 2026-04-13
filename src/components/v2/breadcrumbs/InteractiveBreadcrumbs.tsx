@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo, useState } from 'react';
-import { ThemedContainer } from '../../helpers';
+import ThemedContainer from '../../helpers/themedContainer/ThemedContainer';
 import Button from '../../v2/buttons/button/Button';
 import Breadcrumbs from './Breadcrumbs';
 import type { BreadcrumbItem, BreadcrumbType } from './types';
@@ -62,39 +62,34 @@ const findNode = (nodes: NavigationNode[], id: string): NavigationNode | undefin
 const InteractiveBreadcrumbs: React.FC<Props> = ({ type = 'text' }) => {
 	const [path, setPath] = useState<string[]>(['home']);
 
-	// FIX: Removed `path` from the dependency array. The updater form `prevPath => ...`
-	// already gives us the latest path, so including `path` caused stale closures
-	// and needless re-creation of this callback on every path change.
-	const handleChildSelect = useCallback((childId: string, parentIndex: number) => {
-		setPath((prevPath) => [...prevPath.slice(0, parentIndex + 1), childId]);
-	}, []);
+	const handleChildSelect = useCallback(
+		(childId: string, parentIndex: number) => {
+			const nextPath = [...path.slice(0, parentIndex + 1), childId];
+			setPath(nextPath);
+		},
+		[path]
+	);
 
 	const crumbs: BreadcrumbItem[] = useMemo(() => {
-		return path
-			.map((nodeId, index) => {
-				const node = findNode(NAVIGATION_TREE, nodeId);
+		return path.map((nodeId, index) => {
+			const node = findNode(NAVIGATION_TREE, nodeId)!;
+			const isLast = index === path.length - 1;
 
-				// Guard against a node not being found (e.g. stale path after tree changes)
-				if (!node) return null;
+			return {
+				id: node.id,
+				label: node.label,
 
-				const isLast = index === path.length - 1;
+				onClick: !isLast ? () => setPath(path.slice(0, index + 1)) : undefined,
 
-				return {
-					id: node.id,
-					label: node.label,
-					// Non-last crumbs navigate back to that point in the path on click
-					onClick: !isLast ? () => setPath(path.slice(0, index + 1)) : undefined,
-					// FIX: Show dropdown on ALL crumbs that have children — including the
-					// last crumb. The last crumb omits onClick (no self-navigation) but
-					// should still expose its children for forward navigation via dropdown.
-					dropdownOptions: node.children?.map((child) => ({
-						label: child.label,
-						value: child.id,
-						onClick: () => handleChildSelect(child.id, index),
-					})),
-				};
-			})
-			.filter((crumb): crumb is BreadcrumbItem => crumb !== null);
+				dropdownOptions: !isLast
+					? node.children?.map((child) => ({
+							label: child.label,
+							value: child.id,
+							onClick: () => handleChildSelect(child.id, index),
+						}))
+					: undefined,
+			};
+		});
 	}, [path, handleChildSelect]);
 
 	const handleNext = useCallback(() => {
@@ -107,16 +102,13 @@ const InteractiveBreadcrumbs: React.FC<Props> = ({ type = 'text' }) => {
 		const nextChild = lastNode.children[0];
 		if (!nextChild) return;
 
-		setPath((prev) => [...prev, nextChild.id]);
+		setPath([...path, nextChild.id]);
 	}, [path]);
 
 	const handlePrevious = useCallback(() => {
 		if (path.length === 1) return;
-		setPath((prev) => prev.slice(0, -1));
+		setPath(path.slice(0, -1));
 	}, [path]);
-
-	const lastId = path[path.length - 1];
-	const lastNode = lastId ? findNode(NAVIGATION_TREE, lastId) : undefined;
 
 	return (
 		<ThemedContainer theme='light'>
@@ -141,7 +133,10 @@ const InteractiveBreadcrumbs: React.FC<Props> = ({ type = 'text' }) => {
 						title='Next'
 						variant='primary'
 						size='sm'
-						disabled={!lastNode?.children?.length}
+						disabled={
+							!findNode(NAVIGATION_TREE, path[path.length - 1] ?? '')?.children
+								?.length
+						}
 						onClick={handleNext}
 						type='button'
 					/>

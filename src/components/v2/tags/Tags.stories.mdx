@@ -1,0 +1,1335 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ThemedContainer } from '../../helpers';
+import Tag from '../../v2/tags/Tags';
+
+<Meta title='Components/v2/Tag' parameters={{ options: { showToolbar: true } }} />
+
+# Tag
+
+A lightweight label component used to categorize or highlight content. Supports three sizes — `sm`, `md`, and `lg`.
+
+#### Design - [Figma](https://www.figma.com/file/e9opoAtQHBo4vFd6u0Co98/Component-Library) | Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/components/v2/tag)
+
+## Usage
+
+```js
+import { Tag } from '@banyan_cloud/roots';
+```
+
+## Stories
+
+### Default
+
+<Canvas>
+	<Story name='Default'>
+		{() => (
+			<ThemedContainer theme='light'>
+				<div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							sm
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag size='sm' label='Label' />
+						</div>
+					</div>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							md
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag size='md' label='Label' />
+						</div>
+					</div>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							lg
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag size='lg' label='Label' />
+						</div>
+					</div>
+				</div>
+			</ThemedContainer>
+		)}
+	</Story>
+</Canvas>
+
+### Default with Closer
+
+<Canvas>
+	<Story name='Default with Closer'>
+		{() => (
+			<ThemedContainer theme='light'>
+				<div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							sm
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag size='sm' label='Label' closable />
+						</div>
+					</div>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							md
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag size='md' label='Label' closable />
+						</div>
+					</div>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							lg
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag size='lg' label='Label' closable />
+						</div>
+					</div>
+				</div>
+			</ThemedContainer>
+		)}
+	</Story>
+</Canvas>
+
+### Text Field
+
+<Canvas>
+	<Story name='Text Field'>
+		{() => {
+			const [valSm, setValSm] = React.useState('');
+			const [valMd, setValMd] = React.useState('');
+			const [valLg, setValLg] = React.useState('');
+			return (
+				<ThemedContainer theme='light'>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+						<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+							<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+								sm
+							</span>
+							<Tag
+								size='sm'
+								label='Label:'
+								textField
+								inputValue={valSm}
+								onInputChange={setValSm}
+							/>
+						</div>
+						<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+							<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+								md
+							</span>
+							<Tag
+								size='md'
+								label='Label:'
+								textField
+								inputValue={valMd}
+								onInputChange={setValMd}
+							/>
+						</div>
+						<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+							<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+								lg
+							</span>
+							<Tag
+								size='lg'
+								label='Label:'
+								textField
+								inputValue={valLg}
+								onInputChange={setValLg}
+							/>
+						</div>
+					</div>
+				</ThemedContainer>
+			);
+		}}
+	</Story>
+</Canvas>
+
+### Count
+
+Renders a label alongside a count badge. No indicator, no checkbox.
+
+<Canvas>
+	<Story name='Count'>
+		{() => (
+			<ThemedContainer theme='light'>
+				<div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							sm
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag size='sm' label='Label' onlyCount count={5} />
+						</div>
+					</div>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							md
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag size='md' label='Label' onlyCount count={5} />
+						</div>
+					</div>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							lg
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag size='lg' label='Label' onlyCount count={5} />
+						</div>
+					</div>
+				</div>
+			</ThemedContainer>
+		)}
+	</Story>
+</Canvas>
+
+### Checkbox
+
+<Canvas>
+	<Story name='Checkbox'>
+		{() => (
+			<ThemedContainer theme='light'>
+				<div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							sm
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag size='sm' label='Label' checkbox />
+						</div>
+					</div>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							md
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag size='md' label='Label' checkbox />
+						</div>
+					</div>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							lg
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag size='lg' label='Label' checkbox />
+						</div>
+					</div>
+				</div>
+			</ThemedContainer>
+		)}
+	</Story>
+</Canvas>
+
+### Checkbox with Closer
+
+Renders a checkbox, the label, and a close icon. Mirrors the layout of `checkbox + closable` but uses the dedicated `checkboxCloser` prop for explicit intent.
+
+<Canvas>
+	<Story name='Checkbox with Closer'>
+		{() => (
+			<ThemedContainer theme='light'>
+				<div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							sm
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag size='sm' label='Label' checkboxCloser />
+						</div>
+					</div>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							md
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag size='md' label='Label' checkboxCloser />
+						</div>
+					</div>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							lg
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag size='lg' label='Label' checkboxCloser />
+						</div>
+					</div>
+				</div>
+			</ThemedContainer>
+		)}
+	</Story>
+</Canvas>
+
+### Checkbox with Count
+
+Renders a checkbox, the label, and a count badge. Mirrors `checkboxIndicatorCount` but without the indicator dot.
+
+<Canvas>
+	<Story name='Checkbox with Count'>
+		{() => (
+			<ThemedContainer theme='light'>
+				<div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							sm
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag size='sm' label='Label' checkboxCount count={5} />
+						</div>
+					</div>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							md
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag size='md' label='Label' checkboxCount count={5} />
+						</div>
+					</div>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							lg
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag size='lg' label='Label' checkboxCount count={5} />
+						</div>
+					</div>
+				</div>
+			</ThemedContainer>
+		)}
+	</Story>
+</Canvas>
+
+### Logo
+
+Renders a logo alongside the label.
+
+<Canvas>
+	<Story name='Logo'>
+		{() => (
+			<ThemedContainer theme='light'>
+				<div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							sm
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag size='sm' label='Label' logo />
+						</div>
+					</div>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							md
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag size='md' label='Label' logo />
+						</div>
+					</div>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							lg
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag size='lg' label='Label' logo />
+						</div>
+					</div>
+				</div>
+			</ThemedContainer>
+		)}
+	</Story>
+</Canvas>
+
+### Logo with Closer
+
+Renders a logo, the label, and a close icon.
+
+<Canvas>
+	<Story name='Logo with Closer'>
+		{() => (
+			<ThemedContainer theme='light'>
+				<div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							sm
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag size='sm' label='Label' logo closable />
+						</div>
+					</div>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							md
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag size='md' label='Label' logo closable />
+						</div>
+					</div>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							lg
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag size='lg' label='Label' logo closable />
+						</div>
+					</div>
+				</div>
+			</ThemedContainer>
+		)}
+	</Story>
+</Canvas>
+
+### Logo with Count
+
+Renders a logo, the label, and a count badge.
+
+<Canvas>
+	<Story name='Logo with Count'>
+		{() => (
+			<ThemedContainer theme='light'>
+				<div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							sm
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag size='sm' label='Label' logo count={5} />
+						</div>
+					</div>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							md
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag size='md' label='Label' logo count={5} />
+						</div>
+					</div>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							lg
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag size='lg' label='Label' logo count={5} />
+						</div>
+					</div>
+				</div>
+			</ThemedContainer>
+		)}
+	</Story>
+</Canvas>
+
+### Checkbox with Logo
+
+Renders a checkbox, a logo, and the label.
+
+<Canvas>
+	<Story name='Checkbox with Logo'>
+		{() => (
+			<ThemedContainer theme='light'>
+				<div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							sm
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag size='sm' label='Label' checkboxLogo />
+						</div>
+					</div>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							md
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag size='md' label='Label' checkboxLogo />
+						</div>
+					</div>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							lg
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag size='lg' label='Label' checkboxLogo />
+						</div>
+					</div>
+				</div>
+			</ThemedContainer>
+		)}
+	</Story>
+</Canvas>
+
+### Checkbox with Logo and Closer
+
+Renders a checkbox, a logo, the label, and a close icon.
+
+<Canvas>
+	<Story name='Checkbox with Logo and Closer'>
+		{() => (
+			<ThemedContainer theme='light'>
+				<div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							sm
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag size='sm' label='Label' checkboxLogoClosable />
+						</div>
+					</div>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							md
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag size='md' label='Label' checkboxLogoClosable />
+						</div>
+					</div>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							lg
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag size='lg' label='Label' checkboxLogoClosable />
+						</div>
+					</div>
+				</div>
+			</ThemedContainer>
+		)}
+	</Story>
+</Canvas>
+
+### Checkbox with Logo and Count
+
+Renders a checkbox, a logo, the label, and a count badge.
+
+<Canvas>
+	<Story name='Checkbox with Logo and Count'>
+		{() => (
+			<ThemedContainer theme='light'>
+				<div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							sm
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag size='sm' label='Label' checkboxLogoCount count={5} />
+						</div>
+					</div>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							md
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag size='md' label='Label' checkboxLogoCount count={5} />
+						</div>
+					</div>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							lg
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag size='lg' label='Label' checkboxLogoCount count={5} />
+						</div>
+					</div>
+				</div>
+			</ThemedContainer>
+		)}
+	</Story>
+</Canvas>
+
+### Indicator
+
+<Canvas>
+	<Story name='Indicator'>
+		{() => (
+			<ThemedContainer theme='light'>
+				<div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							success
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag size='sm' label='Label' indicator indicatorType='success' />
+							<Tag size='md' label='Label' indicator indicatorType='success' />
+							<Tag size='lg' label='Label' indicator indicatorType='success' />
+						</div>
+					</div>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							warning
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag size='sm' label='Label' indicator indicatorType='warning' />
+							<Tag size='md' label='Label' indicator indicatorType='warning' />
+							<Tag size='lg' label='Label' indicator indicatorType='warning' />
+						</div>
+					</div>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							error
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag size='sm' label='Label' indicator indicatorType='error' />
+							<Tag size='md' label='Label' indicator indicatorType='error' />
+							<Tag size='lg' label='Label' indicator indicatorType='error' />
+						</div>
+					</div>
+				</div>
+			</ThemedContainer>
+		)}
+	</Story>
+</Canvas>
+
+### Indicator with Closer
+
+<Canvas>
+	<Story name='Indicator with Closer'>
+		{() => (
+			<ThemedContainer theme='light'>
+				<div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							success
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag
+								size='sm'
+								label='Label'
+								indicator
+								indicatorType='success'
+								closable
+							/>
+							<Tag
+								size='md'
+								label='Label'
+								indicator
+								indicatorType='success'
+								closable
+							/>
+							<Tag
+								size='lg'
+								label='Label'
+								indicator
+								indicatorType='success'
+								closable
+							/>
+						</div>
+					</div>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							warning
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag
+								size='sm'
+								label='Label'
+								indicator
+								indicatorType='warning'
+								closable
+							/>
+							<Tag
+								size='md'
+								label='Label'
+								indicator
+								indicatorType='warning'
+								closable
+							/>
+							<Tag
+								size='lg'
+								label='Label'
+								indicator
+								indicatorType='warning'
+								closable
+							/>
+						</div>
+					</div>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							error
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag size='sm' label='Label' indicator indicatorType='error' closable />
+							<Tag size='md' label='Label' indicator indicatorType='error' closable />
+							<Tag size='lg' label='Label' indicator indicatorType='error' closable />
+						</div>
+					</div>
+				</div>
+			</ThemedContainer>
+		)}
+	</Story>
+</Canvas>
+
+### Indicator with Count
+
+<Canvas>
+	<Story name='Indicator with Count'>
+		{() => (
+			<ThemedContainer theme='light'>
+				<div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							success
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag
+								size='sm'
+								label='Label'
+								indicator
+								indicatorType='success'
+								count={5}
+							/>
+							<Tag
+								size='md'
+								label='Label'
+								indicator
+								indicatorType='success'
+								count={5}
+							/>
+							<Tag
+								size='lg'
+								label='Label'
+								indicator
+								indicatorType='success'
+								count={5}
+							/>
+						</div>
+					</div>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							warning
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag
+								size='sm'
+								label='Label'
+								indicator
+								indicatorType='warning'
+								count={12}
+							/>
+							<Tag
+								size='md'
+								label='Label'
+								indicator
+								indicatorType='warning'
+								count={12}
+							/>
+							<Tag
+								size='lg'
+								label='Label'
+								indicator
+								indicatorType='warning'
+								count={12}
+							/>
+						</div>
+					</div>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							error
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag
+								size='sm'
+								label='Label'
+								indicator
+								indicatorType='error'
+								count={99}
+							/>
+							<Tag
+								size='md'
+								label='Label'
+								indicator
+								indicatorType='error'
+								count={99}
+							/>
+							<Tag
+								size='lg'
+								label='Label'
+								indicator
+								indicatorType='error'
+								count={99}
+							/>
+						</div>
+					</div>
+				</div>
+			</ThemedContainer>
+		)}
+	</Story>
+</Canvas>
+
+### Checkbox with Indicator
+
+<Canvas>
+	<Story name='Checkbox with Indicator'>
+		{() => (
+			<ThemedContainer theme='light'>
+				<div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							success
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag
+								size='sm'
+								label='Label'
+								checkboxIndicator
+								indicatorType='success'
+							/>
+							<Tag
+								size='md'
+								label='Label'
+								checkboxIndicator
+								indicatorType='success'
+							/>
+							<Tag
+								size='lg'
+								label='Label'
+								checkboxIndicator
+								indicatorType='success'
+							/>
+						</div>
+					</div>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							warning
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag
+								size='sm'
+								label='Label'
+								checkboxIndicator
+								indicatorType='warning'
+							/>
+							<Tag
+								size='md'
+								label='Label'
+								checkboxIndicator
+								indicatorType='warning'
+							/>
+							<Tag
+								size='lg'
+								label='Label'
+								checkboxIndicator
+								indicatorType='warning'
+							/>
+						</div>
+					</div>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							error
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag size='sm' label='Label' checkboxIndicator indicatorType='error' />
+							<Tag size='md' label='Label' checkboxIndicator indicatorType='error' />
+							<Tag size='lg' label='Label' checkboxIndicator indicatorType='error' />
+						</div>
+					</div>
+				</div>
+			</ThemedContainer>
+		)}
+	</Story>
+</Canvas>
+
+### Checkbox with Indicator and Closer
+
+<Canvas>
+	<Story name='Checkbox with Indicator and Closer'>
+		{() => (
+			<ThemedContainer theme='light'>
+				<div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							success
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag
+								size='sm'
+								label='Label'
+								checkboxIndicatorClosable
+								indicatorType='success'
+							/>
+							<Tag
+								size='md'
+								label='Label'
+								checkboxIndicatorClosable
+								indicatorType='success'
+							/>
+							<Tag
+								size='lg'
+								label='Label'
+								checkboxIndicatorClosable
+								indicatorType='success'
+							/>
+						</div>
+					</div>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							warning
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag
+								size='sm'
+								label='Label'
+								checkboxIndicatorClosable
+								indicatorType='warning'
+							/>
+							<Tag
+								size='md'
+								label='Label'
+								checkboxIndicatorClosable
+								indicatorType='warning'
+							/>
+							<Tag
+								size='lg'
+								label='Label'
+								checkboxIndicatorClosable
+								indicatorType='warning'
+							/>
+						</div>
+					</div>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							error
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag
+								size='sm'
+								label='Label'
+								checkboxIndicatorClosable
+								indicatorType='error'
+							/>
+							<Tag
+								size='md'
+								label='Label'
+								checkboxIndicatorClosable
+								indicatorType='error'
+							/>
+							<Tag
+								size='lg'
+								label='Label'
+								checkboxIndicatorClosable
+								indicatorType='error'
+							/>
+						</div>
+					</div>
+				</div>
+			</ThemedContainer>
+		)}
+	</Story>
+</Canvas>
+
+### Checkbox with Indicator and Count
+
+<Canvas>
+	<Story name='Checkbox with Indicator and Count'>
+		{() => (
+			<ThemedContainer theme='light'>
+				<div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							success
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag
+								size='sm'
+								label='Label'
+								checkboxIndicatorCount
+								indicatorType='success'
+								count={5}
+							/>
+							<Tag
+								size='md'
+								label='Label'
+								checkboxIndicatorCount
+								indicatorType='success'
+								count={5}
+							/>
+							<Tag
+								size='lg'
+								label='Label'
+								checkboxIndicatorCount
+								indicatorType='success'
+								count={5}
+							/>
+						</div>
+					</div>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							warning
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag
+								size='sm'
+								label='Label'
+								checkboxIndicatorCount
+								indicatorType='warning'
+								count={12}
+							/>
+							<Tag
+								size='md'
+								label='Label'
+								checkboxIndicatorCount
+								indicatorType='warning'
+								count={12}
+							/>
+							<Tag
+								size='lg'
+								label='Label'
+								checkboxIndicatorCount
+								indicatorType='warning'
+								count={12}
+							/>
+						</div>
+					</div>
+					<div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+						<span style={{ fontSize: '12px', fontWeight: '600', color: '#535862' }}>
+							error
+						</span>
+						<div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+							<Tag
+								size='sm'
+								label='Label'
+								checkboxIndicatorCount
+								indicatorType='error'
+								count={99}
+							/>
+							<Tag
+								size='md'
+								label='Label'
+								checkboxIndicatorCount
+								indicatorType='error'
+								count={99}
+							/>
+							<Tag
+								size='lg'
+								label='Label'
+								checkboxIndicatorCount
+								indicatorType='error'
+								count={99}
+							/>
+						</div>
+					</div>
+				</div>
+			</ThemedContainer>
+		)}
+	</Story>
+</Canvas>
+
+## API
+
+### size
+
+The size of the tag.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '33%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '33%' }}>DEFAULT</th>
+		<th style={{ textAlign: 'left', width: '33%' }}>OPTIONS</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>'sm'</td>
+		<td>'sm' | 'md' | 'lg'</td>
+	</tr>
+</table>
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left' }}>Size</th>
+		<th style={{ textAlign: 'left' }}>Height</th>
+		<th style={{ textAlign: 'left' }}>Padding</th>
+		<th style={{ textAlign: 'left' }}>Font Size</th>
+	</tr>
+	<tr>
+		<td>sm</td>
+		<td>24px</td>
+		<td>0 8px</td>
+		<td>12px</td>
+	</tr>
+	<tr>
+		<td>md</td>
+		<td>24px</td>
+		<td>0 9px</td>
+		<td>14px</td>
+	</tr>
+	<tr>
+		<td>lg</td>
+		<td>28px</td>
+		<td>0 10px</td>
+		<td>14px</td>
+	</tr>
+</table>
+
+```jsx
+<Tag size='lg' label='Label' />
+```
+
+### label
+
+Text displayed inside the tag.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>'Label'</td>
+	</tr>
+</table>
+
+```jsx
+<Tag label='Design' />
+```
+
+### closable
+
+Renders a size-matched close icon inside the tag.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>boolean</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<Tag size='md' label='Label' closable />
+```
+
+### checkbox
+
+Renders a size-matched checkbox inside the tag.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>boolean</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<Tag size='md' label='Label' checkbox />
+```
+
+### checkbox + closable
+
+Renders both a checkbox and a close icon inside the tag.
+
+```jsx
+<Tag size='md' label='Label' checkbox closable />
+```
+
+### indicator
+
+Renders a coloured status dot inside the tag. When combined with `closable`, renders dot + label + × icon. When combined with `count`, renders dot + label + count badge.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>boolean</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<Tag size='md' label='Active' indicator indicatorType='success' />
+```
+
+### indicatorType
+
+Controls the colour of the indicator dot. Only relevant when `indicator`, `checkboxIndicator`, or `checkboxIndicatorClosable` is `true`.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '33%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '33%' }}>DEFAULT</th>
+		<th style={{ textAlign: 'left', width: '33%' }}>OPTIONS</th>
+	</tr>
+	<tr>
+		<td>string</td>
+		<td>'success'</td>
+		<td>'success' | 'warning' | 'error'</td>
+	</tr>
+</table>
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left' }}>Type</th>
+		<th style={{ textAlign: 'left' }}>Fill</th>
+		<th style={{ textAlign: 'left' }}>Stroke</th>
+	</tr>
+	<tr>
+		<td>success</td>
+		<td>#12B76A</td>
+		<td>#D1FADF</td>
+	</tr>
+	<tr>
+		<td>warning</td>
+		<td>#F79009</td>
+		<td>#FEF0C7</td>
+	</tr>
+	<tr>
+		<td>error</td>
+		<td>#D92D20</td>
+		<td>#FEE4E2</td>
+	</tr>
+</table>
+
+### count
+
+When provided alongside `indicator`, activates the indicator-count variant — renders a status dot, the label, and a count badge.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>number</td>
+		<td>undefined</td>
+	</tr>
+</table>
+
+```jsx
+<Tag size='md' label='Label' indicator indicatorType='success' count={5} />
+```
+
+### checkboxIndicator
+
+Renders a checkbox and a coloured status dot alongside the label.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>boolean</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<Tag size='md' label='Label' checkboxIndicator indicatorType='success' />
+```
+
+### checkboxIndicatorClosable
+
+Renders a checkbox, a coloured status dot, the label, and a close icon.
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left', width: '50%' }}>TYPE</th>
+		<th style={{ textAlign: 'left', width: '50%' }}>DEFAULT</th>
+	</tr>
+	<tr>
+		<td>boolean</td>
+		<td>false</td>
+	</tr>
+</table>
+
+```jsx
+<Tag size='md' label='Label' checkboxIndicatorClosable indicatorType='success' />
+```
+
+### Variant priority order
+
+When multiple props are combined, the component resolves to one variant in this order:
+
+1. `checkboxIndicatorClosable` → Checkbox-indicator-closable variant (checkbox | dot | label | ×)
+2. `checkboxIndicator` → Checkbox-indicator variant (checkbox | dot | label)
+3. `indicator + count` → Indicator-count variant (dot | label | badge)
+4. `indicator + closable` → Indicator-closable variant (dot | label | ×)
+5. `indicator` → Indicator-only variant (dot | label)
+6. `checkbox + closable` → Checkbox-closable variant
+7. `closable` → Closable variant
+8. `checkbox` → Checkbox variant
+9. _(none)_ → Default variant
+
+### Checkbox + Indicator spacing reference
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left' }}>Size</th>
+		<th style={{ textAlign: 'left' }}>Left padding</th>
+		<th style={{ textAlign: 'left' }}>Gap (checkbox → dot)</th>
+		<th style={{ textAlign: 'left' }}>Gap (dot → label)</th>
+		<th style={{ textAlign: 'left' }}>Right padding</th>
+		<th style={{ textAlign: 'left' }}>Indicator size</th>
+	</tr>
+	<tr>
+		<td>sm</td>
+		<td>5px</td>
+		<td>4px</td>
+		<td>4px</td>
+		<td>8px</td>
+		<td>8px</td>
+	</tr>
+	<tr>
+		<td>md</td>
+		<td>4px</td>
+		<td>5px</td>
+		<td>5px</td>
+		<td>9px</td>
+		<td>8px</td>
+	</tr>
+	<tr>
+		<td>lg</td>
+		<td>5px</td>
+		<td>6px</td>
+		<td>6px</td>
+		<td>10px</td>
+		<td>10px</td>
+	</tr>
+</table>
+
+### Checkbox + Indicator + Closer spacing reference
+
+<table style={{ width: '100%' }}>
+	<tr>
+		<th style={{ textAlign: 'left' }}>Size</th>
+		<th style={{ textAlign: 'left' }}>Left padding</th>
+		<th style={{ textAlign: 'left' }}>Gap (checkbox → dot)</th>
+		<th style={{ textAlign: 'left' }}>Gap (dot → label)</th>
+		<th style={{ textAlign: 'left' }}>Gap (label → ×)</th>
+		<th style={{ textAlign: 'left' }}>Right padding</th>
+		<th style={{ textAlign: 'left' }}>Indicator size</th>
+	</tr>
+	<tr>
+		<td>sm</td>
+		<td>5px</td>
+		<td>4px</td>
+		<td>4px</td>
+		<td>3px</td>
+		<td>4px</td>
+		<td>8px</td>
+	</tr>
+	<tr>
+		<td>md</td>
+		<td>4px</td>
+		<td>5px</td>
+		<td>5px</td>
+		<td>3px</td>
+		<td>4px</td>
+		<td>8px</td>
+	</tr>
+	<tr>
+		<td>lg</td>
+		<td>5px</td>
+		<td>6px</td>
+		<td>6px</td>
+		<td>3px</td>
+		<td>4px</td>
+		<td>10px</td>
+	</tr>
+</table>

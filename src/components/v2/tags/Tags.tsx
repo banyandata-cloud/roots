@@ -1,7 +1,7 @@
 import React, { forwardRef, useEffect, useRef, useState } from 'react';
 import Logo1 from '../../icons/Email/Email';
 import Checkbox from '../checkbox/CheckBox';
-import TextField from '../input/textField/TextField';
+import { TextField } from '../input/textField';
 import Indicator from '../tags/assets/Indicator/Indicator';
 import type { TagProps, TagSize } from '../tags/types';
 import TagCloserLg from './assets/TagCloser/TagCloserLg';

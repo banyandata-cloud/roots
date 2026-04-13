@@ -4,7 +4,7 @@ $sizes: (
 		padding-h: 8px,
 		gap: 4px,
 		font-size: 12px,
-		line-height: 18px,
+		line-height: 16px,
 		icon-padding-reduction: 4px,
 		plus-padding: 5px,
 	),
@@ -59,6 +59,8 @@ $sizes: (
 		color: inherit;
 		opacity: 0.45;
 		transition: opacity 0.15s ease;
+		width: 16px;
+		height: 16px;
 
 		&:hover {
 			opacity: 1;
@@ -80,18 +82,252 @@ $sizes: (
 				line-height: map-get($map, line-height);
 			}
 
-			&.badge--has-dot {
-				padding-left: calc(
-					map-get($map, padding-h) - map-get($map, icon-padding-reduction)
-				);
-			}
-			&.badge--has-up-arrow {
-				padding-left: calc(
-					map-get($map, padding-h) - map-get($map, icon-padding-reduction)
-				);
+			&.badge--pill.badge--has-closer {
+				@if $size == sm {
+					padding: 2px 3px 2px 8px;
+					gap: 2px;
+					height: 20px;
+				} @else if $size == md {
+					padding: 2px 4px 2px 10px;
+					gap: 2px;
+					height: 24px;
+				} @else if $size == lg {
+					padding: 4px 6px 4px 12px;
+					gap: 2px;
+					height: 28px;
+				}
 			}
 
-			&.badge--has-arrow {
+			&.badge--pill.badge--has-dot {
+				@if $size == sm {
+					padding: 2px 8px 2px 6px;
+					height: 20px;
+				} @else if $size == md {
+					padding: 2px 10px 2px 8px;
+					gap: 6px;
+					height: 24px;
+				} @else if $size == lg {
+					padding: 4px 10px 4px 12px;
+					gap: 6px;
+					height: 28px;
+				}
+			}
+
+			&.badge--pill.badge--has-arrow {
+				@if $size == sm {
+					padding: 2px 6px 2px 8px;
+					gap: 2px;
+					height: 20px;
+				} @else if $size == md {
+					padding: 2px 6px 2px 10px;
+					gap: 2px;
+					height: 24px;
+				} @else if $size == lg {
+					padding: 4px 6px 4px 12px;
+					gap: 2px;
+					height: 28px;
+				}
+			}
+
+			&.badge--pill.badge--has-up-arrow {
+				@if $size == sm {
+					padding: 2px 8px 2px 6px;
+					gap: 2px;
+					height: 20px;
+				} @else if $size == md {
+					padding: 2px 10px 2px 8px;
+					gap: 2px;
+					height: 24px;
+				} @else if $size == lg {
+					padding: 4px 12px 4px 10px;
+					gap: 2px;
+					height: 28px;
+				}
+			}
+			&.badge--modern.badge--has-lead {
+				@if $size == sm {
+					padding: 2px 8px 2px 6px;
+					gap: 2px;
+					height: 20px;
+				} @else if $size == md {
+					padding: 2px 10px 2px 8px;
+					gap: 2px;
+					height: 24px;
+				} @else if $size == lg {
+					padding: 4px 12px 4px 10px;
+					gap: 2px;
+					height: 28px;
+				}
+			}
+			&.badge--badge.badge--has-lead {
+				@if $size == sm {
+					padding: 2px 8px 2px 6px;
+					gap: 2px;
+					height: 20px;
+				} @else if $size == md {
+					padding: 2px 10px 2px 8px;
+					gap: 2px;
+					height: 24px;
+				} @else if $size == lg {
+					padding: 4px 12px 4px 10px;
+					gap: 2px;
+					height: 28px;
+				}
+			}
+			&.badge--pill.badge--has-lead {
+				@if $size == sm {
+					padding: 2px 8px 2px 6px;
+					gap: 2px;
+					height: 20px;
+				} @else if $size == md {
+					padding: 2px 10px 2px 8px;
+					gap: 2px;
+					height: 24px;
+				} @else if $size == lg {
+					padding: 4px 12px 4px 10px;
+					gap: 2px;
+					height: 28px;
+				}
+			}
+
+			&.badge--badge.badge--has-closer {
+				@if $size == sm {
+					padding: 2px 3px 2px 8px;
+					gap: 2px;
+					height: 20px;
+				} @else if $size == md {
+					padding: 2px 4px 2px 10px;
+					gap: 2px;
+					height: 24px;
+				} @else if $size == lg {
+					padding: 4px 6px 4px 12px;
+					gap: 2px;
+					height: 28px;
+				}
+			}
+
+			&.badge--badge.badge--has-dot {
+				@if $size == sm {
+					padding: 2px 8px 2px 6px;
+					height: 20px;
+				} @else if $size == md {
+					padding: 2px 10px 2px 8px;
+					gap: 6px;
+					height: 24px;
+				} @else if $size == lg {
+					padding: 4px 12px 4px 10px;
+					gap: 6px;
+					height: 28px;
+				}
+			}
+
+			&.badge--badge.badge--has-arrow {
+				@if $size == sm {
+					padding: 2px 6px 2px 8px;
+					gap: 2px;
+					height: 20px;
+				} @else if $size == md {
+					padding: 2px 8px 2px 10px;
+					gap: 2px;
+					height: 24px;
+				} @else if $size == lg {
+					padding: 4px 10px 4px 12px;
+					gap: 2px;
+					height: 28px;
+				}
+			}
+
+			&.badge--badge.badge--has-up-arrow {
+				@if $size == sm {
+					padding: 2px 8px 2px 6px;
+					gap: 2px;
+					height: 20px;
+				} @else if $size == md {
+					padding: 2px 10px 2px 8px;
+					gap: 2px;
+					height: 24px;
+				} @else if $size == lg {
+					padding: 4px 12px 4px 10px;
+					gap: 2px;
+					height: 28px;
+				}
+			}
+
+			&.badge--modern.badge--has-closer {
+				@if $size == sm {
+					padding: 2px 3px 2px 8px;
+					gap: 2px;
+					height: 20px;
+				} @else if $size == md {
+					padding: 2px 4px 2px 10px;
+					gap: 2px;
+					height: 24px;
+				} @else if $size == lg {
+					padding: 4px 6px 4px 12px;
+					gap: 2px;
+					height: 28px;
+				}
+			}
+
+			&.badge--modern.badge--has-dot {
+				@if $size == sm {
+					padding: 2px 8px 2px 6px;
+					gap: 4px;
+					height: 20px;
+				} @else if $size == md {
+					padding: 2px 10px 2px 8px;
+					gap: 6px;
+					height: 24px;
+				} @else if $size == lg {
+					padding: 4px 12px 4px 10px;
+					gap: 6px;
+					height: 28px;
+				}
+			}
+
+			&.badge--modern.badge--has-arrow {
+				@if $size == sm {
+					padding: 2px 6px 2px 8px;
+					gap: 2px;
+					height: 20px;
+				} @else if $size == md {
+					padding: 2px 8px 2px 10px;
+					gap: 2px;
+					height: 24px;
+				} @else if $size == lg {
+					padding: 4px 10px 4px 12px;
+					gap: 2px;
+					height: 28px;
+				}
+			}
+
+			&.badge--modern.badge--has-up-arrow {
+				@if $size == sm {
+					padding: 2px 8px 2px 6px;
+					gap: 2px;
+					height: 20px;
+				} @else if $size == md {
+					padding: 2px 10px 2px 8px;
+					gap: 2px;
+					height: 24px;
+				} @else if $size == lg {
+					padding: 4px 12px 4px 10px;
+					gap: 2px;
+					height: 28px;
+				}
+			}
+
+			&.badge--has-dot:not(.badge--pill) {
+				padding-left: calc(
+					map-get($map, padding-h) - map-get($map, icon-padding-reduction)
+				);
+			}
+			&.badge--has-up-arrow:not(.badge--pill) {
+				padding-left: calc(
+					map-get($map, padding-h) - map-get($map, icon-padding-reduction)
+				);
+			}
+			&.badge--has-arrow:not(.badge--pill) {
 				padding-right: calc(
 					map-get($map, padding-h) - map-get($map, icon-padding-reduction)
 				);
@@ -104,23 +340,25 @@ $sizes: (
 
 	&--pill {
 		border-radius: 999px;
-		background-color: #f2f4f7;
-		border-color: #d0d5dd;
+		background-color: #fafafa;
+		border-color: #e9eaeb;
 		color: #414651;
 	}
 
 	&--badge {
 		border-radius: 6px;
-		background-color: #f2f4f7;
-		border-color: #d0d5dd;
+		background-color: #fafafa;
+		border-color: #e9eaeb;
 		color: #414651;
 	}
 
 	&--modern {
 		border-radius: 6px;
 		background-color: #ffffff;
-		border-color: #d0d5dd;
-		box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
-		color: #344054;
+		border-color: #d5d7da;
+		box-shadow:
+			0px 0px 1px 0px rgba(0, 0, 0, 0.04),
+			0px 1px 2px 0px rgba(0, 0, 0, 0.06);
+		color: #414651;
 	}
 }
