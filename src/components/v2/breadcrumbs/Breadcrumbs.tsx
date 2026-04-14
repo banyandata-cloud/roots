@@ -160,7 +160,6 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
 					}
 					crumb.onClick?.();
 				};
-
 				const focusHandlers = {
 					onFocus: () => {
 						if (!isMouseDown.current) setFocusedId(crumbId);
@@ -181,16 +180,25 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
 							{...focusHandlers}>
 							{isFirst ? (
 								isTextVariant ? (
-									<Link
-										variant='unstyled'
-										href={crumb.href ?? 'javascript:void(0)'}
-										disabled={crumb.isDisabled ?? false}
-										className={breadcrumbBtnClass}
-										attrs={{ id: crumbId }}>
-										<span className={styles.iconWrapper}>
-											<BreadcrumbsHome color={iconColor} />
-										</span>
-									</Link>
+									// Text / text-with-line — icon crumb uses Button
+									<span className={styles.iconCrumbWrapper}>
+										<Button
+											id={crumbId}
+											type='button'
+											variant='unstyled'
+											className={breadcrumbBtnClass}
+											disabled={crumb.isDisabled}
+											blurOnClick={false}
+											onClick={() => {
+												if (!crumb.isDisabled) crumb.onClick?.();
+											}}
+											title={
+												<span className={styles.iconWrapper}>
+													<BreadcrumbsHome color={iconColor} />
+												</span>
+											}
+										/>
+									</span>
 								) : (
 									<span className={styles.iconCrumbWrapper}>
 										<Button
@@ -213,25 +221,31 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
 								)
 							) : (
 								<>
-									<Button
-										id={crumbId}
-										type='button'
-										variant='unstyled'
-										className={classes(
-											breadcrumbBtnClass,
-											isActive ? styles.activeLink : ''
-										)}
-										disabled={crumb.isDisabled}
-										blurOnClick={false}
-										onClick={() => {
-											if (crumb.isDisabled) return;
-											if (hasDropdown) {
-												handleDropdownToggle();
-												return;
-											}
-											crumb.onClick?.();
-										}}
-										title={
+									{isTextVariant ? (
+										<Link
+											variant='unstyled'
+											href={crumb.href ?? 'javascript:void(0)'}
+											disabled={crumb.isDisabled ?? false}
+											className={classes(
+												breadcrumbBtnClass,
+												isActive ? styles.activeLink : ''
+											)}
+											attrs={{
+												id: crumbId,
+												onFocus: focusHandlers.onFocus,
+												onBlur: focusHandlers.onBlur,
+												onClick: (
+													e: React.MouseEvent<HTMLAnchorElement>
+												) => {
+													if (crumb.isDisabled) return;
+													if (hasDropdown) {
+														e.preventDefault();
+														handleDropdownToggle();
+														return;
+													}
+													crumb.onClick?.();
+												},
+											}}>
 											<span
 												className={
 													crumb.label === '...'
@@ -240,8 +254,38 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
 												}>
 												{crumb.label}
 											</span>
-										}
-									/>
+										</Link>
+									) : (
+										<Button
+											id={crumbId}
+											type='button'
+											variant='unstyled'
+											className={classes(
+												breadcrumbBtnClass,
+												isActive ? styles.activeLink : ''
+											)}
+											disabled={crumb.isDisabled}
+											blurOnClick={false}
+											onClick={() => {
+												if (crumb.isDisabled) return;
+												if (hasDropdown) {
+													handleDropdownToggle();
+													return;
+												}
+												crumb.onClick?.();
+											}}
+											title={
+												<span
+													className={
+														crumb.label === '...'
+															? styles.crumbEllipsis
+															: styles.crumbLabel
+													}>
+													{crumb.label}
+												</span>
+											}
+										/>
+									)}
 									{hasDropdown && isDropdownOpen && (
 										<CrumbDropdown
 											options={crumb.dropdownOptions ?? []}

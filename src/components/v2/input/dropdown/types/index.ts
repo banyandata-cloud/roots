@@ -10,6 +10,19 @@ export interface DropdownOption {
 	icon?: React.ComponentType<any> | undefined;
 }
 
+// Advanced search types for key-value pair functionality
+export interface SearchTag {
+	id: string;
+	key: string;
+	value: string;
+	isEditingValue?: boolean;
+}
+
+export interface AdvancedSearchResult {
+	tags: Omit<SearchTag, 'id' | 'isEditingValue'>[];
+	defaultSearch: string;
+}
+
 export interface DataLabel {
 	singular: string;
 	plural: string;
@@ -39,7 +52,7 @@ export interface DropdownProps {
 		| 'read-only'
 		| undefined;
 	size?: 'sm' | 'md' | undefined;
-	variant?: 'simple' | 'multi-select' | 'with-icon' | 'borderless' | undefined;
+	variant?: 'simple' | 'multi-select' | 'with-icon' | 'borderless' | 'search' | undefined;
 
 	// Control props
 	required?: boolean | undefined;
@@ -48,13 +61,31 @@ export interface DropdownProps {
 
 	// Icon props
 	helpIcon?: boolean | undefined;
+	helpText?: string | undefined; // Tooltip content for help icon
 	errorIcon?: boolean | undefined;
 	warningIcon?: boolean | undefined;
 	icon?: React.ComponentType<any> | undefined;
 
+	// Search variant props
+	searchIcon?: React.ComponentType<any> | undefined; // Custom search icon, defaults to v2 SearchIcon
+	shortcut?: string | undefined; // Shortcut display text (e.g., '⌘T')
+	onShortcut?: (() => void) | undefined; // Callback when shortcut is triggered
+
+	// Advanced search props (key-value pair functionality)
+	enableAdvancedSearch?: boolean | undefined; // Enable key-value pair search with badges
+	searchTags?: SearchTag[] | undefined; // Controlled search tags
+	defaultSearchTags?: SearchTag[] | undefined; // Default search tags
+	availableKeys?: DropdownOption[] | undefined; // Available keys for tag creation
+	onAdvancedSearchChange?: ((result: AdvancedSearchResult) => void) | undefined; // Structured search result callback
+
+	// Tag options props (for showing dropdown in tag text fields)
+	tagOptionsEnabled?: boolean | undefined; // Enable dropdown options for tag text fields
+	tagOptions?: DropdownOption[] | undefined; // Available options for tag values
+
 	// Event handlers
 	onChange?: ((value: string) => void) | undefined;
 	onMultiSelectChange?: ((values: string[]) => void) | undefined; // For multi-select
+	onSearchChange?: ((searchValue: string) => void) | undefined; // For search variant input changes
 
 	onFocus?: ((e: React.FocusEvent<HTMLElement>) => void) | undefined;
 	onBlur?: ((e: React.FocusEvent<HTMLElement>) => void) | undefined;

@@ -12,7 +12,7 @@
 .labelContainer {
 	display: flex;
 	gap: 2px;
-	align-items: flex-start;
+	align-items: center;
 
 	.label {
 		font-family: Jakarta;
@@ -28,6 +28,19 @@
 		font-size: 14px;
 		line-height: 20px;
 		color: #175cd3;
+	}
+
+	// Help Icon in Label (beside label text)
+	.helpIcon {
+		width: 16px;
+		height: 16px;
+		flex-shrink: 0;
+
+		svg {
+			width: 100%;
+			height: 100%;
+			color: #535862;
+		}
 	}
 }
 
@@ -207,42 +220,39 @@
 		display: none;
 	}
 
-	// Style the button wrapper to be compact
-	.buttonWrapper {
-		width: fit-content;
-		min-width: fit-content;
+	// Target the actual DOM structure: buttonWrapper > button > spans > contentArea > dropdownText
+	div > button > span > span > div > span {
+		font-size: 16px !important;
+		line-height: 24px !important;
+		color: #535862 !important; // text-tertiary as per Figma
+		font-weight: 400 !important;
+		white-space: nowrap !important;
 	}
 
-	// Style the dropdown button to be compact
-	.dropdownContainer {
-		min-width: fit-content;
-		width: fit-content;
-		max-width: none;
-		height: 40px;
+	// Target the button container for compact sizing
+	div > button {
+		min-width: fit-content !important;
+		width: fit-content !important;
+		max-width: none !important;
+		height: 40px !important;
+		padding: 10px 12px !important;
+	}
 
-		// Minimal gap between text and dropdown arrow - matching Figma design
-		.contentArea {
-			gap: 1px;
-			flex-shrink: 0;
-		}
+	// Target contentArea div for minimal gap
+	div > button > span > span > div:first-child {
+		gap: 1px !important;
+		flex-shrink: 0 !important;
+	}
 
-		.dropdownText {
-			font-size: 16px;
-			line-height: 24px;
-			color: #535862;
-			font-weight: 400;
-			white-space: nowrap;
-		}
+	// Target trailingArea div for minimal gap and icon color
+	div > button > span > span[data-elem='title'] {
+		gap: 1px !important;
+		flex-shrink: 0 !important;
 
-		.trailingArea {
-			gap: 1px;
-			flex-shrink: 0;
-		}
-
-		.dropdownIcon {
-			width: 16px;
-			height: 16px;
-			flex-shrink: 0;
+		// Target dropdown icon inside trailingArea
+		div svg {
+			width: 16px !important;
+			height: 16px !important;
 		}
 	}
 }
@@ -257,13 +267,19 @@
 	transform: translateX(-24px); // Align right edge of popover with dropdown trigger position
 }
 
-.helpIcon,
-.statusIcon {
+.trailingArea .helpIcon,
+.trailingArea .rightIcon,
+.trailingArea .statusIcon {
 	width: 16px;
 	height: 16px;
 	flex-shrink: 0;
 
 	svg {
+		width: 100%;
+		height: 100%;
+	}
+
+	.iconComponent {
 		width: 100%;
 		height: 100%;
 	}
@@ -483,8 +499,9 @@
 	cursor: not-allowed;
 
 	.leadingIcon,
-	.helpIcon,
-	.statusIcon {
+	.trailingArea .helpIcon,
+	.trailingArea .rightIcon,
+	.trailingArea .statusIcon {
 		opacity: 0.5;
 	}
 
