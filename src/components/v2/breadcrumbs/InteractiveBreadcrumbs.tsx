@@ -62,7 +62,6 @@ const findNode = (nodes: NavigationNode[], id: string): NavigationNode | undefin
 const InteractiveBreadcrumbs: React.FC<Props> = ({ type = 'text' }) => {
 	const [path, setPath] = useState<string[]>(['home']);
 
-	// 🔹 Dropdown selection
 	const handleChildSelect = useCallback(
 		(childId: string, parentIndex: number) => {
 			const nextPath = [...path.slice(0, parentIndex + 1), childId];
@@ -130,7 +129,6 @@ const InteractiveBreadcrumbs: React.FC<Props> = ({ type = 'text' }) => {
 						onClick={handlePrevious}
 						type='button'
 					/>
-
 					<Button
 						title='Next'
 						variant='primary'

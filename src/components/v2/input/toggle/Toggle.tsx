@@ -1,20 +1,8 @@
 import React, { useRef, useState } from 'react';
 import { classes, inputHelper } from '../../../../utils';
-import styles from './Toggle.module.css';
 import { TickIcon } from '../../icons';
-
-type Size = 'l' | 's';
-
-export interface ToggleProps {
-	label?: React.ReactNode;
-	checked?: boolean;
-	defaultChecked?: boolean;
-	onChange?: (event: React.ChangeEvent<HTMLInputElement>, value: boolean) => void;
-	className?: string;
-	disabled?: boolean;
-	size?: Size;
-	readonly?: boolean;
-}
+import type { ToggleProps } from '../toggle/types';
+import styles from './Toggle.module.css';
 
 const Toggle: React.FC<ToggleProps> = (props) => {
 	const {
@@ -28,10 +16,8 @@ const Toggle: React.FC<ToggleProps> = (props) => {
 		readonly,
 	} = props;
 
-	// Freeze controlled vs uncontrolled mode on first render
 	const { current: isControlled } = useRef<boolean>(checked !== undefined);
 
-	// Uncontrolled state
 	const [uncontrolledChecked, setUncontrolledChecked] = useState<boolean | undefined>(
 		defaultChecked
 	);
@@ -42,7 +28,6 @@ const Toggle: React.FC<ToggleProps> = (props) => {
 			return;
 		}
 
-		// Safely extract fieldValue; fall back to event.target.checked
 		const helperResult = (
 			inputHelper as unknown as
 				| ((e: React.ChangeEvent<HTMLInputElement>) => { fieldValue?: boolean })

@@ -4,10 +4,7 @@
   box-sizing: border-box;
   white-space: nowrap;
   border: 1px solid transparent;
-  font-family: Jakarta, sans-serif;
-  font-weight: 500;
-  background-color: #fafafa;
-  border-color: #e9eaeb;
+  font-family: Jakarta Sans, sans-serif;
 }
 .badge__icon {
   display: block;

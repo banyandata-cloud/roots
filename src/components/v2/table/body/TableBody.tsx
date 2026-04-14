@@ -1,36 +1,8 @@
-import { useRef, type Key, type ReactElement } from 'react';
+import { useRef, type Key } from 'react';
 import { classes } from '../../../../utils';
 import { TableRow } from '../row';
-import type { TableProps } from '../types';
 import styles from './TableBody.module.css';
-
-interface TableBodyProps
-	extends Pick<
-		TableProps,
-		| 'headerData'
-		| 'customCells'
-		| 'tableData'
-		| 'className'
-		| 'loading'
-		| 'onRowClick'
-		| 'onSort'
-		| 'sortValue'
-		| 'rowHeight'
-		| 'defaultActiveIndex'
-		| 'emptyPlaceholder'
-		| 'onCheck'
-		| 'uniqueKey'
-		| 'checkAsRadio'
-		| 'disableCheck'
-		| 'hideColumnLines'
-	> {
-	expandable?:
-		| ((params: { datum: Record<number, unknown>; index: number | undefined }) => ReactElement)
-		| undefined;
-	checkedRows: Record<string, unknown>[];
-	setCheckedRows: (rows: Record<string, unknown>[]) => void;
-	toggleDrawer?: (props: object) => void;
-}
+import type { TableBodyProps } from './types';
 
 const TableBody = (props: TableBodyProps) => {
 	const {

@@ -85,6 +85,22 @@ const BaseTable = forwardRef(
 
 		const tabularData = Array.isArray(tableData) ? tableData : [];
 
+		const commonTableProps = {
+			headerData,
+			customCells,
+			onRowClick,
+			rowHeight,
+			onCheck,
+			checkedRows,
+			setCheckedRows,
+			uniqueKey,
+			checkAsRadio,
+			disableCheck,
+			...(hideColumnLines !== undefined && {
+				hideColumnLines,
+			}),
+		};
+
 		return (
 			<table
 				ref={ref}
@@ -97,23 +113,11 @@ const BaseTable = forwardRef(
 				{tabularData.length > 0 && (
 					<TableHeader
 						{...{
-							headerData,
+							...commonTableProps,
 							expandable,
-							customCells,
 							onSort,
 							sortValue,
-							onRowClick,
-							onCheck,
-							checkedRows,
-							setCheckedRows,
 							tableData: tabularData,
-							disableCheck,
-							checkAsRadio,
-							rowHeight,
-							uniqueKey,
-							...(hideColumnLines !== undefined && {
-								hideColumnLines: hideColumnLines!,
-							}),
 						}}
 					/>
 				)}
@@ -122,24 +126,11 @@ const BaseTable = forwardRef(
 				) : (
 					<TableBody
 						{...{
-							ref,
-							headerData,
-							customCells,
+							...commonTableProps,
+							...(expandable !== undefined && { expandable }),
 							tableData: tabularData,
-							expandable,
-							rowHeight,
-							onRowClick,
 							defaultActiveIndex,
 							toggleDrawer,
-							onCheck,
-							checkedRows,
-							setCheckedRows,
-							uniqueKey,
-							checkAsRadio,
-							disableCheck,
-							...(hideColumnLines !== undefined && {
-								hideColumnLines: hideColumnLines!,
-							}),
 						}}
 					/>
 				)}

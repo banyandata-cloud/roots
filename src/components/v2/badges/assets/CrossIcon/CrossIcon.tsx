@@ -1,5 +1,4 @@
 import React from 'react';
-
 interface CrossIconProps extends React.SVGProps<SVGSVGElement> {
 	size?: number | undefined;
 	color?: string | undefined;

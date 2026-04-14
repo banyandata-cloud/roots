@@ -1,16 +1,6 @@
-import type { CSSProperties } from 'react';
 import { classes } from '../../../utils';
+import type { SkeletonProps } from '../skeleton/types/index';
 import styles from './Skeleton.module.css';
-
-interface SkeletonProps {
-	height?: number | string | undefined;
-	width?: number | string | undefined;
-	variant?: 'text' | 'circle' | 'rounded' | 'ellipse';
-	theme?: 'light' | 'dark';
-	className?: string | undefined;
-	style?: CSSProperties;
-	noAnimation?: boolean;
-}
 
 const Skeleton = (props: SkeletonProps) => {
 	const {

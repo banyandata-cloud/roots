@@ -180,25 +180,16 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
 							{...focusHandlers}>
 							{isFirst ? (
 								isTextVariant ? (
-									// Text / text-with-line — icon crumb uses Button
-									<span className={styles.iconCrumbWrapper}>
-										<Button
-											id={crumbId}
-											type='button'
-											variant='unstyled'
-											className={breadcrumbBtnClass}
-											disabled={crumb.isDisabled}
-											blurOnClick={false}
-											onClick={() => {
-												if (!crumb.isDisabled) crumb.onClick?.();
-											}}
-											title={
-												<span className={styles.iconWrapper}>
-													<BreadcrumbsHome color={iconColor} />
-												</span>
-											}
-										/>
-									</span>
+									<Link
+										variant='unstyled'
+										href={crumb.href ?? 'javascript:void(0)'}
+										disabled={crumb.isDisabled ?? false}
+										className={breadcrumbBtnClass}
+										attrs={{ id: crumbId }}>
+										<span className={styles.iconWrapper}>
+											<BreadcrumbsHome color={iconColor} />
+										</span>
+									</Link>
 								) : (
 									<span className={styles.iconCrumbWrapper}>
 										<Button

@@ -488,7 +488,7 @@
 }
 .tag--md--textfield {
   padding: 0 4px 0 9px;
-  gap: 4px;
+  gap: 3px;
   cursor: text;
   width: -moz-max-content;
   width: max-content;
@@ -582,7 +582,7 @@
 }
 .tag--lg--textfield {
   padding: 0 4px 0 10px;
-  gap: 4px;
+  gap: 3px;
   cursor: text;
   width: -moz-max-content;
   width: max-content;

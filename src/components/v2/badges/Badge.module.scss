@@ -34,22 +34,19 @@ $sizes: (
 	box-sizing: border-box;
 	white-space: nowrap;
 	border: 1px solid transparent;
-	font-family: Jakarta, sans-serif;
-	font-weight: 500;
-	background-color: #fafafa;
-	border-color: #e9eaeb;
+	font-family:
+		Jakarta Sans,
+		sans-serif;
 
 	&__icon {
 		display: block;
 		flex-shrink: 0;
 	}
-
 	&__label {
 		display: inline-block;
 		font-weight: 500;
 		font-family: inherit;
 	}
-
 	&__closer {
 		display: inline-flex;
 		align-items: center;
@@ -75,7 +72,6 @@ $sizes: (
 			border-radius: 2px;
 		}
 	}
-
 	@each $size, $map in $sizes {
 		&--#{$size} {
 			padding: map-get($map, padding-v) map-get($map, padding-h);

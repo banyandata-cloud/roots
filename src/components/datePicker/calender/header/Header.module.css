@@ -11,11 +11,8 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 0rem 0rem;
-  padding-bottom: 0rem;
-  margin-left: calc(-2rem + 1px);
-  margin-right: calc(-2rem + 1px);
-  width: calc(100% + 4rem - 2px);
+  padding: 0rem 1rem;
+  width: 100%;
 }
 .root .title-container .title {
   font-weight: 500;
