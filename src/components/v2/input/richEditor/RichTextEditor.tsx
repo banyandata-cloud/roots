@@ -403,7 +403,7 @@ const RichTextEditor: React.FC<RichTextEditorProps> = ({
 						</>
 					)}
 
-					{/* Alignment & List Group */}
+					{/* Alignment & List Group*/}
 					{!toolbarMenu.align && (
 						<>
 							<ToolbarButton

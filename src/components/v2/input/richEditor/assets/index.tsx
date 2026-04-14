@@ -285,3 +285,6 @@ export const ResizeHandleIcon = ({ color = '#A4A7AE' }: { color?: string }) => {
 		</svg>
 	);
 };
+
+
+// added all icons in a single file to avoid circular dependency issues between icons and the main RichTextEditor component. If we keep icons in separate files, importing them in the main component causes circular dependencies which leads to errors.
