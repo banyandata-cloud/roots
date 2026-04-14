@@ -6,8 +6,8 @@ import { ErrorIcon } from '../../icons/error';
 import { WarningIcon } from '../../icons/warning';
 import { Tooltip } from '../../tooltip';
 import { Dropdown } from '../dropdown';
-import type { TextFieldProps } from '../textField/types/index';
 import styles from './TextField.module.scss';
+import type { TextFieldProps } from './types';
 
 const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 	(
