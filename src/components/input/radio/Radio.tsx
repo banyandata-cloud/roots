@@ -21,6 +21,7 @@ export interface RadioProps {
 	size?: Size;
 	className?: string | undefined;
 	disabled?: boolean | undefined;
+	dataTestId?: string | undefined;
 }
 
 const Radio: React.FC<RadioProps> = (props) => {
@@ -33,6 +34,7 @@ const Radio: React.FC<RadioProps> = (props) => {
 		size = 'sm',
 		className,
 		disabled,
+		dataTestId,
 	} = props;
 
 	// Lock controlled vs uncontrolled on first render
@@ -79,6 +81,9 @@ const Radio: React.FC<RadioProps> = (props) => {
 				// Preserve original pattern: always pass checked (undefined keeps it uncontrolled)
 				checked={isChecked}
 				onChange={handleChange}
+				data-testid={
+					dataTestId ?? (label ? `radio-input-${label}-rd-test` : 'radio-input-rd-test')
+				}
 			/>
 
 			{isChecked ? (

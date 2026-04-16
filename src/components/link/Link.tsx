@@ -29,6 +29,9 @@ const Link = forwardRef<RefObject<HTMLAnchorElement>, LinkProps>((props, ref) =>
 			stroke={stroke}
 			weight={weight}
 			italic={italic}
+			data-testid={
+				typeof children === 'string' ? `link-${children}-root-test` : 'link-root-test'
+			}
 			className={classes(styles.root, styles[`underline-${underline}`], className)}
 			attrs={{
 				href,

@@ -221,6 +221,7 @@ const BaseModal: FC<BaseModalProps> = (props) => {
 									size='auto'
 									variant='text'
 									className={styles.close}
+									dataTestId='modal-cross-dismiss-btn-test'
 									onClick={() => {
 										toggle?.(false);
 									}}

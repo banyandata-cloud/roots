@@ -185,6 +185,7 @@ const Alert: ForwardRefRenderFunction<AlertHandle, AlertProps> = (
 						<Button
 							title=''
 							size='auto'
+							dataTestId='alert-close-btn-test'
 							variant='text'
 							onClick={() => {
 								onClose();

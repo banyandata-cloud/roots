@@ -295,6 +295,7 @@ export const Pagination = forwardRef<HTMLDivElement, PaginationProps>((props, re
 									className={styles.dropdown}
 									popperClassName={styles['dropdown-popper']}
 									value={step.toString()}
+									dataTestId='page-steps'
 									placeholder=''
 									onChange={(_, newStep) => {
 										dispatch({
@@ -391,6 +392,7 @@ export const Pagination = forwardRef<HTMLDivElement, PaginationProps>((props, re
 													required: true,
 													placeholder: '',
 												}}
+												name='jump-to-page'
 												ref={jumpPageRef}
 												type='number'
 												className={styles.inputbox}
@@ -399,6 +401,7 @@ export const Pagination = forwardRef<HTMLDivElement, PaginationProps>((props, re
 										component2={
 											<Button
 												size='auto'
+												dataTestId='jump-to-page-btn-test'
 												variant='contained'
 												className={styles.button}
 												rightComponent={() => {

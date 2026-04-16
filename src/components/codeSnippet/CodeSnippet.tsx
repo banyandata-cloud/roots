@@ -64,6 +64,7 @@ const CopyButton = ({ code }: { code: string }) => {
 
 	return (
 		<Button
+			dataTestId='code-snippet-copy-btn-test'
 			title={
 				<AnimatePresence mode='popLayout' initial={false}>
 					{!copied ? (

@@ -83,6 +83,7 @@ export function Accordion(props: AccordionProps) {
 						<Button
 							size='auto'
 							variant='text'
+							dataTestId='accordion-expand-btn-test'
 							onClick={() => {
 								onExpand();
 							}}

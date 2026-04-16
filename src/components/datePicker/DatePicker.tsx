@@ -238,7 +238,7 @@ const DatePicker = (props: DatePickerProps): React.JSX.Element => {
 						selectedMonth?.monthAsNumber,
 						sd.date!,
 						timeRangeSelection.previous?.MER === 'PM' &&
-						(timeRangeSelection.previous?.HOURS ?? 0) < 12
+							(timeRangeSelection.previous?.HOURS ?? 0) < 12
 							? (timeRangeSelection.previous?.HOURS ?? 0) + 12
 							: calculateZeroHours(
 									timeRangeSelection.previous?.HOURS ?? undefined,
@@ -254,7 +254,7 @@ const DatePicker = (props: DatePickerProps): React.JSX.Element => {
 						selectedMonth?.monthAsNumber,
 						sd.date!,
 						timeRangeSelection.next?.MER === 'PM' &&
-						(timeRangeSelection.next?.HOURS ?? 0) < 12
+							(timeRangeSelection.next?.HOURS ?? 0) < 12
 							? (timeRangeSelection.next?.HOURS ?? 0) + 12
 							: calculateZeroHours(
 									timeRangeSelection.next?.HOURS ?? undefined,
@@ -274,7 +274,7 @@ const DatePicker = (props: DatePickerProps): React.JSX.Element => {
 					selectedMonth?.monthAsNumber,
 					sd.date!,
 					timeRangeSelection.next?.MER === 'PM' &&
-					(timeRangeSelection.next?.HOURS ?? 0) < 12
+						(timeRangeSelection.next?.HOURS ?? 0) < 12
 						? (timeRangeSelection.next?.HOURS ?? 0) + 12
 						: (timeRangeSelection.next?.HOURS ?? 0),
 					timeRangeSelection.next?.MINS ?? undefined
@@ -351,6 +351,7 @@ const DatePicker = (props: DatePickerProps): React.JSX.Element => {
 				{hasCustomRanges && !showCustomRanges && (
 					<Button
 						data-elem='custom-header'
+						data-testid='data-picker-custom-header-dpn-test'
 						ref={customRangeFloatingReference.reference}
 						leftComponent={() => {
 							return <ClockIcon className={classes(styles.icon)} />;
@@ -373,6 +374,7 @@ const DatePicker = (props: DatePickerProps): React.JSX.Element => {
 						data-elem='header'
 						ref={datePickerFloatingReference.reference}
 						role='button'
+						data-testid='date-picker-header-dpn-test'
 						tabIndex={0}
 						className={classes(
 							styles.container,

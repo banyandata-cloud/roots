@@ -1,4 +1,4 @@
-import type { TableProps } from 'components/table/types';
+import type { TableProps } from '@/components/table/types';
 import {
 	useEffect,
 	useState,
@@ -127,6 +127,7 @@ const TableFilters = (props: TableFiltersProps) => {
 									className={styles.search}
 									placeholder={searchPlaceholder}
 									value={search}
+									name='table-search'
 									onKeyDown={handleKeyDown}
 									onChange={(e) => {
 										const { fieldValue } = inputHelper(e);
@@ -141,6 +142,11 @@ const TableFilters = (props: TableFiltersProps) => {
 										styles['search-button'],
 										onClear && styles.clear
 									)}
+									dataTestId={
+										onClear
+											? 'table-clear-search-btn-test'
+											: 'table-search-btn-test'
+									}
 									onClick={() => {
 										if (onClear) {
 											onClear();
@@ -171,6 +177,7 @@ const TableFilters = (props: TableFiltersProps) => {
 									styles['adv-filter'],
 									filtersCount > 0 ? styles.filter : ''
 								)}
+								dataTestId='table-advanced-filter-btn-test'
 								title={<FilterIcon className={styles.icon} v2 />}
 								onClick={() => {
 									toggleDrawer?.({
@@ -200,6 +207,7 @@ const TableFilters = (props: TableFiltersProps) => {
 									},
 								}}
 								placeholder=''
+								dataTestId='column-filters'
 								multi
 								multiSelectActionTitle='Hide'
 								valueAsCount

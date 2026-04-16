@@ -24,5 +24,5 @@ export interface CheckboxProps {
 	intermediate?: boolean;
 	readOnly?: boolean;
 	error?: boolean;
-	v2?: boolean;
+	dataTestId?: string | undefined;
 }

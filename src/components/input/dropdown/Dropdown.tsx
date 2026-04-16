@@ -94,7 +94,7 @@ export interface DropdownProps {
 	};
 	hideValueOnSelect?: boolean;
 
-	v2?: boolean;
+	dataTestId?: string;
 }
 
 /** What parent components can call on the ref */
@@ -133,6 +133,7 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(props,
 		caretAsUpDown,
 		search,
 		hideValueOnSelect,
+		dataTestId,
 	} = props;
 
 	const [open, setOpen] = useState(false);
@@ -500,6 +501,7 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(props,
 
 			<div
 				data-elem='header'
+				data-testid={`dropdown-header-${placeholder ? placeholder.toString() : dataTestId}-dpn-test`}
 				className={classes(
 					styles.header,
 					error ? styles.error : ' ',
@@ -649,6 +651,7 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(props,
 										className={styles['multi-clear']}
 										blurOnClick={false}
 										title='Clear'
+										dataTestId='dropdown-clear-btn-test'
 										size='auto'
 										disabled={selectedOptions.length === 0}
 										onClick={(event) => {
@@ -659,6 +662,7 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(props,
 									/>
 									<Button
 										className={styles['multi-apply']}
+										dataTestId='dropdown-apply-btn-test'
 										title={
 											selectedOptions.length === 0
 												? 'Apply'

@@ -1,9 +1,8 @@
-import type { BaseButtonProps } from 'components/buttons/baseButton/types';
-import type { ElementSizeTypes } from 'components/cell';
+import type { BaseButtonProps } from '@/components/buttons/baseButton/types';
+import type { ElementSizeTypes } from '@/components/cell';
 import type { ComponentType } from 'react';
 
 export type ButtonColors = 'primary' | 'success' | 'danger' | 'warning';
-export type ButtonVariant = 'primary' | 'secondary' | 'Soft' | 'outlined' | 'ghost';
 
 export interface ButtonProps extends BaseButtonProps {
 	color?: ButtonColors;
@@ -12,5 +11,4 @@ export interface ButtonProps extends BaseButtonProps {
 	size?: ElementSizeTypes;
 	dataTestId?: string | undefined;
 	v2?: boolean;
-	v2ButtonVariant?: ButtonVariant;
 }

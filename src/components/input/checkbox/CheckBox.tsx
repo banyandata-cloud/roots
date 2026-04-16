@@ -24,6 +24,7 @@ const Checkbox: React.FC<CheckboxProps> = (props) => {
 		disabled,
 		disabledAsChild,
 		intermediate,
+		dataTestId,
 	} = props;
 
 	// Track controlled/uncontrolled mode once on first render
@@ -65,6 +66,10 @@ const Checkbox: React.FC<CheckboxProps> = (props) => {
 			<input
 				disabled={disabled}
 				type='checkbox'
+				data-testid={
+					dataTestId ??
+					(label ? `checkbox-input-${label}-cb-test` : 'checkbox-input-cb-test')
+				}
 				defaultChecked={defaultChecked}
 				{...(isControlled
 					? {
