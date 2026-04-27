@@ -1,0 +1,447 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+.root {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 8px;
+	align-self: stretch;
+	width: 100%;
+}
+
+
+.toolbarWrap {
+	position: relative;
+}
+
+.toolbar {
+	display: flex;
+	align-items: center;
+	flex-wrap: nowrap;
+	gap: 2px;
+	background-color: transparent;
+	padding: 0.5rem;
+	border-radius: 0.25rem;
+}
+
+.toolbarModern {
+	background: var(--Backgroundcolor-Bg-primary, #FFF);
+	border-radius: var(--radius-xl, 12px);
+	border: 1px solid var(--Bordercolor-border-Secondary_alt, rgba(255, 255, 255, 0.08));
+	box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.10), 0 4px 6px -2px rgba(0, 0, 0, 0.06);
+}
+
+.toolbarDivider {
+	width: 1px;
+	height: 1.25rem;
+	background-color: #E4E7EC;
+	margin: 0 0.25rem;
+}
+
+.headingSelectWrap {
+	margin-right: 12px;
+	display: flex;
+	align-items: center;
+}
+
+.headingDropdown {
+	width: 9.375rem;
+}
+
+.headingDropdown [data-elem='header'] {
+	background-color: var(--Backgroundcolor-Bg-primary, #FFF) !important;
+	box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.04), 0 1px 2px 0 rgba(0, 0, 0, 0.06) !important;
+	border: 1px solid var(--Bordercolor-border-primary, #D5D7DA) !important;
+	border-radius: var(--radius-md, 8px) !important;
+	display: flex !important;
+	padding: 8px 12px !important;
+	align-items: center !important;
+	justify-content: space-between !important;
+	gap: 8px !important;
+	align-self: stretch !important;
+	color: var(--Textcolor-Text-primary, #181D27) !important;
+	font-family: var(--font-font-family, "Plus Jakarta Sans") !important;
+	font-size: var(--font-size-14, 14px) !important;
+	font-style: normal !important;
+	font-weight: var(--font-weight-Medium, 500) !important;
+	line-height: var(--Line-height-24, 24px) !important;
+}
+
+.headingDropdown [data-elem='header'] [data-elem='select'] {
+	padding: 0 !important;
+}
+
+.headingDropdown [data-elem='header'] [data-elem='select'] svg {
+	fill: #71839b !important;
+	min-width: 12px !important;
+	width: 12px !important;
+	height: 12px !important;
+}
+
+.headingDropdown [data-elem='select'] {
+	color: var(--Textcolor-Text-primary, #181D27);
+	font-family: var(--font-font-family, "Plus Jakarta Sans");
+	font-size: var(--font-size-14, 14px);
+	font-style: normal;
+	font-weight: var(--font-weight-Medium, 500);
+	line-height: var(--Line-height-24, 24px);
+	flex: initial !important;
+}
+
+.headingSelect {
+	height: 2.5rem;
+	width: 10rem;
+	padding: 0 2rem 0 1rem;
+	font-size: 1rem;
+	line-height: 1.25rem;
+	color: #344054;
+	border: 1px solid #d0d5dd;
+	border-radius: 0.25rem;
+	box-shadow: 0 0 0.125rem 0 #00000025;
+	outline: none;
+	background-color: #ffffff;
+	transition: background-color 0.2s, color 0.2s;
+}
+
+.headingSelect:focus-visible {
+	border-color: #3b82f6;
+	box-shadow: 0 0 0 1px #3b82f6;
+}
+
+.toolbarButton {
+	width: 2.5rem;
+	height: 2.5rem;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 2px;
+	border: 0;
+	border-radius: 0.25rem;
+	background: transparent;
+	color: #697586;
+	cursor: pointer;
+	font-size: 1rem;
+	line-height: 1;
+	box-shadow: none;
+	position: relative;
+}
+
+.toolbarButton strong {
+	font-size: 1.35rem;
+	/* slightly larger to match icon volume */
+	font-weight: 500;
+	/* non-heavy bold style */
+	line-height: 1;
+	color: inherit;
+}
+
+
+.strikeText {
+	font-size: 1.35rem;
+	font-weight: 400;
+	line-height: 1;
+	color: inherit;
+	text-decoration: line-through;
+}
+
+.toolbarButton:hover {
+	background-color: #f2f4f7;
+	color: #344054;
+}
+
+.toolbarButton:focus-visible {
+	outline: 2px solid #3b82f6;
+	outline-offset: 1px;
+}
+
+.toolbarButton.active,
+.toolbarButton.active:hover {
+	background-color: var(--mono-color1, #71839b);
+	color: #ffffff;
+}
+
+.toolbarButton.active .strikeText,
+.toolbarButton.active strong {
+	color: #ffffff;
+}
+
+.toolbarButton.disabled,
+.toolbarButton:disabled {
+	opacity: 0.35;
+	cursor: not-allowed;
+}
+
+.editor {
+	height: 16rem;
+	width: 100%;
+	border-radius: 0.25rem;
+	box-shadow: 0 0 0.125rem 0 #05050540;
+}
+
+.editor :global(.ProseMirror) {
+	border-radius: 0.25rem;
+	height: 100%;
+	padding: 0.75rem 1rem;
+	box-sizing: border-box;
+	outline: none;
+	color: #1d2939;
+	font-family: var(--font-font-family, "Plus Jakarta Sans");
+	font-size: 1rem;
+	line-height: 1.45;
+	overflow-y: scroll;
+
+	/* Highlight Styling */
+	mark {
+		background-color: var(--utilitycolor-utility-brand-600, #1570EF) !important;
+		opacity: 0.1 !important;
+		height: 24px;
+		align-self: stretch;
+		display: inline-flex;
+		align-items: center;
+	}
+}
+
+.editor :global(.ProseMirror::-webkit-scrollbar) {
+	display: none;
+}
+
+.editor :global(.ProseMirror) {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+
+.editor :global(.ProseMirror p) {
+	margin: 0;
+	font-family: var(--font-font-family, "Plus Jakarta Sans");
+}
+
+.editor :global(.ProseMirror h1) {
+	color: var(--Textcolor-Text-primary, #181D27);
+	font-family: var(--font-font-family, "Plus Jakarta Sans");
+	font-size: 1.5rem;
+	font-style: normal;
+	font-weight: var(--font-weight-Medium, 500);
+	line-height: 1.3;
+	margin: 0;
+}
+
+.editor :global(.ProseMirror h2) {
+	color: var(--Textcolor-Text-primary, #181D27);
+	font-family: var(--font-font-family, "Plus Jakarta Sans");
+	font-size: 1.25rem;
+	font-style: normal;
+	font-weight: var(--font-weight-Medium, 500);
+	line-height: 1.3;
+	margin: 0;
+}
+
+.editor :global(.ProseMirror h3) {
+	color: var(--Textcolor-Text-primary, #181D27);
+	font-family: var(--font-font-family, "Plus Jakarta Sans");
+	font-size: 1.125rem;
+	font-style: normal;
+	font-weight: var(--font-weight-Medium, 500);
+	line-height: 1.3;
+	margin: 0;
+}
+
+.editor :global(.ProseMirror p + p) {
+	margin-top: 0.75rem;
+}
+
+.editor :global(.ProseMirror p.is-editor-empty:first-child::before) {
+	content: attr(data-placeholder);
+	color: #71839b;
+	float: left;
+	height: 0;
+	pointer-events: none;
+}
+
+.editor :global(.ProseMirror:focus-within) {
+	outline: var(--secondary-color2) 1px solid;
+}
+
+.editor :global(.ProseMirror ul),
+.editor :global(.ProseMirror ol) {
+	padding-left: 1.25rem;
+	margin: 0.5rem 0;
+	font-family: var(--font-font-family, "Plus Jakarta Sans");
+}
+
+.editor :global(.ProseMirror li) {
+	font-family: var(--font-font-family, "Plus Jakarta Sans");
+}
+
+.editor :global(.ProseMirror code) {
+	font-family: monospace;
+	font-size: 0.86em;
+	padding: 0.1rem 0.25rem;
+	background: #f2f4f7;
+	border-radius: 0.2rem;
+}
+
+.editor :global(.ProseMirror a) {
+	color: #175cd3;
+	text-decoration: underline;
+}
+
+.characterCount {
+	color: var(--Textcolor-Text-tertiary, #535862);
+	font-family: var(--font-font-family, "Plus Jakarta Sans");
+	font-size: 10px;
+	font-style: normal;
+	font-weight: var(--font-weight-Regular, 400);
+	line-height: var(--Line-height-16, 16px);
+	align-self: stretch;
+}
+
+.characterCount.overLimit {
+	color: #d92d20;
+}
+
+.hiddenColorInput {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	opacity: 0;
+	pointer-events: none;
+}
+
+.colorMenuTrigger {
+	position: relative;
+}
+
+.colorToolbarButton,
+.colorToolbarButton.active,
+.colorToolbarButton.active:hover {
+	display: flex;
+	width: 20px;
+	height: 20px;
+	padding: 2px;
+	justify-content: center;
+	align-items: center;
+	flex-shrink: 0;
+	border-radius: 25px;
+	background: var(--Backgroundcolor-Bg-primary, #FFF) !important;
+}
+
+.linkToolbarButton,
+.codeToolbarButton {
+	display: flex;
+	width: 32px;
+	height: 32px;
+	padding: 6px;
+	justify-content: center;
+	align-items: center;
+	aspect-ratio: 1/1;
+}
+
+.colorPopover {
+	position: absolute;
+	z-index: 12;
+	top: calc(100% + 0.45rem);
+	right: 0;
+	min-width: 11.5rem;
+	padding: 0.55rem;
+	background: #ffffff;
+	border: 1px solid #e4e7ec;
+	border-radius: 0.55rem;
+	box-shadow: 0 8px 20px rgba(16, 24, 40, 0.12);
+}
+
+.swatchGrid {
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	gap: 0.35rem;
+}
+
+.swatch {
+	width: 1rem;
+	height: 1rem;
+	border-radius: 999px;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	cursor: pointer;
+}
+
+.swatchActive {
+	box-shadow: 0 0 0 2px #111827;
+}
+
+.customRow {
+	display: flex;
+	align-items: center;
+	gap: 0.4rem;
+	margin-top: 0.55rem;
+}
+
+.customRow input[type='color'] {
+	width: 1rem;
+	height: 1rem;
+	border: 0;
+	background: transparent;
+	padding: 0;
+	cursor: pointer;
+}
+
+.customLabel {
+	font-size: 0.72rem;
+	color: #475467;
+}
+
+.hexInput {
+	width: 5.2rem;
+	height: 1.45rem;
+	border: 1px solid #d0d5dd;
+	border-radius: 0.3rem;
+	padding: 0 0.4rem;
+	font-size: 0.68rem;
+	color: #344054;
+	text-transform: uppercase;
+}
+
+.hexInput:focus-visible {
+	outline: 1px solid #3b82f6;
+}
+
+.bubbleMenu {
+	display: inline-flex;
+	align-items: center;
+	gap: 2px;
+	padding: 0.25rem;
+	background: #101828;
+	border-radius: 0.45rem;
+	box-shadow: 0 8px 16px rgba(16, 24, 40, 0.28);
+}
+
+.bubbleMenu .toolbarButton {
+	color: rgba(255, 255, 255, 0.82);
+	width: 2rem;
+	height: 2rem;
+}
+
+.bubbleMenu .toolbarButton:hover {
+	background-color: rgba(255, 255, 255, 0.12);
+	color: #ffffff;
+}
+
+.editorWrap {
+	position: relative;
+	width: 100%;
+}
+
+.resizeHandle {
+	position: absolute;
+	right: 1px;
+	bottom: 1px;
+	width: 12px;
+	height: 12px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	pointer-events: none;
+}
+
+.bubbleMenu .toolbarButton.active {
+	background-color: rgba(255, 255, 255, 0.2);
+	color: #ffffff;
+}
