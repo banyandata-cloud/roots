@@ -41,6 +41,7 @@ interface DatePickerDisplayValueArgs {
 	singlePicker: boolean | number;
 	timeRange?: boolean | undefined;
 	limitHours?: number | undefined;
+	showTime?: boolean | undefined;
 }
 
 const getMonthAbbreviation = (date: Date): string => {
@@ -159,6 +160,7 @@ export const getDatePickerDisplayValue = ({
 	singlePicker,
 	timeRange,
 	limitHours,
+	showTime = true,
 }: DatePickerDisplayValueArgs): string => {
 	if (rangePicker) {
 		const rangeValue = value as number[];
@@ -191,11 +193,16 @@ export const getDatePickerDisplayValue = ({
 
 		const sDate = fromUnixTime(singleValue);
 
-		const timeValue = `${doubleDigitted(((sDate.getHours() + 11) % 12) + 1)}:${doubleDigitted(
-			sDate.getMinutes()
-		)} ${sDate.getHours() >= 12 ? 'PM' : 'AM'}`;
+		const dateValue = `${sDate.getDate()} ${getMonthAbbreviation(sDate)} ${sDate.getFullYear()}`;
 
-		return `${sDate.getDate()} ${getMonthAbbreviation(sDate)} ${sDate.getFullYear()}, ${timeValue}`;
+		if (showTime) {
+			const timeValue = `${doubleDigitted(((sDate.getHours() + 11) % 12) + 1)}:${doubleDigitted(
+				sDate.getMinutes()
+			)} ${sDate.getHours() >= 12 ? 'PM' : 'AM'}`;
+			return `${dateValue}, ${timeValue}`;
+		}
+
+		return dateValue;
 	}
 
 	if (timeRange) {
@@ -205,13 +212,18 @@ export const getDatePickerDisplayValue = ({
 		const sDate = fromUnixTime(singleValue - 3600 * (limitHours ?? 0));
 		const eDate = fromUnixTime(singleValue);
 
-		const timeValue = `${doubleDigitted(((sDate.getHours() + 11) % 12) + 1)}:${doubleDigitted(
-			sDate.getMinutes()
-		)} ${sDate.getHours() >= 12 ? 'PM' : 'AM'} - ${doubleDigitted(
-			((eDate.getHours() + 11) % 12) + 1
-		)}:${doubleDigitted(eDate.getMinutes())} ${eDate.getHours() >= 12 ? 'PM' : 'AM'}`;
+		const dateValue = `${sDate.getDate()} ${getMonthAbbreviation(sDate)} ${sDate.getFullYear()}`;
 
-		return `${sDate.getDate()} ${getMonthAbbreviation(sDate)} ${sDate.getFullYear()}, ${timeValue}`;
+		if (showTime) {
+			const timeValue = `${doubleDigitted(((sDate.getHours() + 11) % 12) + 1)}:${doubleDigitted(
+				sDate.getMinutes()
+			)} ${sDate.getHours() >= 12 ? 'PM' : 'AM'} - ${doubleDigitted(
+				((eDate.getHours() + 11) % 12) + 1
+			)}:${doubleDigitted(eDate.getMinutes())} ${eDate.getHours() >= 12 ? 'PM' : 'AM'}`;
+			return `${dateValue}, ${timeValue}`;
+		}
+
+		return dateValue;
 	}
 
 	return '';
