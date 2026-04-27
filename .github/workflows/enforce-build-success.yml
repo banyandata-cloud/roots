@@ -1,0 +1,143 @@
+name: Enforce Build Success
+
+on:
+    # Single trigger to avoid duplicate runs
+    pull_request_target:
+        types: [opened, synchronize, reopened, edited]
+
+permissions:
+    contents: read
+    pull-requests: write
+    issues: write
+
+jobs:
+    build-check:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Preflight — show trigger & branches
+              uses: actions/github-script@v7
+              with:
+                  script: |
+                      const pr = context.payload.pull_request;
+                      core.info(`Event: ${context.eventName}`);
+                      core.info(`Base:  ${pr.base.ref}`);
+                      core.info(`Head:  ${pr.head.ref}`);
+                      const inScope = (pr.base.ref || '').toLowerCase().includes('main');
+                      core.info(`Scope (base contains "main"): ${inScope}`);
+
+            - name: Check if build validation is required
+              id: check-scope
+              uses: actions/github-script@v7
+              with:
+                  script: |
+                      const pr = context.payload.pull_request;
+                      const baseRef = pr.base.ref || "";
+                      const inScope = baseRef.toLowerCase().includes("main");
+
+                      if (!inScope) {
+                        core.info(`Base branch "${baseRef}" not in scope (does not contain 'main'). Skipping build check.`);
+                        core.setOutput('should_build', 'false');
+                        return;
+                      }
+
+                      core.setOutput('should_build', 'true');
+
+            - name: Checkout repository
+              if: steps.check-scope.outputs.should_build == 'true'
+              uses: actions/checkout@v4
+              with:
+                  ref: ${{ github.event.pull_request.head.sha }}
+
+            - name: Setup Bun
+              if: steps.check-scope.outputs.should_build == 'true'
+              uses: oven-sh/setup-bun@v2
+              with:
+                  bun-version: latest
+
+            - name: Install dependencies
+              if: steps.check-scope.outputs.should_build == 'true'
+              run: bun install
+
+            - name: Run build and handle failure
+              if: steps.check-scope.outputs.should_build == 'true'
+              uses: actions/github-script@v7
+              with:
+                  script: |
+                      const { exec: childExec } = require('child_process');
+                      const util = require('util');
+                      const execPromise = util.promisify(childExec);
+
+                      const pr = context.payload.pull_request;
+
+                      try {
+                        core.info('🔨 Running build with bun...');
+                        const { stdout, stderr } = await execPromise('bun run build', {
+                          cwd: process.env.GITHUB_WORKSPACE,
+                          timeout: 600000 // 10 minutes timeout
+                        });
+                        
+                        if (stdout) core.info('Build stdout:\n' + stdout);
+                        if (stderr) core.warning('Build stderr:\n' + stderr);
+                        
+                        core.info('✅ Build completed successfully!');
+                        
+                      } catch (error) {
+                        core.error('❌ Build failed!');
+                        
+                        // Extract useful error information
+                        const errorOutput = error.stdout || error.stderr || error.message || 'Unknown build error';
+                        const truncatedError = errorOutput.length > 2000 ? 
+                          errorOutput.substring(0, 2000) + '\n\n... (truncated)' : 
+                          errorOutput;
+                        
+                        const guidance = [
+                          "**PR automatically closed**: Build failed.",
+                          "",
+                          "The component library build process failed when testing your changes. This usually indicates:",
+                          "",
+                          "**Common causes:**",
+                          "- TypeScript compilation errors in components",
+                          "- Missing or incorrect component exports",
+                          "- Missing dependencies or imports",
+                          "- CSS/SCSS compilation issues",
+                          "- Rollup build configuration issues",
+                          "",
+                          "**Build error details:**",
+                          "```",
+                          truncatedError,
+                          "```",
+                          "",
+                          "**How to fix:**",
+                          "1. Run `bun install && bun run build` locally to reproduce the error",
+                          "2. Fix any syntax or configuration issues",
+                          "3. Ensure your build passes locally before pushing",
+                          "4. Open a new PR with the fixes",
+                          "",
+                          "**Build command used:** `bun run build`"
+                        ].join('\n');
+
+                        try {
+                          await github.rest.issues.createComment({
+                            owner: context.repo.owner,
+                            repo: context.repo.repo,
+                            issue_number: pr.number,
+                            body: guidance,
+                          });
+
+                          await github.rest.pulls.update({
+                            owner: context.repo.owner,
+                            repo: context.repo.repo,
+                            pull_number: pr.number,
+                            state: "closed",
+                          });
+
+                          core.setFailed("Closed PR: Build failed.");
+                        } catch (err) {
+                          core.warning(
+                            "Could not close PR (token permissions or repo settings). " +
+                            "Details: " + err.message
+                          );
+                          // Still fail the workflow even if we can't close the PR
+                          core.setFailed("Build failed: " + errorOutput.substring(0, 500));
+                        }
+                      }
