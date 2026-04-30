@@ -2,8 +2,8 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start;
-  gap: 0rem;
+  align-items: stretch;
+  gap: 1rem;
 }
 .root .title-container {
   align-self: stretch;
@@ -11,7 +11,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 0rem 1rem;
+  padding: 0rem;
   width: 100%;
 }
 .root .title-container .title {

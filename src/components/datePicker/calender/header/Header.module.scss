@@ -1,12 +1,12 @@
 @import '../../../../styles/';
 
 .root {
-	@include flex(column, flex-start, flex-start);
-	gap: 0rem;
+	@include flex(column, flex-start, stretch);
+	gap: 1rem;
 	.title-container {
 		align-self: stretch;
 		@include flex(row, space-between, center);
-		padding: 0rem 1rem;
+		padding: 0rem;
 		width: 100%;
 		.title {
 			font-weight: 500;
