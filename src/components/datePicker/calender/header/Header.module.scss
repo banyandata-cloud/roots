@@ -1,7 +1,7 @@
 @import '../../../../styles/';
 
 .root {
-	@include flex(column, flex-start, stretch);
+	@include flex(column, flex-start, flex-start);
 	gap: 1rem;
 	.title-container {
 		align-self: stretch;
