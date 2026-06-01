@@ -16,7 +16,6 @@ import { ArrowIcon, ColumnFilter, CrossIcon, FilterIcon, SearchIcon } from '../.
 import { DropdownItemv2, Dropdownv2, TextFieldv2 } from '../../../input';
 import { Text } from '../../../text';
 import styles from './TableFilters.module.css';
-
 interface TableFiltersProps extends Pick<TableProps, 'headerData' | 'className'> {
 	hiddenColumns?: Record<string, boolean | null> | undefined;
 	setHiddenColumns: Dispatch<SetStateAction<Record<string, boolean | null> | undefined>>;
@@ -100,6 +99,11 @@ const TableFilters = (props: TableFiltersProps) => {
 
 	const handleKeyDown = (event: KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) => {
 		if (event.key === 'Enter') {
+			if (onClear && !search) {
+				onClear();
+				setSearch('');
+				return;
+			}
 			onSearch?.(search);
 		}
 	};
