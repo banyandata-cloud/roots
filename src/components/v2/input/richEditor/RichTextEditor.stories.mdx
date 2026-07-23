@@ -1,0 +1,125 @@
+import { useState } from 'react';
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+import { ThemedContainer } from '../../../helpers';
+import RichTextEditor from './RichTextEditor';
+import styles from './RichTextEditor.module.css';
+
+<Meta title='Components/v2/Input/RichTextEditor' parameters={{ options: { showToolbar: true } }} />
+
+export const Template = (args) => (
+	<ThemedContainer theme='light'>
+		<RichTextEditor {...args} />
+	</ThemedContainer>
+);
+
+export const InteractiveTemplate = () => {
+	const [content, setContent] = useState(ANIMAL_TEXT);
+	return (
+		<ThemedContainer theme='light'>
+			<RichTextEditor
+				content={content}
+				setContent={setContent}
+				maxCharacters={1816}
+				onInsertImage={() => {
+					console.log('Insert image clicked');
+				}}
+				hiddenMenu={{
+					strike: true,
+					justify: true,
+					image: true,
+				}}
+			/>
+		</ThemedContainer>
+	);
+};
+
+export const ANIMAL_TEXT = `
+<p>We need another and a wiser and perhaps a more mystical concept of animals. Remote from universal nature, and living by complicated artifice, man in civilization surveys the creature through the glass of his knowledge and sees thereby a feather magnified and the whole image in distortion.</p>
+<p>We patronize them for their incompleteness, for their tragic fate of having taken form so far below ourselves. And therein we err, and greatly err. For the animal shall not be measured by man.</p>
+<p>In a world older and more complete than ours they move finished and complete, gifted with extensions of the senses we have lost or never attained, living by voices we shall never hear. They are not brethren, they are not underlings; they are other nations, caught with ourselves in the net of life and time, fellow prisoners of the splendour and travail of the earth.</p>
+`;
+
+# Rich Text Editor (V2)
+
+#### Design - [Figma](https://www.figma.com/design/IfmLQrA0AAZVYwt6vRxqCe/Design-System--26?node-id=2139-3177&m=dev) | Code - [Github](https://github.com/banyandata-cloud/roots/tree/main/src/components/v2/input/richEditor)
+
+> The Rich Text Editor component provides an accessible and easily customizable way to edit rich text. It supports both controlled and uncontrolled usage.
+
+## Usage
+
+Basic import and additional information on how to use this component.
+
+```js
+import { RichTextEditor } from '@banyan_cloud/roots/v2';
+```
+
+## Stories
+
+The CSF rendered inside the `Canvas` from which you can see the implementation example.
+
+### Default
+
+The default Rich Text Editor.
+
+<Canvas>
+	<Story
+		name='Default'
+		args={{
+			variant: 'contained',
+			defaultContent: ANIMAL_TEXT,
+			maxCharacters: 1816,
+			hiddenMenu: {
+				strike: true,
+				justify: true,
+				heading: true,
+				link: true,
+				image: true,
+				code: true,
+			}
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
+
+### Interactive
+
+The Interactive Rich Text Editor.
+
+<Canvas>
+	<Story
+		name='Interactive'
+		args={{
+			maxCharacters: 1816,
+			hiddenMenu: {
+				strike: true,
+				justify: true,
+				image: true,
+			}
+		}}>
+		{InteractiveTemplate.bind({})}
+	</Story>
+</Canvas>
+
+### Default 2
+
+The default Rich Text Editor (Duplicate).
+
+<Canvas>
+	<Story
+		name='Default 2'
+		args={{
+			variant: 'contained',
+			toolbarClassName: styles.toolbarModern,
+			defaultContent: ANIMAL_TEXT,
+			maxCharacters: 1816,
+			hiddenMenu: {
+				strike: true,
+				justify: true,
+				heading: true,
+				image: true,
+				bulletList: true,
+			}
+		}}>
+		{Template.bind({})}
+	</Story>
+</Canvas>
