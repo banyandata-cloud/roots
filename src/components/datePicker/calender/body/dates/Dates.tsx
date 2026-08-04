@@ -8,7 +8,7 @@ import {
 	isSameDay,
 	isToday,
 } from 'date-fns';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { classes, getDatesInAMonth, getDayInfo } from '../../../../../utils';
 import { TodayIndicator } from './assets';
 import styles from './Dates.module.css';
@@ -35,11 +35,12 @@ const Dates = (props: DatesProps): React.JSX.Element => {
 
 	const { monthAsNumber, year } = selectedMonth || {};
 
-	const [datesToDisplay, setDatesToDisplay] = useState<Date[]>(() => []);
 	const [unSelectedDate, setUnSelectedDate] = useState<string | null>(() => null);
 	const [hoveredEndingDate, setHoveredEndingDate] = useState<number | null>(() => null);
-	const [datesInMonth, setDatesInMonth] = useState<DatesInMonth>(
-		() => getDatesInAMonth({ month: monthAsNumber, year }) as DatesInMonth
+
+	const datesInMonth = useMemo(
+		() => getDatesInAMonth({ month: monthAsNumber, year }) as DatesInMonth,
+		[monthAsNumber, year]
 	);
 
 	const unixArr = selectedRange.unix ?? [];
@@ -48,14 +49,16 @@ const Dates = (props: DatesProps): React.JSX.Element => {
 
 	const { days, dateObj } = datesInMonth;
 
-	useEffect(() => {
-		setDatesInMonth(getDatesInAMonth({ month: monthAsNumber, year }) as DatesInMonth);
-		setUnSelectedDate(null);
-	}, [selectedMonth]);
+	const datesToDisplay = useMemo(
+		() => getDatesToDisplay({ monthAsNumber, year, days, dateObj }),
+		// datesInMonth is the single source of truth for days and dateObj
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+		[monthAsNumber, year, datesInMonth]
+	);
 
 	useEffect(() => {
-		setDatesToDisplay(getDatesToDisplay({ monthAsNumber, year, days, dateObj }));
-	}, [days]);
+		setUnSelectedDate(null);
+	}, [selectedMonth]);
 
 	const dateSelection = (date: Date): void => {
 		setFixedRange?.(false);
