@@ -182,6 +182,29 @@ export const SmallSize: Story = {
 					/>
 				</div>
 			</div>
+			<div>
+				<p style={headingStyle}>Timeline - Vertical (SM)</p>
+				<div style={{ display: 'flex', gap: '40px' }}>
+					<Stepper
+						size='sm'
+						variant='timeline'
+						orientation='vertical'
+						steps={verticalSteps('incomplete')}
+					/>
+					<Stepper
+						size='sm'
+						variant='timeline'
+						orientation='vertical'
+						steps={verticalSteps('current')}
+					/>
+					<Stepper
+						size='sm'
+						variant='timeline'
+						orientation='vertical'
+						steps={verticalSteps('completed')}
+					/>
+				</div>
+			</div>
 		</div>
 	),
 };
@@ -263,6 +286,29 @@ export const MediumSize: Story = {
 					/>
 				</div>
 			</div>
+			<div>
+				<p style={headingStyle}>Timeline - Vertical (MD)</p>
+				<div style={{ display: 'flex', gap: '40px' }}>
+					<Stepper
+						size='md'
+						variant='timeline'
+						orientation='vertical'
+						steps={verticalSteps('incomplete')}
+					/>
+					<Stepper
+						size='md'
+						variant='timeline'
+						orientation='vertical'
+						steps={verticalSteps('current')}
+					/>
+					<Stepper
+						size='md'
+						variant='timeline'
+						orientation='vertical'
+						steps={verticalSteps('completed')}
+					/>
+				</div>
+			</div>
 		</div>
 	),
 };
@@ -307,3 +353,4 @@ export const Interactive: StoryObj<typeof StepperInteractive> = {
 		</div>
 	),
 };
+

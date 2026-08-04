@@ -1,7 +1,7 @@
 export type Orientation = 'horizontal' | 'vertical';
 export type StepStatus = 'incomplete' | 'current' | 'completed';
 export type StepperSize = 'sm' | 'md';
-export type StepperVariant = 'icon' | 'noIcon' | 'progressBar';
+export type StepperVariant = 'icon' | 'noIcon' | 'progressBar' | 'timeline';
 
 export interface Step {
 	label?: string | undefined;

@@ -23,6 +23,19 @@ const resolveIcon = (
 	step?: number
 ) => {
 	const isSm = size === 'sm';
+	if (variant === 'timeline') {
+		const isActive = status === 'current' || status === 'completed';
+		const fill = isActive
+			? 'var(--brand-colours-20-blue, #00037C)'
+			: 'var(--mono-colours-201, #71839B)';
+		const r = isSm ? 5 : 6;
+		const size_ = isSm ? 24 : 32;
+		return (
+			<svg width={size_} height={size_} viewBox={`0 0 ${size_} ${size_}`} fill='none'>
+				<circle cx={size_ / 2} cy={size_ / 2} r={r} fill={fill} />
+			</svg>
+		);
+	}
 	if (variant === 'icon') {
 		if (status === 'incomplete') return isSm ? <IncompleteIconSm /> : <IncompleteIconMd />;
 		if (status === 'current') return isSm ? <CurrentIconSm /> : <CurrentIconMd />;
