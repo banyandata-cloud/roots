@@ -127,7 +127,7 @@ export const getDateRangeTag = (dates: number[] = []): string => {
 		return 'hour';
 	}
 
-	if (dayDifference >= 30) {
+	if (dayDifference >= 60) {
 		return 'month';
 	}
 
