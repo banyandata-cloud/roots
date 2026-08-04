@@ -51,8 +51,6 @@ const Dates = (props: DatesProps): React.JSX.Element => {
 
 	const datesToDisplay = useMemo(
 		() => getDatesToDisplay({ monthAsNumber, year, days, dateObj }),
-		// datesInMonth is the single source of truth for days and dateObj
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 		[monthAsNumber, year, datesInMonth]
 	);
 

@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Table — Snapshot Rendering matches snapshot for default table 1`] = `
+<div>
+  <div
+    class="root"
+  >
+    <div
+      data-testid="table-filters"
+    >
+      <button
+        data-testid="search-btn"
+      />
+      <button
+        data-testid="drawer-btn"
+      />
+    </div>
+    <table
+      data-testid="base-table"
+      style="height: calc(100% - 3rem);"
+    >
+      <tbody
+        data-testid="table-body"
+      >
+        <tr
+          data-testid="table-row"
+        />
+      </tbody>
+    </table>
+  </div>
+</div>
+`;
