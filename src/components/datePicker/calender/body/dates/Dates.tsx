@@ -35,27 +35,34 @@ const Dates = (props: DatesProps): React.JSX.Element => {
 
 	const { monthAsNumber, year } = selectedMonth || {};
 
-	const [datesToDisplay, setDatesToDisplay] = useState<Date[]>(() => []);
+	const [datesToDisplay, setDatesToDisplay] = useState<Date[]>(() => {
+		const initDatesInMonth = getDatesInAMonth({ month: monthAsNumber, year }) as DatesInMonth;
+		return getDatesToDisplay({
+			monthAsNumber,
+			year,
+			days: initDatesInMonth.days,
+			dateObj: initDatesInMonth.dateObj,
+		});
+	});
 	const [unSelectedDate, setUnSelectedDate] = useState<string | null>(() => null);
 	const [hoveredEndingDate, setHoveredEndingDate] = useState<number | null>(() => null);
-	const [datesInMonth, setDatesInMonth] = useState<DatesInMonth>(
-		() => getDatesInAMonth({ month: monthAsNumber, year }) as DatesInMonth
-	);
 
 	const unixArr = selectedRange.unix ?? [];
 	const firstItem = unixArr[0];
 	const lastItem = unixArr[unixArr.length - 1];
 
-	const { days, dateObj } = datesInMonth;
-
 	useEffect(() => {
-		setDatesInMonth(getDatesInAMonth({ month: monthAsNumber, year }) as DatesInMonth);
+		const newDatesInMonth = getDatesInAMonth({ month: monthAsNumber, year }) as DatesInMonth;
+		setDatesToDisplay(
+			getDatesToDisplay({
+				monthAsNumber,
+				year,
+				days: newDatesInMonth.days,
+				dateObj: newDatesInMonth.dateObj,
+			})
+		);
 		setUnSelectedDate(null);
 	}, [selectedMonth]);
-
-	useEffect(() => {
-		setDatesToDisplay(getDatesToDisplay({ monthAsNumber, year, days, dateObj }));
-	}, [days]);
 
 	const dateSelection = (date: Date): void => {
 		setFixedRange?.(false);

@@ -127,8 +127,9 @@ export const rangeSelection = ({ selectedRange, date }: RangeSelectionParams): S
 				dates: [`${dateAsNumber} ${month} ${year}`, ...selectedRange.dates],
 				unix: [
 					getUnixTime(new Date(date).setHours(0, 0, 0, 0)),
-					getUnixTime(new Date(date).setHours(23, 59, 59, 59)),
-					...(selectedRange.unix as number[]),
+					getUnixTime(
+						fromUnixTime(selectedRange.unix?.[0] as number).setHours(23, 59, 59, 59)
+					),
 				],
 			};
 		}
