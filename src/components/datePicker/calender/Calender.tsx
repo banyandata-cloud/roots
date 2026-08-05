@@ -8,24 +8,24 @@ import { CalenderBody } from './body';
 import { CalenderFooter } from './footer';
 import { CalenderHeader } from './header';
 import type {
+	ActiveTimeSelection,
+	CalenderProps,
+	CustomRange,
 	SelectedDate,
 	SelectedMonth,
 	SelectedRange,
-	TimeSlot,
 	TimeRangeSelection,
-	CustomRange,
-	ActiveTimeSelection,
-	CalenderProps,
+	TimeSlot,
 } from './types';
 
 export type {
+	ActiveTimeSelection,
+	CustomRange,
 	SelectedDate,
 	SelectedMonth,
 	SelectedRange,
-	TimeSlot,
 	TimeRangeSelection,
-	CustomRange,
-	ActiveTimeSelection,
+	TimeSlot,
 };
 
 const Calender = (props: CalenderProps): React.JSX.Element => {
@@ -98,11 +98,11 @@ const Calender = (props: CalenderProps): React.JSX.Element => {
 					}) as string[],
 					unix: [startUnix, endUnix],
 				});
-				const firstDayInfo = getDayInfo(fromUnixTime(startUnix));
+				const endDayInfo = getDayInfo(fromUnixTime(endUnix));
 				setSelectedMonth({
-					month: firstDayInfo.month,
-					monthAsNumber: firstDayInfo.monthAsNumber,
-					year: firstDayInfo.year,
+					month: endDayInfo.month,
+					monthAsNumber: endDayInfo.monthAsNumber,
+					year: endDayInfo.year,
 				});
 			}
 			const date = new Date();

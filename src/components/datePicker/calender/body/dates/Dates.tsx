@@ -8,7 +8,7 @@ import {
 	isSameDay,
 	isToday,
 } from 'date-fns';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { classes, getDatesInAMonth, getDayInfo } from '../../../../../utils';
 import { TodayIndicator } from './assets';
 import styles from './Dates.module.css';
@@ -35,32 +35,26 @@ const Dates = (props: DatesProps): React.JSX.Element => {
 
 	const { monthAsNumber, year } = selectedMonth || {};
 
-	const [datesToDisplay, setDatesToDisplay] = useState<Date[]>(() => {
-		const initDatesInMonth = getDatesInAMonth({ month: monthAsNumber, year }) as DatesInMonth;
-		return getDatesToDisplay({
-			monthAsNumber,
-			year,
-			days: initDatesInMonth.days,
-			dateObj: initDatesInMonth.dateObj,
-		});
-	});
 	const [unSelectedDate, setUnSelectedDate] = useState<string | null>(() => null);
 	const [hoveredEndingDate, setHoveredEndingDate] = useState<number | null>(() => null);
+
+	const datesInMonth = useMemo(
+		() => getDatesInAMonth({ month: monthAsNumber, year }) as DatesInMonth,
+		[monthAsNumber, year]
+	);
 
 	const unixArr = selectedRange.unix ?? [];
 	const firstItem = unixArr[0];
 	const lastItem = unixArr[unixArr.length - 1];
 
+	const { days, dateObj } = datesInMonth;
+
+	const datesToDisplay = useMemo(
+		() => getDatesToDisplay({ monthAsNumber, year, days, dateObj }),
+		[monthAsNumber, year, datesInMonth]
+	);
+
 	useEffect(() => {
-		const newDatesInMonth = getDatesInAMonth({ month: monthAsNumber, year }) as DatesInMonth;
-		setDatesToDisplay(
-			getDatesToDisplay({
-				monthAsNumber,
-				year,
-				days: newDatesInMonth.days,
-				dateObj: newDatesInMonth.dateObj,
-			})
-		);
 		setUnSelectedDate(null);
 	}, [selectedMonth]);
 
