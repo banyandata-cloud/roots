@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { classes, doubleDigitted } from '../../../../../utils';
 import { Button } from '../../../../buttons';
 import styles from './DateAndTimeSelection.module.css';
@@ -32,14 +32,6 @@ const DateAndTimeSelection = ({
 		)}:${doubleDigitted(timeRangeSelection.next?.MINS)} ${timeRangeSelection.next?.MER}`;
 	}
 
-	const [dateValue, setDateValue] = useState<string | undefined>();
-	const [timeValue, setTimeValue] = useState<string | undefined>();
-
-	useEffect(() => {
-		setDateValue(defaultDate);
-		setTimeValue(defaultTime);
-	}, [defaultDate, defaultTime]);
-
 	const onDateSelectorClick = (): void => {
 		showTimeSelectionView(false);
 		showDateSelectionView((prev) => !prev);
@@ -60,7 +52,7 @@ const DateAndTimeSelection = ({
 		setActiveGoToSelection('time');
 	};
 
-	if (!dateValue) {
+	if (!defaultDate) {
 		return null;
 	}
 
@@ -74,7 +66,7 @@ const DateAndTimeSelection = ({
 						styles.selector,
 						activeGoToSelection === 'date' ? styles.active : ''
 					)}
-					title={dateValue}
+					title={defaultDate}
 					variant='outlined'
 				/>
 				{showTime && (
@@ -84,7 +76,7 @@ const DateAndTimeSelection = ({
 							styles.selector,
 							activeGoToSelection === 'time' ? styles.active : ''
 						)}
-						title={timeValue}
+						title={defaultTime}
 						variant='outlined'
 					/>
 				)}
