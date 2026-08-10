@@ -169,6 +169,20 @@ const Calender = (props: CalenderProps): React.JSX.Element => {
 		setSelectedValues();
 	}, []);
 
+	useEffect(() => {
+		if (fixedRange) {
+			const firstUnix = selectedRange?.unix?.[0];
+			if (firstUnix !== undefined) {
+				const dayInfo = getDayInfo(fromUnixTime(firstUnix));
+				setSelectedMonth({
+					month: dayInfo.month,
+					monthAsNumber: dayInfo.monthAsNumber,
+					year: dayInfo.year,
+				});
+			}
+		}
+	}, [fixedRange]);
+
 	const onMonthChange = (switchSide: 'prev' | 'next'): void => {
 		if (switchSide === 'prev') {
 			if (selectedMonth.monthAsNumber === 0) {
