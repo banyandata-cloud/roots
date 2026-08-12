@@ -62,8 +62,9 @@ const Dates = (props: DatesProps): React.JSX.Element => {
 		setFixedRange?.(false);
 
 		if (range) {
-			setHoveredEndingDate(null);
-			setSelectedRange(rangeSelection({ selectedRange, date }));
+			const newRange = rangeSelection({ selectedRange, date });
+			setHoveredEndingDate(newRange.unix?.length === 1 ? getUnixTime(date) : null);
+			setSelectedRange(newRange);
 			return;
 		}
 
@@ -121,7 +122,7 @@ const Dates = (props: DatesProps): React.JSX.Element => {
 	};
 
 	return (
-		<div className={styles.root}>
+		<div className={styles.root} onMouseLeave={() => setHoveredEndingDate(null)}>
 			{datesToDisplay.map((date: Date) => {
 				const dateNumber = date?.getDate();
 				const today = isToday(date);
@@ -185,7 +186,7 @@ const Dates = (props: DatesProps): React.JSX.Element => {
 				}
 
 				const parentClassNames = classes(
-					isMidItem
+					!isDisabled && isMidItem
 						? selectedSingleDate
 							? styles.midInRangeSelected
 							: styles.midInRange
@@ -196,10 +197,10 @@ const Dates = (props: DatesProps): React.JSX.Element => {
 							: styles.minInRange
 						: '',
 					isLastItem ? styles.maxInRange : '',
-					(isSameDayRange && isLastItemHovered) || isLastItemHovered
+					!isDisabled && ((isSameDayRange && isLastItemHovered) || isLastItemHovered)
 						? styles['last-hovered']
 						: '',
-					(isSameDayRange && isFirstItemHovered) || isFirstItemHovered
+					!isDisabled && ((isSameDayRange && isFirstItemHovered) || isFirstItemHovered)
 						? styles['first-hovered']
 						: '',
 					today ? styles.today : '',
@@ -222,7 +223,7 @@ const Dates = (props: DatesProps): React.JSX.Element => {
 							if (!isDisabled) dateSelection(date);
 						}}
 						onMouseEnter={() => {
-							onMouseEnterADate(date);
+							if (!isDisabled) onMouseEnterADate(date);
 						}}
 						key={date.toDateString()}>
 						<span className={childClassNames}>{dateNumber}</span>

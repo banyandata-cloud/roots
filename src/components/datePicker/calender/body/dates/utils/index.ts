@@ -111,6 +111,16 @@ export const rangeSelection = ({ selectedRange, date }: RangeSelectionParams): S
 		return { dates: [], unix: [] };
 	}
 
+	if (
+		selectedRange.dates?.length === 2 &&
+		selectedRange.unix?.[1] === getUnixTime(new Date(date).setHours(23, 59, 59, 59))
+	) {
+		return {
+			dates: [selectedRange.dates[0] as string],
+			unix: [selectedRange.unix[0] as number],
+		};
+	}
+
 	if (!selectedRange?.dates || selectedRange?.dates?.length === 0) {
 		return {
 			dates: [`${dateAsNumber} ${month} ${year}`],
