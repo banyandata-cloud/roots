@@ -140,6 +140,11 @@
 				width: 2.5rem;
 				flex-shrink: 0;
 			}
+			&:hover .date {
+				background-color: $secondary-color2;
+				color: $white;
+				box-shadow: none;
+			}
 			&.today-selected {
 				@include flex(column, flex-start, center);
 				.date {
@@ -167,6 +172,11 @@
 				height: 2.5rem;
 				width: 2.5rem;
 				flex-shrink: 0;
+			}
+			&:hover .date {
+				background-color: $secondary-color2;
+				color: $white;
+				box-shadow: none;
 			}
 			&.today-selected {
 				@include flex(column, flex-start, center);
