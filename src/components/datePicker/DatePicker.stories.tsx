@@ -128,6 +128,35 @@ export const CustomRangeDatePicker: Story = {
 	render: () => <CustomRangeDatePickerStory />,
 };
 
+/* --- Date Range Picker With Time Selection --- */
+const DateRangePickerWithTimeSelectionStory = () => {
+	const [value, setValue] = useState<[number, number] | null>(null);
+	return (
+		<DatePicker
+			placeholder='Select Date & Time Range'
+			label='Date Range Picker'
+			range={true}
+			timeRange={true}
+			showTime={true}
+			value={value}
+			onApply={(v) => setValue(v as [number, number])}
+			onClear={() => setValue(null)}
+			showCustomRanges={true}
+			customRanges={[
+				{ title: 'Last 1 hour', type: 'hours', value: 1 },
+				{ title: 'Last 6 hours', type: 'hours', value: 6 },
+				{ title: 'Last 24 hours', type: 'hours', value: 24 },
+				{ title: 'Last 7 days', type: 'days', value: 7 },
+			]}
+		/>
+	);
+};
+
+export const DateRangePickerWithTimeSelection: Story = {
+	name: 'Date Range Picker With Time Selection',
+	render: () => <DateRangePickerWithTimeSelectionStory />,
+};
+
 export const DisabledPicker: Story = {
 	name: 'Disabled Picker',
 	args: {

@@ -1,4 +1,4 @@
-import type { SelectedDate, SelectedRange, CustomRange } from '../../Calender';
+import type { SelectedDate, SelectedRange, CustomRange, TimeRangeSelection } from '../../Calender';
 
 export interface FooterProps {
 	selectedDate?: SelectedDate | undefined;
@@ -10,4 +10,8 @@ export interface FooterProps {
 	value?: number | number[] | undefined;
 	customRanges?: CustomRange[] | undefined;
 	setFixedRange?: ((value: boolean) => void) | undefined;
+	range?: boolean | undefined;
+	timeRange?: boolean | undefined;
+	timeRangeSelection?: TimeRangeSelection | undefined;
+	committedRange?: SelectedRange | undefined;
 }

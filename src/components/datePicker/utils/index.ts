@@ -5,9 +5,11 @@ import {
 	differenceInMinutes,
 	differenceInMonths,
 	fromUnixTime,
+	getUnixTime,
 } from 'date-fns';
 import { MONTHS } from '../../../constants';
 import { doubleDigitted } from '../../../utils';
+import type { TimeSlot } from '../calender/types';
 import { dateRanges } from '../calender/footer/utils';
 
 interface FloatingSize {
@@ -44,7 +46,7 @@ interface DatePickerDisplayValueArgs {
 	showTime?: boolean | undefined;
 }
 
-const getMonthAbbreviation = (date: Date): string => {
+export const getMonthAbbreviation = (date: Date): string => {
 	return MONTHS[date.getMonth()] ?? '';
 };
 
@@ -154,6 +156,69 @@ export const calculateMeridian = (prev: string | undefined, next: string | undef
 	return next ?? 'AM';
 };
 
+export const to24Hour = (hours: number | undefined, meridian: string | undefined): number => {
+	if (meridian === 'PM' && (hours ?? 0) < 12) {
+		return (hours ?? 0) + 12;
+	}
+	return calculateZeroHours(hours, meridian);
+};
+
+export const combineDateAndTime = (dateUnix: number, time?: TimeSlot): number => {
+	const date = fromUnixTime(dateUnix);
+	return getUnixTime(
+		new Date(
+			date.getFullYear(),
+			date.getMonth(),
+			date.getDate(),
+			to24Hour(time?.HOURS, time?.MER),
+			time?.MINS ?? 0
+		)
+	);
+};
+
+const formatRangeTimePart = (unix: number): string => {
+	const date = fromUnixTime(unix);
+	const hours12 = doubleDigitted(((date.getHours() + 11) % 12) + 1);
+	const minutes = doubleDigitted(date.getMinutes());
+	const meridian = date.getHours() >= 12 ? 'PM' : 'AM';
+	return `${getMonthAbbreviation(date)} ${date.getDate()}, ${hours12}:${minutes} ${meridian}`;
+};
+
+export const formatRangeDuration = (fromUnix: number, toUnix: number): string => {
+	if (toUnix <= fromUnix) {
+		return '';
+	}
+
+	const totalMinutes = Math.floor((toUnix - fromUnix) / 60);
+	const days = Math.floor(totalMinutes / (24 * 60));
+	const hours = Math.floor((totalMinutes % (24 * 60)) / 60);
+	const minutes = totalMinutes % 60;
+
+	if (days > 0) {
+		return hours > 0 ? `${days}d ${hours}hr` : `${days}d`;
+	}
+
+	if (hours > 0) {
+		return minutes > 0 ? `${hours}hr ${minutes}m` : `${hours}hr`;
+	}
+
+	return `${minutes}m`;
+};
+
+export const getRangeWithTimePreview = (
+	fromUnix: number | undefined,
+	toUnix: number | undefined
+): { text: string; duration: string } | null => {
+	if (fromUnix === undefined || toUnix === undefined) {
+		return null;
+	}
+
+	return {
+		text: `${formatRangeTimePart(fromUnix)} → ${formatRangeTimePart(toUnix)}`,
+		duration: formatRangeDuration(fromUnix, toUnix),
+	};
+};
+
 export const getDatePickerDisplayValue = ({
 	value,
 	rangePicker,
@@ -162,6 +227,18 @@ export const getDatePickerDisplayValue = ({
 	limitHours,
 	showTime = true,
 }: DatePickerDisplayValueArgs): string => {
+	if (rangePicker && timeRange) {
+		const rangeValue = value as number[];
+		const startUnix = rangeValue[0];
+		const endUnix = rangeValue[1];
+
+		if (startUnix === undefined || endUnix === undefined) {
+			return '';
+		}
+
+		return `${formatRangeTimePart(startUnix)} → ${formatRangeTimePart(endUnix)}`;
+	}
+
 	if (rangePicker) {
 		const rangeValue = value as number[];
 		const startUnix = rangeValue[0];

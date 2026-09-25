@@ -41,8 +41,10 @@ const CarouselSwitch = ({
 };
 
 const Header = (props: HeaderProps): React.JSX.Element => {
-	const { range, dateSelectionView, timeSelectionView, setTimeRangeSelection } = props;
+	const { range, timeRange, dateSelectionView, timeSelectionView, setTimeRangeSelection } =
+		props;
 	const showCarouselSwitcher = !dateSelectionView && !timeSelectionView;
+	const showDateAndTimeFields = !range || (range && timeRange);
 
 	const safeSetTimeRangeSelection = (value: TimeRangeSelection): void => {
 		setTimeRangeSelection?.(value);
@@ -54,11 +56,13 @@ const Header = (props: HeaderProps): React.JSX.Element => {
 	};
 
 	return (
-		<div className={styles.root}>
-			{!range && <DateAndTimeSelection {...sanitizedProps} />}
+		<div className={classes(styles.root, range && timeRange ? styles['with-time-range'] : '')}>
+			{showDateAndTimeFields && <DateAndTimeSelection {...sanitizedProps} />}
 			{showCarouselSwitcher && <CarouselSwitch {...props} />}
 			<div className={styles['date-time-switch']}>
-				{dateSelectionView && <DateSwitcher {...sanitizedProps} />}
+				{dateSelectionView && (
+					<DateSwitcher key={props.activeGoToSelection} {...sanitizedProps} />
+				)}
 				{timeSelectionView && <TimeSwitcher {...sanitizedProps} />}
 			</div>
 		</div>

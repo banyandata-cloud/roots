@@ -3,6 +3,9 @@
 .root {
 	@include flex(column, flex-start, flex-start);
 	gap: 0rem;
+	&.with-time-range {
+		gap: 0.625rem;
+	}
 	.title-container {
 		align-self: stretch;
 		@include flex(row, space-between, center);

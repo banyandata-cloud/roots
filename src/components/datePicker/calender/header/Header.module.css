@@ -5,6 +5,9 @@
   align-items: flex-start;
   gap: 0rem;
 }
+.root.with-time-range {
+  gap: 0.625rem;
+}
 .root .title-container {
   align-self: stretch;
   display: flex;
@@ -29,4 +32,6 @@
 }
 .root .date-time-switch {
   width: 100%;
-}/*# sourceMappingURL=Header.module.css.map */
+}
+
+/*# sourceMappingURL=Header.module.css.map */

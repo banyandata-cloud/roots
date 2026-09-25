@@ -51,8 +51,11 @@ const Calender = (props: CalenderProps): React.JSX.Element => {
 		defaultHourDiff,
 		limitHours,
 		showTime,
+		timeRange,
 		valueAsRange,
 		enableFutureDates,
+		isDefaultRangeUntouched,
+		setIsDefaultRangeUntouched,
 	} = props;
 
 	const [dateSelectionView, showDateSelectionView] = useState<boolean>(false);
@@ -137,6 +140,39 @@ const Calender = (props: CalenderProps): React.JSX.Element => {
 					unix: getUnixTime(date),
 				});
 			}
+			return;
+		}
+
+		if (range && timeRange && !value) {
+			const now = new Date();
+			const startDate = new Date(now);
+			startDate.setHours(0, 0, 0, 0);
+			const endDate = new Date(now);
+			endDate.setHours(23, 59, 59, 999);
+
+			setIsDefaultRangeUntouched?.(true);
+			setSelectedRange({
+				dates: getDatesInStringFormat({
+					startingDate: startDate,
+					endingDate: endDate,
+				}) as string[],
+				unix: [getUnixTime(startDate), getUnixTime(endDate)],
+			});
+			const startInfo = getDayInfo(startDate);
+			const endInfo = getDayInfo(endDate);
+			setTimeRangeSelection({
+				previous: {
+					HOURS: startInfo.hours,
+					MINS: startInfo.minutes,
+					MER: startInfo.meridian,
+				},
+				next: { HOURS: endInfo.hours, MINS: endInfo.minutes, MER: endInfo.meridian },
+			});
+			setSelectedMonth({
+				month: endInfo.month,
+				monthAsNumber: endInfo.monthAsNumber,
+				year: endInfo.year,
+			});
 			return;
 		}
 
@@ -250,17 +286,26 @@ const Calender = (props: CalenderProps): React.JSX.Element => {
 				defaultHourDiff={defaultHourDiff}
 				limitHours={limitHours}
 				showTime={showTime}
+				timeRange={timeRange}
 				valueAsRange={valueAsRange}
+				committedRange={props.committedRange}
+				isDefaultRangeUntouched={isDefaultRangeUntouched}
+				setIsDefaultRangeUntouched={setIsDefaultRangeUntouched}
 			/>
 
 			{showCalender ? (
 				<CalenderBody
 					{...commonCalenderProps}
+					timeRange={timeRange}
 					disabledDates={disabledDates ?? []}
 					disableDatesBefore={disableDatesBefore}
 					disableDatesAfter={disableDatesAfter}
 					enableFutureDates={enableFutureDates}
 					setFixedRange={setFixedRange}
+					isDefaultRangeUntouched={isDefaultRangeUntouched}
+					setIsDefaultRangeUntouched={setIsDefaultRangeUntouched}
+					activeGoToSelection={activeGoToSelection}
+					setActiveGoToSelection={setActiveGoToSelection}
 				/>
 			) : (
 				<ClockView
@@ -280,6 +325,9 @@ const Calender = (props: CalenderProps): React.JSX.Element => {
 				setFixedRange={setFixedRange}
 				setSelectedRange={setSelectedRange}
 				setSelectedDate={setSelectedDate}
+				timeRange={timeRange}
+				timeRangeSelection={timeRangeSelection}
+				committedRange={props.committedRange}
 			/>
 		</div>
 	);

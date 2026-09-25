@@ -1,4 +1,4 @@
-import { getUnixTime } from 'date-fns';
+import { fromUnixTime, getUnixTime } from 'date-fns';
 import React, { useState } from 'react';
 import { FULL_MONTHS } from '../../../constants';
 import { getDayInfo } from '../../../utils';
@@ -18,11 +18,25 @@ const SwitchSelector = ({
 	setSelectedDate,
 	selectedDate,
 	type,
+	range,
+	timeRange,
+	selectedRange,
+	committedRange,
+	activeGoToSelection,
 }: SwitchSelectorProps): React.JSX.Element => {
 	const [monthValue, setMonthValue] = useState<number>(selectedMonth.monthAsNumber);
 	const [yearValue, setYearValue] = useState<number>(
 		selectedMonth.year ?? new Date().getFullYear()
 	);
+
+	const isRangeField = Boolean(range && timeRange);
+	const referenceRange = committedRange ?? selectedRange;
+
+	const getReferenceDayInfo = () => {
+		const referenceUnix =
+			activeGoToSelection === 'endDate' ? referenceRange?.unix?.[1] : referenceRange?.unix?.[0];
+		return getDayInfo(fromUnixTime(referenceUnix ?? getUnixTime(new Date())));
+	};
 
 	const goToDate = (year: number, month: number, date: number | undefined): void => {
 		const passedDate = new Date(year, month, date);
@@ -33,6 +47,11 @@ const SwitchSelector = ({
 			monthAsNumber: dayInfo.monthAsNumber,
 			year: dayInfo.year,
 		});
+
+		if (isRangeField) {
+			return;
+		}
+
 		setSelectedDate({
 			...selectedDate,
 			month: dayInfo.month,
@@ -43,34 +62,46 @@ const SwitchSelector = ({
 	};
 
 	const onPrev = (): void => {
+		const referenceDayInfo = isRangeField ? getReferenceDayInfo() : null;
 		if (type === 'month') {
 			if (monthValue > 0) {
 				setMonthValue(monthValue - 1);
 				goToDate(
-					selectedDate.year ?? new Date().getFullYear(),
+					(referenceDayInfo ? referenceDayInfo.year : selectedDate.year) ??
+						new Date().getFullYear(),
 					monthValue - 1,
-					selectedDate.date
+					referenceDayInfo ? referenceDayInfo.dateAsNumber : selectedDate.date
 				);
 			}
 		} else {
 			setYearValue(yearValue - 1);
-			goToDate(yearValue - 1, selectedMonth.monthAsNumber, selectedDate.date);
+			goToDate(
+				yearValue - 1,
+				selectedMonth.monthAsNumber,
+				referenceDayInfo ? referenceDayInfo.dateAsNumber : selectedDate.date
+			);
 		}
 	};
 
 	const onNext = (): void => {
+		const referenceDayInfo = isRangeField ? getReferenceDayInfo() : null;
 		if (type === 'month') {
 			if (monthValue < 11) {
 				setMonthValue(monthValue + 1);
 				goToDate(
-					selectedDate.year ?? new Date().getFullYear(),
+					(referenceDayInfo ? referenceDayInfo.year : selectedDate.year) ??
+						new Date().getFullYear(),
 					monthValue + 1,
-					selectedDate.date
+					referenceDayInfo ? referenceDayInfo.dateAsNumber : selectedDate.date
 				);
 			}
 		} else {
 			setYearValue(yearValue + 1);
-			goToDate(yearValue + 1, selectedMonth.monthAsNumber, selectedDate.date);
+			goToDate(
+				yearValue + 1,
+				selectedMonth.monthAsNumber,
+				referenceDayInfo ? referenceDayInfo.dateAsNumber : selectedDate.date
+			);
 		}
 	};
 

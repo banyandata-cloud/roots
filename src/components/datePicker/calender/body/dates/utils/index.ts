@@ -1,4 +1,4 @@
-import { fromUnixTime, getUnixTime, isAfter, isBefore } from 'date-fns';
+import { fromUnixTime, getUnixTime, isAfter, isBefore, isSameDay } from 'date-fns';
 import { MONTHS } from '../../../../../../constants';
 import { getDatesInAMonth } from '../../../../../../utils';
 
@@ -29,6 +29,7 @@ export interface SelectedRange {
 interface RangeSelectionParams {
 	selectedRange: SelectedRange;
 	date: Date;
+	allowSameDayRange?: boolean;
 }
 
 const getDatesOfLastWeekOfLastMonth = ({
@@ -102,12 +103,33 @@ export const getDatesToDisplay = ({
 	return dates;
 };
 
-export const rangeSelection = ({ selectedRange, date }: RangeSelectionParams): SelectedRange => {
+export const rangeSelection = ({
+	selectedRange,
+	date,
+	allowSameDayRange,
+}: RangeSelectionParams): SelectedRange => {
 	const dateAsNumber = date?.getDate();
 	const month = MONTHS[date?.getMonth()]?.substring(0, 3);
 	const year = date?.getFullYear();
 
 	if (selectedRange.unix?.[0] === getUnixTime(new Date(date).setHours(0, 0, 0, 0))) {
+		if (allowSameDayRange) {
+			const isExistingSameDayRange =
+				selectedRange.dates?.length === 2 &&
+				selectedRange.unix?.[1] !== undefined &&
+				isSameDay(fromUnixTime(selectedRange.unix[1]), date);
+
+			if (selectedRange.dates?.length === 1 || isExistingSameDayRange) {
+				const label = `${dateAsNumber} ${month} ${year}`;
+				return {
+					dates: [label, label],
+					unix: [
+						getUnixTime(new Date(date).setHours(0, 0, 0, 0)),
+						getUnixTime(new Date(date).setHours(23, 59, 59, 59)),
+					],
+				};
+			}
+		}
 		return { dates: [], unix: [] };
 	}
 

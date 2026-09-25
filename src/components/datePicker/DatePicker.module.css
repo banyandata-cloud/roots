@@ -93,9 +93,7 @@
   font-weight: 500;
   font-size: 1rem;
   color: var(--grey3);
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
 }
 .root .date-picker .container.open {
   outline: 1px solid var(--secondary-color2);
@@ -129,9 +127,7 @@
 .root .date-picker .container .left > div .placeholder {
   font-weight: 500;
   font-size: 1rem;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
 }
 .root .date-picker .container .left > div > span {
   display: inline-block;
@@ -222,11 +218,15 @@
   justify-content: flex-start;
   align-items: stretch;
   position: absolute;
+  overflow-y: auto;
 }
-.popper.open.ranges {
+
+.popper-body {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: stretch;
-  position: absolute;
-}/*# sourceMappingURL=DatePicker.module.css.map */
+  width: 100%;
+}
+
+/*# sourceMappingURL=DatePicker.module.css.map */

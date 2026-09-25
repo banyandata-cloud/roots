@@ -6,7 +6,6 @@
   padding-inline: 1rem;
   padding-block: 1.25rem;
   overflow-y: scroll;
-  height: 26.5rem;
 }
 .root::-webkit-scrollbar {
   display: none;
@@ -39,4 +38,6 @@
 }
 .root .option[data-elem=base-cell].selected > [data-elem=component2] {
   color: var(--white) !important;
-}/*# sourceMappingURL=Ranges.module.css.map */
+}
+
+/*# sourceMappingURL=Ranges.module.css.map */

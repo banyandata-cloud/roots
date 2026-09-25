@@ -4,7 +4,7 @@ import { Button } from '../../buttons';
 import { Text } from '../../text';
 import { calculateMeridian } from '../utils';
 import styles from './TimeSwitcher.module.css';
-import type { TimeCounterProps, TimeSwitcherProps } from './types';
+import type { RangeType, TimeCounterProps, TimeSwitcherProps } from './types';
 
 export type { TimeSwitcherProps };
 
@@ -124,7 +124,17 @@ const TimeCounter = ({
 // TimeSwitcher
 
 const TimeSwitcher = (props: TimeSwitcherProps): React.JSX.Element => {
-	const { valueAsRange } = props;
+	const { valueAsRange, range, activeTimeSelection = {} } = props;
+
+	if (range) {
+		const activeSide = (Object.keys(activeTimeSelection)[0] as RangeType) ?? 'previous';
+		return (
+			<div className={styles.root}>
+				<TimeCounter {...props} type={activeSide} />
+			</div>
+		);
+	}
+
 	return (
 		<div className={styles.root}>
 			{(valueAsRange && <TimeCounter {...props} type='previous' />) || undefined}

@@ -1,3 +1,29 @@
+.preview {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-inline: 1rem;
+  margin-bottom: 0.75rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--mono-color2);
+  border-radius: 4px;
+  gap: 0.5rem;
+}
+.preview .preview-text {
+  font-size: 0.875rem;
+  color: var(--mono-color1);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.preview .duration {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-color);
+  white-space: nowrap;
+}
+
 .root {
   display: flex;
   flex-direction: row;
@@ -18,4 +44,6 @@
 }
 .root button[data-elem=base-cell].clear[type=submit]:hover {
   background-color: var(--light-color1);
-}/*# sourceMappingURL=Footer.module.css.map */
+}
+
+/*# sourceMappingURL=Footer.module.css.map */

@@ -11,12 +11,25 @@ export interface SelectedDate {
 	unix?: number;
 }
 
+export interface SelectedRange {
+	dates?: string[];
+	unix?: number[];
+}
+
 export interface SwitchSelectorProps {
 	selectedMonth: SelectedMonth;
 	setSelectedMonth: (month: SelectedMonth) => void;
 	selectedDate: SelectedDate;
 	setSelectedDate: (date: SelectedDate) => void;
 	type: 'month' | 'year';
+	range?: boolean | undefined;
+	timeRange?: boolean | undefined;
+	selectedRange?: SelectedRange | undefined;
+	setSelectedRange?: ((range: SelectedRange) => void) | undefined;
+	committedRange?: SelectedRange | undefined;
+	activeGoToSelection?: string | undefined;
+	isDefaultRangeUntouched?: boolean | undefined;
+	setIsDefaultRangeUntouched?: ((value: boolean) => void) | undefined;
 }
 
 export interface DateSwitcherProps {
@@ -24,4 +37,12 @@ export interface DateSwitcherProps {
 	setSelectedMonth: (month: SelectedMonth) => void;
 	selectedDate: SelectedDate;
 	setSelectedDate: (date: SelectedDate) => void;
+	range?: boolean | undefined;
+	timeRange?: boolean | undefined;
+	selectedRange?: SelectedRange | undefined;
+	setSelectedRange?: ((range: SelectedRange) => void) | undefined;
+	committedRange?: SelectedRange | undefined;
+	activeGoToSelection?: string | undefined;
+	isDefaultRangeUntouched?: boolean | undefined;
+	setIsDefaultRangeUntouched?: ((value: boolean) => void) | undefined;
 }
