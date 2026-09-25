@@ -28,7 +28,11 @@ export interface HeaderProps {
 	defaultHourDiff?: number | undefined;
 	limitHours?: number | undefined;
 	showTime?: boolean | undefined;
+	timeRange?: boolean | undefined;
 	valueAsRange?: boolean | undefined;
+	committedRange?: SelectedRange | undefined;
+	isDefaultRangeUntouched?: boolean | undefined;
+	setIsDefaultRangeUntouched?: ((value: boolean) => void) | undefined;
 }
 
 export interface CarouselSwitchProps {

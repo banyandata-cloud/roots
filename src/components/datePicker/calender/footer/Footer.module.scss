@@ -1,5 +1,28 @@
 @import '../../../../styles/';
 
+.preview {
+	@include flex(row, center, center);
+	margin-inline: 1rem;
+	margin-bottom: 0.75rem;
+	padding: 0.75rem 1rem;
+	border: 1px solid $mono-color2;
+	border-radius: 4px;
+	gap: 0.5rem;
+
+	.preview-text {
+		font-size: 0.875rem;
+		color: $mono-color1;
+		@include ellipsis;
+	}
+
+	.duration {
+		font-size: 0.875rem;
+		font-weight: 600;
+		color: $text-color;
+		white-space: nowrap;
+	}
+}
+
 .root {
 	@include flex(row, space-between, stretch);
 	margin-inline: 1rem;

@@ -15,6 +15,22 @@ export interface SelectedDate {
 	year?: number;
 }
 
+export interface SelectedRange {
+	dates?: string[];
+	unix?: number[];
+}
+
+export interface SelectedMonth {
+	month: string;
+	monthAsNumber: number;
+	year: number;
+}
+
+export type ActiveTimeSelection = {
+	previous?: 'HR' | 'MIN' | undefined;
+	next?: 'HR' | 'MIN' | undefined;
+};
+
 export interface DateAndTimeSelectionProps {
 	selectedDate?: SelectedDate | undefined;
 	setActiveGoToSelection: (value: string) => void;
@@ -24,4 +40,9 @@ export interface DateAndTimeSelectionProps {
 	timeRangeSelection?: TimeRangeSelection | undefined;
 	showTime?: boolean | undefined;
 	valueAsRange?: boolean | undefined;
+	range?: boolean | undefined;
+	selectedRange?: SelectedRange | undefined;
+	setSelectedMonth?: ((month: SelectedMonth) => void) | undefined;
+	setActiveTimeSelection?: ((value: ActiveTimeSelection) => void) | undefined;
+	committedRange?: SelectedRange | undefined;
 }

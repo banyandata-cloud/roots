@@ -60,6 +60,10 @@ export interface CalenderProps {
 	defaultHourDiff?: number;
 	limitHours?: number;
 	showTime?: boolean;
+	timeRange?: boolean;
 	valueAsRange?: boolean;
 	enableFutureDates?: boolean;
+	isDefaultRangeUntouched?: boolean;
+	setIsDefaultRangeUntouched?: (value: boolean) => void;
+	committedRange?: SelectedRange;
 }

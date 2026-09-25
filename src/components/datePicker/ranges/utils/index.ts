@@ -6,14 +6,14 @@ interface RangeObj {
 	months?: number;
 }
 
-interface DateUnixRange {
+export interface DateUnixRange {
 	dates: Date[];
 	unix: number[];
 }
 
 interface CustomRange {
 	title: string;
-	type: 'hours' | 'days' | 'months';
+	type: string;
 	value: number;
 }
 
@@ -27,54 +27,57 @@ interface TimeRange {
 	value: number;
 }
 
-export const getDateAndUnixRange = (rangeObj: RangeObj = {}): DateUnixRange => {
+export const getDateAndUnixRange = (
+	rangeObj: RangeObj = {},
+	alignToFullDay = false
+): DateUnixRange => {
 	const now = new Date();
-	const nowUnix = getUnixTime(now);
+
+	const inclusiveValue = (value: number): number => {
+		return alignToFullDay ? Math.max(value - 1, 0) : value;
+	};
+
+	let startDate: Date | undefined;
 
 	if (rangeObj.hours) {
-		const startDate = subHours(now, rangeObj.hours);
-		const startUnix = getUnixTime(startDate);
+		startDate = subHours(now, rangeObj.hours);
+	} else if (rangeObj.days) {
+		startDate = subDays(now, inclusiveValue(rangeObj.days));
+	} else if (rangeObj.months) {
+		startDate = subMonths(now, inclusiveValue(rangeObj.months));
+	}
 
+	if (!startDate) {
 		return {
-			dates: [startDate, now],
-			unix: [startUnix, nowUnix],
+			dates: [],
+			unix: [],
 		};
 	}
 
-	if (rangeObj.days) {
-		const startDate = subDays(now, rangeObj.days);
-		const startUnix = getUnixTime(startDate);
+	const endDate = new Date(now);
 
-		return {
-			dates: [startDate, now],
-			unix: [startUnix, nowUnix],
-		};
-	}
-
-	if (rangeObj.months) {
-		const startDate = subMonths(now, rangeObj.months);
-		const startUnix = getUnixTime(startDate);
-
-		return {
-			dates: [startDate, now],
-			unix: [startUnix, nowUnix],
-		};
+	if (alignToFullDay && !rangeObj.hours) {
+		startDate.setHours(0, 0, 0, 0);
+		endDate.setHours(23, 59, 59, 999);
 	}
 
 	return {
-		dates: [],
-		unix: [],
+		dates: [startDate, endDate],
+		unix: [getUnixTime(startDate), getUnixTime(endDate)],
 	};
 };
 
-export const dateRanges = (customRanges: CustomRange[] = []): DateRange[] => {
+export const dateRanges = (customRanges: CustomRange[] = [], alignToFullDay = false): DateRange[] => {
 	if (customRanges?.length > 0) {
 		return customRanges.map((range) => {
 			return {
 				title: range.title,
-				dateRange: getDateAndUnixRange({
-					[range.type]: range.value,
-				}),
+				dateRange: getDateAndUnixRange(
+					{
+						[range.type]: range.value,
+					},
+					alignToFullDay
+				),
 			};
 		});
 	}

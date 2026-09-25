@@ -1,10 +1,29 @@
+import { fromUnixTime } from 'date-fns';
 import React from 'react';
-import { classes, doubleDigitted } from '../../../../../utils';
+import { classes, doubleDigitted, getDayInfo } from '../../../../../utils';
 import { Button } from '../../../../buttons';
+import { getMonthAbbreviation } from '../../../utils';
 import styles from './DateAndTimeSelection.module.css';
-import type { DateAndTimeSelectionProps } from './types';
+import type { DateAndTimeSelectionProps, TimeSlot } from './types';
 
 export type { DateAndTimeSelectionProps };
+
+const formatFieldDate = (unix?: number): string => {
+	if (unix === undefined) {
+		return '';
+	}
+	const date = fromUnixTime(unix);
+	return `${date.getDate()} ${getMonthAbbreviation(date)} ${date.getFullYear()}`;
+};
+
+const formatFieldTime = (time?: TimeSlot): string => {
+	if (time?.HOURS === undefined) {
+		return '';
+	}
+	return `${doubleDigitted(time.HOURS)}:${doubleDigitted(time.MINS)} ${time.MER ?? ''}`.trim();
+};
+
+type RangeField = 'startDate' | 'endDate' | 'startTime' | 'endTime';
 
 const DateAndTimeSelection = ({
 	selectedDate,
@@ -15,7 +34,108 @@ const DateAndTimeSelection = ({
 	timeRangeSelection = {},
 	showTime,
 	valueAsRange,
+	range,
+	selectedRange,
+	committedRange,
+	setSelectedMonth,
+	setActiveTimeSelection,
 }: DateAndTimeSelectionProps): React.JSX.Element | null => {
+	if (range) {
+		const displayedRange = committedRange ?? selectedRange;
+		const selectField = (target: RangeField): void => {
+			const isSame = activeGoToSelection === target;
+			const isDateField = target === 'startDate' || target === 'endDate';
+
+			setActiveGoToSelection(isSame ? '' : target);
+			showDateSelectionView(!isSame && isDateField);
+			showTimeSelectionView(!isSame && !isDateField);
+
+			if (!isSame && isDateField) {
+				const unix =
+					target === 'startDate' ? displayedRange?.unix?.[0] : displayedRange?.unix?.[1];
+				if (unix !== undefined) {
+					const info = getDayInfo(fromUnixTime(unix));
+					setSelectedMonth?.({
+						month: info.month,
+						monthAsNumber: info.monthAsNumber,
+						year: info.year,
+					});
+				}
+			}
+
+			if (!isSame && !isDateField) {
+				setActiveTimeSelection?.({
+					[target === 'startTime' ? 'previous' : 'next']: 'HR',
+				});
+			}
+		};
+
+		return (
+			<div className={styles['range-root']}>
+				<div className={styles.section}>
+					<span className={styles['section-title']}>Date</span>
+					<div className={styles.fields}>
+						<div className={styles.field}>
+							<span className={styles['field-label']}>Start Date</span>
+							<Button
+								onClick={() => selectField('startDate')}
+								className={classes(
+									styles.selector,
+									activeGoToSelection === 'startDate' ? styles.active : ''
+								)}
+								title={formatFieldDate(displayedRange?.unix?.[0])}
+								variant='outlined'
+							/>
+						</div>
+						<div className={styles.field}>
+							<span className={styles['field-label']}>End Date</span>
+							<Button
+								onClick={() => selectField('endDate')}
+								className={classes(
+									styles.selector,
+									activeGoToSelection === 'endDate' ? styles.active : ''
+								)}
+								title={formatFieldDate(displayedRange?.unix?.[1])}
+								variant='outlined'
+							/>
+						</div>
+					</div>
+				</div>
+				{showTime && (
+					<div className={styles.section}>
+						<span className={styles['section-title']}>Time</span>
+						<div className={styles.fields}>
+							<div className={styles.field}>
+								<span className={styles['field-label']}>Start Time</span>
+								<Button
+									onClick={() => selectField('startTime')}
+									className={classes(
+										styles.selector,
+										activeGoToSelection === 'startTime' ? styles.active : ''
+									)}
+									title={formatFieldTime(timeRangeSelection.previous)}
+									variant='outlined'
+								/>
+							</div>
+							<div className={styles.field}>
+								<span className={styles['field-label']}>End Time</span>
+								<Button
+									onClick={() => selectField('endTime')}
+									className={classes(
+										styles.selector,
+										activeGoToSelection === 'endTime' ? styles.active : ''
+									)}
+									title={formatFieldTime(timeRangeSelection.next)}
+									variant='outlined'
+								/>
+							</div>
+						</div>
+					</div>
+				)}
+			</div>
+		);
+	}
+
 	const { date, month, year } = selectedDate || {};
 
 	const defaultDate = date ? `${doubleDigitted(date)} ${month?.substring(0, 3)} ${year}` : '';

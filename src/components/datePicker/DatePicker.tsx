@@ -29,6 +29,7 @@ import type {
 } from './types';
 import {
 	calculateZeroHours,
+	combineDateAndTime,
 	getDatePickerDisplayValue,
 	getDateRangeTag,
 	getFloatingReferences,
@@ -121,6 +122,13 @@ const DatePicker = (props: DatePickerProps): React.JSX.Element => {
 
 	const [fixedRange, setFixedRange] = useState<string | null>(() => null);
 
+	const [isDefaultRangeUntouched, setIsDefaultRangeUntouched] = useState<boolean>(false);
+
+	const [committedRange, setCommittedRange] = useState<SelectedRange>(() => ({
+		dates: [],
+		unix: [],
+	}));
+
 	const [selectedDate, setSelectedDate] = useState<SelectedDate | string>(() => '');
 
 	const [selectedMonth, setSelectedMonth] = useState<SelectedMonth>(() =>
@@ -132,7 +140,27 @@ const DatePicker = (props: DatePickerProps): React.JSX.Element => {
 	const [timeRangeSelection, setTimeRangeSelection] = useState<TimeRangeSelection>({});
 
 	useEffect(() => {
-		setTimeRangeSelection(() => {
+		setTimeRangeSelection((prev) => {
+			if (range && timeRange) {
+				const [startUnix, endUnix] = Array.isArray(value) ? (value as number[]) : [];
+				if (!Number.isFinite(startUnix) || !Number.isFinite(endUnix)) {
+					return prev;
+				}
+				const startInfo = getDayInfo(fromUnixTime(startUnix as number));
+				const endInfo = getDayInfo(fromUnixTime(endUnix as number));
+				return {
+					previous: {
+						HOURS: startInfo.hours,
+						MINS: startInfo.minutes,
+						MER: startInfo.meridian,
+					},
+					next: {
+						HOURS: endInfo.hours,
+						MINS: endInfo.minutes,
+						MER: endInfo.meridian,
+					},
+				};
+			}
 			if (valueAsRange) {
 				return getDefaultTimeRangeSelection(value as number, limitHours as number);
 			}
@@ -150,7 +178,13 @@ const DatePicker = (props: DatePickerProps): React.JSX.Element => {
 				},
 			};
 		});
-	}, [selectedDate, value, limitHours]);
+	}, [selectedDate, value, limitHours, range, timeRange]);
+
+	useEffect(() => {
+		if (range && timeRange && selectedRange.dates?.length === 2) {
+			setCommittedRange(selectedRange);
+		}
+	}, [selectedRange, range, timeRange]);
 
 	const datePickerRef = useRef<HTMLDivElement>(null);
 
@@ -211,6 +245,32 @@ const DatePicker = (props: DatePickerProps): React.JSX.Element => {
 
 	const apply = ({ rangeSelected }: ApplyArgs): void => {
 		if (rangeSelected.dates?.length === 2) {
+			if (range && timeRange) {
+				const [startUnix, endUnix] = rangeSelected.unix ?? [];
+				if (startUnix === undefined || endUnix === undefined) {
+					setOpenDatePicker(false);
+					return;
+				}
+
+				const fromUnix = combineDateAndTime(startUnix, timeRangeSelection.previous);
+				const toUnix = combineDateAndTime(endUnix, timeRangeSelection.next);
+
+				if (!Number.isFinite(fromUnix) || !Number.isFinite(toUnix) || fromUnix >= toUnix) {
+					setError('Start date/time must be before end date/time');
+					return;
+				}
+
+				if (toUnix - fromUnix < 3600) {
+					setError('Range must be at least 1 hour');
+					return;
+				}
+
+				setError('');
+				onApply?.([fromUnix, toUnix], fixedRange, getDateRangeTag([fromUnix, toUnix]));
+				setOpenDatePicker(false);
+				return;
+			}
+
 			if (
 				maxRange != null &&
 				!isMaxRangeExceeded({
@@ -296,7 +356,7 @@ const DatePicker = (props: DatePickerProps): React.JSX.Element => {
 		range: range ?? false,
 		onApply: () => {
 			apply({
-				rangeSelected: selectedRange,
+				rangeSelected: range && timeRange ? committedRange : selectedRange,
 				dateSelected: selectedDate as SelectedDate,
 			});
 		},
@@ -322,7 +382,11 @@ const DatePicker = (props: DatePickerProps): React.JSX.Element => {
 		...(defaultHourDiff !== null && defaultHourDiff !== undefined ? { defaultHourDiff } : {}),
 		...(limitHours !== null && limitHours !== undefined ? { limitHours } : {}),
 		showTime: showTime ?? true,
+		timeRange: timeRange ?? false,
 		valueAsRange: valueAsRange ?? false,
+		isDefaultRangeUntouched,
+		setIsDefaultRangeUntouched: (val: boolean) => setIsDefaultRangeUntouched(val),
+		committedRange,
 	};
 
 	const customRangesProps = {
@@ -333,6 +397,9 @@ const DatePicker = (props: DatePickerProps): React.JSX.Element => {
 		setOpenCustomRange,
 		fixedRange,
 		apply,
+		timeRange: timeRange ?? false,
+		setTimeRangeSelection: (val: TimeRangeSelection) => setTimeRangeSelection(val),
+		setIsDefaultRangeUntouched: (val: boolean) => setIsDefaultRangeUntouched(val),
 	};
 
 	const hasCustomRanges = customRanges?.length && customRanges !== null;
@@ -424,14 +491,15 @@ const DatePicker = (props: DatePickerProps): React.JSX.Element => {
 								})}
 								initial={{ opacity: 0, scale: 0 }}
 								animate={{ scale: 1, opacity: 1 }}
-								className={classes(
-									styles.popper,
-									openDatePicker ? styles.open : '',
-									popperClassName,
-									showCustomRanges ? styles.ranges : ''
-								)}>
-								{showCustomRanges && <CustomDateRanges {...customRangesProps} />}
-								<Calender {...calenderProps} />
+								className={classes(styles.popper, openDatePicker ? styles.open : '', popperClassName)}>
+								{showCustomRanges ? (
+									<div className={styles['popper-body']}>
+										<CustomDateRanges {...customRangesProps} />
+										<Calender {...calenderProps} />
+									</div>
+								) : (
+									<Calender {...calenderProps} />
+								)}
 							</motion.div>
 						)}
 					</Popper>

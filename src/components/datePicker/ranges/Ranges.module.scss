@@ -5,7 +5,6 @@
 	padding-inline: 1rem;
 	padding-block: 1.25rem;
 	overflow-y: scroll;
-	height: 26.5rem;
 	@include removeScrollbar;
 	border-right: 1px solid $light-color1;
 	gap: 0.25rem;

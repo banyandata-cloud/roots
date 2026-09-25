@@ -205,9 +205,11 @@
 	&.open {
 		@include flex(column, flex-start, stretch);
 		position: absolute;
-		&.ranges {
-			@include flex(row, flex-start, stretch);
-			position: absolute;
-		}
+		overflow-y: auto;
 	}
+}
+
+.popper-body {
+	@include flex(row, flex-start, stretch);
+	width: 100%;
 }

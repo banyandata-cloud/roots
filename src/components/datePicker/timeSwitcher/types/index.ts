@@ -20,4 +20,5 @@ export interface TimeSwitcherProps {
 	timeRangeSelection?: TimeRangeSelection | undefined;
 	limitHours?: number | undefined;
 	valueAsRange?: boolean | undefined;
+	range?: boolean | undefined;
 }

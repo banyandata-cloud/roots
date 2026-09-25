@@ -6,6 +6,7 @@
 }
 .root > div {
   flex-basis: 14.28%;
+  position: relative;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -13,9 +14,7 @@
   margin-bottom: 0.25rem;
   cursor: pointer;
   align-self: center;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
 }
 .root > div.date-disabled {
   pointer-events: none;
@@ -32,24 +31,12 @@
   color: var(--white);
   box-shadow: 0px 8px 20px rgba(24, 24, 24, 0.08);
 }
-.root > div.minInRange.today {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-}
 .root > div.minInRange.today .date {
   color: var(--white);
   font-weight: 500;
 }
 .root > div.minInRange.today .indicator {
   display: none;
-}
-.root > div.minInRange.today-selected {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
 }
 .root > div.minInRange.today-selected .date {
   font-weight: 500;
@@ -65,25 +52,12 @@
 .root > div.maxInRange .date {
   color: var(--white);
 }
-.root > div.maxInRange.today-selected {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  display: none;
-}
 .root > div.maxInRange.today-selected .date {
   font-weight: 500;
   color: var(--white);
 }
 .root > div.maxInRange.today-selected .indicator {
   display: none;
-}
-.root > div.maxInRange.today {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
 }
 .root > div.maxInRange.today .date {
   color: var(--white);
@@ -104,12 +78,6 @@
 .root > div.midInRange .date {
   color: var(--secondary-color2);
 }
-.root > div.midInRange.today-selected {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-}
 .root > div.midInRange.today-selected .date {
   font-weight: 500;
   color: var(--white);
@@ -123,12 +91,6 @@
 }
 .root > div.midInRangeSelected .date {
   color: var(--white);
-}
-.root > div.midInRangeSelected.today-selected {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
 }
 .root > div.midInRangeSelected.today-selected .date {
   font-weight: 500;
@@ -154,11 +116,17 @@
   width: 2.5rem;
   flex-shrink: 0;
 }
-.root > div.first-hovered.today-selected {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
+.root > div.first-hovered:hover .date {
+  background-color: var(--secondary-color2);
+  color: var(--white);
+  box-shadow: none;
+}
+.root > div.first-hovered.today .date {
+  color: var(--white);
+  font-weight: 500;
+}
+.root > div.first-hovered.today .indicator {
+  display: none;
 }
 .root > div.first-hovered.today-selected .date {
   font-weight: 500;
@@ -184,11 +152,17 @@
   width: 2.5rem;
   flex-shrink: 0;
 }
-.root > div.last-hovered.today-selected {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
+.root > div.last-hovered:hover .date {
+  background-color: var(--secondary-color2);
+  color: var(--white);
+  box-shadow: none;
+}
+.root > div.last-hovered.today .date {
+  color: var(--white);
+  font-weight: 500;
+}
+.root > div.last-hovered.today .indicator {
+  display: none;
 }
 .root > div.last-hovered.today-selected .date {
   font-weight: 500;
@@ -197,31 +171,28 @@
 .root > div.last-hovered.today-selected .indicator {
   display: none;
 }
-.root > div.today {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-}
 .root > div.today .date {
   color: var(--secondary-color2);
   font-weight: 500;
 }
 .root > div.today .indicator {
-  margin-top: -0.825rem;
+  position: absolute;
+  bottom: 0.125rem;
+  left: 50%;
+  transform: translateX(-50%);
 }
-.root > div.today-selected {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
+.root > div.today .date.selected ~ .indicator {
+  display: none;
 }
 .root > div.today-selected .date {
   font-weight: 500;
   color: var(--white);
 }
 .root > div.today-selected .indicator {
-  margin-top: -0.825rem;
+  position: absolute;
+  bottom: 0.125rem;
+  left: 50%;
+  transform: translateX(-50%);
   fill: var(--white);
 }
 .root > div .date {
@@ -274,4 +245,6 @@
   box-shadow: none;
   border-radius: 1.5rem;
   color: var(--mono-color3);
-}/*# sourceMappingURL=Dates.module.css.map */
+}
+
+/*# sourceMappingURL=Dates.module.css.map */

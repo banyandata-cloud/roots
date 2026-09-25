@@ -27,6 +27,7 @@ export interface DatesProps {
 	selectedDate: SelectedDate;
 	setSelectedDate: (date: SelectedDate) => void;
 	range?: boolean | undefined;
+	timeRange?: boolean | undefined;
 	selectedRange: SelectedRange;
 	setSelectedRange: (range: SelectedRange) => void;
 	disabledDates: string[];
@@ -34,4 +35,8 @@ export interface DatesProps {
 	enableFutureDates?: boolean | undefined;
 	disableDatesAfter?: number | undefined;
 	setFixedRange?: ((value: boolean) => void) | undefined;
+	isDefaultRangeUntouched?: boolean | undefined;
+	setIsDefaultRangeUntouched?: ((value: boolean) => void) | undefined;
+	activeGoToSelection?: string | undefined;
+	setActiveGoToSelection?: ((value: string | undefined) => void) | undefined;
 }

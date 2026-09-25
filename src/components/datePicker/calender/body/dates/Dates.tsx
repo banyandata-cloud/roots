@@ -9,13 +9,32 @@ import {
 	isToday,
 } from 'date-fns';
 import React, { useEffect, useMemo, useState } from 'react';
+import { MONTHS } from '../../../../../constants';
 import { classes, getDatesInAMonth, getDayInfo } from '../../../../../utils';
 import { TodayIndicator } from './assets';
 import styles from './Dates.module.css';
-import type { DatesInMonth, DatesProps } from './types';
+import type { DatesInMonth, DatesProps, SelectedRange } from './types';
 import { getDatesToDisplay, rangeSelection } from './utils';
 
 export type { DatesProps };
+
+const withReplacedEndpoint = (
+	baseRange: SelectedRange,
+	date: Date,
+	index: 0 | 1
+): SelectedRange => {
+	const dateAsNumber = date.getDate();
+	const month = MONTHS[date.getMonth()]?.substring(0, 3);
+	const year = date.getFullYear();
+	const dates = [...(baseRange.dates ?? [])];
+	const unix = [...(baseRange.unix ?? [])];
+	dates[index] = `${dateAsNumber} ${month} ${year}`;
+	unix[index] =
+		index === 0
+			? getUnixTime(new Date(date).setHours(0, 0, 0, 0))
+			: getUnixTime(new Date(date).setHours(23, 59, 59, 59));
+	return { dates, unix };
+};
 
 const Dates = (props: DatesProps): React.JSX.Element => {
 	const {
@@ -24,6 +43,7 @@ const Dates = (props: DatesProps): React.JSX.Element => {
 		selectedDate,
 		setSelectedDate,
 		range,
+		timeRange,
 		selectedRange,
 		setSelectedRange,
 		disabledDates,
@@ -31,6 +51,10 @@ const Dates = (props: DatesProps): React.JSX.Element => {
 		enableFutureDates,
 		disableDatesAfter,
 		setFixedRange,
+		isDefaultRangeUntouched,
+		setIsDefaultRangeUntouched,
+		activeGoToSelection,
+		setActiveGoToSelection,
 	} = props;
 
 	const { monthAsNumber, year } = selectedMonth || {};
@@ -61,8 +85,37 @@ const Dates = (props: DatesProps): React.JSX.Element => {
 	const dateSelection = (date: Date): void => {
 		setFixedRange?.(false);
 
+		if (range && timeRange) {
+			const isDateFieldFocused = activeGoToSelection === 'startDate' || activeGoToSelection === 'endDate';
+
+			if (isDateFieldFocused) {
+				const index = activeGoToSelection === 'endDate' ? 1 : 0;
+				if (isDefaultRangeUntouched) {
+					setIsDefaultRangeUntouched?.(false);
+				}
+				if (index === 0) {
+					setActiveGoToSelection?.('endDate');
+				}
+				setSelectedRange(withReplacedEndpoint(selectedRange, date, index));
+				return;
+			}
+
+			const isFirstClick = isDefaultRangeUntouched;
+			if (isFirstClick) {
+				setIsDefaultRangeUntouched?.(false);
+			}
+			const newRange = rangeSelection({
+				selectedRange: isFirstClick ? { dates: [], unix: [] } : selectedRange,
+				date,
+				allowSameDayRange: true,
+			});
+			setHoveredEndingDate(newRange.unix?.length === 1 ? getUnixTime(date) : null);
+			setSelectedRange(newRange);
+			return;
+		}
+
 		if (range) {
-			const newRange = rangeSelection({ selectedRange, date });
+			const newRange = rangeSelection({ selectedRange, date, allowSameDayRange: false });
 			setHoveredEndingDate(newRange.unix?.length === 1 ? getUnixTime(date) : null);
 			setSelectedRange(newRange);
 			return;
@@ -91,14 +144,6 @@ const Dates = (props: DatesProps): React.JSX.Element => {
 	};
 
 	const onMouseEnterADate = (date: Date): void => {
-		const sameDay = isSameDay(
-			fromUnixTime(selectedRange?.unix?.[0] as number),
-			fromUnixTime(selectedRange?.unix?.[1] as number)
-		);
-		if (selectedRange.unix?.length === 2 && sameDay) {
-			setHoveredEndingDate(getUnixTime(date));
-			return;
-		}
 		if (range && selectedRange.unix?.length === 1) {
 			setHoveredEndingDate(getUnixTime(date));
 		}
@@ -119,6 +164,19 @@ const Dates = (props: DatesProps): React.JSX.Element => {
 		dObj.setDate(dObj.getDate() + 1);
 		dObj.setHours(0, 0, 0, 0);
 		return isAfter(date, dObj);
+	};
+
+	const disabledByActiveField = (date: Date): boolean => {
+		if (!range || !timeRange) {
+			return false;
+		}
+		if (activeGoToSelection === 'endDate' && selectedRange.unix?.[0] !== undefined) {
+			return isBefore(date, fromUnixTime(selectedRange.unix[0]).setHours(0, 0, 0, 0));
+		}
+		if (activeGoToSelection === 'startDate' && selectedRange.unix?.[1] !== undefined) {
+			return isAfter(date, fromUnixTime(selectedRange.unix[1]).setHours(23, 59, 59, 999));
+		}
+		return false;
 	};
 
 	return (
@@ -160,7 +218,8 @@ const Dates = (props: DatesProps): React.JSX.Element => {
 				const isDisabled =
 					disabledDates.includes(date.toDateString()) ||
 					disabledBeforeDate(date) ||
-					(!enableFutureDates && disabledAfterDate(date));
+					(!enableFutureDates && disabledAfterDate(date)) ||
+					disabledByActiveField(date);
 
 				let isHoveringBeforeSelectedDate: boolean | null = null;
 
