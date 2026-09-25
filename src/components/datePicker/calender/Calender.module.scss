@@ -5,4 +5,5 @@
 	user-select: none;
 	@include flex(column, flex-start, stretch);
 	gap: 1rem;
+	flex: 1;
 }

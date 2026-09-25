@@ -92,9 +92,9 @@ const Dates = (props: DatesProps): React.JSX.Element => {
 				const index = activeGoToSelection === 'endDate' ? 1 : 0;
 				if (isDefaultRangeUntouched) {
 					setIsDefaultRangeUntouched?.(false);
-					if (index === 0) {
-						setActiveGoToSelection?.('endDate');
-					}
+				}
+				if (index === 0) {
+					setActiveGoToSelection?.('endDate');
 				}
 				setSelectedRange(withReplacedEndpoint(selectedRange, date, index));
 				return;
@@ -166,6 +166,19 @@ const Dates = (props: DatesProps): React.JSX.Element => {
 		return isAfter(date, dObj);
 	};
 
+	const disabledByActiveField = (date: Date): boolean => {
+		if (!range || !timeRange) {
+			return false;
+		}
+		if (activeGoToSelection === 'endDate' && selectedRange.unix?.[0] !== undefined) {
+			return isBefore(date, fromUnixTime(selectedRange.unix[0]).setHours(0, 0, 0, 0));
+		}
+		if (activeGoToSelection === 'startDate' && selectedRange.unix?.[1] !== undefined) {
+			return isAfter(date, fromUnixTime(selectedRange.unix[1]).setHours(23, 59, 59, 999));
+		}
+		return false;
+	};
+
 	return (
 		<div className={styles.root} onMouseLeave={() => setHoveredEndingDate(null)}>
 			{datesToDisplay.map((date: Date) => {
@@ -205,7 +218,8 @@ const Dates = (props: DatesProps): React.JSX.Element => {
 				const isDisabled =
 					disabledDates.includes(date.toDateString()) ||
 					disabledBeforeDate(date) ||
-					(!enableFutureDates && disabledAfterDate(date));
+					(!enableFutureDates && disabledAfterDate(date)) ||
+					disabledByActiveField(date);
 
 				let isHoveringBeforeSelectedDate: boolean | null = null;
 
