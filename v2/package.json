@@ -1,8 +1,38 @@
 {
-	"name": "@banyan_cloud/roots/v2",
-	"version": "2.0.64",
-	"main": "index.js",
-	"module": "index.esm.js",
-	"types": "index.d.ts",
-	"sideEffects": false
+	"name": "@banyandata-cloud/roots",
+	"version": "0.1.0",
+	"description": "Roots v2 components - private preview, not yet part of the public @banyan_cloud/roots package",
+	"main": "dist/cjs/index.js",
+	"module": "dist/esm/index.js",
+	"types": "dist/esm/components/v2/index.d.ts",
+	"exports": {
+		".": {
+			"import": "./dist/esm/index.js",
+			"require": "./dist/cjs/index.js",
+			"types": "./dist/esm/components/v2/index.d.ts"
+		}
+	},
+	"files": [
+		"dist"
+	],
+	"sideEffects": false,
+	"publishConfig": {
+		"registry": "https://npm.pkg.github.com",
+		"access": "restricted"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/banyandata-cloud/roots.git",
+		"directory": "v2"
+	},
+	"peerDependencies": {
+		"framer-motion": "^12.34.3",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0"
+	},
+	"dependencies": {
+		"@floating-ui/react-dom": "^1.0.0",
+		"@floating-ui/react-dom-interactions": "^0.10.1",
+		"react-merge-refs": "^2.0.1"
+	}
 }

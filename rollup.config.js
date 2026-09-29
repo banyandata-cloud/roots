@@ -133,11 +133,11 @@ export default [
 			image(),
 		],
 	},
-	// V2 package ESM build
+	// V2 package ESM build (published separately from ./v2)
 	{
 		input: 'src/components/v2/index.ts',
 		output: {
-			file: 'dist/esm/v2/index.js',
+			file: 'v2/dist/esm/index.js',
 			format: 'esm',
 			sourcemap: true,
 			inlineDynamicImports: true,
@@ -167,9 +167,10 @@ export default [
 			typescript({
 				tsconfig: './tsconfig.json',
 				compilerOptions: {
-					declaration: false,
-					declarationMap: false,
-					outDir: 'dist/esm/v2',
+					declaration: true,
+					declarationMap: true,
+					rootDir: 'src',
+					outDir: 'v2/dist/esm',
 				},
 				sourceMap: true,
 				exclude: [
@@ -196,11 +197,11 @@ export default [
 			image(),
 		],
 	},
-	// V2 package CJS build
+	// V2 package CJS build (published separately from ./v2)
 	{
 		input: 'src/components/v2/index.ts',
 		output: {
-			file: 'dist/cjs/v2/index.js',
+			file: 'v2/dist/cjs/index.js',
 			format: 'cjs',
 			sourcemap: true,
 			inlineDynamicImports: true,
@@ -232,7 +233,7 @@ export default [
 				compilerOptions: {
 					declaration: false,
 					declarationMap: false,
-					outDir: 'dist/cjs/v2',
+					outDir: 'v2/dist/cjs',
 				},
 				sourceMap: true,
 				exclude: [
