@@ -219,7 +219,6 @@ const DatePicker = (props: DatePickerProps): React.JSX.Element => {
 					timeRange,
 					limitHours: limitHours ?? undefined,
 					showTime,
-					customRanges: customRanges ?? undefined,
 				})
 			: '';
 

@@ -9,8 +9,7 @@ import {
 } from 'date-fns';
 import { MONTHS } from '../../../constants';
 import { doubleDigitted } from '../../../utils';
-import type { CustomRange, TimeSlot } from '../calender/types';
-import { dateRanges } from '../ranges/utils';
+import type { TimeSlot } from '../calender/types';
 
 interface FloatingSize {
 	rects: {
@@ -44,7 +43,6 @@ interface DatePickerDisplayValueArgs {
 	timeRange?: boolean | undefined;
 	limitHours?: number | undefined;
 	showTime?: boolean | undefined;
-	customRanges?: CustomRange[] | undefined;
 }
 
 export const getMonthAbbreviation = (date: Date): string => {
@@ -261,7 +259,6 @@ export const getDatePickerDisplayValue = ({
 	timeRange,
 	limitHours,
 	showTime = true,
-	customRanges,
 }: DatePickerDisplayValueArgs): string => {
 	if (rangePicker && timeRange) {
 		const rangeValue = value as number[];
@@ -287,14 +284,6 @@ export const getDatePickerDisplayValue = ({
 		const startDate = fromUnixTime(startUnix);
 		const endDate = fromUnixTime(endUnix);
 
-		const matchedPresetTitle = findMatchingPresetTitle(
-			dateRanges(customRanges, timeRange),
-			rangeValue
-		);
-
-		if (matchedPresetTitle) {
-			return matchedPresetTitle;
-		}
 		const startDateValue = `${startDate.getDate()} ${getMonthAbbreviation(startDate)} ${startDate.getFullYear()}`;
 		const endDateValue = `${endDate.getDate()} ${getMonthAbbreviation(endDate)} ${endDate.getFullYear()}`;
 
