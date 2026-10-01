@@ -10,7 +10,6 @@ import {
 import { MONTHS } from '../../../constants';
 import { doubleDigitted } from '../../../utils';
 import type { TimeSlot } from '../calender/types';
-import { dateRanges } from '../calender/footer/utils';
 
 interface FloatingSize {
 	rects: {
@@ -219,6 +218,40 @@ export const getRangeWithTimePreview = (
 	};
 };
 
+interface PresetRangeEntry {
+	title: string;
+	dateRange: { unix?: number[] };
+}
+
+const PRESET_MATCH_TOLERANCE_SECONDS = 2 * 60 * 60;
+
+export const findMatchingPresetTitle = (
+	presetRanges: PresetRangeEntry[],
+	valueUnix: number[] | undefined
+): string | null => {
+	if (!valueUnix || valueUnix.length !== 2) {
+		return null;
+	}
+
+	const [startUnix, endUnix] = valueUnix;
+
+	if (startUnix === undefined || endUnix === undefined) {
+		return null;
+	}
+
+	const valueDuration = endUnix - startUnix;
+
+	const matched = presetRanges.find((preset) => {
+		const [presetStart, presetEnd] = preset.dateRange?.unix ?? [];
+		if (presetStart === undefined || presetEnd === undefined) {
+			return false;
+		}
+		return Math.abs(presetEnd - presetStart - valueDuration) <= PRESET_MATCH_TOLERANCE_SECONDS;
+	});
+
+	return matched ? matched.title : null;
+};
+
 export const getDatePickerDisplayValue = ({
 	value,
 	rangePicker,
@@ -251,13 +284,6 @@ export const getDatePickerDisplayValue = ({
 		const startDate = fromUnixTime(startUnix);
 		const endDate = fromUnixTime(endUnix);
 
-		const selectedFixedRange = dateRanges().find((dRange) => {
-			return dRange.dateRange?.unix?.toString() === rangeValue.toString();
-		});
-
-		if (selectedFixedRange) {
-			return selectedFixedRange.title;
-		}
 		const startDateValue = `${startDate.getDate()} ${getMonthAbbreviation(startDate)} ${startDate.getFullYear()}`;
 		const endDateValue = `${endDate.getDate()} ${getMonthAbbreviation(endDate)} ${endDate.getFullYear()}`;
 

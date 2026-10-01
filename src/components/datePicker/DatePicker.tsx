@@ -18,7 +18,9 @@ import { Popper } from '../popper';
 import styles from './DatePicker.module.css';
 import { Calender } from './calender';
 import { DateAndTimeCustomRanges } from './customRanges';
+import { dateRanges as getCustomTimeDateRanges } from './customRanges/utils';
 import { CustomDateRanges } from './ranges';
+import { dateRanges as getFixedDateRanges } from './ranges/utils';
 import type {
 	ApplyArgs,
 	DatePickerProps,
@@ -30,6 +32,7 @@ import type {
 import {
 	calculateZeroHours,
 	combineDateAndTime,
+	findMatchingPresetTitle,
 	getDatePickerDisplayValue,
 	getDateRangeTag,
 	getFloatingReferences,
@@ -185,6 +188,25 @@ const DatePicker = (props: DatePickerProps): React.JSX.Element => {
 			setCommittedRange(selectedRange);
 		}
 	}, [selectedRange, range, timeRange]);
+
+	useEffect(() => {
+		if (!range || !customRanges?.length) {
+			return;
+		}
+
+		const valueAsRangeArray = Array.isArray(value) ? value : null;
+
+		if (!valueAsRangeArray || valueAsRangeArray.length !== 2) {
+			setFixedRange(null);
+			return;
+		}
+
+		const presetRanges = showCustomRanges
+			? getFixedDateRanges(customRanges, timeRange)
+			: getCustomTimeDateRanges(customRanges);
+
+		setFixedRange(findMatchingPresetTitle(presetRanges, valueAsRangeArray));
+	}, [range, customRanges, timeRange, showCustomRanges, value]);
 
 	const datePickerRef = useRef<HTMLDivElement>(null);
 
