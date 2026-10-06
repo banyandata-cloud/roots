@@ -116,6 +116,8 @@
 		"webpack-dev-server": "^5.2.3"
 	},
 	"scripts": {
+		"tokens:build": "node scripts/build-tokens.mjs",
+		"tokens:check": "node scripts/check-tokens.mjs --check",
 		"test": "jest",
 		"start": "storybook dev -p 6006",
 		"build-storybook": "storybook build",
