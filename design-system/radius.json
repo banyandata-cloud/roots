@@ -1,0 +1,93 @@
+{
+  "radius-none": {
+    "$type": "number",
+    "$value": 0,
+    "$extensions": {
+      "com.figma.variableId": "VariableID:58:86",
+      "com.figma.scopes": ["ALL_SCOPES"]
+    }
+  },
+  "radius-xxs": {
+    "$type": "number",
+    "$value": 2,
+    "$extensions": {
+      "com.figma.variableId": "VariableID:58:87",
+      "com.figma.scopes": ["ALL_SCOPES"]
+    }
+  },
+  "radius-xs": {
+    "$type": "number",
+    "$value": 4,
+    "$extensions": {
+      "com.figma.variableId": "VariableID:58:56",
+      "com.figma.scopes": ["ALL_SCOPES"]
+    }
+  },
+  "radius-sm": {
+    "$type": "number",
+    "$value": 6,
+    "$extensions": {
+      "com.figma.variableId": "VariableID:58:57",
+      "com.figma.scopes": ["ALL_SCOPES"]
+    }
+  },
+  "radius-md": {
+    "$type": "number",
+    "$value": 8,
+    "$extensions": {
+      "com.figma.variableId": "VariableID:58:58",
+      "com.figma.scopes": ["ALL_SCOPES"]
+    }
+  },
+  "radius-lg": {
+    "$type": "number",
+    "$value": 10,
+    "$extensions": {
+      "com.figma.variableId": "VariableID:58:59",
+      "com.figma.scopes": ["ALL_SCOPES"]
+    }
+  },
+  "radius-xl": {
+    "$type": "number",
+    "$value": 12,
+    "$extensions": {
+      "com.figma.variableId": "VariableID:722:9799",
+      "com.figma.scopes": ["ALL_SCOPES"]
+    }
+  },
+  "radius-2xl": {
+    "$type": "number",
+    "$value": 16,
+    "$extensions": {
+      "com.figma.variableId": "VariableID:722:9803",
+      "com.figma.scopes": ["ALL_SCOPES"]
+    }
+  },
+  "radius-3xl": {
+    "$type": "number",
+    "$value": 20,
+    "$extensions": {
+      "com.figma.variableId": "VariableID:722:9807",
+      "com.figma.scopes": ["ALL_SCOPES"]
+    }
+  },
+  "radius-4xl": {
+    "$type": "number",
+    "$value": 24,
+    "$extensions": {
+      "com.figma.variableId": "VariableID:1670:7209",
+      "com.figma.scopes": ["ALL_SCOPES"]
+    }
+  },
+  "radius-full": {
+    "$type": "number",
+    "$value": 999999,
+    "$extensions": {
+      "com.figma.variableId": "VariableID:1670:7213",
+      "com.figma.scopes": ["ALL_SCOPES"]
+    }
+  },
+  "$extensions": {
+    "com.figma.modeName": "Mode 1"
+  }
+}
