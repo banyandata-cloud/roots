@@ -16,6 +16,17 @@ export interface SelectedRange {
 	unix?: number[];
 }
 
+export interface TimeSlot {
+	HOURS?: number | undefined;
+	MINS?: number | undefined;
+	MER?: string | undefined;
+}
+
+export interface TimeRangeSelection {
+	previous?: TimeSlot;
+	next?: TimeSlot;
+}
+
 export interface DatesInMonth {
 	days: number[];
 	dateObj: Date[];
@@ -30,6 +41,7 @@ export interface DatesProps {
 	timeRange?: boolean | undefined;
 	selectedRange: SelectedRange;
 	setSelectedRange: (range: SelectedRange) => void;
+	setTimeRangeSelection?: ((value: TimeRangeSelection) => void) | undefined;
 	disabledDates: string[];
 	disableDatesBefore?: number | undefined;
 	enableFutureDates?: boolean | undefined;

@@ -10,7 +10,7 @@ import { motion } from 'framer-motion';
 import React, { useEffect, useRef, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import { useOutsideClickListener } from '../../hooks';
-import { classes, getDayInfo } from '../../utils';
+import { classes, getDatesInStringFormat, getDayInfo } from '../../utils';
 import { Button } from '../buttons';
 import { ErrorBoundaryWrapper } from '../errorBoundary';
 import { CalenderIcon, CaretIcon, ClockIcon } from '../icons';
@@ -383,6 +383,41 @@ const DatePicker = (props: DatePickerProps): React.JSX.Element => {
 			});
 		},
 		onClear: () => {
+			if (range && timeRange) {
+				const [startUnix, endUnix] = Array.isArray(value) ? (value as number[]) : [];
+
+				if (startUnix !== undefined && endUnix !== undefined) {
+					setSelectedRange({
+						dates: getDatesInStringFormat({
+							startingDate: fromUnixTime(startUnix),
+							endingDate: fromUnixTime(endUnix),
+						}) as string[],
+						unix: [startUnix, endUnix],
+					});
+
+					const startInfo = getDayInfo(fromUnixTime(startUnix));
+					const endInfo = getDayInfo(fromUnixTime(endUnix));
+					setTimeRangeSelection({
+						previous: {
+							HOURS: startInfo.hours,
+							MINS: startInfo.minutes,
+							MER: startInfo.meridian,
+						},
+						next: { HOURS: endInfo.hours, MINS: endInfo.minutes, MER: endInfo.meridian },
+					});
+
+					if (customRanges?.length) {
+						const presetRanges = showCustomRanges
+							? getFixedDateRanges(customRanges, timeRange)
+							: getCustomTimeDateRanges(customRanges);
+						setFixedRange(findMatchingPresetTitle(presetRanges, [startUnix, endUnix]));
+					}
+
+					setOpenDatePicker(false);
+					return;
+				}
+			}
+
 			onClear?.();
 			setTimeRangeSelection({});
 			setOpenDatePicker(false);

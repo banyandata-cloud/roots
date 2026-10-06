@@ -46,6 +46,7 @@ const Dates = (props: DatesProps): React.JSX.Element => {
 		timeRange,
 		selectedRange,
 		setSelectedRange,
+		setTimeRangeSelection,
 		disabledDates,
 		disableDatesBefore,
 		enableFutureDates,
@@ -86,6 +87,11 @@ const Dates = (props: DatesProps): React.JSX.Element => {
 		setFixedRange?.(false);
 
 		if (range && timeRange) {
+			setTimeRangeSelection?.({
+				previous: { HOURS: 12, MINS: 0, MER: 'AM' },
+				next: { HOURS: 11, MINS: 59, MER: 'PM' },
+			});
+
 			const isDateFieldFocused = activeGoToSelection === 'startDate' || activeGoToSelection === 'endDate';
 
 			if (isDateFieldFocused) {
