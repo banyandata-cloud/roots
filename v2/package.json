@@ -1,6 +1,6 @@
 {
 	"name": "@banyandata-cloud/roots",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"description": "Roots v2 components - private preview, not yet part of the public @banyan_cloud/roots package",
 	"main": "dist/cjs/index.js",
 	"module": "dist/esm/index.js",
