@@ -1,5 +1,5 @@
-@import '../../../../styles/';
-@import '../../../../styles/colors';
+@use 'sass:map';
+@use '../../../../styles/tokens' as tokens;
 
 $duration-fast-01: 70ms;
 $duration-fast-02: 110ms;
@@ -11,28 +11,28 @@ $ease-exit: cubic-bezier(0.2, 0, 1, 0.9);
 
 $button-sizes: (
 	xs: (
-		height: 32px,
-		padding: 12px,
-		gap: 4px,
-		radius: 6px,
+		height: tokens.$spacing-4xl,
+		padding: tokens.$spacing-lg,
+		gap: tokens.$spacing-xs,
+		radius: tokens.$radius-sm,
 	),
 	sm: (
-		height: 36px,
-		padding: 14px,
-		gap: 4px,
-		radius: 6px,
+		height: tokens.$spacing-5xl,
+		padding: tokens.$spacing-14,
+		gap: tokens.$spacing-xs,
+		radius: tokens.$radius-sm,
 	),
 	md: (
-		height: 40px,
-		padding: 16px,
-		gap: 6px,
-		radius: 6px,
+		height: 44px,
+		padding: tokens.$spacing-xl,
+		gap: tokens.$spacing-sm,
+		radius: tokens.$radius-sm,
 	),
 	lg: (
-		height: 44px,
-		padding: 18px,
-		gap: 6px,
-		radius: 6px,
+		height: 52px,
+		padding: tokens.$spacing-18,
+		gap: tokens.$spacing-sm,
+		radius: tokens.$radius-sm,
 	),
 );
 
@@ -59,8 +59,8 @@ $shadow-hover-secondary:
 	0 1px 1px 0 rgba(0, 0, 0, 0.12);
 
 $shadow-hover-critical:
-	0 2px 5px 0 rgba(217, 45, 32, 0.08),
-	0 0 0 1px rgba(217, 45, 32, 0.4),
+	0 0 0 2px rgba(243, 65, 65, 0.4),
+	0 2px 5px 0 rgba(243, 65, 65, 0.08),
 	0 1px 1px 0 rgba(0, 0, 0, 0.12);
 
 button.root[data-elem='base-cell'] {
@@ -80,34 +80,34 @@ button.root[data-elem='base-cell'] {
 
 	[data-elem='title'] {
 		font-family: Jakarta, sans-serif;
-		font-weight: 600;
-		font-size: 14px;
-		line-height: 20px;
+		font-weight: tokens.$font-weight-semibold;
+		font-size: tokens.$font-size-14;
+		line-height: tokens.$line-height-20;
 	}
 
 	@each $size, $values in $button-sizes {
 		&.size-#{$size} {
-			height: map-get($values, height);
-			padding: 0 map-get($values, padding);
-			gap: map-get($values, gap);
-			border-radius: map-get($values, radius);
+			height: map.get($values, height);
+			padding: 0 map.get($values, padding);
+			gap: map.get($values, gap);
+			border-radius: map.get($values, radius);
 		}
 	}
 
 	&.primary {
-		background: #1570ef;
-		color: #ffffff;
+		background: tokens.$color-bg-brand-solid;
+		color: tokens.$color-fg-white;
 		box-shadow: $shadow-normal;
 
 		&:hover:not(:disabled) {
-			background: #175cd3;
+			background: tokens.$color-bg-brand-solid-hover;
 			box-shadow: $shadow-hover-primary;
 			transition-duration: $duration-fast-01;
 			transition-timing-function: $ease-exit;
 		}
 
 		&:active:not(:disabled) {
-			background: #1849a9;
+			background: tokens.$base-color-brand-blue-b-800;
 			box-shadow: $shadow-normal;
 			transition-duration: $duration-fast-01;
 			transition-timing-function: $ease-entrance;
@@ -116,25 +116,25 @@ button.root[data-elem='base-cell'] {
 		&:focus-visible:not(:disabled) {
 			outline: none;
 			box-shadow:
-				0 0 0 2px #ffffff,
-				0 0 0 4px #1570ef;
+				0 0 0 2px tokens.$color-bg-primary,
+				0 0 0 4px tokens.$color-fg-brand-primary;
 		}
 	}
 
 	&.secondary {
-		background: #252b37;
-		color: #ffffff;
+		background: tokens.$color-bg-primary-black;
+		color: tokens.$color-fg-white;
 		box-shadow: $shadow-normal;
 
 		&:hover:not(:disabled) {
-			background: #414651;
+			background: tokens.$color-bg-primary-black-hover;
 			box-shadow: $shadow-hover-secondary;
 			transition-duration: $duration-fast-01;
 			transition-timing-function: $ease-exit;
 		}
 
 		&:active:not(:disabled) {
-			background: #181d27;
+			background: tokens.$base-color-gray-light-mode-g-900;
 			box-shadow: $shadow-normal;
 			transition-duration: $duration-fast-01;
 			transition-timing-function: $ease-entrance;
@@ -143,31 +143,31 @@ button.root[data-elem='base-cell'] {
 		&:focus-visible:not(:disabled) {
 			outline: none;
 			box-shadow:
-				0 0 0 2px #ffffff,
-				0 0 0 4px #a4a7ae;
+				0 0 0 2px tokens.$color-bg-primary,
+				0 0 0 4px tokens.$color-fg-quaternary;
 		}
 	}
 
 	&.soft {
-		background: #fafafa;
-		color: #414651;
+		background: tokens.$color-bg-secondary;
+		color: tokens.$color-text-secondary;
 		box-shadow: $shadow-normal;
 
 		&:not(:disabled) svg {
-			color: #414651;
+			color: tokens.$color-fg-secondary;
 		}
 
 		&:hover:not(:disabled) {
-			background: #f5f5f5;
-			color: #252b37;
+			background: tokens.$color-bg-secondary-hover;
+			color: tokens.$color-text-secondary-hover;
 			box-shadow: $shadow-hover-secondary;
 			transition-duration: $duration-fast-01;
 			transition-timing-function: $ease-exit;
 		}
 
 		&:active:not(:disabled) {
-			background: #f5f5f5;
-			color: #252b37;
+			background: tokens.$color-bg-secondary-hover;
+			color: tokens.$color-text-secondary-hover;
 			box-shadow: $shadow-normal;
 			transition-duration: $duration-fast-01;
 			transition-timing-function: $ease-entrance;
@@ -176,29 +176,26 @@ button.root[data-elem='base-cell'] {
 		&:focus-visible:not(:disabled) {
 			outline: none;
 			box-shadow:
-				0 0 0 2px #ffffff,
-				0 0 0 4px #a4a7ae;
+				0 0 0 2px tokens.$color-bg-primary,
+				0 0 0 4px tokens.$color-fg-quaternary;
 		}
 	}
 
 	&.outline {
-		background: transparent;
-		color: #414651;
-		box-shadow:
-			0 2px 5px 0 rgba(103, 110, 118, 0.08),
-			0 0 0 1px rgba(103, 110, 118, 0.16),
-			0 1px 1px 0 rgba(0, 0, 0, 0.12);
+		background: tokens.$color-bg-primary;
+		color: tokens.$color-text-secondary;
+		box-shadow: $shadow-normal;
 
 		&:hover:not(:disabled) {
-			background: #fafafa;
+			background: tokens.$color-bg-primary-hover;
 			box-shadow: $shadow-hover-secondary;
 			transition-duration: $duration-fast-01;
 			transition-timing-function: $ease-exit;
 		}
 
 		&:active:not(:disabled) {
-			background: #f5f5f5;
-			box-shadow: 0 0 0 1px #d5d7da;
+			background: tokens.$color-bg-secondary-hover;
+			box-shadow: 0 0 0 1px tokens.$color-border-primary;
 			transition-duration: $duration-fast-01;
 			transition-timing-function: $ease-entrance;
 		}
@@ -206,25 +203,25 @@ button.root[data-elem='base-cell'] {
 		&:focus-visible:not(:disabled) {
 			outline: none;
 			box-shadow:
-				0 0 0 2px #ffffff,
-				0 0 0 4px #535862;
+				0 0 0 2px tokens.$color-bg-primary,
+				0 0 0 4px tokens.$color-fg-quaternary;
 		}
 	}
 
 	&.ghost {
 		background: transparent;
-		color: #414651;
+		color: tokens.$color-text-secondary;
 		box-shadow: none;
 
 		&:hover:not(:disabled) {
-			background: #fafafa;
+			background: tokens.$color-bg-primary-hover;
 			box-shadow: $shadow-normal;
 			transition-duration: $duration-fast-01;
 			transition-timing-function: $ease-exit;
 		}
 
 		&:active:not(:disabled) {
-			background: #f5f5f5;
+			background: tokens.$color-bg-secondary-hover;
 			box-shadow: none;
 			transition-duration: $duration-fast-01;
 			transition-timing-function: $ease-entrance;
@@ -233,25 +230,25 @@ button.root[data-elem='base-cell'] {
 		&:focus-visible:not(:disabled) {
 			outline: none;
 			box-shadow:
-				0 0 0 2px #ffffff,
-				0 0 0 4px #a4a7ae;
+				0 0 0 2px tokens.$color-bg-primary,
+				0 0 0 4px tokens.$color-fg-quaternary;
 		}
 	}
 
 	&.critical {
-		background: #d92d20;
-		color: #ffffff;
+		background: tokens.$color-bg-error-solid;
+		color: tokens.$color-fg-white;
 		box-shadow: $shadow-normal;
 
 		&:hover:not(:disabled) {
-			background: #b42318;
+			background: tokens.$color-bg-error-solid;
 			box-shadow: $shadow-hover-critical;
 			transition-duration: $duration-fast-01;
 			transition-timing-function: $ease-exit;
 		}
 
 		&:active:not(:disabled) {
-			background: #912018;
+			background: tokens.$base-color-error-r-700;
 			box-shadow: $shadow-normal;
 			transition-duration: $duration-fast-01;
 			transition-timing-function: $ease-entrance;
@@ -260,14 +257,14 @@ button.root[data-elem='base-cell'] {
 		&:focus-visible:not(:disabled) {
 			outline: none;
 			box-shadow:
-				0 0 0 2px #ffffff,
-				0 0 0 4px #f04438;
+				0 0 0 2px tokens.$color-bg-primary,
+				0 0 0 4px tokens.$color-fg-error-secondary;
 		}
 	}
 
 	$icon-button-sizes: (
-		xs: 32px,
-		sm: 40px,
+		xs: tokens.$spacing-4xl,
+		sm: tokens.$spacing-5xl,
 		md: 44px,
 		lg: 52px,
 	);
@@ -290,15 +287,10 @@ button.root[data-elem='base-cell'] {
 			color $duration-moderate-01 $ease-standard,
 			opacity $duration-moderate-01 $ease-standard;
 
-		background: #f5f5f5;
-		color: #a4a7ae;
+		background: tokens.$color-bg-disabled;
+		color: tokens.$color-fg-disabled;
 		cursor: not-allowed;
 		box-shadow: none;
-
-		[data-elem='title'],
-		svg {
-			opacity: 0.6;
-		}
 	}
 
 	@media (prefers-reduced-motion: reduce) {

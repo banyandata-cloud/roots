@@ -1,3 +1,4 @@
+@use '../../../../styles/tokens' as tokens;
 @import '../../../../styles/_index';
 
 .root[data-elem='base-cell'] {
@@ -5,7 +6,7 @@
 		overflow: hidden;
 	}
 
-	background: $light-color3;
+	background: tokens.$color-bg-primary;
 
 	> [data-elem*='component'] {
 		@include flex(row, flex-start);
@@ -16,7 +17,7 @@
 			display: inline-block;
 			width: 100%;
 			font-size: 16px;
-			color: $text-color;
+			color: tokens.$color-text-primary;
 		}
 	}
 
@@ -30,10 +31,10 @@
 	/* ================= HEADER CELL ================= */
 
 	&.header-cell {
-		background: #fafafa;
-		border-top: 1px solid #f5f5f5;
-		border-right: 1px solid #f5f5f5;
-		border-bottom: 1px solid #f5f5f5;
+		background: tokens.$color-bg-secondary;
+		border-top: 1px solid tokens.$color-border-tertiary;
+		border-right: 1px solid tokens.$color-border-tertiary;
+		border-bottom: 1px solid tokens.$color-border-tertiary;
 
 		height: 40px;
 		padding: 0 12px 0 16px !important;
@@ -46,7 +47,7 @@
 		justify-content: flex-start;
 
 		.cell-text {
-			color: #717680;
+			color: tokens.$color-text-quanternary;
 			font-family: Jakarta;
 			font-size: 14px;
 			font-weight: 600;
@@ -58,11 +59,11 @@
 		}
 
 		&:not(:has(.sort-btn--active)):hover {
-			background: #f5f5f5;
+			background: tokens.$color-bg-secondary-hover;
 		}
 
 		&:not(:has(.sort-btn--active)):hover .cell-text {
-			color: #535862;
+			color: tokens.$color-text-tertiary-onhover;
 		}
 
 		> [data-elem='component2'] {
@@ -92,7 +93,7 @@
 			pointer-events: auto;
 		}
 		&:focus-visible {
-			outline: solid #3b82f6;
+			outline: solid tokens.$color-border-brand;
 			outline-offset: -2px;
 		}
 
@@ -151,11 +152,11 @@
 	&.body-cell {
 		padding: 0 16px !important;
 		gap: 12px !important;
-		height: 48px !important;
+		height: 40px !important;
 
-		background: #fff;
-		border-right: 1px solid #f5f5f5;
-		border-bottom: 1px solid #f5f5f5;
+		background: tokens.$color-bg-primary;
+		border-right: 1px solid tokens.$color-border-tertiary;
+		border-bottom: 1px solid tokens.$color-border-tertiary;
 
 		&:has([data-elem='component1']) > [data-elem='component2'] {
 			flex: 1;
@@ -164,7 +165,7 @@
 
 		.cell-text {
 			overflow: hidden;
-			color: #535862;
+			color: tokens.$color-text-tertiary;
 			text-overflow: ellipsis;
 
 			font-family: Jakarta;
@@ -192,22 +193,22 @@
 		}
 
 		&:hover .cell-text {
-			color: #181d27 !important;
+			color: tokens.$color-text-primary !important;
 		}
 
 		tr[data-disabled='true'] & {
-			background: #ffffff;
+			background: tokens.$color-bg-disabled-subtle;
 			cursor: not-allowed;
 
 			.cell-text {
-				color: #a4a7ae !important;
+				color: tokens.$color-text-disabled !important;
 			}
 
 			&:hover {
-				background: #ffffff !important;
+				background: tokens.$color-bg-disabled-subtle !important;
 
 				.cell-text {
-					color: #a4a7ae !important;
+					color: tokens.$color-text-disabled !important;
 				}
 			}
 		}
@@ -254,7 +255,7 @@
 	border-radius: 4px;
 	cursor: pointer;
 
-	color: #a4a7ae;
+	color: tokens.$color-fg-disabled;
 
 	transition:
 		background-color 120ms ease,
@@ -264,27 +265,27 @@
 /* ================= SORT BUTTON ================= */
 
 .sort-btn {
-	color: #a4a7ae;
+	color: tokens.$color-fg-disabled;
 
 	&:hover:not(.sort-btn--active) {
-		background: #e9eaeb;
-		color: #717680;
+		background: tokens.$color-bg-secondary-hover;
+		color: tokens.$color-fg-quaternary;
 
 		svg path {
-			stroke: #717680;
+			stroke: tokens.$color-fg-quaternary;
 		}
 	}
 
 	&--active {
-		color: #1f5fcc !important;
-		background: #f5f5f5;
+		color: tokens.$color-fg-brand-primary !important;
+		background: tokens.$color-bg-tertiary;
 
 		svg path {
-			stroke: #1f5fcc;
+			stroke: tokens.$color-fg-brand-primary;
 		}
 	}
 	&:focus-visible {
-		outline: 1.5px solid #3b82f6;
+		outline: 1.5px solid tokens.$color-border-brand;
 		outline-offset: -2px;
 		border-radius: 4px;
 	}
@@ -293,39 +294,39 @@
 /* ================= FILTER BUTTON ================= */
 
 .filter-btn {
-	color: #a4a7ae;
+	color: tokens.$color-fg-disabled;
 
 	&:hover:not(.filter-btn--active):not(.filter-btn--open) {
-		background: #e9eaeb;
-		color: #717680;
+		background: tokens.$color-bg-secondary-hover;
+		color: tokens.$color-fg-quaternary;
 
 		svg path {
-			stroke: #717680;
+			stroke: tokens.$color-fg-quaternary;
 		}
 	}
 
 	&--active {
-		color: #1f5fcc;
-		background: #f5f5f5;
+		color: tokens.$color-fg-brand-primary;
+		background: tokens.$color-bg-tertiary;
 
 		&:hover {
-			background: #f5f5f5;
-			color: #1f5fcc;
+			background: tokens.$color-bg-tertiary;
+			color: tokens.$color-fg-brand-primary;
 		}
 	}
 
 	&--open {
-		color: #1f5fcc;
-		background: #f5f5f5;
+		color: tokens.$color-fg-brand-primary;
+		background: tokens.$color-bg-tertiary;
 
 		&:hover {
-			background: #f5f5f5;
-			color: #1f5fcc;
+			background: tokens.$color-bg-tertiary;
+			color: tokens.$color-fg-brand-primary;
 		}
 	}
 
 	&:focus-visible {
-		outline: 1.5px solid #3b82f6;
+		outline: 1.5px solid tokens.$color-border-brand;
 		outline-offset: -2px;
 		border-radius: 4px;
 	}
@@ -347,7 +348,7 @@
 	flex-shrink: 0;
 
 	&:has(.filter-close-btn) {
-		background: #f5f5f5;
+		background: tokens.$color-bg-tertiary;
 		gap: 6px;
 		border-radius: 4px;
 	}
@@ -366,14 +367,14 @@
 	height: 16px;
 	flex-shrink: 0;
 	box-sizing: content-box;
-	color: #535862;
+	color: tokens.$color-text-tertiary;
 
 	&:hover {
-		color: #181d27;
+		color: tokens.$color-text-primary;
 	}
 
 	&:focus-visible {
-		outline: 1.5px solid #3b82f6;
+		outline: 1.5px solid tokens.$color-border-brand;
 		outline-offset: -2px;
 		border-radius: 4px;
 	}
@@ -384,9 +385,9 @@
 	top: calc(100% + 4px);
 	left: 0;
 
-	background: #ffffff;
-	border: 1px solid #e9eaeb;
-	border-radius: 6px;
+	background: tokens.$color-bg-primary;
+	border: 1px solid tokens.$color-border-primary;
+	border-radius: tokens.$radius-sm;
 
 	padding: 6px;
 
@@ -406,7 +407,7 @@
 	gap: 8px;
 
 	font-size: 13px;
-	color: #535862;
+	color: tokens.$color-text-tertiary;
 
 	cursor: pointer;
 	padding: 5px 8px;
@@ -414,11 +415,11 @@
 	border-radius: 4px;
 
 	&:hover {
-		background: #e9eaeb;
+		background: tokens.$color-bg-secondary-hover;
 	}
 
 	input[type='checkbox'] {
-		accent-color: #1f5fcc;
+		accent-color: tokens.$color-fg-brand-primary;
 		width: 14px;
 		height: 14px;
 		cursor: pointer;

@@ -65,6 +65,11 @@ export const Pill: Story = {
 						<Badge key={size} size={size} variant='pill' label='Label' arrow />
 					))}
 				</Row>
+				<Row label='With Arrow (left)'>
+					{sizes.map((size) => (
+						<Badge key={size} size={size} variant='pill' label='Label' arrowLead />
+					))}
+				</Row>
 				<Row label='With Arrow (up)'>
 					{sizes.map((size) => (
 						<Badge key={size} size={size} variant='pill' label='Label' upArrow />

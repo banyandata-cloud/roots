@@ -5,9 +5,11 @@ export type ButtonVariant =
 	| 'secondary'
 	| 'soft'
 	| 'outline'
-	| 'ghost'
 	| 'critical'
-	| 'unstyled';
+	| 'ghost'
+	| 'unstyled'
+	| 'Soft'
+	| 'outlined';
 export type ButtonTextSize = 'sm' | 'md';
 export type ButtonSize = 'xs' | 'sm' | 'md' | 'lg' | 'auto';
 

@@ -1,30 +1,33 @@
+@use 'sass:map';
+@use '../../../styles/tokens' as tokens;
+
 $sizes: (
 	sm: (
-		padding-v: 2px,
-		padding-h: 8px,
-		gap: 4px,
-		font-size: 12px,
-		line-height: 16px,
-		icon-padding-reduction: 4px,
+		padding-v: tokens.$spacing-xxs,
+		padding-h: tokens.$spacing-md,
+		gap: tokens.$spacing-xs,
+		font-size: tokens.$font-size-12,
+		line-height: tokens.$line-height-16,
+		icon-padding-reduction: tokens.$spacing-xs,
 		plus-padding: 5px,
 	),
 	md: (
-		padding-v: 2px,
+		padding-v: tokens.$spacing-xxs,
 		padding-h: 10px,
-		gap: 4px,
-		font-size: 14px,
-		line-height: 20px,
-		icon-padding-reduction: 4px,
-		plus-padding: 6px,
+		gap: tokens.$spacing-xs,
+		font-size: tokens.$font-size-14,
+		line-height: tokens.$line-height-20,
+		icon-padding-reduction: tokens.$spacing-xs,
+		plus-padding: tokens.$spacing-sm,
 	),
 	lg: (
-		padding-v: 4px,
-		padding-h: 12px,
-		gap: 4px,
-		font-size: 14px,
-		line-height: 20px,
-		icon-padding-reduction: 4px,
-		plus-padding: 8px,
+		padding-v: tokens.$spacing-xs,
+		padding-h: tokens.$spacing-lg,
+		gap: tokens.$spacing-xs,
+		font-size: tokens.$font-size-14,
+		line-height: tokens.$line-height-20,
+		icon-padding-reduction: tokens.$spacing-xs,
+		plus-padding: tokens.$spacing-md,
 	),
 );
 
@@ -34,9 +37,7 @@ $sizes: (
 	box-sizing: border-box;
 	white-space: nowrap;
 	border: 1px solid transparent;
-	font-family:
-		Jakarta Sans,
-		sans-serif;
+	font-family: Jakarta, sans-serif;
 
 	&__icon {
 		display: block;
@@ -46,6 +47,9 @@ $sizes: (
 		display: inline-block;
 		font-weight: 500;
 		font-family: inherit;
+	}
+	& > .badge__label {
+		color: inherit;
 	}
 	&__closer {
 		display: inline-flex;
@@ -74,12 +78,12 @@ $sizes: (
 	}
 	@each $size, $map in $sizes {
 		&--#{$size} {
-			padding: map-get($map, padding-v) map-get($map, padding-h);
-			gap: map-get($map, gap);
+			padding: map.get($map, padding-v) map.get($map, padding-h);
+			gap: map.get($map, gap);
 
 			.badge__label {
-				font-size: map-get($map, font-size);
-				line-height: map-get($map, line-height);
+				font-size: map.get($map, font-size);
+				line-height: map.get($map, line-height);
 			}
 
 			&.badge--pill.badge--has-closer {
@@ -319,46 +323,46 @@ $sizes: (
 
 			&.badge--has-dot:not(.badge--pill) {
 				padding-left: calc(
-					map-get($map, padding-h) - map-get($map, icon-padding-reduction)
+					map.get($map, padding-h) - map.get($map, icon-padding-reduction)
 				);
 			}
 			&.badge--has-up-arrow:not(.badge--pill) {
 				padding-left: calc(
-					map-get($map, padding-h) - map-get($map, icon-padding-reduction)
+					map.get($map, padding-h) - map.get($map, icon-padding-reduction)
 				);
 			}
 			&.badge--has-arrow:not(.badge--pill) {
 				padding-right: calc(
-					map-get($map, padding-h) - map-get($map, icon-padding-reduction)
+					map.get($map, padding-h) - map.get($map, icon-padding-reduction)
 				);
 			}
 			&.badge--has-plus {
-				padding: map-get($map, plus-padding);
+				padding: map.get($map, plus-padding);
 			}
 		}
 	}
 
 	&--pill {
-		border-radius: 999px;
-		background-color: #fafafa;
-		border-color: #e9eaeb;
-		color: #414651;
+		border-radius: tokens.$radius-full;
+		background-color: tokens.$color-bg-secondary;
+		border-color: tokens.$color-border-secondary;
+		color: tokens.$color-text-secondary;
 	}
 
 	&--badge {
-		border-radius: 6px;
-		background-color: #fafafa;
-		border-color: #e9eaeb;
-		color: #414651;
+		border-radius: tokens.$radius-sm;
+		background-color: tokens.$color-bg-secondary;
+		border-color: tokens.$color-border-secondary;
+		color: tokens.$color-text-secondary;
 	}
 
 	&--modern {
-		border-radius: 6px;
-		background-color: #ffffff;
-		border-color: #d5d7da;
+		border-radius: tokens.$radius-sm;
+		background-color: tokens.$color-bg-primary;
+		border-color: tokens.$color-border-primary;
 		box-shadow:
 			0px 0px 1px 0px rgba(0, 0, 0, 0.04),
 			0px 1px 2px 0px rgba(0, 0, 0, 0.06);
-		color: #414651;
+		color: tokens.$color-text-secondary;
 	}
 }

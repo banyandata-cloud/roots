@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
-  background: var(--light-color3);
+  background: var(--color-bg-primary);
   overflow: auto;
   -ms-overflow-style: none;
   scrollbar-width: thin;
@@ -17,6 +17,16 @@
 }
 .root::-webkit-scrollbar-thumb {
   background: var(--grey6);
+}
+.root {
+  scrollbar-width: none;
+}
+.root::-webkit-scrollbar:horizontal {
+  display: none;
+  height: 0;
+}
+.root::-webkit-scrollbar:vertical {
+  width: 0.25rem;
 }
 .root.no-scroll {
   overflow: hidden;

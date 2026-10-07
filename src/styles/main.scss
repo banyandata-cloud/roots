@@ -1,6 +1,3 @@
-// Storybook loads this file directly (.storybook/preview.ts), bypassing the
-// package's src/index.ts barrel -- wired here too so dark-mode tokens exist
-// in the Storybook preview, mirroring the src/styles/index.ts wiring for real consumers.
 @use './tokens/root-colors';
 
 * {

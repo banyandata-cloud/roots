@@ -8,8 +8,8 @@ interface TagCountMdProps {
 
 const TagCountMd: React.FC<TagCountMdProps> = ({
 	count = 0,
-	bgColor = '#F5F5F5',
-	textColor = '#414651',
+	bgColor = 'var(--color-bg-tertiary, #f2f2f2)',
+	textColor = 'var(--color-text-secondary, #414651)',
 }) => {
 	const containerStyle: React.CSSProperties = {
 		display: 'inline-flex',
@@ -21,9 +21,10 @@ const TagCountMd: React.FC<TagCountMdProps> = ({
 		borderRadius: '3px',
 		background: bgColor,
 		color: textColor,
+		fontFamily: 'Jakarta, sans-serif',
 		fontSize: '12px',
 		fontWeight: 500,
-		lineHeight: '18px',
+		lineHeight: '16px',
 		whiteSpace: 'nowrap',
 	};
 

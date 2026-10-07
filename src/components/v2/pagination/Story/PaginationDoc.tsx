@@ -56,7 +56,7 @@ const PaginationDoc = () => (
 			state externally.
 		</Subtitle>
 		<LinkHeader
-			figmaLink='https://www.figma.com/design/IfmLQrA0AAZVYwt6vRxqCe/Design-System--26?node-id=868-420&p=f&m=dev'
+			figmaLink='https://www.figma.com/design/IfmLQrA0AAZVYwt6vRxqCe/Design-System--26?node-id=1821-5993&m=dev'
 			githubLink='https://github.com/banyandata-cloud/roots/tree/main/src/components/v2/pagination'
 		/>
 		<Heading>API</Heading>

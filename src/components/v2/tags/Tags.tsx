@@ -1,15 +1,12 @@
 import React, { forwardRef, useEffect, useRef, useState } from 'react';
-import Logo1 from '../../icons/Email/Email';
 import Checkbox from '../checkbox/CheckBox';
-import { TextField } from '../input/textfield';
+import { TextField } from '../input/textField';
 import Indicator from '../tags/assets/Indicator/Indicator';
 import type { TagProps, TagSize } from '../tags/types';
-import TagCloserLg from './assets/TagCloser/TagCloserLg';
-import TagCloserMd from './assets/TagCloser/TagCloserMd';
-import TagCloserSm from './assets/TagCloser/TagCloserSm';
 import TagCountLg from './assets/TagCount/TagCountLg';
 import TagCountMd from './assets/TagCount/TagCountMd';
 import TagCountSm from './assets/TagCount/TagCountSm';
+import TagLogoSvg from './assets/TagLogo.svg';
 import styles from './Tags.module.scss';
 
 const INDICATOR_SIZE: Record<TagSize, number> = {
@@ -19,9 +16,24 @@ const INDICATOR_SIZE: Record<TagSize, number> = {
 };
 
 const CLOSER_MAP: Record<TagSize, React.ReactElement> = {
-	sm: <TagCloserSm />,
-	md: <TagCloserMd />,
-	lg: <TagCloserLg />,
+	sm: (
+		<span
+			className={`${styles['tag__close-icon']} ${styles['tag__close-icon--sm']}`}
+			aria-hidden='true'
+		/>
+	),
+	md: (
+		<span
+			className={`${styles['tag__close-icon']} ${styles['tag__close-icon--md']}`}
+			aria-hidden='true'
+		/>
+	),
+	lg: (
+		<span
+			className={`${styles['tag__close-icon']} ${styles['tag__close-icon--lg']}`}
+			aria-hidden='true'
+		/>
+	),
 };
 
 const COUNT_MAP = (count: number): Record<TagSize, React.ReactElement> => ({
@@ -29,6 +41,12 @@ const COUNT_MAP = (count: number): Record<TagSize, React.ReactElement> => ({
 	md: <TagCountMd count={count} />,
 	lg: <TagCountLg count={count} />,
 });
+
+const TagLogo = ({ className = '' }: { className?: string }) => (
+	<span className={className} aria-hidden='true'>
+		<img src={TagLogoSvg} alt='' />
+	</span>
+);
 
 const Tag = forwardRef<HTMLInputElement, TagProps>(
 	(
@@ -365,7 +383,7 @@ const Tag = forwardRef<HTMLInputElement, TagProps>(
 						styles[`tag--${size}--checkbox-indicator-count`],
 					].join(' ')}>
 					<Checkbox size={size} />
-					<Logo1
+					<TagLogo
 						className={[styles.tag__logo, styles[`tag__logo--checkbox-count-${size}`]]
 							.filter(Boolean)
 							.join(' ')}
@@ -391,7 +409,7 @@ const Tag = forwardRef<HTMLInputElement, TagProps>(
 						styles[`tag--${size}--checkbox-indicator-closable`],
 					].join(' ')}>
 					<Checkbox size={size} />
-					<Logo1
+					<TagLogo
 						className={[
 							styles.tag__logo,
 							styles[`tag__logo--checkbox-closable-${size}`],
@@ -414,7 +432,7 @@ const Tag = forwardRef<HTMLInputElement, TagProps>(
 						styles[`tag--${size}--checkbox-indicator`],
 					].join(' ')}>
 					<Checkbox size={size} />
-					<Logo1
+					<TagLogo
 						className={[styles.tag__logo, styles[`tag__logo--checkbox-${size}`]]
 							.filter(Boolean)
 							.join(' ')}
@@ -432,7 +450,7 @@ const Tag = forwardRef<HTMLInputElement, TagProps>(
 						styles[`tag--${size}`],
 						styles[`tag--${size}--indicator-count`],
 					].join(' ')}>
-					<Logo1
+					<TagLogo
 						className={[styles.tag__logo, styles[`tag__logo--count-${size}`]]
 							.filter(Boolean)
 							.join(' ')}
@@ -453,7 +471,7 @@ const Tag = forwardRef<HTMLInputElement, TagProps>(
 						styles[`tag--${size}`],
 						styles[`tag--${size}--indicator-closable`],
 					].join(' ')}>
-					<Logo1
+					<TagLogo
 						className={[styles.tag__logo, styles[`tag__logo--closable-${size}`]]
 							.filter(Boolean)
 							.join(' ')}
@@ -472,7 +490,7 @@ const Tag = forwardRef<HTMLInputElement, TagProps>(
 						styles[`tag--${size}`],
 						styles[`tag--${size}--indicator`],
 					].join(' ')}>
-					<Logo1 className={styles.tag__logo} />
+					<TagLogo className={styles.tag__logo} />
 					{label}
 				</span>
 			);

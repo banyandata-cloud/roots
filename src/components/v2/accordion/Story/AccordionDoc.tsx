@@ -98,7 +98,7 @@ const AccordionDoc = () => (
 			users to expand or collapse sections.
 		</Subtitle>
 		<LinkHeader
-			figmaLink='https://www.figma.com/design/IfmLQrA0AAZVYwt6vRxqCe/Design-System--26?node-id=144-45&p=f&m=dev'
+			figmaLink='https://www.figma.com/design/IfmLQrA0AAZVYwt6vRxqCe/Design-System--26?node-id=148-8&m=dev'
 			githubLink='https://github.com/banyandata-cloud/roots/tree/main/src/components/accordion'
 		/>
 		<Heading>API</Heading>
