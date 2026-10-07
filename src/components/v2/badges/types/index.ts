@@ -1,9 +1,20 @@
 export type BadgeVariant = 'pill' | 'badge' | 'modern';
 export type BadgeSize = 'sm' | 'md' | 'lg';
+export type BadgeColor =
+	| 'brand'
+	| 'red'
+	| 'gray-blue'
+	| 'gray'
+	| 'green'
+	| 'indigo'
+	| 'orange'
+	| 'pink'
+	| 'purple';
 
 export interface BadgeProps {
 	label: string;
 	variant?: BadgeVariant | undefined;
+	color?: BadgeColor | undefined;
 	size?: BadgeSize | undefined;
 	onClose?: ((e: React.MouseEvent) => void) | undefined;
 	dot?: boolean | undefined;

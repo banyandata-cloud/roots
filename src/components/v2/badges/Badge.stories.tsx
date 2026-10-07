@@ -22,13 +22,33 @@ type Story = StoryObj<typeof Badge>;
 // ─── Shared layout helpers ───────────────────────────────────────────────────
 
 const sizes = ['sm', 'md', 'lg'] as const;
+const badgeColors = [
+	'brand',
+	'red',
+	'gray-blue',
+	'gray',
+	'green',
+	'indigo',
+	'orange',
+	'pink',
+	'purple',
+] as const;
 
 const Row = ({ label, children }: { label: string; children: React.ReactNode }) => (
 	<div style={{ display: 'flex', alignItems: 'center', gap: '24px', marginBottom: '12px' }}>
 		<span style={{ width: '160px', fontSize: '12px', color: '#888', flexShrink: 0 }}>
 			{label}
 		</span>
-		<div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>{children}</div>
+		<div
+			style={{
+				display: 'flex',
+				gap: '12px',
+				alignItems: 'center',
+				flexWrap: 'wrap',
+				minWidth: 0,
+			}}>
+			{children}
+		</div>
 	</div>
 );
 
@@ -42,6 +62,11 @@ export const Pill: Story = {
 				<Row label='Text only'>
 					{sizes.map((size) => (
 						<Badge key={size} size={size} variant='pill' label='Label' />
+					))}
+				</Row>
+				<Row label='Color variants'>
+					{badgeColors.map((color) => (
+						<Badge key={color} size='md' variant='pill' color={color} label={color} />
 					))}
 				</Row>
 				<Row label='With Closer'>
@@ -95,6 +120,11 @@ export const BadgeStory: Story = {
 				<Row label='Text only'>
 					{sizes.map((size) => (
 						<Badge key={size} size={size} variant='badge' label='Label' />
+					))}
+				</Row>
+				<Row label='Color variants'>
+					{badgeColors.map((color) => (
+						<Badge key={color} size='md' variant='badge' color={color} label={color} />
 					))}
 				</Row>
 				<Row label='With Closer'>

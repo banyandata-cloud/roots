@@ -12,14 +12,15 @@ import CrossIcon from '../tags/assets/TagCloser/TagCloserSm';
 import Text from '../text/Text';
 import styles from './Badge.module.scss';
 
-const DEFAULT_ICON_COLOR = 'var(--color-fg-quaternary, #717680)';
-const CLOSE_ICON_COLOR = 'var(--color-fg-disabled, #c1c5cd)';
+const DEFAULT_ICON_COLOR = 'var(--badge-icon-color, var(--color-fg-quaternary, #717680))';
+const CLOSE_ICON_COLOR = 'var(--badge-cross-icon-color, var(--color-fg-disabled, #c1c5cd))';
 
 const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
 	(
 		{
 			label,
 			variant = 'pill',
+			color = 'gray',
 			size = 'sm',
 			onClose,
 			dot = false,
@@ -40,6 +41,7 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
 			styles.badge,
 			styles[`badge--${size}`],
 			styles[`badge--${variant}`],
+			variant !== 'modern' && styles[`badge--color-${color}`],
 			dot && styles['badge--has-dot'],
 			arrow && styles['badge--has-arrow'],
 			arrowLead && styles['badge--has-lead'],

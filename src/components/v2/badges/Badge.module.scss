@@ -31,6 +31,90 @@ $sizes: (
 	),
 );
 
+$badge-colors: (
+	'brand': (
+		background: tokens.$color-utility-brand-50,
+		border: tokens.$color-utility-brand-200,
+		text: tokens.$color-utility-brand-700,
+		icon: tokens.$color-utility-brand-500,
+		cross-icon: tokens.$color-utility-brand-400,
+		cross-icon-bg: tokens.$color-utility-brand-100,
+		cross-icon-hover: tokens.$color-utility-brand-500,
+	),
+	'red': (
+		background: tokens.$color-utility-error-50,
+		border: tokens.$color-utility-error-200,
+		text: tokens.$color-utility-error-700,
+		icon: tokens.$color-utility-error-500,
+		cross-icon: tokens.$color-utility-error-400,
+		cross-icon-bg: tokens.$color-utility-error-100,
+		cross-icon-hover: tokens.$color-utility-error-500,
+	),
+	'gray-blue': (
+		background: tokens.$color-utility-blue-gray-50,
+		border: tokens.$color-utility-blue-gray-200,
+		text: tokens.$color-utility-blue-gray-700,
+		icon: tokens.$color-utility-blue-gray-500,
+		cross-icon: tokens.$color-utility-blue-gray-400,
+		cross-icon-bg: tokens.$color-utility-blue-gray-100,
+		cross-icon-hover: tokens.$color-utility-blue-gray-500,
+	),
+	'gray': (
+		background: tokens.$color-utility-gray-50,
+		border: tokens.$color-utility-gray-200,
+		text: tokens.$color-utility-gray-700,
+		icon: tokens.$color-utility-gray-500,
+		cross-icon: tokens.$color-utility-gray-400,
+		cross-icon-bg: tokens.$color-utility-gray-100,
+		cross-icon-hover: tokens.$color-utility-gray-500,
+	),
+	'green': (
+		background: tokens.$color-utility-success-50,
+		border: tokens.$color-utility-success-200,
+		text: tokens.$color-utility-success-700,
+		icon: tokens.$color-utility-success-500,
+		cross-icon: tokens.$color-utility-success-400,
+		cross-icon-bg: tokens.$color-utility-success-100,
+		cross-icon-hover: tokens.$color-utility-success-500,
+	),
+	'indigo': (
+		background: tokens.$color-utility-indigo-50,
+		border: tokens.$color-utility-indigo-200,
+		text: tokens.$color-utility-indigo-700,
+		icon: tokens.$color-utility-indigo-500,
+		cross-icon: tokens.$color-utility-indigo-400,
+		cross-icon-bg: tokens.$color-utility-indigo-100,
+		cross-icon-hover: tokens.$color-utility-indigo-500,
+	),
+	'orange': (
+		background: tokens.$color-utility-warning-50,
+		border: tokens.$color-utility-warning-200,
+		text: tokens.$color-utility-warning-700,
+		icon: tokens.$color-utility-warning-500,
+		cross-icon: tokens.$color-utility-warning-400,
+		cross-icon-bg: tokens.$color-utility-warning-100,
+		cross-icon-hover: tokens.$color-utility-warning-500,
+	),
+	'pink': (
+		background: tokens.$color-utility-pink-50,
+		border: tokens.$color-utility-pink-200,
+		text: tokens.$color-utility-pink-700,
+		icon: tokens.$color-utility-pink-500,
+		cross-icon: tokens.$color-utility-pink-400,
+		cross-icon-bg: tokens.$color-utility-pink-100,
+		cross-icon-hover: tokens.$color-utility-pink-500,
+	),
+	'purple': (
+		background: tokens.$color-utility-purple-50,
+		border: tokens.$color-utility-purple-200,
+		text: tokens.$color-utility-purple-700,
+		icon: tokens.$color-utility-purple-500,
+		cross-icon: tokens.$color-utility-purple-400,
+		cross-icon-bg: tokens.$color-utility-purple-100,
+		cross-icon-hover: tokens.$color-utility-purple-500,
+	),
+);
+
 .badge {
 	display: inline-flex;
 	align-items: center;
@@ -61,19 +145,36 @@ $sizes: (
 		border: none;
 		cursor: pointer;
 		color: inherit;
-		opacity: 0.45;
+		opacity: 1;
 		transition: opacity 0.15s ease;
 		width: 16px;
 		height: 16px;
 
 		&:hover {
 			opacity: 1;
+			background-color: var(--badge-cross-icon-bg, transparent);
+
+			svg path {
+				stroke: var(--badge-cross-icon-hover, var(--color-fg-quaternary, #717680));
+			}
 		}
 
 		&:focus-visible {
 			outline: 2px solid currentColor;
 			outline-offset: 1px;
 			border-radius: 2px;
+		}
+	}
+
+	@each $color, $values in $badge-colors {
+		&--color-#{$color} {
+			--badge-background: #{map.get($values, background)};
+			--badge-border: #{map.get($values, border)};
+			--badge-text: #{map.get($values, text)};
+			--badge-icon-color: #{map.get($values, icon)};
+			--badge-cross-icon-color: #{map.get($values, cross-icon)};
+			--badge-cross-icon-bg: #{map.get($values, cross-icon-bg)};
+			--badge-cross-icon-hover: #{map.get($values, cross-icon-hover)};
 		}
 	}
 	@each $size, $map in $sizes {
@@ -344,16 +445,16 @@ $sizes: (
 
 	&--pill {
 		border-radius: tokens.$radius-full;
-		background-color: tokens.$color-bg-secondary;
-		border-color: tokens.$color-border-secondary;
-		color: tokens.$color-text-secondary;
+		background-color: var(--badge-background, #{tokens.$color-bg-secondary});
+		border-color: var(--badge-border, #{tokens.$color-border-secondary});
+		color: var(--badge-text, #{tokens.$color-text-secondary});
 	}
 
 	&--badge {
 		border-radius: tokens.$radius-sm;
-		background-color: tokens.$color-bg-secondary;
-		border-color: tokens.$color-border-secondary;
-		color: tokens.$color-text-secondary;
+		background-color: var(--badge-background, #{tokens.$color-bg-secondary});
+		border-color: var(--badge-border, #{tokens.$color-border-secondary});
+		color: var(--badge-text, #{tokens.$color-text-secondary});
 	}
 
 	&--modern {
