@@ -4,7 +4,7 @@
   box-sizing: border-box;
   white-space: nowrap;
   border: 1px solid transparent;
-  font-family: Jakarta Sans, sans-serif;
+  font-family: Jakarta, sans-serif;
 }
 .badge__icon {
   display: block;
@@ -14,6 +14,9 @@
   display: inline-block;
   font-weight: 500;
   font-family: inherit;
+}
+.badge > .badge__label {
+  color: inherit;
 }
 .badge__closer {
   display: inline-flex;
@@ -322,21 +325,21 @@
   padding: 8px;
 }
 .badge--pill {
-  border-radius: 999px;
-  background-color: #fafafa;
-  border-color: #e9eaeb;
-  color: #414651;
+  border-radius: 999999px;
+  background-color: var(--color-bg-secondary);
+  border-color: var(--color-border-secondary);
+  color: var(--color-text-secondary);
 }
 .badge--badge {
   border-radius: 6px;
-  background-color: #fafafa;
-  border-color: #e9eaeb;
-  color: #414651;
+  background-color: var(--color-bg-secondary);
+  border-color: var(--color-border-secondary);
+  color: var(--color-text-secondary);
 }
 .badge--modern {
   border-radius: 6px;
-  background-color: #ffffff;
-  border-color: #d5d7da;
+  background-color: var(--color-bg-primary);
+  border-color: var(--color-border-primary);
   box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.04), 0px 1px 2px 0px rgba(0, 0, 0, 0.06);
-  color: #414651;
+  color: var(--color-text-secondary);
 }/*# sourceMappingURL=Badge.module.css.map */

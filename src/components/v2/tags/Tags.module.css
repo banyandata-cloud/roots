@@ -8,12 +8,13 @@
   box-sizing: border-box;
   cursor: default;
   transition: all 0.2s ease;
-  border-radius: var(--radius-sm, 6px);
-  border: 1px solid var(--bordercolor-border-primary, #d5d7da);
-  background: var(--backgroundcolor-bg-primary, #fff);
-  color: var(--textcolor-text-secondary, #414651);
+  border-radius: 6px;
+  border: 1px solid var(--color-border-primary);
+  background: var(--color-bg-primary);
+  color: var(--color-text-secondary);
   font-style: normal;
-  font-weight: var(--font-weight-medium, 500);
+  font-weight: 500;
+  font-family: Jakarta, sans-serif;
 }
 .tag__indicator {
   flex-shrink: 0;
@@ -42,13 +43,71 @@
   margin-right: 6px;
 }
 .tag__logo {
+  position: relative;
   flex-shrink: 0;
   display: block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #daecfd;
 }
-.tag__logo svg {
-  width: 100%;
-  height: 100%;
+.tag__logo img {
+  position: absolute;
+  left: 32.22%;
+  top: 35.69%;
   display: block;
+}
+.tag__close-icon {
+  position: relative;
+  display: block;
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+}
+.tag__close-icon::before {
+  position: absolute;
+  content: "";
+  background-color: var(--color-fg-disabled);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+.tag__close-icon--sm {
+  width: 14px;
+  height: 14px;
+}
+.tag__close-icon--sm::before {
+  left: 3.75px;
+  top: 3.75px;
+  width: 6.5px;
+  height: 6.5px;
+  -webkit-mask-image: url("./assets/TagCloseSm.svg");
+  mask-image: url("./assets/TagCloseSm.svg");
+}
+.tag__close-icon--md {
+  width: 16px;
+  height: 16px;
+}
+.tag__close-icon--md::before {
+  left: 4.25px;
+  top: 4.25px;
+  width: 7.5px;
+  height: 7.5px;
+  -webkit-mask-image: url("./assets/TagCloseMd.svg");
+  mask-image: url("./assets/TagCloseMd.svg");
+}
+.tag__close-icon--lg {
+  width: 20px;
+  height: 20px;
+}
+.tag__close-icon--lg::before {
+  left: 5.7px;
+  top: 5.7px;
+  width: 8.6px;
+  height: 8.6px;
+  -webkit-mask-image: url("./assets/TagCloseLg.svg");
+  mask-image: url("./assets/TagCloseLg.svg");
 }
 .tag__logo--closable-sm {
   margin-right: 4px;
@@ -78,11 +137,14 @@
   cursor: pointer;
 }
 .tag__closer:hover {
-  color: #717680;
+  color: var(--color-fg-quaternary);
+}
+.tag__closer:hover .tag__close-icon::before {
+  background-color: var(--color-fg-quaternary);
 }
 .tag__closer:hover svg * {
-  stroke: #717680;
-  fill: #717680;
+  stroke: var(--color-fg-quaternary);
+  fill: var(--color-fg-quaternary);
 }
 .tag__closer--sm {
   margin-left: 3px;
@@ -101,11 +163,14 @@
   cursor: pointer;
 }
 .tag__closer--checkbox-indicator-sm:hover {
-  color: #717680;
+  color: var(--color-fg-quaternary);
+}
+.tag__closer--checkbox-indicator-sm:hover .tag__close-icon::before {
+  background-color: var(--color-fg-quaternary);
 }
 .tag__closer--checkbox-indicator-sm:hover svg * {
-  stroke: #717680;
-  fill: #717680;
+  stroke: var(--color-fg-quaternary);
+  fill: var(--color-fg-quaternary);
 }
 .tag__closer--checkbox-indicator-md {
   flex-shrink: 0;
@@ -115,11 +180,14 @@
   cursor: pointer;
 }
 .tag__closer--checkbox-indicator-md:hover {
-  color: #717680;
+  color: var(--color-fg-quaternary);
+}
+.tag__closer--checkbox-indicator-md:hover .tag__close-icon::before {
+  background-color: var(--color-fg-quaternary);
 }
 .tag__closer--checkbox-indicator-md:hover svg * {
-  stroke: #717680;
-  fill: #717680;
+  stroke: var(--color-fg-quaternary);
+  fill: var(--color-fg-quaternary);
 }
 .tag__closer--checkbox-indicator-lg {
   flex-shrink: 0;
@@ -129,11 +197,14 @@
   cursor: pointer;
 }
 .tag__closer--checkbox-indicator-lg:hover {
-  color: #717680;
+  color: var(--color-fg-quaternary);
+}
+.tag__closer--checkbox-indicator-lg:hover .tag__close-icon::before {
+  background-color: var(--color-fg-quaternary);
 }
 .tag__closer--checkbox-indicator-lg:hover svg * {
-  stroke: #717680;
-  fill: #717680;
+  stroke: var(--color-fg-quaternary);
+  fill: var(--color-fg-quaternary);
 }
 .tag__count {
   flex-shrink: 0;
@@ -184,37 +255,37 @@
   background: transparent;
   padding: 0;
   margin: 0;
-  color: var(--Textcolor-Text-Secondary, #414651);
+  color: var(--color-text-secondary);
   font-style: normal;
-  font-weight: var(--font-weight-Medium, 500);
+  font-weight: 500;
   font-family: inherit;
   line-height: inherit;
 }
 .tag__input::-moz-placeholder {
-  color: var(--Textcolor-Text-Placeholder, #9aa0ab);
+  color: var(--color-text-placeholder);
 }
 .tag__input::placeholder {
-  color: var(--Textcolor-Text-Placeholder, #9aa0ab);
+  color: var(--color-text-placeholder);
 }
 .tag__input--sm {
-  font-size: var(--font-size-12, 12px);
-  line-height: var(--Line-height-16, 16px);
+  font-size: 12px;
+  line-height: 16px;
 }
 .tag__input--md {
-  font-size: var(--font-size-14, 14px);
-  line-height: var(--Line-height-20, 20px);
+  font-size: 14px;
+  line-height: 20px;
 }
 .tag__input--lg {
-  font-size: var(--font-size-14, 14px);
-  line-height: var(--Line-height-20, 20px);
+  font-size: 14px;
+  line-height: 20px;
 }
 .tag__textfield_sizer {
   position: absolute;
   visibility: hidden;
   white-space: pre;
   font-style: normal;
-  font-weight: var(--font-weight-Medium, 500);
-  font-family: Jakarta Sans, sans-serif;
+  font-weight: 500;
+  font-family: Jakarta, sans-serif;
   pointer-events: none;
   top: -9999px;
   left: -9999px;
@@ -222,36 +293,36 @@
   width: auto;
 }
 .tag__textfield_sizer--sm {
-  font-size: var(--font-size-12, 12px);
-  line-height: var(--Line-height-16, 16px);
+  font-size: 12px;
+  line-height: 16px;
 }
 .tag__textfield_sizer--md {
-  font-size: var(--font-size-14, 14px);
-  line-height: var(--Line-height-20, 20px);
+  font-size: 14px;
+  line-height: 20px;
 }
 .tag__textfield_sizer--lg {
-  font-size: var(--font-size-14, 14px);
-  line-height: var(--Line-height-20, 20px);
+  font-size: 14px;
+  line-height: 20px;
 }
 .tag__textfield_label {
   flex-shrink: 0;
   white-space: nowrap;
-  color: var(--textcolor-text-quanternary, #717680);
+  color: var(--color-text-quanternary);
   font-style: normal;
-  font-weight: var(--font-weight-medium, 500);
-  font-family: Jakarta Sans, sans-serif;
+  font-weight: 500;
+  font-family: Jakarta, sans-serif;
 }
 .tag__textfield_label--sm {
-  font-size: var(--font-size-12, 12px);
-  line-height: var(--Line-height-16, 16px);
+  font-size: 12px;
+  line-height: 16px;
 }
 .tag__textfield_label--md {
-  font-size: var(--font-size-14, 14px);
-  line-height: var(--Line-height-20, 20px);
+  font-size: 14px;
+  line-height: 20px;
 }
 .tag__textfield_label--lg {
-  font-size: var(--font-size-14, 14px);
-  line-height: var(--Line-height-20, 20px);
+  font-size: 14px;
+  line-height: 20px;
 }
 .tag__textfield_input {
   min-width: 20px;
@@ -262,28 +333,28 @@
   background: transparent;
   padding: 0;
   margin: 0;
-  color: var(--textcolor-text-secondary, #414651);
+  color: var(--color-text-secondary);
   font-style: normal;
-  font-weight: var(--font-weight-medium, 500);
-  font-family: Jakarta Sans, sans-serif;
+  font-weight: 500;
+  font-family: Jakarta, sans-serif;
 }
 .tag__textfield_input::-moz-placeholder {
-  color: var(--Textcolor-Text-Placeholder, #9aa0ab);
+  color: var(--color-text-placeholder);
 }
 .tag__textfield_input::placeholder {
-  color: var(--Textcolor-Text-Placeholder, #9aa0ab);
+  color: var(--color-text-placeholder);
 }
 .tag__textfield_input--sm {
-  font-size: var(--font-size-12, 12px);
-  line-height: var(--Line-height-16, 16px);
+  font-size: 12px;
+  line-height: 16px;
 }
 .tag__textfield_input--md {
-  font-size: var(--font-size-14, 14px);
-  line-height: var(--Line-height-20, 20px);
+  font-size: 14px;
+  line-height: 20px;
 }
 .tag__textfield_input--lg {
-  font-size: var(--font-size-14, 14px);
-  line-height: var(--Line-height-20, 20px);
+  font-size: 14px;
+  line-height: 20px;
 }
 .tag__textfield_closer {
   flex-shrink: 0;
@@ -292,17 +363,20 @@
   cursor: pointer;
 }
 .tag__textfield_closer:hover {
-  color: #717680;
+  color: var(--color-fg-quaternary);
+}
+.tag__textfield_closer:hover .tag__close-icon::before {
+  background-color: var(--color-fg-quaternary);
 }
 .tag__textfield_closer:hover svg * {
-  stroke: #717680;
-  fill: #717680;
+  stroke: var(--color-fg-quaternary);
+  fill: var(--color-fg-quaternary);
 }
 .tag--sm {
   height: 24px;
   padding: 0 8px;
-  font-size: var(--font-size-12, 12px);
-  line-height: var(--Line-height-16, 16px);
+  font-size: 12px;
+  line-height: 16px;
 }
 .tag--sm--closable {
   padding: 0 4px 0 8px;
@@ -389,25 +463,25 @@
   width: max-content;
   height: 24px;
   /* Consistent styling regardless of focus state */
-  border: 1px solid var(--bordercolor-border-primary, #d5d7da);
-  background: var(--backgroundcolor-bg-primary, #fff);
+  border: 1px solid var(--color-border-primary);
+  background: var(--color-bg-primary);
 }
 .tag--sm--textfield-readonly {
   cursor: default;
   /* Readonly state looks exactly like Figma static design */
-  border: 1px solid var(--bordercolor-border-primary, #d5d7da);
-  background: var(--backgroundcolor-bg-primary, #fff);
+  border: 1px solid var(--color-border-primary);
+  background: var(--color-bg-primary);
 }
 .tag--sm--textfield-readonly .tag__textfield_input {
   pointer-events: none;
   cursor: default;
-  color: var(--textcolor-text-secondary, #414651) !important;
+  color: var(--color-text-secondary) !important;
 }
 .tag--md {
   height: 24px;
   padding: 0 9px;
-  font-size: var(--font-size-14, 14px);
-  line-height: var(--Line-height-20, 20px);
+  font-size: 14px;
+  line-height: 20px;
 }
 .tag--md--closable {
   padding: 0 4px 0 9px;
@@ -494,14 +568,14 @@
   width: max-content;
 }
 .tag--md--textfield:focus-within {
-  border-color: var(--Bordercolor-border-focus, #84adff);
+  border-color: var(--color-border-brand);
   box-shadow: 0 0 0 2px rgba(132, 173, 255, 0.2);
 }
 .tag--lg {
   height: 28px;
   padding: 0 10px;
-  font-size: var(--font-size-14, 14px);
-  line-height: var(--Line-height-20, 20px);
+  font-size: 14px;
+  line-height: 20px;
 }
 .tag--lg--closable {
   padding: 0 4px 0 10px;
@@ -588,6 +662,6 @@
   width: max-content;
 }
 .tag--lg--textfield:focus-within {
-  border-color: var(--Bordercolor-border-focus, #84adff);
+  border-color: var(--color-border-brand);
   box-shadow: 0 0 0 2px rgba(132, 173, 255, 0.2);
 }/*# sourceMappingURL=Tags.module.css.map */

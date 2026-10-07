@@ -1,10 +1,22 @@
+@use '../../../../styles/tokens' as tokens;
 @import '../../../../styles/_index';
 
 .root {
 	@include flex(column, flex-start, stretch);
-	background: $light-color3;
+	background: tokens.$color-bg-primary;
 	overflow: auto;
 	@include customScrollBar;
+	scrollbar-width: none;
+
+	&::-webkit-scrollbar:horizontal {
+		display: none;
+		height: 0;
+	}
+
+	&::-webkit-scrollbar:vertical {
+		width: 0.25rem;
+	}
+
 	&.no-scroll {
 		overflow: hidden;
 	}

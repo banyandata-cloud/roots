@@ -477,7 +477,7 @@ const TableDoc = () => (
 		</Subtitle>
 
 		<LinkHeader
-			figmaLink='https://www.figma.com/design/IfmLQrA0AAZVYwt6vRxqCe/Design-System--26?node-id=798-1749&p=f&m=dev'
+			figmaLink='https://www.figma.com/design/IfmLQrA0AAZVYwt6vRxqCe/Design-System--26?node-id=1304-6762&m=dev'
 			githubLink='https://github.com/banyandata-cloud/roots/tree/main/src/components/v2/table'
 		/>
 

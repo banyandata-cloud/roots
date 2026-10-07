@@ -1,6 +1,15 @@
 import type { ComponentType, JSXElementConstructor, MouseEvent, ReactElement } from 'react';
 
-export type ButtonVariant = 'primary' | 'secondary' | 'Soft' | 'outlined' | 'ghost' | 'unstyled';
+export type ButtonVariant =
+	| 'primary'
+	| 'secondary'
+	| 'soft'
+	| 'outline'
+	| 'critical'
+	| 'ghost'
+	| 'unstyled'
+	| 'Soft'
+	| 'outlined';
 export type ButtonTextSize = 'sm' | 'md';
 export type ButtonSize = 'xs' | 'sm' | 'md' | 'lg' | 'auto';
 

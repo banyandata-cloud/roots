@@ -11,11 +11,12 @@
   justify-content: flex-start;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.5rem 1rem;
+  height: 44px;
+  padding: 0 16px;
   cursor: pointer;
   border: 0;
   border: 2px solid transparent;
-  border-top: 1px solid #ededed;
+  border-top: 1px solid var(--color-border-secondary, #ededed);
 }
 .root > .header[data-elem=base-cell] > [data-elem=component3] svg {
   transition: all 0.3s ease-in-out;
@@ -28,9 +29,9 @@
 }
 .root > .header[data-elem=base-cell] > [data-elem=component1] svg, .root > .header[data-elem=base-cell] > [data-elem=component3] svg {
   transform: rotate(180deg);
-  width: 1.5rem;
-  height: 1.5rem;
-  fill: var(--text-color);
+  width: 16px;
+  height: 16px;
+  fill: var(--color-text-primary, #161616);
 }
 .root > .header[data-elem=base-cell] > [data-elem=component3] {
   margin-left: auto;
@@ -40,26 +41,38 @@
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
-  color: var(--text-color);
+  color: var(--color-text-primary, #161616);
+  font-family: Jakarta, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0.16px;
 }
 .root > .header[data-elem=base-cell]:hover {
   border-left-color: #e86a00;
   background: #e4e4e4;
 }
-.root > .header[data-elem=base-cell] :focus-visible {
-  border-color: #3b82f6;
+.root > .header[data-elem=base-cell]:focus-visible {
+  outline: none;
+  box-shadow: inset 0 0 0 2px #3b82f6;
 }
 .root:not(.open):not(:has(+ .root)) > .header[data-elem=base-cell] {
-  border-bottom: 1px solid #ededed;
+  border-bottom: 1px solid var(--color-border-secondary, #ededed);
 }
 .root.open > .header[data-elem=base-cell] {
-  border-top: 0;
+  border-top-color: var(--color-border-secondary, #ededed);
 }
 .root.open + .root > .header[data-elem=base-cell] {
-  border-top: 0;
+  border-top-color: transparent;
 }
 .root > .body {
-  padding: 0.5rem 2.5rem;
+  padding: 8px 16px 32px;
+  color: var(--color-text-primary, #161616);
+  font-family: Jakarta, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0.16px;
 }
 .root.open > .header[data-elem=base-cell] {
   border-left-color: #e86a00;
@@ -68,8 +81,7 @@
   transform: none;
 }
 .root.open {
-  border-bottom: 1px solid #ededed;
-  border-top: 1px solid #ededed;
+  border-bottom: 1px solid var(--color-border-secondary, #ededed);
 }
 .root.open > .body {
   display: flex;
@@ -94,11 +106,11 @@
   cursor: not-allowed;
   pointer-events: none;
   background: transparent;
-  border-top: 1px solid #ededed;
+  border-top: 1px solid var(--color-border-secondary, #ededed);
 }
 .root.disabled > .header[data-elem=base-cell] .title {
-  color: #161616;
-  opacity: 25%;
+  color: var(--color-text-primary, #161616);
+  opacity: 0.25;
 }
 .root.disabled > .header[data-elem=base-cell] svg {
   opacity: 0.25;

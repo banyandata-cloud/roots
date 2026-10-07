@@ -85,7 +85,7 @@ const propsData = [
 		prop: 'dotColor',
 		type: 'string',
 		description: 'Color of the dot indicator.',
-		default: "'#717680'",
+		default: "'var(--color-fg-quaternary, #717680)'",
 	},
 	{
 		prop: 'arrow',
@@ -98,7 +98,19 @@ const propsData = [
 		prop: 'arrowColor',
 		type: 'string',
 		description: 'Color of the trailing right-arrow icon.',
-		default: "'#717680'",
+		default: "'var(--color-fg-quaternary, #717680)'",
+	},
+	{
+		prop: 'arrowLead',
+		type: 'boolean',
+		description: 'Renders a leading left-arrow icon.',
+		default: 'false',
+	},
+	{
+		prop: 'arrowLeadColor',
+		type: 'string',
+		description: 'Color of the leading left-arrow icon.',
+		default: "'var(--color-fg-quaternary, #717680)'",
 	},
 	{
 		prop: 'upArrow',
@@ -111,7 +123,7 @@ const propsData = [
 		prop: 'upArrowColor',
 		type: 'string',
 		description: 'Color of the leading up-arrow icon.',
-		default: "'#717680'",
+		default: "'var(--color-fg-quaternary, #717680)'",
 	},
 	{
 		prop: 'plus',
@@ -124,7 +136,7 @@ const propsData = [
 		prop: 'plusColor',
 		type: 'string',
 		description: 'Color of the plus icon.',
-		default: "'#717680'",
+		default: "'var(--color-fg-quaternary, #717680)'",
 	},
 	{
 		prop: 'className',
@@ -146,7 +158,7 @@ const BadgeDoc = () => (
 		</Subtitle>
 
 		<LinkHeader
-			figmaLink='https://www.figma.com/design/IfmLQrA0AAZVYwt6vRxqCe/Design-System--26?node-id=1617-10929&p=f&m=dev'
+			figmaLink='https://www.figma.com/design/IfmLQrA0AAZVYwt6vRxqCe/Design-System--26?node-id=2113-4734&m=dev'
 			githubLink='https://github.com/banyandata-cloud/roots/tree/main/components/v2/badges'
 		/>
 

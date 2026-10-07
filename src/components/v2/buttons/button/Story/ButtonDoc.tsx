@@ -30,8 +30,9 @@ const propsData = [
 	},
 	{
 		prop: 'variant',
-		type: "'primary' | 'secondary' | 'Soft' | 'outlined' | 'ghost'",
-		description: 'For applying visual style to the button.',
+		type: "'primary' | 'secondary' | 'soft' | 'outline' | 'critical' | 'ghost' | 'unstyled' | 'Soft' | 'outlined'",
+		description:
+			'Visual style variant. Soft and outlined remain supported as legacy aliases for soft and outline.',
 		default: "'primary'",
 	},
 	{
@@ -82,12 +83,12 @@ const ButtonDoc = () => (
 	<>
 		<Title />
 		<Subtitle>
-			Button triggers an action or event. It supports five visual variants, four sizes,
+			Button triggers an action or event. It supports six visual variants, four sizes,
 			optional leading and trailing icons, and a disabled state.
 		</Subtitle>
 
 		<LinkHeader
-			figmaLink='https://www.figma.com/design/IfmLQrA0AAZVYwt6vRxqCe/Design-System--26?node-id=14-3&p=f&m=dev'
+			figmaLink='https://www.figma.com/design/IfmLQrA0AAZVYwt6vRxqCe/Design-System--26?node-id=1433-9079&m=dev'
 			githubLink='https://github.com/banyandata-cloud/roots/tree/main/src/components/v2/buttons/button'
 		/>
 
@@ -101,7 +102,7 @@ const ButtonDoc = () => (
 		<Subheading>ButtonVariant</Subheading>
 		<Source
 			language='tsx'
-			code={`type ButtonVariant = 'primary' | 'secondary' | 'Soft' | 'outlined' | 'ghost';`}
+			code={`type ButtonVariant = 'primary' | 'secondary' | 'soft' | 'outline' | 'critical' | 'ghost' | 'unstyled' | 'Soft' | 'outlined';`}
 		/>
 
 		<Subheading>ButtonSize</Subheading>

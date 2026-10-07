@@ -1,4 +1,4 @@
-@import '../../../styles';
+@use '../../../styles/tokens' as tokens;
 
 $tag-sm-closable-padding-left: 8px;
 $tag-sm-closable-padding-right: 4px;
@@ -172,11 +172,14 @@ $tag-lg-textfield-gap: 3px;
 	cursor: pointer;
 
 	&:hover {
-		color: #717680;
+		color: tokens.$color-fg-quaternary;
+		.tag__close-icon::before {
+			background-color: tokens.$color-fg-quaternary;
+		}
 
 		svg * {
-			stroke: #717680;
-			fill: #717680;
+			stroke: tokens.$color-fg-quaternary;
+			fill: tokens.$color-fg-quaternary;
 		}
 	}
 }
@@ -191,13 +194,14 @@ $tag-lg-textfield-gap: 3px;
 	cursor: default;
 	transition: all 0.2s ease;
 
-	border-radius: var(--radius-sm, 6px);
-	border: 1px solid var(--bordercolor-border-primary, #d5d7da);
-	background: var(--backgroundcolor-bg-primary, #fff);
+	border-radius: tokens.$radius-sm;
+	border: 1px solid tokens.$color-border-primary;
+	background: tokens.$color-bg-primary;
 
-	color: var(--textcolor-text-secondary, #414651);
+	color: tokens.$color-text-secondary;
 	font-style: normal;
-	font-weight: var(--font-weight-medium, 500);
+	font-weight: tokens.$font-weight-medium;
+	font-family: Jakarta, sans-serif;
 
 	&__indicator {
 		flex-shrink: 0;
@@ -232,13 +236,79 @@ $tag-lg-textfield-gap: 3px;
 	}
 
 	&__logo {
+		position: relative;
 		flex-shrink: 0;
 		display: block;
+		width: 16px;
+		height: 16px;
+		border-radius: 50%;
+		background: #daecfd;
 
-		svg {
-			width: 100%;
-			height: 100%;
+		img {
+			position: absolute;
+			left: 32.22%;
+			top: 35.69%;
 			display: block;
+		}
+	}
+
+	&__close-icon {
+		position: relative;
+		display: block;
+		flex-shrink: 0;
+		width: 14px;
+		height: 14px;
+
+		&::before {
+			position: absolute;
+			content: '';
+			background-color: tokens.$color-fg-disabled;
+			-webkit-mask-repeat: no-repeat;
+			mask-repeat: no-repeat;
+			-webkit-mask-size: 100% 100%;
+			mask-size: 100% 100%;
+		}
+
+		&--sm {
+			width: 14px;
+			height: 14px;
+
+			&::before {
+				left: 3.75px;
+				top: 3.75px;
+				width: 6.5px;
+				height: 6.5px;
+				-webkit-mask-image: url('./assets/TagCloseSm.svg');
+				mask-image: url('./assets/TagCloseSm.svg');
+			}
+		}
+
+		&--md {
+			width: 16px;
+			height: 16px;
+
+			&::before {
+				left: 4.25px;
+				top: 4.25px;
+				width: 7.5px;
+				height: 7.5px;
+				-webkit-mask-image: url('./assets/TagCloseMd.svg');
+				mask-image: url('./assets/TagCloseMd.svg');
+			}
+		}
+
+		&--lg {
+			width: 20px;
+			height: 20px;
+
+			&::before {
+				left: 5.7px;
+				top: 5.7px;
+				width: 8.6px;
+				height: 8.6px;
+				-webkit-mask-image: url('./assets/TagCloseLg.svg');
+				mask-image: url('./assets/TagCloseLg.svg');
+			}
 		}
 	}
 	&__logo--closable-sm {
@@ -373,29 +443,29 @@ $tag-lg-textfield-gap: 3px;
 		background: transparent;
 		padding: 0;
 		margin: 0;
-		color: var(--Textcolor-Text-Secondary, #414651);
+		color: tokens.$color-text-secondary;
 		font-style: normal;
-		font-weight: var(--font-weight-Medium, 500);
+		font-weight: tokens.$font-weight-medium;
 		font-family: inherit;
 		line-height: inherit;
 
 		&::placeholder {
-			color: var(--Textcolor-Text-Placeholder, #9aa0ab);
+			color: tokens.$color-text-placeholder;
 		}
 
 		&--sm {
-			font-size: var(--font-size-12, 12px);
-			line-height: var(--Line-height-16, 16px);
+			font-size: tokens.$font-size-12;
+			line-height: tokens.$line-height-16;
 		}
 
 		&--md {
-			font-size: var(--font-size-14, 14px);
-			line-height: var(--Line-height-20, 20px);
+			font-size: tokens.$font-size-14;
+			line-height: tokens.$line-height-20;
 		}
 
 		&--lg {
-			font-size: var(--font-size-14, 14px);
-			line-height: var(--Line-height-20, 20px);
+			font-size: tokens.$font-size-14;
+			line-height: tokens.$line-height-20;
 		}
 	}
 
@@ -404,10 +474,8 @@ $tag-lg-textfield-gap: 3px;
 		visibility: hidden;
 		white-space: pre;
 		font-style: normal;
-		font-weight: var(--font-weight-Medium, 500);
-		font-family:
-			Jakarta Sans,
-			sans-serif;
+		font-weight: tokens.$font-weight-medium;
+		font-family: Jakarta, sans-serif;
 		pointer-events: none;
 		top: -9999px;
 		left: -9999px;
@@ -415,44 +483,42 @@ $tag-lg-textfield-gap: 3px;
 		width: auto;
 
 		&--sm {
-			font-size: var(--font-size-12, 12px);
-			line-height: var(--Line-height-16, 16px);
+			font-size: tokens.$font-size-12;
+			line-height: tokens.$line-height-16;
 		}
 
 		&--md {
-			font-size: var(--font-size-14, 14px);
-			line-height: var(--Line-height-20, 20px);
+			font-size: tokens.$font-size-14;
+			line-height: tokens.$line-height-20;
 		}
 
 		&--lg {
-			font-size: var(--font-size-14, 14px);
-			line-height: var(--Line-height-20, 20px);
+			font-size: tokens.$font-size-14;
+			line-height: tokens.$line-height-20;
 		}
 	}
 
 	&__textfield_label {
 		flex-shrink: 0;
 		white-space: nowrap;
-		color: var(--textcolor-text-quanternary, #717680);
+		color: tokens.$color-text-quanternary;
 		font-style: normal;
-		font-weight: var(--font-weight-medium, 500);
-		font-family:
-			Jakarta Sans,
-			sans-serif;
+		font-weight: tokens.$font-weight-medium;
+		font-family: Jakarta, sans-serif;
 
 		&--sm {
-			font-size: var(--font-size-12, 12px);
-			line-height: var(--Line-height-16, 16px);
+			font-size: tokens.$font-size-12;
+			line-height: tokens.$line-height-16;
 		}
 
 		&--md {
-			font-size: var(--font-size-14, 14px);
-			line-height: var(--Line-height-20, 20px);
+			font-size: tokens.$font-size-14;
+			line-height: tokens.$line-height-20;
 		}
 
 		&--lg {
-			font-size: var(--font-size-14, 14px);
-			line-height: var(--Line-height-20, 20px);
+			font-size: tokens.$font-size-14;
+			line-height: tokens.$line-height-20;
 		}
 	}
 
@@ -465,30 +531,28 @@ $tag-lg-textfield-gap: 3px;
 		background: transparent;
 		padding: 0;
 		margin: 0;
-		color: var(--textcolor-text-secondary, #414651);
+		color: tokens.$color-text-secondary;
 		font-style: normal;
-		font-weight: var(--font-weight-medium, 500);
-		font-family:
-			Jakarta Sans,
-			sans-serif;
+		font-weight: tokens.$font-weight-medium;
+		font-family: Jakarta, sans-serif;
 
 		&::placeholder {
-			color: var(--Textcolor-Text-Placeholder, #9aa0ab);
+			color: tokens.$color-text-placeholder;
 		}
 
 		&--sm {
-			font-size: var(--font-size-12, 12px);
-			line-height: var(--Line-height-16, 16px);
+			font-size: tokens.$font-size-12;
+			line-height: tokens.$line-height-16;
 		}
 
 		&--md {
-			font-size: var(--font-size-14, 14px);
-			line-height: var(--Line-height-20, 20px);
+			font-size: tokens.$font-size-14;
+			line-height: tokens.$line-height-20;
 		}
 
 		&--lg {
-			font-size: var(--font-size-14, 14px);
-			line-height: var(--Line-height-20, 20px);
+			font-size: tokens.$font-size-14;
+			line-height: tokens.$line-height-20;
 		}
 	}
 
@@ -502,8 +566,8 @@ $tag-lg-textfield-gap: 3px;
 	&--sm {
 		height: 24px;
 		padding: 0 8px;
-		font-size: var(--font-size-12, 12px);
-		line-height: var(--Line-height-16, 16px);
+		font-size: tokens.$font-size-12;
+		line-height: tokens.$line-height-16;
 
 		&--closable {
 			padding: 0 $tag-sm-closable-padding-right 0 $tag-sm-closable-padding-left;
@@ -617,19 +681,19 @@ $tag-lg-textfield-gap: 3px;
 			width: max-content;
 			height: 24px;
 			/* Consistent styling regardless of focus state */
-			border: 1px solid var(--bordercolor-border-primary, #d5d7da);
-			background: var(--backgroundcolor-bg-primary, #fff);
+			border: 1px solid tokens.$color-border-primary;
+			background: tokens.$color-bg-primary;
 
 			&-readonly {
 				cursor: default;
 				/* Readonly state looks exactly like Figma static design */
-				border: 1px solid var(--bordercolor-border-primary, #d5d7da);
-				background: var(--backgroundcolor-bg-primary, #fff);
+				border: 1px solid tokens.$color-border-primary;
+				background: tokens.$color-bg-primary;
 
 				.tag__textfield_input {
 					pointer-events: none;
 					cursor: default;
-					color: var(--textcolor-text-secondary, #414651) !important;
+					color: tokens.$color-text-secondary !important;
 				}
 			}
 		}
@@ -638,8 +702,8 @@ $tag-lg-textfield-gap: 3px;
 	&--md {
 		height: 24px;
 		padding: 0 9px;
-		font-size: var(--font-size-14, 14px);
-		line-height: var(--Line-height-20, 20px);
+		font-size: tokens.$font-size-14;
+		line-height: tokens.$line-height-20;
 
 		&--closable {
 			padding: 0 $tag-md-closable-padding-right 0 $tag-md-closable-padding-left;
@@ -753,7 +817,7 @@ $tag-lg-textfield-gap: 3px;
 			width: max-content;
 
 			&:focus-within {
-				border-color: var(--Bordercolor-border-focus, #84adff);
+				border-color: tokens.$color-border-brand;
 				box-shadow: 0 0 0 2px rgba(132, 173, 255, 0.2);
 			}
 		}
@@ -762,8 +826,8 @@ $tag-lg-textfield-gap: 3px;
 	&--lg {
 		height: 28px;
 		padding: 0 10px;
-		font-size: var(--font-size-14, 14px);
-		line-height: var(--Line-height-20, 20px);
+		font-size: tokens.$font-size-14;
+		line-height: tokens.$line-height-20;
 
 		&--closable {
 			padding: 0 $tag-lg-closable-padding-right 0 $tag-lg-closable-padding-left;
@@ -877,7 +941,7 @@ $tag-lg-textfield-gap: 3px;
 			width: max-content;
 
 			&:focus-within {
-				border-color: var(--Bordercolor-border-focus, #84adff);
+				border-color: tokens.$color-border-brand;
 				box-shadow: 0 0 0 2px rgba(132, 173, 255, 0.2);
 			}
 		}

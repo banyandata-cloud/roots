@@ -17,10 +17,15 @@ const getNextSortState = (currentSort: string): SortType => {
 // Single up arrow — same paths as Sort.tsx left arrow
 const AscIcon = () => (
 	<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'>
-		<path d='M8 12L8 4' stroke='#1f5fcc' strokeWidth='1.3' strokeLinecap='round' />
+		<path
+			d='M8 12L8 4'
+			stroke='var(--color-fg-brand-primary, #1570ef)'
+			strokeWidth='1.3'
+			strokeLinecap='round'
+		/>
 		<path
 			d='M5 7L8 4L11 7'
-			stroke='#1f5fcc'
+			stroke='var(--color-fg-brand-primary, #1570ef)'
 			strokeWidth='1.3'
 			strokeLinecap='round'
 			strokeLinejoin='round'
@@ -30,10 +35,15 @@ const AscIcon = () => (
 
 const DescIcon = () => (
 	<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'>
-		<path d='M8 4L8 12' stroke='#1f5fcc' strokeWidth='1.3' strokeLinecap='round' />
+		<path
+			d='M8 4L8 12'
+			stroke='var(--color-fg-brand-primary, #1570ef)'
+			strokeWidth='1.3'
+			strokeLinecap='round'
+		/>
 		<path
 			d='M5 9L8 12L11 9'
-			stroke='#1f5fcc'
+			stroke='var(--color-fg-brand-primary, #1570ef)'
 			strokeWidth='1.3'
 			strokeLinecap='round'
 			strokeLinejoin='round'

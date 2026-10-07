@@ -6,6 +6,8 @@ export const ICON_SIZE: Record<BadgeSize, number> = {
 	lg: 16,
 };
 
+export const ARROW_SIZE = 12;
+
 export const DOT_SIZE: Record<BadgeSize, number> = {
 	sm: 8,
 	md: 8,

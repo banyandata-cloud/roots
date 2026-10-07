@@ -293,6 +293,48 @@ export const AllVariants: Story = {
 			</div>
 
 			<div>
+				<p style={headingStyle}>Critical Button</p>
+				<div style={colStyle}>
+					<div style={rowStyle}>
+						<Button
+							title='Verb + noun'
+							variant='critical'
+							size='xs'
+							leftComponent={MailIcon}
+							rightComponent={ArrowIcon}
+						/>
+						<Button
+							title='Verb + noun'
+							variant='critical'
+							size='sm'
+							leftComponent={MailIcon}
+							rightComponent={ArrowIcon}
+						/>
+						<Button
+							title='Verb + noun'
+							variant='critical'
+							size='md'
+							leftComponent={MailIcon}
+							rightComponent={ArrowIcon}
+						/>
+						<Button
+							title='Verb + noun'
+							variant='critical'
+							size='lg'
+							leftComponent={MailIcon}
+							rightComponent={ArrowIcon}
+						/>
+					</div>
+					<div style={rowStyle}>
+						<Button variant='critical' size='xs' leftComponent={MailIcon} />
+						<Button variant='critical' size='sm' leftComponent={MailIcon} />
+						<Button variant='critical' size='md' leftComponent={MailIcon} />
+						<Button variant='critical' size='lg' leftComponent={MailIcon} />
+					</div>
+				</div>
+			</div>
+
+			<div>
 				<p style={headingStyle}>Disabled State</p>
 				<div style={colStyle}>
 					<div style={rowStyle}>

@@ -8,17 +8,17 @@
   outline: none;
 }
 .root.header-row > th[data-elem=base-cell] {
-  background: #fafafa;
-  border-bottom: 1px solid #f5f5f5;
+  background: var(--color-bg-secondary);
+  border-bottom: 1px solid var(--color-border-tertiary);
 }
 .root.header-row > th[data-elem=base-cell] > [data-elem=component2] > [data-elem=text] {
-  color: #717680;
+  color: var(--color-text-quanternary);
 }
 .root.header-row > th[data-elem=base-cell]:hover {
-  background: #f5f5f5 !important;
+  background: var(--color-bg-secondary-hover) !important;
 }
 .root.header-row > th[data-elem=base-cell]:hover > [data-elem=component2] > [data-elem=text] {
-  color: #535862;
+  color: var(--color-text-tertiary-onhover);
 }
 .root.header-row > [data-elem=base-cell].expandable-cell {
   background: transparent;
@@ -28,29 +28,36 @@
   visibility: hidden;
 }
 .root.body-row {
-  background: var(--light-color3);
+  background: var(--color-bg-primary);
+}
+.root.body-row:not([data-disabled=true]):hover > td[data-elem=base-cell] {
+  background: var(--color-bg-primary-hover) !important;
+  border-color: var(--color-border-tertiary) !important;
+}
+.root.body-row:not([data-disabled=true]):hover > td[data-elem=base-cell] > [data-elem=component2] > [data-elem=text] {
+  color: var(--color-text-primary) !important;
 }
 .root.body-row > td[data-elem=base-cell]:hover {
-  background: #fafafa !important;
-  border-color: #f5f5f5 !important;
+  background: var(--color-bg-primary-hover) !important;
+  border-color: var(--color-border-tertiary) !important;
 }
 .root.body-row > td[data-elem=base-cell]:hover > [data-elem=component2] > [data-elem=text] {
-  color: #181d27;
+  color: var(--color-text-primary);
 }
 .root.body-row[data-disabled=true] > td[data-elem=base-cell]:hover > [data-elem=component2] > [data-elem=text] {
-  color: #a4a7ae !important;
+  color: var(--color-text-disabled) !important;
 }
 .root.body-row[data-active=true] > [data-elem=base-cell] {
-  background: var(--light-color2);
+  background: var(--color-bg-tertiary);
 }
 .root.body-row[data-active=true] > [data-elem=base-cell] > [data-elem=component2] > [data-elem=text] {
-  color: var(--black) !important;
+  color: var(--color-text-primary) !important;
 }
 .root.body-row > td[data-elem=base-cell]:focus-visible {
-  outline: 1.5px solid #3b82f6 !important;
+  outline: 1.5px solid var(--color-border-brand) !important;
   outline-offset: 2px;
   border-radius: 2px;
-  background: #ffffff !important;
+  background: var(--color-bg-primary) !important;
 }
 .root > [data-elem=base-cell]:first-child {
   padding-left: 24px;
@@ -59,7 +66,7 @@
   padding-right: 24px;
 }
 .root.row-height-md > td[data-elem=base-cell] {
-  min-height: 56px;
+  min-height: 40px;
 }
 .root.row-height-lg > td[data-elem=base-cell] {
   min-height: 73px;
@@ -100,33 +107,33 @@
   outline: none;
 }
 .root.body-row[data-selected=true] > td[data-elem=base-cell] {
-  background: #fafafa !important;
-  border-color: #f5f5f5 !important;
+  background: var(--color-bg-tertiary) !important;
+  border-color: var(--color-border-tertiary) !important;
 }
 .root.body-row[data-selected=true] > td[data-elem=base-cell] > [data-elem=component2] > [data-elem=text] {
-  color: #181d27 !important;
+  color: var(--color-text-primary) !important;
 }
 .root .root[data-disabled=true] {
-  background: #f5f5f5;
+  background: var(--color-bg-disabled-subtle);
 }
 .root {
   /* body cell background */
 }
 .root .root[data-disabled=true] td {
-  background: #f5f5f5 !important;
+  background: var(--color-bg-disabled-subtle) !important;
 }
 .root {
   /* text color */
 }
 .root .root[data-disabled=true] .cell-text {
-  color: #a4a7ae !important;
+  color: var(--color-text-disabled) !important;
 }
 .root {
   /* icons */
 }
 .root .root[data-disabled=true] svg path {
-  stroke: #ffffff !important;
-  fill: #ffffff !important;
+  stroke: var(--color-fg-disabled) !important;
+  fill: var(--color-fg-disabled) !important;
 }
 .root {
   /* disable pointer interaction */
@@ -135,8 +142,8 @@
   pointer-events: none;
 }
 .root .disabled .cell-text {
-  color: #a4a7ae !important;
+  color: var(--color-text-disabled) !important;
 }
 .root .disabled:hover .cell-text {
-  color: #a4a7ae !important;
+  color: var(--color-text-disabled) !important;
 }/*# sourceMappingURL=TableRow.module.css.map */

@@ -8,8 +8,8 @@ interface TagCountLgProps {
 
 const TagCountLg: React.FC<TagCountLgProps> = ({
 	count = 0,
-	bgColor = '#F5F5F5',
-	textColor = '#414651',
+	bgColor = 'var(--color-bg-tertiary, #f2f2f2)',
+	textColor = 'var(--color-text-secondary, #414651)',
 }) => {
 	const containerStyle: React.CSSProperties = {
 		display: 'inline-flex',
@@ -21,7 +21,8 @@ const TagCountLg: React.FC<TagCountLgProps> = ({
 		borderRadius: '3px',
 		background: bgColor,
 		color: textColor,
-		fontSize: '12px',
+		fontFamily: 'Jakarta, sans-serif',
+		fontSize: '14px',
 		fontWeight: 500,
 		lineHeight: '20px',
 		whiteSpace: 'nowrap',

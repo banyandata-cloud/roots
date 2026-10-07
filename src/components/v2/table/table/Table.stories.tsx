@@ -859,3 +859,54 @@ export const LoadingState: Story = {
 	name: 'Loading State',
 	render: () => <LoadingStateStory />,
 };
+
+const PaginatedTableStory = () => {
+	const [page, setPage] = useState(1);
+	const [pageSize, setPageSize] = useState(30);
+	const allRows = Array.from({ length: 100 }, (_, index) => ({
+		id: index + 1,
+		name: `Row ${index + 1}`,
+		status: 'Enabled',
+	}));
+	const headerData = [
+		{ id: 'name', title: 'Name', size: 'md' as const },
+		{ id: 'status', title: 'Name', size: 'md' as const },
+		{ id: 'status2', title: 'Name', size: 'md' as const },
+		{ id: 'status3', title: 'Name', size: 'md' as const },
+		{ id: 'status4', title: 'Name', size: 'md' as const },
+		{ id: 'status5', title: 'Name', size: 'md' as const },
+		{ id: 'status6', title: 'Name', size: 'md' as const },
+		{ id: 'status7', title: 'Name', size: 'md' as const },
+	];
+	const tableData = allRows.slice((page - 1) * pageSize, page * pageSize).map((row) => ({
+		...row,
+		...Object.fromEntries(headerData.slice(1).map(({ id }) => [id, row.status])),
+	}));
+
+	return (
+		<ThemedContainer style={{ height: '100%' }}>
+			<Table
+				headerData={headerData}
+				tableData={tableData}
+				uniqueKey='id'
+				onCheck={() => {}}
+				dataLabel='items'
+				paginationData={{
+					page,
+					pageSize,
+					totalItems: allRows.length,
+					onPageChange: setPage,
+					onPageSizeChange: (size) => {
+						setPage(1);
+						setPageSize(size);
+					},
+				}}
+			/>
+		</ThemedContainer>
+	);
+};
+
+export const WithPagination: Story = {
+	name: 'With Pagination',
+	render: () => <PaginatedTableStory />,
+};

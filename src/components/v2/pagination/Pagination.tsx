@@ -74,7 +74,7 @@ const ALL_DROPDOWN_OPTIONS = [
 ] as const;
 
 const ChevronLeft = () => (
-	<svg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'>
+	<svg width='20' height='20' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'>
 		<path
 			d='M10 12L6 8L10 4'
 			stroke='currentColor'
@@ -86,7 +86,7 @@ const ChevronLeft = () => (
 );
 
 const ChevronRight = () => (
-	<svg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'>
+	<svg width='20' height='20' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'>
 		<path
 			d='M6 4L10 8L6 12'
 			stroke='currentColor'
@@ -189,6 +189,7 @@ export const Pagination = forwardRef<HTMLDivElement, PaginationProps>((props, re
 							isSinglePage ? styles['dropdown-disabled'] : ''
 						)}
 						popperClassName={styles['dropdown-popper']}
+						lockScroll={false}
 						value={step.toString()}
 						placeholder=''
 						disabled={isSinglePage}
@@ -208,7 +209,7 @@ export const Pagination = forwardRef<HTMLDivElement, PaginationProps>((props, re
 				{showData && (
 					<div className={styles['showing']}>
 						<span className={styles['showing-text']}>
-							Showing {start}–{end} from {totalData}
+							Showing {start}-{end} from {totalData}
 							{dataLabel ? ` ${dataLabel}` : ''}
 						</span>
 					</div>
@@ -224,6 +225,7 @@ export const Pagination = forwardRef<HTMLDivElement, PaginationProps>((props, re
 							min={1}
 							max={totalPages ?? 1}
 							value={pageInputValue}
+							style={{ width: `${Math.max(pageInputValue.length, 1)}ch` }}
 							onChange={handlePageInputChange}
 							onBlur={handlePageInputCommit}
 							onKeyDown={handlePageInputKeyDown}
