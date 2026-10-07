@@ -66,7 +66,7 @@ const Calender = (props: CalenderProps): React.JSX.Element => {
 	>();
 
 	const setSelectedValues = (): void => {
-		if (fixedRange) {
+		if (fixedRange && (selectedRange?.unix?.length ?? 0) >= 2) {
 			const date = new Date();
 			const dateAsNumber = date.getDate();
 			const selectedDayInfo = getDayInfo(date);
@@ -297,6 +297,7 @@ const Calender = (props: CalenderProps): React.JSX.Element => {
 				<CalenderBody
 					{...commonCalenderProps}
 					timeRange={timeRange}
+					setTimeRangeSelection={setTimeRangeSelection}
 					disabledDates={disabledDates ?? []}
 					disableDatesBefore={disableDatesBefore}
 					disableDatesAfter={disableDatesAfter}

@@ -43,9 +43,11 @@ const Footer = (props: FooterProps): React.JSX.Element => {
 			3600;
 
 	const handleClear = (): void => {
-		setSelectedRange?.({ dates: [], unix: [] });
-		setSelectedDate?.({});
-		setFixedRange?.(false);
+		if (!isDateTimeRange) {
+			setSelectedRange?.({ dates: [], unix: [] });
+			setSelectedDate?.({});
+			setFixedRange?.(false);
+		}
 		onClear();
 	};
 

@@ -223,7 +223,8 @@ interface PresetRangeEntry {
 	dateRange: { unix?: number[] };
 }
 
-const PRESET_MATCH_TOLERANCE_SECONDS = 2 * 60 * 60;
+const PRESET_MATCH_MIN_TOLERANCE_SECONDS = 90;
+const PRESET_MATCH_TOLERANCE_RATIO = 0.02;
 
 export const findMatchingPresetTitle = (
 	presetRanges: PresetRangeEntry[],
@@ -246,7 +247,12 @@ export const findMatchingPresetTitle = (
 		if (presetStart === undefined || presetEnd === undefined) {
 			return false;
 		}
-		return Math.abs(presetEnd - presetStart - valueDuration) <= PRESET_MATCH_TOLERANCE_SECONDS;
+		const presetDuration = presetEnd - presetStart;
+		const tolerance = Math.max(
+			PRESET_MATCH_MIN_TOLERANCE_SECONDS,
+			presetDuration * PRESET_MATCH_TOLERANCE_RATIO
+		);
+		return Math.abs(presetDuration - valueDuration) <= tolerance;
 	});
 
 	return matched ? matched.title : null;
