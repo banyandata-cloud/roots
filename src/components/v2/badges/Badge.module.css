@@ -28,18 +28,103 @@
   border: none;
   cursor: pointer;
   color: inherit;
-  opacity: 0.45;
+  opacity: 1;
   transition: opacity 0.15s ease;
   width: 16px;
   height: 16px;
 }
 .badge__closer:hover {
   opacity: 1;
+  background-color: var(--badge-cross-icon-bg, transparent);
+}
+.badge__closer:hover svg path {
+  stroke: var(--badge-cross-icon-hover, var(--color-fg-quaternary, #717680));
 }
 .badge__closer:focus-visible {
   outline: 2px solid currentColor;
   outline-offset: 1px;
   border-radius: 2px;
+}
+.badge--color-brand {
+  --badge-background: var(--color-utility-brand-50);
+  --badge-border: var(--color-utility-brand-200);
+  --badge-text: var(--color-utility-brand-700);
+  --badge-icon-color: var(--color-utility-brand-500);
+  --badge-cross-icon-color: var(--color-utility-brand-400);
+  --badge-cross-icon-bg: var(--color-utility-brand-100);
+  --badge-cross-icon-hover: var(--color-utility-brand-500);
+}
+.badge--color-red {
+  --badge-background: var(--color-utility-error-50);
+  --badge-border: var(--color-utility-error-200);
+  --badge-text: var(--color-utility-error-700);
+  --badge-icon-color: var(--color-utility-error-500);
+  --badge-cross-icon-color: var(--color-utility-error-400);
+  --badge-cross-icon-bg: var(--color-utility-error-100);
+  --badge-cross-icon-hover: var(--color-utility-error-500);
+}
+.badge--color-gray-blue {
+  --badge-background: var(--color-utility-blue-gray-50);
+  --badge-border: var(--color-utility-blue-gray-200);
+  --badge-text: var(--color-utility-blue-gray-700);
+  --badge-icon-color: var(--color-utility-blue-gray-500);
+  --badge-cross-icon-color: var(--color-utility-blue-gray-400);
+  --badge-cross-icon-bg: var(--color-utility-blue-gray-100);
+  --badge-cross-icon-hover: var(--color-utility-blue-gray-500);
+}
+.badge--color-gray {
+  --badge-background: var(--color-utility-gray-50);
+  --badge-border: var(--color-utility-gray-200);
+  --badge-text: var(--color-utility-gray-700);
+  --badge-icon-color: var(--color-utility-gray-500);
+  --badge-cross-icon-color: var(--color-utility-gray-400);
+  --badge-cross-icon-bg: var(--color-utility-gray-100);
+  --badge-cross-icon-hover: var(--color-utility-gray-500);
+}
+.badge--color-green {
+  --badge-background: var(--color-utility-success-50);
+  --badge-border: var(--color-utility-success-200);
+  --badge-text: var(--color-utility-success-700);
+  --badge-icon-color: var(--color-utility-success-500);
+  --badge-cross-icon-color: var(--color-utility-success-400);
+  --badge-cross-icon-bg: var(--color-utility-success-100);
+  --badge-cross-icon-hover: var(--color-utility-success-500);
+}
+.badge--color-indigo {
+  --badge-background: var(--color-utility-indigo-50);
+  --badge-border: var(--color-utility-indigo-200);
+  --badge-text: var(--color-utility-indigo-700);
+  --badge-icon-color: var(--color-utility-indigo-500);
+  --badge-cross-icon-color: var(--color-utility-indigo-400);
+  --badge-cross-icon-bg: var(--color-utility-indigo-100);
+  --badge-cross-icon-hover: var(--color-utility-indigo-500);
+}
+.badge--color-orange {
+  --badge-background: var(--color-utility-warning-50);
+  --badge-border: var(--color-utility-warning-200);
+  --badge-text: var(--color-utility-warning-700);
+  --badge-icon-color: var(--color-utility-warning-500);
+  --badge-cross-icon-color: var(--color-utility-warning-400);
+  --badge-cross-icon-bg: var(--color-utility-warning-100);
+  --badge-cross-icon-hover: var(--color-utility-warning-500);
+}
+.badge--color-pink {
+  --badge-background: var(--color-utility-pink-50);
+  --badge-border: var(--color-utility-pink-200);
+  --badge-text: var(--color-utility-pink-700);
+  --badge-icon-color: var(--color-utility-pink-500);
+  --badge-cross-icon-color: var(--color-utility-pink-400);
+  --badge-cross-icon-bg: var(--color-utility-pink-100);
+  --badge-cross-icon-hover: var(--color-utility-pink-500);
+}
+.badge--color-purple {
+  --badge-background: var(--color-utility-purple-50);
+  --badge-border: var(--color-utility-purple-200);
+  --badge-text: var(--color-utility-purple-700);
+  --badge-icon-color: var(--color-utility-purple-500);
+  --badge-cross-icon-color: var(--color-utility-purple-400);
+  --badge-cross-icon-bg: var(--color-utility-purple-100);
+  --badge-cross-icon-hover: var(--color-utility-purple-500);
 }
 .badge--sm {
   padding: 2px 8px;
@@ -326,15 +411,15 @@
 }
 .badge--pill {
   border-radius: 999999px;
-  background-color: var(--color-bg-secondary);
-  border-color: var(--color-border-secondary);
-  color: var(--color-text-secondary);
+  background-color: var(--badge-background, var(--color-bg-secondary));
+  border-color: var(--badge-border, var(--color-border-secondary));
+  color: var(--badge-text, var(--color-text-secondary));
 }
 .badge--badge {
   border-radius: 6px;
-  background-color: var(--color-bg-secondary);
-  border-color: var(--color-border-secondary);
-  color: var(--color-text-secondary);
+  background-color: var(--badge-background, var(--color-bg-secondary));
+  border-color: var(--badge-border, var(--color-border-secondary));
+  color: var(--badge-text, var(--color-text-secondary));
 }
 .badge--modern {
   border-radius: 6px;

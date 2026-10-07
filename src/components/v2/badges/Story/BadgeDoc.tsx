@@ -47,6 +47,18 @@ const VARIANT_USAGE_CODE = `
 <Badge size="md" variant="modern" label="Modern" />
 `;
 
+const COLOR_USAGE_CODE = `
+<Badge size="md" variant="pill" color="brand" label="Brand" />
+<Badge size="md" variant="pill" color="red" label="Red" />
+<Badge size="md" variant="pill" color="gray-blue" label="Gray blue" />
+<Badge size="md" variant="pill" color="gray" label="Gray" />
+<Badge size="md" variant="pill" color="green" label="Green" />
+<Badge size="md" variant="pill" color="indigo" label="Indigo" />
+<Badge size="md" variant="pill" color="orange" label="Orange" />
+<Badge size="md" variant="pill" color="pink" label="Pink" />
+<Badge size="md" variant="pill" color="purple" label="Purple" />
+`;
+
 const propsData = [
 	{
 		prop: 'label',
@@ -60,6 +72,13 @@ const propsData = [
 		description:
 			'Visual style of the badge. Controls background, border-color, border-radius and text color only - never layout.',
 		default: "'pill'",
+	},
+	{
+		prop: 'color',
+		type: 'BadgeColor',
+		description:
+			'Color scheme for pill and badge variants. Modern badges keep their neutral surface treatment.',
+		default: "'gray'",
 	},
 	{
 		prop: 'size',
@@ -152,9 +171,9 @@ const BadgeDoc = () => (
 		<Subtitle>
 			Badge is a compact label component used to categorize, highlight, or tag content. It
 			supports three variants - <code>pill</code>, <code>badge</code>, and <code>modern</code>{' '}
-			- and three sizes - <code>sm</code>, <code>md</code>, and <code>lg</code>. All variants
-			share an identical layout system; only visual properties (background, border, color,
-			border-radius) differ between them.
+			- nine color schemes and three sizes - <code>sm</code>, <code>md</code>, and{' '}
+			<code>lg</code>. All variants share an identical layout system; only visual properties
+			(background, border, color, border-radius) differ between them.
 		</Subtitle>
 
 		<LinkHeader
@@ -174,6 +193,11 @@ const BadgeDoc = () => (
 
 		<Subheading>BadgeSize</Subheading>
 		<Source language='tsx' code={`type BadgeSize = 'sm' | 'md' | 'lg';`} />
+		<Subheading>BadgeColor</Subheading>
+		<Source
+			language='tsx'
+			code={`type BadgeColor = 'brand' | 'red' | 'gray-blue' | 'gray' | 'green' | 'indigo' | 'orange' | 'pink' | 'purple';`}
+		/>
 
 		<Heading>Usage</Heading>
 
@@ -182,6 +206,8 @@ const BadgeDoc = () => (
 
 		<Subheading>Variants</Subheading>
 		<Source language='tsx' code={VARIANT_USAGE_CODE} />
+		<Subheading>Color schemes</Subheading>
+		<Source language='tsx' code={COLOR_USAGE_CODE} />
 
 		<Subheading>With close button</Subheading>
 		<Source language='tsx' code={CLOSER_USAGE_CODE} />
