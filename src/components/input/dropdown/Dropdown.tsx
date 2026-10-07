@@ -53,7 +53,6 @@ type LeftComponentWithVariants =
 export interface DropdownProps {
 	className?: string | undefined;
 	popperClassName?: string | undefined;
-	lockScroll?: boolean | undefined;
 
 	/** Controlled value: string for single, string[] for multi. Omit for uncontrolled */
 	value?: string | string[];
@@ -111,7 +110,6 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(props,
 	const {
 		className = '',
 		popperClassName = '',
-		lockScroll,
 		value,
 		onChange,
 		leftComponent: LeftComponent,
@@ -573,7 +571,7 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(function Dropdown(props,
 				</div>
 			</div>
 
-			<Popper open={open} wrapperId='dropdown-popper' lockScroll={lockScroll}>
+			<Popper open={open} wrapperId='dropdown-popper'>
 				{open && (
 					<FloatingFocusManager context={context} initialFocus={-1} modal={false}>
 						<motion.ul

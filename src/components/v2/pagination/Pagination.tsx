@@ -1,6 +1,6 @@
 import { forwardRef, useEffect, useReducer, useRef, useState } from 'react';
 import { classes } from '../../../utils';
-import { DropdownItemv2, Dropdownv2 } from '../../input';
+import { Dropdown } from '../input';
 import { Button } from '../../v2/buttons';
 import type { PaginationAction, PaginationProps, PaginationState } from '../pagination/types/index';
 import styles from './Pagination.module.css';
@@ -183,27 +183,25 @@ export const Pagination = forwardRef<HTMLDivElement, PaginationProps>((props, re
 			<div className={styles['left']}>
 				<div className={styles['rows-per-page']}>
 					<span className={styles['rows-label']}>Rows per page :</span>
-					<Dropdownv2
+					<Dropdown
 						className={classes(
 							styles['dropdown'],
 							isSinglePage ? styles['dropdown-disabled'] : ''
 						)}
-						popperClassName={styles['dropdown-popper']}
-						lockScroll={false}
+						popoverClassName={styles['dropdown-popper']}
+						options={availableDropdownOptions.map(({ title, value }) => ({
+							label: title,
+							value: value.toString(),
+						}))}
 						value={step.toString()}
 						placeholder=''
+						helperText=''
+						size='sm'
 						disabled={isSinglePage}
-						onChange={(_, newStep) => {
-							dispatch({ type: 'SET_STEP', payload: Number(newStep ?? 30) });
-						}}>
-						{availableDropdownOptions.map((item) => (
-							<DropdownItemv2
-								title={item.title}
-								value={item.value}
-								key={item.value}
-							/>
-						))}
-					</Dropdownv2>
+						onChange={(newStep) => {
+							dispatch({ type: 'SET_STEP', payload: Number(newStep || 30) });
+						}}
+					/>
 				</div>
 
 				{showData && (

@@ -49,81 +49,71 @@
 .dropdown {
 	height: 24px !important;
 	width: fit-content !important;
+	min-width: 0 !important;
+	max-width: none !important;
 	flex-shrink: 0;
 	flex-grow: 0;
+	gap: 0 !important;
 
-	& > [class*='root'] {
-		width: fit-content !important;
-		gap: 0 !important;
+	& > div {
+		display: contents !important;
 	}
 
-	& [data-elem='header'] {
-		height: 24px !important;
-		min-width: unset !important;
-		width: fit-content !important;
-		border: none !important;
-		background: transparent !important;
-		border-radius: 0 !important;
-		overflow: visible !important;
-		box-shadow: none !important;
-		outline: none !important;
-
-		&:hover {
-			background: transparent !important;
-		}
-		&[aria-expanded='true'] {
-			outline: none !important;
-			box-shadow: none !important;
-
-			& [data-elem='select'] {
-				border-color: tokens.$color-bg-brand-solid !important;
-				box-shadow: 0 0 0 1px tokens.$color-bg-brand-solid !important;
-			}
-		}
-	}
-
-	& [data-elem='select'] {
+	& button[data-elem='base-cell'] {
 		display: flex !important;
 		height: 24px !important;
 		width: fit-content !important;
-		min-width: unset !important;
-		max-width: unset !important;
+		min-width: 0 !important;
+		max-width: none !important;
 		padding: 2px 5px 2px 12px !important;
-		justify-content: center !important;
-		align-items: center !important;
 		gap: 4px !important;
-		border-radius: tokens.$radius-sm !important;
 		border: 1px solid tokens.$color-border-primary !important;
+		border-radius: tokens.$radius-sm !important;
 		background: tokens.$color-bg-primary !important;
+		box-shadow: none !important;
 		box-sizing: border-box !important;
 
 		&:hover {
 			background: tokens.$color-bg-primary !important;
+			border-color: tokens.$color-border-primary !important;
 		}
+	}
 
-		& [data-elem='value'],
-		& [data-elem='placeholder'] {
-			color: tokens.$color-text-secondary !important;
-			font-size: tokens.$font-size-14 !important;
-			font-weight: tokens.$font-weight-medium !important;
-			line-height: tokens.$line-height-20 !important;
-			font-family: var(--font-font-family, 'Plus Jakarta Sans'), sans-serif !important;
-			width: fit-content !important;
-		}
+	& [data-elem='component2'],
+	& [data-elem='title'] {
+		width: fit-content !important;
+		flex: 0 0 auto !important;
+	}
 
-		& [class*='icon-bundle'],
-		& [class*='caret-icon'] {
-			width: 16px !important;
-			height: 16px !important;
-			margin-right: 0 !important;
-			fill: tokens.$color-fg-secondary !important;
-		}
+	& button [data-elem='title'] > div:first-child {
+		width: fit-content !important;
+		min-width: 0 !important;
+		flex: 0 0 auto !important;
+		gap: 4px !important;
+	}
 
-		& svg {
-			width: 16px !important;
-			height: 16px !important;
-			fill: tokens.$color-fg-secondary !important;
-		}
+	& button [data-elem='title'] > div:first-child > span {
+		width: fit-content !important;
+		flex: 0 0 auto !important;
+		font-family: var(--font-font-family, 'Plus Jakarta Sans'), sans-serif !important;
+		font-size: tokens.$font-size-14 !important;
+		font-weight: tokens.$font-weight-medium !important;
+		line-height: tokens.$line-height-20 !important;
+		color: tokens.$color-text-secondary !important;
+	}
+
+	& button [data-elem='title'] > div:last-child {
+		gap: 4px !important;
+	}
+
+	& button [data-elem='title'] > div:last-child > div,
+	& button [data-elem='title'] > div:last-child > div svg {
+		width: 16px !important;
+		height: 16px !important;
+	}
+
+	& button [data-elem='title'] > div:last-child > div svg {
+		color: tokens.$color-fg-secondary !important;
 	}
 }
 
@@ -141,6 +131,33 @@
 	border: 1px solid tokens.$color-border-primary !important;
 	background: tokens.$color-bg-primary !important;
 	box-shadow: none !important;
+
+	[data-dropdown-menu] > div {
+		display: flex !important;
+		width: 100% !important;
+		min-width: 0 !important;
+		padding: 4px !important;
+		align-items: center !important;
+		justify-content: space-between !important;
+		border-radius: tokens.$radius-sm !important;
+		color: tokens.$color-text-quanternary !important;
+		font-size: tokens.$font-size-14 !important;
+		font-weight: tokens.$font-weight-medium !important;
+		line-height: tokens.$line-height-20 !important;
+		background: transparent !important;
+		cursor: pointer !important;
+		box-sizing: border-box !important;
+
+		&:hover {
+			background: tokens.$color-bg-secondary !important;
+			color: tokens.$color-text-secondary !important;
+		}
+	}
+
+	[data-dropdown-menu] > div > div > div > span {
+		font-size: tokens.$font-size-14 !important;
+		line-height: tokens.$line-height-20 !important;
+	}
 
 	li,
 	[data-elem='dropdown-item'],
