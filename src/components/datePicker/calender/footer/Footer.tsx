@@ -1,4 +1,5 @@
 import React from 'react';
+import { getUnixTime } from 'date-fns';
 import { Button } from '../../../buttons';
 import { combineDateAndTime, getRangeWithTimePreview } from '../../utils';
 import styles from './Footer.module.css';
@@ -42,6 +43,19 @@ const Footer = (props: FooterProps): React.JSX.Element => {
 			combineDateAndTime(unix[0] as number, timeRangeSelection?.previous) <
 			3600;
 
+	const now = new Date();
+	const startOfToday = new Date(now);
+	startOfToday.setHours(0, 0, 0, 0);
+	const endOfToday = new Date(now);
+	endOfToday.setHours(23, 59, 59, 999);
+
+	const isDefaultTodayRange =
+		isDateTimeRange &&
+		unix.length === 2 &&
+		combineDateAndTime(unix[0] as number, timeRangeSelection?.previous) ===
+			getUnixTime(startOfToday) &&
+		combineDateAndTime(unix[1] as number, timeRangeSelection?.next) === getUnixTime(endOfToday);
+
 	const handleClear = (): void => {
 		if (!isDateTimeRange) {
 			setSelectedRange?.({ dates: [], unix: [] });
@@ -62,7 +76,9 @@ const Footer = (props: FooterProps): React.JSX.Element => {
 				</div>
 			)}
 			<div className={styles.root}>
-				{value && <Button onClick={handleClear} title='Clear' className={styles.clear} />}
+				{value && !isDefaultTodayRange && (
+					<Button onClick={handleClear} title='Clear' className={styles.clear} />
+				)}
 				{datesSelected && (
 					<Button
 						onClick={onApply}
