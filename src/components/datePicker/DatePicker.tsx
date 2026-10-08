@@ -383,6 +383,15 @@ const DatePicker = (props: DatePickerProps): React.JSX.Element => {
 			});
 		},
 		onClear: () => {
+
+			if(onClear){
+				onClear?.();
+				setTimeRangeSelection({});
+				setOpenDatePicker(false);
+				return;
+			}
+
+
 			if (range && timeRange) {
 				const now = new Date();
 				const startOfToday = new Date(now);
@@ -424,7 +433,6 @@ const DatePicker = (props: DatePickerProps): React.JSX.Element => {
 				return;
 			}
 
-			onClear?.();
 			setTimeRangeSelection({});
 			setOpenDatePicker(false);
 		},

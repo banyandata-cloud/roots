@@ -176,7 +176,7 @@ const FractionalEpochTestStory = () => {
 			}}
 			onClear={() => {
 				console.log('onClear');
-				setValue(null);
+				setValue([1744852140, 1744862280]);
 			}}
 			showCustomRanges={true}
 			customRanges={[
