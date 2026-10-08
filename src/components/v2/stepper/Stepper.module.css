@@ -1,3 +1,8 @@
+[data-theme=dark] {
+  --stepper-current-ring: var(--color-bg-primary-alt);
+  --stepper-progress-active: var(--color-fg-white);
+}
+
 .root.horizontal {
   display: flex;
   flex-direction: row;
@@ -65,17 +70,17 @@
   margin-bottom: 4px;
 }
 .verticalLine--solid {
-  background-color: #e9eaeb;
+  background-color: var(--color-border-secondary);
 }
 .verticalLine--dotted {
   width: 0px;
-  border-left: 2px dotted #e9eaeb;
+  border-left: 2px dotted var(--color-border-secondary);
 }
 .verticalLine--completed.verticalLine--solid {
-  background-color: #1570ef;
+  background-color: var(--color-fg-brand-primary);
 }
 .verticalLine--completed.verticalLine--dotted {
-  border-left-color: #e9eaeb;
+  border-left-color: var(--color-border-secondary);
 }
 
 .iconSection {
@@ -104,17 +109,17 @@
   right: calc(-50% + 16px);
 }
 .stepper--horizontal .iconSection.isIcon.hasLine::after {
-  background-color: #e9eaeb;
+  background-color: var(--color-border-secondary);
 }
 .stepper--horizontal .iconSection.isIcon.line--completed::after {
-  background-color: #1570ef;
+  background-color: var(--color-fg-brand-primary);
 }
 .stepper--horizontal .iconSection.isNumbered.hasLine::after {
-  border-top: 2px dotted #e9eaeb;
+  border-top: 2px dotted var(--color-border-secondary);
   background-color: transparent;
 }
 .stepper--horizontal .iconSection.isNumbered.line--completed::after {
-  border-top-color: #e9eaeb;
+  border-top-color: var(--color-border-secondary);
 }
 
 .stepIcon {
@@ -123,7 +128,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: #ffffff;
+  background-color: var(--color-bg-primary);
   border-radius: 50%;
   overflow: visible;
   flex-shrink: 0;
@@ -138,11 +143,11 @@
 }
 
 .isIcon .stepIcon--current {
-  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #1570ef;
+  box-shadow: 0 0 0 2px var(--stepper-current-ring, var(--color-fg-white)), 0 0 0 4px var(--color-fg-brand-primary);
 }
 
 .stepper--vertical .stepIcon--current {
-  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #1570ef;
+  box-shadow: 0 0 0 2px var(--stepper-current-ring, var(--color-fg-white)), 0 0 0 4px var(--color-fg-brand-primary);
 }
 
 .progressBarWrapper {
@@ -159,7 +164,7 @@
 
 .progressBarTrack {
   width: 100%;
-  border-top: 4px solid #e9eaeb;
+  border-top: 4px solid var(--color-border-secondary);
 }
 .progressBarTrack--sm {
   padding-top: 12px;
@@ -168,10 +173,10 @@
   padding-top: 16px;
 }
 .progressBarTrack--active {
-  border-top-color: #1570ef;
+  border-top-color: var(--stepper-progress-active, var(--color-fg-brand-primary));
 }
 .progressBarTrack--completed {
-  border-top-color: #1570ef;
+  border-top-color: var(--stepper-progress-active, var(--color-fg-brand-primary));
 }
 
 .content {
@@ -208,31 +213,31 @@
 }
 .content--icon .label--incomplete,
 .content--icon .label--completed {
-  color: #414651;
+  color: var(--color-text-secondary);
 }
 .content--icon .description--incomplete,
 .content--icon .description--completed {
-  color: #535862;
+  color: var(--color-text-tertiary);
 }
 .content--icon .label--current {
-  color: #175cd3;
+  color: var(--color-text-brand-secondary);
 }
 .content--icon .description--current {
-  color: #1570ef;
+  color: var(--stepper-progress-active, var(--color-fg-brand-primary));
 }
 .content--noIcon .label--incomplete,
 .content--noIcon .description--incomplete {
-  color: #414651;
+  color: var(--color-text-secondary);
   opacity: 0.6;
 }
 .content--noIcon .label--current,
 .content--noIcon .label--completed {
-  color: #414651;
+  color: var(--color-text-secondary);
   opacity: 1;
 }
 .content--noIcon .description--current,
 .content--noIcon .description--completed {
-  color: #535862;
+  color: var(--color-text-tertiary);
   opacity: 1;
 }
 .content--progressBar {
@@ -242,21 +247,21 @@
 }
 .content--progressBar .label--incomplete,
 .content--progressBar .description--incomplete {
-  color: #717680;
+  color: var(--color-text-quanternary);
 }
 .content--progressBar .label--current,
 .content--progressBar .description--current {
-  color: #1570ef;
+  color: var(--stepper-progress-active, var(--color-fg-brand-primary));
 }
 .content--progressBar .label--completed,
 .content--progressBar .description--completed {
-  color: #181d27;
+  color: var(--color-text-secondary);
 }
 
 .label {
-  font-family: "Jakarta", sans-serif;
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
   font-weight: 600;
-  color: #414651;
+  color: var(--color-text-secondary);
 }
 .stepper--horizontal .label {
   white-space: nowrap;
@@ -266,8 +271,8 @@
 }
 
 .description {
-  font-family: "Jakarta", sans-serif;
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
   font-weight: 400;
-  color: #535862;
+  color: var(--color-text-tertiary);
   margin-top: 0px;
-}/*# sourceMappingURL=Stepper.module.css.map */
+}

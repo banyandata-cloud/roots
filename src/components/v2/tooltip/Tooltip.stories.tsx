@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { ThemedContainer } from '../helpers';
 import TooltipDoc from '../tooltip/Story/TooltipDoc';
 import { Tooltip } from './Tooltip';
 
@@ -12,6 +13,13 @@ const meta: Meta<typeof Tooltip> = {
 			page: TooltipDoc,
 		},
 	},
+	decorators: [
+		(Story) => (
+			<ThemedContainer theme='light'>
+				<Story />
+			</ThemedContainer>
+		),
+	],
 };
 
 export default meta;
@@ -25,6 +33,12 @@ const triggerStyle: React.CSSProperties = {
 	cursor: 'default',
 };
 
+const headingStyle: React.CSSProperties = {
+	marginTop: 0,
+	marginBottom: '24px',
+	color: 'var(--color-text-secondary, #414651)',
+};
+
 export const Default: Story = {
 	name: 'Variants & Interactive',
 	render: () => (
@@ -36,7 +50,7 @@ export const Default: Story = {
 				padding: '60px',
 			}}>
 			<div>
-				<h3 style={{ marginTop: 0, marginBottom: '24px' }}>Position Variants</h3>
+				<h3 style={headingStyle}>Position Variants</h3>
 				<div
 					style={{
 						display: 'flex',
@@ -59,7 +73,7 @@ export const Default: Story = {
 				</div>
 			</div>
 			<div>
-				<h3 style={{ marginTop: 0, marginBottom: '24px' }}>Pointer Position - Top</h3>
+				<h3 style={headingStyle}>Pointer Position - Top</h3>
 				<div
 					style={{
 						display: 'flex',
@@ -80,7 +94,7 @@ export const Default: Story = {
 			</div>
 
 			<div>
-				<h3 style={{ marginTop: 0, marginBottom: '24px' }}>Pointer Position - Bottom</h3>
+				<h3 style={headingStyle}>Pointer Position - Bottom</h3>
 				<div
 					style={{
 						display: 'flex',
@@ -107,7 +121,7 @@ export const Default: Story = {
 			</div>
 
 			<div>
-				<h3 style={{ marginTop: 0, marginBottom: '24px' }}>Interactive Tooltip</h3>
+				<h3 style={headingStyle}>Interactive Tooltip</h3>
 				<div style={{ display: 'flex', justifyContent: 'center' }}>
 					<Tooltip
 						content={

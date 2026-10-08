@@ -5,6 +5,7 @@ interface CurrentIconMdProps {
 	height?: number | string;
 	bgBrandSolid?: string;
 	bgPrimary?: string;
+	ringStroke?: string;
 	className?: string;
 	style?: React.CSSProperties;
 }
@@ -12,8 +13,9 @@ interface CurrentIconMdProps {
 const CurrentIconMd: React.FC<CurrentIconMdProps> = ({
 	width = 32,
 	height = 32,
-	bgBrandSolid = '#1570EF',
-	bgPrimary = '#FFFFFF',
+	bgBrandSolid = 'var(--color-fg-brand-primary, #1570EF)',
+	bgPrimary = 'var(--color-fg-white, #FFFFFF)', // invariant white dot, must not shift in dark mode
+	ringStroke = 'var(--stepper-current-ring, transparent)',
 	className,
 	style,
 }) => {
@@ -26,7 +28,7 @@ const CurrentIconMd: React.FC<CurrentIconMdProps> = ({
 			fill='none'
 			className={className}
 			style={{ aspectRatio: '1 / 1', ...style }}>
-			<circle cx='16' cy='16' r='16' fill={bgBrandSolid} />
+			<circle cx='16' cy='16' r='14.5' fill={bgBrandSolid} stroke={ringStroke} strokeWidth='3' />
 			<circle cx='16' cy='16' r='5' fill={bgPrimary} />
 		</svg>
 	);

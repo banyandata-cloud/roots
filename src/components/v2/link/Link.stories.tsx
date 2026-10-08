@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ThemedContainer } from '../../helpers';
+import { ThemedContainer } from '../helpers';
 import { Link } from './index';
 import LinkDoc from './Story/LinkDoc';
 
@@ -37,7 +37,7 @@ const headingStyle = {
 	fontSize: '14px',
 	fontWeight: '600' as const,
 	fontFamily: 'Jakarta, sans-serif',
-	color: '#333',
+	color: 'var(--color-text-secondary, #414651)',
 	borderBottom: '1px solid #e0e0e0',
 	paddingBottom: '8px',
 	marginBottom: '24px',

@@ -30,7 +30,7 @@ const propsData = [
 	},
 	{
 		prop: 'variant',
-		type: "'primary' | 'secondary' | 'Soft' | 'outlined' | 'ghost'",
+		type: "'primary' | 'secondary' | 'soft' | 'outline' | 'ghost' | 'critical'",
 		description: 'For applying visual style to the button.',
 		default: "'primary'",
 	},
@@ -101,7 +101,7 @@ const ButtonDoc = () => (
 		<Subheading>ButtonVariant</Subheading>
 		<Source
 			language='tsx'
-			code={`type ButtonVariant = 'primary' | 'secondary' | 'Soft' | 'outlined' | 'ghost';`}
+			code={`type ButtonVariant = 'primary' | 'secondary' | 'soft' | 'outline' | 'ghost' | 'critical';`}
 		/>
 
 		<Subheading>ButtonSize</Subheading>

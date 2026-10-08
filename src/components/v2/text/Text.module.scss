@@ -1,7 +1,8 @@
-@import '../../styles/index';
+@use '../../../styles/tokens' as tokens;
+@import '../../../styles/index';
 
 .root {
-	color: $text-color;
+	color: tokens.$color-text-primary;
 
 	&.h1 {
 		font-size: 2.25rem;

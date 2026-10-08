@@ -13,9 +13,9 @@ interface IncompleteIconProps {
 const IncompleteIconSm: React.FC<IncompleteIconProps> = ({
 	width = 24,
 	height = 24,
-	fgDisabledSubtle = '#D5D7DA',
-	borderDisabledSubtle = '#E9EAEB',
-	bgPrimary = '#FFFFFF',
+	fgDisabledSubtle = 'var(--color-fg-disabled-subtle, #E1E2E5)',
+	borderDisabledSubtle = 'var(--color-border-disable-subtle, #E9E9EB)',
+	bgPrimary = 'var(--color-bg-primary, #FFFFFF)',
 	className,
 	style,
 }) => {
