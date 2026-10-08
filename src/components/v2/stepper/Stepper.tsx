@@ -26,8 +26,8 @@ const resolveIcon = (
 	if (variant === 'timeline') {
 		const isActive = status === 'current' || status === 'completed';
 		const fill = isActive
-			? 'var(--brand-colours-20-blue, #00037C)'
-			: 'var(--mono-colours-201, #71839B)';
+			? 'var(--color-fg-brand-primary, #1570EF)'
+			: 'var(--color-text-quanternary, #717680)';
 		const r = isSm ? 5 : 6;
 		const size_ = isSm ? 24 : 32;
 		return (

@@ -1,5 +1,5 @@
 .root {
-  color: var(--text-color);
+  color: var(--color-text-primary);
 }
 .root.h1 {
   font-size: 2.25rem;
@@ -32,4 +32,4 @@
 }
 .root.bold-stroke {
   font-weight: 800;
-}/*# sourceMappingURL=Text.module.css.map */
+}

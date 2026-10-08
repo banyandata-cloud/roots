@@ -12,8 +12,8 @@ interface CompletedNoIconSmProps {
 const CompletedNoIconSm: React.FC<CompletedNoIconSmProps> = ({
 	width = 24,
 	height = 24,
-	bgSuccessSolid = '#039855',
-	checkColor = '#FFFFFF',
+	bgSuccessSolid = 'var(--color-fg-success-primary, #039855)',
+	checkColor = 'var(--color-fg-white, #FFFFFF)',
 	className,
 	style,
 }) => {

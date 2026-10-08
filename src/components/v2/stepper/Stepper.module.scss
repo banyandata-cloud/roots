@@ -1,27 +1,32 @@
+@use '../../../styles/tokens' as tokens;
 @import '../../../styles';
+[data-theme='dark'] {
+	--stepper-current-ring: var(--color-bg-primary-alt);
+	--stepper-progress-active: var(--color-fg-white);
+}
 
-$primary-blue: #1570ef;
-$gray-200: #e9eaeb;
-$border-secondary: #e9eaeb;
-$gray-500: #717680;
-$gray-900: #181d27;
-$white: #ffffff;
+$primary-blue: tokens.$color-fg-brand-primary;
+$gray-200: tokens.$color-border-secondary;
+$border-secondary: tokens.$color-border-secondary;
+$gray-500: tokens.$color-text-quanternary;
+$gray-900: tokens.$color-text-primary;
+$white: tokens.$color-fg-white;
 
-$text-heading: #414651;
-$below-text: #535862;
-$text-heading2: #175cd3;
-$below-text2: #1570ef;
+$text-heading: tokens.$color-text-secondary;
+$below-text: tokens.$color-text-tertiary;
+$text-heading2: tokens.$color-text-brand-secondary;
+$below-text2: tokens.$color-fg-brand-primary;
 
-$space-00: 0px;
-$space-02: 2px;
-$space-04: 4px;
-$space-08: 8px;
-$space-12: 12px;
-$space-16: 16px;
-$space-24: 24px;
-$space-32: 32px;
-$space-33: 33px;
-$space-48: 48px;
+$space-00: tokens.$spacing-none;
+$space-02: tokens.$spacing-xxs;
+$space-04: tokens.$spacing-xs;
+$space-08: tokens.$spacing-md;
+$space-12: tokens.$spacing-lg;
+$space-16: tokens.$spacing-xl;
+$space-24: tokens.$spacing-3xl;
+$space-32: tokens.$spacing-4xl;
+$space-33: 33px; // one-off value, no matching spacing token
+$space-48: tokens.$spacing-6xl;
 
 .root {
 	&.horizontal {
@@ -159,7 +164,9 @@ $space-48: 48px;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	background-color: $white;
+	// Theme-aware: an invariant white here leaked through as a thin fringe at the
+	// SVG circle's anti-aliased edge in dark mode.
+	background-color: tokens.$color-bg-primary;
 	border-radius: 50%;
 	overflow: visible;
 	flex-shrink: 0;
@@ -176,8 +183,9 @@ $space-48: 48px;
 
 .isIcon {
 	.stepIcon--current {
+		// Light: white ring. Dark: same black ring color as the icon's own SVG stroke.
 		box-shadow:
-			0 0 0 $space-02 $white,
+			0 0 0 $space-02 var(--stepper-current-ring, #{$white}),
 			0 0 0 $space-04 $primary-blue;
 	}
 }
@@ -185,7 +193,7 @@ $space-48: 48px;
 .stepper--vertical {
 	.stepIcon--current {
 		box-shadow:
-			0 0 0 $space-02 $white,
+			0 0 0 $space-02 var(--stepper-current-ring, #{$white}),
 			0 0 0 $space-04 $primary-blue;
 	}
 }
@@ -214,10 +222,10 @@ $space-48: 48px;
 		padding-top: $space-16;
 	}
 	&--active {
-		border-top-color: $primary-blue;
+		border-top-color: var(--stepper-progress-active, #{$primary-blue});
 	}
 	&--completed {
-		border-top-color: $primary-blue;
+		border-top-color: var(--stepper-progress-active, #{$primary-blue});
 	}
 }
 
@@ -275,7 +283,8 @@ $space-48: 48px;
 			color: $text-heading2;
 		}
 		.description--current {
-			color: $below-text2;
+			// Same dark-mode-only override as the progress-bar variant, kept pixel-identical.
+			color: var(--stepper-progress-active, #{$below-text2});
 		}
 	}
 
@@ -308,17 +317,18 @@ $space-48: 48px;
 		}
 		.label--current,
 		.description--current {
-			color: $primary-blue;
+			color: var(--stepper-progress-active, #{$primary-blue});
 		}
 		.label--completed,
 		.description--completed {
-			color: $gray-900;
+			// Deliberately distinct from --current (not just a slightly different white).
+			color: $text-heading;
 		}
 	}
 }
 
 .label {
-	font-family: 'Jakarta', sans-serif;
+	font-family: tokens.$font-family-base;
 	font-weight: 600;
 	color: $text-heading;
 
@@ -332,7 +342,7 @@ $space-48: 48px;
 }
 
 .description {
-	font-family: 'Jakarta', sans-serif;
+	font-family: tokens.$font-family-base;
 	font-weight: 400;
 	color: $below-text;
 	margin-top: $space-00;

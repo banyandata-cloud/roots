@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { ThemedContainer } from '../../helpers';
+import { ThemedContainer } from '../helpers';
 import StepperDoc from '../stepper/Story/StepperDocs';
 import Stepper from './Stepper';
 import StepperInteractive from './StepperInteractive';
@@ -39,7 +39,7 @@ const headingStyle = {
 	fontSize: '14px',
 	fontWeight: '600' as const,
 	fontFamily: 'Jakarta, sans-serif',
-	color: '#333',
+	color: 'var(--color-text-secondary, #414651)',
 	borderBottom: '1px solid #e0e0e0',
 	paddingBottom: '8px',
 	marginBottom: '24px',
@@ -182,29 +182,6 @@ export const SmallSize: Story = {
 					/>
 				</div>
 			</div>
-			<div>
-				<p style={headingStyle}>Timeline - Vertical (SM)</p>
-				<div style={{ display: 'flex', gap: '40px' }}>
-					<Stepper
-						size='sm'
-						variant='timeline'
-						orientation='vertical'
-						steps={verticalSteps('incomplete')}
-					/>
-					<Stepper
-						size='sm'
-						variant='timeline'
-						orientation='vertical'
-						steps={verticalSteps('current')}
-					/>
-					<Stepper
-						size='sm'
-						variant='timeline'
-						orientation='vertical'
-						steps={verticalSteps('completed')}
-					/>
-				</div>
-			</div>
 		</div>
 	),
 };
@@ -283,29 +260,6 @@ export const MediumSize: Story = {
 						variant='noIcon'
 						orientation='vertical'
 						steps={verticalNumberSteps('completed')}
-					/>
-				</div>
-			</div>
-			<div>
-				<p style={headingStyle}>Timeline - Vertical (MD)</p>
-				<div style={{ display: 'flex', gap: '40px' }}>
-					<Stepper
-						size='md'
-						variant='timeline'
-						orientation='vertical'
-						steps={verticalSteps('incomplete')}
-					/>
-					<Stepper
-						size='md'
-						variant='timeline'
-						orientation='vertical'
-						steps={verticalSteps('current')}
-					/>
-					<Stepper
-						size='md'
-						variant='timeline'
-						orientation='vertical'
-						steps={verticalSteps('completed')}
 					/>
 				</div>
 			</div>

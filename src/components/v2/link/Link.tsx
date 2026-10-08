@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 import { classes } from '../../../utils/utils';
-import Text from '../../text/Text';
+import Text from '../text/Text';
 import { ArrowIcon } from '../icons';
 import styles from './Link.module.scss';
 import type { LinkProps } from './types';

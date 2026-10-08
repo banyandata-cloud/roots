@@ -14,9 +14,9 @@ interface CurrentNoIconMdProps {
 const CurrentNoIconMd: React.FC<CurrentNoIconMdProps> = ({
 	width = 32,
 	height = 32,
-	bgPrimary = '#FFFFFF',
-	borderSecondary = '#E9EAEB',
-	textColor = '#414651',
+	bgPrimary = 'var(--color-bg-primary, #FFFFFF)',
+	borderSecondary = 'var(--color-border-secondary, #E9E9EB)',
+	textColor = 'var(--color-text-secondary, #414651)',
 	step,
 	className,
 	style,

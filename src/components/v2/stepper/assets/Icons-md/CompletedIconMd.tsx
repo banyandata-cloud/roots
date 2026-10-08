@@ -12,8 +12,8 @@ interface CompletedIconMdProps {
 const CompletedIconMd: React.FC<CompletedIconMdProps> = ({
 	width = 32,
 	height = 32,
-	bgBrandSolid = '#1570EF',
-	checkColor = '#FFFFFF',
+	bgBrandSolid = 'var(--color-fg-brand-primary, #1570EF)',
+	checkColor = 'var(--color-fg-white, #FFFFFF)',
 	className,
 	style,
 }) => {

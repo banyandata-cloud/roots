@@ -1,5 +1,8 @@
 import { getCSSVariableValue } from '../utils';
 import CSS_COLORS from './_colors.exports.module.scss';
+// Design-system color tokens (design-system/*.json -> tokens.build) — the one place
+// this should be imported; components use bare var(--color-*) or tokens.$color-* instead.
+import './tokens/_root-colors.scss';
 
 type CssColorsType = Record<string, string>;
 

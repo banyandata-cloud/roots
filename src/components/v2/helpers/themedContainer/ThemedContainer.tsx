@@ -1,5 +1,4 @@
 import { useEffect, useState, type CSSProperties, type ReactElement } from 'react';
-import { COLORS } from '../../../../styles';
 import { Toggle } from '../../../toggle';
 
 type ThemeType = 'light' | 'dark';
@@ -24,7 +23,7 @@ const themeOptions = [
 
 const ThemedContainer = (props: ThemedContainerProps): ReactElement => {
     const { theme, style, className, children } = props;
-    const [colorMode, setColorMode] = useState<string | string[]>('light');
+    const [colorMode, setColorMode] = useState<string | string[]>(theme ?? 'light');
 
     useEffect(() => {
         document.documentElement.setAttribute('data-theme', colorMode as string);
@@ -38,7 +37,8 @@ const ThemedContainer = (props: ThemedContainerProps): ReactElement => {
         <div
             className={className}
             style={{
-                background: theme === 'dark' ? COLORS['menu-black'] : COLORS.white,
+                // Follows the toggle (colorMode), not the static theme prop, so it reacts live.
+                background: 'var(--color-bg-primary-alt, #FFFFFF)',
                 padding: '1rem',
                 ...style,
             }}>
