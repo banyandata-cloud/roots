@@ -383,42 +383,56 @@ const DatePicker = (props: DatePickerProps): React.JSX.Element => {
 			});
 		},
 		onClear: () => {
-			if (range && timeRange) {
-				const [startUnix, endUnix] = Array.isArray(value) ? (value as number[]) : [];
 
-				if (startUnix !== undefined && endUnix !== undefined) {
-					setSelectedRange({
-						dates: getDatesInStringFormat({
-							startingDate: fromUnixTime(startUnix),
-							endingDate: fromUnixTime(endUnix),
-						}) as string[],
-						unix: [startUnix, endUnix],
-					});
-
-					const startInfo = getDayInfo(fromUnixTime(startUnix));
-					const endInfo = getDayInfo(fromUnixTime(endUnix));
-					setTimeRangeSelection({
-						previous: {
-							HOURS: startInfo.hours,
-							MINS: startInfo.minutes,
-							MER: startInfo.meridian,
-						},
-						next: { HOURS: endInfo.hours, MINS: endInfo.minutes, MER: endInfo.meridian },
-					});
-
-					if (customRanges?.length) {
-						const presetRanges = showCustomRanges
-							? getFixedDateRanges(customRanges, timeRange)
-							: getCustomTimeDateRanges(customRanges);
-						setFixedRange(findMatchingPresetTitle(presetRanges, [startUnix, endUnix]));
-					}
-
-					setOpenDatePicker(false);
-					return;
-				}
+			if(onClear){
+				onClear?.();
+				setTimeRangeSelection({});
+				setOpenDatePicker(false);
+				return;
 			}
 
-			onClear?.();
+
+			if (range && timeRange) {
+				const now = new Date();
+				const startOfToday = new Date(now);
+				startOfToday.setHours(0, 0, 0, 0);
+				const endOfToday = new Date(now);
+				endOfToday.setHours(23, 59, 59, 999);
+
+				const fromUnix = getUnixTime(startOfToday);
+				const toUnix = getUnixTime(endOfToday);
+
+				setSelectedRange({
+					dates: getDatesInStringFormat({
+						startingDate: startOfToday,
+						endingDate: endOfToday,
+					}) as string[],
+					unix: [fromUnix, toUnix],
+				});
+
+				const startInfo = getDayInfo(startOfToday);
+				const endInfo = getDayInfo(endOfToday);
+				setTimeRangeSelection({
+					previous: {
+						HOURS: startInfo.hours,
+						MINS: startInfo.minutes,
+						MER: startInfo.meridian,
+					},
+					next: { HOURS: endInfo.hours, MINS: endInfo.minutes, MER: endInfo.meridian },
+				});
+
+				setSelectedMonth({
+					month: endInfo.month,
+					monthAsNumber: endInfo.monthAsNumber,
+					year: endInfo.year,
+				});
+				setFixedRange(null);
+
+				onApply?.([fromUnix, toUnix], null, getDateRangeTag([fromUnix, toUnix]));
+				setOpenDatePicker(false);
+				return;
+			}
+
 			setTimeRangeSelection({});
 			setOpenDatePicker(false);
 		},

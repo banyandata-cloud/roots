@@ -157,6 +157,43 @@ export const DateRangePickerWithTimeSelection: Story = {
 	render: () => <DateRangePickerWithTimeSelectionStory />,
 };
 
+/* --- Fractional Epoch Test (Date Range Picker With Time Selection) --- */
+const FractionalEpochTestStory = () => {
+	const [value, setValue] = useState<[number, number] | null>([
+		1744852168.945179, 1744862320.359153,
+	]);
+	return (
+		<DatePicker
+			placeholder='Select Date & Time Range'
+			label='Date Range Picker'
+			range={true}
+			timeRange={true}
+			showTime={true}
+			value={value}
+			onApply={(v) => {
+				console.log('onApply', v);
+				setValue(v as [number, number]);
+			}}
+			onClear={() => {
+				console.log('onClear');
+				setValue([1744852140, 1744862280]);
+			}}
+			showCustomRanges={true}
+			customRanges={[
+				{ title: 'Last 1 hour', type: 'hours', value: 1 },
+				{ title: 'Last 6 hours', type: 'hours', value: 6 },
+				{ title: 'Last 24 hours', type: 'hours', value: 24 },
+				{ title: 'Last 7 days', type: 'days', value: 7 },
+			]}
+		/>
+	);
+};
+
+export const FractionalEpochTest: Story = {
+	name: 'Fractional Epoch Test',
+	render: () => <FractionalEpochTestStory />,
+};
+
 export const DisabledPicker: Story = {
 	name: 'Disabled Picker',
 	args: {
