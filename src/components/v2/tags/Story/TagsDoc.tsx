@@ -55,6 +55,12 @@ const MyComponent = () => {
 
 const propsData = [
 	{
+		prop: 'searchTag',
+		type: 'boolean',
+		description: 'Renders the label-only search tag without an input or closer.',
+		default: 'false',
+	},
+	{
 		prop: 'label',
 		type: 'string',
 		description: 'Text displayed inside the tag.',

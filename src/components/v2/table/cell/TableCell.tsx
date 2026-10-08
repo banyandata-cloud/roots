@@ -2,6 +2,8 @@ import { forwardRef, isValidElement, useEffect, useState, type ForwardedRef } fr
 import { classes } from '../../../../utils';
 import { BaseCell } from '../../../v2/cell';
 import { SortIcon } from '../../../v2/icons/Sort';
+import Checkbox from '../../checkbox/CheckBox';
+import CrossIcon from '../../badges/assets/CrossIcon/CrossIcon';
 import TableIconFilter from '../assets/TableIconFilter';
 import styles from './TableCell.module.css';
 import type { SortType, TableCellProps } from './types';
@@ -59,12 +61,12 @@ const TableCell = forwardRef((props: TableCellProps, ref: ForwardedRef<HTMLTable
 		flexible,
 		component1,
 		component3,
-		RootDOM = 'td',
+		type = 'body',
+		RootDOM = type === 'header' ? 'th' : 'td',
 		attrs,
 		radius = 'none',
 		style,
 		multiLine,
-		type = 'body',
 		cellContent,
 		cellTitle,
 		sticky,
@@ -75,19 +77,23 @@ const TableCell = forwardRef((props: TableCellProps, ref: ForwardedRef<HTMLTable
 		columnFilter,
 		filterOptions = [],
 		onFilter,
-		filterValue = [],
+		filterValue,
 		tabIndex,
 		hideColumnLines,
 	} = props;
 
 	const [sortState, setSortState] = useState<SortType>('default');
 	const [filterOpen, setFilterOpen] = useState(false);
-	const [selectedFilters, setSelectedFilters] = useState<string[]>(filterValue);
+	const [selectedFilters, setSelectedFilters] = useState<string[]>(filterValue ?? []);
 	const [actionsFocused, setActionsFocused] = useState(false);
 
 	useEffect(() => {
 		setSortState(sortValue?.[id] ?? 'default');
 	}, [id, sortValue]);
+
+	useEffect(() => {
+		if (filterValue) setSelectedFilters(filterValue);
+	}, [filterValue]);
 
 	useEffect(() => {
 		if (!filterOpen) return;
@@ -167,6 +173,7 @@ const TableCell = forwardRef((props: TableCellProps, ref: ForwardedRef<HTMLTable
 							{sort && (
 								<button
 									type='button'
+									aria-label={`Sort ${cellTitle || id}`}
 									className={classes(
 										styles['icon-btn'],
 										styles['sort-btn'],
@@ -196,6 +203,7 @@ const TableCell = forwardRef((props: TableCellProps, ref: ForwardedRef<HTMLTable
 									<div className={styles['filter-icon-group']}>
 										<button
 											type='button'
+											aria-label={`Filter ${cellTitle || id}`}
 											className={classes(
 												styles['icon-btn'],
 												styles['filter-btn'],
@@ -208,14 +216,15 @@ const TableCell = forwardRef((props: TableCellProps, ref: ForwardedRef<HTMLTable
 											<TableIconFilter
 												color={
 													isFilterActive || filterOpen
-														? '#1f5fcc'
-														: '#A4A7AE'
+														? 'var(--color-fg-brand-primary)'
+														: 'var(--color-fg-disabled)'
 												}
 											/>
 										</button>
 										{isFilterActive && (
 											<button
 												type='button'
+												aria-label={`Clear filter ${cellTitle || id}`}
 												className={classes(
 													styles['icon-btn'],
 													styles['filter-close-btn']
@@ -228,15 +237,25 @@ const TableCell = forwardRef((props: TableCellProps, ref: ForwardedRef<HTMLTable
 													onFilter?.(id, []);
 													setFilterOpen(false);
 												}}>
-												✕
+												<CrossIcon size={16} color='currentColor' />
 											</button>
 										)}
 									</div>
 									{filterOpen && (
 										<div className={styles['filter-dropdown']}>
-											<label className={styles['filter-option']}>
-												<input
-													type='checkbox'
+											<div
+												className={classes(
+													styles['filter-option'],
+													styles['filter-option-all']
+												)}>
+												<Checkbox
+													size='md'
+													label='All'
+													indeterminate={
+														selectedFilters.length > 0 &&
+														selectedFilters.length <
+															filterOptions.length
+													}
 													checked={
 														selectedFilters.length ===
 														filterOptions.length
@@ -251,14 +270,15 @@ const TableCell = forwardRef((props: TableCellProps, ref: ForwardedRef<HTMLTable
 														onFilter?.(id, next);
 													}}
 												/>
-												All
-											</label>
+											</div>
 											{filterOptions.map((option) => (
-												<label
+												<div
 													key={option}
+													data-selected={selectedFilters.includes(option)}
 													className={styles['filter-option']}>
-													<input
-														type='checkbox'
+													<Checkbox
+														size='md'
+														label={option}
 														checked={selectedFilters.includes(option)}
 														onChange={() => {
 															const next = selectedFilters.includes(
@@ -272,8 +292,7 @@ const TableCell = forwardRef((props: TableCellProps, ref: ForwardedRef<HTMLTable
 															onFilter?.(id, next);
 														}}
 													/>
-													{option}
-												</label>
+												</div>
 											))}
 										</div>
 									)}

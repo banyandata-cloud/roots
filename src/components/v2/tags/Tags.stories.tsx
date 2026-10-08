@@ -118,6 +118,9 @@ export const DefaultGroup: Story = {
 					</VariantBlock>
 
 					<VariantBlock label='Text Field'>
+						<AllSizes
+							renderTag={(size) => <Tag size={size} label='Label:' searchTag />}
+						/>
 						<SizesBlock>
 							<SizeGroup label='sm'>
 								<Tag

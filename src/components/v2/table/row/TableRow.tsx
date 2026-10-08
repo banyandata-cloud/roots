@@ -6,25 +6,24 @@ import { TableCellV2 } from '../cell';
 import type { TableProps } from '../types';
 import styles from './TableRow.module.css';
 
-interface TableRowProps
-	extends Pick<
-		TableProps,
-		| 'headerData'
-		| 'customCells'
-		| 'className'
-		| 'loading'
-		| 'onRowClick'
-		| 'onSort'
-		| 'sortValue'
-		| 'rowHeight'
-		| 'defaultActiveIndex'
-		| 'emptyPlaceholder'
-		| 'onCheck'
-		| 'uniqueKey'
-		| 'checkAsRadio'
-		| 'disableCheck'
-		| 'hideColumnLines'
-	> {
+interface TableRowProps extends Pick<
+	TableProps,
+	| 'headerData'
+	| 'customCells'
+	| 'className'
+	| 'loading'
+	| 'onRowClick'
+	| 'onSort'
+	| 'sortValue'
+	| 'rowHeight'
+	| 'defaultActiveIndex'
+	| 'emptyPlaceholder'
+	| 'onCheck'
+	| 'uniqueKey'
+	| 'checkAsRadio'
+	| 'disableCheck'
+	| 'hideColumnLines'
+> {
 	tableData?: Record<string, unknown>[] | undefined;
 	expandable?:
 		| ((params: { datum: Record<number, unknown>; index: number | undefined }) => ReactElement)
@@ -144,8 +143,6 @@ const TableRow = forwardRef((props: TableRowProps, ref: ForwardedRef<HTMLTableRo
 									)
 								);
 
-								console.log(allSelected);
-
 								if (allSelected) {
 									setCheckedRows([]);
 									onCheck?.([]);
@@ -167,11 +164,10 @@ const TableRow = forwardRef((props: TableRowProps, ref: ForwardedRef<HTMLTableRo
 							setCheckedRows([...checkedRows, datum]);
 							onCheck?.([...checkedRows, datum]);
 						}}
-						disabled={disabledChecking}
+						disabled={disabledChecking ?? false}
 						checked={checkStatus}
-						position='left'
 						size='sm'
-						className={disabledChecking ? styles.disabled : undefined}
+						className={disabledChecking ? (styles.disabled ?? '') : ''}
 					/>
 				);
 			}

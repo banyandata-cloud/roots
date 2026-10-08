@@ -1,3 +1,4 @@
+@use '../../../styles/tokens' as tokens;
 @import '../../../styles/';
 @import '../../../styles/colors';
 
@@ -14,7 +15,7 @@ $checkbox-sizes: (
 $color-brand: #1570ef;
 $color-brand-hover: #175cd3;
 $color-brand-bg: #eff8ff;
-$color-border: #d5d7da;
+$color-border: tokens.$color-border-primary;
 $color-border-hover: #a4a7ae;
 $color-error: #d92d20;
 $color-error-bg: #fef3f2;
@@ -25,7 +26,7 @@ $color-readonly-icon: #414651;
 $color-disabled-bg: #f5f5f5;
 $color-disabled-border: #e9eaeb;
 $color-disabled-icon: #a4a7ae;
-$color-white: #ffffff;
+$color-white: tokens.$color-bg-primary;
 
 .wrapper {
 	display: inline-flex;
@@ -60,7 +61,7 @@ $color-white: #ffffff;
 	justify-content: center;
 	flex-shrink: 0;
 	// margin-top: 2px;
-	border-radius: 4px;
+	border-radius: tokens.$radius-xs;
 	border: 1px solid $color-border;
 	background: $color-white;
 	transition:

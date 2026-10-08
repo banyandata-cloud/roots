@@ -3,12 +3,12 @@ import type { IndicatorProps, IndicatorType, StatusStyle } from '../Indicator/ty
 
 const statusStyles: Record<IndicatorType, StatusStyle> = {
 	warning: {
-		fill: 'var(--color-fg-warning-primary, #dc6803)',
-		stroke: 'var(--color-bg-warning-secondary, #fef0c7)',
+		fill: 'var(--color-fg-warning-secondary, #f79009)',
+		stroke: 'var(--color-utility-warning-100, #fef0c7)',
 	},
 	error: {
 		fill: 'var(--color-fg-error-primary, #d92d20)',
-		stroke: 'var(--color-bg-error-secondary, #fee4e2)',
+		stroke: 'var(--color-utility-error-100, #fee4e2)',
 	},
 	success: {
 		fill: 'var(--color-fg-success-primary, #039855)',

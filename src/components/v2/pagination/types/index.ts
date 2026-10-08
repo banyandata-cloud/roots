@@ -18,6 +18,7 @@ export type PaginationAction =
 	| { type: 'SET_TOTAL_DATA'; payload: Nullable<number> };
 
 export interface PaginationProps {
+	navigationSize?: 'sm' | 'md' | undefined;
 	className?: string;
 	floating?: boolean;
 	paginationState?: Pick<PaginationState, 'totalPages' | 'currentPage' | 'step' | 'totalData'>;

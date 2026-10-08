@@ -61,6 +61,13 @@ const COLOR_USAGE_CODE = `
 
 const propsData = [
 	{
+		prop: 'icon',
+		type: 'React.ReactNode',
+		description:
+			'Optional leading icon for additional glyphs such as shield, trend, severity, or percentage.',
+		default: 'undefined',
+	},
+	{
 		prop: 'label',
 		type: 'string',
 		description: 'Text displayed inside the badge.',

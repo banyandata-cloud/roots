@@ -51,6 +51,7 @@ const ControlledPagination = ({
 	dataLabel,
 	loading,
 	floating,
+	navigationSize,
 }: {
 	totalPages: number;
 	currentPage: number;
@@ -59,6 +60,7 @@ const ControlledPagination = ({
 	dataLabel?: string;
 	loading?: boolean;
 	floating?: boolean;
+	navigationSize?: 'sm' | 'md';
 }) => {
 	const [paginationState, paginationDispatch] = usePagination({
 		totalPages,
@@ -69,6 +71,7 @@ const ControlledPagination = ({
 
 	return (
 		<Pagination
+			navigationSize={navigationSize}
 			floating={floating}
 			loading={loading}
 			dataLabel={dataLabel}
@@ -95,6 +98,16 @@ export const AllVariants: Story = {
 					step={30}
 					totalData={3000}
 					dataLabel='items'
+				/>
+			</div>
+
+			<div>
+				<p style={headingStyle}>44px Navigation</p>
+				<ControlledPagination
+					totalPages={10}
+					currentPage={3}
+					step={30}
+					navigationSize='md'
 				/>
 			</div>
 

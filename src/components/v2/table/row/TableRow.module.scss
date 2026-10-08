@@ -25,7 +25,7 @@
 
 			> [data-elem='component2'] {
 				> [data-elem='text'] {
-					color: tokens.$color-text-tertiary-onhover;
+					color: tokens.$color-text-tertiary;
 				}
 			}
 		}
@@ -82,37 +82,34 @@
 		}
 
 		> td[data-elem='base-cell']:focus-visible {
-			outline: 1.5px solid tokens.$color-border-brand !important;
-			outline-offset: 2px;
-			border-radius: 2px;
+			outline: 1px solid tokens.$color-border-brand !important;
+			outline-offset: -1px;
 			background: tokens.$color-bg-primary !important;
 		}
 	}
 
 	> [data-elem='base-cell'] {
 		&:first-child {
-			padding-left: 24px;
+			padding-left: tokens.$spacing-xl;
 		}
 		&:last-child {
-			padding-right: 24px;
+			padding-right: tokens.$spacing-xl;
 		}
 	}
 
-	&.row-height-md {
-		> td[data-elem='base-cell'] {
-			min-height: 40px;
+	@each $size, $height in (sm: 32px, md: 40px, lg: 48px) {
+		&.row-height-#{$size} {
+			--table-row-height: #{$height};
 		}
 	}
 
-	&.row-height-lg {
-		> td[data-elem='base-cell'] {
-			min-height: 73px;
-		}
+	&.row-height-lg.header-row > th[data-elem='base-cell'] {
+		border-right: 0;
 	}
 
 	> [data-elem='base-cell'].expandable-cell {
-		padding-left: 14.4px;
-		padding-right: 1.6px;
+		padding-left: tokens.$spacing-xl;
+		padding-right: tokens.$spacing-xl;
 		overflow: visible;
 		> [data-elem='component2'] {
 			overflow: visible;
@@ -146,7 +143,6 @@
 
 	.disabled {
 		cursor: not-allowed;
-		opacity: 0.4;
 	}
 
 	td label,
@@ -167,29 +163,33 @@
 				}
 			}
 		}
+		&:hover > td[data-elem='base-cell'],
+		&:focus-within > td[data-elem='base-cell'] {
+			background: tokens.$color-bg-quenternary !important;
+		}
 	}
-	.root[data-disabled='true'] {
-		background: tokens.$color-bg-disabled-subtle;
+	&[data-disabled='true'] {
+		background: tokens.$color-bg-primary;
 	}
 
 	/* body cell background */
-	.root[data-disabled='true'] td {
-		background: tokens.$color-bg-disabled-subtle !important;
+	&[data-disabled='true'] td {
+		background: tokens.$color-bg-primary !important;
 	}
 
 	/* text color */
-	.root[data-disabled='true'] .cell-text {
+	&[data-disabled='true'] [data-elem='text'] {
 		color: tokens.$color-text-disabled !important;
 	}
 
 	/* icons */
-	.root[data-disabled='true'] svg path {
+	&[data-disabled='true'] svg path {
 		stroke: tokens.$color-fg-disabled !important;
 		fill: tokens.$color-fg-disabled !important;
 	}
 
 	/* disable pointer interaction */
-	.root[data-disabled='true'] {
+	&[data-disabled='true'] {
 		pointer-events: none;
 	}
 	.disabled .cell-text {

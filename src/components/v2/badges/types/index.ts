@@ -12,6 +12,7 @@ export type BadgeColor =
 	| 'purple';
 
 export interface BadgeProps {
+	icon?: React.ReactNode;
 	label: string;
 	variant?: BadgeVariant | undefined;
 	color?: BadgeColor | undefined;

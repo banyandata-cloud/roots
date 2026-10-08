@@ -1,4 +1,4 @@
-import type { BaseCellProps } from 'components/cell';
+import type { BaseCellProps } from '../../../cell/types';
 import type { MouseEvent, ReactElement } from 'react';
 
 type ButtonType = 'button' | 'submit' | 'reset';

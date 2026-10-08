@@ -45,7 +45,12 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 			}
 			component3={
 				!isIconOnly && RightComponent ? (
-					<RightComponent className={styles[`icon-${size}`]} />
+					<RightComponent
+						className={classes(
+							styles[`icon-${size}`],
+							size === 'lg' && styles['icon-trailing-lg']
+						)}
+					/>
 				) : undefined
 			}
 			disabled={disabled}

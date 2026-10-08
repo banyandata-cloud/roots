@@ -26,7 +26,7 @@
 
 .rows-per-page {
   display: flex;
-  height: 24px;
+  height: 32px;
   padding: 0 16px;
   align-items: center;
   gap: 4px;
@@ -45,8 +45,8 @@
   white-space: nowrap;
 }
 
-.dropdown {
-  height: 24px !important;
+.root .dropdown {
+  height: 26px !important;
   width: -moz-fit-content !important;
   width: fit-content !important;
   min-width: 0 !important;
@@ -55,12 +55,12 @@
   flex-grow: 0;
   gap: 0 !important;
 }
-.dropdown > div {
+.root .dropdown > div {
   display: contents !important;
 }
-.dropdown button[data-elem=base-cell] {
+.root .dropdown button[data-elem=base-cell][class][type=button] {
   display: flex !important;
-  height: 24px !important;
+  height: 26px !important;
   width: -moz-fit-content !important;
   width: fit-content !important;
   min-width: 0 !important;
@@ -73,23 +73,27 @@
   box-shadow: none !important;
   box-sizing: border-box !important;
 }
-.dropdown button[data-elem=base-cell]:hover {
+.root .dropdown button[data-elem=base-cell][class][type=button]:hover {
   background: var(--color-bg-primary) !important;
   border-color: var(--color-border-primary) !important;
 }
-.dropdown [data-elem=component2], .dropdown [data-elem=title] {
+.root .dropdown[data-dropdown-open=true] button[data-elem=base-cell][class][type=button] {
+  border-color: var(--color-bg-brand-solid) !important;
+  box-shadow: 0 0 0 1px var(--color-bg-brand-solid) !important;
+}
+.root .dropdown [data-elem=component2], .root .dropdown [data-elem=title] {
   width: -moz-fit-content !important;
   width: fit-content !important;
   flex: 0 0 auto !important;
 }
-.dropdown button [data-elem=title] > div:first-child {
+.root .dropdown button [data-elem=title] > div:first-child {
   width: -moz-fit-content !important;
   width: fit-content !important;
   min-width: 0 !important;
   flex: 0 0 auto !important;
   gap: 4px !important;
 }
-.dropdown button [data-elem=title] > div:first-child > span {
+.root .dropdown button [data-elem=title] > div:first-child > span {
   width: -moz-fit-content !important;
   width: fit-content !important;
   flex: 0 0 auto !important;
@@ -99,20 +103,28 @@
   line-height: 20px !important;
   color: var(--color-text-secondary) !important;
 }
-.dropdown button [data-elem=title] > div:last-child {
+.root .dropdown button [data-elem=title] > div:last-child {
   gap: 4px !important;
 }
-.dropdown button [data-elem=title] > div:last-child > div, .dropdown button [data-elem=title] > div:last-child > div svg {
-  width: 16px !important;
-  height: 16px !important;
+.root .dropdown button [data-elem=title] > div:last-child > div, .root .dropdown button [data-elem=title] > div:last-child > div svg {
+  width: 20px !important;
+  height: 20px !important;
 }
-.dropdown button [data-elem=title] > div:last-child > div svg {
+.root .dropdown button [data-elem=title] > div:last-child > div svg {
   color: var(--color-fg-secondary) !important;
 }
 
 .dropdown-disabled {
-  opacity: 0.4;
   pointer-events: none;
+}
+.dropdown-disabled button[data-elem=base-cell] {
+  border-color: var(--color-border-disable) !important;
+}
+.dropdown-disabled button [data-elem=title] > div:first-child > span {
+  color: var(--color-text-disabled) !important;
+}
+.dropdown-disabled button [data-elem=title] svg {
+  color: var(--color-fg-disabled) !important;
 }
 
 .dropdown-popper {
@@ -129,7 +141,7 @@
   display: flex !important;
   width: 100% !important;
   min-width: 0 !important;
-  padding: 4px !important;
+  padding: 2px 5px 2px 12px !important;
   align-items: center !important;
   justify-content: space-between !important;
   border-radius: 6px !important;
@@ -145,92 +157,42 @@
   background: var(--color-bg-secondary) !important;
   color: var(--color-text-secondary) !important;
 }
+.dropdown-popper [data-dropdown-menu] > div[data-selected=true] {
+  background: var(--color-bg-secondary) !important;
+  color: var(--color-text-secondary) !important;
+}
 .dropdown-popper [data-dropdown-menu] > div > div > div > span {
   font-size: 14px !important;
   line-height: 20px !important;
+  color: inherit !important;
+  flex: 0 0 auto;
+  overflow: visible;
+  text-overflow: clip;
 }
-.dropdown-popper li,
-.dropdown-popper [data-elem=dropdown-item],
-.dropdown-popper [role=option] {
-  display: flex !important;
-  width: 100% !important;
-  padding: 4px !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  border-radius: 6px !important;
-  color: var(--color-text-quanternary) !important;
-  font-size: 14px !important;
-  font-weight: 500 !important;
-  line-height: 20px !important;
-  background: transparent !important;
-  cursor: pointer !important;
-  box-sizing: border-box !important;
-  position: relative !important;
+.dropdown-popper [data-dropdown-menu] {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  max-height: none;
+  overflow: visible;
 }
-.dropdown-popper li [class*=check], .dropdown-popper li [class*=icon], .dropdown-popper li svg,
-.dropdown-popper [data-elem=dropdown-item] [class*=check],
-.dropdown-popper [data-elem=dropdown-item] [class*=icon],
-.dropdown-popper [data-elem=dropdown-item] svg,
-.dropdown-popper [role=option] [class*=check],
-.dropdown-popper [role=option] [class*=icon],
-.dropdown-popper [role=option] svg {
-  display: none !important;
+.dropdown-popper [data-dropdown-menu] > div > div {
+  padding: 0;
+  gap: 4px;
+  background: transparent;
 }
-.dropdown-popper li[data-selected=true], .dropdown-popper li[aria-selected=true],
-.dropdown-popper [data-elem=dropdown-item][data-selected=true],
-.dropdown-popper [data-elem=dropdown-item][aria-selected=true],
-.dropdown-popper [role=option][data-selected=true],
-.dropdown-popper [role=option][aria-selected=true] {
-  background: var(--color-bg-secondary) !important;
-  color: var(--color-text-secondary) !important;
+.dropdown-popper [data-dropdown-menu] > div > div > div:last-child:has(svg) {
+  width: 20px;
+  height: 20px;
 }
-.dropdown-popper li[data-selected=true]::after, .dropdown-popper li[aria-selected=true]::after,
-.dropdown-popper [data-elem=dropdown-item][data-selected=true]::after,
-.dropdown-popper [data-elem=dropdown-item][aria-selected=true]::after,
-.dropdown-popper [role=option][data-selected=true]::after,
-.dropdown-popper [role=option][aria-selected=true]::after {
-  content: "";
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  flex-shrink: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M13 4L6 11L3 8' stroke='%23414651' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
+.dropdown-popper [data-dropdown-menu] svg {
+  width: 20px;
+  height: 20px;
 }
-.dropdown-popper li[data-selected=true] [class*=check], .dropdown-popper li[data-selected=true] [class*=icon], .dropdown-popper li[data-selected=true] svg, .dropdown-popper li[aria-selected=true] [class*=check], .dropdown-popper li[aria-selected=true] [class*=icon], .dropdown-popper li[aria-selected=true] svg,
-.dropdown-popper [data-elem=dropdown-item][data-selected=true] [class*=check],
-.dropdown-popper [data-elem=dropdown-item][data-selected=true] [class*=icon],
-.dropdown-popper [data-elem=dropdown-item][data-selected=true] svg,
-.dropdown-popper [data-elem=dropdown-item][aria-selected=true] [class*=check],
-.dropdown-popper [data-elem=dropdown-item][aria-selected=true] [class*=icon],
-.dropdown-popper [data-elem=dropdown-item][aria-selected=true] svg,
-.dropdown-popper [role=option][data-selected=true] [class*=check],
-.dropdown-popper [role=option][data-selected=true] [class*=icon],
-.dropdown-popper [role=option][data-selected=true] svg,
-.dropdown-popper [role=option][aria-selected=true] [class*=check],
-.dropdown-popper [role=option][aria-selected=true] [class*=icon],
-.dropdown-popper [role=option][aria-selected=true] svg {
-  display: flex !important;
-  width: 16px !important;
-  height: 16px !important;
-  color: var(--color-fg-secondary) !important;
-  fill: var(--color-fg-secondary) !important;
-}
-.dropdown-popper li:hover,
-.dropdown-popper [data-elem=dropdown-item]:hover,
-.dropdown-popper [role=option]:hover {
-  background: var(--color-bg-secondary) !important;
-  color: var(--color-text-secondary) !important;
-}
-.dropdown-popper li[data-selected=true], .dropdown-popper li[aria-selected=true],
-.dropdown-popper [data-elem=dropdown-item][data-selected=true],
-.dropdown-popper [data-elem=dropdown-item][aria-selected=true],
-.dropdown-popper [role=option][data-selected=true],
-.dropdown-popper [role=option][aria-selected=true] {
-  background: var(--color-bg-secondary) !important;
-  color: var(--color-text-secondary) !important;
+.dropdown-popper [data-dropdown-menu] svg path {
+  stroke: var(--color-fg-secondary) !important;
 }
 
 .showing {
@@ -287,8 +249,11 @@
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 .page-num-box:focus-within {
-  border-color: var(--color-bg-brand-solid);
-  box-shadow: 0 0 0 1px var(--color-bg-brand-solid);
+  border-color: var(--color-border-brand);
+  box-shadow: none;
+}
+.page-num-box[data-invalid=true] {
+  border-color: var(--color-border-error);
 }
 
 .page-input {
@@ -402,6 +367,10 @@
   border-color: var(--color-border-primary) !important;
   box-shadow: none !important;
 }
+.nav-btn:focus-visible:not(:disabled) {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-bg-primary), 0 0 0 4px var(--color-fg-brand-primary) !important;
+}
 .nav-btn:disabled {
   background: var(--color-bg-disabled) !important;
   border-color: var(--color-border-disable) !important;
@@ -411,4 +380,22 @@
 }
 .nav-btn:disabled svg {
   color: var(--color-fg-disabled);
+}
+
+.arrow-left {
+  transform: rotate(180deg);
+}
+
+.root[data-navigation-size=md] .nav-btn[data-elem=base-cell] {
+  width: 44px !important;
+  min-width: 44px !important;
+  height: 44px !important;
+  flex-basis: 44px !important;
+}
+.root[data-navigation-size=md] .nav-btn[data-elem=base-cell] [data-elem=title] {
+  width: 24px !important;
+  height: 24px !important;
+}
+.root[data-navigation-size=md] .nav-btn[data-elem=base-cell]:disabled img {
+  opacity: 0.3;
 }/*# sourceMappingURL=Pagination.module.css.map */

@@ -79,7 +79,7 @@ button.root[data-elem='base-cell'] {
 	width: fit-content;
 
 	[data-elem='title'] {
-		font-family: Jakarta, sans-serif;
+		font-family: tokens.$font-family-base;
 		font-weight: tokens.$font-weight-semibold;
 		font-size: tokens.$font-size-14;
 		line-height: tokens.$line-height-20;
@@ -92,6 +92,13 @@ button.root[data-elem='base-cell'] {
 			gap: map.get($values, gap);
 			border-radius: map.get($values, radius);
 		}
+	}
+
+	&.size-auto {
+		height: auto;
+		padding: tokens.$spacing-md tokens.$spacing-lg;
+		gap: tokens.$spacing-xs;
+		border-radius: tokens.$radius-sm;
 	}
 
 	&.primary {
@@ -150,7 +157,7 @@ button.root[data-elem='base-cell'] {
 
 	&.soft {
 		background: tokens.$color-bg-secondary;
-		color: tokens.$color-text-secondary;
+		color: tokens.$color-fg-secondary;
 		box-shadow: $shadow-normal;
 
 		&:not(:disabled) svg {
@@ -159,15 +166,15 @@ button.root[data-elem='base-cell'] {
 
 		&:hover:not(:disabled) {
 			background: tokens.$color-bg-secondary-hover;
-			color: tokens.$color-text-secondary-hover;
+			color: tokens.$color-fg-secondary-hover;
 			box-shadow: $shadow-hover-secondary;
 			transition-duration: $duration-fast-01;
 			transition-timing-function: $ease-exit;
 		}
 
 		&:active:not(:disabled) {
-			background: tokens.$color-bg-secondary-hover;
-			color: tokens.$color-text-secondary-hover;
+			background: tokens.$color-bg-tertiary;
+			color: tokens.$color-fg-secondary;
 			box-shadow: $shadow-normal;
 			transition-duration: $duration-fast-01;
 			transition-timing-function: $ease-entrance;
@@ -183,19 +190,20 @@ button.root[data-elem='base-cell'] {
 
 	&.outline {
 		background: tokens.$color-bg-primary;
-		color: tokens.$color-text-secondary;
+		color: tokens.$color-fg-secondary;
 		box-shadow: $shadow-normal;
 
 		&:hover:not(:disabled) {
 			background: tokens.$color-bg-primary-hover;
+			color: tokens.$color-fg-secondary-hover;
 			box-shadow: $shadow-hover-secondary;
 			transition-duration: $duration-fast-01;
 			transition-timing-function: $ease-exit;
 		}
 
 		&:active:not(:disabled) {
-			background: tokens.$color-bg-secondary-hover;
-			box-shadow: 0 0 0 1px tokens.$color-border-primary;
+			background: tokens.$color-bg-tertiary;
+			box-shadow: $shadow-normal;
 			transition-duration: $duration-fast-01;
 			transition-timing-function: $ease-entrance;
 		}
@@ -204,18 +212,18 @@ button.root[data-elem='base-cell'] {
 			outline: none;
 			box-shadow:
 				0 0 0 2px tokens.$color-bg-primary,
-				0 0 0 4px tokens.$color-fg-quaternary;
+				0 0 0 4px tokens.$color-fg-tertiary;
 		}
 	}
 
 	&.ghost {
 		background: transparent;
-		color: tokens.$color-text-secondary;
+		color: tokens.$color-fg-secondary;
 		box-shadow: none;
 
 		&:hover:not(:disabled) {
 			background: tokens.$color-bg-primary-hover;
-			box-shadow: $shadow-normal;
+			box-shadow: none;
 			transition-duration: $duration-fast-01;
 			transition-timing-function: $ease-exit;
 		}
@@ -228,6 +236,7 @@ button.root[data-elem='base-cell'] {
 		}
 
 		&:focus-visible:not(:disabled) {
+			background: tokens.$color-bg-primary;
 			outline: none;
 			box-shadow:
 				0 0 0 2px tokens.$color-bg-primary,
@@ -291,6 +300,14 @@ button.root[data-elem='base-cell'] {
 		color: tokens.$color-fg-disabled;
 		cursor: not-allowed;
 		box-shadow: none;
+
+		&.soft,
+		&.outline {
+			background: tokens.$color-bg-disabled-subtle;
+		}
+		&.ghost {
+			background: transparent;
+		}
 	}
 
 	@media (prefers-reduced-motion: reduce) {
@@ -322,4 +339,9 @@ button.root[data-elem='base-cell'] {
 		height: $icon-size !important;
 		flex-shrink: 0;
 	}
+}
+
+.icon-trailing-lg {
+	width: 18px !important;
+	height: 18px !important;
 }

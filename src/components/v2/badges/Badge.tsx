@@ -7,8 +7,7 @@ import DotIcon from '../badges/assets/DotIcon';
 import PlusIcon from '../badges/assets/PlusIcon';
 import { ARROW_SIZE, DOT_SIZE, ICON_SIZE } from '../badges/constants';
 import type { BadgeProps } from '../badges/types';
-import Button from '../buttons/button/Button';
-import CrossIcon from '../tags/assets/TagCloser/TagCloserSm';
+import CrossIcon from './assets/CrossIcon/CrossIcon';
 import Text from '../text/Text';
 import styles from './Badge.module.scss';
 
@@ -33,6 +32,7 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
 			upArrowColor = DEFAULT_ICON_COLOR,
 			plus = false,
 			plusColor = DEFAULT_ICON_COLOR,
+			icon,
 			className,
 		},
 		ref
@@ -53,6 +53,7 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
 
 		return (
 			<span ref={ref} className={classNames}>
+				{icon && <span className={styles.badge__icon}>{icon}</span>}
 				{dot && (
 					<DotIcon
 						size={DOT_SIZE[size]}
@@ -90,13 +91,13 @@ const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
 					/>
 				)}
 				{onClose && (
-					<Button
+					<button
 						type='button'
-						variant='unstyled'
+						aria-label={`Remove ${label || 'badge'}`}
 						className={styles.badge__closer}
-						onClick={onClose}
-						title={<CrossIcon size={ICON_SIZE[size]} color={CLOSE_ICON_COLOR} />}
-					/>
+						onClick={onClose}>
+						<CrossIcon size={ICON_SIZE[size]} color={CLOSE_ICON_COLOR} />
+					</button>
 				)}
 			</span>
 		);

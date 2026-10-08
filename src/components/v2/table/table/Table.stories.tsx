@@ -910,3 +910,27 @@ export const WithPagination: Story = {
 	name: 'With Pagination',
 	render: () => <PaginatedTableStory />,
 };
+
+export const CompactRows: Story = {
+	render: () => (
+		<ThemedContainer>
+			<Table
+				rowHeight='sm'
+				headerData={[{ id: 'name', title: 'Name', size: 'md' }]}
+				tableData={[{ name: 'Compact row' }]}
+			/>
+		</ThemedContainer>
+	),
+};
+
+export const LargeRows: Story = {
+	render: () => (
+		<ThemedContainer>
+			<Table
+				rowHeight='lg'
+				headerData={[{ id: 'name', title: 'Name', size: 'md' }]}
+				tableData={[{ name: 'Large row' }]}
+			/>
+		</ThemedContainer>
+	),
+};
