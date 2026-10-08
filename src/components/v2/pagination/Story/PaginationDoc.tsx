@@ -3,6 +3,13 @@ import { LinkHeader, PropsTable } from '../../../../components/docs';
 
 const propsData = [
 	{
+		prop: 'navigationSize',
+		type: "'sm' | 'md'",
+		description:
+			'Navigation button size: sm is 36px with 20px arrows; md is 44px with 24px arrows.',
+		default: "'sm'",
+	},
+	{
 		prop: 'paginationState',
 		type: 'PaginationState',
 		description: 'Current pagination state containing page, step, and total info.',

@@ -12,7 +12,7 @@ import styles from './Tags.module.scss';
 const INDICATOR_SIZE: Record<TagSize, number> = {
 	sm: 8,
 	md: 8,
-	lg: 10,
+	lg: 8,
 };
 
 const CLOSER_MAP: Record<TagSize, React.ReactElement> = {
@@ -42,7 +42,7 @@ const COUNT_MAP = (count: number): Record<TagSize, React.ReactElement> => ({
 	lg: <TagCountLg count={count} />,
 });
 
-const TagLogo = ({ className = '' }: { className?: string }) => (
+const TagLogo = ({ className = '' }: { className?: string | undefined }) => (
 	<span className={className} aria-hidden='true'>
 		<img src={TagLogoSvg} alt='' />
 	</span>
@@ -69,6 +69,7 @@ const Tag = forwardRef<HTMLInputElement, TagProps>(
 			checkboxLogoClosable = false,
 			checkboxLogoCount = false,
 			textField = false,
+			searchTag = false,
 			readOnly = false,
 			inputValue,
 			onInputChange,
@@ -114,7 +115,7 @@ const Tag = forwardRef<HTMLInputElement, TagProps>(
 
 					const sizerWidth = sizerRef.current.offsetWidth;
 					const buffer = size === 'sm' ? 4 : size === 'md' ? 4 : 6; // Minimal buffer for cursor space
-					const minWidth = size === 'sm' ? 10 : size === 'md' ? 35 : 40;
+					const minWidth = 1;
 
 					// Calculate available space in container, leaving room for close button
 					const tagContainer = inputElement.closest(
@@ -260,6 +261,19 @@ const Tag = forwardRef<HTMLInputElement, TagProps>(
 				{CLOSER_MAP[size]}
 			</span>
 		);
+
+		if (searchTag) {
+			return (
+				<span
+					className={[
+						styles.tag,
+						styles[`tag--${size}`],
+						styles[`tag--${size}--textfield`],
+					].join(' ')}>
+					{label}
+				</span>
+			);
+		}
 
 		if (textField) {
 			return (

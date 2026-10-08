@@ -21,7 +21,7 @@ const TagCountMd: React.FC<TagCountMdProps> = ({
 		borderRadius: '3px',
 		background: bgColor,
 		color: textColor,
-		fontFamily: 'Jakarta, sans-serif',
+		fontFamily: "'Plus Jakarta Sans', sans-serif",
 		fontSize: '12px',
 		fontWeight: 500,
 		lineHeight: '16px',

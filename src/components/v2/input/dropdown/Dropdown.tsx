@@ -518,6 +518,7 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(
 			<div
 				ref={dropdownContainerRef}
 				className={classes(styles.dropdown, className)}
+				data-dropdown-open={isOpen}
 				{...props}>
 				{/* Label */}
 				{label && (
@@ -938,6 +939,7 @@ const Dropdown = forwardRef<DropdownRef, DropdownProps>(
 								return (
 									<div
 										key={option.value}
+										data-selected={isOptionSelected}
 										className={classes(
 											styles.dropdownMenuItem,
 											isOptionSelected && styles.dropdownMenuItemSelected,

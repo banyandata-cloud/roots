@@ -21,7 +21,7 @@ const TagCountLg: React.FC<TagCountLgProps> = ({
 		borderRadius: '3px',
 		background: bgColor,
 		color: textColor,
-		fontFamily: 'Jakarta, sans-serif',
+		fontFamily: "'Plus Jakarta Sans', sans-serif",
 		fontSize: '14px',
 		fontWeight: 500,
 		lineHeight: '20px',

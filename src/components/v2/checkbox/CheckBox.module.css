@@ -32,14 +32,14 @@
   justify-content: center;
   flex-shrink: 0;
   border-radius: 4px;
-  border: 1px solid #d5d7da;
-  background: #ffffff;
+  border: 1px solid var(--color-border-primary);
+  background: var(--color-bg-primary);
   transition: background 120ms cubic-bezier(0.2, 0, 0.38, 0.9), border-color 120ms cubic-bezier(0.2, 0, 0.38, 0.9), box-shadow 120ms cubic-bezier(0.2, 0, 0.38, 0.9);
 }
 .box svg {
   width: 60%;
   height: 60%;
-  color: #ffffff;
+  color: var(--color-bg-primary);
 }
 
 .sm .box {
@@ -133,18 +133,18 @@
 
 .wrapper:not(.disabled):not(.readOnly):not(.error):not(.warning):hover .box {
   border-color: #1570ef;
-  background: #ffffff;
+  background: var(--color-bg-primary);
 }
 .wrapper:not(.disabled):not(.readOnly):not(.error):not(.warning) .input:focus-visible ~ .box {
-  border-color: #d5d7da;
-  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #1570ef;
+  border-color: var(--color-border-primary);
+  box-shadow: 0 0 0 2px var(--color-bg-primary), 0 0 0 4px #1570ef;
 }
 .wrapper:not(.disabled):not(.readOnly):not(.error):not(.warning) .input:checked ~ .box {
   background: #1570ef;
   border-color: #1570ef;
 }
 .wrapper:not(.disabled):not(.readOnly):not(.error):not(.warning) .input:checked ~ .box svg {
-  color: #ffffff;
+  color: var(--color-bg-primary);
 }
 .wrapper:not(.disabled):not(.readOnly):not(.error):not(.warning):hover .input:checked ~ .box {
   background: #175cd3;
@@ -153,14 +153,14 @@
 .wrapper:not(.disabled):not(.readOnly):not(.error):not(.warning) .input:checked:focus-visible ~ .box {
   background: #1570ef;
   border-color: #1570ef;
-  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #1570ef;
+  box-shadow: 0 0 0 2px var(--color-bg-primary), 0 0 0 4px #1570ef;
 }
 .wrapper:not(.disabled):not(.readOnly):not(.error):not(.warning) .input:indeterminate ~ .box {
   background: #1570ef;
   border-color: #1570ef;
 }
 .wrapper:not(.disabled):not(.readOnly):not(.error):not(.warning) .input:indeterminate ~ .box svg {
-  color: #ffffff;
+  color: var(--color-bg-primary);
 }
 .wrapper:not(.disabled):not(.readOnly):not(.error):not(.warning):hover .input:indeterminate ~ .box {
   background: #175cd3;
@@ -169,7 +169,7 @@
 .wrapper:not(.disabled):not(.readOnly):not(.error):not(.warning) .input:indeterminate:focus-visible ~ .box {
   background: #1570ef;
   border-color: #1570ef;
-  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #1570ef;
+  box-shadow: 0 0 0 2px var(--color-bg-primary), 0 0 0 4px #1570ef;
 }
 
 .wrapper.disabled .box {
@@ -195,12 +195,12 @@
 }
 .wrapper.readOnly .box {
   background: #f5f5f5;
-  border-color: #d5d7da;
+  border-color: var(--color-border-primary);
 }
 .wrapper.readOnly .input:checked ~ .box,
 .wrapper.readOnly .input:indeterminate ~ .box {
   background: #f5f5f5;
-  border-color: #d5d7da;
+  border-color: var(--color-border-primary);
 }
 .wrapper.readOnly .input:checked ~ .box svg,
 .wrapper.readOnly .input:indeterminate ~ .box svg {
@@ -209,15 +209,15 @@
 
 .wrapper.error .box {
   border-color: #d92d20;
-  background: #ffffff;
+  background: var(--color-bg-primary);
 }
 .wrapper.error:hover .box {
   border-color: #d92d20;
   background: #fef3f2;
 }
 .wrapper.error .input:focus-visible ~ .box {
-  border-color: #d5d7da;
-  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #d92d20;
+  border-color: var(--color-border-primary);
+  box-shadow: 0 0 0 2px var(--color-bg-primary), 0 0 0 4px #d92d20;
 }
 .wrapper.error .input:checked ~ .box,
 .wrapper.error .input:indeterminate ~ .box {
@@ -226,7 +226,7 @@
 }
 .wrapper.error .input:checked ~ .box svg,
 .wrapper.error .input:indeterminate ~ .box svg {
-  color: #ffffff;
+  color: var(--color-bg-primary);
 }
 .wrapper.error:hover .input:checked ~ .box, .wrapper.error:hover .input:indeterminate ~ .box {
   background: rgb(181.443373494, 37.6265060241, 26.756626506);
@@ -237,16 +237,16 @@
 }
 
 .wrapper.warning .box {
-  border-color: #d5d7da;
-  background: #ffffff;
+  border-color: var(--color-border-primary);
+  background: var(--color-bg-primary);
 }
 .wrapper.warning:hover .box {
   border-color: #1570ef;
   background: #eff8ff;
 }
 .wrapper.warning .input:focus-visible ~ .box {
-  border-color: #d5d7da;
-  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #dc6803;
+  border-color: var(--color-border-primary);
+  box-shadow: 0 0 0 2px var(--color-bg-primary), 0 0 0 4px #dc6803;
 }
 .wrapper.warning input:checked ~ .box,
 .wrapper.warning .input:indeterminate ~ .box {

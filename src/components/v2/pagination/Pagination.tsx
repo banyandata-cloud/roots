@@ -4,6 +4,12 @@ import { Dropdown } from '../input';
 import { Button } from '../../v2/buttons';
 import type { PaginationAction, PaginationProps, PaginationState } from '../pagination/types/index';
 import styles from './Pagination.module.css';
+import arrowLeft from './ArrowLeft.svg';
+import arrowLeftDisabled from './ArrowLeftDisabled.svg';
+import arrowRight from './ArrowRight.svg';
+import arrowRightDisabled from './ArrowRightDisabled.svg';
+import arrowLeftLarge from './ArrowLeftLarge.svg';
+import arrowRightLarge from './ArrowRightLarge.svg';
 
 type UsePaginationArgs = Partial<
 	Pick<PaginationState, 'totalPages' | 'currentPage' | 'step' | 'totalData'>
@@ -73,33 +79,10 @@ const ALL_DROPDOWN_OPTIONS = [
 	{ title: '40', value: 40 },
 ] as const;
 
-const ChevronLeft = () => (
-	<svg width='20' height='20' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'>
-		<path
-			d='M10 12L6 8L10 4'
-			stroke='currentColor'
-			strokeWidth='1.5'
-			strokeLinecap='round'
-			strokeLinejoin='round'
-		/>
-	</svg>
-);
-
-const ChevronRight = () => (
-	<svg width='20' height='20' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'>
-		<path
-			d='M6 4L10 8L6 12'
-			stroke='currentColor'
-			strokeWidth='1.5'
-			strokeLinecap='round'
-			strokeLinejoin='round'
-		/>
-	</svg>
-);
-
 export const Pagination = forwardRef<HTMLDivElement, PaginationProps>((props, ref) => {
 	const {
 		className = '',
+		navigationSize = 'sm',
 		floating,
 		paginationState = {
 			totalPages: null,
@@ -142,10 +125,16 @@ export const Pagination = forwardRef<HTMLDivElement, PaginationProps>((props, re
 	const start = (curr - 1) * step + 1;
 	const end = curr === totalPages ? (totalData ?? curr * step) : curr * step;
 	const isSinglePage = (totalPages ?? 0) <= 1;
+	const parsedPage = Number(pageInputValue);
+	const pageInputInvalid =
+		!isSinglePage &&
+		pageInputValue !== '' &&
+		(!Number.isInteger(parsedPage) || parsedPage < 1 || parsedPage > (totalPages ?? 1));
 	const canGoPrev = !isSinglePage && curr > 1;
 	const canGoNext = !isSinglePage && totalPages != null && totalPages > 0 && curr < totalPages;
 	const showData = typeof totalData === 'number' && totalData > 0 && !loading;
 	const availableDropdownOptions = ALL_DROPDOWN_OPTIONS.filter((opt) => {
+		if (opt.value === step) return true;
 		if (totalData == null) return true;
 		const prevOption = ALL_DROPDOWN_OPTIONS[ALL_DROPDOWN_OPTIONS.indexOf(opt) - 1];
 		if (!prevOption) return true;
@@ -179,7 +168,10 @@ export const Pagination = forwardRef<HTMLDivElement, PaginationProps>((props, re
 	};
 
 	return (
-		<div ref={ref} className={classes(styles.root, floating ? styles.floating : '', className)}>
+		<div
+			ref={ref}
+			data-navigation-size={navigationSize}
+			className={classes(styles.root, floating ? styles.floating : '', className)}>
 			<div className={styles['left']}>
 				<div className={styles['rows-per-page']}>
 					<span className={styles['rows-label']}>Rows per page :</span>
@@ -216,13 +208,15 @@ export const Pagination = forwardRef<HTMLDivElement, PaginationProps>((props, re
 
 			<div className={styles['right']}>
 				<div className={styles['page-counter']}>
-					<div className={styles['page-num-box']}>
+					<div className={styles['page-num-box']} data-invalid={pageInputInvalid}>
 						<input
 							className={styles['page-input']}
 							type='number'
 							min={1}
 							max={totalPages ?? 1}
 							value={pageInputValue}
+							aria-label='Page number'
+							aria-invalid={pageInputInvalid}
 							style={{ width: `${Math.max(pageInputValue.length, 1)}ch` }}
 							onChange={handlePageInputChange}
 							onBlur={handlePageInputCommit}
@@ -239,7 +233,19 @@ export const Pagination = forwardRef<HTMLDivElement, PaginationProps>((props, re
 						className={styles['nav-btn']}
 						disabled={!canGoPrev}
 						onClick={() => dispatch({ type: 'PREV_PAGE' })}
-						title={<ChevronLeft />}
+						title={
+							<img
+								className={styles['arrow-left']}
+								src={
+									navigationSize === 'md'
+										? arrowLeftLarge
+										: canGoPrev
+											? arrowLeft
+											: arrowLeftDisabled
+								}
+								alt='Previous page'
+							/>
+						}
 						type='button'
 					/>
 
@@ -247,7 +253,18 @@ export const Pagination = forwardRef<HTMLDivElement, PaginationProps>((props, re
 						className={styles['nav-btn']}
 						disabled={!canGoNext}
 						onClick={() => dispatch({ type: 'NEXT_PAGE' })}
-						title={<ChevronRight />}
+						title={
+							<img
+								src={
+									navigationSize === 'md'
+										? arrowRightLarge
+										: canGoNext
+											? arrowRight
+											: arrowRightDisabled
+								}
+								alt='Next page'
+							/>
+						}
 						type='button'
 					/>
 				</div>

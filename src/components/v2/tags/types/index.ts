@@ -21,6 +21,7 @@ export interface TagProps {
 	checkboxLogoClosable?: boolean | undefined;
 	checkboxLogoCount?: boolean | undefined;
 	textField?: boolean | undefined;
+	searchTag?: boolean | undefined;
 	readOnly?: boolean | undefined;
 	inputValue?: string | undefined;
 	onInputChange?:

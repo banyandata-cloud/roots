@@ -1,18 +1,19 @@
+@use '../../../../../styles/tokens' as tokens;
 @import '../../../../../styles/';
 
 .row {
 	@include flex;
 	gap: 16px;
 	margin-bottom: 16px;
-	padding: 0px, 8px;
+	padding: 0 tokens.$spacing-md;
 
 	&.header {
-		height: 48px;
-		background: $light-color1;
+		height: 40px;
+		background: tokens.$color-bg-secondary;
 		.th {
 			@include flex(row, flex-start);
 			.skeleton {
-				background: $light-color2;
+				background: tokens.$color-bg-tertiary;
 			}
 		}
 	}

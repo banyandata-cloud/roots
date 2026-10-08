@@ -172,14 +172,14 @@ $tag-lg-textfield-gap: 3px;
 	cursor: pointer;
 
 	&:hover {
-		color: tokens.$color-fg-quaternary;
+		color: tokens.$color-fg-quaternary-hover;
 		.tag__close-icon::before {
-			background-color: tokens.$color-fg-quaternary;
+			background-color: tokens.$color-fg-quaternary-hover;
 		}
 
 		svg * {
-			stroke: tokens.$color-fg-quaternary;
-			fill: tokens.$color-fg-quaternary;
+			stroke: tokens.$color-fg-quaternary-hover;
+			fill: tokens.$color-fg-quaternary-hover;
 		}
 	}
 }
@@ -201,7 +201,7 @@ $tag-lg-textfield-gap: 3px;
 	color: tokens.$color-text-secondary;
 	font-style: normal;
 	font-weight: tokens.$font-weight-medium;
-	font-family: Jakarta, sans-serif;
+	font-family: tokens.$font-family-base;
 
 	&__indicator {
 		flex-shrink: 0;
@@ -262,7 +262,7 @@ $tag-lg-textfield-gap: 3px;
 		&::before {
 			position: absolute;
 			content: '';
-			background-color: tokens.$color-fg-disabled;
+			background-color: tokens.$color-fg-quaternary;
 			-webkit-mask-repeat: no-repeat;
 			mask-repeat: no-repeat;
 			-webkit-mask-size: 100% 100%;
@@ -475,7 +475,7 @@ $tag-lg-textfield-gap: 3px;
 		white-space: pre;
 		font-style: normal;
 		font-weight: tokens.$font-weight-medium;
-		font-family: Jakarta, sans-serif;
+		font-family: tokens.$font-family-base;
 		pointer-events: none;
 		top: -9999px;
 		left: -9999px;
@@ -504,7 +504,7 @@ $tag-lg-textfield-gap: 3px;
 		color: tokens.$color-text-quanternary;
 		font-style: normal;
 		font-weight: tokens.$font-weight-medium;
-		font-family: Jakarta, sans-serif;
+		font-family: tokens.$font-family-base;
 
 		&--sm {
 			font-size: tokens.$font-size-12;
@@ -523,8 +523,8 @@ $tag-lg-textfield-gap: 3px;
 	}
 
 	&__textfield_input {
-		min-width: 20px;
-		width: 20px;
+		min-width: 1px;
+		width: 1px;
 		flex: 0 0 auto;
 		border: none;
 		outline: none;
@@ -534,7 +534,7 @@ $tag-lg-textfield-gap: 3px;
 		color: tokens.$color-text-secondary;
 		font-style: normal;
 		font-weight: tokens.$font-weight-medium;
-		font-family: Jakarta, sans-serif;
+		font-family: tokens.$font-family-base;
 
 		&::placeholder {
 			color: tokens.$color-text-placeholder;
@@ -561,6 +561,28 @@ $tag-lg-textfield-gap: 3px;
 		display: flex;
 		align-items: center;
 		@include closer-hover;
+	}
+
+	@each $size, $gap, $logo-padding in ('sm', 4px, 4px), ('md', 5px, 5px), ('lg', 6px, 7px) {
+		&--#{$size}--closable > .tag__closer {
+			margin-left: 0;
+		}
+		&--#{$size}--checkbox-closable > .tag__closer {
+			margin-left: 3px - $gap;
+		}
+		&--#{$size}--count > .tag__count {
+			margin-left: 3px;
+		}
+		&--#{$size}--checkbox-count > .tag__count,
+		&--#{$size}--indicator-count > .tag__count,
+		&--#{$size}--checkbox-indicator-count > .tag__count {
+			margin-left: 0;
+		}
+		&--#{$size}--indicator:has(> .tag__logo),
+		&--#{$size}--indicator-count:has(> .tag__logo),
+		&--#{$size}--indicator-closable:has(> .tag__logo) {
+			padding-left: $logo-padding;
+		}
 	}
 
 	&--sm {

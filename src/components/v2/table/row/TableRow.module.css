@@ -18,7 +18,7 @@
   background: var(--color-bg-secondary-hover) !important;
 }
 .root.header-row > th[data-elem=base-cell]:hover > [data-elem=component2] > [data-elem=text] {
-  color: var(--color-text-tertiary-onhover);
+  color: var(--color-text-tertiary);
 }
 .root.header-row > [data-elem=base-cell].expandable-cell {
   background: transparent;
@@ -54,26 +54,31 @@
   color: var(--color-text-primary) !important;
 }
 .root.body-row > td[data-elem=base-cell]:focus-visible {
-  outline: 1.5px solid var(--color-border-brand) !important;
-  outline-offset: 2px;
-  border-radius: 2px;
+  outline: 1px solid var(--color-border-brand) !important;
+  outline-offset: -1px;
   background: var(--color-bg-primary) !important;
 }
 .root > [data-elem=base-cell]:first-child {
-  padding-left: 24px;
+  padding-left: 16px;
 }
 .root > [data-elem=base-cell]:last-child {
-  padding-right: 24px;
+  padding-right: 16px;
 }
-.root.row-height-md > td[data-elem=base-cell] {
-  min-height: 40px;
+.root.row-height-sm {
+  --table-row-height: 32px;
 }
-.root.row-height-lg > td[data-elem=base-cell] {
-  min-height: 73px;
+.root.row-height-md {
+  --table-row-height: 40px;
+}
+.root.row-height-lg {
+  --table-row-height: 48px;
+}
+.root.row-height-lg.header-row > th[data-elem=base-cell] {
+  border-right: 0;
 }
 .root > [data-elem=base-cell].expandable-cell {
-  padding-left: 14.4px;
-  padding-right: 1.6px;
+  padding-left: 16px;
+  padding-right: 16px;
   overflow: visible;
 }
 .root > [data-elem=base-cell].expandable-cell > [data-elem=component2] {
@@ -97,7 +102,6 @@
 }
 .root .disabled {
   cursor: not-allowed;
-  opacity: 0.4;
 }
 .root td label,
 .root th label {
@@ -113,32 +117,35 @@
 .root.body-row[data-selected=true] > td[data-elem=base-cell] > [data-elem=component2] > [data-elem=text] {
   color: var(--color-text-primary) !important;
 }
-.root .root[data-disabled=true] {
-  background: var(--color-bg-disabled-subtle);
+.root.body-row[data-selected=true]:hover > td[data-elem=base-cell], .root.body-row[data-selected=true]:focus-within > td[data-elem=base-cell] {
+  background: var(--color-bg-quenternary) !important;
+}
+.root[data-disabled=true] {
+  background: var(--color-bg-primary);
 }
 .root {
   /* body cell background */
 }
-.root .root[data-disabled=true] td {
-  background: var(--color-bg-disabled-subtle) !important;
+.root[data-disabled=true] td {
+  background: var(--color-bg-primary) !important;
 }
 .root {
   /* text color */
 }
-.root .root[data-disabled=true] .cell-text {
+.root[data-disabled=true] [data-elem=text] {
   color: var(--color-text-disabled) !important;
 }
 .root {
   /* icons */
 }
-.root .root[data-disabled=true] svg path {
+.root[data-disabled=true] svg path {
   stroke: var(--color-fg-disabled) !important;
   fill: var(--color-fg-disabled) !important;
 }
 .root {
   /* disable pointer interaction */
 }
-.root .root[data-disabled=true] {
+.root[data-disabled=true] {
   pointer-events: none;
 }
 .root .disabled .cell-text {
