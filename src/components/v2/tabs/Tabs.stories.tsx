@@ -268,3 +268,29 @@ export const AllVariants: Story = {
 	name: 'All Variants',
 	render: () => <AllTabsStory />,
 };
+
+export const HorizontalDesign: Story = {
+	name: 'Horizontal Design',
+	render: () => {
+		const HorizontalTabsExample = () => {
+			const [selected, setSelected] = useState('overview');
+			return (
+				<Tabs
+					direction='horizontal'
+					selectedTab={selected}
+					setSelectedTab={setSelected}
+					tabs={[
+						{ id: 'overview', title: 'Overview' },
+						{ id: 'activity', title: 'Activity' },
+						{ id: 'settings', title: 'Settings' },
+						{ id: 'disabled', title: 'Disabled', disabled: true },
+					]}>
+					<div style={{ padding: '16px 0' }}>
+						{selected} tab content
+					</div>
+				</Tabs>
+			);
+		};
+		return <HorizontalTabsExample />;
+	},
+};

@@ -1,5 +1,6 @@
-@import '../../../styles/';
-@import '../../../styles/colors';
+@use '../../../styles/' as *;
+@use '../../../styles/colors' as *;
+@use '../../../styles/tokens' as tokens;
 
 $duration: 120ms;
 $ease: cubic-bezier(0.2, 0, 0.38, 0.9);
@@ -11,38 +12,34 @@ $checkbox-sizes: (
 	xlg: 20px,
 );
 
-$color-brand: #1570ef;
-$color-brand-hover: #175cd3;
-$color-brand-bg: #eff8ff;
-$color-border: #d5d7da;
-$color-border-hover: #a4a7ae;
-$color-error: #d92d20;
-$color-error-bg: #fef3f2;
-$color-warning: #dc6803;
-$color-warning-bg: #fffaeb;
-$color-readonly-bg: #f5f5f5;
-$color-readonly-icon: #414651;
-$color-disabled-bg: #f5f5f5;
-$color-disabled-border: #e9eaeb;
-$color-disabled-icon: #a4a7ae;
-$color-white: #ffffff;
+$color-brand: tokens.$color-fg-brand-primary;
+$color-brand-hover: tokens.$color-text-brand-secondary;
+$color-brand-bg: tokens.$color-bg-brand-primary;
+$color-border: tokens.$color-border-primary;
+$color-border-hover: tokens.$color-utility-gray-400;
+$color-error: tokens.$color-fg-error-primary;
+$color-error-bg: tokens.$color-bg-error-primary;
+$color-warning: tokens.$color-fg-warning-primary;
+$color-warning-bg: tokens.$color-bg-warning-primary;
+$color-readonly-bg: tokens.$color-bg-secondary-hover;
+$color-readonly-icon: tokens.$color-text-secondary;
+$color-disabled-bg: tokens.$color-bg-disabled;
+$color-disabled-border: tokens.$color-border-disable-subtle;
+$color-disabled-icon: tokens.$color-text-disabled;
+$color-white: tokens.$color-fg-white;
 
 .wrapper {
 	display: inline-flex;
 	flex-direction: column;
-	gap: 8px;
+	gap: tokens.$spacing-md;
 	cursor: pointer;
 	user-select: none;
-
-	&.disabled {
-		cursor: not-allowed;
-	}
 }
 
 .checkboxWrap {
 	display: inline-flex;
 	align-items: flex-start;
-	gap: 8px;
+	gap: tokens.$spacing-md;
 }
 
 .input {
@@ -59,8 +56,7 @@ $color-white: #ffffff;
 	align-items: center;
 	justify-content: center;
 	flex-shrink: 0;
-	// margin-top: 2px;
-	border-radius: 4px;
+	border-radius: tokens.$radius-xs;
 	border: 1px solid $color-border;
 	background: $color-white;
 	transition:
@@ -87,15 +83,15 @@ $color-white: #ffffff;
 .sm,
 .md {
 	.label {
-		font-size: 14px;
-		line-height: 20px;
+		font-size: tokens.$font-size-14;
+		line-height: tokens.$line-height-20;
 	}
 	.subLabel {
-		font-size: 14px;
-		line-height: 20px;
+		font-size: tokens.$font-size-14;
+		line-height: tokens.$line-height-20;
 	}
 	.message {
-		font-size: 12px;
+		font-size: tokens.$font-size-12;
 		line-height: 18px;
 
 		svg {
@@ -109,16 +105,16 @@ $color-white: #ffffff;
 .lg,
 .xlg {
 	.label {
-		font-size: 16px;
-		line-height: 24px;
+		font-size: tokens.$font-size-16;
+		line-height: tokens.$line-height-24;
 	}
 	.subLabel {
-		font-size: 16px;
-		line-height: 24px;
+		font-size: tokens.$font-size-16;
+		line-height: tokens.$line-height-24;
 	}
 	.message {
-		font-size: 14px;
-		line-height: 20px;
+		font-size: tokens.$font-size-14;
+		line-height: tokens.$line-height-20;
 
 		svg {
 			width: 20px;
@@ -134,22 +130,22 @@ $color-white: #ffffff;
 }
 
 .label {
-	font-family: jakarta, sans-serif;
+	font-family: tokens.$font-family-base;
 	font-weight: 500;
-	color: #252b37;
+	color: tokens.$color-text-secondary-hover;
 }
 
 .subLabel {
-	font-family: jakarta, sans-serif;
+	font-family: tokens.$font-family-base;
 	font-weight: 400;
-	color: #535862;
+	color: tokens.$color-text-tertiary;
 }
 
 .message {
 	display: inline-flex;
 	align-items: center;
-	gap: 8px;
-	font-family: jakarta, sans-serif;
+	gap: tokens.$spacing-md;
+	font-family: tokens.$font-family-base;
 	font-weight: 500;
 }
 
@@ -161,9 +157,7 @@ $color-white: #ffffff;
 
 	.input:focus-visible ~ .box {
 		border-color: $color-border;
-		box-shadow:
-			0 0 0 2px $color-white,
-			0 0 0 4px $color-brand;
+		box-shadow: tokens.$shadow-state-focus-primary-brand;
 	}
 
 	.input:checked ~ .box {
@@ -183,9 +177,7 @@ $color-white: #ffffff;
 	.input:checked:focus-visible ~ .box {
 		background: $color-brand;
 		border-color: $color-brand;
-		box-shadow:
-			0 0 0 2px $color-white,
-			0 0 0 4px $color-brand;
+		box-shadow: tokens.$shadow-state-focus-primary-brand;
 	}
 
 	.input:indeterminate ~ .box {
@@ -205,13 +197,13 @@ $color-white: #ffffff;
 	.input:indeterminate:focus-visible ~ .box {
 		background: $color-brand;
 		border-color: $color-brand;
-		box-shadow:
-			0 0 0 2px $color-white,
-			0 0 0 4px $color-brand;
+		box-shadow: tokens.$shadow-state-focus-primary-brand;
 	}
 }
 
 .wrapper.disabled {
+	cursor: not-allowed;
+
 	.box {
 		background: $color-disabled-bg;
 		border-color: $color-disabled-border;
@@ -265,9 +257,7 @@ $color-white: #ffffff;
 
 	.input:focus-visible ~ .box {
 		border-color: $color-border;
-		box-shadow:
-			0 0 0 2px $color-white,
-			0 0 0 4px $color-error;
+		box-shadow: tokens.$shadow-state-focus-error;
 	}
 
 	.input:checked ~ .box,
@@ -282,8 +272,8 @@ $color-white: #ffffff;
 
 	&:hover .input:checked ~ .box,
 	&:hover .input:indeterminate ~ .box {
-		background: darken($color-error, 8%);
-		border-color: darken($color-error, 8%);
+		background: tokens.$color-bg-error-solid;
+		border-color: tokens.$color-bg-error-solid;
 	}
 
 	.message {
@@ -304,9 +294,7 @@ $color-white: #ffffff;
 
 	.input:focus-visible ~ .box {
 		border-color: $color-border;
-		box-shadow:
-			0 0 0 2px $color-white,
-			0 0 0 4px $color-warning;
+		box-shadow: tokens.$shadow-state-focus-warning;
 	}
 
 	input:checked ~ .box,

@@ -1,31 +1,33 @@
-$gray-500: #717680;
-$gray-600: #535862;
-$gray-700: #414651;
-$brand-600: #1570ef;
-$brand-700: #175cd3;
+@use '../../../styles/tokens' as tokens;
+
+$gray-500: tokens.$color-text-quanternary;
+$gray-600: tokens.$color-text-tertiary;
+$gray-700: tokens.$color-text-secondary;
+$brand-600: tokens.$color-fg-brand-primary;
+$brand-700: tokens.$color-text-brand-secondary;
 
 $color-label-default: $gray-500;
 $color-label-hover: $gray-700;
 $color-label-active: $brand-700;
 
-$color-border-secondary: #e9eaeb;
-$color-border-focus: #1570ef;
+$color-border-secondary: tokens.$color-border-secondary;
+$color-border-focus: tokens.$color-fg-brand-primary;
 
-$color-bg-hover-button: #fafafa;
-$color-bg-active-button: #fafafa;
+$color-bg-hover-button: tokens.$color-bg-primary-2;
+$color-bg-active-button: tokens.$color-bg-primary-2;
 
-$color-dropdown-bg: #ffffff;
-$color-dropdown-border: #e4e7ec;
-$color-dropdown-label: #344054;
+$color-dropdown-bg: tokens.$color-bg-primary;
+$color-dropdown-border: tokens.$color-border-secondary;
+$color-dropdown-label: tokens.$color-text-secondary;
 $color-dropdown-label-hover: $brand-600;
-$color-dropdown-item-hover-bg: #f9fafb;
+$color-dropdown-item-hover-bg: tokens.$color-bg-secondary-subtle;
 
 $transition-default: 0.15s ease;
-$border-radius-default: 6px;
-$border-radius-dropdown: 8px;
-$spacing-xs: 4px;
-$spacing-md: 8px;
-$font-family: 'Jakarta', sans-serif;
+$border-radius-default: tokens.$radius-sm;
+$border-radius-dropdown: tokens.$radius-md;
+$spacing-xs: tokens.$spacing-xs;
+$spacing-md: tokens.$spacing-md;
+$font-family: tokens.$font-family-base;
 
 .inlineWrapper {
 	display: inline-flex;
@@ -84,10 +86,10 @@ $font-family: 'Jakarta', sans-serif;
 	height: 20px;
 	color: $color-label-default !important;
 	font-family: $font-family;
-	font-size: 14px;
+	font-size: tokens.$font-size-14;
 	font-style: normal;
 	font-weight: 600;
-	line-height: 20px;
+	line-height: tokens.$line-height-20;
 	white-space: nowrap;
 	transition: color $transition-default;
 
@@ -104,9 +106,9 @@ $font-family: 'Jakarta', sans-serif;
 	justify-content: center;
 	color: $color-label-default !important;
 	font-family: $font-family;
-	font-size: 14px;
+	font-size: tokens.$font-size-14;
 	font-weight: 600;
-	line-height: 20px;
+	line-height: tokens.$line-height-20;
 	white-space: nowrap;
 	transition: color $transition-default;
 
@@ -128,8 +130,8 @@ $font-family: 'Jakarta', sans-serif;
 	align-items: center;
 	justify-content: center;
 	flex-shrink: 0;
-	width: 20px;
-	height: 20px;
+	width: tokens.$spacing-xl;
+	height: tokens.$spacing-xl;
 	line-height: 0;
 	color: $color-label-default;
 	transition: color $transition-default;
@@ -351,7 +353,7 @@ $font-family: 'Jakarta', sans-serif;
 	.iconCrumbItem.focused .iconCrumbWrapper {
 		outline: 2px solid $color-border-focus !important;
 		outline-offset: 2px !important;
-		border-radius: 8px !important;
+		border-radius: tokens.$radius-md !important;
 		box-shadow: none !important;
 	}
 
@@ -363,7 +365,7 @@ $font-family: 'Jakarta', sans-serif;
 	.iconCrumbItem.focused.active .iconCrumbWrapper {
 		outline: 2px solid $color-border-focus !important;
 		outline-offset: 2px !important;
-		border-radius: 8px !important;
+		border-radius: tokens.$radius-md !important;
 		box-shadow: none !important;
 		background: $color-bg-active-button;
 	}
@@ -380,9 +382,9 @@ $font-family: 'Jakarta', sans-serif;
 	background: $color-dropdown-bg;
 	border: 1px solid $color-dropdown-border;
 	border-radius: $border-radius-dropdown;
-	box-shadow: 0px 8px 24px rgba(16, 24, 40, 0.12);
+	box-shadow: tokens.$shadow-scale-md;
 	min-width: 180px;
-	padding: 6px 0;
+	padding: tokens.$spacing-sm 0;
 	animation: dropdownIn 0.15s ease;
 
 	@keyframes dropdownIn {
@@ -400,10 +402,10 @@ $font-family: 'Jakarta', sans-serif;
 .dropdownItem {
 	display: flex;
 	align-items: center;
-	padding: 10px 16px;
-	font-size: 14px;
+	padding: tokens.$spacing-sm tokens.$spacing-xl;
+	font-size: tokens.$font-size-14;
 	font-weight: 400;
-	line-height: 20px;
+	line-height: tokens.$line-height-20;
 	color: $color-dropdown-label;
 	cursor: pointer;
 	white-space: nowrap;

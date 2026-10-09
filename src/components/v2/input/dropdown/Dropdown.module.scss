@@ -1,9 +1,11 @@
 // Dropdown Component Styles - Based on Figma Design System
 
+@use '../../../../styles/tokens' as tokens;
+
 .dropdown {
 	display: flex;
 	flex-direction: column;
-	gap: 6px;
+	gap: tokens.$spacing-sm;
 	width: 100%;
 	min-width: 297px;
 }
@@ -11,23 +13,23 @@
 // Label Container
 .labelContainer {
 	display: flex;
-	gap: 2px;
+	gap: tokens.$spacing-xxs;
 	align-items: center;
 
 	.label {
-		font-family: Jakarta;
 		font-weight: 500;
-		font-size: 14px;
-		line-height: 20px;
-		color: #414651;
+		font-family: tokens.$font-family-base;
+		font-size: tokens.$font-size-14;
+		line-height: tokens.$line-height-20;
+		color: tokens.$color-text-secondary;
 	}
 
 	.required {
-		font-family: Jakarta;
 		font-weight: 500;
-		font-size: 14px;
-		line-height: 20px;
-		color: #175cd3;
+		font-family: tokens.$font-family-base;
+		font-size: tokens.$font-size-14;
+		line-height: tokens.$line-height-20;
+		color: tokens.$color-text-brand-secondary;
 	}
 }
 
@@ -40,7 +42,7 @@
 	svg {
 		width: 100%;
 		height: 100%;
-		color: #535862;
+		color: tokens.$color-text-tertiary;
 	}
 }
 
@@ -66,15 +68,13 @@
 	align-items: center !important;
 	justify-content: flex-start !important;
 	gap: 0px !important;
-	padding: 8px 12px !important;
-	border-radius: 8px !important;
-	border: 1px solid #d5d7da !important;
-	background: white !important;
+	padding: tokens.$spacing-md tokens.$spacing-lg !important;
+	border-radius: tokens.$radius-md !important;
+	border: 1px solid tokens.$color-border-primary !important;
+	background: tokens.$color-bg-primary !important;
 	cursor: pointer !important;
 	transition: all 0.2s ease-in-out !important;
-	box-shadow:
-		0px 0px 1px 0px rgba(0, 0, 0, 0.04),
-		0px 1px 2px 0px rgba(0, 0, 0, 0.06) !important;
+	box-shadow: tokens.$shadow-scale-xs !important;
 	text-decoration: none !important;
 	text-align: left !important;
 	width: 100% !important;
@@ -112,7 +112,7 @@
 
 	&:focus:not(.focus) {
 		outline: none !important;
-		border: 1px solid #d5d7da !important;
+			border: 1px solid tokens.$color-border-primary !important;
 	}
 
 	&:hover {
@@ -126,12 +126,12 @@
 	// Size variants
 	&.sm {
 		height: 40px !important;
-		padding: 8px 12px !important;
+		padding: tokens.$spacing-md tokens.$spacing-lg !important;
 	}
 
 	&.md {
 		height: 44px !important;
-		padding: 8px 12px !important;
+		padding: tokens.$spacing-md tokens.$spacing-lg !important;
 	}
 }
 
@@ -139,7 +139,7 @@
 .contentArea {
 	display: flex !important;
 	align-items: center !important;
-	gap: 8px !important;
+	gap: tokens.$spacing-md !important;
 	flex: 1 !important;
 	min-width: 0 !important;
 	position: relative !important;
@@ -160,18 +160,18 @@
 .trailingArea {
 	display: flex !important;
 	align-items: center !important;
-	gap: 8px !important;
+	gap: tokens.$spacing-md !important;
 	flex-shrink: 0 !important;
 }
 
 // Dropdown Text
 .dropdownText {
 	flex: 1 !important;
-	font-family: Jakarta !important;
+	font-family: tokens.$font-family-base !important;
 	font-weight: 500 !important;
-	font-size: 16px !important;
-	line-height: 24px !important;
-	color: #181d27 !important;
+	font-size: tokens.$font-size-16 !important;
+	line-height: tokens.$line-height-24 !important;
+	color: tokens.$color-text-primary !important;
 	white-space: nowrap !important;
 	overflow: hidden !important;
 	text-overflow: ellipsis !important;
@@ -180,7 +180,7 @@
 
 	&.placeholder {
 		font-weight: 400 !important;
-		color: #a4a7ae !important;
+		color: tokens.$color-utility-gray-400 !important;
 	}
 }
 
@@ -205,51 +205,51 @@
 	svg {
 		width: 100%;
 		height: 100%;
-		color: #a4a7ae;
+		color: tokens.$color-utility-gray-400;
 		transition: color 0.2s ease-in-out;
 	}
 }
 
 // Helper Text
 .helperText {
-	font-family: Jakarta;
 	font-weight: 400;
-	font-size: 14px;
-	line-height: 20px;
+	font-family: tokens.$font-family-base;
+	font-size: tokens.$font-size-14;
+	line-height: tokens.$line-height-20;
 }
 
 .helperDefault {
-	color: #535862;
+	color: tokens.$color-text-tertiary;
 }
 
 .helperError {
-	color: #d92d20;
+	color: tokens.$color-fg-error-primary;
 }
 
 .helperWarning {
-	color: #dc6803;
+	color: tokens.$color-fg-warning-primary;
 }
 
 // State-specific styles
 
 // 1. Default State (placeholder)
 .dropdownContainer.default {
-	border: 1px solid #d5d7da !important;
-	background: white !important;
+	border: 1px solid tokens.$color-border-primary !important;
+	background: tokens.$color-bg-primary !important;
 
 	&:hover {
-		border-color: #b2b5bb !important;
+		border-color: tokens.$color-utility-gray-400 !important;
 		text-decoration: none !important;
 	}
 }
 
 // 2. Selected State
 .dropdownContainer.selected {
-	border: 1px solid #d5d7da !important;
-	background: white !important;
+	border: 1px solid tokens.$color-border-primary !important;
+	background: tokens.$color-bg-primary !important;
 
 	&:hover {
-		border-color: #b2b5bb !important;
+		border-color: tokens.$color-utility-gray-400 !important;
 		text-decoration: none !important;
 	}
 }
@@ -257,25 +257,25 @@
 // 3. Focus State (blue border)
 .dropdown .dropdownContainer.focus,
 .dropdownContainer.focus {
-	background: white !important;
-	border: 2px solid #2e90fa !important;
+	background: tokens.$color-bg-primary !important;
+	border: 2px solid tokens.$color-fg-brand-secondary !important;
 	padding: 7px 11px !important; // Adjust for thicker border
 	box-shadow: none !important;
 	outline: none !important;
 
 	&:hover {
 		text-decoration: none !important;
-		border: 2px solid #2e90fa !important;
+		border: 2px solid tokens.$color-fg-brand-secondary !important;
 	}
 
 	&:focus {
 		outline: none !important;
-		border: 2px solid #2e90fa !important;
+		border: 2px solid tokens.$color-fg-brand-secondary !important;
 	}
 
 	&:focus-visible {
 		outline: none !important;
-		border: 2px solid #2e90fa !important;
+		border: 2px solid tokens.$color-fg-brand-secondary !important;
 	}
 
 	// Adjust size-specific padding for focus state
@@ -290,22 +290,22 @@
 
 // 4. Disabled State
 .dropdownContainer.disabled {
-	background: #fafafa !important;
-	border: 1px solid #d5d7da !important;
+	background: tokens.$color-bg-primary-2 !important;
+	border: 1px solid tokens.$color-border-primary !important;
 	cursor: not-allowed !important;
 	box-shadow: none !important;
 
 	.dropdownText {
-		color: #a4a7ae !important;
+		color: tokens.$color-utility-gray-400 !important;
 	}
 
 	.dropdownIcon svg {
-		color: #a4a7ae !important;
+		color: tokens.$color-utility-gray-400 !important;
 	}
 
 	&:hover {
-		background: #fafafa !important;
-		border-color: #d5d7da !important;
+		background: tokens.$color-bg-primary-2 !important;
+		border-color: tokens.$color-border-primary !important;
 		cursor: not-allowed !important;
 		text-decoration: none !important;
 	}
@@ -313,14 +313,14 @@
 
 // 5. Error State (red border + error icon)
 .dropdownContainer.error {
-	background: white !important;
-	border: 2px solid #f04438 !important;
+	background: tokens.$color-bg-primary !important;
+	border: 2px solid tokens.$color-fg-error-secondary !important;
 	padding: 7px 11px !important; // Adjust for thicker border
 	box-shadow: none !important;
 
 	.statusIcon svg {
-		color: #f04438 !important;
-		fill: #f04438 !important;
+		color: tokens.$color-fg-error-secondary !important;
+		fill: tokens.$color-fg-error-secondary !important;
 	}
 
 	&:hover {
@@ -330,16 +330,16 @@
 
 // 6. Warning State (warning icon)
 .dropdownContainer.warning {
-	background: white !important;
-	border: 1px solid #d5d7da !important;
+	background: tokens.$color-bg-primary !important;
+	border: 1px solid tokens.$color-border-primary !important;
 
 	.statusIcon svg {
-		color: #dc6803 !important;
-		fill: #dc6803 !important;
+		color: tokens.$color-fg-warning-primary !important;
+		fill: tokens.$color-fg-warning-primary !important;
 	}
 
 	&:hover {
-		border-color: #b2b5bb !important;
+		border-color: tokens.$color-utility-gray-400 !important;
 		text-decoration: none !important;
 	}
 }
@@ -347,17 +347,17 @@
 // 7. Read-only State (subtle styling)
 .dropdownContainer.readOnly,
 .dropdownContainer.read-only {
-	background: white !important;
-	border: 1px solid #f5f5f5 !important;
+	background: tokens.$color-bg-primary !important;
+	border: 1px solid tokens.$color-bg-secondary-hover !important;
 	cursor: default !important;
 
 	.dropdownIcon svg {
-		color: #a4a7ae !important;
+		color: tokens.$color-utility-gray-400 !important;
 	}
 
 	&:hover {
-		background: white !important;
-		border-color: #f5f5f5 !important;
+				background: tokens.$color-bg-primary !important;
+		border-color: tokens.$color-bg-secondary-hover !important;
 		cursor: default !important;
 		text-decoration: none !important;
 	}
@@ -442,13 +442,11 @@
 }
 
 .dropdownMenu {
-	background: white;
-	border: 1px solid #e9eaeb;
-	border-radius: 8px;
-	padding-top: 4px;
-	box-shadow:
-		0px 10px 15px 0px rgba(0, 0, 0, 0.1),
-		0px 4px 6px 0px rgba(0, 0, 0, 0.06);
+	background: tokens.$color-bg-primary;
+	border: 1px solid tokens.$color-border-secondary;
+	border-radius: tokens.$radius-md;
+	padding-top: tokens.$spacing-xs;
+	box-shadow: tokens.$shadow-scale-md;
 	width: 100%; // End-to-end width matching input
 	max-height: 300px;
 	overflow-y: auto;
@@ -467,24 +465,24 @@
 		align-items: center;
 		justify-content: space-between;
 		padding: 8px 8px 8px 8px;
-		border-radius: 6px;
+		border-radius: tokens.$radius-sm;
 		cursor: pointer;
 		transition: background-color 0.2s ease-in-out;
 		gap: 8px;
 		width: 100%;
-		background: white;
+		background: tokens.$color-bg-primary;
 
 		&:hover {
-			background: #fafafa;
+			background: tokens.$color-bg-primary-2;
 		}
 
 		&:active {
-			background: #f5f5f5;
+			background: tokens.$color-bg-secondary-hover;
 		}
 	}
 
 	&.dropdownMenuItemSelected .dropdownMenuItemInner {
-		background: #fafafa;
+		background: tokens.$color-bg-primary-2;
 	}
 }
 
@@ -509,21 +507,24 @@
 
 .dropdownMenuItemText {
 	flex: 1;
-	font-family: Jakarta;
+	font-family: tokens.$font-family-base;
 	font-weight: 500;
-	font-size: 16px;
-	line-height: 24px;
-	color: #414651;
+	font-size: tokens.$font-size-16;
+	line-height: tokens.$line-height-24;
+	color: tokens.$color-text-secondary;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
 
 	.dropdownMenuItemSelected & {
-		color: #181d27;
+		color: tokens.$color-text-primary;
 	}
 }
 
 .dropdownMenuItemCheckbox {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	width: 20px;
 	height: 20px;
 	flex-shrink: 0;
@@ -538,7 +539,7 @@
 		width: 100%;
 		height: 100%;
 		> path {
-			stroke: #2e90fa !important;
+			stroke: tokens.$color-fg-brand-secondary !important;
 		}
 	}
 }
@@ -547,13 +548,11 @@
 
 // Filters dropdown - matching Figma design
 .filtersDropdown {
-	background: white;
-	border: 1px solid #e2e8f0;
-	border-radius: 8px;
+	background: tokens.$color-bg-primary;
+	border: 1px solid tokens.$color-border-primary;
+	border-radius: tokens.$radius-md;
 	padding: 0;
-	box-shadow:
-		0px 10px 15px -3px rgba(0, 0, 0, 0.1),
-		0px 4px 6px -2px rgba(0, 0, 0, 0.05);
+	box-shadow: tokens.$shadow-scale-lg;
 	min-width: 200px;
 	max-height: 300px;
 	overflow: hidden;
@@ -563,11 +562,11 @@
 	padding: 8px 14px;
 
 	.filtersTitle {
-		font-family: Jakarta;
-		font-size: 12px;
-		line-height: 16px;
+		font-family: tokens.$font-family-base;
+		font-size: tokens.$font-size-12;
+		line-height: tokens.$line-height-16;
 		font-weight: 600;
-		color: #717680;
+		color: tokens.$color-text-quanternary;
 		white-space: nowrap;
 	}
 }
@@ -589,43 +588,43 @@
 	transition: background-color 0.2s ease-in-out;
 
 	.filterLabel {
-		font-family: Jakarta;
-		font-size: 14px;
-		line-height: 20px;
+		font-family: tokens.$font-family-base;
+		font-size: tokens.$font-size-14;
+		line-height: tokens.$line-height-20;
 		font-weight: 500;
-		color: #374151;
+		color: tokens.$color-text-secondary;
 	}
 
 	&:hover {
-		background: #f9fafb;
+		background: tokens.$color-bg-secondary-subtle;
 
 		.filterLabel {
-			color: #1f2937;
+			color: tokens.$color-text-secondary-hover;
 		}
 	}
 
 	&:active {
-		background: #f3f4f6;
+		background: tokens.$color-bg-secondary-hover;
 	}
 }
 
 // Count Badge - Dark variant matching Figma design using element targeting
 .countBadge {
-	background-color: #0a0d12 !important;
-	border-radius: 4px !important;
+	background-color: tokens.$color-bg-primary-solid !important;
+	border-radius: tokens.$radius-xs !important;
 	border-color: transparent !important;
 
 	// Target the label span directly
 	> span {
-		color: #ffffff !important;
+		color: tokens.$color-fg-white !important;
 		font-weight: 500 !important;
-		font-size: 14px !important;
-		line-height: 20px !important;
+		font-size: tokens.$font-size-14 !important;
+		line-height: tokens.$line-height-20 !important;
 	}
 
 	// Target the close button directly
 	> button {
-		color: #ffffff !important;
+		color: tokens.$color-fg-white !important;
 		opacity: 0.7 !important;
 
 		&:hover {
@@ -634,29 +633,29 @@
 		}
 
 		svg {
-			color: #ffffff !important;
-			fill: #ffffff !important;
+			color: tokens.$color-fg-white !important;
+			fill: tokens.$color-fg-white !important;
 		}
 	}
 }
 
 // Count Badge Disabled State - Light variant matching Figma design
 .countBadgeDisabled {
-	background-color: #ffffff !important;
-	border: 1px solid #d5d7da !important;
-	border-radius: 4px !important;
+	background-color: tokens.$color-bg-primary !important;
+	border: 1px solid tokens.$color-border-primary !important;
+	border-radius: tokens.$radius-xs !important;
 
 	// Target the label span directly
 	> span {
-		color: #a4a7ae !important; // Placeholder text color from Figma
+		color: tokens.$color-utility-gray-400 !important;
 		font-weight: 500 !important;
-		font-size: 14px !important;
-		line-height: 20px !important;
+		font-size: tokens.$font-size-14 !important;
+		line-height: tokens.$line-height-20 !important;
 	}
 
 	// Target the close button directly
 	> button {
-		color: #a4a7ae !important; // Same placeholder color
+		color: tokens.$color-utility-gray-400 !important;
 		opacity: 0.7 !important;
 		cursor: not-allowed !important; // Show disabled cursor
 		pointer-events: none !important; // Disable all interactions
@@ -667,8 +666,8 @@
 		}
 
 		svg {
-			color: #a4a7ae !important;
-			fill: #a4a7ae !important;
+			color: tokens.$color-utility-gray-400 !important;
+			fill: tokens.$color-utility-gray-400 !important;
 		}
 	}
 }
@@ -678,29 +677,20 @@
 	margin-left: 8px !important; // Space between badge and text
 }
 
-.dropdownMenuItemCheckbox {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 20px;
-	height: 20px;
-	flex-shrink: 0;
-}
-
 .shortcutHint {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background: white;
-	color: #a4a7ae;
-	font-family: Jakarta;
-	font-size: 12px;
+	background: tokens.$color-bg-primary;
+	color: tokens.$color-utility-gray-400;
+	font-family: tokens.$font-family-base;
+	font-size: tokens.$font-size-12;
 	font-weight: 500;
-	border: 1px solid #e9eaeb;
-	border-radius: 4px;
+	border: 1px solid tokens.$color-border-secondary;
+	border-radius: tokens.$radius-xs;
 	padding: 1px 4px;
 	user-select: none;
-	line-height: 16px;
+	line-height: tokens.$line-height-16;
 	height: 20px;
 	min-width: 20px;
 }
@@ -712,12 +702,10 @@
 	align-items: center;
 	gap: 8px;
 	padding: 10px 12px;
-	background: white;
-	border: 1px solid #d5d7da;
-	border-radius: 8px;
-	box-shadow:
-		0px 0px 1px 0px rgba(0, 0, 0, 0.04),
-		0px 1px 2px 0px rgba(0, 0, 0, 0.06);
+	background: tokens.$color-bg-primary;
+	border: 1px solid tokens.$color-border-primary;
+	border-radius: tokens.$radius-md;
+	box-shadow: tokens.$shadow-scale-xs;
 	transition: all 0.2s ease-in-out;
 	width: 100%;
 
@@ -734,7 +722,7 @@
 
 	// Focus state
 	&.focus {
-		border: 2px solid #2e90fa;
+		border: 2px solid tokens.$color-fg-brand-secondary;
 		padding: 9px 11px; // Adjust for thicker border
 		box-shadow: none;
 
@@ -750,39 +738,39 @@
 
 	// Disabled state
 	&.disabled {
-		background: #fafafa;
-		border: 1px solid #d5d7da;
+		background: tokens.$color-bg-primary-2;
+		border: 1px solid tokens.$color-border-primary;
 		cursor: not-allowed;
 		box-shadow: none;
 
 		.searchInput {
 			background: transparent;
-			color: #a4a7ae;
+			color: tokens.$color-utility-gray-400;
 			cursor: not-allowed;
 		}
 
 		.searchIcon svg {
-			color: #a4a7ae;
+			color: tokens.$color-utility-gray-400;
 		}
 	}
 
 	// Error state
 	&.error {
-		border: 1px solid #f04438;
-		background: white;
+		border: 1px solid tokens.$color-fg-error-secondary;
+		background: tokens.$color-bg-primary;
 
 		&:hover {
-			border-color: #d92d20;
+			border-color: tokens.$color-fg-error-primary;
 		}
 	}
 
 	// Warning state
 	&.warning {
-		border: 1px solid #f79009;
-		background: white;
+		border: 1px solid tokens.$color-fg-warning-secondary;
+		background: tokens.$color-bg-primary;
 
 		&:hover {
-			border-color: #dc6803;
+			border-color: tokens.$color-fg-warning-primary;
 		}
 	}
 }
@@ -795,7 +783,7 @@
 	svg {
 		width: 100%;
 		height: 100%;
-		color: #535862;
+		color: tokens.$color-text-tertiary;
 		transition: color 0.2s ease-in-out;
 	}
 }
@@ -805,11 +793,11 @@
 	border: none;
 	outline: none;
 	background: transparent;
-	font-family: Jakarta;
+	font-family: tokens.$font-family-base;
 	font-weight: 400;
-	font-size: 16px;
-	line-height: 24px;
-	color: #181d27;
+	font-size: tokens.$font-size-16;
+	line-height: tokens.$line-height-24;
+	color: tokens.$color-text-primary;
 	min-width: 120px; // Maintain minimum usable width
 
 	// Hide TextField container styling to use as simple input
@@ -870,18 +858,18 @@
 		border: none !important;
 		outline: none !important;
 		background: transparent !important;
-		font-family: Jakarta !important;
+		font-family: tokens.$font-family-base !important;
 		font-weight: 400 !important;
-		font-size: 16px !important;
-		line-height: 24px !important;
-		color: #181d27 !important;
+		font-size: tokens.$font-size-16 !important;
+		line-height: tokens.$line-height-24 !important;
+		color: tokens.$color-text-primary !important;
 		min-width: 120px !important;
 		padding: 0 !important;
 		margin: 0 !important;
 		box-shadow: none !important;
 
 		&::placeholder {
-			color: #a4a7ae !important;
+			color: tokens.$color-utility-gray-400 !important;
 			font-weight: 400 !important;
 		}
 
@@ -970,7 +958,7 @@
 	&.searchInputFilled {
 		.mainInput {
 			font-weight: 400 !important;
-			color: #181d27 !important;
+			color: tokens.$color-text-primary !important;
 		}
 	}
 }
@@ -979,20 +967,20 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background: white;
-	border: 1px solid #e9eaeb;
-	border-radius: 4px;
+	background: tokens.$color-bg-primary;
+	border: 1px solid tokens.$color-border-secondary;
+	border-radius: tokens.$radius-xs;
 	padding: 1px 4px;
 	user-select: none;
 	flex-shrink: 0;
 }
 
 .shortcutText {
-	font-family: Jakarta;
+	font-family: tokens.$font-family-base;
 	font-weight: 500;
-	font-size: 12px;
-	line-height: 16px;
-	color: #a4a7ae;
+	font-size: tokens.$font-size-12;
+	line-height: tokens.$line-height-16;
+	color: tokens.$color-utility-gray-400;
 	white-space: nowrap;
 }
 
@@ -1023,41 +1011,49 @@
 	display: flex;
 	align-items: center;
 	gap: 3px;
-	background: white;
-	border: 1px solid #d5d7da;
-	border-radius: 6px;
+	background: tokens.$color-bg-primary;
+	border: 1px solid tokens.$color-border-primary;
+	border-radius: tokens.$radius-sm;
 	padding: 4px 8px 4px 8px;
 	height: 24px;
-	font-size: 12px;
-	line-height: 16px;
+	font-size: tokens.$font-size-12;
+	line-height: tokens.$line-height-16;
 	flex-shrink: 0;
 	white-space: nowrap;
 }
 
 .tagKey {
-	font-family: Jakarta;
-	font-weight: 500;
-	font-size: 12px;
-	line-height: 16px;
-	color: #717680;
+	font-family: tokens.$font-family-base;
+	font-weight: 400;
+	font-size: tokens.$font-size-12;
+	line-height: tokens.$line-height-16;
+	color: tokens.$color-text-quanternary;
 	white-space: nowrap;
 }
 
 .tagValue {
-	font-family: Jakarta;
+	font-family: tokens.$font-family-base;
 	font-weight: 500;
-	font-size: 12px;
-	line-height: 16px;
-	color: #414651;
+	font-size: tokens.$font-size-12;
+	line-height: tokens.$line-height-16;
+	color: tokens.$color-text-secondary;
+	cursor: pointer;
 	white-space: nowrap;
+
+	&:hover {
+		background: rgba(46, 144, 250, 0.1);
+		border-radius: tokens.$radius-xxs;
+		padding: 1px 2px;
+		margin: -1px -2px;
+	}
 }
 
 .tagValueInput {
-	font-family: Jakarta;
+	font-family: tokens.$font-family-base;
 	font-weight: 500;
-	font-size: 12px;
-	line-height: 16px;
-	color: #414651;
+	font-size: tokens.$font-size-12;
+	line-height: tokens.$line-height-16;
+	color: tokens.$color-text-secondary;
 	background: transparent;
 	border: none;
 	outline: none;
@@ -1068,7 +1064,7 @@
 	max-width: 100px;
 
 	&::placeholder {
-		color: #a4a7ae;
+		color: tokens.$color-utility-gray-400;
 		font-weight: 400;
 	}
 }
@@ -1082,40 +1078,15 @@
 	background: none;
 	border: none;
 	cursor: pointer;
-	color: #717680;
+	color: tokens.$color-text-quanternary;
 	font-size: 10px;
 	line-height: 1;
 	padding: 0;
 
 	&:hover {
-		color: #414651;
+		color: tokens.$color-text-secondary;
 		background-color: rgba(0, 0, 0, 0.05);
-		border-radius: 2px;
-	}
-}
-
-.tagKey {
-	font-family: Jakarta;
-	font-weight: 400;
-	color: #717680;
-	white-space: nowrap;
-}
-
-.tagValue {
-	font-family: Jakarta;
-	font-weight: 500;
-	color: #414651;
-	cursor: pointer;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	min-width: 20px;
-
-	&:hover {
-		background: rgba(46, 144, 250, 0.1);
-		border-radius: 3px;
-		padding: 1px 2px;
-		margin: -1px -2px;
+		border-radius: tokens.$radius-xxs;
 	}
 }
 
@@ -1123,18 +1094,18 @@
 	border: none;
 	outline: none;
 	background: transparent;
-	font-family: Jakarta;
+	font-family: tokens.$font-family-base;
 	font-weight: 500;
-	font-size: 12px;
-	line-height: 16px;
-	color: #414651;
+	font-size: tokens.$font-size-12;
+	line-height: tokens.$line-height-16;
+	color: tokens.$color-text-secondary;
 	min-width: 20px;
 	width: auto;
 	padding: 0;
 	margin: 0;
 
 	&::placeholder {
-		color: #a4a7ae;
+		color: tokens.$color-utility-gray-400;
 		font-weight: 400;
 	}
 
@@ -1145,9 +1116,9 @@
 
 // Filter Key Tag Styles - Based on Figma Design
 .filterKeyTag {
-	background: white;
-	border: 1px solid #d5d7da;
-	border-radius: 6px;
+	background: tokens.$color-bg-primary;
+	border: 1px solid tokens.$color-border-primary;
+	border-radius: tokens.$radius-sm;
 	padding: 4px 8px;
 	display: flex;
 	align-items: center;
@@ -1157,10 +1128,10 @@
 }
 
 .filterKeyLabel {
-	font-family: Jakarta;
+	font-family: tokens.$font-family-base;
 	font-weight: 500;
-	font-size: 12px;
-	line-height: 16px;
-	color: #414651;
+	font-size: tokens.$font-size-12;
+	line-height: tokens.$line-height-16;
+	color: tokens.$color-text-secondary;
 	white-space: nowrap;
 }

@@ -3,6 +3,7 @@ import {
 	useEffect,
 	useRef,
 	useState,
+	type ComponentType,
 	type ReactElement,
 	type SyntheticEvent,
 } from 'react';
@@ -10,7 +11,7 @@ import { classes } from '../../../utils';
 import { Button } from '../../buttons';
 import Dropdown from '../../input/dropdown/Dropdown';
 import DropdownItem from '../../input/dropdown/dropdown-item/DropdownItem';
-import styles from './Tabs.module.css';
+import styles from './Tabs.module.scss';
 import type { TabsProps } from './types';
 
 const Tabs = (props: TabsProps): ReactElement => {
@@ -27,6 +28,8 @@ const Tabs = (props: TabsProps): ReactElement => {
 
 	const [sliderLeft, setSliderLeft] = useState<number>(0);
 	const [sliderWidth, setSliderWidth] = useState<number>(0);
+	const [sliderTop, setSliderTop] = useState<number>(0);
+	const [sliderHeight, setSliderHeight] = useState<number>(0);
 	const tabRefs = useRef<(HTMLDivElement | null)[]>([]);
 
 	const tabIndex = tabs.findIndex((tab) => {
@@ -53,6 +56,8 @@ const Tabs = (props: TabsProps): ReactElement => {
 		if (activeTabElement) {
 			setSliderLeft(activeTabElement.offsetLeft);
 			setSliderWidth(activeTabElement.offsetWidth);
+			setSliderTop(activeTabElement.offsetTop);
+			setSliderHeight(activeTabElement.offsetHeight);
 		}
 	}, [activeTab]);
 
@@ -78,7 +83,7 @@ const Tabs = (props: TabsProps): ReactElement => {
 			)}>
 			<div className={vertical ? styles.vertical : styles.tabs}>
 				{tabs.map((tab, index) => {
-					const isActive = tab.id === selectedTab;
+					const isActive = index === selectedTabIndex;
 					const {
 						id,
 						title,
@@ -158,10 +163,7 @@ const Tabs = (props: TabsProps): ReactElement => {
 										return getLeftComponent();
 									}}
 									rightComponent={
-										RightIcon &&
-										(() => {
-											return <RightIcon className={styles.icon} />;
-										})
+										RightIcon as ComponentType<Record<string, unknown>> | undefined
 									}
 								/>
 							)}
@@ -170,10 +172,17 @@ const Tabs = (props: TabsProps): ReactElement => {
 				})}
 				<div
 					className={vertical ? styles['tab-slider-vertical'] : styles['tab-slider']}
-					style={{
-						left: `${String(sliderLeft)}px`,
-						width: `${String(sliderWidth)}px`,
-					}}
+					style={
+						vertical
+							? {
+								top: `${String(sliderTop)}px`,
+								height: `${String(sliderHeight)}px`,
+							}
+							: {
+								left: `${String(sliderLeft)}px`,
+								width: `${String(sliderWidth)}px`,
+							}
+					}
 				/>
 			</div>
 			<div className={!vertical ? styles['tab-content'] : styles['tab-content-vertical']}>

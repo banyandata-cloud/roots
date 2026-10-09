@@ -1,93 +1,143 @@
-@import '../../styles';
+@use '../../../styles/tokens' as tokens;
 
 .tabs-container {
-	width: fit-content;
+	width: 100%;
 }
 
 .tabs-container-vertical {
-	@include flex(row, flex-start, flex-start);
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
 	height: 100%;
 }
 
 .tabs {
-	@include flex(row, flex-start);
+	display: flex;
+	flex-direction: row;
+	align-items: stretch;
 	position: relative;
+	width: max-content;
+	max-width: 100%;
+	overflow-x: auto;
+	scrollbar-width: none;
+	border-bottom: 1px solid tokens.$color-border-secondary;
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
 }
 
 .vertical {
-	@include flex(column, flex-start, flex-start);
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
 	width: auto;
-	border-right: 0.0625rem solid $light-color1;
+	border-right: 1px solid tokens.$color-border-secondary;
 }
 
 .tab {
-	width: 100%;
-	@include flex(row, center, flex-start);
-	height: 40px;
-	padding: 0 1rem;
-	cursor: pointer;
 	position: relative;
-	border-bottom: 1px solid $grey3 !important;
+	display: flex;
+	flex: 0 0 auto;
+	align-items: center;
+	justify-content: center;
+	width: auto;
+	min-width: 0;
+	height: 44px;
+	padding: 0 tokens.$spacing-xl;
+	cursor: pointer;
+	border-bottom: 2px solid transparent;
+	transition:
+		background-color 160ms ease,
+		border-color 160ms ease,
+		color 160ms ease;
 
 	&.vertical {
 		height: fit-content;
 	}
-	> [data-elem='base-cell'] {
-		@include flex(row, center, flex-start);
 
-		gap: 0.5rem;
+	> [data-elem='base-cell'] {
+		display: inline-flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		gap: tokens.$spacing-sm;
+		width: auto;
+		max-width: 100%;
+		height: 100%;
 		padding: 0 !important;
-		font-size: 14px;
-		font-weight: 500;
-		color: $text-color;
-		height: 40px;
+		font-family: tokens.$font-family-base;
+		font-size: tokens.$font-size-14;
+		font-weight: tokens.$font-weight-medium;
+		color: tokens.$color-text-secondary !important;
+		background: transparent !important;
+		border: 0 !important;
+		box-shadow: none !important;
+		white-space: nowrap;
+		transition: color 160ms ease;
+
 		&.active {
-			color: $primary-color4 !important;
+			color: tokens.$color-fg-brand-primary !important;
 		}
+
 		> [data-elem='component1'],
 		> [data-elem='component3'] {
 			> .icon {
-				fill: $text-color;
-				width: 1.5rem;
-				height: 1.5rem;
-				opacity: 0.7;
+				width: tokens.$spacing-xl;
+				height: tokens.$spacing-xl;
+				color: currentColor;
+				fill: currentColor;
+				opacity: 1;
 			}
 		}
+
 		> [data-elem='component2'] {
 			> [data-elem='title'] {
-				color: $text-color !important;
-				font-size: 0.875rem !important;
-				font-weight: 400 !important;
+				color: inherit !important;
+				font-family: tokens.$font-family-base;
+				font-size: tokens.$font-size-14 !important;
+				font-weight: tokens.$font-weight-medium !important;
+				line-height: tokens.$line-height-20;
+				white-space: nowrap;
 			}
 		}
 	}
 
 	&:has(> [data-elem='base-cell']:disabled) {
-		opacity: 0.25;
-		border-bottom: 0.1875rem solid var(--border-border-disable, #dcdcdc);
+		cursor: not-allowed;
+		opacity: 0.5;
 	}
 
-	&:focus-visible {
-		outline: 1px solid $primary-color4;
-		outline-offset: 0.1563rem;
+	&:focus-within {
+		z-index: 1;
+	}
+
+	&:hover:not(:has(:disabled)):not(.active) {
+		background-color: tokens.$color-bg-primary-hover;
+	}
+
+	&:focus-within > [data-elem='base-cell']:focus-visible {
+		outline: 2px solid tokens.$color-fg-brand-primary !important;
+		outline-offset: -2px;
+	}
+
+	&.active > [data-elem='base-cell'] {
+		color: tokens.$color-fg-brand-primary !important;
+		font-weight: tokens.$font-weight-semibold;
 	}
 
 	&:hover:not(:has(:disabled)) {
-		border-bottom: 0.1875rem solid $grey1 !important;
 		> [data-elem='base-cell'] {
 			> [data-elem='component1'] {
 				> .icon {
-					fill: $text-color;
-					width: 1.5rem;
-					height: 1.5rem;
-					opacity: 0.8;
+					color: currentColor;
+					fill: currentColor;
 				}
 			}
 			> [data-elem='component2'] {
 				> [data-elem='title'] {
-					color: $text-color !important;
-					font-size: 0.875rem !important;
-					font-weight: 500 !important;
+					color: tokens.$color-text-primary !important;
 				}
 			}
 		}
@@ -95,41 +145,43 @@
 
 	&.active {
 		> [data-elem='base-cell'] {
+			color: tokens.$color-fg-brand-primary !important;
+
 			> [data-elem='component1'] {
 				> .icon {
-					fill: $text-color;
-					width: 1.5rem;
-					height: 1.5rem;
-					opacity: 1;
+					color: currentColor;
+					fill: currentColor;
 				}
 			}
 			> [data-elem='component2'] {
 				> [data-elem='title'] {
-					color: $text-color !important;
-					font-size: 0.875rem !important;
-					font-weight: 600 !important;
+					color: tokens.$color-fg-brand-primary !important;
+					font-weight: tokens.$font-weight-semibold !important;
 				}
 			}
 		}
 	}
 
 	.dropdown {
-		@include flex(column, center, center);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
 		[data-elem='base-cell'] {
 			height: 2.3125rem;
 
 			&.active {
-				color: $primary-color4 !important;
+				color: tokens.$color-fg-brand-primary !important;
 			}
 		}
 		> [data-elem='header'] {
 			> [data-elem='select'] {
 				background-color: transparent;
 				border: none;
-				padding: 5px !important;
+				padding: tokens.$spacing-xs !important;
 				width: auto;
-				font-size: 0.875rem;
-				font-weight: 500;
+				font-size: tokens.$font-size-14;
+				font-weight: tokens.$font-weight-medium;
 			}
 		}
 	}
@@ -140,30 +192,31 @@
 	bottom: 0;
 	left: 0;
 	height: 2px;
-	background-color: $primary-color4;
+	background-color: tokens.$color-fg-brand-primary;
+	border-radius: tokens.$radius-full;
+	pointer-events: none;
 	transition:
-		left 0.3s ease,
-		width 0.3s ease;
+		left 180ms ease,
+		width 180ms ease;
 }
 
 .tab-slider-vertical {
 	position: absolute;
 	right: 0;
-	width: 0.0313rem;
-	background-color: $primary-color4;
+	width: 2px;
+	background-color: tokens.$color-fg-brand-primary;
 	transition:
-		left 0.3s ease-in-out,
-		width 0.3s ease-in-out;
-	width: 100%;
+		top 180ms ease,
+		height 180ms ease;
 }
 
 .tab-content {
-	padding-top: 10px;
-	// border-top: 1px solid $grey3;
-	z-index: -1;
+	padding-top: tokens.$spacing-lg;
 }
 
 .tab-content-vertical {
-	@include flex(column);
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
 	width: 100%;
 }

@@ -1,18 +1,19 @@
-@import '../../../../styles';
+@use '../../../../styles' as *;
+@use '../../../../styles/tokens' as tokens;
 
 .container {
 	display: flex;
 	flex-direction: column;
-	gap: 8px;
+	gap: tokens.$spacing-md;
 	align-items: flex-start;
 }
 
 .root {
 	cursor: pointer;
 	gap: 8px;
-	color: $grey1;
-	font-family: Jakarta;
-	font-size: 14px;
+	color: tokens.$color-text-secondary;
+	font-family: tokens.$font-family-base;
+	font-size: tokens.$font-size-14;
 
 	&.position-left {
 		@include flex(row, flex-start);
@@ -25,29 +26,29 @@
 
 	&.disabled {
 		cursor: default;
-		color: $grey4;
+		color: tokens.$color-text-disabled;
 	}
 
 	&.readonly {
 		cursor: default;
 		pointer-events: none;
-		color: $grey3;
+		color: tokens.$color-text-tertiary;
 	}
 
 	&.selected {
-		color: $text-color;
+		color: tokens.$color-text-primary;
 	}
 
 	&.error {
-		color: $text-color;
+		color: tokens.$color-text-primary;
 	}
 
 	&.warning {
-		color: $text-color;
+		color: tokens.$color-text-primary;
 	}
 
 	&:hover:not(.disabled):not(.readonly) {
-		color: $text-color;
+		color: tokens.$color-text-primary;
 	}
 
 	input[type='radio'] {
@@ -70,11 +71,11 @@
 	line-height: 0;
 
 	&.focus {
-		box-shadow: 0 0 0 2px var(--Foregroundcolor-fg-brand-primary, #1570ef);
+		box-shadow: tokens.$shadow-state-focus-primary-brand;
 	}
 
 	&.focus-error {
-		box-shadow: 0 0 0 2px var(--Foregroundcolor-fg-error-primary, #d92d20);
+		box-shadow: tokens.$shadow-state-focus-error;
 	}
 }
 
@@ -82,19 +83,19 @@
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	gap: 8px;
+	gap: tokens.$spacing-md;
 }
 
 .feedbackTextError {
-	font-size: 14px;
+	font-size: tokens.$font-size-14;
 	line-height: 1rem;
-	color: $text-color;
-	font-family: Jakarta;
+	color: tokens.$color-text-primary;
+	font-family: tokens.$font-family-base;
 }
 
 .feedbackTextWarning {
-	font-size: 14px;
+	font-size: tokens.$font-size-14;
 	line-height: 1rem;
-	color: $text-color;
-	font-family: Jakarta;
+	color: tokens.$color-text-primary;
+	font-family: tokens.$font-family-base;
 }

@@ -1,0 +1,45 @@
+// GENERATED FILE — do not edit by hand.
+// Run `bun run tokens:build` to regenerate from design-system/.
+
+// Include once in the application's global stylesheet.
+:root {
+  --shadow-scale-xs: 0 1px 2px 0 rgba(0,0,0,0.06), 0 0 1px 0 rgba(0,0,0,0.04);
+  --shadow-scale-sm: 0 1px 3px 0 rgba(0,0,0,0.10), 0 1px 2px 0 rgba(0,0,0,0.06);
+  --shadow-scale-md: 0 4px 6px -1px rgba(0,0,0,0.10), 0 2px 4px -1px rgba(0,0,0,0.06);
+  --shadow-scale-lg: 0 10px 15px -3px rgba(0,0,0,0.10), 0 4px 6px -2px rgba(0,0,0,0.06);
+  --shadow-scale-xl: 0 20px 25px -5px rgba(0,0,0,0.12), 0 8px 10px -4px rgba(0,0,0,0.08);
+  --shadow-scale-2xl: 0 25px 50px -12px rgba(0,0,0,0.25), 0 10px 20px -8px rgba(0,0,0,0.12);
+  --shadow-state-normal-small: 0 1px 1px 0 rgba(0,0,0,0.12), 0 2px 5px 0 rgba(103,110,118,0.08);
+  --shadow-state-normal-medium: 0 1px 1px 0 rgba(0,0,0,0.12), 0 0 0 1px rgba(103,110,118,0.16), 0 2px 5px 0 rgba(103,110,118,0.08);
+  --shadow-state-normal-large: 0 5px 15px 0 rgba(0,0,0,0.12), 0 15px 35px 0 rgba(103,110,118,0.08);
+  --shadow-state-hover-primary: 0 0 0 1px rgba(0,0,0,0.64), 0 1px 1px 0 rgba(0,0,0,0.12), 0 2px 5px 0 rgba(103,110,118,0.08);
+  --shadow-state-hover-primary-brand: 0 0 0 1px rgba(46,144,250,0.40), 0 1px 1px 0 rgba(0,0,0,0.12), 0 2px 5px 0 rgba(46,144,250,0.08);
+  --shadow-state-hover-secondary: 0 0 0 1px rgba(103,110,118,0.16), 0 1px 1px 0 rgba(0,0,0,0.12), 0 2px 5px 0 rgba(103,110,118,0.08);
+  --shadow-state-hover-error: 0 0 0 2px rgba(243,65,65,0.40), 0 1px 1px 0 rgba(0,0,0,0.12), 0 2px 5px 0 rgba(243,65,65,0.08);
+  --shadow-state-hover-warning: 0 0 0 2px rgba(233,162,59,0.40), 0 1px 1px 0 rgba(0,0,0,0.12), 0 2px 5px 0 rgba(233,162,59,0.08);
+  --shadow-state-hover-success: 0 0 0 2px rgba(83,180,131,0.40), 0 1px 1px 0 rgba(0,0,0,0.12), 0 2px 5px 0 rgba(83,180,131,0.08);
+  --shadow-state-focus-primary: 0 0 0 2px var(--bg-primary), 0 0 0 4px var(--fg-tertiary);
+  --shadow-state-focus-primary-brand: 0 0 0 2px var(--bg-primary), 0 0 0 4px var(--fg-brand-primary);
+  --shadow-state-focus-secondary: 0 0 0 2px var(--bg-primary), 0 0 0 4px var(--fg-quaternary);
+  --shadow-state-focus-error: 0 0 0 2px var(--bg-primary), 0 0 0 4px var(--fg-error-secondary);
+  --shadow-state-focus-warning: 0 0 0 2px var(--bg-primary), 0 0 0 4px var(--fg-warning-secondary);
+  --shadow-state-focus-success: 0 0 0 2px var(--bg-primary), 0 0 0 4px var(--fg-success-secondary);
+}
+
+[data-theme='dark'] {
+  --shadow-scale-xs: 0 1px 2px 0 rgba(255,255,255,0.06), 0 1px 2px 0 rgba(0,0,0,0.40);
+  --shadow-scale-sm: 0 1px 3px 0 rgba(255,255,255,0.08), 0 2px 4px 0 rgba(0,0,0,0.50);
+  --shadow-scale-md: 0 4px 10px -2px rgba(255,255,255,0.12), 0 12px 20px -4px rgba(0,0,0,0.65);
+  --shadow-scale-lg: 0 4px 5px -2px rgba(255,255,255,0.06), 0 12px 20px -4px rgba(0,0,0,0.65);
+  --shadow-scale-xl: 0 6px 14px -3px rgba(255,255,255,0.14), 0 20px 30px -6px rgba(0,0,0,0.70);
+  --shadow-scale-2xl: 0 8px 20px -4px rgba(255,255,255,0.16), 0 28px 40px -8px rgba(0,0,0,0.75);
+  --shadow-state-normal-small: 0 1px 1px 0 rgba(0,0,0,0.50), 0 2px 5px 0 rgba(255,255,255,0.06);
+  --shadow-state-normal-medium: 0 1px 1px 0 rgba(0,0,0,0.50), 0 0 0 1px rgba(255,255,255,0.16), 0 2px 5px 0 rgba(255,255,255,0.06);
+  --shadow-state-normal-large: 0 5px 15px 0 rgba(0,0,0,0.60), 0 15px 35px 0 rgba(255,255,255,0.06);
+  --shadow-state-hover-primary: 0 0 0 1px rgba(0,0,0,0.64), 0 1px 1px 0 rgba(0,0,0,0.12), 0 2px 5px 0 rgba(103,110,118,0.08);
+  --shadow-state-hover-primary-brand: 0 0 0 1px rgba(46,144,250,0.40), 0 1px 1px 0 rgba(0,0,0,0.12), 0 2px 5px 0 rgba(46,144,250,0.08);
+  --shadow-state-hover-secondary: 0 0 0 1px rgba(103,110,118,0.16), 0 1px 1px 0 rgba(0,0,0,0.12), 0 2px 5px 0 rgba(103,110,118,0.08);
+  --shadow-state-hover-error: 0 0 0 2px rgba(243,65,65,0.40), 0 1px 1px 0 rgba(0,0,0,0.12), 0 2px 5px 0 rgba(243,65,65,0.08);
+  --shadow-state-hover-warning: 0 0 0 2px rgba(233,162,59,0.40), 0 1px 1px 0 rgba(0,0,0,0.12), 0 2px 5px 0 rgba(233,162,59,0.08);
+  --shadow-state-hover-success: 0 0 0 2px rgba(83,180,131,0.40), 0 1px 1px 0 rgba(0,0,0,0.12), 0 2px 5px 0 rgba(83,180,131,0.08);
+}

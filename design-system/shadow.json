@@ -1,0 +1,106 @@
+{
+  "$description": "Design System 26 - Shadow (elevation) tokens. Source: Figma file IfmLQrA0AAZVYwt6vRxqCe. Every state has a light and a dark set. Values marked PROPOSED are not in Figma yet.",
+  "$meta": {
+    "stepNaming": "Figma calls the largest step 'xxl'; it is named '2xl' here. Confirm with the designer.",
+    "units": "CSS box-shadow: offset-x offset-y blur spread color",
+    "cssVarRule": "Colour tokens are written as CSS variables: drop the 'Foregroundcolor/' and 'Backgroundcolor/' prefix and lowercase, e.g. Foregroundcolor/fg-tertiary -> --fg-tertiary, Backgroundcolor/Bg-primary -> --bg-primary."
+  },
+  "scale": {
+    "$description": "Elevation scale. Figma nodes: light 1085:2112, dark 1085:2129.",
+    "light": {
+      "shadow": {
+        "xs": { "value": "0 1px 2px 0 rgba(0,0,0,0.06), 0 0 1px 0 rgba(0,0,0,0.04)" },
+        "sm": { "value": "0 1px 3px 0 rgba(0,0,0,0.10), 0 1px 2px 0 rgba(0,0,0,0.06)" },
+        "md": { "value": "0 4px 6px -1px rgba(0,0,0,0.10), 0 2px 4px -1px rgba(0,0,0,0.06)" },
+        "lg": { "value": "0 10px 15px -3px rgba(0,0,0,0.10), 0 4px 6px -2px rgba(0,0,0,0.06)" },
+        "xl": { "value": "0 20px 25px -5px rgba(0,0,0,0.12), 0 8px 10px -4px rgba(0,0,0,0.08)" },
+        "2xl": { "value": "0 25px 50px -12px rgba(0,0,0,0.25), 0 10px 20px -8px rgba(0,0,0,0.12)" }
+      }
+    },
+    "dark": {
+      "shadow": {
+        "xs": { "value": "0 1px 2px 0 rgba(255,255,255,0.06), 0 1px 2px 0 rgba(0,0,0,0.40)" },
+        "sm": { "value": "0 1px 3px 0 rgba(255,255,255,0.08), 0 2px 4px 0 rgba(0,0,0,0.50)" },
+        "md": { "value": "0 4px 10px -2px rgba(255,255,255,0.12), 0 12px 20px -4px rgba(0,0,0,0.65)" },
+        "lg": { "value": "0 4px 5px -2px rgba(255,255,255,0.06), 0 12px 20px -4px rgba(0,0,0,0.65)" },
+        "xl": { "value": "0 6px 14px -3px rgba(255,255,255,0.14), 0 20px 30px -6px rgba(0,0,0,0.70)" },
+        "2xl": { "value": "0 8px 20px -4px rgba(255,255,255,0.16), 0 28px 40px -8px rgba(0,0,0,0.75)" }
+      }
+    }
+  },
+  "state": {
+    "normal": {
+      "$description": "Resting card elevation. Figma node 1331:3923 (light only). Dark is PROPOSED.",
+      "light": {
+        "small": { "value": "0 1px 1px 0 rgba(0,0,0,0.12), 0 2px 5px 0 rgba(103,110,118,0.08)" },
+        "medium": { "value": "0 1px 1px 0 rgba(0,0,0,0.12), 0 0 0 1px rgba(103,110,118,0.16), 0 2px 5px 0 rgba(103,110,118,0.08)" },
+        "large": { "value": "0 5px 15px 0 rgba(0,0,0,0.12), 0 15px 35px 0 rgba(103,110,118,0.08)" }
+      },
+      "dark": {
+        "$status": "PROPOSED, not from Figma",
+        "small": { "value": "0 1px 1px 0 rgba(0,0,0,0.50), 0 2px 5px 0 rgba(255,255,255,0.06)" },
+        "medium": { "value": "0 1px 1px 0 rgba(0,0,0,0.50), 0 0 0 1px rgba(255,255,255,0.16), 0 2px 5px 0 rgba(255,255,255,0.06)" },
+        "large": { "value": "0 5px 15px 0 rgba(0,0,0,0.60), 0 15px 35px 0 rgba(255,255,255,0.06)" }
+      }
+    },
+    "hover": {
+      "$description": "Figma nodes: light 3779:6735, dark 3779:6707. Shadow colours are fixed rgba values in Figma and are IDENTICAL in light and dark. Container fill is not part of the token; the app decides it.",
+      "light": {
+        "primary": { "value": "0 0 0 1px rgba(0,0,0,0.64), 0 1px 1px 0 rgba(0,0,0,0.12), 0 2px 5px 0 rgba(103,110,118,0.08)" },
+        "primary-brand": { "value": "0 0 0 1px rgba(46,144,250,0.40), 0 1px 1px 0 rgba(0,0,0,0.12), 0 2px 5px 0 rgba(46,144,250,0.08)" },
+        "secondary": { "value": "0 0 0 1px rgba(103,110,118,0.16), 0 1px 1px 0 rgba(0,0,0,0.12), 0 2px 5px 0 rgba(103,110,118,0.08)" },
+        "error": { "value": "0 0 0 2px rgba(243,65,65,0.40), 0 1px 1px 0 rgba(0,0,0,0.12), 0 2px 5px 0 rgba(243,65,65,0.08)" },
+        "warning": { "value": "0 0 0 2px rgba(233,162,59,0.40), 0 1px 1px 0 rgba(0,0,0,0.12), 0 2px 5px 0 rgba(233,162,59,0.08)" },
+        "success": { "value": "0 0 0 2px rgba(83,180,131,0.40), 0 1px 1px 0 rgba(0,0,0,0.12), 0 2px 5px 0 rgba(83,180,131,0.08)" }
+      },
+      "dark": {
+        "$status": "Exact Figma values. They are the same as light, so the primary ring (black 64%) is nearly invisible on dark surfaces. Open question for the designer.",
+        "primary": { "value": "0 0 0 1px rgba(0,0,0,0.64), 0 1px 1px 0 rgba(0,0,0,0.12), 0 2px 5px 0 rgba(103,110,118,0.08)" },
+        "primary-brand": { "value": "0 0 0 1px rgba(46,144,250,0.40), 0 1px 1px 0 rgba(0,0,0,0.12), 0 2px 5px 0 rgba(46,144,250,0.08)" },
+        "secondary": { "value": "0 0 0 1px rgba(103,110,118,0.16), 0 1px 1px 0 rgba(0,0,0,0.12), 0 2px 5px 0 rgba(103,110,118,0.08)" },
+        "error": { "value": "0 0 0 2px rgba(243,65,65,0.40), 0 1px 1px 0 rgba(0,0,0,0.12), 0 2px 5px 0 rgba(243,65,65,0.08)" },
+        "warning": { "value": "0 0 0 2px rgba(233,162,59,0.40), 0 1px 1px 0 rgba(0,0,0,0.12), 0 2px 5px 0 rgba(233,162,59,0.08)" },
+        "success": { "value": "0 0 0 2px rgba(83,180,131,0.40), 0 1px 1px 0 rgba(0,0,0,0.12), 0 2px 5px 0 rgba(83,180,131,0.08)" }
+      }
+    },
+    "focus": {
+      "$description": "Figma nodes: light 3779:6755, dark 1331:3975. Fully bound to colour variables, so one CSS value switches with the theme. Shadow = 0 0 0 2px <gap>, 0 0 0 4px <ring>.",
+      "gap": {
+        "token": "Backgroundcolor/Bg-primary",
+        "cssVar": "--bg-primary",
+        "light": "#ffffff",
+        "dark": "#0c0e12"
+      },
+      "primary": {
+        "value": "0 0 0 2px var(--bg-primary), 0 0 0 4px var(--fg-tertiary)",
+        "ring": { "token": "Foregroundcolor/fg-tertiary", "cssVar": "--fg-tertiary", "light": "#535862", "dark": "#94979c" },
+        "resolved": { "light": "0 0 0 2px #ffffff, 0 0 0 4px #535862", "dark": "0 0 0 2px #0c0e12, 0 0 0 4px #94979c" }
+      },
+      "primary-brand": {
+        "value": "0 0 0 2px var(--bg-primary), 0 0 0 4px var(--fg-brand-primary)",
+        "ring": { "token": "Foregroundcolor/fg-brand-primary", "cssVar": "--fg-brand-primary", "light": "#1570ef", "dark": "#2e90fa" },
+        "resolved": { "light": "0 0 0 2px #ffffff, 0 0 0 4px #1570ef", "dark": "0 0 0 2px #0c0e12, 0 0 0 4px #2e90fa" }
+      },
+      "secondary": {
+        "value": "0 0 0 2px var(--bg-primary), 0 0 0 4px var(--fg-quaternary)",
+        "ring": { "token": "Foregroundcolor/fg-quaternary", "cssVar": "--fg-quaternary", "light": "#717680", "dark": "#61656c" },
+        "resolved": { "light": "0 0 0 2px #ffffff, 0 0 0 4px #717680", "dark": "0 0 0 2px #0c0e12, 0 0 0 4px #61656c" }
+      },
+      "error": {
+        "value": "0 0 0 2px var(--bg-primary), 0 0 0 4px var(--fg-error-secondary)",
+        "ring": { "token": "Foregroundcolor/fg-error-secondary", "cssVar": "--fg-error-secondary", "light": "#f04438", "dark": "#f97066" },
+        "resolved": { "light": "0 0 0 2px #ffffff, 0 0 0 4px #f04438", "dark": "0 0 0 2px #0c0e12, 0 0 0 4px #f97066" }
+      },
+      "warning": {
+        "value": "0 0 0 2px var(--bg-primary), 0 0 0 4px var(--fg-warning-secondary)",
+        "ring": { "token": "Foregroundcolor/fg-warning-secondary", "cssVar": "--fg-warning-secondary", "light": "#f79009", "dark": "#fdb022" },
+        "resolved": { "light": "0 0 0 2px #ffffff, 0 0 0 4px #f79009", "dark": "0 0 0 2px #0c0e12, 0 0 0 4px #fdb022" }
+      },
+      "success": {
+        "value": "0 0 0 2px var(--bg-primary), 0 0 0 4px var(--fg-success-secondary)",
+        "ring": { "token": "Foregroundcolor/fg-success-secondary", "cssVar": "--fg-success-secondary", "light": "#12b76a", "dark": "#32d583" },
+        "resolved": { "light": "0 0 0 2px #ffffff, 0 0 0 4px #12b76a", "dark": "0 0 0 2px #0c0e12, 0 0 0 4px #32d583" }
+      }
+    }
+  }
+}

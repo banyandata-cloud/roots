@@ -53,6 +53,20 @@ Object.defineProperty(HTMLElement.prototype, 'offsetWidth', {
 	},
 });
 
+Object.defineProperty(HTMLElement.prototype, 'offsetTop', {
+	configurable: true,
+	get() {
+		return 0;
+	},
+});
+
+Object.defineProperty(HTMLElement.prototype, 'offsetHeight', {
+	configurable: true,
+	get() {
+		return 40;
+	},
+});
+
 // -----------------------------
 // RENDERING TESTS
 // -----------------------------
@@ -175,6 +189,22 @@ describe('Tabs — Layout & Slider', () => {
 
 		expect(slider.style.left).toBe('20px');
 		expect(slider.style.width).toBe('80px');
+	});
+
+	test('vertical slider matches the active tab height instead of its width', () => {
+		const { container } = render(
+			<Tabs
+				tabs={basicTabs}
+				selectedTab='1'
+				setSelectedTab={jest.fn()}
+				direction='vertical'
+			/>
+		);
+
+		const slider = container.querySelector('[class*="tab-slider"]') as HTMLElement;
+		expect(slider.style.top).toBe('0px');
+		expect(slider.style.height).toBe('40px');
+		expect(slider.style.width).toBe('');
 	});
 });
 

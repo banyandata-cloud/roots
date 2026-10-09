@@ -1,0 +1,84 @@
+{
+  "$description": "Tag color variants sourced from Figma exports in the attached tag colour collection. The source export misspells background as backround; normalized here as background.",
+  "brand": {
+    "background": { "$type": "color", "$value": "#EFF8FF" },
+    "border": { "$type": "color", "$value": "#B2DDFF" },
+    "color-text": { "$type": "color", "$value": "#175CD3" },
+    "icon": { "$type": "color", "$value": "#2E90FA" },
+    "cross-icon": { "$type": "color", "$value": "#53B1FD" },
+    "cross-icon-bg": { "$type": "color", "$value": "#D1E9FF" },
+    "cross-icon-hover": { "$type": "color", "$value": "#2E90FA" }
+  },
+  "gray-blue": {
+    "background": { "$type": "color", "$value": "#F8F9FC" },
+    "border": { "$type": "color", "$value": "#D5D9EB" },
+    "color-text": { "$type": "color", "$value": "#363F72" },
+    "icon": { "$type": "color", "$value": "#4E5BA6" },
+    "cross-icon": { "$type": "color", "$value": "#717BBC" },
+    "cross-icon-bg": { "$type": "color", "$value": "#EAECF5" },
+    "cross-icon-hover": { "$type": "color", "$value": "#4E5BA6" }
+  },
+  "gray": {
+    "background": { "$type": "color", "$value": "#F7F7F7" },
+    "border": { "$type": "color", "$value": "#E9E9EB" },
+    "color-text": { "$type": "color", "$value": "#414651" },
+    "icon": { "$type": "color", "$value": "#717680" },
+    "cross-icon": { "$type": "color", "$value": "#C1C5CD" },
+    "cross-icon-bg": { "$type": "color", "$value": "#F2F2F2" },
+    "cross-icon-hover": { "$type": "color", "$value": "#717680" }
+  },
+  "green": {
+    "background": { "$type": "color", "$value": "#ECFDF3" },
+    "border": { "$type": "color", "$value": "#A6F4C5" },
+    "color-text": { "$type": "color", "$value": "#027A48" },
+    "icon": { "$type": "color", "$value": "#12B76A" },
+    "cross-icon": { "$type": "color", "$value": "#32D583" },
+    "cross-icon-bg": { "$type": "color", "$value": "#D1FADF" },
+    "cross-icon-hover": { "$type": "color", "$value": "#12B76A" }
+  },
+  "indigo": {
+    "background": { "$type": "color", "$value": "#EEF4FF" },
+    "border": { "$type": "color", "$value": "#C7D7FE" },
+    "color-text": { "$type": "color", "$value": "#3538CD" },
+    "icon": { "$type": "color", "$value": "#6172F3" },
+    "cross-icon": { "$type": "color", "$value": "#8098F9" },
+    "cross-icon-bg": { "$type": "color", "$value": "#E0EAFF" },
+    "cross-icon-hover": { "$type": "color", "$value": "#6172F3" }
+  },
+  "orange": {
+    "background": { "$type": "color", "$value": "#FFFAEB" },
+    "border": { "$type": "color", "$value": "#FEDF89" },
+    "color-text": { "$type": "color", "$value": "#B54708" },
+    "icon": { "$type": "color", "$value": "#F79009" },
+    "cross-icon": { "$type": "color", "$value": "#FDB022" },
+    "cross-icon-bg": { "$type": "color", "$value": "#FEF0C7" },
+    "cross-icon-hover": { "$type": "color", "$value": "#F79009" }
+  },
+  "pink": {
+    "background": { "$type": "color", "$value": "#FDF2FA" },
+    "border": { "$type": "color", "$value": "#FCCEEE" },
+    "color-text": { "$type": "color", "$value": "#C11574" },
+    "icon": { "$type": "color", "$value": "#EE46BC" },
+    "cross-icon": { "$type": "color", "$value": "#F670C7" },
+    "cross-icon-bg": { "$type": "color", "$value": "#FCE7F6" },
+    "cross-icon-hover": { "$type": "color", "$value": "#EE46BC" }
+  },
+  "purple": {
+    "background": { "$type": "color", "$value": "#F4F3FF" },
+    "border": { "$type": "color", "$value": "#D9D6FE" },
+    "color-text": { "$type": "color", "$value": "#5925DC" },
+    "icon": { "$type": "color", "$value": "#7A5AF8" },
+    "cross-icon": { "$type": "color", "$value": "#9B8AFB" },
+    "cross-icon-bg": { "$type": "color", "$value": "#EBE9FE" },
+    "cross-icon-hover": { "$type": "color", "$value": "#7A5AF8" }
+  },
+  "red": {
+    "background": { "$type": "color", "$value": "#FEF3F2" },
+    "border": { "$type": "color", "$value": "#FECDCA" },
+    "color-text": { "$type": "color", "$value": "#B42318" },
+    "icon": { "$type": "color", "$value": "#F04438" },
+    "cross-icon": { "$type": "color", "$value": "#F97066" },
+    "cross-icon-bg": { "$type": "color", "$value": "#FEE4E2" },
+    "cross-icon-hover": { "$type": "color", "$value": "#F04438" }
+  }
+}

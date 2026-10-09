@@ -1,0 +1,33 @@
+{
+  "$description": "Tag dismissible size/spacing tokens sourced from the attached Figma tag-Dismissible exports. Mode names are normalized as kebab-case keys.",
+  "18px": {
+    "height": { "$type": "number", "$value": 18 },
+    "left-padding": { "$type": "number", "$value": 8 },
+    "right-padding": { "$type": "number", "$value": 0 },
+    "gap-close-and-text": { "$type": "number", "$value": 8 }
+  },
+  "24px": {
+    "height": { "$type": "number", "$value": 24 },
+    "left-padding": { "$type": "number", "$value": 8 },
+    "right-padding": { "$type": "number", "$value": 4 },
+    "gap-close-and-text": { "$type": "number", "$value": 8 }
+  },
+  "24px with icon": {
+    "height": { "$type": "number", "$value": 24 },
+    "left-padding": { "$type": "number", "$value": 4 },
+    "right-padding": { "$type": "number", "$value": 4 },
+    "gap-close-and-text": { "$type": "number", "$value": 8 }
+  },
+  "32px": {
+    "height": { "$type": "number", "$value": 32 },
+    "left-padding": { "$type": "number", "$value": 12 },
+    "right-padding": { "$type": "number", "$value": 8 },
+    "gap-close-and-text": { "$type": "number", "$value": 12 }
+  },
+  "32px with icon": {
+    "height": { "$type": "number", "$value": 32 },
+    "left-padding": { "$type": "number", "$value": 8 },
+    "right-padding": { "$type": "number", "$value": 8 },
+    "gap-close-and-text": { "$type": "number", "$value": 12 }
+  }
+}

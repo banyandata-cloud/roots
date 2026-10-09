@@ -1,0 +1,59 @@
+// GENERATED FILE — do not edit by hand.
+// Run `bun run tokens:build` to regenerate from design-system/.
+
+// Dismissible tag dimensions and spacing, grouped by size/variant.
+
+$tag-dismissible-18px: (
+  'height': 18px,
+  'left-padding': 8px,
+  'right-padding': 0px,
+  'gap-close-and-text': 8px,
+);
+$tag-dismissible-18px-height: 18px;
+$tag-dismissible-18px-left-padding: 8px;
+$tag-dismissible-18px-right-padding: 0px;
+$tag-dismissible-18px-gap-close-and-text: 8px;
+
+$tag-dismissible-24px: (
+  'height': 24px,
+  'left-padding': 8px,
+  'right-padding': 4px,
+  'gap-close-and-text': 8px,
+);
+$tag-dismissible-24px-height: 24px;
+$tag-dismissible-24px-left-padding: 8px;
+$tag-dismissible-24px-right-padding: 4px;
+$tag-dismissible-24px-gap-close-and-text: 8px;
+
+$tag-dismissible-24px-with-icon: (
+  'height': 24px,
+  'left-padding': 4px,
+  'right-padding': 4px,
+  'gap-close-and-text': 8px,
+);
+$tag-dismissible-24px-with-icon-height: 24px;
+$tag-dismissible-24px-with-icon-left-padding: 4px;
+$tag-dismissible-24px-with-icon-right-padding: 4px;
+$tag-dismissible-24px-with-icon-gap-close-and-text: 8px;
+
+$tag-dismissible-32px: (
+  'height': 32px,
+  'left-padding': 12px,
+  'right-padding': 8px,
+  'gap-close-and-text': 12px,
+);
+$tag-dismissible-32px-height: 32px;
+$tag-dismissible-32px-left-padding: 12px;
+$tag-dismissible-32px-right-padding: 8px;
+$tag-dismissible-32px-gap-close-and-text: 12px;
+
+$tag-dismissible-32px-with-icon: (
+  'height': 32px,
+  'left-padding': 8px,
+  'right-padding': 8px,
+  'gap-close-and-text': 12px,
+);
+$tag-dismissible-32px-with-icon-height: 32px;
+$tag-dismissible-32px-with-icon-left-padding: 8px;
+$tag-dismissible-32px-with-icon-right-padding: 8px;
+$tag-dismissible-32px-with-icon-gap-close-and-text: 12px;

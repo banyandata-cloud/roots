@@ -110,6 +110,9 @@ for (const { selector, colors } of [
   rootColorsScss += `${selector} {\n`
   for (const [name, color] of colors) {
     rootColorsScss += `  --color-${name}: ${color};\n`
+    if (name.startsWith('fg-') || name.startsWith('bg-')) {
+      rootColorsScss += `  --${name}: var(--color-${name});\n`
+    }
   }
   rootColorsScss += '}\n\n'
 }
@@ -117,6 +120,163 @@ for (const { selector, colors } of [
 let colorsScss = `${BANNER}// Runtime theme-aware aliases; emits no CSS.\n`
 for (const name of lightMap.keys()) {
   colorsScss += `$color-${name}: var(--color-${name});\n`
+}
+
+const shadowTokens = readJson('shadow.json')
+const shadowThemes = { light: new Map(), dark: new Map() }
+for (const [size, token] of Object.entries(shadowTokens.scale.light.shadow)) {
+  if (!token || typeof token.value !== 'string') {
+    throw new Error(`Expected a shadow value for scale/light/${size}`)
+  }
+  shadowThemes.light.set(`scale-${toKebabCase(size)}`, token.value)
+}
+for (const [size, token] of Object.entries(shadowTokens.scale.dark.shadow)) {
+  if (!token || typeof token.value !== 'string') {
+    throw new Error(`Expected a shadow value for scale/dark/${size}`)
+  }
+  shadowThemes.dark.set(`scale-${toKebabCase(size)}`, token.value)
+}
+
+const shadowStateNames = []
+for (const [state, definition] of Object.entries(shadowTokens.state)) {
+  if (state === 'focus') {
+    continue
+  }
+  const stateName = toKebabCase(state)
+  shadowStateNames.push(stateName)
+  for (const theme of ['light', 'dark']) {
+    for (const [variant, token] of Object.entries(definition[theme])) {
+      if (variant.startsWith('$')) {
+        continue
+      }
+      if (!token || typeof token.value !== 'string') {
+        throw new Error(`Expected a shadow value for state/${state}/${theme}/${variant}`)
+      }
+      shadowThemes[theme].set(
+        `state-${stateName}-${toKebabCase(variant)}`,
+        token.value,
+      )
+    }
+  }
+}
+
+const shadowKeys = new Set([...shadowThemes.light.keys(), ...shadowThemes.dark.keys()])
+for (const key of shadowKeys) {
+  if (!shadowThemes.light.has(key) || !shadowThemes.dark.has(key)) {
+    throw new Error(`Shadow token "${key}" must exist in both light and dark themes`)
+  }
+}
+
+const focusShadows = new Map()
+for (const [variant, token] of Object.entries(shadowTokens.state.focus)) {
+  if (variant.startsWith('$') || variant === 'gap' || typeof token?.value !== 'string') {
+    continue
+  }
+  focusShadows.set(`state-focus-${toKebabCase(variant)}`, token.value)
+  for (const variable of token.value.matchAll(/var\((--[a-z0-9-]+)\)/g)) {
+    const colorName = variable[1].slice(2)
+    if (!lightMap.has(colorName) || !darkMap.has(colorName)) {
+      throw new Error(`Focus shadow ${variant} references missing color token "${colorName}"`)
+    }
+  }
+}
+
+let rootShadowsScss = `${BANNER}// Include once in the application's global stylesheet.\n`
+for (const { selector, theme } of [
+  { selector: ':root', theme: 'light' },
+  { selector: "[data-theme='dark']", theme: 'dark' },
+]) {
+  rootShadowsScss += `${selector} {\n`
+  for (const [name, value] of shadowThemes[theme]) {
+    rootShadowsScss += `  --shadow-${name}: ${value};\n`
+  }
+  if (theme === 'light') {
+    for (const [name, value] of focusShadows) {
+      rootShadowsScss += `  --shadow-${name}: ${value};\n`
+    }
+  }
+  rootShadowsScss += '}\n\n'
+}
+
+let shadowsScss = `${BANNER}// Theme-aware shadow aliases; include _root-shadows.scss once globally.\n`
+const shadowGroups = new Map([
+  ['scale', [...shadowThemes.light.keys()].filter((name) => name.startsWith('scale-'))],
+  ...shadowStateNames.map((state) => [
+    `state-${state}`,
+    [...shadowThemes.light.keys()].filter((name) => name.startsWith(`state-${state}-`)),
+  ]),
+  ['state-focus', [...focusShadows.keys()]],
+])
+for (const [group, names] of shadowGroups) {
+  shadowsScss += `\n$shadow-${group}: (\n`
+  for (const name of names) {
+    const suffix = name.startsWith(`${group}-`) ? name.slice(group.length + 1) : name
+    shadowsScss += `  '${suffix}': var(--shadow-${name}),\n`
+  }
+  shadowsScss += ');\n'
+  for (const name of names) {
+    shadowsScss += `$shadow-${name}: var(--shadow-${name});\n`
+  }
+}
+
+const buttonEntries = numberEntries(readJson('button.json'))
+let buttonScss = `${BANNER}$button-size: (\n`
+for (const [key, value] of buttonEntries) {
+  buttonScss += `  '${key}': ${value}px,\n`
+}
+buttonScss += ');\n\n'
+for (const [key, value] of buttonEntries) {
+  buttonScss += `$button-size-${key}: ${value}px;\n`
+}
+
+const tagColors = readJson('tag/colors.json')
+let tagColorsScss = `${BANNER}// Static semantic colors for tag variants.\n`
+let tagColorCount = 0
+for (const [variant, tokens] of Object.entries(tagColors)) {
+  if (variant.startsWith('$')) {
+    continue
+  }
+  const variantName = toKebabCase(variant)
+  const entries = Object.entries(tokens).map(([key, token]) => {
+    if (token.$type !== 'color' || typeof token.$value !== 'string') {
+      throw new Error(`Expected a hex color for tag/colors/${variant}/${key}`)
+    }
+    return [toKebabCase(key), token.$value]
+  })
+  tagColorCount += entries.length
+  tagColorsScss += `\n$tag-color-${variantName}: (\n`
+  for (const [key, color] of entries) {
+    tagColorsScss += `  '${key}': ${color},\n`
+  }
+  tagColorsScss += ');\n'
+  for (const [key, color] of entries) {
+    tagColorsScss += `$tag-${variantName}-${key}: ${color};\n`
+  }
+}
+
+const tagSizes = readJson('tag/dismissible.json')
+let tagSizesScss = `${BANNER}// Dismissible tag dimensions and spacing, grouped by size/variant.\n`
+let tagSizeTokenCount = 0
+for (const [size, tokens] of Object.entries(tagSizes)) {
+  if (size.startsWith('$')) {
+    continue
+  }
+  const sizeName = toKebabCase(size)
+  tagSizesScss += `\n$tag-dismissible-${sizeName}: (\n`
+  const entries = []
+  for (const [key, token] of Object.entries(tokens)) {
+    if (token.$type !== 'number' || !Number.isFinite(token.$value)) {
+      throw new Error(`Expected a finite number for tag/dismissible/${size}/${key}`)
+    }
+    const tokenName = toKebabCase(key)
+    tagSizesScss += `  '${tokenName}': ${token.$value}px,\n`
+    entries.push([tokenName, token.$value])
+    tagSizeTokenCount += 1
+  }
+  tagSizesScss += ');\n'
+  for (const [tokenName, value] of entries) {
+    tagSizesScss += `$tag-dismissible-${sizeName}-${tokenName}: ${value}px;\n`
+  }
 }
 
 let baseColorsScss = `${BANNER}// Static primitive palette; not theme-aware.\n`
@@ -154,9 +314,14 @@ const outputs = new Map([
   ['_spacing.scss', dimensionScss('spacing', spacingEntries)],
   ['_radius.scss', dimensionScss('radius', radiusEntries)],
   ['_typography.scss', typographyScss],
+  ['_root-shadows.scss', rootShadowsScss.trimEnd() + '\n'],
+  ['_shadows.scss', shadowsScss],
+  ['_button.scss', buttonScss],
+  ['_tag-colors.scss', tagColorsScss],
+  ['_tag-dismissible.scss', tagSizesScss],
   [
     '_index.scss',
-    `${BANNER}@forward 'colors';\n@forward 'base-colors';\n@forward 'spacing';\n@forward 'radius';\n@forward 'typography';\n`,
+    `${BANNER}@forward 'colors';\n@forward 'base-colors';\n@forward 'spacing';\n@forward 'radius';\n@forward 'typography';\n@forward 'shadows';\n@forward 'button';\n@forward 'tag-colors';\n@forward 'tag-dismissible';\n`,
   ],
 ])
 
@@ -183,6 +348,8 @@ if (process.argv.includes('--check')) {
   console.log(
     `Generated ${lightMap.size} color tokens per theme, ${baseMap.size} primitive colors, ` +
       `${spacingEntries.length} spacing tokens, ${radiusEntries.length} radius tokens, ` +
-      `and ${typographyCount} typography tokens into src/styles/tokens/`,
+      `${typographyCount} typography tokens, ${shadowKeys.size + focusShadows.size} shadow tokens, ` +
+      `${buttonEntries.length} button sizes, ${tagColorCount} tag colors, and ` +
+      `${tagSizeTokenCount} dismissible tag tokens into src/styles/tokens/`,
   )
 }

@@ -1,4 +1,5 @@
-@import '../../styles/_index';
+@use '../../../styles' as *;
+@use '../../../styles/tokens' as tokens;
 
 .root {
 	@include flex(column, flex-start, stretch);
@@ -8,9 +9,9 @@
 	transform: translate(-50%, -50%);
 	height: 43.75rem;
 	max-height: 100%;
-	background: $light-color3;
-	box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.13);
-	border-radius: 8px;
+	background: tokens.$color-bg-primary;
+	box-shadow: tokens.$shadow-scale-lg;
+	border-radius: tokens.$radius-md;
 	outline: none;
 	width: 96%;
 
@@ -30,53 +31,53 @@
 
 	.body {
 		overflow-y: scroll;
-		padding: 1rem;
+		padding: tokens.$spacing-xl;
 		@include removeScrollbar;
-		color: $text-color;
+		color: tokens.$color-text-primary;
 	}
 
 	.header,
 	.footer {
-		padding: 1rem;
-		color: $text-color;
+		padding: tokens.$spacing-xl;
+		color: tokens.$color-text-primary;
 	}
 
 	.header {
 		font-weight: 500;
-		font-size: 1.375rem;
+		font-size: tokens.$font-size-20;
 		@include boxShadow(0.1px, 2px);
 	}
 
 	.footer {
 		margin-top: auto;
-		border-radius: 0 0 8px 8px;
+		border-radius: 0 0 tokens.$radius-md tokens.$radius-md;
 		@include flex(row, flex-end);
-		gap: 1rem;
+		gap: tokens.$spacing-xl;
 		button.dismiss[data-elem='base-cell'] {
 			@include flex(row, center, stretch);
-			color: $mono-color1;
-			background-color: $light-color2;
-			border-radius: 0.25rem;
-			outline: 1px solid $light-color2 !important;
+			color: tokens.$color-text-primary;
+			background-color: tokens.$color-bg-secondary;
+			border-radius: tokens.$radius-xs;
+			outline: 1px solid tokens.$color-bg-secondary !important;
 			border: none;
 			&:hover {
-				background-color: $light-color1;
+				background-color: tokens.$color-bg-secondary-hover;
 			}
 		}
 	}
 
 	button.close[data-elem='base-cell'] {
 		position: absolute;
-		right: 1rem;
-		top: 1rem;
-		padding: 0.25rem;
+		right: tokens.$spacing-xl;
+		top: tokens.$spacing-xl;
+		padding: tokens.$spacing-xs;
 		height: auto;
-		background: $light-color3;
+		background: tokens.$color-bg-primary;
 
 		.icon {
-			width: 1.5rem;
-			height: 1.5rem;
-			fill: $text-color;
+			width: tokens.$spacing-2xl;
+			height: tokens.$spacing-2xl;
+			fill: tokens.$color-fg-primary;
 		}
 	}
 }

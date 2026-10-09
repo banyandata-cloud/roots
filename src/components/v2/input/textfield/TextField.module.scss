@@ -1,9 +1,11 @@
 // TextField Component Styles - Based on Figma Design System
 
+@use '../../../../styles/tokens' as tokens;
+
 .textField {
 	display: flex;
 	flex-direction: column;
-	gap: 6px;
+	gap: tokens.$spacing-sm;
 	width: 100%;
 	min-width: 320px;
 }
@@ -11,23 +13,23 @@
 // Label Container
 .labelContainer {
 	display: flex;
-	gap: 2px;
+	gap: tokens.$spacing-xxs;
 	align-items: center;
 
 	.label {
-		font-family: Jakarta;
+		font-family: tokens.$font-family-base;
 		font-weight: 500;
-		font-size: 14px;
-		line-height: 20px;
-		color: #414651;
+		font-size: tokens.$font-size-14;
+		line-height: tokens.$line-height-20;
+		color: tokens.$color-text-secondary;
 	}
 
 	.required {
-		font-family: Jakarta;
+		font-family: tokens.$font-family-base;
 		font-weight: 500;
-		font-size: 14px;
-		line-height: 20px;
-		color: #175cd3;
+		font-size: tokens.$font-size-14;
+		line-height: tokens.$line-height-20;
+		color: tokens.$color-text-brand-secondary;
 	}
 
 	// Help Icon in Label (beside label text)
@@ -39,7 +41,7 @@
 		svg {
 			width: 100%;
 			height: 100%;
-			color: #535862;
+			color: tokens.$color-text-tertiary;
 		}
 	}
 }
@@ -50,7 +52,7 @@
 	display: flex;
 	flex-direction: row;
 	align-items: stretch;
-	border-radius: 6px;
+	border-radius: tokens.$radius-sm;
 	transition: all 0.2s ease-in-out;
 	overflow: hidden;
 
@@ -78,11 +80,11 @@
 .inputInner {
 	display: flex;
 	align-items: center;
-	gap: 8px;
+	gap: tokens.$spacing-md;
 	flex: 1;
 	min-width: 0;
 	height: 100%;
-	padding: 10px 12px;
+	padding: tokens.$spacing-md tokens.$spacing-lg;
 }
 
 // Adjust inputInner padding for thicker borders in active-typing and error states
@@ -113,7 +115,7 @@
 .contentArea {
 	display: flex;
 	align-items: center;
-	gap: 8px;
+	gap: tokens.$spacing-md;
 	flex: 1;
 	min-width: 0;
 	position: relative;
@@ -122,7 +124,7 @@
 .trailingArea {
 	display: flex;
 	align-items: center;
-	gap: 12px;
+	gap: tokens.$spacing-lg;
 	flex-shrink: 0;
 }
 
@@ -144,15 +146,15 @@
 	align-items: center;
 	height: 100%;
 	padding: 0 12px;
-	border-right: 1px solid #d5d7da;
+	border-right: 1px solid tokens.$color-border-primary;
 	flex-shrink: 0;
 
 	.leadingTextContent {
-		font-family: Jakarta;
+		font-family: tokens.$font-family-base;
 		font-weight: 400;
-		font-size: 16px;
-		line-height: 24px;
-		color: #535862;
+		font-size: tokens.$font-size-16;
+		line-height: tokens.$line-height-24;
+		color: tokens.$color-text-tertiary;
 		white-space: nowrap;
 	}
 }
@@ -222,9 +224,9 @@
 
 	// Target the actual DOM structure: buttonWrapper > button > spans > contentArea > dropdownText
 	div > button > span > span > div > span {
-		font-size: 16px !important;
-		line-height: 24px !important;
-		color: #535862 !important; // text-tertiary as per Figma
+		font-size: tokens.$font-size-16 !important;
+		line-height: tokens.$line-height-24 !important;
+		color: tokens.$color-text-tertiary !important;
 		font-weight: 400 !important;
 		white-space: nowrap !important;
 	}
@@ -287,10 +289,10 @@
 
 // Input Text Display
 .inputText {
-	font-family: Jakarta;
+	font-family: tokens.$font-family-base;
 	font-weight: 400;
-	font-size: 16px;
-	line-height: 24px;
+	font-size: tokens.$font-size-16;
+	line-height: tokens.$line-height-24;
 	white-space: pre;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -298,15 +300,15 @@
 	min-width: 0;
 
 	&.textPrimary {
-		color: #181d27;
+		color: tokens.$color-text-primary;
 	}
 
 	&.textPlaceholder {
-		color: #a4a7ae;
+		color: tokens.$color-utility-gray-400;
 	}
 
 	&.textDisabled {
-		color: #a4a7ae;
+		color: tokens.$color-utility-gray-400;
 	}
 }
 
@@ -318,33 +320,33 @@
 	outline: none;
 	background: transparent;
 	cursor: inherit;
-	font-size: 16px; // iOS zoom fix
-	font-family: Jakarta;
+	font-size: tokens.$font-size-16; // iOS zoom fix
+	font-family: tokens.$font-family-base;
 	font-weight: 400;
-	line-height: 24px;
-	color: #181d27;
+	line-height: tokens.$line-height-24;
+	color: tokens.$color-text-primary;
 	white-space: pre;
-	caret-color: #181d27; // Thicker cursor
+	caret-color: tokens.$color-text-primary;
 
 	&::placeholder {
-		color: #a4a7ae;
+		color: tokens.$color-utility-gray-400;
 	}
 
 	&:disabled {
-		color: #a4a7ae;
+		color: tokens.$color-utility-gray-400;
 		cursor: not-allowed;
-		caret-color: #a4a7ae;
+		caret-color: tokens.$color-utility-gray-400;
 	}
 
 	// Custom selection styling
 	&::selection {
-		background: #175cd3;
-		color: white;
+		background: tokens.$color-text-brand-secondary;
+		color: tokens.$color-fg-white;
 	}
 
 	&:focus {
 		outline: none;
-		caret-color: #181d27; // Ensure thick cursor on focus
+		caret-color: tokens.$color-text-primary;
 	}
 }
 
@@ -359,21 +361,21 @@
 	outline: none;
 	background: transparent;
 	cursor: inherit;
-	font-size: 16px; // iOS zoom fix
-	font-family: Jakarta;
+	font-size: tokens.$font-size-16; // iOS zoom fix
+	font-family: tokens.$font-family-base;
 	font-weight: 400;
-	line-height: 24px;
-	color: #181d27;
+	line-height: tokens.$line-height-24;
+	color: tokens.$color-text-primary;
 
 	&.visibleInput {
 		opacity: 1;
-		color: #181d27;
+		color: tokens.$color-text-primary;
 	}
 }
 
 // Blinking Cursor Animation
 .blinkingCursor {
-	color: #181d27;
+	color: tokens.$color-text-primary;
 	font-weight: 400;
 	animation: blink 1s infinite;
 	margin-left: 0; // No gap between text and cursor
@@ -393,108 +395,100 @@
 
 // Helper Text
 .helperText {
-	font-family: Jakarta;
+	font-family: tokens.$font-family-base;
 	font-weight: 400;
-	font-size: 14px;
-	line-height: 20px;
+	font-size: tokens.$font-size-14;
+	line-height: tokens.$line-height-20;
 
 	&.helperDefault {
-		color: #535862;
+		color: tokens.$color-text-tertiary;
 	}
 
 	&.helperError {
-		color: #d92d20;
+		color: tokens.$color-fg-error-primary;
 	}
 
 	&.helperWarning {
-		color: #dc6803;
+		color: tokens.$color-fg-warning-primary;
 	}
 }
 
 // State Styles
 // 1. Default State (Placeholder)
 .inputContainer.default {
-	background: white;
-	border: 1px solid #d5d7da;
-	box-shadow:
-		0px 0px 1px 0px rgba(0, 0, 0, 0.04),
-		0px 1px 2px 0px rgba(0, 0, 0, 0.06);
+	background: tokens.$color-bg-primary;
+	border: 1px solid tokens.$color-border-primary;
+	box-shadow: tokens.$shadow-scale-xs;
 
 	&:hover {
-		border-color: #b2b5bb;
+		border-color: tokens.$color-utility-gray-400;
 	}
 }
 
 // 2. Filled State
 .inputContainer.filled {
-	background: white;
-	border: 1px solid #d5d7da;
-	box-shadow:
-		0px 0px 1px 0px rgba(0, 0, 0, 0.04),
-		0px 1px 2px 0px rgba(0, 0, 0, 0.06);
+	background: tokens.$color-bg-primary;
+	border: 1px solid tokens.$color-border-primary;
+	box-shadow: tokens.$shadow-scale-xs;
 
 	&:hover {
-		border-color: #b2b5bb;
+		border-color: tokens.$color-utility-gray-400;
 	}
 }
 
 // 3. Active Typing State (Focus - Empty)
 .inputContainer.activeTyping,
 .inputContainer.active-typing {
-	background: white;
-	border: 1.5px solid #2e90fa;
+	background: tokens.$color-bg-primary;
+	border: 1.5px solid tokens.$color-fg-brand-secondary;
 	box-shadow: none;
 }
 
 // 4. Filled Focus State (Focus Ring)
 .inputContainer.filledFocus,
 .inputContainer.filled-focus {
-	background: white;
-	border: 1px solid #d5d7da;
-	box-shadow:
-		0px 0px 0px 2px white,
-		0px 0px 0px 4px #1570ef;
+	background: tokens.$color-bg-primary;
+	border: 1px solid tokens.$color-border-primary;
+	box-shadow: tokens.$shadow-state-focus-primary-brand;
 }
 
 // 5. Error Focus State (Red Focus Ring)
 .inputContainer.errorFocus,
 .inputContainer.error-focus {
-	background: white;
-	border: 1px solid #d5d7da;
-	box-shadow:
-		0px 0px 0px 2px white,
-		0px 0px 0px 4px #f04438;
+	background: tokens.$color-bg-primary;
+	border: 1px solid tokens.$color-border-primary;
+	box-shadow: tokens.$shadow-state-focus-error;
 }
 
 // 6. Error Filled State (Red Border + Icon)
 .inputContainer.errorFilled,
 .inputContainer.error-filled {
-	background: white;
-	border: 1.5px solid #f04438;
+	background: tokens.$color-bg-primary;
+	border: 1.5px solid tokens.$color-fg-error-secondary;
 	box-shadow: none;
 
 	.statusIcon svg {
-		color: #f04438;
-		fill: #f04438;
+		color: tokens.$color-fg-error-secondary;
+		fill: tokens.$color-fg-error-secondary;
 	}
 }
 
 // 7. Warning State (Orange Icon)
 .inputContainer.warning {
-	background: white;
-	border: 1px solid #d5d7da;
+	background: tokens.$color-bg-primary;
+	border: 1px solid tokens.$color-border-primary;
 	box-shadow: none;
 
 	.statusIcon svg {
-		color: #dc6803;
-		fill: #dc6803;
+		color: tokens.$color-fg-warning-primary;
+		fill: tokens.$color-fg-warning-primary;
 	}
 }
 
 // 8. Disabled State
 .inputContainer.disable {
-	background: #fafafa;
-	border: 1px solid #d5d7da;
+	background: tokens.$color-bg-primary-2;
+	border: 1px solid tokens.$color-border-primary;
 	box-shadow: none;
 	cursor: not-allowed;
 
@@ -517,7 +511,7 @@
 	}
 
 	.inputText {
-		font-size: 16px; // Prevent iOS zoom
+		font-size: tokens.$font-size-16; // Prevent iOS zoom
 	}
 }
 
@@ -525,7 +519,7 @@
 .inputWrapper {
 	display: flex;
 	width: 100%;
-	border-radius: 6px;
+	border-radius: tokens.$radius-sm;
 }
 
 .inputWrapperWithTrailingButton {
@@ -539,43 +533,39 @@
 	// Override inputContainer focus states when inside trailing button wrapper
 	.inputContainer.filled-focus,
 	.inputContainer.error-focus {
-		border: 1px solid #d5d7da !important;
+		border: 1px solid tokens.$color-border-primary !important;
 		border-right: none !important;
 		box-shadow: none !important;
 	}
 
 	// For active-typing, make trailing button match the blue border but keep separator gray
 	.inputContainer.active-typing + .trailingButton {
-		border-top: 1.5px solid #2e90fa !important;
-		border-right: 1.5px solid #2e90fa !important;
-		border-bottom: 1.5px solid #2e90fa !important;
-		border-left: 1px solid #d5d7da !important; // Keep separator gray and 1px
+		border-top: 1.5px solid tokens.$color-fg-brand-secondary !important;
+		border-right: 1.5px solid tokens.$color-fg-brand-secondary !important;
+		border-bottom: 1.5px solid tokens.$color-fg-brand-secondary !important;
+		border-left: 1px solid tokens.$color-border-primary !important;
 		padding: 9.5px 11.5px !important; // Adjust for thicker border
 		transition: all 0.2s ease-in-out !important; // Match input container transition
 	}
 
 	// For error-filled, make trailing button match the red border but keep separator gray
 	.inputContainer.error-filled + .trailingButton {
-		border-top: 1.5px solid #f04438 !important;
-		border-right: 1.5px solid #f04438 !important;
-		border-bottom: 1.5px solid #f04438 !important;
-		border-left: 1px solid #d5d7da !important; // Keep separator gray and 1px
+		border-top: 1.5px solid tokens.$color-fg-error-secondary !important;
+		border-right: 1.5px solid tokens.$color-fg-error-secondary !important;
+		border-bottom: 1.5px solid tokens.$color-fg-error-secondary !important;
+		border-left: 1px solid tokens.$color-border-primary !important;
 	}
 
 	// Wrapper-level focus states for trailing button (only for focus rings)
 	&.wrapperFilledFocus {
-		border-radius: 6px;
-		box-shadow:
-			0px 0px 0px 2px white,
-			0px 0px 0px 4px #1570ef;
+		border-radius: tokens.$radius-sm;
+		box-shadow: tokens.$shadow-state-focus-primary-brand;
 		transition: box-shadow 0.2s ease-in-out;
 	}
 
 	&.wrapperErrorFocus {
-		border-radius: 6px;
-		box-shadow:
-			0px 0px 0px 2px white,
-			0px 0px 0px 4px #f04438;
+		border-radius: tokens.$radius-sm;
+		box-shadow: tokens.$shadow-state-focus-error;
 		transition: box-shadow 0.2s ease-in-out;
 	}
 }
@@ -589,33 +579,31 @@
 	padding: 10px 12px !important;
 	border-top-left-radius: 0 !important;
 	border-bottom-left-radius: 0 !important;
-	border-top-right-radius: 6px !important;
-	border-bottom-right-radius: 6px !important;
-	border: 1px solid #d5d7da !important;
-	border-left: 1px solid #d5d7da !important;
-	background: white !important;
+	border-top-right-radius: tokens.$radius-sm !important;
+	border-bottom-right-radius: tokens.$radius-sm !important;
+	border: 1px solid tokens.$color-border-primary !important;
+	border-left: 1px solid tokens.$color-border-primary !important;
+	background: tokens.$color-bg-primary !important;
 	cursor: pointer !important;
 	transition: all 0.2s ease-in-out !important;
 	height: 44px !important;
 	flex-shrink: 0 !important;
-	box-shadow:
-		0px 0px 1px 0px rgba(0, 0, 0, 0.04),
-		0px 1px 2px 0px rgba(0, 0, 0, 0.06) !important;
-	font-family: Jakarta !important;
+	box-shadow: tokens.$shadow-scale-xs !important;
+	font-family: tokens.$font-family-base !important;
 	font-weight: 500 !important;
-	font-size: 14px !important;
-	line-height: 20px !important;
-	color: #535862 !important;
+	font-size: tokens.$font-size-14 !important;
+	line-height: tokens.$line-height-20 !important;
+	color: tokens.$color-text-tertiary !important;
 	text-decoration: none !important;
 	min-width: unset !important;
 	max-width: unset !important;
 	width: auto !important;
 
 	&:hover {
-		background: #f8f9fa !important;
-		border-color: #b2b5bb !important;
-		border-left-color: #d5d7da !important; // Keep separator gray
-		color: #535862 !important;
+		background: tokens.$color-bg-primary-hover !important;
+		border-color: tokens.$color-utility-gray-400 !important;
+		border-left-color: tokens.$color-border-primary !important;
+		color: tokens.$color-text-tertiary !important;
 		text-decoration: none !important;
 	}
 
@@ -632,7 +620,7 @@
 	svg {
 		width: 20px !important;
 		height: 20px !important;
-		color: #535862 !important;
+		color: tokens.$color-text-tertiary !important;
 		flex-shrink: 0 !important;
 	}
 
@@ -653,62 +641,58 @@
 	svg {
 		width: 100%;
 		height: 100%;
-		color: #535862;
+		color: tokens.$color-text-tertiary;
 	}
 }
 
 .trailingButtonText {
-	font-family: Jakarta;
+	font-family: tokens.$font-family-base;
 	font-weight: 500;
-	font-size: 14px;
-	line-height: 20px;
-	color: #535862;
+	font-size: tokens.$font-size-14;
+	line-height: tokens.$line-height-20;
+	color: tokens.$color-text-tertiary;
 	white-space: nowrap;
 }
 
 // State-specific trailing button styles
 // Disabled state for Button component
 .disableTrailingButton {
-	background: #fafafa !important;
-	border-color: #d5d7da !important;
-	border-left-color: #d5d7da !important;
+	background: tokens.$color-bg-primary-2 !important;
+	border-color: tokens.$color-border-primary !important;
+	border-left-color: tokens.$color-border-primary !important;
 	box-shadow: none !important;
 	cursor: not-allowed !important;
-	color: #535862 !important;
+	color: tokens.$color-text-tertiary !important;
 	opacity: 0.5 !important;
 
 	&:hover {
-		background: #fafafa !important;
-		border-color: #d5d7da !important;
-		border-left-color: #d5d7da !important;
+		background: tokens.$color-bg-primary-2 !important;
+		border-color: tokens.$color-border-primary !important;
+		border-left-color: tokens.$color-border-primary !important;
 		cursor: not-allowed !important;
 	}
 
 	svg {
 		opacity: 0.5 !important;
 	}
-}
-
-.errorFilledTrailingButton,
-.error-filledTrailingButton {
-	border: 1.5px solid #f04438;
-	border-left: 1px solid #d5d7da;
-	box-shadow: none;
-}
-
-.warningTrailingButton {
-	border-color: #d5d7da;
-	box-shadow: none;
-}
-
-.disableTrailingButton {
-	background: #fafafa;
-	border-color: #d5d7da;
-	box-shadow: none;
-	cursor: not-allowed;
 
 	.trailingButtonIcon,
 	.trailingButtonText {
 		opacity: 0.5;
 	}
 }
+
+.errorFilledTrailingButton,
+.error-filledTrailingButton {
+	border: 1.5px solid tokens.$color-fg-error-secondary;
+	border-left: 1px solid tokens.$color-border-primary;
+	box-shadow: none;
+}
+
+.warningTrailingButton {
+	border-color: tokens.$color-border-primary;
+	box-shadow: none;
+}
+
+// Warning state uses the semantic border token above.
+

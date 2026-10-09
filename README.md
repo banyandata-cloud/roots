@@ -16,15 +16,34 @@ Generated files live in [src/styles/tokens](src/styles/tokens):
   `@use './tokens/root-colors';` in an application global stylesheet.
 - [src/styles/tokens/\_index.scss](src/styles/tokens/_index.scss) forwards CSS-free
   Sass variables for themed colors, primitive
-  colors, spacing, radius, and typography. Component styles can use
+  colors, spacing, radius, typography, shadows, and button sizes. Component styles can use
   `@use '../../styles/tokens' as tokens;` (adjust the relative path as needed).
 - Examples: `tokens.$color-text-primary`, `tokens.$base-color-base-white`,
-  `tokens.$spacing-md`, `tokens.$radius-md`, and `tokens.$font-size-14`.
+  `tokens.$spacing-md`, `tokens.$radius-md`, `tokens.$font-size-14`,
+  `tokens.$shadow-scale-md`, and `tokens.$button-size-md`.
 
 Switch themes with `document.documentElement.dataset.theme = 'dark'`; set it to
 `'light'` or remove the attribute to restore light mode. Primitive palette colors
 are static; semantic and utility color aliases resolve through `var()` at runtime.
 The barrel deliberately does not forward the CSS-emitting theme rules.
+
+Shadow tokens are generated from [design-system/shadow.json](design-system/shadow.json).
+Include [src/styles/tokens/\_root-shadows.scss](src/styles/tokens/_root-shadows.scss)
+once in the application's global stylesheet with
+`@use './tokens/root-shadows';` alongside `@use './tokens/root-colors';`. Shadow
+Sass aliases such as `tokens.$shadow-scale-md` switch between light and dark values
+at runtime. Focus shadows use `--bg-*` and `--fg-*` aliases emitted alongside the
+existing `--color-*` custom properties. Button heights come from
+[design-system/button.json](design-system/button.json) and are available as
+`tokens.$button-size-xs` through `tokens.$button-size-xlg`.
+
+Tag colors and dismissible-tag measurements are sourced from
+[design-system/tag/colors.json](design-system/tag/colors.json) and
+[design-system/tag/dismissible.json](design-system/tag/dismissible.json). They are
+forwarded by the token barrel: for example, use `tokens.$tag-brand-background`,
+`tokens.$tag-color-gray-blue`, `tokens.$tag-dismissible-24px-with-icon-height`,
+or the grouped map `tokens.$tag-dismissible-32px`. The imported Figma color field
+`backround` is normalized to `background`; source values are retained.
 
 Generation does not change existing component styles, load fonts, or replace the
 current global typography. Import and adopt the tokens where needed; do not edit
@@ -34,7 +53,8 @@ the generated files by hand.
 
 Run `bun run tokens:check` to verify that every generated file matches the JSON
 exports, that the Sass barrel emits no CSS, that light/dark theme rules match the
-source colors, and that representative tokens compile with the expected values.
+source colors and shadows, and that representative color, dimension, typography,
+shadow, button, and tag tokens compile with the expected values.
 This check does not rewrite files and exits with an error for missing or stale
 output. After changing an export, run `bun run tokens:build`, then check again.
 

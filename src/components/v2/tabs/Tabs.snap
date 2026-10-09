@@ -113,7 +113,7 @@ exports[`Tabs — Snapshots vertical snapshot 1`] = `
   </div>
   <div
     class="tab-slider-vertical"
-    style="left: 20px; width: 80px;"
+    style="top: 0px; height: 40px;"
   />
 </div>
 `;

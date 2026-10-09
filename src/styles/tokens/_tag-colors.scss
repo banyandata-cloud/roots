@@ -1,0 +1,157 @@
+// GENERATED FILE — do not edit by hand.
+// Run `bun run tokens:build` to regenerate from design-system/.
+
+// Static semantic colors for tag variants.
+
+$tag-color-brand: (
+  'background': #EFF8FF,
+  'border': #B2DDFF,
+  'color-text': #175CD3,
+  'icon': #2E90FA,
+  'cross-icon': #53B1FD,
+  'cross-icon-bg': #D1E9FF,
+  'cross-icon-hover': #2E90FA,
+);
+$tag-brand-background: #EFF8FF;
+$tag-brand-border: #B2DDFF;
+$tag-brand-color-text: #175CD3;
+$tag-brand-icon: #2E90FA;
+$tag-brand-cross-icon: #53B1FD;
+$tag-brand-cross-icon-bg: #D1E9FF;
+$tag-brand-cross-icon-hover: #2E90FA;
+
+$tag-color-gray-blue: (
+  'background': #F8F9FC,
+  'border': #D5D9EB,
+  'color-text': #363F72,
+  'icon': #4E5BA6,
+  'cross-icon': #717BBC,
+  'cross-icon-bg': #EAECF5,
+  'cross-icon-hover': #4E5BA6,
+);
+$tag-gray-blue-background: #F8F9FC;
+$tag-gray-blue-border: #D5D9EB;
+$tag-gray-blue-color-text: #363F72;
+$tag-gray-blue-icon: #4E5BA6;
+$tag-gray-blue-cross-icon: #717BBC;
+$tag-gray-blue-cross-icon-bg: #EAECF5;
+$tag-gray-blue-cross-icon-hover: #4E5BA6;
+
+$tag-color-gray: (
+  'background': #F7F7F7,
+  'border': #E9E9EB,
+  'color-text': #414651,
+  'icon': #717680,
+  'cross-icon': #C1C5CD,
+  'cross-icon-bg': #F2F2F2,
+  'cross-icon-hover': #717680,
+);
+$tag-gray-background: #F7F7F7;
+$tag-gray-border: #E9E9EB;
+$tag-gray-color-text: #414651;
+$tag-gray-icon: #717680;
+$tag-gray-cross-icon: #C1C5CD;
+$tag-gray-cross-icon-bg: #F2F2F2;
+$tag-gray-cross-icon-hover: #717680;
+
+$tag-color-green: (
+  'background': #ECFDF3,
+  'border': #A6F4C5,
+  'color-text': #027A48,
+  'icon': #12B76A,
+  'cross-icon': #32D583,
+  'cross-icon-bg': #D1FADF,
+  'cross-icon-hover': #12B76A,
+);
+$tag-green-background: #ECFDF3;
+$tag-green-border: #A6F4C5;
+$tag-green-color-text: #027A48;
+$tag-green-icon: #12B76A;
+$tag-green-cross-icon: #32D583;
+$tag-green-cross-icon-bg: #D1FADF;
+$tag-green-cross-icon-hover: #12B76A;
+
+$tag-color-indigo: (
+  'background': #EEF4FF,
+  'border': #C7D7FE,
+  'color-text': #3538CD,
+  'icon': #6172F3,
+  'cross-icon': #8098F9,
+  'cross-icon-bg': #E0EAFF,
+  'cross-icon-hover': #6172F3,
+);
+$tag-indigo-background: #EEF4FF;
+$tag-indigo-border: #C7D7FE;
+$tag-indigo-color-text: #3538CD;
+$tag-indigo-icon: #6172F3;
+$tag-indigo-cross-icon: #8098F9;
+$tag-indigo-cross-icon-bg: #E0EAFF;
+$tag-indigo-cross-icon-hover: #6172F3;
+
+$tag-color-orange: (
+  'background': #FFFAEB,
+  'border': #FEDF89,
+  'color-text': #B54708,
+  'icon': #F79009,
+  'cross-icon': #FDB022,
+  'cross-icon-bg': #FEF0C7,
+  'cross-icon-hover': #F79009,
+);
+$tag-orange-background: #FFFAEB;
+$tag-orange-border: #FEDF89;
+$tag-orange-color-text: #B54708;
+$tag-orange-icon: #F79009;
+$tag-orange-cross-icon: #FDB022;
+$tag-orange-cross-icon-bg: #FEF0C7;
+$tag-orange-cross-icon-hover: #F79009;
+
+$tag-color-pink: (
+  'background': #FDF2FA,
+  'border': #FCCEEE,
+  'color-text': #C11574,
+  'icon': #EE46BC,
+  'cross-icon': #F670C7,
+  'cross-icon-bg': #FCE7F6,
+  'cross-icon-hover': #EE46BC,
+);
+$tag-pink-background: #FDF2FA;
+$tag-pink-border: #FCCEEE;
+$tag-pink-color-text: #C11574;
+$tag-pink-icon: #EE46BC;
+$tag-pink-cross-icon: #F670C7;
+$tag-pink-cross-icon-bg: #FCE7F6;
+$tag-pink-cross-icon-hover: #EE46BC;
+
+$tag-color-purple: (
+  'background': #F4F3FF,
+  'border': #D9D6FE,
+  'color-text': #5925DC,
+  'icon': #7A5AF8,
+  'cross-icon': #9B8AFB,
+  'cross-icon-bg': #EBE9FE,
+  'cross-icon-hover': #7A5AF8,
+);
+$tag-purple-background: #F4F3FF;
+$tag-purple-border: #D9D6FE;
+$tag-purple-color-text: #5925DC;
+$tag-purple-icon: #7A5AF8;
+$tag-purple-cross-icon: #9B8AFB;
+$tag-purple-cross-icon-bg: #EBE9FE;
+$tag-purple-cross-icon-hover: #7A5AF8;
+
+$tag-color-red: (
+  'background': #FEF3F2,
+  'border': #FECDCA,
+  'color-text': #B42318,
+  'icon': #F04438,
+  'cross-icon': #F97066,
+  'cross-icon-bg': #FEE4E2,
+  'cross-icon-hover': #F04438,
+);
+$tag-red-background: #FEF3F2;
+$tag-red-border: #FECDCA;
+$tag-red-color-text: #B42318;
+$tag-red-icon: #F04438;
+$tag-red-cross-icon: #F97066;
+$tag-red-cross-icon-bg: #FEE4E2;
+$tag-red-cross-icon-hover: #F04438;

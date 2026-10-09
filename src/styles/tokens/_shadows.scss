@@ -1,0 +1,58 @@
+// GENERATED FILE — do not edit by hand.
+// Run `bun run tokens:build` to regenerate from design-system/.
+
+// Theme-aware shadow aliases; include _root-shadows.scss once globally.
+
+$shadow-scale: (
+  'xs': var(--shadow-scale-xs),
+  'sm': var(--shadow-scale-sm),
+  'md': var(--shadow-scale-md),
+  'lg': var(--shadow-scale-lg),
+  'xl': var(--shadow-scale-xl),
+  '2xl': var(--shadow-scale-2xl),
+);
+$shadow-scale-xs: var(--shadow-scale-xs);
+$shadow-scale-sm: var(--shadow-scale-sm);
+$shadow-scale-md: var(--shadow-scale-md);
+$shadow-scale-lg: var(--shadow-scale-lg);
+$shadow-scale-xl: var(--shadow-scale-xl);
+$shadow-scale-2xl: var(--shadow-scale-2xl);
+
+$shadow-state-normal: (
+  'small': var(--shadow-state-normal-small),
+  'medium': var(--shadow-state-normal-medium),
+  'large': var(--shadow-state-normal-large),
+);
+$shadow-state-normal-small: var(--shadow-state-normal-small);
+$shadow-state-normal-medium: var(--shadow-state-normal-medium);
+$shadow-state-normal-large: var(--shadow-state-normal-large);
+
+$shadow-state-hover: (
+  'primary': var(--shadow-state-hover-primary),
+  'primary-brand': var(--shadow-state-hover-primary-brand),
+  'secondary': var(--shadow-state-hover-secondary),
+  'error': var(--shadow-state-hover-error),
+  'warning': var(--shadow-state-hover-warning),
+  'success': var(--shadow-state-hover-success),
+);
+$shadow-state-hover-primary: var(--shadow-state-hover-primary);
+$shadow-state-hover-primary-brand: var(--shadow-state-hover-primary-brand);
+$shadow-state-hover-secondary: var(--shadow-state-hover-secondary);
+$shadow-state-hover-error: var(--shadow-state-hover-error);
+$shadow-state-hover-warning: var(--shadow-state-hover-warning);
+$shadow-state-hover-success: var(--shadow-state-hover-success);
+
+$shadow-state-focus: (
+  'primary': var(--shadow-state-focus-primary),
+  'primary-brand': var(--shadow-state-focus-primary-brand),
+  'secondary': var(--shadow-state-focus-secondary),
+  'error': var(--shadow-state-focus-error),
+  'warning': var(--shadow-state-focus-warning),
+  'success': var(--shadow-state-focus-success),
+);
+$shadow-state-focus-primary: var(--shadow-state-focus-primary);
+$shadow-state-focus-primary-brand: var(--shadow-state-focus-primary-brand);
+$shadow-state-focus-secondary: var(--shadow-state-focus-secondary);
+$shadow-state-focus-error: var(--shadow-state-focus-error);
+$shadow-state-focus-warning: var(--shadow-state-focus-warning);
+$shadow-state-focus-success: var(--shadow-state-focus-success);

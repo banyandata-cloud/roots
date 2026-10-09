@@ -1,0 +1,45 @@
+{
+  "xs": {
+    "$type": "number",
+    "$value": 32,
+    "$extensions": {
+      "com.figma.variableId": "VariableID:58:28",
+      "com.figma.scopes": ["ALL_SCOPES"]
+    }
+  },
+  "sm": {
+    "$type": "number",
+    "$value": 40,
+    "$extensions": {
+      "com.figma.variableId": "VariableID:58:30",
+      "com.figma.scopes": ["ALL_SCOPES"]
+    }
+  },
+  "md": {
+    "$type": "number",
+    "$value": 44,
+    "$extensions": {
+      "com.figma.variableId": "VariableID:58:31",
+      "com.figma.scopes": ["ALL_SCOPES"]
+    }
+  },
+  "lg": {
+    "$type": "number",
+    "$value": 52,
+    "$extensions": {
+      "com.figma.variableId": "VariableID:58:32",
+      "com.figma.scopes": ["ALL_SCOPES"]
+    }
+  },
+  "xlg": {
+    "$type": "number",
+    "$value": 56,
+    "$extensions": {
+      "com.figma.variableId": "VariableID:1343:1236",
+      "com.figma.scopes": ["ALL_SCOPES"]
+    }
+  },
+  "$extensions": {
+    "com.figma.modeName": "Mode 1"
+  }
+}

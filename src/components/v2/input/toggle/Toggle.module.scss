@@ -1,10 +1,11 @@
-@import '../../../../styles';
+@use '../../../../styles' as *;
+@use '../../../../styles/tokens' as tokens;
 
 .root {
 	display: inline-flex;
 	flex-direction: column;
 	align-items: flex-start;
-	gap: var(--spacing-03, 8px);
+	gap: tokens.$spacing-md;
 	cursor: pointer;
 	position: relative;
 
@@ -16,11 +17,11 @@
 	}
 
 	[data-elem='label'] {
-		color: var(--text-text-secondary, #484848);
-		font-family: var(--font-font-family, Poppins);
-		font-size: var(--font-font-size-12, 12px);
-		font-weight: var(--font-font-weight-Regular, 400);
-		line-height: var(--font-font-height-16, 16px);
+		color: tokens.$color-text-secondary;
+		font-family: tokens.$font-family-base;
+		font-size: tokens.$font-size-12;
+		font-weight: tokens.$font-weight-regular;
+		line-height: tokens.$line-height-16;
 		letter-spacing: var(--font-font-spacing-large, 0.32px);
 		user-select: none;
 	}
@@ -33,8 +34,8 @@
 		.pill {
 			width: 48px;
 			height: 24px;
-			border-radius: 20px;
-			background: var(--Miscellaneous-toggle-off, #bfbfbf);
+			border-radius: tokens.$radius-full;
+			background: tokens.$color-utility-gray-400;
 			position: relative;
 			transition: background 0.2s ease;
 
@@ -43,8 +44,8 @@
 				position: absolute;
 				width: 18px;
 				height: 18px;
-				border-radius: 18px;
-				background: var(--icon-icon-on-color, #fff);
+				border-radius: tokens.$radius-full;
+				background: tokens.$color-fg-white;
 				top: 3px;
 				left: 3px;
 				transition: transform 0.2s ease;
@@ -52,7 +53,7 @@
 		}
 
 		input:checked + .pill {
-			background: var(--support-support-success, #24a148);
+			background: tokens.$color-fg-success-primary;
 
 			&::before {
 				transform: translateX(24px);
@@ -68,8 +69,8 @@
 		.pill {
 			width: 32px;
 			height: 16px;
-			border-radius: 20px;
-			background: var(--Miscellaneous-toggle-off, #bfbfbf);
+			border-radius: tokens.$radius-full;
+			background: tokens.$color-utility-gray-400;
 			position: relative;
 			transition: background 0.2s ease;
 
@@ -78,8 +79,8 @@
 				position: absolute;
 				width: 10px;
 				height: 10px;
-				border-radius: 10px;
-				background: var(--icon-icon-on-color, #fff);
+				border-radius: tokens.$radius-full;
+				background: tokens.$color-fg-white;
 				top: 3px;
 				left: 3px;
 				transition: transform 0.2s ease;
@@ -105,7 +106,7 @@
 		}
 
 		input:checked + .pill {
-			background: var(--support-support-success, #24a148);
+			background: tokens.$color-fg-success-primary;
 
 			&::before {
 				transform: translateX(16px);
@@ -124,12 +125,12 @@
 
 		.pill {
 			background: transparent;
-			border: 1px solid var(--border-border-subtle, #ededed);
+			border: 1px solid tokens.$color-border-disable-subtle;
 
 			&::before {
 				top: 2px;
 				left: 2px;
-				background: var(--icon-icon-primary, #161616);
+				background: tokens.$color-fg-primary;
 			}
 		}
 	}
@@ -140,25 +141,20 @@
 		cursor: not-allowed;
 
 		[data-elem='label'] {
-			color: var(--text-text-disabled, #161616);
-			font-family: var(--font-font-family, Poppins);
-			font-size: var(--font-font-size-12, 12px);
+			color: tokens.$color-text-disabled;
+			font-family: tokens.$font-family-base;
+			font-size: tokens.$font-size-12;
 			font-style: normal;
-			font-weight: var(--font-font-weight-Regular, 400);
-			line-height: var(--font-font-height-16, 16px);
+			font-weight: tokens.$font-weight-regular;
+			line-height: tokens.$line-height-16;
 			letter-spacing: var(--font-font-spacing-large, 0.32px);
 			opacity: 0.25;
 		}
-
-		[data-elem='label'] {
-			color: var(--text-text-disabled, #161616);
-		}
-
 		.pill {
-			background: var(--button-button-disabled, #dcdcdc);
+			background: tokens.$color-bg-disabled;
 
 			&::before {
-				background: var(--icon-icon-on-color-disable, #828282);
+				background: tokens.$color-fg-disabled;
 			}
 		}
 	}
@@ -166,8 +162,6 @@
 	// FOCUS
 
 	input:focus-visible + .pill {
-		box-shadow:
-			0 0 0 0.5px #fff,
-			0 0 0 2px var(--focus-focus-primary, #3b82f6);
+		box-shadow: tokens.$shadow-state-focus-primary-brand;
 	}
 }
