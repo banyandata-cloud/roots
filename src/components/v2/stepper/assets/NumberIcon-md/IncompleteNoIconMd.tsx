@@ -14,9 +14,9 @@ interface IncompleteNoIconMdProps {
 const IncompleteNoIconMd: React.FC<IncompleteNoIconMdProps> = ({
 	width = 32,
 	height = 32,
-	bgPrimary = '#FFFFFF',
-	borderSecondary = '#E9EAEB',
-	textDisabled = '#A4A7AE',
+	bgPrimary = 'var(--color-bg-primary, #FFFFFF)',
+	borderSecondary = 'var(--color-border-secondary, #E9E9EB)',
+	textDisabled = '#A4A7AE', // no design-system token for this gray; same legacy value used 100+ places repo-wide
 	step,
 	className,
 	style,

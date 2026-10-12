@@ -1,3 +1,4 @@
+@use '../../../styles/tokens' as tokens;
 @import '../../../styles/index';
 
 .wrapper {
@@ -6,15 +7,15 @@
 	justify-content: center;
 	border: 1px solid transparent;
 	padding: 1px;
-	border-radius: 2px;
+	border-radius: tokens.$radius-xxs;
 	box-sizing: border-box;
 
 	&:active {
-		border-color: var(--link-link-primary, #1f5fcc);
+		border-color: tokens.$color-fg-brand-primary;
 	}
 
 	&:has(.link:focus-visible) {
-		border-color: var(--link-link-primary, #1f5fcc);
+		border-color: tokens.$color-fg-brand-primary;
 	}
 
 	// Sizes
@@ -42,15 +43,14 @@
 	// Disabled
 
 	&.disabled {
-		opacity: 0.25;
 		pointer-events: none;
 
 		.link {
-			color: var(--text-text-disabled, #161616);
+			color: tokens.$color-text-disabled;
 		}
 
 		.icon {
-			stroke: var(--icon-icon-disabled, #161616);
+			stroke: tokens.$color-fg-disabled;
 		}
 	}
 
@@ -59,36 +59,36 @@
 	.link {
 		display: inline-flex;
 		align-items: center;
-		gap: var(--spacing-03, 8px);
+		gap: tokens.$spacing-md;
 		text-decoration: none;
 		cursor: pointer;
-		color: var(--link-link-primary, #1f5fcc);
+		color: tokens.$color-fg-brand-primary;
 
 		&:focus-visible {
 			outline: none;
 		}
 
 		&:hover {
-			color: var(--link-link-primary-hover, #1b55b5);
+			color: tokens.$color-text-brand-secondary;
 
 			.icon {
-				stroke: var(--link-link-primary-hover, #1b55b5);
+				stroke: tokens.$color-text-brand-secondary;
 			}
 		}
 
 		&:visited {
-			color: var(--link-Link-visited, #8a3ffc);
+			color: #8a3ffc; // no "visited" token exists in design-system yet
 
 			.icon {
-				stroke: var(--link-Link-visited, #8a3ffc);
+				stroke: #8a3ffc;
 			}
 		}
 
 		&:active {
-			color: var(--icon-icon-primary, #161616);
+			color: tokens.$color-fg-primary;
 
 			.icon {
-				stroke: var(--icon-icon-primary, #161616);
+				stroke: tokens.$color-fg-primary;
 			}
 		}
 	}
@@ -97,7 +97,7 @@
 
 	.icon {
 		stroke-width: 1.2px;
-		stroke: var(--link-link-primary, #1f5fcc);
+		stroke: tokens.$color-fg-brand-primary;
 		width: 16px;
 		height: 16px;
 	}

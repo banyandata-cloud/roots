@@ -1,7 +1,7 @@
 .tooltip {
   position: relative;
-  background-color: #1c1c1c; /* Deep dark rich grey from the Canva spec */
-  color: #ffffff;
+  background-color: var(--color-bg-primary-black); /* Always-dark surface regardless of app theme */
+  color: var(--color-text-white);
   padding: 8px 12px;
   border-radius: 6px;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15), 0 0 1px rgba(255, 255, 255, 0.1);
@@ -21,14 +21,14 @@
   font-weight: 600 !important;
   line-height: 1.4 !important;
   color: inherit !important;
-  font-family: Jakarta Sans, sans-serif;
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
 }
 
 .arrow {
   position: absolute;
   width: 8px;
   height: 8px;
-  background-color: #1c1c1c;
+  background-color: var(--color-bg-primary-black);
   transform: rotate(45deg);
   border-radius: 1px;
-}/*# sourceMappingURL=Tooltip.module.css.map */
+}

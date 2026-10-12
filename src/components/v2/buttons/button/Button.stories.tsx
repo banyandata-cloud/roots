@@ -172,38 +172,38 @@ export const AllVariants: Story = {
 					<div style={rowStyle}>
 						<Button
 							title='Verb + noun'
-							variant='Soft'
+							variant='soft'
 							size='xs'
 							leftComponent={MailIcon}
 							rightComponent={ArrowIcon}
 						/>
 						<Button
 							title='Verb + noun'
-							variant='Soft'
+							variant='soft'
 							size='sm'
 							leftComponent={MailIcon}
 							rightComponent={ArrowIcon}
 						/>
 						<Button
 							title='Verb + noun'
-							variant='Soft'
+							variant='soft'
 							size='md'
 							leftComponent={MailIcon}
 							rightComponent={ArrowIcon}
 						/>
 						<Button
 							title='Verb + noun'
-							variant='Soft'
+							variant='soft'
 							size='lg'
 							leftComponent={MailIcon}
 							rightComponent={ArrowIcon}
 						/>
 					</div>
 					<div style={rowStyle}>
-						<Button variant='Soft' size='xs' leftComponent={MailIcon} />
-						<Button variant='Soft' size='sm' leftComponent={MailIcon} />
-						<Button variant='Soft' size='md' leftComponent={MailIcon} />
-						<Button variant='Soft' size='lg' leftComponent={MailIcon} />
+						<Button variant='soft' size='xs' leftComponent={MailIcon} />
+						<Button variant='soft' size='sm' leftComponent={MailIcon} />
+						<Button variant='soft' size='md' leftComponent={MailIcon} />
+						<Button variant='soft' size='lg' leftComponent={MailIcon} />
 					</div>
 				</div>
 			</div>
@@ -214,38 +214,38 @@ export const AllVariants: Story = {
 					<div style={rowStyle}>
 						<Button
 							title='Verb + noun'
-							variant='outlined'
+							variant='outline'
 							size='xs'
 							leftComponent={MailIcon}
 							rightComponent={ArrowIcon}
 						/>
 						<Button
 							title='Verb + noun'
-							variant='outlined'
+							variant='outline'
 							size='sm'
 							leftComponent={MailIcon}
 							rightComponent={ArrowIcon}
 						/>
 						<Button
 							title='Verb + noun'
-							variant='outlined'
+							variant='outline'
 							size='md'
 							leftComponent={MailIcon}
 							rightComponent={ArrowIcon}
 						/>
 						<Button
 							title='Verb + noun'
-							variant='outlined'
+							variant='outline'
 							size='lg'
 							leftComponent={MailIcon}
 							rightComponent={ArrowIcon}
 						/>
 					</div>
 					<div style={rowStyle}>
-						<Button variant='outlined' size='xs' leftComponent={MailIcon} />
-						<Button variant='outlined' size='sm' leftComponent={MailIcon} />
-						<Button variant='outlined' size='md' leftComponent={MailIcon} />
-						<Button variant='outlined' size='lg' leftComponent={MailIcon} />
+						<Button variant='outline' size='xs' leftComponent={MailIcon} />
+						<Button variant='outline' size='sm' leftComponent={MailIcon} />
+						<Button variant='outline' size='md' leftComponent={MailIcon} />
+						<Button variant='outline' size='lg' leftComponent={MailIcon} />
 					</div>
 				</div>
 			</div>

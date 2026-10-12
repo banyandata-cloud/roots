@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { ThemedContainer } from '../helpers';
 import InlineLoaderDoc from '../inlineLoader/Story/InlineLoaderDoc';
 import { InlineLoader } from './InlineLoader';
 
@@ -12,6 +13,13 @@ const meta: Meta<typeof InlineLoader> = {
 			page: InlineLoaderDoc,
 		},
 	},
+	decorators: [
+		(Story) => (
+			<ThemedContainer theme='light'>
+				<Story />
+			</ThemedContainer>
+		),
+	],
 };
 
 export default meta;
@@ -23,14 +31,14 @@ const wrapperStyle: React.CSSProperties = {
 	flexDirection: 'column',
 	gap: '20px',
 	padding: '20px',
-	background: '#f9f9f9',
+	background: 'var(--color-bg-secondary, #F7F7F7)',
 	borderRadius: '4px',
 };
 
 const headingStyle: React.CSSProperties = {
 	fontSize: '14px',
 	fontWeight: 600,
-	color: '#333',
+	color: 'var(--color-text-primary, #181D27)',
 	margin: '0 0 4px 0',
 	textTransform: 'uppercase',
 	letterSpacing: '0.5px',
