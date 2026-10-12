@@ -11,7 +11,7 @@ import { TickIcon } from '../../icons/tickIcon';
 import { WarningIcon } from '../../icons/warning';
 import Tag from '../../tags/Tags';
 import { Tooltip } from '../../tooltip';
-import { TextField } from '../textField';
+import { TextField } from '../textfield';
 import styles from './Dropdown.module.scss';
 import type { AdvancedSearchResult, DropdownProps, DropdownRef, SearchTag } from './types';
 

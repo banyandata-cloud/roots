@@ -1,3 +1,3 @@
 export * from './dropdown';
-export * from './textField';
+export * from './textfield';
 export * from './toggle';

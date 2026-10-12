@@ -1,4 +1,4 @@
-import type { ButtonColors } from 'components/buttons';
+import type { ButtonColors } from '@/components/buttons';
 import type { ComponentType } from 'react';
 
 export type DialogSize = 'sm' | 'md';
