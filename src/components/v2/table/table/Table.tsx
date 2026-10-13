@@ -1,7 +1,7 @@
 import { isValidElement, useEffect, useRef, useState, type ReactElement } from 'react';
 import { classes } from '../../../../utils';
 import BaseSidePanel from '../../../sidePanel/BaseSidePanel';
-import { Pagination } from '../../pagination';
+import { Pagination, usePagination } from '../../pagination';
 import { BaseTableV2 } from '../baseTable';
 import type { TableDrawerToggle, TableProps } from '../types';
 import styles from './Table.module.css';
@@ -47,6 +47,15 @@ const Table = ({
 }: TableProps): ReactElement => {
 	const ref = useRef<HTMLTableElement | null>(null);
 	const paginationRef = useRef<HTMLDivElement | null>(null);
+	const totalPages = paginationData
+		? Math.max(1, Math.ceil(paginationData.totalItems / paginationData.pageSize))
+		: null;
+	const [paginationState, paginationDispatch] = usePagination({
+		totalPages,
+		currentPage: paginationData?.page ?? null,
+		step: paginationData?.pageSize ?? 30,
+		totalData: paginationData?.totalItems ?? null,
+	});
 
 	const [floating, setFloating] = useState<boolean>(false);
 	const [hiddenColumns, setHiddenColumns] = useState<Record<string, boolean | null>>();
@@ -56,6 +65,13 @@ const Table = ({
 			datum: {},
 		},
 	});
+
+	useEffect(() => {
+		if (paginationData) {
+			paginationDispatch({ type: 'SET_STEP', payload: paginationData.pageSize });
+			paginationDispatch({ type: 'SET_PAGE', payload: paginationData.page });
+		}
+	}, [paginationData?.page, paginationData?.pageSize]);
 
 	useEffect(() => {
 		setToggleTableDrawer({
@@ -134,13 +150,6 @@ const Table = ({
 	useEffect(() => {
 		const tableElem = ref.current;
 		if (tableElem && !loading) {
-			tableElem.style.height = 'calc(100% - 48px)';
-		}
-	}, [loading]);
-
-	useEffect(() => {
-		const tableElem = ref.current;
-		if (tableElem && !loading) {
 			const tableHeaderElem = tableElem.querySelector<HTMLElement>(
 				'[data-elem="table-header"]'
 			);
@@ -164,6 +173,20 @@ const Table = ({
 	}, [headerData]);
 
 	const tabularData = Array.isArray(tableData) ? tableData : [];
+	const handlePaginationChange = ({
+		currentPage,
+		step,
+	}: {
+		currentPage: number;
+		step: number;
+	}) => {
+		if (paginationData?.page !== currentPage) {
+			paginationData?.onPageChange(currentPage);
+		}
+		if (paginationData?.pageSize !== step) {
+			paginationData?.onPageSizeChange?.(step);
+		}
+	};
 
 	return (
 		<div className={classes(styles.root, className)}>
@@ -198,7 +221,9 @@ const Table = ({
 				<Pagination
 					className={classes(styles.pagination, floating ? styles.floating : '')}
 					ref={paginationRef}
-					{...paginationData}
+					paginationState={paginationState}
+					paginationDispatch={paginationDispatch}
+					onChange={handlePaginationChange}
 					floating={floating}
 					dataLabel={dataLabel}
 					loading={loading}

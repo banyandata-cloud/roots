@@ -5,11 +5,11 @@
   align-items: center;
   gap: 16px;
   margin-bottom: 16px;
-  padding: 0px, 8px;
+  padding: 0 8px;
 }
 .row.header {
-  height: 48px;
-  background: var(--light-color1);
+  height: 40px;
+  background: var(--color-bg-secondary);
 }
 .row.header .th {
   display: flex;
@@ -18,7 +18,7 @@
   align-items: center;
 }
 .row.header .th .skeleton {
-  background: var(--light-color2);
+  background: var(--color-bg-tertiary);
 }
 .row > .column {
   width: 100%;

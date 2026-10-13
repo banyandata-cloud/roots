@@ -55,6 +55,12 @@ const MyComponent = () => {
 
 const propsData = [
 	{
+		prop: 'searchTag',
+		type: 'boolean',
+		description: 'Renders the label-only search tag without an input or closer.',
+		default: 'false',
+	},
+	{
 		prop: 'label',
 		type: 'string',
 		description: 'Text displayed inside the tag.',
@@ -237,7 +243,7 @@ const TagDoc = () => (
 		</Subtitle>
 
 		<LinkHeader
-			figmaLink='https://www.figma.com/design/IfmLQrA0AAZVYwt6vRxqCe/Design-System--26?node-id=1049-71&p=f&m=dev'
+			figmaLink='https://www.figma.com/design/IfmLQrA0AAZVYwt6vRxqCe/Design-System--26?node-id=1730-3914&m=dev'
 			githubLink='https://github.com/banyandata-cloud/roots/tree/main/src/components/v2/tags'
 		/>
 

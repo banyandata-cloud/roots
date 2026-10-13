@@ -31,7 +31,7 @@ type Story = StoryObj<typeof Accordion>;
 const sectionStyle = {
 	display: 'flex',
 	flexDirection: 'column' as const,
-	gap: '8px',
+	gap: 0,
 };
 
 const headingStyle = {

@@ -1,4 +1,5 @@
 import type { ReactElement } from 'react';
+import type { RowHeight } from '../../types';
 export interface TableProps {
 	headerData?: any[];
 	customCells?: Record<string, any>;
@@ -8,7 +9,7 @@ export interface TableProps {
 	onRowClick?: (row: any) => void;
 	onSort?: (key: string, direction: 'asc' | 'desc') => void;
 	sortValue?: string;
-	rowHeight?: number;
+	rowHeight?: RowHeight;
 	defaultActiveIndex?: number;
 	emptyPlaceholder?: ReactElement;
 	onCheck?: (row: any) => void;
@@ -17,26 +18,25 @@ export interface TableProps {
 	disableCheck?: boolean;
 	hideColumnLines?: boolean;
 }
-export interface TableBodyProps
-	extends Pick<
-		TableProps,
-		| 'headerData'
-		| 'customCells'
-		| 'tableData'
-		| 'className'
-		| 'loading'
-		| 'onRowClick'
-		| 'onSort'
-		| 'sortValue'
-		| 'rowHeight'
-		| 'defaultActiveIndex'
-		| 'emptyPlaceholder'
-		| 'onCheck'
-		| 'uniqueKey'
-		| 'checkAsRadio'
-		| 'disableCheck'
-		| 'hideColumnLines'
-	> {
+export interface TableBodyProps extends Pick<
+	TableProps,
+	| 'headerData'
+	| 'customCells'
+	| 'tableData'
+	| 'className'
+	| 'loading'
+	| 'onRowClick'
+	| 'onSort'
+	| 'sortValue'
+	| 'rowHeight'
+	| 'defaultActiveIndex'
+	| 'emptyPlaceholder'
+	| 'onCheck'
+	| 'uniqueKey'
+	| 'checkAsRadio'
+	| 'disableCheck'
+	| 'hideColumnLines'
+> {
 	expandable?: (params: { datum: Record<string | number, any>; index: number }) => ReactElement;
 
 	checkedRows: Record<string, unknown>[];

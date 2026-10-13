@@ -1,6 +1,3 @@
-// Storybook loads this file directly (.storybook/preview.ts), bypassing the
-// package's src/index.ts barrel -- wired here too so dark-mode tokens exist
-// in the Storybook preview, mirroring the src/styles/index.ts wiring for real consumers.
 @use './tokens/root-colors';
 
 * {
@@ -122,6 +119,16 @@ body {
 	font-weight: 700;
 	src: url('../../fonts/Jakarta-Bold.ttf') format('truetype');
 }
+@each $weight, $file in (400: 'Regular', 500: 'Medium', 600: 'SemiBold', 700: 'Bold') {
+	@font-face {
+		font-family: 'Plus Jakarta Sans';
+		font-style: normal;
+		font-weight: $weight;
+		font-display: swap;
+		src: url('../../fonts/Jakarta-#{$file}.ttf') format('truetype');
+	}
+}
+
 .app-container {
 	display: flex;
 	height: 100%;

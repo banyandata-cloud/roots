@@ -20,6 +20,12 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 	} = props;
 
 	const isIconOnly = !title && !!LeftComponent;
+	const variantClass =
+		variant === 'Soft'
+			? styles.soft
+			: variant === 'outlined'
+				? styles.outline
+				: styles[variant];
 
 	return (
 		<BaseButton
@@ -39,7 +45,12 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 			}
 			component3={
 				!isIconOnly && RightComponent ? (
-					<RightComponent className={styles[`icon-${size}`]} />
+					<RightComponent
+						className={classes(
+							styles[`icon-${size}`],
+							size === 'lg' && styles['icon-trailing-lg']
+						)}
+					/>
 				) : undefined
 			}
 			disabled={disabled}
@@ -48,7 +59,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 			id={id}
 			className={classes(
 				styles.root,
-				styles[variant],
+				variantClass,
 				styles[`size-${size}`],
 				isIconOnly && styles['icon-only'],
 				className
