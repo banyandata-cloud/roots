@@ -1,6 +1,8 @@
 // V2 Components exports
 export * from './accordion';
 export * from './alert';
+export * from './badges';
+export * from './breadcrumbs';
 export * from './buttons';
 export * from './cell';
 export * from './checkbox';
@@ -14,6 +16,7 @@ export * from './skeleton';
 export * from './stepper';
 export * from './table';
 export * from './tabs';
+export * from './tags';
 export * from './text';
 export * from './inlineLoader';
 export * from './tooltip';
