@@ -33,4 +33,5 @@ export interface BreadcrumbsProps {
 	separator?: BreadcrumbSeparator | undefined;
 	className?: string | undefined;
 	activeIndex?: number | undefined;
+	showHomeIcon?: boolean | undefined;
 }

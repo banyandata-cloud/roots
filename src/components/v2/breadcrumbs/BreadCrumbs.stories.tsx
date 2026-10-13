@@ -117,6 +117,37 @@ export const Text: Story = {
 	),
 };
 
+const textOnlyCrumbs: BreadcrumbItem[] = [
+	{ id: 'scos', label: 'SCOS' },
+	{ id: 'cloud-security', label: 'Cloud Security' },
+	{ id: 'aws-security', label: 'AWS Security' },
+];
+
+export const NoHomeIcon: Story = {
+	name: 'Without Home Icon',
+	render: () => (
+		<div style={{ padding: '16px' }}>
+			<SectionHeading label='Fully Textual (showHomeIcon=false)' />
+			<Row label='Chevron'>
+				<Breadcrumbs
+					type='text'
+					separator='chevron'
+					crumbs={textOnlyCrumbs}
+					showHomeIcon={false}
+				/>
+			</Row>
+			<Row label='Slash'>
+				<Breadcrumbs
+					type='text'
+					separator='slash'
+					crumbs={textOnlyCrumbs}
+					showHomeIcon={false}
+				/>
+			</Row>
+		</div>
+	),
+};
+
 export const ButtonVariant: Story = {
 	name: 'Button',
 	render: () => (

@@ -71,6 +71,7 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
 	separator = 'chevron',
 	className = '',
 	activeIndex,
+	showHomeIcon = true,
 }) => {
 	const [openDropdownId, setOpenDropdownId] = useState<string | null>(null);
 	const [focusedId, setFocusedId] = useState<string | null>(null);
@@ -114,6 +115,7 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
 			{crumbs.map((crumb, index) => {
 				const crumbId = crumb.id ?? `crumb-${index}`;
 				const isFirst = index === 0;
+				const isHomeIcon = isFirst && showHomeIcon;
 				const isLast = index === crumbs.length - 1;
 				const isActive = typeof activeIndex === 'number' ? index === activeIndex : isLast;
 				const isFocused = focusedId === crumbId;
@@ -124,13 +126,13 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
 
 				const sharedItemClass = classes(
 					styles.crumbItem,
-					isFirst ? styles.iconCrumbItem : '',
+					isHomeIcon ? styles.iconCrumbItem : '',
 					isActive ? styles.active : '',
 					isFocused ? styles.focused : '',
 					crumb.isDisabled ? styles.disabled : ''
 				);
 
-				const iconColor = isFirst
+				const iconColor = isHomeIcon
 					? isActive
 						? '#1570EF'
 						: isHovered
@@ -138,7 +140,7 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
 							: '#A4A7AE'
 					: '#A4A7AE';
 
-				const buttonIconColor = isFirst
+				const buttonIconColor = isHomeIcon
 					? isActive
 						? '#535862'
 						: isHovered
@@ -178,7 +180,7 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
 							onMouseLeave={() => setHoveredId(null)}
 							onKeyDown={handleKeyDown}
 							{...focusHandlers}>
-							{isFirst ? (
+							{isHomeIcon ? (
 								isTextVariant ? (
 									<Link
 										variant='unstyled'
