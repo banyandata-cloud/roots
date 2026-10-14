@@ -20,11 +20,18 @@
   font-size: 14px;
   color: var(--color-text-primary);
 }
+.root[data-elem=base-cell] > [data-elem*=component] .cell-text:has(button) {
+  overflow: visible;
+}
 .root[data-elem=base-cell] > [data-elem=component1] {
   flex: unset !important;
   overflow: visible;
   pointer-events: auto;
   flex-shrink: 0;
+}
+.root[data-elem=base-cell] > [data-elem=component2],
+.root[data-elem=base-cell] > [data-elem=component3] {
+  overflow: visible;
 }
 .root[data-elem=base-cell] {
   /* ================= HEADER CELL ================= */
