@@ -207,7 +207,7 @@ const TableRow = forwardRef((props: TableRowProps, ref: ForwardedRef<HTMLTableRo
 			<TableCellV2
 				key={item.id}
 				{...cellPropsWithoutHideColumnLines}
-				tabIndex={type === 'body' ? 0 : item.sort || item.columnFilter ? -1 : 0}
+				tabIndex={-1}
 				id={item.id}
 				_index={_index}
 				expandableProps={expandableProps}

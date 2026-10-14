@@ -18,6 +18,13 @@
 			width: 100%;
 			font-size: tokens.$font-size-14;
 			color: tokens.$color-text-primary;
+
+			// Plain text still needs ellipsis clipping, but a custom cellContent
+			// element (e.g. Button) must not have its focus-visible box-shadow
+			// ring / border clipped by this wrapper.
+			&:has(button) {
+				overflow: visible;
+			}
 		}
 	}
 
@@ -28,7 +35,11 @@
 		flex-shrink: 0;
 	}
 
-	/* ================= HEADER CELL ================= */
+	> [data-elem='component2'],
+	> [data-elem='component3'] {
+		overflow: visible;
+	}
+
 
 	&.header-cell {
 		text-align: left;
