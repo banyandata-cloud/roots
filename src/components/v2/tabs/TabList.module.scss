@@ -1,0 +1,57 @@
+@use '../../../styles/tokens' as t;
+
+.row {
+	display: flex;
+	align-items: flex-start;
+	gap: t.$spacing-xl;
+}
+
+.list {
+	display: flex;
+	align-items: center;
+	gap: t.$spacing-xs;
+
+	&.vertical {
+		flex-direction: column;
+		align-items: stretch;
+		width: fit-content;
+
+		> button {
+			justify-content: flex-start;
+		}
+	}
+
+	&.full > button {
+		flex: 1 1 0;
+		min-width: 0;
+	}
+
+	&.border {
+		padding: t.$spacing-xs;
+		border: 1px solid t.$color-border-secondary-alt;
+		border-radius: t.$radius-lg;
+		background: t.$color-bg-secondary-alt;
+	}
+
+	&.minimal {
+		gap: t.$spacing-xxs;
+		border: 1px solid t.$color-border-secondary;
+		border-radius: t.$radius-md;
+		background: t.$color-bg-secondary-alt;
+	}
+
+	&.underline {
+		gap: t.$spacing-lg;
+		border-bottom: 1px solid t.$color-border-secondary;
+
+		&.vertical {
+			gap: t.$spacing-xs;
+			border-bottom: 0;
+			border-left: 1px solid t.$color-border-secondary;
+		}
+	}
+}
+
+.content {
+	padding-top: t.$spacing-xl;
+}

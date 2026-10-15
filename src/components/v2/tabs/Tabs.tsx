@@ -11,9 +11,82 @@ import { Button } from '../../buttons';
 import Dropdown from '../../input/dropdown/Dropdown';
 import DropdownItem from '../../input/dropdown/dropdown-item/DropdownItem';
 import styles from './Tabs.module.css';
-import type { TabsProps } from './types';
+import TabButtonBase from './tabButtonBase/TabButtonBase';
+import type { TabButtonBaseType } from './tabButtonBase/types';
+import listStyles from './TabList.module.css';
+import type { TabsProps, TabsType } from './types';
 
-const Tabs = (props: TabsProps): ReactElement => {
+const buttonTypes: Record<TabsType, TabButtonBaseType> = {
+	brand: 'button-brand',
+	gray: 'button-gray',
+	border: 'button-white',
+	minimal: 'button-minimal',
+	underline: 'underline',
+};
+
+const VariantTabs = (props: TabsProps & { type: TabsType }): ReactElement => {
+	const {
+		tabs = [],
+		className = '',
+		selectedTab,
+		setSelectedTab,
+		direction = 'horizontal',
+		type,
+		size = 'sm',
+		fullWidth = false,
+		children = null,
+	} = props;
+
+	const vertical = direction === 'vertical';
+	const buttonType = vertical && type === 'underline' ? 'line' : buttonTypes[type];
+
+	return (
+		<div className={classes(vertical ? listStyles.row : '', className)}>
+			<div
+				role='tablist'
+				aria-orientation={direction}
+				className={classes(
+					listStyles.list,
+					listStyles[type],
+					vertical ? listStyles.vertical : '',
+					fullWidth && !vertical ? listStyles.full : ''
+				)}
+			>
+				{tabs.map((tab) => {
+					const { id, title, leftIcon: LeftIcon, disabled, badge } = tab;
+					const current = id === selectedTab;
+					let icon = null;
+					if (typeof LeftIcon === 'function') {
+						icon = <LeftIcon />;
+					} else if (LeftIcon) {
+						const Icon = current ? LeftIcon.Active : LeftIcon.InActive;
+						icon = Icon ? <Icon /> : null;
+					}
+
+					return (
+						<TabButtonBase
+							key={id}
+							size={size}
+							type={buttonType}
+							current={current}
+							icon={icon}
+							badge={badge}
+							disabled={disabled}
+							onClick={() => {
+								setSelectedTab(id);
+							}}
+						>
+							{title}
+						</TabButtonBase>
+					);
+				})}
+			</div>
+			<div className={listStyles.content}>{children}</div>
+		</div>
+	);
+};
+
+const LegacyTabs = (props: TabsProps): ReactElement => {
 	const {
 		tabs = [],
 		className = '',
@@ -75,7 +148,8 @@ const Tabs = (props: TabsProps): ReactElement => {
 			className={classes(
 				vertical ? styles['tabs-container-vertical'] : styles['tabs-container'],
 				className
-			)}>
+			)}
+		>
 			<div className={vertical ? styles.vertical : styles.tabs}>
 				{tabs.map((tab, index) => {
 					const isActive = tab.id === selectedTab;
@@ -119,7 +193,8 @@ const Tabs = (props: TabsProps): ReactElement => {
 								styles.tab,
 								vertical ? styles.vertical : styles.horizontal,
 								isActive ? styles.active : ''
-							)}>
+							)}
+						>
 							{dropdown ? (
 								<Dropdown
 									className={classes(
@@ -131,7 +206,8 @@ const Tabs = (props: TabsProps): ReactElement => {
 										setActiveTab(index);
 									}}
 									value={selectedTab}
-									placeholder={title}>
+									placeholder={title}
+								>
 									{dropdownItems?.map((option) => {
 										return (
 											<DropdownItem
@@ -181,6 +257,14 @@ const Tabs = (props: TabsProps): ReactElement => {
 			</div>
 		</div>
 	);
+};
+
+const Tabs = (props: TabsProps): ReactElement => {
+	const { type } = props;
+	if (type) {
+		return <VariantTabs {...props} type={type} />;
+	}
+	return <LegacyTabs {...props} />;
 };
 
 export default Tabs;

@@ -1,0 +1,174 @@
+@use '../../../../styles/tokens' as t;
+
+$shadow-xs: 0 0 1px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
+$focus-ring: 0 0 0 2px t.$color-bg-primary, 0 0 0 4px t.$color-fg-brand-primary;
+
+.root {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: t.$spacing-md;
+	box-sizing: border-box;
+	padding: t.$spacing-md t.$spacing-lg;
+	border: 0 solid transparent;
+	background: transparent;
+	color: t.$color-text-quanternary;
+	font-family: t.$font-family-base;
+	font-size: t.$font-size-14;
+	font-weight: t.$font-weight-semibold;
+	line-height: t.$line-height-20;
+	white-space: nowrap;
+	cursor: pointer;
+	outline: none;
+
+	&:disabled {
+		cursor: not-allowed;
+		opacity: 0.5;
+	}
+
+	&.xs {
+		height: 32px;
+	}
+
+	&.sm {
+		height: 36px;
+	}
+
+	&.md {
+		height: 44px;
+		font-size: t.$font-size-16;
+		line-height: t.$line-height-24;
+	}
+
+	&:focus-visible {
+		background: t.$color-bg-primary;
+		box-shadow: $focus-ring;
+	}
+
+	&.button-brand,
+	&.button-gray,
+	&.button-minimal,
+	&.button-white {
+		border-radius: t.$radius-sm;
+	}
+
+	&.line {
+		padding: t.$spacing-xxs t.$spacing-lg;
+		border-left-width: 2px;
+		border-left-color: transparent;
+	}
+
+	&.underline {
+		padding: 0 t.$spacing-xs t.$spacing-lg;
+		border-bottom-width: 2px;
+		border-bottom-color: transparent;
+	}
+
+	// hover and current share the same look per type
+	&.button-brand {
+		&:hover:not(:disabled),
+		&.current {
+			background: t.$color-bg-brand-primary-alt;
+			color: t.$color-text-brand-secondary;
+		}
+	}
+
+	&.button-gray {
+		&.current {
+			background: t.$color-bg-active;
+			color: t.$color-text-secondary;
+		}
+
+		&:hover:not(:disabled) {
+			background: t.$color-bg-primary-hover;
+			color: t.$color-text-secondary;
+		}
+	}
+
+	&.button-minimal {
+		&:hover:not(:disabled),
+		&.current {
+			box-shadow: $shadow-xs;
+			color: t.$color-text-secondary;
+		}
+
+		&.current {
+			background: t.$color-bg-primary-alt;
+			border-width: 1px;
+			border-color: t.$color-border-primary;
+		}
+	}
+
+	&.button-white {
+		&:hover:not(:disabled),
+		&.current {
+			background: t.$color-bg-primary-alt;
+			box-shadow: $shadow-xs;
+			color: t.$color-text-secondary;
+		}
+	}
+
+	&.line,
+	&.underline {
+		&:hover:not(:disabled),
+		&.current {
+			color: t.$color-text-brand-secondary;
+		}
+	}
+
+	&.line {
+		&:hover:not(:disabled),
+		&.current {
+			border-left-color: t.$color-fg-brand-primary;
+		}
+	}
+
+	&.underline {
+		&:hover:not(:disabled),
+		&.current {
+			border-bottom-color: t.$color-fg-brand-primary;
+		}
+	}
+
+	&.button-brand.current:focus-visible {
+		background: t.$color-bg-brand-primary-alt;
+	}
+
+	&.button-minimal.current:focus-visible,
+	&.button-white.current:focus-visible {
+		background: t.$color-bg-primary-alt;
+	}
+
+	&:focus-visible {
+		box-shadow: $focus-ring;
+	}
+}
+
+.icon {
+	display: inline-flex;
+	flex-shrink: 0;
+	width: 20px;
+	height: 20px;
+}
+
+.badge {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: t.$spacing-xxs t.$spacing-md;
+	border: 1px solid t.$color-utility-gray-200;
+	border-radius: 18px;
+	background: t.$color-utility-gray-50;
+	color: t.$color-utility-gray-700;
+	font-size: t.$font-size-12;
+	font-weight: t.$font-weight-medium;
+	line-height: t.$line-height-16;
+}
+
+.button-brand.current .badge-brand,
+.underline.current .badge-brand,
+.line.current .badge-brand {
+	border-color: t.$color-utility-brand-200;
+	background: t.$color-utility-brand-50;
+	color: t.$color-utility-brand-700;
+}
