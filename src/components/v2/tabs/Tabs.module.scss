@@ -1,53 +1,67 @@
-@import '../../styles';
+@use '../../../styles/tokens' as t;
 
 .tabs-container {
 	width: fit-content;
 }
 
 .tabs-container-vertical {
-	@include flex(row, flex-start, flex-start);
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: flex-start;
 	height: 100%;
 }
 
 .tabs {
-	@include flex(row, flex-start);
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
 	position: relative;
 }
 
 .vertical {
-	@include flex(column, flex-start, flex-start);
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
 	width: auto;
-	border-right: 0.0625rem solid $light-color1;
+	border-right: 0.0625rem solid t.$color-border-secondary;
 }
 
 .tab {
 	width: 100%;
-	@include flex(row, center, flex-start);
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: flex-start;
 	height: 40px;
 	padding: 0 1rem;
 	cursor: pointer;
 	position: relative;
-	border-bottom: 1px solid $grey3 !important;
+	border-bottom: 1px solid t.$color-border-secondary;
 
 	&.vertical {
 		height: fit-content;
 	}
 	> [data-elem='base-cell'] {
-		@include flex(row, center, flex-start);
+		display: flex;
+		flex-direction: row;
+		justify-content: center;
+		align-items: flex-start;
 
 		gap: 0.5rem;
-		padding: 0 !important;
+		padding: 0;
 		font-size: 14px;
 		font-weight: 500;
-		color: $text-color;
+		color: t.$color-text-primary;
 		height: 40px;
 		&.active {
-			color: $primary-color4 !important;
+			color: t.$color-fg-brand-primary;
 		}
 		> [data-elem='component1'],
 		> [data-elem='component3'] {
 			> .icon {
-				fill: $text-color;
+				fill: t.$color-text-primary;
 				width: 1.5rem;
 				height: 1.5rem;
 				opacity: 0.7;
@@ -55,29 +69,29 @@
 		}
 		> [data-elem='component2'] {
 			> [data-elem='title'] {
-				color: $text-color !important;
-				font-size: 0.875rem !important;
-				font-weight: 400 !important;
+				color: t.$color-text-primary;
+				font-size: 0.875rem;
+				font-weight: 400;
 			}
 		}
 	}
 
 	&:has(> [data-elem='base-cell']:disabled) {
 		opacity: 0.25;
-		border-bottom: 0.1875rem solid var(--border-border-disable, #dcdcdc);
+		border-bottom: 0.1875rem solid t.$color-border-disable;
 	}
 
 	&:focus-visible {
-		outline: 1px solid $primary-color4;
+		outline: 1px solid t.$color-fg-brand-primary;
 		outline-offset: 0.1563rem;
 	}
 
 	&:hover:not(:has(:disabled)) {
-		border-bottom: 0.1875rem solid $grey1 !important;
+		border-bottom: 0.1875rem solid t.$color-bg-primary-hover;
 		> [data-elem='base-cell'] {
 			> [data-elem='component1'] {
 				> .icon {
-					fill: $text-color;
+					fill: t.$color-text-primary;
 					width: 1.5rem;
 					height: 1.5rem;
 					opacity: 0.8;
@@ -85,9 +99,9 @@
 			}
 			> [data-elem='component2'] {
 				> [data-elem='title'] {
-					color: $text-color !important;
-					font-size: 0.875rem !important;
-					font-weight: 500 !important;
+					color: t.$color-text-primary;
+					font-size: 0.875rem;
+					font-weight: 500;
 				}
 			}
 		}
@@ -97,7 +111,7 @@
 		> [data-elem='base-cell'] {
 			> [data-elem='component1'] {
 				> .icon {
-					fill: $text-color;
+					fill: t.$color-text-primary;
 					width: 1.5rem;
 					height: 1.5rem;
 					opacity: 1;
@@ -105,28 +119,31 @@
 			}
 			> [data-elem='component2'] {
 				> [data-elem='title'] {
-					color: $text-color !important;
-					font-size: 0.875rem !important;
-					font-weight: 600 !important;
+					color: t.$color-text-primary;
+					font-size: 0.875rem;
+					font-weight: 600;
 				}
 			}
 		}
 	}
 
 	.dropdown {
-		@include flex(column, center, center);
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
 		[data-elem='base-cell'] {
 			height: 2.3125rem;
 
 			&.active {
-				color: $primary-color4 !important;
+				color: t.$color-fg-brand-primary;
 			}
 		}
 		> [data-elem='header'] {
 			> [data-elem='select'] {
 				background-color: transparent;
 				border: none;
-				padding: 5px !important;
+				padding: 5px;
 				width: auto;
 				font-size: 0.875rem;
 				font-weight: 500;
@@ -140,7 +157,7 @@
 	bottom: 0;
 	left: 0;
 	height: 2px;
-	background-color: $primary-color4;
+	background-color: t.$color-fg-brand-primary;
 	transition:
 		left 0.3s ease,
 		width 0.3s ease;
@@ -149,8 +166,7 @@
 .tab-slider-vertical {
 	position: absolute;
 	right: 0;
-	width: 0.0313rem;
-	background-color: $primary-color4;
+	background-color: t.$color-fg-brand-primary;
 	transition:
 		left 0.3s ease-in-out,
 		width 0.3s ease-in-out;
@@ -159,11 +175,12 @@
 
 .tab-content {
 	padding-top: 10px;
-	// border-top: 1px solid $grey3;
+	// Intentionally no top border; the active indicator anchors the content.
 	z-index: -1;
 }
 
 .tab-content-vertical {
-	@include flex(column);
+	display: flex;
+	flex-direction: column;
 	width: 100%;
 }

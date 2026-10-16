@@ -39,6 +39,27 @@ const VariantTabs = (props: TabsProps & { type: TabsType }): ReactElement => {
 
 	const vertical = direction === 'vertical';
 	const buttonType = vertical && type === 'underline' ? 'line' : buttonTypes[type];
+	const selectedIndex = tabs.findIndex((tab) =>
+		tab.dropdown
+			? tab.dropdownItems?.some((item) => item.id === selectedTab)
+			: tab.id === selectedTab
+	);
+	const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+	const panelId = `tabs-panel-${selectedTab}`;
+
+	const moveFocus = (index: number, key: string) => {
+		const step = key === 'ArrowRight' || key === 'ArrowDown' ? 1 : -1;
+		const candidates = tabs
+			.map((tab, tabIndex) => ({ tab, tabIndex }))
+			.filter(({ tab }) => !tab.disabled && !tab.dropdown);
+		const currentPosition = candidates.findIndex(({ tabIndex }) => tabIndex === index);
+		const nextPosition = (currentPosition + step + candidates.length) % candidates.length;
+		const next = candidates[nextPosition];
+		if (next) {
+			tabRefs.current[next.tabIndex]?.focus();
+			setSelectedTab(next.tab.id);
+		}
+	};
 
 	return (
 		<div className={classes(vertical ? listStyles.row : '', className)}>
@@ -52,28 +73,92 @@ const VariantTabs = (props: TabsProps & { type: TabsType }): ReactElement => {
 					fullWidth && !vertical ? listStyles.full : ''
 				)}
 			>
-				{tabs.map((tab) => {
-					const { id, title, leftIcon: LeftIcon, disabled, badge } = tab;
-					const current = id === selectedTab;
+				{tabs.map((tab, index) => {
+					const {
+						id,
+						title,
+						leftIcon: LeftIcon,
+						rightIcon: RightIcon,
+						disabled,
+						badge,
+					} = tab;
+					const current =
+						id === selectedTab ||
+						!!tab.dropdownItems?.some((item) => item.id === selectedTab);
 					let icon = null;
 					if (typeof LeftIcon === 'function') {
-						icon = <LeftIcon />;
+						icon = <LeftIcon className={styles.icon ?? ''} />;
 					} else if (LeftIcon) {
 						const Icon = current ? LeftIcon.Active : LeftIcon.InActive;
-						icon = Icon ? <Icon /> : null;
+						icon = Icon ? <Icon className={styles.icon ?? ''} /> : null;
+					}
+					const rightIcon = RightIcon ? (
+						<RightIcon className={styles.icon ?? ''} />
+					) : null;
+					if (tab.dropdown) {
+						return (
+							<div key={id} className={listStyles.dropdown}>
+								<Dropdown
+									value={selectedTab}
+									placeholder={title}
+									onChange={(_: SyntheticEvent, value) => {
+										if (value != null) setSelectedTab(value.toString());
+									}}
+								>
+									{tab.dropdownItems?.map((item) => (
+										<DropdownItem
+											key={item.id}
+											title={item.title}
+											value={item.id}
+										/>
+									))}
+								</Dropdown>
+							</div>
+						);
 					}
 
 					return (
 						<TabButtonBase
 							key={id}
+							ref={(element) => {
+								tabRefs.current[index] = element;
+							}}
+							id={`tab-${id}`}
+							aria-controls={panelId}
+							tabIndex={index === selectedIndex ? 0 : -1}
 							size={size}
 							type={buttonType}
 							current={current}
 							icon={icon}
+							rightIcon={rightIcon}
 							badge={badge}
 							disabled={disabled}
 							onClick={() => {
 								setSelectedTab(id);
+							}}
+							onKeyDown={(event) => {
+								if (event.key === 'Home' || event.key === 'End') {
+									event.preventDefault();
+									const candidates = tabs
+										.map((item, itemIndex) => ({ item, itemIndex }))
+										.filter(({ item }) => !item.disabled && !item.dropdown);
+									const target =
+										event.key === 'Home' ? candidates.at(0) : candidates.at(-1);
+									if (target) {
+										tabRefs.current[target.itemIndex]?.focus();
+										setSelectedTab(target.item.id);
+									}
+									return;
+								}
+								if (
+									(vertical &&
+										(event.key === 'ArrowUp' || event.key === 'ArrowDown')) ||
+									(!vertical &&
+										(event.key === 'ArrowLeft' || event.key === 'ArrowRight'))
+								) {
+									event.preventDefault();
+									moveFocus(index, event.key);
+								}
 							}}
 						>
 							{title}
@@ -81,7 +166,18 @@ const VariantTabs = (props: TabsProps & { type: TabsType }): ReactElement => {
 					);
 				})}
 			</div>
-			<div className={listStyles.content}>{children}</div>
+			<div
+				id={panelId}
+				role='tabpanel'
+				aria-labelledby={
+					selectedIndex >= 0 && tabs[selectedIndex]
+						? `tab-${tabs[selectedIndex].id}`
+						: undefined
+				}
+				className={listStyles.content}
+			>
+				{children}
+			</div>
 		</div>
 	);
 };

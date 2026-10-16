@@ -6,10 +6,10 @@ interface TabProps {
 	title: string;
 	disabled?: boolean;
 	leftIcon?:
-		| ComponentType
+		| ComponentType<{ className?: string | undefined }>
 		| {
-				Active?: ComponentType;
-				InActive?: ComponentType;
+				Active?: ComponentType<{ className?: string | undefined }>;
+				InActive?: ComponentType<{ className?: string | undefined }>;
 		  };
 	rightIcon?: ComponentType<{ className?: string | undefined }>;
 	/** Count/label shown in the tab badge (variant tabs only) */

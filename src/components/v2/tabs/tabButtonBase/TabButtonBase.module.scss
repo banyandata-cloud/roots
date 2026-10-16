@@ -1,7 +1,13 @@
 @use '../../../../styles/tokens' as t;
 
-$shadow-xs: 0 0 1px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
-$focus-ring: 0 0 0 2px t.$color-bg-primary, 0 0 0 4px t.$color-fg-brand-primary;
+$shadow-xs:
+	0 0 1px rgba(0, 0, 0, 0.04),
+	0 1px 2px rgba(0, 0, 0, 0.06);
+$focus-ring:
+	0 0 0 2px t.$color-bg-primary,
+	0 0 0 4px t.$color-fg-brand-primary;
+$border-width: t.$spacing-1;
+$indicator-width: t.$spacing-xxs;
 
 .root {
 	display: inline-flex;
@@ -40,11 +46,6 @@ $focus-ring: 0 0 0 2px t.$color-bg-primary, 0 0 0 4px t.$color-fg-brand-primary;
 		line-height: t.$line-height-24;
 	}
 
-	&:focus-visible {
-		background: t.$color-bg-primary;
-		box-shadow: $focus-ring;
-	}
-
 	&.button-brand,
 	&.button-gray,
 	&.button-minimal,
@@ -53,15 +54,27 @@ $focus-ring: 0 0 0 2px t.$color-bg-primary, 0 0 0 4px t.$color-fg-brand-primary;
 	}
 
 	&.line {
-		padding: t.$spacing-xxs t.$spacing-lg;
-		border-left-width: 2px;
+		padding: t.$spacing-xxs calc(t.$spacing-lg - 2px);
+		border-left-width: $indicator-width;
 		border-left-color: transparent;
+
+		&:hover:not(:disabled),
+		&.current {
+			border-left-color: t.$color-fg-brand-primary;
+			color: t.$color-text-brand-secondary;
+		}
 	}
 
 	&.underline {
-		padding: 0 t.$spacing-xs t.$spacing-lg;
-		border-bottom-width: 2px;
+		padding: 0 t.$spacing-xs calc(t.$spacing-lg - 2px);
+		border-bottom-width: $indicator-width;
 		border-bottom-color: transparent;
+
+		&:hover:not(:disabled),
+		&.current {
+			border-bottom-color: t.$color-fg-brand-primary;
+			color: t.$color-text-brand-secondary;
+		}
 	}
 
 	// hover and current share the same look per type
@@ -74,6 +87,10 @@ $focus-ring: 0 0 0 2px t.$color-bg-primary, 0 0 0 4px t.$color-fg-brand-primary;
 	}
 
 	&.button-gray {
+		&:focus-visible:not(.current) {
+			border-radius: t.$radius-md;
+		}
+
 		&.current {
 			background: t.$color-bg-active;
 			color: t.$color-text-secondary;
@@ -85,16 +102,23 @@ $focus-ring: 0 0 0 2px t.$color-bg-primary, 0 0 0 4px t.$color-fg-brand-primary;
 		}
 	}
 
+	&.button-gray.current:focus-visible {
+		background: t.$color-bg-primary;
+	}
+
 	&.button-minimal {
 		&:hover:not(:disabled),
 		&.current {
+			background: t.$color-bg-primary-alt;
 			box-shadow: $shadow-xs;
 			color: t.$color-text-secondary;
 		}
 
+		border: $border-width solid transparent;
+		padding-right: calc(t.$spacing-lg - $border-width);
+		padding-left: calc(t.$spacing-lg - $border-width);
+
 		&.current {
-			background: t.$color-bg-primary-alt;
-			border-width: 1px;
 			border-color: t.$color-border-primary;
 		}
 	}
@@ -108,47 +132,30 @@ $focus-ring: 0 0 0 2px t.$color-bg-primary, 0 0 0 4px t.$color-fg-brand-primary;
 		}
 	}
 
-	&.line,
-	&.underline {
-		&:hover:not(:disabled),
-		&.current {
-			color: t.$color-text-brand-secondary;
-		}
-	}
-
-	&.line {
-		&:hover:not(:disabled),
-		&.current {
-			border-left-color: t.$color-fg-brand-primary;
-		}
-	}
-
-	&.underline {
-		&:hover:not(:disabled),
-		&.current {
-			border-bottom-color: t.$color-fg-brand-primary;
-		}
-	}
-
 	&.button-brand.current:focus-visible {
 		background: t.$color-bg-brand-primary-alt;
+	}
+
+	&.button-white:focus-visible,
+	&.button-white:hover:focus-visible,
+	&.button-white.current:focus-visible,
+	&.button-minimal:focus-visible,
+	&.button-minimal:hover:focus-visible,
+	&.button-minimal.current:focus-visible {
+		box-shadow: $focus-ring;
 	}
 
 	&.button-minimal.current:focus-visible,
 	&.button-white.current:focus-visible {
 		background: t.$color-bg-primary-alt;
 	}
-
-	&:focus-visible {
-		box-shadow: $focus-ring;
-	}
 }
 
 .icon {
 	display: inline-flex;
 	flex-shrink: 0;
-	width: 20px;
-	height: 20px;
+	width: t.$spacing-2xl;
+	height: t.$spacing-2xl;
 }
 
 .badge {
@@ -156,8 +163,8 @@ $focus-ring: 0 0 0 2px t.$color-bg-primary, 0 0 0 4px t.$color-fg-brand-primary;
 	align-items: center;
 	justify-content: center;
 	padding: t.$spacing-xxs t.$spacing-md;
-	border: 1px solid t.$color-utility-gray-200;
-	border-radius: 18px;
+	border: $border-width solid t.$color-utility-gray-200;
+	border-radius: t.$radius-full;
 	background: t.$color-utility-gray-50;
 	color: t.$color-utility-gray-700;
 	font-size: t.$font-size-12;
@@ -171,4 +178,17 @@ $focus-ring: 0 0 0 2px t.$color-bg-primary, 0 0 0 4px t.$color-fg-brand-primary;
 	border-color: t.$color-utility-brand-200;
 	background: t.$color-utility-brand-50;
 	color: t.$color-utility-brand-700;
+}
+
+.button-brand:hover:not(:disabled) .badge,
+.underline:hover:not(:disabled) .badge,
+.line:hover:not(:disabled) .badge {
+	border-color: t.$color-utility-brand-200;
+	background: t.$color-utility-brand-50;
+	color: t.$color-utility-brand-700;
+}
+
+.root:focus-visible {
+	background: t.$color-bg-primary;
+	box-shadow: $focus-ring;
 }
