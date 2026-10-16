@@ -13,6 +13,7 @@
   flex-direction: column;
   align-items: stretch;
   width: fit-content;
+  gap: 4px;
 }
 .list.vertical > button {
   justify-content: flex-start;
@@ -38,13 +39,28 @@
   position: relative;
   border-bottom: 1px solid var(--color-border-secondary);
 }
-.list.underline.vertical {
-  gap: 4px;
-  border-bottom: 0;
-  border-left: 1px solid var(--color-border-secondary);
+.list.underline > button {
+  margin-bottom: -1px;
 }
-.list.underline:not(.vertical) > button.current {
-  transform: translateY(1px);
+.list.underline.vertical {
+  gap: 8px;
+  border-bottom: 1px solid var(--color-border-secondary);
+  border-left: 0;
+}
+.list.underline.vertical > button {
+  margin-bottom: 0;
+}
+.list .dropdown {
+  display: flex;
+  align-items: center;
+  min-height: 36px;
+}
+.list .dropdown :global([data-elem='base-cell']) {
+  background: transparent;
+  color: var(--color-text-quanternary);
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 .content {

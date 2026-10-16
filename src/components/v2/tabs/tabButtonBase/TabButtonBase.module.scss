@@ -4,8 +4,8 @@ $shadow-xs:
 	0 0 1px rgba(0, 0, 0, 0.04),
 	0 1px 2px rgba(0, 0, 0, 0.06);
 $focus-ring:
-	0 0 0 2px t.$color-bg-primary,
-	0 0 0 4px t.$color-fg-brand-primary;
+	0 0 0 t.$spacing-xxs t.$color-bg-primary,
+	0 0 0 t.$spacing-xs t.$color-fg-brand-primary;
 $border-width: t.$spacing-1;
 $indicator-width: t.$spacing-xxs;
 
@@ -15,7 +15,6 @@ $indicator-width: t.$spacing-xxs;
 	justify-content: center;
 	gap: t.$spacing-md;
 	box-sizing: border-box;
-	padding: t.$spacing-md t.$spacing-lg;
 	border: 0 solid transparent;
 	background: transparent;
 	color: t.$color-text-quanternary;
@@ -26,22 +25,26 @@ $indicator-width: t.$spacing-xxs;
 	white-space: nowrap;
 	cursor: pointer;
 	outline: none;
-
+	--tab-padding-top: #{t.$spacing-md};
+	--tab-padding-right: #{t.$spacing-lg};
+	--tab-padding-bottom: #{t.$spacing-md};
+	--tab-padding-left: #{t.$spacing-lg};
+	padding: var(--tab-padding-top) var(--tab-padding-right) var(--tab-padding-bottom)
+		var(--tab-padding-left);
 	&:disabled {
 		cursor: not-allowed;
-		opacity: 0.5;
 	}
 
 	&.xs {
-		height: 32px;
+		height: t.$spacing-4xl;
 	}
 
 	&.sm {
-		height: 36px;
+		height: t.$line-height-36;
 	}
 
 	&.md {
-		height: 44px;
+		height: calc(t.$line-height-36 + t.$spacing-md);
 		font-size: t.$font-size-16;
 		line-height: t.$line-height-24;
 	}
@@ -54,7 +57,10 @@ $indicator-width: t.$spacing-xxs;
 	}
 
 	&.line {
-		padding: t.$spacing-xxs calc(t.$spacing-lg - 2px);
+		--tab-padding-top: #{t.$spacing-xxs};
+		--tab-padding-right: #{t.$spacing-lg};
+		--tab-padding-bottom: #{t.$spacing-xxs};
+		--tab-padding-left: calc(#{t.$spacing-lg} - #{$indicator-width});
 		border-left-width: $indicator-width;
 		border-left-color: transparent;
 
@@ -66,7 +72,10 @@ $indicator-width: t.$spacing-xxs;
 	}
 
 	&.underline {
-		padding: 0 t.$spacing-xs calc(t.$spacing-lg - 2px);
+		--tab-padding-top: 0px;
+		--tab-padding-right: #{t.$spacing-xs};
+		--tab-padding-bottom: calc(#{t.$spacing-lg} - #{$indicator-width});
+		--tab-padding-left: #{t.$spacing-xs};
 		border-bottom-width: $indicator-width;
 		border-bottom-color: transparent;
 
@@ -107,20 +116,21 @@ $indicator-width: t.$spacing-xxs;
 	}
 
 	&.button-minimal {
-		&:hover:not(:disabled),
-		&.current {
-			background: t.$color-bg-primary-alt;
+		&:hover:not(:disabled) {
 			box-shadow: $shadow-xs;
 			color: t.$color-text-secondary;
 		}
 
-		border: $border-width solid transparent;
-		padding-right: calc(t.$spacing-lg - $border-width);
-		padding-left: calc(t.$spacing-lg - $border-width);
-
 		&.current {
+			background: t.$color-bg-primary-alt;
+			box-shadow: $shadow-xs;
+			color: t.$color-text-secondary;
 			border-color: t.$color-border-primary;
 		}
+
+		border: $border-width solid transparent;
+		--tab-padding-right: calc(#{t.$spacing-lg} - #{$border-width});
+		--tab-padding-left: calc(#{t.$spacing-lg} - #{$border-width});
 	}
 
 	&.button-white {
@@ -162,8 +172,12 @@ $indicator-width: t.$spacing-xxs;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
+	box-sizing: border-box;
+	width: t.$spacing-3xl;
+	height: calc(t.$line-height-16 + t.$spacing-xs);
 	padding: t.$spacing-xxs t.$spacing-md;
-	border: $border-width solid t.$color-utility-gray-200;
+	border: 0;
+	box-shadow: inset 0 0 0 $border-width t.$color-utility-gray-200;
 	border-radius: t.$radius-full;
 	background: t.$color-utility-gray-50;
 	color: t.$color-utility-gray-700;
@@ -175,7 +189,7 @@ $indicator-width: t.$spacing-xxs;
 .button-brand.current .badge-brand,
 .underline.current .badge-brand,
 .line.current .badge-brand {
-	border-color: t.$color-utility-brand-200;
+	box-shadow: inset 0 0 0 $border-width t.$color-utility-brand-200;
 	background: t.$color-utility-brand-50;
 	color: t.$color-utility-brand-700;
 }
@@ -183,7 +197,7 @@ $indicator-width: t.$spacing-xxs;
 .button-brand:hover:not(:disabled) .badge,
 .underline:hover:not(:disabled) .badge,
 .line:hover:not(:disabled) .badge {
-	border-color: t.$color-utility-brand-200;
+	box-shadow: inset 0 0 0 $border-width t.$color-utility-brand-200;
 	background: t.$color-utility-brand-50;
 	color: t.$color-utility-brand-700;
 }

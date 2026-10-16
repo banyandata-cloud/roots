@@ -1,6 +1,7 @@
 import {
 	useCallback,
 	useEffect,
+	useId,
 	useRef,
 	useState,
 	type ReactElement,
@@ -39,13 +40,19 @@ const VariantTabs = (props: TabsProps & { type: TabsType }): ReactElement => {
 
 	const vertical = direction === 'vertical';
 	const buttonType = vertical && type === 'underline' ? 'line' : buttonTypes[type];
+	const instanceId = useId().replaceAll(':', '');
 	const selectedIndex = tabs.findIndex((tab) =>
 		tab.dropdown
 			? tab.dropdownItems?.some((item) => item.id === selectedTab)
 			: tab.id === selectedTab
 	);
+	const firstEnabledIndex = tabs.findIndex((tab) => !tab.disabled && !tab.dropdown);
+	const rovingIndex =
+		selectedIndex >= 0 && !tabs[selectedIndex]?.disabled && !tabs[selectedIndex]?.dropdown
+			? selectedIndex
+			: firstEnabledIndex;
 	const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
-	const panelId = `tabs-panel-${selectedTab}`;
+	const panelId = `${instanceId}-tabpanel`;
 
 	const moveFocus = (index: number, key: string) => {
 		const step = key === 'ArrowRight' || key === 'ArrowDown' ? 1 : -1;
@@ -123,9 +130,9 @@ const VariantTabs = (props: TabsProps & { type: TabsType }): ReactElement => {
 							ref={(element) => {
 								tabRefs.current[index] = element;
 							}}
-							id={`tab-${id}`}
+							id={`${instanceId}-tab-${id}`}
 							aria-controls={panelId}
-							tabIndex={index === selectedIndex ? 0 : -1}
+							tabIndex={index === rovingIndex ? 0 : -1}
 							size={size}
 							type={buttonType}
 							current={current}
@@ -170,8 +177,8 @@ const VariantTabs = (props: TabsProps & { type: TabsType }): ReactElement => {
 				id={panelId}
 				role='tabpanel'
 				aria-labelledby={
-					selectedIndex >= 0 && tabs[selectedIndex]
-						? `tab-${tabs[selectedIndex].id}`
+					rovingIndex >= 0 && tabs[rovingIndex]
+						? `${instanceId}-tab-${tabs[rovingIndex].id}`
 						: undefined
 				}
 				className={listStyles.content}

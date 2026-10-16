@@ -333,6 +333,12 @@ const VariantsStory = () => (
 							</div>
 						</div>
 					))}
+					{type === 'border' && (
+						<div>
+							<p style={labelStyle}>size=sm, with icons</p>
+							<IconSlotExample />
+						</div>
+					)}
 				</div>
 			</div>
 		))}
@@ -355,4 +361,60 @@ const VariantsStory = () => (
 export const DesignSystemVariants: Story = {
 	name: 'Design System Variants',
 	render: () => <VariantsStory />,
+};
+
+const DemoIcon = ({ mark, color }: { mark: string; color: string }) => (
+	<span
+		aria-hidden='true'
+		style={{
+			display: 'inline-flex',
+			alignItems: 'center',
+			justifyContent: 'center',
+			width: 20,
+			height: 20,
+			borderRadius: '50%',
+			background: color,
+			color: '#fff',
+			font: '600 10px sans-serif',
+		}}
+	>
+		{mark}
+	</span>
+);
+
+const UbuntuTabIcon = () => <DemoIcon mark='U' color='#dd4814' />;
+const PythonTabIcon = () => <DemoIcon mark='Py' color='#3776ab' />;
+const DebianTabIcon = () => <DemoIcon mark='D' color='#d70a53' />;
+
+const IconSlotExample = () => {
+	const [selected, setSelected] = useState('ubuntu');
+	return (
+		<Tabs
+			type='border'
+			size='sm'
+			tabs={[
+				{
+					id: 'ubuntu',
+					title: 'My details',
+					leftIcon: UbuntuTabIcon,
+				},
+				{
+					id: 'python',
+					title: 'My details',
+					leftIcon: PythonTabIcon,
+				},
+				{
+					id: 'debian',
+					title: 'My details',
+					leftIcon: DebianTabIcon,
+				},
+				{ id: 'profile', title: 'My details' },
+				{ id: 'password', title: 'My details' },
+				{ id: 'team', title: 'My details', badge: 2 },
+				{ id: 'billing', title: 'My details' },
+			]}
+			selectedTab={selected}
+			setSelectedTab={setSelected}
+		/>
+	);
 };

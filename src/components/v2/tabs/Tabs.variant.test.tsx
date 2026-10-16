@@ -111,6 +111,12 @@ describe('Tabs design-system variants', () => {
 		expect(screen.getByTestId('right-icon')).toBeInTheDocument();
 	});
 
+	test('renders an injected Syconia-style left icon component', () => {
+		const SyconiaIcon = () => <svg data-testid='syconia-icon' aria-hidden='true' />;
+		renderTabs({ tabs: [{ id: 'one', title: 'My details', leftIcon: SyconiaIcon }] });
+		expect(screen.getByTestId('syconia-icon')).toBeInTheDocument();
+	});
+
 	test('preserves dropdown tab selection', () => {
 		const setSelectedTab = jest.fn();
 		renderTabs({
@@ -135,5 +141,39 @@ describe('Tabs design-system variants', () => {
 			expect(screen.getByRole('tab', { name: 'One' })).toBeInTheDocument();
 			unmount();
 		}
+	});
+
+	test('keeps all tab and panel ids unique across instances', () => {
+		render(
+			<>
+				<Tabs type='brand' tabs={tabs} selectedTab='one' setSelectedTab={jest.fn()} />
+				<Tabs type='gray' tabs={tabs} selectedTab='one' setSelectedTab={jest.fn()} />
+			</>
+		);
+		const ids = [...document.querySelectorAll('[id]')].map((element) => element.id);
+		expect(new Set(ids).size).toBe(ids.length);
+	});
+
+	test.each([
+		['unknown selected id', 'missing', tabs],
+		['selected disabled tab', 'one', [{ ...tabs[0], disabled: true }, tabs[1]]],
+		[
+			'selected dropdown item',
+			'four',
+			[
+				tabs[0],
+				{
+					id: 'more',
+					title: 'More',
+					dropdown: true,
+					dropdownItems: [{ id: 'four', title: 'Four' }],
+				},
+			],
+		],
+	])('provides a tab stop for %s', (_description, selectedTab, tabItems) => {
+		renderTabs({ tabs: tabItems, selectedTab });
+		expect(screen.getAllByRole('tab').some((tab) => tab.getAttribute('tabindex') === '0')).toBe(
+			true
+		);
 	});
 });
