@@ -1,0 +1,208 @@
+@use '../../../../styles/tokens' as t;
+
+$shadow-xs:
+	0 0 1px rgba(0, 0, 0, 0.04),
+	0 1px 2px rgba(0, 0, 0, 0.06);
+$focus-ring:
+	0 0 0 t.$spacing-xxs t.$color-bg-primary,
+	0 0 0 t.$spacing-xs t.$color-fg-brand-primary;
+$border-width: t.$spacing-1;
+$indicator-width: t.$spacing-xxs;
+
+.root {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: t.$spacing-md;
+	box-sizing: border-box;
+	border: 0 solid transparent;
+	background: transparent;
+	color: t.$color-text-quanternary;
+	font-family: t.$font-family-base;
+	font-size: t.$font-size-14;
+	font-weight: t.$font-weight-semibold;
+	line-height: t.$line-height-20;
+	white-space: nowrap;
+	cursor: pointer;
+	outline: none;
+	--tab-padding-top: #{t.$spacing-md};
+	--tab-padding-right: #{t.$spacing-lg};
+	--tab-padding-bottom: #{t.$spacing-md};
+	--tab-padding-left: #{t.$spacing-lg};
+	padding: var(--tab-padding-top) var(--tab-padding-right) var(--tab-padding-bottom)
+		var(--tab-padding-left);
+	&:disabled {
+		cursor: not-allowed;
+	}
+
+	&.xs {
+		height: t.$spacing-4xl;
+	}
+
+	&.sm {
+		height: t.$line-height-36;
+	}
+
+	&.md {
+		height: calc(t.$line-height-36 + t.$spacing-md);
+		font-size: t.$font-size-16;
+		line-height: t.$line-height-24;
+	}
+
+	&.button-brand,
+	&.button-gray,
+	&.button-minimal,
+	&.button-white {
+		border-radius: t.$radius-sm;
+	}
+
+	&.line {
+		--tab-padding-top: #{t.$spacing-xxs};
+		--tab-padding-right: #{t.$spacing-lg};
+		--tab-padding-bottom: #{t.$spacing-xxs};
+		--tab-padding-left: calc(#{t.$spacing-lg} - #{$indicator-width});
+		border-left-width: $indicator-width;
+		border-left-color: transparent;
+
+		&:hover:not(:disabled),
+		&.current {
+			border-left-color: t.$color-fg-brand-primary;
+			color: t.$color-text-brand-secondary;
+		}
+	}
+
+	&.underline {
+		--tab-padding-top: 0px;
+		--tab-padding-right: #{t.$spacing-xs};
+		--tab-padding-bottom: calc(#{t.$spacing-lg} - #{$indicator-width});
+		--tab-padding-left: #{t.$spacing-xs};
+		border-bottom-width: $indicator-width;
+		border-bottom-color: transparent;
+
+		&:hover:not(:disabled),
+		&.current {
+			border-bottom-color: t.$color-fg-brand-primary;
+			color: t.$color-text-brand-secondary;
+		}
+	}
+
+	// hover and current share the same look per type
+	&.button-brand {
+		&:hover:not(:disabled),
+		&.current {
+			background: t.$color-bg-brand-primary-alt;
+			color: t.$color-text-brand-secondary;
+		}
+	}
+
+	&.button-gray {
+		&:focus-visible:not(.current) {
+			border-radius: t.$radius-md;
+		}
+
+		&.current {
+			background: t.$color-bg-active;
+			color: t.$color-text-secondary;
+		}
+
+		&:hover:not(:disabled) {
+			background: t.$color-bg-primary-hover;
+			color: t.$color-text-secondary;
+		}
+	}
+
+	&.button-gray.current:focus-visible {
+		background: t.$color-bg-primary;
+	}
+
+	&.button-minimal {
+		&:hover:not(:disabled) {
+			box-shadow: $shadow-xs;
+			color: t.$color-text-secondary;
+		}
+
+		&.current {
+			background: t.$color-bg-primary-alt;
+			box-shadow: $shadow-xs;
+			color: t.$color-text-secondary;
+			border-color: t.$color-border-primary;
+		}
+
+		border: $border-width solid transparent;
+		--tab-padding-right: calc(#{t.$spacing-lg} - #{$border-width});
+		--tab-padding-left: calc(#{t.$spacing-lg} - #{$border-width});
+	}
+
+	&.button-white {
+		&:hover:not(:disabled),
+		&.current {
+			background: t.$color-bg-primary-alt;
+			box-shadow: $shadow-xs;
+			color: t.$color-text-secondary;
+		}
+	}
+
+	&.button-brand.current:focus-visible {
+		background: t.$color-bg-brand-primary-alt;
+	}
+
+	&.button-white:focus-visible,
+	&.button-white:hover:focus-visible,
+	&.button-white.current:focus-visible,
+	&.button-minimal:focus-visible,
+	&.button-minimal:hover:focus-visible,
+	&.button-minimal.current:focus-visible {
+		box-shadow: $focus-ring;
+	}
+
+	&.button-minimal.current:focus-visible,
+	&.button-white.current:focus-visible {
+		background: t.$color-bg-primary-alt;
+	}
+}
+
+.icon {
+	display: inline-flex;
+	flex-shrink: 0;
+	width: t.$spacing-2xl;
+	height: t.$spacing-2xl;
+}
+
+.badge {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	box-sizing: border-box;
+	width: t.$spacing-3xl;
+	height: calc(t.$line-height-16 + t.$spacing-xs);
+	padding: t.$spacing-xxs t.$spacing-md;
+	border: 0;
+	box-shadow: inset 0 0 0 $border-width t.$color-utility-gray-200;
+	border-radius: t.$radius-full;
+	background: t.$color-utility-gray-50;
+	color: t.$color-utility-gray-700;
+	font-size: t.$font-size-12;
+	font-weight: t.$font-weight-medium;
+	line-height: t.$line-height-16;
+}
+
+.button-brand.current .badge-brand,
+.underline.current .badge-brand,
+.line.current .badge-brand {
+	box-shadow: inset 0 0 0 $border-width t.$color-utility-brand-200;
+	background: t.$color-utility-brand-50;
+	color: t.$color-utility-brand-700;
+}
+
+.button-brand:hover:not(:disabled) .badge,
+.underline:hover:not(:disabled) .badge,
+.line:hover:not(:disabled) .badge {
+	box-shadow: inset 0 0 0 $border-width t.$color-utility-brand-200;
+	background: t.$color-utility-brand-50;
+	color: t.$color-utility-brand-700;
+}
+
+.root:focus-visible {
+	background: t.$color-bg-primary;
+	box-shadow: $focus-ring;
+}

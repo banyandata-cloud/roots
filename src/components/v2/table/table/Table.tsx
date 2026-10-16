@@ -41,6 +41,7 @@ const Table = ({
 	onCheck,
 	checkAsRadio,
 	tableHeader,
+	tableSection,
 	hideColumnLines = false,
 	disableCheck,
 	defaultCheckedRows,
@@ -193,6 +194,7 @@ const Table = ({
 			{tableHeader?.({
 				toggleDrawer,
 			})}
+			{tableSection != null && <div className={styles.section}>{tableSection}</div>}
 			<BaseTableV2
 				{...{
 					ref,
@@ -246,7 +248,8 @@ const Table = ({
 						styles.drawer,
 						hasSingleBody && styles.standalone,
 						drawerProps.className
-					)}>
+					)}
+				>
 					{Body && isValidElement(<Body datum={toggleTableDrawer.data} />) && (
 						<Body
 							datum={toggleTableDrawer.data}

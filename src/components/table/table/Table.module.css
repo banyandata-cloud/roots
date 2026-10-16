@@ -11,6 +11,10 @@
   height: calc(100% - 6rem);
   padding-bottom: 3.5rem;
 }
+.root .section {
+  flex: 0 0 auto;
+  width: 100%;
+}
 .root .pagination {
   position: absolute;
   bottom: 0;
@@ -117,6 +121,8 @@
   top: 0;
 }
 .root .overlay {
+  padding: 0;
+  border: 0;
   background: rgba(0, 0, 0, 0.16);
   backdrop-filter: blur(5px);
   height: 100%;
@@ -125,4 +131,4 @@
   top: 0;
   width: 100%;
   z-index: 1;
-}/*# sourceMappingURL=Table.module.css.map */
+}
