@@ -21,6 +21,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 		color = 'primary',
 		id,
 		dataTestId,
+		attrs,
 	} = props;
 
 	return (
@@ -40,6 +41,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 				blurOnClick,
 				variant,
 				dataTestId,
+				...(attrs ? { attrs } : {}),
 			}}
 			className={classes(
 				styles.root,

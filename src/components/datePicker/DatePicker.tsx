@@ -113,6 +113,8 @@ const DatePicker = (props: DatePickerProps): React.JSX.Element => {
 		timeRange,
 		popperClassName,
 		showCustomRanges,
+		singleActivePreset = false,
+		selectedPreset,
 	} = props;
 
 	const [openDatePicker, setOpenDatePicker] = useState<boolean>(false);
@@ -196,17 +198,21 @@ const DatePicker = (props: DatePickerProps): React.JSX.Element => {
 
 		const valueAsRangeArray = Array.isArray(value) ? value : null;
 
-		if (!valueAsRangeArray || valueAsRangeArray.length !== 2) {
+		if (valueAsRangeArray?.length !== 2) {
 			setFixedRange(null);
 			return;
 		}
 
 		const presetRanges = showCustomRanges
-			? getFixedDateRanges(customRanges, timeRange)
+			? getFixedDateRanges(customRanges, timeRange, singleActivePreset)
 			: getCustomTimeDateRanges(customRanges);
 
-		setFixedRange(findMatchingPresetTitle(presetRanges, valueAsRangeArray));
-	}, [range, customRanges, timeRange, showCustomRanges, value]);
+		setFixedRange(
+			selectedPreset === undefined
+				? findMatchingPresetTitle(presetRanges, valueAsRangeArray)
+				: findMatchingPresetTitle(presetRanges, valueAsRangeArray, selectedPreset)
+		);
+	}, [range, customRanges, timeRange, showCustomRanges, value, selectedPreset]);
 
 	const datePickerRef = useRef<HTMLDivElement>(null);
 
@@ -383,14 +389,12 @@ const DatePicker = (props: DatePickerProps): React.JSX.Element => {
 			});
 		},
 		onClear: () => {
-
-			if(onClear){
+			if (onClear) {
 				onClear?.();
 				setTimeRangeSelection({});
 				setOpenDatePicker(false);
 				return;
 			}
-
 
 			if (range && timeRange) {
 				const now = new Date();
@@ -471,6 +475,7 @@ const DatePicker = (props: DatePickerProps): React.JSX.Element => {
 		timeRange: timeRange ?? false,
 		setTimeRangeSelection: (val: TimeRangeSelection) => setTimeRangeSelection(val),
 		setIsDefaultRangeUntouched: (val: boolean) => setIsDefaultRangeUntouched(val),
+		singleActivePreset,
 	};
 
 	const hasCustomRanges = customRanges?.length && customRanges !== null;
@@ -485,7 +490,8 @@ const DatePicker = (props: DatePickerProps): React.JSX.Element => {
 						custom={custom ?? false}
 					/>
 				);
-			}}>
+			}}
+		>
 			<div className={classes(styles.root)} ref={datePickerRef}>
 				{hasCustomRanges && !showCustomRanges && (
 					<Button
@@ -524,7 +530,8 @@ const DatePicker = (props: DatePickerProps): React.JSX.Element => {
 							displayValue ? styles.highlight : '',
 							highlightOnSelect && value ? styles.highlightOnSelect : ''
 						)}
-						{...datePickerInteractionProps.getReferenceProps()}>
+						{...datePickerInteractionProps.getReferenceProps()}
+					>
 						<div className={styles.left}>
 							<CalenderIcon />
 
@@ -562,7 +569,12 @@ const DatePicker = (props: DatePickerProps): React.JSX.Element => {
 								})}
 								initial={{ opacity: 0, scale: 0 }}
 								animate={{ scale: 1, opacity: 1 }}
-								className={classes(styles.popper, openDatePicker ? styles.open : '', popperClassName)}>
+								className={classes(
+									styles.popper,
+									openDatePicker ? styles.open : '',
+									popperClassName
+								)}
+							>
 								{showCustomRanges ? (
 									<div className={styles['popper-body']}>
 										<CustomDateRanges {...customRangesProps} />
@@ -595,7 +607,8 @@ const DatePicker = (props: DatePickerProps): React.JSX.Element => {
 								className={classes(
 									styles.popper,
 									openCustomRange ? styles.open : ''
-								)}>
+								)}
+							>
 								<DateAndTimeCustomRanges {...customRangesProps} />
 							</div>
 						)}

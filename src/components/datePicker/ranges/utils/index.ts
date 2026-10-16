@@ -1,4 +1,14 @@
-import { getUnixTime, subDays, subHours, subMonths } from 'date-fns';
+import {
+	endOfMonth,
+	endOfQuarter,
+	getUnixTime,
+	startOfMonth,
+	startOfQuarter,
+	startOfYear,
+	subDays,
+	subHours,
+	subMonths,
+} from 'date-fns';
 
 interface RangeObj {
 	hours?: number;
@@ -26,6 +36,55 @@ interface TimeRange {
 	label: string;
 	value: number;
 }
+
+const getCalendarPresetRange = (title: string, now: Date): DateUnixRange | null => {
+	let startDate: Date;
+	let endDate: Date;
+
+	switch (title) {
+		case 'This Month':
+			startDate = startOfMonth(now);
+			endDate = endOfMonth(now);
+			break;
+		case 'This Quarter':
+			startDate = startOfQuarter(now);
+			endDate = now;
+			break;
+		case 'This Year':
+			startDate = startOfYear(now);
+			endDate = now;
+			break;
+		case 'Last Month':
+			startDate = startOfMonth(subMonths(now, 1));
+			endDate = endOfMonth(startDate);
+			break;
+		case 'Last Quarter': {
+			const previousQuarter = subMonths(now, 3);
+			startDate = startOfQuarter(previousQuarter);
+			endDate = endOfQuarter(previousQuarter);
+			break;
+		}
+		case 'Last 3 Months':
+			startDate = startOfMonth(subMonths(now, 3));
+			endDate = endOfMonth(subMonths(now, 1));
+			break;
+		case 'Last 6 Months':
+			startDate = startOfMonth(subMonths(now, 6));
+			endDate = endOfMonth(subMonths(now, 1));
+			break;
+		case 'Last 12 Months':
+			startDate = startOfMonth(subMonths(now, 12));
+			endDate = endOfMonth(subMonths(now, 1));
+			break;
+		default:
+			return null;
+	}
+
+	return {
+		dates: [startDate, endDate],
+		unix: [getUnixTime(startDate), getUnixTime(endDate)],
+	};
+};
 
 export const getDateAndUnixRange = (
 	rangeObj: RangeObj = {},
@@ -67,17 +126,23 @@ export const getDateAndUnixRange = (
 	};
 };
 
-export const dateRanges = (customRanges: CustomRange[] = [], alignToFullDay = false): DateRange[] => {
+export const dateRanges = (
+	customRanges: CustomRange[] = [],
+	alignToFullDay = false,
+	useCalendarPresets = false
+): DateRange[] => {
 	if (customRanges?.length > 0) {
 		return customRanges.map((range) => {
 			return {
 				title: range.title,
-				dateRange: getDateAndUnixRange(
-					{
-						[range.type]: range.value,
-					},
-					alignToFullDay
-				),
+				dateRange:
+					(useCalendarPresets ? getCalendarPresetRange(range.title, new Date()) : null) ??
+					getDateAndUnixRange(
+						{
+							[range.type]: range.value,
+						},
+						alignToFullDay
+					),
 			};
 		});
 	}

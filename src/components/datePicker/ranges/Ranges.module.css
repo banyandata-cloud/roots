@@ -33,11 +33,9 @@
 .root .option[data-elem=base-cell]:hover {
   background-color: var(--background-color5) !important;
 }
-.root .option[data-elem=base-cell].selected {
+.root .option[data-elem=base-cell].selected, .root .option[data-elem=base-cell][data-preset-selected=true] {
   background-color: var(--secondary-color2) !important;
 }
-.root .option[data-elem=base-cell].selected > [data-elem=component2] {
+.root .option[data-elem=base-cell].selected > [data-elem=component2], .root .option[data-elem=base-cell][data-preset-selected=true] > [data-elem=component2] {
   color: var(--white) !important;
 }
-
-/*# sourceMappingURL=Ranges.module.css.map */

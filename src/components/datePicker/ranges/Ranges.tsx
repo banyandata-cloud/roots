@@ -15,6 +15,7 @@ export interface CustomRangesProps {
 	timeRange?: boolean | undefined;
 	setTimeRangeSelection?: ((value: TimeRangeSelection) => void) | undefined;
 	setIsDefaultRangeUntouched?: ((value: boolean) => void) | undefined;
+	singleActivePreset?: boolean | undefined;
 }
 
 const CustomRanges = ({
@@ -25,6 +26,7 @@ const CustomRanges = ({
 	timeRange,
 	setTimeRangeSelection,
 	setIsDefaultRangeUntouched,
+	singleActivePreset = false,
 }: CustomRangesProps): React.JSX.Element => {
 	const selectFixedDateRange = (dateRange: DateUnixRange, title: string): void => {
 		setSelectedRange(dateRange as unknown as SelectedRange);
@@ -49,25 +51,36 @@ const CustomRanges = ({
 	};
 
 	return (
-		<div className={styles.root}>
-			{dateRanges(customRanges, timeRange)?.map(({ dateRange, title }) => {
-				const selectedFixedDateRange = fixedRange === title;
+		<div
+			className={styles.root}
+			data-elem='custom-ranges'
+			data-single-active-preset={singleActivePreset ? 'true' : undefined}
+		>
+			{dateRanges(customRanges, timeRange, singleActivePreset)?.map(
+				({ dateRange, title }) => {
+					const selectedFixedDateRange = fixedRange === title;
 
-				return (
-					<Button
-						size='auto'
-						key={title}
-						onClick={() => {
-							selectFixedDateRange(dateRange, title);
-						}}
-						className={classes(
-							styles.option,
-							selectedFixedDateRange ? styles.selected : ''
-						)}
-						title={title}
-					/>
-				);
-			})}
+					return (
+						<Button
+							size='auto'
+							key={title}
+							onClick={() => {
+								selectFixedDateRange(dateRange, title);
+							}}
+							className={classes(
+								styles.option,
+								selectedFixedDateRange ? styles.selected : ''
+							)}
+							attrs={{
+								'data-preset-title': title,
+								'data-preset-selected': selectedFixedDateRange ? 'true' : undefined,
+								'aria-pressed': selectedFixedDateRange,
+							}}
+							title={title}
+						/>
+					);
+				}
+			)}
 		</div>
 	);
 };

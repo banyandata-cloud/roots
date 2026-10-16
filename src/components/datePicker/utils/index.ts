@@ -228,7 +228,8 @@ const PRESET_MATCH_TOLERANCE_RATIO = 0.02;
 
 export const findMatchingPresetTitle = (
 	presetRanges: PresetRangeEntry[],
-	valueUnix: number[] | undefined
+	valueUnix: number[] | undefined,
+	preferredTitle?: string | null
 ): string | null => {
 	if (!valueUnix || valueUnix.length !== 2) {
 		return null;
@@ -241,6 +242,20 @@ export const findMatchingPresetTitle = (
 	}
 
 	const valueDuration = endUnix - startUnix;
+	const preferredPreset = preferredTitle
+		? presetRanges.find((preset) => preset.title === preferredTitle)
+		: undefined;
+	if (preferredPreset) {
+		const [preferredStart, preferredEnd] = preferredPreset.dateRange?.unix ?? [];
+		if (
+			preferredStart !== undefined &&
+			preferredEnd !== undefined &&
+			Math.abs(preferredStart - startUnix) <= PRESET_MATCH_MIN_TOLERANCE_SECONDS &&
+			Math.abs(preferredEnd - endUnix) <= PRESET_MATCH_MIN_TOLERANCE_SECONDS
+		) {
+			return preferredPreset.title;
+		}
+	}
 
 	const matched = presetRanges.find((preset) => {
 		const [presetStart, presetEnd] = preset.dateRange?.unix ?? [];

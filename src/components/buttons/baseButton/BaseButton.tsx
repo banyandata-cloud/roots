@@ -20,6 +20,7 @@ const BaseButton = forwardRef<HTMLButtonElement, BaseButtonProps>((props, ref) =
 		blurOnClick = true,
 		variant = 'contained',
 		dataTestId,
+		attrs,
 	} = props;
 
 	const Title = <span data-elem='title'>{title}</span>;
@@ -37,6 +38,7 @@ const BaseButton = forwardRef<HTMLButtonElement, BaseButtonProps>((props, ref) =
 				size,
 			}}
 			attrs={{
+				...attrs,
 				disabled,
 				type,
 				id,
