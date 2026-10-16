@@ -21,7 +21,8 @@
 		&:hover {
 			background-color: $background-color5 !important;
 		}
-		&.selected {
+		&.selected,
+		&[data-preset-selected='true'] {
 			background-color: $secondary-color2 !important;
 			> [data-elem='component2'] {
 				color: $white !important;

@@ -50,6 +50,9 @@ export interface DatePickerProps {
 	timeRange?: boolean;
 	popperClassName?: string;
 	showCustomRanges?: boolean;
+	singleActivePreset?: boolean;
+	/** Preset title to restore when multiple presets resolve to the same date range */
+	selectedPreset?: string | null;
 	v2?: boolean;
 	enableFutureDates?: boolean;
 }

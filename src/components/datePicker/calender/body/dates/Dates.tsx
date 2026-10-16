@@ -92,7 +92,8 @@ const Dates = (props: DatesProps): React.JSX.Element => {
 				next: { HOURS: 11, MINS: 59, MER: 'PM' },
 			});
 
-			const isDateFieldFocused = activeGoToSelection === 'startDate' || activeGoToSelection === 'endDate';
+			const isDateFieldFocused =
+				activeGoToSelection === 'startDate' || activeGoToSelection === 'endDate';
 
 			if (isDateFieldFocused) {
 				const index = activeGoToSelection === 'endDate' ? 1 : 0;
@@ -186,7 +187,11 @@ const Dates = (props: DatesProps): React.JSX.Element => {
 	};
 
 	return (
-		<div className={styles.root} onMouseLeave={() => setHoveredEndingDate(null)}>
+		<div
+			className={styles.root}
+			data-elem='calendar-dates'
+			onMouseLeave={() => setHoveredEndingDate(null)}
+		>
 			{datesToDisplay.map((date: Date) => {
 				const dateNumber = date?.getDate();
 				const today = isToday(date);
@@ -290,7 +295,8 @@ const Dates = (props: DatesProps): React.JSX.Element => {
 						onMouseEnter={() => {
 							if (!isDisabled) onMouseEnterADate(date);
 						}}
-						key={date.toDateString()}>
+						key={date.toDateString()}
+					>
 						<span className={childClassNames}>{dateNumber}</span>
 						{today && <TodayIndicator className={styles.indicator ?? ''} />}
 					</div>
