@@ -11,6 +11,7 @@ const SIZE_MAP = {
 	sm: 9.063,
 	md: 15.625,
 	lg: 21.875,
+	auto: 0,
 };
 
 const INTERSECTION = 1;
@@ -41,6 +42,7 @@ const Table = ({
 	onRowClick,
 	defaultActiveIndex,
 	tableInfo,
+	tableSection,
 	dataLabel,
 	jumpLabel,
 	tableDrawerProps,
@@ -111,7 +113,10 @@ const Table = ({
 			);
 
 			if (lastRow) {
-				const lastRowHeight = parseInt(getComputedStyle(lastRow).height.slice(0, -2), 10);
+				const lastRowHeight = Number.parseInt(
+					getComputedStyle(lastRow).height.slice(0, -2),
+					10
+				);
 
 				const handleIntersect: IntersectionObserverCallback = (entries) => {
 					entries.forEach((entry) => {
@@ -198,6 +203,8 @@ const Table = ({
 				clearSearch={clearSearch}
 			/>
 
+			{tableSection != null && <div className={styles.section}>{tableSection}</div>}
+
 			<BaseTableV2
 				{...{
 					ref,
@@ -248,7 +255,8 @@ const Table = ({
 						styles.drawer,
 						hasSingleBody && styles.standalone,
 						drawerProps.className
-					)}>
+					)}
+				>
 					{Body && isValidElement(<Body datum={toggleTableDrawer.data} />) && (
 						<Body
 							datum={toggleTableDrawer.data}
@@ -261,7 +269,9 @@ const Table = ({
 			)}
 
 			{toggleTableDrawer.open && (
-				<div
+				<button
+					type='button'
+					aria-label='Close table drawer'
 					className={styles.overlay}
 					onClick={() => {
 						toggleDrawer();

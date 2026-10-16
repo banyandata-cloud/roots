@@ -14,6 +14,11 @@
 		padding-bottom: 3.5rem;
 	}
 
+	.section {
+		flex: 0 0 auto;
+		width: 100%;
+	}
+
 	.pagination {
 		position: absolute;
 		bottom: 0;
@@ -87,6 +92,8 @@
 		top: 0;
 	}
 	.overlay {
+		padding: 0;
+		border: 0;
 		background: rgba(0, 0, 0, 0.16);
 		backdrop-filter: blur(5px);
 		height: 100%;

@@ -113,6 +113,7 @@ export interface TableProps {
 	tableHeader?: (props: {
 		toggleDrawer?: (({ data }: { data?: Record<string, unknown> }) => void) | undefined;
 	}) => ReactNode | undefined;
+	tableSection?: ReactNode;
 	hideColumnLines?: boolean;
 	disabledFilterOptions?: {
 		search?: boolean;

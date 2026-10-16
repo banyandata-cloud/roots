@@ -604,7 +604,8 @@ const WithTableHeaderStory = () => {
 							alignItems: 'center',
 							padding: '17px 20px',
 							borderBottom: '1px solid #F5F5F5',
-						}}>
+						}}
+					>
 						<span>Cloud</span>
 						<Button
 							title='Verb+noun'
@@ -933,4 +934,155 @@ export const LargeRows: Story = {
 			/>
 		</ThemedContainer>
 	),
+};
+
+const ProjectSummaryTabs = () => {
+	const [activeMetric, setActiveMetric] = useState('all');
+	const metrics = [
+		{
+			id: 'all',
+			label: 'All Projects',
+			value: '48',
+			trend: '↗ 12%',
+			color: '#12b76a',
+		},
+		{
+			id: 'in-progress',
+			label: 'In Progress',
+			value: '16',
+			trend: '↗ 8%',
+			color: '#12b76a',
+		},
+		{
+			id: 'planning',
+			label: 'Planning',
+			value: '9',
+			trend: '↘ 3%',
+			color: '#f79009',
+		},
+		{
+			id: 'completed',
+			label: 'Completed This Month',
+			value: '12',
+			trend: '↗ 7%',
+			color: '#12b76a',
+		},
+		{ id: 'at-risk', label: 'At Risk', value: '4', trend: '↘ 2%', color: '#f04438' },
+		{ id: 'on-track', label: 'On Track', value: '32', trend: '↗ 5%', color: '#12b76a' },
+	];
+
+	return (
+		<div
+			role='tablist'
+			aria-label='Project summary'
+			style={{
+				display: 'flex',
+				overflowX: 'auto',
+				borderBottom: '1px solid #e4e7ec',
+				background: '#f5f5f5',
+			}}
+		>
+			{metrics.map((metric) => {
+				const selected = activeMetric === metric.id;
+				return (
+					<button
+						key={metric.id}
+						type='button'
+						role='tab'
+						aria-selected={selected}
+						onClick={() => setActiveMetric(metric.id)}
+						style={{
+							flex: '1 0 240px',
+							minWidth: 220,
+							padding: '26px 28px 24px',
+							border: 0,
+							borderRight: '1px solid #e4e7ec',
+							borderBottom: selected ? '4px solid #2e90fa' : '4px solid transparent',
+							marginBottom: -1,
+							background: selected ? '#fff' : 'transparent',
+							color: '#535862',
+							font: 'inherit',
+							textAlign: 'left',
+							cursor: 'pointer',
+						}}
+					>
+						<span
+							style={{
+								display: 'block',
+								marginBottom: 12,
+								fontSize: 16,
+								whiteSpace: 'nowrap',
+							}}
+						>
+							{metric.label}
+						</span>
+						<span style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
+							<strong style={{ fontSize: 32, lineHeight: 1, fontWeight: 600 }}>
+								{metric.value}
+							</strong>
+							<span
+								style={{
+									padding: '4px 8px',
+									border: '1px solid #e4e7ec',
+									borderRadius: 8,
+									background: '#fff',
+									fontSize: 14,
+									whiteSpace: 'nowrap',
+									boxShadow: '0 1px 2px #1018281a',
+								}}
+							>
+								<span style={{ color: metric.color, fontWeight: 700 }}>
+									{metric.trend.split(' ')[0]}
+								</span>
+								&nbsp;{metric.trend.split(' ')[1]}
+							</span>
+						</span>
+					</button>
+				);
+			})}
+		</div>
+	);
+};
+
+const TableWithCustomSectionStory = () => (
+	<ThemedContainer style={{ height: 580 }}>
+		<Table
+			tableSection={<ProjectSummaryTabs />}
+			headerData={[
+				{ id: 'projectId', title: 'Project ID', size: 'md' },
+				{ id: 'project', title: 'Project', size: 'lg' },
+				{ id: 'owner', title: 'Owner', size: 'md' },
+				{ id: 'status', title: 'Status', size: 'md' },
+				{ id: 'updated', title: 'Last Updated', size: 'md', flexible: true },
+			]}
+			tableData={[
+				{
+					projectId: 'PRJ-2048',
+					project: 'Customer Portal Refresh',
+					owner: 'Taylor Morgan',
+					status: 'In Progress',
+					updated: 'Today',
+				},
+				{
+					projectId: 'PRJ-2051',
+					project: 'Mobile App Redesign',
+					owner: 'Jordan Lee',
+					status: 'Planning',
+					updated: 'Yesterday',
+				},
+				{
+					projectId: 'PRJ-2057',
+					project: 'Analytics Dashboard',
+					owner: 'Casey Patel',
+					status: 'Completed',
+					updated: 'Oct 12, 2026',
+				},
+			]}
+		/>
+	</ThemedContainer>
+);
+
+export const WithCustomSection: Story = {
+	name: 'With Custom Section',
+	render: () => <TableWithCustomSectionStory />,
 };
