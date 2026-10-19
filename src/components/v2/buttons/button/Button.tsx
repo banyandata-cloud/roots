@@ -12,6 +12,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 		rightComponent: RightComponent,
 		variant = 'primary',
 		size = 'sm',
+		radius,
 		disabled,
 		onClick,
 		blurOnClick = true,
@@ -57,10 +58,12 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 			onClick={onClick}
 			blurOnClick={blurOnClick}
 			id={id}
+			radius={radius === 'pill' ? 'default' : (radius ?? 'default')}
 			className={classes(
 				styles.root,
 				variantClass,
 				styles[`size-${size}`],
+				radius && styles[`radius-${radius}`],
 				isIconOnly && styles['icon-only'],
 				className
 			)}

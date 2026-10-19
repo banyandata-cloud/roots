@@ -1,4 +1,4 @@
-import React, { forwardRef, useState } from 'react';
+import React, { forwardRef, useId, useState } from 'react';
 import { classes } from '../../../../utils';
 import { Button } from '../../buttons/button';
 import { HelpIcon } from '../../icons';
@@ -14,13 +14,13 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 		{
 			label,
 			placeholder = 'Optional placeholder text',
-			helperText = 'Helper text',
+			helperText = '',
 			value,
 			defaultValue,
 			state = 'default',
 			size = 'sm',
 			type = 'default',
-			required = true,
+			required = false,
 			disabled = false,
 			leadingIcon = true,
 			leadingIconComponent: LeadingIconComponent,
@@ -30,7 +30,7 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 			trailingButtonIcon,
 			trailingButtonIconComponent: TrailingButtonIconComponent,
 			trailingButtonOnClick,
-			helpIcon = true,
+			helpIcon = false,
 			helpText,
 			rightIcon,
 			// Dropdown props
@@ -62,6 +62,8 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 	) => {
 		const [internalValue, setInternalValue] = useState(defaultValue || '');
 		const [isFocused, setIsFocused] = useState(false);
+		const generatedId = useId();
+		const inputId = id ?? generatedId;
 
 		// Dropdown state management
 		const [internalLeadingDropdownValue, setInternalLeadingDropdownValue] = useState(
@@ -197,7 +199,9 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 				{/* Label */}
 				{label && (
 					<div className={styles.labelContainer}>
-						<span className={styles.label}>{label}</span>
+						<label htmlFor={inputId} className={styles.label}>
+							{label}
+						</label>
 						{required && <span className={styles.required}>*</span>}
 						{helpIcon && (
 							<Tooltip
@@ -287,7 +291,7 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
 									disabled={disabled}
 									readOnly={readOnly}
 									className={styles.mainInput}
-									id={id}
+									id={inputId}
 									name={name}
 									autoComplete={autoComplete}
 									autoFocus={autoFocus}

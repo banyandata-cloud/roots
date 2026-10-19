@@ -14,11 +14,11 @@
 }
 .root [data-elem=label] {
   color: var(--text-text-secondary, #484848);
-  font-family: var(--font-font-family, Poppins);
-  font-size: var(--font-font-size-12, 12px);
-  font-weight: var(--font-font-weight-Regular, 400);
-  line-height: var(--font-font-height-16, 16px);
-  letter-spacing: var(--font-font-spacing-large, 0.32px);
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0.32px;
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
@@ -116,12 +116,12 @@
 }
 .root.disabled [data-elem=label] {
   color: var(--text-text-disabled, #161616);
-  font-family: var(--font-font-family, Poppins);
-  font-size: var(--font-font-size-12, 12px);
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  font-size: 12px;
   font-style: normal;
-  font-weight: var(--font-font-weight-Regular, 400);
-  line-height: var(--font-font-height-16, 16px);
-  letter-spacing: var(--font-font-spacing-large, 0.32px);
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0.32px;
   opacity: 0.25;
 }
 .root.disabled [data-elem=label] {

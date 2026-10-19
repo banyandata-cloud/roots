@@ -144,7 +144,7 @@ const propsData = [
 		prop: 'helperText',
 		type: 'string',
 		description: 'Helper text displayed below the dropdown.',
-		default: "'This is a hint text to help user.'",
+		default: "''",
 	},
 	{
 		prop: 'value',
@@ -211,7 +211,7 @@ const propsData = [
 		prop: 'required',
 		type: 'boolean',
 		description: 'Whether the field is marked as required.',
-		default: 'true',
+		default: 'false',
 	},
 	{
 		prop: 'disabled',
@@ -229,7 +229,7 @@ const propsData = [
 		prop: 'helpIcon',
 		type: 'boolean',
 		description: 'Whether to show the help icon in the label.',
-		default: 'true',
+		default: 'false',
 	},
 	{
 		prop: 'helpText',

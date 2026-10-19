@@ -18,12 +18,20 @@ jest.mock('../../icons/chevron-down', () => ({
 	ChevronDownIcon: (props: any) => <div data-testid='chevron-down-icon' {...props} />,
 }));
 
-jest.mock('../../../icons', () => ({
-	CrossIcon: (props: any) => <div data-testid='cross-icon' {...props} />,
+jest.mock('../../icons/error', () => ({
+	ErrorIcon: (props: any) => <div data-testid='error-icon' {...props} />,
+}));
+
+jest.mock('../../icons/warning', () => ({
+	WarningIcon: (props: any) => <div data-testid='warning-icon' {...props} />,
+}));
+
+jest.mock('../../icons/tickIcon', () => ({
+	TickIcon: (props: any) => <div data-testid='tick-icon' {...props} />,
 }));
 
 jest.mock('../../checkbox', () => ({
-	CheckBox: ({ checked, onChange, disabled, ...props }: any) => (
+	Checkbox: ({ checked, onChange, disabled, ...props }: any) => (
 		<input
 			type='checkbox'
 			checked={checked}
@@ -42,6 +50,11 @@ jest.mock('../../../popover', () => ({
 				{children}
 			</div>
 		) : null,
+}));
+
+jest.mock('../../tags/Tags', () => ({
+	__esModule: true,
+	default: () => null,
 }));
 
 jest.mock('../../buttons/button', () => ({
@@ -70,6 +83,25 @@ describe('Dropdown - Single Select', () => {
 
 		expect(screen.getByText('User Role')).toBeInTheDocument();
 		expect(screen.getByText('Select a role')).toBeInTheDocument();
+		expect(screen.queryByText('*')).not.toBeInTheDocument();
+		expect(screen.queryByTestId('help-icon')).not.toBeInTheDocument();
+		expect(screen.queryByText('This is a hint text to help user.')).not.toBeInTheDocument();
+	});
+
+	test('renders required and help decorations when explicitly requested', () => {
+		render(
+			<Dropdown
+				label='User Role'
+				required
+				helpIcon
+				helperText='Choose a role'
+				options={mockOptions}
+			/>
+		);
+
+		expect(screen.getByText('*')).toBeInTheDocument();
+		expect(screen.getByTestId('help-icon')).toBeInTheDocument();
+		expect(screen.getByText('Choose a role')).toBeInTheDocument();
 	});
 
 	test('handles single select onChange', () => {
@@ -110,7 +142,7 @@ describe('Dropdown - Multi Select', () => {
 
 		expect(screen.getByText('Users')).toBeInTheDocument();
 		expect(screen.getByText('2')).toBeInTheDocument(); // Count badge
-		expect(screen.getByTestId('cross-icon')).toBeInTheDocument(); // Close button in badge
+		expect(screen.getByRole('button', { name: 'Remove 2' })).toBeInTheDocument();
 	});
 
 	test('shows placeholder when no values selected', () => {
@@ -158,7 +190,7 @@ describe('Dropdown - Multi Select', () => {
 			/>
 		);
 
-		const closeButton = screen.getByTestId('cross-icon').closest('button');
+		const closeButton = screen.getByRole('button', { name: 'Remove 2' });
 		fireEvent.click(closeButton!);
 
 		expect(mockOnMultiSelectChange).toHaveBeenCalledWith([]);

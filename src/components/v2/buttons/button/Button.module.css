@@ -6,7 +6,6 @@ button.root[data-elem=base-cell] {
   border: none;
   cursor: pointer;
   position: relative;
-  width: -moz-fit-content;
   width: fit-content;
 }
 button.root[data-elem=base-cell] [data-elem=title] {
@@ -44,6 +43,21 @@ button.root[data-elem=base-cell].size-auto {
   padding: 8px 12px;
   gap: 4px;
   border-radius: 6px;
+}
+button.root[data-elem=base-cell].radius-default {
+  border-radius: 6px;
+}
+button.root[data-elem=base-cell].radius-round {
+  border-radius: 50%;
+}
+button.root[data-elem=base-cell].radius-ellipse {
+  border-radius: 1.563rem;
+}
+button.root[data-elem=base-cell].radius-pill {
+  border-radius: 9999px;
+}
+button.root[data-elem=base-cell].radius-none {
+  border-radius: 0;
 }
 button.root[data-elem=base-cell].primary {
   background: var(--color-bg-brand-solid);
@@ -234,6 +248,21 @@ button.root[data-elem=base-cell].unstyled {
   color: inherit !important;
   outline: none !important;
 }
+button.root[data-elem=base-cell].unstyled.radius-default {
+  border-radius: 6px !important;
+}
+button.root[data-elem=base-cell].unstyled.radius-round {
+  border-radius: 50% !important;
+}
+button.root[data-elem=base-cell].unstyled.radius-ellipse {
+  border-radius: 1.563rem !important;
+}
+button.root[data-elem=base-cell].unstyled.radius-pill {
+  border-radius: 9999px !important;
+}
+button.root[data-elem=base-cell].unstyled.radius-none {
+  border-radius: 0 !important;
+}
 
 .icon-xs {
   width: 18px !important;
@@ -262,4 +291,4 @@ button.root[data-elem=base-cell].unstyled {
 .icon-trailing-lg {
   width: 18px !important;
   height: 18px !important;
-}/*# sourceMappingURL=Button.module.css.map */
+}
