@@ -1,0 +1,83 @@
+@use '../../../styles/tokens' as t;
+
+$border-width: t.$spacing-1;
+
+.row {
+	display: flex;
+	align-items: flex-start;
+	gap: t.$spacing-xl;
+}
+
+.list {
+	display: flex;
+	align-items: center;
+	gap: t.$spacing-xs;
+
+	&.vertical {
+		flex-direction: column;
+		align-items: stretch;
+		width: fit-content;
+		gap: t.$spacing-xs;
+
+		> button {
+			justify-content: flex-start;
+		}
+	}
+
+	&.full > button {
+		flex: 1 1 0;
+		min-width: 0;
+	}
+
+	&.border {
+		padding: t.$spacing-xs;
+		box-shadow: inset 0 0 0 $border-width t.$color-border-secondary-alt;
+		border-radius: t.$radius-lg;
+		background: t.$color-bg-secondary-alt;
+	}
+
+	&.minimal {
+		gap: t.$spacing-xxs;
+		box-shadow: inset 0 0 0 $border-width t.$color-border-secondary;
+		border-radius: t.$radius-md;
+		background: t.$color-bg-secondary-alt;
+	}
+
+	&.underline {
+		gap: t.$spacing-lg;
+		position: relative;
+		border-bottom: $border-width solid t.$color-border-secondary;
+
+		> button {
+			margin-bottom: -$border-width;
+		}
+
+		&.vertical {
+			gap: t.$spacing-md;
+			border-bottom: $border-width solid t.$color-border-secondary;
+			border-left: 0;
+
+			> button {
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	.dropdown {
+		display: flex;
+		align-items: center;
+		min-height: 36px;
+
+		:global([data-elem='base-cell']) {
+			background: transparent;
+			color: t.$color-text-quanternary;
+			font-family: t.$font-family-base;
+			font-size: t.$font-size-14;
+			font-weight: t.$font-weight-semibold;
+		}
+	}
+}
+
+.content {
+	padding-top: t.$spacing-xl;
+}

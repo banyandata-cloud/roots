@@ -4,6 +4,7 @@ import type {
 	Dispatch,
 	FC,
 	ReactElement,
+	ReactNode,
 	SetStateAction,
 } from 'react';
 import type { TableCellProps } from '../cell/types';
@@ -69,7 +70,10 @@ export interface TableDrawerProps {
 		setToggleTableDrawer?: Dispatch<SetStateAction<TableDrawerToggle>>;
 	}>[];
 	className?: string;
-	tabsConfig?: unknown;
+	tabsConfig?: {
+		tabs?: unknown[];
+		className?: string;
+	} | null;
 }
 
 export interface PaginationData {
@@ -119,6 +123,7 @@ export interface TableProps {
 		title?: string;
 		description?: string;
 	};
+	tableSection?: ReactNode;
 
 	dataLabel?: string;
 	jumpLabel?: string;

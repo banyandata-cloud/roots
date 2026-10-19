@@ -97,6 +97,22 @@ describe('Table — Rendering & Basic Behaviour', () => {
 		expect(screen.getByTestId('base-table')).toBeInTheDocument();
 	});
 
+	test('renders a custom section between filters and the base table', () => {
+		const { container } = render(
+			<Table
+				{...baseProps}
+				tableSection={<div data-testid='custom-section'>Metrics tabs</div>}
+			/>
+		);
+
+		const root = container.firstElementChild;
+		expect(root?.children[1].firstElementChild).toHaveAttribute(
+			'data-testid',
+			'custom-section'
+		);
+		expect(root?.children[2]).toHaveAttribute('data-testid', 'base-table');
+	});
+
 	test('renders pagination when paginationData is provided', () => {
 		render(<Table {...baseProps} paginationData={{ page: 1, total: 10 }} />);
 

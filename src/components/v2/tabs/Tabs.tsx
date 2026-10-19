@@ -1,6 +1,7 @@
 import {
 	useCallback,
 	useEffect,
+	useId,
 	useRef,
 	useState,
 	type ReactElement,
@@ -11,9 +12,184 @@ import { Button } from '../../buttons';
 import Dropdown from '../../input/dropdown/Dropdown';
 import DropdownItem from '../../input/dropdown/dropdown-item/DropdownItem';
 import styles from './Tabs.module.css';
-import type { TabsProps } from './types';
+import TabButtonBase from './tabButtonBase/TabButtonBase';
+import type { TabButtonBaseType } from './tabButtonBase/types';
+import listStyles from './TabList.module.css';
+import type { TabsProps, TabsType } from './types';
 
-const Tabs = (props: TabsProps): ReactElement => {
+const buttonTypes: Record<TabsType, TabButtonBaseType> = {
+	brand: 'button-brand',
+	gray: 'button-gray',
+	border: 'button-white',
+	minimal: 'button-minimal',
+	underline: 'underline',
+};
+
+const VariantTabs = (props: TabsProps & { type: TabsType }): ReactElement => {
+	const {
+		tabs = [],
+		className = '',
+		selectedTab,
+		setSelectedTab,
+		direction = 'horizontal',
+		type,
+		size = 'sm',
+		fullWidth = false,
+		children = null,
+	} = props;
+
+	const vertical = direction === 'vertical';
+	const buttonType = vertical && type === 'underline' ? 'line' : buttonTypes[type];
+	const instanceId = useId().replaceAll(':', '');
+	const selectedIndex = tabs.findIndex((tab) =>
+		tab.dropdown
+			? tab.dropdownItems?.some((item) => item.id === selectedTab)
+			: tab.id === selectedTab
+	);
+	const firstEnabledIndex = tabs.findIndex((tab) => !tab.disabled && !tab.dropdown);
+	const rovingIndex =
+		selectedIndex >= 0 && !tabs[selectedIndex]?.disabled && !tabs[selectedIndex]?.dropdown
+			? selectedIndex
+			: firstEnabledIndex;
+	const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
+	const panelId = `${instanceId}-tabpanel`;
+
+	const moveFocus = (index: number, key: string) => {
+		const step = key === 'ArrowRight' || key === 'ArrowDown' ? 1 : -1;
+		const candidates = tabs
+			.map((tab, tabIndex) => ({ tab, tabIndex }))
+			.filter(({ tab }) => !tab.disabled && !tab.dropdown);
+		const currentPosition = candidates.findIndex(({ tabIndex }) => tabIndex === index);
+		const nextPosition = (currentPosition + step + candidates.length) % candidates.length;
+		const next = candidates[nextPosition];
+		if (next) {
+			tabRefs.current[next.tabIndex]?.focus();
+			setSelectedTab(next.tab.id);
+		}
+	};
+
+	return (
+		<div className={classes(vertical ? listStyles.row : '', className)}>
+			<div
+				role='tablist'
+				aria-orientation={direction}
+				className={classes(
+					listStyles.list,
+					listStyles[type],
+					vertical ? listStyles.vertical : '',
+					fullWidth && !vertical ? listStyles.full : ''
+				)}
+			>
+				{tabs.map((tab, index) => {
+					const {
+						id,
+						title,
+						leftIcon: LeftIcon,
+						rightIcon: RightIcon,
+						disabled,
+						badge,
+					} = tab;
+					const current =
+						id === selectedTab ||
+						!!tab.dropdownItems?.some((item) => item.id === selectedTab);
+					let icon = null;
+					if (typeof LeftIcon === 'function') {
+						icon = <LeftIcon className={styles.icon ?? ''} />;
+					} else if (LeftIcon) {
+						const Icon = current ? LeftIcon.Active : LeftIcon.InActive;
+						icon = Icon ? <Icon className={styles.icon ?? ''} /> : null;
+					}
+					const rightIcon = RightIcon ? (
+						<RightIcon className={styles.icon ?? ''} />
+					) : null;
+					if (tab.dropdown) {
+						return (
+							<div key={id} className={listStyles.dropdown}>
+								<Dropdown
+									value={selectedTab}
+									placeholder={title}
+									onChange={(_: SyntheticEvent, value) => {
+										if (value != null) setSelectedTab(value.toString());
+									}}
+								>
+									{tab.dropdownItems?.map((item) => (
+										<DropdownItem
+											key={item.id}
+											title={item.title}
+											value={item.id}
+										/>
+									))}
+								</Dropdown>
+							</div>
+						);
+					}
+
+					return (
+						<TabButtonBase
+							key={id}
+							ref={(element) => {
+								tabRefs.current[index] = element;
+							}}
+							id={`${instanceId}-tab-${id}`}
+							aria-controls={panelId}
+							tabIndex={index === rovingIndex ? 0 : -1}
+							size={size}
+							type={buttonType}
+							current={current}
+							icon={icon}
+							rightIcon={rightIcon}
+							badge={badge}
+							disabled={disabled}
+							onClick={() => {
+								setSelectedTab(id);
+							}}
+							onKeyDown={(event) => {
+								if (event.key === 'Home' || event.key === 'End') {
+									event.preventDefault();
+									const candidates = tabs
+										.map((item, itemIndex) => ({ item, itemIndex }))
+										.filter(({ item }) => !item.disabled && !item.dropdown);
+									const target =
+										event.key === 'Home' ? candidates.at(0) : candidates.at(-1);
+									if (target) {
+										tabRefs.current[target.itemIndex]?.focus();
+										setSelectedTab(target.item.id);
+									}
+									return;
+								}
+								if (
+									(vertical &&
+										(event.key === 'ArrowUp' || event.key === 'ArrowDown')) ||
+									(!vertical &&
+										(event.key === 'ArrowLeft' || event.key === 'ArrowRight'))
+								) {
+									event.preventDefault();
+									moveFocus(index, event.key);
+								}
+							}}
+						>
+							{title}
+						</TabButtonBase>
+					);
+				})}
+			</div>
+			<div
+				id={panelId}
+				role='tabpanel'
+				aria-labelledby={
+					rovingIndex >= 0 && tabs[rovingIndex]
+						? `${instanceId}-tab-${tabs[rovingIndex].id}`
+						: undefined
+				}
+				className={listStyles.content}
+			>
+				{children}
+			</div>
+		</div>
+	);
+};
+
+const LegacyTabs = (props: TabsProps): ReactElement => {
 	const {
 		tabs = [],
 		className = '',
@@ -75,7 +251,8 @@ const Tabs = (props: TabsProps): ReactElement => {
 			className={classes(
 				vertical ? styles['tabs-container-vertical'] : styles['tabs-container'],
 				className
-			)}>
+			)}
+		>
 			<div className={vertical ? styles.vertical : styles.tabs}>
 				{tabs.map((tab, index) => {
 					const isActive = tab.id === selectedTab;
@@ -119,7 +296,8 @@ const Tabs = (props: TabsProps): ReactElement => {
 								styles.tab,
 								vertical ? styles.vertical : styles.horizontal,
 								isActive ? styles.active : ''
-							)}>
+							)}
+						>
 							{dropdown ? (
 								<Dropdown
 									className={classes(
@@ -131,7 +309,8 @@ const Tabs = (props: TabsProps): ReactElement => {
 										setActiveTab(index);
 									}}
 									value={selectedTab}
-									placeholder={title}>
+									placeholder={title}
+								>
 									{dropdownItems?.map((option) => {
 										return (
 											<DropdownItem
@@ -181,6 +360,14 @@ const Tabs = (props: TabsProps): ReactElement => {
 			</div>
 		</div>
 	);
+};
+
+const Tabs = (props: TabsProps): ReactElement => {
+	const { type } = props;
+	if (type) {
+		return <VariantTabs {...props} type={type} />;
+	}
+	return <LegacyTabs {...props} />;
 };
 
 export default Tabs;
