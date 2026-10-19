@@ -42,6 +42,12 @@ const propsData = [
 		default: "'sm'",
 	},
 	{
+		prop: 'radius',
+		type: "'none' | 'default' | 'round' | 'ellipse' | 'pill'",
+		description: 'Border radius style for the button.',
+		default: "'default'",
+	},
+	{
 		prop: 'textSize',
 		type: "'sm' | 'md'",
 		description: 'Controls the font size of the button label independently of the button size.',
@@ -84,7 +90,7 @@ const ButtonDoc = () => (
 		<Title />
 		<Subtitle>
 			Button triggers an action or event. It supports six visual variants, four sizes,
-			optional leading and trailing icons, and a disabled state.
+			configurable border radius, optional leading and trailing icons, and a disabled state.
 		</Subtitle>
 
 		<LinkHeader
@@ -107,6 +113,12 @@ const ButtonDoc = () => (
 
 		<Subheading>ButtonSize</Subheading>
 		<Source language='tsx' code={`type ButtonSize = 'xs' | 'sm' | 'md' | 'lg' | 'auto';`} />
+
+		<Subheading>ButtonRadius</Subheading>
+		<Source
+			language='tsx'
+			code={`type ButtonRadius = 'none' | 'default' | 'round' | 'ellipse' | 'pill';`}
+		/>
 
 		<Subheading>ButtonTextSize</Subheading>
 		<Source language='tsx' code={`type ButtonTextSize = 'sm' | 'md';`} />

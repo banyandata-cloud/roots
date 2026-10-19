@@ -43,6 +43,14 @@ $icon-sizes: (
 	lg: 20px,
 );
 
+$button-radii: (
+	default: tokens.$radius-sm,
+	round: 50%,
+	ellipse: 1.563rem,
+	pill: 9999px,
+	none: 0,
+);
+
 $shadow-normal:
 	0 2px 5px 0 rgba(103, 110, 118, 0.08),
 	0 0 0 1px rgba(103, 110, 118, 0.16),
@@ -99,6 +107,12 @@ button.root[data-elem='base-cell'] {
 		padding: tokens.$spacing-md tokens.$spacing-lg;
 		gap: tokens.$spacing-xs;
 		border-radius: tokens.$radius-sm;
+	}
+
+	@each $radius, $value in $button-radii {
+		&.radius-#{$radius} {
+			border-radius: $value;
+		}
 	}
 
 	&.primary {
@@ -330,6 +344,12 @@ button.root[data-elem='base-cell'] {
 		font: inherit !important;
 		color: inherit !important;
 		outline: none !important;
+
+		@each $radius, $value in $button-radii {
+			&.radius-#{$radius} {
+				border-radius: $value !important;
+			}
+		}
 	}
 }
 

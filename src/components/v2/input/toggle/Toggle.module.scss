@@ -1,3 +1,4 @@
+@use '../../../../styles/tokens' as tokens;
 @import '../../../../styles';
 
 .root {
@@ -17,11 +18,11 @@
 
 	[data-elem='label'] {
 		color: var(--text-text-secondary, #484848);
-		font-family: var(--font-font-family, Poppins);
-		font-size: var(--font-font-size-12, 12px);
-		font-weight: var(--font-font-weight-Regular, 400);
-		line-height: var(--font-font-height-16, 16px);
-		letter-spacing: var(--font-font-spacing-large, 0.32px);
+		font-family: tokens.$font-family-base;
+		font-size: tokens.$font-size-12;
+		font-weight: tokens.$font-weight-regular;
+		line-height: tokens.$line-height-16;
+		letter-spacing: 0.32px;
 		user-select: none;
 	}
 
@@ -141,12 +142,12 @@
 
 		[data-elem='label'] {
 			color: var(--text-text-disabled, #161616);
-			font-family: var(--font-font-family, Poppins);
-			font-size: var(--font-font-size-12, 12px);
+			font-family: tokens.$font-family-base;
+			font-size: tokens.$font-size-12;
 			font-style: normal;
-			font-weight: var(--font-font-weight-Regular, 400);
-			line-height: var(--font-font-height-16, 16px);
-			letter-spacing: var(--font-font-spacing-large, 0.32px);
+			font-weight: tokens.$font-weight-regular;
+			line-height: tokens.$line-height-16;
+			letter-spacing: 0.32px;
 			opacity: 0.25;
 		}
 

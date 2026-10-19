@@ -12,6 +12,7 @@ export type ButtonVariant =
 	| 'outlined';
 export type ButtonTextSize = 'sm' | 'md';
 export type ButtonSize = 'xs' | 'sm' | 'md' | 'lg' | 'auto';
+export type ButtonRadius = 'none' | 'default' | 'round' | 'ellipse' | 'pill';
 
 export interface ButtonProps {
 	className?: string | undefined;
@@ -20,6 +21,7 @@ export interface ButtonProps {
 	rightComponent?: ComponentType<Record<string, unknown>> | undefined;
 	variant?: ButtonVariant;
 	size?: ButtonSize;
+	radius?: ButtonRadius;
 	textSize?: ButtonTextSize;
 	disabled?: boolean | undefined;
 	id?: string | undefined;

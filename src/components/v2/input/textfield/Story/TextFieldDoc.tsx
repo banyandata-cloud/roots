@@ -18,7 +18,7 @@ const propsData = [
 		prop: 'helperText',
 		type: 'string',
 		description: 'Helper text displayed below the input field.',
-		default: "'Helper text'",
+		default: "''",
 	},
 	{
 		prop: 'value',
@@ -54,7 +54,7 @@ const propsData = [
 		prop: 'required',
 		type: 'boolean',
 		description: 'Shows a required asterisk (*) after the label.',
-		default: 'true',
+		default: 'false',
 	},
 	{
 		prop: 'disabled',
@@ -115,7 +115,7 @@ const propsData = [
 		prop: 'helpIcon',
 		type: 'boolean',
 		description: 'Shows a help icon with a tooltip on the right side of the label.',
-		default: 'true',
+		default: 'false',
 	},
 	{
 		prop: 'helpText',
