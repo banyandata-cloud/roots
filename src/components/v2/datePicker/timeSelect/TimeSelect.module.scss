@@ -1,0 +1,41 @@
+@use '../../../../styles/tokens' as tokens;
+
+.root {
+	display: flex;
+	flex-direction: column;
+	gap: tokens.$spacing-xxs;
+	width: 100%;
+}
+
+.label {
+	font-family: tokens.$font-family-base;
+	font-size: tokens.$font-size-12;
+	line-height: tokens.$line-height-16;
+	font-weight: tokens.$font-weight-semibold;
+	color: tokens.$color-text-quanternary;
+}
+
+.selects {
+	display: flex;
+	align-items: center;
+	gap: tokens.$spacing-xxs;
+}
+
+.select {
+	min-width: 75px;
+}
+
+.colon {
+	font-family: tokens.$font-family-base;
+	font-size: tokens.$font-size-16;
+	line-height: tokens.$line-height-24;
+	font-weight: tokens.$font-weight-medium;
+	color: tokens.$color-text-tertiary;
+}
+
+.noSlot {
+	font-family: tokens.$font-family-base;
+	font-size: tokens.$font-size-14;
+	line-height: tokens.$line-height-20;
+	color: tokens.$color-text-error-primary;
+}

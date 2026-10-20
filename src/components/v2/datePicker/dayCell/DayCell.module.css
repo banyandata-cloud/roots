@@ -1,0 +1,100 @@
+@charset "UTF-8";
+.root {
+  position: relative;
+  display: flex;
+  flex: 1 1 0;
+  align-items: center;
+  justify-content: center;
+  height: 34px;
+}
+.root::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  bottom: 1px;
+  left: 0;
+  right: 0;
+  z-index: 0;
+  display: none;
+  background: var(--color-bg-brand-primary);
+}
+.root.band::before {
+  display: block;
+}
+.root.hover-preview::before {
+  opacity: 0.6;
+}
+
+.size-sm {
+  height: 44px;
+}
+
+.blank {
+  pointer-events: none;
+}
+
+.button {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+  color: var(--color-text-primary);
+}
+.button:hover:not(:disabled) {
+  border-radius: 8px;
+  background: var(--color-bg-primary-hover);
+}
+.button:focus-visible {
+  border-radius: 8px;
+  background: var(--color-bg-primary);
+  outline: 2px solid var(--color-border-brand);
+  outline-offset: 2px;
+}
+
+.size-sm .button {
+  width: 40px;
+  height: 40px;
+}
+
+/* Small dot under the number — not a ring around the cell. */
+.today-dot {
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  border-radius: 999999px;
+  background: var(--color-fg-brand-primary);
+  transform: translateX(-50%);
+}
+
+.disabled {
+  color: var(--color-text-disabled);
+  cursor: default;
+  pointer-events: none;
+}
+
+.selected {
+  border-radius: 10px;
+  background: var(--color-bg-brand-solid);
+  color: var(--color-text-primary-on-brand);
+  font-weight: 700;
+}
+.selected:hover:not(:disabled) {
+  border-radius: 10px;
+  background: var(--color-bg-brand-solid-hover);
+}
+.selected .today-dot {
+  background: var(--color-text-primary-on-brand);
+}

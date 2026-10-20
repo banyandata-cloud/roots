@@ -1,0 +1,33 @@
+.wrapper {
+  display: inline-block;
+}
+
+.triggerSlot {
+  display: inline-flex;
+}
+
+.popover {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  max-width: calc(100vw - 40px);
+  max-height: calc(100vh - 40px);
+  border: 1px solid var(--color-border-primary);
+  border-radius: 16px;
+  background: var(--color-bg-primary);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.16);
+  z-index: 9;
+  overflow: hidden;
+}
+
+.body {
+  display: flex;
+  overflow: auto;
+}
+
+.main {
+  display: flex;
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: 20px 24px;
+}

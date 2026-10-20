@@ -1,0 +1,62 @@
+@use '../../../../styles/tokens' as tokens;
+
+.root {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: tokens.$spacing-14;
+	width: 100%;
+	height: 68px;
+	padding: tokens.$spacing-14 tokens.$spacing-3xl;
+	border-top: 1px solid tokens.$color-border-secondary;
+	background: tokens.$color-bg-tertiary;
+	box-sizing: border-box;
+}
+
+.leftGroup {
+	display: flex;
+	align-items: center;
+	gap: tokens.$spacing-14;
+}
+
+.label {
+	font-family: tokens.$font-family-base;
+	font-size: tokens.$font-size-14;
+	line-height: tokens.$line-height-20;
+	font-weight: tokens.$font-weight-medium;
+	color: tokens.$color-text-secondary;
+}
+
+.defaultSelect {
+	width: 165px;
+}
+
+.rightGroup {
+	display: flex;
+	align-items: center;
+	gap: tokens.$spacing-xl;
+}
+
+.toggleGroup {
+	display: flex;
+	align-items: center;
+	gap: tokens.$spacing-md;
+}
+
+.toggleLabel {
+	font-family: tokens.$font-family-base;
+	font-size: tokens.$font-size-14;
+	line-height: tokens.$line-height-20;
+	font-weight: tokens.$font-weight-semibold;
+	color: tokens.$color-text-primary;
+}
+
+.timeZone {
+	font-family: tokens.$font-family-base;
+	font-size: tokens.$font-size-14;
+	line-height: tokens.$line-height-20;
+	font-weight: tokens.$font-weight-semibold;
+	color: tokens.$color-text-tertiary;
+	white-space: nowrap;
+}

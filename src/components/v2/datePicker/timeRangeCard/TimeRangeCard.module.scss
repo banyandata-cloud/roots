@@ -1,0 +1,19 @@
+@use '../../../../styles/tokens' as tokens;
+
+.root {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	width: 100%;
+	padding: tokens.$spacing-lg tokens.$spacing-14;
+	border: 1px solid tokens.$color-border-primary;
+	border-radius: tokens.$radius-xl;
+	background: tokens.$color-bg-primary;
+	box-sizing: border-box;
+}
+
+.column {
+	flex: 0 0 auto;
+	width: 239px;
+	max-width: 45%;
+}

@@ -1,0 +1,22 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1 1 0;
+  min-width: 252px;
+  max-width: 400px;
+}
+
+.wide {
+  width: 100%;
+  max-width: 100%;
+}
+
+.grid {
+  display: flex;
+  flex-direction: column;
+}
+
+.week {
+  display: flex;
+}

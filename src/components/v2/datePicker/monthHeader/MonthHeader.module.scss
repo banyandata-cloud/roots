@@ -1,0 +1,54 @@
+@use '../../../../styles/tokens' as tokens;
+
+.root {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 28px;
+}
+
+.title {
+	flex: 1 1 auto;
+	text-align: center;
+	font-family: tokens.$font-family-base;
+	font-size: tokens.$font-size-16;
+	line-height: tokens.$line-height-24;
+	font-weight: tokens.$font-weight-medium;
+	color: tokens.$color-text-primary;
+}
+
+.group {
+	display: flex;
+	align-items: center;
+	gap: tokens.$spacing-sm;
+	width: 62px;
+}
+
+.button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 28px;
+	height: 28px;
+	border: 1px solid tokens.$color-border-primary;
+	border-radius: tokens.$radius-sm;
+	background: tokens.$color-bg-primary;
+	color: tokens.$color-fg-quaternary;
+	cursor: pointer;
+
+	&:hover:not(:disabled) {
+		background: tokens.$color-bg-secondary-hover;
+		color: tokens.$color-text-primary;
+	}
+
+	&:focus-visible {
+		outline: 2px solid tokens.$color-border-brand;
+		outline-offset: 2px;
+	}
+}
+
+.disabled,
+.button:disabled {
+	opacity: 0.35;
+	cursor: default;
+}

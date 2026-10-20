@@ -1,0 +1,17 @@
+@use '../../../../styles/tokens' as tokens;
+
+.root {
+	display: flex;
+	flex-direction: column;
+	gap: tokens.$spacing-xl;
+	width: 100%;
+	min-width: 600px;
+}
+
+.messageLine {
+	min-height: tokens.$line-height-20;
+	font-family: tokens.$font-family-base;
+	font-size: tokens.$font-size-14;
+	line-height: tokens.$line-height-20;
+	color: tokens.$color-text-brand-primary;
+}

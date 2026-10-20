@@ -1,0 +1,49 @@
+@use '../../../../styles/tokens' as tokens;
+
+.root {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	padding: tokens.$spacing-md tokens.$spacing-14;
+	border: none;
+	border-radius: tokens.$radius-lg;
+	background: transparent;
+	text-align: left;
+	cursor: pointer;
+	font-family: tokens.$font-family-base;
+	font-size: tokens.$font-size-14;
+	line-height: tokens.$line-height-20;
+	font-weight: tokens.$font-weight-regular;
+	color: tokens.$color-text-primary;
+
+	&:hover:not(:disabled) {
+		background: tokens.$color-bg-secondary-hover;
+	}
+
+	&:not(.recent):hover:not(:disabled) {
+		color: tokens.$color-text-secondary-hover;
+	}
+
+	&:focus-visible {
+		background: tokens.$color-bg-primary;
+		outline: 2px solid tokens.$color-border-brand;
+		outline-offset: 2px;
+	}
+}
+
+.recent {
+	font-size: tokens.$font-size-12;
+	line-height: tokens.$line-height-16;
+	white-space: normal;
+	color: tokens.$color-text-primary;
+}
+
+.selected {
+	background: tokens.$color-bg-brand-primary;
+	font-weight: tokens.$font-weight-semibold;
+	color: tokens.$color-text-brand-primary;
+
+	&:hover {
+		background: tokens.$color-bg-brand-primary;
+	}
+}

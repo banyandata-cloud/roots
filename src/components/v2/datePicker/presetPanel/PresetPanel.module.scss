@@ -1,0 +1,38 @@
+@use '../../../../styles/tokens' as tokens;
+
+.root {
+	display: flex;
+	flex-direction: column;
+	gap: tokens.$spacing-md;
+	width: 190px;
+	padding: tokens.$spacing-xl tokens.$spacing-lg;
+	border-right: 1px solid tokens.$color-border-secondary;
+	border-top-left-radius: tokens.$radius-2xl;
+	background: tokens.$color-bg-primary-2;
+}
+
+.list {
+	display: flex;
+	flex-direction: column;
+	gap: tokens.$spacing-xxs;
+}
+
+.divider {
+	height: 1px;
+	background: tokens.$color-border-secondary;
+}
+
+.recentBlock {
+	display: flex;
+	flex-direction: column;
+	gap: tokens.$spacing-xxs;
+}
+
+.recentHeader {
+	padding-left: tokens.$spacing-14;
+	font-family: tokens.$font-family-base;
+	font-size: tokens.$font-size-12;
+	line-height: tokens.$line-height-16;
+	font-weight: tokens.$font-weight-semibold;
+	color: tokens.$color-text-quanternary;
+}
