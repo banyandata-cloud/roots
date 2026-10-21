@@ -28,6 +28,10 @@ interface BaseTableProps
 		| 'rowHeight'
 		| 'defaultActiveIndex'
 		| 'emptyPlaceholder'
+		| 'emptyTitle'
+		| 'emptyDescription'
+		| 'onRetry'
+		| 'retryLabel'
 		| 'onCheck'
 		| 'uniqueKey'
 		| 'checkAsRadio'
@@ -57,6 +61,10 @@ const BaseTable = forwardRef(
 			defaultActiveIndex,
 			toggleDrawer,
 			emptyPlaceholder,
+			emptyTitle,
+			emptyDescription,
+			onRetry,
+			retryLabel,
 			onCheck,
 			uniqueKey = '',
 			checkAsRadio,
@@ -122,7 +130,13 @@ const BaseTable = forwardRef(
 					/>
 				)}
 				{tabularData.length === 0 ? (
-					<NoDataPlaceHolder customPlaceholder={emptyPlaceholder} />
+					<NoDataPlaceHolder
+						customPlaceholder={emptyPlaceholder}
+						title={emptyTitle}
+						description={emptyDescription}
+						onRetry={onRetry}
+						retryLabel={retryLabel}
+					/>
 				) : (
 					<TableBody
 						{...{

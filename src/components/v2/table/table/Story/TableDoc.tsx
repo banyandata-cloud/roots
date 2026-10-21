@@ -140,6 +140,30 @@ const propsData = [
 		default: 'undefined',
 	},
 	{
+		prop: 'emptyTitle',
+		type: 'string',
+		description: 'Title of the default empty state shown when tableData is empty.',
+		default: '"No Data"',
+	},
+	{
+		prop: 'emptyDescription',
+		type: 'string',
+		description: 'Description of the default empty state shown when tableData is empty.',
+		default: 'undefined',
+	},
+	{
+		prop: 'onRetry',
+		type: '() => void',
+		description: 'Shows a Retry button in the empty state and fires on click.',
+		default: 'undefined',
+	},
+	{
+		prop: 'retryLabel',
+		type: 'string',
+		description: 'Label of the empty state action button.',
+		default: '"Retry"',
+	},
+	{
 		prop: 'dataLabel',
 		type: 'string',
 		description: 'Label appended to the pagination data count, e.g. "employees".',

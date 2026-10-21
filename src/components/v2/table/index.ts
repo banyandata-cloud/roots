@@ -2,6 +2,7 @@
 export * from './baseTable';
 export * from './body';
 export * from './cell';
+export * from './emptyState';
 export * from './header';
 export * from './placeholders';
 export * from './row';

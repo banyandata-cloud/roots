@@ -137,6 +137,10 @@ export interface TableProps {
 	searchProps?: SearchProps;
 	filtersCount?: number;
 	emptyPlaceholder?: ComponentType | undefined;
+	emptyTitle?: string | undefined;
+	emptyDescription?: string | undefined;
+	onRetry?: (() => void) | undefined;
+	retryLabel?: string | undefined;
 	onCheck?: ((checkedRows: Record<string, unknown>[]) => void) | undefined;
 	defaultCheckedRows?: Record<string, unknown>[];
 	checkAsRadio?: boolean | undefined;
