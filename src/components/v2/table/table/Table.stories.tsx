@@ -826,6 +826,23 @@ export const Default: Story = {
 	render: () => <DefaultStory />,
 };
 
+const NoDataStory = () => (
+	<ThemedContainer style={{ height: '100%' }}>
+		<Table
+			uniqueKey='name'
+			headerData={[{ title: 'Name', id: 'name', size: 'md' as const }]}
+			tableData={[]}
+			emptyDescription="The issues service didn't respond."
+			onRetry={() => {}}
+		/>
+	</ThemedContainer>
+);
+
+export const NoData: Story = {
+	name: 'No Data',
+	render: () => <NoDataStory />,
+};
+
 export const TableWithCheckboxes: Story = {
 	name: 'Table With Checkboxes',
 	render: () => <TableWithCheckboxesStory />,

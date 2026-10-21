@@ -1,7 +1,10 @@
+@use '../../../../../styles/tokens' as tokens;
 @import '../../../../../styles';
 
 .root {
 	@include flex;
 	margin: auto;
 	position: relative;
+	width: 100%;
+	padding: tokens.$spacing-5xl tokens.$spacing-2xl;
 }
