@@ -1,21 +1,21 @@
 import type { ReactElement } from 'react';
 import type { RowHeight } from '../../types';
 export interface TableProps {
-	headerData?: any[];
-	customCells?: Record<string, any>;
+	headerData?: any[] | undefined;
+	customCells?: Record<string, any> | undefined;
 	tableData?: any[];
 	className?: string;
 	loading?: boolean;
-	onRowClick?: (row: any) => void;
-	onSort?: (key: string, direction: 'asc' | 'desc') => void;
-	sortValue?: string;
+	onRowClick?: ((row: any) => void) | undefined;
+	onSort?: ((key: string, direction: 'asc' | 'desc') => void) | undefined;
+	sortValue?: string | undefined;
 	rowHeight?: RowHeight;
-	defaultActiveIndex?: number;
+	defaultActiveIndex?: number | undefined;
 	emptyPlaceholder?: ReactElement;
-	onCheck?: (row: any) => void;
+	onCheck?: ((row: any) => void) | undefined;
 	uniqueKey?: string;
-	checkAsRadio?: boolean;
-	disableCheck?: boolean;
+	checkAsRadio?: boolean | undefined;
+	disableCheck?: ((datum: any) => boolean) | undefined;
 	hideColumnLines?: boolean;
 }
 export interface TableBodyProps extends Pick<
