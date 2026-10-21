@@ -62,6 +62,17 @@
   height: 20px;
 }
 
+.table .checkboxWrap {
+  width: 20px;
+  height: 20px;
+  align-items: center;
+  justify-content: center;
+}
+.table .box {
+  width: 16px;
+  height: 16px;
+}
+
 .sm .label,
 .md .label {
   font-size: 14px;
