@@ -1,6 +1,6 @@
 import type { ChangeEvent, ReactNode } from 'react';
 
-export type CheckboxSize = 'sm' | 'md' | 'lg' | 'xlg';
+export type CheckboxSize = 'sm' | 'md' | 'lg' | 'xlg' | 'table';
 export type CheckboxState =
 	| 'default'
 	| 'hover'

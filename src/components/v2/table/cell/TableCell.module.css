@@ -387,7 +387,7 @@ tr[data-disabled=true] .root[data-elem=base-cell].body-cell:hover .cell-text {
 }
 .filter-option input[type=checkbox] {
   accent-color: var(--color-fg-brand-primary);
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
   cursor: pointer;
 }/*# sourceMappingURL=TableCell.module.css.map */

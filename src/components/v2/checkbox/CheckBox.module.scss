@@ -85,6 +85,20 @@ $color-white: tokens.$color-bg-primary;
 	}
 }
 
+// Table: 20x20 component with a 16x16 box
+.table {
+	.checkboxWrap {
+		width: 20px;
+		height: 20px;
+		align-items: center;
+		justify-content: center;
+	}
+	.box {
+		width: 16px;
+		height: 16px;
+	}
+}
+
 .sm,
 .md {
 	.label {
