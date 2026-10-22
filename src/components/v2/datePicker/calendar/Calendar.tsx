@@ -1,4 +1,5 @@
 import type { ReactElement } from 'react';
+import { forwardRef } from 'react';
 import { isBefore, startOfMonth } from 'date-fns';
 import { classes } from '../../../../utils';
 import { buildDayInfo, buildMonthMatrix, formatMonthTitle } from '../utils';
@@ -11,7 +12,7 @@ import type { CalendarProps } from './types';
 const DAYS_PER_WEEK = 7;
 
 /** One month block (C7 + C8 + C9), always 6 rows so the popover never changes height. */
-const Calendar = (props: CalendarProps): ReactElement => {
+const Calendar = forwardRef<HTMLDivElement, CalendarProps>((props, ref): ReactElement => {
 	const {
 		month,
 		position,
@@ -36,7 +37,7 @@ const Calendar = (props: CalendarProps): ReactElement => {
 	}
 
 	return (
-		<div className={classes(styles.root, position === 'single' && styles.wide)}>
+		<div ref={ref} className={classes(styles.root, position === 'single' && styles.wide)}>
 			<MonthHeader
 				title={formatMonthTitle(month)}
 				position={position}
@@ -73,6 +74,8 @@ const Calendar = (props: CalendarProps): ReactElement => {
 			</div>
 		</div>
 	);
-};
+});
+
+Calendar.displayName = 'Calendar';
 
 export default Calendar;

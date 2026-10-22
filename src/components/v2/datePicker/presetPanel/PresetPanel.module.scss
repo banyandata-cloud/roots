@@ -9,6 +9,8 @@
 	border-right: 1px solid tokens.$color-border-secondary;
 	border-top-left-radius: tokens.$radius-2xl;
 	background: tokens.$color-bg-primary-2;
+	overflow-y: auto;
+	box-sizing: border-box;
 }
 
 .list {

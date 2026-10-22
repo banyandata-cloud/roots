@@ -35,7 +35,7 @@
 }
 
 .label {
-  flex: 0 1 auto;
+  flex: 0 0 auto;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -47,7 +47,8 @@
 }
 
 .subLabel {
-  flex: 0 1 auto;
+  flex: 1 1 auto;
+  min-width: 0;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;

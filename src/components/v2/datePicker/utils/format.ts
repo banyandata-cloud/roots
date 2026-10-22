@@ -28,7 +28,11 @@ export function formatDuration(
 	options: { withTime: boolean } = { withTime: false }
 ): string {
 	const { withTime } = options;
-	const totalMinutes = differenceInMinutes(to, from);
+	// A same-day pair where only one of the two TimeSelects has actually been touched
+	// (the other still shows its 9:00 AM display default internally as `null`) can
+	// combine to an end-before-start instant. Floor at 0 rather than show a negative
+	// duration.
+	const totalMinutes = Math.max(0, differenceInMinutes(to, from));
 
 	if (!withTime) {
 		const days = differenceInCalendarDays(to, from) + 1;

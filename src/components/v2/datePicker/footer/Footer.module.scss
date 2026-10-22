@@ -29,7 +29,11 @@
 }
 
 .defaultSelect {
-	width: 165px;
+	// The shared v2 Dropdown has a hardcoded `min-width: 297px` on its own root with no
+	// `!important`, so a plain width here is silently overridden. `!important` here wins
+	// without touching the shared component.
+	width: 165px !important;
+	min-width: 165px !important;
 }
 
 .rightGroup {

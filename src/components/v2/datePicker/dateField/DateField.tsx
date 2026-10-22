@@ -19,7 +19,19 @@ const ROLE_PLACEHOLDERS: Record<DateFieldProps['role'], string> = {
 
 /** C4 Date field: typed/pasted/picked value, a clear (x), and an optional time row. */
 const DateField = (props: DateFieldProps): ReactElement => {
-	const { role, date, onChangeDate, onClear, onPasteRange, future, now, error, children } = props;
+	const {
+		role,
+		date,
+		onChangeDate,
+		onClear,
+		onPasteRange,
+		future,
+		now,
+		error,
+		children,
+		fill,
+		width,
+	} = props;
 
 	const [draft, setDraft] = useState(() => (date ? formatDateLabel(date) : ''));
 	const [localError, setLocalError] = useState<string | null>(null);
@@ -63,7 +75,10 @@ const DateField = (props: DateFieldProps): ReactElement => {
 	const label = ROLE_LABELS[role];
 
 	return (
-		<div className={classes(styles.root, shownError && styles.error)}>
+		<div
+			className={classes(styles.root, fill && styles.fill, shownError && styles.error)}
+			style={width ? { width, flex: '0 0 auto' } : undefined}
+		>
 			<div className={styles.valueBlock}>
 				<div className={styles.labelRow}>
 					<span className={styles.label}>{label}</span>

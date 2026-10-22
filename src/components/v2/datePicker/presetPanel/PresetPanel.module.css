@@ -7,6 +7,8 @@
   border-right: 1px solid var(--color-border-secondary);
   border-top-left-radius: 16px;
   background: var(--color-bg-primary-2);
+  overflow-y: auto;
+  box-sizing: border-box;
 }
 
 .list {

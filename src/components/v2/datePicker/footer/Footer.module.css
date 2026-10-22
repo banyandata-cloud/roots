@@ -27,7 +27,8 @@
 }
 
 .defaultSelect {
-  width: 165px;
+  width: 165px !important;
+  min-width: 165px !important;
 }
 
 .rightGroup {

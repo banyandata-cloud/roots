@@ -28,6 +28,10 @@
 
 .body {
 	display: flex;
+	// flex-start (not the default stretch) so a tall Recent list in the preset panel
+	// doesn't force the main content area to stretch taller than its own natural
+	// height, leaving dead whitespace under the calendar.
+	align-items: flex-start;
 	overflow: auto;
 }
 

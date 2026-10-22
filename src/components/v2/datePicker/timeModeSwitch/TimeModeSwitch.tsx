@@ -1,6 +1,7 @@
 import type { ReactElement } from 'react';
 import type { ComponentType, SVGProps } from 'react';
 import { classes } from '../../../../utils';
+import { Tooltip } from '../../tooltip';
 import { CalendarIcon, ClockIcon, TimeRangeIcon } from '../icons';
 import type { SingleTimeMode } from '../types';
 import styles from './TimeModeSwitch.module.css';
@@ -23,18 +24,18 @@ const TimeModeSwitch = (props: TimeModeSwitchProps): ReactElement => {
 	return (
 		<div className={styles.root}>
 			{SEGMENTS.map(({ mode, label, Icon }) => (
-				<button
-					key={mode}
-					type='button'
-					className={classes(styles.segment, value === mode && styles.selected)}
-					aria-pressed={value === mode}
-					aria-label={label}
-					title={label}
-					disabled={disabled}
-					onClick={() => onChange(mode)}
-				>
-					<Icon className={styles.icon} />
-				</button>
+				<Tooltip key={mode} content={label} position='bottom'>
+					<button
+						type='button'
+						className={classes(styles.segment, value === mode && styles.selected)}
+						aria-pressed={value === mode}
+						aria-label={label}
+						disabled={disabled}
+						onClick={() => onChange(mode)}
+					>
+						<Icon className={styles.icon} />
+					</button>
+				</Tooltip>
 			))}
 		</div>
 	);

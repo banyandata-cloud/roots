@@ -5,18 +5,34 @@
 	flex-direction: column;
 	gap: tokens.$spacing-xl;
 	width: 100%;
-	min-width: 704px;
 }
 
 .fieldsRow {
+	position: relative;
 	display: flex;
 	align-items: flex-start;
-	gap: tokens.$spacing-lg;
+	// Each DateField's width is pinned (via the `width` prop, measured from its paired
+	// Calendar) rather than derived from this row's own flex-grow math, so this gap can
+	// differ from the calendars row's without breaking the right-edge alignment (item 9).
+	// 44px = 12px clearance + the 20px arrow icon + 12px clearance, so there's a real,
+	// equal 12px of breathing room on each side of the icon itself (not just to its
+	// center) — must stay in sync with the FIELDS_ROW_GAP_PX constant in RangeBody.tsx.
+	gap: 44px;
+}
+
+// The arrow is absolutely positioned (not a normal flex sibling) so it floats over the
+// gap between the two date cards instead of adding its own width.
+.arrowOverlay {
+	position: absolute;
+	top: 42px;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	pointer-events: none;
 }
 
 .calendarsRow {
 	display: flex;
-	gap: tokens.$spacing-3xl;
+	gap: tokens.$spacing-xl;
 }
 
 .messageLine {

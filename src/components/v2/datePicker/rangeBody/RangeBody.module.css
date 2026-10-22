@@ -3,18 +3,26 @@
   flex-direction: column;
   gap: 16px;
   width: 100%;
-  min-width: 704px;
 }
 
 .fieldsRow {
+  position: relative;
   display: flex;
   align-items: flex-start;
-  gap: 12px;
+  gap: 44px;
+}
+
+.arrowOverlay {
+  position: absolute;
+  top: 42px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
 }
 
 .calendarsRow {
   display: flex;
-  gap: 24px;
+  gap: 16px;
 }
 
 .messageLine {

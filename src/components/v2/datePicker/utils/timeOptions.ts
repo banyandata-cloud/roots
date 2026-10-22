@@ -1,6 +1,9 @@
 import type { DropdownOption } from '../../input/dropdown/types';
 import type { TimeOfDay } from '../types';
 
+/** Shown in a TimeSelect whenever its value is unset (edge-case-safe default: 9:00 AM). */
+export const DEFAULT_TIME: TimeOfDay = { hour: 9, minute: 0 };
+
 export function getHourOptions(hour12: boolean): DropdownOption[] {
 	if (hour12) {
 		return Array.from({ length: 12 }, (_, i) => {

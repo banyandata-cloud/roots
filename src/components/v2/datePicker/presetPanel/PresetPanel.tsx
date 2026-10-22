@@ -5,10 +5,17 @@ import type { PresetPanelProps } from './types';
 
 /** Left panel: preset list, one click applies it; a Recent block sits under a divider. */
 const PresetPanel = (props: PresetPanelProps): ReactElement => {
-	const { presets, selectedPresetId, onSelectPreset, recents = [], onSelectRecent } = props;
+	const {
+		presets,
+		selectedPresetId,
+		onSelectPreset,
+		recents = [],
+		onSelectRecent,
+		maxHeight,
+	} = props;
 
 	return (
-		<div className={styles.root}>
+		<div className={styles.root} style={maxHeight ? { maxHeight } : undefined}>
 			<div className={styles.list}>
 				{presets.map((preset) => (
 					<PresetItem

@@ -1,6 +1,7 @@
 import type { ReactElement } from 'react';
 import { Dropdown } from '../../input/dropdown';
 import {
+	DEFAULT_TIME,
 	from12Hour,
 	getHourOptions,
 	getMinuteOptions,
@@ -11,8 +12,6 @@ import {
 import type { TimeOfDay } from '../types';
 import styles from './TimeSelect.module.css';
 import type { TimeSelectProps } from './types';
-
-const DEFAULT_TIME: TimeOfDay = { hour: 9, minute: 0 };
 
 /**
  * C13 Time select: hour : minute (AM/PM). Same-day end times are clamped to at least
@@ -29,14 +28,19 @@ const TimeSelect = (props: TimeSelectProps): ReactElement => {
 		}
 		const candidateMinutes = timeToMinutes(candidate);
 		const minMinutes = timeToMinutes(minExclusive);
-		if (candidateMinutes <= minMinutes) {
-			const clampedTotal = Math.min(minMinutes + 1, 23 * 60 + 59);
+		// Minimum same-day duration is 1 hour (edge case #16), not just "strictly after
+		// start" — a candidate only 5-59 minutes later than start must also snap forward.
+		const minAllowedMinutes = minMinutes + 60;
+		if (candidateMinutes < minAllowedMinutes) {
+			const clampedTotal = Math.min(minAllowedMinutes, 23 * 60 + 59);
 			return { hour: Math.floor(clampedTotal / 60), minute: clampedTotal % 60 };
 		}
 		return candidate;
 	};
 
-	const noSlotAvailable = !!minExclusive && timeToMinutes(minExclusive) >= 23 * 60 + 59;
+	// No same-day slot at least 1 hour later exists once start is at/after 11:00 PM
+	// (edge case #16's "A start after 11:00 PM has no valid end that day").
+	const noSlotAvailable = !!minExclusive && timeToMinutes(minExclusive) + 60 > 23 * 60 + 59;
 
 	const { hour12: displayHour, period } = to12Hour(current.hour);
 

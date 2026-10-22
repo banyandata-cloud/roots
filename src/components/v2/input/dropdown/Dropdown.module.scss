@@ -69,7 +69,7 @@
 	padding: 8px 12px !important;
 	border-radius: 8px !important;
 	border: 1px solid #d5d7da !important;
-	background: white !important;
+	background: var(--color-bg-primary) !important;
 	cursor: pointer !important;
 	transition: all 0.2s ease-in-out !important;
 	box-shadow:
@@ -235,7 +235,7 @@
 // 1. Default State (placeholder)
 .dropdownContainer.default {
 	border: 1px solid #d5d7da !important;
-	background: white !important;
+	background: var(--color-bg-primary) !important;
 
 	&:hover {
 		border-color: #b2b5bb !important;
@@ -246,7 +246,7 @@
 // 2. Selected State
 .dropdownContainer.selected {
 	border: 1px solid #d5d7da !important;
-	background: white !important;
+	background: var(--color-bg-primary) !important;
 
 	&:hover {
 		border-color: #b2b5bb !important;
@@ -257,7 +257,7 @@
 // 3. Focus State (blue border)
 .dropdown .dropdownContainer.focus,
 .dropdownContainer.focus {
-	background: white !important;
+	background: var(--color-bg-primary) !important;
 	border: 2px solid #2e90fa !important;
 	padding: 7px 11px !important; // Adjust for thicker border
 	box-shadow: none !important;
@@ -290,7 +290,7 @@
 
 // 4. Disabled State
 .dropdownContainer.disabled {
-	background: #fafafa !important;
+	background: var(--color-bg-primary-2) !important;
 	border: 1px solid #d5d7da !important;
 	cursor: not-allowed !important;
 	box-shadow: none !important;
@@ -304,7 +304,7 @@
 	}
 
 	&:hover {
-		background: #fafafa !important;
+		background: var(--color-bg-primary-2) !important;
 		border-color: #d5d7da !important;
 		cursor: not-allowed !important;
 		text-decoration: none !important;
@@ -313,7 +313,7 @@
 
 // 5. Error State (red border + error icon)
 .dropdownContainer.error {
-	background: white !important;
+	background: var(--color-bg-primary) !important;
 	border: 2px solid #f04438 !important;
 	padding: 7px 11px !important; // Adjust for thicker border
 	box-shadow: none !important;
@@ -330,7 +330,7 @@
 
 // 6. Warning State (warning icon)
 .dropdownContainer.warning {
-	background: white !important;
+	background: var(--color-bg-primary) !important;
 	border: 1px solid #d5d7da !important;
 
 	.statusIcon svg {
@@ -347,7 +347,7 @@
 // 7. Read-only State (subtle styling)
 .dropdownContainer.readOnly,
 .dropdownContainer.read-only {
-	background: white !important;
+	background: var(--color-bg-primary) !important;
 	border: 1px solid #f5f5f5 !important;
 	cursor: default !important;
 
@@ -356,7 +356,7 @@
 	}
 
 	&:hover {
-		background: white !important;
+		background: var(--color-bg-primary) !important;
 		border-color: #f5f5f5 !important;
 		cursor: default !important;
 		text-decoration: none !important;
@@ -442,7 +442,7 @@
 }
 
 .dropdownMenu {
-	background: white;
+	background: var(--color-bg-primary);
 	border: 1px solid #e9eaeb;
 	border-radius: 8px;
 	padding-top: 4px;
@@ -472,10 +472,10 @@
 		transition: background-color 0.2s ease-in-out;
 		gap: 8px;
 		width: 100%;
-		background: white;
+		background: var(--color-bg-primary);
 
 		&:hover {
-			background: #fafafa;
+			background: var(--color-bg-primary-2);
 		}
 
 		&:active {
@@ -484,7 +484,7 @@
 	}
 
 	&.dropdownMenuItemSelected .dropdownMenuItemInner {
-		background: #fafafa;
+		background: var(--color-bg-primary-2);
 	}
 }
 
@@ -547,7 +547,7 @@
 
 // Filters dropdown - matching Figma design
 .filtersDropdown {
-	background: white;
+	background: var(--color-bg-primary);
 	border: 1px solid #e2e8f0;
 	border-radius: 8px;
 	padding: 0;
@@ -691,7 +691,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background: white;
+	background: var(--color-bg-primary);
 	color: #a4a7ae;
 	font-family: Jakarta;
 	font-size: 12px;
@@ -712,7 +712,7 @@
 	align-items: center;
 	gap: 8px;
 	padding: 10px 12px;
-	background: white;
+	background: var(--color-bg-primary);
 	border: 1px solid #d5d7da;
 	border-radius: 8px;
 	box-shadow:
@@ -750,7 +750,7 @@
 
 	// Disabled state
 	&.disabled {
-		background: #fafafa;
+		background: var(--color-bg-primary-2);
 		border: 1px solid #d5d7da;
 		cursor: not-allowed;
 		box-shadow: none;
@@ -769,7 +769,7 @@
 	// Error state
 	&.error {
 		border: 1px solid #f04438;
-		background: white;
+		background: var(--color-bg-primary);
 
 		&:hover {
 			border-color: #d92d20;
@@ -779,7 +779,7 @@
 	// Warning state
 	&.warning {
 		border: 1px solid #f79009;
-		background: white;
+		background: var(--color-bg-primary);
 
 		&:hover {
 			border-color: #dc6803;
@@ -979,7 +979,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background: white;
+	background: var(--color-bg-primary);
 	border: 1px solid #e9eaeb;
 	border-radius: 4px;
 	padding: 1px 4px;
@@ -1023,7 +1023,7 @@
 	display: flex;
 	align-items: center;
 	gap: 3px;
-	background: white;
+	background: var(--color-bg-primary);
 	border: 1px solid #d5d7da;
 	border-radius: 6px;
 	padding: 4px 8px 4px 8px;
@@ -1145,7 +1145,7 @@
 
 // Filter Key Tag Styles - Based on Figma Design
 .filterKeyTag {
-	background: white;
+	background: var(--color-bg-primary);
 	border: 1px solid #d5d7da;
 	border-radius: 6px;
 	padding: 4px 8px;

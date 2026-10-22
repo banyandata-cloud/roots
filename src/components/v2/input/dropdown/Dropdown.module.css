@@ -57,7 +57,7 @@
   padding: 8px 12px !important;
   border-radius: 8px !important;
   border: 1px solid #d5d7da !important;
-  background: white !important;
+  background: var(--color-bg-primary) !important;
   cursor: pointer !important;
   transition: all 0.2s ease-in-out !important;
   box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.04), 0px 1px 2px 0px rgba(0, 0, 0, 0.06) !important;
@@ -196,7 +196,7 @@
 
 .dropdownContainer.default {
   border: 1px solid #d5d7da !important;
-  background: white !important;
+  background: var(--color-bg-primary) !important;
 }
 .dropdownContainer.default:hover {
   border-color: #b2b5bb !important;
@@ -205,7 +205,7 @@
 
 .dropdownContainer.selected {
   border: 1px solid #d5d7da !important;
-  background: white !important;
+  background: var(--color-bg-primary) !important;
 }
 .dropdownContainer.selected:hover {
   border-color: #b2b5bb !important;
@@ -214,7 +214,7 @@
 
 .dropdown .dropdownContainer.focus,
 .dropdownContainer.focus {
-  background: white !important;
+  background: var(--color-bg-primary) !important;
   border: 2px solid #2e90fa !important;
   padding: 7px 11px !important;
   box-shadow: none !important;
@@ -245,7 +245,7 @@
 }
 
 .dropdownContainer.disabled {
-  background: #fafafa !important;
+  background: var(--color-bg-primary-2) !important;
   border: 1px solid #d5d7da !important;
   cursor: not-allowed !important;
   box-shadow: none !important;
@@ -257,14 +257,14 @@
   color: #a4a7ae !important;
 }
 .dropdownContainer.disabled:hover {
-  background: #fafafa !important;
+  background: var(--color-bg-primary-2) !important;
   border-color: #d5d7da !important;
   cursor: not-allowed !important;
   text-decoration: none !important;
 }
 
 .dropdownContainer.error {
-  background: white !important;
+  background: var(--color-bg-primary) !important;
   border: 2px solid #f04438 !important;
   padding: 7px 11px !important;
   box-shadow: none !important;
@@ -278,7 +278,7 @@
 }
 
 .dropdownContainer.warning {
-  background: white !important;
+  background: var(--color-bg-primary) !important;
   border: 1px solid #d5d7da !important;
 }
 .dropdownContainer.warning .statusIcon svg {
@@ -292,7 +292,7 @@
 
 .dropdownContainer.readOnly,
 .dropdownContainer.read-only {
-  background: white !important;
+  background: var(--color-bg-primary) !important;
   border: 1px solid #f5f5f5 !important;
   cursor: default !important;
 }
@@ -302,7 +302,7 @@
 }
 .dropdownContainer.readOnly:hover,
 .dropdownContainer.read-only:hover {
-  background: white !important;
+  background: var(--color-bg-primary) !important;
   border-color: #f5f5f5 !important;
   cursor: default !important;
   text-decoration: none !important;
@@ -360,7 +360,7 @@
 }
 
 .dropdownMenu {
-  background: white;
+  background: var(--color-bg-primary);
   border: 1px solid #e9eaeb;
   border-radius: 8px;
   padding-top: 4px;
@@ -388,16 +388,16 @@
   transition: background-color 0.2s ease-in-out;
   gap: 8px;
   width: 100%;
-  background: white;
+  background: var(--color-bg-primary);
 }
 .dropdownMenuItem .dropdownMenuItemInner:hover {
-  background: #fafafa;
+  background: var(--color-bg-primary-2);
 }
 .dropdownMenuItem .dropdownMenuItemInner:active {
   background: #f5f5f5;
 }
 .dropdownMenuItem.dropdownMenuItemSelected .dropdownMenuItemInner {
-  background: #fafafa;
+  background: var(--color-bg-primary-2);
 }
 
 .dropdownMenuItemContent {
@@ -453,7 +453,7 @@
 }
 
 .filtersDropdown {
-  background: white;
+  background: var(--color-bg-primary);
   border: 1px solid #e2e8f0;
   border-radius: 8px;
   padding: 0;
@@ -575,7 +575,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: white;
+  background: var(--color-bg-primary);
   color: #a4a7ae;
   font-family: Jakarta;
   font-size: 12px;
@@ -583,9 +583,7 @@
   border: 1px solid #e9eaeb;
   border-radius: 4px;
   padding: 1px 4px;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
   line-height: 16px;
   height: 20px;
   min-width: 20px;
@@ -596,7 +594,7 @@
   align-items: center;
   gap: 8px;
   padding: 10px 12px;
-  background: white;
+  background: var(--color-bg-primary);
   border: 1px solid #d5d7da;
   border-radius: 8px;
   box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.04), 0px 1px 2px 0px rgba(0, 0, 0, 0.06);
@@ -623,7 +621,7 @@
   padding: 9px 11px;
 }
 .searchContainer.disabled {
-  background: #fafafa;
+  background: var(--color-bg-primary-2);
   border: 1px solid #d5d7da;
   cursor: not-allowed;
   box-shadow: none;
@@ -638,14 +636,14 @@
 }
 .searchContainer.error {
   border: 1px solid #f04438;
-  background: white;
+  background: var(--color-bg-primary);
 }
 .searchContainer.error:hover {
   border-color: #d92d20;
 }
 .searchContainer.warning {
   border: 1px solid #f79009;
-  background: white;
+  background: var(--color-bg-primary);
 }
 .searchContainer.warning:hover {
   border-color: #dc6803;
@@ -728,10 +726,6 @@
   margin: 0 !important;
   box-shadow: none !important;
 }
-.searchInput .mainInput::-moz-placeholder {
-  color: #a4a7ae !important;
-  font-weight: 400 !important;
-}
 .searchInput .mainInput::placeholder {
   color: #a4a7ae !important;
   font-weight: 400 !important;
@@ -806,13 +800,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: white;
+  background: var(--color-bg-primary);
   border: 1px solid #e9eaeb;
   border-radius: 4px;
   padding: 1px 4px;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
   flex-shrink: 0;
 }
 
@@ -850,7 +842,7 @@
   display: flex;
   align-items: center;
   gap: 3px;
-  background: white;
+  background: var(--color-bg-primary);
   border: 1px solid #d5d7da;
   border-radius: 6px;
   padding: 4px 8px 4px 8px;
@@ -893,10 +885,6 @@
   width: auto;
   min-width: 20px;
   max-width: 100px;
-}
-.tagValueInput::-moz-placeholder {
-  color: #a4a7ae;
-  font-weight: 400;
 }
 .tagValueInput::placeholder {
   color: #a4a7ae;
@@ -961,10 +949,6 @@
   padding: 0;
   margin: 0;
 }
-.tagInput::-moz-placeholder {
-  color: #a4a7ae;
-  font-weight: 400;
-}
 .tagInput::placeholder {
   color: #a4a7ae;
   font-weight: 400;
@@ -974,7 +958,7 @@
 }
 
 .filterKeyTag {
-  background: white;
+  background: var(--color-bg-primary);
   border: 1px solid #d5d7da;
   border-radius: 6px;
   padding: 4px 8px;
@@ -992,4 +976,4 @@
   line-height: 16px;
   color: #414651;
   white-space: nowrap;
-}/*# sourceMappingURL=Dropdown.module.css.map */
+}
