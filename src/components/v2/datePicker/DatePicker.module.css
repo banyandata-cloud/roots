@@ -21,8 +21,12 @@
 }
 
 .body {
-  display: flex;
   overflow: auto;
+}
+
+.bodyInner {
+  display: flex;
+  align-items: stretch;
 }
 
 .main {

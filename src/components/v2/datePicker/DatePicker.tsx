@@ -163,19 +163,21 @@ const DatePicker = (props: DatePickerProps): ReactElement => {
 							transition={{ duration: 0.12 }}
 						>
 							<div className={styles.body}>
-								<PresetPanel
-									presets={presets}
-									selectedPresetId={draft.preset ?? null}
-									onSelectPreset={onSelectPreset}
-									recents={recents}
-									onSelectRecent={onSelectRecent}
-								/>
-								<div className={styles.main}>
-									{mode === 'range' ? (
-										<RangeBody controller={controller} />
-									) : (
-										<SingleBody controller={controller} />
-									)}
+								<div className={styles.bodyInner}>
+									<PresetPanel
+										presets={presets}
+										selectedPresetId={draft.preset ?? null}
+										onSelectPreset={onSelectPreset}
+										recents={recents}
+										onSelectRecent={onSelectRecent}
+									/>
+									<div className={styles.main}>
+										{mode === 'range' ? (
+											<RangeBody controller={controller} />
+										) : (
+											<SingleBody controller={controller} />
+										)}
+									</div>
 								</div>
 							</div>
 							<Footer

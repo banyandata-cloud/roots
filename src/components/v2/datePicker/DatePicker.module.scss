@@ -27,13 +27,23 @@
 }
 
 .body {
-	display: flex;
-	// Default (stretch): the preset panel's grey background/border always reaches
-	// down to the footer, matching the main content area's height, regardless of
-	// how short the preset+recent list is. A long Recent list doesn't force this
-	// row taller because PresetPanel's own `overflow-y: auto` scrolls internally
-	// once its content exceeds that stretched height instead.
+	// Pure scroll container — NOT itself the flex row that stretches PresetPanel to
+	// match main's height (see `.bodyInner` for why that has to be a separate,
+	// unconstrained layer).
 	overflow: auto;
+}
+
+.bodyInner {
+	display: flex;
+	// Stretching here, inside a layer with no height constraint of its own, sizes
+	// PresetPanel to main's true (possibly scrollable) content height. Doing the
+	// stretch directly on `.body` instead breaks under a squeezed viewport: `.body`
+	// is also a flex item of `.popover`'s column layout, so when the popover's own
+	// max-height shrinks it, stretch would lock PresetPanel to that *shrunk visible*
+	// height rather than main's full content height — then scrolling `.body` moves
+	// the (too-short) grey panel past its own bottom edge, revealing plain white
+	// above the footer for the rest of the scroll range.
+	align-items: stretch;
 }
 
 .main {
