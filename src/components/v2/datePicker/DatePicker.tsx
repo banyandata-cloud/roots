@@ -8,7 +8,7 @@ import {
 } from '@floating-ui/react-dom-interactions';
 import { AnimatePresence, motion } from 'framer-motion';
 import type { ReactElement } from 'react';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect } from 'react';
 import { classes } from '../../../utils';
 import { Popper } from '../../popper';
 import styles from './DatePicker.module.css';
@@ -68,29 +68,6 @@ const DatePicker = (props: DatePickerProps): ReactElement => {
 	});
 	const role = useRole(context, { role: 'dialog' });
 	const { getReferenceProps, getFloatingProps } = useInteractions([click, dismiss, role]);
-
-	// Caps the preset panel to the main content area's own rendered height (item 7:
-	// a long Recent list must scroll internally instead of stretching the whole
-	// popover and leaving whitespace under a shorter main column).
-	const mainRef = useRef<HTMLDivElement>(null);
-	const [mainHeight, setMainHeight] = useState<number | undefined>(undefined);
-
-	useEffect(() => {
-		// Guard for test/SSR environments (e.g. jsdom) that don't implement
-		// ResizeObserver — the panel just skips the height cap there.
-		if (!open || !mainRef.current || typeof ResizeObserver === 'undefined') {
-			return undefined;
-		}
-		const node = mainRef.current;
-		const observer = new ResizeObserver((entries) => {
-			const entry = entries[0];
-			if (entry) {
-				setMainHeight(entry.contentRect.height);
-			}
-		});
-		observer.observe(node);
-		return () => observer.disconnect();
-	}, [open, mode]);
 
 	useEffect(() => {
 		if (!open) {
@@ -192,9 +169,8 @@ const DatePicker = (props: DatePickerProps): ReactElement => {
 									onSelectPreset={onSelectPreset}
 									recents={recents}
 									onSelectRecent={onSelectRecent}
-									maxHeight={mainHeight}
 								/>
-								<div className={styles.main} ref={mainRef}>
+								<div className={styles.main}>
 									{mode === 'range' ? (
 										<RangeBody controller={controller} />
 									) : (

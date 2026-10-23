@@ -5,6 +5,9 @@
   width: 100%;
   min-width: 600px;
 }
+.root > :nth-last-child(2) {
+  margin-top: 8px;
+}
 
 .messageLine {
   min-height: 20px;

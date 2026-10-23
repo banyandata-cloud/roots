@@ -2,6 +2,7 @@ import type { ReactElement } from 'react';
 import RangeArrow from '../rangeArrow/RangeArrow';
 import TimeSelect from '../timeSelect/TimeSelect';
 import type { TimeOfDay } from '../types';
+import { DEFAULT_TIME } from '../utils';
 import styles from './TimeRangeCard.module.css';
 
 export interface TimeRangeCardProps {
@@ -39,7 +40,12 @@ const TimeRangeCard = (props: TimeRangeCardProps): ReactElement => {
 					value={toTime}
 					hour12={hour12}
 					onChange={onChangeToTime}
-					minExclusive={fromTime ?? undefined}
+					// Falls back to DEFAULT_TIME (not undefined) when fromTime hasn't been
+					// touched yet — "Starts at" still *displays* 9:00 AM as its default even
+					// though the state is null, so the clamp must use that same effective
+					// value or it silently stays disabled and lets "Ends at" be picked less
+					// than an hour later.
+					minExclusive={fromTime ?? DEFAULT_TIME}
 					disabled={disabled}
 				/>
 			</div>

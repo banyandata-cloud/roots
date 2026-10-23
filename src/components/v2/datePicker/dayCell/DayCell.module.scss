@@ -102,6 +102,16 @@
 		background: tokens.$color-bg-brand-solid-hover;
 	}
 
+	// The base `.button:focus-visible` rule (radius-md + bg-primary) has higher
+	// specificity than `.selected` alone (an extra pseudo-class), so without this it
+	// silently wins and paints a keyboard-focused selected day plain white instead of
+	// keeping its brand-solid pill. Re-asserts both properties here so Tab-focusing an
+	// already-selected day keeps its blue pill (plus the focus outline on top of it).
+	&:focus-visible {
+		border-radius: tokens.$radius-lg;
+		background: tokens.$color-bg-brand-solid;
+	}
+
 	.today-dot {
 		background: tokens.$color-text-primary-on-brand;
 	}

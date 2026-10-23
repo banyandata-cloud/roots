@@ -40,7 +40,11 @@ const RangeBody = (props: { controller: DatePickerController }): ReactElement =>
 
 	const sameDay =
 		!!draft.from && !!draft.to && draft.from.toDateString() === draft.to.toDateString();
-	const minEndTime = sameDay ? (draft.fromTime ?? undefined) : undefined;
+	// Falls back to DEFAULT_TIME (not undefined) when fromTime hasn't been touched yet
+	// — "Starts at" still *displays* 9:00 AM as its default even though the state is
+	// null, so the clamp must use that same effective value or it silently stays
+	// disabled and lets "Ends at" be picked less than an hour later.
+	const minEndTime = sameDay ? (draft.fromTime ?? DEFAULT_TIME) : undefined;
 
 	const summaryState = !draft.from ? 'empty' : !draft.to ? 'start-only' : 'filled';
 	// Duration must account for the selected time-of-day too (edge case: a same-day

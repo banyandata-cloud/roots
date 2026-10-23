@@ -6,6 +6,14 @@
 	gap: tokens.$spacing-xl;
 	width: 100%;
 	min-width: 600px;
+
+	// The Calendar is always the second-to-last child (messageLine is last), whether
+	// it's preceded directly by the DateField or by the TimeRangeCard ("Time range"
+	// sub-mode). Bumps that specific gap to 24px (16px flex `gap` + 8px extra
+	// margin) without touching any of the other 16px gaps in this column.
+	> :nth-last-child(2) {
+		margin-top: tokens.$spacing-md;
+	}
 }
 
 .messageLine {

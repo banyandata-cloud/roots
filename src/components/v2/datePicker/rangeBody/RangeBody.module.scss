@@ -33,6 +33,9 @@
 .calendarsRow {
 	display: flex;
 	gap: tokens.$spacing-xl;
+	// Bumps the gap from fieldsRow specifically to 24px (16px flex `gap` + 8px extra
+	// margin), while the calendar-to-summary-card and other internal gaps stay 16px.
+	margin-top: tokens.$spacing-md;
 }
 
 .messageLine {

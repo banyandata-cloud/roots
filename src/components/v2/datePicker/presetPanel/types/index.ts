@@ -13,9 +13,4 @@ export interface PresetPanelProps {
 	onSelectPreset: (preset: PresetDefinition) => void;
 	recents?: RecentRange[] | undefined;
 	onSelectRecent?: ((recent: RecentRange) => void) | undefined;
-	/**
-	 * Caps the panel to the main content area's rendered height so a long Recent list
-	 * scrolls internally instead of stretching the whole popover taller.
-	 */
-	maxHeight?: number | undefined;
 }
