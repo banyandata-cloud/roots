@@ -16,14 +16,14 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
-  color: #414651;
+  color: var(--color-text-secondary);
 }
 .labelContainer .required {
   font-family: Jakarta;
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
-  color: #175cd3;
+  color: var(--color-text-brand-primary);
 }
 
 .helpIcon {
@@ -34,7 +34,7 @@
 .helpIcon svg {
   width: 100%;
   height: 100%;
-  color: #535862;
+  color: var(--color-fg-tertiary);
 }
 
 .buttonWrapper {
@@ -56,7 +56,7 @@
   gap: 0px !important;
   padding: 8px 12px !important;
   border-radius: 8px !important;
-  border: 1px solid #d5d7da !important;
+  border: 1px solid var(--color-border-primary) !important;
   background: var(--color-bg-primary) !important;
   cursor: pointer !important;
   transition: all 0.2s ease-in-out !important;
@@ -92,7 +92,7 @@
 }
 .dropdownContainer:focus:not(.focus) {
   outline: none !important;
-  border: 1px solid #d5d7da !important;
+  border: 1px solid var(--color-border-primary) !important;
 }
 .dropdownContainer:hover {
   text-decoration: none !important;
@@ -141,7 +141,7 @@
   font-weight: 500 !important;
   font-size: 16px !important;
   line-height: 24px !important;
-  color: #181d27 !important;
+  color: var(--color-text-primary) !important;
   white-space: nowrap !important;
   overflow: hidden !important;
   text-overflow: ellipsis !important;
@@ -150,7 +150,7 @@
 }
 .dropdownText.placeholder {
   font-weight: 400 !important;
-  color: #a4a7ae !important;
+  color: var(--color-text-placeholder) !important;
 }
 
 .statusIcon {
@@ -171,7 +171,7 @@
 .dropdownIcon svg {
   width: 100%;
   height: 100%;
-  color: #a4a7ae;
+  color: var(--color-fg-quaternary);
   transition: color 0.2s ease-in-out;
 }
 
@@ -183,19 +183,19 @@
 }
 
 .helperDefault {
-  color: #535862;
+  color: var(--color-text-tertiary);
 }
 
 .helperError {
-  color: #d92d20;
+  color: var(--color-text-error-primary);
 }
 
 .helperWarning {
-  color: #dc6803;
+  color: var(--color-text-warning-primary);
 }
 
 .dropdownContainer.default {
-  border: 1px solid #d5d7da !important;
+  border: 1px solid var(--color-border-primary) !important;
   background: var(--color-bg-primary) !important;
 }
 .dropdownContainer.default:hover {
@@ -204,7 +204,7 @@
 }
 
 .dropdownContainer.selected {
-  border: 1px solid #d5d7da !important;
+  border: 1px solid var(--color-border-primary) !important;
   background: var(--color-bg-primary) !important;
 }
 .dropdownContainer.selected:hover {
@@ -215,7 +215,7 @@
 .dropdown .dropdownContainer.focus,
 .dropdownContainer.focus {
   background: var(--color-bg-primary) !important;
-  border: 2px solid #2e90fa !important;
+  border: 2px solid var(--color-border-brand) !important;
   padding: 7px 11px !important;
   box-shadow: none !important;
   outline: none !important;
@@ -223,17 +223,17 @@
 .dropdown .dropdownContainer.focus:hover,
 .dropdownContainer.focus:hover {
   text-decoration: none !important;
-  border: 2px solid #2e90fa !important;
+  border: 2px solid var(--color-border-brand) !important;
 }
 .dropdown .dropdownContainer.focus:focus,
 .dropdownContainer.focus:focus {
   outline: none !important;
-  border: 2px solid #2e90fa !important;
+  border: 2px solid var(--color-border-brand) !important;
 }
 .dropdown .dropdownContainer.focus:focus-visible,
 .dropdownContainer.focus:focus-visible {
   outline: none !important;
-  border: 2px solid #2e90fa !important;
+  border: 2px solid var(--color-border-brand) !important;
 }
 .dropdown .dropdownContainer.focus.sm,
 .dropdownContainer.focus.sm {
@@ -245,33 +245,33 @@
 }
 
 .dropdownContainer.disabled {
-  background: var(--color-bg-primary-2) !important;
-  border: 1px solid #d5d7da !important;
+  background: var(--color-bg-disabled-subtle) !important;
+  border: 1px solid var(--color-border-primary) !important;
   cursor: not-allowed !important;
   box-shadow: none !important;
 }
 .dropdownContainer.disabled .dropdownText {
-  color: #a4a7ae !important;
+  color: var(--color-text-disabled) !important;
 }
 .dropdownContainer.disabled .dropdownIcon svg {
-  color: #a4a7ae !important;
+  color: var(--color-fg-disabled) !important;
 }
 .dropdownContainer.disabled:hover {
-  background: var(--color-bg-primary-2) !important;
-  border-color: #d5d7da !important;
+  background: var(--color-bg-disabled-subtle) !important;
+  border-color: var(--color-border-primary) !important;
   cursor: not-allowed !important;
   text-decoration: none !important;
 }
 
 .dropdownContainer.error {
   background: var(--color-bg-primary) !important;
-  border: 2px solid #f04438 !important;
+  border: 2px solid var(--color-border-error) !important;
   padding: 7px 11px !important;
   box-shadow: none !important;
 }
 .dropdownContainer.error .statusIcon svg {
-  color: #f04438 !important;
-  fill: #f04438 !important;
+  color: var(--color-fg-error-secondary) !important;
+  fill: var(--color-fg-error-secondary) !important;
 }
 .dropdownContainer.error:hover {
   text-decoration: none !important;
@@ -279,11 +279,11 @@
 
 .dropdownContainer.warning {
   background: var(--color-bg-primary) !important;
-  border: 1px solid #d5d7da !important;
+  border: 1px solid var(--color-border-primary) !important;
 }
 .dropdownContainer.warning .statusIcon svg {
-  color: #dc6803 !important;
-  fill: #dc6803 !important;
+  color: var(--color-fg-warning-secondary) !important;
+  fill: var(--color-fg-warning-secondary) !important;
 }
 .dropdownContainer.warning:hover {
   border-color: #b2b5bb !important;
@@ -293,17 +293,17 @@
 .dropdownContainer.readOnly,
 .dropdownContainer.read-only {
   background: var(--color-bg-primary) !important;
-  border: 1px solid #f5f5f5 !important;
+  border: 1px solid var(--color-border-tertiary) !important;
   cursor: default !important;
 }
 .dropdownContainer.readOnly .dropdownIcon svg,
 .dropdownContainer.read-only .dropdownIcon svg {
-  color: #a4a7ae !important;
+  color: var(--color-fg-disabled-subtle) !important;
 }
 .dropdownContainer.readOnly:hover,
 .dropdownContainer.read-only:hover {
   background: var(--color-bg-primary) !important;
-  border-color: #f5f5f5 !important;
+  border-color: var(--color-border-tertiary) !important;
   cursor: default !important;
   text-decoration: none !important;
 }
@@ -361,7 +361,7 @@
 
 .dropdownMenu {
   background: var(--color-bg-primary);
-  border: 1px solid #e9eaeb;
+  border: 1px solid var(--color-border-disable-subtle);
   border-radius: 8px;
   padding-top: 4px;
   box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.1), 0px 4px 6px 0px rgba(0, 0, 0, 0.06);
@@ -391,13 +391,13 @@
   background: var(--color-bg-primary);
 }
 .dropdownMenuItem .dropdownMenuItemInner:hover {
-  background: var(--color-bg-primary-2);
+  background: var(--color-bg-active);
 }
 .dropdownMenuItem .dropdownMenuItemInner:active {
-  background: #f5f5f5;
+  background: var(--color-bg-active);
 }
 .dropdownMenuItem.dropdownMenuItemSelected .dropdownMenuItemInner {
-  background: var(--color-bg-primary-2);
+  background: var(--color-bg-active);
 }
 
 .dropdownMenuItemContent {
@@ -424,13 +424,13 @@
   font-weight: 500;
   font-size: 16px;
   line-height: 24px;
-  color: #414651;
+  color: var(--color-text-secondary);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 .dropdownMenuItemSelected .dropdownMenuItemText {
-  color: #181d27;
+  color: var(--color-text-primary);
 }
 
 .dropdownMenuItemCheckbox {
@@ -449,7 +449,7 @@
   height: 100%;
 }
 .dropdownMenuItemCheck svg > path {
-  stroke: #2e90fa !important;
+  stroke: var(--color-border-brand) !important;
 }
 
 .filtersDropdown {
