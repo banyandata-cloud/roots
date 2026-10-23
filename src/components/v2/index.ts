@@ -6,6 +6,7 @@ export * from './breadcrumbs';
 export * from './buttons';
 export * from './cell';
 export * from './checkbox';
+export * from './datePicker';
 export * from './helpers';
 export * from './icons';
 export * from './input';

@@ -1,0 +1,114 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 330px;
+  min-width: 230px;
+  max-width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--color-border-primary);
+  border-radius: 12px;
+  background: var(--color-bg-primary);
+  box-sizing: border-box;
+}
+.root:hover:not(:focus-within) {
+  background: var(--color-bg-primary-hover);
+}
+.root:focus-within {
+  border-color: var(--color-border-brand);
+  box-shadow: 0 0 0 2px var(--color-bg-primary), 0 0 0 4px var(--color-fg-brand-primary);
+}
+
+.fill {
+  flex: 1 1 0;
+  width: auto;
+  min-width: 230px;
+  max-width: 400px;
+}
+
+.error {
+  border-color: var(--color-border-error);
+}
+
+.valueBlock {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.labelRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 24px;
+}
+
+.label {
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 600;
+  color: var(--color-text-quanternary);
+}
+
+.input {
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: transparent;
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+.input:focus {
+  outline: none;
+}
+.input::placeholder {
+  font-weight: 500;
+  color: var(--color-text-placeholder);
+}
+
+.clear {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--color-fg-quaternary);
+  cursor: pointer;
+}
+.clear:hover {
+  background: var(--color-bg-secondary-hover);
+  color: var(--color-text-primary);
+}
+.clear:focus-visible {
+  outline: 2px solid var(--color-border-brand);
+  outline-offset: 2px;
+}
+
+.divider {
+  height: 1px;
+  background: var(--color-border-secondary);
+}
+
+.timeBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.errorText {
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--color-text-error-primary);
+}

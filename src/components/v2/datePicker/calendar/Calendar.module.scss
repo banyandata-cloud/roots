@@ -1,0 +1,24 @@
+@use '../../../../styles/tokens' as tokens;
+
+.root {
+	display: flex;
+	flex-direction: column;
+	gap: tokens.$spacing-md;
+	flex: 1 1 0;
+	min-width: 252px;
+	max-width: 400px;
+}
+
+.wide {
+	width: 100%;
+	max-width: 100%;
+}
+
+.grid {
+	display: flex;
+	flex-direction: column;
+}
+
+.week {
+	display: flex;
+}

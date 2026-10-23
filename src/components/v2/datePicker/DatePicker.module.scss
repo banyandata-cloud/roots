@@ -1,0 +1,54 @@
+@use '../../../styles/tokens' as tokens;
+
+.wrapper {
+	display: inline-block;
+}
+
+.triggerSlot {
+	display: inline-flex;
+}
+
+.popover {
+	display: flex;
+	flex-direction: column;
+	width: fit-content;
+	max-width: calc(100vw - 40px);
+	max-height: calc(100vh - 40px);
+	border: 1px solid tokens.$color-border-primary;
+	border-radius: tokens.$radius-2xl;
+	background: tokens.$color-bg-primary;
+	box-shadow: 0 24px 60px rgb(0 0 0 / 16%);
+	// The nested v2 Dropdown (hour/minute/AM-PM, Default to show) renders its own
+	// menu through the older shared Popover component (z-index: 10) in a sibling
+	// portal, not a DOM descendant of this one. Staying below that value keeps the
+	// dropdown menu visible/clickable on top of this popover.
+	z-index: 9;
+	overflow: hidden;
+}
+
+.body {
+	// Pure scroll container — NOT itself the flex row that stretches PresetPanel to
+	// match main's height (see `.bodyInner` for why that has to be a separate,
+	// unconstrained layer).
+	overflow: auto;
+}
+
+.bodyInner {
+	display: flex;
+	// Stretching here, inside a layer with no height constraint of its own, sizes
+	// PresetPanel to main's true (possibly scrollable) content height. Doing the
+	// stretch directly on `.body` instead breaks under a squeezed viewport: `.body`
+	// is also a flex item of `.popover`'s column layout, so when the popover's own
+	// max-height shrinks it, stretch would lock PresetPanel to that *shrunk visible*
+	// height rather than main's full content height — then scrolling `.body` moves
+	// the (too-short) grey panel past its own bottom edge, revealing plain white
+	// above the footer for the rest of the scroll range.
+	align-items: stretch;
+}
+
+.main {
+	display: flex;
+	flex: 1 1 auto;
+	min-width: 0;
+	padding: tokens.$spacing-2xl tokens.$spacing-3xl;
+}

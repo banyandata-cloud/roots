@@ -1,0 +1,35 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.fieldsRow {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 44px;
+}
+
+.arrowOverlay {
+  position: absolute;
+  top: 42px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.calendarsRow {
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.messageLine {
+  min-height: 20px;
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--color-text-brand-primary);
+}

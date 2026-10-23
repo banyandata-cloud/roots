@@ -19,7 +19,7 @@
 		font-weight: 500;
 		font-size: 14px;
 		line-height: 20px;
-		color: #414651;
+		color: var(--color-fg-secondary);
 	}
 
 	.required {
@@ -27,7 +27,7 @@
 		font-weight: 500;
 		font-size: 14px;
 		line-height: 20px;
-		color: #175cd3;
+		color: var(--color-text-brand-secondary);
 	}
 
 	// Help Icon in Label (beside label text)
@@ -39,7 +39,7 @@
 		svg {
 			width: 100%;
 			height: 100%;
-			color: #535862;
+			color: var(--color-text-tertiary);
 		}
 	}
 }
@@ -144,7 +144,7 @@
 	align-items: center;
 	height: 100%;
 	padding: 0 12px;
-	border-right: 1px solid #d5d7da;
+	border-right: 1px solid var(--color-border-primary);
 	flex-shrink: 0;
 
 	.leadingTextContent {
@@ -152,7 +152,7 @@
 		font-weight: 400;
 		font-size: 16px;
 		line-height: 24px;
-		color: #535862;
+		color: var(--color-text-tertiary);
 		white-space: nowrap;
 	}
 }
@@ -224,7 +224,7 @@
 	div > button > span > span > div > span {
 		font-size: 16px !important;
 		line-height: 24px !important;
-		color: #535862 !important; // text-tertiary as per Figma
+		color: var(--color-text-tertiary) !important; // text-tertiary as per Figma
 		font-weight: 400 !important;
 		white-space: nowrap !important;
 	}
@@ -298,15 +298,15 @@
 	min-width: 0;
 
 	&.textPrimary {
-		color: #181d27;
+		color: var(--color-text-primary);
 	}
 
 	&.textPlaceholder {
-		color: #a4a7ae;
+		color: var(--color-text-placeholder);
 	}
 
 	&.textDisabled {
-		color: #a4a7ae;
+		color: var(--color-text-disabled);
 	}
 }
 
@@ -322,21 +322,22 @@
 	font-family: Jakarta;
 	font-weight: 400;
 	line-height: 24px;
-	color: #181d27;
+	color: var(--color-text-primary);
 	white-space: pre;
-	caret-color: #181d27; // Thicker cursor
+	caret-color: var(--color-text-primary); // Thicker cursor
 
 	&::placeholder {
-		color: #a4a7ae;
+		color: var(--color-text-placeholder);
 	}
 
 	&:disabled {
-		color: #a4a7ae;
+		color: var(--color-text-disabled);
 		cursor: not-allowed;
-		caret-color: #a4a7ae;
+		caret-color: var(--color-text-disabled);
 	}
 
-	// Custom selection styling
+	// Custom selection styling. Not covered by a Figma state (native browser
+	// selection highlight), so left as a fixed brand blue rather than guessed.
 	&::selection {
 		background: #175cd3;
 		color: white;
@@ -344,7 +345,7 @@
 
 	&:focus {
 		outline: none;
-		caret-color: #181d27; // Ensure thick cursor on focus
+		caret-color: var(--color-text-primary); // Ensure thick cursor on focus
 	}
 }
 
@@ -363,17 +364,17 @@
 	font-family: Jakarta;
 	font-weight: 400;
 	line-height: 24px;
-	color: #181d27;
+	color: var(--color-text-primary);
 
 	&.visibleInput {
 		opacity: 1;
-		color: #181d27;
+		color: var(--color-text-primary);
 	}
 }
 
 // Blinking Cursor Animation
 .blinkingCursor {
-	color: #181d27;
+	color: var(--color-text-primary);
 	font-weight: 400;
 	animation: blink 1s infinite;
 	margin-left: 0; // No gap between text and cursor
@@ -399,27 +400,29 @@
 	line-height: 20px;
 
 	&.helperDefault {
-		color: #535862;
+		color: var(--color-text-tertiary);
 	}
 
 	&.helperError {
-		color: #d92d20;
+		color: var(--color-text-error-primary);
 	}
 
 	&.helperWarning {
-		color: #dc6803;
+		color: var(--color-text-warning-primary);
 	}
 }
 
 // State Styles
 // 1. Default State (Placeholder)
 .inputContainer.default {
-	background: white;
-	border: 1px solid #d5d7da;
+	background: var(--color-bg-primary);
+	border: 1px solid var(--color-border-primary);
 	box-shadow:
 		0px 0px 1px 0px rgba(0, 0, 0, 0.04),
 		0px 1px 2px 0px rgba(0, 0, 0, 0.06);
 
+	// No distinct hover border is defined in the Figma spec for this state; kept as a
+	// non-token hover affordance since there's nothing in the design to match it to.
 	&:hover {
 		border-color: #b2b5bb;
 	}
@@ -427,8 +430,8 @@
 
 // 2. Filled State
 .inputContainer.filled {
-	background: white;
-	border: 1px solid #d5d7da;
+	background: var(--color-bg-primary);
+	border: 1px solid var(--color-border-primary);
 	box-shadow:
 		0px 0px 1px 0px rgba(0, 0, 0, 0.04),
 		0px 1px 2px 0px rgba(0, 0, 0, 0.06);
@@ -441,60 +444,64 @@
 // 3. Active Typing State (Focus - Empty)
 .inputContainer.activeTyping,
 .inputContainer.active-typing {
-	background: white;
-	border: 1.5px solid #2e90fa;
+	background: var(--color-bg-primary);
+	border: 1.5px solid var(--color-border-brand);
 	box-shadow: none;
 }
 
 // 4. Filled Focus State (Focus Ring)
 .inputContainer.filledFocus,
 .inputContainer.filled-focus {
-	background: white;
-	border: 1px solid #d5d7da;
+	background: var(--color-bg-primary);
+	border: 1px solid var(--color-border-primary);
 	box-shadow:
-		0px 0px 0px 2px white,
-		0px 0px 0px 4px #1570ef;
+		0px 0px 0px 2px var(--color-bg-primary),
+		0px 0px 0px 4px var(--color-fg-brand-primary);
 }
 
 // 5. Error Focus State (Red Focus Ring)
 .inputContainer.errorFocus,
 .inputContainer.error-focus {
-	background: white;
-	border: 1px solid #d5d7da;
+	background: var(--color-bg-primary);
+	border: 1px solid var(--color-border-primary);
+	// Matches Figma's explicit "shadow/focused/error" effect (fg-error-secondary at
+	// 4px spread, bg-primary at 2px spread).
 	box-shadow:
-		0px 0px 0px 2px white,
-		0px 0px 0px 4px #f04438;
+		0px 0px 0px 2px var(--color-bg-primary),
+		0px 0px 0px 4px var(--color-fg-error-secondary);
 }
 
 // 6. Error Filled State (Red Border + Icon)
 .inputContainer.errorFilled,
 .inputContainer.error-filled {
-	background: white;
-	border: 1.5px solid #f04438;
+	background: var(--color-bg-primary);
+	border: 1.5px solid var(--color-border-error);
 	box-shadow: none;
 
 	.statusIcon svg {
-		color: #f04438;
-		fill: #f04438;
+		color: var(--color-fg-error-secondary);
+		fill: var(--color-fg-error-secondary);
 	}
 }
 
 // 7. Warning State (Orange Icon)
 .inputContainer.warning {
-	background: white;
-	border: 1px solid #d5d7da;
+	background: var(--color-bg-primary);
+	// Per Figma, the warning state keeps the regular border (no warning-colored
+	// border) — only the status icon turns warning-colored.
+	border: 1px solid var(--color-border-primary);
 	box-shadow: none;
 
 	.statusIcon svg {
-		color: #dc6803;
-		fill: #dc6803;
+		color: var(--color-fg-warning-secondary);
+		fill: var(--color-fg-warning-secondary);
 	}
 }
 
 // 8. Disabled State
 .inputContainer.disable {
-	background: #fafafa;
-	border: 1px solid #d5d7da;
+	background: var(--color-bg-disabled-subtle);
+	border: 1px solid var(--color-border-disable);
 	box-shadow: none;
 	cursor: not-allowed;
 
@@ -539,43 +546,43 @@
 	// Override inputContainer focus states when inside trailing button wrapper
 	.inputContainer.filled-focus,
 	.inputContainer.error-focus {
-		border: 1px solid #d5d7da !important;
+		border: 1px solid var(--color-border-primary) !important;
 		border-right: none !important;
 		box-shadow: none !important;
 	}
 
 	// For active-typing, make trailing button match the blue border but keep separator gray
 	.inputContainer.active-typing + .trailingButton {
-		border-top: 1.5px solid #2e90fa !important;
-		border-right: 1.5px solid #2e90fa !important;
-		border-bottom: 1.5px solid #2e90fa !important;
-		border-left: 1px solid #d5d7da !important; // Keep separator gray and 1px
+		border-top: 1.5px solid var(--color-border-brand) !important;
+		border-right: 1.5px solid var(--color-border-brand) !important;
+		border-bottom: 1.5px solid var(--color-border-brand) !important;
+		border-left: 1px solid var(--color-border-primary) !important; // Keep separator gray and 1px
 		padding: 9.5px 11.5px !important; // Adjust for thicker border
 		transition: all 0.2s ease-in-out !important; // Match input container transition
 	}
 
 	// For error-filled, make trailing button match the red border but keep separator gray
 	.inputContainer.error-filled + .trailingButton {
-		border-top: 1.5px solid #f04438 !important;
-		border-right: 1.5px solid #f04438 !important;
-		border-bottom: 1.5px solid #f04438 !important;
-		border-left: 1px solid #d5d7da !important; // Keep separator gray and 1px
+		border-top: 1.5px solid var(--color-border-error) !important;
+		border-right: 1.5px solid var(--color-border-error) !important;
+		border-bottom: 1.5px solid var(--color-border-error) !important;
+		border-left: 1px solid var(--color-border-primary) !important; // Keep separator gray and 1px
 	}
 
 	// Wrapper-level focus states for trailing button (only for focus rings)
 	&.wrapperFilledFocus {
 		border-radius: 6px;
 		box-shadow:
-			0px 0px 0px 2px white,
-			0px 0px 0px 4px #1570ef;
+			0px 0px 0px 2px var(--color-bg-primary),
+			0px 0px 0px 4px var(--color-fg-brand-primary);
 		transition: box-shadow 0.2s ease-in-out;
 	}
 
 	&.wrapperErrorFocus {
 		border-radius: 6px;
 		box-shadow:
-			0px 0px 0px 2px white,
-			0px 0px 0px 4px #f04438;
+			0px 0px 0px 2px var(--color-bg-primary),
+			0px 0px 0px 4px var(--color-fg-error-secondary);
 		transition: box-shadow 0.2s ease-in-out;
 	}
 }
@@ -591,9 +598,9 @@
 	border-bottom-left-radius: 0 !important;
 	border-top-right-radius: 6px !important;
 	border-bottom-right-radius: 6px !important;
-	border: 1px solid #d5d7da !important;
-	border-left: 1px solid #d5d7da !important;
-	background: white !important;
+	border: 1px solid var(--color-border-primary) !important;
+	border-left: 1px solid var(--color-border-primary) !important;
+	background: var(--color-bg-primary) !important;
 	cursor: pointer !important;
 	transition: all 0.2s ease-in-out !important;
 	height: 44px !important;
@@ -605,17 +612,19 @@
 	font-weight: 500 !important;
 	font-size: 14px !important;
 	line-height: 20px !important;
-	color: #535862 !important;
+	color: var(--color-text-tertiary) !important;
 	text-decoration: none !important;
 	min-width: unset !important;
 	max-width: unset !important;
 	width: auto !important;
 
+	// No distinct hover state is defined in the Figma spec; the background and
+	// border-color tweaks here are kept as non-token hover affordances.
 	&:hover {
-		background: #f8f9fa !important;
+		background: var(--color-bg-primary-hover) !important;
 		border-color: #b2b5bb !important;
-		border-left-color: #d5d7da !important; // Keep separator gray
-		color: #535862 !important;
+		border-left-color: var(--color-border-primary) !important; // Keep separator gray
+		color: var(--color-text-tertiary) !important;
 		text-decoration: none !important;
 	}
 
@@ -632,7 +641,7 @@
 	svg {
 		width: 20px !important;
 		height: 20px !important;
-		color: #535862 !important;
+		color: var(--color-text-tertiary) !important;
 		flex-shrink: 0 !important;
 	}
 
@@ -653,7 +662,7 @@
 	svg {
 		width: 100%;
 		height: 100%;
-		color: #535862;
+		color: var(--color-text-tertiary);
 	}
 }
 
@@ -662,25 +671,25 @@
 	font-weight: 500;
 	font-size: 14px;
 	line-height: 20px;
-	color: #535862;
+	color: var(--color-text-tertiary);
 	white-space: nowrap;
 }
 
 // State-specific trailing button styles
 // Disabled state for Button component
 .disableTrailingButton {
-	background: #fafafa !important;
-	border-color: #d5d7da !important;
-	border-left-color: #d5d7da !important;
+	background: var(--color-bg-disabled-subtle) !important;
+	border-color: var(--color-border-disable) !important;
+	border-left-color: var(--color-border-disable) !important;
 	box-shadow: none !important;
 	cursor: not-allowed !important;
-	color: #535862 !important;
+	color: var(--color-text-disabled) !important;
 	opacity: 0.5 !important;
 
 	&:hover {
-		background: #fafafa !important;
-		border-color: #d5d7da !important;
-		border-left-color: #d5d7da !important;
+		background: var(--color-bg-disabled-subtle) !important;
+		border-color: var(--color-border-disable) !important;
+		border-left-color: var(--color-border-disable) !important;
 		cursor: not-allowed !important;
 	}
 
@@ -691,19 +700,19 @@
 
 .errorFilledTrailingButton,
 .error-filledTrailingButton {
-	border: 1.5px solid #f04438;
-	border-left: 1px solid #d5d7da;
+	border: 1.5px solid var(--color-border-error);
+	border-left: 1px solid var(--color-border-primary);
 	box-shadow: none;
 }
 
 .warningTrailingButton {
-	border-color: #d5d7da;
+	border-color: var(--color-border-primary);
 	box-shadow: none;
 }
 
 .disableTrailingButton {
-	background: #fafafa;
-	border-color: #d5d7da;
+	background: var(--color-bg-disabled-subtle);
+	border-color: var(--color-border-disable);
 	box-shadow: none;
 	cursor: not-allowed;
 

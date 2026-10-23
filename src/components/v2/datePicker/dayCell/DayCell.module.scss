@@ -1,0 +1,118 @@
+@use '../../../../styles/tokens' as tokens;
+
+.root {
+	position: relative;
+	display: flex;
+	flex: 1 1 0;
+	align-items: center;
+	justify-content: center;
+	height: 34px;
+
+	&::before {
+		content: '';
+		position: absolute;
+		top: tokens.$spacing-1;
+		bottom: tokens.$spacing-1;
+		left: 0;
+		right: 0;
+		z-index: 0;
+		display: none;
+		background: tokens.$color-bg-brand-primary;
+	}
+
+	&.band::before {
+		display: block;
+	}
+
+	&.hover-preview::before {
+		opacity: 0.6;
+	}
+}
+
+.size-sm {
+	height: 44px;
+}
+
+.blank {
+	pointer-events: none;
+}
+
+.button {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 32px;
+	height: 32px;
+	padding: 0;
+	border: none;
+	background: transparent;
+	cursor: pointer;
+	font-family: tokens.$font-family-base;
+	font-size: tokens.$font-size-14;
+	line-height: tokens.$line-height-20;
+	font-weight: tokens.$font-weight-regular;
+	color: tokens.$color-text-primary;
+
+	&:hover:not(:disabled) {
+		border-radius: tokens.$radius-md;
+		background: tokens.$color-bg-primary-hover;
+	}
+
+	&:focus-visible {
+		border-radius: tokens.$radius-md;
+		background: tokens.$color-bg-primary;
+		outline: 2px solid tokens.$color-border-brand;
+		outline-offset: 2px;
+	}
+}
+
+.size-sm .button {
+	width: 40px;
+	height: 40px;
+}
+
+/* Small dot under the number — not a ring around the cell. */
+.today-dot {
+	position: absolute;
+	bottom: 2px;
+	left: 50%;
+	width: 4px;
+	height: 4px;
+	border-radius: tokens.$radius-full;
+	background: tokens.$color-fg-brand-primary;
+	transform: translateX(-50%);
+}
+
+.disabled {
+	color: tokens.$color-text-disabled;
+	cursor: default;
+	pointer-events: none;
+}
+
+.selected {
+	border-radius: tokens.$radius-lg;
+	background: tokens.$color-bg-brand-solid;
+	color: tokens.$color-text-primary-on-brand;
+	font-weight: tokens.$font-weight-bold;
+
+	&:hover:not(:disabled) {
+		border-radius: tokens.$radius-lg;
+		background: tokens.$color-bg-brand-solid-hover;
+	}
+
+	// The base `.button:focus-visible` rule (radius-md + bg-primary) has higher
+	// specificity than `.selected` alone (an extra pseudo-class), so without this it
+	// silently wins and paints a keyboard-focused selected day plain white instead of
+	// keeping its brand-solid pill. Re-asserts both properties here so Tab-focusing an
+	// already-selected day keeps its blue pill (plus the focus outline on top of it).
+	&:focus-visible {
+		border-radius: tokens.$radius-lg;
+		background: tokens.$color-bg-brand-solid;
+	}
+
+	.today-dot {
+		background: tokens.$color-text-primary-on-brand;
+	}
+}

@@ -1,0 +1,17 @@
+@use '../../../../styles/tokens' as tokens;
+
+.root {
+	display: flex;
+	flex: 0 0 auto;
+	align-items: center;
+	justify-content: center;
+	width: 20px;
+	height: 20px;
+	align-self: center;
+}
+
+.icon {
+	width: 20px;
+	height: 20px;
+	color: tokens.$color-fg-quaternary;
+}

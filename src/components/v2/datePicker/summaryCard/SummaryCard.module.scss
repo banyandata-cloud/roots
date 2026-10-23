@@ -1,0 +1,62 @@
+@use '../../../../styles/tokens' as tokens;
+
+.root {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: tokens.$spacing-xs;
+	width: 100%;
+	height: 72px;
+	padding: tokens.$spacing-14;
+	border: 1px solid tokens.$color-border-secondary;
+	border-radius: tokens.$radius-xl;
+	background: tokens.$color-bg-brand-primary-alt;
+	box-sizing: border-box;
+}
+
+.textBlock {
+	display: flex;
+	flex-direction: column;
+	gap: tokens.$spacing-xxs;
+}
+
+.duration {
+	font-family: tokens.$font-family-base;
+	font-size: tokens.$font-size-14;
+	line-height: tokens.$line-height-20;
+	font-weight: tokens.$font-weight-semibold;
+	color: tokens.$color-text-brand-primary;
+}
+
+.dates {
+	font-family: tokens.$font-family-base;
+	font-size: tokens.$font-size-14;
+	line-height: tokens.$line-height-20;
+	font-weight: tokens.$font-weight-semibold;
+	color: tokens.$color-text-secondary;
+}
+
+.placeholder {
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+	gap: tokens.$spacing-xxs;
+	border-color: tokens.$color-border-disable;
+	background: tokens.$color-bg-disabled;
+}
+
+.placeholderTitle {
+	font-family: tokens.$font-family-base;
+	font-size: tokens.$font-size-14;
+	line-height: tokens.$line-height-20;
+	font-weight: tokens.$font-weight-semibold;
+	color: tokens.$color-text-quanternary;
+}
+
+.placeholderBody {
+	font-family: tokens.$font-family-base;
+	font-size: tokens.$font-size-14;
+	line-height: tokens.$line-height-20;
+	font-weight: tokens.$font-weight-regular;
+	color: tokens.$color-text-placeholder;
+}

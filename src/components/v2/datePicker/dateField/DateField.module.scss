@@ -1,0 +1,127 @@
+@use '../../../../styles/tokens' as tokens;
+
+.root {
+	display: flex;
+	flex-direction: column;
+	gap: tokens.$spacing-md;
+	width: 330px;
+	min-width: 230px;
+	max-width: 100%;
+	padding: tokens.$spacing-lg tokens.$spacing-14;
+	border: 1px solid tokens.$color-border-primary;
+	border-radius: tokens.$radius-xl;
+	background: tokens.$color-bg-primary;
+	box-sizing: border-box;
+
+	&:hover:not(:focus-within) {
+		background: tokens.$color-bg-primary-hover;
+	}
+
+	&:focus-within {
+		border-color: tokens.$color-border-brand;
+		box-shadow:
+			0 0 0 2px tokens.$color-bg-primary,
+			0 0 0 4px tokens.$color-fg-brand-primary;
+	}
+}
+
+.fill {
+	// Mirrors Calendar's flex sizing so each date card's right edge stays aligned with
+	// its paired calendar month even if the popover is forced wider than its natural
+	// content width (e.g. by the footer's "Default to show" dropdown).
+	flex: 1 1 0;
+	width: auto;
+	min-width: 230px;
+	max-width: 400px;
+}
+
+.error {
+	border-color: tokens.$color-border-error;
+}
+
+.valueBlock {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: tokens.$spacing-xxs;
+}
+
+.labelRow {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding-right: 24px;
+}
+
+.label {
+	font-family: tokens.$font-family-base;
+	font-size: tokens.$font-size-12;
+	line-height: tokens.$line-height-16;
+	font-weight: tokens.$font-weight-semibold;
+	color: tokens.$color-text-quanternary;
+}
+
+.input {
+	width: 100%;
+	padding: 0;
+	border: none;
+	background: transparent;
+	font-family: tokens.$font-family-base;
+	font-size: tokens.$font-size-16;
+	line-height: tokens.$line-height-24;
+	font-weight: tokens.$font-weight-semibold;
+	color: tokens.$color-text-primary;
+
+	&:focus {
+		outline: none;
+	}
+
+	&::placeholder {
+		font-weight: tokens.$font-weight-medium;
+		color: tokens.$color-text-placeholder;
+	}
+}
+
+.clear {
+	position: absolute;
+	top: 0;
+	right: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 24px;
+	height: 24px;
+	border: none;
+	border-radius: tokens.$radius-sm;
+	background: transparent;
+	color: tokens.$color-fg-quaternary;
+	cursor: pointer;
+
+	&:hover {
+		background: tokens.$color-bg-secondary-hover;
+		color: tokens.$color-text-primary;
+	}
+
+	&:focus-visible {
+		outline: 2px solid tokens.$color-border-brand;
+		outline-offset: 2px;
+	}
+}
+
+.divider {
+	height: 1px;
+	background: tokens.$color-border-secondary;
+}
+
+.timeBlock {
+	display: flex;
+	flex-direction: column;
+	gap: tokens.$spacing-xxs;
+}
+
+.errorText {
+	font-family: tokens.$font-family-base;
+	font-size: tokens.$font-size-12;
+	line-height: tokens.$line-height-16;
+	color: tokens.$color-text-error-primary;
+}
